@@ -1,0 +1,10 @@
+---
+ms.openlocfilehash: 96cd0276487695ef8c46f3817f139e3f449744a5
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57071092"
+---
+> [!NOTE]
+> <span data-ttu-id="ce8e2-101">Tento článek odkazuje na knihovnu ASP.NET SignalR.</span><span class="sxs-lookup"><span data-stu-id="ce8e2-101">This article refers to ASP.NET SignalR.</span></span> <span data-ttu-id="ce8e2-102">Pokud uvažujete o pomocí nástroje SignalR, aby se povolily scénáře v reálném čase pomocí Javy, Node.js, nebo v případě bez serveru, podívejte se na [funkce SignalR technologie ASP.NET Core](/aspnet/core/signalr/introduction).</span><span class="sxs-lookup"><span data-stu-id="ce8e2-102">If you're thinking about using SignalR to enable real-time scenarios with Java, Node.js, or in a serverless scenario, take a look at [ASP.NET Core SignalR](/aspnet/core/signalr/introduction).</span></span> <span data-ttu-id="ce8e2-103">Pokud jste už použili funkce SignalR technologie ASP.NET, podívejte se na [rozdíly mezi verzemi](/aspnet/core/signalr/version-differences) stránce vám pomohou pochopit rozdíly mezi verzemi a vylepšení v knihovně SignalR technologie ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="ce8e2-103">If you've already used ASP.NET SignalR, take a look at the [version differences](/aspnet/core/signalr/version-differences) page to understand the differences in the versions and the improvements in ASP.NET Core SignalR.</span></span> <span data-ttu-id="ce8e2-104">Nakonec, pokud víte, budete spouštět aplikace v reálném čase v Microsoft Azure, podívejte se na [služby Azure SignalR](/azure/azure-signalr/signalr-overview), protože poskytuje cloudové škálování, jakmile vaše aplikace ho potřebovat.</span><span class="sxs-lookup"><span data-stu-id="ce8e2-104">Finally, if you know you'll be running your real-time apps in Microsoft Azure, take a look at the [Azure SignalR Service](/azure/azure-signalr/signalr-overview), as it provides cloud-based scale-out once your apps need it.</span></span>
