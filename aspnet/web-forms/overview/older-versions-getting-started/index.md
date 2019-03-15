@@ -2,7 +2,7 @@
 uid: web-forms/overview/older-versions-getting-started/index
 title: Starší verze – Začínáme webových formulářů | Dokumentace Microsoftu
 author: rick-anderson
-description: Dokumentaci k ASP.NET Web Forms 4 a dřívějších verzích.
+description: Kurz k ASP.NET Web Forms 4 a dřívějších verzích.
 ms.author: riande
 ms.date: 10/18/2014
 ms.assetid: e03585c2-80bf-4083-99ba-9fcbc883ccd8
@@ -11,7 +11,7 @@ msc.type: chapter
 ---
 <a name="older-versions---web-forms-getting-started"></a>Starší verze – Začínáme webových formulářů
 ====================
-> Dokumentaci k ASP.NET Web Forms 4 a dřívějších verzích.
+> Kurz k ASP.NET Web Forms 4 a dřívějších verzích.
 
 
 - [ASP.NET 4 – Tailspin Spyworks](tailspin-spyworks/index.md)
