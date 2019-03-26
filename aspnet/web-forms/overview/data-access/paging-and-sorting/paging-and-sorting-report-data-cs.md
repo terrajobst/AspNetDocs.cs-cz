@@ -8,12 +8,12 @@ ms.date: 08/15/2006
 ms.assetid: 811a6ef2-ec66-4c8e-a089-6f795056e288
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5ebef919deeda409cfa6805b603f67ef96ff003e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 15e23b09df13f11c69a2fd6c721981e632a25434
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078154"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422113"
 ---
 <a name="paging-and-sorting-report-data-c"></a>Stránkování a řazení dat sestavy (C#)
 ====================
@@ -194,7 +194,7 @@ Pak se vraťte do `DataBound` obslužné rutiny události a přidejte následuj�
 
 [!code-csharp[Main](paging-and-sorting-report-data-cs/samples/sample6.cs)]
 
-Tento kód začne tím, že zrušíte položek v `PageList` DropDownList. Toto se může zdát nadbytečný, protože jeden t wouldn očekávat počet stránek, chcete-li změnit, ale ostatním uživatelům může být současně pomocí systému, přidání nebo odebrání záznamy ze `Products` tabulky. Počet stránek dat může změnit odpovídající vložení nebo odstranění.
+Tento kód začne tím, že zrušíte položek v `PageList` DropDownList. Toto se může zdát nadbytečný, protože jeden by očekávat počet stránek, chcete-li změnit, ale ostatním uživatelům může být současně pomocí systému, přidání nebo odebrání záznamy ze `Products` tabulky. Počet stránek dat může změnit odpovídající vložení nebo odstranění.
 
 V dalším kroku budeme potřebovat znovu vytvořit číslo stránky a ten, který se mapuje na aktuální GridView `PageIndex` ve výchozím nastavení vybrané. Můžeme to provést pomocí smyčky od 0 do `PageCount - 1`, přidání nového `ListItem` v každé iterace a nastavení jeho `Selected` vlastnost na hodnotu true, pokud je aktuální index iterace GridView s `PageIndex` vlastnost.
 
@@ -253,7 +253,7 @@ Při vytváření vazby prvku ObjectDataSource do prvku GridView. pomocí rozev�
 
 [!code-aspx[Main](paging-and-sorting-report-data-cs/samples/sample9.aspx)]
 
-Pole lze nastavit tak, aby se s tím, že zrušíte řazení jeho `SortExpression` vlastnosti (ji přiřadíte prázdný řetězec). Pro znázornění, představte si, že jsme kód nefungoval t bychom, aby naši zákazníci řadit cena naše produkty. `UnitPrice` Vlastnost BoundField s `SortExpression` vlastnost je možné odebrat z deklarativní nebo prostřednictvím pole dialogových oken (která je přístupná po kliknutí na odkaz Upravit sloupce v prvku GridView s inteligentním).
+Pole lze nastavit tak, aby se s tím, že zrušíte řazení jeho `SortExpression` vlastnosti (ji přiřadíte prázdný řetězec). Pro znázornění, představte si, že jsme nechtěli umožňuje našim zákazníkům řadit cena naše produkty. `UnitPrice` Vlastnost BoundField s `SortExpression` vlastnost je možné odebrat z deklarativní nebo prostřednictvím pole dialogových oken (která je přístupná po kliknutí na odkaz Upravit sloupce v prvku GridView s inteligentním).
 
 
 ![Výsledky seřazeny podle UnitPrice ve vzestupném pořadí](paging-and-sorting-report-data-cs/_static/image27.png)

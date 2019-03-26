@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 634ea84b-f904-4afe-b71b-49cccef4d9cc
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-models-and-data-access
 msc.type: authoredcontent
-ms.openlocfilehash: 26896e6ee3c02e8f939296ecbfb8b7d500940765
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 10c2f6379f6d3139dd3bcf1027ff456e074298c3
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076969"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425090"
 ---
 # <a name="aspnet-mvc-4-models-and-data-access"></a>ASP.NET MVC 4 – modely a přístup k datům
 
@@ -148,7 +148,7 @@ V této úloze vytvoříte datový model pro interakci s databází přidali v p
     ![Přidání datového modelu ADO.NET Entity StoreDB](aspnet-mvc-4-models-and-data-access/_static/image6.png "přidání StoreDB ADO.NET Entity Data Model")
 
     *Přidání StoreDB ADO.NET Entity Data Model*
-2. **Průvodce datovým modelem Entity** se zobrazí. Tento průvodce vás provede vytvořením modelu vrstvy. Protože model by měl vytvořit podle existující databáze recentyl přidali, vyberte **Generovat z databáze** a klikněte na tlačítko **Další**.
+2. **Průvodce datovým modelem Entity** se zobrazí. Tento průvodce vás provede vytvořením modelu vrstvy. Protože model by měl vytvořit podle existující databázi nedávno přidali, vyberte **Generovat z databáze** a klikněte na tlačítko **Další**.
 
     ![Výběr obsahu modelu](aspnet-mvc-4-models-and-data-access/_static/image7.png "výběr obsahu modelu")
 
@@ -280,7 +280,7 @@ Po vygenerování modelu upravíte StoreController poskytnout dat získaných z 
 <a id="Task_1_-_Populating_Sample_Data"></a>
 #### <a name="task-1---populating-sample-data"></a>Úloha 1 – naplnění ukázkových dat
 
-V této úloze naplníte databázi s ukázkovými daty při výchozímu vytvořené využitím založeno na kódu.
+V této úloze naplníte databázi s ukázkovými daty při počátečním vytvoření pomocí založeno na kódu.
 
 1. Otevřít **začít** řešení nachází v **zdroj/Ex2-CreatingADatabaseCodeFirst/počáteční/** složky. V opačném případě může nadále používat **End** řešení získat provedením předchozím cvičení.
 
@@ -580,7 +580,7 @@ Tento dodatek se ukazují, jak vytvořit nový web z portálu správy Windows Az
 1. Přejděte [Windows Azure Management Portal](https://manage.windowsazure.com/) a přihlaste se pomocí přihlašovacích údajů Microsoft spojených s vaším předplatným.
 
     > [!NOTE]
-    > Windows Azure můžete zadarmo hostovat 10 webů ASP.NET a pak škálujte podle rozšiřujícího se provozu. Můžete se zaregistrovat [tady](http://aka.ms/aspnet-hol-azure).
+    > Windows Azure můžete zadarmo hostovat 10 webů ASP.NET a pak škálujte podle rozšiřujícího se provozu. Můžete se zaregistrovat [tady](https://aka.ms/aspnet-hol-azure).
 
     ![Přihlaste se k portálu Windows Azure](aspnet-mvc-4-models-and-data-access/_static/image31.png "Přihlaste se k portálu Windows Azure")
 

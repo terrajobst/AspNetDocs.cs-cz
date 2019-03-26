@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: e1fd226f-3f8e-4575-a179-5c75b240333d
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-6-use-test-driven-development-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7b1700e0ccece543c381dbb4fa7d6243de57ed4d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ac502a1f57b25dd596489d1e7abaa55a77ddb6c7
+ms.sourcegitcommit: 62db31596a7da029263cf06335aff12236fb3186
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075163"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58440336"
 ---
 <a name="iteration-6--use-test-driven-development-vb"></a>Iterace #6 – použití vývoje řízeného (VB)
 ====================
@@ -80,9 +80,9 @@ Tato nová funkce přidáme k naší aplikace pomocí následujícího postupu �
 
 ## <a name="what-gets-tested"></a>Co získá testování
 
-Jak jsme probírali v předchozí iteraci, můžete obvykle vytvořte jednotkové testy pro logikou přístupu dat ani zobrazit logiku. T zápis testů jednotek pro logikou přístupu dat zadávat, protože přístup k databázi se poměrně pomalá operace. Vzhledem k tomu vybudujete webového serveru, který je poměrně pomalá operace přístupu k zobrazení vyžaduje zadávat t zápis testů jednotek pro zobrazení logiku. Nesmí obsahovat více t napsat Jednotkový test, pokud test lze spustit znovu a znovu velmi rychle
+Jak jsme probírali v předchozí iteraci, můžete obvykle vytvořte jednotkové testy pro logikou přístupu dat ani zobrazit logiku. T zápis testů jednotek pro logikou přístupu dat zadávat, protože přístup k databázi se poměrně pomalá operace. Vzhledem k tomu vybudujete webového serveru, který je poměrně pomalá operace přístupu k zobrazení vyžaduje zadávat t zápis testů jednotek pro zobrazení logiku. Pokud test lze spustit znovu a znovu velmi rychle se nesmí napsat Jednotkový test
 
-Protože vývoj řízený testováním doprovází testování částí, zaměříme nejprve na kontroleru a obchodní logiky. Můžeme vyhnout, klepnou na databázi nebo zobrazení. Vyhráli jsme t upravit databázi nebo vytvořte naše zobrazení velmi konce tohoto kurzu. Začneme s co můžete otestovat.
+Protože vývoj řízený testováním doprovází testování částí, zaměříme nejprve na kontroleru a obchodní logiky. Můžeme vyhnout, klepnou na databázi nebo zobrazení. Nebudeme upravit databázi ani vytvářet naše zobrazení až do konce tohoto kurzu velmi. Začneme s co můžete otestovat.
 
 ## <a name="creating-user-stories"></a>Vytváření uživatelských scénářů
 
@@ -247,10 +247,10 @@ Potřebujeme vytvořit novou tabulku databáze skupiny. Postupujte podle těchto
 | **Název sloupce** | **Datový typ** | **Povolit hodnoty Null** |
 | --- | --- | --- |
 | ID | int | False |
-| Název | nvarchar(50) | False |
+| Name | nvarchar(50) | False |
 
 
-V dalším kroku budeme potřebovat odstranit všechna data z tabulky kontaktů (v opačném případě vyhráli jsme t moct vytvářet relace mezi tabulkami kontakty a skupiny). Postupujte podle těchto kroků:
+V dalším kroku budeme potřebovat odstranit všechna data z tabulky kontaktů (v opačném případě jsme nebude možné vytvořit relaci mezi tabulkami kontakty a skupiny). Postupujte podle těchto kroků:
 
 1. Klikněte pravým tlačítkem na tabulku kontaktů a vyberte možnost nabídky **zobrazit Data tabulky**.
 2. Odstraňte všechny řádky.
@@ -310,7 +310,7 @@ Dále musíme implementovat třídu naše úložiště. V průběhu této iterac
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample14.vb)]
 
-Jsme některé z metod týkající se práce s skupiny kontaktů v našich skutečné třídě EntityContactManagerRepository haven t ve skutečnosti implementovat. V současné době EntityContactManagerRepository třída obsahuje metody zástupných procedur pro každou skupinu kontaktů metod uvedených v rozhraní IContactManagerRepository. Například metoda ListGroups() nyní vypadá takto:
+Nebyly implementovali jsme ve skutečnosti týkající se práce s skupiny kontaktů v našich skutečné třídě EntityContactManagerRepository metod. V současné době EntityContactManagerRepository třída obsahuje metody zástupných procedur pro každou skupinu kontaktů metod uvedených v rozhraní IContactManagerRepository. Například metoda ListGroups() nyní vypadá takto:
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample15.vb)]
 

@@ -8,12 +8,12 @@ ms.date: 04/03/2015
 ms.assetid: 81ee500f-fc37-40d6-8722-f1b64720fbb6
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: 611a4b59b2ea2eee771f4060fb5d5af041b2ccc6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 132560c0280a2e4096ea4e9a715c32bc880a8b82
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077227"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58421424"
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Vytvoření aplikace ASP.NET MVC 5 s přihlášením přes Facebook, Twitter, LinkedIn a Google OAuth2 (C#)
 ====================
@@ -92,7 +92,7 @@ Pro připojení k zprostředkovatele ověřování, jako je Google nebo Facebook
 6. Vyberte **webové** kartu a pak vložte adresu URL protokolu SSL do **adresa Url projektu** pole. Uložte soubor (seznam Ctl + S). Budete potřebovat tato adresa URL ke konfiguraci ověřování aplikace Facebook nebo Google.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image10.png)
-7. Přidat [atribut RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) atribut `Home` řadič tak, aby vyžadovala všechny požadavky musí používat protokol HTTPS. Více zabezpečený přístup, je přidat [atribut RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) filtr, aby se aplikace. V části &quot;chránit aplikace pomocí protokolu SSL a atribut Autorizovat&quot; v mé tutoral [vytvoření aplikace ASP.NET MVC pomocí ověření a SQL DB a nasazení do služby Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Část kontroler Home je uveden níže.
+7. Přidat [atribut RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) atribut `Home` řadič tak, aby vyžadovala všechny požadavky musí používat protokol HTTPS. Více zabezpečený přístup, je přidat [atribut RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) filtr, aby se aplikace. V části &quot;chránit aplikace pomocí protokolu SSL a atribut Autorizovat&quot; v mé kurzu [vytvoření aplikace ASP.NET MVC pomocí ověření a SQL DB a nasazení do služby Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Část kontroler Home je uveden níže.
 
     [!code-csharp[Main](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/samples/sample1.cs?highlight=1)]
 8. Stisknutím kláves CTRL + F5 spusťte aplikaci. Pokud jste nainstalovali certifikát v minulosti, můžete přeskočit zbývající část a přejděte do [vytvoření aplikace služby Google OAuth 2 a připojení aplikace k projektu](#goog), v opačném případě postupujte podle pokynů důvěřovat certifikát podepsaný svým držitelem certifikát, který vygenerovala služba IIS Express.  

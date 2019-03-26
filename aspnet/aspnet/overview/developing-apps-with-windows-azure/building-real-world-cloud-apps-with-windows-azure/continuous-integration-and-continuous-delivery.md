@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: eaece9f5-f80c-428b-b771-5db66d275b7d
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
 msc.type: authoredcontent
-ms.openlocfilehash: f701488025ec84a17651f9abff43f84531d35689
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b384fe08ebd6a106b9469debfb13014e87534b8f
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072724"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425922"
 ---
 <a name="continuous-integration-and-continuous-delivery-building-real-world-cloud-apps-with-azure"></a>Průběžná integrace a průběžné doručování (vytváření skutečných cloudových aplikací s Azure)
 ====================
@@ -32,7 +32,7 @@ Cloudu umožňuje minimalizovat náklady na údržbu testovací prostředí, pro
 
 Obecně doporučujeme, abyste udělali průběžné doručování do vývoje a přípravných prostředí. Většina týmů, dokonce i v Microsoftu, vyžadují ruční kontrolu a schválení proces pro produkční nasazení. Pro produkční nasazení budete chtít přesvědčit, že se stane, když jsou k dispozici informace o podpoře nebo během období s nízkým provozem klíčových osob na vývojový tým. Existuje ale, že nic a znemožnit vám tak, aby všechno, co vývojář musí provést změnu a prostředí vrátit se změnami zcela automatizace vývojová a testovací prostředí je nastavený pro akceptační testování.
 
-Následující diagram z [Microsoft Patterns and Practices e knihy o průběžné doručování](http://aka.ms/ReleasePipeline) znázorňuje typický pracovní postup. Kliknutím na obrázek zobrazíte jeho plnou velikost v jeho původního kontextu.
+Následující diagram z [Microsoft Patterns and Practices e knihy o průběžné doručování](https://aka.ms/ReleasePipeline) znázorňuje typický pracovní postup. Kliknutím na obrázek zobrazíte jeho plnou velikost v jeho původního kontextu.
 
 [![Pracovní postup průběžného doručování](continuous-integration-and-continuous-delivery/_static/image1.png)](https://msdn.microsoft.com/library/dn449955.aspx)
 
@@ -66,7 +66,7 @@ Další informace najdete v tématu [nasazení webové aplikace ve službě Azur
 
 Další informace najdete v článku na následujících odkazech:
 
-- [Vytváření procesních toků pro verzi serveru Team Foundation Server 2012](http://aka.ms/ReleasePipeline). Elektronická kniha, praktických cvičení a ukázky kódu podle Microsoft Patterns and Practices, poskytuje podrobný Úvod do průběžné doručování. Popisuje použití sady Visual Studio Lab Management a správa vydaných verzí Visual Studio.
+- [Vytváření procesních toků pro verzi serveru Team Foundation Server 2012](https://aka.ms/ReleasePipeline). Elektronická kniha, praktických cvičení a ukázky kódu podle Microsoft Patterns and Practices, poskytuje podrobný Úvod do průběžné doručování. Popisuje použití sady Visual Studio Lab Management a správa vydaných verzí Visual Studio.
 - [ALM Rangers DevOps nástrojů a pokynů](https://aka.ms/vsarsolutions/). ALM Rangers zavedené řešení doprovodné ukázkové aplikace DevOps Workbench a praktické pokyny ve spolupráci se tyto vzory se dají &amp; postupy knihy *sestavování vydávání s TFS 2012*, jako skvělý způsob, jak začít základními koncepty DevOps &amp; Release Management pro TFS 2012 a spustit pytli. Návod ukazuje, jak po sestavení a nasazení do různých prostředí.
 - [Testování pro nepřetržité dodávky s Visual Studio 2012](https://msdn.microsoft.com/library/jj159345.aspx). E-kniha od Microsoft Patterns and Practices, vysvětluje, jak integrace, automatizovaného testování, průběžné doručování.
 - [WindowsAzureDeploymentTracker](https://github.com/RyanTBerry/WindowsAzureDeploymentTracker). Zdrojový kód pro nástroje určené pro zachycení sestavení ze serveru TFS (podle popisku), sestavte ho, zabalíte ji, povolit někdo v roli DevOps konfigurace specifických aspektů a zápis do Azure. Nástroj sleduje proces nasazení Chcete-li povolit operace "vrácení zpět" pro už nasazenou verzi. Nástroj nemá žádné externí závislosti a může pracovat samostatný pomocí rozhraní API pro TFS a sady Azure SDK.

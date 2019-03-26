@@ -8,12 +8,12 @@ ms.date: 03/06/2007
 ms.assetid: 49545652-98af-46ba-9dbc-9ab529805d9b
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ae27b25a0a7f37cc273d88d7165c8be33ce2f6cc
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 3524983e347cc5ca0d34b2abe463477244a1129e
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074407"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425454"
 ---
 <a name="inserting-a-new-record-from-the-gridviews-footer-c"></a>Vložení nového záznamu ze zápatí prvku GridView (C#)
 ====================
@@ -207,7 +207,7 @@ Proto musíme reagovat na kliknutí na tlačítko Přidat uživatele, vytvořit 
 [!code-csharp[Main](inserting-a-new-record-from-the-gridview-s-footer-cs/samples/sample6.cs)]
 
 > [!NOTE]
-> Asi vás zajímá proč obslužná rutina události bothers kontrolu `Page.IsValid` vlastnost. Po všech získaných oproti očekávaným t postback potlačit-li neplatná data v rozhraní vložení? Tento předpoklad je správná, tak dlouho, dokud uživatel nezakázala JavaScript nebo má provést kroky pro obejití logiky ověřování na straně klienta. Stručně řečeno jeden se nikdy spoléhají výhradně na ověřování na straně klienta; na straně serveru kontrolu platnosti vždy je třeba provést před zahájením práce s daty.
+> Asi vás zajímá proč obslužná rutina události bothers kontrolu `Page.IsValid` vlastnost. Po všech zpětné volání potlačeny nebudou-li neplatná data v rozhraní vložení? Tento předpoklad je správná, tak dlouho, dokud uživatel nezakázala JavaScript nebo má provést kroky pro obejití logiky ověřování na straně klienta. Stručně řečeno jeden se nikdy spoléhají výhradně na ověřování na straně klienta; na straně serveru kontrolu platnosti vždy je třeba provést před zahájením práce s daty.
 
 
 V kroku 1 jsme vytvořili `ProductsDataSource` ObjectDataSource tak, aby jeho `Insert()` metoda je namapována na `ProductsBLL` třída s `AddProduct` metoda. K vložení nového záznamu do `Products` tabulky, můžete jednoduše vyvolat ObjectDataSource s `Insert()` metody:

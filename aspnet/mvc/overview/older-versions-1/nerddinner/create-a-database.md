@@ -8,12 +8,12 @@ ms.date: 07/27/2010
 ms.assetid: 983f3ffa-08b8-4868-b8c9-aa34593fc683
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-database
 msc.type: authoredcontent
-ms.openlocfilehash: b6ab0740f251889f0fa0561809cac2bbe79bcb3a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 48ca2984ca8e4ec5b2bc49952a8718aa26138aea
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078139"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423699"
 ---
 <a name="create-a-database"></a>Vytvoření databáze
 ====================
@@ -94,7 +94,7 @@ Můžeme vám ho uložte a přiřaďte jí název "RSVP".
 
 Nyní je k dispozici dvě tabulky v databázi. Naše posledním krokem návrhu schématu bude nastavení "jedna k mnoha" relaci mezi těmito dvěma tabulkami – tak, aby nám každý řádek Dinner přidružit nula nebo více řádků reakce, vztahující se k němu. Uděláme to tím, že nakonfigurujete tabulce RSVP "DinnerID" sloupci vztah cizího klíče na sloupci "DinnerID" v tabulce "Večeří".
 
-Provedete to tak otevřeme RSVP tabulku v Návrháři tabulky na něj poklikejte v Průzkumníku serveru. Pak vybereme sloupec "DinnerID" v ní, klikněte pravým tlačítkem a zvolte příkaz "Relationshps …" kontextové nabídky:
+Provedete to tak otevřeme RSVP tabulku v Návrháři tabulky na něj poklikejte v Průzkumníku serveru. Pak vybereme sloupec "DinnerID" v ní, klikněte pravým tlačítkem a zvolte možnost "Relací..." příkaz místní nabídky:
 
 ![](create-a-database/_static/image12.png)
 

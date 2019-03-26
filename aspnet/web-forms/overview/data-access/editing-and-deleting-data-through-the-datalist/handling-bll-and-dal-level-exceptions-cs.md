@@ -8,12 +8,12 @@ ms.date: 10/30/2006
 ms.assetid: f8fd58e2-f932-4f08-ab3d-fbf8ff3295d2
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/handling-bll-and-dal-level-exceptions-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ebaca5ea34fabe3fcd4979eab2e3f684e8e221be
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 43a43c95e049acab734fa7d9fdcf2b96f12e78d9
+ms.sourcegitcommit: 62db31596a7da029263cf06335aff12236fb3186
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070150"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58440271"
 ---
 <a name="handling-bll--and-dal-level-exceptions-c"></a>Zpracování výjimek na úrovni knihoven BLL a DAL (C#)
 ====================
@@ -30,7 +30,7 @@ V [Přehled úprav a odstraňování dat v ovládacím prvku DataList](an-overvi
 
 Jak jsme viděli v [zpracování knihoven BLL a výjimek úrovni DAL na stránce ASP.NET](../editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md) kurz, pokud je vyvolána výjimka z hlubin obchodní logikou nebo vrstvy přístupu k datům, podrobnosti výjimky jsou vráceny do ObjectDataSource a potom do prvku GridView. Jsme viděli, jak tyto výjimky elegantně zpracovat tak, že vytvoříte `Updated` nebo `RowUpdated` obslužné rutiny událostí pro prvek ObjectDataSource nebo prvku GridView, kontrola výjimku a pak označující, že výjimka byla zpracována.
 
-Naše DataList kurzy, ale nejsou t pro aktualizace a odstranění dat pomocí ObjectDataSource. Místo toho spolupracujeme přímo proti BLL. Aby bylo možné zjišťování výjimek pocházejících z knihoven BLL a DAL, musíme implementovat kódu v rámci kódu naši stránku ASP.NET pro zpracování výjimek. V tomto kurzu uvidíme více tactfully zpracování výjimky vyvolána během upravitelné DataList s aktualizace pracovního postupu.
+Naše kurzy DataList ale nepoužíváte ObjectDataSource pro aktualizace a odstranění dat. Místo toho spolupracujeme přímo proti BLL. Aby bylo možné zjišťování výjimek pocházejících z knihoven BLL a DAL, musíme implementovat kódu v rámci kódu naši stránku ASP.NET pro zpracování výjimek. V tomto kurzu uvidíme více tactfully zpracování výjimky vyvolána během upravitelné DataList s aktualizace pracovního postupu.
 
 > [!NOTE]
 > V *přehled o úpravy a odstraňování dat v ovládacím prvku DataList* pomocí ObjectDataSource pro aktualizaci zahrnuty některé techniky kurzu jsme probírali různých postupů pro úpravy a odstraňování dat v ovládacím prvku DataList a Odstraňuje se. Pokud tyto postupy, můžete zpracovávat výjimky z knihoven BLL a DAL pomocí prvku ObjectDataSource s `Updated` nebo `Deleted` obslužných rutin událostí.
@@ -131,7 +131,7 @@ GridView a ObjectDataSource poskytují po úrovně obslužné rutiny, které obs
 
 V tomto kurzu jsme viděli, jak přidat zpracování výjimek pro upravitelné DataList s aktualizace pracovního postupu tak, že přidáte `Try ... Catch` bloku `UpdateCommand` obslužné rutiny události. Pokud se během aktualizace pracovního postupu, je vyvolána výjimka `Catch` spustí kód bloku s, užitečné informace v zobrazení `ExceptionDetails` popisek.
 
-V tomto okamžiku prvku DataList nevyvine žádnou akci zabránit výjimky, pokud chcete zabránit vzniku na prvním místě. I když víme, že negativní cena způsobí výjimku, jsme některé t ještě přidány žádné funkce k proaktivnímu zabránit uživateli v zadávání těchto neplatný vstup. V následujícím kurzem uvidíme, jak snížit výjimky způsobené Neplatný uživatelský vstup ve přidání validačních ovládacích prvků v `EditItemTemplate`.
+V tomto okamžiku prvku DataList nevyvine žádnou akci zabránit výjimky, pokud chcete zabránit vzniku na prvním místě. I když víme, že negativní cena způsobí výjimku, budeme ještě přidané žádné funkce k proaktivnímu zabránit uživateli v zadávání těchto neplatný vstup. V následujícím kurzem uvidíme, jak snížit výjimky způsobené Neplatný uživatelský vstup ve přidání validačních ovládacích prvků v `EditItemTemplate`.
 
 Všechno nejlepší programování!
 

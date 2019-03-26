@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: bc8f2bd5-ff57-4dcd-8418-a5bd517d8953
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/creating-the-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: dced55386c3f810e406c5c2b3f0071b45e3b2dbd
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 481a0ee9b19e5d35d736b2cc937a124900bce446
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071110"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58426130"
 ---
 # <a name="tutorial-create-the-the-web-application-and-data-models-for-ef-database-first-with-aspnet-mvc"></a>Kurz: Vytvořte webovou aplikaci a datové modely pro EF Database First s ASP.NET MVC
 
@@ -64,7 +64,7 @@ Klikněte na **Další**.
 
 Pokud máte připojení k databázi definována v rámci vývojového prostředí, může se zobrazit jeden z těchto připojení předem vybraná. Chcete vytvořit nové připojení k databázi, kterou jste vytvořili v první části tohoto kurzu. Klikněte na tlačítko **nové připojení** tlačítko.
 
-V okně Vlastnosti připojení zadat název místního serveru, kde byla vytvořena databáze (v tomto případě **(localdb) \Projects13**). Po zadání názvu serveru, vyberte z dostupných databází ContosoUniversityData.
+V okně Vlastnosti připojení zadat název místního serveru, kde byla vytvořena databáze (v tomto případě **(localdb) \ProjectsV13**). Po zadání názvu serveru, vyberte z dostupných databází ContosoUniversityData.
 
 ![nastavit vlastnosti připojení](creating-the-web-application/_static/image8.png)
 

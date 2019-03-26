@@ -8,12 +8,12 @@ ms.date: 08/29/2011
 ms.assetid: 21a178de-4c5a-4211-8a9c-74ec576c0f30
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 9b27ccc6ce26e8266947c531d299ba69bbec4fde
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5eff66b701d775a553a51437e540619b4524a58f
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075409"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58421554"
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-2"></a>Použití jazyka HTML5 a kalendáře jQuery UI Datepicker s architekturou ASP.NET MVC – část 2
 ====================
@@ -24,7 +24,7 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 ## <a name="adding-an-automatic-datetime-template"></a>Přidání automatické šablony data a času
 
-V první části tohoto kurzu jste viděli, jak můžete přidat atributy na model s ohledem na formátování a jak můžete explicitně zadat šablonu, která se používá k vygenerování modelu. Například [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) atributů v následující kód explicitně určuje formátování `ReleaseDate` vlastnost.
+V první části tohoto kurzu jste viděli, jak můžete přidat atributy na model s ohledem na formátování a jak můžete explicitně zadat šablonu, která se používá k vygenerování modelu. Například [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) explicitně určuje atribut v následujícím kódu, formátování `ReleaseDate` vlastnost.
 
 [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample1.cs)]
 
@@ -104,7 +104,7 @@ Stisknutím kláves CTRL + F5 spusťte aplikaci.
 
 Tentokrát `ReleaseDate` vlastnost zobrazí datum bez času a tučným písmem červené. To ukazuje, že zadejte šablonu, která má název data (v tomto případě `DateTime`) se automaticky používá k zobrazení tohoto typu všechny vlastnosti modelu. Poté co přejmenovat *DateTime.cshtml* do souboru *LoudDateTime.cshtml*, již nenachází šablony v ASP.NET *Views\Movies\DisplayTemplates* složky, aby se použít *DateTime.cshtml* šablonu z * Views\Movies\Shared\* složky.
 
-(Šablony odpovídající velká a malá písmena, takže jste mohli vytvořit název souboru šablony s jakékoli velká a malá písmena. For example *DATETIME.chstml, datetime.cshtml*, a *DaTeTiMe.cshtml* by všechny odpovídaly `DateTime` typu.)
+(Šablony odpovídající velká a malá písmena, takže jste mohli vytvořit název souboru šablony s jakékoli velká a malá písmena. For example *DATETIME.cshtml, datetime.cshtml*, a *DaTeTiMe.cshtml* by všechny odpovídaly `DateTime` typu.)
 
 Ke kontrole: v tomto okamžiku `ReleaseDate` pole se zobrazí pomocí *Views\Movies\DisplayTemplates\DateTime.cshtml* šablonu, která zobrazí data s využitím formátu krátkého data, ale jinak přidá žádný zvláštní formát.
 

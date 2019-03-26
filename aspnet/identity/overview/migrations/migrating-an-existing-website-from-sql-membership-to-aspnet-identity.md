@@ -8,19 +8,18 @@ ms.date: 12/19/2014
 ms.assetid: 220d3d75-16b2-4240-beae-a5b534f06419
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 393d14799973e9126379743f63f79a7131206f38
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b80f2f5cc4702c3e406d8989905c56508711e788
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069970"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58426078"
 ---
-<a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Migrace stávajícího webu z členství SQL na ASP.NET Identity
-====================
+# <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Migrace stávajícího webu z členství SQL na ASP.NET Identity
+
 podle [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Suhas Joshi](https://github.com/suhasj)
 
 > Tento kurz ukazuje kroky při migraci stávající webovou aplikaci s uživateli a data role vytvořené pomocí členství SQL na nový systém ASP.NET Identity. Tento postup zahrnuje změnu existující schéma databáze do jednoho, který je potřeba pro ASP.NET Identity a volání v staré a nové třídy do ní. Jakmile použijete tento přístup, až provedete migraci vaší databáze, se zpracuje bez námahy budoucí aktualizace Identity.
-
 
 Pro účely tohoto kurzu my podnikneme šablony webové aplikace (webové formuláře) vytvořené pomocí sady Visual Studio 2010 uživatele a roli data vytváří. Skripty SQL použije pak migrovat existující databázi do tabulky, které jsou potřebné pro systém Identity. V další části nainstalují potřebné balíčky NuGet a přidat nové stránky správy účtu, které používají systém identit pro správu členství. Jako test migrace uživatelé vytvořené pomocí členství SQL by měli být schopni se přihlásit a noví uživatelé by se moci zaregistrovat. Úplnou ukázku najdete [tady](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/SQLMembership-Identity-OWIN/). Viz také [migrace z členství technologie ASP.NET na ASP.NET Identity](http://travis.io/blog/2015/03/24/migrate-from-aspnet-membership-to-aspnet-identity.html).
 
@@ -50,7 +49,7 @@ Pro účely tohoto kurzu my podnikneme šablony webové aplikace (webové formul
 
 1. Nainstalovat Visual Studio Express 2013 for Web nebo Visual Studio 2013 spolu s [nejnovější aktualizace](https://www.microsoft.com/download/details.aspx?id=44921).
 2. Otevřete výše uvedené projekt ve vaší nainstalované verzi sady Visual Studio. Pokud na počítači není nainstalován systém SQL Server Express, zobrazí se výzva při otevření projektu, protože používá připojovací řetězec SQL Express. Můžete buď jako obejít změnit připojovací řetězec na instanci LocalDb nebo nainstalovat SQL Express. Pro účely tohoto článku Změníme ji na instanci LocalDb.
-3. Otevřete soubor web.config a změňte připojovací řetězec z. SQLExpess k (LocalDb) v11.0. Odebrat "User Instance = true" z připojovacího řetězce.
+3. Otevřete soubor web.config a změňte připojovací řetězec z. SQLExpress na v11.0 (LocalDb). Odebrat "User Instance = true" z připojovacího řetězce.
 
     ![](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/_static/image3.jpg)
 4. Otevřete Průzkumníka serveru a ověřte, že může být dodržen schéma tabulky a data.
@@ -86,7 +85,7 @@ ASP.NET Identity třídy fungovat ihned s daty ze stávajících uživatelů mus
 | **IdentityUser** | **Typ** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
 | --- | --- | --- | --- | --- | --- |
 | ID | odkazy řetězců | ID | RoleId | ProviderKey | ID |
-| Uživatelské jméno | odkazy řetězců | Název | UserId | UserId | ClaimType |
+| Uživatelské jméno | odkazy řetězců | Name | UserId | UserId | ClaimType |
 | PasswordHash (Hodnota hash hesla) | odkazy řetězců |  |  | LoginProvider | ClaimValue |
 | SecurityStamp | odkazy řetězců |  |  |  | Uživatel\_Id |
 | E-mail | odkazy řetězců |  |  |  |  |
@@ -115,7 +114,7 @@ Pomocí těchto informací můžeme vytvořit příkazy SQL k vytvoření novýc
 
 [!INCLUDE[](../../../includes/identity/alter-command-exception.md)]
 
-Tento skript generování databáze může sloužit jako start, kde jsme budete provádět další změny přidávat nové sloupce a zkopírovat data. Výhodou je, že se vygeneruje `_MigrationHistory` tabulku, která používají EntityFramework k úpravě databázového schématu při změna v budoucích verzích Identity verze třídy modelu. 
+Tento skript generování databáze může sloužit jako start, kde jsme budete provádět další změny přidávat nové sloupce a zkopírovat data. Výhodou je, že se vygeneruje `_MigrationHistory` tabulku, která používají EntityFramework k úpravě databázového schématu při změna v budoucích verzích Identity verze třídy modelu.
 
 Informace o členství uživatele SQL má jiné vlastnosti společně s těmi v třídě modelu uživatelského Identity totiž e-mailu, pokusů o zadání hesla, datum posledního přihlášení, datum posledního uzamčení atd. To je užitečné informace, a rádi bychom to být přeneseny do systému identit. To lze provést přidáním dalších vlastností do uživatelského modelu a mapování zpět na sloupce tabulky v databázi. Můžeme to udělat tak, že přidáte třídu, která je podtřídou `IdentityUser` modelu. Můžete do této vlastní třídy přidat vlastnosti a upravte skript SQL pro přidání odpovídající sloupce, při vytváření tabulky. Kód pro tuto třídu je popsáno dále v tomto článku. Skript SQL pro vytvoření `AspnetUsers` tabulky po přidání nových vlastností by
 
@@ -125,7 +124,7 @@ Dále jsme muset zkopírovat stávající informace o ze služby SQL database č
 
 [!code-sql[Main](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/samples/sample2.sql)]
 
-U výše uvedeného příkazu jazyka SQL, informace o jednotlivých uživatelů z *aspnet\_uživatelé* a *aspnet\_členství* tabulek zkopírována do sloupce  *AspnetUsers* tabulky. Pouze změny na jednom místě se při kopírování heslo. Vzhledem k tomu použije algoritmus šifrování hesel v členství SQL "PasswordSalt" a "PasswordFormat", kopírování, která příliš spolu s hodnoty hash hesla tak, aby ho můžete použít k dešifrování hesla podle Identity. To je vysvětleno dále v tomto článku při zapojování hasher vlastní heslo. 
+U výše uvedeného příkazu jazyka SQL, informace o jednotlivých uživatelů z *aspnet\_uživatelé* a *aspnet\_členství* tabulek zkopírována do sloupce  *AspnetUsers* tabulky. Pouze změny na jednom místě se při kopírování heslo. Vzhledem k tomu použije algoritmus šifrování hesel v členství SQL "PasswordSalt" a "PasswordFormat", kopírování, která příliš spolu s hodnoty hash hesla tak, aby ho můžete použít k dešifrování hesla podle Identity. To je vysvětleno dále v tomto článku při zapojování hasher vlastní heslo.
 
 Tento soubor skriptu je specifické pro tuto ukázku. Pro aplikace, které mají další tabulky vývojáři postup podobný přístup se přidat další vlastnosti ve třídě model uživatele a jejich namapování na sloupce v tabulce AspnetUsers. Ke spuštění skriptu
 
@@ -158,7 +157,7 @@ Jak už bylo zmíněno dříve, funkce Identity používá Entity Framework komu
 
 V naší ukázce AspNetRoles, AspNetUserClaims, AspNetLogins a AspNetUserRole tabulky obsahují sloupce, které jsou podobné stávající implementaci systému identit. Proto jsme můžete znovu použít existující třídy pro mapování na těchto tabulkách. Tabulka AspNetUser má některé další sloupce, které se používají k ukládání dalších informací z tabulky členství SQL. To lze mapovat tak, že vytvoříte třídu modelu, který rozšířit stávající implementaci "IdentityUser" a přidejte další vlastnosti.
 
-1. Vytvoří modely složky projektu a přidejte třídu uživatele. Název třídy by měl odpovídat data přidaná ve sloupci 'Diskriminátor' tabulky "AspnetUsers".
+1. Vytvořte složku modely v projektu a přidejte třídu uživatele. Název třídy by měl odpovídat data přidaná ve sloupci 'Diskriminátor' tabulky "AspnetUsers".
 
     ![](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/_static/image10.png)
 
@@ -199,7 +198,7 @@ Potřebujeme udělat nějaké změny ukázka fungovala s projektem, který máme
 - Register.aspx.cs a Login.aspx.cs kód za použití třídy `UserManager` z balíčků identit k vytvoření uživatele. V tomto příkladu pomocí objektu UserManager přidáno ve složce modelů pomocí kroků uvedených výše.
 - Použití třídy uživatel vytvořil, a nikoli IdentityUser v Register.aspx.cs a Login.aspx.cs kódu na pozadí třídy. To zavěšení ve třídě naše vlastní uživatelské do systému identit.
 - Část k vytvoření databáze mohly být přeskočeny.
-- Vývojář musí nastavit ApplicationId pro nového uživatele tak, aby odpovídaly aktuálním ID aplikace. To můžete udělat předtím, než je vytvořen objekt uživatele ve třídě Register.aspx.cs dotazování ApplicationId pro tuto aplikaci a nastavíte ho před vytvořením uživatele. 
+- Vývojář musí nastavit ApplicationId pro nového uživatele tak, aby odpovídaly aktuálním ID aplikace. To můžete udělat předtím, než je vytvořen objekt uživatele ve třídě Register.aspx.cs dotazování ApplicationId pro tuto aplikaci a nastavíte ho před vytvořením uživatele.
 
     Příklad:
 

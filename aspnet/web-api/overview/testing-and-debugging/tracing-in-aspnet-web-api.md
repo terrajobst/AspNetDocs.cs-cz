@@ -8,12 +8,12 @@ ms.date: 02/25/2014
 ms.assetid: 66a837e9-600b-4b72-97a9-19804231c64a
 msc.legacyurl: /web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: e0d525e497cf41a79820417a9c832fa6b5cd7f8a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 59bce8c511167e8ba8a8db6f1842e352c90f3039
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068074"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424895"
 ---
 <a name="tracing-in-aspnet-web-api-2"></a>Trasování v rozhraní ASP.NET Web API 2
 ====================
@@ -89,7 +89,7 @@ Zapsat trasování do třídy, můžete volat **ITraceWriter.Trace** metoda př�
 
 Tato část popisuje, jak psát vlastní trasování zapisovače pro webové rozhraní API.
 
-Další obecné infrastruktury trasování v rozhraní Web API je nástavbou Microsoft.AspNet.WebApi.Tracing balíčku. Namísto použití Microsoft.AspNet.WebApi.Tracing, můžete také zařadit některé jiné trasování nebo odfiltrovat z knihovny, například [NLog](http://nlog-project.org/) nebo [log4net](http://logging.apache.org/log4net/).
+Další obecné infrastruktury trasování v rozhraní Web API je nástavbou Microsoft.AspNet.WebApi.Tracing balíčku. Namísto použití Microsoft.AspNet.WebApi.Tracing, můžete také zařadit některé další knihovny trasování a protokolování, například [NLog](http://nlog-project.org/) nebo [log4net](http://logging.apache.org/log4net/).
 
 Chcete-li shromažďovat trasování, implementovat **ITraceWriter** rozhraní. Tady je jednoduchý příklad:
 
@@ -113,7 +113,7 @@ Může být aktivní pouze jeden trasování zapisovače. Ve výchozím nastaven
 
 Používá trasování v rozhraní Web API *průčelí* vzoru: Když je povoleno trasování, webové rozhraní API zabalí různé části požadavku kanálu pomocí třídy, které provádějí sledování volání.
 
-Například při výběru kontroleru, kanál používá **IHttpControllerSelector** rozhraní. S povoleným trasováním, vloží pipleline třídu, která implementuje **IHttpControllerSelector** , ale volání skutečné implementaci:
+Například při výběru kontroleru, kanál používá **IHttpControllerSelector** rozhraní. S povoleným trasováním vloží kanál, který implementuje třídu **IHttpControllerSelector** , ale volání skutečné implementaci:
 
 ![Trasování serveru webové rozhraní API používá průčelí modelu.](tracing-in-aspnet-web-api/_static/image8.png)
 

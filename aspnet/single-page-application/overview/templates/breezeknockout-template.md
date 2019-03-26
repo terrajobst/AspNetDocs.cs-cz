@@ -8,12 +8,12 @@ ms.date: 01/30/2013
 ms.assetid: 3bd94827-3c59-448f-abc3-36e6df4858db
 msc.legacyurl: /single-page-application/overview/templates/breezeknockout-template
 msc.type: authoredcontent
-ms.openlocfilehash: 006d360748674a645ceddb82017f68b0f80f041b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 478ee9f851a395c68701347c04534bfe72d94512
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066364"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424856"
 ---
 <a name="breezeknockout-template"></a>Šablona Breeze/Knockout
 ====================
@@ -83,7 +83,7 @@ Nyní jste v pozemního jednostránková aplikace. Všechno, co můžete prohlé
 
 Logiku ověřování se provádí straně klienta podle Breeze. Ověřování atributů na serverové třídy modelu jsou šířeny do klienta a spouštěny automaticky, než se klient připojí k serveru.
 
-Zkontrolujte síťový provoz. Všimněte si, že nebyly žádné volání serveru při Breeze došlo k chybě. Každý platný změnu výsledkem požadavku POST na "/ api/Todo/SaveChanges". Rychlé obsahuje ureitou změny a odesílá je společně jako jeden požadavek do kontroleru webového rozhraní API `SaveChanges` metody. Který se liší od KockoutJS SPA šablonu, která umožňuje PUT, POST a odstranit zastaralé požadavky pro každou položku jednotlivě.
+Zkontrolujte síťový provoz. Všimněte si, že nebyly žádné volání serveru při Breeze došlo k chybě. Každý platný změnu výsledkem požadavku POST na "/ api/Todo/SaveChanges". Rychlé obsahuje ureitou změny a odesílá je společně jako jeden požadavek do kontroleru webového rozhraní API `SaveChanges` metody. Který se liší od KnockoutJS SPA šablonu, která umožňuje PUT, POST a odstranit zastaralé požadavky pro každou položku jednotlivě.
 
 ## <a name="peek-inside"></a>Operace Peek uvnitř
 
@@ -99,7 +99,7 @@ Stack na straně serveru se skládá z kódu pro vývojáře a tři principu kni
 
 ![](http://www.breezejs.com/sites/all/images/spa-template/ServerArchitecture.png)
 
-Základní architektura je stejný jako KockoutJS SPA šablony. Implementace je však mnohem jednodušší: Byly odstraněny DTO a většina podrobnosti Entity Framework byla delegována do Breeze.NET.
+Základní architektura je stejný jako šablona KnockoutJS jednostránková aplikace. Implementace je však mnohem jednodušší: Byly odstraněny DTO a většina podrobnosti Entity Framework byla delegována do Breeze.NET.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: c6e5c036-2265-4fa7-a9eb-47f197bdc262
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-5-create-unit-tests-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6aee4c01c1555dd2ea95d26a005d61ddab09f6fe
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8b34a9f7690777cfcc79d87a5e19586646d5b0d9
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077305"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425701"
 ---
 <a name="iteration-5--create-unit-tests-vb"></a>Iterace #5 – vytvoření testů jednotek (VB)
 ====================
@@ -146,7 +146,7 @@ Na začátku chceme otestovat CreateContact() metoda použitá v třídě Contac
 
 - CreateContact() - testů tohoto CreateContact() vrátí hodnotu true, pokud platný kontakt je předán do metody.
 - CreateContactRequiredFirstName() - testy, chybová zpráva se přidá do stavu modelu při kontaktu s chybějící křestní jméno se předá metodě CreateContact().
-- CreateContactRequredLastName() - testy, chybová zpráva se přidá do stavu modelu při kontaktu s chybějící příjmení se předá metodě CreateContact().
+- CreateContactRequiredLastName() - testy, chybová zpráva se přidá do stavu modelu při kontaktu s chybějící příjmení se předá metodě CreateContact().
 - CreateContactInvalidPhone() - testy, chybová zpráva se přidá do stavu modelu při kontaktu s neplatným telefonním číslem se předá metodě CreateContact().
 - CreateContactInvalidEmail() - testy, chybová zpráva se přidá do stavu modelu při kontaktu s neplatnou e-mailovou adresu se předá metodě CreateContact()...
 

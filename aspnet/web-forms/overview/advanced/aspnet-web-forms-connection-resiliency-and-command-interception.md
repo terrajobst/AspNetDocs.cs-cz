@@ -8,12 +8,12 @@ ms.date: 03/31/2014
 ms.assetid: 6d497001-fa80-4765-b4cc-181fe90b894e
 msc.legacyurl: /web-forms/overview/advanced/aspnet-web-forms-connection-resiliency-and-command-interception
 msc.type: authoredcontent
-ms.openlocfilehash: 039923a91d957765fa8b2c0cfe11abc8790c1e88
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 067542e8b8aa9909bbb2147f8e11e34604986d87
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074452"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424024"
 ---
 <a name="aspnet-web-forms-connection-resiliency-and-command-interception"></a>Webové formuláře ASP.NET – odolnost připojení a zachycení příkazů
 ====================
@@ -141,7 +141,7 @@ V dalším kroku vytvoříte třídy, které rozhraní Entity Framework volat po
 
 Tyto řádky kódu se, co způsobí, že váš kód zachycování má být spuštěn při Entity Framework odesílá dotazy do databáze. Všimněte si, že vzhledem k tomu, že jste vytvořili samostatné zachycování třídy pro přechodná chyba simulace a protokolování, můžete nezávisle na sobě povolit a zakázat.   
   
- Můžete přidat pomocí sběrače `DbInterception.Add` metodu kdekoli v kódu; nemusí být v `Application_Start` metoda. Další možnost, pokud jste nepřidali sběrače v `Application_Start` je metoda, aktualizujte nebo přidejte třídu s názvem *WingtipToysConfiguration.cs* a vložte výše uvedené na konci konstruktoru `WingtipToysbConfiguration` třídy.
+ Můžete přidat pomocí sběrače `DbInterception.Add` metodu kdekoli v kódu; nemusí být v `Application_Start` metoda. Další možnost, pokud jste nepřidali sběrače v `Application_Start` je metoda, aktualizujte nebo přidejte třídu s názvem *WingtipToysConfiguration.cs* a vložte výše uvedené na konci konstruktoru `WingtipToysConfiguration` třídy.
 
 Všude, kde vložte tento kód, dejte pozor, ke spuštění `DbInterception.Add` pro stejný zachycování více než jednou, ale zobrazí se další zachycování instance. Například pokud přidáte zachycování protokolování dvakrát, zobrazí se vám dva protokolů pro každý dotaz SQL.
 
@@ -156,7 +156,7 @@ Jste napsali kód přechodná chyba simulace způsobem, který umožňuje způso
 3. Zadejte nový produkt s názvem "Vyvolat" souborem příslušný popis, cena a obrázek.
 4. Stisknutím klávesy **přidat produkt** tlačítko.  
    Můžete si všimnout, že v prohlížeči vypadá, že přestane reagovat na několik sekund, zatímco rozhraní Entity Framework se opakovaně pokouší o dotazu několikrát. Velmi rychle se stane první opakování, a pak zvyšuje čekání před každou další zkuste to znovu. Tento proces už čekání před voláním opakováními *exponenciálního omezení rychlosti* .
-5. Počkejte, dokud stránce už není atttempting načíst.
+5. Počkejte, až na stránku se již pokouší načíst.
 6. Zastavit projektu a podívejte se na Visual Studio **výstup** okno a zobrazit výstup trasování. Můžete najít **výstup** okna tak, že vyberete **ladění**  - &gt; **Windows**  - &gt;  **Výstup**. Budete muset posuňte se za několik protokolů autorem vaše protokolovacího nástroje.  
   
    Všimněte si, že vidíte skutečné SQL dotazy odeslané do databáze. Uvidíte některé počáteční dotazy a příkazy, které pokud chcete začít, Entity Framework kontroluje tabulku historie verzí a migraci databáze.   

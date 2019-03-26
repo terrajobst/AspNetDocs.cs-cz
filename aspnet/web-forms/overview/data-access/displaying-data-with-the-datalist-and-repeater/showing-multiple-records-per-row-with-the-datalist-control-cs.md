@@ -8,12 +8,12 @@ ms.date: 09/13/2006
 ms.assetid: cf5acaf5-d4f6-4957-badc-b89956b285f3
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/showing-multiple-records-per-row-with-the-datalist-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f79c446a0c9407309ab65cd993df544e883afb22
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8dd23b960df6511f65882820cb26d4af4ccf5c58
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070153"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58421528"
 ---
 <a name="showing-multiple-records-per-row-with-the-datalist-control-c"></a>Zobrazení více záznamů na řádku ovládacím prvkem DataList (C#)
 ====================
@@ -66,7 +66,7 @@ Za chvíli navštivte stránku v prohlížeči. Jak znázorňuje obrázek 2 prvk
 
 Při výchozí chování pro prvku DataList, je rozložení jeho položek svisle v jedním sloupcem, více řádky tabulky, toto chování lze snadno změnit prostřednictvím datového prvku DataList s [ `RepeatDirection` vlastnost](https://msdn.microsoft.com/system.web.ui.webcontrols.datalist.repeatdirection.aspx). `RepeatDirection` Vlastnost může přijmout jednu ze dvou možných hodnot: `Horizontal` nebo `Vertical` (výchozí).
 
-Změnou `RepeatDirection` vlastnost z `Vertical` k `Horizontal`, prvku DataList vykreslí své záznamy v jediném řádku, vytváření jeden sloupec na zdrojové položky dat. Pro ilustraci tohoto efektu, klikněte na ovládacím prvku DataList v návrháři a potom v okně Vlastnosti změňte `RepeatDirection` vlastnost z `Vertical` k `Horiztonal`. Okamžitě po tak učiníte, návrháře upraví rozložení ovládacích prvků DataList s vytvořením jednoho řádku s více sloupci rozhraní (viz obrázek 3).
+Změnou `RepeatDirection` vlastnost z `Vertical` k `Horizontal`, prvku DataList vykreslí své záznamy v jediném řádku, vytváření jeden sloupec na zdrojové položky dat. Pro ilustraci tohoto efektu, klikněte na ovládacím prvku DataList v návrháři a potom v okně Vlastnosti změňte `RepeatDirection` vlastnost z `Vertical` k `Horizontal`. Okamžitě po tak učiníte, návrháře upraví rozložení ovládacích prvků DataList s vytvořením jednoho řádku s více sloupci rozhraní (viz obrázek 3).
 
 
 [![Jsou položky RepeatDirection vlastnost určuje, jak the směr DataList s rozložením navýšení kapacity](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image8.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image7.png)

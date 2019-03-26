@@ -8,12 +8,12 @@ ms.date: 02/20/2007
 ms.assetid: a8fa72ee-8328-4854-a419-c1b271772303
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7695ffad0599701840da83670af3940569e01c21
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 879f0f491461ec49c4eef9dc8add747ac2b22f90
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069958"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422100"
 ---
 <a name="implementing-optimistic-concurrency-with-the-sqldatasource-vb"></a>Implementace optimistického řízení souběžnosti ovládacím prvkem SqlDataSource (VB)
 ====================
@@ -28,7 +28,7 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 V předchozím kurzu jsme se zaměřili na tom, jak přidat vložení, aktualizace nebo odstranění možnosti ovládacím prvkem SqlDataSource. Stručně řečeno, a zajistit tak tyto funkce jsme potřebovali k určení odpovídajícího `INSERT`, `UPDATE`, nebo `DELETE` příkazu SQL v ovládacím prvku s `InsertCommand`, `UpdateCommand`, nebo `DeleteCommand` vlastnosti, společně s odpovídající v parametrech `InsertParameters`, `UpdateParameters`, a `DeleteParameters` kolekce. Zatímco tyto vlastnosti a kolekce lze zadat ručně, nabízí tlačítko Upřesnit s průvodce nakonfigurujte zdroj dat generovat `INSERT`, `UPDATE`, a `DELETE` příkazy zaškrtávacího políčka, která bude automaticky vytvářet tyto příkazy na základě `SELECT` příkazu.
 
-Spolu s generovat `INSERT`, `UPDATE`, a `DELETE` příkazy zaškrtávací políčko, dialogové okno Upřesnit možnosti generování SQL nabízí možnost použití optimistického řízení souběžnosti (viz obrázek 1). Pokud je zaškrtnuto, `WHERE` ustanovení název vygenerovaný automaticky `UPDATE` a `DELETE` jsou příkazy upravit tak, aby pouze proveďte aktualizaci nebo odstranění Pokud základní t nedostane data databáze byla změněna od uživatele posledního načtení dat do mřížky.
+Spolu s generovat `INSERT`, `UPDATE`, a `DELETE` příkazy zaškrtávací políčko, dialogové okno Upřesnit možnosti generování SQL nabízí možnost použití optimistického řízení souběžnosti (viz obrázek 1). Pokud je zaškrtnuto, `WHERE` ustanovení název vygenerovaný automaticky `UPDATE` a `DELETE` příkazy jsou použity pouze proveďte aktualizaci nebo odstraňte, pokud podkladová data databáze nebyl změněn od uživatele posledního načtení dat do mřížky.
 
 
 ![Můžete přidat podporu optimistického řízení souběžnosti z rozšířené dialogové okno Možnosti generování SQL](implementing-optimistic-concurrency-with-the-sqldatasource-vb/_static/image1.gif)
@@ -52,7 +52,7 @@ Obrázek 2 znázorňuje tuto interakci.
 **Obrázek 2**: Když dva uživatele současně aktualizovat existuje záznam s potenciál pro jednoho uživatele s změny přepsat tím s ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-with-the-sqldatasource-vb/_static/image2.png))
 
 
-K této situaci zabránit unfolding určitou formu [řízení souběžnosti](http://en.wikipedia.org/wiki/Concurrency_control) musí být implementován. [Optimistická souběžnost](http://en.wikipedia.org/wiki/Optimistic_concurrency_control) fokus v tomto kurzu funguje na předpokladu, že i když to může být konfliktů souběžnosti every a poté, většinu času takové konflikty je vyhráli t nastat. Proto pokud vzniknout konflikt, optimistického řízení souběžnosti jednoduše informuje uživatele, že jejich t může změny uložit, protože jiný uživatel upravil stejná data.
+K této situaci zabránit unfolding určitou formu [řízení souběžnosti](http://en.wikipedia.org/wiki/Concurrency_control) musí být implementován. [Optimistická souběžnost](http://en.wikipedia.org/wiki/Optimistic_concurrency_control) zaměření pro tento kurz pracuje na za předpokladu, že se při něm může být konfliktů souběžnosti every teď nebo později, většinu času takové nedojde ke konfliktu. Proto pokud vzniknout konflikt, optimistického řízení souběžnosti jednoduše informuje uživatele, že jejich t může změny uložit, protože jiný uživatel upravil stejná data.
 
 > [!NOTE]
 > U aplikací, kde se předpokládá, že bude existovat mnoho konfliktů souběžnosti, nebo pokud takové konflikty je nejsou přípustné pak pesimistické řízení souběžnosti lze použít místo toho. Vraťte se do [implementace optimistického řízení souběžnosti](../editing-inserting-and-deleting-data/implementing-optimistic-concurrency-vb.md) kurz podrobnější informace o pesimistické řízení souběžnosti.
@@ -66,7 +66,7 @@ Tím zajistíte, že záznam bude aktualizován nebo odstraněn má stejné hodn
 **Obrázek 3**: Pro Update nebo Delete na hodnotu úspěch, původní hodnoty musí být rovna aktuální hodnot v databázi ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-with-the-sqldatasource-vb/_static/image4.png))
 
 
-Existují různé přístupy k implementace optimistického řízení souběžnosti (naleznete v tématu [Peter A. Bromberg](http://peterbromberg.net/) s [Optmistic souběžnosti aktualizace logiky](http://www.eggheadcafe.com/articles/20050719.asp) stručný přehled o na řadu možností). Argumentech techniku použít podle ovládacím prvkem SqlDataSource (a datové sady ADO.NET zadali používaných pro naše Data Access Layer) `WHERE` klauzule, která zahrnují porovnání všechny původní hodnoty. Následující `UPDATE` příkazu, například aktualizace názvu a cena produktu pouze v případě, že aktuální hodnoty v databázi jsou stejné hodnoty, které byly původně načteny při aktualizaci záznamu v prvku GridView. `@ProductName` a `@UnitPrice` parametry obsahovat nové hodnoty zadané uživatelem, zatímco `@original_ProductName` a `@original_UnitPrice` obsahují hodnoty, které byly původně načten do prvku GridView, když došlo ke kliknutí na tlačítko Upravit:
+Existují různé přístupy k implementace optimistického řízení souběžnosti (naleznete v tématu [Peter A. Bromberg](http://peterbromberg.net/)společnosti [optimistického řízení souběžnosti aktualizace logiky](http://www.eggheadcafe.com/articles/20050719.asp) stručný přehled o na řadu možností). Argumentech techniku použít podle ovládacím prvkem SqlDataSource (a datové sady ADO.NET zadali používaných pro naše Data Access Layer) `WHERE` klauzule, která zahrnují porovnání všechny původní hodnoty. Následující `UPDATE` příkazu, například aktualizace názvu a cena produktu pouze v případě, že aktuální hodnoty v databázi jsou stejné hodnoty, které byly původně načteny při aktualizaci záznamu v prvku GridView. `@ProductName` a `@UnitPrice` parametry obsahovat nové hodnoty zadané uživatelem, zatímco `@original_ProductName` a `@original_UnitPrice` obsahují hodnoty, které byly původně načten do prvku GridView, když došlo ke kliknutí na tlačítko Upravit:
 
 
 [!code-sql[Main](implementing-optimistic-concurrency-with-the-sqldatasource-vb/samples/sample1.sql)]
@@ -129,7 +129,7 @@ Bohužel rozšířená `UPDATE` a `DELETE` příkazy automaticky generované pr�
 
 [!code-sql[Main](implementing-optimistic-concurrency-with-the-sqldatasource-vb/samples/sample6.sql)]
 
-`UnitPrice` Sloupec `Products` tabulka může mít `NULL` hodnoty. Pokud má konkrétní záznam `NULL` hodnota `UnitPrice`, `WHERE` klauzule část `[UnitPrice] = @original_UnitPrice` bude *vždy* vyhodnotit na hodnotu False, protože `NULL = NULL` vždy vrátí hodnotu False. Proto se záznamy, které obsahují `NULL` hodnoty nelze upravovat ani odstranit, jako `UPDATE` a `DELETE` příkazy `WHERE` klauzule vyhráli návratový t všechny řádky, aktualizovat nebo odstranit.
+`UnitPrice` Sloupec `Products` tabulka může mít `NULL` hodnoty. Pokud má konkrétní záznam `NULL` hodnota `UnitPrice`, `WHERE` klauzule část `[UnitPrice] = @original_UnitPrice` bude *vždy* vyhodnotit na hodnotu False, protože `NULL = NULL` vždy vrátí hodnotu False. Proto se záznamy, které obsahují `NULL` hodnoty nelze upravovat ani odstranit, jako `UPDATE` a `DELETE` příkazy `WHERE` klauzule nebudou nalezeny žádné řádky, aktualizovat nebo odstranit.
 
 > [!NOTE]
 > Tato chyba byla poprvé oznámil společnosti Microsoft v června 2004 v [SqlDataSource generuje nesprávné SQL příkazy](https://connect.microsoft.com/VisualStudio/feedback/ViewFeedback.aspx?FeedbackID=93937) a údajně naplánované vyřešen v příští verzi technologie ASP.NET.
@@ -189,7 +189,7 @@ Při druhém okně prohlížeče aktualizuje záznam, původní název produktu 
 > Odstraňte funguje stejným způsobem. Se dvě okna prohlížeče otevřete začněte úpravou daný produkt s jednou a následně uložit své změny. Po uložení změn v jeden prohlížeč, klikněte na tlačítko Odstranit pro stejný produkt v jiném. Protože původní hodnoty don t shodují v `DELETE` příkaz s `WHERE` klauzule odstranění bez upozornění selže.
 
 
-Z pohledu koncového uživatele s v druhém okně prohlížeče se po kliknutí na tlačítko Aktualizace mřížky vrátí do režimu předem úpravy, ale jejich změny byly ztraceny. Ale tam s žádný vizuální zpětnou vazbu zůstat t nefungoval jejich změny. V ideálním případě jestli uživatele s změny se ztratí k narušení souběžného zpracování, d upozorněním a, možná zachovat mřížky v režimu úprav. Podívejte se na tom, jak to provést s let.
+Z pohledu koncového uživatele s v druhém okně prohlížeče se po kliknutí na tlačítko Aktualizace mřížky vrátí do režimu předem úpravy, ale jejich změny byly ztraceny. Nicméně tady s žádné vizuální zpětnou vazbu, která neměli zůstat jejich změny. V ideálním případě jestli uživatele s změny se ztratí k narušení souběžného zpracování, d upozorněním a, možná zachovat mřížky v režimu úprav. Podívejte se na tom, jak to provést s let.
 
 ## <a name="step-3-determining-when-a-concurrency-violation-has-occurred"></a>Krok 3: Určení, kdy došlo k narušení souběžného zpracování
 

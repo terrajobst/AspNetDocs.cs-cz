@@ -8,18 +8,18 @@ ms.date: 07/16/2014
 ms.assetid: ecfd0eb4-c4ad-44e6-9db9-a2a66611ff6a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
 msc.type: authoredcontent
-ms.openlocfilehash: bc6de2f0c8b2cd958c198abb90fc4ad97613e973
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 315e89c81782edf0875c65afd27153102d733050
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075022"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424245"
 ---
 <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>Praktické cvičení: Udržitelné weby Azure: Správa změn a škálování
 ====================
 podle [Campy Web týmu](https://twitter.com/webcamps)
 
-[Stáhněte si Web Campy školení Kit](http://aka.ms/webcamps-training-kit)
+[Stáhněte si Web Campy školení Kit](https://aka.ms/webcamps-training-kit)
 
 > Microsoft Azure umožňuje snadno vytvářet a nasazovat weby do produkčního prostředí. Ale nebyly provedeny, když vaše aplikace je v provozu, je právě začínáte! Budete potřebovat pro zpracování se měnící požadavky, aktualizace databáze, škálování a další. Naštěstí služby Azure App Service vám kryje záda, spoustou funkcí, které vám pomůže ochránit vaše weby, které běží plynule.
 >
@@ -31,7 +31,7 @@ podle [Campy Web týmu](https://twitter.com/webcamps)
 >
 > U databází SQL je potřeba aktualizovat databázi produktivní při nasazování nové verze aplikace. K **migrace Entity Framework Code First**, vývoj a nasazení modelu dat zjednodušili jsme se aktualizovat vaše prostředí během několika minut. Tato praktická cvičení se dozvíte, dalších tématech, které by mohly nastat při nasazení vaší webové aplikace do produkčního prostředí v Microsoft Azure.
 >
-> Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
+> Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://aka.ms/webcamps-training-kit ](https://aka.ms/webcamps-training-kit).
 >
 > Další podrobné pokrytí v tomto tématu najdete v článku [vytváření skutečných cloudových aplikací s Azure e kniha](building-real-world-cloud-apps-with-windows-azure/introduction.md).
 
@@ -62,10 +62,10 @@ K dokončení této praktické testovací prostředí jsou vyžadovány následu
 - [Systém správy verzí GIT](http://git-scm.com/download)
 - Předplatné Microsoft Azure
 
-    - Zaregistrovat [bezplatnou zkušební verzi](http://aka.ms/watk-freetrial)
-    - Pokud jste Visual Studio Professional, Test Professional, Premium nebo Ultimate s MSDN nebo MSDN Platforms odběratele, aktivovat váš [výhodu MSDN](http://aka.ms/watk-msdn) hned a začít s vývojem a testování v Azure
-    - [BizSpark](http://aka.ms/watk-bizspark) členové automaticky obdrží Azure benefit prostřednictvím svého Visual Studia Ultimate s předplatným MSDN
-    - Členové [programu Microsoft Partner Network](http://aka.ms/watk-mpn) programu Cloud Essentials získáte měsíčně kredity Azure ve výši
+    - Zaregistrovat [bezplatnou zkušební verzi](https://aka.ms/watk-freetrial)
+    - Pokud jste Visual Studio Professional, Test Professional, Premium nebo Ultimate s MSDN nebo MSDN Platforms odběratele, aktivovat váš [výhodu MSDN](https://aka.ms/watk-msdn) hned a začít s vývojem a testování v Azure
+    - [BizSpark](https://aka.ms/watk-bizspark) členové automaticky obdrží Azure benefit prostřednictvím svého Visual Studia Ultimate s předplatným MSDN
+    - Členové [programu Microsoft Partner Network](https://aka.ms/watk-mpn) programu Cloud Essentials získáte měsíčně kredity Azure ve výši
 
 <a id="Setup"></a>
 ### <a name="setup"></a>Instalace

@@ -8,12 +8,12 @@ ms.date: 01/28/2012
 ms.assetid: c125ca47-606a-4d6f-a1fc-1fc62928af93
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
-ms.openlocfilehash: ba061b26b8527e447f25f6046057542a54f989a8
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f3cb0004075ef7687ca1096bd407c342b4d0b7be
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074524"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423742"
 ---
 <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>Povolení operací CRUD v ASP.NET Web API 1
 ====================
@@ -109,7 +109,7 @@ Přidejte následující implementaci:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample2.cs)]
 
-Nyní přidejte další třídu ke složce modelů s názvem &quot;ProductRepository.&quot; Tato třída implementuje `IProductRespository` rozhraní. Přidejte následující implementaci:
+Nyní přidejte další třídu ke složce modelů s názvem &quot;ProductRepository.&quot; Tato třída implementuje `IProductRepository` rozhraní. Přidejte následující implementaci:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample3.cs)]
 
@@ -133,7 +133,7 @@ V **přidat kontroler** průvodce, názvu kontroleru &quot;ProductsController&qu
 ![](creating-a-web-api-that-supports-crud-operations/_static/image7.png)
 
 > [!NOTE]
-> Není nutné převést vaše contollers do složky s názvem řadiče. Název složky není důležité. je jednoduše pohodlný způsob, jak uspořádat zdrojové soubory.
+> Není nutné převést vaše řadiče do složky s názvem řadiče. Název složky není důležité. je jednoduše pohodlný způsob, jak uspořádat zdrojové soubory.
 
 
 **Přidat kontroler** průvodce vytvořit soubor s názvem ProductsController.cs ve složce řadiče. Pokud tento soubor ještě není otevřený, klikněte dvakrát na soubor otevřete. Přidejte následující **pomocí** – příkaz:
@@ -216,7 +216,7 @@ Název metody, který začíná &quot;vložit... &quot;, takže webového rozhra
 
 ## <a name="deleting-a-resource"></a>Odstranění prostředku
 
-Pokud chcete odstranit resourse, definujte metodu "Odstranit...".
+Chcete-li odstranit prostředek, definujte "Odstranit..." Metoda.
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample12.cs)]
 

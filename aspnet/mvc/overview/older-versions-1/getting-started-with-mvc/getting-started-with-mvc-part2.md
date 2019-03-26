@@ -8,12 +8,12 @@ ms.date: 08/14/2010
 ms.assetid: ff03dcc0-da97-458d-838f-0823e7482642
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part2
 msc.type: authoredcontent
-ms.openlocfilehash: 9a8ecac5203234c140783bbe3a518d35f6a57675
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b593c6225c05c7405c9d8b78abfd29a087d47b04
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076060"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58421256"
 ---
 <a name="adding-a-controller"></a>Přidání kontroleru
 ====================
@@ -56,7 +56,7 @@ ASP.NET MVC volá různé třídy Kontroleru (a různé metody akce v nich) v z�
 
 / [Kontroler] / [název akce] / [parametry]
 
-První část adresy URL určuje třída Kontroleru k provedení. Proto /HelloWorld mapuje HelloWorldController třídy. Druhá část adresy URL určí metodu akce v třídě ke spuštění. Proto /HelloWorld/Index by způsobila metoda Index() třídy HelloWorldcontroller ke spuštění. Všimněte si, že jsme měli jen k navštívení /HelloWorld výše a metodu, kterou Index byl odvozen. Je to proto, že metodu s názvem "Index", je výchozí metodou, která bude volána na řadiči, pokud není explicitně zadaná.
+První část adresy URL určuje třída Kontroleru k provedení. Proto /HelloWorld mapuje HelloWorldController třídy. Druhá část adresy URL určí metodu akce v třídě ke spuštění. Proto /HelloWorld/Index by způsobila metoda Index() třídy HelloWorldController ke spuštění. Všimněte si, že jsme měli jen k navštívení /HelloWorld výše a metodu, kterou Index byl odvozen. Je to proto, že metodu s názvem "Index", je výchozí metodou, která bude volána na řadiči, pokud není explicitně zadaná.
 
 [![Toto je Moje výchozí akce](getting-started-with-mvc-part2/_static/image8.png)](getting-started-with-mvc-part2/_static/image7.png)
 

@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 400db427-27af-4f2f-abf0-5486d5e024b5
 msc.legacyurl: /signalr/overview/deployment/tutorial-signalr-self-host
 msc.type: authoredcontent
-ms.openlocfilehash: 6a6359d59a4b715e13fe2bbcef57da6d6d6294b5
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 194f72ce40067e177a23b1eb70bd07ceb2225a04
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070342"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425558"
 ---
 <a name="tutorial-signalr-self-host"></a>Kurz: SignalR v místním prostředí
 ====================
@@ -58,7 +58,7 @@ Mezi důvody pro hostování není ve službě IIS patří:
 
 - Prostředí, ve kterém služby IIS není k dispozici nebo není žádoucí, jako je například existující serverové farmy bez služby IIS.
 - Nároky na výkon služby IIS je třeba se jim vyhnout.
-- Funkce SignalR je přidat do existující instanci služby aplikace, která běží ve službě Windows, rolí pracovního procesu systému Azure nebo jiný proces.
+- Funkce SignalR je přidat do existující aplikace, na kterém běží ve službě Windows, rolí pracovního procesu systému Azure nebo jiný proces.
 
 Pokud řešení je vyvíjen jako hostování na vlastním serveru z důvodů výkonu, doporučujeme také testovací aplikace hostované ve službě IIS a určí, zlepšuje výkon.
 

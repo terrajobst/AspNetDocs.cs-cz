@@ -8,24 +8,24 @@ ms.date: 07/16/2014
 ms.assetid: 4fe2558d-67cc-4d12-a5c1-6fb9f6f16137
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: c18911680b59448cd67190f71e951a3fcf3d0478
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 85e4369ee458043eec59fb27e317d18466f61f32
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071881"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422529"
 ---
 <a name="hands-on-lab-one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api"></a>Praktické cvičení: jeden ASP.NET: Integrace webových formulářů ASP.NET, MVC a webového rozhraní API
 ====================
 podle [Campy Web týmu](https://twitter.com/webcamps)
 
-[Stáhněte si Web Campy školení Kit](http://aka.ms/webcamps-training-kit)
+[Stáhněte si Web Campy školení Kit](https://aka.ms/webcamps-training-kit)
 
 > ASP.NET je architektura určená k vytváření webů, aplikací a služeb pomocí specializované technologie, jako je MVC, webové rozhraní API a další. Pomocí rozšíření ASP.NET zaznamenal od jejího vytvoření a uvedeného musí mít tyto technologie integrované, aby byla poslední úsilí o naplňování **One ASP.NET**.
 > 
 > Visual Studio 2013 přináší nový sjednocený projektový systém, který umožňuje vytvářet aplikace a použít všechny technologie ASP.NET v jednom projektu. Tato funkce eliminuje potřebu vyberte jeden technologii na začátku projektu a stonek s ním a místo toho doporučuje použití více rozhraní ASP.NET v rámci jednoho projektu.
 > 
-> Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
+> Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://aka.ms/webcamps-training-kit ](https://aka.ms/webcamps-training-kit).
 
 
 <a id="Overview"></a>

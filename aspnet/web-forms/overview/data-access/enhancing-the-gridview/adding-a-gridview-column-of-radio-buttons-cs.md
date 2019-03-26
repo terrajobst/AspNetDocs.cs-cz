@@ -8,12 +8,12 @@ ms.date: 03/06/2007
 ms.assetid: 32377145-ec25-4715-8370-a1c590a331d5
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-radio-buttons-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e1ac64a3c5023d83259f6e2d6facd8e248768c2d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 4b2e50a4ede0dfa97df6fa73dbd5b16bfde59745
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072637"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58421672"
 ---
 <a name="adding-a-gridview-column-of-radio-buttons-c"></a>Přidání sloupce přepínačů do ovládacího prvku GridView (C#)
 ====================
@@ -179,7 +179,7 @@ Existují dva přístupy, které je možné provést, aby bylo možné vložit k
 
 [!code-aspx[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample5.aspx)]
 
-Tady `GetUniqueRadioButton` a `GetRadioButtonValue` by být metody definované v modelu code-behind třídu, která vrátí odpovídající `id` a `value` hodnoty u obou přepínačů atributů. Tento přístup dobře funguje pro přiřazení `id` a `value` atributy, ale spadá krátký, při určování `checked` hodnotu atributu, protože syntaxe vázání dat se spustí pouze v případě nejprve vázaná na prvku GridView. Proto pokud prvku GridView má povolen stav zobrazení, metody formátování se pouze aktivuje při prvním načtení stránky (nebo když prvku GridView je explicitně znovu připojeno ke zdroji dat) a proto funkce, která nastaví `checked` atribut vyhráli t nelze volat pro zpětné volání. To s spíše drobný problém a trochu nad rámec tohoto článku, tak budete nechte si to. Jsem ale proveďte doporučujeme, abyste použijte výše uvedené přístup a pracovat prostřednictvím do bodu, kde je budete zablokuje. Při takové cvičení vyhráli t získat všechny blíže pracovní verzi, pomůže podporovat lepší představu o prvku GridView a životního cyklu datové vazby.
+Tady `GetUniqueRadioButton` a `GetRadioButtonValue` by být metody definované v modelu code-behind třídu, která vrátí odpovídající `id` a `value` hodnoty u obou přepínačů atributů. Tento přístup dobře funguje pro přiřazení `id` a `value` atributy, ale spadá krátký, při určování `checked` hodnotu atributu, protože syntaxe vázání dat se spustí pouze v případě nejprve vázaná na prvku GridView. Proto pokud prvku GridView má povolen stav zobrazení, metody formátování se pouze aktivuje při prvním načtení stránky (nebo když prvku GridView je explicitně znovu připojeno ke zdroji dat) a proto funkce, která nastaví `checked` atribut nebude volána na zpětné volání. To s spíše drobný problém a trochu nad rámec tohoto článku, tak budete nechte si to. Jsem ale proveďte doporučujeme, abyste použijte výše uvedené přístup a pracovat prostřednictvím do bodu, kde je budete zablokuje. Během těchto cvičení nebude funkční verzi získat všechny blíže, pomůže podporovat lepší představu o prvku GridView a životního cyklu datové vazby.
 
 Jiný přístup k vlastní vloženého nízké úrovně značek v šabloně a si přístup, který budeme používat pro účely tohoto kurzu je přidat [prvku Literal control](https://msdn.microsoft.com/library/sz4949ks(VS.80).aspx) do šablony. Potom v prvku GridView s `RowCreated` nebo `RowDataBound` obslužná rutina události ovládacím prvku Literal control lze přistupovat programově a jeho `Text` nastavenou na kód a vygenerovat.
 

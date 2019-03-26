@@ -8,12 +8,12 @@ ms.date: 01/23/2019
 ms.assetid: 8d54180d-f826-4df7-b503-7debf5ed9fb3
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 47dc2c1044a5964624ba2f8af4f174a2fd99d3e8
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 04e4bbc8b6405dc60b8335191d88920028eef599
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073555"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424843"
 ---
 # <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>Účet potvrzení a heslo pro obnovení s ASP.NET Identity (C#)
 
@@ -132,7 +132,7 @@ OWIN `AuthenticationManager.SignIn` metoda předá `ClaimsIdentity` a přihlás�
 
 ## <a name="email-confirmation"></a>Potvrzení e-mailu
 
-Je vhodné pro potvrzení e-mailu novému uživateli zaregistrovat k ověření, nejsou zosobnění někdo jiný (to znamená, že se ještě nezaregistrovali někoho jiného e-mailu). Předpokládejme, že jste měli diskusní fórum, chcete zabránit `"bob@example.com"` registroval jako `"joe@contoso.com"`. Bez potvrzení e-mailu `"joe@contoso.com"` může získat nežádoucí e-mailu vaší aplikace. Předpokládejme, že Bob neúmyslně zaregistrovaný jako `"bib@example.com"` a kdyby si všimli, že nebudou moci používat obnovit heslo, protože aplikace nemá správnou e-mailovou. Potvrzení e-mailu zajišťuje pouze omezenou ochranu před roboty a neposkytuje ochranu z určené spammery, mají mnoho pracovní e-mailu aliasů můžete použít k registraci. V následující ukázce uživatel nebude moct změnit svoje heslo, dokud svůj účet potvrzený (podle jejich výběr potvrzovacího odkazu byla přijata na e-mailový účet, která jsou zaregistrována.) Tento pracovní postup můžete použít k ostatním scénářům, třeba odeslání odkazu k potvrzení a k resetování hesla na nové účty vytvořené správcem odesílání e-mailu uživatele při změnily jejich profil a tak dále. Obvykle chcete novým uživatelům zabránit v účtování žádná data k webu předtím, než byly potvrzeny e-mailem, textovou zprávu SMS nebo jiný mechanismus. <a id="build"></a>
+Je vhodné pro potvrzení e-mailu novému uživateli zaregistrovat k ověření, nejsou zosobnění někdo jiný (to znamená, že se ještě nezaregistrovali někoho jiného e-mailu). Předpokládejme, že jste měli diskusní fórum, chcete zabránit `"bob@example.com"` registroval jako `"joe@contoso.com"`. Bez potvrzení e-mailu `"joe@contoso.com"` může získat nežádoucí e-mailu vaší aplikace. Předpokládejme, že Bob omylem zaregistrovaný jako `"bib@example.com"` a kdyby si všimli, že nebudou moci používat obnovit heslo, protože aplikace nemá správnou e-mailovou. Potvrzení e-mailu zajišťuje pouze omezenou ochranu před roboty a neposkytuje ochranu z určené spammery, mají mnoho pracovní e-mailu aliasů můžete použít k registraci. V následující ukázce uživatel nebude moct změnit svoje heslo, dokud svůj účet potvrzený (podle jejich výběr potvrzovacího odkazu byla přijata na e-mailový účet, která jsou zaregistrována.) Tento pracovní postup můžete použít k ostatním scénářům, třeba odeslání odkazu k potvrzení a k resetování hesla na nové účty vytvořené správcem odesílání e-mailu uživatele při změnily jejich profil a tak dále. Obvykle chcete novým uživatelům zabránit v účtování žádná data k webu předtím, než byly potvrzeny e-mailem, textovou zprávu SMS nebo jiný mechanismus. <a id="build"></a>
 
 ## <a name="build-a-more-complete-sample"></a>Ucelenější ukázku sestavení
 

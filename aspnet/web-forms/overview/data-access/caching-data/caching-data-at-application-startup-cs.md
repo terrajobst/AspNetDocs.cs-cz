@@ -8,12 +8,12 @@ ms.date: 05/30/2007
 ms.assetid: 22ca8efa-7cd1-45a7-b9ce-ce6eb3b3ff95
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-at-application-startup-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c97058e5fd54dfd0393ec5ad020ad957d9719784
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 692b2a13664a9a5153a85a230dd513b022518316
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077881"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423982"
 ---
 <a name="caching-data-at-application-startup-c"></a>Ukládání dat do mezipaměti při spuštění aplikace (C#)
 ====================
@@ -103,7 +103,7 @@ Obdobně mezipaměť dat slouží jako úložiště mezipaměti, jak ukazuje ná
 
 [!code-csharp[Main](caching-data-at-application-startup-cs/samples/sample5.cs)]
 
-Chcete-li přidat položku do mezipaměti dat bez podle času vypršení platnosti, použijte `System.Web.Caching.Cache.NoAbsoluteExpiration` a `System.Web.Caching.Cache.NoSlidingExpiration` hodnoty jako vstupní parametry. Tento konkrétní přetížení mezipaměť dat `Insert` metoda byl vybrán tak, že bychom mohli zadat *priority* položky mezipaměti. Priorita se používá k určení, jaké položky uklizeny z mezipaměti, když nedostatek dostupné paměti. Tady používáme prioritu `NotRemovable`, které zajišťuje, že tato položka mezipaměti vyhráli t úklid.
+Chcete-li přidat položku do mezipaměti dat bez podle času vypršení platnosti, použijte `System.Web.Caching.Cache.NoAbsoluteExpiration` a `System.Web.Caching.Cache.NoSlidingExpiration` hodnoty jako vstupní parametry. Tento konkrétní přetížení mezipaměť dat `Insert` metoda byl vybrán tak, že bychom mohli zadat *priority* položky mezipaměti. Priorita se používá k určení, jaké položky uklizeny z mezipaměti, když nedostatek dostupné paměti. Tady používáme prioritu `NotRemovable`, které zajišťuje, že nebude úklid tuto položku mezipaměti.
 
 > [!NOTE]
 > V tomto kurzu, stáhněte si implementuje `StaticCache` pomocí statické členské proměnné přístup. Kód pro techniky aplikace stav a data mezipaměti je k dispozici v komentářích v souboru třídy.

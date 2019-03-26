@@ -8,12 +8,12 @@ ms.date: 10/17/2006
 ms.assetid: ee20742f-6fb7-49a0-a009-058fe363aacb
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3a10d6e5f60efad1f88c5acc8371a24dbf8d2cb7
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 73a93c93932a004e76cf4ef7be1b3308ef6b991f
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077203"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422893"
 ---
 <a name="masterdetail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb"></a>Zobrazení hlavních záznamů / podrobností v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)
 ====================
@@ -100,7 +100,7 @@ Následující kód ukazuje Opakovači a ObjectDataSource deklarativní syntaxe.
 [!code-aspx[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample4.aspx)]
 
 > [!NOTE]
-> Pro účely tohoto kurzu musíte mít Opakovači svůj stav zobrazení povolený (Všimněte si, vynechání `EnableViewState="False"` z deklarativní syntaxe opakovače s). V kroku 3 jsme budete vytvářet obslužné rutiny události pro opakovače s `ItemCommand` událostí, ve kterém budeme aktualizovat DataList s ObjectDataSource s `SelectParameters` kolekce. Opakovače s `ItemCommand`, ale vyhráli t fire, pokud stav zobrazení je zakázán. Naleznete v tématu [těžkou otázku A otázky ASP.NET](http://scottonwriting.net/sowblog/posts/1263.aspx) a [svoje řešení](http://scottonwriting.net/sowBlog/posts/1268.aspx) Další informace o důvod, proč musí být pro opakovače s povolen stav zobrazení `ItemCommand` události, která se aktivuje.
+> Pro účely tohoto kurzu musíte mít Opakovači svůj stav zobrazení povolený (Všimněte si, vynechání `EnableViewState="False"` z deklarativní syntaxe opakovače s). V kroku 3 jsme budete vytvářet obslužné rutiny události pro opakovače s `ItemCommand` událostí, ve kterém budeme aktualizovat DataList s ObjectDataSource s `SelectParameters` kolekce. Opakovače s `ItemCommand`, ale nebude aktivují, když se stav zobrazení je zakázán. Naleznete v tématu [těžkou otázku A otázky ASP.NET](http://scottonwriting.net/sowblog/posts/1263.aspx) a [svoje řešení](http://scottonwriting.net/sowBlog/posts/1268.aspx) Další informace o důvod, proč musí být pro opakovače s povolen stav zobrazení `ItemCommand` události, která se aktivuje.
 
 
 Na prvek LinkButton s `ID` hodnotou vlastnosti `ViewCategory` nemá jeho `Text` sadu vlastností. Právě jsme měli chtěli zobrazovat název kategorie, jsme by jste nastavili vlastnost Text deklarativně pomocí syntaxe vázání dat, například takto:

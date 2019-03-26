@@ -8,12 +8,12 @@ ms.date: 02/20/2005
 ms.assetid: f2339485-5d78-4c5e-8c0a-dc9b8a315345
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/membership
 msc.type: authoredcontent
-ms.openlocfilehash: d7fa3cb61608ea089141931cb9362359cdc92619
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d4fab68555eeb27420e60a28aca2f2c0fb9a73e3
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068053"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58421515"
 ---
 <a name="membership"></a>Členství
 ====================
@@ -42,7 +42,7 @@ by [Microsoft](https://github.com/microsoft)
 
 ## <a name="creating-the-membership-database"></a>Vytváří se databáze členství
 
-Pokud provedete tak, že pomocí SQL Server 7.0 nebo vyšší jako úložiště členství, můžete použít aspnet\_regsql nástroj (k dispozici nejsnadněji z Visual Studio .NET 2005 příkazového řádku) konfigurace vaší databáze. Aspnet\_regsql nástroje lze použít jako nástroj příkazového řádku nebo pomocí Průvodce grafickým uživatelským rozhraním. Metoda Průvodce je nejjednodušší způsob, jak nakonfigurovat svou databázi. Pro přístup k průvodci, spusťte následující příkaz:
+Pokud používáte SQL Server 7.0 nebo vyšší jako úložiště členství, můžete použít aspnet\_regsql nástroj (k dispozici nejsnadněji z Visual Studio .NET 2005 příkazového řádku) konfigurace vaší databáze. Aspnet\_regsql nástroje lze použít jako nástroj příkazového řádku nebo pomocí Průvodce grafickým uživatelským rozhraním. Metoda Průvodce je nejjednodušší způsob, jak nakonfigurovat svou databázi. Pro přístup k průvodci, spusťte následující příkaz:
 
 `aspnet_regsql W`
 
@@ -107,7 +107,7 @@ Následující ovládací prvky přihlášení jsou k dispozici v technologii AS
 
 ## <a name="login-control"></a>Ovládací prvek Login
 
-Ovládací prvek Login poskytuje rozhraní pro uživatele k přihlášení do systému členství. To vám poskytne textboxt uživatelské jméno a heslo a přihlašovací tlačítko. Mnoho dalších běžných funkcí jako je například odkaz na registraci pro uživatele, kteří ještě neučinili, zaškrtávací políčko, který umožňuje uživateli přihlášení automaticky při následných návštěvách, odkaz připomenutí hesla atd. Všechny funkce ovládacího prvku pro přihlášení jsou přizpůsobitelné prostřednictvím vlastnosti ovládacího prvku.
+Ovládací prvek Login poskytuje rozhraní pro uživatele k přihlášení do systému členství. To vám poskytne textové pole uživatelského jména a hesla a tlačítko pro přihlášení. Mnoho dalších běžných funkcí jako je například odkaz na registraci pro uživatele, kteří ještě neučinili, zaškrtávací políčko, který umožňuje uživateli přihlášení automaticky při následných návštěvách, odkaz připomenutí hesla atd. Všechny funkce ovládacího prvku pro přihlášení jsou přizpůsobitelné prostřednictvím vlastnosti ovládacího prvku.
 
 V technologii ASP.NET 1.x, vývojáři museli psát množství kódu vyhledávat při použití ověřování pomocí formulářů. Pomocí členství technologie ASP.NET 2.0 můžete ověřit uživatele bez psaní kódu vůbec. ASP.NET automaticky provede vyhledávání uživatele. (Pokud používáte ovládací prvek Login bez použití členství technologie ASP.NET, můžete použít **OnAuthenticate** metodu za účelem ověření uživatele.)
 

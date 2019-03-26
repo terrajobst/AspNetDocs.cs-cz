@@ -8,12 +8,12 @@ ms.date: 07/27/2010
 ms.assetid: 18700815-8e6c-4489-91af-7ea9dab6529e
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-deliver-dynamic-updates
 msc.type: authoredcontent
-ms.openlocfilehash: e902881d3dab6a902cb747a197a32f317d199723
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 71e566523d658eb8198453f354a12e63a4c38495
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066409"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58421034"
 ---
 <a name="use-ajax-to-deliver-dynamic-updates"></a>Použití jazyka AJAX k dynamickým aktualizacím
 ====================
@@ -78,7 +78,7 @@ Použijeme AJAX k vyvolání metody akce registrace z našich zobrazení podrobn
 
 První knihovny odkazuje na základní knihovny ASP.NET AJAX na straně klienta skriptů. Tento soubor je přibližně 24 kb (komprimované) a obsahuje základní funkce jazyka AJAX na straně klienta. Druhý knihovna obsahuje funkce nástrojů, které se integrují s ASP.NET MVC integrované AJAX pomocné metody (které použijeme za chvíli).
 
-Můžeme pak aktualizace kód zobrazit šablonu, kterou jsme přidali dříve, tak, aby místo outputing zprávu "Jste se zaregistrovali pro tuto událost", můžeme místo vykreslení odkaz, který při vložení provede volání AJAX, která volá metodu naše RSVPForEvent akce v kontroleru reakce a RSVPs uživatele:
+Můžeme pak aktualizace kód zobrazit šablonu, kterou jsme přidali dříve, tak, aby místo výstupu zpráva "Jste se zaregistrovali pro tuto událost", můžeme místo vykreslení odkaz, který při vložení provede volání AJAX, která volá metodu naše RSVPForEvent akce v kontroleru reakce a RSVPs uživatele:
 
 [!code-aspx[Main](use-ajax-to-deliver-dynamic-updates/samples/sample6.aspx)]
 

@@ -8,12 +8,12 @@ ms.date: 07/27/2010
 ms.assetid: f731990a-0a81-4d62-81df-87d676cdedd6
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-implement-mapping-scenarios
 msc.type: authoredcontent
-ms.openlocfilehash: f7de23ca46e6dc00fe8075e28068a8b3f95d02cd
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 9beddfcaf568bf374271fb9fcb3af3a38aff4b72
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074626"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424830"
 ---
 <a name="use-ajax-to-implement-mapping-scenarios"></a>Použití jazyka AJAX k implementaci scénářů mapování
 ====================
@@ -150,7 +150,7 @@ K provedení vytvoříme novou třídu "SearchController" pravým tlačítkem my
 
 [!code-csharp[Main](use-ajax-to-implement-mapping-scenarios/samples/sample10.cs)]
 
-Metody akce SearchController SearchByLocation interně volá metodu FindByLocation na DinnerRespository zobrazíte seznam blízké večeří. Místo vrátí objekty Dinner přímo do klienta, ale místo toho vrátí JsonDinner objekty. Třída JsonDinner zveřejňuje podmnožinu vlastností Dinner (například: z bezpečnostních důvodů ho nebude tyto názvy uživatelů, kteří mají RSVP'd večeře). Zahrnuje také vlastnost RSVPCount, který neexistuje v Dinner – a které je počítáno dynamicky určovat počet RSVP objekty přidružené k určité dinner.
+Metody akce SearchController SearchByLocation interně volá metodu FindByLocation na DinnerRepository zobrazíte seznam blízké večeří. Místo vrátí objekty Dinner přímo do klienta, ale místo toho vrátí JsonDinner objekty. Třída JsonDinner zveřejňuje podmnožinu vlastností Dinner (například: z bezpečnostních důvodů ho nebude tyto názvy uživatelů, kteří mají RSVP'd večeře). Zahrnuje také vlastnost RSVPCount, který neexistuje v Dinner – a které je počítáno dynamicky určovat počet RSVP objekty přidružené k určité dinner.
 
 Potom používáme Json() pomocnou metodu v základní třídě Controller k vrácení sekvence večeří pomocí založenými na JSON přenosový formát. JSON je standardní textový formát pro uvádění jednoduché datové struktury. Níže je příklad vypadá seznam dvou JsonDinner objektů ve formátu JSON, pokud vrácená metodě akce:
 

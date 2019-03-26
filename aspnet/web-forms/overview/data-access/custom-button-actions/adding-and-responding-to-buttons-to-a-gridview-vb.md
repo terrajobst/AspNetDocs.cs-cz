@@ -8,12 +8,12 @@ ms.date: 09/13/2006
 ms.assetid: 06c6bbd2-4bdc-435b-87a3-df2c868f4baa
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0834d43f95bd19fffb603dcde640714bd779fd80
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 3ebbf60ada1f50bb704118d0e81fb3c97c7e4386
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068080"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422226"
 ---
 <a name="adding-and-responding-to-buttons-to-a-gridview-vb"></a>Přidání tlačítek do ovládacího prvku GridView a reakce na ně (VB)
 ====================
@@ -113,7 +113,7 @@ Než přidáme do šablony s FormView tlačítko Ukončit všechny produkty, umo
 **Obrázek 8**: Vytvoření nového prvku ObjectDataSource s názvem `SuppliersProductsDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image20.png))
 
 
-Konfigurace tohoto prvku ObjectDataSource pomocí třídy ProductsBLL s `GetProductsBySupplierID(supplierID)` – metoda (viz obrázek 9). Během tohoto ovládacího prvku GridView vám umožní za cenu produktů s upraví, vyhráli t používat integrované úpravy nebo odstranění funkce z prvku GridView. Proto jsme můžete nastavit rozevíracího seznamu na (žádný) pro prvek ObjectDataSource s karty UPDATE, INSERT a DELETE.
+Konfigurace tohoto prvku ObjectDataSource pomocí třídy ProductsBLL s `GetProductsBySupplierID(supplierID)` – metoda (viz obrázek 9). Během tohoto ovládacího prvku GridView vám umožní za cenu produktů s upraví, nebude použití předdefinované úpravy nebo odstranění funkce z prvku GridView. Proto jsme můžete nastavit rozevíracího seznamu na (žádný) pro prvek ObjectDataSource s karty UPDATE, INSERT a DELETE.
 
 
 [![Konfigurace zdroje dat pomocí třídy ProductsBLL s GetProductsBySupplierID(supplierID) – metoda](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image22.png)](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image21.png)

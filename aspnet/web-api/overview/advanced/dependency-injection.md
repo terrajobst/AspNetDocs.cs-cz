@@ -8,12 +8,12 @@ ms.date: 01/20/2014
 ms.assetid: e3d3e7ba-87f0-4032-bdd3-31f3c1aa9d9c
 msc.legacyurl: /web-api/overview/advanced/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 318a2f1c587feb360212a390bb5de7bdc127513d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d5011d42d0c2200bc782ab548f6bfa0d952f6e72
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071803"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58420917"
 ---
 <a name="dependency-injection-in-aspnet-web-api-2"></a>Injektáž závislostí v rozhraní ASP.NET Web API 2
 ====================
@@ -49,7 +49,7 @@ Všimněte si, že třída kontroleru závisí na `ProductRepository`, a vytvoř
 
 - Pokud budete chtít nahradit `ProductRepository` s jinou implementaci, budete také muset upravit třídy kontroleru.
 - Pokud `ProductRepository` má závislosti, je nutné nakonfigurovat tyto uvnitř kontroleru. Pro projekt velkých s více řadiči změní váš kód konfigurace rozmístěny na váš projekt.
-- Je těžké test jednotky, protože kontroler je pevně zakódovaný k dotazování databáze. Pro testování částí měli byste použít úložiště model nebo zástupné procedury, které není možné s návrhem currect.
+- Je těžké test jednotky, protože kontroler je pevně zakódovaný k dotazování databáze. Pro testování částí měli byste použít model nebo zástupné procedury úložiště, které není možné s aktuální návrhu.
 
 Jsme řešení těchto problémů podle *vkládá* úložiště do kontroleru. Nejprve Refaktorovat `ProductRepository` třídy do rozhraní:
 

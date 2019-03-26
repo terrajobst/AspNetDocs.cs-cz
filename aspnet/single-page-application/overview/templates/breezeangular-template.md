@@ -8,12 +8,12 @@ ms.date: 03/08/2013
 ms.assetid: db31e909-563a-4516-aadd-62aa210ac7e4
 msc.legacyurl: /single-page-application/overview/templates/breezeangular-template
 msc.type: authoredcontent
-ms.openlocfilehash: a3e8b42cdadf99df6971a278834b1429e129ce72
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a3021f166262ee953b0cbe9ea88762a385925b88
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070993"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423097"
 ---
 <a name="breezeangular-template"></a>Šablona Breeze/Angular
 ====================
@@ -30,7 +30,7 @@ podle [Autor: Mads Kristensen](https://github.com/madskristensen)
 
 ![](http://www.breezejs.com/sites/all/images/spa-template/NgRunningTodoPage.png)
 
-Vně aplikace velmi podobná šablona KnockoutJS jednostránková aplikace. Ale je značně odlišná pod pokličkou. Šablona KnockoutJS používá Knockout pro nezpracované AJAX pro přístup k datům a datové vazby. Šablona Breeze/Angular Angular používá pro rychlé a datové vazby pro přístup k datům. Tyto knihovnami povolit další možnosti, včetně navigace stránky a historii.
+Vně aplikace velmi podobná šablona KnockoutJS jednostránková aplikace. Ale je značně odlišná pod pokličkou. Šablona KnockoutJS používá Knockout pro nezpracované AJAX pro přístup k datům a datové vazby. Šablona Breeze/Angular Angular používá pro rychlé a datové vazby pro přístup k datům. Tyto knihovny povolit další možnosti, včetně navigace stránky a historii.
 
 Tady je stránka o vaší aplikace:
 
@@ -89,7 +89,7 @@ Nyní jste v pozemního jednostránková aplikace. Všechno, co můžete prohlé
 
 Logiku ověřování se provádí straně klienta podle Breeze. Ověřování atributů na serverové třídy modelu jsou šířeny do klienta a spouštěny automaticky, než se klient připojí k serveru.
 
-Zkontrolujte síťový provoz. Všimněte si, že nebyly žádné volání serveru při Breeze došlo k chybě. Každý platný změnu výsledkem požadavku POST na "/ api/Todo/SaveChanges". Rychlé obsahuje ureitou změny a odesílá je společně jako jeden požadavek do kontroleru webového rozhraní API `SaveChanges` metody. Který se liší od KockoutJS SPA šablonu, která umožňuje PUT, POST a odstranit zastaralé požadavky pro každou položku jednotlivě.
+Zkontrolujte síťový provoz. Všimněte si, že nebyly žádné volání serveru při Breeze došlo k chybě. Každý platný změnu výsledkem požadavku POST na "/ api/Todo/SaveChanges". Rychlé obsahuje ureitou změny a odesílá je společně jako jeden požadavek do kontroleru webového rozhraní API `SaveChanges` metody. Který se liší od KnockoutJS SPA šablonu, která umožňuje PUT, POST a odstranit zastaralé požadavky pro každou položku jednotlivě.
 
 Všimněte si také, že není žádné síťové přenosy při přepínání mezi seznamu úkolů a o stránkách. Důvodem je, dotaz se omezila na místní mezipaměti uloženy.
 
@@ -107,7 +107,7 @@ Stack na straně serveru se skládá z kódu pro vývojáře a tři principu kni
 
 ![](http://www.breezejs.com/sites/all/images/spa-template/ServerArchitecture.png)
 
-Základní architektura je stejný jako KockoutJS SPA šablony. Implementace je však mnohem jednodušší: Byly odstraněny DTO a většina podrobnosti Entity Framework byla delegována do Breeze.NET.
+Základní architektura je stejný jako šablona KnockoutJS jednostránková aplikace. Implementace je však mnohem jednodušší: Byly odstraněny DTO a většina podrobnosti Entity Framework byla delegována do Breeze.NET.
 
 ## <a name="next-steps"></a>Další kroky
 

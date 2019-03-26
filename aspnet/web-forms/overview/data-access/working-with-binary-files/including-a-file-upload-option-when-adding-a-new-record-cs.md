@@ -8,12 +8,12 @@ ms.date: 03/27/2007
 ms.assetid: 362ade25-3965-4fb2-88d2-835c4786244f
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c3887f920126d70b300de5a0d6e09474fd33c332
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8b7f839f16150b93645a9fe868642fa5f36248a9
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077104"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424973"
 ---
 <a name="including-a-file-upload-option-when-adding-a-new-record-c"></a>Zahrnutí možnosti nahrání souboru při přidání nového záznamu (C#)
 ====================
@@ -73,7 +73,7 @@ Protože prezentační vrstva by měla pouze rozhraní s vrstvy obchodní logiky
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample2.cs)]
 
 > [!NOTE]
-> Ujistěte se, že jste uložili datové sadě zadán před přidáním `InsertWithPicture` metodu BLL. Protože `CategoriesTableAdapter` kód třídy je automaticky vytvářen založené na datové sadě zadán, pokud don t uložte provedené změny k datové sadě zadán `Adapter` vlastnost vyhráli t vědět o `InsertWithPicture` metoda.
+> Ujistěte se, že jste uložili datové sadě zadán před přidáním `InsertWithPicture` metodu BLL. Protože `CategoriesTableAdapter` kód třídy je automaticky vytvářen založené na datové sadě zadán, pokud don t uložte provedené změny k datové sadě zadán `Adapter` vlastnost nebude vědět o `InsertWithPicture` metody.
 
 
 ## <a name="step-3-listing-the-existing-categories-and-their-binary-data"></a>Krok 3: Výpis existující kategorie a jejich binárních dat
@@ -231,7 +231,7 @@ Umožňují s využít k otestování rozhraní vkládání a `ItemInserting` ob
 **Obrázek 9**: Upozornění se zobrazí, pokud je odeslána neplatný typ souboru ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image16.png))
 
 
-Jakmile ověříte, že stránka vyžaduje k nahrání obrázku a získaných oproti očekávaným t-formátu PDF nebo jiných JPG soubory přijmout, přidat novou kategorii s platnou obrázek JPG, když si brožuru o pole necháte prázdné. Po kliknutí na tlačítko pro vložení se bude odeslat zpět na stránku a přibude nový záznam `Categories` tabulku s nahraného obrázku s binární obsah uložen přímo v databázi. Prvku GridView se aktualizuje a zobrazí řádek pro nově přidaná kategorie, ale, jak ukazuje obrázek 10 nový obrázek s kategorie nevykreslí správně.
+Jakmile si ověříte, že stránka vyžaduje obrázek k nahrání a nebude přijímat bez PDF nebo jiných JPG soubory, přidat novou kategorii s platnou obrázek JPG, když si brožuru o pole necháte prázdné. Po kliknutí na tlačítko pro vložení se bude odeslat zpět na stránku a přibude nový záznam `Categories` tabulku s nahraného obrázku s binární obsah uložen přímo v databázi. Prvku GridView se aktualizuje a zobrazí řádek pro nově přidaná kategorie, ale, jak ukazuje obrázek 10 nový obrázek s kategorie nevykreslí správně.
 
 
 [![Novou kategorii s, který není zobrazen obrázek](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image10.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image17.png)

@@ -8,12 +8,12 @@ ms.date: 08/03/2007
 ms.assetid: 5811b8ff-ed56-40fc-9397-6b69ae09a8f6
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 81254408252c5e786c938d4eb8beb1c7a2b65218
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 136e4a07422d9f71ed56ac132d93f5eade273ca2
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077053"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423166"
 ---
 <a name="working-with-computed-columns-vb"></a>Práce s vypočítanými sloupci (VB)
 ====================
@@ -32,7 +32,7 @@ Protože počítaný sloupec s hodnotou je určeno výrazem, tyto sloupce jsou j
 
 Problémy může vyvolávat použití vypočítané sloupce pomocí prvku TableAdapter, který používá příkazy SQL ad-hoc, který je TableAdapter s `INSERT` a `UPDATE` dotazy jsou automaticky obnovovány kdykoli dokončení Průvodce konfigurací TableAdapter. Proto počítané sloupce se ručně odebrat z `INSERT` a `UPDATE` dotazy se znovu zobrazí, pokud je znovu spusťte průvodce. Ačkoli objekty TableAdapter, které používají uložené procedury nejsou t trpí tento brittleness, mají své vlastní Adaptivní režim, které nám budou řešit v kroku 3.
 
-V tomto kurzu přidáme počítaný sloupec, `Suppliers` tabulky v databázi Northwind a pak vytvořte odpovídající TableAdapter pro práci s touto tabulkou a jeho počítaný sloupec. Máme naši TableAdapter pomocí uložených procedur místo SQL příkazy ad-hoc tak, aby naše t přizpůsobení nejsou ztracena při použití Průvodce konfigurací TableAdapter.
+V tomto kurzu přidáme počítaný sloupec, `Suppliers` tabulky v databázi Northwind a pak vytvořte odpovídající TableAdapter pro práci s touto tabulkou a jeho počítaný sloupec. Máme naši TableAdapter pomocí uložených procedur místo SQL příkazy ad-hoc tak, aby naše vlastní nastavení nejsou ztracena při použití Průvodce konfigurací TableAdapter.
 
 Začínáme s let!
 

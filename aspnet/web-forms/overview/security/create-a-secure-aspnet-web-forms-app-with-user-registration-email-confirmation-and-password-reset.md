@@ -8,12 +8,12 @@ ms.date: 10/02/2014
 ms.assetid: 0a8d6044-5fab-4213-82d6-5618d5601358
 msc.legacyurl: /web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: acc13776840408756901e20589b9efacc83ff2a9
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 1bd90f0ceddee7d9e18c1cac2fadfb2c84841f19
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074743"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424635"
 ---
 <a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Vytvoření zabezpečené aplikace webových formulářů ASP.NET s registrací uživatele, potvrzením e-mailu a resetováním hesla (C#)
 ====================
@@ -64,7 +64,7 @@ Začněte tím, že instalaci a používání [Visual Studio Express 2013 for We
 
 ## <a name="email-confirmation"></a>Potvrzení e-mailu
 
-Je osvědčeným postupem je potvrďte e-mailu při registraci nového uživatele k ověření, nejsou někdo zosobnění (to znamená, že se ještě nezaregistrovali někoho jiného e-mailu). Předpokládejme, že jste měli diskusní fórum, chcete zabránit `"bob@cpandl.com"` registroval jako `"joe@contoso.com"`. Bez potvrzení e-mailu `"joe@contoso.com"` může získat nežádoucí e-mailu vaší aplikace. Předpokládejme, že Bob neúmyslně zaregistrovaný jako `"bib@cpandl.com"` a kdyby si všimli, že nebudou moci používat obnovení hesla, protože aplikace nemá správnou e-mailovou. Potvrzení e-mailu zajišťuje pouze omezenou ochranu před roboty a neposkytuje ochranu z určené odesílateli nevyžádané pošty.
+Je osvědčeným postupem je potvrďte e-mailu při registraci nového uživatele k ověření, nejsou někdo zosobnění (to znamená, že se ještě nezaregistrovali někoho jiného e-mailu). Předpokládejme, že jste měli diskusní fórum, chcete zabránit `"bob@cpandl.com"` registroval jako `"joe@contoso.com"`. Bez potvrzení e-mailu `"joe@contoso.com"` může získat nežádoucí e-mailu vaší aplikace. Předpokládejme, že Bob omylem zaregistrovaný jako `"bib@cpandl.com"` a kdyby si všimli, že nebudou moci používat obnovení hesla, protože aplikace nemá správnou e-mailovou. Potvrzení e-mailu zajišťuje pouze omezenou ochranu před roboty a neposkytuje ochranu z určené odesílateli nevyžádané pošty.
 
 Obvykle chcete novým uživatelům zabránit v účtování žádná data k webu předtím, než byl potvrzen e-mail, ve zprávě SMS nebo jiný mechanismus. V následujících částech budeme povolit e-mailové potvrzení a upravovat kód, který nově zaregistrovaný uživatelům zabránit v přihlašování až do svého e-mailu byl potvrzen. V tomto kurzu použijete e-mailové služby SendGrid.
 

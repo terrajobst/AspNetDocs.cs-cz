@@ -8,12 +8,12 @@ ms.date: 07/17/2006
 ms.assetid: b651dc58-93c7-4f83-a74e-3b99f6d60848
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 82f1127b01c211a2af91623d4df7ca10dcad6d8a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 6c8a07d7b0819df4deb566644fe36bc504d2a2ca
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070960"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424563"
 ---
 <a name="an-overview-of-inserting-updating-and-deleting-data-c"></a>Přehled vložení, aktualizace a odstranění dat (C#)
 ====================
@@ -179,7 +179,7 @@ Ovládací prvek GridView obsahuje integrovanou podporu pro úpravy na úrovni �
 Hodnoty přiřazené k `DeleteParameters` jsou hodnoty `DataKeyNames` pole pro řádek došlo ke kliknutí na tlačítko jehož odstranit. Proto je důležité, který prvku GridView `DataKeyNames` správně nastavit vlastnost. Pokud není nalezena, `DeleteParameters` přiřadí `null` hodnotu v kroku 1, která zase nepovede v libovolném odstraní záznamy v kroku 2.
 
 > [!NOTE]
-> `DataKeys` Kolekce je uložen v stav ovládacího prvku GridView s, to znamená, že `DataKeys` hodnoty se zachová napříč postback i v případě, že stav zobrazení ovládacího prvku GridView s byla zakázána. Je však velmi důležité, zůstane stav zobrazení prvků GridViews, která podporuje úpravy nebo odstranění (výchozí chování) povolen. Pokud nastavíte GridView s `EnableViewState` vlastnost `false`, úpravy a odstraňování chování bude fungovat pro jednoho uživatele, ale pokud existují souběžných uživatelů odstranění dat, existuje možnost náhodně může tyto souběžných uživatelů odstranění nebo úprava záznamů, kterou kód nefungoval t určené pro instalaci. Zobrazit Moje blogu [upozornění: Souběžnosti vydávání s ASP.NET 2.0 prvků GridViews/DetailsView/FormViews tuto podporu úpravy nebo odstranění a jejichž stav zobrazení je zakázané](http://scottonwriting.net/sowblog/archive/2006/10/03/163215.aspx), další informace.
+> `DataKeys` Kolekce je uložen v stav ovládacího prvku GridView s, to znamená, že `DataKeys` hodnoty se zachová napříč postback i v případě, že stav zobrazení ovládacího prvku GridView s byla zakázána. Je však velmi důležité, zůstane stav zobrazení prvků GridViews, která podporuje úpravy nebo odstranění (výchozí chování) povolen. Pokud nastavíte GridView s `EnableViewState` vlastnost `false`, úpravy a odstraňování chování bude fungovat pro jednoho uživatele, ale pokud existují souběžných uživatelů odstranění dat, existuje možnost náhodně může tyto souběžných uživatelů odstranit nebo upravit záznamy, které jsou nechtěli. Zobrazit Moje blogu [upozornění: Souběžnosti vydávání s ASP.NET 2.0 prvků GridViews/DetailsView/FormViews tuto podporu úpravy nebo odstranění a jejichž stav zobrazení je zakázané](http://scottonwriting.net/sowblog/archive/2006/10/03/163215.aspx), další informace.
 
 
 Toto upozornění stejným platí také pro DetailsViews a FormViews.

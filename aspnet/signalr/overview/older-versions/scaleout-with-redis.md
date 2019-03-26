@@ -8,12 +8,12 @@ ms.date: 05/01/2013
 ms.assetid: 6abecf80-8ffa-41ba-b0d9-1d9edbe7687b
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: 74294bd04d5649f2ec54e58adb744f5e30525162
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: bdeb9624180206b33d8fdb22b4a4fdaf4cb92294
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073825"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424765"
 ---
 <a name="signalr-scaleout-with-redis-signalr-1x"></a>Škálování aplikace SignalR službou Redis (SignalR 1.x)
 ====================
@@ -125,7 +125,7 @@ Zahrnují taky službu správy (uvedené v části "Nástroje pro správu").
 
 ![](scaleout-with-redis/_static/image6.png)
 
-**Nainstalovat Web Deploy 3.0.** Když spustíte Správce služby IIS, vás vyzve k instalaci webové platformy společnosti Microsoft, nebo se dají [stáhnout intstaller](https://go.microsoft.com/fwlink/?LinkId=255386). Do platformy hledání pro nasazení webu a nainstalovat nasazení webu 3.0
+**Nainstalovat Web Deploy 3.0.** Když spustíte Správce služby IIS, vás vyzve k instalaci webové platformy společnosti Microsoft, nebo se dají [stáhněte instalační program](https://go.microsoft.com/fwlink/?LinkId=255386). Do platformy hledání pro nasazení webu a nainstalovat nasazení webu 3.0
 
 ![](scaleout-with-redis/_static/image7.png)
 

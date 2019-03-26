@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 98358b6e-9139-4239-ba3a-2d7dd74dd664
 msc.legacyurl: /signalr/overview/performance/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: 5984a5e6c3215e7dde8c09ef702bf6453730a3ee
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ac023e7d52f01886ad9978897607396d8f1c31a4
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074641"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422555"
 ---
 <a name="signalr-scaleout-with-sql-server"></a>Šklálování aplikace SignalR SQL Serverem
 ====================
@@ -118,7 +118,7 @@ Zahrnují taky službu správy (uvedené v části "Nástroje pro správu").
 
 ![](scaleout-with-sql-server/_static/image5.png)
 
-**Nainstalovat Web Deploy 3.0.** Když spustíte Správce služby IIS, vás vyzve k instalaci webové platformy společnosti Microsoft, nebo se dají [stáhnout intstaller](https://go.microsoft.com/fwlink/?LinkId=255386). Do platformy hledání pro nasazení webu a nainstalovat nasazení webu 3.0
+**Nainstalovat Web Deploy 3.0.** Když spustíte Správce služby IIS, vás vyzve k instalaci webové platformy společnosti Microsoft, nebo se dají [stáhněte instalační program](https://go.microsoft.com/fwlink/?LinkId=255386). Do platformy hledání pro nasazení webu a nainstalovat nasazení webu 3.0
 
 ![](scaleout-with-sql-server/_static/image6.png)
 

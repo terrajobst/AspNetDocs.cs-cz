@@ -8,12 +8,12 @@ ms.date: 05/15/2013
 ms.assetid: eaa206c4-edb3-487e-8fcb-54a3261fed36
 msc.legacyurl: /signalr/overview/older-versions/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: c8aac09c3d3e06529f7834eb3f60dca2f3073922
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 311976a9d0e79083e02231ab056af3537a3d3d25
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071428"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58420800"
 ---
 <a name="dependency-injection-in-signalr-1x"></a>Injektáž závislostí v centrech SignalR 1.x
 ====================
@@ -41,7 +41,7 @@ Lepším řešením je "Vložit" `ILogger` do objektu, například pomocí argum
 
 [!code-csharp[Main](dependency-injection/samples/sample3.cs)]
 
-Nyní na objekt neodpovídá pro výběr, který `ILogger` používat. Je možné swich `ILogger` implementace beze změny, které jsou na ní závislé objekty.
+Nyní na objekt neodpovídá pro výběr, který `ILogger` používat. Můžete přepínat `ILogger` implementace beze změny, které jsou na ní závislé objekty.
 
 [!code-csharp[Main](dependency-injection/samples/sample4.cs)]
 
@@ -161,7 +161,7 @@ Vytvoření vazby pro **IHubConnectionContext** následujícím způsobem:
 
 [!code-csharp[Main](dependency-injection/samples/sample18.cs)]
 
-Tento kód creatres anonymní funkce, která se vrátí **IHubConnection**. **WhenInjectedInto** metoda říká Ninject tuto funkci použít, pouze při vytváření `IStockTicker` instancí. Důvodem je, že vytvoří SignalR **IHubConnectionContext** instance interně, a nechceme přepsat, jak je vytvořila SignalR. Tato funkce platí jenom pro naše `StockTicker` třídy.
+Tento kód vytvoří anonymní funkce, která se vrátí **IHubConnection**. **WhenInjectedInto** metoda říká Ninject tuto funkci použít, pouze při vytváření `IStockTicker` instancí. Důvodem je, že vytvoří SignalR **IHubConnectionContext** instance interně, a nechceme přepsat, jak je vytvořila SignalR. Tato funkce platí jenom pro naše `StockTicker` třídy.
 
 Předat do překladače závislostí **MapHubs** metody:
 

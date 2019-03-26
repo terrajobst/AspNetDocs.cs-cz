@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 4b559e6c-4fb0-4a04-9812-45cf08ae5779
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: 38802814fbb748513274f1fd8a33521fafd48ed3
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c9ccfa00d768f767cee7705372c157199572d2ed
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070459"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422581"
 ---
 <a name="signalr-troubleshooting"></a>Řešení potíží s knihovnou SignalR
 ====================
@@ -87,7 +87,7 @@ Funkce SignalR používá dva modely komunikace: Rozbočovače a PersistentConne
 
 [!code-csharp[Main](troubleshooting/samples/sample3.cs)]
 
-**Kód jazyka C# serveru, která mapuje trasu k rozbočovači, nebo více rozbočovače, pokud máte více aplikací**
+**C#kód serveru, která mapuje trasu k rozbočovači nebo několika centrech, pokud máte více aplikací**
 
 [!code-css[Main](troubleshooting/samples/sample4.css)]
 

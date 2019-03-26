@@ -8,12 +8,12 @@ ms.date: 02/15/2013
 ms.assetid: 9cad0833-486a-4474-a7f3-7715542ec4ce
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-database-update
 msc.type: authoredcontent
-ms.openlocfilehash: 5c9b0c71e2e0d35645e975e9adb7086e65bcf4c3
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5145f0a9bfe615fa98a7341841f72597594de1e4
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066664"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424258"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-a-database-update"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Nasazení aktualizace databáze
 ====================
@@ -50,7 +50,7 @@ V této části přidáte sloupec Datum narození `Person` základní třída pr
 
     [!code-powershell[Main](deploying-a-database-update/samples/sample3.ps1)]
 
-    Po dokončení tohoto příkazu, Visual Studio otevře soubor třídy, která definuje nový `DbMIgration` třídy a `Up` metoda se zobrazí kód, který vytvoří nový sloupec. `Up` Metoda vytvoří sloupec při implementaci této změny a `Down` metoda odstraní sloupec při vrácení zpět změnu.
+    Po dokončení tohoto příkazu, Visual Studio otevře soubor třídy, která definuje nový `DbMigration` třídy a `Up` metoda se zobrazí kód, který vytvoří nový sloupec. `Up` Metoda vytvoří sloupec při implementaci této změny a `Down` metoda odstraní sloupec při vrácení zpět změnu.
 
     ![AddBirthDate_migration_code](deploying-a-database-update/_static/image1.png)
 4. Sestavte řešení a potom zadejte následující příkaz v **Konzola správce balíčků** okno (ujistěte se, že je stále vybrán projekt ContosoUniversity.DAL):

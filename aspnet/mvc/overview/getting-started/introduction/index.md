@@ -15,7 +15,7 @@ msc.type: chapter
 
 [!INCLUDE [consider RP](../../../../includes/razor.md)]
 
-V této následující sérii kurzů se zabývá ASP.NET MVC: Zdroj [Githubu](https://github.com/aspnet/Docs/tree/master/aspnet/mvc/overview/getting-started/introduction/sample/MvcMovie/MvcMovie)
+V této následující sérii kurzů se zabývá ASP.NET MVC: Zdroj [Githubu](https://github.com/aspnet/AspNetDocs/tree/master/aspnet/mvc/overview/getting-started/introduction/sample/MvcMovie/MvcMovie)
 
 - [Začínáme](getting-started.md)
 - [Přidání kontroleru](adding-a-controller.md)

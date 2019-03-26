@@ -8,12 +8,12 @@ ms.date: 03/06/2014
 ms.assetid: 7ef5f73c-ca60-43c1-bdb2-702800347e7e
 msc.legacyurl: /visual-studio/overview/2013/aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: 2a22c5b686cb8e02054f421f78a8fc910af7ce28
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: bbb38ddde49cdeea4255e0e05bd559ddd9e5f692
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077482"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425987"
 ---
 <a name="aspnet-and-web-tools-20132--for-visual-studio-2013-release-notes"></a>ASP.NET a webové nástroje 2013.2 pro Visual Studio 2013 – poznámky k verzi
 ====================
@@ -112,7 +112,7 @@ Firefox používá své vlastní úložiště certifikátů, takže se zobrazí 
 
     `<div data-bind="text: foo.bar.baz.etc" />`
 
-    IntelilSense, zobrazí se plnou podporou technologie IntelliSense jazyka JavaScript objektu.
+    Informace IntelliSense zobrazené je plnou podporou technologie IntelliSense jazyka JavaScript objektu.
 
     ![Technologie IntelliSense zobrazuje úplný objekt jazyka JavaScript](aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes/_static/image15.png)
 - **Nový nástroj pro výběr adresy URL v HTML, Razor, šablon stylů CSS, LESS a Sass dokumenty**: VS 2013 součástí žádné Výběr adresy URL mimo stránky webových formulářů. Nový nástroj pro výběr adresy URL pro HTML, Razor, šablon stylů CSS, LESS a Sass editory je bez dialogového okna, fluent psaní ovládacího prvku pro výběr rozumí '..' a filtry souboru odpovídajícím způsobem img značky a odkazy.
@@ -177,12 +177,13 @@ Na následujících snímcích obrazovky ukazují modely generování uživatels
 NuGet 2.8.1, které budou RTM vydané v duben 2014. Tady jsou důležité body z zpráva k vydání verze, ale Zkontrolujte prosím, [kompletní poznámky k verzi](http://docs.nuget.org/docs/release-notes/nuget-2.8) pro další informace o těchto změnách.
 
 - **Cíl Windows Phone 8.1 aplikace**: NuGet 2.8.1 teď podporuje cílení na Windows Phone 8.1 aplikací pomocí rozhraní framework monikery target "WindowsPhoneApp", "WPA", "WindowsPhoneApp81" a "WPA81".
+
 - **Oprava řešení pro závislosti**: Při překladu závislosti balíčků NuGet v minulosti implementoval strategie výběr nejnižší verze hlavní a dílčí balíček, který splňuje požadavky závislosti na balíčku. Na rozdíl od hlavní a dílčí verze ale verze opravy vždy přeložila na nejvyšší verzi. I když byla úmyslného chování, vytvoří nedostatku determinismus pro instalaci balíčků se závislostmi.
 - **Přepínač DependencyVersion**: Když se změní NuGet 2.8 *výchozí* chování pro vyřešení závislostí, také přidá přesnější kontrolu nad procesem řešení závislostí prostřednictvím přepínače - DependencyVersion v konzole Správce balíčků. Přepínač umožňuje řešení závislostí na nejnižší možné verze (výchozí chování), nejvyšší možné verzi, nebo nejvyšší podverze nebo verzi opravy. Tento přepínač funguje jenom pro install-package v příkazu prostředí powershell.
 - **Atribut DependencyVersion**: Kromě přepínačem - DependencyVersion výše popsané, NuGet je také povolena pro možnost nastavit nový atribut v souboru nuget.config definování co je výchozí hodnota, pokud není zadán přepínač - DependencyVersion v vyvolání Install-package. Tato hodnota se také budou dodržovat i dialogové okno Správce balíčků NuGet pro všechny operace instalace balíčku. Nastavení této hodnoty, přidejte do souboru nuget.config atribut níže:
 
     `<config> <add key="dependencyversion" value="Highest" /> </config>`
-- **Ve verzi Preview operace NuGet s - whatif**: Některé balíčky NuGet může mít hloubkové závislosti grafy, a v důsledku toho může být užitečné při instalaci, odinstalovat nebo aktualizovat operace nejprve naleznete v tématu co se stane. NuGet 2.8 přidá standardní prostředí PowerShell – co když přepnout na příkazy install-package, odinstalace balíčku a balíček aktualizace umožňující vizualizaci celého uzavření balíčky, na které se použije příkaz.
+- **Ve verzi Preview operace NuGet s - WhatIf**: Některé balíčky NuGet může mít hloubkové závislosti grafy, a v důsledku toho může být užitečné při instalaci, odinstalovat nebo aktualizovat operace nejprve naleznete v tématu co se stane. NuGet 2.8 přidá standardní prostředí PowerShell – co když přepnout na příkazy install-package, odinstalace balíčku a balíček aktualizace umožňující vizualizaci celého uzavření balíčky, na které se použije příkaz.
 - **Downgrade Package**: Není, chcete-li nainstalovat zkušební verzi balíčku, aby prozkoumat nové funkce a potom se rozhodnete vrátit zpět poslední stabilní verzi. Před 2.8 NuGet to bylo vícefázový proces odinstalace předprodejní balíček a jeho závislosti a následná instalace předchozí verzi. S NuGet 2.8 však balíčku aktualizace bude nyní vrátit zpět uzavření celého balíčku (například strom závislostí balíčku) k předchozí verzi.
 - **Vývoj závislosti**: Mnoho různých typů funkcí můžete dodávány jako balíčky NuGet – včetně nástrojů, které se používají pro optimalizaci procesu vývoje. Tyto komponenty, zatímco mohou být přispěly k vývoji nového balíčku, by neměly být zahrnuté publikované závislost nového balíčku, pokud je novější. NuGet 2.8 umožňuje balíček identifikovat v souboru .nuspec souboru jako developmentDependency. Při instalaci, se tato metadata přidají také do souboru packages.config projektu, do kterého byl nainstalován balíček. Když tento soubor packages.config se později analyzuje závislostí NuGet během nuget.exe pack, vyloučí tyto závislosti označené jako vývoj závislosti.
 - **Soubor packages.config jednotlivých souborů pro různé platformy**: Při vývoji aplikací pro více cílových platforem, je běžné mít různé soubory projektu pro každé prostředí příslušné sestavení. Je také běžné využívání různých balíčků NuGet v různé soubory projektu, jak balíčky mají různé úrovně podpory pro různé platformy. NuGet 2.8 poskytuje vylepšenou podporu pro tento scénář vytvořením různých souboru packages.config souborů pro soubory projektu různých specifické pro platformu.
@@ -205,7 +206,7 @@ NuGet 2.8.1, které budou RTM vydané v duben 2014. Tady jsou důležité body z
 - [Atribut směrování vylepšení](../../../mvc/overview/releases/mvc51-release-notes.md#AttributeRouting)
 - [Zavedení podpory pro editor šablon](../../../mvc/overview/releases/mvc51-release-notes.md#Bootstrap)
 - [Podpora výčtu v zobrazeních.](../../../mvc/overview/releases/mvc51-release-notes.md#Enum)
-- [Podpora Unobstrusive MinLength nebo MaxLength atributy](../../../mvc/overview/releases/mvc51-release-notes.md#Unobtrusive)
+- [Podpora nerušivý MinLength nebo MaxLength atributy](../../../mvc/overview/releases/mvc51-release-notes.md#Unobtrusive)
 - [Podpora 'this' kontextu v Nerušivého jazyka Ajax](../../../mvc/overview/releases/mvc51-release-notes.md#thisContext)
 - Různé [opravy chyb](https://aspnetwebstack.codeplex.com/workitem/list/advanced?keyword=&status=Closed&type=All&priority=All&release=v5.1%20Preview%7cv5.1%20RTM&assignedTo=All&component=MVC&sortField=AssignedTo&sortDirection=Ascending&page=0&reasonClosed=Fixed)
 

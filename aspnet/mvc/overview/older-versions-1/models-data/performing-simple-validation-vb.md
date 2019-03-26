@@ -8,12 +8,12 @@ ms.date: 03/02/2009
 ms.assetid: df6cf4b7-0bb3-4c4e-b17a-bd78a759a6bc
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/performing-simple-validation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1d0bd6917bab61b17d1cafcf0cd9eb1983275dc8
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 31faf2e89e6acb25854455902c1a6fdffebd293c
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075955"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423179"
 ---
 <a name="performing-simple-validation-vb"></a>Provedení jednoduchého ověření (VB)
 ====================
@@ -90,7 +90,7 @@ Existují tři CSS třídy List stylu používat k ovládání výskyt chyb ově
 
 - vstup-– Chyba ověřování – použít &lt;vstupní&gt; vykreslen metodou Html.TextBox() helper značky.
 - pole – – Chyba ověřování – použít &lt;span&gt; vykreslen metodou Html.ValidationMessage() helper značky.
-- summary – chyby ověřování - použít &lt;ul&gt; vykreslen metodou Html.ValidationSumamry() helper značky.
+- summary – chyby ověřování - použít &lt;ul&gt; vykreslen metodou Html.ValidationSummary() helper značky.
 
 Můžete upravit tyto šablony třídy List stylu a proto upravit vzhled chyby ověření tak, že upravíte soubor Site.css umístěný ve složce obsahu.
 

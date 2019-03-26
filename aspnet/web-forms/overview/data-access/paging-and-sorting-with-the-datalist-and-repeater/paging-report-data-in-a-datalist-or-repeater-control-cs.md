@@ -8,12 +8,12 @@ ms.date: 11/13/2006
 ms.assetid: e8e0809b-25c4-4c3b-8d12-9a17048148ae
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4212b7bff41d76eaef18d638cf28441b50061159
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: bd66affc6ceab864ca753287f484a37c7671f20f
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066001"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423049"
 ---
 <a name="paging-report-data-in-a-datalist-or-repeater-control-c"></a>Stránkování dat sestavy ovládacími prvky DataList nebo Repeater (C#)
 ====================
@@ -127,7 +127,7 @@ Vzhledem k tomu, `GetProductsAsPagedDataSource` metoda očekává dva vstupní p
 
 Index stránky a hodnoty velikosti stránky musí být zapamatovaných postbacků. Mohou být uloženy v zobrazení stavu, trvale uložena do řetězec dotazu, uložené v proměnné relace nebo uloží, pomocí některé jiné techniky. Pro účely tohoto kurzu používáme řetězce dotazu, který nabízí výhodu v podobě povolení konkrétní stránce dat do záložek.
 
-Zejména použijte řetězec dotazu pole pageIndex a pageSize pro `pageIndex` a `pageSize` parametry, respektive (viz obrázek 7). Za chvíli nastavit výchozí hodnoty těchto parametrů, jako hodnoty řetězce dotazu získaných t být k dispozici, když uživatel navštíví nejprve tuto stránku. Pro `pageIndex`, nastavit výchozí hodnotu 0 (ve kterém se zobrazí první stránka dat) a `pageSize` s výchozí hodnotu 4.
+Zejména použijte řetězec dotazu pole pageIndex a pageSize pro `pageIndex` a `pageSize` parametry, respektive (viz obrázek 7). Za chvíli nastavit výchozí hodnoty pro tyto parametry řetězce dotazu hodnoty nebudou k dispozici, když uživatel navštíví nejprve tuto stránku. Pro `pageIndex`, nastavit výchozí hodnotu 0 (ve kterém se zobrazí první stránka dat) a `pageSize` s výchozí hodnotu 4.
 
 
 [![Použijte řetězec dotazu jako zdroj pro parametry pageIndex a pageSize](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image14.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image13.png)

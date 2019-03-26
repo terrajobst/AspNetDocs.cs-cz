@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: 5b033582-1646-42c2-b20d-7edc8814e970
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-1-create-the-application-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9369f843719d7198716ff83c5bbd5d3995f70973
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f1909279f36c0bd3bfb22fe7a892ef8cfad3052f
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075289"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422867"
 ---
 <a name="iteration-1--create-the-application-vb"></a>Iterace #1 – Vytvoření aplikace (VB)
 ====================
@@ -88,7 +88,7 @@ Jako alternativu k provádění jednotlivých tyto soubory ke stažení jeden po
 Projekt webové aplikace ASP.NET MVC. Spusťte sadu Visual Studio a vyberte možnost nabídky **soubor, nový projekt**. **Nový projekt** (viz obrázek 1) se zobrazí dialogové okno. Vyberte **webové** typ projektu a **webové aplikace ASP.NET MVC** šablony. Název nového projektu *ContactManager* a klikněte na tlačítko OK.
 
 
-Ujistěte se, že máte vybraný z rozevíracího seznamu v horní části rozhraní .NET Framework 3.5 vpravo **nový projekt** dialogového okna. V opačném případě se zobrazí šablony webové aplikace ASP.NET MVC vyhráli t.
+Ujistěte se, že máte vybraný z rozevíracího seznamu v horní části rozhraní .NET Framework 3.5 vpravo **nový projekt** dialogového okna. V opačném případě nebude zobrazovat šablony webové aplikace ASP.NET MVC.
 
 
 [![Dialogové okno Nový projekt](iteration-1-create-the-application-vb/_static/image1.jpg)](iteration-1-create-the-application-vb/_static/image1.png)
@@ -96,7 +96,7 @@ Ujistěte se, že máte vybraný z rozevíracího seznamu v horní části rozhr
 **Obrázek 01**: Dialogové okno Nový projekt ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-vb/_static/image2.png))
 
 
-Aplikace ASP.NET MVC **vytvořit projekt testování částí** se zobrazí dialogové okno. Toto dialogové okno můžete použít k označení, že chcete vytvořit a přidat projekt testování částí do vašeho řešení při vytváření vaší aplikace ASP.NET MVC. I když vyhráli jsme t vytváření testů jednotek v této iterace, by měl vybrat možnost **Ano, vytvořit projekt testování částí** protože plánujeme přidání jednotkových testů v pozdější iterace. Přidání testovacího projektu při prvním vytvoření nového projektu ASP.NET MVC je mnohem jednodušší než přidáte projekt testu po vytvoření projektu ASP.NET MVC.
+Aplikace ASP.NET MVC **vytvořit projekt testování částí** se zobrazí dialogové okno. Toto dialogové okno můžete použít k označení, že chcete vytvořit a přidat projekt testování částí do vašeho řešení při vytváření vaší aplikace ASP.NET MVC. I když jsme nesmí být vytváření testů jednotek v této iterace, by měl vybrat možnost **Ano, vytvořit projekt testování částí** protože plánujeme přidání jednotkových testů v pozdější iterace. Přidání testovacího projektu při prvním vytvoření nového projektu ASP.NET MVC je mnohem jednodušší než přidáte projekt testu po vytvoření projektu ASP.NET MVC.
 
 > [!NOTE] 
 > 
@@ -175,7 +175,7 @@ Potřebujeme vytvořit tabulku, která obsahuje následující sloupce:
 | E-mail | nvarchar(255) | false |
 
 
-První sloupec sloupec Id je speciální. Budete muset označit Id sloupec jako sloupec Identity a sloupec primárního klíče. Určujete, že sloupec je sloupec Identity tak, že rozšíření Properties sloupce (podívejte se v dolní části Obrázek 6) a dostanete posunutím do vlastnost specifikace Identity. Nastavte **(je identita)** k hodnotě **Ano**.
+První sloupec sloupec Id je speciální. Budete muset označit Id sloupec jako sloupec Identity a sloupec primárního klíče. Určujete, že sloupec je sloupec Identity tak, že rozšíření vlastnosti sloupce (podívejte se v dolní části Obrázek 6) a dostanete posunutím do vlastnost specifikace Identity. Nastavte **(je identita)** k hodnotě **Ano**.
 
 Výběrem sloupce a kliknutím na tlačítko s ikonou klíč označíte sloupec jako sloupec primárního klíče. Označeno jako sloupec jako sloupec primárního klíče, vedle sloupce se zobrazí ikona klíče (viz obrázek 6).
 
@@ -442,7 +442,7 @@ Obsah zobrazení. odstraňte je obsažen v informacích 9. Toto zobrazení obsah
 
 ## <a name="changing-the-name-of-the-default-controller"></a>Mění název výchozího Kontroleru
 
-Může se nepokoušejte se vám, že je název naší třídy kontroleru pro práci s kontakty s názvem třídy HomeController. Nesmí obsahovat více t kontroleru jmenovat ContactController?
+Může se nepokoušejte se vám, že je název naší třídy kontroleru pro práci s kontakty s názvem třídy HomeController. Nesmí mít kontroleru názvy ContactController?
 
 Je docela jednoduché, chcete-li vyřešit tento problém. Nejdřív potřebujeme Refaktorovat název kontroler Home. Otevřete třídu HomeController v editoru kódu sady Visual Studio, klikněte pravým tlačítkem na název třídy a vyberte možnost nabídky **přejmenovat**. Výběrem této možnosti nabídky, otevře se dialogové okno pro přejmenování.
 

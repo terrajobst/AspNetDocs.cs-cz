@@ -8,12 +8,12 @@ ms.date: 03/31/2010
 ms.assetid: 0f982827-f8f9-420d-b36b-57b23f5aa519
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9d75c80b4c1bac5011acc896d91ff2fcd5a19298
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a5623c34ad7f8c9b5effed318a04b204ab66ecaa
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078106"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425194"
 ---
 <a name="masterdetail-using-a-selectable-master-gridview-with-a-details-detailview-c"></a>Zobrazení hlavních záznamů / podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (C#)
 ====================
@@ -153,7 +153,7 @@ Jednou `productDetailsDataSource` ObjectDataSource byla správně nakonfigurovan
 
 V této a předchozích tří kurzů zaznamenali jsme řadu technik pro zobrazení záznamů master/detail sestav. V tomto kurzu, který jsme se zaměřili na použití volitelných GridView budou umístěné hlavní záznamy a DetailsView zobrazíte podrobnosti o vybrané hlavního záznamu na stejné stránce. V předchozích kurzech jsme se podívali na tom, jak zobrazit hlavních/podrobných sestav pomocí DropDownLists a zobrazení předlohy záznamy v jedné webové stránky a podrobných záznamů na jiném.
 
-V tomto kurzu končí naše zkoumání záznamů master/detail sestavy. Počínaje další tutorialwe zobrazí za přibližně naše průzkum vlastní formátování pomocí ovládacího prvku GridView, DetailsView a FormView. Uvidíme, jak přizpůsobit vzhled tyto ovládací prvky založené na data vázaná k nim, jak slouží ke shrnutí dat v zápatí prvku GridView a tom, jak pomocí šablon můžete získat vyšší stupeň kontroly nad rozložení.
+V tomto kurzu končí naše zkoumání záznamů master/detail sestavy. Spouští se k dalšímu kurzu jsme zobrazí za přibližně naše průzkum vlastní formátování pomocí ovládacího prvku GridView, DetailsView a FormView. Uvidíme, jak přizpůsobit vzhled tyto ovládací prvky založené na data vázaná k nim, jak slouží ke shrnutí dat v zápatí prvku GridView a tom, jak pomocí šablon můžete získat vyšší stupeň kontroly nad rozložení.
 
 Všechno nejlepší programování!
 

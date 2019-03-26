@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: f97a1145-6470-4bca-8f15-ccfb25fb903c
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: 7cb9c949936c3af73d4c904d401c36d4d83f3e18
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 998191a21388d76fb18b59fca9bcea7a40507c86
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072349"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425571"
 ---
 <a name="application-lifecycle-management-from-development-to-production"></a>Správa životního cyklu aplikací: Od vývoje k ostrému provozu
 ====================
@@ -26,7 +26,7 @@ podle [Jason Lee](https://github.com/jrjlee)
 > Téma je určené k představují základní popis pro [sérii kurzů](deploying-web-applications-in-enterprise-scenarios.md) na nasazení webu v podniku. Nedělejte si starosti, pokud nejste obeznámeni s některé koncepty popsané&#x2014;kurzech, které následují poskytují podrobné informace o všech těchto úlohách a techniky.
 > 
 > > [!NOTE]
-> > Forthe zájmu jednoduchosti, toto téma se nezabývá aktualizace databáze jako součást procesu nasazení. Však provedením přírůstkové aktualizace funkcí databáze je požadavek mnoho podnikových scénářích nasazení, a můžete najít pokyny o tom, jak to provést později v této řadě kurzů. Další informace najdete v tématu [nasazení databázové projekty](../web-deployment-in-the-enterprise/deploying-database-projects.md).
+> > Z důvodu zjednodušení není v tomto tématu popisují aktualizace databáze jako součást procesu nasazení. Však provedením přírůstkové aktualizace funkcí databáze je požadavek mnoho podnikových scénářích nasazení, a můžete najít pokyny o tom, jak to provést později v této řadě kurzů. Další informace najdete v tématu [nasazení databázové projekty](../web-deployment-in-the-enterprise/deploying-database-projects.md).
 
 
 ## <a name="overview"></a>Přehled

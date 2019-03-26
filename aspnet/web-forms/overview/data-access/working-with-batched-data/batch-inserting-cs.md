@@ -8,12 +8,12 @@ ms.date: 06/26/2007
 ms.assetid: cf025e08-48fc-4385-b176-8610aa7b5565
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-inserting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 561acc9b473bac7d39e7ed4d511d8b979657131d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: afcfc92b4e0db8092f83b67c6c227af91bdc0cbb
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069343"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58426043"
 ---
 <a name="batch-inserting-c"></a>Dávkové vkládání (C#)
 ====================
@@ -195,7 +195,7 @@ Tento kód jednoduše skryje `DisplayInterface` panelu a zobrazí `InsertingInte
 Dále vytvořte obslužné rutiny událostí pro přidání produkty z ovládacích prvků v rozhraní vkládání dodávky a tlačítko Storno. Některé z těchto tlačítek se při kliknutí na, je potřeba vrátit se k zobrazení rozhraní. Vytvoření `Click` obslužné rutiny událostí pro obě tlačítko – ovládací prvky tak, aby volání `ReturnToDisplayInterface`, metoda přidáme okamžik. Kromě skrytí `InsertingInterface` panely a zobrazení `DisplayInterface` panelu `ReturnToDisplayInterface` metoda musí vracet webové ovládací prvky do předem úprav stavu. To zahrnuje nastavení DropDownLists `SelectedIndex` vlastnosti a 0 zrušením navýšení kapacity `Text` vlastností ovládacích prvků textového pole.
 
 > [!NOTE]
-> Zvažte, co může dojít, pokud jsme nefungoval t vrátí ovládacích prvků do předem úprav stavu před vrácením rozhraní zobrazení. Uživatel může klikněte na tlačítko procesu dodávky produktu, zadejte tyto produkty z dodávky a pak klikněte na tlačítko Přidat produkty z dodávky. To by přidejte produkty a vrátí uživatele k zobrazení rozhraní. V tomto okamžiku uživatel může chtít přidat jiné dodávky. Po kliknutí na tlačítko procesu dodávky produktu, které budou vráceny vkládání rozhraní, ale DropDownList výběry a textové pole hodnot by stále se vyplní jejich předchozí hodnoty.
+> Zvažte, co může dojít, pokud jsme nevrátila ovládacích prvků do předem úprav stavu před vrácením rozhraní zobrazení. Uživatel může klikněte na tlačítko procesu dodávky produktu, zadejte tyto produkty z dodávky a pak klikněte na tlačítko Přidat produkty z dodávky. To by přidejte produkty a vrátí uživatele k zobrazení rozhraní. V tomto okamžiku uživatel může chtít přidat jiné dodávky. Po kliknutí na tlačítko procesu dodávky produktu, které budou vráceny vkládání rozhraní, ale DropDownList výběry a textové pole hodnot by stále se vyplní jejich předchozí hodnoty.
 
 
 [!code-csharp[Main](batch-inserting-cs/samples/sample5.cs)]
@@ -215,7 +215,7 @@ Využijte k otestování této stránky v prohlížeči. Při první návštěv�
 
 ## <a name="step-4-adding-the-products"></a>Krok 4: Přidání produktů
 
-Vše, který zůstane pro tento kurz, je uložit do databáze v produktech přidat produkty z dodávky tlačítko s `Click` obslužné rutiny události. Toho můžete docílit tak, že vytvoříte `ProductsDataTable` a přidání `ProductsRow` instance pro každý ze zadaných názvů produktů. Jednou tyto `ProductsRow` s byly přidány, budeme volání `ProductsBLL` třída s `UpdateWithTransaction` metoda předává `ProductsDataTable`. Vzpomeňte si, že `UpdateWithTransaction` metodu, která byla vytvořena v [zabalení úprav databáze do transakce](wrapping-database-modifications-within-a-transaction-cs.md) výukový program, předá `ProductsDataTable` k `ProductsTableAdapter` s `UpdateWithTransaction` metoda. Odtud, je spustit transakci ADO.NET a TableAdatper problémy `INSERT` příkaz k databázi pro každou přidali `ProductsRow` v objektu DataTable. Za předpokladu, že všechny produkty jsou přidány bez chyb, že transakce se potvrzeny, jinak je vrácena zpět.
+Vše, který zůstane pro tento kurz, je uložit do databáze v produktech přidat produkty z dodávky tlačítko s `Click` obslužné rutiny události. Toho můžete docílit tak, že vytvoříte `ProductsDataTable` a přidání `ProductsRow` instance pro každý ze zadaných názvů produktů. Jednou tyto `ProductsRow` s byly přidány, budeme volání `ProductsBLL` třída s `UpdateWithTransaction` metoda předává `ProductsDataTable`. Vzpomeňte si, že `UpdateWithTransaction` metodu, která byla vytvořena v [zabalení úprav databáze do transakce](wrapping-database-modifications-within-a-transaction-cs.md) výukový program, předá `ProductsDataTable` k `ProductsTableAdapter` s `UpdateWithTransaction` metoda. Odtud, je spustit transakci ADO.NET a problémy TableAdapter `INSERT` příkaz k databázi pro každou přidali `ProductsRow` v objektu DataTable. Za předpokladu, že všechny produkty jsou přidány bez chyb, že transakce se potvrzeny, jinak je vrácena zpět.
 
 Kód pro přidání produkty z dodávky tlačítko s `Click` obslužné rutiny události musí také provést trochu kontroly chyb. Vzhledem k tomu, že neexistují žádné RequiredFieldValidators používaných pro vkládání rozhraní, může uživatel zadat při vynechání názvu cenu pro produkt. Protože název produktu s je povinný, pokud takovou podmínku, kterou se musíme upozornit uživatele a ne pokračujte vložení informací. Kompletní `Click` následuje kód obslužné rutiny události:
 

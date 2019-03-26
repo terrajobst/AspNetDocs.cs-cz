@@ -399,7 +399,7 @@ description: 'Informace o tom, jak vyvíjet standardní a webové aplikace ASP.N
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Reálný čas</h3>
-                                                    <p>Naučte se vytvářet chatovací aplikaci s funkcí SignalR 2 technologie ASP.NET a sadou Visual Studio.</p>
+                                                    <p>Naučte se vytvářet chatovací aplikaci s použitím technologie ASP.NET SignalR 2 a sady Visual Studio.</p>
                                                 </div>
                                             </div>
                                         </div>

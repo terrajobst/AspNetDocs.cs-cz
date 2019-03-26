@@ -8,12 +8,12 @@ ms.date: 02/10/2010
 ms.assetid: d7729af4-1eda-4ff2-8b61-dbbe4fc11d10
 msc.legacyurl: /whitepapers/aspnet4
 msc.type: content
-ms.openlocfilehash: 775286df610df9040cbf04125b1742b6befa055b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 93ee29ae125e9442ee755998768a8105dfb485c0
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071584"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424297"
 ---
 <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu
 ====================
@@ -945,7 +945,7 @@ Hodnota pro *controlRenderingCompatibility* je řetězec, který umožňuje pote
 
 V technologii ASP.NET 3.5 SP1 a předchozí verze rozhraní framework vykreslí *zakázané* atribut v kódu HTML pro všechny ovládací prvek, jehož *povoleno* vlastnost nastavena na hodnotu *false*. Nicméně podle specifikace HTML 4.01, pouze *vstupní* prvky musí mít tento atribut.
 
-V technologii ASP.NET 4, můžete nastavit *controlRenderingCompatabilityVersion* vlastnost "3.5", jako v následujícím příkladu:
+V technologii ASP.NET 4, můžete nastavit *controlRenderingCompatibilityVersion* vlastnost "3.5", jako v následujícím příkladu:
 
 [!code-xml[Main](overview/samples/sample70.xml)]
 
@@ -957,7 +957,7 @@ Můžete například vytvořit značku *popisek* ovládacího prvku následujíc
 
 [!code-html[Main](overview/samples/sample72.html)]
 
-V technologii ASP.NET 4, můžete nastavit *controlRenderingCompatabilityVersion* "4.0". V takovém případě je řízeno jen tento vykreslení *vstupní* prvky vykreslí *zakázané* atribut při ovládacího prvku *povoleno* je nastavena na *false* . Ovládací prvky, které nezobrazují HTML *vstupní* místo vykreslení elementů *třídy* atribut, který odkazuje na třídu šablony stylů CSS, která můžete použít k definování zakázané vzhled ovládacího prvku. Například *popisek* ovládací prvek je znázorněno v předchozím příkladu by generují následující kód:
+V technologii ASP.NET 4, můžete nastavit *controlRenderingCompatibilityVersion* "4.0". V takovém případě je řízeno jen tento vykreslení *vstupní* prvky vykreslí *zakázané* atribut při ovládacího prvku *povoleno* je nastavena na *false* . Ovládací prvky, které nezobrazují HTML *vstupní* místo vykreslení elementů *třídy* atribut, který odkazuje na třídu šablony stylů CSS, která můžete použít k definování zakázané vzhled ovládacího prvku. Například *popisek* ovládací prvek je znázorněno v předchozím příkladu by generují následující kód:
 
 [!code-html[Main](overview/samples/sample73.html)]
 

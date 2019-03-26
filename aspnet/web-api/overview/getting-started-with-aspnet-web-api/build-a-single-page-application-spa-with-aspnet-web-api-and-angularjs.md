@@ -8,18 +8,18 @@ ms.date: 09/30/2015
 ms.assetid: 719727b7-bef3-45ad-bfe9-ba5bcdb2305f
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs
 msc.type: authoredcontent
-ms.openlocfilehash: 3c3557bb2be2807b11874937fcc629b5b773e463
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 03409e2fda831a07bbc5321ad842633b23ec25e5
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075031"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422405"
 ---
 <a name="hands-on-lab-build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs"></a>Praktické cvičení: Sestavení jednostránkové aplikace (SPA) pomocí webového rozhraní API ASP.NET a Angular.js
 ====================
 podle [Campy Web týmu](https://twitter.com/webcamps)
 
-[Stáhněte si Web Campy školení Kit](http://aka.ms/webcamps-training-kit)
+[Stáhněte si Web Campy školení Kit](https://aka.ms/webcamps-training-kit)
 
 > Tradiční webových aplikací inicializuje klienta (prohlížeč) komunikaci se serverem můžete si vyžádat stránku. Server poté zpracuje žádost a odešle klientovi HTML na stránce. V dalších interakcích se stránkou – například uživatel přejde na odkaz nebo odešle formulář s daty – je nová žádost odeslány na server a znovu spustí tok: server zpracuje žádost a odešle nové stránky do prohlížeče v reakci na žádost o nové akce ED klientem.
 > 
@@ -29,7 +29,7 @@ podle [Campy Web týmu](https://twitter.com/webcamps)
 > 
 > V tomto ručně v testovacím prostředí bude využívat těchto technologií ještě používáte k implementaci Informatik kvíz, triviální prvek Web založený na konceptu jednostránková aplikace. Nejprve budete implementovat vrstvě služby s rozhraním ASP.NET Web API k vystavení požadované koncové body načíst kvíz otázky a odpovědi uložit. Potom sestavíte bohaté a interaktivní uživatelské rozhraní pomocí AngularJS a CSS3 účinky transformace.
 > 
-> Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
+> Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://aka.ms/webcamps-training-kit ](https://aka.ms/webcamps-training-kit).
 
 
 ## <a name="overview"></a>Přehled
@@ -98,7 +98,7 @@ Rozhraní Web API je součástí technologie ASP.NET zásobníku a je navržený
 <a id="Ex1Task1"></a>
 #### <a name="task-1--creating-the-initial-project-for-geek-quiz"></a>Úloha 1 – vytváření původního projektu pro nadšence kvíz
 
-Tato úloha se spustí, vytvoření nového projektu ASP.NET MVC s podporou rozhraní ASP.NET Web API založeného na **One ASP.NET** projektu typu, který je součástí sady Visual Studio. **One ASP.NET** sjednocuje všechny technologie ASP.NET a dává vám možnost kombinovat a párovat podle potřeby. Potom přidáte tříd modelu Entity Framework a initializator databáze k vložení dotazy kvízu s časovým limitem.
+Tato úloha se spustí, vytvoření nového projektu ASP.NET MVC s podporou rozhraní ASP.NET Web API založeného na **One ASP.NET** projektu typu, který je součástí sady Visual Studio. **One ASP.NET** sjednocuje všechny technologie ASP.NET a dává vám možnost kombinovat a párovat podle potřeby. Potom přidáte tříd modelu Entity Framework a inicializátor databáze k vložení dotazy kvízu s časovým limitem.
 
 1. Otevřít **Visual Studio Express 2013 for Web** a vyberte **soubor | Nový projekt...**  spusťte nové řešení.
 

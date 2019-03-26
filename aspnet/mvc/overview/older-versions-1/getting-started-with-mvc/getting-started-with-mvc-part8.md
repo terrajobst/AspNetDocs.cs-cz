@@ -8,12 +8,12 @@ ms.date: 08/14/2010
 ms.assetid: 7ae696b9-348f-4993-8ebb-a838acbe0c28
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part8
 msc.type: authoredcontent
-ms.openlocfilehash: 22a6c4e5a07e81d5876cc442e68926094e3a243d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a014690078f113e5090f4867c2f384751f16b9f6
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068758"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425350"
 ---
 <a name="adding-a-column-to-the-model"></a>Přidání sloupce do modelu
 ====================
@@ -24,7 +24,7 @@ podle [Scott Hanselman](https://github.com/shanselman)
 
 V této části jsme se chystáte projít jak můžeme provádět změny schématu databáze a zpracovat změny v rámci naší aplikace.
 
-Přidejme do tabulky Movie slo se "Hodnocení". Přejděte zpět do integrovaného vývojového prostředí a kliknutím na Průzkumníka databáze. Tabulky Movie klikněte pravým tlačítkem a vyberte Otevřít definici tabulky.
+Přidejme do tabulky Movie sloupec "Hodnocení". Přejděte zpět do integrovaného vývojového prostředí a kliknutím na Průzkumníka databáze. Tabulky Movie klikněte pravým tlačítkem a vyberte Otevřít definici tabulky.
 
 Přidáte sloupec "Hodnocení", jak je vidět níže. Vzhledem k tomu, že teď nemáme žádné hodnocení, sloupec můžete povolit hodnoty Null. Klikněte na Uložit.
 

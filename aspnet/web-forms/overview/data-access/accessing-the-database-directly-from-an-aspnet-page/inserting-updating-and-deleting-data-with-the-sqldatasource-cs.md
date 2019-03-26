@@ -8,12 +8,12 @@ ms.date: 02/20/2007
 ms.assetid: a526f0ec-779e-4a2b-a476-6604090d25ce
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2c52fcf746d80899d7ea568c8110c4dfa610224c
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 06c5fea8a058f15e72d455cf0e15b462d8f91e38
+ms.sourcegitcommit: 62db31596a7da029263cf06335aff12236fb3186
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071047"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58440388"
 ---
 <a name="inserting-updating-and-deleting-data-with-the-sqldatasource-c"></a>Vkládání, aktualizace a odstraňování dat ovládacím prvkem SqlDataSource (C#)
 ====================
@@ -119,7 +119,7 @@ S `DeleteCommand` přidána vlastnost ovládacího prvku GridView s inteligentn�
 Po kliknutí na tlačítko pro odstranění, dojde k zpětné volání, přiřadí prvku GridView `ProductID` parametr hodnotu z `DataKeys` hodnota kolekce pro řádek, jehož tlačítko pro odstranění došlo ke kliknutí na a vyvolá SqlDataSource s `Delete()` metoda. Ovládacím prvkem SqlDataSource pak připojí k databázi a spustí `DELETE` příkazu. Prvku GridView. potom znovu připojí k ovládacím prvkem SqlDataSource návrat a zobrazení aktuální sadu produktů (který už obsahuje záznam odstranit jenom).
 
 > [!NOTE]
-> Od prvku GridView používá jeho `DataKeys` kolekce k naplnění parametrů SqlDataSource ho s důležité, který GridView s `DataKeyNames` vlastnost nastavit na sloupce, které tvoří primární klíč a že SqlDataSource s `SelectCommand` vrátí Tyto sloupce. Kromě toho je důležité, že parametr name ve třídě SqlDataSource s `DeleteCommand` je nastavena na `@ProductID`. Pokud `DataKeyNames` vlastnost není nastavená nebo není parametr pojmenovaný `@ProductsID`, kliknutím na tlačítko Odstranit budou vyvolávají zpětné odeslání, ale získaných oproti očekávaným t skutečně odstranit kterýkoli záznam.
+> Od prvku GridView používá jeho `DataKeys` kolekce k naplnění parametrů SqlDataSource ho s důležité, který GridView s `DataKeyNames` vlastnost nastavit na sloupce, které tvoří primární klíč a že SqlDataSource s `SelectCommand` vrátí Tyto sloupce. Kromě toho je důležité, že parametr name ve třídě SqlDataSource s `DeleteCommand` je nastavena na `@ProductID`. Pokud `DataKeyNames` vlastnost není nastavená nebo není parametr pojmenovaný `@ProductsID`, kliknutím na tlačítko Odstranit budou vyvolávají zpětné odeslání, ale nedojde k odstranění ve skutečnosti každý záznam.
 
 
 Obrázek 5 graficky znázorňuje tuto interakci. Vraťte se do [zkoumání události spojené s vložení, aktualizace a odstranění](../editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-cs.md) kurz podrobnější informace o sled událostí spojených s vložením, aktualizace a odstranění dat webový ovládací prvek.
@@ -192,7 +192,7 @@ Od generovat `INSERT`, `UPDATE`, a `DELETE` příkazy možnost je dostupná jeno
 
 Zatímco `INSERT`, `UPDATE`, a `DELETE` příkazy lze zadat ručně, vezměte v úvahu následující tip ušetří čas. Počáteční nastavení ve třídě SqlDataSource tak, aby načte zpět data pouze z `Products` tabulky. Použít průvodce Konfigurovat zdroj dat s zadat sloupce z tabulky nebo zobrazení obrazovky, takže můžete automaticky vygenerovat `INSERT`, `UPDATE`, a `DELETE` příkazy. Po dokončení Průvodce nakonfigurovat SelectQuery z okna Vlastnosti rozhodnete (nebo případně přejděte zpět do Průvodce konfigurací zdroje dat, ale použijte zadejte vlastní příkaz SQL nebo uloženou proceduru možnost). Pak aktualizujte `SELECT` příkazu zahrnout `JOIN` syntaxe. Tento postup nabízí výhody ušetří čas automaticky generované příkazů SQL a umožňuje více přizpůsobit `SELECT` příkazu.
 
-Další omezení automatického generování `INSERT`, `UPDATE`, a `DELETE` příkazech je to, že sloupce v `INSERT` a `UPDATE` příkazy jsou založeny na sloupcích vrácené `SELECT` příkazu. Budeme muset aktualizovat nebo vložit více nebo méně pole, ale. Například v příkladu v kroku 2, možná Chceme mít `UnitPrice` Vlastnost BoundField být jen pro čtení. V takovém případě ji joinkind nesmí obsahovat více t `UpdateCommand`. Nebo může být vhodné nastavit hodnotu pole tabulky, které nejsou uvedené v prvku GridView. Například při přidání nového záznamu může chceme `QuantityPerUnit` nastavenou TODO.
+Další omezení automatického generování `INSERT`, `UPDATE`, a `DELETE` příkazech je to, že sloupce v `INSERT` a `UPDATE` příkazy jsou založeny na sloupcích vrácené `SELECT` příkazu. Budeme muset aktualizovat nebo vložit více nebo méně pole, ale. Například v příkladu v kroku 2, možná Chceme mít `UnitPrice` Vlastnost BoundField být jen pro čtení. V takovém případě by se neměl zobrazit ve `UpdateCommand`. Nebo může být vhodné nastavit hodnotu pole tabulky, které nejsou uvedené v prvku GridView. Například při přidání nového záznamu může chceme `QuantityPerUnit` nastavenou TODO.
 
 Pokud tyto úpravy jsou požadovány, musíte je vytvořit ručně, buď v okně Vlastnosti, zadejte vlastní příkaz SQL nebo uloženou proceduru možnost v průvodci nebo pomocí deklarativní syntaxe.
 
@@ -204,7 +204,7 @@ Pokud tyto úpravy jsou požadovány, musíte je vytvořit ručně, buď v okně
 
 V pořadí dat webové ovládací prvky využívat jejich vkládání předdefinovaných, úpravy a odstranění funkce musí ovládací prvek zdroje dat, které jsou vázány na nabízí tyto funkce. Pro ovládacím prvkem SqlDataSource, to znamená, že `INSERT`, `UPDATE`, a `DELETE` příkazy SQL, musíte být přiřazeni k `InsertCommand`, `UpdateCommand`, a `DeleteCommand` vlastnosti. Tyto vlastnosti a odpovídající parametry kolekce, můžete přidat ručně nebo prostřednictvím Průvodce konfigurace zdroje dat, vygenerovaný automaticky. V tomto kurzu jsme se zaměřili na obě tyto metody.
 
-Jsme se zaměřili na pomocí optimistického řízení souběžnosti ovládacím prvkem ObjectDataSource v [implementace optimistického řízení souběžnosti](../editing-inserting-and-deleting-data/implementing-optimistic-concurrency-cs.md) kurzu. Ovládacím prvkem SqlDataSource také poskytuje podporu optimistického řízení souběžnosti. Jak je uvedeno v kroku 2, při automatickém generování `INSERT`, `UPDATE`, a `DELETE` příkazy, nabízí průvodce použijte možnost optimistického řízení souběžnosti. Jak uvidíme v dalším kurzu, pomocí optimistického řízení souběžnosti ovládacím prvkem SqlDataSource upraví `WHERE` ustanovení `UPDATE` a `DELETE` příkazy k zajištění, že některé hodnoty ostatních sloupců t změněna od poslední data na stránce zobrazí.
+Jsme se zaměřili na pomocí optimistického řízení souběžnosti ovládacím prvkem ObjectDataSource v [implementace optimistického řízení souběžnosti](../editing-inserting-and-deleting-data/implementing-optimistic-concurrency-cs.md) kurzu. Ovládacím prvkem SqlDataSource také poskytuje podporu optimistického řízení souběžnosti. Jak je uvedeno v kroku 2, při automatickém generování `INSERT`, `UPDATE`, a `DELETE` příkazy, nabízí průvodce použijte možnost optimistického řízení souběžnosti. Jak uvidíme v dalším kurzu, pomocí optimistického řízení souběžnosti ovládacím prvkem SqlDataSource upraví `WHERE` ustanovení `UPDATE` a `DELETE` příkazy k zajištění, že hodnoty pro další sloupce, které nebyly změněny od poslední data na stránce zobrazí.
 
 Všechno nejlepší programování!
 

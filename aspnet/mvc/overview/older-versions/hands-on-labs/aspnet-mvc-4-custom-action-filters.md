@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 969ab824-1b98-4552-81fe-b60ef5fc6887
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-custom-action-filters
 msc.type: authoredcontent
-ms.openlocfilehash: 0170fda6849c1dfb53b44908ea55ba2cad0dd067
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 4c8628cc289610e287c0a3bc3c8a4c7a833c9fde
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069604"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423413"
 ---
 # <a name="aspnet-mvc-4-custom-action-filters"></a>ASP.NET MVC 4 – filtr vlastních akcí
 
@@ -261,7 +261,7 @@ V této úloze vytvoříte nový filtr vlastních akcí vložit do třídy Store
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample9.cs)]
 
     > [!NOTE]
-    > Tento filtr vlastních akcí je téměř stejný než ta, kterou jste vytvořili v předchozím cvičení. Hlavní rozdíl je, že na něm *&quot;protokolovány podle&quot;* atribut aktualizovat tato nová třída název pro identifikaci začínajícího filtr registrován v protokolu.
+    > Tento filtr vlastních akcí je téměř stejný než ta, kterou jste vytvořili v předchozím cvičení. Hlavní rozdíl je, že na něm *&quot;protokolovány podle&quot;* atribut aktualizovat tato nová třída název pro identifikaci, který filtr registrován v protokolu.
 
 <a id="Ex2Task2"></a>
 
@@ -292,7 +292,7 @@ V této úloze se přidat nový vlastní filtr do třídy StoreController a spu�
 <a id="Task_3_Managing_Filter_Ordering"></a>
 #### <a name="task-3-managing-filter-ordering"></a>Úloha 3: Správa pořadí filtru
 
-V této úloze se dozvíte, jak spravovat pořadí spuštění filtrů se s použitím určeno pořadí.
+V této úloze se dozvíte, jak spravovat pořadí spuštění filtrů se pomocí vlastnosti pořadí.
 
 1. Otevřít **StoreController** třídy nachází v **MvcMusicStore\Controllers** a zadejte **pořadí** vlastnost v obou filtrů, jako jsou uvedené dole.
 
@@ -325,7 +325,7 @@ V této úloze se dozvíte, jak spravovat pořadí spuštění filtrů se s pou�
 <a id="Task_4_Registering_Filters_Globally"></a>
 #### <a name="task-4-registering-filters-globally"></a>Úloha 4: Registrace globálně filtry
 
-V této úloze budete aktualizovat řešení k registraci nového filtru (**MyNewCustomActionFilter**) jako globální filtr. Tímto způsobem se aktivuje ve všech akce základě nastaveného v aplikaci a ne jenom v StoreController ty stejně jako v předchozí úloze.
+V této úloze budete aktualizovat řešení k registraci nového filtru (**MyNewCustomActionFilter**) jako globální filtr. Tímto způsobem se aktivuje pomocí všechny akce provedené v aplikaci a ne jenom v StoreController ty stejně jako v předchozí úloze.
 
 1. V **StoreController** třídy, odeberte **[MyNewCustomActionFilter]** atribut a vlastnosti prostředí z **[CustomActionFilter]**. By měl vypadat nějak takto:
 
@@ -375,7 +375,7 @@ Po dokončení tohoto praktického testovacího prostředí jste se dozvěděli,
 
 Můžete nainstalovat **Microsoft Visual Studio Express 2012 pro Web** nebo jiném &quot;Express&quot; verzí pomocí **[instalačního programu webové platformy Microsoft](https://www.microsoft.com/web/downloads/platform.aspx)**. Postupujte podle následujících pokynů vás provede kroky potřebné k instalaci *Visual studio Express 2012 pro Web* pomocí *instalačního programu webové platformy Microsoft*.
 
-1. Přejděte na [ [ https://go.microsoft.com/? linkid = 9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169). Případně, pokud jste již nainstalovali instalačního programu webové platformy, můžete otevřít a vyhledejte produkt &quot; <em>Visual Studio Express 2012 pro Web se sadou Windows Azure SDK</em>&quot;.
+1. Přejděte do [ (Nastavení)https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169) (Integrace a služby). Případně, pokud jste již nainstalovali instalačního programu webové platformy, můžete otevřít a vyhledejte produkt &quot; <em>Visual Studio Express 2012 pro Web se sadou Windows Azure SDK</em>&quot;.
 2. Klikněte na **nainstalovat**. Pokud nemáte **instalačního programu webové platformy** budete přesměrováni na stáhněte a nainstalujte ji jako první.
 3. Jednou **instalačního programu webové platformy** je otevřený, klikněte na tlačítko **nainstalovat** spustit instalační program.
 
@@ -419,7 +419,7 @@ Tento dodatek se ukazují, jak vytvořit nový web z portálu správy Windows Az
 1. Přejděte [Windows Azure Management Portal](https://manage.windowsazure.com/) a přihlaste se pomocí přihlašovacích údajů Microsoft spojených s vaším předplatným.
 
     > [!NOTE]
-    > Windows Azure můžete zadarmo hostovat 10 webů ASP.NET a pak škálujte podle rozšiřujícího se provozu. Můžete se zaregistrovat [tady](http://aka.ms/aspnet-hol-azure).
+    > Windows Azure můžete zadarmo hostovat 10 webů ASP.NET a pak škálujte podle rozšiřujícího se provozu. Můžete se zaregistrovat [tady](https://aka.ms/aspnet-hol-azure).
 
     ![Přihlaste se k portálu Windows Azure](aspnet-mvc-4-custom-action-filters/_static/image17.png "Přihlaste se k portálu Windows Azure")
 

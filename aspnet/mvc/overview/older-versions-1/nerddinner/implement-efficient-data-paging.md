@@ -8,12 +8,12 @@ ms.date: 07/27/2010
 ms.assetid: adea836d-dbc2-4005-94ea-53aef09e9e34
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/implement-efficient-data-paging
 msc.type: authoredcontent
-ms.openlocfilehash: 2bef690355cd1f89a15a67f0c49775296d551136
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 9a0b3357ef4ac9c884877474454089cc71692b7d
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076708"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58426091"
 ---
 <a name="implement-efficient-data-paging"></a>Implementace efektivního stránkování dat
 ====================
@@ -42,7 +42,7 @@ Když vytvoří požadavek na */Dinners* adresu URL, načte seznam všechny nadc
 
 ![](implement-efficient-data-paging/_static/image1.png)
 
-### <a name="understanding-iquerablelttgt"></a>Principy IQuerable&lt;T&gt;
+### <a name="understanding-iqueryablelttgt"></a>Principy IQueryable&lt;T&gt;
 
 *Položka IQueryable&lt;T&gt;*  je rozhraní, které se zavedly s dotazy LINQ jako součást rozhraní .NET 3.5. Umožňuje efektivní "odložené provedení" scénáře, které nám můžete využít k implementaci podpory stránkování.
 

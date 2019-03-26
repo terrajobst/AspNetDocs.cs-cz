@@ -8,18 +8,18 @@ ms.date: 06/09/2009
 ms.assetid: 051296f0-9519-4e78-835c-d868da13b0a0
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 29ea7f376f61c242ab93cfb71e1a7b435c575482
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0783d59fe70ebed9f1f074d35a9f2e063720d27a
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074047"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424739"
 ---
 <a name="processing-unhandled-exceptions-vb"></a>Zpracování neošetřených výjimek (VB)
 ====================
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
-[Zobrazení nebo stažení ukázkového kódu](https://github.com/aspnet/Docs/tree/master/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb/samples) ([stažení](/aspnet/core/tutorials/index#how-to-download-a-sample))
+[Zobrazení nebo stažení ukázkového kódu](https://github.com/aspnet/AspNetDocs/tree/master/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb/samples) ([stažení](/aspnet/core/tutorials/index#how-to-download-a-sample))
 
 > Pokud dojde k chybě za běhu na webovou aplikaci v produkčním prostředí je důležité informovat vývojáře a protokolovat chyby tak, aby může být zjištěna později v čase. Tento kurz obsahuje přehled toho, jak ASP.NET zpracovává chyby za běhu a zkoumá jeden způsob, jak mají vlastní kód spustit pokaždé, když se bubliny neošetřené výjimce až modul runtime ASP.NET.
 

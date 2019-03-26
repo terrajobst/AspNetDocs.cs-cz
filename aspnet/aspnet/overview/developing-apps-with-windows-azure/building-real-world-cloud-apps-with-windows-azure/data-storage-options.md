@@ -8,15 +8,15 @@ ms.date: 06/12/2014
 ms.assetid: e51fcecb-cb33-4f9e-8428-6d2b3d0fe1bf
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
 msc.type: authoredcontent
-ms.openlocfilehash: 17e11c33d6bf2a75e99e3bda4d6ab89c5b1631f9
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 9969a68a3e1aa043845fb5affd6d3b73dec4136d
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071494"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425389"
 ---
-<a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a>Možnosti úložiště dat (vytváření skutečných cloudových aplikací s Azure)
-====================
+# <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a>Možnosti úložiště dat (vytváření skutečných cloudových aplikací s Azure)
+
 podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Petr Dykstra](https://github.com/tdykstra)
 
 [Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
@@ -62,13 +62,13 @@ Velké objemy dat, který můžete uložit do databáze NoSQL, může být obtí
 
 V Azure [HDInsight](https://azure.microsoft.com/services/hdinsight/) umožňuje zpracovávat, analyzovat a získání nových poznatků z velkých objemů dat s využitím výkonu hadoopu. Například může použít k analýze protokolů webového serveru:
 
-- Povolení protokolování webového serveru do vašeho účtu úložiště. Tím se nastaví Azure pro zápis protokolů do služby Blob Service pro každý požadavek HTTP do vaší aplikace. Služba objektů Blob je v podstatě Cloudová úložiště souborů a hezky integruje s HDInsight. 
+- Povolení protokolování webového serveru do vašeho účtu úložiště. Tím se nastaví Azure pro zápis protokolů do služby Blob Service pro každý požadavek HTTP do vaší aplikace. Služba objektů Blob je v podstatě Cloudová úložiště souborů a hezky integruje s HDInsight.
 
     ![Protokoly do úložiště objektů Blob](data-storage-options/_static/image2.png)
-- Protože aplikace získá provoz, protokolů webového serveru IIS se zapisují do úložiště objektů Blob. 
+- Protože aplikace získá provoz, protokolů webového serveru IIS se zapisují do úložiště objektů Blob.
 
     ![Protokoly webového serveru](data-storage-options/_static/image3.png)
-- Na portálu klikněte na tlačítko **nový** - **datové služby** - **HDInsight** - **rychlé vytvoření**, a zadejte název clusteru HDInsight, velikost clusteru (počet datových uzlů clusteru HDInsight) a uživatelské jméno a heslo pro HDInsight cluster. 
+- Na portálu klikněte na tlačítko **nový** - **datové služby** - **HDInsight** - **rychlé vytvoření**, a zadejte název clusteru HDInsight, velikost clusteru (počet datových uzlů clusteru HDInsight) a uživatelské jméno a heslo pro HDInsight cluster.
 
     ![HDInsight](data-storage-options/_static/image4.png)
 
@@ -175,7 +175,7 @@ Počkejte několik sekund, a mít databázi v Azure, které jsou připravené k 
 
 ![Vytvoření nové databáze SQL](data-storage-options/_static/image10.png)
 
-Tak, že Azure v několika sekund, co může trvat denně nebo týdně nebo i delší dobu provádět v místním prostředí. A protože databáze stejně snadno můžete ve skriptu nebo pomocí rozhraní API pro správu vytvořit automaticky, můžete dynamicky horizontálně navýšit tím, že rozprostírá vaše data napříč několika databázemi < o:p > tak dlouho, dokud aplikace naprogramování pro daný. < /o : p >
+Tak, že Azure v několika sekund, co může trvat denně nebo týdně nebo i delší dobu provádět v místním prostředí. A vzhledem k tomu, že databáze můžete stejně snadno vytvořit automaticky ve skriptu nebo pomocí rozhraní API pro správu, můžete dynamicky horizontálně navýšit tím, že rozprostírá vaše data napříč několika databázemi, tak dlouho, dokud aplikace naprogramování za to.
 
 Toto je příkladem našeho modelu platforma jako služba. Není nutné ke správě serverů, Uděláme to. Nemusíte se obávat o zálohování, Uděláme to. Běží v prostředí s vysokou dostupností – data v databázi se replikují napříč tři servery automaticky. Pokud počítač přestane být funkční, můžeme automaticky převzetí služeb při selhání a přijít o žádná data. Server je pravidelně opravit, nemusíte zabývat.
 
@@ -267,7 +267,7 @@ Další informace najdete v následujících materiálech.
 
 Volba databázové platformě:
 
-- [Přístup k datům pro vysoce škálovatelné řešení: Pomocí SQL, NoSQL a Polyglotické trvalosti](http://aka.ms/dag-doc). E-kniha od Microsoft Patterns and Practices, která přejdou do hloubky do různých typů dat ukládá k dispozici pro cloudové aplikace.
+- [Přístup k datům pro vysoce škálovatelné řešení: Pomocí SQL, NoSQL a Polyglotické trvalosti](https://aka.ms/dag-doc). E-kniha od Microsoft Patterns and Practices, která přejdou do hloubky do různých typů dat ukládá k dispozici pro cloudové aplikace.
 - [Microsoft Vzory a postupy – doprovodné materiály k Azure](https://msdn.microsoft.com/library/ff898430.aspx). Najdete v úvodu ke konzistenci dat, replikace dat a pokyny k synchronizaci, model tabulky indexů, modelu Materializovaného zobrazení.
 - [ZÁKLADNÍ: Alternativa odpovídající zásadám Acid](http://queue.acm.org/detail.cfm?id=1394128). Článek o kompromisy mezi konzistencí data a škálovatelnost.
 - [Sedm databází v sedmi týdnech: Příručka k moderní databází a přesun NoSQL](https://www.amazon.com/Seven-Databases-Weeks-Modern-Movement/dp/1934356921). Kniha od Eric Redmond a Jim R. Wilson. Důrazně doporučujeme zavedení sami oblasti datové platformy úložiště, které jsou dnes k dispozici.

@@ -8,18 +8,18 @@ ms.date: 08/01/2007
 ms.assetid: 10b5bad3-4c18-464f-9454-0b3e60b7b8be
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-use-the-conditional-updatemode-of-the-updatepanel
 msc.type: video
-ms.openlocfilehash: 96d7bc95fd80e410feb332264695835e68793ae2
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d1d407863340ad143c9859263ff66d538ca00335
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073918"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423829"
 ---
 <a name="how-do-i-use-the-conditional-updatemode-of-the-updatepanel"></a>[Postup:] Použití podmíněné vlastnosti UpdateMode ovládacího prvku UpdatePanel?
 ====================
 podle [Joe Stagner](https://github.com/JoeStagner)
 
-Ovládacího prvku UpdatePanel technologie ASP.NET AJAX zahrnuje vlastnost UpdateMode nastavena vlastnost, která může být nastavená na "Always" nebo "Podmínky". Výchozí hodnota je vždy, v takovém případě prvku UpdatePanel vždy aktualizuje její obsah během asynchronní zpětného odeslání. V tomto videu jsme dozvíte, jak jsme nastavili UpdateMode k podmíněnému, ve kterém případ prvku UpdatePanel pouze aktualizuje její obsah při našeho kódu na straně serveru vyvolá metodu její aktualizace. To umožňuje používat podmíněnou logiku v jazyce C# nebo kódu jazyka Visual Basic k určení, zda prvku UpdatePanel aktualizuje její obsah během aktuálního asynchronního postbacku.
+Ovládacího prvku UpdatePanel technologie ASP.NET AJAX zahrnuje vlastnost UpdateMode nastavena vlastnost, která může být nastavená na "Always" nebo "Podmínky". Výchozí hodnota je vždy, v takovém případě prvku UpdatePanel vždy aktualizuje její obsah během asynchronního zpětného odeslání. V tomto videu jsme dozvíte, jak jsme nastavili UpdateMode k podmíněnému, ve kterém případ prvku UpdatePanel pouze aktualizuje její obsah při našeho kódu na straně serveru vyvolá metodu její aktualizace. To umožňuje používat podmíněnou logiku v jazyce C# nebo kódu jazyka Visual Basic k určení, zda prvku UpdatePanel aktualizuje její obsah během aktuálního asynchronního postbacku.
 
 [&#9654;Podívejte se na video (13 min)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-conditional-updatemode-of-the-updatepanel)
 

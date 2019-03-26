@@ -8,12 +8,12 @@ ms.date: 02/06/2013
 ms.assetid: b91e6424-1544-4747-bd0b-d1f8418c9653
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-security-guidance
 msc.type: authoredcontent
-ms.openlocfilehash: 4ba53e15dab83368097a58ba4d0d2e46d113d1d2
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0e43ec6b1cbe922b00f0f71d08aed4d0f4c08af8
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078241"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425857"
 ---
 <a name="security-guidance-for-aspnet-web-api-2-odata"></a>Doprovodné materiály zabezpečení pro ASP.NET Web API 2 OData
 ====================
@@ -25,7 +25,7 @@ Toto téma popisuje některé problémy se zabezpečením, které byste měli zv
 
 Sémantiku dotazů jsou založeny na entity data model (EDM), nikoli základní typy modelů. Může být z modelu EDM vyloučena určitá vlastnost a nebude viditelná pro dotaz. Předpokládejme například, že váš model obsahuje typ zaměstnance s vlastností Salary. Můžete chtít vyloučit tuto vlastnost z modelu EDM skrýt od klientů.
 
-Existují dva způsoby, jak vyloučit vlastnost z modelu EDM. Můžete nastavit **[IgnoreDataMember]** atribut na vlastnost ve třídě modelu:
+Existují dva způsoby, jak být vyloučena určitá vlastnost z modelu EDM. Můžete nastavit **[IgnoreDataMember]** atribut na vlastnost ve třídě modelu:
 
 [!code-csharp[Main](odata-security-guidance/samples/sample1.cs)]
 

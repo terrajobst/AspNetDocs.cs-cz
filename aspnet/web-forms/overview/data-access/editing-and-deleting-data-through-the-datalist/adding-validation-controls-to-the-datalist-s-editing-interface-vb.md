@@ -8,12 +8,12 @@ ms.date: 10/30/2006
 ms.assetid: 6b073fc6-524d-453d-be7c-0c30986de391
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/adding-validation-controls-to-the-datalist-s-editing-interface-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6fe5fcba322f3d3a37b862f0a85810d8b4dda5f4
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d4d7db91ebd495149bb322487b541e2965d4f5e5
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076462"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424670"
 ---
 <a name="adding-validation-controls-to-the-datalists-editing-interface-vb"></a>Přidání validačních ovládacích prvků do rozhraní pro úpravy prvku DataList (VB)
 ====================
@@ -156,10 +156,10 @@ Přidejte následující kód do začátku `UpdateCommand` obslužná rutina ud�
 
 [!code-vb[Main](adding-validation-controls-to-the-datalist-s-editing-interface-vb/samples/sample2.vb)]
 
-Uveďte se pokusí produktu aktualizovat pouze v případě, že odeslaná data je platný. Většina uživatelů vyhráli t moct odeslat zpět neplatných dat z důvodu skripty na straně klienta pro ovládací prvky ověření, ale uživatelé, jejichž prohlížeče zadávat t podporu jazyka JavaScript nebo obsahujících jazyka JavaScript podporují zakázaná, můžete vynechat kontroly na straně klienta a odeslat neplatná data.
+Uveďte se pokusí produktu aktualizovat pouze v případě, že odeslaná data je platný. Většina uživatelů, nebudou moct odeslat zpět neplatných dat z důvodu skripty na straně klienta ověření ovládacích prvků, ale uživatelé, jejichž prohlížeče zadávat t podpora jazyka JavaScript nebo, který mají podporu jazyka JavaScript zakázaná, můžete vynechat kontroly na straně klienta a odeslat neplatná data.
 
 > [!NOTE]
-> Bystří čtenáři budou Vzpomeňte si, že při aktualizaci dat s použitím prvku GridView, jsme kód nefungoval nemusíte explicitně zkontrolovala `Page.IsValid` vlastnost ve třídě použití modelu code-behind naší stránce s. Důvodem je, že prvku GridView consults `Page.IsValid` vlastnost pro nás a pouze pokračovat aktualizace pouze v případě, že vrací hodnotu `True`.
+> Bystří čtenáři budou si možná Vzpomínáte, že při aktualizaci dat prvku GridView, jsme nemusíte explicitně zkontrolovala `Page.IsValid` vlastnost ve třídě použití modelu code-behind naší stránce s. Důvodem je, že prvku GridView consults `Page.IsValid` vlastnost pro nás a pouze pokračovat aktualizace pouze v případě, že vrací hodnotu `True`.
 
 
 ## <a name="step-3-summarizing-data-entry-problems"></a>Krok 3: Shrnutí problémů položka dat

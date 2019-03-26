@@ -8,12 +8,12 @@ ms.date: 01/20/2014
 ms.assetid: 4c56f64a-086a-44ce-99c2-4c69604cd7fd
 msc.legacyurl: /web-api/overview/formats-and-model-binding/media-formatters
 msc.type: authoredcontent
-ms.openlocfilehash: 7b7ba2fb3f1bba0447e700c84a017266cba305e6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: bd54a1d8ae3a2913c9d8a11c5b31ba1c829450d2
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072148"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425311"
 ---
 <a name="media-formatters-in-aspnet-web-api-2"></a>Formátovací moduly médií ve rozhraní ASP.NET Web API 2
 ====================
@@ -46,7 +46,7 @@ Typ média určuje, jak webové rozhraní API serializuje a deserializuje tělo 
 Pokud chcete vytvořit formátovací modul médií, odvození od některého z těchto tříd:
 
 - [MediaTypeFormatter](https://msdn.microsoft.com/library/system.net.http.formatting.mediatypeformatter.aspx). Tato třída používá asynchronní čtení a zápis metody.
-- [BufferedMediaTypeFormatter](https://msdn.microsoft.com/library/system.net.http.formatting.bufferedmediatypeformatter.aspx). Tato třída je odvozena z **objekt MediaTypeFormatter** , ale používá sychronous metody pro čtení a zápisu.
+- [BufferedMediaTypeFormatter](https://msdn.microsoft.com/library/system.net.http.formatting.bufferedmediatypeformatter.aspx). Tato třída je odvozena z **objekt MediaTypeFormatter** , ale používá metody synchronního čtení/zápisu.
 
 Odvozování z **BufferedMediaTypeFormatter** je jednodušší, protože neexistuje žádný asynchronní kód, ale také to znamená volající vlákno může přerušováno během vstupně-výstupních operací.
 
@@ -56,7 +56,7 @@ Následující příklad ukazuje formátovací modul typu média, která může 
 
 [!code-csharp[Main](media-formatters/samples/sample3.cs)]
 
-Chcete-li implementovat formátovací modul sdíleného svazku clusteru, definovat třídu, která je odvozena z **BufferedMediaTypeFormater**:
+Chcete-li implementovat formátovací modul sdíleného svazku clusteru, definovat třídu, která je odvozena z **BufferedMediaTypeFormatter**:
 
 [!code-csharp[Main](media-formatters/samples/sample4.cs)]
 

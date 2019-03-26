@@ -8,12 +8,12 @@ ms.date: 02/20/2005
 ms.assetid: 92df4051-77c6-492c-bd34-23d24189cea4
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/profiles-themes-and-web-parts
 msc.type: authoredcontent
-ms.openlocfilehash: 98559c2a378c72bc5664faafe5436753050b574f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 010adaba61b15ca4421c2d3a4a7590becb53897b
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077491"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422843"
 ---
 <a name="profiles-themes-and-web-parts"></a>Profily, motivy a webové části
 ====================
@@ -222,7 +222,7 @@ V tomto cvičení použijete motivu ASP.NET na web.
 3. Ze seznamu souborů vyberte soubor webové konfigurace a klikněte na tlačítko Přidat.
 4. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a zvolte Přidat novou položku.
 5. Zvolte soubor vzhledu a klikněte na tlačítko Přidat.
-6. Klikněte na tlačítko Ano, když se zobrazí výzva, pokud si umístit daný soubor uvnitř aplikace, jako jsou youd\_složku motivů.
+6. Klikněte na tlačítko Ano, když se zobrazí výzva, jestli chcete umístit soubor uvnitř aplikace\_složku motivů.
 7. Klikněte pravým tlačítkem na složku SkinFile uvnitř aplikace\_motivy složku v Průzkumníku řešení a zvolte Přidat novou položku.
 8. Zvolte ze seznamu souborů šablony stylů a klikněte na tlačítko Přidat. Nyní máte všechny soubory nezbytné k implementaci nový motiv. Visual Studio se s názvem složky Motivy SkinFile. Klikněte pravým tlačítkem na tuto složku a změňte název na CoolTheme.
 9. Otevřete soubor SkinFile.skin a přidejte následující kód konci souboru: 

@@ -8,12 +8,12 @@ ms.date: 01/30/2013
 ms.assetid: 04d5f142-5f62-494a-b5ea-4f3d068d34cb
 msc.legacyurl: /single-page-application/overview/templates/emberjs-template
 msc.type: authoredcontent
-ms.openlocfilehash: fbc3b1d299ace27d38d895e42b8e3bb3b51b36f8
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 69331dc1cf2aacf306b55b49402f7df90f5e2c99
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066808"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58421971"
 ---
 <a name="emberjs-template"></a>Šablona EmberJS
 ====================
@@ -149,7 +149,7 @@ Složka šablony obsahuje čtyři šablony:
 
 [!code-html[Main](emberjs-template/samples/sample12.html)]
 
-`HtmlHelperExtensions` Třídy definované v Controllers/HtmlHelperExensions.cs, definuje pomocnou rutinu funkce do mezipaměti a Vložit šablonu souborů při **ladění** je nastavena na **true** v souboru Web.config. Tato funkce je volána z definované v Views/Home/App.cshtml soubor zobrazení ASP.NET MVC:
+`HtmlHelperExtensions` Třídy definované v Controllers/HtmlHelperExtensions.cs, definuje pomocnou rutinu funkce do mezipaměti a Vložit šablonu souborů při **ladění** je nastavena na **true** v souboru Web.config. Tato funkce je volána z definované v Views/Home/App.cshtml soubor zobrazení ASP.NET MVC:
 
 [!code-cshtml[Main](emberjs-template/samples/sample13.cshtml)]
 

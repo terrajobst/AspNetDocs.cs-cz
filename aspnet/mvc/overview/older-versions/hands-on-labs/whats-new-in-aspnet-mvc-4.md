@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 48f7feb3-872f-485d-b96f-e30011ff8c4a
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/whats-new-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 9d5a51a5887ecbbc96fce1416b88aa849bc3674e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0c4b7b2641c91cbb63ec46fa707c004f7273a303
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074698"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422685"
 ---
 # <a name="whats-new-in-aspnet-mvc-4"></a>Novinky v ASP.NET MVC 4
 
@@ -144,7 +144,7 @@ V tomto cvičení bude prozkoumat rozšíření v šablonách projektu ASP.NET M
     *jQuery Validation*
 
     > [!NOTE]
-    > Všimněte si, že dvě přihlášení v oddílech v první části můžete protokolovat zaregistrovaný účet na webu a v druhé části můžete altenativelly přihlásit se pomocí jiná ověřovací služba jako google (ve výchozím nastavení vypnutá).
+    > Všimněte si, že dvě přihlášení oddíly v první části, které se můžete přihlásit pomocí registrovaného účtu z webu a v druhé části, které případně můžou přihlásit pomocí jiného ověřovací službě, jako je google (ve výchozím nastavení vypnutá).
 5. Zavřete prohlížeč zastavení ladicího programu a vrátíte se do sady Visual Studio.
 6. Otevřete soubor **AuthConfig.cs** umístěna ve složce **aplikace\_Start** složky.
 7. Poslední řádek registrace klienta Google pro odebrání komentář *OAuth* ověřování.
@@ -429,7 +429,7 @@ Jednou z klíčových aktualizací v architektuře ASP.NET MVC 4 je podpora pro 
 <a id="Task_2_-_Creating_Mobile_Views"></a>
 #### <a name="task-2---creating-mobile-views"></a>Úloha 2 – Vytvoření mobilní zobrazení
 
-V této úloze vytvoříte mobilní verzi zobrazení indexu s obsahem přizpůsobený pro lepší appareance v mobilních zařízeních.
+V této úloze vytvoříte mobilní verzi zobrazení indexu s obsahem přizpůsobený pro lepší vzhled v mobilních zařízeních.
 
 1. Kopírovat **Views\Home\Index.cshtml** zobrazení a vložte ho, chcete-li vytvořit kopii, přejmenujte nový soubor, který **Index.Mobile.cshtml**.
 2. Otevřít nové vytvoření **Index.Mobile.cshtml** zobrazení a nahraďte existující &lt;ul&gt; značky s tímto kódem. Tím se aktualizuje &lt;ul&gt; značka s jQuery mobilních dat poznámky k použití mobilní motivů z jQuery.
@@ -512,15 +512,15 @@ V této úloze bude prozkoumat ukázková implementace přepínači zobrazení p
 
     Částečné zobrazení používá novou metodu **ViewContext.HttpContext.GetOverriddenBrowser()** určit původ na webový požadavek a zobrazit na příslušný odkaz přejděte buď do zobrazení Desktop nebo Mobile.
 
-    **GetOverridenBrowser** vrátí metoda **HttpBrowserCapabilitiesBase** instanci, která odpovídá pro uživatelského agenta, který je aktuálně nastavený pro žádost (skutečné nebo přepsané). Tato hodnota slouží k získání vlastností, jako **IsMobileDevice**.
+    **GetOverriddenBrowser** vrátí metoda **HttpBrowserCapabilitiesBase** instanci, která odpovídá pro uživatelského agenta, který je aktuálně nastavený pro žádost (skutečné nebo přepsané). Tato hodnota slouží k získání vlastností, jako **IsMobileDevice**.
 
     ![Částečné zobrazení ViewSwitcher](whats-new-in-aspnet-mvc-4/_static/image30.png "ViewSwitcher částečného zobrazení")
 
     *ViewSwitcher částečného zobrazení*
 4. Otevřít **ViewSwitcherController.cs** třídy umístěny v **řadiče** složky. Podívejte se na tuto funkci SwitchView akci je volán na odkaz v komponentě ViewSwitcher a Všimněte si nových metod objektu HttpContext.
 
-    - **HttpContext.ClearOverridenBrowser()** metoda odebere každého přepsaného uživatelského agenta pro aktuální požadavek.
-    - **HttpContext.SetOverridenBrowser()** metoda přepíše hodnotu skutečného uživatelského agenta žádosti pomocí zadaného uživatelského agenta.  
+    - **HttpContext.ClearOverriddenBrowser()** metoda odebere každého přepsaného uživatelského agenta pro aktuální požadavek.
+    - **HttpContext.SetOverriddenBrowser()** metoda přepíše hodnotu skutečného uživatelského agenta žádosti pomocí zadaného uživatelského agenta.  
         ![Kontroler ViewSwitcher](whats-new-in-aspnet-mvc-4/_static/image31.png "ViewSwitcher Kontroleru")  
 *ViewSwitcher Controller*
 
@@ -580,8 +580,8 @@ Jakmile tento kód se spustí, když prohlížeč zařízení iPhone vygeneruje 
 > [!NOTE]
 > Tento způsob testování požadavku pro iPhone je jednodušší pro účely ukázky a nemusí fungovat podle očekávání pro každý řetězec uživatelského agenta pro iPhone (pro příklad testu je velká a malá písmena).
 
-4. Vytvoření kopie  **\_Layout.Mobile.cshtml** soubor **Views\Shared** složku a přejmenujte ji na &quot; **\_Layout.iPhone.csthml**&quot;.
-5. Otevřít  **\_Layout.iPhone.csthml** jste vytvořili v předchozím kroku.
+4. Vytvoření kopie  **\_Layout.Mobile.cshtml** soubor **Views\Shared** složku a přejmenujte ji na &quot; **\_Layout.iPhone.cshtml**&quot;.
+5. Otevřít  **\_Layout.iPhone.cshtml** jste vytvořili v předchozím kroku.
 6. Najít div element s atribut data-role nastaven na **stránky** a změňte **data-theme** atribut &quot; **a**&quot;.
 
 
@@ -904,7 +904,7 @@ Tento dodatek se ukazují, jak vytvořit nový web z portálu správy Windows Az
 1. Přejděte [Windows Azure Management Portal](https://manage.windowsazure.com/) a přihlaste se pomocí přihlašovacích údajů Microsoft spojených s vaším předplatným.
 
     > [!NOTE]
-    > Windows Azure můžete zadarmo hostovat 10 webů ASP.NET a pak škálujte podle rozšiřujícího se provozu. Můžete se zaregistrovat [tady](http://aka.ms/aspnet-hol-azure).
+    > Windows Azure můžete zadarmo hostovat 10 webů ASP.NET a pak škálujte podle rozšiřujícího se provozu. Můžete se zaregistrovat [tady](https://aka.ms/aspnet-hol-azure).
 
     ![Přihlaste se k portálu Windows Azure](whats-new-in-aspnet-mvc-4/_static/image61.png "Přihlaste se k portálu Windows Azure")
 

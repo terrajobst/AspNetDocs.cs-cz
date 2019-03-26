@@ -8,12 +8,12 @@ ms.date: 04/23/2009
 ms.assetid: 3e8b0627-3eb7-488e-807e-067cba7cec05
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 029c17d5f996f595aef1af68c3ddb9b21f99f5cf
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 4ea1713541c30623c0f7c8387318549dd36a125f
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072682"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423582"
 ---
 <a name="strategies-for-database-development-and-deployment-c"></a>Strategie vývoje a nasazení databází (C#)
 ====================
@@ -66,7 +66,7 @@ Existuje mnoho z nevýhod tohoto přístupu. Pokud začínáte není k dispozici
 
 Hlavní výhodou jak dokumentovat změny databáze v souvislém textu je jednoduché. Zadávat t nutné znalosti syntaxe jazyka SQL pro vytváření a změny databázové objekty. Místo toho záznam změn v souvislém textu a implementovat je pomocí SQL Server Management Studio s grafickým uživatelským rozhraním.
 
-Zachování vašich protokol změn v souvislém textu není, admittedly, velmi propracované a získané nefungují s některých projektů, jako je například těch, které jsou v oboru, velké máte časté změny do datového modelu, nebo zahrnují více vývojářů. Ale viděli jste tento přístup poměrně dobře fungovaly v malých one-man projektů, které mají jenom občasné změny do datového modelu a kde samostatný vývojář, který nemá silné na pozadí v syntaxi SQL pro vytváření a změny databázové objekty.
+Váš protokol změn v souvislém textu, admittedly, není velmi propracovaných a nebude fungovat dobře u některých projektů, jako je například těch, které jsou v oboru, velké máte časté změny do datového modelu, nebo zahrnují více vývojářů. Ale viděli jste tento přístup poměrně dobře fungovaly v malých one-man projektů, které mají jenom občasné změny do datového modelu a kde samostatný vývojář, který nemá silné na pozadí v syntaxi SQL pro vytváření a změny databázové objekty.
 
 > [!NOTE]
 > Informace v protokolu změn je technicky, stačí do nasazení – čas, můžu doporučují udržovat historii změn. Ale namísto zachování jeden, neustále se rozšiřující soubor protokolu změn, zvažte, jestli by různých změna souboru protokolu pro každou verzi databáze. Obvykle můžete na verzi databáze pokaždé, když je nasazená. Díky udržování protokolu změn protokolů můžete, od výchozího stavu, znovu vytvořit všechny verze databáze spuštěním skripty protokolu změn od verze 1 a budete pokračovat, dokud se nedostanete na verzi, budete muset znovu vytvořit.

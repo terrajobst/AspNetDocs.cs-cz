@@ -8,12 +8,12 @@ ms.date: 01/27/2009
 ms.assetid: 68acd884-fb57-4486-a1be-aaa93e380780
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 121a3a35c8255f1423d7008930315f76bbb8e8f9
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b361470c769b61a7b407797158eb695fe5084eda
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074578"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423491"
 ---
 <a name="adding-dynamic-content-to-a-cached-page-vb"></a>Přidání dynamického obsahu do stránky v mezipaměti (VB)
 ====================
@@ -72,7 +72,7 @@ K zapouzdření volání metody WriteSubstitution() v rámci vlastní pomocné m
 
 Výpis 4 obsahuje modul jazyka Visual Basic, který poskytuje dvě metody: RenderBanner() a RenderBannerInternal(). Metoda RenderBanner() představuje skutečný pomocnou metodu. Tato metoda rozšiřuje standardní třídu ASP.NET MVC HtmlHelper, takže můžete volat Html.RenderBanner() v zobrazení stejně jako další metodu helper.
 
-Metoda RenderBanner() volá metodu HttpResponse.WriteSubstitution() předávání metodu RenderBannerInternal() WriteSubsitution() metody.
+Metoda RenderBanner() volá metodu HttpResponse.WriteSubstitution() předávání metodu RenderBannerInternal() WriteSubstitution() metody.
 
 Metoda RenderBannerInternal() je privátní metodu. Tato metoda nebude vystavena jako metoda pomocné rutiny. Metoda RenderBannerInternal() náhodně vrátí jednu image banner oznámení o inzerovaném programu ze seznamu tři Image banner oznámení o inzerovaném programu.
 

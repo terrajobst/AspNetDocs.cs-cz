@@ -8,12 +8,12 @@ ms.date: 02/03/2014
 ms.assetid: 2fc4797c-38ef-4cc7-926c-ca431c4739e8
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/action-results
 msc.type: authoredcontent
-ms.openlocfilehash: b2b5ae5e5cef19e75a184aa28ac838a31e5ef1fd
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c255cebfd6b0c632c000d24288a4dd4cf73c8a1c
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077194"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422022"
 ---
 <a name="action-results-in-web-api-2"></a>Výsledky akcí ve webovém rozhraní API 2
 ====================
@@ -83,7 +83,7 @@ Webové rozhraní API používá hlavičky Accept v požadavku k výběru formá
 
 Akce kontroleru vrátí-li **IHttpActionResult**, volá webové rozhraní API **ExecuteAsync** metodu pro vytvoření **objekt HttpResponseMessage**. Potom převede **objekt HttpResponseMessage** do zprávy s odpovědí HTTP.
 
-Tady je jednoduchý implementaton z **IHttpActionResult** , který vytváří ve formátu prostého textu odpovědi:
+Tady je jednoduchá implementace **IHttpActionResult** , který vytváří ve formátu prostého textu odpovědi:
 
 [!code-csharp[Main](action-results/samples/sample7.cs)]
 

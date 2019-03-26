@@ -8,12 +8,12 @@ ms.date: 07/17/2006
 ms.assetid: f6e2a12a-2b5e-48fd-8db3-1e94a500c19a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b8cca6ece2eb008170192dc1774a6f88c1b37a21
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a3e35e7b27d646569692a2eb715dcf40b7967473
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069067"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423192"
 ---
 <a name="adding-client-side-confirmation-when-deleting-c"></a>Přidání potvrzení odstranění na straně klienta (C#)
 ====================
@@ -38,7 +38,7 @@ JavaScript `confirm(string)` funkce zobrazuje svůj parametr vstupního řetězc
 **Obrázek 1**: JavaScript `confirm(string)` metoda zobrazí prvek Messagebox modální, na straně klienta
 
 
-Při odeslání formuláře, pokud hodnota `false` vrátí obslužnou rutinu události na straně klienta a odeslání formuláře se zrušila. Díky této funkci můžete máme odstranění tlačítka s klientské `onclick` obslužná rutina události návratová hodnota volání `confirm("Are you sure you want to delete this product?")`. Pokud uživatel klikne na tlačítko Storno, `confirm(string)` vrátí false, a tím způsobující odesílání formuláře zrušit. S žádné zpětné volání, jehož tlačítko pro odstranění došlo ke kliknutí na produkt vyhráli t odstranit. Pokud však uživatel klikne na tlačítko OK v dialogovém okně potvrzení, zpětné volání bude dál nepokračuje a produkt se odstraní. Poraďte [s využitím jazyka JavaScript `confirm()` metody k odeslání formuláře ovládacího prvku](http://www.webreference.com/programming/javascript/confirm/) Další informace o této techniky.
+Při odeslání formuláře, pokud hodnota `false` vrátí obslužnou rutinu události na straně klienta a odeslání formuláře se zrušila. Díky této funkci můžete máme odstranění tlačítka s klientské `onclick` obslužná rutina události návratová hodnota volání `confirm("Are you sure you want to delete this product?")`. Pokud uživatel klikne na tlačítko Storno, `confirm(string)` vrátí false, a tím způsobující odesílání formuláře zrušit. S žádné zpětné volání produktu, jejíž tlačítko pro odstranění došlo ke kliknutí na neodstraní. Pokud však uživatel klikne na tlačítko OK v dialogovém okně potvrzení, zpětné volání bude dál nepokračuje a produkt se odstraní. Poraďte [s využitím jazyka JavaScript `confirm()` metody k odeslání formuláře ovládacího prvku](http://www.webreference.com/programming/javascript/confirm/) Další informace o této techniky.
 
 Přidání nezbytné skriptu na straně klienta při použití šablony než při použití CommandField se mírně liší. Proto se v tomto kurzu se podíváme na příklad FormView i ovládacího prvku GridView.
 

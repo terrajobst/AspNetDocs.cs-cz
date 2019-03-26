@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 8af630e0-fffa-4110-9eca-c96e201b2724
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 8bea3d4bc19a5a47240abeb2cc015116814a8fdf
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: afd1551d72fa3a5b925d7499c86731db4b6f0b61
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071548"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422009"
 ---
 <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application-3-of-10"></a>Řazení, filtrování a stránkování s Entity Framework v aplikaci ASP.NET MVC (3 10)
 ====================
@@ -89,7 +89,7 @@ V *Controllers\StudentController.cs*, nahraďte `Index` – metoda (změny se zv
 
 [!code-csharp[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample4.cs?highlight=1,7-11)]
 
-Přidání `searchString` parametr `Index` metody. Jste také přidali do příkazu LINQ `where` clausethat vybere pouze studenti, jejichž křestní jméno nebo příjmení vyskytuje hledaný řetězec. Přijetí hledání řetězcovou hodnotu z textové pole, které přidáte k zobrazení indexu. Příkaz, který se přidá [kde](https://msdn.microsoft.com/library/bb535040.aspx) klauzule provádí pouze v případě, že je hodnota k vyhledání.
+Přidání `searchString` parametr `Index` metody. Jste také přidali do příkazu LINQ `where` klauzuli, která vybere pouze studenti, jejichž křestní jméno nebo příjmení vyskytuje hledaný řetězec. Přijetí hledání řetězcovou hodnotu z textové pole, které přidáte k zobrazení indexu. Příkaz, který se přidá [kde](https://msdn.microsoft.com/library/bb535040.aspx) klauzule provádí pouze v případě, že je hodnota k vyhledání.
 
 > [!NOTE]
 > V mnoha případech můžete volání stejné metody na sadu entit Entity Framework nebo jako rozšiřující metody na kolekci v paměti. Výsledky jsou obvykle stejné, ale v některých případech může lišit. Například rozhraní .NET Framework provádění `Contains` metoda vrátí všechny řádky, pokud předáte prázdný řetězec, ale poskytovateli rozhraní Entity Framework pro SQL Server Compact 4.0 vrátí nulový počet řádků prázdné řetězce. Proto kódem v příkladu (vložení `Where` výroku uvnitř `if` příkaz) zajišťuje, že získáte stejné výsledky pro všechny verze SQL serveru. Také, implementace rozhraní .NET Framework `Contains` metoda provádí porovnání velká a malá písmena ve výchozím nastavení, ale zprostředkovatele Entity Framework SQL Server provést porovnávání ve výchozím nastavení. Proto volání `ToUpper` metoda provést test explicitně velkých a malých písmen zajišťuje, že výsledky neměňte při změně kódu později použít úložiště, které vrátí `IEnumerable` kolekce místo `IQueryable` objektu. (Při volání `Contains` metodu `IEnumerable` kolekce, získat implementace rozhraní .NET Framework;. při jeho volání na `IQueryable` objektu, získáte implementace poskytovatele databáze.)

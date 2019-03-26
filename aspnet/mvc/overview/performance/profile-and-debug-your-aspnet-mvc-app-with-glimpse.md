@@ -8,12 +8,12 @@ ms.date: 03/26/2015
 ms.assetid: c205805f-efdd-4fa7-9616-f26eab180611
 msc.legacyurl: /mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
 msc.type: authoredcontent
-ms.openlocfilehash: 94a72f22cbcd7fa84528dde502cceaa1e26dcaa1
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ea149b6450cf02c993c7690752a05396802336be
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073417"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425051"
 ---
 <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>Profil aplikace ASP.NET MVC a její ladění pomocí balíčku Glimpse
 ====================
@@ -58,7 +58,7 @@ Přejděte do http://localhost:&lt; port #&gt;/glimpse.axd a kliknutím <strong>
 
 Pokud máte panel Oblíbené zobrazí, lze přetáhnout a rozevírací tlačítka balíčku Glimpse a přidejte je jako bookmarklets:
 
-![Aplikace Internet Explorer s boookmarklets balíčku Glimpse](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image5.png)
+![Aplikace Internet Explorer s bookmarklets balíčku Glimpse](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image5.png)
 
 Nyní se můžete dostat vaše aplikace a **vedoucí nahoru zobrazení** (HUD) se zobrazí v dolní části stránky.
 
@@ -104,11 +104,11 @@ Při najetí myší nad segment času na získání podrobných informací o ča
 <a id="da"></a>
 ## <a name="using-glimpse-on-azure"></a>Pomocí balíčku Glimpse v Azure
 
-Výchozí zásady zabezpečení balíčku Glimpse povoluje jenom data balíčku Glimpse zobrazený z místního hostitele. Tyto zásady zabezpečení můžete změnit, abyste mohli zobrazit tato data na vzdáleném serveru (například webové aplikace v Azure). Pro testovací prostředí v Azure, přidejte značku zvýrazněné až do dolní části *web.confg* soubor balíčku Glimpse:
+Výchozí zásady zabezpečení balíčku Glimpse povoluje jenom data balíčku Glimpse zobrazený z místního hostitele. Tyto zásady zabezpečení můžete změnit, abyste mohli zobrazit tato data na vzdáleném serveru (například webové aplikace v Azure). Pro testovací prostředí v Azure, přidejte značku zvýrazněné až do dolní části *web.config* soubor balíčku Glimpse:
 
 [!code-xml[Main](profile-and-debug-your-aspnet-mvc-app-with-glimpse/samples/sample3.xml?highlight=2-6)]
 
-Díky této změně samostatně, každý uživatel svá data můžete zobrazit balíčku Glimpse na vzdálený web. Zvažte přidání značky nad profil publikování, obsahuje pouze nasazené použité při použití tohoto profilu publikování (například váš test na platformě Azure proifle.) Pokud chcete omezit data balíčku Glimpse, přidáme `canViewGlimpseData` role a povolit pouze uživatelé v této roli k zobrazení dat balíčku Glimpse.
+Díky této změně samostatně, každý uživatel svá data můžete zobrazit balíčku Glimpse na vzdálený web. Zvažte přidání značky nad profil publikování, obsahuje pouze nasazené použité při použití tohoto profilu publikování (například test na platformě Azure profilu.) Pokud chcete omezit data balíčku Glimpse, přidáme `canViewGlimpseData` role a povolit pouze uživatelé v této roli k zobrazení dat balíčku Glimpse.
 
 Odebrat komentáře z *GlimpseSecurityPolicy.cs* soubor a změňte [IsInRole](https://msdn.microsoft.com/library/system.security.principal.iprincipal.isinrole(v=vs.110).aspx) volání z `Administrator` k `canViewGlimpseData` role:
 

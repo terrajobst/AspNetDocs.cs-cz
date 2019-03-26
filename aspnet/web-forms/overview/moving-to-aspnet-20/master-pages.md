@@ -8,12 +8,12 @@ ms.date: 02/20/2005
 ms.assetid: 9c0cce4d-efd9-4c14-b0e8-a1a140abb3f4
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/master-pages
 msc.type: authoredcontent
-ms.openlocfilehash: f40eb338a1b6b8eebb6578dd7938e96a05b1617f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 644beb37bf893a590be03dd0929c5870af6fbe87
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075196"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425766"
 ---
 <a name="master-pages"></a>Stránky předlohy
 ====================
@@ -94,7 +94,7 @@ V tomto testovacím prostředí vytvoříte novou stránku předlohy a definovat
 
 1. Umístěte kurzor do jednotlivých buněk v tabulce a nastavit *valign* vlastnost *horní*.
 2. Z panelu nástrojů vložte ovládací prvek ContentPlaceHolder v horní buňka v tabulce (buňku záhlaví.)
-3. Když vložíte tento ovládací prvek ContentPlaceHolder, si všimnete, výška řádku bude trvat skoro celou stránku, jak je znázorněno na obrázku 4. Není možné, které zajímá, který v tomto okamžiku.
+3. Když vložíte tento ovládací prvek ContentPlaceHolder, si všimnete, výška řádku bude trvat skoro celou stránku, jak je znázorněno na obrázku 4. Nemusíte mít obavy o, který v tomto okamžiku.
 
 
 ![Prázdné místo je do jedné buňky jako ContentPlaceHolder](master-pages/_static/image1.gif)
@@ -127,7 +127,7 @@ V tomto testovacím prostředí vytvoříte novou stránku předlohy a definovat
 2. Vyberte exercise1.master vyberte v dialogovém okně stránky předlohy jak je znázorněno na obrázku 7.
 3. Klikněte na tlačítko OK pro přidání nové stránky obsahu.
 
-Nová stránka obsahu se zobrazí v sadě Visual Studio s jeden ovládací prvek obsahu pro každý ovládací prvek ContentPlaceHolder na stránce předlohy. Ve výchozím nastavení ovládací prvky obsahu jsou prázdné, kde můžete přidat vlastní obsah. Pokud youd, jako jsou pro ně použít obsah z ovládacího prvku ContentPlaceHolder na stránce předlohy, jednoduše klikněte na symbol inteligentní značky (malé černé šipky v pravém horním rohu ovládacího prvku) a zvolte *výchozí obsah předlohy* z inteligentních značek, jak je znázorněno v **obrázek 8**. Pokud tak učiníte, položka nabídky se změní na *vytvořit vlastní obsah*. Kliknutím na od tohoto okamžiku odebere obsah z hlavní stránky umožňují definovat vlastní obsah pro konkrétní ovládací prvek obsahu.
+Nová stránka obsahu se zobrazí v sadě Visual Studio s jeden ovládací prvek obsahu pro každý ovládací prvek ContentPlaceHolder na stránce předlohy. Ve výchozím nastavení ovládací prvky obsahu jsou prázdné, kde můžete přidat vlastní obsah. Pokud chcete pro něho používat obsah z ovládacího prvku ContentPlaceHolder na stránce předlohy, jednoduše klikněte na symbol inteligentní značky (malé černé šipky v pravém horním rohu ovládacího prvku) a zvolte *výchozí obsah předlohy* z inteligentních značek, jak je znázorněno v **obrázek 8**. Pokud tak učiníte, položka nabídky se změní na *vytvořit vlastní obsah*. Kliknutím na od tohoto okamžiku odebere obsah z hlavní stránky umožňují definovat vlastní obsah pro konkrétní ovládací prvek obsahu.
 
 
 ![Nastavení ovládacího prvku obsahu na výchozí obsah stránky předlohy](master-pages/_static/image4.gif)

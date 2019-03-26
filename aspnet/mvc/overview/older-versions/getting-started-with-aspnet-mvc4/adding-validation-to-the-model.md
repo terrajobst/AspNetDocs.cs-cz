@@ -8,12 +8,12 @@ ms.date: 08/28/2012
 ms.assetid: 5d9a2999-fcc4-4c45-a018-271fddf74a3b
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 5819d789f31b9452d40ae3aa7f821f101ae126ce
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c0cfd4f900c88f953cf7004a987bc267a1e1b4a2
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073492"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422030"
 ---
 <a name="adding-validation-to-the-model"></a>Přidání ověření do modelu
 ====================
@@ -55,7 +55,7 @@ Migraci budeme používat k aktualizaci schématu. Sestavte řešení a pak otev
 
 [!code-console[Main](adding-validation-to-the-model/samples/sample3.cmd)]
 
-Po dokončení tohoto příkazu, Visual Studio otevře soubor třídy, která definuje nový `DbMIgration` odvozené třídy se zadaným názvem (*AddDataAnnotationsMig*) a `Up` metoda se zobrazí kód, který aktualizuje omezení schématu. `Title` a `Genre` polí už nejsou s možnou hodnotou Null (to znamená, je nutné zadat hodnotu) a `Rating` pole má maximální délku 5.
+Po dokončení tohoto příkazu, Visual Studio otevře soubor třídy, která definuje nový `DbMigration` odvozené třídy se zadaným názvem (*AddDataAnnotationsMig*) a `Up` metoda se zobrazí kód, který aktualizuje omezení schématu. `Title` a `Genre` polí už nejsou s možnou hodnotou Null (to znamená, je nutné zadat hodnotu) a `Rating` pole má maximální délku 5.
 
 Ověření atributy určují chování, které chcete vynutit na, které se použijí pro vlastnosti modelu. `Required` Atribut označuje, že vlastnost musí mít hodnotu; v této ukázce, musí mít hodnoty pro video `Title`, `ReleaseDate`, `Genre`, a `Price` vlastnosti, aby byla platná. `Range` Atribut omezuje hodnotu do zadaného rozsahu. `StringLength` Atribut umožňuje nastavit maximální délka vlastnosti typu string a volitelně jeho minimální délka. Vnitřní typy (například `decimal, int, float, DateTime`) se vyžadují ve výchozím nastavení a nemusí `Required` atribut.
 

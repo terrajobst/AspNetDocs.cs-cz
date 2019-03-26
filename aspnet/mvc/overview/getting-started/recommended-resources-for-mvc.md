@@ -8,19 +8,19 @@ ms.date: 04/10/2014
 ms.assetid: 7958d725-e958-4566-a85b-535eeb985f94
 msc.legacyurl: /mvc/overview/getting-started/recommended-resources-for-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: cbd72233fb5688c27d3675e2621eab58a64db80c
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f57ce4236abe71de3f6f60cb2d7930f7ae9a8d7a
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072769"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423907"
 ---
-<a name="mvc-recommended-resources"></a>MVC – doporučené prostředky
-====================
+# <a name="mvc-recommended-resources"></a>MVC – doporučené prostředky
+
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Toto téma obsahuje odkazy na dokumentaci informace o ASP.NET MVC 5. Pokud znáte skvělé blogový příspěvek, [stackoverflow](http://stackoverflow.com/) vlákna nebo odkaz, který by být užitečné, odeslat [mě](mailto:aspnetue@microsoft.com?subject=Great ASP.NET MVC link) e-mailu s odkazem. Odkazy, tady jsou pravidelně aktualizovány. Můžete najít starší (ale v mnoha případech stále relevantní) technologie ASP.NET MVC odkazuje na [mapa obsahu služby MSDN](https://msdn.microsoft.com/library/gg416514(v=vs.108).aspx).
-> 
+>
 > Je vhodné místo pro vaše dotazy zodpoví technický nebo k vyhledání řešení problémů v [fórum ASP.NET MVC](https://forums.asp.net/1146.aspx/1?MVC) nebo na [stackoverflow](http://stackoverflow.com/questions/tagged/mvc+asp.net-mvc).
 > <a id="gettingstarted"></a>
 
@@ -63,8 +63,8 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
     - [Tipy a triky v sadě Visual Studio 2013](https://channel9.msdn.com/Events/Build/2014/2-582) podle Cathy Sullivanovou
     - [Automatizace Everywhere pomocí nové sady SDK, nástroje a služby v Azure](https://channel9.msdn.com/Events/Build/2014/3-621) podle Brady Gaster, Joe dávky
     - [Co je nového v Azure Web Sites Chris Compy, Mashkowski nir a jsem](https://channel9.msdn.com/Events/Build/2014/3-625)
-    - [Vytváření velké objemy: Získané od zákazníků Azure](https://channel9.msdn.com/Events/Build/2014/3-633) podle Chris Clayton, Mark Simms   
-        [Sestavení jednostránkové aplikace s ASP.NET a AngularJS](https://channel9.msdn.com/Events/Build/2014/3-644) podle Davida Catuhe, Jon Galloway
+    - [Vytváření velké objemy: Získané od zákazníků Azure](https://channel9.msdn.com/Events/Build/2014/3-633) podle Chris Clayton, Mark Simms
+    - [Sestavení jednostránkové aplikace s ASP.NET a AngularJS](https://channel9.msdn.com/Events/Build/2014/3-644) podle Davida Catuhe, Jon Galloway
     - [Navrhování a implementace hybridní Cloudová řešení pro architekty](https://channel9.msdn.com/Events/Build/2014/3-632)
     - [Skupina prostředků Azure modelu: Moderní Správa pro moderní cloudové](https://channel9.msdn.com/Events/Build/2014/2-607) podle Gautam Thapar, Nathan Totten
     - [Vytváření webových rozhraní API pro mobilní aplikace pomocí rozhraní ASP.NET Web API 2.1](https://channel9.msdn.com/Events/Build/2014/3-603) podle Daniel Roth
@@ -168,8 +168,7 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 - [Prstencový ukládání do mezipaměti a prstencový Hole ukládání do mezipaměti s architekturou Asp.Net MVC 4](http://www.dotnet-tricks.com/Tutorial/mvc/ODJa210113-Donut-Caching-and-Donut-Hole-Caching-with-Asp.Net-MVC-4.html)
 - [Principy ukládání do mezipaměti v architektuře Asp.Net MVC s ukázkou](http://www.dotnet-tricks.com/Tutorial/mvc/4R5c050113-Understanding-Caching-in-Asp.Net-MVC-with-example.html)
 - [http://webdevchecklist.com/asp.net/performance/](http://webdevchecklist.com/asp.net/performance/)
-- [Model zobrazení ASP.NET MVC: Entity Framework &amp; serializace JSON](http://www.dotnetexpertguide.com/2013/06/aspnet-mvc-view-model-entity-framework-json-serialization.html)  
- Nandip Makwana ukazuje nice tip pro zvýšení výkonu (a nižší využití procesoru) odstraněním nepotřebných serializace podřízené entity
+- [Model zobrazení ASP.NET MVC: Entity Framework &amp; serializace JSON](http://www.dotnetexpertguide.com/2013/06/aspnet-mvc-view-model-entity-framework-json-serialization.html) Nandip Makwana ukazuje nice tip pro zvýšení výkonu (a nižší využití procesoru) odstraněním nepotřebných serializace podřízené entity
 - [Async a operátoru Await](http://blog.stephencleary.com/2012/02/async-and-await.html) v technologii ASP.NET, Autor: Stephen Cleary
 - [Ladění a výkonu pomocí balíčku Glimpse](http://www.hanselman.com/blog/NuGetPackageOfTheWeek5DebuggingASPNETMVCApplicationsWithGlimpse.aspx)
 - [Zvýšit dosahovaný výkon webů ASP.NET MVC s asynchronní částečné zobrazení](http://blog.michaelckennedy.net/2012/11/13/improve-perceived-performance-of-asp-net-mvc-websites-with-async-partialviews/)
@@ -365,7 +364,7 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 - [Poskytování obrázků WebP s architekturou ASP.NET MVC](http://friism.com/serving-webp-images-with-asp-net-mvc)
 - [Kanál podrobné ASP.NET MVC](http://www.dotnet-tricks.com/Tutorial/mvc/LYHK270114-Detailed-ASP.NET-MVC-Pipeline.html)
 - [Vnoření rozložení MVC](http://astutelogic.com/nesting-layouts-in-mvc/) podle Russell Waite
-- Můžu[mplementing RichTextEditor nebo WYSIWYG (tinymce pro tvorbu) v architektuře ASP.NET MVC](http://www.dotnetfunda.com/articles/show/2657/implementing-richtexteditor-or-wysiwyg-tinymce-in-aspnet-mvc) podle Sheo Narayan
+- [Implementace RichTextEditor nebo WYSIWYG (tinymce pro tvorbu) v architektuře ASP.NET MVC](http://www.dotnetfunda.com/articles/show/2657/implementing-richtexteditor-or-wysiwyg-tinymce-in-aspnet-mvc) podle Sheo Narayan
 - [Zobrazení se shromažďováním dat pro anonymní typ vazby v architektuře ASP.NET MVC](http://www.dotnetfunda.com/articles/show/2655/binding-views-with-anonymous-type-collection-in-aspnet-mvc) podle Sheo Narayan
 - [Ukládání ve formátu HTML 5 plátna jako obrázek v architektuře ASP.NET MVC](http://www.dotnetfunda.com/articles/show/2665/saving-html-5-canvas-as-image-in-aspnet-mvc) podle Sheo Narayan
 - [Velikost obrázku a pozici na stránce v databázi s použitím technologie ASP.NET MVC](http://www.dotnetfunda.com/articles/show/2783/maintaining-image-size-and-position-on-the-page-in-database-using-aspn) podle Sheo Narayan

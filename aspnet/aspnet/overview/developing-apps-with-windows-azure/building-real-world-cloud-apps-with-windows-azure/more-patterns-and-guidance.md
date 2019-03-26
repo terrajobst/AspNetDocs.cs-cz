@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: 7e97cfc3-d830-4002-8ff7-5790d1ff49e6
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/more-patterns-and-guidance
 msc.type: authoredcontent
-ms.openlocfilehash: 3de929ff7253928f2f9cd9b033ef6c643744e91c
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 87dbbc0b598a6592b511383a5487a04b302b0994
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073888"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425662"
 ---
 <a name="more-patterns-and-guidance-building-real-world-cloud-apps-with-azure"></a>Další postupy a pokyny (vytváření skutečných cloudových aplikací s Azure)
 ====================
@@ -61,7 +61,7 @@ Videa
 Ukázka kódu
 
 - [Oprava aplikace, který doprovází elektronická kniha](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4?cdn_id=2013-12-03-002).
-- [Cloud Service Fundamentals v Azure v jazyce C# pro sadu Visual Studio 2012](http://aka.ms/csf). Ke stažení projekt na webu Microsoft Code Gallery zahrnuje kód a dokumentace vyvinuté pomocí Microsoft zákazníka poradní tým (kočky). Ukazuje řadu osvědčených postupů v série videí bezporuchový a sestavování velkých objemů a dokument white paper bezporuchový práva v oblasti. Galerie kódu na stránce taky obsahuje odkazy na si rozsáhlou dokumentaci k autory projektu – viz zvlášť [Cloud Service Fundamentals wiki kolekce](https://social.technet.microsoft.com/wiki/contents/articles/17987.cloud-service-fundamentals.aspx) odkaz modrá pole v horní části Popis projektu. Tento projekt a v dokumentaci pro něj stále aktivně vyvíjen, aby byla informace o mnoha témat vhodnější než podobné, ale starší dokumenty white paper.
+- [Cloud Service Fundamentals v Azure v jazyce C# pro sadu Visual Studio 2012](https://aka.ms/csf). Ke stažení projekt na webu Microsoft Code Gallery zahrnuje kód a dokumentace vyvinuté pomocí Microsoft zákazníka poradní tým (kočky). Ukazuje řadu osvědčených postupů v série videí bezporuchový a sestavování velkých objemů a dokument white paper bezporuchový práva v oblasti. Galerie kódu na stránce taky obsahuje odkazy na si rozsáhlou dokumentaci k autory projektu – viz zvlášť [Cloud Service Fundamentals wiki kolekce](https://social.technet.microsoft.com/wiki/contents/articles/17987.cloud-service-fundamentals.aspx) odkaz modrá pole v horní části Popis projektu. Tento projekt a v dokumentaci pro něj stále aktivně vyvíjen, aby byla informace o mnoha témat vhodnější než podobné, ale starší dokumenty white paper.
 
 Kopírovat pevný knihy
 
@@ -101,7 +101,7 @@ Mnoho kolegy v Microsoftu zkontroluje a označen jako koncepty a kód:
 - EDWARD Wu – k dispozici ukázkový kód pro kapitoly jednotného přihlašování.
 - Guang Yang - napsal automatizační skripty prostředí PowerShell.
 
-Členové [Advisory Council pokyny Microsoftu pro vývojáře](http://aka.ms/DGAC) (DGAC) také zkontroluje a označen jako koncepty:
+Členové [Advisory Council pokyny Microsoftu pro vývojáře](https://aka.ms/DGAC) (DGAC) také zkontroluje a označen jako koncepty:
 
 - Jean-Luc Boucho
 - Catalin Gheorghiu

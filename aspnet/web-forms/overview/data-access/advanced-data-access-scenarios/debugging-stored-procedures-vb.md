@@ -8,12 +8,12 @@ ms.date: 08/03/2007
 ms.assetid: 9ed8ccb5-5f31-4eb4-976d-cabf4b45ca09
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5d951fab4fea59226e5d34bbf468377d436df944
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 106f7498a70339556d0662a986d71a01a21074ab
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072502"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424531"
 ---
 <a name="debugging-stored-procedures-vb"></a>Ladění uložených procedur (VB)
 ====================
@@ -48,7 +48,7 @@ SQL Server 2005 nabízí podporu ladění pro T-SQL a spravované databázové o
 
 Visual Studio dokáže ladit uložených procedur na místní a vzdálené instance systému SQL Server. Místní instanci systému SQL Server je ten, který je nainstalován ve stejném počítači jako Visual Studio. Pokud není databáze serveru SQL Server, který používáte na svém vývojovém počítači, považuje vzdálenou instanci. Těchto kurzech používáme místní instance systému SQL Server. Ladění uložených procedur ve vzdálené instanci SQL serveru vyžaduje další konfigurační kroky než při ladění uložených procedur na místní instanci.
 
-Pokud použijete místní instanci systému SQL Server, můžete začněte krokem 1 a projít tento kurz na konec. Pokud používáte vzdálenou instanci SQL serveru, ale budete nejprve musíte zajistit, aby při ladění, které se protokolují do svého vývojového počítače s Windows uživatelský účet, který má přihlašovací jméno SQL serveru na vzdálenou instanci. Moveover, přihlášení k této databázi a přihlášení k databázi používaný pro připojení k databázi z běžící aplikaci technologie ASP.NET musí být členy `sysadmin` role. Naleznete v tématu ladění T-SQL databázové objekty v části Vzdálená instance na konci tohoto kurzu pro další informace o konfiguraci sady Visual Studio a ladit vzdálenou instanci systému SQL Server.
+Pokud použijete místní instanci systému SQL Server, můžete začněte krokem 1 a projít tento kurz na konec. Pokud používáte vzdálenou instanci SQL serveru, ale budete nejprve musíte zajistit, aby při ladění, které se protokolují do svého vývojového počítače s Windows uživatelský účet, který má přihlašovací jméno SQL serveru na vzdálenou instanci. Kromě toho toto přihlášení k databázi a přihlášení k databázi používaný pro připojení k databázi z běžící aplikaci technologie ASP.NET musí být členy `sysadmin` role. Naleznete v tématu ladění T-SQL databázové objekty v části Vzdálená instance na konci tohoto kurzu pro další informace o konfiguraci sady Visual Studio a ladit vzdálenou instanci systému SQL Server.
 
 A konečně Pochopte, podporu pro databázové objekty jazyka T-SQL ladění není jako funkce bohaté jako podporu ladění pro aplikace .NET. Například podmínky zarážky a filtry nejsou podporovány, jen podmnožinu ladění systému windows jsou k dispozici, nemůžete použít funkce upravit a pokračovat, příkazovém vykreslením zbytečné a podobně. Zobrazit [omezení týkající se příkazy ladicího programu a funkce](https://msdn.microsoft.com/library/ms165035(VS.80).aspx) Další informace.
 

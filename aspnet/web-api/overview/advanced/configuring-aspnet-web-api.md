@@ -8,12 +8,12 @@ ms.date: 03/31/2014
 ms.assetid: 9e10a700-8d91-4d2e-a31e-b8b569fe867c
 msc.legacyurl: /web-api/overview/advanced/configuring-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 57066b8ce3254caf59cf927d16d96f8bc22a8acd
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 270268b77f398084169843e20b0a2bf9f1c2a011
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072586"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423153"
 ---
 <a name="configuring-aspnet-web-api-2"></a>Konfigurace rozhraní ASP.NET Web API 2
 ====================
@@ -53,7 +53,7 @@ Nastavení konfigurace webového rozhraní API jsou definovány v [HttpConfigura
 <a id="webhost"></a>
 ## <a name="configuring-web-api-with-aspnet-hosting"></a>Konfigurace webového rozhraní API s hostování v technologii ASP.NET
 
-V aplikaci technologie ASP.NET, nakonfigurujte rozhraní Web API voláním [GlobalConfiguration.Configure](https://msdn.microsoft.com/library/system.web.http.globalconfiguration.configure.aspx) v **aplikace\_Start** metody. **Konfigurovat** metoda přijímá delegát s jedním parametrem typu **HttpConfiguration**. Proveďte všechny vaše konfiguračním uvnitř delegáta.
+V aplikaci technologie ASP.NET, nakonfigurujte rozhraní Web API voláním [GlobalConfiguration.Configure](https://msdn.microsoft.com/library/system.web.http.globalconfiguration.configure.aspx) v **aplikace\_Start** metody. **Konfigurovat** metoda přijímá delegát s jedním parametrem typu **HttpConfiguration**. Proveďte všechny konfigurace uvnitř delegáta.
 
 Tady je příklad použití anonymního delegáta:
 

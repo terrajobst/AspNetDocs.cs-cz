@@ -8,12 +8,12 @@ ms.date: 06/26/2007
 ms.assetid: 4e849bcc-c557-4bc3-937e-f7453ee87265
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c878056273ea821e4dd4481fa1b6f7690f22b285
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 27c043ff64b80dfbe05795c20bb1e71723f93c75
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077404"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58421567"
 ---
 <a name="batch-updating-c"></a>Dávkové aktualizace (C#)
 ====================
@@ -241,7 +241,7 @@ Tato metoda začíná tím, že získáme všechny produkty zpět v `ProductsDat
 
 Pro každý řádek `ProductID` je převzatý z `DataKeys` kolekce a odpovídající `ProductsRow` vyberete ze `ProductsDataTable`. Čtyři ovládací prvky vstupu TemplateField je odkazováno prostřednictvím kódu programu a jejich hodnoty přiřazené `ProductsRow` instance s vlastností. Po každé GridView byly použity hodnoty řádků s aktualizovat `ProductsDataTable`, ho s předán BLL s `UpdateWithTransaction` metodu, která jako jsme viděli v předchozím kurzu, provede jednoduché volání s vrstvou DAL `UpdateWithTransaction` metoda.
 
-Dávkové aktualizace algoritmus používaný pro účely tohoto kurzu aktualizuje každý řádek `ProductsDataTable` odpovídající řádek v prvku GridView, bez ohledu na to, jestli se informace o produktu s změnil. Při takové blind aktualizuje t nejsou obvykle problému s výkonem, se může vést k nadbytečný záznamy Pokud re auditování změny do tabulky databáze. Zpátky [provádění dávkových aktualizací](../editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs.md) kurzu jsme prozkoumali dávkové aktualizace rozhraní pomocí prvku DataList a přidat kód, který by aktualizovat pouze ty záznamy, které byly ve skutečnosti upravil uživatel. Nebojte se využít techniky z [provádění dávkových aktualizací](../editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs.md) aktualizovat kód v tomto kurzu se v případě potřeby.
+Dávkové aktualizace algoritmus používaný pro účely tohoto kurzu aktualizuje každý řádek `ProductsDataTable` odpovídající řádek v prvku GridView, bez ohledu na to, jestli se informace o produktu s změnil. Při takové nevidomí aktualizace nejsou obvykle problému s výkonem, se může vést k nadbytečný záznamy Pokud re auditování změny do tabulky databáze. Zpátky [provádění dávkových aktualizací](../editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs.md) kurzu jsme prozkoumali dávkové aktualizace rozhraní pomocí prvku DataList a přidat kód, který by aktualizovat pouze ty záznamy, které byly ve skutečnosti upravil uživatel. Nebojte se využít techniky z [provádění dávkových aktualizací](../editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs.md) aktualizovat kód v tomto kurzu se v případě potřeby.
 
 > [!NOTE]
 > Po vytvoření vazby zdroje dat na GridView prostřednictvím jeho inteligentních značek, Visual Studio automaticky přiřadí klíčové hodnoty datového zdroje s primární GridView s `DataKeyNames` vlastnost. Pokud jste se neváže ObjectDataSource do prvku GridView. pomocí inteligentních značek GridView s jak je uvedeno v kroku 1, pak budete muset ručně nastavit prvek GridView s `DataKeyNames` vlastnosti ProductID za účelem přístupu k `ProductID` hodnotu pro každý řádek prostřednictvím `DataKeys` kolekce.
@@ -269,7 +269,7 @@ Pro tyto typy situací označuje termín, zvažte použití následujících `Ba
 
 `BatchMethodAlternate` začne tím, že vytvoříte nová prázdná `ProductsDataTable` s názvem `products`. Následně prochází GridView s `Rows` kolekce a pro každý řádek získá informace o daném produktu pomocí BLL s `GetProductByProductID(productID)` metody. Načtený `ProductsRow` instance má jeho vlastnosti aktualizovat stejným způsobem jako `BatchUpdate`, ale po aktualizaci řádku je importovat do `products``ProductsDataTable` prostřednictvím DataTable s [ `ImportRow(DataRow)` metoda](https://msdn.microsoft.com/library/system.data.datatable.importrow(VS.80).aspx).
 
-Po `foreach` dokončení smyčky `products` obsahuje jeden `ProductsRow` instance pro každý řádek v prvku GridView. Od všech `ProductsRow` instancí jsou přidané do `products` (místo aktualizace), pokud jsme slepě předejte ji do `UpdateWithTransaction` metoda `ProductsTableAdatper` se pokusí vložit jednotlivých záznamů do databáze. Místo toho musíme určit, že každý z těchto řádků se změnila (nepřidáno).
+Po `foreach` dokončení smyčky `products` obsahuje jeden `ProductsRow` instance pro každý řádek v prvku GridView. Od všech `ProductsRow` instancí jsou přidané do `products` (místo aktualizace), pokud jsme slepě předejte ji do `UpdateWithTransaction` metoda `ProductsTableAdapter` se pokusí vložit jednotlivých záznamů do databáze. Místo toho musíme určit, že každý z těchto řádků se změnila (nepřidáno).
 
 Toho můžete docílit tak, že přidáte novou metodu BLL s názvem `UpdateProductsWithTransaction`. `UpdateProductsWithTransaction`, jak vidíte níže, nastaví `RowState` jednotlivých `ProductsRow` instance v `ProductsDataTable` k `Modified` a poté předá `ProductsDataTable` do vrstvy DAL s `UpdateWithTransaction` – metoda.
 

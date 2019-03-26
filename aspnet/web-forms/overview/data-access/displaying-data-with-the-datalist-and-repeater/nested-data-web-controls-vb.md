@@ -8,12 +8,12 @@ ms.date: 09/13/2006
 ms.assetid: 8b7fcf7b-722b-498d-a4e4-7c93701e0c95
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 297d76da5bf049ec68a351562f96f3587b059b55
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5e0807f6db3ad4ef9377843d60824e6cd43dd245
+ms.sourcegitcommit: 62db31596a7da029263cf06335aff12236fb3186
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077221"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58440375"
 ---
 <a name="nested-data-web-controls-vb"></a>Webové ovládací prvky vnořených dat (VB)
 ====================
@@ -140,7 +140,7 @@ Tato metoda jednoduše vytvoří instanci `ProductsBLL` metodu a vrátí výsled
 Po provedení těchto změn pro použití této nové techniky, věnujte chvíli zobrazení stránky prostřednictvím prohlížeče. Výstup by měl být stejný jako výstup, při použití ObjectDataSource a `ItemDataBound` přístup obslužné rutiny události (vrátit zpět na obrázku 5 zobrazíte snímku obrazovky).
 
 > [!NOTE]
-> To může jevit jako práce pro práci, chcete-li vytvořit `GetProductsInCategory(categoryID)` metody ve třídě použití modelu code-behind stránky s ASP.NET. Koneckonců, tato metoda jednoduše vytvoří instanci `ProductsBLL` třídy a vrátí výsledky z jeho `GetProductsByCategoryID(categoryID)` metoda. Případně proč bezpečná není právě tuto metodu volat přímo z Syntaxe datové vazby v popisu vnitřní Opakovači jako: `DataSource='<%# ProductsBLL.GetProductsByCategoryID(CType(Eval("CategoryID"), Integer)) %>'`? I když tato syntaxe vyhráli nefungují s naší aktuální implementace `ProductsBLL` třídy (od `GetProductsByCategoryID(categoryID)` metoda je metoda instance), můžete změnit tak, `ProductsBLL` chcete zahrnout statický `GetProductsByCategoryID(categoryID)` metoda nebo mají třídy zahrnují statickou `Instance()` metoda vrátí novou instanci třídy `ProductsBLL` třídy.
+> To může jevit jako práce pro práci, chcete-li vytvořit `GetProductsInCategory(categoryID)` metody ve třídě použití modelu code-behind stránky s ASP.NET. Koneckonců, tato metoda jednoduše vytvoří instanci `ProductsBLL` třídy a vrátí výsledky z jeho `GetProductsByCategoryID(categoryID)` metoda. Případně proč bezpečná není právě tuto metodu volat přímo z Syntaxe datové vazby v popisu vnitřní Opakovači jako: `DataSource='<%# ProductsBLL.GetProductsByCategoryID(CType(Eval("CategoryID"), Integer)) %>'`? I když tato syntaxe nebude fungovat s naší aktuální implementace `ProductsBLL` třídy (od `GetProductsByCategoryID(categoryID)` metoda je metoda instance), můžete změnit tak, `ProductsBLL` chcete zahrnout statický `GetProductsByCategoryID(categoryID)` metoda nebo mají třídy zahrnují statickou `Instance()` metoda vrátí novou instanci třídy `ProductsBLL` třídy.
 
 
 Zatímco tyto změny by eliminuje nutnost `GetProductsInCategory(categoryID)` metoda v třídě modelu code-behind stránky s ASP.NET, metoda třídy modelu code-behind nám poskytuje větší flexibilitu v práci s daty, načíst, protože za chvíli uvidíme.
@@ -151,7 +151,7 @@ Dvě techniky zkontrolují jsme ve prověřit, získejte tyto produkty pro aktu�
 
 Zadaný *N* kategorií v systému tohoto přístupu propojí *N* + 1 volání jednoho databázového dotazu databáze zobrazíte všechny kategorie a potom *N* volání k získání produktů specifické pro každou kategorii. Nemůžeme však načíst všechna potřebná data v jednom volání volání pouze dvě databáze a mějte všechny kategorie a druhou pro získání všech produktů. Jakmile budeme mít všechny produkty, můžeme filtrovat tyto produkty tedy pouze produkty odpovídající aktuální `CategoryID` jsou vázány na tuto kategorii s vnitřní opakovače.
 
-Tuto funkci zajistí potřebujeme jen drobné změny provést `GetProductsInCategory(categoryID)` metody ve třídě použití modelu code-behind stránky s naší technologie ASP.NET. Místo slepě vrácení výsledků z `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metoda, můžeme místo toho nejdřív Přejít *všechny* produktů (pokud jsou některé t byl již přistupovat) a vrátíte se pouze filtrované zobrazení produkty podle předaným `CategoryID`.
+Tuto funkci zajistí potřebujeme jen drobné změny provést `GetProductsInCategory(categoryID)` metody ve třídě použití modelu code-behind stránky s naší technologie ASP.NET. Místo slepě vrací výsledky `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metoda, můžeme místo toho nejdřív Přejít *všechny* produktů (pokud jsou nebyly již použity) a vrátíte se pouze filtrované zobrazení produkty podle předaným `CategoryID`.
 
 
 [!code-vb[Main](nested-data-web-controls-vb/samples/sample8.vb)]

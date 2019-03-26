@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: f35a9b0c-49ef-4cde-b06d-19d1543feb0b
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: d0208c8890467ec6044d807aeee7c7ae02e18790
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d7cc83a5b78a60f575f5c3065079679189296a0c
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068368"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425272"
 ---
 # <a name="tutorial-learn-about-advanced-ef-scenarios-for-an-mvc-5-web-app"></a>Kurz: Další informace o pokročilých scénářích EF pro aplikaci MVC 5
 
@@ -85,7 +85,7 @@ Na stránce o spuštění. Ověřte, zda se zobrazí stejná data, která předt
 
 Předpokládejme, že správce společnosti Contoso University chtějí mít možnost k provádění hromadných změn v databázi, jako je například změna číslo kredity pro každý kurz. Pokud univerzity má velký počet kurzů, bylo by neefektivní načíst vše jako entity a měnit je jednotlivě. V této části budete implementovat webovou stránku, která umožňuje uživateli zadat faktor, podle kterého chcete změnit počet kredity pro všechny kurzy a provede změny pomocí provádí SQL `UPDATE` příkazu. 
 
-V *CourseContoller.cs*, přidejte `UpdateCourseCredits` metody pro `HttpGet` a `HttpPost`:
+V *CourseController.cs*, přidejte `UpdateCourseCredits` metody pro `HttpGet` a `HttpPost`:
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample4.cs)]
 

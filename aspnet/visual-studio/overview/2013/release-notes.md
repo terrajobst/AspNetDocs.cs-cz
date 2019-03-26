@@ -8,12 +8,12 @@ ms.date: 10/17/2013
 ms.assetid: 08815768-2702-42ae-ae85-0a59934a11d1
 msc.legacyurl: /visual-studio/overview/2013/release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: 43878bc101ef97e8bbb6c150f4125707da7660c9
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: cd6197a9cbed822ba874a19823521a3711be9201
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066844"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422711"
 ---
 <a name="aspnet-and-web-tools-for-visual-studio-2013-release-notes"></a>ASP.NET a webové nástroje pro Visual Studio 2013 – poznámky k verzi
 ====================
@@ -357,7 +357,7 @@ V **aplikace v místním prostředí**, třída při spuštění se předá jako
 
 ### <a name="cross-domain-support"></a>Podpora víc domén
 
-V knihovně SignalR 1.x různé požadavky na doménu se řídí jediného příznaku EnableCrossDomain. Tento příznak řídí požadavky na JSONP a CORS. Pro větší flexibilitu a podporu všech CORS je odebraná ze součásti serveru pro funkci SignalR (lients JavaScriptu dál normálně ho používat CORS Pokud se zjistí, jestli prohlížeč podporuje), a nové middlewaru OWIN, který byl zpřístupněn pro podporu těchto scénářů.
+V knihovně SignalR 1.x různé požadavky na doménu se řídí jediného příznaku EnableCrossDomain. Tento příznak řídí požadavky na JSONP a CORS. Pro větší flexibilitu a podporu všech CORS je odebraná ze součásti serveru pro funkci SignalR (JavaScript stále používají klienti CORS obvykle Pokud se zjistí, jestli prohlížeč podporuje), a nové middlewaru OWIN, který byl zpřístupněn pro podporu těchto scénářů.
 
 V systému SignalR 2.0, pokud JSONP se vyžaduje na straně klienta (pro podporu požadavků mezi doménami ve starších prohlížečích), ji budou muset být explicitně povoluje nastavením `EnableJSONP` na `HubConfiguration` objektu `true`, jak je znázorněno níže. JSONP je standardně zakázaná, protože je to méně bezpečné než CORS.
 

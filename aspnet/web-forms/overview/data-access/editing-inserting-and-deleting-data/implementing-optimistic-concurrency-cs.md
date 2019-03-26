@@ -8,12 +8,12 @@ ms.date: 07/17/2006
 ms.assetid: 56e15b33-93b8-43ad-8e19-44c6647ea05c
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 700770946caa68fca2b3101dd91a683d10aae052
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 08a9e1db4f8c34b438d45c0fb74d852bbd249615
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076549"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422776"
 ---
 <a name="implementing-optimistic-concurrency-c"></a>Implementace optimistického řízení souběžnosti (C#)
 ====================
@@ -60,7 +60,7 @@ Tím zajistíte, že záznam bude aktualizován nebo odstraněn má stejné hodn
 **Obrázek 2**: Pro Update nebo Delete na hodnotu úspěch, původní hodnoty musí být rovna aktuální hodnot v databázi ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image6.png))
 
 
-Existují různé přístupy k implementace optimistického řízení souběžnosti (naleznete v tématu [Peter A. Bromberg](http://peterbromberg.net/)společnosti [Optmistic souběžnosti aktualizace logiky](http://www.eggheadcafe.com/articles/20050719.asp) stručný přehled o na řadu možností). Typová ADO.NET poskytuje jednu implementaci, která se dá nakonfigurovat s právě značek zaškrtávací políčko. Povolení optimistického řízení souběžnosti pro TableAdapter v datové sadě zadán argumentech objektu TableAdapter `UPDATE` a `DELETE` příkazy, které chcete zahrnout všechny původní hodnoty v porovnání `WHERE` klauzuli. Následující `UPDATE` příkazu, například aktualizace názvu a cena produktu pouze v případě, že aktuální hodnoty v databázi jsou stejné hodnoty, které byly původně načteny při aktualizaci záznamu v prvku GridView. `@ProductName` a `@UnitPrice` parametry obsahovat nové hodnoty zadané uživatelem, zatímco `@original_ProductName` a `@original_UnitPrice` obsahují hodnoty, které byly původně načten do prvku GridView, když došlo ke kliknutí na tlačítko Upravit:
+Existují různé přístupy k implementace optimistického řízení souběžnosti (naleznete v tématu [Peter A. Bromberg](http://peterbromberg.net/)společnosti [optimistického řízení souběžnosti aktualizace logiky](http://www.eggheadcafe.com/articles/20050719.asp) stručný přehled o na řadu možností). Typová ADO.NET poskytuje jednu implementaci, která se dá nakonfigurovat s právě značek zaškrtávací políčko. Povolení optimistického řízení souběžnosti pro TableAdapter v datové sadě zadán argumentech objektu TableAdapter `UPDATE` a `DELETE` příkazy, které chcete zahrnout všechny původní hodnoty v porovnání `WHERE` klauzuli. Následující `UPDATE` příkazu, například aktualizace názvu a cena produktu pouze v případě, že aktuální hodnoty v databázi jsou stejné hodnoty, které byly původně načteny při aktualizaci záznamu v prvku GridView. `@ProductName` a `@UnitPrice` parametry obsahovat nové hodnoty zadané uživatelem, zatímco `@original_ProductName` a `@original_UnitPrice` obsahují hodnoty, které byly původně načten do prvku GridView, když došlo ke kliknutí na tlačítko Upravit:
 
 
 [!code-sql[Main](implementing-optimistic-concurrency-cs/samples/sample1.sql)]

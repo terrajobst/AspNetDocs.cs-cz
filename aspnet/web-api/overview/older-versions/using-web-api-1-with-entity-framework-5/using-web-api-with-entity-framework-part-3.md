@@ -8,12 +8,12 @@ ms.date: 07/04/2012
 ms.assetid: 6b9ae3c4-0274-4170-a1bb-9df9c546b2a9
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 7ad0ec27021514b447e569e479a9e9127e3f75fa
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0fc533fb3673639769ecdfa8b3d02ff40133cb27
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069919"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58421620"
 ---
 <a name="part-3-creating-an-admin-controller"></a>Část 3: Vytvoření kontroleru pro správce
 ====================
@@ -95,7 +95,7 @@ Dále otevřete Global.asax a přidejte následující kód, který **aplikace\_
 
 V tuto chvíli jsme nenapsali jakýkoli kód klienta, ale můžete vyvolat webové rozhraní API pomocí webového prohlížeče nebo ladění HTTP nástroj, jako [Fiddler](http://www.fiddler2.com/fiddler2/). V sadě Visual Studio stisknutím klávesy F5 spusťte ladění. Ve webovém prohlížeči se otevře na `http://localhost:*portnum*/`, kde *portnum* je nějaké číslo portu.
 
-Odeslání požadavku HTTP "`http://localhost:*portnum*/api/admin`. První požadavek může být pomalé dokončit, protože Entify Framework potřebuje k vytvoření a přidání dat do databáze. Odpověď by měla něco podobného následujícímu:
+Odeslání požadavku HTTP "`http://localhost:*portnum*/api/admin`. První požadavek může být pomalé, protože Entity Framework je potřeba vytvořit a přidání dat do databáze. Odpověď by měla něco podobného následujícímu:
 
 [!code-console[Main](using-web-api-with-entity-framework-part-3/samples/sample6.cmd)]
 

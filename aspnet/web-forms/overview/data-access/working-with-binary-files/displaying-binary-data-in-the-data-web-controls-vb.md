@@ -8,12 +8,12 @@ ms.date: 03/27/2007
 ms.assetid: 9201656a-e1c2-4020-824b-18fb632d2925
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 42db8122d75689f8a0e6961826b06f53622d6313
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 19c377e0f0cd9b27ac7c05af0ab050d8e213fe69
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069313"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424648"
 ---
 <a name="displaying-binary-data-in-the-data-web-controls-vb"></a>Zobrazení binárních dat ve webových ovládacích prvcích dat (VB)
 ====================
@@ -183,7 +183,7 @@ Výše uvedený kód předpokládá tom, že s některé image soubor s názvem 
 Tato výjimka je může také tehdy, když `CategoriesTableAdapter` s `GetCategoryWithBinaryDataByCategoryID` metody s `SELECT` příkaz má vrátit zpět do hlavního dotazu s seznamu sloupců, které může dojít, pokud používáte SQL příkazy ad-hoc a jste již znovu spusťte Průvodce pro TableAdapter s Hlavní dotaz. Zaškrtněte, pokud chcete zajistit, aby `GetCategoryWithBinaryDataByCategoryID` metody s `SELECT` příkaz stále zahrnuje i `Picture` sloupce.
 
 > [!NOTE]
-> Pokaždé, když `DisplayCategoryPicture.aspx` je navštívili, databázi přistupuje a vrátí data obrázku s zadané kategorie. Pokud kategorie s obrázek nemá t změněn uživatel má naposledy zobrazené ji, ale je to plýtvání úsilí. Naštěstí HTTP umožňuje *podmíněné získá*. Pomocí podmíněného GET, odešle klientovi provádějícímu žádost HTTP společně [ `If-Modified-Since` hlavičky protokolu HTTP](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) , který obsahuje datum a čas klienta posledního načtení tohoto prostředku z webového serveru. Pokud obsah se nezměnil, protože tento parametr zadán datum, webový server může odpovědět [nedojde ke změně stavový kód (304)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) a forgo odesílá zpět požadovaný prostředek s obsahem. Stručně řečeno tento postup přišla webový server nebudou muset odeslat zpět obsah pro prostředek, pokud ho nebyl změněn od klienta posledního použití.
+> Pokaždé, když `DisplayCategoryPicture.aspx` je navštívili, databázi přistupuje a vrátí data obrázku s zadané kategorie. Pokud nedošlo ke změně obrázku s kategorie vzhledem k tomu, že uživatel má naposledy zobrazené ji, ale je to plýtvání úsilí. Naštěstí HTTP umožňuje *podmíněné získá*. Pomocí podmíněného GET, odešle klientovi provádějícímu žádost HTTP společně [ `If-Modified-Since` hlavičky protokolu HTTP](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) , který obsahuje datum a čas klienta posledního načtení tohoto prostředku z webového serveru. Pokud obsah se nezměnil, protože tento parametr zadán datum, webový server může odpovědět [nedojde ke změně stavový kód (304)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) a forgo odesílá zpět požadovaný prostředek s obsahem. Stručně řečeno tento postup přišla webový server nebudou muset odeslat zpět obsah pro prostředek, pokud ho nebyl změněn od klienta posledního použití.
 
 
 K implementaci tohoto chování však vyžaduje, abyste přidali `PictureLastModified` sloupec, který se `Categories` tabulky k zachycení, kdy `Picture` sloupce došlo k poslední aktualizaci a také kód pro kontrolu `If-Modified-Since` záhlaví. Další informace o `If-Modified-Since` záhlaví a podmíněné pracovní postup GET, najdete v části [podmíněné GET protokolu HTTP pro hackery RSS](http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers) a [A hlouběji podívejte se na provádění požadavků HTTP na stránce ASP.NET](http://aspnet.4guysfromrolla.com/articles/122204-1.aspx).

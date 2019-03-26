@@ -8,12 +8,12 @@ ms.date: 04/23/2009
 ms.assetid: 1e33d1c6-3f9f-4c26-81e2-2a8f8907bb05
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4cec939795c2b3abfd51c894f985dfd2eb7bc361
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 2cfe18b99af7b04d18a52e64b77e1b9a6b204f75
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076162"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423435"
 ---
 <a name="configuring-a-website-that-uses-application-services-c"></a>Konfigurace webu, který používá aplikační služby (C#)
 ====================
@@ -138,7 +138,7 @@ Pokud chcete ověřit, že aplikace služby databázové objekty byly úspěšn�
 **Obrázek 4**: Potvrďte, že databázové objekty byly přidány do provozní databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-a-website-that-uses-application-services-cs/_static/image12.jpg))
 
 
-Je potřeba jenom použít `aspnet_regsql.exe` nástroj při nasazení webové aplikace poprvé nebo poprvé po spuštění služby aplikace. Jakmile tyto databázové objekty na provozní databázi, vyhráli t potřeba znovu přidat ani upravit.
+Je potřeba jenom použít `aspnet_regsql.exe` nástroj při nasazení webové aplikace poprvé nebo poprvé po spuštění služby aplikace. Jakmile tyto databázové objekty na provozní databázi, kterou nebudete muset znovu přidat ani upravit.
 
 ### <a name="copying-user-accounts-from-development-to-production"></a>Kopírování uživatelské účty z vývojového do produkčního prostředí
 
@@ -148,7 +148,7 @@ Při použití `SqlMembershipProvider` a `SqlRoleProvider` třídy zprostředkov
 
 Kromě `ApplicationId` sloupci `aspnet_Applications` tabulka obsahuje také `ApplicationName` sloupec, který obsahuje více lidských – popisný název pro aplikaci. Pokusy webu pro práci s uživatelským účtem, jako je například ověřování pověření uživatele s z přihlašovací stránky, musíte upozornit `SqlMembershipProvider` třídy, které aplikace pro spolupráci s. Obvykle dělá to zadáním názvu aplikace a je tato hodnota pochází z konfigurace poskytovatele s v `Web.config` – konkrétně prostřednictvím `applicationName` atribut.
 
-Ale co se stane, když `applicationName` atribut není zadán v `Web.config`? V takovém případě členství systém používá kořenové cestě aplikace jako `applicationName` hodnotu. Pokud `applicationName` atribut není explicitně nastavena `Web.config`, pak je možné, že vývojovým prostředím a produkčním prostředí použít jiné aplikační kořen a proto mají být asociována s novou aplikaci názvy v aplikační služby. Případě Tato neshoda pak tito uživatelé vytvoření ve vývojovém prostředí budou mít `ApplicationId` hodnotu, která se neshoduje s `ApplicationId` hodnotu pro produkční prostředí. Net výsledkem je, že tito uživatelé vyhráli t se moct přihlásit.
+Ale co se stane, když `applicationName` atribut není zadán v `Web.config`? V takovém případě členství systém používá kořenové cestě aplikace jako `applicationName` hodnotu. Pokud `applicationName` atribut není explicitně nastavena `Web.config`, pak je možné, že vývojovým prostředím a produkčním prostředí použít jiné aplikační kořen a proto mají být asociována s novou aplikaci názvy v aplikační služby. Případě Tato neshoda pak tito uživatelé vytvoření ve vývojovém prostředí budou mít `ApplicationId` hodnotu, která se neshoduje s `ApplicationId` hodnotu pro produkční prostředí. Net výsledkem je, že tito uživatelé nebudou moct přihlásit.
 
 > [!NOTE]
 > Pokud se v této situaci – s uživatelskými účty, které jsou zkopírovány do ostrého provozu neshodný `ApplicationId` hodnota – můžete napsat dotaz k aktualizaci těchto nesprávné `ApplicationId` hodnoty `ApplicationId` používat v produkčním prostředí. Po aktualizaci uživatele, jejichž účty byly vytvořeny ve vývojovém prostředí teď bude moct přihlásit do webové aplikace v produkčním prostředí.

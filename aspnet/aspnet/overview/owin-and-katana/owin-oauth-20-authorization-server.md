@@ -8,12 +8,12 @@ ms.date: 01/28/2019
 ms.assetid: 20acee16-c70c-41e9-b38f-92bfcf9a4c1c
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
 msc.type: authoredcontent
-ms.openlocfilehash: b8451d2d9e346bd5e2f51ba45e48030a5221b549
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d5c8262d48c79616ca3069c37077ba99ffafb650
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076585"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58426042"
 ---
 # <a name="owin-oauth-20-authorization-server"></a>Autorizační server OWIN OAuth 2.0
 
@@ -238,7 +238,7 @@ Zobrazit *AuthorizationServer\ResourceServer\App\_Start\Startup.WebApi.cs* ve vz
 
 - `UseCors` metoda umožňuje CORS pro všechny domény.
 - `UseOAuthBearerAuthentication` metoda umožňuje middlewaru ověřování pomocí tokenu nosiče OAuth, který bude přijímat a ověřovat nosný token z autorizační hlavičky v požadavku.
-- `Config.SuppressDefaultHostAuthenticaiton` potlačí výchozí hostiteli ověřený objekt zabezpečení z aplikace, proto všechny požadavky budou anonymní po tomto volání.
+- `Config.SuppressDefaultHostAuthentication` potlačí výchozí hostiteli ověřený objekt zabezpečení z aplikace, proto všechny požadavky budou anonymní po tomto volání.
 - `HostAuthenticationFilter` Umožňuje ověřování jenom pro zadaný typ ověřování. V takovém případě je typ ověřování nosného tokenu.
 
 Aby bylo možné předvést ověřenou identitu, vytvoříme objektu ApiController výstup deklarací identity aktuálního uživatele.

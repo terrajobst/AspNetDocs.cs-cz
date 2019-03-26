@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: f65cb436-e493-46fd-9608-384b27385aa1
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-2-make-the-application-look-nice-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7f27cbab17effc3b44649e06409893e6be09b011
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 9cda4153c4e4883586a83ac7f89b2f369f8157e5
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073924"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58422262"
 ---
 <a name="iteration-2--make-the-application-look-nice-vb"></a>Iterace #2 – Vytvoření aplikace vypadat nice (VB)
 ====================
@@ -112,7 +112,7 @@ Galerie ASP.NET MVC je dobré výběru různých stylů. Galerie vám poskytne B
 
 Ale můžete potřebovat vytvořit zcela jedinečný pro váš web. V takovém případě je vhodné pro práci s společnosti návrh webu. Jsem se rozhodla pro tento postup pro návrh aplikace Správce kontaktů.
 
-Můžu si správce kontaktů z iterace č. 1 a poslali projektu do návrhu společnosti. Jejich nevlastnila sady Visual Studio (shame na ně!), ale tento kód nefungoval t představovat problém. Studenti mohli zdarma stáhnout z Microsoft Visual Web Developer [ https://www.asp.net ](https://www.asp.net) web a otevřete Správce kontaktů aplikaci Visual Web Developer. V několika dnů jejich měli vytvořen návrhu na obrázku 7.
+Můžu si správce kontaktů z iterace č. 1 a poslali projektu do návrhu společnosti. Nevlastní sady Visual Studio (shame na ně!), ale neměli, které prezentují na problém. Studenti mohli zdarma stáhnout z Microsoft Visual Web Developer [ https://www.asp.net ](https://www.asp.net) web a otevřete Správce kontaktů aplikaci Visual Web Developer. V několika dnů jejich měli vytvořen návrhu na obrázku 7.
 
 
 [![Dialogové okno Nový projekt](iteration-2-make-the-application-look-nice-vb/_static/image7.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image13.png)

@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 10/29/2018
 ms.technology: aspnet
 msc.type: content
-ms.openlocfilehash: 4dcc62573fad13ec8b37b2c59e884eec7ca80b92
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5e2f3781623af5a32149e1db1c17b67ce43b7da0
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067807"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423962"
 ---
 # <a name="configuration-builders-for-aspnet"></a>Konfigurace počítačů pro technologii ASP.NET
 
@@ -191,7 +191,7 @@ Například použití předchozího *web.config* souboru, jsou nastavené klíč
 
 Tvůrce tato konfigurace poskytuje podobné funkce [ASP.NET Core tajný klíč správce](/aspnet/core/security/app-secrets).
 
-[UserSecretsConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.UserSecrets/) je možné použít v projektech .NET Framework, ale je třeba zadat soubor tajných kódů. Alternativně můžete definovat `UserSecretsId` vlastnost v projektu soubor a vytvořte soubor raw tajné kódy ve správném umístění pro čtení. Zachovat externí závislosti mimo váš projekt, soubor tajného kódu je ve formátu XML. Formát XML je k implementaci se týká a formát byste se neměli spoléhat. Pokud je potřeba sdílet *secrets.json* soubor s projekty .NET Core, zvažte použití [SimpleJsonConfigBuilder](#simplejsonconfig). `SimpleJsonConfigBuilder` Formátování pro .NET Core byste také zvážit podrobnost implementace může změnit.
+[UserSecretsConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.UserSecrets/) je možné použít v projektech .NET Framework, ale je třeba zadat soubor tajných kódů. Alternativně můžete definovat `UserSecretsId` vlastnost v projektu soubor a vytvořte soubor raw tajné kódy ve správném umístění pro čtení. Zachovat externí závislosti mimo váš projekt, soubor tajného kódu je ve formátu XML. Formát XML je k implementaci se týká a formát byste se neměli spoléhat. Pokud je potřeba sdílet *secrets.json* soubor s projekty .NET Core, zvažte použití [SimpleJsonConfigBuilder](#simplejsonconfigbuilder). `SimpleJsonConfigBuilder` Formátování pro .NET Core byste také zvážit podrobnost implementace může změnit.
 
 Konfigurace atributů pro `UserSecretsConfigBuilder`:
 

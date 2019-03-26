@@ -8,12 +8,12 @@ ms.date: 10/30/2006
 ms.assetid: 57743ca7-5695-4e07-aed1-44b297f245a9
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2ca91baa87d5bb748695b56bb8bf19698b0858f2
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 2de7cdbfc37140a4b60c3123524974c4f0ffa42f
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074065"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425870"
 ---
 <a name="performing-batch-updates-c"></a>Provádění dávkových aktualizací (C#)
 ====================
@@ -126,7 +126,7 @@ Po kliknutí na jednu z tlačítka Aktualizovat vše `UpdateAllSupplierAddresses
 
 ## <a name="updating-only-those-addresses-that-have-been-modified"></a>Aktualizuje se jenom adresy, které byly změněny
 
-Algoritmus aktualizace služby batch použít pro tento kurz volání `UpdateSupplierAddress` metodu *každý* dodavatele v ovládacím prvku DataList, bez ohledu na to, zda se informace o adrese změnil. Při takové blind aktualizuje t nejsou obvykle problému s výkonem, se může vést k nadbytečný záznamy Pokud re auditování změny do tabulky databáze. Například, pokud používáte aktivační události pro záznam všech `UPDATE` s `Suppliers` tabulky do auditování tabulky pokaždé, když uživatel klikne na tlačítko Aktualizovat vše pro každého dodavatele se vytvoří nový záznam auditu v systému, bez ohledu na to, jestli uživatel způsobil změny.
+Algoritmus aktualizace služby batch použít pro tento kurz volání `UpdateSupplierAddress` metodu *každý* dodavatele v ovládacím prvku DataList, bez ohledu na to, zda se informace o adrese změnil. Při takové nevidomí aktualizace nejsou obvykle problému s výkonem, se může vést k nadbytečný záznamy Pokud re auditování změny do tabulky databáze. Například, pokud používáte aktivační události pro záznam všech `UPDATE` s `Suppliers` tabulky do auditování tabulky pokaždé, když uživatel klikne na tlačítko Aktualizovat vše pro každého dodavatele se vytvoří nový záznam auditu v systému, bez ohledu na to, jestli uživatel způsobil změny.
 
 Objekt DataTable ADO.NET a DataAdapter třídy jsou navrženy pro podporu dávkové aktualizace kde výsledky pouze změny, odstraněných a nové záznamy v komunikaci se žádné databáze. Má každý řádek v DataTable [ `RowState` vlastnost](https://msdn.microsoft.com/library/system.data.datarow.rowstate.aspx) , která označuje, zda řádek byl přidán do objektu DataTable z něj, upravit, odstranit nebo zůstane beze změny. Pokud původně naplnění DataTable všechny řádky jsou označeny beze změny. Změna hodnoty sloupce s řádků označí řádku, jako upravit.
 

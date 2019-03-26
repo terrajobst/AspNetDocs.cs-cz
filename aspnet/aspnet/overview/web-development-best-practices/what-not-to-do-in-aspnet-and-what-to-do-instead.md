@@ -8,12 +8,12 @@ ms.date: 01/28/2019
 ms.assetid: c39b9965-545c-4b04-8f55-21be7f28a9e5
 msc.legacyurl: /aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead
 msc.type: authoredcontent
-ms.openlocfilehash: 512d2e2b39467635390fa175546f79d8c9f89f4a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a09169327d8eed45a83b232354af74a14aa89817
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070069"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425038"
 ---
 # <a name="what-not-to-do-in-aspnet-and-what-to-do-instead"></a>Co nedělat v ASP.NET a jak to udělat správně
 
@@ -151,7 +151,7 @@ Následující příklad ukazuje, jak zadat v souboru Web.config, že ověřová
 
 Doporučení: Nikdy nastaven na hodnotu false.
 
-Ve výchozím nastavení, EnbableViewStateMac nastavena na hodnotu true. I v případě, že vaše aplikace nepoužívá stav zobrazení, nenastavujte EnableViewStateMac na hodnotu false. Tuto hodnotu nastavíte na hodnotu false bude ohrožovat zabezpečení aplikace pro skriptování napříč weby.
+Ve výchozím nastavení, EnableViewStateMac nastavena na hodnotu true. I v případě, že vaše aplikace nepoužívá stav zobrazení, nenastavujte EnableViewStateMac na hodnotu false. Tuto hodnotu nastavíte na hodnotu false bude ohrožovat zabezpečení aplikace pro skriptování napříč weby.
 
 Spouštění pomocí technologie ASP.NET 4.5.2, runtime modul vynucuje **EnableViewStateMac = true**. I v případě, že ji nastavíte na hodnotu false, modul runtime bude ignorovat tuto hodnotu a pokračuje s hodnotou nastavenou na hodnotu true. Další informace najdete v tématu [ASP.NET 4.5.2 a EnableViewStateMac](https://blogs.msdn.com/b/webdev/archive/2014/05/07/asp-net-4-5-2-and-enableviewstatemac.aspx).
 

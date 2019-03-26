@@ -8,21 +8,20 @@ ms.date: 04/09/2015
 ms.assetid: 0f78aec2-f509-46fa-b20f-d5208425d8ec
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-recommended-resources
 msc.type: authoredcontent
-ms.openlocfilehash: 1d5b44ccce423dda8ac77029e361a531b6c91b26
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 14a8ec16fe741d87a23bfa45046386a2c08d2f27
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075565"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424336"
 ---
-<a name="aspnet-identity-recommended-resources"></a>ASP.NET Identity – doporučené zdroje informací
-====================
+# <a name="aspnet-identity-recommended-resources"></a>ASP.NET Identity – doporučené zdroje informací
+
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Toto téma obsahuje odkazy na dokumentaci o tom, jak používat ASP.NET Identity.
-> 
+>
 > Pokud znáte skvělé blogový příspěvek, [stackoverflow](http://stackoverflow.com) vlákna nebo odkaz, který může být užitečné, [nám pošlete e-mailu](mailto:aspnetue@microsoft.com?subject=Identity recommended resources) s odkazem nebo jen opustit zprávu v dolní části této stránky.
-
 
 - [Začínáme s ASP.NET Identity](#gettingstarted)
 - [Nové Doporučené články musí pro čtení](#feat)
@@ -35,6 +34,7 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 - [Q &amp; (otázek a odpovědí)](#qand)
 
 <a id="gettingstarted"></a>
+
 ## <a name="getting-started-with-aspnet-identity"></a>Začínáme s ASP.NET Identity
 
 - [Aplikace MVC 5 s Facebook, Twitter, LinkedIn a Google OAuth2 přihlašování](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) v tomto kurzu se dozvíte, jak psát aplikace ASP.NET MVC 5 s autorizací Facebook nebo Google OAuth 2. Také ukazuje, jak přidat další data do databáze nástroje Identity.
@@ -44,6 +44,7 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 - [Aplikace ASP.NET MVC 5 s dvoufaktorovým ověřováním pomocí SMS a e-mailu](../../../mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md)
 
 <a id="feat"></a>
+
 ## <a name="new-featured-must-read-articles"></a>Nové Doporučené články musí pro čtení
 
 - [Návod: Identitu ASP.NET MVC pomocí ověření účtu Microsoft](http://www.benday.com/2014/02/25/walkthrough-asp-net-mvc-identity-with-microsoft-account-authentication/) podle [Benjamin den](http://www.benday.com/about/)
@@ -53,6 +54,7 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 - [Identita ASP.NET 2.0: Přizpůsobení uživatelů a rolí](http://typecastexception.com/post/2014/06/22/ASPNET-Identity-20-Customizing-Users-and-Roles.aspx)
 
 <a id="adv"></a>
+
 ## <a name="intermediate-aspnet-identity"></a>Zprostředkující ASP.NET Identity
 
 - [Potvrzení účtu a obnovení hesla s ASP.NET Identity](../features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md)
@@ -64,6 +66,7 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 - [ASP.NET Identity – uzamčení uživatelů](http://tech.trailmax.info/2014/06/asp-net-identity-user-lockout/)
 
 <a id="samp"></a>
+
 ## <a name="where-to-ask-questions-request-features-report-a-bug-and-nightly-builds"></a>Pokud chcete klást otázky, požádat o funkce, nahlaste jim chybu a denně automatizovaných buildů
 
 - StackOverflow, použijte značku [aspnet identity](http://stackoverflow.com/questions/tagged/asp.net-identity)
@@ -71,6 +74,7 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 - [ASP.NET Identity na Githubu](https://github.com/aspnet/AspNetIdentity) získání denně automatizovaných buildů, žádosti o funkce, otevřete chyby.
 
 <a id="blog"></a>
+
 ## <a name="blog-posts-on-identity"></a>Blogové příspěvky o Identity
 
 - [Co je SecurityStamp v ASP.NET Identity?](http://stackoverflow.com/questions/19487322/what-is-asp-net-identitys-iusersecuritystampstoretuser-interface/19505060#19505060)
@@ -120,6 +124,7 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 - [Přesun z členství technologie ASP.NET na ASP.NET Identity](http://webdojo.sharepoint.com/ajmatthews/_layouts/15/start.aspx#/Lists/Posts/Post.aspx?ID=2) podle Alistair Matthews
 
 <a id="video"></a>
+
 ## <a name="videos"></a>Videa
 
 - Na webu Channel 9 [zabezpečení aplikací ASP.NET a služby: Facelift zabezpečení pro moderní aplikace](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B421#fbid=PhVT9E1WRtr?hashlink=fbid) podle Ido Flatow
@@ -132,6 +137,7 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 - [Čeština ASP.NET Identity](https://www.youtube.com/watch?v=tVbZp5brcpY) v této přednášce vám ukážeme postup nasazení základního ověřování, jak přidat podporu pro externí identity poskytovatelů, jako je Twitter nebo Facebook a použití jednorázového hesla (OTP). [ASP.NET Identity je nástupce členství v roli zprostředkovatele&#367; v technologii ASP.NET, tedy knihovna pro zajišt&#283;ní autentizace uživatel&#367;. V této p&#345;ednášce si ukážeme, jak nasad]
 
 <a id="cust"></a>
+
 ## <a name="custom-storage-providers-for-aspnet-identity"></a>Poskytovatelé vlastního úložiště pro ASP.NET Identity
 
 Pokud chcete napsat vlastního zprostředkovatele, přečtěte si [přehled o vlastní poskytovatelé úložiště pro ASP.NET Identity](../extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md) a [implementace ASP.NET Identity](http://odetocode.com/blogs/scott/archive/2014/01/20/implementing-asp-net-identity.aspx) a pak zkontrolujte zdroj uvedené projekty OSS níže.
@@ -144,7 +150,7 @@ Pokud chcete napsat vlastního zprostředkovatele, přečtěte si [přehled o vl
 - [Azure Table Storage](https://www.nuget.org/packages/accidentalfish.aspnet.identity.azure/) podle James Randall.
 - Úložiště tabulek v Azure: [AspNet.Identity.TableStorage](https://github.com/stuartleeks/leeksnet.AspNet.Identity.TableStorage) podle [ @stuartleeks ](https://twitter.com/stuartleeks).
 - [CouchDB / Cloudant podle Wertheim ADAM.](https://github.com/danielwertheim/mycouch.aspnet.identity)
-- Elastické ledat[v: Elastické Identity](https://github.com/bmbsqd/elastic-identity) podle Bombsquad AB.
+- [Elastické vyhledávání: Elastické Identity](https://github.com/bmbsqd/elastic-identity) podle Bombsquad AB.
 - [MongoDB](http://www.nuget.org/packages/MongoDB.AspNet.Identity/) podle Jonathan Sheely Jonathan Sheely.
 - [NHibernate.AspNet.Identity](https://github.com/milesibastos/NHibernate.AspNet.Identity) podle Antônio Milesi Bastos.
 - [RavenDB](http://www.nuget.org/packages/AspNet.Identity.RavenDB/1.0.0) podle [ @tourismgeek ](https://twitter.com/tourismgeek).
@@ -153,11 +159,13 @@ Pokud chcete napsat vlastního zprostředkovatele, přečtěte si [přehled o vl
 - Šablony T4 pro generování kódu EF pro úložiště "databáze nejprve" uživatele: [AspNet.Identity.EntityFramework](https://github.com/cbfrank/AspNet.Identity.EntityFramework)
 
 <a id="additional"></a>
+
 ## <a name="additional-aspnet-identity-resources"></a>Zdroje dalších ASP.NET Identity
 
 - [Představení zprostředkovatele zabezpečení Yahoo a OAuth pro LinkedIn pro OWIN](http://blog.beabigrockstar.com/introducing-the-yahoo-linkedin-oauth-security-providers-for-owin/) podle Jerrie Pelser pokyny Yahoo a LinkedIn.
 
 <a id="qand"></a>
+
 ## <a name="qampa-questionanswer"></a>Q&amp;(otázek a odpovědí)
 
 - DOTAZ: Uzamčení uživatelů, kteří mají povolené "pamatovat si mě" (aby se nemuseli 2FA a absolvovat na počítači a prohlížeče) není uzamčen. Proč a jak zabráním, který? Odpověď [tady](http://stackoverflow.com/questions/24312247/locked-out-users-can-login-if-they-have-auth-cookie).
@@ -177,6 +185,6 @@ Pokud chcete napsat vlastního zprostředkovatele, přečtěte si [přehled o vl
 - DOTAZ: Jak se platnost tokenů zabezpečení? Odpověď [tady](http://stackoverflow.com/questions/22755700/revoke-token-generated-by-usertokenprovider-in-asp-net-identity-2-0/22767286#22767286).
 - DOTAZ: Jak je úložiště deklarací identity v middlewaru souboru cookie? Odpověď [tady](http://stackoverflow.com/questions/22320632/storing-retrieving-user-data-without-database-when-using-owin-cookie-authenticat/22541856#22541856).
 - DOTAZ: Chci kódu PIN nebo zabezpečení, podívejte se na každou metodu akce v aplikaci MVC, ale rád bych k ukládání úspěšných uživatelů, tak si uživatelé nebudou muset zadat kód PIN u každého požadavku k této metodě akce. Odpověď [tady](http://stackoverflow.com/questions/22479958/security-check-an-user-to-a-access-controller-action/22486075#22486075).
-- DOTAZ: Můžu chtěli do uložit adresu vrácených e-mailu z poskytovatele sociálních sítí do databáze, jak to mám udělat? Odpověď [tady](http://stackoverflow.com/questions/22888397/save-claims-to-db-on-login/22970969#22970969):
+- DOTAZ: Můžu chtěli k uložení vrácených e-mailovou adresu z poskytovatele sociálních sítí do databáze, jak to mohu provést? Odpověď [tady](http://stackoverflow.com/questions/22888397/save-claims-to-db-on-login/22970969#22970969):
 - DOTAZ: Jak mohu zjistit, když se uživatel přihlásí v obou s s výstupech soubor cookie "pamatovat si mě"? Odpověď [tady](http://stackoverflow.com/questions/22956486/how-can-i-detect-when-a-user-logs-in-with-microsoft-aspnet-identity/22970698#22970698).
 - DOTAZ: Můžete upravit deklarací identity v ASP.NET Identity s OWIN po volání metody přihlašování? Odpověď: Voláním SignIn je přesně to co mají dělat, když chcete změnit deklarace pro uživatele. V podstatě způsobí, že objekt ClaimsIdentity k serializaci do souboru cookie, což je důvod, proč se zobrazí nová deklarace identity, zobrazí na následné žádosti.

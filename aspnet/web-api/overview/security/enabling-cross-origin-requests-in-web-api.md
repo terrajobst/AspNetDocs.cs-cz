@@ -8,12 +8,12 @@ ms.date: 01/29/2019
 ms.assetid: 9b265a5a-6a70-4a82-adce-2d7c56ae8bdd
 msc.legacyurl: /web-api/overview/security/enabling-cross-origin-requests-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 97a0027194b019b09e220493dcb593e682027fe3
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c9d3e4b05103d270ad95908177bb2981338a4ae1
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072445"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425285"
 ---
 <a name="enable-cross-origin-requests-in-aspnet-web-api-2"></a>Povolení žádostí nepůvodního v ASP.NET Web API 2
 ====================
@@ -278,7 +278,7 @@ Buďte opatrní při nastavení **SupportsCredentials** na hodnotu true, protož
 
 ## <a name="custom-cors-policy-providers"></a>Vlastní zprostředkovatelé zásad CORS
 
-**[EnableCors]** atribut implementuje **ICorsPolicyProvider** rozhraní. Můžete zadat vlastní implementaci tak, že vytvoříte třídu, která je odvozena z **atribut** a implementuje **ICorsProlicyProvider**.
+**[EnableCors]** atribut implementuje **ICorsPolicyProvider** rozhraní. Můžete zadat vlastní implementaci tak, že vytvoříte třídu, která je odvozena z **atribut** a implementuje **ICorsPolicyProvider**.
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample21.cs)]
 

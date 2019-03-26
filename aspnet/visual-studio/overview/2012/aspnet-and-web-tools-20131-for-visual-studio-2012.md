@@ -8,12 +8,12 @@ ms.date: 11/13/2013
 ms.assetid: ca26e5bb-630e-41d2-8512-2a9386c431cb
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: a0b3d52910ac33c403ecbe2340c12b202c25147b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 008891b72e1fb72458aee00bbf83839d0fbed263
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074557"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423543"
 ---
 <a name="release-notes-for-aspnet-and-web-tools-20131-for-visual-studio-2012"></a>Poznámky k verzi pro ASP.NET a webové nástroje 2013.1 pro Visual Studio 2012
 ====================
@@ -163,7 +163,7 @@ Chcete-li tento problém, nakonfigurujte Visual Studio Express pro práci s MSIL
 ### <a name="aspnet-razor-3"></a>Syntaxe Razor rozhraní ASP.NET 3
 
 <a id="browseissue"></a>
-#### <a name="viewing-cshtml-file-withbrowse-withorf5causes-a-server-error"></a>Zobrazení withBrowse souboru cshtml WithorF5causes chyba serveru
+#### <a name="viewing-cshtml-file-with-browse-with-or-f5-causes-a-server-error"></a>Zobrazení souboru cshtml procházet s nebo F5 způsobí chybu serveru
 
 Při vytvoření projektu aplikace MVC 5 v sadě Visual Studio 2012 (nebo otevřít v sadě Visual Studio 2012 MVC 5 projekt, který byl vytvořen v sadě Visual Studio 2013) a pokusíte se k zobrazení souboru cshtml pomocí procházet s nebo F5, zobrazí se chybové zprávy, - **chyba serveru Aplikace '/'**. Server se pokusí přejít na `http://localhost:XXXX/Views/../XXXX.cshtml`
 

@@ -8,18 +8,18 @@ ms.date: 07/16/2014
 ms.assetid: 09e82351-816b-402d-acd1-0f9ac6901d16
 msc.legacyurl: /visual-studio/overview/2013/visual-studio-2013-web-tools
 msc.type: authoredcontent
-ms.openlocfilehash: 82248efd767c1110b9a4067b7d0c0e2ecafcbef9
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 54d86de49bf61305b17fc80964723c518abd467b
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073615"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423244"
 ---
 <a name="hands-on-lab-visual-studio-2013-web-tools"></a>Praktické cvičení: Webové nástroje v sadě Visual Studio 2013
 ====================
 podle [Campy Web týmu](https://twitter.com/webcamps)
 
-[Stáhněte si Web Campy školení Kit](http://aka.ms/webcamps-training-kit)
+[Stáhněte si Web Campy školení Kit](https://aka.ms/webcamps-training-kit)
 
 > Visual Studio je skvělé vývojové prostředí pro. Na základě NET Windows a webové projekty. Obsahuje výkonné textový editor, který lze snadno použít k úpravě samostatné soubory bez projektu.
 > 
@@ -27,7 +27,7 @@ podle [Campy Web týmu](https://twitter.com/webcamps)
 > 
 > Veškerý tento výkon je k dispozici pro rozšíření, usnadňuje rozšíření editorů výkonné nové funkce tak, aby odpovídala vašim potřebám. Web Essentials je kolekce (většinou) související s webem vylepšení sady Visual Studio. Obsahuje i velké množství nového dokončování IntelliSense (hlavně u šablon stylů CSS), nové funkce Browser Link, automatické soubory JSHint pro jazyk JavaScript, nová upozornění pro HTML a CSS a mnoho dalších funkcí, které jsou nezbytné pro moderního webového vývoje.
 > 
-> Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
+> Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://aka.ms/webcamps-training-kit ](https://aka.ms/webcamps-training-kit).
 
 
 <a id="Overview"></a>
@@ -224,7 +224,7 @@ V této úloze budete používat Browser Link **kontrolovat režimu** funkce ke 
     ![Otevření souboru Site.css](visual-studio-2013-web-tools/_static/image16.png "otevírání souboru Site.css")
 
     *Otevírání souboru Site.css*
-5. Stisknutím klávesy **CTRL** + **F** a typ **.flip containter .front** najít selektor šablon stylů CSS.
+5. Stisknutím klávesy **CTRL** + **F** a typ **.flip kontejneru .front** najít selektor šablon stylů CSS.
 6. Klikněte na tlačítko světle modrý čtverec ve vlastnosti třídy pro otevření výběru barvy ohraničení.
 
     ![Otevření výběru barvy](visual-studio-2013-web-tools/_static/image17.png "otevření výběru barvy")

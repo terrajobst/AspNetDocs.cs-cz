@@ -8,12 +8,12 @@ ms.date: 05/20/2012
 ms.assetid: 0dd51b30-bf5a-419f-a1b7-2817ccca3c7d
 msc.legacyurl: /web-api/overview/formats-and-model-binding/content-negotiation
 msc.type: authoredcontent
-ms.openlocfilehash: e936bdfa52f786ec86d3e84eac3cd644225b6f92
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 9cfbed49c1022fbf26160e89aed3ab474f5e0fdc
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070411"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425688"
 ---
 <a name="content-negotiation-in-aspnet-web-api"></a>Vyjednávání obsahu v rozhraní ASP.NET Web API
 ====================
@@ -48,7 +48,7 @@ V odpovědi může server odeslat:
 
 [!code-console[Main](content-negotiation/samples/sample3.cmd)]
 
-V tomto příkladu klient vyžádal JSON, Javascript nebo "nic" (\*/\*). Server odpověď s JSON s reprezentací provedených `Product` objektu. Všimněte si, že hlavička Content-Type v odpovědi nastavena na &quot;application/json&quot;.
+V tomto příkladu klient vyžádal JSON, Javascript nebo "nic" (\*/\*). Server odpověděl zprávou JSON s reprezentací provedených `Product` objektu. Všimněte si, že hlavička Content-Type v odpovědi nastavena na &quot;application/json&quot;.
 
 Kontroler může také vrátit **objekt HttpResponseMessage** objektu. Pokud chcete nastavit objektu CLR pro tělo odpovědi, zavolejte **CreateResponse** – metoda rozšíření:
 
@@ -62,7 +62,7 @@ Objekt, který serializuje prostředek, se nazývá *formátovací modul médií
 
 Nejprve kanál získá **IContentNegotiator** služba **HttpConfiguration** objektu. Také získá formátovací moduly médií ze seznamu **HttpConfiguration.Formatters** kolekce.
 
-Dále volá kanál **IContentNegotiatior.Negotiate**a předejte:
+Dále volá kanál **IContentNegotiator.Negotiate**a předejte:
 
 - Typ objektu určeného k serializaci
 - Kolekce formátovací moduly médií
@@ -73,7 +73,7 @@ Dále volá kanál **IContentNegotiatior.Negotiate**a předejte:
 - Formátování, které použito
 - Typ média pro odpověď
 
-Pokud není formátování nalezeno, **Negotiate** vrátí metoda **null**a chyba klienta recevies HTTP 406 (nepřijatelné).
+Pokud není formátování nalezeno, **Negotiate** vrátí metoda **null**, a klient obdrží chybu HTTP 406 (nepřijatelné).
 
 Následující kód ukazuje, jak můžete kontroler přímo vyvolat vyjednávání obsahu:
 

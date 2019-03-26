@@ -8,12 +8,12 @@ ms.date: 02/05/2013
 ms.assetid: a8367c6d-ef94-4dff-a010-5eff9e6eea96
 msc.legacyurl: /single-page-application/overview/introduction/other-libraries
 msc.type: authoredcontent
-ms.openlocfilehash: 53c97580b45bb40a6c3256c8038ec5c8b861b69f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5503a00df707ee79282a32c77ed2287e93cf8f48
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066178"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425467"
 ---
 <a name="know-a-library-other-than-knockout"></a>Znáte jiné knihovny než Knockout?
 ====================
@@ -48,7 +48,7 @@ Kromě toho [šablona Hot Towel SPA](../templates/hottowel-template.md) použív
 
 [Horké šablonu ručníků SPA](../templates/hottowel-template.md). Tato šablona přináší několik knihoven jazyka JavaScript, včetně Breeze, Knockout, RequireJS a architekturu Twitter Bootstrap.
 
-Ve srovnání s pomocí šablon, které tady najdete, teample Hot Towel poskytuje úplnější aplikace, ze kterého můžete vytvářet vlastní. Existují další koncepty zajímat, ale jakmile je pochopit, tato šablona může být co jste hledali. Pokud chcete vytvořit SPA ale nemůže rozhodnutí, kde začít, použijte Hot Towel a během několika sekund bude nutné aplikace SPA a všechny nástroje musíte dále to rozvíjet.
+Šablona Hot Towel ve srovnání s pomocí šablon, které tady najdete, poskytuje kompletní aplikaci, ze kterého můžete vytvářet vlastní. Existují další koncepty zajímat, ale jakmile je pochopit, tato šablona může být co jste hledali. Pokud chcete vytvořit SPA ale nemůže rozhodnutí, kde začít, použijte Hot Towel a během několika sekund bude nutné aplikace SPA a všechny nástroje musíte dále to rozvíjet.
 
 ## <a name="feature-table"></a>Funkce tabulky
 
@@ -60,7 +60,7 @@ Tady jsou funkcí poskytovaných službou každou šablonu jednostránková apli
 |      Ukázka ToDo       |  &#10003;   |          |    &#10003;    | &#10003;  | &#10003; |           |
 |     Úplné šablony      |             | &#10003; |                |           |          | &#10003;  |
 | Navigace a historie |             | &#10003; |    &#10003;    |           | &#10003; | &#10003;  |
-|        Knihovnami        |             |          |                |           |          |           |
+|        Knihovny       |             |          |                |           |          |           |
 |        Angular         |             |          |    &#10003;    |           |          |           |
 |    &#8195;Páteřní     |             | &#10003; |                |           |          |           |
 |         Rychlé         |             |          |    &#10003;    | &#10003;  |          | &#10003;  |

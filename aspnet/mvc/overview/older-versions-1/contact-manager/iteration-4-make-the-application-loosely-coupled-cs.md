@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: 829f589f-e201-4f6e-9ae6-08ae84322065
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-4-make-the-application-loosely-coupled-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 955991c148d48020c66cbc63ec6da45e3a9cc282
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 389627e610eebcdabee9b4db524e5915186db099
+ms.sourcegitcommit: 62db31596a7da029263cf06335aff12236fb3186
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072235"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58440349"
 ---
 <a name="iteration-4--make-the-application-loosely-coupled-c"></a>Iterace #4 – vytvoření volně spárované aplikace (C#)
 ====================
@@ -61,7 +61,7 @@ Představte si třeba, abyste se rozhodli změnit, jak implementovat vaše vrstv
 
 Pokud aplikace je volně propojené a na druhé straně můžete provádět změny jedné části aplikace bez zásahu do jiných částí aplikace. Například můžete přepnout technologií přístupu k datům beze změny svoji logiku ověřování nebo kontroleru.
 
-V této iterace můžeme využít několik způsobů návrhu softwaru, které pomáhají k refaktorování naši Správce kontaktů aplikaci do více volně spárované aplikace. Když jsme se vším hotovi, kontaktujte správce vyhráli t dělat nic., který ho nefungoval t proveďte před. Ale budeme moct aplikaci mnohem snazší v budoucnu změnit.
+V této iterace můžeme využít několik způsobů návrhu softwaru, které pomáhají k refaktorování naši Správce kontaktů aplikaci do více volně spárované aplikace. Když jsme se vším hotovi, kontaktujte správce vyhráli t cokoli, co nedělalo před. Ale budeme moct aplikaci mnohem snazší v budoucnu změnit.
 
 > [!NOTE] 
 > 
@@ -79,7 +79,7 @@ Implementace vzoru úložiště vyžaduje, abychom dokončete následující kro
 
 Nejprve musíme vytvořit rozhraní, které popisuje všechny metody přístupu data, která potřebujeme k provedení. Rozhraní IContactManagerRepository je obsažen v informacích 1. Toto rozhraní popisuje pět metod: CreateContact() DeleteContact(), EditContact(), GetContact a ListContacts().
 
-**Výpis 1 - Models\IContactManagerRepositiory.cs**
+**Výpis 1 - Models\IContactManagerRepository.cs**
 
 [!code-csharp[Main](iteration-4-make-the-application-loosely-coupled-cs/samples/sample1.cs)]
 
@@ -165,7 +165,7 @@ Chcete být schopni zcela oddělit naše vrstva služby z našich vrstvy kontrol
 
 Naše vrstva služby však musí být moct projít ověřením chybové zprávy zpět do kontroleru vrstvy. Jak jsme povolit vrstvy služby pro komunikaci chybových zpráv ověření bez párování kontroleru a vrstva služby? Můžeme využít návrhový vzor softwaru s názvem [Dekoratér vzor](http://en.wikipedia.org/wiki/Decorator_pattern).
 
-Kontroler ModelStateDictionary s názvem ModelState používá k reprezentaci chyby ověření. Proto můžete mít tendenci k předání ModelState z vrstvy kontroleru k vrstvě služby. Nicméně pomocí ModelState ve vrstvě služby s žádným vrstvě služby závisí na funkce rozhraní ASP.NET MVC. To může být chybná, protože někdy, můžete chtít použít vrstvě služby s WPF aplikace namísto aplikace ASP.NET MVC. V takovém případě wouldn t chcete odkazovat na rozhraní ASP.NET MVC pomocí třídy ModelStateDictionary.
+Kontroler ModelStateDictionary s názvem ModelState používá k reprezentaci chyby ověření. Proto můžete mít tendenci k předání ModelState z vrstvy kontroleru k vrstvě služby. Nicméně pomocí ModelState ve vrstvě služby s žádným vrstvě služby závisí na funkce rozhraní ASP.NET MVC. To může být chybná, protože někdy, můžete chtít použít vrstvě služby s WPF aplikace namísto aplikace ASP.NET MVC. V takovém případě by chcete odkazovat na rozhraní ASP.NET MVC pomocí třídy ModelStateDictionary.
 
 Vzor Dekoratér umožňuje zabalit existující třídy v nové třídy kvůli implementaci rozhraní. Kontaktujte správce projektu obsahuje třídu ModelStateWrapper součástí výpis 7. ModelStateWrapper třída implementuje rozhraní ve výpisu 8.
 
