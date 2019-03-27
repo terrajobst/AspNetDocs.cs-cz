@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 0a1f88bd-97da-4ed1-86f1-605199dc75a4
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/whats-new-in-web-forms-in-aspnet-45
 msc.type: authoredcontent
-ms.openlocfilehash: 54e0234d6f13ce62803dbe55a836414a93a207b2
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 78cb6dec71e6b4974fdea4f205d1a36ebdfc3104
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066556"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424441"
 ---
 <a name="whats-new-in-web-forms-in-aspnet-45"></a>Novinky webových formulářů v ASP.NET 4.5
 ====================
@@ -51,7 +51,7 @@ V této praktická cvičení se dozvíte, jak:
 - Používat nové funkce vazby modelu ve webových formulářů
 - Použití zprostředkovatele hodnot pro použití modelu code-behind metody mapování data stránky
 - Použití anotací dat pro ověřování uživatelského vstupu
-- Využijte advange unobstrusive ověřování na straně klienta s jQuery ve webových formulářů
+- Využijte výhod nerušivý ověřování na straně klienta s jQuery ve webových formulářů
 - Implementace detailní žádost o ověření
 - Implementace asynchronního zpracování ve webových formulářích stránky
 
@@ -407,13 +407,13 @@ ASP.NET 4.5 zavádí poznámky ověření dat pro webové formuláře. Namísto 
     > [EmailAddress(ErrorMessage=&quot;Invalid Email&quot;), MaxLength(56)]: Two annotations in the same line.
     > 
     > Můžete také definovat vlastní chybové zprávy v rámci každého atributu.
-3. Otevřít **CustomerDetails.aspx** a odeberte všechny RequiredFieldvalidators pro pole jméno a příjmení v oddílech v EditItemTemplate a InsertItemTemplate ovládacího prvku FormView.
+3. Otevřít **CustomerDetails.aspx** a odeberte všechny RequiredFieldValidators pro pole jméno a příjmení v oddílech v EditItemTemplate a InsertItemTemplate ovládacího prvku FormView.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample24.aspx)]
 
     > [!NOTE]
     > Jednou z výhod používání datových poznámek je, že logiku ověřování není duplikovaná na stránkách aplikace. Po definování v modelu a použít na všech stránkách aplikace, které zpracovávají data.
-4. Otevřít **CustomerDetails.aspx** použití modelu code-behind a vyhledejte metodu SaveCustomer. Tato metoda je volána při vložení nového zákazníka a přijímá parametr zákazníků od hodnoty ovládacího prvku FormView. Při mapování mezi ovládací prvky stránky a zemře parametr objektu, bude technologie ASP.NET spustit ověření modelu proti všechny poznámky data atributy a vyplnit ModelState slovníku k chybám došlo, pokud existuje.
+4. Otevřít **CustomerDetails.aspx** použití modelu code-behind a vyhledejte metodu SaveCustomer. Tato metoda je volána při vložení nového zákazníka a přijímá parametr zákazníků od hodnoty ovládacího prvku FormView. Při mapování mezi stránce ovládací prvky a parametrem objektu dojde k ASP.NET spustí ověření modelu pro všechny atributy anotace dat a vyplnit ModelState slovníku k chybám došlo, pokud existuje.
 
     ModelState.IsValid pouze vrátí hodnotu true, pokud všechna pole v modelu jsou platné po provedení ověření.
 
@@ -623,7 +623,7 @@ V této praktické laboratoři jste zákazníky a vyřešené následující poj
 - Používat nové funkce vazby modelu ve webových formulářů
 - Použití zprostředkovatele hodnot pro použití modelu code-behind metody mapování data stránky
 - Použití anotací dat pro ověřování uživatelského vstupu
-- Využijte advange unobstrusive ověřování na straně klienta s jQuery ve webových formulářů
+- Využijte výhod nerušivý ověřování na straně klienta s jQuery ve webových formulářů
 - Implementace detailní žádost o ověření
 - Implementace asynchronního zpracování ve webových formulářích stránky
 
@@ -678,7 +678,7 @@ Tento dodatek se ukazují, jak vytvořit nový web z portálu Azure Portal a pub
 1. Přejděte [portálu pro správu Azure](https://manage.windowsazure.com/) a přihlaste se pomocí přihlašovacích údajů Microsoft spojených s vaším předplatným.
 
     > [!NOTE]
-    > S Azure můžete zadarmo hostovat 10 webů ASP.NET a pak škálujte podle rozšiřujícího se provozu. Můžete se zaregistrovat [tady](http://aka.ms/aspnet-hol-azure).
+    > S Azure můžete zadarmo hostovat 10 webů ASP.NET a pak škálujte podle rozšiřujícího se provozu. Můžete se zaregistrovat [tady](https://aka.ms/aspnet-hol-azure).
 
     ![Přihlaste se k portálu Windows Azure](whats-new-in-web-forms-in-aspnet-45/_static/image30.png "Přihlaste se k portálu Windows Azure")
 

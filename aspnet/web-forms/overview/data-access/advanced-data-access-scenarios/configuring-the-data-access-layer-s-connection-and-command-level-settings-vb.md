@@ -8,12 +8,12 @@ ms.date: 08/03/2007
 ms.assetid: d57dfa2b-d627-45cb-b5b1-abbf3159d770
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d44372ef3eaf7634d3bf3a82bd2c1eb1d710f786
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 37c537931008045c5c6438fe2097652438c7e8b1
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068323"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424908"
 ---
 <a name="configuring-the-data-access-layers-connection--and-command-level-settings-vb"></a>Konfigurace připojení vrstvy přístupu k datům a nastavení na úrovni příkazu (VB)
 ====================
@@ -106,7 +106,7 @@ Tato částečná třída vytvořen (a uložili), otevřete `ProductsBLL` tříd
 
 Tato částečná třída zveřejňuje pouze jedné vlastnosti takové základní objekt připojení: `ConnectionString`. Pokud chcete zpřístupnit objekt celé připojení nad rámec TableAdapter, případně můžete změnit `Connection` vlastnost s úroveň ochrany. Automaticky generovaný kód jsme se zaměřili na v kroku 1 ukázalo, že TableAdapter s `Connection` je vlastnost označená jako `Friend`, což znamená, že to je přístupný pouze z tříd ve stejném sestavení. To lze změnit, ale prostřednictvím TableAdapter s `ConnectionModifier` vlastnost.
 
-Otevřít `Northwind` datovou sadu, klikněte na `ProductsTableAdatper` v návrháři a přejděte do okna Vlastnosti. Uvidíte `ConnectionModifier` nastavit na výchozí hodnotu, `Assembly`. Chcete-li `Connection` mimo sestavení s typované datové sady, změny k dispozici `ConnectionModifier` vlastnost `Public`.
+Otevřít `Northwind` datovou sadu, klikněte na `ProductsTableAdapter` v návrháři a přejděte do okna Vlastnosti. Uvidíte `ConnectionModifier` nastavit na výchozí hodnotu, `Assembly`. Chcete-li `Connection` mimo sestavení s typované datové sady, změny k dispozici `ConnectionModifier` vlastnost `Public`.
 
 
 [![Úroveň připojení s vlastnosti usnadnění přístupu lze nakonfigurovat přes vlastnost ConnectionModifier](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image7.png)](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image6.png)

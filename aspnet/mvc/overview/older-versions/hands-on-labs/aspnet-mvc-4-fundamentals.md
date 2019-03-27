@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: b7dba543-73c3-4534-a9a0-ba70fa2c6a8a
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-fundamentals
 msc.type: authoredcontent
-ms.openlocfilehash: d8e837a5d56871d271590859c2e82336111cc87a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d3bc39a37cace003c3fda6691f0dd7f893128b07
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067435"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58425246"
 ---
 # <a name="aspnet-mvc-4-fundamentals"></a>ASP.NET MVC 4 – základy
 
@@ -389,7 +389,7 @@ Soubor **~/Views/Shared/\_layout.cshtml** umožní vám nastavit šablonu pro sp
    (C#)
 
     [!code-cshtml[Main](aspnet-mvc-4-fundamentals/samples/sample7.cshtml)]
-5. Zahrnout div k vykreslení textu části každé stránky. Nahraďte  <strong>@RenderBody()</strong> higlighted následujícím kódem: (C#)
+5. Zahrnout div k vykreslení textu části každé stránky. Nahraďte  <strong>@RenderBody()</strong> s následující zvýrazněný kód: (C#)
 
     [!code-cshtml[Main](aspnet-mvc-4-fundamentals/samples/sample8.cshtml)]
 
@@ -800,7 +800,7 @@ V této úloze budete přidávat prostřednictvím odkazu ve Store zobrazení m�
    > 
    > Přestože tento přístup funguje, závisí na pevně zakódované řetězce. Pokud později přejmenovat Kontroleru, budete muset změnit tento pokyn ručně. Lepší alternativou je použití **pomocné rutiny HTML** metody. ASP.NET MVC zahrnuje metodu pomocné rutiny HTML, který je k dispozici u takových úloh. **Html.ActionLink()** Pomocná metoda usnadňuje vytváření HTML **&lt;&gt;** odkazy, ujistěte se cesty URL jsou správně kódování URL.
    > 
-   > Htlm.ActionLink má několik přetížení. V tomto cvičení budete používat ten, který přijímá tři parametry:
+   > Html.ActionLink má několik přetížení. V tomto cvičení budete používat ten, který přijímá tři parametry:
    > 
    > 1. Text odkazu, který se zobrazí název žánru
    > 2. Název akce kontroleru (**Procházet**)
@@ -1017,7 +1017,7 @@ Tento dodatek se ukazují, jak vytvořit nový web z portálu správy Windows Az
 1. Přejděte [Windows Azure Management Portal](https://manage.windowsazure.com/) a přihlaste se pomocí přihlašovacích údajů Microsoft spojených s vaším předplatným.
 
     > [!NOTE]
-    > Windows Azure můžete zadarmo hostovat 10 webů ASP.NET a pak škálujte podle rozšiřujícího se provozu. Můžete se zaregistrovat [tady](http://aka.ms/aspnet-hol-azure).
+    > Windows Azure můžete zadarmo hostovat 10 webů ASP.NET a pak škálujte podle rozšiřujícího se provozu. Můžete se zaregistrovat [tady](https://aka.ms/aspnet-hol-azure).
 
     ![Přihlaste se k portálu Windows Azure](aspnet-mvc-4-fundamentals/_static/image48.png "Přihlaste se k portálu Windows Azure")
 

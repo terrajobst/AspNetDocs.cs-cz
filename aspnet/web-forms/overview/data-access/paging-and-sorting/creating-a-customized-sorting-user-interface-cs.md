@@ -8,12 +8,12 @@ ms.date: 08/15/2006
 ms.assetid: 6f81b633-9d01-4e52-ae4a-2ea6bc109475
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 28926276e183ae7cf7ed4087d8c73044741389e5
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 6733aa228bb96b5d34ae2770d32fe0063d7052f1
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068971"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58424098"
 ---
 <a name="creating-a-customized-sorting-user-interface-c"></a>Vytvoření vlastního uživatelského rozhraní pro řazení (C#)
 ====================
@@ -79,7 +79,7 @@ Když prvku GridView je vázán na zdroj dat, vytvoří se `GridViewRow` pro ka�
 **Obrázek 3**: Jedna z technik zahrnuje přidání oddělovač řádků do zdroje dat.
 
 
-Protože neexistuje žádný záznam speciální oddělovače; používám oddělovač záznamů výraz v uvozovkách Místo toho nám, které konkrétní záznam ve zdroji dat slouží jako oddělovač spíše než normální datovém řádku musí nějakým způsobem příznak. Pro naše příklady, můžeme znovu vazby `ProductsDataTable` instance prvku GridView, který se skládá z `ProductRows`. Záznam jsme mohou označit jako oddělovač řádků nastavením jeho `CategoryID` vlastnost `-1` (protože takové hodnotu se nám t obvykle existují).
+Protože neexistuje žádný záznam speciální oddělovače; používám oddělovač záznamů výraz v uvozovkách Místo toho nám, které konkrétní záznam ve zdroji dat slouží jako oddělovač spíše než normální datovém řádku musí nějakým způsobem příznak. Pro naše příklady, můžeme znovu vazby `ProductsDataTable` instance prvku GridView, který se skládá z `ProductRows`. Záznam jsme mohou označit jako oddělovač řádků nastavením jeho `CategoryID` vlastnost `-1` (protože taková hodnota nelze obvykle existují).
 
 Aby se začala používat tuto techniku d musíme proveďte následující kroky:
 
