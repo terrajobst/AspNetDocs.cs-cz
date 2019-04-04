@@ -6,7 +6,13 @@ author: Rick-Anderson
 ms.author: riande
 title: Dokumentace k ASP.NET
 ms.date: 08/24/2018
-description: 'Informace o tom, jak vyvíjet standardní a webové aplikace ASP.NET Získejte dokumentaci, ukázkový kód, kurzy a další.'
+description: Informace o tom, jak vyvíjet standardní a webové aplikace ASP.NET Získejte dokumentaci, ukázkový kód, kurzy a další.
+ms.openlocfilehash: d46c4b3f39a540244905be3e6cb9a48373613190
+ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58423741"
 ---
 <div id="main" class="v2">
     <div class="container">

@@ -2,12 +2,18 @@
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/index
 title: Pokročilé scénáře přístupu dat | Dokumentace Microsoftu
 author: rick-anderson
-description: 'Tyto kurzy zahrnují způsobu práce s uloženými procedurami a počítaných sloupcích, jak pomocí spojení tabulek databáze a zašifrování dat informace o připojení...'
+description: Tyto kurzy zahrnují způsobu práce s uloženými procedurami a počítaných sloupcích, jak pomocí spojení tabulek databáze a zašifrování dat informace o připojení...
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: 00d198ed-fddc-4fd3-a86e-3f29c5f707cc
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios
 msc.type: chapter
+ms.openlocfilehash: 6c0abbe94f743a24541a79c6dd4144d8992cd224
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57795989"
 ---
 <a name="advanced-data-access-scenarios"></a>Pokročilé scénáře přístupu k datům
 ====================
