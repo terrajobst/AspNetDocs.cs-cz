@@ -2,12 +2,18 @@
 uid: web-forms/overview/ajax-control-toolkit/index
 title: Starší verze – sada nástrojů Ajax Control Toolkit | Dokumentace Microsoftu
 author: rick-anderson
-description: 'Jak začít pracovat se sadou nástrojů Ajax Control Toolkit a jak používat některé z nejoblíbenějších ovládacích prvků. DevExpress udržuje, že zdarma a open source Ajax sml...'
+description: Jak začít pracovat se sadou nástrojů Ajax Control Toolkit a jak používat některé z nejoblíbenějších ovládacích prvků. DevExpress udržuje, že zdarma a open source Ajax sml...
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: 76242ce9-e611-41d2-95e8-dc5f406d4bfc
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit
 msc.type: chapter
+ms.openlocfilehash: ad68d8f074bc3c453e991abf7f8d393fbe9740ba
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57795960"
 ---
 <a name="older-versions---ajax-control-toolkit"></a><span data-ttu-id="579e6-104">Starší verze – sada nástrojů Ajax Control Toolkit</span><span class="sxs-lookup"><span data-stu-id="579e6-104">Older Versions - Ajax Control Toolkit</span></span>
 ====================

@@ -2,12 +2,18 @@
 uid: mvc/overview/getting-started/index
 title: ASP.NET MVC Začínáme | Dokumentace Microsoftu
 author: rick-anderson
-description: 'Další informace o ASP.NET MVC ASP.NET MVC poskytuje výkonný, na základě vzorů způsob tvorby dynamických webů, která umožňuje jasně oddělit oblasti připomínky a že g...'
+description: Další informace o ASP.NET MVC ASP.NET MVC poskytuje výkonný, na základě vzorů způsob tvorby dynamických webů, která umožňuje jasně oddělit oblasti připomínky a že g...
 ms.author: riande
 ms.date: 08/31/2011
 ms.assetid: d916dbe0-1895-491b-8bb6-93f4594ce757
 msc.legacyurl: /mvc/overview/getting-started
 msc.type: chapter
+ms.openlocfilehash: a2b96388cb7408d3c5fa548d0f43cfb2287661bf
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57796112"
 ---
 <a name="aspnet-mvc-getting-started"></a><span data-ttu-id="b42e2-103">Začínáme se službou ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="b42e2-103">ASP.NET MVC Getting Started</span></span>
 ====================

@@ -1,6 +1,6 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/index
-title: 'Uživatelské rozhraní, rozložení a motivy | Dokumentace Microsoftu'
+title: Uživatelské rozhraní, rozložení a motivy | Dokumentace Microsoftu
 author: rick-anderson
 description: Jak přizpůsobit uživatelské rozhraní webu v aplikaci rozhraní ASP.NET Web Pages.
 ms.author: riande
@@ -8,6 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: d7ec6e8a-3e05-4c0d-9207-d17a49f9a64d
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes
 msc.type: chapter
+ms.openlocfilehash: 53a09adaee6ca2cd0920bd4aaabeccae835b9d93
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57795875"
 ---
 <a name="ui-layouts-and-themes"></a><span data-ttu-id="6e141-103">Uživatelské rozhraní, rozložení a motivy</span><span class="sxs-lookup"><span data-stu-id="6e141-103">UI, Layouts, and Themes</span></span>
 ====================

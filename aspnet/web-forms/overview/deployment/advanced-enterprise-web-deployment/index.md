@@ -2,12 +2,18 @@
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/index
 title: ASP.NET 4 – nasazení v podniku 4 Pokročilá témata | Dokumentace Microsoftu
 author: rick-anderson
-description: 'Tomto kurzu se dozvíte, jak k provádění různých úloh, které jsou požadované, nebo žádoucí řadu podnikových scénářích nasazení.'
+description: Tomto kurzu se dozvíte, jak k provádění různých úloh, které jsou požadované, nebo žádoucí řadu podnikových scénářích nasazení.
 ms.author: riande
 ms.date: 05/16/2012
 ms.assetid: eacf0e3a-c2e9-4f77-a676-249146f393e8
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment
 msc.type: chapter
+ms.openlocfilehash: b042faf38fe0269508895f1b7826908cf086222d
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57795804"
 ---
 <a name="aspnet-4---enterprise-deployment-series-4-advanced-topics"></a><span data-ttu-id="ab4d4-103">ASP.NET 4 – nasazení v podniku (4. část) – pokročilá témata</span><span class="sxs-lookup"><span data-stu-id="ab4d4-103">ASP.NET 4 - Enterprise Deployment Series 4 Advanced Topics</span></span>
 ====================

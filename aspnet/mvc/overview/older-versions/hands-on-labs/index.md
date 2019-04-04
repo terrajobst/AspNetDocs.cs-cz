@@ -2,12 +2,18 @@
 uid: mvc/overview/older-versions/hands-on-labs/index
 title: ASP.NET MVC 4 praktická cvičení | Dokumentace Microsoftu
 author: rick-anderson
-description: 'Zjistěte, jak vývoj s využitím ASP.NET MVC s praktickými cvičeními tyto v rukou'
+description: Zjistěte, jak vývoj s využitím ASP.NET MVC s praktickými cvičeními tyto v rukou
 ms.author: riande
 ms.date: 02/18/2013
 ms.assetid: eb23eb99-bfca-4043-9b48-2cf7838dd754
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs
 msc.type: chapter
+ms.openlocfilehash: 02ef51cd3320df200920cba19a59d8ab23836c95
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57796258"
 ---
 # <a name="aspnet-mvc-4-hands-on-labs"></a><span data-ttu-id="ce361-103">ASP.NET MVC 4 praktická cvičení</span><span class="sxs-lookup"><span data-stu-id="ce361-103">ASP.NET MVC 4 Hands On Labs</span></span>
 

@@ -2,12 +2,18 @@
 uid: signalr/index
 title: Funkce SignalR | Dokumentace Microsoftu
 author: bradygaster
-description: 'Microsoft ASP.NET SignalR je knihovna pro vývojáře využívající technologii ASP.NET, která zjednodušuje proces přidávání funkce webu v reálném čase do aplikací.'
+description: Microsoft ASP.NET SignalR je knihovna pro vývojáře využívající technologii ASP.NET, která zjednodušuje proces přidávání funkce webu v reálném čase do aplikací.
 ms.author: bradyg
 ms.date: 10/24/2012
 ms.assetid: 282a521f-2b86-4fac-bcf6-b6d5e0fe969c
 msc.legacyurl: /signalr
 msc.type: categoryindex
+ms.openlocfilehash: 52a36a2790de31e82d7ec7bae9f4c24439749009
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57795835"
 ---
 <a name="signalr"></a><span data-ttu-id="8d6a5-103">SignalR</span><span class="sxs-lookup"><span data-stu-id="8d6a5-103">SignalR</span></span>
 ====================

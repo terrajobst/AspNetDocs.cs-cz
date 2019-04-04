@@ -2,12 +2,18 @@
 uid: web-pages/overview/getting-started/index
 title: Začínáme s webovými stránkami ASP.NET | Dokumentace Microsoftu
 author: rick-anderson
-description: 'Další informace o ASP.NET webové stránky ASP.NET Web Pages a syntaxe Razor poskytují rychlý, přístupný a jednoduchý způsob kombinování serverového kódu s HTML t...'
+description: Další informace o ASP.NET webové stránky ASP.NET Web Pages a syntaxe Razor poskytují rychlý, přístupný a jednoduchý způsob kombinování serverového kódu s HTML t...
 ms.author: riande
 ms.date: 05/18/2012
 ms.assetid: 99253c4e-a125-4c21-85e7-a6dd74d93892
 msc.legacyurl: /web-pages/overview/getting-started
 msc.type: chapter
+ms.openlocfilehash: d46c4100bf169caa5dfd0f265e16d00d519ac847
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57796162"
 ---
 <a name="getting-started-with-aspnet-web-pages"></a><span data-ttu-id="33a69-103">Začínáme s webovými stránkami ASP.NET</span><span class="sxs-lookup"><span data-stu-id="33a69-103">Getting Started with ASP.NET Web Pages</span></span>
 ====================

@@ -8,6 +8,12 @@ ms.date: 09/15/2011
 ms.assetid: 9bc6c53a-3e54-4f9d-8bef-0f3359aecf7b
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i
 msc.type: chapter
+ms.openlocfilehash: 09b8b31059ed6a238414714847d191426e28db28
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57796764"
 ---
 <a name="how-do-i"></a><span data-ttu-id="975ec-103">Jak na to</span><span class="sxs-lookup"><span data-stu-id="975ec-103">How-Do-I</span></span>
 ====================
