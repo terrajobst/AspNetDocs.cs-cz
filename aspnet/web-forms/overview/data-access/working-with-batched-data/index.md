@@ -2,12 +2,18 @@
 uid: web-forms/overview/data-access/working-with-batched-data/index
 title: Práce s daty uspořádanými do dávek | Dokumentace Microsoftu
 author: rick-anderson
-description: 'Tyto kurzy podívejte se na aktualizaci, odstranění a vložení dávky dat pomocí transakce.'
+description: Tyto kurzy podívejte se na aktualizaci, odstranění a vložení dávky dat pomocí transakce.
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: 95a1d7d3-7fc2-44ac-b27b-912e0e045ee5
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data
 msc.type: chapter
+ms.openlocfilehash: 6f62a21af3b85bc341c202b7b44d6703c2da655c
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57795852"
 ---
 <a name="working-with-batched-data"></a><span data-ttu-id="44ff2-103">Práce s daty uspořádanými do dávek</span><span class="sxs-lookup"><span data-stu-id="44ff2-103">Working with Batched Data</span></span>
 ====================
