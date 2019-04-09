@@ -2,26 +2,26 @@
 uid: web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-cs
 title: Ovládací prvek ID pojmenování stránkách obsahu (C#) | Dokumentace Microsoftu
 author: rick-anderson
-description: Ilustruje způsob ovládacích prvků ContentPlaceHolder sloužit jako pojmenování kontejnerů a proto ujistěte se, prostřednictvím kódu programu pracovat s ovládacím prvkem obtížné (prostřednictvím FindConrol)...
+description: Ilustruje způsob ovládacích prvků ContentPlaceHolder sloužit jako pojmenování kontejnerů a proto ujistěte se, prostřednictvím kódu programu pracovat s ovládacím prvkem obtížné (prostřednictvím FindControl)...
 ms.author: riande
 ms.date: 06/10/2008
 ms.assetid: 1c7d0916-0988-4b4f-9a03-935e4b5af6af
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0c8617bb14c7023cfd926022b66c69bb5762758b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a398494df0ed2bf749620b717350b21669a1ae5c
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075223"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59395646"
 ---
-<a name="control-id-naming-in-content-pages-c"></a>Pojmenovávání ID ovládacích prvků na stránkách obsahu (C#)
-====================
+# <a name="control-id-naming-in-content-pages-c"></a>Pojmenovávání ID ovládacích prvků na stránkách obsahu (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/e/e/f/eef369f5-743a-4a52-908f-b6532c4ce0a4/ASPNET_MasterPages_Tutorial_05_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/8/f/6/8f6349e4-6554-405a-bcd7-9b094ba5089a/ASPNET_MasterPages_Tutorial_05_CS.pdf)
 
-> Ilustruje způsob ovládacích prvků ContentPlaceHolder sloužit jako pojmenování kontejnerů a proto ujistěte se, prostřednictvím kódu programu pracovat s ovládacím prvkem obtížné (prostřednictvím FindConrol). Vyhledá v tomto problému a alternativní řešení. Také popisuje, jak programově přistupovat k výsledná hodnota ClientID.
+> Ilustruje způsob ovládacích prvků ContentPlaceHolder sloužit jako pojmenování kontejnerů a proto ujistěte se, prostřednictvím kódu programu pracovat s ovládacím prvkem obtížné (prostřednictvím FindControl). Vyhledá v tomto problému a alternativní řešení. Také popisuje, jak programově přistupovat k výsledná hodnota ClientID.
 
 
 ## <a name="introduction"></a>Úvod
@@ -83,7 +83,7 @@ Deklarativní obsahu ovládacího prvku v tomto okamžiku by měl vypadat nějak
 Obrázek 3 ukazuje na stránku při zobrazit pomocí návrháře aplikace Visual Studio.
 
 
-[![Stránka obsahuje tři ovládací prvky webové: textové pole, tlačítko a popisek](control-id-naming-in-content-pages-cs/_static/image4.png)](control-id-naming-in-content-pages-cs/_static/image3.png)
+[![The zahrnuje tři webové ovládací prvky stránky: textové pole, tlačítko a popisek](control-id-naming-in-content-pages-cs/_static/image4.png)](control-id-naming-in-content-pages-cs/_static/image3.png)
 
 **Obrázek 03**: Zahrnuje tři webové ovládací prvky stránky: textové pole, tlačítko a popisek ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-cs/_static/image5.png))
 
@@ -133,7 +133,7 @@ Zatímco syntaxi pro volání `FindControl` metody se mírně liší v první dv
 Jakmile zadáte tento kód, přejděte `IDIssues.aspx` stránce prostřednictvím prohlížeče, zadejte svůj věk a klikněte na tlačítko "Odeslat". Po kliknutí na tlačítko "Odeslat" `NullReferenceException` je vyvolána (viz obrázek 5).
 
 
-[![Je aktivována NullReferenceException](control-id-naming-in-content-pages-cs/_static/image8.png)](control-id-naming-in-content-pages-cs/_static/image7.png)
+[![A Je aktivována NullReferenceException](control-id-naming-in-content-pages-cs/_static/image8.png)](control-id-naming-in-content-pages-cs/_static/image7.png)
 
 **Obrázek 05**: A `NullReferenceException` je vyvolána ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-cs/_static/image9.png))
 
@@ -173,7 +173,7 @@ Naštěstí je přístupný prostřednictvím odkazu na stránce předlohy `Page
 Tentokrát, na stránce v prohlížeči zadáním váš věk a kliknutím na tlačítko "Odeslat" zobrazí zprávu v `Results` popiskem nebo podle očekávání.
 
 
-[![Věk uživatele je zobrazený v popisku](control-id-naming-in-content-pages-cs/_static/image11.png)](control-id-naming-in-content-pages-cs/_static/image10.png)
+[![Tv popisku se zobrazí věku uživatele he](control-id-naming-in-content-pages-cs/_static/image11.png)](control-id-naming-in-content-pages-cs/_static/image10.png)
 
 **Obrázek 06**: Věk uživatele je zobrazený v popisku ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-cs/_static/image12.png))
 
@@ -200,7 +200,7 @@ Přidejte následující kód, který `PageExtensionMethods.cs` soubor třídy t
 S tímto kódem na místě, vraťte se do `IDIssues.aspx` použití modelu code-behind třídy a Odkomentujte aktuální stránky `FindControl` volání metody. Nahraďte volání `Page.FindControlRecursive("controlID")`. Co je úhledné o metodách rozšíření je, že se zobrazí přímo v rozevíracích seznamech technologie IntelliSense. Jak je vidět na obrázku 7, po zadání stránky a pak klikněte na tlačítko období, `FindControlRecursive` metoda je součástí technologie IntelliSense rozevíracího seznamu spolu s druhou `Control` metody třídy.
 
 
-[![Rozšiřující metody jsou zahrnuty v IntelliSense rozevíracích](control-id-naming-in-content-pages-cs/_static/image14.png)](control-id-naming-in-content-pages-cs/_static/image13.png)
+[![Epřípony metody jsou zahrnuty v IntelliSense rozevíracích](control-id-naming-in-content-pages-cs/_static/image14.png)](control-id-naming-in-content-pages-cs/_static/image13.png)
 
 **Obrázek 07**: Rozšiřující metody jsou zahrnuty v IntelliSense rozevíracích ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-cs/_static/image15.png))
 

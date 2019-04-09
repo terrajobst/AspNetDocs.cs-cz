@@ -8,15 +8,15 @@ ms.date: 11/15/2007
 ms.assetid: 01305c35-5b83-408b-bc9d-fa31b17a723f
 msc.legacyurl: /web-forms/videos/aspnet-35/visual-studio-editor/new-designer-support-in-visual-studio-2008
 msc.type: video
-ms.openlocfilehash: ba6ac05c5eeddf67e860ebe902262ca09fad8199
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 428cf123e2063f265c21e70e439428c702fc2276
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075904"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59396847"
 ---
-<a name="new-designer-support-in-visual-studio-2008"></a>Podpora nového Návrháře v sadě Visual Studio 2008
-====================
+# <a name="new-designer-support-in-visual-studio-2008"></a>Podpora nového Návrháře v sadě Visual Studio 2008
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 V tomto videu můžu vám předvede několik nových funkcí návrháře v sadě Visual Studio 2008.

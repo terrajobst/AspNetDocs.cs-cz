@@ -1,22 +1,23 @@
 ---
 uid: identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
-title: Vývoj aplikací ASP.NET pomocí Azure Active Directory | Dokumentace Microsoftu
+title: Vývoj aplikací ASP.NET pomocí Azure Active Directory – ASP.NET 4.x
 author: Rick-Anderson
 description: Nástroje Microsoft ASP.NET pro Azure Active Directory umožňuje snadno zajistit ověřování pro webové aplikace hostované v Azure. Můžete použít Azure Authenti...
 ms.author: riande
 ms.date: 08/14/2014
 ms.assetid: 457d7eaf-ee76-4ceb-9082-c7c1721435ad
+ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
-ms.openlocfilehash: 7f0e569458c9a294cc281b86e731c2fda48768be
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 6f8b926c78097b68e6a159f2fdd30e7b8a6477a0
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066967"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59395170"
 ---
-<a name="developing-aspnet-apps-with-azure-active-directory"></a>Vývoj aplikací ASP.NET s použitím Azure Active Directory
-====================
+# <a name="developing-aspnet-apps-with-azure-active-directory"></a>Vývoj aplikací ASP.NET s použitím Azure Active Directory
+
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 Microsoft ASP.NET tools pro Azure Active Directory zjednodušuje povolení ověřování pro webové aplikace hostované na [Azure](https://www.windowsazure.com/home/features/web-sites/). Ověřování Azure můžete použít k ověření uživatelů Office 365 z vaší organizace, podnikové účty synchronizované z vaší místní Active Directory nebo uživatelé vytvoření ve vlastní doméně Azure Active Directory. Když se povolí ověřování Windows Azure nakonfiguruje vaše aplikace k ověřování uživatelů pomocí jediného [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) tenanta.
