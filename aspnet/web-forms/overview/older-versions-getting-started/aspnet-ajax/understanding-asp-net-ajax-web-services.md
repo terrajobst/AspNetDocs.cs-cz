@@ -8,15 +8,15 @@ ms.date: 03/28/2008
 ms.assetid: 3332d6e7-e2e1-4144-b805-e71d51e7e415
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-web-services
 msc.type: authoredcontent
-ms.openlocfilehash: 5e59077373b68b907391eff5349e1925222792a3
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: e576e11d63f940f1683ed26d217ff255a31b007c
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067045"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59388410"
 ---
-<a name="understanding-aspnet-ajax-web-services"></a>Principy webových služeb technologie ASP.NET AJAX
-====================
+# <a name="understanding-aspnet-ajax-web-services"></a>Principy webových služeb technologie ASP.NET AJAX
+
 podle [– Scott Cate](https://github.com/scottcate)
 
 [Stáhnout PDF](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial05_Web_Services_with_MS_Ajax_cs.pdf)
@@ -48,7 +48,8 @@ Toto nahrazení httpHandlers tvoří umožní se zápis JSON (JavaScript Object)
 
 [!code-json[Main](understanding-asp-net-ajax-web-services/samples/sample2.json)]
 
-> *> [!NOTE] Název operace je definován jako část adresy URL webové služby; Kromě toho zprávy žádosti nejsou vždy odeslat prostřednictvím formátu JSON. Webové služby můžete využít ScriptMethod atribut s UseHttpGet parametrem nastaveným na hodnotu true, což způsobí, že parametry se mají být předány prostřednictvím parametrů řetězce dotazu.*
+> *> [!NOTE]
+> Název operace je definován jako část adresy URL webové služby; Kromě toho zprávy žádosti nejsou vždy odeslat prostřednictvím formátu JSON. Webové služby můžete využít ScriptMethod atribut s UseHttpGet parametrem nastaveným na hodnotu true, což způsobí, že parametry se mají být předány prostřednictvím parametrů řetězce dotazu.*
 
 
 **Výpis 3. Zpráva odpovědi webové služby serializovat do formátu JSON**
@@ -157,7 +158,8 @@ Přidání odkazu na CustomersService.asmx prostřednictvím ovládacího prvku 
 
 [!code-html[Main](understanding-asp-net-ajax-web-services/samples/sample14.html)]
 
-> *> [!NOTE] Pokud chcete zobrazit skutečný kód jazyka JavaScript proxy server, který je generován můžete zadat adresu URL požadované webové služby .NET do pole Adresa aplikace Internet Explorer a připojte na konec /js.*
+> *> [!NOTE]
+> Pokud chcete zobrazit skutečný kód jazyka JavaScript proxy server, který je generován můžete zadat adresu URL požadované webové služby .NET do pole Adresa aplikace Internet Explorer a připojte na konec /js.*
 
 
 Pokud je povoleno ladění v souboru web.config, který vloží ladicí verzi proxy server JavaScript na stránce jako ukazuje následující:
@@ -181,7 +183,7 @@ Příklad použití proxy server JavaScript volat metodu Web s názvem GetCustom
 Toto volání odkazuje na obor názvů InterfaceTraining, CustomersService třídy a metody webové GetCustomersByCountry definované ve službě. Předá hodnotu země získaných z objektu textbox, stejně jako funkce zpětného volání s názvem OnWSRequestComplete, který má být volána, když se vrátí asynchronní volání webové služby. OnWSRequestComplete zpracovává pole vrácené službou zákaznických objektů a převede je do tabulky, který se zobrazí na stránce. Výstup generovaný z volání je znázorněno na obrázku 1.
 
 
-[![Vazba dat získali tím, že asynchronní volání jazyka AJAX k webové službě.](understanding-asp-net-ajax-web-services/_static/image2.png)](understanding-asp-net-ajax-web-services/_static/image1.png)
+[![Binding data získat tak, že asynchronní volání jazyka AJAX k webové službě.](understanding-asp-net-ajax-web-services/_static/image2.png)](understanding-asp-net-ajax-web-services/_static/image1.png)
 
 **Obrázek 1**: Vazba dat získali tím, že asynchronní volání jazyka AJAX k webové službě.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-web-services/_static/image3.png))
 
@@ -199,7 +201,7 @@ Asynchronními zpětnými voláními k webovým službám můžou mít různé t
 Všechny chyby, ke kterým dochází při volání webové služby se aktivuje OnWSRequestFailed() funkce zpětného volání k volání, která přijímá objekt, který reprezentuje chyby jako parametr. Objekt error poskytuje několik různých funkcí můžete zjistit příčinu chyby a zda volání vypršel časový limit. Výpis 14 ukazuje příklad použití funkce různých chyb a obrázek 2 ukazuje příklad výstupu generovaného pomocí funkcí.
 
 
-[![Výstup vygenerovaný pomocí volání funkce chybě technologie ASP.NET AJAX.](understanding-asp-net-ajax-web-services/_static/image5.png)](understanding-asp-net-ajax-web-services/_static/image4.png)
+[![Ovýstup generován voláním funkce chybě technologie ASP.NET AJAX.](understanding-asp-net-ajax-web-services/_static/image5.png)](understanding-asp-net-ajax-web-services/_static/image4.png)
 
 **Obrázek 2**: Výstup vygenerovaný pomocí volání funkce chybě technologie ASP.NET AJAX.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-web-services/_static/image6.png))
 
@@ -225,7 +227,7 @@ Komplexní typy přijata nebo vrácené webové služby jsou automaticky příst
 Na tuto otázku odpovědět, předpokládají, že zákaznická data se zobrazí stránku ASP.NET AJAX a umožňuje koncovým uživatelům aktualizovat adresy zákazníka. Pokud webová služba určuje, že typ adresy (komplexní typ definovaný v rámci třídy CustomerDetails) může odeslat klientovi proces aktualizace je možné rozdělit do samostatné funkce pro lepší opakovanému použití kódu.
 
 
-[![Vytváření z volání webové služby, která vrací RSS data výstup.](understanding-asp-net-ajax-web-services/_static/image8.png)](understanding-asp-net-ajax-web-services/_static/image7.png)
+[![Ovýstup vytváření z volání webové služby, která vrací RSS data.](understanding-asp-net-ajax-web-services/_static/image8.png)](understanding-asp-net-ajax-web-services/_static/image7.png)
 
 **Obrázek 3**: Vytváření z volání webové služby, která vrací RSS data výstup.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-web-services/_static/image9.png))
 
@@ -273,7 +275,7 @@ V případech, kdy je potřeba jenom pomocí ovládacího prvku na konkrétní s
 [!code-aspx[Main](understanding-asp-net-ajax-web-services/samples/sample25.aspx)]
 
 
-[![Použití ovládacího prvku AutoCompleteExtender.](understanding-asp-net-ajax-web-services/_static/image11.png)](understanding-asp-net-ajax-web-services/_static/image10.png)
+[![USING AutoCompleteExtender ovládacího prvku.](understanding-asp-net-ajax-web-services/_static/image11.png)](understanding-asp-net-ajax-web-services/_static/image10.png)
 
 **Obrázek 4**: Použití ovládacího prvku AutoCompleteExtender.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-web-services/_static/image12.png))
 
