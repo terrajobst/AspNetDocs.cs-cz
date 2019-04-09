@@ -83,7 +83,7 @@ Všimněte si, že tělo stránky HTML v zobrazení 2 obsahuje následující sk
 
 &lt;Response.Write(DateTime.Now) %&gt;
 
-Použít skript oddělovače &lt;% a %&gt; označit začátek a konec skriptu. Tento skript je napsána v jazyce Visual basic. Zobrazí aktuální datum a čas voláním metody Response.Write() metody k vykreslení obsahu v prohlížeči. Skript oddělovače &lt;% a %&gt; lze použít k provedení jednoho nebo více příkazů.
+Použít skript oddělovače &lt;% a %&gt; označit začátek a konec skriptu. Tento skript je napsána v jazyce Visual Basic. Zobrazí aktuální datum a čas voláním metody Response.Write() metody k vykreslení obsahu v prohlížeči. Skript oddělovače &lt;% a %&gt; lze použít k provedení jednoho nebo více příkazů.
 
 Vzhledem k tomu, že volání metody Response.Write() tak často, Microsoft vám poskytne zástupce pro volání metody Response.Write() metody. Zobrazení v informacích 3 používá oddělovače &lt;% = a %&gt; jako zástupce pro volání metody Response.Write().
 
