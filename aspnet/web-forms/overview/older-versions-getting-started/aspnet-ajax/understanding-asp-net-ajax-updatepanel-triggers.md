@@ -8,15 +8,15 @@ ms.date: 03/12/2008
 ms.assetid: faab8503-2984-48a9-8a40-7728461abc50
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-updatepanel-triggers
 msc.type: authoredcontent
-ms.openlocfilehash: 9501a2e855bdffe8c9d85c0dd0d836f50935b306
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: e3821eee8c7bf2c2f9b45ea75ade2bd5b3b8ef19
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066202"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59406259"
 ---
-<a name="understanding-aspnet-ajax-updatepanel-triggers"></a>Principy aktivačních událostí UpdatePanel technologie ASP.NET AJAX
-====================
+# <a name="understanding-aspnet-ajax-updatepanel-triggers"></a>Principy aktivačních událostí UpdatePanel technologie ASP.NET AJAX
+
 podle [– Scott Cate](https://github.com/scottcate)
 
 [Stáhnout PDF](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial02_Triggers_cs.pdf)
@@ -32,7 +32,7 @@ Tento dokument White Paper zkoumá XML triggery funkce technologie ASP.NET AJAX 
 
 Tento dokument White Paper vychází Beta 2 verzi rozhraní .NET Framework 3.5 a Visual Studio 2008. Rozšíření ASP.NET AJAX, dříve sestavení doplňku určenou pro technologii ASP.NET 2.0, jsou teď integrovaná v knihovně tříd rozhraní .NET Framework Base. Tento dokument White Paper také předpokládá, že můžete pracovat s Visual Studio 2008, nikoli Visual Web Developer Express a poskytne návody podle uživatelského rozhraní sady Visual Studio (i když výpis kódu bude zcela kompatibilní, bez ohledu na to vývojové prostředí).
 
-## <a name="triggers"></a>*Triggery*
+## *<a name="triggers"></a>Aktivační procedury*
 
 Aktivační události pro daný prvek UpdatePanel, ve výchozím nastavení, automaticky zahrnulo všechny podřízené ovládací prvky, které vyvolávají zpětné volání, včetně (například) TextBox – ovládací prvky, které mají jejich `AutoPostBack` vlastnost nastavena na hodnotu **true**. Ale aktivačních událostí může být také součástí deklarativně pomocí značky To se provádí v rámci `<triggers>` části deklarace ovládacího prvku UpdatePanel. I když aktivační události je přístupná prostřednictvím `Triggers` vlastnost kolekce se doporučuje registraci žádné aktivační události částečné vykreslování v době běhu (například pokud ovládací prvek není k dispozici v době návrhu) s použitím `RegisterAsyncPostBackControl(Control)` metodu Stránky, v rámci objektu ScriptManager `Page_Load` událostí. Mějte na paměti, že stránky jsou bezstavové, a proto byste měli znovu zaregistrovat tyto ovládací prvky pokaždé, když jsou vytvořeny.
 
@@ -40,7 +40,7 @@ Zahrnutí podřízené automatické aktivační událost lze také zakázat (tak
 
 Všimněte si, že když jsou vnořené ovládací prvky UpdatePanel, pokud UpdateMode nastavena na **podmíněného**, pokud se aktivuje podřízený prvek UpdatePanel, ale nadřazená položka nemá, pak pouze podřízené bude prvek UpdatePanel. Ale pokud se nadřazený prvek UpdatePanel je aktualizovat, pak podřízený prvek UpdatePanel bude také aktualizovat.
 
-## <a name="the-lttriggersgt-element"></a>*&lt;Triggery&gt; – Element*
+## *<a name="the-lttriggersgt-element"></a>&lt;Triggery&gt; – Element*
 
 Při práci v editoru kódu v sadě Visual Studio, můžete si všimnout (od IntelliSense), že existují dva podřízené prvky ze `UpdatePanel` ovládacího prvku. Nejčastěji viděli prvek je `<ContentTemplate>` element, který zapouzdřuje v podstatě obsah, který se bude vysílat aktualizace panelem (obsah, u kterého jsme uvolnili částečného zobrazení). Druhý prvek je `<Triggers>` element, který určuje ovládacích prvků na stránce (nebo uživatelský ovládací prvek, pokud použijete jeden), který se aktivuje částečné vykreslení ovládacího prvku UpdatePanel, ve kterém &lt;aktivační události&gt; prvek nachází.
 
@@ -50,7 +50,7 @@ Při práci v editoru kódu v sadě Visual Studio, můžete si všimnout (od Int
 
 Podobně platí `<asp:PostBackTrigger>` elementu lze použít aktivační událost vykreslování části stránky, ale ten, který vyžaduje úplné cesty k serveru. Tento prvek aktivační událost také umožňuje vynutit celou stránku vykreslování, pokud ovládací prvek jinak obvykle aktivuje vykreslování části stránky (například, když `Button` ovládací prvek existuje v `<ContentTemplate>` elementu ovládacího prvku UpdatePanel). PostBackTrigger element znovu, můžete zadat libovolný ovládací prvek, který je podřízeným prvkem libovolný ovládací prvek UpdatePanel v aktuální jednotce zapouzdření.
 
-## <a name="lttriggersgt-element-reference"></a>*&lt;Aktivační události&gt; – referenční dokumentace elementu*
+## *<a name="lttriggersgt-element-reference"></a>&lt;Aktivační události&gt; – referenční dokumentace elementu*
 
 *Descendants značky:*
 
@@ -59,7 +59,7 @@ Podobně platí `<asp:PostBackTrigger>` elementu lze použít aktivační událo
 | &lt;asp:AsyncPostBackTrigger&gt; | Určuje ovládací prvek a událost, která způsobí, že částečná stránka aktualizace pro prvek UpdatePanel, který obsahuje odkaz na tento trigger. |
 | &lt;asp:PostBackTrigger&gt; | Určuje ovládací prvek a událost, která způsobí, že aktualizace celou stránku (úplná aktualizace stránky). Toto klíčové slovo slouží k vynucení úplné aktualizace, když ovládací prvek aktivuje v opačném případě částečného zobrazení. |
 
-## <a name="walkthrough-cross-updatepanel-triggers"></a>*Návod: Aktivačních událostí UpdatePanel napříč*
+## *<a name="walkthrough-cross-updatepanel-triggers"></a>Návod: Aktivačních událostí UpdatePanel napříč*
 
 1. Vytvořte novou stránku ASP.NET pomocí objektu ScriptManager nastavit pro povolení částečného zobrazení. Přidat dvě komponenty UpdatePanel na tuto stránku – v prvním, zahrnují ovládací prvek popisku (Label1) a dva ovládací prvky tlačítka (ovládací prvky Button1 a Button2). Button1 by mělo být uvedeno klikněte na tlačítko Aktualizovat oba a Button2 by mělo být uvedeno klikněte na Aktualizovat to nebo něco spolu tyto řádky. V druhém ovládacím prvkem UpdatePanel obsahovat pouze ovládací prvek popisku (Label2), ale nastavit jeho vlastnosti ForeColor na jinou hodnotu než výchozí, aby ho odlišil.
 2. Nastavte vlastnost UpdateMode obě značky ovládacího prvku UpdatePanel **podmíněného**.
@@ -82,7 +82,7 @@ Podobně platí `<asp:PostBackTrigger>` elementu lze použít aktivační událo
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-updatepanel-triggers/_static/image3.png))
 
 
-## <a name="under-the-hood"></a>*Pohled pod kapotu*
+## *<a name="under-the-hood"></a>Pohled pod kapotu*
 
 Využitím příkladu, který jsme právě vytvořen, můžeme provést podívat, co dělá technologie ASP.NET AJAX a jak pracují naše aktivačních událostí UpdatePanel mezi panely. K tomu, pak ve spolupráci s zdrojový kód vygenerovaný stránky HTML, jakož i rozšíření Mozilla Firefox volat FireBug - s, jsme snadněji zkontrolovat zpětná volání AJAX. Budeme také používat nástroj .NET Reflector podle Lutz Roeder. Oba tyto nástroje jsou volně k dispozici online a lze najít pomocí vyhledávání na Internetu.
 

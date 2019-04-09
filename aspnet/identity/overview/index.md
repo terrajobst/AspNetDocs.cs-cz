@@ -1,6 +1,6 @@
 ---
 uid: identity/overview/index
-title: Přehled ASP.NET Identity | Dokumentace Microsoftu
+title: Přehled ASP.NET Identity – ASP.NET 4.x
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -8,15 +8,15 @@ ms.date: 10/02/2013
 ms.assetid: d3972a0e-9ff6-4de1-bf4d-c94943cab048
 msc.legacyurl: /identity/overview
 msc.type: book
-ms.openlocfilehash: 1b3d3e5eb153c4c311dfa426b1d5bed3c1d6c590
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ef4eb7428770453596090af111576ab23a27206b
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796273"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59406168"
 ---
-<a name="aspnet-identity-overview"></a>Přehled ASP.NET Identity
-====================
+# <a name="aspnet-identity-overview"></a>Přehled ASP.NET Identity
+
 - [Začínáme s ASP.NET Identity](getting-started/index.md)
 
     - [Úvod do ASP.NET Identity](getting-started/introduction-to-aspnet-identity.md)
@@ -29,7 +29,7 @@ ms.locfileid: "57796273"
     - [Doporučené postupy nasazení hesel a dalších citlivých dat do ASP.NET a služby Azure App Service](features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md)
     - [Potvrzení účtu a obnovení hesla s ASP.NET Identity (C#)](features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md)
     - [Dvoufaktorové ověřování pomocí SMS a e-mailu s ASP.NET Identity](features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md)
-- [Rozšíření](extensibility/index.md)
+- [Rozšiřitelnost](extensibility/index.md)
 
     - [Přehled poskytovatelů vlastního úložiště pro ASP.NET Identity](extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md)
     - [Implementace vlastního poskytovatele úložiště MySQL ASP.NET Identity](extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider.md)
