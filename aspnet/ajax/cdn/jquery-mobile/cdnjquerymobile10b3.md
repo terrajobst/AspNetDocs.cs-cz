@@ -8,16 +8,16 @@ ms.date: 07/23/2014
 ms.assetid: f71316df-b4f4-4cf5-8511-c0415391231c
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile10b3
 msc.type: content
-ms.openlocfilehash: 86294efd2a74a8e20e597fdbfaad5a46dbd88639
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 824b19c77c28d951d75a2f01b7e6f17fe9f8653f
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070111"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59392498"
 ---
-<a name="jquery-mobile-10-beta-3-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="2ee62-102">jQuery Mobile 1.0 Beta 3 ve službě Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="2ee62-102">jQuery Mobile 1.0 Beta 3 on the Microsoft Ajax CDN</span></span>
-====================
-<span data-ttu-id="2ee62-103">Knihovna jQuery Mobile 1.0 Beta 3 zahrnuje následující soubory:</span><span class="sxs-lookup"><span data-stu-id="2ee62-103">The jQuery Mobile 1.0 Beta 3 library includes the following files:</span></span>
+# <a name="jquery-mobile-10-beta-3-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="d36a6-102">jQuery Mobile 1.0 Beta 3 ve službě Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="d36a6-102">jQuery Mobile 1.0 Beta 3 on the Microsoft Ajax CDN</span></span>
+
+<span data-ttu-id="d36a6-103">Knihovna jQuery Mobile 1.0 Beta 3 zahrnuje následující soubory:</span><span class="sxs-lookup"><span data-stu-id="d36a6-103">The jQuery Mobile 1.0 Beta 3 library includes the following files:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0b3/jquery.mobile-1.0b3.js
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0b3/jquery.mobile-1.0b3.min.js
