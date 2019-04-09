@@ -8,15 +8,15 @@ ms.date: 05/30/2007
 ms.assetid: 84afe4ac-cc53-4f2e-a867-27eaf692c2df
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-at-application-startup-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ef0a99a1601f40995c81a12f457303e040f57e29
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 58c4654691084b9574283c03c77398cb43f6751a
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58424609"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59393467"
 ---
-<a name="caching-data-at-application-startup-vb"></a>Ukládání dat do mezipaměti při spuštění aplikace (VB)
-====================
+# <a name="caching-data-at-application-startup-vb"></a>Ukládání dat do mezipaměti při spuštění aplikace (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhnout PDF](caching-data-at-application-startup-vb/_static/datatutorial60vb1.pdf)
@@ -119,7 +119,7 @@ Přidat `Global.asax` souboru na kořenovém adresáři webové aplikace s prav�
 > Pokud už máte `Global.asax` soubor v projektu, Global Application Class typ položky nebudou uvedené v dialogovém okně Přidat novou položku.
 
 
-[![Přidat soubor Global.asax pro váš kořenový adresář webové aplikace s](caching-data-at-application-startup-vb/_static/image4.png)](caching-data-at-application-startup-vb/_static/image3.png)
+[![Add souboru Global.asax pro webové aplikace s kořenový adresář](caching-data-at-application-startup-vb/_static/image4.png)](caching-data-at-application-startup-vb/_static/image3.png)
 
 **Obrázek 3**: Přidat `Global.asax` souborů do webové aplikace s kořenovým adresářem ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-at-application-startup-vb/_static/image5.png))
 
@@ -142,7 +142,7 @@ Pro tyto kurzy musíme pouze přidáním kódu `Application_Start` metody, takž
 Všechny existuje tento s je to! Při spuštění aplikace `LoadStaticCache()` metoda získejte informace o dodavateli z knihoven BLL a uložte ho statické členské proměnné (nebo libovolné mezipaměti můžete ukládat skončila pomocí `StaticCache` třídy). Pokud chcete ověřit toto chování, nastavte zarážku v `Application_Start` – metoda a spusťte aplikaci. Všimněte si, že je zarážka dosažena při spuštění aplikace. Další požadavky, ale nezpůsobí `Application_Start` metodu provést.
 
 
-[![Použijte zarážku pro ověřte, zda obslužná rutina události Application_Start prováděný](caching-data-at-application-startup-vb/_static/image7.png)](caching-data-at-application-startup-vb/_static/image6.png)
+[![Use zarážku pro ověřte, zda obslužná rutina události Application_Start prováděný](caching-data-at-application-startup-vb/_static/image7.png)](caching-data-at-application-startup-vb/_static/image6.png)
 
 **Obrázek 4**: Použijte zarážku pro ověření, který `Application_Start` obslužná rutina události je spouštěna ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-at-application-startup-vb/_static/image8.png))
 
@@ -158,12 +158,12 @@ V tomto okamžiku `StaticCache` třída má verzi dodavatele data v mezipaměti 
 Začněte otevřením `AtApplicationStartup.aspx` stránku `Caching` složky. Přetáhněte z panelu nástrojů do Návrháře nastavení GridView jeho `ID` vlastnost `Suppliers`. V dalším kroku z prvku GridView s inteligentním rozhodnout vytvořit nového prvku ObjectDataSource s názvem `SuppliersCachedDataSource`. Konfigurace ObjectDataSource používat `StaticCache` třída s `GetSuppliers()` metody.
 
 
-[![Konfigurace ObjectDataSource pomocí třídy StaticCache](caching-data-at-application-startup-vb/_static/image10.png)](caching-data-at-application-startup-vb/_static/image9.png)
+[![Configurovat ObjectDataSource pomocí třídy StaticCache](caching-data-at-application-startup-vb/_static/image10.png)](caching-data-at-application-startup-vb/_static/image9.png)
 
 **Obrázek 5**: Konfigurace ObjectDataSource používat `StaticCache` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-at-application-startup-vb/_static/image11.png))
 
 
-[![Pomocí této metody GetSuppliers() načítat Data uložená v mezipaměti dodavatele](caching-data-at-application-startup-vb/_static/image13.png)](caching-data-at-application-startup-vb/_static/image12.png)
+[![UMetoda GetSuppliers() k načtení dat do mezipaměti dodavatele se](caching-data-at-application-startup-vb/_static/image13.png)](caching-data-at-application-startup-vb/_static/image12.png)
 
 **Obrázek 6**: Použití `GetSuppliers()` metodu pro načtení dat do mezipaměti dodavatele ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-at-application-startup-vb/_static/image14.png))
 
@@ -176,7 +176,7 @@ Po dokončení průvodce, Visual Studio automaticky přidá BoundFields pro kaž
 Obrázek 7 znázorňuje stránky při prohlížení prostřednictvím prohlížeče. Výstup je stejný měli jsme načetli data z BLL s `SuppliersBLL` třídy, ale používat `StaticCache` třídy vrací data dodavatele jako uložená v mezipaměti při spuštění aplikace. Můžete nastavit zarážky `StaticCache` třída s `GetSuppliers()` metodu k ověření tohoto chování.
 
 
-[![Poskytovatel dat do mezipaměti se zobrazí v GridView](caching-data-at-application-startup-vb/_static/image16.png)](caching-data-at-application-startup-vb/_static/image15.png)
+[![Tmá poskytovatel dat uložených v mezipaměti se zobrazí v GridView](caching-data-at-application-startup-vb/_static/image16.png)](caching-data-at-application-startup-vb/_static/image15.png)
 
 **Obrázek 7**: Poskytovatel dat do mezipaměti se zobrazí v GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-at-application-startup-vb/_static/image17.png))
 

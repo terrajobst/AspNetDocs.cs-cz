@@ -1,22 +1,23 @@
 ---
 uid: web-api/overview/advanced/dependency-injection
-title: Injektáž závislostí v rozhraní ASP.NET Web API 2 | Dokumentace Microsoftu
+title: Injektáž závislostí v rozhraní ASP.NET Web API 2 – ASP.NET 4.x
 author: MikeWasson
-description: Tento kurz ukazuje postupy při vložení závislosti do vašeho kontroleru webového rozhraní API ASP.NET. Verze softwaru používaných kurz webové rozhraní API 2 Unity Application Block...
+description: Tento kurz ukazuje postupy při vložení závislosti do řadiče rozhraní ASP.NET Web API pro ASP.NET 4.x.
 ms.author: riande
 ms.date: 01/20/2014
+ms.custom: seoapril2019
 ms.assetid: e3d3e7ba-87f0-4032-bdd3-31f3c1aa9d9c
 msc.legacyurl: /web-api/overview/advanced/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: d5011d42d0c2200bc782ab548f6bfa0d952f6e72
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 0ad0b3c63741803e05274df4da3fcbe5481d32a4
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58420917"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59391923"
 ---
-<a name="dependency-injection-in-aspnet-web-api-2"></a>Injektáž závislostí v rozhraní ASP.NET Web API 2
-====================
+# <a name="dependency-injection-in-aspnet-web-api-2"></a>Injektáž závislostí v rozhraní ASP.NET Web API 2
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 [Stáhnout dokončený projekt](http://code.msdn.microsoft.com/ASP-NET-Web-API-Tutorial-468ee148)

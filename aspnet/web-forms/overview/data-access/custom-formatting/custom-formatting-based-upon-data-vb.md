@@ -8,15 +8,15 @@ ms.date: 03/31/2010
 ms.assetid: df5a1525-386f-4632-972c-57b199870bc3
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d902fd6d042783c036bb42a11b7e469f6dd2b5b6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a408134b4e26e8ad1f7c22c9d2005a7c551b00c6
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070195"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59392856"
 ---
-<a name="custom-formatting-based-upon-data-vb"></a>Vlastní formátování založené na datech (VB)
-====================
+# <a name="custom-formatting-based-upon-data-vb"></a>Vlastní formátování založené na datech (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/5/7/0/57084608-dfb3-4781-991c-407d086e2adc/ASPNET_Data_Tutorial_11_VB.exe) nebo [stahovat PDF](custom-formatting-based-upon-data-vb/_static/datatutorial11vb1.pdf)
@@ -49,7 +49,7 @@ Otevřít `CustomColors.aspx` stránku `CustomFormatting` složky, přetáhněte
 Když prvku ObjectDataSource vázaný na ovládacím prvku DetailsView, věnujte chvíli upravit seznam polí. Jste se rozhodli odebrat `ProductID`, `SupplierID`, `CategoryID`, `UnitsInStock`, `UnitsOnOrder`, `ReorderLevel`, a `Discontinued` BoundFields přejmenovat a zbývající BoundFields přeformátovali. Jsem také odstraněné `Width` a `Height` nastavení. Protože ovládacím prvku DetailsView zobrazí jenom jeden záznam, musíme povolit stránkování, aby koncový uživatel Chcete-li zobrazit všechny produkty. To tak, že zaškrtnete políčko Povolit stránkování v ovládacím prvku DetailsView inteligentních značek.
 
 
-[![Obrázek 1: Zaškrtněte políčko Povolit stránkování v ovládacím prvku DetailsView inteligentních značek](custom-formatting-based-upon-data-vb/_static/image2.png)](custom-formatting-based-upon-data-vb/_static/image1.png)
+[![Figure 1: Zaškrtněte políčko Povolit stránkování v ovládacím prvku DetailsView inteligentních značek](custom-formatting-based-upon-data-vb/_static/image2.png)](custom-formatting-based-upon-data-vb/_static/image1.png)
 
 **Obrázek 1**: Obrázek 1: Zaškrtněte políčko Povolit stránkování v ovládacím prvku DetailsView inteligentních značek ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-vb/_static/image3.png))
 
@@ -62,7 +62,7 @@ Po provedení těchto změn bude DetailsView značky:
 Využijte k otestování této stránky v prohlížeči.
 
 
-[![Ovládací prvek DetailsView zobrazí jeden produkt v čase](custom-formatting-based-upon-data-vb/_static/image5.png)](custom-formatting-based-upon-data-vb/_static/image4.png)
+[![Tmá DetailsView ovládací prvek zobrazí jeden produkt současně](custom-formatting-based-upon-data-vb/_static/image5.png)](custom-formatting-based-upon-data-vb/_static/image4.png)
 
 **Obrázek 2**: Prvek DetailsView ovládací prvek zobrazí jeden produkt v čase ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-vb/_static/image6.png))
 
@@ -124,12 +124,12 @@ Potom v `DataBound` obslužná rutina události, nastavte na buňku `CssClass` v
 Při prohlížení Chai, která stojí méně než 75.00 $, zobrazí se cena uvedená normálním písmem (viz obrázek 4). Ale při prohlížení Niku Kobe Mishi, jehož cena $97.00 cena se zobrazí v písmo tučné písmo, kurzívu (viz obrázek 5).
 
 
-[![Ceny za méně než $75.00 jsou zobrazeny v normální písmo](custom-formatting-based-upon-data-vb/_static/image9.png)](custom-formatting-based-upon-data-vb/_static/image8.png)
+[![PMéně než $75.00 jsou zobrazeny v normální písmo prodejn](custom-formatting-based-upon-data-vb/_static/image9.png)](custom-formatting-based-upon-data-vb/_static/image8.png)
 
 **Obrázek 4**: Ceny za méně než $75.00 jsou zobrazeny v normální písmo ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-vb/_static/image10.png))
 
 
-[![Ceny nákladné produkty, které se zobrazují v tučné, kurzíva písma](custom-formatting-based-upon-data-vb/_static/image12.png)](custom-formatting-based-upon-data-vb/_static/image11.png)
+[![ECeny xpensive produkty, které jsou zobrazeny v tučné, kurzíva písem](custom-formatting-based-upon-data-vb/_static/image12.png)](custom-formatting-based-upon-data-vb/_static/image11.png)
 
 **Obrázek 5**: Ceny nákladné produkty, které se zobrazují v tučné, kurzíva písma ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-vb/_static/image13.png))
 
@@ -196,12 +196,12 @@ Jakmile budeme mít programový odkaz na ovládací prvek, jsme jde upravit jej�
 Obrázky 7 znázorňuje FormView při prohlížení produktu jehož `UnitsInStock` hodnota je větší než 10, zatímco v produktu na obrázku 8 je jeho hodnota menší než 10.
 
 
-[![Pro produkty s dostatečně velké jednotky v zásobách ne vlastní formátování](custom-formatting-based-upon-data-vb/_static/image16.png)](custom-formatting-based-upon-data-vb/_static/image15.png)
+[![Fnebo pokud je použita produkty s dostatečně velké jednotky v zásobách, ne vlastní formátování](custom-formatting-based-upon-data-vb/_static/image16.png)](custom-formatting-based-upon-data-vb/_static/image15.png)
 
 **Obrázek 7**: Pro produkty s dostatečně velké jednotky v zásobách, ne vlastní formátování ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-vb/_static/image17.png))
 
 
-[![Jednotky v zásobách číslo se zobrazí červeně pro tyto produkty s hodnoty 10 nebo méně](custom-formatting-based-upon-data-vb/_static/image19.png)](custom-formatting-based-upon-data-vb/_static/image18.png)
+[![Tmá jednotky v zásobách číslo se zobrazí červeně pro tyto produkty s hodnoty 10 nebo méně](custom-formatting-based-upon-data-vb/_static/image19.png)](custom-formatting-based-upon-data-vb/_static/image18.png)
 
 **Obrázek 8**: Jednotky v zásobách číslo se zobrazí červeně pro tyto produkty s hodnoty 10 nebo méně ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-vb/_static/image20.png))
 
@@ -247,7 +247,7 @@ Přidejte prvek GridView ve třídě FormView z předchozího příkladu a nasta
 Obrázek 9 ukazuje náš postup do této chvíle při prohlížení prostřednictvím prohlížeče.
 
 
-[![Název, kategorie a ceny pro každý produkt obsahuje seznam prvku GridView.](custom-formatting-based-upon-data-vb/_static/image22.png)](custom-formatting-based-upon-data-vb/_static/image21.png)
+[![TGridView uvádí název, kategorie a ceny pro každý produkt](custom-formatting-based-upon-data-vb/_static/image22.png)](custom-formatting-based-upon-data-vb/_static/image21.png)
 
 **Obrázek 9**: GridView uvádí název, kategorie a ceny pro každý produkt ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-vb/_static/image23.png))
 
@@ -264,7 +264,7 @@ Tato obslužná rutina události je možné vytvořit pomocí stejného postupu 
 **Obrázek 10**: Vytvořte obslužnou rutinu události pro prvku GridView `RowDataBound` událostí
 
 
-Vytváření obslužnou rutinu události tímto způsobem způsobí, že následující kód, který automaticky přidá do části kódu stránky ASP.NET:
+Vytvoření obslužné rutiny události tímto způsobem způsobí, že následující kód, který automaticky přidá do části kódu stránky ASP.NET:
 
 
 [!code-vb[Main](custom-formatting-based-upon-data-vb/samples/sample14.vb)]
@@ -303,7 +303,7 @@ Místo nastavení `GridViewRow`společnosti `BackColor` vlastnost přímo, můž
 [!code-vb[Main](custom-formatting-based-upon-data-vb/samples/sample18.vb)]
 
 
-[![Největší dostupnou produkty jsou zvýrazněn žlutou](custom-formatting-based-upon-data-vb/_static/image26.png)](custom-formatting-based-upon-data-vb/_static/image25.png)
+[![The největší dostupnou produkty, které jsou zvýrazněn žlutou](custom-formatting-based-upon-data-vb/_static/image26.png)](custom-formatting-based-upon-data-vb/_static/image25.png)
 
 **Obrázek 11**: Největší dostupnou produkty jsou zvýrazněn žlutou ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-vb/_static/image27.png))
 

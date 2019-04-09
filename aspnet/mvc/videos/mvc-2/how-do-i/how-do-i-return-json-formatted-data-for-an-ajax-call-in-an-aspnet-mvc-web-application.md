@@ -8,15 +8,15 @@ ms.date: 10/22/2009
 ms.assetid: 7ed06ca2-fab6-41a3-a1cc-a3ccebb639f6
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application
 msc.type: video
-ms.openlocfilehash: 86070a8027ad736aa46086a2871e69f1c87f6e54
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: e14f0a247b86bb15a6ac304e9675ef5c7da8fd63
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077659"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59393441"
 ---
-<a name="how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application"></a>Postup: Vrácení dat ve formátu JSON volání AJAX ve webové aplikaci ASP.NET MVC?
-====================
+# <a name="how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application"></a>Postup: Vrácení dat ve formátu JSON volání AJAX ve webové aplikaci ASP.NET MVC?
+
 podle [Chris pixelů na](https://twitter.com/chrispels)
 
 Toto video pixelů na Chris ukazuje, jak použít třídy JsonResult a Json, který vrátí instance třídy jako dokumenty JSON ve formátu data. Nejprve se vytvoří ukázkové webové aplikaci MVC a kontroler a přidružené zobrazení jsou přidány pro informace o zákaznících. Pak třídu jednoduché zákazníků je vytvořen jako součást datového modelu. Funkce GetCustomer() se pak přidá do kontroleru zákazníka k načtení dat pro jediného zákazníka ve formátu JSON. Nakonec se skript přidá do zobrazení zákazníka, který používá jQuery provádět volání jazyka AJAX do GetCustomer() načíst zákaznická data ve formátu JSON

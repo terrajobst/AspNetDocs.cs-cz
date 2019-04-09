@@ -8,15 +8,15 @@ ms.date: 08/30/2013
 ms.assetid: 0ee21741-c1bf-4025-a9b0-24580cae24bc
 msc.legacyurl: /aspnet/overview/owin-and-katana/an-overview-of-project-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 52007eba109de28c6d178505b82b1d5ff2883b47
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 72f70faa151007558ecbb270143ecd5b37c2134d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070858"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59392570"
 ---
-<a name="an-overview-of-project-katana"></a>Přehled projektu Katana
-====================
+# <a name="an-overview-of-project-katana"></a>Přehled projektu Katana
+
 podle [Howard Dierking](https://github.com/howarddierking)
 
 > ASP.NET Framework je už více než deset let a platformu aktivoval vývoj aplikací webů a služeb. Jak se vyvinula strategie vývoje webové aplikace, rozhraní bylo rozvoj v kroku s technologií, jako je ASP.NET MVC a ASP.NET Web API. Jako vývoj webových aplikací, dalším krokem evoluční bere do světa cloud computingu, Microsoft Office project [Katana](https://channel9.msdn.com/Shows/Web+Camps+TV/The-Katana-Project-OWIN-for-ASPNET) obsahuje základní sadu komponent do aplikace ASP.NET, což jim umožňuje být flexibilní, přenosná, odlehčený a nabízí lepší výkon – jinými slovy, projektu [Katana](https://channel9.msdn.com/Shows/Web+Camps+TV/The-Katana-Project-OWIN-for-ASPNET) cloudu optimalizuje vaše aplikace ASP.NET.

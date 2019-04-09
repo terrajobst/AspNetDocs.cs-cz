@@ -1,22 +1,23 @@
 ---
 uid: web-api/overview/advanced/http-message-handlers
-title: Obslužné rutiny zpráv HTTP ve webovém rozhraní API technologie ASP.NET | Dokumentace Microsoftu
+title: Obslužné rutiny zpráv HTTP v rozhraní ASP.NET Web API – ASP.NET 4.x
 author: MikeWasson
-description: ''
+description: Přehled obslužné rutiny zpráv HTTP v rozhraní ASP.NET Web API pro ASP.NET 4.x
 ms.author: riande
 ms.date: 02/13/2012
+ms.custom: seoapril2019
 ms.assetid: 9002018b-3aa3-4358-bb1c-fbb5bc751d01
 msc.legacyurl: /web-api/overview/advanced/http-message-handlers
 msc.type: authoredcontent
-ms.openlocfilehash: 0b0d7b4c543dc4e597c6c472083898f3a8095a83
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 308d2e3dd21917e7656f7ffe889dc965d9275d74
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071599"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59392102"
 ---
-<a name="http-message-handlers-in-aspnet-web-api"></a>Obslužné rutiny zpráv HTTP v rozhraní ASP.NET Web API
-====================
+# <a name="http-message-handlers-in-aspnet-web-api"></a>Obslužné rutiny zpráv HTTP v rozhraní ASP.NET Web API
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 A *obslužná rutina zprávy* je třída, která přijme požadavek HTTP a vrátí odpověď HTTP. Obslužné rutiny zpráv jsou odvozeny od abstraktní **objekt HttpMessageHandler** třídy.

@@ -8,15 +8,15 @@ ms.date: 04/16/2008
 ms.assetid: fa9ed773-cceb-49d0-a939-5a9e6bbae00f
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-and-use-a-custom-configuration-section-in-an-aspnet-configuration-file
 msc.type: video
-ms.openlocfilehash: b4189ca107f5e2f455e5e83809bdd6d267478e3b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f1a1c73947bda381bf559e3cbe1e308d0079c2dc
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067282"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59392687"
 ---
-<a name="how-do-i-create-and-use-a-custom-configuration-section-in-an-aspnet-configuration-file"></a>[Postup:] Vytvoření a použití vlastního konfiguračního oddílu v konfiguračním souboru ASP.NET
-====================
+# <a name="how-do-i-create-and-use-a-custom-configuration-section-in-an-aspnet-configuration-file"></a>[Postup:] Vytvoření a použití vlastního konfiguračního oddílu v konfiguračním souboru ASP.NET
+
 podle [Chris pixelů na](https://twitter.com/chrispels)
 
 V tomto videu se zobrazí Chris pixelů na tom, jak rozšířit standardní sadu konfiguračních nastavení technologie ASP.NET s vlastní elementy XML konfigurace. Nejdříve si projděte postup vytvoření obslužné rutiny konfiguračního oddílu, který je nutný, jak interpretovat a zpracovat informace ve vlastní elementy XML konfigurace. Během této další informace o použití deklarativní model pro definování chování obslužné rutiny konfiguračního oddílu. V dalším kroku naleznete v tématu Přidání obslužné rutiny vlastních oddílů a vlastní elementy do souboru konfigurace technologie ASP.NET. Nakonec zkontrolujte, jak získat programově přístup k vlastní konfigurační data.

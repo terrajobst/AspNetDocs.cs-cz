@@ -8,15 +8,15 @@ ms.date: 07/27/2010
 ms.assetid: 397522d5-0402-4b94-b810-a2fb564f869d
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/introducing-the-nerddinner-tutorial
 msc.type: authoredcontent
-ms.openlocfilehash: d5efab525841b5c526aa3b656f27b1c42cc74648
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ebd49295ea165ba4ef1a25398cff7dddcfa54f11
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074623"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59392193"
 ---
-<a name="introducing-the-nerddinner-tutorial"></a>Úvod do kurzu NerdDinner
-====================
+# <a name="introducing-the-nerddinner-tutorial"></a>Úvod do kurzu NerdDinner
+
 podle [Scott Hanselman](https://github.com/shanselman)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
@@ -60,18 +60,18 @@ Můžete pak kliknout na odkaz na reakce na základě jazyka AJAX k Zúčastnět
 
 Budeme zahájíte naší aplikace NerdDinner pomocí souboru -&gt;příkaz Nový projekt v sadě Visual Studio k vytvoření zcela nového projektu ASP.NET MVC. Pak postupně přidáme funkce a prvky. Na cestě probereme:
 
-1. [Jak vytvořit nový projekt ASP.NET MVC](# "vytvořte nový projekt ASP.NET MVC")
-2. [Jak vytvořit databázi](# "vytvoření databáze")
-3. [Jak vytvořit model s ověřením obchodních pravidel](# "sestavení modelu s ověřením obchodních pravidel")
-4. [Použití kontrolerů a zobrazení seznamu a podrobností uživatelského rozhraní implementovat](# "použití Kontrolerů a zobrazení k implementaci uživatelského rozhraní seznamu a podrobností")
-5. [Postup zajištění akcí CRUD (vytváření, čtení, aktualizace nebo odstranění) podporujících zápis dat do formuláře](# "poskytují CRUD (vytváření, čtení, Update, Delete) Data formuláře položky podporu")
-6. [Použití slovníku ViewData a implementace tříd ViewModel](# "použití slovníku ViewData a implementace tříd ViewModel")
-7. [Jak znovu pomocí uživatelského rozhraní pomocí stránek předloh a částečných zobrazení](# "stránek opakované použití uživatelského rozhraní předloh a částečných zobrazení")
-8. [Implementace efektivního stránkování dat](# "implementovat efektivní Data stránkování")
-9. [Zabezpečení aplikací ověřováním a autorizací](# "zabezpečené aplikace pomocí ověřování a autorizace")
-10. [Použití jazyka AJAX k dynamickým aktualizacím](# "použití jazyka AJAX k doručení dynamických aktualizací")
-11. [Použití jazyka AJAX k implementaci scénářů mapování](# "použití jazyka AJAX k implementaci scénářů mapování")
-12. [Jak povolit automatické testování částí](# "povolte automatizované testování částí")
+1. [Jak vytvořit nový projekt ASP.NET MVC](create-a-new-aspnet-mvc-project.md)
+2. [Vytvoření databáze](create-a-database.md)
+3. [Jak vytvořit model s ověřením obchodních pravidel](build-a-model-with-business-rule-validations.md)
+4. [Použití kontrolerů a zobrazení k implementaci seznamu a podrobností uživatelského rozhraní](use-controllers-and-views-to-implement-a-listingdetails-ui.md)
+5. [Postup zajištění akcí CRUD (vytváření, čtení, aktualizace nebo odstranění) podporujících zápis dat do formuláře](provide-crud-create-read-update-delete-data-form-entry-support.md)
+6. [Použití slovníku ViewData a implementace tříd ViewModel](use-viewdata-and-implement-viewmodel-classes.md)
+7. [Jak znovu pomocí uživatelského rozhraní pomocí stránek předloh a částečných zobrazení](re-use-ui-using-master-pages-and-partials.md)
+8. [Implementace efektivního stránkování dat](implement-efficient-data-paging.md)
+9. [Zabezpečení aplikací ověřováním a autorizací](secure-applications-using-authentication-and-authorization.md)
+10. [Použití jazyka AJAX k dynamickým aktualizacím](use-ajax-to-deliver-dynamic-updates.md)
+11. [Použití jazyka AJAX k implementaci scénářů mapování](use-ajax-to-implement-mapping-scenarios.md)
+12. [Jak povolit automatické testování částí](enable-automated-unit-testing.md)
 
 Můžete vytvořit svoji vlastní kopii NerdDinner úplně od začátku po dokončení každého kroku jsme názorný postup v této kapitole. Alternativně můžete stáhnout úplnou verzi zdrojového kódu: [NerdDinner na Githubu](https://github.com/AspNetMVPSamples/NerdDinner). Můžete také v případě potřeby také [stáhnout zdarma PDF verzi tohoto kurzu](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf) Pokud si chcete přečíst kurz v režimu offline.
 

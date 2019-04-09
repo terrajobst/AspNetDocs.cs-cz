@@ -8,15 +8,15 @@ ms.date: 09/08/2014
 ms.assetid: 2ce36f78-8ecb-4ab1-b748-6d0ab633ea3f
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
 msc.type: authoredcontent
-ms.openlocfilehash: 754f085e3e43f7efa155f410d02a0d29d3349612
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 9e2cd1beca03b81140b9d58c5e43dbf7c6b8808b
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075454"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59393051"
 ---
-<a name="create-the-project"></a>Vytvoření projektu
-====================
+# <a name="create-the-project"></a>Vytvoření projektu
+
 by [Erik Reitan](https://github.com/Erikre)
 
 [Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
@@ -70,11 +70,11 @@ Můžete přepínat mezi **návrhu** zobrazení a **zdroj** zobrazení výběrem
 > 
 > Technologie ASP.NET nabízí čtyři primární vývojářských platforem:
 > 
-> - [Webové formuláře ASP.NET](../../../index.md)  
+> - [ASP.NET – webové formuláře](../../../index.md)  
 >  Rozhraní webových formulářů, zaměřuje vývojáři, kteří dávají přednost deklarativní a založené na ovládacím prvku programování, jako je například Microsoft Windows Forms (WinForms) a WPF/XAML nebo Silverlight. Nabízí modelu WYSIWYG vývoj založený na Návrhář, obvykle se s vývojáři, kteří hledají prostředí pro vývoj (RAD) rychlé aplikace pro vývoj pro web. Pokud jsou webové programování a jste obeznámeni s tradiční Microsoft RAD klienta. vývojové nástroje (například pro Visual Basic a Visual C#), můžete rychle vytvořit webovou aplikaci bez nutnosti prostředí v kódu HTML a JavaScript.
 > - [ASP.NET MVC](../../../../mvc/index.md)  
 >  ASP.NET MVC, zaměřuje vývojáři, kteří mají zájem o vzory a zásad, jako je vývoj řízený testováním, oddělení oblastí zájmu, IOC (Inversion) ovládacího prvku a injektáž závislostí (DI). Toto rozhraní umožňuje oddělení vrstvy obchodní logiky webové aplikace z jeho prezentační vrstvy.
-> - [Webové stránky ASP.NET](../../../../web-pages/index.md)  
+> - [ASP.NET – webové stránky](../../../../web-pages/index.md)  
 >  Rozhraní ASP.NET Web Pages, zaměřuje vývojáře, kteří chtějí příběhu jednoduchého webového vývoje podle jazyka PHP. V modelu webové stránky stránky HTML, vytvořit a poté přidejte serverových kód na stránku aby bylo možné dynamicky řízení způsobu vykreslení značek. Webové stránky je navržená speciálně být jednoduché rozhraní framework a je nejjednodušší vstupní bod do technologie ASP.NET pro uživatele, kteří znalost jazyka HTML, ale nemusí mít různé programovací prostředí – například, studenty nebo nadšence. Je také vhodný způsob pro webové vývojáře, kteří ví, PHP nebo podobné rozhraní, pokud chcete začít používat technologie ASP.NET.
 > - [ASP.NET jedním jednostránková aplikace](../../../../single-page-application/index.md)  
 >  ASP.NET jedním jednostránková aplikace (SPA) pomáhá vytvářet aplikace, které obsahují důležité interakce na straně klienta pomocí HTML 5, CSS 3 a JavaScript. ASP.NET a Web Tools 2012.2 Update dodává novou šablonu pro vytváření jednostránkové aplikace pomocí rozhraní knockout.js a ASP.NET Web API. Kromě nové šablony SPA nové komunitou vytvořených SPA šablony jsou také k dispozici ke stažení.
@@ -93,7 +93,7 @@ V sadě Visual Studio **Průzkumníka řešení** okno umožňuje spravovat soub
 
 Visual Studio vytvoří některé počáteční složky a soubory pro váš projekt. První soubory, které můžete pracovat s později v tomto kurzu jsou následující:
 
-| **File** | **Účel** |
+| **Soubor** | **Účel** |
 | --- | --- |
 | *Default.aspx* | Obvykle první stránka zobrazí, když aplikace běží v prohlížeči. |
 | *Site.Master* | Stránka, která vám umožní vytvořit konzistentní chování rozložení a použijte standardní stránek ve vaší aplikaci. |
