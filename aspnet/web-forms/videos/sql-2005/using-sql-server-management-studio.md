@@ -8,15 +8,15 @@ ms.date: 10/23/2006
 ms.assetid: bf1f345e-55c8-4dc8-b62a-365326bb6ed7
 msc.legacyurl: /web-forms/videos/sql-2005/using-sql-server-management-studio
 msc.type: video
-ms.openlocfilehash: 72e51efaa9de8112c1ce0ae165cf0bf85ab1bd13
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 6428bc6e31f143f10f9acb0d491c2813552f4938
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072403"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59381910"
 ---
-<a name="using-sql-server-management-studio"></a>Používání SQL Server Management Studia
-====================
+# <a name="using-sql-server-management-studio"></a>Používání SQL Server Management Studia
+
 by [Microsoft](https://github.com/microsoft)
 
 SQL Server Management Studio Express bude obvykle hlavní rozhraní do systému SQL Server Express. V této lekci ukazuje základní metody a dovednosti, které je potřeba úspěšně připojit k databázi instance, přejděte okno dotazu a skriptování databázové objekty, připojení, odpojení a zálohování databází a spoustu dalších věcí.

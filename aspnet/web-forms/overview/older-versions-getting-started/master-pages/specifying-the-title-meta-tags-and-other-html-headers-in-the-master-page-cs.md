@@ -8,15 +8,15 @@ ms.date: 05/21/2008
 ms.assetid: 0aa1c84f-c9e2-4699-b009-0e28643ecbc6
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e3846ea696a1a5a29fd53d6753878fab9dd9a95d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 431d5a124017e2a23bfaa7579f63d61faf0b8ebd
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069601"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59379791"
 ---
-<a name="specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-c"></a>Zadání názvu, metaznaček a dalších hlaviček HTML na stránce předlohy (C#)
-====================
+# <a name="specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-c"></a>Zadání názvu, metaznaček a dalších hlaviček HTML na stránce předlohy (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/e/e/f/eef369f5-743a-4a52-908f-b6532c4ce0a4/ASPNET_MasterPages_Tutorial_03_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/8/f/6/8f6349e4-6554-405a-bcd7-9b094ba5089a/ASPNET_MasterPages_Tutorial_03_CS.pdf)
@@ -169,7 +169,7 @@ Až to uděláte, přejděte na web prostřednictvím prohlížeče. Pokud navš
 Obrázek 5 ukazuje, `MultipleContentPlaceHolders.aspx` stránce při prohlížení prostřednictvím prohlížeče. Všimněte si, že název je přesně na stránce název souboru (méně rozšíření), "MultipleContentPlaceHolders".
 
 
-[![Pokud název není explicitně zadán, název souboru stránky je automaticky použít](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image6.png)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image5.png)
+[![If názvu je explicitně nezadáte, název souboru stránky je automaticky použít](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image6.png)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image5.png)
 
 **Obrázek 05**: Pokud název není explicitně zadán, název souboru stránky je automaticky používá ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image7.png))
 
@@ -191,7 +191,7 @@ Mapa systému lokality je vytvořeným na základě [modelu poskytovatele](http:
 Začněte vytvořením souboru mapy webu v kořenové složce webu s názvem `Web.sitemap`. Chcete-li to provést, klikněte pravým tlačítkem na název webu v Průzkumníku řešení, zvolte možnost Přidat novou položku a vyberte šablonu mapy webu. Ujistěte se, že je soubor s názvem `Web.sitemap` a klikněte na tlačítko Přidat.
 
 
-[![Přidejte soubor s názvem Web.sitemap do kořenové složky webu](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image9.png)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image8.png)
+[![Add Web.sitemap s názvem souboru do kořenové složky webu](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image9.png)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image8.png)
 
 **Obrázek 06**: Přidat soubor s názvem `Web.sitemap` do kořenové složky webu ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image10.png))
 
@@ -224,7 +224,7 @@ Začněte tím, že odebrání existující značky neuspořádaný seznam z č�
 Z Průvodce konfigurací zdroje dat zvolte nový ovládací prvek SiteMapDataSource s názvem vytvořit vazbu ListView `LessonsDataSource`. Ovládací prvek SiteMapDataSource vrátí hierarchickou strukturu ze systému lokality mapy.
 
 
-[![Vytvoření vazby ovládacího prvku SiteMapDataSource do ovládacího prvku ListView LessonsList](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image13.png)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image12.png)
+[![BIND SiteMapDataSource ovládacího prvku do ovládacího prvku ListView LessonsList](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image13.png)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image12.png)
 
 **Obrázek 08**: Vytvoření vazby ovládacího prvku SiteMapDataSource k `LessonsList` ovládací prvek ListView ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image14.png))
 
@@ -239,7 +239,7 @@ Po vytvoření ovládacího prvku SiteMapDataSource, musíme definovat šablony 
 Po dokončení konfigurace šablony prvku ListView, přejděte na webovou stránku. Jak je vidět na obrázku 9, lekce oddíl obsahuje seznamy s odrážkami položky, domovská stránka. Kde se o a použití ovládacích prvků ContentPlaceHolder více lekce? SiteMapDataSource slouží k vrácení hierarchické sady dat, ale ovládací prvek ListView může zobrazit pouze jednu úroveň v hierarchii. V důsledku toho se zobrazí pouze první úroveň vrácené SiteMapDataSource uzly mapy webu.
 
 
-[![Lekce oddíl obsahuje jednu položku seznamu](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image16.png)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image15.png)
+[![Tmá lekce oddíl obsahuje jedné položky seznamu](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image16.png)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image15.png)
 
 **Obrázek 09**: Lekce oddíl obsahuje jednu položku seznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image17.png))
 
@@ -254,7 +254,7 @@ Díky této změně ListView zobrazí položky s odrážkami o a pomocí ovláda
 Poznatky oddílu konfigurace SiteMapDataSource chcete vynechat, nechte počáteční uzel a explicitně přidáním položky odrážky Domovská stránka, teď zobrazuje zamýšlený výstup.
 
 
-[![Lekce oddíl obsahuje položku odrážky pro domácnosti a každý podřízený uzel](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image19.png)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image18.png)
+[![TLekce oddíl obsahuje odrážky položky pro domácnosti a každý podřízený uzel má](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image19.png)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image18.png)
 
 **Obrázek 10**: Lekce oddíl obsahuje položku odrážky pro domácnosti a každý podřízený uzel ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs/_static/image20.png))
 

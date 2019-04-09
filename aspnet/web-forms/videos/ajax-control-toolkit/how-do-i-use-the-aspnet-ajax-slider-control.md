@@ -8,15 +8,15 @@ ms.date: 03/13/2007
 ms.assetid: 958e1bc8-65a8-4fe0-ad2d-f98691d5fdf1
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-slider-control
 msc.type: video
-ms.openlocfilehash: 61ad0c6991348e1ca76ab74a32066fcec8c93ca6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 62534e580aa7d5e383b8e86d2b904544356b0739
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076189"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59384984"
 ---
-<a name="how-do-i-use-the-aspnet-ajax-slider-control"></a>[Postup:] Pomocí ovládacího prvku ASP.NET AJAX posuvník?
-====================
+# <a name="how-do-i-use-the-aspnet-ajax-slider-control"></a>[Postup:] Pomocí ovládacího prvku ASP.NET AJAX posuvník?
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 Ovládací prvek posuvníku z technologie ASP.NET AJAX Control Toolkit poskytuje jednoduchý a elegantní způsob pro uživatele vyberte číselnou hodnotu. Toto video ukazuje, jak přidat ovládací prvek typu jezdec na webovou stránku a jak nakonfigurovat orientace rozsah hodnot a velikost přírůstky.

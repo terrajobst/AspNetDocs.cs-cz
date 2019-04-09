@@ -8,15 +8,15 @@ ms.date: 06/02/2008
 ms.assetid: f7073f50-d765-456d-9957-926ce60f35f6
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d9933af3f1be20177c958413173746fe087dec43
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: ff143aa102973279c53fe4ba052c4766f099c77d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425805"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59382209"
 ---
-<a name="executing-animations-using-client-side-code-vb"></a>Spuštění animací klientským kódem (VB)
-====================
+# <a name="executing-animations-using-client-side-code-vb"></a>Spuštění animací klientským kódem (VB)
+
 by [Christian Wenz](https://github.com/wenz)
 
 [Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation10.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation10VB.pdf)
@@ -63,7 +63,7 @@ Tady je kompletní kód JavaScript na straně klienta, který emuluje klikněte 
 [!code-html[Main](executing-animations-using-client-side-code-vb/samples/sample8.html)]
 
 
-[![Animace se spustí okamžitě, bez kliknutí myší](executing-animations-using-client-side-code-vb/_static/image2.png)](executing-animations-using-client-side-code-vb/_static/image1.png)
+[![The animace se spustí okamžitě, bez kliknutí myší](executing-animations-using-client-side-code-vb/_static/image2.png)](executing-animations-using-client-side-code-vb/_static/image1.png)
 
 Animace se spustí okamžitě, bez kliknutí myší ([kliknutím ji zobrazíte obrázek v plné velikosti](executing-animations-using-client-side-code-vb/_static/image3.png))
 

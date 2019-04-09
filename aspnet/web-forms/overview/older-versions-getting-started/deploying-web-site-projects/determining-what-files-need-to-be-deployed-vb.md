@@ -8,15 +8,15 @@ ms.date: 04/01/2009
 ms.assetid: ea918f62-c9d6-4a7f-9bc6-e054d3764b2c
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 22461b681ea195225c6b7b0306b6f49956a2890b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: fe19910d693a784b8dc207462591c9f4d51cec14
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078352"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59382144"
 ---
-<a name="determining-what-files-need-to-be-deployed-vb"></a>Zjištění souborů, které je potřeba nasadit (VB)
-====================
+# <a name="determining-what-files-need-to-be-deployed-vb"></a>Zjištění souborů, které je potřeba nasadit (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/4/5/F/45F815EC-8B0E-46D3-9FB8-2DC015CCA306/ASPNET_Hosting_Tutorial_02_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/E/8/9/E8920AE6-D441-41A7-8A77-9EF8FF970D8B/aspnet_tutorial02_FilesToDeploy_vb.pdf)
@@ -34,7 +34,7 @@ Obecně platí všechny na straně klienta podpůrné soubory mají být zkopír
 
 Rozhraní ASP.NET web pages jsou rozdělené do deklarativní kód a zdrojový kód. Část deklarativní zahrnuje HTML, webové ovládací prvky a datové vazby syntaxe; část kódu obsahuje obslužné rutiny událostí, které jsou napsané v kódu jazyka Visual Basic nebo C#. Části značek a kódu jsou obvykle rozdělena do různých souborů: `WebPage.aspx` obsahuje deklarativní při `WebPage.aspx.vb` jsou uloženy kódu.
 
-Vezměte v úvahu stránku ASP.NET s názvem `Clock.aspx` , která obsahuje ovládací prvek popisku, jejichž Text je nastavena na aktuální datum a čas načtení stránky. Deklarativní část (v `Clock.aspx`) bude obsahovat značky pro ovládací prvek popisek webové – `<asp:Label runat="server" id="TimeLabel" />` – při část kódu (v `Clock.aspx.vb`) by měla `Page_Load` obslužnou rutinu události s následujícím kódem:
+Vezměte v úvahu stránku ASP.NET s názvem `Clock.aspx` , která obsahuje ovládací prvek popisku, jejichž Text je nastavena na aktuální datum a čas načtení stránky. Deklarativní část (v `Clock.aspx`) by obsahovat značky pro ovládací prvek popisek webové – `<asp:Label runat="server" id="TimeLabel" />` – při část kódu (v `Clock.aspx.vb`) bude mít `Page_Load` obslužné rutiny události s následujícím kódem:
 
 [!code-vb[Main](determining-what-files-need-to-be-deployed-vb/samples/sample1.vb)]
 
@@ -93,7 +93,7 @@ Soubor ke stažení pro účely tohoto kurzu obsahuje aplikaci ASP.NET recenzí.
 Obrázek 1 ukazuje snímek obrazovky webu recenzí při prohlížení prostřednictvím prohlížeče. Tady se zobrazí stránka ~ / Tech/TYASP35.aspx, která zkontroluje knihu *naučit sami technologie ASP.NET 3.5 za 24 hodin*. Tento navigační prvek určuje, která zahrnuje horní části stránky a v nabídce v levém sloupci jsou založeny na strukturu mapy webu definované v `Web.sitemap`. Obrázek v pravém horním rohu je jedním z knihy titulní Image nachází v `Images` složky. Na webu vzhled a chování, které jsou definovány prostřednictvím pravidla šablony kaskádových států soubory šablon stylů CSS v `Styles` složky, zatímco zastřešujícího rozložení stránky je definován na hlavní stránce `Site.master`.
 
 
-[![Na webu knihy kontroly nabízí recenzí na celé řady různých doprovodných produktů](determining-what-files-need-to-be-deployed-vb/_static/image2.png)](determining-what-files-need-to-be-deployed-vb/_static/image1.png)
+[![Tmohl knihu zkontroluje web nabízí recenzí na celé řady různých doprovodných nadpisů](determining-what-files-need-to-be-deployed-vb/_static/image2.png)](determining-what-files-need-to-be-deployed-vb/_static/image1.png)
 
 **Obrázek 1**: Na webu knihy kontroly nabízí recenzí na celé řady různých doprovodných názvy ([kliknutím ji zobrazíte obrázek v plné velikosti](determining-what-files-need-to-be-deployed-vb/_static/image3.png))
 
@@ -116,7 +116,7 @@ Model projektu webové aplikace používá explicitní kompilace – projektu zd
 Obrázek 2 ukazuje soubory, které tvoří knihy revize webové aplikace.
 
 
-[![V Průzkumníku řešení zobrazí soubory, které tvoří projektu webové aplikace.](determining-what-files-need-to-be-deployed-vb/_static/image5.png)](determining-what-files-need-to-be-deployed-vb/_static/image4.png)
+[![TPrůzkumník řešení uvádí soubory, které tvoří projektu webové aplikace.](determining-what-files-need-to-be-deployed-vb/_static/image5.png)](determining-what-files-need-to-be-deployed-vb/_static/image4.png)
 
 **Obrázek 2**: V Průzkumníku řešení zobrazí soubory, které tvoří projektu webové aplikace
 
@@ -147,7 +147,7 @@ Možnost nabídky sestavení v sadě Visual Studio je k dispozici v projektech w
 Obrázek 3 ukazuje soubory, které tvoří knihy revize webový projekt.
 
 
-[![V Průzkumníku řešení zobrazí soubory, které tvoří webový projekt.](determining-what-files-need-to-be-deployed-vb/_static/image7.png)](determining-what-files-need-to-be-deployed-vb/_static/image6.png)
+[![TPrůzkumník řešení uvádí soubory, které tvoří webový projekt.](determining-what-files-need-to-be-deployed-vb/_static/image7.png)](determining-what-files-need-to-be-deployed-vb/_static/image6.png)
 
 **Obrázek 3**: V Průzkumníku řešení zobrazí soubory, které tvoří webového projektu
 

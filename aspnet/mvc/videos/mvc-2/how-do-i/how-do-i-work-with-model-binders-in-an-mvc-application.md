@@ -8,15 +8,15 @@ ms.date: 12/30/2009
 ms.assetid: 55c2fa76-d5b9-43e7-921e-51a9b57dba30
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-work-with-model-binders-in-an-mvc-application
 msc.type: video
-ms.openlocfilehash: 889506be05c617d64a7e1f7b9b70a7a1ed52ae0a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c81057a065e00834928eebe4bd129f3a4a8581f6
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074713"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59379011"
 ---
-<a name="how-do-i-work-with-model-binders-in-an-mvc-application"></a>Postup: Práce s Vazači modelu v aplikaci MVC?
-====================
+# <a name="how-do-i-work-with-model-binders-in-an-mvc-application"></a>Postup: Práce s Vazači modelu v aplikaci MVC?
+
 podle [Chris pixelů na](https://twitter.com/chrispels)
 
 V toto video pixelů na Chris ukazuje, jak použít vazače modelů pro svázání dat formuláře komplexní obchodní objekty v modelech v aplikaci MVC. Aplikace MVC se nejprve vytvoří jednoduchý model pro třídu zákazníka společně s kontroler a zobrazení pro úpravy zákaznická data. Potom vazby automatické modelu MVC ukazuje třídu zákazníka. V dalším kroku je atribut vazby popsané a jsme vám ukázali jako mechanismus pro řízení podrobnosti proces vytváření vazby k zahrnutí a vyloučení konkrétních vlastností komplexního objektu. Nakonec jsou popsány pomocí předpony oboru názvů pro rozdělování dat formuláře na stránce.

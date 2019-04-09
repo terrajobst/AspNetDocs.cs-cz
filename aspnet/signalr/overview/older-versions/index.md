@@ -8,19 +8,19 @@ ms.date: 09/19/2014
 ms.assetid: 607f4617-380f-41fa-bf46-147e82bb8124
 msc.legacyurl: /signalr/overview/older-versions
 msc.type: chapter
-ms.openlocfilehash: 160c3b2f0d255314bdf9fef3eda22cb578de476e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 67ca6b1dc68dc2dde4e24d4d6c6ddae04fc4bb6d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796178"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59383471"
 ---
-<a name="signalr-older-versions"></a>Starší verze funkce SignalR
-====================
+# <a name="signalr-older-versions"></a>Starší verze funkce SignalR
+
 > Dokumentace, která se vztahuje na dřívější verze systému SignalR.
 
 
-- [Kurz: Začínáme s knihovnou SignalR 1.x](tutorial-getting-started-with-signalr.md)
+- [Kurz: Začínáme s funkcí SignalR 1.x](tutorial-getting-started-with-signalr.md)
 - [Kurz: Začínáme s knihovnou SignalR 1.x a MVC 4](tutorial-getting-started-with-signalr-and-mvc-4.md)
 - [Vysokofrekvenční reálný čas s knihovnou SignalR 1.x](tutorial-high-frequency-realtime-with-signalr.md)
 - [Kurz: Serverové vysílání s knihovnou ASP.NET SignalR 1.x](tutorial-server-broadcast-with-aspnet-signalr.md)

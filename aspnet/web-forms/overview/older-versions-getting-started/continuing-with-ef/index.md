@@ -8,19 +8,19 @@ ms.date: 10/05/2011
 ms.assetid: 25a6b7ba-e374-4c3f-9e53-83f665cfdd21
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef
 msc.type: chapter
-ms.openlocfilehash: 7866827440b16cdee1af923b9a1597a659c0f443
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 03eb0f69428c4f4f48487f8eefe91c33f9f1ebbd
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57795983"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59378799"
 ---
-<a name="aspnet-4---continuing-with-entity-framework-4-and-web-forms"></a>ASP.NET 4 – Pokračujeme se sadou Entity Framework 4 a webovými formuláři
-====================
+# <a name="aspnet-4---continuing-with-entity-framework-4-and-web-forms"></a>ASP.NET 4 – Pokračujeme se sadou Entity Framework 4 a webovými formuláři
+
 > Jak vytvořit aplikaci Contoso U jako n vrstvá aplikace pomocí ovládacího prvku ObjectDataSource a tom, jak zpracovat souběžnosti a maximalizovat výkon.
 
 
-- [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 1. část: Začínáme se službou](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
+- [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 1. část: Začínáme](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
 - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 2. část: Přidání vrstvy obchodní logiky a testy jednotek](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
 - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 3. část: Řazení a filtrování](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
 - [Ošetření souběžnosti se sadou Entity Framework 4.0 v ASP.NET 4](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)

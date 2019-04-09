@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: 1568247f-60b5-4eca-96e0-e661fbb2b273
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: a243c78c7d552f1c82a88c6083871fcd16538618
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: aa8c0be6e4a758da34fc6eed902e31049d0a9a9c
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078394"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59379726"
 ---
 # <a name="tutorial-server-broadcast-with-signalr-2"></a>Kurz: Server vysílání s knihovnou SignalR 2
 
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
- * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) s **vývoj pro ASP.NET a web** pracovního vytížení.
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) s **vývoj pro ASP.NET a web** pracovního vytížení.
 
 ## <a name="create-the-project"></a>Vytvoření projektu
 
@@ -75,7 +75,7 @@ Začněte vytvořením *akcie* model třídy, které budete používat k uklád�
 
 ### <a name="create-the-stocktickerhub-and-stockticker-classes"></a>Vytvoření tříd StockTickerHub a StockTicker
 
-Rozhraní API pro rozbočovače SignalR budete používat ke zpracování server klient interakce. A `StockTickerHub` třídu odvozenou od `SignalRHub` třídy bude zpracovávat připojení a volání metody přijímají od klientů. Také je potřeba udržovat uložených dat a spustit `Timer` objektu. `Timer` Objektu bude pravidelně aktivovat aktualizaci cen nezávisle na připojení klientů. Tyto funkce nejde umístit `Hub` třídy, protože jsou přechodné rozbočovače. Vytvoří aplikaci `Hub` instance třídy pro každý úkol v rozbočovači, jako je připojení a volání od klienta k serveru. Mechanismus, který zajišťuje uložených dat, aktualizuje ceny a vysílá aktualizaci cen má ke spuštění v samostatné třídě. Zobrazí název třídy `StockTicker`.
+Rozhraní API pro rozbočovače SignalR budete používat ke zpracování server klient interakce. A `StockTickerHub` třídu odvozenou od funkce SignalR `Hub` třídy bude zpracovávat připojení a volání metody přijímají od klientů. Také je potřeba udržovat uložených dat a spustit `Timer` objektu. `Timer` Objektu bude pravidelně aktivovat aktualizaci cen nezávisle na připojení klientů. Tyto funkce nejde umístit `Hub` třídy, protože jsou přechodné rozbočovače. Vytvoří aplikaci `Hub` instance třídy pro každý úkol v rozbočovači, jako je připojení a volání od klienta k serveru. Mechanismus, který zajišťuje uložených dat, aktualizuje ceny a vysílá aktualizaci cen má ke spuštění v samostatné třídě. Zobrazí název třídy `StockTicker`.
 
 ![Všesměrové vysílání z StockTicker](tutorial-server-broadcast-with-signalr/_static/image3.png)
 
@@ -480,7 +480,7 @@ Kurzy, které ukazují scénáře komunikace peer-to-peer, naleznete v tématu [
 
 Další informace o funkci SignalR naleznete v následujících zdrojích:
 
-* [Funkce SignalR technologie ASP.NET](../../index.md)
+* [ASP.NET SignalR](../../index.md)
 * [Projekt SignalR](http://signalr.net/)
 * [Funkce SignalR Githubu a ukázky](https://github.com/SignalR/SignalR)
 * [SignalR Wiki](https://github.com/SignalR/SignalR/wiki)

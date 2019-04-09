@@ -8,15 +8,15 @@ ms.date: 04/22/2010
 ms.assetid: c56355c3-821f-43e2-9058-9499a1d63f80
 msc.legacyurl: /mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-1
 msc.type: video
-ms.openlocfilehash: 3e7d874c322e6461dcc030814de455318c9dd902
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ac872869f97aab679384c7cda9f6c8399cd966a3
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071491"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59384685"
 ---
-<a name="aspnet-mvc-for-the-rest-of-us-part-1"></a>ASP.NET MVC pro nás ostatní: Část 1
-====================
+# <a name="aspnet-mvc-for-the-rest-of-us-part-1"></a>ASP.NET MVC pro nás ostatní: Část 1
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 V tomto sestavení Video Microsoft Joe Stagner funkci "Kontaktujte nás" pro aplikaci MVC rozhraní ASP.NET tak, že přidáte zobrazení, logice Kontroleru a vlastní Model výchozí aplikaci ASP.NET. Zobrazí se vám některé základní rozdíly mezi práce s ASP.NET MVC a webových formulářů ASP.NET.

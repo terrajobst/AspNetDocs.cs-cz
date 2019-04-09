@@ -1,25 +1,26 @@
 ---
 uid: web-api/overview/formats-and-model-binding/bson-support-in-web-api-21
-title: Podpora formátu BSON ve webovém rozhraní API 2.1 technologie ASP.NET | Dokumentace Microsoftu
+title: Podpora formátu BSON v rozhraní ASP.NET Web API 2.1 – ASP.NET 4.x
 author: MikeWasson
-description: ''
+description: ukazuje, jak používat BSON v kontroleru rozhraní Web API (na straně serveru) a v klientské aplikaci .NET pro technologii ASP.NET 4.x.
 ms.author: riande
 ms.date: 01/20/2014
+ms.custom: seoapril2019
 ms.assetid: ce11b017-0ca6-4376-aa9d-a7f3288101de
 msc.legacyurl: /web-api/overview/formats-and-model-binding/bson-support-in-web-api-21
 msc.type: authoredcontent
-ms.openlocfilehash: 709fb0266c0725176358a1bd0d08b3e07fa6e2a6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 911e2abcfd277075b3cba71e624ec6390b99a15e
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077188"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59382223"
 ---
-<a name="bson-support-in-aspnet-web-api-21"></a>Podpora formátu BSON ve webovém rozhraní API 2.1 technologie ASP.NET
-====================
+# <a name="bson-support-in-aspnet-web-api-21"></a>Podpora formátu BSON ve webovém rozhraní API 2.1 technologie ASP.NET
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
-Webové rozhraní API 2.1 přináší podporu pro BSON. Toto téma ukazuje, jak použít BSON ve vaší kontroler Web API (na straně serveru) a v klientské aplikaci .NET.
+Toto téma ukazuje, jak použít BSON ve vaší kontroler Web API (na straně serveru) a v klientské aplikaci .NET. Webové rozhraní API 2.1 přináší podporu pro BSON. 
 
 ## <a name="what-is-bson"></a>Co je BSON?
 

@@ -8,15 +8,15 @@ ms.date: 01/10/2011
 ms.assetid: ffa3d5c9-91e5-4da3-b409-560b0c7fbbf0
 msc.legacyurl: /web-pages/readme/beta3
 msc.type: content
-ms.openlocfilehash: 3d729d1b0615533dddceff484acb3d42247f6cab
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7f0c5ff599235157bd11f5f86a26b8882e0f29dc
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076810"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59381806"
 ---
-<a name="web-matrix-and-aspnet-web-pages-razor-beta-3-release-readme"></a>Soubor Readme o nástroji WebMatrix a webových stránkách ASP.NET (Razor) verze Beta 3
-====================
+# <a name="web-matrix-and-aspnet-web-pages-razor-beta-3-release-readme"></a>Soubor Readme o nástroji WebMatrix a webových stránkách ASP.NET (Razor) verze Beta 3
+
 > Soubor Readme o nástroji WebMatrix a webových stránkách ASP.NET (Razor) verze Beta 3
 
 9. listopadu 2010
@@ -28,7 +28,7 @@ ms.locfileid: "57076810"
 - [Nové funkce, změny a známé problémy ve verzi Beta 3](#Known_Issues)
 
     - [Problémy instalace služby WebMatrix](#Known_Issues_Installation)
-    - [Webové stránky ASP.NET](#Known_Issues_ASPNET)
+    - [ASP.NET – webové stránky](#Known_Issues_ASPNET)
     - [SQL Server Compact](#Known_Issues_SQL_Server_Compact)
     - [Instalace aplikací](#Known_Issues_Installing_Applications)
     - [Publikování aplikací](#Known_Issues_Publishing_Applications)
@@ -548,6 +548,6 @@ Další informace o službě WebMatrix Beta 3 naleznete na následujících webe
 - [ASP.NET](https://asp.net/webmatrix)
 - [Microsoft.com/web](https://www.microsoft.com/web)
 
-* * *
+---
 
 © 2010 Microsoft Corporation. Všechna práva vyhrazena. [Podmínky použití](https://msdn.microsoft.cos/cc300389.aspx).

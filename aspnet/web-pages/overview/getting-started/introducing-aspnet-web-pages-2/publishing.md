@@ -8,15 +8,15 @@ ms.date: 05/28/2015
 ms.assetid: 7e85c70e-1a88-4408-8b3d-29611c7713ed
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/publishing
 msc.type: authoredcontent
-ms.openlocfilehash: bd6611a03ee4940f5d4176ce23464f313b9ec884
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ece436d44908497d6cf10017ba1ee285bfb4a5b2
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067540"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59382095"
 ---
-<a name="introducing-aspnet-web-pages---publishing-a-site-by-using-webmatrix"></a>Úvod do webových stránek ASP.NET – publikování webu pomocí Webmatrixu
-====================
+# <a name="introducing-aspnet-web-pages---publishing-a-site-by-using-webmatrix"></a>Úvod do webových stránek ASP.NET – publikování webu pomocí Webmatrixu
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > Tento kurz je finální pokračování v této sérii kurzů, který představuje rozhraní ASP.NET Web Pages a Microsoft WebMatrix. Popisuje, jak publikovat svůj web na Internetu, ostatní mohli pracovat s ním. Předpokládá, že jste dokončili řady prostřednictvím [vytváření konzistentní vzhled pro weby technologie ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=251585).

@@ -8,15 +8,15 @@ ms.date: 03/14/2014
 ms.assetid: 58b583cd-c4ab-47a3-8527-8c92c298c91f
 msc.legacyurl: /whitepapers/aspnet-web-deployment-content-map
 msc.type: content
-ms.openlocfilehash: 6df0c9d2f38ad1d39abd62787c600ef80da8e8e0
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 3f36f0c504678e1e8b40aef99db81ab99101568b
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070798"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59383898"
 ---
-<a name="aspnet-web-deployment---recommended-resources"></a>Nasazení webu ASP.NET – doporučené zdroje informací
-====================
+# <a name="aspnet-web-deployment---recommended-resources"></a>Nasazení webu ASP.NET – doporučené zdroje informací
+
 > Toto téma obsahuje odkazy na dokumentaci (publikovat) technologie ASP.NET zdroje informací o tom, jak nasadit webové aplikace do služby IIS s využitím sady Visual Studio 2010, Visual Web Developer 2010 a novější verze.
 > 
 > Pokud znáte skvělé blogový příspěvek, [stackoverflow](http://stackoverflow.com) vlákna nebo odkaz, který může být užitečné, [nám pošlete e-mailu](mailto:aspnetue@microsoft.com?subject=Deployment%20Content%20Map) s odkazem.

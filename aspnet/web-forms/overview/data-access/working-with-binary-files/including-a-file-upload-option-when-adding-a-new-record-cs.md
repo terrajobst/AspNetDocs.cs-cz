@@ -8,15 +8,15 @@ ms.date: 03/27/2007
 ms.assetid: 362ade25-3965-4fb2-88d2-835c4786244f
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8b7f839f16150b93645a9fe868642fa5f36248a9
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 9ec09bfcadaa56401a08a389028766ee04f1daad
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58424973"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59379875"
 ---
-<a name="including-a-file-upload-option-when-adding-a-new-record-c"></a>Zahrnutí možnosti nahrání souboru při přidání nového záznamu (C#)
-====================
+# <a name="including-a-file-upload-option-when-adding-a-new-record-c"></a>Zahrnutí možnosti nahrání souboru při přidání nového záznamu (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_56_CS.exe) nebo [stahovat PDF](including-a-file-upload-option-when-adding-a-new-record-cs/_static/datatutorial56cs1.pdf)
@@ -47,7 +47,7 @@ Chcete-li se vyhnout této potenciálnímu starostí, nikoli úprava příkazů 
 Otevřete datovou sadu typu a z návrháře, klikněte pravým tlačítkem na `CategoriesTableAdapter` s záhlaví a v místní nabídce zvolte možnost přidat dotaz. Otevře se Průvodce konfigurací dotazu TableAdapter, který začíná nám požádá, jak se má TableAdapter dotazovat by měl přístup k databázi. Zvolte možnost použít SQL příkazy a klikněte na tlačítko Další. Dalším krokem vyzve k zadání typu dotazu vygenerování. Protože jsme k vytvoření dotazu na přidání nového záznamu `Categories` tabulky, zvolte vložení a klikněte na tlačítko Další.
 
 
-[![Vyberte možnost Vložit](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image1.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image1.png)
+[![Szvolit možnost Vložit](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image1.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image1.png)
 
 **Obrázek 1**: Vyberte možnost Vložit ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image2.png))
 
@@ -60,7 +60,7 @@ Nyní potřebujeme k určení `INSERT` příkaz jazyka SQL. Průvodce automatick
 Poslední obrazovka průvodce výzva pojmenujte novou metodu objektu TableAdapter. Zadejte `InsertWithPicture` a klikněte na tlačítko Dokončit.
 
 
-[![Název nové InsertWithPicture TableAdapter – metoda](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image2.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image3.png)
+[![NNová metoda InsertWithPicture TableAdapter AME](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image2.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image3.png)
 
 **Obrázek 2**: Pojmenujte novou metodu TableAdapter `InsertWithPicture` ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image4.png))
 
@@ -83,7 +83,7 @@ V tomto kurzu vytvoříme stránku, která umožňuje koncovým uživatelům př
 Začněte otevřením `DisplayOrDownload.aspx` stránku ze `BinaryData` složky. Přejděte do zobrazení zdroje a zkopírujte ovládacími prvky GridView a prvku ObjectDataSource s deklarativní syntaxe, vložte ho v rámci `<asp:Content>` prvek `UploadInDetailsView.aspx`. Také, nezapomeňte zkopírovat don t `GenerateBrochureLink` metody třídy modelu code-behind `DisplayOrDownload.aspx` k `UploadInDetailsView.aspx`.
 
 
-[![Zkopírujte a vložte z DisplayOrDownload.aspx UploadInDetailsView.aspx deklarativní syntaxe](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image3.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image5.png)
+[![CKopírovat a vložit deklarativní syntaxe z DisplayOrDownload.aspx UploadInDetailsView.aspx](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image3.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image5.png)
 
 **Obrázek 3**: Zkopírujte a vložte deklarativní syntaxe z `DisplayOrDownload.aspx` k `UploadInDetailsView.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image6.png))
 
@@ -91,7 +91,7 @@ Začněte otevřením `DisplayOrDownload.aspx` stránku ze `BinaryData` složky.
 Po zkopírování deklarativní syntaxe a `GenerateBrochureLink` metodu přes `UploadInDetailsView.aspx` stránku, prohlížení stránky prostřednictvím prohlížeče k zajištění, že všechno, co se zkopíruje správně. Měli byste vidět GridView výpis osm kategorií, která obsahuje odkaz ke stažení brožura, stejně jako kategorie s obrázek.
 
 
-[![Teď byste měli vidět jednotlivých kategorií spolu s jeho binární Data](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image4.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image7.png)
+[![Yorganizační jednotku byste teď měli vidět jednotlivých kategorií spolu s jeho binární Data](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image4.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image7.png)
 
 **Obrázek 4**: Teď byste měli vidět jednotlivých kategorií spolu s jeho binárních dat ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image8.png))
 
@@ -103,7 +103,7 @@ Po zkopírování deklarativní syntaxe a `GenerateBrochureLink` metodu přes `U
 Začněte kliknutím na odkaz Konfigurovat zdroj dat z prvku ObjectDataSource s inteligentním. Na první obrazovce se zobrazí objekt zdroje dat je nakonfigurováno pro práci s `CategoriesBLL`. Toto políčko nechat jako-je a klikněte na tlačítko Další přejděte na obrazovku definovat metody dat. Přejít na kartu vložení a vybrat `InsertWithPicture` metodu z rozevíracího seznamu. Kliknutím na Dokončit dokončíte průvodce.
 
 
-[![Konfigurace ObjectDataSource InsertWithPicture metody](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image5.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image9.png)
+[![Configurovat ObjectDataSource InsertWithPicture metody](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image5.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image9.png)
 
 **Obrázek 5**: Konfigurace ObjectDataSource používat `InsertWithPicture` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image10.png))
 
@@ -124,7 +124,7 @@ Jako první se věnují [přehled o vložení, aktualizace a odstranění dat](.
 Začněte tím, že přetažením z panelu nástrojů na Návrhář nad prvku GridView, nastavení DetailsView jeho `ID` vlastnost `NewCategory` a mazání navýšení kapacity `Height` a `Width` hodnot vlastností. Z inteligentních značek prvek DetailsView s vázat na existující `CategoriesDataSource` a potom zaškrtněte políčko Povolit vložení.
 
 
-[![Svázat s ovládacím prvku DetailsView CategoriesDataSource a Povolit vložení](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image6.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image11.png)
+[![BIND ovládacím prvku DetailsView CategoriesDataSource a vkládání povolit](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image6.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image11.png)
 
 **Obrázek 6**: Ovládacím prvku DetailsView. k vytvoření vazby `CategoriesDataSource` a Povolit vložení ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image12.png))
 
@@ -153,7 +153,7 @@ V současné době `BrochurePath` TemplateField s `InsertItemTemplate` obsahuje 
 Z prvku DetailsView s inteligentní značku, zvolte možnost Upravit šablony a pak vyberte `BrochurePath` TemplateField s `InsertItemTemplate` z rozevíracího seznamu. Odeberte textového pole a pak přetáhněte FileUpload ovládacího prvku z panelu nástrojů do šablony. Nastavení ovládacího prvku FileUpload s `ID` k `BrochureUpload`. Podobně, přidání ovládacího prvku FileUpload `Picture` TemplateField s `InsertItemTemplate`. Nastavit tento ovládací prvek FileUpload s `ID` k `PictureUpload`.
 
 
-[![Přidejte ovládací prvek odesílání souborů při odpovědích InsertItemTemplate](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image8.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image13.png)
+[![Add FileUpload ovládacího prvku InsertItemTemplate](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image8.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image13.png)
 
 **Obrázek 8**: Přidání ovládacího prvku odesílání souborů při odpovědích `InsertItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image14.png))
 
@@ -226,7 +226,7 @@ Pro úplnost je zde `ItemInserting` obslužné rutiny události v celém rozsahu
 Umožňují s využít k otestování rozhraní vkládání a `ItemInserting` obslužná rutina události, který byl vytvořen za posledních několik kroků. Přejděte `UploadInDetailsView.aspx` stránce prostřednictvím prohlížeče a pokus o přidání kategorie, ale vynechejte obrázek nebo zadejte jiné JPG obrázek nebo brožuru – soubor PDF. Ve všech těchto případech se zobrazí chybová zpráva a pracovní postup vložit zrušena.
 
 
-[![Upozornění se zobrazí, pokud je odeslána neplatný typ souboru](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image9.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image15.png)
+[![A Upozornění se zobrazí, pokud je odeslána neplatný typ souboru](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image9.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image15.png)
 
 **Obrázek 9**: Upozornění se zobrazí, pokud je odeslána neplatný typ souboru ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image16.png))
 
@@ -234,7 +234,7 @@ Umožňují s využít k otestování rozhraní vkládání a `ItemInserting` ob
 Jakmile si ověříte, že stránka vyžaduje obrázek k nahrání a nebude přijímat bez PDF nebo jiných JPG soubory, přidat novou kategorii s platnou obrázek JPG, když si brožuru o pole necháte prázdné. Po kliknutí na tlačítko pro vložení se bude odeslat zpět na stránku a přibude nový záznam `Categories` tabulku s nahraného obrázku s binární obsah uložen přímo v databázi. Prvku GridView se aktualizuje a zobrazí řádek pro nově přidaná kategorie, ale, jak ukazuje obrázek 10 nový obrázek s kategorie nevykreslí správně.
 
 
-[![Novou kategorii s, který není zobrazen obrázek](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image10.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image17.png)
+[![Tosoba s novou kategorii obrázek nezobrazuje](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image10.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image17.png)
 
 **Obrázek 10**: S novou kategorii není zobrazen obrázek ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image18.png))
 
@@ -249,7 +249,7 @@ Protože jsou nyní obě rastrové obrázky s hlavičkami OLE a formátu JPG vyu
 Díky této změně obrázek JPG je nyní správně vykreslen v prvku GridView.
 
 
-[![Obrázky ve formátu JPG pro nové kategorie jsou vykresleny správně](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image11.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image19.png)
+[![TObrázky ve formátu JPG používaný pro nové kategorie jsou vykresleny správně](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image11.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image19.png)
 
 **Obrázek 11**: Obrázky ve formátu JPG pro nové kategorie jsou vykresleny správně ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image20.png))
 

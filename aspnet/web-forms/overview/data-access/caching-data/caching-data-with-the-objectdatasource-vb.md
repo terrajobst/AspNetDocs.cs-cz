@@ -8,15 +8,15 @@ ms.date: 05/30/2007
 ms.assetid: 2e56a733-5512-48a6-9276-70a65bbe4d5d
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: baa6fd0c290c0b09cf137f12ce62f50bae52be23
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 6bde070dae3b295c8d7a04098b874d41fab54830
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068581"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59380207"
 ---
-<a name="caching-data-with-the-objectdatasource-vb"></a>Ukládání dat do mezipaměti ovládacím prvkem ObjectDataSource (VB)
-====================
+# <a name="caching-data-with-the-objectdatasource-vb"></a>Ukládání dat do mezipaměti ovládacím prvkem ObjectDataSource (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_58_VB.exe) nebo [stahovat PDF](caching-data-with-the-objectdatasource-vb/_static/datatutorial58vb1.pdf)
@@ -66,7 +66,7 @@ Než začneme naše zkoumání funkcí ObjectDataSource s ukládání do mezipam
 V jiných složkách, jako jsou `Default.aspx` v `Caching` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
 
 
-[![Obrázek 2: Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](caching-data-with-the-objectdatasource-vb/_static/image3.png)](caching-data-with-the-objectdatasource-vb/_static/image2.png)
+[![Figure 2: Přidat SectionLevelTutorialListing.ascx uživatelský ovládací prvek na Default.aspx](caching-data-with-the-objectdatasource-vb/_static/image3.png)](caching-data-with-the-objectdatasource-vb/_static/image2.png)
 
 **Obrázek 2**: Obrázek 2: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-vb/_static/image4.png))
 
@@ -91,7 +91,7 @@ Tento kurz se věnuje použití prvku ObjectDataSource funkcí ovládacího prvk
 Začněte otevřením `ObjectDataSource.aspx` stránku `Caching` složky. Přetáhněte z panelu nástrojů na Návrhář GridView, nastavte jeho `ID` vlastnost `Products`a z inteligentních značek, vyberte a vytvořte jeho vazbu nového ovládacího prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource pracovat `ProductsBLL` třídy.
 
 
-[![Konfigurace ObjectDataSource pomocí třídy ProductsBLL](caching-data-with-the-objectdatasource-vb/_static/image7.png)](caching-data-with-the-objectdatasource-vb/_static/image6.png)
+[![Configurovat ObjectDataSource pomocí třídy ProductsBLL](caching-data-with-the-objectdatasource-vb/_static/image7.png)](caching-data-with-the-objectdatasource-vb/_static/image6.png)
 
 **Obrázek 4**: Konfigurace ObjectDataSource k použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-vb/_static/image8.png))
 
@@ -99,7 +99,7 @@ Začněte otevřením `ObjectDataSource.aspx` stránku `Caching` složky. Přet�
 Pro tuto stránku umožní s vytvořit upravitelné GridView tak, aby nám můžete zkoumat, co se stane při změně dat v mezipaměti v ObjectDataSource prostřednictvím rozhraní s ovládacího prvku GridView. Ponechejte rozevíracím seznamu na kartě vyberte nastaví výchozí hodnoty, `GetProducts()`, ale změnit vybrané položky na kartě aktualizace `UpdateProduct` přetížení přijímající `productName`, `unitPrice`, a `productID` jako jeho vstupní parametry.
 
 
-[![Nastavte aktualizace kartu s rozevíracím seznamu příslušné UpdateProduct přetížení](caching-data-with-the-objectdatasource-vb/_static/image10.png)](caching-data-with-the-objectdatasource-vb/_static/image9.png)
+[![Set aktualizace kartu s rozevíracím seznamu příslušné UpdateProduct přetížení](caching-data-with-the-objectdatasource-vb/_static/image10.png)](caching-data-with-the-objectdatasource-vb/_static/image9.png)
 
 **Obrázek 5**: Nastavit kartu aktualizace s rozevíracím seznamu vhodná `UpdateProduct` přetížení ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-vb/_static/image11.png))
 
@@ -114,7 +114,7 @@ Zkontrolujte prvku GridView upravitelné zaškrtnutím políčka Povolit úpravy
 > Je potřeba zkontrolovat, jak přizpůsobit rozhraní GridView s úpravy? Pokud ano, vraťte se do [přizpůsobení rozhraní pro úpravu dat](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb.md) kurzu.
 
 
-[![Povolte podporu GridView pro úpravy, řazení a stránkování](caching-data-with-the-objectdatasource-vb/_static/image13.png)](caching-data-with-the-objectdatasource-vb/_static/image12.png)
+[![EPovolit podporu GridView pro úpravy, řazení a stránkování](caching-data-with-the-objectdatasource-vb/_static/image13.png)](caching-data-with-the-objectdatasource-vb/_static/image12.png)
 
 **Obrázek 6**: Povolit podporu úprav, řazení a stránkování prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-vb/_static/image14.png))
 
@@ -127,7 +127,7 @@ Po provedení těchto změn ovládacího prvku GridView, ovládacími prvky Grid
 Jak je vidět na obrázku 7, upravitelné GridView uvádí název, kategorie a cen jednotlivých produktů v databázi. Využít k otestování funkce řazení stránky s výsledky stránkovat a pokud chcete záznam upravit.
 
 
-[![Každý produkt s názvem, kategorie a cena je uveden v Sortable, Pageable, upravitelné GridView](caching-data-with-the-objectdatasource-vb/_static/image16.png)](caching-data-with-the-objectdatasource-vb/_static/image15.png)
+[![EACH produkt s názvem, kategorie a cena je uveden v Sortable, Pageable, upravitelné GridView](caching-data-with-the-objectdatasource-vb/_static/image16.png)](caching-data-with-the-objectdatasource-vb/_static/image15.png)
 
 **Obrázek 7**: Každý produkt s názvem, kategorie a cena je uveden v Sortable, Pageable, upravitelné ovládacího prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-vb/_static/image17.png))
 
@@ -141,7 +141,7 @@ Toto pořadí událostí dojde každém prvku GridView. musí se vytvořit vazbu
 Plně vyhodnotit četnost, se kterým je načítání dat z databáze, umožní s zobrazit zpráva, když se znovu načíst data. Přidat ovládací prvek popisek webového nad prvek GridView s názvem `ODSEvents`. Vymazání jeho `Text` vlastnost a nastavte jeho `EnableViewState` vlastnost `False`. Pod popisek, přidejte ovládací prvek webového tlačítko a nastavte jeho `Text` vlastnost zpětného odeslání.
 
 
-[![Přidejte tlačítko a popisek na stránku nad prvku GridView.](caching-data-with-the-objectdatasource-vb/_static/image19.png)](caching-data-with-the-objectdatasource-vb/_static/image18.png)
+[![ATlačítko na stránce nad prvku GridView a dd popisek](caching-data-with-the-objectdatasource-vb/_static/image19.png)](caching-data-with-the-objectdatasource-vb/_static/image18.png)
 
 **Obrázek 8**: Přidejte popisek a tlačítka do stránky výše prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-vb/_static/image20.png))
 
@@ -156,12 +156,12 @@ Pokaždé, když prvku ObjectDataSource učiní žádost vůči architektury pro
 Navštivte tuto stránku v prohlížeči. Při první návštěvě stránky, aktivuje událost výběr textu se zobrazí. Klikněte na tlačítko zpětného volání a Všimněte si, že text zmizí (za předpokladu, že prvek GridView s `EnableViewState` je nastavena na `True`, výchozí hodnota). Důvodem je, že na zpětné volání, prvku GridView je znovu vytvořena z svůj stav zobrazení a proto zapnout t kódu pro prvek ObjectDataSource pro svá data. Řazení, stránkování a úpravy dat, ale způsobí, že GridView znovu připojit ke zdroji dat, a proto výběr událost aktivuje se bude zobrazovat text.
 
 
-[![Pokaždé, když prvku GridView je znovu připojeno ke zdroji dat, zobrazí se události Selecting aktivováno](caching-data-with-the-objectdatasource-vb/_static/image22.png)](caching-data-with-the-objectdatasource-vb/_static/image21.png)
+[![WZobrazí se henever, které prvku GridView je znovu připojeno ke zdroji dat, výběr události vyvolané](caching-data-with-the-objectdatasource-vb/_static/image22.png)](caching-data-with-the-objectdatasource-vb/_static/image21.png)
 
 **Obrázek 9**: Pokaždé, když prvku GridView je znovu připojeno ke zdroji dat, zobrazí se aktivuje události Selecting ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-vb/_static/image23.png))
 
 
-[![Kliknutím na tlačítko způsobí zpětné odeslání prvku GridView. Chcete-li být znovu vytvořena z svůj stav zobrazení](caching-data-with-the-objectdatasource-vb/_static/image25.png)](caching-data-with-the-objectdatasource-vb/_static/image24.png)
+[![Clicking způsobí zpětné odeslání tlačítka prvku GridView. Chcete-li být znovu vytvořena z svůj stav zobrazení](caching-data-with-the-objectdatasource-vb/_static/image25.png)](caching-data-with-the-objectdatasource-vb/_static/image24.png)
 
 **Obrázek 10**: Kliknutím na tlačítko Postback způsobí, že prvku GridView. Chcete-li být znovu vytvořena z svůj stav zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-vb/_static/image26.png))
 
@@ -180,7 +180,7 @@ Nastavením jednoduše několik vlastností, lze nastavit prvku ObjectDataSource
 Umožní s nakonfigurovat `ProductsDataSource` ObjectDataSource pro ukládání do mezipaměti svá data po dobu 30 sekund na absolutní měřítko. Nastavit prvek ObjectDataSource s `EnableCaching` vlastnost `True` a jeho `CacheDuration` vlastnost do 30. Nechte `CacheExpirationPolicy` nastavenou na výchozí `Absolute`.
 
 
-[![Konfigurace ObjectDataSource pro ukládání do mezipaměti svá Data po dobu 30 sekund](caching-data-with-the-objectdatasource-vb/_static/image28.png)](caching-data-with-the-objectdatasource-vb/_static/image27.png)
+[![Configurovat ObjectDataSource pro ukládání do mezipaměti svá Data po dobu 30 sekund](caching-data-with-the-objectdatasource-vb/_static/image28.png)](caching-data-with-the-objectdatasource-vb/_static/image27.png)
 
 **Obrázek 11**: Konfigurace ObjectDataSource pro ukládání do mezipaměti svá Data po dobu 30 sekund ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-vb/_static/image29.png))
 
@@ -227,7 +227,7 @@ Všechno nejlepší programování!
 
 Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
 
-- [Ukládání do mezipaměti ASP.NET: Techniky a osvědčené postupy](https://msdn.microsoft.com/library/aa478965.aspx)
+- [ASP.NET Caching: Techniky a osvědčené postupy](https://msdn.microsoft.com/library/aa478965.aspx)
 - [Ukládání do mezipaměti Průvodce architekturou aplikací .NET Framework](https://msdn.microsoft.com/library/ee817645.aspx)
 - [Ukládání výstupu do mezipaměti v technologii ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/121306-1.aspx)
 

@@ -8,15 +8,15 @@ ms.date: 02/17/2014
 ms.assetid: f15ab392-c05e-4269-83bf-7c6d2b8c8ec8
 msc.legacyurl: /web-pages/overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devices
 msc.type: authoredcontent
-ms.openlocfilehash: dd06a54d396bd85eeef7c004ee115828d541a2c1
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: dbcd25331387f8606343e551302bc3ed1f9b2c25
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067945"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59379505"
 ---
-<a name="rendering-aspnet-web-pages-razor-sites-for-mobile-devices"></a>Vykreslení webů s ASP.NET webovými stránkami (Razor) pro mobilní zařízení
-====================
+# <a name="rendering-aspnet-web-pages-razor-sites-for-mobile-devices"></a>Vykreslení webů s ASP.NET webovými stránkami (Razor) pro mobilní zařízení
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > Tento článek popisuje, jak vytvářet stránky na webu rozhraní ASP.NET Web Pages (Razor), která se vykreslí správně na mobilních zařízeních.
@@ -37,7 +37,7 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 Webové stránky ASP.NET umožňuje vytvářet vlastní zobrazení pro vykreslení obsahu na mobilní telefon nebo jiné zařízení.
 
-Nejjednodušší způsob, jak vytvořit stránku specifická pro zařízení na webu rozhraní ASP.NET Web Pages je pomocí vzoru pro pojmenovávání souborů následujícím způsobem: <em>FileName.</em><em>Mobile</em><em>.cshtml</em>. Můžete vytvořit dvě verze stránky (například jeden s názvem <em>MyFile.cshtml</em> a jeden s názvem <em>MyFile.Mobile.cshtml</em>). V době, když mobilní zařízení požádá o spuštění <em>MyFile.cshtml</em>, rozhraní ASP.NET vykreslí obsah z <em>MyFile.Mobile.cshtml</em>. V opačném případě <em>MyFile.cshtml</em> vykreslením.
+Nejjednodušší způsob, jak vytvořit stránku specifická pro zařízení na webu rozhraní ASP.NET Web Pages je pomocí vzoru pro pojmenovávání souborů následujícím způsobem: *FileName.Mobile.cshtml*. Můžete vytvořit dvě verze stránky (například jeden s názvem *MyFile.cshtml* a jeden s názvem *MyFile.Mobile.cshtml*). V době, když mobilní zařízení požádá o spuštění *MyFile.cshtml*, rozhraní ASP.NET vykreslí obsah z *MyFile.Mobile.cshtml*. V opačném případě *MyFile.cshtml* vykreslením.
 
 Následující příklad ukazuje, jak povolit mobilní vykreslování přidáním stránku obsahu pro mobilní zařízení. *Page1.cshtml* obsahuje obsah a bočním panelu navigace. *Page1.Mobile.cshtml* obsahuje stejný obsah, ale vynechá na bočním panelu.
 

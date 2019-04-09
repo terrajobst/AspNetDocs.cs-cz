@@ -8,15 +8,15 @@ ms.date: 02/20/2005
 ms.assetid: 72d90cd0-b3d9-454c-b2eb-ed0d9812f32c
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/improvements-in-visual-studio-2005
 msc.type: authoredcontent
-ms.openlocfilehash: 60259ceb99de536410aa5f53db64fb2dca68bf66
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a580b678a943695969b7f3acd2f7a033bd0b6ee3
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069826"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59379765"
 ---
-<a name="improvements-in-visual-studio-2005"></a>Vylepšení v sadě Visual Studio 2005
-====================
+# <a name="improvements-in-visual-studio-2005"></a>Vylepšení v sadě Visual Studio 2005
+
 by [Microsoft](https://github.com/microsoft)
 
 > Visual Studio 2005 poskytuje vývojáře webových aplikací s dlouhým seznamem vylepšení a rozšíření pro webové projekty.
@@ -438,7 +438,7 @@ By měl dostanete k zarážce podle očekávání.
 
 ## <a name="aspnet-development-server"></a>Vývojový server ASP.NET
 
-Jako weve již probírali Visual Studio 2005 se dodává s názvem serveru ASP.NET Development Server webového serveru. (Vývojový Server ASP.NET se někdy označuje jako Cassini.) Tento webový server je pohodlný způsob procházení a ladění webových aplikací spuštěných v systému souborů.
+Jak už jsme mluvili, Visual Studio 2005 se dodává s názvem serveru ASP.NET Development Server webového serveru. (Vývojový Server ASP.NET se někdy označuje jako Cassini.) Tento webový server je pohodlný způsob procházení a ladění webových aplikací spuštěných v systému souborů.
 
 Serveru ASP.NET Development Server je webový server s omezeným přístupem. Nepovoluje vzdálená připojení, neumožňuje všechny žádosti od libovolného uživatele, než je uživatel, který spustil webový server. Také nemá schopnost obsluhovat stránky ASP. Pouze technologie ASP.NET a prostředků ve formátu HTML (včetně obrázků, souborů CSS, atd.) se obsluhují.
 

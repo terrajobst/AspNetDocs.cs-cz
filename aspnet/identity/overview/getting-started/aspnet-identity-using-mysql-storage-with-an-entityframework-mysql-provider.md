@@ -1,22 +1,23 @@
 ---
 uid: identity/overview/getting-started/aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider
-title: 'ASP.NET Identity: Použití úložiště MySQL zprostředkovatele EntityFramework MySQL (C#) | Dokumentace Microsoftu'
+title: 'ASP.NET Identity: Použití úložiště MySQL zprostředkovatele EntityFramework MySQL (C#) – ASP.NET 4.x'
 author: maumar
 description: V tomto kurzu se dozvíte, jak nahradit výchozí mechanismus úložiště dat pro ASP.NET Identity objektu EntityFramework (zprostředkovatel SQL klient) s MySQL zajištění...
 ms.author: riande
 ms.date: 12/10/2013
 ms.assetid: 15253312-a92c-43ba-908e-b5dacd3d08b8
+ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider
 msc.type: authoredcontent
-ms.openlocfilehash: f510c9bcaf83c6a68e835a7d82555653459df856
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 6a73efb7d577cc70ca5ebaa69e8fdd03f3735ae4
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071176"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59379661"
 ---
-<a name="aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider-c"></a>ASP.NET Identity: Použití úložiště MySQL zprostředkovatele EntityFramework MySQL (C#)
-====================
+# <a name="aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider-c"></a>ASP.NET Identity: Použití úložiště MySQL zprostředkovatele EntityFramework MySQL (C#)
+
 podle [Maurycy Markowski](https://github.com/maumar), [Raquel Soares De Almeida](https://github.com/raquelsa), [Robert McMurray](https://github.com/rmcmurray)
 
 > V tomto kurzu se dozvíte, jak nahradit výchozí mechanismem úložiště dat pro [ **ASP.NET Identity** ](introduction-to-aspnet-identity.md) s s MySQL zprostředkovatele EntityFramework (zprostředkovatel SQL klient).

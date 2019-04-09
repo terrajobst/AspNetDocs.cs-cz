@@ -8,15 +8,15 @@ ms.date: 07/21/2010
 ms.assetid: 4fab47d5-a6ec-4fdc-91f0-651a093a24b9
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: ca7eccd684473d9a1ec4a8adfd8690b291fe702f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 63afd25e2ccf22d3c7ae5c5048c80a8cf060d4cf
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071617"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59382820"
 ---
-<a name="part-4-listing-products"></a>Část 4: Seznam produktů
-====================
+# <a name="part-4-listing-products"></a>Část 4: Seznam produktů
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 > Tailspin Spyworks ukazuje, jak mimořádně jednoduché je vytvářet výkonné a škálovatelné aplikace pro platformu .NET. Zobrazuje vypnout použití skvělých nových funkcí v technologii ASP.NET 4 k sestavení nebo online úložiště, včetně nákupu, Pokladna a správu.
@@ -50,7 +50,7 @@ Po vytvoření naši stránku znovu použijeme Entity Data Source přistupovat k
 
 K tomu budete tom EntityDataSource automaticky generovat klauzuli WHERE a zadáme budete WhereParameter.
 
-Budete si možná Vzpomínáte, že když jsme vytvořili položky nabídky v našich "kategorie nabídky produktů" dynamicky sestavili jsme odkaz tak, že přidáte CatagoryID řetězec dotazu pro každý odkaz. Budete informováni Entity zdroje dat se odvodit parametr WHERE z parametru řetězce dotazu.
+Budete si možná Vzpomínáte, že když jsme vytvořili položky nabídky v našich "kategorie nabídky produktů" dynamicky sestavili jsme odkaz tak, že přidáte do řetězce dotazu pro každý odkaz ID kategorie. Budete informováni Entity zdroje dat se odvodit parametr WHERE z parametru řetězce dotazu.
 
 [!code-aspx[Main](tailspin-spyworks-part-4/samples/sample1.aspx)]
 
@@ -79,7 +79,7 @@ Na domovské stránce webu klikněte na jeden z odkazů seznamu kategorií.
 
 ![](tailspin-spyworks-part-4/_static/image6.jpg)
 
-Teď musíme implementovat ProductDetials.apsx stránky a funkce AddToCart.
+Teď musíme implementovat ProductDetails.aspx stránky a funkce AddToCart.
 
 Použijte soubor -&gt;nový název stránky ProductDetails.aspx pomocí web stránku předlohy, jako jsme to udělali dříve.
 

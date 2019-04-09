@@ -8,15 +8,15 @@ ms.date: 03/31/2010
 ms.assetid: 67b25f4c-2823-42b6-b07d-1d650b3fd711
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6d16ef7ef8a3d5fce10e0d0b88421be294e9fc8d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 268403a7b832596421120a24c64580f63eb987c3
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075193"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59383870"
 ---
-<a name="using-the-formviews-templates-vb"></a>Pomocí šablony ovládacího prvku FormView (VB)
-====================
+# <a name="using-the-formviews-templates-vb"></a>Pomocí šablony ovládacího prvku FormView (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/5/7/0/57084608-dfb3-4781-991c-407d086e2adc/ASPNET_Data_Tutorial_14_VB.exe) nebo [stahovat PDF](using-the-formview-s-templates-vb/_static/datatutorial14vb1.pdf)
@@ -40,7 +40,7 @@ Na rozdíl od ovládacím prvku DetailsView FormView se skládá z polí. Vlastn
 V tomto kurzu, kterou prozkoumáme pomocí ovládacího prvku FormView prezentovat méně od rigidních zobrazení produktů. Místo generování pole pro název, kategorie, dodavatele a tak dále, třídě FormView společnosti `ItemTemplate` zobrazí tyto hodnoty pomocí kombinace header element a `<table>` (viz obrázek 1).
 
 
-[![Dělí FormView rozložení mřížky v ovládacím prvku DetailsView.](using-the-formview-s-templates-vb/_static/image2.png)](using-the-formview-s-templates-vb/_static/image1.png)
+[![The FormView dělí o vidět Grid-Like rozložení v ovládacím prvku DetailsView.](using-the-formview-s-templates-vb/_static/image2.png)](using-the-formview-s-templates-vb/_static/image1.png)
 
 **Obrázek 1**: FormView rozdělí Grid-Like rozložení viděli v ovládacím prvku DetailsView ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-formview-s-templates-vb/_static/image3.png))
 
@@ -50,7 +50,7 @@ V tomto kurzu, kterou prozkoumáme pomocí ovládacího prvku FormView prezentov
 Otevřít `FormView.aspx` stránku a přetáhněte z panelu nástrojů do návrháře FormView. Při prvním přidání FormView se zobrazí jako šedé pole, že nám, které `ItemTemplate` je potřeba.
 
 
-[![FormView nelze vytvořit v návrháři, dokud nebude poskytnuta šablona ItemTemplate](using-the-formview-s-templates-vb/_static/image5.png)](using-the-formview-s-templates-vb/_static/image4.png)
+[![Tmá FormView nemůže být vykreslen v návrháři, dokud nebude poskytnuta šablona ItemTemplate](using-the-formview-s-templates-vb/_static/image5.png)](using-the-formview-s-templates-vb/_static/image4.png)
 
 **Obrázek 2**: FormView nelze vytvořit v Návrháři až `ItemTemplate` je k dispozici ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-formview-s-templates-vb/_static/image6.png))
 
@@ -88,12 +88,12 @@ Vzhledem k tomu, aby bylo možné zobrazit nejsou k dispozici s FormView, žádn
 S `ItemTemplate` dokončení se zobrazí informace o produktu mnohem více plynulé způsobem. Porovnejte prvku DetailsView. výstup z poslední kurz (obrázek 3) s výstupem ve třídě FormView generována v tomto kurzu (obrázek 4).
 
 
-[![Od Rigidních výstup prvku DetailsView.](using-the-formview-s-templates-vb/_static/image8.png)](using-the-formview-s-templates-vb/_static/image7.png)
+[![Tmá pevně daná výstup prvku DetailsView.](using-the-formview-s-templates-vb/_static/image8.png)](using-the-formview-s-templates-vb/_static/image7.png)
 
 **Obrázek 3**: Od Rigidních výstup prvku DetailsView ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-formview-s-templates-vb/_static/image9.png))
 
 
-[![Plynulé výstup FormView](using-the-formview-s-templates-vb/_static/image11.png)](using-the-formview-s-templates-vb/_static/image10.png)
+[![Tmá výstupní FormView dynamiky](using-the-formview-s-templates-vb/_static/image11.png)](using-the-formview-s-templates-vb/_static/image10.png)
 
 **Obrázek 4**: Výstup FormView dynamiky ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-formview-s-templates-vb/_static/image12.png))
 

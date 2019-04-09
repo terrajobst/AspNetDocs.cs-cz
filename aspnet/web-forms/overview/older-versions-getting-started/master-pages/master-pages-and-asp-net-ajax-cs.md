@@ -8,15 +8,15 @@ ms.date: 07/11/2008
 ms.assetid: 0c55eb66-ba44-4d49-98e8-5c87fd9b1111
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 47201a0cfeb5d1e548721094d11488e9e804dc9c
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b8bc435e4b2b1eeedaab424695715e5ec51e116d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069976"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59381858"
 ---
-<a name="master-pages-and-aspnet-ajax-c"></a>Stránky předlohy a ASP.NET AJAX (C#)
-====================
+# <a name="master-pages-and-aspnet-ajax-c"></a>Stránky předlohy a ASP.NET AJAX (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/1/8/4/184e24fa-fcc8-47fa-ac99-4b6a52d41e97/ASPNET_MasterPages_Tutorial_08_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/e/b/4/eb4abb10-c416-4ba4-9899-32577715b1bd/ASPNET_MasterPages_Tutorial_08_CS.pdf)
@@ -71,7 +71,7 @@ Otevřít `Site.master` stránku předlohy a přidání ovládacího prvku Scrip
 Po přidání ScriptManager na stránku, změnit její `ID` z `ScriptManager1` k `MyManager`.
 
 
-[![Přidat prvek ScriptManager na stránku předlohy](master-pages-and-asp-net-ajax-cs/_static/image2.png)](master-pages-and-asp-net-ajax-cs/_static/image1.png)
+[![Add ovládacímu prvku ScriptManager na stránce předlohy](master-pages-and-asp-net-ajax-cs/_static/image2.png)](master-pages-and-asp-net-ajax-cs/_static/image1.png)
 
 **Obrázek 01**: Přidat prvek ScriptManager na stránce předlohy ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image3.png))
 
@@ -83,7 +83,7 @@ Pomocí ovládacího prvku ScriptManager přidat na stránku předlohy jsme nyn�
 Začněte tím, že vytvoříte novou stránku v kořenovém adresáři s názvem `ShowRandomProduct.aspx`. Nezapomeňte vytvořit vazbu na tuto novou stránku `Site.master` stránky předlohy.
 
 
-[![Přidejte novou stránku ASP.NET na web](master-pages-and-asp-net-ajax-cs/_static/image5.png)](master-pages-and-asp-net-ajax-cs/_static/image4.png)
+[![Add nová stránka technologie ASP.NET na web](master-pages-and-asp-net-ajax-cs/_static/image5.png)](master-pages-and-asp-net-ajax-cs/_static/image4.png)
 
 **Obrázek 02**: Přidejte novou stránku ASP.NET na web ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image6.png))
 
@@ -104,7 +104,7 @@ Vraťte se na `ShowRandomProduct.aspx`. Z návrháře, přetáhněte z panelu n�
 Naše prvního úkolu je pro zobrazení informací o namátkou vybraného produktu v rámci prvku UpdatePanel. Začněte tím, že přetáhnete do prvku UpdatePanel ovládacího prvku DetailsView. Nastavení ovládacího prvku DetailsView `ID` vlastnost `ProductInfo` a vymažte její `Height` a `Width` vlastnosti. Rozbalte ovládacím prvku DetailsView inteligentních značek a z rozevíracího seznamu zvolit zdroj dat, vyberte možnost vytvoření vazby mezi ovládacím prvku DetailsView. nový ovládací prvek SqlDataSource s názvem `RandomProductDataSource`.
 
 
-[![Svázat s novou ovládacím prvkem SqlDataSource ovládacím prvku DetailsView.](master-pages-and-asp-net-ajax-cs/_static/image8.png)](master-pages-and-asp-net-ajax-cs/_static/image7.png)
+[![BIND ovládacím prvku DetailsView. na nový ovládací prvek SqlDataSource](master-pages-and-asp-net-ajax-cs/_static/image8.png)](master-pages-and-asp-net-ajax-cs/_static/image7.png)
 
 **Obrázek 03**: Svázat ovládacím prvku DetailsView nové ovládacím prvkem SqlDataSource ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image9.png))
 
@@ -117,7 +117,7 @@ Konfigurace pro připojení k databázi Northwind pomocí ovládacího prvku Sql
 `TOP 1` – Klíčové slovo v `SELECT` klauzule vrátí jenom první záznam vrácených dotazem. [ `NEWID()` Funkce](https://msdn.microsoft.com/library/ms190348.aspx) vygeneruje nový [hodnoty globálně jedinečného identifikátoru (GUID)](http://en.wikipedia.org/wiki/Globally_Unique_Identifier) a je možné v `ORDER BY` klauzule vrátí v tabulce záznamy v náhodném pořadí.
 
 
-[![Konfigurace ve třídě SqlDataSource k vrácení jednoho, namátkou vybraného záznamu](master-pages-and-asp-net-ajax-cs/_static/image11.png)](master-pages-and-asp-net-ajax-cs/_static/image10.png)
+[![Configurovat ve třídě SqlDataSource k vrácení jednoho náhodně vybraný záznam](master-pages-and-asp-net-ajax-cs/_static/image11.png)](master-pages-and-asp-net-ajax-cs/_static/image10.png)
 
 **Obrázek 04**: Konfigurace ve třídě SqlDataSource k vrácení jednoho náhodně vybraný záznam ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image12.png))
 
@@ -130,7 +130,7 @@ Po dokončení průvodce se sada Visual Studio vytvoří vlastnost BoundField pr
 Obrázek 5 ukazuje, `ShowRandomProduct.aspx` stránce při prohlížení prostřednictvím prohlížeče. Klikněte na tlačítko Aktualizovat v prohlížeči k opětovnému načtení stránky. měli byste vidět `ProductName` a `UnitPrice` hodnoty nového namátkou vybraného záznamu.
 
 
-[![Zobrazí se název náhodných produktu a cena](master-pages-and-asp-net-ajax-cs/_static/image14.png)](master-pages-and-asp-net-ajax-cs/_static/image13.png)
+[![A Zobrazí se název náhodných produktu a cena](master-pages-and-asp-net-ajax-cs/_static/image14.png)](master-pages-and-asp-net-ajax-cs/_static/image13.png)
 
 **Obrázek 05**: Zobrazí se název náhodných produktu a cena ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image15.png))
 
@@ -159,12 +159,12 @@ Zobrazíte lépe čemu tady dochází, přidáme UpdatePanel, která zobrazuje �
 Díky této změně kompletní stránka obsahuje čas, kdy byl načten aktuálně zobrazený produkt. Obrázek 6 ukazuje na stránku, když první uživatel. Obrázek 7 znázorňuje stránky 15 sekund později po ovládacím prvku časovač má "zaškrtnuté" a prvku UpdatePanel byl aktualizován pro zobrazení informací o nový produkt.
 
 
-[![Zobrazí se náhodně vybrané produktu při načtení stránky](master-pages-and-asp-net-ajax-cs/_static/image17.png)](master-pages-and-asp-net-ajax-cs/_static/image16.png)
+[![A Vybraný produkt je náhodně zobrazených při načtení stránky](master-pages-and-asp-net-ajax-cs/_static/image17.png)](master-pages-and-asp-net-ajax-cs/_static/image16.png)
 
 **Obrázek 06**: Zobrazí se náhodně vybrané produktu při načtení stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image18.png))
 
 
-[![Každých 15 sekund, které se zobrazí nový náhodně vybraný produkt](master-pages-and-asp-net-ajax-cs/_static/image20.png)](master-pages-and-asp-net-ajax-cs/_static/image19.png)
+[![Evelmi 15 sekund, po které se zobrazí nový náhodně vybraný produkt](master-pages-and-asp-net-ajax-cs/_static/image20.png)](master-pages-and-asp-net-ajax-cs/_static/image19.png)
 
 **Obrázek 07**: Každých 15 sekund se zobrazí nový náhodně vybraný produkt ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image21.png))
 
@@ -190,12 +190,12 @@ Pojďme vytvořit soubor JavaScriptu s proměnnou s názvem `timerEnabled` a fun
 Začněte tím, že vytvoříte novou složku na webu s názvem `Scripts`. V dalším kroku přidejte nový soubor do složky Scripts, s názvem `TimerScript.js` typu soubor JScript.
 
 
-[![Přidejte nový soubor JavaScript do složky skriptů](master-pages-and-asp-net-ajax-cs/_static/image23.png)](master-pages-and-asp-net-ajax-cs/_static/image22.png)
+[![APřidat nový soubor JavaScript do složky Scripts](master-pages-and-asp-net-ajax-cs/_static/image23.png)](master-pages-and-asp-net-ajax-cs/_static/image22.png)
 
 **Obrázek 08**: Přidat nový soubor JavaScript, aby `Scripts` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image24.png))
 
 
-[![Nový soubor JavaScript je přidaný na web](master-pages-and-asp-net-ajax-cs/_static/image26.png)](master-pages-and-asp-net-ajax-cs/_static/image25.png)
+[![A Nový soubor JavaScript je přidaný na web](master-pages-and-asp-net-ajax-cs/_static/image26.png)](master-pages-and-asp-net-ajax-cs/_static/image25.png)
 
 **Obrázek 09**: Nový soubor JavaScript je přidaný na web ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image27.png))
 
@@ -208,7 +208,7 @@ Do souboru TimerScript.js v dalším kroku přidejte následující skript:
 Nyní potřebujeme k registraci tohoto vlastního souboru jazyka JavaScript v `ShowRandomProduct.aspx`. Vraťte se na `ShowRandomProduct.aspx` a přidání ovládacího prvku ScriptManagerProxy na stránce; nastavit jeho `ID` k `MyManagerProxy`. K registraci vlastního jazyka JavaScript souboru vyberte ovládacího prvku ScriptManagerProxy v návrháři a potom přejděte do okna Vlastnosti. Jedna z vlastností má název skripty. Tato vlastnost vyberete, zobrazí se Editor kolekce ScriptReference je znázorněno na obrázku 10. Kliknutím na tlačítko Přidat obsahovat nový odkaz na skript a pak zadejte cestu k souboru skriptu v vlastnost Path: `~/Scripts/TimerScript.js`.
 
 
-[![Přidání odkazu na skript do ovládacího prvku ScriptManagerProxy](master-pages-and-asp-net-ajax-cs/_static/image29.png)](master-pages-and-asp-net-ajax-cs/_static/image28.png)
+[![Add odkazu na skript do ovládacího prvku ScriptManagerProxy](master-pages-and-asp-net-ajax-cs/_static/image29.png)](master-pages-and-asp-net-ajax-cs/_static/image28.png)
 
 **Obrázek 10**: Přidání odkazu na skript do ovládacího prvku ScriptManagerProxy ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image30.png))
 
@@ -230,12 +230,12 @@ Zobrazí se tlačítko s textem "Pozastavení". Vždy, když se po kliknutí na 
 Obrázku 11 můžete vidět tuto stránku, když uživatel poprvé prostřednictvím prohlížeče. Časovač aktuálně běží a aktualizuje informace zobrazené produktu každých 15 sekund. Obrázek 12 se zobrazuje obrazovka po kliknutí na tlačítko Pozastavit. Kliknutím na tlačítko Pozastavit časovač se zastaví a aktualizuje text na tlačítko "Obnovit". Informace o produktu aktualizujte (a i nadále aktualizovat každých 15 sekund) po kliknutí na tlačítko Pokračovat.
 
 
-[![Kliknutím na tlačítko Zastavit ovládacím prvku časovač](master-pages-and-asp-net-ajax-cs/_static/image32.png)](master-pages-and-asp-net-ajax-cs/_static/image31.png)
+[![CKlepněte na tlačítko Zastavit ovládacím prvku časovač](master-pages-and-asp-net-ajax-cs/_static/image32.png)](master-pages-and-asp-net-ajax-cs/_static/image31.png)
 
 **Obrázek 11**: Kliknutím na tlačítko Zastavit na ovládací prvek Timer ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image33.png))
 
 
-[![Klikněte na tlačítko Obnovit restartovat časovač](master-pages-and-asp-net-ajax-cs/_static/image35.png)](master-pages-and-asp-net-ajax-cs/_static/image34.png)
+[![CKlepněte na tlačítko Obnovit restartovat časovač](master-pages-and-asp-net-ajax-cs/_static/image35.png)](master-pages-and-asp-net-ajax-cs/_static/image34.png)
 
 **Obrázek 12**: Klikněte na tlačítko Obnovit restartovat časovač ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-cs/_static/image36.png))
 

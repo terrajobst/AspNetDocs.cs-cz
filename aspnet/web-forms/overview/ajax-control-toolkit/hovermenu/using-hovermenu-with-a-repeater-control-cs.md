@@ -8,15 +8,15 @@ ms.date: 06/02/2008
 ms.assetid: e7700e7b-edc3-4183-a713-70e507cc7490
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/hovermenu/using-hovermenu-with-a-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 33f65a132ea9f0a939ab70ac249b397ea883ac8c
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7f64e90eb2f8f87e2f382cb7897793e7071d305d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068326"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59384497"
 ---
-<a name="using-hovermenu-with-a-repeater-control-c"></a>Použití nabídky HoverMenu s ovládacím prvkem Repeater (C#)
-====================
+# <a name="using-hovermenu-with-a-repeater-control-c"></a>Použití nabídky HoverMenu s ovládacím prvkem Repeater (C#)
+
 by [Christian Wenz](https://github.com/wenz)
 
 [Stáhněte si kód](http://download.microsoft.com/download/b/0/6/b06fe835-5b8f-4c00-aef8-062c19d75b95/HoverMenu1.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/hovermenu1CS.pdf)
@@ -53,7 +53,7 @@ Nyní `HoverMenuExtender` vstupu do play. Tak, aby každý prvek ve zdroji dat z
 Teď všechny položky ve zdroji dat se zobrazí automaticky otevíraného okna na pravé straně (`PopupPosition` atribut) po prodlevě 50 MS (`PopDelay` atributu).
 
 
-[![V nabídce při najetí myší se zobrazí vedle každé položky v opakovači](using-hovermenu-with-a-repeater-control-cs/_static/image2.png)](using-hovermenu-with-a-repeater-control-cs/_static/image1.png)
+[![TNabídka používaný při najetí myší se zobrazí vedle každé položky v opakovači](using-hovermenu-with-a-repeater-control-cs/_static/image2.png)](using-hovermenu-with-a-repeater-control-cs/_static/image1.png)
 
 V nabídce při najetí myší se zobrazí vedle každé položky v opakovači ([kliknutím ji zobrazíte obrázek v plné velikosti](using-hovermenu-with-a-repeater-control-cs/_static/image3.png))
 

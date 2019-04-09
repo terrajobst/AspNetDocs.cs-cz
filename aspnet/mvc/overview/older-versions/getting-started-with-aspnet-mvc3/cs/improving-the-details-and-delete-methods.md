@@ -8,15 +8,15 @@ ms.date: 01/12/2011
 ms.assetid: 3f42edd9-c5b8-4712-9055-970f7d38e350
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/improving-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: 255374eb21568d05569f8af6727ad4b558acfc2f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d4003dba8530d2e72c514c572ffc28ef942fd437
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068188"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59379362"
 ---
-<a name="improving-the-details-and-delete-methods-c"></a>Vylepšení podrobností a metod Delete (C#)
-====================
+# <a name="improving-the-details-and-delete-methods-c"></a>Vylepšení podrobností a metod Delete (C#)
+
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > > [!NOTE]

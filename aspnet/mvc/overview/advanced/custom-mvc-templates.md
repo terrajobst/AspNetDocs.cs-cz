@@ -8,15 +8,15 @@ ms.date: 12/10/2012
 ms.assetid: b0a214c7-2f38-4dbc-b47f-bd7bd9df97bd
 msc.legacyurl: /mvc/overview/advanced/custom-mvc-templates
 msc.type: authoredcontent
-ms.openlocfilehash: 3c14bc6feb144a52773bf7bd4c23df24966a9ebb
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0603bc24e070e223551813f66a75889a2e46fd35
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068779"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59379544"
 ---
-<a name="custom-mvc-template"></a>Vlastní šablona MVC
-====================
+# <a name="custom-mvc-template"></a>Vlastní šablona MVC
+
 podle [Jacques Eloff](https://github.com/joeloff)
 
 Verze MVC 3 nástroje Update pro sadu Visual Studio 2010 zavedené Průvodce samostatných projektů pro projekty MVC. Tato změna byla využitím dva faktory. Nejprve způsobit zavedení nové šablony MVC 3 a podpora pro zobrazení dalších modulů, jako je Razor zatarasování dialogu Nový projekt v sadě Visual Studio. Za druhé zákazníci měli už dlouho žádali bodů rozšiřitelnosti a Průvodce novým projektem MVC by si dovolit nám moci odpovědět na tyto požadavky.

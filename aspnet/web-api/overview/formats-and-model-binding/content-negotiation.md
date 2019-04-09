@@ -1,25 +1,26 @@
 ---
 uid: web-api/overview/formats-and-model-binding/content-negotiation
-title: V rozhraní ASP.NET Web API vyjednávání obsahu | Dokumentace Microsoftu
+title: Obsah vyjednávání v rozhraní ASP.NET Web API – ASP.NET 4.x
 author: MikeWasson
-description: Popisuje, jak rozhraní ASP.NET Web API implementuje vyjednávání obsahu HTTP.
+description: Popisuje způsob implementace rozhraní ASP.NET Web API vyjednávání obsahu HTTP pro technologii ASP.NET 4.x.
 ms.author: riande
 ms.date: 05/20/2012
+ms.custom: seoapril2019
 ms.assetid: 0dd51b30-bf5a-419f-a1b7-2817ccca3c7d
 msc.legacyurl: /web-api/overview/formats-and-model-binding/content-negotiation
 msc.type: authoredcontent
-ms.openlocfilehash: 9cfbed49c1022fbf26160e89aed3ab474f5e0fdc
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: cb6668ff6de276d3778ce11f27ce597d8bf1f9c7
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425688"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59380156"
 ---
-<a name="content-negotiation-in-aspnet-web-api"></a>Vyjednávání obsahu v rozhraní ASP.NET Web API
-====================
+# <a name="content-negotiation-in-aspnet-web-api"></a>Vyjednávání obsahu v rozhraní ASP.NET Web API
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
-Tento článek popisuje, jak rozhraní ASP.NET Web API implementuje vyjednávání obsahu.
+Tento článek popisuje, jak rozhraní ASP.NET Web API implementuje vyjednávání obsahu pro technologii ASP.NET 4.x.
 
 Specifikace protokolu HTTP (RFC 2616) definuje vyjednávání obsahu jako "proces výběru nejlepší reprezentaci pro danou odpověď, když jsou k dispozici více reprezentací." Hlavní mechanismus pro vyjednávání obsahu protokolu HTTP jsou tyto hlavičky požadavku:
 

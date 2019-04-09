@@ -8,15 +8,15 @@ ms.date: 11/17/2011
 ms.assetid: 3fc23eed-921d-4d46-a610-a2d156e4bd03
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-creating-and-installing-deployment-packages-12-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 2923501289f31243a7341848ed3f7c2142c98e75
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7e3c8b2adbe8d5248bed7299fb5e784a753f3851
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071227"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59382158"
 ---
-<a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-troubleshooting-12-of-12"></a>Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Řešení potíží s (12 12)
-====================
+# <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-troubleshooting-12-of-12"></a>Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Řešení potíží s (12 12)
+
 podle [Petr Dykstra](https://github.com/tdykstra)
 
 [Stáhnout počáteční projekt](http://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
@@ -113,7 +113,7 @@ Poté, co nasadíte aplikaci jedním kliknutím pomocí publikování, když spu
 
 ### <a name="possible-cause-and-solution"></a>Možná příčina a řešení
 
-Otevřít *Web.config* souboru v nasazené lokality a zkontrolujte, zda hodnoty připojovacího řetězce začínají `$(ReplacableToken_`, jako v následujícím příkladu:
+Otevřít *Web.config* souboru v nasazené lokality a zkontrolujte, zda hodnoty připojovacího řetězce začínají `$(ReplaceableToken_`, jako v následujícím příkladu:
 
 [!code-xml[Main](deployment-to-a-hosting-provider-creating-and-installing-deployment-packages-12-of-12/samples/sample9.xml)]
 

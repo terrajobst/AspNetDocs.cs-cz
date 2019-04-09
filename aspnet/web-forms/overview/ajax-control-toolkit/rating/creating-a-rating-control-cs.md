@@ -8,15 +8,15 @@ ms.date: 06/02/2008
 ms.assetid: 969fb28f-2bff-4fc4-b24a-27f5e2534a37
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5776101d9e40f999806aefa5a9529dbef21af161
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: fa118b4d733d7848b838f80e9918d62ae60033af
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073159"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59378972"
 ---
-<a name="creating-a-rating-control-c"></a>Vytvoření ovládacího prvku Rating (C#)
-====================
+# <a name="creating-a-rating-control-c"></a>Vytvoření ovládacího prvku Rating (C#)
+
 by [Christian Wenz](https://github.com/wenz)
 
 [Stáhněte si kód](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/rating0.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/rating0CS.pdf)
@@ -66,7 +66,7 @@ V kódu na straně serveru, přístup k ovládacímu prvku hodnocení prostředn
 Uložit na stránku a jejich načtení do prohlížeče. Když najedete myší položky (původně prázdným) hodnocení, JavaScript účinek se vyskytuje: Hodnocení změny. Když kliknete na sadu hvězdiček, se uchovávají aktuální hodnocení. Nakonec po odeslání formuláře kód na straně serveru vypíše vybrané hodnocení.
 
 
-[![Vytvoření systému hodnocení s minimem kódování](creating-a-rating-control-cs/_static/image2.png)](creating-a-rating-control-cs/_static/image1.png)
+[![Csystém hodnocení s minimem kódování ořit](creating-a-rating-control-cs/_static/image2.png)](creating-a-rating-control-cs/_static/image1.png)
 
 Vytvoření systému hodnocení s minimem kódu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-rating-control-cs/_static/image3.png))
 

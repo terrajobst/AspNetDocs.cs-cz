@@ -8,15 +8,15 @@ ms.date: 11/06/2008
 ms.assetid: c02ffd50-aa19-4cdc-b1bf-760989979a61
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-error-handling-when-sending-email-with-aspnet
 msc.type: video
-ms.openlocfilehash: 6708a0a22e621d08301fb4228ec6c6e5f599d57a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: faa0daa2ffe71e58cd18bb8bed4e476ffcb1852e
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076888"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59379050"
 ---
-<a name="how-do-i-implement-error-handling-when-sending-email-with-aspnet"></a>[Postup:] Implementace zpracování chyb při odesílání e-mailu v ASP.NET
-====================
+# <a name="how-do-i-implement-error-handling-when-sending-email-with-aspnet"></a>[Postup:] Implementace zpracování chyb při odesílání e-mailu v ASP.NET
+
 podle [Chris pixelů na](https://twitter.com/chrispels)
 
 Pixelů na Chris ukazuje, jak implementovat zpracování chyb při odesílání e-mailu s technologií ASP.NET. Má vytvoří webovou stránku ASP.NET k odeslání e-mailu, ukazuje postup při konfiguraci &lt;mailSettings&gt; v souboru web.config, popisuje třídy System.Net.Mail a jak ji použít k vytvoření a odeslání e-mailové zprávy. Potom přidá System.Net.Mail třídy výjimek, které poskytují informace o chybách, které se mohou vyskytnout při odesílání e-mailu a kontroly SmtpStatusCode výčet, který obsahuje seznam možných výsledků při odesílání e-mailu s použitím zpracování chyb SmtpClient. Nakonec se mu odešle zkušební e-mail, který vyvolává výjimku a kontroluje chyby zpracování informací v ladicím programu sady Visual Studio.

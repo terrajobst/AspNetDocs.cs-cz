@@ -8,15 +8,15 @@ ms.date: 02/15/2013
 ms.assetid: e733027a-525f-47ae-b1c0-2e5ecf6677aa
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment
 msc.type: chapter
-ms.openlocfilehash: a91de204f821cd8301485330518170e458f5da4d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 3d8a6a102788cb6b5612e9bc537e1c13e7798c54
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796800"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59378933"
 ---
-<a name="aspnet-web-deployment-using-visual-studio"></a>Nasazení webu ASP.NET se sadou Visual Studio
-====================
+# <a name="aspnet-web-deployment-using-visual-studio"></a>Nasazení webu ASP.NET se sadou Visual Studio
+
 > V této sérii kurzů ukazuje, jak vytvořit webovou aplikaci ASP.NET, který používá systém SQL Server (nikoli SQL Server Compact) dostupných přes internet podle jeho nasazení na webu Windows Azure nebo poskytovatele hostitelských služeb třetích stran. Vyžaduje sadu Visual Studio 2012 a technologie ASP.NET a Web Tools 2012.2 aktualizace nebo sady Visual Studio 2010. Informace specifické pro SQL Server Compact, naleznete v tématu [nasazení webu ASP.NET s SQL serverem Compact pomocí sady Visual Studio](../../older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12.md).
 
 
@@ -26,9 +26,9 @@ ms.locfileid: "57796800"
 - [Vlastnosti projektu](project-properties.md)
 - [Nasazení do testovacího prostředí](deploying-to-iis.md)
 - [Nastavení oprávnění složky](setting-folder-permissions.md)
-- [Nasazení do provozního prostředí](deploying-to-production.md)
+- [Nasazení do produkčního prostředí](deploying-to-production.md)
 - [Nasazení aktualizace kódu](deploying-a-code-update.md)
 - [Nasazení aktualizace databáze](deploying-a-database-update.md)
 - [Nasazení příkazového řádku](command-line-deployment.md)
 - [Nasazení dalších souborů](deploying-extra-files.md)
-- [Odstraňování potíží](troubleshooting.md)
+- [Poradce při potížích](troubleshooting.md)

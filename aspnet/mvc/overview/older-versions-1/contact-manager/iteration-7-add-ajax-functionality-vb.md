@@ -8,15 +8,15 @@ ms.date: 02/20/2009
 ms.assetid: f640e063-150e-453d-8cfc-7e54a6ce0f1e
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0b9c6ff228e73ce63f7a0b046110db656103d6d5
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 3df4258b2de309aed5a3a598caeb1e7332c321f6
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078007"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59383954"
 ---
-<a name="iteration-7--add-ajax-functionality-vb"></a>Iterace #7 – přidání funkcí Ajax (VB)
-====================
+# <a name="iteration-7--add-ajax-functionality-vb"></a>Iterace #7 – přidání funkcí Ajax (VB)
+
 by [Microsoft](https://github.com/microsoft)
 
 [Stáhnout kód](iteration-7-add-ajax-functionality-vb/_static/contactmanager_7_vb1.zip)
@@ -94,7 +94,7 @@ Přidejte následující JavaScript zahrnuje uvnitř &lt;head&gt; značky hlavn�
 Umožní začít úpravou náš Index zobrazení tak, že kliknete na skupinu kontaktů aktualizuje pouze oblasti zobrazení, která zobrazuje kontakty s. Červeným rámečkem na obrázku 1 obsahuje oblast, která chcete aktualizovat.
 
 
-[![Aktualizuje se jenom kontakty](iteration-7-add-ajax-functionality-vb/_static/image1.jpg)](iteration-7-add-ajax-functionality-vb/_static/image1.png)
+[![Upouze kontakty ualizace](iteration-7-add-ajax-functionality-vb/_static/image1.jpg)](iteration-7-add-ajax-functionality-vb/_static/image1.png)
 
 **Obrázek 01**: Aktualizují se kontakty pouze ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-vb/_static/image2.png))
 
@@ -194,7 +194,7 @@ Když uživatel dosáhne prohlížeče zpět nebo tlačítko Předat dál, je vy
 V současné době Chcete-li odstranit kontakt, budete muset kliknout na odkaz pro odstranění a poté klikněte na tlačítko Odstranit zobrazí na stránce potvrzení odstranění (viz obrázek 2). Vypadá to, že jako velké množství žádostí stránky něco jednoduchého jako odstraňuje se záznam v databázi.
 
 
-[![Na stránce potvrzení odstranění](iteration-7-add-ajax-functionality-vb/_static/image2.jpg)](iteration-7-add-ajax-functionality-vb/_static/image3.png)
+[![Tmohl odstranit potvrzovací stránku](iteration-7-add-ajax-functionality-vb/_static/image2.jpg)](iteration-7-add-ajax-functionality-vb/_static/image3.png)
 
 **Obrázek 02**: Na stránce potvrzení odstranění ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-vb/_static/image4.png))
 

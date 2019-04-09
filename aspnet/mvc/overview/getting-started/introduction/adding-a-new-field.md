@@ -8,15 +8,15 @@ ms.date: 10/17/2013
 ms.assetid: 4085de68-d243-4378-8a64-86236ea8d2da
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: bcc1de15b49b51461f76c9ac8f1bee4555ea101d
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: a5de73d93d0af21a3b59d6c21014810184292adb
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58422425"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59379349"
 ---
-<a name="adding-a-new-field"></a>Přidání nového pole
-====================
+# <a name="adding-a-new-field"></a>Přidání nového pole
+
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 [!INCLUDE [Tutorial Note](sample/code-location.md)]
@@ -75,7 +75,7 @@ Tím se přidají následující příkaz using:
 > 
 > Tento kód předpokládá, že jsou jedinečné názvy. Pokud chcete ručně přidat duplicitní název, zobrazí se následující výjimka při příštím provedení migrace.   
 > 
->  *Posloupnost obsahuje více než jeden prvek.*  
+> *Posloupnost obsahuje více než jeden prvek.*  
 > 
 > Další informace o [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) metodu, najdete v článku [postará metodou AddOrUpdate 4.3 EF](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/)...
 

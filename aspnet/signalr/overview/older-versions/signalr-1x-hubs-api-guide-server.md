@@ -8,15 +8,15 @@ ms.date: 04/17/2013
 ms.assetid: 03e4b9f5-0fea-4d94-959f-014b2762a301
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-server
 msc.type: authoredcontent
-ms.openlocfilehash: 8d544e81f87998581afb2a1228233b4d374ad70a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7d75c832f704ea88d365f6a8b83c1c3a024b30ca
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070555"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59382248"
 ---
-<a name="aspnet-signalr-hubs-api-guide---server-signalr-1x"></a>Pokyny k rozhraní API Center SignalR technologie ASP.NET – Server (SignalR 1.x)
-====================
+# <a name="aspnet-signalr-hubs-api-guide---server-signalr-1x"></a>Pokyny k rozhraní API Center SignalR technologie ASP.NET – Server (SignalR 1.x)
+
 podle [Patrick Fletcher](https://github.com/pfletcher), [Petr Dykstra](https://github.com/tdykstra)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
@@ -40,7 +40,7 @@ Tento dokument obsahuje následující části:
 
     - [Doba života objektu centra](#transience)
     - [Camel-malých a velkých písmen názvů centra v klientech jazyka JavaScript](#hubnames)
-    - [Multiple Hubs](#multiplehubs)
+    - [Více rozbočovače](#multiplehubs)
 - [Definování metody ve třídě rozbočovače, která může volat klientů](#hubmethods)
 
     - [Camel-malých a velkých písmen názvů metody do klientů JavaScript](#methodnames)

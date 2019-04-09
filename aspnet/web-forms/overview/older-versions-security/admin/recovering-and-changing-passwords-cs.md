@@ -8,15 +8,15 @@ ms.date: 04/01/2008
 ms.assetid: 19c4d042-4e34-4b44-9f1d-6bf2253ba366
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c04ed8ae18a3739f5519e30dea7768b8f6c7c7ff
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: e3e097663568b21ee3f84c7006a0bd89718ac6c2
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072238"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59380272"
 ---
-<a name="recovering-and-changing-passwords-c"></a>Obnovení a změna hesel (C#)
-====================
+# <a name="recovering-and-changing-passwords-c"></a>Obnovení a změna hesel (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/6/0/e/60e1bd94-e5f9-4d5a-a079-f23c98f4f67d/CS.13.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/0/e/60e1bd94-e5f9-4d5a-a079-f23c98f4f67d/aspnet_tutorial13_ChangingPasswords_cs.pdf)
@@ -63,7 +63,7 @@ Poté, co uživatel zadal své uživatelské jméno - nebo jeho uživatelské jm
 Obrázek 1 ukazuje, jak PasswordRecovery rozhraní a chování je ovlivněno konfigurace členství.
 
 
-[![RequiresQuestionAndAnswer, EnablePasswordRetrieval a EnablePasswordReset ovlivnit vzhled a chování PasswordRecovery ovládacího prvku](recovering-and-changing-passwords-cs/_static/image2.png)](recovering-and-changing-passwords-cs/_static/image1.png)
+[![Tmá RequiresQuestionAndAnswer EnablePasswordRetrieval a EnablePasswordReset ovlivňují chování a vzhledu ovládacího prvku PasswordRecovery](recovering-and-changing-passwords-cs/_static/image2.png)](recovering-and-changing-passwords-cs/_static/image1.png)
 
 **Obrázek 1**: `RequiresQuestionAndAnswer`, `EnablePasswordRetrieval`, A `EnablePasswordReset` ovlivnit vzhled a chování ovládacího prvku PasswordRecovery ([kliknutím ji zobrazíte obrázek v plné velikosti](recovering-and-changing-passwords-cs/_static/image3.png))
 
@@ -93,7 +93,7 @@ Kromě použití SMTP server v síti, můžete alternativně zadat výstupní ad
 Po konfiguraci nastavení SMTP, přejděte na web `RecoverPassword.aspx` stránky prostřednictvím prohlížeče. Nejprve zkuste zadat uživatelské jméno, která neexistuje v úložišti uživatele. Jak znázorňuje obrázek 2 PasswordRecovery ovládací prvek zobrazí zprávu s oznámením, že informace o uživateli není přístupný. Text zprávy je možné přizpůsobit pomocí ovládacího prvku [ `UserNameFailureText` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.usernamefailuretext.aspx).
 
 
-[![Pokud je zadané neplatné uživatelské jméno, zobrazí se chybová zpráva](recovering-and-changing-passwords-cs/_static/image5.png)](recovering-and-changing-passwords-cs/_static/image4.png)
+[![An chybová zpráva se zobrazí, pokud je zadané neplatné uživatelské jméno](recovering-and-changing-passwords-cs/_static/image5.png)](recovering-and-changing-passwords-cs/_static/image4.png)
 
 **Obrázek 2**: Zobrazí se chybová zpráva, pokud je zadané neplatné uživatelské jméno ([kliknutím ji zobrazíte obrázek v plné velikosti](recovering-and-changing-passwords-cs/_static/image6.png))
 
@@ -101,7 +101,7 @@ Po konfiguraci nastavení SMTP, přejděte na web `RecoverPassword.aspx` stránk
 Teď zadejte uživatelské jméno. Použijte uživatelské jméno účtu v systému s e-mailovou adresu, můžete přistupovat a jehož zabezpečení odpovědí můžete vědět. Po zadání uživatelského jména a kliknutí na tlačítko Odeslat, PasswordRecovery ovládací prvek zobrazí jeho zobrazení otázky. Jako uživatelské jméno je zobrazení, pokud zadáte nesprávné odpovědět zobrazí ovládací prvek PasswordRecovery chybové zprávy (viz obrázek 3). Použití [ `QuestionFailureText` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.questionfailuretext.aspx) přizpůsobení tato chybová zpráva.
 
 
-[![Pokud uživatel zadá neplatný bezpečnostní otázce, zobrazí se chybová zpráva](recovering-and-changing-passwords-cs/_static/image8.png)](recovering-and-changing-passwords-cs/_static/image7.png)
+[![APokud uživatel zadá neplatný bezpečnostní otázce, zobrazí se chybová zpráva n](recovering-and-changing-passwords-cs/_static/image8.png)](recovering-and-changing-passwords-cs/_static/image7.png)
 
 **Obrázek 3**: Pokud uživatel zadá neplatný bezpečnostní otázce, zobrazí se chybová zpráva ([kliknutím ji zobrazíte obrázek v plné velikosti](recovering-and-changing-passwords-cs/_static/image9.png))
 
@@ -109,7 +109,7 @@ Teď zadejte uživatelské jméno. Použijte uživatelské jméno účtu v syst�
 Nakonec zadejte správný bezpečnostní otázce a klikněte na Odeslat. Na pozadí ovládacího prvku PasswordRecovery generuje náhodné heslo, přiřadí uživatelský účet, odešle e-mail informující uživatele nového hesla (viz obrázek 4) a potom zobrazí zobrazení informací o úspěchu.
 
 
-[![Uživateli se odešle E-mail s jeho nové heslo](recovering-and-changing-passwords-cs/_static/image11.png)](recovering-and-changing-passwords-cs/_static/image10.png)
+[![TUživatel se odeslal E-mail s jeho nové heslo](recovering-and-changing-passwords-cs/_static/image11.png)](recovering-and-changing-passwords-cs/_static/image10.png)
 
 **Obrázek 4**: Uživateli se odešle E-mail s jeho nové heslo ([kliknutím ji zobrazíte obrázek v plné velikosti](recovering-and-changing-passwords-cs/_static/image12.png))
 
@@ -145,7 +145,7 @@ A konečně, přejděte `MailDefinition`společnosti [ `BodyFileName` vlastnost]
 Po provedení těchto změn revidovat `RecoverPassword.aspx` stránku a zadejte uživatelské jméno a zabezpečení odpovědí. Obdržíte by měl e-mailu, která vypadá jako na obrázku 5. Všimněte si, že `webmaster@example.com` byla kopie by a že byly aktualizovány předmět a text.
 
 
-[![Byly aktualizovány předmět, text a seznam Popisků](recovering-and-changing-passwords-cs/_static/image14.png)](recovering-and-changing-passwords-cs/_static/image13.png)
+[![Tmá předmět, text a kopie byl aktualizován seznam](recovering-and-changing-passwords-cs/_static/image14.png)](recovering-and-changing-passwords-cs/_static/image13.png)
 
 **Obrázek 5**: Předmět, text a kopie byl aktualizován seznam ([kliknutím ji zobrazíte obrázek v plné velikosti](recovering-and-changing-passwords-cs/_static/image15.png))
 
@@ -197,7 +197,7 @@ Ovládací prvek ChangePassword použijte k vytvoření rozhraní pro uživatele
 Otevřít `ChangePassword.aspx` stránky a ovládací prvek ChangePassword přidat na stránku jeho pojmenování `ChangePwd`. V tomto okamžiku by měl zobrazení návrhu zobrazení změnit heslo zobrazení (viz obrázek 6). Stejně jako s ovládacím prvkem PasswordRecovery, můžete přepínat mezi zobrazeními přes inteligentní značky ovládacího prvku. Kromě toho vystoupení na tato zobrazení lze přizpůsobit prostřednictvím vlastnosti různé stylu nebo jejich převedením na šablonu.
 
 
-[![Přidejte ovládací prvek ChangePassword na stránku](recovering-and-changing-passwords-cs/_static/image17.png)](recovering-and-changing-passwords-cs/_static/image16.png)
+[![Add ovládací prvek ChangePassword na stránku](recovering-and-changing-passwords-cs/_static/image17.png)](recovering-and-changing-passwords-cs/_static/image16.png)
 
 **Obrázek 6**: Přidejte ovládací prvek ChangePassword na stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](recovering-and-changing-passwords-cs/_static/image18.png))
 
@@ -215,7 +215,7 @@ Nastavení `DisplayUserName` na hodnotu True, je užitečné, pokud chcete, aby 
 Přejděte `ChangePassword.aspx` stránce prostřednictvím prohlížeče a změňte si heslo. Všimněte si, že pokud zadáte nové heslo, které nesplní délku hesla a požadavky na jiný než alfanumerický znak zadaného v konfiguraci členství, zobrazí se chybová zpráva (viz obrázek 7).
 
 
-[![Přidejte ovládací prvek ChangePassword na stránku](recovering-and-changing-passwords-cs/_static/image20.png)](recovering-and-changing-passwords-cs/_static/image19.png)
+[![Add ovládací prvek ChangePassword na stránku](recovering-and-changing-passwords-cs/_static/image20.png)](recovering-and-changing-passwords-cs/_static/image19.png)
 
 **Obrázek 7**: Přidejte ovládací prvek ChangePassword na stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](recovering-and-changing-passwords-cs/_static/image21.png))
 
@@ -235,7 +235,7 @@ Dále nastavte ovládací prvek ChangePassword `MailDefinition` vlastnosti `Body
 Po provedení těchto změn, otevírat stránku a změňte si heslo znovu. Tentokrát, ovládací prvek ChangePassword odešle e-mail přizpůsobené, ve formátu HTML e-mailovou adresu uživatele v souboru (viz obrázek 8).
 
 
-[![Zpráva e-mailu informuje uživatele, že jejich heslo změněno](recovering-and-changing-passwords-cs/_static/image23.png)](recovering-and-changing-passwords-cs/_static/image22.png)
+[![An e-mailová zpráva informuje uživatele, že jejich heslo změněno](recovering-and-changing-passwords-cs/_static/image23.png)](recovering-and-changing-passwords-cs/_static/image22.png)
 
 **Obrázek 8**: E-mailová zpráva informující o tom, že jejich heslo uživatele změnila ([kliknutím ji zobrazíte obrázek v plné velikosti](recovering-and-changing-passwords-cs/_static/image24.png))
 
@@ -273,7 +273,7 @@ Kód obsahuje některé body bity a je poměrně dlouhé. Proto se nechci se nyn
 Po zadání nové heslo, potvrzení do druhého textového pole a kliknutím na tlačítko Aktualizovat uživatele, zpětné volání vyplývá a `aspnet_Membership_SetPassword` uložené procedury je vyvolána, aktualizuje se heslo uživatele. Neváhejte těchto čtenáři zájem o tuto funkci se blíže seznámíte s kódem a zkuste to rozšíření funkce pro zasílání e-mailu pro uživatele, jejichž heslo se změnilo.
 
 
-[![Správce může změnit heslo uživatele](recovering-and-changing-passwords-cs/_static/image26.png)](recovering-and-changing-passwords-cs/_static/image25.png)
+[![An správce může změnit heslo uživatele](recovering-and-changing-passwords-cs/_static/image26.png)](recovering-and-changing-passwords-cs/_static/image25.png)
 
 **Obrázek 9**: Správce může změnit heslo uživatele ([kliknutím ji zobrazíte obrázek v plné velikosti](recovering-and-changing-passwords-cs/_static/image27.png))
 
