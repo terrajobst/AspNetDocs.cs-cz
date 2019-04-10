@@ -8,15 +8,15 @@ ms.date: 08/03/2007
 ms.assetid: cd330dd9-6254-4305-9351-dd727384c83b
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 91a1c967fbe74dbda8f8ac9635fdccbe05b0b6cc
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: d6a787206862b88f915859d4a8fc4dd3c3166293
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423894"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59389593"
 ---
-<a name="configuring-the-data-access-layers-connection--and-command-level-settings-c"></a>Konfigurace připojení vrstvy přístupu k datům a nastavení na úrovni příkazu (C#)
-====================
+# <a name="configuring-the-data-access-layers-connection--and-command-level-settings-c"></a>Konfigurace připojení vrstvy přístupu k datům a nastavení na úrovni příkazu (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_72_CS.zip) nebo [stahovat PDF](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/datatutorial72cs1.pdf)
@@ -51,7 +51,7 @@ S výjimkou [zabalení úprav databáze do transakce](../working-with-batched-da
 Každá třída TableAdapter má `Connection` vlastnost, která určuje informace o připojení databáze. Tento typ dat vlastnosti s a `ConnectionString` hodnota se určují podle výběru v Průvodci konfigurací TableAdapter. Připomínáme, že když jsme nejprve přidat TableAdapter k datové sadě zadán tento průvodce výzva pro databázi zdroje (viz obrázek 1). Rozevíracím seznamu v prvním kroku zahrnuje tyto databáze zadané v konfiguračním souboru, jakož i jiných databází v Průzkumníku serveru s datová připojení. Pokud databáze, kterou chceme použít neexistuje v rozevíracím seznamu, nové připojení k databázi je možné zadat tak kliknutím na tlačítko nové připojení a poskytuje informace o připojení potřebné.
 
 
-[![Prvním krokem Průvodce nastavením TableAdapter](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image2.png)](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image1.png)
+[![Tže prvním krokem Průvodce nastavením TableAdapter](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image2.png)](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image1.png)
 
 **Obrázek 1**: Prvním krokem Průvodce nastavením TableAdapter ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image3.png))
 
@@ -109,7 +109,7 @@ Tato částečná třída zveřejňuje pouze jedné vlastnosti takové základn�
 Otevřít `Northwind` datovou sadu, klikněte na `ProductsTableAdapter` v návrháři a přejděte do okna Vlastnosti. Uvidíte `ConnectionModifier` nastavit na výchozí hodnotu, `Assembly`. Chcete-li `Connection` mimo sestavení s typované datové sady, změny k dispozici `ConnectionModifier` vlastnost `Public`.
 
 
-[![Úroveň připojení s vlastnosti usnadnění přístupu lze nakonfigurovat přes vlastnost ConnectionModifier](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image7.png)](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image6.png)
+[![Tmá vlastnost připojení s úrovni přístupu můžete nakonfigurovat přes vlastnost ConnectionModifier](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image7.png)](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image6.png)
 
 **Obrázek 4**: `Connection` Vlastnost s usnadnění úroveň lze nakonfigurovat prostřednictvím `ConnectionModifier` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image8.png))
 

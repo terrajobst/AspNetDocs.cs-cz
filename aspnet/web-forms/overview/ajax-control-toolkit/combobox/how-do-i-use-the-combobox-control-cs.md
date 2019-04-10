@@ -8,15 +8,15 @@ ms.date: 05/12/2009
 ms.assetid: 0bbf4134-04df-4226-8930-d5bb99e27128
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: edf3786600a8ec7b58422e1ec20e71e2b749d6e4
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 2d23e65f817c11e45adab56ea054a7c46a35d4f3
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073150"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59386434"
 ---
-<a name="how-do-i-use-the-combobox-control-c"></a>Použití ovládacího prvku ComboBox (C#)
-====================
+# <a name="how-do-i-use-the-combobox-control-c"></a>Použití ovládacího prvku ComboBox (C#)
+
 by [Microsoft](https://github.com/microsoft)
 
 > Pole se seznamem je ovládací prvek ASP.NET AJAX, který kombinuje flexibilitu textové pole se seznamem možností, ze kterých mohou uživatelé vybrat.
@@ -37,7 +37,7 @@ Pokud chcete pomocí ovládacího prvku pole se seznamem na stránce musíte př
 V dalším kroku přetáhněte ovládací prvek pole se seznamem na stránku. ComboBox – ovládací prvek můžete najít v panelu nástrojů s jinými sadou nástrojů AJAX Control Toolkit ovládacích prvků a extenderů (viz obrázek 1).
 
 
-[![Jednoduchý formulář pro vytvoření karty firmy](how-do-i-use-the-combobox-control-cs/_static/image1.jpg)](how-do-i-use-the-combobox-control-cs/_static/image1.png)
+[![Suchá formulář pro vytvoření vizitky](how-do-i-use-the-combobox-control-cs/_static/image1.jpg)](how-do-i-use-the-combobox-control-cs/_static/image1.png)
 
 **Obrázek 01**: ComboBox – ovládací prvek výběru z panelu nástrojů ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-cs/_static/image2.png))
 
@@ -45,7 +45,7 @@ V dalším kroku přetáhněte ovládací prvek pole se seznamem na stránku. Co
 Jsme ll pomocí ovládacího prvku pole se seznamem pro zobrazení statický seznam voleb. Uživatel můžete vybrat určitou úroveň spiciness pro jejich potravin ze seznamu tři možnosti: Mírné, střední a aktivní (viz obrázek 2).
 
 
-[![Výběr ze statické seznam položek](how-do-i-use-the-combobox-control-cs/_static/image2.jpg)](how-do-i-use-the-combobox-control-cs/_static/image3.png)
+[![Sjak zvolit ze statické seznam položek](how-do-i-use-the-combobox-control-cs/_static/image2.jpg)](how-do-i-use-the-combobox-control-cs/_static/image3.png)
 
 **Obrázek 02**: Výběr ze statické seznam položek ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-cs/_static/image4.png))
 
@@ -53,7 +53,7 @@ Jsme ll pomocí ovládacího prvku pole se seznamem pro zobrazení statický sez
 Existují dva způsoby, že tyto možnosti můžete přidat do ovládacího prvku pole se seznamem. Nejprve vyberte možnost upravit možnosti úkolu, když myší najedete myší na ovládací prvek v návrhovém zobrazení a otevřete Editor položek (viz obrázek 3).
 
 
-[![Úprava pole se seznamem položek](how-do-i-use-the-combobox-control-cs/_static/image3.jpg)](how-do-i-use-the-combobox-control-cs/_static/image5.png)
+[![Epoložky pole se seznamem ATO funkce](how-do-i-use-the-combobox-control-cs/_static/image3.jpg)](how-do-i-use-the-combobox-control-cs/_static/image5.png)
 
 **Obrázek 03**: Úprava pole se seznamem položek ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-cs/_static/image6.png))
 
@@ -71,7 +71,7 @@ Nicméně máte také možnost zadat novou volbu (třeba Super Spicy), který ne
 Bez ohledu na to, jestli si vybrat existující položky nebo můžete zadat vlastní položky při odeslání formuláře, podle vašeho výběru se zobrazí v ovládacím prvku popisek. Po odeslání formuláře btnSubmit\_kliknutím obslužná rutina spustí a aktualizuje popisek (viz obrázek 4).
 
 
-[![Zobrazení vybrané položky](how-do-i-use-the-combobox-control-cs/_static/image4.jpg)](how-do-i-use-the-combobox-control-cs/_static/image7.png)
+[![DVybraná položka isplaying](how-do-i-use-the-combobox-control-cs/_static/image4.jpg)](how-do-i-use-the-combobox-control-cs/_static/image7.png)
 
 **Obrázek 04**: Zobrazení vybrané položky ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-cs/_static/image8.png))
 
@@ -104,12 +104,12 @@ Představte si, že chcete zobrazit seznam filmy v pole se seznamem. Chcete nač
 12. Klikněte na tlačítko OK ukončete průvodce.
 
 
-[![Výběr zdroje dat](how-do-i-use-the-combobox-control-cs/_static/image5.jpg)](how-do-i-use-the-combobox-control-cs/_static/image9.png)
+[![Czdroj dat hoosing](how-do-i-use-the-combobox-control-cs/_static/image5.jpg)](how-do-i-use-the-combobox-control-cs/_static/image9.png)
 
 **Obrázek 05**: Výběr zdroje dat ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-cs/_static/image10.png))
 
 
-[![Výběr datových polí hodnoty a text](how-do-i-use-the-combobox-control-cs/_static/image6.jpg)](how-do-i-use-the-combobox-control-cs/_static/image11.png)
+[![CHodnota pole a hoosing text dat](how-do-i-use-the-combobox-control-cs/_static/image6.jpg)](how-do-i-use-the-combobox-control-cs/_static/image11.png)
 
 **Obrázek 06**: Výběr datových polí hodnoty a text ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-cs/_static/image12.png))
 
@@ -123,7 +123,7 @@ Po dokončení výše uvedených kroků, pole se seznamem je svázána s ovláda
 Všimněte si, že ovládací prvek pole se seznamem má vlastnost DataSourceID, která odkazuje na ovládacím prvkem SqlDataSource. Když otevřete stránku v prohlížeči se zobrazí seznam videa z databáze (viz obrázek 7). Můžete vybrat video ze seznamu nebo zadejte nový film zadáním videa do pole se seznamem.
 
 
-[![Zobrazení seznamu filmy](how-do-i-use-the-combobox-control-cs/_static/image7.jpg)](how-do-i-use-the-combobox-control-cs/_static/image13.png)
+[![Dseznam filmy isplaying](how-do-i-use-the-combobox-control-cs/_static/image7.jpg)](how-do-i-use-the-combobox-control-cs/_static/image13.png)
 
 **Obrázek 07**: Zobrazení seznamu filmy ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-cs/_static/image14.png))
 
@@ -150,17 +150,17 @@ Chcete-li určit, co se stane, když uživatel zadá text do pole se seznamem po
 - SuggestAppend – pole se seznamem se zobrazí v seznamu a přidá odpovídající položky ze seznamu do co jste zadali (viz obrázek 10).
 
 
-[![Pole se seznamem umožňuje návrh](how-do-i-use-the-combobox-control-cs/_static/image8.jpg)](how-do-i-use-the-combobox-control-cs/_static/image15.png)
+[![Tmá pole se seznamem umožňuje návrh](how-do-i-use-the-combobox-control-cs/_static/image8.jpg)](how-do-i-use-the-combobox-control-cs/_static/image15.png)
 
 **Obrázek 08**: Pole se seznamem umožňuje návrh ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-cs/_static/image16.png))
 
 
-[![Pole se seznamem připojí odpovídající text](how-do-i-use-the-combobox-control-cs/_static/image9.jpg)](how-do-i-use-the-combobox-control-cs/_static/image17.png)
+[![ComboBox připojí odpovídající text](how-do-i-use-the-combobox-control-cs/_static/image9.jpg)](how-do-i-use-the-combobox-control-cs/_static/image17.png)
 
 **Obrázek 09**: Pole se seznamem připojí odpovídající text ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-cs/_static/image18.png))
 
 
-[![Pole se seznamem navrhuje a připojí](how-do-i-use-the-combobox-control-cs/_static/image10.jpg)](how-do-i-use-the-combobox-control-cs/_static/image19.png)
+[![Tmá pole se seznamem navrhuje a připojí](how-do-i-use-the-combobox-control-cs/_static/image10.jpg)](how-do-i-use-the-combobox-control-cs/_static/image19.png)
 
 **Obrázek 10**: Pole se seznamem navrhuje a připojí ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-cs/_static/image20.png))
 

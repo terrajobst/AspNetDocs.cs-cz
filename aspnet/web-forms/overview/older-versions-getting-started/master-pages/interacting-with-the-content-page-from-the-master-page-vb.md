@@ -8,15 +8,15 @@ ms.date: 07/11/2008
 ms.assetid: a6e2e1a0-c925-43e9-b711-1f178fdd72d7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7ace3873ecb525afcb64a0aa144742eab467f8f6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f0575474bc750cad15ac74c522e3138b326d880c
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067339"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59400006"
 ---
-<a name="interacting-with-the-content-page-from-the-master-page-vb"></a>Interakce stránky předlohy se stránkou obsahu (VB)
-====================
+# <a name="interacting-with-the-content-page-from-the-master-page-vb"></a>Interakce stránky předlohy se stránkou obsahu (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/1/8/4/184e24fa-fcc8-47fa-ac99-4b6a52d41e97/ASPNET_MasterPages_Tutorial_07_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/e/b/4/eb4abb10-c416-4ba4-9899-32577715b1bd/ASPNET_MasterPages_Tutorial_07_VB.pdf)
@@ -51,7 +51,7 @@ Tato zbývající část tohoto kurzu implementuje uvedené v úvodu; stránky o
 Naše první je k vytvoření obsahu stránky, která zobrazuje seznam produktů z databáze Northwind. (Databázi Northwind k projektu jsme přidali v předchozím kurzu [ *interakce stránky obsahu se stránkou předlohy*](interacting-with-the-master-page-from-the-content-page-vb.md).) Začněte tím, že přidání nové stránky ASP.NET do `~/Admin` složku s názvem `Products.aspx`a vytvořte mu vazbu k `Site.master` stránky předlohy. Obrázek 1 ukazuje Průzkumník řešení po přidání této stránce na webu.
 
 
-[![Přidejte novou stránku ASP.NET ke složce Admin](interacting-with-the-content-page-from-the-master-page-vb/_static/image2.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image1.png)
+[![Add novou stránku ASP.NET ke složce Admin](interacting-with-the-content-page-from-the-master-page-vb/_static/image2.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image1.png)
 
 **Obrázek 01**: Přidejte novou stránku ASP.NET `Admin` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image3.png))
 
@@ -68,7 +68,7 @@ Přidání tohoto `<siteMapNode>` element se projeví v lekcí seznamu (viz obr�
 Vraťte se na `Products.aspx`. V ovládacím prvku obsahu pro `MainContent`, přidejte ovládací prvek GridView a pojmenujte ho `ProductsGrid`. Svázání prvku GridView. nový ovládací prvek SqlDataSource s názvem `ProductsDataSource`.
 
 
-[![Nový ovládací prvek SqlDataSource svázání prvku GridView.](interacting-with-the-content-page-from-the-master-page-vb/_static/image5.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image4.png)
+[![BIND GridView pro nový ovládací prvek SqlDataSource](interacting-with-the-content-page-from-the-master-page-vb/_static/image5.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image4.png)
 
 **Obrázek 02**: Nový ovládací prvek SqlDataSource svázání prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image6.png))
 
@@ -76,7 +76,7 @@ Vraťte se na `Products.aspx`. V ovládacím prvku obsahu pro `MainContent`, př
 Nakonfigurujte průvodce tak, aby používal databázi Northwind. Pokud jste pracovali kroky v předchozím kurzu, pak byste už měli mít připojovací řetězec s názvem `NorthwindConnectionString` v `Web.config`. Z rozevíracího seznamu zvolte tento připojovací řetězec, jak je znázorněno na obrázku 3.
 
 
-[![Konfigurace ve třídě SqlDataSource používat databázi Northwind](interacting-with-the-content-page-from-the-master-page-vb/_static/image8.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image7.png)
+[![Configurovat ve třídě SqlDataSource používat databázi Northwind](interacting-with-the-content-page-from-the-master-page-vb/_static/image8.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image7.png)
 
 **Obrázek 03**: Konfigurace ve třídě SqlDataSource k použití databáze Northwind ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image9.png))
 
@@ -84,7 +84,7 @@ Nakonfigurujte průvodce tak, aby používal databázi Northwind. Pokud jste pra
 Dále určete ovládací prvek zdroje dat `SELECT` příkaz tabulky produktů výběrem z rozevíracího seznamu a vrací `ProductName` a `UnitPrice` sloupce (viz obrázek 4). Klikněte na tlačítko Další a pak dokončete průvodce Konfigurace zdroje dat dokončit.
 
 
-[![Vrátí pole ProductName a UnitPrice z tabulky produktů](interacting-with-the-content-page-from-the-master-page-vb/_static/image11.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image10.png)
+[![RPole UnitPrice z tabulky produktů a vracet ProductName](interacting-with-the-content-page-from-the-master-page-vb/_static/image11.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image10.png)
 
 **Obrázek 04**: Vrátit `ProductName` a `UnitPrice` pole z `Products` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image12.png))
 
@@ -95,7 +95,7 @@ A je to! Visual Studio po dokončení průvodce přidá do ovládacího prvku Gr
 [!code-aspx[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample2.aspx)]
 
 
-[![Každý produkt a cena je uveden v prvku GridView.](interacting-with-the-content-page-from-the-master-page-vb/_static/image14.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image13.png)
+[![EACH produktu a cena je uveden v prvku GridView.](interacting-with-the-content-page-from-the-master-page-vb/_static/image14.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image13.png)
 
 **Obrázek 05**: Každý produkt a cena je uveden v prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image15.png))
 
@@ -111,7 +111,7 @@ Naše dalším krokem je přidání ovládacího prvku tlačítko webového k hl
 Dále přidejte ovládacím prvkem SqlDataSource na hlavní stránku pojmenování `DoublePricesDataSource`. Tato SqlDataSource se použije ke spuštění `UPDATE` příkaz na dvojnásobek všechny ceny. Konkrétně, musíme nastavit jeho `ConnectionString` a `UpdateCommand` vlastnosti na příslušný připojovací řetězec a `UPDATE` příkazu. Pak potřebujeme k volání tohoto ovládacího prvku SqlDataSource `Update` metoda při `DoublePrice` po kliknutí na tlačítko. Chcete-li nastavit `ConnectionString` a `UpdateCommand` vlastnosti, vyberte ovládacím prvkem SqlDataSource a potom přejděte do okna Vlastnosti. `ConnectionString` Seznamů vlastností těchto připojovací řetězce, které už jsou uložené ve `Web.config` v rozevíracím seznamu, zvolte `NorthwindConnectionString` možnosti, jak je znázorněno na obrázku 6.
 
 
-[![Konfigurace ve třídě SqlDataSource používat NorthwindConnectionString](interacting-with-the-content-page-from-the-master-page-vb/_static/image17.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image16.png)
+[![Configurovat ve třídě SqlDataSource používat NorthwindConnectionString](interacting-with-the-content-page-from-the-master-page-vb/_static/image17.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image16.png)
 
 **Obrázek 06**: Konfigurace ve třídě SqlDataSource k použití `NorthwindConnectionString` ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image18.png))
 
@@ -124,7 +124,7 @@ Chcete-li nastavit `UpdateCommand` vlastnost, vyhledejte možnost UpdateQuery v 
 Tento příkaz při spuštění bude dvakrát `UnitPrice` hodnotu pro každý záznam v `Products` tabulky.
 
 
-[![Nastavte vlastnost UpdateCommand SqlDataSource.](interacting-with-the-content-page-from-the-master-page-vb/_static/image20.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image19.png)
+[![Set vlastnost UpdateCommand SqlDataSource.](interacting-with-the-content-page-from-the-master-page-vb/_static/image20.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image19.png)
 
 **Obrázek 07**: Nastavte na SqlDataSource `UpdateCommand` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image21.png))
 
@@ -225,12 +225,12 @@ S tímto kódem na místě GridView na stránce obsahu aktualizují pokaždé, k
 Toto chování ilustrují obrázky 8 a 9. Obrázek 8 ukazuje na stránku, když první uživatel. Všimněte si, že cena hodnoty v obou `RecentProducts` ovládacího prvku GridView (v levém sloupci předlohové stránky) a `ProductsGrid` ovládacího prvku GridView (na stránce obsahu). Obrázek 9 ukazuje stejné obrazovce ihned po `DoublePrice` kliknutí na tlačítko. Jak je vidět nové ceny se okamžitě projeví v obou prvků GridViews.
 
 
-[![Počáteční cena hodnoty](interacting-with-the-content-page-from-the-master-page-vb/_static/image23.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image22.png)
+[![Tmá počáteční hodnoty cena](interacting-with-the-content-page-from-the-master-page-vb/_static/image23.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image22.png)
 
 **Obrázek 08**: Počáteční cena hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image24.png))
 
 
-[![Ceny Just-Doubled jsou zobrazeny v prvků GridViews](interacting-with-the-content-page-from-the-master-page-vb/_static/image26.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image25.png)
+[![The Just-Doubled ceny jsou zobrazeny v prvků GridViews](interacting-with-the-content-page-from-the-master-page-vb/_static/image26.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image25.png)
 
 **Obrázek 09**: Ceny Just-Doubled jsou zobrazeny v prvků GridViews ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image27.png))
 

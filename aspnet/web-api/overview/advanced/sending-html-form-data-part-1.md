@@ -1,22 +1,23 @@
 ---
 uid: web-api/overview/advanced/sending-html-form-data-part-1
-title: 'Posílání dat formulářů HTML ve webovém rozhraní API technologie ASP.NET: Data formuláře kódovaná | Dokumentace Microsoftu'
+title: 'Posílání dat formulářů HTML ve webovém rozhraní API technologie ASP.NET: Data formuláře kódovaná – ASP.NET 4.x'
 author: MikeWasson
-description: ''
+description: Tento článek ukazuje, jak publikovat data formuláře kódovaná do kontroleru webového rozhraní API v ASP.NET 4.x
 ms.author: riande
 ms.date: 06/15/2012
+ms.custom: seoapril2019
 ms.assetid: 585351c4-809a-4bf5-bcbe-35d624f565fe
 msc.legacyurl: /web-api/overview/advanced/sending-html-form-data-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 2d01212cc408f8bb66fa3103464c9a1f7a1e21c6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: fb0309af11910125943737ebb721b356b7bd08bc
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073456"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59418297"
 ---
-<a name="sending-html-form-data-in-aspnet-web-api-form-urlencoded-data"></a>Posílání dat formulářů HTML ve webovém rozhraní API technologie ASP.NET: Data formuláře kódovaná pomocí adresy URL
-====================
+# <a name="sending-html-form-data-in-aspnet-web-api-form-urlencoded-data"></a>Posílání dat formulářů HTML ve webovém rozhraní API technologie ASP.NET: Data formuláře kódovaná pomocí adresy URL
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 ## <a name="part-1-form-urlencoded-data"></a>Část 1: Data formuláře kódovaná pomocí adresy URL

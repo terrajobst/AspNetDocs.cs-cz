@@ -8,15 +8,15 @@ ms.date: 02/14/2013
 ms.assetid: 9534e58b-1d15-4f1d-b04c-10c79b9d8227
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20122-release-notes-rtw
 msc.type: content
-ms.openlocfilehash: 0566a362b36f6cfb73b6479cd490e82c63455459
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: e4545f36d5a2668bc6a21249a89a94ece9bb2ca2
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067672"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59397978"
 ---
-<a name="aspnet-and-web-tools-20122-release-notes"></a>ASP.NET a webové nástroje – poznámky k verzi 2012.2
-====================
+# <a name="aspnet-and-web-tools-20122-release-notes"></a>ASP.NET a webové nástroje – poznámky k verzi 2012.2
+
 > Tento dokument popisuje verzi technologie ASP.NET and Web Tools 2012.2. Je aktualizace Visual Studio webové nástroje a technologie ASP.NET.
 
 
@@ -29,9 +29,9 @@ ms.locfileid: "57067672"
     - [Nástroje](#_Tooling)
     - [Publikování na webu](#_Web_Publishing)
     - [Šablony ASP.NET MVC](#_Templates)
-    - [Webové rozhraní API v ASP.NET](#_ASP.NET_Web_API)
+    - [Rozhraní API pro ASP.NET Web](#_ASP.NET_Web_API)
 
-    - [Funkce SignalR technologie ASP.NET](#_ASP.NET_SignalR)
+    - [ASP.NET SignalR](#_ASP.NET_SignalR)
     - [ASP.NET přátelské adresy URL](#_ASP.NET_Friendly_URLs)
 - [Známé problémy a změny způsobující chyby](#_Known_Issues_and)
 

@@ -8,15 +8,15 @@ ms.date: 02/16/2008
 ms.assetid: c28ba88d-3a93-47f5-a306-049bd766714d
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a7f4afd70a17281123a7448a00896c186b9a00f8
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 84af745d338e38ece438fa58d51d0929c7b92967
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067723"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59408456"
 ---
-<a name="aspnet-mvc-views-overview-vb"></a>ASP.NET MVC – přehled zobrazení (VB)
-====================
+# <a name="aspnet-mvc-views-overview-vb"></a>ASP.NET MVC – přehled zobrazení (VB)
+
 podle [Stephen Walther](https://github.com/StephenWalther)
 
 > Co se zobrazení ASP.NET MVC a jak se liší od stránku HTML? V tomto kurzu Stephen Walther vás seznámí s zobrazení a ukazuje, jak můžete využít výhod zobrazení dat a pomocných rutin HTML v zobrazení.
@@ -75,7 +75,7 @@ Zobrazení je standard (dokumentu HTML, který může obsahovat skriptů X). Př
 
 Například zobrazení v informacích 2 ukazuje aktuální datum a čas.
 
-**Listing 2 - \Views\Home\Index.aspx**
+**Výpis 2 - \Views\Home\Index.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample2.aspx)]
 
@@ -83,7 +83,7 @@ Všimněte si, že tělo stránky HTML v zobrazení 2 obsahuje následující sk
 
 &lt;Response.Write(DateTime.Now) %&gt;
 
-Použít skript oddělovače &lt;% a %&gt; označit začátek a konec skriptu. Tento skript je napsána v jazyce Visual Basic. Zobrazí aktuální datum a čas voláním metody Response.Write() metody k vykreslení obsahu v prohlížeči. Skript oddělovače &lt;% a %&gt; lze použít k provedení jednoho nebo více příkazů.
+Použít skript oddělovače &lt;% a %&gt; označit začátek a konec skriptu. Tento skript je napsána v jazyce Visual basic. Zobrazí aktuální datum a čas voláním metody Response.Write() metody k vykreslení obsahu v prohlížeči. Skript oddělovače &lt;% a %&gt; lze použít k provedení jednoho nebo více příkazů.
 
 Vzhledem k tomu, že volání metody Response.Write() tak často, Microsoft vám poskytne zástupce pro volání metody Response.Write() metody. Zobrazení v informacích 3 používá oddělovače &lt;% = a %&gt; jako zástupce pro volání metody Response.Write().
 
@@ -104,7 +104,7 @@ Například zobrazení výpisu 4 využívá registrů tři pomocných rutin HTML
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample4.aspx)]
 
 
-[![Dialogové okno Nový projekt](asp-net-mvc-views-overview-vb/_static/image1.jpg)](asp-net-mvc-views-overview-vb/_static/image1.png)
+[![TDialogové okno Nový projekt he](asp-net-mvc-views-overview-vb/_static/image1.jpg)](asp-net-mvc-views-overview-vb/_static/image1.png)
 
 **Obrázek 01**: Standardní přihlašovací formulář ([kliknutím ji zobrazíte obrázek v plné velikosti](asp-net-mvc-views-overview-vb/_static/image2.png))
 

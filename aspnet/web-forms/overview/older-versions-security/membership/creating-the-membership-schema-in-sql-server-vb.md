@@ -8,15 +8,15 @@ ms.date: 01/18/2008
 ms.assetid: 112a674d-716f-41a6-99b8-4074d65a54c0
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 62a6113c9ddad1722160c7092308939cf7883588
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 17fbc85ab1be16e2b4a5c179db3c24645a6a0a64
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075301"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59404166"
 ---
-<a name="creating-the-membership-schema-in-sql-server-vb"></a>Vytvoření schématu členství v SQL Serveru (VB)
-====================
+# <a name="creating-the-membership-schema-in-sql-server-vb"></a>Vytvoření schématu členství v SQL Serveru (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/ASPNET_Security_Tutorial_04_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/aspnet_tutorial04_MembershipSetup_vb.pdf)
@@ -57,7 +57,7 @@ Aplikace, kterou jsme se vytváření od druhé části kurzu není potřeba je�
 V Průzkumníku řešení klikněte pravým tlačítkem na `App_Data` složce a chcete přidat novou položku. (Pokud se nezobrazí `App_Data` složku ve vašem projektu, klikněte pravým tlačítkem na projekt v Průzkumníku řešení vyberte Přidat složku ASP.NET a vybrat `App_Data`.) Z dialogového okna Přidat novou položku zvolte Přidat novou databázi SQL s názvem `SecurityTutorials.mdf`. V tomto kurzu přidáme `SqlMembershipProvider` schématu pro tuto databázi, v následujících kurzech vytvoříme další tabulky k zaznamenání dat o našich aplikací.
 
 
-[![Přidat novou databázi SQL s názvem SecurityTutorials.mdf databáze do složky App_Data](creating-the-membership-schema-in-sql-server-vb/_static/image2.png)](creating-the-membership-schema-in-sql-server-vb/_static/image1.png)
+[![Add novou databázi s názvem SecurityTutorials.mdf databázi SQL do složky App_Data](creating-the-membership-schema-in-sql-server-vb/_static/image2.png)](creating-the-membership-schema-in-sql-server-vb/_static/image1.png)
 
 **Obrázek 1**: Přidat nové databáze SQL název `SecurityTutorials.mdf` databáze `App_Data` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-the-membership-schema-in-sql-server-vb/_static/image3.png))
 
@@ -65,7 +65,7 @@ V Průzkumníku řešení klikněte pravým tlačítkem na `App_Data` složce a 
 Přidání databáze do `App_Data` složku automaticky zahrne v zobrazení Průzkumník databáze. (Ve verzi Express Edition sady Visual Studio, se nazývá Průzkumník databáze v Průzkumníku serveru.) Přejít na Průzkumník databáze a rozbalte právě přidané `SecurityTutorials` databáze. Pokud se nezobrazí Průzkumník databáze na obrazovce, přejděte do zobrazení nabídky a zvolte Průzkumník databáze nebo stiskněte kombinaci kláves Ctrl + Alt + S. Obrázek 2 ukazuje, `SecurityTutorials` databáze je prázdná – neobsahuje žádné tabulky, k dispozici žádná zobrazení a žádné uložené procedury.
 
 
-[![SecurityTutorials databáze je aktuálně prázdný](creating-the-membership-schema-in-sql-server-vb/_static/image5.png)](creating-the-membership-schema-in-sql-server-vb/_static/image4.png)
+[![TSecurityTutorials databáze je aktuálně prázdný](creating-the-membership-schema-in-sql-server-vb/_static/image5.png)](creating-the-membership-schema-in-sql-server-vb/_static/image4.png)
 
 **Obrázek 2**: `SecurityTutorials` Databáze je aktuálně prázdný ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-the-membership-schema-in-sql-server-vb/_static/image6.png))
 
@@ -100,7 +100,7 @@ Nejjednodušší způsob, jak zjistit název databáze je prozkoumat SQL Server 
 Začněte tím, že zavření sady Visual Studio k zajištění, že žádné zámky uložené v souboru databáze aplikace Visual Studio zavřená. V dalším kroku spusťte SQL Server Management Studio a připojte se k `localhost\InstanceName` databáze pro SQL Server 2005 Express Edition. Jak je uvedeno výše, je pravděpodobné, je název instance `SQLExpress`. Možnost ověřování vyberte možnost ověřování Windows.
 
 
-[![Připojte se k instanci serveru SQL Server 2005 Express Edition](creating-the-membership-schema-in-sql-server-vb/_static/image8.png)](creating-the-membership-schema-in-sql-server-vb/_static/image7.png)
+[![Cpřipojit k instanci serveru SQL Server 2005 Express Edition](creating-the-membership-schema-in-sql-server-vb/_static/image8.png)](creating-the-membership-schema-in-sql-server-vb/_static/image7.png)
 
 **Obrázek 3**: Připojte se k instanci serveru SQL Server 2005 Express Edition ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-the-membership-schema-in-sql-server-vb/_static/image9.png))
 
@@ -110,12 +110,12 @@ Po připojení k instanci SQL serveru 2005 Express Edition, Management Studio zo
 Klikněte pravým tlačítkem na složku databází a v místní nabídce zvolte možnost připojit. Zobrazí se dialogové okno Připojit databáze. Zde, klikněte na tlačítko Přidat, přejděte `SecurityTutorials.mdf` databáze a klikněte na tlačítko OK. Obrázek 4 ukazuje dialogové okno Připojit databáze po `SecurityTutorials.mdf` byla vybrána databáze. Obrázek 5 ukazuje Průzkumník objektů systému Management Studio po databáze byl úspěšně připojen.
 
 
-[![Připojte databázi SecurityTutorials.mdf](creating-the-membership-schema-in-sql-server-vb/_static/image11.png)](creating-the-membership-schema-in-sql-server-vb/_static/image10.png)
+[![Apřipojit databázi SecurityTutorials.mdf](creating-the-membership-schema-in-sql-server-vb/_static/image11.png)](creating-the-membership-schema-in-sql-server-vb/_static/image10.png)
 
 **Obrázek 4**: Připojit `SecurityTutorials.mdf` databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-the-membership-schema-in-sql-server-vb/_static/image12.png))
 
 
-[![Databáze SecurityTutorials.mdf zobrazí ve složce databáze](creating-the-membership-schema-in-sql-server-vb/_static/image14.png)](creating-the-membership-schema-in-sql-server-vb/_static/image13.png)
+[![Tmá SecurityTutorials.mdf databáze se zobrazí ve složce databáze](creating-the-membership-schema-in-sql-server-vb/_static/image14.png)](creating-the-membership-schema-in-sql-server-vb/_static/image13.png)
 
 **Obrázek 5**: `SecurityTutorials.mdf` Databáze se zobrazí ve složce databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-the-membership-schema-in-sql-server-vb/_static/image15.png))
 
@@ -123,7 +123,7 @@ Klikněte pravým tlačítkem na složku databází a v místní nabídce zvolte
 Jak je vidět na obrázku 5, `SecurityTutorials.mdf` databáze má raději abstruse název. Pojďme jej změnit na víc zapamatovatelnou (a usnadňuje zadejte) název. Klikněte pravým tlačítkem na databázi, zvolte Přejmenovat v místní nabídce a přejmenujte ji `SecurityTutorialsDatabase`. Nezmění se název souboru, pouze název databáze slouží k identifikaci k systému SQL Server.
 
 
-[![Přejmenování databáze SecurityTutorialsDatabase](creating-the-membership-schema-in-sql-server-vb/_static/image17.png)](creating-the-membership-schema-in-sql-server-vb/_static/image16.png)
+[![RNázev souboru databáze, kterou chcete SecurityTutorialsDatabase](creating-the-membership-schema-in-sql-server-vb/_static/image17.png)](creating-the-membership-schema-in-sql-server-vb/_static/image16.png)
 
 **Obrázek 6**: Přejmenovat databázi `SecurityTutorialsDatabase`([kliknutím ji zobrazíte obrázek v plné velikosti](creating-the-membership-schema-in-sql-server-vb/_static/image18.png))
 
@@ -137,7 +137,7 @@ Ke spuštění `aspnet_regsql.exe` nástroj, přejděte do nabídky start a klik
 Spuštění `aspnet_regsql.exe` grafickém uživatelském rozhraní Průvodce instalací SQL serveru ASP.NET se spustí nástroj bez argumentů příkazového řádku. Průvodce umožňuje snadno přidat nebo odebrat aplikačních služeb technologie ASP.NET v zadané databázi. První obrazovce průvodce, je znázorněno na obrázku 7, jsou popsány nástroje.
 
 
-[![Slouží k přidání schématu členství využívá Průvodce instalace serveru SQL technologie ASP.NET](creating-the-membership-schema-in-sql-server-vb/_static/image20.png)](creating-the-membership-schema-in-sql-server-vb/_static/image19.png)
+[![Use technologie ASP.NET SQL Server nastavení Průvodce provede přidání schématu členství](creating-the-membership-schema-in-sql-server-vb/_static/image20.png)](creating-the-membership-schema-in-sql-server-vb/_static/image19.png)
 
 **Obrázek 7**: Použít ASP.NET SQL Server nastavení Průvodce provede přidání schématu členství ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-the-membership-schema-in-sql-server-vb/_static/image21.png))
 
@@ -145,7 +145,7 @@ Spuštění `aspnet_regsql.exe` grafickém uživatelském rozhraní Průvodce in
 Druhý krok v Průvodci nám zeptá, zda chceme přidat aplikační služby nebo je odeberte. Protože chceme přidat tabulek, zobrazení a uložených procedur, které jsou nezbytné pro `SqlMembershipProvider`, zvolte Konfigurovat systém SQL Server pro aplikace možnost služby. Pokud chcete odebrat toto schéma z databáze, později, spusťte znovu tohoto průvodce, ale místo toho zvolit informace o službách aplikací odebrat z existující možnost databáze.
 
 
-[![Zvolte konfiguraci serveru SQL pro možnost aplikace služby](creating-the-membership-schema-in-sql-server-vb/_static/image23.png)](creating-the-membership-schema-in-sql-server-vb/_static/image22.png)
+[![CZvolte konfigurovat Server SQL pro možnost aplikace služby](creating-the-membership-schema-in-sql-server-vb/_static/image23.png)](creating-the-membership-schema-in-sql-server-vb/_static/image22.png)
 
 **Obrázek 8**: Zvolte konfigurovat systém SQL Server pro aplikaci služby možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-the-membership-schema-in-sql-server-vb/_static/image24.png))
 
@@ -157,7 +157,7 @@ Třetí krok zobrazí výzvu k zadání informace o databázi: název serveru, i
 - Databáze: `SecurityTutorialsDatabase`
 
 
-[![Zadejte informace o databázi](creating-the-membership-schema-in-sql-server-vb/_static/image26.png)](creating-the-membership-schema-in-sql-server-vb/_static/image25.png)
+[![EZadejte informace o databázi](creating-the-membership-schema-in-sql-server-vb/_static/image26.png)](creating-the-membership-schema-in-sql-server-vb/_static/image25.png)
 
 **Obrázek 9**: Zadejte informace o databázi ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-the-membership-schema-in-sql-server-vb/_static/image27.png))
 
@@ -170,7 +170,7 @@ Jakmile zadáte informace o databázi, klikněte na tlačítko Další. V posled
 Po dokončení Průvodce vraťte se do sady Visual Studio a přejděte do Průzkumníka databáze. Rozbalte složku tabulky. Měli byste vidět řadu tabulek, jejichž názvy začínají předponou `aspnet_`. Obdobně širokou škálu zobrazení a uložených procedur najdete ve složkách zobrazení a uložených procedur. Tyto databázové objekty tvoří schéma služby aplikace. Prozkoumáme databázových objektů konkrétní členství a role v kroku 3.
 
 
-[![Celou řadu tabulek, zobrazení a uložených procedur jsou přidané do databáze](creating-the-membership-schema-in-sql-server-vb/_static/image29.png)](creating-the-membership-schema-in-sql-server-vb/_static/image28.png)
+[![A Řadu tabulek, zobrazení a uložených procedur jsou přidané do databáze](creating-the-membership-schema-in-sql-server-vb/_static/image29.png)](creating-the-membership-schema-in-sql-server-vb/_static/image28.png)
 
 **Obrázek 10**: Různých tabulek, zobrazení a uložených procedur byly přidány do databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-the-membership-schema-in-sql-server-vb/_static/image30.png))
 
@@ -191,7 +191,7 @@ To směru, bychom mohli bez obav použít rozhraní členství a rolí bez nutno
 Členství a rolí rozhraní jsou navržené tak, že jedno úložiště uživatele a roli je možné sdílet mezi mnoha různých aplikací. Aplikace ASP.NET, která používá rozhraní členství nebo rolí, musíte zadat oddílu aplikace používat. Stručně řečeno více webových aplikací můžete použít stejné úložiště pro uživatele a role. Obrázek 11 znázorňuje úložiště pro uživatele a role, které jsou rozdělené do tří aplikací: HRSite CustomerSite a SalesSite. Tyto tři webové aplikace každý mají své vlastní jedinečných uživatelů a rolí, ale jsou v nich všechny fyzicky uložené informace o účtu a role uživateli ve stejných databázových tabulkách.
 
 
-[![Může být dělené uživatelské účty napříč více aplikacemi](creating-the-membership-schema-in-sql-server-vb/_static/image32.png)](creating-the-membership-schema-in-sql-server-vb/_static/image31.png)
+[![Uuživatelské účty mohou být dělené napříč více aplikacemi](creating-the-membership-schema-in-sql-server-vb/_static/image32.png)](creating-the-membership-schema-in-sql-server-vb/_static/image31.png)
 
 **Obrázek 11**: Uživatelské účty může být rozdělit na oddíly napříč více aplikacemi ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-the-membership-schema-in-sql-server-vb/_static/image33.png))
 
@@ -226,7 +226,7 @@ Sloupce za níž byla hesla uložená `Password`, `PasswordFormat`, a `PasswordS
 
 Tabulka 1 ukazuje, jak tyto tři sloupce může vypadat pro různých technik vytváření úložiště při ukládání hesel MySecret! .
 
-| **Úložiště techniku&lt;\_o3a\_p /&gt;** | **Heslo&lt;\_o3a\_p /&gt;** | **PasswordFormat&lt;\_o3a\_p /&gt;** | **PasswordSalt&lt;\_o3a\_p /&gt;** |
+| **Úložiště techniku&lt;\_o3a\_p /&gt;** | **Password&lt;\_o3a\_p /&gt;** | **PasswordFormat&lt;\_o3a\_p /&gt;** | **PasswordSalt&lt;\_o3a\_p /&gt;** |
 | --- | --- | --- | --- |
 | Vymazat | MySecret! | 0 | tTnkPlesqissc2y2SMEygA== |
 | Hodnoty hash | 2oXm6sZHWbTHFgjgkGQsc2Ec9ZM= | 1 | wFgjUfhdUFOCKQiI61vtiQ== |

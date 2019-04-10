@@ -8,15 +8,15 @@ ms.date: 05/12/2009
 ms.assetid: 18b29834-c991-4e0c-b533-44d358fbfc9c
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7f0cbee47b541e31f3e9f01e42afeabcd7b9769f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8336fecf60296c44ebcf6cbd6010f9d5daed2923
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068635"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59415957"
 ---
-<a name="creating-a-custom-ajax-control-toolkit-control-extender-vb"></a>Vytvoření vlastního rozšiřujícího ovládacího prvku AJAX Control Toolkit (VB)
-====================
+# <a name="creating-a-custom-ajax-control-toolkit-control-extender-vb"></a>Vytvoření vlastního rozšiřujícího ovládacího prvku AJAX Control Toolkit (VB)
+
 by [Microsoft](https://github.com/microsoft)
 
 > Vlastní zařízení Extender umožňují přizpůsobit a rozšířit možnosti ovládacích prvků ASP.NET, bez nutnosti vytvářet nové třídy.
@@ -79,7 +79,7 @@ V dalším kroku potřeba vytvořit projekt knihovny tříd, který bude obsahov
 Po dokončení těchto kroků okna Průzkumník řešení by měl vypadat jako obrázek 1.
 
 
-[![Řešení pomocí projektu knihovny webu a třídy](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image8.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image7.png)
+[![Skroky řešení pomocí projektu knihovny webu a třída](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image8.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image7.png)
 
 **Obrázek 01**: Řešení pomocí projektu knihovny webu a třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image9.png))
 
@@ -100,7 +100,7 @@ Dále je třeba přidat všechny potřebné reference sestavení do projektu kni
 Můžete ověřit, že jste všechny správné odkazy přidali pravým tlačítkem myši na projekt, vyberte vlastnosti a kliknutím na kartě odkazy (viz obrázek 2).
 
 
-[![Složka s odkazy s požadované odkazy](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image11.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image10.png)
+[![Rodkazy složka s odkazy na požadované](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image11.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image10.png)
 
 **Obrázek 02**: Složka s odkazy s odkazy na požadovaná ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image12.png))
 
@@ -155,7 +155,7 @@ Metodu initialize() přidruží obslužnou rutinu události keyup cílového ele
 Mějte na paměti, že je nutné kompilovat soubor jazyka JavaScript v informacích 3 jako vložený prostředek. Vyberte ho v okně Průzkumníka řešení, otevřete seznam vlastností a přiřaďte hodnotu *integrovaný prostředek* k **akce sestavení** vlastnosti (viz obrázek 3). Tato možnost je k dispozici v sadě Visual Studio a Visual Web Developer.
 
 
-[![Přidání souboru jazyka JavaScript jako vložený prostředek](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image14.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image13.png)
+[![Asoubor JavaScript jako vložený prostředek dding](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image14.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image13.png)
 
 **Obrázek 03**: Přidání souboru jazyka JavaScript jako vložený prostředek ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image15.png))
 
@@ -184,7 +184,7 @@ Teď, když jsme dokončili, vytvoření extenderu ovládacího prvku DisabledBu
 Po dokončení těchto kroků – extender ovládacího prvku DisabledButton objevit na panelu nástrojů (viz obrázek 4).
 
 
-[![DisabledButton na panelu nástrojů](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image17.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image16.png)
+[![DisabledButton v sadě nástrojů](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image17.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image16.png)
 
 **Obrázek 04**: DisabledButton na panelu nástrojů ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image18.png))
 
@@ -206,7 +206,7 @@ Dále musíme rozšířit ovládací prvek TextBox s DisabledButton rozšiřují
 2. Vyberte zařízení extender DisabledButton a klikněte na tlačítko **OK** tlačítko.
 
 
-[![Dialogové okno Průvodce rozšiřujícího objektu](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image20.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image19.png)
+[![TDialogové okno Průvodce zařízení Extender he](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image20.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image19.png)
 
 **Obrázek 05**: Dialogové okno Průvodce zařízení Extender ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image21.png))
 
@@ -218,7 +218,7 @@ Nakonec jsme můžete nastavit vlastnosti DisabledButton rozšiřujícího objek
 3. Přiřaďte hodnotu *Uložit* DisabledText vlastnosti a hodnotu *btnSave* TargetButtonID vlastnosti.
 
 
-[![Nastavení vlastností rozšíření](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image23.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image22.png)
+[![SVlastnosti zařízení extender černobílé](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image23.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image22.png)
 
 **Obrázek 06**: Nastavení vlastností zařízení extender ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image24.png))
 
@@ -226,7 +226,7 @@ Nakonec jsme můžete nastavit vlastnosti DisabledButton rozšiřujícího objek
 Při spuštění stránky (stisknutím klávesy F5) ovládacího prvku tlačítko je zpočátku zakázáno. Jakmile začnete zadávat text do textového pole, tlačítko ovládací prvek je povoleno (viz obrázek 7).
 
 
-[![Zařízení extender DisabledButton v akci](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image26.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image25.png)
+[![Tzařízení extender DisabledButton používaný v akci](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image26.png)](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image25.png)
 
 **Obrázek 07**: Zařízení extender DisabledButton v akci ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image27.png))
 

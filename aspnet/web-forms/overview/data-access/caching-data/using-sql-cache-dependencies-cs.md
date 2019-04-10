@@ -8,15 +8,15 @@ ms.date: 05/30/2007
 ms.assetid: 0e91842c-7f10-4aed-8c23-4ee3e2774014
 msc.legacyurl: /web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ddd0ce9e8e0f69da6f9c0f65165e4842d460f0c0
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: e70a21e2752c7c8fc8be332a98e1cf7e40b01412
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067252"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59417686"
 ---
-<a name="using-sql-cache-dependencies-c"></a>Použití závislostí mezipaměti SQL (C#)
-====================
+# <a name="using-sql-cache-dependencies-c"></a>Použití závislostí mezipaměti SQL (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_61_CS.zip) nebo [stahovat PDF](using-sql-cache-dependencies-cs/_static/datatutorial61cs1.pdf)
@@ -87,7 +87,7 @@ Začněte tím, že zavření sady Visual Studio. Dále otevřete SQL Server Man
 Po připojení k serveru, bude zobrazit server Management Studio a obsahovat podsložky pro databáze, zabezpečení a tak dále. Klikněte pravým tlačítkem na složku databází a zvolte možnost připojení. Tím se otevře dialogové okno Připojit databáze (viz obrázek 2). Klikněte na tlačítko Přidat a vyberte `NORTHWND.MDF` složka databáze ve vaší webové aplikace s `App_Data` složky.
 
 
-[![Připojte NORTHWND. MDF databáze ze složky App_Data](using-sql-cache-dependencies-cs/_static/image2.gif)](using-sql-cache-dependencies-cs/_static/image1.png)
+[![Apřipojit NORTHWND. MDF databáze ze složky App_Data](using-sql-cache-dependencies-cs/_static/image2.gif)](using-sql-cache-dependencies-cs/_static/image1.png)
 
 **Obrázek 2**: Připojit `NORTHWND.MDF` databáze z `App_Data` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image2.png))
 
@@ -143,7 +143,7 @@ V krocích 1 až 4 jsme se podívali na nastavení infrastruktury potřebné dat
 Abychom si předvedli deklarativně použití závislostí mezipaměti SQL, otevřete `SqlCacheDependencies.aspx` stránku `Caching` složky a GridView přetáhněte z panelu nástrojů do návrháře. Nastavit prvek GridView s `ID` k `ProductsDeclarative` a z inteligentních značek, vyberte a vytvořte jeho vazbu nového prvku ObjectDataSource s názvem `ProductsDataSourceDeclarative`.
 
 
-[![Vytvoření nového prvku ObjectDataSource s názvem ProductsDataSourceDeclarative](using-sql-cache-dependencies-cs/_static/image5.gif)](using-sql-cache-dependencies-cs/_static/image3.png)
+[![CVytvořit nový účet ObjectDataSource s názvem ProductsDataSourceDeclarative](using-sql-cache-dependencies-cs/_static/image5.gif)](using-sql-cache-dependencies-cs/_static/image3.png)
 
 **Obrázek 5**: Vytvoření nového prvku ObjectDataSource s názvem `ProductsDataSourceDeclarative` ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image4.png))
 
@@ -151,12 +151,12 @@ Abychom si předvedli deklarativně použití závislostí mezipaměti SQL, otev
 Konfigurace ObjectDataSource používat `ProductsBLL` třídy a nastavit rozevíracího seznamu vyberte kartě `GetProducts()`. Na kartě aktualizace, zvolte `UpdateProduct` přetížení se třemi vstupní parametry - `productName`, `unitPrice`, a `productID`. Nastavte rozevírací seznamy na (žádný) na kartách INSERT a DELETE.
 
 
-[![Použijte přetížení UpdateProduct se třemi vstupní parametry](using-sql-cache-dependencies-cs/_static/image6.gif)](using-sql-cache-dependencies-cs/_static/image5.png)
+[![Use UpdateProduct přetížení se třemi parametry vstup](using-sql-cache-dependencies-cs/_static/image6.gif)](using-sql-cache-dependencies-cs/_static/image5.png)
 
 **Obrázek 6**: Použijte přetížení UpdateProduct se třemi parametry vstup ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image6.png))
 
 
-[![Nastavení rozevíracího seznamu na (žádný) pro vložení a odstranění karty](using-sql-cache-dependencies-cs/_static/image7.gif)](using-sql-cache-dependencies-cs/_static/image7.png)
+[![Set rozevíracího seznamu na (žádný) pro vložení a odstranění karty](using-sql-cache-dependencies-cs/_static/image7.gif)](using-sql-cache-dependencies-cs/_static/image7.png)
 
 **Obrázek 7**: Nastavte rozevírací seznam na (žádný) pro vložení a odstranění karty ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image8.png))
 
@@ -178,7 +178,7 @@ Vzpomeňte si, že ObjectDataSource s `Selecting` události dochází pouze v p�
 Nyní navštivte tuto stránku prostřednictvím prohlížeče. Protože jsme ve ještě provádět žádné ukládání do mezipaměti, pokaždé, když stránku, řazení nebo upravit stránku mřížky by se zobrazit textu, výběr události vyvolané, jak ukazuje obrázek 8.
 
 
-[![Prvek ObjectDataSource s události Selecting aktivuje vždy, když je stránkování prvku GridView, upravit, nebo seřazeno](using-sql-cache-dependencies-cs/_static/image8.gif)](using-sql-cache-dependencies-cs/_static/image9.png)
+[![TSpustí mohl ObjectDataSource s události Selecting vždy, když je stránkování prvku GridView, upravit, nebo seřazeno](using-sql-cache-dependencies-cs/_static/image8.gif)](using-sql-cache-dependencies-cs/_static/image9.png)
 
 **Obrázek 8**: Prvek ObjectDataSource s `Selecting` událost je aktivována každý čas stránkování prvku GridView, upravovaný nebo seřazeno ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image10.png))
 
@@ -197,7 +197,7 @@ Kde *databaseName* je název databáze, jak je uvedeno v `name` atribut `<add>` 
 V prvku GridView `SqlCacheDependencies.aspx` zobrazí data ze dvou tabulek - `Products` a `Categories` (produkt s `CategoryName` prostřednictvím se načítají pole `JOIN` na `Categories`). Proto budeme chtít zadat dvě závislosti mezipaměti SQL: NorthwindDB:Products;NorthwindDB:Categories .
 
 
-[![Konfigurace ObjectDataSource pro podporu ukládání do mezipaměti použití závislostí mezipaměti SQL na produkty a kategorie](using-sql-cache-dependencies-cs/_static/image9.gif)](using-sql-cache-dependencies-cs/_static/image11.png)
+[![Configurovat ObjectDataSource pro podporu ukládání do mezipaměti pomocí závislosti mezipaměti SQL na produkty a kategorie](using-sql-cache-dependencies-cs/_static/image9.gif)](using-sql-cache-dependencies-cs/_static/image11.png)
 
 **Obrázek 9**: Konfigurace v prvku ObjectDataSource pro podporu ukládání do mezipaměti pomocí závislosti mezipaměti SQL `Products` a `Categories` ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image12.png))
 
@@ -207,7 +207,7 @@ Po dokončení konfigurace ObjectDataSource pro podporu ukládání do mezipamě
 Po vyvolání stránkování mřížky a poznamenat chybějící události Selecting text, otevřete nové okno prohlížeče a přejděte na kurz základy v úpravy, vložení a odstranění oddílu (`~/EditInsertDelete/Basics.aspx`). Aktualizujte název nebo cena produktu. Pak z první okna prohlížeče, zobrazte na jinou stránku dat, seřazení mřížky nebo klikněte na tlačítko Upravit řádek s. Tentokrát, aktivuje události Selecting by měl znovu, jako jsou databáze, které byla data změny (viz obrázek 10). Pokud text se nezobrazí, chvíli počkejte a zkuste to znovu. Mějte na paměti, že dotazování služby kontroluje změny `Products` tabulky každý `pollTime` milisekund, takže dochází ke zpoždění mezi při aktualizaci podkladových dat a pokud dojde k jejich vyřazení dat uložených v mezipaměti.
 
 
-[![Změna tabulky produktů vyloučí Data produktu uložená v mezipaměti](using-sql-cache-dependencies-cs/_static/image10.gif)](using-sql-cache-dependencies-cs/_static/image13.png)
+[![Modifying vyloučí tabulky produktů produktu Data do mezipaměti](using-sql-cache-dependencies-cs/_static/image10.gif)](using-sql-cache-dependencies-cs/_static/image13.png)
 
 **Obrázek 10**: Změna tabulky produktů vyloučí produktu Data v mezipaměti ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image14.png))
 
@@ -241,17 +241,17 @@ Aktualizovat tento kód pro použití `SqlCacheDependency` místo objektu `Maste
 Pokud chcete vyzkoušet tuto funkci, přidejte na stránku pod existující GridView `ProductsDeclarative` ovládacího prvku GridView. Nastavit tento nový prvek GridView s `ID` k `ProductsProgrammatic` a prostřednictvím inteligentních značek, jeho vazbu na nového prvku ObjectDataSource s názvem `ProductsDataSourceProgrammatic`. Konfigurace ObjectDataSource používat `ProductsCL` třídy nastavením rozevíracích seznamech vyberte a aktualizace karet `GetProducts` a `UpdateProduct`v uvedeném pořadí.
 
 
-[![Konfigurace ObjectDataSource pomocí třídy ProductsCL](using-sql-cache-dependencies-cs/_static/image11.gif)](using-sql-cache-dependencies-cs/_static/image15.png)
+[![Configurovat ObjectDataSource pomocí třídy ProductsCL](using-sql-cache-dependencies-cs/_static/image11.gif)](using-sql-cache-dependencies-cs/_static/image15.png)
 
 **Obrázek 11**: Konfigurace ObjectDataSource k použití `ProductsCL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image16.png))
 
 
-[![Vyberte z rozevíracího seznamu vyberte kartu s GetProducts – metoda](using-sql-cache-dependencies-cs/_static/image12.gif)](using-sql-cache-dependencies-cs/_static/image17.png)
+[![Szvolit metodu GetProducts z rozevíracího seznamu vyberte kartu s](using-sql-cache-dependencies-cs/_static/image12.gif)](using-sql-cache-dependencies-cs/_static/image17.png)
 
 **Obrázek 12**: Vyberte `GetProducts` metodu z rozevíracího seznamu vyberte kartu s ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image18.png))
 
 
-[![Zvolte z rozevíracího seznamu aktualizace kartu s UpdateProduct – metoda](using-sql-cache-dependencies-cs/_static/image13.gif)](using-sql-cache-dependencies-cs/_static/image19.png)
+[![CZvolte metodu UpdateProduct z kartu aktualizace s rozevíracím seznamu](using-sql-cache-dependencies-cs/_static/image13.gif)](using-sql-cache-dependencies-cs/_static/image19.png)
 
 **Obrázek 13**: Z kartu aktualizace s rozevíracím seznamu zvolte metodu UpdateProduct ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image20.png))
 
