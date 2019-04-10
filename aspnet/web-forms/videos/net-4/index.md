@@ -8,15 +8,15 @@ ms.date: 10/05/2011
 ms.assetid: bac10aee-6731-4a0f-84d7-9eef5e560ae5
 msc.legacyurl: /web-forms/videos/net-4
 msc.type: chapter
-ms.openlocfilehash: e8565bc2914570eef982bbcc63a8497c2d38386a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ea11b464329a755d5625797327f5a0a3ccb0f426
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57795908"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59400578"
 ---
-<a name="net-4"></a>.NET 4
-====================
+# <a name="net-4"></a>.NET 4
+
 > Nových funkcí technologie ASP.NET, které jsou dostupné v rozhraní .NET Framework 4.
 
 
@@ -25,7 +25,7 @@ ms.locfileid: "57795908"
     - [Imperativní syntaxe jazyka JavaScript pro ovládací prvky Microsoftu na straně klienta](ajax/aspnet-4-quick-hit-imperative-javascript-syntax-for-microsoft-client-side-controls.md)
     - [ScriptLoader](ajax/aspnet-4-quick-hit-the-scriptloader.md)
     - [Syntaxe JQuery pro Microsoft Ajax](ajax/aspnet-4-quick-hit-jquery-syntax-for-microsoft-ajax.md)
-    - [Datové šablony AJAX](ajax/aspnet-4-quick-hit-ajax-data-templates.md)
+    - [Šablony data AJAXu](ajax/aspnet-4-quick-hit-ajax-data-templates.md)
 - [Graf](chart/index.md)
 
     - [Graf – ovládací prvek](chart/aspnet-4-quick-hit-chart-control.md)
@@ -39,12 +39,12 @@ ms.locfileid: "57795908"
 - [Data](data/index.md)
 
     - [Trvalý výběr řádku v ovládacím prvku GridView](data/aspnet-4-quick-hit-persistent-gridview-row-selection.md)
-- [Ovládací prvek značky](markup-control/index.md)
+- [Ovládací prvek kódu](markup-control/index.md)
 
     - [Nová možnost vykreslování seznamů zaškrtávacích políček a seznamů přepínačů](markup-control/aspnet-4-quick-hit-new-rendering-option-for-check-box-lists-and-radio-button-lists.md)
     - [Ovládací prvky bez vizuálního vzhledu a tabulky](markup-control/aspnet-4-quick-hit-table-free-templated-controls.md)
     - [Ovládací prvek nabídky bez tabulky](markup-control/aspnet-4-quick-hit-tableless-menu-control.md)
-    - [Prvky div skrytých polí](markup-control/aspnet-4-quick-hit-hidden-field-divs.md)
+    - [Prvky Div skrytých polí](markup-control/aspnet-4-quick-hit-hidden-field-divs.md)
     - [Zakázané určení stylu ovládacího prvku](markup-control/aspnet-4-quick-hit-disabled-control-styling.md)
 - [Výkon](performance/index.md)
 

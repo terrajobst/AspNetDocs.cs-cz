@@ -8,15 +8,15 @@ ms.date: 01/28/2011
 ms.assetid: 51b447d5-eaa1-4df1-917c-f4f2746ed62d
 msc.legacyurl: /mobile/tested-devices
 msc.type: content
-ms.openlocfilehash: 4576e176f3b5d6e3a1fbec16f098c64ec3f0d54d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ecf8b7d90358fa0410ded9bd33c711016b4cd1d4
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068932"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59411056"
 ---
-<a name="aspnet-mobile-controls-tested-devices"></a>Zařízení testovaná na mobilní ovládací prvky ASP.NET
-====================
+# <a name="aspnet-mobile-controls-tested-devices"></a>Zařízení testovaná na mobilní ovládací prvky ASP.NET
+
 > Následující zařízení a prohlížečů byly testovány pomocí Microsoft Mobile Internet Toolkit verze 1.0 a mobilní ovládací prvky ASP.NET.
 > 
 > - Mobilní aplikace Microsoft Internet Toolkit [MMIT 1.0]: *(15 leden, 2002)*
@@ -26,7 +26,7 @@ ms.locfileid: "57068932"
 > - Aktualizace zařízení 4 [DU 4.0]: *(18 prosinec, 2003)*
 
 
-|    Výrobce     |                      Model                      |       Výrobce prohlížeče        |               Prohlížeč modelu               | Všeobecně dostupné |
+|    Výrobce     |                      Model                      |       Výrobce prohlížeče        |               Prohlížeč modelu               | Vydáno |
 |---------------------|-------------------------------------------------|-----------------------------------|-------------------------------------------|----------|
 |        @Migo        |                     PD-600C                     |             Microsoft             |           Pocket IE 2002 (4.1)            |  ROZLIŠOVANÉ SJEDNOCENÍ TYPU 1.0  |
 |       Alcatel       |                  Jedním dotykem 311                  |             OpenWave              |            UP.Browser 4.1.23a             |  ROZLIŠOVANÉ SJEDNOCENÍ TYPU 1.0  |

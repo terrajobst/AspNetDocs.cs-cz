@@ -8,15 +8,15 @@ ms.date: 02/15/2013
 ms.assetid: 416438a1-3b2f-4d27-bf53-6b76223c33bf
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: f71d8311cbb1131d9c30c0bd9071a1c6c90f9976
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 19cda45ce1b425462ec491bcc86b7a0b76dec162
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072397"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59409795"
 ---
-<a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Nasazení do produkčního prostředí
-====================
+# <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Nasazení do produkčního prostředí
+
 podle [Petr Dykstra](https://github.com/tdykstra)
 
 [Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
@@ -276,7 +276,7 @@ A *.pubxml* soubor obsahuje nastavení, které se týkají konkrétní Publikova
 
     ![Náhled souborů, které mají být publikovány do produkčního prostředí](deploying-to-production/_static/image14.png)
 
-    Projděte si seznam souborů, které budou zkopírovány. Uvidíte, že všechny *.cs* souborů, včetně *. aspx.cs*, *. aspx.designer.cs*, *Master.cs*, a  *Master.Designer.cs* soubory jsou vynechány. Veškerý tento kód byl zkompilován do *ContosoUniversity.dll* a *ContosUniversity.pdb* soubory, které najdete v *bin* složky. Protože pouze *.dll* , je potřeba spustit aplikaci a nastavili, že by měly být nasazeny pouze soubory potřebné ke spuštění aplikace, ne *.cs* soubory byly zkopírovány do cíle prostředí. *Obj* složky a *ContosoUniversity.csproj* a *. csproj.user* soubory jsou vynechány ze stejného důvodu.
+    Projděte si seznam souborů, které budou zkopírovány. Uvidíte, že všechny *.cs* souborů, včetně *. aspx.cs*, *. aspx.designer.cs*, *Master.cs*, a  *Master.Designer.cs* soubory jsou vynechány. Veškerý tento kód byl zkompilován do *ContosoUniversity.dll* a *ContosoUniversity.pdb* soubory, které najdete v *bin* složky. Protože pouze *.dll* , je potřeba spustit aplikaci a nastavili, že by měly být nasazeny pouze soubory potřebné ke spuštění aplikace, ne *.cs* soubory byly zkopírovány do cíle prostředí. *Obj* složky a *ContosoUniversity.csproj* a *. csproj.user* soubory jsou vynechány ze stejného důvodu.
 
     Klikněte na tlačítko **publikovat** k nasazení do produkčního prostředí.
 2. Testování v produkčním prostředí, stejným způsobem, který jste použili pro přípravu.

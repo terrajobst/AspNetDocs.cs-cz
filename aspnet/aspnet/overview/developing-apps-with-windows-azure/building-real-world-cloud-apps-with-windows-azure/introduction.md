@@ -8,15 +8,15 @@ ms.date: 06/12/2014
 ms.assetid: accfa16a-ab15-4c26-9ad4-babdc2a77d2e
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: c496e93d7517bc187514d5fa2dfa90d29c5f47f9
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: bf9cf1f5be22a5b97ec964277c11ae21066676f0
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068554"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59412408"
 ---
-<a name="building-real-world-cloud-apps-with-azure"></a>Sestavování skutečných cloudových aplikací s Azure
-====================
+# <a name="building-real-world-cloud-apps-with-azure"></a>Sestavování skutečných cloudových aplikací s Azure
+
 podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Petr Dykstra](https://github.com/tdykstra)
 
 [Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
@@ -100,7 +100,7 @@ Tato elektronická příručka vysvětluje že třináct doporučuje vzory pro c
     - Povolit vysokou dostupnost a zlepšit škálovatelnost volně párování webové a pracovní vrstvu.
     - Ukázka: Fronty úložiště Azure v aplikaci opravit.
 - [Používejte víc cloudových aplikační postupy a doprovodné materiály](more-patterns-and-guidance.md).
-- [Dodatek: Oprava ukázkové aplikace](the-fix-it-sample-application.md)
+- [Příloha: Ukázková aplikace Fix It](the-fix-it-sample-application.md)
 
     - Známé problémy
     - Doporučené postupy

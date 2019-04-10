@@ -1,22 +1,23 @@
 ---
 uid: identity/overview/getting-started/introduction-to-aspnet-identity
-title: Úvod do ASP.NET Identity | Dokumentace Microsoftu
+title: Úvod do ASP.NET Identity – ASP.NET 4.x
 author: jongalloway
 description: Systém členství technologie ASP.NET byla zavedena v systémech ASP.NET 2.0 zpět v roce 2005 a protože a aby byla mnoho změn typicall způsoby webové aplikace...
 ms.author: riande
 ms.date: 01/22/2019
 ms.assetid: 38717fc1-5989-43cf-952d-4007cc1dd923
+ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/getting-started/introduction-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 4a545e52d2d9ea04a10c37c116fd326c60de9f8f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 34a0d62d7afcaffa8fbac0bc774d9266efb6b165
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077074"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59413045"
 ---
-<a name="introduction-to-aspnet-identity"></a>Úvod do ASP.NET Identity
-====================
+# <a name="introduction-to-aspnet-identity"></a>Úvod do ASP.NET Identity
+
 
 > Systém členství technologie ASP.NET byla zavedena v systémech ASP.NET 2.0 zpět v roce 2005 a protože pak byly provedeny změny v mnoha způsoby webové aplikace obvykle zpracovávat ověřování a autorizace. ASP.NET Identity je čerstvé podívat, co systém členství by měla být při vytváření moderních aplikací pro web, telefon nebo tablet.
 

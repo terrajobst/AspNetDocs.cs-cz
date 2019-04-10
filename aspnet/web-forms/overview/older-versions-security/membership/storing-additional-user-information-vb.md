@@ -8,15 +8,15 @@ ms.date: 01/18/2008
 ms.assetid: ee4b924e-8002-4dc3-819f-695fca1ff867
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/storing-additional-user-information-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 33e686cc3b977c6c740dfaf1057e1e399d5a298b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7dad99f2ae7e71cb697426bc97414fd4e4873aa5
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074542"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59400487"
 ---
-<a name="storing-additional-user-information-vb"></a>Ukládání dalších informací o uživatelích (VB)
-====================
+# <a name="storing-additional-user-information-vb"></a>Ukládání dalších informací o uživatelích (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/ASPNET_Security_Tutorial_08_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/aspnet_tutorial08_ExtraUserInfo_vb.pdf)
@@ -45,7 +45,7 @@ Aby bylo možné zachytit návštěv komentáře, musíme vytvořit tabulku data
 Chcete-li přidat tuto tabulku do databáze, přejít na Průzkumník databáze v sadě Visual Studio a k podrobnostem `SecurityTutorials` databáze. Klikněte pravým tlačítkem na složku tabulky a zvolte Přidat novou tabulku. Tím se zobrazí rozhraní, která umožňuje definovat sloupců nové tabulky.
 
 
-[![Přidá novou tabulku SecurityTutorials databáze](storing-additional-user-information-vb/_static/image2.png)](storing-additional-user-information-vb/_static/image1.png)
+[![APřidat novou tabulku pro databázi SecurityTutorials](storing-additional-user-information-vb/_static/image2.png)](storing-additional-user-information-vb/_static/image1.png)
 
 **Obrázek 1**: Přidat novou tabulku `SecurityTutorials` databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image3.png))
 
@@ -53,7 +53,7 @@ Chcete-li přidat tuto tabulku do databáze, přejít na Průzkumník databáze 
 Dále definujte `GuestbookComments`na sloupce. Začněte přidáním sloupec s názvem `CommentId` typu `uniqueidentifier`. V tomto sloupci se jednoznačně identifikovat každou komentář v knize návštěv, tak zakažte `NULL` s a označte ji jako primární klíč v tabulce. Místo zadání hodnoty pro `CommentId` pole v každém `INSERT`, jsme můžete určit, že nový `uniqueidentifier` hodnoty by měly být automaticky generovány pro toto pole na `INSERT` nastavením výchozí hodnotu sloupce na `NEWID()`. Po přidání tohoto prvního pole, jeho označení jako primární klíč a nastavení jeho výchozí hodnotu, vaše obrazovka by měla vypadat podobně jako obrazovky je vidět na obrázku 2.
 
 
-[![Přidejte primární sloupec s názvem CommentId](storing-additional-user-information-vb/_static/image5.png)](storing-additional-user-information-vb/_static/image4.png)
+[![Add primární účet sloupec s názvem CommentId](storing-additional-user-information-vb/_static/image5.png)](storing-additional-user-information-vb/_static/image4.png)
 
 **Obrázek 2**: Přidejte primární sloupec s názvem `CommentId` ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image6.png))
 
@@ -73,7 +73,7 @@ Máme jeden problém poslední věnovat se `GuestbookComments` tabulky: potřebu
 Klikněte na tlačítko Přidat v levém dolním rohu dialogu vztahy cizího klíče. Tím se přidá nová omezení cizího klíče, i když ještě nutné definovat tabulek, které se účastní v relaci.
 
 
-[![Ke správě omezení cizího klíče tabulky pomocí dialogového okna cizího klíče](storing-additional-user-information-vb/_static/image8.png)](storing-additional-user-information-vb/_static/image7.png)
+[![UCizí klíč relace dialogu spravovat omezení cizího klíče tabulky se](storing-additional-user-information-vb/_static/image8.png)](storing-additional-user-information-vb/_static/image7.png)
 
 **Obrázek 3**: Umožňuje spravovat omezení cizího klíče v tabulce cizího klíče relace dialogových oken ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image9.png))
 
@@ -81,7 +81,7 @@ Klikněte na tlačítko Přidat v levém dolním rohu dialogu vztahy cizího kl�
 Klikněte na ikonu tří teček v řádku "Tabulky a sloupce specifikace" na pravé straně. Tím se spustí dialogovém okně tabulky a sloupce, ze kterého lze zadat primární klíč tabulky a sloupce a sloupce cizího klíče z `GuestbookComments` tabulky. Zejména `aspnet_Users` a `UserId` jako primární klíč tabulky a sloupce, a `UserId` z `GuestbookComments` tabulce jako sloupec cizího klíče (viz obrázek 4). Po definování primární a cizí klíče tabulky a sloupce, klikněte na tlačítko OK se vraťte do dialogového okna vztahy cizího klíče.
 
 
-[![Vytvoření cizího klíče omezení mezi aspnet_Users a GuesbookComments tabulek](storing-additional-user-information-vb/_static/image11.png)](storing-additional-user-information-vb/_static/image10.png)
+[![Establish cizího klíče omezení mezi aspnet_Users a tabulky GuesbookComments](storing-additional-user-information-vb/_static/image11.png)](storing-additional-user-information-vb/_static/image10.png)
 
 **Obrázek 4**: Zavést cizího klíče omezení `aspnet_Users` a `GuesbookComments` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image12.png))
 
@@ -91,7 +91,7 @@ V tomto okamžiku se vytvořilo omezení cizího klíče. Přítomnost tohoto om
 Automaticky odstranit související podřízené záznamy při odstranění záznamu nadřazené lze nastavit omezení cizího klíče. Omezení cizího klíče jsme jinými slovy, můžete nastavit tak, aby uživatele návštěv položky se automaticky odstraní při odstranění svůj uživatelský účet. K tomu, rozbalte v části "INSERT a UPDATE specifikace" a "Odstranit pravidlo" vlastnost nastavit na sebe.
 
 
-[![Konfigurace omezení cizího klíče k kaskádové odstranění](storing-additional-user-information-vb/_static/image14.png)](storing-additional-user-information-vb/_static/image13.png)
+[![COmezení pro cizí klíč k kaskádová onfigurovat](storing-additional-user-information-vb/_static/image14.png)](storing-additional-user-information-vb/_static/image13.png)
 
 **Obrázek 5**: Nakonfigurujte omezení pro cizí klíč k kaskádová ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image15.png))
 
@@ -115,7 +115,7 @@ Nyní potřebujeme přidružit každý uživatelský účet pro ukládání dom�
 Vytvoříme nové tabulky nazvané `UserProfiles` uložte domácí města, domovskou stránku a podpis pro každého uživatele. Klikněte pravým tlačítkem na složku tabulky v okně Průzkumník databáze a zvolte možnost vytvořit novou tabulku. Pojmenujte první sloupec `UserId` a nastavte její typ `uniqueidentifier`. Zakázat `NULL` hodnoty a označit jako primární klíč sloupec. V dalším kroku přidejte sloupce s názvem: `HomeTown` typu `nvarchar(50)`; `HomepageUrl` typu `nvarchar(100)`; a podpis typu `nvarchar(500)`. Každá z těchto tří sloupců může přijmout `NULL` hodnotu.
 
 
-[![Vytvoření tabulky UserProfiles](storing-additional-user-information-vb/_static/image17.png)](storing-additional-user-information-vb/_static/image16.png)
+[![Cvytvořit tabulku UserProfiles](storing-additional-user-information-vb/_static/image17.png)](storing-additional-user-information-vb/_static/image16.png)
 
 **Obrázek 6**: Vytvořte `UserProfiles` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image18.png))
 
@@ -133,7 +133,7 @@ Protože v této sérii kurzů se zaměřuje na ověřování pomocí formulář
 Otevřít `AdditionalUserInfo.aspx` stránku `Membership` složky a přidat na stránku, nastavením jeho vlastnosti ID na ovládacím prvku DetailsView `UserProfile` a vymazání jeho `Width` a `Height` vlastnosti. Rozbalte ovládacím prvku DetailsView inteligentních značek a zvolte a vytvořte jeho vazbu nový ovládací prvek zdroje dat. Tím spustíte Průvodce konfigurací zdroje dat (viz obrázek 7). Prvním krokem žádostí o zadání typu zdrojového data. Protože jsme se chystáte připojit přímo `SecurityTutorials` databáze, zvolte ikonu databáze zadání `ID` jako `UserProfileDataSource`.
 
 
-[![Přidat nový ovládací prvek SqlDataSource s názvem UserProfileDataSource](storing-additional-user-information-vb/_static/image20.png)](storing-additional-user-information-vb/_static/image19.png)
+[![Add nové třídě SqlDataSource ovládací prvek s názvem UserProfileDataSource](storing-additional-user-information-vb/_static/image20.png)](storing-additional-user-information-vb/_static/image19.png)
 
 **Obrázek 7**: Přidat nový ovládací prvek SqlDataSource název `UserProfileDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image21.png))
 
@@ -141,7 +141,7 @@ Otevřít `AdditionalUserInfo.aspx` stránku `Membership` složky a přidat na s
 Na další obrazovce zobrazí výzvu pro databáze, kterou chcete použít. Už jsme definovali připojovacího řetězce v `Web.config` pro `SecurityTutorials` databáze. Tento název připojovacího řetězce – `SecurityTutorialsConnectionString` – by měla být v rozevíracím seznamu. Vyberte tuto možnost a klikněte na tlačítko Další.
 
 
-[![Z rozevíracího seznamu zvolte SecurityTutorialsConnectionString](storing-additional-user-information-vb/_static/image23.png)](storing-additional-user-information-vb/_static/image22.png)
+[![CZvolte SecurityTutorialsConnectionString z rozevíracího seznamu](storing-additional-user-information-vb/_static/image23.png)](storing-additional-user-information-vb/_static/image22.png)
 
 **Obrázek 8**: Zvolte `SecurityTutorialsConnectionString` z rozevíracího seznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image24.png))
 
@@ -149,7 +149,7 @@ Na další obrazovce zobrazí výzvu pro databáze, kterou chcete použít. Už 
 Na následující obrazovce se zobrazí výzva k určení tabulky a sloupce do dotazu. Zvolte `UserProfiles` tabulky z rozevíracího seznamu a zkontrolovat všechny sloupce.
 
 
-[![Převést zpět všechny sloupce z tabulky UserProfiles](storing-additional-user-information-vb/_static/image26.png)](storing-additional-user-information-vb/_static/image25.png)
+[![Baktualizační kanál zpět všech sloupců z tabulky UserProfiles](storing-additional-user-information-vb/_static/image26.png)](storing-additional-user-information-vb/_static/image25.png)
 
 **Obrázek 9**: Převést zpět všechny sloupce `UserProfiles` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image27.png))
 
@@ -159,7 +159,7 @@ Aktuální dotaz vrátí obrázek 9 *všechny* záznamů v `UserProfiles`, ale n
 Bohužel neexistuje žádný zdroj integrované parametr vrátit aktuálně přihlášeného uživatele `UserId` hodnotu. Budeme muset zkopírovat tuto hodnotu prostřednictvím kódu programu. Proto nastavte zdroj rozevíracího seznamu na "Žádný" klikněte na tlačítko Přidat parametr přidat a klikněte na tlačítko OK.
 
 
-[![Přidání parametru filtr na sloupec UserId](storing-additional-user-information-vb/_static/image29.png)](storing-additional-user-information-vb/_static/image28.png)
+[![Add parametr filtr na sloupec UserId](storing-additional-user-information-vb/_static/image29.png)](storing-additional-user-information-vb/_static/image28.png)
 
 **Obrázek 10**: Přidání parametru filtru na `UserId` sloupec ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image30.png))
 
@@ -187,7 +187,7 @@ Pokud navštívíte `AdditionalUserInfo.aspx` stránky prostřednictvím prohlí
 Přejděte do Průzkumníku databází v sadě Visual Studio a rozbalte složku tabulky. Klikněte pravým tlačítkem na `aspnet_Users` tabulky a zvolte "Zobrazit Data tabulky" Pokud chcete zobrazit záznamy v tabulce; stejnou věc udělat `UserProfiles` tabulky. Obrázek 11 zobrazí tyto výsledky při svisle vedle sebe. V databázi nejsou aktuálně `aspnet_Users` záznamy pro Bruce Fred a Tito, ale žádné záznamy v `UserProfiles` tabulky.
 
 
-[![Zobrazí se obsah aspnet_Users a UserProfiles tabulek](storing-additional-user-information-vb/_static/image32.png)](storing-additional-user-information-vb/_static/image31.png)
+[![TZobrazí se obsah he aspnet_Users a UserProfiles tabulky](storing-additional-user-information-vb/_static/image32.png)](storing-additional-user-information-vb/_static/image31.png)
 
 **Obrázek 11**: Obsah `aspnet_Users` a `UserProfiles` tabulky se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image33.png))
 
@@ -195,7 +195,7 @@ Přejděte do Průzkumníku databází v sadě Visual Studio a rozbalte složku 
 Přidání nového záznamu `UserProfiles` tabulky ručním zadáním hodnoty pro `HomeTown`, `HomepageUrl`, a `Signature` pole. Nejjednodušší způsob, jak získat platný `UserId` hodnotu v novém `UserProfiles` záznamu je výběr `UserId` pole z určitého uživatelského účtu v `aspnet_Users` tabulky a zkopírujte a vložte ho do `UserId` pole `UserProfiles`. Obrázek 12 se zobrazí `UserProfiles` tabulky po přidání nového záznamu pro Bruce.
 
 
-[![Záznam byl přidán do UserProfiles pro Bruce](storing-additional-user-information-vb/_static/image35.png)](storing-additional-user-information-vb/_static/image34.png)
+[![A Záznam byl přidán do UserProfiles pro Bruce](storing-additional-user-information-vb/_static/image35.png)](storing-additional-user-information-vb/_static/image34.png)
 
 **Obrázek 12**: Záznam byl přidán do `UserProfiles` pro Bruce ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image36.png))
 
@@ -203,7 +203,7 @@ Přidání nového záznamu `UserProfiles` tabulky ručním zadáním hodnoty pr
 Vraťte se `AdditionalUserInfo.aspx page`, přihlášen jako Bruce. Jak ukazuje obrázek 13, se zobrazují Bruce jeho nastavení.
 
 
-[![Aktuálně návštěvě uživatele se zobrazí jeho nastavení](storing-additional-user-information-vb/_static/image38.png)](storing-additional-user-information-vb/_static/image37.png)
+[![Tmá nyní navštěvují uživatele se zobrazí jeho nastavení](storing-additional-user-information-vb/_static/image38.png)](storing-additional-user-information-vb/_static/image37.png)
 
 **Obrázek 13**: Aktuálně návštěvě uživatele se zobrazí jeho nastavení ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image39.png))
 
@@ -223,7 +223,7 @@ První věc musíme udělat, je přidat `UpdateCommand` pro ovládacím prvkem S
 Klikněte na tlačítko "Aktualizovat parametry", který vytvoří parametr v ovládacím prvkem SqlDataSource `UpdateParameters` kolekce pro každý z parametrů v `UPDATE` příkazu. Ponechte na žádný zdroj pro všechny sady parametrů a klikněte na tlačítko OK se vyplňte dialogové okno.
 
 
-[![Zadejte vlastnost UpdateCommand ve třídě SqlDataSource a UpdateParameters](storing-additional-user-information-vb/_static/image41.png)](storing-additional-user-information-vb/_static/image40.png)
+[![SZadejte vlastnost UpdateCommand ve třídě SqlDataSource a UpdateParameters](storing-additional-user-information-vb/_static/image41.png)](storing-additional-user-information-vb/_static/image40.png)
 
 **Obrázek 14**: Zadejte ve třídě SqlDataSource `UpdateCommand` a `UpdateParameters` ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image42.png))
 
@@ -239,7 +239,7 @@ Poznámka: Přidání CommandField a `DefaultMode` vlastnost.
 Pokračujte a otestovat tuto stránku prostřednictvím prohlížeče. Při návštěvě jako uživatel, který nemá odpovídající záznam v `UserProfiles`, nastavení uživatele se zobrazí v upravitelné rozhraní.
 
 
-[![Vykreslí upravitelné rozhraní ovládacím prvku DetailsView.](storing-additional-user-information-vb/_static/image44.png)](storing-additional-user-information-vb/_static/image43.png)
+[![Tmá DetailsView vykreslí upravitelné rozhraní](storing-additional-user-information-vb/_static/image44.png)](storing-additional-user-information-vb/_static/image43.png)
 
 **Obrázek 15**: Vykreslí upravitelné rozhraní ovládacím prvku DetailsView ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image45.png))
 
@@ -257,7 +257,7 @@ Potřebujeme zobrazíte `SettingsUpdatedMessage` popisek pokaždé, když se akt
 Vraťte se `AdditionalUserInfo.aspx` stránce prostřednictvím prohlížeče a aktualizovat data. Tentokrát, zobrazí se užitečné stavovou zprávu.
 
 
-[![Krátký zpráva se zobrazí při nastavení jsou aktualizovány](storing-additional-user-information-vb/_static/image47.png)](storing-additional-user-information-vb/_static/image46.png)
+[![A Krátké zprávy se zobrazí při nastavení aktualizují](storing-additional-user-information-vb/_static/image47.png)](storing-additional-user-information-vb/_static/image46.png)
 
 **Obrázek 16**: Při aktualizaci nastavení, zobrazí se zprávy zadejte krátký ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image48.png))
 
@@ -309,7 +309,7 @@ Po kliknutí `PostCommentButton` tlačítko zde není žádný vizuální zpětn
 Obrázek 17 zobrazí obsah `GuestbookComments` tabulky po zbývá dvě komentáře.
 
 
-[![Zobrazí se návštěv komentáře v tabulce GuestbookComments](storing-additional-user-information-vb/_static/image50.png)](storing-additional-user-information-vb/_static/image49.png)
+[![Yorganizační jednotky mohou je zobrazit návštěv v tabulce GuestbookComments](storing-additional-user-information-vb/_static/image50.png)](storing-additional-user-information-vb/_static/image49.png)
 
 **Obrázek 17**: Zobrazí se návštěv komentáře v `GuestbookComments` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image51.png))
 
@@ -335,7 +335,7 @@ Tím se otevře na obrazovce "Definovat vlastní příkazy nebo uložené proced
 Už jen zbývá určit sloupce, které chcete vrátit. Z `GuestbookComments` tabulce vyberte `Subject`, `Body`, a `CommentDate` sloupce; vrátit `HomeTown`, `HomepageUrl`, a `Signature` sloupce z `UserProfiles` tabulky; a vrátit `UserName` z `aspnet_Users`. Přidejte také "`ORDER BY CommentDate DESC`" na konci `SELECT` dotaz tak, aby nejnovější příspěvky jsou vrácena jako první. Po provedení tento výběr, vypadat podobně jako na snímek v 18 obrázek obrazovky rozhraní Tvůrce dotazů.
 
 
-[![Constructed dotaz spojí GuestbookComments, UserProfiles a aspnet_Users tabulky](storing-additional-user-information-vb/_static/image53.png)](storing-additional-user-information-vb/_static/image52.png)
+[![Tmá Constructed dotaz spojí GuestbookComments, UserProfiles a tabulky aspnet_Users](storing-additional-user-information-vb/_static/image53.png)](storing-additional-user-information-vb/_static/image52.png)
 
 **Obrázek 18**: Dotaz vytvořený `JOIN` s `GuestbookComments`, `UserProfiles`, a `aspnet_Users` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image54.png))
 
@@ -355,7 +355,7 @@ Moje `ItemTemplate` zobrazí subjekt každý návštěv komentář `<h4>` elemen
 Pokud chcete zobrazit stránku prostřednictvím prohlížeče chvíli trvat. Měli byste vidět poznámky, které jste přidali do návštěv v kroku 5, tady zobrazí.
 
 
-[![Guestbook.aspx pak zobrazí návštěv komentáře](storing-additional-user-information-vb/_static/image56.png)](storing-additional-user-information-vb/_static/image55.png)
+[![Guestbook.aspx se teď zobrazují poznámky návštěv](storing-additional-user-information-vb/_static/image56.png)](storing-additional-user-information-vb/_static/image55.png)
 
 **Obrázek 19**: `Guestbook.aspx` Se teď zobrazují poznámky návštěv ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image57.png))
 
@@ -402,7 +402,7 @@ V dalším kroku se načte připojovací řetězec z `Web.config` a `INSERT` zad
 Přejděte `EnhancedCreateUserWizard.aspx` stránce prostřednictvím prohlížeče a vytvořit nový uživatelský účet. Až to uděláte, vraťte se do sady Visual Studio a zkontrolovat obsah `aspnet_Users` a `UserProfiles` tabulky (jak jsme to udělali v obrázek 12). Měli byste vidět nový uživatelský účet v `aspnet_Users` a odpovídající `UserProfiles` řádek (s `NULL` hodnoty `HomeTown`, `HomepageUrl`, a `Signature`).
 
 
-[![Byly přidány nového uživatelského účtu a UserProfiles záznamu](storing-additional-user-information-vb/_static/image59.png)](storing-additional-user-information-vb/_static/image58.png)
+[![A Byly přidány nového uživatelského účtu a záznam UserProfiles](storing-additional-user-information-vb/_static/image59.png)](storing-additional-user-information-vb/_static/image58.png)
 
 **Obrázek 20**: Nový uživatelský účet a `UserProfiles` přidali záznam ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image60.png))
 
@@ -438,7 +438,7 @@ Při přidávání vlastní `WizardStep` do ovládacího prvku CreateUserWizard 
 Obrázek 21 ukazuje pracovní postup při přidaného `WizardStep` předchází `CreateUserWizardStep`. Protože byla shromážděna dalších informací o uživatelích čas `CreatedUser` událost je aktivována, všechny musíme udělat, je aktualizace `CreatedUser` obslužná rutina události načtení tyto vstupy a pro použití `INSERT` hodnoty parametru příkazu (spíše než `DBNull.Value`).
 
 
-[![Pracovní postup CreateUserWizard, když Třída CreateUserWizardStep předchází další prvek WizardStep](storing-additional-user-information-vb/_static/image62.png)](storing-additional-user-information-vb/_static/image61.png)
+[![Tmá pracovní postup CreateUserWizard při další prvek WizardStep předchází třídu CreateUserWizardStep](storing-additional-user-information-vb/_static/image62.png)](storing-additional-user-information-vb/_static/image61.png)
 
 **Obrázek 21**: CreateUserWizard pracovního postupu při další `WizardStep` Precedes `CreateUserWizardStep` ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image63.png))
 
@@ -446,7 +446,7 @@ Obrázek 21 ukazuje pracovní postup při přidaného `WizardStep` předchází 
 Pokud vlastní `WizardStep` nachází *po* `CreateUserWizardStep`, ale proces vytváření účtu uživatele dojde k předtím, než uživatel má využili příležitost dobře se zadejte svůj domácí města, domovská stránka nebo podpis. V takovém případě musí být vložena do databáze po vytvoření uživatelského účtu, jak ukazuje obrázek 22 tyto další informace.
 
 
-[![Při další prvek WizardStep, přichází po třídu CreateUserWizardStep CreateUserWizard pracovního postupu](storing-additional-user-information-vb/_static/image65.png)](storing-additional-user-information-vb/_static/image64.png)
+[![Tmá CreateUserWizard pracovního postupu při další prvek WizardStep dodává po the třídu CreateUserWizardStep](storing-additional-user-information-vb/_static/image65.png)](storing-additional-user-information-vb/_static/image64.png)
 
 **Obrázek 22**: CreateUserWizard pracovního postupu při další `WizardStep` dodává po `CreateUserWizardStep` ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image66.png))
 
@@ -458,7 +458,7 @@ Pro účely tohoto kurzu vytvoříme novou `WizardStep` , která nastane po `Cre
 V prvku CreateUserWizard inteligentní značky, vyberte "Přidat nebo odebrat `WizardStep` s", která se vyvolá `WizardStep` dialogové okno Editor kolekcí. Přidat nový `WizardStep`a nastavte jeho `ID` k `UserSettings`, jeho `Title` na "Nastavení" a jeho `StepType` k `Step`. Umístěte ho tak, že jde o po `CreateUserWizardStep` ("zaregistrujte vašeho nového účtu služby") a před `CompleteWizardStep` ("dokončených"), jak ukazuje obrázek 23.
 
 
-[![Přidejte nový prvek WizardStep ovládacího prvku CreateUserWizard](storing-additional-user-information-vb/_static/image68.png)](storing-additional-user-information-vb/_static/image67.png)
+[![APřidat nový prvek WizardStep do ovládacího prvku CreateUserWizard](storing-additional-user-information-vb/_static/image68.png)](storing-additional-user-information-vb/_static/image67.png)
 
 **Obrázek 23**: Přidat nové `WizardStep` do ovládacího prvku CreateUserWizard ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-vb/_static/image69.png))
 

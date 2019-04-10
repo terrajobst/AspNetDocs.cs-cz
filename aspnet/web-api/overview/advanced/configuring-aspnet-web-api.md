@@ -1,22 +1,23 @@
 ---
 uid: web-api/overview/advanced/configuring-aspnet-web-api
-title: Konfigurace rozhraní ASP.NET Web API 2 | Dokumentace Microsoftu
+title: Konfigurace rozhraní ASP.NET Web API 2 – ASP.NET 4.x
 author: MikeWasson
-description: ''
+description: 'Konfigurace rozhraní ASP.NET Web API 2 technologie ASP.NET 4.x: Konfigurovat nastavení, hostování v technologii ASP.NET 4.x, OWIN samoobslužné hostování globálních služeb a konfigurace před řadiče.'
 ms.author: riande
 ms.date: 03/31/2014
+ms.custom: seoapril2019
 ms.assetid: 9e10a700-8d91-4d2e-a31e-b8b569fe867c
 msc.legacyurl: /web-api/overview/advanced/configuring-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 270268b77f398084169843e20b0a2bf9f1c2a011
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 39629ba404e536b29318db00bce8c4443a782497
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423153"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59411940"
 ---
-<a name="configuring-aspnet-web-api-2"></a>Konfigurace rozhraní ASP.NET Web API 2
-====================
+# <a name="configuring-aspnet-web-api-2"></a>Konfigurace rozhraní ASP.NET Web API 2
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 Toto téma popisuje postup konfigurace webového rozhraní API ASP.NET.
@@ -24,7 +25,7 @@ Toto téma popisuje postup konfigurace webového rozhraní API ASP.NET.
 - [Nastavení konfigurace](#settings)
 - [Konfigurace webového rozhraní API s hostování v technologii ASP.NET](#webhost)
 - [Konfigurace webového rozhraní API s vlastním hostováním OWIN](#selfhost)
-- [Globální webové rozhraní API služby](#services)
+- [Global Web API Services](#services)
 - [Konfigurace na Kontroleru](#percontrollerconfig)
 
 <a id="settings"></a>

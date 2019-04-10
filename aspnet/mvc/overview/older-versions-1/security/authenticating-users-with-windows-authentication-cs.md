@@ -8,15 +8,15 @@ ms.date: 01/27/2009
 ms.assetid: 418bb07e-f369-4119-b4b0-08f890f7abb2
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0f46af21841a60fe4257cb30b78abdfd421c66bd
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 3c12f2a3d253df1ed9d8b25001edf13a04da26f5
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070453"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59394884"
 ---
-<a name="authenticating-users-with-windows-authentication-c"></a>Ověřování uživatelů pomocí ověřování systému Windows (C#)
-====================
+# <a name="authenticating-users-with-windows-authentication-c"></a>Ověřování uživatelů pomocí ověřování systému Windows (C#)
+
 by [Microsoft](https://github.com/microsoft)
 
 > Zjistěte, jak používat ověřování Windows v rámci aplikace MVC. Zjistíte, jak povolit ověřování Windows v rámci souboru konfigurace webové aplikace a postup konfigurace ověřování pomocí služby IIS. Nakonec se dozvíte, jak použít atribut [Authorize] k omezení přístupu na akce kontroleru, zejména Windows uživatelům nebo skupinám.

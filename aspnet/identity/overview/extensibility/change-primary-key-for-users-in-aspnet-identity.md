@@ -1,22 +1,23 @@
 ---
 uid: identity/overview/extensibility/change-primary-key-for-users-in-aspnet-identity
-title: Změna primárního klíče pro uživatele v identitě ASP.NET | Dokumentace Microsoftu
+title: Změna primárního klíče uživatelů v ASP.NET Identity – ASP.NET 4.x
 author: Rick-Anderson
 description: Výchozí webová aplikace v sadě Visual Studio 2013, používá řetězcovou hodnotu pro klíč pro uživatelské účty. ASP.NET Identity umožňuje změnit typ...
 ms.author: riande
 ms.date: 09/30/2014
 ms.assetid: 44925849-5762-4504-a8cd-8f0cd06f6dc3
+ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/extensibility/change-primary-key-for-users-in-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: d2856ce1ca61a29e091bfbd16647b673e6fc659b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 212b07494381d13f6ded96a41b846dcdf7e8ff16
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068761"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59393740"
 ---
-<a name="change-primary-key-for-users-in-aspnet-identity"></a>Změna primárního klíče uživatelů v ASP.NET Identity
-====================
+# <a name="change-primary-key-for-users-in-aspnet-identity"></a>Změna primárního klíče uživatelů v ASP.NET Identity
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > Výchozí webová aplikace v sadě Visual Studio 2013, používá řetězcovou hodnotu pro klíč pro uživatelské účty. ASP.NET Identity umožňuje změnit typ klíče pro splnění požadavků na data. Můžete například změnit typ klíče z řetězce na celé číslo.
@@ -43,7 +44,7 @@ Toto téma obsahuje následující oddíly:
 - [Webové formuláře s aktualizací Update 2 změňte účet stránky předat typ klíče](#webformsupdate2)
 - [Webové formuláře s aktualizací Update 3 změňte účet stránky předat typ klíče](#webformsupdate3)
 - [Spuštění aplikace](#run)
-- [Další prostředky](#other)
+- [Další zdroje](#other)
 
 <a id="userclass"></a>
 ## <a name="change-the-type-of-the-key-in-the-identity-user-class"></a>Změnit typ klíče ve třídě Identity uživatele

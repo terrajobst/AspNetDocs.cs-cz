@@ -8,15 +8,15 @@ ms.date: 06/10/2014
 ms.assetid: 3751f5e7-59db-4be0-a290-50abc24e5c84
 msc.legacyurl: /signalr/overview/performance/signalr-performance
 msc.type: authoredcontent
-ms.openlocfilehash: 3326c2e600854fc7a4435d96c45b04a6188d3937
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b0da3032e22123f415bf9865e264832739c29f61
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072664"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59409015"
 ---
-<a name="signalr-performance"></a>Výkon aplikace SignalR
-====================
+# <a name="signalr-performance"></a>Výkon aplikace SignalR
+
 podle [Patrick Fletcher](https://github.com/pfletcher)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
@@ -50,7 +50,7 @@ Toto téma obsahuje následující oddíly:
 - [Řešení potíží s problémy s výkonem](#troubleshooting)
 - [Použití čítačů výkonu SignalR](#perfcounters)
 - [Použití dalších čítačů výkonu](#othercounters)
-- [Další prostředky](#otherresources)
+- [Další zdroje](#otherresources)
 
 <a id="design"></a>
 
@@ -234,7 +234,7 @@ A **ukládání do vyrovnávací paměti** datový proud je ten, který má zada
 - **Datové proudy dat o škálování, ukládání do vyrovnávací paměti**
 - **Celkový počet chyb škálování aplikace**
 - **Chyby/s horizontálním navýšením kapacity**
-- **Délku fronty odesílání horizontálním navýšením kapacity**
+- **Scaleout Send Queue Length**
 
 Další informace o co tyto čítače jsou měření najdete v tématu [škálování aplikace SignalR službou Azure Service Bus](scaleout-with-windows-azure-service-bus.md).
 
@@ -244,7 +244,7 @@ Další informace o co tyto čítače jsou měření najdete v tématu [škálov
 
 Následující čítače výkonu může být užitečná při monitorování výkonu aplikace.
 
-**Paměť**
+**Memory (Paměť)**
 
 - Paměť .NET CLR\\počet bajtů ve všech haldách (pro w3wp)
 
@@ -254,7 +254,7 @@ Následující čítače výkonu může být užitečná při monitorování vý
 - ASP.NET\Queued
 - ASP.NET\Rejected
 
-**CPU**
+**Procesor**
 
 - Information\Processor času procesoru
 

@@ -8,15 +8,15 @@ ms.date: 02/10/2010
 ms.assetid: d7729af4-1eda-4ff2-8b61-dbbe4fc11d10
 msc.legacyurl: /whitepapers/aspnet4
 msc.type: content
-ms.openlocfilehash: 93ee29ae125e9442ee755998768a8105dfb485c0
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 0991ce5c866aa9e31ef23812e953d9ee10dda3d1
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58424297"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59409717"
 ---
-<a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu
-====================
+# <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu
+
 > Tento dokument poskytuje přehled o řadu nových funkcí pro technologii ASP.NET, které jsou zahrnuty v rozhraní.NET Framework 4 a v sadě Visual Studio 2010.
 > 
 > [Stáhněte si tento dokument White Paper](https://download.microsoft.com/download/7/1/A/71A105A9-89D6-4201-9CC5-AD6A3B7E2F22/ASP_NET_4_and_Visual_Studio_2010_Web_Development_Overview.pdf)
@@ -202,7 +202,7 @@ ASP.NET 4 můžete také nakonfigurovat znaky, které jsou používány znak za�
 
 [!code-xml[Main](overview/samples/sample11.xml)]
 
-Ve výchozím nastavení <em>requestPathInvalidChars</em> atribut definuje osm znaků jako neplatný. (V řetězci, který je přiřazen k <em>requestPathInvalidChars</em> ve výchozím nastavení<em>,</em>menší než (&lt;), je větší než (&gt;) a znak ampersand (&amp;) znaky jsou kódování, protože `Web.config` soubor je soubor XML.) Podle potřeby můžete přizpůsobit sadu neplatné znaky.
+Ve výchozím nastavení *requestPathInvalidChars* atribut definuje osm znaků jako neplatný. (V řetězci, který je přiřazen k *requestPathInvalidChars* ve výchozím nastavení, menší než (&lt;), je větší než (&gt;) a znak ampersand (&amp;) kódování znaků, protože `Web.config` souboru je soubor XML.) Podle potřeby můžete přizpůsobit sadu neplatné znaky.
 
 > [!NOTE]
 > Poznámka: ASP.NET 4 vždy odmítne cestami URL, které obsahují znaky v rozsahu ASCII od 0x00 do 0x1F, protože ty jsou neplatné znaky adresy URL, jak jsou definovány v dokumentu RFC 2396 sdružení IETF ([http://www.ietf.org/rfc/rfc2396.txt](http://www.ietf.org/rfc/rfc2396.txt)). Ve verzích Windows serveru, na kterých běží služby IIS 6 nebo vyšší, ovladač http.sys protokolu zařízení automaticky odmítne adresy URL se tyto znaky.
@@ -411,13 +411,13 @@ Jak je vidět, kód zakazuje stav zobrazení ovládacího prvku PlaceHolder1. Po
 
 Efekt z těchto nastavení je, že při prvním načtení stránky, se zobrazí následující výstup v prohlížeči:
 
-Zakázané `: [DynamicValue]`
+Zakázáno `: [DynamicValue]`
 
 Povoleno:`[DynamicValue]`
 
 Po zpětné volání, ale se zobrazí následující výstup:
 
-Zakázané `: [DeclaredValue]`
+Zakázáno `: [DeclaredValue]`
 
 Povoleno:`[DynamicValue]`
 
@@ -628,7 +628,7 @@ Při spuštění stránky, která obsahuje tento ovládací prvek je hodnota "sc
 
 [!code-aspx[Main](overview/samples/sample46.aspx)]
 
-V takovém případě se hodnota searchterm parametr trasa se použije pro @companyname parametr <em>vyberte</em> příkazu.
+V takovém případě se hodnota searchterm parametr trasa se použije pro @companyname parametr *vyberte* příkazu.
 
 <a id="0.2__Toc224729037"></a><a id="0.2__Toc253429261"></a><a id="0.2__Toc243304635"></a>
 
@@ -982,7 +982,7 @@ Potom můžete definovat třídu CSS, která se vztahuje pouze na *skryté* prvk
 Ve výchozím nastavení jsou následující ovládací prvky serveru v prostředí ASP.NET, které nepodporují šablony automaticky zabaleny ve vnější tabulky, která se používá k aplikování vložené styly:
 
 - *FormView*
-- *Přihlášení*
+- *přihlášení*
 - *PasswordRecovery*
 - *ChangePassword*
 - *Průvodce*

@@ -8,15 +8,15 @@ ms.date: 05/04/2012
 ms.assetid: 07978d9d-341c-4524-bcba-62976f390f77
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file
 msc.type: authoredcontent
-ms.openlocfilehash: 114dd21002ef41627f3a101c0197a85fd5208887
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d774a8e13e108d1be4c39e1e909d3d9683968a0d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074842"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59404920"
 ---
-<a name="understanding-the-project-file"></a>Vysvětlení souboru projektu
-====================
+# <a name="understanding-the-project-file"></a>Vysvětlení souboru projektu
+
 podle [Jason Lee](https://github.com/jrjlee)
 
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
@@ -90,7 +90,7 @@ Soubor projektu je obvykle potřeba poskytují velké množství informací, aby
 [!code-xml[Main](understanding-the-project-file/samples/sample2.xml)]
 
 
-Pokud chcete načíst hodnotu vlastnosti, použijte formát <strong>$(</strong><em>PropertyName</em><strong>)</strong><em>.</em> Například pro načtení hodnoty <strong>ServerName</strong> vlastnost, zadali byste:
+Pokud chcete načíst hodnotu vlastnosti, použijte formát **$(***PropertyName***) ***.* Například pro načtení hodnoty **ServerName** vlastnost, zadali byste:
 
 
 [!code-powershell[Main](understanding-the-project-file/samples/sample3.ps1)]
@@ -192,8 +192,8 @@ Cíle a úlohy může obsahovat **podmínku** atributy. V důsledku toho můžet
 
 Obecně řečeno při vytváření užitečných úlohy a cíle, musíte odkazovat na vlastnosti a položky, které jste definovali jinde v souboru projektu:
 
-- Pokud chcete použít hodnotu vlastnosti, zadejte <strong>$(</strong><em>PropertyName</em><strong>)</strong>, kde <em>PropertyName</em> je název <strong>vlastnost</strong> element nebo název parametru.
-- Chcete-li použít položku, zadejte <strong>@(</strong><em>ItemName</em><strong>)</strong>, kde <em>ItemName</em> je název <strong>položky</strong> elementu.
+- Pokud chcete použít hodnotu vlastnosti, zadejte **$(***PropertyName***)**, kde *PropertyName* je název **vlastnost** element nebo název parametr.
+- Chcete-li použít položku, zadejte **@(***ItemName***)**, kde *ItemName* je název **položky** elementu.
 
 > [!NOTE]
 > Mějte na paměti, že pokud vytvoříte více položek se stejným názvem, které sestavujete seznamu. Naopak pokud vytvoříte více vlastností se stejným názvem, poslední hodnota vlastnosti je poskytnout přepíše jakékoli předchozí vlastnosti se stejným názvem&#x2014;vlastnost může obsahovat pouze jednu hodnotu.

@@ -8,15 +8,15 @@ ms.date: 10/17/2013
 ms.assetid: 08815768-2702-42ae-ae85-0a59934a11d1
 msc.legacyurl: /visual-studio/overview/2013/release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: cd6197a9cbed822ba874a19823521a3711be9201
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 8234bd1b7eb74d9b03e507f00d9ad937314288be
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58422711"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59411277"
 ---
-<a name="aspnet-and-web-tools-for-visual-studio-2013-release-notes"></a>ASP.NET a webové nástroje pro Visual Studio 2013 – poznámky k verzi
-====================
+# <a name="aspnet-and-web-tools-for-visual-studio-2013-release-notes"></a>ASP.NET a webové nástroje pro Visual Studio 2013 – poznámky k verzi
+
 by [Microsoft](https://github.com/microsoft)
 
 > Tento dokument popisuje verzi technologie ASP.NET and Web Tools pro Visual Studio 2013.
@@ -38,14 +38,14 @@ by [Microsoft](https://github.com/microsoft)
 - [Podpora aplikací webové služby Azure App Service v sadě Visual Studio](#waws)
 - [Vylepšení publikování webu](#publish)
 - [NuGet 2.7](#nuget)
-- [Webové formuláře ASP.NET](#TOC9)
+- [ASP.NET – webové formuláře](#TOC9)
 - [ASP.NET MVC 5](#TOC10)
-- [Rozhraní ASP.NET Web API 2](#TOC11)
-- [Funkce SignalR technologie ASP.NET](#TOC13)
+- [Rozhraní API pro ASP.NET Web 2](#TOC11)
+- [ASP.NET SignalR](#TOC13)
 - [ASP.NET Identity](#TOC8)
 - [Komponenty Microsoft OWIN](#TOC7)
 - [Entity Framework 6](#ef6)
-- [ASP.NET Razor 3](#TOC14)
+- [Syntaxe Razor rozhraní ASP.NET 3](#TOC14)
 - [Pozastavení aplikace technologie ASP.NET](#TOC15)
 - [Známé problémy a změny způsobující chyby](#knownissues)
 

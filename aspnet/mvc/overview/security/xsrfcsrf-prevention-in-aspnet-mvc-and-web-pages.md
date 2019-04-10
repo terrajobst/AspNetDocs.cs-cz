@@ -8,15 +8,15 @@ ms.date: 03/14/2013
 ms.assetid: aadc5fa4-8215-4fc7-afd5-bcd2ef879728
 msc.legacyurl: /mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 5db661cccc58d1101f95091b069ab5cbfe78a378
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: de0e9cc168b9f18fd2bd83329106df45d7551b1a
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077845"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59386552"
 ---
-<a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>Prevence XSRF/CSRF v ASP.NET MVC a na webových stránkách
-====================
+# <a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>Prevence XSRF/CSRF v ASP.NET MVC a na webových stránkách
+
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Padělání (označované také jako XSRF nebo CSRF) je útok na hostované webové aplikace, které škodlivý web mohou mít vliv na interakci mezi prohlížeče klienta a webový server důvěřuje prohlížeče podvržení žádosti. Tyto útoky jsou možné, protože webových prohlížečů pošle ověřovacích tokenů automaticky při každé žádosti na webovou stránku. Canonical příkladu je soubor cookie ověřování, jako je například ASP. Lístek ověřování pomocí formulářů pro síť. Webové servery, které používají každý použitý mechanizmus trvalé ověřování (jako je například ověřování Windows, Basic a tak dále) ale mohou být cíleny těmto útokům.

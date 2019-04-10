@@ -8,15 +8,15 @@ ms.date: 04/03/2015
 ms.assetid: 81ee500f-fc37-40d6-8722-f1b64720fbb6
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: 132560c0280a2e4096ea4e9a715c32bc880a8b82
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: f78100178d5cdc25a10603907e77fe81386877a6
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58421424"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59386460"
 ---
-<a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Vytvoření aplikace ASP.NET MVC 5 s přihlášením přes Facebook, Twitter, LinkedIn a Google OAuth2 (C#)
-====================
+# <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Vytvoření aplikace ASP.NET MVC 5 s přihlášením přes Facebook, Twitter, LinkedIn a Google OAuth2 (C#)
+
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 5, která umožňuje uživatelům přihlášení pomocí [OAuth 2.0](http://oauth.net/2/) s přihlašovacími údaji z externí zprostředkovatel ověřování, jako je Facebook, Twitter, LinkedIn, Microsoft nebo Google. Pro zjednodušení tento kurz se zaměřuje na práci s přihlašovacích údajů z Facebooku nebo Googlu.

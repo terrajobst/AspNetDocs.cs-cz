@@ -1,27 +1,28 @@
 ---
 uid: web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
-title: Povolení operací CRUD v ASP.NET Web API 1 | Dokumentace Microsoftu
+title: Povolení operací CRUD v ASP.NET Web API 1 – ASP.NET 4.x
 author: MikeWasson
-description: Tento kurz ukazuje, jak podporovat operace CRUD v rámci protokolu HTTP služby pomocí rozhraní ASP.NET Web API. Verze softwaru používaných kurz Visual Studio 2012 Web přístupový bod...
+description: Kurz ukazuje, jak podporovat operace CRUD v rámci protokolu HTTP služby pomocí rozhraní ASP.NET Web API pro ASP.NET 4.x.
 ms.author: riande
 ms.date: 01/28/2012
+ms.custom: seoapril2019
 ms.assetid: c125ca47-606a-4d6f-a1fc-1fc62928af93
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
-ms.openlocfilehash: f3cb0004075ef7687ca1096bd407c342b4d0b7be
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 855c3fa35d82173c87d13adb51e10fd13698ade5
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423742"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59381351"
 ---
-<a name="enabling-crud-operations-in-aspnet-web-api-1"></a>Povolení operací CRUD v ASP.NET Web API 1
-====================
+# <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>Povolení operací CRUD v ASP.NET Web API 1
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 [Stáhnout dokončený projekt](http://code.msdn.microsoft.com/ASP-NET-Web-API-Tutorial-c4761894)
 
-> Tento kurz ukazuje, jak podporovat operace CRUD v rámci protokolu HTTP služby pomocí rozhraní ASP.NET Web API.
+> Tento kurz ukazuje, jak podporovat operace CRUD v rámci protokolu HTTP služby pomocí rozhraní ASP.NET Web API pro ASP.NET 4.x.
 > 
 > ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
 > 
@@ -85,7 +86,7 @@ A *modelu* je objekt, který představuje data ve vaší aplikaci. V rozhraní A
 
 Pro rozhraní API ProductStore naše data se skládá z produktů, takže vytvoříme novou třídu s názvem `Product`.
 
-Pokud již není Průzkumník řešení viditelný, klikněte na tlačítko **zobrazení** nabídky a vybereme **Průzkumníka řešení**. V Průzkumníku řešení klikněte pravým tlačítkem myši **modely** složky. V kontextu měny, vyberte **přidat**a pak vyberte **třídy**. Název třídy &quot;produktu&quot;.
+Pokud již není Průzkumník řešení viditelný, klikněte na tlačítko **zobrazení** nabídky a vybereme **Průzkumníka řešení**. V Průzkumníku řešení klikněte pravým tlačítkem myši **modely** složky. V místní nabídce vyberte **přidat**a pak vyberte **třídy**. Název třídy &quot;produktu&quot;.
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image3.png)
 

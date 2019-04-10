@@ -8,15 +8,15 @@ ms.date: 03/13/2008
 ms.assetid: d19152e7-ba19-4729-9e30-d311630aaf95
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-user-selectable-themes-for-a-web-site
 msc.type: video
-ms.openlocfilehash: 2685d27fda5f49e3038d6f6f42da7b77f6a7daa7
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c9c97bb2627054380d92eee5468ca03a81d2f61e
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072538"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59413357"
 ---
-<a name="how-do-i-create-user-selectable-themes-for-a-web-site"></a>[Postup:] Vytvoření uživatelsky volitelných motivů webu
-====================
+# <a name="how-do-i-create-user-selectable-themes-for-a-web-site"></a>[Postup:] Vytvoření uživatelsky volitelných motivů webu
+
 podle [Chris pixelů na](https://twitter.com/chrispels)
 
 V tomto videu se zobrazí Chris pixelů na tom, jak vytvořit víc motivů pro webový server a pak umožnit uživateli vybrat, který motiv se použije k webu. Zjistit, jak vytvořit jednoduché uživatelské rozhraní, který umožňuje uživateli vybrat všechny motivy s uživatelského ovládacího prvku. Kromě toho zjistěte, jak nastavit motiv pro stránku obsahu z uživatelského ovládacího prvku na hlavní stránce.

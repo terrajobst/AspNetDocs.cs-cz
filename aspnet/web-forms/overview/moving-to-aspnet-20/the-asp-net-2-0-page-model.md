@@ -8,15 +8,15 @@ ms.date: 02/20/2005
 ms.assetid: af4575a3-0ae3-4638-ba4d-218fad7a1642
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/the-asp-net-2-0-page-model
 msc.type: authoredcontent
-ms.openlocfilehash: 4452169a01276cbc60f2a2057e6b560022ccd7c0
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 09f8389a04c5600ca9ee8365a9dc5a0d607c0a4d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075838"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59403919"
 ---
-<a name="the-aspnet-20-page-model"></a>Model 2.0 stránky ASP.NET
-====================
+# <a name="the-aspnet-20-page-model"></a>Model 2.0 stránky ASP.NET
+
 by [Microsoft](https://github.com/microsoft)
 
 > V technologii ASP.NET 1.x, vývojáři měli možnost volby mezi model pomocí vloženého kódu a model kódu použití modelu code-behind. Použití modelu Code-behind může být implementovaná pomocí atributu Src nebo atribut CodeBehind @Page směrnice. V technologii ASP.NET 2.0 vývojáři stále mít možnost volby mezi vloženého kódu a použití modelu code-behind, ale došlo k použití modelu code-behind modelu významná vylepšení.
@@ -34,7 +34,7 @@ V technologii ASP.NET 1.x, model použití modelu code-behind se skládal z soub
 
 ## <a name="the-code-behind-model-in-aspnet-20"></a>Model použití modelu Code-Behind v technologii ASP.NET 2.0
 
-ASP.NET 2.0 výrazně vylepšuje tento model. V technologii ASP.NET 2.0, je implementováno pomocí nového modelu code-behind *částečné třídy* v technologii ASP.NET 2.0 k dispozici. Použití modelu code-behind třída v technologii ASP.NET 2.0 je definován jako částečné třídy, což znamená, že obsahuje pouze část definice třídy. Zbývající část definice třídy generuje dynamicky pomocí technologie ASP.NET 2.0 pomocí stránky ASPX za běhu nebo na webu je předkompilována. Propojení mezi souborem kódu na pozadí a stránku ASPX stále se naváže s využitím – Direktiva @ Page. Místo atribut CodeBehind nebo Src, je však ASP.NET 2.0 nyní používá atribut CodeFile. Atribut Inherits je také použít k určení názvu třídy stránky.
+ASP.NET 2.0 výrazně vylepšuje tento model. V technologii ASP.NET 2.0, je implementováno pomocí nového modelu code-behind *částečné třídy* v technologii ASP.NET 2.0 k dispozici. Použití modelu code-behind třída v technologii ASP.NET 2.0 je definována jako částečné třídy, což znamená, že obsahuje pouze část definice třídy. Zbývající část definice třídy generuje dynamicky pomocí technologie ASP.NET 2.0 pomocí stránky ASPX za běhu nebo na webu je předkompilována. Propojení mezi souborem kódu na pozadí a stránku ASPX stále se naváže s využitím – Direktiva @ Page. Místo atribut CodeBehind nebo Src, je však ASP.NET 2.0 nyní používá atribut CodeFile. Atribut Inherits je také použít k určení názvu třídy stránky.
 
 Typické – Direktiva @ Page může vypadat takto:
 
@@ -265,7 +265,7 @@ Tato vlastnost vrátí objekt PageStatePersister stránky. Tato vlastnost se pou
 
 ## <a name="uniquefilepathsuffix"></a>UniqueFilePathSuffix
 
-Tato vlastnost vrátí jedinečný suffic, která se připojuje k souboru na cestě pro ukládání do mezipaměti prohlížeče. Výchozí hodnota je \_ \_ufps = a 6 číslic.
+Tato vlastnost vrátí jedinečnou příponu, která se připojuje k souboru na cestě pro ukládání do mezipaměti prohlížeče. Výchozí hodnota je \_ \_ufps = a 6 číslic.
 
 ## <a name="new-public-methods-for-the-page-class"></a>Nové veřejné metody pro třídu stránky
 
@@ -508,7 +508,7 @@ Vzpomeňte si, že *cbRef* je návratová hodnota z volání GetCallbackEventRef
 
 ## <a name="step-4--register-the-client-side-script"></a>Krok 4: Registrace skriptu na straně klienta
 
-Vzpomínáte, který volání GetCallbackEventReference zadán, skript na straně klienta volána **ShowCompanyName** by byl proveden po úspěšném zpětného volání na straně serveru. Tento skript je potřeba přidat na stránku pro použití ClientScriptManager instance. (Třída ClientScriptManager bude dicussed později v tomto modulu.) To provedete jako v tomto:
+Vzpomínáte, který volání GetCallbackEventReference zadán, skript na straně klienta volána **ShowCompanyName** by byl proveden po úspěšném zpětného volání na straně serveru. Tento skript je potřeba přidat na stránku pro použití ClientScriptManager instance. (Třída ClientScriptManager probereme později v tomto modulu.) To provedete jako v tomto:
 
 [!code-javascript[Main](the-asp-net-2-0-page-model/samples/sample16.js)]
 

@@ -8,15 +8,15 @@ ms.date: 06/02/2008
 ms.assetid: f70ac2b3-900f-40fa-858f-ab057904506b
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-a-modalpopup-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3f81a2bf1866d026046fdba815fdbae1b162c1dd
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: add305855d876b5033bbd7921ad24b5e840b9acc
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072760"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59386395"
 ---
-<a name="handling-postbacks-from-a-modalpopup-vb"></a>Zpracování postbacků z ovládacího prvku ModalPopup (VB)
-====================
+# <a name="handling-postbacks-from-a-modalpopup-vb"></a>Zpracování postbacků z ovládacího prvku ModalPopup (VB)
+
 by [Christian Wenz](https://github.com/wenz)
 
 [Stáhněte si kód](http://download.microsoft.com/download/2/4/0/24052038-f942-4336-905b-b60ae56f0dd5/ModalPopup3.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/modalpopup3VB.pdf)
@@ -55,7 +55,7 @@ TextBox – ovládací prvky v rámci Modální místní nabídky by měl být t
 [!code-vb[Main](handling-postbacks-from-a-modalpopup-vb/samples/sample6.vb)]
 
 
-[![Vyvolá Modální místní nabídky zpětné volání](handling-postbacks-from-a-modalpopup-vb/_static/image2.png)](handling-postbacks-from-a-modalpopup-vb/_static/image1.png)
+[![TModální místní nabídky he vyvolá zpětné volání](handling-postbacks-from-a-modalpopup-vb/_static/image2.png)](handling-postbacks-from-a-modalpopup-vb/_static/image1.png)
 
 Vyvolá Modální místní nabídky zpětné volání ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-postbacks-from-a-modalpopup-vb/_static/image3.png))
 

@@ -8,15 +8,15 @@ ms.date: 07/28/2008
 ms.assetid: 32b7fb6e-d74b-4048-91f8-70631b2523ee
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1b60b0b7ce4be66bc24ccbc1d25ce4dc56766815
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c25945fab554114478c6b2e080335a664251639b
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069484"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59405349"
 ---
-<a name="nested-master-pages-c"></a>Vložené hlavní stránky (C#)
-====================
+# <a name="nested-master-pages-c"></a>Vložené hlavní stránky (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/d/6/6/d66ad554-afdd-409e-a5c3-201b774fbb31/ASPNET_MasterPages_Tutorial_10_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/d/6/6/d66ad554-afdd-409e-a5c3-201b774fbb31/ASPNET_MasterPages_Tutorial_10_CS.pdf)
@@ -84,7 +84,7 @@ V dalším kroku přidejte následující kód v rámci webového formuláře z 
 Tento kód zobrazí odkaz s názvem "Vnořené hlavní stránky (jednoduchý)" v horní části stránky velkými písmeny bílé na navy na pozadí. Pod, který je `MainContent` ContentPlaceHolder. Obrázek 1 ukazuje `Simple.master` stránky předlohy, když se načte v návrháři Visual Studio.
 
 
-[![Vnořená hlavní stránka definuje konkrétní obsahu do stránky v části Správa](nested-master-pages-cs/_static/image2.png)](nested-master-pages-cs/_static/image1.png)
+[![Tmá vnořené hlavní stránky definuje obsahu konkrétní stránky v části Správa](nested-master-pages-cs/_static/image2.png)](nested-master-pages-cs/_static/image1.png)
 
 **Obrázek 01**: Vnořená hlavní stránka definuje obsahu specifické pro stránky v části Administration ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image3.png))
 
@@ -101,12 +101,12 @@ Potom klikněte na tlačítko Přidat. Zobrazí se stejné vyberte stránku pře
 > Pokud jste vytvořili pomocí modelu projektu webové aplikace namísto modelu projektu webové stránky webu ASP.NET neuvidíte zaškrtávací políčko "Vybrat hlavní stránku" v dialogovém okně Přidat novou položku je znázorněno na obrázku 2. Vytvoření vnořené stránce předlohy při použití modelu projektu webové aplikace musíte zvolit šablonu vnořená hlavní stránka (a nikoli hlavní stránku šablony projektu). Po výběrem vnořenou hlavní stránku šablony a kliknutím na Přidat, vyberte stejný hlavní stránky se zobrazí dialogové okno je znázorněno na obrázku 3.
 
 
-[![Zkontrolujte, &quot;vybrat hlavní stránku&quot; zaškrtávací políčko a přidáním vnořenou hlavní stránku](nested-master-pages-cs/_static/image5.png)](nested-master-pages-cs/_static/image4.png)
+[![Cpoložky &quot;vybrat hlavní stránku&quot; zaškrtávací políčko a přidáním vnořenou hlavní stránku](nested-master-pages-cs/_static/image5.png)](nested-master-pages-cs/_static/image4.png)
 
 **Obrázek 02**: Zaškrtnutím políčka "Vybrat hlavní stránku" přidat vnořenou hlavní stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image6.png))
 
 
-[![Vnořená hlavní stránka svázat Simple.master hlavní stránky](nested-master-pages-cs/_static/image8.png)](nested-master-pages-cs/_static/image7.png)
+[![BVnořená hlavní stránka na stránku předlohy Simple.master ajít](nested-master-pages-cs/_static/image8.png)](nested-master-pages-cs/_static/image7.png)
 
 **Obrázek 03**: Vnořenou hlavní stránku k vytvoření vazby `Simple.master` stránky předlohy ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image9.png))
 
@@ -126,7 +126,7 @@ Aktualizace této vnořené hlavní stránky tak, aby zobrazil text "Hello, z Si
 Po provedení tohoto sčítání, uložení vnořené hlavní stránky a pak přidejte novou stránku obsahu, aby `NestedMasterPages` složku s názvem `Default.aspx`a vytvořte mu vazbu k `SimpleNested.master` stránky předlohy. Při přidání tuto stránku budete překvapení, pokud chcete zobrazit, že neobsahuje žádné ovládací prvky obsahu, (viz obrázek 4)! Stránka obsahu přístup jenom k jeho *nadřazené* prvků ContentPlaceHolder na stránce předlohy. `SimpleNested.master` neobsahuje žádné ovládací prvky ContentPlaceHolder; stránka obsahu vázán na tuto stránku předlohy proto nemůže obsahovat žádné ovládací prvky obsahu.
 
 
-[![Nová stránka obsahu neobsahuje žádné ovládací prvky obsahu](nested-master-pages-cs/_static/image11.png)](nested-master-pages-cs/_static/image10.png)
+[![Tmá nová stránka obsahuje bez obsahu ovládacích prvků obsahu](nested-master-pages-cs/_static/image11.png)](nested-master-pages-cs/_static/image10.png)
 
 **Obrázek 04**: Nová stránka obsahuje bez obsahu ovládací prvky obsahu ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image12.png))
 
@@ -149,7 +149,7 @@ Odstranit `Default.aspx` obsahu stránky, které jsme právě vytvořili a pak j
 Obrázek 5 ukazuje tři entity podílejí zde - `Simple.master`, `SimpleNested.master`, a `Default.aspx` – a jejich vzájemných vztazích. Protože diagram znázorňuje, vnořená hlavní stránka implementuje ovládacích prvků obsahu pro ContentPlaceHolder jeho nadřazeného objektu. Pokud tyto oblasti musí být přístupné na stránku obsahu, musí vnořené stránce předlohy přidejte vlastní prvků ContentPlaceHolder na ovládací prvky obsahu.
 
 
-[![Na stránkách nejvyšší úrovně a vnořené hlavní diktování rozložení obsahu stránky](nested-master-pages-cs/_static/image14.png)](nested-master-pages-cs/_static/image13.png)
+[![Tmá nejvyšší úrovně a vnořené hlavní stránky diktování rozložení obsahu stránky](nested-master-pages-cs/_static/image14.png)](nested-master-pages-cs/_static/image13.png)
 
 **Obrázek 05**: Diktování rozložení obsahu stránky nejvyšší úrovně a vnořené hlavní stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image15.png))
 
@@ -157,7 +157,7 @@ Obrázek 5 ukazuje tři entity podílejí zde - `Simple.master`, `SimpleNested.m
 Toto chování ukazuje, jak stránky předlohy a stránky obsahu se pouze cognizant z nadřazené stránky předlohy. Toto chování je také označena Návrhář Visual Studio. Návrhář pro znázorňuje obrázek 6 `Default.aspx`. Zatímco návrháře jasně ukazuje, jaké oblasti se upravovat ze stránky obsahu a co není částí, není to rozlišení jako neupravovatelné oblastech jsou z vnořené hlavní stránky a oblastí se z nejvyšší úrovně stránky předlohy.
 
 
-[![Obsah stránky teď obsahuje ovládací prvky obsahu pro prvků ContentPlaceHolder vnořená hlavní stránka](nested-master-pages-cs/_static/image17.png)](nested-master-pages-cs/_static/image16.png)
+[![Tmá obsahu stránky teď obsahuje ovládací prvky obsahu pro prvků ContentPlaceHolder vnořené hlavní stránky](nested-master-pages-cs/_static/image17.png)](nested-master-pages-cs/_static/image16.png)
 
 **Obrázek 06**: Obsah stránky teď obsahuje ovládací prvky obsahu pro prvků ContentPlaceHolder vnořené hlavní stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image18.png))
 
@@ -189,7 +189,7 @@ Abychom si předvedli snadné, pomocí kterého můžete změnit zastřešujíc�
 Tento postup přidá dva odkazy do horní části každé stránky, která vytvoří vazbu na `Simple.master`, `SimpleNested.master`, nebo `SimpleNestedAlternate.master`; tyto změny se aplikují na všechny vnořené hlavní stránky a jejich obsahu stránky okamžitě. Obrázek 8 ukazuje `Alternate.aspx` při prohlížení prostřednictvím prohlížeče. Poznámka: přidávání odkazů v horní části stránky (ve srovnání se obrázek 7).
 
 
-[![Změnit na stránce předlohy nejvyšší úrovně se okamžitě projeví v jeho vnořené hlavní stránky a jejich obsahu stránky](nested-master-pages-cs/_static/image23.png)](nested-master-pages-cs/_static/image22.png)
+[![Changed na hlavní stránku nejvyšší úrovně se okamžitě projeví v jeho vnořené hlavní stránky a jejich obsahu stránky](nested-master-pages-cs/_static/image23.png)](nested-master-pages-cs/_static/image22.png)
 
 **Obrázek 08**: Změnit na stránce předlohy nejvyšší úrovně se okamžitě projeví v jeho vnořené hlavní stránky a jejich obsahu stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image24.png))
 
@@ -219,7 +219,7 @@ Jak jsme nakonfigurovat naše vnořené stránce předlohy tak, aby používal o
 Můžeme použít druhou možnost. Vytvoření jednoho vnořené hlavní stránky souboru v `~/Admin` složku s názvem `AdminNested.master`. Protože obě `Site.master` a `Alternate.master` mají stejnou sadu ovládacích prvků ContentPlaceHolder, nebude vadit, jaké stránky předlohy, můžete svázat, i když neváhejte se vytvořte mu vazbu k `Site.master` pro saké společnosti konzistence.
 
 
-[![Vnořená hlavní stránka přidáte do složky ~/Admin.](nested-master-pages-cs/_static/image26.png)](nested-master-pages-cs/_static/image25.png)
+[![APřidat a vnořenou hlavní stránku ~/Admin složky.](nested-master-pages-cs/_static/image26.png)](nested-master-pages-cs/_static/image25.png)
 
 **Obrázek 09**: Vnořená hlavní stránka pro přidání `~/Admin` složky. ([Kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image27.png))
 
@@ -246,7 +246,7 @@ Všimněte si, že každý ovládací prvek má ovládací prvek ContentPlaceHol
 Obrázek 10 ukazuje `AdminNested.master` vnořené stránce předlohy při prohlížení prostřednictvím návrháře aplikace Visual Studio. Zobrazí se pokyny žlutá pole v horní části `MainContent` ovládacího prvku obsahu.
 
 
-[![Vnořená hlavní stránka rozšiřuje nejvyšší úrovně stránky předlohy, aby zahrnovala pokyny pro správce.](nested-master-pages-cs/_static/image29.png)](nested-master-pages-cs/_static/image28.png)
+[![Tmá vnořenou hlavní stránku rozšiřuje stránky předlohy se stránkou nejvyšší úrovně na obsahovat pokyny pro správce.](nested-master-pages-cs/_static/image29.png)](nested-master-pages-cs/_static/image28.png)
 
 **Obrázek 10**: Vnořená hlavní stránka rozšiřuje nejvyšší úrovně stránky předlohy, aby zahrnovala pokyny pro správce. ([Kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image30.png))
 
@@ -275,7 +275,7 @@ Do:
 Znázorňuje obrázek 11 jak nejvyšší úrovně stránky předlohy (`Site.master` nebo `Alternate.master`), vnořené stránce předlohy (`AdminNested.master`), a na stránkách obsahu bodu správy k sobě vztahují.
 
 
-[![Vnořená hlavní stránka definuje konkrétní obsahu do stránky v části Správa](nested-master-pages-cs/_static/image32.png)](nested-master-pages-cs/_static/image31.png)
+[![Tmá vnořené hlavní stránky definuje obsahu konkrétní stránky v části Správa](nested-master-pages-cs/_static/image32.png)](nested-master-pages-cs/_static/image31.png)
 
 **Obrázek 11**: Vnořená hlavní stránka definuje obsahu specifické pro stránky v části Administration ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image33.png))
 
@@ -313,7 +313,7 @@ Vzpomeňte si, že `@MasterType` směrnice přidá k použití modelu code-behin
 S tímto kódem na místě byste měli navštívit a použít na stránkách obsahu v části Správa. Obrázek 12 se zobrazí `~/Admin/Products.aspx` stránce při prohlížení prostřednictvím prohlížeče. Jak je vidět, stránka obsahuje pole pokyny správy, který je definován v vnořené stránce předlohy.
 
 
-[![Obsah stránky v části Správa obsahují pokyny v horní části každé stránky](nested-master-pages-cs/_static/image35.png)](nested-master-pages-cs/_static/image34.png)
+[![Tmá obsah stránky v pokyny zahrnují správu části v horní části každé stránky](nested-master-pages-cs/_static/image35.png)](nested-master-pages-cs/_static/image34.png)
 
 **Obrázek 12**: Stránky obsahu pokyny zahrnují správu části v horní části každé stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image36.png))
 
@@ -334,7 +334,7 @@ Proto musíme nastavit vnořené stránce předlohy `MasterPageFile` vlastnost z
 Díky této změně na místě hlavní stránky výběru uživatele se přenesou do části Správa. Obrázek 13 zobrazuje stejné stránce jako obrázek 12, ale po výběru stránky předlohy k uživateli `Alternate.master`.
 
 
-[![Stránka vnořené správy používá nejvyšší úrovně stránky předlohy se stránkou vybraných uživatelem.](nested-master-pages-cs/_static/image38.png)](nested-master-pages-cs/_static/image37.png)
+[![TVnořené stránce pro správu používá nejvyšší úrovně hlavní stránky vybraných uživatelem.](nested-master-pages-cs/_static/image38.png)](nested-master-pages-cs/_static/image37.png)
 
 **Obrázek 13**: Používá vnořené stránce pro správu nejvyšší úrovně hlavní stránky vybraných uživatelem ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-master-pages-cs/_static/image39.png))
 

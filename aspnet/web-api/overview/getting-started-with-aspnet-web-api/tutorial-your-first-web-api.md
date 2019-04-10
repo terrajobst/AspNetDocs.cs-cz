@@ -1,28 +1,31 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
-title: Začínáme s rozhraním ASP.NET Web API 2 (C#)
+title: Začínáme s rozhraním ASP.NET Web API 2 (C#) – ASP.NET 4.x
 author: MikeWasson
-description: Protokol HTTP není jen pro poskytovat webové stránky. Je také výkonnou platformu pro vytváření rozhraní API, která zpřístupňují služby a data. HTTP je jednoduchý, flexibilní a ubiq...
+description: Kurz s kódem. Vytvoření webového rozhraní API, které vrátí seznam produktů pomocí rozhraní ASP.NET Web API.
 ms.author: riande
 ms.date: 11/28/2017
+ms.custom: seoapril2019
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 7bec95af4532535f0d620bfe6862958907466874
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5e3c049ba4349301c3c2d173d4311b3d0883bf68
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076717"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59401742"
 ---
-<a name="get-started-with-aspnet-web-api-2-c"></a>Začínáme s rozhraním ASP.NET Web API 2 (C#)
-====================
+# <a name="get-started-with-aspnet-web-api-2-c"></a>Začínáme s rozhraním ASP.NET Web API 2 (C#)
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 [Stáhnout dokončený projekt](https://code.msdn.microsoft.com/Sample-code-of-Getting-c56ccb28)
 
+V tomto kurzu použijete rozhraní ASP.NET Web API k vytvoření webového rozhraní API, který vrátí seznam produktů.
+
 Protokol HTTP není jen pro poskytovat webové stránky. HTTP je také výkonnou platformu pro vytváření rozhraní API, která zpřístupňují služby a data. HTTP je snadné, flexibilní a všudypřítomná. Téměř jakoukoli platformu, která si můžete představit obsahuje knihovny HTTP, takže služeb HTTP můžete oslovit širokou škálu klientů, včetně prohlížečů, mobilní zařízení a tradičních desktopových aplikací.
 
-Rozhraní ASP.NET Web API je architektura určená k vytváření webových rozhraní API jako nadstavby rozhraní .NET Framework. V tomto kurzu použijete rozhraní ASP.NET Web API k vytvoření webového rozhraní API, který vrátí seznam produktů.
+Rozhraní ASP.NET Web API je architektura určená k vytváření webových rozhraní API jako nadstavby rozhraní .NET Framework. 
 
 ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
 

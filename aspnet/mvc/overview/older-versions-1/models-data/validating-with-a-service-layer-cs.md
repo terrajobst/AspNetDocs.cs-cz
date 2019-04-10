@@ -8,15 +8,15 @@ ms.date: 03/02/2009
 ms.assetid: 4eabc535-b8a1-43f5-bb99-cfeb86db0fca
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 69ff78949589017d12a791231e38b400b49f2917
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 9b2a7e00b3c50a946ad0f2518880892f103a5c1b
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074200"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59387110"
 ---
-<a name="validating-with-a-service-layer-c"></a>Ověřování vrstvou služby (C#)
-====================
+# <a name="validating-with-a-service-layer-c"></a>Ověřování vrstvou služby (C#)
+
 podle [Stephen Walther](https://github.com/StephenWalther)
 
 > Další informace o přesunutí logiky ověřování mimo vaše akce kontroleru a do samostatné služby vrstvy. V tomto kurzu Stephen Walther vysvětluje, jak díky čemuž můžete udržovat sharp oddělené oblasti zájmu izolováním vrstvě služby mezi kontroleru.
@@ -54,7 +54,7 @@ Například vrstva služby produkt ve verzi 3 výpis obsahuje metodu CreateProdu
 
 Kontroler produktu se aktualizoval v informacích 4 nahrazujícím vrstvu služby vrstvě úložiště. Vrstva kontroleru hovoří se vrstva služby. Přednášky vrstvu služby vrstvě úložiště. Každá vrstva má samostatné odpovědnost.
 
-**Část 4 – Controllers\ProductController.cs**
+**Listing 4 - Controllers\ProductController.cs**
 
 [!code-csharp[Main](validating-with-a-service-layer-cs/samples/sample4.cs)]
 
@@ -80,7 +80,7 @@ IValidationDictionary rozhraní je definováno v informacích 6. Toto jednoduch�
 
 Výpis 7, s názvem třídy ModelStateWrapper implementuje rozhraní IValidationDictionary. Můžete vytvořit instanci třídy ModelStateWrapper předáním slovníku stavů modelu do konstruktoru.
 
-**Výpis 7 - Models\ModelStateWrapper.cs**
+**Listing 7 - Models\ModelStateWrapper.cs**
 
 [!code-csharp[Main](validating-with-a-service-layer-cs/samples/sample7.cs)]
 

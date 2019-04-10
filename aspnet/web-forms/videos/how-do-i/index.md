@@ -8,15 +8,15 @@ ms.date: 10/05/2011
 ms.assetid: 27591afa-3c14-47e6-8323-573f8f7aa862
 msc.legacyurl: /web-forms/videos/how-do-i
 msc.type: chapter
-ms.openlocfilehash: d53304d60888de55ad474f5be8c0cfe6f8b122bb
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7d300a1f29c7712408d17c6629da6cefb67b3cdb
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57795954"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59410315"
 ---
-<a name="how-do-i"></a>Jak na to?
-====================
+# <a name="how-do-i"></a>Jak na to?
+
 > Jak provádět řadu běžných úloh.
 
 
@@ -70,7 +70,7 @@ ms.locfileid: "57795954"
 - [Použití možnosti vytvářet skupiny ovládacím prvkem ListView pro různá data](how-do-i-use-the-ability-to-create-groups-with-the-listview-control-for-different-data.md)
 - [Zpřístupnění elementů HTML kódu na straně serveru](how-do-i-make-html-elements-accessible-from-server-side-code.md)
 - [Použití rolí k segmentaci funkcí na webu ASP.NET](how-do-i-use-roles-to-segment-functionality-in-an-aspnet-web-site.md)
-- [Práce s vnořenými stránkami předlohy při vytvoření standardního rozložení obsahu](how-do-i-work-with-nested-master-pages-to-create-standard-content-layouts.md)
+- [Práce s vnořenými stránkami předlohy při vytváření standardního rozložení obsahu](how-do-i-work-with-nested-master-pages-to-create-standard-content-layouts.md)
 - [Zjištění možností prohlížeče webovými stránkami ASP.NET](how-do-i-detect-browser-capabilities-in-aspnet-web-pages.md)
 - [Mapování serverového ovládacího prvku ASP.NET na adaptér použitý k jeho vykreslení](how-do-i-map-an-aspnet-server-control-to-the-adaptor-used-to-render-it.md)
 - [Předání informací z jedné stránky na jinou pomocí řetězce dotazu](how-do-i-pass-information-from-one-page-to-another-using-a-query-string.md)

@@ -8,15 +8,15 @@ ms.date: 06/21/2007
 ms.assetid: 557b0118-fde8-48c9-bf6d-829f9043706b
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-use-the-aspnet-ajax-history-control
 msc.type: video
-ms.openlocfilehash: 627d7d06020cc669edccb2a94bd366e96343f850
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 45933ab64c2bf8caa5615e6e9c10aa7fbd5d02bc
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075709"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59410575"
 ---
-<a name="how-do-i-use-the-aspnet-ajax-history-control"></a>[Postup:] Pomocí ovládacího prvku ASP.NET AJAX historie?
-====================
+# <a name="how-do-i-use-the-aspnet-ajax-history-control"></a>[Postup:] Pomocí ovládacího prvku ASP.NET AJAX historie?
+
 podle [Scott Golightly](https://github.com/scottgolightly)
 
 Jeden problém s rozšiřováním Typická aplikace AJAX je, že částečná stránka aktualizací není přidán k historii webového prohlížeče. To znamená, že prohlížeči tlačítko Zpět Zpět nepřesouvá jeden krok AJAX, ale jeden celý dokument, který je pravděpodobné, aby co uživatel očekává, že přejde zpět. Ovládací prvek ASP.NET AJAX historie umožňuje vývojářům vložit historie bodů tak, aby uživatel může kliknout na prohlížeče zpět a vpřed tlačítka pro přesun mezi kroky AJAX.

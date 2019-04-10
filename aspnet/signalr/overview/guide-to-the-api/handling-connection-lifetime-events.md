@@ -8,15 +8,15 @@ ms.date: 01/15/2019
 ms.assetid: 03960de2-8d95-4444-9169-4426dcc64913
 msc.legacyurl: /signalr/overview/guide-to-the-api/handling-connection-lifetime-events
 msc.type: authoredcontent
-ms.openlocfilehash: 53151d369a14ef9a6fa034043d40ae30098a5067
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 9e6b0b3b86839efa393659531d8b74770226f383
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069526"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59401462"
 ---
-<a name="understanding-and-handling-connection-lifetime-events-in-signalr"></a>Principy a zpracování událostí doby platnosti v knihovně SignalR
-====================
+# <a name="understanding-and-handling-connection-lifetime-events-in-signalr"></a>Principy a zpracování událostí doby platnosti v knihovně SignalR
+
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
@@ -254,7 +254,7 @@ Funkce SignalR verze 2 nemá integrovaného serveru rozhraní API pro odpojení 
 
 SignalR 2.1 přidá přetížení k serveru `OnDisconnect` událost označující, pokud úmyslně klient odpojen spíše než vyprší časový limit. `StopCalled` Parametr je hodnota true, pokud klient explicitně uzavřel připojení. V jazyce JavaScript, je-li k chybě serveru vedla klienta se odpojit, informace o chybě se předají ke klientovi jako `$.connection.hub.lastError`.
 
-**Server kód jazyka C#: `stopCalled` parametr**
+**C#kód serveru: `stopCalled` parametr**
 
 [!code-csharp[Main](handling-connection-lifetime-events/samples/sample7.cs?highlight=1,3)]
 

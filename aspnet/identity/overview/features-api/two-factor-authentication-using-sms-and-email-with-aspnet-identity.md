@@ -1,22 +1,23 @@
 ---
 uid: identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity
-title: Dvoufaktorové ověřování pomocí SMS a e-mailu s ASP.NET Identity | Dokumentace Microsoftu
+title: Dvoufaktorové ověřování pomocí SMS a e-mailu s ASP.NET Identity – ASP.NET 4.x
 author: HaoK
 description: Tento kurzu se dozvíte, jak nastavit dvojúrovňového ověřování (2FA) pomocí SMS a e-mailu. Tento článek zapsal Rick Anderson ( @RickAndMSFT ), za...
 ms.author: riande
 ms.date: 09/15/2015
 ms.assetid: 053e23c4-13c9-40fa-87cb-3e9b0823b31e
+ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 4b253923696e35e59c196578a232f53c11671d16
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c41fc06ad98665f7d48efde030c1341b06e49dd0
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071587"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59395287"
 ---
-<a name="two-factorauthentication-using-sms-and-email-with-aspnet-identity"></a>Dvoufaktorové ověřování pomocí SMS a e-mailu s ASP.NET Identity
-====================
+# <a name="two-factorauthentication-using-sms-and-email-with-aspnet-identity"></a>Dvoufaktorové ověřování pomocí SMS a e-mailu s ASP.NET Identity
+
 podle [Haovi společnosti ani](https://github.com/HaoK), [Pranav Rastogi](https://github.com/rustd), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Suhas Joshi](https://github.com/suhasj)
 
 > Tento kurzu se dozvíte, jak nastavit dvojúrovňového ověřování (2FA) pomocí SMS a e-mailu.
@@ -52,8 +53,8 @@ V této části použijete Stáhnout ukázku, kterou pak ve spolupráci s NuGet.
    V tomto kurzu použijeme [SendGrid](http://sendgrid.com/) k odesílání e-mailu a [Twilio](https://www.twilio.com/) nebo [ASPSMS](https://www.aspsms.com/asp.net/identity/testcredits/) pro odesílání textových zpráv sms. `Identity.Samples` Balíček nainstaluje budeme pracovat s kódem.
 3. Nastavte [projektu pro použití protokolu SSL](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md).
 4. *Volitelné*: Postupujte podle pokynů v mé [kurzu potvrzení e-mailu](account-confirmation-and-password-recovery-with-aspnet-identity.md) připojení SendGrid a pak spusťte aplikaci a zaregistrování e-mailový účet.
-5. * Volitelné: * odebrat je ukázka e-mailu odkaz potvrzovací kód z ukázkového ( `ViewBag.Link` kód v účet kontroleru. Zobrazit `DisplayEmail` a `ForgotPasswordConfirmation` metody akce a zobrazeními razor).
-6. <em>Volitelné: * Odebrat `ViewBag.Status` kódu z řadiče spravovat a účet a *Views\Account\VerifyCode.cshtml</em> a <em>Views\Manage\VerifyPhoneNumber.cshtml</em> zobrazení syntaxe razor. Alternativně můžete zachovat `ViewBag.Status` displej tak, aby test, jak tato aplikace funguje místně bez nutnosti připojení a odeslat e-mailu a zpráv SMS.
+5. *Volitelné:* Odebrat je ukázka e-mailu odkaz potvrzovací kód z ukázkového ( `ViewBag.Link` kód v účet kontroleru. Zobrazit `DisplayEmail` a `ForgotPasswordConfirmation` metody akce a zobrazeními razor).
+6. *Volitelné:* Odeberte `ViewBag.Status` kódu z účet a spravovat kontrolery a *Views\Account\VerifyCode.cshtml* a *Views\Manage\VerifyPhoneNumber.cshtml* zobrazení syntaxe razor. Alternativně můžete zachovat `ViewBag.Status` displej tak, aby test, jak tato aplikace funguje místně bez nutnosti připojení a odeslat e-mailu a zpráv SMS.
 
 > [!NOTE]
 > Upozornění: Pokud změníte některá nastavení zabezpečení v této ukázce, výroby aplikací bude chtít projít auditu zabezpečení, který explicitně vám sdělí, provedené změny.

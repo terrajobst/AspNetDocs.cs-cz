@@ -8,15 +8,15 @@ ms.date: 07/16/2014
 ms.assetid: ecfd0eb4-c4ad-44e6-9db9-a2a66611ff6a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
 msc.type: authoredcontent
-ms.openlocfilehash: 315e89c81782edf0875c65afd27153102d733050
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: ec0058472f8bc1d8d58e7c78deeb8b6097532510
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58424245"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59409730"
 ---
-<a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>Praktické cvičení: Udržitelné weby Azure: Správa změn a škálování
-====================
+# <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>Praktické cvičení: Udržitelné weby Azure: Správa změn a škálování
+
 podle [Campy Web týmu](https://twitter.com/webcamps)
 
 [Stáhněte si Web Campy školení Kit](https://aka.ms/webcamps-training-kit)
@@ -89,7 +89,7 @@ V celém dokumentu testovacího prostředí budete vyzváni k vložení bloky k�
 > Každý cvičení se sadou počáteční řešení nachází v **začít** složky výkonu, který umožňuje postupovat podle jednotlivých výkon nezávisle na ostatních. Uvědomte si, že chybí z těchto řešení od fragmenty kódu, které se přidávají během cvičení a nemusí fungovat, dokud nedokončíte výkonu. Uvnitř zdrojový kód pro cvičení, můžete také najdete **End** složku, která obsahuje řešení sady Visual Studio s kódem, který je výsledkem dokončení kroků v odpovídající cvičení. Tato řešení můžete použít jako vodítko, pokud potřebujete další pomoc při práci prostřednictvím této praktické vyzkoušení.
 
 
-* * *
+---
 
 <a id="Exercises"></a>
 ## <a name="exercises"></a>Cvičení
@@ -909,7 +909,7 @@ Nyní spusťte zátěžový test, který jste vytvořili v předchozí úloze a 
     > - Omezit maximální a minimální hodnoty **cílový procesor** rozsah v konfiguraci automatického škálování webové aplikace
     > - Spusťte zátěžový test v cloudu s využitím **testovací plány Azure**. Další informace o [zde](/azure/devops/test/load-test/index?view=vsts)
 
-* * *
+---
 
 <a id="Summary"></a>
 ## <a name="summary"></a>Souhrn

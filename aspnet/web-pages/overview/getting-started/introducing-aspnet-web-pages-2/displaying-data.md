@@ -8,15 +8,15 @@ ms.date: 05/28/2015
 ms.assetid: b3a006a0-3ea2-4d45-b833-e20e3a3c0a1a
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data
 msc.type: authoredcontent
-ms.openlocfilehash: 9158a1f53268daec6e6fbdf003dd73e1d62cc667
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5415913626eb063a4cb1013ba03857c130487f42
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067987"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59412174"
 ---
-<a name="introducing-aspnet-web-pages---displaying-data"></a>Úvod do webových stránek ASP.NET – zobrazení dat
-====================
+# <a name="introducing-aspnet-web-pages---displaying-data"></a>Úvod do webových stránek ASP.NET – zobrazení dat
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > V tomto kurzu se dozvíte, jak vytvořit databázi v nástroji WebMatrix a způsob zobrazení dat z databáze na stránce při použití webových stránek ASP.NET (Razor). Předpokládá, že jste dokončili řady prostřednictvím [Úvod do programování webových stránek ASP.NET](../introducing-razor-syntax-c.md).
@@ -214,7 +214,7 @@ V této fázi databázi otevřít, zobrazila data mají být, a jste připravili
 
 > [!TIP] 
 > 
-> **Structured Query Language (SQL)**
+> **SQL (Structured Query Language)**
 > 
 > SQL je jazyk, který se používá v Většina relačních databází pro správu dat v databázi. Obsahuje příkazy, které umožňují načtení dat a aktualizovat je a, které umožňují vytvářet, upravovat a spravovat data v tabulkách databáze. SQL se liší od programovací jazyk (jako je C#). Pomocí jazyka SQL dáte databáze, co má a je databáze úlohu zjistit, jak získat data nebo provést úlohu. Tady jsou příklady některých příkazů SQL a jejich význam:
 > 

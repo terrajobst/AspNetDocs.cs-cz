@@ -8,15 +8,15 @@ ms.date: 12/04/2008
 ms.assetid: 13dd3a26-c210-432e-91fe-355c979060b3
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list
 msc.type: video
-ms.openlocfilehash: 70ec234f3c610027dd14995917b2757f4b8a63c5
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 6a117d0bf029245c4929e903e0c0494f6ba2b072
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075781"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59400396"
 ---
-<a name="how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list"></a>[Postup:] Vytvoření opakovaně použitelné komponenty pro odesílání e-mailu lidem v distribučním seznamu
-====================
+# <a name="how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list"></a>[Postup:] Vytvoření opakovaně použitelné komponenty pro odesílání e-mailu lidem v distribučním seznamu
+
 podle [Chris pixelů na](https://twitter.com/chrispels)
 
 V toto video pixelů na Chris ukazuje, jak vytvořit komponentu, která lze použít na více webových stránek a webových serverů, která odesílá e-maily do seznamu příjemců. Nejprve se nakonfigurují na webu technologie ASP.NET k odeslání e-mailům prostřednictvím &lt;mailSettings&gt; v souboru web.config. Načítá seznam příjemců, kterým se ze zdroje dat (databáze, XML atd.) a odesílá e-mailovou zprávu do každého z příjemců pomocí tříd System.Net.Mail se pak vytvoří třídu a několik metod. Jako součást tohoto procesu výjimka zpracování je zahrnuté. Kromě toho se vytvoří uživatelské rozhraní umožňující uživateli zadat položky jako je například adresa odesílatele, na základě práv subjektů, přidejte přílohu atd.

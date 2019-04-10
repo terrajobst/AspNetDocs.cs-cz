@@ -8,15 +8,15 @@ ms.date: 01/25/2007
 ms.assetid: 7559a912-2753-4866-a140-a4c6cefee00c
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-implement-dynamic-partial-page-updates-with-aspnet-ajax
 msc.type: video
-ms.openlocfilehash: 626f103c59afc0843f821d6475393b61347492f8
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c032609a440ea8cb0d6e11759994581011daf70c
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067792"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59410198"
 ---
-<a name="how-do-i-implement-dynamic-partial-page-updates-with-aspnet-ajax"></a>[Postup:] Implementovat dynamické částečné aktualizace stránky pomocí ASP.NET AJAX?
-====================
+# <a name="how-do-i-implement-dynamic-partial-page-updates-with-aspnet-ajax"></a>[Postup:] Implementovat dynamické částečné aktualizace stránky pomocí ASP.NET AJAX?
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 V tomto videu se dozvíte, jak přidat dynamické částečné aktualizace stránky aplikace ASP.NET pomocí Microsoft ASP.NET AJAX. Konkrétně se zobrazí TimerControl použití ke správě frekvence zpětná volání AJAX.

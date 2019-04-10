@@ -1,25 +1,26 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/using-select-expand-and-value
-title: Pomocí $select $expand a $value v ASP.NET Web API 2 OData | Dokumentace Microsoftu
+title: Pomocí $select $expand a $value v ASP.NET Web API 2 OData – ASP.NET 4.x
 author: MikeWasson
-description: ''
+description: Přehled a ukázky kódu $ rozbalit, $select, a $value možnosti v OData Web API 2 ASP.NET 4.x.
 ms.author: riande
 ms.date: 10/11/2013
+ms.custom: seoapril2019
 ms.assetid: 43279a80-a96c-4564-b6ea-ad992a2d6828
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/using-select-expand-and-value
 msc.type: authoredcontent
-ms.openlocfilehash: d198ecf40155cba36204bc0810f4735aae6b100b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8b5d3e87c679a31f1908aa648219ae5c6b701a1f
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068797"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59400695"
 ---
-<a name="using-select-expand-and-value-in-aspnet-web-api-2-odata"></a>Pomocí $select $expand a $value v ASP.NET Web API 2 OData
-====================
+# <a name="using-select-expand-and-value-in-aspnet-web-api-2-odata"></a>Pomocí $select $expand a $value v ASP.NET Web API 2 OData
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
-Webové rozhraní API 2 přidává podporu pro $$expand, $select a možnosti $value prostředí OData. Tyto možnosti umožňují klienta pro řízení reprezentaci, který získá zpět ze serveru.
+Přehled a ukázky kódu $ rozbalit, $select, a $value možnosti v OData Web API 2 ASP.NET 4.x. Tyto možnosti umožňují klienta pro řízení reprezentaci, který získá zpět ze serveru.
 
 - **$expand** způsobí, že související entity, které být zahrnuty vložené v odpovědi.
 - **$select** vybere podmnožinu vlastnosti, které chcete zahrnout do odpovědi.

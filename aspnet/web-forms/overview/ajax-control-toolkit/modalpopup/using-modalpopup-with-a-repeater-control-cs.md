@@ -8,15 +8,15 @@ ms.date: 06/02/2008
 ms.assetid: d686d84a-1c58-492e-8a77-3eb5a0cfe918
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/using-modalpopup-with-a-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c2ffa22fb8d9d985d99d9f8d2298d317e6caf469
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 91758b7c329b78bcb3a3ab301650d6da6164d1a3
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076144"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59411186"
 ---
-<a name="using-modalpopup-with-a-repeater-control-c"></a>Použití ovládacího prvku ModalPopup v ovládacím prvku Repeater (C#)
-====================
+# <a name="using-modalpopup-with-a-repeater-control-c"></a>Použití ovládacího prvku ModalPopup v ovládacím prvku Repeater (C#)
+
 by [Christian Wenz](https://github.com/wenz)
 
 [Stáhněte si kód](http://download.microsoft.com/download/2/4/0/24052038-f942-4336-905b-b60ae56f0dd5/ModalPopup2.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/modalpopup2CS.pdf)
@@ -49,7 +49,7 @@ Aby bylo možné pracovat v opakovači, automaticky otevíraného okna `ModalPop
 Pak se zobrazí všechny položky ve zdroji dat s tlačítkem vedle sebe, vyvolá Modální místní nabídky.
 
 
-[![Pro každou položku, zdroj dat se dá spouštět Modální místní nabídky](using-modalpopup-with-a-repeater-control-cs/_static/image2.png)](using-modalpopup-with-a-repeater-control-cs/_static/image1.png)
+[![Tpro každou položku, zdroj dat se dá spouštět Modální místní nabídky he](using-modalpopup-with-a-repeater-control-cs/_static/image2.png)](using-modalpopup-with-a-repeater-control-cs/_static/image1.png)
 
 Pro každou položku, zdroj dat se dá spouštět Modální místní nabídky ([kliknutím ji zobrazíte obrázek v plné velikosti](using-modalpopup-with-a-repeater-control-cs/_static/image3.png))
 

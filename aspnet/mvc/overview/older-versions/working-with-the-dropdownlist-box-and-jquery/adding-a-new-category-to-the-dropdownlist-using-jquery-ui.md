@@ -8,15 +8,15 @@ ms.date: 01/12/2012
 ms.assetid: 44aa1ac4-6ea2-48a2-972d-52710c48eae5
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/adding-a-new-category-to-the-dropdownlist-using-jquery-ui
 msc.type: authoredcontent
-ms.openlocfilehash: 9fb95d22be473a4318520a391fa424106246a054
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 99bb37f95ddbad775c9c50ff5faf985b631473d0
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077317"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59386746"
 ---
-<a name="adding-a-new-category-to-the-dropdownlist-using-jquery-ui"></a>Přidání nové kategorie do ovládacího prvku DropDownList v uživatelském rozhraní jQuery
-====================
+# <a name="adding-a-new-category-to-the-dropdownlist-using-jquery-ui"></a>Přidání nové kategorie do ovládacího prvku DropDownList v uživatelském rozhraní jQuery
+
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 Kód HTML `Select` značka je ideální pro zobrazení seznamu pevné kategorie dat, ale často je potřeba přidat novou kategorii. Předpokládejme, že chceme přidat žánr "Opera" do kategorie v naší databázi? V této části budeme používat uživatelské rozhraní jQuery přidat dialogové okno, které můžete přidat novou kategorii. Následující obrázek ukazuje, jak bude k dispozici uživatelské rozhraní v prohlížeči.

@@ -8,15 +8,15 @@ ms.date: 06/22/2010
 ms.assetid: 75cbb6d6-1823-4e3c-8c33-c733641eadb2
 msc.legacyurl: /mvc/videos/mvc-2/music-store/mvc-music-store-part-1-intro-tools-and-project-structure
 msc.type: video
-ms.openlocfilehash: 800dde9c1e9c159bf32f9052f1027c86073f370e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 1bcad8a023500f4738edf09f4ef0635588cd5323
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077224"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59412707"
 ---
-<a name="mvc-music-store-part-1-intro-tools-and-project-structure"></a>Aplikace MVC Music Store 1. část: Úvod, nástroje a struktura projektu
-====================
+# <a name="mvc-music-store-part-1-intro-tools-and-project-structure"></a>Aplikace MVC Music Store 1. část: Úvod, nástroje a struktura projektu
+
 podle [Jon Galloway](https://github.com/jongalloway)
 
 Jon Galloway zahájení kurzu MVC Music Store úvod, přehled aplikace a zkontrolujte struktury adresářů v aplikaci MVC.

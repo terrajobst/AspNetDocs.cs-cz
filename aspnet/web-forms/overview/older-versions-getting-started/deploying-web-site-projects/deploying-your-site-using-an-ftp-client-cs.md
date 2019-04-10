@@ -8,15 +8,15 @@ ms.date: 04/01/2009
 ms.assetid: a3599cf7-8474-4006-954a-3bc693736b66
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cdecc85c056fc5153763d938c665b473117df9ba
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 1ef796dc61cc65b6ca5205a5f8baf4dcc4ba05ae
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068107"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59389164"
 ---
-<a name="deploying-your-site-using-an-ftp-client-c"></a>Nasazení webu pomocí klienta FTP (C#)
-====================
+# <a name="deploying-your-site-using-an-ftp-client-c"></a>Nasazení webu pomocí klienta FTP (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/4/5/F/45F815EC-8B0E-46D3-9FB8-2DC015CCA306/ASPNET_Hosting_Tutorial_03_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/E/8/9/E8920AE6-D441-41A7-8A77-9EF8FF970D8B/aspnet_tutorial03_DeployingViaFTP_cs.pdf)
@@ -69,7 +69,7 @@ Obrázek 1 ukazuje Filezilly po potřebné soubory zkopírovaly. Filezilly zobra
 > Není nezpůsobily žádné potíže tím, že soubory zdrojového kódu na provozním serveru, jako jsou ignorovány. ASP.NET zakazuje požadavky HTTP na souborech zdrojového kódu ve výchozím nastavení tak, že i v případě, že soubory zdrojového kódu jsou k dispozici na provozním serveru jsou přístupné pro návštěvníky na váš web. (Pokud se uživatel pokusí o navštivte `http://www.yoursite.com/Default.aspx.cs` chybovou stránku, která vysvětluje, použije se tyto typy souborů – `.cs` soubory – jsou zakázané.)
 
 
-[![Pomocí klienta FTP zkopírujte potřebné soubory z plochy na webový server na zprostředkovateli webového hostitele](deploying-your-site-using-an-ftp-client-cs/_static/image2.png)](deploying-your-site-using-an-ftp-client-cs/_static/image1.png)
+[![Use klient FTP pro kopírování potřebné soubory z vašeho počítače na webový server na hostiteli poskytovatele webových](deploying-your-site-using-an-ftp-client-cs/_static/image2.png)](deploying-your-site-using-an-ftp-client-cs/_static/image1.png)
 
 **Obrázek 1**: Pomocí klienta FTP na webový server na hostiteli poskytovatele webových zkopírujte potřebné soubory z plochu ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-an-ftp-client-cs/_static/image3.png))
 
@@ -82,7 +82,7 @@ Obrázek 2 ukazuje nasazené lokality recenzí. Všimněte si, že mám teď zob
 > Pokud dojde k chybě při zobrazení aplikace využít k Ujistěte se, že jste nasadili správnou sadu souborů. V dalším kroku najdete v chybové zprávě, pokud chcete zobrazit, pokud zjistí jakékoli příčiny, problém. Pod můžete zapnout na technickou podporu vaší společnosti webového hostitele nebo zveřejněte svůj dotaz ve fóru odpovídající [fóra ASP.NET](https://forums.asp.net/).
 
 
-[![Server revize adresáře je nyní dostupný všem uživatelům s připojením k Internetu](deploying-your-site-using-an-ftp-client-cs/_static/image5.png)](deploying-your-site-using-an-ftp-client-cs/_static/image4.png)
+[![TKniha kontrol lokality je teď přístupná všem uživatelům s připojením k Internetu](deploying-your-site-using-an-ftp-client-cs/_static/image5.png)](deploying-your-site-using-an-ftp-client-cs/_static/image4.png)
 
 **Obrázek 2**: Server revize adresáře je nyní dostupný všem uživatelům s připojením k Internetu ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-an-ftp-client-cs/_static/image6.png))
 
@@ -124,7 +124,7 @@ Jakmile úspěšně sestavíte projekt, zkopírujte následující soubory do ko
 Obrázek 3 ukazuje Filezilly po zkopírování si potřebné soubory. Jak je vidět, ASP.NET souborů zdrojového kódu, jako například `About.aspx.cs`, jsou k dispozici na místním počítači (vývojové prostředí) a webového hostitele zprostředkovatele (produkční prostředí), protože soubory kódu je nutné nasadit při použití automatického kompilace.
 
 
-[![Pomocí klienta FTP zkopírujte potřebné soubory z plochy na webový server na zprostředkovateli webového hostitele](deploying-your-site-using-an-ftp-client-cs/_static/image8.png)](deploying-your-site-using-an-ftp-client-cs/_static/image7.png)
+[![Use klient FTP pro kopírování potřebné soubory z vašeho počítače na webový server na hostiteli poskytovatele webových](deploying-your-site-using-an-ftp-client-cs/_static/image8.png)](deploying-your-site-using-an-ftp-client-cs/_static/image7.png)
 
 **Obrázek 3**: Pomocí klienta FTP na webový server na hostiteli poskytovatele webových zkopírujte potřebné soubory z plochu ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-an-ftp-client-cs/_static/image9.png))
 

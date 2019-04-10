@@ -8,15 +8,15 @@ ms.date: 07/27/2010
 ms.assetid: bbb976e5-6150-4283-a374-c22fbafe29f5
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/provide-crud-create-read-update-delete-data-form-entry-support
 msc.type: authoredcontent
-ms.openlocfilehash: 45d74249a34fc7e37e9776a398615d2f613a7582
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 242665b3ba2e2ad2157abbe2c44ae207f15e72ce
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068134"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59410861"
 ---
-<a name="provide-crud-create-read-update-delete-data-form-entry-support"></a>Zajištění akcí CRUD (Create, Read, Update, Delete) podporujících zápis dat do formuláře
-====================
+# <a name="provide-crud-create-read-update-delete-data-form-entry-support"></a>Zajištění akcí CRUD (Create, Read, Update, Delete) podporujících zápis dat do formuláře
+
 by [Microsoft](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
@@ -41,7 +41,7 @@ Dříve jsme přidali metody akce k DinnersController implementované podporu pr
 | */Dinners/* | GET | Zobrazení HTML seznam nadcházejících večeří. |
 | */Dinners/podrobnosti / [id]* | GET | Zobrazit podrobnosti o konkrétní večeři. |
 
-Teď přidáme akci metody k implementaci tři další adresy URL: <em>/Dinners/Edit / [id], / večeří/vytvoření,</em>a<em>/Dinners/Delete / [id]</em>. Podpora pro úpravu existující večeří, vytváření nových večeří a odstraňování večeří vám umožní tyto adresy URL.
+Teď přidáme akci metody k implementaci tři další adresy URL: */Dinners/Edit / [id]*, */večeří/vytvořit*, a */Dinners/Delete / [id]*. Podpora pro úpravu existující večeří, vytváření nových večeří a odstraňování večeří vám umožní tyto adresy URL.
 
 Budeme podporovat HTTP GET a POST protokolu HTTP příkaz interakce se tyto nové adresy URL. Požadavky HTTP GET na tyto adresy URL se zobrazí počáteční HTML zobrazení dat (formuláře naplněný daty večeře v případě "upravit", prázdný formulář v případě "vytvořit" a potvrzovací obrazovce a delete v případě "odstranit"). Požadavky HTTP POST na tyto adresy URL se uložit, aktualizace nebo odstranění Dinner data v našich DinnerRepository (a z něj k databázi).
 
@@ -49,7 +49,7 @@ Budeme podporovat HTTP GET a POST protokolu HTTP příkaz interakce se tyto nov�
 | --- | --- | --- |
 | */Dinners/edit / [id]* | GET | Zobrazí Upravitelný formulář HTML naplněný daty večeři. |
 | POST | Uložte změny formuláře pro konkrétní web Dinner do databáze. |
-| */Dinners/Create* | GET | Zobrazte prázdný formulář HTML, který umožňuje uživatelům definovat nové večeří. |
+| */ Večeří/vytvoření* | GET | Zobrazte prázdný formulář HTML, který umožňuje uživatelům definovat nové večeří. |
 | POST | Vytvořit nový web Dinner a uložte jej v databázi. |
 | */Dinners/delete / [id]* | GET | Odstraňování potvrzovací obrazovce a zobrazit. |
 | POST | Odstraní zadaný dinner z databáze. |
@@ -138,7 +138,7 @@ Začneme budete přidáním přetížené metody akce "Edit" pro naše DinnersCo
 
 [!code-csharp[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample9.cs)]
 
-Při použití atributu [AcceptVerbs] u akce přetížené metody, ASP.NET MVC automaticky zpracovává dispatching požadavky na metody odpovídající akce v závislosti na příchozí příkaz protokolu HTTP. Požadavky HTTP POST do <em>/Dinners/Edit / [id]</em> adresy URL přejde do výše uvedené metody úpravy při všechny ostatní operace požadavky HTTP na <em>/Dinners/Edit / [id]</em>půjdou adresy URL pro první způsob úpravy implementovali jsme (které nebyla není definován atribut [AcceptVerbs]).
+Při použití atributu [AcceptVerbs] u akce přetížené metody, ASP.NET MVC automaticky zpracovává dispatching požadavky na metody odpovídající akce v závislosti na příchozí příkaz protokolu HTTP. Požadavky HTTP POST do */Dinners/Edit / [id]* adresy URL přejde do výše uvedené metody úpravy při všechny ostatní operace požadavky HTTP na */Dinners/Edit / [id]* půjdou adresy URL pro první způsob úpravy implementovali jsme (které nebyla není nutné `[AcceptVerbs]` atributu).
 
 | **Téma na straně: Proč rozlišit pomocí příkazů HTTP?** |
 | --- |
@@ -228,7 +228,7 @@ Pomocná metoda Html.ValidationMessage() podporuje také druhý parametr, který
 
 [!code-aspx[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample18.aspx)]
 
-Výstupem kódu uvedeného výše:  <em>&lt;span třídy = "pole Chyba ověřování"&gt;\*&lt;/span&gt;</em>místo výchozí text chyby při chybě není dostupná Vlastnost EventDate.
+Výstupem kódu uvedeného výše: *&lt;span třídy = "pole Chyba ověřování"&gt;\*&lt;/span&gt;* místo výchozí text chyby při chybě není dostupná Vlastnost EventDate.
 
 ##### <a name="htmlvalidationsummary-helper-method"></a>Html.ValidationSummary() Helper Method
 

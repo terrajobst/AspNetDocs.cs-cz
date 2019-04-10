@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 84c7baca-1c54-4c44-8f52-4282122d6acb
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 52aba3fa5948d32180fbf135444433771b17756d
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 86781a1f46ce0c01a5d70b1f0cf8a81f3f96a032
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425637"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59405921"
 ---
 # <a name="aspnet-mvc-4-dependency-injection"></a>ASP.NET MVC 4 – injektáž závislostí
 
@@ -91,7 +91,7 @@ Pro usnadnění práce velkou část kódu, které budete spravovat podél tohot
 
 Pokud nejste obeznámeni s fragmenty kódu Visual Studio a chcete další informace o jejich použití, najdete dodatku z tohoto dokumentu &quot; [příloha B: Používání fragmentů kódu](#AppendixB)&quot;.
 
-* * *
+---
 
 <a id="Exercises"></a>
 
@@ -239,7 +239,7 @@ V této úloze budete spouštět aplikace kvůli ověření, že jej lze načís
 
     ![Aplikace MVC Music Store](aspnet-mvc-4-dependency-injection/_static/image7.png "MVC Music Store")
 
-    *MVC Music Store*
+    *Aplikace MVC Music Store*
 3. Zavřete prohlížeč.
 
 V následujícím cvičení se dozvíte, jak rozšířit rozsah injektáž závislostí ji používat uvnitř zobrazení ASP.NET MVC a filtrů akce.
@@ -484,7 +484,7 @@ V této úloze se spustit aplikaci a otestovat, zda filtr vlastních akcí je tr
     *Trasování aplikace – podrobnosti o žádosti*
 4. Zavřete prohlížeč.
 
-* * *
+---
 
 <a id="Summary"></a>
 

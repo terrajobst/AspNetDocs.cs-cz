@@ -8,15 +8,15 @@ ms.date: 12/17/2007
 ms.assetid: 5fa365a1-d709-40e2-b7bf-489ff687f2ce
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-a-custom-health-monitoring-event
 msc.type: video
-ms.openlocfilehash: d3d5955cbb432390c48b7174c3cb35e6c282bf79
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 48e0449d09ff0dfee4820820fefc89113ff98e84
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078178"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59383093"
 ---
-<a name="how-do-i-implement-a-custom-health-monitoring-event"></a>[Postup:] Implementace vlastní události monitorování stavu
-====================
+# <a name="how-do-i-implement-a-custom-health-monitoring-event"></a>[Postup:] Implementace vlastní události monitorování stavu
+
 podle [Chris pixelů na](https://twitter.com/chrispels)
 
 V toto video pixelů na Chris ukáže jak vytvořit vlastní události, která rozšiřuje standardní událostech monitorování stavu v ASP.NET monitorování stavu. Vlastní poskytuje informace o další události a formáty pro sledování událostí zprostředkovatele stavu. Vlastní modul HTTP se pak vytvoří pro vyvolání události explicitně monitorování, protože rozhraní .NET Framework pouze zvýšit standardní událostech monitorování stavu vlastní stavu. Kromě toho vlastní stav monitorování se vyvolá událost explicitně na stránce za kód pro stránky ASPX.

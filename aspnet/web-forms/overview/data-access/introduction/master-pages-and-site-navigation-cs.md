@@ -8,15 +8,15 @@ ms.date: 03/31/2010
 ms.assetid: 5aee8202-a4e3-4aa9-8a95-cd5d156cea4c
 msc.legacyurl: /web-forms/overview/data-access/introduction/master-pages-and-site-navigation-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d9ae2fb5a79817053a260e7d0f85992a011f471b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 2001378588db72103292be963af6c26277147c44
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070201"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59409639"
 ---
-<a name="master-pages-and-site-navigation-c"></a>Stránky předlohy a navigace na webu (C#)
-====================
+# <a name="master-pages-and-site-navigation-c"></a>Stránky předlohy a navigace na webu (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/6/3/463cf87c-4724-4cbc-b7b5-3f866f43ba50/ASPNET_Data_Tutorial_3_CS.exe) nebo [stahovat PDF](master-pages-and-site-navigation-cs/_static/datatutorial03cs1.pdf)
@@ -33,7 +33,7 @@ Jeden běžné charakteristiky uživatelsky přívětivé webů je, ke kterým m
 Ilustraci těchto konceptů a náš web kurzy dala lépe využít, věnujte této lekci definování rozložení stránky webu, implementace mapy webu a přidání navigační uživatelské rozhraní. Na konci tohoto kurzu máme uhlazené webu návrhu pro vytváření Náš kurz webových stránek.
 
 
-[![Konečný výsledek tohoto kurzu](master-pages-and-site-navigation-cs/_static/image2.png)](master-pages-and-site-navigation-cs/_static/image1.png)
+[![Tmá koncové výsledek v tomto kurzu](master-pages-and-site-navigation-cs/_static/image2.png)](master-pages-and-site-navigation-cs/_static/image1.png)
 
 **Obrázek 1**: Výsledek v tomto kurzu End ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-cs/_static/image3.png))
 
@@ -51,7 +51,7 @@ Prvním krokem je vytvoření hlavní stránky webu. V tuto chvíli našeho webu
 Chcete-li vytvořit stránku předlohy, klikněte pravým tlačítkem na název projektu v Průzkumníku řešení a zvolte Přidat novou položku. Potom ze seznamu šablon vyberte typ stránky předlohy a pojmenujte ho `Site.master`.
 
 
-[![Přidejte novou stránku předlohy k webu](master-pages-and-site-navigation-cs/_static/image6.png)](master-pages-and-site-navigation-cs/_static/image5.png)
+[![APřidat nové stránky předlohy k webu](master-pages-and-site-navigation-cs/_static/image6.png)](master-pages-and-site-navigation-cs/_static/image5.png)
 
 **Obrázek 3**: Přidejte novou stránku předlohy k webu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-cs/_static/image7.png))
 
@@ -68,7 +68,7 @@ Hlavní stránka definuje statickou stránku rozložení a oblasti, které lze u
 Se značkami výše ukazuje přepnutí na zobrazení návrhu rozložení stránky předlohy. Všechny stránky technologie ASP.NET, které pomocí této hlavní stránky bude mít toto jednotné rozložení s možností určit značky pro `MainContent` oblasti.
 
 
-[![Stránky předlohy se stránkou, při zobrazení v okně návrhu](master-pages-and-site-navigation-cs/_static/image9.png)](master-pages-and-site-navigation-cs/_static/image8.png)
+[![Tkterou stránku předlohy, při prohlížení prostřednictvím the návrhové zobrazení](master-pages-and-site-navigation-cs/_static/image9.png)](master-pages-and-site-navigation-cs/_static/image8.png)
 
 **Obrázek 4**: Stránky předlohy se stránkou, při prohlížení prostřednictvím the návrhové zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-cs/_static/image10.png))
 
@@ -78,7 +78,7 @@ Se značkami výše ukazuje přepnutí na zobrazení návrhu rozložení stránk
 S hlavní stránkou definované jsme připraveni pro přidání stránek technologie ASP.NET pro web. Začněme přidáním `Default.aspx`, domovská stránka našeho webu. Klikněte pravým tlačítkem na název projektu v Průzkumníku řešení a zvolte Přidat novou položku. Vyberte si možnost webový formulář ze seznamu šablon a název souboru `Default.aspx`. Kromě toho zaškrtněte políčko "Vybrat hlavní stránku".
 
 
-[![Přidat nový webový formulář, kontrolu vyberte zaškrtávací políčko hlavní stránky](master-pages-and-site-navigation-cs/_static/image12.png)](master-pages-and-site-navigation-cs/_static/image11.png)
+[![Add nového webového formuláře, kontrola vyberte stránku předlohy zaškrtávacího políčka](master-pages-and-site-navigation-cs/_static/image12.png)](master-pages-and-site-navigation-cs/_static/image11.png)
 
 **Obrázek 5**: Přidat nový webový formulář, kontrolu vyberte zaškrtávací políčko hlavní stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-cs/_static/image13.png))
 
@@ -86,7 +86,7 @@ S hlavní stránkou definované jsme připraveni pro přidání stránek technol
 Po kliknutí na tlačítko OK, jsme se dotaz, rozhodnout, jaké stránky předlohy, používejte tuto novou stránku ASP.NET. I když můžete mít více stránek předloh ve vašem projektu, budeme mít pouze jeden.
 
 
-[![Zvolte na stránce předlohy, kterou by měl použít tuto stránku ASP.NET](master-pages-and-site-navigation-cs/_static/image15.png)](master-pages-and-site-navigation-cs/_static/image14.png)
+[![CZvolte na stránce předlohy použijte by měl stránky technologie ASP.NET](master-pages-and-site-navigation-cs/_static/image15.png)](master-pages-and-site-navigation-cs/_static/image14.png)
 
 **Obrázek 6**: Zvolte na stránce předlohy použijte by měl stránky technologie ASP.NET ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-cs/_static/image16.png))
 
@@ -110,7 +110,7 @@ Default.aspx
 Přepnout do zobrazení návrhu, že můžeme vidět, jak bude vypadat naši stránku v prohlížeči. Všimněte si, že v návrhu zobrazení pro stránku ASP.NET, že se upravovat pouze obsahu upravitelné oblasti značky bez ContentPlaceHolder definovány na hlavní stránce šedě.
 
 
-[![Zobrazí upravitelné a neupravitelné oblasti návrhové zobrazení pro stránku ASP.NET](master-pages-and-site-navigation-cs/_static/image18.png)](master-pages-and-site-navigation-cs/_static/image17.png)
+[![Tmá návrhové zobrazení pro ASP.NET stránku zobrazuje i upravit a Non-upravit oblasti](master-pages-and-site-navigation-cs/_static/image18.png)](master-pages-and-site-navigation-cs/_static/image17.png)
 
 **Obrázek 7**: Zobrazení návrhu pro technologie ASP.NET stránku zobrazuje i upravit a Non-upravit oblasti ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-cs/_static/image19.png))
 
@@ -142,7 +142,7 @@ Systém navigace na webu technologie ASP.NET 2.0 poskytuje prostředky pro vývo
 V tomto kurzu ale použijeme výchozího zprostředkovatele mapy webu, která je dodávána s prostředím ASP.NET 2.0. K vytvoření mapy webu, jednoduše klikněte pravým tlačítkem na název projektu v Průzkumníku řešení zvolte Přidat novou položku a zvolte možnost mapy webu. Nechte název tak jako `Web.sitemap` a klikněte na tlačítko Přidat.
 
 
-[![Přidejte do projektu mapy webu](master-pages-and-site-navigation-cs/_static/image22.png)](master-pages-and-site-navigation-cs/_static/image21.png)
+[![Add mapy webu do vašeho projektu](master-pages-and-site-navigation-cs/_static/image22.png)](master-pages-and-site-navigation-cs/_static/image21.png)
 
 **Obrázek 9**: Přidání mapy webu do vašeho projektu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-cs/_static/image23.png))
 
@@ -159,7 +159,7 @@ Web.sitemap
 Mapa webu definuje webu navigační strukturu, která je hierarchie, která popisuje různé části webu. Každý `<siteMapNode>` prvek `Web.sitemap` představuje oddíl v navigační struktuře lokality.
 
 
-[![Mapa webu představuje hierarchickou strukturu navigační](master-pages-and-site-navigation-cs/_static/image25.png)](master-pages-and-site-navigation-cs/_static/image24.png)
+[![TMapa webu zastupuje hierarchické struktuře navigační](master-pages-and-site-navigation-cs/_static/image25.png)](master-pages-and-site-navigation-cs/_static/image24.png)
 
 **Obrázek 10**: Mapa webu představuje hierarchickou strukturu navigační ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-cs/_static/image26.png))
 
@@ -252,7 +252,7 @@ Kurzy v našem webu jsou rozdělené do různých kategorií základní tvorbou 
 Umožňuje zobrazit neuspořádaný seznam pomocí Repeateru znovu, tentokrát ale jsme vám zobrazit nadpis a popis v kurzech. Protože značek a kódu k dosažení tohoto musí zopakovat pro každý `Default.aspx` stránky, budeme zapouzdření tuto logiku uživatelského rozhraní [uživatelský ovládací prvek](https://msdn.microsoft.com/library/y6wb1a0e.aspx). Vytvořte složku na webu volá `UserControls` a přidejte do nové položky typu webový uživatelský ovládací prvek s názvem `SectionLevelTutorialListing.ascx`a přidejte následující kód:
 
 
-[![Přidat nový uživatelský ovládací prvek webu do složky UserControls](master-pages-and-site-navigation-cs/_static/image30.png)](master-pages-and-site-navigation-cs/_static/image29.png)
+[![APřidat nový ovládací prvek uživatelské Web ke složce UserControls](master-pages-and-site-navigation-cs/_static/image30.png)](master-pages-and-site-navigation-cs/_static/image29.png)
 
 **Obrázek 13**: Přidat nový ovládací prvek uživatelské Web k `UserControls` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-cs/_static/image31.png))
 
@@ -272,12 +272,12 @@ V předchozím příkladu Repeater jsme vázán `SiteMap` data Opakovači deklar
 Po vytvoření tohoto Repeater, otevřete `Default.aspx` stránky ve všech složek, přejděte do zobrazení návrhu a jednoduše přetáhněte uživatelského ovládacího prvku na návrhovou plochu v Průzkumníkovi řešení ve kterém chcete kurz seznamu se zobrazí.
 
 
-[![Má uživatelský ovládací prvek byl přidán na stránku Default.aspx](master-pages-and-site-navigation-cs/_static/image33.png)](master-pages-and-site-navigation-cs/_static/image32.png)
+[![TUživatelský ovládací prvek má byl přidán na stránku Default.aspx](master-pages-and-site-navigation-cs/_static/image33.png)](master-pages-and-site-navigation-cs/_static/image32.png)
 
 **Obrázek 14**: Má uživatelský ovládací prvek byl přidán do `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-cs/_static/image34.png))
 
 
-[![Jsou uvedeny základní kurzy vytváření sestav](master-pages-and-site-navigation-cs/_static/image36.png)](master-pages-and-site-navigation-cs/_static/image35.png)
+[![TKurzy he základní vytváření sestav jsou uvedené](master-pages-and-site-navigation-cs/_static/image36.png)](master-pages-and-site-navigation-cs/_static/image35.png)
 
 **Obrázek 15**: Jsou uvedeny základní kurzy vytváření sestav ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-cs/_static/image37.png))
 

@@ -1,25 +1,26 @@
 ---
 uid: web-api/overview/older-versions/self-host-a-web-api
-title: Hostování na vlastním rozhraní ASP.NET Web API 1 (C#) | Dokumentace Microsoftu
+title: Self-Host ASP.NET Web API 1 (C#) - ASP.NET 4.x
 author: MikeWasson
-description: Rozhraní ASP.NET Web API nevyžaduje, aby služba IIS. Webové rozhraní API můžete samoobslužné hostování ve vlastním procesu hostitele. Tento kurz ukazuje postupy při hostování webového rozhraní API uvnitř applic konzoly...
+description: Kurz s kód ukazuje, jak hostování webového rozhraní API v konzolové aplikaci.
 ms.author: riande
 ms.date: 01/26/2012
+ms.custom: seoapril2019
 ms.assetid: be5ab1e2-4140-4275-ac59-ca82a1bac0c1
 msc.legacyurl: /web-api/overview/older-versions/self-host-a-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 63d192a6fa2aafef3770d5b0b97ec32e001b69db
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7c73bf4734f8ed8a1bf93595c0847f611ad9cc15
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070864"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59409600"
 ---
-<a name="self-host-aspnet-web-api-1-c"></a>Self-Host ASP.NET Web API 1 (C#)
-====================
+# <a name="self-host-aspnet-web-api-1-c"></a>Self-Host ASP.NET Web API 1 (C#)
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
-> Rozhraní ASP.NET Web API nevyžaduje, aby služba IIS. Webové rozhraní API můžete samoobslužné hostování ve vlastním procesu hostitele. Tento kurz ukazuje postupy při hostování webového rozhraní API v konzolové aplikaci.
+> Tento kurz ukazuje postupy při hostování webového rozhraní API v konzolové aplikaci. Rozhraní ASP.NET Web API nevyžaduje, aby služba IIS. Webové rozhraní API můžete samoobslužné hostování ve vlastním procesu hostitele. 
 > 
 > **Nová aplikace by měly používat OWIN k samoobslužnému hostování webového rozhraní API.** Zobrazit [použití rozhraní OWIN k samoobslužnému hostování webového rozhraní API 2 ASP.NET](../hosting-aspnet-web-api/use-owin-to-self-host-web-api.md).
 > 
@@ -68,7 +69,7 @@ Instalace Správce balíčků NuGet:
 
 Po dokončení instalace Správce balíčků NuGet do projektu přidejte balíček Self-Host webové rozhraní API.
 
-1. Z **nástroje** nabídce vyberte možnost **Správce balíčků NuGet**. *Poznámka:*: Pokud se vám nezobrazí tato nabídka položek, ujistěte se, že tento správce balíčků NuGet správně nainstalován.
+1. Z **nástroje** nabídce vyberte možnost **Správce balíčků NuGet**. *Poznámka:* Pokud se vám nezobrazí tato nabídka položek, ujistěte se, že tento správce balíčků NuGet správně nainstalován.
 2. Vyberte **spravovat balíčky NuGet pro řešení**
 3. V **Správa balíčků Nuget** dialogového okna, vyberte **Online**.
 4. Do vyhledávacího pole zadejte &quot;Microsoft.AspNet.WebApi.SelfHost&quot;.

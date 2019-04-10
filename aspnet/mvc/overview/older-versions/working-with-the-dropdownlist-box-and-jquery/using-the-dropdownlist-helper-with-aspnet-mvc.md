@@ -8,15 +8,15 @@ ms.date: 01/12/2012
 ms.assetid: 53767e05-c8ab-42e1-a94b-22d906195200
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 11b874d2d07c84631c6c5c266c22c6de49d40cf2
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 2a4d991205351531129480bee221651021483967
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073822"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59396249"
 ---
-<a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>Použití pomocné rutiny DropDownList s ASP.NET MVC
-====================
+# <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>Použití pomocné rutiny DropDownList s ASP.NET MVC
+
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 V tomto kurzu se seznámíte se základy práce se [DropDownList](https://msdn.microsoft.com/library/dd492948.aspx) pomocné rutiny a [ListBox](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.listbox.aspx) pomocné rutiny v aplikaci MVC rozhraní ASP.NET Web. Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze sady Microsoft Visual Studio chcete postupovat podle tohoto kurzu můžete použít. Než začnete, ujistěte se, že jste nainstalovali požadavky uvedené níže. Kliknutím na následující odkaz můžete nainstalovat všechny z nich: [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Alternativně můžete nainstalovat jednotlivě požadavky pomocí následujících odkazů:
@@ -190,7 +190,7 @@ Otevřít *Views\Home\MultiSelectCountry.cshtml* a přidejte `htmlAttributes` pa
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample12.cshtml)]
 
-Ve výše uvedeném kódu, přidáváme atributu HTML a hodnota atributu `class = "chzn-select"`. \@ Znak předchozí třídy nemá nic společného s zobrazovací modul Razor. `class` je [– klíčové slovo jazyka C#](https://msdn.microsoft.com/library/x53a06bb.aspx). Klíčová slova jazyka C# nelze použít jako identifikátory, pokud ovšem neobsahují \@ jako předponu. V příkladu výše `@class` je platný identifikátor, ale **třídy** není, protože **třídy** je klíčové slovo.
+Ve výše uvedeném kódu, přidáváme atributu HTML a hodnota atributu `class = "chzn-select"`. \@ Znak předchozí třídy nemá nic společného s zobrazovací modul Razor. `class` je [ C# – klíčové slovo](https://msdn.microsoft.com/library/x53a06bb.aspx). Klíčová slova jazyka C# nelze použít jako identifikátory, pokud ovšem neobsahují \@ jako předponu. V příkladu výše `@class` je platný identifikátor, ale **třídy** není, protože **třídy** je klíčové slovo.
 
 Přidat odkazy *Chosen/chosen.jquery.js* a *Chosen/chosen.css* soubory. *Chosen/chosen.jquery.js* a implementuje funkčně modulu plug-in zvolená. *Chosen/chosen.css* soubor obsahuje stylu. Přidat tyto odkazy do dolní části *Views\Home\MultiSelectCountry.cshtml* souboru. Následující kód ukazuje, jak odkazovat na modul plug-in zvolená.
 

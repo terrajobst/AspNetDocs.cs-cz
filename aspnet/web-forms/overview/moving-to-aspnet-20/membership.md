@@ -8,15 +8,15 @@ ms.date: 02/20/2005
 ms.assetid: f2339485-5d78-4c5e-8c0a-dc9b8a315345
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/membership
 msc.type: authoredcontent
-ms.openlocfilehash: d4fab68555eeb27420e60a28aca2f2c0fb9a73e3
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: f3f8c649932682fd96e0640ddf4595c19c755909
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58421515"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59408183"
 ---
-<a name="membership"></a>Členství
-====================
+# <a name="membership"></a>Členství
+
 by [Microsoft](https://github.com/microsoft)
 
 > Členství technologie ASP.NET je založena na úspěšném modelu ověřování formulářů z ASP.NET 1.x. Ověřování pomocí formulářů technologie ASP.NET poskytuje pohodlný způsob, jak začlenit přihlašovací formulář do aplikace ASP.NET a ověření proti databázi nebo jiného úložiště dat uživatelů.
@@ -74,7 +74,7 @@ Webové rozhraní můžete spustit kliknutím na tlačítko Konfigurace technolo
 
 Tím se spustí nástroj Správa webu technologie ASP.NET je uvedeno níže. Správa webu technologie ASP.NET je rozhraní čtyři karty, která umožňuje jednoduše spravovat nastavení aplikace. K dispozici jsou následující karty:
 
-- **Domovská stránka**
+- **Domů**
 - **Zabezpečení** konfigurovat uživatele, role a přístup.
 - **Aplikace** nakonfigurovat nastavení aplikace.
 - **Zprostředkovatel** konfigurace a testování vaší aplikace zprostředkovatele členství.

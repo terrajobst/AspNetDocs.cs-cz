@@ -8,15 +8,15 @@ ms.date: 02/14/2014
 ms.assetid: 961e525b-7700-469e-8a68-d7010b6fb68c
 msc.legacyurl: /web-pages/overview/performance-and-traffic/15-caching-to-improve-the-performance-of-your-website
 msc.type: authoredcontent
-ms.openlocfilehash: ede341e02869a9c81cbe2fa7ef97345dc87519a1
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 10b853966ba80b673e1a6786987893f919369e7a
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068425"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59412902"
 ---
-<a name="caching-data-in-an-aspnet-web-pages-razor-site-for-better-performance"></a>Ukládání do mezipaměti dat na webu rozhraní ASP.NET Web Pages (Razor) pro zajištění lepšího výkonu
-====================
+# <a name="caching-data-in-an-aspnet-web-pages-razor-site-for-better-performance"></a>Ukládání do mezipaměti dat na webu rozhraní ASP.NET Web Pages (Razor) pro zajištění lepšího výkonu
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > Tento článek vysvětluje, jak pomocí Pomocníka pro informace o mezipaměti pro dosažení vyššího výkonu na webových stránkách ASP.NET (Razor) webu. Můžete urychlit svůj web tak, že ho uložit &#8212; tedy mezipaměti &#8212; výsledků data, která obvykle by trvat docela dlouho načíst nebo zpracovávat a nemění často.

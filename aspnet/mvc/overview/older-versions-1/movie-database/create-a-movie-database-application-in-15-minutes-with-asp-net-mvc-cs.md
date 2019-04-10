@@ -8,15 +8,15 @@ ms.date: 01/27/2009
 ms.assetid: dd1be137-91c5-47a8-8137-fecf0789c7f5
 msc.legacyurl: /mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 16d62102713b0b86aa93284e39c82d3ae492f892
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 51cc38989fb204a3d14e04fb280fdd81bfd38a4d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074212"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59415164"
 ---
-<a name="create-a-movie-database-application-in-15-minutes-with-aspnet-mvc-c"></a>Vytvoření aplikace Movie Database za 15 minut s ASP.NET MVC (C#)
-====================
+# <a name="create-a-movie-database-application-in-15-minutes-with-aspnet-mvc-c"></a>Vytvoření aplikace Movie Database za 15 minut s ASP.NET MVC (C#)
+
 podle [Stephen Walther](https://github.com/StephenWalther)
 
 [Stáhnout kód](http://download.microsoft.com/download/7/2/8/728F8794-E59A-4D18-9A56-7AD2DB05BD9D/MovieApp_CS.zip)
@@ -78,7 +78,7 @@ Po instalaci sady Visual Studio 2008 nebo Visual Web Developer 2008, musíte nai
 Začněme tím, že vytvoříte nový projekt webové aplikace ASP.NET MVC v sadě Visual Studio 2008. Vyberte možnost nabídky **soubor, nový projekt** a zobrazí se dialogové okno Nový projekt na obrázku 1. Vyberte C# jako programovací jazyk a vyberte šablonu projektu webové aplikace ASP.NET MVC. Dejte projektu název MovieApp a klikněte na tlačítko OK.
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image1.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image1.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image1.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image1.png)
 
 **Obrázek 01**: Dialogové okno Nový projekt ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image2.png))
 
@@ -93,7 +93,7 @@ Pokaždé, když vytvoříte nový projekt webové aplikace MVC, Visual Studio v
 > Visual Web Developer nepodporuje projekty testů.
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image2.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image3.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image2.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image3.png)
 
 **Obrázek 02**: Dialogové okno Vytvořit projekt testování částí ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image4.png))
 
@@ -120,7 +120,7 @@ Po vytvoření databáze se můžete připojit k databázi dvojitým kliknutím 
 > V okně Průzkumníka serveru má název okna Průzkumníka databáze v případě Visual Web Developer.
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image3.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image5.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image3.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image5.png)
 
 **Obrázek 03**: Vytváří se databáze Microsoft SQL Server ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image6.png))
 
@@ -141,7 +141,7 @@ Dále musíme vytvořit nové databázové tabulky. Z okna Průzkumníka serveru
 První sloupec sloupec Id má dva speciální vlastnosti. Nejprve budete muset označit Id sloupec jako sloupec primárního klíče. Až vyberete sloupec Id, klikněte na tlačítko **nastavit primární klíč** tlačítko (je ikona, která vypadá jako klíče). Za druhé budete muset označit Id sloupec jako sloupec Identity. V okně Vlastnosti sloupce posuňte se dolů k části specifikace Identity a rozbalte ho. Změnit **je identita** k hodnotě **Ano**. Až budete hotovi, v tabulce by měl vypadat jako obrázek 4.
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image4.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image7.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image4.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image7.png)
 
 **Obrázek 04**: V tabulce databáze filmů ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image8.png))
 
@@ -151,7 +151,7 @@ Posledním krokem je uložit do nové tabulky. Klikněte na tlačítko Save (iko
 Po dokončení vytváření tabulky přidáte některé záznamy video do tabulky. Klikněte pravým tlačítkem na filmy tabulce v okně Průzkumníka serveru a vyberte možnost nabídky **zobrazit Data tabulky**. Zadejte seznam oblíbených video (viz obrázek 5).
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image5.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image9.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image5.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image9.png)
 
 **Obrázek 05**: Zadání film záznamů ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image10.png))
 
@@ -178,7 +178,7 @@ Po kliknutí na tlačítko Přidat, zobrazí se Průvodce datovým modelem Entit
 3. V **zvolte vaše databázové objekty** krok, rozbalte uzel tabulky, vyberte v tabulce videa. Zadejte obor názvů *MovieApp.Models* a klikněte na tlačítko **Dokončit** tlačítko.
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image6.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image11.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image6.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image11.png)
 
 **Obrázek 06**: Generování modelu databáze se Průvodce datovým modelem Entity ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image12.png))
 
@@ -186,7 +186,7 @@ Po kliknutí na tlačítko Přidat, zobrazí se Průvodce datovým modelem Entit
 Po dokončení Průvodce datovým modelem Entity, otevře se Návrhář Entity Data Model. Návrhář zobrazeno v tabulce databáze filmů (viz obrázek 7).
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image7.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image13.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image7.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image13.png)
 
 **Obrázek 07**: Entity Data Model Designer ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image14.png))
 
@@ -208,7 +208,7 @@ Postupujte podle těchto kroků:
 Po dokončení těchto kroků se vytvoří kontroler v informacích 1. Všimněte si, že obsahuje metody s názvem Index, podrobností, vytvořit a upravit. V následujících částech přidáme nezbytné kódu ke splnění tyto metody pro práci.
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image8.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image15.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image8.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image15.png)
 
 **Obrázek 08**: Přidat nový kontroler ASP.NET MVC ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image16.png))
 
@@ -248,24 +248,24 @@ Váš projekt má sestavit (vyberte možnost nabídky **vytvořit, sestavit ře�
 Po dokončení těchto kroků se přidá nová zobrazení s názvem Index.aspx ke složce Views\Home. Obsah zobrazení indexu jsou součástí výpis 3.
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image9.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image17.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image9.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image17.png)
 
 **Obrázek 09**: Přidání zobrazení z kontroleru akce ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image18.png))
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image10.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image19.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image10.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image19.png)
 
 **Obrázek 10**: Vytvoření nového zobrazení se dialogové okno Přidat zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image20.png))
 
 
-**Listing 3 – Views\Home\Index.aspx**
+**Výpis 3 – Views\Home\Index.aspx**
 
 [!code-aspx[Main](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/samples/sample3.aspx)]
 
 Index zobrazení zobrazí všechny záznamy video z databázové tabulky videa v rámci tabulku HTML. Zobrazení obsahuje smyčku foreach, která prochází každý film reprezentována ViewData.Model vlastností. Pokud spustíte svou aplikaci stisknutím klávesy F5, uvidíte webové stránky v obrázek 11.
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image11.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image21.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image11.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image21.png)
 
 **Obrázek 11**: Zobrazení indexu ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image22.png))
 
@@ -298,7 +298,7 @@ Visual Studio umožňuje snadno vytvořit formulář pro vytvoření nové datab
 5. Klikněte na tlačítko **přidat** pro vytvoření nového zobrazení.
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image12.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image23.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image12.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image23.png)
 
 **Obrázek 12**: Přidání zobrazení pro vytváření ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image24.png))
 
@@ -319,7 +319,7 @@ Po přidání zobrazení pro vytváření, můžete přidat nové video záznamy
 Všimněte si, že automaticky získání ověřovacího formuláře. Pokud opomenete zadejte datum vydání verze pro video, nebo zadejte datum neplatný vydání, formulář se zobrazí znovu a je zvýrazněn pole Datum vydání verze.
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image13.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image25.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image13.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image25.png)
 
 **Obrázek 13**: Vytváří se nový záznam v databázi movie ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image26.png))
 
@@ -339,7 +339,7 @@ Nejdřív potřebujeme Generovat formulář pro úpravy. Tento krok je jednoduch
 Následující postup přidá nové zobrazení s názvem Edit.aspx ke složce Views\Home. Toto zobrazení obsahuje formulář pro úpravy záznamu video ve formátu HTML.
 
 
-[![Dialogové okno Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image14.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image27.png)
+[![TDialogové okno Nový projekt he](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image14.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image27.png)
 
 **Obrázek 14**: Přidání zobrazení pro úpravy ([kliknutím ji zobrazíte obrázek v plné velikosti](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs/_static/image28.png))
 

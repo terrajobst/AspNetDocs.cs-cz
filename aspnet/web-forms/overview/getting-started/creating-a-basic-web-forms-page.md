@@ -8,16 +8,17 @@ ms.date: 03/03/2014
 ms.assetid: a2f1c635-0817-4a9a-8c13-d5b5d29727c0
 msc.legacyurl: /web-forms/overview/getting-started/creating-a-basic-web-forms-page
 msc.type: authoredcontent
-ms.openlocfilehash: eb1a4632caf00097012bd1757da44016a076630f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: bf3336c2467553ba3714bbd4fbb41a35a0490768
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066481"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59410601"
 ---
 # <a name="using-visual-studio-2013-to-create-a-basic-aspnet-45-web-forms-page"></a>Chcete-li vytvořit základní technologie ASP.NET 4.5 webové stránky s formuláři pomocí sady Visual Studio 2013
+# 
 
-=== podle [Erik Reitan](https://github.com/Erikre)
+by [Erik Reitan](https://github.com/Erikre)
 
 [!INCLUDE[](~/includes/rp.md)]
 
@@ -187,7 +188,7 @@ Visual Studio nabízí různé způsoby, jak nastavit vlastnosti ovládacích pr
 ### <a name="to-set-control-properties"></a>Chcete-li nastavit vlastnosti ovládacího prvku
 
 
-1. Nejprve zobrazte **vlastnosti** windows tak, že vyberete **zobrazení** nabídka -&gt; **ostatní Windows**  - &gt; **Properies okno**. Můžete také vybrat **F4** zobrazíte **vlastnosti** okna.
+1. Nejprve zobrazte **vlastnosti** windows tak, že vyberete **zobrazení** nabídka -&gt; **ostatní Windows**  - &gt; **Okno vlastností**. Můžete také vybrat **F4** zobrazíte **vlastnosti** okna.
 2. Vyberte [tlačítko](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx) ovládacího prvku a pak v **vlastnosti** okno, nastavte hodnotu **Text** k **zobrazovaný název**. Text, který jste zadali se zobrazí na tlačítku v návrháři, jak je znázorněno na následujícím obrázku.
 
     ![Nastavit text na tlačítku](creating-a-basic-web-forms-page/_static/image10.png "tlačítko Nastavit text")

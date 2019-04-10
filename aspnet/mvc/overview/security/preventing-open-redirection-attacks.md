@@ -8,15 +8,15 @@ ms.date: 02/27/2014
 ms.assetid: 69fb02e0-f5b7-4c35-878c-fa87164fc785
 msc.legacyurl: /mvc/overview/security/preventing-open-redirection-attacks
 msc.type: authoredcontent
-ms.openlocfilehash: 767f9c85527fbcdf34e700eb32fe0c6cad30bf0c
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 1d83ede97ec37166d8dec32ff9e21c65423f3fc5
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066832"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59408482"
 ---
-<a name="preventing-open-redirection-attacks-c"></a>Prevence útoků založených na otevřeném přesměrování (C#)
-====================
+# <a name="preventing-open-redirection-attacks-c"></a>Prevence útoků založených na otevřeném přesměrování (C#)
+
 podle [Jon Galloway](https://github.com/jongalloway)
 
 > Tento kurz vysvětluje, jak lze zabránit útokům otevřené přesměrování ve svých aplikacích ASP.NET MVC. Tento kurz popisuje změny, které byly provedeny v AccountController v architektuře ASP.NET MVC 3 a ukazuje, jak je možné použít tyto změny v existujících ASP.NET MVC 1.0 a 2 aplikacemi.

@@ -119,6 +119,7 @@ DocFX vyžaduje:
   ```console
   docfx --serve
   ```
+
 * V prohlížeči přejděte na `http://localhost:8080/group1-dest/`.
 
 ### <a name="mono-instructions"></a>Pokyny k mono
@@ -128,6 +129,7 @@ DocFX vyžaduje:
   ```console
   brew install mono
   ```
+
 * Stáhněte si [nejnovější verzi DocFX](https://github.com/dotnet/docfx/releases).
 * Extrahovat archiv do *$HOME/bin/docfx*.
 * Vytvoření páru aliasy pro **docfx** v prostředí bash. První alias sloužící k sestavení v dokumentaci. Druhý alias umožňuje sestavovat a dodávat v dokumentaci.
@@ -136,11 +138,13 @@ DocFX vyžaduje:
   alias docfx='mono $HOME/bin/docfx/docfx.exe'
   alias docfx-serve='mono $HOME/bin/docfx/docfx.exe --serve'
   ```
+
 * V příkazovém řádku přejděte do *aspnet* složku, která obsahuje *docfx.json* soubor a spusťte následující příkaz, který sestavovat a dodávat dokumentace prostřednictvím jeho alias:
 
   ```console
   docfx-serve
   ```
+
 * V prohlížeči přejděte na `http://localhost:8080/group1-dest/`.
 
 ## <a name="voice-and-tone"></a>Pro hlasové hovory a tón

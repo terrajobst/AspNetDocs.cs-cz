@@ -8,15 +8,15 @@ ms.date: 08/08/2011
 ms.assetid: b3fb4480-0f41-495b-add6-163ca92dc8a3
 msc.legacyurl: /web-forms/overview
 msc.type: book
-ms.openlocfilehash: 0c29a844bd227a79e6df5231e0903129e306742e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 4b38d6b54f53508f7b568207fe7f1a624a7af5f3
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796738"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59402268"
 ---
-<a name="aspnet-web-forms-guidance"></a>Webové formuláře ASP.NET pokyny
-====================
+# <a name="aspnet-web-forms-guidance"></a>Webové formuláře ASP.NET pokyny
+
 - [Začínáme](getting-started/index.md)
 
     - [Začínáme s webovými formuláři ASP.NET 4.5 a sadou Visual Studio 2013](getting-started/getting-started-with-aspnet-45-web-forms/index.md)
@@ -66,16 +66,16 @@ ms.locfileid: "57796738"
         - [Vlastnosti projektu](deployment/visual-studio-web-deployment/project-properties.md)
         - [Nasazení do testovacího prostředí](deployment/visual-studio-web-deployment/deploying-to-iis.md)
         - [Nastavení oprávnění složky](deployment/visual-studio-web-deployment/setting-folder-permissions.md)
-        - [Nasazení do provozního prostředí](deployment/visual-studio-web-deployment/deploying-to-production.md)
+        - [Nasazení do produkčního prostředí](deployment/visual-studio-web-deployment/deploying-to-production.md)
         - [Nasazení aktualizace kódu](deployment/visual-studio-web-deployment/deploying-a-code-update.md)
         - [Nasazení aktualizace databáze](deployment/visual-studio-web-deployment/deploying-a-database-update.md)
         - [Nasazení příkazového řádku](deployment/visual-studio-web-deployment/command-line-deployment.md)
         - [Nasazení dalších souborů](deployment/visual-studio-web-deployment/deploying-extra-files.md)
-        - [Odstraňování potíží](deployment/visual-studio-web-deployment/troubleshooting.md)
+        - [Poradce při potížích](deployment/visual-studio-web-deployment/troubleshooting.md)
     - [ASP.NET 4 – úvod do nasazení v podniku](deployment/deploying-web-applications-in-enterprise-scenarios/index.md)
 
         - [Scénáře nasazení webových aplikací v podniku pomocí sady Visual Studio 2010](deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md)
-        - [Nasazení podnikového webu: Přehled scénářů](deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)
+        - [Nasazení podnikového webu: Přehledný scénář](deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)
         - [Správa životního cyklu aplikací: Od vývoje k ostrému provozu](deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production.md)
     - [ASP.NET 4 – nasazení v podniku (1. část)](deployment/web-deployment-in-the-enterprise/index.md)
 
@@ -87,7 +87,7 @@ ms.locfileid: "57796738"
         - [Sestavení a balení projektů webových aplikací](deployment/web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md)
         - [Konfigurace parametrů nasazení webového balíčku](deployment/web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment.md)
         - [Nasazení webových balíčků](deployment/web-deployment-in-the-enterprise/deploying-web-packages.md)
-        - [Nasazení projektu databáze](deployment/web-deployment-in-the-enterprise/deploying-database-projects.md)
+        - [Nasazení databázových projektů](deployment/web-deployment-in-the-enterprise/deploying-database-projects.md)
         - [Vytvoření a spuštění souboru příkazů k nasazení](deployment/web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file.md)
         - [Ruční instalace webových balíčků](deployment/web-deployment-in-the-enterprise/manually-installing-web-packages.md)
     - [ASP.NET 4 – nasazení v podniku (2. část) – konfigurace serverů](deployment/configuring-server-environments-for-web-deployment/index.md)
@@ -107,7 +107,7 @@ ms.locfileid: "57796738"
 
         - [Konfigurace sady Team Foundation Server pro nasazení webu](deployment/configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md)
         - [Vytváření týmových projektů v TFS](deployment/configuring-team-foundation-server-for-web-deployment/creating-a-team-project-in-tfs.md)
-        - [Přidání obsahu do Správy zdrojů](deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control.md)
+        - [Přidání obsahu do správy zdrojového kódu](deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control.md)
         - [Konfigurace serveru TFS Build pro nasazení webu](deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment.md)
         - [Vytvoření definice nasazení, která podporuje nasazení](deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment.md)
         - [Nasazení konkrétního sestavení](deployment/configuring-team-foundation-server-for-web-deployment/deploying-a-specific-build.md)
@@ -123,20 +123,20 @@ ms.locfileid: "57796738"
         - [Převedení webových aplikací offline nástrojem pro nasazení webu](deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy.md)
         - [Spuštění skriptů Windows PowerShellu ze souborů projektu MSBuild](deployment/advanced-enterprise-web-deployment/running-windows-powershell-scripts-from-msbuild-project-files.md)
         - [Řešení potíží s procesem vytváření balíčku](deployment/advanced-enterprise-web-deployment/troubleshooting-the-packaging-process.md)
-- [Pokročilé](advanced/index.md)
+- [Upřesnit](advanced/index.md)
 
     - [Webové formuláře ASP.NET – odolnost připojení a zachycení příkazů](advanced/aspnet-web-forms-connection-resiliency-and-command-interception.md)
 - [Starší verze – začínáme](older-versions-getting-started/index.md)
 
     - [ASP.NET 4 – Tailspin Spyworks](older-versions-getting-started/tailspin-spyworks/index.md)
 
-        - [Část 1: Soubor -> Nový projekt](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1.md)
+        - [Část 1: Soubor > Nový projekt](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1.md)
         - [Část 2: Vrstva přístupu k datům](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2.md)
-        - [3. část: Nabídka rozložení a kategorie](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3.md)
-        - [4. část: Seznam produktů](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4.md)
-        - [5. část: Obchodní logika](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5.md)
-        - [6. část: Členství technologie ASP.NET](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6.md)
-        - [Část 7: Přidání funkce](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7.md)
+        - [Část 3: Nabídka Rozložení a Kategorie](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3.md)
+        - [Část 4: Seznam produktů](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4.md)
+        - [Část 5: Obchodní logika](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5.md)
+        - [Část 6: Členství v ASP.NET](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6.md)
+        - [Část 7: Přidání funkcí](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7.md)
         - [Část 8: Závěrečné stránky, zpracování výjimek a závěr](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8.md)
     - [ASP.NET 4 – Začínáme se sadou Entity Framework 4 a webovými formuláři](older-versions-getting-started/getting-started-with-ef/index.md)
 
@@ -150,7 +150,7 @@ ms.locfileid: "57796738"
         - [Začínáme s Entity Framework 4.0 Database First – 8. část](older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8.md)
     - [ASP.NET 4 – Pokračujeme se sadou Entity Framework 4 a webovými formuláři](older-versions-getting-started/continuing-with-ef/index.md)
 
-        - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 1. část: Začínáme se službou](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
+        - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 1. část: Začínáme](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
         - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 2. část: Přidání vrstvy obchodní logiky a testy jednotek](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
         - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 3. část: Řazení a filtrování](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
         - [Ošetření souběžnosti se sadou Entity Framework 4.0 v ASP.NET 4](older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)
@@ -164,7 +164,7 @@ ms.locfileid: "57796738"
         - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – konfigurace vlastností projektu](older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-configuring-project-properties-4-of-12.md)
         - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nasazení testovacího prostředí do služby IIS](older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md)
         - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nastavení oprávnění ke složce](older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md)
-        - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nasazení do provozního prostředí](older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md)
+        - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nasazení do produkčního prostředí](older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md)
         - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nasazení aktualizace kódu](older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-a-code-only-update-8-of-12.md)
         - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nasazení aktualizace databáze](older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-a-database-update-9-of-12.md)
         - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – migrace na SQL Server](older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12.md)
@@ -185,7 +185,7 @@ ms.locfileid: "57796738"
         - [Zadání názvu, metaznaček a dalších hlaviček HTML na stránce předlohy (C#)](older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)
         - [Adresy URL stránek předloh (C#)](older-versions-getting-started/master-pages/urls-in-master-pages-cs.md)
         - [Pojmenovávání ID ovládacích prvků na stránkách obsahu (C#)](older-versions-getting-started/master-pages/control-id-naming-in-content-pages-cs.md)
-        - [Interakce stránky obsahu se stránkou předlohy (C#)](older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs.md)
+        - [Interakce stránky předlohy se stránkou obsahu (C#)](older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs.md)
         - [Interakce stránky předlohy se stránkou obsahu (C#)](older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-cs.md)
         - [Stránky předlohy a ASP.NET AJAX (C#)](older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-cs.md)
         - [Programové určení stránky předlohy (C#)](older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-cs.md)
@@ -195,7 +195,7 @@ ms.locfileid: "57796738"
         - [Zadání názvu, metaznaček a dalších hlaviček HTML na stránce předlohy (VB)](older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb.md)
         - [Adresy URL stránek předloh (VB)](older-versions-getting-started/master-pages/urls-in-master-pages-vb.md)
         - [Pojmenovávání ID ovládacích prvků na stránkách obsahu (VB)](older-versions-getting-started/master-pages/control-id-naming-in-content-pages-vb.md)
-        - [Interakce stránky obsahu se stránkou předlohy (VB)](older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-vb.md)
+        - [Interakce stránky předlohy se stránkou obsahu (VB)](older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-vb.md)
         - [Interakce stránky předlohy se stránkou obsahu (VB)](older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb.md)
         - [Stránky předlohy a ASP.NET AJAX (VB)](older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-vb.md)
         - [Programové určení stránky předlohy (VB)](older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-vb.md)
@@ -209,7 +209,7 @@ ms.locfileid: "57796738"
         - [Nejčastější rozdíly mezi vývojovou a provozní konfigurací (C#)](older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs.md)
         - [Hlavní rozdíly mezi službou IIS a serverem ASP.NET Development Server (C#)](older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-cs.md)
         - [Nasazení databáze (C#)](older-versions-getting-started/deploying-web-site-projects/deploying-a-database-cs.md)
-        - [Konfigurace provozní webové aplikace pro použití provozní databáze (C#)](older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-cs.md)
+        - [Konfigurace provozní webové aplikace pro použití produkční databáze (C#)](older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-cs.md)
         - [Konfigurace webu, který používá aplikační služby (C#)](older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-cs.md)
         - [Strategie vývoje a nasazení databází (C#)](older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-cs.md)
         - [Zobrazení vlastní chybové stránky (C#)](older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-cs.md)
@@ -217,15 +217,15 @@ ms.locfileid: "57796738"
         - [Protokolování podrobností o chybách pomocí monitorování stavu v ASP.NET (C#)](older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs.md)
         - [Protokolování podrobností o chybách pomocí knihovny ELMAH (C#)](older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-cs.md)
         - [Předkompilace webu (C#)](older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-cs.md)
-        - [Uživatelé a role na provozním webu (C#)](older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-cs.md)
+        - [Uživatelé a role na produkčním webu (C#)](older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-cs.md)
         - [Možnosti hostování v technologii ASP.NET (VB)](older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb.md)
         - [Zjištění souborů, které je potřeba nasadit (VB)](older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-vb.md)
         - [Nasazení webu pomocí klienta FTP (VB)](older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-vb.md)
         - [Nasazení webu pomocí sady Visual Studio (VB)](older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-vb.md)
-        - [Nejčastější rozdíly mezi vývojovou a provozní konfigurací (VB)](older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-vb.md)
+        - [Nejčastější rozdíly mezi vývojovou a produkční konfigurací (VB)](older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-vb.md)
         - [Hlavní rozdíly mezi službou IIS a serverem ASP.NET Development Server (VB)](older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-vb.md)
         - [Nasazení databáze (VB)](older-versions-getting-started/deploying-web-site-projects/deploying-a-database-vb.md)
-        - [Konfigurace provozní webové aplikace pro použití provozní databáze (VB)](older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb.md)
+        - [Konfigurace produkční webové aplikace pro použití produkční databáze (VB)](older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb.md)
         - [Konfigurace webu, který používá aplikační služby (VB)](older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-vb.md)
         - [Strategie vývoje a nasazení databází (VB)](older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-vb.md)
         - [Zobrazení vlastní chybové stránky (VB)](older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-vb.md)
@@ -233,17 +233,17 @@ ms.locfileid: "57796738"
         - [Protokolování podrobností o chybách pomocí monitorování stavu v ASP.NET (VB)](older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-vb.md)
         - [Protokolování podrobností o chybách pomocí knihovny ELMAH (VB)](older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-vb.md)
         - [Předkompilace webu (VB)](older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-vb.md)
-        - [Uživatelé a role na provozním webu (VB)](older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-vb.md)
+        - [Uživatelé a role na produkčním webu (VB)](older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-vb.md)
 - [Starší verze – sada nástrojů Ajax Control Toolkit](ajax-control-toolkit/index.md)
 
     - [Začínáme](ajax-control-toolkit/getting-started/index.md)
 
         - [Začínáme se sadou nástrojů AJAX Control Toolkit (C#)](ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-cs.md)
-        - [Použití ovládacích prvků a extenderů ovládacích prvků AJAX Control Toolkit (C#)](ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-cs.md)
-        - [Vytvoření vlastního extenderu ovládacího prvku AJAX Control Toolkit (C#)](ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
+        - [Použití ovládacích prvků a rozšiřujících ovládacích prvků AJAX Control Toolkit (C#)](ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-cs.md)
+        - [Vytvoření vlastního rozšiřujícího ovládacího prvku AJAX Control Toolkit (C#)](ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
         - [Začínáme se sadou nástrojů AJAX Control Toolkit (VB)](ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-vb.md)
-        - [Použití ovládacích prvků a extenderů ovládacích prvků AJAX Control Toolkit (VB)](ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-vb.md)
-        - [Vytvoření vlastního extenderu ovládacího prvku AJAX Control Toolkit (VB)](ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-vb.md)
+        - [Použití ovládacích prvků a rozšiřujících ovládacích prvků AJAX Control Toolkit (VB)](ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-vb.md)
+        - [Vytvoření vlastního rozšiřujícího ovládacího prvku AJAX Control Toolkit (VB)](ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-vb.md)
     - [Accordion](ajax-control-toolkit/accordion/index.md)
 
         - [Datová vazba ovládacího prvku Accordion (C#)](ajax-control-toolkit/accordion/databinding-to-an-accordion-cs.md)
@@ -294,16 +294,16 @@ ms.locfileid: "57796738"
         - [Sbalení a rozbalení panelu JavaScriptem (VB)](ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-vb.md)
     - [ColorPicker](ajax-control-toolkit/colorpicker/index.md)
 
-        - [Extender ovládacího prvku ColorPicker (C#)](ajax-control-toolkit/colorpicker/using-the-colorpicker-control-extender-cs.md)
-        - [Extender ovládacího prvku ColorPicker (VB)](ajax-control-toolkit/colorpicker/using-the-colorpicker-control-extender-vb.md)
+        - [Rozšiřující ovládací prvek pro ovládací prvek ColorPicker (C#)](ajax-control-toolkit/colorpicker/using-the-colorpicker-control-extender-cs.md)
+        - [Rozšiřující ovládací prvek pro ovládací prvek ColorPicker (VB)](ajax-control-toolkit/colorpicker/using-the-colorpicker-control-extender-vb.md)
     - [ComboBox](ajax-control-toolkit/combobox/index.md)
 
         - [Ovládací prvek ComboBox (C#)](ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-cs.md)
         - [Ovládací prvek ComboBox (VB)](ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb.md)
     - [ConfirmButton](ajax-control-toolkit/confirmbutton/index.md)
 
-        - [Použití extenderu ConfirmButton v repeateru (C#)](ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-cs.md)
-        - [Použití extenderu ConfirmButton v repeateru (VB)](ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-vb.md)
+        - [Použití ovládacího prvku ConfirmButton v repeateru (C#)](ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-cs.md)
+        - [Použití ovládacího prvku ConfirmButton v repeateru (VB)](ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-vb.md)
     - [DropShadow](ajax-control-toolkit/dropshadow/index.md)
 
         - [Úprava indexu Z ovládacího prvku DropShadow (C#)](ajax-control-toolkit/dropshadow/adjusting-the-z-index-of-a-dropshadow-cs.md)
@@ -356,14 +356,14 @@ ms.locfileid: "57796738"
 
         - [Testování síly hesla (C#)](ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-cs.md)
         - [Testování síly hesla (VB)](ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-vb.md)
-    - [Popup](ajax-control-toolkit/popup/index.md)
+    - [Překryvný](ajax-control-toolkit/popup/index.md)
 
         - [Použití několika překryvných ovládacích prvků (C#)](ajax-control-toolkit/popup/using-multiple-popup-controls-cs.md)
-        - [Zpracování postbacků extenderu PopupControl ovládacím prvkem UpdatePanel (C#)](ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
-        - [Zpracování postbacků extenderu PopupControl bez ovládacího prvku UpdatePanel (C#)](ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md)
+        - [Zpracování postbacků ovládacího prvku PopupControl ovládacím prvkem UpdatePanel (C#)](ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
+        - [Zpracování postbacků ovládacího prvku PopupControl bez ovládacího prvku UpdatePanel (C#)](ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md)
         - [Použití několika překryvných ovládacích prvků (VB)](ajax-control-toolkit/popup/using-multiple-popup-controls-vb.md)
-        - [Zpracování postbacků extenderu PopupControl ovládacím prvkem UpdatePanel (VB)](ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-vb.md)
-        - [Zpracování postbacků extenderu PopupControl bez ovládacího prvku UpdatePanel (VB)](ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)
+        - [Zpracování postbacků ovládacího prvku PopupControl ovládacím prvkem UpdatePanel (VB)](ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-vb.md)
+        - [Zpracování postbacků ovládacího prvku PopupControl bez ovládacího prvku UpdatePanel (VB)](ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)
     - [Rating](ajax-control-toolkit/rating/index.md)
 
         - [Vytvoření ovládacího prvku Rating (C#)](ajax-control-toolkit/rating/creating-a-rating-control-cs.md)
@@ -404,16 +404,16 @@ ms.locfileid: "57796738"
         - [Zobrazení dat ovládacím prvkem ObjectDataSource (VB)](data-access/basic-reporting/displaying-data-with-the-objectdatasource-vb.md)
         - [Deklarované parametry (VB)](data-access/basic-reporting/declarative-parameters-vb.md)
         - [Programové nastavení hodnot parametru ObjectDataSource (VB)](data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb.md)
-    - [Hlavní záznamy/záznamy podrobností](data-access/masterdetail/index.md)
+    - [Hlavní záznamy / podrobnosti](data-access/masterdetail/index.md)
 
-        - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (C#)](data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md)
-        - [Filtrování záznamů master/detail dvou ovládacích prvků DropDownList (C#)](data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-cs.md)
-        - [Filtrování záznamů master/detail na dvou stránkách (C#)](data-access/masterdetail/master-detail-filtering-across-two-pages-cs.md)
-        - [Zobrazení hlavního záznamu/podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (C#)](data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)
-        - [Filtrování záznamů hlavních záznamů/podrobností ovládacím prvkem DropDownList (VB)](data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md)
-        - [Filtrování záznamů hlavních záznamů/podrobností dvou ovládacích prvků DropDownList (VB)](data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-vb.md)
-        - [Filtrování záznamů hlavních záznamů/podrobností na dvou stránkách (VB)](data-access/masterdetail/master-detail-filtering-across-two-pages-vb.md)
-        - [Zobrazení hlavního záznamu/podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (VB)](data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md)
+        - [Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (C#)](data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md)
+        - [Filtrování hlavních záznamů / podrobností dvou ovládacích prvků DropDownList (C#)](data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-cs.md)
+        - [Filtrování hlavních záznamů / podrobností na dvou stránkách (C#)](data-access/masterdetail/master-detail-filtering-across-two-pages-cs.md)
+        - [Zobrazení hlavních záznamů / podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (C#)](data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)
+        - [Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (VB)](data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md)
+        - [Filtrování hlavních záznamů / podrobností dvou ovládacích prvků DropDownList (VB)](data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-vb.md)
+        - [Filtrování hlavních záznamů / podrobností na dvou stránkách (VB)](data-access/masterdetail/master-detail-filtering-across-two-pages-vb.md)
+        - [Zobrazení hlavních záznamů / podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (VB)](data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md)
     - [Vlastní formátování](data-access/custom-formatting/index.md)
 
         - [Vlastní formátování založené na datech (C#)](data-access/custom-formatting/custom-formatting-based-upon-data-cs.md)
@@ -470,12 +470,12 @@ ms.locfileid: "57796738"
         - [Webové ovládací prvky vnořených dat (VB)](data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-vb.md)
     - [Scénáře filtrování ovládacími prvky DataList a Repeater](data-access/filtering-scenarios-with-the-datalist-and-repeater/index.md)
 
-        - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (C#)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
-        - [Filtrování záznamů master/detail na dvou stránkách (C#)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs.md)
-        - [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (C#)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
-        - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (VB)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
-        - [Filtrování záznamů master/detail na dvou stránkách (VB)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-vb.md)
-        - [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)
+        - [Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (C#)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
+        - [Filtrování hlavních záznamů / podrobností na dvou stránkách (C#)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs.md)
+        - [Zobrazení hlavních záznamů / podrobností v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (C#)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
+        - [Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (VB)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
+        - [Filtrování hlavních záznamů / podrobností na dvou stránkách (VB)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-vb.md)
+        - [Zobrazení hlavních záznamů / podrobností v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)
     - [Úpravy a odstranění dat prostřednictvím datového prvku DataList](data-access/editing-and-deleting-data-through-the-datalist/index.md)
 
         - [Přehled úprav a odstranění dat v ovládacím prvku DataList (C#)](data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md)
@@ -552,20 +552,20 @@ ms.locfileid: "57796738"
         - [Dávkové vkládání (VB)](data-access/working-with-batched-data/batch-inserting-vb.md)
     - [Pokročilé scénáře přístupu k datům](data-access/advanced-data-access-scenarios/index.md)
 
-        - [Vytvoření nových uložených procedur prvků TableAdapter typových datových sad (C#)](data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
-        - [Použití stávajících uložených procedur komponentami TableAdapter typových datových sad (C#)](data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
+        - [Vytvoření nových uložených procedur prvků TableAdapter typových sad dat (C#)](data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
+        - [Použití stávajících uložených procedur komponentami TableAdapter typových sad dat (C#)](data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
         - [Aktualizace komponenty TableAdapter kvůli použití příkazů JOIN (C#)](data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-cs.md)
         - [Přidání dalších sloupců do tabulky DataTable (C#)](data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-cs.md)
-        - [Práce s vypočtenými sloupci (C#)](data-access/advanced-data-access-scenarios/working-with-computed-columns-cs.md)
+        - [Práce s vypočítanými sloupci (C#)](data-access/advanced-data-access-scenarios/working-with-computed-columns-cs.md)
         - [Konfigurace připojení vrstvy přístupu k datům a nastavení na úrovni příkazu (C#)](data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)
         - [Ochrana připojovacích řetězců a dalších konfiguračních údajů (C#)](data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs.md)
         - [Ladění uložených procedur (C#)](data-access/advanced-data-access-scenarios/debugging-stored-procedures-cs.md)
         - [Vytvoření uložených procedur a uživatelsky definovaných funkcí spravovaným kódem (C#)](data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-cs.md)
-        - [Vytvoření nových uložených procedur prvků TableAdapter typových datových sad (VB)](data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
-        - [Použití stávajících uložených procedur komponentami TableAdapter typových datových sad (VB)](data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
+        - [Vytvoření nových uložených procedur prvků TableAdapter typových sad dat (VB)](data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
+        - [Použití stávajících uložených procedur komponentami TableAdapter typových sad dat (VB)](data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
         - [Aktualizace komponenty TableAdapter kvůli použití příkazů JOIN (VB)](data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-vb.md)
         - [Přidání dalších sloupců do tabulky DataTable (VB)](data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-vb.md)
-        - [Práce s vypočtenými sloupci (VB)](data-access/advanced-data-access-scenarios/working-with-computed-columns-vb.md)
+        - [Práce s vypočítanými sloupci (VB)](data-access/advanced-data-access-scenarios/working-with-computed-columns-vb.md)
         - [Konfigurace připojení vrstvy přístupu k datům a nastavení na úrovni příkazu (VB)](data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-vb.md)
         - [Ochrana připojovacích řetězců a dalších konfiguračních údajů (VB)](data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-vb.md)
         - [Ladění uložených procedur (VB)](data-access/advanced-data-access-scenarios/debugging-stored-procedures-vb.md)
@@ -610,7 +610,7 @@ ms.locfileid: "57796738"
         - [Odemykání a schvalování uživatelských účtů (VB)](older-versions-security/admin/unlocking-and-approving-user-accounts-vb.md)
 - [Starší verze – ASP.NET 2.0](moving-to-aspnet-20/index.md)
 
-    - [Vylepšení sady Visual Studio 2005](moving-to-aspnet-20/improvements-in-visual-studio-2005.md)
+    - [Vylepšení v sadě Visual Studio 2005](moving-to-aspnet-20/improvements-in-visual-studio-2005.md)
     - [Model stránky v ASP.NET 2.0](moving-to-aspnet-20/the-asp-net-2-0-page-model.md)
     - [Serverové ovládací prvky](moving-to-aspnet-20/server-controls.md)
     - [Stránky předlohy](moving-to-aspnet-20/master-pages.md)

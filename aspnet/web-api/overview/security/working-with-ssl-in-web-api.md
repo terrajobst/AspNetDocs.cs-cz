@@ -8,15 +8,15 @@ ms.date: 02/22/2019
 ms.assetid: 97f6164f-59cf-45c0-b820-e4aa29b45396
 msc.legacyurl: /web-api/overview/security/working-with-ssl-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 69c0d217f605096d968435c062ee9931f8dff75f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 31589b3713b1f1a9b98d12906bfef81f8bf5e3f9
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073282"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59386149"
 ---
-<a name="working-with-ssl-in-web-api"></a>Práce s protokolem SSL ve webovém rozhraní API
-====================
+# <a name="working-with-ssl-in-web-api"></a>Práce s protokolem SSL ve webovém rozhraní API
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 Několik společných schémat ověřování nejsou zabezpečené přes standardní protokol HTTP. Konkrétně se základní ověřování a ověřování pomocí formulářů odesílat nezašifrované přihlašovací údaje. Zabezpečení, tato schémata ověřování *musí* používat protokol SSL. Kromě toho certifikáty SSL klienta slouží k ověřování klientů.

@@ -8,22 +8,22 @@ ms.date: 02/16/2012
 ms.assetid: 1c7cc326-04f5-4578-bf62-a7d381f380f7
 msc.legacyurl: /web-api/videos/getting-started
 msc.type: chapter
-ms.openlocfilehash: cfcbe3732a3e3cbd6a210839a318a17ed636d636
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5cec547993722e587fc0f54486f7f2ca388db64d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796032"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59404101"
 ---
-<a name="aspnet-web-api-overview-and-getting-started-videos"></a>Přehled ASP.NET Web API a získat úvodní videa
-====================
+# <a name="aspnet-web-api-overview-and-getting-started-videos"></a>Přehled ASP.NET Web API a získat úvodní videa
+
 > Toto je sérii videí, které vám pomůžou začít s rozhraním ASP.NET Web API.
 
 
-- [Webové rozhraní API v ASP.NET](aspnet-web-api.md)
-- [Rozhraní ASP.NET Web API, část 1: První webové rozhraní API](your-first-web-api.md)
-- [Rozhraní ASP.NET Web API 2. část: Získání dat](getting-data.md)
-- [Rozhraní ASP.NET Web API, část 3: Odstranění a aktualizace](delete-and-update.md)
-- [Rozhraní ASP.NET Web API, část 4: Stránkování a Tvorba dotazů](paging-and-querying.md)
-- [Rozhraní ASP.NET Web API, 5. část: Vlastní ověřování](custom-validation.md)
-- [Rozhraní ASP.NET Web API, část 6: Autorizace](authorization.md)
+- [Rozhraní API pro ASP.NET Web](aspnet-web-api.md)
+- [Webové rozhraní API v ASP.NET, 1. část: První webové rozhraní API](your-first-web-api.md)
+- [Webové rozhraní API v ASP.NET, 2. část: Získání dat](getting-data.md)
+- [Webové rozhraní API v ASP.NET, 3. část: Odstranění a aktualizace](delete-and-update.md)
+- [Webové rozhraní API v ASP.NET, 4. část: Stránkování a tvorba dotazů](paging-and-querying.md)
+- [Webové rozhraní API v ASP.NET, 5. část: Vlastní ověřování](custom-validation.md)
+- [Webové rozhraní API v ASP.NET, 6. část: Autorizace](authorization.md)

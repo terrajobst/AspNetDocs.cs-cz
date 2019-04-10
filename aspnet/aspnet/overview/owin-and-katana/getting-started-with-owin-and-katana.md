@@ -8,15 +8,15 @@ ms.date: 09/27/2013
 ms.assetid: 6dae249f-5ac6-4f6e-bc49-13bcd5a54a70
 msc.legacyurl: /aspnet/overview/owin-and-katana/getting-started-with-owin-and-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 9920861da0e67d9304a944cacfb8ff8685267cd6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5b5ecfcc7561e3e7bc13e1c8819a548e73ae1ab3
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074251"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59408092"
 ---
-<a name="getting-started-with-owin-and-katana"></a>Začínáme se specifikací OWIN a sadou Katana
-====================
+# <a name="getting-started-with-owin-and-katana"></a>Začínáme se specifikací OWIN a sadou Katana
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 [Otevřete Web Interface pro .NET (OWIN)](http://owin.org/) definuje abstrakce mezi .NET webové servery a webové aplikace. Oddělením webový server z aplikace OWIN usnadňuje vytvoření middleware pro vývoj webových aplikací .NET. Navíc OWIN usnadňuje port webové aplikace do jiných hostitelů&#8212;například samoobslužné hostování ve službě Windows nebo jiný proces.

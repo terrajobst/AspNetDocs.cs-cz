@@ -9,17 +9,13 @@ ms.topic: tutorial
 ms.assetid: 7ba88418-5d0a-437d-b6dc-7c3816d4ec07
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 50fdcc1959b8f3a02ec5bbe0eb7417ffb8a260a3
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: d90a327da40ffd6d7956c5fbe019cf9de30c706d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425900"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59407507"
 ---
-<a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Aktualizace souvisejících dat s Entity Framework v aplikaci ASP.NET MVC
-====================
-
-
 # <a name="tutorial-update-related-data-with-ef-in-an-aspnet-mvc-app"></a>Kurz: Aktualizace souvisejících dat v aplikaci ASP.NET MVC s EF
 
 V předchozím kurzu zobrazí související data. V tomto kurzu budete aktualizovat související data. U většiny relací to můžete udělat prostřednictvím aktualizace pole cizích klíčů nebo navigační vlastnosti. U relací m: n Entity Framework nezveřejňuje tabulky spojení přímo, tak přidání a odebrání entity do a z odpovídající navigační vlastnosti.
@@ -93,7 +89,7 @@ V *Views\Course\Delete.cshtml* a *Views\Course\Details.cshtml*, změnit titulek 
 
 Spustit **vytvořit** stránky (Zobrazit kurz indexovou stránku a klikněte na tlačítko **vytvořit nový**) a zadejte data pro nový kurzu:
 
-| Hodnota | Nastavení |
+| Value | Nastavení |
 | ----- | ------- |
 | Číslo | Zadejte *1000*. |
 | Název | Zadejte *algebraický*. |

@@ -8,15 +8,15 @@ ms.date: 11/13/2006
 ms.assetid: e8e0809b-25c4-4c3b-8d12-9a17048148ae
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bd66affc6ceab864ca753287f484a37c7671f20f
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 4657d1ffbcae90a9a0bc283c0d6f604891e29d13
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423049"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59414462"
 ---
-<a name="paging-report-data-in-a-datalist-or-repeater-control-c"></a>Stránkování dat sestavy ovládacími prvky DataList nebo Repeater (C#)
-====================
+# <a name="paging-report-data-in-a-datalist-or-repeater-control-c"></a>Stránkování dat sestavy ovládacími prvky DataList nebo Repeater (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_44_CS.exe) nebo [stahovat PDF](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/datatutorial44cs1.pdf)
@@ -53,7 +53,7 @@ Než začneme v tomto kurzu, umožní s nejdřív využít pro přidání strán
 Dále otevřete `Default.aspx` stránku a přetáhněte ji `SectionLevelTutorialListing.ascx` uživatelského ovládacího prvku od `UserControls` složky na návrhovou plochu. Tento uživatelský ovládací prvek, který jsme vytvořili v [stránky předlohy a navigace na webu](../introduction/master-pages-and-site-navigation-cs.md) kurzu mapy webu a zobrazí výčet tyto kurzy v aktuálním oddílu v seznamu s odrážkami.
 
 
-[![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image3.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image2.png)
+[![Add uživatelského ovládacího prvku SectionLevelTutorialListing.ascx Default.aspx](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image3.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image2.png)
 
 **Obrázek 2**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image4.png))
 
@@ -110,7 +110,7 @@ Přidejte metodu k `ProductsBLL` třídu s názvem `GetProductsAsPagedDataSource
 S `GetProductsAsPagedDataSource` metoda přidána do `ProductsBLL` třídy, můžete teď vytvoříme DataList nebo Repeater, která poskytuje výchozí stránkování. Začněte otevřením `Paging.aspx` stránku `PagingSortingDataListRepeater` složky a a v prvku DataList přetáhněte z panelu nástrojů do Návrháře nastavení DataList s `ID` vlastnost `ProductsDefaultPaging`. V prvku DataList s inteligentním, vytvoření nového prvku ObjectDataSource s názvem `ProductsDefaultPagingDataSource` a nakonfigurujte ho tak, aby ho načte data s využitím `GetProductsAsPagedDataSource` metody.
 
 
-[![Vytvoření ObjectDataSource a nakonfigurujte ho na použití GetProductsAsPagedDataSource () – metoda](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image8.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image7.png)
+[![CVytvořit prvku ObjectDataSource a nakonfigurujte ho na použití (GetProductsAsPagedDataSource) metoda](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image8.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image7.png)
 
 **Obrázek 5**: Prvku ObjectDataSource vytvořit a nakonfigurovat jej pro použití `GetProductsAsPagedDataSource` `()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image9.png))
 
@@ -118,7 +118,7 @@ S `GetProductsAsPagedDataSource` metoda přidána do `ProductsBLL` třídy, mů�
 Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
 
 
-[![Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit karty na (žádný)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image11.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image10.png)
+[![Set rozevírací seznamy na kartách UPDATE, INSERT a DELETE na (žádný)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image11.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image10.png)
 
 **Obrázek 6**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit karty na (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image12.png))
 
@@ -130,7 +130,7 @@ Index stránky a hodnoty velikosti stránky musí být zapamatovaných postback�
 Zejména použijte řetězec dotazu pole pageIndex a pageSize pro `pageIndex` a `pageSize` parametry, respektive (viz obrázek 7). Za chvíli nastavit výchozí hodnoty pro tyto parametry řetězce dotazu hodnoty nebudou k dispozici, když uživatel navštíví nejprve tuto stránku. Pro `pageIndex`, nastavit výchozí hodnotu 0 (ve kterém se zobrazí první stránka dat) a `pageSize` s výchozí hodnotu 4.
 
 
-[![Použijte řetězec dotazu jako zdroj pro parametry pageIndex a pageSize](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image14.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image13.png)
+[![Uřetězec dotazu jako zdroj pro parametry vlastností pageIndex a pageSize se](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image14.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image13.png)
 
 **Obrázek 7**: Použít jako zdroj pro řetězec dotazu `pageIndex` a `pageSize` parametry ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image15.png))
 
@@ -149,7 +149,7 @@ Po provedení těchto změn, značky s ovládacích prvků DataList a ObjectData
 Při počáteční ani návštěvě této stránky v prohlížeči `pageIndex` ani `pageSize` parametry řetězce dotazu jsou k dispozici. Proto jsou použity výchozí hodnoty 0 a 4. Jak ukazuje obrázek 8, výsledkem v prvku DataList, který se zobrazí první čtyři produkty.
 
 
-[![První čtyři produkty jsou uvedené.](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image17.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image16.png)
+[![The první čtyři produkty jsou uvedené](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image17.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image16.png)
 
 **Obrázek 8**: První čtyři produktů se nachází ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image18.png))
 
@@ -157,7 +157,7 @@ Při počáteční ani návštěvě této stránky v prohlížeči `pageIndex` a
 Bez rozhraní stránkování, tam s aktuálně není jednoduché znamená, že uživatel přejít na druhé stránce data. Vytvoříme rozhraní stránkování v kroku 4. Prozatím se však stránkování pouze dosáhnete přímo zadáním kritérií stránkování v řetězec dotazu. Například chcete-li zobrazit na druhé stránce, změnit adresu URL do adresního řádku prohlížeče s z `Paging.aspx` k `Paging.aspx?pageIndex=2` a stiskněte Enter. To způsobí, že data, který se má zobrazit na druhé stránce (viz obrázek 9).
 
 
-[![Zobrazí se druhé Data stránky](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image20.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image19.png)
+[![TZobrazí se mu druhé stránce Data](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image20.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image19.png)
 
 **Obrázek 9**: Druhá stránka Data se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image21.png))
 
@@ -238,12 +238,12 @@ Umožňují s dokončení rozhraní stránkování podle informací pro uživate
 Obrázek 10 ukazuje `Paging.aspx` když první uživatel. Řetězec dotazu je prázdný, prvku DataList výchozím nastavení zobrazí první čtyři produkty; První a předchozí tlačítka jsou zakázané. Kliknutím na další zobrazí další čtyři záznamy (viz obrázek 11); První a předchozí tlačítka jsou nyní k dispozici.
 
 
-[![Zobrazí se první Data stránky](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image23.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image22.png)
+[![TZobrazí se mu první stránka Data](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image23.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image22.png)
 
 **Obrázek 10**: Zobrazí se první stránka Data ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image24.png))
 
 
-[![Zobrazí se druhé Data stránky](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image26.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image25.png)
+[![TZobrazí se mu druhé stránce Data](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image26.png)](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image25.png)
 
 **Obrázek 11**: Druhá stránka Data se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image27.png))
 

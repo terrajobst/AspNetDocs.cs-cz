@@ -8,15 +8,15 @@ ms.date: 08/14/2010
 ms.assetid: e8f1515c-c277-47ff-a23e-224118f13f02
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part3
 msc.type: authoredcontent
-ms.openlocfilehash: f55e558dd056e86bdd2310894959aef02a9d8de2
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 3eff3aceea302c51e6970bb13fbee3a8bf98a71d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072706"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59411979"
 ---
-<a name="adding-a-view"></a>Přidání zobrazení
-====================
+# <a name="adding-a-view"></a>Přidání zobrazení
+
 podle [Scott Hanselman](https://github.com/shanselman)
 
 > Toto je kurz pro začátečníky, který vysvětluje základy ASP.NET MVC. Vytvoříte jednoduchou webovou aplikaci, která čte a zapisuje z databáze. Přejděte [výukové centrum pro ASP.NET MVC](../../../index.md) najít další technologie ASP.NET MVC, kurzů a ukázek.
@@ -38,7 +38,7 @@ Přidejme zobrazit šablonu teď na našem projektu, který používáme pro na�
 
 Tím se otevře dialogové okno "Přidat zobrazení", které nám poskytuje několik možností, jak chceme vytvořit šablony zobrazení, která mohou být využívána metodě indexu. Zatím nemáte něco změnit a stačí kliknout na tlačítko Přidat.
 
-[![Přidat Dialog zobrazení](getting-started-with-mvc-part3/_static/image3.png)](getting-started-with-mvc-part3/_static/image2.png)
+[![APřidat Dialog zobrazení](getting-started-with-mvc-part3/_static/image3.png)](getting-started-with-mvc-part3/_static/image2.png)
 
 Po kliknutí na Přidat novou složku a vytvoří nový soubor se zobrazí ve složce řešení, jak je vidět tady. Teď mám složku HelloWorld v zobrazení a soubor Index.aspx uvnitř této složky.
 
@@ -50,7 +50,7 @@ Nový soubor indexu je také už otevřené a připravený pro úpravy. Přidejt
 
 Spusťte aplikaci a navštivte [ `http://localhost:xx/HelloWorld` ](http://localhostxx) znovu v prohlížeči. Metoda indexu v kontroleru v tomto příkladu nedělalo každé dílo, ale volat "návratový View()" ten označuje, že jsme chtěli použít soubor šablony zobrazení k vykreslení odpověď zpět klientovi. Protože jsme explicitně neurčil název souboru šablony zobrazení pro použití, ASP.NET MVC na výchozí pomocí Index.aspx zobrazení souboru ve složce \Views\HelloWorld. Teď vidíme řetězec, který jsme pevně zakódované v našich zobrazení.
 
-[![Index – Windows Internet Explorer](getting-started-with-mvc-part3/_static/image7.png)](getting-started-with-mvc-part3/_static/image6.png)
+[![INdex – Windows Internet Explorer](getting-started-with-mvc-part3/_static/image7.png)](getting-started-with-mvc-part3/_static/image6.png)
 
 Vypadá hodně Dobrá. Všimněte si však, že název prohlížeče říká "Index" a velké objemy nadpis na stránce říká "Moje aplikace MVC." Změňme ty.
 
@@ -80,7 +80,7 @@ Otevřete /HelloWorld/Index.aspx. Není k dispozici dvě místa, kde změnit. Ne
 
 Spusťte aplikaci a navštivte /Movies. Všimněte si, že došlo ke změně názvu prohlížeče, záhlaví primární a sekundární záhlaví. Je snadné vytvořit velké změny ve vaší aplikaci pomocí malé změny do zobrazení.
 
-[![Seznam film – Windows Internet Explorer](getting-started-with-mvc-part3/_static/image9.png)](getting-started-with-mvc-part3/_static/image8.png)
+[![Movie seznam – Windows Internet Explorer](getting-started-with-mvc-part3/_static/image9.png)](getting-started-with-mvc-part3/_static/image8.png)
 
 Naše něco "data" (v tomto případě "Hello World!" pevné byla zpráva) ale programového. Máme V (zobrazení) a My máme C (Kontrolery), ale žádné M (modelu) ještě. Za chvíli provedeme procesem vytvoření databáze a načíst datový model z něj.
 
@@ -109,11 +109,11 @@ Přidejte tento kód v rámci &lt;h2&gt; v nové Welcome.aspx. Vytvoříme Ujist
 
 Všimněte si také, píšete, protože řekli jsme to zobrazení o WelcomeViewModel (jsou vdaná, mějte na paměti?), že jsme získali užitečné Intellisense pokaždé, když budeme odkazovat na náš objekt modelu jako zobrazené na snímku obrazovky níže:
 
-[![NumTime zdrojového kódu](getting-started-with-mvc-part3/_static/image12.png)](getting-started-with-mvc-part3/_static/image11.png)
+[![NumTime zdrojový kód](getting-started-with-mvc-part3/_static/image12.png)](getting-started-with-mvc-part3/_static/image11.png)
 
 Spusťte aplikaci a navštivte `http://localhost:xx/HelloWorld/Welcome?name=Scott&numtimes=4` znovu. Nyní přesměrujeme data z adresy URL, je předána do Kontroleru automaticky, zabalí dat do ViewModel Kontroleru a předá objekt do našich zobrazení. Zobrazení, než se uživateli zobrazí data ve formátu HTML.
 
-[![Vítejte – Windows Internet Explorer](getting-started-with-mvc-part3/_static/image14.png)](getting-started-with-mvc-part3/_static/image13.png)
+[![Welcome – Windows Internet Explorer](getting-started-with-mvc-part3/_static/image14.png)](getting-started-with-mvc-part3/_static/image13.png)
 
 Dobře, to bylo druh "M" pro Model, ale není typ databáze. Pojďme se na to co jsme se naučili a vytvořit databázi videa.
 

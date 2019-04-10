@@ -8,15 +8,15 @@ ms.date: 03/31/2010
 ms.assetid: ea44717e-ab2e-46cd-a692-e4a9c0de194c
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d9d50da7f11d1494d49fbeaa18a45991e577cdb3
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5db5e30cac21bad0591f4476a1b1156b50117536
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067009"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59382261"
 ---
-<a name="masterdetail-filtering-with-a-dropdownlist-vb"></a>Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (VB)
-====================
+# <a name="masterdetail-filtering-with-a-dropdownlist-vb"></a>Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/5/d/7/5d7571fc-d0b7-4798-ad4a-c976c02363ce/ASPNET_Data_Tutorial_7_VB.exe) nebo [stahovat PDF](master-detail-filtering-with-a-dropdownlist-vb/_static/datatutorial07vb1.pdf)
@@ -35,7 +35,7 @@ Existuje mnoho způsobů, kterými je možné implementovat záznamů master/det
 Naší sestavy záznamů master/detail zobrazí seznam kategorií v DropDownList, s produkty položku vybraného seznamu zobrazí další dolů na stránce v GridView. První úkol náskok před nám, pak je kategorie zobrazuje v DropDownList. Otevřít `FilterByDropDownList.aspx` stránku `Filtering` složky, přetáhněte z panelu nástrojů do návrháře na stránce DropDownList a nastavte jeho `ID` vlastnost `Categories`. Pak klikněte na odkaz zvolit zdroj dat z inteligentních značek DropDownList. Zobrazí se Průvodce konfigurací zdroje dat.
 
 
-[![Zadejte zdroj dat DropDownList](master-detail-filtering-with-a-dropdownlist-vb/_static/image2.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image1.png)
+[![SZadejte zdroj dat DropDownList](master-detail-filtering-with-a-dropdownlist-vb/_static/image2.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image1.png)
 
 **Obrázek 1**: Zadejte zdroj dat DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image3.png))
 
@@ -43,17 +43,17 @@ Naší sestavy záznamů master/detail zobrazí seznam kategorií v DropDownList
 Vybrat přidání nového prvku ObjectDataSource s názvem `CategoriesDataSource` , která vyvolává `CategoriesBLL` třídy `GetCategories()` metody.
 
 
-[![Přidat nový prvek ObjectDataSource s názvem CategoriesDataSource](master-detail-filtering-with-a-dropdownlist-vb/_static/image5.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image4.png)
+[![APřidat nový účet ObjectDataSource s názvem CategoriesDataSource](master-detail-filtering-with-a-dropdownlist-vb/_static/image5.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image4.png)
 
 **Obrázek 2**: Přidat nový prvek ObjectDataSource s názvem `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image6.png))
 
 
-[![Zvolte možnost použití třídy CategoriesBLL](master-detail-filtering-with-a-dropdownlist-vb/_static/image8.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image7.png)
+[![CZvolte pro použití třídy CategoriesBLL](master-detail-filtering-with-a-dropdownlist-vb/_static/image8.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image7.png)
 
 **Obrázek 3**: Zvolte pro použití `CategoriesBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image9.png))
 
 
-[![Konfigurace ObjectDataSource GetCategories() metody](master-detail-filtering-with-a-dropdownlist-vb/_static/image11.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image10.png)
+[![Configurovat ObjectDataSource GetCategories() metody](master-detail-filtering-with-a-dropdownlist-vb/_static/image11.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image10.png)
 
 **Obrázek 4**: Konfigurace ObjectDataSource k použití `GetCategories()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image12.png))
 
@@ -61,7 +61,7 @@ Vybrat přidání nového prvku ObjectDataSource s názvem `CategoriesDataSource
 Po dokončení konfigurace prvek ObjectDataSource, musíme určit, jaké pole zdroje dat mají být zobrazeny v DropDownList a které jedna by měla být přiřazen jako hodnota pro položku seznamu. Máte `CategoryName` pole jako zobrazení a `CategoryID` jako hodnotu pro každou položku seznamu.
 
 
-[![Mít zobrazení DropDownList CategoryName pole a CategoryID použijte jako hodnotu](master-detail-filtering-with-a-dropdownlist-vb/_static/image14.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image13.png)
+[![HUložit DropDownList zobrazení pole CategoryName a CategoryID použijte jako hodnotu](master-detail-filtering-with-a-dropdownlist-vb/_static/image14.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image13.png)
 
 **Obrázek 5**: Zobrazit DropDownList `CategoryName` pole a použití `CategoryID` jako hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image15.png))
 
@@ -69,7 +69,7 @@ Po dokončení konfigurace prvek ObjectDataSource, musíme určit, jaké pole zd
 V tuto chvíli máme, který je naplněn záznamy z ovládací prvek DropDownList `Categories` tabulky (vše lze provést během přibližně šest sekund). Obrázek 6 doposud zobrazuje náš postup při prohlížení prostřednictvím prohlížeče.
 
 
-[![Rozevírací seznam aktuálních kategorií](master-detail-filtering-with-a-dropdownlist-vb/_static/image17.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image16.png)
+[![A Rozevírací seznam aktuálních kategorií](master-detail-filtering-with-a-dropdownlist-vb/_static/image17.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image16.png)
 
 **Obrázek 6**: Rozevírací seznam aktuálních kategorií ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image18.png))
 
@@ -79,7 +79,7 @@ V tuto chvíli máme, který je naplněn záznamy z ovládací prvek DropDownLis
 Tento poslední krok v naší sestavy záznamů master/detail je seznam produktů spojené s vybranou kategorii. K tomu přidat na stránku GridView a vytvoření nového prvku ObjectDataSource s názvem `productsDataSource`. Mít `productsDataSource` jatečné data z ovládacího prvku `ProductsBLL` třídy `GetProductsByCategoryID(categoryID)` metody.
 
 
-[![Vyberte metodu GetProductsByCategoryID(categoryID)](master-detail-filtering-with-a-dropdownlist-vb/_static/image20.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image19.png)
+[![Szvolit metodu GetProductsByCategoryID(categoryID)](master-detail-filtering-with-a-dropdownlist-vb/_static/image20.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image19.png)
 
 **Obrázek 7**: Vyberte `GetProductsByCategoryID(categoryID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image21.png))
 
@@ -87,7 +87,7 @@ Tento poslední krok v naší sestavy záznamů master/detail je seznam produkt�
 Po výběru této metody, Průvodce ObjectDataSource nám vyzve k zadání hodnoty pro metody *`categoryID`* parametru. Chcete použít hodnotu vybraného `categories` DropDownList položka nastavena na ovládací prvek a ControlID na zdroji parametru `Categories`.
 
 
-[![Nastavit ID kategorie parametr na hodnotu DropDownList kategorie](master-detail-filtering-with-a-dropdownlist-vb/_static/image23.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image22.png)
+[![Set categoryID parametr na hodnotu DropDownList kategorie](master-detail-filtering-with-a-dropdownlist-vb/_static/image23.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image22.png)
 
 **Obrázek 8**: Nastavte *`categoryID`* parametr na hodnotu `Categories` DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image24.png))
 
@@ -100,12 +100,12 @@ Podívejte se na náš postup v prohlížeči chvíli trvat. Při první návšt
 Obrázky 9 a 10 ukazují sestavu záznamů master/detail v akci.
 
 
-[![Při první návštěvě stránky, se zobrazují produkty nápoje](master-detail-filtering-with-a-dropdownlist-vb/_static/image26.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image25.png)
+[![WPoto první návštěvě stránky, produkty nápoje zobrazují](master-detail-filtering-with-a-dropdownlist-vb/_static/image26.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image25.png)
 
 **Obrázek 9**: Při první návštěvě stránky, produkty nápoje zobrazují ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image27.png))
 
 
-[![Výběr nového produktu (produkty) automaticky vyvolá zpětné volání, aktualizace prvku GridView.](master-detail-filtering-with-a-dropdownlist-vb/_static/image29.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image28.png)
+[![Sjak zvolit nového produktu (produkty) automaticky způsobí, že zpětné volání, aktualizace prvku GridView.](master-detail-filtering-with-a-dropdownlist-vb/_static/image29.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image28.png)
 
 **Obrázek 10**: Výběr nového produktu (produkty) automaticky vyvolá zpětné volání, aktualizace prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image30.png))
 
@@ -117,7 +117,7 @@ Při první návštěvě `FilterByDropDownList.aspx` stránce kategorie DropDown
 Chcete-li přidat novou položku seznamu do DropDownList, přejděte do okna Vlastnosti a klikněte na symbol tří teček v `Items` vlastnost. Přidat novou položku seznamu s `Text` "--zvolit některou kategorii--" a `Value` `-1`.
 
 
-[![Přidání--výběrem kategorie – položka seznamu](master-detail-filtering-with-a-dropdownlist-vb/_static/image32.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image31.png)
+[![Add--výběrem kategorie – položka seznamu](master-detail-filtering-with-a-dropdownlist-vb/_static/image32.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image31.png)
 
 **Obrázek 11**: Přidání--výběrem kategorie – položka seznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image33.png))
 
@@ -138,7 +138,7 @@ Kromě toho musíme nastavit ovládací prvek DropDownList `AppendDataBoundItems
 Po provedení těchto změn při první návštěvě stránky je vybraná možnost "--zvolit některou kategorii--" a jsou zobrazeny žádné produkty.
 
 
-[![Ve počáteční načtení stránky nejsou zobrazeny žádné produkty.](master-detail-filtering-with-a-dropdownlist-vb/_static/image36.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image35.png)
+[![On se zobrazí počáteční stránky načtěte produkty No](master-detail-filtering-with-a-dropdownlist-vb/_static/image36.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image35.png)
 
 **Obrázek 13**: Jsou zobrazeny na počáteční stránky načtěte žádné produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image37.png))
 
@@ -153,7 +153,7 @@ Techniku použít zde je podobný přístup jsme slouží k zobrazení všech do
 Snímek obrazovky znázorňuje obrázek 14 `FilterByDropDownList.aspx` když je vybraná možnost "--zvolit některou kategorii--". Tady všech produktů, které jsou ve výchozím nastavení zobrazí a uživatele můžete zúžit zobrazení výběrem konkrétní kategorie.
 
 
-[![Všechny produkty jsou teď uvedené ve výchozím nastavení](master-detail-filtering-with-a-dropdownlist-vb/_static/image39.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image38.png)
+[![Avšechny produkty jsou teď uvedené ve výchozím nastavení](master-detail-filtering-with-a-dropdownlist-vb/_static/image39.png)](master-detail-filtering-with-a-dropdownlist-vb/_static/image38.png)
 
 **Obrázek 14**: Všechny produkty jsou teď uvedené ve výchozím nastavení ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-vb/_static/image40.png))
 

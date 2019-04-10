@@ -1,19 +1,20 @@
 ---
 uid: identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project
-title: Přidání ASP.NET Identity do prázdného nebo stávajícího Web Forms projektu | Dokumentace Microsoftu
+title: Přidání ASP.NET Identity do prázdného nebo stávajícího Web Forms projekt – ASP.NET 4.x
 author: raquelsa
-description: V tomto kurzu se dozvíte, jak přidat do aplikace ASP.NET ASP.NET Identity (nový systém členství technologie ASP.NET). Při vytváření nového webového formuláře nebo MVC...
+description: V tomto kurzu se dozvíte, jak přidat do aplikace ASP.NET ASP.NET Identity (systém členství technologie ASP.NET). Při vytváření nového webového formuláře nebo MVC...
 ms.author: riande
 ms.date: 01/22/2019
 ms.assetid: 1cbc0ed2-5bd6-4b62-8d34-4c193dcd8b25
+ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project
 msc.type: authoredcontent
-ms.openlocfilehash: cd28cc68db96b52eb205b8764aa2af014ffad9c3
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8f66cdb46e4cd02509092ea3bdcb7af9c292eb8f
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070108"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59394312"
 ---
 # <a name="adding-aspnet-identity-to-an-empty-or-existing-web-forms-project"></a>Přidání ASP.NET Identity do prázdného nebo stávajícího projektu webových formulářů
 
@@ -145,7 +146,7 @@ V tomto okamžiku pouze přidali jsme podporu pro vytváření uživatelů. Nyn�
     > [!NOTE] 
     > 
     > - `Page_Load` Teď kontroluje stav aktuálního uživatele a provede akci závislou na jeho `Context.User.Identity.IsAuthenticated` stav.
-    >     **Zobrazení přihlášení uživatelské jméno** : Rozhraní Microsoft ASP.NET Identity přidal rozšiřující metody na [System.Security.Principal.IIdentity](https://msdn.microsoft.com/library/system.security.principal.iidentity.aspx) , který umožňuje získat `UserName` a `UserId` pro přihlášeného uživatele. Tyto rozšiřující metody jsou definovány v `Microsoft.AspNet.Identity.Core` sestavení. Tyto rozšiřující metody jsou náhrada za [HttpContext.User.Identity.Name](https://msdn.microsoft.com/library/system.web.httpcontext.user.aspx) .
+    >   **Zobrazení přihlášení uživatelské jméno** : Rozhraní Microsoft ASP.NET Identity přidal rozšiřující metody na [System.Security.Principal.IIdentity](https://msdn.microsoft.com/library/system.security.principal.iidentity.aspx) , který umožňuje získat `UserName` a `UserId` pro přihlášeného uživatele. Tyto rozšiřující metody jsou definovány v `Microsoft.AspNet.Identity.Core` sestavení. Tyto rozšiřující metody jsou náhrada za [HttpContext.User.Identity.Name](https://msdn.microsoft.com/library/system.web.httpcontext.user.aspx) .
     > - Metoda SignIn: `This` metoda nahrazuje předchozí `CreateUser_Click` metody v této ukázkové a nyní přihlásí uživatele po úspěšném vytvoření uživatele.   
     >   Rozhraní Microsoft OWIN přidal rozšiřující metody na `System.Web.HttpContext` , který umožňuje získat odkaz na `IOwinContext`. Tyto rozšiřující metody jsou definovány v `Microsoft.Owin.Host.SystemWeb` sestavení. `OwinContext` Třídy zpřístupňuje `IAuthenticationManager` vlastnost, která představuje funkce middlewaru ověřování dostupné u aktuálního požadavku. Uživatel může přihlásit pomocí `AuthenticationManager` z OWIN a volání `SignIn` a předejte `ClaimsIdentity` jak je znázorněno výše. Protože ASP.NET Identity a ověřování souborů Cookie OWIN jsou založené na deklaracích systém, rozhraní framework vyžaduje, aby aplikace k vygenerování `ClaimsIdentity` pro daného uživatele. `ClaimsIdentity` Nemá informace o všech deklarací identity pro uživatele, například ke kterým rolím uživatel patří. Můžete také přidat další deklarace identity pro uživatele v této fázi tento kód se přihlásit uživatele a generovat také do souboru cookie. Toto volání je obdobou [FormAuthentication.SetAuthCookie](https://msdn.microsoft.com/library/system.web.security.formsauthentication.setauthcookie.aspx) používané [FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx) modulu.
     > - `SignOut` Metoda: Získá odkaz na `AuthenticationManager` z OWIN a volání `SignOut`. To je obdobou [FormsAuthentication.SignOut](https://msdn.microsoft.com/library/system.web.security.formsauthentication.signout.aspx) metodu používanou [FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx) modulu.

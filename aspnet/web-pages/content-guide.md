@@ -8,15 +8,15 @@ ms.date: 01/13/2011
 ms.assetid: b558e481-775a-4aa0-bd3b-ad61e530c2d2
 msc.legacyurl: /web-pages/content-guide
 msc.type: content
-ms.openlocfilehash: e5c2edcceeda977919c1212719786630e7bb8a4f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5e410ac0c6d3430c00e171775d842ee30eeab021
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067294"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59383151"
 ---
-<a name="webmatrix-content-guide"></a>Průvodce obsahem nástroje WebMatrix
-====================
+# <a name="webmatrix-content-guide"></a>Průvodce obsahem nástroje WebMatrix
+
 
 > [!NOTE] 
 > Služba WebMatrix už nedoporučuje jako integrované vývojové prostředí pro ASP.NET Web Pages. Použití [sady Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).
@@ -50,7 +50,7 @@ WebMatrix je sada nástrojů, která poskytuje snadný způsob, jak vytvářet w
 
 ## <a name="additional-resources"></a>Další prostředky
 
-**Read**
+**Číst**
 
 - [Microsoft Web Campy školicí sada pro službu WebMatrix](http://trainingkit.webcamps.ms/WebMatrix.htm)
 - [Odeslání chyb nebo návrh](https://go.microsoft.com/fwlink/?LinkId=195940)

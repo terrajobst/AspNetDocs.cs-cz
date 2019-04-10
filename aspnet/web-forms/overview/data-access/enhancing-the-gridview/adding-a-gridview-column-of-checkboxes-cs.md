@@ -8,15 +8,15 @@ ms.date: 03/06/2007
 ms.assetid: f63a9443-2db0-4f80-8246-840d3e86c2a3
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b78e87d7bd6a05b790203808a9be52af8e8aad1e
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 7f19965894b899aa429be0ef89ccde121191aeb8
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58422971"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59394026"
 ---
-<a name="adding-a-gridview-column-of-checkboxes-c"></a>Přidání sloupce zaškrtávacích políček do ovládacího prvku GridView (C#)
-====================
+# <a name="adding-a-gridview-column-of-checkboxes-c"></a>Přidání sloupce zaškrtávacích políček do ovládacího prvku GridView (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_52_CS.exe) nebo [stahovat PDF](adding-a-gridview-column-of-checkboxes-cs/_static/datatutorial52cs1.pdf)
@@ -31,7 +31,7 @@ V předchozím kurzu jsme se zaměřili na tom, jak přidání sloupce přepína
 V tomto kurzu jsme se zobrazí přidání sloupce zaškrtávacích políček a jak určit, jaké zaškrtávací políčka byly vráceny na zpětné volání. Zejména vytvoříme příklad, který úzce napodobuje uživatelské rozhraní klienta webového e-mailu. Náš příklad bude obsahovat stránkovaného GridView výpis produktů `Products` databázové tabulky pomocí checkbox v každém řádku (viz obrázek 1). Tlačítko Odstranit vybrané produkty, po kliknutí na dojde k odstranění těchto vybraných produktů.
 
 
-[![Každý řádek produkt obsahuje zaškrtávací políčko](adding-a-gridview-column-of-checkboxes-cs/_static/image1.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image1.png)
+[![EACH produktu řádek obsahuje zaškrtávací políčko](adding-a-gridview-column-of-checkboxes-cs/_static/image1.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image1.png)
 
 **Obrázek 1**: Každý řádek produkt obsahuje zaškrtávací políčko ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-cs/_static/image2.png))
 
@@ -41,17 +41,17 @@ V tomto kurzu jsme se zobrazí přidání sloupce zaškrtávacích políček a j
 Předtím, než jsme starat o přidání sloupce zaškrtávacích políček, umožní s první zaměřit se na seznam produktů v prvku GridView, který podporuje stránkování. Začněte otevřením `CheckBoxField.aspx` stránku `EnhancedGridView` složky a GridView přetáhněte z panelu nástrojů do Návrháře nastavení jeho `ID` k `Products`. Dále zvolte k vytvoření nového prvku ObjectDataSource s názvem vazby prvku GridView `ProductsDataSource`. Konfigurace ObjectDataSource používat `ProductsBLL` třídy, volání `GetProducts()` metoda vrátit data. Od tohoto ovládacího prvku GridView budou jen pro čtení, nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
 
 
-[![Vytvoření nového prvku ObjectDataSource s názvem ProductsDataSource](adding-a-gridview-column-of-checkboxes-cs/_static/image2.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image3.png)
+[![CVytvořit nový účet ObjectDataSource s názvem ProductsDataSource](adding-a-gridview-column-of-checkboxes-cs/_static/image2.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image3.png)
 
 **Obrázek 2**: Vytvoření nového prvku ObjectDataSource s názvem `ProductsDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-cs/_static/image4.png))
 
 
-[![Konfigurace ObjectDataSource k načtení dat pomocí GetProducts() – metoda](adding-a-gridview-column-of-checkboxes-cs/_static/image3.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image5.png)
+[![Configurovat ObjectDataSource k načtení dat pomocí metody GetProducts()](adding-a-gridview-column-of-checkboxes-cs/_static/image3.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image5.png)
 
 **Obrázek 3**: Prvek ObjectDataSource k načtení dat pomocí konfigurace `GetProducts()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-cs/_static/image6.png))
 
 
-[![Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný)](adding-a-gridview-column-of-checkboxes-cs/_static/image4.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image7.png)
+[![Set rozevírací seznamy v UPDATE, INSERT a DELETE karty na (žádný)](adding-a-gridview-column-of-checkboxes-cs/_static/image4.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image7.png)
 
 **Obrázek 4**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit záložky (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-cs/_static/image8.png))
 
@@ -68,7 +68,7 @@ Po provedení těchto změn, by měl ovládacího prvku GridView, prvek ObjectDa
 Za chvíli zobrazíte stránku v prohlížeči (viz obrázek 5). V tomto okamžiku byste měli vidět, název, kategorie a cena za prvních deseti produkty.
 
 
-[![Název, kategorie a cena prvních deset produktů jsou uvedeny.](adding-a-gridview-column-of-checkboxes-cs/_static/image5.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image9.png)
+[![Tmá název, kategorie a cena prvních deset produktů jsou uvedeny](adding-a-gridview-column-of-checkboxes-cs/_static/image5.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image9.png)
 
 **Obrázek 5**: Název, kategorie a cena prvních deset produktů jsou uvedeny ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-cs/_static/image10.png))
 
@@ -80,7 +80,7 @@ Protože ASP.NET 2.0 obsahuje třídě CheckBoxField, jeden myslíte, že ho mů
 Místo toho jsme musí přidat TemplateField a přidejte ovládací prvek zaškrtávací políčko Web pro jeho `ItemTemplate`. Pokračovat a přidat k TemplateField `Products` GridView a nastavte ji na první pole (úplně vlevo). Z ovládacího prvku GridView s inteligentní značky, klikněte na odkaz Upravit šablony a potom přetáhněte ovládací prvek zaškrtávací políčko Web z panelu nástrojů do `ItemTemplate`. Nastavit toto zaškrtávací políčko s `ID` vlastnost `ProductSelector`.
 
 
-[![Přidejte ovládací prvek zaškrtávací políčko Web s názvem ProductSelector k TemplateField s ItemTemplate](adding-a-gridview-column-of-checkboxes-cs/_static/image6.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image11.png)
+[![Add zaškrtávací políčko webové ovládací prvek s názvem ProductSelector k TemplateField s ItemTemplate](adding-a-gridview-column-of-checkboxes-cs/_static/image6.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image11.png)
 
 **Obrázek 6**: Přidat pojmenovanou ovládací prvek zaškrtávací políčko Web `ProductSelector` do TemplateField s `ItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-cs/_static/image12.png))
 
@@ -88,7 +88,7 @@ Místo toho jsme musí přidat TemplateField a přidejte ovládací prvek zaškr
 Každý řádek s TemplateField a zaškrtávací políčko webové ovládací prvek přidat, teď obsahuje zaškrtávací políčko. Obrázek 7 znázorňuje tuto stránku při zobrazení v prohlížeči po přidání TemplateField a zaškrtávací políčko.
 
 
-[![Každý řádek produktu nyní obsahuje zaškrtávací políčko](adding-a-gridview-column-of-checkboxes-cs/_static/image7.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image13.png)
+[![EACH řádku produktu nyní obsahuje zaškrtávací políčko](adding-a-gridview-column-of-checkboxes-cs/_static/image7.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image13.png)
 
 **Obrázek 7**: Každý řádek produktu nyní obsahuje zaškrtávací políčko ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-cs/_static/image14.png))
 
@@ -109,7 +109,7 @@ Vytvořte obslužnou rutinu události pro `DeleteSelectedProducts` tlačítko we
 Přidání této obslužné rutiny události kliknutí na tlačítko Odstranit vybrané produkty teď zobrazí `ProductID` s vybraných produktů.
 
 
-[![Po kliknutí na tlačítko vybrané produkty odstranit jsou uvedeny produkty ProductIDs vybrané](adding-a-gridview-column-of-checkboxes-cs/_static/image8.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image15.png)
+[![WPoto tlačítko vybrané produkty odstranit dojde ke kliknutí na ProductIDs vybrané produkty jsou uvedené](adding-a-gridview-column-of-checkboxes-cs/_static/image8.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image15.png)
 
 **Obrázek 8**: Při odstranění vybrané produkty je stisknuto tlačítko vybrané produkty `ProductID` s patří ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-cs/_static/image16.png))
 
@@ -136,7 +136,7 @@ Dále vytvořte `Click` obslužné rutiny událostí pro `CheckAll` a `UncheckAl
 S tímto kódem kliknutím na tlačítko Zkontrolovat všechny vyvolá zpětné volání a kontroluje všechny zaškrtávacích políček v prvku GridView. Kliknutím na zrušit zaškrtnutí všech, zruší výběr nakresleného všech zaškrtávacích políček. Obrázek 9 ukazuje obrazovky po byly vráceny na tlačítko Zkontrolovat všechny.
 
 
-[![Kliknutím na kontrolu, kterou všechny tlačítko vybere všech zaškrtávacích políček](adding-a-gridview-column-of-checkboxes-cs/_static/image9.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image17.png)
+[![CZkontrolujte všechny tlačítko vybere všechna zaškrtávací políčka licking](adding-a-gridview-column-of-checkboxes-cs/_static/image9.gif)](adding-a-gridview-column-of-checkboxes-cs/_static/image17.png)
 
 **Obrázek 9**: Kliknutím zkontrolovat všechny tlačítko vybere všech zaškrtávacích políček ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-cs/_static/image18.png))
 

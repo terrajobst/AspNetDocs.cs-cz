@@ -8,15 +8,15 @@ ms.date: 10/16/2008
 ms.assetid: 50ed58f9-f329-45a8-b8be-675040172072
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19a-windows-workflow-followup
 msc.type: video
-ms.openlocfilehash: de22839d9434079c3872692383893c921111c2ed
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ca8af502d6e38d45de5b9a13694c8fa4c507487d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073579"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59398382"
 ---
-<a name="aspnet-mvc-storefront-part-19a-windows-workflow-followup"></a>Prezentace ASP.NET MVC – část 19a: Pokračování pracovního postupu Windows
-====================
+# <a name="aspnet-mvc-storefront-part-19a-windows-workflow-followup"></a>Prezentace ASP.NET MVC – část 19a: Pokračování pracovního postupu Windows
+
 podle [Rob Conery](https://github.com/robconery)
 
 V této epizodě I následné s dalšími informacemi o pomocí pracovního postupu Windows, a jsem touch na některém z zobrazila se mi s epizodě 19 zpětnou vazbu.

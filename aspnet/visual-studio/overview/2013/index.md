@@ -8,15 +8,15 @@ ms.date: 06/25/2013
 ms.assetid: 646edfc7-dc62-4fa0-84c2-926996c92aeb
 msc.legacyurl: /visual-studio/overview/2013
 msc.type: chapter
-ms.openlocfilehash: 74793becba663d163a31cb1b02654b7b6cb021af
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c7c0de7ade31e43e3b43495cb6755608872d506d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796172"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59412746"
 ---
-<a name="aspnet-and-visual-studio-2013"></a>ASP.NET and Visual Studio 2013
-====================
+# <a name="aspnet-and-visual-studio-2013"></a>ASP.NET and Visual Studio 2013
+
 > Vývoj webových aplikací ASP.NET pomocí sady Visual Studio 2013
 
 
@@ -32,5 +32,5 @@ ms.locfileid: "57796172"
 - [Browser Link](using-browser-link.md)
 - [ASP.NET a webové nástroje pro Visual Studio 2013 – poznámky k verzi](release-notes.md)
 - [ASP.NET a webové nástroje 2013.2 pro Visual Studio 2013 – poznámky k](aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes.md)
-- [Praktické cvičení: Webové nástroje sady Visual Studio 2013](visual-studio-2013-web-tools.md)
+- [Praktické cvičení: Webové nástroje v sadě Visual Studio 2013](visual-studio-2013-web-tools.md)
 - [Praktické cvičení: jeden ASP.NET: Integrace webových formulářů ASP.NET, MVC a webového rozhraní API](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api.md)

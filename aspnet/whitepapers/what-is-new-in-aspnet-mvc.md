@@ -8,15 +8,15 @@ ms.date: 04/20/2010
 ms.assetid: 69a8d6f8-4b10-4602-8822-2d6c05fc432b
 msc.legacyurl: /whitepapers/what-is-new-in-aspnet-mvc
 msc.type: content
-ms.openlocfilehash: 82a3fd4fe74202ed9a23298390322458cfc029f8
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7f846e807309f3123db52b3053b9aa8d6aca81e6
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067912"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59394832"
 ---
-<a name="whats-new-in-aspnet-mvc-2"></a>Novinky v ASP.NET MVC 2
-====================
+# <a name="whats-new-in-aspnet-mvc-2"></a>Novinky v ASP.NET MVC 2
+
 > Tento dokument popisuje nové funkce a vylepšení v ASP.NET MVC 2. Tento dokument je také k dispozici pro [stáhnout](https://download.microsoft.com/download/F/1/6/F16F9AF9-8EF4-4845-BC97-639791D5699C/WhatIsNewInMVC_2.pdf)
 
 
@@ -38,7 +38,7 @@ ms.locfileid: "57067912"
 [Nová třída HiddenInputAttribute pro pomocnými objekty](#_TOC3_13)   
 [Metoda Html.ValidationSummary Helper můžete zobrazit chyby na úrovni modelu](#_TOC3_14)   
 [Šablony T4 v aplikaci Visual Studio vygenerovat kód, který je specifické pro cílovou verzi rozhraní .NET Framework](#_TOC3_15)[vylepšení rozhraní API](#_TOC4)  
-[Rozbíjející změny v](#_TOC5)  
+[Nejnovější změny](#_TOC5)  
 [Právní omezení](#_TOC6)  
 
 ## <a id="_TOC1"></a>  Úvod

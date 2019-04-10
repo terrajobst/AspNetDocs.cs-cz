@@ -8,15 +8,15 @@ ms.date: 05/16/2012
 ms.assetid: 83e0a572-428f-4bea-9638-1a031c6901c0
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise
 msc.type: chapter
-ms.openlocfilehash: 92bc3d18c417e73e198d0f7663489fd931bf75b5
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 109a0dc1e1ebe0b644e9414561c798a7bb3d0531
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57795991"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59414826"
 ---
-<a name="aspnet-4---enterprise-deployment-series-1"></a>ASP.NET 4 – nasazení v podniku (1. část)
-====================
+# <a name="aspnet-4---enterprise-deployment-series-1"></a>ASP.NET 4 – nasazení v podniku (1. část)
+
 > Tento kurz popisuje, jak splnit řadu výzvy, které se můžete setkat, když spravujete nasazení podnikových webových aplikací na vývojové, testovací, přípravného a produkčního prostředí. Tento kurz zahrnuje odkaz na řešení spolu s směs koncepčním a orientované na úlohy obsah do vás provedou různými běžné úlohy a postupy.
 
 
@@ -28,6 +28,6 @@ ms.locfileid: "57795991"
 - [Sestavení a balení projektů webových aplikací](building-and-packaging-web-application-projects.md)
 - [Konfigurace parametrů nasazení webového balíčku](configuring-parameters-for-web-package-deployment.md)
 - [Nasazení webových balíčků](deploying-web-packages.md)
-- [Nasazení projektu databáze](deploying-database-projects.md)
+- [Nasazení databázových projektů](deploying-database-projects.md)
 - [Vytvoření a spuštění souboru příkazů k nasazení](creating-and-running-a-deployment-command-file.md)
 - [Ruční instalace webových balíčků](manually-installing-web-packages.md)

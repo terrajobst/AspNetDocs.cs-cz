@@ -8,15 +8,15 @@ ms.date: 08/03/2007
 ms.assetid: cd17dbe1-c5e1-4be8-ad3d-57233d52cef1
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9713bbd983c4e922273a23356cbbb3848a8b7c50
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: cc5f283a6f97a83fdb157f54e5b3b020254f5203
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072499"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59404842"
 ---
-<a name="protecting-connection-strings-and-other-configuration-information-vb"></a>Ochrana připojovacích řetězců a dalších konfiguračních údajů (VB)
-====================
+# <a name="protecting-connection-strings-and-other-configuration-information-vb"></a>Ochrana připojovacích řetězců a dalších konfiguračních údajů (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_73_VB.zip) nebo [stahovat PDF](protecting-connection-strings-and-other-configuration-information-vb/_static/datatutorial73vb1.pdf)
@@ -31,7 +31,7 @@ Informace o konfiguraci pro aplikace ASP.NET je obvykle uložen v souboru XML s 
 Protože `Web.config` mohou obsahovat citlivá data, jako je například připojovací řetězce, je důležité, který obsah `Web.config` zachovaná, bezpečné a skryté z neoprávněné uživatele. Ve výchozím nastavení, všechny HTTP žádosti do souboru s `.config` rozšíření se postará modul ASP.NET, který vrátí *typ stránky není poskytováni,* zprávy je znázorněno na obrázku 1. To znamená, že nelze zobrazit návštěvníci vašeho `Web.config` s obsah souboru tak, že jednoduše zadáte http://www.YourServer.com/Web.config do adresního řádku svého prohlížeče s.
 
 
-[![Navštívit Web.config prostřednictvím prohlížeč vrátí tento typ stránky není poskytováni zprávy](protecting-connection-strings-and-other-configuration-information-vb/_static/image2.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image1.png)
+[![Visiting Web.config prostřednictvím prohlížeč vrátí tento typ stránky není obsluhovat zprávy](protecting-connection-strings-and-other-configuration-information-vb/_static/image2.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image1.png)
 
 **Obrázek 1**: Navštívit `Web.config` prostřednictvím prohlížeč vrátí tento typ stránky není poskytováni zprávy ([kliknutím ji zobrazíte obrázek v plné velikosti](protecting-connection-strings-and-other-configuration-information-vb/_static/image3.png))
 
@@ -83,7 +83,7 @@ Pod textové pole, přidejte dva ovládací prvky tlačítka s názvem `EncryptC
 V tomto okamžiku vaše obrazovka by měla vypadat podobně jako na obrázku 2.
 
 
-[![Přidat textové pole a dva ovládací prvky tlačítka Web na stránku](protecting-connection-strings-and-other-configuration-information-vb/_static/image5.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image4.png)
+[![Add textové pole a dva ovládací prvky tlačítka Web na stránku](protecting-connection-strings-and-other-configuration-information-vb/_static/image5.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image4.png)
 
 **Obrázek 2**: Přidání textového pole a dva ovládací prvky tlačítka Web na stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](protecting-connection-strings-and-other-configuration-information-vb/_static/image6.png))
 
@@ -111,7 +111,7 @@ Po volání `ProtectSection(provider)` nebo `UnprotectSection` metoda, je třeba
 Po zadání výše uvedený kód ji otestovat přechodem `EncryptingConfigSections.aspx` stránky prostřednictvím prohlížeče. Zpočátku zobrazí stránka, která uvádí obsah `Web.config` s `<connectionStrings>` části zobrazí ve formátu prostého textu (viz obrázek 3).
 
 
-[![Přidat textové pole a dva ovládací prvky tlačítka Web na stránku](protecting-connection-strings-and-other-configuration-information-vb/_static/image8.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image7.png)
+[![Add textové pole a dva ovládací prvky tlačítka Web na stránku](protecting-connection-strings-and-other-configuration-information-vb/_static/image8.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image7.png)
 
 **Obrázek 3**: Přidání textového pole a dva ovládací prvky tlačítka Web na stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](protecting-connection-strings-and-other-configuration-information-vb/_static/image9.png))
 
@@ -126,7 +126,7 @@ Další informace o ověření žádosti, jeho účel, zakažte ho na stránce -
 Po zakázání ověření žádosti pro stránku, zkuste to znovu kliknutím na tlačítko šifrovat připojovací řetězce. Na zpětné volání, budou mít přístup konfiguračního souboru a jeho `<connectionStrings>` části šifrované pomocí poskytovatele rozhraní DPAPI. Textové pole se pak aktualizuje a zobrazí nový `Web.config` obsah. Obrázek 4 ukazuje, `<connectionStrings>` informace je zašifrovaný.
 
 
-[![Kliknutí zašifrovat připojovací řetězce tlačítko šifruje &lt;connectionString&gt; oddílu](protecting-connection-strings-and-other-configuration-information-vb/_static/image11.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image10.png)
+[![Clicking šifrování připojovací řetězce tlačítko šifruje &lt;connectionString&gt; části](protecting-connection-strings-and-other-configuration-information-vb/_static/image11.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image10.png)
 
 **Obrázek 4**: Kliknutí zašifrovat připojovací řetězce tlačítko šifruje `<connectionString>` oddílu ([kliknutím ji zobrazíte obrázek v plné velikosti](protecting-connection-strings-and-other-configuration-information-vb/_static/image12.png))
 
@@ -143,7 +143,7 @@ Po zakázání ověření žádosti pro stránku, zkuste to znovu kliknutím na 
 Když se informace o připojovacím řetězci přistupuje z `Web.config` – buď pomocí ovládacího prvku SqlDataSource napíšeme kód nebo automaticky generovaný kód z objektů TableAdapter v naší datové sady typu – jsou automaticky dešifrována. Stručně řečeno, jsme nemusíte přidávat žádné další kódu nebo logice k dešifrování šifrovaný `<connectionString>` oddílu. Abychom to navštíví některý z předchozích kurzů v tuto chvíli, jako je například tento kurz jednoduchého zobrazení z části základní tvorbou sestav (`~/BasicReporting/SimpleDisplay.aspx`). Jak je vidět na obrázku 5, tento kurz pracuje přesně tak, jak jsme byste očekávali, označující, že šifrované připojovacího řetězce se automaticky dešifruje stránka technologie ASP.NET.
 
 
-[![Vrstva přístupu k datům automaticky dešifruje informace o připojovacím řetězci](protecting-connection-strings-and-other-configuration-information-vb/_static/image14.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image13.png)
+[![Tmá vrstvy přístupu k datům automaticky dešifruje informace o připojovacím řetězci](protecting-connection-strings-and-other-configuration-information-vb/_static/image14.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image13.png)
 
 **Obrázek 5**: Vrstva přístupu k datům automaticky dešifruje informace o připojovacím řetězci ([kliknutím ji zobrazíte obrázek v plné velikosti](protecting-connection-strings-and-other-configuration-information-vb/_static/image15.png))
 
@@ -221,7 +221,7 @@ Další informace o tématech, které jsou popsané v tomto kurzu najdete na ná
 - [Postupy: Zašifrovat konfigurační oddíly funkce v technologii ASP.NET 2.0 pomocí rozhraní DPAPI](https://msdn.microsoft.com/library/ms998280.aspx)
 - [Postupy: Zašifrovat konfigurační oddíly funkce v technologii ASP.NET 2.0 pomocí technologie RSA](https://msdn.microsoft.com/library/ms998283.aspx)
 - [Konfigurace rozhraní API v rozhraní .NET 2.0](http://www.odetocode.com/Articles/418.aspx)
-- [Windows Data Protection](https://msdn.microsoft.com/library/ms995355.aspx)
+- [Ochrana dat pro Windows](https://msdn.microsoft.com/library/ms995355.aspx)
 
 ## <a name="about-the-author"></a>O autorovi
 

@@ -8,15 +8,15 @@ ms.date: 08/19/2008
 ms.assetid: d0136da6-81a4-4815-b002-baa84744c09e
 msc.legacyurl: /mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 77d0f0346e9eff756cd74c64c310918f3c367ab1
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 2d954cbc001a62f021f942f1ff44522a2769f516
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067561"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59389573"
 ---
-<a name="preventing-javascript-injection-attacks-c"></a>Prevence útoků založených na injektáži JavaScriptu (C#)
-====================
+# <a name="preventing-javascript-injection-attacks-c"></a>Prevence útoků založených na injektáži JavaScriptu (C#)
+
 podle [Stephen Walther](https://github.com/StephenWalther)
 
 [Stáhnout PDF](http://download.microsoft.com/download/8/4/8/84843d8d-1575-426c-bcb5-9d0c42e51416/ASPNET_MVC_Tutorial_06_CS.pdf)
@@ -33,7 +33,7 @@ Pokaždé, když se přijímají vstup uživatele a opětovnému zobrazení uži
 Představte si, že vytvoříte web zpětné vazby zákazníka (viz obrázek 1). Zákazníky můžete přejděte na webovou stránku a zadejte zpětnou vazbu o svých zkušenostech s použitím vašich produktů. Když zákazník odešle jejich zpětné vazby, se zobrazí na stránce zpětnou vazbu znovu zpětnou vazbu.
 
 
-[![Web zpětné vazby zákazníka](preventing-javascript-injection-attacks-cs/_static/image2.png)](preventing-javascript-injection-attacks-cs/_static/image1.png)
+[![CZákazník zpětné vazby webu](preventing-javascript-injection-attacks-cs/_static/image2.png)](preventing-javascript-injection-attacks-cs/_static/image1.png)
 
 **Obrázek 01**: Web zpětné vazby zákazníka ([kliknutím ji zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image3.png))
 
@@ -65,7 +65,7 @@ Představte si, zadejte následující text do formuláře zpětné vazby zákaz
 Tento text představuje skript jazyka JavaScript, která zobrazuje do pole zpráva s výstrahou. Jakmile někdo odešle tento skript do zpětné vazby formuláře, zpráva <em>poč!</em> se zobrazí pokaždé, když se každý uživatel navštíví web zpětné vazby zákazníka v budoucnu (viz obrázek 2).
 
 
-[![Vkládání jazyka JavaScript](preventing-javascript-injection-attacks-cs/_static/image5.png)](preventing-javascript-injection-attacks-cs/_static/image4.png)
+[![JavaScript vkládání](preventing-javascript-injection-attacks-cs/_static/image5.png)](preventing-javascript-injection-attacks-cs/_static/image4.png)
 
 **Obrázek 02**: Vkládání jazyka JavaScript ([kliknutím ji zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image6.png))
 
@@ -93,7 +93,7 @@ Všimněte si, že hodnota `feedback.Message` je HTML kódováním než hodnota 
 Jaké jsou mean do formátu HTML zakódujte řetězec? Při HTML kódování řetězce, nebezpečné znaky, jako `<` a `>` nahrazují HTML odkazy na entity, jako `&lt;` a `&gt;`. Takže když řetězec `<script>alert("Boo!")</script>` je ve formátu HTML s kódováním získá k převést `&lt;script&gt;alert(&quot;Boo!&quot;)&lt;/script&gt;`. Kódovaný řetězec se již provádí jako skriptu JavaScript při prohlížečem interpretovány. Místo toho můžete získat neškodné stránku na obrázku 3.
 
 
-[![Nepotlačí útoku jazyka JavaScript](preventing-javascript-injection-attacks-cs/_static/image8.png)](preventing-javascript-injection-attacks-cs/_static/image7.png)
+[![Defeated útoku JavaScript](preventing-javascript-injection-attacks-cs/_static/image8.png)](preventing-javascript-injection-attacks-cs/_static/image7.png)
 
 **Obrázek 03**: Potlačována útoku jazyka JavaScript ([kliknutím ji zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image9.png))
 

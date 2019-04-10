@@ -9,16 +9,13 @@ ms.date: 01/15/2019
 ms.assetid: be0c098a-1fb2-457e-b815-ddca601afc65
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: b513d7d86d382068bc1a8f1bcc61289ee946d38b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 11b1bc316f730e31b4a01924765db3c982783652
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078025"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59383015"
 ---
-<a name="handling-concurrency-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-10-of-12"></a>Ošetření souběžnosti se sadou Entity Framework 6 v aplikaci ASP.NET MVC 5 (10 12)
-====================
-
 # <a name="tutorial-handle-concurrency-with-ef-in-an-aspnet-mvc-5-app"></a>Kurz: Popisovač souběžnosti ovládacím prvkem EF v aplikaci ASP.NET MVC 5
 
 V předchozích kurzech jste zjistili, jak aktualizovat data. Tento kurz ukazuje, jak použít optimistické řízení souběžnosti řešit konflikty při více uživatelů aktualizovat stejná entita ve stejnou dobu. Změnit webové stránky, které využívají službu `Department` entity tak, aby se zpracování chyb souběžnosti. Upravit a odstranit stránky, včetně některé zprávy, které se zobrazí, pokud dojde ke konfliktu souběžnosti na následujících obrázcích.
@@ -52,7 +49,7 @@ Pokud vaše aplikace potřebuje se tak ztrátě dat ve scénářích souběžnos
 
 Zámky pro správu má nevýhody. Může být složité do programu. Vyžaduje významné databáze správy zdrojů, a to může způsobit problémy s výkonem jako počet uživatelů aplikace zvyšuje. Z těchto důvodů ne všechny systémy správy databáze nepodporují Pesimistická souběžnost. Entity Framework obsahuje předdefinovanou podporu pro ni a v tomto kurzu nezobrazí způsobu jeho implementace.
 
-### <a name="optimistic-concurrency"></a>Optimistická souběžnost
+### <a name="optimistic-concurrency"></a>Optimistická metoda souběžného zpracování
 
 Je alternativou k Pesimistická souběžnost *optimistického řízení souběžnosti*. Povolení konfliktů souběžnosti, která se provede a reaguje správně, pokud tomu znamená, že optimistického řízení souběžnosti. Například Jan spustí oddělení upravit stránku, změny **rozpočtu** velikost pro anglickou oddělení od $350,000.00 0.00 $.
 

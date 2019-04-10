@@ -8,15 +8,15 @@ ms.date: 10/06/2010
 ms.assetid: f44c166e-7e91-48a0-a6f8-d9285f3594e5
 msc.legacyurl: /whitepapers/mvc3-release-notes
 msc.type: content
-ms.openlocfilehash: 7342b5f4a7e2327f3f3850941510a6e46ec30842
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 36bc314c6709c34863d86158419257be99f4084f
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077821"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59407104"
 ---
-<a name="aspnet-mvc-3"></a>ASP.NET MVC 3
-====================
+# <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
+
 - [Přehled](#overview)
 - [Poznámky k instalaci](#installation-notes)
 - [Požadavky na software](#software-requirements)
@@ -39,7 +39,7 @@ ms.locfileid: "57077821"
     - [Opraveno: Vložení součástí výrazu Razor, která obsahuje výsledky prázdné znaky v ní se vrátit zpět](#RTM-3)
     - [Opraveno: Přejmenování souboru Razor, který je otevřen v editoru zakáže barevné zvýrazňování syntaxe a IntelliSense](#RTM-4)
     - [Známé problémy](#RTM-KI)
-    - [Rozbíjející změny v](#RTM-BC)
+    - [Nejnovější změny](#RTM-BC)
 - [ASP.NET MVC 3 verze Release Candidate 2 (10 December, 2010)](#_Toc2)
 
     - [Projekt šablony změnit jQuery 1.4.4, jQuery ověření 1.7 a uživatelské rozhraní 1.8.6y 1.8.6 uživatelské rozhraní jQuery](#_Toc2_1)
@@ -55,7 +55,7 @@ ms.locfileid: "57077821"
     - [Vlastnost přidání "FileExtensions" pro moduly zobrazení pro podporu modulu názvy](#_Toc2_10)
     - [Pomocné rutiny opravené "LabelFor" a vygenerovat správnou hodnotu pro atribut "For"](#_Toc2_11)
     - [Metoda dlouhodobého "RenderAction" dát přednost explicitní hodnoty během vazby modelu](#_Toc2_12)
-    - [Rozbíjející změny v](#_Toc2_BC)
+    - [Nejnovější změny](#_Toc2_BC)
     - [Známé problémy](#_Toc2_KI)
 - [ASP.NET MVC 3 verze Release Candidate (9. listopadu 2010)](#TOC_ASP_NET_3_RC)
 
@@ -68,7 +68,7 @@ ms.locfileid: "57077821"
     - [Podřízená akce ukládání výstupu do mezipaměti](#_Toc276711791)
     - ["Přidat zobrazení" vylepšení pole dialogového okna](#_Toc276711792)
     - [Ověření detailní žádosti](#_Toc276711793)
-    - [Rozbíjející změny v](#_Toc276711794)
+    - [Nejnovější změny](#_Toc276711794)
     - [Známé problémy](#_Toc276711795)
 - [ASP. MVC 3 Beta poznámky (6 říjnu 2010)](#TOC_ASP_NET_3_Beta)
 
@@ -86,7 +86,7 @@ ms.locfileid: "57077821"
     - [Podrobnější kontrolu nad atribut ValidateInputAttribute](#0.1__Toc274034226)
     - [Pomocné rutiny převádějí podtržítka pomlčky pro zadané pomocí anonymních objektů názvy atributu HTML](#0.1__Toc274034227)
     - [Opravy chyb](#0.1__Toc274034228)
-    - [Rozbíjející změny v](#0.1__Toc274034229)
+    - [Nejnovější změny](#0.1__Toc274034229)
     - [Známé problémy](#0.1__Toc274034230)
 - [Právní omezení](#0.1__Toc274034231)
 
@@ -435,7 +435,7 @@ Když *Html.ValidationMessage* metoda zobrazí ověřovací zprávu, přeskočí
 <a id="_Toc2_10"></a>
 ### <a name="fixed-model-declaration-to-not-add-whitespace-to-the-document"></a>Oprava @model deklarace není přidávají prázdné znaky v dokumentu
 
-V dřívějších verzích <em>@model</em> deklarace v horní části zobrazení přidat prázdný řádek do vykresleného výstupu protokolu HTML. Tato chyba byla opravena, aby se deklarace nezavádí prázdné znaky.
+V dřívějších verzích *@model* deklarace v horní části zobrazení přidat prázdný řádek do vykresleného výstupu protokolu HTML. Tato chyba byla opravena, aby se deklarace nezavádí prázdné znaky.
 
 <a id="_Toc2_11"></a>
 ### <a name="added-fileextensions-property-to-view-engines-to-support-engine-specific-file-names"></a>Vlastnost přidání "FileExtensions" pro moduly zobrazení pro podporu modulu názvy
@@ -462,7 +462,7 @@ V dřívějších verzích explicitní hodnoty, které bylo předáno *RenderAct
 - V předchozích verzích rozhraní ASP.NET MVC filtry akcí byly vytvořeny na požadavek s výjimkou v několika případech. Toto chování bylo nikdy zaručené chování, ale pouze podrobnost implementace a smlouvu pro filtry vzít v úvahu je Bezstavová. V architektuře ASP.NET MVC 3 filtry jsou uložené v mezipaměti agresivnější. Proto všechny filtry vlastní akce, které nesprávně ukládají stav instance může být nefunkční.
 - Pořadí zpracování pro filtry výjimek se změnilo filtry výjimek, které mají stejný *pořadí* hodnotu. V ASP.NET MVC 2 a dříve, filtry výjimek na kontroler, který má stejný *pořadí* hodnoty jako na metodu akce byly provedeny před filtry výjimek v metodě akce. To by obvykle být případ, kdy byly použity filtry výjimek bez zadaného *pořadí* hodnotu. V architektuře ASP.NET MVC 3 Toto pořadí změněno tak, aby nejprve provede nejspecifičtější obslužná rutina výjimky. Stejně jako v předchozích verzích Pokud *pořadí* explicitně zadaná vlastnost, filtry jsou spuštěny v uvedeném pořadí.
 - Novou vlastnost s názvem *FileExtensions* byl přidán do *VirtualPathProviderViewEngine* základní třídy. Když ASP.NET vyhledá zobrazení podle cesty (ne podle názvu), jsou považovány za pouze zobrazení s příponou souboru obsažených v této nové vlastnosti seznamu. Toto je rozbíjející změny v aplikacích, kde chcete-li povolit vlastní příponu souboru pro zobrazení webových formulářů je zaregistrovaný poskytovatel vlastního sestavení a poskytovateli odkazuje tato zobrazení pomocí úplnou cestu, nikoli název. Alternativním řešením je změnit hodnotu *FileExtensions* vlastnosti do vlastního souboru příponu.
-- Implementace objekt pro vytváření vlastní zařízení, které přímo implementovat <em>IControllerFactory</em> rozhraní musí poskytnout implementaci nového <em>GetControllerSessionBehavior</em>  <em>Metoda, která byla přidána do rozhraní v této verzi</em>. Obecně se doporučuje, není toto rozhraní implementují přímo a místo toho odvodit třídu z <em>DefaultControllerFactory</em>.
+- Implementace objekt pro vytváření vlastní zařízení, které přímo implementovat *IControllerFactory* rozhraní musí poskytnout implementaci nového *GetControllerSessionBehavior* metodu, která byla Přidat do rozhraní v této verzi. Obecně se doporučuje, není toto rozhraní implementují přímo a místo toho odvodit třídu z *DefaultControllerFactory*.
 
 <a id="_Toc2_KI"></a>
 ## <a name="known-issues"></a>Známé problémy

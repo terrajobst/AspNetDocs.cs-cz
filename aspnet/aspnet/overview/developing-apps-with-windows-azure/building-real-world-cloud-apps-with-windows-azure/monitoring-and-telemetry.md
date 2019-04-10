@@ -8,15 +8,15 @@ ms.date: 07/09/2015
 ms.assetid: 7e986ab5-6615-4638-add7-4614ce7b51db
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
 msc.type: authoredcontent
-ms.openlocfilehash: f4dae827627103e5cfb9981b6c3b9342cdc34c13
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 48a66eea839f7f48899040ad20bbfee95b9a1902
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071602"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59403906"
 ---
-<a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>Monitorování a Telemetrie (vytváření skutečných cloudových aplikací s Azure)
-====================
+# <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>Monitorování a Telemetrie (vytváření skutečných cloudových aplikací s Azure)
+
 podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Petr Dykstra](https://github.com/tdykstra)
 
 [Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
@@ -72,7 +72,7 @@ Nasazení aplikace do Azure a začít ji používat. Vytvoření určitým postu
 
 Pak přejděte zpátky do **špičkové funkce New Relicu** stránku **doplňky** portálu a klikněte na kartu **spravovat**. Na portálu odešle špičkové funkce New Relicu portálu pro správu pomocí jednotného přihlašování pro ověřování, takže není nutné znovu zadejte svoje přihlašovací údaje. Na stránce s přehledem nabízí širokou škálu statistiky výkonu. (Kliknutím na obrázek v plné velikosti stránky Přehled tématu.)
 
-[![Nová karta Relic monitorování](monitoring-and-telemetry/_static/image9.png)](monitoring-and-telemetry/_static/image8.png)
+[![Nkartu Sledování Relic ový](monitoring-and-telemetry/_static/image9.png)](monitoring-and-telemetry/_static/image8.png)
 
 Tady je několik příkladů statistických informací, které se zobrazí:
 
@@ -139,7 +139,7 @@ I když je vhodné mít vždy protokolování v produkčním prostředí, jiné 
 
 Web Apps ve službě Azure App Service mají integrovanou podporu pro zápis `System.Diagnostics` protokoly systému souborů, Table storage nebo Blob storage. Můžete vybrat jiný protokolování úrovní pro každý cíl úložiště a můžete změnit úroveň protokolování v reálném čase bez restartování aplikace. Podpora úložiště blobů usnadňuje spouštění [HDInsight](https://docs.microsoft.com/azure/hdinsight/) analýzy úloh na protokolů aplikace, protože HDInsight umí pracovat přímo s úložištěm objektů Blob.
 
-### <a name="log-exceptions"></a>Výjimky protokolu
+### <a name="log-exceptions"></a>Protokolování výjimek
 
 Právě neumisťujte *výjimky. ToString()* ve vašem kódu protokolování. Který vynechány kontextové informace. V případě chyb SQL ponechá si číslo chyby SQL. Pro všechny výjimky zahrnují informace o kontextu, výjimky, vlastní a vnitřních výjimek, abyste měli jistotu, že zadáváte všechno, co, které se mají provést při řešení potíží. Informace o kontextu může obsahovat třeba název serveru, identifikátor transakce a uživatelské jméno (ale není heslo nebo jakýchkoli tajných kódů!).
 

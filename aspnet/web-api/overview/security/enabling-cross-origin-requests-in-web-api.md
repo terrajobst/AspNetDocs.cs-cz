@@ -8,15 +8,15 @@ ms.date: 01/29/2019
 ms.assetid: 9b265a5a-6a70-4a82-adce-2d7c56ae8bdd
 msc.legacyurl: /web-api/overview/security/enabling-cross-origin-requests-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: c9d3e4b05103d270ad95908177bb2981338a4ae1
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 9d3016d98fa6c3a55359c6dab0737407b29925f1
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425285"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59403828"
 ---
-<a name="enable-cross-origin-requests-in-aspnet-web-api-2"></a>Povolení žádostí nepůvodního v ASP.NET Web API 2
-====================
+# <a name="enable-cross-origin-requests-in-aspnet-web-api-2"></a>Povolení žádostí nepůvodního v ASP.NET Web API 2
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 > Zabezpečení prohlížečů brání webovým stránkám v odesílání požadavků AJAX na jinou doménu. Toto omezení je volána *zásada stejného zdroje*a brání škodlivým webům ve čtení citlivých dat z jiné lokality. Ale v některých případech můžete chtít nechat ostatních lokalit volání webového rozhraní API.
@@ -48,7 +48,7 @@ Tyto adresy URL mají různé zdroje než ta předchozí dvě:
 - `http://example.net` -Jinou doménu
 - `http://example.com:9000/foo.html` -Jiný port
 - `https://example.com/foo.html` -Jiné schéma
-- `http://www.example.com/foo.html` – Různé subdomény
+- `http://www.example.com/foo.html` - Different subdomain
 
 > [!NOTE]
 > Aplikace Internet Explorer nebere v úvahu port při porovnání zdrojů.

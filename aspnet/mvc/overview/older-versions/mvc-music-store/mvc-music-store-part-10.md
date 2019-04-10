@@ -8,15 +8,15 @@ ms.date: 04/21/2011
 ms.assetid: 0c6e4c2f-fcdb-4978-9656-1990c6f15727
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-10
 msc.type: authoredcontent
-ms.openlocfilehash: f32509701dd112053aa4f31d6552601f961c7413
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 48404f449ce2641bdff55b9ad75aa5eec1aee46b
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073480"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59403295"
 ---
-<a name="part-10-final-updates-to-navigation-and-site-design-conclusion"></a>Část 10: Závěrečné aktualizace návrhu navigace a webu, závěr
-====================
+# <a name="part-10-final-updates-to-navigation-and-site-design-conclusion"></a>Část 10: Závěrečné aktualizace návrhu navigace a webu, závěr
+
 podle [Jon Galloway](https://github.com/jongalloway)
 
 > MVC Music Store jde o kurz, který se seznámíte, podrobné postupy pro vývoj pro web pomocí ASP.NET MVC a sady Visual Studio.  

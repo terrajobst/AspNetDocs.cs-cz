@@ -8,15 +8,15 @@ ms.date: 03/28/2008
 ms.assetid: 7f9380c6-19f7-4c82-a019-916ec6dffc9c
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-debugging-capabilities
 msc.type: authoredcontent
-ms.openlocfilehash: 13fd8f05cd994ff1c902bd067fb4ed425010d64e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 1203825a1fb6b2034d9180fcf416aba7d0012fb7
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078076"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59383211"
 ---
-<a name="understanding-aspnet-ajax-debugging-capabilities"></a>Principy a možnosti ladění pomocí technologie ASP.NET AJAX
-====================
+# <a name="understanding-aspnet-ajax-debugging-capabilities"></a>Principy a možnosti ladění pomocí technologie ASP.NET AJAX
+
 podle [– Scott Cate](https://github.com/scottcate)
 
 [Stáhnout PDF](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial06_Debugging_MS_Ajax_Applications_cs.pdf)
@@ -48,7 +48,7 @@ I když není požadováno, pokud se snažíte ladit aplikaci pravděpodobně bu
 Obrázek 1 ukazuje, jaké aplikace Internet Explorer Upřesnit dialogového okna by měl vypadat po byl správně nakonfigurován pro ladění.
 
 
-[![Konfigurace aplikace Internet Explorer pro ladění.](understanding-asp-net-ajax-debugging-capabilities/_static/image2.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image1.png)
+[![Ckonfiguraci Internet Exploreru pro ladění.](understanding-asp-net-ajax-debugging-capabilities/_static/image2.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image1.png)
 
 **Obrázek 1**: Konfigurace aplikace Internet Explorer pro ladění.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image3.png))
 
@@ -91,7 +91,7 @@ Po spuštění příkazu ladicího programu se výzva k ladění na stránce pom
 Po spuštění relace ladění a začnete procházení kódu pomocí klávesy F11 výchozí, můžete narazit je znázorněno v chybovém dialogovém okně naleznete v tématu na obrázku 2, pokud jsou všechny soubory skriptu na stránce použít otevřený a dostupný pro ladění.
 
 
-[![Dialogové okno s chybou zobrazuje, když je pro ladění k dispozici žádný zdrojový kód.](understanding-asp-net-ajax-debugging-capabilities/_static/image5.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image4.png)
+[![Error dialogové okno zobrazuje, když je pro ladění k dispozici žádný zdrojový kód.](understanding-asp-net-ajax-debugging-capabilities/_static/image5.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image4.png)
 
 **Obrázek 2**: Dialogové okno s chybou zobrazuje, když je pro ladění k dispozici žádný zdrojový kód.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image6.png))
 
@@ -104,7 +104,7 @@ Toto dialogové okno se zobrazí, protože Visual Studio .NET není se, jak zís
 Průzkumník skriptu lze použít k zobrazení všech skripty používané na stránce a otevřít v editoru kódu. Jakmile se otevře Průzkumník skriptů, dvakrát klikněte na stránku .aspx, která se právě ladí a otevře se v okně editoru kódu. Proveďte stejnou akci pro všechny ostatní skripty uvedené v podokně skriptu. Jakmile se všechny skripty jsou otevřeny v okně kódu můžete stisknutím klávesy F11 (a použití jiných ladění klávesové zkratky) pro jednotlivé kroky v kódu. Obrázek 3 ukazuje příklad Průzkumníka skriptu. Vypíše aktuální soubor laděného (Demo.aspx) a také dva vlastní skripty a dva skripty dynamicky vloženy do stránky technologie ASP.NET AJAX ScriptManager.
 
 
-[![Průzkumník skriptů zajistí jednoduchý přístup k skripty používané na stránce.](understanding-asp-net-ajax-debugging-capabilities/_static/image8.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image7.png)
+[![TPrůzkumník skriptů poskytuje snadný přístup k skripty používané na stránce.](understanding-asp-net-ajax-debugging-capabilities/_static/image8.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image7.png)
 
 **Obrázek 3**. Průzkumník skriptů zajistí jednoduchý přístup k skripty používané na stránce.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image9.png))
 
@@ -122,7 +122,7 @@ I když jsou velmi podporuje nástroje pro ladění sady Visual Studio 2008 (a V
 Pomocné rutiny vývoj pro web je možné přímo v aplikaci Internet Explorer, takže je pohodlné používat ho. Spuštění tak, že vyberete pomocné rutiny vývoje webových nástrojů v nabídce aplikace Internet Explorer. Otevře se nástroj v dolní části prohlížeče, což je skvělé, protože není nutné opustit prohlížeč, aby provést několik úloh, jako je například protokolování zpráv požadavků a odpovědí HTTP. Obrázek 4 ukazuje, jak pomocné rutiny vývoj pro Web vypadá v praxi.
 
 
-[![Vývoj webové pomocné rutiny](understanding-asp-net-ajax-debugging-capabilities/_static/image11.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image10.png)
+[![WEB pomocné rutiny vývoj](understanding-asp-net-ajax-debugging-capabilities/_static/image11.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image10.png)
 
 **Obrázek 4**: Web Development pomocné rutiny ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image12.png))
 
@@ -163,7 +163,7 @@ Na stránce nebo prostřednictvím podokna volání funkce GetPerson() způsobí
 Kromě povolení trasování data a objekty JSON, který se má zobrazit, můžete také Web Development pomocné pomoci při ladění chyby na stránce. Pokud dojde k chybě, zobrazí výzva k pokračování na další řádek kódu nebo ladění skriptu (viz obrázek 6). Chyba skriptu dialogového okna okno zobrazí se kompletní volání zásobníku a čísla řádků mohli snadno identifikovat, kde jsou problémy ve skriptu pro.
 
 
-[![V okně Inspektor objektů pomocí zobrazení objektu JSON.](understanding-asp-net-ajax-debugging-capabilities/_static/image14.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image13.png)
+[![USING okně Inspektor objektů zobrazení objektu JSON.](understanding-asp-net-ajax-debugging-capabilities/_static/image14.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image13.png)
 
 **Obrázek 5**: V okně Inspektor objektů pomocí zobrazení objektu JSON.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image15.png))
 
@@ -171,7 +171,7 @@ Kromě povolení trasování data a objekty JSON, který se má zobrazit, může
 Výběr možnosti ladění umožňuje spouštění příkazů skriptu přímo v okně okamžité pomocné rutiny webového vývoje k zobrazení hodnot proměnných, vypsat objekty JSON a navíc více. Pokud je znovu provést stejnou akci, která způsobila chybu a Visual Studio 2008 je k dispozici na počítači, se výzva ke spuštění relace ladění můžete krokovat kód řádek po řádku, jak je popsáno v předchozí části.
 
 
-[![Webového vývoje pomocné dialogové okno chyby skriptu](understanding-asp-net-ajax-debugging-capabilities/_static/image17.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image16.png)
+[![WDialogové okno chyby skriptu pomocné rutiny EB vývoj](understanding-asp-net-ajax-debugging-capabilities/_static/image17.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image16.png)
 
 **Obrázek 6**: Webového vývoje pomocné dialogové okno chyby skriptu ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image18.png))
 
@@ -185,7 +185,7 @@ Zobrazení zpráv požadavků a odpovědí technologie ASP.NET AJAX, musí být 
 I když zobrazení nezpracovaný text odeslaný v každé zprávě požadavku nebo odpovědi je určitě užitečné (a možnost v pomocné vývoj pro Web), je často snazší zobrazit data zprávy ve formátu více grafických. Jakmile bylo povoleno protokolování HTTP a zprávy byly zaprotokolovány, data zprávy lze zobrazit dvojitým kliknutím na tuto zprávu najdete v protokolu HTTP log vieweru. To vám umožní zobrazit všechny hlavičky přidružené k zprávu, stejně jako skutečný zpráva obsahu. Obrázek 7 znázorňuje příklad zprávy s požadavkem a zprávy s odpovědí zobrazit v okně nástroje HTTP Log Viewer.
 
 
-[![Chcete-li zobrazit data zprávy požadavku a odpovědi pomocí Prohlížeč protokolu HTTP.](understanding-asp-net-ajax-debugging-capabilities/_static/image20.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image19.png)
+[![USING Prohlížeč protokolu HTTP k zobrazení dat zprávy požadavků a odpovědí.](understanding-asp-net-ajax-debugging-capabilities/_static/image20.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image19.png)
 
 **Obrázek 7**: Chcete-li zobrazit data zprávy požadavku a odpovědi pomocí Prohlížeč protokolu HTTP.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image21.png))
 
@@ -193,7 +193,7 @@ I když zobrazení nezpracovaný text odeslaný v každé zprávě požadavku ne
 Prohlížeč protokolu HTTP automaticky analyzuje objekty JSON a zobrazí ho pomocí stromového zobrazení tak rychle a snadno zobrazit data vlastnosti objektu. Při použití ovládacího prvku UpdatePanel na stránce technologie ASP.NET AJAX, prohlížeč každá část zprávy na jednotlivé části dělí, jak je znázorněno na obrázku 8. To je skvělé funkce, která usnadňuje mnohem viděl a pochopil, co je ve zprávě porovnání s zobrazení nezpracovaná data zpráv.
 
 
-[![Prvek UpdatePanel zprávu odpovědi zobrazit pomocí prohlížeče protokolu HTTP.](understanding-asp-net-ajax-debugging-capabilities/_static/image23.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image22.png)
+[![An UpdatePanel zprávy s odpovědí zobrazit pomocí prohlížeče protokolu HTTP.](understanding-asp-net-ajax-debugging-capabilities/_static/image23.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image22.png)
 
 **Obrázek 8**: Prvek UpdatePanel zprávu odpovědi zobrazit pomocí prohlížeče protokolu HTTP.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image24.png))
 
@@ -211,7 +211,7 @@ Po spuštění Firebug zarážky můžete nastavit na kterýkoli řádek v soubo
 Po nastavení zarážky v Firebug lze provést akce potřebné ke spuštění skriptu, který je potřeba ladit, jako je například kliknutí na tlačítko nebo aktualizovat prohlížeč, aby aktivovat události při načtení. Spuštění se automaticky zastaví na řádek obsahující zarážku. Obrázek 9 ukazuje příklad, který se spustil zarážku v Firebug.
 
 
-[![Zarážky v Firebug zpracování.](understanding-asp-net-ajax-debugging-capabilities/_static/image26.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image25.png)
+[![Handling zarážky v Firebug.](understanding-asp-net-ajax-debugging-capabilities/_static/image26.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image25.png)
 
 **Obrázek 9**: Zarážky v Firebug zpracování.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image27.png))
 
@@ -223,7 +223,7 @@ FireBug také zahrnuje okna konzoly, která slouží k testování různých skr
 Obrázek 10 ukazuje příklad použití inspektoru modelu DOM k vyhledání textové pole s názvem txtCountry na stránce. Inspektor Firebug lze také zobrazit používané stránky, jakož i události, ke kterým dochází například sledování pohybu myši, kliknutí na tlačítko plus další styly CSS.
 
 
-[![Použití modelu DOM inspectoru Firebug společnosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image29.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image28.png)
+[![USING Firebug prvku modelu DOM inspektor.](understanding-asp-net-ajax-debugging-capabilities/_static/image29.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image28.png)
 
 **Obrázek 10**: Použití modelu DOM inspectoru Firebug společnosti.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image30.png))
 
@@ -278,7 +278,7 @@ Kromě trasování, Sys.Debug třídy lze také provést kontrolní výrazy kód
 Výpis 7 ukazuje příklad použití funkce Sys.Debug.assert k otestování podmínky. Kód testuje, zda adresa objektu má hodnotu null, před aktualizací osoba.
 
 
-[![Výstup Sys.Debug.traceDump funkce.](understanding-asp-net-ajax-debugging-capabilities/_static/image32.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image31.png)
+[![Ovýstup z funkce Sys.Debug.traceDump.](understanding-asp-net-ajax-debugging-capabilities/_static/image32.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image31.png)
 
 **Obrázek 11**: Výstup Sys.Debug.traceDump funkce.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image33.png))
 
@@ -296,7 +296,7 @@ Konečná funkce pro pokrytí je Sys.Debug.fail. Pokud chcete vynutit selhání 
 [!code-css[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample10.css)]
 
 
-[![Zpráva o selhání Sys.Debug.assert.](understanding-asp-net-ajax-debugging-capabilities/_static/image35.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image34.png)
+[![A Sys.Debug.assert zpráva o selhání.](understanding-asp-net-ajax-debugging-capabilities/_static/image35.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image34.png)
 
 **Obrázek 12**: Zpráva o selhání Sys.Debug.assert.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image36.png))
 

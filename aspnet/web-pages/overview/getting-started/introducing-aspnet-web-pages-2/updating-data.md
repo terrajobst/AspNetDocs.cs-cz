@@ -8,15 +8,15 @@ ms.date: 01/02/2018
 ms.assetid: ac86ec9c-6b69-485b-b9e0-8b9127b13e6b
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: 206d7e209857aceb3eb92c2405bb73f7ff7dbaeb
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 4542ad3ac3e321629bb4de3cd4df12c22ff6cb20
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073075"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59414618"
 ---
-<a name="introducing-aspnet-web-pages---updating-database-data"></a>Úvod do webových stránek ASP.NET – aktualizace databázových dat
-====================
+# <a name="introducing-aspnet-web-pages---updating-database-data"></a>Úvod do webových stránek ASP.NET – aktualizace databázových dat
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > V tomto kurzu se dozvíte, jak aktualizovat záznam (změnit) existující databáze při použití webových stránek ASP.NET (Razor). Předpokládá, že jste dokončili řady prostřednictvím [vstupní Data podle používání Forms pomocí rozhraní ASP.NET Web Pages](entering-data.md).

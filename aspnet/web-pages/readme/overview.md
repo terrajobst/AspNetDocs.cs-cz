@@ -8,15 +8,15 @@ ms.date: 01/06/2011
 ms.assetid: 36c5beeb-45a7-48a0-9c30-f82cdf5c5f5f
 msc.legacyurl: /web-pages/readme
 msc.type: content
-ms.openlocfilehash: aa852e7bbd93622154d59e0d0a13ffa680812df2
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7374b1afafa9ca63309f3c0369c5efd808f7f28a
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073864"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59401982"
 ---
-<a name="webmatrix-readme"></a>WebMatrix – soubor Readme
-====================
+# <a name="webmatrix-readme"></a>WebMatrix – soubor Readme
+
 13. ledna 2011
 
 ## <a name="contents"></a>Obsah
@@ -31,7 +31,7 @@ ms.locfileid: "57073864"
 - [Změny a problémy](#ChangesAndIssues)
 
     - [Instalace služby WebMatrix 1.0](#Known_Issues_Installation)
-    - [Webové stránky ASP.NET](#Known_Issues_ASPNET)
+    - [ASP.NET – webové stránky](#Known_Issues_ASPNET)
     - [WebMatrix](#Known_Issues_WebMatrix)
     - [Služba IIS Express](#Known_Issues_IISExpress)
     - [SQL Server Compact](#Known_Issues_SQLServerCompact)
@@ -255,9 +255,9 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > 1. Kopírovat sestavení modulu databáze, které chcete *Bin* složku (a její podsložky) aplikace v cílovém počítači:  
 > 
 >    - Copy *C:\Program Files\Microsoft SQL Server Edition\v4.0\Desktop\System.Data.SqlServerCe.dll*   
->        **k** *\Bin*
->    - Kopírování <em>C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\</em><strong><em>k</em></strong>\Bin\x86*
->    - Kopírování <em>C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\</em>* <strong>k</strong><em>\Bin\amd64</em>
+>      **k** *\Bin*
+>    - Kopírování *C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\*  **k** *\Bin\x86*
+>    - Kopírování *C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\** **k** *\Bin\amd64*
 > 
 > 2. V kořenové složce webové stránky, vytvořte nebo otevřete *web.config* souboru. (Ve službě WebMatrix 1.0 je k dispozici, pokud kliknete na tento typ souboru **všechny** v **vyberte typ souboru** dialogové okno.)
 > 3. Přidejte následující prvek jako podřízený objekt `<configuration>` – element (ne uvnitř `<system.web>` element):

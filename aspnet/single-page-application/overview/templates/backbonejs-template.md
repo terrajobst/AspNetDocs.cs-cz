@@ -8,15 +8,15 @@ ms.date: 04/04/2013
 ms.assetid: 00aca413-f067-4108-9bd1-cf21e64a2646
 msc.legacyurl: /single-page-application/overview/templates/backbonejs-template
 msc.type: authoredcontent
-ms.openlocfilehash: 325c4f5370340b2e223521fada77cf0e78a67b5b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8148974eacd1db05947ba54fe40776df69f92290
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066184"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59404114"
 ---
-<a name="backbone-template"></a>Šablona Backbone
-====================
+# <a name="backbone-template"></a>Šablona Backbone
+
 podle [Autor: Mads Kristensen](https://github.com/madskristensen)
 
 > Šablona Backbone SPA zapsal Kazi Manzur Rashid
@@ -68,7 +68,7 @@ Události jsou důležité vždy při vývoji volně vázanými komponentami. Ap
 
 [!code-csharp[Main](backbonejs-template/samples/sample1.cs)]
 
-**Router**
+**Směrovače**
 
 Směrovač v Backbone.js, poskytuje metody pro směrování stránky na straně klienta a připojte je ke akcích a událostech. Šablona definuje jeden směrovač v router.ts. Směrovač activable zobrazení vytvoří a udržuje stav při přepnutí zobrazení. (Activable zobrazení jsou popsané v další části). Na začátku projektu má dvě fiktivní zobrazení domácích a o. Má také NotFound zobrazení, které se zobrazí, pokud je trasa není znám.
 

@@ -1,33 +1,37 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs
-title: 'Praktické cvičení: Sestavení jednostránkové aplikaci (SPA) pomocí webového rozhraní API ASP.NET a Angular.js | Dokumentace Microsoftu'
+title: 'Praktické cvičení: Sestavení jednostránkové aplikaci (SPA) pomocí webového rozhraní API ASP.NET a Angular.js – ASP.NET 4.x'
 author: rick-anderson
-description: Tradiční webových aplikací inicializuje klienta (prohlížeč) komunikaci se serverem můžete si vyžádat stránku. Server zpracuje požadavek...
+description: 'Krok za krokem kódu: Sestavení jednostránkové aplikaci (SPA) pomocí webového rozhraní API ASP.NET a Angular.js pro technologii ASP.NET 4.x.'
 ms.author: riande
 ms.date: 09/30/2015
+ms.custom: seoapril2019
 ms.assetid: 719727b7-bef3-45ad-bfe9-ba5bcdb2305f
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs
 msc.type: authoredcontent
-ms.openlocfilehash: 03409e2fda831a07bbc5321ad842633b23ec25e5
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 1f093e348216750cbadb6e52f524e5edd4d6c498
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58422405"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59390269"
 ---
-<a name="hands-on-lab-build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs"></a>Praktické cvičení: Sestavení jednostránkové aplikace (SPA) pomocí webového rozhraní API ASP.NET a Angular.js
-====================
+# <a name="hands-on-lab-build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs"></a>Praktické cvičení: Sestavení jednostránkové aplikace (SPA) pomocí webového rozhraní API ASP.NET a Angular.js
+
 podle [Campy Web týmu](https://twitter.com/webcamps)
 
 [Stáhněte si Web Campy školení Kit](https://aka.ms/webcamps-training-kit)
 
-> Tradiční webových aplikací inicializuje klienta (prohlížeč) komunikaci se serverem můžete si vyžádat stránku. Server poté zpracuje žádost a odešle klientovi HTML na stránce. V dalších interakcích se stránkou – například uživatel přejde na odkaz nebo odešle formulář s daty – je nová žádost odeslány na server a znovu spustí tok: server zpracuje žádost a odešle nové stránky do prohlížeče v reakci na žádost o nové akce ED klientem.
+Tato praktická cvičení se dozvíte, jak můžete vytvářet jedné stránce aplikace (SPA) pomocí rozhraní Web API ASP.NET a Angular.js pro ASP.NET 4.x.
+
+V tomto ručně v testovacím prostředí bude využívat těchto technologií ještě používáte k implementaci Informatik kvíz, triviální prvek Web založený na konceptu jednostránková aplikace. Nejprve budete implementovat vrstvě služby s rozhraním ASP.NET Web API k vystavení požadované koncové body načíst kvíz otázky a odpovědi uložit. Potom sestavíte bohaté a interaktivní uživatelské rozhraní pomocí AngularJS a CSS3 účinky transformace.
+
+Tradiční webových aplikací inicializuje klienta (prohlížeč) komunikaci se serverem můžete si vyžádat stránku. Server poté zpracuje žádost a odešle klientovi HTML na stránce. V dalších interakcích se stránkou – například uživatel přejde na odkaz nebo odešle formulář s daty – je nová žádost odeslány na server a znovu spustí tok: server zpracuje žádost a odešle nové stránky do prohlížeče v reakci na žádost o nové akce ED klientem.
 > 
 > V jednostránkové aplikace (SPA) celý načtení stránky v prohlížeči po počáteční žádosti, ale následné interakce probíhat přes odesílání požadavků Ajax. To znamená, že prohlížeč musí aktualizovat pouze části stránky, které se změnily; není nutné znovu načíst celou stránku. Jednostránková aplikace přístup snižuje doba, za kterou aplikaci reagovat na akce uživatelů, což vede k více plynulé prostředí.
 > 
 > Architektura SPA zahrnuje některé problémy, které nejsou k dispozici v tradiční webových aplikací. Ale nově vznikající technologie, jako je ASP.NET Web API, například rozhraní JavaScript AngularJS a nový styl funkce poskytované službou CSS3 usnadňují skutečně navrhovat a vytvářet SPA.
 > 
-> V tomto ručně v testovacím prostředí bude využívat těchto technologií ještě používáte k implementaci Informatik kvíz, triviální prvek Web založený na konceptu jednostránková aplikace. Nejprve budete implementovat vrstvě služby s rozhraním ASP.NET Web API k vystavení požadované koncové body načíst kvíz otázky a odpovědi uložit. Potom sestavíte bohaté a interaktivní uživatelské rozhraní pomocí AngularJS a CSS3 účinky transformace.
 > 
 > Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://aka.ms/webcamps-training-kit ](https://aka.ms/webcamps-training-kit).
 
@@ -72,7 +76,7 @@ V celém dokumentu testovacího prostředí budete vyzváni k vložení bloky k�
 > Každý cvičení se sadou počáteční řešení nachází v **začít** složky výkonu, který umožňuje postupovat podle jednotlivých výkon nezávisle na ostatních. Uvědomte si, že chybí z těchto řešení od fragmenty kódu, které se přidávají během cvičení a nemusí fungovat, dokud nedokončíte výkonu. Uvnitř zdrojový kód pro cvičení, můžete také najdete **End** složku, která obsahuje řešení sady Visual Studio s kódem, který je výsledkem dokončení kroků v odpovídající cvičení. Tato řešení můžete použít jako vodítko, pokud potřebujete další pomoc při práci prostřednictvím této praktické vyzkoušení.
 
 
-* * *
+---
 
 <a id="Exercises"></a>
 ## <a name="exercises"></a>Cvičení
@@ -433,7 +437,7 @@ V této úloze se pomocí vlastnosti CSS3 provádět bohaté animace přidáním
 
     *Načítají se na následující otázku s překlopit efekt*
 
-* * *
+---
 
 <a id="Summary"></a>
 ## <a name="summary"></a>Souhrn

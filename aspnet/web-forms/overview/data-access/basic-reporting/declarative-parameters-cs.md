@@ -8,15 +8,15 @@ ms.date: 03/31/2010
 ms.assetid: 603c9bd3-b895-4ec6-853b-0c81ff36d580
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/declarative-parameters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0e4091e873aab8bed4e0f4a5b2a30784fd52723e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b3bdb44a0e3dc274c056bcadae3dcf90ab3c5507
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071356"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59401436"
 ---
-<a name="declarative-parameters-c"></a>Deklarované parametry (C#)
-====================
+# <a name="declarative-parameters-c"></a>Deklarované parametry (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/6/3/463cf87c-4724-4cbc-b7b5-3f866f43ba50/ASPNET_Data_Tutorial_5_CS.exe) nebo [stahovat PDF](declarative-parameters-cs/_static/datatutorial05cs1.pdf)
@@ -37,7 +37,7 @@ Pro účely tohoto kurzu Začněme tím, že ilustrující způsob použití par
 První příklad, začněte přidáním ovládacího prvku DetailsView `DeclarativeParams.aspx` stránku `BasicReporting` složky. V ovládacím prvku DetailsView inteligentní značky, vyberte &lt;nový zdroj dat&gt; z rozevíracího seznamu a zvolte možnost Přidat prvku ObjectDataSource.
 
 
-[![Přidat na stránku prvku ObjectDataSource](declarative-parameters-cs/_static/image2.png)](declarative-parameters-cs/_static/image1.png)
+[![Add prvku ObjectDataSource na stránku](declarative-parameters-cs/_static/image2.png)](declarative-parameters-cs/_static/image1.png)
 
 **Obrázek 1**: Přidat na stránku prvku ObjectDataSource ([kliknutím ji zobrazíte obrázek v plné velikosti](declarative-parameters-cs/_static/image3.png))
 
@@ -45,7 +45,7 @@ První příklad, začněte přidáním ovládacího prvku DetailsView `Declarat
 To se automaticky spustí Průvodce zvolit zdroj dat ovládacího prvku ObjectDataSource. Vyberte `ProductsBLL` třídy na první obrazovce průvodce.
 
 
-[![Vyberte třídu ProductsBLL](declarative-parameters-cs/_static/image5.png)](declarative-parameters-cs/_static/image4.png)
+[![Szvolit třídu ProductsBLL](declarative-parameters-cs/_static/image5.png)](declarative-parameters-cs/_static/image4.png)
 
 **Obrázek 2**: Vyberte `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](declarative-parameters-cs/_static/image6.png))
 
@@ -53,7 +53,7 @@ To se automaticky spustí Průvodce zvolit zdroj dat ovládacího prvku ObjectDa
 Protože chceme, aby k zobrazení informací o daném produktu chceme použít `GetProductByProductID(productID)` metody.
 
 
-[![Zvolte GetProductByProductID(productID) – metoda](declarative-parameters-cs/_static/image8.png)](declarative-parameters-cs/_static/image7.png)
+[![CZvolte metodu GetProductByProductID(productID)](declarative-parameters-cs/_static/image8.png)](declarative-parameters-cs/_static/image7.png)
 
 **Obrázek 3**: Zvolte `GetProductByProductID(productID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](declarative-parameters-cs/_static/image9.png))
 
@@ -61,7 +61,7 @@ Protože chceme, aby k zobrazení informací o daném produktu chceme použít `
 Protože metoda, kterou jsme vybrali obsahuje parametr, je jedna další obrazovka průvodce, kde jsme vyzváni k definování hodnota, která má být použitý pro parametr. V seznamu na levé straně jsou uvedeny všechny parametry pro vybranou metodu. Pro `GetProductByProductID(productID)` existuje pouze jeden `productID`. Na pravé straně lze zadat hodnotu pro vybraný parametr. Seznamu parametrů zdrojové rozevírací seznam uvádí různé možné zdroje pro hodnotu parametru. Protože chceme zadejte hodnotu 5 pro pevně zakódované `productID` parametr, nechte zdroji parametru jako žádné a zadejte do textového pole Výchozí hodnota 5.
 
 
-[![Hard-Coded parametr z 5 bude použita hodnota pro parametr productID](declarative-parameters-cs/_static/image11.png)](declarative-parameters-cs/_static/image10.png)
+[![A Pevně zakódované parametr z 5 bude použita hodnota pro parametr productID](declarative-parameters-cs/_static/image11.png)](declarative-parameters-cs/_static/image10.png)
 
 **Obrázek 4**: Hard-Coded parametr z 5 bude použita hodnota pro `productID` parametr ([kliknutím ji zobrazíte obrázek v plné velikosti](declarative-parameters-cs/_static/image12.png))
 
@@ -77,7 +77,7 @@ Po dokončení Průvodce nakonfigurovat zdroj dat, deklarativní ovládací prve
 Při návštěvě této stránky, vyvolá data webový ovládací prvek ObjectDataSource `Select` metodu, která bude volat `ProductsBLL` třídy `GetProductByProductID(productID)` metodu pomocí pevně zakódovaného hodnotu 5 pro `productID` vstupního parametru. Metoda vrátí silného typu `ProductDataTable` objekt, který obsahuje jeden řádek s informacemi o Chefu Anton Gumbo Mix (produkt s `ProductID` 5).
 
 
-[![Informace o Chefu Antonova Gumbo Mix jsou zobrazeny.](declarative-parameters-cs/_static/image14.png)](declarative-parameters-cs/_static/image13.png)
+[![Ijsou zobrazeny nformation o Chefu Antonova Gumbo Mix](declarative-parameters-cs/_static/image14.png)](declarative-parameters-cs/_static/image13.png)
 
 **Obrázek 5**: Se zobrazují informace o Chefu Antonova Gumbo Mix ([kliknutím ji zobrazíte obrázek v plné velikosti](declarative-parameters-cs/_static/image15.png))
 
@@ -87,7 +87,7 @@ Při návštěvě této stránky, vyvolá data webový ovládací prvek ObjectDa
 Parametr ObjectDataSource, můžete také nastavit hodnoty na základě hodnoty webového ovládacího prvku na stránce. Pro znázornění, dopřejeme si prvku GridView, který obsahuje seznam všech dodavatelů, které se nacházejí v určité zemi specifikovaných uživatelem. K provedení této úvodní tak, že přidáte textové pole na stránku, do kterého může uživatel zadat název země. Nastavit tento ovládací prvek TextBox `ID` vlastnost `CountryName`. Také přidání ovládacího prvku tlačítko.
 
 
-[![Přidání textového pole na stránku s ID země](declarative-parameters-cs/_static/image17.png)](declarative-parameters-cs/_static/image16.png)
+[![Add textového pole na stránku s ID země](declarative-parameters-cs/_static/image17.png)](declarative-parameters-cs/_static/image16.png)
 
 **Obrázek 6**: Přidání textového pole na stránku s `ID` `CountryName` ([kliknutím ji zobrazíte obrázek v plné velikosti](declarative-parameters-cs/_static/image18.png))
 
@@ -95,7 +95,7 @@ Parametr ObjectDataSource, můžete také nastavit hodnoty na základě hodnoty 
 Chcete-li přidat nový prvek ObjectDataSource GridView přidat na stránku a z inteligentních značek zvolte v dalším kroku. Protože chceme zobrazit vyberte informace dodavateli `SuppliersBLL` třídy z Průvodce první obrazovky. Na druhé obrazovce, vyberte `GetSuppliersByCountry(country)` metody.
 
 
-[![Zvolte GetSuppliersByCountry(country) – metoda](declarative-parameters-cs/_static/image20.png)](declarative-parameters-cs/_static/image19.png)
+[![CZvolte metodu GetSuppliersByCountry(country)](declarative-parameters-cs/_static/image20.png)](declarative-parameters-cs/_static/image19.png)
 
 **Obrázek 7**: Zvolte `GetSuppliersByCountry(country)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](declarative-parameters-cs/_static/image21.png))
 
@@ -103,7 +103,7 @@ Chcete-li přidat nový prvek ObjectDataSource GridView přidat na stránku a z 
 Vzhledem k tomu, `GetSuppliersByCountry(country)` metoda má vstupní parametr, průvodce znovu obsahuje finální obrazovce pro výběr hodnotu parametru. Tentokrát nastavte zdroj parametru na ovládací prvek. To se vyplní ControlID rozevíracím seznamu se názvy ovládacích prvků na stránce. Vyberte `CountryName` ovládací prvek ze seznamu. Při první návštěvě stránky `CountryName` textového pole bude prázdné, takže nevrátí žádné výsledky a nezobrazí se. Pokud chcete zobrazit některé výsledky ve výchozím nastavení, nastavení textového pole DefaultValue odpovídajícím způsobem.
 
 
-[![Nastavte hodnotu parametru na hodnotu ovládacího prvku země](declarative-parameters-cs/_static/image23.png)](declarative-parameters-cs/_static/image22.png)
+[![SHodnota parametru na hodnotu ovládacího prvku země et](declarative-parameters-cs/_static/image23.png)](declarative-parameters-cs/_static/image22.png)
 
 **Obrázek 8**: Nastavte hodnotu parametru `CountryName` hodnota ovládacího prvku ([kliknutím ji zobrazíte obrázek v plné velikosti](declarative-parameters-cs/_static/image24.png))
 
@@ -117,7 +117,7 @@ Při první návštěvě stránky `CountryName` textové pole je prázdné. Prvk
 Jakmile návštěvníka zadá v zemi, ale a klikne na tlačítko Zobrazit dodavatelé pro vyvolávají zpětné odeslání, ObjectDataSource společnosti `Select` fokusu metoda předávání v ovládacím prvku TextBox `Text` hodnoty jako `country` parametr.
 
 
-[![Tito poskytovatelé z Kanady se zobrazí.](declarative-parameters-cs/_static/image26.png)](declarative-parameters-cs/_static/image25.png)
+[![Thadice Dodavatelé z Kanady se zobrazují](declarative-parameters-cs/_static/image26.png)](declarative-parameters-cs/_static/image25.png)
 
 **Obrázek 9**: Tito poskytovatelé z Kanady se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](declarative-parameters-cs/_static/image27.png))
 
@@ -139,7 +139,7 @@ Změnit `GetSuppliersByCountry(country)` metodu `SuppliersBLL` třídy pro násl
 Díky této změně `DeclarativeParams.aspx` stránka zobrazuje všechny dodavatele, když první uživatel (nebo vždy, když `CountryName` textové pole je prázdné).
 
 
-[![Všichni dodavatelé se teď zobrazují ve výchozím nastavení](declarative-parameters-cs/_static/image29.png)](declarative-parameters-cs/_static/image28.png)
+[![ADodavatelé LL se teď zobrazují ve výchozím nastavení](declarative-parameters-cs/_static/image29.png)](declarative-parameters-cs/_static/image28.png)
 
 **Obrázek 10**: Všichni dodavatelé se teď zobrazují ve výchozím nastavení ([kliknutím ji zobrazíte obrázek v plné velikosti](declarative-parameters-cs/_static/image30.png))
 

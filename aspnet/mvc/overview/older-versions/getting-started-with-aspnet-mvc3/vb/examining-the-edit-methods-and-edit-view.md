@@ -8,15 +8,15 @@ ms.date: 01/12/2011
 ms.assetid: 5cb3c59b-1e96-464b-b3a8-c55607201872
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 509f362a15990486cc5fa4f2f666c3d0de2434dc
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ebb526a51755df3cb439eedbf567d0d3dbd95a92
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075451"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59399447"
 ---
-<a name="examining-the-edit-methods-and-edit-view-vb"></a>Zkoumání metod Edit a zobrazení pro úpravy (VB)
-====================
+# <a name="examining-the-edit-methods-and-edit-view-vb"></a>Zkoumání metod Edit a zobrazení pro úpravy (VB)
+
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > V tomto kurzu se seznámíte se základy vytváření ASP.NET MVC webovou aplikaci pomocí Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze sady Microsoft Visual Studio. Než začnete, ujistěte se, že jste nainstalovali požadavky uvedené níže. Kliknutím na následující odkaz můžete nainstalovat všechny z nich: [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Alternativně můžete nainstalovat jednotlivě požadavky pomocí následujících odkazů:

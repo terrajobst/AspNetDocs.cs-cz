@@ -8,15 +8,15 @@ ms.date: 11/17/2011
 ms.assetid: c3c76516-4c48-4153-bd03-d70e3a3edbb0
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 9b3d47c3c8fe5f0b37f1d45e19341df3f91a5bb0
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: cc8568847e050e868a3e7563b5fc1fc6fbf25d86
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076468"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59405479"
 ---
-<a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Nasazování databází SQL Server Compact - 2 z 12
-====================
+# <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Nasazování databází SQL Server Compact - 2 z 12
+
 podle [Petr Dykstra](https://github.com/tdykstra)
 
 [Stáhnout počáteční projekt](http://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
@@ -138,7 +138,7 @@ Tento výběr nabídky přidá následující kód, který `using` příkazů v 
 > [!NOTE]
 > Přidání kódu `Seed` metoda je jednou z mnoha způsoby, pevných datových můžete vložit do databáze. Alternativou je přidejte kód, který `Up` a `Down` metody třídy každou migraci. `Up` a `Down` metody obsahovat kód, který implementuje změny databáze. Zobrazí se vám příklady v [nasazení aktualizace databáze](deployment-to-a-hosting-provider-deploying-a-database-update-9-of-12.md) kurzu.
 > 
-> Můžete také napsat kód, který se spustí s použitím příkazů jazyka SQL `Sql` metody. Například, pokud bylo přidání rozpočtu sloupce do tabulky oddělení a chcete inicializovat všechna rozpočty na $ 1 000,00 jako součást migrace, můžete přidat folllowing řádku kódu `Up` metoda této migrace:
+> Můžete také napsat kód, který se spustí s použitím příkazů jazyka SQL `Sql` metody. Pokud bylo přidání rozpočtu sloupce do tabulky oddělení a chcete inicializovat všechna rozpočty na $ 1 000,00 jako součást migrace, můžete například přidat následující řádek kódu, který `Up` metoda této migrace:
 > 
 > `Sql("UPDATE Department SET Budget = 1000");`
 > 

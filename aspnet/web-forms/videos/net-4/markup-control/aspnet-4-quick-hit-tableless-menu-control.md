@@ -8,15 +8,15 @@ ms.date: 11/16/2009
 ms.assetid: 5eabcaab-5f95-4052-9a92-f5cf332b35a5
 msc.legacyurl: /web-forms/videos/net-4/markup-control/aspnet-4-quick-hit-tableless-menu-control
 msc.type: video
-ms.openlocfilehash: 43356470651bfffdac271a79a98f955c056fe9e3
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 39e566a431d0e6382954c2cc2773451d20bc382b
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066862"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59402775"
 ---
-<a name="aspnet-4-quick-hit--tableless-menu-control"></a>ASP.NET 4 "Rychlé zasáhnout" – ovládací prvek nabídky
-====================
+# <a name="aspnet-4-quick-hit--tableless-menu-control"></a>ASP.NET 4 "Rychlé zasáhnout" – ovládací prvek nabídky
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 V tomto videu vám ukážeme, jak vykreslí ovládací prvek ASP.NET nabídky pomocí sémantické značky tvořený neuspořádaný seznam a seznam prvků jazyka HTML 

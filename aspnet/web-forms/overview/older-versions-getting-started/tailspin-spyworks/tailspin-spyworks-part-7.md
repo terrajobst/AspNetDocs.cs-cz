@@ -8,15 +8,15 @@ ms.date: 07/21/2010
 ms.assetid: 50223ee9-11b9-4cf3-bca2-e2f10bf471f3
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: cada8d9aee649e4f2a5afc1ca2b46863ea458207
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 646aeb4ad99ba9b0ee114c6be4aa528e62ef4775
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075616"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59389944"
 ---
-<a name="part-7-adding-features"></a>Část 7: Přidání funkcí
-====================
+# <a name="part-7-adding-features"></a>Část 7: Přidání funkcí
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 > Tailspin Spyworks ukazuje, jak mimořádně jednoduché je vytvářet výkonné a škálovatelné aplikace pro platformu .NET. Zobrazuje vypnout použití skvělých nových funkcí v technologii ASP.NET 4 k sestavení nebo online úložiště, včetně nákupu, Pokladna a správu.
@@ -41,11 +41,11 @@ I když můžou uživatelé procházet náš katalog, umístěte položky do ná
 
 Ve složce "Účet" vytvořte dvě stránky ASPX, jednu s názvem OrderList.aspx a dalších pojmenované OrderDetails.aspx
 
-OrderList.aspx bude využívat ovládací prvky GridView a EntityDataSoure podobně, jako máme k dispozici dříve.
+OrderList.aspx bude využívat ovládací prvky GridView a EntityDataSource podobně, jako máme k dispozici dříve.
 
 [!code-aspx[Main](tailspin-spyworks-part-7/samples/sample1.aspx)]
 
-EntityDataSoure vybírá záznamy v tabulce objednávky filtrované podle uživatelského jména (viz WhereParameter), které jsme si nastavili v proměnné relace při uživateli přihlášení uživatele.
+Vybere třídu EntityDataSource platí záznamy v tabulce objednávky filtrované podle uživatelského jména (viz WhereParameter) který nastavíme proměnné relace, když uživateli přihlášení uživatele.
 
 Všimněte si také v HyperlinkField prvku GridView. Tyto parametry:
 
@@ -143,7 +143,7 @@ Všimněte si také tato důležité řádku v horní části kódu naše ovlád
 
 Vzhledem k tomu, že Nejoblíbenější položky nebudou měnit na základě minut na minutu můžeme přidat direktivu bolavými ke zlepšení výkonu našich aplikací. Tato direktiva způsobí, že kód ovládacích prvků na spustit pouze když vyprší platnost výstup z mezipaměti ovládacího prvku. V opačném případě se použije verze uložené v mezipaměti ovládacího prvku výstupu.
 
-Nyní je vše, co musíme udělat zahrňte naši stránku Default.aspc náš nový ovládací prvek.
+Nyní je vše, co musíme udělat zahrňte náš nový ovládací prvek naši stránku Default.aspx.
 
 Použití přetažení umístit ve sloupci otevřít v našem formuláři výchozí instanci ovládacího prvku.
 

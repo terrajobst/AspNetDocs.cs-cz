@@ -8,15 +8,15 @@ ms.date: 02/20/2005
 ms.assetid: 2bb109d2-e299-46ea-9054-fa0263b59165
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/caching
 msc.type: authoredcontent
-ms.openlocfilehash: 5c97464ee50291338a80120a86b1b86b07bc672d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5e16415df5bd4203995bec943ffa682f7da82357
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068497"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59400201"
 ---
-<a name="caching"></a>Ukládání do mezipaměti
-====================
+# <a name="caching"></a>Ukládání do mezipaměti
+
 by [Microsoft](https://github.com/microsoft)
 
 > Znalost ukládání do mezipaměti je důležité pro správné aplikace ASP.NET. ASP.NET 1.x nabízí tři různé možnosti pro ukládání do mezipaměti; ukládání výstupu do mezipaměti, ukládání do mezipaměti fragment a rozhraní API mezipaměti.
@@ -56,7 +56,7 @@ Zrušte platnost položky, který byl vložen nad, jednoduše odeberte položky,
 
 Všimněte si, že klíč položky, která funguje jako klíč mezipaměti musí být stejná jako hodnota přidat do pole klíče k mezipaměti.
 
-## <a name="polling-based-sql-cache-dependenciesemalso-called-table-based-dependenciesem"></a>Dotazování na základě závislostí mezipaměti SQL<em>(také nazývané cyklické závislosti)</em>
+## <a name="polling-based-sql-cache-dependenciesalso-called-table-based-dependencies"></a>Dotazování na základě Dependencies(Also called Table-Based Dependencies) mezipaměti SQL
 
 SQL Server 7 a 2000 použít model založený na dotazování pro závislosti mezipaměti SQL. Model založený na dotazování používá aktivační události v tabulce databáze, která se aktivuje při změně dat v tabulce. Aktivovat, aktualizace **changeId** v tabulce oznámení, která pravidelně kontroluje technologie ASP.NET. Pokud **changeId** pole se aktualizovala, ASP.NET ví, že jste změnili data a ji zruší platnost dat uložených v mezipaměti.
 
@@ -211,9 +211,9 @@ ControlCachePolicy instance lze úspěšně ovládat pouze mezi Init a proveden�
 
 Existuje několik změn pro konfiguraci ukládání do mezipaměti v technologii ASP.NET 2.0. &lt;Ukládání do mezipaměti&gt; element je nového v technologii ASP.NET 2.0 a umožní vám provádět změny v konfiguraci ukládání do mezipaměti v konfiguračním souboru. Následující atributy jsou k dispozici.
 
-| **Element** | **Popis** |
+| **Prvek** | **Popis** |
 | --- | --- |
-| **cache** | Volitelný element. Definuje globální nastavení mezipaměti aplikace. |
+| **mezipaměť** | Volitelný element. Definuje globální nastavení mezipaměti aplikace. |
 | **outputCache** | Volitelný element. Určuje nastavení výstupní mezipaměti pro celou aplikaci. |
 | **outputCacheSettings** | Volitelný element. Určuje nastavení výstupní mezipaměti, které mohou být použity na stránky v aplikaci. |
 | **sqlCacheDependency** | Volitelný element. Nakonfiguruje závislosti mezipaměti SQL pro aplikaci ASP.NET. |
@@ -253,7 +253,7 @@ Jsou k dispozici pro následující atributy &lt;sqlCacheDependency&gt; elementu
 | **Atribut** | **Popis** |
 | --- | --- |
 | **Povoleno** | Vyžaduje **logická** atribut. Označuje, zda jsou změny pro dotazování. |
-| **pollTime** | Volitelné **Int32** atribut. Nastaví frekvenci, s kterým SqlCacheDependency dotazuje na změny v tabulce databáze. Tato hodnota odpovídá počet milisekund mezi po sobě následujících dotazech. Nejde ji nastavit na míň než 500 milisekund. Výchozí hodnota je 1 minuta. |
+| **pollTime nastaven** | Volitelné **Int32** atribut. Nastaví frekvenci, s kterým SqlCacheDependency dotazuje na změny v tabulce databáze. Tato hodnota odpovídá počet milisekund mezi po sobě následujících dotazech. Nejde ji nastavit na míň než 500 milisekund. Výchozí hodnota je 1 minuta. |
 
 ### <a name="more-information"></a>Další informace
 

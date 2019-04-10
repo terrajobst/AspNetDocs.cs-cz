@@ -1,23 +1,26 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/supporting-odata-query-options
-title: Podpora možností dotazů OData v rozhraní ASP.NET Web API 2 | Dokumentace Microsoftu
+title: Podpora možností dotazů OData v rozhraní ASP.NET Web API 2 – ASP.NET 4.x
 author: MikeWasson
-description: ''
+description: Přehled s příklady kódu zobrazuje podpůrné možnosti dotazu OData v ASP.NET Web API 2 pro ASP.NET 4.x.
 ms.author: riande
 ms.date: 02/04/2013
+ms.custom: seoapril2019
 ms.assetid: 50e6e62b-e72e-4a29-8293-4b67377bd21f
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/supporting-odata-query-options
 msc.type: authoredcontent
-ms.openlocfilehash: 8745183125c9dd1dcc7cb0e146367a893bdb0170
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 428e4942e42436585049c1e84cd7b07a4a79c0d1
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073912"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59411563"
 ---
-<a name="supporting-odata-query-options-in-aspnet-web-api-2"></a>Podpora možností dotazů OData v rozhraní ASP.NET Web API 2
-====================
+# <a name="supporting-odata-query-options-in-aspnet-web-api-2"></a>Podpora možností dotazů OData v rozhraní ASP.NET Web API 2
+
 podle [Mike Wasson](https://github.com/MikeWasson)
+
+Tento přehled s příklady kódu ukazuje podpůrné možnosti dotazu OData v ASP.NET Web API 2 technologie ASP.NET 4.x. 
 
 OData definuje parametry, které lze použít k úpravě dotazu OData. Klient odešle tyto parametry v řetězci dotazu identifikátoru URI požadavku. Například pokud chcete výsledky seřadit, klient použije parametr $orderby:
 

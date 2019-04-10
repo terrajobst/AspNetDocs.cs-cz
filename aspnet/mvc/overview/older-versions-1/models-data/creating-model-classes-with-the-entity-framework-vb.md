@@ -8,15 +8,15 @@ ms.date: 01/27/2009
 ms.assetid: ff8322c9-12f3-4e24-aba6-a38046b9bb0d
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c1f64f57d4c23fe225a8268042104254e17dc456
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b3c6726c2d08e2e6ac37501f2ab455e427df82bb
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071917"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59414047"
 ---
-<a name="creating-model-classes-with-the-entity-framework-vb"></a>Vytvoření tříd modelu v sadě Entity Framework (VB)
-====================
+# <a name="creating-model-classes-with-the-entity-framework-vb"></a>Vytvoření tříd modelu v sadě Entity Framework (VB)
+
 by [Microsoft](https://github.com/microsoft)
 
 > V tomto kurzu se dozvíte, jak používat technologie ASP.NET MVC s Entity Framework společnosti Microsoft. Zjistíte, jak používat průvodce Entity k vytvoření datového modelu Entity ADO.NET. V průběhu tohoto kurzu jsme vytvořit webovou aplikaci, která ukazuje, jak vybrat, vkládání, aktualizace a odstranění dat z databáze pomocí Entity Frameworku.
@@ -132,7 +132,7 @@ Syntaxe podle toho, která LINQ – syntaxe využívající metody nebo syntaxe 
 
 Zobrazení výpisu 2 se používá k zobrazení záznamů video.
 
-**Listing 2 – Views\Home\Index.aspx**
+**Výpis 2 – Views\Home\Index.aspx**
 
 [!code-aspx[Main](creating-model-classes-with-the-entity-framework-vb/samples/sample3.aspx)]
 
@@ -194,7 +194,7 @@ Nakonec pokud nejsou žádné chyby ověření, pak podkladové databázové tab
 
 Při úpravě záznamů v databázi, je potřeba předat Id záznamu upravovaný na akce kontroleru, který provádí aktualizace databáze. Akce kontroleru, jinak nebude vědět, který záznam se má aktualizovat v podkladové databázi. Zobrazení pro úpravy součástí výpis 5 obsahuje skryté pole formuláře, který představuje Id databáze záznamu, který právě upravujete.
 
-**Listing 5 – Views\Home\Edit.aspx**
+**Výpis 5 – Views\Home\Edit.aspx**
 
 [!code-aspx[Main](creating-model-classes-with-the-entity-framework-vb/samples/sample8.aspx)]
 

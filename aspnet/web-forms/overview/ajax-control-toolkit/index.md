@@ -8,15 +8,15 @@ ms.date: 10/05/2011
 ms.assetid: 76242ce9-e611-41d2-95e8-dc5f406d4bfc
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit
 msc.type: chapter
-ms.openlocfilehash: ad68d8f074bc3c453e991abf7f8d393fbe9740ba
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 795283c33d63272b29b91fd7037c3463bc71abad
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57795960"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59410744"
 ---
-<a name="older-versions---ajax-control-toolkit"></a>Starší verze – sada nástrojů Ajax Control Toolkit
-====================
+# <a name="older-versions---ajax-control-toolkit"></a>Starší verze – sada nástrojů Ajax Control Toolkit
+
 > Jak začít pracovat se sadou nástrojů Ajax Control Toolkit a jak používat některé z nejoblíbenějších ovládacích prvků. DevExpress udržuje, že zdarma a open source sada nástrojů Ajax Control Toolkit.
 > 
 > 
@@ -26,11 +26,11 @@ ms.locfileid: "57795960"
 - [Začínáme](getting-started/index.md)
 
     - [Začínáme se sadou nástrojů AJAX Control Toolkit (C#)](getting-started/get-started-with-the-ajax-control-toolkit-cs.md)
-    - [Použití ovládacích prvků a extenderů ovládacích prvků AJAX Control Toolkit (C#)](getting-started/using-ajax-control-toolkit-controls-and-control-extenders-cs.md)
-    - [Vytvoření vlastního extenderu ovládacího prvku AJAX Control Toolkit (C#)](getting-started/creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
+    - [Použití ovládacích prvků a rozšiřujících ovládacích prvků AJAX Control Toolkit (C#)](getting-started/using-ajax-control-toolkit-controls-and-control-extenders-cs.md)
+    - [Vytvoření vlastního rozšiřujícího ovládacího prvku AJAX Control Toolkit (C#)](getting-started/creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
     - [Začínáme se sadou nástrojů AJAX Control Toolkit (VB)](getting-started/get-started-with-the-ajax-control-toolkit-vb.md)
-    - [Použití ovládacích prvků a extenderů ovládacích prvků AJAX Control Toolkit (VB)](getting-started/using-ajax-control-toolkit-controls-and-control-extenders-vb.md)
-    - [Vytvoření vlastního extenderu ovládacího prvku AJAX Control Toolkit (VB)](getting-started/creating-a-custom-ajax-control-toolkit-control-extender-vb.md)
+    - [Použití ovládacích prvků a rozšiřujících ovládacích prvků AJAX Control Toolkit (VB)](getting-started/using-ajax-control-toolkit-controls-and-control-extenders-vb.md)
+    - [Vytvoření vlastního rozšiřujícího ovládacího prvku AJAX Control Toolkit (VB)](getting-started/creating-a-custom-ajax-control-toolkit-control-extender-vb.md)
 - [Accordion](accordion/index.md)
 
     - [Datová vazba ovládacího prvku Accordion (C#)](accordion/databinding-to-an-accordion-cs.md)
@@ -81,16 +81,16 @@ ms.locfileid: "57795960"
     - [Sbalení a rozbalení panelu JavaScriptem (VB)](collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-vb.md)
 - [ColorPicker](colorpicker/index.md)
 
-    - [Extender ovládacího prvku ColorPicker (C#)](colorpicker/using-the-colorpicker-control-extender-cs.md)
-    - [Extender ovládacího prvku ColorPicker (VB)](colorpicker/using-the-colorpicker-control-extender-vb.md)
+    - [Rozšiřující ovládací prvek pro ovládací prvek ColorPicker (C#)](colorpicker/using-the-colorpicker-control-extender-cs.md)
+    - [Rozšiřující ovládací prvek pro ovládací prvek ColorPicker (VB)](colorpicker/using-the-colorpicker-control-extender-vb.md)
 - [ComboBox](combobox/index.md)
 
     - [Ovládací prvek ComboBox (C#)](combobox/how-do-i-use-the-combobox-control-cs.md)
     - [Ovládací prvek ComboBox (VB)](combobox/how-do-i-use-the-combobox-control-vb.md)
 - [ConfirmButton](confirmbutton/index.md)
 
-    - [Použití extenderu ConfirmButton v repeateru (C#)](confirmbutton/using-a-confirmbutton-in-a-repeater-cs.md)
-    - [Použití extenderu ConfirmButton v repeateru (VB)](confirmbutton/using-a-confirmbutton-in-a-repeater-vb.md)
+    - [Použití ovládacího prvku ConfirmButton v repeateru (C#)](confirmbutton/using-a-confirmbutton-in-a-repeater-cs.md)
+    - [Použití ovládacího prvku ConfirmButton v repeateru (VB)](confirmbutton/using-a-confirmbutton-in-a-repeater-vb.md)
 - [DropShadow](dropshadow/index.md)
 
     - [Úprava indexu Z ovládacího prvku DropShadow (C#)](dropshadow/adjusting-the-z-index-of-a-dropshadow-cs.md)
@@ -143,14 +143,14 @@ ms.locfileid: "57795960"
 
     - [Testování síly hesla (C#)](passwordstrength/testing-the-strength-of-a-password-cs.md)
     - [Testování síly hesla (VB)](passwordstrength/testing-the-strength-of-a-password-vb.md)
-- [Popup](popup/index.md)
+- [Překryvný](popup/index.md)
 
     - [Použití několika překryvných ovládacích prvků (C#)](popup/using-multiple-popup-controls-cs.md)
-    - [Zpracování postbacků extenderu PopupControl ovládacím prvkem UpdatePanel (C#)](popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
-    - [Zpracování postbacků extenderu PopupControl bez ovládacího prvku UpdatePanel (C#)](popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md)
+    - [Zpracování postbacků ovládacího prvku PopupControl ovládacím prvkem UpdatePanel (C#)](popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
+    - [Zpracování postbacků ovládacího prvku PopupControl bez ovládacího prvku UpdatePanel (C#)](popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md)
     - [Použití několika překryvných ovládacích prvků (VB)](popup/using-multiple-popup-controls-vb.md)
-    - [Zpracování postbacků extenderu PopupControl ovládacím prvkem UpdatePanel (VB)](popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-vb.md)
-    - [Zpracování postbacků extenderu PopupControl bez ovládacího prvku UpdatePanel (VB)](popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)
+    - [Zpracování postbacků ovládacího prvku PopupControl ovládacím prvkem UpdatePanel (VB)](popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-vb.md)
+    - [Zpracování postbacků ovládacího prvku PopupControl bez ovládacího prvku UpdatePanel (VB)](popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)
 - [Rating](rating/index.md)
 
     - [Vytvoření ovládacího prvku Rating (C#)](rating/creating-a-rating-control-cs.md)

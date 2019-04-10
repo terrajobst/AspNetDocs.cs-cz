@@ -1,22 +1,23 @@
 ---
 uid: web-api/overview/formats-and-model-binding/json-and-xml-serialization
-title: Serializace JSON a XML v rozhraní ASP.NET Web API | Dokumentace Microsoftu
+title: Serializace JSON a XML v rozhraní ASP.NET Web API – ASP.NET 4.x
 author: MikeWasson
-description: ''
+description: Popisuje formátování JSON a XML v rozhraní ASP.NET Web API pro ASP.NET 4.x.
 ms.author: riande
 ms.date: 05/30/2012
+ms.custom: seoapril2019
 ms.assetid: 1cd7525d-de5e-4ab6-94f0-51480d3255d1
 msc.legacyurl: /web-api/overview/formats-and-model-binding/json-and-xml-serialization
 msc.type: authoredcontent
-ms.openlocfilehash: 47967e6e1dd0e84b6059c07d7544c0e755fdf510
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a9e7ed63a55c146976e0221214e722f3a2292fee
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067291"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59408274"
 ---
-<a name="json-and-xml-serialization-in-aspnet-web-api"></a>Serializace JSON a XML v rozhraní ASP.NET Web API
-====================
+# <a name="json-and-xml-serialization-in-aspnet-web-api"></a>Serializace JSON a XML v rozhraní ASP.NET Web API
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 Tento článek popisuje formátování JSON a XML v rozhraní ASP.NET Web API.
@@ -37,7 +38,7 @@ Webové rozhraní API poskytuje formátovacích modulů typů médií pro JSON a
     - [Odsazení](#json_indenting)
     - [CamelCase](#json_camelcasing)
     - [Anonymní a slabě typované objekty](#json_anon)
-- [XML Media-Type Formatter](#xml_media_type_formatter)
+- [Formátovací modul typu média XML](#xml_media_type_formatter)
 
     - [Vlastnosti jen pro čtení](#xml_readonly)
     - [Kalendářní data](#xml_dates)

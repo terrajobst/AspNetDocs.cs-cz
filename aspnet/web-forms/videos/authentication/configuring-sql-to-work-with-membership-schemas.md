@@ -8,15 +8,15 @@ ms.date: 08/04/2008
 ms.assetid: b3edd71d-b43e-4ccb-93e5-b89bb723312c
 msc.legacyurl: /web-forms/videos/authentication/configuring-sql-to-work-with-membership-schemas
 msc.type: video
-ms.openlocfilehash: 1748f40aea66022e928b8f2b0584efab48047fd3
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 1144f6de63ebff3c92efc148ec619ec1d5cc0aa1
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070591"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59409925"
 ---
-<a name="configuring-sql-to-work-with-membership-schemas"></a>Konfigurace SQL kvůli spolupráci se schématy členství
-====================
+# <a name="configuring-sql-to-work-with-membership-schemas"></a>Konfigurace SQL kvůli spolupráci se schématy členství
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 V toto video Joe Stagner ukazuje, jak nakonfigurovat instanci SQL a pracovat s konkrétní ASP služby profil členství; také konfigurujte aplikaci, aby v souboru machine.cgf konkrétně používají tuto instanci SQL a ne výchozí nastavení. Další informace o tomto videu najdete v článku [vytvoření schématu členství v SQL serveru](../../overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb.md) kurz k zabezpečení.

@@ -8,15 +8,15 @@ ms.date: 08/14/2010
 ms.assetid: 004703cd-e0e9-4ba7-9974-1b0475c71222
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part5
 msc.type: authoredcontent
-ms.openlocfilehash: 76dc324134dc93c9552741fea9f1136abdc9184a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: e0b540c030bf600def9b9efad4c73f055a343851
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069616"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59402827"
 ---
-<a name="accessing-your-models-data-from-a-controller"></a>Přístup k datům modelu z kontroleru
-====================
+# <a name="accessing-your-models-data-from-a-controller"></a>Přístup k datům modelu z kontroleru
+
 podle [Scott Hanselman](https://github.com/shanselman)
 
 > Toto je kurz pro začátečníky, který vysvětluje základy ASP.NET MVC. Vytvoříte jednoduchou webovou aplikaci, která čte a zapisuje z databáze. Přejděte [výukové centrum pro ASP.NET MVC](../../../index.md) najít další technologie ASP.NET MVC, kurzů a ukázek.
@@ -26,7 +26,7 @@ V této části jsme se chystáte vytvořit novou třídu MoviesController a nap
 
 Klikněte pravým tlačítkem na složku řadiče a proveďte nové MoviesController.
 
-[![Přidání Kontroleru](getting-started-with-mvc-part5/_static/image2.png)](getting-started-with-mvc-part5/_static/image1.png)
+[![Add Controller](getting-started-with-mvc-part5/_static/image2.png)](getting-started-with-mvc-part5/_static/image1.png)
 
 Tím se vytvoří nový soubor "MoviesController.cs" pod naše \Controllers složky v rámci naší projektu. Umožňuje aktualizovat MovieController načíst seznam video z naší nově mají údaj vyplněný databáze.
 
@@ -42,11 +42,11 @@ Mějte na paměti, když jste vytvořili novou třídu, budete muset kompilovat 
 
 Klikněte na tlačítko Přidat a systém automaticky vygeneruje kód pro zobrazení pro USA, který zobrazuje náš seznam videa. Toto je změna vhodná doba &lt;h2&gt; přepravuje do něco jako "Moje film seznam", jako jsme to udělali dříve se zobrazením Hello World.
 
-[![Videa – Microsoft Visual Web Developer 2010 Express](getting-started-with-mvc-part5/_static/image5.png)](getting-started-with-mvc-part5/_static/image4.png)
+[![Movies – Microsoft Visual Web Developer 2010 Express](getting-started-with-mvc-part5/_static/image5.png)](getting-started-with-mvc-part5/_static/image4.png)
 
 Spusťte aplikaci a přejděte do adresního řádku /Movies. Jsme teď načíst data z databáze pomocí základní dotaz do třídy Kontroleru a vrátí data zobrazení, které ví o filmech. Toto zobrazení pak přede prostřednictvím seznamu filmy a vytvoří tabulky dat pro nás.
 
-[![Seznam film – Windows Internet Explorer](getting-started-with-mvc-part5/_static/image7.png)](getting-started-with-mvc-part5/_static/image6.png)
+[![Movie seznam – Windows Internet Explorer](getting-started-with-mvc-part5/_static/image7.png)](getting-started-with-mvc-part5/_static/image6.png)
 
 Jsme nesmí být implementace úpravy, podrobností a odstraněných funkcí s touto aplikací – proto nepotřebujeme výchozí odkazy, které šablona scaffold vytváří. Otevřete soubor /Movies/Index.aspx a neodeberete.
 
@@ -56,7 +56,7 @@ Zde je zdrojový kód by měl vypadat naše aktualizovanou šablonu zobrazení p
 
 Odkazy, které jsme nebudete potřebovat, se vytváří, je v tomto příkladu odstraníme. Budeme udržovat naše vytvořit nové propojení, jako to je další! Tady je vypadá naši aplikaci pomocí tohoto sloupce odebrány.
 
-[![Seznam film – Windows Internet Explorer](getting-started-with-mvc-part5/_static/image9.png)](getting-started-with-mvc-part5/_static/image8.png)
+[![Movie seznam – Windows Internet Explorer](getting-started-with-mvc-part5/_static/image9.png)](getting-started-with-mvc-part5/_static/image8.png)
 
 Nyní je k dispozici jednoduchý seznam naše data o filmech. Ale když kliknete na odkaz "Vytvořit nový", jsme chybu, protože získáte ji není připojili! Můžeme implementovat metodu akce vytvoření a povolit tak uživateli zadat nové filmy v databázi.
 

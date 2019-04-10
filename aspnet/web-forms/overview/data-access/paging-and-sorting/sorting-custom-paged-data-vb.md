@@ -8,15 +8,15 @@ ms.date: 08/15/2006
 ms.assetid: 4823a186-caaf-4116-a318-c7ff4d955ddc
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/sorting-custom-paged-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3f40c2632e98dd8c64c985e44478a9739df473ca
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: ca1bf281130bf2c726b6147f90733c8a83754563
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423128"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59399578"
 ---
-<a name="sorting-custom-paged-data-vb"></a>Řazení dat s vlastním stránkováním (VB)
-====================
+# <a name="sorting-custom-paged-data-vb"></a>Řazení dat s vlastním stránkováním (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_26_VB.exe) nebo [stahovat PDF](sorting-custom-paged-data-vb/_static/datatutorial26vb1.pdf)
@@ -71,7 +71,7 @@ Za chvíli otestovat tuto uloženou proceduru s různými hodnotami parametru `@
 **Obrázek 1**: Vyzkoušejte si různé hodnoty pro vstupní parametry uložené procedury s tři
 
 
-[![Uložená procedura s výsledky jsou zobrazeny v okně výstupu](sorting-custom-paged-data-vb/_static/image3.png)](sorting-custom-paged-data-vb/_static/image2.png)
+[![The uložená procedura s výsledky jsou zobrazeny v okně výstupu](sorting-custom-paged-data-vb/_static/image3.png)](sorting-custom-paged-data-vb/_static/image2.png)
 
 **Obrázek 2**: Uložená procedura s výsledky jsou zobrazeny v okně výstupu ([kliknutím ji zobrazíte obrázek v plné velikosti](sorting-custom-paged-data-vb/_static/image4.png))
 
@@ -145,7 +145,7 @@ Pokud chcete povolit řazení v prvku GridView, stačí zaškrtnout políčko Po
 Obrázek 7 znázorňuje první stránka výsledků při řazení podle `UnitPrice` ve vzestupném pořadí.
 
 
-[![Výsledky jsou seřazené podle pole UnitPrice](sorting-custom-paged-data-vb/_static/image10.png)](sorting-custom-paged-data-vb/_static/image9.png)
+[![The výsledky jsou seřazené podle pole UnitPrice](sorting-custom-paged-data-vb/_static/image10.png)](sorting-custom-paged-data-vb/_static/image9.png)
 
 **Obrázek 7**: Výsledky jsou seřazené podle pole UnitPrice ([kliknutím ji zobrazíte obrázek v plné velikosti](sorting-custom-paged-data-vb/_static/image11.png))
 
@@ -166,7 +166,7 @@ Touto výjimkou způsobeno `SortExpression` z ovládacího prvku GridView s `Sup
 **Obrázek 9**: Změnit vlastnosti BoundField Dodavatel s SortExpression CompanyName
 
 
-[![Můžete teď být řazeny výsledky podle dodavatele](sorting-custom-paged-data-vb/_static/image15.png)](sorting-custom-paged-data-vb/_static/image14.png)
+[![Tmá teď můžou být řazeny výsledky dodavatelem](sorting-custom-paged-data-vb/_static/image15.png)](sorting-custom-paged-data-vb/_static/image14.png)
 
 **Obrázek 10**: Výsledky můžete teď být řazeny podle dodavatele ([kliknutím ji zobrazíte obrázek v plné velikosti](sorting-custom-paged-data-vb/_static/image16.png))
 

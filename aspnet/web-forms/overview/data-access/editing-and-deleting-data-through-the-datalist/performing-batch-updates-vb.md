@@ -8,15 +8,15 @@ ms.date: 10/30/2006
 ms.assetid: 8dac22a7-91de-4e3b-888f-a4c438b03851
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c903dd64ba7dd19a8af63224ee54629086279bf6
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 7292736a9c12d5013fb4aeef15085bb8d7d74884
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425883"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59405726"
 ---
-<a name="performing-batch-updates-vb"></a>Provádění dávkových aktualizací (VB)
-====================
+# <a name="performing-batch-updates-vb"></a>Provádění dávkových aktualizací (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_37_VB.exe) nebo [stahovat PDF](performing-batch-updates-vb/_static/datatutorial37vb1.pdf)
@@ -29,7 +29,7 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 V [předchozím kurzu](an-overview-of-editing-and-deleting-data-in-the-datalist-vb.md) jsme se zaměřili na tom, jak vytvořit ovládacích prvků DataList na úrovni položek. Jako zahrnuté standardní upravitelné prvku GridView, každou položku v ovládacím prvku DataList tlačítko úpravy, které, při kliknutí na, s žádným položky upravovat. Zatímco tato položka úrovně úpravy funguje dobře pro data, která je jenom čas od času aktualizován, vyžaduje určité scénáře použití uživateli upravovat mnoho záznamů. Pokud uživatel je potřeba upravit desítky záznamy a bude muset kliknout na upravit, proveďte své změny a klikněte na tlačítko Aktualizovat pro každou z nich, může omezovat velikost kliknutím na její produktivitu. V takových situacích je lepší volbou poskytnout plně upravitelné DataList jednoho, kde *všechny* jeho položek jsou v režimu úprav a jehož hodnoty můžete upravit kliknutím na tlačítko Aktualizovat vše na stránce (viz obrázek 1).
 
 
-[![Každá položka v plně upravit DataList je možné upravit.](performing-batch-updates-vb/_static/image2.png)](performing-batch-updates-vb/_static/image1.png)
+[![Eje možné upravit ACH položky v plně upravit DataList](performing-batch-updates-vb/_static/image2.png)](performing-batch-updates-vb/_static/image1.png)
 
 **Obrázek 1**: Je možné upravit každé položky v plně upravit DataList ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-vb/_static/image3.png))
 
@@ -50,7 +50,7 @@ Pro plně upravitelné DataList chceme *všechny* z `DataListItem` s vykreslit p
 Začněte otevřením `BatchUpdate.aspx` stránce, přidejte ovládací prvek DataList a nastavte jeho `ID` vlastnost `Suppliers`. Z inteligentních značek v prvku DataList s optimalizované pro přidání nového ovládacího prvku ObjectDataSource s názvem `SuppliersDataSource`.
 
 
-[![Vytvoření nového prvku ObjectDataSource s názvem SuppliersDataSource](performing-batch-updates-vb/_static/image5.png)](performing-batch-updates-vb/_static/image4.png)
+[![CVytvořit nový účet ObjectDataSource s názvem SuppliersDataSource](performing-batch-updates-vb/_static/image5.png)](performing-batch-updates-vb/_static/image4.png)
 
 **Obrázek 2**: Vytvoření nového prvku ObjectDataSource s názvem `SuppliersDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-vb/_static/image6.png))
 
@@ -58,12 +58,12 @@ Začněte otevřením `BatchUpdate.aspx` stránce, přidejte ovládací prvek Da
 Konfigurace ObjectDataSource k načtení dat pomocí `SuppliersBLL` třída s `GetSuppliers()` – metoda (viz obrázek 3). Stejně jako v předchozím kurzu, nikoli aktualizují se informace o dodavateli prostřednictvím ObjectDataSource, budete spolupracujeme přímo se vrstvy obchodní logiky. Proto nastavte rozevírací seznam na (žádný) na kartě aktualizace (viz obrázek 4).
 
 
-[![Načíst informace o dodavateli pomocí GetSuppliers() – metoda](performing-batch-updates-vb/_static/image8.png)](performing-batch-updates-vb/_static/image7.png)
+[![Rnačíst informace o dodavateli pomocí metody GetSuppliers()](performing-batch-updates-vb/_static/image8.png)](performing-batch-updates-vb/_static/image7.png)
 
 **Obrázek 3**: Načtení informací pomocí dodavatele `GetSuppliers()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-vb/_static/image9.png))
 
 
-[![Nastavte rozevírací seznam na (žádný) na kartě aktualizace](performing-batch-updates-vb/_static/image11.png)](performing-batch-updates-vb/_static/image10.png)
+[![Set rozevíracího seznamu na (žádný) na kartě aktualizace](performing-batch-updates-vb/_static/image11.png)](performing-batch-updates-vb/_static/image10.png)
 
 **Obrázek 4**: Nastavte rozevírací seznam na (žádný) na kartě aktualizace ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-vb/_static/image12.png))
 
@@ -87,7 +87,7 @@ V `ItemTemplate` můžu m pomocí dvou nových tříd šablon stylů CSS `Suppli
 Po provedení těchto změn, navštivte tuto stránku prostřednictvím prohlížeče. Jak je vidět na obrázku 5, každé položky v prvku DataList zobrazí název dodavatele jako text a používá textových polí k zobrazení adresu, Město a zemi.
 
 
-[![Každý poskytovatel v ovládacím prvku DataList není upravit](performing-batch-updates-vb/_static/image14.png)](performing-batch-updates-vb/_static/image13.png)
+[![EACH dodavatele v ovládacím prvku DataList je upravit](performing-batch-updates-vb/_static/image14.png)](performing-batch-updates-vb/_static/image13.png)
 
 **Obrázek 5**: Každý poskytovatel v ovládacím prvku DataList je upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-vb/_static/image15.png))
 
@@ -104,7 +104,7 @@ Začněte tím, že přidání ovládacího prvku tlačítko webové nad ovláda
 Obrázek 6 zobrazuje stránku po přidání tlačítka Aktualizovat vše.
 
 
-[![Dvě tlačítka všechny aktualizace byly přidány na stránku](performing-batch-updates-vb/_static/image17.png)](performing-batch-updates-vb/_static/image16.png)
+[![TVšechna tlačítka wo aktualizace byly přidány na stránku](performing-batch-updates-vb/_static/image17.png)](performing-batch-updates-vb/_static/image16.png)
 
 **Obrázek 6**: Dvě tlačítka všechny aktualizace byly přidány na stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-vb/_static/image18.png))
 

@@ -8,22 +8,22 @@ ms.date: 10/05/2011
 ms.assetid: 0078ceb6-3447-4ce4-90c2-d0e013ebc000
 msc.legacyurl: /web-forms/videos/iis
 msc.type: chapter
-ms.openlocfilehash: febbe4e6cc00241246cb4a8d212bb86d1adccf23
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 883b5c3ad39922ddd51ea1d07b8d52d1c74d2153
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57795947"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59384289"
 ---
-<a name="general-iis-tips"></a>Obecné tipy pro IIS
-====================
+# <a name="general-iis-tips"></a>Obecné tipy pro IIS
+
 > Postup konfigurace služby IIS pro práci s aplikací ASP.NET.
 
 
 - [Vývoj a nasazení při sdíleném hostování](developing-and-deploying-in-a-shared-hosting.md)
 - [Práce s delegovaným správcem služby IIS7](working-with-iis7-deligated-admin.md)
 - [Delegovaná správa specifických funkcí](feature-specific-delegated-management.md)
-- [Řešení potíží provozních aplikací ASP.NET](troubleshooting-production-aspnet-apps.md)
+- [Řešení potíží produkčních aplikací ASP.NET](troubleshooting-production-aspnet-apps.md)
 - [Vytvoření webu ve správci služby IIS7](creating-a-site-with-iis7-manager.md)
 - [Instalace protokolu FTP7](installing-ftp7.md)
 - [Omezení přenosové rychlosti](bit-rate-throttling.md)

@@ -8,15 +8,15 @@ ms.date: 02/20/2007
 ms.assetid: 9128aaac-afe2-449f-84b2-bb1d035083c4
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 654c0ce5520a206e5e8e2fd20bed92ac1075bfe9
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7a6401e881fd66ab21b58fd7d86085e0bc228b6a
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069388"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59410848"
 ---
-<a name="using-parameterized-queries-with-the-sqldatasource-c"></a>Použití parametrizovaných dotazů s ovládacím prvkem SqlDataSource (C#)
-====================
+# <a name="using-parameterized-queries-with-the-sqldatasource-c"></a>Použití parametrizovaných dotazů s ovládacím prvkem SqlDataSource (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_48_CS.exe) nebo [stahovat PDF](using-parameterized-queries-with-the-sqldatasource-cs/_static/datatutorial48cs1.pdf)
@@ -61,7 +61,7 @@ Od vytvoření parametrického dotazu závisí na tom SqlDataSource s `SelectCom
 Při výběru dat k vrácení z databáze s ovládacím prvkem SqlDataSource, průvodce Konfigurovat zdroj dat umožňuje jednoduše vybrat sloupce, které chcete vrátit z existující tabulky nebo zobrazení (viz obrázek 1). To tedy automaticky vytvoří SQL `SELECT` příkazu, který je, co se odesílá do databáze při SqlDataSource s `Select()` vyvolání metody. Jako jsme to udělali v předchozím kurzu, vyberte tabulku produktů z rozevíracího seznamu a zkontrolujte, `ProductID`, `ProductName`, a `UnitPrice` sloupce.
 
 
-[![Vybrat sloupce, které chcete vrátit z tabulky nebo zobrazení](using-parameterized-queries-with-the-sqldatasource-cs/_static/image1.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image1.png)
+[![Psob sloupce se mají vrátit z tabulky nebo zobrazení](using-parameterized-queries-with-the-sqldatasource-cs/_static/image1.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image1.png)
 
 **Obrázek 1**: Vyberte sloupce, které chcete vrátit z tabulky nebo zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image2.png))
 
@@ -71,7 +71,7 @@ Zahrnout `WHERE` klauzuli v `SELECT` příkaz, klikněte na tlačítko `WHERE` t
 V tomto příkladu vám umožňují s vrátit pouze těch výsledků kde `UnitPrice` hodnota je menší než nebo rovna 25,00 $. Proto vyberte `UnitPrice` z rozevíracího seznamu sloupců a &lt;= z rozevíracího seznamu operátor. Při použití hodnoty pevně zakódované parametru (např. $25,00) nebo pokud hodnota parametru je třeba zadat prostřednictvím kódu programu, vyberte žádný z rozevíracího seznamu zdrojů. Dále zadejte hodnotu parametru pevně zakódované v textovém poli hodnota 25,00 a dokončete proces kliknutím na tlačítko Přidat.
 
 
-[![Omezit rozsah výsledků vrácených přidat WHERE dialogové okno – klauzule](using-parameterized-queries-with-the-sqldatasource-cs/_static/image2.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image3.png)
+[![Limit vráceny výsledky z dialogového okna Přidat kde klauzule](using-parameterized-queries-with-the-sqldatasource-cs/_static/image2.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image3.png)
 
 **Obrázek 2**: Omezit výsledky vrácené přidat `WHERE` dialogové okno – klauzule ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image4.png))
 
@@ -93,7 +93,7 @@ Dokončení konfigurace ovládacím prvkem SqlDataSource (klikněte na tlačítk
 Při SqlDataSource s `Select()` je vyvolána metoda `UnitPrice` hodnota parametru (25,00) platí pro `@UnitPrice` parametr `SelectCommand` před odesláním do databáze. Net výsledkem je pouze produkty, menší nebo rovna $25,00 vrácená `Products` tabulky. GridView potvrdit, přidat na stránku, vázat na tento zdroj dat a pak zobrazte stránku prostřednictvím prohlížeče. Měli byste vidět pouze produkty uvedené, které jsou menší než nebo rovna $25,00, potvrdí obr. 3.
 
 
-[![Jsou zobrazeny pouze ty produkty menší než nebo rovno 25,00 $](using-parameterized-queries-with-the-sqldatasource-cs/_static/image3.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image5.png)
+[![OZobrazují se jen pro tyto produkty menší než nebo rovno 25,00 $](using-parameterized-queries-with-the-sqldatasource-cs/_static/image3.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image5.png)
 
 **Obrázek 3**: Jsou zobrazeny pouze ty produkty menší než nebo rovno 25,00 $ ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image6.png))
 
@@ -110,7 +110,7 @@ V dalším kroku přetáhněte na stránku GridView a od jeho inteligentních zn
 Po zadání dotazu (ručně nebo pomocí Tvůrce dotazů), klikněte na tlačítko Další.
 
 
-[![Vrátit pouze produkty, menší než hodnota parametru](using-parameterized-queries-with-the-sqldatasource-cs/_static/image4.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image7.png)
+[![Rvracet jenom ty produkty menší než nebo rovná hodnotě parametru](using-parameterized-queries-with-the-sqldatasource-cs/_static/image4.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image7.png)
 
 **Obrázek 4**: Vrácení pouze těch produkty menší než nebo rovno hodnota parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image8.png))
 
@@ -118,7 +118,7 @@ Po zadání dotazu (ručně nebo pomocí Tvůrce dotazů), klikněte na tlačít
 Protože dotaz obsahuje parametry, na další obrazovce Průvodce nám vyzve k zadání zdrojové hodnoty parametrů. Vyberte ovládací prvek ze seznamu parametrů zdroj rozevíracího seznamu a `MaxPrice` (ovládací prvek TextBox s `ID` hodnota) z rozevíracího seznamu ControlID. Můžete také zadat volitelnou výchozí hodnotu pro použití v případě, kde uživatel nebyl zadali jakýkoli text do `MaxPrice` textového pole. Prozatím, nezadávejte výchozí hodnotu.
 
 
-[![MaxPrice TextBox s vlastností Text slouží jako zdroj parametru](using-parameterized-queries-with-the-sqldatasource-cs/_static/image5.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image9.png)
+[![Tmá MaxPrice TextBox s vlastností Text slouží jako zdroj parametr](using-parameterized-queries-with-the-sqldatasource-cs/_static/image5.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image9.png)
 
 **Obrázek 5**: `MaxPrice` Textové pole s `Text` vlastnost se používá jako zdroj parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image10.png))
 
@@ -133,7 +133,7 @@ Všimněte si, že parametr ve třídě SqlDataSource s `<SelectParameters>` odd
 Chcete-li zobrazit tuto stránku prostřednictvím prohlížeče chvíli trvat. Při první návštěvě stránky nebo pokaždé, když `MaxPrice` textového pole chybí hodnota žádné záznamy se zobrazují v prvku GridView.
 
 
-[![Nejsou žádné záznamy, že se že zobrazí při the MaxPrice textové pole je prázdné](using-parameterized-queries-with-the-sqldatasource-cs/_static/image6.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image11.png)
+[![NZáznamy o se zobrazí při the MaxPrice textové pole je prázdné](using-parameterized-queries-with-the-sqldatasource-cs/_static/image6.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image11.png)
 
 **Obrázek 6**: Nejsou žádné záznamy zobrazit, když `MaxPrice` textové pole je prázdné ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image12.png))
 
@@ -143,7 +143,7 @@ Jsou zobrazeny žádné produkty. Důvodem je to proto, že ve výchozím nastav
 Zadejte hodnotu do textového pole, jako je 5.00 a klikněte na tlačítko Zobrazit odpovídající produkty. Na zpětné volání ve třídě SqlDataSource informuje o tom, že se že změnilo v prvku GridView, že jedna z jeho zdroje parametru. V důsledku toho prvku GridView znovu připojí k zobrazování těchto produktů, které je menší než nebo rovna $5.00 ve třídě SqlDataSource.
 
 
-[![Produkty menší než nebo rovno $5.00 jsou zobrazeny.](using-parameterized-queries-with-the-sqldatasource-cs/_static/image7.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image13.png)
+[![PMenší nebo rovna $5.00 zobrazují roducts](using-parameterized-queries-with-the-sqldatasource-cs/_static/image7.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image13.png)
 
 **Obrázek 7**: Se zobrazují produkty menší než nebo rovno 5.00 $ ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image14.png))
 
@@ -162,7 +162,7 @@ Bohužel jsme se nebude používat architekturu při použití ve třídě SqlDa
 To `WHERE` klauzule vrátí *všechny* zaznamená, pokud `@MaximumPrice` rovná parametru `-1.0`. Pokud hodnota parametru není `-1.0`, pouze produkty, jejichž `UnitPrice` je menší než nebo rovna hodnotě `@MaximumPrice` se vrátí hodnota parametru. Tím, že nastavíte na výchozí hodnotu `@MaximumPrice` parametr `-1.0`, při prvním načtení stránky (nebo vždy, když `MaxPrice` textové pole je prázdné), `@MaximumPrice` bude mít hodnotu `-1.0` a zobrazí všechny produkty.
 
 
-[![Teď všechny produkty, které jsou zobrazeny při the MaxPrice textové pole je prázdné](using-parameterized-queries-with-the-sqldatasource-cs/_static/image8.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image15.png)
+[![NZobrazit všechny produkty jsou zobrazeny při the MaxPrice textové pole je prázdné](using-parameterized-queries-with-the-sqldatasource-cs/_static/image8.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image15.png)
 
 **Obrázek 8**: Teď všechny produkty se zobrazí, když `MaxPrice` textové pole je prázdné ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image16.png))
 
@@ -185,7 +185,7 @@ Z `NORTHWND.MDF` databázi, klikněte pravým tlačítkem na složku uložené p
 Klikněte na tlačítko Uložit ikona (nebo Ctrl + S) Chcete-li uložit uloženou proceduru. Uložené procedury můžete otestovat tak, že kliknete pravým tlačítkem ve složce uložené procedury a zvolíte Execute. To vás vyzve k zadání parametrů uložené procedury s (`@CategoryID`, v tomto případě), po který výsledky se zobrazí v okně výstup.
 
 
-[![GetProductsByCategory uložené procedury při spuštění s @CategoryID 1](using-parameterized-queries-with-the-sqldatasource-cs/_static/image9.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image17.png)
+[![The GetProductsByCategory uložená procedura při spuštění s @CategoryID 1](using-parameterized-queries-with-the-sqldatasource-cs/_static/image9.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image17.png)
 
 **Obrázek 9**: `GetProductsByCategory` Uložená procedura při spuštění s `@CategoryID` 1 ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image18.png))
 
@@ -193,7 +193,7 @@ Klikněte na tlačítko Uložit ikona (nebo Ctrl + S) Chcete-li uložit uloženo
 Umožní použít tuto uloženou proceduru k zobrazení všech produktů do kategorie Nápoje v GridView s. Přidání nového ovládacího prvku GridView na stránku a jeho vazbu na nové třídě SqlDataSource s názvem `BeverageProductsDataSource`. Pokračovat k určení vlastní příkaz SQL nebo uloženou proceduru obrazovky, vyberte přepínač uložené procedury a vybrat `GetProductsByCategory` uloženou proceduru z rozevíracího seznamu.
 
 
-[![Vyberte GetProductsByCategory uloženou proceduru z rozevíracího seznamu](using-parameterized-queries-with-the-sqldatasource-cs/_static/image10.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image19.png)
+[![Szvolit GetProductsByCategory uloženou proceduru z rozevíracího seznamu](using-parameterized-queries-with-the-sqldatasource-cs/_static/image10.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image19.png)
 
 **Obrázek 10**: Vyberte `GetProductsByCategory` uloženou proceduru z rozevíracího seznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image20.png))
 
@@ -201,7 +201,7 @@ Umožní použít tuto uloženou proceduru k zobrazení všech produktů do kate
 Protože uložené procedury přijímá jako vstupní parametr (`@CategoryID`), klikněte na další výzvy nám jako zdroj pro tuto hodnotu s parametrem. Do této skupiny nápoje `CategoryID` 1, tak ponechte žádný parametr zdroj rozevíracího seznamu a zadejte do textového pole Výchozí hodnota 1.
 
 
-[![Pomocí pevně zakódovaného hodnotu 1 vrátit produkty do kategorie Nápoje](using-parameterized-queries-with-the-sqldatasource-cs/_static/image11.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image21.png)
+[![Use Hard-Coded hodnotu 1 vrátit produkty do kategorie Nápoje](using-parameterized-queries-with-the-sqldatasource-cs/_static/image11.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image21.png)
 
 **Obrázek 11**: Vrátí produkty do kategorie Nápoje pomocí Hard-Coded hodnotu 1 ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image22.png))
 
@@ -214,7 +214,7 @@ Jak ukazuje následující deklarativní, při použití uložené procedury Sql
 Otestování stránky v prohlížeči. Jsou zobrazeny pouze produkty, které patří do kategorie Nápoje, i když *všechny* produktu jsou zobrazena pole od `GetProductsByCategory` uloženou proceduru vrátí všechny sloupce `Products` tabulky. Můžeme samozřejmě může omezit nebo přizpůsobit pole zobrazené v prvku GridView z dialogového okna s upravit sloupce prvku GridView.
 
 
-[![Jsou zobrazeny všechny nápoje](using-parameterized-queries-with-the-sqldatasource-cs/_static/image12.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image23.png)
+[![Ajsou zobrazeny všechny nápojů](using-parameterized-queries-with-the-sqldatasource-cs/_static/image12.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image23.png)
 
 **Obrázek 12**: Jsou zobrazeny všechny nápoje ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image24.png))
 
@@ -246,7 +246,7 @@ Následující kód ukazuje, jak načíst záznamy ze `RandomCategoryDataSource`
 `randomCategoryView[0]` Vrátí první `DataRowView` v DataView. `randomCategoryView[0]["CategoryName"]` Vrátí hodnotu `CategoryName` sloupec v této první řádek. Všimněte si, že je DataView volného typu. Chcete-li odkazovat na konkrétní sloupce potřebujeme předat název sloupce jako řetězec (v tomto případě CategoryName). Obrázek 13 zobrazuje zpráva zobrazená v `CategoryNameLabel` při zobrazení stránky. Samozřejmě kategorie skutečný název zobrazený náhodně zvolí `RandomCategoryDataSource` SqlDataSource na každé návštěvě stránky (včetně postbacků).
 
 
-[![S náhodně vybrané kategorie, název se zobrazí.](using-parameterized-queries-with-the-sqldatasource-cs/_static/image13.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image25.png)
+[![TZobrazí se mu náhodně vybrané kategorie s názvem](using-parameterized-queries-with-the-sqldatasource-cs/_static/image13.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image25.png)
 
 **Obrázek 13**: S náhodně vybrané kategorie, název se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image26.png))
 
@@ -270,7 +270,7 @@ Ve všech příkladech jsme ve zatím viděli v tomto kurzu použili hodnotu pev
 Začněte přidáním GridView na stránku a jeho vazbu na nové třídě SqlDataSource s názvem `ProductsByCategoryDataSource`. Mnohem postupem uvedeným v kroku 3, nakonfigurujte ve třídě SqlDataSource tak, aby vyvolá `GetProductsByCategory` uložené procedury. Nechat sadu parametrů zdrojové rozevírací seznam na hodnotu None, ale nezadávejte výchozí hodnotu, jak prostřednictvím kódu programu nastavíme tuto výchozí hodnotu.
 
 
-[![Nezadávejte parametr zdroje nebo výchozí hodnotu](using-parameterized-queries-with-the-sqldatasource-cs/_static/image14.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image27.png)
+[![Do není zadán parametr zdroje nebo výchozí hodnotu](using-parameterized-queries-with-the-sqldatasource-cs/_static/image14.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image27.png)
 
 **Obrázek 14**: Proveďte není zadán parametr zdroj nebo výchozí hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image28.png))
 
@@ -288,7 +288,7 @@ My je můžeme přiřadit `DefaultValue` z `CategoryID` programově v parametru 
 Uveďte stránka obsahuje GridView zobrazující produkty související s náhodně vybranou kategorii.
 
 
-[![Nezadávejte parametr zdroje nebo výchozí hodnotu](using-parameterized-queries-with-the-sqldatasource-cs/_static/image15.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image29.png)
+[![Do není zadán parametr zdroje nebo výchozí hodnotu](using-parameterized-queries-with-the-sqldatasource-cs/_static/image15.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image29.png)
 
 **Obrázek 15**: Proveďte není zadán parametr zdroj nebo výchozí hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-cs/_static/image30.png))
 

@@ -8,15 +8,15 @@ ms.date: 11/15/2007
 ms.assetid: 8d07ae36-c4f3-48d7-87d3-cfe9a5bb336e
 msc.legacyurl: /web-forms/videos/data-access/linq-videos-from-the-vb-team/how-do-i-perform-group-and-aggregate-queries
 msc.type: video
-ms.openlocfilehash: 2782d1e1c233a3e56742a8db947fc49eb404a792
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 52320892844512f3f090e57c49587e75878ef6b7
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067777"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59411147"
 ---
-<a name="how-do-i-perform-group-and-aggregate-queries"></a>[Postup:] Provádění skupinových a agregačních dotazů?
-====================
+# <a name="how-do-i-perform-group-and-aggregate-queries"></a>[Postup:] Provádění skupinových a agregačních dotazů?
+
 podle [Beth Massi](https://github.com/bethmassi)
 
 Programátoři v jazyce Visual Basic se dozvíte, jak k provádění skupinových a agregačních dotazů nad kolekcí objektů firmy a jak zobrazit v souvisejících tabulkách.

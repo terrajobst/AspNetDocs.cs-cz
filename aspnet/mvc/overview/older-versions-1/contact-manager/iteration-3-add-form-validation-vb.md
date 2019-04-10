@@ -8,15 +8,15 @@ ms.date: 02/20/2009
 ms.assetid: 4805e75a-7911-46e3-b11b-229a6eed245e
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-3-add-form-validation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b44aaab45f04f736e4171a43a8b24b71aaedca2f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: e031417f2ee22533e7b5a606fc40526d7d911efc
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070534"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59413331"
 ---
-<a name="iteration-3--add-form-validation-vb"></a>Iterace #3 – Přidání ověřovacího formuláře (VB)
-====================
+# <a name="iteration-3--add-form-validation-vb"></a>Iterace #3 – Přidání ověřovacího formuláře (VB)
+
 by [Microsoft](https://github.com/microsoft)
 
 [Stáhnout kód](iteration-3-add-form-validation-vb/_static/contactmanager_3_vb1.zip)
@@ -51,7 +51,7 @@ Vytváříme aplikaci přes více iterací. S každou iterací zvyšujeme postup
 V této druhé iterace kontaktujte správce aplikace přidáme ověření základní formulář. Můžeme zabránit neoprávněným osobám v odesílání kontaktu bez zadání hodnoty povinných polí formuláře. Také ověření telefonní čísla a e-mailové adresy (viz obrázek 1).
 
 
-[![Dialogové okno Nový projekt](iteration-3-add-form-validation-vb/_static/image1.jpg)](iteration-3-add-form-validation-vb/_static/image1.png)
+[![TDialogové okno Nový projekt he](iteration-3-add-form-validation-vb/_static/image1.jpg)](iteration-3-add-form-validation-vb/_static/image1.png)
 
 **Obrázek 01**: Formulář s ověřováním ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-3-add-form-validation-vb/_static/image2.png))
 
@@ -66,7 +66,7 @@ V této iterace abychom si to nekomplikovali, jsme psát veškerý kód pro ově
 
 Umožní s Začněte přidáním logiku ověřování k zobrazení pro vytváření. Naštěstí protože jsme vygenerován pomocí sady Visual Studio zobrazení pro vytváření, zobrazení pro vytváření již obsahuje veškerou logiku potřebné uživatelské rozhraní pro zobrazení ověřovacích zpráv. Zobrazení pro vytváření je součástí výpis 1.
 
-**Listing 1 - \Views\Contact\Create.aspx**
+**Výpis 1 - \Views\Contact\Create.aspx**
 
 [!code-aspx[Main](iteration-3-add-form-validation-vb/samples/sample1.aspx)]
 

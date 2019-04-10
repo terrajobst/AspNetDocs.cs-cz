@@ -8,15 +8,15 @@ ms.date: 12/01/2014
 ms.assetid: 61941e64-0c0d-4996-9270-cb8ccfd0cabc
 msc.legacyurl: /visual-studio/overview/2013/creating-web-projects-in-visual-studio
 msc.type: authoredcontent
-ms.openlocfilehash: 3d96d796d22c3511fedc45c024274300143b119b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a62c821159cd097507019d5efb29e01958ec9fba
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069052"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59398096"
 ---
-<a name="creating-aspnet-web-projects-in-visual-studio-2013"></a>Vytváření webových projektů ASP.NET v sadě Visual Studio 2013
-====================
+# <a name="creating-aspnet-web-projects-in-visual-studio-2013"></a>Vytváření webových projektů ASP.NET v sadě Visual Studio 2013
+
 podle [Petr Dykstra](https://github.com/tdykstra)
 
 > Toto téma popisuje možnosti pro vytváření webových projektů ASP.NET v sadě Visual Studio 2013 s aktualizací Update 3
@@ -81,7 +81,7 @@ Visual Studio obsahuje funkce, které usnadňují práci se službami Azure pro 
 - Vytvoření a Správa webové aplikace nebo virtuální počítače, které vaší aplikaci zpřístupnit přes Internet.
 - Zobrazit protokoly, které vytvořila aplikace při jejím spuštění v cloudu.
 - Vzdálené spouštění v režimu ladění při spuštění aplikace v cloudu.
-- Viiew a spravovat další služby Azure, jako jsou databáze SQL.
+- Umožňuje zobrazit a spravovat další služby Azure, jako jsou databáze SQL.
 
 Je možné [vytvořit účet Azure](https://www.windowsazure.com/pricing/free-trial/) zdarma, který obsahuje základní služby, jako jsou například webové aplikace, a pokud jste předplatitelem MSDN můžete [aktivovat výhody](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/) , který získáte měsíční kredit na další Azure služby. 
 
@@ -381,7 +381,7 @@ Aby bylo možné zřídit aplikaci ve službě Azure AD nebo připojit projekt k
 
 Informace o tom, jak vytvářet aplikace, které používají **Cloud – jedna organizace** ověřování, najdete v následujících zdrojích informací:
 
-- [Azure Authentication](../2012/windows-azure-authentication.md)
+- [Ověřování Azure](../2012/windows-azure-authentication.md)
 - [Přidání přihlašování do webové aplikace pomocí Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151790.aspx)
 - [Vývoj aplikací ASP.NET s použitím Azure Active Directory](../../../identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory.md)
 - [Zabezpečení rozhraní ASP.NET Web API s využitím Azure AD a komponenty Microsoft OWIN](https://msdn.microsoft.com/magazine/dn463788.aspx)

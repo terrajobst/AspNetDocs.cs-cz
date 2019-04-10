@@ -8,15 +8,15 @@ ms.date: 01/20/2014
 ms.assetid: 979d6c9f-0129-4e5b-ae56-4507b281b86d
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: 22eb2fd748d52ec95e813ada8b1bf3b4826ad573
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 65e2268418501f89a77a0ba20f7960a618c2e9b7
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068902"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59405453"
 ---
-<a name="attribute-routing-in-aspnet-web-api-2"></a>Směrování atributů v rozhraní ASP.NET Web API 2
-====================
+# <a name="attribute-routing-in-aspnet-web-api-2"></a>Směrování atributů v rozhraní ASP.NET Web API 2
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 *Směrování* je, jak webové rozhraní API odpovídá identifikátor URI pro akci. Webové rozhraní API 2 podporuje nový typ směrování, nazývá *směrováním atributů*. Jak již název napovídá, směrování atributů používá atributy pro definování tras. Směrování atributů vám dává větší kontrolu nad identifikátory URI webového rozhraní API. Například můžete snadno vytvořit identifikátory URI, které popisují hierarchie prostředků.
@@ -50,7 +50,7 @@ Se směrováním atributů, že je jednoduché definovat trasu pro tento identif
 
 Tady jsou některé vzory, které atribut směrování umožňuje snadné.
 
-**Správa verzí rozhraní API**
+**Správa verzí API**
 
 V tomto příkladu "/ api/v1/produktů" bude směrovat do jiného řadiče než "/ api/v2/produktů".
 
@@ -228,8 +228,8 @@ Alternativně můžete zadat výchozí hodnotu v šabloně trasy následujícím
 
 Toto je téměř stejný jako předchozí příklad, ale neexistuje malého rozdílu chování při použití výchozí hodnotu.
 
-- V prvním příkladu ("{lcid?}") je přiřazen výchozí hodnotu 1033 přímo do parametru metody tak, že parametr bude mít tento přesná hodnota.
-- V druhém příkladu ("{lcid = 1033}"), výchozí hodnotu "1033" projde procesem vazby modelu. Vazač modelu výchozí se převede na číselnou hodnotu 1033 "1033". Může však zapojte vlastní vazač modelu, který může dělat něco jiného.
+- V prvním příkladu ("{lcid:int?}") je přiřazen výchozí hodnotu 1033 přímo do parametru metody tak, že parametr bude mít tento přesná hodnota.
+- V druhém příkladu ("{lcid:int = 1033}"), výchozí hodnotu "1033" projde procesem vazby modelu. Vazač modelu výchozí se převede na číselnou hodnotu 1033 "1033". Může však zapojte vlastní vazač modelu, který může dělat něco jiného.
 
 (Ve většině případů, pokud nemáte vlastního modelu pořadače ve vašem kanálu dvě různými formami bude ekvivalentní.)
 

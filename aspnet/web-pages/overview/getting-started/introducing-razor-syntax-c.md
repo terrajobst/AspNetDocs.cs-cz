@@ -8,15 +8,15 @@ ms.date: 02/07/2014
 ms.assetid: aa67d304-583b-4bf8-a231-195656cfb587
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-c
 msc.type: authoredcontent
-ms.openlocfilehash: b5eb98dfdf3fc013920f45080d4a20e1fa507725
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8237dc6b925ccefc5b411aebc8e7c399dcdc6746
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068419"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59407351"
 ---
-<a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>Úvod k programování v rozhraní ASP.NET Web používající syntaxi Razor (C#)
-====================
+# <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>Úvod k programování v rozhraní ASP.NET Web používající syntaxi Razor (C#)
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > Tento článek obsahuje přehled programování s webovými stránkami ASP.NET pomocí syntaxe Razor. ASP.NET je technologie od Microsoftu pro spouštění dynamické webové stránky na webové servery. Toto se články zaměřuje na pomocí programovacího jazyka C#.
@@ -342,7 +342,7 @@ Následující tabulka uvádí některé běžné metody převodu a testování 
 
 :::row:::
     :::column:::
-    <strong>– Metoda</strong>
+    <strong>Metoda</strong>
     :::column-end:::
     :::column:::
     <strong>Popis</strong>
@@ -351,7 +351,9 @@ Následující tabulka uvádí některé běžné metody převodu a testování 
     <strong>Příklad</strong>
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `AsInt(), IsInt()`
@@ -363,7 +365,9 @@ Následující tabulka uvádí některé běžné metody převodu a testování 
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample28.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `AsBool(), IsBool()`
@@ -375,7 +379,9 @@ Následující tabulka uvádí některé běžné metody převodu a testování 
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample29.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `AsFloat(), IsFloat()`
@@ -387,7 +393,9 @@ Následující tabulka uvádí některé běžné metody převodu a testování 
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample30.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `AsDecimal(), IsDecimal()`
@@ -399,7 +407,9 @@ Následující tabulka uvádí některé běžné metody převodu a testování 
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample31.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `AsDateTime(), IsDateTime()`
@@ -411,7 +421,9 @@ Následující tabulka uvádí některé běžné metody převodu a testování 
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample32.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `ToString()`
@@ -431,7 +443,7 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
 
 :::row:::
     :::column:::
-    <strong>– Operátor</strong>
+    <strong>Operátor</strong>
     :::column-end:::
     :::column:::
     <strong>Popis</strong>
@@ -440,7 +452,9 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
     <strong>Příklady</strong>
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `+` `-` `*` `/`
@@ -452,7 +466,9 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
         [!code-css[Main](introducing-razor-syntax-c/samples/sample34.css)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `=`
@@ -464,7 +480,9 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample35.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `==`
@@ -476,7 +494,9 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample36.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `!=`
@@ -488,7 +508,9 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample37.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `< > <= >=`
@@ -500,7 +522,9 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample38.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `+`
@@ -512,7 +536,9 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample39.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `+=` `-=`
@@ -524,7 +550,9 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample40.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `.`
@@ -536,7 +564,9 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample41.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `()`
@@ -548,7 +578,9 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
         [!code-javascript[Main](introducing-razor-syntax-c/samples/sample42.js)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `[]`
@@ -560,7 +592,9 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample43.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
         `!`
@@ -572,10 +606,12 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample44.cs)]
     :::column-end:::
 :::row-end:::
-* * *
+
+---
+
 :::row:::
     :::column:::
-        `&&` <code>&#124;&#124;</code>
+        `&&` `||`
     :::column-end:::
     :::column:::
     Logický operátor AND a které se používají k propojení podmínky společně.
@@ -808,7 +844,7 @@ Pokud váš kód nebyl zpracovat výjimky, zobrazí se chybová stránka jako na
 **Programování v jazyce Visual Basic**
 
 
-[Dodatek: Syntaxe a jazyk Visual Basic](https://go.microsoft.com/fwlink/?LinkId=202908)
+[Příloha: Syntaxe a jazyk Visual Basic](https://go.microsoft.com/fwlink/?LinkId=202908)
 
 
 **Referenční dokumentace**

@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 634ea84b-f904-4afe-b71b-49cccef4d9cc
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-models-and-data-access
 msc.type: authoredcontent
-ms.openlocfilehash: 10c2f6379f6d3139dd3bcf1027ff456e074298c3
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 53ca3bc4e550f488f3ae4c41f02a636e747107cb
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425090"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59384887"
 ---
 # <a name="aspnet-mvc-4-models-and-data-access"></a>ASP.NET MVC 4 – modely a přístup k datům
 
@@ -74,7 +74,7 @@ Pro usnadnění práce velkou část kódu, které budete spravovat podél tohot
 
 Pokud nejste obeznámeni s fragmenty kódu Visual Studio a chcete další informace o jejich použití, najdete dodatku z tohoto dokumentu &quot; [příloha C: Používání fragmentů kódu](#AppendixC)&quot;.
 
-* * *
+---
 
 <a id="Exercises"></a>
 
@@ -514,7 +514,7 @@ V této úloze spusťte aplikaci ve webovém prohlížeči a získání podrobn�
 > [!NOTE]
 > Kromě toho můžete nasadit tuto aplikaci následující weby Windows Azure [příloha B: Publikování aplikace ASP.NET MVC 4 pomocí nasazení webu](#AppendixB).
 
-* * *
+---
 
 <a id="Summary"></a>
 

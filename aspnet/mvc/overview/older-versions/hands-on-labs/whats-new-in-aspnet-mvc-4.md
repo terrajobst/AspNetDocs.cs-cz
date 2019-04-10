@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 48f7feb3-872f-485d-b96f-e30011ff8c4a
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/whats-new-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 0c4b7b2641c91cbb63ec46fa707c004f7273a303
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: b9da2522cfaed324a23f43265d4e234ebb4950bd
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58422685"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59411121"
 ---
 # <a name="whats-new-in-aspnet-mvc-4"></a>Novinky v ASP.NET MVC 4
 
@@ -141,7 +141,7 @@ V tomto cvičení bude prozkoumat rozšíření v šablonách projektu ASP.NET M
 
     ![jQuery ověření](whats-new-in-aspnet-mvc-4/_static/image6.png)
 
-    *jQuery Validation*
+    *jQuery ověření*
 
     > [!NOTE]
     > Všimněte si, že dvě přihlášení oddíly v první části, které se můžete přihlásit pomocí registrovaného účtu z webu a v druhé části, které případně můžou přihlásit pomocí jiného ověřovací službě, jako je google (ve výchozím nastavení vypnutá).
@@ -173,14 +173,14 @@ V tomto cvičení bude prozkoumat rozšíření v šablonách projektu ASP.NET M
 
    *Šablona projektu ASP.NET MVC 4 Internetové aplikace*
 
-   - **HTML 5 Markup**
+    - **HTML 5 značek**
 
        Procházejte šablony zobrazení a zjistěte, nový motiv značek.
 
        ![Nové šablony, pomocí syntaxe Razor a HTML5 značek About.cshtml. ](whats-new-in-aspnet-mvc-4/_static/image10.png "Novou šablonu, pomocí syntaxe Razor a HTML5 značek About.cshtml.")
 
        *Nové šablony pomocí značky Razor a HTML5 (About.cshtml).*
-   - **Aktualizované knihovny jazyka JavaScript**
+    - **Aktualizované knihovny jazyka JavaScript**
 
        Výchozí šablony ASP.NET MVC 4 nyní zahrnuje KnockoutJS a architektura MVVM jazyka JavaScript, která vám umožní vytvářet bohaté s velmi rychlou odezvou webové aplikace pomocí jazyků JavaScript a HTML. Stejně jako v MVC3, jQuery a knihovny uživatelského rozhraní jQuery jsou také zahrnuté v architektuře ASP.NET MVC 4.
 
@@ -250,11 +250,11 @@ Pomocí adaptivního vykreslování techniku, bude váš web **zobrazovat správ
 > Základní formát multimediální dotaz je: @media \[Obor: všechny | Handheld | Tisk | projekce | obrazovka\] ([hodnota: vlastnosti] a... [: hodnota vlastnosti])
 
 
-Příklady dotazů média: &gt;  <strong>@media všechny a (maximální šířka: 1000px) a (minimální šířka: 700px) {}:</strong> Pro všechna rozlišení mezi 700px a 1000px.
+Příklady dotazů média: &gt;  **@media všechny a (maximální šířka: 1000px) a (minimální šířka: 700px) {}:** Pro všechna rozlišení mezi 700px a 1000px.
 
-> <strong>@media obrazovky a (minimální šířka: 400 px) a (maximální šířka: 700px) { ... }:</strong> Pouze pro obrazovky. Rozlišení musí být v rozsahu od 400 do 700px.
+> **@media obrazovky a (minimální šířka: 400 px) a (maximální šířka: 700px) { ... }:** Pouze pro obrazovky. Rozlišení musí být v rozsahu od 400 do 700px.
 > 
-> <strong>@media Ruční a (minimální šířka: 20em), obrazovky a (minimální šířka: 20em) { ... }:</strong> Pro obrazovky a kapesní zařízení (mobile a zařízení). Minimální šířka musí být větší než 20em.
+> **@media Ruční a (minimální šířka: 20em), obrazovky a (minimální šířka: 20em) { ... }:** Pro obrazovky a kapesní zařízení (mobile a zařízení). Minimální šířka musí být větší než 20em.
 > 
 > Další informace o tomto najdete na [webu W3C](http://www.w3.org/TR/css3-mediaqueries/).
 
@@ -263,7 +263,7 @@ Můžete se teď si projděte fungování adaptivní vykreslování, zlepšení 
 
 1. Otevřít **PhotoGallery.sln** řešení vytvořené v úloze 1 a vyberte **Fotogalerie** projektu. Stisknutím klávesy **F5** ke spuštění řešení.
 2. Změna velikosti prohlížeče šířku, nastavení systému windows polovina nebo méně než čtvrtletí původní velikosti. Všimněte si, co se stane s položkami v hlavičce: Některé prvky se nezobrazí v oblasti viditelné hlavičky.
-3. Otevřít <strong>Site.css</strong> souboru v Průzkumníku řešení v sadě Visual Studio, umístěný ve <strong>obsahu</strong> složky projektu. Stisknutím klávesy <strong>CTRL + F</strong> otevřete integrované hledání sady Visual Studio a zapisovat <strong>@media</strong> vyhledejte <strong>šablon stylů CSS media query</strong>.
+3. Otevřít **Site.css** souboru v Průzkumníku řešení v sadě Visual Studio, umístěný ve **obsahu** složky projektu. Stisknutím klávesy **CTRL + F** otevřete integrované hledání sady Visual Studio a zapisovat **@media** vyhledejte **šablon stylů CSS media query**.
 
     Podmínka media dotaz definovaný v této šabloně funguje takto: Když je velikost okna prohlížeče níže **850 px**, pravidel šablon stylů CSS použitý jsou ty, které jsou definované v tomto bloku média.
 
@@ -274,13 +274,13 @@ Můžete se teď si projděte fungování adaptivní vykreslování, zlepšení 
 
     ![Na levé straně stránky použití @media stylu, v pravém styl vynecháte](whats-new-in-aspnet-mvc-4/_static/image17.png "na levé straně stránky použití @media stylu, v pravém styl je vynechán.")
 
-    <em>Na levé straně stránky aplikuje @media stylu, v pravém styl je vynechán.</em>
+    *Na levé straně stránky aplikuje @media stylu, v pravém styl je vynechán.*
 
     Teď se podíváme, co se stane, že na mobilních zařízeních:
 
     ![Na levé straně stránky použití @media stylu, v pravém styl vynecháte](whats-new-in-aspnet-mvc-4/_static/image18.png "na levé straně stránky použití @media stylu, v pravém styl je vynechán.")
 
-    <em>Na levé straně stránky aplikuje @media stylu, v pravém styl je vynechán.</em>
+    *Na levé straně stránky aplikuje @media stylu, v pravém styl je vynechán.*
 
     I když si všimnete, že změny při vykreslování stránky ve webovém prohlížeči nejsou velmi důležité při používání mobilních zařízení budou rozdíly zřetelnější. Na levé straně na obrázku vidíme, že vlastní styl zlepšila čitelnost.
 
@@ -522,7 +522,7 @@ V této úloze bude prozkoumat ukázková implementace přepínači zobrazení p
     - **HttpContext.ClearOverriddenBrowser()** metoda odebere každého přepsaného uživatelského agenta pro aktuální požadavek.
     - **HttpContext.SetOverriddenBrowser()** metoda přepíše hodnotu skutečného uživatelského agenta žádosti pomocí zadaného uživatelského agenta.  
         ![Kontroler ViewSwitcher](whats-new-in-aspnet-mvc-4/_static/image31.png "ViewSwitcher Kontroleru")  
-*ViewSwitcher Controller*
+*ViewSwitcher Kontroleru*
 
         Přepíše prohlížeče je funkce jádra ASP.NET MVC 4, což je také k dispozici i v případě, že není nainstalovaný balíček jQuery.Mobile.MVC. Ale tuto funkci ovlivňuje pouze zobrazení, rozložení a částečného zobrazení a nemá žádnou z funkcí, které jsou závislé na objektu Request.Browser vliv.
 
@@ -543,7 +543,7 @@ V této úloze budete aktualizovat rozložení pro počítače zahrnout přepín
     ![Zobrazit přepínání zobrazení v zobrazení plochy](whats-new-in-aspnet-mvc-4/_static/image32.png "přepínači zobrazení se zobrazují v zobrazení plochy")
 
     *Přepínání zobrazení se zobrazují v zobrazení plochy*
-7. Znovu přejděte do zobrazení mobilních a přejděte do <strong>o</strong> stránky (http://localhost[port] / Home/o). Všimněte si, že i v případě, že jste ještě nevytvořili pohledu About.Mobile.cshtml, o stránka se zobrazí pomocí mobilní rozložení (\_Layout.Mobile.cshtml).
+7. Znovu přejděte do zobrazení mobilních a přejděte do **o** stránky (http://localhost[port] / Home/o). Všimněte si, že i v případě, že jste ještě nevytvořili pohledu About.Mobile.cshtml, o stránka se zobrazí pomocí mobilní rozložení (\_Layout.Mobile.cshtml).
 
     ![O stránku](whats-new-in-aspnet-mvc-4/_static/image33.png "o stránce")
 
@@ -764,7 +764,7 @@ Pomocí fragmentů kódu máte všechny kód, který je třeba na dosah ruky. Te
 
 Můžete nainstalovat **Microsoft Visual Studio Express 2012 pro Web** nebo jiném &quot;Express&quot; verzí pomocí **[instalačního programu webové platformy Microsoft](https://www.microsoft.com/web/downloads/platform.aspx)**. Postupujte podle následujících pokynů vás provede kroky potřebné k instalaci *Visual studio Express 2012 pro Web* pomocí *instalačního programu webové platformy Microsoft*.
 
-1. Přejděte na [ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169). Případně, pokud jste již nainstalovali instalačního programu webové platformy, můžete otevřít a vyhledejte produkt &quot; <em>Visual Studio Express 2012 pro Web se sadou Windows Azure SDK</em>&quot;.
+1. Přejděte na [ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169). Případně, pokud jste již nainstalovali instalačního programu webové platformy, můžete otevřít a vyhledejte produkt &quot; *Visual Studio Express 2012 pro Web se sadou Windows Azure SDK*&quot;.
 2. Klikněte na **nainstalovat**. Pokud nemáte **instalačního programu webové platformy** budete přesměrováni na stáhněte a nainstalujte ji jako první.
 3. Jednou **instalačního programu webové platformy** je otevřený, klikněte na tlačítko **nainstalovat** spustit instalační program.
 
@@ -805,7 +805,7 @@ Provoz vašeho webu v Iphonu s Simulovaná zařízení můžete použít rozší
 <a id="Task_1_-_Installing_WebMatrix_2"></a>
 #### <a name="task-1---installing-webmatrix-2"></a>Úloha 1 – instalace služby WebMatrix 2
 
-1. Přejděte na [ [ https://go.microsoft.com/?linkid=9809776 ](https://go.microsoft.com/?linkid=9809776) ](https://go.microsoft.com/?linkid=9810169). Případně, pokud jste již nainstalovali instalačního programu webové platformy, můžete otevřít a vyhledejte produkt &quot; <em>WebMatrix 2</em>&quot;.
+1. Přejděte na [ [ https://go.microsoft.com/?linkid=9809776 ](https://go.microsoft.com/?linkid=9809776) ](https://go.microsoft.com/?linkid=9810169). Případně, pokud jste již nainstalovali instalačního programu webové platformy, můžete otevřít a vyhledejte produkt &quot; *WebMatrix 2*&quot;.
 2. Klikněte na **nainstalovat**. Pokud nemáte **instalačního programu webové platformy** budete přesměrováni na stáhněte a nainstalujte ji jako první.
 3. Jednou **instalačního programu webové platformy** je otevřený, klikněte na tlačítko **nainstalovat** spustit instalační program.
 
@@ -875,7 +875,7 @@ Provoz vašeho webu v Iphonu s Simulovaná zařízení můžete použít rozší
 3. V &quot;procházet s&quot; dialogového okna, klikněte na tlačítko **přidat**.
 4. V &quot;přidat Program&quot; dialogového okna, použijte následující hodnoty:
 
-   - <strong>Program</strong>: C:\Users\*{CurrentUser}<em>\AppData\Local\Microsoft\WebMatrix\Extensions\20\iPhoneSimulator\ElectricMobileSim\ElectricMobileSim.exe * (aktualizovat cestu odpovídajícím způsobem)</em>
+   - **Program**: C:\Users\*{CurrentUser}*\AppData\Local\Microsoft\WebMatrix\Extensions\20\iPhoneSimulator\ElectricMobileSim\ElectricMobileSim.exe *(aktualizovat cestu odpovídajícím způsobem)*
    - **Argumenty**: &quot;1&quot;
    - **Popisný název**: simulátoru Iphonu
 

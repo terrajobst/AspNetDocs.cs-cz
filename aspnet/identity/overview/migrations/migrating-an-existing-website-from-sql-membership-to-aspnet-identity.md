@@ -1,19 +1,20 @@
 ---
 uid: identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
-title: Migrace stávajícího webu z členství SQL na ASP.NET Identity | Dokumentace Microsoftu
+title: Migrace stávajícího webu z členství SQL na ASP.NET Identity – ASP.NET 4.x
 author: Rick-Anderson
 description: Tento kurz ukazuje kroky při migraci stávající webovou aplikaci s uživateli a data role vytvořené pomocí členství SQL na nový ASP.NET Identity s...
 ms.author: riande
 ms.date: 12/19/2014
+ms.custom: seoapril2019
 ms.assetid: 220d3d75-16b2-4240-beae-a5b534f06419
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: b80f2f5cc4702c3e406d8989905c56508711e788
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: f205dfd8692bc946ca2124655bf8bcefbdbd1779
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58426078"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59394523"
 ---
 # <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Migrace stávajícího webu z členství SQL na ASP.NET Identity
 
@@ -82,7 +83,7 @@ Tento soubor skriptu je specifické pro tuto ukázku. Pokud schéma pro tabulky 
 
 ASP.NET Identity třídy fungovat ihned s daty ze stávajících uživatelů musíme migraci schématu databáze na ten vyžadované ASP.NET Identity. Můžeme to udělat přidáním nové tabulky a kopírování stávající informace o těchto tabulkách. Ve výchozím nastavení používá ASP.NET Identity objektu EntityFramework k mapování tříd modelu Identity zpět do databáze se uloží nebo načtou informace. Tyto třídy modelu implementovat rozhraní core Identity, definování uživatele a objekty role. Tabulky a sloupce v databázi jsou založeny na tyto třídy modelu. Třídy modelu objektu EntityFramework Identity v2.1.0 a jejich vlastnosti jsou definované níže
 
-| **IdentityUser** | **Typ** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
+| **IdentityUser** | **Type** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
 | --- | --- | --- | --- | --- | --- |
 | ID | odkazy řetězců | ID | RoleId | ProviderKey | ID |
 | Uživatelské jméno | odkazy řetězců | Name | UserId | UserId | ClaimType |

@@ -8,15 +8,15 @@ ms.date: 03/27/2007
 ms.assetid: 5cbeb9f8-5f92-4ba8-87ae-0b4d460ae6d4
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 026fce7544f40ff333a5c0a500bc53c7fd434080
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: c6c41ba5b5414da689e63ef521f1cf22e0b55701
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58422087"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59404283"
 ---
-<a name="displaying-binary-data-in-the-data-web-controls-c"></a>Zobrazení binárních dat ve webových ovládacích prvcích dat (C#)
-====================
+# <a name="displaying-binary-data-in-the-data-web-controls-c"></a>Zobrazení binárních dat ve webových ovládacích prvcích dat (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_55_CS.exe) nebo [stahovat PDF](displaying-binary-data-in-the-data-web-controls-cs/_static/datatutorial55cs1.pdf)
@@ -41,7 +41,7 @@ V předchozím kurzu jsme viděli, jak pomocí ovládacího prvku FileUpload. M�
 V tomto kurzu s ke stažení najdete sedm souborů PDF brožura v `~/Brochures` složky, jeden pro každou z kategorií s výjimkou ryby. Můžu záměrně vynechán, přidání brožuru ryby si ukážeme, jak zvládnout scénáře, ve kterém mají všechny záznamy přidružené binární data. Chcete-li aktualizovat `Categories` tabulky s těmito hodnotami, klikněte pravým tlačítkem na `Categories` uzlu z Průzkumníka serveru a zvolte možnost zobrazit Data tabulky. Zadejte virtuální cesty k souborům – Příručka pro každou kategorii, která má brožuru, jak ukazuje obrázek 1. Protože neexistuje žádný – Příručka pro kategorii ryby, nechte své `BrochurePath` hodnota sloupce s jako `NULL`.
 
 
-[![Ručně zadejte hodnoty pro sloupec BrochurePath tabulky s kategorií](displaying-binary-data-in-the-data-web-controls-cs/_static/image1.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image1.png)
+[![Mručně zadejte hodnoty pro tabulku kategorie s BrochurePath sloupec](displaying-binary-data-in-the-data-web-controls-cs/_static/image1.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image1.png)
 
 **Obrázek 1**: Ručně zadejte hodnoty pro `Categories` tabulky s `BrochurePath` sloupec ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-cs/_static/image2.png))
 
@@ -53,17 +53,17 @@ S `BrochurePath` zadané hodnoty `Categories` tabulku, můžeme znovu připraven
 Začněte tím, že přetažením z panelu nástrojů na Návrhář GridView `DisplayOrDownloadData.aspx` stránku `BinaryData` složky. Nastavit prvek GridView s `ID` k `Categories` a prostřednictvím inteligentních značek GridView s tlačítko pro vytvoření vazby ke zdroji dat nový. Konkrétně svázat ObjectDataSource s názvem `CategoriesDataSource` načítající data s využitím `CategoriesBLL` objektu s `GetCategories()` metody.
 
 
-[![Vytvoření nového prvku ObjectDataSource s názvem CategoriesDataSource](displaying-binary-data-in-the-data-web-controls-cs/_static/image2.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image3.png)
+[![CVytvořit nový účet ObjectDataSource s názvem CategoriesDataSource](displaying-binary-data-in-the-data-web-controls-cs/_static/image2.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image3.png)
 
 **Obrázek 2**: Vytvoření nového prvku ObjectDataSource s názvem `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-cs/_static/image4.png))
 
 
-[![Konfigurace ObjectDataSource pomocí třídy CategoriesBLL](displaying-binary-data-in-the-data-web-controls-cs/_static/image3.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image5.png)
+[![Configurovat ObjectDataSource pomocí třídy CategoriesBLL](displaying-binary-data-in-the-data-web-controls-cs/_static/image3.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image5.png)
 
 **Obrázek 3**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-cs/_static/image6.png))
 
 
-[![Načíst seznam kategorií pomocí GetCategories() – metoda](displaying-binary-data-in-the-data-web-controls-cs/_static/image4.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image7.png)
+[![Rnačíst v seznamu kategorií používá metodu GetCategories()](displaying-binary-data-in-the-data-web-controls-cs/_static/image4.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image7.png)
 
 **Obrázek 4**: Načíst seznam kategorií pomocí `GetCategories()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-cs/_static/image8.png))
 
@@ -76,7 +76,7 @@ Po dokončení Průvodce nakonfigurovat zdroj dat, sada Visual Studio automatick
 Zobrazení této stránky prostřednictvím prohlížeče (viz obrázek 5). Každý osm kategorií je uvedený. Sedm kategorií s `BrochurePath` hodnoty mají `BrochurePath` hodnoty zobrazené v příslušných Vlastnost BoundField. Ryby, který má `NULL` hodnotu pro jeho `BrochurePath`, zobrazí na prázdnou buňku.
 
 
-[![Je uvedená každá kategorie s název, popis a hodnotu BrochurePath](displaying-binary-data-in-the-data-web-controls-cs/_static/image5.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image9.png)
+[![Eje uveden ACH kategorie s název, popis a hodnotu BrochurePath](displaying-binary-data-in-the-data-web-controls-cs/_static/image5.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image9.png)
 
 **Obrázek 5**: Každá kategorie s název, popis, a `BrochurePath` hodnota uvedená ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-cs/_static/image10.png))
 
@@ -92,12 +92,12 @@ Místo zobrazování textu `BrochurePath` sloupce, chceme vytvořit odkaz na bro
 Sloupec odkazů se přidá do prvku GridView, jak je vidět na obrázku 7. Kliknutím na odkaz si brožuru o zobrazení se zobrazí přímo v prohlížeči PDF nebo vyzvat uživatele ke stažení souboru, v závislosti na tom, jestli je nainstalovaná čtečka PDF a prohlížeč s nastavení.
 
 
-[![Brožura s kategorie lze zobrazit kliknutím na odkaz si brožuru o zobrazení](displaying-binary-data-in-the-data-web-controls-cs/_static/image7.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image11.png)
+[![A Kategorie s brožura lze zobrazit kliknutím na odkaz zobrazit si brožuru o](displaying-binary-data-in-the-data-web-controls-cs/_static/image7.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image11.png)
 
 **Obrázek 7**: Kategorie s si brožuru o lze zobrazit kliknutím na odkaz zobrazit si brožuru o ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-cs/_static/image12.png))
 
 
-[![Zobrazí se kategorie s si brožuru o PDF](displaying-binary-data-in-the-data-web-controls-cs/_static/image8.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image13.png)
+[![TZobrazí se mu s kategorií si brožuru o PDF](displaying-binary-data-in-the-data-web-controls-cs/_static/image8.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image13.png)
 
 **Obrázek 8**: Zobrazí kategorie s si brožuru o PDF ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-cs/_static/image14.png))
 
@@ -131,7 +131,7 @@ Tato metoda určuje, zda předaným `object` hodnota je databáze `NULL` a pokud
 Obrázek 10 ukazuje na stránku, až tyto změny se použily. Všimněte si, že ryby kategorie s `BrochurePath` pole teď zobrazuje text bez – příručka k dispozici.
 
 
-[![Text bez si brožuru o dostupná se zobrazí pro tyto kategorie bez si brožuru o](displaying-binary-data-in-the-data-web-controls-cs/_static/image10.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image15.png)
+[![TZobrazí se mu Text bez si brožuru o dostupné pro tyto kategorie bez si brožuru o](displaying-binary-data-in-the-data-web-controls-cs/_static/image10.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image15.png)
 
 **Obrázek 10**: Text bez si brožuru o dostupná se zobrazí pro tyto kategorie bez brožura ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-cs/_static/image16.png))
 
@@ -168,7 +168,7 @@ Tento kód spustí, přečtěte si téma v `CategoryID` hodnotu řetězce dotazu
 Pomocí této stránky vytvořené, lze zobrazit obrázek určité kategorie s návštěvou `DisplayCategoryPicture.aspx?CategoryID=categoryID`. Obrázku 11 můžete vidět nápoje obrázek kategorie s, který si můžete prohlížet `DisplayCategoryPicture.aspx?CategoryID=1`.
 
 
-[![Kategorie nápoje s, se zobrazí obrázek](displaying-binary-data-in-the-data-web-controls-cs/_static/image11.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image17.png)
+[![TZobrazí se mu s kategorie Nápoje obrázek](displaying-binary-data-in-the-data-web-controls-cs/_static/image11.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image17.png)
 
 **Obrázek 11**: Kategorie nápoje s se zobrazí obrázek ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-cs/_static/image18.png))
 
@@ -208,7 +208,7 @@ Po přidání třídy ImageField, vaše GridView s deklarativní syntaxe by měl
 Za chvíli zobrazení této stránky prostřednictvím prohlížeče. Všimněte si, jak každý záznam nyní obsahuje obrázek pro kategorii.
 
 
-[![Zobrazí se kategorie s obrázek pro každý řádek](displaying-binary-data-in-the-data-web-controls-cs/_static/image13.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image19.png)
+[![TZobrazí se mu kategorie s obrázek pro každý řádek](displaying-binary-data-in-the-data-web-controls-cs/_static/image13.gif)](displaying-binary-data-in-the-data-web-controls-cs/_static/image19.png)
 
 **Obrázek 13**: Zobrazí se kategorie s obrázek pro každý řádek ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-cs/_static/image20.png))
 

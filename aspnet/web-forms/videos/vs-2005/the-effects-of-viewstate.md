@@ -8,15 +8,15 @@ ms.date: 02/26/2007
 ms.assetid: 112e3efc-6865-4296-80a0-35910c4b3b12
 msc.legacyurl: /web-forms/videos/vs-2005/the-effects-of-viewstate
 msc.type: video
-ms.openlocfilehash: fcca0f533a77bf794644adb8879966f26a452ff8
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7ec8719a25452efed9a0d46afa05b36f3cb07ce1
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073312"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59414800"
 ---
-<a name="the-effects-of-viewstate"></a>Účinky mechanismu ViewState
-====================
+# <a name="the-effects-of-viewstate"></a>Účinky mechanismu ViewState
+
 podle Eric Lee
 
 ASP.NET framework poskytuje mechanismus ViewState provedením data vpřed a zpět mezi požadavky na prohlížeč automaticky udržovat stav aplikace. V tomto videu uvidíme, jak ovládací prvky některé technologie ASP.NET například DropDownList a textové pole Udržovat stav je založen na hodnoty zpětného vystavení formuláře, nikoli vlastnosti ViewState, umožňuje inteligentní pro vývojáře k zakázání nepotřebných ViewState. Pomocí Visual Studio Team System můžeme vidět jak to významně snižuje velikost dat požadavků a odpovědí a zlepšuje výkon a škálovatelnost aplikace.

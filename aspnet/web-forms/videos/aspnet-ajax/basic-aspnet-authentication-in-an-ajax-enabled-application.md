@@ -8,15 +8,15 @@ ms.date: 04/10/2008
 ms.assetid: 782eca6d-51d6-4c8e-b2ea-59dfa567740a
 msc.legacyurl: /web-forms/videos/aspnet-ajax/basic-aspnet-authentication-in-an-ajax-enabled-application
 msc.type: video
-ms.openlocfilehash: 02454f4d6b9f728fe7bf3a7627dbe5c26d857927
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5b723e97a0faac1c2b1dffb634f530d9a3cfc59c
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066721"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59404244"
 ---
-<a name="basic-aspnet-authentication-in-an-ajax-enabled-application"></a>Základní ověřování ASP.NET v aplikaci s povoleným jazykem AJAX
-====================
+# <a name="basic-aspnet-authentication-in-an-ajax-enabled-application"></a>Základní ověřování ASP.NET v aplikaci s povoleným jazykem AJAX
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 V tomto videu můžu vám ukáže, že ověřování založeného na ověření ve webové aplikaci povolit AJAX pomocí základního formuláře technologie ASP.NET.

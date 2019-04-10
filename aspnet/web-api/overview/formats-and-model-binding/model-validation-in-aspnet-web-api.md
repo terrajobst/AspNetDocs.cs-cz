@@ -1,25 +1,26 @@
 ---
 uid: web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api
-title: Ověření v rozhraní ASP.NET Web API modelu | Dokumentace Microsoftu
+title: Model ověřování v rozhraní ASP.NET Web API – ASP.NET 4.x
 author: MikeWasson
-description: ''
+description: Přehled modelu ověřování v rozhraní ASP.NET Web API pro ASP.NET 4.x.
 ms.author: riande
 ms.date: 07/20/2012
+ms.custom: seoapril2019
 ms.assetid: 7d061207-22b8-4883-bafa-e89b1e7749ca
 msc.legacyurl: /web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 611a6466e160387592df678b3b8556625ff8e234
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d4e792f8cc2f79c2ab82c5a74fd50f49475fac4f
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068641"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59404569"
 ---
-<a name="model-validation-in-aspnet-web-api"></a>Ověření modelu v rozhraní ASP.NET Web API
-====================
+# <a name="model-validation-in-aspnet-web-api"></a>Ověření modelu v rozhraní ASP.NET Web API
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
-Když klient odešle data do webového rozhraní API, často budete chtít ověřit data před provedením jakékoli zpracování. Tento článek popisuje postup přidání poznámek ke své modely, použijte poznámky ověřování dat a zpracování chyb ověření webového rozhraní API.
+Tento článek popisuje postup přidání poznámek ke své modely, použijte poznámky ověřování dat a zpracování chyb ověření webového rozhraní API. Když klient odešle data do webového rozhraní API, často budete chtít ověřit data před provedením jakékoli zpracování. 
 
 ## <a name="data-annotations"></a>Datové poznámky
 

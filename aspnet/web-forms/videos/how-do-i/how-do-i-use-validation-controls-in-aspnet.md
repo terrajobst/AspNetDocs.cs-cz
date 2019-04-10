@@ -8,15 +8,15 @@ ms.date: 10/26/2007
 ms.assetid: 1f2e5f5b-8be1-4acc-ae36-a2e0d140251a
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-validation-controls-in-aspnet
 msc.type: video
-ms.openlocfilehash: da8831e179360dda870d6ee3d667118094983894
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 17204583d986f7938c38dc373cb296df01f16424
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072988"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59386850"
 ---
-<a name="how-do-i--use-validation-controls-in-aspnet"></a>[Postup:]  Použití ověřovacích ovládacích prvků v ASP.NET?
-====================
+# <a name="how-do-i--use-validation-controls-in-aspnet"></a>[Postup:]  Použití ověřovacích ovládacích prvků v ASP.NET?
+
 podle [Chris pixelů na](https://twitter.com/chrispels)
 
 V tomto videu zjistěte, jak používat ovládací prvky ověřování, která je k dispozici v technologii ASP.NET pro implementaci ověřování na webových stránkách. Všechny hlavní ověřování řídí jako RequiredFieldValidator a RegularExpressionValidator probereme. Kromě toho informace o používání CustomValidator, když jeden standardní validátory nevyhovuje vašim požadavkům. Jsou uvedeny možnosti ověřování na straně klienta i serveru. Zjistit, jak jednoduché ověření na ovládací prvek uživatelského rozhraní a také více ověřování.

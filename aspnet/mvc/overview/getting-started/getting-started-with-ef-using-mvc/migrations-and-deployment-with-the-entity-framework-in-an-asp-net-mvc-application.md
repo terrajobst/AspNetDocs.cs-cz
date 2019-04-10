@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: d4dfc435-bda6-4621-9762-9ba270f8de4e
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: dd6bf5d8eb8a05dad1d230ef40c9b863e2af7094
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 1f25a9afdf379d725496bd88f6ac192ab19930ca
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069715"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59384510"
 ---
 # <a name="tutorial-use-ef-migrations-in-an-aspnet-mvc-app-and-deploy-to-azure"></a>Kurz: Pomocí migrace EF v aplikaci ASP.NET MVC a nasadit do Azure
 
@@ -168,8 +168,8 @@ Budete nasazovat databázi do Azure SQL database. SQL database je služba relač
 10. Upravit [kolace](/sql/relational-databases/collations/collation-and-unicode-support) podle potřeby.
 11. Zadejte správce **uživatelské jméno správce SQL** a **heslo správce SQL**.
 
-   - Pokud jste vybrali **nová databáze SQL serveru**, zadejte nový název a heslo, které budete potřebovat později při přístupu k databázi.
-   - Pokud jste vybrali serveru, který jste vytvořili dříve, zadejte přihlašovací údaje pro tento server.
+    - Pokud jste vybrali **nová databáze SQL serveru**, zadejte nový název a heslo, které budete potřebovat později při přístupu k databázi.
+    - Pokud jste vybrali serveru, který jste vytvořili dříve, zadejte přihlašovací údaje pro tento server.
 
 12. Shromažďování telemetrie je možné povolit pro službu App Service pomocí služby Application Insights. S málo konfigurace Application Insights shromažďuje cenné událost, výjimky, závislosti, žádosti a informace o trasování. Další informace o Application Insights najdete v tématu [Azure Monitor](https://azure.microsoft.com/services/monitor/).
 13. Klikněte na tlačítko **vytvořit** v dolní části k označení, že budete hotovi.

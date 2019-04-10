@@ -8,15 +8,15 @@ ms.date: 07/17/2006
 ms.assetid: 35b40b8f-2ca8-4ab3-9c19-f361a91a3647
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 719999f47dea7172f32a5040c79e569d0ec41ab0
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 3e6917a056ef5be5f11d48b4e5bc012855225923
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425899"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59396743"
 ---
-<a name="an-overview-of-inserting-updating-and-deleting-data-vb"></a>Přehled vložení, aktualizace a odstranění dat (VB)
-====================
+# <a name="an-overview-of-inserting-updating-and-deleting-data-vb"></a>Přehled vložení, aktualizace a odstranění dat (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_16_VB.exe) nebo [stahovat PDF](an-overview-of-inserting-updating-and-deleting-data-vb/_static/datatutorial16vb1.pdf)
@@ -33,7 +33,7 @@ Vzpomeňte si, že když jsme vytvořili objekty TableAdapter v DAL v [v našem 
 Kromě jeho `Select()` metody ObjectDataSource má také `Insert()`, `Update()`, a `Delete()` metody. Podobně jako `Select()` metody tyto tři metody lze mapovat na metody v základní objekt. Když je nakonfigurován ke vložení, aktualizace nebo odstranění dat, ovládací prvky GridView, DetailsView a FormView nabízí uživatelské rozhraní pro úpravu podkladová data. Toto uživatelské rozhraní zavolá `Insert()`, `Update()`, a `Delete()` metody prvku ObjectDataSource, které poté vyvolat základní objekt přidružený k tomuto metody (viz obrázek 1).
 
 
-[![ObjectDataSource Insert() Update() a Delete() metody slouží jako proxy server do BLL](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image2.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image1.png)
+[![The ObjectDataSource Insert() Update() a Delete() metody slouží jako proxy server do BLL](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image2.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image1.png)
 
 **Obrázek 1**: Prvku ObjectDataSource `Insert()`, `Update()`, a `Delete()` metody slouží jako proxy server do BLL ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image3.png))
 
@@ -63,7 +63,7 @@ Než začneme, jak vkládat, aktualizovat a odstranit data zkoumat, nejprve věn
 V jiných složkách, jako jsou `Default.aspx` v `EditInsertDelete` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` jeho přetažením z Průzkumníka řešení do zobrazení návrhu.
 
 
-[![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image6.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image5.png)
+[![Add uživatelského ovládacího prvku SectionLevelTutorialListing.ascx Default.aspx](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image6.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image5.png)
 
 **Obrázek 3**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image7.png))
 
@@ -88,7 +88,7 @@ Od verze ovládacího prvku GridView, DetailsView a FormView každý se liší v
 Otevřít `Basics.aspx` stránky, přetáhněte z panelu nástrojů do návrháře prvku ObjectDataSource a klikněte na odkaz Konfigurovat zdroj dat z jeho inteligentních značek. Vzhledem k tomu, `ProductsBLL` je jediná BLL třída, která obsahuje úpravy, vložení a odstranění metody, nakonfigurujte prvku ObjectDataSource použít tuto třídu.
 
 
-[![Konfigurace ObjectDataSource pomocí třídy ProductsBLL](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image10.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image9.png)
+[![Configurovat ObjectDataSource pomocí třídy ProductsBLL](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image10.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image9.png)
 
 **Obrázek 5**: Konfigurace ObjectDataSource k použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image11.png))
 
@@ -96,7 +96,7 @@ Otevřít `Basics.aspx` stránky, přetáhněte z panelu nástrojů do návrhá�
 Na další obrazovce určíme jaké metody `ProductsBLL` třídy jsou mapované na ObjectDataSource `Select()`, `Insert()`, `Update()`, a `Delete()` vyberete příslušnou kartu a zvolíte metodu z rozevíracího seznamu. Obrázek 6, která by měla vypadat povědomě nyní, mapuje ObjectDataSource `Select()` metodu `ProductsBLL` třídy `GetProducts()` metody. `Insert()`, `Update()`, A `Delete()` metody lze nakonfigurovat tak, že vyberete příslušnou kartu v seznamu nahoře.
 
 
-[![Prvku ObjectDataSource vrátit všechny produkty](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image13.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image12.png)
+[![HUložit prvku ObjectDataSource vrátit všechny produkty](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image13.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image12.png)
 
 **Obrázek 6**: Máte prvku ObjectDataSource vrátit všechny produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image14.png))
 
@@ -104,22 +104,22 @@ Na další obrazovce určíme jaké metody `ProductsBLL` třídy jsou mapované 
 Obrázky 7, 8 a 9 zobrazit UPDATE, INSERT a DELETE prvku ObjectDataSource karty. Konfigurace těchto karet tak, aby `Insert()`, `Update()`, a `Delete()` vyvolání metody `ProductsBLL` třídy `UpdateProduct`, `AddProduct`, a `DeleteProduct` metody, v uvedeném pořadí.
 
 
-[![Map – Metoda Update() ObjectDataSource metodě UpdateProduct ProductBLL třídy](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image16.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image15.png)
+[![MAsie a Tichomoří ObjectDataSource Update() metody třídy ProductBLL UpdateProduct metody](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image16.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image15.png)
 
 **Obrázek 7**: Mapování ObjectDataSource `Update()` metodu `ProductBLL` třídy `UpdateProduct` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image17.png))
 
 
-[![Map – metoda Insert() ObjectDataSource metodě AddProduct ProductBLL třídy](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image19.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image18.png)
+[![MAsie a Tichomoří ObjectDataSource Insert() metody třídy ProductBLL AddProduct metody](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image19.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image18.png)
 
 **Obrázek 8**: Mapování ObjectDataSource `Insert()` metodu `ProductBLL` třídy přidat `Product` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image20.png))
 
 
-[![Map – Metoda Delete() ObjectDataSource metodě DeleteProduct ProductBLL třídy](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image22.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image21.png)
+[![MAsie a Tichomoří ObjectDataSource Delete() metody třídy ProductBLL DeleteProduct metody](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image22.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image21.png)
 
 **Obrázek 9**: Mapování ObjectDataSource `Delete()` metodu `ProductBLL` třídy `DeleteProduct` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image23.png))
 
 
-Mohli jste si všimnout, že rozevírací seznamy na kartách UPDATE, INSERT a DELETE již měli tyto metody vybrali. Toto je díky používáme `DataObjectMethodAttribute` , který upraví metody `ProducstBLL`. Například metoda DeleteProduct má následující podpis:
+Mohli jste si všimnout, že rozevírací seznamy na kartách UPDATE, INSERT a DELETE již měli tyto metody vybrali. Toto je díky používáme `DataObjectMethodAttribute` , který upraví metody `ProductsBLL`. Například metoda DeleteProduct má následující podpis:
 
 
 [!code-vb[Main](an-overview-of-inserting-updating-and-deleting-data-vb/samples/sample2.vb)]
@@ -202,7 +202,7 @@ CommandField obsahuje řadu `ShowXButton` vlastnosti, které označují, jaké s
 V tomto okamžiku believe to nebo ne jsme hotovi s přidáváním odstranění podpory do prvku GridView! Jak ukazuje obrázek 11 při návštěvě této stránky prostřednictvím prohlížeče sloupec tlačítka Odstranit je k dispozici.
 
 
-[![CommandField přidá sloupec tlačítka Odstranit](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image26.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image25.png)
+[![TCommandField přidá sloupce z odstranění tlačítka](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image26.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image25.png)
 
 **Obrázek 11**: Přidá sloupce z odstranění tlačítka CommandField ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image27.png))
 
@@ -216,7 +216,7 @@ Pokud jste se vytváříte v tomto kurzu od samotného začátku sami, při test
 Pokud při pokusu o odstranění produktu, dojde k výjimce, jejíž zprávy je podobný "*prvek ObjectDataSource"ObjectDataSource1"nenalezl neobecnou metodu 'DeleteProduct", který obsahuje parametry: productID, původní\_ ProductID*, "zapomněli jste pravděpodobně odebrat `OldValuesParameterFormatString` vlastnost z ObjectDataSource. S `OldValuesParameterFormatString` vlastnost určena, ObjectDataSource pokusí předávání v obou `productID` a `original_ProductID` vstupní parametry pro `DeleteProduct` metody. `DeleteProduct`, ale přijímá pouze jeden vstupní parametr, proto výjimku. Odebírá `OldValuesParameterFormatString` vlastnost (nebo ji nastavíte na `{0}`) dává pokyn k nebude pokoušet a zajistěte tak předání původního vstupního parametru ObjectDataSource.
 
 
-[![Ujistěte se, že vlastnosti OldValuesParameterFormatString se vymazala navýšení kapacity](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image29.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image28.png)
+[![Ensure, který se vymazala vlastnosti OldValuesParameterFormatString Out](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image29.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image28.png)
 
 **Obrázek 12**: Ujistěte se, že `OldValuesParameterFormatString` vlastnost má byl vymazán navýšení kapacity ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image30.png))
 
@@ -224,7 +224,7 @@ Pokud při pokusu o odstranění produktu, dojde k výjimce, jejíž zprávy je 
 I v případě, že odstraněn `OldValuesParameterFormatString` vlastnost, stále získáte výjimku při pokusu o odstranění produktu s touto zprávou: "*The odstranit příkaz způsobil konflikt s omezením odkaz" FK\_pořadí\_podrobnosti\_produkty, které*. " Databáze Northwind obsahuje omezení cizího klíče mezi `Order Details` a `Products` tabulky, což znamená, že produkt ze systému nelze odstranit, pokud jeden nebo více záznamů pro něj v `Order Details` tabulky. Vzhledem k tomu, že má každý produkt v databázi Northwind alespoň jeden záznam `Order Details`, nemůžeme odstranit všechny produkty, dokud jsme nejprve odstranit záznamy podrobnosti o produktu přidružené objednávky.
 
 
-[![Omezení cizího klíče zakazuje odstranění produkty](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image32.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image31.png)
+[![A Omezení pro cizí klíč zakazuje odstranění produkty](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image32.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image31.png)
 
 **Obrázek 13**: Omezení pro cizí klíč zakazuje odstranění produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image33.png))
 
@@ -238,7 +238,7 @@ V našem kurzu teď stačí odstranit všechny záznamy z `Order Details` tabulk
 Teď stačí odstranit všechny záznamy z `Order Details` tabulky pro obejití omezení cizího klíče. Přejděte do Průzkumníka serveru v sadě Visual Studio, klikněte pravým tlačítkem na `NORTHWND.MDF` uzel a vyberte nový dotaz. Potom v okně dotazu spusťte následující příkaz SQL: `DELETE FROM [Order Details]`
 
 
-[![Odstranit všechny záznamy z tabulky Details pořadí](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image35.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image34.png)
+[![DOdstranit všechny záznamy z tabulky Details pořadí](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image35.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image34.png)
 
 **Obrázek 14**: Odstranit všechny záznamy `Order Details` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image36.png))
 
@@ -283,7 +283,7 @@ Kontrola zaškrtávací políčko Povolit úpravy se přidá CommandField (v př
 To je vše je k přidání podpory pro základní úpravy. Jak Figure16 ukazuje, je místo hrubého rozhraní úprav každá vlastnost BoundField jehož `ReadOnly` je nastavena na `False` (výchozí) je vykreslen jako textové pole. To zahrnuje pole, jako jsou `CategoryID` a `SupplierID`, které jsou klíčů s jinými tabulkami.
 
 
-[![Kliknutím na tlačítko pro úpravy s Chai zobrazí řádek v režimu úprav](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image39.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image38.png)
+[![Clicking Chai s úpravy tlačítko zobrazí odpovídající řádek v režimu úprav](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image39.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image38.png)
 
 **Obrázek 16**: Klepnutím na položku s Chai tlačítko Upravit zobrazíte řádek v režimu úprav ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image40.png))
 
@@ -317,7 +317,7 @@ Jako s použitím prvku GridView, přidání, úpravy, vložení nebo odstraněn
 Všimněte si, že prvku DetailsView CommandField se zobrazí na konci kolekce sloupců ve výchozím nastavení. Protože ovládacím prvku DetailsView pole jsou vykresleny jako řádky, CommandField představována jedním řádkem s vloženým, upravovat a odstraňovat tlačítek v dolní části ovládacím prvku DetailsView.
 
 
-[![Konfigurace ovládacím prvku DetailsView. k podpoře úpravy, vložení a odstranění](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image43.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image42.png)
+[![Configurovat ovládacím prvku DetailsView. pro podporu úpravy, vložení a odstranění](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image43.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image42.png)
 
 **Obrázek 18**: Konfigurace ovládacím prvku DetailsView. pro podporu úpravy, vložení a odstranění ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image44.png))
 
@@ -345,7 +345,7 @@ Po nastavení `InsertVisible` vlastnosti, zobrazení `Basics.aspx` stránku v pr
 Po zadání podrobností pro Acme čaj a kliknutím na tlačítko pro vložení, vyplývá zpětné volání a přidá nový záznam `Products` databázové tabulky. Od tohoto prvku DetailsView zobrazuje seznam produktů v pořadí, které existují v tabulce databáze, jsme musí na poslední stránce produktu Chcete-li zobrazit nový produkt.
 
 
-[![Podrobnosti o Acme čaje](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image52.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image51.png)
+[![DPodrobnosti o pro Acme čaje](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image52.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image51.png)
 
 **Obrázek 21**: Podrobnosti o Acme čaje ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image53.png))
 
@@ -372,7 +372,7 @@ Následující příklad zobrazuje deklarativní pro ovládacího prvku FormView
 Obrázek 22 ukazuje ovládacího prvku FormView `ItemTemplate` při prohlížení prostřednictvím prohlížeče. Každé pole produktu je uvedený s tlačítka Nový, Edit a Delete v dolní části.
 
 
-[![ItemTemplate Defaut FormView obsahuje seznam všech polí produktů spolu s nové, upravovat a odstraňovat tlačítka](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image55.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image54.png)
+[![TDefaut FormView ItemTemplate uvádí každý produkt pole spolu s nové, úpravy a odstranění tlačítka](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image55.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image54.png)
 
 **Obrázek 22**: Defaut FormView `ItemTemplate` uvádí každý produkt pole společně s nové, úpravy a odstranění tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image56.png))
 
@@ -397,7 +397,7 @@ Naše `EditItemTemplate`, v tomto bodu, způsobí výjimku, která je vyvolána,
 Po kliknutí na tlačítko Upravit pro Chai 23 obrázek ukazuje FormView v prohlížeči. Všimněte si, že `SupplierName` a `CategoryName` pole zobrazená v `ItemTemplate` už nejsou k dispozici, protože právě odebrali jsme z `EditItemTemplate`. Po kliknutí na tlačítko Aktualizovat pokračuje FormView přes stejnou posloupnost kroků jako ovládací prvky GridView a prvku DetailsView.
 
 
-[![Ve výchozím nastavení EditItemTemplate zobrazuje jednotlivá pole upravitelné produktu jako textové pole nebo zaškrtávacího políčka](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image58.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image57.png)
+[![BVýchozí y EditItemTemplate zobrazuje jednotlivá pole upravitelné produktu jako textové pole nebo zaškrtávacího políčka](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image58.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image57.png)
 
 **Obrázek 23**: Ve výchozím nastavení `EditItemTemplate` ukazuje, každý upravitelné pole produktu jako textové pole nebo zaškrtávacího políčka ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image59.png))
 
@@ -414,12 +414,12 @@ Existuje subtlety pomocí ovládacího prvku FormView automatické generování 
 Obrázek 24 FormView zobrazuje v prohlížeči při přidání nového produktu, Acme kávu. Všimněte si, že `SupplierName` a `CategoryName` pole zobrazená v `ItemTemplate` už nejsou k dispozici, protože jsme právě odebrali. Při kliknutí na tlačítko Vložit pokračuje FormView prostřednictvím stejné pořadí kroků jako ovládací prvek DetailsView, přidání nového záznamu do `Products` tabulky. Obrázek 25 zobrazuje podrobnosti o produktu Acme kávy ve třídě FormView po byla vložena.
 
 
-[![InsertItemTemplate určuje rozhraní vložení ovládacího prvku FormView](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image61.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image60.png)
+[![Tmá šablona InsertItemTemplate určuje rozhraní vložení ovládacího prvku FormView](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image61.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image60.png)
 
 **Obrázek 24**: `InsertItemTemplate` Určuje rozhraní vložení ovládacího prvku FormView ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image62.png))
 
 
-[![Podrobnosti o nového produktu, Acme kávy, se zobrazí ve třídě FormView](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image64.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image63.png)
+[![The podrobnosti nového produktu, Acme kávy, se zobrazí ve třídě FormView](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image64.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image63.png)
 
 **Obrázek 25**: Podrobnosti o nového produktu, Acme kávy, se zobrazí ve třídě FormView ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image65.png))
 

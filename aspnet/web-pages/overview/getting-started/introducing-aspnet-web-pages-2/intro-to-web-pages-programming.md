@@ -8,15 +8,15 @@ ms.date: 06/17/2015
 ms.assetid: 7526ed45-a97d-4e8a-8301-01324ef0eff9
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/intro-to-web-pages-programming
 msc.type: authoredcontent
-ms.openlocfilehash: ec1c055d1b3f6ca5c6374a18840c2595bb368e0e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 81c2c6f0070a409c289128ccf5d39f9fff788b48
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068986"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59387344"
 ---
-<a name="introducing-aspnet-web-pages---programming-basics"></a>Úvod do ASP.NET Web Pages – základy programování
-====================
+# <a name="introducing-aspnet-web-pages---programming-basics"></a>Úvod do ASP.NET Web Pages – základy programování
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > Tento kurz poskytuje přehled toho, jak do aplikace v ASP.NET Web Pages se syntaxí Razor.
@@ -162,7 +162,7 @@ Tady je pár příkladů podmínky můžete otestovat v příkazu if – příka
 
 [!code-csharp[Main](intro-to-web-pages-programming/samples/sample7.cs)]
 
-Proměnné s hodnotami nebo proti výrazy můžete otestovat pomocí <em>logického operátoru</em> nebo <em>operátor porovnání</em>: rovno (==) větší než (&gt;), menší než (&lt;), větší než nebo rovno (&gt;=) a menší než nebo rovno (&lt;=). ! = Znamená operátor není rovno – například pokud (! = 0) znamená <em>Pokud</em> <em>a</em><em>není rovno 0</em>.
+Proměnné s hodnotami nebo proti výrazy můžete otestovat pomocí *logického operátoru* nebo *operátor porovnání*: rovno (==) větší než (&gt;), menší než (&lt;), větší než nebo rovno (&gt;=) a menší než nebo rovno (&lt;=). ! = Znamená operátor nerovná se – například pokud (! = 0) znamená, že *Pokud není roven 0*.
 
 > [!NOTE]
 > Ujistěte se, že si všimnete, že operátor porovnání pro (==) se rovná není stejný jako =. = – Operátor se používá jenom pro přiřazení hodnoty (var = 2). Jsou-li zkombinovány tyto operátory budete buď dojde k chybě nebo získáte některé strangeová výsledky.

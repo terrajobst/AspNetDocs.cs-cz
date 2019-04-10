@@ -8,15 +8,15 @@ ms.date: 06/02/2008
 ms.assetid: a973ed3e-400c-4925-ace2-0b086b479301
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 614b5b1edaa164cca30b2142d1e0c02771153403
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 1ab979f220c06d22f51931c7c00fc4d273731f85
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077359"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59413942"
 ---
-<a name="using-a-confirmbutton-in-a-repeater-c"></a>Použití ovládacího prvku ConfirmButton v repeateru (C#)
-====================
+# <a name="using-a-confirmbutton-in-a-repeater-c"></a>Použití ovládacího prvku ConfirmButton v repeateru (C#)
+
 by [Christian Wenz](https://github.com/wenz)
 
 [Stáhněte si kód](http://download.microsoft.com/download/8/6/d/86dea6c6-bb92-4fa6-aa14-f8c0f82100f5/ConfirmButton1.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/confirmbutton1CS.pdf)
@@ -47,7 +47,7 @@ Tento zdroj dat je pak možné v rámci repeateru. Obvyklým způsobem `DataBind
 [!code-aspx[Main](using-a-confirmbutton-in-a-repeater-cs/samples/sample3.aspx)]
 
 
-[![Tlačítko potvrzení se zobrazí vedle každé položky ze zdroje dat.](using-a-confirmbutton-in-a-repeater-cs/_static/image2.png)](using-a-confirmbutton-in-a-repeater-cs/_static/image1.png)
+[![Tsi potvrďte, že se zobrazí tlačítko vedle každé položky ze zdroje dat](using-a-confirmbutton-in-a-repeater-cs/_static/image2.png)](using-a-confirmbutton-in-a-repeater-cs/_static/image1.png)
 
 Tlačítko potvrzení se zobrazí vedle každé položky ze zdroje dat ([kliknutím ji zobrazíte obrázek v plné velikosti](using-a-confirmbutton-in-a-repeater-cs/_static/image3.png))
 

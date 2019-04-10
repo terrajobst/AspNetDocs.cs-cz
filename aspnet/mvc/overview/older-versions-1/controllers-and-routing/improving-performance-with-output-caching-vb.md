@@ -8,15 +8,15 @@ ms.date: 01/27/2009
 ms.assetid: 0e7b4d85-2c46-4eaf-b6a8-6cd566a67334
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9402d7e053ef11eeefa92d112b05ec255d5ec6f7
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0f824bd5e080d42a9df3525ca47b87bcef407f7a
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068719"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59405622"
 ---
-<a name="improving-performance-with-output-caching-vb"></a>Zlepšení výkonu ukládáním výstupů do mezipaměti (VB)
-====================
+# <a name="improving-performance-with-output-caching-vb"></a>Zlepšení výkonu ukládáním výstupů do mezipaměti (VB)
+
 by [Microsoft](https://github.com/microsoft)
 
 > V tomto kurzu se dozvíte, jak můžete výrazně vylepšit výkon webových aplikací ASP.NET MVC s využitím ukládání výstupu do mezipaměti. Se dozvíte, jak pro ukládání do mezipaměti výsledek vrácený z akce kontroleru, tak, aby se stejný obsah není nutné vytvořit nový uživatel vyvolá akci každého čas.
@@ -46,7 +46,7 @@ Neexistuje žádná záruka tento obsah bude množství času, který zadáte do
 
 Kontroler Home v informacích 1 vrátí Index zobrazení výpisu 2. Není nic zvláštního o toto zobrazení. Index zobrazení jednoduše zobrazí aktuální čas (viz obrázek 1).
 
-**Listing 2 – Views\Home\Index.aspx**
+**Výpis 2 – Views\Home\Index.aspx**
 
 [!code-aspx[Main](improving-performance-with-output-caching-vb/samples/sample2.aspx)]
 

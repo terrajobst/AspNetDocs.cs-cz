@@ -8,15 +8,15 @@ ms.date: 01/30/2013
 ms.assetid: f9c07af0-4b20-4b08-af8f-47fc3df169a2
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
-ms.openlocfilehash: 60bc8bf95cace722244ffc87ff4c00126a0ed2a0
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 20d2d4412345399acdde1535447cc18b6611b572
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067732"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59412850"
 ---
-<a name="single-page-application-knockoutjs-template"></a>Jednostránková aplikace: šablona KnockoutJS
-====================
+# <a name="single-page-application-knockoutjs-template"></a>Jednostránková aplikace: šablona KnockoutJS
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 > Šablona MVC Knockout je součástí technologie ASP.NET and Web Tools 2012.2
@@ -89,7 +89,7 @@ V projektu sady Visual Studio obsahuje složku modely modely, které se použív
 
 ![](knockoutjs-template/_static/image9.png)
 
-**TodoItem, TodoList**
+**TodoItem, seznamu úkolů**
 
 Toto jsou modely databáze pro Entity Framework Code First. Všimněte si, že tyto modely mají vlastnosti, které odkazují na sebe navzájem. `ToDoList` obsahuje kolekci objektů Todoitem a každý `ToDoItem` odkazuje zpět na nadřazeného seznamu úkolů. Tyto vlastnosti se nazývají navigačních vlastností a představují vztah jeden mnoho seznam úkolů a jeho položek úkolů.
 

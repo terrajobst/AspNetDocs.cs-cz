@@ -8,15 +8,15 @@ ms.date: 03/31/2010
 ms.assetid: 85554606-47cb-4e4f-9848-eed9da579056
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-business-logic-layer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0db90f1e87bcaac51ca08ef1a8b258c93be8f613
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: fd3bf46394f562462c561bf06370d2f372e47d0a
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066976"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59415260"
 ---
-<a name="creating-a-business-logic-layer-c"></a>Vytvoření vrstvy obchodní logiky (C#)
-====================
+# <a name="creating-a-business-logic-layer-c"></a>Vytvoření vrstvy obchodní logiky (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/6/3/463cf87c-4724-4cbc-b7b5-3f866f43ba50/ASPNET_Data_Tutorial_2_CS.exe) nebo [stahovat PDF](creating-a-business-logic-layer-cs/_static/datatutorial02cs1.pdf)
@@ -127,7 +127,7 @@ Použít nové BLL třídy, všechny, které je potřeba změnit je, stačí nah
 Třídy BLL lze přistupovat pomocí ObjectDataSource také deklarativně (jak můžete datové sady typu). Budeme mluvit o ObjectDataSource podrobněji v následujících kurzech.
 
 
-[![Zobrazí se seznam produktů v GridView](creating-a-business-logic-layer-cs/_static/image4.png)](creating-a-business-logic-layer-cs/_static/image3.png)
+[![Tmá seznam produktů se zobrazí v GridView](creating-a-business-logic-layer-cs/_static/image4.png)](creating-a-business-logic-layer-cs/_static/image3.png)
 
 **Obrázek 3**: Zobrazí se seznam produktů v GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-business-logic-layer-cs/_static/image5.png))
 
@@ -146,7 +146,7 @@ Tato pravidla můžete a by měl být vyjádřen na úrovni databáze. Znak limi
 Kromě vynucuje tato pravidla na databázi by také měly být vynucují na úrovni datové sady. Délka pole a určuje, zda je hodnota požadované nebo volitelné jsou ve skutečnosti už zachycena pro každý objekt DataTable sadu objektů DataColumns. Zobrazíte existující ověření na úrovni pole automaticky k dispozici, přejděte na návrháři datových sad, vyberte pole z jednoho DataTables a přejděte do okna Vlastnosti. Jak ukazuje obrázek 4 `QuantityPerUnit` objekt DataColumn v `ProductsDataTable` má maximální délku 20 znaků a neumožňuje procházet spojené `NULL` hodnoty. Pokud jsme pokus o nastavení `ProductsDataRow`společnosti `QuantityPerUnit` vlastnost na hodnotu řetězce, který je delší než 20 znaků `ArgumentException` bude vyvolána výjimka.
 
 
-[![Objekt DataColumn poskytuje základní ověření na úrovni pole](creating-a-business-logic-layer-cs/_static/image7.png)](creating-a-business-logic-layer-cs/_static/image6.png)
+[![Tmá objekt DataColumn poskytuje základní ověření na úrovni pole](creating-a-business-logic-layer-cs/_static/image7.png)](creating-a-business-logic-layer-cs/_static/image6.png)
 
 **Obrázek 4**: Objekt DataColumn poskytuje základní úrovni pole ověření ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-business-logic-layer-cs/_static/image8.png))
 
@@ -154,7 +154,7 @@ Kromě vynucuje tato pravidla na databázi by také měly být vynucují na úro
 Bohužel jsme nelze zadat rozsah kontroly, jako `UnitPrice` hodnota musí být větší než nebo rovna hodnotě nula, v okně Vlastnosti. Aby bylo možné poskytovat tento typ pole potřebujeme vytvořit obslužnou rutinu události pro DataTable [columnchanging –](https://msdn.microsoft.com/library/system.data.datatable.columnchanging%28VS.80%29.aspx) událostí. Jak je uvedeno v [předchozím kurzu](creating-a-data-access-layer-cs.md), datové sady, datové tabulky a datového řádku objektů vytvořených typované datové sady je možné rozšířit pomocí částečných tříd. Tímto způsobem můžeme vytvářet `ColumnChanging` obslužné rutiny události pro `ProductsDataTable` třídy. Začněte tím, že vytvoření třídy v `App_Code` složku s názvem `ProductsDataTable.ColumnChanging.cs`.
 
 
-[![Přidejte novou třídu ke složce App_Code](creating-a-business-logic-layer-cs/_static/image10.png)](creating-a-business-logic-layer-cs/_static/image9.png)
+[![APřidat novou třídu ke složce App_Code](creating-a-business-logic-layer-cs/_static/image10.png)](creating-a-business-logic-layer-cs/_static/image9.png)
 
 **Obrázek 5**: Přidejte novou třídu do `App_Code` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-business-logic-layer-cs/_static/image11.png))
 

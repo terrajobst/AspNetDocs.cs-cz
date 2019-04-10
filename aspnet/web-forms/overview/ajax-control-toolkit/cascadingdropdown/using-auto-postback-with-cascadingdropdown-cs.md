@@ -8,15 +8,15 @@ ms.date: 06/02/2008
 ms.assetid: 6755d8d9-14be-4a1d-86e5-1a6110f3dea8
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7c84951691935d9976f961f65f96fa70633ecbce
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 50bba1b798ddfaf69dd23098e31d446a7e7b9a1f
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077059"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59394611"
 ---
-<a name="using-auto-postback-with-cascadingdropdown-c"></a>Použití funkce Auto-Postback v ovládacím prvku CascadingDropDown (C#)
-====================
+# <a name="using-auto-postback-with-cascadingdropdown-c"></a>Použití funkce Auto-Postback v ovládacím prvku CascadingDropDown (C#)
+
 by [Christian Wenz](https://github.com/wenz)
 
 [Stáhněte si kód](http://download.microsoft.com/download/9/0/7/907760b1-2c60-4f81-aeb6-ca416a573b0d/cascadingdropdown3.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/cascadingdropdown3CS.pdf)
@@ -57,7 +57,7 @@ Načítání stránky v prohlížeči vyplní rozevíracího seznamu, s třemi d
 Tímto způsobem, zpětné volání je pouze spuštěn, když v seznamu nejsou ve skutečnosti elementy a uživatel vybere záznam.
 
 
-[![Výběr prvku seznamu vyvolá zpětné volání](using-auto-postback-with-cascadingdropdown-cs/_static/image2.png)](using-auto-postback-with-cascadingdropdown-cs/_static/image1.png)
+[![Sjak zvolit prvek seznamu vyvolá zpětné volání](using-auto-postback-with-cascadingdropdown-cs/_static/image2.png)](using-auto-postback-with-cascadingdropdown-cs/_static/image1.png)
 
 Výběr prvku seznamu vyvolá zpětné volání ([kliknutím ji zobrazíte obrázek v plné velikosti](using-auto-postback-with-cascadingdropdown-cs/_static/image3.png))
 

@@ -8,21 +8,21 @@ ms.date: 07/16/2014
 ms.assetid: ba07958c-42e1-4da0-81db-ba6925ed6db0
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 3db54a134e8f842cab1d3471c69f5a8e2039d83d
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 9904582450d4386ef8b8656078f6d40dbd1e10be
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423608"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59412005"
 ---
-<a name="hands-on-lab-real-time-web-applications-with-signalr"></a>Praktické cvičení: Webové aplikace v reálném čase s knihovnou SignalR
-====================
+# <a name="hands-on-lab-real-time-web-applications-with-signalr"></a>Praktické cvičení: Webové aplikace v reálném čase s knihovnou SignalR
+
 
 podle [Campy Web týmu](https://twitter.com/webcamps)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-[Stáhněte si Web Campy školení Kit](https://aka.ms/webcamps-training-kit)
+[Stáhněte si Web Campy školení Kit, verze. října 2015](https://github.com/Microsoft-Web/WebCampTrainingKit/releases/tag/v2015.10.13b)
 
 > Webové aplikace v reálném čase funkcí možnost na straně serveru nabízet obsah připojeným klientům, jakmile k ní dojde, v reálném čase. Pro vývojáře využívající technologii ASP.NET **funkce SignalR technologie ASP.NET** je knihovny k přidání funkcí v reálném čase do svých aplikací. Využívá několik přenosů, automaticky výběr nejlepší k dispozici přenos klienta a serveru nejlépe k dispozici přenos. Využívá **protokolu WebSocket**, rozhraní API HTML5, které umožňuje obousměrnou komunikaci mezi prohlížečem a serverem.
 > 
@@ -34,8 +34,7 @@ podle [Campy Web týmu](https://twitter.com/webcamps)
 > 
 > ![Architektura SignalR](real-time-web-applications-with-signalr/_static/image1.png)
 > 
-> Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://aka.ms/webcamps-training-kit ](https://aka.ms/webcamps-training-kit).
-
+> Všechny ukázky kódu a fragmenty kódu jsou zahrnuty v školicí sada webových Campy. října 2015 ve verzi, k dispozici na [ https://github.com/Microsoft-Web/WebCampTrainingKit/releases/tag/v2015.10.13b ](https://github.com/Microsoft-Web/WebCampTrainingKit/releases/tag/v2015.10.13b).  Mějte prosím na paměti, že instalační program odkaz na této stránce již není funkční; Použijte jeden z odkazů v části prostředky.
 
 <a id="Overview"></a>
 ## <a name="overview"></a>Přehled
@@ -77,7 +76,7 @@ V celém dokumentu testovacího prostředí budete vyzváni k vložení bloky k�
 > Každý cvičení se sadou počáteční řešení nachází v **začít** složky výkonu, který umožňuje postupovat podle jednotlivých výkon nezávisle na ostatních. Uvědomte si, že chybí z těchto řešení od fragmenty kódu, které se přidávají během cvičení a nemusí fungovat, dokud nedokončíte výkonu. Uvnitř zdrojový kód pro cvičení, můžete také najdete **End** složku, která obsahuje řešení sady Visual Studio s kódem, který je výsledkem dokončení kroků v odpovídající cvičení. Tato řešení můžete použít jako vodítko, pokud potřebujete další pomoc při práci prostřednictvím této praktické vyzkoušení.
 
 
-* * *
+---
 
 <a id="Exercises"></a>
 ## <a name="exercises"></a>Cvičení
@@ -394,7 +393,7 @@ V této úloze nakonfigurujete **kvíz Informatik** pro připojení k propojovac
 
     *Tabulka zpráv propojovací rozhraní systému*
 
-* * *
+---
 
 <a id="Summary"></a>
 ## <a name="summary"></a>Souhrn

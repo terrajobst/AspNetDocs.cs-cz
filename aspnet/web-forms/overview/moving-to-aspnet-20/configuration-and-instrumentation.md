@@ -8,15 +8,15 @@ ms.date: 02/20/2005
 ms.assetid: 21ebbaee-7ed8-45ae-b6c1-c27c88342e48
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/configuration-and-instrumentation
 msc.type: authoredcontent
-ms.openlocfilehash: ba116140faa0667d504e0ff101c274db9f46079e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b06f105b16087f97788e0ab360af41f538d2c1ac
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066517"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59400799"
 ---
-<a name="configuration-and-instrumentation"></a>Konfigurace a instrumentace
-====================
+# <a name="configuration-and-instrumentation"></a>Konfigurace a instrumentace
+
 by [Microsoft](https://github.com/microsoft)
 
 > Byly zjištěny hlavní změny v konfiguraci a instrumentace v technologii ASP.NET 2.0. Nové rozhraní API technologie ASP.NET konfigurace umožňuje změny konfigurace provedli programově. Kromě toho existují spoustu nových nastavení konfigurace pro nové konfigurace a instrumentace.
@@ -145,7 +145,7 @@ Konfigurace pro výchozí poskytovatele a události je uložená v globálním s
 
 &lt;HealthMonitoring&gt; části globální soubor Web.config obsahuje následující položky:
 
-| **Zprostředkovatelé** | Obsahuje poskytovatele nastavení pro Prohlížeč událostí, WMI a SQL Server. |
+| **zprostředkovatelé** | Obsahuje poskytovatele nastavení pro Prohlížeč událostí, WMI a SQL Server. |
 | --- | --- |
 | **eventMappings** | Obsahuje mapování pro různé třídy WebBase. Tento seznam můžete rozšířit, pokud generovat vlastní třídy událostí. Generování třídy vlastní události vám rozlišovací schopnosti prostřednictvím poskytovatelů, odesílat informace do. Můžete například nakonfigurovat neošetřené výjimky k odeslání do serveru SQL Server, při odesílání vlastních událostí k e-mailu. |
 | **pravidla** | Odkazy eventMappings k poskytovateli. |
@@ -298,7 +298,7 @@ Tyto možnosti jsou k dispozici při spuštění aspnet\_regbrowser.exe:
 
 Nástroj ASP.NET kompilace lze použít dvěma způsoby: pro kompilaci v místě a kompilace pro nasazení, kde je zadán cílový adresář výstupu.
 
-### <a name="compiling-an-application-in-placehttpsmsdnmicrosoftcomlibraryms229863aspx"></a>[Kompilace aplikace na místě](https://msdn.microsoft.com/library/ms229863.aspx)
+### [<a name="compiling-an-application-in-place"></a>Kompilace aplikace na místě](https://msdn.microsoft.com/library/ms229863.aspx)
 
 Nástroj ASP.NET kompilace můžete zkompilovat aplikaci v místě, tedy napodobuje chování zasílání více požadavků na aplikaci, což způsobuje regulární kompilace. Uživatelé předem kompilovaných lokality nebude docházet ke zpoždění způsobené kompilace stránky při prvním požadavku.
 
@@ -314,7 +314,7 @@ Můžete také znovu zkompilovat aplikaci na místě po přidání nové zdrojov
 > Kompilace aplikace, která obsahuje vnořené aplikace nebude zkompilován vnořené aplikace. Vnořené aplikace musí být kompilován samostatně.
 
 
-### <a name="compiling-an-application-for-deploymenthttpsmsdnmicrosoftcomlibraryms229863aspx"></a>[Kompilace aplikace pro nasazení](https://msdn.microsoft.com/library/ms229863.aspx)
+### [<a name="compiling-an-application-for-deployment"></a>Kompilace aplikace pro nasazení](https://msdn.microsoft.com/library/ms229863.aspx)
 
 Zkompilovat aplikaci pro nasazení (kompilace do cílového umístění) tak, že zadáte parametr targetDir. Parametr targetDir může být konečné umístění pro webovou aplikaci nebo kompilovanou aplikaci je možné nasadit další. Použití **-u** možnost zkompiluje aplikaci tak, že můžete provádět změny určité soubory kompilované aplikace bez opětovné kompilace. ASPNET\_compiler.exe rozlišuje mezi typy souborů statické a dynamické a zpracovává je jiným způsobem, při vytváření výsledné aplikace.
 
@@ -351,11 +351,11 @@ Následující tabulka popisuje, jak kompilace technologie ASP.NET nástroj popi
 | soubory SKIN v aplikaci\_podadresář motivy | Motivy jsou zkompilovány do sestavení a umístěn v adresáři Bin. Soubory zástupných procedur jsou vytvořené pro soubory skin a umístěné v odpovídající výstupní adresář. Statické soubory (například .css) jsou zkopírovány do výstupního adresáře. |
 | Browser soubor Web.config statické typy sestavení, které jsou již v adresáři Bin | Tyto soubory se zkopírují, jako je do výstupního adresáře. |
 
-### <a name="fixed-assembly-nameshttpsmsdnmicrosoftcomlibraryms229863aspx"></a>[Názvy sestavení s pevnými](https://msdn.microsoft.com/library/ms229863.aspx##)
+### [<a name="fixed-assembly-names"></a>Názvy sestavení s pevnými](https://msdn.microsoft.com/library/ms229863.aspx##)
 
 Některé scénáře, jako je nasazení webové aplikace s využitím MSI Instalační služby Windows, vyžadují použití konzistentní názvy a obsah, jakož i konzistentní adresářovou strukturu pro identifikaci sestavení nebo konfigurace nastavení pro aktualizace. V takových případech můžete použít **- fixednames** možnost určit, že by měl nástroj kompilace technologie ASP.NET kompilovat sestavení pro každý zdrojový soubor namísto použití where více stránek kompilovány do sestavení. To může vést k velký počet sestavení, takže pokud jste obeznámeni s škálovatelnost můžete tuto možnost používejte opatrně.
 
-### <a name="strong-name-compilationhttpsmsdnmicrosoftcomlibraryms229863aspx"></a>[Kompilace silného názvu](https://msdn.microsoft.com/library/ms229863.aspx##)
+### [<a name="strong-name-compilation"></a>Kompilace silného názvu](https://msdn.microsoft.com/library/ms229863.aspx##)
 
 **- Aptca**, **- delaysign**, **- keycontainer** a **- keyfile** možnosti jsou k dispozici tak, aby vám Aspnet\_ Compiler.exe vytvoření silně pojmenované sestavení bez použití [nástroj Strong Name (Sn.exe)](https://msdn.microsoft.com/library/k5b5tt23.aspx) samostatně. Tyto parametry odpovídají na **AllowPartiallyTrustedCallersAttribute**, **AssemblyDelaySignAttribute**, **AssemblyKeyNameAttribute**a  **AssemblyKeyFileAttribute**.
 

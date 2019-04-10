@@ -8,15 +8,15 @@ ms.date: 11/13/2013
 ms.assetid: ca26e5bb-630e-41d2-8512-2a9386c431cb
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: 008891b72e1fb72458aee00bbf83839d0fbed263
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 17315dbbbdc08412e4e928256783c221a8a2cb20
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423543"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59406805"
 ---
-<a name="release-notes-for-aspnet-and-web-tools-20131-for-visual-studio-2012"></a>Poznámky k verzi pro ASP.NET a webové nástroje 2013.1 pro Visual Studio 2012
-====================
+# <a name="release-notes-for-aspnet-and-web-tools-20131-for-visual-studio-2012"></a>Poznámky k verzi pro ASP.NET a webové nástroje 2013.1 pro Visual Studio 2012
+
 by [Microsoft](https://github.com/microsoft)
 
 > Tento dokument popisuje verzi technologie ASP.NET a webové nástroje 2013.1 pro Visual Studio 2012.
@@ -44,7 +44,7 @@ by [Microsoft](https://github.com/microsoft)
 
         - [MVC a generování rozhraní Web API – HTTP 404, nebyla nalezena chyba](#404issue)
         - [Visual Studio Express 2012 pro Web přestane pracovat po přidání vygenerované položky](#expressissue)
-    - [ASP.NET Razor 3](#issuerazor)
+    - [Syntaxe Razor rozhraní ASP.NET 3](#issuerazor)
 
         - [Zobrazení souboru cshtml procházet s nebo F5 způsobí chybu serveru](#browseissue)
         - [Přepsání adresy URL a Tilde(~)](#rewriteissue)

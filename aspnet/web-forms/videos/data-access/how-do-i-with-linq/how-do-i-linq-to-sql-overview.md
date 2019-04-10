@@ -8,15 +8,15 @@ ms.date: 11/15/2007
 ms.assetid: f8d01146-8048-4750-a43b-aae53e3bd5f6
 msc.legacyurl: /web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-overview
 msc.type: video
-ms.openlocfilehash: b3984707c63db3e1f26bbf3723a92530f2a0b598
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 56dda72b8cadcef4449f3ff6e8e8e4e3315d0687
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066604"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59402879"
 ---
-<a name="how-do-i-linq-to-sql-overview"></a>[Postup:] Technologie LINQ to SQL: Přehled
-====================
+# <a name="how-do-i-linq-to-sql-overview"></a>[Postup:] Technologie LINQ to SQL: Přehled
+
 podle [Scott Stanfield](https://github.com/scottstanfield)
 
 Nové funkce jazyků C# a VB podporují přístup k datům přímo z kódu, aniž byste museli psát SQL. Toto video ukazuje minimální postup pomocí LINQ (Language Integrated Query) k dotazování, aktualizaci, přidání a odstranění řádků z databáze Northwind.

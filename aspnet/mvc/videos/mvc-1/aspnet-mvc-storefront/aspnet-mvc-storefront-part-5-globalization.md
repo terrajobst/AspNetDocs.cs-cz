@@ -8,15 +8,15 @@ ms.date: 05/27/2008
 ms.assetid: ec659d9f-8172-4c9e-9dd0-f5743bb27d4b
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-5-globalization
 msc.type: video
-ms.openlocfilehash: f250add5d8c88287fb3666741b928d8e84a31fa2
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ae94433a1eae82a37e230266d06eb3ee483725cd
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073582"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59410072"
 ---
-<a name="aspnet-mvc-storefront-part-5-globalization"></a>Prezentace ASP.NET MVC – část 5: Globalizace
-====================
+# <a name="aspnet-mvc-storefront-part-5-globalization"></a>Prezentace ASP.NET MVC – část 5: Globalizace
+
 podle [Rob Conery](https://github.com/robconery)
 
 Rob Conery funguje s ochranou Damien refaktorování databáze, kterou chcete řešit problémy s testovací data a globalizace.

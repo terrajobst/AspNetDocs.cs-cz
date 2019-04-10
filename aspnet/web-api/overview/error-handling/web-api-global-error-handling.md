@@ -1,25 +1,26 @@
 ---
 uid: web-api/overview/error-handling/web-api-global-error-handling
-title: Globální zpracování chyb v rozhraní ASP.NET Web API 2 | Dokumentace Microsoftu
+title: Globální zpracování chyb v rozhraní ASP.NET Web API 2 – ASP.NET 4.x
 author: davidmatson
-description: ''
+description: Základní informace o globální zpracování chyb v ASP.NET Web API 2 technologie ASP.NET 4.x.
 ms.author: riande
 ms.date: 02/03/2014
+ms.custom: seoapril2019
 ms.assetid: bffd7863-f63b-4b23-a13c-372b5492e9fb
 msc.legacyurl: /web-api/overview/error-handling/web-api-global-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 3e371760d2b34eb2be492e6ebbb33a5f9f7eff10
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7d9f4fb9909671d7c4c8ee2aa9285b0186c4b125
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076354"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59414371"
 ---
-<a name="global-error-handling-in-aspnet-web-api-2"></a>Globální zpracování chyb v rozhraní ASP.NET Web API 2
-====================
+# <a name="global-error-handling-in-aspnet-web-api-2"></a>Globální zpracování chyb v rozhraní ASP.NET Web API 2
+
 podle [David Matson](https://github.com/davidmatson), [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
-V rozhraní API webových protokolů nebo globálně zpracování chyb, které dnes není jednoduchý způsob. Některé neošetřené výjimky lze zpracovat prostřednictvím [filtry výjimek](exception-handling.md), ale existuje několik případů, které nemůže zpracovat filtry výjimek. Příklad:
+Toto téma obsahuje základní informace o globální zpracování chyb v ASP.NET Web API 2 technologie ASP.NET 4.x. V rozhraní API webových protokolů nebo globálně zpracování chyb, které dnes není jednoduchý způsob. Některé neošetřené výjimky lze zpracovat prostřednictvím [filtry výjimek](exception-handling.md), ale existuje několik případů, které nemůže zpracovat filtry výjimek. Příklad:
 
 1. Výjimky vyvolané z konstruktorů kontroleru.
 2. Výjimky vyvolané z obslužné rutiny zpráv.
