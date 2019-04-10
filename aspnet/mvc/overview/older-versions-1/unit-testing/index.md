@@ -8,17 +8,17 @@ ms.date: 09/28/2011
 ms.assetid: b21d9a30-6b5c-41ab-a8e4-2fa18acd8e9b
 msc.legacyurl: /mvc/overview/older-versions-1/unit-testing
 msc.type: chapter
-ms.openlocfilehash: d51c89c6b61c7092fcfcdbd11bd0cd7940afa70d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a0f530059ec98c238f4711020c9481eca604dba0
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796761"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59417608"
 ---
-<a name="unit-testing"></a><span data-ttu-id="42dc9-103">Testování částí</span><span class="sxs-lookup"><span data-stu-id="42dc9-103">Unit Testing</span></span>
-====================
-> <span data-ttu-id="42dc9-104">Této sérii kurzů se dozvíte, jak vytvořit akce kontroleru testů jednotek pro architekturu ASP.NET MVC.</span><span class="sxs-lookup"><span data-stu-id="42dc9-104">This tutorial set shows you how to create unit tests for ASP.NET MVC controller actions.</span></span>
+# <a name="unit-testing"></a><span data-ttu-id="f40a0-103">Testování částí</span><span class="sxs-lookup"><span data-stu-id="f40a0-103">Unit Testing</span></span>
+
+> <span data-ttu-id="f40a0-104">Této sérii kurzů se dozvíte, jak vytvořit akce kontroleru testů jednotek pro architekturu ASP.NET MVC.</span><span class="sxs-lookup"><span data-stu-id="f40a0-104">This tutorial set shows you how to create unit tests for ASP.NET MVC controller actions.</span></span>
 
 
-- [<span data-ttu-id="42dc9-105">Vytváření testů jednotek pro aplikace ASP.NET MVC (C#)</span><span class="sxs-lookup"><span data-stu-id="42dc9-105">Creating Unit Tests for ASP.NET MVC Applications (C#)</span></span>](creating-unit-tests-for-asp-net-mvc-applications-cs.md)
-- [<span data-ttu-id="42dc9-106">Vytváření testů jednotek pro aplikace ASP.NET MVC (VB)</span><span class="sxs-lookup"><span data-stu-id="42dc9-106">Creating Unit Tests for ASP.NET MVC Applications (VB)</span></span>](creating-unit-tests-for-asp-net-mvc-applications-vb.md)
+- [<span data-ttu-id="f40a0-105">Vytváření testů jednotek pro aplikace ASP.NET MVC (C#)</span><span class="sxs-lookup"><span data-stu-id="f40a0-105">Creating Unit Tests for ASP.NET MVC Applications (C#)</span></span>](creating-unit-tests-for-asp-net-mvc-applications-cs.md)
+- [<span data-ttu-id="f40a0-106">Vytváření testů jednotek pro aplikace ASP.NET MVC (VB)</span><span class="sxs-lookup"><span data-stu-id="f40a0-106">Creating Unit Tests for ASP.NET MVC Applications (VB)</span></span>](creating-unit-tests-for-asp-net-mvc-applications-vb.md)

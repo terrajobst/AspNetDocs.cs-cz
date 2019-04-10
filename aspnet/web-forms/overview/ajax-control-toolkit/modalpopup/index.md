@@ -8,23 +8,23 @@ ms.date: 11/14/2011
 ms.assetid: db4eca5d-b625-4e67-8e5b-a844639d4354
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup
 msc.type: chapter
-ms.openlocfilehash: 3b859ce51df5b55b236fb8fbafa94ab2530558b1
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c797e6556282ef6570d50d8a3e77587ac30dbbea
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796145"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59415229"
 ---
-<a name="modalpopup"></a><span data-ttu-id="a445d-103">ModalPopup</span><span class="sxs-lookup"><span data-stu-id="a445d-103">ModalPopup</span></span>
-====================
-> <span data-ttu-id="a445d-104">Tento kurz ukazuje použití ovládacího prvku ModalPopup ovládacího prvku, který umožňuje vytvořit ekvivalentní modální dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="a445d-104">This tutorial shows how to use the ModalPopup control, which lets you create the equivalent of a modal dialog box.</span></span>
+# <a name="modalpopup"></a><span data-ttu-id="b0265-103">ModalPopup</span><span class="sxs-lookup"><span data-stu-id="b0265-103">ModalPopup</span></span>
+
+> <span data-ttu-id="b0265-104">Tento kurz ukazuje použití ovládacího prvku ModalPopup ovládacího prvku, který umožňuje vytvořit ekvivalentní modální dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="b0265-104">This tutorial shows how to use the ModalPopup control, which lets you create the equivalent of a modal dialog box.</span></span>
 
 
-- [<span data-ttu-id="a445d-105">Spuštění okna modální místní nabídky serverovým kódem (C#)</span><span class="sxs-lookup"><span data-stu-id="a445d-105">Launching a Modal Popup Window from Server Code (C#)</span></span>](launching-a-modal-popup-window-from-server-code-cs.md)
-- [<span data-ttu-id="a445d-106">Použití ovládacího prvku ModalPopup v ovládacím prvku Repeater (C#)</span><span class="sxs-lookup"><span data-stu-id="a445d-106">Using ModalPopup with a Repeater Control (C#)</span></span>](using-modalpopup-with-a-repeater-control-cs.md)
-- [<span data-ttu-id="a445d-107">Zpracování postbacků z ovládacího prvku ModalPopup (C#)</span><span class="sxs-lookup"><span data-stu-id="a445d-107">Handling Postbacks from a ModalPopup (C#)</span></span>](handling-postbacks-from-a-modalpopup-cs.md)
-- [<span data-ttu-id="a445d-108">Umístění ovládacího prvku ModalPopup (C#)</span><span class="sxs-lookup"><span data-stu-id="a445d-108">Positioning a ModalPopup (C#)</span></span>](positioning-a-modalpopup-cs.md)
-- [<span data-ttu-id="a445d-109">Spuštění okna modální místní nabídky serverovým kódem (VB)</span><span class="sxs-lookup"><span data-stu-id="a445d-109">Launching a Modal Popup Window from Server Code (VB)</span></span>](launching-a-modal-popup-window-from-server-code-vb.md)
-- [<span data-ttu-id="a445d-110">Použití ovládacího prvku ModalPopup v ovládacím prvku Repeater (VB)</span><span class="sxs-lookup"><span data-stu-id="a445d-110">Using ModalPopup with a Repeater Control (VB)</span></span>](using-modalpopup-with-a-repeater-control-vb.md)
-- [<span data-ttu-id="a445d-111">Zpracování postbacků z ovládacího prvku ModalPopup (VB)</span><span class="sxs-lookup"><span data-stu-id="a445d-111">Handling Postbacks from a ModalPopup (VB)</span></span>](handling-postbacks-from-a-modalpopup-vb.md)
-- [<span data-ttu-id="a445d-112">Umístění ovládacího prvku ModalPopup (VB)</span><span class="sxs-lookup"><span data-stu-id="a445d-112">Positioning a ModalPopup (VB)</span></span>](positioning-a-modalpopup-vb.md)
+- [<span data-ttu-id="b0265-105">Spuštění okna modální místní nabídky serverovým kódem (C#)</span><span class="sxs-lookup"><span data-stu-id="b0265-105">Launching a Modal Popup Window from Server Code (C#)</span></span>](launching-a-modal-popup-window-from-server-code-cs.md)
+- [<span data-ttu-id="b0265-106">Použití ovládacího prvku ModalPopup v ovládacím prvku Repeater (C#)</span><span class="sxs-lookup"><span data-stu-id="b0265-106">Using ModalPopup with a Repeater Control (C#)</span></span>](using-modalpopup-with-a-repeater-control-cs.md)
+- [<span data-ttu-id="b0265-107">Zpracování postbacků z ovládacího prvku ModalPopup (C#)</span><span class="sxs-lookup"><span data-stu-id="b0265-107">Handling Postbacks from a ModalPopup (C#)</span></span>](handling-postbacks-from-a-modalpopup-cs.md)
+- [<span data-ttu-id="b0265-108">Umístění ovládacího prvku ModalPopup (C#)</span><span class="sxs-lookup"><span data-stu-id="b0265-108">Positioning a ModalPopup (C#)</span></span>](positioning-a-modalpopup-cs.md)
+- [<span data-ttu-id="b0265-109">Spuštění okna modální místní nabídky serverovým kódem (VB)</span><span class="sxs-lookup"><span data-stu-id="b0265-109">Launching a Modal Popup Window from Server Code (VB)</span></span>](launching-a-modal-popup-window-from-server-code-vb.md)
+- [<span data-ttu-id="b0265-110">Použití ovládacího prvku ModalPopup v ovládacím prvku Repeater (VB)</span><span class="sxs-lookup"><span data-stu-id="b0265-110">Using ModalPopup with a Repeater Control (VB)</span></span>](using-modalpopup-with-a-repeater-control-vb.md)
+- [<span data-ttu-id="b0265-111">Zpracování postbacků z ovládacího prvku ModalPopup (VB)</span><span class="sxs-lookup"><span data-stu-id="b0265-111">Handling Postbacks from a ModalPopup (VB)</span></span>](handling-postbacks-from-a-modalpopup-vb.md)
+- [<span data-ttu-id="b0265-112">Umístění ovládacího prvku ModalPopup (VB)</span><span class="sxs-lookup"><span data-stu-id="b0265-112">Positioning a ModalPopup (VB)</span></span>](positioning-a-modalpopup-vb.md)
