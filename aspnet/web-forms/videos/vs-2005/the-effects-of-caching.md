@@ -8,15 +8,15 @@ ms.date: 03/26/2007
 ms.assetid: 806acc93-7f97-4ba1-92a5-f90146bd51f8
 msc.legacyurl: /web-forms/videos/vs-2005/the-effects-of-caching
 msc.type: video
-ms.openlocfilehash: f31631f42f909c43e1e155b9caf1937940e77897
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5deccb253b2e8e6b853f615413da3b9b161239b9
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066562"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59380514"
 ---
-<a name="the-effects-of-caching"></a>Účinky ukládání do mezipaměti
-====================
+# <a name="the-effects-of-caching"></a>Účinky ukládání do mezipaměti
+
 podle Eric Lee
 
 Téměř každá webová aplikace ještě dnes potřebuje přístup k datům z databáze, ale tato běžné operace může mít skutečnou dopad na celkový výkon aplikace. Toto video ukazuje, jak Visual Studio Team System vám může pomoci zjistit, jestli vaše aplikace je redundantní volání do databáze a ukazuje, jak můžete použít technologie ASP.NET 2.0 DataSource funkce mezipaměti odstranit redundantních volání.

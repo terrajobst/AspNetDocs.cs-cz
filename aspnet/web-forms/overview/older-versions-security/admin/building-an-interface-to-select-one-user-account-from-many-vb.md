@@ -8,15 +8,15 @@ ms.date: 04/01/2008
 ms.assetid: da53380c-a16b-41c7-a20d-24343c735c52
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-vb
 msc.type: authoredcontent
-ms.openlocfilehash: bb30c5d3ce6e04f60d8192e8ed0404b89031b4b9
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d7dd82ed4140b5ac6993483fb16af6a1b249be51
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070198"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59383866"
 ---
-<a name="building-an-interface-to-select-one-user-account-from-many-vb"></a>Vytvoření rozhraní pro výběr jednoho uživatelského účtu z mnoha (VB)
-====================
+# <a name="building-an-interface-to-select-one-user-account-from-many-vb"></a>Vytvoření rozhraní pro výběr jednoho uživatelského účtu z mnoha (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/6/0/e/60e1bd94-e5f9-4d5a-a079-f23c98f4f67d/VB.12.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/0/e/60e1bd94-e5f9-4d5a-a079-f23c98f4f67d/aspnet_tutorial12_SelectUser_vb.pdf)
@@ -56,7 +56,7 @@ Stránky technologie ASP.NET v `Administration` složky jsou určené výhradně
 Průzkumník řešení vašeho projektu v tomto okamžiku by měl vypadat podobně jako obrazovky je vidět na obrázku 1.
 
 
-[![Čtyři nové stránky a v souboru Web.config se přidaly na web](building-an-interface-to-select-one-user-account-from-many-vb/_static/image2.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image1.png)
+[![FNaše nové stránky a v souboru Web.config se přidaly na web](building-an-interface-to-select-one-user-account-from-many-vb/_static/image2.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image1.png)
 
 **Obrázek 1**: Čtyři nové stránky a `Web.config` soubor byly přidány k webu ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-vb/_static/image3.png))
 
@@ -68,7 +68,7 @@ Nakonec aktualizujte mapy webu (`Web.sitemap`) zahrnout položku pro `ManageUser
 Pomocí mapy webu, aktualizovat přejděte na web prostřednictvím prohlížeče. Jak je vidět na obrázku 2, navigaci na levé straně teď obsahuje položky pro správu kurzy.
 
 
-[![Mapa webu obsahuje uzel s názvem Správa uživatelů](building-an-interface-to-select-one-user-account-from-many-vb/_static/image5.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image4.png)
+[![TMapa webu zahrne uzel s názvem Správa uživatelů](building-an-interface-to-select-one-user-account-from-many-vb/_static/image5.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image4.png)
 
 **Obrázek 2**: Mapa webu obsahuje uzel s názvem Správa uživatelů ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-vb/_static/image6.png))
 
@@ -82,7 +82,7 @@ Otevřít `ManageUsers.aspx` stránku `Administration` složky a přidejte prvku
 Pokud chcete zobrazit informace o požadované uživatelském účtu v prvku GridView, nastavte prvku GridView `AutoGenerateColumns` vlastnost na hodnotu False a přidejte BoundFields pro `UserName`, `Email`, a `Comment` vlastnosti a CheckBoxFields pro `IsApproved`, `IsLockedOut`, a `IsOnline` vlastnosti. Tuto konfiguraci můžete použít prostřednictvím ovládacího prvku deklarativní nebo dialogového okna pole. Obrázek 3 ukazuje snímek obrazovky pole poté, co bylo zrušeno na zaškrtávací políčko automaticky generovat pole a BoundFields a CheckBoxFields jsme přidali a nakonfigurovali dialogové okno.
 
 
-[![Přidejte tři BoundFields a tři CheckBoxFields do prvku GridView.](building-an-interface-to-select-one-user-account-from-many-vb/_static/image8.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image7.png)
+[![Add tři BoundFields a tři CheckBoxFields do prvku GridView.](building-an-interface-to-select-one-user-account-from-many-vb/_static/image8.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image7.png)
 
 **Obrázek 3**: Přidejte tři BoundFields a tři CheckBoxFields do prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-vb/_static/image9.png))
 
@@ -98,7 +98,7 @@ Dále musíme napsat kód, který váže uživatelské účty do prvku GridView.
 Za chvíli testovací stránka prostřednictvím prohlížeče. Obrázek 4 ukazuje, `UserAccounts` GridView obsahuje uživatelské jméno, e-mailovou adresu a další relevantní účtu informace pro všechny uživatele v systému.
 
 
-[![Uživatelské účty vypisují v prvku GridView.](building-an-interface-to-select-one-user-account-from-many-vb/_static/image11.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image10.png)
+[![The uživatelské účty vypisují v prvku GridView.](building-an-interface-to-select-one-user-account-from-many-vb/_static/image11.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image10.png)
 
 **Obrázek 4**: Uživatelské účty vypisují v prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-vb/_static/image12.png))
 
@@ -122,7 +122,7 @@ Tato metoda určuje možnosti filtrování jako prvky `String` pole `filterOptio
 Obrázek 5 ukazuje, `ManageUsers.aspx` stránce při prohlížení prostřednictvím prohlížeče.
 
 
-[![Opakovači uvádí 27 filtrování LinkButtons](building-an-interface-to-select-one-user-account-from-many-vb/_static/image14.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image13.png)
+[![Tmá Repeater uvádí 27 filtrování LinkButtons](building-an-interface-to-select-one-user-account-from-many-vb/_static/image14.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image13.png)
 
 **Obrázek 5**: Repeater uvádí 27 filtrování LinkButtons ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-vb/_static/image15.png))
 
@@ -152,7 +152,7 @@ Vytvořte obslužnou rutinu události pro Repeater `ItemCommand` událostí. Tat
 S tímto kódem na místě otestujte si moct funkce filtrování. Při první návštěvě stránky, se zobrazují všechny uživatelské účty (vrátit zpět k obrázek 5). Kliknutí na prvek LinkButton A vyvolá zpětné volání a vyfiltruje výsledky, pouze uživatelské účty, které začínají na A zobrazení.
 
 
-[![Pomocí filtrování LinkButtons můžete zobrazit tyto uživatele, jejichž uživatelské jméno začíná určitým písmenem](building-an-interface-to-select-one-user-account-from-many-vb/_static/image17.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image16.png)
+[![Use LinkButtons filtrování pro zobrazení těchto uživatelů jejichž uživatelské jméno začíná písmenem některých](building-an-interface-to-select-one-user-account-from-many-vb/_static/image17.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image16.png)
 
 **Obrázek 6**: Pomocí filtrování LinkButtons můžete zobrazit tyto uživatele jejichž uživatelské jméno začíná písmenem některých ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-vb/_static/image18.png))
 
@@ -197,7 +197,7 @@ Dále vytvořte obslužnou rutinu události pro každou na prvek LinkButton `Cli
 Obrázek 7 znázorňuje čtyři LinkButtons při prohlížení prostřednictvím vizuálního návrhu Web pro vývojáře.
 
 
-[![Dále přidejte první, předchozí, a naposledy LinkButtons pod prvku GridView.](building-an-interface-to-select-one-user-account-from-many-vb/_static/image20.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image19.png)
+[![Add první, Previous, Next a poslední LinkButtons pod prvku GridView](building-an-interface-to-select-one-user-account-from-many-vb/_static/image20.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image19.png)
 
 **Obrázek 7**: Nejprve přidat předchozí a další, poslední LinkButtons pod prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-vb/_static/image21.png))
 
@@ -227,12 +227,12 @@ Posledním krokem je napsat kód pro čtyři LinkButtons `Click` obslužných ru
 Obrázky 8 a 9 zobrazit rozhraní vlastní stránkování v akci. Obrázek 8 ukazuje `ManageUsers.aspx` stránce při prohlížení na první stránku dat pro všechny uživatelské účty. Všimněte si, že se zobrazují jenom 10 13 účtů. Kliknutím na odkaz Další nebo poslední vyvolá zpětné volání, aktualizace `PageIndex` 1 a vytvoří vazbu na druhé stránce uživatelské účty do mřížky (viz obrázek 9).
 
 
-[![Prvních 10 uživatelské účty se zobrazí.](building-an-interface-to-select-one-user-account-from-many-vb/_static/image23.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image22.png)
+[![The prvních 10 uživatelské účty se zobrazují](building-an-interface-to-select-one-user-account-from-many-vb/_static/image23.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image22.png)
 
 **Obrázek 8**: Prvních 10 uživatelské účty se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-vb/_static/image24.png))
 
 
-[![Kliknutím na následující odkaz zobrazí na druhé stránce uživatelské účty](building-an-interface-to-select-one-user-account-from-many-vb/_static/image26.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image25.png)
+[![CNásledující odkaz zobrazí licking druhé stránce uživatelské účty](building-an-interface-to-select-one-user-account-from-many-vb/_static/image26.png)](building-an-interface-to-select-one-user-account-from-many-vb/_static/image25.png)
 
 **Obrázek 9**: Kliknutím na odkaz na další zobrazí druhou stránku uživatelských účtů ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-vb/_static/image27.png))
 

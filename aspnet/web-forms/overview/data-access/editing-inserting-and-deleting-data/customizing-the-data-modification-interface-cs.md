@@ -8,15 +8,15 @@ ms.date: 07/17/2006
 ms.assetid: 22e99600-8d18-4a94-a20e-a3a62bb63798
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f7004192edd636f4660f3184c3e725a6bfda865c
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 727ef89069d3f1ddf22e993e1e3dceb144a43389
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073828"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59390613"
 ---
-<a name="customizing-the-data-modification-interface-c"></a>Přizpůsobení rozhraní pro úpravu dat (C#)
-====================
+# <a name="customizing-the-data-modification-interface-c"></a>Přizpůsobení rozhraní pro úpravu dat (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_20_CS.exe) nebo [stahovat PDF](customizing-the-data-modification-interface-cs/_static/datatutorial20cs1.pdf)
@@ -31,7 +31,7 @@ BoundFields a CheckBoxFields používané ovládací prvky GridView a DetailsVie
 V [předchozím kurzu](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md) jsme viděli, jak přizpůsobit rozhraní pro úpravy dat tak, že přidáte ovládací prvky webového ověřování. V tomto kurzu podíváme na tom, jak přizpůsobit skutečné kolekce webových ovládacích prvcích dat, nahradí Vlastnost BoundField a standardního textového pole na třídě CheckBoxField a ovládacích prvků CheckBox s alternativní vstupní ovládací prvky webové. Zejména vytvoříme upravitelné prvku GridView, která umožňuje produktu název, kategorie, dodavatele a ukončená stav aktualizace. Při úpravách konkrétního řádku, kategorie a dodavatele pole se zobrazí takto DropDownLists, obsahující sadu dostupných kategorií a všichni dodavatelé lze vybírat. Kromě toho jsme budete nahraďte výchozí třídě CheckBoxField zaškrtávací políčko RadioButtonList ovládací prvek, který nabízí dvě možnosti: "Aktivní" a "Pozastaveno".
 
 
-[![Rozhraní pro úpravy prvku GridView zahrnuje DropDownLists a přepínači (RadioButtons)](customizing-the-data-modification-interface-cs/_static/image2.png)](customizing-the-data-modification-interface-cs/_static/image1.png)
+[![The GridView úpravy DropDownLists zahrnuje rozhraní a přepínači (RadioButtons)](customizing-the-data-modification-interface-cs/_static/image2.png)](customizing-the-data-modification-interface-cs/_static/image1.png)
 
 **Obrázek 1**: Úpravy rozhraní zahrnuje DropDownLists a přepínači (RadioButtons) prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image3.png))
 
@@ -56,7 +56,7 @@ Následující kód ukazuje novou `UpdateProduct` přetížení v `ProductsBLL` 
 S `UpdateProduct` přetížení přidali jsme připraveni vytvořit naše upravitelné ovládacího prvku GridView. Otevřít `CustomizedUI.aspx` stránku `EditInsertDelete` složky a přidejte ovládací prvek GridView do návrháře. Dále vytvořte nový prvek ObjectDataSource z inteligentních značek v prvku GridView. Konfigurace ObjectDataSource k získávání informací o produktech přes `ProductBLL` třídy `GetProducts()` metoda a aktualizovat data pomocí produktu `UpdateProduct` přetížení, které jsme právě vytvořili. Z karty INSERT a DELETE vyberte z rozevíracích seznamů (žádné).
 
 
-[![Konfigurace ObjectDataSource použít přetížení UpdateProduct právě vytvořili](customizing-the-data-modification-interface-cs/_static/image5.png)](customizing-the-data-modification-interface-cs/_static/image4.png)
+[![Configurovat ObjectDataSource používat UpdateProduct přetížení právě vytvořili](customizing-the-data-modification-interface-cs/_static/image5.png)](customizing-the-data-modification-interface-cs/_static/image4.png)
 
 **Obrázek 2**: Konfigurace ObjectDataSource k použití `UpdateProduct` přetížení právě vytvořili ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image6.png))
 
@@ -80,7 +80,7 @@ I když prvku ObjectDataSource je nakonfigurovat aktualizovat pouze podmnožinu 
 Po provedení těchto změn bude návrháře vypadat podobně jako na obrázku 3 s prvku GridView deklarativní syntaxe uvedená níže.
 
 
-[![Odebrat nepotřebné pole z prvku GridView.](customizing-the-data-modification-interface-cs/_static/image8.png)](customizing-the-data-modification-interface-cs/_static/image7.png)
+[![Rodebrat nepotřebné pole z prvku GridView.](customizing-the-data-modification-interface-cs/_static/image8.png)](customizing-the-data-modification-interface-cs/_static/image7.png)
 
 **Obrázek 3**: Odebrat nepotřebné pole z prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image9.png))
 
@@ -90,7 +90,7 @@ Po provedení těchto změn bude návrháře vypadat podobně jako na obrázku 3
 V tomto okamžiku je kompletní chování jen pro čtení v prvku GridView. Při prohlížení dat, každý produkt se vykreslí jako řádku v prvku GridView zobrazující název produktu, kategorie, dodavatel a vyřazuje stav.
 
 
-[![Rozhraní prvku GridView jen pro čtení je dokončen.](customizing-the-data-modification-interface-cs/_static/image11.png)](customizing-the-data-modification-interface-cs/_static/image10.png)
+[![TRozhraní he GridView jen pro čtení je dokončeno](customizing-the-data-modification-interface-cs/_static/image11.png)](customizing-the-data-modification-interface-cs/_static/image10.png)
 
 **Obrázek 4**: Rozhraní prvku GridView jen pro čtení je dokončeno ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image12.png))
 
@@ -124,7 +124,7 @@ Vzhledem k tomu, vlastnost BoundField byla označena jako jen pro čtení, jak `
 Jak jsme viděli v předchozích kurzech, šablona se dá upravit pomocí návrháře nebo přímo z deklarativní syntaxe. Upravovat pomocí návrháře, klikněte na odkaz Upravit šablony z prvku GridView inteligentních značek a pracovat s polem kategorie `EditItemTemplate`. Odebrání popisku webového ovládacího prvku a nahraďte ji metodou nastavením vlastnosti ID DropDownList na ovládací prvek DropDownList `Categories`.
 
 
-[![Odeberte TexBox a přidejte EditItemTemplate DropDownList](customizing-the-data-modification-interface-cs/_static/image14.png)](customizing-the-data-modification-interface-cs/_static/image13.png)
+[![ROdstranit TexBox a přidat DropDownList k EditItemTemplate](customizing-the-data-modification-interface-cs/_static/image14.png)](customizing-the-data-modification-interface-cs/_static/image13.png)
 
 **Obrázek 5**: Odeberte TexBox a přidejte DropDownList k `EditItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image15.png))
 
@@ -132,7 +132,7 @@ Jak jsme viděli v předchozích kurzech, šablona se dá upravit pomocí návrh
 Dále je potřeba vyplnit DropDownList s dostupné kategorie. Klikněte na odkaz zvolit zdroj dat z inteligentních značek DropDownList a rozhodnout vytvořit nového prvku ObjectDataSource s názvem `CategoriesDataSource`.
 
 
-[![Vytvoření nového ovládacího prvku ObjectDataSource s názvem CategoriesDataSource](customizing-the-data-modification-interface-cs/_static/image17.png)](customizing-the-data-modification-interface-cs/_static/image16.png)
+[![CVytvořit nový prvek ObjectDataSource ovládací prvek s názvem CategoriesDataSource](customizing-the-data-modification-interface-cs/_static/image17.png)](customizing-the-data-modification-interface-cs/_static/image16.png)
 
 **Obrázek 6**: Vytvořit nový ovládací prvek ObjectDataSource název `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image18.png))
 
@@ -140,7 +140,7 @@ Dále je potřeba vyplnit DropDownList s dostupné kategorie. Klikněte na odkaz
 Pokud chcete, aby tento prvek ObjectDataSource, vrátí všechny kategorie, vytvořte mu vazbu k `CategoriesBLL` třídy `GetCategories()` metody.
 
 
-[![Svázat ObjectDataSource CategoriesBLL GetCategories() – metoda](customizing-the-data-modification-interface-cs/_static/image20.png)](customizing-the-data-modification-interface-cs/_static/image19.png)
+[![BIND ObjectDataSource CategoriesBLL GetCategories() metody](customizing-the-data-modification-interface-cs/_static/image20.png)](customizing-the-data-modification-interface-cs/_static/image19.png)
 
 **Obrázek 7**: Vytvoření vazby prvku ObjectDataSource k `CategoriesBLL`společnosti `GetCategories()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image21.png))
 
@@ -148,7 +148,7 @@ Pokud chcete, aby tento prvek ObjectDataSource, vrátí všechny kategorie, vytv
 A konečně, nakonfigurujte nastavení DropDownList tak, aby `CategoryName` pole se zobrazí v každé DropDownList `ListItem` s `CategoryID` pole, které slouží jako hodnotu.
 
 
-[![Zobrazí pole CategoryName a jako hodnota použita ID kategorie](customizing-the-data-modification-interface-cs/_static/image23.png)](customizing-the-data-modification-interface-cs/_static/image22.png)
+[![HUložit CategoryName zobrazí pole a CategoryID použít jako hodnota](customizing-the-data-modification-interface-cs/_static/image23.png)](customizing-the-data-modification-interface-cs/_static/image22.png)
 
 **Obrázek 8**: Máte `CategoryName` zobrazí pole a `CategoryID` použít jako hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image24.png))
 
@@ -167,7 +167,7 @@ Opakujte tyto kroky pro přidání DropDownList s názvem `Suppliers` k `Supplie
 Po přidání DropDownLists do dvou `EditItemTemplate` s, načtení stránky v prohlížeči a klikněte na tlačítko Upravit Chef Anton Cajun Seasoning produktu. Jak je vidět na obrázku 9, kategorie a dodavatele sloupce produktu jsou vykresleny jako obsahující dostupné kategorie a dodavatelé zvolit z rozevíracích seznamů. Mějte však na paměti, která *první* v obou rozevíracích seznamech jsou vybrané položky ve výchozím nastavení (kategorie Nápoje) a exotické kapaliny jako dodavatele, i když Chef Anton Cajun Seasoning přísady poskytnutých Cajun Orleans nový Delights.
 
 
-[![Ve výchozím nastavení se vybere první položka v rozevíracích seznamech](customizing-the-data-modification-interface-cs/_static/image26.png)](customizing-the-data-modification-interface-cs/_static/image25.png)
+[![Tve výchozím nastavení je vybraná má první položky v rozevírací seznam obsahuje](customizing-the-data-modification-interface-cs/_static/image26.png)](customizing-the-data-modification-interface-cs/_static/image25.png)
 
 **Obrázek 9**: Ve výchozím nastavení se vybere první položka v rozevíracích seznamech ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image27.png))
 
@@ -181,7 +181,7 @@ Abyste měli kategorie a dodavatele upravených produktu rozevírací seznamy na
 Alternativně můžete nastavit DropDownList databindings úpravy šablony prostřednictvím návrháře a kliknutím na odkaz upravit vlastnosti DataBindings z inteligentních značek DropDownList. Dále, která označuje, že `SelectedValue` vlastnost by měla být vázána na `CategoryID` pole pomocí dvousměrnou datovou vazbou (viz obrázek 10). Postupujte stejně buď jako deklarativní nebo návrháře k vytvoření vazby `SupplierID` datové pole `Suppliers` DropDownList.
 
 
-[![Vytvořit vazbu CategoryID vlastnost SelectedValue DropDownList pomocí dvousměrnou datovou vazbou](customizing-the-data-modification-interface-cs/_static/image29.png)](customizing-the-data-modification-interface-cs/_static/image28.png)
+[![BIND CategoryID k vlastnosti SelectedValue DropDownList pomocí dvousměrnou datovou vazbou](customizing-the-data-modification-interface-cs/_static/image29.png)](customizing-the-data-modification-interface-cs/_static/image28.png)
 
 **Obrázek 10**: Vytvoření vazby `CategoryID` k DropDownList `SelectedValue` datové vlastnosti pomocí obousměrné vazby ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image30.png))
 
@@ -189,7 +189,7 @@ Alternativně můžete nastavit DropDownList databindings úpravy šablony prost
 Jakmile se použily vazby `SelectedValue` vlastnosti dvě DropDownLists upravených produktové kategorie a dodavatele sloupce budou ve výchozím nastavení hodnoty aktuální produkt. Po kliknutí na tlačítko aktualizace, `CategoryID` a `SupplierID` hodnoty rozevíracího seznamu vybrané položky budou předána pracovnímu `UpdateProduct` metody. Obrázku 11 můžete vidět v kurzu po přidání datové vazby příkazů; Všimněte si, jak jsou položky vybrané rozevíracího seznamu pro Chef Anton Cajun Seasoning správně přísady a nový Orleans Cajun Delights.
 
 
-[![Ve výchozím nastavení se vybere aktuální kategorii a dodavatele hodnoty upravit produkt](customizing-the-data-modification-interface-cs/_static/image32.png)](customizing-the-data-modification-interface-cs/_static/image31.png)
+[![Tve výchozím nastavení jsou vybrány he upravit aktuální kategorii a produktu hodnoty dodavatele](customizing-the-data-modification-interface-cs/_static/image32.png)](customizing-the-data-modification-interface-cs/_static/image31.png)
 
 **Obrázek 11**: Ve výchozím nastavení se vybere aktuální kategorii produktu upravovat a hodnoty dodavatele ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image33.png))
 
@@ -219,7 +219,7 @@ Tento postup opakujte pro DropDownList dodavatelů.
 S tímto Další `ListItem`, teď můžete přiřadit rozhraní úprav `NULL` hodnoty na produkt `CategoryID` a `SupplierID` pole, jak ukazuje obrázek 12.
 
 
-[![Zvolte (žádný) Chcete-li přiřadit hodnotu NULL pro kategorii produktu nebo na dodavatele](customizing-the-data-modification-interface-cs/_static/image35.png)](customizing-the-data-modification-interface-cs/_static/image34.png)
+[![CZvolte (žádný) Chcete-li přiřadit hodnotu NULL pro kategorii produktu nebo na dodavatele](customizing-the-data-modification-interface-cs/_static/image35.png)](customizing-the-data-modification-interface-cs/_static/image34.png)
 
 **Obrázek 12**: Zvolte (žádný) k přiřazení `NULL` hodnotu o produktu, kategorie nebo dodavatele ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image36.png))
 
@@ -233,7 +233,7 @@ Začněte tím, že převod `Discontinued` třídě CheckBoxField na pole Templa
 Nahraďte zaškrtávacího políčka v obou `ItemTemplate` a `EditItemTemplate` s ovládacím prvkem RadioButtonList nastavení obě RadioButtonLists `ID` vlastností `DiscontinuedChoice`. V dalším kroku znamenat, že RadioButtonLists každý může obsahovat dva přepínače, jednu s popiskem "aktivní" s hodnotou "False" a jednu s názvem "Pozastaveno" s hodnotou "True". K tomu můžete zadat buď `<asp:ListItem>` elementů v přímo prostřednictvím deklarativní syntaxe nebo použití `ListItem` Editor kolekce z návrháře. Obrázek 13 ukazuje `ListItem` zadali Editor kolekce po dvou přepínač tlačítko Možnosti.
 
 
-[![Přidat](customizing-the-data-modification-interface-cs/_static/image38.png)](customizing-the-data-modification-interface-cs/_static/image37.png)
+[![Add](customizing-the-data-modification-interface-cs/_static/image38.png)](customizing-the-data-modification-interface-cs/_static/image37.png)
 
 **Obrázek 13**: Přidání možnosti "Vyřazeno" a "Aktivní" do RadioButtonList ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image39.png))
 
@@ -250,7 +250,7 @@ Po přidání dvou RadioButtonLists a nakonfigurovaly, `Discontinued` deklarativ
 S těmito změnami `Discontinued` transformaci sloupce ze seznamu zaškrtávacích políček do seznamu párů tlačítko přepínače (viz obrázek 14). Při úpravě produktu, se určí příslušný přepínač a produktu ukončená stav lze aktualizovat výběrem jiné tlačítko přepínače a kliknutím na tlačítko Aktualizovat.
 
 
-[![Ukončená zaškrtávací políčka byly nahrazeny páry tlačítko přepínače](customizing-the-data-modification-interface-cs/_static/image41.png)](customizing-the-data-modification-interface-cs/_static/image40.png)
+[![Tmá zaškrtávací políčka vyřazeno byly nahrazeny páry tlačítko přepínače](customizing-the-data-modification-interface-cs/_static/image41.png)](customizing-the-data-modification-interface-cs/_static/image40.png)
 
 **Obrázek 14**: Vyřazuje, zaškrtávací políčka byly nahrazeny páry tlačítko přepínače ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-data-modification-interface-cs/_static/image42.png))
 

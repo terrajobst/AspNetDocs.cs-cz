@@ -8,15 +8,15 @@ ms.date: 02/20/2005
 ms.assetid: 9c0cce4d-efd9-4c14-b0e8-a1a140abb3f4
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/master-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 644beb37bf893a590be03dd0929c5870af6fbe87
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 348e28778e0e7d96230534df1d61386ed39f8f11
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425766"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59381143"
 ---
-<a name="master-pages"></a>Stránky předlohy
-====================
+# <a name="master-pages"></a>Stránky předlohy
+
 by [Microsoft](https://github.com/microsoft)
 
 > Jednou z klíčových komponent, které mají úspěšné webu je konzistentní vzhled a chování. V technologii ASP.NET 1.x, vývojáři použít uživatelské ovládací prvky k replikaci společné prvky stránky do webové aplikace. Jistě, který je možná řešení, pomocí uživatelské ovládací prvky mají určité nevýhody. Například změna pozice ovládacího prvku uživatel vyžaduje změnu více stránek na webu. Uživatelské ovládací prvky se nevykreslují také v návrhovém zobrazení po vloženého na stránce.
@@ -71,7 +71,7 @@ Pokud chcete vytvořit novou stránku předlohy:
 **Obrázek 2**: Vytváří se nová stránka předlohy
 
 
-Všimněte si, že přípona souboru pro hlavní stránku <em>.master</em>. Toto je jeden ze způsobů, jak se liší od běžné stránky na stránku předlohy. Hlavní rozdíl je, že náhrada @Page direktiv, obsahuje stránky předlohy @Master – direktiva. Přepněte do zobrazení zdroje pro hlavní stránky, které jste právě vytvořili a projděte si kód.
+Všimněte si, že přípona souboru pro hlavní stránku *.master*. Toto je jeden ze způsobů, jak se liší od běžné stránky na stránku předlohy. Hlavní rozdíl je, že náhrada @Page direktiv, obsahuje stránky předlohy @Master – direktiva. Přepněte do zobrazení zdroje pro hlavní stránky, které jste právě vytvořili a projděte si kód.
 
 Novou stránku předlohy, bude mít jeden ovládací prvek ContentPlaceHolder ve výchozím nastavení. Ve většině případů je vhodnější pro nejprve vytvořit společné prvky stránky a pak vkládání ovládacích prvků ContentPlaceHolder kde je žádoucí vlastní obsah. V takových případech budou vývojáři chtějí ovládací prvek ContentPlaceHolder výchozí odstranit a vložit nové, jako je vytvořena na stránce. Ovládací prvky ContentPlaceHolder nejsou umožňující změnu velikosti navzdory tomu, že se zobrazují úchyty pro změnu velikosti. Velikosti ovládacího prvku ContentPlaceHolder automaticky na základě obsahu, který obsahuje s jednou výjimkou; Pokud například buňky tabulky ovládací prvek ContentPlaceHolder v blokovém elementu, bude velikost podle velikosti prvku.
 
@@ -154,7 +154,7 @@ Tím, že nastavíte vlastnost MasterPageFile v kódu, můžete použít konkré
 
 ## <a name="using-the-ltpagesgt-element"></a>Použití &lt;stránky&gt; – Element
 
-Nastavením atributu masterPageFile v můžete nakonfigurovat na stránku předlohy pro stránky &lt;stránky&gt; element v souboru web.config. Při použití této metody, mějte na paměti, že toto nastavení lze přepsat soubory web.config nižší ve struktuře aplikace. Všechny atributy MasterPageFile nastavit @Page – direktiva se toto nastavení také přepsat. Použití &lt;stránky&gt; element umožňuje snadno vytvořit <em>hlavní</em> stránku předlohy, která se dá přepsat v případě potřeby v konkrétní složky nebo soubory.
+Nastavením atributu masterPageFile v můžete nakonfigurovat na stránku předlohy pro stránky &lt;stránky&gt; element v souboru web.config. Při použití této metody, mějte na paměti, že toto nastavení lze přepsat soubory web.config nižší ve struktuře aplikace. Všechny atributy MasterPageFile nastavit @Page – direktiva se toto nastavení také přepsat. Použití &lt;stránky&gt; element umožňuje snadno vytvořit *hlavní* stránku předlohy, která se dá přepsat v případě potřeby v konkrétní složky nebo soubory.
 
 ## <a name="properties-in-master-pages"></a>Vlastnosti stránek předloh
 

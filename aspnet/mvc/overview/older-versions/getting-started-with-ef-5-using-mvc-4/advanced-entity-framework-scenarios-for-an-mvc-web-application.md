@@ -8,15 +8,15 @@ ms.date: 07/30/2013
 ms.assetid: 64906a1d-f734-41cf-9615-ee95f8740996
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 18a292ada33936ea03f2d51427c160541424c8d1
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: a1218b1fb5a8ee28ea6ee3d3c5af979e86821ed7
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425610"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59391192"
 ---
-<a name="advanced-entity-framework-scenarios-for-an-mvc-web-application-10-of-10"></a>Scénáře pro pokročilé Entity Framework pro webové aplikace MVC (10 z 10)
-====================
+# <a name="advanced-entity-framework-scenarios-for-an-mvc-web-application-10-of-10"></a>Scénáře pro pokročilé Entity Framework pro webové aplikace MVC (10 z 10)
+
 podle [Petr Dykstra](https://github.com/tdykstra)
 
 [Stáhnout dokončený projekt](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
@@ -316,7 +316,8 @@ Jeden příčinou tohoto problému je chyby ověřování při `Seed` metoda spu
 
 Chybová zpráva:
 
-*Chyba protokolu HTTP 500.19 – vnitřní chyba serveru požadovanou stránku nelze získat přístup, protože související konfigurační data pro stránky je neplatná.*
+*Chyba protokolu HTTP 500.19 – vnitřní chyba serveru  
+Požadované stránce nelze přistoupit, protože související konfigurační data pro stránky je neplatná.*
 
 Řešení:
 

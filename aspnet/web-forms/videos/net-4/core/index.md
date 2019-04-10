@@ -8,15 +8,15 @@ ms.date: 11/14/2011
 ms.assetid: 257686f7-7e10-4c4b-a2e9-299f93c0f917
 msc.legacyurl: /web-forms/videos/net-4/core
 msc.type: chapter
-ms.openlocfilehash: fc80120bcc292cd8fd97e28f245994f081b600fc
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 51ce42b2335dc3bd1ee4928b94efed77498fdfe1
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796268"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59388605"
 ---
-<a name="core"></a>Jádro
-====================
+# <a name="core"></a>Jádro
+
 > Tato série videí se věnuje vylepšení jádra v technologii ASP.NET 4, jako je automatické spuštění, čisté konfigurační soubory a kódování HTML.
 
 

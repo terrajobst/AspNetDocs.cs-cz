@@ -8,15 +8,15 @@ ms.date: 02/10/2010
 ms.assetid: d601c540-f86b-4feb-890c-20c806b3da6c
 msc.legacyurl: /whitepapers/aspnet4/breaking-changes
 msc.type: content
-ms.openlocfilehash: 112483abdd920649fb530959a538b1d5ed6064d7
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a6ae18529afc4df799d95d8b7a98f9bc5add9485
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077458"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59385537"
 ---
-<a name="aspnet-4-breaking-changes"></a>ASP.NET 4 – nejnovější změny
-====================
+# <a name="aspnet-4-breaking-changes"></a>ASP.NET 4 – nejnovější změny
+
 > Tento dokument popisuje změny, které se provedly pro verzi rozhraní .NET Framework 4. Tato verze může potenciálně ovlivnit aplikace, které byly vytvořeny pomocí dřívějších verzích, včetně verzí technologie ASP.NET 4 Beta 1 a beta verze 2.
 > 
 > [Stáhněte si tento dokument White Paper](https://download.microsoft.com/download/7/1/A/71A105A9-89D6-4201-9CC5-AD6A3B7E2F22/ASP_NET_4_Breaking_Changes.pdf)

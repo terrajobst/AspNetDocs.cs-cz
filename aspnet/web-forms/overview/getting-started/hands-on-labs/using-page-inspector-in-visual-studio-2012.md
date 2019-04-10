@@ -8,15 +8,15 @@ ms.date: 02/18/2013
 ms.assetid: 73232292-a5fe-4720-82a1-8f6553effd1f
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/using-page-inspector-in-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: ce654eb5abd54613987f2375cc973febc9dc2ad5
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d85fab0aeec86013761fc07ada1789b7719b24d9
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071224"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59396554"
 ---
-<a name="using-page-inspector-in-visual-studio-2012"></a>Použití Page Inspectoru v sadě Visual Studio 2012
-====================
+# <a name="using-page-inspector-in-visual-studio-2012"></a>Použití Page Inspectoru v sadě Visual Studio 2012
+
 podle [Campy Web týmu](https://twitter.com/webcamps)
 
 > Ve tohoto praktického testovacího prostředí bude zjišťovat nového nástroje můžete najít a opravit chyby webové stránky v sadě Visual Studio – Page Inspector.
@@ -59,7 +59,7 @@ Musíte mít následující položky k dokončení tohoto testovacího prostřed
 - [Microsoft Visual Studio Express 2012 pro Web](https://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) nebo i vyšší (čtení [příloha A](#AppendixA) pokyny k jeho instalaci).
 - Internet Explorer 9 nebo vyšší
 
-* * *
+---
 
 <a id="Exercises"></a>
 
@@ -106,7 +106,7 @@ V této úloze se dozvíte, jak používat nástroj Page Inspector v rámci proj
     *Vyberte soubor, který chcete zobrazit náhled v nástroje Page Inspector*
 3. V okně nástroje Page Inspector se zobrazí */Home/Index* adresa URL namapováno na zdroj zobrazení, které jste vybrali.
 
-    ![ThefirstcontactwithPageInspector](using-page-inspector-in-visual-studio-2012/_static/image2.png)
+    ![Prvním kontaktu s PageInspector](using-page-inspector-in-visual-studio-2012/_static/image2.png)
 
     *Prvním kontaktu s nástrojem Page Inspector*
 
@@ -130,7 +130,7 @@ V této úloze se dozvíte, jak používat nástroj Page Inspector v rámci proj
     *Přepínací tlačítko režim kontroly*
 6. V prohlížeči nástroj Page Inspector přesuňte ukazatel myši nad prvky stránky. Když přesunete ukazatel myši nad libovolné části na vykreslené stránce, zobrazí se typ elementu a odpovídající zdrojový kód nebo kód je zvýrazněn v editoru sady Visual Studio.
 
-    ![Inspectionmodeinaction](using-page-inspector-in-visual-studio-2012/_static/image5.png)
+    ![Režim kontroly v akci](using-page-inspector-in-visual-studio-2012/_static/image5.png)
 
     *Režim kontroly v akci*
 
@@ -139,7 +139,7 @@ V této úloze se dozvíte, jak používat nástroj Page Inspector v rámci proj
 
     Pokud se věnovat pozornost **Index.cshtml** souboru, všimnete si, že je zvýrazněn část zdrojového kódu, který generuje vybraný prvek. Tato funkce usnadňuje úpravy dlouhé zdrojových souborů s přímým přístupem a rychlý způsob, jak přistupovat ke kódu.
 
-    ![Inspectingelements](using-page-inspector-in-visual-studio-2012/_static/image6.png)
+    ![Kontrola elementy](using-page-inspector-in-visual-studio-2012/_static/image6.png)
 
     *Kontrola elementy*
 7. Klikněte na tlačítko **přepnout režim kontroly** tlačítko (![vyberte kartu HTML k zobrazení kódu HTML, vykreslení v prohlížeči nástroj Page Inspector.](using-page-inspector-in-visual-studio-2012/_static/image7.png "Vyberte kartu HTML k zobrazení kódu HTML, vykreslení v prohlížeči nástroj Page Inspector.") ) Chcete-li zakázat kurzor.
@@ -156,7 +156,7 @@ V této úloze se dozvíte, jak používat nástroj Page Inspector v rámci proj
     > [!NOTE]
     > Záhlaví je součástí rozložení lokality, nástroj Page Inspector se také otevřít \_Layout.cshtml Souborová služba a zvýraznění vliv na segment kódu.
 
-    ![Discoveringstyles](using-page-inspector-in-visual-studio-2012/_static/image9.png)
+    ![Zjišťování styly](using-page-inspector-in-visual-studio-2012/_static/image9.png)
 
     *Zjišťování – styly a zdrojové soubory vybraný element*
 11. Přepnout kontrolu ukazatel povolena přesuňte ukazatel myši níže na modrém panelu vybrané a klikněte na polovinu kruh.
@@ -180,7 +180,7 @@ V této úloze se dozvíte, jak používat nástroj Page Inspector v rámci proj
     *Změna hodnot šablon stylů CSS v nástroje Page Inspector*
 15. Klikněte na tlačítko **styly trasování** kartě nachází v pravém podokně nástroje Page Inspector. Toto je alternativní způsob zobrazíte všechny styly použité k výběru, seřazené podle názvu atributu.
 
-    ![CSSstylestracing](using-page-inspector-in-visual-studio-2012/_static/image13.png)
+    ![CSS styly trasování](using-page-inspector-in-visual-studio-2012/_static/image13.png)
 
     *CSS styly trasování vybraného prvku*
 16. Jiné funkce nástroje Page Inspector je panelu rozložení. Pomocí režimu kontroly, vyberte na navigačním panelu a klikněte **rozložení** kartu v pravém podokně. Zobrazí se přesnou velikost vybraného prvku a jeho velikost odsazení, marže, odsazení a ohraničení. Všimněte si, že můžete také změnit hodnoty z tohoto zobrazení.
@@ -218,7 +218,7 @@ V této úloze budete používat nástroj Page inspector a opravit některé pro
 2. Přepnout režim kontroly vybrali klepněte na tlačítko Zavřít, ale ne, zaregistrujte odkaz k otevření jeho kód.
 
     Všimněte si, že se nachází zdrojový kód z odkazů v  **\_LoginPartial.cshtml** souboru, ne Index.cshtml ani \_Layout.cshtml, které jsou místa, podívejte se na prvním místě. Mít umístěný přímo v souboru správný zdroj.
-3. V **styly** kartu, vyhledejte a klikněte **<section> #login</section>** položky, což je kontejner ve formátu HTML pro tyto odkazy.
+3. V **styly** kartu, vyhledejte a klikněte  **\<části > #login** položky, což je kontejner ve formátu HTML pro tyto odkazy.
 
     Všimněte si, že **#login** styl automaticky nachází v **Site.css** po klepnutí na tlačítko. Kromě toho se teď zvýrazní kód.
 
@@ -261,12 +261,12 @@ V této úloze budete používat nástroj Page inspector a opravit některé pro
 
     *Přiřazení nový nadpis*
 
-    ![PhotoGallerypage](using-page-inspector-in-visual-studio-2012/_static/image23.png)
+    ![Stránku galerie fotografií](using-page-inspector-in-visual-studio-2012/_static/image23.png)
 
     *Aktualizovat stránku galerie fotografií*
 11. Nakonec vyberte **Fotogalerie** projektu a stiskněte klávesu **F5** ke spuštění aplikace. Přečtěte si všechno, co se změny fungovat podle očekávání.
 
-* * *
+---
 
 <a id="Exercise2"></a>
 
@@ -347,7 +347,7 @@ V této úloze se dozvíte, jak používat funkce Page Inspector v kontextu, kte
     > [!NOTE]
     > záhlaví je součástí rozložení webu, nástroj Page Inspector také otevřete soubor Site.Master a zvýraznit segmentu kódu vliv.
 
-    ![DiscoveringstylesWebForms](using-page-inspector-in-visual-studio-2012/_static/image32.png "zjišťování – styly a zdrojové soubory vybraný element")
+    ![Zjišťování stylů webových formulářů](using-page-inspector-in-visual-studio-2012/_static/image32.png "zjišťování – styly a zdrojové soubory vybraný element")
 
     *Zjišťování – styly a zdrojové soubory vybraný element*
 11. Přepnout kontrolu ukazatel povolena přesuňte ukazatel myši níže nabídek a klikněte na prázdnou půlkruh.
@@ -421,7 +421,7 @@ V této úloze použijete nástroj Page inspector pro řešení některých prob
     Nástroj Page Inspector zohledňuje různých souborů, které tvoří aktuální stránku a může zjistit, když se změní některý z těchto souborů. Upozorní vás, když aktuální stránku v prohlížeči se nesynchronizuje se zdrojovými soubory.
 5. V prohlížeči nástroj Page Inspector klikněte na panel nacházel pod panelu Adresa a uložte změny a znovu načíst stránku.
 
-    ![Reloadingthepage](using-page-inspector-in-visual-studio-2012/_static/image40.png)
+    ![Znovu načíst tuto stránku](using-page-inspector-in-visual-studio-2012/_static/image40.png)
 
     *Znovu načíst tuto stránku*
 
@@ -457,7 +457,7 @@ V této úloze použijete nástroj Page inspector pro řešení některých prob
     *Aktualizovat stránku galerie fotografií*
 11. Nakonec stiskněte **F5** ke spuštění aplikace, prohlédněte si všechny změny fungovat podle očekávání.
 
-* * *
+---
 
 <a id="Summary"></a>
 

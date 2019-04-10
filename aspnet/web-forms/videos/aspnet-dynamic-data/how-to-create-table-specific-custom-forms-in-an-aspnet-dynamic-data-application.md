@@ -8,15 +8,15 @@ ms.date: 12/11/2008
 ms.assetid: 14d3a727-8a1a-4950-8e8f-ce97f5b2ec1f
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application
 msc.type: video
-ms.openlocfilehash: cc6fa8e4305bec7a31c61b2191b158f16667a7a1
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0bb47794fc9173c2313596eaeb1984b5d848cdee
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075727"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59391127"
 ---
-<a name="how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application"></a>Vytvoření vlastních formulářů pro určitou tabulku v aplikaci ASP.NET s dynamickými dat
-====================
+# <a name="how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application"></a>Vytvoření vlastních formulářů pro určitou tabulku v aplikaci ASP.NET s dynamickými dat
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 Potřebujeme někdy odchylují od výchozí uživatelské rozhraní v naší aplikaci ASP.NET Dynamická Data. V tomto videu uvidíme, jak jsme to můžete udělat, a jak můžete vypnout automatické generování sloupců a vytvořit webový formulář, který se zobrazí pouze data, která jsme konkrétně vybere.

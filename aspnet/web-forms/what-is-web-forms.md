@@ -8,15 +8,15 @@ ms.date: 02/21/2014
 ms.assetid: 5fa1daf9-1161-4cfa-bd4c-658f48b2c229
 msc.legacyurl: /web-forms/what-is-web-forms
 msc.type: content
-ms.openlocfilehash: e135cfa2945b9e7e5269eb436ff0c1dff20aacdf
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: cb7a4ff9dbf746c0729129445042e53e506df5d2
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070357"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59385732"
 ---
-<a name="what-is-web-forms"></a>Novinky webových formulářů
-====================
+# <a name="what-is-web-forms"></a>Novinky webových formulářů
+
 Webové formuláře ASP.NET je součástí architektury webové aplikace ASP.NET a je součástí [sady Visual Studio](https://www.asp.net/downloads). Představuje jednu ze čtyř programovacích modelů, které lze použít k vytvoření webové aplikace ASP.NET, ostatní jsou jednostránkové aplikace ASP.NET, ASP.NET MVC a ASP.NET Web Pages.
 
 Webové formuláře jsou stránky, které vaši uživatelé požadavku ve svém prohlížeči. Tyto stránky může být napsán pomocí kombinace HTML, klientského skriptu, serverových ovládacích prvků a serverovým kódem. Pokud uživatelé požadují stránku, je kompilován a spuštěn na serveru v rámci rozhraní a pak rozhraní framework generuje kód HTML, který může mít za následek prohlížeče. Na stránce technologie ASP.NET webové formuláře uvádí informace pro uživatele v libovolném prohlížeči nebo klientské zařízení.

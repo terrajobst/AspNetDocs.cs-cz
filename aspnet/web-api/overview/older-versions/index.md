@@ -1,23 +1,24 @@
 ---
 uid: web-api/overview/older-versions/index
-title: Dokumentaci ke starším verzím rozhraní webového rozhraní API | Dokumentace Microsoftu
+title: Dokumentaci ke starším verzím rozhraní Web API – ASP.NET 4.x
 author: rick-anderson
-description: Dokumentaci ke starším verzím rozhraní Web API.
+description: Dokumentaci ke starším verzím rozhraní webového rozhraní API pro ASP.NET 4.x.
 ms.author: riande
 ms.date: 10/23/2014
+ms.custom: seoapril2019
 ms.assetid: f5bc7426-27c6-492c-914f-b9d2eb49753d
 msc.legacyurl: /web-api/overview/older-versions
 msc.type: chapter
-ms.openlocfilehash: ac59f28d61cf2dceb030ee782069679ee7e1fab0
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 1e5fecca826a74fd8ff60ecd415f39c4f51917a2
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57795787"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59391354"
 ---
-<a name="documentation-on-older-versions-of-web-api"></a>Dokumentaci ke starším verzím rozhraní Web API
-====================
-> Dokumentaci ke starším verzím rozhraní Web API.
+# <a name="documentation-on-older-versions-of-web-api"></a>Dokumentaci ke starším verzím rozhraní Web API
+
+> Dokumentaci ke starším verzím rozhraní webového rozhraní API pro ASP.NET 4.x.
 
 
 - [Povolení operací CRUD ve webovém rozhraní API 1](creating-a-web-api-that-supports-crud-operations.md)

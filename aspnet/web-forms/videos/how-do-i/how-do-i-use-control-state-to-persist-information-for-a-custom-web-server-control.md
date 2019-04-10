@@ -8,15 +8,15 @@ ms.date: 12/17/2007
 ms.assetid: 3004c934-0563-41ac-ad80-fef985e9e5b4
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-control-state-to-persist-information-for-a-custom-web-server-control
 msc.type: video
-ms.openlocfilehash: 76abeda343c2c1bff8ad3efb96d93bc084750962
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5411f6d15b6ae4d4ee7557c4fff0158d97574330
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068917"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59385199"
 ---
-<a name="how-do-i-use-control-state-to-persist-information-for-a-custom-web-server-control"></a>[Postup:] Použití stavu ovládacího prvku k uchovávání informací pro ovládací prvek vlastního webového serveru
-====================
+# <a name="how-do-i-use-control-state-to-persist-information-for-a-custom-web-server-control"></a>[Postup:] Použití stavu ovládacího prvku k uchovávání informací pro ovládací prvek vlastního webového serveru
+
 podle [Chris pixelů na](https://twitter.com/chrispels)
 
 V tomto videu zobrazí Chris pixelů na tom, jak ukládat informace týkající se ovládací prvek vlastního webového serveru v stav ovládacího prvku, který je nezávislý na informace o stav zobrazení ovládacího prvku. Na rozdíl od vlastnosti ViewState stav ovládacího prvku nelze vypnout a proto je spolehlivější způsob, jak ukládat důležité informace pro ovládací prvek. Diskuzi o jaké typy informací jsou vhodné k uložení stavu ovládacích prvků je rovněž obsažena.

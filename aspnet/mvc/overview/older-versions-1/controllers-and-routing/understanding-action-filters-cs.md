@@ -8,15 +8,15 @@ ms.date: 10/16/2008
 ms.assetid: a94e4e81-40c1-47b7-8613-126a1a6cc93d
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6c7706d8252d5a0271f1b9243fa8eb282f722654
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8264b48388ee4a6b51515aa2b897ece3b2f3972a
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076387"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59380870"
 ---
-<a name="understanding-action-filters-c"></a>Principy filtrů akcí (C#)
-====================
+# <a name="understanding-action-filters-c"></a>Principy filtrů akcí (C#)
+
 by [Microsoft](https://github.com/microsoft)
 
 [Stáhnout PDF](http://download.microsoft.com/download/e/f/3/ef3f2ff6-7424-48f7-bdaa-180ef64c3490/ASPNET_MVC_Tutorial_14_CS.pdf)
@@ -49,7 +49,7 @@ Například kontroler dat v informacích 1 zpřístupňuje akci s názvem `Index
 Pokud opakovaně vyvoláte `Index()` akce zadáním adresy URL/Data/Index do adresního řádku prohlížeče a při aktualizaci tlačítko více než jednou, zobrazí se stejnou dobu 10 sekund. Výstup `Index()` akce se uloží do mezipaměti po dobu 10 sekund (viz obrázek 1).
 
 
-[![Čas v mezipaměti](understanding-action-filters-cs/_static/image2.png)](understanding-action-filters-cs/_static/image1.png)
+[![Cached time](understanding-action-filters-cs/_static/image2.png)](understanding-action-filters-cs/_static/image1.png)
 
 **Obrázek 01**: V mezipaměti Doba ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-action-filters-cs/_static/image3.png))
 
@@ -107,7 +107,7 @@ Aby bylo možné ukazují, jak se dají vytvářet filtr vlastních akcí, vytvo
 V informacích 2 `OnActionExecuting()`, `OnActionExecuted()`, `OnResultExecuting()`, a `OnResultExecuted()` volání metody `Log()` metody. Název metody a aktuální data trasy, která je předána `Log()` metody. `Log()` Metoda zapíše zprávu do okna výstup Visual Studia (viz obrázek 2).
 
 
-[![Zápis v okně Výstup Visual Studia](understanding-action-filters-cs/_static/image5.png)](understanding-action-filters-cs/_static/image4.png)
+[![Writing v okně Výstup Visual Studia](understanding-action-filters-cs/_static/image5.png)](understanding-action-filters-cs/_static/image4.png)
 
 **Obrázek 02**: Zápis v okně Výstup Visual Studia ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-action-filters-cs/_static/image6.png))
 

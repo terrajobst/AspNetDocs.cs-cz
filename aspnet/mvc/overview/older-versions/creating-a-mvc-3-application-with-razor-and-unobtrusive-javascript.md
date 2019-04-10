@@ -8,15 +8,15 @@ ms.date: 11/01/2010
 ms.assetid: 658b149b-d770-46bf-8b4b-4e47cca242f3
 msc.legacyurl: /mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript
 msc.type: authoredcontent
-ms.openlocfilehash: f60ca3e76fda8a18da1ad83e955e5e4759f5e3af
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 91c96cc413e63ad2fc160ffbb473c4f3e1ada3e4
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074599"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59401059"
 ---
-<a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>Vytvoření aplikace MVC 3 se syntaxí Razor a nerušivým JavaScriptem
-====================
+# <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>Vytvoření aplikace MVC 3 se syntaxí Razor a nerušivým JavaScriptem
+
 by [Microsoft](https://github.com/microsoft)
 
 > Seznam uživatelů ukázkovou webovou aplikaci ukazuje, jak snadné je vytvoření aplikace ASP.NET MVC 3 pomocí zobrazovací modul Razor. Ukázková aplikace ukazuje, jak nový zobrazovací modul Razor s architekturou ASP.NET MVC verze 3 a Visual Studio 2010 použít k vytvoření fiktivní web seznamu uživatelů, který obsahuje funkce, jako je vytváření, zobrazení, úpravy a odstraňování uživatelů.
@@ -36,7 +36,7 @@ Můžete si stáhnout dokončený projekt jazyka Visual Basic a C# [tady](https:
 
 Chcete-li zahájit kurz, otevřete Visual Studio 2010 a vytvořte nový projekt pomocí *webové aplikace ASP.NET MVC 3* šablony. Pojmenujte aplikaci &quot;Mvc3Razor&quot;.
 
-[![Nový projekt MVC 3](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image3.png)](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image2.png)
+[![NNový projekt MVC 3](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image3.png)](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image2.png)
 
 V **nového projektu ASP.NET MVC 3** dialogového okna, vyberte **internetovou aplikaci**vyberte zobrazovací modul Razor a potom klikněte na tlačítko **OK**.
 

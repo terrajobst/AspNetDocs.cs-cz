@@ -8,15 +8,15 @@ ms.date: 11/14/2011
 ms.assetid: 68968b8a-4f60-449e-8639-978fc40aed70
 msc.legacyurl: /mvc/videos/mvc-2
 msc.type: chapter
-ms.openlocfilehash: 438b87c3ebcd53e460741a53e00e6d227237fb58
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: aa713d30ad09152155e0834d40d5d757b1fecf78
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796729"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59386018"
 ---
-<a name="aspnet-mvc-2"></a>ASP.NET MVC 2
-====================
+# <a name="aspnet-mvc-2"></a>ASP.NET MVC 2
+
 > ASP.NET MVC 2
 
 
@@ -49,16 +49,16 @@ ms.locfileid: "57796729"
     - [MVC2 – přizpůsobení šablony](how-do-i/mvc2-template-customization.md)
     - [ASP.NET MVC 2 – oblasti](how-do-i/aspnet-mvc-2-areas.md)
     - [ASP.NET MVC 2 – akce vykreslení](how-do-i/aspnet-mvc-2-render-action.md)
-    - [5minutový úvod do ASP.NET MVC](how-do-i/5-minute-introduction-to-aspnet-mvc.md)
+    - [Pětiminutový úvod do ASP.NET MVC](how-do-i/5-minute-introduction-to-aspnet-mvc.md)
     - [Jak se nejlépe naučit ASP.NET MVC](how-do-i/how-to-best-learn-asp-net-mvc.md)
 - [ASP.NET MVC pro nás ostatní](aspnet-mvc-for-the-rest-of-us/index.md)
 
     - [ASP.NET MVC pro nás ostatní: Část 1](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-1.md)
     - [ASP.NET MVC pro nás ostatní: Část 2](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-2.md)
-    - [ASP.NET MVC pro nás ostatní: 3. část](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-3.md)
-    - [ASP.NET MVC pro nás ostatní: 4. část](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-4.md)
+    - [ASP.NET MVC pro nás ostatní: Část 3](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-3.md)
+    - [ASP.NET MVC pro nás ostatní: Část 4](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-4.md)
 - [Aplikace Music Store](music-store/index.md)
 
     - [Aplikace MVC Music Store 1. část: Úvod, nástroje a struktura projektu](music-store/mvc-music-store-part-1-intro-tools-and-project-structure.md)
     - [Aplikace MVC Music Store 2. část: Kontrolery](music-store/mvc-music-store-part-2-controllers.md)
-    - [Aplikace MVC Music Store 3. část: Zobrazení a modely ViewModels](music-store/mvc-music-store-part-3-views-and-viewmodels.md)
+    - [Aplikace MVC Music Store 3. část: Zobrazení a modely ViewModel](music-store/mvc-music-store-part-3-views-and-viewmodels.md)

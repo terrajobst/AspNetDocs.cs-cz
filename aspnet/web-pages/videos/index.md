@@ -8,15 +8,15 @@ ms.date: 05/18/2012
 ms.assetid: febf2824-4e3d-4dc6-84c5-f99777ec6144
 msc.legacyurl: /web-pages/videos
 msc.type: book
-ms.openlocfilehash: 8ad0a510ea62848b7a429c0bd4fa781b50c2ce53
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 86b90a21f59ee0ad52a3e6f7db19d4714282105c
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796203"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59401137"
 ---
-<a name="videos"></a>Videa
-====================
+# <a name="videos"></a>Videa
+
 
 > [!NOTE] 
 > Služba WebMatrix už nedoporučuje jako integrované vývojové prostředí pro ASP.NET Web Pages. Použití [sady Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).
@@ -24,7 +24,7 @@ ms.locfileid: "57796203"
 - [Úvod](introduction/index.md)
 
     - [Pětiminutový úvod do webových stránek ASP.NET](introduction/5-minute-introduction-to-aspnet-web-pages.md)
-    - [Instalace použití nástroje Microsoft WebMatrix](introduction/install-and-use-the-microsoft-webmatrix-tool.md)
+    - [Instalace a použití nástroje Microsoft WebMatrix](introduction/install-and-use-the-microsoft-webmatrix-tool.md)
     - [Vytvoření webu v nástroji WebMatrix](introduction/create-a-website-using-webmatrix.md)
     - [Změna vizuálního stylu webové stránky](introduction/change-the-visual-style-of-a-web-page.md)
     - [Použití funkcí rozložení nástroje WebMatrix](introduction/use-the-layout-features-in-webmatrix.md)

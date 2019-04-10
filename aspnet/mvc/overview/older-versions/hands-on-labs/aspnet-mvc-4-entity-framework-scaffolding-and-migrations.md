@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 093c1362-f10b-407c-a708-be370f4b62b0
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 649f83d54bfdb3367d9cea056a53a614f982adec
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: ca47f6fe6d55153354d38fcf1ba5e844215279b2
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58422958"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59389034"
 ---
 # <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>ASP.NET MVC 4 – generování uživatelského rozhraní a migrace sady Entity Framework
 
@@ -58,7 +58,7 @@ Pro usnadnění práce velkou část kódu, které budete spravovat podél tohot
 
 Pokud nejste obeznámeni s fragmenty kódu Visual Studio a chcete další informace o jejich použití, najdete dodatku z tohoto dokumentu &quot; [příloha B: Používání fragmentů kódu](#AppendixB)&quot;.
 
-* * *
+---
 
 <a id="Exercises"></a>
 
@@ -260,7 +260,7 @@ V této úloze budete aktualizovat databázi pomocí migrace rozhraní Entity Fr
 
     ![Křestní jméno edition](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image21.png "edition křestní jméno")
 
-* * *
+---
 
 <a id="Summary"></a>
 

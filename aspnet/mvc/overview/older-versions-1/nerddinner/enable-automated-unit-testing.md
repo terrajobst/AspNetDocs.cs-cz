@@ -8,15 +8,15 @@ ms.date: 07/27/2010
 ms.assetid: a19ff2ce-3f7e-4358-9a51-a1403da9c63e
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
 msc.type: authoredcontent
-ms.openlocfilehash: 74abf391bb4aab3ff0d5079e0a24ba20287e18fb
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b0c9cd7ab36a8414e0d7d50a68b05bb09a5f24f1
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073486"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59387903"
 ---
-<a name="enable-automated-unit-testing"></a>Povolení automatického testování jednotek
-====================
+# <a name="enable-automated-unit-testing"></a>Povolení automatického testování jednotek
+
 by [Microsoft](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
@@ -98,7 +98,7 @@ Pojďme umístění naše kurzoru v rámci třídy DinnerTest a typ "Ctrl R, T" 
 
 *Poznámka: Ve výchozím nastavení nezobrazuje v okně Výsledky testu VS sloupec název třídy. To můžete přidat kliknutím pravým tlačítkem v okně Výsledky testu a pomocí příkazu nabídky Přidat nebo odebrat sloupce.*
 
-Naše dva testy trvaly jenom zlomek sekundy ke spuštění – a jako vy můžete viz oba předán. Teď můžeme přejít a rozšířit tak, že vytvoříte další testy, které ověřte ověření příslušné pravidlo, jakož i pokrývají dvě metody helper - IsUserHost() a IsUserRegisterd() –, který jsme přidali do třídy Dinner. Tyto testy s místem pro třídy Dinner filtrovacího řetězce se mnohem jednodušší a bezpečnější přidat nová obchodní pravidla a ověření k němu v budoucnu. Můžeme přidat naše nové logice pravidla Dinner a během několika sekund ověřte, že ji ještě fungovat některé naše předchozí funkce logic.
+Naše dva testy trvaly jenom zlomek sekundy ke spuštění – a jako vy můžete viz oba předán. Teď můžeme přejít a rozšířit tak, že vytvoříte další testy, které ověřte ověření příslušné pravidlo, jakož i pokrývají dvě metody helper - IsUserHost() a IsUserRegistered() –, který jsme přidali do třídy Dinner. Tyto testy s místem pro třídy Dinner filtrovacího řetězce se mnohem jednodušší a bezpečnější přidat nová obchodní pravidla a ověření k němu v budoucnu. Můžeme přidat naše nové logice pravidla Dinner a během několika sekund ověřte, že ji ještě fungovat některé naše předchozí funkce logic.
 
 Všimněte si, jak pomocí testu popisný název usnadňuje rychle pochopit, co je ověření každého testu. Můžu jenom doporučit pomocí **nástroje -&gt;možnosti** příkaz nabídky, otevřete na testovací nástroje -&gt;konfigurační obrazovce pro spuštění testu a kontrola, zda "dvakrát kliknout výsledky testů jednotek neúspěšné nebo počet neprůkazných: Zobrazí zaškrtávací políčko bodu selhání při testu rozhraní". To vám umožní klikněte dvakrát na chybu v okně Výsledky testu a okamžitý přechod na selhání kontrolní výraz.
 
@@ -211,7 +211,7 @@ Nejlepší na tom budou trvat jenom zlomek sekundy ke spuštění a nevyžadují
 
 | **Téma na straně: Rozhraní injektáž závislostí** |
 | --- |
-| Provádí vkládání závislostí ruční (podobně jako jsme výše) funguje správně, ale budou obtížnější spravovat jako Počet závislostí a zvyšuje komponenty v aplikaci. Několik architektur injektáž závislostí existovat pro .NET, která poskytuje ještě větší flexibilita díky správy závislostí. Tyto architektury, také někdy označuje jako "inverzi z" (Inversion) – kontejnery ovládacích prvků, poskytují mechanismy, které umožňují další úroveň podporu konfigurace pro zadávání a předávání objektů za běhu (nejčastěji pomocí konstruktoru injektáž závislostí ). Některé další oblíbené injektáž závislostí OSS / include IOC rozhraní v rozhraní .NET: AutoFac Ninject, Spring.NET, StructureMap a Windsor. ASP.NET MVC poskytuje rozhraní API, který vývojářům umožňuje účastnit rozlišení a vytváření instancí kontrolerů a který umožňuje injektáž závislostí pro rozšíření / rozhraní IoC čistě integraci v rámci tohoto procesu. Pomocí rozhraní DI/IOC by také nám umožňují odebrání naše DinnersController – které by úplně odebrat párování mezi ním a DinnerRepositorys výchozí konstruktor. Nebudeme používat injektáž závislostí / framework IOC s naší aplikace NerdDinner. Ale to je něco, co jsme zvažte v budoucnosti Pokud zvětšoval NerdDinner základ kódu a možnosti. |
+| Provádí vkládání závislostí ruční (podobně jako jsme výše) funguje správně, ale budou obtížnější spravovat jako Počet závislostí a zvyšuje komponenty v aplikaci. Několik architektur injektáž závislostí existovat pro .NET, která poskytuje ještě větší flexibilita díky správy závislostí. Tyto architektury, také někdy označuje jako "inverzi z" (Inversion) – kontejnery ovládacích prvků, poskytují mechanismy, které umožňují další úroveň podporu konfigurace pro zadávání a předávání objektů za běhu (nejčastěji pomocí konstruktoru injektáž závislostí ). Některé další oblíbené injektáž závislostí OSS / include IOC rozhraní v rozhraní .NET: AutoFac Ninject, Spring.NET, StructureMap a Windsor. ASP.NET MVC poskytuje rozhraní API, který vývojářům umožňuje účastnit rozlišení a vytváření instancí kontrolerů a který umožňuje injektáž závislostí pro rozšíření / rozhraní IoC čistě integraci v rámci tohoto procesu. Pomocí rozhraní DI/IOC by také nám umožňují odebrání naše DinnersController – které by úplně odebrat párování mezi ním a DinnerRepository výchozí konstruktor. Nebudeme používat injektáž závislostí / framework IOC s naší aplikace NerdDinner. Ale to je něco, co jsme zvažte v budoucnosti Pokud zvětšoval NerdDinner základ kódu a možnosti. |
 
 ### <a name="creating-edit-action-unit-tests"></a>Vytváření testů jednotek akce úpravy
 

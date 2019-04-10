@@ -8,15 +8,15 @@ ms.date: 05/28/2015
 ms.assetid: 81ed82bf-b940-44f1-b94a-555d0cb7cc98
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 msc.type: authoredcontent
-ms.openlocfilehash: 28385ac2244ab0bfb38ee5fcbc64e6e11804612b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f88f7a31551abda029bee0ec16aa35ce2ef5d2f0
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067078"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59385953"
 ---
-<a name="introducing-aspnet-web-pages---html-form-basics"></a>Úvod do ASP.NET Web Pages – základy formulářů HTML
-====================
+# <a name="introducing-aspnet-web-pages---html-form-basics"></a>Úvod do ASP.NET Web Pages – základy formulářů HTML
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > V tomto kurzu se dozvíte základní informace o tom, jak vytvořit vstupní formulář a způsob zpracování vstupu uživatele při použití webových stránek ASP.NET (Razor). A teď, když máte databázi, budete používat svoje dovednosti formuláře, umožníte uživatelům najít konkrétní videa v databázi. Předpokládá, že jste dokončili řady prostřednictvím [Úvod k zobrazení dat pomocí rozhraní ASP.NET Web Pages](/aspnet/web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data).

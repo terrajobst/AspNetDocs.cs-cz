@@ -8,15 +8,15 @@ ms.date: 03/14/2008
 ms.assetid: c1a35f18-bab9-41f7-8497-15530c37a09d
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-localization
 msc.type: authoredcontent
-ms.openlocfilehash: 86cbf150708f1db711b40ccbc25345afeb3e542a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 11e70493478d6810d63ba6b3ac813e32f03052eb
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068044"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59381325"
 ---
-<a name="understanding-aspnet-ajax-localization"></a>Principy lokalizace pomocí technologie ASP.NET AJAX
-====================
+# <a name="understanding-aspnet-ajax-localization"></a>Principy lokalizace pomocí technologie ASP.NET AJAX
+
 podle [– Scott Cate](https://github.com/scottcate)
 
 [Stáhnout PDF](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial04_Localization_cs.pdf)
@@ -32,13 +32,13 @@ Tento dokument White Paper zkoumá součástí Microsoft AJAX Framework a Micros
 
 Tento dokument White Paper je založen na verzi beta verzi 2 sady Microsoft Visual Studio 2008. Tento dokument White Paper také předpokládá, že můžete pracovat s Visual Studio 2008, nikoli Visual Web Developer Express a poskytne návody podle uživatelského rozhraní sady Visual Studio. Šablony projektů, které mohou být k dispozici v aplikaci Visual Web Developer Express bude využívat několik ukázek kódu.
 
-## <a name="the-need-for-localization"></a>*Třeba pro lokalizaci*
+## *<a name="the-need-for-localization"></a>Třeba pro lokalizaci*
 
 Zejména pro vývojářům aplikací pro podniky a vývojáře komponent přestal stále nezbytné schopnost vytvářet nástroje, které mohou být zohledňovat rozdíly mezi jazykové verze a jazyky. Navrhování součásti s možností pro přizpůsobení na národní prostředí klienta zvyšuje produktivitu vývojářů a snižuje množství práce potřebné pro přizpůsobení součásti fungovat globálně.
 
 Lokalizace je proces návrhu a integrace podporu pro konkrétní jazyk a jazykovou verzi do aplikace nebo součásti aplikace. Platformě Microsoft ASP.NET poskytuje rozsáhlou podporu pro lokalizaci pro standardní aplikace ASP.NET integrací standardní .NET – model lokalizace; Microsoft AJAX Framework využívat integrované modelu mají podporovat nejrůznější scénáře, ve kterých lze provést lokalizace. S Microsoft AJAX Framework může být skripty lokalizována nasazované do satelitních sestavení, nebo s využitím strukturu systému statický soubor.
 
-## <a name="embedding-scripts-with-satellite-assemblies"></a>*Vkládání skripty s satelitní sestavení*
+## *<a name="embedding-scripts-with-satellite-assemblies"></a>Vkládání skripty s satelitní sestavení*
 
 Konzistentní s standardní strategií lokalizace rozhraní .NET Framework, prostředky mohou být součástí satelitních sestavení. Satelitní sestavení poskytuje několik výhod přes tradiční prostředků zařazení do binárních souborů – je možné aktualizovat jakékoli dané lokalizace bez aktualizace větší obrázek, je možné nasadit další lokalizace jednoduše tak, že instalace do satelitních sestavení složky projektu a satelitní sestavení je možné nasadit bez způsobení opakované načtení projektu hlavní sestavení. Zejména v projektech ASP.NET to je užitečné, protože může výrazně snížit množství systémové prostředky využívané třídou přírůstkové aktualizace a minimálně naruší produkční účely v webu.
 
@@ -118,7 +118,7 @@ Pro ty obeznámeni se syntaxí využívající regulární výrazy jazyka JavaSc
 
 Všimněte si, že existuje několik variant v tomto návodu. Například skripty nelze zaregistrovat pomocí ovládacího prvku ScriptManager prostřednictvím kódu programu během načítání stránky.
 
-## <a name="including-a-static-script-file-structure"></a>*Včetně struktura souborů statického skriptu*
+## *<a name="including-a-static-script-file-structure"></a>Včetně struktura souborů statického skriptu*
 
 Při používání statické soubory skriptů pro nasazení, ztratí se některé z výhod používání vlastní schéma lokalizace .NET. Je primárně zobrazen přijít o automatické typu generované včetně souborů skriptu prostředků; ve výše uvedeného návodu například prostředky byly vystavené automaticky generovaný typ, který volá zprávy z ovládacího prvku ScriptManager.
 
@@ -128,7 +128,7 @@ Společnost Microsoft doporučuje, jak se vyhnout problém ovládacího prvku ve
 
 Protože nejsou k dispozici prostředky deklarativně zahrnout, statické soubory by měly být skriptu odkazovat buď přidáním `<asp:ScriptElement>` prvky jako podřízený objekt `<Scripts>` značky ovládacího prvku ScriptManager nebo prostřednictvím kódu programu přidáním `ScriptReference` objekty Chcete `Scripts` vlastnost `ScriptManager` ovládacího prvku na stránku za běhu.
 
-## <a name="the-scriptmanager-and-its-role-in-localization"></a>*Prvek ScriptManager a jejich rolí v lokalizace*
+## *<a name="the-scriptmanager-and-its-role-in-localization"></a>Prvek ScriptManager a jejich rolí v lokalizace*
 
 Prvek ScriptManager umožňuje různé automatické chování v případě lokalizovaných aplikací:
 
@@ -146,7 +146,7 @@ Růstem webové aplikace oslovit větší cílové skupiny, nemusí být schopn�
 
 Rozhraní .NET Framework podporuje vnitřně bohaté lokalizace architektura využívající satelitní sestavení a souborů XML prostředky (RESX) zobrazíte jednotným způsobem k vyhledání prostředků řetězců a obrázků. Rozšíření ASP.NET AJAX, včetně Microsoft AJAX Framework a Microsoft AJAX Library skriptu, podporují tento programovací model do kódu na straně klienta, povolení vyhledávání snadno prostředků řetězce. Satelitní sestavení podporují automatické zahrnutí skript prostředků (soubory skutečné js) prostřednictvím ScriptResource.axd tak dlouho, dokud názvy souborů, postupujte podle dané schéma pojmenování. Díky této podpoře rozšíření ASP.NET AJAX zjednodušit lokalizace skripty a globalizace aplikace.
 
-## <a name="bio"></a>*Bio*
+## *<a name="bio"></a>Bio*
 
 Scott Cate má práce s Microsoft webových technologiích od roku 1997 a je prezident myKB.com ([www.myKB.com](http://www.myKB.com)) kde mu se specializuje na technologie ASP.NET psaní aplikací, zaměřuje na znalostní báze softwarová řešení založených na. Scott můžete kontaktovat prostřednictvím e-mailové adrese [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) nebo na svém blogu [ScottCate.com](http://ScottCate.com)
 

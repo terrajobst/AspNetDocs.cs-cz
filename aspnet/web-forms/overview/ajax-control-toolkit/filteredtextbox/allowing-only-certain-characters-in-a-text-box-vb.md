@@ -8,15 +8,15 @@ ms.date: 06/02/2008
 ms.assetid: 33af23f1-4016-4740-8fb2-37d1773452cd
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-vb
 msc.type: authoredcontent
-ms.openlocfilehash: aec5a3af98cf40e460f4164fb8950e8029002937
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 455d62d97808862f70692c46ae223f47270266f9
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067177"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59387617"
 ---
-<a name="allowing-only-certain-characters-in-a-text-box-vb"></a>Povolení určitých znaků v textovém poli (VB)
-====================
+# <a name="allowing-only-certain-characters-in-a-text-box-vb"></a>Povolení určitých znaků v textovém poli (VB)
+
 by [Christian Wenz](https://github.com/wenz)
 
 [Stáhněte si kód](http://download.microsoft.com/download/4/c/2/4c2def7a-0d23-4055-91f9-1f18504167d7/FilteredTextBox0.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/filteredtextbox0VB.pdf)
@@ -56,7 +56,7 @@ Tady je zápis `FilteredTextBoxExtender` ovládací prvek, který umožňuje pou
 Spustit na stránku a zkuste zadat písmeno, pokud je povolen jazyk JavaScript, nebude fungovat; na stránce se ale zobrazí číslic. Všimněte si však, že ochranu `FilteredTextBox` poskytuje není odrážky testování: Pokud je povolen jazyk JavaScript, žádná data můžete zadat do textového pole, proto je nutné použít další ověřovací prostředky, například ASP. Ovládací prvky ověřování vaší sítě.
 
 
-[![Můžete zadat pouze číslice](allowing-only-certain-characters-in-a-text-box-vb/_static/image2.png)](allowing-only-certain-characters-in-a-text-box-vb/_static/image1.png)
+[![Omůžete zadat jen pro číslic](allowing-only-certain-characters-in-a-text-box-vb/_static/image2.png)](allowing-only-certain-characters-in-a-text-box-vb/_static/image1.png)
 
 Můžete zadat pouze číslice ([kliknutím ji zobrazíte obrázek v plné velikosti](allowing-only-certain-characters-in-a-text-box-vb/_static/image3.png))
 

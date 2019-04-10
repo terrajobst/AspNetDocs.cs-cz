@@ -8,15 +8,15 @@ ms.date: 04/23/2009
 ms.assetid: 0177dabd-d888-449f-91b2-24190cf5e842
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e2560ae7a845c27f7fa5f420eaf1d89618397c60
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: fa05645db9d43a836cc75b399153dd2e2c288f7c
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075682"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59388755"
 ---
-<a name="configuring-the-production-web-application-to-use-the-production-database-c"></a>Konfigurace provozní webové aplikace pro použití produkční databáze (C#)
-====================
+# <a name="configuring-the-production-web-application-to-use-the-production-database-c"></a>Konfigurace provozní webové aplikace pro použití produkční databáze (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/E/6/F/E6FE3A1F-EE3A-4119-989A-33D1A9F6F6DD/ASPNET_Hosting_Tutorial_08_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/C/3/9/C391A649-B357-4A7B-BAA4-48C96871FEA6/aspnet_tutorial08_DBConfig_cs.pdf)
@@ -53,7 +53,7 @@ Připojovací řetězec databáze můžete vytvořit ručně pomocí web [Connec
 Otevřít Visual Studio a přejděte do okna Průzkumník serveru (v aplikaci Visual Web Developer, toto okno se nazývá Průzkumník databáze). Klikněte pravým tlačítkem na možnost datová připojení a zvolte možnost Přidat připojení z místní nabídky. Tím se zobrazí Průvodce na obrázku 1. Vyberte příslušný zdroj dat a klikněte na pokračovat.
 
 
-[![Zvolte možnost pro přidání nové databáze do Průzkumníka serveru](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image2.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image1.jpg) 
+[![CZvolte, chcete-li přidat novou databázi do Průzkumníka serveru](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image2.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image1.jpg) 
 
 **Obrázek 1**: Zvolte možnost pro přidání nové databáze do Průzkumníka serveru ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image3.jpg))
 
@@ -61,7 +61,7 @@ Otevřít Visual Studio a přejděte do okna Průzkumník serveru (v aplikaci Vi
 Dále určete různé informace o připojení k databázi (viz obrázek 2). Pokud jste zaregistrovali pomocí webového hostování společnosti, které by měl mít poskytl informace o tom, jak připojit k databázi – název databázového serveru, název databáze, uživatelské jméno a heslo pro připojení k databázi a tak dále. Po zadání těchto informací klikněte na tlačítko OK, chcete-li dokončit tohoto průvodce a přidejte databáze do Průzkumníka serveru.
 
 
-[![Zadejte informace o připojení k databázi](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image5.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image4.jpg) 
+[![SZadejte informace o připojení databáze](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image5.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image4.jpg) 
 
 **Obrázek 2**: Zadejte informace o připojení k databázi ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image6.jpg))
 
@@ -91,7 +91,7 @@ Pokud máte více formalizovanou pracovní postup nasazení, buď ručně změni
 Po nasazení webu do produkčního prostředí, přejděte na web produkční prostřednictvím prohlížeče. By měl zobrazit a využívat stejné prostředí pro uživatele jako při místním spuštění aplikace řízené daty. Samozřejmě při návštěvě webu na produkční lokality využívá k tomu provozní server databáze, zatímco navštívit web ve vývojovém prostředí používá databázi ve vývoji. Obrázek 3 ukazuje *naučit sami technologie ASP.NET 3.5 za 24 hodin* zkontrolovat stránku na webu v produkčním prostředí (Poznámka: adresu URL v adresním řádku prohlížeče s).
 
 
-[![Data-Driven aplikace je nyní k dispozici v produkčním prostředí.](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image8.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image7.jpg) 
+[![Tdata-Driven aplikace je nyní k dispozici v produkčním prostředí!](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image8.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image7.jpg) 
 
 **Obrázek 3**: Data-Driven aplikace je nyní k dispozici v produkčním prostředí. ([Kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image9.jpg))
 

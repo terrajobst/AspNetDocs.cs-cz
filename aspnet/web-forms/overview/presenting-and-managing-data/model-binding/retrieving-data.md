@@ -8,26 +8,26 @@ ms.date: 02/27/2014
 ms.assetid: 9f24fb82-c7ac-48da-b8e2-51b3da17e365
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
 msc.type: authoredcontent
-ms.openlocfilehash: c53c27f4852eab9813bd917315111e7cd3b04953
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 29baaf2917e47ac46a78a252721be725b4e9b58f
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075640"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59398472"
 ---
-<a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a>Načtení a zobrazení dat ovládacím prvkem vazby modelu a webové formuláře
-====================
+# <a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a>Načtení a zobrazení dat ovládacím prvkem vazby modelu a webové formuláře
+
 
 > V této sérii kurzů ukazuje základní aspekty v použití vazby modelu s projektem aplikace webových formulářů ASP.NET. Vazby modelu díky dat interakce více přímočaré než pracující s daty objektů zdroje (například ObjectDataSource nebo SqlDataSource). Tato série začíná úvodní materiály a přesune pokročilejších pojmech v budoucích kurzech.
 > 
->  Vzoru vazby modelu funguje s technologií přístupu všechny data. V tomto kurzu budete používat Entity Framework, ale můžete použít technologii přístup data, která je nejvíc známými. Z ovládacího prvku serveru vázané na data, jako je například ovládacího prvku GridView, ListView, DetailsView nebo FormView zadáte názvy metod používaných pro výběr, aktualizace, odstraňování a vytváření data. V tomto kurzu můžete zadat hodnotu pro metody SelectMethod. 
+> Vzoru vazby modelu funguje s technologií přístupu všechny data. V tomto kurzu budete používat Entity Framework, ale můžete použít technologii přístup data, která je nejvíc známými. Z ovládacího prvku serveru vázané na data, jako je například ovládacího prvku GridView, ListView, DetailsView nebo FormView zadáte názvy metod používaných pro výběr, aktualizace, odstraňování a vytváření data. V tomto kurzu můžete zadat hodnotu pro metody SelectMethod. 
 > 
 > V rámci této metody pro načítání dat zadáte logiku. V dalším kurzu nastavíte hodnoty pro UpdateMethod a DeleteMethod InsertMethod.
 >
 > Je možné [Stáhnout](https://go.microsoft.com/fwlink/?LinkId=286116) dokončený projekt v C# nebo Visual Basic. Ke stažení kódu funguje pomocí sady Visual Studio 2012 a novější. Používá šablonu Visual Studio 2012, která se trochu liší od sady Visual Studio 2017 šablonu uvedenou v tomto kurzu.
 > 
 > V tomto kurzu spustíte aplikaci v sadě Visual Studio. Můžete také nasadit aplikaci do poskytovatele hostitelských služeb a zpřístupnit přes internet. Společnost Microsoft nabízí bezplatné webových hostitelských služeb pro až 10 webových serverů ve  
->  [Bezplatný zkušební účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A443DD604). Informace o tom, jak nasadit webový projekt sady Visual Studio do Azure App Service Web Apps, najdete v článku [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md) řady. Tento kurz také ukazuje způsob použití migrace Entity Framework Code First pro nasazení databáze SQL serveru do služby Azure SQL Database.
+> [Bezplatný zkušební účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A443DD604). Informace o tom, jak nasadit webový projekt sady Visual Studio do Azure App Service Web Apps, najdete v článku [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md) řady. Tento kurz také ukazuje způsob použití migrace Entity Framework Code First pro nasazení databáze SQL serveru do služby Azure SQL Database.
 > 
 > ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
 > 

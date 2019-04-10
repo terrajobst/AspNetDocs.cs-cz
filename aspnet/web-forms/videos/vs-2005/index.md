@@ -8,15 +8,15 @@ ms.date: 10/05/2011
 ms.assetid: 1bcf9a1c-ed34-4ed0-ab91-253df08fc6ff
 msc.legacyurl: /web-forms/videos/vs-2005
 msc.type: chapter
-ms.openlocfilehash: 0085424743ad2592dd06c58adba801bd676f2c0f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 25d9cc02ef9b0e8f068c9e84469d9661b06f0b28
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796144"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59381104"
 ---
-<a name="visual-studio-2005"></a>Visual Studio 2005
-====================
+# <a name="visual-studio-2005"></a>Visual Studio 2005
+
 > Jak pracovat s Visual Studio 2005 Team System a doplňky provést testování, nasazení a další úlohy.
 
 
@@ -38,7 +38,7 @@ ms.locfileid: "57796144"
 - [Zátěžový test webové aplikace](how-do-i-load-test-a-web-application.md)
 - [Ladění výkonu webové aplikace její profilací](how-do-i-tune-web-application-performance-with-profiling.md)
 - [Nastavení distribuovaného zátěžového testování u velkoobjemových testů](how-do-i-set-up-distributed-load-testing-for-high-volume-tests.md)
-- [Použití analýzy kódu k vynucení programovacích standardů](how-do-i-enforce-coding-standards-with-code-analysis.md)
+- [Použití analýzy kódu k vynucení standardů kódování](how-do-i-enforce-coding-standards-with-code-analysis.md)
 - [Použití obecných testů](how-do-i-use-generic-tests.md)
 - [Publikování a analýza výsledků testů](how-do-i-publish-and-analyze-test-results.md)
 - [Zjištění změn aplikace před jejím nasazením](how-do-i-discover-application-changes-prior-to-deployment.md)
@@ -46,6 +46,6 @@ ms.locfileid: "57796144"
 - [Automatické testování pomocí týmového sestavení](how-do-i-automate-testing-using-team-build.md)
 - [Nasazení webové aplikace během týmového sestavení](how-do-i-deploy-a-web-application-during-a-team-build.md)
 - [Spuštění testů jednotek v nasazené databázi](how-do-i-run-unit-tests-against-a-deployed-database.md)
-- [Povolení pokrytí kódu a profilace v provozních aplikacích](how-do-i-enable-code-coverage-and-profiling-in-production-applications.md)
+- [Povolení pokrytí kódu a profilace v produkčním aplikacích](how-do-i-enable-code-coverage-and-profiling-in-production-applications.md)
 - [Projekty nasazení webu](web-deployment-projects.md)
 - [Projekty webových aplikací a projekty nasazení webu](web-application-projects-web-deployment-projects.md)

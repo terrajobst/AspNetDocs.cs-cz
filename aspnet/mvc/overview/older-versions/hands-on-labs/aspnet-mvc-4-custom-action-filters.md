@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 969ab824-1b98-4552-81fe-b60ef5fc6887
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-custom-action-filters
 msc.type: authoredcontent
-ms.openlocfilehash: 4c8628cc289610e287c0a3bc3c8a4c7a833c9fde
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 32587c7b0fd3075cd46678922b40bda2019f3a26
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423413"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59381130"
 ---
 # <a name="aspnet-mvc-4-custom-action-filters"></a>ASP.NET MVC 4 – filtr vlastních akcí
 
@@ -59,7 +59,7 @@ Pro usnadnění práce velkou část kódu, které budete spravovat podél tohot
 
 Pokud nejste obeznámeni s fragmenty kódu Visual Studio a chcete další informace o jejich použití, najdete dodatku z tohoto dokumentu &quot; [příloha C: Používání fragmentů kódu](#AppendixC)&quot;.
 
-* * *
+---
 
 <a id="Exercises"></a>
 
@@ -234,7 +234,7 @@ Další informace o pořadí spuštění filtrů vlastní akce, najdete v člán
 <a id="Ex2Task1"></a>
 
 <a id="Task_1_Creating_a_new_Custom_Action_Filter"></a>
-#### <a name="task-1-creating-a-new-custom-action-filter"></a>Úloha 1: Vytváří se nový filtr vlastních akcí
+#### <a name="task-1-creating-a-new-custom-action-filter"></a>Úkol 1: Vytváří se nový filtr vlastních akcí
 
 V této úloze vytvoříte nový filtr vlastních akcí vložit do třídy StoreController učit, jak spravovat pořadí spuštění filtrů.
 
@@ -266,7 +266,7 @@ V této úloze vytvoříte nový filtr vlastních akcí vložit do třídy Store
 <a id="Ex2Task2"></a>
 
 <a id="Task_2_Injecting_a_new_Code_Interceptor_into_the_StoreController_Class"></a>
-#### <a name="task-2-injecting-a-new-code-interceptor-into-the-storecontroller-class"></a>Úloha 2: Do třídy StoreController vkládá nový sběrač kódu
+#### <a name="task-2-injecting-a-new-code-interceptor-into-the-storecontroller-class"></a>Úkol 2: Do třídy StoreController vkládá nový sběrač kódu
 
 V této úloze se přidat nový vlastní filtr do třídy StoreController a spuštění řešení k ověření, jak oba filtry spolupracují.
 
@@ -290,7 +290,7 @@ V této úloze se přidat nový vlastní filtr do třídy StoreController a spu�
 <a id="Ex2Task3"></a>
 
 <a id="Task_3_Managing_Filter_Ordering"></a>
-#### <a name="task-3-managing-filter-ordering"></a>Úloha 3: Správa pořadí filtru
+#### <a name="task-3-managing-filter-ordering"></a>Úkol 3: Správa pořadí filtru
 
 V této úloze se dozvíte, jak spravovat pořadí spuštění filtrů se pomocí vlastnosti pořadí.
 
@@ -354,7 +354,7 @@ V této úloze budete aktualizovat řešení k registraci nového filtru (**MyNe
 > Kromě toho můžete nasadit tuto aplikaci následující weby Windows Azure [příloha B: Publikování aplikace ASP.NET MVC 4 pomocí nasazení webu](#AppendixB).
 
 
-* * *
+---
 
 <a id="Summary"></a>
 

@@ -8,15 +8,15 @@ ms.date: 03/28/2008
 ms.assetid: 54d9df99-1161-4899-b4e8-2679c85915e7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-partial-page-updates-with-asp-net-ajax
 msc.type: authoredcontent
-ms.openlocfilehash: 4883046aa16d5e67b7f0c92e15c897ef1a933b67
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d2d7982a4e0175824ffede965dc8206219485df2
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073339"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59396470"
 ---
-<a name="understanding-partial-page-updates-with-aspnet-ajax"></a>Principy částečných aktualizací stránek technologií ASP.NET AJAX
-====================
+# <a name="understanding-partial-page-updates-with-aspnet-ajax"></a>Principy částečných aktualizací stránek technologií ASP.NET AJAX
+
 podle [– Scott Cate](https://github.com/scottcate)
 
 [Stáhnout PDF](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial01_Partial_Page_Updates_cs.pdf)
@@ -111,7 +111,7 @@ Visual Studio 2008 zřejmě není součástí předem definované šablony pro w
 
 Povolené značky vlastnosti:
 
-| **Název vlastnosti** | **Typ** | **Popis** |
+| **Název vlastnosti** | **Type** | **Popis** |
 | --- | --- | --- |
 | AllowCustomErrors-Redirect | Bool | Určuje, jestli chcete používat vlastní chybová část souboru web.config pro zpracování chyb. |
 | AsyncPostBackError-Message | String | Získá nebo nastaví chybovou zprávu odeslat klientovi, pokud dojde k chybě. |
@@ -124,7 +124,7 @@ Povolené značky vlastnosti:
 
 Vlastnosti pouze pro kód:
 
-| **Název vlastnosti** | **Typ** | **Popis** |
+| **Název vlastnosti** | **Type** | **Popis** |
 | --- | --- | --- |
 | AuthenticationService | AuthenticationService-Manager | Načte podrobnosti o proxy služby ověřování ASP.NET, které se pošlou do klienta. |
 | IsDebuggingEnabled | Bool | Získá, zda skript a ladění kódu je povolena. |
@@ -136,7 +136,7 @@ Vlastnosti pouze pro kód:
 
 Veřejné kód metody:
 
-| **Název metody** | **Typ** | **Popis** |
+| **Název metody** | **Type** | **Popis** |
 | --- | --- | --- |
 | SetFocus(string) | Typ void | Nastaví zaměření pro klienta pro konkrétní ovládací prvek při dokončení požadavku. |
 
@@ -185,7 +185,7 @@ Ovládací prvek ScriptManager poskytuje rozsáhlou podporu pro lokalizaci řet�
 
 Povolené značky vlastnosti:
 
-| **Název vlastnosti** | **Typ** | **Popis** |
+| **Název vlastnosti** | **Type** | **Popis** |
 | --- | --- | --- |
 | ChildrenAsTriggers | bool | Určuje, zda podřízené ovládací prvky automaticky vyvolávají aktualizace zpětného odeslání. |
 | RenderMode | výčet (blok, vložené) | Určuje, že vizuálně zobrazí tak, jak obsah. |
@@ -193,7 +193,7 @@ Povolené značky vlastnosti:
 
 Vlastnosti pouze pro kód:
 
-| **Název vlastnosti** | **Typ** | **Popis** |
+| **Název vlastnosti** | **Type** | **Popis** |
 | --- | --- | --- |
 | IsInPartialRendering | bool | Zjistí, zda prvku UpdatePanel podporuje částečného zobrazení pro aktuální požadavek. |
 | ContentTemplate | ITemplate | Získá šablonu kód pro požadavek na aktualizaci. |
@@ -202,7 +202,7 @@ Vlastnosti pouze pro kód:
 
 Veřejné kód metody:
 
-| **Název metody** | **Typ** | **Popis** |
+| **Název metody** | **Type** | **Popis** |
 | --- | --- | --- |
 | Update() | Typ void | Aktualizuje Zadaný prvek UpdatePanel prostřednictvím kódu programu. Umožňuje serveru požadavek na aktivaci částečné vykreslení jinak untriggered UpdatePanel. |
 
@@ -280,7 +280,7 @@ Nakonec pokud aplikace vyžaduje, aby se používají komponenty UpdatePanel, po
 
 Povolené značky vlastnosti:
 
-| **Název vlastnosti** | **Typ** | **Popis** |
+| **Název vlastnosti** | **Type** | **Popis** |
 | --- | --- | --- |
 | AssociatedUpdate-PanelID | String | Určuje ID ovládacího prvku UpdatePanel, který by měl vykazovat tento prvek UpdateProgress. |
 | Hodnotou DisplayAfter | Int | Určuje časový limit v milisekundách před zobrazením tohoto ovládacího prvku po zahájení Asynchronní požadavek. |

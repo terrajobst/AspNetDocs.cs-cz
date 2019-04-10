@@ -8,15 +8,15 @@ ms.date: 08/19/2008
 ms.assetid: b0cf4a34-2c1d-4717-bb54-ff029e722990
 msc.legacyurl: /mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-cs
 msc.type: authoredcontent
-ms.openlocfilehash: aa7d00c0f54212d495f48929ed2a453942a1ed7d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0ca34f670202a35c627a514d3394fa430f5d8f26
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070537"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59396340"
 ---
-<a name="using-aspnet-mvc-with-different-versions-of-iis-c"></a>Použití ASP.NET MVC s různými verzemi služby IIS (C#)
-====================
+# <a name="using-aspnet-mvc-with-different-versions-of-iis-c"></a>Použití ASP.NET MVC s různými verzemi služby IIS (C#)
+
 by [Microsoft](https://github.com/microsoft)
 
 > V tomto kurzu se dozvíte, jak používat rozhraní ASP.NET MVC a směrování adres URL s různými verzemi služby IIS. Zjistíte, různé strategie pro ASP.NET MVC pomocí služby IIS 7.0 (v klasickém režimu), služby IIS 6.0 a starších verzích služby IIS.
@@ -53,7 +53,7 @@ Fond aplikací je určeno režim zpracování požadavků. Můžete určit, kter
 
 Ve výchozím nastavení je služba IIS konfigurována pro podporu dvou fondů aplikací: **DefaultAppPool** a **Classic .NET AppPool**. Pokud je vybrána DefaultAppPool, vaše aplikace běží v režimu zpracování integrované žádosti. Pokud je vybrána Classic .NET AppPool, aplikace běží v režimu zpracování classic žádosti.
 
-[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image1.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image1.png)
+[![TDialogové okno Nový projekt he](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image1.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image1.png)
 
 **Obrázek 1**: Zjišťování režim zpracování požadavků ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image2.png))
 
@@ -78,7 +78,7 @@ Podíváme na jednotlivé možnosti podrobně v následující části.
 
 Nejjednodušší způsob, jak získat směrování ASP.NET pro práci se staršími verzemi služby IIS je upravit vaše směrovací tabulku v souboru Global.asax. Výchozí nastavení a verzí bez úprav souboru Global.asax ve výpisu 1 nakonfiguruje jednu trasu s názvem výchozí trasu.
 
-**Listing 1 - Global.asax (unmodified)**
+**Výpis 1 - Global.asax (bez jakýchkoli úprav)**
 
 [!code-csharp[Main](using-asp-net-mvc-with-different-versions-of-iis-cs/samples/sample1.cs)]
 
@@ -92,7 +92,7 @@ Výchozí trasy nakonfigurované v informacích 1 umožňuje směrování adres 
 
 Starší verze služby IIS bohužel nebudou předávat tyto žádosti na rozhraní ASP.NET. Proto nebude získat tyto požadavky směrovány do kontroleru. Například pokud vytvoříte žádost prohlížeče na adresu URL/Home/Index pak získáte chybovou stránku na obrázku 2.
 
-[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image2.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image3.png)
+[![TDialogové okno Nový projekt he](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image2.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image3.png)
 
 **Obrázek 2**: Chyba 404 nebyl nalezen ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image4.png))
 
@@ -162,7 +162,7 @@ Zde je, jak povolit mapu skriptů se zástupnými znaky pro službu IIS 7.0:
 6. Zadejte název MVC
 7. Klikněte na tlačítko **OK** tlačítko
 
-[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image3.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image5.png)
+[![TDialogové okno Nový projekt he](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image3.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image5.png)
 
 **Obrázek 3**: Vytváření mapy skriptů se zástupnými znaky se službou IIS 7.0 ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image6.png))
 
@@ -177,13 +177,13 @@ Postupujte podle těchto kroků můžete vytvořit mapu skriptů se zástupnými
 7. Zrušte zaškrtnutí políčka popisek **věřit existenci souboru**
 8. Klikněte na tlačítko **OK** tlačítko
 
-[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image4.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image7.png)
+[![TDialogové okno Nový projekt he](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image4.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image7.png)
 
 **Obrázek 4**: Vytváření mapy skriptů se zástupnými znaky se službou IIS 6.0 ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image8.png))
 
 Po povolení mapy skriptů se zástupnými znaky, budete muset upravit směrovací tabulky v souboru Global.asax tak, že obsahují kořenový trasy. Vytvořit žádost o kořenové stránky aplikace zobrazí, jinak se chybové stránky na obrázku 5. Můžete použít upravený soubor Global.asax výpis 4.
 
-[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image5.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image9.png)
+[![TDialogové okno Nový projekt he](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image5.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image9.png)
 
 **Obrázek 5**: Chybí kořenový trasy chyby ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image10.png))
 

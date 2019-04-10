@@ -8,21 +8,21 @@ ms.date: 11/14/2011
 ms.assetid: c993c38f-ffcc-412c-a8bb-09569a4cba23
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup
 msc.type: chapter
-ms.openlocfilehash: 4e5e77b6d1ddba1b04e8f53d9a529551ec370015
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 61f4273d19dfbe0e3a10156f5a510d2ceea2745f
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796249"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59403724"
 ---
-<a name="popup"></a>Překryvný
-====================
+# <a name="popup"></a>Překryvný
+
 > Tento kurz ukazuje, jak pomocí ovládacího prvku Popup má zobrazit automaticky otevíraného okna, když se aktivuje jiný ovládací prvek.
 
 
 - [Použití několika překryvných ovládacích prvků (C#)](using-multiple-popup-controls-cs.md)
-- [Zpracování postbacků extenderu PopupControl ovládacím prvkem UpdatePanel (C#)](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
-- [Zpracování postbacků extenderu PopupControl bez ovládacího prvku UpdatePanel (C#)](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md)
+- [Zpracování postbacků ovládacího prvku PopupControl ovládacím prvkem UpdatePanel (C#)](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
+- [Zpracování postbacků ovládacího prvku PopupControl bez ovládacího prvku UpdatePanel (C#)](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md)
 - [Použití několika překryvných ovládacích prvků (VB)](using-multiple-popup-controls-vb.md)
-- [Zpracování postbacků extenderu PopupControl ovládacím prvkem UpdatePanel (VB)](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb.md)
-- [Zpracování postbacků extenderu PopupControl bez ovládacího prvku UpdatePanel (VB)](handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)
+- [Zpracování postbacků ovládacího prvku PopupControl ovládacím prvkem UpdatePanel (VB)](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb.md)
+- [Zpracování postbacků ovládacího prvku PopupControl bez ovládacího prvku UpdatePanel (VB)](handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)

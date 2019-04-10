@@ -8,15 +8,15 @@ ms.date: 08/14/2010
 ms.assetid: a3a90963-0286-4fa0-9b3d-c230cc18b0a3
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
 msc.type: authoredcontent
-ms.openlocfilehash: 546c3e0a24ecd0d916c79e9ad12f62b926c760c5
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f648e0cb53dd410105adc22401f19a5a15f9e8c1
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072199"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59380805"
 ---
-<a name="adding-a-create-method-and-create-view"></a>Přidání metody Create a zobrazení Create
-====================
+# <a name="adding-a-create-method-and-create-view"></a>Přidání metody Create a zobrazení Create
+
 podle [Scott Hanselman](https://github.com/shanselman)
 
 > Toto je kurz pro začátečníky, který vysvětluje základy ASP.NET MVC. Vytvoříte jednoduchou webovou aplikaci, která čte a zapisuje z databáze. Přejděte [výukové centrum pro ASP.NET MVC](../../../index.md) najít další technologie ASP.NET MVC, kurzů a ukázek.
@@ -38,7 +38,7 @@ Pojďme teď implementovat šablony vytvořit zobrazení, který použijeme k zo
 
 Vybereme, které jsme se, že přejdete na zobrazení šabloně předat "Video" jako jeho třída zobrazení dat a označuje, že chceme "generování uživatelského rozhraní" "Vytvořit" šablonu.
 
-[![Přidání zobrazení](getting-started-with-mvc-part6/_static/image2.png)](getting-started-with-mvc-part6/_static/image1.png)
+[![Add zobrazení](getting-started-with-mvc-part6/_static/image2.png)](getting-started-with-mvc-part6/_static/image1.png)
 
 Po kliknutí na tlačítko Přidat, vytvoří se pro vás \Movies\Create.aspx zobrazit šablonu. Protože jsme vybrali "Vytváření" z rozevíracího seznamu "Zobrazit obsah", dialogové okno Přidat zobrazení automaticky "vygenerovanou" některé výchozí obsah pro nás. Vytvoří základní kostry aplikace HTML &lt;formuláře&gt;, místo, kde chyba ověření zprávy přejít, a protože generování uživatelského rozhraní ví o filmech, vytvoří pro každou vlastnost Naše třída popisek a pole.
 
@@ -48,7 +48,7 @@ Vzhledem k tomu, že naše databáze automaticky poskytuje filmu ID, Odebereme t
 
 Pojďme teď vytvořit nový film a přidejte ho do databáze. Budeme to provést spuštěním aplikaci znovu spustit a přejděte "/ filmy" adresa URL a klepnutím na odkaz Přidat nové video "Vytvořit".
 
-[![Vytvoření – Windows Internet Explorer](getting-started-with-mvc-part6/_static/image4.png)](getting-started-with-mvc-part6/_static/image3.png)
+[![Cvytvořit - Windows Internet Explorer](getting-started-with-mvc-part6/_static/image4.png)](getting-started-with-mvc-part6/_static/image3.png)
 
 Když kliknete na tlačítko vytvořit, jsme budete mít účtování zpět (přes HTTP POST) data na tomto formuláři /Movies/Create metodu, kterou jsme právě vytvořili. Stejně jako při systém automaticky trvalo "numTimes" a "name" parametr z adresy URL a mapovat na parametry pro metodu dříve bude systém automaticky trvat, než pole formuláře POST a jejich namapování na objekt. V tomto případě hodnoty z polí v HTML, jako třeba "ReleaseDate" a "Title" automaticky zařadí se do správné vlastnosti novou instanci třídy videa.
 
@@ -58,7 +58,7 @@ Podívejme se na druhý způsob vytvoření z našich MoviesController znovu. V�
 
 Toto video bylo předáno pak [HttpPost] verzi metodě akce vytvořit, a My uloženo v databázi a pak uživatel přesměrován zpět na metodu akce Index(), kde uložený výsledek se zobrazí v seznamu video:
 
-[![Seznam film – Windows Internet Explorer](getting-started-with-mvc-part6/_static/image6.png)](getting-started-with-mvc-part6/_static/image5.png)
+[![Movie seznam – Windows Internet Explorer](getting-started-with-mvc-part6/_static/image6.png)](getting-started-with-mvc-part6/_static/image5.png)
 
 Jsme nejsou kontrolu, pokud naše videa jsou správné, i když a databázi neumožní nám uložit videa s bez názvu. Bylo by dobré, pokud jsme mohli říct uživatelům, který před databáze došlo k chybě. Provedeme dále přidáním podpory ověřování pro naši aplikaci.
 

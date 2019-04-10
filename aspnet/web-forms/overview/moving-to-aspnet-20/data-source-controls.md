@@ -8,15 +8,15 @@ ms.date: 02/20/2005
 ms.assetid: 78fd0e92-f9c6-4e96-a5e9-0375b307a828
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/data-source-controls
 msc.type: authoredcontent
-ms.openlocfilehash: ba00024e93beba6eab226dd0d381d8734061e095
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 3ba9fdaaf655f6510d3ebf6ce0930fbf4000add3
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070294"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59388865"
 ---
-<a name="data-source-controls"></a>Ovládací prvky zdroje dat
-====================
+# <a name="data-source-controls"></a>Ovládací prvky zdroje dat
+
 by [Microsoft](https://github.com/microsoft)
 
 > DataGrid – ovládací prvek technologie ASP.NET 1.x označené skvělé zlepšení v přístupu k datům ve webových aplikacích. Však nebyl jako uživatelsky přívětivé, jako by byly. Stále vyžaduje značné množství kódu, který z něj získat mnoho užitečných funkcí. Například je model v všechna data access přejeme v 1.x.

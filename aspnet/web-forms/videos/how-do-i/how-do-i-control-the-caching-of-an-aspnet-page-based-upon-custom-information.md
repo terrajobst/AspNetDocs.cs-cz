@@ -8,15 +8,15 @@ ms.date: 02/19/2009
 ms.assetid: f230c316-1313-4b8f-967c-62f9684fe378
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-control-the-caching-of-an-aspnet-page-based-upon-custom-information
 msc.type: video
-ms.openlocfilehash: a9ed2baad3460441bc57d97bf74f6de5977db0c9
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 676bc8f234a6e517104d07fd58a0ff14aec73e69
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068281"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59381403"
 ---
-<a name="how-do-i-control-the-caching-of-an-aspnet-page-based-upon-custom-information"></a>[Postup:] Řízení ukládání stránky ASP.NET do mezipaměti na základě vlastních informací
-====================
+# <a name="how-do-i-control-the-caching-of-an-aspnet-page-based-upon-custom-information"></a>[Postup:] Řízení ukládání stránky ASP.NET do mezipaměti na základě vlastních informací
+
 podle [Chris pixelů na](https://twitter.com/chrispels)
 
 V toto video pixelů na Chris ukazuje, jak k řízení kritérií pro ukládání do mezipaměti na základě vlastních informací stránky ASP.NET. Vytvoří ukázkovou stránku a pak direktivy OutputCache se používá s atributem VaryByCustom, který obsahuje vlastní hodnotu. V dalším kroku je přepsána metoda GetVaryCustomByString() v souboru global.asax modul, který poskytuje zpracování vlastního atributu. V této metodě je vrácen řetězec, který jednoznačně identifikuje verzi v mezipaměti na stránce. Nakonec je diskuse o ukládání do mezipaměti pomocí vlastní hodnoty použití několika způsoby pro webový server.

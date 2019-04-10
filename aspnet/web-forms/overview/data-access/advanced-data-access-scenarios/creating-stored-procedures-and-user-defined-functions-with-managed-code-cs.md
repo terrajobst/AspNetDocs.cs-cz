@@ -8,15 +8,15 @@ ms.date: 08/03/2007
 ms.assetid: 213eea41-1ab4-4371-8b24-1a1a66c515de
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fb4a867d5868e8000fcd10130401a9e169b6f49f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a6d6dc7b45d2891d3124794bf7b10f3a7d065130
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076030"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59392440"
 ---
-<a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-c"></a>Vytvoření uložených procedur a uživatelsky definovaných funkcí spravovaným kódem (C#)
-====================
+# <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-c"></a>Vytvoření uložených procedur a uživatelsky definovaných funkcí spravovaným kódem (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_75_CS.zip) nebo [stahovat PDF](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/datatutorial75cs1.pdf)
@@ -59,7 +59,7 @@ Po připojení můžete uložit okno Průzkumníka objektů se zobrazí seznam i
 Budeme muset připojit databázi Northwind v `DataFiles` složky (nebo všude, kde jste přesunuli ji) na instanci databáze SQL Server 2005 Express Edition. Klikněte pravým tlačítkem na složku databází a zvolte možnost připojit v místní nabídce. Tím se otevře dialogové okno Připojit databáze. Klikněte na tlačítko Přidat, přejdete příslušnou `NORTHWND.MDF` souboru a klikněte na tlačítko OK. V tomto okamžiku vaše obrazovka by měla vypadat podobně jako na obrázku 2.
 
 
-[![Připojte se k instanci příslušné databáze](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image3.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image2.png)
+[![Cpřipojit k příslušné instanci databáze](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image3.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image2.png)
 
 **Obrázek 2**: Připojte se k příslušné instanci databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image4.png))
 
@@ -87,7 +87,7 @@ Vytvoření spravované uložených procedur a uživatelem definovanými funkcem
 Začněte tím, že otevření sady Visual Studio. V nabídce Soubor vyberte nový projekt pro zobrazení dialogového okna Nový projekt (viz obrázek 4). Podrobnostem a typu projektu databáze a pak ze šablon na pravé straně, zvolte Vytvořit nový projekt serveru SQL. Rozhodli pojmenujte tento projekt `ManagedDatabaseConstructs` a je umístěná v rámci řešení s názvem `Tutorial75`.
 
 
-[![Vytvořte nový projekt serveru SQL](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image7.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image6.png)
+[![CVytvořit nový projekt SQL Server](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image7.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image6.png)
 
 **Obrázek 4**: Vytvořte nový projekt serveru SQL ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image8.png))
 
@@ -136,7 +136,7 @@ Chcete-li přidat spravované uložené procedury k databázi Northwind, musíme
 Umožní s Začněte přidáním uloženou proceduru, která jednoduše vrací všechny produkty, které byly zrušeny. Pojmenujte nový soubor uloženou proceduru `GetDiscontinuedProducts.cs`.
 
 
-[![Přidat novou úložnou proceduru s názvem GetDiscontinuedProducts.cs](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image13.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image12.png)
+[![Add nové uložené procedury s názvem GetDiscontinuedProducts.cs](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image13.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image12.png)
 
 **Obrázek 8**: Přidat nové uložené procedury pojmenovanou `GetDiscontinuedProducts.cs` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image14.png))
 
@@ -173,7 +173,7 @@ Pokud chcete aktualizovat úroveň kompatibility databáze s, otevřete okno Nov
 Klikněte na ikonu spustit v panelu nástrojů můžete spustit dotaz výše.
 
 
-[![Aktualizovat úroveň kompatibility databáze Northwind s](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image16.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image15.png)
+[![Upozdrav s úrovní kompatibility databáze Northwind](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image16.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image15.png)
 
 **Obrázek 9**: Aktualizace s úrovní kompatibility databáze Northwind ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image17.png))
 
@@ -201,7 +201,7 @@ Je stále jeden další mezní musíme překonat před říkáme spravované ulo
 Zkontrolujte informace o konfiguraci databáze s Northwind, zadejte a spusťte příkaz `exec sp_configure` v okně dotazu. Ukazuje to, že modul clr povolené nastavení je aktuálně nastaven na hodnotu 0.
 
 
-[![Clr povolené nastavení je aktuálně nastavený na hodnotu 0](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image21.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image20.png)
+[![The clr povolené nastavení je aktuálně nastavený na hodnotu 0](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image21.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image20.png)
 
 **Obrázek 12**: Clr povolené nastavení je aktuálně nastavený na hodnotu 0 ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image22.png))
 
@@ -216,7 +216,7 @@ Pokud znovu spustíte `exec sp_configure` uvidíte, že výše uvedený příkaz
 S konfigurací clr povoleno dokončení, můžeme je připraveno ke spuštění spravovanou `GetDiscontinuedProducts` uložené procedury. V okně dotazu zadejte a spusťte příkaz `exec` `GetDiscontinuedProducts`. Volání uložené procedury způsobí, že odpovídající spravovaný kód v `GetDiscontinuedProducts` metodu provést. Tento kód problémy `SELECT` dotaz, který vrátí všechny produkty, které jsou ukončena a vrátí tato data do volající aplikace, která je v této instanci systému SQL Server Management Studio. Management Studio obdrží tyto výsledky a zobrazí ho v okně výsledky.
 
 
-[![Ukončené GetDiscontinuedProducts uloženou proceduru vrátí všechny produkty](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image24.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image23.png)
+[![Tmá GetDiscontinuedProducts uložené procedury vrátí všechny ukončena produkty](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image24.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image23.png)
 
 **Obrázek 13**: `GetDiscontinuedProducts` Uložené procedury vrátí všechny ukončena produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image25.png))
 
@@ -239,7 +239,7 @@ Aktualizace `GetProductsWithPriceLessThan` definici metody s tak, aby přijímal
 Po přidání tohoto kódu, znovu nasaďte projekt SQL Server. V dalším kroku vraťte se na SQL Server Management Studio a aktualizujte složku uložené procedury. Měli byste vidět nový záznam, `GetProductsWithPriceLessThan`. Z okna dotazu zadejte a spusťte příkaz `exec GetProductsWithPriceLessThan 25`, který bude seznam všech produktů, méně než 25 USD, jak ukazuje obrázek 14.
 
 
-[![Se zobrazují produkty v rámci 25 USD](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image27.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image26.png)
+[![Pjsou zobrazeny roducts pod 25 USD](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image27.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image26.png)
 
 **Obrázek 14**: Produkty v rámci 25 USD jsou zobrazeny ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image28.png))
 
@@ -257,7 +257,7 @@ Otevřít `NorthwindWithSprocs` typované datové sady v sadě Visual Studio a z
 Přidání nové metody, spustí se Průvodce konfigurací dotazu TableAdapter, který jsme použili v mnoha případech v posledních kurzy. Prvním krokem dotazem, abychom mohli určit, jak by měl TableAdapter přistupovat k databázi: pomocí příkazu SQL ad-hoc nebo přes novou nebo existující uložené procedury. Protože jsme již vytvořené a registrované `GetDiscontinuedProducts` spravované uložené procedury s databází, zvolte možnost použít existující uložené procedury možnost kliknu na další.
 
 
-[![Zvolte možnost použít existující uložené procedury možnost](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image30.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image29.png)
+[![CZvolte použít existující uložené procedury možnosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image30.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image29.png)
 
 **Obrázek 15**: Zvolte možnost použít existující uložené procedury možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image31.png))
 
@@ -265,7 +265,7 @@ Přidání nové metody, spustí se Průvodce konfigurací dotazu TableAdapter, 
 Na další obrazovce zobrazí výzvu nám pro uložené procedury, které metoda vyvolá. Zvolte `GetDiscontinuedProducts` spravované uloženou proceduru z rozevíracího seznamu kliknu na další.
 
 
-[![Vyberte GetDiscontinuedProducts spravovaný uložené procedury](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image33.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image32.png)
+[![Szvolit GetDiscontinuedProducts spravované uložená procedura](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image33.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image32.png)
 
 **Obrázek 16**: Vyberte `GetDiscontinuedProducts` spravované uložené procedury ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image34.png))
 
@@ -273,7 +273,7 @@ Na další obrazovce zobrazí výzvu nám pro uložené procedury, které metoda
 Potom jsme vyzváni k určení, jestli bude procedura vracet řádky, jedinou hodnotu nebo hodnotu nothing. Protože `GetDiscontinuedProducts` vrací sadu řádků ukončená produktu, vyberte možnost první (tabulková data) a klikněte na tlačítko Další.
 
 
-[![Vyberte možnost tabulková Data](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image36.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image35.png)
+[![Szvolit možnost tabulkových dat](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image36.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image35.png)
 
 **Obrázek 17**: Vyberte možnost tabulkových dat ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image37.png))
 
@@ -281,7 +281,7 @@ Potom jsme vyzváni k určení, jestli bude procedura vracet řádky, jedinou ho
 Na poslední obrazovce průvodce umožňuje zadat názvy výsledný metod a vzory přístupu k datům používá. Ponechejte zaškrtnuto zaškrtávací políčka a název metody `FillByDiscontinued` a `GetDiscontinuedProducts`. Kliknutím na Dokončit dokončíte průvodce.
 
 
-[![Název metody FillByDiscontinued a GetDiscontinuedProducts](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image39.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image38.png)
+[![NNázev metody FillByDiscontinued a GetDiscontinuedProducts](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image39.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image38.png)
 
 **Obrázek 18**: Název metody `FillByDiscontinued` a `GetDiscontinuedProducts` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image40.png))
 
@@ -291,7 +291,7 @@ Opakujte tyto kroky k vytvoření metody s názvem `FillByPriceLessThan` a `GetP
 Obrázek 19 ukazuje snímek obrazovky s návrháři datových sad, po přidání metody, které se `ProductsTableAdapter` pro `GetDiscontinuedProducts` a `GetProductsWithPriceLessThan` spravované uložené procedury.
 
 
-[![ProductsTableAdapter zahrnuje nové metody přidat v tomto kroku](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image42.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image41.png)
+[![Tv tomto kroku mu ProductsTableAdapter zahrnuje nové metody přidat](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image42.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image41.png)
 
 **Obrázek 19**: `ProductsTableAdapter` Zahrnuje nové metody přidat v tomto kroku ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image43.png))
 
@@ -312,12 +312,12 @@ Pomocí obchodní logiky a vrstvy přístupu k datům rozšíření zahrnují po
 Otevřít `ManagedFunctionsAndSprocs.aspx` stránku `AdvancedDAL` složky a z panelu nástrojů přetáhněte GridView do návrháře. Nastavit prvek GridView s `ID` vlastnost `DiscontinuedProducts` a z inteligentních značek, jeho vazbu na nového prvku ObjectDataSource s názvem `DiscontinuedProductsDataSource`. Konfigurace ObjectDataSource přebírat jeho data ze `ProductsBLLWithSprocs` třída s `GetDiscontinuedProducts` metody.
 
 
-[![Konfigurace ObjectDataSource pomocí třídy ProductsBLLWithSprocs](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image45.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image44.png)
+[![Configurovat ObjectDataSource pomocí třídy ProductsBLLWithSprocs](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image45.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image44.png)
 
 **Obrázek 20**: Konfigurace ObjectDataSource k použití `ProductsBLLWithSprocs` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image46.png))
 
 
-[![Vyberte z rozevíracího seznamu na kartě vyberte GetDiscontinuedProducts – metoda](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image48.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image47.png)
+[![CZvolte metodu GetDiscontinuedProducts z rozevíracího seznamu na kartě vyberte](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image48.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image47.png)
 
 **Obrázek 21**: Zvolte `GetDiscontinuedProducts` z rozevíracího seznamu na kartě vyberte metodu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image49.png))
 
@@ -334,7 +334,7 @@ Za chvíli zobrazení této stránky prostřednictvím prohlížeče. Když nav�
 Výsledky vrácené spravované uložené procedury jsou sbaleny do `ProductsDataTable` vrstvou DAL a vrátili, aby BLL, který pak vrátí tyto adresy do prezentační vrstvy, kde jsou vázána na prvku GridView a zobrazeny. Podle očekávání, mřížky uvádí seznam těchto produktů, které byly zrušeny.
 
 
-[![Jsou uvedeny produkty ukončena](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image51.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image50.png)
+[![Tjsou uvedeny produkty ukončena he](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image51.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image50.png)
 
 **Obrázek 22**: Jsou uvedeny produkty ukončena ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image52.png))
 
@@ -358,7 +358,7 @@ Po tomto UDF byl přidán do databáze, nachází se Management Studio rozbalen�
 Po přidání `udf_ComputeInventoryValue` UDF na databázi Northwind. Obrázek 23 ukazuje výstup z výše uvedených `SELECT` dotaz při prohlížení Management Studio. Všimněte si také, že je UDF uvedeny ve složce skalární hodnota funkce v Průzkumníku objektů.
 
 
-[![Uvedené jednotlivé produkty s hodnotami inventáře](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image54.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image53.png)
+[![Eje uveden ACH produktu s hodnotami inventáře](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image54.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image53.png)
 
 **Obrázek 23**: Uvedené jednotlivé produkty s inventáře hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image55.png))
 
@@ -376,7 +376,7 @@ UDF může také vrátit tabulková data. Například můžeme vytvořit UDF, kt
 Po přidání `udf_GetProductsByCategoryID` UDF na databázi Northwind. Obrázek 24 ukazuje výstup z výše uvedených `SELECT` dotaz při prohlížení Management Studio. Uživatelem definovanými funkcemi, které vrátí tabulková data nachází ve složce Průzkumník objektů s hodnotou tabulky funkcí.
 
 
-[![ProductID, ProductName a ID kategorie jsou uvedeny pro každý nápoje](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image57.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image56.png)
+[![Ton ProductID, ProductName a ID kategorie jsou uvedeny pro každý nápoje](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image57.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image56.png)
 
 **Obrázek 24**: `ProductID`, `ProductName`, A `CategoryID` jsou uvedeny pro každý nápoje ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image58.png))
 
@@ -392,7 +392,7 @@ Po přidání `udf_GetProductsByCategoryID` UDF na databázi Northwind. Obrázek
 Přidání spravovaných UDF na `ManagedDatabaseConstructs` projektu, klikněte pravým tlačítkem na název projektu v Průzkumníku řešení a zvolte Přidat novou položku. Vyberte šablonu uživatelsky definovaná z dialogového okna Přidat novou položku a pojmenujte nový soubor UDF `udf_ComputeInventoryValue_Managed.cs`.
 
 
-[![Přidat nové spravované UDF ManagedDatabaseConstructs projektu](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image60.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image59.png)
+[![Add nové spravované UDF ManagedDatabaseConstructs projekt](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image60.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image59.png)
 
 **Obrázek 25**: Přidat nové spravované UDF na `ManagedDatabaseConstructs` projektu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image61.png))
 
@@ -444,7 +444,7 @@ V [ladění uložených procedur](debugging-stored-procedures-cs.md) kurzu jsme 
 Představte si, že jsme chtěli ladění `GetProductsWithPriceLessThan` spravované uložené procedury. Začít nastavením zarážky v kódu `GetProductsWithPriceLessThan` metody.
 
 
-[![Nastavte zarážku v metodě GetProductsWithPriceLessThan](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image64.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image63.png)
+[![Set zarážku v metodě GetProductsWithPriceLessThan](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image64.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image63.png)
 
 **Obrázek 27**: Nastavit zarážku `GetProductsWithPriceLessThan` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image65.png))
 
@@ -459,7 +459,7 @@ Když `ManagedDatabaseConstructs` projekt je spustit tak, že ladicí program pr
 Po zadání jste již výše uvedeného skriptu do `Test.sql`, spustit ladění tak, že přejdete do nabídky ladění a zvolíte, spustit ladění nebo stisknutím klávesy F5 nebo zelený přehrát ikonu na panelu nástrojů. To se projekty v řešení sestavit, nasadit spravované databázové objekty k databázi Northwind a následné provádění `Test.sql` skriptu. V tomto okamžiku bude dosaženo zarážkou a jsme krokovat `GetProductsWithPriceLessThan` metoda, zkontrolujte hodnoty vstupní parametry a tak dále.
 
 
-[![Byla aktivována zarážka v metodě GetProductsWithPriceLessThan](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image67.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image66.png)
+[![TBylo dosaženo mu zarážku v metodě GetProductsWithPriceLessThan](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image67.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image66.png)
 
 **Obrázek 28**: Zarážka v `GetProductsWithPriceLessThan` bylo dosaženo – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image68.png))
 
@@ -495,7 +495,7 @@ Pokud složku obsahující `csc.exe` v není v systému s `PATH`, budete muset p
 [!code-console[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/samples/sample19.cmd)]
 
 
-[![GetProductsWithPriceGreaterThan.cs zkompilovat do sestavení](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image70.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image69.png)
+[![Compile GetProductsWithPriceGreaterThan.cs do sestavení](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image70.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image69.png)
 
 **Obrázek 29**: Kompilace `GetProductsWithPriceGreaterThan.cs` do sestavení ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image71.png))
 
@@ -511,7 +511,7 @@ Kód zkompilovat do sestavení jste připravení registrovat sestavení v rámci
 Ze sady Management Studio rozbalte složku programovatelnosti databáze Northwind. Jednou z jejích podsložkách je sestavení. Chcete-li ručně přidat nové sestavení do databáze, klikněte pravým tlačítkem na složku sestavení a nové sestavení zvolte v místní nabídce. Toto zobrazí dialogové okno nového sestavení pole (viz obrázek 30). Klikněte na tlačítko Procházet, vyberte `ManuallyCreatedDBObjects.dll` sestavení jsme právě zkompilován a potom klikněte na tlačítko OK sestavení přidejte do databáze. Neměli byste se setkat `ManuallyCreatedDBObjects.dll` sestavení v Průzkumníku objektů.
 
 
-[![Přidání sestavení ManuallyCreatedDBObjects.dll do databáze](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image73.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image72.png)
+[![Add ManuallyCreatedDBObjects.dll sestavení do databáze](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image73.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image72.png)
 
 **Obrázek 30**: Přidat `ManuallyCreatedDBObjects.dll` sestavení do databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image74.png))
 
@@ -536,7 +536,7 @@ Po spuštění výše uvedeného skriptu, aktualizujte uložené procedury slož
 Jak ukazuje obrázek 32 výše uvedený příkaz zobrazí informace o těchto produktů se `UnitPrice` větší než 24,95 $.
 
 
-[![ManuallyCreatedDBObjects.dll je uveden v Průzkumníku objektů](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image77.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image76.png)
+[![Tmá ManuallyCreatedDBObjects.dll je uveden v Průzkumníku objektů](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image77.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image76.png)
 
 **Obrázek 32**: `ManuallyCreatedDBObjects.dll` Je uveden v Průzkumníku objektů ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image78.png))
 

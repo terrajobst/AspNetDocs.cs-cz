@@ -8,15 +8,15 @@ ms.date: 11/15/2011
 ms.assetid: 3824e2d7-446f-406b-9c8b-5a1634359a78
 msc.legacyurl: ''
 msc.type: content
-ms.openlocfilehash: 3e463e0fb8e6af228480fc4795e1bd0ee5badac9
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 6d1251da10705867ad25b53afd69bb70c647fc18
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796139"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59388657"
 ---
-<a name="whitepapers"></a>Dokumenty white paper
-====================
+# <a name="whitepapers"></a>Dokumenty white paper
+
 - [Dokumenty white paper](overview.md)
 - [ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu](aspnet4/index.md)
 
@@ -28,7 +28,7 @@ ms.locfileid: "57796139"
 - [ASP.NET MVC 3](mvc3-release-notes.md)
 - [ASP.NET MVC 4](mvc4-beta-release-notes.md)
 - [Spuštění ASP.NET 1.1 se službou IIS 6.0](aspnet-and-iis6.md)
-- [Postupy: Přidání mobilních stránek do webových formulářů nebo aplikace MVC](add-mobile-pages-to-your-aspnet-web-forms-mvc-application.md)
+- [Postupy: Přidání mobilních stránek do webových formulářů ASP.NET/aplikace MVC](add-mobile-pages-to-your-aspnet-web-forms-mvc-application.md)
 - [Oprava chyby „Serverová aplikace není k dispozici“ po použití aktualizace zabezpečení pro IE](ms03-32-issue.md)
 - [ASP.NET – souběžné spuštění .NET Framework 1.0 a 1.1](side-by-side-with-10.md)
 - [ASP.NET MVC 4](mvc4-release-notes.md)

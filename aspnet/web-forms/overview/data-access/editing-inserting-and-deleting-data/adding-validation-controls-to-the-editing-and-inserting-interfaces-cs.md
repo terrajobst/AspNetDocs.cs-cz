@@ -8,15 +8,15 @@ ms.date: 07/17/2006
 ms.assetid: 2086cb1a-ab78-49ae-9c0b-03891c69776a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4990ce2c15465873ef08aeb697780d98a186b3c6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 157a71c7b8a7b5e8e34c08957d0520dfb8da8db9
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066574"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59391257"
 ---
-<a name="adding-validation-controls-to-the-editing-and-inserting-interfaces-c"></a>Přidání validačních ovládacích prvků do rozhraní pro úpravy a vložení (C#)
-====================
+# <a name="adding-validation-controls-to-the-editing-and-inserting-interfaces-c"></a>Přidání validačních ovládacích prvků do rozhraní pro úpravy a vložení (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_19_CS.exe) nebo [stahovat PDF](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/datatutorial19cs1.pdf)
@@ -39,7 +39,7 @@ V tomto kurzu uvidíme, jak snadné je přidání validačních ovládacích prv
 V [zkoumání události spojené s vložení, aktualizace a odstranění](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md) kurzu jsme vytvořili stránku, která uvedené názvy a ceny produktů v upravitelné prvku GridView. Kromě toho na stránce zahrnuté DetailsView jehož `DefaultMode` nastavenou na `Insert`, a tím vždy vykreslení v režimu vkládání. Z tohoto prvku DetailsView. může uživatel zadat název a cena nového produktu, klikněte na tlačítko Vložit a přidat ho do systému (viz obrázek 1).
 
 
-[![Předchozí příklad umožňuje uživatelům přidávat nové produkty a upravovat existující aplikace](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image2.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image1.png)
+[![Tmá předchozí příklad umožňuje uživatelům přidávat nové produkty a upravit existující](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image2.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image1.png)
 
 **Obrázek 1**: Předchozí příklad umožňuje uživatelům přidávat nové produkty a upravit existující ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image3.png))
 
@@ -57,7 +57,7 @@ Předtím, než abychom se mohli podívat na rozšíření předchozího příkl
 3. Zkopírujte text v rámci `<asp:Content>` a `</asp:Content>` značky (čáry 3 až 44), jako znázorněno na obrázku 2.
 
 
-[![Zkopírujte Text v &lt;asp: Content&gt; ovládacího prvku](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image5.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image4.png)
+[![CKopírovat Text v &lt;asp: Content&gt; ovládacího prvku](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image5.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image4.png)
 
 **Obrázek 2**: Zkopírujte Text v `<asp:Content>` ovládacího prvku ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image6.png))
 
@@ -75,7 +75,7 @@ Po přesunutí nad obsah a kód z `DataModificationEvents.aspx` k `UIValidation.
 Přidání validačních ovládacích prvků do rozhraní pro úpravy a vložení, nutné převést do vlastností TemplateField BoundFields používané ovládací prvky prvku DetailsView a ovládacího prvku GridView. K dosažení tohoto cíle, klikněte na Upravit sloupce a upravit pole odkazů v prvku GridView a ovládacího prvku DetailsView inteligentní značky, v uvedeném pořadí. Vyberte každou BoundFields a klikněte na odkaz "Převést toto pole TemplateField".
 
 
-[![Každá z ovládacího prvku DetailsView a prvku GridView BoundFields převést vlastností TemplateField](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image8.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image7.png)
+[![CPřevést každý z ovládacího prvku DetailsView a prvku GridView BoundFields do vlastností TemplateField](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image8.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image7.png)
 
 **Obrázek 3**: Převést každý z ovládacího prvku DetailsView a prvku GridView BoundFields do vlastností TemplateField ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image9.png))
 
@@ -117,7 +117,7 @@ V našem kurzu budeme muset použít RequiredFieldValidator v prvku DetailsView 
 Začněme přidáním nezbytné validačních ovládacích prvků na `EditItemTemplate` s vlastností TemplateField v prvku GridView. K tomu, klikněte na odkaz Upravit šablony z prvku GridView inteligentních značek zobrazíte rozhraní úprav šablony. Tady můžete vybrat šablonu upravit v rozevíracím seznamu. Protože chceme rozšířit rozhraní úprav, musíme přidání validačních ovládacích prvků na `ProductName` a `UnitPrice`společnosti `EditItemTemplate` s.
 
 
-[![Musíme rozšířit ProductName a EditItemTemplates UnitPrice.](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image11.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image10.png)
+[![We potřeba rozšířit ProductName a EditItemTemplates UnitPrice.](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image11.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image10.png)
 
 **Obrázek 4**: Musíme rozšířit `ProductName` a `UnitPrice`společnosti `EditItemTemplate` s ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image12.png))
 
@@ -125,7 +125,7 @@ Začněme přidáním nezbytné validačních ovládacích prvků na `EditItemTe
 V `ProductName` `EditItemTemplate`, přidejte RequiredFieldValidator jeho přetažením z panelu nástrojů do rozhraní pro úpravy šablony, umístit po textového pole.
 
 
-[![Přidat RequiredFieldValidator ProductName EditItemTemplate](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image14.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image13.png)
+[![Add RequiredFieldValidator k ProductName EditItemTemplate](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image14.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image13.png)
 
 **Obrázek 5**: Přidat RequiredFieldValidator k `ProductName` `EditItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image15.png))
 
@@ -133,7 +133,7 @@ V `ProductName` `EditItemTemplate`, přidejte RequiredFieldValidator jeho přeta
 Všechny ovládací prvky ověřování pracujte ověření vstupu jeden ovládací prvek technologie ASP.NET. Proto potřebujeme k označení, že RequiredFieldValidator jsme právě přidali, měli ověřit proti textového pole ve `EditItemTemplate`; to lze provést nastavením ovládacího prvku ověření [vlastnost ControlToValidate](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.controltovalidate(VS.80).aspx) k `ID` odpovídající webového ovládacího prvku. Textové pole má v současné době spíše nondescript `ID` z `TextBox1`, ale můžeme ho změnit na něco vhodnějšího. Klikněte na textové pole v šabloně a potom v okně Vlastnosti změňte `ID` z `TextBox1` k `EditProductName`.
 
 
-[![Změnit textovém poli ID EditProductName](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image17.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image16.png)
+[![Czměnit textové pole pro ID EditProductName](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image17.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image16.png)
 
 **Obrázek 6**: Změnit textovém poli `ID` k `EditProductName` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image18.png))
 
@@ -143,7 +143,7 @@ Dále nastavte RequiredFieldValidator `ControlToValidate` vlastnost `EditProduct
 Po nastavení tyto tři vlastnosti RequiredFieldValidator, vaše obrazovka by měla vypadat podobně jako na obrázku 7.
 
 
-[![Nastavte RequiredFieldValidator ControlToValidate, chybová zpráva a vlastnosti textu](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image20.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image19.png)
+[![Set ControlToValidate, chybová zpráva a vlastnosti Text RequiredFieldValidator](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image20.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image19.png)
 
 **Obrázek 7**: Nastavte RequiredFieldValidator `ControlToValidate`, `ErrorMessage`, a `Text` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image21.png))
 
@@ -162,7 +162,7 @@ Po provedení těchto změn, otevřete stránku v prohlížeči. Při pokusu vyn
 > Připomínáme, že v *události přidružené k vložení, aktualizace a odstranění* kurzu nastavíme Vlastnost BoundField `DataFormatString` vlastnost `{0:c}` provedu formátování jako měnu. Kromě toho jsme nastavili `ApplyFormatInEditMode` vlastnost na hodnotu true, způsobí prvku GridView uživatele úpravy rozhraní k formátování `UnitPrice` jako měnu. Při převodu Vlastnost BoundField na pole TemplateField, Visual Studio jste si poznamenali tato nastavení a textového pole ve formátu `Text` vlastnost jako měnu pomocí syntaxe databinding `<%# Bind("UnitPrice", "{0:c}") %>`.
 
 
-[![Hvězdička se zobrazí vedle textových polí s neplatný vstup](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image23.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image22.png)
+[![An hvězdičku vedle textových polí s neplatný vstup](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image23.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image22.png)
 
 **Obrázek 8**: Hvězdička se zobrazí další textová pole s neplatný vstup ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image24.png))
 
@@ -176,12 +176,12 @@ Při ověřování funguje jako-se, uživatel musí při úpravách záznam, kte
 Pojďme se možnost #1 pro účely tohoto cvičení. Aktuálně `UnitPrice` je ve formátu měny z důvodu výraz datové vazby pro textové pole v `EditItemTemplate`: `<%# Bind("UnitPrice", "{0:c}") %>`. Změnit vazby příkazu k `Bind("UnitPrice", "{0:n2}")`, který zformátuje výsledek jako číslo s dvěma číslicemi přesnosti. To můžete udělat přímo pomocí deklarativní syntaxe nebo kliknutím na odkaz upravit vlastnosti DataBindings z `EditUnitPrice` textového pole v `UnitPrice` společnosti TemplateField `EditItemTemplate` (viz obrázky 9 a 10).
 
 
-[![Klikněte na odkaz Upravit datové vazby textové pole](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image26.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image25.png)
+[![CKlepněte na odkaz Upravit datové vazby textové pole](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image26.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image25.png)
 
 **Obrázek 9**: Klikněte na odkaz Upravit datové vazby textové pole ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image27.png))
 
 
-[![V příkazu vazby zadat specifikátor formátu](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image29.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image28.png)
+[![SSpecifikátor formátu v příkazu vytvoření vazby zadejte](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image29.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image28.png)
 
 **Obrázek 10**: Zadejte formát specifikátoru v `Bind` – příkaz ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image30.png))
 
@@ -199,7 +199,7 @@ Kromě pěti ověřovacích ovládacích prvků technologie ASP.NET obsahuje [ov
 K tomu, přetáhněte ovládací prvek souhrnu ověření z panelu nástrojů do návrháře. Umístění ovládacího prvku ověření nezáleží, protože chceme ji můžete zobrazit souhrn jenom jako pole messagebox nakonfigurovat. Po přidání ovládacího prvku, nastavte jeho [ShowSummary vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.validationsummary.showsummary(VS.80).aspx) k `false` a jeho [ShowMessageBox vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.validationsummary.showmessagebox(VS.80).aspx) k `true`. Uveďte všechny chyby ověření jsou shrnuté v messagebox na straně klienta.
 
 
-[![Chyby ověření jsou shrnuté v Messagebox na straně klienta](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image32.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image31.png)
+[![TChyby ověření he jsou shrnuté v Messagebox Client-Side](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image32.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image31.png)
 
 **Obrázek 11**: Chyby ověření jsou shrnuté v Messagebox na straně klienta ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image33.png))
 
@@ -215,7 +215,7 @@ Protože `UnitPrice` je vyžaduje tuto stránku při přidání nového záznamu
 Po přidání těchto validačních ovládacích prvků, nelze přidat do systému, pokud jeho název není zadán, nebo pokud cena je záporné číslo nového produktu nebo neoprávněně ve formátu.
 
 
-[![Logiku ověřování je přidaný do rozhraní vložení ovládacího prvku DetailsView.](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image35.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image34.png)
+[![Validation přidané logiky k rozhraní vložení prvku DetailsView](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image35.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image34.png)
 
 **Obrázek 12**: Logiku ověřování je přidaný do rozhraní vložení prvku DetailsView ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image36.png))
 
@@ -225,7 +225,7 @@ Po přidání těchto validačních ovládacích prvků, nelze přidat do systé
 Naši stránku se skládá ze dvou logicky různorodé sady validačních ovládacích prvků: ty, které odpovídají prvku GridView je úprava rozhraní a ty, které odpovídají na ovládacím prvku DetailsView je vložení rozhraní. Ve výchozím nastavení, když dojde k postbacku *všechny* validačních ovládacích prvků na stránce nebyly zvoleny. Ale při úpravě záznamu nechceme ovládacím prvku DetailsView vkládání rozhraní validačních ovládacích prvků pro ověření. Obrázek 13 ukazuje naše aktuální dilema, když uživatel upravuje produkt s naprosto platné hodnoty, kliknutím na aktualizace způsobí chybu ověřování, protože hodnoty název a cena vkládání rozhraní jsou prázdné.
 
 
-[![Aktualizuje se produkt způsobí, že vkládání rozhraní validačních ovládacích prvků k vyvolání](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image38.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image37.png)
+[![Uualizace produktu způsobí, že rozhraní vložení validačních ovládacích prvků vyvolání](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image38.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image37.png)
 
 **Obrázek 13**: Aktualizace produktu způsobí, že rozhraní vložení validačních ovládacích prvků vyvolání ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image39.png))
 
@@ -235,7 +235,7 @@ Validačních ovládacích prvků v technologii ASP.NET 2.0 lze rozdělit do sku
 Kromě ověřování ovládacích prvků, tlačítka a tlačítka související ovládací prvky v technologii ASP.NET 2.0 také zahrnout `ValidationGroup` vlastnost. Kontroluje validátory skupiny ověření platnosti pouze při zpětném odeslání vyvolané vrácením hodnoty tlačítko, které má stejnou `ValidationGroup` nastavení vlastnosti. Například v pořadí pro tlačítko pro vložení prvku DetailsView k aktivaci `InsertValidationControls` skupiny ověření, musíme nastavit CommandField `ValidationGroup` vlastnost `InsertValidationControls` (viz obrázek 14). Kromě toho nastavení prvku GridView společnosti CommandField `ValidationGroup` vlastnost `EditValidationControls`.
 
 
-[![Sada ovládacím prvku DetailsView. vaší společnosti CommandField ValidationGroup vlastnost InsertValidationControls](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image41.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image40.png)
+[![Set ovládacím prvku DetailsView vaší společnosti CommandField ValidationGroup vlastnost InsertValidationControls](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image41.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image40.png)
 
 **Obrázek 14**: Nastavte ovládacím prvku DetailsView CommandField `ValidationGroup` vlastnost `InsertValidationControls` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image42.png))
 

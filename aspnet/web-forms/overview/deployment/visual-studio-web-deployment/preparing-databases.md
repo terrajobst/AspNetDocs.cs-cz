@@ -8,15 +8,15 @@ ms.date: 02/15/2013
 ms.assetid: ae4def81-fa37-4883-a13e-d9896cbf6c36
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
 msc.type: authoredcontent
-ms.openlocfilehash: 67f44d9f23a2fe83c48e68328b1dee739056e32f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 786be61d48f26e5765eac0c8d6fad7551897f711
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067546"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59387682"
 ---
-<a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Příprava nasazení databáze
-====================
+# <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Příprava nasazení databáze
+
 podle [Petr Dykstra](https://github.com/tdykstra)
 
 [Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
@@ -63,7 +63,7 @@ Při nasazení databáze aplikace obvykle není nasadíte jednoduše databázi v
 
 Pro simulaci tomto běžném scénáři, které nakonfigurujete migrace Code First `Seed` metodu, která se vloží do databáze pouze data, která má být k dispozici v produkčním prostředí. To `Seed` metoda by neměla testovací data vložit, protože poběží v produkčním prostředí po Code First vytvoří databázi v produkčním prostředí.
 
-V dřívějších verzích Code First před migrací, bylo běžné `Seed` metody pro vložení testovacích dat, protože při každé změně modelu během vývoje databáze byl zcela odstranit a znovu vytvářet úplně od začátku. Pomocí migrace Code First, testovací data se uchovávají po provedení změn databáze, takže včetně testovací data v `Seed` metoda není nutné. Projekt, který jste si stáhli používá metodu všechna data, včetně `Seed` metoda inicializátor třídy. V tomto kurzu budete zakázat inicializátor třídy a `enable Migrations. Then you'll update the `počáteční hodnoty ' metody v konfiguraci migrace třídu tak, aby pouze data, která má být vložen do produkčního prostředí.
+V dřívějších verzích Code First před migrací, bylo běžné `Seed` metody pro vložení testovacích dat, protože při každé změně modelu během vývoje databáze byl zcela odstranit a znovu vytvářet úplně od začátku. Pomocí migrace Code First, testovací data se uchovávají po provedení změn databáze, takže včetně testovací data v `Seed` metoda není nutné. Projekt, který jste si stáhli používá metodu všechna data, včetně `Seed` metoda inicializátor třídy. V tomto kurzu budete zakázat inicializátor třídy a povolení migrace. Pak budete aktualizovat `Seed` metody v konfiguraci migrace třídu tak, aby pouze data, která má být vložen do produkčního prostředí.
 
 Následující diagram znázorňuje schéma databáze aplikace:
 
@@ -130,7 +130,7 @@ Projekt je nyní připraven k nasazení *ContosoUniversity* databáze. Po nasaze
 > [!NOTE]
 > Přidání kódu `Seed` metoda je jednou z mnoha způsoby, pevných datových můžete vložit do databáze. Alternativou je přidejte kód, který `Up` a `Down` metody třídy každou migraci. `Up` a `Down` metody obsahovat kód, který implementuje změny databáze. Zobrazí se vám příklady v [nasazení aktualizace databáze](deploying-a-database-update.md) kurzu.
 > 
-> Můžete také napsat kód, který se spustí s použitím příkazů jazyka SQL `Sql` metody. Například, pokud bylo přidání rozpočtu sloupce do tabulky oddělení a chcete inicializovat všechna rozpočty na $ 1 000,00 jako součást migrace, můžete přidat folllowing řádku kódu `Up` metoda této migrace:
+> Můžete také napsat kód, který se spustí s použitím příkazů jazyka SQL `Sql` metody. Pokud bylo přidání rozpočtu sloupce do tabulky oddělení a chcete inicializovat všechna rozpočty na $ 1 000,00 jako součást migrace, můžete například přidat následující řádek kódu, který `Up` metoda této migrace:
 > 
 > `Sql("UPDATE Department SET Budget = 1000");`
 

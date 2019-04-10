@@ -8,15 +8,15 @@ ms.date: 10/05/2011
 ms.assetid: 2d08658a-16c4-4877-9f43-c6503adda7bf
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files
 msc.type: chapter
-ms.openlocfilehash: 2fa205c4c77d01661017daf53e12d71234cf22f6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 2382e37a0ce02d318840cf29266075bbb30cae4d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796217"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59391166"
 ---
-<a name="working-with-binary-files"></a>Práce s binárními soubory
-====================
+# <a name="working-with-binary-files"></a>Práce s binárními soubory
+
 > Tyto kurzy vám ukážou, jak umožnit uživatelům nahrát na server, kde se mohou být uloženy ve složkách nebo v databázi binárních souborů (jako jsou dokumenty aplikace Word nebo PDF).
 
 

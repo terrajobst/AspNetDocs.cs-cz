@@ -8,15 +8,15 @@ ms.date: 10/02/2014
 ms.assetid: 0a8d6044-5fab-4213-82d6-5618d5601358
 msc.legacyurl: /web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: 1bd90f0ceddee7d9e18c1cac2fadfb2c84841f19
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 3df728891103de9c8e461ab9507237c9b14e8251
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58424635"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59390685"
 ---
-<a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Vytvoření zabezpečené aplikace webových formulářů ASP.NET s registrací uživatele, potvrzením e-mailu a resetováním hesla (C#)
-====================
+# <a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Vytvoření zabezpečené aplikace webových formulářů ASP.NET s registrací uživatele, potvrzením e-mailu a resetováním hesla (C#)
+
 by [Erik Reitan](https://github.com/Erikre)
 
 > V tomto kurzu se dozvíte, jak vytvořit aplikaci webových formulářů ASP.NET s registrací uživatele, e-mailové potvrzení a resetování hesla pomocí systém členství technologie ASP.NET Identity. Tento kurz je založený na Rick Anderson [kurz ASP.NET MVC](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md).
@@ -29,7 +29,7 @@ Tento kurz vás provede kroky potřebné k vytvoření aplikace webových formul
 ### <a name="tutorial-tasks-and-information"></a>Kurz úkoly a informace:
 
 - [Vytvoření ASP.NET Web Forms app](#createWebForms)
-- [Hook Up SendGrid](#SG)
+- [Připojení SendGrid](#SG)
 - [Vyžadovat e-mailové potvrzení před přihlášení](#require)
 - [Obnovení hesla a obnovení](#reset)
 - [Znovu poslat potvrzovací odkaz e-mailu](#rsend)

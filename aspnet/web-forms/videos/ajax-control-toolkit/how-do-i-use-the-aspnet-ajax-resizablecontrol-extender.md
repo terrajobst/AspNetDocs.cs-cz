@@ -8,15 +8,15 @@ ms.date: 07/01/2007
 ms.assetid: 99b23369-dac6-458b-b002-56be35f43236
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-resizablecontrol-extender
 msc.type: video
-ms.openlocfilehash: d597b8bbb60827e3cbcea16c49e5deb9d20ee357
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 4ce14e555b8ef2e2746832322a488733a7c5c377
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069328"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59398836"
 ---
-<a name="how-do-i-use-the-aspnet-ajax-resizablecontrol-extender"></a>[Postup:] Použít technologie ASP.NET AJAX – Extender ResizableControl?
-====================
+# <a name="how-do-i-use-the-aspnet-ajax-resizablecontrol-extender"></a>[Postup:] Použít technologie ASP.NET AJAX – Extender ResizableControl?
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 Extender ResizableControl z technologie ASP.NET AJAX Control Toolkit umožňuje vývojářům určit oblast webové stránky, která uživatel může změnit dynamicky velikost. Toto video popisuje způsob konfigurace vzhledu a chování umožňující změnu velikosti oblasti a spusťte skript na straně klienta při změně velikosti.

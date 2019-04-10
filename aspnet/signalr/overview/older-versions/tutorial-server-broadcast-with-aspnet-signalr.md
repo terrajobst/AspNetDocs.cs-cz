@@ -8,15 +8,15 @@ ms.date: 04/10/2013
 ms.assetid: ab7b2554-956a-4f6d-b2a0-4ae0c62e8580
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 258a55bf72c4b3425d001f478620fa9651952b3f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a63bca69f137a4d4765db6a4925ff027c9d8bf7d
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076096"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59403581"
 ---
-<a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Kurz: Serverové vysílání s knihovnou ASP.NET SignalR 1.x
-====================
+# <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Kurz: Serverové vysílání s knihovnou ASP.NET SignalR 1.x
+
 podle [Patrick Fletcher](https://github.com/pfletcher), [Petr Dykstra](https://github.com/tdykstra)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
@@ -48,9 +48,9 @@ Tento kurz obsahuje následující části:
 - [Nastavte si do kódu serveru](#server)
 - [Nastavit kód klienta](#client)
 - [Testování aplikace](#test)
-- [Povolení protokolování](#enablelogging)
+- [Povolit protokolování](#enablelogging)
 - [Instalace a zkontrolujte úplnou ukázku StockTicker](#fullsample)
-- [Další postup](#nextsteps)
+- [Další kroky](#nextsteps)
 
 > [!NOTE]
 > Pokud nechcete, aby pro seznámení se základními kroky při vytváření aplikace, můžete nainstalovat balíček SignalR.Sample v novém **prázdná webová aplikace ASP.NET** projektu a přečtěte si vysvětlení kódu těchto kroků. První část kurzu obsahuje podmnožinu SignalR.Sample kódu a druhá část vysvětluje klíčové funkce v balíčku SignalR.Sample další funkce.
@@ -412,7 +412,7 @@ Kurzy, které ukazují scénáře komunikace peer-to-peer, naleznete v tématu [
 
 Informace o pokročilejších pojmech vývoj SignalR, naleznete na následujících stránkách pro funkci SignalR zdrojový kód a prostředky:
 
-- [Funkce SignalR technologie ASP.NET](https://asp.net/signalr/)
+- [ASP.NET SignalR](https://asp.net/signalr/)
 - [Projekt SignalR](http://signalr.net/)
 - [Funkce SignalR Githubu a ukázky](https://github.com/SignalR/SignalR)
 - [SignalR Wiki](https://github.com/SignalR/SignalR/wiki)

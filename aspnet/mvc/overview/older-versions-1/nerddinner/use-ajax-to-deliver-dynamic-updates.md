@@ -8,15 +8,15 @@ ms.date: 07/27/2010
 ms.assetid: 18700815-8e6c-4489-91af-7ea9dab6529e
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-deliver-dynamic-updates
 msc.type: authoredcontent
-ms.openlocfilehash: 71e566523d658eb8198453f354a12e63a4c38495
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 56ebc40aa500b62811bac0a5041fa9aa4f91f4ae
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58421034"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59391049"
 ---
-<a name="use-ajax-to-deliver-dynamic-updates"></a>Použití jazyka AJAX k dynamickým aktualizacím
-====================
+# <a name="use-ajax-to-deliver-dynamic-updates"></a>Použití jazyka AJAX k dynamickým aktualizacím
+
 by [Microsoft](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
@@ -114,7 +114,7 @@ Použití jQuery nejprve přidáme na ni odkaz skriptu. Vzhledem k tomu, že bud
 
 *Tip: Ujistěte se, že je nainstalována oprava hotfix technologie intellisense jazyka JavaScript pro VS 2008 SP1, která umožňuje bohatší podporu technologie intellisense pro soubory JavaScriptu (včetně jQuery). Stáhněte si ho: http://tinyurl.com/vs2008javascripthotfix*
 
-Kód napsané s využitím JQuery často používá globální "$ ()" metodu JavaScript, který načte jeden nebo více elementů HTML pomocí selektor šablon stylů CSS. Například <em>$("#rsvpmsg")</em> vybere libovolný prvek HTML s id rsvpmsg, zatímco <em>$(".something")</em> by vybrat všechny elementy s "něco co uživatel" šablon stylů CSS název třídy. Můžete taky psát složitější dotazy jako "vrácení všech přepínačů checked" pomocí selektoru dotazu jako: <em>$("vstupu [@type= přepínač] [@checked]")</em>.
+Kód napsané s využitím JQuery často používá globální "$ ()" metodu JavaScript, který načte jeden nebo více elementů HTML pomocí selektor šablon stylů CSS. Například *$("#rsvpmsg")* vybere libovolný prvek HTML s id rsvpmsg, zatímco *$(".something")* by vybrat všechny elementy s "něco co uživatel" šablon stylů CSS název třídy. Můžete taky psát složitější dotazy jako "vrácení všech přepínačů checked" pomocí selektoru dotazu jako: *$("vstupu [@type= přepínač] [@checked]")*.
 
 Jakmile vyberete prvky, může volat metody na nich provádět akce, jako je skrytí: *$("#rsvpmsg").hide();*
 

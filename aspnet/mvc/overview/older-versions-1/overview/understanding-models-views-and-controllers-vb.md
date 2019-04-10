@@ -8,15 +8,15 @@ ms.date: 08/19/2008
 ms.assetid: a106374a-5e74-4fd0-9ac0-1a32280e5d0d
 msc.legacyurl: /mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 15d4e7d7b6a2662296b8e3647cd60187de580789
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 879a771c3b85c85d35d470f056173f230a36e906
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067366"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59388945"
 ---
-<a name="understanding-models-views-and-controllers-vb"></a>Principy modelů, zobrazení a kontrolerů (VB)
-====================
+# <a name="understanding-models-views-and-controllers-vb"></a>Principy modelů, zobrazení a kontrolerů (VB)
+
 podle [Stephen Walther](https://github.com/StephenWalther)
 
 > Ztrácíte přehled o modelů, zobrazení a Kontrolerů? V tomto kurzu Stephen Walther vás seznámí s různé části aplikace ASP.NET MVC.
@@ -33,7 +33,7 @@ Výchozí šablony sady Visual Studio pro vytváření webových aplikací ASP.N
 Vytvoření nové aplikace ASP.NET MVC pomocí šablony MVC spuštěním sady Visual Studio 2008 a vyberte možnost nabídky soubor, nový projekt (viz obrázek 1). V dialogovém okně Nový projekt, vyberte vašem oblíbeném programovacím jazyce podle typů projektu (Visual Basic nebo C#) a vyberte **webové aplikace ASP.NET MVC** v rámci šablony. Klikněte na tlačítko OK.
 
 
-[![Dialogové okno nového projektu](understanding-models-views-and-controllers-vb/_static/image1.jpg)](understanding-models-views-and-controllers-vb/_static/image1.png)
+[![NDialogové okno Nový projekt](understanding-models-views-and-controllers-vb/_static/image1.jpg)](understanding-models-views-and-controllers-vb/_static/image1.png)
 
 **Obrázek 01**: Dialogové okno nového projektu ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-models-views-and-controllers-vb/_static/image2.png))
 
@@ -41,7 +41,7 @@ Vytvoření nové aplikace ASP.NET MVC pomocí šablony MVC spuštěním sady Vi
 Při vytváření nové aplikace ASP.NET MVC **vytvořit projekt testování částí** se zobrazí dialogové okno (viz obrázek 2). Tento dialog umožňuje vytvořit samostatný projekt v řešení pro testování vašich aplikací ASP.NET MVC. Vyberte možnost **Ne, nevytvářejte projekt testování částí** a klikněte na tlačítko **OK** tlačítko.
 
 
-[![Vytvořte testovací jednotky dialogové okno](understanding-models-views-and-controllers-vb/_static/image2.jpg)](understanding-models-views-and-controllers-vb/_static/image3.png)
+[![CVytvořit Test jednotky – dialogové okno](understanding-models-views-and-controllers-vb/_static/image2.jpg)](understanding-models-views-and-controllers-vb/_static/image3.png)
 
 **Obrázek 02**: Vytvořte testovací jednotky dialogové okno ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-models-views-and-controllers-vb/_static/image4.png))
 
@@ -51,7 +51,7 @@ Aplikace se vytvoří po nové technologie ASP.NET MVC. Zobrazí se několik slo
 Pokud rozbalíte složce řadiče, měli byste vidět soubor s názvem AccountController.vb a soubor s názvem HomeController.vb. Pokud rozbalíte složce zobrazení, měli byste vidět tři podsložky s názvem účtu, Home a sdílené. Pokud rozbalíte domovské složky, zobrazí se vám dva další soubory s názvem About.aspx a Index.aspx (viz obrázek 3). Tyto soubory tvoří ukázkové aplikace je součástí výchozí šablony ASP.NET MVC.
 
 
-[![V okně Průzkumník řešení](understanding-models-views-and-controllers-vb/_static/image3.jpg)](understanding-models-views-and-controllers-vb/_static/image5.png)
+[![Tmá okno Průzkumníka řešení](understanding-models-views-and-controllers-vb/_static/image3.jpg)](understanding-models-views-and-controllers-vb/_static/image5.png)
 
 **Obrázek 03**: V okně Průzkumník řešení ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-models-views-and-controllers-vb/_static/image6.png))
 
@@ -61,7 +61,7 @@ Ukázkovou aplikaci můžete spustit tak, že vyberete možnost nabídky **ladit
 Při prvním spuštění aplikace ASP.NET, zobrazí se dialogové okno na obrázku 4, která se doporučuje, abyste povolili režimu ladění. Klikněte na tlačítko OK a bude aplikace spuštěna.
 
 
-[![Ladění není povoleno dialogového okna](understanding-models-views-and-controllers-vb/_static/image4.jpg)](understanding-models-views-and-controllers-vb/_static/image7.png)
+[![DUkončit ladění není povoleno dialogové okno](understanding-models-views-and-controllers-vb/_static/image4.jpg)](understanding-models-views-and-controllers-vb/_static/image7.png)
 
 **Obrázek 04**: Ladění není povoleno dialogového okna ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-models-views-and-controllers-vb/_static/image8.png))
 
@@ -69,7 +69,7 @@ Při prvním spuštění aplikace ASP.NET, zobrazí se dialogové okno na obráz
 Při spuštění aplikace ASP.NET MVC, Visual Studio spustí aplikaci ve webovém prohlížeči. Ukázková aplikace se skládá pouze dvě stránky: indexovou stránku a na stránce o. Při prvním spuštění aplikace, zobrazí se stránka indexu (viz obrázek 5). Můžete přejít na stránku o kliknutím na odkaz nabídce v horní části přímo z aplikace.
 
 
-[![Index stránky](understanding-models-views-and-controllers-vb/_static/image5.jpg)](understanding-models-views-and-controllers-vb/_static/image9.png)
+[![Tmá indexovou stránku](understanding-models-views-and-controllers-vb/_static/image5.jpg)](understanding-models-views-and-controllers-vb/_static/image9.png)
 
 **Obrázek 05**: Index stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-models-views-and-controllers-vb/_static/image10.png))
 
@@ -122,7 +122,7 @@ Kontroler = zaměstnance
 
 Akce = Index
 
-Id = 
+Id = ��
 
 Nakonec otevřete aplikaci ASP.NET MVC bez poskytnutí libovolnou adresu URL (například `http://localhost`) pak adresa URL se zpracuje tímto způsobem:
 
@@ -130,7 +130,7 @@ Kontroler = Home
 
 Akce = Index
 
-Id = 
+Id = ��
 
 Požadavek se přesměruje na akci Index() HomeController třídy.
 
