@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: b7dba543-73c3-4534-a9a0-ba70fa2c6a8a
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-fundamentals
 msc.type: authoredcontent
-ms.openlocfilehash: d3bc39a37cace003c3fda6691f0dd7f893128b07
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 38aea3b3480dde6ec6182a45c4f61f44eea8e05e
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425246"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59380220"
 ---
 # <a name="aspnet-mvc-4-fundamentals"></a>ASP.NET MVC 4 – základy
 
@@ -869,7 +869,7 @@ V tomto cvičení bude prozkoumat rozšíření v šablonách projektů ASP.NET 
 <a id="Ex7Task1"></a>
 
 <a id="Task_1_Exploring_the_ASPNET_MVC_4_Internet_Application_Template"></a>
-#### <a name="task-1-exploring-the-aspnet-mvc-4-internet-application-template"></a>Úloha 1: Zkoumání šablony ASP.NET MVC 4 Internetové aplikace
+#### <a name="task-1-exploring-the-aspnet-mvc-4-internet-application-template"></a>Úkol 1: Zkoumání šablony ASP.NET MVC 4 Internetové aplikace
 
 1. Pokud ještě není otevřený, začněte **VS Express for Web**
 2. Vyberte **soubor | Nové | Projekt** příkazu nabídky. V **nový projekt** dialogového okna, vyberte **Visual C# | Web** šablony v levém podokně stromové struktury a zvolte **webové aplikace ASP.NET MVC 4**. **Název** projektu *MusicStore* a aktualizovat **název řešení** k *začít*, pak vyberte umístění (nebo ponechte výchozí nastavení) a klikněte na tlačítko **OK** .
@@ -947,7 +947,7 @@ V tomto cvičení bude prozkoumat rozšíření v šablonách projektů ASP.NET 
 > Kromě toho můžete nasadit tuto aplikaci následující weby Windows Azure [příloha B: Publikování aplikace ASP.NET MVC 4 pomocí nasazení webu](#AppendixB).
 
 
-* * *
+---
 
 <a id="Summary"></a>
 
