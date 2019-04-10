@@ -8,25 +8,25 @@ ms.date: 09/28/2011
 ms.assetid: c2dea264-0d8c-4216-bbe5-70d2421597b0
 msc.legacyurl: /mvc/overview/older-versions-1/views
 msc.type: chapter
-ms.openlocfilehash: 05f49ffb2bb6bb4a0a04d673845f8e9901d138f8
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 3aff4defbfe7738e5f33c6f9d72aed8ac7e12116
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57795957"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59407676"
 ---
-<a name="aspnet-mvc-views"></a><span data-ttu-id="910de-103">Zobrazení ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="910de-103">ASP.NET MVC Views</span></span>
-====================
-> <span data-ttu-id="910de-104">Této sérii kurzů poskytuje stručný úvod do ASP.NET MVC zobrazení, zobrazení dat a pomocných rutin HTML.</span><span class="sxs-lookup"><span data-stu-id="910de-104">This set of tutorials provides a brief introduction to ASP.NET MVC views, view data, and HTML helpers.</span></span>
+# <a name="aspnet-mvc-views"></a><span data-ttu-id="822be-103">Zobrazení ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="822be-103">ASP.NET MVC Views</span></span>
+
+> <span data-ttu-id="822be-104">Této sérii kurzů poskytuje stručný úvod do ASP.NET MVC zobrazení, zobrazení dat a pomocných rutin HTML.</span><span class="sxs-lookup"><span data-stu-id="822be-104">This set of tutorials provides a brief introduction to ASP.NET MVC views, view data, and HTML helpers.</span></span>
 
 
-- [<span data-ttu-id="910de-105">ASP.NET MVC – přehled zobrazení (C#)</span><span class="sxs-lookup"><span data-stu-id="910de-105">ASP.NET MVC Views Overview (C#)</span></span>](asp-net-mvc-views-overview-cs.md)
-- [<span data-ttu-id="910de-106">Vytvoření vlastních pomocných rutin HTML (C#)</span><span class="sxs-lookup"><span data-stu-id="910de-106">Creating Custom HTML Helpers (C#)</span></span>](creating-custom-html-helpers-cs.md)
-- [<span data-ttu-id="910de-107">Třída TagBuilder pro sestavení pomocných rutin HTML (C#)</span><span class="sxs-lookup"><span data-stu-id="910de-107">TagBuilder Class to Build HTML Helpers (C#)</span></span>](using-the-tagbuilder-class-to-build-html-helpers-cs.md)
-- [<span data-ttu-id="910de-108">Vytvoření rozložení stránek pomocí stránek předlohy pro zobrazení (C#)</span><span class="sxs-lookup"><span data-stu-id="910de-108">Creating Page Layouts with View Master Pages (C#)</span></span>](creating-page-layouts-with-view-master-pages-cs.md)
-- [<span data-ttu-id="910de-109">Předání dat stránkám předlohy pro zobrazení (C#)</span><span class="sxs-lookup"><span data-stu-id="910de-109">Passing Data to View Master Pages (C#)</span></span>](passing-data-to-view-master-pages-cs.md)
-- [<span data-ttu-id="910de-110">ASP.NET MVC – přehled zobrazení (VB)</span><span class="sxs-lookup"><span data-stu-id="910de-110">ASP.NET MVC Views Overview (VB)</span></span>](asp-net-mvc-views-overview-vb.md)
-- [<span data-ttu-id="910de-111">Vytvoření vlastních pomocných rutin HTML (VB)</span><span class="sxs-lookup"><span data-stu-id="910de-111">Creating Custom HTML Helpers (VB)</span></span>](creating-custom-html-helpers-vb.md)
-- [<span data-ttu-id="910de-112">Třída TagBuilder pro sestavení pomocných rutin HTML (VB)</span><span class="sxs-lookup"><span data-stu-id="910de-112">TagBuilder Class to Build HTML Helpers (VB)</span></span>](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
-- [<span data-ttu-id="910de-113">Vytvoření rozložení stránek pomocí stránek předlohy pro zobrazení (VB)</span><span class="sxs-lookup"><span data-stu-id="910de-113">Creating Page Layouts with View Master Pages (VB)</span></span>](creating-page-layouts-with-view-master-pages-vb.md)
-- [<span data-ttu-id="910de-114">Předání dat stránkám předlohy pro zobrazení (VB)</span><span class="sxs-lookup"><span data-stu-id="910de-114">Passing Data to View Master Pages (VB)</span></span>](passing-data-to-view-master-pages-vb.md)
+- [<span data-ttu-id="822be-105">ASP.NET MVC – přehled zobrazení (C#)</span><span class="sxs-lookup"><span data-stu-id="822be-105">ASP.NET MVC Views Overview (C#)</span></span>](asp-net-mvc-views-overview-cs.md)
+- [<span data-ttu-id="822be-106">Vytvoření vlastních pomocných rutin HTML (C#)</span><span class="sxs-lookup"><span data-stu-id="822be-106">Creating Custom HTML Helpers (C#)</span></span>](creating-custom-html-helpers-cs.md)
+- [<span data-ttu-id="822be-107">Třída TagBuilder pro sestavení pomocných rutin HTML (C#)</span><span class="sxs-lookup"><span data-stu-id="822be-107">TagBuilder Class to Build HTML Helpers (C#)</span></span>](using-the-tagbuilder-class-to-build-html-helpers-cs.md)
+- [<span data-ttu-id="822be-108">Vytvoření rozložení stránek pomocí stránek předlohy pro zobrazení (C#)</span><span class="sxs-lookup"><span data-stu-id="822be-108">Creating Page Layouts with View Master Pages (C#)</span></span>](creating-page-layouts-with-view-master-pages-cs.md)
+- [<span data-ttu-id="822be-109">Předání dat stránkám předlohy pro zobrazení (C#)</span><span class="sxs-lookup"><span data-stu-id="822be-109">Passing Data to View Master Pages (C#)</span></span>](passing-data-to-view-master-pages-cs.md)
+- [<span data-ttu-id="822be-110">ASP.NET MVC – přehled zobrazení (VB)</span><span class="sxs-lookup"><span data-stu-id="822be-110">ASP.NET MVC Views Overview (VB)</span></span>](asp-net-mvc-views-overview-vb.md)
+- [<span data-ttu-id="822be-111">Vytvoření vlastních pomocných rutin HTML (VB)</span><span class="sxs-lookup"><span data-stu-id="822be-111">Creating Custom HTML Helpers (VB)</span></span>](creating-custom-html-helpers-vb.md)
+- [<span data-ttu-id="822be-112">Třída TagBuilder pro sestavení pomocných rutin HTML (VB)</span><span class="sxs-lookup"><span data-stu-id="822be-112">TagBuilder Class to Build HTML Helpers (VB)</span></span>](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
+- [<span data-ttu-id="822be-113">Vytvoření rozložení stránek pomocí stránek předlohy pro zobrazení (VB)</span><span class="sxs-lookup"><span data-stu-id="822be-113">Creating Page Layouts with View Master Pages (VB)</span></span>](creating-page-layouts-with-view-master-pages-vb.md)
+- [<span data-ttu-id="822be-114">Předání dat stránkám předlohy pro zobrazení (VB)</span><span class="sxs-lookup"><span data-stu-id="822be-114">Passing Data to View Master Pages (VB)</span></span>](passing-data-to-view-master-pages-vb.md)

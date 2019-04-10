@@ -8,24 +8,24 @@ ms.date: 02/15/2012
 ms.assetid: a35183ac-cbcb-4070-9233-6331cde921ad
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4
 msc.type: chapter
-ms.openlocfilehash: 73b01c8f2cd1d36ff5f4dc2020df2e14f6a0f290
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0cce120be702ffa4c21e56cbbbe472aebf7f1889
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796230"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59402255"
 ---
-<a name="getting-started-with-aspnet-mvc-4"></a><span data-ttu-id="064cb-103">Začínáme s ASP.NET MVC 4</span><span class="sxs-lookup"><span data-stu-id="064cb-103">Getting Started with ASP.NET MVC 4</span></span>
-====================
-> <span data-ttu-id="064cb-104">V této sérii kurzů se seznámíte se základy vytváření ASP.NET MVC webovou aplikaci pomocí Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze sady Microsoft Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="064cb-104">This tutorial series will teach you the basics of building an ASP.NET MVC Web application using Microsoft Visual Web Developer 2010 Express Service Pack 1, which is a free version of Microsoft Visual Studio.</span></span>
+# <a name="getting-started-with-aspnet-mvc-4"></a><span data-ttu-id="b2852-103">Začínáme s ASP.NET MVC 4</span><span class="sxs-lookup"><span data-stu-id="b2852-103">Getting Started with ASP.NET MVC 4</span></span>
+
+> <span data-ttu-id="b2852-104">V této sérii kurzů se seznámíte se základy vytváření ASP.NET MVC webovou aplikaci pomocí Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze sady Microsoft Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="b2852-104">This tutorial series will teach you the basics of building an ASP.NET MVC Web application using Microsoft Visual Web Developer 2010 Express Service Pack 1, which is a free version of Microsoft Visual Studio.</span></span>
 
 
-- [<span data-ttu-id="064cb-105">Úvod do ASP.NET MVC 4</span><span class="sxs-lookup"><span data-stu-id="064cb-105">Intro to ASP.NET MVC 4</span></span>](intro-to-aspnet-mvc-4.md)
-- [<span data-ttu-id="064cb-106">Přidání kontroleru</span><span class="sxs-lookup"><span data-stu-id="064cb-106">Adding a Controller</span></span>](adding-a-controller.md)
-- [<span data-ttu-id="064cb-107">Přidání zobrazení</span><span class="sxs-lookup"><span data-stu-id="064cb-107">Adding a View</span></span>](adding-a-view.md)
-- [<span data-ttu-id="064cb-108">Přidání modelu</span><span class="sxs-lookup"><span data-stu-id="064cb-108">Adding a Model</span></span>](adding-a-model.md)
-- [<span data-ttu-id="064cb-109">Přístup k datům modelu z kontroleru</span><span class="sxs-lookup"><span data-stu-id="064cb-109">Accessing Your Model's Data from a Controller</span></span>](accessing-your-models-data-from-a-controller.md)
-- [<span data-ttu-id="064cb-110">Zkoumání metod Edit a zobrazení pro úpravy</span><span class="sxs-lookup"><span data-stu-id="064cb-110">Examining the Edit Methods and Edit View</span></span>](examining-the-edit-methods-and-edit-view.md)
-- [<span data-ttu-id="064cb-111">Přidání nového pole do modelu a tabulky Movie</span><span class="sxs-lookup"><span data-stu-id="064cb-111">Adding a New Field to the Movie Model and Table</span></span>](adding-a-new-field-to-the-movie-model-and-table.md)
-- [<span data-ttu-id="064cb-112">Přidání ověření do modelu</span><span class="sxs-lookup"><span data-stu-id="064cb-112">Adding Validation to the Model</span></span>](adding-validation-to-the-model.md)
-- [<span data-ttu-id="064cb-113">Zkoumání podrobností a metod Delete</span><span class="sxs-lookup"><span data-stu-id="064cb-113">Examining the Details and Delete Methods</span></span>](examining-the-details-and-delete-methods.md)
+- [<span data-ttu-id="b2852-105">Úvod do ASP.NET MVC 4</span><span class="sxs-lookup"><span data-stu-id="b2852-105">Intro to ASP.NET MVC 4</span></span>](intro-to-aspnet-mvc-4.md)
+- [<span data-ttu-id="b2852-106">Přidání kontroleru</span><span class="sxs-lookup"><span data-stu-id="b2852-106">Adding a Controller</span></span>](adding-a-controller.md)
+- [<span data-ttu-id="b2852-107">Přidání zobrazení</span><span class="sxs-lookup"><span data-stu-id="b2852-107">Adding a View</span></span>](adding-a-view.md)
+- [<span data-ttu-id="b2852-108">Přidání modelu</span><span class="sxs-lookup"><span data-stu-id="b2852-108">Adding a Model</span></span>](adding-a-model.md)
+- [<span data-ttu-id="b2852-109">Přístup k datům modelu z kontroleru</span><span class="sxs-lookup"><span data-stu-id="b2852-109">Accessing Your Model's Data from a Controller</span></span>](accessing-your-models-data-from-a-controller.md)
+- [<span data-ttu-id="b2852-110">Zkoumání metod Edit a zobrazení pro úpravy</span><span class="sxs-lookup"><span data-stu-id="b2852-110">Examining the Edit Methods and Edit View</span></span>](examining-the-edit-methods-and-edit-view.md)
+- [<span data-ttu-id="b2852-111">Přidání nového pole do modelu a tabulky Movie</span><span class="sxs-lookup"><span data-stu-id="b2852-111">Adding a New Field to the Movie Model and Table</span></span>](adding-a-new-field-to-the-movie-model-and-table.md)
+- [<span data-ttu-id="b2852-112">Přidání ověření do modelu</span><span class="sxs-lookup"><span data-stu-id="b2852-112">Adding Validation to the Model</span></span>](adding-validation-to-the-model.md)
+- [<span data-ttu-id="b2852-113">Zkoumání metod Details a Delete</span><span class="sxs-lookup"><span data-stu-id="b2852-113">Examining the Details and Delete Methods</span></span>](examining-the-details-and-delete-methods.md)

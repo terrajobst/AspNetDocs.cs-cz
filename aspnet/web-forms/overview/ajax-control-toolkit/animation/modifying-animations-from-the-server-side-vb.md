@@ -8,58 +8,58 @@ ms.date: 06/02/2008
 ms.assetid: addcf4aa-340a-460b-9c64-506424a1f725
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from-the-server-side-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ef32c8f4846b18f11d816a64a3e4292b67b232e9
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: fb7e992246b9c630d99a1493f344c4089540d67e
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077056"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59398082"
 ---
-<a name="modifying-animations-from-the-server-side-vb"></a><span data-ttu-id="a79b9-104">Úpravy animací na straně serveru (VB)</span><span class="sxs-lookup"><span data-stu-id="a79b9-104">Modifying Animations From The Server Side (VB)</span></span>
-====================
-<span data-ttu-id="a79b9-105">by [Christian Wenz](https://github.com/wenz)</span><span class="sxs-lookup"><span data-stu-id="a79b9-105">by [Christian Wenz](https://github.com/wenz)</span></span>
+# <a name="modifying-animations-from-the-server-side-vb"></a><span data-ttu-id="a3056-104">Úpravy animací na straně serveru (VB)</span><span class="sxs-lookup"><span data-stu-id="a3056-104">Modifying Animations From The Server Side (VB)</span></span>
 
-<span data-ttu-id="a79b9-106">[Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation9.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation9VB.pdf)</span><span class="sxs-lookup"><span data-stu-id="a79b9-106">[Download Code](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation9.vb.zip) or [Download PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation9VB.pdf)</span></span>
+<span data-ttu-id="a3056-105">by [Christian Wenz](https://github.com/wenz)</span><span class="sxs-lookup"><span data-stu-id="a3056-105">by [Christian Wenz](https://github.com/wenz)</span></span>
 
-> <span data-ttu-id="a79b9-107">Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku.</span><span class="sxs-lookup"><span data-stu-id="a79b9-107">The Animation control in the ASP.NET AJAX Control Toolkit is not just a control but a whole framework to add animations to a control.</span></span> <span data-ttu-id="a79b9-108">Animace nejspíš se změní taky na straně serveru</span><span class="sxs-lookup"><span data-stu-id="a79b9-108">The animations may also be changed on the server-side</span></span>
+<span data-ttu-id="a3056-106">[Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation9.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation9VB.pdf)</span><span class="sxs-lookup"><span data-stu-id="a3056-106">[Download Code](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation9.vb.zip) or [Download PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation9VB.pdf)</span></span>
+
+> <span data-ttu-id="a3056-107">Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku.</span><span class="sxs-lookup"><span data-stu-id="a3056-107">The Animation control in the ASP.NET AJAX Control Toolkit is not just a control but a whole framework to add animations to a control.</span></span> <span data-ttu-id="a3056-108">Animace nejspíš se změní taky na straně serveru</span><span class="sxs-lookup"><span data-stu-id="a3056-108">The animations may also be changed on the server-side</span></span>
 
 
-## <a name="overview"></a><span data-ttu-id="a79b9-109">Přehled</span><span class="sxs-lookup"><span data-stu-id="a79b9-109">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="a3056-109">Přehled</span><span class="sxs-lookup"><span data-stu-id="a3056-109">Overview</span></span>
 
-<span data-ttu-id="a79b9-110">Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku.</span><span class="sxs-lookup"><span data-stu-id="a79b9-110">The Animation control in the ASP.NET AJAX Control Toolkit is not just a control but a whole framework to add animations to a control.</span></span> <span data-ttu-id="a79b9-111">Animace nejspíš se změní taky na straně serveru</span><span class="sxs-lookup"><span data-stu-id="a79b9-111">The animations may also be changed on the server-side</span></span>
+<span data-ttu-id="a3056-110">Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku.</span><span class="sxs-lookup"><span data-stu-id="a3056-110">The Animation control in the ASP.NET AJAX Control Toolkit is not just a control but a whole framework to add animations to a control.</span></span> <span data-ttu-id="a3056-111">Animace nejspíš se změní taky na straně serveru</span><span class="sxs-lookup"><span data-stu-id="a3056-111">The animations may also be changed on the server-side</span></span>
 
-## <a name="steps"></a><span data-ttu-id="a79b9-112">Kroky</span><span class="sxs-lookup"><span data-stu-id="a79b9-112">Steps</span></span>
+## <a name="steps"></a><span data-ttu-id="a3056-112">Kroky</span><span class="sxs-lookup"><span data-stu-id="a3056-112">Steps</span></span>
 
-<span data-ttu-id="a79b9-113">Za prvé, zahrnout `ScriptManager` na stránce; potom technologie ASP.NET AJAX je načíst knihovnu, což umožňuje použití Control Toolkit:</span><span class="sxs-lookup"><span data-stu-id="a79b9-113">First of all, include the `ScriptManager` in the page; then, the ASP.NET AJAX library is loaded, making it possible to use the Control Toolkit:</span></span>
+<span data-ttu-id="a3056-113">Za prvé, zahrnout `ScriptManager` na stránce; potom technologie ASP.NET AJAX je načíst knihovnu, což umožňuje použití Control Toolkit:</span><span class="sxs-lookup"><span data-stu-id="a3056-113">First of all, include the `ScriptManager` in the page; then, the ASP.NET AJAX library is loaded, making it possible to use the Control Toolkit:</span></span>
 
 [!code-aspx[Main](modifying-animations-from-the-server-side-vb/samples/sample1.aspx)]
 
-<span data-ttu-id="a79b9-114">Animace se použijí pro panel text, který vypadá takto:</span><span class="sxs-lookup"><span data-stu-id="a79b9-114">The animation will be applied to a panel of text which looks like this:</span></span>
+<span data-ttu-id="a3056-114">Animace se použijí pro panel text, který vypadá takto:</span><span class="sxs-lookup"><span data-stu-id="a3056-114">The animation will be applied to a panel of text which looks like this:</span></span>
 
 [!code-aspx[Main](modifying-animations-from-the-server-side-vb/samples/sample2.aspx)]
 
-<span data-ttu-id="a79b9-115">V přidružené třídy šablony stylů CSS pro panel definovat barvu pozadí nice a také nastavit Pevná šířka panelu:</span><span class="sxs-lookup"><span data-stu-id="a79b9-115">In the associated CSS class for the panel, define a nice background color and also set a fixed width for the panel:</span></span>
+<span data-ttu-id="a3056-115">V přidružené třídy šablony stylů CSS pro panel definovat barvu pozadí nice a také nastavit Pevná šířka panelu:</span><span class="sxs-lookup"><span data-stu-id="a3056-115">In the associated CSS class for the panel, define a nice background color and also set a fixed width for the panel:</span></span>
 
 [!code-css[Main](modifying-animations-from-the-server-side-vb/samples/sample3.css)]
 
-<span data-ttu-id="a79b9-116">Zbytek kódu běží na straně serveru a nepoužívá značky Místo toho používá kód k vytvoření `AnimationExtender` ovládacího prvku:</span><span class="sxs-lookup"><span data-stu-id="a79b9-116">The rest of the code runs on the server-side and does not use markup; instead, it uses code to create the `AnimationExtender` control:</span></span>
+<span data-ttu-id="a3056-116">Zbytek kódu běží na straně serveru a nepoužívá značky Místo toho používá kód k vytvoření `AnimationExtender` ovládacího prvku:</span><span class="sxs-lookup"><span data-stu-id="a3056-116">The rest of the code runs on the server-side and does not use markup; instead, it uses code to create the `AnimationExtender` control:</span></span>
 
 [!code-aspx[Main](modifying-animations-from-the-server-side-vb/samples/sample4.aspx)]
 
-<span data-ttu-id="a79b9-117">Ale Control Toolkit aktuálně neposkytuje přístup rozhraní API k vytvoření jednotlivých animace.</span><span class="sxs-lookup"><span data-stu-id="a79b9-117">However, the Control Toolkit currently does not provide an API access to create the individual animations.</span></span> <span data-ttu-id="a79b9-118">Je však možné nastavit `AnimationExtender`animace vlastností na řetězec obsahující kód XML, použít při přiřazování animací deklarativně.</span><span class="sxs-lookup"><span data-stu-id="a79b9-118">It is however possible to set the `AnimationExtender`'s Animations property to a string containing the XML markup used when assigning the animations declaratively.</span></span> <span data-ttu-id="a79b9-119">Chcete-li vytvořit XML, který nesmí obsahovat `<Animations>` element můžete použít XML rozhraní .NET Framework podporují, nebo jako v následujícím kódu, stačí zadat řetězec:</span><span class="sxs-lookup"><span data-stu-id="a79b9-119">In order to create the XML which must not contain the `<Animations>` element you could use the .NET Framework's XML support or, as in the following code, just provide the string:</span></span>
+<span data-ttu-id="a3056-117">Ale Control Toolkit aktuálně neposkytuje přístup rozhraní API k vytvoření jednotlivých animace.</span><span class="sxs-lookup"><span data-stu-id="a3056-117">However, the Control Toolkit currently does not provide an API access to create the individual animations.</span></span> <span data-ttu-id="a3056-118">Je však možné nastavit `AnimationExtender`animace vlastností na řetězec obsahující kód XML, použít při přiřazování animací deklarativně.</span><span class="sxs-lookup"><span data-stu-id="a3056-118">It is however possible to set the `AnimationExtender`'s Animations property to a string containing the XML markup used when assigning the animations declaratively.</span></span> <span data-ttu-id="a3056-119">Chcete-li vytvořit XML, který nesmí obsahovat `<Animations>` element můžete použít XML rozhraní .NET Framework podporují, nebo jako v následujícím kódu, stačí zadat řetězec:</span><span class="sxs-lookup"><span data-stu-id="a3056-119">In order to create the XML which must not contain the `<Animations>` element you could use the .NET Framework's XML support or, as in the following code, just provide the string:</span></span>
 
 [!code-vb[Main](modifying-animations-from-the-server-side-vb/samples/sample5.vb)]
 
-<span data-ttu-id="a79b9-120">Nakonec přidejte `AnimationExtender` ovládací prvek na aktuální stránku v rámci `<form runat="server">` elementu, ujistěte se, že animaci je součástí a spustí:</span><span class="sxs-lookup"><span data-stu-id="a79b9-120">Finally, add the `AnimationExtender` control to the current page, within the `<form runat="server">` element, making sure that the animation is included and runs:</span></span>
+<span data-ttu-id="a3056-120">Nakonec přidejte `AnimationExtender` ovládací prvek na aktuální stránku v rámci `<form runat="server">` elementu, ujistěte se, že animaci je součástí a spustí:</span><span class="sxs-lookup"><span data-stu-id="a3056-120">Finally, add the `AnimationExtender` control to the current page, within the `<form runat="server">` element, making sure that the animation is included and runs:</span></span>
 
 [!code-vb[Main](modifying-animations-from-the-server-side-vb/samples/sample6.vb)]
 
 
-<span data-ttu-id="a79b9-121">[![Animace se vytvoří pomocí kódu na straně serveru C# /VB](modifying-animations-from-the-server-side-vb/_static/image2.png)](modifying-animations-from-the-server-side-vb/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="a79b9-121">[![The animation is created using server-side C#/VB code](modifying-animations-from-the-server-side-vb/_static/image2.png)](modifying-animations-from-the-server-side-vb/_static/image1.png)</span></span>
+[![T<span data-ttu-id="a3056-121">Vytvoří he animací na straně serveru C#/VB kód]</span><span class="sxs-lookup"><span data-stu-id="a3056-121">he animation is created using server-side C#/VB code]</span></span>(modifying-animations-from-the-server-side-vb/_static/image2.png)](modifying-animations-from-the-server-side-vb/_static/image1.png)
 
-<span data-ttu-id="a79b9-122">Animace se vytvoří pomocí kódu na straně serveru C# /VB ([kliknutím ji zobrazíte obrázek v plné velikosti](modifying-animations-from-the-server-side-vb/_static/image3.png))</span><span class="sxs-lookup"><span data-stu-id="a79b9-122">The animation is created using server-side C#/VB code ([Click to view full-size image](modifying-animations-from-the-server-side-vb/_static/image3.png))</span></span>
+<span data-ttu-id="a3056-122">Animace se vytvoří pomocí kódu na straně serveru C# /VB ([kliknutím ji zobrazíte obrázek v plné velikosti](modifying-animations-from-the-server-side-vb/_static/image3.png))</span><span class="sxs-lookup"><span data-stu-id="a3056-122">The animation is created using server-side C#/VB code ([Click to view full-size image](modifying-animations-from-the-server-side-vb/_static/image3.png))</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="a79b9-123">[Předchozí](triggering-an-animation-in-another-control-vb.md)
-> [další](executing-animations-using-client-side-code-vb.md)</span><span class="sxs-lookup"><span data-stu-id="a79b9-123">[Previous](triggering-an-animation-in-another-control-vb.md)
+> <span data-ttu-id="a3056-123">[Předchozí](triggering-an-animation-in-another-control-vb.md)
+> [další](executing-animations-using-client-side-code-vb.md)</span><span class="sxs-lookup"><span data-stu-id="a3056-123">[Previous](triggering-an-animation-in-another-control-vb.md)
 [Next](executing-animations-using-client-side-code-vb.md)</span></span>

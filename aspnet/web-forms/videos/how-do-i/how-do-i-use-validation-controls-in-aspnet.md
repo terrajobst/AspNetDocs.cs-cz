@@ -8,17 +8,17 @@ ms.date: 10/26/2007
 ms.assetid: 1f2e5f5b-8be1-4acc-ae36-a2e0d140251a
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-validation-controls-in-aspnet
 msc.type: video
-ms.openlocfilehash: da8831e179360dda870d6ee3d667118094983894
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 17204583d986f7938c38dc373cb296df01f16424
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072988"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59386850"
 ---
-<a name="how-do-i--use-validation-controls-in-aspnet"></a><span data-ttu-id="dfe22-105">[Postup:]  Použití ověřovacích ovládacích prvků v ASP.NET?</span><span class="sxs-lookup"><span data-stu-id="dfe22-105">[How Do I:]  Use Validation Controls in ASP.NET?</span></span>
-====================
-<span data-ttu-id="dfe22-106">podle [Chris pixelů na](https://twitter.com/chrispels)</span><span class="sxs-lookup"><span data-stu-id="dfe22-106">by [Chris Pels](https://twitter.com/chrispels)</span></span>
+# <a name="how-do-i--use-validation-controls-in-aspnet"></a><span data-ttu-id="b3385-105">[Postup:]  Použití ověřovacích ovládacích prvků v ASP.NET?</span><span class="sxs-lookup"><span data-stu-id="b3385-105">[How Do I:]  Use Validation Controls in ASP.NET?</span></span>
 
-<span data-ttu-id="dfe22-107">V tomto videu zjistěte, jak používat ovládací prvky ověřování, která je k dispozici v technologii ASP.NET pro implementaci ověřování na webových stránkách.</span><span class="sxs-lookup"><span data-stu-id="dfe22-107">In this video learn how to use the validation controls available in ASP.NET to implement validation on your web pages.</span></span> <span data-ttu-id="dfe22-108">Všechny hlavní ověřování řídí jako RequiredFieldValidator a RegularExpressionValidator probereme.</span><span class="sxs-lookup"><span data-stu-id="dfe22-108">All the major validation controls such as RequiredFieldValidator and RegularExpressionValidator will be discussed.</span></span> <span data-ttu-id="dfe22-109">Kromě toho informace o používání CustomValidator, když jeden standardní validátory nevyhovuje vašim požadavkům.</span><span class="sxs-lookup"><span data-stu-id="dfe22-109">In addition, learn how to use the CustomValidator when one of the standard validators does not meet your need.</span></span> <span data-ttu-id="dfe22-110">Jsou uvedeny možnosti ověřování na straně klienta i serveru.</span><span class="sxs-lookup"><span data-stu-id="dfe22-110">Both server and client side validation options are shown.</span></span> <span data-ttu-id="dfe22-111">Zjistit, jak jednoduché ověření na ovládací prvek uživatelského rozhraní a také více ověřování.</span><span class="sxs-lookup"><span data-stu-id="dfe22-111">See how to do single validation on a UI control as well as multiple validations.</span></span>
+<span data-ttu-id="b3385-106">podle [Chris pixelů na](https://twitter.com/chrispels)</span><span class="sxs-lookup"><span data-stu-id="b3385-106">by [Chris Pels](https://twitter.com/chrispels)</span></span>
 
-[<span data-ttu-id="dfe22-112">&#9654;Podívejte se na video (31 minuty)</span><span class="sxs-lookup"><span data-stu-id="dfe22-112">&#9654; Watch video (31 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-validation-controls-in-aspnet)
+<span data-ttu-id="b3385-107">V tomto videu zjistěte, jak používat ovládací prvky ověřování, která je k dispozici v technologii ASP.NET pro implementaci ověřování na webových stránkách.</span><span class="sxs-lookup"><span data-stu-id="b3385-107">In this video learn how to use the validation controls available in ASP.NET to implement validation on your web pages.</span></span> <span data-ttu-id="b3385-108">Všechny hlavní ověřování řídí jako RequiredFieldValidator a RegularExpressionValidator probereme.</span><span class="sxs-lookup"><span data-stu-id="b3385-108">All the major validation controls such as RequiredFieldValidator and RegularExpressionValidator will be discussed.</span></span> <span data-ttu-id="b3385-109">Kromě toho informace o používání CustomValidator, když jeden standardní validátory nevyhovuje vašim požadavkům.</span><span class="sxs-lookup"><span data-stu-id="b3385-109">In addition, learn how to use the CustomValidator when one of the standard validators does not meet your need.</span></span> <span data-ttu-id="b3385-110">Jsou uvedeny možnosti ověřování na straně klienta i serveru.</span><span class="sxs-lookup"><span data-stu-id="b3385-110">Both server and client side validation options are shown.</span></span> <span data-ttu-id="b3385-111">Zjistit, jak jednoduché ověření na ovládací prvek uživatelského rozhraní a také více ověřování.</span><span class="sxs-lookup"><span data-stu-id="b3385-111">See how to do single validation on a UI control as well as multiple validations.</span></span>
+
+[<span data-ttu-id="b3385-112">&#9654;Podívejte se na video (31 minuty)</span><span class="sxs-lookup"><span data-stu-id="b3385-112">&#9654; Watch video (31 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-validation-controls-in-aspnet)

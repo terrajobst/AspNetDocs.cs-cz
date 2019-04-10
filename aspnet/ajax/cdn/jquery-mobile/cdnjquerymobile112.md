@@ -8,16 +8,16 @@ ms.date: 07/23/2014
 ms.assetid: 8fae1a7e-2575-45ef-8b20-5d8d614d3e96
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile112
 msc.type: content
-ms.openlocfilehash: dd27475ccdf3863506634ae2b366977880de5300
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 5e086d6239fbf94f7a75d018e7e51e474e778fcd
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066934"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59401709"
 ---
-<a name="jquery-mobile-112-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="a8da4-102">jQuery Mobile 1.1.2 ve službě Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="a8da4-102">jQuery Mobile 1.1.2 on the Microsoft Ajax CDN</span></span>
-====================
-<span data-ttu-id="a8da4-103">Knihovna jQuery Mobile 1.1.2 zahrnuje následující soubory:</span><span class="sxs-lookup"><span data-stu-id="a8da4-103">The jQuery Mobile 1.1.2 library includes the following files:</span></span>
+# <a name="jquery-mobile-112-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="803de-102">jQuery Mobile 1.1.2 ve službě Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="803de-102">jQuery Mobile 1.1.2 on the Microsoft Ajax CDN</span></span>
+
+<span data-ttu-id="803de-103">Knihovna jQuery Mobile 1.1.2 zahrnuje následující soubory:</span><span class="sxs-lookup"><span data-stu-id="803de-103">The jQuery Mobile 1.1.2 library includes the following files:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.2/jquery.mobile.structure-1.1.2.css
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.2/jquery.mobile.structure-1.1.2.min.css
