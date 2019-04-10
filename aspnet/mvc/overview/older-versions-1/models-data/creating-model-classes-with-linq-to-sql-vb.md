@@ -8,15 +8,15 @@ ms.date: 10/07/2008
 ms.assetid: a4a25a75-d71f-4509-98b4-df72e748985a
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 168fbb914b54f88a78db63c16b03c55cc59c4a11
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 212287ea384cf54f9eda477e6f706637d10dd54a
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57074650"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59419896"
 ---
-<a name="creating-model-classes-with-linq-to-sql-vb"></a>Vytvoření tříd modelu pomocí LINQ to SQL (VB)
-====================
+# <a name="creating-model-classes-with-linq-to-sql-vb"></a>Vytvoření tříd modelu pomocí LINQ to SQL (VB)
+
 by [Microsoft](https://github.com/microsoft)
 
 [Stáhnout PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_10_VB.pdf)
@@ -43,7 +43,7 @@ V tomto kurzu používám LINQ to SQL pro dotazování a aktualizaci databáze. 
 V tomto kurzu – k ilustraci, jak se dají vytvářet tříd modelu – jsme sestavení jednoduché aplikace Movie database. Prvním krokem je vytvoření nové databáze. Klikněte pravým tlačítkem na aplikaci\_složce dat v okně Průzkumníka řešení a vyberte možnost nabídky **přidat, nová položka**. Vyberte šablonu, databáze SQL serveru, zadejte pro něj název MoviesDB.mdf a klikněte na tlačítko **přidat** tlačítko (viz obrázek 1).
 
 
-[![Přidání nové databáze SQL serveru](creating-model-classes-with-linq-to-sql-vb/_static/image2.png)](creating-model-classes-with-linq-to-sql-vb/_static/image1.png)
+[![Adding novou databázi SQL Server](creating-model-classes-with-linq-to-sql-vb/_static/image2.png)](creating-model-classes-with-linq-to-sql-vb/_static/image1.png)
 
 **Obrázek 01**: Přidání nové databáze SQL serveru ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-vb/_static/image3.png))
 
@@ -55,7 +55,7 @@ Jakmile vytvoříte novou databázi, můžete otevřít databázi dvojitým klik
 |---|----------------------------------------------------------------------------------------------------|
 |   |                                                                                                    |
 
-[![Pomocí Průzkumníka serveru](creating-model-classes-with-linq-to-sql-vb/_static/image5.png)](creating-model-classes-with-linq-to-sql-vb/_static/image4.png)
+[![USING okno Průzkumníka serveru](creating-model-classes-with-linq-to-sql-vb/_static/image5.png)](creating-model-classes-with-linq-to-sql-vb/_static/image4.png)
 
 **Obrázek 02**: Pomocí Průzkumníka serveru ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-vb/_static/image6.png))
 
@@ -63,7 +63,7 @@ Jakmile vytvoříte novou databázi, můžete otevřít databázi dvojitým klik
 Potřebujeme přidat jedné tabulky do databáze, která představuje naše videa. Klikněte pravým tlačítkem na složku tabulky a vyberte možnost nabídky **přidat novou tabulku**. Tato možnost nabídky vyberete, otevře se Návrhář tabulky (viz obrázek 3).
 
 
-[![Pomocí Průzkumníka serveru](creating-model-classes-with-linq-to-sql-vb/_static/image8.png)](creating-model-classes-with-linq-to-sql-vb/_static/image7.png)
+[![USING okno Průzkumníka serveru](creating-model-classes-with-linq-to-sql-vb/_static/image8.png)](creating-model-classes-with-linq-to-sql-vb/_static/image7.png)
 
 **Obrázek 03**: Návrhář tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-vb/_static/image9.png))
 
@@ -87,7 +87,7 @@ Poté, co provedete tyto změny, uložte tabulku s názvem tblMovie. V tabulce m
 Náš model MVC bude obsahovat LINQ na třídy SQL, které představují tblMovie databázové tabulky. Klikněte pravým tlačítkem na složku modely, vyberte je nejjednodušší způsob, jak vytvořit tyto třídy LINQ to SQL **přidat, nová položka**, vyberte LINQ na třídy SQL šablonu, zadejte název Movie.dbml třídy a klikněte na **přidat**tlačítko (viz obrázek 4).
 
 
-[![Vytvoření LINQ na třídy SQL](creating-model-classes-with-linq-to-sql-vb/_static/image11.png)](creating-model-classes-with-linq-to-sql-vb/_static/image10.png)
+[![Cořit LINQ na třídy SQL](creating-model-classes-with-linq-to-sql-vb/_static/image11.png)](creating-model-classes-with-linq-to-sql-vb/_static/image10.png)
 
 **Obrázek 04**: Vytvoření LINQ na třídy SQL ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-vb/_static/image12.png))
 
@@ -95,7 +95,7 @@ Náš model MVC bude obsahovat LINQ na třídy SQL, které představují tblMovi
 Ihned po vytvoření film LINQ na třídy SQL, zobrazí se Návrhář relací objektů. Databázové tabulky můžete přetáhnout z okna Průzkumníka serveru do Návrháře relací objektů k vytvoření třídy LINQ to SQL, které představují konkrétní databázové tabulky. Je potřeba přidat tblMovie databázové tabulky do Návrháře relací objektů (viz obrázek 4).
 
 
-[![Pomocí Návrháře relací objektů](creating-model-classes-with-linq-to-sql-vb/_static/image14.png)](creating-model-classes-with-linq-to-sql-vb/_static/image13.png)
+[![USING Návrhář relací objektů](creating-model-classes-with-linq-to-sql-vb/_static/image14.png)](creating-model-classes-with-linq-to-sql-vb/_static/image13.png)
 
 **Obrázek 05**: Pomocí Návrháře relací objektů ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-vb/_static/image15.png))
 
@@ -135,7 +135,7 @@ Pokud spustíte aplikaci po změně třídy HomeController a zobrazení indexu z
 Chcete-li přidat záznamy do tabulky databáze tblMovies, klikněte pravým tlačítkem na tblMovies databázová tabulka na okno Průzkumníka serveru (okno Průzkumník databáze v aplikaci Visual Web Developer) a vyberte možnost nabídky **zobrazit Data tabulky**. Můžete vložit video záznamy pomocí mřížky, která se zobrazí (viz obrázek 5).
 
 
-[![Vložení videa](creating-model-classes-with-linq-to-sql-vb/_static/image17.png)](creating-model-classes-with-linq-to-sql-vb/_static/image16.png)
+[![Inserting filmy](creating-model-classes-with-linq-to-sql-vb/_static/image17.png)](creating-model-classes-with-linq-to-sql-vb/_static/image16.png)
 
 **Obrázek 06**: Vložení videa ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-vb/_static/image18.png))
 
@@ -143,7 +143,7 @@ Chcete-li přidat záznamy do tabulky databáze tblMovies, klikněte pravým tla
 Poté, co do tabulky tblMovies přidáte některé záznamy v databázi a spustíte aplikaci, zobrazí se vám na stránce na obrázku 7. Všechny záznamy databáze filmů se zobrazí v seznamu s odrážkami.
 
 
-[![Zobrazení videa pomocí zobrazení indexu](creating-model-classes-with-linq-to-sql-vb/_static/image20.png)](creating-model-classes-with-linq-to-sql-vb/_static/image19.png)
+[![DZobrazit isplaying filmů s indexem](creating-model-classes-with-linq-to-sql-vb/_static/image20.png)](creating-model-classes-with-linq-to-sql-vb/_static/image19.png)
 
 **Obrázek 07**: Zobrazení videa pomocí zobrazení indexu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-vb/_static/image21.png))
 

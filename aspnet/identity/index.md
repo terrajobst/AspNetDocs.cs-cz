@@ -8,15 +8,15 @@ ms.date: 10/02/2013
 ms.assetid: 0c2df5d4-c2dd-486d-b0ed-fe831c6b596c
 msc.legacyurl: /identity
 msc.type: categoryindex
-ms.openlocfilehash: b81e92ff1675b7810f9b2ca8b038a99fb84b1f5e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 48e75d6a2a151befe7ea796b149d2d030712d799
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57795843"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59418349"
 ---
-<a name="aspnet-identity"></a>ASP.NET Identity
-====================
+# <a name="aspnet-identity"></a>ASP.NET Identity
+
 - [Přehled](overview/index.md)
 
     - [Začínáme s ASP.NET Identity](overview/getting-started/index.md)
@@ -31,7 +31,7 @@ ms.locfileid: "57795843"
         - [Doporučené postupy nasazení hesel a dalších citlivých dat do ASP.NET a služby Azure App Service](overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md)
         - [Potvrzení účtu a obnovení hesla s ASP.NET Identity (C#)](overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md)
         - [Dvoufaktorové ověřování pomocí SMS a e-mailu s ASP.NET Identity](overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md)
-    - [Rozšíření](overview/extensibility/index.md)
+    - [Rozšiřitelnost](overview/extensibility/index.md)
 
         - [Přehled poskytovatelů vlastního úložiště pro ASP.NET Identity](overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md)
         - [Implementace vlastního poskytovatele úložiště MySQL ASP.NET Identity](overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider.md)

@@ -8,15 +8,15 @@ ms.date: 05/30/2007
 ms.assetid: d29a7c41-0628-4a23-9dfc-bfea9c6c1054
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-in-the-architecture-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3971140aa7a6c829287e74df804694c19e34adcf
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7637e23678af80ae037292fd3f89ef74167c8242
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067027"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59419246"
 ---
-<a name="caching-data-in-the-architecture-c"></a>Ukládání dat do mezipaměti v architektuře (C#)
-====================
+# <a name="caching-data-in-the-architecture-c"></a>Ukládání dat do mezipaměti v architektuře (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_59_CS.exe) nebo [stahovat PDF](caching-data-in-the-architecture-cs/_static/datatutorial59cs1.pdf)
@@ -159,7 +159,7 @@ Pomocí této změny `AddCacheItem(key, value)`, invaliding mezipaměť je stejn
 Ukládání do mezipaměti vrstvu s třídy a metody je možné pracovat s daty pomocí technik jsme ve prozkoumat v rámci těchto kurzů. Pro ilustraci, práci s daty v mezipaměti, uložte změny do souboru `ProductsCL` třídy a pak otevřete `FromTheArchitecture.aspx` stránku `Caching` složky a přidejte prvku GridView. Vytvořte nový prvek ObjectDataSource z GridView s inteligentních značek. V prvním kroku průvodce s byste měli vidět `ProductsCL` třídy jako jednu z možností z rozevíracího seznamu.
 
 
-[![Třída ProductsCL je zahrnuta v rozevíracím seznamu obchodní objekt](caching-data-in-the-architecture-cs/_static/image5.png)](caching-data-in-the-architecture-cs/_static/image4.png)
+[![Tmu ProductsCL třída je zahrnuta v rozevíracím seznamu obchodní objekt](caching-data-in-the-architecture-cs/_static/image5.png)](caching-data-in-the-architecture-cs/_static/image4.png)
 
 **Obrázek 4**: `ProductsCL` Třída je zahrnuta v rozevíracím seznamu obchodní objekt ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-in-the-architecture-cs/_static/image6.png))
 
@@ -167,7 +167,7 @@ Ukládání do mezipaměti vrstvu s třídy a metody je možné pracovat s daty 
 Po výběru `ProductsCL`, klikněte na tlačítko Další. Rozevírací seznam v kartě vyberte má dvě položky - `GetProducts()` a `GetProductsByCategoryID(categoryID)` a kartu aktualizace má jediný `UpdateProduct` přetížení. Zvolte `GetProducts()` metodu z vyberte kartu a `UpdateProducts` metoda kartu aktualizace a klikněte na Dokončit.
 
 
-[![Metody třídy ProductsCL s jsou uvedeny v rozevírací seznamy](caching-data-in-the-architecture-cs/_static/image8.png)](caching-data-in-the-architecture-cs/_static/image7.png)
+[![Tosoba, které metody s ProductsCL třídy jsou uvedeny v rozevírací seznam obsahuje](caching-data-in-the-architecture-cs/_static/image8.png)](caching-data-in-the-architecture-cs/_static/image7.png)
 
 **Obrázek 5**: `ProductsCL` Metody třídy s jsou uvedeny v rozevírací seznamy ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-in-the-architecture-cs/_static/image9.png))
 

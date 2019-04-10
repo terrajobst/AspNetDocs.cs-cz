@@ -8,15 +8,15 @@ ms.date: 02/12/2008
 ms.assetid: 7cf3f5ed-2a87-4208-a71d-2b39bc19832a
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-multiple-file-uploads-in-aspnet-2
 msc.type: video
-ms.openlocfilehash: cd0e93e10dc7295febc783852c3713963c7c35d8
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0e7757e24fea52034d15728a8e4c37b0d1bd954e
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078097"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59421638"
 ---
-<a name="how-do-i--multiple-file-uploads-in-aspnet2"></a>[Postup:]  Nahrání více souborů v ASP.NET 2
-====================
+# <a name="how-do-i--multiple-file-uploads-in-aspnet2"></a>[Postup:]  Nahrání více souborů v ASP.NET 2
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 V tomto videu jsem se si předvedli nahrání dynamicky určí počet souborů, které aplikace ASP.NET.

@@ -8,15 +8,15 @@ ms.date: 10/09/2014
 ms.assetid: 151cd274-3daa-4f88-ad3b-bffb99a9d545
 msc.legacyurl: /mvc/overview/older-versions
 msc.type: chapter
-ms.openlocfilehash: 25057283e20e437027f4b89c3c5972bca1312093
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a0aa547ee9c8fa29e9863c540046d2f8dbfdd45f
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796131"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59417816"
 ---
-<a name="older-versions---mvc-3-and-4"></a>Starší verze – MVC 3 a 4
-====================
+# <a name="older-versions---mvc-3-and-4"></a>Starší verze – MVC 3 a 4
+
 > Odkazy na zdroje informací pro výuku použijte dřívější verze technologie ASP.NET MVC.
 
 
@@ -30,7 +30,7 @@ ms.locfileid: "57796131"
     - [Zkoumání metod Edit a zobrazení pro úpravy](getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view.md)
     - [Přidání nového pole do modelu a tabulky Movie](getting-started-with-aspnet-mvc4/adding-a-new-field-to-the-movie-model-and-table.md)
     - [Přidání ověření do modelu](getting-started-with-aspnet-mvc4/adding-validation-to-the-model.md)
-    - [Zkoumání podrobností a metod Delete](getting-started-with-aspnet-mvc4/examining-the-details-and-delete-methods.md)
+    - [Zkoumání metod Details a Delete](getting-started-with-aspnet-mvc4/examining-the-details-and-delete-methods.md)
 - [Začínáme s EF 5 pomocí MVC 4](getting-started-with-ef-5-using-mvc-4/index.md)
 
     - [Vytvoření datového modelu Entity Framework](getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)
@@ -82,15 +82,15 @@ ms.locfileid: "57796131"
 - [Vytvoření aplikace MVC 3 se syntaxí Razor a nerušivým JavaScriptem](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript.md)
 - [Aplikace MVC 3 Music Store](mvc-music-store/index.md)
 
-    - [Část 1: Přehled a soubor -> Nový projekt](mvc-music-store/mvc-music-store-part-1.md)
+    - [Část 1: Přehled a Soubor->Nový projekt](mvc-music-store/mvc-music-store-part-1.md)
     - [Část 2: Kontrolery](mvc-music-store/mvc-music-store-part-2.md)
-    - [3. část: Zobrazení a modely ViewModels](mvc-music-store/mvc-music-store-part-3.md)
-    - [4. část: Modely a přístup k datům](mvc-music-store/mvc-music-store-part-4.md)
-    - [5. část: Upravit formuláře a šablonování textu](mvc-music-store/mvc-music-store-part-5.md)
-    - [6. část: Používání datových poznámek k ověření modelu](mvc-music-store/mvc-music-store-part-6.md)
+    - [Část 3: Zobrazení a modely ViewModel](mvc-music-store/mvc-music-store-part-3.md)
+    - [Část 4: Modely a přístup k datům](mvc-music-store/mvc-music-store-part-4.md)
+    - [Část 5: Editační formuláře a šablonování textu](mvc-music-store/mvc-music-store-part-5.md)
+    - [Část 6: Používání datových poznámek k ověření modelu](mvc-music-store/mvc-music-store-part-6.md)
     - [Část 7: Členství a ověřování](mvc-music-store/mvc-music-store-part-7.md)
     - [Část 8: Nákupní košík s aktualizacemi Ajax](mvc-music-store/mvc-music-store-part-8.md)
-    - [9. část: Registrace a pokladna](mvc-music-store/mvc-music-store-part-9.md)
+    - [Část 9: Registrace a pokladna](mvc-music-store/mvc-music-store-part-9.md)
     - [Část 10: Závěrečné aktualizace návrhu navigace a webu, závěr](mvc-music-store/mvc-music-store-part-10.md)
 - [MVC 3 – překryvný kalendář s prvkem DatePicker v uživatelském rozhraní HTML5 a jQuery](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/index.md)
 

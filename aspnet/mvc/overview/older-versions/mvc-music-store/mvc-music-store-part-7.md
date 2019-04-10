@@ -8,15 +8,15 @@ ms.date: 10/13/2010
 ms.assetid: c8511ebe-68bc-4240-87c3-d5ced84a3f37
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 44205f0ef59e00ad9fb1c45fdc0ba8934b5804cc
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f5431d60506f5b0a0f4bbcd8e86b316c728a1191
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076789"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59415918"
 ---
-<a name="part-7-membership-and-authorization"></a>Část 7: Členství a ověřování
-====================
+# <a name="part-7-membership-and-authorization"></a>Část 7: Členství a ověřování
+
 podle [Jon Galloway](https://github.com/jongalloway)
 
 > MVC Music Store jde o kurz, který se seznámíte, podrobné postupy pro vývoj pro web pomocí ASP.NET MVC a sady Visual Studio.  
@@ -72,7 +72,7 @@ Klikněte na tlačítko Zpět a potom klikněte na odkaz vytvořit uživatele na
 
 Vyplňte pole informace uživatele na levé straně pomocí následujících informací:
 
-| **Pole** | **Hodnota** |
+| **Pole** | **Value** |
 | --- | --- |
 | **Uživatelské jméno** | Správce |
 | **Heslo** | / password123! |

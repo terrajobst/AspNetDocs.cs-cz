@@ -8,15 +8,15 @@ ms.date: 07/17/2006
 ms.assetid: 9dc264a6-feb8-474b-8b91-008c50708065
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8633d6ba5d82dfa2ebbea6858eb89433573a775f
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f0ba98d4049cd7ad10d5e1238d4580b3f767924b
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068377"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59420572"
 ---
-<a name="limiting-data-modification-functionality-based-on-the-user-vb"></a>Omezení funkcí pro úpravu dat podle uživatele (VB)
-====================
+# <a name="limiting-data-modification-functionality-based-on-the-user-vb"></a>Omezení funkcí pro úpravu dat podle uživatele (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_23_VB.exe) nebo [stahovat PDF](limiting-data-modification-functionality-based-on-the-user-vb/_static/datatutorial23vb1.pdf)
@@ -31,12 +31,12 @@ Počet webových aplikací podpora uživatelských účtů a poskytují různé 
 V tomto kurzu prozkoumáme jak dynamicky upravit možnosti úprav dat na základě hostujícími uživatele. Zejména vytvoříme stránku, která zobrazuje informace o dodavateli v upravitelné DetailsView spolu s prvku GridView, která zobrazuje seznam produktů, poskytnutých dodavatelem. Pokud je uživatel na stránce naší společnosti, mohou: prohlížet jakékoli informace s dodavatelem; upravit jejich adresy; a upravovat informace pro některý z produktů poskytnutých dodavatelem. Pokud však uživatel z určité společnosti, můžou jenom zobrazit a upravit své vlastní informace o adrese a lze upravit pouze jejich produkty, které ještě nebyly označeny jako ukončena.
 
 
-[![Uživatel z naše společnost, která může upravovat všechny informace s dodavatelem](limiting-data-modification-functionality-based-on-the-user-vb/_static/image2.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image1.png)
+[![A Uživatel z naše společnost, která může upravovat všechny informace s dodavatelem](limiting-data-modification-functionality-based-on-the-user-vb/_static/image2.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image1.png)
 
 **Obrázek 1**: Uživatel z náš společnosti můžete upravit libovolného dodavatele s informace ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image3.png))
 
 
-[![Uživatel z konkrétního dodavatele může pouze zobrazení a upravit jejich informace](limiting-data-modification-functionality-based-on-the-user-vb/_static/image5.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image4.png)
+[![A Uživatel z konkrétního dodavatele může pouze zobrazení a upravit informace o jejich](limiting-data-modification-functionality-based-on-the-user-vb/_static/image5.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image4.png)
 
 **Obrázek 2**: Uživatel z konkrétní dodavatele můžete jenom zobrazit a upravit informace o jejich ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image6.png))
 
@@ -56,7 +56,7 @@ Protože cílem tohoto kurzu je předvést úprava možnosti Změna dat na zákl
 Naši první krok v tomto kurzu je pak k vytvoření této DropDownList a přidejte do ní dodavatelů v systému. Otevřít `UserLevelAccess.aspx` stránku `EditInsertDelete` složky, přidejte DropDownList jehož `ID` je nastavena na `Suppliers`a tento DropDownList svázat nového prvku ObjectDataSource s názvem `AllSuppliersDataSource`.
 
 
-[![Vytvoření nového prvku ObjectDataSource s názvem AllSuppliersDataSource](limiting-data-modification-functionality-based-on-the-user-vb/_static/image8.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image7.png)
+[![CVytvořit nový účet ObjectDataSource s názvem AllSuppliersDataSource](limiting-data-modification-functionality-based-on-the-user-vb/_static/image8.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image7.png)
 
 **Obrázek 3**: Vytvoření nového prvku ObjectDataSource s názvem `AllSuppliersDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image9.png))
 
@@ -66,7 +66,7 @@ Protože chceme, aby tento DropDownList mají zahrnout všichni dodavatelé, nak
 Po dokončení Průvodce prvek ObjectDataSource, proveďte kroky tím, že nakonfigurujete `Suppliers` DropDownList tak, že ukazuje `CompanyName` pole data a použije `SupplierID` jako hodnota pro každé datové pole `ListItem`.
 
 
-[![Konfigurace DropDownList dodavatelé CompanyName a KódDodavatele datových polí](limiting-data-modification-functionality-based-on-the-user-vb/_static/image11.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image10.png)
+[![Configurovat DropDownList dodavatelé použití pole CompanyName a KódDodavatele Data](limiting-data-modification-functionality-based-on-the-user-vb/_static/image11.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image10.png)
 
 **Obrázek 4**: Konfigurace `Suppliers` DropDownList k použití `CompanyName` a `SupplierID` datových polí ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image12.png))
 
@@ -85,7 +85,7 @@ Po `AppendDataBoundItems` vlastnost byla nastavena a `ListItem` přidali, DropDo
 Obrázek 5 ukazuje snímek obrazovky naše aktuální průběh, když zobrazit pomocí prohlížeče.
 
 
-[![Dodavatelé DropDownList obsahuje zobrazit všechny ListItem Plus jeden pro každý dodavatele](limiting-data-modification-functionality-based-on-the-user-vb/_static/image14.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image13.png)
+[![Tmá dodavatelé DropDownList obsahuje zobrazit všechny položky ListItem, Plus jeden pro každý dodavatele](limiting-data-modification-functionality-based-on-the-user-vb/_static/image14.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image13.png)
 
 **Obrázek 5**: `Suppliers` DropDownList obsahuje zobrazit všechny `ListItem`, Plus jeden pro každý dodavatele ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image15.png))
 
@@ -112,7 +112,7 @@ Po dokončení konfigurace `SupplierDetails` DetailsView a `AllSuppliersDataSour
 V tomto okamžiku můžete ovládacím prvku DetailsView stránkování prostřednictvím a je možné aktualizovat informace o adrese vybrané dodavatele s, bez ohledu na výběr provedený v `Suppliers` DropDownList (viz obrázek 6).
 
 
-[![Veškeré informace, Dodavatelé mohou zobrazit a aktualizovat jeho adresy](limiting-data-modification-functionality-based-on-the-user-vb/_static/image17.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image16.png)
+[![Any dodavatelé informace můžete zobrazit a aktualizovat jeho adresu](limiting-data-modification-functionality-based-on-the-user-vb/_static/image17.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image16.png)
 
 **Obrázek 6**: Všechny dodavatelé informace můžete zobrazit a aktualizovat jeho adresa ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image18.png))
 
@@ -124,7 +124,7 @@ Naši stránku aktuálně zobrazuje informace pro všechny dodavatele bez ohledu
 Přidat nový prvek ObjectDataSource na stránku jeho pojmenování `SingleSupplierDataSource`. Z inteligentních značek, klikněte na odkaz Konfigurovat zdroj dat a jeho použití `SuppliersBLL` třída s `GetSupplierBySupplierID(supplierID)` metody. Stejně jako u `AllSuppliersDataSource` prvek ObjectDataSource, mají `SingleSupplierDataSource` ObjectDataSource s `Update()` metodu mapované na `SuppliersBLL` třída s `UpdateSupplierAddress` metoda.
 
 
-[![Konfigurace SingleSupplierDataSource ObjectDataSource GetSupplierBySupplierID(supplierID) metody](limiting-data-modification-functionality-based-on-the-user-vb/_static/image20.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image19.png)
+[![Configurovat SingleSupplierDataSource ObjectDataSource GetSupplierBySupplierID(supplierID) metody](limiting-data-modification-functionality-based-on-the-user-vb/_static/image20.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image19.png)
 
 **Obrázek 7**: Konfigurace `SingleSupplierDataSource` ObjectDataSource k použití `GetSupplierBySupplierID(supplierID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image21.png))
 
@@ -132,7 +132,7 @@ Přidat nový prvek ObjectDataSource na stránku jeho pojmenování `SingleSuppl
 Dále jsme znovu zobrazit výzva k zadání parametru Zdroj `GetSupplierBySupplierID(supplierID)` metody s `supplierID` vstupního parametru. Vzhledem k tomu, že má být zobrazena informace pro dodavatele vybrali DropDownList, použijte `Suppliers` DropDownList s `SelectedValue` vlastnost jako zdroj parametru.
 
 
-[![Použít DropDownList dodavatelé jako KódDodavatele zdroji parametru](limiting-data-modification-functionality-based-on-the-user-vb/_static/image23.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image22.png)
+[![UDodavatelé DropDownList jako KódDodavatele zdroji parametru se](limiting-data-modification-functionality-based-on-the-user-vb/_static/image23.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image22.png)
 
 **Obrázek 8**: Použití `Suppliers` DropDownList jako `supplierID` zdroji parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image24.png))
 
@@ -147,12 +147,12 @@ Obslužná rutina události začíná tak, že určíte, zda jste vybrali možno
 Pomocí této obslužné rutiny události na místě ovládacím prvku DetailsView nyní zobrazuje vybrané dodavatele, pokud jste vybrali možnost "Zobrazit nebo upravit všichni dodavatelé", v takovém případě všechny dodavatele lze zobrazit pomocí rozhraní stránkování. Obrázek 9 ukazuje na stránku s možností "Zobrazit nebo upravit všichni dodavatelé"; Mějte na paměti, že rozhraní stránkování je k dispozici, uživatel navštívit a aktualizovat libovolnému dodavateli. Obrázek 10 ukazuje na stránku s dodavatelem Ma Maison vybrali. Pouze informace s Ma Maison se může zobrazit a upravovat v tomto případě.
 
 
-[![Všechny informace dodavatelé mohou zobrazit a upravit](limiting-data-modification-functionality-based-on-the-user-vb/_static/image26.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image25.png)
+[![Avšechny informace dodavatelé mohou zobrazit a upravit](limiting-data-modification-functionality-based-on-the-user-vb/_static/image26.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image25.png)
 
 **Obrázek 9**: Všechny dodavatelé informace můžete zobrazit a upravovaný ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image27.png))
 
 
-[![Pouze vybrané dodavatele s informace můžete zobrazit a upravit](limiting-data-modification-functionality-based-on-the-user-vb/_static/image29.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image28.png)
+[![Ojen pro vybrané dodavatele s informace může být Viewed a upravovaný](limiting-data-modification-functionality-based-on-the-user-vb/_static/image29.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image28.png)
 
 **Obrázek 10**: Jenom vybraná dodavatele s informace můžou být Viewed a upravovaný ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image30.png))
 
@@ -171,7 +171,7 @@ S ovládacím prvku DetailsView. dokončení naším dalším krokem je zahrnout
 Pomocí tohoto přetížení vytvořili, můžeme znovu připraven k přidání ovládacího prvku GridView a její přidružené ObjectDataSource. Přidání nového ovládacího prvku GridView na stránku, nastavte jeho `ID` vlastnost `ProductsBySupplier`a nakonfigurujte ho na použití nového prvku ObjectDataSource s názvem `ProductsBySupplierDataSource`. Protože chceme, aby tento GridView seznam těchto produktů vybrané dodavatelem, použijte `ProductsBLL` třída s `GetProductsBySupplierID(supplierID)` metody. Také namapovat `Update()` metoda k novému `UpdateProduct` přetížení, které jsme právě vytvořili.
 
 
-[![Konfigurace ObjectDataSource použít přetížení UpdateProduct právě vytvořili](limiting-data-modification-functionality-based-on-the-user-vb/_static/image32.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image31.png)
+[![Configurovat ObjectDataSource používat UpdateProduct přetížení právě vytvořili](limiting-data-modification-functionality-based-on-the-user-vb/_static/image32.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image31.png)
 
 **Obrázek 11**: Konfigurace ObjectDataSource k použití `UpdateProduct` přetížení právě vytvořili ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image33.png))
 
@@ -179,7 +179,7 @@ Pomocí tohoto přetížení vytvořili, můžeme znovu připraven k přidání 
 Můžeme znovu výzva k výběru parametr zdroj `GetProductsBySupplierID(supplierID)` metody s `supplierID` vstupního parametru. Protože chceme zobrazit produkty pro dodavatele vybraný v ovládacím prvku DetailsView, použijte `SuppliersDetails` ovládací prvek DetailsView s `SelectedValue` vlastnost jako zdroj parametru.
 
 
-[![Použití vlastnosti SelectedValue prvku SuppliersDetails DetailsView s jako parametr zdroje](limiting-data-modification-functionality-based-on-the-user-vb/_static/image35.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image34.png)
+[![Use s SuppliersDetails DetailsView vlastnost SelectedValue jako zdroj parametr](limiting-data-modification-functionality-based-on-the-user-vb/_static/image35.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image34.png)
 
 **Obrázek 12**: Použití `SuppliersDetails` prvek DetailsView s `SelectedValue` vlastnost jako zdroj parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image36.png))
 
@@ -194,7 +194,7 @@ Stejně jako u našich předchozí ObjectDataSources tento jeden s `OldValuesPar
 S touto konfigurací kompletní naši stránku nyní obsahuje produkty poskytnuté dodavatelem v prvku GridView (viz obrázek 13). Aktuálně *jakékoli* produkt s názvem nebo množství na jednotku je možné aktualizovat. Musíme aktualizovat logiku naši stránku tak, aby tato funkce je zakázaná pro odpojené produkty pro uživatele přidružené k určité dodavatele. Jsme budete řešit tento poslední část v kroku 5.
 
 
-[![Jsou zobrazeny poskytnutých dodavatelem vybrané produkty](limiting-data-modification-functionality-based-on-the-user-vb/_static/image38.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image37.png)
+[![Tmá poskytnutých dodavatelem vybrané produkty jsou zobrazeny](limiting-data-modification-functionality-based-on-the-user-vb/_static/image38.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image37.png)
 
 **Obrázek 13**: Se zobrazují produkty poskytnuté dodavatelem vybrané ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image39.png))
 
@@ -217,12 +217,12 @@ Vytvořte obslužnou rutinu události pro prvek GridView s `RowDataBound` událo
 S touto událostí obslužné rutiny na místě, pokud tyto produkty, které jsou vyřazeny navštívit tuto stránku jako uživatel od konkrétního dodavatele se nedají upravovat, na tlačítku pro úpravy je skrytý pro tyto produkty. Například s Chef Anton Gumbo Mix je ukončená produktu pro nový Orleans Cajun Delights dodavatele. Při návštěvě stránky pro tento konkrétní dodavatele, přístup se skryje tlačítko Upravit pro tento produkt (viz obrázek 14). Ale při návštěvě pomocí "Zobrazit nebo upravit všichni dodavatelé", tlačítko pro úpravy je dostupné (viz obrázek 15).
 
 
-[![Pro konkrétní dodavatele uživatele tlačítko Upravit pro Chef Anton s Gumbo Mix skryté](limiting-data-modification-functionality-based-on-the-user-vb/_static/image41.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image40.png)
+[![Fnebo je skrytý specifické pro dodavatele uživatelů na tlačítko Upravit pro Chef Anton s Gumbo Mix](limiting-data-modification-functionality-based-on-the-user-vb/_static/image41.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image40.png)
 
 **Obrázek 14**: Pro konkrétní dodavatele uživatele je skrytý tlačítko Upravit pro Chef Anton s Gumbo Mix ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image42.png))
 
 
-[![Pro všechny uživatele dodavatelé zobrazit nebo upravit je zobrazeno tlačítko Upravit pro Chef Anton s Gumbo Mix](limiting-data-modification-functionality-based-on-the-user-vb/_static/image44.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image43.png)
+[![Fnebo se zobrazí zobrazit nebo upravit všichni dodavatelé, na tlačítko Upravit pro Chef Anton s Gumbo Mix](limiting-data-modification-functionality-based-on-the-user-vb/_static/image44.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image43.png)
 
 **Obrázek 15**: Pro všechny uživatele dodavatelé zobrazit nebo upravit, je zobrazeno tlačítko Upravit pro Chef Anton s Gumbo Mix ([kliknutím ji zobrazíte obrázek v plné velikosti](limiting-data-modification-functionality-based-on-the-user-vb/_static/image45.png))
 

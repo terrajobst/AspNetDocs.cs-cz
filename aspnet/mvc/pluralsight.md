@@ -8,19 +8,19 @@ ms.date: 03/09/2011
 ms.assetid: 87612fe1-258c-4f50-88d8-c3047dec3f14
 msc.legacyurl: /mvc/pluralsight
 msc.type: content
-ms.openlocfilehash: 4669f35f897b07d6cb288f57b031cc966c7bb04d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 200e6b8cf8c32fbf70b383fc02e2fd74cbc313e5
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072589"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59419870"
 ---
-<a name="mvc-video-training-from-pluralsight"></a>Videokurz o MVC od společnosti Pluralsight
-====================
+# <a name="mvc-video-training-from-pluralsight"></a>Videokurz o MVC od společnosti Pluralsight
+
 ### <a name="videos"></a>Videa
 
 - [Úvod a požadavky](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m1-introduction&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [Specifikace OWIN a sada komponent Katana](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m2-katana&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [OWIN a Katana](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m2-katana&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 - [Identity a zabezpečení](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m3-identity&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 - [Bootstrap](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m4-bootstrap&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 - [Webové rozhraní API 2](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m5-webapi2&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)

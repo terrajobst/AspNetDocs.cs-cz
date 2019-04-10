@@ -8,15 +8,15 @@ ms.date: 09/08/2014
 ms.assetid: 0bbf7a6e-d7eb-4091-91e4-fff892777f32
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create_the_data_access_layer
 msc.type: authoredcontent
-ms.openlocfilehash: e6ec385c6a4a5507ffae726157f7d52e9c5605da
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: bc91eba17938de15f03ecc1e745aac57c7eac7a1
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069697"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59419493"
 ---
-<a name="create-the-data-access-layer"></a>Vytvoření vrstvy přístupu k datům
-====================
+# <a name="create-the-data-access-layer"></a>Vytvoření vrstvy přístupu k datům
+
 by [Erik Reitan](https://github.com/Erikre)
 
 [Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)

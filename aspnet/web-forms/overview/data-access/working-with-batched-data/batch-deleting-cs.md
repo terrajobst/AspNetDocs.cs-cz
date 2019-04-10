@@ -8,15 +8,15 @@ ms.date: 06/26/2007
 ms.assetid: ac6916d0-a5ab-4218-9760-7ba9e72d258c
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c5b4d3c21fad9000ae50ecb35a5d94d176a135ee
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: da913e08cd007a89b659f87ef30ea15160692c09
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069568"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59416945"
 ---
-<a name="batch-deleting-c"></a>Dávkové odstraňování (C#)
-====================
+# <a name="batch-deleting-c"></a>Dávkové odstraňování (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_65_CS.zip) nebo [stahovat PDF](batch-deleting-cs/_static/datatutorial65cs1.pdf)
@@ -31,7 +31,7 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 Každý, kdo použil online e-mailového klienta je již obeznámeni s jedním z nejběžnějších dávkové odstranění rozhraní: zaškrtávací políčko v každém řádku v tabulce s odpovídající odstranit všechny zaškrtnutí položky a tlačítka (viz obrázek 1). Tento kurz je spíše krátký protože jsme ve neučinili všechny těžkou práci v předchozích kurzech při vytváření webové rozhraní a metoda odstranit řadu záznamy jako jednu atomickou operaci. V [přidání sloupce zaškrtávacích políček do ovládacího prvku GridView](../enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-cs.md) kurzu jsme vytvořili GridView sloupce zaškrtávacích políček a v [zabalení úprav databáze do transakce](wrapping-database-modifications-within-a-transaction-cs.md) kurzu jsme vytvořili metody v BLL, byste použili transakce odstranit `List<T>` z `ProductID` hodnoty. V tomto kurzu budeme stavět a sloučit naše předchozí prostředí, abyste vytvořili pracovní dávkové odstranění příklad.
 
 
-[![Každý řádek obsahuje zaškrtávací políčko](batch-deleting-cs/_static/image1.gif)](batch-deleting-cs/_static/image1.png)
+[![EACH řádek obsahuje zaškrtávací políčko](batch-deleting-cs/_static/image1.gif)](batch-deleting-cs/_static/image1.png)
 
 **Obrázek 1**: Každý řádek obsahuje zaškrtávací políčko ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-deleting-cs/_static/image2.png))
 
@@ -41,7 +41,7 @@ Každý, kdo použil online e-mailového klienta je již obeznámeni s jedním z
 Protože jsme už vytvořili dávkové odstranění rozhraní [přidání sloupce zaškrtávacích políček do ovládacího prvku GridView](../enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-cs.md) kurzu jsme můžete jednoduše zkopírovat ho do `BatchDelete.aspx` místo vytváření od začátku. Začněte otevřením `BatchDelete.aspx` stránku `BatchData` složky a `CheckBoxField.aspx` stránku `EnhancedGridView` složky. Z `CheckBoxField.aspx` stránce, přejděte do zobrazení zdroje a zkopírujte kód mezi `<asp:Content>` značek, jak je znázorněno na obrázku 2.
 
 
-[![Deklarativní CheckBoxField.aspx zkopírujte do schránky](batch-deleting-cs/_static/image2.gif)](batch-deleting-cs/_static/image3.png)
+[![CKopírovat deklarativní značek CheckBoxField.aspx do schránky.](batch-deleting-cs/_static/image2.gif)](batch-deleting-cs/_static/image3.png)
 
 **Obrázek 2**: Zkopírujte deklarativním označení `CheckBoxField.aspx` do schránky ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-deleting-cs/_static/image4.png))
 
@@ -54,7 +54,7 @@ Dále přejděte do zobrazení zdroje v `BatchDelete.aspx` a vložte obsah schr�
 Po zkopírování deklarativní a zdrojový kód, věnujte chvíli testování `BatchDelete.aspx` zobrazením prostřednictvím prohlížeče. Měli byste vidět seznam prvních deseti produktů v GridView s každým řádkem výpis produkt s názvem, kategorie a cena spolu s zaškrtávací políčko GridView. Měla by existovat tři tlačítka: Zaškrtnout vše, zrušit zaškrtnutí všech položek a odstranit vybrané produkty. Kliknutím na tlačítko Zkontrolovat všechny vybere všech zaškrtávacích políček, zatímco zrušit zaškrtnutí všech vymaže všechna zaškrtávací políčka. Kliknutím na Odstranit vybrané produkty zobrazí zprávu, která obsahuje seznam `ProductID` hodnoty vybrané produkty, ale nedojde k odstranění ve skutečnosti produktů.
 
 
-[![Rozhraní z CheckBoxField.aspx byl přesunut do BatchDeleting.aspx](batch-deleting-cs/_static/image3.gif)](batch-deleting-cs/_static/image5.png)
+[![Tmá rozhraní z CheckBoxField.aspx byl přesunut do BatchDeleting.aspx](batch-deleting-cs/_static/image3.gif)](batch-deleting-cs/_static/image5.png)
 
 **Obrázek 3**: Rozhraní z `CheckBoxField.aspx` byl přesunut do `BatchDeleting.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-deleting-cs/_static/image6.png))
 
@@ -82,12 +82,12 @@ Aktualizovaný kód vytvoří `List<T>` typu `int` (`productIDsToDelete`) a napl
 Obrázek 4 ukazuje prvku GridView, po několik řádků vybraných pro odstranění. Obrázek 5 ukazuje na obrazovce, ihned po kliknutí na tlačítko Odstranit vybrané produkty. Všimněte si, že na obrázku 5 `ProductID` hodnoty odstraněné záznamy zobrazené v popisku pod prvku GridView a řádky už nejsou v prvku GridView.
 
 
-[![Odstraní vybrané produkty](batch-deleting-cs/_static/image4.gif)](batch-deleting-cs/_static/image7.png)
+[![Tmá vybrané produkty budou odstraněny](batch-deleting-cs/_static/image4.gif)](batch-deleting-cs/_static/image7.png)
 
 **Obrázek 4**: Vybrané produkty se odstraní ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-deleting-cs/_static/image8.png))
 
 
-[![Hodnoty odstranit ProductID produkty jsou uvedené pod prvku GridView](batch-deleting-cs/_static/image5.gif)](batch-deleting-cs/_static/image9.png)
+[![The odstranit produkty ProductID hodnoty jsou uvedené pod prvku GridView](batch-deleting-cs/_static/image5.gif)](batch-deleting-cs/_static/image9.png)
 
 **Obrázek 5**: Produkty odstranit `ProductID` hodnoty jsou uvedené pod prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-deleting-cs/_static/image10.png))
 

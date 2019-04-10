@@ -1,23 +1,24 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/index
-title: V rozhraní ASP.NET Web API OData | Dokumentace Microsoftu
+title: OData v rozhraní ASP.NET Web API – ASP.NET 4.x
 author: rick-anderson
-description: Postup vytvoření koncových bodů protokolu OData v rozhraní Web API. OData je data protokol pro web. Poskytuje jednotným způsobem pro dotazování a manipulaci s datovými sadami. Webové rozhraní API s...
+description: Vytvoření koncových bodů protokolu OData v rozhraní ASP.NET Web API pro ASP.NET 4.x
 ms.author: riande
 ms.date: 08/17/2012
+ms.custom: seoapril2019
 ms.assetid: 9151c605-e911-4f24-95b5-ca310b105abf
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api
 msc.type: chapter
-ms.openlocfilehash: 9b805bb1ed9d7b5dea53a2aaccbf471829145920
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 08870e703c88afccd57232cc259e928a08e7a7a6
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57795968"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59417881"
 ---
-<a name="odata-in-aspnet-web-api"></a>V rozhraní ASP.NET Web API OData
-====================
-> Postup vytvoření koncových bodů protokolu OData v rozhraní Web API. OData je data protokol pro web. Poskytuje jednotným způsobem pro dotazování a manipulaci s datovými sadami. Webové rozhraní API podporuje verze 3 a 4 verze protokolu OData.
+# <a name="odata-in-aspnet-web-api"></a>V rozhraní ASP.NET Web API OData
+
+> Vytvoření koncových bodů protokolu OData v rozhraní ASP.NET Web API pro ASP.NET 4.x. OData je data protokol pro web. Poskytuje jednotným způsobem pro dotazování a manipulaci s datovými sadami. Webové rozhraní API podporuje verze 3 a 4 verze protokolu OData.
 
 
 - [OData v4](odata-v4/index.md)
@@ -27,7 +28,7 @@ ms.locfileid: "57795968"
     - [Relace prvků v OData v4](odata-v4/entity-relations-in-odata-v4.md)
     - [Akce a funkce v OData v4](odata-v4/odata-actions-and-functions.md)
     - [Zahrnutí v OData v4](odata-v4/odata-containment-in-web-api-22.md)
-    - [Vytvoření jednoho prvku v OData v4](odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22.md)
+    - [Vytvoření jednoznačného prvku v OData v4](odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22.md)
     - [Otevřené typy v OData v4](odata-v4/use-open-types-in-odata-v4.md)
     - [Komplexní dědičnost typů v OData v4](odata-v4/complex-type-inheritance-in-odata-v4.md)
 - [OData v3](odata-v3/index.md)

@@ -8,15 +8,15 @@ ms.date: 07/27/2010
 ms.assetid: 7e0e9928-8fdc-4b74-9882-55fac0976628
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-new-aspnet-mvc-project
 msc.type: authoredcontent
-ms.openlocfilehash: 3f34f17aa35dbfed2d52daf615c8dc81be6e7847
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c85db4289698988ead44afd452da17054bab9f07
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078409"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59417205"
 ---
-<a name="create-a-new-aspnet-mvc-project"></a>Vytvoření nového projektu ASP.NET MVC
-====================
+# <a name="create-a-new-aspnet-mvc-project"></a>Vytvoření nového projektu ASP.NET MVC
+
 by [Microsoft](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
@@ -67,7 +67,7 @@ Projekty ASP.NET MVC ve výchozím nastavení mají šest adresářů nejvyšš�
 | **/ Zobrazení** | Místo, kam dáte soubory šablon uživatelského rozhraní, které jsou zodpovědné za vykreslování výstup |
 | **/ Skripty** | Místo, kam dáte soubory knihoven jazyka JavaScript a skripty (.js) |
 | **/ Obsahu** | Místo, kam dáte šablon stylů CSS a obrázkové soubory a jiný obsah než dynamické/JavaScript |
-| **/App\_Data** | Tam, kde se ukládají datové soubory byste měli pro čtení a zápisu. |
+| **/ Aplikace\_dat** | Tam, kde se ukládají datové soubory byste měli pro čtení a zápisu. |
 
 ASP.NET MVC nevyžaduje, aby tuto strukturu. Ve skutečnosti vývojáře, kteří pracují na velkých aplikací se obvykle oddílu aplikace nahoru ve více projektech, aby lépe zvládnutelné (například: tříd datových modelů často přejít v projektu knihovny samostatné třídy z webové aplikace). Výchozí strukturu projektu, ale poskytuje dobré výchozí adresář konvenci, můžeme použít naše aplikace priority udržovat čisté.
 

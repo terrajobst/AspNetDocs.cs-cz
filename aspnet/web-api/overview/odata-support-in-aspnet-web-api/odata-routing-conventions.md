@@ -1,25 +1,26 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
-title: Konvence trasování v rozhraní ASP.NET Web API 2 Odata | Dokumentace Microsoftu
+title: Konvence trasování v rozhraní ASP.NET Web API 2 Odata – ASP.NET 4.x
 author: MikeWasson
-description: Tento článek popisuje konvence trasování, které webové rozhraní API používá koncových bodů protokolu OData.
+description: Popisuje konvence trasování, že webové rozhraní API 2 v ASP.NET 4.x používá koncových bodů protokolu OData.
 ms.author: riande
 ms.date: 07/31/2013
+ms.custom: seoapril2019
 ms.assetid: adbc175a-14eb-4ab2-a441-d056ffa8266f
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
 msc.type: authoredcontent
-ms.openlocfilehash: 0199ccde100c8c3ab70db912b8ab984e0617f9dd
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8916f8b7a024636be1be055457081487f46a7936
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066748"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59421625"
 ---
-<a name="routing-conventions-in-aspnet-web-api-2-odata"></a>Konvence trasování v rozhraní ASP.NET Web API 2 Odata
-====================
+# <a name="routing-conventions-in-aspnet-web-api-2-odata"></a>Konvence trasování v rozhraní ASP.NET Web API 2 Odata
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
-> Tento článek popisuje konvence trasování, které webové rozhraní API používá koncových bodů protokolu OData.
+> Tento článek popisuje konvence trasování, že webové rozhraní API 2 v ASP.NET 4.x používá koncových bodů protokolu OData.
 
 
 Webové rozhraní API získá požadavek OData, mapuje k názvu kontroleru a názvu akce požadavku. Mapování vychází z URI a metodou HTTP. Například `GET /odata/Products(1)` mapuje `ProductsController.GetProduct`.
@@ -60,7 +61,7 @@ Proto tato cesta vybere si dodavatele produktu 1.
 
 **Dotazování entit**
 
-| Žádost | Příklad identifikátoru URI | Název akce | Vzorová akce |
+| Request | Příklad identifikátoru URI | Název akce | Vzorová akce |
 | --- | --- | --- | --- |
 | ZÍSKAT /entityset | / Produkty | GetEntitySet nebo Get | GetProducts |
 | ZÍSKAT /entityset(key) | /Products(1) | GetEntityType nebo Get | GetProduct |
@@ -70,7 +71,7 @@ Další informace najdete v tématu [vytvoření koncového bodu OData jen pro �
 
 **Vytváření, aktualizaci a odstraňování entit**
 
-| Žádost | Příklad identifikátoru URI | Název akce | Vzorová akce |
+| Request | Příklad identifikátoru URI | Název akce | Vzorová akce |
 | --- | --- | --- | --- |
 | Publikovat /entityset | / Produkty | PostEntityType nebo příspěvek | PostProduct |
 | Vložit /entityset(key) | /Products(1) | PutEntityType nebo Put | PutProduct |
@@ -82,7 +83,7 @@ Další informace najdete v tématu [vytvoření koncového bodu OData jen pro �
 
 **Navigační vlastnost**
 
-| Žádost | Příklad identifikátoru URI | Název akce | Vzorová akce |
+| Request | Příklad identifikátoru URI | Název akce | Vzorová akce |
 | --- | --- | --- | --- |
 | GET /entityset (klíč) a navigace | / Produkty (1) nebo dodavatele | GetNavigationFromEntityType nebo GetNavigation | GetSupplierFromProduct |
 | ZÍSKAT /entityset (klíč) / přetypování/navigace | /Products(1)/Models.Book/Author | GetNavigationFromEntityType nebo GetNavigation | GetAuthorFromBook |
@@ -91,7 +92,7 @@ Další informace najdete v tématu [práce se vztahy entit](odata-v3/working-wi
 
 **Vytváření a odstraňování propojení**
 
-| Žádost | Příklad identifikátoru URI | Název akce |
+| Request | Příklad identifikátoru URI | Název akce |
 | --- | --- | --- |
 | PŘÍSPĚVEK /entityset (klíč) / $links/navigace | /Products(1)/$links/Supplier | CreateLink |
 | Vložení /entityset (klíč) / $links/navigace | /Products(1)/$links/Supplier | CreateLink |
@@ -104,14 +105,14 @@ Další informace najdete v tématu [práce se vztahy entit](odata-v3/working-wi
 
 *Vyžaduje webového rozhraní API 2*
 
-| Žádost | Příklad identifikátoru URI | Název akce | Vzorová akce |
+| Request | Příklad identifikátoru URI | Název akce | Vzorová akce |
 | --- | --- | --- | --- |
 | GET /entityset (klíč) a vlastnost | / Produkty (1) nebo název | GetPropertyFromEntityType nebo GetProperty | GetNameFromProduct |
 | ZÍSKAT /entityset (klíč) / přetypování/vlastnost | /Products(1)/Models.Book/Author | GetPropertyFromEntityType nebo GetProperty | GetTitleFromBook |
 
 **Akce**
 
-| Žádost | Příklad identifikátoru URI | Název akce | Vzorová akce |
+| Request | Příklad identifikátoru URI | Název akce | Vzorová akce |
 | --- | --- | --- | --- |
 | PŘÍSPĚVEK /entityset (klíč) a akce | / Produkty (1) nebo rychlost | ActionNameOnEntityType nebo název akce | RateOnProduct |
 | Publikovat /entityset (klíč) / přetypování nebo akce | /Products(1)/Models.Book/CheckOut | ActionNameOnEntityType nebo název akce | CheckOutOnBook |

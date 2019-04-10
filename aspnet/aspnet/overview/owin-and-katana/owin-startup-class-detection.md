@@ -8,15 +8,15 @@ ms.date: 01/28/2019
 ms.assetid: 08257f55-36f4-4e39-9c88-2a5602838c79
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-startup-class-detection
 msc.type: authoredcontent
-ms.openlocfilehash: 0b34cca8b48383dbb028106651758dff889ed614
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: e4d9424d691f92aacf078faed09689daa40a44fd
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070570"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59418336"
 ---
-<a name="owin-startup-class-detection"></a>Rozpoznání spouštěcí třídy OWIN
-====================
+# <a name="owin-startup-class-detection"></a>Rozpoznání spouštěcí třídy OWIN
+
 
 > Tento kurz ukazuje, jak konfigurovat načteny které třídy pro spuštění OWIN. Další informace o OWIN, naleznete v tématu [Přehled projektu Katana](an-overview-of-project-katana.md). V tomto kurzu byla zapsána od Ricka Andersona ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) ), Manažer Praburaj a Howard Dierking ( [ @howard \_dierking](https://twitter.com/howard_dierking) ).
 >
@@ -79,7 +79,8 @@ ms.locfileid: "57070570"
      > [!NOTE]
      > Ve výše uvedeném kódu, budeme mít komentář `OwinStartup` atribut a My se spoléhat na konvenci spuštěných třídu s názvem `Startup` .-stiskněte ***F5*** ke spuštění aplikace. Stiskněte několikrát tlačítko Aktualizovat.
 
-    ![](owin-startup-class-detection/_static/image4.png) Poznámka: Číslo, jak je znázorněno obrázcích v tomto kurzu nebudou odpovídat na číslo uvedené. Milisekundy řetězec se používá k zobrazit nová odpověď, když obnovíte stránku.
+    ![](owin-startup-class-detection/_static/image4.png)
+  Poznámka: Číslo, jak je znázorněno obrázcích v tomto kurzu nebudou odpovídat na číslo uvedené. Milisekundy řetězec se používá k zobrazit nová odpověď, když obnovíte stránku.
   Zobrazí se informace o trasování v **výstup** okna.
 
     ![](owin-startup-class-detection/_static/image5.png)

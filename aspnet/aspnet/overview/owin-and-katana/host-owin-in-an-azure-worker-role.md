@@ -8,15 +8,15 @@ ms.date: 04/11/2014
 ms.assetid: 07aa855a-92ee-4d43-ba66-5bfd7de20ee6
 msc.legacyurl: /aspnet/overview/owin-and-katana/host-owin-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: dbf0964695dd2592d063b05c0778923edffe8e2e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 129b6a8f411d482de75e7e5edc5cc919b4d2de52
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076072"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59419519"
 ---
-<a name="host-owin-in-an-azure-worker-role"></a>Hostování specifikace OWIN v rolích pracovního procesu v Azure
-====================
+# <a name="host-owin-in-an-azure-worker-role"></a>Hostování specifikace OWIN v rolích pracovního procesu v Azure
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 > Tento kurz ukazuje, jak k samoobslužnému hostování OWIN v roli pracovního procesu Microsoft Azure.
@@ -116,7 +116,7 @@ Emulátor služby výpočty místní IP adresa přiřadí ke koncovému bodu. IP
 
 [![](host-owin-in-an-azure-worker-role/_static/image10.png)](host-owin-in-an-azure-worker-role/_static/image9.png)
 
-Zjistit IP adresu v rámci nasazení služeb, nasazení [id], podrobnosti o službě. Otevřete webový prohlížeč a přejdete na http://<em>adresu</em>, kde <em>adresu</em> je IP adresa přidělí emulátor služby výpočty; například `http://127.0.0.1:80`. Zobrazí se úvodní stránka OWIN:
+Zjistit IP adresu v rámci nasazení služeb, nasazení [id], podrobnosti o službě. Otevřete webový prohlížeč a přejděte do protokolu http:\/\/*adresu*, kde *adresu* je IP adresa přidělí emulátor služby výpočty; například `http://127.0.0.1:80`. Zobrazí se úvodní stránka OWIN:
 
 ![](host-owin-in-an-azure-worker-role/_static/image11.png)
 

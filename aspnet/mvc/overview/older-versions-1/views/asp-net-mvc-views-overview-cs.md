@@ -8,15 +8,15 @@ ms.date: 02/16/2008
 ms.assetid: 152ab1e5-aec2-4ea7-b8cc-27a24dd9acb8
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a8e64a99549584f150d64d909ac97210257b1147
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b4c35761f9cd44c866242cfe6f4f2d924e81d754
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071527"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59421326"
 ---
-<a name="aspnet-mvc-views-overview-c"></a>ASP.NET MVC – přehled zobrazení (C#)
-====================
+# <a name="aspnet-mvc-views-overview-c"></a>ASP.NET MVC – přehled zobrazení (C#)
+
 podle [Stephen Walther](https://github.com/StephenWalther)
 
 > Co se zobrazení ASP.NET MVC a jak se liší od stránku HTML? V tomto kurzu Stephen Walther vás seznámí s zobrazení a ukazuje, jak můžete využít výhod zobrazení dat a pomocných rutin HTML v zobrazení.
@@ -75,7 +75,7 @@ Zobrazení je standard (dokumentu HTML, který může obsahovat skriptů X). Př
 
 Například zobrazení v informacích 2 ukazuje aktuální datum a čas.
 
-**Listing 2 - \Views\Home\Index.aspx**
+**Výpis 2 - \Views\Home\Index.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample2.aspx)]
 
@@ -104,7 +104,7 @@ Například zobrazení výpisu 4 využívá registrů tři pomocných rutin HTML
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample4.aspx)]
 
 
-[![Dialogové okno Nový projekt](asp-net-mvc-views-overview-cs/_static/image1.jpg)](asp-net-mvc-views-overview-cs/_static/image1.png)
+[![TDialogové okno Nový projekt he](asp-net-mvc-views-overview-cs/_static/image1.jpg)](asp-net-mvc-views-overview-cs/_static/image1.png)
 
 **Obrázek 01**: Standardní přihlašovací formulář ([kliknutím ji zobrazíte obrázek v plné velikosti](asp-net-mvc-views-overview-cs/_static/image2.png))
 

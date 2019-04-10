@@ -8,20 +8,20 @@ ms.date: 05/18/2012
 ms.assetid: 5418ba96-ff49-4a43-9cbb-09dea4949d23
 msc.legacyurl: /web-pages
 msc.type: categoryindex
-ms.openlocfilehash: 967c5687013cac75b5ec8dd665269026bd46601c
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 832f89dfdecb71f2664431a4880978f7355246f4
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796280"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59420221"
 ---
-<a name="aspnet-web-pages"></a>ASP.NET – webové stránky
-====================
+# <a name="aspnet-web-pages"></a>ASP.NET – webové stránky
+
 
 > [!NOTE] 
 > Služba WebMatrix už nedoporučuje jako integrované vývojové prostředí pro ASP.NET Web Pages. Použití [sady Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).
 
-- [Pokyny](overview/index.md)
+- [Doprovodné materiály](overview/index.md)
 
     - [Začínáme](overview/getting-started/index.md)
 
@@ -50,7 +50,7 @@ ms.locfileid: "57796280"
         - [Práce s formuláři](overview/ui-layouts-and-themes/4-working-with-forms.md)
         - [Ověřování uživatelských vstupů na webech s webovými stránkami ASP.NET](overview/ui-layouts-and-themes/validating-user-input-in-aspnet-web-pages-sites.md)
         - [Vytvoření konzistentního vzhledu](overview/ui-layouts-and-themes/3-creating-a-consistent-look.md)
-        - [Přizpůsobení chování v celém webu](overview/ui-layouts-and-themes/18-customizing-site-wide-behavior.md)
+        - [Přizpůsobení chování na celém webu](overview/ui-layouts-and-themes/18-customizing-site-wide-behavior.md)
         - [Práce s obrázky](overview/ui-layouts-and-themes/9-working-with-images.md)
         - [Práce s videem](overview/ui-layouts-and-themes/10-working-with-video.md)
         - [Vytvoření a použití pomocné rutiny na webu s webovými stránkami ASP.NET](overview/ui-layouts-and-themes/creating-and-using-a-helper-in-an-aspnet-web-pages-site.md)
@@ -82,7 +82,7 @@ ms.locfileid: "57796280"
     - [Referenční dokumentace ke knihovně API](overview/api-reference/index.md)
 
         - [Rozhraní API ASP.NET – rychlé odkazy](overview/api-reference/asp-net-web-pages-api-reference.md)
-    - [Verze](overview/releases/index.md)
+    - [Vydané verze](overview/releases/index.md)
 
         - [Novinky webových stránek v ASP.NET 3.2](overview/releases/whats-new-in-aspnet-web-pages-32.md)
         - [Novinky webových stránek v ASP.NET 3.1](overview/releases/whats-new-aspnet-web-pages-31.md)
@@ -94,7 +94,7 @@ ms.locfileid: "57796280"
     - [Úvod](videos/introduction/index.md)
 
         - [Pětiminutový úvod do webových stránek ASP.NET](videos/introduction/5-minute-introduction-to-aspnet-web-pages.md)
-        - [Instalace použití nástroje Microsoft WebMatrix](videos/introduction/install-and-use-the-microsoft-webmatrix-tool.md)
+        - [Instalace a použití nástroje Microsoft WebMatrix](videos/introduction/install-and-use-the-microsoft-webmatrix-tool.md)
         - [Vytvoření webu v nástroji WebMatrix](videos/introduction/create-a-website-using-webmatrix.md)
         - [Změna vizuálního stylu webové stránky](videos/introduction/change-the-visual-style-of-a-web-page.md)
         - [Použití funkcí rozložení nástroje WebMatrix](videos/introduction/use-the-layout-features-in-webmatrix.md)

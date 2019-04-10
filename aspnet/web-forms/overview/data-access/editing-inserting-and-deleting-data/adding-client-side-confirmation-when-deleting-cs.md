@@ -8,15 +8,15 @@ ms.date: 07/17/2006
 ms.assetid: f6e2a12a-2b5e-48fd-8db3-1e94a500c19a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a3e35e7b27d646569692a2eb715dcf40b7967473
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: d7a6f29dc660cff2bfa9db8f9790d73e51a2cc1c
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423192"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59420130"
 ---
-<a name="adding-client-side-confirmation-when-deleting-c"></a>Přidání potvrzení odstranění na straně klienta (C#)
-====================
+# <a name="adding-client-side-confirmation-when-deleting-c"></a>Přidání potvrzení odstranění na straně klienta (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_22_CS.exe) nebo [stahovat PDF](adding-client-side-confirmation-when-deleting-cs/_static/datatutorial22cs1.pdf)
@@ -65,7 +65,7 @@ Protože byla svázána se ovládací prvek ObjectDataSource, který podporuje p
 S těmito změnami máme plně funkční webovou stránku, která umožňuje uživatelům přepínat prostřednictvím produktů jeden najednou, s možností odstranit produkt jednoduše kliknutím na tlačítko Odstranit. Obrázek 2 ukazuje snímek obrazovky náš postup doposud při prohlížení prostřednictvím prohlížeče.
 
 
-[![FormView s informacemi o jednoho produktu](adding-client-side-confirmation-when-deleting-cs/_static/image3.png)](adding-client-side-confirmation-when-deleting-cs/_static/image2.png)
+[![Tmá FormView zobrazuje informace o jeden produkt](adding-client-side-confirmation-when-deleting-cs/_static/image3.png)](adding-client-side-confirmation-when-deleting-cs/_static/image2.png)
 
 **Obrázek 2**: FormView zobrazuje informace o jeden produkt ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-client-side-confirmation-when-deleting-cs/_static/image4.png))
 
@@ -85,7 +85,7 @@ Všechny existuje tento s je to! Obrázek 3 ukazuje snímek obrazovky toto potvr
 > Řetězec předaný do `confirm(string)` funkce JavaScript, která jsou odděleny apostrofy (spíše než uvozovky). V jazyce JavaScript může být oddělené řetězce buď znaku. Apostrofy tady používáme tak, aby oddělovače pro řetězec předat do `confirm(string)` nezavádí nejednoznačnost pomocí oddělovače pro `OnClientClick` hodnotu vlastnosti.
 
 
-[![Potvrzení se teď zobrazují při kliknutím na tlačítko Odstranit](adding-client-side-confirmation-when-deleting-cs/_static/image6.png)](adding-client-side-confirmation-when-deleting-cs/_static/image5.png)
+[![A Potvrzení se teď zobrazují při kliknutím na tlačítko Odstranit](adding-client-side-confirmation-when-deleting-cs/_static/image6.png)](adding-client-side-confirmation-when-deleting-cs/_static/image5.png)
 
 **Obrázek 3**: Potvrzení se teď zobrazují při kliknutím na tlačítko Odstranit ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-client-side-confirmation-when-deleting-cs/_static/image7.png))
 
@@ -127,7 +127,7 @@ S těmito změnami dokončeno kliknutím na tlačítko Odstranit v zobrazení Gr
 > Tento postup můžete použít také k programovému přístupu ke tlačítko Odstranit v CommandField v DetailsView. Prvku DetailsView, ale d vytvořit obslužnou rutinu události pro `DataBound` událost, protože nemá žádné ovládacím prvku DetailsView `RowDataBound` událostí.
 
 
-[![Kliknutím na tlačítko Odstranit prvek GridView s zobrazí dialogové okno Vlastní potvrzení](adding-client-side-confirmation-when-deleting-cs/_static/image9.png)](adding-client-side-confirmation-when-deleting-cs/_static/image8.png)
+[![Clicking GridView s odstranit zobrazí tlačítko Přizpůsobit potvrzovací dialogové](adding-client-side-confirmation-when-deleting-cs/_static/image9.png)](adding-client-side-confirmation-when-deleting-cs/_static/image8.png)
 
 **Obrázek 4**: Kliknutí na prvek GridView s tlačítko pro odstranění zobrazí přizpůsobit potvrzovací dialogové okno ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-client-side-confirmation-when-deleting-cs/_static/image10.png))
 

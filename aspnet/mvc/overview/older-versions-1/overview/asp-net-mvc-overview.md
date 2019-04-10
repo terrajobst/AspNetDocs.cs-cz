@@ -8,15 +8,15 @@ ms.date: 01/27/2009
 ms.assetid: 2dcb44a4-5cbf-4d62-b363-718104082d86
 msc.legacyurl: /mvc/overview/older-versions-1/overview/asp-net-mvc-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 61a7841ee238ec365b7d1909221bbe3d834faf84
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 149312e2ddf0a5023a4a12f5b05852f7da6b18f8
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066274"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59418167"
 ---
-<a name="aspnet-mvc-overview"></a>ASP.NET MVC – přehled
-====================
+# <a name="aspnet-mvc-overview"></a>ASP.NET MVC – přehled
+
 by [Microsoft](https://github.com/microsoft)
 
 > Přečtěte si o rozdílech mezi aplikace ASP.NET MVC a aplikace webových formulářů ASP.NET. Zjistěte, jak rozhodnout, kdy k sestavení aplikace ASP.NET MVC.
@@ -29,7 +29,7 @@ MVC je standardní návrhový vzor, který mnoho vývojářů znají. Některé 
 Architektura MVC zahrnuje následující součásti:
 
 
-[![Vyvolání akce kontroleru, který očekává, že hodnota parametru](asp-net-mvc-overview/_static/image1.jpg)](asp-net-mvc-overview/_static/image1.png)
+[![Invoking akce kontroleru, který očekává, že hodnota parametru](asp-net-mvc-overview/_static/image1.jpg)](asp-net-mvc-overview/_static/image1.png)
 
 **Obrázek 01**: Vyvolání akce kontroleru, který očekává, že hodnota parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](asp-net-mvc-overview/_static/image2.png))
 

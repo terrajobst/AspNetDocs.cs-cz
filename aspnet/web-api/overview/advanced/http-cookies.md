@@ -1,22 +1,23 @@
 ---
 uid: web-api/overview/advanced/http-cookies
-title: Soubory cookie protokolu HTTP v rozhraní ASP.NET Web API | Dokumentace Microsoftu
+title: Soubory cookie protokolu HTTP v rozhraní ASP.NET Web API – ASP.NET 4.x
 author: MikeWasson
-description: ''
+description: Popisuje, jak odesílat a přijímat soubory cookie protokolu HTTP v rozhraní Web API pro ASP.NET 4.x.
 ms.author: riande
 ms.date: 09/17/2012
+ms.custom: seoapril2019
 ms.assetid: 243db2ec-8f67-4a5e-a382-4ddcec4b4164
 msc.legacyurl: /web-api/overview/advanced/http-cookies
 msc.type: authoredcontent
-ms.openlocfilehash: ee717085a02f4c5f5d664cfd2fa82c21864e4055
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: cd6391582f05ab80c4bd45a455a2ce488d1186c1
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425818"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59418323"
 ---
-<a name="http-cookies-in-aspnet-web-api"></a>Soubory cookie HTTP ve webovém rozhraní API technologie ASP.NET
-====================
+# <a name="http-cookies-in-aspnet-web-api"></a>Soubory cookie HTTP ve webovém rozhraní API technologie ASP.NET
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 Toto téma popisuje, jak odesílat a přijímat soubory cookie protokolu HTTP v rozhraní Web API.

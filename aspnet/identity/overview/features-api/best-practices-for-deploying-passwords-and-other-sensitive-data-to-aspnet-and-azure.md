@@ -1,22 +1,23 @@
 ---
 uid: identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
-title: Osvědčené postupy pro nasazení hesel a dalších citlivých dat do ASP.NET a službě Azure App Service | Dokumentace Microsoftu
+title: Nasazení hesel a dalších citlivých dat do ASP.NET a Azure App Service – ASP.NET 4.x
 author: Rick-Anderson
 description: Tento kurz ukazuje, jak může váš kód bezpečně ukládat a přistupovat k zabezpečeným informacím. Nejdůležitější bod je, že nikdy byste měli uložit hesla nebo dalších eslat...
 ms.author: riande
 ms.date: 05/21/2015
 ms.assetid: 97902c66-cb61-4d11-be52-73f962f2db0a
+ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
 msc.type: authoredcontent
-ms.openlocfilehash: 8b5d6bf9fad72218341e4e0b90144da01abea3aa
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 2620d9e2eaf3c7719d9a289e42bb91270708ae79
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072709"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59419441"
 ---
-<a name="best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure-app-service"></a>Doporučené postupy nasazení hesel a dalších citlivých dat do ASP.NET a služby Azure App Service
-====================
+# <a name="best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure-app-service"></a>Doporučené postupy nasazení hesel a dalších citlivých dat do ASP.NET a služby Azure App Service
+
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Tento kurz ukazuje, jak může váš kód bezpečně ukládat a přistupovat k zabezpečeným informacím. Nejdůležitější bod je ve zdrojovém kódu by nikdy ukládání hesel nebo jiných citlivých dat. a tajných kódů v produkčním prostředí byste neměli používat v režimu pro vývoj a testování.

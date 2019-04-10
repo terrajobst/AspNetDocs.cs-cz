@@ -8,15 +8,15 @@ ms.date: 05/20/2008
 ms.assetid: ed460e6b-8f4e-4fcb-83c4-2495180c1f14
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-extend-and-customize-an-aspnet-server-control-for-a-specific-purpose
 msc.type: video
-ms.openlocfilehash: d360bfdc2e491c7aa94ebd4da1a03063a93251ad
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 3562e9c4ec994f04b312476c1357d810f4b5e28a
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070831"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59420156"
 ---
-<a name="how-do-i-extend-and-customize-an-aspnet-server-control-for-a-specific-purpose"></a>[Postup:] Rozšíření a přizpůsobení serverového ovládacího prvku ASP.NET pro konkrétní účel
-====================
+# <a name="how-do-i-extend-and-customize-an-aspnet-server-control-for-a-specific-purpose"></a>[Postup:] Rozšíření a přizpůsobení serverového ovládacího prvku ASP.NET pro konkrétní účel
+
 podle [Chris pixelů na](https://twitter.com/chrispels)
 
 V toto video pixelů na Chris vám ukáže jak rozšířit standardní serverový ovládací prvek technologie ASP.NET a přizpůsobit pro konkrétní účel. Specializovaných ovládacích prvků poskytují pohodlný způsob, jak implementovat prvky standardizované uživatelského rozhraní pro více webových serverů pro jednotlivce a týmy vývojářů. V tomto příkladu zjistit, jak rozšířit ovládací prvek DropDownList vytvořit ovládací prvek výběru speciální rok. Zjistěte, jak přidat vlastnosti pro vlastní atributy, které řídí chování řadu let, které se dají zobrazit. Dál si představíme, jak tyto vlastní atributy je možné nastavit v deklarativní syntaxe jako standardní atributy ovládacího prvku. Podívejte se jak několik dalších vlastností je potom možné přidat k zajištění další funkce pro řízení chování seznamu. A konečně naleznete v tématu Jak rozšířené serverový ovládací prvek ASP.NET lze přesunout do samostatných sestavení tak, aby ho lze použít v rámci více webů.

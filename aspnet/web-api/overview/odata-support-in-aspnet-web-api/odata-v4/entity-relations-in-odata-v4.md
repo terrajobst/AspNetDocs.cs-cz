@@ -8,15 +8,15 @@ ms.date: 06/26/2014
 ms.assetid: 72657550-ec09-4779-9bfc-2fb15ecd51c7
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/entity-relations-in-odata-v4
 msc.type: authoredcontent
-ms.openlocfilehash: d07ddab83462ee1bc84ba8ab15fe906937f506e6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: fbafb2b2346689271905db5790cdddeeb809b070
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075046"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59418804"
 ---
-<a name="entity-relations-in-odata-v4-using-aspnet-web-api-22"></a>Relace prvků v OData v4 pomocí rozhraní ASP.NET Web API 2.2
-====================
+# <a name="entity-relations-in-odata-v4-using-aspnet-web-api-22"></a>Relace prvků v OData v4 pomocí rozhraní ASP.NET Web API 2.2
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 > Většina datových sad definovat vztahy mezi entitami: Zákazníci mají objednávky; knihy jste autoři; produkty mají dodavatelů. Použití protokolu OData, klienti můžete přejít přes relací prvků. Zadaný produkt, můžete najít dodavatele. Můžete také vytvořit nebo odebrat relace. Například můžete nastavit od dodavatele, produktu.

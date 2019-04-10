@@ -8,15 +8,15 @@ ms.date: 06/12/2014
 ms.assetid: ba6e6baa-9b9f-471f-b39d-b007a3addadc
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
-ms.openlocfilehash: 18e988279b56e479b0bb27de2f01ab22a2e70301
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: d27c8c1910a79cea8ccdf4231d3bc2b80a20dc68
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58422607"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59418362"
 ---
-<a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>Automatizace všechno, co (sestavování skutečných cloudových aplikací s Azure)
-====================
+# <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>Automatizace všechno, co (sestavování skutečných cloudových aplikací s Azure)
+
 podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Petr Dykstra](https://github.com/tdykstra)
 
 [Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
@@ -125,7 +125,7 @@ První věc, kterou skriptu je vytvoření webové aplikace pomocí volání `Ne
 
 ### <a name="create-the-storage-account"></a>Vytvoření účtu úložiště
 
-Pak hlavní skript se spustí <em>New-AzureStorage.ps1</em> skriptu, určení "<em>&lt;zadaným hodnotám websitename&gt;</em>úložiště" pro název účtu úložiště a stejné datové centrum jako umístění webové aplikace.
+Pak hlavní skript se spustí *New-AzureStorage.ps1* skriptu, určení "*&lt;zadaným hodnotám websitename&gt;* úložiště" pro název účtu úložiště a stejné datové centrum jako umístění webové aplikace.
 
 [!code-powershell[Main](automate-everything/samples/sample4.ps1?highlight=3)]
 

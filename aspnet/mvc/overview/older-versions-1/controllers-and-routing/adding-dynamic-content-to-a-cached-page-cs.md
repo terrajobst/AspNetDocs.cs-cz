@@ -8,15 +8,15 @@ ms.date: 01/27/2009
 ms.assetid: 2ddd4407-d143-4a94-877c-21771bfb97a6
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 26e40ff9659a4b8552b2a087c7c948c9f1f1554c
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: c126270304178d178f4b8f9739fa5c51e5dd0551
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58424167"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59415359"
 ---
-<a name="adding-dynamic-content-to-a-cached-page-c"></a>Přidání dynamického obsahu do stránky v mezipaměti (C#)
-====================
+# <a name="adding-dynamic-content-to-a-cached-page-c"></a>Přidání dynamického obsahu do stránky v mezipaměti (C#)
+
 by [Microsoft](https://github.com/microsoft)
 
 > Zjistěte, jak kombinovat dynamická a uložená v mezipaměti obsahu na stejné stránce. Substituce mezipaměti po umožňuje zobrazit dynamický obsah, jako je například reklamy nebo příspěvků v rámci stránky, který má výstup do mezipaměti.
@@ -44,7 +44,7 @@ Představte si například, že chcete náhodně zobrazení položek různé inf
 
 Výhod substituce mezipaměti po volání metody HttpResponse.WriteSubstitution(). Metoda WriteSubstitution() nastaví kód k nahrazení oblast stránky v mezipaměti s dynamickým obsahem. Metoda WriteSubstitution() slouží k zobrazení náhodných příspěvek v zobrazení na výpis 2.
 
-**Listing 2 – Views\Home\Index.aspx**
+**Výpis 2 – Views\Home\Index.aspx**
 
 [!code-aspx[Main](adding-dynamic-content-to-a-cached-page-cs/samples/sample2.aspx)]
 
@@ -93,10 +93,6 @@ Při žádosti o stránku zpracovanou zobrazení výpisu 5 různých banner ozn�
 Tento kurz vysvětluje, jak dynamicky aktualizovat obsah stránky v mezipaměti. Jste zjistili, jak používat metodu HttpResponse.WriteSubstitution() umožňující dynamický obsah vložit do stránky v mezipaměti. Také jste zjistili, jak k zapouzdření volání metody WriteSubstitution() v rámci metody pomocné rutiny HTML.
 
 Využijte výhod ukládání do mezipaměti, kdykoli je to možné – může mít výrazný dopad na výkon webových aplikací. Jak je popsáno v tomto kurzu, můžete využít výhod ukládání do mezipaměti i v případě, že budete muset zobrazují dynamický obsah na stránkách.
-
-## 
-
-## 
 
 > [!div class="step-by-step"]
 > [Předchozí](improving-performance-with-output-caching-cs.md)

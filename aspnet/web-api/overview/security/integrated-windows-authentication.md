@@ -8,15 +8,15 @@ ms.date: 12/18/2012
 ms.assetid: 71ee4c78-c500-4d1c-b761-b4e161a291b5
 msc.legacyurl: /web-api/overview/security/integrated-windows-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: 13dead421abf7ded73cbb2e5f87e54b1a869b5d4
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ce845eb6c914321736d77e989f10344eb7596eba
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077773"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59416828"
 ---
-<a name="integrated-windows-authentication"></a>Integrované ověřování systému Windows
-====================
+# <a name="integrated-windows-authentication"></a>Integrované ověřování systému Windows
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 Integrované ověřování Windows umožňuje uživatelům přihlásit se pomocí svých přihlašovacích údajů Windows, pomocí protokolu Kerberos nebo NTLM. Klient odešle přihlašovací údaje v autorizační hlavičce. Ověřování Windows je nejvhodnější pro prostředí intranetu. Další informace najdete v tématu [ověřování Windows](https://www.iis.net/configreference/system.webserver/security/authentication/windowsauthentication).

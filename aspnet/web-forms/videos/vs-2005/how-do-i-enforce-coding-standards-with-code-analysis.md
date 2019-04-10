@@ -8,15 +8,15 @@ ms.date: 07/09/2007
 ms.assetid: ab2eedbc-79b5-4b63-a1df-935940c1545b
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-enforce-coding-standards-with-code-analysis
 msc.type: video
-ms.openlocfilehash: 609f91090520cc36f312a68d63ba6d7356bb008d
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 1a9cf8ac7e8618dd3733080ba6a065e14f1cb68c
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066301"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59417140"
 ---
-<a name="how-do-i-enforce-coding-standards-with-code-analysis"></a>[Postup:] Vynucení programovacích standardů analýzy kódu?
-====================
+# <a name="how-do-i-enforce-coding-standards-with-code-analysis"></a>[Postup:] Vynucení programovacích standardů analýzy kódu?
+
 podle [Chris Menegay](https://twitter.com/CMenegay)
 
 V aplikaci Visual Studio Team System mají přesné řízení pravidel analýzy kódu, které se vztahují na projekty knihovny tříd, webových projektů a správy zdrojového kódu. V tomto videu jsme zjistěte, jak určit tyto chyby a upozornění, která se použije během projektu sestavení a kód vrácení se změnami a můžeme zjistit, jak potlačit konkrétní pravidlo použití konkrétního členu třídy. Pomocí této možnosti konfigurace:, jejichž dodržování může kódování standardy a zlepšovat tak kvalitu kódu, zatímco je zajištěna nepoužitelných pravidla nikdy se ve vašich představ.

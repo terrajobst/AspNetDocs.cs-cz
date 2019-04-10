@@ -8,15 +8,15 @@ ms.date: 02/18/2013
 ms.assetid: 6d40d276-1642-4a77-b6c9-02ac914f6805
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/whats-new-in-aspnet-and-web-development-in-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: 6d5af6563bdf3872110497f4b142dd7353c8d64c
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 3833e3f3c6c49ff2b317ad04aff33c9119cb1f41
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58426117"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59420208"
 ---
-<a name="whats-new-in-aspnet-and-web-development-in-visual-studio-2012"></a>Novinky ASP.NET a webového vývoje v sadě Visual Studio 2012
-====================
+# <a name="whats-new-in-aspnet-and-web-development-in-visual-studio-2012"></a>Novinky ASP.NET a webového vývoje v sadě Visual Studio 2012
+
 podle [Campy Web týmu](https://twitter.com/webcamps)
 
 > Nová verze sady Visual Studio přináší celou řadu vylepšení, zaměřuje na vylepšení možnosti a výkon při práci s technologiemi Web. Visual Studio editory pro šablony stylů CSS, JavaScript a HTML byl zcela přepracované zahrnout mnoho nejvíce vyžádání kód podpory, jako je například technologie IntelliSense a Automatické odsazení. Z hlediska výkonu sdružování a minifikace jsou teď integrované jako dobu načítání integrované funkce, které chcete jednoduše redukovat stránky.
@@ -63,7 +63,7 @@ Tato praktická cvičení zahrnuje následující praktická cvičení:
 1. [Cvičení 1: Co je nového v editoru stylů CSS](#Exercise1)
 2. [Cvičení 2: Co je nového v editoru HTML](#Exercise2)
 3. [Cvičení 3: Co je nového v editoru jazyka JavaScript](#Exercise3)
-4. [Cvičení 4: Sdružování a Minifikace](#Exercise4)
+4. [Cvičení 4: Vytváření sady a minifikace](#Exercise4)
 
 Odhadovaný čas dokončení tohoto testovacího prostředí: **60 minut**.
 
@@ -720,7 +720,7 @@ Můžete nainstalovat **Microsoft Visual Studio Express 2012 pro Web** nebo jin�
 
     *VS Express for Web dlaždice*
 
-* * *
+---
 
 <a id="AppendixB"></a>
 

@@ -8,15 +8,15 @@ ms.date: 06/02/2008
 ms.assetid: a86c0276-6481-46ee-8b4f-8c2009399ee9
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/disabling-actions-during-animation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 811e1d75f79885f3f4c561d9211fec625fcf1807
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 3f8073b468a431d5c4b0d222bf385c8c6d32b2a8
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068452"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59419090"
 ---
-<a name="disabling-actions-during-animation-vb"></a>Zakázání akcí během animace (VB)
-====================
+# <a name="disabling-actions-during-animation-vb"></a>Zakázání akcí během animace (VB)
+
 by [Christian Wenz](https://github.com/wenz)
 
 [Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation7.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation7VB.pdf)
@@ -55,7 +55,7 @@ Také je možné znovu povolit tlačítko po animaci pomocí následujícího el
 Ale v daném scénáři to může být zbytečné od tlačítko setmívá a není viditelný na konci animace.
 
 
-[![Poté, co běží animaci je tlačítko neaktivní.](disabling-actions-during-animation-vb/_static/image2.png)](disabling-actions-during-animation-vb/_static/image1.png)
+[![The tlačítko není k dispozici co nejdříve po spuštění animace](disabling-actions-during-animation-vb/_static/image2.png)](disabling-actions-during-animation-vb/_static/image1.png)
 
 Je tlačítko neaktivní co nejdříve po spuštění animace ([kliknutím ji zobrazíte obrázek v plné velikosti](disabling-actions-during-animation-vb/_static/image3.png))
 

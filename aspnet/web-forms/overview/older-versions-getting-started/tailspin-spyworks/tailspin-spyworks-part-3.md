@@ -8,15 +8,15 @@ ms.date: 07/21/2010
 ms.assetid: 94ea1a70-a9bc-4241-8f36-08366d64bab9
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: f55b29a271dbdb72d3e2249ed74517b77d78cf5e
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: badae58d5b43fb2674f4918f54f999ff48d0b5b0
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069073"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59418011"
 ---
-<a name="part-3-layout-and-category-menu"></a>Část 3: Nabídka Rozložení a Kategorie
-====================
+# <a name="part-3-layout-and-category-menu"></a>Část 3: Nabídka Rozložení a Kategorie
+
 podle [Joe Stagner](https://github.com/JoeStagner)
 
 > Tailspin Spyworks ukazuje, jak mimořádně jednoduché je vytvářet výkonné a škálovatelné aplikace pro platformu .NET. Zobrazuje vypnout použití skvělých nových funkcí v technologii ASP.NET 4 k sestavení nebo online úložiště, včetně nákupu, Pokladna a správu.
@@ -66,7 +66,7 @@ Poznámka: příkaz "Eval": &lt;% # Eval("CategoryName") %&gt;
 
 Syntaxe ASP.NET &lt;% # %&gt; je zkrácený tvar vlastností konvence, který dává pokyn modul runtime umožňující spouštění cokoli, co je součástí a vypíše výsledky "na řádku".
 
-Příkaz Eval("CategoryName") dává pokyn, že pro aktuální položku v vázané kolekce položek dat, načíst změnu hodnoty názvy položek Entity Model "CatagoryName". Toto je stručné syntaxe pro velmi výkonné funkce.
+Příkaz Eval("CategoryName") dává pokyn, že pro aktuální položku v vázané kolekce položek dat, načíst změnu hodnoty názvy položek Entity Model "CategoryName". Toto je stručné syntaxe pro velmi výkonné funkce.
 
 Můžete spustit nyní aplikaci.
 

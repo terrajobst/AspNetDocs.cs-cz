@@ -8,15 +8,15 @@ ms.date: 01/27/2009
 ms.assetid: 239fd3ca-5630-4b8d-bc4b-2f906b1d3504
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d69ae977b3e6a323d1dff1443f09ac40e8f9a449
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b52abab12503918603419c9ccfabefcffdfd7e06
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075100"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59418271"
 ---
-<a name="authenticating-users-with-forms-authentication-c"></a>Ověřování uživatelů pomocí formulářů (C#)
-====================
+# <a name="authenticating-users-with-forms-authentication-c"></a>Ověřování uživatelů pomocí formulářů (C#)
+
 by [Microsoft](https://github.com/microsoft)
 
 > Zjistěte, jak použít atribut [Authorize] heslo chránit konkrétní stránky v aplikaci MVC. Zjistíte, jak používat nástroj Správa webu k vytváření a správě uživatelů a rolí. Také se dozvíte, jak nakonfigurovat ukládat informace o účtu a role uživatele.

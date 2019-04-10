@@ -8,15 +8,15 @@ ms.date: 07/17/2006
 ms.assetid: 49d8a66c-3ea8-4087-839f-179d1d94512a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: dea7b1e8cd5be795acd27868066384fe52b065f7
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 14b9070a462741aab7230963e3e1298368b8e6aa
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58422191"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59420988"
 ---
-<a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-c"></a>Zpracování výjimek na úrovni knihoven BLL a DAL na stránce ASP.NET (C#)
-====================
+# <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-c"></a>Zpracování výjimek na úrovni knihoven BLL a DAL na stránce ASP.NET (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_18_CS.exe) nebo [stahovat PDF](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/datatutorial18cs1.pdf)
@@ -50,7 +50,7 @@ Pro tento scénář budeme potřebovat další přetížení `UpdateProduct` met
 Pomocí této metody kompletní jsme připraveni vytvořit stránku ASP.NET, která umožňuje upravit tyto čtyři pole konkrétního produktu. Otevřít `ErrorHandling.aspx` stránku `EditInsertDelete` složky a přidat na stránku prostřednictvím návrháře GridView. Svázání prvku GridView nový prvek ObjectDataSource, mapování `Select()` metodu `ProductsBLL` třídy `GetProducts()` metoda a `Update()` metodu `UpdateProduct` přetížení právě vytvořili.
 
 
-[![Použijte přetížení metody UpdateProduct, která přijímá čtyři vstupní parametry](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image2.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image1.png)
+[![Use UpdateProduct metody přetížení, že přijímá čtyři vstupní parametry](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image2.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image1.png)
 
 **Obrázek 1**: Použití `UpdateProduct` přetížení, že přijímá čtyři vstupní parametry metody ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image3.png))
 
@@ -62,7 +62,7 @@ V dalším kroku Zredukovat GridView zahrnout pouze `ProductName`, `QuantityPerU
 V předchozím kurzu jsme se podívali na tom, jak formátovat `UnitPrice` Vlastnost BoundField jako měnu v režimu jen pro čtení i v režimu úprav. Pojďme si stejné tady. Připomínáme, že to vyžaduje nastavení vlastnost BoundField `DataFormatString` vlastnost `{0:c}`, jeho `HtmlEncode` vlastnost `false`a jeho `ApplyFormatInEditMode` k `true`, jak je znázorněno na obrázku 2.
 
 
-[![Nakonfigurovat vlastnost UnitPrice BoundField zobrazení jako měna](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image5.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image4.png)
+[![CVlastnost UnitPrice BoundField zobrazení jako měnu onfigurovat](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image5.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image4.png)
 
 **Obrázek 2**: Konfigurace `UnitPrice` Vlastnost BoundField chcete zobrazit ve formátu měny ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image6.png))
 
@@ -75,7 +75,7 @@ Formátování `UnitPrice` jako měnu v rozhraní úprav vyžaduje vytvoření o
 Zahrnuje naše GridView `QuantityPerUnit` Vlastnost BoundField, ale tato vlastnost BoundField by měly být pouze pro účely zobrazení a neměla by být upravitelné uživatelem. Toto uspořádání, stačí nastavit BoundFields `ReadOnly` vlastnost `true`.
 
 
-[![Nastavte vlastnost QuantityPerUnit BoundField jen pro čtení](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image8.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image7.png)
+[![Mnačit Vlastnost BoundField QuantityPerUnit, jen pro čtení](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image8.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image7.png)
 
 **Obrázek 3**: Ujistěte se, `QuantityPerUnit` Vlastnost BoundField jen pro čtení ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image9.png))
 
@@ -83,7 +83,7 @@ Zahrnuje naše GridView `QuantityPerUnit` Vlastnost BoundField, ale tato vlastno
 A konečně zaškrtněte políčko Povolit úpravy z inteligentních značek v prvku GridView. Po dokončení těchto kroků `ErrorHandling.aspx` stránky návrháře vypadat podobně jako na obrázku 4.
 
 
-[![Odeberte všechny kromě potřebnou BoundFields a kontrola povolit úpravy zaškrtávací políčko](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image11.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image10.png)
+[![ROdebrat vše kromě the potřeby BoundFields a zaškrtněte políčko Povolit úpravy](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image11.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image10.png)
 
 **Obrázek 4**: Odeberte všechny kromě the potřeby BoundFields a zaškrtněte políčko Povolit úpravy ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image12.png))
 
@@ -91,7 +91,7 @@ A konečně zaškrtněte políčko Povolit úpravy z inteligentních značek v p
 V tuto chvíli máme seznam všech produktů `ProductName`, `QuantityPerUnit`, `UnitPrice`, a `UnitsInStock` pole; však pouze `ProductName`, `UnitPrice`, a `UnitsInStock` pole lze upravovat.
 
 
-[![Uživatelé mohou nyní snadno upravit produkty, názvy, ceny a jednotky v uložených pole](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image14.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image13.png)
+[![User můžete nyní snadno upravit produkty, názvy, ceny a jednotky v zásobách pole](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image14.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image13.png)
 
 **Obrázek 5**: Uživatelé mohou nyní snadno upravit produkty, které se názvy, ceny a jednotky v zásobách pole ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image15.png))
 
@@ -105,7 +105,7 @@ V závislosti na konfiguraci webové aplikace a určuje, jestli navštívený ap
 Obrázek 6 se zobrazuje obrazovka došlo při pokusu o aktualizaci produktu bez zadání `ProductName` hodnotu. Toto je výchozí podrobnou chybovou zprávu se zobrazí, když přes něj procházejí `localhost`.
 
 
-[![Vynechání podrobnosti výjimky budou zobrazovaný název produktu](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image17.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image16.png)
+[![Omitting produktu podrobnosti výjimky budou zobrazovaný název](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image17.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image16.png)
 
 **Obrázek 6**: Vynechání produktu název bude zobrazení Podrobnosti o výjimce ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image18.png))
 
@@ -117,7 +117,7 @@ Pokud dojde k výjimce při provádění této operace, události po úrovně pr
 Začněte tím, že přidáte popisek na stránku ASP.NET, nastavení jeho `ID` vlastnost `ExceptionDetails` a vymazání jeho `Text` vlastnost. Pokud chcete vykreslení oko uživatele do této zprávy, nastavte jeho `CssClass` vlastnost `Warning`, tedy třídu šablony stylů CSS, přidali jsme do `Styles.css` souboru v předchozím kurzu. Připomínáme, že tato třída šablon stylů CSS způsobí, že popisek zobrazený červené, kurzíva, tučné písmo, velmi velkým písmem.
 
 
-[![Přidání ovládacího prvku popisek na stránku](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image20.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image19.png)
+[![Add ovládací prvek popisku Web na stránku](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image20.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image19.png)
 
 **Obrázek 7**: Přidání ovládacího prvku popisek na stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image21.png))
 
@@ -172,12 +172,12 @@ Tato obslužná rutina události začíná tak, že zkontrolujete, jestli `e.Exc
 Obrázek 9 ukazuje snímek obrazovky na této stránce při vynechání název produktu; Obrázek 10 ukazuje výsledky při zadávání neplatné `UnitPrice` hodnotu (-50).
 
 
-[![Vlastnost ProductName BoundField musí obsahovat hodnotu](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image24.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image23.png)
+[![Tmá vlastnost BoundField ProductName musí obsahovat hodnotu](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image24.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image23.png)
 
 **Obrázek 9**: `ProductName` Vlastnost BoundField musí obsahovat hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image25.png))
 
 
-[![Záporné hodnoty UnitPrice není povoleno](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image27.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image26.png)
+[![Njsou egative UnitPrice hodnoty nejsou povoleny](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image27.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image26.png)
 
 **Obrázek 10**: Záporná `UnitPrice` není povolené jsou hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image28.png))
 
@@ -200,7 +200,7 @@ Pro `UpdateProduct` v tomto kurzu vytvořili přetížení, Pojďme přidat obch
 Tato změna způsobí libovolné price aktualizaci, která se více než dvojnásobný stávající ceny `ApplicationException` vyvolání. Stejně jako výjimky vyvolané z vrstvy DAL tomto BLL vyvolána `ApplicationException` můžete zjištěna a zpracovávány v prvku GridView `RowUpdated` obslužné rutiny události. Ve skutečnosti `RowUpdated` kód obslužné rutiny události, jak je uvedená, správně rozpozná tuto výjimku a zobrazí `ApplicationException`společnosti `Message` hodnotu vlastnosti. Obrázku 11 můžete vidět snímku obrazovky, když se uživatel pokusí aktualizovat cena Chai $ 50,00, což je více než double jeho aktuální cena 19,95.
 
 
-[![Obchodní pravidla zakázat zvýšení ceny, které víc než dvakrát ceny produktu](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image30.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image29.png)
+[![Tmá obchodní pravidla zakázat cena zvyšuje, že více než dvakrát ceny produktu](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image30.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image29.png)
 
 **Obrázek 11**: Obchodní pravidla zakázat zvýšení, které víc než dvakrát ceny produktu ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image31.png))
 

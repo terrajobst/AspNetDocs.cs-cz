@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 10/29/2018
 ms.technology: aspnet
 msc.type: content
-ms.openlocfilehash: 5e2f3781623af5a32149e1db1c17b67ce43b7da0
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 443b33b5c3b964f731999834db580a6abbf6617b
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423962"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59420416"
 ---
 # <a name="configuration-builders-for-aspnet"></a>Konfigurace počítačů pro technologii ASP.NET
 
@@ -137,7 +137,7 @@ Předchozí kód nastaví hodnoty vlastností:
 
 Například použití předchozího *web.config* souboru, jsou nastavené klíče/hodnoty v předchozím obrázku editor prostředí a předchozí kód, následující hodnoty:
 
-|  Key              | Hodnota |
+|  Key              | Value |
 | ----------------- | ------------ |
 |     ID služby           | AppSetting_ServiceID Obálka proměnných|
 |    default            | AppSetting_default hodnotu z prostředí |

@@ -8,15 +8,15 @@ ms.date: 05/22/2012
 ms.assetid: f889fd46-4dac-4ecb-83d8-60e64c22036e
 msc.legacyurl: /web-pages/overview/data/7-displaying-data-in-a-chart
 msc.type: authoredcontent
-ms.openlocfilehash: 00529355476e88c47ab790121ae77202aa5e7b76
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f97f214abeaeb88634dd10aaebacc0d58e91ab84
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076990"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59422457"
 ---
-<a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>Zobrazení dat v grafu s webovými stránkami ASP.NET (Razor)
-====================
+# <a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>Zobrazení dat v grafu s webovými stránkami ASP.NET (Razor)
+
 by [Microsoft](https://github.com/microsoft)
 
 > Tento článek vysvětluje, jak pomocí grafu pro zobrazení dat na webu rozhraní ASP.NET Web Pages (Razor) s použitím `Chart` pomocné rutiny.

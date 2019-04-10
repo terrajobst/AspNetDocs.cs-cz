@@ -8,15 +8,15 @@ ms.date: 02/20/2005
 ms.assetid: 43f6ac47-76fc-4cf7-8e9f-c18ce673dfd8
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/server-controls
 msc.type: authoredcontent
-ms.openlocfilehash: ecf99fa894c1f662542aa8a613195b828bf2c67b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: bfbc151af40bf7ccceb5ac298ba812730d4e4ed9
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077092"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59420754"
 ---
-<a name="server-controls"></a>Serverové ovládací prvky
-====================
+# <a name="server-controls"></a>Serverové ovládací prvky
+
 by [Microsoft](https://github.com/microsoft)
 
 > ASP.NET 2.0 vylepšuje serverových ovládacích prvků v mnoha způsoby. V tomto modulu probereme některé architektury změny způsobu, technologii ASP.NET 2.0 a Visual Studio 2005 se zabývá serverových ovládacích prvků.
@@ -99,7 +99,7 @@ V technologii ASP.NET 2.0 výchozí definici DOCTYPE vypadá takto:
 
 [!code-html[Main](server-controls/samples/sample7.html)]
 
-Pokud se rozhodnete, můžete změnit výchozí předpisů XHML prostřednictvím xhtmlConformance uzlu v konfiguračním souboru. Například následující uzel v souboru web.config se změní XHTML dodržování předpisů na XHTML 1.0 Strict:
+Pokud se rozhodnete, můžete změnit výchozí předpisů XHTML prostřednictvím xhtmlConformance uzlu v konfiguračním souboru. Například následující uzel v souboru web.config se změní XHTML dodržování předpisů na XHTML 1.0 Strict:
 
 [!code-xml[Main](server-controls/samples/sample8.xml)]
 
@@ -218,7 +218,7 @@ Toto video je návod ovládacího prvku Wizard.
 
 Ovládací prvek Localize je podobný prvku Literal control. Má však Localize ovládacího prvku **režimu** vlastnost, která určuje, jak je vykreslen kód, který se přidá do ní. Vlastnost Mode podporuje následující hodnoty:
 
-| **Mode** | **Vysvětlení** |
+| **Režim** | **Vysvětlení** |
 | --- | --- |
 | Transformace | Značek je transformovány podle protokolu prohlížeče, který zadal žádost. |
 | Průchod | Značka se vykreslí jako-je. |

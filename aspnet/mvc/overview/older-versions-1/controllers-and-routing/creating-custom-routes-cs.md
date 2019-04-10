@@ -8,15 +8,15 @@ ms.date: 02/16/2009
 ms.assetid: 3cd08f02-8763-490a-b625-2ac96a24b73f
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-custom-routes-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1d7a25f9d257320c252408ae251e2f9f620930d8
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7b7324c9e0518697c0978b96b0123cb44133722b
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069163"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59418934"
 ---
-<a name="creating-custom-routes-c"></a>Vytváření vlastních tras (C#)
-====================
+# <a name="creating-custom-routes-c"></a>Vytváření vlastních tras (C#)
+
 by [Microsoft](https://github.com/microsoft)
 
 > Zjistěte, jak přidat vlastní trasy pro aplikace ASP.NET MVC. V tomto kurzu se dozvíte, jak změnit výchozí směrovací tabulka v souboru Global.asax.
@@ -61,7 +61,7 @@ Všimněte si, že metoda Entry() ve výpisu 2 přijímá parametr typu DateTime
 **Obrázek 1 – Chyba z převodu parametru**
 
 
-[![Dialogové okno Nový projekt](creating-custom-routes-cs/_static/image1.jpg)](creating-custom-routes-cs/_static/image1.png)
+[![TDialogové okno Nový projekt he](creating-custom-routes-cs/_static/image1.jpg)](creating-custom-routes-cs/_static/image1.png)
 
 **Obrázek 01**: Chyba z převodu parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-custom-routes-cs/_static/image2.png))
 

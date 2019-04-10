@@ -8,15 +8,15 @@ ms.date: 04/23/2009
 ms.assetid: 3e8b0627-3eb7-488e-807e-067cba7cec05
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4ea1713541c30623c0f7c8387318549dd36a125f
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 3951ab4562e2c172f418c74136d511f0f9f50454
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423582"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59415840"
 ---
-<a name="strategies-for-database-development-and-deployment-c"></a>Strategie vývoje a nasazení databází (C#)
-====================
+# <a name="strategies-for-database-development-and-deployment-c"></a>Strategie vývoje a nasazení databází (C#)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhnout PDF](http://download.microsoft.com/download/C/3/9/C391A649-B357-4A7B-BAA4-48C96871FEA6/aspnet_tutorial10_DBDevel_cs.pdf)
@@ -99,7 +99,7 @@ Existují různé nástroje třetích stran databáze porovnání nabízí mnoho
 Při spuštění porovnání SQL otevře se dialogové okno porovnání projektů zobrazující uložených projektů SQL Compare. Vytvořte nový projekt. Spustí se Průvodce konfigurací projektu, který vyzve k zadání informací o databázi k porovnání (viz obrázek 1). Zadejte informace pro vývoj a provoz prostředí databáze.
 
 
-[![Porovnání vývoje a provozních databází](strategies-for-database-development-and-deployment-cs/_static/image2.jpg)](strategies-for-database-development-and-deployment-cs/_static/image1.jpg)
+[![CPorovnat sady systému vývoj a provozních databází](strategies-for-database-development-and-deployment-cs/_static/image2.jpg)](strategies-for-database-development-and-deployment-cs/_static/image1.jpg)
 
 **Obrázek 1**: Porovnání vývoje a provozních databází ([kliknutím ji zobrazíte obrázek v plné velikosti](strategies-for-database-development-and-deployment-cs/_static/image3.jpg))
 
@@ -116,7 +116,7 @@ Po výběru databázi, kterou chcete porovnat (a možnosti porovnání revize), 
 > Datový model změny provedené v tomto kurzu jste dokončili pro ilustraci, pomocí nástroje porovnání databáze. Tyto změny v databázi nenajde v budoucích kurzech.
 
 
-[![Porovnání SQL jsou uvedeny rozdíly mezi vývojovou a provozních databází](strategies-for-database-development-and-deployment-cs/_static/image5.jpg)](strategies-for-database-development-and-deployment-cs/_static/image4.jpg)
+[![SQL porovnání jsou uvedeny rozdíly mezi vývojovou a provozních databází](strategies-for-database-development-and-deployment-cs/_static/image5.jpg)](strategies-for-database-development-and-deployment-cs/_static/image4.jpg)
 
 **Obrázek 2**: Porovnání SQL jsou uvedené rozdíly mezi vývoje a provozních databází ([kliknutím ji zobrazíte obrázek v plné velikosti](strategies-for-database-development-and-deployment-cs/_static/image6.jpg))
 
@@ -128,7 +128,7 @@ Výběr objektu databáze zobrazí v okně SQL ve službě, která ukazuje, jak 
 Po kontrole rozdíly a výběr objektů, které chcete synchronizovat, je dalším krokem je ke generování potřeba aktualizovat schéma produkční databáze s příkazy SQL tak, aby odpovídala databázi vývoj. To lze provést pomocí Průvodce synchronizace. Průvodce synchronizace potvrdí, které objekty k synchronizaci a shrnuje akce plánování (viz obrázek 3). Můžete synchronizovat databáze hned nebo generovat skript SQL příkazy, které lze spustit ve volném čase.
 
 
-[![Pomocí Průvodce synchronizace můžete synchronizovat vaše schémata databáze](strategies-for-database-development-and-deployment-cs/_static/image8.jpg)](strategies-for-database-development-and-deployment-cs/_static/image7.jpg)
+[![Use Průvodce synchronizace synchronizovat vaše schémata databáze](strategies-for-database-development-and-deployment-cs/_static/image8.jpg)](strategies-for-database-development-and-deployment-cs/_static/image7.jpg)
 
 **Obrázek 3**: Pomocí Průvodce synchronizace synchronizovat vaše schémata databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](strategies-for-database-development-and-deployment-cs/_static/image9.jpg))
 

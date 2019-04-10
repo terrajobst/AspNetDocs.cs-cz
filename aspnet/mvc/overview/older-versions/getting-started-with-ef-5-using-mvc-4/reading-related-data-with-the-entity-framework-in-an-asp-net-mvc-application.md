@@ -8,15 +8,15 @@ ms.date: 07/30/2013
 ms.assetid: 0d6fb83b-71f7-425d-8dec-981197d7ec42
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 4767b015db0bad09942802827ce54162687fcabc
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f86212c1cb559c164342997fb0e4208339b5e3cc
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068755"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59421118"
 ---
-<a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-5-of-10"></a>Čtení souvisejících dat s Entity Framework v aplikaci ASP.NET MVC (5 10)
-====================
+# <a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-5-of-10"></a>Čtení souvisejících dat s Entity Framework v aplikaci ASP.NET MVC (5 10)
+
 podle [Petr Dykstra](https://github.com/tdykstra)
 
 [Stáhnout dokončený projekt](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
@@ -152,11 +152,13 @@ Metoda přijímá data volitelné trasy (`id`) a parametru řetězce dotazu (`co
 > 
 > Data trasy, která jsou data, která v segment adresy URL zadané ve směrovací tabulce nalezen vazač modelu. Například výchozí trasa určuje `controller`, `action`, a `id` segmenty:
 > 
+> ```csharp
 > routes.MapRoute(  
->  Jméno: "Výchozí",  
->  Adresa URL: "{controller} / {action} / {id}",  
->  výchozí hodnoty: new {řadič = "Domů" action = "Index", id = UrlParameter.Optional}  
+>  name: "Default",  
+>  url: "{controller}/{action}/{id}",  
+>  defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }  
 > );
+> ```
 > 
 > V následující adrese URL, výchozí trasu mapuje `Instructor` jako `controller`, `Index` jako `action` a 1 stejně jako `id`; jde o hodnot dat trasy.
 > 

@@ -8,15 +8,15 @@ ms.date: 02/10/2014
 ms.assetid: 4001cb9b-3bfd-4ace-8a89-1561d8421e2c
 msc.legacyurl: /web-pages/overview/api-reference/asp-net-web-pages-api-reference
 msc.type: authoredcontent
-ms.openlocfilehash: 656987f8a725f81dbca7a72594d7d03bc542fabe
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 547b1932c4f8d3684c668561e3fe568a0f272925
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57077818"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59416503"
 ---
-<a name="aspnet-web-pages-razor-api-quick-reference"></a>Webové stránky ASP.NET (Razor) – rozhraní API rychlé odkazy
-====================
+# <a name="aspnet-web-pages-razor-api-quick-reference"></a>Webové stránky ASP.NET (Razor) – rozhraní API rychlé odkazy
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > Tato stránka obsahuje seznam s krátkou příklady z nejčastěji používaných objektů, vlastnosti a metody pro programování rozhraní ASP.NET Web Pages se syntaxí Razor.
@@ -689,7 +689,7 @@ Odešle e-mailovou zprávu.
 
 ### `WebMail.SmtpServer`
 
-Nastaví název serveru SMTP. Za normálních okolností byste tuto vlastnost nastavit<em>\_AppStart</em> stránky.
+Nastaví název serveru SMTP. Za normálních okolností byste tuto vlastnost nastavit  *\_AppStart* stránky.
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample105.html)]
 

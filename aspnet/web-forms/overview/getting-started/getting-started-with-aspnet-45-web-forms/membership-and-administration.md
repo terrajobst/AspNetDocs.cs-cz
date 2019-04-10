@@ -8,15 +8,15 @@ ms.date: 09/08/2014
 ms.assetid: 732a2316-e49f-4f72-becd-0cd72f14457e
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/membership-and-administration
 msc.type: authoredcontent
-ms.openlocfilehash: 23d08d5a05a8321fbc794e2c9b54cc39c9b5baf6
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7263a7d7ee791be8a1369934aac4d091736a658b
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067930"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59417478"
 ---
-<a name="membership-and-administration"></a>Členství a správa
-====================
+# <a name="membership-and-administration"></a>Členství a správa
+
 by [Erik Reitan](https://github.com/Erikre)
 
 [Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
@@ -66,12 +66,12 @@ ASP.NET Identity můžete přidat vlastní roli a přiřadit uživatele do této
    Bude podtržené písmeno "A" na začátku metody zvýrazněné.
 7. Najeďte myší na písmeno "A" a klikněte na uživatelské rozhraní, která umožňuje generovat pahýl metody pro `AddUserAndRole` metody. 
 
-    ![Členství a Advministration - generovat Pahýl metody](membership-and-administration/_static/image1.png)
+    ![Členství a správa – generovat Pahýl metody](membership-and-administration/_static/image1.png)
 8. Klikněte na možnost s názvem:  
     `Generate method stub for "AddUserAndRole" in "WingtipToys.Logic.RoleActions"`
 9. Otevřít *RoleActions.cs* soubor *logiky* složky.  
    `AddUserAndRole` Metoda byla přidána do souboru třídy.
-10. Upravit *RoleActions.cs* souboru odebráním `NotImplementedeException` a přidání kódu zvýrazněné žlutou barvou, tak, aby vypadal takto:  
+10. Upravit *RoleActions.cs* souboru odebráním `NotImplementedException` a přidání kódu zvýrazněné žlutou barvou, tak, aby vypadal takto:  
 
     [!code-csharp[Main](membership-and-administration/samples/sample3.cs?highlight=5-7,15-51)]
 

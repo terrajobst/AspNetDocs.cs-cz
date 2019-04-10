@@ -1,27 +1,30 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms
-title: Použití rozhraní Web API s webovými formuláři ASP.NET | Dokumentace Microsoftu
+title: Použití rozhraní Web API s webovými formuláři ASP.NET – ASP.NET 4.x
 author: MikeWasson
-description: ''
+description: Výukový program s kódem krok za krokem k přidání webového rozhraní API do aplikace formuláře ASP.NET pro technologii ASP.NET 4.x
 ms.author: riande
 ms.date: 04/03/2012
+ms.custom: seoapril2019
 ms.assetid: 25da8c3f-4e90-4946-9765-4f160985e1e4
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms
 msc.type: authoredcontent
-ms.openlocfilehash: a14bf0abd8c5d603cf3859891f855415cf3df9f3
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: ae553b62998fefd128e12711cbde958ea42d8c63
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57075367"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59422574"
 ---
-<a name="using-web-api-with-aspnet-web-forms"></a>Použití webového rozhraní API s webovými formuláři ASP.NET
-====================
+# <a name="using-web-api-with-aspnet-web-forms"></a>Použití webového rozhraní API s webovými formuláři ASP.NET
+
 podle [Mike Wasson](https://github.com/MikeWasson)
 
-Přestože je součástí balíčku rozhraní ASP.NET Web API ASP.NET MVC, je jednoduše přidávat webového rozhraní API pro tradiční aplikace webových formulářů ASP.NET. Tento kurz vás provede kroky.
+Tento kurz vás provede kroky k přidání webového rozhraní API pro tradiční aplikace webových formulářů ASP.NET v technologii ASP.NET 4.x. 
 
 ## <a name="overview"></a>Přehled
+
+Přestože je součástí balíčku rozhraní ASP.NET Web API ASP.NET MVC, je jednoduše přidávat webového rozhraní API pro tradiční aplikace webových formulářů ASP.NET.
 
 Použití webového rozhraní API v aplikaci webových formulářů, existují dva hlavní kroky:
 

@@ -8,15 +8,15 @@ ms.date: 08/03/2007
 ms.assetid: 5811b8ff-ed56-40fc-9397-6b69ae09a8f6
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 136e4a07422d9f71ed56ac132d93f5eade273ca2
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 9ded6526a2c4f1063843f3448ba3a2023686f529
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423166"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59421170"
 ---
-<a name="working-with-computed-columns-vb"></a>Práce s vypočítanými sloupci (VB)
-====================
+# <a name="working-with-computed-columns-vb"></a>Práce s vypočítanými sloupci (VB)
+
 podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 [Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_71_VB.zip) nebo [stahovat PDF](working-with-computed-columns-vb/_static/datatutorial71vb1.pdf)
@@ -54,7 +54,7 @@ Všimněte si, že by řetězců mohou být spojeny v SQL pomocí `+` operátor.
 Po přidání Tento počítaný sloupec vaše obrazovka by měla vypadat obrazovky na obrázku 1.
 
 
-[![Přidejte počítaný sloupec s názvem FullContactName k tabulce dodavatelů](working-with-computed-columns-vb/_static/image2.png)](working-with-computed-columns-vb/_static/image1.png)
+[![Add a vypočítat s názvem FullContactName sloupce do tabulky dodavatelů](working-with-computed-columns-vb/_static/image2.png)](working-with-computed-columns-vb/_static/image1.png)
 
 **Obrázek 1**: Přidat počítaný sloupec s názvem `FullContactName` k `Suppliers` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image3.png))
 
@@ -79,7 +79,7 @@ Než začneme práce na vrstvy přístupu k datům, umožňují s trvat několik
 Jak je vidět na obrázku 2, budou výsledky obsahovat `FullContactName`, se seznamem `CompanyName`, `ContactName`, a `ContactTitle` sloupce ve formátu `ContactName` (`ContactTitle`, `CompanyName`).
 
 
-[![FullContactName používá formát ContactName (funkce, CompanyName)](working-with-computed-columns-vb/_static/image5.png)](working-with-computed-columns-vb/_static/image4.png)
+[![TFullContactName používá formát ContactName (funkce, CompanyName)](working-with-computed-columns-vb/_static/image5.png)](working-with-computed-columns-vb/_static/image4.png)
 
 **Obrázek 2**: `FullContactName` Používá formát `ContactName` (`ContactTitle`, `CompanyName`) ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image6.png))
 
@@ -97,7 +97,7 @@ Pro účely tohoto kurzu nechte s přidáním nového TableAdapter a automaticky
 Začněte otevřením `NorthwindWithSprocs` datovou sadu v `~/App_Code/DAL` složky. Klikněte pravým tlačítkem v návrháři a v kontextové nabídce zvolte možnost pro přidání nového TableAdapter. Tím spustíte Průvodce konfigurací TableAdapter. Zadejte dotaz na data z databáze (`NORTHWNDConnectionString` z `Web.config`) a klikněte na tlačítko Další. Protože ještě nevytvořili žádné uložené procedury pro dotazování nebo úpravě `Suppliers` tabulku, vyberte možnost vytvořit nové uložené procedury možnost tak, aby tento průvodce je vytvořit pro nás a klikněte na tlačítko Další.
 
 
-[![Zvolte možnost vytvořit nové uložené procedury možnost](working-with-computed-columns-vb/_static/image8.png)](working-with-computed-columns-vb/_static/image7.png)
+[![CZvolte vytvořit nové uložené procedury možnosti](working-with-computed-columns-vb/_static/image8.png)](working-with-computed-columns-vb/_static/image7.png)
 
 **Obrázek 3**: Zvolte možnost vytvořit nové uložené procedury možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image9.png))
 
@@ -110,7 +110,7 @@ Následný krok nám vyzve k zadání hlavního dotazu. Zadejte následující d
 Po zadání hlavního dotazu a kliknutím na tlačítko Další, ho přes Průvodce zřídit nám čtyři uložené procedury, které budou generovat název. Název těchto uložených procedurách `Suppliers_Select`, `Suppliers_Insert`, `Suppliers_Update`, a `Suppliers_Delete`, jak ukazuje obrázek 4.
 
 
-[![Přizpůsobení názvů automaticky generované uložené procedury](working-with-computed-columns-vb/_static/image11.png)](working-with-computed-columns-vb/_static/image10.png)
+[![CUpravit názvy uložené procedury Auto-Generated](working-with-computed-columns-vb/_static/image11.png)](working-with-computed-columns-vb/_static/image10.png)
 
 **Obrázek 4**: Přizpůsobení názvů Auto-Generated uložené procedury ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image12.png))
 
@@ -118,7 +118,7 @@ Po zadání hlavního dotazu a kliknutím na tlačítko Další, ho přes Průvo
 V dalším kroku průvodce umožňuje nám zadat tyto vzory se dají použít k přístupu a aktualizace dat a název metody třídy TableAdapter s. Ponechat všechny tři zaškrtnutých políček, ale přejmenovat `GetData` metodu `GetSuppliers`. Kliknutím na Dokončit dokončíte průvodce.
 
 
-[![Přejmenovat na GetSuppliers GetData – metoda](working-with-computed-columns-vb/_static/image14.png)](working-with-computed-columns-vb/_static/image13.png)
+[![RNázev souboru metody GetData k GetSuppliers](working-with-computed-columns-vb/_static/image14.png)](working-with-computed-columns-vb/_static/image13.png)
 
 **Obrázek 5**: Přejmenovat `GetData` metodu `GetSuppliers` ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image15.png))
 
@@ -142,7 +142,7 @@ Uložte změny do uložené procedury, kliknutím na ikonu Uložit na panelu ná
 Pak se vraťte do návrháře datových sad, klikněte pravým tlačítkem na `SuppliersTableAdapter`a zvolte možnost konfigurace v místní nabídce. Všimněte si, že `Suppliers_Select` teď obsahuje sloupec `FullContactName` sloupce v kolekci jeho datových sloupců.
 
 
-[![Spusťte Průvodce konfigurací s TableAdapter aktualizovat sloupce s DataTable](working-with-computed-columns-vb/_static/image17.png)](working-with-computed-columns-vb/_static/image16.png)
+[![RZrušit průvodce TableAdapter s konfigurací a aktualizovat sloupce s DataTable](working-with-computed-columns-vb/_static/image17.png)](working-with-computed-columns-vb/_static/image16.png)
 
 **Obrázek 6**: Spustit s TableAdapter Průvodce konfigurací a Update DataTable s sloupce ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image18.png))
 
@@ -150,7 +150,7 @@ Pak se vraťte do návrháře datových sad, klikněte pravým tlačítkem na `S
 Kliknutím na Dokončit dokončíte průvodce. Tím se automaticky přidá odpovídající sloupec, který `SuppliersDataTable`. Průvodci vytvořením objektu TableAdapter je dostatečně inteligentní, chcete-li zjistit, který `FullContactName` sloupec je počítaný sloupec, takže je jen pro čtení. V důsledku toho, nastaví hlavičku sloupce s `ReadOnly` vlastnost `true`. Chcete-li to ověřit, vyberte sloupec, ze `SuppliersDataTable` a přejděte do okna vlastností (viz obrázek 7). Všimněte si, že `FullContactName` sloupec s `DataType` a `MaxLength` vlastnosti jsou nastaveny také odpovídajícím způsobem.
 
 
-[![FullContactName sloupec je označen jen pro čtení](working-with-computed-columns-vb/_static/image20.png)](working-with-computed-columns-vb/_static/image19.png)
+[![Tmá FullContactName sloupec je určen jen pro čtení](working-with-computed-columns-vb/_static/image20.png)](working-with-computed-columns-vb/_static/image19.png)
 
 **Obrázek 7**: `FullContactName` Sloupec je označen jen pro čtení ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image21.png))
 
@@ -162,7 +162,7 @@ Pro účely tohoto kurzu vytvoříme stránky ASP.NET, která zobrazuje dodavate
 Klikněte pravým tlačítkem na `SuppliersTableAdapter` v návrhu datové sady a v místní nabídce zvolte možnost přidat dotaz. Jako jsme to udělali v kroku 3, umožněte průvodci vytvořit novou úložnou proceduru pro nás tak, že vyberete možnost vytvořit novou úložnou proceduru (vrátit zpět k obrázek 3 pro snímek obrazovky tohoto průvodce kroku). Protože tato metoda vrátí záznam s více sloupců, označuje, že chceme použít dotaz SQL, který je s výběrem, který vrátí řádky a klikněte na tlačítko Další.
 
 
-[![Zvolte, který vrátí řádky možnost](working-with-computed-columns-vb/_static/image23.png)](working-with-computed-columns-vb/_static/image22.png)
+[![CVyberte, které vrátí řádky možnost volte](working-with-computed-columns-vb/_static/image23.png)](working-with-computed-columns-vb/_static/image22.png)
 
 **Obrázek 8**: Zvolte, který vrátí řádky možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image24.png))
 
@@ -175,7 +175,7 @@ Následný krok vyzve k nám na dotaz, který chcete použít pro tuto metodu. Z
 Na další obrazovce dotazem, abychom uložené procedury, které se bude automaticky generovaný název. Pojmenujte tuto uloženou proceduru `Suppliers_SelectBySupplierID` a klikněte na tlačítko Další.
 
 
-[![Název uložené procedury Suppliers_SelectBySupplierID](working-with-computed-columns-vb/_static/image26.png)](working-with-computed-columns-vb/_static/image25.png)
+[![NSuppliers_SelectBySupplierID uložené procedury AME](working-with-computed-columns-vb/_static/image26.png)](working-with-computed-columns-vb/_static/image25.png)
 
 **Obrázek 9**: Název uložené procedury `Suppliers_SelectBySupplierID` ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image27.png))
 
@@ -183,7 +183,7 @@ Na další obrazovce dotazem, abychom uložené procedury, které se bude automa
 A konečně Průvodce pokynů nám dat přístup vzory a názvy metod pro TableAdapter. Ponechte obou zaškrtnutých políček, ale přejmenovat `FillBy` a `GetDataBy` metody `FillBySupplierID` a `GetSupplierBySupplierID`v uvedeném pořadí.
 
 
-[![Název metody FillBySupplierID TableAdapter a GetSupplierBySupplierID](working-with-computed-columns-vb/_static/image29.png)](working-with-computed-columns-vb/_static/image28.png)
+[![NNázev metody FillBySupplierID TableAdapter a GetSupplierBySupplierID](working-with-computed-columns-vb/_static/image29.png)](working-with-computed-columns-vb/_static/image28.png)
 
 **Obrázek 10**: Název metody třídy TableAdapter `FillBySupplierID` a `GetSupplierBySupplierID` ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image30.png))
 
@@ -210,7 +210,7 @@ Jako jiné třídy BLL `SuppliersBLLWithSprocs` má `Protected` `Adapter` vlastn
 Počítaný sloupec přidán do `Suppliers` tabulky a vrstvy DAL a BLL příslušným způsobem aktualizuje, jsme připraveni k sestavení, která funguje s stránky ASP.NET `FullContactName` počítaný sloupec. Začněte otevřením `ComputedColumns.aspx` stránku `AdvancedDAL` složky a GridView přetáhněte z panelu nástrojů do návrháře. Nastavit prvek GridView s `ID` vlastnost `Suppliers` a z inteligentních značek, jeho vazbu na nového prvku ObjectDataSource s názvem `SuppliersDataSource`. Konfigurace ObjectDataSource používat `SuppliersBLLWithSprocs` třídy jsme přidali zpět v kroku 6 a klikněte na tlačítko Další.
 
 
-[![Konfigurace ObjectDataSource pomocí třídy SuppliersBLLWithSprocs](working-with-computed-columns-vb/_static/image32.png)](working-with-computed-columns-vb/_static/image31.png)
+[![Configurovat ObjectDataSource pomocí třídy SuppliersBLLWithSprocs](working-with-computed-columns-vb/_static/image32.png)](working-with-computed-columns-vb/_static/image31.png)
 
 **Obrázek 11**: Konfigurace ObjectDataSource k použití `SuppliersBLLWithSprocs` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image33.png))
 
@@ -229,7 +229,7 @@ Po provedení těchto úprav ovládacího prvku GridView a prvek ObjectDataSourc
 V dalším kroku navštivte tuto stránku prostřednictvím prohlížeče. Jak ukazuje obrázek 12 každého dodavatele je uveden v tabulce, která zahrnuje `FullContactName` sloupec, jehož hodnota je jednoduše zřetězení tři sloupce naformátovaná jako `ContactName` (`ContactTitle`, `CompanyName`).
 
 
-[![Každý poskytovatel je uveden v mřížce](working-with-computed-columns-vb/_static/image35.png)](working-with-computed-columns-vb/_static/image34.png)
+[![EACH dodavatele je uvedena v mřížce](working-with-computed-columns-vb/_static/image35.png)](working-with-computed-columns-vb/_static/image34.png)
 
 **Obrázek 12**: Každý poskytovatel je uveden v mřížce ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image36.png))
 
@@ -237,7 +237,7 @@ V dalším kroku navštivte tuto stránku prostřednictvím prohlížeče. Jak u
 Kliknutím na tlačítko Upravit pro konkrétní dodavatele vyvolá zpětné volání a dokončí vykreslování tento řádek v jeho úpravy rozhraní (viz obrázek 13). První tři sloupce se vykreslí v jejich výchozí úpravy rozhraní – ovládací prvek textové pole, jehož `Text` je nastavena na hodnotu pole data. `FullContactName` Sloupec, ale zůstává jako text. Když BoundFields byly přidány do prvku GridView, po dokončení Průvodce konfigurací zdroje dat `FullContactName` Vlastnost BoundField s `ReadOnly` nastavenou na `True` protože odpovídající `FullContactName` sloupec v `SuppliersDataTable` má jeho `ReadOnly` nastavenou na `True`. Jak je uvedeno v kroku 4 `FullContactName` s `ReadOnly` nastavenou na `True` protože TableAdapter zjistila, že sloupec je počítaný sloupec.
 
 
-[![Je FullContactName sloupce nejde upravit](working-with-computed-columns-vb/_static/image38.png)](working-with-computed-columns-vb/_static/image37.png)
+[![Tje mu FullContactName sloupce nejde upravit](working-with-computed-columns-vb/_static/image38.png)](working-with-computed-columns-vb/_static/image37.png)
 
 **Obrázek 13**: `FullContactName` Sloupec nejde upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-vb/_static/image39.png))
 

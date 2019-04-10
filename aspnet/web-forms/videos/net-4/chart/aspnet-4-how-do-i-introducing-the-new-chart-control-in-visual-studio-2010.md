@@ -8,15 +8,15 @@ ms.date: 04/08/2010
 ms.assetid: 77b9f76c-0c38-4525-bf1b-581c19e127ab
 msc.legacyurl: /web-forms/videos/net-4/chart/aspnet-4-how-do-i-introducing-the-new-chart-control-in-visual-studio-2010
 msc.type: video
-ms.openlocfilehash: acd3033d4865ed45ab369f5fa3839c4ed536f6ac
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: f8ad87a50c0f4fd4353e7a656c6b0adf197ed750
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57068923"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59418180"
 ---
-<a name="how-do-i-introducing-the-new-chart-control-in-visual-studio-2010"></a>Postup: Úvod do nového ovládacího prvku grafu v sadě Visual Studio 2010
-====================
+# <a name="how-do-i-introducing-the-new-chart-control-in-visual-studio-2010"></a>Postup: Úvod do nového ovládacího prvku grafu v sadě Visual Studio 2010
+
 podle Max Adams
 
 Dochází k mnoha nadšení nad službou bezprostřední verzi sady Microsoft Visual Studio 2010 a rozhraní .NET Framework 4.0. Mezi mnoho nových funkcí je Web grafů ovládací prvek ASP.NET. V tomto videu maximální Adams představuje ovládací prvek a ukazuje, jak ve skutečnosti je snadné vytvořit vizuálně přitažlivé statistické nebo finanční analytické nástroje v prohlížeči pomocí ovládacího prvku grafu.
