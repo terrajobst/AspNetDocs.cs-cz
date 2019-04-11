@@ -8,15 +8,15 @@ ms.date: 02/24/2014
 ms.assetid: 7a77c2c0-deea-4290-a9c3-97958891758e
 msc.legacyurl: /web-pages/overview/security/16-adding-security-and-membership
 msc.type: authoredcontent
-ms.openlocfilehash: 1c36adf23f3b53e4fbf3dbdce7ca85664b32c975
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 1291417755e3fa4fb030bc6ba3089c38c4719c71
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066694"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59389659"
 ---
-<a name="adding-security-and-membership-to-an-aspnet-web-pages-razor-site"></a>Přidání zabezpečení a s členstvím na ASP.NET Web Pages (Razor)
-====================
+# <a name="adding-security-and-membership-to-an-aspnet-web-pages-razor-site"></a>Přidání zabezpečení a s členstvím na ASP.NET Web Pages (Razor)
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > Tento článek vysvětluje, jak zabezpečit na webu rozhraní ASP.NET Web Pages (Razor) tak, že některé stránky jsou k dispozici pouze na uživatele, kteří přihlášení. (Potěší vás také vytvoření stránky, které všem uživatelům přístup k.)
@@ -261,7 +261,7 @@ Ke správě rolí, můžete použít [role](https://msdn.microsoft.com/library/g
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [Přizpůsobení chování v celém webu](https://go.microsoft.com/fwlink/?LinkId=202906)
+- [Přizpůsobení chování na celém webu](https://go.microsoft.com/fwlink/?LinkId=202906)
 - [Zabezpečení webové komunikace: Certifikáty SSL a https://](https://go.microsoft.com/fwlink/?LinkId=208660)
 - [Nejzákladnější možnost pro implementaci zabezpečení syntaxe Razor rozhraní ASP.NET](http://mikepope.com/blog/DisplayBlog.aspx?permalink=2240) a [pomocí funkce potvrzení pro zabezpečení rozhraní ASP.NET Web Pages](http://mikepope.com/blog/DisplayBlog.aspx?permalink=2267). Toto jsou blogové příspěvky, které popisují, jak implementovat bez použití funkcí členství technologie ASP.NET **Starter Site** šablony.
 - [Povolení přihlášení z externích webů na webu s webovými stránkami ASP.NET](https://go.microsoft.com/fwlink/?LinkId=251969)

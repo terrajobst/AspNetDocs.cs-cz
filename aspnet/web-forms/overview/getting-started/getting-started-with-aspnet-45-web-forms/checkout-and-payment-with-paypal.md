@@ -8,15 +8,15 @@ ms.date: 09/08/2014
 ms.assetid: 664ec95e-b0c9-4f43-a39f-798d0f2a7e08
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal
 msc.type: authoredcontent
-ms.openlocfilehash: b59a395e255823a732aef1b899612063e09b2424
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: a0895c2246bc08f50645a865ce2dfffecfbb56a6
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57069007"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59391153"
 ---
-<a name="checkout-and-payment-with-paypal"></a>Pokladna a platba přes PayPal
-====================
+# <a name="checkout-and-payment-with-paypal"></a>Pokladna a platba přes PayPal
+
 by [Erik Reitan](https://github.com/Erikre)
 
 [Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
@@ -128,7 +128,7 @@ Je důležité si uvědomit, že konfigurace technologie ASP.NET následující 
 4. V **Průzkumníka řešení**, klikněte pravým tlačítkem myši **Northwind** projektu a klikněte na tlačítko **vlastnosti**.
 5. Na levé kartě klikněte **webové**.
 6. Změnit **adresa Url projektu** používat **adresa URL protokolu SSL** , který jste předtím uložili.   
-    ![Vlastnosti webového projektu](checkout-and-payment-with-paypal/_static/image5.png)
+    ![Project Web Properties](checkout-and-payment-with-paypal/_static/image5.png)
 7. Uložit na stránku stisknutím kombinace kláves **CTRL + S**.
 8. Stisknutím klávesy **Ctrl + F5** ke spuštění aplikace. Visual Studio se zobrazí možnost umožňují zabránit zobrazování upozornění protokolu SSL.
 9. Klikněte na tlačítko **Ano** důvěřovat certifikátu SSL služby IIS Express a pokračujte.   
@@ -250,7 +250,7 @@ Pokud se po tomto kurzu pomocí **předem připravených** Wingtip Toys ukázkov
 
 PayPal je webové fakturační platforma, která přijímá platby si obchodníci můžou online. V tomto kurzu potom vysvětluje, jak integrace funkcemi při placení Express PayPal pro do vaší aplikace. Expresní registrace umožňuje vašim zákazníkům využít PayPal k platbám za položky, které jste přidali do svého nákupního košíku.
 
-### <a name="create-paylpal-test-accounts"></a>Vytvoření účtů PaylPal testu
+### <a name="create-paypal-test-accounts"></a>Vytvoření účtů služby PayPal testu
 
 Pokud chcete používat PayPal, testovací prostředí, musíte vytvořit a ověřte testovací účet pro vývojáře. Testovací účet pro vývojáře použije k vytvoření kupující prodejce testu a testovacího účtu. Pověření účtu pro vývojáře testu také umožní ukázkové aplikace Wingtip Toys pro přístup k testovacím prostředí PayPal.
 
@@ -277,7 +277,7 @@ Pokud chcete používat PayPal, testovací prostředí, musíte vytvořit a ově
 7. Vytvořit testovací účet kupujících kliknutím **vytvořit účet** tlačítko.  
  **Izolovaného prostoru testovací účty** zobrazí se stránka. 
 
-    ![Pokladna a platba přes PayPal – PaylPal účty](checkout-and-payment-with-paypal/_static/image17.png)
+    ![Pokladna a platba přes PayPal – ve službě PayPal](checkout-and-payment-with-paypal/_static/image17.png)
 8. Na **izolovaného prostoru testovací účty** stránky, klikněte na tlačítko **facilitátora** e-mailový účet.  
     **Profil** a **oznámení** možnosti se zobrazí.
 9. Vyberte **profilu** možnost a potom klikněte na **API pověření** Chcete-li zobrazit svoje přihlašovací údaje rozhraní API pro obchodní zkušební účet.
@@ -309,9 +309,9 @@ Umístíte většinou PayPal kódu do jedné třídy. Tato třída obsahuje meto
 
 Třída NVPAPICaller obsahuje většinu funkčnosti PayPal. Kód ve třídě poskytuje metody, které jsou potřebné k tomu test nakupovat PayPal testovací prostředí. Následující tři služby PayPal funkce se používají k zajištění nákup:
 
-- `SetExpressCheckout` – funkce
-- `GetExpressCheckoutDetails` – funkce
-- `DoExpressCheckoutPayment` – funkce
+- `SetExpressCheckout`  – funkce
+- `GetExpressCheckoutDetails`  – funkce
+- `DoExpressCheckoutPayment`  – funkce
 
 `ShortcutExpressCheckout` Metoda shromažďuje Podrobnosti testu nákupní informace a produkt z nákupního košíku a volání `SetExpressCheckout` PayPal funkce. `GetCheckoutDetails` Metoda potvrdí podrobnosti o nákupu a volání `GetExpressCheckoutDetails` PayPal funkce před provedením nákupu testu. `DoCheckoutPayment` Dokončení nákupu testů z testovacího prostředí pomocí volání metody `DoExpressCheckoutPayment` PayPal funkce. Zbývající kód podporuje PayPal metody a proces, jako je například kódování řetězce, dekódování řetězců, zpracování polí a určení přihlašovacích údajů.
 

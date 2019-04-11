@@ -8,15 +8,15 @@ ms.date: 05/28/2015
 ms.assetid: c85ec591-f8d7-4882-b763-de6ab9f3df7a
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/layouts
 msc.type: authoredcontent
-ms.openlocfilehash: a6a007678d58547e9987ebda46bd08ae8aea66f7
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 58f3ec28914a604aa911cc3cb73733f0d58fd49f
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57072496"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59390412"
 ---
-<a name="introducing-aspnet-web-pages---creating-a-consistent-layout"></a>Úvod do webových stránek ASP.NET – vytvoření konzistentního rozložení
-====================
+# <a name="introducing-aspnet-web-pages---creating-a-consistent-layout"></a>Úvod do webových stránek ASP.NET – vytvoření konzistentního rozložení
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > V tomto kurzu se dozvíte, jak používat *rozložení* k vytvoření konzistentního vzhledu stránky na webu, který používá rozhraní ASP.NET Web Pages. Předpokládá, že jste dokončili řady prostřednictvím [odstranění databázových dat ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=251584).
@@ -146,7 +146,7 @@ Otevřít *Movies.cshtml* stránku znovu nezobrazovat. V kódu v horní části 
 
 `Page` Objekt je k dispozici na všech *.cshtml* stránky a je pro tento účel, a to ke sdílení informací mezi stránky a rozložení.
 
-Otevřít<em>\_Layout.cshtml</em> stránky. Změnit `<title>` element tak, že bude vypadat jako tento kód:
+Otevřít  *\_Layout.cshtml* stránky. Změnit `<title>` element tak, že bude vypadat jako tento kód:
 
 [!code-html[Main](layouts/samples/sample9.html)]
 
