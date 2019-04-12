@@ -8,15 +8,15 @@ ms.date: 06/19/2013
 ms.assetid: 7a87f16f-0e19-4f15-a88a-094ae866c4a2
 msc.legacyurl: /mvc/overview/older-versions/using-oauth-providers-with-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: d0203b62c911056fc56ed103c1c42f67816cbbf0
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: c2fe74c3d7b1aa0d230f1893f6ba7dcaa7a88419
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078385"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59396977"
 ---
-<a name="using-oauth-providers-with-mvc-4"></a>Použití poskytovatelů OAuth v MVC 4
-====================
+# <a name="using-oauth-providers-with-mvc-4"></a>Použití poskytovatelů OAuth v MVC 4
+
 podle [Tom FitzMacken](https://github.com/tfitzmac)
 
 > V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 4, který umožňuje uživatelům přihlášení pomocí přihlašovacích údajů z externího poskytovatele, jako je Facebook, Twitter, Microsoft nebo Google a pak do ní některé funkce z těchto zprostředkovatelů do vaší Webová aplikace. Pro zjednodušení tento kurz se zaměřuje na práci s přihlašovacími údaji ze sítě Facebook.
@@ -83,7 +83,7 @@ Tento kurz neukazuje všechny kroky, které musíte provést při registraci tě
 - [Microsoft](http://manage.dev.live.com/)
 - [Twitter](https://dev.twitter.com/)
 
-Při registraci vašeho webu pomocí Facebooku, můžete zadat &quot;localhost&quot; domény, lokality a `&quot; http://localhost/&quot;` pro adresu URL, jak je znázorněno na následujícím obrázku. Pomocí místního hostitele spolupracuje s poskytovateli většinu, ale aktuálně nefunguje pro zprostředkovatele společnosti Microsoft. Pro poskytovatele Microsoft uvést adresu URL webu platná.
+Při registraci vašeho webu pomocí Facebooku, můžete zadat &quot;localhost&quot; domény, lokality a `&quot;http://localhost/&quot;` pro adresu URL, jak je znázorněno na následujícím obrázku. Pomocí místního hostitele spolupracuje s poskytovateli většinu, ale aktuálně nefunguje pro zprostředkovatele společnosti Microsoft. Pro poskytovatele Microsoft uvést adresu URL webu platná.
 
 ![registrace serveru](using-oauth-providers-with-mvc/_static/image4.png)
 
