@@ -8,15 +8,15 @@ ms.date: 06/01/2015
 ms.assetid: c0090595-ab3b-4b9b-9e16-7a1891e8cb2f
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: 65cd5cd9f7d1f9c5fdaea9b0d16bdfd84259efdd
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b59cd34036c733579e678eab78097d3393f3e671
+ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071338"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59421079"
 ---
-<a name="aspnet-web-deployment-using-visual-studio-troubleshooting"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Poradce při potížích
-====================
+# <a name="aspnet-web-deployment-using-visual-studio-troubleshooting"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Poradce při potížích
+
 podle [Petr Dykstra](https://github.com/tdykstra)
 
 [Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
@@ -30,7 +30,7 @@ Scénáře uvedené platí do Azure a externích poskytovatelů hostingu. Dalš�
 
 - [Řešení potíží s webovou aplikací ve službě Azure App Service pomocí sady Visual Studio](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
 - [Monitorovat můžete webové aplikace ve službě Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-monitor//)
-- [Oznamujeme vydání sady Windows Azure SDK 2.0 pro .NET](http:// https://weblogs.asp.net/scottgu/announcing-the-release-of-windows-azure-sdk-2-0-for-net) (blog ScottGu's, ukazuje, jak získat diagnostické protokoly v sadě Visual Studio)
+- [Oznamujeme vydání sady Windows Azure SDK 2.0 pro .NET](http://https://weblogs.asp.net/scottgu/announcing-the-release-of-windows-azure-sdk-2-0-for-net) (blog ScottGu's, ukazuje, jak získat diagnostické protokoly v sadě Visual Studio)
 
 ## <a name="server-error-in--application---current-custom-error-settings-prevent-details-of-the-error-from-being-viewed-remotely"></a>Chyba serveru v aplikaci – "/" aktuální vlastní nastavení chyb zabránit podrobností o chybě zobrazení vzdáleně
 
@@ -46,7 +46,7 @@ Ve výchozím nastavení technologie ASP.NET zobrazuje podrobné informace o chy
 
 Umožňuje aplikaci zobrazovat podrobné chybové zprávy, když je spuštěná na vzdáleného hostitele, upravte soubor Web.config pro nastavení režimu customErrors, opětovné nasazení aplikace a spusťte aplikaci znovu:
 
-1. Pokud soubor Web.config aplikace má acustomErrors element v elementu thesystem.web, změňte atribut themode "Off". Jinak přidejte acustomErrors element v elementu thesystem.web s themode atribut nastaven na "off", jak je znázorněno v následujícím příkladu: 
+1. Pokud soubor Web.config aplikace má prvek customErrors v elementu system.web, změňte atribut režimu "Off". Jinak přidejte prvek customErrors v elementu system.web s atributem režimu nastavena na "off", jak je znázorněno v následujícím příkladu: 
 
     [!code-xml[Main](troubleshooting/samples/sample2.xml)]
 2. Nasazení aplikace.
@@ -129,7 +129,7 @@ Formát inicializačního řetězce neodpovídá specifikaci začínající na i
 
 ### <a name="possible-cause-and-solution"></a>Možná příčina a řešení
 
-Otevřít *Web.config* souboru v nasazené lokality a zkontrolujte, zda hodnoty připojovacího řetězce začínají znakem $(ReplacableToken\_, jako v následujícím příkladu:
+Otevřít *Web.config* souboru v nasazené lokality a zkontrolujte, zda hodnoty připojovacího řetězce začínají `$(ReplaceableToken_`, jako v následujícím příkladu:
 
 [!code-xml[Main](troubleshooting/samples/sample5.xml)]
 
@@ -306,7 +306,7 @@ Publikování selže a zobrazí se chyba, která znamená, že nemáte oprávně
 
 ### <a name="possible-cause-and-solution"></a>Možná příčina a řešení
 
-Ve výchozím nastavení, sady Visual Studio oprávnění ke čtení v kořenové složce serveru a oprávnění k zápisu na aplikaci\_složku Data. Pokud víte, že výchozí oprávnění u složky webu jsou správné a není potřeba nastavit, je toto chování zakázat tak, že přidáte **&lt;IncludeSetACLProviderOn cílové&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;** souboru profilu publikování (Chcete-li mít vliv na jeden profil) nebo do souboru wpp.targets (Chcete-li mít vliv na všechny profily). Informace o tom, jak tyto soubory upravit, naleznete v tématu [jak: Upravit nastavení nasazení profilu (.pubxml) soubory](https://msdn.microsoft.com/library/ff398069.aspx).
+Ve výchozím nastavení, sady Visual Studio oprávnění ke čtení v kořenové složce serveru a oprávnění k zápisu na aplikaci\_složku Data. Pokud víte, že výchozí oprávnění u složky webu jsou správné a není potřeba nastavit, je toto chování zakázat tak, že přidáte ** &lt;IncludeSetACLProviderOn cílové&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt; ** souboru profilu publikování (Chcete-li mít vliv na jeden profil) nebo do souboru wpp.targets (Chcete-li mít vliv na všechny profily). Informace o tom, jak tyto soubory upravit, naleznete v tématu [jak: Upravit nastavení nasazení profilu (.pubxml) soubory](https://msdn.microsoft.com/library/ff398069.aspx).
 
 ## <a name="access-denied-errors-when-the-application-tries-to-write-to-an-application-folder"></a>Přístup byl odepřen chyby, když se aplikace snaží k zápisu do složky, do aplikace
 
@@ -316,7 +316,7 @@ Vaše aplikace chyby při pokusu vytvořit nebo upravit soubor v jednom ze slož
 
 ### <a name="possible-cause-and-solution"></a>Možná příčina a řešení
 
-Ve výchozím nastavení, sady Visual Studio oprávnění ke čtení v kořenové složce serveru a oprávnění k zápisu na aplikaci\_složku Data. Pokud vaše aplikace potřebuje oprávnění k zápisu do podsložky, jak je uvedené v nastavení oprávnění pro složky a zavedení do produkčního prostředí kurzy v této sérii můžete nastavit oprávnění pro tuto složku. Pokud vaše aplikace potřebuje oprávnění k zápisu do kořenové složky webu, je nutné zabránit v nastavení přístup jen pro čtení pro kořenovou složku tak, že přidáte **&lt;IncludeSetACLProviderOn cílové&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;** souboru profilu publikování (Chcete-li mít vliv na jeden profil) nebo do souboru wpp.targets (Chcete-li mít vliv na všechny profily). Informace o tom, jak tyto soubory upravit, naleznete v tématu [jak: Upravit nastavení nasazení profilu (.pubxml) soubory](https://msdn.microsoft.com/library/ff398069.aspx).
+Ve výchozím nastavení, sady Visual Studio oprávnění ke čtení v kořenové složce serveru a oprávnění k zápisu na aplikaci\_složku Data. Pokud vaše aplikace potřebuje oprávnění k zápisu do podsložky, jak je uvedené v nastavení oprávnění pro složky a zavedení do produkčního prostředí kurzy v této sérii můžete nastavit oprávnění pro tuto složku. Pokud vaše aplikace potřebuje oprávnění k zápisu do kořenové složky webu, je nutné zabránit v nastavení přístup jen pro čtení pro kořenovou složku tak, že přidáte ** &lt;IncludeSetACLProviderOn cílové&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt; ** souboru profilu publikování (Chcete-li mít vliv na jeden profil) nebo do souboru wpp.targets (Chcete-li mít vliv na všechny profily). Informace o tom, jak tyto soubory upravit, naleznete v tématu [jak: Upravit nastavení nasazení profilu (.pubxml) soubory](https://msdn.microsoft.com/library/ff398069.aspx).
 
 <a id="aspnet45error"></a>
 
