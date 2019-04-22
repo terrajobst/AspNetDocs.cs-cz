@@ -12,7 +12,7 @@ ms.openlocfilehash: 1f40e5fb5dcd141b19099d54276194ad97548adc
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59381937"
 ---
 # <a name="signalr-deployment-and-hosting"></a>Funkce SignalR nasazení a hostování
@@ -20,5 +20,5 @@ ms.locfileid: "59381937"
 > Postup nasazení a hostování aplikací SignalR.
 
 
-- [Kurz: SignalR v místním prostředí](tutorial-signalr-self-host.md)
+- [Kurz: Hostování na vlastním serveru funkce SignalR](tutorial-signalr-self-host.md)
 - [Použití aplikace SignalR s webovými aplikacemi ve službě Azure App Service](using-signalr-with-azure-web-sites.md)

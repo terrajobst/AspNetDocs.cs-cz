@@ -12,7 +12,7 @@ ms.openlocfilehash: 22203d44935e3b0ed0fed5aa2ba42c2897c38241
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59391946"
 ---
 # <a name="showing-multiple-records-per-row-with-the-datalist-control-c"></a>Zobrazení více záznamů na řádku ovládacím prvkem DataList (C#)
@@ -31,7 +31,7 @@ Příklady ovládacích prvků DataList jsme viděli v posledních dvou kurzech 
 Můžeme přizpůsobit rozložení ovládacích prvků DataList s prostřednictvím jeho `RepeatColumns` a `RepeatDirection` vlastnosti, které, označuje, kolik sloupců jsou generovány a zda tyto položky jsou rozloženy vodorovně nebo svisle. Obrázek 1 příkladem DataList, která zobrazí informace o produktech v tabulce se třemi sloupci.
 
 
-[![Tmá DataList ukazuje tři produkty na každém řádku](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image2.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image1.png)
+[![Prvku DataList zobrazovala tři produkty na každém řádku](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image2.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image1.png)
 
 **Obrázek 1**: V prvku DataList ukazuje tři produkty na každém řádku ([kliknutím ji zobrazíte obrázek v plné velikosti](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image3.png))
 
@@ -57,7 +57,7 @@ Všimněte si, že, které jsem zahrnutý ve specifikátoru formátu v `Eval` sy
 Za chvíli navštivte stránku v prohlížeči. Jak znázorňuje obrázek 2 prvku DataList vykreslí jako jedním sloupcem, více řádky tabulky produktů.
 
 
-[![BVýchozí y, vykreslení ovládacích prvků DataList jako tabulka jedním sloupcem, více řádky](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image5.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image4.png)
+[![Ve výchozím nastavení, vykreslení ovládacích prvků DataList jako jedním sloupcem, více řádky tabulky](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image5.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image4.png)
 
 **Obrázek 2**: Ve výchozím nastavení, prvku DataList vykreslí jako jedním sloupcem, více řádky tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image6.png))
 
@@ -69,7 +69,7 @@ Při výchozí chování pro prvku DataList, je rozložení jeho položek svisle
 Změnou `RepeatDirection` vlastnost z `Vertical` k `Horizontal`, prvku DataList vykreslí své záznamy v jediném řádku, vytváření jeden sloupec na zdrojové položky dat. Pro ilustraci tohoto efektu, klikněte na ovládacím prvku DataList v návrháři a potom v okně Vlastnosti změňte `RepeatDirection` vlastnost z `Vertical` k `Horizontal`. Okamžitě po tak učiníte, návrháře upraví rozložení ovládacích prvků DataList s vytvořením jednoho řádku s více sloupci rozhraní (viz obrázek 3).
 
 
-[![Tmá RepeatDirection vlastnost určuje, jak the směr DataList s položek jsou podle Out](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image8.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image7.png)
+[![Jsou položky RepeatDirection vlastnost určuje, jak the směr DataList s rozložením navýšení kapacity](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image8.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image7.png)
 
 **Obrázek 3**: `RepeatDirection` Vlastnost určuje, jak jsou položky směr DataList s rozložením Out ([kliknutím ji zobrazíte obrázek v plné velikosti](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image9.png))
 
@@ -77,7 +77,7 @@ Změnou `RepeatDirection` vlastnost z `Vertical` k `Horizontal`, prvku DataList 
 Při zobrazení malého množství dat, jednoho řádku vícesloupcové tabulky může být ideální způsob, jak maximalizovat plochy obrazovky. Pro větší objemy dat ale jeden řádek budou vyžadovat mnoho sloupců, které nabízených oznámení ty položky tohoto t můžete přizpůsobit na obrazovce vypnout na pravé straně. Obrázek 4 ukazuje produkty při vykreslení v a jednoho řádku v prvku DataList. Protože je mnoho produktů (více než 80), uživatel bude mít přejděte úplně doprava, abyste viděli informace o jednotlivých produktů.
 
 
-[![Fnebo dostatečně velké datové zdroje, a jeden sloupec v prvku DataList bude vyžadovat vodorovného posouvání](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image11.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image10.png)
+[![Zdroje dat dostatečně velký a jeden sloupec v prvku DataList bude vyžadovat, aby se vodorovného posouvání](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image11.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image10.png)
 
 **Obrázek 4**: Dostatečně velké zdrojů dat, jeden sloupec v prvku DataList bude vyžadovat vodorovného posouvání ([kliknutím ji zobrazíte obrázek v plné velikosti](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image12.png))
 
@@ -89,7 +89,7 @@ K vytvoření a více sloupci, více řádků v prvku DataList, musíme nastavit
 V našem příkladu umožní s zobrazit tři produkty každý řádek tabulky. Proto nastavte `RepeatColumns` vlastnost na 3. Po provedení této změny, věnujte chvíli zobrazení výsledků v prohlížeči. Jak je vidět na obrázku 5, produkty jsou teď uvedené v tři sloupce, více řádky tabulky.
 
 
-[![Ttři produkty jsou zobrazeny na každém řádku](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image14.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image13.png)
+[![Na každém řádku se zobrazí tři produkty](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image14.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image13.png)
 
 **Obrázek 5**: Na každém řádku se zobrazí tři produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image15.png))
 
@@ -97,7 +97,7 @@ V našem příkladu umožní s zobrazit tři produkty každý řádek tabulky. P
 `RepeatDirection` Vlastnost ovlivňuje, jak jsou rozloženy položky v ovládacím prvku DataList. Obrázek 5 ukazuje výsledky s `RepeatDirection` nastavenou na `Horizontal`. Všimněte si, že první tři produkty Chai Chang a anýzového sirupu jsou rozloženy zleva doprava a shora dolů. Následující tři produkty (začíná s Chef Anton Cajun Seasoning) se zobrazí pod první tři po sobě. Změna `RepeatDirection` vlastnost zpět do `Vertical`, ale rozložen tyto produkty shora dolů, zleva doprava, jak znázorňuje obrázek 6.
 
 
-[![Here tyto produkty jsou stanoveny na svisle](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image17.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image16.png)
+[![Tady jsou produkty podle si svisle](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image17.png)](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image16.png)
 
 **Obrázek 6**: Tady jsou produkty podle si svisle ([kliknutím ji zobrazíte obrázek v plné velikosti](showing-multiple-records-per-row-with-the-datalist-control-cs/_static/image18.png))
 

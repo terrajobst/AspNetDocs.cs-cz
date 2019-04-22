@@ -12,7 +12,7 @@ ms.openlocfilehash: 3db6947f36eb51b41d929f8c7d8835a95db8ea75
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59392349"
 ---
 # <a name="adding-validation-to-the-model"></a>Přidání ověření do modelu
@@ -61,11 +61,11 @@ Přidejte také tento jeden řádek výše Html.BeginForm:
 
 Tady je kód zobrazený v rámci rozhraní IDE.
 
-[![Movies – Microsoft Visual Web Developer 2010 Express (10)](getting-started-with-mvc-part7/_static/image4.png)](getting-started-with-mvc-part7/_static/image3.png)
+[![Videa – Microsoft Visual Web Developer Express 2010 (10)](getting-started-with-mvc-part7/_static/image4.png)](getting-started-with-mvc-part7/_static/image3.png)
 
 Spusťte aplikaci a znovu navštívit /Movies/Create a klikněte na tlačítko vytvořit bez nutnosti zadávat žádná data. Chybové zprávy se zobrazí okamžitě bez flash, přidružené k odesílání dat na stránce všechny způsob, jakým zpět na server. Toto je vzhledem k tomu, že technologie ASP.NET MVC je nyní ověření vstupu u obou klienta (pomocí JavaScriptu) a na serveru.
 
-[![Cvytvořit - Windows Internet Explorer](getting-started-with-mvc-part7/_static/image6.png)](getting-started-with-mvc-part7/_static/image5.png)
+[![Vytvoření – Windows Internet Explorer](getting-started-with-mvc-part7/_static/image6.png)](getting-started-with-mvc-part7/_static/image5.png)
 
 To je v pořádku. Pojďme nyní přidat jeden další sloupec databáze.
 

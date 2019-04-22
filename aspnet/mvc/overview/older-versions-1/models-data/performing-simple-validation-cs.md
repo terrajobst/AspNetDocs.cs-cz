@@ -12,7 +12,7 @@ ms.openlocfilehash: 12fe89ec83a33ece2971c8186783326d165cbf79
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59388501"
 ---
 # <a name="performing-simple-validation-c"></a>Provedení jednoduchého ověření (C#)
@@ -32,7 +32,7 @@ Používáte stav modelu - nebo přesněji, slovník stavu modelu – pro reprez
 Můžu mi doporučujeme přidat logiku ověřování nebo databáze do kontroleru. Kontroler může obsahovat pouze logiku související řízení toku aplikace. Zástupce pro zjednodušení jsme se rozhodli.
 
 
-**Listing 1 - Controllers\ProductController.cs**
+**Výpis 1 - Controllers\ProductController.cs**
 
 [!code-csharp[Main](performing-simple-validation-cs/samples/sample1.cs)]
 
@@ -56,12 +56,12 @@ Pomocné rutiny Html.ValidationMessage() a Html.ValidationSummary() se používa
 Ujistěte se, že vytváříte aplikaci před přidáním zobrazení. V opačném případě nebude zobrazovat seznam tříd **zobrazení dat třídy** rozevíracího seznamu.
 
 
-[![TDialogové okno Nový projekt he](performing-simple-validation-cs/_static/image1.jpg)](performing-simple-validation-cs/_static/image1.png)
+[![Dialogové okno Nový projekt](performing-simple-validation-cs/_static/image1.jpg)](performing-simple-validation-cs/_static/image1.png)
 
 **Obrázek 01**: Přidání zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-cs/_static/image2.png))
 
 
-[![TDialogové okno Nový projekt he](performing-simple-validation-cs/_static/image2.jpg)](performing-simple-validation-cs/_static/image3.png)
+[![Dialogové okno Nový projekt](performing-simple-validation-cs/_static/image2.jpg)](performing-simple-validation-cs/_static/image3.png)
 
 **Obrázek 02**: Vytvoření zobrazení se silnými typy ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-cs/_static/image4.png))
 
@@ -79,7 +79,7 @@ Pomocná rutina Html.ValidationMessage() se nazývá vedle každého pole formul
 Na stránce na obrázku 3 znázorňuje chybové zprávy, který je vykreslen metodou ověřování pomocné rutiny, když se odešle formulář, chybějící pole a neplatné hodnoty.
 
 
-[![TDialogové okno Nový projekt he](performing-simple-validation-cs/_static/image3.jpg)](performing-simple-validation-cs/_static/image5.png)
+[![Dialogové okno Nový projekt](performing-simple-validation-cs/_static/image3.jpg)](performing-simple-validation-cs/_static/image5.png)
 
 **Obrázek 03**: Zobrazení pro vytváření odeslanou s problémy ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-cs/_static/image6.png))
 
@@ -104,7 +104,7 @@ Můžete upravit tyto šablony třídy List stylu a proto upravit vzhled chyby o
 Pokud odeslání formuláře HTML pro vytváření produktu, a zadáte neplatnou hodnotu pro pole price a žádná hodnota pro pole UnitsInStock, získáte ověřovacích zpráv, který zobrazí obrázek 4. Odkud pocházejí tyto chybových zpráv ověření ze?
 
 
-[![TDialogové okno Nový projekt he](performing-simple-validation-cs/_static/image4.jpg)](performing-simple-validation-cs/_static/image7.png)
+[![Dialogové okno Nový projekt](performing-simple-validation-cs/_static/image4.jpg)](performing-simple-validation-cs/_static/image7.png)
 
 **Obrázek 04**: Prebinding chyby ověření ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-cs/_static/image8.png))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 67ca6b1dc68dc2dde4e24d4d6c6ddae04fc4bb6d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59383471"
 ---
 # <a name="signalr-older-versions"></a>Starší verze funkce SignalR
@@ -20,7 +20,7 @@ ms.locfileid: "59383471"
 > Dokumentace, která se vztahuje na dřívější verze systému SignalR.
 
 
-- [Kurz: Začínáme s funkcí SignalR 1.x](tutorial-getting-started-with-signalr.md)
+- [Kurz: Začínáme s knihovnou SignalR 1.x](tutorial-getting-started-with-signalr.md)
 - [Kurz: Začínáme s knihovnou SignalR 1.x a MVC 4](tutorial-getting-started-with-signalr-and-mvc-4.md)
 - [Vysokofrekvenční reálný čas s knihovnou SignalR 1.x](tutorial-high-frequency-realtime-with-signalr.md)
 - [Kurz: Serverové vysílání s knihovnou ASP.NET SignalR 1.x](tutorial-server-broadcast-with-aspnet-signalr.md)

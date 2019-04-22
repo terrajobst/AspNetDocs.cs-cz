@@ -12,7 +12,7 @@ ms.openlocfilehash: 3df728891103de9c8e461ab9507237c9b14e8251
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59390685"
 ---
 # <a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Vytvoření zabezpečené aplikace webových formulářů ASP.NET s registrací uživatele, potvrzením e-mailu a resetováním hesla (C#)
@@ -29,7 +29,7 @@ Tento kurz vás provede kroky potřebné k vytvoření aplikace webových formul
 ### <a name="tutorial-tasks-and-information"></a>Kurz úkoly a informace:
 
 - [Vytvoření ASP.NET Web Forms app](#createWebForms)
-- [Připojení SendGrid](#SG)
+- [Hook Up SendGrid](#SG)
 - [Vyžadovat e-mailové potvrzení před přihlášení](#require)
 - [Obnovení hesla a obnovení](#reset)
 - [Znovu poslat potvrzovací odkaz e-mailu](#rsend)

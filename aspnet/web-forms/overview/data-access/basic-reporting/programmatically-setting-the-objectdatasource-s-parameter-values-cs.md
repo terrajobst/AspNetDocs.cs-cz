@@ -12,7 +12,7 @@ ms.openlocfilehash: 032b6665d3e99998dba870c8f7f2cdfec17737bf
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59383068"
 ---
 # <a name="programmatically-setting-the-objectdatasources-parameter-values-c"></a>Programové nastavení hodnot parametru ObjectDataSource (C#)
@@ -33,7 +33,7 @@ Může nastat situace, ale když hodnota parametru pocházejí z některé zdroj
 Pokaždé, když prvku ObjectDataSource `Select` je vyvolána metoda ObjectDataSource nejprve vyvolá jeho [události Selecting](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selecting%28VS.80%29.aspx). Potom je volána metoda ObjectDataSource základní objekt. Jakmile, která se dokončí prvku ObjectDataSource [vybrané události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selected%28VS.80%29.aspx) aktivuje (toto pořadí událostí, které znázorňuje obrázek 1). Parametr hodnoty předané do metody ObjectDataSource základní objekt můžete nastavit nebo upravit v obslužné rutině události pro `Selecting` událostí.
 
 
-[![TVybrané he ObjectDataSource a metoda výběru Fire události před a po jeho základního objektu je vyvolán](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image2.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image1.png)
+[![Je vyvolána ObjectDataSource vybrané a výběr Fire události před a po jeho základního objektu – metoda](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image2.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image1.png)
 
 **Obrázek 1**: Prvku ObjectDataSource `Selected` a `Selecting` je vyvolána metoda Fire události před a po jeho základního objektu ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image3.png))
 
@@ -47,7 +47,7 @@ Pusťme se do práce!
 V našem prvním příkladu potřebujeme přidat prostředky k načtení těchto zaměstnanci jehož `HireDate` došlo k chybě v zadaném měsíci. Tuto funkčnost v souladu s naší architektury, je nutné nejprve vytvořit metodu v `EmployeesTableAdapter` , která se mapuje na správný příkaz SQL. Chcete-li to provést, začněte otevřením typová Northwind. Klikněte pravým tlačítkem na `EmployeesTableAdapter` označovat popisky a zvolte Přidat dotaz.
 
 
-[![APřidat nový dotaz, který EmployeesTableAdapter](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image5.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image4.png)
+[![Přidat nový dotaz EmployeesTableAdapter](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image5.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image4.png)
 
 **Obrázek 2**: Přidat nový dotaz, který `EmployeesTableAdapter` ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image6.png))
 
@@ -55,7 +55,7 @@ V našem prvním příkladu potřebujeme přidat prostředky k načtení těchto
 Zvolte Přidat příkaz SQL, který vrátí řádky. Když se dostanete určení `SELECT` výchozí obrazovky – příkaz `SELECT` příkaz pro `EmployeesTableAdapter` už se načtou. Jednoduše přidejte v `WHERE` klauzule: `WHERE DATEPART(m, HireDate) = @Month`. [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx) je funkce jazyka T-SQL, která vrací část konkrétní datum `datetime` typ; v tomto případě používáme `DATEPART` vrátit z měsíce `HireDate` sloupce.
 
 
-[![Rvracet jenom ty řádky kde HireDate sloupec je menší než nebo rovna hodnotě @HiredBeforeDate parametr](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image8.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image7.png)
+[![Vrácení pouze těch řádky kde HireDate sloupec je menší než nebo rovno @HiredBeforeDate parametr](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image8.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image7.png)
 
 **Obrázek 3**: Vrácení pouze těch řádky kde `HireDate` sloupec je menší než nebo rovna hodnotě `@HiredBeforeDate` parametr ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image9.png))
 
@@ -63,7 +63,7 @@ Zvolte Přidat příkaz SQL, který vrátí řádky. Když se dostanete určení
 Nakonec změňte `FillBy` a `GetDataBy` metoda názvů pro `FillByHiredDateMonth` a `GetEmployeesByHiredDateMonth`v uvedeném pořadí.
 
 
-[![CZvolte více odpovídající metoda názvy než FillBy a GetDataBy](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image11.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image10.png)
+[![Vyberte vhodnější názvy metod než FillBy a GetDataBy](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image11.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image10.png)
 
 **Obrázek 4**: Zvolte více odpovídající metoda názvy než `FillBy` a `GetDataBy` ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image12.png))
 
@@ -71,7 +71,7 @@ Nakonec změňte `FillBy` a `GetDataBy` metoda názvů pro `FillByHiredDateMonth
 Kliknutím na tlačítko Dokončit dokončete průvodce a vraťte se do datové sady návrhovou plochu. `EmployeesTableAdapter` By teď měl obsahovat novou sadu metod pro přístup k zaměstnance zařazené v zadaném měsíci.
 
 
-[![Tmá nové metody se zobrazí v datové sady návrhová plocha](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image14.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image13.png)
+[![Nové metody se zobrazí v návrhové ploše datové sady](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image14.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image13.png)
 
 **Obrázek 5**: Nové metody zobrazují v návrhové ploše datové sady ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image15.png))
 
@@ -90,12 +90,12 @@ Stejně jako u našich jiné metody v této třídě `GetEmployeesByHiredDateMon
 Posledním krokem v tomto příkladu je zobrazení těchto zaměstnanců, jehož náborovou výročí je tento měsíc. Začněte přidáním GridView k `ProgrammaticParams.aspx` stránku `BasicReporting` složky a přidejte nový prvek ObjectDataSource jako svůj zdroj dat. Konfigurace ObjectDataSource používat `EmployeesBLL` třídy s `SelectMethod` nastavena na `GetEmployeesByHiredDateMonth(month)`.
 
 
-[![Use třída EmployeesBLL](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image17.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image16.png)
+[![Použití třídy EmployeesBLL](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image17.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image16.png)
 
 **Obrázek 6**: Použití `EmployeesBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image18.png))
 
 
-[![Szvolit metodu z GetEmployeesByHiredDateMonth(month)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image20.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image19.png)
+[![Vyberte z the GetEmployeesByHiredDateMonth(month) – metoda](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image20.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image19.png)
 
 **Obrázek 7**: Vyberte z `GetEmployeesByHiredDateMonth(month)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image21.png))
 
@@ -103,7 +103,7 @@ Posledním krokem v tomto příkladu je zobrazení těchto zaměstnanců, jehož
 Poslední obrazovka zobrazí dotaz, abychom mohli poskytovat `month` zdroje hodnotu parametru. Vzhledem k tomu, že tato hodnota nastavíme prostřednictvím kódu programu, ponechejte zdroji parametru nastavenou na výchozí hodnotu None možnosti a klikněte na tlačítko Dokončit.
 
 
-[![LParametr zdroj nastaven na hodnotu None eave](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image23.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image22.png)
+[![Ponechte zdrojová sada parametr na hodnotu None](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image23.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image22.png)
 
 **Obrázek 8**: Ponechte zdrojový parametr nastaven na hodnotu None ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image24.png))
 
@@ -129,7 +129,7 @@ Oba přístupy přidat novou obslužnou rutinu události pro ObjectDataSource `S
 Při návštěvě této stránky prostřednictvím prohlížeče můžeme vidět pouze jednoho zaměstnance byl přijat tento měsíc (březen) Novák Laura, který byl od 1994 ve společnosti.
 
 
-[![TZaměstnanci jejichž výročí tento měsíc jsou uvedeny hadice](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image27.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image26.png)
+[![Tyto zaměstnanci, jejichž výročí tento měsíc jsou uvedeny.](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image27.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image26.png)
 
 **Obrázek 10**: Tyto zaměstnanci jejichž výročí tento měsíc jsou uvedeny ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image28.png))
 

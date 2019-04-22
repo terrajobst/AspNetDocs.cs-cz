@@ -12,7 +12,7 @@ ms.openlocfilehash: a0895c2246bc08f50645a865ce2dfffecfbb56a6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59391153"
 ---
 # <a name="checkout-and-payment-with-paypal"></a>Pokladna a platba přes PayPal
@@ -128,7 +128,7 @@ Je důležité si uvědomit, že konfigurace technologie ASP.NET následující 
 4. V **Průzkumníka řešení**, klikněte pravým tlačítkem myši **Northwind** projektu a klikněte na tlačítko **vlastnosti**.
 5. Na levé kartě klikněte **webové**.
 6. Změnit **adresa Url projektu** používat **adresa URL protokolu SSL** , který jste předtím uložili.   
-    ![Project Web Properties](checkout-and-payment-with-paypal/_static/image5.png)
+    ![Vlastnosti webového projektu](checkout-and-payment-with-paypal/_static/image5.png)
 7. Uložit na stránku stisknutím kombinace kláves **CTRL + S**.
 8. Stisknutím klávesy **Ctrl + F5** ke spuštění aplikace. Visual Studio se zobrazí možnost umožňují zabránit zobrazování upozornění protokolu SSL.
 9. Klikněte na tlačítko **Ano** důvěřovat certifikátu SSL služby IIS Express a pokračujte.   
@@ -309,9 +309,9 @@ Umístíte většinou PayPal kódu do jedné třídy. Tato třída obsahuje meto
 
 Třída NVPAPICaller obsahuje většinu funkčnosti PayPal. Kód ve třídě poskytuje metody, které jsou potřebné k tomu test nakupovat PayPal testovací prostředí. Následující tři služby PayPal funkce se používají k zajištění nákup:
 
-- `SetExpressCheckout`  – funkce
-- `GetExpressCheckoutDetails`  – funkce
-- `DoExpressCheckoutPayment`  – funkce
+- `SetExpressCheckout` – funkce
+- `GetExpressCheckoutDetails` – funkce
+- `DoExpressCheckoutPayment` – funkce
 
 `ShortcutExpressCheckout` Metoda shromažďuje Podrobnosti testu nákupní informace a produkt z nákupního košíku a volání `SetExpressCheckout` PayPal funkce. `GetCheckoutDetails` Metoda potvrdí podrobnosti o nákupu a volání `GetExpressCheckoutDetails` PayPal funkce před provedením nákupu testu. `DoCheckoutPayment` Dokončení nákupu testů z testovacího prostředí pomocí volání metody `DoExpressCheckoutPayment` PayPal funkce. Zbývající kód podporuje PayPal metody a proces, jako je například kódování řetězce, dekódování řetězců, zpracování polí a určení přihlašovacích údajů.
 

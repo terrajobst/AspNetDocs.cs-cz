@@ -12,7 +12,7 @@ ms.openlocfilehash: dd60d02c2c3840edd4c0e1244623fcea0cb2db0b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59386317"
 ---
 # <a name="control-id-naming-in-content-pages-vb"></a>Pojmenovávání ID ovládacích prvků na stránkách obsahu (VB)
@@ -83,7 +83,7 @@ Deklarativní obsahu ovládacího prvku v tomto okamžiku by měl vypadat nějak
 Obrázek 3 ukazuje na stránku při zobrazit pomocí návrháře aplikace Visual Studio.
 
 
-[![The zahrnuje tři webové ovládací prvky stránky: textové pole, tlačítko a popisek](control-id-naming-in-content-pages-vb/_static/image4.png)](control-id-naming-in-content-pages-vb/_static/image3.png)
+[![Stránka obsahuje tři ovládací prvky webové: textové pole, tlačítko a popisek](control-id-naming-in-content-pages-vb/_static/image4.png)](control-id-naming-in-content-pages-vb/_static/image3.png)
 
 **Obrázek 03**: Zahrnuje tři webové ovládací prvky stránky: textové pole, tlačítko a popisek ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-vb/_static/image5.png))
 
@@ -133,7 +133,7 @@ Zatímco syntaxi pro volání `FindControl` metody se mírně liší v první dv
 Jakmile zadáte tento kód, přejděte `IDIssues.aspx` stránce prostřednictvím prohlížeče, zadejte svůj věk a klikněte na tlačítko "Odeslat". Po kliknutí na tlačítko "Odeslat" `NullReferenceException` je vyvolána (viz obrázek 5).
 
 
-[![A Je aktivována NullReferenceException](control-id-naming-in-content-pages-vb/_static/image8.png)](control-id-naming-in-content-pages-vb/_static/image7.png)
+[![Je aktivována NullReferenceException](control-id-naming-in-content-pages-vb/_static/image8.png)](control-id-naming-in-content-pages-vb/_static/image7.png)
 
 **Obrázek 05**: A `NullReferenceException` je vyvolána ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-vb/_static/image9.png))
 
@@ -173,7 +173,7 @@ Naštěstí je přístupný prostřednictvím odkazu na stránce předlohy `Page
 Tentokrát, na stránce v prohlížeči zadáním váš věk a kliknutím na tlačítko "Odeslat" zobrazí zprávu v `Results` popiskem nebo podle očekávání.
 
 
-[![Tv popisku se zobrazí věku uživatele he](control-id-naming-in-content-pages-vb/_static/image11.png)](control-id-naming-in-content-pages-vb/_static/image10.png)
+[![Věk uživatele je zobrazený v popisku](control-id-naming-in-content-pages-vb/_static/image11.png)](control-id-naming-in-content-pages-vb/_static/image10.png)
 
 **Obrázek 06**: Věk uživatele je zobrazený v popisku ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-vb/_static/image12.png))
 
@@ -200,7 +200,7 @@ Přidejte následující kód, který `PageExtensionMethods.vb` souboru k defino
 S tímto kódem na místě, vraťte se do `IDIssues.aspx` použití modelu code-behind třídy a Odkomentujte aktuální stránky `FindControl` volání metody. Nahraďte volání `Page.FindControlRecursive("controlID")`. Co je úhledné o metodách rozšíření je, že se zobrazí přímo v rozevíracích seznamech technologie IntelliSense. Jak je vidět na obrázku 7, pokud zadáte `Page` a pak klikněte na tlačítko období, `FindControlRecursive` metoda je součástí technologie IntelliSense rozevíracího seznamu spolu s druhou `Control` metody třídy.
 
 
-[![Epřípony metody jsou zahrnuty v IntelliSense rozevíracích](control-id-naming-in-content-pages-vb/_static/image14.png)](control-id-naming-in-content-pages-vb/_static/image13.png)
+[![Rozšiřující metody jsou zahrnuty v IntelliSense rozevíracích](control-id-naming-in-content-pages-vb/_static/image14.png)](control-id-naming-in-content-pages-vb/_static/image13.png)
 
 **Obrázek 07**: Rozšiřující metody jsou zahrnuty v IntelliSense rozevíracích ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-vb/_static/image15.png))
 

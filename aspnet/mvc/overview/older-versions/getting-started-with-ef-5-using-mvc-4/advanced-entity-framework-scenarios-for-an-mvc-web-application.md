@@ -12,7 +12,7 @@ ms.openlocfilehash: a1218b1fb5a8ee28ea6ee3d3c5af979e86821ed7
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59391192"
 ---
 # <a name="advanced-entity-framework-scenarios-for-an-mvc-web-application-10-of-10"></a>Scénáře pro pokročilé Entity Framework pro webové aplikace MVC (10 z 10)
@@ -316,8 +316,7 @@ Jeden příčinou tohoto problému je chyby ověřování při `Seed` metoda spu
 
 Chybová zpráva:
 
-*Chyba protokolu HTTP 500.19 – vnitřní chyba serveru  
-Požadované stránce nelze přistoupit, protože související konfigurační data pro stránky je neplatná.*
+*Chyba protokolu HTTP 500.19 – vnitřní chyba serveru požadovanou stránku nelze získat přístup, protože související konfigurační data pro stránky je neplatná.*
 
 Řešení:
 

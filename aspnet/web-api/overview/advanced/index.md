@@ -13,7 +13,7 @@ ms.openlocfilehash: 2cec6138ffcd6019eae23c82abda2b96d7b0b625
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59383457"
 ---
 # <a name="advanced-topics-for-aspnet-web-api"></a>Pokročilá témata pro rozhraní ASP.NET Web API
@@ -26,6 +26,6 @@ ms.locfileid: "59383457"
 - [Volání webového rozhraní API z klienta .NET (C#)](calling-a-web-api-from-a-net-client.md)
 - [Obslužné rutiny zpráv HTTP ve webovém rozhraní API](http-message-handlers.md)
 - [Obslužné rutiny zpráv HttpClient ve webovém rozhraní API](httpclient-message-handlers.md)
-- [Posílání dat formulářů HTML ve webovém rozhraní API: Data formuláře kódovaná pomocí adresy URL](sending-html-form-data-part-1.md)
+- [Posílání dat formulářů HTML ve webovém rozhraní API: Data formuláře kódovaná](sending-html-form-data-part-1.md)
 - [Posílání dat formulářů HTML ve webovém rozhraní API: Nahrání souboru a vícedílné zprávy standardu MIME](sending-html-form-data-part-2.md)
 - [Soubory cookie HTTP ve webovém rozhraní API technologie ASP.NET](http-cookies.md)

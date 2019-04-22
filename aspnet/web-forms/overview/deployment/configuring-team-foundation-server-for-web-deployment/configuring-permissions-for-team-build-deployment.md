@@ -12,7 +12,7 @@ ms.openlocfilehash: 62e5c5622743447e1119141469c894dc905e6b43
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59381052"
 ---
 # <a name="configuring-permissions-for-team-build-deployment"></a>Konfigurace oprávnění pro nasazení týmového sestavení

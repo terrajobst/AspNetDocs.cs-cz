@@ -12,7 +12,7 @@ ms.openlocfilehash: 29f7dded2f6fc2e8ce588dab2949b59ddb6f1fc4
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59388904"
 ---
 # <a name="creating-model-classes-with-the-entity-framework-c"></a>Vytvoření tříd modelu v sadě Entity Framework (C#)
@@ -136,7 +136,7 @@ Syntaxe podle toho, která LINQ – syntaxe využívající metody nebo syntaxe 
 
 Zobrazení výpisu 2 se používá k zobrazení záznamů video.
 
-**Výpis 2 – Views\Home\Index.aspx**
+**Listing 2 – Views\Home\Index.aspx**
 
 [!code-aspx[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample3.aspx)]
 
@@ -198,7 +198,7 @@ Nakonec pokud nejsou žádné chyby ověření, pak podkladové databázové tab
 
 Při úpravě záznamů v databázi, je potřeba předat Id záznamu upravovaný na akce kontroleru, který provádí aktualizace databáze. Akce kontroleru, jinak nebude vědět, který záznam se má aktualizovat v podkladové databázi. Zobrazení pro úpravy součástí výpis 5 obsahuje skryté pole formuláře, který představuje Id databáze záznamu, který právě upravujete.
 
-**Výpis 5 – Views\Home\Edit.aspx**
+**Listing 5 – Views\Home\Edit.aspx**
 
 [!code-aspx[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample8.aspx)]
 

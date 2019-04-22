@@ -12,7 +12,7 @@ ms.openlocfilehash: 986c4b109fc0e809867853da728bcd12654a80ec
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59394676"
 ---
 # <a name="interacting-with-the-master-page-from-the-content-page-c"></a>Interakce stránky předlohy se stránkou obsahu (C#)
@@ -61,7 +61,7 @@ Procházení krok 1 až pět naposledy zobrazení přidat produkty v prvku GridV
 Otevřít `Site.master` stránku předlohy a přidejte popisek a do ovládacího prvku GridView `leftContent` `<div>`. Vymazání popisku `Text` vlastnost, nastavte jeho `EnableViewState` vlastnost na hodnotu false a jeho `ID` vlastnost `GridMessage`; nastavit prvku GridView `ID` vlastnost `RecentProducts`. Z návrháře, dále rozbalte inteligentní značky prvku GridView a zvolte možnost pro vytvoření vazby na nový zdroj dat. Otevře se Průvodce konfigurací zdroje dat. Protože v databázi Northwind `App_Data` složka je databáze Microsoft SQL Server, můžete vytvořit SqlDataSource tak, že vyberete (viz obrázek 1); název ve třídě SqlDataSource `RecentProductsDataSource`.
 
 
-[![BIND GridView s ovládacím prvkem SqlDataSource s názvem RecentProductsDataSource](interacting-with-the-master-page-from-the-content-page-cs/_static/image2.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image1.png)
+[![Svázat s ovládacím prvkem SqlDataSource s názvem RecentProductsDataSource prvku GridView.](interacting-with-the-master-page-from-the-content-page-cs/_static/image2.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image1.png)
 
 **Obrázek 01**: Svázat ovládací prvek SqlDataSource název prvku GridView `RecentProductsDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image3.png))
 
@@ -69,7 +69,7 @@ Otevřít `Site.master` stránku předlohy a přidejte popisek a do ovládacího
 Dalším krokem výzva k určení, co se připojit k databázi. Zvolte `NORTHWIND.MDF` databázových souborů z rozevíracího seznamu a klikněte na tlačítko Další. Protože to je poprvé, kdy jsme použili této databáze, průvodce bude nabízet k uložení připojovacího řetězce v `Web.config`. Jeho uložení připojovacího řetězce, pomocí názvu `NorthwindConnectionString`.
 
 
-[![Cpřipojit k databázi Northwind](interacting-with-the-master-page-from-the-content-page-cs/_static/image5.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image4.png)
+[![Připojení k databázi Northwind](interacting-with-the-master-page-from-the-content-page-cs/_static/image5.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image4.png)
 
 **Obrázek 02**: Připojení k databázi Northwind ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image6.png))
 
@@ -87,7 +87,7 @@ Protože chceme návratové že jen pět naposledy přidaný produkty, potřebuj
 `TOP 5` – Klíčové slovo vrací jenom prvních pět záznamů z dotazu. `Products` Primárního klíče tabulky `ProductID`, je `IDENTITY` sloupec, který nám zajišťuje, že každého nového produktu do tabulky přidat bude mít hodnotu větší než předchozí položka. Proto řazení výsledků podle `ProductID` v sestupném pořadí vrátí produkty počínaje naposledy vytvořený z nich.
 
 
-[![Rvracet pět nejčastěji nedávno přidali produktů](interacting-with-the-master-page-from-the-content-page-cs/_static/image8.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image7.png)
+[![Vrátí pět naposledy přidané produktů](interacting-with-the-master-page-from-the-content-page-cs/_static/image8.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image7.png)
 
 **Obrázek 03**: Vrátí pět nejčastěji nedávno přidali produktů ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image9.png))
 
@@ -102,7 +102,7 @@ Jak je vidět, obsahuje značky: ovládací prvek popisek webového (`GridMessag
 Pomocí tohoto ovládacího prvku GridView vytvořen a jeho SqlDataSource ovládací prvek nakonfigurovat přejděte na webovou stránku prostřednictvím prohlížeče. Jak je vidět na obrázku 4, zobrazí se, že se přidala do mřížky v levém dolním rohu, který obsahuje pět naposledy produktů.
 
 
-[![Tmá GridView zobrazuje pět nejčastěji nedávno přidali produktů](interacting-with-the-master-page-from-the-content-page-cs/_static/image11.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image10.png)
+[![Pět naposledy přidané produktů zobrazí prvku GridView.](interacting-with-the-master-page-from-the-content-page-cs/_static/image11.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image10.png)
 
 **Obrázek 04**: Pět nejčastěji nedávno přidali produktů zobrazí prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image12.png))
 
@@ -116,7 +116,7 @@ Pomocí tohoto ovládacího prvku GridView vytvořen a jeho SqlDataSource ovlád
 Naše dalším krokem je vytvoření obsahu stránky, ze kterého může uživatel přidat nový produkt, který má `Products` tabulky. Přidejte novou stránku obsahu, aby `Admin` složku s názvem `AddProduct.aspx`a vytvořte mu vazbu k `Site.master` stránky předlohy. Obrázek 5 ukazuje Průzkumník řešení po přidání této stránce na webu.
 
 
-[![Add novou stránku ASP.NET ke složce Admin](interacting-with-the-master-page-from-the-content-page-cs/_static/image14.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image13.png)
+[![Přidejte novou stránku ASP.NET ke složce Admin](interacting-with-the-master-page-from-the-content-page-cs/_static/image14.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image13.png)
 
 **Obrázek 05**: Přidejte novou stránku ASP.NET `Admin` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image15.png))
 
@@ -145,7 +145,7 @@ Po dokončení Průvodce přejít na ovládacím prvku DetailsView inteligentní
 A je to! Můžeme otestovat tuto stránku. Navštivte `AddProduct.aspx` prostřednictvím prohlížeče, zadejte název a cena (viz obrázek 6).
 
 
-[![Add nového produktu do databáze](interacting-with-the-master-page-from-the-content-page-cs/_static/image17.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image16.png)
+[![Přidání nového produktu do databáze](interacting-with-the-master-page-from-the-content-page-cs/_static/image17.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image16.png)
 
 **Obrázek 06**: Přidání nového produktu do databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image18.png))
 
@@ -199,7 +199,7 @@ Všechna rozhraní ASP.NET web pages, musí být odvozen od `Page` třídu, kter
 Když teď máme zasazena volného typu `Page.Master` vlastnost `Site` typ odkazujeme vlastnostem a metodám, které jsou specifické pro lokalitu. Jak ukazuje obrázek 7, veřejná vlastnost `GridMessageText` se zobrazí v rozevíracím seznamu technologie IntelliSense.
 
 
-[![IntelliSense uvádí naši stránku předlohy veřejné vlastnosti a metody](interacting-with-the-master-page-from-the-content-page-cs/_static/image20.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image19.png)
+[![Technologie IntelliSense zobrazuje veřejné vlastnosti a metody naši stránku předlohy](interacting-with-the-master-page-from-the-content-page-cs/_static/image20.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image19.png)
 
 **Obrázek 07**: Technologie IntelliSense zobrazuje naši stránku předlohy veřejné vlastnosti a metody ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image21.png))
 
@@ -237,7 +237,7 @@ Ve výše uvedeném kódu používá obě volného typu `Page.Master` vlastnost 
 Obrázek 8 ukazuje `AddProduct.aspx` stránku ihned po nového produktu - Scottova Soda – byla přidána do databáze. Mějte na paměti, že je název produktu právě přidali jste si poznamenali v popisku stránky předlohy a prvku GridView aktualizovala zahrnout produktu a jeho cenou.
 
 
-[![TStránky předlohy he popisek a prvek GridView zobrazit produktu Just-Added](interacting-with-the-master-page-from-the-content-page-cs/_static/image23.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image22.png)
+[![Popisek a GridView zobrazit právě přidané produktu na stránce předlohy](interacting-with-the-master-page-from-the-content-page-cs/_static/image23.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image22.png)
 
 **Obrázek 08**: Popisek stránky předlohy a GridView zobrazit Just-Added produktu ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image24.png))
 

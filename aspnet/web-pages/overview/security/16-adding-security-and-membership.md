@@ -12,7 +12,7 @@ ms.openlocfilehash: 1291417755e3fa4fb030bc6ba3089c38c4719c71
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59389659"
 ---
 # <a name="adding-security-and-membership-to-an-aspnet-web-pages-razor-site"></a>Přidání zabezpečení a s členstvím na ASP.NET Web Pages (Razor)
@@ -261,7 +261,7 @@ Ke správě rolí, můžete použít [role](https://msdn.microsoft.com/library/g
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [Přizpůsobení chování na celém webu](https://go.microsoft.com/fwlink/?LinkId=202906)
+- [Přizpůsobení chování v celém webu](https://go.microsoft.com/fwlink/?LinkId=202906)
 - [Zabezpečení webové komunikace: Certifikáty SSL a https://](https://go.microsoft.com/fwlink/?LinkId=208660)
 - [Nejzákladnější možnost pro implementaci zabezpečení syntaxe Razor rozhraní ASP.NET](http://mikepope.com/blog/DisplayBlog.aspx?permalink=2240) a [pomocí funkce potvrzení pro zabezpečení rozhraní ASP.NET Web Pages](http://mikepope.com/blog/DisplayBlog.aspx?permalink=2267). Toto jsou blogové příspěvky, které popisují, jak implementovat bez použití funkcí členství technologie ASP.NET **Starter Site** šablony.
 - [Povolení přihlášení z externích webů na webu s webovými stránkami ASP.NET](https://go.microsoft.com/fwlink/?LinkId=251969)

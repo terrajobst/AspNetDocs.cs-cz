@@ -12,7 +12,7 @@ ms.openlocfilehash: 78192156bd9a3117d8cf75808f1de493a0d52a17
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59387040"
 ---
 # <a name="batch-inserting-vb"></a>Dávkové vkládání (VB)
@@ -33,7 +33,7 @@ Tento koncept je použít také při přidání záznamů. Představte si, že t
 S trochou pracovní vytvoříme dávkové vložení rozhraní, které umožňuje uživateli zvolit dodavatele a kategorie jednou, zadejte řadu názvů produktů a jednotkové ceny a potom klikněte na tlačítko pro přidání nové produkty k databázi (viz obrázek 1). Po přidání každého produktu, jeho `ProductName` a `UnitPrice` datová pole jsou přiřazeny hodnoty zadané v textových polí, zatímco jeho `CategoryID` a `SupplierID` hodnoty jsou přiřazeny hodnoty z DropDownLists na začátek fo formuláře. `Discontinued` a `UnitsOnOrder` hodnoty jsou nastaveny na pevně definovaných hodnot z `False` a 0, v uvedeném pořadí.
 
 
-[![Tmá se rozhraní dávkové vložení](batch-inserting-vb/_static/image2.png)](batch-inserting-vb/_static/image1.png)
+[![Vložení rozhraní služby Batch](batch-inserting-vb/_static/image2.png)](batch-inserting-vb/_static/image1.png)
 
 **Obrázek 1**: Rozhraní dávkové vkládání ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image3.png))
 
@@ -49,7 +49,7 @@ Při vytvoření stránky, která má dvě rozhraní, najednou je viditelná pou
 Začněte otevřením `BatchInsert.aspx` stránku `BatchData` složky a Panel přetáhněte z panelu nástrojů do návrháře (viz obrázek 2). Nastavení panelu s `ID` vlastnost `DisplayInterface`. Při přidání panelu do návrháře jeho `Height` a `Width` vlastnosti nastavené na 50px a 125px, v uvedeném pořadí. Vymazání hodnoty těchto vlastností v okně Vlastnosti.
 
 
-[![DUN panelu z panelu nástrojů na Návrhář](batch-inserting-vb/_static/image5.png)](batch-inserting-vb/_static/image4.png)
+[![Přetáhněte z panelu nástrojů na Návrhář panelu](batch-inserting-vb/_static/image5.png)](batch-inserting-vb/_static/image4.png)
 
 **Obrázek 2**: Přetáhněte z panelu nástrojů na Návrhář panelu ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image6.png))
 
@@ -57,12 +57,12 @@ Začněte otevřením `BatchInsert.aspx` stránku `BatchData` složky a Panel p�
 V dalším kroku přetáhněte ovládací prvek tlačítko a GridView do panelu. Tlačítka s nastavte `ID` vlastnost `ProcessShipment` a jeho `Text` vlastnost procesu dodávky produktu. Nastavit prvek GridView s `ID` vlastnost `ProductsGrid` a z inteligentních značek, jeho vazbu na nového prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource přebírat jeho data ze `ProductsBLL` třída s `GetProducts` metody. Od tohoto ovládacího prvku GridView slouží pouze k zobrazení dat, nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný). Klikněte na tlačítko Dokončit dokončete průvodce pro zdroj dat nakonfigurovat.
 
 
-[![DZobrazit Data vrácená z třídy ProductsBLL s GetProducts metoda](batch-inserting-vb/_static/image8.png)](batch-inserting-vb/_static/image7.png)
+[![Zobrazení dat vrácených z metody GetProducts ProductsBLL třída s](batch-inserting-vb/_static/image8.png)](batch-inserting-vb/_static/image7.png)
 
 **Obrázek 3**: Zobrazit Data vrácená z `ProductsBLL` třída s `GetProducts` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image9.png))
 
 
-[![Set rozevírací seznamy v UPDATE, INSERT a DELETE karty na (žádný)](batch-inserting-vb/_static/image11.png)](batch-inserting-vb/_static/image10.png)
+[![Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný)](batch-inserting-vb/_static/image11.png)](batch-inserting-vb/_static/image10.png)
 
 **Obrázek 4**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit záložky (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image12.png))
 
@@ -79,7 +79,7 @@ Všimněte si, že se zobrazí v rámci otevírací a zavírací značky pro tla
 Chcete-li zobrazit náš postup prostřednictvím prohlížeče chvíli trvat. Jak je vidět na obrázku 5, měli byste vidět tlačítko procesu dodávky produktu nad prvku GridView, která zobrazuje seznam produktů deset najednou.
 
 
-[![TGridView uvádí produkty a nabízí řazení a stránkování možnosti](batch-inserting-vb/_static/image14.png)](batch-inserting-vb/_static/image13.png)
+[![Seznamy produktů, na prvku GridView a nabízí řazení a stránkování](batch-inserting-vb/_static/image14.png)](batch-inserting-vb/_static/image13.png)
 
 **Obrázek 5**: Produkty a nabízí řazení a stránkování možnosti jsou uvedeny prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image15.png))
 
@@ -109,7 +109,7 @@ To `<table>` značek nezahrnuje žádné webové ovládací prvky, ale ty přid�
 Tento kód zadali vrátí do zobrazení návrhu. To `<table>` by se zobrazit jako čtyři sloupce, řádku sedm tabulky v návrháři, jak znázorňuje obrázek 6.
 
 
-[![The vkládání rozhraní se skládá čtyři sloupce, sedm řádek tabulky](batch-inserting-vb/_static/image17.png)](batch-inserting-vb/_static/image16.png)
+[![Vložení rozhraní se skládá čtyři sloupce, sedm řádek tabulky](batch-inserting-vb/_static/image17.png)](batch-inserting-vb/_static/image16.png)
 
 **Obrázek 6**: Vložení rozhraní se skládá čtyři sloupce, sedm řádek tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image18.png))
 
@@ -119,7 +119,7 @@ Můžeme znovu teď jste připravení přidat ovládací prvky webového rozhran
 Nastavte DropDownList s od dodavatele `ID` vlastnost `Suppliers` a jeho vazbu na nového prvku ObjectDataSource s názvem `SuppliersDataSource`. Konfigurace nového prvku ObjectDataSource načíst data z `SuppliersBLL` třída s `GetSuppliers` metoda a nastavte aktualizace kartu s rozevíracím seznamu na (žádný). Kliknutím na Dokončit dokončíte průvodce.
 
 
-[![Configurovat ObjectDataSource použít SuppliersBLL třídu s metodou GetSuppliers](batch-inserting-vb/_static/image20.png)](batch-inserting-vb/_static/image19.png)
+[![Konfigurace ObjectDataSource metody GetSuppliers SuppliersBLL třída s](batch-inserting-vb/_static/image20.png)](batch-inserting-vb/_static/image19.png)
 
 **Obrázek 7**: Konfigurace ObjectDataSource k použití `SuppliersBLL` třída s `GetSuppliers` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image21.png))
 
@@ -127,7 +127,7 @@ Nastavte DropDownList s od dodavatele `ID` vlastnost `Suppliers` a jeho vazbu na
 Máte `Suppliers` DropDownList zobrazení `CompanyName` pole data a použít `SupplierID` datové pole jako jeho `ListItem` s hodnotami.
 
 
-[![DZobrazit datové pole CompanyName a ID dodavatele použijte jako hodnotu](batch-inserting-vb/_static/image23.png)](batch-inserting-vb/_static/image22.png)
+[![Zobrazení pole CompanyName Data a použít KódDodavatele jako hodnotu](batch-inserting-vb/_static/image23.png)](batch-inserting-vb/_static/image22.png)
 
 **Obrázek 8**: Zobrazení `CompanyName` pole dat a použití `SupplierID` jako hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image24.png))
 
@@ -137,7 +137,7 @@ Název druhé DropDownList `Categories` a jeho vazbu na nového prvku ObjectData
 Po přidání těchto dvou DropDownLists a vázán na správně nakonfigurovaných ObjectDataSources, vaše obrazovka by měla vypadat podobně jako na obrázku 9.
 
 
-[![Tmá řádek záhlaví nyní obsahuje dodavatelů a kategorie DropDownLists](batch-inserting-vb/_static/image26.png)](batch-inserting-vb/_static/image25.png)
+[![Nyní obsahuje řádek záhlaví dodavatelů a DropDownLists kategorie](batch-inserting-vb/_static/image26.png)](batch-inserting-vb/_static/image25.png)
 
 **Obrázek 9**: Záhlaví řádku nyní obsahuje `Suppliers` a `Categories` DropDownLists ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image27.png))
 
@@ -157,7 +157,7 @@ A konečně, přidejte ovládací prvek souhrnu ověření v rámci `InsertingIn
 V tomto okamžiku vaše obrazovka by měla vypadat podobně jako na obrázku 10.
 
 
-[![Tmá vkládání rozhraní nyní zahrnuje textová pole pro názvy produktů a ceny](batch-inserting-vb/_static/image29.png)](batch-inserting-vb/_static/image28.png)
+[![Vložení rozhraní nyní zahrnuje textová pole pro produkty názvy a ceny](batch-inserting-vb/_static/image29.png)](batch-inserting-vb/_static/image28.png)
 
 **Obrázek 10**: Vložení rozhraní nyní zahrnuje textových polí pro názvy produktů a ceny ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image30.png))
 
@@ -171,7 +171,7 @@ Přetáhněte popisek webový ovládací prvek z panelu nástrojů do horní č�
 Obrázku 11 můžete vidět Návrhář Visual Studio po popisek byl přidán a nakonfigurován.
 
 
-[![Pkrajky StatusLabel ovládací prvek výše dva panely ovládací prvky](batch-inserting-vb/_static/image32.png)](batch-inserting-vb/_static/image31.png)
+[![Umístit ovládací prvek StatusLabel nad dva ovládací prvky Panel](batch-inserting-vb/_static/image32.png)](batch-inserting-vb/_static/image31.png)
 
 **Obrázek 11**: Místo `StatusLabel` ovládací prvek výše dva ovládací prvky panelu ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image33.png))
 
@@ -208,7 +208,7 @@ Využijte k otestování této stránky v prohlížeči. Při první návštěv�
 > Při zobrazování vkládání rozhraní, využijte k otestování CompareValidators na je cena ze jednotku textových polí. Zobrazí se pole messagebox na straně klienta upozornění, když kliknete na Přidat produkty z dodávky tlačítko s neplatnou měny nebo ceny s hodnotu menší než nula.
 
 
-[![TZobrazí se mu vložení rozhraní po kliknutí na tlačítko dodávky produktu procesu](batch-inserting-vb/_static/image35.png)](batch-inserting-vb/_static/image34.png)
+[![Vložení rozhraní se zobrazí po kliknutí na tlačítko dodávky produktu procesu](batch-inserting-vb/_static/image35.png)](batch-inserting-vb/_static/image34.png)
 
 **Obrázek 12**: Vložení rozhraní se zobrazí po kliknutí na tlačítko dodávky produktu procesu ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image36.png))
 
@@ -237,17 +237,17 @@ Pokud byly zadány žádné produkty, vkládání rozhraní zůstane zobrazená 
 Obrázek s 13, 14 a 15 zobrazit vkládání a zobrazí rozhraní v akci. Obrázek 13 uživatel zadal hodnotu cena jednotky bez odpovídající název produktu. Obrázek 14 ukazuje rozhraní zobrazované za tři nové produkty byly přidány úspěšně, 15 obrázek se zobrazí dvě nově přidaných produktech v prvku GridView (třetí disk se na předchozí stránce).
 
 
-[![A Název produktu je nutné při zadávání Jednotková cena](batch-inserting-vb/_static/image38.png)](batch-inserting-vb/_static/image37.png)
+[![Název produktu je nutné při zadávání cena za jednotku](batch-inserting-vb/_static/image38.png)](batch-inserting-vb/_static/image37.png)
 
 **Obrázek 13**: Název produktu je nutné při zadávání cena za jednotku ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image39.png))
 
 
-[![Ttři nové Veggies byly přidány pro dodavatele Mayumi s](batch-inserting-vb/_static/image41.png)](batch-inserting-vb/_static/image40.png)
+[![Tři nové Veggies byly přidány pro dodavatele Mayumi s](batch-inserting-vb/_static/image41.png)](batch-inserting-vb/_static/image40.png)
 
 **Obrázek 14**: Tři nové Veggies byly přidány pro dodavatele Mayumi s ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image42.png))
 
 
-[![TNové produkty najdete ho na poslední stránce prvku GridView.](batch-inserting-vb/_static/image44.png)](batch-inserting-vb/_static/image43.png)
+[![Nové produkty nachází v poslední stránky prvku GridView.](batch-inserting-vb/_static/image44.png)](batch-inserting-vb/_static/image43.png)
 
 **Obrázek 15**: Nové produktům najdete na poslední stránce prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-vb/_static/image45.png))
 

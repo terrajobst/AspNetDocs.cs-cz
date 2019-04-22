@@ -12,7 +12,7 @@ ms.openlocfilehash: 35fcf02c20e3d20f9cb75f6a25aeb1ddac016b4e
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59393766"
 ---
 # <a name="urls-in-master-pages-vb"></a>Adresy URL stránek předloh (VB)
@@ -75,7 +75,7 @@ Nově vytvořený `Default.aspx` stránka by měla obsahovat čtyři ovládací 
 Protože `<img>` elementu `src` atribut je relativní adresa URL, v prohlížeči se pokusí vyhledat `Images` složce relativní k umístění složky webové stránky. Jinými slovy, v prohlížeči hledá soubor bitové kopie `Admin/Images/PoweredByASPNET.gif`.
 
 
-[![Tmá PoweredByASPNET.gif Image soubor nelze nalézt](urls-in-master-pages-vb/_static/image3.png)](urls-in-master-pages-vb/_static/image2.png)
+[![Soubor bitové kopie PoweredByASPNET.gif nebyl nalezen.](urls-in-master-pages-vb/_static/image3.png)](urls-in-master-pages-vb/_static/image2.png)
 
 **Obrázek 02**: `PoweredByASPNET.gif` Image soubor nebyl nalezen ([kliknutím ji zobrazíte obrázek v plné velikosti](urls-in-master-pages-vb/_static/image4.png))
 
@@ -92,7 +92,7 @@ Chcete-li napravit porušení obrázku je znázorněno na obrázku 2, musíme ak
 Za chvíli se aktualizovat `<img>` elementu `src` atributu na absolutní adresu URL pomocí jedné z formuláře uvedené nahoře a přejděte `~/Admin/Default.aspx` stránky prostřednictvím prohlížeče. Tentokrát se správně najít a zobrazit v prohlížeči `PoweredByASPNET.gif` soubor bitové kopie (viz obrázek 3).
 
 
-[![TObrázek PoweredByASPNET.gif je teď zobrazuje](urls-in-master-pages-vb/_static/image6.png)](urls-in-master-pages-vb/_static/image5.png)
+[![Obrázek PoweredByASPNET.gif se nyní zobrazí](urls-in-master-pages-vb/_static/image6.png)](urls-in-master-pages-vb/_static/image5.png)
 
 **Obrázek 03**: `PoweredByASPNET.gif` Bitová kopie je nyní zobrazen ([kliknutím ji zobrazíte obrázek v plné velikosti](urls-in-master-pages-vb/_static/image7.png))
 

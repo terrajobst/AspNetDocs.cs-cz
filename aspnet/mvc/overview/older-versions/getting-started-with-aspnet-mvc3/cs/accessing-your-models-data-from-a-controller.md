@@ -12,7 +12,7 @@ ms.openlocfilehash: a2e2957ffe766282f127b6fb537af00673aa440f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59389840"
 ---
 # <a name="accessing-your-models-data-from-a-controller-c"></a>Přístup k datům modelu z kontroleru (C#)

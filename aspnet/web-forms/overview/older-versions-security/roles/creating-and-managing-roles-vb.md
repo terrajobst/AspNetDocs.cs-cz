@@ -12,7 +12,7 @@ ms.openlocfilehash: ef00ae5ddac44f17aed040db7df04a5c0f896caf
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59386330"
 ---
 # <a name="creating-and-managing-roles-vb"></a>Vytváření a správa rolí (VB)
@@ -48,7 +48,7 @@ Začněte tím, že vytvoříte novou složku v projektu s názvem `Roles`. V da
 Průzkumník řešení vašeho projektu v tomto okamžiku by měl vypadat podobně jako obrazovky je vidět na obrázku 1.
 
 
-[![FNaše nové stránky byly přidány do složky role](creating-and-managing-roles-vb/_static/image2.png)](creating-and-managing-roles-vb/_static/image1.png)
+[![Čtyři nové stránky byly přidány do složky role](creating-and-managing-roles-vb/_static/image2.png)](creating-and-managing-roles-vb/_static/image1.png)
 
 **Obrázek 1**: Čtyři nové stránky byly přidány do `Roles` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-vb/_static/image3.png))
 
@@ -68,7 +68,7 @@ A konečně, můžeme aktualizovat mapy webu (`Web.sitemap`) zahrnout tyto nové
 Pomocí mapy webu, aktualizovat přejděte na web prostřednictvím prohlížeče. Jak je vidět na obrázku 2, navigaci na levé straně teď obsahuje položky pro role kurzy.
 
 
-[![FNaše nové stránky byly přidány do složky role](creating-and-managing-roles-vb/_static/image5.png)](creating-and-managing-roles-vb/_static/image4.png)
+[![Čtyři nové stránky byly přidány do složky role](creating-and-managing-roles-vb/_static/image5.png)](creating-and-managing-roles-vb/_static/image4.png)
 
 **Obrázek 2**: Čtyři nové stránky byly přidány do `Roles` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-vb/_static/image6.png))
 
@@ -149,7 +149,7 @@ Výše uvedený kód spustí přiřazením zadaný v název oříznutý role `Ro
 Umožňuje vytvořit roli s názvem Správci. Přejděte `ManageRoles.aspx` stránce prostřednictvím prohlížeče, do textového pole zadejte správce (viz obrázek 3) a potom klikněte na tlačítko Vytvořit roli.
 
 
-[![CVytvořit roli správce](creating-and-managing-roles-vb/_static/image8.png)](creating-and-managing-roles-vb/_static/image7.png)
+[![Umožňuje vytvořit roli správce](creating-and-managing-roles-vb/_static/image8.png)](creating-and-managing-roles-vb/_static/image7.png)
 
 **Obrázek 3**: Umožňuje vytvořit roli Administrators ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-vb/_static/image9.png))
 
@@ -157,7 +157,7 @@ Umožňuje vytvořit roli s názvem Správci. Přejděte `ManageRoles.aspx` str�
 Co se stane? Vyvolá zpětné volání, ale neexistuje vizuální upozornění, která ve skutečnosti role byla přidána do systému. Aktualizujeme tuto stránku v kroku 5 a zahrnují vizuální zpětnou vazbu. Prozatím se však můžete ověřit, že role byla vytvořena tak, že přejdete `SecurityTutorials.mdf` databáze a zobrazení dat z `aspnet_Roles` tabulky. Jak ukazuje obrázek 4 `aspnet_Roles` tabulka obsahuje záznam pro roli správce právě přidali.
 
 
-[![Taspnet_Roles tabulka má řádek pro správce](creating-and-managing-roles-vb/_static/image11.png)](creating-and-managing-roles-vb/_static/image10.png)
+[![Aspnet_Roles tabulka obsahuje řádek pro správce](creating-and-managing-roles-vb/_static/image11.png)](creating-and-managing-roles-vb/_static/image10.png)
 
 **Obrázek 4**: `aspnet_Roles` Tabulka obsahuje řádek pro správce ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-vb/_static/image12.png))
 
@@ -175,7 +175,7 @@ Můžeme rozšířit `ManageRoles.aspx` stránky, aby zahrnovala seznam aktuáln
 S tímto kódem na místě navštivte stránku prostřednictvím prohlížeče. Jak je vidět na obrázku 5, měli byste vidět mřížku s jedním sloupcem označené položky. Mřížka obsahuje řádek pro roli správce, kterou jsme přidali v kroku 4.
 
 
-[![Tmá GridView v jednom sloupci zobrazí role](creating-and-managing-roles-vb/_static/image14.png)](creating-and-managing-roles-vb/_static/image13.png)
+[![GridView zobrazí role v jednom sloupci](creating-and-managing-roles-vb/_static/image14.png)](creating-and-managing-roles-vb/_static/image13.png)
 
 **Obrázek 5**: GridView zobrazí role v jednom sloupci ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-vb/_static/image15.png))
 
@@ -203,7 +203,7 @@ V současné době `RoleList` GridView je vázaný jenom na seznamu rolí, při 
 Teď, když uživatel přidá novou roli `RoleList` GridView ukazuje roli právě přidané na zpětné volání, poskytuje vizuální zpětnou vazbu, že role se úspěšně vytvořil. Pro znázornění, přejděte `ManageRoles.aspx` stránce prostřednictvím prohlížeče a přidejte roli s názvem správců. Po kliknutí na tlačítko Vytvořit roli, bude následovat zpětné volání a mřížce se aktualizuje a zahrnují správcích a také novou roli vedoucí.
 
 
-[![TRole správců má byla přidána](creating-and-managing-roles-vb/_static/image17.png)](creating-and-managing-roles-vb/_static/image16.png)
+[![Role správců se přidala](creating-and-managing-roles-vb/_static/image17.png)](creating-and-managing-roles-vb/_static/image16.png)
 
 **Obrázek 6**: Byla přidána má Role správců ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-vb/_static/image18.png))
 
@@ -220,7 +220,7 @@ V tomto okamžiku můžete uživatele vytvořit novou roli a zobrazit všechny e
 Můžeme rozšířit v prvku GridView `ManageRoles.aspx` zahrnout odstranění tlačítka, který po kliknutí na odstraní vybranou roli. Začněte přidáním tlačítko pro odstranění k prvku GridView. dialogové okno pole a tlačítko pro odstranění, které se nachází v rámci CommandField možnost přidání. Ujistěte se, odstraňte sloupec úplně vlevo tlačítko a nastavte jeho `DeleteText` vlastnost odstranit roli.
 
 
-[![Add Odstranit tlačítko RoleList GridView](creating-and-managing-roles-vb/_static/image20.png)](creating-and-managing-roles-vb/_static/image19.png)
+[![Přidejte tlačítko pro odstranění RoleList GridView](creating-and-managing-roles-vb/_static/image20.png)](creating-and-managing-roles-vb/_static/image19.png)
 
 **Obrázek 7**: Přidejte tlačítko Odstranit `RoleList` ovládacího prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-vb/_static/image21.png))
 

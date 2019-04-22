@@ -13,7 +13,7 @@ ms.openlocfilehash: aa8c0be6e4a758da34fc6eed902e31049d0a9a9c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59379726"
 ---
 # <a name="tutorial-server-broadcast-with-signalr-2"></a>Kurz: Server vysílání s knihovnou SignalR 2
@@ -480,7 +480,7 @@ Kurzy, které ukazují scénáře komunikace peer-to-peer, naleznete v tématu [
 
 Další informace o funkci SignalR naleznete v následujících zdrojích:
 
-* [ASP.NET SignalR](../../index.md)
+* [Funkce SignalR technologie ASP.NET](../../index.md)
 * [Projekt SignalR](http://signalr.net/)
 * [Funkce SignalR Githubu a ukázky](https://github.com/SignalR/SignalR)
 * [SignalR Wiki](https://github.com/SignalR/SignalR/wiki)

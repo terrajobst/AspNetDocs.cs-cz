@@ -12,13 +12,13 @@ ms.openlocfilehash: 10ee617ff5653bcc478364b7bea75bac4f4770f6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59388852"
 ---
 # <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax Content Delivery Network
 
 - [Microsoft Ajax Content Delivery Network](overview.md)
-- [Uživatelské rozhraní jQuery 1.8.5](jquery-ui/index.md)
+- [Uživatelské rozhraní jQuery](jquery-ui/index.md)
 
     - [Uživatelské rozhraní jQuery 1.10.4 ve službě Microsoft Ajax CDN](jquery-ui/cdnjqueryui1104.md)
     - [Uživatelské rozhraní jQuery 1.10.3 ve službě Microsoft Ajax CDN](jquery-ui/cdnjqueryui1103.md)
@@ -95,13 +95,13 @@ ms.locfileid: "59388852"
     - [jQuery Mobile 1.4.5 ve službě Microsoft Ajax CDN](jquery-mobile/cdnjquerymobile145.md)
 - [jQuery Templates](jquery-templates/index.md)
 
-    - [jQuery Templates Beta 1](jquery-templates/cdnjquerytemplatesbeta1.md)
-- [jQuery Cycle 2.88](jquery-cycle/index.md)
+    - [Šablony jQuery verze Beta 1](jquery-templates/cdnjquerytemplatesbeta1.md)
+- [jQuery Cycle](jquery-cycle/index.md)
 
     - [jQuery Cycle 2.99](jquery-cycle/cdnjquerycycle299.md)
     - [jQuery Cycle 2.94](jquery-cycle/cdnjquerycycle294.md)
     - [jQuery Cycle 2.88](jquery-cycle/cdnjquerycycle288.md)
-- [jQuery DataTables 1.10.5](jquery-datatables/index.md)
+- [jQuery DataTables](jquery-datatables/index.md)
 
     - [jQuery DataTables 1.9.4](jquery-datatables/cdnjquerydatatables194.md)
     - [jQuery DataTables 1.9.3](jquery-datatables/cdnjquerydatatables193.md)
@@ -111,7 +111,7 @@ ms.locfileid: "59388852"
     - [jQuery DataTables 1.8.2](jquery-datatables/cdnjquerydatatables182.md)
     - [jQuery DataTables 1.10.4](jquery-datatables/cdnjquerydatatables104.md)
     - [jQuery DataTables 1.10.5](jquery-datatables/cdnjquerydatatables105.md)
-- [Webové formuláře ASP.NET a Ajax 4](cdnajax4.md)
+- [Webové formuláře a Ajax 4](cdnajax4.md)
 - [ASP.NET Ajax 3.5](cdnajax35.md)
 - [Webové formuláře ASP.NET a Ajax 4.5.2](cdnajax452.md)
 - [Webové formuláře ASP.NET a Ajax 4.5.1](cdnajax451.md)

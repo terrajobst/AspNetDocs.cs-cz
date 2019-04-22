@@ -12,7 +12,7 @@ ms.openlocfilehash: 96f6ebb47af38c77cba11a92c883700730324226
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59389229"
 ---
 # <a name="specifying-the-master-page-programmatically-vb"></a>Programové určení stránky předlohy (VB)
@@ -42,7 +42,7 @@ Pokaždé, když je přijat požadavek na webovém serveru, který je stránku o
 Obrázek 1 znázorňuje tuto fusion. Krok 1 na obrázku 1 zobrazí původní obsah a hierarchie ovládací prvek stránky předlohy. Na konci ocáskem fázi PreInit obsah jsou ovládací prvky na stránce přidány do odpovídajících prvků ContentPlaceHolder na stránce předlohy (krok 2). Po tomto fusion stránky předlohy slouží jako kořenový hierarchii roztaveného ovládacích prvků. Tento ovládací prvek začleněny hierarchie se pak přidá do stránky a vytvoření hierarchie dokončené ovládacího prvku (krok 3). Net výsledkem je, že na stránce ovládacího prvku hierarchie obsahuje hierarchii roztaveného ovládacích prvků.
 
 
-[![Tmá stránky předlohy a stránky obsahu ovládacího prvku hierarchií jsou začleněny společně během fáze PreInit](specifying-the-master-page-programmatically-vb/_static/image2.png)](specifying-the-master-page-programmatically-vb/_static/image1.png)
+[![Stránky předlohy a stránky obsahu ovládacího prvku hierarchií jsou začleněny společně během fáze PreInit](specifying-the-master-page-programmatically-vb/_static/image2.png)](specifying-the-master-page-programmatically-vb/_static/image1.png)
 
 **Obrázek 01**: Stránky předlohy a stránky obsahu ovládacího prvku hierarchií jsou začleněny společně během fáze PreInit ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image3.png))
 
@@ -83,7 +83,7 @@ Zda `MasterPageFile` je nastavena prostřednictvím `@Page` – direktiva nebo p
 Stručně řečeno, je potřeba nechat `MasterPageFile` atribut `@Page` směrnice mohli využívat bohaté možnosti návrhu v sadě Visual Studio.
 
 
-[![VVisual Studio používá @Page atribut direktivy MasterPageFile k vykreslení zobrazení návrhu](specifying-the-master-page-programmatically-vb/_static/image5.png)](specifying-the-master-page-programmatically-vb/_static/image4.png)
+[![Použití sady Visual Studio @Page atribut direktivy MasterPageFile k vykreslení zobrazení návrhu](specifying-the-master-page-programmatically-vb/_static/image5.png)](specifying-the-master-page-programmatically-vb/_static/image4.png)
 
 **Obrázek 02**: Visual Studio používá `@Page` direktivy `MasterPageFile` atribut k vykreslení zobrazení Návrh ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image6.png))
 
@@ -97,7 +97,7 @@ Podívejme se na tom, jak dynamicky načíst stránku předlohy za běhu na zák
 Vytvoření nové stránky předlohy v kořenové složce s názvem `Alternate.master`. Přidat nové šablony stylů také na web s názvem `AlternateStyles.css`.
 
 
-[![Add jiné stránky předlohy a souborů CSS na web](specifying-the-master-page-programmatically-vb/_static/image8.png)](specifying-the-master-page-programmatically-vb/_static/image7.png)
+[![Přidejte další stránky předlohy a šablon stylů CSS soubor na web](specifying-the-master-page-programmatically-vb/_static/image8.png)](specifying-the-master-page-programmatically-vb/_static/image7.png)
 
 **Obrázek 03**: Přidat jiné stránky předlohy a souborů CSS na web ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image9.png))
 
@@ -108,7 +108,7 @@ Jsme navrhli tak `Alternate.master` stránku předlohy, která mají název zobr
 > Technologie ASP.NET obsahuje schopnost definovat *motivy*. Motiv je kolekce obrázků, souborů CSS a styl související webové nastavení vlastností ovládacího prvku, které se můžou uplatnit na stránky v době běhu. Motivy jsou způsob, jak přejít, pokud váš web rozložení se liší pouze v obrázcích zobrazí a jejich pravidla šablon stylů CSS. V případě rozložení více podstatně liší například pomocí jiné webové ovládací prvky nebo s výrazně jiné rozložení, je potřeba používat samostatné stránky předlohy. Na konci tohoto kurzu pro další informace o motivech najdete v části Další čtení.
 
 
-[![OObsah stránky teď můžete použít nový vzhled a chování](specifying-the-master-page-programmatically-vb/_static/image11.png)](specifying-the-master-page-programmatically-vb/_static/image10.png)
+[![Stránek s obsahem teď můžete použít nový vzhled a chování](specifying-the-master-page-programmatically-vb/_static/image11.png)](specifying-the-master-page-programmatically-vb/_static/image10.png)
 
 **Obrázek 04**: Stránek s obsahem teď můžete použít nový vzhled a chování ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image12.png))
 
@@ -206,7 +206,7 @@ Pojďme vytvořit webovou stránku, která umožňuje uživateli zvolit hlavní 
 > Protože `Site.master` a `Alternate.master` mají stejnou sadu ovládacích prvků ContentPlaceHolder nebude vadit, jaké stránky předlohy, zvolte při vytváření nového obsahu stránky. Pro zajištění konzistence, můžu Navrhněte pomocí `Site.master`.
 
 
-[![APřidat nové stránky obsahu na web](specifying-the-master-page-programmatically-vb/_static/image14.png)](specifying-the-master-page-programmatically-vb/_static/image13.png)
+[![Přidejte novou stránku obsahu na web](specifying-the-master-page-programmatically-vb/_static/image14.png)](specifying-the-master-page-programmatically-vb/_static/image13.png)
 
 **Obrázek 05**: Přidejte novou stránku obsahu na web ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image15.png))
 
@@ -251,12 +251,12 @@ S `ChooseMasterPage.aspx` stránka dokončení našich posledním úkolu je, aby
 S tímto kódem na místě, přejděte `ChooseMasterPage.aspx` stránky. Na začátku `Site.master` je vybrané (viz obrázek 6) stránka předlohy, ale uživatel může vybrat různé stránky předlohy z rozevíracího seznamu.
 
 
-[![CStránky obsahu se zobrazí na stránce předlohy Site.master](specifying-the-master-page-programmatically-vb/_static/image17.png)](specifying-the-master-page-programmatically-vb/_static/image16.png)
+[![Stránky obsahu se zobrazí na stránce předlohy Site.master](specifying-the-master-page-programmatically-vb/_static/image17.png)](specifying-the-master-page-programmatically-vb/_static/image16.png)
 
 **Obrázek 06**: Obsah stránky se zobrazí pomocí `Site.master` stránky předlohy ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image18.png))
 
 
-[![CStránky obsahu se teď zobrazují používající stránku předlohy Alternate.master](specifying-the-master-page-programmatically-vb/_static/image20.png)](specifying-the-master-page-programmatically-vb/_static/image19.png)
+[![Stránky obsahu se teď zobrazují používající stránku předlohy Alternate.master](specifying-the-master-page-programmatically-vb/_static/image20.png)](specifying-the-master-page-programmatically-vb/_static/image19.png)
 
 **Obrázek 07**: Obsah stránky jsou nyní zobrazeny pomocí `Alternate.master` stránky předlohy ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image21.png))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 1c99ce1528b1a28a4ec470a05d62abef6d4bb888
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59391855"
 ---
 # <a name="customizing-the-datalists-editing-interface-vb"></a>Přizpůsobení rozhraní pro úpravy prvku DataList (VB)
@@ -37,7 +37,7 @@ Značky a ovládacích prvků v ovládacím prvku DataList s `EditItemTemplate` 
 V tomto kurzu vytvoříme podrobnější editační rozhraní pro DataList, takový, který obsahuje DropDownLists a zaškrtávací políčko. Zejména, vytvoříme a v prvku DataList, který obsahuje informace o produktu a umožňuje s název produktu, Dodavatel, kategorie a ukončená stav aktualizovat (viz obrázek 1).
 
 
-[![TÚpravy rozhraní zahrne textové pole, dva DropDownLists a zaškrtávacího políčka](customizing-the-datalist-s-editing-interface-vb/_static/image2.png)](customizing-the-datalist-s-editing-interface-vb/_static/image1.png)
+[![Úpravy rozhraní obsahuje textové pole, dva DropDownLists a zaškrtávací políčko](customizing-the-datalist-s-editing-interface-vb/_static/image2.png)](customizing-the-datalist-s-editing-interface-vb/_static/image1.png)
 
 **Obrázek 1**: Úpravy rozhraní obsahuje textové pole, dva DropDownLists a zaškrtávací políčko ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-datalist-s-editing-interface-vb/_static/image3.png))
 
@@ -47,7 +47,7 @@ V tomto kurzu vytvoříme podrobnější editační rozhraní pro DataList, tako
 Než vytvoříme rozhraní DataList s upravovat, musíme nejprve sestavení rozhraní jen pro čtení. Začněte otevřením `CustomizedUI.aspx` stránku ze `EditDeleteDataList` složky a přidat a v prvku DataList na stránku nastavení z návrháře, jeho `ID` vlastnost `Products`. Vytvořte nový prvek ObjectDataSource z inteligentních značek v prvku DataList s. Pojmenujte tento nový prvek ObjectDataSource `ProductsDataSource` a jeho konfigurace pro načtení dat z `ProductsBLL` třída s `GetProducts` metody. Jako předchozí upravitelné DataList kurzy aktualizujeme informace s upravených produktu tak, že přejdete přímo do vrstvy obchodní logiky. Odpovídajícím způsobem nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
 
 
-[![Set rozevírací seznamy UPDATE, INSERT a DELETE karty na (žádný)](customizing-the-datalist-s-editing-interface-vb/_static/image5.png)](customizing-the-datalist-s-editing-interface-vb/_static/image4.png)
+[![Nastavte rozevírací seznamy UPDATE, INSERT a DELETE karty na (žádný)](customizing-the-datalist-s-editing-interface-vb/_static/image5.png)](customizing-the-datalist-s-editing-interface-vb/_static/image4.png)
 
 **Obrázek 2**: Nastavte aktualizace, vložení a odstranění karty rozevírací seznamy na (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-datalist-s-editing-interface-vb/_static/image6.png))
 
@@ -60,7 +60,7 @@ Po dokončení konfigurace ObjectDataSource, Visual Studio vytvoříte výchozí
 Výše uvedené značky rozložen produktu informací pomocí &lt;h4&gt; záhlaví pro produkt s názvem a čtyřmi sloupci `<table>` pro zbývající pole. `ProductPropertyLabel` a `ProductPropertyValue` třídy CSS, definované v `Styles.css`, popsaná v předchozích kurzech. Obrázek 3 zobrazuje náš postup při prohlížení prostřednictvím prohlížeče.
 
 
-[![TZobrazí se mu název, Dodavatel, kategorie, vyřazuje, stav a cena každý produkt](customizing-the-datalist-s-editing-interface-vb/_static/image8.png)](customizing-the-datalist-s-editing-interface-vb/_static/image7.png)
+[![Zobrazí se název, Dodavatel, kategorie, vyřazuje, stav a cena každého produktu](customizing-the-datalist-s-editing-interface-vb/_static/image8.png)](customizing-the-datalist-s-editing-interface-vb/_static/image7.png)
 
 **Obrázek 3**: Zobrazí se název, Dodavatel, kategorie, vyřazuje, stav a cena každý produkt ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-datalist-s-editing-interface-vb/_static/image9.png))
 
@@ -72,7 +72,7 @@ Prvním krokem při vytváření přizpůsobených DataList úpravy rozhraní je
 Přizpůsobení rozhraní pro úpravy, klikněte na odkaz Upravit šablony v prvku DataList s inteligentním a zvolte `EditItemTemplate` možnost z rozevíracího seznamu. Přidat DropDownList k `EditItemTemplate` a nastavte jeho `ID` k `Categories`.
 
 
-[![Add DropDownList pro kategorie](customizing-the-datalist-s-editing-interface-vb/_static/image11.png)](customizing-the-datalist-s-editing-interface-vb/_static/image10.png)
+[![Přidat DropDownList pro kategorie](customizing-the-datalist-s-editing-interface-vb/_static/image11.png)](customizing-the-datalist-s-editing-interface-vb/_static/image10.png)
 
 **Obrázek 4**: Přidat DropDownList v kategoriích ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-datalist-s-editing-interface-vb/_static/image12.png))
 
@@ -80,12 +80,12 @@ Přizpůsobení rozhraní pro úpravy, klikněte na odkaz Upravit šablony v prv
 V dalším kroku z DropDownList s inteligentní značky, vyberte možnost zvolit zdroj dat a vytvoření nového prvku ObjectDataSource s názvem `CategoriesDataSource`. Konfigurace tohoto prvku ObjectDataSource používat `CategoriesBLL` třída s `GetCategories()` – metoda (viz obrázek 5). V dalším kroku DropDownList s Průvodce konfigurací zdroje dat zobrazí výzvu pro datová pole pro použití u každého `ListItem` s `Text` a `Value` vlastnosti. Zobrazit DropDownList `CategoryName` pole data a použít `CategoryID` jako hodnota, jak je znázorněno na obrázku 6.
 
 
-[![CVytvořit nový účet ObjectDataSource s názvem CategoriesDataSource](customizing-the-datalist-s-editing-interface-vb/_static/image14.png)](customizing-the-datalist-s-editing-interface-vb/_static/image13.png)
+[![Vytvoření nového prvku ObjectDataSource s názvem CategoriesDataSource](customizing-the-datalist-s-editing-interface-vb/_static/image14.png)](customizing-the-datalist-s-editing-interface-vb/_static/image13.png)
 
 **Obrázek 5**: Vytvoření nového prvku ObjectDataSource s názvem `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-datalist-s-editing-interface-vb/_static/image15.png))
 
 
-[![CHodnota pole a onfigurovat DropDownList s zobrazení](customizing-the-datalist-s-editing-interface-vb/_static/image17.png)](customizing-the-datalist-s-editing-interface-vb/_static/image16.png)
+[![Konfigurace zobrazení s DropDownList a hodnota pole](customizing-the-datalist-s-editing-interface-vb/_static/image17.png)](customizing-the-datalist-s-editing-interface-vb/_static/image16.png)
 
 **Obrázek 6**: Nakonfigurovat DropDownList s zobrazení a hodnota pole ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-datalist-s-editing-interface-vb/_static/image18.png))
 
@@ -102,7 +102,7 @@ Nebojte se, že rozložení rozhraní úprav libovolně. Můžu uložit se rozho
 [!code-aspx[Main](customizing-the-datalist-s-editing-interface-vb/samples/sample2.aspx)]
 
 
-[![TÚpravy rozhraní je podle si jako rozhraní jen pro čtení](customizing-the-datalist-s-editing-interface-vb/_static/image20.png)](customizing-the-datalist-s-editing-interface-vb/_static/image19.png)
+[![Rozhraní pro úpravy je podle výstupní jako rozhraní jen pro čtení](customizing-the-datalist-s-editing-interface-vb/_static/image20.png)](customizing-the-datalist-s-editing-interface-vb/_static/image19.png)
 
 **Obrázek 7**: Rozhraní pro úpravy je podle výstupní jako rozhraní jen pro čtení ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-datalist-s-editing-interface-vb/_static/image21.png))
 
@@ -119,7 +119,7 @@ Vytvořit tyto dvě obslužné rutiny a potom kliknul pomocí následujícího k
 Pomocí těchto dvou ovladačů událostí v místě, kliknutím na tlačítko Upravit zobrazí rozhraní úprav a kliknutím na tlačítko Storno vrátí upravené položky režimu jen pro čtení. Obrázek 8 ukazuje prvku DataList po kliknutí na tlačítko Upravit pro Chef Anton s Gumbo Mix. Protože jsme ve ještě chcete-li přidat všechny datové vazby syntaxe rozhraní úprav `ProductName` textové pole je prázdné, `Discontinued` nezaškrtnuté políčko a první položky vybrané v `Categories` a `Suppliers` DropDownLists.
 
 
-[![CZobrazí tlačítko Upravit licking rozhraní pro úpravy](customizing-the-datalist-s-editing-interface-vb/_static/image23.png)](customizing-the-datalist-s-editing-interface-vb/_static/image22.png)
+[![Kliknutím na tlačítko zobrazí úpravy rozhraní úprav](customizing-the-datalist-s-editing-interface-vb/_static/image23.png)](customizing-the-datalist-s-editing-interface-vb/_static/image22.png)
 
 **Obrázek 8**: Kliknutím na tlačítko Upravit zobrazuje rozhraní pro úpravy ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-datalist-s-editing-interface-vb/_static/image24.png))
 
@@ -131,7 +131,7 @@ Pokud chcete, aby rozhraní úpravy zobrazit aktuální hodnoty s produktu, pot�
 Přiřazení `ProductName` datové pole hodnota, která má `ProductName` textové pole s `Text` vlastnost, `CategoryID` a `SupplierID` data hodnoty do polí `Categories` a `Suppliers` DropDownLists `SelectedValue` vlastnosti a `Discontinued` datové pole hodnota, která má `Discontinued` zaškrtávacího políčka s `Checked` vlastnost. Po provedení těchto změn prostřednictvím návrháře nebo přímo prostřednictvím deklarativní, otevírat stránku prostřednictvím prohlížeče a klikněte na tlačítko Upravit pro Chef Anton s Gumbo Mix. Jak je vidět na obrázku 9, vázání dat syntaxe přidal aktuální hodnoty do textového pole, DropDownLists a zaškrtávací políčko.
 
 
-[![CZobrazí tlačítko Upravit licking rozhraní pro úpravy](customizing-the-datalist-s-editing-interface-vb/_static/image26.png)](customizing-the-datalist-s-editing-interface-vb/_static/image25.png)
+[![Kliknutím na tlačítko zobrazí úpravy rozhraní úprav](customizing-the-datalist-s-editing-interface-vb/_static/image26.png)](customizing-the-datalist-s-editing-interface-vb/_static/image25.png)
 
 **Obrázek 9**: Kliknutím na tlačítko Upravit zobrazuje rozhraní pro úpravy ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-datalist-s-editing-interface-vb/_static/image27.png))
 
@@ -167,7 +167,7 @@ Po provedení těchto změn DropDownLists značek v ovládacích prvcích DataLi
 Chcete-li zobrazit náš postup prostřednictvím prohlížeče chvíli trvat. Při úpravě produktu, Všimněte si, že `Categories` a `Suppliers` DropDownLists obě (žádná) mají možnost na začátku DropDownList.
 
 
-[![TKategorie he a dodavatelé DropDownLists zahrnují (žádná) možnost](customizing-the-datalist-s-editing-interface-vb/_static/image29.png)](customizing-the-datalist-s-editing-interface-vb/_static/image28.png)
+[![Kategorie a dodavatelů DropDownLists zahrnují (žádná) možnost](customizing-the-datalist-s-editing-interface-vb/_static/image29.png)](customizing-the-datalist-s-editing-interface-vb/_static/image28.png)
 
 **Obrázek 10**: `Categories` a `Suppliers` DropDownLists zahrnout (žádná) možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](customizing-the-datalist-s-editing-interface-vb/_static/image30.png))
 

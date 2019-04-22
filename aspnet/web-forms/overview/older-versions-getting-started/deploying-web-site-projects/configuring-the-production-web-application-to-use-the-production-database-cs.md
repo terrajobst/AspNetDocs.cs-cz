@@ -12,7 +12,7 @@ ms.openlocfilehash: fa05645db9d43a836cc75b399153dd2e2c288f7c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59388755"
 ---
 # <a name="configuring-the-production-web-application-to-use-the-production-database-c"></a>Konfigurace provozní webové aplikace pro použití produkční databáze (C#)
@@ -53,7 +53,7 @@ Připojovací řetězec databáze můžete vytvořit ručně pomocí web [Connec
 Otevřít Visual Studio a přejděte do okna Průzkumník serveru (v aplikaci Visual Web Developer, toto okno se nazývá Průzkumník databáze). Klikněte pravým tlačítkem na možnost datová připojení a zvolte možnost Přidat připojení z místní nabídky. Tím se zobrazí Průvodce na obrázku 1. Vyberte příslušný zdroj dat a klikněte na pokračovat.
 
 
-[![CZvolte, chcete-li přidat novou databázi do Průzkumníka serveru](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image2.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image1.jpg) 
+[![Zvolte možnost pro přidání nové databáze do Průzkumníka serveru](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image2.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image1.jpg) 
 
 **Obrázek 1**: Zvolte možnost pro přidání nové databáze do Průzkumníka serveru ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image3.jpg))
 
@@ -61,7 +61,7 @@ Otevřít Visual Studio a přejděte do okna Průzkumník serveru (v aplikaci Vi
 Dále určete různé informace o připojení k databázi (viz obrázek 2). Pokud jste zaregistrovali pomocí webového hostování společnosti, které by měl mít poskytl informace o tom, jak připojit k databázi – název databázového serveru, název databáze, uživatelské jméno a heslo pro připojení k databázi a tak dále. Po zadání těchto informací klikněte na tlačítko OK, chcete-li dokončit tohoto průvodce a přidejte databáze do Průzkumníka serveru.
 
 
-[![SZadejte informace o připojení databáze](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image5.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image4.jpg) 
+[![Zadejte informace o připojení k databázi](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image5.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image4.jpg) 
 
 **Obrázek 2**: Zadejte informace o připojení k databázi ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image6.jpg))
 
@@ -91,7 +91,7 @@ Pokud máte více formalizovanou pracovní postup nasazení, buď ručně změni
 Po nasazení webu do produkčního prostředí, přejděte na web produkční prostřednictvím prohlížeče. By měl zobrazit a využívat stejné prostředí pro uživatele jako při místním spuštění aplikace řízené daty. Samozřejmě při návštěvě webu na produkční lokality využívá k tomu provozní server databáze, zatímco navštívit web ve vývojovém prostředí používá databázi ve vývoji. Obrázek 3 ukazuje *naučit sami technologie ASP.NET 3.5 za 24 hodin* zkontrolovat stránku na webu v produkčním prostředí (Poznámka: adresu URL v adresním řádku prohlížeče s).
 
 
-[![Tdata-Driven aplikace je nyní k dispozici v produkčním prostředí!](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image8.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image7.jpg) 
+[![Data-Driven aplikace je nyní k dispozici v produkčním prostředí.](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image8.jpg)](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image7.jpg) 
 
 **Obrázek 3**: Data-Driven aplikace je nyní k dispozici v produkčním prostředí. ([Kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image9.jpg))
 

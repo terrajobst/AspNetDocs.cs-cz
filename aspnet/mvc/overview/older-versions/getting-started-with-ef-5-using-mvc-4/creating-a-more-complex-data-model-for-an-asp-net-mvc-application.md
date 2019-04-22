@@ -12,7 +12,7 @@ ms.openlocfilehash: 15bdaa588792c3cf4a8e6eee651e0675f959f942
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59382228"
 ---
 # <a name="creating-a-more-complex-data-model-for-an-aspnet-mvc-application-4-of-10"></a>Vytvoření složitějšího datového modelu pro aplikace ASP.NET MVC (4 z 10)

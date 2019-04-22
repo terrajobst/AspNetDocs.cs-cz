@@ -13,7 +13,7 @@ ms.openlocfilehash: 212b07494381d13f6ded96a41b846dcdf7e8ff16
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59393740"
 ---
 # <a name="change-primary-key-for-users-in-aspnet-identity"></a>Změna primárního klíče uživatelů v ASP.NET Identity
@@ -44,7 +44,7 @@ Toto téma obsahuje následující oddíly:
 - [Webové formuláře s aktualizací Update 2 změňte účet stránky předat typ klíče](#webformsupdate2)
 - [Webové formuláře s aktualizací Update 3 změňte účet stránky předat typ klíče](#webformsupdate3)
 - [Spuštění aplikace](#run)
-- [Další zdroje](#other)
+- [Další prostředky](#other)
 
 <a id="userclass"></a>
 ## <a name="change-the-type-of-the-key-in-the-identity-user-class"></a>Změnit typ klíče ve třídě Identity uživatele

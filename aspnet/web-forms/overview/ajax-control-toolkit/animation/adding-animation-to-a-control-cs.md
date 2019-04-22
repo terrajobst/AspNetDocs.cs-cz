@@ -12,7 +12,7 @@ ms.openlocfilehash: e4c6bfe1884d3e066c7b27e07e3a069943793bdd
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59392284"
 ---
 # <a name="adding-animation-to-a-control-c"></a>Přidání animace k ovládacímu prvku (C#)
@@ -72,7 +72,7 @@ V tomto příkladu se zesvětlit panelu. Animace přijmou půl sekundy (`Duratio
 Při spuštění tohoto skriptu na panelu se zobrazí a setmívá v jedné a půl sekundy.
 
 
-[![The panel mizení](adding-animation-to-a-control-cs/_static/image2.png)](adding-animation-to-a-control-cs/_static/image1.png)
+[![Je mizení panelu](adding-animation-to-a-control-cs/_static/image2.png)](adding-animation-to-a-control-cs/_static/image1.png)
 
 Na panelu je mizení ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-animation-to-a-control-cs/_static/image3.png))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 5fc85b5ac4771d6784e9afa41e09d74474a605ba
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59381299"
 ---
 # <a name="aspnet-ajax"></a>ASP.NET AJAX
@@ -27,7 +27,7 @@ ms.locfileid: "59381299"
 - [ASP.NET AJAX – povolení stávající webové služby](how-do-i-aspnet-ajax-enable-an-existing-web-service.md)
 - [ASP.NET AJAX – ovládací prvky klientské knihovny](how-do-i-use-the-aspnet-ajax-client-library-controls.md)
 - [ASP.NET AJAX – použití ovládacího prvku ScriptManagerProxy](how-do-i-use-an-aspnet-ajax-scriptmanagerproxy.md)
-- [ASP.NET AJAX – rozšiřující ovládací prvek RoundedCorners](how-do-i-use-the-aspnet-ajax-roundedcorners-extender.md)
+- [ASP.NET AJAX – extender RoundedCorners](how-do-i-use-the-aspnet-ajax-roundedcorners-extender.md)
 - [ASP.NET AJAX – ovládací prvek časovače](how-do-i-use-the-aspnet-ajax-timer-control.md)
 - [Implementace vzorce prediktivního načítání pro AJAX](how-do-i-implement-the-predictive-fetch-pattern-for-ajax.md)
 - [Implementace stránkovacího vzorce AJAX](how-do-i-implement-the-ajax-paging-pattern.md)
@@ -49,11 +49,11 @@ ms.locfileid: "59381299"
 - [Lokalizace aplikace ASP.NET AJAX](how-do-i-localize-an-aspnet-ajax-application.md)
 - [Implementace vzorce trvalé komunikace pomocí webových služeb](how-do-i-implement-the-persistent-communications-pattern-using-web-services.md)
 - [Aktivace aktualizace ovládacího prvku ovládacím prvkem DropDownList](how-do-i-trigger-an-updatepanel-refresh-from-a-dropdownlist-control.md)
-- [Vytvoření rozšiřujícího ovládacího prvku ASP.NET AJAX od úplného začátku](how-do-i-create-an-aspnet-ajax-extender-from-scratch.md)
+- [Vytvoření extenderu ASP.NET AJAX od úplného začátku](how-do-i-create-an-aspnet-ajax-extender-from-scratch.md)
 - [Vytvoření vlastních serverových ovládacích prvků, které fungují s technologií ASP.NET AJAX nebo bez ní](how-do-i-build-custom-server-controls-that-work-with-or-without-aspnet-ajax.md)
 - [Spojení chování klienta AJAX se serverovým ovládacím prvkem ASP.NET](how-do-i-associate-ajax-client-behavior-with-an-aspnet-server-control.md)
 - [Načtení hodnot z ovládacích prvků AJAX na straně serveru](how-do-i-retrieve-values-from-server-side-ajax-controls.md)
-- [Dvě jednoduché techniky aktivace aktualizací ovládacích prvků UpdatePanel](two-simple-techniques-for-triggering-updates-to-update-panels.md)
+- [Dvě jednoduché techniky aktivace aktualizací ovládacích prvků UpdatePanels](two-simple-techniques-for-triggering-updates-to-update-panels.md)
 - [Použití ovládacího prvku CascadingDropDown technologie ASP.NET AJAX pro přístup k databázi](use-aspnet-ajax-cascading-drop-down-control-to-access-a-database.md)
 - [Implementace vzorců nekonečných dat v AJAXu](implement-infinite-data-patterns-in-ajax.md)
 - [Základní ověřování ASP.NET v aplikaci s povoleným jazykem AJAX](basic-aspnet-authentication-in-an-ajax-enabled-application.md)

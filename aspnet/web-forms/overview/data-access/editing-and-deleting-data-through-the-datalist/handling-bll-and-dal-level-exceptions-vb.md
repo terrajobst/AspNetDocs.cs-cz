@@ -12,7 +12,7 @@ ms.openlocfilehash: 358d8605ed602720c7dd1687c8bdbb4275753529
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59386096"
 ---
 # <a name="handling-bll--and-dal-level-exceptions-vb"></a>Zpracování výjimek na úrovni knihoven BLL a DAL (VB)
@@ -41,7 +41,7 @@ Naše kurzy DataList ale nepoužíváte ObjectDataSource pro aktualizace a odstr
 Předtím, než jsme starat o zpracování výjimek, ke kterým dochází při aktualizaci pracovního postupu, umožní s nejprve vytvořit upravitelné DataList. Otevřít `ErrorHandling.aspx` stránku `EditDeleteDataList` složky, přidat a v prvku DataList do návrháře, nastavte jeho `ID` vlastnost `Products`, a přidejte nový prvek ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource používat `ProductsBLL` třída s `GetProducts()` zaznamenává metodu pro výběr; nastavte rozevírací seznamy v INSERT, UPDATE a odstranit karty na (žádný).
 
 
-[![Rvracet informace o produktu pomocí metody GetProducts()](handling-bll-and-dal-level-exceptions-vb/_static/image2.png)](handling-bll-and-dal-level-exceptions-vb/_static/image1.png)
+[![Vrátí informace o produktu pomocí GetProducts() – metoda](handling-bll-and-dal-level-exceptions-vb/_static/image2.png)](handling-bll-and-dal-level-exceptions-vb/_static/image1.png)
 
 **Obrázek 1**: Vrátí informací pomocí produktu `GetProducts()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-vb/_static/image3.png))
 
@@ -60,7 +60,7 @@ Po provedení těchto změn kódu s deklarativní stránky s by měl vypadat ně
 Za chvíli zobrazíte náš postup přes prohlížeč (viz obrázek 2).
 
 
-[![EACH produkt obsahuje tlačítko Upravit](handling-bll-and-dal-level-exceptions-vb/_static/image5.png)](handling-bll-and-dal-level-exceptions-vb/_static/image4.png)
+[![Každý produkt obsahuje tlačítko pro úpravy](handling-bll-and-dal-level-exceptions-vb/_static/image5.png)](handling-bll-and-dal-level-exceptions-vb/_static/image4.png)
 
 **Obrázek 2**: Každý produkt obsahuje tlačítko Upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-vb/_static/image6.png))
 
@@ -115,12 +115,12 @@ K dokončení tohoto kurzu, jednoduše zavolejte `DisplayExceptionDetails` metod
 S `Try ... Catch` blokovat na místě, uživatelům se zobrazí chybovou zprávu dál jako hodnoty 4 a 5 zobrazit. Všimněte si, že i v případě výjimky prvku DataList zůstane v režimu úprav. Je to proto, jakmile dojde k výjimce, toku řízení okamžitě přesměrován `Catch` bloku, bez použití kódu, který vrátí do stavu před úpravy prvku DataList.
 
 
-[![APokud uživatel vynechá povinné pole, zobrazí se chybová zpráva n](handling-bll-and-dal-level-exceptions-vb/_static/image9.png)](handling-bll-and-dal-level-exceptions-vb/_static/image8.png)
+[![Pokud uživatel vynechá povinné pole, zobrazí se chybová zpráva](handling-bll-and-dal-level-exceptions-vb/_static/image9.png)](handling-bll-and-dal-level-exceptions-vb/_static/image8.png)
 
 **Obrázek 4**: Pokud uživatel vynechá povinné pole, zobrazí se chybová zpráva ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-vb/_static/image10.png))
 
 
-[![An chybová zpráva se zobrazí při zadání záporné cena](handling-bll-and-dal-level-exceptions-vb/_static/image12.png)](handling-bll-and-dal-level-exceptions-vb/_static/image11.png)
+[![Chybová zpráva se zobrazí při zadání záporné cena](handling-bll-and-dal-level-exceptions-vb/_static/image12.png)](handling-bll-and-dal-level-exceptions-vb/_static/image11.png)
 
 **Obrázek 5**: Chybová zpráva se zobrazí při zadání záporné cena ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-vb/_static/image13.png))
 

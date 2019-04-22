@@ -12,7 +12,7 @@ ms.openlocfilehash: b1c828825f15e2708541f9cefa20f3bc2d17b9fb
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59392908"
 ---
 # <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
@@ -29,7 +29,7 @@ ms.locfileid: "59392908"
 
 ### <a name="whats-new-in-aspnet-mvc-4"></a>Novinky v ASP.NET MVC 4
 
-- [Rozhraní API pro ASP.NET Web](../web-api/index.md)
+- [Webové rozhraní API v ASP.NET](../web-api/index.md)
 - Kurz: [ASP.NET MVC 4 – mobilní funkce](overview/older-versions/aspnet-mvc-4-mobile-features.md)
 - [Poznámky k verzi pro architekturu ASP.NET MVC 4](../whitepapers/mvc4-release-notes.md)
 - [Nová řada kurz ASP.NET MVC 4](overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4.md)

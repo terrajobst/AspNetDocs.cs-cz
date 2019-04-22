@@ -12,7 +12,7 @@ ms.openlocfilehash: a47d428830fa6c43bcb9ce797d65b73891b44618
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59381884"
 ---
 # <a name="using-asynchronous-methods-in-aspnet-45"></a>Použití asynchronních metod v ASP.NET 4.5
@@ -40,7 +40,7 @@ Další informace na pomocí [await](https://msdn.microsoft.com/library/hh156528
 
 - [Dokument White Paper: Asynchronii v rozhraní .NET](https://go.microsoft.com/fwlink/?LinkId=204844)
 - [Async/Await – nejčastější dotazy](https://blogs.msdn.com/b/pfxteam/archive/2012/04/12/10293335.aspx)
-- [Asynchronní programování Visual Studio](https://msdn.microsoft.com/vstudio/gg316360)
+- [Visual Studio Asynchronous Programming](https://msdn.microsoft.com/vstudio/gg316360)
 
 ## <a id="HowRequestsProcessedByTP"></a>  Zpracování požadavků ve fondu vláken
 
@@ -192,7 +192,7 @@ Jak začít využívat výhod asynchronní webovou aplikaci, můžete potřebova
 
     - Otevřete Správce služby IIS a přejděte do podokna fondy aplikací.
     - Klikněte pravým tlačítkem myši na cílový fond aplikací a vyberte **Upřesnit nastavení**.  
-        ![pokročilé](using-asynchronous-methods-in-aspnet-45/_static/image4.png)
+        ![advanced](using-asynchronous-methods-in-aspnet-45/_static/image4.png)
     - V **Upřesnit nastavení** dialogovém okně Změnit *délka fronty* od 1 do 5 000 000.  
         ![Délka fronty](using-asynchronous-methods-in-aspnet-45/_static/image5.png)  
   
@@ -200,7 +200,7 @@ Jak začít využívat výhod asynchronní webovou aplikaci, můžete potřebova
 
 - [Správa verzí rozhraní .NET a cílení na více platforem - .NET 4.5 je místní upgrade na rozhraní .NET 4.0](http://www.hanselman.com/blog/NETVersioningAndMultiTargetingNET45IsAnInplaceUpgradeToNET40.aspx)
 - [Nastavení aplikace služby IIS nebo fondu aplikací, používat technologii ASP.NET 3.5 spíše než 2.0](http://www.hanselman.com/blog/HowToSetAnIISApplicationOrAppPoolToUseASPNET35RatherThan20.aspx)
-- [Verze a závislosti rozhraní .NET Framework](https://msdn.microsoft.com/library/bb822049(VS.110).aspx)
+- [Verze rozhraní .NET framework a závislosti](https://msdn.microsoft.com/library/bb822049(VS.110).aspx)
 
 - Pokud vaše aplikace používá webové služby nebo System.NET ke komunikaci s back-end pomocí protokolu HTTP budete možná muset zvýšit [connectionManagement/maxconnection](https://msdn.microsoft.com/library/fb6y0fyc(VS.110).aspx) elementu. Pro aplikace ASP.NET je omezen pomocí funkce automatické konfigurace 12krát větší počet procesorů. To znamená, že na quad-proc, můžete mít nejvýše 12 \* 4 = 48 souběžných připojení na koncový bod IP. Protože to je vázán na [autoConfig](https://msdn.microsoft.com/library/7w2sway1(VS.110).aspx), nejjednodušší způsob, jak zvýšit `maxconnection` v ASP.NET, aplikace je nastavit [System.Net.ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(VS.110).aspx) programově v z `Application_Start` metodu *global.asax* souboru. Najdete v ukázce stahovat pro příklad.
 - V rozhraní .NET 4.5, výchozí 5000 pro [maxconcurrentrequestspercpu technologie](https://blogs.msdn.com/tmarq/archive/2007/07/21/asp-net-thread-usage-on-iis-7-0-and-6-0.aspx) by měla být v pořádku.

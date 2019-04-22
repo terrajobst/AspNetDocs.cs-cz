@@ -12,7 +12,7 @@ ms.openlocfilehash: c9fdbe5f0e24aa3f09f11a67c6d13a32897e8b85
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59388371"
 ---
 # <a name="dynamically-populating-a-control-vb"></a>Dynamické naplnění ovládacího prvku (VB)
@@ -66,7 +66,7 @@ Jak je vidět, ovládací prvek vyžaduje určité informace, ale umístění v�
 Na stránce ASP.NET spustit v prohlížeči a klikněte na tlačítko; Zobrazí se aktuální datum ve formátu měsíc roku dny.
 
 
-[![A Klikněte na tlačítko načte data ze serveru](dynamically-populating-a-control-vb/_static/image2.png)](dynamically-populating-a-control-vb/_static/image1.png)
+[![Klikněte na tlačítko načte data ze serveru](dynamically-populating-a-control-vb/_static/image2.png)](dynamically-populating-a-control-vb/_static/image1.png)
 
 Klikněte na tlačítko načte data ze serveru ([kliknutím ji zobrazíte obrázek v plné velikosti](dynamically-populating-a-control-vb/_static/image3.png))
 

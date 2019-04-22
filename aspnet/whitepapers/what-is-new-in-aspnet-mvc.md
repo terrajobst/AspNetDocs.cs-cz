@@ -12,7 +12,7 @@ ms.openlocfilehash: 7f846e807309f3123db52b3053b9aa8d6aca81e6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59394832"
 ---
 # <a name="whats-new-in-aspnet-mvc-2"></a>Novinky v ASP.NET MVC 2
@@ -38,7 +38,7 @@ ms.locfileid: "59394832"
 [Nová třída HiddenInputAttribute pro pomocnými objekty](#_TOC3_13)   
 [Metoda Html.ValidationSummary Helper můžete zobrazit chyby na úrovni modelu](#_TOC3_14)   
 [Šablony T4 v aplikaci Visual Studio vygenerovat kód, který je specifické pro cílovou verzi rozhraní .NET Framework](#_TOC3_15)[vylepšení rozhraní API](#_TOC4)  
-[Nejnovější změny](#_TOC5)  
+[Rozbíjející změny v](#_TOC5)  
 [Právní omezení](#_TOC6)  
 
 ## <a id="_TOC1"></a>  Úvod
