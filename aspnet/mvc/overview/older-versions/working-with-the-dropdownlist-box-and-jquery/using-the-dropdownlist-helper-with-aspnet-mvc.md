@@ -12,7 +12,7 @@ ms.openlocfilehash: 2a4d991205351531129480bee221651021483967
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59396249"
 ---
 # <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>Použití pomocné rutiny DropDownList s ASP.NET MVC
@@ -190,7 +190,7 @@ Otevřít *Views\Home\MultiSelectCountry.cshtml* a přidejte `htmlAttributes` pa
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample12.cshtml)]
 
-Ve výše uvedeném kódu, přidáváme atributu HTML a hodnota atributu `class = "chzn-select"`. \@ Znak předchozí třídy nemá nic společného s zobrazovací modul Razor. `class` je [ C# – klíčové slovo](https://msdn.microsoft.com/library/x53a06bb.aspx). Klíčová slova jazyka C# nelze použít jako identifikátory, pokud ovšem neobsahují \@ jako předponu. V příkladu výše `@class` je platný identifikátor, ale **třídy** není, protože **třídy** je klíčové slovo.
+Ve výše uvedeném kódu, přidáváme atributu HTML a hodnota atributu `class = "chzn-select"`. \@ Znak předchozí třídy nemá nic společného s zobrazovací modul Razor. `class` je [– klíčové slovo jazyka C#](https://msdn.microsoft.com/library/x53a06bb.aspx). Klíčová slova jazyka C# nelze použít jako identifikátory, pokud ovšem neobsahují \@ jako předponu. V příkladu výše `@class` je platný identifikátor, ale **třídy** není, protože **třídy** je klíčové slovo.
 
 Přidat odkazy *Chosen/chosen.jquery.js* a *Chosen/chosen.css* soubory. *Chosen/chosen.jquery.js* a implementuje funkčně modulu plug-in zvolená. *Chosen/chosen.css* soubor obsahuje stylu. Přidat tyto odkazy do dolní části *Views\Home\MultiSelectCountry.cshtml* souboru. Následující kód ukazuje, jak odkazovat na modul plug-in zvolená.
 

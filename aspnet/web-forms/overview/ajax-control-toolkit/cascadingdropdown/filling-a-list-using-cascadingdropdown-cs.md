@@ -12,7 +12,7 @@ ms.openlocfilehash: a9a3bf12b721c8f5eec21f3090142e40e74b0b9c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59395638"
 ---
 # <a name="filling-a-list-using-cascadingdropdown-c"></a>Vyplnění seznamu ovládacím prvkem CascadingDropDown (C#)
@@ -61,7 +61,7 @@ Proto je důležitým aspektem je, že metoda musí vracet pole typu `CascadingD
 Načítání stránky v prohlížeči se aktivuje seznamu tankujeme tři dodavatelů.
 
 
-[![Tseznam he se vyplní automaticky](filling-a-list-using-cascadingdropdown-cs/_static/image2.png)](filling-a-list-using-cascadingdropdown-cs/_static/image1.png)
+[![V seznamu se vyplní automaticky](filling-a-list-using-cascadingdropdown-cs/_static/image2.png)](filling-a-list-using-cascadingdropdown-cs/_static/image1.png)
 
 V seznamu se vyplní automaticky ([kliknutím ji zobrazíte obrázek v plné velikosti](filling-a-list-using-cascadingdropdown-cs/_static/image3.png))
 

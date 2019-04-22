@@ -12,7 +12,7 @@ ms.openlocfilehash: 18056c917b32680678c536229e8e26d5cc7db161
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59395131"
 ---
 # <a name="understanding-aspnet-ajax-authentication-and-profile-application-services"></a>Principy služeb ověřování a používání profilu technologie ASP.NET AJAX
@@ -32,7 +32,7 @@ Tento dokument White Paper zkoumá implementaci a použití profilace ASP.NET a 
 
 Tento dokument White Paper vychází z verze beta verzi 2 sady Visual Studio 2008 a rozhraní .NET Framework 3.5. Tento dokument White Paper také předpokládá, že můžete pracovat s Visual Studio 2008 Beta 2, nikoli Visual Web Developer Express a poskytne návody podle uživatelského rozhraní sady Visual Studio. Šablony projektů, které jsou k dispozici v aplikaci Visual Web Developer Express může využívat několik ukázek kódu.
 
-## *<a name="profiles-and-authentication"></a>Profily a ověřování*
+## <a name="profiles-and-authentication"></a>*Profily a ověřování*
 
 Profily společnosti Microsoft ASP.NET a ověřovacích služeb jsou k dispozici v systému ověřování formulářů ASP.NET a jsou standardní součástí technologie ASP.NET. Rozšíření ASP.NET AJAX poskytují přístup skript do těchto služeb prostřednictvím skriptu proxy, přes jednoduchá model v rámci oboru názvů Sys.Services klientské knihovny AJAX.
 
@@ -42,7 +42,7 @@ Služba profilu umožňuje automatické integrace a ukládání dat uživatelů 
 
 Začleňte do aplikace ověřování pomocí technologie ASP.NET a vlastních služeb profilace je mimo rozsah tohoto dokumentu. Další informace o tématu naleznete v knihovně MSDN odkazovat článku Správa uživatelů pomocí členství v [ https://msdn.microsoft.com/library/tw292whz.aspx ](https://msdn.microsoft.com/library/tw292whz.aspx). Technologie ASP.NET obsahuje také nástroj, který automaticky nastavit členství s SQL serverem, který je výchozím zprostředkovatelem služby ověřování pro členství technologie ASP.NET. Další informace najdete v článku nástroj pro registraci serveru SQL technologie ASP.NET (Aspnet\_regsql.exe) na [ https://msdn.microsoft.com/library/ms229862(vs.80).aspx ](https://msdn.microsoft.com/library/ms229862(vs.80).aspx).
 
-## *<a name="using-the-aspnet-ajax-authentication-service"></a>Pomocí služby ověřování ASP.NET AJAX*
+## <a name="using-the-aspnet-ajax-authentication-service"></a>*Pomocí služby ověřování ASP.NET AJAX*
 
 ASP.NET AJAX ověřovací služby musí být povoleno v souboru web.config:
 
@@ -62,8 +62,8 @@ Metoda login() zahájí požadavek na ověření přihlašovacích údajů uživ
 
 | **Název parametru** | **Význam** |
 | --- | --- |
-| uživatelské jméno | Povinný parametr. Uživatelské jméno k ověření. |
-| heslo | Volitelný (výchozí hodnota je null). Heslo uživatele. |
+| userName jméno | Povinný parametr. Uživatelské jméno k ověření. |
+| password | Volitelný (výchozí hodnota je null). Heslo uživatele. |
 | isPersistent | Nepovinné (výchozí hodnota je false). Soubor cookie pro ověřování uživatele určuje, zda byste neměli zachovat napříč relacemi. Pokud má hodnotu false, bude se uživatel odhlásit při zavření prohlížeče nebo vypršení platnosti relace. |
 | redirectUrl | Volitelný (výchozí hodnota je null). Adresa URL pro přesměrování prohlížeče po úspěšném ověření. Pokud tento parametr hodnotu null nebo prázdný řetězec, dojde k žádné přesměrování. |
 | customInfo | Volitelný (výchozí hodnota je null). Tento parametr se aktuálně nepoužívá a je vyhrazen pro budoucí použití. |
@@ -304,7 +304,7 @@ Následující kód zkontroluje, jestli je uživatel ověřený a pokud ano, na�
 
 [!code-javascript[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample12.js)]
 
-## *<a name="using-a-custom-authentication-service-provider"></a>Pomocí poskytovatele služeb vlastní ověřování*
+## <a name="using-a-custom-authentication-service-provider"></a>*Pomocí poskytovatele služeb vlastní ověřování*
 
 Rozšíření ASP.NET AJAX umožňují vytvářet poskytovatele ověřování vlastní skript zveřejněním funkcí prostřednictvím vlastní webové služby. Pokud chcete použít, vaše webová služba musí vystavit dvě metody, `Login` a `Logout`; a tyto metody musí být zadaný pomocí stejné podpisy metod jako webovou službu ASP.NET AJAX ověřování výchozí.
 
@@ -338,7 +338,7 @@ Služby technologie ASP.NET – konkrétně služby profilace, členství a ově
 
 Kromě toho vytvořením implementací zjednodušené webové služby s podpisy metod ekvivalentní, mohou vývojáři vytvářet poskytovatelé vlastní skript pro tyto vnitřní služby ASP.NET. Podpora pro tyto techniky zjednodušuje vývoj aplikacemi rich client, poskytuje vývojářům s širokou škálou zajištění flexibility umožňující splnit určité požadavky.
 
-## *<a name="bio"></a>Bio*
+## <a name="bio"></a>*Bio*
 
 Scott Cate má práce s Microsoft webových technologiích od roku 1997 a je prezident myKB.com ([www.myKB.com](http://www.myKB.com)) kde mu se specializuje na technologie ASP.NET psaní aplikací, zaměřuje na znalostní báze softwarová řešení založených na. Scott můžete kontaktovat prostřednictvím e-mailové adrese [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) nebo na svém blogu [ScottCate.com](http://ScottCate.com)
 
