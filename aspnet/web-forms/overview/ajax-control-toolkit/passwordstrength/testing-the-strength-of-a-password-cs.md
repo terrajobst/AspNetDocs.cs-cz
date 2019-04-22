@@ -12,7 +12,7 @@ ms.openlocfilehash: d8ac50874d0325ed9583a16e1b4e19b3becabb99
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59391510"
 ---
 # <a name="testing-the-strength-of-a-password-c"></a>Testování síly hesla (C#)
@@ -44,7 +44,7 @@ Hesla jsou skoro kdekoli, vyžaduje, aby opožděné uživatelé mívají sklony
 Spuštění stránky a okamžitě zadejte: Poté, co jste zadali, malá písmena, velká písmena, číslice a symboly, heslo se bude považovat za jako nedělitelné.
 
 
-[![NZobrazit heslo je dobré (úplně)](testing-the-strength-of-a-password-cs/_static/image2.png)](testing-the-strength-of-a-password-cs/_static/image1.png)
+[![Nyní je (úplně) dobré heslo](testing-the-strength-of-a-password-cs/_static/image2.png)](testing-the-strength-of-a-password-cs/_static/image1.png)
 
 Nyní je heslo (úplně) dobré ([kliknutím ji zobrazíte obrázek v plné velikosti](testing-the-strength-of-a-password-cs/_static/image3.png))
 

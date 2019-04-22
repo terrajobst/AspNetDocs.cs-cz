@@ -12,7 +12,7 @@ ms.openlocfilehash: 229d9b389d109160ba17406a9db69464c65a8632
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59418830"
 ---
 # <a name="aspnet-mvc-for-the-rest-of-us"></a>ASP.NET MVC pro nás ostatní
@@ -22,5 +22,5 @@ ms.locfileid: "59418830"
 
 - [ASP.NET MVC pro nás ostatní: Část 1](aspnet-mvc-for-the-rest-of-us-part-1.md)
 - [ASP.NET MVC pro nás ostatní: Část 2](aspnet-mvc-for-the-rest-of-us-part-2.md)
-- [ASP.NET MVC pro nás ostatní: Část 3](aspnet-mvc-for-the-rest-of-us-part-3.md)
-- [ASP.NET MVC pro nás ostatní: Část 4](aspnet-mvc-for-the-rest-of-us-part-4.md)
+- [ASP.NET MVC pro nás ostatní: 3. část](aspnet-mvc-for-the-rest-of-us-part-3.md)
+- [ASP.NET MVC pro nás ostatní: 4. část](aspnet-mvc-for-the-rest-of-us-part-4.md)

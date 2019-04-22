@@ -12,7 +12,7 @@ ms.openlocfilehash: 7f64e90eb2f8f87e2f382cb7897793e7071d305d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59384497"
 ---
 # <a name="using-hovermenu-with-a-repeater-control-c"></a>Použití nabídky HoverMenu s ovládacím prvkem Repeater (C#)
@@ -53,7 +53,7 @@ Nyní `HoverMenuExtender` vstupu do play. Tak, aby každý prvek ve zdroji dat z
 Teď všechny položky ve zdroji dat se zobrazí automaticky otevíraného okna na pravé straně (`PopupPosition` atribut) po prodlevě 50 MS (`PopDelay` atributu).
 
 
-[![TNabídka používaný při najetí myší se zobrazí vedle každé položky v opakovači](using-hovermenu-with-a-repeater-control-cs/_static/image2.png)](using-hovermenu-with-a-repeater-control-cs/_static/image1.png)
+[![V nabídce při najetí myší se zobrazí vedle každé položky v opakovači](using-hovermenu-with-a-repeater-control-cs/_static/image2.png)](using-hovermenu-with-a-repeater-control-cs/_static/image1.png)
 
 V nabídce při najetí myší se zobrazí vedle každé položky v opakovači ([kliknutím ji zobrazíte obrázek v plné velikosti](using-hovermenu-with-a-repeater-control-cs/_static/image3.png))
 

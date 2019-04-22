@@ -12,7 +12,7 @@ ms.openlocfilehash: de0e9cc168b9f18fd2bd83329106df45d7551b1a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59386552"
 ---
 # <a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>Prevence XSRF/CSRF v ASP.NET MVC a na webových stránkách

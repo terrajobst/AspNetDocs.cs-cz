@@ -12,7 +12,7 @@ ms.openlocfilehash: 029234cf9a28a80c487504e4e0980c214e45f53a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59381962"
 ---
 # <a name="adding-a-column-to-the-model"></a>Přidání sloupce do modelu
@@ -28,11 +28,11 @@ Přidejme do tabulky Movie sloupec "Hodnocení". Přejděte zpět do integrovan�
 
 Přidáte sloupec "Hodnocení", jak je vidět níže. Vzhledem k tomu, že teď nemáme žádné hodnocení, sloupec můžete povolit hodnoty Null. Klikněte na Uložit.
 
-[![ETabulka filmy ATO funkce](getting-started-with-mvc-part8/_static/image2.png)](getting-started-with-mvc-part8/_static/image1.png)
+[![Úpravy filmy tabulky](getting-started-with-mvc-part8/_static/image2.png)](getting-started-with-mvc-part8/_static/image1.png)
 
 V dalším kroku vrátit do okna Průzkumník řešení a otevře soubor Movies.edmx (která je ve složce \Models). Klikněte pravým tlačítkem myši na návrhové ploše (bílé oblasti) a vyberte aktualizace modelů z databáze.
 
-[![Movies – Microsoft Visual Web Developer 2010 Express (11)](getting-started-with-mvc-part8/_static/image4.png)](getting-started-with-mvc-part8/_static/image3.png)
+[![Videa – Microsoft Visual Web Developer Express 2010 (11)](getting-started-with-mvc-part8/_static/image4.png)](getting-started-with-mvc-part8/_static/image3.png)
 
 Tím se spustí Průvodce aktualizací"". Klikněte na kartu aktualizace v něm a klikněte na tlačítko Dokončit. Naše třída modelu film pak aktualizuje s nový sloupec.
 
@@ -40,7 +40,7 @@ Tím se spustí Průvodce aktualizací"". Klikněte na kartu aktualizace v něm 
 
 Po kliknutí na tlačítko Dokončit, uvidíte, že do Entity filmu v náš model se přidal nový sloupec hodnocení.
 
-[![Movie Entity](getting-started-with-mvc-part8/_static/image7.png)](getting-started-with-mvc-part8/_static/image6.png)
+[![Video Entity](getting-started-with-mvc-part8/_static/image7.png)](getting-started-with-mvc-part8/_static/image6.png)
 
 Přidali jsme sloupec v modelu databáze, ale zobrazení nevíte o něm.
 
@@ -66,11 +66,11 @@ Naše finální šablona Create.aspx bude vypadat nějak takto a změňme náš 
 
 Spusťte aplikaci a teď máte v databázi, který se přidal na stránku vytvořit nové pole. Přidání nového videa – tentokrát s hodnocení – a klikněte na tlačítko vytvořit.
 
-[![Cvytvořit aplikaci Windows Internet Explorer filmu](getting-started-with-mvc-part8/_static/image9.png)](getting-started-with-mvc-part8/_static/image8.png)
+[![Vytvořit aplikaci Windows Internet Explorer film-](getting-started-with-mvc-part8/_static/image9.png)](getting-started-with-mvc-part8/_static/image8.png)
 
 Po kliknutí na vytvořit přecházíte na indexovou stránku tam, kde jste nové video je uvedený s nového hodnocení sloupce v databázi
 
-[![Movie seznam – Windows Internet Explorer (12)](getting-started-with-mvc-part8/_static/image11.png)](getting-started-with-mvc-part8/_static/image10.png)
+[![Seznam film – Windows Internet Explorer (12)](getting-started-with-mvc-part8/_static/image11.png)](getting-started-with-mvc-part8/_static/image10.png)
 
 V tomto kurzu základní teď vám pomůže začít vytváření Kontrolerů, jejich přidružení k zobrazení a předáním kolem údajů o pevně zakódované. Potom jsme vytvořili určená databáze a vložte některá data v. Jsme načíst data z databáze a zobrazí ho v tabulku HTML. Potom jsme přidali vytvořit formulář, který umožní uživateli přidat data do databáze sami z v rámci webové aplikace. Jsme přidali ověřování a poté provedli ověření pomocí jazyka JavaScript na straně klienta. Nakonec jsme změnit databáze, kterou chcete zahrnout nový sloupec dat a potom aktualizovat naše dvě stránky, které umožňuje vytvořit a zobrazit tato nová data.
 

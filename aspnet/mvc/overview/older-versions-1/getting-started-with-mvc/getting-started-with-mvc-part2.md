@@ -12,7 +12,7 @@ ms.openlocfilehash: 84f9c822f041808184b2c586ce933ba3b24615dc
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59419831"
 ---
 # <a name="adding-a-controller"></a>Přidání kontroleru
@@ -40,7 +40,7 @@ Ve složce řadiče v Průzkumníku řešení pravým tlačítkem myši a vybere
 
 Pojmenujte nový kontroler "HelloWorldController" a klikněte na tlačítko Přidat.
 
-[![Add dialogové okno kontroler](getting-started-with-mvc-part2/_static/image4.png)](getting-started-with-mvc-part2/_static/image3.png)
+[![Přidat Dialog Kontroleru](getting-started-with-mvc-part2/_static/image4.png)](getting-started-with-mvc-part2/_static/image3.png)
 
 Všimněte si, že v Průzkumníku řešení na pravé straně, který byl vytvořen nový soubor pro jste volali HelloWorldController.cs a tento soubor je teď otevřený v **IDE**.
 
@@ -58,13 +58,13 @@ ASP.NET MVC volá různé třídy Kontroleru (a různé metody akce v nich) v z�
 
 První část adresy URL určuje třída Kontroleru k provedení. Proto /HelloWorld mapuje HelloWorldController třídy. Druhá část adresy URL určí metodu akce v třídě ke spuštění. Proto /HelloWorld/Index by způsobila metoda Index() třídy HelloWorldController ke spuštění. Všimněte si, že jsme měli jen k navštívení /HelloWorld výše a metodu, kterou Index byl odvozen. Je to proto, že metodu s názvem "Index", je výchozí metodou, která bude volána na řadiči, pokud není explicitně zadaná.
 
-[![Tjeho je Moje výchozí akce](getting-started-with-mvc-part2/_static/image8.png)](getting-started-with-mvc-part2/_static/image7.png)
+[![Toto je Moje výchozí akce](getting-started-with-mvc-part2/_static/image8.png)](getting-started-with-mvc-part2/_static/image7.png)
 
 Teď se podívejme se na `http://localhost:xx/HelloWorld/Welcome.` teď naše úvodní metoda má spuštěn a vrátí jeho řetězec ve formátu HTML.
 
 Znovu nebo [kontroler] / [název akce] / [parametry] tak Kontroleru je HelloWorld a Vítejte v tomto případě je metoda. Zatím jsme dosud neučinili parametry.
 
-[![Tjeho metoda úvodní akce je](getting-started-with-mvc-part2/_static/image10.png)](getting-started-with-mvc-part2/_static/image9.png)
+[![Toto je metoda úvodní akce](getting-started-with-mvc-part2/_static/image10.png)](getting-started-with-mvc-part2/_static/image9.png)
 
 Pojďme upravit naše ukázka mírně tak, aby se dají předat některé informace v z adresy URL do kontroleru, třeba takto: / HelloWorld/uvítací? název = Scott&amp;numtimes = 4. Změníte úvodní metodu dva parametry a aktualizace je podobná níže uvedenému příkladu. Všimněte si, že jsme použili nepovinný parametr funkce jazyka C# k označení, že numTimes parametr by ve výchozím nastavení 1 Pokud není předán v.
 

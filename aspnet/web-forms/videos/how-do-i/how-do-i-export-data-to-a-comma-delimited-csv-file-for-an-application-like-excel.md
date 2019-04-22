@@ -12,7 +12,7 @@ ms.openlocfilehash: f27873eee345fe5347023b154de2b3833c9b6138
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59383028"
 ---
 # <a name="how-do-i-export-data-to-a-comma-delimited-csv-file-for-an-application-like-excel"></a>[Postup:] Export dat do souboru s oddělovači (CSV) čárkou pro aplikace, jako je Excel

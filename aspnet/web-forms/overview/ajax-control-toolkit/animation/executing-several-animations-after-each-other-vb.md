@@ -12,7 +12,7 @@ ms.openlocfilehash: 53984f03cf01caab859f44fdc018b1598ed62def
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59383041"
 ---
 # <a name="executing-several-animations-after-each-other-vb"></a>Postupné provedení několika animací (VB)
@@ -53,12 +53,12 @@ V rámci `<Animations>` uzlu, použijte `<OnLoad>` ke spuštění animací, jakm
 Při spuštění tohoto skriptu panelu první získá širší a potom menší.
 
 
-[![Fprvní šířku vzroste](executing-several-animations-after-each-other-vb/_static/image2.png)](executing-several-animations-after-each-other-vb/_static/image1.png)
+[![Nejprve je vyšší šířku](executing-several-animations-after-each-other-vb/_static/image2.png)](executing-several-animations-after-each-other-vb/_static/image1.png)
 
 Nejprve je vyšší šířku ([kliknutím ji zobrazíte obrázek v plné velikosti](executing-several-animations-after-each-other-vb/_static/image3.png))
 
 
-[![TPoto výška dojde k omezení](executing-several-animations-after-each-other-vb/_static/image5.png)](executing-several-animations-after-each-other-vb/_static/image4.png)
+[![Pak je snížení výšky](executing-several-animations-after-each-other-vb/_static/image5.png)](executing-several-animations-after-each-other-vb/_static/image4.png)
 
 Pak se sníží výška ([kliknutím ji zobrazíte obrázek v plné velikosti](executing-several-animations-after-each-other-vb/_static/image6.png))
 

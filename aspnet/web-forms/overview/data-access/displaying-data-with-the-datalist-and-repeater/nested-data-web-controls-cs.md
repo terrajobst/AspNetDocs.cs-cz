@@ -12,7 +12,7 @@ ms.openlocfilehash: 5dcb0b302a814f25ab8f0e89fb8859fbc0ca665d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59399499"
 ---
 # <a name="nested-data-web-controls-c"></a>Webové ovládací prvky vnořených dat (C#)
@@ -35,7 +35,7 @@ S využitím vkládání ovládacích prvků v rámci šablony služby, je možn
 V tomto kurzu se podíváme na tom, jak používat Repeateru vnořit do jiného opakovače. Vnější Repeater bude obsahovat položku pro každou kategorii v databázi, kategorie s název a popis zobrazení. Každá položka kategorie s vnitřní Repeater se zobrazí informace pro jednotlivé produkty, které patří do této kategorie (viz obrázek 1) v seznamu s odrážkami. Našich příkladů se ukazují, jak naplnit vnitřní Repeater deklarativně i prostřednictvím kódu programu.
 
 
-[![EACH kategorie, společně s jeho produkty jsou uvedené](nested-data-web-controls-cs/_static/image2.png)](nested-data-web-controls-cs/_static/image1.png)
+[![Každou kategorii, společně s jeho produkty jsou uvedené.](nested-data-web-controls-cs/_static/image2.png)](nested-data-web-controls-cs/_static/image1.png)
 
 **Obrázek 1**: Každou kategorii, společně s jeho produkty jsou uvedené ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-data-web-controls-cs/_static/image3.png))
 
@@ -47,7 +47,7 @@ Při vytváření stránky, která používá vnořené webových ovládacích p
 Začněte otevřením `NestedControls.aspx` stránku `DataListRepeaterBasics` složky a přidat na stránku nastavení ovládacím prvkem Repeater jeho `ID` vlastnost `CategoryList`. Z opakovače s inteligentním, můžete vytvořit nového prvku ObjectDataSource s názvem `CategoriesDataSource`.
 
 
-[![Nnázev nového prvku ObjectDataSource CategoriesDataSource](nested-data-web-controls-cs/_static/image5.png)](nested-data-web-controls-cs/_static/image4.png)
+[![Název nové CategoriesDataSource prvku ObjectDataSource](nested-data-web-controls-cs/_static/image5.png)](nested-data-web-controls-cs/_static/image4.png)
 
 **Obrázek 2**: Název nového prvku ObjectDataSource `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-data-web-controls-cs/_static/image6.png))
 
@@ -55,7 +55,7 @@ Začněte otevřením `NestedControls.aspx` stránku `DataListRepeaterBasics` sl
 Nakonfigurujte prvku ObjectDataSource tak, aby načítá data z `CategoriesBLL` třída s `GetCategories` metody.
 
 
-[![Configurovat ObjectDataSource použít CategoriesBLL třídu s metodou GetCategories](nested-data-web-controls-cs/_static/image8.png)](nested-data-web-controls-cs/_static/image7.png)
+[![Konfigurace ObjectDataSource metody GetCategories CategoriesBLL třída s](nested-data-web-controls-cs/_static/image8.png)](nested-data-web-controls-cs/_static/image7.png)
 
 **Obrázek 3**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třída s `GetCategories` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-data-web-controls-cs/_static/image9.png))
 
@@ -68,7 +68,7 @@ Zadat šablonu opakovače s obsahu musíme přejít do zobrazení zdroje a dekla
 Obrázek 4 ukazuje náš postup při prohlížení prostřednictvím prohlížeče.
 
 
-[![EACH kategorie s název a popis je uveden, oddělené vodorovná čára](nested-data-web-controls-cs/_static/image11.png)](nested-data-web-controls-cs/_static/image10.png)
+[![Každá kategorie s název a popis je uveden, oddělené vodorovná čára](nested-data-web-controls-cs/_static/image11.png)](nested-data-web-controls-cs/_static/image10.png)
 
 **Obrázek 4**: Každá kategorie s název a popis je uveden, oddělené vodorovná čára ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-data-web-controls-cs/_static/image12.png))
 
@@ -116,7 +116,7 @@ Tato obslužná rutina události začíná tím, že zajišťuje, že jsme k pr�
 Pomocí této obslužné rutiny události `ProductsByCategoryList` Repeater v každém `RepeaterItem` je vázán na tyto produkty v `RepeaterItem` s kategorií. Obrázek 5 ukazuje snímek obrazovky výsledný výstup.
 
 
-[![TVnější Repeater uvádí každou kategorii; Vnitřní ten jsou uvedeny produkty dané kategorie](nested-data-web-controls-cs/_static/image14.png)](nested-data-web-controls-cs/_static/image13.png)
+[![Vnější Repeater uvádí každou kategorii; Vnitřní jeden seznam produktů pro tuto kategorii](nested-data-web-controls-cs/_static/image14.png)](nested-data-web-controls-cs/_static/image13.png)
 
 **Obrázek 5**: Vnější Repeater uvádí každou kategorii; Jeden seznamy vnitřní produkty dané kategorie ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-data-web-controls-cs/_static/image15.png))
 

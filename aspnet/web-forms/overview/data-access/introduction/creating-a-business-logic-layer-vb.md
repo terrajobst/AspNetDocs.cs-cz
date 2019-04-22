@@ -12,7 +12,7 @@ ms.openlocfilehash: 63efa46410e821947c6b0ee4ecd0c790fbf793e3
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59380090"
 ---
 # <a name="creating-a-business-logic-layer-vb"></a>Vytvoření vrstvy obchodní logiky (VB)
@@ -129,7 +129,7 @@ Použít nové BLL třídy, všechny, které je potřeba změnit je, stačí nah
 Třídy BLL lze přistupovat pomocí ObjectDataSource také deklarativně (jak můžete datové sady typu). Budeme mluvit o ObjectDataSource podrobněji v následujících kurzech.
 
 
-[![Tmá seznam produktů se zobrazí v GridView](creating-a-business-logic-layer-vb/_static/image4.png)](creating-a-business-logic-layer-vb/_static/image3.png)
+[![Zobrazí se seznam produktů v GridView](creating-a-business-logic-layer-vb/_static/image4.png)](creating-a-business-logic-layer-vb/_static/image3.png)
 
 **Obrázek 3**: Zobrazí se seznam produktů v GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-business-logic-layer-vb/_static/image5.png))
 
@@ -148,7 +148,7 @@ Tato pravidla můžete a by měl být vyjádřen na úrovni databáze. Znak limi
 Kromě vynucuje tato pravidla na databázi by také měly být vynucují na úrovni datové sady. Délka pole a určuje, zda je hodnota požadované nebo volitelné jsou ve skutečnosti už zachycena pro každý objekt DataTable sadu objektů DataColumns. Zobrazíte existující ověření na úrovni pole automaticky k dispozici, přejděte na návrháři datových sad, vyberte pole z jednoho DataTables a přejděte do okna Vlastnosti. Jak ukazuje obrázek 4 `QuantityPerUnit` objekt DataColumn v `ProductsDataTable` má maximální délku 20 znaků a neumožňuje procházet spojené `NULL` hodnoty. Pokud jsme pokus o nastavení `ProductsDataRow`společnosti `QuantityPerUnit` vlastnost na hodnotu řetězce, který je delší než 20 znaků `ArgumentException` bude vyvolána výjimka.
 
 
-[![Tmá objekt DataColumn poskytuje základní ověření na úrovni pole](creating-a-business-logic-layer-vb/_static/image7.png)](creating-a-business-logic-layer-vb/_static/image6.png)
+[![Objekt DataColumn poskytuje základní ověření na úrovni pole](creating-a-business-logic-layer-vb/_static/image7.png)](creating-a-business-logic-layer-vb/_static/image6.png)
 
 **Obrázek 4**: Objekt DataColumn poskytuje základní úrovni pole ověření ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-business-logic-layer-vb/_static/image8.png))
 
@@ -156,7 +156,7 @@ Kromě vynucuje tato pravidla na databázi by také měly být vynucují na úro
 Bohužel jsme nelze zadat rozsah kontroly, jako `UnitPrice` hodnota musí být větší než nebo rovna hodnotě nula, v okně Vlastnosti. Aby bylo možné poskytovat tento typ pole potřebujeme vytvořit obslužnou rutinu události pro DataTable [columnchanging –](https://msdn.microsoft.com/library/system.data.datatable.columnchanging%28VS.80%29.aspx) událostí. Jak je uvedeno v [předchozím kurzu](creating-a-data-access-layer-vb.md), datové sady, datové tabulky a datového řádku objektů vytvořených typované datové sady je možné rozšířit pomocí částečných tříd. Tímto způsobem můžeme vytvářet `ColumnChanging` obslužné rutiny události pro `ProductsDataTable` třídy. Začněte tím, že vytvoření třídy v `App_Code` složku s názvem `ProductsDataTable.ColumnChanging.vb`.
 
 
-[![APřidat novou třídu ke složce App_Code](creating-a-business-logic-layer-vb/_static/image10.png)](creating-a-business-logic-layer-vb/_static/image9.png)
+[![Přidejte novou třídu ke složce App_Code](creating-a-business-logic-layer-vb/_static/image10.png)](creating-a-business-logic-layer-vb/_static/image9.png)
 
 **Obrázek 5**: Přidejte novou třídu do `App_Code` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-business-logic-layer-vb/_static/image11.png))
 

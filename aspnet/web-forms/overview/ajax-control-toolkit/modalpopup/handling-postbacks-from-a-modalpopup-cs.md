@@ -12,7 +12,7 @@ ms.openlocfilehash: 54dd3bae21e661e0b17cab6a71f0df33b6712bcd
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59388553"
 ---
 # <a name="handling-postbacks-from-a-modalpopup-c"></a>Zpracování postbacků z ovládacího prvku ModalPopup (C#)
@@ -55,7 +55,7 @@ TextBox – ovládací prvky v rámci Modální místní nabídky by měl být t
 [!code-csharp[Main](handling-postbacks-from-a-modalpopup-cs/samples/sample6.cs)]
 
 
-[![TModální místní nabídky he vyvolá zpětné volání](handling-postbacks-from-a-modalpopup-cs/_static/image2.png)](handling-postbacks-from-a-modalpopup-cs/_static/image1.png)
+[![Vyvolá Modální místní nabídky zpětné volání](handling-postbacks-from-a-modalpopup-cs/_static/image2.png)](handling-postbacks-from-a-modalpopup-cs/_static/image1.png)
 
 Vyvolá Modální místní nabídky zpětné volání ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-postbacks-from-a-modalpopup-cs/_static/image3.png))
 

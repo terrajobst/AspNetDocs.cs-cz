@@ -12,7 +12,7 @@ ms.openlocfilehash: fa118b4d733d7848b838f80e9918d62ae60033af
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59378972"
 ---
 # <a name="creating-a-rating-control-c"></a>Vytvoření ovládacího prvku Rating (C#)
@@ -66,7 +66,7 @@ V kódu na straně serveru, přístup k ovládacímu prvku hodnocení prostředn
 Uložit na stránku a jejich načtení do prohlížeče. Když najedete myší položky (původně prázdným) hodnocení, JavaScript účinek se vyskytuje: Hodnocení změny. Když kliknete na sadu hvězdiček, se uchovávají aktuální hodnocení. Nakonec po odeslání formuláře kód na straně serveru vypíše vybrané hodnocení.
 
 
-[![Csystém hodnocení s minimem kódování ořit](creating-a-rating-control-cs/_static/image2.png)](creating-a-rating-control-cs/_static/image1.png)
+[![Vytvoření systému hodnocení s minimem kódování](creating-a-rating-control-cs/_static/image2.png)](creating-a-rating-control-cs/_static/image1.png)
 
 Vytvoření systému hodnocení s minimem kódu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-rating-control-cs/_static/image3.png))
 

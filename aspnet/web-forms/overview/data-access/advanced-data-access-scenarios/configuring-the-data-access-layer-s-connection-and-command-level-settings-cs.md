@@ -12,7 +12,7 @@ ms.openlocfilehash: d6a787206862b88f915859d4a8fc4dd3c3166293
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59389593"
 ---
 # <a name="configuring-the-data-access-layers-connection--and-command-level-settings-c"></a>Konfigurace připojení vrstvy přístupu k datům a nastavení na úrovni příkazu (C#)
@@ -51,7 +51,7 @@ S výjimkou [zabalení úprav databáze do transakce](../working-with-batched-da
 Každá třída TableAdapter má `Connection` vlastnost, která určuje informace o připojení databáze. Tento typ dat vlastnosti s a `ConnectionString` hodnota se určují podle výběru v Průvodci konfigurací TableAdapter. Připomínáme, že když jsme nejprve přidat TableAdapter k datové sadě zadán tento průvodce výzva pro databázi zdroje (viz obrázek 1). Rozevíracím seznamu v prvním kroku zahrnuje tyto databáze zadané v konfiguračním souboru, jakož i jiných databází v Průzkumníku serveru s datová připojení. Pokud databáze, kterou chceme použít neexistuje v rozevíracím seznamu, nové připojení k databázi je možné zadat tak kliknutím na tlačítko nové připojení a poskytuje informace o připojení potřebné.
 
 
-[![Tže prvním krokem Průvodce nastavením TableAdapter](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image2.png)](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image1.png)
+[![Prvním krokem Průvodce nastavením TableAdapter](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image2.png)](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image1.png)
 
 **Obrázek 1**: Prvním krokem Průvodce nastavením TableAdapter ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image3.png))
 
@@ -109,7 +109,7 @@ Tato částečná třída zveřejňuje pouze jedné vlastnosti takové základn�
 Otevřít `Northwind` datovou sadu, klikněte na `ProductsTableAdapter` v návrháři a přejděte do okna Vlastnosti. Uvidíte `ConnectionModifier` nastavit na výchozí hodnotu, `Assembly`. Chcete-li `Connection` mimo sestavení s typované datové sady, změny k dispozici `ConnectionModifier` vlastnost `Public`.
 
 
-[![Tmá vlastnost připojení s úrovni přístupu můžete nakonfigurovat přes vlastnost ConnectionModifier](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image7.png)](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image6.png)
+[![Úroveň připojení s vlastnosti usnadnění přístupu lze nakonfigurovat přes vlastnost ConnectionModifier](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image7.png)](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image6.png)
 
 **Obrázek 4**: `Connection` Vlastnost s usnadnění úroveň lze nakonfigurovat prostřednictvím `ConnectionModifier` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image8.png))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 45a3d42d9e58469c789acfdc8cdaaf88b7920892
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59387086"
 ---
 # <a name="executing-animations-using-client-side-code-c"></a>Spuštění animací klientským kódem (C#)
@@ -63,7 +63,7 @@ Tady je kompletní kód JavaScript na straně klienta, který emuluje klikněte 
 [!code-html[Main](executing-animations-using-client-side-code-cs/samples/sample8.html)]
 
 
-[![The animace se spustí okamžitě, bez kliknutí myší](executing-animations-using-client-side-code-cs/_static/image2.png)](executing-animations-using-client-side-code-cs/_static/image1.png)
+[![Animace se spustí okamžitě, bez kliknutí myší](executing-animations-using-client-side-code-cs/_static/image2.png)](executing-animations-using-client-side-code-cs/_static/image1.png)
 
 Animace se spustí okamžitě, bez kliknutí myší ([kliknutím ji zobrazíte obrázek v plné velikosti](executing-animations-using-client-side-code-cs/_static/image3.png))
 

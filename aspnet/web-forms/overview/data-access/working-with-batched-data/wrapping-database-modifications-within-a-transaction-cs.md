@@ -12,7 +12,7 @@ ms.openlocfilehash: bbc54a39ba6ca3771acd7c4da37795a23e8ee2df
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59383379"
 ---
 # <a name="wrapping-database-modifications-within-a-transaction-c"></a>Zabalení úprav databáze do transakce (C#)
@@ -83,7 +83,7 @@ Než začneme zkoumat, jak rozšířit vrstvy DAL k podpoře databázové transa
 Stejně jako u jiných složkách `Default.aspx` použije `SectionLevelTutorialListing.ascx` uživatelského ovládacího prvku seznam kurzů v rámci jeho části. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
 
 
-[![Add uživatelského ovládacího prvku SectionLevelTutorialListing.ascx Default.aspx](wrapping-database-modifications-within-a-transaction-cs/_static/image2.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image1.png)
+[![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](wrapping-database-modifications-within-a-transaction-cs/_static/image2.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image1.png)
 
 **Obrázek 2**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-cs/_static/image2.png))
 
@@ -168,12 +168,12 @@ Pro ilustraci vliv transakce při aktualizaci dávky záznamů, které umožňuj
 Začněte otevřením `Transactions.aspx` stránku `BatchData` složky a GridView přetáhněte z panelu nástrojů do návrháře. Nastavte jeho `ID` k `Products` a z inteligentních značek, jeho vazbu na nového prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource přebírat jeho data ze `ProductsBLL` třída s `GetProducts` metody. To bude GridView jen pro čtení, proto nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný) a klikněte na tlačítko Dokončit.
 
 
-[![Figure 5: Konfigurace ObjectDataSource metody GetProducts ProductsBLL třída s](wrapping-database-modifications-within-a-transaction-cs/_static/image5.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image3.png)
+[![Obrázek 5: Konfigurace ObjectDataSource metody GetProducts ProductsBLL třída s](wrapping-database-modifications-within-a-transaction-cs/_static/image5.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image3.png)
 
 **Obrázek 5**: Obrázek 5: Konfigurace ObjectDataSource k použití `ProductsBLL` třída s `GetProducts` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-cs/_static/image4.png))
 
 
-[![Set rozevírací seznamy v UPDATE, INSERT a DELETE karty na (žádný)](wrapping-database-modifications-within-a-transaction-cs/_static/image6.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image5.png)
+[![Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný)](wrapping-database-modifications-within-a-transaction-cs/_static/image6.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image5.png)
 
 **Obrázek 6**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit záložky (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-cs/_static/image6.png))
 
@@ -191,7 +191,7 @@ Dále přidejte tři ovládací prvky tlačítka webového nad prvku GridView. N
 Zobrazení návrhu v sadě Visual Studio v tomto okamžiku by měla vypadat podobně jako obrazovky je vidět na obrázku 7.
 
 
-[![TObsahuje mu stránky prvku GridView a tři webové ovládací prvky tlačítka](wrapping-database-modifications-within-a-transaction-cs/_static/image7.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image7.png)
+[![Tato stránka obsahuje GridView a tři webové ovládací prvky tlačítek](wrapping-database-modifications-within-a-transaction-cs/_static/image7.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image7.png)
 
 **Obrázek 7**: Tato stránka obsahuje GridView a tři webové ovládací prvky tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-cs/_static/image8.png))
 
@@ -210,12 +210,12 @@ Třetí `Click` obslužná rutina události aktualizace produktů `CategoryID` s
 Chcete-li toto chování ilustrují, navštivte tuto stránku prostřednictvím prohlížeče. Původně měli byste vidět první stránka dat, jak je znázorněno na obrázku 8. V dalším kroku klikněte na tlačítko Upravit kategorie (transakce s). To způsobí zpětné odeslání a pokus o aktualizaci všech produktů, které `CategoryID` hodnoty, ale bude mít za následek porušení omezení pro cizí klíč (viz obrázek 9).
 
 
-[![The produkty jsou zobrazeny v stránkované GridView](wrapping-database-modifications-within-a-transaction-cs/_static/image8.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image9.png)
+[![Produkty jsou zobrazeny v stránkované GridView](wrapping-database-modifications-within-a-transaction-cs/_static/image8.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image9.png)
 
 **Obrázek 8**: Produkty jsou zobrazeny v stránkované ovládacího prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-cs/_static/image10.png))
 
 
-[![Reassigning výsledky do kategorií porušení omezení cizího klíče](wrapping-database-modifications-within-a-transaction-cs/_static/image9.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image11.png)
+[![Přiřazení kategorie výsledků v narušení omezení pro cizí klíč](wrapping-database-modifications-within-a-transaction-cs/_static/image9.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image11.png)
 
 **Obrázek 9**: Přiřazení kategorie výsledků v porušení omezení cizího klíče ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-cs/_static/image12.png))
 
@@ -225,7 +225,7 @@ Nyní stiskněte tlačítko zpět váš prohlížeč s a pak klikněte na tlač�
 Zkuste to teď kliknutím na tlačítko Upravit kategorie (bez transakce). Výsledkem bude stejná chyba porušení omezení pro cizí klíč (viz obrázek 9), ale v tuto chvíli tyto produkty jehož `CategoryID` hodnoty byly změněny na právní hodnotu, nebudou vráceny zpět. Stiskněte v prohlížeči s tlačítko Zpět a potom na tlačítko Aktualizovat mřížky. Obrázek 10 ukazuje, `CategoryID` s produkty prvních osm byl znovu přiřazen. Například na obrázku 8, měl Chang `CategoryID` 1, ale v obrázek 10 it s změnilo na 2.
 
 
-[![SHodnoty ID kategorie produktů pár nebyly aktualizovány při jiné byly](wrapping-database-modifications-within-a-transaction-cs/_static/image10.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image13.png)
+[![Některé hodnoty ID kategorie produktů nebyly aktualizovány při jiné byly](wrapping-database-modifications-within-a-transaction-cs/_static/image10.gif)](wrapping-database-modifications-within-a-transaction-cs/_static/image13.png)
 
 **Obrázek 10**: Některé produkty `CategoryID` hodnoty nebyly aktualizovány při jiné byly ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-cs/_static/image14.png))
 

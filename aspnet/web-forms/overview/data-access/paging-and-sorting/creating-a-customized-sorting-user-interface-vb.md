@@ -12,7 +12,7 @@ ms.openlocfilehash: 571e34a8c87bf54b8dd71c912f16ebcdab3c87a7
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59383444"
 ---
 # <a name="creating-a-customized-sorting-user-interface-vb"></a>Vytvoření vlastního uživatelského rozhraní pro řazení (VB)
@@ -31,7 +31,7 @@ Při zobrazování dlouhý seznam seřadit data tam, kde existují jenom na něk
 Chcete-li pomoci odhalit hranice mezi skupinami seřazený, využívat mnoho webů uživatelské rozhraní, které přidá oddělovač mezi tyto skupiny. Oddělovače, jako jsou ty zobrazené na obrázku 1 umožňuje uživatelům rychle najít konkrétní skupinu a identifikovat jeho hranice, jakož i zjistit, jaké odlišné skupiny existují v datech.
 
 
-[![EACH skupinu kategorií je, jasně identifikovat](creating-a-customized-sorting-user-interface-vb/_static/image2.png)](creating-a-customized-sorting-user-interface-vb/_static/image1.png)
+[![Každá skupina kategorie je jasně identifikovat.](creating-a-customized-sorting-user-interface-vb/_static/image2.png)](creating-a-customized-sorting-user-interface-vb/_static/image1.png)
 
 **Obrázek 1**: Každá skupina kategorie je jasně identifikovat ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-customized-sorting-user-interface-vb/_static/image3.png))
 
@@ -50,7 +50,7 @@ V dalším kroku nakonfigurujte prvku GridView, tak, aby obsahoval pouze `Produc
 Za chvíli doposud zobrazit náš postup v prohlížeči. Obrázek 2 ukazuje seřaditelné GridView při jeho data je seřazený podle kategorií v abecedním pořadí.
 
 
-[![Tmá seřaditelné GridView s Data jsou seřazená podle kategorie](creating-a-customized-sorting-user-interface-vb/_static/image5.png)](creating-a-customized-sorting-user-interface-vb/_static/image4.png)
+[![Řazení ovládacího prvku GridView s Data jsou seřazená podle kategorie](creating-a-customized-sorting-user-interface-vb/_static/image5.png)](creating-a-customized-sorting-user-interface-vb/_static/image4.png)
 
 **Obrázek 2**: Řazení ovládacího prvku GridView s Data jsou seřazená podle kategorie ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-customized-sorting-user-interface-vb/_static/image6.png))
 
@@ -100,7 +100,7 @@ Místo zasílání zpráv data před jeho vazbu na prvku GridView, můžeme při
 Pro přidání řádků oddělovač mezi každou skupinu řazení, jsme tento ovládací prvek hierarchie manipulovat přímo po jeho vytvoření. Můžeme být jisti, zda byl vytvořen hierarchii ovládací prvek GridView s naposledy v době, kdy vykreslení stránky. Proto, přepíše tento přístup `Page` třída s `Render` metoda v tomto okamžiku hierarchii poslední ovládací prvek GridView s aktualizováno, aby zahrnovalo potřebné oddělovač řádků. Obrázek 4 ukazuje tento proces.
 
 
-[![An alternativní technika zpracovává hierarchii ovládací prvek GridView s](creating-a-customized-sorting-user-interface-vb/_static/image9.png)](creating-a-customized-sorting-user-interface-vb/_static/image8.png)
+[![Alternativní postup manipuluje hierarchii ovládací prvek GridView s](creating-a-customized-sorting-user-interface-vb/_static/image9.png)](creating-a-customized-sorting-user-interface-vb/_static/image8.png)
 
 **Obrázek 4**: Alternativní postup manipuluje s GridView hierarchii ovládacích prvků ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-customized-sorting-user-interface-vb/_static/image10.png))
 
@@ -156,12 +156,12 @@ Třídu šablony stylů CSS použitý pro řazení řádek záhlaví skupiny `So
 S aktuálním kódem řazení rozhraní přidá řazení skupiny záhlaví při řazení podle libovolné Vlastnost BoundField (viz obrázek 5, který ukazuje snímek obrazovky při řazení podle dodavatele). Ale při řazení podle jiný typ pole (například třídě CheckBoxField nebo TemplateField), řazení skupiny záhlaví nejsou nikde najít (viz obrázek 6).
 
 
-[![Tmá řazení rozhraní zahrnuje řazení skupiny záhlaví při řazení podle BoundFields](creating-a-customized-sorting-user-interface-vb/_static/image12.png)](creating-a-customized-sorting-user-interface-vb/_static/image11.png)
+[![Řazení rozhraní zahrnuje seřadit a seskupit záhlaví při řazení podle BoundFields](creating-a-customized-sorting-user-interface-vb/_static/image12.png)](creating-a-customized-sorting-user-interface-vb/_static/image11.png)
 
 **Obrázek 5**: Řazení rozhraní zahrnuje řazení skupiny záhlaví při řazení podle BoundFields ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-customized-sorting-user-interface-vb/_static/image13.png))
 
 
-[![The řazení skupiny s hlavičkami chybí při řazení třídě CheckBoxField](creating-a-customized-sorting-user-interface-vb/_static/image15.png)](creating-a-customized-sorting-user-interface-vb/_static/image14.png)
+[![Záhlaví skupiny řazení jsou chybějící při řazení třídě CheckBoxField](creating-a-customized-sorting-user-interface-vb/_static/image15.png)](creating-a-customized-sorting-user-interface-vb/_static/image14.png)
 
 **Obrázek 6**: Záhlaví skupiny řazení jsou chybějící při řazení třídě CheckBoxField ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-customized-sorting-user-interface-vb/_static/image16.png))
 
@@ -178,7 +178,7 @@ Tento kód prozkoumá seřazený sloupec `TableCell` pro aktuální řádek urč
 Výše uvedené přidání kódu, hlaviček skupiny řazení jsou teď k dispozici při řazení ve třídě CheckBoxField ukončena (viz obrázek 7).
 
 
-[![TZáhlaví he řazení skupin jsou teď k dispozici při řazení třídě CheckBoxField](creating-a-customized-sorting-user-interface-vb/_static/image18.png)](creating-a-customized-sorting-user-interface-vb/_static/image17.png)
+[![Záhlaví skupiny řazení nejsou nyní k dispozici při řazení třídě CheckBoxField](creating-a-customized-sorting-user-interface-vb/_static/image18.png)](creating-a-customized-sorting-user-interface-vb/_static/image17.png)
 
 **Obrázek 7**: Záhlaví skupiny řazení nejsou nyní k dispozici při řazení třídě CheckBoxField ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-customized-sorting-user-interface-vb/_static/image19.png))
 

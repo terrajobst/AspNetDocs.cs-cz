@@ -12,7 +12,7 @@ ms.openlocfilehash: 6cea53021ce92e3936b06481008a86dd0590a117
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59387435"
 ---
 # <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax Content Delivery Network
@@ -27,7 +27,7 @@ ms.locfileid: "59387435"
 ## <a name="table-of-contents"></a>Obsah
 
 **[Přejmenovat ajax.aspnetcdn.com adresu AJAX.microsoft.com](#ajaxmicrosoftcom_renamed_to_ajaxaspnetcdncom_18)**  
-**[Podpora .vsdoc sady Visual Studio](#Visual_Studio_vsdoc_Support_19)**  
+**[Visual Studio .vsdoc Support](#Visual_Studio_vsdoc_Support_19)**  
 **[Pomocí prvku ASP.NET Ajax z CDN](#Using_ASPNET_Ajax_from_the_CDN_20)**  
 **[Pomocí jQuery z CDN](#Using_jQuery_from_the_CDN_21)**  
 **[Pomocí jQuery UI z CDN](#Using_jQuery_UI_from_the_CDN_22)**  

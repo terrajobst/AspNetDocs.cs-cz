@@ -12,7 +12,7 @@ ms.openlocfilehash: 109a0dc1e1ebe0b644e9414561c798a7bb3d0531
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59414826"
 ---
 # <a name="aspnet-4---enterprise-deployment-series-1"></a>ASP.NET 4 – nasazení v podniku (1. část)
@@ -28,6 +28,6 @@ ms.locfileid: "59414826"
 - [Sestavení a balení projektů webových aplikací](building-and-packaging-web-application-projects.md)
 - [Konfigurace parametrů nasazení webového balíčku](configuring-parameters-for-web-package-deployment.md)
 - [Nasazení webových balíčků](deploying-web-packages.md)
-- [Nasazení databázových projektů](deploying-database-projects.md)
+- [Nasazení projektu databáze](deploying-database-projects.md)
 - [Vytvoření a spuštění souboru příkazů k nasazení](creating-and-running-a-deployment-command-file.md)
 - [Ruční instalace webových balíčků](manually-installing-web-packages.md)

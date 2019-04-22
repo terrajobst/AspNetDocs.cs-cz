@@ -12,7 +12,7 @@ ms.openlocfilehash: 9b2a7e00b3c50a946ad0f2518880892f103a5c1b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59387110"
 ---
 # <a name="validating-with-a-service-layer-c"></a>Ověřování vrstvou služby (C#)
@@ -54,7 +54,7 @@ Například vrstva služby produkt ve verzi 3 výpis obsahuje metodu CreateProdu
 
 Kontroler produktu se aktualizoval v informacích 4 nahrazujícím vrstvu služby vrstvě úložiště. Vrstva kontroleru hovoří se vrstva služby. Přednášky vrstvu služby vrstvě úložiště. Každá vrstva má samostatné odpovědnost.
 
-**Listing 4 - Controllers\ProductController.cs**
+**Část 4 – Controllers\ProductController.cs**
 
 [!code-csharp[Main](validating-with-a-service-layer-cs/samples/sample4.cs)]
 
@@ -80,7 +80,7 @@ IValidationDictionary rozhraní je definováno v informacích 6. Toto jednoduch�
 
 Výpis 7, s názvem třídy ModelStateWrapper implementuje rozhraní IValidationDictionary. Můžete vytvořit instanci třídy ModelStateWrapper předáním slovníku stavů modelu do konstruktoru.
 
-**Listing 7 - Models\ModelStateWrapper.cs**
+**Výpis 7 - Models\ModelStateWrapper.cs**
 
 [!code-csharp[Main](validating-with-a-service-layer-cs/samples/sample7.cs)]
 

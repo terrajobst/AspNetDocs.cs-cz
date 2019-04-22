@@ -12,7 +12,7 @@ ms.openlocfilehash: 0fc828e39cfcce22d4cc226954cf7d1731b04e42
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59379778"
 ---
 # <a name="introduction-to-working-with-a-database-in-aspnet-web-pages-razor-sites"></a>Úvod k práci s databází v rozhraní ASP.NET Web Pages servery (Razor)
@@ -51,7 +51,7 @@ Představte typické adresáře. Pro každou položku v adresáři (to znamená,
 
 Typické způsob, jak data obrázku tímto způsobem je jako tabulku s řádky a sloupce. V podmínkách databáze každý řádek se často označuje jako záznam. Každý sloupec (někdy označované jako pole) obsahuje hodnotu pro každý typ hledaných dat: křestní jméno, poslední název a tak dále.
 
-| **ID** | **FirstName** | **LastName** | **Adresa** | **E-mail** | **Telefon** |
+| **ID** | **Jméno** | **LastName** | **Adresa** | **E-mail** | **Telefon** |
 | --- | --- | --- | --- | --- | --- |
 | 1 | Jan | Abrus | 210 100th St SE Orcas WA 98031 | jim@contoso.com | 555 0100 |
 | 2 | Terry | Adams | 1234 hlavní St. Seattle WA 99011 | terry@cohowinery.com | 555 0101 |
@@ -107,7 +107,7 @@ Nyní můžete přidat nějaká ukázková data do databáze, kterou budete prac
 2. Klikněte pravým tlačítkem na tabulku produktů a potom klikněte na tlačítko **Data**.
 3. V podokně úpravy zadejte následující záznamy:
 
-    | **Name** | **Popis** | **Cena** |
+    | **Název** | **Popis** | **Cena** |
     | --- | --- | --- |
     | Chléb | Dokončené čerstvé každý den. | 2.99 |
     | Strawberry Shortcake | S organickým jahody provedené v našich zahrada. | 9.99 |
@@ -151,7 +151,7 @@ Jakmile máte databázi s daty v něm můžete zobrazit data na webové stránce
 
 > [!TIP] 
 > 
-> **SQL (Structured Query Language)**
+> **Structured Query Language (SQL)**
 > 
 > SQL je jazyk, který se používá v Většina relačních databází pro správu dat v databázi. Obsahuje příkazy, které umožňují načtení dat a aktualizovat je a, které umožňují vytvářet, upravovat a spravovat databázové tabulky. SQL se liší od programovací jazyk (jako ten, že používáte v nástroji WebMatrix) vzhledem k tomu, že pomocí jazyka SQL, cílem je, že dáte databáze, co chcete a je databáze úlohu zjistit, jak získat data nebo provést úlohu. Tady jsou příklady některých příkazů SQL a jejich význam:
 > 

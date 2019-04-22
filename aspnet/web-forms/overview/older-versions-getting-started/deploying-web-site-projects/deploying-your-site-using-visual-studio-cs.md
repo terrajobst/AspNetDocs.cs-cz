@@ -12,7 +12,7 @@ ms.openlocfilehash: 9512685672e42091e7be11c5710a2434ca8b0488
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59392414"
 ---
 # <a name="deploying-your-site-using-visual-studio-c"></a>Nasazení webu pomocí sady Visual Studio (C#)
@@ -45,7 +45,7 @@ Pojďme se podívat na použití nástroj Kopírovat web k publikování recenze
 Spustit projekt nástroj Kopírovat web kliknutím na ikonu kopírování webu v Průzkumníku řešení (Tato ikona je kruhu na obrázku 1). Alternativně můžete vybrat možnost Kopírovat web z nabídky na webu. Kterýkoliv přístup spustí uživatelské rozhraní Kopírovat web na obrázku 1; v levém podokně na obrázku 1 je naplnit, protože musíme ještě připojit ke vzdálenému serveru.
 
 
-[![The webu nástroj pro kopírování na uživatelské rozhraní je rozdělen do dvou podoken](deploying-your-site-using-visual-studio-cs/_static/image2.png)](deploying-your-site-using-visual-studio-cs/_static/image1.png)
+[![Nástroj Kopírovat web uživatelské rozhraní je rozdělen do dvou podoken](deploying-your-site-using-visual-studio-cs/_static/image2.png)](deploying-your-site-using-visual-studio-cs/_static/image1.png)
 
 **Obrázek 1**: Nástroj Kopírovat web uživatelské rozhraní je rozdělen do dvou podoken ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-visual-studio-cs/_static/image3.png))
 
@@ -62,7 +62,7 @@ Výběrem jedné ze čtyř možností od levého okraje, můžete se připojit k
 Většina webové hostitele zprostředkovatele podpory FTP, ale méně nabízí podporu rozšíření serveru FrontPage. Z tohoto důvodu jsme vybrali možnost Server FTP a potom zadat informace o připojení, jak je znázorněno na obrázku 2.
 
 
-[![SZadejte cílový web](deploying-your-site-using-visual-studio-cs/_static/image5.png)](deploying-your-site-using-visual-studio-cs/_static/image4.png)
+[![Zadejte cílový web](deploying-your-site-using-visual-studio-cs/_static/image5.png)](deploying-your-site-using-visual-studio-cs/_static/image4.png)
 
 **Obrázek 2**: Zadejte cílový web ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-visual-studio-cs/_static/image6.png))
 
@@ -72,7 +72,7 @@ Po připojení se nástroj pro kopírování webu načte soubory ve vzdálené l
 Přidejme novou stránku do projektu BookReviewsWSP a potom ji nasadíte tak, aby jsme nástroj Kopírovat web v akci. Vytvoření nové stránky technologie ASP.NET v sadě Visual Studio v kořenovém adresáři s názvem `Privacy.aspx`. Stránka na hlavní stránce `Site.master` a přidat zásady ochrany osobních údajů vašeho webu na tuto stránku. Obrázek 3 ukazuje Visual Studio po vytvoření této stránky.
 
 
-[![Add novou stránku s názvem &lt;kód&gt;Privacy.aspx&lt;/code&gt; do kořenové složky webu](deploying-your-site-using-visual-studio-cs/_static/image8.png)](deploying-your-site-using-visual-studio-cs/_static/image7.png)
+[![Přidejte novou stránku s názvem &lt;kód&gt;Privacy.aspx&lt;/code&gt; do kořenové složky webu](deploying-your-site-using-visual-studio-cs/_static/image8.png)](deploying-your-site-using-visual-studio-cs/_static/image7.png)
 
 **Obrázek 3**: Přidejte novou stránku s názvem `Privacy.aspx` do kořenové složky webu ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-visual-studio-cs/_static/image9.png))
 
@@ -80,7 +80,7 @@ Přidejme novou stránku do projektu BookReviewsWSP a potom ji nasadíte tak, ab
 Pak se vraťte do uživatelského rozhraní pro kopírování webu. Jak je vidět na obrázku 4, v levém podokně teď obsahuje nové soubory – `Policy.aspx` a `Policy.aspx.cs`. A co víc tyto soubory jsou označeny ikonou šipky a stavu z nového označující, že existují v místní lokalitě, ale není na vzdáleném webu.
 
 
-[![TNástroj pro kopírování webu zahrne nový &lt;kód&gt;Privacy.aspx&lt;/code&gt; stránky v jeho levé podokno](deploying-your-site-using-visual-studio-cs/_static/image11.png)](deploying-your-site-using-visual-studio-cs/_static/image10.png)
+[![Nástroj pro kopírování webu obsahuje nový &lt;kód&gt;Privacy.aspx&lt;/code&gt; stránky v jeho levé podokno](deploying-your-site-using-visual-studio-cs/_static/image11.png)](deploying-your-site-using-visual-studio-cs/_static/image10.png)
 
 **Obrázek 4**: Nástroj pro kopírování webu obsahuje nový `Privacy.aspx` stránky v jeho levé podokno ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-visual-studio-cs/_static/image12.png))
 
@@ -90,7 +90,7 @@ K nasazení nové soubory, vyberte je a pak klikněte na ikonu šipky pro přeno
 Nástroj Kopírovat web spolu s výpisem nové soubory, zvýrazní všechny soubory, které se liší mezi místními a vzdálenými lokalitami. Chcete-li zobrazit toto v akci, vraťte se na `Privacy.aspx` stránky a přidejte několik více slov do zásady ochrany osobních údajů. Uložit na stránku a pak se vraťte na nástroj pro kopírování webu. Obrázek 5 ukazuje, `Privacy.aspx` stránky v levém podokně je ve stavu změněné označující, že je synchronizovaný s vzdálené lokality.
 
 
-[![TOznačuje, že má nástroj pro kopírování webu &lt;kód&gt;Privacy.aspx&lt;/code&gt; stránky byl změněn.](deploying-your-site-using-visual-studio-cs/_static/image14.png)](deploying-your-site-using-visual-studio-cs/_static/image13.png)
+[![Nástroj pro kopírování webu znamená to, že &lt;kód&gt;Privacy.aspx&lt;/code&gt; stránky se změnil.](deploying-your-site-using-visual-studio-cs/_static/image14.png)](deploying-your-site-using-visual-studio-cs/_static/image13.png)
 
 **Obrázek 5**: Nástroj pro kopírování webu znamená to, že `Privacy.aspx` stránky se změnil ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-visual-studio-cs/_static/image15.png))
 
@@ -117,7 +117,7 @@ Podívejme se na nasazení aplikace recenzí pomocí možností publikovat. Zač
 Je také možnost nahrát obsah `App_Data` složky.
 
 
-[![SZadejte cílový web](deploying-your-site-using-visual-studio-cs/_static/image17.png)](deploying-your-site-using-visual-studio-cs/_static/image16.png)
+[![Zadejte cílový web](deploying-your-site-using-visual-studio-cs/_static/image17.png)](deploying-your-site-using-visual-studio-cs/_static/image16.png)
 
 **Obrázek 6**: Zadejte cílový web ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-visual-studio-cs/_static/image18.png))
 
@@ -127,7 +127,7 @@ Pro aplikaci recenze knihy vzdálené lokality obsahuje soubory při kopírován
 Obrázek 7 znázorňuje souborů na server FTP po dokončení operace publikování. Všimněte si, že byly odeslány pouze na stránkách značek a soubory podpory potřebné sever - a -na straně klienta.
 
 
-[![Ojen pro potřebné soubory byly publikovány do produkčního prostředí](deploying-your-site-using-visual-studio-cs/_static/image20.png)](deploying-your-site-using-visual-studio-cs/_static/image19.png)
+[![Jenom potřebné soubory byly publikovány do produkčního prostředí](deploying-your-site-using-visual-studio-cs/_static/image20.png)](deploying-your-site-using-visual-studio-cs/_static/image19.png)
 
 **Obrázek 7**: Jenom je potřeba soubory byly publikovány do produkčního prostředí ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-visual-studio-cs/_static/image21.png))
 

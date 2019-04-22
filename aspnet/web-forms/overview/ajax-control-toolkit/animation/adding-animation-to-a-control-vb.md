@@ -12,7 +12,7 @@ ms.openlocfilehash: c55bbeb383b15f4dc9cb95d25905cade1e8c5c29
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59418895"
 ---
 # <a name="adding-animation-to-a-control-vb"></a>Přidání animace k ovládacímu prvku (VB)
@@ -72,7 +72,7 @@ V tomto příkladu se zesvětlit panelu. Animace přijmou půl sekundy (`Duratio
 Při spuštění tohoto skriptu na panelu se zobrazí a setmívá v jedné a půl sekundy.
 
 
-[![The panel mizení](adding-animation-to-a-control-vb/_static/image2.png)](adding-animation-to-a-control-vb/_static/image1.png)
+[![Je mizení panelu](adding-animation-to-a-control-vb/_static/image2.png)](adding-animation-to-a-control-vb/_static/image1.png)
 
 Na panelu je mizení ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-animation-to-a-control-vb/_static/image3.png))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 0fb0a331a2a6e2af5c5097db8b57942525d24ffc
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59384302"
 ---
 # <a name="continuous-integration-and-continuous-delivery-building-real-world-cloud-apps-with-azure"></a>Průběžná integrace a průběžné doručování (vytváření skutečných cloudových aplikací s Azure)
@@ -34,7 +34,7 @@ Obecně doporučujeme, abyste udělali průběžné doručování do vývoje a p
 
 Následující diagram z [Microsoft Patterns and Practices e knihy o průběžné doručování](https://aka.ms/ReleasePipeline) znázorňuje typický pracovní postup. Kliknutím na obrázek zobrazíte jeho plnou velikost v jeho původního kontextu.
 
-[![Cpracovní postup doručování ontinuous](continuous-integration-and-continuous-delivery/_static/image1.png)](https://msdn.microsoft.com/library/dn449955.aspx)
+[![Pracovní postup průběžného doručování](continuous-integration-and-continuous-delivery/_static/image1.png)](https://msdn.microsoft.com/library/dn449955.aspx)
 
 ## <a name="how-the-cloud-enables-cost-effective-ci-and-cd"></a>Jak cloud umožňuje nákladově efektivní CI a CD
 

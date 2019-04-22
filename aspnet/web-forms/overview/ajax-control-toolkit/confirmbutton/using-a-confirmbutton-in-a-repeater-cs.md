@@ -12,7 +12,7 @@ ms.openlocfilehash: 1ab979f220c06d22f51931c7c00fc4d273731f85
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59413942"
 ---
 # <a name="using-a-confirmbutton-in-a-repeater-c"></a>Použití ovládacího prvku ConfirmButton v repeateru (C#)
@@ -47,7 +47,7 @@ Tento zdroj dat je pak možné v rámci repeateru. Obvyklým způsobem `DataBind
 [!code-aspx[Main](using-a-confirmbutton-in-a-repeater-cs/samples/sample3.aspx)]
 
 
-[![Tsi potvrďte, že se zobrazí tlačítko vedle každé položky ze zdroje dat](using-a-confirmbutton-in-a-repeater-cs/_static/image2.png)](using-a-confirmbutton-in-a-repeater-cs/_static/image1.png)
+[![Tlačítko potvrzení se zobrazí vedle každé položky ze zdroje dat.](using-a-confirmbutton-in-a-repeater-cs/_static/image2.png)](using-a-confirmbutton-in-a-repeater-cs/_static/image1.png)
 
 Tlačítko potvrzení se zobrazí vedle každé položky ze zdroje dat ([kliknutím ji zobrazíte obrázek v plné velikosti](using-a-confirmbutton-in-a-repeater-cs/_static/image3.png))
 

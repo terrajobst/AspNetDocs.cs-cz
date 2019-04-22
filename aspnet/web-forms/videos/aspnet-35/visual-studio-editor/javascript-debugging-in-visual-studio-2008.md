@@ -12,7 +12,7 @@ ms.openlocfilehash: 8059aef7d977e0a12957f05fab38fc2e831a345f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59387840"
 ---
 # <a name="javascript-debugging-in-visual-studio-2008"></a>Ladění JavaScriptu v sadě Visual Studio 2008

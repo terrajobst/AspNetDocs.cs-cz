@@ -12,7 +12,7 @@ ms.openlocfilehash: 952dbbc7759e5a8a654ab561bc54011dfb7f8d90
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59380077"
 ---
 # <a name="batch-updating-c"></a>Dávkové aktualizace (C#)
@@ -31,7 +31,7 @@ V [předchozím kurzu](wrapping-database-modifications-within-a-transaction-cs.m
 V tomto kurzu vytvoříme ovládacího prvku GridView, kde každý řádek představuje upravitelné (viz obrázek 1). Protože každý řádek se vykreslí v jeho úpravy rozhraní tam s není nutné pro sloupec upravit, aktualizovat a stornovací tlačítka. Místo toho se nacházejí dvě aktualizace produktů tlačítka na stránce, která po kliknutí na vytvořit výčet řádky GridView a aktualizaci databáze.
 
 
-[![EACH řádku v prvku GridView je upravit](batch-updating-cs/_static/image1.gif)](batch-updating-cs/_static/image1.png)
+[![Upravit je každý řádek v prvku GridView.](batch-updating-cs/_static/image1.gif)](batch-updating-cs/_static/image1.png)
 
 **Obrázek 1**: Každý řádek v prvku GridView je upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image2.png))
 
@@ -57,12 +57,12 @@ Příštích několika krocích vytvoříme zcela upravitelné ovládacího prvk
 Předtím, než jsme starat o vytváření GridView kde jsou řádky se upravovat, ať s začněte tím, že jednoduše zobrazení informací o produktu. Otevřít `BatchUpdate.aspx` stránku `BatchData` složky a GridView přetáhněte z panelu nástrojů do návrháře. Nastavit prvek GridView s `ID` k `ProductsGrid` a z inteligentních značek, vyberte a vytvořte jeho vazbu nového prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource načíst data z `ProductsBLL` třída s `GetProducts` metody.
 
 
-[![Configurovat ObjectDataSource pomocí třídy ProductsBLL](batch-updating-cs/_static/image2.gif)](batch-updating-cs/_static/image3.png)
+[![Konfigurace ObjectDataSource pomocí třídy ProductsBLL](batch-updating-cs/_static/image2.gif)](batch-updating-cs/_static/image3.png)
 
 **Obrázek 2**: Konfigurace ObjectDataSource k použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image4.png))
 
 
-[![Rnačíst Data produktů pomocí metody GetProducts](batch-updating-cs/_static/image3.gif)](batch-updating-cs/_static/image5.png)
+[![Načíst pomocí metody GetProducts Data produktu.](batch-updating-cs/_static/image3.gif)](batch-updating-cs/_static/image5.png)
 
 **Obrázek 3**: Načtení dat pomocí produktu `GetProducts` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image6.png))
 
@@ -70,7 +70,7 @@ Předtím, než jsme starat o vytváření GridView kde jsou řádky se upravova
 Jako prvku GridView jsou funkce úprav ObjectDataSource s navrženy pro práci na základě na řádek. Pokud chcete aktualizovat sadu záznamů, potřebujeme psát hodně kódu ve třídě použití modelu code-behind stránky s ASP.NET, která seskupuje data do dávek a předává je BLL. Proto nastavte rozevírací seznamy v prvku ObjectDataSource s UPDATE, INSERT a DELETE karty na (žádný). Kliknutím na Dokončit dokončíte průvodce.
 
 
-[![Set rozevírací seznamy v UPDATE, INSERT a DELETE karty na (žádný)](batch-updating-cs/_static/image4.gif)](batch-updating-cs/_static/image7.png)
+[![Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný)](batch-updating-cs/_static/image4.gif)](batch-updating-cs/_static/image7.png)
 
 **Obrázek 4**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit záložky (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image8.png))
 
@@ -107,7 +107,7 @@ Umožní s začínat `ProductName` TemplateField. Klikněte na odkaz Upravit ša
 V dalším kroku přidejte RequiredFieldValidator k `ItemTemplate` zajistit, že uživatel zadá hodnotu pro každý produkt s názvem. Nastavte `ControlToValidate` Vlastnost ProductName; `ErrorMessage` vlastnost je nutné zadat název produktu. a `Text` vlastnost \*. Po provedení těchto doplňky `ItemTemplate`, vaše obrazovka by měla vypadat podobně jako na obrázku 6.
 
 
-[![Tmá ProductName TemplateField teď obsahuje textové pole a RequiredFieldValidator](batch-updating-cs/_static/image6.gif)](batch-updating-cs/_static/image9.png)
+[![Nyní TemplateField ProductName obsahuje textové pole a RequiredFieldValidator](batch-updating-cs/_static/image6.gif)](batch-updating-cs/_static/image9.png)
 
 **Obrázek 6**: `ProductName` TemplateField teď obsahuje textové pole a RequiredFieldValidator ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image10.png))
 
@@ -117,7 +117,7 @@ Pro `UnitPrice` úpravy rozhraní, začněte tím, že kopírování z textovéh
 Přidejte také CompareValidator k `UnitPrice` s `ItemTemplate` tak, aby byl tímto uživatelem zadaná hodnota platná měny hodnotu větší než nebo rovna hodnotě 0,00 USD. Nastavit program pro ověření s `ControlToValidate` vlastnost UnitPrice, jeho `ErrorMessage` vlastnost, musíte zadat hodnotu měny platný. Prosím vynechat všechny měny symboly., jeho `Text` vlastnost \*, jeho `Type` vlastnost `Currency`, jeho `Operator` vlastnost `GreaterThanEqual`a jeho `ValueToCompare` vlastnost na hodnotu 0.
 
 
-[![Add CompareValidator zajistit Zadaná cena je nezáporná hodnota měny](batch-updating-cs/_static/image7.gif)](batch-updating-cs/_static/image11.png)
+[![Umožňuje přidat CompareValidator zajistit Zadaná cena je nezáporná hodnota měny](batch-updating-cs/_static/image7.gif)](batch-updating-cs/_static/image11.png)
 
 **Obrázek 7**: Přidání CompareValidator zajistit Zadaná cena je nezáporná hodnota měny ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image12.png))
 
@@ -135,12 +135,12 @@ Pro `Discontinued` TemplateField můžete použít políčko již definována v 
 Přetáhněte z panelu nástrojů do DropDownList `CategoryName` TemplateField s `ItemTemplate`a nastavte jeho `ID` k `Categories`. V tuto chvíli jsme byste obvykle definovali zdroj dat s DropDownLists prostřednictvím inteligentních značek, vytváření nového prvku ObjectDataSource. Ale tato možnost přidá ObjectDataSource v rámci `ItemTemplate`, jejímž výsledkem bude ObjectDataSource instance vytvořené pro každý řádek prvku GridView. Místo toho umožní vytvořit ObjectDataSource mimo GridView s vlastností TemplateField s. Ukončit úpravu šablony a prvku ObjectDataSource přetáhněte z panelu nástrojů na Návrhář pod `ProductsDataSource` ObjectDataSource. Název nového prvku ObjectDataSource `CategoriesDataSource` a nakonfigurujte ho na použití `CategoriesBLL` třída s `GetCategories` metody.
 
 
-[![Configurovat ObjectDataSource pomocí třídy CategoriesBLL](batch-updating-cs/_static/image8.gif)](batch-updating-cs/_static/image13.png)
+[![Konfigurace ObjectDataSource pomocí třídy CategoriesBLL](batch-updating-cs/_static/image8.gif)](batch-updating-cs/_static/image13.png)
 
 **Obrázek 8**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image14.png))
 
 
-[![RNačíst kategorie dat pomocí metody GetCategories](batch-updating-cs/_static/image9.gif)](batch-updating-cs/_static/image15.png)
+[![Načtení kategorie dat pomocí GetCategories – metoda](batch-updating-cs/_static/image9.gif)](batch-updating-cs/_static/image15.png)
 
 **Obrázek 9**: Načtení dat pomocí kategorie `GetCategories` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image16.png))
 
@@ -148,7 +148,7 @@ Přetáhněte z panelu nástrojů do DropDownList `CategoryName` TemplateField s
 Protože tento prvek ObjectDataSource slouží pouze k načtení dat, nastavte rozevírací seznamy na kartách UPDATE a DELETE na (žádný). Kliknutím na Dokončit dokončíte průvodce.
 
 
-[![Set rozevírací seznamy v aktualizaci a odstranění karty na (žádný)](batch-updating-cs/_static/image10.gif)](batch-updating-cs/_static/image17.png)
+[![Sada rozevírací seznamy v aktualizaci a odstranění karty na (žádný)](batch-updating-cs/_static/image10.gif)](batch-updating-cs/_static/image17.png)
 
 **Obrázek 10**: Nastavte rozevírací seznam obsahuje v aktualizaci a odstranění karty (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image18.png))
 
@@ -161,7 +161,7 @@ Po dokončení průvodce, `CategoriesDataSource` s deklarativní by měl vypadat
 S `CategoriesDataSource` vytvoření a konfiguraci, vrátit `CategoryName` TemplateField s `ItemTemplate` a z s DropDownList inteligentní značky, klikněte na odkaz zvolit zdroj dat. V Průvodci konfigurací zdroje dat, vyberte `CategoriesDataSource` možnost v prvním rozevíracím seznamu a rozhodnout, že `CategoryName` použitý pro zobrazení a `CategoryID` jako hodnotu.
 
 
-[![BIND DropDownList k CategoriesDataSource](batch-updating-cs/_static/image11.gif)](batch-updating-cs/_static/image19.png)
+[![Svázat CategoriesDataSource DropDownList](batch-updating-cs/_static/image11.gif)](batch-updating-cs/_static/image19.png)
 
 **Obrázek 11**: DropDownList k vytvoření vazby `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image20.png))
 
@@ -190,7 +190,7 @@ Poznámka: Jak `<asp:ListItem Value="">` --vyberte jednu – má jeho `Value` at
 Jsme ve provedli několik změn do šablon GridView s bez pozastavení zobrazíte náš postup. Chcete-li zobrazit náš postup prostřednictvím prohlížeče chvíli trvat. Jak ukazuje obrázek 13, každý řádek je vykreslen pomocí jeho `ItemTemplate`, který obsahuje buňky s úpravy rozhraní.
 
 
-[![EACH řádky GridView je upravit](batch-updating-cs/_static/image13.gif)](batch-updating-cs/_static/image21.png)
+[![Upravit je každý řádek prvku GridView](batch-updating-cs/_static/image13.gif)](batch-updating-cs/_static/image21.png)
 
 **Obrázek 13**: Každý řádek prvku GridView je upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image22.png))
 
@@ -223,7 +223,7 @@ Po provedení výše uvedených změny formátování, přidávání ovládací 
 Obrázek 16 zobrazuje tuto stránku při prohlížení prostřednictvím prohlížeče, po přidání ovládacích prvků webového tlačítko a formátování změny.
 
 
-[![Tmá stránka nyní obsahuje dvě aktualizace produktů tlačítka](batch-updating-cs/_static/image16.gif)](batch-updating-cs/_static/image23.png)
+[![Stránka nyní obsahuje dvě tlačítka aktualizace produktů](batch-updating-cs/_static/image16.gif)](batch-updating-cs/_static/image23.png)
 
 **Obrázek 16**: Stránka nyní obsahuje dvě aktualizace produktů tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-cs/_static/image24.png))
 

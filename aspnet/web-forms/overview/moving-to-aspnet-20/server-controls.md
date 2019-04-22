@@ -12,7 +12,7 @@ ms.openlocfilehash: bfbc151af40bf7ccceb5ac298ba812730d4e4ed9
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59420754"
 ---
 # <a name="server-controls"></a>Serverové ovládací prvky
@@ -218,7 +218,7 @@ Toto video je návod ovládacího prvku Wizard.
 
 Ovládací prvek Localize je podobný prvku Literal control. Má však Localize ovládacího prvku **režimu** vlastnost, která určuje, jak je vykreslen kód, který se přidá do ní. Vlastnost Mode podporuje následující hodnoty:
 
-| **Režim** | **Vysvětlení** |
+| **Mode** | **Vysvětlení** |
 | --- | --- |
 | Transformace | Značek je transformovány podle protokolu prohlížeče, který zadal žádost. |
 | Průchod | Značka se vykreslí jako-je. |

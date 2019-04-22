@@ -12,7 +12,7 @@ ms.openlocfilehash: d0b6f8651e327cf9ad2a3051edd323efba4f64fc
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59418726"
 ---
 # <a name="using-cascadingdropdown-with-a-database-vb"></a>Použití ovládacího prvku CascadingDropDown s databází (VB)
@@ -86,12 +86,12 @@ Zbývající část metody je poměrně přímočaré, potom. ID dodavatele se p
 Načtení stránky technologie ASP.NET a po nějakou dobu seznamu dodavatele vyplněno 25 položky. Vyberte jednu položku a Všimněte si, jak je druhý rozevírací seznam naplněný daty.
 
 
-[![Tprvní seznam he se vyplní automaticky](using-cascadingdropdown-with-a-database-vb/_static/image2.png)](using-cascadingdropdown-with-a-database-vb/_static/image1.png)
+[![První seznam se vyplní automaticky](using-cascadingdropdown-with-a-database-vb/_static/image2.png)](using-cascadingdropdown-with-a-database-vb/_static/image1.png)
 
 První seznam se vyplní automaticky ([kliknutím ji zobrazíte obrázek v plné velikosti](using-cascadingdropdown-with-a-database-vb/_static/image3.png))
 
 
-[![Tdruhý seznam he zaplněný podle výběru v prvním seznamu](using-cascadingdropdown-with-a-database-vb/_static/image5.png)](using-cascadingdropdown-with-a-database-vb/_static/image4.png)
+[![Druhý seznam se vyplní podle výběru v prvním seznamu](using-cascadingdropdown-with-a-database-vb/_static/image5.png)](using-cascadingdropdown-with-a-database-vb/_static/image4.png)
 
 Druhý seznam se vyplní podle výběru v prvním seznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](using-cascadingdropdown-with-a-database-vb/_static/image6.png))
 

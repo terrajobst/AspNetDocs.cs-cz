@@ -12,7 +12,7 @@ ms.openlocfilehash: 8360f3eb26d9cfb46f36f5deed25acb45fbe070a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59389112"
 ---
 # <a name="how-do-i-use-the-aspnet-ajax-confirmbutton-extender"></a>[Postup:] Použít technologie ASP.NET AJAX – Extender ConfirmButton?

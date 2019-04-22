@@ -12,7 +12,7 @@ ms.openlocfilehash: 1d8387f782ace50f16d44ba8df4df8014d563674
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59396457"
 ---
 # <a name="creating-new-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>Vytvoření nových uložených procedur prvků TableAdapter typových sad dat (VB)
@@ -86,7 +86,7 @@ Než začneme naše diskuse o vytvoření DAL pomocí uložených procedur, umo�
 V jiných složkách, jako jsou `Default.aspx` v `AdvancedDAL` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
 
 
-[![Add uživatelského ovládacího prvku SectionLevelTutorialListing.ascx Default.aspx](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image3.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image2.png)
+[![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image3.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image2.png)
 
 **Obrázek 2**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image4.png))
 
@@ -111,7 +111,7 @@ Abychom si předvedli, vytvoření vrstvy přístupu k datům, která používá
 Přidejte novou datovou sadu do projektu kliknutím pravým tlačítkem na `DAL` složky, výběrem přidat novou položku a výběr šablony datové sady, jak je znázorněno na obrázku 4.
 
 
-[![Add nové zadané datové sady do projektu s názvem NorthwindWithSprocs.xsd](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image7.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image6.png)
+[![Přidat nový typové datové sady do projektu s názvem NorthwindWithSprocs.xsd](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image7.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image6.png)
 
 **Obrázek 4**: Přidat novou datovou sadu zadali do projektu s názvem `NorthwindWithSprocs.xsd` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image8.png))
 
@@ -121,7 +121,7 @@ To bude vytvářet nová datová sada typu, otevřete návrhář, vytvoření no
 Na této obrazovce Další jsme můžete zvolit, jak by měl TableAdapter přistupovat k databázi. V předchozích kurzech jsme vybrali první možnost, použít SQL příkazy. Pro účely tohoto kurzu druhou možnost vyberte, vytvořit nové uložené procedury a klikněte na tlačítko Další.
 
 
-[![Instruct objektu typu TableAdapter na vytvořit nové uložené procedury](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image10.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image9.png)
+[![Dáte pokyn, aby TableAdapter k vytvoření nových uložených procedur](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image10.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image9.png)
 
 **Obrázek 5**: Dáte pokyn, aby objektu typu TableAdapter na vytvořit nové uložené procedury ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image11.png))
 
@@ -134,7 +134,7 @@ Pomocí následujících `SELECT` dotazu pro tuto TableAdapter:
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample4.sql)]
 
 
-[![EZadejte dotaz SELECT](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image13.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image12.png)
+[![Zadejte dotaz SELECT](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image13.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image12.png)
 
 **Obrázek 6**: Zadejte `SELECT` dotazu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image14.png))
 
@@ -160,7 +160,7 @@ Když máte uložené procedury automaticky vytvořené průvodcem TableAdapter,
 Po zadání `SELECT` dotazování a potvrdí, že je zaškrtnuté políčko příkazy možnost Generovat Insert, Update a Delete, klikněte na tlačítko Další. Tato další obrazovka ukazuje obrázek 8, vyzve k zadání jména uložené procedury, které průvodce vytvoří pro výběr, vkládání, aktualizaci a odstraňování dat. Změnit tyto uložené procedury názvy `Products_Select`, `Products_Insert`, `Products_Update`, a `Products_Delete`.
 
 
-[![RNázev souboru uložené procedury](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image17.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image16.png)
+[![Přejmenovat uložených procedur](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image17.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image16.png)
 
 **Obrázek 8**: Přejmenovat uložené procedury ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image18.png))
 
@@ -176,7 +176,7 @@ Na T-SQL najdete v Průvodci vytvořením objektu TableAdapter pomocí vytvořit
 Po pojmenování uložené procedury, klikněte na tlačítko vedle názvu třídy TableAdapter s odpovídající metody. Stejně jako při použití příkazů jazyka SQL ad-hoc můžeme vytvořit metody, které vyplnit existující objekt DataTable nebo vrátí nový. Můžeme také určit, zda TableAdapter by měl obsahovat vzor DB přímo pro vkládání, aktualizaci a odstraňování záznamů. Ponechat všechny tři zaškrtnutých políček, ale přejmenovat metodu DataTable pro vrácení `GetProducts` (jak je znázorněno na obrázku 10).
 
 
-[![NNázev metody Fill a GetProducts](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image21.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image20.png)
+[![Název metody Fill a GetProducts](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image21.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image20.png)
 
 **Obrázek 10**: Název metody `Fill` a `GetProducts` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image22.png))
 
@@ -184,7 +184,7 @@ Po pojmenování uložené procedury, klikněte na tlačítko vedle názvu tří
 Kliknutím na tlačítko Další prohlédnout souhrnné informace o krocích, které průvodce provede. Dokončete průvodce kliknutím na tlačítko Dokončit. Po dokončení průvodce budete přesměrováni zpět do datové sady s návrháře, který by teď měl obsahovat `ProductsDataTable`.
 
 
-[![TDatová sada s návrháře prokáže ProductsDataTable nově přidali](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image24.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image23.png)
+[![V Návrháři datové sady s se zobrazí nově přidané ProductsDataTable](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image24.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image23.png)
 
 **Obrázek 11**: Datová sada s návrhář zobrazí nově přidané `ProductsDataTable` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image25.png))
 
@@ -206,7 +206,7 @@ Průvodci vytvořením objektu TableAdapter použít v kroku 2 automaticky vytvo
 Lze zobrazit nebo upravit uložené procedury, klikněte dvakrát na jeho název v Průzkumníku serveru nebo, nebo klikněte pravým tlačítkem na uložené procedury a zvolte Otevřít. Obrázek 13 ukazuje `Products_Delete` uložené procedury, při otevření.
 
 
-[![Suložená postupy lze otevřít a upravit z v rámci sady Visual Studio](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image28.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image27.png)
+[![Uložené procedury lze otevřít a upravit z Visual Studia](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image28.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image27.png)
 
 **Obrázek 13**: Uložené procedury lze otevřít a upravit z v rámci sady Visual Studio ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image29.png))
 
@@ -250,7 +250,7 @@ Tento parametr odsud můžete odebrat tak, že jednoduše vyberete `@Original_Pr
 Alternativně můžete aktualizovat parametry používané pravým tlačítkem myši na TableAdapter v návrháři a zvolíte konfigurace pro všechny metody. Tím se otevře Průvodce konfigurací TableAdapter, výpis uložené procedury používané pro výběr, vkládání, aktualizace a odstranění, spolu s parametry uložené procedury by se měl zobrazit. Pokud kliknete na Aktualizovat rozevírací seznam uvidíte `Products_Update` uložené procedury očekává vstupní parametry, které teď už obsahuje `@Original_ProductID` (viz obrázek 15). Jednoduše klikněte na tlačítko Dokončit k automatické aktualizaci parametru kolekce používané TableAdapter.
 
 
-[![Yorganizační jednotky můžete také použít s TableAdapter Průvodce konfigurací a aktualizujte jeho kolekce parametrů metody](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image32.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image31.png)
+[![Můžete také použít Průvodce konfigurací s TableAdapter aktualizovat jeho kolekce parametrů metody](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image32.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image31.png)
 
 **Obrázek 15**: Můžete také použít s TableAdapter Průvodce konfigurací a aktualizujte jeho kolekce parametrů metody ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image33.png))
 
@@ -270,7 +270,7 @@ Začněte tím, že pravým tlačítkem myši na TableAdapter a zvolením přida
 Tím spustíte Průvodce konfigurací dotazu TableAdapter, který nejprve zobrazí výzvu k zadání jak by měl TableAdapter přistupovat k databázi. Pokud chcete, aby vytvoří novou úložnou proceduru vytvořen, zvolte možnost vytvořit novou úložnou proceduru možnost a klikněte na tlačítko Další.
 
 
-[![CVytvoří novou úložnou proceduru možnost vytvořit zvolte](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image36.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image35.png)
+[![Zvolte možnost vytvořit novou úložnou proceduru možnost](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image36.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image35.png)
 
 **Obrázek 17**: Zvolte možnost vytvořit novou úložnou proceduru možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image37.png))
 
@@ -278,7 +278,7 @@ Tím spustíte Průvodce konfigurací dotazu TableAdapter, který nejprve zobraz
 Na další obrazovce zobrazí výzva k identifikaci typu dotazu provést, ať už se vrátit sadu řádků nebo jednu skalární hodnotu nebo provést `UPDATE`, `INSERT`, nebo `DELETE` příkazu. Vzhledem k tomu, `GetProductByProductID(productID)` metoda se vrátí řádek, ponechte SELECT, který vrátí řádek možnost vybraná kliknu na další.
 
 
-[![CVyberte, které vrátí řádek možnost volte](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image39.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image38.png)
+[![Zvolte, které vrátí řádek možnost](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image39.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image38.png)
 
 **Obrázek 18**: Zvolte, které vrátí řádek možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image40.png))
 
@@ -289,7 +289,7 @@ Na další obrazovce se zobrazí na TableAdapter s hlavní dotaz, který právě
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample9.sql)]
 
 
-[![RNázev uložené procedury pomocí dotazu vyberte hradit](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image42.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image41.png)
+[![Nahraďte názvem uložené procedury výběrový dotaz](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image42.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image41.png)
 
 **Obrázek 19**: Nahraďte název uložené procedury s `SELECT` dotazu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image43.png))
 
@@ -297,7 +297,7 @@ Na další obrazovce se zobrazí na TableAdapter s hlavní dotaz, který právě
 Na další obrazovce vás požádá, abyste název uložené procedury, která bude vytvořena. Zadejte název `Products_SelectByProductID` a klikněte na tlačítko Další.
 
 
-[![Nnázev nové uložené procedury Products_SelectByProductID](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image45.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image44.png)
+[![Název nové Products_SelectByProductID uložené procedury](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image45.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image44.png)
 
 **Obrázek 20**: Pojmenujte novou uloženou proceduru `Products_SelectByProductID` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image46.png))
 
@@ -305,7 +305,7 @@ Na další obrazovce vás požádá, abyste název uložené procedury, která b
 Posledním krokem Průvodce umožňuje změnit způsob názvy generované také určit, jestli se má použít výplně vzor objektu DataTable, vrátit objekt DataTable vzoru, nebo obojí. Tato metoda nechat obě možnosti zaškrtnuté, ale přejmenovat metody k `FillByProductID` a `GetProductByProductID`. Klikněte na tlačítko Další k zobrazení souhrnu kroky Průvodce provede a potom klikněte na tlačítko Dokončit dokončete průvodce.
 
 
-[![RMetody TableAdapter s FillByProductID a GetProductByProductID název souboru](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image48.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image47.png)
+[![Přejmenovat metod TableAdapter s FillByProductID a GetProductByProductID](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image48.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image47.png)
 
 **Obrázek 21**: Přejmenovat metody třídy TableAdapter s `FillByProductID` a `GetProductByProductID` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image49.png))
 
@@ -335,7 +335,7 @@ V tuto chvíli jsme vytvořili vrstvy DAL, který používá uložené procedury
 Otevřít `NewSprocs.aspx` stránku `AdvancedDAL` složky a GridView přetáhněte z panelu nástrojů na Návrhář, jeho pojmenování `Products`. V prvku GridView s inteligentním zvolte a vytvořte jeho vazbu nového prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource používat `ProductsBLLWithSprocs` třídy, jak ukazuje obrázek 22.
 
 
-[![Configurovat ObjectDataSource pomocí třídy ProductsBLLWithSprocs](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image51.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image50.png)
+[![Konfigurace ObjectDataSource pomocí třídy ProductsBLLWithSprocs](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image51.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image50.png)
 
 **Obrázek 22**: Konfigurace ObjectDataSource k použití `ProductsBLLWithSprocs` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image52.png))
 
@@ -345,7 +345,7 @@ Nabízí dvě možnosti, rozevíracího seznamu vyberte kartě `GetProducts` a `
 Po dokončení Průvodce ObjectDataSource sady Visual Studio bude přidán BoundFields a třídě CheckBoxField do prvku GridView pro datová pole produktu. Zapněte GridView s integrovanou úpravy a odstraňování funkce zaškrtnutím možnosti Povolit úpravy a Povolit odstranění k dispozici v inteligentních značek.
 
 
-[![Tmá stránka obsahuje prvek GridView s úpravy a odstranění povolená podpora](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image54.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image53.png)
+[![Tato stránka obsahuje prvek GridView s úpravy a odstranění je povolená podpora](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image54.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image53.png)
 
 **Obrázek 23**: Tato stránka obsahuje prvek GridView s úpravy a odstranění povolená podpora ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image55.png))
 
@@ -362,7 +362,7 @@ V tuto chvíli jsme mohli pořádek prvku GridView přizpůsobením úpravy rozh
 Bez ohledu na to, zda prvku GridView vylepšila nebo ne otestujte na stránku s základní funkce v prohlížeči. Jak ukazuje obrázek 24, na stránce uvedeny produkty v prvku GridView, která poskytuje jeden řádek úpravy a odstranění funkce.
 
 
-[![The produkty můžou být Viewed Upravovaný a odstraněno z prvku GridView.](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image57.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image56.png)
+[![Produkty lze zobrazit, upravit a odstranit z prvku GridView.](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image57.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image56.png)
 
 **Obrázek 24**: Je možné zobrazit produkty, Upravovaný a odstraněných z prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image58.png))
 

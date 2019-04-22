@@ -12,7 +12,7 @@ ms.openlocfilehash: 84c626764573108969fec51a2cba028e463b1962
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59380883"
 ---
 # <a name="how-do-i"></a>Jak na to
@@ -47,5 +47,5 @@ ms.locfileid: "59380883"
 - [MVC2 – přizpůsobení šablony](mvc2-template-customization.md)
 - [ASP.NET MVC 2 – oblasti](aspnet-mvc-2-areas.md)
 - [ASP.NET MVC 2 – akce vykreslení](aspnet-mvc-2-render-action.md)
-- [Pětiminutový úvod do ASP.NET MVC](5-minute-introduction-to-aspnet-mvc.md)
+- [5minutový úvod do ASP.NET MVC](5-minute-introduction-to-aspnet-mvc.md)
 - [Jak se nejlépe naučit ASP.NET MVC](how-to-best-learn-asp-net-mvc.md)

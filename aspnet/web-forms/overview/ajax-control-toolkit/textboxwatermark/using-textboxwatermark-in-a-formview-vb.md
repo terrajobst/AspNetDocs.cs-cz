@@ -12,7 +12,7 @@ ms.openlocfilehash: 056e89b20ccab0e56b1fab422c817d842beff446
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59400838"
 ---
 # <a name="using-textboxwatermark-in-a-formview-vb"></a>Použití ovládacího prvku TextBoxWatermark v ovládacím prvku FormView (VB)
@@ -49,7 +49,7 @@ Pamatovat název (`ID`) zdroje dat, protože se používá v `DataSourceID` vlas
 Nyní když uživatel změní do režimu vložit `FormView` řídit, textové pole pro nové dodavatele se předem k `TextBoxWatermarkExtender` ovládacího prvku. Klikněte do textového pole umožňuje text přednastavené zmizí.
 
 
-[![The vodoznaku do pole pochází ze zařízení extender](using-textboxwatermark-in-a-formview-vb/_static/image2.png)](using-textboxwatermark-in-a-formview-vb/_static/image1.png)
+[![Meze v poli pochází ze zařízení extender](using-textboxwatermark-in-a-formview-vb/_static/image2.png)](using-textboxwatermark-in-a-formview-vb/_static/image1.png)
 
 Meze v poli pochází ze zařízení extender ([kliknutím ji zobrazíte obrázek v plné velikosti](using-textboxwatermark-in-a-formview-vb/_static/image3.png))
 

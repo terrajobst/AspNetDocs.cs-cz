@@ -12,7 +12,7 @@ ms.openlocfilehash: 9c5ac1aeff427c78030f789fcb67736020ce3367
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59391794"
 ---
 # <a name="caching-data-in-the-architecture-vb"></a>Ukládání dat do mezipaměti v architektuře (VB)
@@ -159,7 +159,7 @@ Pomocí této změny `AddCacheItem(key, value)`, invaliding mezipaměť je stejn
 Ukládání do mezipaměti vrstvu s třídy a metody je možné pracovat s daty pomocí technik jsme ve prozkoumat v rámci těchto kurzů. Pro ilustraci, práci s daty v mezipaměti, uložte změny do souboru `ProductsCL` třídy a pak otevřete `FromTheArchitecture.aspx` stránku `Caching` složky a přidejte prvku GridView. Vytvořte nový prvek ObjectDataSource z GridView s inteligentních značek. V prvním kroku průvodce s byste měli vidět `ProductsCL` třídy jako jednu z možností z rozevíracího seznamu.
 
 
-[![Tmu ProductsCL třída je zahrnuta v rozevíracím seznamu obchodní objekt](caching-data-in-the-architecture-vb/_static/image5.png)](caching-data-in-the-architecture-vb/_static/image4.png)
+[![Třída ProductsCL je zahrnuta v rozevíracím seznamu obchodní objekt](caching-data-in-the-architecture-vb/_static/image5.png)](caching-data-in-the-architecture-vb/_static/image4.png)
 
 **Obrázek 4**: `ProductsCL` Třída je zahrnuta v rozevíracím seznamu obchodní objekt ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-in-the-architecture-vb/_static/image6.png))
 
@@ -167,7 +167,7 @@ Ukládání do mezipaměti vrstvu s třídy a metody je možné pracovat s daty 
 Po výběru `ProductsCL`, klikněte na tlačítko Další. Rozevírací seznam v kartě vyberte má dvě položky - `GetProducts()` a `GetProductsByCategoryID(categoryID)` a kartu aktualizace má jediný `UpdateProduct` přetížení. Zvolte `GetProducts()` metodu z vyberte kartu a `UpdateProducts` metoda kartu aktualizace a klikněte na Dokončit.
 
 
-[![Tosoba, které metody s ProductsCL třídy jsou uvedeny v rozevírací seznam obsahuje](caching-data-in-the-architecture-vb/_static/image8.png)](caching-data-in-the-architecture-vb/_static/image7.png)
+[![Metody třídy ProductsCL s jsou uvedeny v rozevírací seznamy](caching-data-in-the-architecture-vb/_static/image8.png)](caching-data-in-the-architecture-vb/_static/image7.png)
 
 **Obrázek 5**: `ProductsCL` Metody třídy s jsou uvedeny v rozevírací seznamy ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-in-the-architecture-vb/_static/image9.png))
 

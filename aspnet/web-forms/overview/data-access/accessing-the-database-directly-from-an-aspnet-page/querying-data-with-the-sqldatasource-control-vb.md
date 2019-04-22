@@ -12,7 +12,7 @@ ms.openlocfilehash: d1e01c7693cc5d59b32019dfef1663863e7978c4
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59379843"
 ---
 # <a name="querying-data-with-the-sqldatasource-control-vb"></a>Dotazování na data ovládacím prvkem SqlDataSource(VB)
@@ -79,7 +79,7 @@ Než začneme zkoumat, jak pracovat přímo s ovládacím prvkem SqlDataSource p
 V jiných složkách, jako jsou `Default.aspx` v `SqlDataSource` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
 
 
-[![Add uživatelského ovládacího prvku SectionLevelTutorialListing.ascx Default.aspx](querying-data-with-the-sqldatasource-control-vb/_static/image5.gif)](querying-data-with-the-sqldatasource-control-vb/_static/image4.gif)
+[![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](querying-data-with-the-sqldatasource-control-vb/_static/image5.gif)](querying-data-with-the-sqldatasource-control-vb/_static/image4.gif)
 
 **Obrázek 4**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](querying-data-with-the-sqldatasource-control-vb/_static/image6.gif))
 
@@ -155,7 +155,7 @@ Jako ovládacím prvkem ObjectDataSource, průvodce s SqlDataSource pouze přiř
 Jakmile ve třídě SqlDataSource není nakonfigurovaná, může být vázána k datům webový ovládací prvek, jako je například GridView nebo prvku DetailsView. Pro účely tohoto kurzu nechte s zobrazení dat v GridView. Z panelu nástrojů přetáhněte na stránku GridView a vytvořte mu vazbu k `ProductsDataSource` SqlDataSource výběrem zdroj dat z rozevíracího seznamu v prvku GridView s inteligentním.
 
 
-[![Add GridView a svázat s ovládacím prvkem SqlDataSource](querying-data-with-the-sqldatasource-control-vb/_static/image13.gif)](querying-data-with-the-sqldatasource-control-vb/_static/image12.gif)
+[![Přidat GridView a svázat s ovládacím prvkem SqlDataSource](querying-data-with-the-sqldatasource-control-vb/_static/image13.gif)](querying-data-with-the-sqldatasource-control-vb/_static/image12.gif)
 
 **Obrázek 10**: Přidat GridView a svázat s ovládacím prvkem SqlDataSource ([kliknutím ji zobrazíte obrázek v plné velikosti](querying-data-with-the-sqldatasource-control-vb/_static/image14.gif))
 
@@ -170,7 +170,7 @@ Za chvíli ke konfiguraci GridView s třemi BoundFields. Změnit `ProductName` p
 Navštivte tuto stránku prostřednictvím prohlížeče. Jak ukazuje obrázek 11 prvku GridView uvádí jednotlivé produkty s `ProductID`, `ProductName`, a `UnitPrice` hodnoty.
 
 
-[![Tmá GridView zobrazí každý produkt s ProductID, ProductName a hodnoty UnitPrice](querying-data-with-the-sqldatasource-control-vb/_static/image16.gif)](querying-data-with-the-sqldatasource-control-vb/_static/image15.gif)
+[![GridView zobrazí každý produkt s ProductID, ProductName a UnitPrice hodnoty](querying-data-with-the-sqldatasource-control-vb/_static/image16.gif)](querying-data-with-the-sqldatasource-control-vb/_static/image15.gif)
 
 **Obrázek 11**: Každý produkt zobrazí GridView s `ProductID`, `ProductName`, a `UnitPrice` hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](querying-data-with-the-sqldatasource-control-vb/_static/image17.gif))
 
@@ -228,7 +228,7 @@ Po dokončení průvodce se prvku GridView, bude mít tři BoundFields přidá d
 [!code-aspx[Main](querying-data-with-the-sqldatasource-control-vb/samples/sample5.aspx)]
 
 
-[![TGridView prokáže každý produkt s ID, název a název kategorie přidružené](querying-data-with-the-sqldatasource-control-vb/_static/image22.gif)](querying-data-with-the-sqldatasource-control-vb/_static/image21.gif)
+[![Každý produkt s ID, název názvu a přidružené kategorie zobrazuje prvku GridView.](querying-data-with-the-sqldatasource-control-vb/_static/image22.gif)](querying-data-with-the-sqldatasource-control-vb/_static/image21.gif)
 
 **Obrázek 15**: GridView ukazuje, každý produkt s ID, název a název kategorie přidružené ([kliknutím ji zobrazíte obrázek v plné velikosti](querying-data-with-the-sqldatasource-control-vb/_static/image23.gif))
 

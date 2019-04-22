@@ -12,7 +12,7 @@ ms.openlocfilehash: e43f125c5232c3edbe3e5f4bf651eff8fac2724f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59381026"
 ---
 # <a name="more-structured-query-language"></a>Další informace o SQL (Structured Query Language)

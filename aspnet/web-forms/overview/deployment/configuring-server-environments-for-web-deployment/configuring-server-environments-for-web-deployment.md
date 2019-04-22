@@ -12,7 +12,7 @@ ms.openlocfilehash: 86ea4a2e17ec44a3716e1570e51a224144f1369c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59386967"
 ---
 # <a name="configuring-server-environments-for-web-deployment"></a>Konfigurace serverového prostředí pro nasazení webu

@@ -12,7 +12,7 @@ ms.openlocfilehash: 2d13fbfdb8d2fe66c5ff036060b9289017f79d14
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59421534"
 ---
 # <a name="using-multiple-popup-controls-c"></a>Použití několika překryvných ovládacích prvků (C#)
@@ -49,7 +49,7 @@ Rozšiřte každou z tato dvě textová pole se teď `PopupControlExtender`. `Ta
 Nyní pokaždé, když kliknete do textového pole, kalendář zobrazí pod polem, což vám umožní vybrat datum. (Načítání vybraného data zpět do textových polí se budeme v různých kurz.)
 
 
-[![Tmá kalendář se zobrazí, když uživatel klikne do textového pole](using-multiple-popup-controls-cs/_static/image2.png)](using-multiple-popup-controls-cs/_static/image1.png)
+[![Když uživatel klikne do textového pole, zobrazí se v kalendáři](using-multiple-popup-controls-cs/_static/image2.png)](using-multiple-popup-controls-cs/_static/image1.png)
 
 Když uživatel klikne do textového pole, zobrazí se v kalendáři ([kliknutím ji zobrazíte obrázek v plné velikosti](using-multiple-popup-controls-cs/_static/image3.png))
 

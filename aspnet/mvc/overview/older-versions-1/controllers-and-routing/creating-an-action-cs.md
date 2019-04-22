@@ -12,7 +12,7 @@ ms.openlocfilehash: c66e066bd3e241e667924dacc114f57151df822a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59389554"
 ---
 # <a name="creating-an-action-c"></a>Vytvoření akce (C#)
@@ -57,7 +57,7 @@ Pokud je potřeba vytvořit veřejnou metodu do třídy kontroleru a nechcete vy
 Pokud při pokusu o vyvolání akce kontroleru CompanySecrets() zadáním /Work/CompanySecrets do adresního řádku prohlížeče zobrazí se zpráva chyby na obrázku 1.
 
 
-[![IMetoda NonAction nvoking](creating-an-action-cs/_static/image1.jpg)](creating-an-action-cs/_static/image1.png)
+[![Volání metody NonAction](creating-an-action-cs/_static/image1.jpg)](creating-an-action-cs/_static/image1.png)
 
 **Obrázek 01**: Volání metody NonAction ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-an-action-cs/_static/image2.png))
 

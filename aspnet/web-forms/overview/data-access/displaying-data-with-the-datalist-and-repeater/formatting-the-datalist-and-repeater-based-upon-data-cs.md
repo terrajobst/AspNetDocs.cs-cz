@@ -12,7 +12,7 @@ ms.openlocfilehash: 7ea11f436d8f0455621d22c4d5a5b4d6b6ece68f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59386421"
 ---
 # <a name="formatting-the-datalist-and-repeater-based-upon-data-c"></a>Formátování ovládacích prvků DataList a Repeater na základě dat (C#)
@@ -74,7 +74,7 @@ Předtím, než jsme se starat o formátování, umožňují s nejprve vytvořit
 Jakmile zreplikovali funkce ovládacích prvků DataList a ObjectDataSource `Basics.aspx` do `Formatting.aspx`, věnujte chvíli změnit DataList s `ID` vlastnost z `DataList1` do více popisné `ItemDataBoundFormattingExample`. V dalším kroku prvku DataList zobrazte v prohlížeči. Jak ukazuje obrázek 1 pouze formátování rozdíl mezi jednotlivé produkty je, že barvu pozadí alternativy.
 
 
-[![The produkty jsou uvedené v ovládacím prvku DataList](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image2.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image1.png)
+[![Produkty jsou uvedené v ovládacím prvku DataList](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image2.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image1.png)
 
 **Obrázek 1**: Produkty jsou uvedené v ovládacím prvku DataList ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image3.png))
 
@@ -117,7 +117,7 @@ K formátování použít, stačí nastavit dva ovládací prvky popisek webové
 S `ItemDataBound` obslužná rutina události dokončení, opakování `Formatting.aspx` stránku v prohlížeči. Jak znázorňuje obrázek 2 mají tyto produkty s cenami za 20,00 $za své jméno a cena zvýrazní.
 
 
-[![Those produkty menší, než jsou zvýrazněny 20,00 $](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image5.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image4.png)
+[![Tyto produkty méně než 20,00 $za zvýrazněné](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image5.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image4.png)
 
 **Obrázek 2**: Tyto produkty méně než 20,00 $za jsou zvýrazněny ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image6.png))
 
@@ -129,7 +129,7 @@ S `ItemDataBound` obslužná rutina události dokončení, opakování `Formatti
 `RepeaterItem` , Které tvoří ovládacím prvku opakovače však don t nabízejí tyto vlastnosti stylu úrovni. Proto použití vlastního formátování u Opakovači vyžaduje použití vlastnosti stylu webové ovládací prvky v rámci šablon opakovače s stejným způsobem, jako jsme to udělali na obrázku 2.
 
 
-[![Tmá celou položku produktu je zvýrazněn pro produkty v rámci 20,00 $](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image8.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image7.png)
+[![Celý položka produktu je zvýrazněn pro produkty v rámci 20,00 $](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image8.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image7.png)
 
 **Obrázek 3**: Celý položka produktu je zvýrazněn pro produkty v rámci 20,00 $ ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image9.png))
 
@@ -141,7 +141,7 @@ V *použití vlastností TemplateField v ovládacím prvku GridView* kurzu jsme 
 Abychom si předvedli formátování funkcí, umožňují s máte produktové informace obsahují text [VYŘAZENO] vedle názvu produktu s, pokud ho s ukončena. Navíc umožňují s mají zvýrazněné žlutou if cena ho s méně než 20,00 $za (jako jsme to udělali `ItemDataBound` příklad obslužná rutina události); Pokud je 20,00 $za cenu nebo s vyšší, vám umožňují zobrazit skutečná cena, ale místo toho volat text prosím pro cenové nabídky. Obrázek 4 ukazuje snímek obrazovky produkty výpisu se tato formátování pravidla platila.
 
 
-[![Fnebo nákladné produkty, cena je nahrazena textem, vyvolejte funkci pro cenové nabídky](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image11.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image10.png)
+[![Nákladné produktů cena je nahrazena textem, vyvolejte funkci pro cenové nabídky](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image11.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image10.png)
 
 **Obrázek 4**: Nákladné produktů, cena je nahrazena textem, vyvolejte funkci pro cenové nabídky ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image12.png))
 
@@ -182,7 +182,7 @@ Pokud chcete zobrazit ceny, nám stačí nastavit `UnitPriceLabel` popisek s `Te
 Při volání pro formátování funkce na místě věnujte chvíli zobrazíte náš postup v prohlížeči. Vaše obrazovka by měla vypadat podobně jako na obrázku 5, s odpojené produkty, včetně textu [VYŘAZENO] a tyto produkty ocenění více než 20,00 $za s jejich cena nahrazena textem prosím volání pro cenové nabídky.
 
 
-[![Fnebo nákladné produkty, cena je nahrazena textem, vyvolejte funkci pro cenové nabídky](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image14.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image13.png)
+[![Nákladné produktů cena je nahrazena textem, vyvolejte funkci pro cenové nabídky](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image14.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image13.png)
 
 **Obrázek 5**: Nákladné produktů, cena je nahrazena textem, vyvolejte funkci pro cenové nabídky ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image15.png))
 

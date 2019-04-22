@@ -13,7 +13,7 @@ ms.openlocfilehash: f205dfd8692bc946ca2124655bf8bcefbdbd1779
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59394523"
 ---
 # <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Migrace stávajícího webu z členství SQL na ASP.NET Identity
@@ -83,7 +83,7 @@ Tento soubor skriptu je specifické pro tuto ukázku. Pokud schéma pro tabulky 
 
 ASP.NET Identity třídy fungovat ihned s daty ze stávajících uživatelů musíme migraci schématu databáze na ten vyžadované ASP.NET Identity. Můžeme to udělat přidáním nové tabulky a kopírování stávající informace o těchto tabulkách. Ve výchozím nastavení používá ASP.NET Identity objektu EntityFramework k mapování tříd modelu Identity zpět do databáze se uloží nebo načtou informace. Tyto třídy modelu implementovat rozhraní core Identity, definování uživatele a objekty role. Tabulky a sloupce v databázi jsou založeny na tyto třídy modelu. Třídy modelu objektu EntityFramework Identity v2.1.0 a jejich vlastnosti jsou definované níže
 
-| **IdentityUser** | **Type** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
+| **IdentityUser** | **Typ** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
 | --- | --- | --- | --- | --- | --- |
 | ID | odkazy řetězců | ID | RoleId | ProviderKey | ID |
 | Uživatelské jméno | odkazy řetězců | Name | UserId | UserId | ClaimType |

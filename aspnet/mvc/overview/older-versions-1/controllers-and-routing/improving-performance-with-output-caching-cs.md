@@ -12,7 +12,7 @@ ms.openlocfilehash: 5dd5b96d0365c55cbbfa2dfe0856beda41f915e1
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59384758"
 ---
 # <a name="improving-performance-with-output-caching-c"></a>Zlepšení výkonu ukládáním výstupů do mezipaměti (C#)
@@ -44,7 +44,7 @@ Neexistuje žádná záruka tento obsah bude množství času, který zadáte do
 
 Kontroler Home v informacích 1 vrátí Index zobrazení výpisu 2. Není nic zvláštního o toto zobrazení. Index zobrazení jednoduše zobrazí aktuální čas (viz obrázek 1).
 
-**Výpis 2 – Views\Home\Index.aspx**
+**Listing 2 – Views\Home\Index.aspx**
 
 [!code-aspx[Main](improving-performance-with-output-caching-cs/samples/sample2.aspx)]
 
@@ -152,7 +152,7 @@ Například &lt;ukládání do mezipaměti&gt; profil mezipaměti s názvem Cach
 
 Kontroler v informacích 7 znázorňuje, jak je možné použít profil Cache1Hour k akci kontroleru pomocí atributu [OutputCache].
 
-**Listing 7 – Controllers\ProfileController.cs**
+**Výpis 7 – Controllers\ProfileController.cs**
 
 [!code-csharp[Main](improving-performance-with-output-caching-cs/samples/sample7.cs)]
 

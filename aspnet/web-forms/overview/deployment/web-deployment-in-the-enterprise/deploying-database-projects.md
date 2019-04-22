@@ -12,7 +12,7 @@ ms.openlocfilehash: f5b7cecdd1a8dbd9be1bd781cec31c53c9096546
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59383216"
 ---
 # <a name="deploying-database-projects"></a>Nasazení databázových projektů
@@ -142,7 +142,7 @@ Informace o tom, jak přizpůsobit tak, že vytvoříte konfigurační soubor sa
 
 Tato témata na webu MSDN poskytují širší pokyny a základní informace o databázových projektů sady Visual Studio a proces nasazení databáze:
 
-- [Visual Studio 2010 Server projekty databází systému SQL](https://msdn.microsoft.com/library/ff678491.aspx)
+- [Visual Studio 2010 SQL Server Database Projects](https://msdn.microsoft.com/library/ff678491.aspx)
 - [Správa změn databáze](https://msdn.microsoft.com/library/aa833404.aspx)
 - [Postupy: Příprava databáze pro nasazení z příkazového řádku s použitím VSDBCMD. SOUBOR EXE](https://msdn.microsoft.com/library/dd193258.aspx)
 - [Přehled databáze sestavení a nasazení](https://msdn.microsoft.com/library/aa833165.aspx)

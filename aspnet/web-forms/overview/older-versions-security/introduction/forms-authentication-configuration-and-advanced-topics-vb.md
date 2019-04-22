@@ -12,7 +12,7 @@ ms.openlocfilehash: c992c782ce52066452b42bc09052ec1985e13200
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59417088"
 ---
 # <a name="forms-authentication-configuration-and-advanced-topics-vb"></a>Konfigurace ověřování pomocí formuláře a pokročilá témata (VB)
@@ -84,7 +84,7 @@ Vypršení platnosti definuje absolutním čase v budoucnosti kdy vyprší platn
 Obrázek 1 znázorňuje pracovní postup, pokud parametr slidingExpiration nastaven na hodnotu false a časový limit se nastavuje na 30. Všimněte si, že lístek ověřování, které jsou generovány při přihlášení obsahuje datum vypršení platnosti a tato hodnota není aktualizován na následné žádosti. Pokud FormsAuthenticationModule zjistí, že platnost lístku vypršela, zahodí ji a zpracovává žádost jako anonymní.
 
 
-[![A Grafická reprezentace lístek ověřování formulářů vypršení platnosti při slidingExpiration má hodnotu false](forms-authentication-configuration-and-advanced-topics-vb/_static/image2.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image1.png)
+[![Grafická reprezentace lístek ověřování formulářů vypršení platnosti při slidingExpiration má hodnotu false](forms-authentication-configuration-and-advanced-topics-vb/_static/image2.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image1.png)
 
 **Obrázek 01**: Grafická reprezentace lístek ověřování formulářů vypršení platnosti při slidingExpiration má hodnotu false ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image3.png))
 
@@ -92,7 +92,7 @@ Obrázek 1 znázorňuje pracovní postup, pokud parametr slidingExpiration nasta
 Obrázek 2 ukazuje pracovní postup, pokud parametr slidingExpiration nastaven na hodnotu true a vypršení časového limitu je nastaven na 30. Při přijetí ověřeného požadavku (s-vypršela platnost lístku) jeho vypršení platnosti se aktualizuje a vypršení časového limitu počtu minut do budoucna.
 
 
-[![A Grafická reprezentace lístek ověřování pomocí formulářů Pokud je parametr slidingExpiration true](forms-authentication-configuration-and-advanced-topics-vb/_static/image5.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image4.png)
+[![Grafická reprezentace lístek ověřování pomocí formulářů Pokud je parametr slidingExpiration true](forms-authentication-configuration-and-advanced-topics-vb/_static/image5.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image4.png)
 
 **Obrázek 02**: Grafická reprezentace lístek ověřování formulářů Pokud je parametr slidingExpiration true ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image6.png))
 
@@ -181,7 +181,7 @@ Pokud chcete zajistit lístek pravosti, systém ověřování formulářů musí
 Při vytváření (nebo změny) lístek ověřování formulářů systému MAC vytvoří a připojí ho k datům lístku. Dorazí další požadavek systému ověřování formulářů porovná MAC a lístek data můžou ověřovat jejich pravost dat lístků. Obrázek 3 ilustruje tento pracovní postup graficky.
 
 
-[![Tpomocí MAC je zajištěn pravosti he lístek](forms-authentication-configuration-and-advanced-topics-vb/_static/image8.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image7.png)
+[![Pravosti lístku je, že jsou splněné prostřednictvím MAC](forms-authentication-configuration-and-advanced-topics-vb/_static/image8.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image7.png)
 
 **Obrázek 03**: Pravosti lístku je, že jsou splněné prostřednictvím MACU ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image9.png))
 
@@ -238,7 +238,7 @@ Za účelem uložení dat uživatele v lístku ověřování, musíme psát hodn
 Pokaždé, když potřebujeme přístup k datům uloženým v-the-ticket, jsme to tak, že kliknete na aktuální žádost FormsAuthenticationTicket a deserializaci UserData vlastnost. V případě datum narození a zaměstnavatel název příklad jsme by řetězec UserData rozdělit do dvou podřetězců na základě oddělovače (|).
 
 
-[![ADalší uživatelské informace mohou být uloženy v lístku ověřování](forms-authentication-configuration-and-advanced-topics-vb/_static/image11.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image10.png)
+[![Dalších informací o uživatelích, které mohou být uloženy v lístku ověřování](forms-authentication-configuration-and-advanced-topics-vb/_static/image11.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image10.png)
 
 **Obrázek 04**: Další uživatele může být uložena v lístku ověřování ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image12.png))
 
@@ -302,7 +302,7 @@ Pokud Request.IsAuthenticated má hodnotu True, pak Vítejte zpět, je nejprve n
 Obrázek 5 ukazuje snímek obrazovky zobrazení v akci. Přihlaste se jako Scott zobrazí Vítejte zpět zprávu, která obsahuje Scottova společnosti a název.
 
 
-[![TSpolečnost he aktuálně přihlášení na uživatele a název se zobrazí](forms-authentication-configuration-and-advanced-topics-vb/_static/image14.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image13.png)
+[![Zobrazí se společnosti a názvu aktuálně přihlášení na uživatele](forms-authentication-configuration-and-advanced-topics-vb/_static/image14.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image13.png)
 
 **Obrázek 05**: Společnosti a názvu aktuálně přihlášení na uživatele se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image15.png))
 
@@ -338,7 +338,7 @@ V tomto kurzu vytvoříme vlastní objekty zabezpečení a identity v aplikaci\_
 V dalším kroku přidejte dva nové soubory tříd do aplikace\_složky s kódem, jednu s názvem CustomIdentity.vb a jeden s názvem CustomPrincipal.vb.
 
 
-[![ATřídy CustomPrincipal do vašeho projektu a dd CustomIdentity](forms-authentication-configuration-and-advanced-topics-vb/_static/image17.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image16.png)
+[![Do projektu přidejte CustomIdentity a třídy CustomPrincipal](forms-authentication-configuration-and-advanced-topics-vb/_static/image17.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image16.png)
 
 **Obrázek 06**: Přidat CustomIdentity a CustomPrincipal třídy do projektu knihovny ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image18.png))
 
@@ -362,7 +362,7 @@ Profilace ASP.NET přijímá příchozí žádosti a zpracovává je procházet 
 Po události AuthenticateRequest vyvolá kanálu ASP.NET [PostAuthenticateRequest události](https://msdn.microsoft.com/library/system.web.httpapplication.postauthenticaterequest.aspx), což je, pokud jsme nahradit GenericPrincipal objekt vytvořený pomocí FormsAuthenticationModule s instancí naše Objektu CustomPrincipal. Obrázek 7 znázorňuje tento pracovní postup.
 
 
-[![Tmá GenericPrincipal nahrazuje CustomPrincipal v události PostAuthenticationRequest](forms-authentication-configuration-and-advanced-topics-vb/_static/image20.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image19.png)
+[![Objekt GenericPrincipal nahrazuje CustomPrincipal PostAuthenticationRequest události](forms-authentication-configuration-and-advanced-topics-vb/_static/image20.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image19.png)
 
 **Obrázek 07**: Objekt GenericPrincipal nahrazuje CustomPrincipal v události PostAuthenticationRequest ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image21.png))
 
@@ -370,7 +370,7 @@ Po události AuthenticateRequest vyvolá kanálu ASP.NET [PostAuthenticateReques
 Aby bylo možné spouštění kódu v reakci na událost kanálu ASP.NET, můžeme vytvořit obslužnou rutinu události v souboru Global.asax nebo vytvořit vlastní modul HTTP. Pro účely tohoto kurzu vytvoříme obslužné rutiny události v souboru Global.asax. Začněte přidáním Global.asax na váš web. Klikněte pravým tlačítkem na název projektu v Průzkumníku řešení a přidejte položku typu globální třída aplikace s názvem souboru Global.asax.
 
 
-[![Add soubor Global.asax na svůj web](forms-authentication-configuration-and-advanced-topics-vb/_static/image23.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image22.png)
+[![Přidat soubor Global.asax na váš web](forms-authentication-configuration-and-advanced-topics-vb/_static/image23.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image22.png)
 
 **Obrázek 08**: Přidat soubor Global.asax na svůj web ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image24.png))
 
@@ -426,7 +426,7 @@ Další informace o tématech, které jsou popsané v tomto kurzu najdete na ná
 - [Přemístění formulářů ASP pro přihlášení](../../../videos/authentication/asp-forms-login-relocation.md)
 - [Konfigurace vlastního klíče přihlašovacích formulářů](../../../videos/authentication/forms-login-custom-key-configuration.md)
 - [Přidání vlastních dat do metody ověřování](../../../videos/authentication/add-custom-data-to-the-authentication-method.md)
-- [Použití vlastních objektů zabezpečení](../../../videos/authentication/use-custom-principal-objects.md)
+- [Použití vlastních hlavních objektů](../../../videos/authentication/use-custom-principal-objects.md)
 
 ### <a name="about-the-author"></a>O autorovi
 

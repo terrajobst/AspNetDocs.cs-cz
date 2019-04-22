@@ -12,7 +12,7 @@ ms.openlocfilehash: 87de6c92375594ab6ee726f1b66a94a0db793fd2
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59417049"
 ---
 # <a name="aspnet-4---web-deployment-with-sql-server-compact-using-visual-studio"></a>ASP.NET 4 – nasazení webu s SQL Serverem Compact pomocí sady Visual Studio
@@ -26,7 +26,7 @@ ms.locfileid: "59417049"
 - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – konfigurace vlastností projektu](deployment-to-a-hosting-provider-configuring-project-properties-4-of-12.md)
 - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nasazení testovacího prostředí do služby IIS](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md)
 - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nastavení oprávnění ke složce](deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md)
-- [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nasazení do produkčního prostředí](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md)
+- [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nasazení do provozního prostředí](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md)
 - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nasazení aktualizace kódu](deployment-to-a-hosting-provider-deploying-a-code-only-update-8-of-12.md)
 - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nasazení aktualizace databáze](deployment-to-a-hosting-provider-deploying-a-database-update-9-of-12.md)
 - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – migrace na SQL Server](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12.md)

@@ -12,7 +12,7 @@ ms.openlocfilehash: b8ec246c2f35f3d7fa5bcf67aa6f157195028176
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59379518"
 ---
 # <a name="configuring-a-website-that-uses-application-services-vb"></a>Konfigurace webu, který používá aplikační služby (VB)
@@ -106,7 +106,7 @@ Umožní s, podívejte se na tom, jak přidat k produkční databázi pomocí da
 Nástroj spustí zobrazením úvodní obrazovky s vysvětlením účelu. Klikněte na tlačítko vedle záloh na obrazovku "Vyberte možnost instalace", která je znázorněna na obrázku 1. Odsud můžete přidat databázové objekty aplikační služby nebo je odebrat z databáze. Vzhledem k tomu, že budeme chtít přidat tyto objekty k provozní databázi, vyberte možnost "Konfigurovat SQL Server pro aplikační služby" a klikněte na tlačítko Další.
 
 
-[![CZvolte pro nakonfigurujte systém SQL Server pro aplikační služby](configuring-a-website-that-uses-application-services-vb/_static/image2.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image1.jpg)
+[![Vyberte konfigurace systému SQL Server pro služby aplikací](configuring-a-website-that-uses-application-services-vb/_static/image2.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image1.jpg)
 
 **Obrázek 1**: Nakonfigurujte systém SQL Server se rozhodnete pro aplikační služby ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-a-website-that-uses-application-services-vb/_static/image3.jpg))
 
@@ -117,7 +117,7 @@ V "Vyberte do serveru a databázi" obrazovky vyzve k zadání informace pro při
 > Po zadání vašeho databázového serveru a přihlašovací údaje mohou dojde k chybě při rozšiřování rozevírací seznam databází. `aspnet_regsql.exe` Nástroj pro dotazy `sysdatabases` systémová tabulka načíst seznam databází na serveru, ale některé webové hostování společnosti uzamknutí jejich databázové servery tak, aby tyto informace není veřejně k dispozici. Pokud se zobrazí tato chyba můžete zadat název databáze přímo do rozevíracího seznamu.
 
 
-[![Supply nástroj s databáze s informací o připojení](configuring-a-website-that-uses-application-services-vb/_static/image5.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image4.jpg)
+[![Zadat nástroj s informací o připojení databáze s](configuring-a-website-that-uses-application-services-vb/_static/image5.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image4.jpg)
 
 **Obrázek 2**: Zadat nástroj s databáze s informací o připojení ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-a-website-that-uses-application-services-vb/_static/image6.jpg))
 
@@ -125,7 +125,7 @@ V "Vyberte do serveru a databázi" obrazovky vyzve k zadání informace pro při
 Na další obrazovce shrnuje akce, které se chystáte provést, a to, které objekty databáze služeb aplikací se chystáte přidat k zadané databázi. Klikněte na tlačítko vedle dokončení této akce. Po chvíli se zobrazí na poslední obrazovce poznamenat, že databázové objekty byly přidány (servery viz obrázek 3).
 
 
-[![Success! Aplikace služby databázové objekty byly přidány do provozní databáze](configuring-a-website-that-uses-application-services-vb/_static/image8.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image7.jpg)
+[![Úspěch! Aplikace služby databázové objekty byly přidány do provozní databáze](configuring-a-website-that-uses-application-services-vb/_static/image8.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image7.jpg)
 
 **Obrázek 3**: Úspěch! Aplikaci služby databáze objekty byly přidány do provozní databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-a-website-that-uses-application-services-vb/_static/image9.jpg))
 
@@ -133,7 +133,7 @@ Na další obrazovce shrnuje akce, které se chystáte provést, a to, které ob
 Pokud chcete ověřit, že aplikace služby databázové objekty byly úspěšně přidány do provozní databáze, otevřete SQL Server Management Studio a připojte se k provozní databázi. Jak je vidět na obrázku 4, měli byste vidět tabulky databáze služeb aplikací ve vaší databázi `aspnet_Applications`, `aspnet_Membership`, `aspnet_Users`a tak dále.
 
 
-[![Cpotvrzení, že databázové objekty byly přidány do provozní databáze](configuring-a-website-that-uses-application-services-vb/_static/image11.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image10.jpg)
+[![Potvrďte, že databázové objekty byly přidány do provozní databáze](configuring-a-website-that-uses-application-services-vb/_static/image11.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image10.jpg)
 
 **Obrázek 4**: Potvrďte, že databázové objekty byly přidány do provozní databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-a-website-that-uses-application-services-vb/_static/image12.jpg))
 
@@ -172,7 +172,7 @@ Připomínáme, že starší kurz aktualizovali webovou aplikaci recenzí zahrno
 > Pro další informace o použití rozhraní API rolí a členství spolu s ovládacích prvků technologie ASP.NET související s přihlášením, nezapomeňte si přečíst Moje [ *kurzy o zabezpečení webu*](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md). Další informace o přizpůsobení ovládacího prvku CreateUserWizard najdete [ *vytváření uživatelských účtů* ](../../older-versions-security/membership/creating-user-accounts-vb.md) a [ *ukládání Další informace o uživateli* ](../../older-versions-security/membership/storing-additional-user-information-vb.md) kurzy nebo rezervace [ *Erich Peterson* ](http://www.erichpeterson.com/) článku s [ *přizpůsobení ovládacího prvku CreateUserWizard* ](http://aspnet.4guysfromrolla.com/articles/070506-1.aspx).
 
 
-[![AMůžete vytvořit nové uživatelské účty dministrators](configuring-a-website-that-uses-application-services-vb/_static/image14.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image13.jpg)
+[![Správci mohou vytvářet nové uživatelské účty](configuring-a-website-that-uses-application-services-vb/_static/image14.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image13.jpg)
 
 **Obrázek 5**: Správci mohou vytvářet nové uživatelské účty ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-a-website-that-uses-application-services-vb/_static/image15.jpg))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 8027a77ab3504848a28ce9bdc7779092b28759ce
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59421157"
 ---
 # <a name="how-do-i-use-the-html-editor-control-c"></a>Použití ovládací prvek editoru HTML (C#)
@@ -25,7 +25,7 @@ by [Microsoft](https://github.com/microsoft)
 Cílem tohoto kurzu je poskytnout přehled o ovládací prvek editoru HTML, který je součástí sadou nástrojů AJAX Control Toolkit. HTML Editor obsahuje možnosti pro změnu velikosti písma, výběru písma, změna barvy pozadí, úprava barvu popředí přidávat odkazy, obrázky, přidání, Změna zarovnání textu a provádění vyjmutí, kopírování a vložení operace (viz obrázek 1).
 
 
-[![The HTML Editor](how-do-i-use-the-html-editor-control-cs/_static/image1.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image1.png)
+[![HTML Editor](how-do-i-use-the-html-editor-control-cs/_static/image1.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image1.png)
 
 **Obrázek 01**: HTML Editor ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-html-editor-control-cs/_static/image2.png))
 
@@ -33,7 +33,7 @@ Cílem tohoto kurzu je poskytnout přehled o ovládací prvek editoru HTML, kter
 HTML editor umožňuje zadat obsah pomocí režimu návrhu nebo HTML můžete zadat přímo. Také k dispozici máte možnost zobrazit náhled vašeho obsahu HTML (viz obrázek 2).
 
 
-[![Dnávrh, HTML a zobrazit jejich náhled tlačítka](how-do-i-use-the-html-editor-control-cs/_static/image2.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image3.png)
+[![Návrh, HTML a ve verzi Preview tlačítka](how-do-i-use-the-html-editor-control-cs/_static/image2.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image3.png)
 
 **Obrázek 02**: Návrh, HTML a ve verzi Preview tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-html-editor-control-cs/_static/image4.png))
 
@@ -49,7 +49,7 @@ V horní části stránky před všechny ovládací prvky na stránce by měl um
 Ovládací prvek editoru HTML se nachází na panelu nástrojů se zbytkem ovládacích prvků AJAX Control Toolkit. Je název ovládací prvek editoru (viz obrázek 3).
 
 
-[![Tmá ovládací prvek editoru HTML](how-do-i-use-the-html-editor-control-cs/_static/image3.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image5.png)
+[![Ovládací prvek editoru HTML](how-do-i-use-the-html-editor-control-cs/_static/image3.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image5.png)
 
 **Obrázek 03**: Ovládací prvek editoru HTML ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-html-editor-control-cs/_static/image6.png))
 
@@ -63,7 +63,7 @@ Po přetažení editoru HTML na stránce můžete nastavit jeho vlastnosti v sez
 Na stránce v informacích 1 obsahuje ovládací prvek editoru HTML, ovládací prvek Button a prvku Literal control. Když kliknete na tlačítko, obsah editoru HTML se zobrazí v ovládacím prvku Literal control (viz obrázek 4).
 
 
-[![Submitting formuláře pomocí editoru HTML](how-do-i-use-the-html-editor-control-cs/_static/image4.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image7.png)
+[![Odeslání formuláře pomocí editoru HTML](how-do-i-use-the-html-editor-control-cs/_static/image4.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image7.png)
 
 **Obrázek 04**: Odeslání formuláře pomocí editoru HTML ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-html-editor-control-cs/_static/image8.png))
 
@@ -75,7 +75,7 @@ HTML Editor obsah vlastnosti slouží k načtení HTML obsah, zadaný do editoru
 Můžete přizpůsobit přesně tlačítek, která se zobrazí v editoru. Například můžete chtít odebrat kartu HTML uživatelům zabránit v editoru HTML přepnutí do režimu HTML. Nebo můžete chtít odebrat rozevíracího seznamu velikost písma zabránit uživatelům ve vytváření příliš velký text ve fóru po zprávy (viz obrázek 5).
 
 
-[![A vlastní Editor HTML](how-do-i-use-the-html-editor-control-cs/_static/image5.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image9.png)
+[![Vlastní Editor HTML](how-do-i-use-the-html-editor-control-cs/_static/image5.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image9.png)
 
 **Obrázek 05**: A přizpůsobit HTML Editor ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-html-editor-control-cs/_static/image10.png))
 

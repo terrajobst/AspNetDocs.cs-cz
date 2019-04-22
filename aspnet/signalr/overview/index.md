@@ -12,7 +12,7 @@ ms.openlocfilehash: 8bef8a53f6d47a9274a984e0650125fb538c23f0
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59380064"
 ---
 # <a name="signalr-guidance"></a>Pokyny k SignalR
@@ -21,11 +21,11 @@ ms.locfileid: "59380064"
 
     - [Úvod ke knihovně SignalR](getting-started/introduction-to-signalr.md)
     - [Podporované platformy](getting-started/supported-platforms.md)
-    - [Kurz: Začínáme s funkcí SignalR 2](getting-started/tutorial-getting-started-with-signalr.md)
+    - [Kurz: Začínáme s knihovnou SignalR 2](getting-started/tutorial-getting-started-with-signalr.md)
     - [Kurz: Začínáme s knihovnou SignalR 2 a MVC 5](getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
     - [Kurz: Vysokofrekvenční Reálný čas s knihovnou SignalR 2](getting-started/tutorial-high-frequency-realtime-with-signalr.md)
     - [Kurz: Serverové vysílání s knihovnou SignalR 2](getting-started/tutorial-server-broadcast-with-signalr.md)
-    - [Praktické cvičení: Webové aplikace v reálném čase s knihovnou SignalR](getting-started/real-time-web-applications-with-signalr.md)
+    - [Praktické cvičení: Aplikace webu v reálném čase s knihovnou SignalR](getting-started/real-time-web-applications-with-signalr.md)
 - [Pokyny k rozhraní API](guide-to-the-api/index.md)
 
     - [Pokyny k rozhraní API center – server (C#)](guide-to-the-api/hubs-api-guide-server.md)
@@ -37,7 +37,7 @@ ms.locfileid: "59380064"
 - [Testování a ladění](testing-and-debugging/index.md)
 
     - [Řešení potíží s knihovnou SignalR](testing-and-debugging/troubleshooting.md)
-    - [Testování jednotek aplikace knihovnou SignalR](testing-and-debugging/unit-testing-signalr-applications.md)
+    - [Testování částí aplikace knihovnou SignalR](testing-and-debugging/unit-testing-signalr-applications.md)
     - [Povolení trasování knihovnou SignalR](testing-and-debugging/enabling-signalr-tracing.md)
 - [Zabezpečení](security/index.md)
 
@@ -55,17 +55,17 @@ ms.locfileid: "59380064"
     - [Použití čítačů výkonu SignalR webové role Azure](performance/using-signalr-performance-counters-in-an-azure-web-role.md)
 - [Nasazení a hostování](deployment/index.md)
 
-    - [Kurz: SignalR v místním prostředí](deployment/tutorial-signalr-self-host.md)
+    - [Kurz: Hostování na vlastním serveru funkce SignalR](deployment/tutorial-signalr-self-host.md)
     - [Použití aplikace SignalR s webovými aplikacemi ve službě Azure App Service](deployment/using-signalr-with-azure-web-sites.md)
-- [Upřesnit](advanced/index.md)
+- [Pokročilé](advanced/index.md)
 
     - [Injektáž závislostí v centrech SignalR](advanced/dependency-injection.md)
-- [Vydané verze](releases/index.md)
+- [Verze](releases/index.md)
 
     - [Upgradování projektů SignalR 1.x na verzi 2](releases/upgrading-signalr-1x-projects-to-20.md)
 - [Starší verze](older-versions/index.md)
 
-    - [Kurz: Začínáme s funkcí SignalR 1.x](older-versions/tutorial-getting-started-with-signalr.md)
+    - [Kurz: Začínáme s knihovnou SignalR 1.x](older-versions/tutorial-getting-started-with-signalr.md)
     - [Kurz: Začínáme s knihovnou SignalR 1.x a MVC 4](older-versions/tutorial-getting-started-with-signalr-and-mvc-4.md)
     - [Vysokofrekvenční reálný čas s knihovnou SignalR 1.x](older-versions/tutorial-high-frequency-realtime-with-signalr.md)
     - [Kurz: Serverové vysílání s knihovnou ASP.NET SignalR 1.x](older-versions/tutorial-server-broadcast-with-aspnet-signalr.md)

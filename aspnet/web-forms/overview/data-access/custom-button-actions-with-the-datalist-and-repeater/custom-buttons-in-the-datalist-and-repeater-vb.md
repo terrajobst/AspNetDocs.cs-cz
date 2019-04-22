@@ -12,7 +12,7 @@ ms.openlocfilehash: 1e1b6407dfff4513416869404a9565ed225b5e14
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59392245"
 ---
 # <a name="custom-buttons-in-the-datalist-and-repeater-vb"></a>Vlastní tlačítka v ovládacích prvcích DataList a Repeater (VB)
@@ -31,7 +31,7 @@ V průběhu posledních sedmnáct ovládacích prvků DataList a Repeater kurzy 
 Kromě toho pro úpravy a odstraňování tlačítek, ovládacích prvků DataList a Repeater může také zahrnovat tlačítka, LinkButtons nebo ImageButtons, po kliknutí na provést nějakou vlastní logiku na straně serveru. V tomto kurzu vytvoříme rozhraní, které používá Repeateru seznam kategorií v systému. Pro každou kategorii, bude obsahovat Opakovači tlačítka zobrazíte kategorie produktů s přidružené použití ovládacího prvku BulletedList (viz obrázek 1).
 
 
-[![CPropojení zobrazení zobrazit produkty licking kategorie s produkty v seznamu s odrážkami](custom-buttons-in-the-datalist-and-repeater-vb/_static/image2.png)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image1.png)
+[![Kliknutím na Zobrazit produkty odkaz zobrazí kategorie s produkty v seznamu s odrážkami](custom-buttons-in-the-datalist-and-repeater-vb/_static/image2.png)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image1.png)
 
 **Obrázek 1**: Kliknutím na odkaz zobrazení zobrazit produkty kategorie s produkty v seznamu s odrážkami ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-vb/_static/image3.png))
 
@@ -52,7 +52,7 @@ Předtím, než se podíváme, jak přidat vlastní tlačítko, umožní s nejd�
 V jiných složkách, jako jsou `Default.aspx` v `CustomButtonsDataListRepeater` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Přidejte tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
 
 
-[![Add uživatelského ovládacího prvku SectionLevelTutorialListing.ascx Default.aspx](custom-buttons-in-the-datalist-and-repeater-vb/_static/image6.png)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image5.png)
+[![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](custom-buttons-in-the-datalist-and-repeater-vb/_static/image6.png)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image5.png)
 
 **Obrázek 3**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-vb/_static/image7.png))
 
@@ -75,7 +75,7 @@ Po aktualizaci `Web.sitemap`, věnujte chvíli zobrazit kurzy web prostřednictv
 Pro účely tohoto kurzu potřebujeme vytvořit Repeateru, který obsahuje seznam všech kategorií spolu zobrazit produkty odkazem (LinkButton), po kliknutí na zobrazí kategorie související s produkty v seznamu s odrážkami. Umožní s nejprve vytvořit jednoduché Repeateru, který obsahuje seznam kategorií v systému. Začněte otevřením `CustomButtons.aspx` stránku `CustomButtonsDataListRepeater` složky. Přetáhněte Repeateru z panelu nástrojů do návrháře a nastavte jeho `ID` vlastnost `Categories`. Dále vytvořte nový ovládací prvek zdroje dat z inteligentních značek s opakovače. Konkrétně vytvořte nový ovládací prvek ObjectDataSource s názvem `CategoriesDataSource` , který vybere data z `CategoriesBLL` třída s `GetCategories()` metody.
 
 
-[![Configurovat ObjectDataSource použít CategoriesBLL třídu s metodou GetCategories()](custom-buttons-in-the-datalist-and-repeater-vb/_static/image10.png)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image9.png)
+[![Konfigurace ObjectDataSource GetCategories() metody s CategoriesBLL třídy](custom-buttons-in-the-datalist-and-repeater-vb/_static/image10.png)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image9.png)
 
 **Obrázek 5**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třída s `GetCategories()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-vb/_static/image11.png))
 
@@ -90,7 +90,7 @@ Klikněte na kartě Zdroj v levém dolním rohu a přidat `ItemTemplate` , kter�
 Obrázek 6 ukazuje na stránku při zobrazit pomocí prohlížeče. Každý název a popis kategorie je uvedena. Tlačítko Zobrazit produkty, po kliknutí na vyvolá zpětné volání, ale zatím neprovádí žádnou akci.
 
 
-[![EACH kategorie s název a popis se zobrazí, spolu zobrazit produkty odkazem (LinkButton)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image13.png)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image12.png)
+[![Každá kategorie s název a popis se zobrazí, spolu zobrazit produkty odkazem (LinkButton)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image13.png)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image12.png)
 
 **Obrázek 6**: Každá kategorie s název a popis se zobrazí, spolu zobrazit produkty odkazem (LinkButton) ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-vb/_static/image14.png))
 
@@ -146,7 +146,7 @@ Po dokončení `ItemCommand` obslužná rutina události, využít k otestován�
 > Pokud chcete změnit chování této sestavy tak, aby pouze jednu kategorii s produkty jsou uvedené v čase, stačí nastavit ovládacího prvku BulletedList s `EnableViewState` vlastnost `False`.
 
 
-[![A BulletedList slouží k zobrazení vybrané kategorie produktů](custom-buttons-in-the-datalist-and-repeater-vb/_static/image16.png)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image15.png)
+[![BulletedList slouží k zobrazení vybrané kategorie produktů](custom-buttons-in-the-datalist-and-repeater-vb/_static/image16.png)](custom-buttons-in-the-datalist-and-repeater-vb/_static/image15.png)
 
 **Obrázek 7**: BulletedList slouží k zobrazení vybrané kategorie produktů ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-vb/_static/image17.png))
 

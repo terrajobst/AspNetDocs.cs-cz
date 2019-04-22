@@ -12,7 +12,7 @@ ms.openlocfilehash: 3bbbe0c8240a2a77edee8d39a76bf865c95f345e
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59381091"
 ---
 # <a name="get-started-with-the-ajax-control-toolkit-c"></a>Začínáme se sadou nástrojů AJAX Control Toolkit (C#)
@@ -29,7 +29,7 @@ Sada nástrojů AJAX Control Toolkit obsahuje více než 30 bezplatné ovládac�
 [Sadou nástrojů AJAX Control Toolkit](http://devexpress.com/act) projekt open source vyvinutý členy komunity technologie ASP.NET a tým ASP.NET. 
 
 
-[![DSada nástrojů AJAX Control Toolkit ownloading](get-started-with-the-ajax-control-toolkit-cs/_static/image1.jpg)](get-started-with-the-ajax-control-toolkit-cs/_static/image1.png)
+[![Stahuje se sadou nástrojů AJAX Control Toolkit](get-started-with-the-ajax-control-toolkit-cs/_static/image1.jpg)](get-started-with-the-ajax-control-toolkit-cs/_static/image1.png)
 
 **Obrázek 01**: Stahuje se sadou nástrojů AJAX Control Toolkit ([kliknutím ji zobrazíte obrázek v plné velikosti](get-started-with-the-ajax-control-toolkit-cs/_static/image2.png))
 
@@ -37,7 +37,7 @@ Sada nástrojů AJAX Control Toolkit obsahuje více než 30 bezplatné ovládac�
 Po stažení souboru, budete muset odblokovat soubor. Klikněte pravým tlačítkem na soubor, vyberte vlastnosti a klikněte na tlačítko **Odblokovat** tlačítko (viz obrázek 2).
 
 
-[![Usoubor ZIP Toolkit ovládacího prvku AJAX nblocking](get-started-with-the-ajax-control-toolkit-cs/_static/image2.jpg)](get-started-with-the-ajax-control-toolkit-cs/_static/image3.png)
+[![Odblokování souboru ZIP se sada nástrojů AJAX ovládacího prvku](get-started-with-the-ajax-control-toolkit-cs/_static/image2.jpg)](get-started-with-the-ajax-control-toolkit-cs/_static/image3.png)
 
 **Obrázek 02**: Odblokování souboru ZIP se sada nástrojů AJAX ovládacího prvku ([kliknutím ji zobrazíte obrázek v plné velikosti](get-started-with-the-ajax-control-toolkit-cs/_static/image4.png))
 
@@ -49,7 +49,7 @@ Po odblokování ho mohli rozbalit soubor: Klikněte pravým tlačítkem na soub
 Přidat sadu nástrojů do vašich nástrojů Visual Studio nebo Visual Web Developer je nejjednodušší způsob, jak používat sadou nástrojů AJAX Control Toolkit (viz obrázek 3). Tímto způsobem můžete jednoduše přetáhnout toolkit ovládacího prvku do stránky Pokud chcete použít.
 
 
-[![AJAX Control Toolkit se zobrazí v panelu nástrojů](get-started-with-the-ajax-control-toolkit-cs/_static/image3.jpg)](get-started-with-the-ajax-control-toolkit-cs/_static/image5.png)
+[![Sada nástrojů AJAX Control Toolkit se zobrazí v panelu nástrojů](get-started-with-the-ajax-control-toolkit-cs/_static/image3.jpg)](get-started-with-the-ajax-control-toolkit-cs/_static/image5.png)
 
 **Obrázek 03**: V panelu nástrojů zobrazí se sadou nástrojů AJAX Control Toolkit ([kliknutím ji zobrazíte obrázek v plné velikosti](get-started-with-the-ajax-control-toolkit-cs/_static/image6.png))
 
@@ -61,7 +61,7 @@ Nejprve budete muset přidat kartu sadou nástrojů AJAX Control Toolkit do pane
 3. Zadejte novou kartu s názvem sadou nástrojů AJAX Control Toolkit.
 
 
-[![Ana nové kartě dding](get-started-with-the-ajax-control-toolkit-cs/_static/image4.jpg)](get-started-with-the-ajax-control-toolkit-cs/_static/image7.png)
+[![Přidání nové karty](get-started-with-the-ajax-control-toolkit-cs/_static/image4.jpg)](get-started-with-the-ajax-control-toolkit-cs/_static/image7.png)
 
 **Obrázek 04**: Přidání nové karty ([kliknutím ji zobrazíte obrázek v plné velikosti](get-started-with-the-ajax-control-toolkit-cs/_static/image8.png))
 
@@ -72,7 +72,7 @@ Dále je třeba k přidávání ovládacích prvků AJAX Control Toolkit na nov�
 - Přejděte do umístění, kde rozzipoval. Sada nástrojů AJAX Control Toolkit a vyberte AjaxControlToolkit.dll sestavení.
 
 
-[![CZvolte položky, které chcete přidat do panelu nástrojů](get-started-with-the-ajax-control-toolkit-cs/_static/image5.jpg)](get-started-with-the-ajax-control-toolkit-cs/_static/image9.png)
+[![Zvolte položky, které chcete přidat do panelu nástrojů](get-started-with-the-ajax-control-toolkit-cs/_static/image5.jpg)](get-started-with-the-ajax-control-toolkit-cs/_static/image9.png)
 
 **Obrázek 05**: Zvolte položky, které chcete přidat do panelu nástrojů ([kliknutím ji zobrazíte obrázek v plné velikosti](get-started-with-the-ajax-control-toolkit-cs/_static/image10.png))
 

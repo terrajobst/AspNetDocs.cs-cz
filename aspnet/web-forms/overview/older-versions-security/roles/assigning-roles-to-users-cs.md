@@ -12,7 +12,7 @@ ms.openlocfilehash: 93a0af00d9e32e044f408a1ca8a2cea73e906d66
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59380278"
 ---
 # <a name="assigning-roles-to-users-c"></a>Přiřazení rolí uživatelům (C#)
@@ -57,7 +57,7 @@ Dále přidejte následující definice třídy šablony stylů CSS do `Styles.c
 Tato definice šablony stylů CSS dostane pokyn, aby zobrazení pomocí velké, červenou písma popisku. Obrázek 1 ukazuje tento efekt prostřednictvím návrháře Visual Studio.
 
 
-[![TPopisek he CssClass vlastnost za následek velké, písmo Red](assigning-roles-to-users-cs/_static/image2.png)](assigning-roles-to-users-cs/_static/image1.png)
+[![Vlastnosti popisku CssClass výsledkem písmo velké, Red](assigning-roles-to-users-cs/_static/image2.png)](assigning-roles-to-users-cs/_static/image1.png)
 
 **Obrázek 1**: Jmenovky `CssClass` vlastnost za následek velký, písmo Red ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image3.png))
 
@@ -93,7 +93,7 @@ Nakonec musíme tyto dvě metody volat při prvním načtení stránky. Přidejt
 S tímto kódem na místě věnujte chvíli najdete na stránce prostřednictvím prohlížeče; vaše obrazovka by měla vypadat podobně jako na obrázku 2. Všechny uživatelské účty, naplní se v rozevíracím seznamu a pod, každá role se zobrazí jako zaškrtávací políčko. Protože jsme nastavili `AutoPostBack` vlastnosti DropDownList a vlastnost CheckBoxes na hodnotu True, změna vybraného uživatele nebo kontrola nebo zrušíte zaškrtnutí role vyvolá zpětné volání. Neprovede se žádná akce, ale protože musíme ještě napište kód pro zpracování těchto akcí. Jsme budete řešit tyto úlohy v následujících dvou částech.
 
 
-[![Tmá stránka zobrazí uživatelé a role](assigning-roles-to-users-cs/_static/image5.png)](assigning-roles-to-users-cs/_static/image4.png)
+[![Na stránce zobrazí uživatelé a role](assigning-roles-to-users-cs/_static/image5.png)](assigning-roles-to-users-cs/_static/image4.png)
 
 **Obrázek 2**: Na stránce zobrazí uživatelé a role ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image6.png))
 
@@ -135,7 +135,7 @@ Výše uvedený kód spustí programově odkazováním na zaškrtávací políč
 Za chvíli otestovat na této stránce prostřednictvím prohlížeče. Vyberte uživatele Tito a pak přidejte Tito do role správců a správců.
 
 
-[![Tpro správce a role správců se přidal Ito](assigning-roles-to-users-cs/_static/image8.png)](assigning-roles-to-users-cs/_static/image7.png)
+[![Byla přidána tito správci a správci rolí](assigning-roles-to-users-cs/_static/image8.png)](assigning-roles-to-users-cs/_static/image7.png)
 
 **Obrázek 3**: Byla přidána tito správci a správci rolí ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image9.png))
 
@@ -143,7 +143,7 @@ Za chvíli otestovat na této stránce prostřednictvím prohlížeče. Vyberte 
 V dalším kroku vyberte uživatele Bruce z rozevíracího seznamu. Je zpětné volání a zaškrtávací políčka Repeateru jsou aktualizovány pomocí `CheckRolesForSelectedUser`. Protože Bruce zatím nepatří k žádné roli, nekontrolované dvě zaškrtávací políčka. V dalším kroku přidejte Bruce k roli správců.
 
 
-[![Bdo Role správců se přidal ruce](assigning-roles-to-users-cs/_static/image11.png)](assigning-roles-to-users-cs/_static/image10.png)
+[![Bruce byl přidán do Role správců](assigning-roles-to-users-cs/_static/image11.png)](assigning-roles-to-users-cs/_static/image10.png)
 
 **Obrázek 4**: Bruce byl přidán do Role správců ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image12.png))
 
@@ -167,7 +167,7 @@ Potřebujeme k naplnění `RoleList` DropDownList s sadu rolí v systému. Pokud
 Poslední dva řádky v `BindRolesToList` metoda byly přidány do sadu rolí pro vytvoření vazby `RoleList` ovládací prvek DropDownList. Obrázek 5 ukazuje konečný výsledek při prohlížení prostřednictvím prohlížeče – v rozevíracím seznamu vyplní rolí v systému.
 
 
-[![The role se zobrazí v RoleList DropDownList](assigning-roles-to-users-cs/_static/image14.png)](assigning-roles-to-users-cs/_static/image13.png)
+[![Role se zobrazí v RoleList DropDownList](assigning-roles-to-users-cs/_static/image14.png)](assigning-roles-to-users-cs/_static/image13.png)
 
 **Obrázek 5**: Role se zobrazí v `RoleList` DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image15.png))
 
@@ -187,7 +187,7 @@ Tato metoda musí být volána ve dvou případech: při počátečním načten�
 S tímto kódem na místě `RolesUserList` GridView zobrazeno uživatelům, kteří patří do vybrané roli. Jak je vidět na obrázku 6, se skládá z dva členy role správců: Bruce a Tito.
 
 
-[![TGridView uvádí uživatele, kteří patří do vybrané Role](assigning-roles-to-users-cs/_static/image17.png)](assigning-roles-to-users-cs/_static/image16.png)
+[![Uvádí uživatele, kteří patří do vybrané Role prvku GridView.](assigning-roles-to-users-cs/_static/image17.png)](assigning-roles-to-users-cs/_static/image16.png)
 
 **Obrázek 6**: Prvku GridView uvádí ty uživatelů, patří do vybrané Role ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image18.png))
 
@@ -199,7 +199,7 @@ Můžeme rozšířit `RolesUserList` GridView tak, že obsahují sloupec "Remove
 Začněte přidáním pole tlačítko Odstranit do prvku GridView. Ujistěte se, toto pole se zobrazí jako archivované nejvíce vlevo a změnit jeho `DeleteText` vlastnost "Odebrat" z "Odstranit" (výchozí).
 
 
-[![Add](assigning-roles-to-users-cs/_static/image20.png)](assigning-roles-to-users-cs/_static/image19.png)
+[![Přidat](assigning-roles-to-users-cs/_static/image20.png)](assigning-roles-to-users-cs/_static/image19.png)
 
 **Obrázek 7**: Přidání tlačítka "Odebrat" do prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image21.png))
 
@@ -217,7 +217,7 @@ Kód spustí tak, že určíte název vybrané role. Následně prostřednictví
 Obrázek 8 ukazuje na stránku, jakmile uživatel Tito byl odebrán ze skupiny správců.
 
 
-[![ALas, Tito už není nadřízeným](assigning-roles-to-users-cs/_static/image23.png)](assigning-roles-to-users-cs/_static/image22.png)
+[![Jenže Tito už není nadřízeným](assigning-roles-to-users-cs/_static/image23.png)](assigning-roles-to-users-cs/_static/image22.png)
 
 **Obrázek 8**: Jenže Tito už není nadřízeným ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image24.png))
 
@@ -245,7 +245,7 @@ Většina kódu v `Click` obslužná rutina události provádí různé ověřov
 Na stránce prostřednictvím prohlížeče a vyberte roli správců z `RoleList` DropDownList. Zkuste zadat neplatné uživatelské jméno – měla zobrazit zpráva s vysvětlením, že uživatel neexistuje v systému.
 
 
-[![Yorganizační jednotky nelze přidat neexistující uživatele do Role](assigning-roles-to-users-cs/_static/image26.png)](assigning-roles-to-users-cs/_static/image25.png)
+[![Nelze přidat neexistující uživatele k roli](assigning-roles-to-users-cs/_static/image26.png)](assigning-roles-to-users-cs/_static/image25.png)
 
 **Obrázek 9**: Nelze přidat neexistující uživatele k roli ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image27.png))
 
@@ -253,7 +253,7 @@ Na stránce prostřednictvím prohlížeče a vyberte roli správců z `RoleList
 Nyní přidejte platného uživatele. Pokračujte a znovu přidejte Tito do role správců.
 
 
-[![TIto je opět Supervisor!](assigning-roles-to-users-cs/_static/image29.png)](assigning-roles-to-users-cs/_static/image28.png)
+[![Tito je opět Supervisor!](assigning-roles-to-users-cs/_static/image29.png)](assigning-roles-to-users-cs/_static/image28.png)
 
 **Obrázek 10**: Tito je opět Supervisor!  ([Kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image30.png))
 
@@ -290,7 +290,7 @@ Otevřít `CreateUserWizardWithRoles.aspx` stránce a přidání ovládacího pr
 V dalším kroku vyberte "Přidat nebo odebrat `WizardSteps`..." z inteligentních značek CreateUserWizard a přidejte nový `WizardStep`a nastavte jeho `ID` k `SpecifyRolesStep`. Přesunout `SpecifyRolesStep WizardStep` tak, že jde o za krok "Sign k svůj nový účet", ale před krokem "Dokončených". Nastavte `WizardStep`společnosti `Title` vlastnost rolím"zadejte", jeho `StepType` vlastnost `Step`a jeho `AllowReturn` vlastnost na hodnotu False.
 
 
-[![Add](assigning-roles-to-users-cs/_static/image32.png)](assigning-roles-to-users-cs/_static/image31.png)
+[![Přidat](assigning-roles-to-users-cs/_static/image32.png)](assigning-roles-to-users-cs/_static/image31.png)
 
 **Obrázek 11**: Přidání "Zadejte rolí" `WizardStep` k CreateUserWizard ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image33.png))
 
@@ -318,7 +318,7 @@ Pokud uživatel právě dosáhl krok "Dokončeno", obslužná rutina události v
 Navštivte tuto stránku prostřednictvím prohlížeče. Prvním krokem při CreateUserWizard je standardní krok "Sign k svůj nový účet", který zobrazí výzvu k zadání nové uživatelské jméno, heslo, e-mailu a další informace o klíči. Zadejte informace k vytvoření nového uživatele s názvem Wanda.
 
 
-[![CVytvořit nový účet uživatele s názvem Wanda](assigning-roles-to-users-cs/_static/image35.png)](assigning-roles-to-users-cs/_static/image34.png)
+[![Vytvoření nového uživatele s názvem Wanda](assigning-roles-to-users-cs/_static/image35.png)](assigning-roles-to-users-cs/_static/image34.png)
 
 **Obrázek 12**: Vytvořit nový účet uživatele s názvem Wanda ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image36.png))
 
@@ -326,7 +326,7 @@ Navštivte tuto stránku prostřednictvím prohlížeče. Prvním krokem při Cr
 Klikněte na tlačítko "Create User". CreateUserWizard interně volá `Membership.CreateUser` metoda vytvoření nového uživatelského účtu a pak pokračuje k dalšímu kroku, "Zadejte role." Tady jsou uvedené role systému. Zaškrtněte políčko nadřízeným a klikněte na tlačítko Další.
 
 
-[![Mnačit Wanda členem Role správců](assigning-roles-to-users-cs/_static/image38.png)](assigning-roles-to-users-cs/_static/image37.png)
+[![Ujistěte se, Wanda členem Role správců](assigning-roles-to-users-cs/_static/image38.png)](assigning-roles-to-users-cs/_static/image37.png)
 
 **Obrázek 13**: Ujistěte se, Wanda členem Role správců ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image39.png))
 
@@ -334,7 +334,7 @@ Klikněte na tlačítko "Create User". CreateUserWizard interně volá `Membersh
 Kliknutím na další způsobí, že zpětné volání a aktualizace `ActiveStep` na krok "Dokončit". V `ActiveStepChanged` obslužná rutina události, nedávno vytvořen uživatelský účet je přiřazen k roli správců. Chcete-li to ověřit, vraťte se na `UsersAndRoles.aspx` stránku a vybrat správců z `RoleList` DropDownList. Jak ukazuje obrázek 14 správců jsou nyní tvořené tři uživatele: Bruce, Tito a Wanda.
 
 
-[![Bruce, Tito a Wanda jsou všechny nadřízeným](assigning-roles-to-users-cs/_static/image41.png)](assigning-roles-to-users-cs/_static/image40.png)
+[![Bruce, Tito a Wanda jsou všech správců](assigning-roles-to-users-cs/_static/image41.png)](assigning-roles-to-users-cs/_static/image40.png)
 
 **Obrázek 14**: Bruce, Tito a Wanda jsou všechny správců ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image42.png))
 

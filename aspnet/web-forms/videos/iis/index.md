@@ -12,7 +12,7 @@ ms.openlocfilehash: 883b5c3ad39922ddd51ea1d07b8d52d1c74d2153
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59384289"
 ---
 # <a name="general-iis-tips"></a>Obecné tipy pro IIS
@@ -23,7 +23,7 @@ ms.locfileid: "59384289"
 - [Vývoj a nasazení při sdíleném hostování](developing-and-deploying-in-a-shared-hosting.md)
 - [Práce s delegovaným správcem služby IIS7](working-with-iis7-deligated-admin.md)
 - [Delegovaná správa specifických funkcí](feature-specific-delegated-management.md)
-- [Řešení potíží produkčních aplikací ASP.NET](troubleshooting-production-aspnet-apps.md)
+- [Řešení potíží provozních aplikací ASP.NET](troubleshooting-production-aspnet-apps.md)
 - [Vytvoření webu ve správci služby IIS7](creating-a-site-with-iis7-manager.md)
 - [Instalace protokolu FTP7](installing-ftp7.md)
 - [Omezení přenosové rychlosti](bit-rate-throttling.md)

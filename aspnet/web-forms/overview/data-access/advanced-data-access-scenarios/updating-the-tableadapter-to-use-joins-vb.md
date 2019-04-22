@@ -12,7 +12,7 @@ ms.openlocfilehash: 943b8a67e77e4ed449e0b2c887b3cae7cc10f305
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59383431"
 ---
 # <a name="updating-the-tableadapter-to-use-joins-vb"></a>Aktualizace komponenty TableAdapter kvůli použití příkazů JOIN (VB)
@@ -64,7 +64,7 @@ Prozkoumat tento nedostatek, vytvořit dočasný typované datové sady v `~/App
 [!code-sql[Main](updating-the-tableadapter-to-use-joins-vb/samples/sample3.sql)]
 
 
-[![EZadejte hlavní dotaz, že obsahuje spojení](updating-the-tableadapter-to-use-joins-vb/_static/image2.png)](updating-the-tableadapter-to-use-joins-vb/_static/image1.png)
+[![Zadejte hlavní dotaz, který obsahuje spojení](updating-the-tableadapter-to-use-joins-vb/_static/image2.png)](updating-the-tableadapter-to-use-joins-vb/_static/image1.png)
 
 **Obrázek 1**: Zadejte hlavní dotaz, který obsahuje `JOIN` s ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image3.png))
 
@@ -88,7 +88,7 @@ Kliknutím na Dokončit dokončíte průvodce. V tomto okamžiku bude obsahovat 
 Objekt DataTable obsahuje odpovídající sloupce, TableAdapter nemá hodnoty pro jeho `InsertCommand`, `UpdateCommand`, a `DeleteCommand` vlastnosti. Pokud to pokud chcete potvrdit, klikněte na TableAdapter v návrháři a potom přejděte do okna Vlastnosti. Existuje, který se zobrazí `InsertCommand`, `UpdateCommand`, a `DeleteCommand` vlastnosti jsou nastaveny na (žádný).
 
 
-[![Tmá událost InsertCommand, událost UpdateCommand a událost DeleteCommand vlastnosti nastavené na (žádný)](updating-the-tableadapter-to-use-joins-vb/_static/image7.png)](updating-the-tableadapter-to-use-joins-vb/_static/image6.png)
+[![Událost InsertCommand, událost UpdateCommand a událost DeleteCommand vlastnosti nastavené na (žádný)](updating-the-tableadapter-to-use-joins-vb/_static/image7.png)](updating-the-tableadapter-to-use-joins-vb/_static/image6.png)
 
 **Obrázek 4**: `InsertCommand`, `UpdateCommand`, A `DeleteCommand` vlastnosti jsou nastaveny na (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image8.png))
 
@@ -108,7 +108,7 @@ Pro účely tohoto kurzu přidáme TableAdapter a DataTable silného typu pro `E
 Začněte otevřením `NorthwindWithSprocs` datovou sadu v `~/App_Code/DAL` složky. Klikněte pravým tlačítkem na návrháři, v místní nabídce vyberte možnost Přidat a vyberte položku nabídky TableAdapter. Tím spustíte Průvodce konfigurací TableAdapter. Jak znázorňuje obrázek 5 má průvodce vytvořit nové uložené procedury a klikněte na tlačítko Další. U aktualizačního programu na vytvoření nových uložených procedur v Průvodci vytvořením objektu TableAdapter s, najdete [vytváří se nové uložené procedury, pro zadané datové sady s objekty TableAdapter](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) kurzu.
 
 
-[![SVytvořit nové uložené procedury možnost rozhodnout, jestli](updating-the-tableadapter-to-use-joins-vb/_static/image10.png)](updating-the-tableadapter-to-use-joins-vb/_static/image9.png)
+[![Vyberte vytvořit nové uložené procedury možnost](updating-the-tableadapter-to-use-joins-vb/_static/image10.png)](updating-the-tableadapter-to-use-joins-vb/_static/image9.png)
 
 **Obrázek 5**: Vyberte vytvořit nové uložené procedury možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image11.png))
 
@@ -123,7 +123,7 @@ Vzhledem k tomu, že tento dotaz neobsahuje žádné `JOIN` s, TableAdapter prů
 Následující krok umožňuje pojmenovat s uložené procedury TableAdapter. Názvy `Employees_Select`, `Employees_Insert`, `Employees_Update`, a `Employees_Delete`, jak je znázorněno na obrázku 6.
 
 
-[![NNázev TableAdapter s uložené procedury](updating-the-tableadapter-to-use-joins-vb/_static/image13.png)](updating-the-tableadapter-to-use-joins-vb/_static/image12.png)
+[![Název TableAdapter s uložené postupy](updating-the-tableadapter-to-use-joins-vb/_static/image13.png)](updating-the-tableadapter-to-use-joins-vb/_static/image12.png)
 
 **Obrázek 6**: Název TableAdapter s uložené procedury ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image14.png))
 
@@ -131,7 +131,7 @@ Následující krok umožňuje pojmenovat s uložené procedury TableAdapter. N�
 V posledním kroku vyzve nám název metody s TableAdapter. Použití `Fill` a `GetEmployees` jako názvy metod. Také je potřeba nechat vytvořit metody k odeslání aktualizací přímo do databáze (GenerateDBDirectMethods) zaškrtnutí.
 
 
-[![NNázev TableAdapter s metody Fill a GetEmployees](updating-the-tableadapter-to-use-joins-vb/_static/image16.png)](updating-the-tableadapter-to-use-joins-vb/_static/image15.png)
+[![Název TableAdapter s metody Fill a GetEmployees](updating-the-tableadapter-to-use-joins-vb/_static/image16.png)](updating-the-tableadapter-to-use-joins-vb/_static/image15.png)
 
 **Obrázek 7**: Název TableAdapter s metod `Fill` a `GetEmployees` ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image17.png))
 
@@ -139,7 +139,7 @@ V posledním kroku vyzve nám název metody s TableAdapter. Použití `Fill` a `
 Po dokončení průvodce, věnujte chvíli prozkoumat uložené procedury v databázi. Měli byste vidět čtyři nové: `Employees_Select`, `Employees_Insert`, `Employees_Update`, a `Employees_Delete`. Dále zkontrolujte `EmployeesDataTable` a `EmployeesTableAdapter` právě vytvořili. Objekt DataTable obsahuje sloupec pro každé pole vráceného hlavním dotazem. Kliknutím na TableAdapter a přejděte do okna Vlastnosti. Uvidíte, `InsertCommand`, `UpdateCommand`, a `DeleteCommand` vlastnosti jsou správně nakonfigurované volat odpovídající uložené procedury.
 
 
-[![Tmá TableAdapter zahrnuje vložení, aktualizace a odstranění funkce](updating-the-tableadapter-to-use-joins-vb/_static/image19.png)](updating-the-tableadapter-to-use-joins-vb/_static/image18.png)
+[![TableAdapter zahrnuje příkaz Insert, Update a odstranit funkce](updating-the-tableadapter-to-use-joins-vb/_static/image19.png)](updating-the-tableadapter-to-use-joins-vb/_static/image18.png)
 
 **Obrázek 8**: Obsahuje třídy TableAdapter Insert, Update a Delete možnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image20.png))
 
@@ -156,7 +156,7 @@ Začněte tím, že přejdete do Průzkumníka serveru, procházení k podrobnos
 Po aktualizaci `SELECT` prohlášení, uložte změny tak, že přejdete do nabídky soubor a zvolíte Uložit `Employees_Select`. Alternativně můžete kliknutím na ikonu Uložit na panelu nástrojů nebo stiskněte kombinaci kláves Ctrl + S. Po uložení změn, klikněte pravým tlačítkem na `Employees_Select` uloženou proceduru v Průzkumníku serveru a zvolte spustit. Spustí uloženou proceduru a zobrazit jeho výsledky v okně výstupu (viz obrázek 9).
 
 
-[![The uložené procedury výsledky se zobrazí v okně výstupu](updating-the-tableadapter-to-use-joins-vb/_static/image22.png)](updating-the-tableadapter-to-use-joins-vb/_static/image21.png)
+[![V okně výstupu se zobrazují výsledky uložené procedury](updating-the-tableadapter-to-use-joins-vb/_static/image22.png)](updating-the-tableadapter-to-use-joins-vb/_static/image21.png)
 
 **Obrázek 9**: V okně výstupu se zobrazují výsledky uložené postupy ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image23.png))
 
@@ -173,7 +173,7 @@ Prozkoumali jsme ruční přidávání sloupců do tabulky DataTable v předchoz
 Začněte tím, že pravým tlačítkem myši na `EmployeesTableAdapter` a výběrem možnosti konfigurace v místní nabídce. Tím se vyvolá průvodce konfigurací TableAdapter, který obsahuje seznam uložených procedur používaných pro výběr, vkládání, aktualizaci a odstraňování spolu s jejich návratové hodnoty a parametry (pokud existuje). Obrázek 10 ukazuje tohoto průvodce. Tady vidíme, `Employees_Select` uložené procedury nyní vrátí `ManagerFirstName` a `ManagerLastName` pole.
 
 
-[![TPrůvodce prokáže aktualizovat seznam sloupců pro uloženou proceduru Employees_Select](updating-the-tableadapter-to-use-joins-vb/_static/image25.png)](updating-the-tableadapter-to-use-joins-vb/_static/image24.png)
+[![Průvodce zobrazí seznam aktualizované sloupců Employees_Select uložené procedury](updating-the-tableadapter-to-use-joins-vb/_static/image25.png)](updating-the-tableadapter-to-use-joins-vb/_static/image24.png)
 
 **Obrázek 10**: Aktualizovat seznam sloupců pro zobrazí průvodce `Employees_Select` uloženou proceduru ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image26.png))
 
@@ -181,7 +181,7 @@ Začněte tím, že pravým tlačítkem myši na `EmployeesTableAdapter` a výb�
 Dokončete průvodce kliknutím na tlačítko Dokončit. Po návratu návrháři datových sad `EmployeesDataTable` zahrnuje další dva sloupce: `ManagerFirstName` a `ManagerLastName`.
 
 
-[![Tmá EmployeesDataTable obsahuje dva nové sloupce](updating-the-tableadapter-to-use-joins-vb/_static/image28.png)](updating-the-tableadapter-to-use-joins-vb/_static/image27.png)
+[![EmployeesDataTable obsahuje dva nové sloupce](updating-the-tableadapter-to-use-joins-vb/_static/image28.png)](updating-the-tableadapter-to-use-joins-vb/_static/image27.png)
 
 **Obrázek 11**: `EmployeesDataTable` Obsahuje dva nové sloupce ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image29.png))
 
@@ -204,12 +204,12 @@ S `EmployeesBLLWithSprocs` třídy dokončení, můžeme znovu připravené pro 
 Konfigurace ObjectDataSource používat `EmployeesBLLWithSprocs` třídy a z karty vybrat a odstranit, ujistěte se, že `GetEmployees` a `DeleteEmployee` metody jsou vybrány z rozevíracích seznamů. Kliknutím na tlačítko Dokončit dokončete konfiguraci prvku ObjectDataSource s.
 
 
-[![Configurovat ObjectDataSource pomocí třídy EmployeesBLLWithSprocs](updating-the-tableadapter-to-use-joins-vb/_static/image31.png)](updating-the-tableadapter-to-use-joins-vb/_static/image30.png)
+[![Konfigurace ObjectDataSource pomocí třídy EmployeesBLLWithSprocs](updating-the-tableadapter-to-use-joins-vb/_static/image31.png)](updating-the-tableadapter-to-use-joins-vb/_static/image30.png)
 
 **Obrázek 12**: Konfigurace ObjectDataSource k použití `EmployeesBLLWithSprocs` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image32.png))
 
 
-[![HUložit prvku ObjectDataSource použít GetEmployees a DeleteEmployee metody](updating-the-tableadapter-to-use-joins-vb/_static/image34.png)](updating-the-tableadapter-to-use-joins-vb/_static/image33.png)
+[![Mít použití prvku ObjectDataSource GetEmployees a DeleteEmployee metody](updating-the-tableadapter-to-use-joins-vb/_static/image34.png)](updating-the-tableadapter-to-use-joins-vb/_static/image33.png)
 
 **Obrázek 13**: Mají použití prvku ObjectDataSource `GetEmployees` a `DeleteEmployee` metody ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image35.png))
 
@@ -224,7 +224,7 @@ Povolit uživatelům odstranit zaměstnanci z této stránky, budeme muset uděl
 Otestování stránky návštěvou prostřednictvím prohlížeče. Jak ukazuje obrázek 14 stránce začlení jednotliví zaměstnanci a jeho správce s názvem (za předpokladu, že budou mít jeden).
 
 
-[![TSPOJENÍ v uložené proceduře Employees_Select vrací správce s názvem](updating-the-tableadapter-to-use-joins-vb/_static/image37.png)](updating-the-tableadapter-to-use-joins-vb/_static/image36.png)
+[![SPOJENÍ v Employees_Select uložené procedury vrátí název s správce](updating-the-tableadapter-to-use-joins-vb/_static/image37.png)](updating-the-tableadapter-to-use-joins-vb/_static/image36.png)
 
 **Obrázek 14**: `JOIN` v `Employees_Select` vrátí správce s názvem uložené procedury ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image38.png))
 
@@ -232,7 +232,7 @@ Otestování stránky návštěvou prostřednictvím prohlížeče. Jak ukazuje 
 Kliknutím na tlačítko Odstranit spustí odstranit pracovní postup, který culminates za běhu `Employees_Delete` uložené procedury. Ale neúspěšné pokusy o `DELETE` příkaz v uložené proceduře se nezdaří z důvodu narušení omezení pro cizí klíč (viz obrázek 15). Konkrétně každý zaměstnanec má jeden nebo více záznamů `Orders` tabulky, což způsobí odstranění k selhání.
 
 
-[![Deleting zaměstnanec, který má odpovídající výsledky objednávky v porušení omezení cizího klíče](updating-the-tableadapter-to-use-joins-vb/_static/image40.png)](updating-the-tableadapter-to-use-joins-vb/_static/image39.png)
+[![Odstraňuje se zaměstnanec, který má odpovídající výsledky objednávky v porušení omezení cizího klíče](updating-the-tableadapter-to-use-joins-vb/_static/image40.png)](updating-the-tableadapter-to-use-joins-vb/_static/image39.png)
 
 **Obrázek 15**: Odstraňuje se zaměstnanec, který má odpovídající výsledky objednávky v porušení omezení cizího klíče ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-the-tableadapter-to-use-joins-vb/_static/image41.png))
 

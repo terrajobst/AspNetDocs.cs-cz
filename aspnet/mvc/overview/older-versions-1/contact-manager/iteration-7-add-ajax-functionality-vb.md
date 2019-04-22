@@ -12,7 +12,7 @@ ms.openlocfilehash: 3df4258b2de309aed5a3a598caeb1e7332c321f6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59383954"
 ---
 # <a name="iteration-7--add-ajax-functionality-vb"></a>Iterace #7 – přidání funkcí Ajax (VB)
@@ -94,7 +94,7 @@ Přidejte následující JavaScript zahrnuje uvnitř &lt;head&gt; značky hlavn�
 Umožní začít úpravou náš Index zobrazení tak, že kliknete na skupinu kontaktů aktualizuje pouze oblasti zobrazení, která zobrazuje kontakty s. Červeným rámečkem na obrázku 1 obsahuje oblast, která chcete aktualizovat.
 
 
-[![Upouze kontakty ualizace](iteration-7-add-ajax-functionality-vb/_static/image1.jpg)](iteration-7-add-ajax-functionality-vb/_static/image1.png)
+[![Aktualizuje se jenom kontakty](iteration-7-add-ajax-functionality-vb/_static/image1.jpg)](iteration-7-add-ajax-functionality-vb/_static/image1.png)
 
 **Obrázek 01**: Aktualizují se kontakty pouze ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-vb/_static/image2.png))
 
@@ -194,7 +194,7 @@ Když uživatel dosáhne prohlížeče zpět nebo tlačítko Předat dál, je vy
 V současné době Chcete-li odstranit kontakt, budete muset kliknout na odkaz pro odstranění a poté klikněte na tlačítko Odstranit zobrazí na stránce potvrzení odstranění (viz obrázek 2). Vypadá to, že jako velké množství žádostí stránky něco jednoduchého jako odstraňuje se záznam v databázi.
 
 
-[![Tmohl odstranit potvrzovací stránku](iteration-7-add-ajax-functionality-vb/_static/image2.jpg)](iteration-7-add-ajax-functionality-vb/_static/image3.png)
+[![Na stránce potvrzení odstranění](iteration-7-add-ajax-functionality-vb/_static/image2.jpg)](iteration-7-add-ajax-functionality-vb/_static/image3.png)
 
 **Obrázek 02**: Na stránce potvrzení odstranění ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-vb/_static/image4.png))
 

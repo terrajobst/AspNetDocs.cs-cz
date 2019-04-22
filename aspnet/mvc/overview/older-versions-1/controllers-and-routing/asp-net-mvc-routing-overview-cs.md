@@ -12,7 +12,7 @@ ms.openlocfilehash: e2f2246e2126bd6e648f861bcb296fab62a748bb
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59380103"
 ---
 # <a name="aspnet-mvc-routing-overview-c"></a>ASP.NET MVC – přehled směrování (C#)
@@ -95,7 +95,7 @@ Volání metody Index() výpis 5 pomocí adresy URL/Home nakonec dojde k výjimc
 [!code-csharp[Main](asp-net-mvc-routing-overview-cs/samples/sample5.cs)]
 
 
-[![Invoking akce kontroleru, který očekává, že hodnota parametru](asp-net-mvc-routing-overview-cs/_static/image1.jpg)](asp-net-mvc-routing-overview-cs/_static/image1.png)
+[![Vyvolání akce kontroleru, který očekává, že hodnota parametru](asp-net-mvc-routing-overview-cs/_static/image1.jpg)](asp-net-mvc-routing-overview-cs/_static/image1.png)
 
 **Obrázek 01**: Vyvolání akce kontroleru, který očekává, že hodnota parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](asp-net-mvc-routing-overview-cs/_static/image2.png))
 

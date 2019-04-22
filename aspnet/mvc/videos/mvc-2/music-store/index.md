@@ -12,7 +12,7 @@ ms.openlocfilehash: 1fdf6d7ab19354b0079add99c3e6930c60f772cf
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59381975"
 ---
 # <a name="music-store"></a>Aplikace Music Store
@@ -22,4 +22,4 @@ ms.locfileid: "59381975"
 
 - [Aplikace MVC Music Store 1. část: Úvod, nástroje a struktura projektu](mvc-music-store-part-1-intro-tools-and-project-structure.md)
 - [Aplikace MVC Music Store 2. část: Kontrolery](mvc-music-store-part-2-controllers.md)
-- [Aplikace MVC Music Store 3. část: Zobrazení a modely ViewModel](mvc-music-store-part-3-views-and-viewmodels.md)
+- [Aplikace MVC Music Store 3. část: Zobrazení a modely ViewModels](mvc-music-store-part-3-views-and-viewmodels.md)

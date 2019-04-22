@@ -12,7 +12,7 @@ ms.openlocfilehash: ce866a169e69c0d85fe18ddeccf271f1f235d440
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59381117"
 ---
 # <a name="part-3-views-and-viewmodels"></a>Část 3: Zobrazení a modely ViewModel
@@ -38,7 +38,7 @@ Výše uvedené změny označuje, že místo vrátil řetězec, chceme místo to
 
 Teď přidáme vhodnou šablonu zobrazení na našem projektu. Provedete to tak jsme budete umístit textový kurzor v rámci metody akce indexu, pak klikněte pravým tlačítkem a vyberte "Přidat zobrazení". Tím se otevře dialogové okno Přidat zobrazení:
 
-![](mvc-music-store-part-3/_static/image1.jpg) ![](mvc-music-store-part-3/_static/image1.png)
+![](mvc-music-store-part-3/_static/image1.jpg)![](mvc-music-store-part-3/_static/image1.png)
 
 Toto dialogové okno "Přidat zobrazení" umožňuje nám to rychle a snadno generovat soubory šablon zobrazení. Ve výchozím nastavení "Přidat zobrazení" dialogové okno předem vyplní název zobrazení šablony vytvořit tak, aby odpovídalo metodě akce, která bude používat. Protože jsme použili v rámci metody akce Index() naše HomeController místní nabídce "Přidat zobrazení", "Přidat zobrazení" dialog výše má "Index" jako název zobrazení předem vyplní ve výchozím nastavení. Není třeba změnit možnosti v tomto dialogovém okně, proto klikněte na tlačítko Přidat.
 

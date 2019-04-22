@@ -12,7 +12,7 @@ ms.openlocfilehash: 476e5529e4fd53c6166c53766409268939a83c72
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59380662"
 ---
 # <a name="iteration-5--create-unit-tests-vb"></a>Iterace #5 – vytvoření testů jednotek (VB)
@@ -116,12 +116,12 @@ Před použitím Moq, budete muset provést následující kroky:
 4. Přidat odkaz na sestavení Moq do testovacího projektu tak, že vyberete možnost nabídky **projektu, přidejte odkaz** otevřít **přidat odkaz** dialogového okna. Na kartě Procházet přejděte do složky, kde odblokujte Moq a vyberte Moq.dll sestavení. Klikněte na tlačítko **OK** tlačítko (viz obrázek 2).
 
 
-[![Unblocking Moq](iteration-5-create-unit-tests-vb/_static/image1.jpg)](iteration-5-create-unit-tests-vb/_static/image1.png)
+[![Odblokování Moq](iteration-5-create-unit-tests-vb/_static/image1.jpg)](iteration-5-create-unit-tests-vb/_static/image1.png)
 
 **Obrázek 01**: Odblokování Moq ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-5-create-unit-tests-vb/_static/image2.png))
 
 
-[![Rodkazy po přidání Moq](iteration-5-create-unit-tests-vb/_static/image2.jpg)](iteration-5-create-unit-tests-vb/_static/image3.png)
+[![Po přidání Moq odkazy](iteration-5-create-unit-tests-vb/_static/image2.jpg)](iteration-5-create-unit-tests-vb/_static/image3.png)
 
 **Obrázek 02**: Po přidání Moq odkazy ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-5-create-unit-tests-vb/_static/image4.png))
 
@@ -184,7 +184,7 @@ Zbývající testy ověřte, že při volání metody CreateContact() neplatný 
 Můžete spustit testy jednotek v informacích 1 tak, že vyberete možnost nabídky **testovací běh, všechny testy v řešení (CTRL + R, A)**. Výsledky testů se zobrazí v okně Výsledky testu (viz obrázek 4).
 
 
-[![TVýsledky EST](iteration-5-create-unit-tests-vb/_static/image4.jpg)](iteration-5-create-unit-tests-vb/_static/image7.png)
+[![Výsledky testu](iteration-5-create-unit-tests-vb/_static/image4.jpg)](iteration-5-create-unit-tests-vb/_static/image7.png)
 
 **Obrázek 04**: Výsledky testů ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-5-create-unit-tests-vb/_static/image8.png))
 

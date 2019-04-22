@@ -12,7 +12,7 @@ ms.openlocfilehash: abff97e5cc2663465fdf61f41ff69d17104fe8b6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59379466"
 ---
 # <a name="use-controllers-and-views-to-implement-a-listingdetails-ui"></a>Použití kontrolerů a zobrazení k implementaci uživatelského rozhraní seznamu a podrobností
@@ -95,7 +95,7 @@ Níže je tabulka, která ukazuje, jak různé adresy URL se mapují pomocí vý
 | --- | --- | --- | --- |
 | */ Večeří/podrobnosti/2* | DinnersController | Details(ID) | id=2 |
 | */ Večeří/Edit/5* | DinnersController | Edit(id) | id=5 |
-| */ Večeří/vytvoření* | DinnersController | Create() | Není k dispozici |
+| */Dinners/Create* | DinnersController | Create() | Není k dispozici |
 | */ Večeří* | DinnersController | Index() | Není k dispozici |
 | *Domů* | HomeController | Index() | Není k dispozici |
 | */* | HomeController | Index() | Není k dispozici |

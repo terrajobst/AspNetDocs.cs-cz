@@ -12,7 +12,7 @@ ms.openlocfilehash: 95231452831b5e328447709fad0329f63ae7a9f5
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59395820"
 ---
 # <a name="creating-user-accounts-vb"></a>Vytváření uživatelských účtů (VB)
@@ -57,7 +57,7 @@ Začněte tím, že vytvoříte novou složku v projektu s názvem `Membership`.
 Průzkumník řešení vašeho projektu v tomto okamžiku by měl vypadat podobně jako obrazovky je vidět na obrázku 1.
 
 
-[![Five nové stránky byly přidány do složky členství](creating-user-accounts-vb/_static/image2.png)](creating-user-accounts-vb/_static/image1.png)
+[![Pět nových stránek byly přidány do složky členství](creating-user-accounts-vb/_static/image2.png)](creating-user-accounts-vb/_static/image1.png)
 
 **Obrázek 1**: Pět nových stránek byly přidány do `Membership` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image3.png))
 
@@ -81,7 +81,7 @@ Jako jsou členství a rolí rozhraní framework mapy webu propojitelnosti [mode
 Výchozího zprostředkovatele mapy webu očekává, že správně ve formátu XML soubor s názvem `Web.sitemap` existovat kořenový adresář. Protože používáme tento výchozího zprostředkovatele, musíme přidat tento soubor a definovat strukturu mapy webu ve správném formátu XML. Chcete-li přidat soubor, klikněte pravým tlačítkem na název projektu v Průzkumníku řešení a zvolte Přidat novou položku. V dialogovém okně vyjádřit souhlas se službou přidat soubor mapy webu s názvem typu `Web.sitemap`.
 
 
-[![Add Web.sitemap s názvem souboru do kořenového adresáře projektu](creating-user-accounts-vb/_static/image5.png)](creating-user-accounts-vb/_static/image4.png)
+[![Přidejte soubor s názvem Web.sitemap do kořenového adresáře projektu](creating-user-accounts-vb/_static/image5.png)](creating-user-accounts-vb/_static/image4.png)
 
 **Obrázek 2**: Přidat soubor s názvem `Web.sitemap` do kořenového adresáře projektu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image6.png))
 
@@ -95,7 +95,7 @@ Zadejte následující kód XML do `Web.sitemap` souboru:
 Výše uvedené značky mapy webu definuje hierarchii je znázorněno na obrázku 3.
 
 
-[![TMapa webu zastupuje hierarchické struktuře navigační](creating-user-accounts-vb/_static/image8.png)](creating-user-accounts-vb/_static/image7.png)
+[![Mapa webu představuje hierarchickou strukturu navigační](creating-user-accounts-vb/_static/image8.png)](creating-user-accounts-vb/_static/image7.png)
 
 **Obrázek 3**: Mapa webu představuje hierarchickou strukturu navigační ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image9.png))
 
@@ -117,7 +117,7 @@ Výše uvedené značka vytvoří vazbu ovládacího prvku opakovače s názvem 
 Obrázek 4 ukazuje výše uvedené značky vykresleného výstupu se strukturou mapy webu, který jsme vytvořili v kroku 2. Opakovači vykreslí značky vanilla neuspořádaný seznam pravidla šablony kaskádových definované v `Styles.css` zodpovídají za vkusnou rozložení. Podrobnější popis toho, jak funguje výše uvedené značky, najdete [stránky předlohy a navigace na webu](https://asp.net/learn/data-access/tutorial-03-vb.aspx) kurzu.
 
 
-[![TNavigační uživatelské rozhraní je vykreslen pomocí vnořené neseřazené seznamy](creating-user-accounts-vb/_static/image11.png)](creating-user-accounts-vb/_static/image10.png)
+[![Navigační uživatelské rozhraní je vykreslen pomocí vnořené neuspořádaný seznam](creating-user-accounts-vb/_static/image11.png)](creating-user-accounts-vb/_static/image10.png)
 
 **Obrázek 4**: Navigační uživatelské rozhraní je vykreslen pomocí vnořené neuspořádaný seznam ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image12.png))
 
@@ -133,7 +133,7 @@ Konkrétně, přidat `<span>` element na stránce předlohy záhlaví `<div>` el
 Obrázek 5 ukazuje výstup ovládací prvky SiteMapPath při návštěvě `~/Membership/CreatingUserAccounts.aspx`.
 
 
-[![Tmá navigace s popisem cesty v mapě webu zobrazí aktuální stránce a jeho nadřazenými prvky](creating-user-accounts-vb/_static/image14.png)](creating-user-accounts-vb/_static/image13.png)
+[![Zobrazí tento navigační prvek určuje aktuální stránku a namapujte jeho předchůdců v lokalitě](creating-user-accounts-vb/_static/image14.png)](creating-user-accounts-vb/_static/image13.png)
 
 **Obrázek 5**: Tento navigační prvek určuje zobrazí aktuální stránce a jeho nadřazenými prvky do mapy webu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image15.png))
 
@@ -178,7 +178,7 @@ Pro ilustraci použití `CreateUser` metoda, Pojďme vytvořit uživatelské roz
 V tomto okamžiku vaše obrazovka by měla vypadat podobně jako obrazovky je vidět na obrázku 6.
 
 
-[![Add různé ovládací prvky webové stránky CreatingUserAccounts.aspx](creating-user-accounts-vb/_static/image17.png)](creating-user-accounts-vb/_static/image16.png)
+[![Přidat různé ovládací prvky webové stránky CreatingUserAccounts.aspx](creating-user-accounts-vb/_static/image17.png)](creating-user-accounts-vb/_static/image16.png)
 
 **Obrázek 6**: Přidat různé webové ovládací prvky `CreatingUserAccounts.aspx Page` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image18.png))
 
@@ -198,17 +198,17 @@ Dále vytvořte obslužnou rutinu události pro `CreateAccountButton'` s `Click`
 Po volání `CreateUser`a předejte `createStatus`, `Select Case` prohlášení se používá k výstupu odpovídající zprávu v závislosti na hodnotě přiřazené `createStatus`. Obrázky 7 zobrazuje výstup, když nového uživatele byla úspěšně vytvořena. Obrázky 8 a 9 popisují výstup, pokud nevytvoříte uživatelský účet. Na obrázku 8 návštěvníka zadali heslo pět nedoručených zpráv, který nesplňuje požadavky na sílu hesla států v nastavení konfigurace zprostředkovatele členství. Na obrázku 9 se pokouší návštěvníka vytvořte účet uživatele s existující uživatelské jméno (tu vytvořili na obrázku 7).
 
 
-[![A Nový uživatelský účet je úspěšně vytvořen](creating-user-accounts-vb/_static/image20.png)](creating-user-accounts-vb/_static/image19.png)
+[![Nový uživatelský účet je úspěšně vytvořen](creating-user-accounts-vb/_static/image20.png)](creating-user-accounts-vb/_static/image19.png)
 
 **Obrázek 7**: Nový uživatelský účet se úspěšně vytvořila ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image21.png))
 
 
-[![Tmu uživatelský účet nebyl vytvořen, protože zadané heslo je příliš slabé](creating-user-accounts-vb/_static/image23.png)](creating-user-accounts-vb/_static/image22.png)
+[![Uživatelský účet nebyl vytvořen, protože zadané heslo je moc slabé](creating-user-accounts-vb/_static/image23.png)](creating-user-accounts-vb/_static/image22.png)
 
 **Obrázek 8**: Uživatelský účet nebyl vytvořen, protože zadané heslo je moc slabé ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image24.png))
 
 
-[![Tmá uživatelský účet nebyl vytvořen, protože uživatelské jméno je již používán](creating-user-accounts-vb/_static/image26.png)](creating-user-accounts-vb/_static/image25.png)
+[![Uživatelský účet je, že není vytvořena protože uživatelské jméno je již používáno](creating-user-accounts-vb/_static/image26.png)](creating-user-accounts-vb/_static/image25.png)
 
 **Obrázek 9**: Není vytvořen protože uživatelské jméno je již používán je uživatelský účet ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image27.png))
 
@@ -220,7 +220,7 @@ Po volání `CreateUser`a předejte `createStatus`, `Select Case` prohlášení 
 Po vytvoření jen několik uživatelských účtů, ověřte, že účty byly vytvořeny ve výpisu obsahu `aspnet_Users` a `aspnet_Membership` tabulky v `SecurityTutorials.mdf` databáze. Jak je vidět na obrázku 10, po přidání dva uživatele prostřednictvím `CreatingUserAccounts.aspx` stránky: Tito a Bruce.
 
 
-[![TTady jsou dva uživatelé ve Store členství uživatele: Tito a Bruce](creating-user-accounts-vb/_static/image29.png)](creating-user-accounts-vb/_static/image28.png)
+[![Existují dva uživatele v Store členství uživatele: Tito a Bruce](creating-user-accounts-vb/_static/image29.png)](creating-user-accounts-vb/_static/image28.png)
 
 **Obrázek 10**: Existují dva uživatele v Store členství uživatele: Tito a Bruce ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image30.png))
 
@@ -250,7 +250,7 @@ Začněme podívat na výchozí rozhraní a chování ovládacího prvku CreateU
 Zpět `CreatingUserAccounts.aspx` stránku `Membership` složku, přepněte do režimu návrhu nebo rozdělit a pak přidejte do horní části stránky ovládacím prvku CreateUserWizard. Části ovládacích prvků panelu nástrojů přihlášení je zaznamenaná ovládacím prvku CreateUserWizard. Po přidání ovládacího prvku, nastavte jeho `ID` vlastnost `RegisterUser`. Jak v 11 obrázek ukazuje snímek obrazovky, CreateUserWizard vykreslí rozhraní s textová pole pro nového uživatele uživatelské jméno, heslo, e-mailovou adresu a bezpečnostní otázku a odpověď.
 
 
-[![Tmá prvku CreateUserWizard vykreslí obecný uživatelské rozhraní vytvořit](creating-user-accounts-vb/_static/image32.png)](creating-user-accounts-vb/_static/image31.png)
+[![Vykreslení ovládacího prvku CreateUserWizard obecný vytváření uživatelského rozhraní](creating-user-accounts-vb/_static/image32.png)](creating-user-accounts-vb/_static/image31.png)
 
 **Obrázek 11**: Vykreslí ovládacím prvku CreateUserWizard obecný vytvořit uživatelské rozhraní ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image33.png))
 
@@ -271,7 +271,7 @@ Vzhled a chování CreateUserWizard je možné upravit buď tyto kroky převeden
 Podívejme se na ovládacím prvku CreateUserWizard v akci. Přejděte `CreatingUserAccounts.aspx` stránky prostřednictvím prohlížeče. Začněte tím, že zadáte nějaké neplatné hodnoty CreateUserWizard rozhraní. Zkuste zadat heslo, které neodpovídají požadavků na sílu hesla, nebo když necháte prázdné textové pole uživatelského jména. CreateUserWizard se zobrazí příslušná chybová zpráva. Obrázek 12 se zobrazí výstup při pokusu o vytvoření uživatele s nedostatečně silné heslo.
 
 
-[![Tmá CreateUserWizard automaticky vloží validačních ovládacích prvků](creating-user-accounts-vb/_static/image35.png)](creating-user-accounts-vb/_static/image34.png)
+[![CreateUserWizard automaticky vloží validačních ovládacích prvků](creating-user-accounts-vb/_static/image35.png)](creating-user-accounts-vb/_static/image34.png)
 
 **Obrázek 12**: CreateUserWizard automaticky vloží ovládací prvky ověřování ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image36.png))
 
@@ -279,7 +279,7 @@ Podívejme se na ovládacím prvku CreateUserWizard v akci. Přejděte `Creating
 Dále zadejte odpovídající hodnoty do CreateUserWizard a klikněte na tlačítko Vytvořit uživatele. Za předpokladu, že nebyla zadána požadovaná pole a síly hesla stačí, CreateUserWizard vytvořit nový uživatelský účet, prostřednictvím členství v rámci, který se pak zobrazí `CompleteWizardStep`v rozhraní (viz obrázek 13). Na pozadí CreateUserWizard volá `Membership.CreateUser` metody, stejně jako jsme to udělali v kroku 5.
 
 
-[![A Nový uživatelský účet byl úspěšně vytvořen](creating-user-accounts-vb/_static/image38.png)](creating-user-accounts-vb/_static/image37.png)
+[![Nový uživatelský účet byl úspěšně vytvořen](creating-user-accounts-vb/_static/image38.png)](creating-user-accounts-vb/_static/image37.png)
 
 **Obrázek 13**: Nový uživatelský účet byl úspěšně vytvořen ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image39.png))
 
@@ -303,7 +303,7 @@ Kromě vlastnosti související s vzhled jsou k dispozici řada vlastností, kte
 Aktualizaci Pojďme `RegisterUser` prvku CreateUserWizard zobrazeno tlačítko Storno a posílat musí návštěvníka `Default.aspx` při klepnutí na tlačítko Zrušit nebo pokračovat. Chcete-li to provést, nastavte `DisplayCancelButton` vlastnost na hodnotu True a obě `CancelDestinationPageUrl` a `ContinueDestinationPageUrl` vlastností ~ / Default.aspx. Obrázek 14 zobrazí aktualizovaný CreateUserWizard při prohlížení prostřednictvím prohlížeče.
 
 
-[![TTřída CreateUserWizardStep zahrne tlačítko Storno](creating-user-accounts-vb/_static/image41.png)](creating-user-accounts-vb/_static/image40.png)
+[![Třídu CreateUserWizardStep obsahuje tlačítko Storno](creating-user-accounts-vb/_static/image41.png)](creating-user-accounts-vb/_static/image40.png)
 
 **Obrázek 14**: `CreateUserWizardStep` Obsahuje tlačítko Storno ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image42.png))
 
@@ -341,7 +341,7 @@ Všimněte si, že uživatelské jméno a heslo, které zadáte v ovládacím pr
 Snímek obrazovky znázorňuje obrázek 15 `CreatingUserAccounts.aspx` když uživatel zadá uživatelské jméno s úvodní mezery.
 
 
-[![Usernames s úvodní a koncové mezery nejsou povolené.](creating-user-accounts-vb/_static/image44.png)](creating-user-accounts-vb/_static/image43.png)
+[![Uživatelská jména u úvodní a koncové mezery nejsou povolené.](creating-user-accounts-vb/_static/image44.png)](creating-user-accounts-vb/_static/image43.png)
 
 **Obrázek 15**: Nejsou povolené. uživatelská jména u úvodní a koncové mezery ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-vb/_static/image45.png))
 

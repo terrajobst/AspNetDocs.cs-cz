@@ -12,7 +12,7 @@ ms.openlocfilehash: 81a708b5badecbb5bd134078d079a0fe3a63bb5f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59380675"
 ---
 # <a name="introduction-to-aspnet-single-page-application"></a>Úvod do ASP.NET jedním jednostránková aplikace
@@ -20,5 +20,5 @@ ms.locfileid: "59380675"
 > Obsah nové šablony SPA a Knockoutjs.
 
 
-- [Jednostránková aplikace: šablona KnockoutJS](knockoutjs-template.md)
+- [Jednostránková aplikace: Šablona KnockoutJS](knockoutjs-template.md)
 - [Znáte jiné knihovny než Knockout?](other-libraries.md)

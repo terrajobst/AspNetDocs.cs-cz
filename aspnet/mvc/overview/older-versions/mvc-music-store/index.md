@@ -12,7 +12,7 @@ ms.openlocfilehash: 65f4c90ed0038c56479995153ea0ad787b7b7e11
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59417387"
 ---
 # <a name="aspnet-mvc-3-music-store"></a>ASP.NET MVC 3 Music Store
@@ -20,13 +20,13 @@ ms.locfileid: "59417387"
 > Postup vytvoření aplikace MVC Music Store, ukázkovou aplikaci, která se prodává hudebních alb online a správa webů, přihlášení uživatele a nákupního košíku funkce, která implementuje.
 
 
-- [Část 1: Přehled a Soubor->Nový projekt](mvc-music-store-part-1.md)
+- [Část 1: Přehled a soubor -> Nový projekt](mvc-music-store-part-1.md)
 - [Část 2: Kontrolery](mvc-music-store-part-2.md)
-- [Část 3: Zobrazení a modely ViewModel](mvc-music-store-part-3.md)
-- [Část 4: Modely a přístup k datům](mvc-music-store-part-4.md)
-- [Část 5: Editační formuláře a šablonování textu](mvc-music-store-part-5.md)
-- [Část 6: Používání datových poznámek k ověření modelu](mvc-music-store-part-6.md)
+- [3. část: Zobrazení a modely ViewModels](mvc-music-store-part-3.md)
+- [4. část: Modely a přístup k datům](mvc-music-store-part-4.md)
+- [5. část: Upravit formuláře a šablonování textu](mvc-music-store-part-5.md)
+- [6. část: Používání datových poznámek k ověření modelu](mvc-music-store-part-6.md)
 - [Část 7: Členství a ověřování](mvc-music-store-part-7.md)
 - [Část 8: Nákupní košík s aktualizacemi Ajax](mvc-music-store-part-8.md)
-- [Část 9: Registrace a pokladna](mvc-music-store-part-9.md)
+- [9. část: Registrace a pokladna](mvc-music-store-part-9.md)
 - [Část 10: Závěrečné aktualizace návrhu navigace a webu, závěr](mvc-music-store-part-10.md)

@@ -12,7 +12,7 @@ ms.openlocfilehash: 7e29ae36b81b08df2b6f52e0f6d9e1a10d9b6f19
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59384926"
 ---
 # <a name="an-overview-of-editing-and-deleting-data-in-the-datalist-c"></a>Přehled úprav a odstraňování dat v ovládacím prvku DataList (C#)
@@ -59,7 +59,7 @@ Než začneme, aktualizaci a odstranění dat z a v prvku DataList zkoumání, u
 V jiných složkách, jako jsou `Default.aspx` v `EditDeleteDataList` složka obsahuje seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
 
 
-[![Add uživatelského ovládacího prvku SectionLevelTutorialListing.ascx Default.aspx](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image3.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image2.png)
+[![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image3.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image2.png)
 
 **Obrázek 2**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image4.png))
 
@@ -107,12 +107,12 @@ V tomto kurzu vytvoříme DataList, který obsahuje informace o produktu a pro j
 Začněte otevřením `Basics.aspx` stránku `EditDeleteDataList` složku a v návrhovém zobrazení, přidat na stránku a v prvku DataList. Potom z inteligentních značek v prvku DataList s vytvořte nový prvek ObjectDataSource. Protože Pracujeme s daty produktu, nakonfigurujte ho na použití `ProductsBLL` třídy. K načtení *všechny* produkty, zvolte `GetProducts()` metoda v kartě vyberte.
 
 
-[![Configurovat ObjectDataSource pomocí třídy ProductsBLL](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image7.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image6.png)
+[![Konfigurace ObjectDataSource pomocí třídy ProductsBLL](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image7.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image6.png)
 
 **Obrázek 4**: Konfigurace ObjectDataSource k použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image8.png))
 
 
-[![Rvracet informace o produktu pomocí metody GetProducts()](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image10.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image9.png)
+[![Vrátí informace o produktu pomocí GetProducts() – metoda](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image10.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image9.png)
 
 **Obrázek 5**: Vrátí informací pomocí produktu `GetProducts()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image11.png))
 
@@ -120,7 +120,7 @@ Začněte otevřením `Basics.aspx` stránku `EditDeleteDataList` složku a v n�
 DataList, jako je prvku GridView, není určená pro vkládání nových dat; proto vyberte (žádný) možnost z rozevíracího seznamu na kartě Vložení. Také (žádný) zvolte pro karty UPDATE a DELETE od aktualizace a odstranění se provádí prostřednictvím kódu programu prostřednictvím BLL.
 
 
-[![Cpotvrzení, rozevírací seznamy v prvku ObjectDataSource s vložení, aktualizace a odstranění karty jsou nastaveny na (žádný)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image13.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image12.png)
+[![Potvrďte, že rozevírací seznamy v prvku ObjectDataSource s vložení, aktualizace a odstranění karty jsou nastaveny na (žádný)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image13.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image12.png)
 
 **Obrázek 6**: Potvrďte, že rozevírací seznamy v prvku ObjectDataSource s INSERT, UPDATE a odstranit karty jsou nastaveny na (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image14.png))
 
@@ -139,7 +139,7 @@ Po nahrazení výchozí DataList `ItemTemplate` vlastní sadou deklarativní na 
 Chcete-li zobrazit náš postup prostřednictvím prohlížeče chvíli trvat. Obrázek 7 znázorňuje, zobrazuje prvku DataList produktu název a Jednotková cena pro jednotlivé produkty ve dvou sloupcích.
 
 
-[![TNázvy produktů he a ceny jsou zobrazeny v prvku DataList Dvousloupcových](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image16.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image15.png)
+[![V prvku DataList dvěma sloupci se zobrazují názvy produktů a ceny](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image16.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image15.png)
 
 **Obrázek 7**: Názvy produktů a ceny jsou zobrazeny v prvku DataList dvěma sloupci ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image17.png))
 
@@ -161,7 +161,7 @@ Prvku DataList vykreslí na druhé straně jeho položek pomocí šablony. Jen p
 `EditItemTemplate` Lze vytvořit pomocí deklarace nebo prostřednictvím návrháře (tak, že vyberete možnost Upravit šablony ovládacích prvků DataList s inteligentním). Chcete-li použít možnost Upravit šablony, nejprve klikněte na odkaz Upravit šablony v inteligentní značky a pak vyberte `EditItemTemplate` položku z rozevíracího seznamu.
 
 
-[![OPT pro práci s EditItemTemplate DataList s](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image19.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image18.png)
+[![Optimalizované pro práci s DataList s EditItemTemplate](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image19.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image18.png)
 
 **Obrázek 8**: Optimalizované pro práci s DataList s `EditItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image20.png))
 
@@ -169,7 +169,7 @@ Prvku DataList vykreslí na druhé straně jeho položek pomocí šablony. Jen p
 Potom zadejte název produktu: a cena: a pak přetáhněte z panelu nástrojů do dvou ovládacích prvků textového pole `EditItemTemplate` rozhraní v návrháři. Nastavení textových polí `ID` vlastností `ProductName` a `UnitPrice`.
 
 
-[![Add textové pole pro produkt s názvem a cena](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image22.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image21.png)
+[![Přidat textové pole s názvem produktu a ceny](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image22.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image21.png)
 
 **Obrázek 9**: Přidání textového pole pro produkt s názvem a cena ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image23.png))
 
@@ -198,7 +198,7 @@ Mějte na paměti, že tyto události jsou vyvolány *kromě* `ItemCommand` udá
 Přidat `EditItemTemplate` dvě tlačítka webové ovládací prvky, jehož `CommandName` je nastavena na aktualizace a další prostředky nastavena na Storno. Po přidání těchto dvou ovládacích prvků tlačítko webové návrháře by měl vypadat nějak takto:
 
 
-[![Add aktualizace a zrušit tlačítka EditItemTemplate](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image26.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image25.png)
+[![Přidat aktualizace tlačítka EditItemTemplate a Storno](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image26.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image25.png)
 
 **Obrázek 11**: Přidání tlačítek zrušit a aktualizace `EditItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image27.png))
 
@@ -215,7 +215,7 @@ V tomto okamžiku naše DataList má úpravy rozhraní definované prostřednict
 Po přidání tohoto tlačítka Upravit, věnujte chvíli zobrazíte stránku prostřednictvím prohlížeče. Uveďte by měly zahrnovat každý výpis tlačítko pro úpravy.
 
 
-[![Add aktualizace a zrušit tlačítka EditItemTemplate](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image29.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image28.png)
+[![Přidat aktualizace tlačítka EditItemTemplate a Storno](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image29.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image28.png)
 
 **Obrázek 12**: Přidání tlačítek zrušit a aktualizace `EditItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image30.png))
 
@@ -235,7 +235,7 @@ Od prvku DataList s `EditCommand` událost je aktivována při kliknutí na tla�
 Po přidání této obslužné rutiny události, otevírat stránku v prohlížeči. Teď kliknutím na tlačítko Upravit umožňuje kliknutí na produkt upravitelné (viz obrázek 13).
 
 
-[![Clicking upravit tlačítko umožňuje upravovat produktu](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image32.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image31.png)
+[![Kliknutím na tlačítko umožňuje úpravy upravitelné produktu](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image32.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image31.png)
 
 **Obrázek 13**: Kliknutím na tlačítko Upravit umožňuje upravovat produktu ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image33.png))
 
@@ -283,17 +283,17 @@ Po přečtení hodnoty `ProductsBLL` třída s `UpdateProduct` metoda je volána
 S `EditCommand`, `CancelCommand`, a `UpdateCommand` dokončení obslužné rutiny událostí, návštěvník můžete upravit název a cena produktu. Obrázky 14 – 16 zobrazit tento pracovní postup úpravy v akci.
 
 
-[![WPoto první návštěvě stránky, všechny produkty jsou v režimu jen pro čtení](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image35.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image34.png)
+[![Při první návštěvě stránky, všechny produkty jsou v režimu jen pro čtení](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image35.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image34.png)
 
 **Obrázek 14**: Při první návštěvě stránky, všechny produkty jsou v režimu jen pro čtení ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image36.png))
 
 
-[![TAktualizace o produkt s názvem ani cena, klikněte na tlačítko Upravit](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image38.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image37.png)
+[![Aktualizace produktu s názvem ani cena, klikněte na tlačítko Upravit](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image38.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image37.png)
 
 **Obrázek 15**: Chcete aktualizovat produkt s názvem ani cena, klikněte na tlačítko Upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image39.png))
 
 
-[![Azalomení změna hodnoty, klikněte na Aktualizovat vrátit do režimu jen pro čtení](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image41.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image40.png)
+[![Po změně hodnoty, klikněte na tlačítko Aktualizovat pro návrat do režimu jen pro čtení](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image41.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image40.png)
 
 **Obrázek 16**: Po změně hodnoty, klikněte na Aktualizovat vrátit do režimu jen pro čtení ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-cs/_static/image42.png))
 

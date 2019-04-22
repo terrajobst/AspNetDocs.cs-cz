@@ -12,7 +12,7 @@ ms.openlocfilehash: 3c9a6be576af4342c520b755d51da68b1d73a95b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59382999"
 ---
 # <a name="aspnet-mvc-storefront-part-16-membership-redo-with-openid"></a>Prezentace ASP.NET MVC – část 16: Opakování členství s OpenID

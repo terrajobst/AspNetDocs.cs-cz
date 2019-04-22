@@ -12,7 +12,7 @@ ms.openlocfilehash: 992cea256302231ee7031a21c798117b73eaa01c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59384315"
 ---
 # <a name="url-routing"></a>Směrování adresy URL
@@ -79,7 +79,7 @@ Druhý parametr trasy, která zahrnuje dynamické hodnoty zadané ve složených
 
 > [!NOTE] 
 > 
-> **volitelná,**
+> **Optional**
 > 
 > Vám může být jednodušší ke správě vašeho kódu tak, `RegisterCustomRoutes` metodu pro samostatné třídy. V *logiky* složku, vytvořte samostatné `RouteActions` třídy. Přesunout výše `RegisterCustomRoutes` metodu z *Global.asax.cs* souboru do nové `RoutesActions` třídy. Použití `RoleActions` třídy a `createAdmin` jako příklad toho, jak volat metodu `RegisterCustomRoutes` metodu z *Global.asax.cs* souboru.
 

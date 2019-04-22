@@ -12,7 +12,7 @@ ms.openlocfilehash: 3f090f46b5e7c7f9b046f2cdbef7162cc6f364cb
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59386811"
 ---
 # <a name="ajax"></a>Ajax
@@ -23,4 +23,4 @@ ms.locfileid: "59386811"
 - [Imperativní syntaxe jazyka JavaScript pro ovládací prvky Microsoftu na straně klienta](aspnet-4-quick-hit-imperative-javascript-syntax-for-microsoft-client-side-controls.md)
 - [ScriptLoader](aspnet-4-quick-hit-the-scriptloader.md)
 - [Syntaxe JQuery pro Microsoft Ajax](aspnet-4-quick-hit-jquery-syntax-for-microsoft-ajax.md)
-- [Šablony data AJAXu](aspnet-4-quick-hit-ajax-data-templates.md)
+- [Datové šablony AJAX](aspnet-4-quick-hit-ajax-data-templates.md)

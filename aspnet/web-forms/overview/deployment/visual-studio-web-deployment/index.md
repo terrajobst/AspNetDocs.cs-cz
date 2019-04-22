@@ -12,7 +12,7 @@ ms.openlocfilehash: 3d8a6a102788cb6b5612e9bc537e1c13e7798c54
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59378933"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio"></a>Nasazení webu ASP.NET se sadou Visual Studio
@@ -26,9 +26,9 @@ ms.locfileid: "59378933"
 - [Vlastnosti projektu](project-properties.md)
 - [Nasazení do testovacího prostředí](deploying-to-iis.md)
 - [Nastavení oprávnění složky](setting-folder-permissions.md)
-- [Nasazení do produkčního prostředí](deploying-to-production.md)
+- [Nasazení do provozního prostředí](deploying-to-production.md)
 - [Nasazení aktualizace kódu](deploying-a-code-update.md)
 - [Nasazení aktualizace databáze](deploying-a-database-update.md)
 - [Nasazení příkazového řádku](command-line-deployment.md)
 - [Nasazení dalších souborů](deploying-extra-files.md)
-- [Poradce při potížích](troubleshooting.md)
+- [Odstraňování potíží](troubleshooting.md)

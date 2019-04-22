@@ -12,7 +12,7 @@ ms.openlocfilehash: 455d62d97808862f70692c46ae223f47270266f9
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59387617"
 ---
 # <a name="allowing-only-certain-characters-in-a-text-box-vb"></a>Povolení určitých znaků v textovém poli (VB)
@@ -56,7 +56,7 @@ Tady je zápis `FilteredTextBoxExtender` ovládací prvek, který umožňuje pou
 Spustit na stránku a zkuste zadat písmeno, pokud je povolen jazyk JavaScript, nebude fungovat; na stránce se ale zobrazí číslic. Všimněte si však, že ochranu `FilteredTextBox` poskytuje není odrážky testování: Pokud je povolen jazyk JavaScript, žádná data můžete zadat do textového pole, proto je nutné použít další ověřovací prostředky, například ASP. Ovládací prvky ověřování vaší sítě.
 
 
-[![Omůžete zadat jen pro číslic](allowing-only-certain-characters-in-a-text-box-vb/_static/image2.png)](allowing-only-certain-characters-in-a-text-box-vb/_static/image1.png)
+[![Můžete zadat pouze číslice](allowing-only-certain-characters-in-a-text-box-vb/_static/image2.png)](allowing-only-certain-characters-in-a-text-box-vb/_static/image1.png)
 
 Můžete zadat pouze číslice ([kliknutím ji zobrazíte obrázek v plné velikosti](allowing-only-certain-characters-in-a-text-box-vb/_static/image3.png))
 

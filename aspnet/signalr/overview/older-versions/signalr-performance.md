@@ -12,7 +12,7 @@ ms.openlocfilehash: 5f7415d0a4275a3864dc9eefb9588f17698147cd
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59412694"
 ---
 # <a name="signalr-performance-signalr-1x"></a>Výkon aplikace SignalR (SignalR 1.x)
@@ -33,7 +33,7 @@ Toto téma obsahuje následující oddíly:
 - [Řešení potíží s problémy s výkonem](#troubleshooting)
 - [Použití čítačů výkonu SignalR](#perfcounters)
 - [Použití dalších čítačů výkonu](#othercounters)
-- [Další zdroje](#otherresources)
+- [Další prostředky](#otherresources)
 
 <a id="design"></a>
 
@@ -198,7 +198,7 @@ Následující metriky měření provoz a chyby vygenerované zprostředkovatele
 - **Datové proudy dat o škálování, ukládání do vyrovnávací paměti**
 - **Celkový počet chyb škálování aplikace**
 - **Chyby/s horizontálním navýšením kapacity**
-- **Scaleout Send Queue Length**
+- **Délku fronty odesílání horizontálním navýšením kapacity**
 
 Další informace o co tyto čítače jsou měření najdete v tématu [škálování aplikace SignalR službou Azure Service Bus](scaleout-with-windows-azure-service-bus.md).
 
@@ -208,7 +208,7 @@ Další informace o co tyto čítače jsou měření najdete v tématu [škálov
 
 Následující čítače výkonu může být užitečná při monitorování výkonu aplikace.
 
-**Memory (Paměť)**
+**Paměť**
 
 - .NET CLR paměti počet bajtů ve všech haldách (pro w3wp)
 
@@ -218,7 +218,7 @@ Následující čítače výkonu může být užitečná při monitorování vý
 - ASP.NET\Queued
 - ASP.NET\Rejected
 
-**Procesor**
+**CPU**
 
 - Information\Processor času procesoru
 

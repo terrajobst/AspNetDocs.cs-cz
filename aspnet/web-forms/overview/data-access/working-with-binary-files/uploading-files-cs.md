@@ -12,7 +12,7 @@ ms.openlocfilehash: 02fbd3ca162309aefbefdba9a453af6e55b3900b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59382742"
 ---
 # <a name="uploading-files-c"></a>Nahrávání souborů (C#)
@@ -53,7 +53,7 @@ Než začneme k prozkoumání problémů, které jsou přidružené k přidání
 V jiných složkách, jako jsou `Default.aspx` v `BinaryData` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
 
 
-[![Add uživatelského ovládacího prvku SectionLevelTutorialListing.ascx Default.aspx](uploading-files-cs/_static/image2.gif)](uploading-files-cs/_static/image1.png)
+[![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](uploading-files-cs/_static/image2.gif)](uploading-files-cs/_static/image1.png)
 
 **Obrázek 2**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](uploading-files-cs/_static/image2.png))
 
@@ -76,7 +76,7 @@ Po aktualizaci `Web.sitemap`, věnujte chvíli zobrazit kurzy web prostřednictv
 Binární data, která je přidružena s datovým modelem aplikace mohou být uloženy v jednom z následujících dvou míst: v systému souborů webového serveru s odkazem na soubor uložený v databázi. nebo přímo v rámci samotné databázi (viz obrázek 4). Každý přístup má svou vlastní sadu výhody a nevýhody a merits podrobnější informace.
 
 
-[![Binary Data mohou být uloženy v systému souborů nebo přímo v databází](uploading-files-cs/_static/image4.gif)](uploading-files-cs/_static/image3.png)
+[![Binární Data mohou být uloženy v systému souborů nebo přímo v databázi](uploading-files-cs/_static/image4.gif)](uploading-files-cs/_static/image3.png)
 
 **Obrázek 4**: Binární Data mohou být uloženy v systému souborů nebo přímo v databázi ([kliknutím ji zobrazíte obrázek v plné velikosti](uploading-files-cs/_static/image4.png))
 
@@ -110,7 +110,7 @@ Aktuálně tabulce kategorie obsahuje pouze čtyři sloupce: `CategoryID`, `Cate
 Přidat nový `varchar(200)` sloupec, který se `Categories` tabulku s názvem `BrochurePath` a umožňuje `NULL` s a klikněte na ikonu Uložit (nebo stiskněte kombinaci kláves Ctrl + S).
 
 
-[![Add BrochurePath sloupce do tabulky Kategorie](uploading-files-cs/_static/image5.gif)](uploading-files-cs/_static/image5.png)
+[![Přidání BrochurePath sloupce do tabulky kategorie](uploading-files-cs/_static/image5.gif)](uploading-files-cs/_static/image5.png)
 
 **Obrázek 5**: Přidat `BrochurePath` sloupec, který se `Categories` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](uploading-files-cs/_static/image6.png))
 
@@ -132,7 +132,7 @@ Všimněte si, že žádná z nich vrácena dotazy `Categories` tabulky s `Pictu
 Začněte přidáním těchto dvou sloupců `CategoriesDataTable`. Klikněte pravým tlačítkem na `CategoriesDataTable` s záhlaví, v místní nabídce vyberte možnost Přidat a pak zvolte možnosti sloupce. Tím se vytvoří nový `DataColumn` v objektu DataTable s názvem `Column1`. Přejmenujte tento sloupec na `Picture`. V okně Vlastnosti nastavte `DataColumn` s `DataType` vlastnost `System.Byte[]` (nejedná se o možnost v rozevíracím seznamu, je potřeba zadat ho v).
 
 
-[![Cvytvořit objekt DataColumn obrázek s názvem jehož datový typ je System.Byte []](uploading-files-cs/_static/image6.gif)](uploading-files-cs/_static/image7.png)
+[![Vytvoření obrázku s názvem DataColumn, jejichž datový typ je System.Byte](uploading-files-cs/_static/image6.gif)](uploading-files-cs/_static/image7.png)
 
 **Obrázek 6**: Vytvoření `DataColumn` pojmenované `Picture` jehož `DataType` je `System.Byte[]` ([kliknutím ji zobrazíte obrázek v plné velikosti](uploading-files-cs/_static/image8.png))
 
@@ -146,7 +146,7 @@ Pomocí těchto dvou `DataColumn` s přidán do `CategoriesDataTable`, můžeme 
 Aktualizovat hlavní dotaz TableAdapter, klikněte pravým tlačítkem na `CategoriesTableAdapter` s záhlaví a zvolte možnost konfigurace v místní nabídce. Tím se vyvolá průvodce konfigurací adaptéru tabulky, které jsme viděli v několika posledních kurzy ve. Aktualizovat dotaz vrací do stavu `BrochurePath` a klikněte na tlačítko Dokončit.
 
 
-[![UAktualizovat seznam sloupců v příkazu SELECT na také vrátit BrochurePath](uploading-files-cs/_static/image7.gif)](uploading-files-cs/_static/image9.png)
+[![Aktualizovat seznam sloupců v příkazu SELECT také vrátit BrochurePath](uploading-files-cs/_static/image7.gif)](uploading-files-cs/_static/image9.png)
 
 **Obrázek 7**: Aktualizace v seznamu sloupců `SELECT` příkaz rovněž vracejí `BrochurePath` ([kliknutím ji zobrazíte obrázek v plné velikosti](uploading-files-cs/_static/image10.png))
 
@@ -159,12 +159,12 @@ Při použití příkazů jazyka SQL ad hoc pro TableAdapter, aktualizuje se sez
 V dalším kroku vytvoření nové metody TableAdapter, který vrací určité kategorie s `Picture` hodnota ve sloupci. Klikněte pravým tlačítkem na `CategoriesTableAdapter` s záhlaví a výběrem možnosti Přidat dotaz spustíte Průvodce konfigurací dotazu TableAdapter. Prvním krokem tohoto průvodce výzva, že když chceme dotazy na data pomocí ad-hoc příkazu SQL, nový uložená procedura nebo některý z existujících. Vyberte možnost použít SQL příkazy a klikněte na tlačítko Další. Protože jsme se vrací řádek, zvolte SELECT, který vrátí řádky možnost v druhém kroku.
 
 
-[![SPoužít SQL příkazy možnost rozhodnout, jestli](uploading-files-cs/_static/image8.gif)](uploading-files-cs/_static/image11.png)
+[![Vyberte možnost použít SQL příkazy možnost](uploading-files-cs/_static/image8.gif)](uploading-files-cs/_static/image11.png)
 
 **Obrázek 8**: Vyberte možnost použít SQL příkazy možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](uploading-files-cs/_static/image12.png))
 
 
-[![Since dotaz vrátí záznam z tabulky kategorie, zvolte možnost vybrat, na které vrátí řádky](uploading-files-cs/_static/image9.gif)](uploading-files-cs/_static/image13.png)
+[![Vzhledem k tomu, že dotaz vrátí záznam z tabulky kategorie, zvolte Vybrat, které vrátí řádky](uploading-files-cs/_static/image9.gif)](uploading-files-cs/_static/image13.png)
 
 **Obrázek 9**: Vzhledem k tomu, že dotaz vrátí záznam z tabulky kategorie, zvolte možnost vybrat, na které vrátí řádky ([kliknutím ji zobrazíte obrázek v plné velikosti](uploading-files-cs/_static/image14.png))
 
@@ -177,7 +177,7 @@ V tomto kroku zadejte následující dotaz SQL a klikněte na tlačítko Další
 Posledním krokem je vybrat název pro novou metodu. Použití `FillCategoryWithBinaryDataByCategoryID` a `GetCategoryWithBinaryDataByCategoryID` zaplní, datové tabulky a vrátit objekt DataTable vzory, v uvedeném pořadí. Kliknutím na Dokončit dokončíte průvodce.
 
 
-[![CZvolte názvy pro TableAdapter s metody](uploading-files-cs/_static/image10.gif)](uploading-files-cs/_static/image15.png)
+[![Zvolte názvy pro metody s TableAdapter](uploading-files-cs/_static/image10.gif)](uploading-files-cs/_static/image15.png)
 
 **Obrázek 10**: Zvolte názvy pro TableAdapter s metod ([kliknutím ji zobrazíte obrázek v plné velikosti](uploading-files-cs/_static/image16.png))
 
@@ -212,7 +212,7 @@ ASP.NET 2.0 s novou [FileUpload webový ovládací prvek](https://msdn.microsoft
 Abychom si předvedli nahrávání souborů, otevřete `FileUpload.aspx` stránku `BinaryData` složku, přetáhněte FileUpload ovládacího prvku z panelu nástrojů do návrháře a nastavení ovládacího prvku s `ID` vlastnost `UploadTest`. Dále přidejte ovládací prvek tlačítko webového nastavení jeho `ID` a `Text` vlastností `UploadButton` a nahrajte soubor vybrané, v uvedeném pořadí. A konečně, umístěte ovládací prvek popisek webové pod tlačítko, vymažte jeho `Text` vlastnost a nastavte jeho `ID` vlastnost `UploadDetails`.
 
 
-[![Add FileUpload ovládacího prvku pro stránku ASP.NET](uploading-files-cs/_static/image12.gif)](uploading-files-cs/_static/image17.png)
+[![Přidání ovládacího prvku odesílání souborů při odpovědích na stránku ASP.NET](uploading-files-cs/_static/image12.gif)](uploading-files-cs/_static/image17.png)
 
 **Obrázek 12**: Přidání ovládacího prvku odesílání souborů při odpovědích na stránce ASP.NET ([kliknutím ji zobrazíte obrázek v plné velikosti](uploading-files-cs/_static/image18.png))
 
@@ -220,7 +220,7 @@ Abychom si předvedli nahrávání souborů, otevřete `FileUpload.aspx` stránk
 Zobrazí obrázek 13 tuto stránku při prohlížení prostřednictvím prohlížeče. Všimněte si, že kliknete na tlačítko Procházet zobrazí výběr dialogového okna souboru, které uživateli umožňují vybrat soubor z počítače. Jakmile byl vybrán soubor, kliknutím na tlačítko Odeslat vybraný soubor vyvolá zpětné volání, která odešle binární obsah s vybraný soubor na webový server.
 
 
-[![Tz počítače na server mohl uživatel můžete vybrat soubor k nahrání](uploading-files-cs/_static/image13.gif)](uploading-files-cs/_static/image19.png)
+[![Uživatel může vybrat soubor k odeslání z jejich počítače k serveru](uploading-files-cs/_static/image13.gif)](uploading-files-cs/_static/image19.png)
 
 **Obrázek 13**: Uživatel může vybrat soubor k nahrání z jejich počítače k serveru ([kliknutím ji zobrazíte obrázek v plné velikosti](uploading-files-cs/_static/image20.png))
 
@@ -241,7 +241,7 @@ FileUpload s `SaveAs(filePath)` uloží nahraný soubor do zadaného *filePath*.
 Po dokončení `Click` obslužná rutina události, využít k otestování stránky v prohlížeči. Klikněte na tlačítko Procházet a vyberte soubor z pevného disku a pak klikněte na tlačítko Nahrát soubor vybrali. Zpětné volání pošle obsah na vybraný soubor na webový server, který se pak zobrazí informace o souboru před uložením do `~/Brochures` složky. Po nahrání souboru, vraťte se do sady Visual Studio a klikněte na tlačítko Aktualizovat v Průzkumníku řešení. Soubor, který jste právě nahráli ve složce ~/Brochures byste měli vidět!
 
 
-[![Tmá soubor EvolutionValley.jpg byl odeslán na webový server](uploading-files-cs/_static/image14.gif)](uploading-files-cs/_static/image21.png)
+[![EvolutionValley.jpg soubor se odeslal do webového serveru](uploading-files-cs/_static/image14.gif)](uploading-files-cs/_static/image21.png)
 
 **Obrázek 14**: Soubor `EvolutionValley.jpg` byl odeslán na webový server ([kliknutím ji zobrazíte obrázek v plné velikosti](uploading-files-cs/_static/image22.png))
 
