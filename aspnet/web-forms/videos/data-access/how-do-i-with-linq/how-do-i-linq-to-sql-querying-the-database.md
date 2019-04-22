@@ -12,18 +12,18 @@ ms.openlocfilehash: e4dfbdedad2211d94610966e3f390b23681b658f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59419285"
 ---
-# <a name="how-do-i-linq-to-sql-querying-the-database"></a><span data-ttu-id="17dc8-103">[Postup:] Technologie LINQ to SQL: Dotazy do databáze</span><span class="sxs-lookup"><span data-stu-id="17dc8-103">[How Do I:] LINQ to SQL: Querying the Database</span></span>
+# <a name="how-do-i-linq-to-sql-querying-the-database"></a><span data-ttu-id="235b6-103">[Postup:] Technologie LINQ to SQL: Dotazy do databáze</span><span class="sxs-lookup"><span data-stu-id="235b6-103">[How Do I:] LINQ to SQL: Querying the Database</span></span>
 
-<span data-ttu-id="17dc8-104">podle [Scott Stanfield](https://github.com/scottstanfield)</span><span class="sxs-lookup"><span data-stu-id="17dc8-104">by [Scott Stanfield](https://github.com/scottstanfield)</span></span>
+<span data-ttu-id="235b6-104">podle [Scott Stanfield](https://github.com/scottstanfield)</span><span class="sxs-lookup"><span data-stu-id="235b6-104">by [Scott Stanfield](https://github.com/scottstanfield)</span></span>
 
-<span data-ttu-id="17dc8-105">Toto video ukazuje, jak dotazovat databázi pomocí LINQ, základní SQL query vizualizátoru, vázání dat s ovládacími prvky technologie ASP.NET a záznamů stránkování.</span><span class="sxs-lookup"><span data-stu-id="17dc8-105">This video shows how to query a database with LINQ, the underlying SQL with a query visualizer, databinding to ASP.NET controls and record paging.</span></span>
+<span data-ttu-id="235b6-105">Toto video ukazuje, jak dotazovat databázi pomocí LINQ, základní SQL query vizualizátoru, vázání dat s ovládacími prvky technologie ASP.NET a záznamů stránkování.</span><span class="sxs-lookup"><span data-stu-id="235b6-105">This video shows how to query a database with LINQ, the underlying SQL with a query visualizer, databinding to ASP.NET controls and record paging.</span></span>
 
-[<span data-ttu-id="17dc8-106">&#9654;Podívejte se na video (6 minut)</span><span class="sxs-lookup"><span data-stu-id="17dc8-106">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-linq-to-sql-querying-the-database)
+[<span data-ttu-id="235b6-106">&#9654;Podívejte se na video (6 minut)</span><span class="sxs-lookup"><span data-stu-id="235b6-106">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-linq-to-sql-querying-the-database)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="17dc8-107">[Předchozí](how-do-i-linq-to-sql-data-model.md)
-> [další](how-do-i-linq-to-sql-updating-the-database.md)</span><span class="sxs-lookup"><span data-stu-id="17dc8-107">[Previous](how-do-i-linq-to-sql-data-model.md)
+> <span data-ttu-id="235b6-107">[Předchozí](how-do-i-linq-to-sql-data-model.md)
+> [další](how-do-i-linq-to-sql-updating-the-database.md)</span><span class="sxs-lookup"><span data-stu-id="235b6-107">[Previous](how-do-i-linq-to-sql-data-model.md)
 [Next](how-do-i-linq-to-sql-updating-the-database.md)</span></span>

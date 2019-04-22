@@ -12,16 +12,16 @@ ms.openlocfilehash: af8a8e22df83f64de570dda966f9a831be957c0d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59381437"
 ---
-# <a name="aspnet-4-quick-hit---disabled-control-styling"></a><span data-ttu-id="cb2f2-103">ASP.NET 4 "Rychlé Zasáhněte" – zakázané používání stylů pro ovládací prvek</span><span class="sxs-lookup"><span data-stu-id="cb2f2-103">ASP.NET 4 "Quick Hit" - Disabled Control Styling</span></span>
+# <a name="aspnet-4-quick-hit---disabled-control-styling"></a><span data-ttu-id="b4e79-103">ASP.NET 4 "Rychlé Zasáhněte" – zakázané používání stylů pro ovládací prvek</span><span class="sxs-lookup"><span data-stu-id="b4e79-103">ASP.NET 4 "Quick Hit" - Disabled Control Styling</span></span>
 
-<span data-ttu-id="cb2f2-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="cb2f2-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="b4e79-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="b4e79-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="cb2f2-105">V tomto videu se dozvíte, jak používat nastavení controlRenderingCompatibility tak zakázání ovládací prvky bez zadání se nevykreslí neplatný styly.</span><span class="sxs-lookup"><span data-stu-id="cb2f2-105">In this video you will learn how to use the controlRenderingCompatibility setting so disabling non-input controls will not render invalid styles.</span></span> 
+<span data-ttu-id="b4e79-105">V tomto videu se dozvíte, jak používat nastavení controlRenderingCompatibility tak zakázání ovládací prvky bez zadání se nevykreslí neplatný styly.</span><span class="sxs-lookup"><span data-stu-id="b4e79-105">In this video you will learn how to use the controlRenderingCompatibility setting so disabling non-input controls will not render invalid styles.</span></span> 
 
-[<span data-ttu-id="cb2f2-106">&#9654;Podívejte se na video (6 minut)</span><span class="sxs-lookup"><span data-stu-id="cb2f2-106">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-4-quick-hit-disabled-control-styling)
+[<span data-ttu-id="b4e79-106">&#9654;Podívejte se na video (6 minut)</span><span class="sxs-lookup"><span data-stu-id="b4e79-106">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-4-quick-hit-disabled-control-styling)
 
 > [!div class="step-by-step"]
-> [<span data-ttu-id="cb2f2-107">Předchozí</span><span class="sxs-lookup"><span data-stu-id="cb2f2-107">Previous</span></span>](aspnet-4-quick-hit-hidden-field-divs.md)
+> [<span data-ttu-id="b4e79-107">Předchozí</span><span class="sxs-lookup"><span data-stu-id="b4e79-107">Previous</span></span>](aspnet-4-quick-hit-hidden-field-divs.md)

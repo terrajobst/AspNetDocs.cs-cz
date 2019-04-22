@@ -12,12 +12,12 @@ ms.openlocfilehash: ccd558f7777b1398bf1615ebbe7f18a82bc65985
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408326"
 ---
-# <a name="data"></a><span data-ttu-id="a22c4-103">Data</span><span class="sxs-lookup"><span data-stu-id="a22c4-103">Data</span></span>
+# <a name="data"></a><span data-ttu-id="2a8e5-103">Data</span><span class="sxs-lookup"><span data-stu-id="2a8e5-103">Data</span></span>
 
-> <span data-ttu-id="a22c4-104">Toto video ukazuje, nové funkce pro ovládací prvky dat ASP.NET 4.</span><span class="sxs-lookup"><span data-stu-id="a22c4-104">This video shows you new features for ASP.NET 4 data controls.</span></span>
+> <span data-ttu-id="2a8e5-104">Toto video ukazuje, nové funkce pro ovládací prvky dat ASP.NET 4.</span><span class="sxs-lookup"><span data-stu-id="2a8e5-104">This video shows you new features for ASP.NET 4 data controls.</span></span>
 
 
-- [<span data-ttu-id="a22c4-105">Trvalý výběr řádku v ovládacím prvku GridView</span><span class="sxs-lookup"><span data-stu-id="a22c4-105">Persistent GridView Row Selection</span></span>](aspnet-4-quick-hit-persistent-gridview-row-selection.md)
+- [<span data-ttu-id="2a8e5-105">Trvalý výběr řádku v ovládacím prvku GridView</span><span class="sxs-lookup"><span data-stu-id="2a8e5-105">Persistent GridView Row Selection</span></span>](aspnet-4-quick-hit-persistent-gridview-row-selection.md)

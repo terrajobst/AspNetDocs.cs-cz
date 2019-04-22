@@ -12,18 +12,18 @@ ms.openlocfilehash: f0695e491b9e8a29d1fcbdf9ae138083f8c0c531
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59422756"
 ---
-# <a name="tailspin-spyworks---implementing-and-using-the-also-purchased-control"></a><span data-ttu-id="9469d-103">Tailspin Spyworks – implementace a použití také zakoupené ovládacího prvku</span><span class="sxs-lookup"><span data-stu-id="9469d-103">Tailspin Spyworks - Implementing and Using the Also Purchased Control</span></span>
+# <a name="tailspin-spyworks---implementing-and-using-the-also-purchased-control"></a><span data-ttu-id="b93b7-103">Tailspin Spyworks – implementace a použití také zakoupené ovládacího prvku</span><span class="sxs-lookup"><span data-stu-id="b93b7-103">Tailspin Spyworks - Implementing and Using the Also Purchased Control</span></span>
 
-<span data-ttu-id="9469d-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="9469d-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="b93b7-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="b93b7-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="9469d-105">Joe Stagner implementuje a používá ovládací prvek taky zakoupit v aplikace Tailspin Spyworks ukázkové webové formuláře.</span><span class="sxs-lookup"><span data-stu-id="9469d-105">Joe Stagner implements and uses the Also Purchased control in the Tailspin Spyworks sample Web Forms applicaton.</span></span>
+<span data-ttu-id="b93b7-105">Joe Stagner implementuje a používá ovládací prvek taky zakoupit v aplikace Tailspin Spyworks ukázkové webové formuláře.</span><span class="sxs-lookup"><span data-stu-id="b93b7-105">Joe Stagner implements and uses the Also Purchased control in the Tailspin Spyworks sample Web Forms applicaton.</span></span>
 
-[<span data-ttu-id="9469d-106">&#9654;Podívejte se na video (30 minut)</span><span class="sxs-lookup"><span data-stu-id="9469d-106">&#9654; Watch video (30 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-implementing-and-using-the-also-purchased-control)
+[<span data-ttu-id="b93b7-106">&#9654;Podívejte se na video (30 minut)</span><span class="sxs-lookup"><span data-stu-id="b93b7-106">&#9654; Watch video (30 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-implementing-and-using-the-also-purchased-control)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="9469d-107">[Předchozí](tailspin-spyworks-creating-and-using-the-popular-products-control.md)
-> [další](tailspin-spyworks-intro-ui-and-edm.md)</span><span class="sxs-lookup"><span data-stu-id="9469d-107">[Previous](tailspin-spyworks-creating-and-using-the-popular-products-control.md)
+> <span data-ttu-id="b93b7-107">[Předchozí](tailspin-spyworks-creating-and-using-the-popular-products-control.md)
+> [další](tailspin-spyworks-intro-ui-and-edm.md)</span><span class="sxs-lookup"><span data-stu-id="b93b7-107">[Previous](tailspin-spyworks-creating-and-using-the-popular-products-control.md)
 [Next](tailspin-spyworks-intro-ui-and-edm.md)</span></span>

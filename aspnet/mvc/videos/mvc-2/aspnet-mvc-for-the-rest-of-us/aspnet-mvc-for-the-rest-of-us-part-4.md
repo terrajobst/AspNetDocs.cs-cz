@@ -12,16 +12,16 @@ ms.openlocfilehash: 919a28e221ed87aef6cc05d95ab95264026180e6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59421443"
 ---
-# <a name="aspnet-mvc-for-the-rest-of-us-part-4"></a><span data-ttu-id="a4445-103">ASP.NET MVC pro nás ostatní: Část 4</span><span class="sxs-lookup"><span data-stu-id="a4445-103">ASP.NET MVC For the Rest of Us: Part 4</span></span>
+# <a name="aspnet-mvc-for-the-rest-of-us-part-4"></a><span data-ttu-id="a1faf-103">ASP.NET MVC pro nás ostatní: Část 4</span><span class="sxs-lookup"><span data-stu-id="a1faf-103">ASP.NET MVC For the Rest of Us: Part 4</span></span>
 
-<span data-ttu-id="a4445-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="a4445-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="a1faf-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="a1faf-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="a4445-105">V tomto videu Joe Stagner společnosti Microsoft přidá kontroler k aplikaci ASP.NET MVC.</span><span class="sxs-lookup"><span data-stu-id="a4445-105">In this video Microsoft's Joe Stagner adds a controller to an ASP.NET MVC application.</span></span>
+<span data-ttu-id="a1faf-105">V tomto videu Joe Stagner společnosti Microsoft přidá kontroler k aplikaci ASP.NET MVC.</span><span class="sxs-lookup"><span data-stu-id="a1faf-105">In this video Microsoft's Joe Stagner adds a controller to an ASP.NET MVC application.</span></span>
 
-[<span data-ttu-id="a4445-106">&#9654;Podívejte se na video (5 minut).</span><span class="sxs-lookup"><span data-stu-id="a4445-106">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-for-the-rest-of-us-part-4)
+[<span data-ttu-id="a1faf-106">&#9654;Podívejte se na video (5 minut).</span><span class="sxs-lookup"><span data-stu-id="a1faf-106">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-for-the-rest-of-us-part-4)
 
 > [!div class="step-by-step"]
-> [<span data-ttu-id="a4445-107">Předchozí</span><span class="sxs-lookup"><span data-stu-id="a4445-107">Previous</span></span>](aspnet-mvc-for-the-rest-of-us-part-3.md)
+> [<span data-ttu-id="a1faf-107">Předchozí</span><span class="sxs-lookup"><span data-stu-id="a1faf-107">Previous</span></span>](aspnet-mvc-for-the-rest-of-us-part-3.md)

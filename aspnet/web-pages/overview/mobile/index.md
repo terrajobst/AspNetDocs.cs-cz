@@ -12,12 +12,12 @@ ms.openlocfilehash: 552d047286adbc53e4161b412432cbf0b3bfb4c9
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59380298"
 ---
-# <a name="mobile"></a><span data-ttu-id="202fd-103">Mobilní zařízení</span><span class="sxs-lookup"><span data-stu-id="202fd-103">Mobile</span></span>
+# <a name="mobile"></a><span data-ttu-id="c0596-103">Mobilní zařízení</span><span class="sxs-lookup"><span data-stu-id="c0596-103">Mobile</span></span>
 
-> <span data-ttu-id="202fd-104">Jak pracovat s mobilními zařízeními v aplikacích ASP.NET Web Pages.</span><span class="sxs-lookup"><span data-stu-id="202fd-104">How to work with Mobile devices in ASP.NET Web Pages applications.</span></span>
+> <span data-ttu-id="c0596-104">Jak pracovat s mobilními zařízeními v aplikacích ASP.NET Web Pages.</span><span class="sxs-lookup"><span data-stu-id="c0596-104">How to work with Mobile devices in ASP.NET Web Pages applications.</span></span>
 
 
-- [<span data-ttu-id="202fd-105">Vykreslení webů s webovými stránkami ASP.NET na mobilních zařízeních</span><span class="sxs-lookup"><span data-stu-id="202fd-105">Rendering ASP.NET Web Pages Sites for Mobile Devices</span></span>](rendering-aspnet-web-pages-sites-for-mobile-devices.md)
+- [<span data-ttu-id="c0596-105">Vykreslení webů s webovými stránkami ASP.NET na mobilních zařízeních</span><span class="sxs-lookup"><span data-stu-id="c0596-105">Rendering ASP.NET Web Pages Sites for Mobile Devices</span></span>](rendering-aspnet-web-pages-sites-for-mobile-devices.md)

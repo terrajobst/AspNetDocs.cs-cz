@@ -12,13 +12,13 @@ ms.openlocfilehash: d8592a65252421752f7201cd2b2d3278d79e272a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59386044"
 ---
-# <a name="validation"></a><span data-ttu-id="75860-103">Ověřování</span><span class="sxs-lookup"><span data-stu-id="75860-103">Validation</span></span>
+# <a name="validation"></a><span data-ttu-id="b5b4f-103">Ověřování</span><span class="sxs-lookup"><span data-stu-id="b5b4f-103">Validation</span></span>
 
-<span data-ttu-id="75860-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="75860-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="b5b4f-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="b5b4f-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="75860-105">V tomto videu Joe vám ukáže, použijte FormValidation ovládacích prvků v ASP.NET pomocí Microsoft Visual Web Developer.</span><span class="sxs-lookup"><span data-stu-id="75860-105">In this video Joe will demonstrate the use of the FormValidation controls in ASP.NET Using Microsoft Visual Web Developer.</span></span>
+<span data-ttu-id="b5b4f-105">V tomto videu Joe vám ukáže, použijte FormValidation ovládacích prvků v ASP.NET pomocí Microsoft Visual Web Developer.</span><span class="sxs-lookup"><span data-stu-id="b5b4f-105">In this video Joe will demonstrate the use of the FormValidation controls in ASP.NET Using Microsoft Visual Web Developer.</span></span>
 
-[<span data-ttu-id="75860-106">&#9654;Podívejte se na video (16 minut)</span><span class="sxs-lookup"><span data-stu-id="75860-106">&#9654; Watch video (16 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/validation)
+[<span data-ttu-id="b5b4f-106">&#9654;Podívejte se na video (16 minut)</span><span class="sxs-lookup"><span data-stu-id="b5b4f-106">&#9654; Watch video (16 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/validation)

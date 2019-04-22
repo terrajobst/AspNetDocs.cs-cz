@@ -12,12 +12,12 @@ ms.openlocfilehash: 575efe383deb8c75ba2714ff543fdcb13043fe66
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59384822"
 ---
-# <a name="jquery"></a><span data-ttu-id="6a825-103">jQuery</span><span class="sxs-lookup"><span data-stu-id="6a825-103">jQuery</span></span>
+# <a name="jquery"></a><span data-ttu-id="9c595-103">jQuery</span><span class="sxs-lookup"><span data-stu-id="9c595-103">jQuery</span></span>
 
-> <span data-ttu-id="6a825-104">Jak používat funkce jQuery stránek v ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="6a825-104">How to use jQuery features in ASP.NET pages.</span></span>
+> <span data-ttu-id="9c595-104">Jak používat funkce jQuery stránek v ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="9c595-104">How to use jQuery features in ASP.NET pages.</span></span>
 
 
-- [<span data-ttu-id="6a825-105">Volání Ajax pomocí jQuery</span><span class="sxs-lookup"><span data-stu-id="6a825-105">Make Ajax Calls Using jQuery</span></span>](how-do-i-make-ajax-calls-using-jquery.md)
+- [<span data-ttu-id="9c595-105">Volání Ajax pomocí jQuery</span><span class="sxs-lookup"><span data-stu-id="9c595-105">Make Ajax Calls Using jQuery</span></span>](how-do-i-make-ajax-calls-using-jquery.md)
