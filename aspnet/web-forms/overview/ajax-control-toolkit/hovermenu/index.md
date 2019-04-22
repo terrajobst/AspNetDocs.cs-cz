@@ -12,13 +12,13 @@ ms.openlocfilehash: aa9bf9e98258fe5219ad87d5828d9d7d93410da9
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59391595"
 ---
-# <a name="hovermenu"></a><span data-ttu-id="9c6ee-103">HoverMenu</span><span class="sxs-lookup"><span data-stu-id="9c6ee-103">HoverMenu</span></span>
+# <a name="hovermenu"></a><span data-ttu-id="80a44-103">HoverMenu</span><span class="sxs-lookup"><span data-stu-id="80a44-103">HoverMenu</span></span>
 
-> <span data-ttu-id="9c6ee-104">Tento kurz ukazuje postupy při použití nabídky HoverMenu ovládacího prvku, které zobrazí místní nabídka, když uživatelé podržíte ukazatel myši nad prvkem.</span><span class="sxs-lookup"><span data-stu-id="9c6ee-104">This tutorial shows how to use the HoverMenu control, which displays a popup when users hold the mouse pointer over an element.</span></span>
+> <span data-ttu-id="80a44-104">Tento kurz ukazuje postupy při použití nabídky HoverMenu ovládacího prvku, které zobrazí místní nabídka, když uživatelé podržíte ukazatel myši nad prvkem.</span><span class="sxs-lookup"><span data-stu-id="80a44-104">This tutorial shows how to use the HoverMenu control, which displays a popup when users hold the mouse pointer over an element.</span></span>
 
 
-- [<span data-ttu-id="9c6ee-105">Použití nabídky HoverMenu s ovládacím prvkem Repeater (C#)</span><span class="sxs-lookup"><span data-stu-id="9c6ee-105">Using HoverMenu with a Repeater Control (C#)</span></span>](using-hovermenu-with-a-repeater-control-cs.md)
-- [<span data-ttu-id="9c6ee-106">Použití nabídky HoverMenu s ovládacím prvkem Repeater (VB)</span><span class="sxs-lookup"><span data-stu-id="9c6ee-106">Using HoverMenu with a Repeater Control (VB)</span></span>](using-hovermenu-with-a-repeater-control-vb.md)
+- [<span data-ttu-id="80a44-105">Použití nabídky HoverMenu s ovládacím prvkem Repeater (C#)</span><span class="sxs-lookup"><span data-stu-id="80a44-105">Using HoverMenu with a Repeater Control (C#)</span></span>](using-hovermenu-with-a-repeater-control-cs.md)
+- [<span data-ttu-id="80a44-106">Použití nabídky HoverMenu s ovládacím prvkem Repeater (VB)</span><span class="sxs-lookup"><span data-stu-id="80a44-106">Using HoverMenu with a Repeater Control (VB)</span></span>](using-hovermenu-with-a-repeater-control-vb.md)

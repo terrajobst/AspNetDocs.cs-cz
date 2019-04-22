@@ -12,13 +12,13 @@ ms.openlocfilehash: 70a21646031d135339fd0582f3b9436eb769faa5
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59388579"
 ---
-# <a name="intro-to-aspnet-web-forms"></a><span data-ttu-id="adcb0-103">Úvod do webových formulářů ASP.NET</span><span class="sxs-lookup"><span data-stu-id="adcb0-103">Intro to ASP.NET Web Forms</span></span>
+# <a name="intro-to-aspnet-web-forms"></a><span data-ttu-id="ce535-103">Úvod do webových formulářů ASP.NET</span><span class="sxs-lookup"><span data-stu-id="ce535-103">Intro to ASP.NET Web Forms</span></span>
 
-<span data-ttu-id="adcb0-104">podle [Scott Hanselman](https://github.com/shanselman)</span><span class="sxs-lookup"><span data-stu-id="adcb0-104">by [Scott Hanselman](https://github.com/shanselman)</span></span>
+<span data-ttu-id="ce535-104">podle [Scott Hanselman](https://github.com/shanselman)</span><span class="sxs-lookup"><span data-stu-id="ce535-104">by [Scott Hanselman](https://github.com/shanselman)</span></span>
 
-<span data-ttu-id="adcb0-105">Scott Hanselman uvede pětiminutový Úvod do webových formulářů ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="adcb0-105">Scott Hanselman presents a 5 minute introduction to ASP.NET Web Forms.</span></span>
+<span data-ttu-id="ce535-105">Scott Hanselman uvede pětiminutový Úvod do webových formulářů ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="ce535-105">Scott Hanselman presents a 5 minute introduction to ASP.NET Web Forms.</span></span>
 
-[<span data-ttu-id="adcb0-106">&#9654;Podívejte se na video (5 minut).</span><span class="sxs-lookup"><span data-stu-id="adcb0-106">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/5-minute-introduction-to-aspnet-web-forms)
+[<span data-ttu-id="ce535-106">&#9654;Podívejte se na video (5 minut).</span><span class="sxs-lookup"><span data-stu-id="ce535-106">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/5-minute-introduction-to-aspnet-web-forms)

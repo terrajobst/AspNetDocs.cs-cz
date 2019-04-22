@@ -12,13 +12,13 @@ ms.openlocfilehash: 78108edae6736242d497b88f376ac7d6766d530b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59389333"
 ---
-# <a name="how-do-i-make-greater-use-of-caching"></a><span data-ttu-id="4c8c5-104">[Postup:] Větší využití ukládání do mezipaměti, aby se?</span><span class="sxs-lookup"><span data-stu-id="4c8c5-104">[How Do I:] Make Greater use of Caching?</span></span>
+# <a name="how-do-i-make-greater-use-of-caching"></a><span data-ttu-id="a5dc7-104">[Postup:] Větší využití ukládání do mezipaměti, aby se?</span><span class="sxs-lookup"><span data-stu-id="a5dc7-104">[How Do I:] Make Greater use of Caching?</span></span>
 
-<span data-ttu-id="4c8c5-105">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="4c8c5-105">by [Microsoft](https://github.com/microsoft)</span></span>
+<span data-ttu-id="a5dc7-105">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="a5dc7-105">by [Microsoft](https://github.com/microsoft)</span></span>
 
-<span data-ttu-id="4c8c5-106">Podívejte se na předvedení stránky ukládání výstupu do mezipaměti, za nímž následuje přehled rozhraní API mezipaměti, který ukazuje, jak efektivně svázat ovládací prvek prezentace dat do souboru XML.</span><span class="sxs-lookup"><span data-stu-id="4c8c5-106">Watch a demonstration of Partial-Page Output Caching, followed by an overview of the Cache API that demonstrates how to efficiently bind a data presentation control to an XML file.</span></span>
+<span data-ttu-id="a5dc7-106">Podívejte se na předvedení stránky ukládání výstupu do mezipaměti, za nímž následuje přehled rozhraní API mezipaměti, který ukazuje, jak efektivně svázat ovládací prvek prezentace dat do souboru XML.</span><span class="sxs-lookup"><span data-stu-id="a5dc7-106">Watch a demonstration of Partial-Page Output Caching, followed by an overview of the Cache API that demonstrates how to efficiently bind a data presentation control to an XML file.</span></span>
 
-[<span data-ttu-id="4c8c5-107">&#9654;Podívejte se na video (15 minut)</span><span class="sxs-lookup"><span data-stu-id="4c8c5-107">&#9654; Watch video (15 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-greater-use-of-caching)
+[<span data-ttu-id="a5dc7-107">&#9654;Podívejte se na video (15 minut)</span><span class="sxs-lookup"><span data-stu-id="a5dc7-107">&#9654; Watch video (15 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-greater-use-of-caching)

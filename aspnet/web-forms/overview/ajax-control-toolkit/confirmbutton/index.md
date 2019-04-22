@@ -12,13 +12,13 @@ ms.openlocfilehash: 527df94a1c578aa06471ade41e43d44c127bacfb
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59381819"
 ---
-# <a name="confirmbutton"></a><span data-ttu-id="4b733-103">ConfirmButton</span><span class="sxs-lookup"><span data-stu-id="4b733-103">ConfirmButton</span></span>
+# <a name="confirmbutton"></a><span data-ttu-id="acc3c-103">ConfirmButton</span><span class="sxs-lookup"><span data-stu-id="acc3c-103">ConfirmButton</span></span>
 
-> <span data-ttu-id="4b733-104">Tento kurz ukazuje, jak pomocí ovládacího prvku ConfirmButton, která zobrazuje hodnota Ano/žádnou místní nabídku, když uživatel klikne na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="4b733-104">This tutorial shows how to use the ConfirmButton control, which displays a Yes/No popup when the user clicks a button.</span></span>
+> <span data-ttu-id="acc3c-104">Tento kurz ukazuje, jak pomocí ovládacího prvku ConfirmButton, která zobrazuje hodnota Ano/žádnou místní nabídku, když uživatel klikne na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="acc3c-104">This tutorial shows how to use the ConfirmButton control, which displays a Yes/No popup when the user clicks a button.</span></span>
 
 
-- [<span data-ttu-id="4b733-105">Použití ovládacího prvku ConfirmButton v repeateru (C#)</span><span class="sxs-lookup"><span data-stu-id="4b733-105">Using a ConfirmButton In a Repeater (C#)</span></span>](using-a-confirmbutton-in-a-repeater-cs.md)
-- [<span data-ttu-id="4b733-106">Použití ovládacího prvku ConfirmButton v repeateru (VB)</span><span class="sxs-lookup"><span data-stu-id="4b733-106">Using a ConfirmButton In a Repeater (VB)</span></span>](using-a-confirmbutton-in-a-repeater-vb.md)
+- [<span data-ttu-id="acc3c-105">Použití extenderu ConfirmButton v repeateru (C#)</span><span class="sxs-lookup"><span data-stu-id="acc3c-105">Using a ConfirmButton In a Repeater (C#)</span></span>](using-a-confirmbutton-in-a-repeater-cs.md)
+- [<span data-ttu-id="acc3c-106">Použití extenderu ConfirmButton v repeateru (VB)</span><span class="sxs-lookup"><span data-stu-id="acc3c-106">Using a ConfirmButton In a Repeater (VB)</span></span>](using-a-confirmbutton-in-a-repeater-vb.md)

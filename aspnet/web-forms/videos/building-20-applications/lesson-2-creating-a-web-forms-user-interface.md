@@ -12,18 +12,18 @@ ms.openlocfilehash: bc4a4aeb6311c67e465068f507492bffd22c2b37
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59386778"
 ---
-# <a name="lesson-2-creating-a-web-forms-user-interface"></a><span data-ttu-id="99244-104">[2. lekce:] Vytváření uživatelského rozhraní webových formulářů</span><span class="sxs-lookup"><span data-stu-id="99244-104">[Lesson 2:] Creating a Web Forms User Interface</span></span>
+# <a name="lesson-2-creating-a-web-forms-user-interface"></a><span data-ttu-id="a620a-104">[2. lekce:] Vytváření uživatelského rozhraní webových formulářů</span><span class="sxs-lookup"><span data-stu-id="a620a-104">[Lesson 2:] Creating a Web Forms User Interface</span></span>
 
-<span data-ttu-id="99244-105">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="99244-105">by [Microsoft](https://github.com/microsoft)</span></span>
+<span data-ttu-id="a620a-105">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="a620a-105">by [Microsoft](https://github.com/microsoft)</span></span>
 
-<span data-ttu-id="99244-106">V této lekci se zaměříte různých ASP.NET2.0 ovládací prvky serveru k dispozici v aplikaci Visual Web Developer Express Edition.</span><span class="sxs-lookup"><span data-stu-id="99244-106">In this lesson, you will explore the various ASP.NET2.0 server controls available in Visual Web Developer Express Edition.</span></span> <span data-ttu-id="99244-107">Kromě toho se začnou Seznamte se s windows v aplikaci Visual Web Developer.</span><span class="sxs-lookup"><span data-stu-id="99244-107">In addition, you will begin to get familiar with the windows in Visual Web Developer.</span></span>
+<span data-ttu-id="a620a-106">V této lekci se zaměříte různých ASP.NET2.0 ovládací prvky serveru k dispozici v aplikaci Visual Web Developer Express Edition.</span><span class="sxs-lookup"><span data-stu-id="a620a-106">In this lesson, you will explore the various ASP.NET2.0 server controls available in Visual Web Developer Express Edition.</span></span> <span data-ttu-id="a620a-107">Kromě toho se začnou Seznamte se s windows v aplikaci Visual Web Developer.</span><span class="sxs-lookup"><span data-stu-id="a620a-107">In addition, you will begin to get familiar with the windows in Visual Web Developer.</span></span>
 
-[<span data-ttu-id="99244-108">&#9654;Podívejte se na video (49 minuty)</span><span class="sxs-lookup"><span data-stu-id="99244-108">&#9654; Watch video (49 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-2-creating-a-web-forms-user-interface)
+[<span data-ttu-id="a620a-108">&#9654;Podívejte se na video (49 minuty)</span><span class="sxs-lookup"><span data-stu-id="a620a-108">&#9654; Watch video (49 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-2-creating-a-web-forms-user-interface)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="99244-109">[Předchozí](lesson-1-getting-started-with-visual-web-developer-express.md)
-> [další](lesson-3-understanding-more-about-events-and-postback.md)</span><span class="sxs-lookup"><span data-stu-id="99244-109">[Previous](lesson-1-getting-started-with-visual-web-developer-express.md)
+> <span data-ttu-id="a620a-109">[Předchozí](lesson-1-getting-started-with-visual-web-developer-express.md)
+> [další](lesson-3-understanding-more-about-events-and-postback.md)</span><span class="sxs-lookup"><span data-stu-id="a620a-109">[Previous](lesson-1-getting-started-with-visual-web-developer-express.md)
 [Next](lesson-3-understanding-more-about-events-and-postback.md)</span></span>

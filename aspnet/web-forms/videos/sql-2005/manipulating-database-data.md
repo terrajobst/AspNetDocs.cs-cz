@@ -12,18 +12,18 @@ ms.openlocfilehash: 10f9379a27f96ac4acb77af1a6062a42aaecc14f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59391673"
 ---
-# <a name="manipulating-database-data"></a><span data-ttu-id="8444b-104">Manipulace s databázovými daty</span><span class="sxs-lookup"><span data-stu-id="8444b-104">Manipulating Database Data</span></span>
+# <a name="manipulating-database-data"></a><span data-ttu-id="2fb99-104">Manipulace s databázovými daty</span><span class="sxs-lookup"><span data-stu-id="2fb99-104">Manipulating Database Data</span></span>
 
-<span data-ttu-id="8444b-105">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="8444b-105">by [Microsoft](https://github.com/microsoft)</span></span>
+<span data-ttu-id="2fb99-105">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="2fb99-105">by [Microsoft](https://github.com/microsoft)</span></span>
 
-<span data-ttu-id="8444b-106">Systému SQL Server začátečníky se dozvíte o objekty technologie ADO.NET a spuštění příkazu SQL ze ADO.NET.</span><span class="sxs-lookup"><span data-stu-id="8444b-106">SQL Server beginners will learn about ADO.NET objects and execution of SQL statement from ADO.NET.</span></span> <span data-ttu-id="8444b-107">Prozkoumejte SQL a další informace o odstranění příkazů insert, update a.</span><span class="sxs-lookup"><span data-stu-id="8444b-107">Explore SQL and learn about insert, update, and delete statements.</span></span>
+<span data-ttu-id="2fb99-106">Systému SQL Server začátečníky se dozvíte o objekty technologie ADO.NET a spuštění příkazu SQL ze ADO.NET.</span><span class="sxs-lookup"><span data-stu-id="2fb99-106">SQL Server beginners will learn about ADO.NET objects and execution of SQL statement from ADO.NET.</span></span> <span data-ttu-id="2fb99-107">Prozkoumejte SQL a další informace o odstranění příkazů insert, update a.</span><span class="sxs-lookup"><span data-stu-id="2fb99-107">Explore SQL and learn about insert, update, and delete statements.</span></span>
 
-[<span data-ttu-id="8444b-108">&#9654;Podívejte se na video (40 minut)</span><span class="sxs-lookup"><span data-stu-id="8444b-108">&#9654; Watch video (40 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/manipulating-database-data)
+[<span data-ttu-id="2fb99-108">&#9654;Podívejte se na video (40 minut)</span><span class="sxs-lookup"><span data-stu-id="2fb99-108">&#9654; Watch video (40 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/manipulating-database-data)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="8444b-109">[Předchozí](designing-relational-database-tables.md)
-> [další](more-structured-query-language.md)</span><span class="sxs-lookup"><span data-stu-id="8444b-109">[Previous](designing-relational-database-tables.md)
+> <span data-ttu-id="2fb99-109">[Předchozí](designing-relational-database-tables.md)
+> [další](more-structured-query-language.md)</span><span class="sxs-lookup"><span data-stu-id="2fb99-109">[Previous](designing-relational-database-tables.md)
 [Next](more-structured-query-language.md)</span></span>

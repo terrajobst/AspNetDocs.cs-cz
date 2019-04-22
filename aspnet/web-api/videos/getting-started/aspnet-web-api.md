@@ -12,11 +12,11 @@ ms.openlocfilehash: d71a92f1c8b027a966cbe5a35c0947df009b2bba
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59391959"
 ---
-# <a name="aspnet-web-api"></a><span data-ttu-id="ada34-103">Rozhraní API pro ASP.NET Web</span><span class="sxs-lookup"><span data-stu-id="ada34-103">ASP.NET Web API</span></span>
+# <a name="aspnet-web-api"></a><span data-ttu-id="afab4-103">Rozhraní API pro ASP.NET Web</span><span class="sxs-lookup"><span data-stu-id="afab4-103">ASP.NET Web API</span></span>
 
-<span data-ttu-id="ada34-104">podle [Scott Hanselman](https://github.com/shanselman)</span><span class="sxs-lookup"><span data-stu-id="ada34-104">by [Scott Hanselman](https://github.com/shanselman)</span></span>
+<span data-ttu-id="afab4-104">podle [Scott Hanselman](https://github.com/shanselman)</span><span class="sxs-lookup"><span data-stu-id="afab4-104">by [Scott Hanselman](https://github.com/shanselman)</span></span>
 
-[<span data-ttu-id="ada34-105">&#9654;Podívejte se na video (6 minut)</span><span class="sxs-lookup"><span data-stu-id="ada34-105">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-web-api)
+[<span data-ttu-id="afab4-105">&#9654;Podívejte se na video (6 minut)</span><span class="sxs-lookup"><span data-stu-id="afab4-105">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-web-api)

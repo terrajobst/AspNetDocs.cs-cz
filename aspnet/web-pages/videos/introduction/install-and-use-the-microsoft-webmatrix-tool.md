@@ -12,17 +12,17 @@ ms.openlocfilehash: 6527960a31ab5d59beb5276e6dd05d8d03d81ad6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59387032"
 ---
-# <a name="install-and-use-the-microsoft-webmatrix-tool"></a><span data-ttu-id="1cdc2-103">Instalace a použití nástroje Microsoft WebMatrix</span><span class="sxs-lookup"><span data-stu-id="1cdc2-103">Install and Use the Microsoft WebMatrix Tool</span></span>
+# <a name="install-and-use-the-microsoft-webmatrix-tool"></a><span data-ttu-id="215f5-103">Instalace a použití nástroje Microsoft WebMatrix</span><span class="sxs-lookup"><span data-stu-id="215f5-103">Install and Use the Microsoft WebMatrix Tool</span></span>
 
-<span data-ttu-id="1cdc2-104">podle [Advaiya](https://twitter.com/Advaiyasolns)</span><span class="sxs-lookup"><span data-stu-id="1cdc2-104">by [Advaiya](https://twitter.com/Advaiyasolns)</span></span>
+<span data-ttu-id="215f5-104">podle [Advaiya](https://twitter.com/Advaiyasolns)</span><span class="sxs-lookup"><span data-stu-id="215f5-104">by [Advaiya](https://twitter.com/Advaiyasolns)</span></span>
 
 > [!NOTE] 
-> <span data-ttu-id="1cdc2-105">Služba WebMatrix už nedoporučuje jako integrované vývojové prostředí pro ASP.NET Web Pages.</span><span class="sxs-lookup"><span data-stu-id="1cdc2-105">WebMatrix is no longer recommended as an integrated development environment for ASP.NET Web Pages.</span></span> <span data-ttu-id="1cdc2-106">Použití [sady Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).</span><span class="sxs-lookup"><span data-stu-id="1cdc2-106">Use [Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) or [Visual Studio Code](https://code.visualstudio.com/).</span></span>
+> <span data-ttu-id="215f5-105">Služba WebMatrix už nedoporučuje jako integrované vývojové prostředí pro ASP.NET Web Pages.</span><span class="sxs-lookup"><span data-stu-id="215f5-105">WebMatrix is no longer recommended as an integrated development environment for ASP.NET Web Pages.</span></span> <span data-ttu-id="215f5-106">Použití [sady Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).</span><span class="sxs-lookup"><span data-stu-id="215f5-106">Use [Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) or [Visual Studio Code](https://code.visualstudio.com/).</span></span>
 
 
-<span data-ttu-id="1cdc2-107">1. část vám představí službu WebMatrix a jak nainstalovat a používat ho.</span><span class="sxs-lookup"><span data-stu-id="1cdc2-107">Part 1 introduces you to WebMatrix and how you can install and use it.</span></span>
+<span data-ttu-id="215f5-107">1. část vám představí službu WebMatrix a jak nainstalovat a používat ho.</span><span class="sxs-lookup"><span data-stu-id="215f5-107">Part 1 introduces you to WebMatrix and how you can install and use it.</span></span>
 
-[<span data-ttu-id="1cdc2-108">&#9654;Podívejte se na video (2 minuty)</span><span class="sxs-lookup"><span data-stu-id="1cdc2-108">&#9654; Watch video (2 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/install-and-use-the-microsoft-webmatrix-tool)
+[<span data-ttu-id="215f5-108">&#9654;Podívejte se na video (2 minuty)</span><span class="sxs-lookup"><span data-stu-id="215f5-108">&#9654; Watch video (2 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/install-and-use-the-microsoft-webmatrix-tool)
