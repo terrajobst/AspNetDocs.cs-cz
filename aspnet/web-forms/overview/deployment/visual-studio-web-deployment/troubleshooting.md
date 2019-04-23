@@ -12,7 +12,7 @@ ms.openlocfilehash: b59cd34036c733579e678eab78097d3393f3e671
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59421079"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-troubleshooting"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Poradce při potížích
@@ -306,7 +306,7 @@ Publikování selže a zobrazí se chyba, která znamená, že nemáte oprávně
 
 ### <a name="possible-cause-and-solution"></a>Možná příčina a řešení
 
-Ve výchozím nastavení, sady Visual Studio oprávnění ke čtení v kořenové složce serveru a oprávnění k zápisu na aplikaci\_složku Data. Pokud víte, že výchozí oprávnění u složky webu jsou správné a není potřeba nastavit, je toto chování zakázat tak, že přidáte ** &lt;IncludeSetACLProviderOn cílové&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt; ** souboru profilu publikování (Chcete-li mít vliv na jeden profil) nebo do souboru wpp.targets (Chcete-li mít vliv na všechny profily). Informace o tom, jak tyto soubory upravit, naleznete v tématu [jak: Upravit nastavení nasazení profilu (.pubxml) soubory](https://msdn.microsoft.com/library/ff398069.aspx).
+Ve výchozím nastavení, sady Visual Studio oprávnění ke čtení v kořenové složce serveru a oprávnění k zápisu na aplikaci\_složku Data. Pokud víte, že výchozí oprávnění u složky webu jsou správné a není potřeba nastavit, je toto chování zakázat tak, že přidáte **&lt;IncludeSetACLProviderOn cílové&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;** souboru profilu publikování (Chcete-li mít vliv na jeden profil) nebo do souboru wpp.targets (Chcete-li mít vliv na všechny profily). Informace o tom, jak tyto soubory upravit, naleznete v tématu [jak: Upravit nastavení nasazení profilu (.pubxml) soubory](https://msdn.microsoft.com/library/ff398069.aspx).
 
 ## <a name="access-denied-errors-when-the-application-tries-to-write-to-an-application-folder"></a>Přístup byl odepřen chyby, když se aplikace snaží k zápisu do složky, do aplikace
 
@@ -316,7 +316,7 @@ Vaše aplikace chyby při pokusu vytvořit nebo upravit soubor v jednom ze slož
 
 ### <a name="possible-cause-and-solution"></a>Možná příčina a řešení
 
-Ve výchozím nastavení, sady Visual Studio oprávnění ke čtení v kořenové složce serveru a oprávnění k zápisu na aplikaci\_složku Data. Pokud vaše aplikace potřebuje oprávnění k zápisu do podsložky, jak je uvedené v nastavení oprávnění pro složky a zavedení do produkčního prostředí kurzy v této sérii můžete nastavit oprávnění pro tuto složku. Pokud vaše aplikace potřebuje oprávnění k zápisu do kořenové složky webu, je nutné zabránit v nastavení přístup jen pro čtení pro kořenovou složku tak, že přidáte ** &lt;IncludeSetACLProviderOn cílové&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt; ** souboru profilu publikování (Chcete-li mít vliv na jeden profil) nebo do souboru wpp.targets (Chcete-li mít vliv na všechny profily). Informace o tom, jak tyto soubory upravit, naleznete v tématu [jak: Upravit nastavení nasazení profilu (.pubxml) soubory](https://msdn.microsoft.com/library/ff398069.aspx).
+Ve výchozím nastavení, sady Visual Studio oprávnění ke čtení v kořenové složce serveru a oprávnění k zápisu na aplikaci\_složku Data. Pokud vaše aplikace potřebuje oprávnění k zápisu do podsložky, jak je uvedené v nastavení oprávnění pro složky a zavedení do produkčního prostředí kurzy v této sérii můžete nastavit oprávnění pro tuto složku. Pokud vaše aplikace potřebuje oprávnění k zápisu do kořenové složky webu, je nutné zabránit v nastavení přístup jen pro čtení pro kořenovou složku tak, že přidáte **&lt;IncludeSetACLProviderOn cílové&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;** souboru profilu publikování (Chcete-li mít vliv na jeden profil) nebo do souboru wpp.targets (Chcete-li mít vliv na všechny profily). Informace o tom, jak tyto soubory upravit, naleznete v tématu [jak: Upravit nastavení nasazení profilu (.pubxml) soubory](https://msdn.microsoft.com/library/ff398069.aspx).
 
 <a id="aspnet45error"></a>
 
