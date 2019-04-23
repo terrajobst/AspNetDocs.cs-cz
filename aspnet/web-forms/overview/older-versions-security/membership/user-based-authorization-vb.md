@@ -12,7 +12,7 @@ ms.openlocfilehash: 1aba8e068e80d2c2533c8aa68e75518f92b71a93
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59420650"
 ---
 # <a name="user-based-authorization-vb"></a>Ověřování založené na uživatelích (VB)
@@ -45,7 +45,7 @@ Prozkoumáme syntaxe autorizačních pravidel adres URL v kroku 1, ale nejprve P
 Obrázek 1 ukazuje pracovní postup kanálu ASP.NET `FormsAuthenticationModule`a `UrlAuthorizationModule` při přijetí neoprávněného požadavku. Konkrétně se obrázek 1 ukazuje požadavek anonymní návštěvníkem pro `ProtectedPage.aspx`, což je stránka, která se odepře přístup pro anonymní uživatele. Protože je k anonymní, návštěvník `UrlAuthorizationModule` zruší požadavek a vrátí HTTP 401 Unauthorized status. `FormsAuthenticationModule` Stavu 401 převede po přesměrování 302 na přihlašovací stránku. Po ověření uživatele přes stránku pro přihlášení, že je přesměrován na `ProtectedPage.aspx`. Tentokrát `FormsAuthenticationModule` identifikuje uživatele na základě jeho lístku ověřování. Teď, když je ověřen návštěvníka, `UrlAuthorizationModule` povoluje přístup ke stránce.
 
 
-[![Tmá ověřování pomocí formulářů a pracovní postup autorizace adresy URL](user-based-authorization-vb/_static/image2.png)](user-based-authorization-vb/_static/image1.png)
+[![Ověřování pomocí formulářů a pracovní postup autorizace adresy URL](user-based-authorization-vb/_static/image2.png)](user-based-authorization-vb/_static/image1.png)
 
 **Obrázek 1**: Ověřování pomocí formulářů a pracovní postup autorizace adresy URL ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image3.png))
 
@@ -59,7 +59,7 @@ Představte si, že náš web měli jeho autorizačních pravidel adres URL nako
 Obrázek 2 znázorňuje tento pracovní postup matoucí.
 
 
-[![Tmá výchozí pracovní postup může mít za následek cyklus matoucí](user-based-authorization-vb/_static/image5.png)](user-based-authorization-vb/_static/image4.png)
+[![Výchozí pracovní postup může mít za následek matoucí cyklu](user-based-authorization-vb/_static/image5.png)](user-based-authorization-vb/_static/image4.png)
 
 **Obrázek 2**: Výchozí pracovní postup může mít za následek cyklus matoucí ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image6.png))
 
@@ -116,7 +116,7 @@ Technologie ASP.NET umožňuje snadno definovat různé autorizačních pravidel
 Umožňuje aktualizovat našeho webu tak, aby pouze ověřeným uživatelům najdete na stránkách ASP.NET `Membership` složky. K tomu je potřeba přidat `Web.config` do souboru `Membership` složku a její nastavení autorizace anonymním uživatelům odepřít. Klikněte pravým tlačítkem myši `Membership` složku v Průzkumníku řešení zvolte v nabídce Přidat novou položku v místní nabídce a přidejte nový soubor webové konfigurace s názvem `Web.config`.
 
 
-[![Add soubor Web.config ke složce členství](user-based-authorization-vb/_static/image8.png)](user-based-authorization-vb/_static/image7.png)
+[![Přidat soubor Web.config ke složce členství](user-based-authorization-vb/_static/image8.png)](user-based-authorization-vb/_static/image7.png)
 
 **Obrázek 3**: Přidat `Web.config` do souboru `Membership` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image9.png))
 
@@ -124,7 +124,7 @@ Umožňuje aktualizovat našeho webu tak, aby pouze ověřeným uživatelům naj
 Váš projekt v tomto okamžiku by měla obsahovat dva `Web.config` soubory: jeden v kořenovém adresáři a druhý v `Membership` složky.
 
 
-[![YAplikace by měla nyní obsahovat dva soubory Web.config](user-based-authorization-vb/_static/image11.png)](user-based-authorization-vb/_static/image10.png)
+[![Vaše aplikace by měla nyní obsahovat dva soubory Web.config](user-based-authorization-vb/_static/image11.png)](user-based-authorization-vb/_static/image10.png)
 
 **Obrázek 4**: Vaše aplikace by měla nyní obsahovat dvě `Web.config` soubory ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image12.png))
 
@@ -140,7 +140,7 @@ K otestování této změny, přejděte na domovskou stránku v prohlížeči a 
 Kliknutím na odkaz vytváření uživatelských účtů v levém sloupci. Tím přejdete na `~/Membership/CreatingUserAccounts.aspx`. Protože `Web.config` ve `Membership` složky definuje autorizační pravidla za účelem zakázat anonymní přístup `UrlAuthorizationModule` zruší požadavek a vrátí HTTP 401 Unauthorized status. `FormsAuthenticationModule` Upraví to 302 stavu přesměrování, odeslání na přihlašovací stránku. Všimněte si, že na stránce jsme se pokouší o přístup (`CreatingUserAccounts.aspx`) je předána na stránku pro přihlášení přes `ReturnUrl` parametr řetězce dotazu.
 
 
-[![Since adresa URL autorizační pravidla zakázat anonymní přístup, jsme přesměrováni na přihlašovací stránku](user-based-authorization-vb/_static/image14.png)](user-based-authorization-vb/_static/image13.png)
+[![Od adresy URL autorizační pravidla zakázat anonymní přístup jsme přesměrováni na stránku pro přihlášení](user-based-authorization-vb/_static/image14.png)](user-based-authorization-vb/_static/image13.png)
 
 **Obrázek 5**: Od adresy URL autorizační pravidla zakázat anonymní přístup, jsme přesměrováni na stránku pro přihlášení ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image15.png))
 
@@ -196,7 +196,7 @@ Výše uvedený kód přesměruje ověřený, neoprávněným uživatelům `Unau
 V tuto chvíli jsme jsou anonymní, takže `Request.IsAuthenticated` vrátí `False` a My se přesměruje na `UnauthorizedAccess.aspx`. Místo toho se zobrazí přihlašovací stránku. Přihlaste se pod jiným než Tito, jako je například Bruce. Po zadání příslušných přihlašovacích údajů, přihlašovací stránce přesměruje nám zpět na `~/Membership/CreatingUserAccounts.aspx`. Ale vzhledem k tomu, že tato stránka je přístupná pouze pro Tito, jsme jsou neoprávněný přístup k jeho zobrazení a o tom bezodkladně informuje přesměrováni na přihlašovací stránku. Tentokrát ale `Request.IsAuthenticated` vrátí `True` (a `ReturnUrl` parametr querystring existuje), takže jsme se přesměrují na `UnauthorizedAccess.aspx` stránky.
 
 
-[![Authenticated, neoprávněným uživatelům se přesměrují na UnauthorizedAccess.aspx](user-based-authorization-vb/_static/image17.png)](user-based-authorization-vb/_static/image16.png)
+[![Ověření, neoprávněným uživatelům se přesměrují na UnauthorizedAccess.aspx](user-based-authorization-vb/_static/image17.png)](user-based-authorization-vb/_static/image16.png)
 
 **Obrázek 6**: Ověření, neoprávněným uživatelům se přesměrují na `UnauthorizedAccess.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image18.png))
 
@@ -236,7 +236,7 @@ Výše uvedený kód používá [ `DirectoryInfo` třídy](https://msdn.microsof
 Za chvíli tuto stránku prostřednictvím prohlížeče. Zobrazí seznam souborů, které se nacházejí v kořenovém adresáři aplikace. Kliknutím na Zobrazit nebo odstranit LinkButtons způsobí zpětné volání, ale nic se dojít, protože jsme dosud k vytvoření obslužné rutiny událostí nezbytné.
 
 
-[![TGridView uvádí soubory v kořenovém adresáři webové aplikace](user-based-authorization-vb/_static/image20.png)](user-based-authorization-vb/_static/image19.png)
+[![GridView Vypíše soubory v kořenovém adresáři webové aplikace](user-based-authorization-vb/_static/image20.png)](user-based-authorization-vb/_static/image19.png)
 
 **Obrázek 7**: GridView Vypíše soubory v kořenovém adresáři webové aplikace ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image21.png))
 
@@ -252,7 +252,7 @@ Dále vytvořte obslužnou rutinu události pro prvku GridView [ `SelectedIndexC
 Tento kód používá prvku GridView `SelectedValue` a určí název úplný soubor vybraný soubor. Interně jsou `DataKeys` kolekce se odkazuje, aby bylo možné získat `SelectedValue`, takže je nutné nastavit prvku GridView `DataKeyNames` vlastnost na název, jak je popsáno dříve v tomto kroku. [ `File` Třídy](https://msdn.microsoft.com/library/system.io.file.aspx) slouží k načtení obsahu vybraný soubor do řetězce, který je poté přiřazen `FileContents` textového `Text` vlastnost, a tím zobrazení obsahu vybraný soubor na stránce.
 
 
-[![The vybraný soubor na obsah se zobrazí v textovém poli](user-based-authorization-vb/_static/image23.png)](user-based-authorization-vb/_static/image22.png)
+[![Soubor vybraný obsah se zobrazí v textovém poli](user-based-authorization-vb/_static/image23.png)](user-based-authorization-vb/_static/image22.png)
 
 **Obrázek 8**: Soubor vybraný obsah se zobrazí v textovém poli ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image24.png))
 
@@ -268,7 +268,7 @@ Nakonec přidejte obslužnou rutinu události s následujícím kódem pro prvku
 Kód jednoduše zobrazí celý název souboru k odstranění ve `FileContents` TextBox *bez* skutečného odstranění souboru.
 
 
-[![Clicking se odstranění tlačítka ve skutečnosti neodstraní souboru](user-based-authorization-vb/_static/image26.png)](user-based-authorization-vb/_static/image25.png)
+[![Kliknutím na tlačítko Odstranit neodstraní ve skutečnosti soubor](user-based-authorization-vb/_static/image26.png)](user-based-authorization-vb/_static/image25.png)
 
 **Obrázek 9**: Kliknutím odstranit tlačítko ve skutečnosti neodstraní na soubor ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image27.png))
 
@@ -298,7 +298,7 @@ Tento kód je však již nebude platný. Přechodem `FileContents` textového po
 Po přesunutí textového pole LoginView `LoggedInTemplate` a aktualizaci na stránku kódu do textového pole pomocí odkazu `FindControl("controlId")` vzorku naleznete na stránce jako anonymní uživatel. Obrázek 10 ukazuje, `FileContents` textové pole nezobrazí. Na prvek LinkButton zobrazení je však stále zobrazen.
 
 
-[![Tmá ovládací prvek zobrazení přihlášení pouze vykreslí FileContents textové pole pro ověřené uživatele](user-based-authorization-vb/_static/image29.png)](user-based-authorization-vb/_static/image28.png)
+[![Ovládacího prvku LoginView pouze vykresluje textové pole FileContents ověřených uživatelů](user-based-authorization-vb/_static/image29.png)](user-based-authorization-vb/_static/image28.png)
 
 **Obrázek 10**: Zobrazení přihlášení pouze vykresluje `FileContents` textové pole pro ověřené uživatele ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image30.png))
 
@@ -318,7 +318,7 @@ Jeden způsob, jak skrýt tlačítko pro anonymní uživatele je převést na po
 Jak ukazuje obrázek 11, není konečný výsledek, že poměrně jako zobrazení sloupce se stále zobrazí i v případě, že jsou skryté LinkButtons zobrazení ve sloupci. Podíváme se na tom, jak skrýt celý sloupec ovládacího prvku GridView (a ne jenom na prvek LinkButton) v další části.
 
 
-[![Tovládací prvek zobrazení přihlášení skryje LinkButtons zobrazení pro anonymní návštěvníků](user-based-authorization-vb/_static/image32.png)](user-based-authorization-vb/_static/image31.png)
+[![Ovládacího prvku LoginView skryje LinkButtons zobrazení pro anonymní uživatelé](user-based-authorization-vb/_static/image32.png)](user-based-authorization-vb/_static/image31.png)
 
 **Obrázek 11**: Ovládacího prvku LoginView skryje LinkButtons zobrazení pro anonymní uživatelé ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image33.png))
 
@@ -341,12 +341,12 @@ Přidejte následující kód, který `Page_Load` obslužná rutina události p�
 Jak jsme probírali v [ *Přehled ověřování založené na formulářích* ](../introduction/an-overview-of-forms-authentication-vb.md) kurzu `User.Identity.Name` vrátí název identity. To odpovídá zadané v ovládacím prvku přihlašovací uživatelské jméno. Pokud se Tito navštívit stránky, druhý sloupec prvku GridView `Visible` je nastavena na `True`; v opačném případě je nastavený na `False`. Net výsledkem je, že pokud někdo jiný než Tito navštíví stránku, jiný uživatel ověřený nebo anonymní uživatel, odstranit sloupec není vykreslen (viz obrázek 12); Pokud však Tito navštíví stránku, odstranit sloupec je k dispozici (viz obrázek 13).
 
 
-[![TOdstranit sloupec není vykresleno při navštívené podle někdo jiný než Tito (například Bruce)](user-based-authorization-vb/_static/image35.png)](user-based-authorization-vb/_static/image34.png)
+[![Odstranit sloupec není vykresleno při navštívené podle někdo jiný než Tito (například Bruce)](user-based-authorization-vb/_static/image35.png)](user-based-authorization-vb/_static/image34.png)
 
 **Obrázek 12**: Odstranit sloupec není vykresleno při navštívené podle někdo jiný než Tito (například Bruce) ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image36.png))
 
 
-[![Tmohl odstranit sloupec je vykreslen pro Tito](user-based-authorization-vb/_static/image38.png)](user-based-authorization-vb/_static/image37.png)
+[![Odstranit sloupec je vykreslen pro Tito](user-based-authorization-vb/_static/image38.png)](user-based-authorization-vb/_static/image37.png)
 
 **Obrázek 13**: Odstranit sloupec je vykreslen pro Tito ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image39.png))
 
@@ -370,7 +370,7 @@ Atribut pro `SelectedIndexChanged` určují obslužné rutiny událostí, které
 Pokud nějakým způsobem, jiným uživatelem, než Tito pokusy o spuštění `RowDeleting` obslužná rutina události nebo jiné ověřený uživatel pokusí spustit `SelectedIndexChanged` obslužná rutina události, vyvolá se modul .NET runtime `SecurityException`.
 
 
-[![If, které kontext zabezpečení nemá oprávnění k provádění metody, je vyvolána SecurityException –](user-based-authorization-vb/_static/image41.png)](user-based-authorization-vb/_static/image40.png)
+[![Pokud je kontext zabezpečení nemá oprávnění k provádění metody, je vyvolána SecurityException –](user-based-authorization-vb/_static/image41.png)](user-based-authorization-vb/_static/image40.png)
 
 **Obrázek 14**: Pokud je kontext zabezpečení nemá oprávnění k provádění metody, `SecurityException` je vyvolána výjimka ([kliknutím ji zobrazíte obrázek v plné velikosti](user-based-authorization-vb/_static/image42.png))
 

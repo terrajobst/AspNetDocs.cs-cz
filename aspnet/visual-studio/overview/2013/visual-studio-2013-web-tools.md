@@ -12,7 +12,7 @@ ms.openlocfilehash: 874542305bd3f47066cfae595919285ed079aa53
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59421066"
 ---
 # <a name="hands-on-lab-visual-studio-2013-web-tools"></a>Praktické cvičení: Webové nástroje v sadě Visual Studio 2013
@@ -324,7 +324,7 @@ V této úloze budete používat Browser Link **režimu návrhu** funkce Upravit
 
     ![Okno Seznam chyb](visual-studio-2013-web-tools/_static/image32.png "okna Seznam chyb")
 
-    *okno Seznam chyb*
+    *Okno Seznam chyb*
 3. V **Web Essentials** dialogové okno, klikněte na tlačítko **Ano** Vložit popis &lt;meta&gt; značky.
 
     ![Dialogové okno Web Essentials](visual-studio-2013-web-tools/_static/image33.png "dialogové okno Web Essentials")
@@ -471,7 +471,7 @@ Web Essentials 2013 vytvoření seznamu ID tak názvy tříd šablon stylů a st
 
     ![Soubory JavaScript zrušíte minifikaci](visual-studio-2013-web-tools/_static/image47.png "zrušíte Minifikaci Javascriptové soubory")
 
-    *Minify JavaScript file(s)*
+    *Zrušíte minifikaci soubory jazyka JavaScript*
 15. Po zobrazení výzvy k povolení automatického připravenost k minifikaci při změně zdrojových souborů, klikněte na tlačítko **Ano**.
 
     ![Povolení automatického připravenost k minifikaci upozornění](visual-studio-2013-web-tools/_static/image48.png "povolení automatické připravenost k minifikaci upozornění")

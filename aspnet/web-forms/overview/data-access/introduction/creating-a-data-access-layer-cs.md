@@ -12,7 +12,7 @@ ms.openlocfilehash: 4d8afd13fc693c828850bec53664a4db7d91dede
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59420598"
 ---
 # <a name="creating-a-data-access-layer-c"></a>Vytvoření vrstvy přístupu k datům (C#)
@@ -37,7 +37,7 @@ V tomto kurzu začneme od úplného začátku a vytvořit na datový přístup v
 Než vytvoříme našich dat přístup vrstvy DAL (), nejprve musíme vytvořit webovou stránku a nastavit naší databázi. Začněte tím, že vytvoříte nový soubor na základě systému ASP.NET Web. K tomu, přejděte do nabídky soubor a zvolte nový web zobrazení dialogového okna Nový web. Výběr šablony webové stránky ASP.NET, nastavte rozevírací seznam umístění do systému souborů, vyberte složku, umístěte na webu a nastavit jazyk C#.
 
 
-[![Cvytvořit webovou stránku New File System-Based](creating-a-data-access-layer-cs/_static/image2.png)](creating-a-data-access-layer-cs/_static/image1.png)
+[![Vytvoření nového souboru na základě systému webového serveru](creating-a-data-access-layer-cs/_static/image2.png)](creating-a-data-access-layer-cs/_static/image1.png)
 
 **Obrázek 1**: Vytvoření webu New File System-Based ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image3.png))
 
@@ -92,7 +92,7 @@ K vrácení objektů se silným typem, vývojáře můžou vytvořit své vlastn
 Pro architekturu těchto kurzů použijeme silně typovaných datových sad. Obrázek 3 znázorňuje pracovní postupy mezi různé vrstvy aplikace, která používá zadané datové sady.
 
 
-[![Avše, který kód přístupu k datům je předané centrům DAL](creating-a-data-access-layer-cs/_static/image6.png)](creating-a-data-access-layer-cs/_static/image5.png)
+[![Všechny kód přístupu k datům je předané centrům vrstvy Dal](creating-a-data-access-layer-cs/_static/image6.png)](creating-a-data-access-layer-cs/_static/image5.png)
 
 **Obrázek 3**: Všechny kód přístupu k datům je předané centrům vrstvy Dal ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image7.png))
 
@@ -102,7 +102,7 @@ Pro architekturu těchto kurzů použijeme silně typovaných datových sad. Obr
 Zahajte proces vytváření naše DAL, začneme přidáním typované datové sady do projektu. Chcete-li to provést, klikněte pravým tlačítkem na uzel projektu v Průzkumníku řešení a zvolte Přidat novou položku. Vybrat datovou sadu ze seznamu šablon a pojmenujte ho **Northwind.xsd**.
 
 
-[![CZvolte, chcete-li přidat novou datovou sadu do projektu knihovny](creating-a-data-access-layer-cs/_static/image9.png)](creating-a-data-access-layer-cs/_static/image8.png)
+[![Přidat novou datovou sadu do projektu](creating-a-data-access-layer-cs/_static/image9.png)](creating-a-data-access-layer-cs/_static/image8.png)
 
 **Obrázek 4**: Přidat novou datovou sadu do vašeho projektu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image10.png))
 
@@ -116,7 +116,7 @@ Uvědomte si, že silného typu DataTables neobsahují žádné informace o tom,
 Průvodce nastavením TableAdapter začíná výzvou k výběru databázi, kterou chcete pracovat. Rozevíracím seznamu zobrazí tyto databáze v Průzkumníku serveru. Pokud databázi Northwind nebyl přidán do Průzkumníka serveru, můžete kliknutím na tlačítko nové připojení v tuto chvíli k tomu.
 
 
-[![CZvolte databázi Northwind v rozevíracím seznamu](creating-a-data-access-layer-cs/_static/image12.png)](creating-a-data-access-layer-cs/_static/image11.png)
+[![Z rozevíracího seznamu zvolte databázi Northwind](creating-a-data-access-layer-cs/_static/image12.png)](creating-a-data-access-layer-cs/_static/image11.png)
 
 **Obrázek 5**: Z rozevíracího seznamu zvolte databázi Northwind ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image13.png))
 
@@ -124,7 +124,7 @@ Průvodce nastavením TableAdapter začíná výzvou k výběru databázi, ktero
 Po výběru databáze a kliknutí na tlačítko Další, budete požádáni Pokud chcete uložit připojovací řetězec **Web.config** souboru. Uložením připojovací řetězec budete vyhnout, minimu měl pevné zakódovat třídy TableAdapter, což zjednodušuje věci, pokud se v budoucnu změní informace o připojovacím řetězci. Pokud se připojíte k uložení připojovacího řetězce v konfiguračním souboru je umístěný v **&lt;connectionStrings&gt;** oddíl, což může být [volitelně šifrované](http://aspnet.4guysfromrolla.com/articles/021506-1.aspx) lepší zabezpečení nebo upravené později pomocí nové stránky vlastností ASP.NET 2.0 v rámci služby IIS grafickým uživatelským rozhraním nástroj pro správu, což je více ideální pro správce.
 
 
-[![SUložit připojovací řetězec do souboru Web.config](creating-a-data-access-layer-cs/_static/image15.png)](creating-a-data-access-layer-cs/_static/image14.png)
+[![Uložit připojovací řetězec do souboru Web.config](creating-a-data-access-layer-cs/_static/image15.png)](creating-a-data-access-layer-cs/_static/image14.png)
 
 **Obrázek 6**: Uložit připojovací řetězec do **Web.config** ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image16.png))
 
@@ -134,7 +134,7 @@ Dále musíme definovat schéma pro první objekt DataTable silného typu a pře
 Abyste mohli začít definovat dotaz SQL musí nejprve Udáváme jak chceme TableAdapter vydat dotaz. Jsme můžete použít příkaz SQL ad-hoc, vytvořit novou úložnou proceduru nebo použít stávající úložnou proceduru. Těchto kurzech používáme SQL příkazy ad-hoc. Odkazovat na [Ano/Ne Brian](http://briannoyes.net/)uživatele na článek, [vytvoření vrstvy přístupu k datům s návrháři datové sady Visual Studio 2005](http://www.theserverside.net/articles/showarticle.tss?id=DataSetDesigner) příklad použití uložených procedur.
 
 
-[![Qdotaz Data s využitím Ad-Hoc příkazu SQL](creating-a-data-access-layer-cs/_static/image18.png)](creating-a-data-access-layer-cs/_static/image17.png)
+[![Dotazování dat pomocí příkazu SQL Ad-Hoc](creating-a-data-access-layer-cs/_static/image18.png)](creating-a-data-access-layer-cs/_static/image17.png)
 
 **Obrázek 7**: Dotazování dat pomocí příkazu SQL Ad-Hoc ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image19.png))
 
@@ -142,7 +142,7 @@ Abyste mohli začít definovat dotaz SQL musí nejprve Udáváme jak chceme Tabl
 V tuto chvíli jsme můžete zadat v dotazu SQL ručně. Při vytváření první metoda v TableAdapter obvykle chcete dotaz vrátit sloupce, které musí být vyjádřena v odpovídajícím objektu DataTable. Můžeme to provést tak, že vytvoříte dotaz, který vrátí všechny sloupce a všechny řádky z **produkty** tabulky:
 
 
-[![EZadejte SQL dotazu do textovém poli](creating-a-data-access-layer-cs/_static/image21.png)](creating-a-data-access-layer-cs/_static/image20.png)
+[![Do textového pole zadejte příkaz jazyka SQL](creating-a-data-access-layer-cs/_static/image21.png)](creating-a-data-access-layer-cs/_static/image20.png)
 
 **Obrázek 8**: Zadejte SQL dotazu do textovém poli ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image22.png))
 
@@ -150,7 +150,7 @@ V tuto chvíli jsme můžete zadat v dotazu SQL ručně. Při vytváření prvn�
 Můžete také pomocí Tvůrce dotazů a graficky vytvořit dotaz, jak je znázorněno na obrázku 9.
 
 
-[![Cvytvořit dotaz graficky, pomocí editoru dotazů](creating-a-data-access-layer-cs/_static/image24.png)](creating-a-data-access-layer-cs/_static/image23.png)
+[![Vytvořit dotaz graficky, pomocí editoru dotazů](creating-a-data-access-layer-cs/_static/image24.png)](creating-a-data-access-layer-cs/_static/image23.png)
 
 **Obrázek 9**: Vytvořte dotaz graficky, pomocí editoru dotazů ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image25.png))
 
@@ -158,7 +158,7 @@ Můžete také pomocí Tvůrce dotazů a graficky vytvořit dotaz, jak je znázo
 Po vytvoření dotazu, ale před přechodem na další obrazovce klikněte na tlačítko Upřesnit možnosti. V projektech webových stránek "příkazy Generovat Insert, Update a Delete" je jediná rozšířené možnosti vybrané ve výchozím nastavení; tohoto průvodce spustíte z knihovny tříd nebo projekt Windows bude také vybrána možnost "Pomocí optimistického řízení souběžnosti". Zatím nechejte nastavené možnosti "Pomocí optimistického řízení souběžnosti" není zaškrtnuto. Prozkoumáme optimistického řízení souběžnosti v budoucích kurzech.
 
 
-[![SPouze generovat Insert, Update a Delete příkazy možnost rozhodnout, jestli](creating-a-data-access-layer-cs/_static/image27.png)](creating-a-data-access-layer-cs/_static/image26.png)
+[![Vyberte pouze generovat Insert, Update a Delete příkazy možnost](creating-a-data-access-layer-cs/_static/image27.png)](creating-a-data-access-layer-cs/_static/image26.png)
 
 **Obrázek 10**: Vyberte pouze generovat Insert, Update a Delete příkazy možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image28.png))
 
@@ -173,7 +173,7 @@ Můžete mít TableAdapter, implementujte jeden nebo oba tyto vzory. Můžete ta
 Pokud je zaškrtnuto, finální zaškrtávací políčko "GenerateDBDirectMethods," vytvoří **Insert()**, **Update()**, a **Delete()** metody pro TableAdapter. Pokud tuhle možnost necháte nezaškrtnuté, všechny aktualizace, bude nutné provést prostřednictvím jediného objektu TableAdapter **Update()** metoda, která přebírá zadané datové sady, datové tabulky, jednoho datového řádku nebo pole DataRows. (Pokud jste toto políčko zaškrtnuté políčko "generovat Insert, Update a Delete příkazy" možnost rozšířené vlastnosti na obrázku 9 nastavení nebude mít žádný efekt.) Ponecháme toto políčko zaškrtnuto.
 
 
-[![Czměnit název metody z GetData k GetProducts](creating-a-data-access-layer-cs/_static/image30.png)](creating-a-data-access-layer-cs/_static/image29.png)
+[![Změnit název metody z GetData na GetProducts](creating-a-data-access-layer-cs/_static/image30.png)](creating-a-data-access-layer-cs/_static/image29.png)
 
 **Obrázek 11**: Změnit název metody z **GetData** k **GetProducts** ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image31.png))
 
@@ -181,7 +181,7 @@ Pokud je zaškrtnuto, finální zaškrtávací políčko "GenerateDBDirectMethod
 Dokončete průvodce kliknutím na tlačítko Dokončit. Po zavření průvodce jsme se vrátí do návrháře datových sad, které zobrazuje objekt DataTable, že jsme právě vytvořili. Zobrazí se seznam sloupců v **produkty** DataTable (**ProductID**, **ProductName**, a tak dále), stejně jako metody  **ProductsTableAdapter** (**Fill()** a **GetProducts()**).
 
 
-[![TProdukty DataTable s ProductsTableAdapter byly přidány k datové sadě zadán](creating-a-data-access-layer-cs/_static/image33.png)](creating-a-data-access-layer-cs/_static/image32.png)
+[![Objekt DataTable produkty a ProductsTableAdapter byly přidány k datové sadě zadán](creating-a-data-access-layer-cs/_static/image33.png)](creating-a-data-access-layer-cs/_static/image32.png)
 
 **Obrázek 12**: **Produkty** DataTable a **ProductsTableAdapter** byly přidány k datové sadě zadán ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image34.png))
 
@@ -203,7 +203,7 @@ AllProducts.aspx.cs
 [!code-csharp[Main](creating-a-data-access-layer-cs/samples/sample3.cs)]
 
 
-[![Tmá seznam produktů se zobrazí v GridView](creating-a-data-access-layer-cs/_static/image36.png)](creating-a-data-access-layer-cs/_static/image35.png)
+[![Zobrazí se seznam produktů v GridView](creating-a-data-access-layer-cs/_static/image36.png)](creating-a-data-access-layer-cs/_static/image35.png)
 
 **Obrázek 13**: Zobrazí se seznam produktů v GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image37.png))
 
@@ -225,7 +225,7 @@ Přidejme **GetProductsByCategoryID (*categoryID*)** metody. Chcete-li přidat n
 Můžeme se nejdřív zobrazí výzva o, jestli chcete přístup k databázi pomocí ad-hoc příkazu SQL nebo uloženou proceduru nové nebo existující. Umožňuje zvolit použití příkazu SQL ad-hoc znovu. Dále jsme se výzva, jaký typ dotazu SQL, jsme chtěli použít. Protože chceme vrátit všechny produkty, které patří do zadané kategorie, chceme napsat **vyberte** příkaz, který vrátí řádky.
 
 
-[![CZvolte, chcete-li vytvořit vybrat příkaz který vrátí řádky](creating-a-data-access-layer-cs/_static/image40.png)](creating-a-data-access-layer-cs/_static/image39.png)
+[![Můžete vytvořit příkaz SELECT, který vrátí řádky](creating-a-data-access-layer-cs/_static/image40.png)](creating-a-data-access-layer-cs/_static/image39.png)
 
 **Obrázek 15**: Zvolte možnost vytvořit **vyberte** příkaz který vrací řádky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image41.png))
 
@@ -233,7 +233,7 @@ Můžeme se nejdřív zobrazí výzva o, jestli chcete přístup k databázi pom
 Dalším krokem je definování dotaz SQL použitý pro přístup k datům. Protože chceme vrátit pouze produkty, které patří do určité kategorie, použiji stejný <strong>vyberte</strong> příkaz z <strong>GetProducts()</strong>, ale přidejte následující <strong>kde</strong> klauzule: <strong>Pokud ID kategorie = @CategoryID</strong> . <strong>@CategoryID</strong> Parametr označuje do Průvodce vytvořením objektu TableAdapter, že metoda vytváříme budou vyžadovat vstupní parametr typu odpovídající (konkrétně, s možnou hodnotou Null celé číslo).
 
 
-[![EZadejte dotaz, který pouze vrátí produkty v zadané kategorii](creating-a-data-access-layer-cs/_static/image43.png)](creating-a-data-access-layer-cs/_static/image42.png)
+[![Zadejte dotaz a vrátit pouze produktech v určené kategorii](creating-a-data-access-layer-cs/_static/image43.png)](creating-a-data-access-layer-cs/_static/image42.png)
 
 **Obrázek 16**: Zadejte dotaz pouze vrátit produktů v zadané kategorii ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image44.png))
 
@@ -241,7 +241,7 @@ Dalším krokem je definování dotaz SQL použitý pro přístup k datům. Prot
 V posledním kroku, abychom si mohli vybrat který vzorce a používat, stejně jako vlastní názvy metod, vygeneruje pro přístup k datům. Vzorek výplně Změníme název, který má <strong>FillByCategoryID</strong> a pro vrácený objekt DataTable vrátí vzor ( <strong>získat*X</strong>*  metody), použijeme  <strong>GetProductsByCategoryID</strong>.
 
 
-[![CZvolte názvy metody třídy TableAdapter](creating-a-data-access-layer-cs/_static/image46.png)](creating-a-data-access-layer-cs/_static/image45.png)
+[![Zvolte názvy metody třídy TableAdapter](creating-a-data-access-layer-cs/_static/image46.png)](creating-a-data-access-layer-cs/_static/image45.png)
 
 **Obrázek 17**: Zvolte názvy metody třídy TableAdapter ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image47.png))
 
@@ -259,7 +259,7 @@ Za chvíli přidat **GetProductByProductID (*productID*)** metodu pomocí stejn�
 Tyto parametrizovaných dotazů můžete otestovat přímo v návrháři datových sad. Klikněte pravým tlačítkem na metodu v TableAdapter a zvolit Data ve verzi Preview. Pak zadejte hodnoty pro parametry a klikněte na tlačítko ve verzi Preview.
 
 
-[![Tjsou uvedeny produkty, který patří do kategorie Nápoje hadice](creating-a-data-access-layer-cs/_static/image50.png)](creating-a-data-access-layer-cs/_static/image49.png)
+[![Jsou uvedeny tyto produkty, který patří do kategorie Nápoje](creating-a-data-access-layer-cs/_static/image50.png)](creating-a-data-access-layer-cs/_static/image49.png)
 
 **Obrázek 19**: Tyto produkty, který patří do kategorie Nápoje zobrazují ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image51.png))
 
@@ -275,7 +275,7 @@ Beverages.aspx.cs
 [!code-csharp[Main](creating-a-data-access-layer-cs/samples/sample5.cs)]
 
 
-[![Tjsou zobrazeny hadice produkty do kategorie Nápoje](creating-a-data-access-layer-cs/_static/image53.png)](creating-a-data-access-layer-cs/_static/image52.png)
+[![Se zobrazují tyto produkty do kategorie Nápoje](creating-a-data-access-layer-cs/_static/image53.png)](creating-a-data-access-layer-cs/_static/image52.png)
 
 **Obrázek 20**: Se zobrazují tyto produkty do kategorie nápoje ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image54.png))
 
@@ -285,7 +285,7 @@ Beverages.aspx.cs
 Existují dva způsoby, které se běžně používá pro vkládání, aktualizaci a odstraňování dat. První vzor, který budu jim říkat přímé model databáze, zahrnuje vytvoření metody, že při vyvolání, problém **vložit**, **aktualizace**, nebo **odstranit** příkaz databáze, která funguje na záznam v jedné databázi. Tyto metody jsou obvykle předány v řadě skalárních hodnot (celá čísla, řetězce, logické hodnoty, data a času a tak dále), které odpovídají hodnotám vložit, aktualizovat nebo odstranit. Například s tímto modelem stačí pro **produkty** tabulky metodu delete padl parametr celé číslo, určující **ProductID** z záznam, který chcete odstranit, zatímco metoda vložit padl řetězec **ProductName**, decimal pro **UnitPrice**, celé číslo pro **UnitsOnStock**, a tak dále.
 
 
-[![Ena databáze okamžitě přijde ACH vložení, aktualizace a odstranění žádosti](creating-a-data-access-layer-cs/_static/image56.png)](creating-a-data-access-layer-cs/_static/image55.png)
+[![Každý Insert, Update a Delete žádosti je odeslána databáze hned](creating-a-data-access-layer-cs/_static/image56.png)](creating-a-data-access-layer-cs/_static/image55.png)
 
 **Obrázek 21**: Každý Insert, Update a Delete žádosti posílá databáze okamžitě ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image57.png))
 
@@ -293,7 +293,7 @@ Existují dva způsoby, které se běžně používá pro vkládání, aktualiza
 Další vzor, který jsem budete odkazovat dávkové aktualizaci vzor, je aktualizovat celé datové sady, datové tabulky nebo kolekce DataRows v jedné metody volání. S tímto modelem stačí vývojář odstraní, vloží a změní DataRows v datové tabulce a pak předá do metodu aktualizace těchto DataRows ani objekt DataTable. Tato metoda pak vytvoří výčet DataRows předaný, určuje, zda jsou jsme se změnily, přidat nebo odstranit (prostřednictvím objekt DataRow [RowState vlastnost](https://msdn.microsoft.com/library/system.data.datarow.rowstate.aspx) hodnota) a vydá požadavek příslušnou databázi pro každý záznam.
 
 
-[![Avšechny změny jsou synchronizovány s databází při the metody Update je vyvolán](creating-a-data-access-layer-cs/_static/image59.png)](creating-a-data-access-layer-cs/_static/image58.png)
+[![Všechny změny jsou synchronizovány s databází při vyvolání metody Update](creating-a-data-access-layer-cs/_static/image59.png)](creating-a-data-access-layer-cs/_static/image58.png)
 
 **Obrázek 22**: Všechny změny jsou synchronizovány s databází při vyvolání metody Update ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image60.png))
 
@@ -303,7 +303,7 @@ TableAdapter používá vzor aktualizace služby batch ve výchozím nastavení,
 Oba vzorky úpravy dat pomocí objektu TableAdapter **událost InsertCommand**, **událost UpdateCommand**, a **událost DeleteCommand** vlastnosti vydat jejich **vložit** , **Aktualizace**, a **odstranit** příkazů do databáze. Můžete zkontrolovat a upravit **událost InsertCommand**, **událost UpdateCommand**, a **událost DeleteCommand** vlastnosti kliknutím na TableAdapter v návrháři datových sad a pak v okně Vlastnosti. (Ujistěte se, že jste vybrali TableAdapter a že **ProductsTableAdapter** objektu je vybrali v rozevíracím seznamu v okně Vlastnosti.)
 
 
-[![TTableAdapter má událost InsertCommand událost UpdateCommand a vlastnosti událost DeleteCommand](creating-a-data-access-layer-cs/_static/image62.png)](creating-a-data-access-layer-cs/_static/image61.png)
+[![TableAdapter má událost InsertCommand událost UpdateCommand a událost DeleteCommand vlastnosti](creating-a-data-access-layer-cs/_static/image62.png)](creating-a-data-access-layer-cs/_static/image61.png)
 
 **Obrázek 23**: Má TableAdapter **událost InsertCommand**, **událost UpdateCommand**, a **událost DeleteCommand** vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image63.png))
 
@@ -311,7 +311,7 @@ Oba vzorky úpravy dat pomocí objektu TableAdapter **událost InsertCommand**, 
 Pokud chcete zkontrolovat nebo změnit libovolné z těchto vlastností příkazu databáze, klikněte na **CommandText** dílčí vlastnosti, které se otevře Tvůrce dotazů.
 
 
-[![Configurovat INSERT, UPDATE a DELETE příkazy v editoru dotazů](creating-a-data-access-layer-cs/_static/image65.png)](creating-a-data-access-layer-cs/_static/image64.png)
+[![Konfigurace INSERT, UPDATE a DELETE příkazy v editoru dotazů](creating-a-data-access-layer-cs/_static/image65.png)](creating-a-data-access-layer-cs/_static/image64.png)
 
 **Obrázek 24**: Konfigurace **vložit**, **aktualizace**, a **odstranit** příkazy v editoru dotazů ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image66.png))
 
@@ -331,7 +331,7 @@ Následující kód ukazuje, jak pomocí vzoru s přímým přístupem DB prost�
 Chcete-li vytvořit vlastní metodu, vraťte se na návrháři datových sad. Klikněte pravým tlačítkem na TableAdapter a zvolte Přidat dotaz vrací do Průvodce vytvořením objektu TableAdapter. Na druhé obrazovce mohou Udáváme typu dotazu k vytvoření. Vytvoříme metodu, která přidá nový produkt a vrátí hodnotu nově přidaný záznam **ProductID**. Proto se rozhodnout vytvořit **vložit** dotazu.
 
 
-[![CVytvořit metodu přidejte nový řádek do tabulky produktů](creating-a-data-access-layer-cs/_static/image68.png)](creating-a-data-access-layer-cs/_static/image67.png)
+[![Vytvoření metody přidání nový řádek do tabulky produktů](creating-a-data-access-layer-cs/_static/image68.png)](creating-a-data-access-layer-cs/_static/image67.png)
 
 **Obrázek 25**: Vytvoření metody přidání na nový řádek pro **produkty** tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image69.png))
 
@@ -339,7 +339,7 @@ Chcete-li vytvořit vlastní metodu, vraťte se na návrháři datových sad. Kl
 Na další obrazovce **událost InsertCommand**společnosti **CommandText** se zobrazí. Tento dotaz rozšířit přidáním **vyberte rozsah\_IDENTITY()** na konec dotazu, která vrátí poslední hodnotu identity, které jsou vloženy do **IDENTITY** sloupce ve stejném oboru. (Najdete v článku [technickou dokumentaci](https://msdn.microsoft.com/library/ms190315.aspx) Další informace o **oboru\_IDENTITY()** a proč budete pravděpodobně chtít [použít OBOR\_IDENTITY() náhrada @ @IDENTITY](http://weblogs.sqlteam.com/travisl/archive/2003/10/29/405.aspx).) Zajistěte, že jste **vložit** příkaz středníkem před přidáním **vyberte** příkazu.
 
 
-[![ADotaz, který vrací hodnotu SCOPE_IDENTITY() ugment](creating-a-data-access-layer-cs/_static/image71.png)](creating-a-data-access-layer-cs/_static/image70.png)
+[![Upravte dotaz, který vrací hodnotu SCOPE_IDENTITY()](creating-a-data-access-layer-cs/_static/image71.png)](creating-a-data-access-layer-cs/_static/image70.png)
 
 **Obrázek 26**: Upravte dotaz pro návrat **oboru\_IDENTITY()** hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image72.png))
 
@@ -347,7 +347,7 @@ Na další obrazovce **událost InsertCommand**společnosti **CommandText** se z
 A konečně, pojmenujte novou metodu **InsertProduct**.
 
 
-[![SNový název metody, který InsertProduct et](creating-a-data-access-layer-cs/_static/image74.png)](creating-a-data-access-layer-cs/_static/image73.png)
+[![Nastavte název nové metody InsertProduct](creating-a-data-access-layer-cs/_static/image74.png)](creating-a-data-access-layer-cs/_static/image73.png)
 
 **Obrázek 27**: Nastavte název nové metody **InsertProduct** ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image75.png))
 
@@ -357,7 +357,7 @@ Po návratu do návrháře DataSet uvidíte, že **ProductsTableAdapter** obsahu
 Ve výchozím nastavení vložte metody problém není dotazem metody, což znamená, že vrátí počet ovlivněných řádků. Chceme, ale **InsertProduct** metoda k vrácení hodnoty vrácené dotazem, ne počet ovlivněných řádků. Chcete-li to provést, upravte **InsertProduct** metody **ExecuteMode** vlastnost **skalární**.
 
 
-[![Czměnit vlastnost ExecuteMode na skalární](creating-a-data-access-layer-cs/_static/image77.png)](creating-a-data-access-layer-cs/_static/image76.png)
+[![Změňte vlastnost ExecuteMode na skalár](creating-a-data-access-layer-cs/_static/image77.png)](creating-a-data-access-layer-cs/_static/image76.png)
 
 **Obrázek 28**: Změnit **ExecuteMode** vlastnost **skalární** ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image78.png))
 
@@ -375,7 +375,7 @@ Může to znamenat problém, ale jako metody objektu TableAdapter pro vkládán�
 [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample9.sql)]
 
 
-[![UDílčí modul příkazu SELECT pro metodu GetProducts()](creating-a-data-access-layer-cs/_static/image80.png)](creating-a-data-access-layer-cs/_static/image79.png)
+[![Aktualizace příkazu SELECT pro GetProducts() – metoda](creating-a-data-access-layer-cs/_static/image80.png)](creating-a-data-access-layer-cs/_static/image79.png)
 
 **Obrázek 29**: Aktualizace **vyberte** příkaz **GetProducts()** – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image81.png))
 
@@ -444,7 +444,7 @@ Trvat pár minut vytvořit následující objekty TableAdapter a metod pomocí n
       [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample21.sql)]
 
 
-[![Tmá datovou sadu návrháře po the čtyři objekty TableAdapter jsou přidané](creating-a-data-access-layer-cs/_static/image84.png)](creating-a-data-access-layer-cs/_static/image83.png)
+[![Návrhář DataSet po přidání čtyři objekty TableAdapter](creating-a-data-access-layer-cs/_static/image84.png)](creating-a-data-access-layer-cs/_static/image83.png)
 
 **Obrázek 31**: Datové sady návrháře po the čtyři objekty TableAdapter jsou přidané ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image85.png))
 
@@ -454,7 +454,7 @@ Trvat pár minut vytvořit následující objekty TableAdapter a metod pomocí n
 Objekty TableAdapter a přidat k datové sadě zadán DataTables jsou vyjádřeny jako soubor XML Schema Definition (**Northwind.xsd**). Tyto informace schématu můžete zobrazit kliknutím pravým tlačítkem na **Northwind.xsd** souboru v Průzkumníku řešení a zvolíte zobrazení kódu.
 
 
-[![Tmá soubor definice schématu XML (XSD) pro typová Lhota](creating-a-data-access-layer-cs/_static/image87.png)](creating-a-data-access-layer-cs/_static/image86.png)
+[![Soubor definice (XSD) schématu XML pro Lhota zadaná datová sada](creating-a-data-access-layer-cs/_static/image87.png)](creating-a-data-access-layer-cs/_static/image86.png)
 
 **Obrázek 32**: Soubor definice schématu XML (XSD) pro typová Lhota ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image88.png))
 
@@ -501,7 +501,7 @@ SuppliersAndProducts.aspx.cs
 [!code-csharp[Main](creating-a-data-access-layer-cs/samples/sample25.cs)]
 
 
-[![TNázev společnosti he dodavatele je uvedena ve sloupci vlevo, jejich produktů v pravém](creating-a-data-access-layer-cs/_static/image92.png)](creating-a-data-access-layer-cs/_static/image91.png)
+[![Název společnosti dodavatele je uvedena ve sloupci vlevo, jejich produkty vpravo](creating-a-data-access-layer-cs/_static/image92.png)](creating-a-data-access-layer-cs/_static/image91.png)
 
 **Obrázek 35**: Název společnosti dodavatele je uvedena ve sloupci vlevo, jejich produktů v pravém ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-data-access-layer-cs/_static/image93.png))
 

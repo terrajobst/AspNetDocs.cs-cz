@@ -12,7 +12,7 @@ ms.openlocfilehash: b858dfc24a14e182319122320d8bb6af3b8fcb3c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59422691"
 ---
 # <a name="aspnet-35"></a>ASP.NET 3.5
@@ -44,7 +44,7 @@ ms.locfileid: "59422691"
     - [Použití funkce kombinování skriptů kvůli lepšímu výkonu aplikace AJAX](aspnet-ajax/using-script-combining-to-improve-ajax-performance.md)
 - [Datové ovládací prvky](data-controls/index.md)
 
-    - [ListView – ovládací prvek](data-controls/the-listview-control.md)
+    - [Ovládací prvek ListView](data-controls/the-listview-control.md)
     - [Ovládací prvek DataPager](data-controls/the-datapager-control.md)
 - [Návrhář Visual Studio](visual-studio-designer/index.md)
 
@@ -56,5 +56,5 @@ ms.locfileid: "59422691"
     - [Ladění JavaScriptu v sadě Visual Studio 2008](visual-studio-editor/javascript-debugging-in-visual-studio-2008.md)
     - [Podpora více cílů v sadě Visual Studio 2008](visual-studio-editor/multi-targeting-support-in-visual-studio-2008.md)
     - [Funkce IntelliSense pro JavaScript a ASP.NET AJAX](visual-studio-editor/intellisense-for-jscript-and-aspnet-ajax.md)
-    - [Rychlá prohlídka integrovaného vývojového prostředí sady Visual Studio 2008](visual-studio-editor/quick-tour-of-the-visual-studio-2008-integrated-development-environment.md)
+    - [Stručná prohlídka integrovaného vývojového prostředí sady Visual Studio 2008](visual-studio-editor/quick-tour-of-the-visual-studio-2008-integrated-development-environment.md)
     - [Vytvoření a úpravy souboru CSS](visual-studio-editor/creating-and-modifying-a-css-file.md)

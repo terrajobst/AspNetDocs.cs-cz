@@ -13,7 +13,7 @@ ms.openlocfilehash: 304c0d71e5e18f9d3f0768464fe39d6e6946600d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59422899"
 ---
 # <a name="web-api-guidance"></a>Pokyny k webovému rozhraní API
@@ -24,7 +24,7 @@ ms.locfileid: "59422899"
     - [Výsledky akcí ve webovém rozhraní API 2](getting-started-with-aspnet-web-api/action-results.md)
     - [Použití webového rozhraní API s webovými formuláři ASP.NET](getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms.md)
     - [Vytvoření stránek nápovědy k webovému rozhraní API](getting-started-with-aspnet-web-api/creating-api-help-pages.md)
-    - [Praktické cvičení: Sestavení jednostránkové aplikace (SPA) pomocí webového rozhraní API ASP.NET a Angular.js](getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md)
+    - [Praktické cvičení: Sestavení jednostránkové aplikaci (SPA) pomocí webového rozhraní API ASP.NET a Angular.js](getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md)
 - [Směrování](web-api-routing-and-actions/index.md)
 
     - [Směrování ve webovém rozhraní API](web-api-routing-and-actions/routing-in-aspnet-web-api.md)
@@ -57,7 +57,7 @@ ms.locfileid: "59422899"
         - [Relace prvků v OData v4](odata-support-in-aspnet-web-api/odata-v4/entity-relations-in-odata-v4.md)
         - [Akce a funkce v OData v4](odata-support-in-aspnet-web-api/odata-v4/odata-actions-and-functions.md)
         - [Zahrnutí v OData v4](odata-support-in-aspnet-web-api/odata-v4/odata-containment-in-web-api-22.md)
-        - [Vytvoření jednoznačného prvku v OData v4](odata-support-in-aspnet-web-api/odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22.md)
+        - [Vytvoření jednoho prvku v OData v4](odata-support-in-aspnet-web-api/odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22.md)
         - [Otevřené typy v OData v4](odata-support-in-aspnet-web-api/odata-v4/use-open-types-in-odata-v4.md)
         - [Komplexní dědičnost typů v OData v4](odata-support-in-aspnet-web-api/odata-v4/complex-type-inheritance-in-odata-v4.md)
     - [OData v3](odata-support-in-aspnet-web-api/odata-v3/index.md)
@@ -112,10 +112,10 @@ ms.locfileid: "59422899"
     - [Volání webového rozhraní API z klienta .NET (C#)](advanced/calling-a-web-api-from-a-net-client.md)
     - [Obslužné rutiny zpráv HTTP ve webovém rozhraní API](advanced/http-message-handlers.md)
     - [Obslužné rutiny zpráv HttpClient ve webovém rozhraní API](advanced/httpclient-message-handlers.md)
-    - [Posílání dat formulářů HTML ve webovém rozhraní API: Data formuláře kódovaná pomocí adresy URL](advanced/sending-html-form-data-part-1.md)
+    - [Posílání dat formulářů HTML ve webovém rozhraní API: Data formuláře kódovaná](advanced/sending-html-form-data-part-1.md)
     - [Posílání dat formulářů HTML ve webovém rozhraní API: Nahrání souboru a vícedílné zprávy standardu MIME](advanced/sending-html-form-data-part-2.md)
     - [Soubory cookie HTTP ve webovém rozhraní API technologie ASP.NET](advanced/http-cookies.md)
-- [Vydané verze](releases/index.md)
+- [Verze](releases/index.md)
 
     - [Novinky webového rozhraní API OData 5.3](releases/whats-new-in-aspnet-web-api-odata-53.md)
     - [Novinky webového rozhraní API 2.2 technologie ASP.NET](releases/whats-new-in-aspnet-web-api-22.md)

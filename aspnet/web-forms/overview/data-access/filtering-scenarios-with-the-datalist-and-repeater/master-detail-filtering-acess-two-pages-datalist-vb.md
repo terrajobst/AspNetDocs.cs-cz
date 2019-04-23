@@ -12,7 +12,7 @@ ms.openlocfilehash: f71e4814d59ef1817d5a64f778ba6d572fc19145
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59422730"
 ---
 # <a name="masterdetail-filtering-across-two-pages-vb"></a>Filtrování hlavních záznamů / podrobností na dvou stránkách (VB)
@@ -37,7 +37,7 @@ V tomto kurzu se podíváme příklad, který obsahuje seznam kategorií v sezna
 Prvním krokem při vytváření sestavy všech záznamů master/detail je začít tím, že zobrazení "hlavní" záznamů. Naše první úloha je proto zobrazení kategorií v "hlavní" stránky. Otevřít `CategoryListMaster.aspx` stránku `DataListRepeaterFiltering` složky, přidejte ovládací prvek Repeater a z inteligentních značek optimalizované pro přidání nového prvku ObjectDataSource. Nakonfigurujte nový prvek ObjectDataSource, aby ho přistupuje ke svým datům z `CategoriesBLL` třídy `GetCategories` – metoda (viz obrázek 1).
 
 
-[![Configurovat ObjectDataSource metody třídy CategoriesBLL GetCategories](master-detail-filtering-acess-two-pages-datalist-vb/_static/image2.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image1.png)
+[![Konfigurace ObjectDataSource třídy CategoriesBLL GetCategories metody](master-detail-filtering-acess-two-pages-datalist-vb/_static/image2.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image1.png)
 
 **Obrázek 1**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třídy `GetCategories` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-acess-two-pages-datalist-vb/_static/image3.png))
 
@@ -49,7 +49,7 @@ Dále definujte Repeateru šablony tak, aby zobrazil každý název a popis kate
 S Tento kód dokončeno věnujte chvíli zobrazíte náš postup prostřednictvím prohlížeče. Jak znázorňuje obrázek 2 Opakovači se vykreslí jako seznam s odrážkami zobrazuje název a popis jednotlivých kategorií.
 
 
-[![EACH kategorie se zobrazí jako položku seznamu s odrážkami](master-detail-filtering-acess-two-pages-datalist-vb/_static/image5.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image4.png)
+[![Každá kategorie se zobrazí jako položku seznamu s odrážkami](master-detail-filtering-acess-two-pages-datalist-vb/_static/image5.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image4.png)
 
 **Obrázek 2**: Každá kategorie se zobrazí jako položku seznamu s odrážkami ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-acess-two-pages-datalist-vb/_static/image6.png))
 
@@ -73,7 +73,7 @@ Jednou z výhod použití ovládacího prvku hypertextový odkaz je, že jej lze
 Pokud postupujete, můžete použít buď anchor element, nebo přístup ovládacího prvku hypertextový odkaz na stránce. Bez ohledu na přístup, při zobrazení stránky prostřednictvím prohlížeče, každý název kategorie má být vykreslen jako odkaz na `ProductsForCategoryDetails.aspx`a předejte příslušný `CategoryID` hodnoty (viz obrázek 3).
 
 
-[![Tmá kategorii názvy nyní odkaz ProductsForCategoryDetails.aspx](master-detail-filtering-acess-two-pages-datalist-vb/_static/image8.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image7.png)
+[![Názvy kategorií nyní může propojit k ProductsForCategoryDetails.aspx](master-detail-filtering-acess-two-pages-datalist-vb/_static/image8.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image7.png)
 
 **Obrázek 3**: Kategorie názvy nyní odkaz `ProductsForCategoryDetails.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-acess-two-pages-datalist-vb/_static/image9.png))
 
@@ -83,7 +83,7 @@ Pokud postupujete, můžete použít buď anchor element, nebo přístup ovláda
 S `CategoryListMaster.aspx` stránka dokončení jsme připraveni realizovat naši pozornost k implementaci na stránce "details" `ProductsForCategoryDetails.aspx`. Otevřete tuto stránku, a v prvku DataList přetáhněte z panelu nástrojů do návrháře a nastavte jeho `ID` vlastnost `ProductsInCategory`. V dalším kroku z inteligentních značek ovládacích prvcích DataList vybrat přidání nového prvku ObjectDataSource na stránku jeho pojmenování `ProductsInCategoryDataSource`. Nakonfigurujte ho tak, aby volá `ProductsBLL` třídy `GetProductsByCategoryID(categoryID)` metoda; nastavte rozevírací seznam na kartách INSERT, UPDATE a DELETE na (žádný).
 
 
-[![Configurovat ObjectDataSource metody třídy ProductsBLL GetProductsByCategoryID(categoryID)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image11.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image10.png)
+[![Konfigurace ObjectDataSource třídy ProductsBLL GetProductsByCategoryID(categoryID) metody](master-detail-filtering-acess-two-pages-datalist-vb/_static/image11.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image10.png)
 
 **Obrázek 4**: Konfigurace ObjectDataSource k použití `ProductsBLL` třídy `GetProductsByCategoryID(categoryID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-acess-two-pages-datalist-vb/_static/image12.png))
 
@@ -91,7 +91,7 @@ S `CategoryListMaster.aspx` stránka dokončení jsme připraveni realizovat na�
 Vzhledem k tomu, `GetProductsByCategoryID(categoryID)` metoda přijímá jako vstupní parametr (*`categoryID`*), průvodce Zvolit zdroj dat nám nabízí příležitost k určení zdroje parametru. Nastavit zdroj parametru řetězce dotazu pomocí vlastnost QueryStringField `CategoryID`.
 
 
-[![UID kategorie pole řetězce dotazu jako zdroj parametru se](master-detail-filtering-acess-two-pages-datalist-vb/_static/image14.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image13.png)
+[![Použijte pole řetězce dotazu CategoryID jako zdroj parametru](master-detail-filtering-acess-two-pages-datalist-vb/_static/image14.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image13.png)
 
 **Obrázek 5**: Použijte pole řetězce dotazu `CategoryID` jako zdroj parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-acess-two-pages-datalist-vb/_static/image15.png))
 
@@ -103,7 +103,7 @@ Jak jsme viděli v předchozích kurzech se po dokončení průvodce Zvolit zdro
 K zobrazení této stránky v akci, spusťte z `CategoryListMaster.aspx` stránce; potom klikněte na odkaz v seznamu s odrážkami kategorie. Tím přejdete na `ProductsForCategoryDetails.aspx`, předejte podél `CategoryID` prostřednictvím řetězec dotazu. `ProductsInCategoryDataSource` ObjectDataSource v `ProductsForCategoryDetails.aspx` pak získat pouze tyto produkty pro zadané kategorie, který se zobrazí v ovládacím prvku DataList, který se vykreslí dva produkty na každém řádku. Snímek obrazovky znázorňuje obrázek 6 `ProductsForCategoryDetails.aspx` při prohlížení nápoje.
 
 
-[![The nápoje jsou zobrazeny, dvě na každém řádku](master-detail-filtering-acess-two-pages-datalist-vb/_static/image17.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image16.png)
+[![Jsou zobrazeny nápoje, dvě na řádek](master-detail-filtering-acess-two-pages-datalist-vb/_static/image17.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image16.png)
 
 **Obrázek 6**: Jsou zobrazeny nápoje, dvě na řádek ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-acess-two-pages-datalist-vb/_static/image18.png))
 
@@ -115,7 +115,7 @@ Když uživatel klikne na kategorii v `CategoryListMaster.aspx`, přejdou `Produ
 Chcete-li to provést, přidejte FormView nad ovládacím prvkem Repeater v `ProductsForCategoryDetails.aspx`. Pak přidejte nový prvek ObjectDataSource do stránky z ovládacího prvku FormView inteligentní značky s názvem `CategoryDataSource` a nakonfigurujte ho na použití `CategoriesBLL` třídy `GetCategoryByCategoryID(categoryID)` metody.
 
 
-[![AInformace o kategorii prostřednictvím metody třídy CategoriesBLL GetCategoryByCategoryID(categoryID) přístupu](master-detail-filtering-acess-two-pages-datalist-vb/_static/image20.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image19.png)
+[![Přístup k informacím o kategorii prostřednictvím metody GetCategoryByCategoryID(categoryID) CategoriesBLL třídy](master-detail-filtering-acess-two-pages-datalist-vb/_static/image20.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image19.png)
 
 **Obrázek 7**: Přístup k informacím o kategorii prostřednictvím `CategoriesBLL` třídy `GetCategoryByCategoryID(categoryID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-acess-two-pages-datalist-vb/_static/image21.png))
 
@@ -132,7 +132,7 @@ Obrázek 8 ukazuje obrazovky při zobrazení této stránky prostřednictvím pr
 > Kromě FormView, jsme také přidali ovládací prvek hypertextového odkazu výše FormView, který přenese uživatele zpět na seznam kategorií (`CategoryListMaster.aspx`). Teď můžete umístit tento odkaz jinde nebo ji vynechte úplně se vynechá.
 
 
-[![Ckategorií informací se nyní zobrazí v horní části stránky](master-detail-filtering-acess-two-pages-datalist-vb/_static/image23.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image22.png)
+[![Informace o kategoriích se nyní zobrazí v horní části stránky](master-detail-filtering-acess-two-pages-datalist-vb/_static/image23.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image22.png)
 
 **Obrázek 8**: Informace o kategoriích se nyní zobrazí v horní části stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-acess-two-pages-datalist-vb/_static/image24.png))
 
@@ -158,7 +158,7 @@ Všechny kategorie v databázi Northwind jsou přidruženy k jedné nebo více p
 Po aktualizaci databáze odpovídajícím způsobem se vrátit `CategoryListMaster.aspx` stránky a klikněte na odkaz produktu. Protože jsou už nějaké produkty patřící do kategorie produktu, měli byste vidět zprávu "Nejsou žádné produkty pro vybranou kategorii...", jak je znázorněno na obrázku 9.
 
 
-[![A Pokud neexistují žádné produkty, který patří do vybrané kategorie, zobrazí se zpráva](master-detail-filtering-acess-two-pages-datalist-vb/_static/image26.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image25.png)
+[![Zobrazí se zpráva, pokud neexistují žádné produkty, který patří do vybrané kategorie](master-detail-filtering-acess-two-pages-datalist-vb/_static/image26.png)](master-detail-filtering-acess-two-pages-datalist-vb/_static/image25.png)
 
 **Obrázek 9**: Zobrazí se zpráva, pokud neexistují žádné produkty, který patří do vybrané kategorie ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-acess-two-pages-datalist-vb/_static/image27.png))
 

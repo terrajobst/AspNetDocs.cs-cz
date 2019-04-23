@@ -12,7 +12,7 @@ ms.openlocfilehash: c7a1b9e82defaae71f0a911e5e4321f6e15ad8bf
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59422613"
 ---
 # <a name="performing-simple-validation-vb"></a>Provedení jednoduchého ověření (VB)
@@ -56,12 +56,12 @@ Pomocné rutiny Html.ValidationMessage() a Html.ValidationSummary() se používa
 Ujistěte se, že vytváříte aplikaci před přidáním zobrazení. V opačném případě nebude zobrazovat seznam tříd **zobrazení dat třídy** rozevíracího seznamu.
 
 
-[![TDialogové okno Nový projekt he](performing-simple-validation-vb/_static/image1.jpg)](performing-simple-validation-vb/_static/image1.png)
+[![Dialogové okno Nový projekt](performing-simple-validation-vb/_static/image1.jpg)](performing-simple-validation-vb/_static/image1.png)
 
 **Obrázek 01**: Přidání zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-vb/_static/image2.png))
 
 
-[![TDialogové okno Nový projekt he](performing-simple-validation-vb/_static/image2.jpg)](performing-simple-validation-vb/_static/image3.png)
+[![Dialogové okno Nový projekt](performing-simple-validation-vb/_static/image2.jpg)](performing-simple-validation-vb/_static/image3.png)
 
 **Obrázek 02**: Vytvoření zobrazení se silnými typy ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-vb/_static/image4.png))
 
@@ -79,7 +79,7 @@ Pomocná rutina Html.ValidationMessage() se nazývá vedle každého pole formul
 Na stránce na obrázku 3 znázorňuje chybové zprávy, který je vykreslen metodou ověřování pomocné rutiny, když se odešle formulář, chybějící pole a neplatné hodnoty.
 
 
-[![TDialogové okno Nový projekt he](performing-simple-validation-vb/_static/image3.jpg)](performing-simple-validation-vb/_static/image5.png)
+[![Dialogové okno Nový projekt](performing-simple-validation-vb/_static/image3.jpg)](performing-simple-validation-vb/_static/image5.png)
 
 **Obrázek 03**: Zobrazení pro vytváření odeslanou s problémy ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-vb/_static/image6.png))
 
@@ -104,7 +104,7 @@ Můžete upravit tyto šablony třídy List stylu a proto upravit vzhled chyby o
 Pokud odeslání formuláře HTML pro vytváření produktu, a zadáte neplatnou hodnotu pro pole price a žádná hodnota pro pole UnitsInStock, získáte ověřovacích zpráv, který zobrazí obrázek 4. Odkud pocházejí tyto chybových zpráv ověření ze?
 
 
-[![TDialogové okno Nový projekt he](performing-simple-validation-vb/_static/image4.jpg)](performing-simple-validation-vb/_static/image7.png)
+[![Dialogové okno Nový projekt](performing-simple-validation-vb/_static/image4.jpg)](performing-simple-validation-vb/_static/image7.png)
 
 **Obrázek 04**: Prebinding chyby ověření ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-vb/_static/image8.png))
 

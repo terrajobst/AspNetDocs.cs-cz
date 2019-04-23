@@ -12,7 +12,7 @@ ms.openlocfilehash: a6b433f187495b8dcd874bcab8ddc607e6de61c9
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59422522"
 ---
 # <a name="dynamically-populating-a-control-using-javascript-code-c"></a>Dynamické naplnění ovládacího prvku javascriptovým kódem (C#)
@@ -55,7 +55,7 @@ Aby ukázku trochu více flexibilní, může uživatel teď vybrat mezi několik
 Všimněte si, že v rámci kontextu přepínací tlačítko, výraz jazyka JavaScript `this.value` odkazuje na hodnotu aktuální tlačítko, které je přesně stejné informace `getDate()` metoda můžete pracovat.
 
 
-[![A Klikněte na tlačítko načte data ze serveru ve formátu určeném](dynamically-populating-a-control-using-javascript-code-cs/_static/image2.png)](dynamically-populating-a-control-using-javascript-code-cs/_static/image1.png)
+[![Klikněte na tlačítko načte data ze serveru ve formátu určeném](dynamically-populating-a-control-using-javascript-code-cs/_static/image2.png)](dynamically-populating-a-control-using-javascript-code-cs/_static/image1.png)
 
 Klikněte na tlačítko načte data ze serveru ve formátu určeném ([kliknutím ji zobrazíte obrázek v plné velikosti](dynamically-populating-a-control-using-javascript-code-cs/_static/image3.png))
 

@@ -9,12 +9,12 @@ ms.assetid: a8b3b778-f009-4369-85c7-e90f9878d8b4
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
 ms.topic: tutorial
-ms.openlocfilehash: b1e8b6b1b300665f6cd2466766e9adcff52733da
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ecc235454d4b95ce660a4373387f44720826b076
+ms.sourcegitcommit: 2d53ed9e4c8b19d3526cbc689bfa8394c9449cec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59422912"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905641"
 ---
 # <a name="tutorial-real-time-chat-with-signalr-2"></a>Kurz: Chatování v reálném čase s knihovnou SignalR 2
 
@@ -60,6 +60,10 @@ Tato část ukazuje, jak pomocí sady Visual Studio 2017 a knihovnou SignalR 2 m
 1. V **přidat novou položku - SignalRChat** vyberte **nainstalováno** > **Visual C#**   >  **webové** a pak Vyberte **třídy pro spuštění OWIN**.
 
 1. Název třídy *spuštění* a přidejte ho do projektu.
+
+1. Nahraďte kód v *spuštění* třída s tímto kódem:
+
+    [!code-csharp[Main](tutorial-getting-started-with-signalr/samples/sample2.cs)]
 
 1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt a vyberte **přidat** > **stránku HTML**.
 
