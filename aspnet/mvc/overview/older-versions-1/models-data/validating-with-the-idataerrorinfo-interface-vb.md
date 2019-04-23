@@ -12,7 +12,7 @@ ms.openlocfilehash: c64e1ea1562c3a0cfe4fb33f1c3033bb9c31bd2c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59402736"
 ---
 # <a name="validating-with-the-idataerrorinfo-interface-vb"></a>Ověřování v rozhraní IDataErrorInfo (VB)
@@ -42,7 +42,7 @@ V tomto kurzu použiju MoviesDB databáze a tabulky databáze filmů. Tato tabul
 V tomto kurzu pomocí Microsoft Entity Framework vytvořit Moje databáze třídy modelu. Třída film vygenerovaným rozhraním Entity Framework se zobrazí na obrázku 1.
 
 
-[![Tmá entity video](validating-with-the-idataerrorinfo-interface-vb/_static/image1.jpg)](validating-with-the-idataerrorinfo-interface-vb/_static/image1.png)
+[![Video entity](validating-with-the-idataerrorinfo-interface-vb/_static/image1.jpg)](validating-with-the-idataerrorinfo-interface-vb/_static/image1.png)
 
 **Obrázek 01**: Movie entity ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-vb/_static/image2.png))
 
@@ -73,7 +73,7 @@ Vlastnost IsValid vrátí hodnotu false, když dojde k chybě ověřování. V t
 Třída Video je vygenerovaným rozhraním Entity Framework. Pokud rozbalte soubor MoviesDBModel.edmx v okně Průzkumník řešení a otevřete soubor MoviesDBModel.Designer.vb v editoru kódu vidíte kód pro třídu Movie (viz obrázek 2).
 
 
-[![Tpoužívaný kód pro entitu video](validating-with-the-idataerrorinfo-interface-vb/_static/image2.jpg)](validating-with-the-idataerrorinfo-interface-vb/_static/image3.png)
+[![Kód pro entitu Movie](validating-with-the-idataerrorinfo-interface-vb/_static/image2.jpg)](validating-with-the-idataerrorinfo-interface-vb/_static/image3.png)
 
 **Obrázek 02**: Kód pro entitu Movie ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-vb/_static/image4.png))
 
@@ -147,7 +147,7 @@ V informacích 4 kontroluje vlastnost indexeru \_předaný kolekce chyb, pokud o
 Není nutné upravovat kontroler Home žádným způsobem pomocí upravené třídy film. Stránky zobrazené na obrázku 3 znázorňuje, co se stane, když je zadána žádná hodnota pro název nebo ředitel pole formuláře.
 
 
-[![Cmetody akce ořit automaticky](validating-with-the-idataerrorinfo-interface-vb/_static/image3.jpg)](validating-with-the-idataerrorinfo-interface-vb/_static/image5.png)
+[![Automatické vytváření metody akce](validating-with-the-idataerrorinfo-interface-vb/_static/image3.jpg)](validating-with-the-idataerrorinfo-interface-vb/_static/image5.png)
 
 **Obrázek 03**: Formulář s chybějící hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-vb/_static/image6.png))
 

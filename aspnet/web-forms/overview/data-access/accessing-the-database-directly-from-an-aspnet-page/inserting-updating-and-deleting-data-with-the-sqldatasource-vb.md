@@ -12,7 +12,7 @@ ms.openlocfilehash: 5be1fd787c1ee001ce46384162eaebc89ec5c0a8
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59404777"
 ---
 # <a name="inserting-updating-and-deleting-data-with-the-sqldatasource-vb"></a>Vkládání, aktualizace a odstraňování dat ovládacím prvkem SqlDataSource (VB)
@@ -50,7 +50,7 @@ Jednou `InsertCommand`, `UpdateCommand`, nebo `DeleteCommand` byla zadána hodno
 Začněte otevřením `InsertUpdateDelete.aspx` a `Querying.aspx` ze stránky `SqlDataSource` složky. Z Návrháře na `Querying.aspx` stránce, vyberte v prvním příkladu SqlDataSource a ovládacího prvku GridView ( `ProductsDataSource` a `GridView1` ovládací prvky). Po výběru dvou ovládacích prvků, přejděte na nabídku Úpravy a zvolte Kopírovat (nebo jenom stiskněte kombinaci kláves Ctrl + C). Dále přejděte na Návrhář `InsertUpdateDelete.aspx` a vložte do ovládacích prvků. Po přesunutí dvou ovládacích prvků k `InsertUpdateDelete.aspx`, test si stránku v prohlížeči. Zobrazí se hodnoty `ProductID`, `ProductName`, a `UnitPrice` sloupce pro všechny záznamy v `Products` databázové tabulky.
 
 
-[![Ajsou uvedeny všechny produkty, seřazené podle ProductID](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image1.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image1.png)
+[![Všechny produkty jsou uvedené, seřazené podle ID produktu](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image1.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image1.png)
 
 **Obrázek 1**: Všechny produkty jsou uvedené, seřazené podle `ProductID` ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image2.png))
 
@@ -87,7 +87,7 @@ Klikněte na symbol tří teček v DeleteQuery vlastnost, která má vyvolat dia
 Dále klikněte na tlačítko Aktualizovat parametry pro přidání `@ProductID` parametru do seznamu níže uvedené parametry.
 
 
-[![Sv okně Vlastnosti rozhodnout, jestli vlastnost DeleteQuery](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image3.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image3.png)
+[![V okně Vlastnosti vyberte vlastnost DeleteQuery](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image3.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image3.png)
 
 **Obrázek 3**: V okně Vlastnosti vyberte vlastnost DeleteQuery ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image4.png))
 
@@ -111,7 +111,7 @@ Poznámka: přidání `DeleteCommand` vlastnost také `<DeleteParameters>` oddí
 S `DeleteCommand` přidána vlastnost ovládacího prvku GridView s inteligentním teď obsahuje možnost Povolit odstranění. Pokračujte a zaškrtněte toto políčko. Jak je popsáno v [přehled o vložení, aktualizaci a odstraňování](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb.md), způsobí to, že prvku GridView. Chcete-li přidat CommandField s jeho `ShowDeleteButton` nastavenou na `True`. Obrázek 4 ukazuje, když je uživatel na stránce prostřednictvím prohlížeče je součástí tlačítko pro odstranění. Na této stránce si otestujte tak, že odstraníte některé produkty.
 
 
-[![EACH řádky GridView teď obsahuje tlačítko Odstranit](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image4.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image5.png)
+[![Každý řádek prvku GridView teď obsahuje tlačítko pro odstranění](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image4.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image5.png)
 
 **Obrázek 4**: Každý řádek prvku GridView teď obsahuje tlačítko Delete ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image6.png))
 
@@ -137,7 +137,7 @@ Krok 1 zkontrolují `INSERT`, `UPDATE`, a `DELETE` příkazů jazyka SQL je mož
 Umožní prozkoumat tuto možnost automatické generování s. Přidat do návrháře v DetailsView `InsertUpdateDelete.aspx` a nastavte jeho `ID` vlastnost `ManageProducts`. Potom z inteligentních značek s prvku DetailsView. Vyberte pro vytvoření nového zdroje dat a vytvoření SqlDataSource s názvem `ManageProductsDataSource`.
 
 
-[![CVytvořit nový účet SqlDataSource s názvem ManageProductsDataSource](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image6.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image7.png)
+[![Vytvořit nový SqlDataSource s názvem ManageProductsDataSource](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image6.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image7.png)
 
 **Obrázek 6**: Vytvořte nový SqlDataSource s názvem `ManageProductsDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image8.png))
 
@@ -145,7 +145,7 @@ Umožní prozkoumat tuto možnost automatické generování s. Přidat do návrh
 V Průvodci nakonfigurujte zdroj dat rozhodnout použít `NORTHWINDConnectionString` připojovací řetězec a klikněte na tlačítko Další. Z konfigurace obrazovky příkaz Select, ponechte zadat sloupce z tabulky nebo zobrazení přepínač vybraný a vyberte si `Products` tabulku z rozevíracího seznamu. Vyberte `ProductID`, `ProductName`, `UnitPrice`, a `Discontinued` sloupce ze seznamu zaškrtávací políčko.
 
 
-[![USING tabulky produktů, vraťte ProductID, ProductName, UnitPrice a vyřazuje sloupce](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image7.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image9.png)
+[![Pomocí tabulky produktů, vrátí ProductID, ProductName, UnitPrice a již nepoužívané sloupce](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image7.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image9.png)
 
 **Obrázek 7**: Použití `Products` tabulky, vraťte se `ProductID`, `ProductName`, `UnitPrice`, a `Discontinued` sloupce ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image10.png))
 
@@ -173,7 +173,7 @@ Všimněte si, jak ovládacím prvkem SqlDataSource zaznamenala hodnoty automati
 Na stránce v prohlížeči a Všimněte si, úprava, odstranění a nová tlačítka, které jsou zahrnuté v ovládacím prvku DetailsView. Do režimu úprav, který zobrazuje každou vlastnost BoundField kliknutím na tlačítko pro úpravy se změní na ovládacím prvku DetailsView jehož `ReadOnly` je nastavena na `False` (výchozí) jako textové pole a třídě CheckBoxField jako zaškrtávací políčko.
 
 
-[![Tmá prvek DetailsView s výchozí rozhraní pro úpravy](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image9.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image11.png)
+[![Prvek DetailsView s výchozí editační rozhraní](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image9.gif)](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image11.png)
 
 **Obrázek 9**: Prvek DetailsView s výchozí rozhraní pro úpravy ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-updating-and-deleting-data-with-the-sqldatasource-vb/_static/image12.png))
 

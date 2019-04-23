@@ -12,7 +12,7 @@ ms.openlocfilehash: ca1bf281130bf2c726b6147f90733c8a83754563
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59399578"
 ---
 # <a name="sorting-custom-paged-data-vb"></a>Řazení dat s vlastním stránkováním (VB)
@@ -71,7 +71,7 @@ Za chvíli otestovat tuto uloženou proceduru s různými hodnotami parametru `@
 **Obrázek 1**: Vyzkoušejte si různé hodnoty pro vstupní parametry uložené procedury s tři
 
 
-[![The uložená procedura s výsledky jsou zobrazeny v okně výstupu](sorting-custom-paged-data-vb/_static/image3.png)](sorting-custom-paged-data-vb/_static/image2.png)
+[![Uložená procedura s výsledky jsou zobrazeny v okně výstupu](sorting-custom-paged-data-vb/_static/image3.png)](sorting-custom-paged-data-vb/_static/image2.png)
 
 **Obrázek 2**: Uložená procedura s výsledky jsou zobrazeny v okně výstupu ([kliknutím ji zobrazíte obrázek v plné velikosti](sorting-custom-paged-data-vb/_static/image4.png))
 
@@ -145,7 +145,7 @@ Pokud chcete povolit řazení v prvku GridView, stačí zaškrtnout políčko Po
 Obrázek 7 znázorňuje první stránka výsledků při řazení podle `UnitPrice` ve vzestupném pořadí.
 
 
-[![The výsledky jsou seřazené podle pole UnitPrice](sorting-custom-paged-data-vb/_static/image10.png)](sorting-custom-paged-data-vb/_static/image9.png)
+[![Výsledky jsou seřazené podle pole UnitPrice](sorting-custom-paged-data-vb/_static/image10.png)](sorting-custom-paged-data-vb/_static/image9.png)
 
 **Obrázek 7**: Výsledky jsou seřazené podle pole UnitPrice ([kliknutím ji zobrazíte obrázek v plné velikosti](sorting-custom-paged-data-vb/_static/image11.png))
 
@@ -166,7 +166,7 @@ Touto výjimkou způsobeno `SortExpression` z ovládacího prvku GridView s `Sup
 **Obrázek 9**: Změnit vlastnosti BoundField Dodavatel s SortExpression CompanyName
 
 
-[![Tmá teď můžou být řazeny výsledky dodavatelem](sorting-custom-paged-data-vb/_static/image15.png)](sorting-custom-paged-data-vb/_static/image14.png)
+[![Můžete teď být řazeny výsledky podle dodavatele](sorting-custom-paged-data-vb/_static/image15.png)](sorting-custom-paged-data-vb/_static/image14.png)
 
 **Obrázek 10**: Výsledky můžete teď být řazeny podle dodavatele ([kliknutím ji zobrazíte obrázek v plné velikosti](sorting-custom-paged-data-vb/_static/image16.png))
 

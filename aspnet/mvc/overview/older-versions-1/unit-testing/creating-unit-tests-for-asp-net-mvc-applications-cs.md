@@ -12,7 +12,7 @@ ms.openlocfilehash: 1193d7dc6fc29dfdac5637c9391a82f9f3566073
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59407728"
 ---
 # <a name="creating-unit-tests-for-aspnet-mvc-applications-c"></a>Vytváření testů jednotek pro aplikace ASP.NET MVC (C#)
@@ -59,12 +59,12 @@ Tato akce kontroleru vrátí také zobrazení s názvem `Details`. Název zobraz
 Můžete spustit testování částí v informacích 2 zadáním kombinace kláves **Ctrl-R, A** nebo kliknutím **spustit všechny testy v řešení** tlačítko (viz obrázek 1). Pokud je test úspěšný, zobrazí se vám okně Výsledky testu na obrázku 2.
 
 
-[![RZrušit všechny testy v řešení](creating-unit-tests-for-asp-net-mvc-applications-cs/_static/image2.png)](creating-unit-tests-for-asp-net-mvc-applications-cs/_static/image1.png)
+[![Spustit všechny testy v řešení](creating-unit-tests-for-asp-net-mvc-applications-cs/_static/image2.png)](creating-unit-tests-for-asp-net-mvc-applications-cs/_static/image1.png)
 
 **Obrázek 01**: Spustit všechny testy v řešení ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-unit-tests-for-asp-net-mvc-applications-cs/_static/image3.png))
 
 
-[![Success!](creating-unit-tests-for-asp-net-mvc-applications-cs/_static/image5.png)](creating-unit-tests-for-asp-net-mvc-applications-cs/_static/image4.png)
+[![Úspěch!](creating-unit-tests-for-asp-net-mvc-applications-cs/_static/image5.png)](creating-unit-tests-for-asp-net-mvc-applications-cs/_static/image4.png)
 
 **Obrázek 02**: Úspěch! ([Kliknutím ji zobrazíte obrázek v plné velikosti](creating-unit-tests-for-asp-net-mvc-applications-cs/_static/image6.png))
 

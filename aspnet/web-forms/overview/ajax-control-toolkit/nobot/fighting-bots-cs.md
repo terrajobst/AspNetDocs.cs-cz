@@ -12,7 +12,7 @@ ms.openlocfilehash: 178d839f67d70670b3b5acf470acb7ae8cf1c33f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59405804"
 ---
 # <a name="fighting-bots-c"></a>Boj s roboty (C#)
@@ -65,7 +65,7 @@ Nakonec musíte formuláře pro odeslání a prvku popisku na výstup zprávu, a
 Při spouštění tohoto skriptu a deaktivovat JavaScript nebo odesláním formuláře v prvních dvou sekund nebo odesláním formuláře sedminásobně během 30 sekund, zobrazí se chybová zpráva. Ale pomocí tohoto ovládacího prvku obezřetně, protože pouze 90 95 % uživatelé mít JavaScript aktivovat, proto se nezdaří % 5 až 10 uživatelů `NoBot`v testu.
 
 
-[![Tjeho chybová zpráva by mohla být způsobena robota](fighting-bots-cs/_static/image2.png)](fighting-bots-cs/_static/image1.png)
+[![Tato chybová zpráva by mohla být způsobena robota](fighting-bots-cs/_static/image2.png)](fighting-bots-cs/_static/image1.png)
 
 Tato chybová zpráva by mohla být způsobena robota ([kliknutím ji zobrazíte obrázek v plné velikosti](fighting-bots-cs/_static/image3.png))
 

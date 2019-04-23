@@ -12,7 +12,7 @@ ms.openlocfilehash: d2f9d48618a102df7ea24a6d2a80b5c3026c7752
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59405401"
 ---
 # <a name="older-versions---data-access"></a>Starší verze – přístup k datům
@@ -36,16 +36,16 @@ ms.locfileid: "59405401"
     - [Zobrazení dat ovládacím prvkem ObjectDataSource (VB)](basic-reporting/displaying-data-with-the-objectdatasource-vb.md)
     - [Deklarované parametry (VB)](basic-reporting/declarative-parameters-vb.md)
     - [Programové nastavení hodnot parametru ObjectDataSource (VB)](basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb.md)
-- [Hlavní záznamy / podrobnosti](masterdetail/index.md)
+- [Hlavní záznamy/záznamy podrobností](masterdetail/index.md)
 
-    - [Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (C#)](masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md)
-    - [Filtrování hlavních záznamů / podrobností dvou ovládacích prvků DropDownList (C#)](masterdetail/master-detail-filtering-with-two-dropdownlists-cs.md)
-    - [Filtrování hlavních záznamů / podrobností na dvou stránkách (C#)](masterdetail/master-detail-filtering-across-two-pages-cs.md)
-    - [Zobrazení hlavních záznamů / podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (C#)](masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)
-    - [Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (VB)](masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md)
-    - [Filtrování hlavních záznamů / podrobností dvou ovládacích prvků DropDownList (VB)](masterdetail/master-detail-filtering-with-two-dropdownlists-vb.md)
-    - [Filtrování hlavních záznamů / podrobností na dvou stránkách (VB)](masterdetail/master-detail-filtering-across-two-pages-vb.md)
-    - [Zobrazení hlavních záznamů / podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (VB)](masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md)
+    - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (C#)](masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md)
+    - [Filtrování záznamů master/detail dvou ovládacích prvků DropDownList (C#)](masterdetail/master-detail-filtering-with-two-dropdownlists-cs.md)
+    - [Filtrování záznamů master/detail na dvou stránkách (C#)](masterdetail/master-detail-filtering-across-two-pages-cs.md)
+    - [Zobrazení hlavního záznamu/podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (C#)](masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)
+    - [Filtrování záznamů hlavních záznamů/podrobností ovládacím prvkem DropDownList (VB)](masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md)
+    - [Filtrování záznamů hlavních záznamů/podrobností dvou ovládacích prvků DropDownList (VB)](masterdetail/master-detail-filtering-with-two-dropdownlists-vb.md)
+    - [Filtrování záznamů hlavních záznamů/podrobností na dvou stránkách (VB)](masterdetail/master-detail-filtering-across-two-pages-vb.md)
+    - [Zobrazení hlavního záznamu/podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (VB)](masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md)
 - [Vlastní formátování](custom-formatting/index.md)
 
     - [Vlastní formátování založené na datech (C#)](custom-formatting/custom-formatting-based-upon-data-cs.md)
@@ -102,12 +102,12 @@ ms.locfileid: "59405401"
     - [Webové ovládací prvky vnořených dat (VB)](displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-vb.md)
 - [Scénáře filtrování ovládacími prvky DataList a Repeater](filtering-scenarios-with-the-datalist-and-repeater/index.md)
 
-    - [Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (C#)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
-    - [Filtrování hlavních záznamů / podrobností na dvou stránkách (C#)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs.md)
-    - [Zobrazení hlavních záznamů / podrobností v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (C#)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
-    - [Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (VB)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
-    - [Filtrování hlavních záznamů / podrobností na dvou stránkách (VB)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-vb.md)
-    - [Zobrazení hlavních záznamů / podrobností v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)
+    - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (C#)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
+    - [Filtrování záznamů master/detail na dvou stránkách (C#)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs.md)
+    - [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (C#)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
+    - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (VB)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
+    - [Filtrování záznamů master/detail na dvou stránkách (VB)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-vb.md)
+    - [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)
 - [Úpravy a odstranění dat prostřednictvím datového prvku DataList](editing-and-deleting-data-through-the-datalist/index.md)
 
     - [Přehled úprav a odstranění dat v ovládacím prvku DataList (C#)](editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md)
@@ -184,20 +184,20 @@ ms.locfileid: "59405401"
     - [Dávkové vkládání (VB)](working-with-batched-data/batch-inserting-vb.md)
 - [Pokročilé scénáře přístupu k datům](advanced-data-access-scenarios/index.md)
 
-    - [Vytvoření nových uložených procedur prvků TableAdapter typových sad dat (C#)](advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
-    - [Použití stávajících uložených procedur komponentami TableAdapter typových sad dat (C#)](advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
+    - [Vytvoření nových uložených procedur prvků TableAdapter typových datových sad (C#)](advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
+    - [Použití stávajících uložených procedur komponentami TableAdapter typových datových sad (C#)](advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
     - [Aktualizace komponenty TableAdapter kvůli použití příkazů JOIN (C#)](advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-cs.md)
     - [Přidání dalších sloupců do tabulky DataTable (C#)](advanced-data-access-scenarios/adding-additional-datatable-columns-cs.md)
-    - [Práce s vypočítanými sloupci (C#)](advanced-data-access-scenarios/working-with-computed-columns-cs.md)
+    - [Práce s vypočtenými sloupci (C#)](advanced-data-access-scenarios/working-with-computed-columns-cs.md)
     - [Konfigurace připojení vrstvy přístupu k datům a nastavení na úrovni příkazu (C#)](advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)
     - [Ochrana připojovacích řetězců a dalších konfiguračních údajů (C#)](advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs.md)
     - [Ladění uložených procedur (C#)](advanced-data-access-scenarios/debugging-stored-procedures-cs.md)
     - [Vytvoření uložených procedur a uživatelsky definovaných funkcí spravovaným kódem (C#)](advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-cs.md)
-    - [Vytvoření nových uložených procedur prvků TableAdapter typových sad dat (VB)](advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
-    - [Použití stávajících uložených procedur komponentami TableAdapter typových sad dat (VB)](advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
+    - [Vytvoření nových uložených procedur prvků TableAdapter typových datových sad (VB)](advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
+    - [Použití stávajících uložených procedur komponentami TableAdapter typových datových sad (VB)](advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
     - [Aktualizace komponenty TableAdapter kvůli použití příkazů JOIN (VB)](advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-vb.md)
     - [Přidání dalších sloupců do tabulky DataTable (VB)](advanced-data-access-scenarios/adding-additional-datatable-columns-vb.md)
-    - [Práce s vypočítanými sloupci (VB)](advanced-data-access-scenarios/working-with-computed-columns-vb.md)
+    - [Práce s vypočtenými sloupci (VB)](advanced-data-access-scenarios/working-with-computed-columns-vb.md)
     - [Konfigurace připojení vrstvy přístupu k datům a nastavení na úrovni příkazu (VB)](advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-vb.md)
     - [Ochrana připojovacích řetězců a dalších konfiguračních údajů (VB)](advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-vb.md)
     - [Ladění uložených procedur (VB)](advanced-data-access-scenarios/debugging-stored-procedures-vb.md)

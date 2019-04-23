@@ -12,7 +12,7 @@ ms.openlocfilehash: 188f98d013707178e50858f8ea26d8cf2af06bea
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59406012"
 ---
 # <a name="presetting-list-entries-with-cascadingdropdown-c"></a>Předvedení položek seznamu ovládacím prvkem CascadingDropDown (C#)
@@ -53,7 +53,7 @@ Metoda vrátí pole typu hodnota CascadingDropDown. Konstruktor typu očekává,
 Načítání stránky v prohlížeči vyplní rozevíracího seznamu, s třemi dodavateli, druhý se předem vybrali.
 
 
-[![Tseznam he je vyplněný a předem vybrali automaticky](presetting-list-entries-with-cascadingdropdown-cs/_static/image2.png)](presetting-list-entries-with-cascadingdropdown-cs/_static/image1.png)
+[![V seznamu je vyplněný a předem vybrali automaticky](presetting-list-entries-with-cascadingdropdown-cs/_static/image2.png)](presetting-list-entries-with-cascadingdropdown-cs/_static/image1.png)
 
 V seznamu je vyplněný a předem vybrali automaticky ([kliknutím ji zobrazíte obrázek v plné velikosti](presetting-list-entries-with-cascadingdropdown-cs/_static/image3.png))
 

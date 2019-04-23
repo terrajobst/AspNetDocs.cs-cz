@@ -12,7 +12,7 @@ ms.openlocfilehash: 0462d8357d83115e751a818d3c9feb4b4274e212
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59402541"
 ---
 # <a name="using-dynamicpopulate-with-a-user-control-and-javascript-c"></a>Použití ovládacího prvku DynamicPopulate s uživatelským ovládacím prvkem a JavaScriptem (C#)
@@ -67,7 +67,7 @@ Nakonec přidejte uživatelský ovládací prvek na stránce. Budete muset nasta
 A to je všechno! Na stránce se chová podle očekávání: Uživatel klikne na jednom z přepínačů, ovládací prvek v sadě nástrojů volat webovou službu a zobrazí aktuální datum v požadovaném formátu.
 
 
-[![The přepínače jsou umístěny do uživatelského ovládacího prvku](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image2.png)](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image1.png)
+[![Přepínací tlačítka jsou umístěny do uživatelského ovládacího prvku](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image2.png)](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image1.png)
 
 Přepínací tlačítka jsou umístěny do uživatelského ovládacího prvku ([kliknutím ji zobrazíte obrázek v plné velikosti](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image3.png))
 

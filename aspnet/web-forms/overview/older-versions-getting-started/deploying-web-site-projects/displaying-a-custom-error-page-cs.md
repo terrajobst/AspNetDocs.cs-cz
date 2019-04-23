@@ -12,7 +12,7 @@ ms.openlocfilehash: 0ccb1a737fdfc3cf2ffdcc22131650e1b79cd2cb
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59407221"
 ---
 # <a name="displaying-a-custom-error-page-c"></a>Zobrazení vlastní chybové stránky (C#)
@@ -167,7 +167,7 @@ Další informace o tématech, které jsou popsané v tomto kurzu najdete na ná
 - [Chybové stránky, ještě jednou](http://www.smashingmagazine.com/2009/01/29/404-error-pages-one-more-time/)
 - [Pokyny k návrhu pro výjimky](https://msdn.microsoft.com/library/ms229014.aspx)
 - [Uživatelsky přívětivé chybové stránky](http://aspnet.4guysfromrolla.com/articles/090606-1.aspx)
-- [Zpracování a generování výjimek](https://msdn.microsoft.com/library/5b2yeyab.aspx)
+- [Zpracování a vyvolání výjimek](https://msdn.microsoft.com/library/5b2yeyab.aspx)
 - [Správně pomocí vlastní chybové stránky technologie ASP.NET](http://professionalaspnet.com/archive/2007/09/30/Properly-Using-Custom-Error-Pages-in-ASP.NET.aspx)
 
 > [!div class="step-by-step"]

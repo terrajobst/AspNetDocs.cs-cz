@@ -12,7 +12,7 @@ ms.openlocfilehash: 55ee67150d1567a0334988a06ff0fcca8a89bbd4
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59404049"
 ---
 # <a name="launching-a-modal-popup-window-from-server-code-vb"></a>Spuštění okna modální místní nabídky serverovým kódem (VB)
@@ -65,7 +65,7 @@ Práce `launchModal()` je zobrazení ovládacího prvku ModalPopup. `launchModal
 `$find()` Funkce hledá pojmenovaného elementu na stránce a očekává jako parametr ID na straně serveru. Proto `$find("mpe")` vrátí reprezentaci klienta ovládacího prvku ModalPopup ovládacího prvku; jeho `show()` metoda umožňuje automaticky otevírané okno se zobrazí.
 
 
-[![The Modální místní nabídky se zobrazí po kliknutí na některý z tlačítka](launching-a-modal-popup-window-from-server-code-vb/_static/image2.png)](launching-a-modal-popup-window-from-server-code-vb/_static/image1.png)
+[![Modální místní nabídky se zobrazí po kliknutí na některý z tlačítek](launching-a-modal-popup-window-from-server-code-vb/_static/image2.png)](launching-a-modal-popup-window-from-server-code-vb/_static/image1.png)
 
 Modální místní nabídky se zobrazí po kliknutí na některý z tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](launching-a-modal-popup-window-from-server-code-vb/_static/image3.png))
 

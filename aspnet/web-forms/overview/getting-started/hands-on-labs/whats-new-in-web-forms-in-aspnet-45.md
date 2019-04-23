@@ -12,7 +12,7 @@ ms.openlocfilehash: 52f6ec17fb21019e93ebf2795e95d5b27e4edbe6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59401735"
 ---
 # <a name="whats-new-in-web-forms-in-aspnet-45"></a>Novinky webových formulářů v ASP.NET 4.5
@@ -396,7 +396,7 @@ ASP.NET 4.5 zavádí poznámky ověření dat pro webové formuláře. Namísto 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample23.cs)]
 
     > [!NOTE]
-    > Rozhraní .NET framework 4.5 rozšířeno existující kolekci poznámek data. Zde je několik příkladů poznámek dat můžete použít: [CreditCard], [Phone], [EmailAddress], [Oblast], [porovnat], [Url], [FileExtensions], [povinné], [klíč], [regulární výraz].
+    > Rozhraní .NET framework 4.5 rozšířeno existující kolekci poznámek data. Zde je několik příkladů poznámek dat můžete použít: [CreditCard], [Phone], [EmailAddress], [Oblast], [porovnat], [Url], [FileExtensions], [povinné], [Key], [regulární výraz].
     > 
     > Některé příklady použití:
     > 

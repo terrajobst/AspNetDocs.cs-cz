@@ -12,7 +12,7 @@ ms.openlocfilehash: 6b989e384612f2d663afd431e8daa3afd17f6e6b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59399772"
 ---
 # <a name="adonet-data-services"></a>ADO.NET Data Services
@@ -21,5 +21,5 @@ ms.locfileid: "59399772"
 
 
 - [Vrstvy přístupu k datům v aplikacích ASP.NET](data-access-layers-in-aspnet-applications.md)
-- [Ruční svázání sady dat s mřížkou Datagrid](how-to-manually-bind-a-dataset-to-a-datagrid.md)
-- [Práce se sadami dat a filtry z aplikace ASP](how-to-work-with-datasets-and-filters-from-an-asp-application.md)
+- [Ruční svázání datové sady s mřížkou Datagrid](how-to-manually-bind-a-dataset-to-a-datagrid.md)
+- [Práce s datovými sadami a filtry z aplikace ASP](how-to-work-with-datasets-and-filters-from-an-asp-application.md)

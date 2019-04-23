@@ -12,7 +12,7 @@ ms.openlocfilehash: 94885984ebad90523369dcf5771d0f77a753008f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59405661"
 ---
 # <a name="iteration-6--use-test-driven-development-c"></a>Iterace #6 – použití vývoje řízeného (C#)
@@ -113,7 +113,7 @@ Naši první uživatelský scénář je, že uživatel by měl zobrazit seznam s
 Vytvořte nový test jednotek kliknutím pravým tlačítkem složku řadiče v projektu ContactManager.Tests výběr **přidat, otestovat nové**a výběrem možnosti **testování částí** šablony (viz obrázek 1). Název nové jednotky testování GroupControllerTest.cs a klikněte na tlačítko **OK** tlačítko.
 
 
-[![Atestování částí GroupControllerTest dding](iteration-6-use-test-driven-development-cs/_static/image1.jpg)](iteration-6-use-test-driven-development-cs/_static/image1.png)
+[![Přidání testování částí GroupControllerTest](iteration-6-use-test-driven-development-cs/_static/image1.jpg)](iteration-6-use-test-driven-development-cs/_static/image1.png)
 
 **Obrázek 01**: Přidání testování částí GroupControllerTest ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image2.png))
 
@@ -141,7 +141,7 @@ Třída kontroleru skupiny v informacích 2 obsahuje úplné minimální kód po
 Poté, co jsme do našich projektu přidat třídy GroupController a skupiny, naši první test částí úspěšně dokončí (viz obrázek 2). Jsme udělali minimální práci potřebnou k projde testem. Je čas oslavili.
 
 
-[![Success!](iteration-6-use-test-driven-development-cs/_static/image2.jpg)](iteration-6-use-test-driven-development-cs/_static/image3.png)
+[![Úspěch!](iteration-6-use-test-driven-development-cs/_static/image2.jpg)](iteration-6-use-test-driven-development-cs/_static/image3.png)
 
 **Obrázek 02**: Úspěch! ([Kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image4.png))
 
@@ -152,7 +152,7 @@ Teď můžeme přesunout k druhý uživatelský scénář. Musíme být schopni 
 
 Test v informacích 4 ověřuje, že volání Create() metodu s novou skupinu přidá do seznamu skupin vrácený metodou Index() skupinu. Jinými slovy je-li vytvořit novou skupinu pak by měl možné vrátit novou skupinu ze seznamu skupin vrácený metodou Index().
 
-**Listing 4 - Controllers\GroupControllerTest.cs**
+**Část 4 – Controllers\GroupControllerTest.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample4.cs)]
 
@@ -267,12 +267,12 @@ Dále musíme definovat vztah mezi skupiny databázové tabulky a stávající d
 9. Kliknutím na tlačítko Uložit uložte změny do tabulky kontaktů.
 
 
-[![Cořit tabulkami databáze](iteration-6-use-test-driven-development-cs/_static/image3.jpg)](iteration-6-use-test-driven-development-cs/_static/image5.png)
+[![Vytvoření relace tabulky databáze](iteration-6-use-test-driven-development-cs/_static/image3.jpg)](iteration-6-use-test-driven-development-cs/_static/image5.png)
 
 **Obrázek 03**: Vytvoření relace tabulky databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image6.png))
 
 
-[![Specifying relací mezi tabulkami](iteration-6-use-test-driven-development-cs/_static/image4.jpg)](iteration-6-use-test-driven-development-cs/_static/image7.png)
+[![Určení relací mezi tabulkami](iteration-6-use-test-driven-development-cs/_static/image4.jpg)](iteration-6-use-test-driven-development-cs/_static/image7.png)
 
 **Obrázek 04**: Určení relací mezi tabulkami ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image8.png))
 
@@ -288,7 +288,7 @@ Dále musíme aktualizovat naše datový model, který představuje nové datab�
 5. Klikněte pravým tlačítkem na skupiny navigační vlastnost, která se zobrazí v dolní části entitu kontakt. Změňte název *skupiny* navigační vlastnost pro *skupiny* (singulární).
 
 
-[![Uualizace modelu Entity Framework z databáze](iteration-6-use-test-driven-development-cs/_static/image5.jpg)](iteration-6-use-test-driven-development-cs/_static/image9.png)
+[![Aktualizace modelu Entity Framework z databáze](iteration-6-use-test-driven-development-cs/_static/image5.jpg)](iteration-6-use-test-driven-development-cs/_static/image9.png)
 
 **Obrázek 05**: Aktualizace modelu Entity Framework z databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image10.png))
 
@@ -296,7 +296,7 @@ Dále musíme aktualizovat naše datový model, který představuje nové datab�
 Po dokončení těchto kroků bude reprezentovat datového modelu kontakty a skupiny tabulek. V návrháři entit by se měla zobrazit obě entity (viz obrázek 6).
 
 
-[![Ezobrazení návrháře ntity skupině a obraťte se na](iteration-6-use-test-driven-development-cs/_static/image6.jpg)](iteration-6-use-test-driven-development-cs/_static/image11.png)
+[![Zobrazení skupiny a kontakt v návrháři entit](iteration-6-use-test-driven-development-cs/_static/image6.jpg)](iteration-6-use-test-driven-development-cs/_static/image11.png)
 
 **Obrázek 06**: Zobrazení skupiny a kontakt v návrháři entit ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image12.png))
 
@@ -329,7 +329,7 @@ Potřebujeme vytvořit následující nová zobrazení pro správu kontaktů sku
 - Views\Group\Delete.aspx – formulář zobrazí potvrzení k odstranění skupiny kontaktů
 
 
-[![Tmá Index skupiny zobrazení](iteration-6-use-test-driven-development-cs/_static/image7.jpg)](iteration-6-use-test-driven-development-cs/_static/image13.png)
+[![Zobrazení skupiny Index](iteration-6-use-test-driven-development-cs/_static/image7.jpg)](iteration-6-use-test-driven-development-cs/_static/image13.png)
 
 **Obrázek 07**: Zobrazení skupiny indexu ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image14.png))
 
@@ -343,7 +343,7 @@ Potřebujeme upravit následující stávající zobrazení, aby zahrnovaly skup
 Zobrazí se změny zobrazení pohledem na aplikace sady Visual Studio, který doprovází tento kurz. Například obrázek 8 znázorňuje zobrazení indexu kontaktu.
 
 
-[![Tmá kontakt Index zobrazení](iteration-6-use-test-driven-development-cs/_static/image8.jpg)](iteration-6-use-test-driven-development-cs/_static/image15.png)
+[![Zobrazení indexu kontaktu](iteration-6-use-test-driven-development-cs/_static/image8.jpg)](iteration-6-use-test-driven-development-cs/_static/image15.png)
 
 **Obrázek 08**: Zobrazení indexu kontakt ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image16.png))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 6e5c01c3602bd313ebca467b65563b7abfd7ffe2
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59400097"
 ---
 # <a name="displaying-maps-in-an-aspnet-web-pages-razor-site"></a>Zobrazení map na webu rozhraní ASP.NET Web Pages (Razor)

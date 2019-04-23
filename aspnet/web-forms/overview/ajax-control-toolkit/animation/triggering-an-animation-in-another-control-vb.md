@@ -12,7 +12,7 @@ ms.openlocfilehash: c74e829c85ae3b57d54a62aeb79388f1131e7184
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59398199"
 ---
 # <a name="triggering-an-animation-in-another-control-vb"></a>Aktivace animace jiného ovládacího prvku (VB)
@@ -57,7 +57,7 @@ V rámci `<Animations>` uzlu, místo animace jako obvykle. Aby bylo možné je m
 Poznámka: zvláštní pořadí, ve kterém se zobrazují jednotlivé animace. Za prvé získá tlačítko Deaktivovat po spuštění animace. Protože neexistuje žádné `AnimationTarget` atribut v `<EnableAction>` element, tato animace se použije pro původní ovládacího prvku: tlačítko. Animace další dva kroky se provádějí paralelně (`<Parallel>` element). Obě mají jejich `AnimationTarget` nastavte atributy na `"Panel1"`, tedy animace panelu, ne na tlačítko.
 
 
-[![A panel animace spuštěna, myši, klikněte na tlačítko](triggering-an-animation-in-another-control-vb/_static/image2.png)](triggering-an-animation-in-another-control-vb/_static/image1.png)
+[![Panel animace spuštěna, kliknutí myší na tlačítko](triggering-an-animation-in-another-control-vb/_static/image2.png)](triggering-an-animation-in-another-control-vb/_static/image1.png)
 
 Panel animace spuštěna, kliknutí myší na tlačítko ([kliknutím ji zobrazíte obrázek v plné velikosti](triggering-an-animation-in-another-control-vb/_static/image3.png))
 

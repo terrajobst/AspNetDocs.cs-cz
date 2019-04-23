@@ -12,7 +12,7 @@ ms.openlocfilehash: e4545f36d5a2668bc6a21249a89a94ece9bb2ca2
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59397978"
 ---
 # <a name="aspnet-and-web-tools-20122-release-notes"></a>ASP.NET a webové nástroje – poznámky k verzi 2012.2
@@ -29,9 +29,9 @@ ms.locfileid: "59397978"
     - [Nástroje](#_Tooling)
     - [Publikování na webu](#_Web_Publishing)
     - [Šablony ASP.NET MVC](#_Templates)
-    - [Rozhraní API pro ASP.NET Web](#_ASP.NET_Web_API)
+    - [Webové rozhraní API v ASP.NET](#_ASP.NET_Web_API)
 
-    - [ASP.NET SignalR](#_ASP.NET_SignalR)
+    - [Funkce SignalR technologie ASP.NET](#_ASP.NET_SignalR)
     - [ASP.NET přátelské adresy URL](#_ASP.NET_Friendly_URLs)
 - [Známé problémy a změny způsobující chyby](#_Known_Issues_and)
 

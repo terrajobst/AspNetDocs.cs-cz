@@ -12,7 +12,7 @@ ms.openlocfilehash: 863fe772a1d79201b83da8498bf7e981acf7fd0e
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59401072"
 ---
 # <a name="passing-data-to-view-master-pages-c"></a>Předání dat stránkám předlohy pro zobrazení (C#)
@@ -33,7 +33,7 @@ Cílem tohoto kurzu je vysvětlují, jak můžete předat data z kontroleru na h
 Představte si, že vytváříte aplikace movie database a chcete zobrazit seznam kategorií video na každé stránce v aplikaci (viz obrázek 1). Představte si kromě toho, že seznam kategorií video je uložena v tabulce databáze. V takovém případě to dává smysl pro načtení daných kategorií z databáze a zobrazit seznam kategorií filmu v rámci hlavní stránky zobrazení.
 
 
-[![Dkategorie film isplaying stránku předlohy tak zobrazení](passing-data-to-view-master-pages-cs/_static/image2.png)](passing-data-to-view-master-pages-cs/_static/image1.png)
+[![Zobrazení kategorií filmu v zobrazení stránky předlohy](passing-data-to-view-master-pages-cs/_static/image2.png)](passing-data-to-view-master-pages-cs/_static/image1.png)
 
 **Obrázek 01**: Zobrazení kategorií filmu v zobrazení stránky předlohy ([kliknutím ji zobrazíte obrázek v plné velikosti](passing-data-to-view-master-pages-cs/_static/image3.png))
 
@@ -59,7 +59,7 @@ Všimněte si, že Index() a akce Details() přidat dvě položky chcete zobrazi
 Akce Details() také přidá dva klíče s názvem kategorie a videa. Kategorie klíč znovu, představuje seznamu kategorií video zobrazí při zobrazení stránky předlohy. Klíč filmy představuje seznam video v konkrétní kategorii, zobrazí na stránce podrobností zobrazení (viz obrázek 2).
 
 
-[![Tzobrazení podrobností o he](passing-data-to-view-master-pages-cs/_static/image5.png)](passing-data-to-view-master-pages-cs/_static/image4.png)
+[![Zobrazení podrobností](passing-data-to-view-master-pages-cs/_static/image5.png)](passing-data-to-view-master-pages-cs/_static/image4.png)
 
 **Obrázek 02**: Zobrazení podrobností ([kliknutím ji zobrazíte obrázek v plné velikosti](passing-data-to-view-master-pages-cs/_static/image6.png))
 

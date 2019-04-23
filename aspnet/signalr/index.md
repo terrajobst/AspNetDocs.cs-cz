@@ -12,22 +12,22 @@ ms.openlocfilehash: fa489c79e175753635d89913aaaa15a832aa16f7
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59407585"
 ---
 # <a name="signalr"></a>SignalR
 
-- [Doprovodné materiály](overview/index.md)
+- [Pokyny](overview/index.md)
 
     - [Začínáme](overview/getting-started/index.md)
 
         - [Úvod ke knihovně SignalR](overview/getting-started/introduction-to-signalr.md)
         - [Podporované platformy](overview/getting-started/supported-platforms.md)
-        - [Kurz: Začínáme s funkcí SignalR 2](overview/getting-started/tutorial-getting-started-with-signalr.md)
+        - [Kurz: Začínáme s knihovnou SignalR 2](overview/getting-started/tutorial-getting-started-with-signalr.md)
         - [Kurz: Začínáme s knihovnou SignalR 2 a MVC 5](overview/getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
         - [Kurz: Vysokofrekvenční Reálný čas s knihovnou SignalR 2](overview/getting-started/tutorial-high-frequency-realtime-with-signalr.md)
         - [Kurz: Serverové vysílání s knihovnou SignalR 2](overview/getting-started/tutorial-server-broadcast-with-signalr.md)
-        - [Praktické cvičení: Webové aplikace v reálném čase s knihovnou SignalR](overview/getting-started/real-time-web-applications-with-signalr.md)
+        - [Praktické cvičení: Aplikace webu v reálném čase s knihovnou SignalR](overview/getting-started/real-time-web-applications-with-signalr.md)
     - [Pokyny k rozhraní API](overview/guide-to-the-api/index.md)
 
         - [Pokyny k rozhraní API center – server (C#)](overview/guide-to-the-api/hubs-api-guide-server.md)
@@ -39,7 +39,7 @@ ms.locfileid: "59407585"
     - [Testování a ladění](overview/testing-and-debugging/index.md)
 
         - [Řešení potíží s knihovnou SignalR](overview/testing-and-debugging/troubleshooting.md)
-        - [Testování jednotek aplikace knihovnou SignalR](overview/testing-and-debugging/unit-testing-signalr-applications.md)
+        - [Testování částí aplikace knihovnou SignalR](overview/testing-and-debugging/unit-testing-signalr-applications.md)
         - [Povolení trasování knihovnou SignalR](overview/testing-and-debugging/enabling-signalr-tracing.md)
     - [Zabezpečení](overview/security/index.md)
 
@@ -57,17 +57,17 @@ ms.locfileid: "59407585"
         - [Použití čítačů výkonu SignalR webové role Azure](overview/performance/using-signalr-performance-counters-in-an-azure-web-role.md)
     - [Nasazení a hostování](overview/deployment/index.md)
 
-        - [Kurz: SignalR v místním prostředí](overview/deployment/tutorial-signalr-self-host.md)
+        - [Kurz: Hostování na vlastním serveru funkce SignalR](overview/deployment/tutorial-signalr-self-host.md)
         - [Použití aplikace SignalR s webovými aplikacemi ve službě Azure App Service](overview/deployment/using-signalr-with-azure-web-sites.md)
-    - [Upřesnit](overview/advanced/index.md)
+    - [Pokročilé](overview/advanced/index.md)
 
         - [Injektáž závislostí v centrech SignalR](overview/advanced/dependency-injection.md)
-    - [Vydané verze](overview/releases/index.md)
+    - [Verze](overview/releases/index.md)
 
         - [Upgradování projektů SignalR 1.x na verzi 2](overview/releases/upgrading-signalr-1x-projects-to-20.md)
     - [Starší verze](overview/older-versions/index.md)
 
-        - [Kurz: Začínáme s funkcí SignalR 1.x](overview/older-versions/tutorial-getting-started-with-signalr.md)
+        - [Kurz: Začínáme s knihovnou SignalR 1.x](overview/older-versions/tutorial-getting-started-with-signalr.md)
         - [Kurz: Začínáme s knihovnou SignalR 1.x a MVC 4](overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4.md)
         - [Vysokofrekvenční reálný čas s knihovnou SignalR 1.x](overview/older-versions/tutorial-high-frequency-realtime-with-signalr.md)
         - [Kurz: Serverové vysílání s knihovnou ASP.NET SignalR 1.x](overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr.md)

@@ -12,7 +12,7 @@ ms.openlocfilehash: 1500415c7ee017776c59acb05a2eaefc6956a41b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59404694"
 ---
 # <a name="configuring-a-tfs-build-server-for-web-deployment"></a>Konfigurace serveru TFS Build pro nasazení webu

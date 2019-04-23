@@ -12,7 +12,7 @@ ms.openlocfilehash: ea11b464329a755d5625797327f5a0a3ccb0f426
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59400578"
 ---
 # <a name="net-4"></a>.NET 4
@@ -25,7 +25,7 @@ ms.locfileid: "59400578"
     - [Imperativní syntaxe jazyka JavaScript pro ovládací prvky Microsoftu na straně klienta](ajax/aspnet-4-quick-hit-imperative-javascript-syntax-for-microsoft-client-side-controls.md)
     - [ScriptLoader](ajax/aspnet-4-quick-hit-the-scriptloader.md)
     - [Syntaxe JQuery pro Microsoft Ajax](ajax/aspnet-4-quick-hit-jquery-syntax-for-microsoft-ajax.md)
-    - [Šablony data AJAXu](ajax/aspnet-4-quick-hit-ajax-data-templates.md)
+    - [Datové šablony AJAX](ajax/aspnet-4-quick-hit-ajax-data-templates.md)
 - [Graf](chart/index.md)
 
     - [Graf – ovládací prvek](chart/aspnet-4-quick-hit-chart-control.md)
@@ -39,12 +39,12 @@ ms.locfileid: "59400578"
 - [Data](data/index.md)
 
     - [Trvalý výběr řádku v ovládacím prvku GridView](data/aspnet-4-quick-hit-persistent-gridview-row-selection.md)
-- [Ovládací prvek kódu](markup-control/index.md)
+- [Ovládací prvek značky](markup-control/index.md)
 
     - [Nová možnost vykreslování seznamů zaškrtávacích políček a seznamů přepínačů](markup-control/aspnet-4-quick-hit-new-rendering-option-for-check-box-lists-and-radio-button-lists.md)
     - [Ovládací prvky bez vizuálního vzhledu a tabulky](markup-control/aspnet-4-quick-hit-table-free-templated-controls.md)
     - [Ovládací prvek nabídky bez tabulky](markup-control/aspnet-4-quick-hit-tableless-menu-control.md)
-    - [Prvky Div skrytých polí](markup-control/aspnet-4-quick-hit-hidden-field-divs.md)
+    - [Prvky div skrytých polí](markup-control/aspnet-4-quick-hit-hidden-field-divs.md)
     - [Zakázané určení stylu ovládacího prvku](markup-control/aspnet-4-quick-hit-disabled-control-styling.md)
 - [Výkon](performance/index.md)
 

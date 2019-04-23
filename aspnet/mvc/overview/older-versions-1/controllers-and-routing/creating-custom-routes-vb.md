@@ -12,7 +12,7 @@ ms.openlocfilehash: a7b8b85ba1cf5c18e605eb8114a305272baf41a6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59404868"
 ---
 # <a name="creating-custom-routes-vb"></a>Vytváření vlastních tras (VB)
@@ -61,7 +61,7 @@ Všimněte si, že metoda Entry() ve výpisu 2 přijímá parametr typu DateTime
 **Obrázek 1 – Chyba z převodu parametru**
 
 
-[![TDialogové okno Nový projekt he](creating-custom-routes-vb/_static/image1.jpg)](creating-custom-routes-vb/_static/image1.png)
+[![Dialogové okno Nový projekt](creating-custom-routes-vb/_static/image1.jpg)](creating-custom-routes-vb/_static/image1.png)
 
 **Obrázek 01**: Chyba z převodu parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-custom-routes-vb/_static/image2.png))
 

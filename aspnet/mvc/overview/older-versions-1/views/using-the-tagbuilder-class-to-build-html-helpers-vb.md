@@ -12,7 +12,7 @@ ms.openlocfilehash: 4fe34858aadb705ffb59e06ba805493d89aa4028
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59403204"
 ---
 # <a name="using-the-tagbuilder-class-to-build-html-helpers-vb"></a>Pomocí třída TagBuilder pro sestavení pomocných rutin HTML (VB)
@@ -65,7 +65,7 @@ Po vytvoření Image pomocné rutiny, můžete v zobrazení ASP.NET MVC stejně 
 [!code-aspx[Main](using-the-tagbuilder-class-to-build-html-helpers-vb/samples/sample2.aspx)]
 
 
-[![TDialogové okno Nový projekt he](using-the-tagbuilder-class-to-build-html-helpers-vb/_static/image1.jpg)](using-the-tagbuilder-class-to-build-html-helpers-vb/_static/image1.png)
+[![Dialogové okno Nový projekt](using-the-tagbuilder-class-to-build-html-helpers-vb/_static/image1.jpg)](using-the-tagbuilder-class-to-build-html-helpers-vb/_static/image1.png)
 
 **Obrázek 01**: Použití pomocné rutiny bitové kopie ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-tagbuilder-class-to-build-html-helpers-vb/_static/image2.png))
 

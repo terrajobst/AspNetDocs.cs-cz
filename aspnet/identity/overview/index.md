@@ -12,7 +12,7 @@ ms.openlocfilehash: ef4eb7428770453596090af111576ab23a27206b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59406168"
 ---
 # <a name="aspnet-identity-overview"></a>Přehled ASP.NET Identity
@@ -29,7 +29,7 @@ ms.locfileid: "59406168"
     - [Doporučené postupy nasazení hesel a dalších citlivých dat do ASP.NET a služby Azure App Service](features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md)
     - [Potvrzení účtu a obnovení hesla s ASP.NET Identity (C#)](features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md)
     - [Dvoufaktorové ověřování pomocí SMS a e-mailu s ASP.NET Identity](features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md)
-- [Rozšiřitelnost](extensibility/index.md)
+- [Rozšíření](extensibility/index.md)
 
     - [Přehled poskytovatelů vlastního úložiště pro ASP.NET Identity](extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md)
     - [Implementace vlastního poskytovatele úložiště MySQL ASP.NET Identity](extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider.md)

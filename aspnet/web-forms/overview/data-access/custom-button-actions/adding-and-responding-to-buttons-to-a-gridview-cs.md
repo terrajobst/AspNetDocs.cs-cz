@@ -12,7 +12,7 @@ ms.openlocfilehash: a8cc1d98c0574145b0b74b64d53772bd50517067
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59404192"
 ---
 # <a name="adding-and-responding-to-buttons-to-a-gridview-c"></a>Přidání tlačítek do ovládacího prvku GridView a reakce na ně (C#)
@@ -31,7 +31,7 @@ Přestože mnoho scénáře vytváření sestav zahrnují přístup jen pro čte
 Kromě toho pro úpravy a odstraňování tlačítek, ovládacího prvku GridView, DetailsView a FormView ovládacích prvků může také zahrnovat tlačítka, LinkButtons nebo ImageButtons, po kliknutí na provést nějakou vlastní logiku na straně serveru. V tomto kurzu podíváme na tom, jak přidat vlastní tlačítka na šablonu a k polím ovládacího prvku GridView nebo prvku DetailsView. Zejména vytvoříme rozhraní, které má FormView, umožňující uživateli stránkovat dodavatelů. Pro daného dodavatele FormView zobrazí informace o dodavateli spolu s ovládací prvek tlačítko Web, který if kliknuto, označí všechny jejich související produkty jako ukončena. Kromě toho GridView uvádí tyto produkty vybrané dodavatelem, opatřeného každý řádek obsahující zvýšení ceny a slevy cena tlačítka, která, pokud kliknutí, zvýšit nebo snížit produktu `UnitPrice` % 10 (viz obrázek 1).
 
 
-[![Bokna FormView a GridView obsahovat tlačítka, že provedení vlastní akce](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image2.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image1.png)
+[![FormView i GridView obsahovat tlačítka, která provést vlastní akce](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image2.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image1.png)
 
 **Obrázek 1**: FormView i GridView obsahovat tlačítka, že provedení vlastní akce ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image3.png))
 
@@ -52,7 +52,7 @@ Předtím, než se podíváme na tom, jak přidat vlastní tlačítka, věnujte 
 V jiných složkách, jako jsou `Default.aspx` v `CustomButtons` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` jeho přetažením z Průzkumníka řešení do zobrazení návrhu.
 
 
-[![Add uživatelského ovládacího prvku SectionLevelTutorialListing.ascx Default.aspx](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image6.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image5.png)
+[![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image6.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image5.png)
 
 **Obrázek 3**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image7.png))
 
@@ -76,7 +76,7 @@ Můžeme začít s tímto kurzem přidáním FormView, který obsahuje seznam do
 Začněte otevřením `CustomButtons.aspx` stránku `CustomButtons` složky. Přidat na stránku FormView jeho přetažením z panelu nástrojů do návrháře a nastavte jeho `ID` vlastnost `Suppliers`. Z ovládacího prvku FormView inteligentních značek, rozhodnout vytvořit nového prvku ObjectDataSource s názvem `SuppliersDataSource`.
 
 
-[![CVytvořit nový účet ObjectDataSource s názvem SuppliersDataSource](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image10.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image9.png)
+[![Vytvoření nového prvku ObjectDataSource s názvem SuppliersDataSource](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image10.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image9.png)
 
 **Obrázek 5**: Vytvoření nového prvku ObjectDataSource s názvem `SuppliersDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image11.png))
 
@@ -84,7 +84,7 @@ Začněte otevřením `CustomButtons.aspx` stránku `CustomButtons` složky. Př
 Nakonfigurujte tento nový prvek ObjectDataSource, tak, aby se dotázal z `SuppliersBLL` třídy `GetSuppliers()` – metoda (viz obrázek 6). Protože tato FormView neposkytuje rozhraní pro aktualizaci dodavatele informace, vyberte možnost (žádná) z rozevíracího seznamu na kartě aktualizace.
 
 
-[![CZdroj dat použít SuppliersBLL třídu s metodou GetSuppliers() onfigurovat](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image13.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image12.png)
+[![Konfigurace zdroje dat pomocí třídy SuppliersBLL s GetSuppliers() – metoda](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image13.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image12.png)
 
 **Obrázek 6**: Konfigurace zdroje dat pro použití `SuppliersBLL` třídy `GetSuppliers()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image14.png))
 
@@ -96,7 +96,7 @@ Po dokončení konfigurace ObjectDataSource, Visual Studio vygeneruje `InsertIte
 Obrázek 7 znázorňuje stránce CustomButtons.aspx při zobrazit pomocí prohlížeče.
 
 
-[![TFormView uvádí pole CompanyName a Phone od dodavatele aktuálně vybrané](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image16.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image15.png)
+[![Pole CompanyName a Phone od aktuálně vybraného dodavatele obsahuje seznam FormView](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image16.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image15.png)
 
 **Obrázek 7**: Uvádí FormView `CompanyName` a `Phone` pole od dodavatele aktuálně vybrané ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image17.png))
 
@@ -106,7 +106,7 @@ Obrázek 7 znázorňuje stránce CustomButtons.aspx při zobrazit pomocí prohl�
 Předtím, než jsme do ovládacího prvku FormView šablony přidat tlačítko Ukončit všechny produkty, nejprve přidáme GridView ve třídě FormView, který obsahuje seznam produktů poskytovaných vybrané dodavatelem. Chcete-li GridView dosáhnout, přidat na stránku, nastavte jeho `ID` vlastnost `SuppliersProducts`, a přidejte nový prvek ObjectDataSource s názvem `SuppliersProductsDataSource`.
 
 
-[![CVytvořit nový účet ObjectDataSource s názvem SuppliersProductsDataSource](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image19.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image18.png)
+[![Vytvoření nového prvku ObjectDataSource s názvem SuppliersProductsDataSource](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image19.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image18.png)
 
 **Obrázek 8**: Vytvoření nového prvku ObjectDataSource s názvem `SuppliersProductsDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image20.png))
 
@@ -114,7 +114,7 @@ Předtím, než jsme do ovládacího prvku FormView šablony přidat tlačítko 
 Konfigurace tohoto prvku ObjectDataSource pomocí třídy ProductsBLL `GetProductsBySupplierID(supplierID)` – metoda (viz obrázek 9). Zatímco ceny produktu upraví umožní tohoto ovládacího prvku GridView, nebude použití předdefinované úpravy nebo odstranění funkce z prvku GridView. Proto jsme rozevíracího seznamu na (žádný) nastavit ObjectDataSource uživatele UPDATE, INSERT a odstranit záložky.
 
 
-[![CZdroj dat použít ProductsBLL třídu s metodou GetProductsBySupplierID(supplierID) onfigurovat](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image22.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image21.png)
+[![Konfigurace zdroje dat pomocí třídy ProductsBLL s GetProductsBySupplierID(supplierID) – metoda](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image22.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image21.png)
 
 **Obrázek 9**: Konfigurace zdroje dat pro použití `ProductsBLL` třídy `GetProductsBySupplierID(supplierID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image23.png))
 
@@ -122,7 +122,7 @@ Konfigurace tohoto prvku ObjectDataSource pomocí třídy ProductsBLL `GetProduc
 Vzhledem k tomu, `GetProductsBySupplierID(supplierID)` metoda přijímá jako vstupní parametr, Průvodce ObjectDataSource vyzve nám zdroje hodnota tohoto parametru. A zajistěte tak předání `SupplierID` hodnotu FormView, nastavte parametr zdroj rozevíracího seznamu na ovládací prvek a rozevírací seznam ControlID na `Suppliers` (ID třídy FormView vytvořili v kroku 2).
 
 
-[![Indicate, který KódDodavatele parametr musí pocházet z ovládacího prvku FormView Dodavatelé](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image25.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image24.png)
+[![Označení pole supplierID parametr musí pocházet z ovládacího prvku FormView dodavatelů](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image25.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image24.png)
 
 **Obrázek 10**: Označuje, že *`supplierID`* parametr by měl pocházet z `Suppliers` ovládacího prvku FormView ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image26.png))
 
@@ -134,7 +134,7 @@ Po dokončení Průvodce prvek ObjectDataSource, bude prvku GridView obsahovat v
 V tomto okamžiku v našem kurzu zobrazí hlavních/podrobných sestav, umožňuje uživateli vybrat jiného dodavatele z FormView v horní části a zobrazit produkty poskytovaných dodavateli prostřednictvím GridView v dolní části. Při výběru Tokio Traders dodavatel z FormView obrázku 11 můžete vidět snímek obrazovky na této stránce.
 
 
-[![Tosoba s vybrané dodavatele, produkty, které se zobrazují v prvku GridView.](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image28.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image27.png)
+[![Produkty s vybraný poskytovatel se zobrazují v prvku GridView.](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image28.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image27.png)
 
 **Obrázek 11**: Dodavatel vybrané produkty jsou zobrazeny v prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image29.png))
 
@@ -146,7 +146,7 @@ Předtím, než jsme FormView přidáte tlačítko, po kliknutí na ze všech pr
 Jak jsme udělali v našich kurzů pro předchozí, použijeme zdola nahoru přístup, od vytvoření metodu DAL, pak metoda knihoven BLL a nakonec implementace funkcí na stránce technologie ASP.NET. Otevřít `Northwind.xsd` typované datové sady v `App_Code/DAL` složky a přidat nový způsob `ProductsTableAdapter` (klikněte pravým tlačítkem na `ProductsTableAdapter` a zvolte Přidat dotaz). Tím se otevře Průvodce konfigurací dotazu TableAdapter, který nám vás provede procesem přidávání nové metody. Začněte tak, že tato metoda naše DAL pomocí ad-hoc příkazu SQL.
 
 
-[![Cvytvořit pomocí metody DAL Ad-Hoc příkazu SQL](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image31.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image30.png)
+[![Vytvořit metodu DAL pomocí Ad-Hoc příkazu SQL](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image31.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image30.png)
 
 **Obrázek 12**: Vytvoření vrstvy DAL metoda použití příkazu SQL Ad-Hoc ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image32.png))
 
@@ -154,7 +154,7 @@ Jak jsme udělali v našich kurzů pro předchozí, použijeme zdola nahoru př�
 V dalším kroku průvodce vyzve nám, jaký typ dotazu vytvořte. Protože `DiscontinueAllProductsForSupplier(supplierID)` metoda bude nutné provést aktualizaci `Products` databázové tabulky, nastavení `Discontinued` pole na hodnotu 1 pro všechny produkty poskytnuté zadaný *`supplierID`*, potřebujeme vytvořit dotaz, který aktualizuje data.
 
 
-[![CZvolte typ dotazu aktualizace](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image34.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image33.png)
+[![Zvolte typ dotazu aktualizace](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image34.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image33.png)
 
 **Obrázek 13**: Zvolte typ dotazu aktualizace ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image35.png))
 
@@ -166,7 +166,7 @@ Na další obrazovce průvodce jsou existující TableAdapter `UPDATE` příkazu
 Po zadání tohoto dotazu a kliknutí na tlačítko Další, na poslední obrazovce průvodce požádá o novou metodu název použití `DiscontinueAllProductsForSupplier`. Dokončete průvodce kliknutím na tlačítko Dokončit. Po návratu do návrháře datových sad, měli byste vidět nové metody v `ProductsTableAdapter` s názvem `DiscontinueAllProductsForSupplier(@SupplierID)`.
 
 
-[![NNová metoda DiscontinueAllProductsForSupplier DAL AME](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image37.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image36.png)
+[![Název nové DiscontinueAllProductsForSupplier DAL – metoda](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image37.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image36.png)
 
 **Obrázek 14**: Pojmenujte novou metodu DAL `DiscontinueAllProductsForSupplier` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image38.png))
 
@@ -186,7 +186,7 @@ Tato metoda provede jednoduché volání dolů na `DiscontinueAllProductsForSupp
 S `DiscontinueAllProductsForSupplier(supplierID)` metodou v knihoven BLL a DAL dokončení v posledním kroku pro přidání možnost ukončit všechny produkty pro vybrané dodavatele je přidání ovládacího prvku tlačítko ovládacího prvku FormView `ItemTemplate`. Přidejte tlačítko, níže dodavatele telefonní číslo, text tlačítka, ukončí všechny produkty a `ID` hodnotou vlastnosti `DiscontinueAllProductsForSupplier`. Přidáte tento ovládací prvek tlačítko Web prostřednictvím návrháře kliknutím na odkaz Upravit šablony v inteligentní značky ovládacího prvku FormView (viz obrázek 15), nebo přímo prostřednictvím deklarativní syntaxe.
 
 
-[![APřidat a ukončit všechny produkty webové ovládací prvek tlačítko FormView s ItemTemplate](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image40.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image39.png)
+[![Přidat ukončit všechny produkty webového ovládacího prvku tlačítka FormView s ItemTemplate](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image40.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image39.png)
 
 **Obrázek 15**: Přidání ukončit všechny produkty tlačítko webový ovládací prvek do ovládacího prvku FormView `ItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image41.png))
 
@@ -222,7 +222,7 @@ Pokud klepnete na tlačítko OK v dialogovém okně Potvrdit na straně klienta,
 Pokud jste zakázali stav zobrazení v prvku GridView, prvku GridView je právě znovu připojeno k základnímu úložišti dat. při každém postbacku a proto bude okamžitě aktualizovat tak, aby odrážely, že tyto dva produkty jsou nyní ukončena (viz obrázek 17). Pokud však ještě zakázaný stav zobrazení v prvku GridView, musíte ručně po provedení této změny znovu připojit data, která mají prvku GridView. K tomu stačí provést volání do prvku GridView `DataBind()` metoda ihned po volání `DiscontinueAllProductsForSupplier(supplierID)` metody.
 
 
-[![AKliknutím na tlačítko Ukončit všechny produkty a dodavateli s produkty jsou odpovídajícím způsobem aktualizuje](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image46.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image45.png)
+[![Po kliknutí na tlačítko Ukončit všechny produkty, Dodavatel s produkty jsou odpovídajícím způsobem aktualizuje](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image46.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image45.png)
 
 **Obrázek 17**: Po kliknutí na tlačítko Ukončit všechny produkty, dodavatele produkty jsou odpovídajícím způsobem aktualizuje ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image47.png))
 
@@ -276,12 +276,12 @@ Jako s tlačítko Ukončit všechny produkty, pokud jste zakázali stav zobrazen
 Obrázek 20 zobrazuje stránku při prohlížení produktů poskytovaných Grandma Kelly věci odvál čas. Obrázek 21 ukazuje výsledky po Price + 10 % bylo stisknuto tlačítko dvakrát pro Grandma's Boysenberry Spread a tlačítko cena -10 % jednou pro úpravu Cranberry Northwoods.
 
 
-[![The cena zahrnuje GridView + 10 tlačítka cena -10 % a %](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image51.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image50.png)
+[![GridView zahrnuje cena + 10 % a cena -10 % tlačítka](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image51.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image50.png)
 
 **Obrázek 20**: Cena zahrnuje GridView + 10 % a cena -10 % tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image52.png))
 
 
-[![Tsi ceny pro první a třetí produktu se aktualizovaly přes Price + 10 tlačítka cena -10 % a %](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image54.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image53.png)
+[![Ceny produktu první a třetí se aktualizovaly přes Price + 10 % a cena -10 % tlačítka](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image54.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image53.png)
 
 **Obrázek 21**: Ceny platné pro první a třetí produktu se aktualizovaly přes Price + 10 % a cena -10 % tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image55.png))
 

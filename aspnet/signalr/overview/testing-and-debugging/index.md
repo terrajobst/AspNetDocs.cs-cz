@@ -12,7 +12,7 @@ ms.openlocfilehash: 88f45c27759a3a37a1b3cad6247cf528e8f521a8
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59406480"
 ---
 # <a name="signalr-testing-and-debugging"></a>Funkce SignalR testování a ladění
@@ -21,5 +21,5 @@ ms.locfileid: "59406480"
 
 
 - [Řešení potíží s knihovnou SignalR](troubleshooting.md)
-- [Testování jednotek aplikace knihovnou SignalR](unit-testing-signalr-applications.md)
+- [Testování částí aplikace knihovnou SignalR](unit-testing-signalr-applications.md)
 - [Povolení trasování knihovnou SignalR](enabling-signalr-tracing.md)

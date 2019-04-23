@@ -12,7 +12,7 @@ ms.openlocfilehash: 0446a125845134d2fad869094a540c960f6b0a25
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59406467"
 ---
 # <a name="using-aspnet-mvc-with-different-versions-of-iis-vb"></a>Použití ASP.NET MVC s různými verzemi služby IIS (VB)
@@ -54,7 +54,7 @@ Fond aplikací je určeno režim zpracování požadavků. Můžete určit, kter
 Ve výchozím nastavení je služba IIS konfigurována pro podporu dvou fondů aplikací: **DefaultAppPool** a **Classic .NET AppPool**. Pokud je vybrána DefaultAppPool, vaše aplikace běží v režimu zpracování integrované žádosti. Pokud je vybrána Classic .NET AppPool, aplikace běží v režimu zpracování classic žádosti.
 
 
-[![TDialogové okno Nový projekt he](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image1.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image1.png)
+[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image1.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image1.png)
 
 **Obrázek 1**: Zjišťování režim zpracování požadavků ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image2.png))
 
@@ -82,7 +82,7 @@ Podíváme na jednotlivé možnosti podrobně v následující části.
 
 Nejjednodušší způsob, jak získat směrování ASP.NET pro práci se staršími verzemi služby IIS je upravit vaše směrovací tabulku v souboru Global.asax. Výchozí nastavení a verzí bez úprav souboru Global.asax ve výpisu 1 nakonfiguruje jednu trasu s názvem výchozí trasu.
 
-**Výpis 1 - Global.asax (bez jakýchkoli úprav)**
+**Listing 1 - Global.asax (unmodified)**
 
 [!code-vb[Main](using-asp-net-mvc-with-different-versions-of-iis-vb/samples/sample1.vb)]
 
@@ -97,7 +97,7 @@ Výchozí trasy nakonfigurované v informacích 1 umožňuje směrování adres 
 Starší verze služby IIS bohužel nebudou předávat tyto žádosti na rozhraní ASP.NET. Proto nebude získat tyto požadavky směrovány do kontroleru. Například pokud vytvoříte žádost prohlížeče na adresu URL/Home/Index pak získáte chybovou stránku na obrázku 2.
 
 
-[![TDialogové okno Nový projekt he](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image2.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image3.png)
+[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image2.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image3.png)
 
 **Obrázek 2**: Chyba 404 nebyl nalezen ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image4.png))
 
@@ -173,7 +173,7 @@ Zde je, jak povolit mapu skriptů se zástupnými znaky pro službu IIS 7.0:
 7. Klikněte na tlačítko **OK** tlačítko
 
 
-[![TDialogové okno Nový projekt he](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image3.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image5.png)
+[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image3.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image5.png)
 
 **Obrázek 3**: Vytváření mapy skriptů se zástupnými znaky se službou IIS 7.0 ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image6.png))
 
@@ -190,7 +190,7 @@ Postupujte podle těchto kroků můžete vytvořit mapu skriptů se zástupnými
 8. Klikněte na tlačítko **OK** tlačítko
 
 
-[![TDialogové okno Nový projekt he](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image4.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image7.png)
+[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image4.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image7.png)
 
 **Obrázek 4**: Vytváření mapy skriptů se zástupnými znaky se službou IIS 6.0 ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image8.png))
 
@@ -198,7 +198,7 @@ Postupujte podle těchto kroků můžete vytvořit mapu skriptů se zástupnými
 Po povolení mapy skriptů se zástupnými znaky, budete muset upravit směrovací tabulky v souboru Global.asax tak, že obsahují kořenový trasy. Vytvořit žádost o kořenové stránky aplikace zobrazí, jinak se chybové stránky na obrázku 5. Můžete použít upravený soubor Global.asax výpis 4.
 
 
-[![TDialogové okno Nový projekt he](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image5.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image9.png)
+[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image5.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image9.png)
 
 **Obrázek 5**: Chybí kořenový trasy chyby ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image10.png))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 65e2268418501f89a77a0ba20f7960a618c2e9b7
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59405453"
 ---
 # <a name="attribute-routing-in-aspnet-web-api-2"></a>Směrování atributů v rozhraní ASP.NET Web API 2
@@ -50,7 +50,7 @@ Se směrováním atributů, že je jednoduché definovat trasu pro tento identif
 
 Tady jsou některé vzory, které atribut směrování umožňuje snadné.
 
-**Správa verzí API**
+**Správa verzí rozhraní API**
 
 V tomto příkladu "/ api/v1/produktů" bude směrovat do jiného řadiče než "/ api/v2/produktů".
 

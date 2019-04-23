@@ -12,7 +12,7 @@ ms.openlocfilehash: 94c467aabb53298299584b80626f9b2234dbebfe
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59404062"
 ---
 # <a name="filtering-scenarios-with-the-datalist-and-repeater"></a>Scénáře filtrování ovládacími prvky DataList a Repeater
@@ -20,9 +20,9 @@ ms.locfileid: "59404062"
 > V těchto kurzů se zobrazí způsob zobrazení záznamů master/detail sestav pomocí rozevíracích seznamech pro hlavní záznamů a podrobnosti ovládacího prvku DataList.
 
 
-- [Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (C#)](master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
-- [Filtrování hlavních záznamů / podrobností na dvou stránkách (C#)](master-detail-filtering-acess-two-pages-datalist-cs.md)
-- [Zobrazení hlavních záznamů / podrobností v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (C#)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
-- [Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (VB)](master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
-- [Filtrování hlavních záznamů / podrobností na dvou stránkách (VB)](master-detail-filtering-acess-two-pages-datalist-vb.md)
-- [Zobrazení hlavních záznamů / podrobností v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)
+- [Filtrování záznamů master/detail ovládacím prvkem DropDownList (C#)](master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
+- [Filtrování záznamů master/detail na dvou stránkách (C#)](master-detail-filtering-acess-two-pages-datalist-cs.md)
+- [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (C#)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
+- [Filtrování záznamů master/detail ovládacím prvkem DropDownList (VB)](master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
+- [Filtrování záznamů master/detail na dvou stránkách (VB)](master-detail-filtering-acess-two-pages-datalist-vb.md)
+- [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)

@@ -12,7 +12,7 @@ ms.openlocfilehash: 0f824bd5e080d42a9df3525ca47b87bcef407f7a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59405622"
 ---
 # <a name="improving-performance-with-output-caching-vb"></a>Zlepšení výkonu ukládáním výstupů do mezipaměti (VB)
@@ -46,7 +46,7 @@ Neexistuje žádná záruka tento obsah bude množství času, který zadáte do
 
 Kontroler Home v informacích 1 vrátí Index zobrazení výpisu 2. Není nic zvláštního o toto zobrazení. Index zobrazení jednoduše zobrazí aktuální čas (viz obrázek 1).
 
-**Výpis 2 – Views\Home\Index.aspx**
+**Listing 2 – Views\Home\Index.aspx**
 
 [!code-aspx[Main](improving-performance-with-output-caching-vb/samples/sample2.aspx)]
 

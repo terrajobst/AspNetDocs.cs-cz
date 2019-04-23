@@ -12,7 +12,7 @@ ms.openlocfilehash: a62c821159cd097507019d5efb29e01958ec9fba
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59398096"
 ---
 # <a name="creating-aspnet-web-projects-in-visual-studio-2013"></a>Vytváření webových projektů ASP.NET v sadě Visual Studio 2013
@@ -381,7 +381,7 @@ Aby bylo možné zřídit aplikaci ve službě Azure AD nebo připojit projekt k
 
 Informace o tom, jak vytvářet aplikace, které používají **Cloud – jedna organizace** ověřování, najdete v následujících zdrojích informací:
 
-- [Ověřování Azure](../2012/windows-azure-authentication.md)
+- [Azure Authentication](../2012/windows-azure-authentication.md)
 - [Přidání přihlašování do webové aplikace pomocí Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151790.aspx)
 - [Vývoj aplikací ASP.NET s použitím Azure Active Directory](../../../identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory.md)
 - [Zabezpečení rozhraní ASP.NET Web API s využitím Azure AD a komponenty Microsoft OWIN](https://msdn.microsoft.com/magazine/dn463788.aspx)

@@ -12,7 +12,7 @@ ms.openlocfilehash: 5e16415df5bd4203995bec943ffa682f7da82357
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59400201"
 ---
 # <a name="caching"></a>Ukládání do mezipaměti
@@ -211,9 +211,9 @@ ControlCachePolicy instance lze úspěšně ovládat pouze mezi Init a proveden�
 
 Existuje několik změn pro konfiguraci ukládání do mezipaměti v technologii ASP.NET 2.0. &lt;Ukládání do mezipaměti&gt; element je nového v technologii ASP.NET 2.0 a umožní vám provádět změny v konfiguraci ukládání do mezipaměti v konfiguračním souboru. Následující atributy jsou k dispozici.
 
-| **Prvek** | **Popis** |
+| **Element** | **Popis** |
 | --- | --- |
-| **mezipaměť** | Volitelný element. Definuje globální nastavení mezipaměti aplikace. |
+| **cache** | Volitelný element. Definuje globální nastavení mezipaměti aplikace. |
 | **outputCache** | Volitelný element. Určuje nastavení výstupní mezipaměti pro celou aplikaci. |
 | **outputCacheSettings** | Volitelný element. Určuje nastavení výstupní mezipaměti, které mohou být použity na stránky v aplikaci. |
 | **sqlCacheDependency** | Volitelný element. Nakonfiguruje závislosti mezipaměti SQL pro aplikaci ASP.NET. |
@@ -253,7 +253,7 @@ Jsou k dispozici pro následující atributy &lt;sqlCacheDependency&gt; elementu
 | **Atribut** | **Popis** |
 | --- | --- |
 | **Povoleno** | Vyžaduje **logická** atribut. Označuje, zda jsou změny pro dotazování. |
-| **pollTime nastaven** | Volitelné **Int32** atribut. Nastaví frekvenci, s kterým SqlCacheDependency dotazuje na změny v tabulce databáze. Tato hodnota odpovídá počet milisekund mezi po sobě následujících dotazech. Nejde ji nastavit na míň než 500 milisekund. Výchozí hodnota je 1 minuta. |
+| **pollTime** | Volitelné **Int32** atribut. Nastaví frekvenci, s kterým SqlCacheDependency dotazuje na změny v tabulce databáze. Tato hodnota odpovídá počet milisekund mezi po sobě následujících dotazech. Nejde ji nastavit na míň než 500 milisekund. Výchozí hodnota je 1 minuta. |
 
 ### <a name="more-information"></a>Další informace
 

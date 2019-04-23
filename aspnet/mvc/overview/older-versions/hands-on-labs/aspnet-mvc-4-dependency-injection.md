@@ -12,7 +12,7 @@ ms.openlocfilehash: 86781a1f46ce0c01a5d70b1f0cf8a81f3f96a032
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59405921"
 ---
 # <a name="aspnet-mvc-4-dependency-injection"></a>ASP.NET MVC 4 – injektáž závislostí
@@ -239,7 +239,7 @@ V této úloze budete spouštět aplikace kvůli ověření, že jej lze načís
 
     ![Aplikace MVC Music Store](aspnet-mvc-4-dependency-injection/_static/image7.png "MVC Music Store")
 
-    *Aplikace MVC Music Store*
+    *MVC Music Store*
 3. Zavřete prohlížeč.
 
 V následujícím cvičení se dozvíte, jak rozšířit rozsah injektáž závislostí ji používat uvnitř zobrazení ASP.NET MVC a filtrů akce.

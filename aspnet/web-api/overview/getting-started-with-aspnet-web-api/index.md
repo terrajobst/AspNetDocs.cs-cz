@@ -13,7 +13,7 @@ ms.openlocfilehash: f5b7c080cdd6331e41751e8a4741f724153ec360
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59403009"
 ---
 # <a name="getting-started-with-aspnet-web-api"></a>Začínáme s rozhraním ASP.NET Web API
@@ -25,4 +25,4 @@ ms.locfileid: "59403009"
 - [Výsledky akcí ve webovém rozhraní API 2](action-results.md)
 - [Použití webového rozhraní API s webovými formuláři ASP.NET](using-web-api-with-aspnet-web-forms.md)
 - [Vytvoření stránek nápovědy k webovému rozhraní API](creating-api-help-pages.md)
-- [Praktické cvičení: Sestavení jednostránkové aplikace (SPA) pomocí webového rozhraní API ASP.NET a Angular.js](build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md)
+- [Praktické cvičení: Sestavení jednostránkové aplikaci (SPA) pomocí webového rozhraní API ASP.NET a Angular.js](build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md)

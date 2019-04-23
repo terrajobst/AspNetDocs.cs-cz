@@ -12,7 +12,7 @@ ms.openlocfilehash: af97ff2488841b2d65e50122691736603be2a686
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59401410"
 ---
 # <a name="authentication-and-authorization-for-signalr-hubs-signalr-1x"></a>Ověřování a autorizace center SignalR (SignalR 1.x)
@@ -35,7 +35,7 @@ Toto téma obsahuje následující oddíly:
 - [Možnosti ověřování pro klienty .NET](#authoptions)
 
     - [Soubor cookie ověřování pomocí formulářů](#cookie)
-    - [Ověřování systému Windows](#windows)
+    - [Ověřování Windows](#windows)
     - [Připojení záhlaví](#header)
     - [Certifikát](#certificate)
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: ebb526a51755df3cb439eedbf567d0d3dbd95a92
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59399447"
 ---
 # <a name="examining-the-edit-methods-and-edit-view-vb"></a>Zkoumání metod Edit a zobrazení pro úpravy (VB)

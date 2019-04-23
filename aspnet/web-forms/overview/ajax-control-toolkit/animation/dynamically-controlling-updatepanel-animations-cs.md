@@ -12,7 +12,7 @@ ms.openlocfilehash: 0767b66a035069629c15e658c1e75ea78a7bd07b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59407650"
 ---
 # <a name="dynamically-controlling-updatepanel-animations-c"></a>Dynamické řízení animací ovládacím prvkem UpdatePanel (C#)
@@ -58,7 +58,7 @@ Nakonec `UpdatePanelAnimationExtender` musí být nakonfigurované: Nastavte `Ta
 Spusťte soubor v prohlížeči. Pokaždé, když kliknete na tlačítko, aktuální čas je uveden v panelu vždy pozvolného po dobu trvání jedné sekundy.
 
 
-[![Tmá aktuální čas je pozvolného](dynamically-controlling-updatepanel-animations-cs/_static/image2.png)](dynamically-controlling-updatepanel-animations-cs/_static/image1.png)
+[![Aktuální čas je pozvolného](dynamically-controlling-updatepanel-animations-cs/_static/image2.png)](dynamically-controlling-updatepanel-animations-cs/_static/image1.png)
 
 Aktuální čas je pozvolného ([kliknutím ji zobrazíte obrázek v plné velikosti](dynamically-controlling-updatepanel-animations-cs/_static/image3.png))
 

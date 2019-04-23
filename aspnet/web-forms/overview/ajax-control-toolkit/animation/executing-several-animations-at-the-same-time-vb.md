@@ -12,7 +12,7 @@ ms.openlocfilehash: f8bb91de9642814a79d0fddd642928c25c58ebfd
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59402840"
 ---
 # <a name="executing-several-animations-at-the-same-time-vb"></a>Postupné provedení několika animací ve stejnou dobu (VB)
@@ -55,7 +55,7 @@ Tady je možné značky `AnimationExtender` ovládacího prvku, mizení a změnu
 A skutečně: při spuštění tohoto skriptu na panelu se zobrazí poté změní (více než tripling šířku a výšku halving) a setmívá ve stejnou dobu.
 
 
-[![The panel je mizení a změna velikosti (včetně jeho obsahu díky prohlížeče vykreslovací modul)](executing-several-animations-at-the-same-time-vb/_static/image2.png)](executing-several-animations-at-the-same-time-vb/_static/image1.png)
+[![Na panelu je mizení a změna velikosti (včetně jeho obsahu díky prohlížeče vykreslovací modul)](executing-several-animations-at-the-same-time-vb/_static/image2.png)](executing-several-animations-at-the-same-time-vb/_static/image1.png)
 
 Na panelu je mizení a změna velikosti (včetně jeho obsahu díky prohlížeče vykreslovací modul) ([kliknutím ji zobrazíte obrázek v plné velikosti](executing-several-animations-at-the-same-time-vb/_static/image3.png))
 

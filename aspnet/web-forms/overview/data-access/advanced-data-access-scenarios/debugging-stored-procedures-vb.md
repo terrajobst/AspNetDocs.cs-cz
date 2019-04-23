@@ -12,7 +12,7 @@ ms.openlocfilehash: 6dda18eb27d45f8dfdb4803cf3aca3ffe96bf11e
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59406558"
 ---
 # <a name="debugging-stored-procedures-vb"></a>Ladění uložených procedur (VB)
@@ -67,7 +67,7 @@ Protože `Products_SelectByCategoryID` uložená procedura očekává, že `@Cat
 Po zadání hodnoty pro `@CategoryID` parametr uložené procedury je proveden. Místo spuštění k dokončení, ale ladicí program zastaví spuštění na první příkaz. Všimněte si žlutá šipka na okraji označující aktuální umístění v uložené proceduře. Můžete zobrazit a upravit hodnoty parametrů prostřednictvím okna kukátka nebo najede myší název parametru v uložené proceduře.
 
 
-[![Tmá ladicí program se zastavil na první příkaz uložená procedura](debugging-stored-procedures-vb/_static/image3.png)](debugging-stored-procedures-vb/_static/image2.png)
+[![Ladicí program se zastavil na první příkaz uložená procedura](debugging-stored-procedures-vb/_static/image3.png)](debugging-stored-procedures-vb/_static/image2.png)
 
 **Obrázek 2**: Ladicí program se zastavil na první příkaz uloženou proceduru ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image4.png))
 
@@ -85,7 +85,7 @@ Při ladění uloženou proceduru z Průzkumníka serveru po ruce, v mnoha scén
 Než můžeme začít ladění uložené procedury volané z aplikace, musíte dáte pokyn, aby webová aplikace ASP.NET pro integraci s ladicím programem systému SQL Server. Začněte tím, že pravým tlačítkem myši na název webu v Průzkumníku řešení (`ASPNET_Data_Tutorial_74_VB`). V místní nabídce zvolte možnost stránky vlastností, vyberte položku Možnosti spuštění na levé straně a zaškrtněte políčko systému SQL Server v části ladicí programy (viz obrázek 3).
 
 
-[![Czaškrtávací políčko SQL serveru v aplikaci s stránky vlastností](debugging-stored-procedures-vb/_static/image6.png)](debugging-stored-procedures-vb/_static/image5.png)
+[![Zaškrtněte políčko SQL serveru na stránkách vlastností s aplikací](debugging-stored-procedures-vb/_static/image6.png)](debugging-stored-procedures-vb/_static/image5.png)
 
 **Obrázek 3**: Zaškrtněte políčko SQL serveru v aplikaci s stránky vlastností ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image7.png))
 
@@ -108,7 +108,7 @@ Aplikace ASP.NET je v tuto chvíli nakonfigurovaná umožňující Visual Studio
 Otevřít `Products_SelectByCategoryID` uložené procedury a nastavte zarážku na začátku `SELECT` příkaz kliknutím na okraji v příslušném umístění nebo umístěním kurzoru na začátku `SELECT` příkazu a stisknutím F9. Jak ukazuje obrázek 4, zarážka se zobrazí jako červená tečka na okraj.
 
 
-[![Set zarážku v Products_SelectByCategoryID uloženou proceduru](debugging-stored-procedures-vb/_static/image9.png)](debugging-stored-procedures-vb/_static/image8.png)
+[![Nastavit zarážku Products_SelectByCategoryID uložené procedury](debugging-stored-procedures-vb/_static/image9.png)](debugging-stored-procedures-vb/_static/image8.png)
 
 **Obrázek 4**: Nastavit zarážku `Products_SelectByCategoryID` uloženou proceduru ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image10.png))
 
@@ -126,12 +126,12 @@ Nastavení zarážky a povolená možnost ladění aplikací jsou připravený k
 `Products_SelectByCategoryID` Uloženou proceduru byl vytvořen v [použití existující uložené procedury, pro zadané datové sady s objekty TableAdapter](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) kurzu. Jeho odpovídající webové stránky (`~/AdvancedDAL/ExistingSprocs.aspx`) obsahuje GridView zobrazující výsledky vrácené tuto uloženou proceduru. Navštivte tuto stránku v prohlížeči. Při dosažení stránky k zarážce v `Products_SelectByCategoryID` dosáhnou uložené procedury a ovládací prvek vrátí k sadě Visual Studio. Stejně jako v kroku 1, můžete krokovat pro uloženou proceduru s příkazy a zobrazit a upravit hodnoty parametrů.
 
 
-[![Tmá ExistingSprocs.aspx stránky zpočátku zobrazí nápoje](debugging-stored-procedures-vb/_static/image13.png)](debugging-stored-procedures-vb/_static/image12.png)
+[![Na stránce ExistingSprocs.aspx zpočátku zobrazí nápoje](debugging-stored-procedures-vb/_static/image13.png)](debugging-stored-procedures-vb/_static/image12.png)
 
 **Obrázek 6**: `ExistingSprocs.aspx` Stránky zpočátku zobrazí nápoje ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image14.png))
 
 
-[![Tbylo dosaženo mu uložená procedura s zarážku](debugging-stored-procedures-vb/_static/image16.png)](debugging-stored-procedures-vb/_static/image15.png)
+[![Uložená procedura s bylo dosaženo zarážky](debugging-stored-procedures-vb/_static/image16.png)](debugging-stored-procedures-vb/_static/image15.png)
 
 **Obrázek 7**: Uložená procedura s, bylo dosaženo zarážky ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image17.png))
 
@@ -139,12 +139,12 @@ Nastavení zarážky a povolená možnost ladění aplikací jsou připravený k
 Jako okno kukátka v obrázek 7 znázorňuje, hodnota `@CategoryID` parametru je 1. Důvodem je, že `ExistingSprocs.aspx` stránky otevření zobrazí produkty do kategorie Nápoje, který má `CategoryID` hodnotu 1. Z rozevíracího seznamu vyberte jinou kategorii. To způsobí, že zpětné volání a znovu spustí `Products_SelectByCategoryID` uložené procedury. Dosažení zarážky znovu, tentokrát ale `@CategoryID` parametr s hodnotou odpovídá položce vybrané rozevíracího seznamu s `CategoryID`.
 
 
-[![CZvolte jinou kategorii v rozevírací seznamu](debugging-stored-procedures-vb/_static/image19.png)](debugging-stored-procedures-vb/_static/image18.png)
+[![Z rozevíracího seznamu zvolte jinou kategorii](debugging-stored-procedures-vb/_static/image19.png)](debugging-stored-procedures-vb/_static/image18.png)
 
 **Obrázek 8**: Z rozevíracího seznamu zvolte jinou kategorii ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image20.png))
 
 
-[![Tmá @CategoryID parametr odráží vybrat kategorii z webové stránky](debugging-stored-procedures-vb/_static/image22.png)](debugging-stored-procedures-vb/_static/image21.png)
+[![@CategoryID Parametr odráží kategorii vybrané z webové stránky](debugging-stored-procedures-vb/_static/image22.png)](debugging-stored-procedures-vb/_static/image21.png)
 
 **Obrázek 9**: `@CategoryID` Parametr odráží vybrat kategorii z webové stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image23.png))
 

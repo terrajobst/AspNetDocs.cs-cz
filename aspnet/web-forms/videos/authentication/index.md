@@ -12,7 +12,7 @@ ms.openlocfilehash: 68c1acdaaf1e6674f4dc3bcca0557382407ca147
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59400110"
 ---
 # <a name="authentication"></a>Ověřování
@@ -26,7 +26,7 @@ ms.locfileid: "59400110"
 - [Přemístění formulářů ASP pro přihlášení](asp-forms-login-relocation.md)
 - [Konfigurace vlastního klíče přihlašovacích formulářů](forms-login-custom-key-configuration.md)
 - [Přidání vlastních dat do metody ověřování](add-custom-data-to-the-authentication-method.md)
-- [Použití vlastních objektů zabezpečení](use-custom-principal-objects.md)
+- [Použití vlastních hlavních objektů](use-custom-principal-objects.md)
 - [Principy členství v ASP.NET](understanding-aspnet-memberships.md)
 - [Konfigurace SQL kvůli spolupráci se schématy členství](configuring-sql-to-work-with-membership-schemas.md)
 - [Změna nastavení členství ve výchozím schématu členství](changing-membership-settings-in-the-default-membership-schema.md)

@@ -12,7 +12,7 @@ ms.openlocfilehash: bb9ae940ba90620a6a4c2d373117635f80e14588
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59397445"
 ---
 # <a name="building-real-world-cloud-apps-with-azure"></a>Vytváření skutečných cloudových aplikací v Azure
@@ -23,7 +23,7 @@ ms.locfileid: "59397445"
 - [Úvod](introduction.md)
 - [Plná automatizace](automate-everything.md)
 - [Správa zdrojového kódu](source-control.md)
-- [Kontinuální integrace a průběžné doručování](continuous-integration-and-continuous-delivery.md)
+- [Průběžná integrace a doručování](continuous-integration-and-continuous-delivery.md)
 - [Osvědčené postupy při vývoji webu](web-development-best-practices.md)
 - [Jednotné přihlašování](single-sign-on.md)
 - [Možnosti úložiště dat](data-storage-options.md)
@@ -35,4 +35,4 @@ ms.locfileid: "59397445"
 - [Distribuované ukládání do mezipaměti](distributed-caching.md)
 - [Pracovní postup založený na frontě](queue-centric-work-pattern.md)
 - [Další postupy a pokyny](more-patterns-and-guidance.md)
-- [Příloha: Ukázková aplikace Fix It](the-fix-it-sample-application.md)
+- [Dodatek: Oprava ukázkové aplikace](the-fix-it-sample-application.md)

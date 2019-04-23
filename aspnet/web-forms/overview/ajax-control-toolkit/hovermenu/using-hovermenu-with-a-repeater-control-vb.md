@@ -12,7 +12,7 @@ ms.openlocfilehash: 963850e1048d4fde573f28244fd32d0c4232fda4
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59399187"
 ---
 # <a name="using-hovermenu-with-a-repeater-control-vb"></a>Použití nabídky HoverMenu s ovládacím prvkem Repeater (VB)
@@ -53,7 +53,7 @@ Nyní `HoverMenuExtender` vstupu do play. Tak, aby každý prvek ve zdroji dat z
 Teď všechny položky ve zdroji dat se zobrazí automaticky otevíraného okna na pravé straně (`PopupPosition` atribut) po prodlevě 50 MS (`PopDelay` atributu).
 
 
-[![TNabídka používaný při najetí myší se zobrazí vedle každé položky v opakovači](using-hovermenu-with-a-repeater-control-vb/_static/image2.png)](using-hovermenu-with-a-repeater-control-vb/_static/image1.png)
+[![V nabídce při najetí myší se zobrazí vedle každé položky v opakovači](using-hovermenu-with-a-repeater-control-vb/_static/image2.png)](using-hovermenu-with-a-repeater-control-vb/_static/image1.png)
 
 V nabídce při najetí myší se zobrazí vedle každé položky v opakovači ([kliknutím ji zobrazíte obrázek v plné velikosti](using-hovermenu-with-a-repeater-control-vb/_static/image3.png))
 

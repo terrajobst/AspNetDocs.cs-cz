@@ -12,7 +12,7 @@ ms.openlocfilehash: 5620710239c282b126fadd2e0ca09e71bac8786f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59407390"
 ---
 # <a name="colorpicker"></a>ColorPicker
@@ -20,5 +20,5 @@ ms.locfileid: "59407390"
 > Tento kurz ukazuje, jak pomocí ovládacího prvku ColorPicker, kterou můžou uživatelé vybrat barvu z automaticky otevíraném okně.
 
 
-- [Rozšiřující ovládací prvek pro ovládací prvek ColorPicker (C#)](using-the-colorpicker-control-extender-cs.md)
-- [Rozšiřující ovládací prvek pro ovládací prvek ColorPicker (VB)](using-the-colorpicker-control-extender-vb.md)
+- [Extender ovládacího prvku ColorPicker (C#)](using-the-colorpicker-control-extender-cs.md)
+- [Extender ovládacího prvku ColorPicker (VB)](using-the-colorpicker-control-extender-vb.md)

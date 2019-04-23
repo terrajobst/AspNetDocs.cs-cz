@@ -12,7 +12,7 @@ ms.openlocfilehash: 61f4273d19dfbe0e3a10156f5a510d2ceea2745f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59403724"
 ---
 # <a name="popup"></a>Překryvný
@@ -21,8 +21,8 @@ ms.locfileid: "59403724"
 
 
 - [Použití několika překryvných ovládacích prvků (C#)](using-multiple-popup-controls-cs.md)
-- [Zpracování postbacků ovládacího prvku PopupControl ovládacím prvkem UpdatePanel (C#)](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
-- [Zpracování postbacků ovládacího prvku PopupControl bez ovládacího prvku UpdatePanel (C#)](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md)
+- [Zpracování postbacků extenderu PopupControl ovládacím prvkem UpdatePanel (C#)](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
+- [Zpracování postbacků extenderu PopupControl bez ovládacího prvku UpdatePanel (C#)](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md)
 - [Použití několika překryvných ovládacích prvků (VB)](using-multiple-popup-controls-vb.md)
-- [Zpracování postbacků ovládacího prvku PopupControl ovládacím prvkem UpdatePanel (VB)](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb.md)
-- [Zpracování postbacků ovládacího prvku PopupControl bez ovládacího prvku UpdatePanel (VB)](handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)
+- [Zpracování postbacků extenderu PopupControl ovládacím prvkem UpdatePanel (VB)](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb.md)
+- [Zpracování postbacků extenderu PopupControl bez ovládacího prvku UpdatePanel (VB)](handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)

@@ -12,7 +12,7 @@ ms.openlocfilehash: 1dadbdb6fa1dc58b855402f1d6f18e8af861f756
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59399356"
 ---
 # <a name="enabling-signalr-tracing"></a>Povolení trasování knihovnou SignalR
@@ -64,7 +64,7 @@ Povolení trasování serveru v konfiguračním souboru aplikace (App.config neb
 
 Kategorie události serveru zahrnují následující druhy zprávy:
 
-| Zdroj | Zprávy |
+| Source | Zprávy |
 | --- | --- |
 | SignalR.SqlMessageBus | Instalační program zprostředkovatele sběrnice zpráv SQL horizontálním navýšením kapacity, operace databáze, chyby a události vypršení časového limitu |
 | SignalR.ServiceBusMessageBus | Vytvoření tématu služby Service bus horizontálním navýšením kapacity zprostředkovatele a předplatné, chyb a zasílání zpráv událostí |

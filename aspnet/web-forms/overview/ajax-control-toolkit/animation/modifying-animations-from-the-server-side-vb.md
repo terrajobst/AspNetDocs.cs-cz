@@ -12,7 +12,7 @@ ms.openlocfilehash: fb7e992246b9c630d99a1493f344c4089540d67e
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59398082"
 ---
 # <a name="modifying-animations-from-the-server-side-vb"></a>Úpravy animací na straně serveru (VB)
@@ -55,7 +55,7 @@ Nakonec přidejte `AnimationExtender` ovládací prvek na aktuální stránku v 
 [!code-vb[Main](modifying-animations-from-the-server-side-vb/samples/sample6.vb)]
 
 
-[![TVytvoří he animací na straně serveru C#/VB kód](modifying-animations-from-the-server-side-vb/_static/image2.png)](modifying-animations-from-the-server-side-vb/_static/image1.png)
+[![Animace se vytvoří pomocí kódu na straně serveru C# /VB](modifying-animations-from-the-server-side-vb/_static/image2.png)](modifying-animations-from-the-server-side-vb/_static/image1.png)
 
 Animace se vytvoří pomocí kódu na straně serveru C# /VB ([kliknutím ji zobrazíte obrázek v plné velikosti](modifying-animations-from-the-server-side-vb/_static/image3.png))
 

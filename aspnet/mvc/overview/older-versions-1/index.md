@@ -12,7 +12,7 @@ ms.openlocfilehash: 5827542a951a4b65d1c9b02b0ad15ed988bf1456
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59399629"
 ---
 # <a name="older-versions---mvc-1-and-2"></a>Starší verze – MVC 1 a 2
@@ -104,20 +104,20 @@ ms.locfileid: "59399629"
     - [Vytváření testů jednotek pro aplikace ASP.NET MVC (VB)](unit-testing/creating-unit-tests-for-asp-net-mvc-applications-vb.md)
 - [Správce kontaktů](contact-manager/index.md)
 
-    - [Iterace #1 – Vytvoření aplikace (C#)](contact-manager/iteration-1-create-the-application-cs.md)
-    - [Iterace #2 – Vytvoření aplikace vypadat nice (C#)](contact-manager/iteration-2-make-the-application-look-nice-cs.md)
-    - [Iterace #3 – Přidání ověřovacího formuláře (C#)](contact-manager/iteration-3-add-form-validation-cs.md)
-    - [Iterace #4 – vytvoření volně spárované aplikace (C#)](contact-manager/iteration-4-make-the-application-loosely-coupled-cs.md)
-    - [Iterace #5 – vytvoření testů jednotek (C#)](contact-manager/iteration-5-create-unit-tests-cs.md)
-    - [Iterace #6 – použití vývoje řízeného (C#)](contact-manager/iteration-6-use-test-driven-development-cs.md)
-    - [Iterace #7 – přidání funkcí Ajax (C#)](contact-manager/iteration-7-add-ajax-functionality-cs.md)
-    - [Iterace #1 – Vytvoření aplikace (VB)](contact-manager/iteration-1-create-the-application-vb.md)
-    - [Iterace #2 – Vytvoření aplikace vypadat nice (VB)](contact-manager/iteration-2-make-the-application-look-nice-vb.md)
-    - [Iterace #3 – Přidání ověřovacího formuláře (VB)](contact-manager/iteration-3-add-form-validation-vb.md)
-    - [Iterace #4 – vytvoření volně spárované aplikace (VB)](contact-manager/iteration-4-make-the-application-loosely-coupled-vb.md)
-    - [Iterace #5 – vytvoření testů jednotek (VB)](contact-manager/iteration-5-create-unit-tests-vb.md)
-    - [Iterace #6 – použití vývoje řízeného (VB)](contact-manager/iteration-6-use-test-driven-development-vb.md)
-    - [Iterace #7 – přidání funkcí Ajax (VB)](contact-manager/iteration-7-add-ajax-functionality-vb.md)
+    - [Iterace č. 1 – vytvoření aplikace (C#)](contact-manager/iteration-1-create-the-application-cs.md)
+    - [Iterace č. 2 – vylepšení vzhledu aplikace (C#)](contact-manager/iteration-2-make-the-application-look-nice-cs.md)
+    - [Iterace č. 3 – přidání ověřovacího formuláře (C#)](contact-manager/iteration-3-add-form-validation-cs.md)
+    - [Iterace č. 4 – vytvoření volně spárované aplikace (C#)](contact-manager/iteration-4-make-the-application-loosely-coupled-cs.md)
+    - [Iterace č. 5 – vytvoření testů jednotek (C#)](contact-manager/iteration-5-create-unit-tests-cs.md)
+    - [Iterace č. 6 – použití vývoje řízeného testy (C#)](contact-manager/iteration-6-use-test-driven-development-cs.md)
+    - [Iterace č. 7– přidání funkcí Ajax (C#)](contact-manager/iteration-7-add-ajax-functionality-cs.md)
+    - [Iterace č. 1 – vytvoření aplikace (VB)](contact-manager/iteration-1-create-the-application-vb.md)
+    - [Iterace č. 2 – vylepšení vzhledu aplikace (VB)](contact-manager/iteration-2-make-the-application-look-nice-vb.md)
+    - [Iterace č. 3 – přidání ověřovacího formuláře (VB)](contact-manager/iteration-3-add-form-validation-vb.md)
+    - [Iterace č. 4 – vytvoření volně spárované aplikace (VB)](contact-manager/iteration-4-make-the-application-loosely-coupled-vb.md)
+    - [Iterace č. 5 – vytvoření testů jednotek (VB)](contact-manager/iteration-5-create-unit-tests-vb.md)
+    - [Iterace č. 6 – použití vývoje řízeného testy (VB)](contact-manager/iteration-6-use-test-driven-development-vb.md)
+    - [Iterace č. 7 – přidání funkcí Ajax (VB)](contact-manager/iteration-7-add-ajax-functionality-vb.md)
 - [NerdDinner](nerddinner/index.md)
 
     - [Úvod do kurzu NerdDinner](nerddinner/introducing-the-nerddinner-tutorial.md)

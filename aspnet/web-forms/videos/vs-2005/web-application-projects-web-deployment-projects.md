@@ -12,12 +12,12 @@ ms.openlocfilehash: 026a8405e0d2078e7dc1dada4ed0185daefd86d7
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59406935"
 ---
 # <a name="web-application-projects--web-deployment-projects"></a>Projekty webových aplikací a projekty nasazení webu
 
-by [Bradley Bartz](https://github.com/BradleyBartz)
+podle [Bradley Bartz](https://github.com/BradleyBartz)
 
 Bradley Bartz ukazuje, jak projekty webových aplikací a projekty nasazení webu pro Visual Studio 2005, aby se vyvíjet a nasazovat projekty ASP.NET podobný modelu Visual Studio .NET 2003.
 

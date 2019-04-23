@@ -12,7 +12,7 @@ ms.openlocfilehash: 51e3010f6e01434c495201af4af3bbdcde993da7
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59398433"
 ---
 # <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms"></a>Začínáme s Entity Framework 4.0 Database First a technologie ASP.NET 4 webových formulářů

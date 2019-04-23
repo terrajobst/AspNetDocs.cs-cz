@@ -12,7 +12,7 @@ ms.openlocfilehash: 5b3883d8a73d50039dfe6f11f757a0f1cb7ece3a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59400968"
 ---
 # <a name="iteration-1--create-the-application-c"></a>Iterace #1 – Vytvoření aplikace (C#)
@@ -91,7 +91,7 @@ Projekt webové aplikace ASP.NET MVC. Spusťte sadu Visual Studio a vyberte mož
 Ujistěte se, že máte vybraný z rozevíracího seznamu v horní části rozhraní .NET Framework 3.5 vpravo **nový projekt** dialogového okna. V opačném případě nebude zobrazovat šablony webové aplikace ASP.NET MVC.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image1.jpg)](iteration-1-create-the-application-cs/_static/image1.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image1.jpg)](iteration-1-create-the-application-cs/_static/image1.png)
 
 **Obrázek 01**: Dialogové okno Nový projekt ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image2.png))
 
@@ -103,7 +103,7 @@ Aplikace ASP.NET MVC **vytvořit projekt testování částí** se zobrazí dial
 > Protože aplikaci Visual Web Developer nepodporuje projekty testů, se nezobrazí dialogové okno Vytvořit projekt testů jednotek při použití aplikace Visual Web Developer.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image2.jpg)](iteration-1-create-the-application-cs/_static/image3.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image2.jpg)](iteration-1-create-the-application-cs/_static/image3.png)
 
 **Obrázek 02**: Dialogové okno Vytvořit projekt testování částí ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image4.png))
 
@@ -111,7 +111,7 @@ Aplikace ASP.NET MVC **vytvořit projekt testování částí** se zobrazí dial
 Aplikace ASP.NET MVC se zobrazí v okně Průzkumník řešení Visual Studio (viz obrázek 3). Pokud don t najdete v okně Průzkumník řešení, pak toto okno můžete otevřít tak, že vyberete možnost nabídky **zobrazení, Průzkumník řešení**. Všimněte si, že toto řešení obsahuje dva projekty: projekt ASP.NET MVC a testovací projekt. ContactManager názvem projektu ASP.NET MVC a názvem ContactManager.Tests testovacího projektu.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image3.jpg)](iteration-1-create-the-application-cs/_static/image5.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image3.jpg)](iteration-1-create-the-application-cs/_static/image5.png)
 
 **Obrázek 03**: V okně Průzkumník řešení ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image6.png))
 
@@ -141,7 +141,7 @@ Architektura ASP.NET MVC s libovolnou moderní databází, včetně databází M
 Vytvořit novou databázi kliknutím pravým tlačítkem myši aplikaci\_složce dat v okně Průzkumník řešení a vyberte možnost nabídky **přidat, nová položka**. V **přidat novou položku** dialogového okna, vyberte **Data** kategorie a **databázi systému SQL Server** šablony (viz obrázek 4). Název nové databáze ContactManagerDB.mdf a klikněte na tlačítko OK.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image4.jpg)](iteration-1-create-the-application-cs/_static/image7.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image4.jpg)](iteration-1-create-the-application-cs/_static/image7.png)
 
 **Obrázek 04**: Vytvoření nové databáze Microsoft SQL Server Express ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image8.png))
 
@@ -156,7 +156,7 @@ Po vytvoření nové databáze se databáze zobrazí v aplikaci\_složce dat v o
 Okno Průzkumníka serveru můžete použít k vytvoření nové databázové objekty, jako jsou databázové tabulky, zobrazení, triggery a uložené procedury. Klikněte pravým tlačítkem na složku tabulky a vyberte možnost nabídky **přidat novou tabulku**. Návrhář tabulky databáze se zobrazí (viz obrázek 5).
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image5.jpg)](iteration-1-create-the-application-cs/_static/image9.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image5.jpg)](iteration-1-create-the-application-cs/_static/image9.png)
 
 **Obrázek 05**: Návrhář tabulky databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image10.png))
 
@@ -203,22 +203,22 @@ Postupujte podle těchto kroků k vytvoření tříd datových modelů:
 5. V **zvolte vaše databázové objekty** krok, zaškrtněte políčko s názvem tabulky (viz obrázek 9). Datový model bude obsahovat všechny tabulky obsažené v databázi (je jen jeden, tabulce Kontakty). Zadejte obor názvů *modely*. Kliknutím na tlačítko Dokončit dokončete průvodce.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image6.jpg)](iteration-1-create-the-application-cs/_static/image11.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image6.jpg)](iteration-1-create-the-application-cs/_static/image11.png)
 
 **Obrázek 06**: Dialogové okno Přidat novou položku ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image12.png))
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image7.jpg)](iteration-1-create-the-application-cs/_static/image13.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image7.jpg)](iteration-1-create-the-application-cs/_static/image13.png)
 
 **Obrázek 07**: Zvolte Model obsah ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image14.png))
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image8.jpg)](iteration-1-create-the-application-cs/_static/image15.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image8.jpg)](iteration-1-create-the-application-cs/_static/image15.png)
 
 **Obrázek 08**: Vyberte datové připojení ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image16.png))
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image9.jpg)](iteration-1-create-the-application-cs/_static/image17.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image9.jpg)](iteration-1-create-the-application-cs/_static/image17.png)
 
 **Obrázek 09**: Zvolte vaše databázové objekty ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image18.png))
 
@@ -228,7 +228,7 @@ Po dokončení Průvodce entitního modelu dat Entity Data Model Designer se zob
 Průvodce Entity Data Model vygeneruje názvy tříd, které jsou založené na názvy tabulek databáze. Téměř vždy je nutné změnit název třídy generované průvodcem knihovnou. Klikněte pravým tlačítkem na třídu kontakty v návrháři a vyberte možnost nabídky **přejmenovat**. Změňte název třídy z kontakty (množné číslo) na kontakt (jednotném čísle). Po změně názvu třídy třída by měla vypadat obrázek 10.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image10.jpg)](iteration-1-create-the-application-cs/_static/image19.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image10.jpg)](iteration-1-create-the-application-cs/_static/image19.png)
 
 **Obrázek 10**: Třída kontakt ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image20.png))
 
@@ -242,7 +242,7 @@ Dalším krokem je vytvoření naší kontroler Home. Kontroler Home, je výchoz
 Vytvoříte třídu kontroleru domovské tak, že pravým tlačítkem na složku řadiče v okně Průzkumník řešení a vyberte možnost nabídky **přidat, řadič** (viz obrázek 11). Všimněte si, že zaškrtávací políčko **přidejte metody akce pro vytvoření, aktualizace a podrobnosti o scénářích**. Ujistěte se, že je toto políčko zaškrtnuté políčko, před kliknutím na tlačítko **přidat** tlačítko.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image11.jpg)](iteration-1-create-the-application-cs/_static/image21.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image11.jpg)](iteration-1-create-the-application-cs/_static/image21.png)
 
 **Obrázek 11**: Přidat kontroler Home ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image22.png))
 
@@ -272,7 +272,7 @@ Nyní, který jsme vytvoření kontroleru Index dále je třeba vytvořit zobraz
 Vytvořit zobrazení indexu tak, že pravým tlačítkem myši na metodu Index() a vyberte možnost nabídky **přidat zobrazení** (viz obrázek 12). Výběrem této možnosti se otevře **přidat zobrazení** dialogového okna (viz obrázek 13).
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image12.jpg)](iteration-1-create-the-application-cs/_static/image23.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image12.jpg)](iteration-1-create-the-application-cs/_static/image23.png)
 
 **Obrázek 12**: Přidání zobrazení Index ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image24.png))
 
@@ -280,7 +280,7 @@ Vytvořit zobrazení indexu tak, že pravým tlačítkem myši na metodu Index()
 V **přidat zobrazení** dialogového okna, zaškrtněte políčko s popiskem **vytvoření zobrazení se silnými typy**. Vyberte třídu ContactManager.Models.Contact zobrazení dat a zobrazit seznam obsahu. Výběr tyto možnosti generuje zobrazení, které se zobrazí seznam záznamů kontaktů.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image13.jpg)](iteration-1-create-the-application-cs/_static/image25.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image13.jpg)](iteration-1-create-the-application-cs/_static/image25.png)
 
 **Obrázek 13**: Dialogové okno Přidat zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image26.png))
 
@@ -289,7 +289,7 @@ Když kliknete **přidat** generováno tlačítko, zobrazení indexu v informac�
 
 Text zobrazení indexu obsahuje smyčku foreach, která iteruje přes všechny kontakty, reprezentovaný třídou modelu. Hodnota každá vlastnost třídy kontaktu se zobrazí v rámci tabulku HTML.
 
-**Výpis 3 - Views\Home\Index.aspx (bez jakýchkoli úprav)**
+**Listing 3 - Views\Home\Index.aspx (unmodified)**
 
 [!code-aspx[Main](iteration-1-create-the-application-cs/samples/sample3.aspx)]
 
@@ -300,7 +300,7 @@ Budeme muset provést některé úpravy zobrazení indexu. Protože jsme se vytv
 Po úpravě zobrazení indexu může správce kontaktů aplikaci spouštíte. Vyberte možnost nabídky ladění, spustit ladění nebo stisknutím klávesy F5. Při prvním spuštění aplikace, získáte dialogového okna obrázku 14. Vyberte možnost **upravit soubor Web.config pro povolení ladění** a klikněte na tlačítko OK.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image14.jpg)](iteration-1-create-the-application-cs/_static/image27.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image14.jpg)](iteration-1-create-the-application-cs/_static/image27.png)
 
 **Obrázek 14**: Povolení ladění ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image28.png))
 
@@ -308,7 +308,7 @@ Po úpravě zobrazení indexu může správce kontaktů aplikaci spouštíte. Vy
 Zobrazení Index se vrátí ve výchozím nastavení. Toto zobrazení uvádí všechna data z tabulky databáze kontaktů (viz obrázek 15).
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image15.jpg)](iteration-1-create-the-application-cs/_static/image29.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image15.jpg)](iteration-1-create-the-application-cs/_static/image29.png)
 
 **Obrázek 15**: Zobrazení indexu ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image30.png))
 
@@ -336,7 +336,7 @@ V těle metody Create() Entity Framework slouží k vložení nového kontaktu d
 Můžete generovat formulář HTML pro vytváření nových kontaktů buď ze dvou způsobů Create() kliknete pravým tlačítkem a výběrem možnosti nabídky **přidat zobrazení** (viz obrázek 16).
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image16.jpg)](iteration-1-create-the-application-cs/_static/image31.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image16.jpg)](iteration-1-create-the-application-cs/_static/image31.png)
 
 **Obrázek 16**: Přidání zobrazení pro vytváření ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image32.png))
 
@@ -344,7 +344,7 @@ Můžete generovat formulář HTML pro vytváření nových kontaktů buď ze dv
 V **přidat zobrazení** dialogového okna, vyberte **ContactManager.Models.Contact** třídy a **vytvořit** možnost pro zobrazení obsahu (viz obrázek 17). Když kliknete **přidat** tlačítko, použít příkaz pro vytvoření zobrazení se vygeneruje automaticky.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image17.jpg)](iteration-1-create-the-application-cs/_static/image33.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image17.jpg)](iteration-1-create-the-application-cs/_static/image33.png)
 
 **Obrázek 17**: Stránka rozbalit zobrazuje ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image34.png))
 
@@ -358,7 +358,7 @@ Vytvořit zobrazení obsahuje pole formuláře pro jednotlivé vlastnosti tříd
 Po úpravě Create() metody a přidat zobrazení pro vytváření, můžete spustit aplikaci kontaktujte správce a vytvořit nové kontakty. Klikněte na tlačítko **vytvořit nový** odkaz, který se zobrazí v zobrazení indexu a přejděte do zobrazení pro vytváření. Měli byste vidět zobrazení obrázek 18.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image18.jpg)](iteration-1-create-the-application-cs/_static/image35.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image18.jpg)](iteration-1-create-the-application-cs/_static/image35.png)
 
 **Obrázek 18**: Příkaz Create View ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image36.png))
 
@@ -380,7 +380,7 @@ Entity Framework se používá pro uložení upravené kontaktu k databázi. Pů
 Můžete vytvořit zobrazení, která obsahuje formulář pro úpravy ve metodu Edit() pravým tlačítkem myši a vyberte možnost nabídky přidat zobrazení. V dialogovém okně Přidat zobrazení, vyberte **ContactManager.Models.Contact** třídy a **upravit** zobrazení obsahu (viz obrázek 19).
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image19.jpg)](iteration-1-create-the-application-cs/_static/image37.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image19.jpg)](iteration-1-create-the-application-cs/_static/image37.png)
 
 **Obrázek 19**: Přidání zobrazení pro úpravy ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image38.png))
 
@@ -409,7 +409,7 @@ Dvě nové metody Delete() jsou obsaženy v informacích 8.
 Vrátí první metodě Delete() formuláři potvrzení k odstranění záznamu kontaktu z databáze (viz Figure20). Druhá metoda Delete() provádí skutečné operaci v databázi. Po původní kontakt byl načten z databáze, jsou volány metody Entity Framework DeleteObject() a SaveChanges() provést odstranění databáze.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image20.jpg)](iteration-1-create-the-application-cs/_static/image39.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image20.jpg)](iteration-1-create-the-application-cs/_static/image39.png)
 
 **Obrázek 20**: Zobrazení potvrzení odstranění ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image40.png))
 
@@ -419,7 +419,7 @@ Potřebujeme upravit zobrazení indexu tak, aby obsahoval odkaz pro odstranění
 Html.ActionLink ({id = položka. % ID})&gt;
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image21.jpg)](iteration-1-create-the-application-cs/_static/image41.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image21.jpg)](iteration-1-create-the-application-cs/_static/image41.png)
 
 **Obrázek 21**: Index zobrazení na mapách odkaz pro úpravy ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image42.png))
 
@@ -429,7 +429,7 @@ V dalším kroku se musíme vytvořit zobrazení potvrzení odstranění. Klikn�
 Na rozdíl od v případě zobrazení seznamu, vytvořit a upravit, dialogové okno Přidat zobrazení neobsahuje možnost pro vytvoření zobrazení odstranit. Místo toho vybrat **ContactManager.Models.Contact** datové třídy a **prázdný** zobrazení obsahu. Vyberete možnost obsahu vyžaduje vytvořit zobrazení, chceme prázdné zobrazení.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image22.jpg)](iteration-1-create-the-application-cs/_static/image43.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image22.jpg)](iteration-1-create-the-application-cs/_static/image43.png)
 
 **Obrázek 22**: Přidání potvrzení odstranění zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image44.png))
 
@@ -447,12 +447,12 @@ Může se nepokoušejte se vám, že je název naší třídy kontroleru pro pr�
 Je docela jednoduché, chcete-li vyřešit tento problém. Nejdřív potřebujeme Refaktorovat název kontroler Home. Otevřete třídu HomeController v editoru kódu sady Visual Studio, klikněte pravým tlačítkem na název třídy a vyberte možnost nabídky **refaktoring přejmenování**. Výběrem této možnosti nabídky, otevře se dialogové okno pro přejmenování.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image23.jpg)](iteration-1-create-the-application-cs/_static/image45.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image23.jpg)](iteration-1-create-the-application-cs/_static/image45.png)
 
 **Obrázek 23**: Refaktoring názvu kontroleru ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image46.png))
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image24.jpg)](iteration-1-create-the-application-cs/_static/image47.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image24.jpg)](iteration-1-create-the-application-cs/_static/image47.png)
 
 **Obrázek 24**: V dialogovém okně přejmenovat ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image48.png))
 
@@ -462,7 +462,7 @@ Pokud přejmenujete třídu kontroleru, bude Visual Studio update název složky
 Po provedení této změny bude mít vaše aplikace už kontroler Home. Když spustíte svou aplikaci, získáte v obrázek 25 chybovou stránku.
 
 
-[![TDialogové okno Nový projekt he](iteration-1-create-the-application-cs/_static/image25.jpg)](iteration-1-create-the-application-cs/_static/image49.png)
+[![Dialogové okno Nový projekt](iteration-1-create-the-application-cs/_static/image25.jpg)](iteration-1-create-the-application-cs/_static/image49.png)
 
 **Obrázek 25**: Žádný výchozí kontroler ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-1-create-the-application-cs/_static/image50.png))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 36bc314c6709c34863d86158419257be99f4084f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59407104"
 ---
 # <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
@@ -39,7 +39,7 @@ ms.locfileid: "59407104"
     - [Opraveno: Vložení součástí výrazu Razor, která obsahuje výsledky prázdné znaky v ní se vrátit zpět](#RTM-3)
     - [Opraveno: Přejmenování souboru Razor, který je otevřen v editoru zakáže barevné zvýrazňování syntaxe a IntelliSense](#RTM-4)
     - [Známé problémy](#RTM-KI)
-    - [Nejnovější změny](#RTM-BC)
+    - [Rozbíjející změny v](#RTM-BC)
 - [ASP.NET MVC 3 verze Release Candidate 2 (10 December, 2010)](#_Toc2)
 
     - [Projekt šablony změnit jQuery 1.4.4, jQuery ověření 1.7 a uživatelské rozhraní 1.8.6y 1.8.6 uživatelské rozhraní jQuery](#_Toc2_1)
@@ -55,7 +55,7 @@ ms.locfileid: "59407104"
     - [Vlastnost přidání "FileExtensions" pro moduly zobrazení pro podporu modulu názvy](#_Toc2_10)
     - [Pomocné rutiny opravené "LabelFor" a vygenerovat správnou hodnotu pro atribut "For"](#_Toc2_11)
     - [Metoda dlouhodobého "RenderAction" dát přednost explicitní hodnoty během vazby modelu](#_Toc2_12)
-    - [Nejnovější změny](#_Toc2_BC)
+    - [Rozbíjející změny v](#_Toc2_BC)
     - [Známé problémy](#_Toc2_KI)
 - [ASP.NET MVC 3 verze Release Candidate (9. listopadu 2010)](#TOC_ASP_NET_3_RC)
 
@@ -68,7 +68,7 @@ ms.locfileid: "59407104"
     - [Podřízená akce ukládání výstupu do mezipaměti](#_Toc276711791)
     - ["Přidat zobrazení" vylepšení pole dialogového okna](#_Toc276711792)
     - [Ověření detailní žádosti](#_Toc276711793)
-    - [Nejnovější změny](#_Toc276711794)
+    - [Rozbíjející změny v](#_Toc276711794)
     - [Známé problémy](#_Toc276711795)
 - [ASP. MVC 3 Beta poznámky (6 říjnu 2010)](#TOC_ASP_NET_3_Beta)
 
@@ -86,7 +86,7 @@ ms.locfileid: "59407104"
     - [Podrobnější kontrolu nad atribut ValidateInputAttribute](#0.1__Toc274034226)
     - [Pomocné rutiny převádějí podtržítka pomlčky pro zadané pomocí anonymních objektů názvy atributu HTML](#0.1__Toc274034227)
     - [Opravy chyb](#0.1__Toc274034228)
-    - [Nejnovější změny](#0.1__Toc274034229)
+    - [Rozbíjející změny v](#0.1__Toc274034229)
     - [Známé problémy](#0.1__Toc274034230)
 - [Právní omezení](#0.1__Toc274034231)
 

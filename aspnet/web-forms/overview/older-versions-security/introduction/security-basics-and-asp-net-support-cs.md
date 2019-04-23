@@ -12,7 +12,7 @@ ms.openlocfilehash: 8f6fb4348e6ff703d329331b908e41763f24bb1f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59402944"
 ---
 # <a name="security-basics-and-aspnet-support-c"></a>Základy zabezpečení a podpora ASP.NET (C#)
@@ -140,7 +140,7 @@ Microsoft dodává se dvěma třídami zprostředkovatele členství v rozhraní
 V této sérii kurzů se zaměřuje výhradně na SqlMembershipProvider.
 
 
-[![The poskytovatele Model umožňuje různé implementace bude bez problémů zapojen do rozhraní Framework&lt;/ strong&gt;](security-basics-and-asp-net-support-cs/_static/image4.png)](security-basics-and-asp-net-support-cs/_static/image3.png)
+[![Zprostředkovatel Model umožňuje různé implementace bude bez problémů zapojen do rozhraní Framework&lt;/ strong&gt;](security-basics-and-asp-net-support-cs/_static/image4.png)](security-basics-and-asp-net-support-cs/_static/image3.png)
 
 **Obrázek 03**: Zprostředkovatel Model umožňuje různé implementace bude bez problémů zapojen do rozhraní Framework ([kliknutím ji zobrazíte obrázek v plné velikosti](security-basics-and-asp-net-support-cs/_static/image5.png))
 

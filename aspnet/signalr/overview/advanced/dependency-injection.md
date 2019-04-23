@@ -12,7 +12,7 @@ ms.openlocfilehash: 1b5d36529b52dfcbebf34cbfa230b3b3b4e83b81
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59405375"
 ---
 # <a name="dependency-injection-in-signalr"></a>Injektáž závislostí v centrech SignalR

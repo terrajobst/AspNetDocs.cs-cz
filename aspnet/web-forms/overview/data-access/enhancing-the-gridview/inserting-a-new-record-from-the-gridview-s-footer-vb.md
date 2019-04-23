@@ -12,7 +12,7 @@ ms.openlocfilehash: 251cd769672f1610ac7c51772882b0c166184372
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59397432"
 ---
 # <a name="inserting-a-new-record-from-the-gridviews-footer-vb"></a>Vložení nového záznamu ze zápatí prvku GridView (VB)
@@ -31,7 +31,7 @@ Jak je popsáno v [přehled o vložení, aktualizace a odstranění dat](../edit
 Při přidávání možnosti vložení do prvku GridView, máme odpovědnost za rozhodování o tom, jak nové záznamy se přidají, vytváření rozhraní vkládání a psát kód k vložení nového záznamu. V tomto kurzu se podíváme na přidávání rozhraní vkládání do zápatí prvku GridView s řádků (viz obrázek 1). Buňka zápatí pro každý sloupec obsahuje příslušná data uživatele rozhraní prvek kolekce (textové pole pro název produktu s, DropDownList pro dodavatele a tak dále). Potřebujeme sloupec pro sčítání tlačítko, které při kliknutí na vyvolávají zpětné odeslání a vložit nový záznam do `Products` pomocí hodnoty poskytnuté na řádku zápatí tabulky.
 
 
-[![TŘádek zápatí poskytuje rozhraní pro přidání nové produkty](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image1.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image1.png)
+[![Řádek zápatí poskytuje rozhraní pro přidání nové produkty](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image1.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image1.png)
 
 **Obrázek 1**: Řádek zápatí poskytuje rozhraní pro přidání nové produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image2.png))
 
@@ -41,7 +41,7 @@ Při přidávání možnosti vložení do prvku GridView, máme odpovědnost za 
 Předtím, než jsme si problém s vytvářením rozhraní vkládání v zápatí prvku GridView s, umožnit s první zaměřit se na přidání GridView na stránku, která zobrazuje seznam produktů, které v databázi. Začněte otevřením `InsertThroughFooter.aspx` stránku `EnhancedGridView` složky a GridView přetáhněte z panelu nástrojů do Návrháře nastavení GridView s `ID` vlastnost `Products`. Pak pomocí inteligentních značek s GridView a vytvořte jeho vazbu nového prvku ObjectDataSource s názvem `ProductsDataSource`.
 
 
-[![CVytvořit nový účet ObjectDataSource s názvem ProductsDataSource](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image2.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image3.png)
+[![Vytvoření nového prvku ObjectDataSource s názvem ProductsDataSource](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image2.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image3.png)
 
 **Obrázek 2**: Vytvoření nového prvku ObjectDataSource s názvem `ProductsDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image4.png))
 
@@ -49,12 +49,12 @@ Předtím, než jsme si problém s vytvářením rozhraní vkládání v zápat�
 Konfigurace ObjectDataSource používat `ProductsBLL` třída s `GetProducts()` metodu pro načtení informací o produktu. Pro účely tohoto kurzu umožňují soustředit s výhradně na přidání vkládání funkcí a bez starostí o úpravy a odstranění. Proto se ujistěte, že rozevíracího seznamu na kartě Vložení je nastavena na `AddProduct()` a že rozevírací seznamy na kartách UPDATE a DELETE jsou nastavena na (žádný).
 
 
-[![MAsie a Tichomoří AddProduct metody k metodě Insert() ObjectDataSource s](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image3.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image5.png)
+[![Map – metoda AddProduct metodě Insert() s prvku ObjectDataSource](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image3.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image5.png)
 
 **Obrázek 3**: Mapování `AddProduct` metody prvku ObjectDataSource s `Insert()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image6.png))
 
 
-[![Set rozevírací seznamy aktualizace a odstranění karty na (žádný)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image4.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image7.png)
+[![Nastavte rozevírací seznamy aktualizace a odstranění karty na (žádný)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image4.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image7.png)
 
 **Obrázek 4**: Nastavte aktualizace a odstranění karty rozevírací seznamy na (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image8.png))
 
@@ -69,7 +69,7 @@ V tomto okamžiku ovládacími prvky GridView a prvku ObjectDataSource s deklara
 [!code-aspx[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample1.aspx)]
 
 
-[![Avše, produkt datová pole se zobrazují v GridView stránkovaného fondu](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image5.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image9.png)
+[![Všechna datová pole produktu se zobrazí v GridView stránkovaného fondu](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image5.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image9.png)
 
 **Obrázek 5**: Všechna datová pole produktu se zobrazí v GridView stránkovaného fondu ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image10.png))
 
@@ -79,7 +79,7 @@ V tomto okamžiku ovládacími prvky GridView a prvku ObjectDataSource s deklara
 Spolu s jeho záhlaví a řádky dat prvku GridView obsahuje řádek zápatí. Řádky záhlaví a zápatí se zobrazují v závislosti na hodnoty GridView s [ `ShowHeader` ](https://msdn.microsoft.com/en-gb/library/system.web.ui.webcontrols.gridview.showheader.aspx) a [ `ShowFooter` ](https://msdn.microsoft.com/en-gb/library/system.web.ui.webcontrols.gridview.showfooter.aspx) vlastnosti. Chcete-li zobrazit zápatí řádek, jednoduše nastavte `ShowFooter` vlastnost `True`. Jak znázorňuje obrázek 6 nastavení `ShowFooter` vlastnost `True` přidá zápatí řádek do mřížky.
 
 
-[![To zobrazení řádku zápatí nastavena na hodnotu True ShowFooter](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image6.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image11.png)
+[![Zobrazit řádek zápatí, nastavte ShowFooter na hodnotu True](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image6.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image11.png)
 
 **Obrázek 6**: Chcete-li zobrazit řádek zápatí, nastavte `ShowFooter` k `True` ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image12.png))
 
@@ -96,7 +96,7 @@ Všimněte si, že řádek zápatí má barvu pozadí tmavě červenou. Je to z 
 Po nastavení `ShowFooter` vlastnost `True`, věnujte chvíli výstup zobrazit v prohlížeči. Aktuálně t zápatí řádek kódu obsahovat text ani webové ovládací prvky. V kroku 3 upravíme zápatí pro každé pole ovládacího prvku GridView tak, že obsahují odpovídající vložení rozhraní.
 
 
-[![TŘádek prázdný zápatí je zobrazen výše stránkování ovládací prvky rozhraní](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image7.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image13.png)
+[![Řádek prázdný zápatí se zobrazí nad the stránkovací rozhraní ovládacích prvků](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image7.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image13.png)
 
 **Obrázek 7**: Řádek prázdný zápatí se zobrazí nad the stránkovací rozhraní ovládacích prvků ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image14.png))
 
@@ -130,7 +130,7 @@ Teď, když každé pole ovládacího prvku GridView byl převeden na pole Templ
 K vytvoření úpravy rozhraní, zvolte odkaz Upravit šablony z inteligentních značek s ovládacího prvku GridView. Potom z rozevíracího seznamu vyberte odpovídající pole s `FooterTemplate` a přetáhněte příslušný ovládací prvek z panelu nástrojů do návrháře.
 
 
-[![Add vhodné rozhraní vložení pro každé pole s FooterTemplate](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image9.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image15.png)
+[![Přidejte příslušné vkládání rozhraní pro každé pole s FooterTemplate](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image9.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image15.png)
 
 **Obrázek 9**: Přidejte příslušné rozhraní vkládání každého pole s `FooterTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image16.png))
 
@@ -166,7 +166,7 @@ Po vytvoření slew vložení rozhraní `FooterTemplate` s, odebrání `Supplier
 Při prohlížení prostřednictvím prohlížeče, řádek zápatí prvku GridView s teď zahrnuje dokončené vložení rozhraní (viz obrázek 10). Vkládání kódu t rozhraní v tomto okamžiku obsahovat prostředky pro uživatele znamená, že she s zadání dat pro nový produkt a chce vložit nový záznam do databáze. Kromě toho jsme ve ještě k vyřešení, jak se data zadaná v zápatí přeloží do nového záznamu v `Products` databáze. V kroku 4 podíváme na zahrnutí tlačítko Přidat k vložení rozhraní a jak spustit kód na odeslat zpět při jeho s kliknutí. Krok 5 ukazuje, jak vložit nový záznam pomocí dat z zápatí.
 
 
-[![TZápatí prvku GridView poskytuje rozhraní pro přidání nového záznamu](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image10.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image17.png)
+[![Zápatí prvku GridView poskytuje rozhraní pro přidání nového záznamu](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image10.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image17.png)
 
 **Obrázek 10**: Zápatí prvku GridView poskytuje rozhraní pro přidání nového záznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image18.png))
 
@@ -178,7 +178,7 @@ Potřebujeme zahrnout tlačítko Přidat někde v rozhraní vkládání od s ř�
 Z návrháře, klikněte na odkaz Upravit šablony v prvku GridView s inteligentním a klikněte na tlačítko `ProductID` pole s `FooterTemplate` z rozevíracího seznamu. Přidejte tlačítko webový ovládací prvek (nebo odkazem (LinkButton) nebo ImageButton, pokud dáváte přednost) do šablony, nastavením jeho ID na `AddProduct`, jeho `CommandName` pro vkládání a jeho `Text` vlastnost přidat, jak je znázorněno na obrázku 11.
 
 
-[![PPřidat tlačítko v s ProductID TemplateField FooterTemplate lace](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image11.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image19.png)
+[![Umístit na tlačítko Přidat šablona FooterTemplate s ProductID TemplateField](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image11.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image19.png)
 
 **Obrázek 11**: Umístit přidat tlačítko v `ProductID` TemplateField s `FooterTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image20.png))
 
@@ -186,7 +186,7 @@ Z návrháře, klikněte na odkaz Upravit šablony v prvku GridView s inteligent
 Jakmile jste již zahrnut na tlačítko Přidat, otestujte si stránku v prohlížeči. Všimněte si, že když kliknete na tlačítko Přidat se neplatná data v rozhraní vložení, zpětné volání je krátké circuited a prvek znamená neplatná data (viz obrázek 12). S odpovídající data zadaná kliknutím na tlačítko Přidat vyvolá zpětné volání. Žádný záznam se přidá do databáze, ale. Budeme muset psát hodně kódu aktuálně provádějí insert.
 
 
-[![TPřidejte tlačítko s zpětné volání je krátký Circuited Pokud rozhraní vložení obsahuje neplatná Data](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image12.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image21.png)
+[![Přidejte tlačítko s zpětné volání je krátký Circuited Pokud rozhraní vložení obsahuje neplatná Data](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image12.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image21.png)
 
 **Obrázek 12**: S přidat tlačítko zpětné volání je krátký Circuited Pokud neplatná Data v rozhraní vložení ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image22.png))
 

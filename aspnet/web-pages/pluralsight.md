@@ -12,7 +12,7 @@ ms.openlocfilehash: 78e4d3aedd183e8ec91a8c833e4b60894ae214ec
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59401189"
 ---
 # <a name="webmatrix-and-web-pages-video-training-from-pluralsight"></a>Videokurz o nástroji WebMatrix a webových stránkách od společnosti Pluralsight
@@ -27,7 +27,7 @@ ms.locfileid: "59401189"
 - [Lokality a soubory pracovních prostorů](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m2&mode=live&clip=0&course=webmatrix-introduction)
 - [Práce s databázemi](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m3&mode=live&clip=0&course=webmatrix-introduction)
 - [Práce s dokumenty standardní webu](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m4&mode=live&clip=0&course=webmatrix-introduction)
-- [ASP.NET – webové stránky](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m5&mode=live&clip=0&course=webmatrix-introduction)
+- [Webové stránky ASP.NET](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m5&mode=live&clip=0&course=webmatrix-introduction)
 - [Vytváření sestav a nasazení](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m8&mode=live&clip=0&course=webmatrix-introduction)
 - [Správa zdrojového kódu](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m9&mode=live&clip=0&course=webmatrix-introduction)
 - [Mobilní weby](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m10&mode=live&clip=0&course=webmatrix-introduction)

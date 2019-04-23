@@ -12,7 +12,7 @@ ms.openlocfilehash: 9d3016d98fa6c3a55359c6dab0737407b29925f1
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59403828"
 ---
 # <a name="enable-cross-origin-requests-in-aspnet-web-api-2"></a>Povolení žádostí nepůvodního v ASP.NET Web API 2
@@ -48,7 +48,7 @@ Tyto adresy URL mají různé zdroje než ta předchozí dvě:
 - `http://example.net` -Jinou doménu
 - `http://example.com:9000/foo.html` -Jiný port
 - `https://example.com/foo.html` -Jiné schéma
-- `http://www.example.com/foo.html` - Different subdomain
+- `http://www.example.com/foo.html` – Různé subdomény
 
 > [!NOTE]
 > Aplikace Internet Explorer nebere v úvahu port při porovnání zdrojů.

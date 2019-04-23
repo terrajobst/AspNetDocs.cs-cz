@@ -12,7 +12,7 @@ ms.openlocfilehash: f1f1e78a3b8d631d9a78c5aad8dc8c3b00c883fe
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59404374"
 ---
 # <a name="aspnet-4---enterprise-deployment-introduction"></a>ASP.NET 4 – úvod do nasazení v podniku
@@ -21,5 +21,5 @@ ms.locfileid: "59404374"
 
 
 - [Scénáře nasazení webových aplikací v podniku pomocí sady Visual Studio 2010](deploying-web-applications-in-enterprise-scenarios.md)
-- [Nasazení podnikového webu: Přehledný scénář](enterprise-web-deployment-scenario-overview.md)
+- [Nasazení podnikového webu: Přehled scénářů](enterprise-web-deployment-scenario-overview.md)
 - [Správa životního cyklu aplikací: Od vývoje k ostrému provozu](application-lifecycle-management-from-development-to-production.md)

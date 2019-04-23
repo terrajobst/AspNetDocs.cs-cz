@@ -12,7 +12,7 @@ ms.openlocfilehash: e156b15356b02c25ad3dbb082096fc41ee35e465
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59403698"
 ---
 # <a name="core-differences-between-iis-and-the-aspnet-development-server-vb"></a>Hlavní rozdíly mezi službou IIS a serverem ASP.NET Development Server (VB)
@@ -50,7 +50,7 @@ K zobrazení tohoto typu chyby v akci, jsem vytvořil stránku recenzí webové 
 Dále přejděte *naučit sami technologie ASP.NET 3.5 za 24 hodin* stránku revize knihy ve vývojovém prostředí pomocí serveru ASP.NET Development Server. Za předpokladu, že jste přihlášení k počítači pomocí účtu, který má odpovídající oprávnění k vytvoření a úprava textového souboru ve webovém kořenovém adresáři aplikace recenze knihy zobrazí stejná jako předtím, ale pokaždé, když je stránka navštívené datum a čas a uživatele  IP adresa je uložen v `LastTYASP35Access.txt` souboru. Přejděte v prohlížeči do tohoto souboru. měli byste vidět zprávu podobně jako na obrázku 1.
 
 
-[![Tmá textový soubor obsahuje poslední datum a čas byla Navštívená recenze knihy&lt;](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image2.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image1.png)
+[![Textový soubor obsahuje poslední datum a čas byla Navštívená recenze knihy&lt;](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image2.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image1.png)
 
 **Obrázek 1**: Textový soubor obsahuje poslední datum a čas byla Navštívená recenze knihy ([kliknutím ji zobrazíte obrázek v plné velikosti](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image3.png))
 
@@ -58,7 +58,7 @@ Dále přejděte *naučit sami technologie ASP.NET 3.5 za 24 hodin* stránku rev
 Nasazení webové aplikace do produkčního prostředí a potom navštivte hostovanou *naučit sami technologie ASP.NET 3.5 za 24 hodin* stránku revize knihy. V tomto okamžiku by měla buď najdete na stránce Kontrola knihy jako normální nebo chybovou zprávu zobrazenou na obrázku 2. Někteří poskytovatelé webového hostitele udělit oprávnění k zápisu do anonymní účet počítače ASP.NET, ve kterém bude případ stránce fungovat bez chyb. Pokud však zprostředkovateli webového hostitele zakazuje přístup pro zápis pro anonymní účet pak [ `UnauthorizedAccessException` výjimky](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) se vyvolá, když `TYASP35.aspx` stránku pokusí se zapsat aktuální datum a čas `LastTYASP35Access.txt` souboru.
 
 
-[![TVýchozí počítače účet používaný službou IIS nemá oprávnění k zápisu do systému souborů](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image5.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image4.png)
+[![Výchozí účet počítače používaný službou IIS nemá oprávnění k zápisu do systému souborů](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image5.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image4.png)
 
 **Obrázek 2**: Výchozí počítače účet používaný službou IIS nemá není mají oprávnění k zápisu do systému souborů ([kliknutím ji zobrazíte obrázek v plné velikosti](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image6.png))
 
@@ -96,7 +96,7 @@ Pomocí serveru ASP.NET Development Server, přejděte na web a zadejte adresu U
 Zadáte tuto adresu URL do adresního řádku způsobí, že prohlížeč odeslat požadavek na serveru ASP.NET Development Server k souboru. Požadavek na modul runtime ASP.NET ke zpracování do rukou serveru ASP.NET Development Server. Protože jsme ještě nepřihlásili a protože `Web.config` v `PrivateDocs` složky je konfigurován k odepření anonymní přístup, modul runtime ASP.NET automaticky přesměruje na přihlašovací stránku nám `Login.aspx` (viz obrázek 3). Když uživatel přesměrování na přihlašovací stránce portálu, technologie ASP.NET obsahuje `ReturnUrl` parametr řetězce dotazu, který označuje stránce uživatel se pokusil k zobrazení. Po úspěšném přihlášení uživatele mohou být vráceny na tuto stránku.
 
 
-[![Unauthorized uživatelé jsou automaticky přesměruje na přihlašovací stránku](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image8.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image7.png)
+[![Neoprávnění uživatelé jsou automaticky přesměrováni na stránku pro přihlášení](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image8.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image7.png)
 
 **Obrázek 3**: Neoprávnění uživatelé jsou automaticky přesměrováni na stránku pro přihlášení ([kliknutím ji zobrazíte obrázek v plné velikosti](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image9.png))
 
@@ -104,7 +104,7 @@ Zadáte tuto adresu URL do adresního řádku způsobí, že prohlížeč odesla
 Nyní Podíváme se, jak to chová v produkčním prostředí. Nasaďte aplikaci a zadejte adresu URL s přímým přístupem na jeden z dokumentů PDF v `PrivateDocs` složky v produkčním prostředí. Tento parametr vyzve prohlížeče k odeslání souboru žádosti o služby IIS. Protože je požadován statický soubor, služba IIS načte a vrátí soubor bez vyvolání modul runtime ASP.NET. V důsledku toho došlo provedené; žádné kontroly autorizace adresy URL obsah údajně privátní PDF jsou přístupné všem uživatelům, kteří ví přímá adresa URL k souboru.
 
 
-[![Aanonymní uživatelé můžete stáhnout privátní PDF souborů podle zadání přímá adresa URL k souboru](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image11.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image10.png)
+[![Anonymní uživatelé můžou stahovat soubory PDF privátní tak, že zadáte přímá adresa URL k souboru](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image11.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image10.png)
 
 **Obrázek 4**: Anonymní uživatelé si můžou stáhnout privátní PDF souborů ve vstupu přímá adresa URL k souboru ([kliknutím ji zobrazíte obrázek v plné velikosti](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image12.png))
 

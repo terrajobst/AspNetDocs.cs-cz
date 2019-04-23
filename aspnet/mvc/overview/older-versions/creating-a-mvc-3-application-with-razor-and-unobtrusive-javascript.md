@@ -12,7 +12,7 @@ ms.openlocfilehash: 91c96cc413e63ad2fc160ffbb473c4f3e1ada3e4
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59401059"
 ---
 # <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>Vytvoření aplikace MVC 3 se syntaxí Razor a nerušivým JavaScriptem
@@ -36,7 +36,7 @@ Můžete si stáhnout dokončený projekt jazyka Visual Basic a C# [tady](https:
 
 Chcete-li zahájit kurz, otevřete Visual Studio 2010 a vytvořte nový projekt pomocí *webové aplikace ASP.NET MVC 3* šablony. Pojmenujte aplikaci &quot;Mvc3Razor&quot;.
 
-[![NNový projekt MVC 3](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image3.png)](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image2.png)
+[![Nový projekt MVC 3](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image3.png)](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image2.png)
 
 V **nového projektu ASP.NET MVC 3** dialogového okna, vyberte **internetovou aplikaci**vyberte zobrazovací modul Razor a potom klikněte na tlačítko **OK**.
 

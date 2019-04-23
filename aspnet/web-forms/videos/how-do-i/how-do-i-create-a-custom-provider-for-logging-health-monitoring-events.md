@@ -12,7 +12,7 @@ ms.openlocfilehash: 53eab74be18a8d62235fa2334e032d47a8dfaf9f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59396704"
 ---
 # <a name="how-do-i-create-a-custom-provider-for-logging-health-monitoring-events"></a>[Postup:] Vytvoření vlastního zprostředkovatele pro protokolování událostí monitorování stavu

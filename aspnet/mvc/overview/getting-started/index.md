@@ -12,7 +12,7 @@ ms.openlocfilehash: f588af70f3928285274ef6bf14f58697190943ff
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59405817"
 ---
 # <a name="aspnet-mvc-getting-started"></a>Začínáme se službou ASP.NET MVC
@@ -28,11 +28,11 @@ ms.locfileid: "59405817"
     - [Přidání modelu](introduction/adding-a-model.md)
     - [Vytvoření připojovacího řetězce a práce s databází SQL Serveru LocalDB](introduction/creating-a-connection-string.md)
     - [Přístup k datům modelu z kontroleru](introduction/accessing-your-models-data-from-a-controller.md)
-    - [Zkoumání metod Edit a zobrazení pro úpravy](introduction/examining-the-edit-methods-and-edit-view.md)
+    - [Zkoumání metod Edit a úprava zobrazení](introduction/examining-the-edit-methods-and-edit-view.md)
     - [Přidání vyhledávací funkce](introduction/adding-search.md)
     - [Přidání nového pole](introduction/adding-a-new-field.md)
-    - [Přidání ověření](introduction/adding-validation.md)
-    - [Zkoumání metod Details a Delete](introduction/examining-the-details-and-delete-methods.md)
+    - [Přidání ověřování](introduction/adding-validation.md)
+    - [Zkoumání podrobností a metod Delete](introduction/examining-the-details-and-delete-methods.md)
 - [Začínáme s EF 6 pomocí MVC 5](getting-started-with-ef-using-mvc/index.md)
 
     - [Vytvoření datového modelu Entity Framework](getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)

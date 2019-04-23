@@ -12,7 +12,7 @@ ms.openlocfilehash: a63bca69f137a4d4765db6a4925ff027c9d8bf7d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59403581"
 ---
 # <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Kurz: Serverové vysílání s knihovnou ASP.NET SignalR 1.x
@@ -48,9 +48,9 @@ Tento kurz obsahuje následující části:
 - [Nastavte si do kódu serveru](#server)
 - [Nastavit kód klienta](#client)
 - [Testování aplikace](#test)
-- [Povolit protokolování](#enablelogging)
+- [Povolení protokolování](#enablelogging)
 - [Instalace a zkontrolujte úplnou ukázku StockTicker](#fullsample)
-- [Další kroky](#nextsteps)
+- [Další postup](#nextsteps)
 
 > [!NOTE]
 > Pokud nechcete, aby pro seznámení se základními kroky při vytváření aplikace, můžete nainstalovat balíček SignalR.Sample v novém **prázdná webová aplikace ASP.NET** projektu a přečtěte si vysvětlení kódu těchto kroků. První část kurzu obsahuje podmnožinu SignalR.Sample kódu a druhá část vysvětluje klíčové funkce v balíčku SignalR.Sample další funkce.
@@ -412,7 +412,7 @@ Kurzy, které ukazují scénáře komunikace peer-to-peer, naleznete v tématu [
 
 Informace o pokročilejších pojmech vývoj SignalR, naleznete na následujících stránkách pro funkci SignalR zdrojový kód a prostředky:
 
-- [ASP.NET SignalR](https://asp.net/signalr/)
+- [Funkce SignalR technologie ASP.NET](https://asp.net/signalr/)
 - [Projekt SignalR](http://signalr.net/)
 - [Funkce SignalR Githubu a ukázky](https://github.com/SignalR/SignalR)
 - [SignalR Wiki](https://github.com/SignalR/SignalR/wiki)

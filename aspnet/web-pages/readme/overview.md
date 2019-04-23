@@ -12,7 +12,7 @@ ms.openlocfilehash: 7374b1afafa9ca63309f3c0369c5efd808f7f28a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59401982"
 ---
 # <a name="webmatrix-readme"></a>WebMatrix – soubor Readme
@@ -31,7 +31,7 @@ ms.locfileid: "59401982"
 - [Změny a problémy](#ChangesAndIssues)
 
     - [Instalace služby WebMatrix 1.0](#Known_Issues_Installation)
-    - [ASP.NET – webové stránky](#Known_Issues_ASPNET)
+    - [Webové stránky ASP.NET](#Known_Issues_ASPNET)
     - [WebMatrix](#Known_Issues_WebMatrix)
     - [Služba IIS Express](#Known_Issues_IISExpress)
     - [SQL Server Compact](#Known_Issues_SQLServerCompact)

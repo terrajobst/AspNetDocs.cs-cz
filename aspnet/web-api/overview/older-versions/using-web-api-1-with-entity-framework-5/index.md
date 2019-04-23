@@ -12,7 +12,7 @@ ms.openlocfilehash: be7322bae8f3d343866aae6e1c91ccce73ea6fd7
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59405648"
 ---
 # <a name="using-aspnet-web-api-1-with-entity-framework-5"></a>Použití webového rozhraní API 1 technologie ASP.NET se sadou Entity Framework 5

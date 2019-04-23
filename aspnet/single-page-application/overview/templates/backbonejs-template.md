@@ -12,7 +12,7 @@ ms.openlocfilehash: 8148974eacd1db05947ba54fe40776df69f92290
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59404114"
 ---
 # <a name="backbone-template"></a>Šablona Backbone
@@ -68,7 +68,7 @@ Události jsou důležité vždy při vývoji volně vázanými komponentami. Ap
 
 [!code-csharp[Main](backbonejs-template/samples/sample1.cs)]
 
-**Směrovače**
+**Router**
 
 Směrovač v Backbone.js, poskytuje metody pro směrování stránky na straně klienta a připojte je ke akcích a událostech. Šablona definuje jeden směrovač v router.ts. Směrovač activable zobrazení vytvoří a udržuje stav při přepnutí zobrazení. (Activable zobrazení jsou popsané v další části). Na začátku projektu má dvě fiktivní zobrazení domácích a o. Má také NotFound zobrazení, které se zobrazí, pokud je trasa není znám.
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 8237dc6b925ccefc5b411aebc8e7c399dcdc6746
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59407351"
 ---
 # <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>Úvod k programování v rozhraní ASP.NET Web používající syntaxi Razor (C#)
@@ -342,7 +342,7 @@ Následující tabulka uvádí některé běžné metody převodu a testování 
 
 :::row:::
     :::column:::
-    <strong>Metoda</strong>
+    <strong>– Metoda</strong>
     :::column-end:::
     :::column:::
     <strong>Popis</strong>
@@ -443,7 +443,7 @@ Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jak
 
 :::row:::
     :::column:::
-    <strong>Operátor</strong>
+    <strong>– Operátor</strong>
     :::column-end:::
     :::column:::
     <strong>Popis</strong>
@@ -844,7 +844,7 @@ Pokud váš kód nebyl zpracovat výjimky, zobrazí se chybová stránka jako na
 **Programování v jazyce Visual Basic**
 
 
-[Příloha: Syntaxe a jazyk Visual Basic](https://go.microsoft.com/fwlink/?LinkId=202908)
+[Dodatek: Syntaxe a jazyk Visual Basic](https://go.microsoft.com/fwlink/?LinkId=202908)
 
 
 **Referenční dokumentace**

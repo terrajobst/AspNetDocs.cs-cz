@@ -12,7 +12,7 @@ ms.openlocfilehash: db69c0cf4fc3e5d39d88d8a6478a529309020d3d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59398030"
 ---
 # <a name="positioning-a-modalpopup-c"></a>Umístění ovládacího prvku ModalPopup (C#)
@@ -55,7 +55,7 @@ A `stopMoving()` funkce vstupu do play při zavření to může automaticky otev
 [!code-aspx[Main](positioning-a-modalpopup-cs/samples/sample6.aspx)]
 
 
-[![The Modální místní nabídky se zobrazí na určené pozici](positioning-a-modalpopup-cs/_static/image2.png)](positioning-a-modalpopup-cs/_static/image1.png)
+[![Modální místní nabídky se zobrazí na určené pozici](positioning-a-modalpopup-cs/_static/image2.png)](positioning-a-modalpopup-cs/_static/image1.png)
 
 Modální místní nabídky se zobrazí na určené pozici ([kliknutím ji zobrazíte obrázek v plné velikosti](positioning-a-modalpopup-cs/_static/image3.png))
 

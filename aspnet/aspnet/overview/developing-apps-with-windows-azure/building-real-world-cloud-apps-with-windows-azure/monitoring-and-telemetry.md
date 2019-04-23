@@ -12,7 +12,7 @@ ms.openlocfilehash: 48a66eea839f7f48899040ad20bbfee95b9a1902
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59403906"
 ---
 # <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>Monitorování a Telemetrie (vytváření skutečných cloudových aplikací s Azure)
@@ -72,7 +72,7 @@ Nasazení aplikace do Azure a začít ji používat. Vytvoření určitým postu
 
 Pak přejděte zpátky do **špičkové funkce New Relicu** stránku **doplňky** portálu a klikněte na kartu **spravovat**. Na portálu odešle špičkové funkce New Relicu portálu pro správu pomocí jednotného přihlašování pro ověřování, takže není nutné znovu zadejte svoje přihlašovací údaje. Na stránce s přehledem nabízí širokou škálu statistiky výkonu. (Kliknutím na obrázek v plné velikosti stránky Přehled tématu.)
 
-[![Nkartu Sledování Relic ový](monitoring-and-telemetry/_static/image9.png)](monitoring-and-telemetry/_static/image8.png)
+[![Nová karta Relic monitorování](monitoring-and-telemetry/_static/image9.png)](monitoring-and-telemetry/_static/image8.png)
 
 Tady je několik příkladů statistických informací, které se zobrazí:
 
