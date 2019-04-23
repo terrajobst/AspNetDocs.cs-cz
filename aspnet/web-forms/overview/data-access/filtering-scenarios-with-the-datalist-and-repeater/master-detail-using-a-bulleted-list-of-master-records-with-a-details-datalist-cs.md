@@ -12,7 +12,7 @@ ms.openlocfilehash: d5c881592140bdf73f25fa620d58213cc283153d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59412031"
 ---
 # <a name="masterdetail-using-a-bulleted-list-of-master-records-with-a-details-datalist-c"></a>Zobrazení hlavních záznamů / podrobností v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (C#)
@@ -31,7 +31,7 @@ V [předchozím kurzu](master-detail-filtering-acess-two-pages-datalist-cs.md) j
 V tomto kurzu jsme budete komprimovat kurzu dvě stránky do jediné stránce zobrazující seznam s odrážkami názvy kategorií s názvy jednotlivých kategorií se vykresluje jako odkazem (LinkButton) na levé straně obrazovky. Klikněte na název kategorie LinkButtons indukuje zpětné volání a sváže s produkty s vybranou kategorii a dva sloupce v prvku DataList na pravé straně obrazovky. Kromě zobrazení každou kategorii s názvem, Repeater na levé straně se zobrazí, kolik existuje celkový počet produktů pro danou kategorii (viz obrázek 1).
 
 
-[![Tmá kategorii s názvem a celkový počet produktů se zobrazí na levé straně](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image2.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image1.png)
+[![Kategorie s názvem a celkový počet produktů, které se zobrazí na levé straně](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image2.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image1.png)
 
 **Obrázek 1**: Kategorie s názvem a celkový počet produktů, které se zobrazí na levé straně ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image3.png))
 
@@ -62,7 +62,7 @@ Pak nahradíme můžete `<div>` s `<div class="FloatLeft">`.
 Po přidání třídu šablony stylů CSS a nakonfigurování značky `CategoriesAndProducts.aspx` stránky, přejděte do návrháře. Měli byste vidět opakovače s plovoucí čárkou nalevo od prvku DataList (i když pravé teď oba právě objeví jako šedý polí od jsme ve ještě ke konfiguraci jejich zdroje dat nebo šablony).
 
 
-[![Tje mu Repeater obtékané nalevo od prvku DataList](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image5.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image4.png)
+[![Opakovače je ponechán v neurčitém stavu nalevo od prvku DataList](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image5.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image4.png)
 
 **Obrázek 2**: Opakovače je ponechán v neurčitém stavu nalevo od prvku DataList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image6.png))
 
@@ -81,7 +81,7 @@ Umožní s prozkoumat obě z následujících postupů. Prvním přístupem je s
 Určení počtu produktů pro každou kategorii v opakovače s `ItemDataBound` obslužná rutina události nevyžaduje žádné změny k naší stávající vrstvy přístupu k datům. Všechny změny lze provést přímo v rámci `CategoriesAndProducts.aspx` stránky. Začněte přidáním nového prvku ObjectDataSource s názvem `CategoriesDataSource` prostřednictvím inteligentních značek opakovače s. V dalším kroku nakonfigurujte `CategoriesDataSource` prvek ObjectDataSource, takže se načte data z `CategoriesBLL` třída s `GetCategories()` metody.
 
 
-[![Configurovat ObjectDataSource použít CategoriesBLL třídu s metodou GetCategories()](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image8.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image7.png)
+[![Konfigurace ObjectDataSource pomocí třídy CategoriesBLL s GetCategories() – metoda](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image8.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image7.png)
 
 **Obrázek 3**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třída s `GetCategories()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image9.png))
 
@@ -122,7 +122,7 @@ Začínáme tím, že zajišťuje, že jsme k práci s datovou položku (jeden j
 Po přidání této obslužné rutiny události, věnujte chvíli testovací stránka prostřednictvím prohlížeče. Všimněte si, jak je každá kategorie uvedené v seznamu s odrážkami, zobrazuje kategorii s názvem a počet produktů, které jsou spojené s kategorií (viz obrázek 4).
 
 
-[![EZobrazené ACH kategorii s názvem a číslem produkty](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image11.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image10.png)
+[![Zobrazené každou kategorii s názvem a počet produktů](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image11.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image10.png)
 
 **Obrázek 4**: Každá kategorie s názvem a produktů číslo se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image12.png))
 
@@ -132,7 +132,7 @@ Po přidání této obslužné rutiny události, věnujte chvíli testovací str
 Místo určení počtu produktů pro každou kategorii, protože s vázán na Repeater, můžeme zjednodušit tento proces úpravou `CategoriesDataTable` a `CategoriesTableAdapter` v vrstvy přístupu k datům nativně obsahovala tuto informaci. K dosažení tohoto cíle, jsme musíte přidat nový sloupec, `CategoriesDataTable` pro uchování počtu související produkty. Chcete-li přidat nový sloupec do DataTable určitého, otevřete datovou sadu typu (`App_Code\DAL\Northwind.xsd`), klikněte pravým tlačítkem na objekt DataTable upravit a zvolte Přidat / sloupec. Přidat nový sloupec, `CategoriesDataTable` (viz obrázek 5).
 
 
-[![APřidat nový sloupec, CategoriesDataSource](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image14.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image13.png)
+[![Přidat nový sloupec CategoriesDataSource](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image14.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image13.png)
 
 **Obrázek 5**: Přidat nový sloupec, `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image15.png))
 
@@ -150,12 +150,12 @@ Zatímco `CategoriesDataTable` má teď `NumberOfProducts` sloupec, jeho hodnota
 Přidat toto nové `GetCategoriesAndNumberOfProducts()` metoda, klikněte pravým tlačítkem na `CategoriesTableAdapter` a zvolit nový dotaz. To přináší nahoru TableAdapter dotazovat Průvodce konfigurací, které jsme ve použít mnohokrát v předchozích kurzech. Pro tuto metodu spusťte Průvodce označující, že dotaz používá ad-hoc příkazu SQL, který vrací řádky.
 
 
-[![CVytvořit metodu pomocí Ad-Hoc příkazu SQL](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image18.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image17.png)
+[![Vytvořit metodu, pomocí příkazu SQL Ad-Hoc](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image18.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image17.png)
 
 **Obrázek 7**: Vytvořte metodu pomocí příkazu SQL Ad-Hoc ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image19.png))
 
 
-[![Tmu SQL příkaz vrátí řádky](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image21.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image20.png)
+[![Příkaz jazyka SQL, vrátí řádky](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image21.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image20.png)
 
 **Obrázek 8**: Vrátí řádky SQL – příkaz ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image22.png))
 
@@ -166,7 +166,7 @@ Na další obrazovce průvodce vyzve k nám na dotaz, který chcete použít. Vr
 [!code-sql[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/samples/sample7.sql)]
 
 
-[![SZadejte dotaz, který používá](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image24.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image23.png)
+[![Zadejte dotaz k použití](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image24.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image23.png)
 
 **Obrázek 9**: Zadejte dotaz, který použít ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image25.png))
 
@@ -176,7 +176,7 @@ Všimněte si, že poddotazu, která vypočítá počet produktů, které jsou s
 Po zadání tohoto dotazu je posledním krokem je vybrat název pro novou metodu. Použití `FillWithNumberOfProducts` a `GetCategoriesAndNumberOfProducts` zaplní, datové tabulky a vrátit objekt DataTable vzory, v uvedeném pořadí.
 
 
-[![Nnázev nového TableAdapter s FillWithNumberOfProducts metody a GetCategoriesAndNumberOfProducts](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image27.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image26.png)
+[![Název nové FillWithNumberOfProducts metody s TableAdapter a GetCategoriesAndNumberOfProducts](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image27.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image26.png)
 
 **Obrázek 10**: Pojmenujte nový TableAdapter s metod `FillWithNumberOfProducts` a `GetCategoriesAndNumberOfProducts` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image28.png))
 
@@ -191,7 +191,7 @@ DAL a BLL kompletní, můžeme znovu jste připravení začít tato data k vytvo
 Repeater zpět do původního stavu, přidejte nový prvek ObjectDataSource s názvem `CategoriesDataSource` prostřednictvím inteligentních značek opakovače s. Konfigurace ObjectDataSource používat `CategoriesBLL` třídy, ale namísto toho, aby ji použít `GetCategories()` metodu, mají se používat `GetCategoriesAndNumberOfProducts()` místo toho (viz obrázek 11).
 
 
-[![Configurovat ObjectDataSource GetCategoriesAndNumberOfProducts metody](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image30.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image29.png)
+[![Konfigurace ObjectDataSource GetCategoriesAndNumberOfProducts metody](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image30.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image29.png)
 
 **Obrázek 11**: Konfigurace ObjectDataSource k použití `GetCategoriesAndNumberOfProducts` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image31.png))
 
@@ -218,7 +218,7 @@ Předtím, než jsme starat o nedostatku `SelectedValue` vlastnost Repeater, ale
 Z inteligentních značek v prvku DataList s optimalizované pro přidání nového prvku ObjectDataSource s názvem `CategoryProductsDataSource` a nakonfigurujte ho na použití `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metody. Protože DataList v tomto kurzu nabízí rozhraní jen pro čtení, můžete v INSERT, UPDATE, nastavte rozevírací seznamy a odstranit karty na (žádný).
 
 
-[![Configurovat ObjectDataSource k použití ProductsBLL třídy s GetProductsByCategoryID(categoryID) metoda](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image33.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image32.png)
+[![Konfigurace ObjectDataSource ProductsBLL třídy s GetProductsByCategoryID(categoryID) metody](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image33.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image32.png)
 
 **Obrázek 12**: Konfigurace ObjectDataSource použití `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image34.png))
 
@@ -228,7 +228,7 @@ Protože `GetProductsByCategoryID(categoryID)` metoda očekává, že vstupní p
 Nyní nastavena na hodnotu None rozevíracího seznamu zdroje parametru. Budeme mít programově přiřazení tohoto parametru na hodnotu při kategorii, kterou dojde ke kliknutí na prvek LinkButton v Opakovači.
 
 
-[![Do není zadán parametr zdroj pro ID kategorie parametr](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image36.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image35.png)
+[![Proveďte není zadán parametr zdroj pro ID kategorie parametr](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image36.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image35.png)
 
 **Obrázek 13**: Proveďte není zadán parametr zdroje *`categoryID`* parametr ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image37.png))
 
@@ -263,12 +263,12 @@ Až se ujistíte, předaný `CommandName` hodnota se rovná ListProducts, obslu�
 S těmito přídavky v našem kurzu byla dokončena. Za chvíli otestování v prohlížeči. Obrázek 14 při první návštěvě stránky se zobrazí na obrazovce. Protože kategorie je ještě nutné vybrat, zobrazí se žádné produkty. Kliknutím na kategorii, jako je například produktu, se zobrazí tyto produkty v kategorii produktu v zobrazení dvou sloupců (viz obrázek 15).
 
 
-[![No produkty jsou zobrazeny při první návštěvě stránky](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image39.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image38.png)
+[![Žádné produkty, které jsou zobrazeny při první návštěvě stránky](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image39.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image38.png)
 
 **Obrázek 14**: Žádné produkty, které jsou zobrazeny při první návštěvě stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image40.png))
 
 
-[![Clicking vytvoření kategorie obsahuje odpovídající produkty napravo](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image42.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image41.png)
+[![Kliknutím na seznamy kategorie produktů odpovídající produkty vpravo](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image42.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image41.png)
 
 **Obrázek 15**: Kliknutím na kategorii produktu seznamy produktů, na odpovídající vpravo ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image43.png))
 

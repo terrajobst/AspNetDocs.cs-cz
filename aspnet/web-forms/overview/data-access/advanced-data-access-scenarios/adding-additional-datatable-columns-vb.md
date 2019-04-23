@@ -12,7 +12,7 @@ ms.openlocfilehash: 985e052abbe1065ba2d6816911f686cb61c85a6d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59416464"
 ---
 # <a name="adding-additional-datatable-columns-vb"></a>Přidání dalších sloupců do tabulky DataTable (VB)
@@ -49,7 +49,7 @@ Pro účely tohoto kurzu vám umožňují s přidejte metodu k `ProductsTableAda
 Otevřít `NorthwindWithSprocs` datovou sadu a klikněte pravým tlačítkem na `ProductsDataTable`. V místní nabídce zvolte možnost Přidat a pak vyberte sloupec.
 
 
-[![APřidat nový sloupec, ProductsDataTable](adding-additional-datatable-columns-vb/_static/image2.png)](adding-additional-datatable-columns-vb/_static/image1.png)
+[![Přidat nový sloupec ProductsDataTable](adding-additional-datatable-columns-vb/_static/image2.png)](adding-additional-datatable-columns-vb/_static/image1.png)
 
 **Obrázek 1**: Přidat nový sloupec, `ProductsDataTable` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image3.png))
 
@@ -57,7 +57,7 @@ Otevřít `NorthwindWithSprocs` datovou sadu a klikněte pravým tlačítkem na 
 Nový sloupec se přidá do DataTable s názvem Sloupec1 typu `System.String`. Potřebujeme aktualizovat tento sloupec s názvem PriceQuartile a jeho typ ke `System.Int32` vzhledem k tomu, že se použije k uložení číslo mezi 1 a 4. Vyberte sloupec nově přidané `ProductsDataTable` a v okně Vlastnosti nastavte `Name` vlastnost PriceQuartile a `DataType` vlastnost `System.Int32`.
 
 
-[![Sdatový typ vlastnosti a et nový název sloupce s](adding-additional-datatable-columns-vb/_static/image5.png)](adding-additional-datatable-columns-vb/_static/image4.png)
+[![Nastavte nový sloupec s název a datový typ vlastnosti](adding-additional-datatable-columns-vb/_static/image5.png)](adding-additional-datatable-columns-vb/_static/image4.png)
 
 **Obrázek 2**: Nastavte nový sloupec s `Name` a `DataType` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image6.png))
 
@@ -69,7 +69,7 @@ Jak je vidět na obrázku 2, jsou další vlastnosti, které můžete nastavit, 
 Teď, když `ProductsDataTable` byl aktualizován na zahrnují `PriceQuartile` sloupce, budeme připravení vytvořit `GetProductsWithPriceQuartile` metoda. Začněte tím, že pravým tlačítkem myši na TableAdapter a zvolením přidat dotaz v místní nabídce. Tím se vyvolá průvodce konfigurací dotazu TableAdapter, který nejprve nám vyzve k tom, zda chceme použít SQL příkazy ad-hoc nebo nové nebo existující uložené procedury. Protože jsme zadávat t ještě nemáte uložené procedury, která vrací data QUARTIL cena, umožní s povolit TableAdapter vytvořte tuto uloženou proceduru pro nás. Výběr možnosti vytvořit nové uložené procedury a klikněte na tlačítko Další.
 
 
-[![Instruct Průvodci vytvořením objektu TableAdapter uložené procedury pro nás vytvoření](adding-additional-datatable-columns-vb/_static/image8.png)](adding-additional-datatable-columns-vb/_static/image7.png)
+[![Dáte pokyn, aby TableAdapter průvodce k vytvoření uložené procedury pro nás](adding-additional-datatable-columns-vb/_static/image8.png)](adding-additional-datatable-columns-vb/_static/image7.png)
 
 **Obrázek 3**: Dáte pokyn, aby průvodce TableAdapter vytvořte uložené procedury pro USA ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image9.png))
 
@@ -77,7 +77,7 @@ Teď, když `ProductsDataTable` byl aktualizován na zahrnují `PriceQuartile` s
 Na následující obrazovce je znázorněno na obrázku 4, zobrazí Průvodce požadavek nám jaký typ dotazu přidat. Protože `GetProductsWithPriceQuartile` metoda vrátí všechny sloupce a záznamy ze `Products` tabulku, vyberte, které vrací řádky možnost a klikněte na tlačítko Další.
 
 
-[![Ováš dotaz bude příkaz SELECT tohoto vrátí více řádky](adding-additional-datatable-columns-vb/_static/image11.png)](adding-additional-datatable-columns-vb/_static/image10.png)
+[![Dotaz bude příkaz SELECT tohoto vrátí více řádků](adding-additional-datatable-columns-vb/_static/image11.png)](adding-additional-datatable-columns-vb/_static/image10.png)
 
 **Obrázek 4**: Dotaz bude `SELECT` příkaz této vrátí více řádků ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image12.png))
 
@@ -98,7 +98,7 @@ Bohužel Tvůrce dotazů není známo, jak analyzovat `OVER` – klíčové slov
 Po zadání `SELECT` dotazů a kliknutí na tlačítko Další, Průvodce výzva k zadání názvu pro uloženou proceduru se vytvoří. Pojmenujte novou úložnou proceduru `Products_SelectWithPriceQuartile` a klikněte na tlačítko Další.
 
 
-[![NProducts_SelectWithPriceQuartile uložené procedury AME](adding-additional-datatable-columns-vb/_static/image14.png)](adding-additional-datatable-columns-vb/_static/image13.png)
+[![Název uložené procedury Products_SelectWithPriceQuartile](adding-additional-datatable-columns-vb/_static/image14.png)](adding-additional-datatable-columns-vb/_static/image13.png)
 
 **Obrázek 5**: Název uložené procedury `Products_SelectWithPriceQuartile` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image15.png))
 
@@ -106,7 +106,7 @@ Po zadání `SELECT` dotazů a kliknutí na tlačítko Další, Průvodce výzva
 Nakonec jsme se výzva k pojmenování metody TableAdapter. Nechte obou výplně datové tabulky a vrátí objekt DataTable zaškrtnutých políček a název metody `FillWithPriceQuartile` a `GetProductsWithPriceQuartile`.
 
 
-[![NNázev TableAdapter s metod a kliknutím na tlačítko Dokončit](adding-additional-datatable-columns-vb/_static/image17.png)](adding-additional-datatable-columns-vb/_static/image16.png)
+[![Název TableAdapter s metod a klikněte na tlačítko Dokončit](adding-additional-datatable-columns-vb/_static/image17.png)](adding-additional-datatable-columns-vb/_static/image16.png)
 
 **Obrázek 6**: Název TableAdapter s metod a kliknutím na tlačítko Dokončit ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image18.png))
 
@@ -121,7 +121,7 @@ Po dokončení průvodce, by měl obsahovat objektu TableAdapter `FillWithPriceQ
 **Obrázek 7**: Ověřte, že byla přidána nová metoda do TableAdapter
 
 
-[![Ensure, že databáze obsahuje Products_SelectWithPriceQuartile uložená procedura](adding-additional-datatable-columns-vb/_static/image21.png)](adding-additional-datatable-columns-vb/_static/image20.png)
+[![Ujistěte se, že databáze obsahuje Products_SelectWithPriceQuartile uložené procedury](adding-additional-datatable-columns-vb/_static/image21.png)](adding-additional-datatable-columns-vb/_static/image20.png)
 
 **Obrázek 8**: Ujistěte se, že databáze obsahuje `Products_SelectWithPriceQuartile` uloženou proceduru ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image22.png))
 
@@ -150,12 +150,12 @@ Data načtení metod v, jako jsou `ProductsBLLWithSprocs`, `GetProductsWithPrice
 Přidání knihoven BLL dokončení jsme znovu připravený k vytvoření stránky technologie ASP.NET, který zobrazuje QUARTIL ceny pro každý produkt. Otevřít `AddingColumns.aspx` stránku `AdvancedDAL` složky a GridView přetáhněte z panelu nástrojů do Návrháře nastavení jeho `ID` vlastnost `Products`. Z inteligentních značek GridView s vázat na nového prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource používat `ProductsBLLWithSprocs` třída s `GetProductsWithPriceQuartile` metody. Vzhledem k tomu, že to bude jen pro čtení mřížky, nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
 
 
-[![Configurovat ObjectDataSource pomocí třídy ProductsBLLWithSprocs](adding-additional-datatable-columns-vb/_static/image24.png)](adding-additional-datatable-columns-vb/_static/image23.png)
+[![Konfigurace ObjectDataSource pomocí třídy ProductsBLLWithSprocs](adding-additional-datatable-columns-vb/_static/image24.png)](adding-additional-datatable-columns-vb/_static/image23.png)
 
 **Obrázek 9**: Konfigurace ObjectDataSource k použití `ProductsBLLWithSprocs` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image25.png))
 
 
-[![Rnačíst informace o produktech z metody GetProductsWithPriceQuartile](adding-additional-datatable-columns-vb/_static/image27.png)](adding-additional-datatable-columns-vb/_static/image26.png)
+[![Získávání informací o produktech z GetProductsWithPriceQuartile – metoda](adding-additional-datatable-columns-vb/_static/image27.png)](adding-additional-datatable-columns-vb/_static/image26.png)
 
 **Obrázek 10**: Získávání informací o produktech z `GetProductsWithPriceQuartile` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image28.png))
 
@@ -172,12 +172,12 @@ Po změnách ovládacími prvky GridView a prvku ObjectDataSource s deklarativn�
 Obrázku 11 můžete vidět tuto stránku, když uživatel prostřednictvím prohlížeče. Všimněte si, že na začátku produkty jsou řazeny podle jejich cena v sestupném pořadí u každého produktu přiřazené odpovídající `PriceQuartile` hodnotu. Samozřejmě tato data můžou být řada seřazena podle jiných kritérií se cena sloupec kvartil stále odráží hodnocení produktu s s ohledem na cenu (viz obrázek 12).
 
 
-[![The produkty jsou řazeny podle jejich ceny](adding-additional-datatable-columns-vb/_static/image30.png)](adding-additional-datatable-columns-vb/_static/image29.png)
+[![Produkty jsou řazeny podle jejich cenu](adding-additional-datatable-columns-vb/_static/image30.png)](adding-additional-datatable-columns-vb/_static/image29.png)
 
 **Obrázek 11**: Produkty jsou řazeny podle jejich cenu ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image31.png))
 
 
-[![The produkty jsou řazeny podle svých názvů](adding-additional-datatable-columns-vb/_static/image33.png)](adding-additional-datatable-columns-vb/_static/image32.png)
+[![Produkty jsou řazeny podle svých názvů](adding-additional-datatable-columns-vb/_static/image33.png)](adding-additional-datatable-columns-vb/_static/image32.png)
 
 **Obrázek 12**: Produkty jsou řazeny podle svých názvů ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image34.png))
 

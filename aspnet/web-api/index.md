@@ -13,12 +13,12 @@ ms.openlocfilehash: c04719e06c6c0900c8f8268b73f833b525ea3dd6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59410835"
 ---
 # <a name="aspnet-web-api"></a>Rozhraní API pro ASP.NET Web
 
-- [Doprovodné materiály](overview/index.md)
+- [Pokyny](overview/index.md)
 
     - [Začínáme](overview/getting-started-with-aspnet-web-api/index.md)
 
@@ -26,7 +26,7 @@ ms.locfileid: "59410835"
         - [Výsledky akcí ve webovém rozhraní API 2](overview/getting-started-with-aspnet-web-api/action-results.md)
         - [Použití webového rozhraní API s webovými formuláři ASP.NET](overview/getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms.md)
         - [Vytvoření stránek nápovědy k webovému rozhraní API](overview/getting-started-with-aspnet-web-api/creating-api-help-pages.md)
-        - [Praktické cvičení: Sestavení jednostránkové aplikace (SPA) pomocí webového rozhraní API ASP.NET a Angular.js](overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md)
+        - [Praktické cvičení: Sestavení jednostránkové aplikaci (SPA) pomocí webového rozhraní API ASP.NET a Angular.js](overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md)
     - [Směrování](overview/web-api-routing-and-actions/index.md)
 
         - [Směrování ve webovém rozhraní API](overview/web-api-routing-and-actions/routing-in-aspnet-web-api.md)
@@ -59,7 +59,7 @@ ms.locfileid: "59410835"
             - [Relace prvků v OData v4](overview/odata-support-in-aspnet-web-api/odata-v4/entity-relations-in-odata-v4.md)
             - [Akce a funkce v OData v4](overview/odata-support-in-aspnet-web-api/odata-v4/odata-actions-and-functions.md)
             - [Zahrnutí v OData v4](overview/odata-support-in-aspnet-web-api/odata-v4/odata-containment-in-web-api-22.md)
-            - [Vytvoření jednoznačného prvku v OData v4](overview/odata-support-in-aspnet-web-api/odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22.md)
+            - [Vytvoření jednoho prvku v OData v4](overview/odata-support-in-aspnet-web-api/odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22.md)
             - [Otevřené typy v OData v4](overview/odata-support-in-aspnet-web-api/odata-v4/use-open-types-in-odata-v4.md)
             - [Komplexní dědičnost typů v OData v4](overview/odata-support-in-aspnet-web-api/odata-v4/complex-type-inheritance-in-odata-v4.md)
         - [OData v3](overview/odata-support-in-aspnet-web-api/odata-v3/index.md)
@@ -114,10 +114,10 @@ ms.locfileid: "59410835"
         - [Volání webového rozhraní API z klienta .NET (C#)](overview/advanced/calling-a-web-api-from-a-net-client.md)
         - [Obslužné rutiny zpráv HTTP ve webovém rozhraní API](overview/advanced/http-message-handlers.md)
         - [Obslužné rutiny zpráv HttpClient ve webovém rozhraní API](overview/advanced/httpclient-message-handlers.md)
-        - [Posílání dat formulářů HTML ve webovém rozhraní API: Data formuláře kódovaná pomocí adresy URL](overview/advanced/sending-html-form-data-part-1.md)
+        - [Posílání dat formulářů HTML ve webovém rozhraní API: Data formuláře kódovaná](overview/advanced/sending-html-form-data-part-1.md)
         - [Posílání dat formulářů HTML ve webovém rozhraní API: Nahrání souboru a vícedílné zprávy standardu MIME](overview/advanced/sending-html-form-data-part-2.md)
         - [Soubory cookie HTTP ve webovém rozhraní API technologie ASP.NET](overview/advanced/http-cookies.md)
-    - [Vydané verze](overview/releases/index.md)
+    - [Verze](overview/releases/index.md)
 
         - [Novinky webového rozhraní API OData 5.3](overview/releases/whats-new-in-aspnet-web-api-odata-53.md)
         - [Novinky webového rozhraní API 2.2 technologie ASP.NET](overview/releases/whats-new-in-aspnet-web-api-22.md)
@@ -140,11 +140,11 @@ ms.locfileid: "59410835"
 
     - [Přehled a začátek](videos/getting-started/index.md)
 
-        - [Rozhraní API pro ASP.NET Web](videos/getting-started/aspnet-web-api.md)
-        - [Webové rozhraní API v ASP.NET, 1. část: První webové rozhraní API](videos/getting-started/your-first-web-api.md)
-        - [Webové rozhraní API v ASP.NET, 2. část: Získání dat](videos/getting-started/getting-data.md)
-        - [Webové rozhraní API v ASP.NET, 3. část: Odstranění a aktualizace](videos/getting-started/delete-and-update.md)
-        - [Webové rozhraní API v ASP.NET, 4. část: Stránkování a tvorba dotazů](videos/getting-started/paging-and-querying.md)
-        - [Webové rozhraní API v ASP.NET, 5. část: Vlastní ověřování](videos/getting-started/custom-validation.md)
-        - [Webové rozhraní API v ASP.NET, 6. část: Autorizace](videos/getting-started/authorization.md)
+        - [Webové rozhraní API v ASP.NET](videos/getting-started/aspnet-web-api.md)
+        - [Rozhraní ASP.NET Web API, část 1: První webové rozhraní API](videos/getting-started/your-first-web-api.md)
+        - [Rozhraní ASP.NET Web API 2. část: Získání dat](videos/getting-started/getting-data.md)
+        - [Rozhraní ASP.NET Web API, část 3: Odstranění a aktualizace](videos/getting-started/delete-and-update.md)
+        - [Rozhraní ASP.NET Web API, část 4: Stránkování a Tvorba dotazů](videos/getting-started/paging-and-querying.md)
+        - [Rozhraní ASP.NET Web API, 5. část: Vlastní ověřování](videos/getting-started/custom-validation.md)
+        - [Rozhraní ASP.NET Web API, část 6: Autorizace](videos/getting-started/authorization.md)
 - [Seznam ukázek webového rozhraní API](samples-list.md)

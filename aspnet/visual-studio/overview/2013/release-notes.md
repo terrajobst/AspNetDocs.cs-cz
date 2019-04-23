@@ -12,7 +12,7 @@ ms.openlocfilehash: 8234bd1b7eb74d9b03e507f00d9ad937314288be
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59411277"
 ---
 # <a name="aspnet-and-web-tools-for-visual-studio-2013-release-notes"></a>ASP.NET a webové nástroje pro Visual Studio 2013 – poznámky k verzi
@@ -38,14 +38,14 @@ by [Microsoft](https://github.com/microsoft)
 - [Podpora aplikací webové služby Azure App Service v sadě Visual Studio](#waws)
 - [Vylepšení publikování webu](#publish)
 - [NuGet 2.7](#nuget)
-- [ASP.NET – webové formuláře](#TOC9)
+- [Webové formuláře ASP.NET](#TOC9)
 - [ASP.NET MVC 5](#TOC10)
-- [Rozhraní API pro ASP.NET Web 2](#TOC11)
-- [ASP.NET SignalR](#TOC13)
+- [Rozhraní ASP.NET Web API 2](#TOC11)
+- [Funkce SignalR technologie ASP.NET](#TOC13)
 - [ASP.NET Identity](#TOC8)
 - [Komponenty Microsoft OWIN](#TOC7)
 - [Entity Framework 6](#ef6)
-- [Syntaxe Razor rozhraní ASP.NET 3](#TOC14)
+- [ASP.NET Razor 3](#TOC14)
 - [Pozastavení aplikace technologie ASP.NET](#TOC15)
 - [Známé problémy a změny způsobující chyby](#knownissues)
 

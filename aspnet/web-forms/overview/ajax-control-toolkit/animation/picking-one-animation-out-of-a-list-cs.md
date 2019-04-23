@@ -12,7 +12,7 @@ ms.openlocfilehash: 1cbb60431824ce642625c06cba6b5194aa547b1b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59419701"
 ---
 # <a name="picking-one-animation-out-of-a-list-c"></a>Výběr jedné animace ze seznamu (C#)
@@ -53,7 +53,7 @@ Následující kód definuje tři subanimations: Změna velikosti šířka, vý�
 [!code-aspx[Main](picking-one-animation-out-of-a-list-cs/samples/sample5.aspx)]
 
 
-[![ONe, je to možné animací tři: Na panelu získá širší](picking-one-animation-out-of-a-list-cs/_static/image2.png)](picking-one-animation-out-of-a-list-cs/_static/image1.png)
+[![Jednou z možných animací tři: Získá širší panelu](picking-one-animation-out-of-a-list-cs/_static/image2.png)](picking-one-animation-out-of-a-list-cs/_static/image1.png)
 
 Jednou z možných animací tři: Získá širší panelu ([kliknutím ji zobrazíte obrázek v plné velikosti](picking-one-animation-out-of-a-list-cs/_static/image3.png))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 5415913626eb063a4cb1013ba03857c130487f42
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59412174"
 ---
 # <a name="introducing-aspnet-web-pages---displaying-data"></a>Úvod do webových stránek ASP.NET – zobrazení dat
@@ -214,7 +214,7 @@ V této fázi databázi otevřít, zobrazila data mají být, a jste připravili
 
 > [!TIP] 
 > 
-> **SQL (Structured Query Language)**
+> **Structured Query Language (SQL)**
 > 
 > SQL je jazyk, který se používá v Většina relačních databází pro správu dat v databázi. Obsahuje příkazy, které umožňují načtení dat a aktualizovat je a, které umožňují vytvářet, upravovat a spravovat data v tabulkách databáze. SQL se liší od programovací jazyk (jako je C#). Pomocí jazyka SQL dáte databáze, co má a je databáze úlohu zjistit, jak získat data nebo provést úlohu. Tady jsou příklady některých příkazů SQL a jejich význam:
 > 

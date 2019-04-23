@@ -12,7 +12,7 @@ ms.openlocfilehash: 91758b7c329b78bcb3a3ab301650d6da6164d1a3
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59411186"
 ---
 # <a name="using-modalpopup-with-a-repeater-control-c"></a>Použití ovládacího prvku ModalPopup v ovládacím prvku Repeater (C#)
@@ -49,7 +49,7 @@ Aby bylo možné pracovat v opakovači, automaticky otevíraného okna `ModalPop
 Pak se zobrazí všechny položky ve zdroji dat s tlačítkem vedle sebe, vyvolá Modální místní nabídky.
 
 
-[![Tpro každou položku, zdroj dat se dá spouštět Modální místní nabídky he](using-modalpopup-with-a-repeater-control-cs/_static/image2.png)](using-modalpopup-with-a-repeater-control-cs/_static/image1.png)
+[![Pro každou položku, zdroj dat se dá spouštět Modální místní nabídky](using-modalpopup-with-a-repeater-control-cs/_static/image2.png)](using-modalpopup-with-a-repeater-control-cs/_static/image1.png)
 
 Pro každou položku, zdroj dat se dá spouštět Modální místní nabídky ([kliknutím ji zobrazíte obrázek v plné velikosti](using-modalpopup-with-a-repeater-control-cs/_static/image3.png))
 

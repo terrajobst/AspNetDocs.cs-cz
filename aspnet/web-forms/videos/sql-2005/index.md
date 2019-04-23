@@ -12,7 +12,7 @@ ms.openlocfilehash: c07bfaeb29e20b042861ab59e6cd8f7d12744205
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59416178"
 ---
 # <a name="sql-2005"></a>SQL 2005
@@ -20,7 +20,7 @@ ms.locfileid: "59416178"
 > Jak pracovat s SQL Server Express pro přidání možností databáze do vaší aplikace ASP.NET.
 
 
-- [Co je databáze](what-is-a-database.md)
+- [Co je databáze?](what-is-a-database.md)
 - [Principy databázových tabulek a záznamů](understanding-database-tables-and-records.md)
 - [Další informace o datových typech sloupců a dalších vlastnostech](more-about-column-data-types-and-other-properties.md)
 - [Návrh tabulek relační databáze](designing-relational-database-tables.md)

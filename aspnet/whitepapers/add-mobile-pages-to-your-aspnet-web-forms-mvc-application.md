@@ -12,7 +12,7 @@ ms.openlocfilehash: db8f336f3fd9a88dfb32f99510fc53cd7b4a5178
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59415983"
 ---
 # <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>Postupy: Přidání mobilních stránek do webových formulářů ASP.NET/aplikace MVC
@@ -22,7 +22,7 @@ ms.locfileid: "59415983"
 > - Verze webových formulářů technologie ASP.NET 4.0
 > - ASP.NET MVC verze 3.0
 > 
-> **Souhrn**
+> **Shrnutí**
 > 
 > Tento postup popisuje různé způsoby, jak poskytovat stránky optimalizované pro mobilní zařízení z webových formulářů ASP.NET / aplikace MVC a navrhne architektury a návrhu problémy, které je třeba zvážit při cílení na široké škále zařízení. Tento dokument popisuje taky, proč jsou nyní zastaralé technologie ASP.NET Mobile ovládací prvky technologie ASP.NET 2.0 3.5 a tento článek popisuje některé moderní alternativy.
 

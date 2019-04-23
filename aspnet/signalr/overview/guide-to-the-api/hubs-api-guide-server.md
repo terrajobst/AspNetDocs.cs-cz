@@ -12,7 +12,7 @@ ms.openlocfilehash: adfd540562ec54938860740ab280c770e24f492e
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59411407"
 ---
 # <a name="aspnet-signalr-hubs-api-guide---server-c"></a>Pokyny k rozhraní API Center SignalR technologie ASP.NET – Server (C#)
@@ -56,7 +56,7 @@ Tento dokument obsahuje následující části:
 
     - [Doba života objektu centra](#transience)
     - [Camel-malých a velkých písmen názvů centra v klientech jazyka JavaScript](#hubnames)
-    - [Více rozbočovače](#multiplehubs)
+    - [Multiple Hubs](#multiplehubs)
     - [Silného typu rozbočovače](#stronglytypedhubs)
 - [Definování metody ve třídě rozbočovače, která může volat klientů](#hubmethods)
 

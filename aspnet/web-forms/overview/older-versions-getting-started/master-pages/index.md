@@ -12,7 +12,7 @@ ms.openlocfilehash: 9119e16fbd6ac872cfcdf5497c5ca3d8d0b5d5e2
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59413617"
 ---
 # <a name="aspnet-35---web-forms-master-pages"></a>ASP.NET 3.5 – stránky předlohy webových formulářů
@@ -25,7 +25,7 @@ ms.locfileid: "59413617"
 - [Zadání názvu, metaznaček a dalších hlaviček HTML na stránce předlohy (C#)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)
 - [Adresy URL stránek předloh (C#)](urls-in-master-pages-cs.md)
 - [Pojmenovávání ID ovládacích prvků na stránkách obsahu (C#)](control-id-naming-in-content-pages-cs.md)
-- [Interakce stránky předlohy se stránkou obsahu (C#)](interacting-with-the-master-page-from-the-content-page-cs.md)
+- [Interakce stránky obsahu se stránkou předlohy (C#)](interacting-with-the-master-page-from-the-content-page-cs.md)
 - [Interakce stránky předlohy se stránkou obsahu (C#)](interacting-with-the-content-page-from-the-master-page-cs.md)
 - [Stránky předlohy a ASP.NET AJAX (C#)](master-pages-and-asp-net-ajax-cs.md)
 - [Programové určení stránky předlohy (C#)](specifying-the-master-page-programmatically-cs.md)
@@ -35,7 +35,7 @@ ms.locfileid: "59413617"
 - [Zadání názvu, metaznaček a dalších hlaviček HTML na stránce předlohy (VB)](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb.md)
 - [Adresy URL stránek předloh (VB)](urls-in-master-pages-vb.md)
 - [Pojmenovávání ID ovládacích prvků na stránkách obsahu (VB)](control-id-naming-in-content-pages-vb.md)
-- [Interakce stránky předlohy se stránkou obsahu (VB)](interacting-with-the-master-page-from-the-content-page-vb.md)
+- [Interakce stránky obsahu se stránkou předlohy (VB)](interacting-with-the-master-page-from-the-content-page-vb.md)
 - [Interakce stránky předlohy se stránkou obsahu (VB)](interacting-with-the-content-page-from-the-master-page-vb.md)
 - [Stránky předlohy a ASP.NET AJAX (VB)](master-pages-and-asp-net-ajax-vb.md)
 - [Programové určení stránky předlohy (VB)](specifying-the-master-page-programmatically-vb.md)

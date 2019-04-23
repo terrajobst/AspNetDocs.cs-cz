@@ -12,7 +12,7 @@ ms.openlocfilehash: d7a6f29dc660cff2bfa9db8f9790d73e51a2cc1c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59420130"
 ---
 # <a name="adding-client-side-confirmation-when-deleting-c"></a>Přidání potvrzení odstranění na straně klienta (C#)
@@ -65,7 +65,7 @@ Protože byla svázána se ovládací prvek ObjectDataSource, který podporuje p
 S těmito změnami máme plně funkční webovou stránku, která umožňuje uživatelům přepínat prostřednictvím produktů jeden najednou, s možností odstranit produkt jednoduše kliknutím na tlačítko Odstranit. Obrázek 2 ukazuje snímek obrazovky náš postup doposud při prohlížení prostřednictvím prohlížeče.
 
 
-[![Tmá FormView zobrazuje informace o jeden produkt](adding-client-side-confirmation-when-deleting-cs/_static/image3.png)](adding-client-side-confirmation-when-deleting-cs/_static/image2.png)
+[![FormView s informacemi o jednoho produktu](adding-client-side-confirmation-when-deleting-cs/_static/image3.png)](adding-client-side-confirmation-when-deleting-cs/_static/image2.png)
 
 **Obrázek 2**: FormView zobrazuje informace o jeden produkt ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-client-side-confirmation-when-deleting-cs/_static/image4.png))
 
@@ -85,7 +85,7 @@ Všechny existuje tento s je to! Obrázek 3 ukazuje snímek obrazovky toto potvr
 > Řetězec předaný do `confirm(string)` funkce JavaScript, která jsou odděleny apostrofy (spíše než uvozovky). V jazyce JavaScript může být oddělené řetězce buď znaku. Apostrofy tady používáme tak, aby oddělovače pro řetězec předat do `confirm(string)` nezavádí nejednoznačnost pomocí oddělovače pro `OnClientClick` hodnotu vlastnosti.
 
 
-[![A Potvrzení se teď zobrazují při kliknutím na tlačítko Odstranit](adding-client-side-confirmation-when-deleting-cs/_static/image6.png)](adding-client-side-confirmation-when-deleting-cs/_static/image5.png)
+[![Potvrzení se teď zobrazují při kliknutím na tlačítko Odstranit](adding-client-side-confirmation-when-deleting-cs/_static/image6.png)](adding-client-side-confirmation-when-deleting-cs/_static/image5.png)
 
 **Obrázek 3**: Potvrzení se teď zobrazují při kliknutím na tlačítko Odstranit ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-client-side-confirmation-when-deleting-cs/_static/image7.png))
 
@@ -127,7 +127,7 @@ S těmito změnami dokončeno kliknutím na tlačítko Odstranit v zobrazení Gr
 > Tento postup můžete použít také k programovému přístupu ke tlačítko Odstranit v CommandField v DetailsView. Prvku DetailsView, ale d vytvořit obslužnou rutinu události pro `DataBound` událost, protože nemá žádné ovládacím prvku DetailsView `RowDataBound` událostí.
 
 
-[![Clicking GridView s odstranit zobrazí tlačítko Přizpůsobit potvrzovací dialogové](adding-client-side-confirmation-when-deleting-cs/_static/image9.png)](adding-client-side-confirmation-when-deleting-cs/_static/image8.png)
+[![Kliknutím na tlačítko Odstranit prvek GridView s zobrazí dialogové okno Vlastní potvrzení](adding-client-side-confirmation-when-deleting-cs/_static/image9.png)](adding-client-side-confirmation-when-deleting-cs/_static/image8.png)
 
 **Obrázek 4**: Kliknutí na prvek GridView s tlačítko pro odstranění zobrazí přizpůsobit potvrzovací dialogové okno ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-client-side-confirmation-when-deleting-cs/_static/image10.png))
 

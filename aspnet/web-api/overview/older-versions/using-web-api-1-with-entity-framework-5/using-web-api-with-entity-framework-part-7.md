@@ -12,7 +12,7 @@ ms.openlocfilehash: 028631f8855e4d94bebb0e965de75c4025e22859
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59409262"
 ---
 # <a name="part-7-creating-the-main-page"></a>Část 7: Vytvoření hlavní stránky

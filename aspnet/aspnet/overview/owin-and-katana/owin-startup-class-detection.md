@@ -12,7 +12,7 @@ ms.openlocfilehash: e4d9424d691f92aacf078faed09689daa40a44fd
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59418336"
 ---
 # <a name="owin-startup-class-detection"></a>Rozpoznání spouštěcí třídy OWIN
@@ -79,8 +79,7 @@ ms.locfileid: "59418336"
      > [!NOTE]
      > Ve výše uvedeném kódu, budeme mít komentář `OwinStartup` atribut a My se spoléhat na konvenci spuštěných třídu s názvem `Startup` .-stiskněte ***F5*** ke spuštění aplikace. Stiskněte několikrát tlačítko Aktualizovat.
 
-    ![](owin-startup-class-detection/_static/image4.png)
-  Poznámka: Číslo, jak je znázorněno obrázcích v tomto kurzu nebudou odpovídat na číslo uvedené. Milisekundy řetězec se používá k zobrazit nová odpověď, když obnovíte stránku.
+    ![](owin-startup-class-detection/_static/image4.png) Poznámka: Číslo, jak je znázorněno obrázcích v tomto kurzu nebudou odpovídat na číslo uvedené. Milisekundy řetězec se používá k zobrazit nová odpověď, když obnovíte stránku.
   Zobrazí se informace o trasování v **výstup** okna.
 
     ![](owin-startup-class-detection/_static/image5.png)

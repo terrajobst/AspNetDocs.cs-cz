@@ -12,7 +12,7 @@ ms.openlocfilehash: c0e2888207e4fa0363fc3b357ae00108ffe817f5
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59415216"
 ---
 # <a name="animating-in-response-to-user-interaction-c"></a>Animace v reakci na interakci uživatele (C#)
@@ -59,7 +59,7 @@ V tomto scénáři `<OnClick>` se používá. Když uživatel klikne na panelu, 
 [!code-aspx[Main](animating-in-response-to-user-interaction-cs/samples/sample5.aspx)]
 
 
-[![A animace bude spuštěna kliknutí myší](animating-in-response-to-user-interaction-cs/_static/image2.png)](animating-in-response-to-user-interaction-cs/_static/image1.png)
+[![Animace bude spuštěna kliknutí myší](animating-in-response-to-user-interaction-cs/_static/image2.png)](animating-in-response-to-user-interaction-cs/_static/image1.png)
 
 Animace bude spuštěna kliknutí myší ([kliknutím ji zobrazíte obrázek v plné velikosti](animating-in-response-to-user-interaction-cs/_static/image3.png))
 

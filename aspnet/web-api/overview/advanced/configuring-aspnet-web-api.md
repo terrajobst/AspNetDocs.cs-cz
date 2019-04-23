@@ -13,7 +13,7 @@ ms.openlocfilehash: 39629ba404e536b29318db00bce8c4443a782497
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59411940"
 ---
 # <a name="configuring-aspnet-web-api-2"></a>Konfigurace rozhraní ASP.NET Web API 2
@@ -25,7 +25,7 @@ Toto téma popisuje postup konfigurace webového rozhraní API ASP.NET.
 - [Nastavení konfigurace](#settings)
 - [Konfigurace webového rozhraní API s hostování v technologii ASP.NET](#webhost)
 - [Konfigurace webového rozhraní API s vlastním hostováním OWIN](#selfhost)
-- [Global Web API Services](#services)
+- [Globální webové rozhraní API služby](#services)
 - [Konfigurace na Kontroleru](#percontrollerconfig)
 
 <a id="settings"></a>

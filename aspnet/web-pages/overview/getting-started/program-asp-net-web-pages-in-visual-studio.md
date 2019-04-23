@@ -12,7 +12,7 @@ ms.openlocfilehash: 6d25eb99f87c4c3d2c96e021e79a13c90da4a035
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59414488"
 ---
 # <a name="programming-aspnet-web-pages-razor-using-visual-studio"></a>Programování webových stránek ASP.NET (Razor) pomocí sady Visual Studio
@@ -58,7 +58,7 @@ Následující tabulka shrnuje podporu pro rozhraní ASP.NET Web Pages v různý
 
 |  | Visual Studio 2010 | Visual Studio 2012 | Visual Studio 2013 |
 | --- | --- | --- | --- |
-| **ASP.NET – webové stránky 2** | Instalace technologie ASP.NET MVC 4 | (Zahrnuto) | (Zahrnuto) |
+| **Rozhraní ASP.NET Web Pages 2** | Instalace technologie ASP.NET MVC 4 | (Zahrnuto) | (Zahrnuto) |
 | **ASP.NET – webové stránky 3** |  | Aktualizace technologie ASP.NET webové stránky 3 přes NuGet | (Zahrnuto) |
 
 Pokud chcete pracovat se službou Visual Studio 2010, přečtěte si téma [instalace podpory pro rozhraní ASP.NET Web Pages v sadě Visual Studio 2010](#vs2010support).

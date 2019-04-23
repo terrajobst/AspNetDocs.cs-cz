@@ -12,7 +12,7 @@ ms.openlocfilehash: 1e727e8124e1f045f8ef25ab7a3d4efbafd4290a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59411212"
 ---
 # <a name="creating-a-team-project-in-tfs"></a>Vytváření týmových projektů v TFS
@@ -106,8 +106,7 @@ Dále je třeba udělit oprávnění uživatele k vytvoření nové týmové web
 
    > [!NOTE]
    > Může se zobrazit <strong>HTTP 404 Nenalezeno</strong> chyba z důvodu double kódování chyby protokolu HTTP. Pokud k tomu dojde, nahraďte adresu URL s tímto:   
-   > `[site_collection_URL]/_layouts/permsetup.aspx`
-   > Příklad:  
+   > `[site_collection_URL]/_layouts/permsetup.aspx` Příklad:  
    > `http://tfs/sites/Fabrikam%20Web%20Projects/_layouts/permsetup.aspx` 
 8. Na **nastavení skupin pro tuto lokalitu** stránce, přidejte uživatele, který bude vytvářet týmové projekty do **vlastníky** skupiny a potom klikněte na tlačítko **OK**.
 

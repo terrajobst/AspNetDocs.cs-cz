@@ -12,7 +12,7 @@ ms.openlocfilehash: 4fa306d25868ace7d713f968efe083438655f8bf
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59416152"
 ---
 # <a name="intro-to-aspnet-20-aspnet-20-fundamentals"></a>[Úvod do ASP.NET 2.0:] Základy ASP.NET 2.0

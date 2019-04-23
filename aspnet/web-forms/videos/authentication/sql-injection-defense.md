@@ -12,7 +12,7 @@ ms.openlocfilehash: 2ba52c94737dfc165831ef094d04a333c4fcf133
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59414111"
 ---
 # <a name="sql-injection-defense"></a>Obrana proti útokům prostřednictvím injektáže SQL

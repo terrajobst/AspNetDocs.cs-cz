@@ -12,7 +12,7 @@ ms.openlocfilehash: 99b18de33e266adb626f4ab53ff20b1f52102900
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59417582"
 ---
 # <a name="displaying-a-table-of-database-data-c"></a>Zobrazení tabulky databázových dat (C#)
@@ -61,7 +61,7 @@ Po kliknutí na tlačítko Přidat, zobrazí se Průvodce datovým modelem Entit
 3. V **zvolte vaše databázové objekty** krok, rozbalte uzel tabulky, vyberte v tabulce videa. Zadejte obor názvů *modely* a klikněte na tlačítko **Dokončit** tlačítko.
 
 
-[![Cořit LINQ na třídy SQL](displaying-a-table-of-database-data-cs/_static/image1.jpg)](displaying-a-table-of-database-data-cs/_static/image1.png)
+[![Vytvoření LINQ na třídy SQL](displaying-a-table-of-database-data-cs/_static/image1.jpg)](displaying-a-table-of-database-data-cs/_static/image1.png)
 
 **Obrázek 01**: Vytvoření LINQ na třídy SQL ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image2.png))
 
@@ -69,7 +69,7 @@ Po kliknutí na tlačítko Přidat, zobrazí se Průvodce datovým modelem Entit
 Po dokončení Průvodce datovým modelem Entity, otevře se Návrhář Entity Data Model. Návrhář zobrazeno filmy entity (viz obrázek 2).
 
 
-[![Tmá Entity Data Model Designer](displaying-a-table-of-database-data-cs/_static/image2.jpg)](displaying-a-table-of-database-data-cs/_static/image3.png)
+[![Entity Data Model Designer](displaying-a-table-of-database-data-cs/_static/image2.jpg)](displaying-a-table-of-database-data-cs/_static/image3.png)
 
 **Obrázek 02**: Entity Data Model Designer ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image4.png))
 
@@ -83,7 +83,7 @@ Dvakrát klikněte na název třídy na návrhové ploše a změňte název tř�
 Teď, když jsme způsob, jak reprezentaci našich záznamů databáze, můžeme vytvořit kontroler, který vrátí kolekce filmů. V okně Průzkumník řešení Visual Studio klikněte pravým tlačítkem na složku řadiče a vyberte možnost nabídky **přidat, řadič** (viz obrázek 3).
 
 
-[![Tmu nabídka přidat kontroler](displaying-a-table-of-database-data-cs/_static/image3.jpg)](displaying-a-table-of-database-data-cs/_static/image5.png)
+[![Přidání Kontroleru nabídky](displaying-a-table-of-database-data-cs/_static/image3.jpg)](displaying-a-table-of-database-data-cs/_static/image5.png)
 
 **Obrázek 03**: V nabídce Přidat kontroler ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image6.png))
 
@@ -91,7 +91,7 @@ Teď, když jsme způsob, jak reprezentaci našich záznamů databáze, můžeme
 Když **přidat kontroler** se zobrazí dialogové okno, zadejte název řadiče MovieController (viz obrázek 4). Klikněte na tlačítko **přidat** tlačítko pro přidání nového řadiče.
 
 
-[![TDialogové okno Přidat kontroler he](displaying-a-table-of-database-data-cs/_static/image4.jpg)](displaying-a-table-of-database-data-cs/_static/image7.png)
+[![Dialogové okno Přidat kontroler](displaying-a-table-of-database-data-cs/_static/image4.jpg)](displaying-a-table-of-database-data-cs/_static/image7.png)
 
 **Obrázek 04**: Dialogové okno Přidat kontroler ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image8.png))
 
@@ -117,7 +117,7 @@ Sestavení aplikace tak, že vyberete možnost nabídky **vytvořit, sestavit ř
 Klikněte pravým tlačítkem na akce Index() a vyberte možnost nabídky **přidat zobrazení** (viz obrázek 5).
 
 
-[![Adding zobrazení](displaying-a-table-of-database-data-cs/_static/image5.jpg)](displaying-a-table-of-database-data-cs/_static/image9.png)
+[![Přidání zobrazení](displaying-a-table-of-database-data-cs/_static/image5.jpg)](displaying-a-table-of-database-data-cs/_static/image9.png)
 
 **Obrázek 05**: Přidání zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image10.png))
 
@@ -125,7 +125,7 @@ Klikněte pravým tlačítkem na akce Index() a vyberte možnost nabídky **při
 V **přidat zobrazení** dialogového okna, zaškrtněte políčko s popiskem **vytvoření zobrazení se silnými typy**. Vyberte třídu film, jako **zobrazení dat třídy**. Vyberte *seznamu* jako **zobrazit obsah** (viz obrázek 6). Výběr tyto možnosti budou generovat zobrazení silného typu, který zobrazí seznam filmy.
 
 
-[![TDialogové okno Přidat zobrazení he](displaying-a-table-of-database-data-cs/_static/image6.jpg)](displaying-a-table-of-database-data-cs/_static/image11.png)
+[![Dialogové okno Přidat zobrazení](displaying-a-table-of-database-data-cs/_static/image6.jpg)](displaying-a-table-of-database-data-cs/_static/image11.png)
 
 **Obrázek 06**: Dialogové okno Přidat zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image12.png))
 
@@ -139,7 +139,7 @@ Po klepnutí **přidat** automaticky generováno tlačítko, zobrazení, ve výp
 Aplikaci můžete spustit tak, že vyberete možnost nabídky **ladit, spustit ladění** (nebo stisknutí klávesy F5). Spuštění aplikace se spustí aplikace Internet Explorer. Když přejdete na adresu URL /Movie uvidíte stránku na obrázku 7.
 
 
-[![A Tabulka filmy](displaying-a-table-of-database-data-cs/_static/image7.jpg)](displaying-a-table-of-database-data-cs/_static/image13.png)
+[![Tabulku filmy](displaying-a-table-of-database-data-cs/_static/image7.jpg)](displaying-a-table-of-database-data-cs/_static/image13.png)
 
 **Obrázek 07**: Tabulku filmy ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image14.png))
 
@@ -170,7 +170,7 @@ Po dokončení těchto kroků upravte MovieTemplate částečné vypadat výpis 
 
 Upravené zobrazení indexu v informacích 4 používá MovieTemplate částečné.
 
-**Listing 4 – Views\Movie\Index.aspx**
+**Část 4 – Views\Movie\Index.aspx**
 
 [!code-aspx[Main](displaying-a-table-of-database-data-cs/samples/sample4.aspx)]
 

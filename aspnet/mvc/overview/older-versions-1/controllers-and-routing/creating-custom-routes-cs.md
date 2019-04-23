@@ -12,7 +12,7 @@ ms.openlocfilehash: 7b7324c9e0518697c0978b96b0123cb44133722b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59418934"
 ---
 # <a name="creating-custom-routes-c"></a>Vytváření vlastních tras (C#)
@@ -61,7 +61,7 @@ Všimněte si, že metoda Entry() ve výpisu 2 přijímá parametr typu DateTime
 **Obrázek 1 – Chyba z převodu parametru**
 
 
-[![TDialogové okno Nový projekt he](creating-custom-routes-cs/_static/image1.jpg)](creating-custom-routes-cs/_static/image1.png)
+[![Dialogové okno Nový projekt](creating-custom-routes-cs/_static/image1.jpg)](creating-custom-routes-cs/_static/image1.png)
 
 **Obrázek 01**: Chyba z převodu parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-custom-routes-cs/_static/image2.png))
 

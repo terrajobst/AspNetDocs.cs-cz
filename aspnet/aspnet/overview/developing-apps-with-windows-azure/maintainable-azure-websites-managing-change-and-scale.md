@@ -12,7 +12,7 @@ ms.openlocfilehash: ec0058472f8bc1d8d58e7c78deeb8b6097532510
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59409730"
 ---
 # <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>Praktické cvičení: Udržitelné weby Azure: Správa změn a škálování

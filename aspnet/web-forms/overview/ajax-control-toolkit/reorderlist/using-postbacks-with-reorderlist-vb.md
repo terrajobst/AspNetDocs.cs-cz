@@ -12,7 +12,7 @@ ms.openlocfilehash: 22c7eecb841ff67196d21e6efeeda63a3456c5cb
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59409080"
 ---
 # <a name="using-postbacks-with-reorderlist-vb"></a>Použití postbacků s ovládacím prvkem ReorderList (VB)
@@ -62,7 +62,7 @@ Nakonec, aby bylo možné aktivovat funkce technologie ASP.NET AJAX a Control To
 [!code-aspx[Main](using-postbacks-with-reorderlist-vb/samples/sample6.aspx)]
 
 
-[![EZměna uspořádání ACH aktivuje zpětné volání](using-postbacks-with-reorderlist-vb/_static/image2.png)](using-postbacks-with-reorderlist-vb/_static/image1.png)
+[![Každá změna uspořádání aktivuje zpětné volání](using-postbacks-with-reorderlist-vb/_static/image2.png)](using-postbacks-with-reorderlist-vb/_static/image1.png)
 
 Každá změna uspořádání aktivuje zpětné volání ([kliknutím ji zobrazíte obrázek v plné velikosti](using-postbacks-with-reorderlist-vb/_static/image3.png))
 

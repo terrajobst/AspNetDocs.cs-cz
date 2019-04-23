@@ -12,7 +12,7 @@ ms.openlocfilehash: d4e5ef19044a265f48d51586062fb7d2dc024b4c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59413669"
 ---
 # <a name="introduction-to-web-pages-videos"></a>Úvod do webových stránek videa
@@ -24,7 +24,7 @@ ms.locfileid: "59413669"
 
 
 - [Pětiminutový úvod do webových stránek ASP.NET](5-minute-introduction-to-aspnet-web-pages.md)
-- [Instalace a použití nástroje Microsoft WebMatrix](install-and-use-the-microsoft-webmatrix-tool.md)
+- [Instalace použití nástroje Microsoft WebMatrix](install-and-use-the-microsoft-webmatrix-tool.md)
 - [Vytvoření webu v nástroji WebMatrix](create-a-website-using-webmatrix.md)
 - [Změna vizuálního stylu webové stránky](change-the-visual-style-of-a-web-page.md)
 - [Použití funkcí rozložení nástroje WebMatrix](use-the-layout-features-in-webmatrix.md)

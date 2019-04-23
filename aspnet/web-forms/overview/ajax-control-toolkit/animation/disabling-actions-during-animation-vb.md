@@ -12,7 +12,7 @@ ms.openlocfilehash: 3f8073b468a431d5c4b0d222bf385c8c6d32b2a8
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59419090"
 ---
 # <a name="disabling-actions-during-animation-vb"></a>Zakázání akcí během animace (VB)
@@ -55,7 +55,7 @@ Také je možné znovu povolit tlačítko po animaci pomocí následujícího el
 Ale v daném scénáři to může být zbytečné od tlačítko setmívá a není viditelný na konci animace.
 
 
-[![The tlačítko není k dispozici co nejdříve po spuštění animace](disabling-actions-during-animation-vb/_static/image2.png)](disabling-actions-during-animation-vb/_static/image1.png)
+[![Poté, co běží animaci je tlačítko neaktivní.](disabling-actions-during-animation-vb/_static/image2.png)](disabling-actions-during-animation-vb/_static/image1.png)
 
 Je tlačítko neaktivní co nejdříve po spuštění animace ([kliknutím ji zobrazíte obrázek v plné velikosti](disabling-actions-during-animation-vb/_static/image3.png))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 973878ef0afd62035b3fc840371e6c6223c8951c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59413786"
 ---
 # <a name="iteration-3--add-form-validation-c"></a>Iterace #3 – Přidání ověřovacího formuláře (C#)
@@ -51,7 +51,7 @@ Vytváříme aplikaci přes více iterací. S každou iterací zvyšujeme postup
 V této druhé iterace kontaktujte správce aplikace přidáme ověření základní formulář. Můžeme zabránit neoprávněným osobám v odesílání kontaktu bez zadání hodnoty povinných polí formuláře. Také ověření telefonní čísla a e-mailové adresy (viz obrázek 1).
 
 
-[![TDialogové okno Nový projekt he](iteration-3-add-form-validation-cs/_static/image1.jpg)](iteration-3-add-form-validation-cs/_static/image1.png)
+[![Dialogové okno Nový projekt](iteration-3-add-form-validation-cs/_static/image1.jpg)](iteration-3-add-form-validation-cs/_static/image1.png)
 
 **Obrázek 01**: Formulář s ověřováním ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-3-add-form-validation-cs/_static/image2.png))
 
@@ -66,7 +66,7 @@ V této iterace abychom si to nekomplikovali, jsme psát veškerý kód pro ově
 
 Umožní s Začněte přidáním logiku ověřování k zobrazení pro vytváření. Naštěstí protože jsme vygenerován pomocí sady Visual Studio zobrazení pro vytváření, zobrazení pro vytváření již obsahuje veškerou logiku potřebné uživatelské rozhraní pro zobrazení ověřovacích zpráv. Zobrazení pro vytváření je součástí výpis 1.
 
-**Výpis 1 - \Views\Contact\Create.aspx**
+**Listing 1 - \Views\Contact\Create.aspx**
 
 [!code-aspx[Main](iteration-3-add-form-validation-cs/samples/sample1.aspx)]
 

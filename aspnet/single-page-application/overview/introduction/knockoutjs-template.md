@@ -12,7 +12,7 @@ ms.openlocfilehash: 20d2d4412345399acdde1535447cc18b6611b572
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59412850"
 ---
 # <a name="single-page-application-knockoutjs-template"></a>Jednostránková aplikace: šablona KnockoutJS
@@ -89,7 +89,7 @@ V projektu sady Visual Studio obsahuje složku modely modely, které se použív
 
 ![](knockoutjs-template/_static/image9.png)
 
-**TodoItem, seznamu úkolů**
+**TodoItem, TodoList**
 
 Toto jsou modely databáze pro Entity Framework Code First. Všimněte si, že tyto modely mají vlastnosti, které odkazují na sebe navzájem. `ToDoList` obsahuje kolekci objektů Todoitem a každý `ToDoItem` odkazuje zpět na nadřazeného seznamu úkolů. Tyto vlastnosti se nazývají navigačních vlastností a představují vztah jeden mnoho seznam úkolů a jeho položek úkolů.
 

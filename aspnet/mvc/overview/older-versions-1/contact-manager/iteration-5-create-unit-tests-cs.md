@@ -12,7 +12,7 @@ ms.openlocfilehash: 68080859e205283f56d8f543bfa06b76bb22a39d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408859"
 ---
 # <a name="iteration-5--create-unit-tests-c"></a>Iterace #5 – vytvoření testů jednotek (C#)
@@ -117,12 +117,12 @@ Před použitím Moq, budete muset provést následující kroky:
 5. Po dokončení těchto kroků složky odkazů by měl vypadat jako na obrázku 2.
 
 
-[![Unblocking Moq](iteration-5-create-unit-tests-cs/_static/image1.jpg)](iteration-5-create-unit-tests-cs/_static/image1.png)
+[![Odblokování Moq](iteration-5-create-unit-tests-cs/_static/image1.jpg)](iteration-5-create-unit-tests-cs/_static/image1.png)
 
 **Obrázek 01**: Odblokování Moq ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-5-create-unit-tests-cs/_static/image2.png))
 
 
-[![Rodkazy po přidání Moq](iteration-5-create-unit-tests-cs/_static/image2.jpg)](iteration-5-create-unit-tests-cs/_static/image3.png)
+[![Po přidání Moq odkazy](iteration-5-create-unit-tests-cs/_static/image2.jpg)](iteration-5-create-unit-tests-cs/_static/image3.png)
 
 **Obrázek 02**: Po přidání Moq odkazy ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-5-create-unit-tests-cs/_static/image4.png))
 
@@ -185,7 +185,7 @@ Zbývající testy ověřte, že při volání metody CreateContact() neplatný 
 Můžete spustit testy jednotek v informacích 1 tak, že vyberete možnost nabídky **testovací běh, všechny testy v řešení (CTRL + R, A)**. Výsledky testů se zobrazí v okně Výsledky testu (viz obrázek 4).
 
 
-[![TVýsledky EST](iteration-5-create-unit-tests-cs/_static/image4.jpg)](iteration-5-create-unit-tests-cs/_static/image7.png)
+[![Výsledky testu](iteration-5-create-unit-tests-cs/_static/image4.jpg)](iteration-5-create-unit-tests-cs/_static/image7.png)
 
 **Obrázek 04**: Výsledky testů ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-5-create-unit-tests-cs/_static/image8.png))
 

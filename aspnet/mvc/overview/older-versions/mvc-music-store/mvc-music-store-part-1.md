@@ -12,7 +12,7 @@ ms.openlocfilehash: 63d85ec5f1f2fbadd92fd0210e67332df30aab5a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59419597"
 ---
 # <a name="part-1-overview-and-file-new-project"></a>Část 1: Přehled a Soubor->Nový projekt
@@ -112,7 +112,7 @@ Není úplně prázdná šablona prázdná MVC 3 – přidá strukturu základn�
 
 ASP.NET MVC používá některé základní konvence pojmenování pro názvy složek:
 
-| **Folder** | **Účel** |
+| **Složka** | **Účel** |
 | --- | --- |
 | **/ Řadiče** | Kontrolery reagovat na vstup z prohlížeče, rozhodněte, jak ho použít a vrátit odpověď uživatele. |
 | **/ Zobrazení** | Zobrazení obsahovat naše šablony uživatelského rozhraní |

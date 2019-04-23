@@ -12,7 +12,7 @@ ms.openlocfilehash: 3a39e8d1979a743101d728eb3430e9aa0efb1252
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59415632"
 ---
 # <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2017"></a>Začínáme s webovými formuláři ASP.NET 4.5 a Visual Studio 2017
@@ -39,7 +39,7 @@ Měli byste určitá znalost v následujících oblastech:
 
 Pokud chcete zkontrolovat tyto oblasti, vezměte v úvahu zkoumání následujícím obsahem:
 
-- [Začínáme s jazykem Visual C#](https://msdn.microsoft.com/library/a72418yk.aspx)
+- [Začínáme s Visual C#](https://msdn.microsoft.com/library/a72418yk.aspx)
 - [Web Development](https://msdn.microsoft.com/beginner/bb308760.aspx), [HTML, CSS, JavaScript, SQL, PHP, JQuery](http://w3schools.com/)
 - [Relační databáze](http://en.wikipedia.org/wiki/Relational_database)
 - [Vícevrstvé architektury](http://en.wikipedia.org/wiki/Multitier_architecture)

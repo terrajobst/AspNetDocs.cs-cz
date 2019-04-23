@@ -12,7 +12,7 @@ ms.openlocfilehash: 149312e2ddf0a5023a4a12f5b05852f7da6b18f8
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59418167"
 ---
 # <a name="aspnet-mvc-overview"></a>ASP.NET MVC – přehled
@@ -29,7 +29,7 @@ MVC je standardní návrhový vzor, který mnoho vývojářů znají. Některé 
 Architektura MVC zahrnuje následující součásti:
 
 
-[![Invoking akce kontroleru, který očekává, že hodnota parametru](asp-net-mvc-overview/_static/image1.jpg)](asp-net-mvc-overview/_static/image1.png)
+[![Vyvolání akce kontroleru, který očekává, že hodnota parametru](asp-net-mvc-overview/_static/image1.jpg)](asp-net-mvc-overview/_static/image1.png)
 
 **Obrázek 01**: Vyvolání akce kontroleru, který očekává, že hodnota parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](asp-net-mvc-overview/_static/image2.png))
 

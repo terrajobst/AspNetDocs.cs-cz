@@ -12,7 +12,7 @@ ms.openlocfilehash: a60e09b7cdda7f924a4287aab8cda32fef5a53ac
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59419766"
 ---
 # <a name="databinding-the-slider-control-vb"></a>Svázání posuvníku s daty (VB)
@@ -45,7 +45,7 @@ Dalším krokem je již v posledním kroku. `SliderExtender` Ovládacího prvku 
 Jak je vidět v prohlížeči, datové vazby funguje v obou směrech: zadáte novou hodnotu v textovém poli aktualizuje pozice posuvníku. Pokud provedete do druhého textového pole jen pro čtení, můžete přidat slabé ochranu do textového pole tak, aby se pro uživatele k ruční aktualizaci hodnoty tady složitější.
 
 
-[![Slider a textové pole jsou synchronizované](databinding-the-slider-control-vb/_static/image2.png)](databinding-the-slider-control-vb/_static/image1.png)
+[![Posuvníku a textového pole, které jsou synchronizované](databinding-the-slider-control-vb/_static/image2.png)](databinding-the-slider-control-vb/_static/image1.png)
 
 Posuvníku a textového pole, které jsou synchronizované ([kliknutím ji zobrazíte obrázek v plné velikosti](databinding-the-slider-control-vb/_static/image3.png))
 

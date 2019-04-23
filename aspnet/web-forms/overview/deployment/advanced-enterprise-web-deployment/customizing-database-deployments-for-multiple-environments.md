@@ -12,7 +12,7 @@ ms.openlocfilehash: 865e901618b48bc4bfdc6d7a3ca4e8868d4cb46b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59412980"
 ---
 # <a name="customizing-database-deployments-for-multiple-environments"></a>Přizpůsobení nasazené databáze pro různá prostředí
@@ -68,7 +68,7 @@ Tato tabulka ukazuje typické nasazení nastavení pro jiné cílové prostřed�
 
 |  | Pro vývojáře a testování | Pracovní/integrace | Produkční |
 | --- | --- | --- | --- |
-| **Nasazení porovnání řazení** | Zdroj | Target | Target |
+| **Nasazení porovnání řazení** | Source | Target | Target |
 | **Nasazení vlastnosti databáze** | Pravda | Pouze první čas | Pouze první čas |
 | **Vždy znovu vytvořit databázi** | Pravda | False | False |
 | **Blokovat přírůstkové nasazení, pokud může dojít ke ztrátě dat.** | False | Možná | Pravda |

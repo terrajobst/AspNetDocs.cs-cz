@@ -12,7 +12,7 @@ ms.openlocfilehash: eb886aac6c0a5d9e65719a0dc359acbad3b85659
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408781"
 ---
 # <a name="how-do-i-enable-code-coverage-and-profiling-in-production-applications"></a>[Postup:] Povolit pokrytí kódu a profilace v provozních aplikacích?

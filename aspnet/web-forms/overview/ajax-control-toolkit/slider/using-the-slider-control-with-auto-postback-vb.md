@@ -12,7 +12,7 @@ ms.openlocfilehash: 702cdd898e261f6a5793fa04069b69398745d576
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59415580"
 ---
 # <a name="using-the-slider-control-with-auto-postback-vb"></a>Použití ovládacího prvku posuvník s funkcí Auto-Postback (VB)
@@ -51,12 +51,12 @@ Nyní je posuvník účtování; zpět na straně serveru může tato událost z
 [!code-aspx[Main](using-the-slider-control-with-auto-postback-vb/samples/sample5.aspx)]
 
 
-[![Moving posuvník aktivuje zpětné volání](using-the-slider-control-with-auto-postback-vb/_static/image2.png)](using-the-slider-control-with-auto-postback-vb/_static/image1.png)
+[![Posunutím jezdce aktivuje zpětné volání](using-the-slider-control-with-auto-postback-vb/_static/image2.png)](using-the-slider-control-with-auto-postback-vb/_static/image1.png)
 
 Posunutím jezdce aktivuje zpětné volání ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-slider-control-with-auto-postback-vb/_static/image3.png))
 
 
-[![Afterwards, data této změny je napsána v popisku](using-the-slider-control-with-auto-postback-vb/_static/image5.png)](using-the-slider-control-with-auto-postback-vb/_static/image4.png)
+[![Potom data této změny je napsána v popisku](using-the-slider-control-with-auto-postback-vb/_static/image5.png)](using-the-slider-control-with-auto-postback-vb/_static/image4.png)
 
 Potom data této změny je napsána v popisku ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-slider-control-with-auto-postback-vb/_static/image6.png))
 

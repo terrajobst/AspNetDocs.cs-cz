@@ -12,7 +12,7 @@ ms.openlocfilehash: 200e6b8cf8c32fbf70b383fc02e2fd74cbc313e5
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59419870"
 ---
 # <a name="mvc-video-training-from-pluralsight"></a>Videokurz o MVC od společnosti Pluralsight
@@ -20,7 +20,7 @@ ms.locfileid: "59419870"
 ### <a name="videos"></a>Videa
 
 - [Úvod a požadavky](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m1-introduction&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [OWIN a Katana](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m2-katana&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [Specifikace OWIN a sada komponent Katana](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m2-katana&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 - [Identity a zabezpečení](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m3-identity&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 - [Bootstrap](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m4-bootstrap&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 - [Webové rozhraní API 2](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m5-webapi2&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)

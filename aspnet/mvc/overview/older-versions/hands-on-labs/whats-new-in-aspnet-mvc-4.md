@@ -12,7 +12,7 @@ ms.openlocfilehash: b9da2522cfaed324a23f43265d4e234ebb4950bd
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59411121"
 ---
 # <a name="whats-new-in-aspnet-mvc-4"></a>Novinky v ASP.NET MVC 4
@@ -141,7 +141,7 @@ V tomto cvičení bude prozkoumat rozšíření v šablonách projektu ASP.NET M
 
     ![jQuery ověření](whats-new-in-aspnet-mvc-4/_static/image6.png)
 
-    *jQuery ověření*
+    *jQuery Validation*
 
     > [!NOTE]
     > Všimněte si, že dvě přihlášení oddíly v první části, které se můžete přihlásit pomocí registrovaného účtu z webu a v druhé části, které případně můžou přihlásit pomocí jiného ověřovací službě, jako je google (ve výchozím nastavení vypnutá).
@@ -173,7 +173,7 @@ V tomto cvičení bude prozkoumat rozšíření v šablonách projektu ASP.NET M
 
    *Šablona projektu ASP.NET MVC 4 Internetové aplikace*
 
-    - **HTML 5 značek**
+    - **HTML 5 Markup**
 
        Procházejte šablony zobrazení a zjistěte, nový motiv značek.
 
@@ -522,7 +522,7 @@ V této úloze bude prozkoumat ukázková implementace přepínači zobrazení p
     - **HttpContext.ClearOverriddenBrowser()** metoda odebere každého přepsaného uživatelského agenta pro aktuální požadavek.
     - **HttpContext.SetOverriddenBrowser()** metoda přepíše hodnotu skutečného uživatelského agenta žádosti pomocí zadaného uživatelského agenta.  
         ![Kontroler ViewSwitcher](whats-new-in-aspnet-mvc-4/_static/image31.png "ViewSwitcher Kontroleru")  
-*ViewSwitcher Kontroleru*
+*ViewSwitcher Controller*
 
         Přepíše prohlížeče je funkce jádra ASP.NET MVC 4, což je také k dispozici i v případě, že není nainstalovaný balíček jQuery.Mobile.MVC. Ale tuto funkci ovlivňuje pouze zobrazení, rozložení a částečného zobrazení a nemá žádnou z funkcí, které jsou závislé na objektu Request.Browser vliv.
 

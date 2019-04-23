@@ -12,7 +12,7 @@ ms.openlocfilehash: 5f50721b6f263b9cb025f5fa57c923dadeddcd28
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59410588"
 ---
 # <a name="whats-new-in-aspnet-45-and-visual-studio-2012"></a>Novinky v ASP.NET 4.5 a v sadě Visual Studio 2012
@@ -42,7 +42,7 @@ ms.locfileid: "59410588"
         - [Používání vícejádrové kompilace JIT pro rychlejší spuštění](#_Toc_perf_4)
         - [Optimalizace uvolňování paměti optimalizace paměti](#_Toc_perf_5)
         - [Předběžné načítání pro webové aplikace](#_Toc_perf_6)
-- [ASP.NET – webové formuláře](#_Toc318097385)
+- [Webové formuláře ASP.NET](#_Toc318097385)
 
     - [Ovládací prvky dat silného typu](#_Toc318097386)
     - [Vazby modelu](#_Toc318097387)
@@ -54,13 +54,13 @@ ms.locfileid: "59410588"
     - [Nerušivý ověření](#_Toc318097392)
     - [Aktualizace HTML5](#_Toc318097393)
 - [ASP.NET MVC 4](#_Toc318097394)
-- [ASP.NET – webové stránky 2](#_Toc318097395)
+- [Rozhraní ASP.NET Web Pages 2](#_Toc318097395)
 - [Visual Studio 2012 Release Candidate](#_Toc318097396)
 
     - [Projekt pro sdílení obsahu mezi Visual Studio 2010 a Visual Studio 2012 Release Candidate (Kompatibilita projektu)](#project-compatibility)
     - [Změny konfigurace v šablonách technologie ASP.NET 4.5 webu](#Configuration_Changes_In_ASPNET45_Website_Templates)
     - [Nativní podpora ve službě IIS 7 pro směrování ASP.NET](#Native_Support_In_IIS7_For_ASPNET_Routine)
-    - [Editor HTML](#_Toc318097397)
+    - [HTML Editor](#_Toc318097397)
 
         - [Inteligentní úlohy](#_Toc318097398)
         - [Podpora v POČKA ARIA](#_Toc318097399)
@@ -71,7 +71,7 @@ ms.locfileid: "59410588"
         - [Generování obslužné rutiny události](#_Toc318097404)
         - [Inteligentní odsazení](#_Toc318097405)
         - [Snižte automatické dokončování příkazů](#_Toc318097406)
-    - [JavaScript – editor](#_Toc318097407)
+    - [JavaScript Editor](#_Toc318097407)
 
         - [Sbalování kódu](#_Toc318097408)
         - [Párování závorek](#_Toc318097409)
@@ -88,9 +88,9 @@ ms.locfileid: "59410588"
         - [Schémata pro konkrétní dodavatele (- moz-, - webkit)](#_Toc318097419)
         - [Podpora přidávání poznámek a odstraňuje se komentování](#_Toc318097420)
         - [Výběr barvy](#_Toc318097421)
-        - [Fragmenty kódu](#_Toc318097422)
+        - [Fragmenty](#_Toc318097422)
         - [Vlastní oblastí](#_Toc318097423)
-    - [Inspektor stránek](#_Toc318097424)
+    - [Nástroj Page Inspector](#_Toc318097424)
     - [Publikování](#_Toc318097425)
 
         - [Profily publikování](#_Toc318097426)
@@ -631,7 +631,7 @@ Například *role* atribut teď má plnou podporou technologie IntelliSense:
 
 POČKA ARIA standard také zavádí atributy, které mají předponu *aria -* , který slouží k přidání sémantiky do dokumentu HTML5. Visual Studio také podporuje tyto *aria -* atributy:
 
-![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image11.png) ![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image12.png)
+![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image11.png)![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image12.png)
 
 <a id="_Toc318097400"></a>
 #### <a name="new-html5-snippets"></a>Nová specifikace HTML5 fragmenty kódu

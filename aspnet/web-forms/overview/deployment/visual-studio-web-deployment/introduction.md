@@ -12,7 +12,7 @@ ms.openlocfilehash: 0edab77cd973af129e54c7867265f86b47c349a6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59410133"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-introduction"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Úvod
@@ -117,7 +117,7 @@ Tento kurz je určen pro následující produkty:
 
 - Systém Windows 8 nebo Windows 7.
 - Visual Studio 2012 nebo Visual Studio 2012 Express pro Web s [nejnovější aktualizaci](https://go.microsoft.com/fwlink/?LinkId=272486).
-- [Azure SDK pro sadu Visual Studio 2012](https://go.microsoft.com/fwlink/?LinkId=254364)
+- [Azure SDK for Visual Studio 2012](https://go.microsoft.com/fwlink/?LinkId=254364)
 
 Můžete postupovat podle kurzu pomocí Visual Studio 2010 SP1 nebo Visual Studio 2013, ale některé snímky obrazovky se bude lišit a některé funkce se bude lišit.
 
@@ -125,7 +125,7 @@ Pokud používáte Visual Studio 2013, nainstalujte [sady Azure SDK for Visual S
 
 Pokud používáte Visual Studio 2010 SP1, nainstalujte následující software:
 
-- [Azure SDK pro sadu Visual Studio 2010](https://go.microsoft.com/fwlink/?LinkID=254269)
+- [Azure SDK for Visual Studio 2010](https://go.microsoft.com/fwlink/?LinkID=254269)
 - [SQL Server Express LocalDB](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=SQLLocalDBOnly_11_0)
 - [SQL Server Data Tools](https://msdn.microsoft.com/library/hh500335.aspx).
 

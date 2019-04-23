@@ -12,7 +12,7 @@ ms.openlocfilehash: b9eef4f60789e4e1f4e28e06b35e0dd76006998a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59412057"
 ---
 # <a name="how-do-i-create-a-master-page-in-visual-studio-2008"></a>[Postup:] Vytvoření stránky předlohy v sadě Visual Studio 2008

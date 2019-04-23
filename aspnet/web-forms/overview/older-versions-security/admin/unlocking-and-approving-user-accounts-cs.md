@@ -12,7 +12,7 @@ ms.openlocfilehash: d4e8591f3090de8f931ffd8eb1dd0a1138674842
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59410042"
 ---
 # <a name="unlocking-and-approving-user-accounts-c"></a>Odemykání a schvalování uživatelských účtů (C#)
@@ -49,7 +49,7 @@ Otevřít `ManageUsers.aspx` stránky a přidat HyperLinkField k `UserAccounts` 
 Po přidání HyperLinkField do prvku GridView, věnujte chvíli zobrazíte `ManageUsers.aspx` stránky prostřednictvím prohlížeče. Obrázek 1 ukazuje, každý řádek prvku GridView teď obsahuje odkaz "Manage". Odkazuje na odkaz "Manage" Bruce `UserInformation.aspx?user=Bruce`, že odkaz "Manage" Dave odkazuje na `UserInformation.aspx?user=Dave`.
 
 
-[![The HyperLinkField přidá](unlocking-and-approving-user-accounts-cs/_static/image2.png)](unlocking-and-approving-user-accounts-cs/_static/image1.png)
+[![Přidá HyperLinkField](unlocking-and-approving-user-accounts-cs/_static/image2.png)](unlocking-and-approving-user-accounts-cs/_static/image1.png)
 
 **Obrázek 1**: HyperLinkField přidá odkaz "Manage" pro každý uživatelský účet ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image3.png))
 
@@ -72,7 +72,7 @@ Teď máme připraven k implementaci uživatelského rozhraní v `UserInformatio
 Po přidání těchto ovládacích prvků, by měl vypadat podobně jako na obrázku 2 snímek obrazovky zobrazení návrhu v sadě Visual Studio.
 
 
-[![Cvytvořit uživatelské rozhraní pro UserInformation.aspx](unlocking-and-approving-user-accounts-cs/_static/image5.png)](unlocking-and-approving-user-accounts-cs/_static/image4.png)
+[![Vytvoření uživatelského rozhraní pro UserInformation.aspx](unlocking-and-approving-user-accounts-cs/_static/image5.png)](unlocking-and-approving-user-accounts-cs/_static/image4.png)
 
 **Obrázek 2**: Vytvoření uživatelského rozhraní pro `UserInformation.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image6.png))
 
@@ -106,7 +106,7 @@ Pomocí těchto obslužných rutin událostí v místě, otevírat stránku a ne
 V dalším kroku odhlášení a zkuste se přihlásit jako uživatel, jehož účet byl právě neschválených. Vzhledem k tomu, že uživatel není schválený, nemůžou přihlásit. Ve výchozím nastavení ovládací prvek Login zobrazí stejnou zprávu, pokud uživatel nemůže přihlásit, bez ohledu na důvod. Ale <a id="Tutorial6"> </a> [ *ověření uživatele přihlašovací údaje proti the členství uživatele Store* ](../membership/validating-user-credentials-against-the-membership-user-store-cs.md) kurzu jsme se podívali na rozšíření ovládacího prvku pro přihlášení k zobrazení více odpovídající zprávu. Jak je vidět na obrázku 4, Chris se zobrazí se zpráva s vysvětlením, že mu nemůžou přihlásit, protože jeho účet ještě není schválený.
 
 
-[![Chris nemůžou přihlásit, protože je jeho účet Neschváleno](unlocking-and-approving-user-accounts-cs/_static/image11.png)](unlocking-and-approving-user-accounts-cs/_static/image10.png)
+[![Chris nelze protože jeho účet pro přihlášení je Neschváleno](unlocking-and-approving-user-accounts-cs/_static/image11.png)](unlocking-and-approving-user-accounts-cs/_static/image10.png)
 
 **Obrázek 4**: Chris nelze protože jeho účet pro přihlášení je Neschváleno ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image12.png))
 
@@ -116,7 +116,7 @@ Otestovat funkci neuzamčení, pokuste se přihlásit jako uživatel s schválen
 Vraťte se `ManageUsers.aspx` stránky a klikněte na odkaz Správa neuzamčení uživatele. Jak je vidět na obrázku 5, měli byste vidět hodnotu `LastLockedOutDateLabel` tlačítka odemčení uživatele by měla být povolená. Klikněte na tlačítko odemčení uživatele k odemknutí uživatelského účtu. Jakmile jste odemkli uživatele, budou moct znovu přihlásit.
 
 
-[![DUložit byl uzamčen mimo systém](unlocking-and-approving-user-accounts-cs/_static/image14.png)](unlocking-and-approving-user-accounts-cs/_static/image13.png)
+[![Dave byl uzamčen přístup do systému](unlocking-and-approving-user-accounts-cs/_static/image14.png)](unlocking-and-approving-user-accounts-cs/_static/image13.png)
 
 **Obrázek 5**: Dave má byl uzamčen navýšení kapacity systému ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image15.png))
 
@@ -166,7 +166,7 @@ K tomu, vytvořit obslužnou rutinu události pro CreateUserWizard [ `SendingMai
 Výsledkem je, že noví uživatelé si neschválených, což znamená, že nemůže přihlásit na web. Kromě toho automaticky odešlou se e-mailu s odkazem na adresu URL ověřování (viz obrázek 6).
 
 
-[![TNový uživatel dostane E-mail s odkazem na adresu URL ověření](unlocking-and-approving-user-accounts-cs/_static/image17.png)](unlocking-and-approving-user-accounts-cs/_static/image16.png)
+[![Nový uživatel dostane E-mail s odkazem na adresu URL pro ověření](unlocking-and-approving-user-accounts-cs/_static/image17.png)](unlocking-and-approving-user-accounts-cs/_static/image16.png)
 
 **Obrázek 6**: Nový uživatel dostane E-mail s odkazem na adresu URL pro ověření ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image18.png))
 
@@ -188,7 +188,7 @@ Hromadné výše uvedený kód ověří, zda `UserId` prostřednictvím zadaný 
 Obrázek 7 znázorňuje `Verification.aspx` stránce, když uživatel prostřednictvím prohlížeče.
 
 
-[![The nový uživatelský účet se teď schvalují](unlocking-and-approving-user-accounts-cs/_static/image20.png)](unlocking-and-approving-user-accounts-cs/_static/image19.png)
+[![Nový uživatelský účet se teď schvalují](unlocking-and-approving-user-accounts-cs/_static/image20.png)](unlocking-and-approving-user-accounts-cs/_static/image19.png)
 
 **Obrázek 7**: Nový uživatelský účet se teď schvalují ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image21.png))
 

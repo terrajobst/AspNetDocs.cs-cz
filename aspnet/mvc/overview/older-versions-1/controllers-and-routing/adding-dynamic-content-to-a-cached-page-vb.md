@@ -12,7 +12,7 @@ ms.openlocfilehash: 0dae280dfa3028df5fda95c4366132c99a0dc3b7
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59409197"
 ---
 # <a name="adding-dynamic-content-to-a-cached-page-vb"></a>Přidání dynamického obsahu do stránky v mezipaměti (VB)
@@ -44,7 +44,7 @@ Představte si například, že chcete náhodně zobrazení položek různé inf
 
 Výhod substituce mezipaměti po volání metody HttpResponse.WriteSubstitution(). Metoda WriteSubstitution() nastaví kód k nahrazení oblast stránky v mezipaměti s dynamickým obsahem. Metoda WriteSubstitution() slouží k zobrazení náhodných příspěvek v zobrazení na výpis 2.
 
-**Výpis 2 – Views\Home\Index.aspx**
+**Listing 2 – Views\Home\Index.aspx**
 
 [!code-aspx[Main](adding-dynamic-content-to-a-cached-page-vb/samples/sample2.aspx)]
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: bf9cf1f5be22a5b97ec964277c11ae21066676f0
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59412408"
 ---
 # <a name="building-real-world-cloud-apps-with-azure"></a>Sestavování skutečných cloudových aplikací s Azure
@@ -100,7 +100,7 @@ Tato elektronická příručka vysvětluje že třináct doporučuje vzory pro c
     - Povolit vysokou dostupnost a zlepšit škálovatelnost volně párování webové a pracovní vrstvu.
     - Ukázka: Fronty úložiště Azure v aplikaci opravit.
 - [Používejte víc cloudových aplikační postupy a doprovodné materiály](more-patterns-and-guidance.md).
-- [Příloha: Ukázková aplikace Fix It](the-fix-it-sample-application.md)
+- [Dodatek: Oprava ukázkové aplikace](the-fix-it-sample-application.md)
 
     - Známé problémy
     - Doporučené postupy

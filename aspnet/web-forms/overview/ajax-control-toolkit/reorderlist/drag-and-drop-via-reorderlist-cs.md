@@ -12,7 +12,7 @@ ms.openlocfilehash: 988aa9252cfd93067888734006e6003347f1fb5e
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59414748"
 ---
 # <a name="drag-and-drop-via-reorderlist-c"></a>Přetažení ovládacím prvkem ReorderList (C#)
@@ -44,7 +44,7 @@ V této databázi, vytvořte novou tabulku s názvem `AJAX` s těmito čtyřmi s
 - `position` (int, NULL).
 
 
-[![The rozložení tabulky AJAX](drag-and-drop-via-reorderlist-cs/_static/image2.png)](drag-and-drop-via-reorderlist-cs/_static/image1.png)
+[![Rozložení tabulky AJAX](drag-and-drop-via-reorderlist-cs/_static/image2.png)](drag-and-drop-via-reorderlist-cs/_static/image1.png)
 
 Rozložení tabulky AJAX ([kliknutím ji zobrazíte obrázek v plné velikosti](drag-and-drop-via-reorderlist-cs/_static/image3.png))
 
@@ -52,7 +52,7 @@ Rozložení tabulky AJAX ([kliknutím ji zobrazíte obrázek v plné velikosti](
 V dalším kroku vyplnění tabulky pomocí několika hodnot. Všimněte si, že `position` sloupec obsahuje pořadí řazení elementů.
 
 
-[![The počáteční data v tabulce AJAX](drag-and-drop-via-reorderlist-cs/_static/image5.png)](drag-and-drop-via-reorderlist-cs/_static/image4.png)
+[![Počáteční data v tabulce AJAX](drag-and-drop-via-reorderlist-cs/_static/image5.png)](drag-and-drop-via-reorderlist-cs/_static/image4.png)
 
 Počáteční data v tabulce AJAX ([kliknutím ji zobrazíte obrázek v plné velikosti](drag-and-drop-via-reorderlist-cs/_static/image6.png))
 
@@ -83,7 +83,7 @@ A konečně `ScriptManager` inicializuje ovládací prvek ASP.NET AJAX stránky:
 Spuštění tohoto příkladu v prohlížeči a trochu Změna uspořádání položek seznamu. Potom načtěte tuto stránku a podívejte se na databázi. Upravený pozice pravděpodobně nebyla zachována a odrážejí hodnoty v `position` sloupec v databázi a že všechno bez jakékoli kódu pouze s použitím značek.
 
 
-[![Tmá data v databázi se změní podle nového pořadí položek seznamu](drag-and-drop-via-reorderlist-cs/_static/image8.png)](drag-and-drop-via-reorderlist-cs/_static/image7.png)
+[![Data v databázi se změní podle nového pořadí položek seznamu](drag-and-drop-via-reorderlist-cs/_static/image8.png)](drag-and-drop-via-reorderlist-cs/_static/image7.png)
 
 Položku dat v databázi se změní podle nového seznamu pořadí ([kliknutím ji zobrazíte obrázek v plné velikosti](drag-and-drop-via-reorderlist-cs/_static/image9.png))
 

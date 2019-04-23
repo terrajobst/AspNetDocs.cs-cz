@@ -12,7 +12,7 @@ ms.openlocfilehash: 8536c771e5e343bd545b6824bec6f8b85489a7d4
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59416529"
 ---
 # <a name="deployment"></a>Nasazení
@@ -28,16 +28,16 @@ ms.locfileid: "59416529"
     - [Vlastnosti projektu](visual-studio-web-deployment/project-properties.md)
     - [Nasazení do testovacího prostředí](visual-studio-web-deployment/deploying-to-iis.md)
     - [Nastavení oprávnění složky](visual-studio-web-deployment/setting-folder-permissions.md)
-    - [Nasazení do produkčního prostředí](visual-studio-web-deployment/deploying-to-production.md)
+    - [Nasazení do provozního prostředí](visual-studio-web-deployment/deploying-to-production.md)
     - [Nasazení aktualizace kódu](visual-studio-web-deployment/deploying-a-code-update.md)
     - [Nasazení aktualizace databáze](visual-studio-web-deployment/deploying-a-database-update.md)
     - [Nasazení příkazového řádku](visual-studio-web-deployment/command-line-deployment.md)
     - [Nasazení dalších souborů](visual-studio-web-deployment/deploying-extra-files.md)
-    - [Poradce při potížích](visual-studio-web-deployment/troubleshooting.md)
+    - [Odstraňování potíží](visual-studio-web-deployment/troubleshooting.md)
 - [ASP.NET 4 – úvod do nasazení v podniku](deploying-web-applications-in-enterprise-scenarios/index.md)
 
     - [Scénáře nasazení webových aplikací v podniku pomocí sady Visual Studio 2010](deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md)
-    - [Nasazení podnikového webu: Přehledný scénář](deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)
+    - [Nasazení podnikového webu: Přehled scénářů](deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)
     - [Správa životního cyklu aplikací: Od vývoje k ostrému provozu](deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production.md)
 - [ASP.NET 4 – nasazení v podniku (1. část)](web-deployment-in-the-enterprise/index.md)
 
@@ -49,7 +49,7 @@ ms.locfileid: "59416529"
     - [Sestavení a balení projektů webových aplikací](web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md)
     - [Konfigurace parametrů nasazení webového balíčku](web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment.md)
     - [Nasazení webových balíčků](web-deployment-in-the-enterprise/deploying-web-packages.md)
-    - [Nasazení databázových projektů](web-deployment-in-the-enterprise/deploying-database-projects.md)
+    - [Nasazení projektu databáze](web-deployment-in-the-enterprise/deploying-database-projects.md)
     - [Vytvoření a spuštění souboru příkazů k nasazení](web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file.md)
     - [Ruční instalace webových balíčků](web-deployment-in-the-enterprise/manually-installing-web-packages.md)
 - [ASP.NET 4 – nasazení v podniku (2. část) – konfigurace serverů](configuring-server-environments-for-web-deployment/index.md)
@@ -69,7 +69,7 @@ ms.locfileid: "59416529"
 
     - [Konfigurace sady Team Foundation Server pro nasazení webu](configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md)
     - [Vytváření týmových projektů v TFS](configuring-team-foundation-server-for-web-deployment/creating-a-team-project-in-tfs.md)
-    - [Přidání obsahu do správy zdrojového kódu](configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control.md)
+    - [Přidání obsahu do Správy zdrojů](configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control.md)
     - [Konfigurace serveru TFS Build pro nasazení webu](configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment.md)
     - [Vytvoření definice nasazení, která podporuje nasazení](configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment.md)
     - [Nasazení konkrétního sestavení](configuring-team-foundation-server-for-web-deployment/deploying-a-specific-build.md)

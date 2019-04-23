@@ -12,7 +12,7 @@ ms.openlocfilehash: f3f8c649932682fd96e0640ddf4595c19c755909
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408183"
 ---
 # <a name="membership"></a>Členství
@@ -74,7 +74,7 @@ Webové rozhraní můžete spustit kliknutím na tlačítko Konfigurace technolo
 
 Tím se spustí nástroj Správa webu technologie ASP.NET je uvedeno níže. Správa webu technologie ASP.NET je rozhraní čtyři karty, která umožňuje jednoduše spravovat nastavení aplikace. K dispozici jsou následující karty:
 
-- **Domů**
+- **Domovská stránka**
 - **Zabezpečení** konfigurovat uživatele, role a přístup.
 - **Aplikace** nakonfigurovat nastavení aplikace.
 - **Zprostředkovatel** konfigurace a testování vaší aplikace zprostředkovatele členství.

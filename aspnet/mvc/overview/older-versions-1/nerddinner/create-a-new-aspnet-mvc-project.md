@@ -12,7 +12,7 @@ ms.openlocfilehash: c85db4289698988ead44afd452da17054bab9f07
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59417205"
 ---
 # <a name="create-a-new-aspnet-mvc-project"></a>Vytvoření nového projektu ASP.NET MVC
@@ -67,7 +67,7 @@ Projekty ASP.NET MVC ve výchozím nastavení mají šest adresářů nejvyšš�
 | **/ Zobrazení** | Místo, kam dáte soubory šablon uživatelského rozhraní, které jsou zodpovědné za vykreslování výstup |
 | **/ Skripty** | Místo, kam dáte soubory knihoven jazyka JavaScript a skripty (.js) |
 | **/ Obsahu** | Místo, kam dáte šablon stylů CSS a obrázkové soubory a jiný obsah než dynamické/JavaScript |
-| **/ Aplikace\_dat** | Tam, kde se ukládají datové soubory byste měli pro čtení a zápisu. |
+| **/App\_Data** | Tam, kde se ukládají datové soubory byste měli pro čtení a zápisu. |
 
 ASP.NET MVC nevyžaduje, aby tuto strukturu. Ve skutečnosti vývojáře, kteří pracují na velkých aplikací se obvykle oddílu aplikace nahoru ve více projektech, aby lépe zvládnutelné (například: tříd datových modelů často přejít v projektu knihovny samostatné třídy z webové aplikace). Výchozí strukturu projektu, ale poskytuje dobré výchozí adresář konvenci, můžeme použít naše aplikace priority udržovat čisté.
 

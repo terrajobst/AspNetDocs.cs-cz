@@ -12,7 +12,7 @@ ms.openlocfilehash: dcc2e703829cfa0b77575870feff451fd0738f56
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59416490"
 ---
 # <a name="intro-to-aspnet-mvc"></a>Úvod do ASP.NET MVC
@@ -32,11 +32,11 @@ Vytvoříme naši první webové aplikace ASP.NET MVC pomocí [Visual Web Develo
 
 Tady jsou dva snímky obrazovky aplikace, kterou vytvoříte. Budete mít jednoduchou tabulku s filmů s různé sloupce.
 
-[![Movie seznam – Windows Internet Explorer (12)](getting-started-with-mvc-part1/_static/image2.png)](getting-started-with-mvc-part1/_static/image1.png)
+[![Seznam film – Windows Internet Explorer (12)](getting-started-with-mvc-part1/_static/image2.png)](getting-started-with-mvc-part1/_static/image1.png)
 
 A proto jsme do seznamu Přidat videa budete mít formulář vytvořit.
 
-[![CVideo - vytvořit aplikaci Windows Internet Explorer (2)](getting-started-with-mvc-part1/_static/image4.png)](getting-started-with-mvc-part1/_static/image3.png)
+[![Vytvořit aplikaci Windows Internet Explorer (2) film-](getting-started-with-mvc-part1/_static/image4.png)](getting-started-with-mvc-part1/_static/image3.png)
 
 ## <a name="skills-youll-learn"></a>Dovednosti, které se dozvíte
 
@@ -55,17 +55,17 @@ Začněte tím, že spuštění Visual Web Developer 2010 Express (nazvu to "VWD
 
 Visual Web Developer je integrované vývojové prostředí, nebo integrované prostředí pro vývojáře. Stejným způsobem, jako používáte k tvorbě dokumenty Microsoft Wordu, budete používat integrované vývojové prostředí pro vytváření aplikací. Zde je panel nástrojů podél horního zobrazuje různé možnosti, které jsou k dispozici pro vás, stejně jako nabídka může také použitých pro výběr souboru | Nový projekt.
 
-[![MMicrosoft Visual Web Developer 2010 Express](getting-started-with-mvc-part1/_static/image6.png)](getting-started-with-mvc-part1/_static/image5.png)
+[![Microsoft Visual Web Developer 2010 Express](getting-started-with-mvc-part1/_static/image6.png)](getting-started-with-mvc-part1/_static/image5.png)
 
 ## <a name="creating-your-first-application"></a>Vytvoření vaší první aplikace
 
 Můžete vytvářet aplikace pomocí jazyka Visual Basic nebo Visual C#. Teď vyberte Visual C# na levé straně pak vyberte "Webové aplikace ASP.NET MVC 2." Pojmenujte svůj projekt "Filmy" a klikněte na tlačítko OK.
 
-[![NNový projekt](getting-started-with-mvc-part1/_static/image8.png)](getting-started-with-mvc-part1/_static/image7.png)
+[![Nový projekt](getting-started-with-mvc-part1/_static/image8.png)](getting-started-with-mvc-part1/_static/image7.png)
 
 Na pravé straně se Průzkumník řešení zobrazující všechny soubory a složky ve vaší aplikaci. Kde úpravy kódu a tráví většinu svého času je okno velké objemy uprostřed. Visual Studio použít výchozí šablonu projektu ASP.NET MVC, které jste právě vytvořili, takže Teď máte funkční aplikaci bez teď zrovna nic nedělá! Toto je jednoduchý "Hello World projekt a je vhodné oddělení na zahájení pro naši aplikaci.
 
-[![MMicrosoft Visual Web Developer 2010 Express](getting-started-with-mvc-part1/_static/image10.png)](getting-started-with-mvc-part1/_static/image9.png)
+[![Microsoft Visual Web Developer 2010 Express](getting-started-with-mvc-part1/_static/image10.png)](getting-started-with-mvc-part1/_static/image9.png)
 
 Vyberte na panelu nástrojů tlačítko "Přehrát akci".
 
@@ -77,7 +77,7 @@ Je zelená šipka směřující doprava, který bude zkompilujete program a spus
 
 To způsobí, že Visual Web Developer ke spuštění webový server vývoje a spuštění webové aplikace (neexistují žádné konfigurace nebo Ruční postup vyžadovaný pro tuto možnost povolte,). Bude potom spusťte prohlížeč a nakonfigurovat, aby procházet Domovská stránka aplikace. Všimněte si, že níže, že na panelu Adresa prohlížeče říká "localhost" a vypadat example.com. Důvodem je, localhost vždy odkazuje na vaše vlastní místní počítače – v tomto případě je spuštěna aplikace, kterou jsme právě vytvořili.
 
-[![Hpár stránky](getting-started-with-mvc-part1/_static/image13.png)](getting-started-with-mvc-part1/_static/image12.png)
+[![Domovská stránka](getting-started-with-mvc-part1/_static/image13.png)](getting-started-with-mvc-part1/_static/image12.png)
 
 Ihned poskytuje tuto výchozí šablonu můžete dvě stránky přejděte a základní přihlašovací stránku. Umožňuje změnit, jak tato aplikace funguje a ještě něco architekturu ASP.NET MVC hlouběji v procesu. Zavřete okno prohlížeče a umožňuje změnit nějaký kód.
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: fb185c4147d516ab28d632b3e874b6f1d46f6576
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408417"
 ---
 # <a name="testing-the-strength-of-a-password-vb"></a>Testování síly hesla (VB)
@@ -44,7 +44,7 @@ Hesla jsou skoro kdekoli, vyžaduje, aby opožděné uživatelé mívají sklony
 Spuštění stránky a okamžitě zadejte: Poté, co jste zadali, malá písmena, velká písmena, číslice a symboly, heslo se bude považovat za jako nedělitelné.
 
 
-[![NZobrazit heslo je dobré (úplně)](testing-the-strength-of-a-password-vb/_static/image2.png)](testing-the-strength-of-a-password-vb/_static/image1.png)
+[![Nyní je (úplně) dobré heslo](testing-the-strength-of-a-password-vb/_static/image2.png)](testing-the-strength-of-a-password-vb/_static/image1.png)
 
 Nyní je heslo (úplně) dobré ([kliknutím ji zobrazíte obrázek v plné velikosti](testing-the-strength-of-a-password-vb/_static/image3.png))
 

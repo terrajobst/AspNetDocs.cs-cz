@@ -12,7 +12,7 @@ ms.openlocfilehash: 0991ce5c866aa9e31ef23812e953d9ee10dda3d1
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59409717"
 ---
 # <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu
@@ -411,13 +411,13 @@ Jak je vidět, kód zakazuje stav zobrazení ovládacího prvku PlaceHolder1. Po
 
 Efekt z těchto nastavení je, že při prvním načtení stránky, se zobrazí následující výstup v prohlížeči:
 
-Zakázáno `: [DynamicValue]`
+Zakázané `: [DynamicValue]`
 
 Povoleno:`[DynamicValue]`
 
 Po zpětné volání, ale se zobrazí následující výstup:
 
-Zakázáno `: [DeclaredValue]`
+Zakázané `: [DeclaredValue]`
 
 Povoleno:`[DynamicValue]`
 
@@ -982,7 +982,7 @@ Potom můžete definovat třídu CSS, která se vztahuje pouze na *skryté* prvk
 Ve výchozím nastavení jsou následující ovládací prvky serveru v prostředí ASP.NET, které nepodporují šablony automaticky zabaleny ve vnější tabulky, která se používá k aplikování vložené styly:
 
 - *FormView*
-- *přihlášení*
+- *Přihlášení*
 - *PasswordRecovery*
 - *ChangePassword*
 - *Průvodce*

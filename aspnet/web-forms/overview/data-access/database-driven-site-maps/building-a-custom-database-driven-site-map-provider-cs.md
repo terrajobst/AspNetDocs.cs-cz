@@ -12,7 +12,7 @@ ms.openlocfilehash: 7348f9efd2fe7848c2d47e1cb9573efb7defd927
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59418999"
 ---
 # <a name="building-a-custom-database-driven-site-map-provider-c"></a>Vytvoření vlastního databázově řízeného zprostředkovatele mapy webu (C#)
@@ -31,7 +31,7 @@ ASP.NET 2.0 s funkce mapy webu umožňuje vývojářům definovat mapy webu webo
 Zprostředkovatele mapy webu založený na formátu XML výchozí dobře fungují v případě strukturu s mapy webu je poměrně statická, například pro tyto kurzy. V mnoha případech ale více dynamická Mapa webu je potřeba. Vezměte v úvahu mapy webu je znázorněno na obrázku 1, kde každé kategorie a produkt zobrazí jako oddíly ve struktuře s webu. Pomocí této mapy webu navštívit webovou stránku odpovídající kořenový uzel může být seznam všech kategorií, že určité kategorie s webové stránce by zobrazila seznam této kategorie s produkty a zobrazení webové stránky s konkrétním produktu by zobrazil produktu s podrobnosti.
 
 
-[![TKategorie he a strukturu produktů mapy webu s struktura](building-a-custom-database-driven-site-map-provider-cs/_static/image1.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image1.png)
+[![Kategorie a produkty strukturu mapu s struktury webu](building-a-custom-database-driven-site-map-provider-cs/_static/image1.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image1.png)
 
 **Obrázek 1**: Kategorie a strukturu produktů mapy webu s strukturu ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image2.png))
 
@@ -84,12 +84,12 @@ Chcete-li spustit potřebujeme vytvořit `Default.aspx`, `ProductsByCategory.asp
 Otevřít `Default.aspx` stránku `SiteMapProvider` složky a GridView přetáhněte z panelu nástrojů do Návrháře nastavení jeho `ID` k `Categories`. Z inteligentních značek GridView s vázat na nového prvku ObjectDataSource s názvem `CategoriesDataSource` a nakonfigurujte ho tak, aby jej obnoví svoje data pomocí `CategoriesBLL` třída s `GetCategories` metody. Od tohoto ovládacího prvku GridView stačí zobrazí kategorie a neposkytuje funkce pro úpravu dat, nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
 
 
-[![Configurovat ObjectDataSource vrátit kategorií pomocí metody GetCategories](building-a-custom-database-driven-site-map-provider-cs/_static/image4.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image3.png)
+[![Konfigurace ObjectDataSource vrátit kategorií pomocí GetCategories – metoda](building-a-custom-database-driven-site-map-provider-cs/_static/image4.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image3.png)
 
 **Obrázek 4**: Konfigurace ObjectDataSource vrátit pomocí kategorií `GetCategories` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image4.png))
 
 
-[![Set rozevírací seznamy v UPDATE, INSERT a DELETE karty na (žádný)](building-a-custom-database-driven-site-map-provider-cs/_static/image5.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image5.png)
+[![Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný)](building-a-custom-database-driven-site-map-provider-cs/_static/image5.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image5.png)
 
 **Obrázek 5**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit záložky (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image6.png))
 
@@ -112,7 +112,7 @@ Po vytvoření ObjectDataSource a přizpůsobení polí s ovládacího prvku Gri
 Obrázek 7 znázorňuje `Default.aspx` při prohlížení prostřednictvím prohlížeče. Kliknutím na kategorii s zobrazit produkty odkaz vás nasměruje na `ProductsByCategory.aspx?CategoryID=categoryID`, který vytvoříme v kroku 3.
 
 
-[![EACH kategorie je uvedený spolu s odkazem produkty zobrazení](building-a-custom-database-driven-site-map-provider-cs/_static/image7.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image7.png)
+[![Každá kategorie je uvedený spolu s odkazem produkty zobrazení](building-a-custom-database-driven-site-map-provider-cs/_static/image7.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image7.png)
 
 **Obrázek 7**: Každá kategorie je uvedený spolu s odkazem Zobrazit produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image8.png))
 
@@ -122,7 +122,7 @@ Obrázek 7 znázorňuje `Default.aspx` při prohlížení prostřednictvím proh
 Otevřít `ProductsByCategory.aspx` stránce a přidejte prvku GridView, jeho pojmenování `ProductsByCategory`. Z inteligentních značek, svázání prvku GridView nového prvku ObjectDataSource s názvem `ProductsByCategoryDataSource`. Konfigurace ObjectDataSource používat `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metoda a nastavte rozevíracího seznamu jsou uvedeny na (žádný) na kartách UPDATE, INSERT a DELETE.
 
 
-[![Use třída ProductsBLL s GetProductsByCategoryID(categoryID) metoda](building-a-custom-database-driven-site-map-provider-cs/_static/image8.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image9.png)
+[![Pomocí této metody s GetProductsByCategoryID(categoryID) ProductsBLL třídy](building-a-custom-database-driven-site-map-provider-cs/_static/image8.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image9.png)
 
 **Obrázek 8**: Použití `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image10.png))
 
@@ -130,7 +130,7 @@ Otevřít `ProductsByCategory.aspx` stránce a přidejte prvku GridView, jeho po
 V posledním kroku v průvodci Konfigurace zdroje dat zobrazí výzvu k zadání parametrů zdroj pro *categoryID*. Protože tyto informace se předává pole řetězce dotazu `CategoryID`vyberte řetězce dotazu z rozevíracího seznamu a zadejte ID kategorie v textovém poli vlastnost QueryStringField, jak je znázorněno na obrázku 9. Kliknutím na Dokončit dokončíte průvodce.
 
 
-[![Use CategoryID pole řetězce dotazu pro ID kategorie parametr](building-a-custom-database-driven-site-map-provider-cs/_static/image9.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image11.png)
+[![Použijte pole řetězce dotazu ID kategorie pro ID kategorie parametr](building-a-custom-database-driven-site-map-provider-cs/_static/image9.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image11.png)
 
 **Obrázek 9**: Použití `CategoryID` pro pole řetězce dotazu *categoryID* parametr ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image12.png))
 
@@ -153,7 +153,7 @@ Po provedení tyto úpravy, ovládacími prvky GridView a prvku ObjectDataSource
 Vraťte se do zobrazení `Default.aspx` prostřednictvím prohlížeče a klikněte na Zobrazit produkty odkaz nápoje. Tím přejdete na `ProductsByCategory.aspx?CategoryID=1`, zobrazení názvy, ceny a dodavatelů, produkty, které patří do kategorie Nápoje databáze Northwind (viz obrázek 11). Nebojte se dál vylepšit tuto stránku a obsahovat odkaz pro návrat na stránku výpis kategorie uživatelů (`Default.aspx`) a ovládacího prvku DetailsView nebo FormView zobrazující vybranou kategorii s název a popis.
 
 
-[![Tjsou zobrazeny názvy nápoje he, ceny a Dodavatelé](building-a-custom-database-driven-site-map-provider-cs/_static/image11.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image13.png)
+[![Jsou zobrazeny názvy nápoje, ceny a dodavatelů](building-a-custom-database-driven-site-map-provider-cs/_static/image11.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image13.png)
 
 **Obrázek 11**: Jsou zobrazeny názvy nápoje, ceny a dodavatelů ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image14.png))
 
@@ -163,7 +163,7 @@ Vraťte se do zobrazení `Default.aspx` prostřednictvím prohlížeče a klikn�
 Na poslední stránce `ProductDetails.aspx`, se zobrazí podrobnosti vybrané produkty. Otevřít `ProductDetails.aspx` a DetailsView přetáhněte z panelu nástrojů do návrháře. Nastavit prvek DetailsView s `ID` vlastnost `ProductInfo` a vymažte její `Height` a `Width` hodnot vlastností. Z inteligentních značek, svázat s ovládacím prvku DetailsView nového prvku ObjectDataSource s názvem `ProductDataSource`, konfigurace ObjectDataSource přebírat jeho data ze `ProductsBLL` třída s `GetProductByProductID(productID)` metody. Stejně jako u předchozí webových stránek vytvořených v krocích 2 a 3, nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
 
 
-[![Configurovat ObjectDataSource GetProductByProductID(productID) metody](building-a-custom-database-driven-site-map-provider-cs/_static/image12.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image15.png)
+[![Konfigurace ObjectDataSource GetProductByProductID(productID) metody](building-a-custom-database-driven-site-map-provider-cs/_static/image12.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image15.png)
 
 **Obrázek 12**: Konfigurace ObjectDataSource k použití `GetProductByProductID(productID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image16.png))
 
@@ -171,7 +171,7 @@ Na poslední stránce `ProductDetails.aspx`, se zobrazí podrobnosti vybrané pr
 Poslední krok v průvodci Konfigurace zdroje dat zobrazí výzvu k zadání zdroj *productID* parametru. Protože tato data prochází pole řetězce dotazu `ProductID`, nastavte rozevírací seznam na řetězce dotazu a vlastnost QueryStringField textového pole na ProductID. Nakonec kliknutím na tlačítko Dokončit dokončete průvodce.
 
 
-[![Configurovat productID parametr načítat jeho hodnotu z pole řetězce dotazu ProductID](building-a-custom-database-driven-site-map-provider-cs/_static/image13.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image17.png)
+[![Konfigurace productID parametr načítat jeho hodnotu z pole řetězce dotazu ProductID](building-a-custom-database-driven-site-map-provider-cs/_static/image13.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image17.png)
 
 **Obrázek 13**: Konfigurace *productID* o přijetí změn svou hodnotu z parametru `ProductID` pole řetězce dotazu ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image18.png))
 
@@ -184,7 +184,7 @@ Po dokončení Průvodce nakonfigurovat zdroj dat, vytvoří Visual Studio odpov
 Chcete-li otestovat tuto stránku, vraťte se na `Default.aspx` a klikněte na Zobrazit produkty pro kategorie Nápoje. V seznamu nápoje produktů, klikněte na odkaz zobrazit podrobnosti pro Chai čaje. Tím přejdete na `ProductDetails.aspx?ProductID=1`, zobrazí s Chai čaje podrobnosti (viz obrázek 14).
 
 
-[![CZobrazí se hai čaje s dodavatel, kategorie, ceny a další informace](building-a-custom-database-driven-site-map-provider-cs/_static/image14.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image19.png)
+[![Zobrazí se Chai čaje s dodavatel, kategorie, ceny a dalších informací](building-a-custom-database-driven-site-map-provider-cs/_static/image14.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image19.png)
 
 **Obrázek 14**: Chai čaje s dodavatel, kategorie, ceny a další informace se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image20.png))
 
@@ -196,7 +196,7 @@ Mapa webu reprezentované v paměti webového serveru s jako kolekci `SiteMapNod
 Obrázek 15 znázorňuje strukturu obecný web mapování z obrázku 1, ale s šrafují podrobně jemnější podrobnosti implementace.
 
 
-[![EACH SiteMapNode má vlastnosti jako název, Url, klíč a tak dále](building-a-custom-database-driven-site-map-provider-cs/_static/image16.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image15.gif)
+[![Každý SiteMapNode má vlastnosti jako název, adresu Url, klíč a tak dále](building-a-custom-database-driven-site-map-provider-cs/_static/image16.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image15.gif)
 
 **Obrázek 15**: Každý `SiteMapNode` má vlastnosti jako `Title`, `Url`, `Key`, a tak dále ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image17.gif))
 
@@ -280,7 +280,7 @@ Po aktualizaci `Web.config`, věnujte chvíli zobrazení všech stránek z kurz�
 Vlastní web zprostředkovatele mapy vytvořené a registrované v `Web.config`, můžeme znovu připravení přidat ovládací prvky pro navigaci na `Default.aspx`, `ProductsByCategory.aspx`, a `ProductDetails.aspx` stránky v `SiteMapProvider` složky. Začněte otevřením `Default.aspx` stránku a přetáhněte ji `SiteMapPath` z panelu nástrojů do návrháře. Ovládací prvky SiteMapPath ovládací prvek se nachází v části navigace na panelu nástrojů.
 
 
-[![Add SiteMapPath na Default.aspx](building-a-custom-database-driven-site-map-provider-cs/_static/image19.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image18.gif)
+[![Přidat ovládací prvky SiteMapPath Default.aspx](building-a-custom-database-driven-site-map-provider-cs/_static/image19.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image18.gif)
 
 **Obrázek 16**: Přidat SiteMapPath k `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image20.gif))
 
@@ -290,7 +290,7 @@ Ovládací prvky SiteMapPath ovládací prvek zobrazuje navigace s popisem cesty
 Za chvíli zobrazení této stránky prostřednictvím prohlížeče. Ovládací prvky SiteMapPath přidá obrázek 16 používá zprostředkovatele mapy webu výchozí načítání jeho dat ze `Web.sitemap`. Proto tento navigační prvek určuje ukazuje Domů &gt; přizpůsobení mapy webu, stejně jako s popisem cesty v pravém horním rohu.
 
 
-[![Tnavigace s popisem cesty používá výchozí zprostředkovatele mapy webu](building-a-custom-database-driven-site-map-provider-cs/_static/image22.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image21.gif)
+[![Tento navigační prvek určuje používá výchozí zprostředkovatele mapy webu](building-a-custom-database-driven-site-map-provider-cs/_static/image22.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image21.gif)
 
 **Obrázek 17**: Tento navigační prvek určuje používá výchozí zprostředkovatele mapy webu ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image23.gif))
 
@@ -298,7 +298,7 @@ Za chvíli zobrazení této stránky prostřednictvím prohlížeče. Ovládací
 Pokud chcete, aby SiteMapPath přidá obrázek 16 použijte zprostředkovatele mapy vlastního webu, který jsme vytvořili v kroku 6, nastavte jeho [ `SiteMapProvider` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sitemappath.sitemapprovider.aspx) Northwind, název jsme přiřazena k `NorthwindSiteMapProvider` v `Web.config`. Bohužel návrháře i nadále používat výchozí zprostředkovatele mapy webu, ale pokud najdete na stránce prostřednictvím prohlížeče po provedení této změny vlastnosti uvidíte, že tento navigační prvek určuje teď používá vlastního zprostředkovatele mapy webu.
 
 
-[![Tnavigace s popisem cesty nyní používá NorthwindSiteMapProvider zprostředkovatele mapy webu vlastní](building-a-custom-database-driven-site-map-provider-cs/_static/image25.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image24.gif)
+[![Tento navigační prvek určuje teď používá NorthwindSiteMapProvider zprostředkovatele mapy vlastní web](building-a-custom-database-driven-site-map-provider-cs/_static/image25.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image24.gif)
 
 **Obrázek 18**: Tento navigační prvek určuje teď používá vlastní zprostředkovatele mapy webu `NorthwindSiteMapProvider` ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image26.gif))
 
@@ -306,7 +306,7 @@ Pokud chcete, aby SiteMapPath přidá obrázek 16 použijte zprostředkovatele m
 Ovládací prvky SiteMapPath ovládací prvek zobrazuje více funkcí uživatelského rozhraní v `ProductsByCategory.aspx` a `ProductDetails.aspx` stránky. Přidání ovládací prvky SiteMapPath na tyto stránky nastavení `SiteMapProvider` vlastnost v obou, a Northwind. Z `Default.aspx` klikněte na odkaz zobrazit produkty nápoje a potom na odkaz zobrazit podrobnosti pro Chai čaje. Jak ukazuje obrázek 19, zahrnuje tento navigační prvek určuje aktuální části mapy webu (Chai čaje) a jeho nadřazenými prvky: A všechny kategorie Nápoje.
 
 
-[![Tnavigace s popisem cesty nyní používá NorthwindSiteMapProvider zprostředkovatele mapy webu vlastní](building-a-custom-database-driven-site-map-provider-cs/_static/image27.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image21.png)
+[![Tento navigační prvek určuje teď používá NorthwindSiteMapProvider zprostředkovatele mapy vlastní web](building-a-custom-database-driven-site-map-provider-cs/_static/image27.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image21.png)
 
 **Obrázek 19**: Tento navigační prvek určuje teď používá vlastní zprostředkovatele mapy webu `NorthwindSiteMapProvider` ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image22.png))
 
@@ -314,7 +314,7 @@ Ovládací prvky SiteMapPath ovládací prvek zobrazuje více funkcí uživatels
 Další prvky uživatelského rozhraní navigace je možné kromě SiteMapPath, jako je například ovládací prvky nabídky a prvku TreeView. `Default.aspx`, `ProductsByCategory.aspx`, A `ProductDetails.aspx` stránky soubor ke stažení pro účely tohoto kurzu, například všechny obsahují ovládací prvky nabídky (viz obrázek 20). Naleznete v tématu [zkoumání ASP.NET 2.0 s funkcemi navigace na webu](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx) a [ovládací prvky navigace pomocí lokality](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/navigation/sitenavcontrols.aspx) část [ASP.NET 2.0 šablon rychlý Start](https://quickstarts.asp.net/QuickStartv20/aspnet/) podrobnější rozbor ovládací prvky pro navigaci a systému lokality mapy v technologii ASP.NET 2.0.
 
 
-[![TMenu – ovládací prvek uvádí všechny kategorie a produkty](building-a-custom-database-driven-site-map-provider-cs/_static/image29.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image28.gif)
+[![Menu – ovládací prvek obsahuje seznam všech kategorií a produkty](building-a-custom-database-driven-site-map-provider-cs/_static/image29.gif)](building-a-custom-database-driven-site-map-provider-cs/_static/image28.gif)
 
 **Obrázek 20**: Nabídce ovládací prvek obsahuje seznam každý kategorií a produktů ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-cs/_static/image30.gif))
 

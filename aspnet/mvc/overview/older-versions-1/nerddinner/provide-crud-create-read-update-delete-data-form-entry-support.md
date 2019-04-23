@@ -12,7 +12,7 @@ ms.openlocfilehash: 242665b3ba2e2ad2157abbe2c44ae207f15e72ce
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59410861"
 ---
 # <a name="provide-crud-create-read-update-delete-data-form-entry-support"></a>Zajištění akcí CRUD (Create, Read, Update, Delete) podporujících zápis dat do formuláře
@@ -49,7 +49,7 @@ Budeme podporovat HTTP GET a POST protokolu HTTP příkaz interakce se tyto nov�
 | --- | --- | --- |
 | */Dinners/edit / [id]* | GET | Zobrazí Upravitelný formulář HTML naplněný daty večeři. |
 | POST | Uložte změny formuláře pro konkrétní web Dinner do databáze. |
-| */ Večeří/vytvoření* | GET | Zobrazte prázdný formulář HTML, který umožňuje uživatelům definovat nové večeří. |
+| */Dinners/Create* | GET | Zobrazte prázdný formulář HTML, který umožňuje uživatelům definovat nové večeří. |
 | POST | Vytvořit nový web Dinner a uložte jej v databázi. |
 | */Dinners/delete / [id]* | GET | Odstraňování potvrzovací obrazovce a zobrazit. |
 | POST | Odstraní zadaný dinner z databáze. |

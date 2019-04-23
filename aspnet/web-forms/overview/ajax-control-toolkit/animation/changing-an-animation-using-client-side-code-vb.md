@@ -12,7 +12,7 @@ ms.openlocfilehash: 4254b7e1f2086a9cc5fbc1e8c2a4f7e2e3d2925e
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59416568"
 ---
 # <a name="changing-an-animation-using-client-side-code-vb"></a>Změna animace klientským kódem (VB)
@@ -71,7 +71,7 @@ Následující kód jazyka JavaScript přiřadí JSON descripting k `OnClick` an
 [!code-html[Main](changing-an-animation-using-client-side-code-vb/samples/sample7.html)]
 
 
-[![The animace se spustí okamžitě, bez kliknutí myší (a s velmi málo značek)](changing-an-animation-using-client-side-code-vb/_static/image2.png)](changing-an-animation-using-client-side-code-vb/_static/image1.png)
+[![Animace se spustí okamžitě, bez kliknutí myší (a s velmi málo značky)](changing-an-animation-using-client-side-code-vb/_static/image2.png)](changing-an-animation-using-client-side-code-vb/_static/image1.png)
 
 Animace se spustí okamžitě, bez kliknutí myší (a s velmi málo značky) ([kliknutím ji zobrazíte obrázek v plné velikosti](changing-an-animation-using-client-side-code-vb/_static/image3.png))
 

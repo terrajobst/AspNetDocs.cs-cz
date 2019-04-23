@@ -12,7 +12,7 @@ ms.openlocfilehash: 3833e3f3c6c49ff2b317ad04aff33c9119cb1f41
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59420208"
 ---
 # <a name="whats-new-in-aspnet-and-web-development-in-visual-studio-2012"></a>Novinky ASP.NET a webového vývoje v sadě Visual Studio 2012
@@ -63,7 +63,7 @@ Tato praktická cvičení zahrnuje následující praktická cvičení:
 1. [Cvičení 1: Co je nového v editoru stylů CSS](#Exercise1)
 2. [Cvičení 2: Co je nového v editoru HTML](#Exercise2)
 3. [Cvičení 3: Co je nového v editoru jazyka JavaScript](#Exercise3)
-4. [Cvičení 4: Vytváření sady a minifikace](#Exercise4)
+4. [Cvičení 4: Sdružování a Minifikace](#Exercise4)
 
 Odhadovaný čas dokončení tohoto testovacího prostředí: **60 minut**.
 

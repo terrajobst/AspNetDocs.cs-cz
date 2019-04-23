@@ -12,7 +12,7 @@ ms.openlocfilehash: 223fad7013a53212c0c822a87bd3e2fcc0a5f17f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408950"
 ---
 # <a name="dynamically-controlling-updatepanel-animations-vb"></a>Dynamické řízení animací ovládacím prvkem UpdatePanel (VB)
@@ -58,7 +58,7 @@ Nakonec `UpdatePanelAnimationExtender` musí být nakonfigurované: Nastavte `Ta
 Spusťte soubor v prohlížeči. Pokaždé, když kliknete na tlačítko, aktuální čas je uveden v panelu vždy pozvolného po dobu trvání jedné sekundy.
 
 
-[![Tmá aktuální čas je pozvolného](dynamically-controlling-updatepanel-animations-vb/_static/image2.png)](dynamically-controlling-updatepanel-animations-vb/_static/image1.png)
+[![Aktuální čas je pozvolného](dynamically-controlling-updatepanel-animations-vb/_static/image2.png)](dynamically-controlling-updatepanel-animations-vb/_static/image1.png)
 
 Aktuální čas je pozvolného ([kliknutím ji zobrazíte obrázek v plné velikosti](dynamically-controlling-updatepanel-animations-vb/_static/image3.png))
 

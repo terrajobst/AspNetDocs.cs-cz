@@ -12,7 +12,7 @@ ms.openlocfilehash: c05f0976a135615f7a272b8057eb4c56677e5117
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59412421"
 ---
 # <a name="animation-depending-on-a-condition-c"></a>Animace závislá na podmínce (C#)
@@ -53,7 +53,7 @@ V rámci `<Animations>` uzlu, použijte `<OnLoad>` ke spuštění animací, jakm
 Všimněte si, že menší než znaménko (`<`) v `ConditionScript` atribut musí být uvozený uvozovacím znakem (). Při spuštění tohoto skriptu, buď žádná spuštění animace, nebo jeden z nich nemá, nebo obě.
 
 
-[![The panel je mizení bez změny velikosti, takže druhého spuštění animace, první z nich nebyl](animation-depending-on-a-condition-cs/_static/image2.png)](animation-depending-on-a-condition-cs/_static/image1.png)
+[![Je panelu mizení bez změny velikosti, takže druhého spuštění animace, první z nich nebyl](animation-depending-on-a-condition-cs/_static/image2.png)](animation-depending-on-a-condition-cs/_static/image1.png)
 
 Je panelu mizení bez změny velikosti, takže druhého spuštění animace, první z nich nebyl ([kliknutím ji zobrazíte obrázek v plné velikosti](animation-depending-on-a-condition-cs/_static/image3.png))
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 5f2cd9c752968f11efe74cce1c620d0b7cf6a467
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408586"
 ---
 # <a name="paging-and-sorting-report-data-vb"></a>Stránkování a řazení dat sestavy (VB)
@@ -91,7 +91,7 @@ V dalším kroku umožní s přizpůsobit pole s GridView tak, aby se zobrazují
 Obrázek 6 doposud zobrazuje náš postup při prohlížení prostřednictvím prohlížeče. Všimněte si, že na stránce jsou uvedeny všechny produkty na jedné obrazovce zobrazuje každý produkt s názvem, kategorie, Dodavatel, ceny a vyřazuje stav.
 
 
-[![EACH produkty jsou uvedené](paging-and-sorting-report-data-vb/_static/image7.png)](paging-and-sorting-report-data-vb/_static/image6.png)
+[![Každý produkt patří](paging-and-sorting-report-data-vb/_static/image7.png)](paging-and-sorting-report-data-vb/_static/image6.png)
 
 **Obrázek 6**: Každý produkt patří ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image8.png))
 
@@ -101,7 +101,7 @@ Obrázek 6 doposud zobrazuje náš postup při prohlížení prostřednictvím p
 Výpis *všechny* produktů na jednu obrazovku může mít za následek přetížení informace pro uživatele perusing data. Abyste se mohli lépe zvládnutelné výsledky, jsme data do menších stránek data rozdělte a umožní uživateli procházení jednu stránku dat najednou. Provedete to stačí zaškrtnout políčko Povolit stránkování v prvku GridView s inteligentním (tím se nastaví prvek GridView s [ `AllowPaging` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.allowpaging.aspx) k `true`).
 
 
-[![Czaškrtávací políčko Povolit stránkování na přidání podpory stránkování](paging-and-sorting-report-data-vb/_static/image10.png)](paging-and-sorting-report-data-vb/_static/image9.png)
+[![Zaškrtnutím políčka Povolit stránkování přidat podporu stránkování](paging-and-sorting-report-data-vb/_static/image10.png)](paging-and-sorting-report-data-vb/_static/image9.png)
 
 **Obrázek 7**: Zaškrtněte políčko Povolit stránkování na přidání podpory stránkování ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image11.png))
 
@@ -137,7 +137,7 @@ Dále otevřete `GridView.skin` soubor `DataWebControls` složky v rámci `App_T
 Obrázek 8 ukazuje webové stránky, když uživatel prostřednictvím prohlížeče, poté, co bylo zaškrtnuto políčko Povolit stránkování prvku GridView s a `PagerStyle` a `PagerSettings` konfigurace byly provedeny prostřednictvím `GridView.skin` souboru. Poznámka: jak pouze deset záznamy jsou zobrazeny, a stránkovací rozhraní označuje, že jsme se zobrazuje na první stránku.
 
 
-[![Wi-tý stránkování povoleno pouze podmnožinu záznamů se zobrazí po jednom](paging-and-sorting-report-data-vb/_static/image13.png)](paging-and-sorting-report-data-vb/_static/image12.png)
+[![S povoleno stránkování se zobrazují pouze podmnožinu záznamů najednou](paging-and-sorting-report-data-vb/_static/image13.png)](paging-and-sorting-report-data-vb/_static/image12.png)
 
 **Obrázek 8**: S povoleno stránkování, se zobrazují pouze podmnožinu záznamů najednou ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image14.png))
 
@@ -145,7 +145,7 @@ Obrázek 8 ukazuje webové stránky, když uživatel prostřednictvím prohlíž
 Když uživatel klikne na jednu stránku čísel v rozhraní stránkování, vyplývá zpětné volání a stránku znovu načte zobrazující, že požadovaná stránka s záznamy. Obrázek 9 ukazuje výsledky po aktivaci ochrany a zobrazit finální stránku data. Všimněte si, že poslední stránka má jenom jeden záznam. je to proto, že existují záznamy 81 celkem, což vede k osm stránek 10 záznamů na stránku a jednu stránku s jedinou záznam.
 
 
-[![Clicking na číslo stránky vyvolá zpětné volání a příslušné dílčí záznamy](paging-and-sorting-report-data-vb/_static/image16.png)](paging-and-sorting-report-data-vb/_static/image15.png)
+[![Kliknutím na číslo stránky vyvolá zpětné volání a ukazuje na příslušnou podmnožinu záznamů](paging-and-sorting-report-data-vb/_static/image16.png)](paging-and-sorting-report-data-vb/_static/image15.png)
 
 **Obrázek 9**: Kliknutím na číslo stránky vyvolá zpětné volání a příslušné dílčí záznamy ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image17.png))
 
@@ -182,7 +182,7 @@ Přiřadí tuto obslužnou rutinu události `PagingInformation` popisek s `Text`
 Uveďte uživatel se teď zobrazují zprávu s oznámením, jaké stránky navštěvují a kolik celkový počet stránek dat existuje.
 
 
-[![TZobrazí se mu aktuální číslo stránky a celkový počet stránek](paging-and-sorting-report-data-vb/_static/image19.png)](paging-and-sorting-report-data-vb/_static/image18.png)
+[![Aktuální číslo stránky a celkový počet stránek zobrazených](paging-and-sorting-report-data-vb/_static/image19.png)](paging-and-sorting-report-data-vb/_static/image18.png)
 
 **Obrázek 10**: Aktuální číslo stránky a celkový počet stránek zobrazených ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image20.png))
 
@@ -206,7 +206,7 @@ Nakonec musíme vytvořit obslužnou rutinu události pro DropDownList s `Select
 Jak ukazuje obrázek 11 pouze změna GridView s `PageIndex` vlastnosti způsobí, že data, která mají být znovu připojeno k prvku GridView. V prvku GridView s `DataBound` obslužná rutina události, odpovídající DropDownList `ListItem` zaškrtnuto.
 
 
-[![TUživatel je automaticky Přesměrujeme do šestého stránky při výběru položky seznamu rozevírací 6 stránky](paging-and-sorting-report-data-vb/_static/image22.png)](paging-and-sorting-report-data-vb/_static/image21.png)
+[![Uživatel je automaticky Přesměrujeme do šestého stránky při výběru položky seznamu stránky 6 rozevíracího seznamu](paging-and-sorting-report-data-vb/_static/image22.png)](paging-and-sorting-report-data-vb/_static/image21.png)
 
 **Obrázek 11**: Uživatel je automaticky Přesměrujeme do šestého stránky při výběru položky seznamu stránky 6 rozevíracího seznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image23.png))
 
@@ -231,7 +231,7 @@ Tato syntaxe označuje použít bílý text při zobrazení na hypertextové odk
 Po přidání této šablony stylů CSS při návštěvě stránky prostřednictvím prohlížeče vaše obrazovka by měla vypadat podobně jako obrázek 12. Zejména obrázek 12 znázorňuje výsledky po kliknutí na odkaz cena pole s záhlaví.
 
 
-[![The výsledky seřazeny podle UnitPrice ve vzestupném pořadí](paging-and-sorting-report-data-vb/_static/image25.png)](paging-and-sorting-report-data-vb/_static/image24.png)
+[![Výsledky seřazeny podle UnitPrice ve vzestupném pořadí](paging-and-sorting-report-data-vb/_static/image25.png)](paging-and-sorting-report-data-vb/_static/image24.png)
 
 **Obrázek 12**: Výsledky seřazeny podle UnitPrice ve vzestupném pořadí ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image26.png))
 
@@ -264,7 +264,7 @@ Pole lze nastavit tak, aby se s tím, že zrušíte řazení jeho `SortExpressio
 Jednou `SortExpression` se odebrala vlastnost `UnitPrice` Vlastnost BoundField, záhlaví se vykreslí jako text, nikoli jako odkaz, a tím brání uživatelům v řazení dat podle ceny.
 
 
-[![By odebrání vlastnost SortExpression již mohou uživatelé řadit produkty podle ceny](paging-and-sorting-report-data-vb/_static/image29.png)](paging-and-sorting-report-data-vb/_static/image28.png)
+[![Odebráním vlastnost SortExpression mohou uživatelé řadit už produkty podle ceny](paging-and-sorting-report-data-vb/_static/image29.png)](paging-and-sorting-report-data-vb/_static/image28.png)
 
 **Obrázek 14**: Odebráním vlastnost SortExpression mohou uživatelé řadit už produkty podle cena ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image30.png))
 
@@ -283,7 +283,7 @@ K provedení to přidání ovládacího prvku tlačítko Web na stránku, nastav
 Kliknutím na toto tlačítko vrátí uživatele na první stránku s produkty, seřazené podle cenu z nejdražší k nejlevnější (viz obrázek 15).
 
 
-[![Clicking tlačítko objednávky produktů z the nejnákladnější nejméně](paging-and-sorting-report-data-vb/_static/image32.png)](paging-and-sorting-report-data-vb/_static/image31.png)
+[![Kliknutím na tlačítko Orders produkty z nejnákladnější nejméně](paging-and-sorting-report-data-vb/_static/image32.png)](paging-and-sorting-report-data-vb/_static/image31.png)
 
 **Obrázek 15**: Kliknutím na tlačítko objednávky produktů z the nejnákladnější nejméně ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image33.png))
 

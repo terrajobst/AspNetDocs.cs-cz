@@ -12,7 +12,7 @@ ms.openlocfilehash: c2a5b3ae768012156b0f46eda8caeb43451af258
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59413747"
 ---
 # <a name="migrating"></a>Migrace
@@ -24,7 +24,7 @@ ms.locfileid: "59413747"
 - [[Úvod do ASP.NET 2.0:] Prvky uživatelského rozhraní](intro-to-aspnet-20-user-interface-elements.md)
 - [[Migrace z] klasického ASP na ASP.NET](migrating-from-classic-asp-to-aspnet.md)
 - [Úvod do ASP.NET pro vývojáře v JSP: Vítejte v ASP.NET 2.0](intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20.md)
-- [Úvod do ASP.NET pro vývojáře v JSP: Tvorba aplikací](intro-to-aspnet-for-jsp-developers-building-applications.md)
+- [Úvod do ASP.NET pro vývojáře v JSP: Vytváření aplikací](intro-to-aspnet-for-jsp-developers-building-applications.md)
 - [Úvod do ASP.NET pro vývojáře v ColdFusion: Přidání ASP.NET do vašeho repertoáru](intro-to-aspnet-for-coldfusion-developers-adding-aspnet-to-your-repertoire.md)
-- [Úvod do ASP.NET pro vývojáře v ColdFusion: Tvorba aplikace ASP.NET](introduction-to-aspnet-for-coldfusion-developers-building-an-aspnet-application.md)
+- [Úvod do ASP.NET pro vývojáře v ColdFusion: Vytvoření aplikace ASP.NET](introduction-to-aspnet-for-coldfusion-developers-building-an-aspnet-application.md)
 - [Interoperabilita PHP s platformou Windows](interop-between-php-and-the-windows-platform.md)

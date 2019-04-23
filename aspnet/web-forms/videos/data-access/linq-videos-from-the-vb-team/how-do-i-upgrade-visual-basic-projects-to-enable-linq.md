@@ -12,7 +12,7 @@ ms.openlocfilehash: acbca3397fe8f668007eff9b2c2f46c721c9fc8f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59419454"
 ---
 # <a name="how-do-i-upgrade-visual-basic-projects-to-enable-linq"></a>[Postup:] Upgrade projektů Visual Basicu kvůli povolení jazyka LINQ?

@@ -13,7 +13,7 @@ ms.openlocfilehash: 08870e703c88afccd57232cc259e928a08e7a7a6
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59417881"
 ---
 # <a name="odata-in-aspnet-web-api"></a>V rozhraní ASP.NET Web API OData
@@ -28,7 +28,7 @@ ms.locfileid: "59417881"
     - [Relace prvků v OData v4](odata-v4/entity-relations-in-odata-v4.md)
     - [Akce a funkce v OData v4](odata-v4/odata-actions-and-functions.md)
     - [Zahrnutí v OData v4](odata-v4/odata-containment-in-web-api-22.md)
-    - [Vytvoření jednoznačného prvku v OData v4](odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22.md)
+    - [Vytvoření jednoho prvku v OData v4](odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22.md)
     - [Otevřené typy v OData v4](odata-v4/use-open-types-in-odata-v4.md)
     - [Komplexní dědičnost typů v OData v4](odata-v4/complex-type-inheritance-in-odata-v4.md)
 - [OData v3](odata-v3/index.md)

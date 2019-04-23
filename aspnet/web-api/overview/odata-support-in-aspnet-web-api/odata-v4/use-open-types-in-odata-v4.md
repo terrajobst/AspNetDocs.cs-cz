@@ -12,12 +12,12 @@ ms.openlocfilehash: 69e2cc716a50c64ae5edf38a499abf4d80d75d3d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59414956"
 ---
 # <a name="open-types-in-odata-v4-with-aspnet-web-api"></a>Otevřete typy v OData v4 s rozhraním ASP.NET Web API
 
-by [Microsoft](https://github.com/microsoft)
+podle [Microsoft](https://github.com/microsoft)
 
 > V OData v4 *otevřený typ.* strukturovaný typ, který obsahuje dynamické vlastnosti, kromě všechny vlastnosti, které jsou deklarovány v definici typu. Otevřené typy umožňují zvýšit flexibilitu datových modelů. Tento kurz ukazuje, jak používat otevřené typy v ASP.NET Web API OData.
 > 
@@ -84,7 +84,7 @@ Všimněte si, že první `Book` instance nemá žádné dynamické vlastnosti. 
 
 Také `Press` vlastnost, která `Book` instance má následující dynamické vlastnosti:
 
-- "Blog": primitivní typ
+- Blog "o": primitivní typ
 - "Address": komplexní typ
 
 ## <a name="query-the-metadata"></a>Dotaz Metadata

@@ -13,7 +13,7 @@ ms.openlocfilehash: a9e7ed63a55c146976e0221214e722f3a2292fee
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408274"
 ---
 # <a name="json-and-xml-serialization-in-aspnet-web-api"></a>Serializace JSON a XML v rozhraní ASP.NET Web API
@@ -38,7 +38,7 @@ Webové rozhraní API poskytuje formátovacích modulů typů médií pro JSON a
     - [Odsazení](#json_indenting)
     - [CamelCase](#json_camelcasing)
     - [Anonymní a slabě typované objekty](#json_anon)
-- [Formátovací modul typu média XML](#xml_media_type_formatter)
+- [XML Media-Type Formatter](#xml_media_type_formatter)
 
     - [Vlastnosti jen pro čtení](#xml_readonly)
     - [Kalendářní data](#xml_dates)
