@@ -12,13 +12,13 @@ ms.openlocfilehash: eaebe2a171a5dd57f1c8a35b85fadd10ebeadd80
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59410354"
 ---
-# <a name="how-do-i-create-data-driven-web-sites"></a><span data-ttu-id="b8bc7-105">[Postup:] Vytváření webů řízených daty?</span><span class="sxs-lookup"><span data-stu-id="b8bc7-105">[How Do I:] Create Data-Driven Web Sites?</span></span>
+# <a name="how-do-i-create-data-driven-web-sites"></a><span data-ttu-id="bd5f4-105">[Postup:] Vytváření webů řízených daty?</span><span class="sxs-lookup"><span data-stu-id="bd5f4-105">[How Do I:] Create Data-Driven Web Sites?</span></span>
 
-<span data-ttu-id="b8bc7-106">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="b8bc7-106">by [Microsoft](https://github.com/microsoft)</span></span>
+<span data-ttu-id="bd5f4-106">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="bd5f4-106">by [Microsoft](https://github.com/microsoft)</span></span>
 
-<span data-ttu-id="b8bc7-107">Podívejte se, jak snadné je vytvoření datově řízeného weby pomocí ASP.NET 2.0, Visual Web Developer 2005 Express Edition a SQL Server 2005 Express Edition.</span><span class="sxs-lookup"><span data-stu-id="b8bc7-107">See how simple it is to create data-driven web sites using ASP.NET 2.0, Visual Web Developer 2005 Express Edition, and SQL Server 2005 Express Edition.</span></span> <span data-ttu-id="b8bc7-108">Zjistěte, jak vytvořit databázi, přidáte jeho data a zobrazit tato data na webové stránce.</span><span class="sxs-lookup"><span data-stu-id="b8bc7-108">Learn how to create a database, add its data, and display that data on a web page.</span></span>
+<span data-ttu-id="bd5f4-107">Podívejte se, jak snadné je vytvoření datově řízeného weby pomocí ASP.NET 2.0, Visual Web Developer 2005 Express Edition a SQL Server 2005 Express Edition.</span><span class="sxs-lookup"><span data-stu-id="bd5f4-107">See how simple it is to create data-driven web sites using ASP.NET 2.0, Visual Web Developer 2005 Express Edition, and SQL Server 2005 Express Edition.</span></span> <span data-ttu-id="bd5f4-108">Zjistěte, jak vytvořit databázi, přidáte jeho data a zobrazit tato data na webové stránce.</span><span class="sxs-lookup"><span data-stu-id="bd5f4-108">Learn how to create a database, add its data, and display that data on a web page.</span></span>
 
-[<span data-ttu-id="b8bc7-109">&#9654;Podívejte se na video (13 min)</span><span class="sxs-lookup"><span data-stu-id="b8bc7-109">&#9654; Watch video (13 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-data-driven-web-sites)
+[<span data-ttu-id="bd5f4-109">&#9654;Podívejte se na video (13 min)</span><span class="sxs-lookup"><span data-stu-id="bd5f4-109">&#9654; Watch video (13 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-data-driven-web-sites)

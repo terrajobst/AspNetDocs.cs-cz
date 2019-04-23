@@ -12,18 +12,18 @@ ms.openlocfilehash: b0459517fdabef1c5abd6d50fb76ad145dcdfd8c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59409431"
 ---
-# <a name="mvc2---template-customization"></a><span data-ttu-id="1878d-104">MVC2 – přizpůsobení šablony</span><span class="sxs-lookup"><span data-stu-id="1878d-104">MVC2 - Template Customization</span></span>
+# <a name="mvc2---template-customization"></a><span data-ttu-id="7b2b7-104">MVC2 – přizpůsobení šablony</span><span class="sxs-lookup"><span data-stu-id="7b2b7-104">MVC2 - Template Customization</span></span>
 
-<span data-ttu-id="1878d-105">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="1878d-105">by [Microsoft](https://github.com/microsoft)</span></span>
+<span data-ttu-id="7b2b7-105">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="7b2b7-105">by [Microsoft](https://github.com/microsoft)</span></span>
 
-<span data-ttu-id="1878d-106">V tomto videu se dozvíte o funkcích přizpůsobení šablony v ASP.NET MVC 2.</span><span class="sxs-lookup"><span data-stu-id="1878d-106">In this video you will learn about the template customization features in ASP.NET MVC 2.</span></span> <span data-ttu-id="1878d-107">Podíváme na Html.EditorForModel Html.DisplayForModel, přizpůsobení šablony modelu a přizpůsobení datového typu.</span><span class="sxs-lookup"><span data-stu-id="1878d-107">We'll look at Html.EditorForModel, Html.DisplayForModel, Model Template customization, and DataType customization.</span></span>
+<span data-ttu-id="7b2b7-106">V tomto videu se dozvíte o funkcích přizpůsobení šablony v ASP.NET MVC 2.</span><span class="sxs-lookup"><span data-stu-id="7b2b7-106">In this video you will learn about the template customization features in ASP.NET MVC 2.</span></span> <span data-ttu-id="7b2b7-107">Podíváme na Html.EditorForModel Html.DisplayForModel, přizpůsobení šablony modelu a přizpůsobení datového typu.</span><span class="sxs-lookup"><span data-stu-id="7b2b7-107">We'll look at Html.EditorForModel, Html.DisplayForModel, Model Template customization, and DataType customization.</span></span>
 
-[<span data-ttu-id="1878d-108">&#9654;Podívejte se na video (3 minuty)</span><span class="sxs-lookup"><span data-stu-id="1878d-108">&#9654; Watch video (3 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/mvc2-template-customization)
+[<span data-ttu-id="7b2b7-108">&#9654;Podívejte se na video (3 minuty)</span><span class="sxs-lookup"><span data-stu-id="7b2b7-108">&#9654; Watch video (3 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/mvc2-template-customization)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="1878d-109">[Předchozí](mvc2-model-validation.md)
-> [další](aspnet-mvc-2-areas.md)</span><span class="sxs-lookup"><span data-stu-id="1878d-109">[Previous](mvc2-model-validation.md)
+> <span data-ttu-id="7b2b7-109">[Předchozí](mvc2-model-validation.md)
+> [další](aspnet-mvc-2-areas.md)</span><span class="sxs-lookup"><span data-stu-id="7b2b7-109">[Previous](mvc2-model-validation.md)
 [Next](aspnet-mvc-2-areas.md)</span></span>

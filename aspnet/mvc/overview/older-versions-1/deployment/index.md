@@ -12,13 +12,13 @@ ms.openlocfilehash: f14784a1b5ae54873b9777dcdadd9dc32689ec5a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408430"
 ---
-# <a name="deployment"></a><span data-ttu-id="a7bc9-103">Nasazení</span><span class="sxs-lookup"><span data-stu-id="a7bc9-103">Deployment</span></span>
+# <a name="deployment"></a><span data-ttu-id="60639-103">Nasazení</span><span class="sxs-lookup"><span data-stu-id="60639-103">Deployment</span></span>
 
-> <span data-ttu-id="a7bc9-104">V tomto kurzu se dozvíte, jak používat rozhraní ASP.NET MVC a směrování s různými verzemi služby IIS.</span><span class="sxs-lookup"><span data-stu-id="a7bc9-104">In this tutorial you learn how to use ASP.NET MVC and routing with different versions of IIS.</span></span>
+> <span data-ttu-id="60639-104">V tomto kurzu se dozvíte, jak používat rozhraní ASP.NET MVC a směrování s různými verzemi služby IIS.</span><span class="sxs-lookup"><span data-stu-id="60639-104">In this tutorial you learn how to use ASP.NET MVC and routing with different versions of IIS.</span></span>
 
 
-- [<span data-ttu-id="a7bc9-105">Použití ASP.NET MVC s různými verzemi služby IIS (C#)</span><span class="sxs-lookup"><span data-stu-id="a7bc9-105">Using ASP.NET MVC with Different Versions of IIS (C#)</span></span>](using-asp-net-mvc-with-different-versions-of-iis-cs.md)
-- [<span data-ttu-id="a7bc9-106">Použití ASP.NET MVC s různými verzemi služby IIS (VB)</span><span class="sxs-lookup"><span data-stu-id="a7bc9-106">Using ASP.NET MVC with Different Versions of IIS (VB)</span></span>](using-asp-net-mvc-with-different-versions-of-iis-vb.md)
+- [<span data-ttu-id="60639-105">Použití ASP.NET MVC s různými verzemi služby IIS (C#)</span><span class="sxs-lookup"><span data-stu-id="60639-105">Using ASP.NET MVC with Different Versions of IIS (C#)</span></span>](using-asp-net-mvc-with-different-versions-of-iis-cs.md)
+- [<span data-ttu-id="60639-106">Použití ASP.NET MVC s různými verzemi služby IIS (VB)</span><span class="sxs-lookup"><span data-stu-id="60639-106">Using ASP.NET MVC with Different Versions of IIS (VB)</span></span>](using-asp-net-mvc-with-different-versions-of-iis-vb.md)

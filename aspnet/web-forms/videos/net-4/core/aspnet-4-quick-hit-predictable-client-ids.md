@@ -12,18 +12,18 @@ ms.openlocfilehash: f06dd645811e7c6bc4c5dea8cdceae629756e7bf
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59420468"
 ---
-# <a name="aspnet-4-quick-hit---predictable-client-ids"></a><span data-ttu-id="320a0-103">ASP.NET 4 "Rychlé zasáhnout" - předvídatelné ID klienta</span><span class="sxs-lookup"><span data-stu-id="320a0-103">ASP.NET 4 "Quick Hit" - Predictable Client IDs</span></span>
+# <a name="aspnet-4-quick-hit---predictable-client-ids"></a><span data-ttu-id="e55e0-103">ASP.NET 4 "Rychlé zasáhnout" - předvídatelné ID klienta</span><span class="sxs-lookup"><span data-stu-id="e55e0-103">ASP.NET 4 "Quick Hit" - Predictable Client IDs</span></span>
 
-<span data-ttu-id="320a0-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="320a0-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="e55e0-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="e55e0-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="320a0-105">V tomto videu se dozvíte o ClientIDMode vlastnosti, které vám umožní určit přesnější způsob, jakým vygeneruje ID klienta pro ovládací prvky.</span><span class="sxs-lookup"><span data-stu-id="320a0-105">In this video you will learn about the ClientIDMode property, which lets you specify more precisely how the client ID is generated for controls.</span></span> 
+<span data-ttu-id="e55e0-105">V tomto videu se dozvíte o ClientIDMode vlastnosti, které vám umožní určit přesnější způsob, jakým vygeneruje ID klienta pro ovládací prvky.</span><span class="sxs-lookup"><span data-stu-id="e55e0-105">In this video you will learn about the ClientIDMode property, which lets you specify more precisely how the client ID is generated for controls.</span></span> 
 
-[<span data-ttu-id="320a0-106">&#9654;Podívejte se na video (10 minut)</span><span class="sxs-lookup"><span data-stu-id="320a0-106">&#9654; Watch video (10 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-4-quick-hit-predictable-client-ids)
+[<span data-ttu-id="e55e0-106">&#9654;Podívejte se na video (10 minut)</span><span class="sxs-lookup"><span data-stu-id="e55e0-106">&#9654; Watch video (10 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-4-quick-hit-predictable-client-ids)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="320a0-107">[Předchozí](aspnet-4-quick-hit-clean-webconfig-files.md)
-> [další](aspnet-4-quick-hit-the-htmlencoder-utility-method.md)</span><span class="sxs-lookup"><span data-stu-id="320a0-107">[Previous](aspnet-4-quick-hit-clean-webconfig-files.md)
+> <span data-ttu-id="e55e0-107">[Předchozí](aspnet-4-quick-hit-clean-webconfig-files.md)
+> [další](aspnet-4-quick-hit-the-htmlencoder-utility-method.md)</span><span class="sxs-lookup"><span data-stu-id="e55e0-107">[Previous](aspnet-4-quick-hit-clean-webconfig-files.md)
 [Next](aspnet-4-quick-hit-the-htmlencoder-utility-method.md)</span></span>

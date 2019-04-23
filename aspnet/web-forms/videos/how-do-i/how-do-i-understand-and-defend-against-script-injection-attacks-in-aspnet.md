@@ -12,13 +12,13 @@ ms.openlocfilehash: f2af665465995e64701a32970b4fb5f3d5eb7eb7
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59419272"
 ---
-# <a name="how-do-i-understand-and-defend-against-script-injection-attacks-in-aspnet"></a><span data-ttu-id="ac559-104">Jak pochopit a braňte se proti Injektáži skriptu útoků v ASP.NET</span><span class="sxs-lookup"><span data-stu-id="ac559-104">How Do I Understand and Defend Against Script Injection Attacks in ASP.NET</span></span>
+# <a name="how-do-i-understand-and-defend-against-script-injection-attacks-in-aspnet"></a><span data-ttu-id="869dd-104">Jak pochopit a braňte se proti Injektáži skriptu útoků v ASP.NET</span><span class="sxs-lookup"><span data-stu-id="869dd-104">How Do I Understand and Defend Against Script Injection Attacks in ASP.NET</span></span>
 
-<span data-ttu-id="ac559-105">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="ac559-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="869dd-105">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="869dd-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="ac559-106">Mezi lokality skriptování mezi weby (XSS) je pravděpodobně nejvíce problémových potíže se zabezpečením pro webové vývojáře o vyřešení těchto dnů.</span><span class="sxs-lookup"><span data-stu-id="ac559-106">Cross Site Scripting (XSS) is perhaps the most troublesome security issue for web developers to tackle these days.</span></span> <span data-ttu-id="ac559-107">V tomto videu Joe Stagner společnosti Microsoft poskytuje několik příkladů jak nebezpečné XSS ve skutečnosti může být a jak ASP.NET umožňuje snadno zajistit ochranu před současnými XSS ve vašich webových aplikacích.</span><span class="sxs-lookup"><span data-stu-id="ac559-107">In this video, Microsoft's Joe Stagner provides some examples of how dangerous XSS can really be and how ASP.NET helps you easily defend against XSS in your Web Applications.</span></span>
+<span data-ttu-id="869dd-106">Mezi lokality skriptování mezi weby (XSS) je pravděpodobně nejvíce problémových potíže se zabezpečením pro webové vývojáře o vyřešení těchto dnů.</span><span class="sxs-lookup"><span data-stu-id="869dd-106">Cross Site Scripting (XSS) is perhaps the most troublesome security issue for web developers to tackle these days.</span></span> <span data-ttu-id="869dd-107">V tomto videu Joe Stagner společnosti Microsoft poskytuje několik příkladů jak nebezpečné XSS ve skutečnosti může být a jak ASP.NET umožňuje snadno zajistit ochranu před současnými XSS ve vašich webových aplikacích.</span><span class="sxs-lookup"><span data-stu-id="869dd-107">In this video, Microsoft's Joe Stagner provides some examples of how dangerous XSS can really be and how ASP.NET helps you easily defend against XSS in your Web Applications.</span></span>
 
-[<span data-ttu-id="ac559-108">&#9654;Podívejte se na video (40 minut)</span><span class="sxs-lookup"><span data-stu-id="ac559-108">&#9654; Watch video (40 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-understand-and-defend-against-script-injection-attacks-in-aspnet)
+[<span data-ttu-id="869dd-108">&#9654;Podívejte se na video (40 minut)</span><span class="sxs-lookup"><span data-stu-id="869dd-108">&#9654; Watch video (40 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-understand-and-defend-against-script-injection-attacks-in-aspnet)

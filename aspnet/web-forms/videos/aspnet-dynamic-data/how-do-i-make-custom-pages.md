@@ -12,18 +12,18 @@ ms.openlocfilehash: 5214a748633bb3a5e7e38bcaed6015a607b8d63b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59414098"
 ---
-# <a name="how-do-i-make-custom-pages"></a><span data-ttu-id="06581-104">Jak vytvořit vlastní stránky?</span><span class="sxs-lookup"><span data-stu-id="06581-104">How Do I Make Custom Pages?</span></span>
+# <a name="how-do-i-make-custom-pages"></a><span data-ttu-id="72a1e-104">Jak vytvořit vlastní stránky?</span><span class="sxs-lookup"><span data-stu-id="72a1e-104">How Do I Make Custom Pages?</span></span>
 
-<span data-ttu-id="06581-105">podle [Scott Hanselman](https://github.com/shanselman)</span><span class="sxs-lookup"><span data-stu-id="06581-105">by [Scott Hanselman](https://github.com/shanselman)</span></span>
+<span data-ttu-id="72a1e-105">podle [Scott Hanselman](https://github.com/shanselman)</span><span class="sxs-lookup"><span data-stu-id="72a1e-105">by [Scott Hanselman](https://github.com/shanselman)</span></span>
 
-<span data-ttu-id="06581-106">V tomto videu se dozvíte, jak provádět vlastní stránky pro některé tabulky, zatímco jiné stránky pomocí standardních funkcí.</span><span class="sxs-lookup"><span data-stu-id="06581-106">In this video, you learn how to make a custom page for some tables, while other pages use standard functionality.</span></span>
+<span data-ttu-id="72a1e-106">V tomto videu se dozvíte, jak provádět vlastní stránky pro některé tabulky, zatímco jiné stránky pomocí standardních funkcí.</span><span class="sxs-lookup"><span data-stu-id="72a1e-106">In this video, you learn how to make a custom page for some tables, while other pages use standard functionality.</span></span>
 
-[<span data-ttu-id="06581-107">&#9654;Podívejte se na video (5 minut).</span><span class="sxs-lookup"><span data-stu-id="06581-107">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-custom-pages)
+[<span data-ttu-id="72a1e-107">&#9654;Podívejte se na video (5 minut).</span><span class="sxs-lookup"><span data-stu-id="72a1e-107">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-custom-pages)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="06581-108">[Předchozí](how-do-i-handle-business-logic-exceptions.md)
-> [další](how-do-i-display-unknown-datatypes.md)</span><span class="sxs-lookup"><span data-stu-id="06581-108">[Previous](how-do-i-handle-business-logic-exceptions.md)
+> <span data-ttu-id="72a1e-108">[Předchozí](how-do-i-handle-business-logic-exceptions.md)
+> [další](how-do-i-display-unknown-datatypes.md)</span><span class="sxs-lookup"><span data-stu-id="72a1e-108">[Previous](how-do-i-handle-business-logic-exceptions.md)
 [Next](how-do-i-display-unknown-datatypes.md)</span></span>

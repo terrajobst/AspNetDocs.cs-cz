@@ -12,18 +12,18 @@ ms.openlocfilehash: 5baa7e432c77643196deb321e8bfd99a1adec833
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408404"
 ---
-# <a name="set-up-your-development-environment-for-aspnet-20"></a><span data-ttu-id="eb360-103">Nastavení vývojového prostředí pro ASP.NET 2.0</span><span class="sxs-lookup"><span data-stu-id="eb360-103">Set Up Your Development Environment for ASP.NET 2.0</span></span>
+# <a name="set-up-your-development-environment-for-aspnet-20"></a><span data-ttu-id="cfaf3-103">Nastavení vývojového prostředí pro ASP.NET 2.0</span><span class="sxs-lookup"><span data-stu-id="cfaf3-103">Set Up Your Development Environment for ASP.NET 2.0</span></span>
 
-<span data-ttu-id="eb360-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="eb360-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="cfaf3-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="cfaf3-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="eb360-105">V tomto videu získáte informace o nastavení vývojového prostředí pro vývoj aplikací ASP.NET AJAX, pokud cílíte na technologii ASP.NET 2.0.</span><span class="sxs-lookup"><span data-stu-id="eb360-105">In this video you'll learn how to set up your Development Environment for developing ASP.NET AJAX Applications if you are targeting ASP.NET 2.0.</span></span>
+<span data-ttu-id="cfaf3-105">V tomto videu získáte informace o nastavení vývojového prostředí pro vývoj aplikací ASP.NET AJAX, pokud cílíte na technologii ASP.NET 2.0.</span><span class="sxs-lookup"><span data-stu-id="cfaf3-105">In this video you'll learn how to set up your Development Environment for developing ASP.NET AJAX Applications if you are targeting ASP.NET 2.0.</span></span>
 
-[<span data-ttu-id="eb360-106">&#9654;Podívejte se na video (15 minut)</span><span class="sxs-lookup"><span data-stu-id="eb360-106">&#9654; Watch video (15 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/set-up-your-development-environment-for-aspnet-20)
+[<span data-ttu-id="cfaf3-106">&#9654;Podívejte se na video (15 minut)</span><span class="sxs-lookup"><span data-stu-id="cfaf3-106">&#9654; Watch video (15 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/set-up-your-development-environment-for-aspnet-20)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="eb360-107">[Předchozí](set-up-your-development-environment-for-aspnet-35.md)
-> [další](how-do-i-customize-error-handling-for-the-aspnet-ajax-updatepanel.md)</span><span class="sxs-lookup"><span data-stu-id="eb360-107">[Previous](set-up-your-development-environment-for-aspnet-35.md)
+> <span data-ttu-id="cfaf3-107">[Předchozí](set-up-your-development-environment-for-aspnet-35.md)
+> [další](how-do-i-customize-error-handling-for-the-aspnet-ajax-updatepanel.md)</span><span class="sxs-lookup"><span data-stu-id="cfaf3-107">[Previous](set-up-your-development-environment-for-aspnet-35.md)
 [Next](how-do-i-customize-error-handling-for-the-aspnet-ajax-updatepanel.md)</span></span>

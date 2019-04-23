@@ -12,18 +12,18 @@ ms.openlocfilehash: 3560adc48154307c66c5641a64c8008aa76a8bd7
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59411537"
 ---
-# <a name="aspnet-mvc-storefront-part-13-dependency-injection"></a><span data-ttu-id="b9e22-103">Prezentace ASP.NET MVC – část 13: Injektáž závislostí</span><span class="sxs-lookup"><span data-stu-id="b9e22-103">ASP.NET MVC Storefront Part 13: Dependency Injection</span></span>
+# <a name="aspnet-mvc-storefront-part-13-dependency-injection"></a><span data-ttu-id="90979-103">Prezentace ASP.NET MVC – část 13: Injektáž závislostí</span><span class="sxs-lookup"><span data-stu-id="90979-103">ASP.NET MVC Storefront Part 13: Dependency Injection</span></span>
 
-<span data-ttu-id="b9e22-104">podle [Rob Conery](https://github.com/robconery)</span><span class="sxs-lookup"><span data-stu-id="b9e22-104">by [Rob Conery](https://github.com/robconery)</span></span>
+<span data-ttu-id="90979-104">podle [Rob Conery](https://github.com/robconery)</span><span class="sxs-lookup"><span data-stu-id="90979-104">by [Rob Conery](https://github.com/robconery)</span></span>
 
-<span data-ttu-id="b9e22-105">Toto je relaci společný vývoj s Jeremy Miller CodeBetter/StructureMap, kde mu zobrazil a nevýhodami vkládání závislostí.</span><span class="sxs-lookup"><span data-stu-id="b9e22-105">This is a joint development session with Jeremy Miller of CodeBetter/StructureMap, where he shows me the ins and outs of Dependency Injection.</span></span>
+<span data-ttu-id="90979-105">Toto je relaci společný vývoj s Jeremy Miller CodeBetter/StructureMap, kde mu zobrazil a nevýhodami vkládání závislostí.</span><span class="sxs-lookup"><span data-stu-id="90979-105">This is a joint development session with Jeremy Miller of CodeBetter/StructureMap, where he shows me the ins and outs of Dependency Injection.</span></span>
 
-[<span data-ttu-id="b9e22-106">&#9654;Podívejte se na video (58 minuty)</span><span class="sxs-lookup"><span data-stu-id="b9e22-106">&#9654; Watch video (58 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-13-dependency-injection)
+[<span data-ttu-id="90979-106">&#9654;Podívejte se na video (58 minuty)</span><span class="sxs-lookup"><span data-stu-id="90979-106">&#9654; Watch video (58 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-13-dependency-injection)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="b9e22-107">[Předchozí](aspnet-mvc-storefront-part-12-mocking.md)
-> [další](aspnet-mvc-storefront-part-14-rich-client-interaction.md)</span><span class="sxs-lookup"><span data-stu-id="b9e22-107">[Previous](aspnet-mvc-storefront-part-12-mocking.md)
+> <span data-ttu-id="90979-107">[Předchozí](aspnet-mvc-storefront-part-12-mocking.md)
+> [další](aspnet-mvc-storefront-part-14-rich-client-interaction.md)</span><span class="sxs-lookup"><span data-stu-id="90979-107">[Previous](aspnet-mvc-storefront-part-12-mocking.md)
 [Next](aspnet-mvc-storefront-part-14-rich-client-interaction.md)</span></span>

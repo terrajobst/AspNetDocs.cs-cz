@@ -13,14 +13,14 @@ ms.openlocfilehash: d8340509484ab3f5ad241534bd0756545c5be84c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59419324"
 ---
-# <a name="aspnet-identity-extensibility"></a><span data-ttu-id="49065-103">Rozšíření ASP.NET Identity</span><span class="sxs-lookup"><span data-stu-id="49065-103">ASP.NET Identity Extensibility</span></span>
+# <a name="aspnet-identity-extensibility"></a><span data-ttu-id="c30dc-103">Rozšíření ASP.NET Identity</span><span class="sxs-lookup"><span data-stu-id="c30dc-103">ASP.NET Identity Extensibility</span></span>
 
-> <span data-ttu-id="49065-104">Rozšiřitelnost</span><span class="sxs-lookup"><span data-stu-id="49065-104">Extensibility</span></span>
+> <span data-ttu-id="c30dc-104">Rozšiřitelnost</span><span class="sxs-lookup"><span data-stu-id="c30dc-104">Extensibility</span></span>
 
 
-- [<span data-ttu-id="49065-105">Přehled poskytovatelů vlastního úložiště pro ASP.NET Identity</span><span class="sxs-lookup"><span data-stu-id="49065-105">Overview of Custom Storage Providers for ASP.NET Identity</span></span>](overview-of-custom-storage-providers-for-aspnet-identity.md)
-- [<span data-ttu-id="49065-106">Implementace vlastního poskytovatele úložiště MySQL ASP.NET Identity</span><span class="sxs-lookup"><span data-stu-id="49065-106">Implementing a Custom MySQL ASP.NET Identity Storage Provider</span></span>](implementing-a-custom-mysql-aspnet-identity-storage-provider.md)
-- [<span data-ttu-id="49065-107">Změna primárního klíče uživatelů v ASP.NET Identity</span><span class="sxs-lookup"><span data-stu-id="49065-107">Change Primary Key for Users in ASP.NET Identity</span></span>](change-primary-key-for-users-in-aspnet-identity.md)
+- [<span data-ttu-id="c30dc-105">Přehled poskytovatelů vlastního úložiště pro ASP.NET Identity</span><span class="sxs-lookup"><span data-stu-id="c30dc-105">Overview of Custom Storage Providers for ASP.NET Identity</span></span>](overview-of-custom-storage-providers-for-aspnet-identity.md)
+- [<span data-ttu-id="c30dc-106">Implementace vlastního poskytovatele úložiště MySQL ASP.NET Identity</span><span class="sxs-lookup"><span data-stu-id="c30dc-106">Implementing a Custom MySQL ASP.NET Identity Storage Provider</span></span>](implementing-a-custom-mysql-aspnet-identity-storage-provider.md)
+- [<span data-ttu-id="c30dc-107">Změna primárního klíče uživatelů v ASP.NET Identity</span><span class="sxs-lookup"><span data-stu-id="c30dc-107">Change Primary Key for Users in ASP.NET Identity</span></span>](change-primary-key-for-users-in-aspnet-identity.md)

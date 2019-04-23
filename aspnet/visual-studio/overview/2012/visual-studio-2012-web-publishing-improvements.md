@@ -12,11 +12,11 @@ ms.openlocfilehash: db2ba94890d8394e538ae34a4aff7139a4d2ce7f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408157"
 ---
-# <a name="visual-studio-2012-web-publishing-improvements"></a><span data-ttu-id="094d2-103">Visual Studio 2012 – vylepšení webového publikování</span><span class="sxs-lookup"><span data-stu-id="094d2-103">Visual Studio 2012 Web Publishing Improvements</span></span>
+# <a name="visual-studio-2012-web-publishing-improvements"></a><span data-ttu-id="2d40e-103">Visual Studio 2012 – vylepšení webového publikování</span><span class="sxs-lookup"><span data-stu-id="2d40e-103">Visual Studio 2012 Web Publishing Improvements</span></span>
 
-<span data-ttu-id="094d2-104">podle [Scott Hanselman](https://github.com/shanselman)</span><span class="sxs-lookup"><span data-stu-id="094d2-104">by [Scott Hanselman](https://github.com/shanselman)</span></span>
+<span data-ttu-id="2d40e-104">podle [Scott Hanselman](https://github.com/shanselman)</span><span class="sxs-lookup"><span data-stu-id="2d40e-104">by [Scott Hanselman](https://github.com/shanselman)</span></span>
 
-[<span data-ttu-id="094d2-105">&#9654;Podívejte se na video (5 minut).</span><span class="sxs-lookup"><span data-stu-id="094d2-105">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-2012-web-publishing-improvements)
+[<span data-ttu-id="2d40e-105">&#9654;Podívejte se na video (5 minut).</span><span class="sxs-lookup"><span data-stu-id="2d40e-105">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-2012-web-publishing-improvements)

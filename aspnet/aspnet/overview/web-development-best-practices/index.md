@@ -12,13 +12,13 @@ ms.openlocfilehash: 6b415480fc3f1d86f74e5845eedb35d284806284
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59412278"
 ---
-# <a name="web-development-best-practices"></a><span data-ttu-id="fc577-103">Osvědčené postupy při vývoji webu</span><span class="sxs-lookup"><span data-stu-id="fc577-103">Web Development Best Practices</span></span>
+# <a name="web-development-best-practices"></a><span data-ttu-id="991ad-103">Osvědčené postupy při vývoji webu</span><span class="sxs-lookup"><span data-stu-id="991ad-103">Web Development Best Practices</span></span>
 
 
-- [<span data-ttu-id="fc577-104">Co nedělat v ASP.NET a jak to udělat správně</span><span class="sxs-lookup"><span data-stu-id="fc577-104">What not to do in ASP.NET, and what to do instead</span></span>](what-not-to-do-in-aspnet-and-what-to-do-instead.md)
-- [<span data-ttu-id="fc577-105">Async a Await</span><span class="sxs-lookup"><span data-stu-id="fc577-105">Async and Await</span></span>](async-and-await.md)
-- [<span data-ttu-id="fc577-106">Vytváření skutečných cloudových aplikací v Azure</span><span class="sxs-lookup"><span data-stu-id="fc577-106">Building Real World Cloud Apps with Azure</span></span>](../developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/index.md)
-- [<span data-ttu-id="fc577-107">Praktické cvičení: Udržitelné weby Azure: Správa změn a škálování</span><span class="sxs-lookup"><span data-stu-id="fc577-107">Hands on Lab: Maintainable Azure Websites: Managing Change and Scale</span></span>](../developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale.md)
+- [<span data-ttu-id="991ad-104">Co nedělat v ASP.NET a jak to udělat správně</span><span class="sxs-lookup"><span data-stu-id="991ad-104">What not to do in ASP.NET, and what to do instead</span></span>](what-not-to-do-in-aspnet-and-what-to-do-instead.md)
+- [<span data-ttu-id="991ad-105">Async a Await</span><span class="sxs-lookup"><span data-stu-id="991ad-105">Async and Await</span></span>](async-and-await.md)
+- [<span data-ttu-id="991ad-106">Vytváření skutečných cloudových aplikací v Azure</span><span class="sxs-lookup"><span data-stu-id="991ad-106">Building Real World Cloud Apps with Azure</span></span>](../developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/index.md)
+- [<span data-ttu-id="991ad-107">Praktické cvičení: Udržitelné weby Azure: Správa změn a škálování</span><span class="sxs-lookup"><span data-stu-id="991ad-107">Hands on Lab: Maintainable Azure Websites: Managing Change and Scale</span></span>](../developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale.md)
