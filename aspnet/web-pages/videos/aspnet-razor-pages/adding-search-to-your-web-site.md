@@ -12,18 +12,18 @@ ms.openlocfilehash: d58f5c74e0b838cb1fbcbeeae77f62892fe9c290
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59423042"
 ---
-# <a name="adding-search-to-your-web-site"></a><span data-ttu-id="68b1f-103">Přidání funkce Hledat na web</span><span class="sxs-lookup"><span data-stu-id="68b1f-103">Adding Search to Your Web Site</span></span>
+# <a name="adding-search-to-your-web-site"></a><span data-ttu-id="d28d5-103">Přidání funkce Hledat na web</span><span class="sxs-lookup"><span data-stu-id="d28d5-103">Adding Search to Your Web Site</span></span>
 
-<span data-ttu-id="68b1f-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="68b1f-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="d28d5-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="d28d5-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="68b1f-105">Video doprovodná vyhledávání přidání webu v tomto kurzu</span><span class="sxs-lookup"><span data-stu-id="68b1f-105">Video accompaniment to the Adding Search to Your Web Site tutorial</span></span>
+<span data-ttu-id="d28d5-105">Video doprovodná vyhledávání přidání webu v tomto kurzu</span><span class="sxs-lookup"><span data-stu-id="d28d5-105">Video accompaniment to the Adding Search to Your Web Site tutorial</span></span>
 
-[<span data-ttu-id="68b1f-106">&#9654;Podívejte se na video (6 minut)</span><span class="sxs-lookup"><span data-stu-id="68b1f-106">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/adding-search-to-your-web-site)
+[<span data-ttu-id="d28d5-106">&#9654;Podívejte se na video (6 minut)</span><span class="sxs-lookup"><span data-stu-id="d28d5-106">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/adding-search-to-your-web-site)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="68b1f-107">[Předchozí](adding-email-to-your-web-site.md)
-> [další](adding-social-networking-to-your-website.md)</span><span class="sxs-lookup"><span data-stu-id="68b1f-107">[Previous](adding-email-to-your-web-site.md)
+> <span data-ttu-id="d28d5-107">[Předchozí](adding-email-to-your-web-site.md)
+> [další](adding-social-networking-to-your-website.md)</span><span class="sxs-lookup"><span data-stu-id="d28d5-107">[Previous](adding-email-to-your-web-site.md)
 [Next](adding-social-networking-to-your-website.md)</span></span>

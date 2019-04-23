@@ -12,11 +12,11 @@ ms.openlocfilehash: 43c0593e7e2f8dd8db1a89f57bcaa5dbae2ae00d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59420858"
 ---
-# <a name="aspnet-ajax--enhanced-interactivity-and-responsiveness"></a><span data-ttu-id="9dd4c-104">ASP.NET Ajax : Rozšířené možnosti interakce a rychlost odezvy</span><span class="sxs-lookup"><span data-stu-id="9dd4c-104">ASP.NET Ajax : Enhanced Interactivity and Responsiveness</span></span>
+# <a name="aspnet-ajax--enhanced-interactivity-and-responsiveness"></a><span data-ttu-id="f7ecc-104">ASP.NET Ajax : Rozšířené možnosti interakce a rychlost odezvy</span><span class="sxs-lookup"><span data-stu-id="f7ecc-104">ASP.NET Ajax : Enhanced Interactivity and Responsiveness</span></span>
 
-- [<span data-ttu-id="9dd4c-105">AJAX Control Toolkit</span><span class="sxs-lookup"><span data-stu-id="9dd4c-105">AJAX Control Toolkit</span></span>](https://go.devexpress.com/AjaxControlToolkit_ASP_Resources_ASP_AJAX_Index.aspx)
-- [<span data-ttu-id="9dd4c-106">jQuery</span><span class="sxs-lookup"><span data-stu-id="9dd4c-106">jQuery</span></span>](http://jquery.com/)
-- [<span data-ttu-id="9dd4c-107">Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="9dd4c-107">Microsoft Ajax CDN</span></span>](cdn/overview.md)
+- [<span data-ttu-id="f7ecc-105">AJAX Control Toolkit</span><span class="sxs-lookup"><span data-stu-id="f7ecc-105">AJAX Control Toolkit</span></span>](https://go.devexpress.com/AjaxControlToolkit_ASP_Resources_ASP_AJAX_Index.aspx)
+- [<span data-ttu-id="f7ecc-106">jQuery</span><span class="sxs-lookup"><span data-stu-id="f7ecc-106">jQuery</span></span>](http://jquery.com/)
+- [<span data-ttu-id="f7ecc-107">Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="f7ecc-107">Microsoft Ajax CDN</span></span>](cdn/overview.md)
