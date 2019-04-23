@@ -12,12 +12,12 @@ ms.openlocfilehash: 63df5e45c817c90957a5818bd9f43c4d3162c679
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59397874"
 ---
-# <a name="signalr-advanced-topics"></a><span data-ttu-id="72e80-103">Funkce SignalR Pokročilá témata</span><span class="sxs-lookup"><span data-stu-id="72e80-103">SignalR Advanced Topics</span></span>
+# <a name="signalr-advanced-topics"></a><span data-ttu-id="40fa3-103">Funkce SignalR Pokročilá témata</span><span class="sxs-lookup"><span data-stu-id="40fa3-103">SignalR Advanced Topics</span></span>
 
-> <span data-ttu-id="72e80-104">Dokumentace k systému SignalR – Pokročilá témata.</span><span class="sxs-lookup"><span data-stu-id="72e80-104">SignalR documentation - advanced topics.</span></span>
+> <span data-ttu-id="40fa3-104">Dokumentace k systému SignalR – Pokročilá témata.</span><span class="sxs-lookup"><span data-stu-id="40fa3-104">SignalR documentation - advanced topics.</span></span>
 
 
-- [<span data-ttu-id="72e80-105">Injektáž závislostí v centrech SignalR</span><span class="sxs-lookup"><span data-stu-id="72e80-105">Dependency Injection in SignalR</span></span>](dependency-injection.md)
+- [<span data-ttu-id="40fa3-105">Injektáž závislostí v centrech SignalR</span><span class="sxs-lookup"><span data-stu-id="40fa3-105">Dependency Injection in SignalR</span></span>](dependency-injection.md)

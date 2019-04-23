@@ -12,18 +12,18 @@ ms.openlocfilehash: d8a260152213a8374a9b7b7a31623bca13eccce5
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59399288"
 ---
-# <a name="troubleshooting-production-aspnet-apps"></a><span data-ttu-id="ef859-103">Řešení potíží produkčních aplikací ASP.NET</span><span class="sxs-lookup"><span data-stu-id="ef859-103">Troubleshooting Production ASP.NET Apps</span></span>
+# <a name="troubleshooting-production-aspnet-apps"></a><span data-ttu-id="55e80-103">Řešení potíží produkčních aplikací ASP.NET</span><span class="sxs-lookup"><span data-stu-id="55e80-103">Troubleshooting Production ASP.NET Apps</span></span>
 
-<span data-ttu-id="ef859-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="ef859-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="55e80-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="55e80-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="ef859-105">Toto video vám poskytne rychlý soupis nástroje pro řešení potíží s vašich provozních aplikací ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="ef859-105">This video provides you with a quick inventory of tools to troubleshoot your production ASP.NET applications.</span></span>
+<span data-ttu-id="55e80-105">Toto video vám poskytne rychlý soupis nástroje pro řešení potíží s vašich provozních aplikací ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="55e80-105">This video provides you with a quick inventory of tools to troubleshoot your production ASP.NET applications.</span></span>
 
-[<span data-ttu-id="ef859-106">&#9654;Podívejte se na video (30 minut)</span><span class="sxs-lookup"><span data-stu-id="ef859-106">&#9654; Watch video (30 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/troubleshooting-production-aspnet-apps)
+[<span data-ttu-id="55e80-106">&#9654;Podívejte se na video (30 minut)</span><span class="sxs-lookup"><span data-stu-id="55e80-106">&#9654; Watch video (30 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/troubleshooting-production-aspnet-apps)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="ef859-107">[Předchozí](feature-specific-delegated-management.md)
-> [další](creating-a-site-with-iis7-manager.md)</span><span class="sxs-lookup"><span data-stu-id="ef859-107">[Previous](feature-specific-delegated-management.md)
+> <span data-ttu-id="55e80-107">[Předchozí](feature-specific-delegated-management.md)
+> [další](creating-a-site-with-iis7-manager.md)</span><span class="sxs-lookup"><span data-stu-id="55e80-107">[Previous](feature-specific-delegated-management.md)
 [Next](creating-a-site-with-iis7-manager.md)</span></span>

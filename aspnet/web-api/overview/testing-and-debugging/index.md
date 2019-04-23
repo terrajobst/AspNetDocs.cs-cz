@@ -12,16 +12,16 @@ ms.openlocfilehash: 8b1241294f28441c19a34ef5471883db9d50a529
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59398056"
 ---
-# <a name="testing-and-debugging-aspnet-web-api"></a><span data-ttu-id="80561-103">Testování a ladění v rozhraní ASP.NET Web API</span><span class="sxs-lookup"><span data-stu-id="80561-103">Testing and Debugging ASP.NET Web API</span></span>
+# <a name="testing-and-debugging-aspnet-web-api"></a><span data-ttu-id="62c10-103">Testování a ladění v rozhraní ASP.NET Web API</span><span class="sxs-lookup"><span data-stu-id="62c10-103">Testing and Debugging ASP.NET Web API</span></span>
 
-> <span data-ttu-id="80561-104">Testování a ladění v rozhraní ASP.NET Web API</span><span class="sxs-lookup"><span data-stu-id="80561-104">Testing and debugging ASP.NET Web API</span></span>
+> <span data-ttu-id="62c10-104">Testování a ladění v rozhraní ASP.NET Web API</span><span class="sxs-lookup"><span data-stu-id="62c10-104">Testing and debugging ASP.NET Web API</span></span>
 
 
-- [<span data-ttu-id="80561-105">Trasování ve webovém rozhraní API 2</span><span class="sxs-lookup"><span data-stu-id="80561-105">Tracing in Web API 2</span></span>](tracing-in-aspnet-web-api.md)
-- [<span data-ttu-id="80561-106">Testování jednotek webového rozhraní API 2</span><span class="sxs-lookup"><span data-stu-id="80561-106">Unit Testing Web API 2</span></span>](unit-testing-with-aspnet-web-api.md)
-- [<span data-ttu-id="80561-107">Testování jednotek kontrolerů webového rozhraní API 2 technologie ASP.NET</span><span class="sxs-lookup"><span data-stu-id="80561-107">Unit Testing Controllers in ASP.NET Web API 2</span></span>](unit-testing-controllers-in-web-api.md)
-- [<span data-ttu-id="80561-108">Vytvoření modelu Entity Framework při testování jednotek webového rozhraní API 2</span><span class="sxs-lookup"><span data-stu-id="80561-108">Mocking Entity Framework when Unit Testing Web API 2</span></span>](mocking-entity-framework-when-unit-testing-aspnet-web-api-2.md)
-- [<span data-ttu-id="80561-109">Řešení potíží s chybami HTTP 405 po publikování aplikací s webovým rozhraním API 2</span><span class="sxs-lookup"><span data-stu-id="80561-109">Troubleshooting HTTP 405 Errors after Publishing Web API 2 Applications</span></span>](troubleshooting-http-405-errors-after-publishing-web-api-applications.md)
+- [<span data-ttu-id="62c10-105">Trasování ve webovém rozhraní API 2</span><span class="sxs-lookup"><span data-stu-id="62c10-105">Tracing in Web API 2</span></span>](tracing-in-aspnet-web-api.md)
+- [<span data-ttu-id="62c10-106">Testování jednotek webového rozhraní API 2</span><span class="sxs-lookup"><span data-stu-id="62c10-106">Unit Testing Web API 2</span></span>](unit-testing-with-aspnet-web-api.md)
+- [<span data-ttu-id="62c10-107">Testování jednotek kontrolerů webového rozhraní API 2 technologie ASP.NET</span><span class="sxs-lookup"><span data-stu-id="62c10-107">Unit Testing Controllers in ASP.NET Web API 2</span></span>](unit-testing-controllers-in-web-api.md)
+- [<span data-ttu-id="62c10-108">Vytvoření modelu Entity Framework při testování jednotek webového rozhraní API 2</span><span class="sxs-lookup"><span data-stu-id="62c10-108">Mocking Entity Framework when Unit Testing Web API 2</span></span>](mocking-entity-framework-when-unit-testing-aspnet-web-api-2.md)
+- [<span data-ttu-id="62c10-109">Řešení potíží s chybami HTTP 405 po publikování aplikací s webovým rozhraním API 2</span><span class="sxs-lookup"><span data-stu-id="62c10-109">Troubleshooting HTTP 405 Errors after Publishing Web API 2 Applications</span></span>](troubleshooting-http-405-errors-after-publishing-web-api-applications.md)

@@ -12,18 +12,18 @@ ms.openlocfilehash: ca8af502d6e38d45de5b9a13694c8fa4c507487d
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59398382"
 ---
-# <a name="aspnet-mvc-storefront-part-19a-windows-workflow-followup"></a><span data-ttu-id="1b93c-103">Prezentace ASP.NET MVC – část 19a: Pokračování pracovního postupu Windows</span><span class="sxs-lookup"><span data-stu-id="1b93c-103">ASP.NET MVC Storefront Part 19a: Windows Workflow Followup</span></span>
+# <a name="aspnet-mvc-storefront-part-19a-windows-workflow-followup"></a><span data-ttu-id="3f67e-103">Prezentace ASP.NET MVC – část 19a: Pokračování pracovního postupu Windows</span><span class="sxs-lookup"><span data-stu-id="3f67e-103">ASP.NET MVC Storefront Part 19a: Windows Workflow Followup</span></span>
 
-<span data-ttu-id="1b93c-104">podle [Rob Conery](https://github.com/robconery)</span><span class="sxs-lookup"><span data-stu-id="1b93c-104">by [Rob Conery](https://github.com/robconery)</span></span>
+<span data-ttu-id="3f67e-104">podle [Rob Conery](https://github.com/robconery)</span><span class="sxs-lookup"><span data-stu-id="3f67e-104">by [Rob Conery](https://github.com/robconery)</span></span>
 
-<span data-ttu-id="1b93c-105">V této epizodě I následné s dalšími informacemi o pomocí pracovního postupu Windows, a jsem touch na některém z zobrazila se mi s epizodě 19 zpětnou vazbu.</span><span class="sxs-lookup"><span data-stu-id="1b93c-105">In this episode I followup with more information about using Windows Workflow, and I touch on some of the feedback I received with episode 19.</span></span>
+<span data-ttu-id="3f67e-105">V této epizodě I následné s dalšími informacemi o pomocí pracovního postupu Windows, a jsem touch na některém z zobrazila se mi s epizodě 19 zpětnou vazbu.</span><span class="sxs-lookup"><span data-stu-id="3f67e-105">In this episode I followup with more information about using Windows Workflow, and I touch on some of the feedback I received with episode 19.</span></span>
 
-[<span data-ttu-id="1b93c-106">&#9654;Podívejte se na video (13 min)</span><span class="sxs-lookup"><span data-stu-id="1b93c-106">&#9654; Watch video (13 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-19a-windows-workflow-followup)
+[<span data-ttu-id="3f67e-106">&#9654;Podívejte se na video (13 min)</span><span class="sxs-lookup"><span data-stu-id="3f67e-106">&#9654; Watch video (13 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-19a-windows-workflow-followup)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="1b93c-107">[Předchozí](aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
-> [další](aspnet-mvc-storefront-part-20-logging.md)</span><span class="sxs-lookup"><span data-stu-id="1b93c-107">[Previous](aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
+> <span data-ttu-id="3f67e-107">[Předchozí](aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
+> [další](aspnet-mvc-storefront-part-20-logging.md)</span><span class="sxs-lookup"><span data-stu-id="3f67e-107">[Previous](aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
 [Next](aspnet-mvc-storefront-part-20-logging.md)</span></span>

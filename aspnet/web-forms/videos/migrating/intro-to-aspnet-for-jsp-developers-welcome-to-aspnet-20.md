@@ -12,18 +12,18 @@ ms.openlocfilehash: 978236ae72ec0908b09901d8a8d4d3fd27770b86
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59401631"
 ---
-# <a name="intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20"></a><span data-ttu-id="bd1f6-103">Úvod do ASP.NET pro vývojáře v JSP: Vítejte v ASP.NET 2.0</span><span class="sxs-lookup"><span data-stu-id="bd1f6-103">Intro to ASP.NET for JSP Developers: Welcome to ASP.NET 2.0</span></span>
+# <a name="intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20"></a><span data-ttu-id="3870a-103">Úvod do ASP.NET pro vývojáře v JSP: Vítejte v ASP.NET 2.0</span><span class="sxs-lookup"><span data-stu-id="3870a-103">Intro to ASP.NET for JSP Developers: Welcome to ASP.NET 2.0</span></span>
 
-<span data-ttu-id="bd1f6-104">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="bd1f6-104">by [Microsoft](https://github.com/microsoft)</span></span>
+<span data-ttu-id="3870a-104">by [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="3870a-104">by [Microsoft](https://github.com/microsoft)</span></span>
 
-<span data-ttu-id="bd1f6-105">Tato relace se zaměřuje na základní informace nezbytné k pochopení technologie ASP.NET a jak ASP.NET integruje do rozhraní .NET Framework a Microsoft IIS.</span><span class="sxs-lookup"><span data-stu-id="bd1f6-105">This session focuses on the basic background necessary to understand ASP.NET and how ASP.NET integrates with the .NET Framework and Microsoft IIS.</span></span>
+<span data-ttu-id="3870a-105">Tato relace se zaměřuje na základní informace nezbytné k pochopení technologie ASP.NET a jak ASP.NET integruje do rozhraní .NET Framework a Microsoft IIS.</span><span class="sxs-lookup"><span data-stu-id="3870a-105">This session focuses on the basic background necessary to understand ASP.NET and how ASP.NET integrates with the .NET Framework and Microsoft IIS.</span></span>
 
-[<span data-ttu-id="bd1f6-106">&#9654;Podívejte se na video (61 minuty)</span><span class="sxs-lookup"><span data-stu-id="bd1f6-106">&#9654; Watch video (61 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20)
+[<span data-ttu-id="3870a-106">&#9654;Podívejte se na video (61 minuty)</span><span class="sxs-lookup"><span data-stu-id="3870a-106">&#9654; Watch video (61 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="bd1f6-107">[Předchozí](migrating-from-classic-asp-to-aspnet.md)
-> [další](intro-to-aspnet-for-jsp-developers-building-applications.md)</span><span class="sxs-lookup"><span data-stu-id="bd1f6-107">[Previous](migrating-from-classic-asp-to-aspnet.md)
+> <span data-ttu-id="3870a-107">[Předchozí](migrating-from-classic-asp-to-aspnet.md)
+> [další](intro-to-aspnet-for-jsp-developers-building-applications.md)</span><span class="sxs-lookup"><span data-stu-id="3870a-107">[Previous](migrating-from-classic-asp-to-aspnet.md)
 [Next](intro-to-aspnet-for-jsp-developers-building-applications.md)</span></span>

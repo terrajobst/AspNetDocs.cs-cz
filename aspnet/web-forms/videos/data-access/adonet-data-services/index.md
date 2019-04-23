@@ -12,14 +12,14 @@ ms.openlocfilehash: 6b989e384612f2d663afd431e8daa3afd17f6e6b
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59399772"
 ---
-# <a name="adonet-data-services"></a><span data-ttu-id="b5036-103">ADO.NET Data Services</span><span class="sxs-lookup"><span data-stu-id="b5036-103">ADO.NET Data Services</span></span>
+# <a name="adonet-data-services"></a><span data-ttu-id="4c3c5-103">ADO.NET Data Services</span><span class="sxs-lookup"><span data-stu-id="4c3c5-103">ADO.NET Data Services</span></span>
 
-> <span data-ttu-id="b5036-104">Tato videa ukazují postup vytvoření vrstvy přístupu k datům pomocí typové datové sady pro jednoduchou aplikaci ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="b5036-104">These videos show you how to create a data access layer using a typed data set for a simple ASP.NET application.</span></span>
+> <span data-ttu-id="4c3c5-104">Tato videa ukazují postup vytvoření vrstvy přístupu k datům pomocí typové datové sady pro jednoduchou aplikaci ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="4c3c5-104">These videos show you how to create a data access layer using a typed data set for a simple ASP.NET application.</span></span>
 
 
-- [<span data-ttu-id="b5036-105">Vrstvy přístupu k datům v aplikacích ASP.NET</span><span class="sxs-lookup"><span data-stu-id="b5036-105">Data Access Layers in ASP.NET Applications</span></span>](data-access-layers-in-aspnet-applications.md)
-- [<span data-ttu-id="b5036-106">Ruční svázání sady dat s mřížkou Datagrid</span><span class="sxs-lookup"><span data-stu-id="b5036-106">Manually Bind a Dataset to a Datagrid</span></span>](how-to-manually-bind-a-dataset-to-a-datagrid.md)
-- [<span data-ttu-id="b5036-107">Práce se sadami dat a filtry z aplikace ASP</span><span class="sxs-lookup"><span data-stu-id="b5036-107">Work with Datasets and Filters from an ASP Application</span></span>](how-to-work-with-datasets-and-filters-from-an-asp-application.md)
+- [<span data-ttu-id="4c3c5-105">Vrstvy přístupu k datům v aplikacích ASP.NET</span><span class="sxs-lookup"><span data-stu-id="4c3c5-105">Data Access Layers in ASP.NET Applications</span></span>](data-access-layers-in-aspnet-applications.md)
+- [<span data-ttu-id="4c3c5-106">Ruční svázání datové sady s mřížkou Datagrid</span><span class="sxs-lookup"><span data-stu-id="4c3c5-106">Manually Bind a Dataset to a Datagrid</span></span>](how-to-manually-bind-a-dataset-to-a-datagrid.md)
+- [<span data-ttu-id="4c3c5-107">Práce s datovými sadami a filtry z aplikace ASP</span><span class="sxs-lookup"><span data-stu-id="4c3c5-107">Work with Datasets and Filters from an ASP Application</span></span>](how-to-work-with-datasets-and-filters-from-an-asp-application.md)

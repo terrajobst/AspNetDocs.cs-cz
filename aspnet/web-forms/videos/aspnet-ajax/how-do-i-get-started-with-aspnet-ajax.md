@@ -12,16 +12,16 @@ ms.openlocfilehash: e3e70c0d43c2f2db13180342730156728fa03cc2
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59399967"
 ---
-# <a name="how-do-i-get-started-with-aspnet-ajax"></a><span data-ttu-id="9c046-104">[Postup:] Začínáme s ASP.NET AJAX?</span><span class="sxs-lookup"><span data-stu-id="9c046-104">[How Do I:] Get Started with ASP.NET AJAX?</span></span>
+# <a name="how-do-i-get-started-with-aspnet-ajax"></a><span data-ttu-id="a40f5-104">[Postup:] Začínáme s ASP.NET AJAX?</span><span class="sxs-lookup"><span data-stu-id="a40f5-104">[How Do I:] Get Started with ASP.NET AJAX?</span></span>
 
-<span data-ttu-id="9c046-105">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="9c046-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="a40f5-105">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="a40f5-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="9c046-106">Mějte na paměti, že technologie ASP.NET AJAX je součástí rozhraní .NET 3.5, takže instalace součástí toto video je pouze relevantní, pokud používáte rozhraní .NET Framework verze 2.0.</span><span class="sxs-lookup"><span data-stu-id="9c046-106">Note that ASP.NET AJAX is included as part of .NET 3.5, so the installation part of this video is only relevant if you are using the .NET Framework Version 2.0.</span></span>
+<span data-ttu-id="a40f5-106">Mějte na paměti, že technologie ASP.NET AJAX je součástí rozhraní .NET 3.5, takže instalace součástí toto video je pouze relevantní, pokud používáte rozhraní .NET Framework verze 2.0.</span><span class="sxs-lookup"><span data-stu-id="a40f5-106">Note that ASP.NET AJAX is included as part of .NET 3.5, so the installation part of this video is only relevant if you are using the .NET Framework Version 2.0.</span></span>
 
-[<span data-ttu-id="9c046-107">&#9654;Podívejte se na video (7 minut)</span><span class="sxs-lookup"><span data-stu-id="9c046-107">&#9654; Watch video (7 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-get-started-with-aspnet-ajax)
+[<span data-ttu-id="a40f5-107">&#9654;Podívejte se na video (7 minut)</span><span class="sxs-lookup"><span data-stu-id="a40f5-107">&#9654; Watch video (7 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-get-started-with-aspnet-ajax)
 
 > [!div class="step-by-step"]
-> [<span data-ttu-id="9c046-108">Next</span><span class="sxs-lookup"><span data-stu-id="9c046-108">Next</span></span>](how-do-i-implement-dynamic-partial-page-updates-with-aspnet-ajax.md)
+> [<span data-ttu-id="a40f5-108">Next</span><span class="sxs-lookup"><span data-stu-id="a40f5-108">Next</span></span>](how-do-i-implement-dynamic-partial-page-updates-with-aspnet-ajax.md)

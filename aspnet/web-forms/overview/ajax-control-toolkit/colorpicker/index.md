@@ -12,13 +12,13 @@ ms.openlocfilehash: 5620710239c282b126fadd2e0ca09e71bac8786f
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59407390"
 ---
-# <a name="colorpicker"></a><span data-ttu-id="0bab5-103">ColorPicker</span><span class="sxs-lookup"><span data-stu-id="0bab5-103">ColorPicker</span></span>
+# <a name="colorpicker"></a><span data-ttu-id="3499e-103">ColorPicker</span><span class="sxs-lookup"><span data-stu-id="3499e-103">ColorPicker</span></span>
 
-> <span data-ttu-id="0bab5-104">Tento kurz ukazuje, jak pomocí ovládacího prvku ColorPicker, kterou můžou uživatelé vybrat barvu z automaticky otevíraném okně.</span><span class="sxs-lookup"><span data-stu-id="0bab5-104">This tutorial shows how to use the ColorPicker control, which lets users select a color from a popup window.</span></span>
+> <span data-ttu-id="3499e-104">Tento kurz ukazuje, jak pomocí ovládacího prvku ColorPicker, kterou můžou uživatelé vybrat barvu z automaticky otevíraném okně.</span><span class="sxs-lookup"><span data-stu-id="3499e-104">This tutorial shows how to use the ColorPicker control, which lets users select a color from a popup window.</span></span>
 
 
-- [<span data-ttu-id="0bab5-105">Rozšiřující ovládací prvek pro ovládací prvek ColorPicker (C#)</span><span class="sxs-lookup"><span data-stu-id="0bab5-105">ColorPicker Control Extender (C#)</span></span>](using-the-colorpicker-control-extender-cs.md)
-- [<span data-ttu-id="0bab5-106">Rozšiřující ovládací prvek pro ovládací prvek ColorPicker (VB)</span><span class="sxs-lookup"><span data-stu-id="0bab5-106">ColorPicker Control Extender (VB)</span></span>](using-the-colorpicker-control-extender-vb.md)
+- [<span data-ttu-id="3499e-105">Extender ovládacího prvku ColorPicker (C#)</span><span class="sxs-lookup"><span data-stu-id="3499e-105">ColorPicker Control Extender (C#)</span></span>](using-the-colorpicker-control-extender-cs.md)
+- [<span data-ttu-id="3499e-106">Extender ovládacího prvku ColorPicker (VB)</span><span class="sxs-lookup"><span data-stu-id="3499e-106">ColorPicker Control Extender (VB)</span></span>](using-the-colorpicker-control-extender-vb.md)

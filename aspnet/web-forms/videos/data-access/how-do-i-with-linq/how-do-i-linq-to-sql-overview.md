@@ -12,16 +12,16 @@ ms.openlocfilehash: 56dda72b8cadcef4449f3ff6e8e8e4e3315d0687
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59402879"
 ---
-# <a name="how-do-i-linq-to-sql-overview"></a><span data-ttu-id="6fa3a-104">[Postup:] Technologie LINQ to SQL: Přehled</span><span class="sxs-lookup"><span data-stu-id="6fa3a-104">[How Do I:] LINQ to SQL: Overview</span></span>
+# <a name="how-do-i-linq-to-sql-overview"></a><span data-ttu-id="e0bd6-104">[Postup:] Technologie LINQ to SQL: Přehled</span><span class="sxs-lookup"><span data-stu-id="e0bd6-104">[How Do I:] LINQ to SQL: Overview</span></span>
 
-<span data-ttu-id="6fa3a-105">podle [Scott Stanfield](https://github.com/scottstanfield)</span><span class="sxs-lookup"><span data-stu-id="6fa3a-105">by [Scott Stanfield](https://github.com/scottstanfield)</span></span>
+<span data-ttu-id="e0bd6-105">podle [Scott Stanfield](https://github.com/scottstanfield)</span><span class="sxs-lookup"><span data-stu-id="e0bd6-105">by [Scott Stanfield](https://github.com/scottstanfield)</span></span>
 
-<span data-ttu-id="6fa3a-106">Nové funkce jazyků C# a VB podporují přístup k datům přímo z kódu, aniž byste museli psát SQL.</span><span class="sxs-lookup"><span data-stu-id="6fa3a-106">New language features for C# and VB support data access directly from code, without writing SQL.</span></span> <span data-ttu-id="6fa3a-107">Toto video ukazuje minimální postup pomocí LINQ (Language Integrated Query) k dotazování, aktualizaci, přidání a odstranění řádků z databáze Northwind.</span><span class="sxs-lookup"><span data-stu-id="6fa3a-107">This video shows the minimum steps to use LINQ (Language Integrated Query) to query, update, add and delete rows from the Northwind database.</span></span>
+<span data-ttu-id="e0bd6-106">Nové funkce jazyků C# a VB podporují přístup k datům přímo z kódu, aniž byste museli psát SQL.</span><span class="sxs-lookup"><span data-stu-id="e0bd6-106">New language features for C# and VB support data access directly from code, without writing SQL.</span></span> <span data-ttu-id="e0bd6-107">Toto video ukazuje minimální postup pomocí LINQ (Language Integrated Query) k dotazování, aktualizaci, přidání a odstranění řádků z databáze Northwind.</span><span class="sxs-lookup"><span data-stu-id="e0bd6-107">This video shows the minimum steps to use LINQ (Language Integrated Query) to query, update, add and delete rows from the Northwind database.</span></span>
 
-[<span data-ttu-id="6fa3a-108">&#9654;Podívejte se na video (9 minut)</span><span class="sxs-lookup"><span data-stu-id="6fa3a-108">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-linq-to-sql-overview)
+[<span data-ttu-id="e0bd6-108">&#9654;Podívejte se na video (9 minut)</span><span class="sxs-lookup"><span data-stu-id="e0bd6-108">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-linq-to-sql-overview)
 
 > [!div class="step-by-step"]
-> [<span data-ttu-id="6fa3a-109">Next</span><span class="sxs-lookup"><span data-stu-id="6fa3a-109">Next</span></span>](how-do-i-linq-to-sql-data-model.md)
+> [<span data-ttu-id="e0bd6-109">Next</span><span class="sxs-lookup"><span data-stu-id="e0bd6-109">Next</span></span>](how-do-i-linq-to-sql-data-model.md)

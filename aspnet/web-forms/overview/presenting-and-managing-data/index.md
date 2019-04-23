@@ -12,19 +12,19 @@ ms.openlocfilehash: c1bd52b47b42005ed22f107b9f8aaa65c0ed111a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59402021"
 ---
-# <a name="working-with-data-in-aspnet-web-forms"></a><span data-ttu-id="ba8e1-103">Práce s daty ve webových formulářích ASP.NET</span><span class="sxs-lookup"><span data-stu-id="ba8e1-103">Working with Data in ASP.NET Web Forms</span></span>
+# <a name="working-with-data-in-aspnet-web-forms"></a><span data-ttu-id="01fee-103">Práce s daty ve webových formulářích ASP.NET</span><span class="sxs-lookup"><span data-stu-id="01fee-103">Working with Data in ASP.NET Web Forms</span></span>
 
-> <span data-ttu-id="ba8e1-104">Jak získat přístup k datům pomocí ovládacích prvků a zachování informací mezi požadavky.</span><span class="sxs-lookup"><span data-stu-id="ba8e1-104">How to access data using controls and how to persist information between requests.</span></span>
+> <span data-ttu-id="01fee-104">Jak získat přístup k datům pomocí ovládacích prvků a zachování informací mezi požadavky.</span><span class="sxs-lookup"><span data-stu-id="01fee-104">How to access data using controls and how to persist information between requests.</span></span>
 
 
-- [<span data-ttu-id="ba8e1-105">Vazby modelu a webové formuláře v sadě Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="ba8e1-105">Model Binding and Web Forms in Visual Studio 2013</span></span>](model-binding/index.md)
+- [<span data-ttu-id="01fee-105">Vazby modelu a webové formuláře v sadě Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="01fee-105">Model Binding and Web Forms in Visual Studio 2013</span></span>](model-binding/index.md)
 
-    - [<span data-ttu-id="ba8e1-106">Načítání a zobrazování dat</span><span class="sxs-lookup"><span data-stu-id="ba8e1-106">Retrieving and Displaying Data</span></span>](model-binding/retrieving-data.md)
-    - [<span data-ttu-id="ba8e1-107">Aktualizace, odstraňování a vytváření dat</span><span class="sxs-lookup"><span data-stu-id="ba8e1-107">Updating, Deleting, and Creating Data</span></span>](model-binding/updating-deleting-and-creating-data.md)
-    - [<span data-ttu-id="ba8e1-108">Řazení, stránkování a filtrování dat</span><span class="sxs-lookup"><span data-stu-id="ba8e1-108">Sorting, Paging, and Filtering Data</span></span>](model-binding/sorting-paging-and-filtering-data.md)
-    - [<span data-ttu-id="ba8e1-109">Integrace prvku DatePicker uživatelského rozhraní JQuery</span><span class="sxs-lookup"><span data-stu-id="ba8e1-109">Integrating JQuery UI Datepicker</span></span>](model-binding/integrating-jquery-ui.md)
-    - [<span data-ttu-id="ba8e1-110">Použití hodnot řetězce dotazu k filtrování dat</span><span class="sxs-lookup"><span data-stu-id="ba8e1-110">Using Query String Values to Filter Data</span></span>](model-binding/using-query-string-values-to-retrieve-data.md)
-    - [<span data-ttu-id="ba8e1-111">Přidání vrstvy obchodní logiky</span><span class="sxs-lookup"><span data-stu-id="ba8e1-111">Adding Business Logic Layer</span></span>](model-binding/adding-business-logic-layer.md)
+    - [<span data-ttu-id="01fee-106">Načítání a zobrazování dat</span><span class="sxs-lookup"><span data-stu-id="01fee-106">Retrieving and Displaying Data</span></span>](model-binding/retrieving-data.md)
+    - [<span data-ttu-id="01fee-107">Aktualizace, odstraňování a vytváření dat</span><span class="sxs-lookup"><span data-stu-id="01fee-107">Updating, Deleting, and Creating Data</span></span>](model-binding/updating-deleting-and-creating-data.md)
+    - [<span data-ttu-id="01fee-108">Řazení, stránkování a filtrování dat</span><span class="sxs-lookup"><span data-stu-id="01fee-108">Sorting, Paging, and Filtering Data</span></span>](model-binding/sorting-paging-and-filtering-data.md)
+    - [<span data-ttu-id="01fee-109">Integrace prvku DatePicker uživatelského rozhraní JQuery</span><span class="sxs-lookup"><span data-stu-id="01fee-109">Integrating JQuery UI Datepicker</span></span>](model-binding/integrating-jquery-ui.md)
+    - [<span data-ttu-id="01fee-110">Použití hodnot řetězce dotazu k filtrování dat</span><span class="sxs-lookup"><span data-stu-id="01fee-110">Using Query String Values to Filter Data</span></span>](model-binding/using-query-string-values-to-retrieve-data.md)
+    - [<span data-ttu-id="01fee-111">Přidání vrstvy obchodní logiky</span><span class="sxs-lookup"><span data-stu-id="01fee-111">Adding Business Logic Layer</span></span>](model-binding/adding-business-logic-layer.md)

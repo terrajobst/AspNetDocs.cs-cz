@@ -12,13 +12,13 @@ ms.openlocfilehash: 846f34ae104f4b69dce18f6dace4fd341365f7a5
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59397887"
 ---
-# <a name="combobox"></a><span data-ttu-id="c6915-103">ComboBox</span><span class="sxs-lookup"><span data-stu-id="c6915-103">ComboBox</span></span>
+# <a name="combobox"></a><span data-ttu-id="0cd16-103">ComboBox</span><span class="sxs-lookup"><span data-stu-id="0cd16-103">ComboBox</span></span>
 
-> <span data-ttu-id="c6915-104">Tento kurz ukazuje, jak pomocí ovládacího prvku pole se seznamem, který kombinuje flexibilitu textové pole se seznamem možností, které uživatelé můžou vybírat.</span><span class="sxs-lookup"><span data-stu-id="c6915-104">This tutorial shows how to use the ComboBox control, which combines the flexibility of a text box with a list of options that users can choose from.</span></span>
+> <span data-ttu-id="0cd16-104">Tento kurz ukazuje, jak pomocí ovládacího prvku pole se seznamem, který kombinuje flexibilitu textové pole se seznamem možností, které uživatelé můžou vybírat.</span><span class="sxs-lookup"><span data-stu-id="0cd16-104">This tutorial shows how to use the ComboBox control, which combines the flexibility of a text box with a list of options that users can choose from.</span></span>
 
 
-- [<span data-ttu-id="c6915-105">Ovládací prvek ComboBox (C#)</span><span class="sxs-lookup"><span data-stu-id="c6915-105">ComboBox Control (C#)</span></span>](how-do-i-use-the-combobox-control-cs.md)
-- [<span data-ttu-id="c6915-106">Ovládací prvek ComboBox (VB)</span><span class="sxs-lookup"><span data-stu-id="c6915-106">ComboBox Control (VB)</span></span>](how-do-i-use-the-combobox-control-vb.md)
+- [<span data-ttu-id="0cd16-105">Ovládací prvek ComboBox (C#)</span><span class="sxs-lookup"><span data-stu-id="0cd16-105">ComboBox Control (C#)</span></span>](how-do-i-use-the-combobox-control-cs.md)
+- [<span data-ttu-id="0cd16-106">Ovládací prvek ComboBox (VB)</span><span class="sxs-lookup"><span data-stu-id="0cd16-106">ComboBox Control (VB)</span></span>](how-do-i-use-the-combobox-control-vb.md)

@@ -12,13 +12,13 @@ ms.openlocfilehash: 19ea64d706cf301722efa29e5eca952d004d1710
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59406792"
 ---
-# <a name="passwordstrength"></a><span data-ttu-id="41fa9-103">PasswordStrength</span><span class="sxs-lookup"><span data-stu-id="41fa9-103">PasswordStrength</span></span>
+# <a name="passwordstrength"></a><span data-ttu-id="2cd12-103">PasswordStrength</span><span class="sxs-lookup"><span data-stu-id="2cd12-103">PasswordStrength</span></span>
 
-> <span data-ttu-id="41fa9-104">Tento kurz ukazuje, jak ovládací prvek PasswordStrength ke kontrole jak silné heslo se jako uživatel ji vytvoří.</span><span class="sxs-lookup"><span data-stu-id="41fa9-104">This tutorial shows how to PasswordStrength control to check how strong a password is as a user creates it.</span></span>
+> <span data-ttu-id="2cd12-104">Tento kurz ukazuje, jak ovládací prvek PasswordStrength ke kontrole jak silné heslo se jako uživatel ji vytvoří.</span><span class="sxs-lookup"><span data-stu-id="2cd12-104">This tutorial shows how to PasswordStrength control to check how strong a password is as a user creates it.</span></span>
 
 
-- [<span data-ttu-id="41fa9-105">Testování síly hesla (C#)</span><span class="sxs-lookup"><span data-stu-id="41fa9-105">Testing the Strength of a Password (C#)</span></span>](testing-the-strength-of-a-password-cs.md)
-- [<span data-ttu-id="41fa9-106">Testování síly hesla (VB)</span><span class="sxs-lookup"><span data-stu-id="41fa9-106">Testing the Strength of a Password (VB)</span></span>](testing-the-strength-of-a-password-vb.md)
+- [<span data-ttu-id="2cd12-105">Testování síly hesla (C#)</span><span class="sxs-lookup"><span data-stu-id="2cd12-105">Testing the Strength of a Password (C#)</span></span>](testing-the-strength-of-a-password-cs.md)
+- [<span data-ttu-id="2cd12-106">Testování síly hesla (VB)</span><span class="sxs-lookup"><span data-stu-id="2cd12-106">Testing the Strength of a Password (VB)</span></span>](testing-the-strength-of-a-password-vb.md)

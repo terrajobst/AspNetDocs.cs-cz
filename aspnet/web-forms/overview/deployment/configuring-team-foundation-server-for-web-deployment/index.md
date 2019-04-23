@@ -12,18 +12,18 @@ ms.openlocfilehash: 3226039ad399fb43c82c98331be41450f6f679bd
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59405200"
 ---
-# <a name="aspnet-4---enterprise-deployment-series-3-configuring-tfs"></a><span data-ttu-id="20178-103">ASP.NET 4 – nasazení v podniku (3. část) – konfigurace TFS</span><span class="sxs-lookup"><span data-stu-id="20178-103">ASP.NET 4 - Enterprise Deployment Series 3 Configuring TFS</span></span>
+# <a name="aspnet-4---enterprise-deployment-series-3-configuring-tfs"></a><span data-ttu-id="9a150-103">ASP.NET 4 – nasazení v podniku (3. část) – konfigurace TFS</span><span class="sxs-lookup"><span data-stu-id="9a150-103">ASP.NET 4 - Enterprise Deployment Series 3 Configuring TFS</span></span>
 
-> <span data-ttu-id="20178-104">Tomto kurzu se dozvíte, jak nakonfigurovat Team Foundation Server (TFS) 2010 k sestavení řešení a nasazení webového obsahu do různých cílových prostředích.</span><span class="sxs-lookup"><span data-stu-id="20178-104">This tutorial will show you how to configure Team Foundation Server (TFS) 2010 to build solutions and deploy web content to various target environments.</span></span>
+> <span data-ttu-id="9a150-104">Tomto kurzu se dozvíte, jak nakonfigurovat Team Foundation Server (TFS) 2010 k sestavení řešení a nasazení webového obsahu do různých cílových prostředích.</span><span class="sxs-lookup"><span data-stu-id="9a150-104">This tutorial will show you how to configure Team Foundation Server (TFS) 2010 to build solutions and deploy web content to various target environments.</span></span>
 
 
-- [<span data-ttu-id="20178-105">Konfigurace sady Team Foundation Server pro nasazení webu</span><span class="sxs-lookup"><span data-stu-id="20178-105">Configuring Team Foundation Server for Web Deployment</span></span>](configuring-team-foundation-server-for-web-deployment.md)
-- [<span data-ttu-id="20178-106">Vytváření týmových projektů v TFS</span><span class="sxs-lookup"><span data-stu-id="20178-106">Creating a Team Project in TFS</span></span>](creating-a-team-project-in-tfs.md)
-- [<span data-ttu-id="20178-107">Přidání obsahu do správy zdrojového kódu</span><span class="sxs-lookup"><span data-stu-id="20178-107">Adding Content to Source Control</span></span>](adding-content-to-source-control.md)
-- [<span data-ttu-id="20178-108">Konfigurace serveru TFS Build pro nasazení webu</span><span class="sxs-lookup"><span data-stu-id="20178-108">Configuring a TFS Build Server for Web Deployment</span></span>](configuring-a-tfs-build-server-for-web-deployment.md)
-- [<span data-ttu-id="20178-109">Vytvoření definice nasazení, která podporuje nasazení</span><span class="sxs-lookup"><span data-stu-id="20178-109">Creating a Build Definition That Supports Deployment</span></span>](creating-a-build-definition-that-supports-deployment.md)
-- [<span data-ttu-id="20178-110">Nasazení konkrétního sestavení</span><span class="sxs-lookup"><span data-stu-id="20178-110">Deploying a Specific Build</span></span>](deploying-a-specific-build.md)
-- [<span data-ttu-id="20178-111">Konfigurace oprávnění pro nasazení týmového sestavení</span><span class="sxs-lookup"><span data-stu-id="20178-111">Configuring Permissions for Team Build Deployment</span></span>](configuring-permissions-for-team-build-deployment.md)
+- [<span data-ttu-id="9a150-105">Konfigurace sady Team Foundation Server pro nasazení webu</span><span class="sxs-lookup"><span data-stu-id="9a150-105">Configuring Team Foundation Server for Web Deployment</span></span>](configuring-team-foundation-server-for-web-deployment.md)
+- [<span data-ttu-id="9a150-106">Vytváření týmových projektů v TFS</span><span class="sxs-lookup"><span data-stu-id="9a150-106">Creating a Team Project in TFS</span></span>](creating-a-team-project-in-tfs.md)
+- [<span data-ttu-id="9a150-107">Přidání obsahu do Správy zdrojů</span><span class="sxs-lookup"><span data-stu-id="9a150-107">Adding Content to Source Control</span></span>](adding-content-to-source-control.md)
+- [<span data-ttu-id="9a150-108">Konfigurace serveru TFS Build pro nasazení webu</span><span class="sxs-lookup"><span data-stu-id="9a150-108">Configuring a TFS Build Server for Web Deployment</span></span>](configuring-a-tfs-build-server-for-web-deployment.md)
+- [<span data-ttu-id="9a150-109">Vytvoření definice nasazení, která podporuje nasazení</span><span class="sxs-lookup"><span data-stu-id="9a150-109">Creating a Build Definition That Supports Deployment</span></span>](creating-a-build-definition-that-supports-deployment.md)
+- [<span data-ttu-id="9a150-110">Nasazení konkrétního sestavení</span><span class="sxs-lookup"><span data-stu-id="9a150-110">Deploying a Specific Build</span></span>](deploying-a-specific-build.md)
+- [<span data-ttu-id="9a150-111">Konfigurace oprávnění pro nasazení týmového sestavení</span><span class="sxs-lookup"><span data-stu-id="9a150-111">Configuring Permissions for Team Build Deployment</span></span>](configuring-permissions-for-team-build-deployment.md)

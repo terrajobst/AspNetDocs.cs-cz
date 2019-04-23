@@ -12,18 +12,18 @@ ms.openlocfilehash: c6e7a23c2b642f0aab12a88b5aae6a215ad1e74c
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59404634"
 ---
-# <a name="how-do-i-use-the-aspnet-ajax-draggable-panel-extender"></a><span data-ttu-id="8a579-104">[Postup:] Použít zařízení Extender Přetažitelného panelu technologie ASP.NET AJAX?</span><span class="sxs-lookup"><span data-stu-id="8a579-104">[How Do I:] Use the ASP.NET AJAX Draggable Panel Extender?</span></span>
+# <a name="how-do-i-use-the-aspnet-ajax-draggable-panel-extender"></a><span data-ttu-id="29dd3-104">[Postup:] Použít zařízení Extender Přetažitelného panelu technologie ASP.NET AJAX?</span><span class="sxs-lookup"><span data-stu-id="29dd3-104">[How Do I:] Use the ASP.NET AJAX Draggable Panel Extender?</span></span>
 
-<span data-ttu-id="8a579-105">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="8a579-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="29dd3-105">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="29dd3-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="8a579-106">S Extender Přetažitelného panelu technologie ASP.NET AJAX můžete poskytovat panelu obsahu oblast záhlaví, který umožňuje uživateli přesunutí panelu kolem webové stránky.</span><span class="sxs-lookup"><span data-stu-id="8a579-106">With the ASP.NET AJAX Draggable Panel Extender you can provide a content panel with a header area that allows the user to move the panel around the web page.</span></span>
+<span data-ttu-id="29dd3-106">S Extender Přetažitelného panelu technologie ASP.NET AJAX můžete poskytovat panelu obsahu oblast záhlaví, který umožňuje uživateli přesunutí panelu kolem webové stránky.</span><span class="sxs-lookup"><span data-stu-id="29dd3-106">With the ASP.NET AJAX Draggable Panel Extender you can provide a content panel with a header area that allows the user to move the panel around the web page.</span></span>
 
-[<span data-ttu-id="8a579-107">&#9654;Podívejte se na video (6 minut)</span><span class="sxs-lookup"><span data-stu-id="8a579-107">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-draggable-panel-extender)
+[<span data-ttu-id="29dd3-107">&#9654;Podívejte se na video (6 minut)</span><span class="sxs-lookup"><span data-stu-id="29dd3-107">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-draggable-panel-extender)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="8a579-108">[Předchozí](how-do-i-use-the-aspnet-ajax-collapsable-panel-extender.md)
-> [další](how-do-i-use-the-aspnet-ajax-dynamicpopulate-extender.md)</span><span class="sxs-lookup"><span data-stu-id="8a579-108">[Previous](how-do-i-use-the-aspnet-ajax-collapsable-panel-extender.md)
+> <span data-ttu-id="29dd3-108">[Předchozí](how-do-i-use-the-aspnet-ajax-collapsable-panel-extender.md)
+> [další](how-do-i-use-the-aspnet-ajax-dynamicpopulate-extender.md)</span><span class="sxs-lookup"><span data-stu-id="29dd3-108">[Previous](how-do-i-use-the-aspnet-ajax-collapsable-panel-extender.md)
 [Next](how-do-i-use-the-aspnet-ajax-dynamicpopulate-extender.md)</span></span>
