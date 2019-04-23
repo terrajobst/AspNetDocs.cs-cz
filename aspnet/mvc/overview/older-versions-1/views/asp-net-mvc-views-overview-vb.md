@@ -12,7 +12,7 @@ ms.openlocfilehash: 84af745d338e38ece438fa58d51d0929c7b92967
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59408456"
 ---
 # <a name="aspnet-mvc-views-overview-vb"></a>ASP.NET MVC – přehled zobrazení (VB)
@@ -75,7 +75,7 @@ Zobrazení je standard (dokumentu HTML, který může obsahovat skriptů X). Př
 
 Například zobrazení v informacích 2 ukazuje aktuální datum a čas.
 
-**Výpis 2 - \Views\Home\Index.aspx**
+**Listing 2 - \Views\Home\Index.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample2.aspx)]
 
@@ -104,7 +104,7 @@ Například zobrazení výpisu 4 využívá registrů tři pomocných rutin HTML
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample4.aspx)]
 
 
-[![TDialogové okno Nový projekt he](asp-net-mvc-views-overview-vb/_static/image1.jpg)](asp-net-mvc-views-overview-vb/_static/image1.png)
+[![Dialogové okno Nový projekt](asp-net-mvc-views-overview-vb/_static/image1.jpg)](asp-net-mvc-views-overview-vb/_static/image1.png)
 
 **Obrázek 01**: Standardní přihlašovací formulář ([kliknutím ji zobrazíte obrázek v plné velikosti](asp-net-mvc-views-overview-vb/_static/image2.png))
 

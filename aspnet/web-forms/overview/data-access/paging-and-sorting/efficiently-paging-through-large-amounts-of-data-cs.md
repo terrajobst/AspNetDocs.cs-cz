@@ -12,7 +12,7 @@ ms.openlocfilehash: 21f37dc1ffbcb7e8e15e4bed261b68ffc0388c21
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59388423"
 ---
 # <a name="efficiently-paging-through-large-amounts-of-data-c"></a>Účinné stránkování velkých objemů dat (C#)
@@ -191,7 +191,7 @@ Po vytvoření uložené procedury, věnujte chvíli otestování. Klikněte pra
 Po výběru těchto vstupní hodnoty parametrů, v okně výstupu se zobrazí výsledky. Obrázek 8 ukazuje výsledky při předávání v 10 pro obě `@startRowIndex` a `@maximumRows` parametry.
 
 
-[![Tmá záznamy, že by se zobrazí v druhé stránce Data jsou vrácena](efficiently-paging-through-large-amounts-of-data-cs/_static/image9.png)](efficiently-paging-through-large-amounts-of-data-cs/_static/image8.png)
+[![Jsou vráceny záznamy, že by se zobrazí v druhé Data stránky](efficiently-paging-through-large-amounts-of-data-cs/_static/image9.png)](efficiently-paging-through-large-amounts-of-data-cs/_static/image8.png)
 
 **Obrázek 8**: Záznamy, že by se zobrazí v druhé stránce Data jsou vráceny ([kliknutím ji zobrazíte obrázek v plné velikosti](efficiently-paging-through-large-amounts-of-data-cs/_static/image10.png))
 
@@ -293,7 +293,7 @@ Všimněte si, že `EnablePaging` a `SelectCountMethod` byly nastaveny a `<asp:P
 Po provedení těchto změn, navštivte tuto stránku prostřednictvím prohlížeče. Měli byste vidět 10 produkty uvedené, seřazené podle abecedy. Chcete-li si jednu stránku dat najednou chvíli trvat. Neplatí žádné rozdíly ve visual z pohledu koncového uživatele s mezi stránkování výchozí a vlastní stránkování, vlastní stránkování efektivněji stránky velkých objemů dat, jak načítat pouze ty záznamy, které je třeba má být zobrazen pro danou stránku.
 
 
-[![The Data, seřazené podle produkt s názvem, je stránkování pomocí vlastní stránkování](efficiently-paging-through-large-amounts-of-data-cs/_static/image20.png)](efficiently-paging-through-large-amounts-of-data-cs/_static/image19.png)
+[![Data, Objednáno podle produktu s názvem, je stránkování pomocí vlastní stránkování](efficiently-paging-through-large-amounts-of-data-cs/_static/image20.png)](efficiently-paging-through-large-amounts-of-data-cs/_static/image19.png)
 
 **Obrázek 17**: Data, Objednáno podle produktu s názvem, je stránkování pomocí vlastní stránkování ([kliknutím ji zobrazíte obrázek v plné velikosti](efficiently-paging-through-large-amounts-of-data-cs/_static/image21.png))
 
@@ -309,7 +309,7 @@ Kliknutím na odkaz na poslední stránku vyvolá zpětné volání a dává pok
 Naše aktuální vlastní implementaci stránkování vyžaduje objednávky, podle kterého je stránkování dat prostřednictvím staticky při vytváření `GetProductsPaged` uložené procedury. Můžete však pravděpodobně jste si poznamenali, že prvek GridView s inteligentním obsahuje zaškrtávací políčko Povolit řazení kromě možnost Povolit stránkování. Bohužel přidání podpory pro řazení do prvku GridView s naší aktuální vlastní implementaci stránkování bude pouze se záznamy řadily na aktuálně zobrazené stránce data. Například pokud nakonfigurujete prvku GridView a také podporuje stránkování, při prohlížení na první stránku dat, seřaďte podle názvu produktu v sestupném pořadí, bude převraťte pořadí produktů na stránce 1. Jak ukazuje obrázek 18, například Carnarvon tygři zobrazuje jako první produktu při řazení ve vzestupném abecedním pořadí, které ignoruje 71 jiné produkty, které po Carnarvon tygři abecedně; jen takové záznamy na první stránce jsou považovány za v řazení.
 
 
-[![Ojen pro Data zobrazí na aktuální stránce má řazení proběhnout](efficiently-paging-through-large-amounts-of-data-cs/_static/image23.png)](efficiently-paging-through-large-amounts-of-data-cs/_static/image22.png)
+[![Má řazení proběhnout pouze Data zobrazí na aktuální stránce.](efficiently-paging-through-large-amounts-of-data-cs/_static/image23.png)](efficiently-paging-through-large-amounts-of-data-cs/_static/image22.png)
 
 **Obrázek 18**: Pouze Data zobrazí na aktuální stránce má řazení proběhnout ([kliknutím ji zobrazíte obrázek v plné velikosti](efficiently-paging-through-large-amounts-of-data-cs/_static/image24.png))
 
@@ -356,8 +356,8 @@ Bohužel neexistuje s bez velikosti, která tady všechny odpovědi. Zvýšení 
 | --- | --- | --- |
 | **Výchozí stránkování SQL Profiler** | 1.411 | 383 |
 | **Vlastní stránkování SQL Profiler** | 0.002 | 29 |
-| **Výchozí trasování procesu ASP.NET stránkování** | 2.379 | *Není k dispozici* |
-| **Vlastní stránkování ASP.NET trasování** | 0.029 | *Není k dispozici* |
+| **Výchozí trasování procesu ASP.NET stránkování** | 2.379 | *NENÍ K DISPOZICI* |
+| **Vlastní stránkování ASP.NET trasování** | 0.029 | *NENÍ K DISPOZICI* |
 
 
 Jak je vidět, načtení konkrétní stránky dat vyžaduje 354 méně čtení v průměru a za zlomek času dokončení. Na stránce technologie ASP.NET, vlastní stránka byla schopna vykreslit v blízkosti 1/100<sup>th</sup> dobu, jakou trvalo při použití výchozího stránkování. Zobrazit [Moje článku](http://aspnet.4guysfromrolla.com/articles/031506-1.aspx) Další informace o těchto výsledků spolu s kódem a databázi, která si můžete stáhnout pro reprodukci tyto testy ve vlastním prostředí.

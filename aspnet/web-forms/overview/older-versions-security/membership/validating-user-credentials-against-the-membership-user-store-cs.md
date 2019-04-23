@@ -12,7 +12,7 @@ ms.openlocfilehash: d962036213d779f73e5d837af1de42a01f08a329
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59389216"
 ---
 # <a name="validating-user-credentials-against-the-membership-user-store-c"></a>Ověření přihlašovacích údajů uživatele v úložišti uživatelů, kteří jsou členy (C#)
@@ -43,7 +43,7 @@ Chcete-li ověřit uživatele vůči framework členství, použijte `Membership
 Umožňuje aktualizovat naši stránku pro přihlášení (~ /`Login.aspx`) tak, aby ověří zadané přihlašovací údaje proti úložišti framework uživatele členství. Jsme vytvořili tento přihlašovací stránku zpátky <a id="Tutorial02"> </a> [ *Přehled ověřování založené na formulářích* ](../introduction/an-overview-of-forms-authentication-cs.md) kurz vytváření rozhraní s dvě textová pole pro uživatelské jméno a heslo, Pamatovat si mě zaškrtávacího políčka a tlačítka pro přihlášení (viz obrázek 1). Kód ověří zadané přihlašovací údaje pevně zakódované seznam dvojic uživatelské jméno a heslo (Scott a hesla, Jisun a hesla a Sam a hesla). V <a id="Tutorial03"> </a> [ *konfigurace ověřování formulářů a témata pokročilé* ](../introduction/forms-authentication-configuration-and-advanced-topics-cs.md) kurzu jsme aktualizovali kód na přihlašovací stránku k ukládání dalších informací ve formulářích lístek ověřování `UserData` vlastnost.
 
 
-[![The přihlašovací stránky rozhraní zahrnuje dvě textová pole, třídy CheckBoxList a tlačítko](validating-user-credentials-against-the-membership-user-store-cs/_static/image2.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image1.png)
+[![Přihlašovací stránky rozhraní zahrnuje dvě textová pole, třídy CheckBoxList a tlačítko](validating-user-credentials-against-the-membership-user-store-cs/_static/image2.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image1.png)
 
 **Obrázek 1**: Přihlašovací stránky rozhraní zahrnuje dvě textová pole, třídy CheckBoxList a tlačítko ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-user-credentials-against-the-membership-user-store-cs/_static/image3.png))
 
@@ -86,7 +86,7 @@ Bohužel není žádný integrovaný nástroj pro odemknutí uživatelského ú�
 Aktualizujme `Login.aspx`, nahrazení ručně vytvořené rozhraní a kódu s ovládacím prvkem přihlášení. Začněte tím, že odebrání existujících značek a kódu v `Login.aspx`. Můžete odstranit přímý nebo jednoduše vyzkoušet komentář. Okomentujte deklarativní, uzavřete ji `<%--` a `--%>` oddělovače. Tyto oddělovače lze zadat ručně, nebo jak je vidět na obrázku 2, můžete vybrat text poznámky, a potom klikněte na komentář na vybrané řádky ikonu na panelu nástrojů. Podobně můžete Odkomentujte ikonu vybrané řádky Zakomentovat vybrané kód ve třídě použití modelu code-behind.
 
 
-[![Ckomentáře navýšení kapacity existující deklarativní a zdrojový kód v Login.aspx](validating-user-credentials-against-the-membership-user-store-cs/_static/image5.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image4.png)
+[![Odkomentujte existující kód a zdrojový kód v Login.aspx](validating-user-credentials-against-the-membership-user-store-cs/_static/image5.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image4.png)
 
 **Obrázek 2**: Komentář navýšení kapacity existující deklarativní a zdrojový kód v `Login.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-user-credentials-against-the-membership-user-store-cs/_static/image6.png))
 
@@ -98,7 +98,7 @@ Aktualizujme `Login.aspx`, nahrazení ručně vytvořené rozhraní a kódu s ov
 V dalším kroku přetáhněte ovládací prvek Login z panelu nástrojů na stránku a nastavit jeho `ID` vlastnost `myLogin`. V tomto okamžiku vaše obrazovka by měla vypadat podobně jako na obrázku 3. Všimněte si, že ovládací prvek Login výchozí rozhraní obsahuje ovládací prvky textové pole pro uživatelské jméno a heslo, zapamatovat příště zaškrtávacího políčka a tlačítka v protokolu. Existují také `RequiredFieldValidator` ovládací prvky pro dvě textová pole.
 
 
-[![Add přihlašovací ovládací prvek na stránce](validating-user-credentials-against-the-membership-user-store-cs/_static/image8.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image7.png)
+[![Přidat na stránku ovládací prvek Login](validating-user-credentials-against-the-membership-user-store-cs/_static/image8.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image7.png)
 
 **Obrázek 3**: Přidejte ovládací prvek Login stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-user-credentials-against-the-membership-user-store-cs/_static/image9.png))
 
@@ -115,7 +115,7 @@ Ovládací prvek Login používá k určení na příslušnou stránku a přesm�
 Jak znázorňuje obrázek 4 ovládacího prvku pro přihlášení používá tyto čtyři parametry můžete přejít na jeho odpovídající stránku rozhodnutí.
 
 
-[![Add přihlašovací ovládací prvek na stránce](validating-user-credentials-against-the-membership-user-store-cs/_static/image11.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image10.png)
+[![Přidat na stránku ovládací prvek Login](validating-user-credentials-against-the-membership-user-store-cs/_static/image11.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image10.png)
 
 **Obrázek 4**: Přidejte ovládací prvek Login stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-user-credentials-against-the-membership-user-store-cs/_static/image12.png))
 
@@ -145,7 +145,7 @@ Zabalit nastavení vlastností ovládacího prvku přihlášení tak, že nastav
 Po provedení těchto změn vlastnosti, by vypadat podobně jako, který je znázorněno na obrázku 5 deklarativní a vzhled ovládacího prvku přihlášení.
 
 
-[![The přihlášení ovládacího prvku vlastnosti hodnoty určují jeho vzhled](validating-user-credentials-against-the-membership-user-store-cs/_static/image14.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image13.png)
+[![Ovládací prvek Login vlastnosti hodnoty určují vzhled](validating-user-credentials-against-the-membership-user-store-cs/_static/image14.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image13.png)
 
 **Obrázek 5**: Ovládací prvek Login vlastnosti hodnoty určují jeho vzhled ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-user-credentials-against-the-membership-user-store-cs/_static/image15.png))
 
@@ -164,7 +164,7 @@ Pokud chcete provést první úlohu, potřebujeme převést šablonu ovládacíh
 Umožňuje aktualizovat ovládacího prvku pro přihlášení tak, aby vyzve uživatele pro jejich uživatelské jméno, heslo a e-mailovou adresu a pouze pokud e-mailovou adresu zadali, odpovídá e-mailová adresa u souboru ověřuje uživatele. Nejdřív potřebujeme převést ovládací prvek Login rozhraní do šablony. Z inteligentních značek ovládací prvek Login zvolte Převést na šablonu.
 
 
-[![CPřevést ovládacího prvku pro přihlášení do šablony](validating-user-credentials-against-the-membership-user-store-cs/_static/image17.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image16.png)
+[![Převést na šablonu ovládacího prvku pro přihlášení](validating-user-credentials-against-the-membership-user-store-cs/_static/image17.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image16.png)
 
 **Obrázek 6**: Převést na šablonu ovládacího prvku pro přihlášení ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-user-credentials-against-the-membership-user-store-cs/_static/image18.png))
 
@@ -176,7 +176,7 @@ Umožňuje aktualizovat ovládacího prvku pro přihlášení tak, aby vyzve už
 Převod ovládacího prvku pro přihlášení do šablony přidá `LayoutTemplate` do ovládacího prvku deklarativní s prvky jazyka HTML a ovládacích prvků webového definování uživatelského rozhraní. Jak je vidět na obrázku 7, převod ovládacího prvku do šablony odebere počet vlastností v okně vlastnosti jako `TitleText`, `CreateUserUrl`a tak dále, protože hodnoty těchto vlastností jsou ignorovány při použití šablony.
 
 
-[![Fk dispozici při přihlášení řídicí je převést na šablonu jsou nastaveny vlastnosti ewer](validating-user-credentials-against-the-membership-user-store-cs/_static/image20.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image19.png)
+[![Méně vlastností jsou že k dispozici při přihlášení řídicí je převést na šablonu](validating-user-credentials-against-the-membership-user-store-cs/_static/image20.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image19.png)
 
 **Obrázek 7**: Méně vlastnosti jsou k dispozici při přihlášení řídicí je převést na šablonu ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-user-credentials-against-the-membership-user-store-cs/_static/image21.png))
 
@@ -190,7 +190,7 @@ Ke shromažďování návštěvníka e-mailovou adresu, potřebujeme do šablony
 Po přidání `Email` textového pole na stránce prostřednictvím prohlížeče. Jak ukazuje obrázek 8, ovládací prvek Login uživatelského rozhraní nyní zahrnuje třetí textové pole.
 
 
-[![Tmá ovládací prvek Login teď obsahuje textové pole pro e-mailovou adresu uživatele](validating-user-credentials-against-the-membership-user-store-cs/_static/image23.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image22.png)
+[![Ovládací prvek Login teď obsahuje textové pole pro e-mailovou adresu uživatele](validating-user-credentials-against-the-membership-user-store-cs/_static/image23.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image22.png)
 
 **Obrázek 8**: Ovládací prvek Login teď obsahuje textové pole pro e-mailovou adresu uživatele ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-user-credentials-against-the-membership-user-store-cs/_static/image24.png))
 
@@ -208,7 +208,7 @@ Pokud jsou platné zadané přihlašovací údaje, pak se vytvoří lístek ově
 Obrázek 9 nabízí vývojový diagram ověřování pracovního postupu.
 
 
-[![TOvěřovací pracovní postup používaný přihlášení ovládacího prvku](validating-user-credentials-against-the-membership-user-store-cs/_static/image26.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image25.png)
+[![Ovládací prvek Login ověřovací pracovní postup](validating-user-credentials-against-the-membership-user-store-cs/_static/image26.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image25.png)
 
 **Obrázek 9**: Ovládací prvek Login ověřovací pracovní postup ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-user-credentials-against-the-membership-user-store-cs/_static/image27.png))
 
@@ -247,7 +247,7 @@ Následující kód implementuje tyto dvě kontroly. Pokud obě úspěšně pro�
 S tímto kódem na místě pokuste se přihlásit jako platného uživatele zadání správné uživatelské jméno, heslo a e-mailovou adresu. Zkuste to znovu, ale tentokrát použijte záměrně nesprávné e-mailovou adresu (viz obrázek 10). A konečně vyzkoušejte si to třetí čas pomocí uživatelského jména neexistuje. V prvním případě abyste by měla být úspěšně přihlášení k webu, ale v posledních dvou případech byste měli vidět ovládací prvek Login zpráva neplatné přihlašovací údaje.
 
 
-[![Tšmídová nelze přihlášení při zadání nesprávné e-mailovou adresu](validating-user-credentials-against-the-membership-user-store-cs/_static/image29.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image28.png)
+[![Tito přihlásit při zadávání nesprávné e-mailovou adresu](validating-user-credentials-against-the-membership-user-store-cs/_static/image29.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image28.png)
 
 **Obrázek 10**: Tito nelze protokolu v při zadání nesprávné e-mailovou adresu ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-user-credentials-against-the-membership-user-store-cs/_static/image30.png))
 
@@ -280,7 +280,7 @@ Výše uvedený kód spustí nastavením ovládací prvek Login `FailureText` vl
 K otestování tohoto kódu, záměrně pokus o přihlášení jako stávajícího uživatele, ale pomocí nesprávného hesla. Proveďte tuto pětkrát po sobě v časovém rámci 10 minut a účet uzamčen. Jak ukazuje obrázek 11, následné přihlašovací pokusy bude vždy selhání (i s správné heslo), ale teď bude zobrazovat více popisné byl váš účet uzamčen kvůli moc velký počet neplatných pokusů o přihlášení. Obraťte se prosím na správce, aby zprávy odemknout účet.
 
 
-[![Tšmídová provádí příliš mnoho neplatný pokusů o přihlášení a má byl uzamčen Out](validating-user-credentials-against-the-membership-user-store-cs/_static/image32.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image31.png)
+[![Tito provést moc velký počet neplatných pokusů o přihlášení a byl uzamčen](validating-user-credentials-against-the-membership-user-store-cs/_static/image32.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image31.png)
 
 **Obrázek 11**: Tito provádí příliš mnoho neplatný pokusů o přihlášení a má byl uzamčen Out ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-user-credentials-against-the-membership-user-store-cs/_static/image33.png))
 

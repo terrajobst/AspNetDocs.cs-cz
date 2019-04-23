@@ -12,7 +12,7 @@ ms.openlocfilehash: 6903c8c0649f9e4d56962bd36e03448852cfb81a
 ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59395352"
 ---
 # <a name="masterdetail-filtering-across-two-pages-vb"></a>Filtrování hlavních záznamů / podrobností na dvou stránkách (VB)
@@ -56,12 +56,12 @@ Kromě toho při přidávání nové stránky do projektu, nezapomeňte aktualiz
 S `SupplierListMaster.aspx` a `ProductsForSupplierDetails.aspx` stránky vytvořené naším dalším krokem je vytvoření prvku GridView dodavatelů v `SupplierListMaster.aspx`. Přidat na stránku GridView a jeho vazbu na nového prvku ObjectDataSource. Tento prvek ObjectDataSource, používejte `SuppliersBLL` třídy `GetSuppliers()` metody, která vrátí všechny dodavatelů.
 
 
-[![Szvolit třídu SuppliersBLL](master-detail-filtering-across-two-pages-vb/_static/image3.png)](master-detail-filtering-across-two-pages-vb/_static/image2.png)
+[![Vyberte třídu SuppliersBLL](master-detail-filtering-across-two-pages-vb/_static/image3.png)](master-detail-filtering-across-two-pages-vb/_static/image2.png)
 
 **Obrázek 2**: Vyberte `SuppliersBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image4.png))
 
 
-[![Configurovat ObjectDataSource GetSuppliers() metody](master-detail-filtering-across-two-pages-vb/_static/image6.png)](master-detail-filtering-across-two-pages-vb/_static/image5.png)
+[![Konfigurace ObjectDataSource GetSuppliers() metody](master-detail-filtering-across-two-pages-vb/_static/image6.png)](master-detail-filtering-across-two-pages-vb/_static/image5.png)
 
 **Obrázek 3**: Konfigurace ObjectDataSource k použití `GetSuppliers()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image7.png))
 
@@ -71,7 +71,7 @@ Potřebujeme zahrnout odkaz s názvem zobrazit produkty v jednotlivých řádcí
 Chcete-li to provést, přidejte [HyperLinkField](https://msdn.microsoft.com/library/system.web.ui.webcontrols.hyperlinkfield.aspx) do prvku GridView, který přidá hypertextový odkaz na každý řádek prvku GridView. Začněte kliknutím na odkaz Upravit sloupce v prvku GridView inteligentních značek. V dalším kroku vyberte HyperLinkField ze seznamu v levém horním rohu a klikněte na Přidat a zahrnout HyperLinkField v seznamu polí v prvku GridView.
 
 
-[![Add HyperLinkField do prvku GridView.](master-detail-filtering-across-two-pages-vb/_static/image9.png)](master-detail-filtering-across-two-pages-vb/_static/image8.png)
+[![Přidat HyperLinkField do prvku GridView.](master-detail-filtering-across-two-pages-vb/_static/image9.png)](master-detail-filtering-across-two-pages-vb/_static/image8.png)
 
 **Obrázek 4**: Přidat HyperLinkField do prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image10.png))
 
@@ -79,7 +79,7 @@ Chcete-li to provést, přidejte [HyperLinkField](https://msdn.microsoft.com/lib
 HyperLinkField dá používat stejný text nebo adresa URL hodnot odkaz na každém řádku prvku GridView, nebo můžete založit tyto hodnoty hodnot dat, které je vázána na každý řádek. Pokud chcete nastavit statickou hodnotu napříč všemi řádky použijte HyperLinkField `Text` nebo `NavigateUrl` vlastnosti. Protože chceme, aby propojení text, který má být stejný pro všechny řádky, nastavte HyperLinkField `Text` vlastnost zobrazit produkty.
 
 
-[![Set vlastnost Text HyperLinkField zobrazit produkty](master-detail-filtering-across-two-pages-vb/_static/image12.png)](master-detail-filtering-across-two-pages-vb/_static/image11.png)
+[![Nastavte vlastnost Text HyperLinkField na Zobrazit produkty](master-detail-filtering-across-two-pages-vb/_static/image12.png)](master-detail-filtering-across-two-pages-vb/_static/image11.png)
 
 **Obrázek 5**: Nastavte HyperLinkField `Text` vlastnost zobrazit produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image13.png))
 
@@ -91,7 +91,7 @@ K označení kombinaci statických a datové hodnoty, použijte `DataTextFormatS
 Použití to pro náš kurz, musíme nastavit `DataNavigateUrlFields` vlastnost `SupplierID`, protože to je datové pole, jehož hodnota musíme přizpůsobit na základě na řádek a `DataNavigateUrlFormatString` vlastnost `ProductsForSupplierDetails.aspx?SupplierID={0}`.
 
 
-[![Configurovat HyperLinkField zahrnout pole správné odkaz URL na základě po the SupplierID](master-detail-filtering-across-two-pages-vb/_static/image15.png)](master-detail-filtering-across-two-pages-vb/_static/image14.png)
+[![Konfigurace HyperLinkField zahrnout správnou adresu URL odkazu na základě pole SupplierID](master-detail-filtering-across-two-pages-vb/_static/image15.png)](master-detail-filtering-across-two-pages-vb/_static/image14.png)
 
 **Obrázek 6**: Konfigurace HyperLinkField zahrnout správné odkaz URL na základě při `SupplierID` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image16.png))
 
@@ -104,7 +104,7 @@ Po přidání HyperLinkField, můžete přizpůsobit a změna pořadí polí v p
 Za chvíli zobrazíte `SupplierListMaster.aspx` stránky prostřednictvím prohlížeče. Jak je vidět na obrázku 7, na stránce aktuálně obsahuje seznam všech dodavatelů včetně odkazu zobrazit produkty. Kliknutím na Zobrazit produkty odkaz přejdete na `ProductsForSupplierDetails.aspx`, předejte podél dodavatele `SupplierID` v řetězec dotazu.
 
 
-[![EACH dodavatele řádek obsahuje odkaz produkty zobrazení](master-detail-filtering-across-two-pages-vb/_static/image18.png)](master-detail-filtering-across-two-pages-vb/_static/image17.png)
+[![Každý řádek dodavatele obsahuje odkaz produkty zobrazení](master-detail-filtering-across-two-pages-vb/_static/image18.png)](master-detail-filtering-across-two-pages-vb/_static/image17.png)
 
 **Obrázek 7**: Každý řádek dodavatele obsahuje odkaz zobrazit produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image19.png))
 
@@ -114,17 +114,17 @@ Za chvíli zobrazíte `SupplierListMaster.aspx` stránky prostřednictvím prohl
 V tomto okamžiku `SupplierListMaster.aspx` stránky odesílá uživatelům `ProductsForSupplierDetails.aspx`, předávání vybrané dodavatele `SupplierID` v řetězec dotazu. Tento kurz posledním krokem je zobrazit produkty v prvku GridView v `ProductsForSupplierDetails.aspx` jehož `SupplierID` rovná `SupplierID` předává řetězec dotazu. K provedení této úvodní přidáním GridView k `ProductsForSupplierDetails.aspx` stránky, můžete použít nový ovládací prvek ObjectDataSource s názvem `ProductsBySupplierDataSource` , která vyvolává `GetProductsBySupplierID(supplierID)` metodu z `ProductsBLL` třídy.
 
 
-[![APřidat nový účet ObjectDataSource s názvem ProductsBySupplierDataSource](master-detail-filtering-across-two-pages-vb/_static/image21.png)](master-detail-filtering-across-two-pages-vb/_static/image20.png)
+[![Přidat nový prvek ObjectDataSource s názvem ProductsBySupplierDataSource](master-detail-filtering-across-two-pages-vb/_static/image21.png)](master-detail-filtering-across-two-pages-vb/_static/image20.png)
 
 **Obrázek 8**: Přidat nový prvek ObjectDataSource s názvem `ProductsBySupplierDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image22.png))
 
 
-[![Szvolit třídu ProductsBLL](master-detail-filtering-across-two-pages-vb/_static/image24.png)](master-detail-filtering-across-two-pages-vb/_static/image23.png)
+[![Vyberte třídu ProductsBLL](master-detail-filtering-across-two-pages-vb/_static/image24.png)](master-detail-filtering-across-two-pages-vb/_static/image23.png)
 
 **Obrázek 9**: Vyberte `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image25.png))
 
 
-[![HUložit ObjectDataSource vyvolat metodu GetProductsBySupplierID(supplierID)](master-detail-filtering-across-two-pages-vb/_static/image27.png)](master-detail-filtering-across-two-pages-vb/_static/image26.png)
+[![Mít ObjectDataSource Invoke GetProductsBySupplierID(supplierID) – metoda](master-detail-filtering-across-two-pages-vb/_static/image27.png)](master-detail-filtering-across-two-pages-vb/_static/image26.png)
 
 **Obrázek 10**: Mít ObjectDataSource vyvolat `GetProductsBySupplierID(supplierID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image28.png))
 
@@ -132,7 +132,7 @@ V tomto okamžiku `SupplierListMaster.aspx` stránky odesílá uživatelům `Pro
 Posledním krokem v průvodci Konfigurace zdroje dat dotazem, abychom mohli poskytovat zdroj `GetProductsBySupplierID(supplierID)` metody *`supplierID`* parametru. Pokud chcete použít hodnotu querystring, nastavit zdroj parametru řetězce dotazu a zadejte název hodnoty řetězce dotazu, který má použít v textovém poli vlastnost QueryStringField (`SupplierID`).
 
 
-[![PHodnota parametru z hodnoty Querystring KódDodavatele KódDodavatele opulate](master-detail-filtering-across-two-pages-vb/_static/image30.png)](master-detail-filtering-across-two-pages-vb/_static/image29.png)
+[![Naplnění KódDodavatele hodnota parametru z hodnoty Querystring KódDodavatele](master-detail-filtering-across-two-pages-vb/_static/image30.png)](master-detail-filtering-across-two-pages-vb/_static/image29.png)
 
 **Obrázek 11**: Naplnění *`supplierID`* hodnota parametru `SupplierID` hodnotu řetězce dotazu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image31.png))
 
@@ -140,7 +140,7 @@ Posledním krokem v průvodci Konfigurace zdroje dat dotazem, abychom mohli posk
 A je to! Obrázek 12 se zobrazí `ProductsForSupplierDetails.aspx` stránce, když uživatel klepnutím na odkaz Tokio Traders z `SupplierListMaster.aspx`.
 
 
-[![Tmá produkty poskytnutých obchodníci Tokio zobrazují](master-detail-filtering-across-two-pages-vb/_static/image33.png)](master-detail-filtering-across-two-pages-vb/_static/image32.png)
+[![Jsou uvedeny produkty poskytnutých obchodníci Tokio](master-detail-filtering-across-two-pages-vb/_static/image33.png)](master-detail-filtering-across-two-pages-vb/_static/image32.png)
 
 **Obrázek 12**: Jsou uvedeny produkty poskytnutých obchodníci Tokio ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image34.png))
 
@@ -152,12 +152,12 @@ Jak ukazuje obrázek 12 `ProductsForSupplierDetails.aspx` stránky jednoduše se
 Začněte přidáním nad produkty GridView FormView. Vytvoření nového ovládacího prvku ObjectDataSource s názvem `SuppliersDataSource` , která vyvolává `SuppliersBLL` třídy `GetSupplierBySupplierID(supplierID)` metody.
 
 
-[![Szvolit třídu SuppliersBLL](master-detail-filtering-across-two-pages-vb/_static/image36.png)](master-detail-filtering-across-two-pages-vb/_static/image35.png)
+[![Vyberte třídu SuppliersBLL](master-detail-filtering-across-two-pages-vb/_static/image36.png)](master-detail-filtering-across-two-pages-vb/_static/image35.png)
 
 **Obrázek 13**: Vyberte `SuppliersBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image37.png))
 
 
-[![HUložit ObjectDataSource vyvolat metodu GetSupplierBySupplierID(supplierID)](master-detail-filtering-across-two-pages-vb/_static/image39.png)](master-detail-filtering-across-two-pages-vb/_static/image38.png)
+[![Mít ObjectDataSource Invoke GetSupplierBySupplierID(supplierID) – metoda](master-detail-filtering-across-two-pages-vb/_static/image39.png)](master-detail-filtering-across-two-pages-vb/_static/image38.png)
 
 **Obrázek 14**: Mít ObjectDataSource vyvolat `GetSupplierBySupplierID(supplierID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image40.png))
 
@@ -165,7 +165,7 @@ Začněte přidáním nad produkty GridView FormView. Vytvoření nového ovlád
 Stejně jako u `ProductsBySupplierDataSource`, jste *`supplierID`* parametru přiřazena hodnota `SupplierID` hodnotu řetězce dotazu.
 
 
-[![PHodnota parametru z hodnoty Querystring KódDodavatele KódDodavatele opulate](master-detail-filtering-across-two-pages-vb/_static/image42.png)](master-detail-filtering-across-two-pages-vb/_static/image41.png)
+[![Naplnění KódDodavatele hodnota parametru z hodnoty Querystring KódDodavatele](master-detail-filtering-across-two-pages-vb/_static/image42.png)](master-detail-filtering-across-two-pages-vb/_static/image41.png)
 
 **Obrázek 15**: Naplnění *`supplierID`* hodnota parametru `SupplierID` hodnotu řetězce dotazu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image43.png))
 
@@ -180,7 +180,7 @@ Za tyto úpravy ovládacího prvku FormView deklarativní by měl vypadat nějak
 Snímek obrazovky znázorňuje obrázek 16 `ProductsForSupplierDetails.aspx` stránce výše uvedené informace o dodavateli byla zahrnuta.
 
 
-[![Tmá seznamu produktů, které obsahuje souhrnné informace o dodavatele](master-detail-filtering-across-two-pages-vb/_static/image45.png)](master-detail-filtering-across-two-pages-vb/_static/image44.png)
+[![Seznamu produktů, které obsahuje souhrnné informace o dodavateli](master-detail-filtering-across-two-pages-vb/_static/image45.png)](master-detail-filtering-across-two-pages-vb/_static/image44.png)
 
 **Obrázek 16**: Seznamu produktů, které obsahuje souhrnné informace o dodavatele ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image46.png))
 
@@ -190,7 +190,7 @@ Snímek obrazovky znázorňuje obrázek 16 `ProductsForSupplierDetails.aspx` str
 K vylepšení uživatelského prostředí pro tuto sestavu existuje několik dodatky jsme by mělo být tak, aby `ProductsForSupplierDetails.aspx` stránky. Aktuálně jediným způsobem, uživatel může přecházet od `ProductsForSupplierDetails.aspx` stránka zpět do seznamu poskytovatelů je na jejich prohlížeči tlačítko Zpět. Přidejte ovládací prvek hypertextového odkazu do `ProductsForSupplierDetails.aspx` stránka, která odkazuje zpět na `SupplierListMaster.aspx`, poskytuje další způsob pro uživatele se vraťte do seznamu hlavní.
 
 
-[![Add ovládací prvek hypertextového odkazu pro uživatele zpět SupplierListMaster.aspx](master-detail-filtering-across-two-pages-vb/_static/image48.png)](master-detail-filtering-across-two-pages-vb/_static/image47.png)
+[![Přidejte ovládací prvek hypertextového odkazu, který má uživatel přejít zpět k SupplierListMaster.aspx](master-detail-filtering-across-two-pages-vb/_static/image48.png)](master-detail-filtering-across-two-pages-vb/_static/image47.png)
 
 **Obrázek 17**: Přidejte ovládací prvek hypertextového odkazu, abyste mohli uživatele zpět na `SupplierListMaster.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image49.png))
 
@@ -200,7 +200,7 @@ Pokud uživatel klikne na odkaz zobrazit produkty pro dodavatele, který nemá �
 Všichni dodavatelé databáze Lhota ve výchozím nastavení, zadejte aspoň jeden produkt. Ale pro účely tohoto kurzu můžu ručně upravili `Products` tabulku tak, aby od dodavatele Escargots Nouveaux už nejsou přidružené žádné produkty. Obrázek 18 zobrazuje na stránce podrobností pro Escargots Nouveaux po této změně.
 
 
-[![User budou informováni, že dodavatel neposkytuje žádné produkty](master-detail-filtering-across-two-pages-vb/_static/image51.png)](master-detail-filtering-across-two-pages-vb/_static/image50.png)
+[![Uživatelé budou informováni, že dodavatel neposkytuje žádné produkty](master-detail-filtering-across-two-pages-vb/_static/image51.png)](master-detail-filtering-across-two-pages-vb/_static/image50.png)
 
 **Obrázek 18**: Uživatelé budou informováni, že dodavatel neposkytuje žádné produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-across-two-pages-vb/_static/image52.png))
 
