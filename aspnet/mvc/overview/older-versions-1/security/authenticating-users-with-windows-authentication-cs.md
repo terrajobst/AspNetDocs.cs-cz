@@ -8,19 +8,18 @@ ms.date: 01/27/2009
 ms.assetid: 418bb07e-f369-4119-b4b0-08f890f7abb2
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3c12f2a3d253df1ed9d8b25001edf13a04da26f5
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: bb3909bff2791c15a8737fc12cac69f79b55733f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59394884"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125444"
 ---
 # <a name="authenticating-users-with-windows-authentication-c"></a>Ověřování uživatelů pomocí ověřování systému Windows (C#)
 
 by [Microsoft](https://github.com/microsoft)
 
 > Zjistěte, jak používat ověřování Windows v rámci aplikace MVC. Zjistíte, jak povolit ověřování Windows v rámci souboru konfigurace webové aplikace a postup konfigurace ověřování pomocí služby IIS. Nakonec se dozvíte, jak použít atribut [Authorize] k omezení přístupu na akce kontroleru, zejména Windows uživatelům nebo skupinám.
-
 
 Cílem tohoto kurzu je vysvětlují, jak můžete využít výhod zabezpečení integrované Internetová informační služba heslo chránit zobrazení v aplikacích MVC. Zjistíte, jak umožnit akce kontroleru má být volána pouze pomocí určitým uživatelům Windows nebo uživatele, kteří jsou členy určitých skupin Windows.
 
@@ -50,7 +49,6 @@ Pro provozní webové aplikace na stranu, použijte služby IIS jako webový ser
 > 
 > Podrobnější přehled těchto různých typů ověřování, najdete v tématu [ https://msdn.microsoft.com/library/aa292114(VS.71).aspx ](https://msdn.microsoft.com/library/aa292114(VS.71).aspx).
 
-
 Správce Internetové informační služby můžete povolit konkrétní typ ověřování. Mějte na paměti, že všechny typy ověřování nejsou k dispozici v případě každý operační systém. Kromě toho pokud používáte IIS 7.0 s Windows Vista, je potřeba povolit různé typy ověřování Windows, předtím, než se objeví v Správce Internetové informační služby. Otevřít **ovládací panely, programy, programy a funkce Windows zapnout nebo vypnout funkce**a rozbalte uzel Internetová informační služba (viz obrázek 2).
 
 **Obrázek 2 – funkce povolení Windows služby IIS**
@@ -76,7 +74,6 @@ Například kontroler Home v informacích 1 poskytuje tři akce s názvem Index(
 > [!NOTE] 
 > 
 > Z důvodu Windows řízení uživatelských účtů (UAC), při práci s Windows Vista nebo Windows Server 2008, místní skupiny Administrators se chovat jinak než ostatní skupiny. Atribut [Authorize] jej nerozpozná správně členem místní skupiny Administrators, není-li změnit nastavení nástroje Řízení uživatelských účtů v počítači.
-
 
 Přesně co se stane při pokusu o vyvolání akce kontroleru bez oprávnění závisí na typu ověřování povoleno. Ve výchozím nastavení při použití serveru ASP.NET Development Server stačí získat prázdnou stránku. Na stránce obsluhuje s **401 Neautorizováno** stav odpovědi HTTP.
 

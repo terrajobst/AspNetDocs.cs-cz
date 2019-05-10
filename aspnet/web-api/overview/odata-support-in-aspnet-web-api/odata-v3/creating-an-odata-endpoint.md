@@ -8,12 +8,12 @@ ms.date: 02/25/2014
 ms.assetid: 262843d6-43a2-4f1c-82d9-0b90ae6df0cf
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/creating-an-odata-endpoint
 msc.type: authoredcontent
-ms.openlocfilehash: fa0573738fee8f1decc13c9797f644002931e09d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e31bf3215155b4b45bcf2eb90dd6947caf99b7f8
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381493"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125269"
 ---
 # <a name="creating-an-odata-v3-endpoint-with-web-api-2"></a>Vytvoření koncového bodu OData v3 s webovým rozhraním API 2
 
@@ -35,7 +35,6 @@ podle [Mike Wasson](https://github.com/MikeWasson)
 > - [Fiddler webový ladicí proxy server (volitelné)](http://www.fiddler2.com)
 >
 > Přidala se podpora web API OData v [technologie ASP.NET a Web Tools 2012.2 Update](https://go.microsoft.com/fwlink/?LinkId=282650). Tento kurz používá však generování uživatelského rozhraní, která byla přidána do sady Visual Studio 2013.
-
 
 V tomto kurzu vytvoříte jednoduchou koncový bod OData, který můžou klienti dotazovat. Pokud vytvoříte klienta jazyka C# pro koncový bod. Po dokončení tohoto kurzu, další sadu kurzy ukazují, jak přidat další funkce, včetně vztahů entit, akce, a vyberte rozbalte $/ $.
 
@@ -77,7 +76,6 @@ V **přidat nový** položky dialogového okna, název třídy &quot;produktu&qu
 
 > [!NOTE]
 > Podle konvence tříd modelu jsou umístěny ve složce modely. Nemusíte si odpovídají této konvenci ve vašich vlastních projektů, ale použijeme ho pro účely tohoto kurzu.
-
 
 V souboru Product.cs přidejte následující definici třídy:
 
