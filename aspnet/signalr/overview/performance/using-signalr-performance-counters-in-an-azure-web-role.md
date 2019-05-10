@@ -9,12 +9,12 @@ ms.date: 10/03/2018
 ms.assetid: 2a127d3b-21ed-4cc9-bec0-cdab4e742a25
 msc.legacyurl: /signalr/overview/performance/using-signalr-performance-counters-in-an-azure-web-role
 msc.type: authoredcontent
-ms.openlocfilehash: 8e17e945bc144731dd149bd7ddfc9e29160eaf0b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 969a2ce43a7cb8d649555daf282f900401c0c914
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073405"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113599"
 ---
 # <a name="using-signalr-performance-counters-in-an-azure-web-role"></a>Použití čítačů výkonu SignalR webové role Azure
 
@@ -88,7 +88,6 @@ Podle [Luke Latham](https://github.com/guardrex)
     ![Nastavte kopírovat do výstupního adresáře vždy kopírovat](using-signalr-performance-counters-in-an-azure-web-role/_static/image8.png)
 
 15. Opakujte předchozí krok u *SignalRPerfCounterInstall.cmd* souboru.
-
 
 16. Klikněte pravým tlačítkem na *SignalRPerfCounterInstall.cmd* a vyberte možnost **otevřít v**. V zobrazeném dialogu vyberte **binární Editor** a vyberte **OK**.
 

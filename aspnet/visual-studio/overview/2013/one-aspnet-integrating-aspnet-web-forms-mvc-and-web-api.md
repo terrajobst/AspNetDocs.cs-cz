@@ -8,12 +8,12 @@ ms.date: 07/16/2014
 ms.assetid: 4fe2558d-67cc-4d12-a5c1-6fb9f6f16137
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 1023d9bef311e58fb5fb0bb24cde80e8320e6bac
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 165d104b5d3ef3281af449cc8673ad96f531d628
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59419051"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113069"
 ---
 # <a name="hands-on-lab-one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api"></a>Praktické cvičení: jeden ASP.NET: Integrace webových formulářů ASP.NET, MVC a webového rozhraní API
 
@@ -26,7 +26,6 @@ podle [Campy Web týmu](https://twitter.com/webcamps)
 > Visual Studio 2013 přináší nový sjednocený projektový systém, který umožňuje vytvářet aplikace a použít všechny technologie ASP.NET v jednom projektu. Tato funkce eliminuje potřebu vyberte jeden technologii na začátku projektu a stonek s ním a místo toho doporučuje použití více rozhraní ASP.NET v rámci jednoho projektu.
 > 
 > Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://aka.ms/webcamps-training-kit ](https://aka.ms/webcamps-training-kit).
-
 
 <a id="Overview"></a>
 ## <a name="overview"></a>Přehled
@@ -62,7 +61,6 @@ Chcete-li spustit praktická cvičení v této praktické testovací prostředí
 > [!NOTE]
 > Ujistěte se, že jste zaškrtli všechny závislosti pro toto testovací prostředí před spuštěním instalace.
 
-
 <a id="CodeSnippets"></a>
 ### <a name="using-the-code-snippets"></a>Používání fragmentů kódu
 
@@ -70,7 +68,6 @@ V celém dokumentu testovacího prostředí budete vyzváni k vložení bloky k�
 
 > [!NOTE]
 > Každý cvičení se sadou počáteční řešení nachází v **začít** složky výkonu, který umožňuje postupovat podle jednotlivých výkon nezávisle na ostatních. Uvědomte si, že chybí z těchto řešení od fragmenty kódu, které se přidávají během cvičení a nemusí fungovat, dokud nedokončíte výkonu. Uvnitř zdrojový kód pro cvičení, můžete také najdete **End** složku, která obsahuje řešení sady Visual Studio s kódem, který je výsledkem dokončení kroků v odpovídající cvičení. Tato řešení můžete použít jako vodítko, pokud potřebujete další pomoc při práci prostřednictvím této praktické vyzkoušení.
-
 
 ---
 
@@ -87,7 +84,6 @@ Odhadovaný čas dokončení tohoto testovacího prostředí: **60 minut**
 
 > [!NOTE]
 > Při prvním spuštění sady Visual Studio, musíte vybrat jednu z předdefinovaných nastavení kolekce. Každé předdefinované kolekce je navržená tak, aby odpovídala konkrétním vývojářským styl a určuje rozložení oken, chování editoru, fragmenty kódu technologie IntelliSense a možnosti dialogového okna. Postupy v tomto testovacím prostředí jsou uvedené akce potřebné k provedení dané úlohy v sadě Visual Studio při použití **obecným vývojovým nastavením** kolekce. Pokud se rozhodnete různá nastavení kolekce pro vaše vývojové prostředí, mohou existovat rozdíly v krocích, které byste měli vzít v úvahu.
-
 
 <a id="Exercise1"></a>
 ### <a name="exercise-1-creating-a-new-web-forms-project"></a>Cvičení 1: Vytváří se nový projekt webových formulářů
@@ -189,7 +185,6 @@ Entity Framework Code First pracovního postupu modelování vám umožní použ
 
 > [!NOTE]
 > Další informace o rozhraní Entity Framework [tady](../../../entity-framework.md).
-
 
 <a id="Ex2Task1"></a>
 #### <a name="task-1--creating-a-new-model"></a>Úloha 1 – Vytvoření nového modelu
@@ -342,7 +337,6 @@ V této úloze bude používat Internet Explorer **vývojářské nástroje F12 
 > ![Možnosti aplikace Internet Explorer](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image27.png)
 > 
 > **Vývojářské nástroje F12 pomáhají** mají celou sadu funkcí, které nejsou uvedeny v tomto praktická-testovací prostředí. Pokud chcete další informace o tom, podívejte se na [pomocí vývojářských nástrojů F12](https://msdn.microsoft.com/library/ie/bg182326(v=vs.85)).
-
 
 1. Stisknutím klávesy **F5** ke spuštění řešení.
 

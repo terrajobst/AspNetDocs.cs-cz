@@ -8,12 +8,12 @@ ms.date: 01/20/2011
 ms.assetid: 3124f28e-cc32-418a-afe3-519fa56f4c36
 msc.legacyurl: /whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
 msc.type: content
-ms.openlocfilehash: db8f336f3fd9a88dfb32f99510fc53cd7b4a5178
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 63c555358d06a9506bb5c8c993800c3307108192
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59415983"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65114435"
 ---
 # <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>Postupy: Přidání mobilních stránek do webových formulářů ASP.NET/aplikace MVC
 
@@ -25,7 +25,6 @@ ms.locfileid: "59415983"
 > **Shrnutí**
 > 
 > Tento postup popisuje různé způsoby, jak poskytovat stránky optimalizované pro mobilní zařízení z webových formulářů ASP.NET / aplikace MVC a navrhne architektury a návrhu problémy, které je třeba zvážit při cílení na široké škále zařízení. Tento dokument popisuje taky, proč jsou nyní zastaralé technologie ASP.NET Mobile ovládací prvky technologie ASP.NET 2.0 3.5 a tento článek popisuje některé moderní alternativy.
-
 
 ## <a name="contents"></a>Obsah
 
@@ -158,7 +157,6 @@ Mobilních stránek můžete sdílet společné statické prostředky (jako jsou
 
 > [!NOTE]
 > Protože tento přístup obvykle zahrnuje některé duplicity kódu (mobilních stránek můžou sdílet určité podobnosti s klasické pracovní plochy stránky), je důležité, abyste Multi-Factor si všechny běžné obchodní logiku a data přístupový kód do sdílené nadřízené vrstvy nebo služby. V opačném případě budete double snaha o vytvoření a údržba vaší aplikace.
-
 
 #### <a name="redirecting-mobile-visitors-to-your-mobile-pages"></a>Přesměrování mobilní návštěvníkům mobilních stránek
 
@@ -310,7 +308,6 @@ Další podrobnosti najdete v tématu [51degrees.mobi Foundation dokumentaci](ht
 
 > [!NOTE]
 > Můžete *můžete* Foundation 51Degrees.mobi použití funkce přesměrování na aplikace ASP.NET MVC, ale bude nutné definovat konfiguraci přesměrování z hlediska jednoduché adresy URL není z hlediska směrování parametry nebo vložením MVC filtry na akce. Důvodem je, že (v době psaní) nemůže rozpoznat 51Degrees.mobi Foundation filtry nebo směrování.
-
 
 ### <a name="disabling-transcoders-and-proxy-servers"></a>Zakázání Tricaster a Proxy servery
 

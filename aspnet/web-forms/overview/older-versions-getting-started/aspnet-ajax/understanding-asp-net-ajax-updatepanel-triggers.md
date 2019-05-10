@@ -8,12 +8,12 @@ ms.date: 03/12/2008
 ms.assetid: faab8503-2984-48a9-8a40-7728461abc50
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-updatepanel-triggers
 msc.type: authoredcontent
-ms.openlocfilehash: e3821eee8c7bf2c2f9b45ea75ade2bd5b3b8ef19
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: c61d10c28ba3975cb6fbadc6eda1f7a3c9406dfc
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59406259"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65114611"
 ---
 # <a name="understanding-aspnet-ajax-updatepanel-triggers"></a>Principy aktivačních událostí UpdatePanel technologie ASP.NET AJAX
 
@@ -22,7 +22,6 @@ podle [– Scott Cate](https://github.com/scottcate)
 [Stáhnout PDF](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial02_Triggers_cs.pdf)
 
 > Při práci v editoru kódu v sadě Visual Studio, můžete si všimnout (od IntelliSense), že jsou dva podřízené prvky prvku UpdatePanel. Jedním z nich je element aktivačních událostí, který určuje ovládacích prvků na stránce (nebo uživatelský ovládací prvek, pokud použijete jeden), který se aktivuje částečné vykreslení ovládacího prvku UpdatePanel, ve kterém se nachází element.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -76,11 +75,9 @@ Podobně platí `<asp:PostBackTrigger>` elementu lze použít aktivační událo
 
 1. Stisknutím klávesy F5 sestavte a spusťte projekt. Všimněte si, že po kliknutí na panelech jak aktualizace i popisky, změnit text; ale po kliknutí na tento Panel aktualizace pouze Label1 aktualizuje.
 
-
 [![](understanding-asp-net-ajax-updatepanel-triggers/_static/image2.png)](understanding-asp-net-ajax-updatepanel-triggers/_static/image1.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-updatepanel-triggers/_static/image3.png))
-
 
 ## <a name="under-the-hood"></a>*Pohled pod kapotu*
 
@@ -90,11 +87,9 @@ Prošetření kódu ze zdrojového kódu stránky zobrazí téměř nic neobvykl
 
 Klikněte na tlačítko Aktualizovat tento Panel a Všimněte si, že hlavní prvek UpdatePanel aktualizuje aktuální čas serveru. V FireBug zvolte kartu konzoly tak, aby můžete zkontrolovat žádost. Nejprve zkontrolujte parametry požadavku POST:
 
-
 [![](understanding-asp-net-ajax-updatepanel-triggers/_static/image5.png)](understanding-asp-net-ajax-updatepanel-triggers/_static/image4.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-updatepanel-triggers/_static/image6.png))
-
 
 Všimněte si, že prvku UpdatePanel uvedl do kódu jazyka AJAX na straně serveru přesně které ovládací prvek stromu se vyvolala prostřednictvím parametru ScriptManager1: `Button1` z `UpdatePanel1` ovládacího prvku. Nyní klikněte na tlačítko aktualizace i panelů. Potom zkoumání odpovědi, vidíme oddělených kanálu řadu proměnné nastavené v řetězci; Konkrétně můžeme vidět nejvyšší UpdatePanel `UpdatePanel1`, má podkladové jeho HTML odesláno prohlížeči. Skript klientské knihovny AJAX nahradí původní HTML prvku UpdatePanel obsahu s použitím nového obsahu prostřednictvím `.innerHTML` vlastnost, a proto server odešle změněný obsah ze serveru ve formátu HTML.
 
@@ -104,11 +99,9 @@ Jak vidíme, protože žádný zvláštní kód slouží k provádění zpětné
 
 Například vezměte v úvahu ovládacím prvku zaškrtávací políčko; Prozkoumejte zpětný překlad třídy v rozhraní .NET Reflector. Uděláte to tak, ujistěte se, že vaše sestavení System.Web otevřete a přejděte do `System.Web.UI.WebControls.CheckBox` třídy, otevřete `RenderInputTag` metody. Hledat s podmínkou, která zkontroluje, `AutoPostBack` vlastnost:
 
-
 [![](understanding-asp-net-ajax-updatepanel-triggers/_static/image8.png)](understanding-asp-net-ajax-updatepanel-triggers/_static/image7.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-updatepanel-triggers/_static/image9.png))
-
 
 Pokud je povoleno automatické zpětného odeslání na `CheckBox` řízení (prostřednictvím AutoPostBack vlastnosti je true), výsledné `<input>` je tedy vykreslen pomocí technologie ASP.NET událost zpracování skriptu v jeho `onclick` atribut. Zachycení odeslání formuláře, pak umožňuje technologie ASP.NET AJAX vložit do stránky nonintrusively, a usnadnit tak vyhnuli potenciální rozbíjející změny, které mohou nastat s využitím pravděpodobně nepřesnou řetězec nahrazení. Kromě toho díky tomu *jakékoli* vlastní ovládací prvek ASP.NET využívat sílu technologie ASP.NET AJAX bez jakékoli další kód pro podporu jeho použití v rámci kontejneru prvku UpdatePanel.
 
@@ -128,11 +121,9 @@ A tady je nová kódu:
 
 Myšlenkou Tato stránka je, že rozevíracího seznamu vybere jeden ze tří barvy zobrazíte druhého popisku, že zaškrtávací políčko určuje, jestli je tučný i Určuje, zda se zobrazí popisky datum i čas. Pole by nemělo způsobit aktualizaci AJAX, ale měli rozevíracího seznamu, i když není umístěna v rámci ovládacího prvku UpdatePanel.
 
-
 [![](understanding-asp-net-ajax-updatepanel-triggers/_static/image11.png)](understanding-asp-net-ajax-updatepanel-triggers/_static/image10.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-updatepanel-triggers/_static/image12.png))
-
 
 Jako je zřejmý na snímku obrazovky výše, byla nejnovější tlačítko dá kliknout pravým tlačítkem tento Panel aktualizace, která aktualizuje hlavní dobu nezávisle na dolní čas. Datum se také vypnout mezi kliknutí, protože datum je viditelný v dolní popisek. A konečně zájmu je barva dolního popisku: později, než text popisku, který ukazuje, že stav ovládacího prvku je důležité, aktualizace a uživatelé očekávají, že bude zachována přes zpětná volání AJAX. *Ale*, čas nebyla aktualizována. Čas se automaticky naplnit prostřednictvím trvalou dostupnost \_ \_pole Stav zobrazení stránky zamezit interpretaci modulem ASP.NET runtime, když ovládací prvek se znovu vykreslený na serveru. Do kódu serveru technologie ASP.NET AJAX nebylo rozpoznáno, ve kterém jsou metody ovládací prvky změnu stavu; jednoduše znovu naplní ze zobrazení stavu a poté spuštění události, které jsou vhodné.
 

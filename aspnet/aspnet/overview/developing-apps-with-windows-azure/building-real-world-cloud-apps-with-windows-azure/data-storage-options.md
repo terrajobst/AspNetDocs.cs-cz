@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: e51fcecb-cb33-4f9e-8428-6d2b3d0fe1bf
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
 msc.type: authoredcontent
-ms.openlocfilehash: 9969a68a3e1aa043845fb5affd6d3b73dec4136d
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 8656f4a4211c2e97d71d76dd2f799412539896ca
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58425389"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118847"
 ---
 # <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a>Možnosti úložiště dat (vytváření skutečných cloudových aplikací s Azure)
 
@@ -22,7 +22,6 @@ podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twi
 [Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
 > **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o e kniha najdete v tématu [první kapitoly](introduction.md).
-
 
 Většina lidí se používají k relačním databázím a mají tendenci přehlédnout jiných možností úložiště dat při jejich návrhu cloudové aplikace. Výsledkem může být neoptimální výkon, vysokou výdaje a nebo ještě hůř, protože [NoSQL](http://en.wikipedia.org/wiki/NoSQL) některé úlohy může zpracovávat efektivněji než relační databáze (nerelační) databáze. Když zákazníci nás požádat o pomoc s řešením problému úložiště důležitých dat, je to často protože mají relační databáze, kde některé z možností NoSQL by fungovat lépe. V takových situacích zákazník bylo lepší vzorec, pokud se má implementovat řešení NoSQL před nasazením aplikace do produkčního prostředí.
 

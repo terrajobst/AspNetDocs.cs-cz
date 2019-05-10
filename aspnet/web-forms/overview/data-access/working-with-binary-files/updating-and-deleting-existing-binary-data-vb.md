@@ -8,12 +8,12 @@ ms.date: 03/27/2007
 ms.assetid: 3a052ced-9cf5-47b8-a400-934f0b687c26
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/updating-and-deleting-existing-binary-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b12af635c7913d4ca343d3e0e6af9f43aef493e9
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ac38123e1acb8188648019d67423bd6452690b6c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59391556"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65114791"
 ---
 # <a name="updating-and-deleting-existing-binary-data-vb"></a>Aktualizace a odstranění stávajících binárních dat (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_57_VB.exe) nebo [stahovat PDF](updating-and-deleting-existing-binary-data-vb/_static/datatutorial57vb1.pdf)
 
 > V předchozích kurzech jsme viděli, jak ovládací prvek GridView umožňují snadno upravovat a odstraňovat textová data. V tomto kurzu uvidíme, jak ovládací prvek GridView také umožňuje upravovat a odstraňovat binárních dat, ať už je uloženo v databázi nebo uložené v systému souborů binární data.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -36,24 +35,19 @@ DAL obsahuje automaticky generovaný `Insert`, `Update`, a `Delete` metody, ale 
 
 Otevřete datovou sadu typu a z návrháře, klikněte pravým tlačítkem na `CategoriesTableAdapter` s záhlaví a zvolte Přidat dotaz z místní nabídky ke spuštění Průvodce konfigurací dotazu TableAdapter. Tento průvodce spustí požádá nám, jak se má TableAdapter dotazovat by měl přístup k databázi. Zvolte možnost použít SQL příkazy a klikněte na tlačítko Další. Dalším krokem vyzve k zadání typu dotazu vygenerování. Protože jsme k vytvoření dotazu na přidání nového záznamu `Categories` tabulku, vyberte aktualizaci a klikněte na tlačítko Další.
 
-
 [![Vyberte možnost aktualizace](updating-and-deleting-existing-binary-data-vb/_static/image2.png)](updating-and-deleting-existing-binary-data-vb/_static/image1.png)
 
 **Obrázek 1**: Vyberte možnost aktualizace ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image3.png))
 
-
 Nyní potřebujeme k určení `UPDATE` příkaz jazyka SQL. Průvodce automaticky navrhne `UPDATE` odpovídající v hlavním dotazu objektu TableAdapter s – příkaz (ten, který se aktualizuje `CategoryName`, `Description`, a `BrochurePath` hodnoty). Změňte příkaz tak, aby `Picture` sloupec je součástí podél `@Picture` parametr, takto:
-
 
 [!code-sql[Main](updating-and-deleting-existing-binary-data-vb/samples/sample1.sql)]
 
 Poslední obrazovka průvodce výzva pojmenujte novou metodu objektu TableAdapter. Zadejte `UpdateWithPicture` a klikněte na tlačítko Dokončit.
 
-
 [![Název nové UpdateWithPicture TableAdapter – metoda](updating-and-deleting-existing-binary-data-vb/_static/image5.png)](updating-and-deleting-existing-binary-data-vb/_static/image4.png)
 
 **Obrázek 2**: Pojmenujte novou metodu TableAdapter `UpdateWithPicture` ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image6.png))
-
 
 ## <a name="step-2-adding-the-business-logic-layer-methods"></a>Krok 2: Přidání metody vrstvy obchodní logiky
 
@@ -61,13 +55,11 @@ Kromě aktualizací DAL, musíme aktualizace BLL zahrnout metod pro aktualizaci 
 
 Při odstraňování kategorie, můžeme použít `CategoriesTableAdapter` s automaticky generovanou `Delete` metody. Přidejte následující metodu do `CategoriesBLL` třídy:
 
-
 [!code-vb[Main](updating-and-deleting-existing-binary-data-vb/samples/sample2.vb)]
 
 Pro účely tohoto kurzu vám umožňují s vytvořit dvě metody pro aktualizaci kategorie – ten, který očekává, že obrázek binární data a vyvolá `UpdateWithPicture` metoda jsme právě přidali `CategoriesTableAdapter` a další vlastnost, která přijímá jenom `CategoryName`, `Description`a `BrochurePath`hodnoty a používá `CategoriesTableAdapter` třídy s automaticky generovanou `Update` příkazu. Odůvodnění pomocí dvou metod je, že v některých případech se uživateli chtít aktualizovat obrázku s kategorie spolu s jeho další pole, ve kterých se proces uživatel bude mít nahrát nový obrázek. Binární data nahraných obrázků s je pak možné v `UPDATE` příkazu. V jiných případech může uživatel by pouze v aktualizaci, Řekněme, že se název a popis. Avšak v tom případě `UPDATE` příkaz očekává, že binární data `Picture` také sloupec a pak jsme d muset zadat také tyto informace. Bude to vyžadovat další cesty k databázi vrátit data obrázku pro záznam, který právě upravujete. Proto se chceme dvě `UPDATE` metody. Vrstvy obchodní logiky určí, které z nich použít založené na tom, jestli obrázek nejsou k dispozici data při aktualizaci kategorie.
 
 Usnadňuje to přidejte dvě metody, které `CategoriesBLL` třídy, oba s názvem `UpdateCategory`. První z nich by měla přijímat tři `String` s, `Byte` pole a `Integer` jako vstupní parametry; sekundy, pouze ve třech `String` s a `Integer`. `String` Vstupní parametry jsou pro kategorii s názvem, popis a si brožuru o cestu k souboru, `Byte` pole je pro binární obsah obrázek kategorie s a `Integer` identifikuje `CategoryID` z záznam, který chcete aktualizovat. Všimněte si, že první přetížení vyvolá druhou if předaným `Byte` pole je `Nothing`:
-
 
 [!code-vb[Main](updating-and-deleting-existing-binary-data-vb/samples/sample3.vb)]
 
@@ -77,11 +69,9 @@ V [předchozím kurzu](including-a-file-upload-option-when-adding-a-new-record-v
 
 Začněte otevřením `UploadInDetailsView.aspx` stránky. Zkopírujte všechny deklarativní syntaxe v rámci `<asp:Content>` elementu, jak je znázorněno na obrázku 3. Dále otevřete `UpdatingAndDeleting.aspx` a vložte tento kód v rámci jeho `<asp:Content>` elementu. Podobně, zkopírovat kód z `UploadInDetailsView.aspx` stránce třídy s použití modelu code-behind `UpdatingAndDeleting.aspx`.
 
-
 [![Kopírovat deklarativní UploadInDetailsView.aspx](updating-and-deleting-existing-binary-data-vb/_static/image8.png)](updating-and-deleting-existing-binary-data-vb/_static/image7.png)
 
 **Obrázek 3**: Zkopírujte z deklarativní `UploadInDetailsView.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image9.png))
-
 
 Po zkopírování přes deklarativní značek a kódu, navštivte `UpdatingAndDeleting.aspx`. Měli byste vidět stejný výstup a mají stejné prostředí pro uživatele stejně jako u `UploadInDetailsView.aspx` stránky z předchozí kurz o službě.
 
@@ -93,43 +83,34 @@ Chcete-li to napravit, klikněte na možnost konfigurace zdroje dat z prvku Obje
 
 Teď nastavte aktualizace kartu s rozevíracím seznamu na (žádný), ale ponechejte odstranit kartu s rozevíracím seznamu nastavte na `DeleteCategory`. Se vrátíme k průvodci v kroku 6 přidává aktualizace.
 
-
 [![Konfigurace ObjectDataSource DeleteCategory metody](updating-and-deleting-existing-binary-data-vb/_static/image11.png)](updating-and-deleting-existing-binary-data-vb/_static/image10.png)
 
 **Obrázek 4**: Konfigurace ObjectDataSource k použití `DeleteCategory` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image12.png))
 
-
 > [!NOTE]
 > Po dokončení průvodce bude Visual Studio požádat, pokud chcete aktualizovat pole a klíče, který se znova vygeneruje dat webové ovládací prvky pole. Zvolte možnost Ne, protože kliknutím na tlačítko Ano, přepíše všechna pole vlastní nastavení provedené může mít.
-
 
 Prvku ObjectDataSource teď bude zahrnovat hodnotu pro jeho `DeleteMethod` vlastnost a také `DeleteParameter`. Připomínáme, že při použití průvodce k určují metody, Visual Studio nastaví ObjectDataSource s `OldValuesParameterFormatString` vlastnost `original_{0}`, což způsobuje problémy s aktualizací a odstranit volání metod. Proto buď úplně vymažte tuto vlastnost nebo ho resetovat na výchozí hodnotu `{0}`. Pokud je potřeba aktualizovat paměti pro tuto vlastnost prvek ObjectDataSource, najdete v článku [přehled o vložení, aktualizace a odstranění dat](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb.md) kurzu.
 
 Po dokončení průvodce v odhalování a opravování `OldValuesParameterFormatString`, ObjectDataSource s deklarativní by měla vypadat podobně jako následující:
 
-
 [!code-aspx[Main](updating-and-deleting-existing-binary-data-vb/samples/sample4.aspx)]
 
 Po dokončení konfigurace ObjectDataSource, přidejte do prvku GridView. zaškrtnutím políčka Povolit odstranění z ovládacího prvku GridView s inteligentním odstranění funkce. Tím se přidá do prvku GridView CommandField jehož `ShowDeleteButton` je nastavena na `True`.
-
 
 [![Povolení podpory pro odstraňování v prvku GridView.](updating-and-deleting-existing-binary-data-vb/_static/image14.png)](updating-and-deleting-existing-binary-data-vb/_static/image13.png)
 
 **Obrázek 5**: Povolení podpory pro odstraňování v prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image15.png))
 
-
 Využijte k otestování funkce odstraňování. Je cizího klíče mezi `Products` tabulky s `CategoryID` a `Categories` tabulky s `CategoryID`, takže výjimky porušení omezení cizího klíče se zobrazí, když se pokusíte odstranit některé z prvních osm kategorií. K otestování této funkce si přidáte novou kategorii, poskytování si brožuru o i obrázek. Moje kategorie testu je znázorněno na obrázku 6, obsahuje testovací si brožuru o soubor s názvem `Test.pdf` a obrázek testu. Obrázek 7 znázorňuje prvku GridView, po přidání kategorie testu.
-
 
 [![Přidejte kategorie testu s brožura a bitové kopie](updating-and-deleting-existing-binary-data-vb/_static/image17.png)](updating-and-deleting-existing-binary-data-vb/_static/image16.png)
 
 **Obrázek 6**: Přidejte kategorie testu s brožura a Image ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image18.png))
 
-
 [![Po vložení kategorie testu, se zobrazí v prvku GridView.](updating-and-deleting-existing-binary-data-vb/_static/image20.png)](updating-and-deleting-existing-binary-data-vb/_static/image19.png)
 
 **Obrázek 7**: Po vložení kategorie testu, se zobrazí v prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image21.png))
-
 
 V sadě Visual Studio aktualizujte Průzkumníka řešení. Teď byste měli vidět nový soubor v `~/Brochures` složce `Test.pdf` (viz obrázek 8).
 
@@ -137,11 +118,9 @@ Dále klikněte na odkaz pro odstranění řádku kategorie testu, způsobí str
 
 Při odstranění pracovního postupu se úspěšně odebral kategorie testu záznam na základě `Categories` tabulky, neodebral jeho si brožuru o souboru ze systému souborů webového serveru s. Aktualizovat Průzkumníka řešení a uvidíte, že `Test.pdf` stále nachází `~/Brochures` složky.
 
-
 ![Soubor Test.pdf nebyl odstraněn ze systému souborů webového serveru s](updating-and-deleting-existing-binary-data-vb/_static/image1.gif)
 
 **Obrázek 8**: `Test.pdf` Soubor nebyl odstraněn ze systému souborů webového serveru s
-
 
 ## <a name="step-5-removing-the-deleted-category-s-brochure-file"></a>Krok 5: Odstraňuje se soubor odstranil kategorii s si brožuru o
 
@@ -149,14 +128,12 @@ Jednou z nevýhody ukládání binárních dat, které jsou externí vzhledem k 
 
 GridView s [ `RowDeleting` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rowdeleting.aspx) je aktivována před příkazem k odstranění prvku ObjectDataSource s byla vyvolána, při jeho [ `RowDeleted` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rowdeleted.aspx) aktivuje po. Vytváření obslužných rutin událostí pro tyto dvě události pomocí následujícího kódu:
 
-
 [!code-vb[Main](updating-and-deleting-existing-binary-data-vb/samples/sample5.vb)]
 
 V `RowDeleting` obslužné rutiny události `CategoryID` řádku, který odstraňuje je převzatý z ovládacího prvku GridView s `DataKeys` kolekce, která je přístupná v tomto popisovači událostí prostřednictvím `e.Keys` kolekce. Dále `CategoriesBLL` třída s `GetCategoryByCategoryID(categoryID)` je vyvolána k vrácení informací o odstranění záznamu. Pokud vráceného `CategoriesDataRow` objekt má non -`NULL``BrochurePath` hodnotu, není uložen v proměnné stránky `deletedCategorysPdfPath` tak, že soubor je možné odstranit v `RowDeleted` obslužné rutiny události.
 
 > [!NOTE]
 > Místo získávání `BrochurePath` podrobnosti pro `Categories` zaznamenat odstraňuje v `RowDeleting` obslužná rutina události, může také přidali jsme `BrochurePath` do ovládacího prvku GridView s `DataKeyNames` vlastnost a k nim přistupovat hodnota záznamu s až `e.Keys` kolekce. Mohlo by mírně dojít ke zvětšení GridView s zobrazení stavu, ale by snížit množství kódu, které jsou potřebné a uložit výlet do databáze.
-
 
 Po zavolání s základní příkazem k odstranění ObjectDataSource GridView s `RowDeleted` dojde k aktivaci obslužné rutiny události. Pokud nebyly žádné výjimky v odstranění dat a je hodnota pro `deletedCategorysPdfPath`, pak soubor PDF se odstraní ze systému souborů. Všimněte si, že není potřeba tento další kód pro vyčištění kategorie s binární data přidružená k jeho obrázek. Tento s protože přímo v databázi jsou uložena data obrázku, takže odstranění `Categories` řádků se odstraní také tato data obrázku kategorie s.
 
@@ -170,34 +147,27 @@ Jak je popsáno v kurzu přehled o vložení, aktualizace a odstranění dat prv
 
 Klikněte na odkaz Konfigurovat zdroj dat z prvku ObjectDataSource s průvodce a pokračujte v druhém kroku. Z důvodu `DataObjectMethodAttribute` používané `CategoriesBLL`, rozevírací seznam aktualizace mělo být automaticky vyplněno pomocí `UpdateCategory` přetížení, které přijímá čtyři vstupní parametry (pro všechny sloupce, ale `Picture`). Změňte tak, aby používala přetížení s pěti parametry.
 
-
 [![Konfigurace ObjectDataSource UpdateCategory metody, která zahrnuje parametr pro obrázek](updating-and-deleting-existing-binary-data-vb/_static/image23.png)](updating-and-deleting-existing-binary-data-vb/_static/image22.png)
 
 **Obrázek 9**: Konfigurace ObjectDataSource k použití `UpdateCategory` metoda, která zahrnuje parametr `Picture` ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image24.png))
-
 
 Prvku ObjectDataSource teď bude zahrnovat hodnotu pro jeho `UpdateMethod` vlastnosti také odpovídající `UpdateParameter` s. Jak je uvedeno v kroku 4, Visual Studio nastaví ObjectDataSource s `OldValuesParameterFormatString` vlastnost `original_{0}` při použití konfigurace zdroje dat průvodce. To způsobí problémy s aktualizací a odstranit volání metod. Proto buď úplně vymažte tuto vlastnost nebo ho resetovat na výchozí hodnotu `{0}`.
 
 Po dokončení průvodce v odhalování a opravování `OldValuesParameterFormatString`, ObjectDataSource s deklarativní by měl vypadat nějak takto:
 
-
 [!code-aspx[Main](updating-and-deleting-existing-binary-data-vb/samples/sample6.aspx)]
 
 Chcete-li v prvku GridView s integrované funkce úprav, zaškrtněte možnost Povolit úpravy z ovládacího prvku GridView s inteligentním. Tím nastavíte CommandField s `ShowEditButton` vlastnost `True`výsledkem přidání tlačítko pro úpravy (a aktualizace a zrušit tlačítka pro řádek, který právě upravujete).
-
 
 [![Konfigurace ovládacího prvku GridView pro podporu úpravy](updating-and-deleting-existing-binary-data-vb/_static/image26.png)](updating-and-deleting-existing-binary-data-vb/_static/image25.png)
 
 **Obrázek 10**: Konfigurace ovládacího prvku GridView pro podporu úpravy ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image27.png))
 
-
 Na stránce prostřednictvím prohlížeče a klikněte na jeden řádek s tlačítka Upravit. `CategoryName` a `Description` BoundFields jsou vykresleny jako textová pole. `BrochurePath` TemplateField nemá `EditItemTemplate`, takže ho pořád zobrazovat jeho `ItemTemplate` odkaz brožura. `Picture` ImageField vykreslí jako textové pole, jehož `Text` vlastnost je přiřazena hodnota ImageField s `DataImageUrlField` hodnoty v tomto případě `CategoryID`.
-
 
 [![GridView nemá pro BrochurePath editační rozhraní](updating-and-deleting-existing-binary-data-vb/_static/image29.png)](updating-and-deleting-existing-binary-data-vb/_static/image28.png)
 
 **Obrázek 11**: Chybí rozhraní pro úpravy prvku GridView `BrochurePath` ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image30.png))
-
 
 ## <a name="customizing-thebrochurepaths-editing-interface"></a>Přizpůsobení`BrochurePath`rozhraní pro úpravy s
 
@@ -217,22 +187,17 @@ V prvku GridView s inteligentních značek kliknutím na odkaz Upravit šablony 
 
 Nastavte první `ListItem` s `Selected` vlastnost `True`.
 
-
 ![Přidejte tři položky ListItems RadioButtonList](updating-and-deleting-existing-binary-data-vb/_static/image2.gif)
 
 **Obrázek 12**: Přidejte tři `ListItem` s RadioButtonList
 
-
 Pod RadioButtonList, přidejte ovládací prvek FileUpload s názvem `BrochureUpload`. Nastavte jeho `Visible` vlastnost `False`.
-
 
 [![Přidat EditItemTemplate RadioButtonList a FileUpload ovládacího prvku](updating-and-deleting-existing-binary-data-vb/_static/image32.png)](updating-and-deleting-existing-binary-data-vb/_static/image31.png)
 
 **Obrázek 13**: Přidat RadioButtonList a odesílání souborů při odpovědích řízení `EditItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image33.png))
 
-
 Tato RadioButtonList poskytuje tři možnosti pro uživatele. Cílem je, že pouze v případě, že je vybrána poslední možnost, nové si brožuru o nahrání, se zobrazí ovládací prvek FileUpload. K tomu vytvořit obslužná rutina události RadioButtonList s `SelectedIndexChanged` událostí a přidejte následující kód:
-
 
 [!code-vb[Main](updating-and-deleting-existing-binary-data-vb/samples/sample7.vb)]
 
@@ -240,16 +205,13 @@ Protože RadioButtonList a odesílání souborů při odpovědích ovládací pr
 
 S tímto kódem na místě využijte k otestování rozhraní úprav. Klikněte na tlačítko Upravit pro řádek. Zpočátku je třeba vybrat možnosti použít aktuální si brožuru o. Změna vybraného indexu vyvolá zpětné volání. Pokud třetí možnost je vybrána, se zobrazí ovládací prvek FileUpload, v opačném případě je skrytá. Obrázek 14 zobrazuje rozhraní pro úpravy, když nejdřív po kliknutí na tlačítko Upravit; Obrázek 15 ukazuje rozhraní po výběru nové možnosti si brožuru o nahrání.
 
-
 [![Na začátku použít aktuální brožura, který je vybraná možnost](updating-and-deleting-existing-binary-data-vb/_static/image35.png)](updating-and-deleting-existing-binary-data-vb/_static/image34.png)
 
 **Obrázek 14**: Na začátku použít aktuální brožura je vybrána možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image36.png))
 
-
 [![Výběr nahrání nového brožura zobrazí možnost FileUpload ovládacího prvku](updating-and-deleting-existing-binary-data-vb/_static/image38.png)](updating-and-deleting-existing-binary-data-vb/_static/image37.png)
 
 **Obrázek 15**: Výběr nahrání nového brožura zobrazí možnost řízení FileUpload ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image39.png))
-
 
 ## <a name="saving-the-brochure-file-and-updating-thebrochurepathcolumn"></a>Brožura uložení souboru a aktualizace`BrochurePath`sloupec
 
@@ -266,11 +228,9 @@ Kroky potřebné k dokončení při RadioButtonList s `SelectedValue` je 3 jsou 
 
 Následující kód pro tyto dvě metody. Všimněte si, podobnosti `ProcessBrochureUpload` a DetailsView s `ItemInserting` obslužné rutiny události z předchozí kurz o službě. V tomto kurzu jste aktualizoval(a) jsem prvek DetailsView s obslužných rutin událostí k použít tyto nové metody. Stáhněte si kód spojený s tímto kurzem, chcete-li zobrazit změny obslužné rutiny událostí s prvku DetailsView.
 
-
 [!code-vb[Main](updating-and-deleting-existing-binary-data-vb/samples/sample8.vb)]
 
 GridView s `RowUpdating` a `RowUpdated` obslužné rutiny události použít `ProcessBrochureUpload` a `DeleteRememberedBrochurePath` metod, jak ukazuje následující kód:
-
 
 [!code-vb[Main](updating-and-deleting-existing-binary-data-vb/samples/sample9.vb)]
 
@@ -288,32 +248,25 @@ Zatímco ImageField usnadňuje zobrazení image založenou na datech z databáze
 
 Přizpůsobení rozhraní třídy ImageField s úprav, musíme ho převést na pole TemplateField. Z inteligentních značek GridView s kliknutím na odkaz Upravit sloupce, vyberte třídy ImageField a klikněte na odkaz TemplateField převést toto pole.
 
-
 ![Převést ImageField TemplateField](updating-and-deleting-existing-binary-data-vb/_static/image3.gif)
 
 **Obrázek 16**: Převést ImageField TemplateField
 
-
 Převádění ImageField TemplateField tímto způsobem generuje TemplateField s dvě šablony. Jak ukazuje následující deklarativní syntaxe `ItemTemplate` webovému rozhraní Image obsahuje ovládací prvek, jehož `ImageUrl` je vlastnosti přiřazen pomocí syntaxe vázání dat podle třídy ImageField s `DataImageUrlField` a `DataImageUrlFormatString` vlastnosti. `EditItemTemplate` Obsahuje textové pole jejichž `Text` vlastnost je vázána na hodnotu zadanou proměnnou `DataImageUrlField` vlastnost.
-
 
 [!code-aspx[Main](updating-and-deleting-existing-binary-data-vb/samples/sample10.aspx)]
 
 Potřebujeme aktualizovat `EditItemTemplate` použití ovládacího prvku FileUpload. Z prvku GridView s inteligentním klikněte na Upravit šablony propojení a potom vyberte `Picture` TemplateField s `EditItemTemplate` z rozevíracího seznamu. V šabloně byste měli vidět textové pole, toto odeberte. V dalším kroku přetáhněte FileUpload ovládacího prvku z panelu nástrojů do šablony, nastavení jeho `ID` k `PictureUpload`. Také přidáte text pro změnu obrázku kategorie s zadejte nový obrázek. Pokud chcete zachovat obrázku kategorie s stejné, ponechte toto pole prázdné šablony, stejně.
 
-
 [![Přidejte ovládací prvek odesílání souborů při odpovědích EditItemTemplate](updating-and-deleting-existing-binary-data-vb/_static/image41.png)](updating-and-deleting-existing-binary-data-vb/_static/image40.png)
 
 **Obrázek 17**: Přidání ovládacího prvku odesílání souborů při odpovědích `EditItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image42.png))
 
-
 Po přizpůsobení rozhraní pro úpravy, můžete zobrazte průběh v prohlížeči. Při prohlížení řádek v režimu jen pro čtení, obrázek s kategorií se zobrazí jako před ale kliknutím na tlačítko Upravit jako text s ovládacím prvkem FileUpload vykreslí obrázek sloupce.
-
 
 [![Úpravy rozhraní zahrnuje FileUpload ovládací prvek](updating-and-deleting-existing-binary-data-vb/_static/image44.png)](updating-and-deleting-existing-binary-data-vb/_static/image43.png)
 
 **Obrázek 18**: Úpravy rozhraní obsahuje ovládací prvek FileUpload ([kliknutím ji zobrazíte obrázek v plné velikosti](updating-and-deleting-existing-binary-data-vb/_static/image45.png))
-
 
 Připomínáme, že prvku ObjectDataSource je nakonfigurován k volání `CategoriesBLL` třída s `UpdateCategory` metody, která přijímá jako vstup pro obrázek jako binární data `Byte` pole. Pokud je toto pole `Nothing`, ale alternativní `UpdateCategory` přetížená metoda je volána, problémy, které `UPDATE` příkazu SQL, který neprovádí úpravy `Picture` sloupce, a tím byste museli opustit kategorie s aktuální obrázek Internet. Proto v prvku GridView s `RowUpdating` budeme potřebovat programově odkazovat obslužná rutina události `PictureUpload` FileUpload řídit a určit, pokud byl nahrán do souboru. Pokud jeden nebyl odeslán, pak provedeme *není* chcete zadat hodnotu `picture` parametru. Na druhou stranu, pokud soubor byl nahrán do `PictureUpload` FileUpload ovládacího prvku, chceme se ujistit, že se jedná o soubor .jpg. Pokud je pak pošleme její binární obsah na ObjectDataSource prostřednictvím `picture` parametru.
 
@@ -321,13 +274,11 @@ Jako s kód použitý v kroku 6 velkou část kódu potřeba zde již existuje v
 
 Přidejte následující kód na začátek ovládacího prvku GridView s `RowUpdating` obslužné rutiny události. Je důležité, že tento kód předcházet kód, který uloží si brožuru o soubor, protože jsme zadávat t chcete uložit brožura do systému souborů webového serveru s, pokud se odešle soubor neplatný obrázek.
 
-
 [!code-vb[Main](updating-and-deleting-existing-binary-data-vb/samples/sample11.vb)]
 
 `ValidPictureUpload(FileUpload)` Metoda přijímá FileUpload ovládací prvek jako svůj jediný vstupní parametr a zkontroluje nahraný soubor s příponou tak, aby byl odeslaný soubor JPG, je volána pouze pokud je soubor s obrázkem. Pokud žádný soubor je odeslán, pak parametr obrázku je Nenastaveno a je proto používá jeho výchozí hodnotu `Nothing`. Pokud byl obrázek nahrán a `ValidPictureUpload` vrátí `True`, `picture` parametr je přiřazený binární data z této odeslané image; Pokud metoda vrátí `False`, pracovního postupu aktualizace se zrušila a byla ukončena, obslužné rutiny události.
 
 `ValidPictureUpload(FileUpload)` Metoda kód, který byl Refaktorovat z prvku DetailsView s `ItemInserting` následuje obslužné rutiny události:
-
 
 [!code-vb[Main](updating-and-deleting-existing-binary-data-vb/samples/sample12.vb)]
 
@@ -342,12 +293,10 @@ Připomínáme, že původní obrázky osm kategorií jsou zabaleny v hlavičce 
 
 Po úpravě kategorii a nahrávání obrázků JPG, image nebude vykreslovat v prohlížeči vzhledem k tomu, `DisplayCategoryPicture.aspx` stránky je odstranění první 78 bajtů z obrázků prvních osm kategorií. Opravte tak, že odeberete kód, který provede odstranění záhlaví OLE. Za to, `DisplayCategoryPicture.aspx``Page_Load` obslužné rutiny události by měly mít pouze následující kód:
 
-
 [!code-vb[Main](updating-and-deleting-existing-binary-data-vb/samples/sample13.vb)]
 
 > [!NOTE]
 > `UpdatingAndDeleting.aspx` Stránky s vkládání a úpravy rozhraní použít trochu více práce. `CategoryName` a `Description` BoundFields v prvku DetailsView a ovládacího prvku GridView, by měly být převedeny vlastností TemplateField. Protože `CategoryName` neumožňuje `NULL` hodnoty, by měly být přidány RequiredFieldValidator. A `Description` TextBox pravděpodobně by měly být převedeny ve víceřádkovém textovém poli. Opuštění tyto doladění jako cvičení za vás.
-
 
 ## <a name="summary"></a>Souhrn
 

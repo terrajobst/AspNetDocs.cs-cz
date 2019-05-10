@@ -8,12 +8,12 @@ ms.date: 02/07/2014
 ms.assetid: 5da59646-e973-41cd-88a9-c6b2c0594027
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e6b63afb9492e810e19999c7c7ffe074ad510bda
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2be57655b8c9b76b94e1d9a7ae5fbee27545a0a9
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59406766"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113093"
 ---
 # <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-visual-basic"></a>Úvod k programování v rozhraní ASP.NET Web používající syntaxi Razor (Visual Basic)
 
@@ -36,12 +36,10 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > 
 > V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
 
-
 Většina příkladů použití rozhraní ASP.NET Web Pages se syntaxí Razor pomocí C#. Ale syntaxe Razor také podporuje jazyka Visual Basic. Programování v jazyce Visual Basic webové stránky ASP.NET, vytvoříte webovou stránku pomocí *.vbhtml* příponu názvu souboru a poté přidejte kód jazyka Visual Basic. Tento článek obsahuje přehled práce s jazykem Visual Basic a syntaxe pro vytvoření webových stránek ASP.NET.
 
 > [!NOTE]
 > Výchozí šablony webu pro Microsoft WebMatrix (**pekařství**, **Fotogalerie**, a **Starter Site**atd) jsou k dispozici v jazyce C# a Visual Basic verze. Šablony jazyka Visual Basic, tak můžete nainstalovat jako balíčky NuGet. Šablony webu jsou nainstalovány v kořenové složce webu do složky s názvem *Templates Microsoft*.
-
 
 ## <a name="the-top-8-programming-tips"></a>Začátek 8 Tipy pro programování
 
@@ -66,7 +64,6 @@ Výsledek zobrazí v prohlížeči:
 > Pokud je vaším cílem je výstup kód HTML, který vykreslí značky jako značka (třeba `<p></p>` odstavce nebo `<em></em>` pro zvýraznění textu), najdete v části [kombinaci textu, značek a kódu v blocích kódu](#BM_CombiningTextMarkupAndCode) dále v tomto článku.
 > 
 > Další informace o kódování HTML v [práce s formuláři HTML v ASP.NET Web Pages Sites](https://go.microsoft.com/fwlink/?LinkId=202892).
-
 
 ### <a name="2-you-enclose-code-blocks-with-codeend-code"></a>2. Použijte bloky kódu s kódem... Kód konce
 
@@ -151,7 +148,6 @@ Výsledek zobrazí v prohlížeči (po kliknutí na tlačítko **odeslat**):
 > Protokol použitý pro webové stránky (HTTP) podporuje velmi omezený počet metod (&quot;příkazy&quot;), která se používají k provádění požadavků na server. Nichž dva nejčastější jsou GET, který slouží k načtení stránky a příspěvku, který se používá k odeslání stránky. Obecně platí uživatel požádá o stránku při prvním požadavku na stránku pomocí GET. Pokud uživatel vyplní ve formuláři a poté klikněte na tlačítko **odeslat**, prohlížeč odešle požadavek POST na server.
 > 
 > Ve webovém programování často je užitečné vědět, jestli na stránce jsou požadovány jako GET nebo POST, abyste věděli, jak zpracování stránky. ASP.NET Web Pages, můžete použít `IsPost` vlastnosti chcete zobrazit, zda je požadavek GET nebo POST. Pokud je příspěvek, požadavek `IsPost` vlastnost vrátí hodnotu PRAVDA, a můžete provádět věci, jako je čtení hodnoty polí ve formuláři. Mnoho příkladů, zobrazí se vám ukazují, jak zpracovat stránce odlišně v závislosti na hodnotě `IsPost`.
-
 
 ## <a name="a-simple-code-example"></a>Jednoduchým příkladem kódu
 
@@ -272,7 +268,6 @@ K převodu hodnoty na celá čísla, volání `AsInt` metody. Pokud převod nen�
 
 Následující tabulka uvádí některé běžné metody převodu a testování pro proměnné.
 
-
 :::row:::
     :::column:::
         <strong>Method</strong>
@@ -369,11 +364,9 @@ Následující tabulka uvádí některé běžné metody převodu a testování 
     :::column-end:::
 :::row-end:::
 
-
 ## <a name="operators"></a>Operátory
 
 Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jaký druh příkaz k provedení ve výrazu. Visual Basic podporuje mnoho operátorů, ale je potřeba jenom rozpoznat pár, abyste mohli začít vyvíjet webové stránky ASP.NET. Následující tabulka shrnuje nejčastější operátory.
-
 
 :::row:::
     :::column:::
@@ -732,7 +725,6 @@ V situacích, kdy váš kód může nastat výjimky a pokud se chcete vyhnout ch
 
 > [!NOTE]
 > Doporučujeme, abyste je velmi riskantní používat `Response.Redirect` metoda `Try/Catch` příkazy, protože to může způsobit výjimku na stránce.
-
 
 Následující příklad ukazuje stránka, která vytváří textový soubor na první žádost o a poté zobrazí tlačítko, které umožňuje uživateli otevřít soubor. V příkladu záměrně používá chybný název souboru tak, aby způsobí výjimku. Tento kód obsahuje `Catch` příkazy pro dvě výjimky: `FileNotFoundException`, která nastane, pokud název souboru je chybný, a `DirectoryNotFoundException`, která nastane, pokud ASP.NET i nelze najít složku. (Příkaz v tomto příkladu můžete odkomentovat Chcete-li zobrazit, jak se spustí při všechno funguje správně.)
 

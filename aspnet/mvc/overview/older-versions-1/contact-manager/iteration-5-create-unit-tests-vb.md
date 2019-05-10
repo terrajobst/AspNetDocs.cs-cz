@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: c6e5c036-2265-4fa7-a9eb-47f197bdc262
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-5-create-unit-tests-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 476e5529e4fd53c6166c53766409268939a83c72
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 4ce1c6224a7e9203ff62f136f4f3a43e4561a904
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59380662"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123820"
 ---
 # <a name="iteration-5--create-unit-tests-vb"></a>Iterace #5 – vytvoření testů jednotek (VB)
 
@@ -22,7 +22,6 @@ by [Microsoft](https://github.com/microsoft)
 [Stáhnout kód](iteration-5-create-unit-tests-vb/_static/contactmanager_5_vb1.zip)
 
 > V páté iteraci jsme snadněji naší aplikace spravovat a upravovat tak, že přidáte testy jednotek. Jsme napodobení našich tříd datových modelů a vytváření testů jednotek pro naše řadiče a logiku ověřování.
-
 
 ## <a name="building-a-contact-management-aspnet-mvc-application-vb"></a>Vytvoření aplikace pro správu kontaktů ASP.NET MVC (VB)
 
@@ -43,7 +42,6 @@ Vytváříme aplikaci přes více iterací. S každou iterací zvyšujeme postup
 - Iterace #6 – použití vývoje řízeného testováním. V této iterace šestého přidáme nové funkce do naší aplikace tak, že nejprve zápis testů jednotek a psaní kódu pro testování částí. V této iterace můžeme přidat skupiny kontaktů.
 
 - Iterace #7 – přidání funkcí Ajax. V sedmé iteraci můžeme zlepšit rychlost reakce a výkon naší aplikace tak, že přidáte podporu pro Ajax.
-
 
 ## <a name="this-iteration"></a>Tuto iteraci
 
@@ -69,7 +67,6 @@ V této iterace přidáme k naší aplikace Správce kontaktů testování čás
 > 
 > Existují různé architektury, včetně MbUnit, NUnit a xUnit.net testování částí. V tomto kurzu používáme jednotkových testů součástí sady Visual Studio. Však stejně snadno můžete jedno z těchto alternativních rozhraní.
 
-
 ## <a name="what-gets-tested"></a>Co získá testování
 
 V ideálním všech kódů by být pokryté komponentami testování částí. V ideálním budete mít dokonalý bezpečnostní. By moci upravit libovolném řádku kódu v aplikaci a vědět, okamžitě, spuštěním testování částí, zda tato změna se podařilo přerušit stávajících funkcí.
@@ -88,11 +85,9 @@ Pokud zobrazení obsahuje složitější logiku byste zvážit, přesun logiku d
 > 
 > Při psaní testů pro logikou přístupu k datům nebo zobrazení logiky není vhodné při psaní testů jednotek, tyto testy může být velmi důležité, při vytváření funkční nebo integraci testů.
 
-
 > [!NOTE] 
 > 
 > ASP.NET MVC je webové formuláře zobrazovací modul. Webové formuláře zobrazovací modul je závislé na webovém serveru, nemusí být ostatní moduly zobrazení.
-
 
 ## <a name="using-a-mock-object-framework"></a>Pomocí Mock objektu Framework
 
@@ -115,16 +110,13 @@ Před použitím Moq, budete muset provést následující kroky:
 3. Rozbalte stažený soubor.
 4. Přidat odkaz na sestavení Moq do testovacího projektu tak, že vyberete možnost nabídky **projektu, přidejte odkaz** otevřít **přidat odkaz** dialogového okna. Na kartě Procházet přejděte do složky, kde odblokujte Moq a vyberte Moq.dll sestavení. Klikněte na tlačítko **OK** tlačítko (viz obrázek 2).
 
-
 [![Odblokování Moq](iteration-5-create-unit-tests-vb/_static/image1.jpg)](iteration-5-create-unit-tests-vb/_static/image1.png)
 
 **Obrázek 01**: Odblokování Moq ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-5-create-unit-tests-vb/_static/image2.png))
 
-
 [![Po přidání Moq odkazy](iteration-5-create-unit-tests-vb/_static/image2.jpg)](iteration-5-create-unit-tests-vb/_static/image3.png)
 
 **Obrázek 02**: Po přidání Moq odkazy ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-5-create-unit-tests-vb/_static/image4.png))
-
 
 ## <a name="creating-unit-tests-for-the-service-layer"></a>Vytváření testů jednotek pro vrstvu služby
 
@@ -136,11 +128,9 @@ Vytvořte novou složku s názvem modely v projektu ContactManager.Tests. V dal�
 > 
 > Obecně byste měli strukturu složky pro testovací projekt tak, aby odpovídaly struktuře složky vašeho projektu ASP.NET MVC. Například umístit kontroleru testů ve složce řadiče testů modelu ve složce modely a tak dále.
 
-
 [![Models\ContactManagerServiceTest.cs](iteration-5-create-unit-tests-vb/_static/image3.jpg)](iteration-5-create-unit-tests-vb/_static/image5.png)
 
 **Obrázek 03**: Models\ContactManagerServiceTest.cs ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-5-create-unit-tests-vb/_static/image6.png))
-
 
 Na začátku chceme otestovat CreateContact() metoda použitá v třídě ContactManagerService. Vytvoříme následujících pět testů:
 
@@ -158,9 +148,7 @@ Kód pro tyto testy je obsažen v informacích 1.
 
 [!code-vb[Main](iteration-5-create-unit-tests-vb/samples/sample1.vb)]
 
-
 Protože používáme třídy kontakt v informacích 1, potřebujeme přidat odkaz na rozhraní Entity Framework společnosti Microsoft do našich testovacího projektu. Přidáte odkaz na sestavení System.Data.Entity.
-
 
 Výpis 1 obsahuje metodu s názvem Initialize(), který je upraven pomocí atributu [TestInitialize]. Tato metoda je volána automaticky před spuštěním každého testu jednotek (5krát je volána bezprostředně před každou testování částí). Metodu Initialize() vytvoří mock úložiště s následující řádek kódu:
 
@@ -172,7 +160,6 @@ Tento řádek kódu používá ke generování mock úložiště z rozhraní ICo
 > 
 > Pokud používáte rozhraní framework Moq, je rozdíl mezi \_mockRepository a \_mockRepository.Object. První odkazuje na třídu model (IContactManagerRepository z), která obsahuje metody pro určení, jak se bude chovat mock úložiště. Druhá možnost odkazuje na skutečné mock úložiště, který implementuje rozhraní IContactManagerRepository.
 
-
 Při vytváření instance třídy ContactManagerService mock úložiště slouží v metodu Initialize(). Všechny jednotlivé jednotkových testů používat tuto instanci třídy ContactManagerService.
 
 Výpis 1 obsahuje pět metod, které odpovídají jednotlivým testů jednotek. Každá z těchto metod je upravený pomocí atributu [TestMethod]. Při spuštění testů jednotek, se nazývá jakoukoli metodu, která má tento atribut. Jinými slovy jakoukoli metodu, která je upravena pomocí atributu [TestMethod] je testování částí.
@@ -183,11 +170,9 @@ Zbývající testy ověřte, že při volání metody CreateContact() neplatný 
 
 Můžete spustit testy jednotek v informacích 1 tak, že vyberete možnost nabídky **testovací běh, všechny testy v řešení (CTRL + R, A)**. Výsledky testů se zobrazí v okně Výsledky testu (viz obrázek 4).
 
-
 [![Výsledky testu](iteration-5-create-unit-tests-vb/_static/image4.jpg)](iteration-5-create-unit-tests-vb/_static/image7.png)
 
 **Obrázek 04**: Výsledky testů ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-5-create-unit-tests-vb/_static/image8.png))
-
 
 ## <a name="creating-unit-tests-for-controllers"></a>Vytváření testů jednotek pro Kontrolery
 
@@ -211,7 +196,6 @@ Druhý test jednotek ověřuje, že akce Create() vrátí zobrazení pro vytvá�
 
 Pokud Metoda Create() chová jako Očekáváme, že pak měla by vrátit zobrazení pro vytváření při vrstva služby vrátí hodnotu false. Tímto způsobem kontroleru můžete zobrazit chybové zprávy ověření v zobrazení pro vytváření a uživatel tak možnost opravit tuto neplatné vlastnosti kontaktu.
 
-
 Pokud máte v plánu testů jednotek pro vaše řadiče sestavení budete muset vrátit explicitní zobrazit názvy z akce kontroleru. Například nesmí vracet zobrazení takto:
 
 Return View()
@@ -221,7 +205,6 @@ Místo toho vrátí zobrazení takto:
 Vrátí View("Create")
 
 Pokud si nejste explicitní při vrácení zobrazení ViewResult.ViewName vlastnost vrací prázdný řetězec.
-
 
 **Listing 2 - Controllers\ContactControllerTest.vb**
 

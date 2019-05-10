@@ -8,12 +8,12 @@ ms.date: 04/21/2011
 ms.assetid: 6b09413a-6d6a-425a-87c9-629f91b91b28
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: e02e15a8955fa42692fac486dadfa426540295f7
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 20b99cbe57b5dfa623205838a5929733a6c2d70d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59387469"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65112990"
 ---
 # <a name="part-5-edit-forms-and-templating"></a>Část 5: Editační formuláře a šablonování textu
 
@@ -24,7 +24,6 @@ podle [Jon Galloway](https://github.com/jongalloway)
 > Music Store MVC je jednoduché ukázku implementace úložiště prodává hudebních alb online, který implementuje správu základního webu, přihlášení uživatele a nákupního košíku funkce.
 > 
 > V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. Část 5 obsahuje úpravy formuláře a šablonování textu.
-
 
 V posledních kapitole jsme se načítání dat z databáze a jeho zobrazení. V této kapitole jsme zároveň umožní úpravy data.
 
@@ -260,7 +259,6 @@ Nyní když jsme procházejí /StoreManager/ adresy URL, alba a názvy jsou zach
 ![](mvc-music-store-part-5/_static/image18.png)
 
 Poznámka: Ukazuje jednoduchý případ vytváření a použití pomocné rutiny v jednom zobrazení. Další informace o vytvoření pomocných rutin, které můžete použít v celém webu, najdete v mé blogovém příspěvku: [http://bit.ly/mvc3-helper-options](http://bit.ly/mvc3-helper-options)
-
 
 > [!div class="step-by-step"]
 > [Předchozí](mvc-music-store-part-4.md)

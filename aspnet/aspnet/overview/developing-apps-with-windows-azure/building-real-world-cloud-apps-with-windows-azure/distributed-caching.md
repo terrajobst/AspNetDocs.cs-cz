@@ -8,12 +8,12 @@ ms.date: 07/20/2015
 ms.assetid: 406518e9-3817-49ce-8b90-e82bc461e2c0
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching
 msc.type: authoredcontent
-ms.openlocfilehash: 61837d0087a297b6a677eb3503ce3e6c13d5e0ac
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: de4be20ed81ae356e0aa4e90e2ab61a6e25212a0
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59397471"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118825"
 ---
 # <a name="distributed-caching-building-real-world-cloud-apps-with-azure"></a>Distribuované ukládání do mezipaměti (vytváření skutečných cloudových aplikací s Azure)
 
@@ -22,7 +22,6 @@ podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twi
 [Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
 > **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o e kniha najdete v tématu [první kapitoly](introduction.md).
-
 
 Předchozí kapitoly zvažovali zpracování přechodných chyb a uvedených ukládání do mezipaměti jako strategii jističe. Tato kapitola obsahuje další informace o ukládání do mezipaměti, kdy se má použít, běžných vzorů pro jeho použití, včetně a jak implementovat v Azure.
 

@@ -8,19 +8,18 @@ ms.date: 02/16/2008
 ms.assetid: 94c3e5d9-a904-445e-a34e-d92fd1ca108a
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-controller-overview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 33544825403db67fc3b8f0e9eae5d7671b8d2e67
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: f19e7dd7fc025de2e0c387db898d36623e790e6a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59402182"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123677"
 ---
 # <a name="aspnet-mvc-controller-overview-vb"></a>ASP.NET MVC – přehled kontrolerů (VB)
 
 podle [Stephen Walther](https://github.com/StephenWalther)
 
 > V tomto kurzu Stephen Walther vás seznámí s kontrolery ASP.NET MVC. Zjistíte, jak vytvořit nové řadiče a vracet různé typy výsledků akcí.
-
 
 Tento kurz se věnuje téma kontrolery ASP.NET MVC, akce kontroleru a výsledky akce. Po dokončení tohoto kurzu budete rozumět, jak se řadiče používají k řízení způsobu, jakým návštěvník komunikuje se službou Web ASP.NET MVC.
 
@@ -103,7 +102,6 @@ Výsledek akce ContentResult je speciální. Výsledek akce ContentResult může
 > 
 > 
 > System.Web.Mvc.Controller
-
 
 [!code-vb[Main](asp-net-mvc-controller-overview-vb/samples/sample4.vb)]
 

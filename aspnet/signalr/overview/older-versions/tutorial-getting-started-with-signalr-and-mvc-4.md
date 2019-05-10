@@ -8,12 +8,12 @@ ms.date: 03/29/2013
 ms.assetid: eeef9f73-6de3-49f9-b50b-9af22108f2ce
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: abedf2dbf6fbc632b1857bf447f70aeb8f826d81
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 9186915df6d5de6bc20dfc0adabc54056d2f3a8c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59410822"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113857"
 ---
 # <a name="tutorial-getting-started-with-signalr-1x-and-mvc-4"></a>Kurz: Začínáme s knihovnou SignalR 1.x a MVC 4
 
@@ -22,7 +22,6 @@ podle [Patrick Fletcher](https://github.com/pfletcher), [Tim Teebken](https://gi
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Tento kurz ukazuje, jak používat knihovnu ASP.NET SignalR k vytvoření aplikace pro chatování v reálném čase. Přidáte funkci SignalR k aplikaci MVC 4 a vytvořit zobrazení chatu k odesílání a zobrazení zprávy.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -76,7 +75,6 @@ Tato část ukazuje, jak vytvořit aplikaci ASP.NET MVC 4, přidejte knihovny Si
 
 > [!NOTE]
 > Pokud používáte sadu Visual Studio 2012 a nainstalovali [ASP.NET and Web Tools 2012.2 aktualizace](../../../visual-studio/overview/2012/aspnet-and-web-tools-20122-release-notes-rtw.md#_Installation), můžete použít novou šablonu položky SignalR k vytvoření třídy rozbočovače. To mohli udělat, klikněte pravým tlačítkem myši **rozbočovače** složky, klikněte na tlačítko **přidat | Nová položka**vyberte **třída rozbočovače SignalR (v1)** a název třídy **ChatHub.cs**.
-
 
 1. Nahraďte kód v **ChatHub** třídy následujícím kódem.
 
@@ -151,7 +149,6 @@ Následující kód deklaruje proxy server rozbočovače.
 > [!NOTE]
 > V jQuery je odkaz na třídu serveru a jeho členy v stylem camel case. Odkazuje na vzorový kód jazyka C# **ChatHub** třídy v jQuery jako **chatHub**. Pokud chcete odkazovat `ChatHub` třídy v jQuery s konvenčním Pascal malá a velká písmena stejně jako v jazyce C#, upravte soubor třídy ChatHub.cs. Přidat `using` příkaz tak, aby odkazovaly `Microsoft.AspNet.SignalR.Hubs` oboru názvů. Pak přidejte `HubName` atribut `ChatHub` třídy, například `[HubName("ChatHub")]`. Nakonec aktualizujte referenci jQuery pro `ChatHub` třídy.
 
-
 Následující kód ukazuje, jak vytvořit funkci zpětného volání ve skriptu. Třída rozbočovače na serveru volá tuto funkci tak, aby nabízel obsah aktualizací pro jednotlivé klienty. Volitelné volání `htmlEncode` funkce ukazuje způsob, jak HTML kódování obsahu zprávy před jejich zobrazením na stránce jako způsob, jak brání injektáži skriptu.
 
 [!code-html[Main](tutorial-getting-started-with-signalr-and-mvc-4/samples/sample7.html)]
@@ -160,7 +157,6 @@ Následující kód ukazuje, jak otevřít připojení v centru. Kód spustí p�
 
 > [!NOTE]
 > Tento přístup zajišťuje, že připojení před provedením obslužná rutina události.
-
 
 [!code-javascript[Main](tutorial-getting-started-with-signalr-and-mvc-4/samples/sample8.js)]
 

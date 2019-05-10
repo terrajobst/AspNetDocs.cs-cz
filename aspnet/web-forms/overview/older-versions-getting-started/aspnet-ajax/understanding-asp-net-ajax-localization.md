@@ -8,12 +8,12 @@ ms.date: 03/14/2008
 ms.assetid: c1a35f18-bab9-41f7-8497-15530c37a09d
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-localization
 msc.type: authoredcontent
-ms.openlocfilehash: 11e70493478d6810d63ba6b3ac813e32f03052eb
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ef4ee57496337fb13b4d1c09c058e89e04eb3138
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381325"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65114590"
 ---
 # <a name="understanding-aspnet-ajax-localization"></a>Principy lokalizace pomocí technologie ASP.NET AJAX
 
@@ -22,7 +22,6 @@ podle [– Scott Cate](https://github.com/scottcate)
 [Stáhnout PDF](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial04_Localization_cs.pdf)
 
 > Lokalizace je proces návrhu a integrace podporu pro konkrétní jazyk a jazykovou verzi do aplikace nebo součásti aplikace. Platformě Microsoft ASP.NET poskytuje rozsáhlou podporu pro lokalizaci pro standardní aplikace ASP.NET integrací standardní .NET – model lokalizace; Microsoft AJAX Framework využívat integrované modelu mají podporovat nejrůznější scénáře, ve kterých lze provést lokalizace.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -105,16 +104,13 @@ Pro ty obeznámeni se syntaxí využívající regulární výrazy jazyka JavaSc
 1. Stiskněte klávesu F5. Pokud se zobrazí výzva, povolte ladění. Když je stránka načtená, stiskněte klávesu Delete. Všimněte si, výzva se zobrazí v angličtině (Pokud je váš počítač nastavený preferovat Španělština – jazykové prostředky ve výchozím nastavení) pro potvrzení.
 2. Zavřete okno prohlížeče a vraťte se na default.aspx. V @Page záhlaví směrnice, automaticky nahradit Culture a UICulture s es-ES. Stisknutím klávesy F5 spusťte webovou aplikaci v prohlížeči znovu. Tentokrát, mějte na paměti, že budete vyzváni k odstranění souboru ve španělštině:
 
-
 [![](understanding-asp-net-ajax-localization/_static/image2.png)](understanding-asp-net-ajax-localization/_static/image1.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-localization/_static/image3.png))
 
-
 [![](understanding-asp-net-ajax-localization/_static/image5.png)](understanding-asp-net-ajax-localization/_static/image4.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-localization/_static/image6.png))
-
 
 Všimněte si, že existuje několik variant v tomto návodu. Například skripty nelze zaregistrovat pomocí ovládacího prvku ScriptManager prostřednictvím kódu programu během načítání stránky.
 

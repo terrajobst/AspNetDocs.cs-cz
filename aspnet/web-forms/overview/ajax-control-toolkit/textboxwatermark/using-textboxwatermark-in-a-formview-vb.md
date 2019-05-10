@@ -8,12 +8,12 @@ ms.date: 06/02/2008
 ms.assetid: 41497361-7fba-4825-b36c-f58d79522a88
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-in-a-formview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 056e89b20ccab0e56b1fab422c817d842beff446
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 7dd213e632f6114b0ef468e97943e789e71a474a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400838"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65124522"
 ---
 # <a name="using-textboxwatermark-in-a-formview-vb"></a>Použití ovládacího prvku TextBoxWatermark v ovládacím prvku FormView (VB)
 
@@ -22,7 +22,6 @@ by [Christian Wenz](https://github.com/wenz)
 [Stáhněte si kód](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/TextBoxWatermark1.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/textboxwatermark1VB.pdf)
 
 > Ovládacího prvku TextBoxWatermark v sadou nástrojů AJAX Control Toolkit rozšiřuje textové pole tak, aby text se zobrazí v poli. Když uživatel klikne do pole, je prázdný. Pokud uživatel ponechá pole bez nutnosti zadávat text, zobrazí se předem vyplněných text. To je možné v ovládacím prvku FormView.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -47,7 +46,6 @@ Pamatovat název (`ID`) zdroje dat, protože se používá v `DataSourceID` vlas
 [!code-aspx[Main](using-textboxwatermark-in-a-formview-vb/samples/sample3.aspx)]
 
 Nyní když uživatel změní do režimu vložit `FormView` řídit, textové pole pro nové dodavatele se předem k `TextBoxWatermarkExtender` ovládacího prvku. Klikněte do textového pole umožňuje text přednastavené zmizí.
-
 
 [![Meze v poli pochází ze zařízení extender](using-textboxwatermark-in-a-formview-vb/_static/image2.png)](using-textboxwatermark-in-a-formview-vb/_static/image1.png)
 

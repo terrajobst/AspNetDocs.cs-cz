@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: 585351c4-809a-4bf5-bcbe-35d624f565fe
 msc.legacyurl: /web-api/overview/advanced/sending-html-form-data-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: fb0309af11910125943737ebb721b356b7bd08bc
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 7243069dbd8051b1374ed6e0112c273b8fe26f61
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59418297"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65115469"
 ---
 # <a name="sending-html-form-data-in-aspnet-web-api-form-urlencoded-data"></a>Posílání dat formulářů HTML ve webovém rozhraní API technologie ASP.NET: Data formuláře kódovaná pomocí adresy URL
 
@@ -31,7 +31,6 @@ Tento článek ukazuje, jak publikovat data formuláře kódovaná do kontroleru
 
 > [!NOTE]
 > [Stáhnout dokončený projekt](https://code.msdn.microsoft.com/ASPNET-Web-API-Sending-a6f9d007).
-
 
 <a id="overview_of_html_forms"></a>
 ## <a name="overview-of-html-forms"></a>Přehled formulářů HTML
@@ -62,7 +61,6 @@ Tady je kontroler Web API, která přijímá `Update` objekt přes POST.
 
 > [!NOTE]
 > Tento kontroler používá [směrování na základě akce](../web-api-routing-and-actions/routing-in-aspnet-web-api.md#routing_by_action_name), takže je šablona trasy &quot;rozhraní api / {controller} / {action} / {id}&quot;. Klient bude publikovat data, která mají &quot;/api/updates/complex&quot;.
-
 
 Nyní napíšeme formuláře HTML pro uživatele k odeslání aktualizace stavu.
 
@@ -101,7 +99,6 @@ V předchozích částech jsme vám poslali komplexní typ, který webového roz
 > [!NOTE]
 > Před odesláním jednoduchého typu, zvažte možnost uzavřít hodnotu v komplexního typu. místo toho. To poskytuje výhody model ověření na straně serveru a usnadňuje rozšíření modelu, v případě potřeby.
 
-
 Toto jsou základní kroky k odeslání jednoduchý typ stejný, ale existují dva drobné rozdíly. V kontroleru, musíte nejprve uspořádání název parametru se **FromBody** atribut.
 
 [!code-csharp[Main](sending-html-form-data-part-1/samples/sample7.cs?highlight=3)]
@@ -110,7 +107,6 @@ Ve výchozím nastavení se webové rozhraní API pokusí získat jednoduché ty
 
 > [!NOTE]
 > Webové rozhraní API přečte text odpovědi nejvýše jednou, takže pouze jeden parametr akce můžou pocházet z textu požadavku. Pokud je potřeba získat několik hodnot z textu požadavku, definice komplexního typu.
-
 
 Za druhé klient musí k odeslání hodnoty v následujícím formátu:
 

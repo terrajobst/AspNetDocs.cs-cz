@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 187ee9cd-bc70-479b-bfed-f568b8da96eb
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 639a8e0e5fd9557221c95aee1bef0294df047ae8
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 0e2605a4188eaf814f6ab0ebfeaabed4457bcfa3
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59406311"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65112509"
 ---
 # <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>ASP.NET MVC 4 – pomocníci, formuláře a ověřování
 
@@ -89,7 +89,6 @@ Následující praktická cvičení tvoří tohoto praktického testovacího pro
 
 > [!NOTE]
 > Se sadou každý cvičení **koncové** složku, která obsahuje výsledný řešení byste měli získat po dokončení cvičení. Toto řešení můžete použít jako vodítko, pokud potřebujete další pomoc prostřednictvím praktická cvičení.
-
 
 Odhadovaný čas dokončení tohoto testovacího prostředí: **60 minut**
 
@@ -177,7 +176,6 @@ V tomto úkolu budou upraveny jednoduché zobrazení šablony vytvořené s funk
 > [!NOTE]
 > **Generování uživatelského rozhraní** podpory v rámci technologie ASP.NET MVC vygeneruje šablonu jednoduché zobrazení, která se zobrazí seznam všech polí v modelu alba. **Generování uživatelského rozhraní** poskytuje rychlý způsob, jak začít pracovat v zobrazení se silnými typy: namísto nutnosti psát zobrazit šablonu ručně, generování uživatelského rozhraní rychle generuje výchozí šablonu a pak můžete vygenerovaný kód upravit.
 
-
 1. Revize kódu vytvoří. Vygenerovaný seznam polí bude součástí následující tabulky HTML, který **generování uživatelského rozhraní** používá pro zobrazení tabulková data.
 
     [!code-cshtml[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample4.cshtml)]
@@ -224,7 +222,6 @@ V této úloze přidá novou metodu **Truncate** k **HTML** objekt zveřejní v 
 
 > [!NOTE]
 > Další informace o tom **rozšiřující metody**, navštivte prosím článku na webu msdn. [https://msdn.microsoft.com/library/bb383977.aspx](https://msdn.microsoft.com/library/bb383977.aspx).
-
 
 1. Otevřít **začít** řešení nachází v **zdroj/Ex2-AddingAnHTMLHelper/počáteční/** složky. V opačném případě může nadále používat **End** řešení získat provedením předchozím cvičení.
 
@@ -665,7 +662,6 @@ V tomto cvičení se dozvíte, jak povolit MVC 4 Nerušivý jQuery ověření na
 
 > [!NOTE]
 > Nerušivý jQuery používá data-ajax předponu JavaScript volat v serveru místo intrusively generování skriptů klienta vložené metody akce.
-
 
 <a id="Ex7Task1"></a>
 

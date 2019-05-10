@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: 52d6c941-2cd9-442f-9872-2c798d6d90cd
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
 msc.type: authoredcontent
-ms.openlocfilehash: 1b9c7bacb37cc4487fb3af392a6048021679718d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e64e41bfc600811cecb8d20a67fb397ff9dc9a45
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396730"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118364"
 ---
 # <a name="web-development-best-practices-building-real-world-cloud-apps-with-azure"></a>Osvědčené postupy při vývoji webové (vytváření skutečných cloudových aplikací s Azure)
 
@@ -22,7 +22,6 @@ podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twi
 [Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
 > **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o e kniha najdete v tématu [první kapitoly](introduction.md).
-
 
 První tři vzory byly informace o nastavení procesu agilního vývoje. ostatní jsou o architektuře a kódu. Tohle je kolekce osvědčené postupy pro vývoj pro web:
 

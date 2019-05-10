@@ -8,12 +8,12 @@ ms.date: 01/05/2015
 ms.assetid: a610c796-c131-473c-baef-2e6c568cb2a2
 msc.legacyurl: /signalr/overview/security/hub-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: 91703a9ea088ab8b2898945dbd80b671ee25be07
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 5006af5e623da6958a6d59949c6f2cf776c77fc3
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59392493"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113617"
 ---
 # <a name="authentication-and-authorization-for-signalr-hubs"></a>Ověřování a autorizace center SignalR
 
@@ -39,7 +39,6 @@ podle [Patrick Fletcher](https://github.com/pfletcher), [Tom FitzMacken](https:/
 > ## <a name="questions-and-comments"></a>Otázky a komentáře
 >
 > Napište prosím zpětnou vazbu o tom, jak vám líbilo v tomto kurzu a co můžeme zlepšit v komentářích v dolní části stránky. Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
-
 
 ## <a name="overview"></a>Přehled
 

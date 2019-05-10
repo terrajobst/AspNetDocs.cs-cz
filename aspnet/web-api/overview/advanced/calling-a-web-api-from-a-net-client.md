@@ -8,12 +8,12 @@ ms.date: 11/24/2017
 ms.custom: seoapril2019
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 113600ca1e77ae9667465464da505478fc948c9b
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ca3b9424f30f48c7b8c71b850ffeca64244b123b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59421105"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65112845"
 ---
 # <a name="call-a-web-api-from-a-net-client-c"></a>Volání webového rozhraní API z klienta .NET (C#)
 
@@ -165,7 +165,7 @@ Třeba GET žádost o odstranění nemá tělo požadavku. Není nutné zadat ve
 
 Testování aplikace klienta:
 
-1. [Stáhněte si](https://github.com/aspnet/AspNetDocs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) a spusťte serverovou aplikaci. [Pokyny ke stažení](/aspnet/core/tutorials/#how-to-download-a-sample). Ověřte, že server aplikace funguje. Například `http://localhost:64195/api/products` by měla vrátit seznam produktů.
+1. [Stáhněte si](https://github.com/aspnet/AspNetDocs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) a spusťte serverovou aplikaci. [Pokyny ke stažení](/aspnet/core/#how-to-download-a-sample). Ověřte, že server aplikace funguje. Například `http://localhost:64195/api/products` by měla vrátit seznam produktů.
 2. Nastaví základní identifikátor URI pro požadavky HTTP. Změňte číslo portu na port v serveru aplikaci.
     [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5&highlight=2)]
 

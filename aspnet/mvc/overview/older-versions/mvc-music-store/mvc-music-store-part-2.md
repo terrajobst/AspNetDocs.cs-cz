@@ -8,12 +8,12 @@ ms.date: 04/21/2011
 ms.assetid: 998ce4e1-9d72-435b-8f1c-399a10ae4360
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: b452c59f16107be6d356f86e6c313ba3229dbce6
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 9dc2226f4951d4bed122df37d35bbb94730a00ad
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59392752"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65112410"
 ---
 # <a name="part-2-controllers"></a>Část 2: Kontrolery
 
@@ -24,7 +24,6 @@ podle [Jon Galloway](https://github.com/jongalloway)
 > Music Store MVC je jednoduché ukázku implementace úložiště prodává hudebních alb online, který implementuje správu základního webu, přihlášení uživatele a nákupního košíku funkce.  
 >   
 > V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. 2. část se věnuje řadiče.
-
 
 Příchozí adresy URL se s tradičními webovými rozhraními obvykle mapují na soubory na disku. Příklad: požadavek na adresu URL, jako je "/ Products.aspx" nebo "/ Products.php" může být zpracována "Products.aspx" nebo "Products.php" soubor.
 
@@ -136,7 +135,6 @@ Pojďme rekapitulace, co jsme dosud provedli:
 - Jsme jste zjistili, jak spustit našeho webu pomocí serveru ASP.NET Development Server
 - Vytvořili jsme dvě třídy Kontroleru: HomeController a StoreController
 - Přidali jsme metody akce k naší řadiče, které reagují na požadavky na adresu URL a vrací text do prohlížeče
-
 
 > [!div class="step-by-step"]
 > [Předchozí](mvc-music-store-part-1.md)

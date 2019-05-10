@@ -8,12 +8,12 @@ ms.date: 05/12/2009
 ms.assetid: f47e6224-c2e5-4472-b069-b6c7b6115200
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/htmleditor/how-do-i-use-the-html-editor-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8027a77ab3504848a28ce9bdc7779092b28759ce
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: cb7d75b59b1361abeb6d3c38ad6e42e34d6e3f7b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59421157"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65115492"
 ---
 # <a name="how-do-i-use-the-html-editor-control-c"></a>Použití ovládací prvek editoru HTML (C#)
 
@@ -21,22 +21,17 @@ by [Microsoft](https://github.com/microsoft)
 
 > HTMLEditor je ovládací prvek ASP.NET AJAX, který umožňuje snadno vytvářet a upravovat obsah ve formátu HTML pomocí tlačítek na panelu nástrojů.
 
-
 Cílem tohoto kurzu je poskytnout přehled o ovládací prvek editoru HTML, který je součástí sadou nástrojů AJAX Control Toolkit. HTML Editor obsahuje možnosti pro změnu velikosti písma, výběru písma, změna barvy pozadí, úprava barvu popředí přidávat odkazy, obrázky, přidání, Změna zarovnání textu a provádění vyjmutí, kopírování a vložení operace (viz obrázek 1).
-
 
 [![HTML Editor](how-do-i-use-the-html-editor-control-cs/_static/image1.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image1.png)
 
 **Obrázek 01**: HTML Editor ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-html-editor-control-cs/_static/image2.png))
 
-
 HTML editor umožňuje zadat obsah pomocí režimu návrhu nebo HTML můžete zadat přímo. Také k dispozici máte možnost zobrazit náhled vašeho obsahu HTML (viz obrázek 2).
-
 
 [![Návrh, HTML a ve verzi Preview tlačítka](how-do-i-use-the-html-editor-control-cs/_static/image2.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image3.png)
 
 **Obrázek 02**: Návrh, HTML a ve verzi Preview tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-html-editor-control-cs/_static/image4.png))
-
 
 V tomto kurzu se dozvíte, jak zobrazení editoru HTML, přizpůsobení tlačítek na panelu nástrojů, který se zobrazí v editoru jazyka HTML a jak se vyhnout, skriptování mezi weby útoků.
 
@@ -48,11 +43,9 @@ V horní části stránky před všechny ovládací prvky na stránce by měl um
 
 Ovládací prvek editoru HTML se nachází na panelu nástrojů se zbytkem ovládacích prvků AJAX Control Toolkit. Je název ovládací prvek editoru (viz obrázek 3).
 
-
 [![Ovládací prvek editoru HTML](how-do-i-use-the-html-editor-control-cs/_static/image3.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image5.png)
 
 **Obrázek 03**: Ovládací prvek editoru HTML ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-html-editor-control-cs/_static/image6.png))
-
 
 Po přetažení editoru HTML na stránce můžete nastavit jeho vlastnosti v seznamu vlastností. Například chcete obvykle nastavení vlastností šířky a výšky. Výpis 1 obsahuje zdroj, který obsahuje HTML editor stránky ASP.NET.
 
@@ -62,11 +55,9 @@ Po přetažení editoru HTML na stránce můžete nastavit jeho vlastnosti v sez
 
 Na stránce v informacích 1 obsahuje ovládací prvek editoru HTML, ovládací prvek Button a prvku Literal control. Když kliknete na tlačítko, obsah editoru HTML se zobrazí v ovládacím prvku Literal control (viz obrázek 4).
 
-
 [![Odeslání formuláře pomocí editoru HTML](how-do-i-use-the-html-editor-control-cs/_static/image4.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image7.png)
 
 **Obrázek 04**: Odeslání formuláře pomocí editoru HTML ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-html-editor-control-cs/_static/image8.png))
-
 
 HTML Editor obsah vlastnosti slouží k načtení HTML obsah, zadaný do editoru jazyka HTML. Mějte na paměti, že tento obsah ve formátu HTML může obsahovat jazyk JavaScript. V další části si popíšeme, jak můžete zabránit, útoky prostřednictvím injektáže skriptu JavaScript.
 
@@ -74,11 +65,9 @@ HTML Editor obsah vlastnosti slouží k načtení HTML obsah, zadaný do editoru
 
 Můžete přizpůsobit přesně tlačítek, která se zobrazí v editoru. Například můžete chtít odebrat kartu HTML uživatelům zabránit v editoru HTML přepnutí do režimu HTML. Nebo můžete chtít odebrat rozevíracího seznamu velikost písma zabránit uživatelům ve vytváření příliš velký text ve fóru po zprávy (viz obrázek 5).
 
-
 [![Vlastní Editor HTML](how-do-i-use-the-html-editor-control-cs/_static/image5.jpg)](how-do-i-use-the-html-editor-control-cs/_static/image9.png)
 
 **Obrázek 05**: A přizpůsobit HTML Editor ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-html-editor-control-cs/_static/image10.png))
-
 
 Nový Editor HTML odvozené ze základní třídy Editor přizpůsobíte tlačítka panelu nástrojů. Například vlastní editor ve výpisu 2 obsahuje pouze tlačítka panelu nástrojů pro tučné písmo a kurzíva. Byly odebrány všechny další tlačítka panelu nástrojů. Kromě toho Karta HTML se odebral z dolního okraje editoru (ale karty návrh a Preview stále existují).
 

@@ -8,12 +8,12 @@ ms.date: 02/09/2013
 ms.assetid: 75af2e17-6ed3-4d24-8ea1-bc340027c318
 msc.legacyurl: /single-page-application/overview/templates/hottowel-template
 msc.type: authoredcontent
-ms.openlocfilehash: 017f550e2caffe1b20823e9b1880cbb4e968005a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: f3457840d1597d06c1a1b1ec2a865dd70726446c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379934"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113334"
 ---
 # <a name="hot-towel-template"></a>Šablona Hot Towel
 
@@ -30,13 +30,11 @@ podle [Autor: Mads Kristensen](https://github.com/madskristensen)
 > 
 > Hot Towel: Vzhledem k tomu, že nechcete přejděte do aplikace SPA bez jediného!
 
-
 Chcete sestavit SPA, ale nelze rozhodnout, kde začít? Použít Hot Towel a během několika sekund budete mít SPA a všechny nástroje, které potřebujete k vytváření na ní!
 
 Hot Towel vytvoří skvělý výchozí bod pro vytváření jedné stránce aplikace (SPA) pomocí technologie ASP.NET. Okamžité vám nabízí modulární struktura kódu, navigace zobrazení, vytváření datových vazeb, správu velké množství dat a používání stylů pro jednoduché, ale elegantní. Hot Towel nabízí vše, co potřebujete k vytváření jednostránková aplikace, abyste se mohli soustředit na svou aplikaci, nikoli zajistí funkčnost systému.
 
 > Další informace o vytváření SPA z [John Papa videa, kurzy a kurzů Pluralsight](http://johnpapa.net/spa?vsix).
-
 
 ## <a name="application-structure"></a>Struktury aplikace
 

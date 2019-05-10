@@ -8,12 +8,12 @@ ms.date: 02/22/2015
 ms.assetid: 148d9ca7-1af1-44b6-a9fb-91e261b9b463
 msc.legacyurl: /signalr/overview/performance/signalr-connection-density-testing-with-crank
 msc.type: authoredcontent
-ms.openlocfilehash: bb8a7da1080dc325c0479b337d114b8dcdf6e102
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 901e039fbb81651ed18d560c99745b7e7f716e01
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59390061"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65116090"
 ---
 # <a name="signalr-connection-density-testing-with-crank"></a>Testování hustoty připojení nástrojem Crank
 
@@ -22,7 +22,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Tento článek popisuje, jak nástrojem Crank k testování aplikace s Simulovaná více klientů.
-
 
 Jakmile vaše aplikace běží ve své hostitelské prostředí (buď Azure webová role, služby IIS, nebo v místním prostředí pomocí Owin), můžete otestovat odpověď vysoký stupeň hustoty připojení nástrojem Crank vaší aplikace. Hostitelské prostředí může být server Internetové informační služby (IIS), hostitele služby Owin nebo webové role Azure. (Poznámka: Čítače výkonu nejsou k dispozici v Azure App Service Web Apps, tak nebude možné získat údaje o výkonu z testu hustoty připojení.)
 

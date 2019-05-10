@@ -8,12 +8,12 @@ ms.date: 04/21/2011
 ms.assetid: 26b2f55e-ed42-4277-89b0-c941eb754145
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 2ba210d8c541c6c330dda74706470fa73a81474a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 89897ad41b217764cbd17317d4bf5d6a5c5d488f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379479"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65112912"
 ---
 # <a name="part-8-shopping-cart-with-ajax-updates"></a>Část 8: Nákupní košík s aktualizacemi Ajax
 
@@ -24,7 +24,6 @@ podle [Jon Galloway](https://github.com/jongalloway)
 > Music Store MVC je jednoduché ukázku implementace úložiště prodává hudebních alb online, který implementuje správu základního webu, přihlášení uživatele a nákupního košíku funkce.  
 >   
 > V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. 8. část se věnuje nákupní košík s aktualizacemi Ajax.
-
 
 Jsme vám umožňují uživatelům umístit alb v jejich košíku i bez registrace, ale budete muset zaregistrovat jako hosty do dokončení registrace. Proces nákupu a registrace bude možné rozdělit na dva řadiče: ShoppingCart kontroler, který umožňuje anonymně přidávání položek do košíku a řadiči Checkout, která zpracovává proces platby u pokladny. Jsme budete začínat nákupního košíku v této části a pak vytvořit proces platby u pokladny v následující části.
 
@@ -156,7 +155,6 @@ Po načtení do nákupního košíku, můžete kliknout na odebrat z nákupního
 ![](mvc-music-store-part-8/_static/image8.png)
 
 Jsme sestavili funkční nákupní košík, což umožňuje neregistrovaným uživatelů k přidávání položek do jejich košíku. V následující části jsme vám zajistí, aby registraci a dokončete proces platby u pokladny.
-
 
 > [!div class="step-by-step"]
 > [Předchozí](mvc-music-store-part-7.md)

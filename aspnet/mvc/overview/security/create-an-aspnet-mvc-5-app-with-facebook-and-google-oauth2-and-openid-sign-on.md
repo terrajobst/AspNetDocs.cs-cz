@@ -8,12 +8,12 @@ ms.date: 04/03/2015
 ms.assetid: 81ee500f-fc37-40d6-8722-f1b64720fbb6
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: f78100178d5cdc25a10603907e77fe81386877a6
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 8432a7610ac7be79ad03651a5fac21a62b0ca1f0
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59386460"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65112959"
 ---
 # <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Vytvoření aplikace ASP.NET MVC 5 s přihlášením přes Facebook, Twitter, LinkedIn a Google OAuth2 (C#)
 
@@ -27,7 +27,6 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 > 
 > Kurz také ukazuje, jak přidat data profilu pro uživatele a jak používat rozhraní API členství k přidání rolí. V tomto kurzu zapsal [Rick Anderson](https://blogs.msdn.com/rickAndy) (podle mě prosím na Twitteru: [ @RickAndMSFT ](https://twitter.com/RickAndMSFT) ).
 
-
 <a id="start"></a>
 ## <a name="getting-started"></a>Začínáme
 
@@ -36,11 +35,9 @@ Začněte tím, že instalaci a používání [Visual Studio Express 2013 for We
 > [!NOTE]
 > Musíte nainstalovat Visual Studio [2013 s aktualizací 3](https://go.microsoft.com/fwlink/?LinkId=390521) nebo vyšší, k používání služby Google OAuth 2 a ladit lokálně bez upozornění protokolu SSL.
 
-
 Klikněte na tlačítko **nový projekt** z **Start** stránky, nebo můžete použít v nabídce a vyberte **souboru**a potom **nový projekt**.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image1.png)  
- 
 
 <a id="1st"></a>
 ## <a name="creating-your-first-application"></a>Vytvoření vaší první aplikace
@@ -56,7 +53,6 @@ V **nový projekt ASP.NET** dialogového okna, klikněte na tlačítko **MVC**. 
 Pokud jste vybrali **hostovat v cloudu**, dokončete dialogové okno Konfigurovat.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image4.png)
-
 
 ### <a name="use-nuget-to-update-to-the-latest-owin-middleware"></a>Pomocí balíčku NuGet aktualizujte na nejnovější middleware OWIN
 
@@ -161,7 +157,6 @@ Pro připojení k zprostředkovatele ověřování, jako je Google nebo Facebook
 
 > [!WARNING]
 > Aktuální Facebook OAuth2 ověřování najdete v tématu [ověřování konfigurace služby Facebook](/aspnet/core/security/authentication/social/facebook-logins)
-
 
 <a id="mdb"></a>
 ## <a name="examine-the-membership-data"></a>Prozkoumejte Data členství

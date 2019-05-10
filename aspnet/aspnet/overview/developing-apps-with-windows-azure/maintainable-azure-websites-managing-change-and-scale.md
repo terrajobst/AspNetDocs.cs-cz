@@ -8,12 +8,12 @@ ms.date: 07/16/2014
 ms.assetid: ecfd0eb4-c4ad-44e6-9db9-a2a66611ff6a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
 msc.type: authoredcontent
-ms.openlocfilehash: ec0058472f8bc1d8d58e7c78deeb8b6097532510
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: c88bae40a8aa092037c0b359ee391acaf161cf10
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59409730"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118300"
 ---
 # <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>Praktické cvičení: Udržitelné weby Azure: Správa změn a škálování
 
@@ -34,7 +34,6 @@ podle [Campy Web týmu](https://twitter.com/webcamps)
 > Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://aka.ms/webcamps-training-kit ](https://aka.ms/webcamps-training-kit).
 >
 > Další podrobné pokrytí v tomto tématu najdete v článku [vytváření skutečných cloudových aplikací s Azure e kniha](building-real-world-cloud-apps-with-windows-azure/introduction.md).
-
 
 <a id="Overview"></a>
 ## <a name="overview"></a>Přehled
@@ -79,7 +78,6 @@ Chcete-li spustit praktická cvičení v této praktické testovací prostředí
 > [!NOTE]
 > Ujistěte se, že jste zaškrtli všechny závislosti pro toto testovací prostředí před spuštěním instalace.
 
-
 <a id="CodeSnippets"></a>
 ### <a name="using-the-code-snippets"></a>Používání fragmentů kódu
 
@@ -87,7 +85,6 @@ V celém dokumentu testovacího prostředí budete vyzváni k vložení bloky k�
 
 > [!NOTE]
 > Každý cvičení se sadou počáteční řešení nachází v **začít** složky výkonu, který umožňuje postupovat podle jednotlivých výkon nezávisle na ostatních. Uvědomte si, že chybí z těchto řešení od fragmenty kódu, které se přidávají během cvičení a nemusí fungovat, dokud nedokončíte výkonu. Uvnitř zdrojový kód pro cvičení, můžete také najdete **End** složku, která obsahuje řešení sady Visual Studio s kódem, který je výsledkem dokončení kroků v odpovídající cvičení. Tato řešení můžete použít jako vodítko, pokud potřebujete další pomoc při práci prostřednictvím této praktické vyzkoušení.
-
 
 ---
 
@@ -106,7 +103,6 @@ Odhadovaný čas dokončení tohoto testovacího prostředí: **75 minut**
 
 > [!NOTE]
 > Při prvním spuštění sady Visual Studio, musíte vybrat jednu z předdefinovaných nastavení kolekce. Každé předdefinované kolekce je navržená tak, aby odpovídala konkrétním vývojářským styl a určuje rozložení oken, chování editoru, fragmenty kódu technologie IntelliSense a možnosti dialogového okna. Postupy v tomto testovacím prostředí jsou uvedené akce potřebné k provedení dané úlohy v sadě Visual Studio při použití **obecným vývojovým nastavením** kolekce. Pokud se rozhodnete různá nastavení kolekce pro vaše vývojové prostředí, mohou existovat rozdíly v krocích, které byste měli vzít v úvahu.
-
 
 <a id="Exercise1"></a>
 ### <a name="exercise-1-using-entity-framework-migrations"></a>Cvičení 1: Použití migrace Entity Framework
@@ -249,7 +245,6 @@ V tomto cvičení nasadíte **kvíz Informatik** aplikaci do přípravného pros
 
 > [!NOTE]
 > Chcete-li fázované publikování, musí být webové aplikace v **standardní režim**. Všimněte si, že další poplatky podle tarifu při změně vaší webové aplikace do standardního režimu. Další informace o cenách najdete v tématu [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/).
-
 
 <a id="Ex2Task1"></a>
 #### <a name="task-1--creating-a-web-app-in-azure-app-service"></a>Úloha 1 – Vytvoření webové aplikace ve službě Azure App Service
@@ -730,7 +725,6 @@ V této úloze budete používat **aplikace Internet Explorer** a přejděte **I
 
 > [!NOTE]
 > Tento postup je volitelné, protože vyžaduje podporu pro zatížení webové &amp; testování výkonu, která je dostupná jenom pro **Visual Studio 2013 Ultimate Edition**. Další informace o konkrétní součásti, které Visual Studio 2013, porovnat verze [tady](https://www.microsoft.com/visualstudio/eng/products/compare).
-
 
 **Azure App Service Web Apps** poskytuje funkci automatického škálování pro web apps spouštěná ve **standardní režim**. Automatické škálování umožňuje Azure se dá automaticky škálovat počet instancí webové aplikace v závislosti na zatížení. Když je povolené automatické škálování, Azure kontroluje každých pět minut procesoru vaší webové aplikace a přidá instancí podle potřeby v daném okamžiku v čase. Pokud bude malé využití procesoru, Azure odebere instance každé dvě hodiny zajistit, že není snížený výkon webové aplikace.
 

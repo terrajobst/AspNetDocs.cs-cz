@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 48f7feb3-872f-485d-b96f-e30011ff8c4a
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/whats-new-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: b9da2522cfaed324a23f43265d4e234ebb4950bd
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: adb6e990d0ca98df38c47adf8c37fdffeb6d3d73
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59411121"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113003"
 ---
 # <a name="whats-new-in-aspnet-mvc-4"></a>Novinky v ASP.NET MVC 4
 
@@ -82,7 +82,6 @@ Toto praktické testovací prostředí obsahuje následující praktická cviče
 
 > [!NOTE]
 > Se sadou každý cvičení **koncové** složku, která obsahuje výsledný řešení byste měli získat po dokončení cvičení. Toto řešení můžete použít jako vodítko, pokud potřebujete další pomoc prostřednictvím praktická cvičení.
-
 
 Odhadovaný čas dokončení tohoto testovacího prostředí: **60 minut**.
 
@@ -223,7 +222,6 @@ ASP.NET MVC 4 usnadňuje vývoj webů pro mobilní zařízení a prohlížečů 
 8. Nová šablona také používá **zobrazení metaznačku**. Většina mobilních prohlížečů definovat šířku okna virtuálního prohlížeče nebo &quot;zobrazení&quot;, což je větší než skutečná šířka mobilních zařízení. To umožňuje mobilní prohlížeče pro zobrazení celé webové stránky uvnitř virtuální zobrazení. **Zobrazení metaznačku** umožňuje vývojářům nastavena na šířku, výšku a škálování oblasti prohlížeče na mobilních zařízeních **.** Šablony ASP.NET MVC 4 pro mobilní aplikace nastaví zobrazení na šířku zařízení (&quot;width = šířka zařízení&quot;) v šabloně rozložení (*Views\Shared\_Layout.cshtml*) tak, aby všechny stránky budou mít jejich zobrazení nastavena na šířku obrazovce zařízení. Všimněte si, že zobrazení metaznačku nedojde ke změně výchozího zobrazení prohlížeče.
 9. Otevřít  **\_Layout.cshtml**, který je umístěn v **zobrazení | Sdílené** složky a komentář metaznačku zobrazení. Spuštění aplikace, není-li již otevřít a prohlédněte si rozdíly.
 
-
 [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample2.cshtml)]
 
 ![Lokality po komentování metaznačku zobrazení](whats-new-in-aspnet-mvc-4/_static/image15.png "lokality po metaznačku zobrazení komentářů")
@@ -231,7 +229,6 @@ ASP.NET MVC 4 usnadňuje vývoj webů pro mobilní zařízení a prohlížečů 
 *Lokality po metaznačku zobrazení komentářů*
 10. V sadě Visual Studio, stiskněte klávesu **SHIFT** + **F5** chcete zastavit ladění aplikace.
 11. Zrušením komentáře u metaznačku zobrazení.
-
 
 [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample3.cshtml)]
 
@@ -249,7 +246,6 @@ Pomocí adaptivního vykreslování techniku, bude váš web **zobrazovat správ
 > [!NOTE]
 > Základní formát multimediální dotaz je: @media \[Obor: všechny | Handheld | Tisk | projekce | obrazovka\] ([hodnota: vlastnosti] a... [: hodnota vlastnosti])
 
-
 Příklady dotazů média: &gt;  **@media všechny a (maximální šířka: 1000px) a (minimální šířka: 700px) {}:** Pro všechna rozlišení mezi 700px a 1000px.
 
 > **@media obrazovky a (minimální šířka: 400 px) a (maximální šířka: 700px) { ... }:** Pouze pro obrazovky. Rozlišení musí být v rozsahu od 400 do 700px.
@@ -257,7 +253,6 @@ Příklady dotazů média: &gt;  **@media všechny a (maximální šířka: 1000
 > **@media Ruční a (minimální šířka: 20em), obrazovky a (minimální šířka: 20em) { ... }:** Pro obrazovky a kapesní zařízení (mobile a zařízení). Minimální šířka musí být větší než 20em.
 > 
 > Další informace o tomto najdete na [webu W3C](http://www.w3.org/TR/css3-mediaqueries/).
-
 
 Můžete se teď si projděte fungování adaptivní vykreslování, zlepšení čitelnosti ASP.NET MVC 4 výchozí šablony webu.
 
@@ -584,7 +579,6 @@ Jakmile tento kód se spustí, když prohlížeč zařízení iPhone vygeneruje 
 5. Otevřít  **\_Layout.iPhone.cshtml** jste vytvořili v předchozím kroku.
 6. Najít div element s atribut data-role nastaven na **stránky** a změňte **data-theme** atribut &quot; **a**&quot;.
 
-
 [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample17.cshtml)]
 
 Nyní máte 3 rozložení v aplikaci ASP.NET MVC 4:
@@ -696,7 +690,6 @@ Metody asynchronní akce, které vracejí instance může také podporovat vypr�
 
 > [!NOTE]
 > Kromě toho můžete nasadit tuto aplikaci následující weby Windows Azure [Dodatek D: Publikování aplikace ASP.NET MVC 4 pomocí nasazení webu](#AppendixD).
-
 
 <a id="Summary"></a>
 

@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: 9002018b-3aa3-4358-bb1c-fbb5bc751d01
 msc.legacyurl: /web-api/overview/advanced/http-message-handlers
 msc.type: authoredcontent
-ms.openlocfilehash: 308d2e3dd21917e7656f7ffe889dc965d9275d74
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: a8e6f1da8df4802e1acf7779a2fc75bfe8ab876f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59392102"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65115547"
 ---
 # <a name="http-message-handlers-in-aspnet-web-api"></a>Obslužné rutiny zpráv HTTP v rozhraní ASP.NET Web API
 
@@ -47,7 +47,6 @@ Tento diagram znázorňuje dvě vlastní obslužné rutiny, které jsou vloženy
 > [!NOTE]
 > Na straně klienta používá HttpClient také obslužné rutiny zpráv. Další informace najdete v tématu [obslužné rutiny zpráv HttpClient](httpclient-message-handlers.md).
 
-
 ## <a name="custom-message-handlers"></a>Obslužné rutiny vlastních zpráv
 
 Zápis obslužné rutiny vlastních zpráv, jsou odvozeny z **System.Net.Http.DelegatingHandler** a přepsat **SendAsync** metody. Tato metoda má následující podpis:
@@ -67,7 +66,6 @@ Zde je příklad jednoduchého dotazu:
 
 > [!NOTE]
 > Volání `base.SendAsync` je asynchronní. Pokud obslužná rutina nemá žádnou práci po tomto volání, použijte **await** – klíčové slovo, jak je znázorněno.
-
 
 Delegující obslužné rutiny můžete také přeskočit vnitřní obslužná rutina a vytvořit odpověď přímo:
 
@@ -131,7 +129,6 @@ Pokud požadavek nemá platný klíč, obslužná rutina vytvoří zprávu odpov
 
 > [!NOTE]
 > Klíč rozhraní API se vztahuje pouze na určité akce kontroleru, vezměte v úvahu místo obslužné rutiny zpráv filtru akce. Filtry akcí se spustí po URI směrování se provádí.
-
 
 ## <a name="per-route-message-handlers"></a>Obslužné rutiny zpráv za trasy
 

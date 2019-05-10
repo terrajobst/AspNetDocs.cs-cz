@@ -8,12 +8,12 @@ ms.date: 06/02/2008
 ms.assetid: 1caac9d0-e21e-49d6-a8ff-e563a736d6ca
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/positioning-a-modalpopup-cs
 msc.type: authoredcontent
-ms.openlocfilehash: db69c0cf4fc3e5d39d88d8a6478a529309020d3d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 362e0f84ce336d320e016dd19d2dd286560f75c6
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398030"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65115396"
 ---
 # <a name="positioning-a-modalpopup-c"></a>Umístění ovládacího prvku ModalPopup (C#)
 
@@ -22,7 +22,6 @@ by [Christian Wenz](https://github.com/wenz)
 [Stáhněte si kód](http://download.microsoft.com/download/2/4/0/24052038-f942-4336-905b-b60ae56f0dd5/ModalPopup4.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/modalpopup4CS.pdf)
 
 > Ovládací prvek ovládacího prvku ModalPopup v sadou nástrojů AJAX Control Toolkit nabízí jednoduchý způsob, jak vytvořit modální místní nabídky pomocí znamená, že na straně klienta. Ovládací prvek ale nenabízí vestavěnou funkci na pozici automaticky otevíraného okna.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -53,7 +52,6 @@ Nyní vše, co už zbývá jen se v prohlížeči volání těchto funkcí, kdyk
 A `stopMoving()` funkce vstupu do play při zavření to může automaticky otevírané okno se aktivuje v `ModalPopupExtender` ovládacího prvku:
 
 [!code-aspx[Main](positioning-a-modalpopup-cs/samples/sample6.aspx)]
-
 
 [![Modální místní nabídky se zobrazí na určené pozici](positioning-a-modalpopup-cs/_static/image2.png)](positioning-a-modalpopup-cs/_static/image1.png)
 

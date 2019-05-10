@@ -8,12 +8,12 @@ ms.date: 03/30/2015
 ms.assetid: 9f05ccb1-2004-4661-ad8b-c370e6c09c8e
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage
 msc.type: authoredcontent
-ms.openlocfilehash: efe432f86b1d65b563efa056c2cb3bc5f2c6d83b
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 8148891f68ac8417400859540516e44be007dab7
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59401306"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118313"
 ---
 # <a name="unstructured-blob-storage-building-real-world-cloud-apps-with-azure"></a>Nestrukturované úložiště objektů Blob (vytváření skutečných cloudových aplikací s Azure)
 
@@ -22,7 +22,6 @@ podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twi
 [Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
 > **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o e kniha najdete v tématu [první kapitoly](introduction.md).
-
 
 V předchozích kapitol jsme zvažovali schémata dělení a vysvětlení způsobu, jakým aplikace Fix It ukládá obrázky ve službě Azure Storage Blob a další data úlohy ve službě Azure SQL Database. V této kapitole jsme podrobněji služby Blob service a ukazují, jak je implementován v projektu kódu Fix It.
 

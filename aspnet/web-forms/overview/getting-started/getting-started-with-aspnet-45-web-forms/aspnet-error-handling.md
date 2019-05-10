@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 423498f7-1a4b-44a1-b342-5f39d0bcf94f
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: e4b8f059974dec33d6305e7b84919550713bf4e4
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 3aff277a6e09504d9f7b610478c27af00c1d2d94
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59409879"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108517"
 ---
 # <a name="aspnet-error-handling"></a>Zpracování chyb v ASP.NET
 
@@ -22,7 +22,6 @@ by [Erik Reitan](https://github.com/Erikre)
 [Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
 > V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 for Web. Visual Studio 2013 [projektu se zdrojovým kódem jazyka C#](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) je k dispozici v této sérii kurzů.
-
 
 V tomto kurzu budete upravovat ukázkové aplikace Wingtip Toys zahrnovat zpracování chyb a protokolování chyb. Zpracování chyb vám umožní aplikaci řádně zpracování chyb a odpovídajícím způsobem zobrazení chybové zprávy. Protokolování chyb vám umožní vyhledat a opravit chyby, ke kterým došlo. V tomto kurzu vychází z předchozí kurz o službě "Směrování adres URL" a je součástí série kurzů na adresář Wingtip Toys.
 

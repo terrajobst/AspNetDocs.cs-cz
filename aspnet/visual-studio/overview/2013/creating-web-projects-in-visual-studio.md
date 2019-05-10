@@ -8,12 +8,12 @@ ms.date: 12/01/2014
 ms.assetid: 61941e64-0c0d-4996-9270-cb8ccfd0cabc
 msc.legacyurl: /visual-studio/overview/2013/creating-web-projects-in-visual-studio
 msc.type: authoredcontent
-ms.openlocfilehash: a62c821159cd097507019d5efb29e01958ec9fba
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 3a446be8e2dff2ac66e2432c51b2d9f43bcb817d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398096"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113173"
 ---
 # <a name="creating-aspnet-web-projects-in-visual-studio-2013"></a>Vytváření webových projektů ASP.NET v sadě Visual Studio 2013
 
@@ -29,7 +29,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > - Nové funkce pro webové formuláře, kterého chcete nabízet pouze pro architekturu MVC, jako například [vytváření automatických testů projektu](#testproj) a [šablony webu intranetu](#winauth).
 > 
 > Informace o tom, jak vytvořit webové projekty pro Azure Cloud Services nebo Azure Mobile Services, najdete v části [Začínáme s Azure Cloud Services a ASP.NET](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-get-started/) a [vytvoření Žebříčkové aplikace pomocí .NET v Azure Mobile Services Back-endu](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/).
-
 
 <a id="prerequisites"></a>
 ## <a name="prerequisites"></a>Požadavky
@@ -350,7 +349,6 @@ Pokud chcete zkusit jednu z možností Azure AD, ale ještě nemáte účet [kli
 > Pokud vyberete jednu z možností Azure AD, váš projekt vyžaduje databázi a budete muset přihlásit k účtu globálního správce pro vašeho tenanta Azure AD. Zadejte uživatelské jméno a heslo pro účet organizace (třeba admin@contoso.onmicrosoft.com), který má oprávnění správce pro vašeho tenanta Azure AD.
 > 
 > **Nezadávejte přihlašovací údaje pro účet Microsoft (třeba contoso@hotmail.com) v poli přihlašovacího dialogového okna.**
-
 
 <a id="orgauthsingle"></a>
 ### <a name="cloud---single-organization-authentication"></a>Cloud – jedna organizace ověřování

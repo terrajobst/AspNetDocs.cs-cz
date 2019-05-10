@@ -8,19 +8,18 @@ ms.date: 01/27/2009
 ms.assetid: 4341f5b1-6fe5-44c5-8b8a-18fa84f80177
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0a4e8dc3ce5764c6b2ec59c7e3f507064f8a8cb5
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: a2c2140631d59a7f8b21aa73613a92ea5c7a91d0
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59422158"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65122086"
 ---
 # <a name="authenticating-users-with-forms-authentication-vb"></a>Ověřování uživatelů pomocí formulářů (VB)
 
 by [Microsoft](https://github.com/microsoft)
 
 > Zjistěte, jak použít atribut [Authorize] heslo chránit konkrétní stránky v aplikaci MVC. Zjistíte, jak používat nástroj Správa webu k vytváření a správě uživatelů a rolí. Také se dozvíte, jak nakonfigurovat ukládat informace o účtu a role uživatele.
-
 
 Cílem tohoto kurzu je vysvětlují, jak můžete pomocí formulářů ověřování hesla chránit zobrazení v aplikacích ASP.NET MVC. Zjistíte, jak pomocí nástroje pro správu webu vytvoření uživatelů a rolí. Také se dozvíte, jak zabránit neoprávněným uživatelům vyvolání akce kontroleru. Nakonec se dozvíte, jak nakonfigurovat, kde jsou uložená uživatelská jména a hesla.
 
@@ -117,7 +116,6 @@ Průvodce instalací serveru SQL pro ASP.NET umožňuje vybrat databázi SQL ser
 > 
 > 
 > C:\Windows\Microsoft.NET\Framework\v2.0.50727
-
 
 Po vytvoření nezbytné databázové objekty, budete muset upravit připojení k databázi použít v aplikaci MVC. Upravte ApplicationServices připojovací řetězec v souboru webové konfigurace (web.config) tak, aby odkazovala na produkční databázi. Například upravené připojení v zobrazení 3, odkazuje na databázi s názvem MyProductionDB (původní ApplicationServices připojovacího řetězce byla změněna na komentář).
 

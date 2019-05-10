@@ -6,12 +6,12 @@ description: Seznam podrobné pokyny pro vývoj aplikací ASP.NET.
 ms.assetid: fddf8e5e-c055-4f81-b691-78deef871112
 ms.author: riande
 ms.date: 09/20/2017
-ms.openlocfilehash: 240260a496ee797556ca5dbd2c8faec79d23ac64
-ms.sourcegitcommit: 2d53ed9e4c8b19d3526cbc689bfa8394c9449cec
+ms.openlocfilehash: 106b4b88d2e7de90900b7a73570ecd6140e2db66
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59905667"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113195"
 ---
 # <a name="aspnet-tutorials"></a>Kurzy k ASP.NET
 
@@ -81,7 +81,6 @@ Tyto podrobné návody pro vývoj aplikací ASP.NET jsou k dispozici.
 * [Posílání dat formulářů HTML ve webovém rozhraní API: Data formuláře kódovaná](web-api/overview/advanced/sending-html-form-data-part-1.md)
 * [Posílání dat formulářů HTML ve webovém rozhraní API: Nahrání souboru a vícedílné zprávy standardu MIME](web-api/overview/advanced/sending-html-form-data-part-2.md)
 
-
 ## <a name="web-pages"></a>Webové stránky
 
 * [Programování webových stránek ASP.NET v sadě Visual Studio](web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio.md)
@@ -111,7 +110,6 @@ Tyto podrobné návody pro vývoj aplikací ASP.NET jsou k dispozici.
 * [Analýza provozu](web-pages/overview/performance-and-traffic/14-analyzing-traffic.md)
 * [Sdružování a minifikace prostředků na webu s webovými stránkami ASP.NET (Razor)](web-pages/overview/performance-and-traffic/bundling-and-minifying-assets-in-an-aspnet-web-pages-razor-site.md)
 
-
 ## <a name="aspnet-signalr"></a>ASP.NET SignalR
 
 * [Kurz: Začínáme s knihovnou SignalR 2](signalr/overview/getting-started/tutorial-getting-started-with-signalr.md)
@@ -129,7 +127,6 @@ Tyto podrobné návody pro vývoj aplikací ASP.NET jsou k dispozici.
 * [Kurz: Hostování na vlastním serveru funkce SignalR](signalr/overview/deployment/tutorial-signalr-self-host.md)
 * [Použití aplikace SignalR s webovými aplikacemi ve službě Azure App Service](signalr/overview/deployment/using-signalr-with-azure-web-sites.md)
 
-
 ## <a name="aspnet-identity"></a>ASP.NET Identity
 
 * [Přidání ASP.NET Identity do prázdného nebo stávajícího projektu webových formulářů](identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project.md)
@@ -141,7 +138,6 @@ Tyto podrobné návody pro vývoj aplikací ASP.NET jsou k dispozici.
 * [Změna primárního klíče uživatelů v ASP.NET Identity](identity/overview/extensibility/change-primary-key-for-users-in-aspnet-identity.md)
 * [Migrace stávajícího webu z členství SQL na ASP.NET Identity](identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)
 * [Migrace členských dat od univerzálního zprostředkovatele a uživatelských profilů na ASP.NET Identity (C#)](identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity.md)
-
 
 ## <a name="owin-and-katana"></a>OWIN a Katana
 

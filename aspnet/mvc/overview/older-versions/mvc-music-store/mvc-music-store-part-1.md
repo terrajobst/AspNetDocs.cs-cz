@@ -8,12 +8,12 @@ ms.date: 04/21/2011
 ms.assetid: bd356ca3-5bdb-4067-9dac-c9e9923a86e8
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 63d85ec5f1f2fbadd92fd0210e67332df30aab5a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 48428ff4ab5888253ed93ac41e79006eec823ad2
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59419597"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65112931"
 ---
 # <a name="part-1-overview-and-file-new-project"></a>Část 1: Přehled a Soubor->Nový projekt
 
@@ -24,7 +24,6 @@ podle [Jon Galloway](https://github.com/jongalloway)
 > Music Store MVC je jednoduché ukázku implementace úložiště prodává hudebních alb online, který implementuje správu základního webu, přihlášení uživatele a nákupního košíku funkce.  
 >   
 > V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. 1. část obsahuje přehled a soubor -&gt;nový projekt.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -74,11 +73,9 @@ Podrobný postup sledovat, nebo si můžete stáhnout hotovou aplikaci [MVC. Mus
 
 Visual Studio 2010 SP1 nebo Visual Web Developer 2010 Express SP1 (bezplatná verze sady Visual Studio 2010) můžete použít k sestavení aplikace. Budeme používat systému SQL Server Compact (také zdarma) k hostování databáze. Než začnete, ujistěte se, že jste nainstalovali požadavky uvedené níže.
 
-
 - [Požadavky na visual Studio Web Developer Express SP1]
 - [Technologie ASP.NET MVC 3 nástroje Update]
 - [SQL Server Compact 4.0] – včetně podpory modulu runtime a nástroje
-
 
 ### <a name="creating-a-new-aspnet-mvc-3-project"></a>Vytvoření nového projektu ASP.NET MVC 3
 

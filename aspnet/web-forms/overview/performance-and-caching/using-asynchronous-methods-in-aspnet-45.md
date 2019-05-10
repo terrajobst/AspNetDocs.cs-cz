@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.assetid: a585c9a2-7c8e-478b-9706-90f3739c50d1
 msc.legacyurl: /web-forms/overview/performance-and-caching/using-asynchronous-methods-in-aspnet-45
 msc.type: authoredcontent
-ms.openlocfilehash: a47d428830fa6c43bcb9ce797d65b73891b44618
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ef5402da1e97d2c5e5d98ff2d04dadca1180453b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381884"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65112338"
 ---
 # <a name="using-asynchronous-methods-in-aspnet-45"></a>Použití asynchronních metod v ASP.NET 4.5
 
@@ -32,7 +32,6 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 > 
 > Úplnou ukázku je k dispozici pro účely tohoto kurzu na  
 > [https://github.com/RickAndMSFT/Async-ASP.NET/](https://github.com/RickAndMSFT/Async-ASP.NET/) na [Githubu](https://github.com/) lokality.
-
 
 ASP.NET 4.5 – webové stránky v kombinaci [.NET 4.5](https://msdn.microsoft.com/library/w0x726c2(VS.110).aspx) Zde můžete registrovat asynchronní metody, které vracejí objekt typu [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx). Rozhraní .NET Framework 4 zavedena asynchronní programovací koncept se označuje jako [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) a podporuje technologii ASP.NET 4.5 [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx). Úkoly jsou reprezentovány **úloh** typu a souvisejících typů v [System.Threading.Tasks](https://msdn.microsoft.com/library/system.threading.tasks.aspx) oboru názvů. Rozhraní .NET Framework 4.5 je založena na této asynchronní podporu [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) a [asynchronní](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) klíčová slova, která usnadňuje práci s [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) objekty mnohem méně složitý než předchozí asynchronní přístupy. [Await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) – klíčové slovo je syntaktické sdružená hodnota určující, které jsou části kódu by měla asynchronně čekat na další část kódu. [Asynchronní](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) – klíčové slovo představuje pomocného parametru, který můžete použít k označení metod jako úkolově orientovanou asynchronní metody. Kombinace **await**, **asynchronní**a **úloh** objektu je snazší pro vás bude psaní asynchronního kódu v rozhraní .NET 4.5. Nový model pro asynchronní metody je volána *Task-based Asynchronous Pattern* (**klepněte**). Tento kurz předpokládá, že máte některé znalost asynchronní programování pomocí [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) a [asynchronní](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) klíčová slova a [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) oboru názvů.
 

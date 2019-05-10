@@ -8,12 +8,12 @@ ms.date: 04/10/2013
 ms.assetid: ab7b2554-956a-4f6d-b2a0-4ae0c62e8580
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: a63bca69f137a4d4765db6a4925ff027c9d8bf7d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 68908be34f6b010e512677fe5f5e31bfdefab592
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59403581"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65116071"
 ---
 # <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Kurz: Serverové vysílání s knihovnou ASP.NET SignalR 1.x
 
@@ -26,7 +26,6 @@ podle [Patrick Fletcher](https://github.com/pfletcher), [Petr Dykstra](https://g
 > Aplikace, kterou vytvoříte v tomto kurzu simuluje akciích Typický scénář pro vysílání funkce serveru.
 > 
 > Si mohou komentáře u tohoto kurzu. Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -54,7 +53,6 @@ Tento kurz obsahuje následující části:
 
 > [!NOTE]
 > Pokud nechcete, aby pro seznámení se základními kroky při vytváření aplikace, můžete nainstalovat balíček SignalR.Sample v novém **prázdná webová aplikace ASP.NET** projektu a přečtěte si vysvětlení kódu těchto kroků. První část kurzu obsahuje podmnožinu SignalR.Sample kódu a druhá část vysvětluje klíčové funkce v balíčku SignalR.Sample další funkce.
-
 
 <a id="prerequisites"></a>
 

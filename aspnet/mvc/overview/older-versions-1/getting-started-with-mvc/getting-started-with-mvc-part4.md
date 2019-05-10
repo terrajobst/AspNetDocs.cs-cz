@@ -8,19 +8,18 @@ ms.date: 08/14/2010
 ms.assetid: 742df67f-484d-4ef3-af6b-8c791e556b43
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part4
 msc.type: authoredcontent
-ms.openlocfilehash: b75057f3128662a9bbdd641dc0a7c1ba09fbbe87
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 995db714ce6365415d06dc458aee84a31c7c8fd6
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59388189"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65117678"
 ---
 # <a name="creating-a-database"></a>Vytvoření databáze
 
 podle [Scott Hanselman](https://github.com/shanselman)
 
 > Toto je kurz pro začátečníky, který vysvětluje základy ASP.NET MVC. Vytvoříte jednoduchou webovou aplikaci, která čte a zapisuje z databáze. Přejděte [výukové centrum pro ASP.NET MVC](../../../index.md) najít další technologie ASP.NET MVC, kurzů a ukázek.
-
 
 V této části jsme se chystáte vytvořit novou databázi SQL Express, který použijeme k ukládání a načítání naše data o filmech. Z integrovaného vývojového prostředí Visual Web Developer, vyberte zobrazení | Průzkumník serveru. Klikněte pravým tlačítkem na datová připojení a klikněte na tlačítko Přidat připojení...
 

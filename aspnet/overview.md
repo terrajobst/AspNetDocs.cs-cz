@@ -8,12 +8,12 @@ ms.author: riande
 ms.date: 03/12/2010
 msc.legacyurl: ''
 msc.type: content
-ms.openlocfilehash: 1ab51453913b387ffecf898536eb55b7418b0285
-ms.sourcegitcommit: 2d53ed9e4c8b19d3526cbc689bfa8394c9449cec
+ms.openlocfilehash: d4b96bd2ff99bb30ff59b9697a27e33acb0f719d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59905628"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65120082"
 ---
 # <a name="aspnet-overview"></a>Přehled ASP.NET
 
@@ -100,10 +100,6 @@ Webhooky se odlehčeného vzoru HTTP poskytuje jednoduché pub/sub model pro vz�
 Webhooky jsou vystavené velkým množstvím služeb včetně Dropboxu, Githubu, Instagramu, MailChimp, PayPal, Slack, Trello a mnoho dalších. Například Webhooku může znamenat, že došlo ke změně souboru na Dropboxu, změny kódu byl potvrzen v Githubu, nebo platby byl zahájen v PayPal nebo vytvoření karty v Trellu.
 
 [Další informace o Webhooků](webhooks/index.md)
-
-
-
-
 
 <!--
 Create Deployment TOC based on https://www.asp.net/aspnet/overview/deployment

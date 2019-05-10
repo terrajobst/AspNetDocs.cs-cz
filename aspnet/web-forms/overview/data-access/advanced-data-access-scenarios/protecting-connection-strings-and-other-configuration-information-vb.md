@@ -8,12 +8,12 @@ ms.date: 08/03/2007
 ms.assetid: cd17dbe1-c5e1-4be8-ad3d-57233d52cef1
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cc5f283a6f97a83fdb157f54e5b3b020254f5203
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: acd0b423eb13c476c59f30ad55af20314c7a7079
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59404842"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65116926"
 ---
 # <a name="protecting-connection-strings-and-other-configuration-information-vb"></a>Ochrana připojovacích řetězců a dalších konfiguračních údajů (VB)
 
@@ -23,18 +23,15 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > Aplikace ASP.NET obvykle ukládá informace o konfiguraci v souboru Web.config. Některé z těchto informací je citlivý a zaručuje ochranu. Ve výchozím nastavení nebude možné tento soubor dodávat do návštěvníky webu, ale správce nebo se hacker může získat přístup k systému souborů webového serveru a zobrazit obsah souboru. V tomto kurzu jsme dozvíte, že technologie ASP.NET 2.0, umožníte nám kvůli ochraně citlivých informací tím, že šifruje části souboru Web.config.
 
-
 ## <a name="introduction"></a>Úvod
 
 Informace o konfiguraci pro aplikace ASP.NET je obvykle uložen v souboru XML s názvem `Web.config`. V průběhu těchto kurzů jsme aktualizovali `Web.config` několika časy. Při vytváření `Northwind` typované datové sady v [první kurz](../introduction/creating-a-data-access-layer-vb.md), například informace o připojovacím řetězci byl automaticky přidán do `Web.config` v `<connectionStrings>` oddílu. V pozdější [stránky předlohy a navigace na webu](../introduction/master-pages-and-site-navigation-vb.md) kurzu ručně aktualizovali jsme `Web.config`, přidáním `<pages>` element označující, že všechny stránky technologie ASP.NET v našem projektu by měly používat `DataWebControls` motiv.
 
 Protože `Web.config` mohou obsahovat citlivá data, jako je například připojovací řetězce, je důležité, který obsah `Web.config` zachovaná, bezpečné a skryté z neoprávněné uživatele. Ve výchozím nastavení, všechny HTTP žádosti do souboru s `.config` rozšíření se postará modul ASP.NET, který vrátí *typ stránky není poskytováni,* zprávy je znázorněno na obrázku 1. To znamená, že nelze zobrazit návštěvníci vašeho `Web.config` s obsah souboru tak, že jednoduše zadáte http://www.YourServer.com/Web.config do adresního řádku svého prohlížeče s.
 
-
 [![Navštívit Web.config prostřednictvím prohlížeč vrátí tento typ stránky není poskytováni zprávy](protecting-connection-strings-and-other-configuration-information-vb/_static/image2.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image1.png)
 
 **Obrázek 1**: Navštívit `Web.config` prostřednictvím prohlížeč vrátí tento typ stránky není poskytováni zprávy ([kliknutím ji zobrazíte obrázek v plné velikosti](protecting-connection-strings-and-other-configuration-information-vb/_static/image3.png))
-
 
 Ale co když je útočník schopen nalézt některé zneužití, umožňující jí chcete-li zobrazit vaše `Web.config` s obsah souboru? Co může útočník udělat pomocí těchto informací a popíše, co děláte dalším stupněm ochrany citlivých informací v rámci `Web.config`? Naštěstí většině částí v `Web.config` neobsahují citlivé informace. Jaké poškození může útočník perpetrate Pokud název výchozí motivu, který používá vaše stránky technologie ASP.NET, které znají?
 
@@ -49,7 +46,6 @@ V tomto kurzu se podíváme na techniky k ochraně těchto citlivých informací
 
 > [!NOTE]
 > V tomto kurzu končí podívat s doporučením společnosti Microsoft pro připojení k databázi z aplikace technologie ASP.NET. Kromě šifrování připojovací řetězce, pomáhá posílit ochranu systému díky zajištění, které se připojujete k databázi zabezpečeným způsobem.
-
 
 ## <a name="step-1-exploring-aspnet-20-s-protected-configuration-options"></a>Krok 1: Zkoumání ASP.NET 2.0 s chráněné možnosti konfigurace
 
@@ -69,7 +65,6 @@ V tomto kurzu použije našich příkladů DPAPI zprostředkovatele a klíče ú
 > [!NOTE]
 > `RSAProtectedConfigurationProvider` a `DPAPIProtectedConfigurationProvider` poskytovatelé jsou registrované ve `machine.config` soubor s názvy zprostředkovatelů `RsaProtectedConfigurationProvider` a `DataProtectionConfigurationProvider`v uvedeném pořadí. Při šifrování nebo dešifrování informace o konfiguraci bude potřeba zadat název odpovídající zprostředkovatele (`RsaProtectedConfigurationProvider` nebo `DataProtectionConfigurationProvider`) namísto skutečný typ název (`RSAProtectedConfigurationProvider` a `DPAPIProtectedConfigurationProvider`). Můžete najít `machine.config` soubor `$WINDOWS$\Microsoft.NET\Framework\version\CONFIG` složky.
 
-
 ## <a name="step-2-programmatically-encrypting-and-decrypting-configuration-sections"></a>Krok 2: Programově šifrování a dešifrování konfigurační oddíly funkce
 
 Po zadání několika řádků kódu jsme šifrování nebo dešifrování konkrétní konfigurační oddíl se zadaným zprostředkovatelem. Kód, protože jsme se zobrazí po chvíli, jednoduše prostřednictvím kódu programu odkazovat na části odpovídající konfiguraci volat jeho `ProtectSection` nebo `UnprotectSection` metodu a poté zavolejte `Save` metoda a zachová tak změny. Kromě toho rozhraní .NET Framework obsahuje užitečné příkazového řádku nástroj, který můžete šifrovat a dešifrovat informace o konfiguraci. Podíváme se na tento nástroj příkazového řádku v kroku 3.
@@ -82,21 +77,17 @@ Pod textové pole, přidejte dva ovládací prvky tlačítka s názvem `EncryptC
 
 V tomto okamžiku vaše obrazovka by měla vypadat podobně jako na obrázku 2.
 
-
 [![Přidat textové pole a dva ovládací prvky tlačítka Web na stránku](protecting-connection-strings-and-other-configuration-information-vb/_static/image5.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image4.png)
 
 **Obrázek 2**: Přidání textového pole a dva ovládací prvky tlačítka Web na stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](protecting-connection-strings-and-other-configuration-information-vb/_static/image6.png))
 
-
 Dále musíme napsat kód, který načte a zobrazí obsah `Web.config` v `WebConfigContents` textového pole na stránce při prvním načtení. Přidejte následující kód do třídy stránky s kódem na pozadí. Tento kód přidá metodu s názvem `DisplayWebConfig` a nazve je z `Page_Load` obslužné rutiny události při `Page.IsPostBack` je `False`:
-
 
 [!code-vb[Main](protecting-connection-strings-and-other-configuration-information-vb/samples/sample1.vb)]
 
 `DisplayWebConfig` Metoda používá [ `File` třídy](https://msdn.microsoft.com/library/system.io.file.aspx) otevřete aplikaci s `Web.config` souboru [ `StreamReader` třídy](https://msdn.microsoft.com/library/system.io.streamreader.aspx) přečtení jeho obsahu do řetězce a [ `Path` třídy](https://msdn.microsoft.com/library/system.io.path.aspx) ke generování fyzickou cestu k `Web.config` souboru. Tyto tři třídy se nacházejí v [ `System.IO` obor názvů](https://msdn.microsoft.com/library/system.io.aspx). V důsledku toho budete muset přidat `Imports``System.IO` příkaz do horní části třídy modelu code-behind nebo, případně tyto třídy názvy s předponou `System.IO.`
 
 V dalším kroku je potřeba přidat obslužné rutiny události pro dva ovládací prvky tlačítka `Click` události a přidání nezbytného kódu k šifrování a dešifrování `<connectionStrings>` části pomocí klíče počítače úrovni s poskytovateli rozhraní DPAPI. Z návrháře, klikněte dvakrát na každé z tlačítka pro přidání `Click` obslužné rutiny události v modelu code-behind třídu a přidejte následující kód:
-
 
 [!code-vb[Main](protecting-connection-strings-and-other-configuration-information-vb/samples/sample2.vb)]
 
@@ -110,14 +101,11 @@ Po volání `ProtectSection(provider)` nebo `UnprotectSection` metoda, je třeba
 
 Po zadání výše uvedený kód ji otestovat přechodem `EncryptingConfigSections.aspx` stránky prostřednictvím prohlížeče. Zpočátku zobrazí stránka, která uvádí obsah `Web.config` s `<connectionStrings>` části zobrazí ve formátu prostého textu (viz obrázek 3).
 
-
 [![Přidat textové pole a dva ovládací prvky tlačítka Web na stránku](protecting-connection-strings-and-other-configuration-information-vb/_static/image8.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image7.png)
 
 **Obrázek 3**: Přidání textového pole a dva ovládací prvky tlačítka Web na stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](protecting-connection-strings-and-other-configuration-information-vb/_static/image9.png))
 
-
 Nyní klikněte na tlačítko šifrovat připojovací řetězce. Pokud je povoleno ověření požadavku, značky vrácena zpět `WebConfigContents` TextBox způsobí `HttpRequestValidationException`, který zobrazí zprávu, která je potenciálně nebezpečná `Request.Form` z klienta byla zjištěna hodnota. Žádost o ověření, která je povolena ve výchozím nastavení v technologii ASP.NET 2.0, zakazují zpětná volání, které zahrnují bez kódování HTML a pomoct zabránit útokům prostřednictvím injektáže skriptu. Tato kontrola je možné zakázat na stránce - nebo -úrovni aplikace. Chcete-li vypnout pro tuto stránku, nastavte `ValidateRequest` nastavení `False` v `@Page` směrnice. `@Page` – Direktiva se nachází v horní části stránky s deklarativní.
-
 
 [!code-aspx[Main](protecting-connection-strings-and-other-configuration-information-vb/samples/sample3.aspx)]
 
@@ -125,28 +113,22 @@ Další informace o ověření žádosti, jeho účel, zakažte ho na stránce -
 
 Po zakázání ověření žádosti pro stránku, zkuste to znovu kliknutím na tlačítko šifrovat připojovací řetězce. Na zpětné volání, budou mít přístup konfiguračního souboru a jeho `<connectionStrings>` části šifrované pomocí poskytovatele rozhraní DPAPI. Textové pole se pak aktualizuje a zobrazí nový `Web.config` obsah. Obrázek 4 ukazuje, `<connectionStrings>` informace je zašifrovaný.
 
-
 [![Kliknutí zašifrovat připojovací řetězce tlačítko šifruje &lt;connectionString&gt; oddílu](protecting-connection-strings-and-other-configuration-information-vb/_static/image11.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image10.png)
 
 **Obrázek 4**: Kliknutí zašifrovat připojovací řetězce tlačítko šifruje `<connectionString>` oddílu ([kliknutím ji zobrazíte obrázek v plné velikosti](protecting-connection-strings-and-other-configuration-information-vb/_static/image12.png))
 
-
 Šifrovaný `<connectionStrings>` část vygenerované v mém počítači se řídí, i když některé z obsahu `<CipherData>` byl prvek odebrán pro zkrácení:
-
 
 [!code-xml[Main](protecting-connection-strings-and-other-configuration-information-vb/samples/sample4.xml)]
 
 > [!NOTE]
 > `<connectionStrings>` Prvek určuje zprostředkovatele, který slouží k provádění šifrování (`DataProtectionConfigurationProvider`). Tyto informace používá `UnprotectSection` metodu po kliknutí na tlačítko dešifrování řetězce připojení.
 
-
 Když se informace o připojovacím řetězci přistupuje z `Web.config` – buď pomocí ovládacího prvku SqlDataSource napíšeme kód nebo automaticky generovaný kód z objektů TableAdapter v naší datové sady typu – jsou automaticky dešifrována. Stručně řečeno, jsme nemusíte přidávat žádné další kódu nebo logice k dešifrování šifrovaný `<connectionString>` oddílu. Abychom to navštíví některý z předchozích kurzů v tuto chvíli, jako je například tento kurz jednoduchého zobrazení z části základní tvorbou sestav (`~/BasicReporting/SimpleDisplay.aspx`). Jak je vidět na obrázku 5, tento kurz pracuje přesně tak, jak jsme byste očekávali, označující, že šifrované připojovacího řetězce se automaticky dešifruje stránka technologie ASP.NET.
-
 
 [![Vrstva přístupu k datům automaticky dešifruje informace o připojovacím řetězci](protecting-connection-strings-and-other-configuration-information-vb/_static/image14.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image13.png)
 
 **Obrázek 5**: Vrstva přístupu k datům automaticky dešifruje informace o připojovacím řetězci ([kliknutím ji zobrazíte obrázek v plné velikosti](protecting-connection-strings-and-other-configuration-information-vb/_static/image15.png))
-
 
 Vrátit zpět `<connectionStrings>` části zpět do její znázornění prostého textu, klikněte na tlačítko dešifrování řetězce připojení. Při zpětném odeslání byste měli vidět připojovací řetězce v `Web.config` ve formátu prostého textu. V tomto okamžiku vaše obrazovka by měla vypadat stejně, jako kdyby při první návštěvě této stránky (viz obrázek 3).
 
@@ -156,27 +138,22 @@ Zahrnuje celou řadu nástrojů příkazového řádku v rozhraní .NET Framewor
 
 Následující příkaz ukazuje obecnou syntaxi použitý k šifrování konfiguračního oddílu s `aspnet_regiis.exe` nástroj příkazového řádku:
 
-
 [!code-console[Main](protecting-connection-strings-and-other-configuration-information-vb/samples/sample5.cmd)]
 
 *část* oddíl konfigurace pro šifrování (například connectionStrings), je *fyzické\_directory* je úplnou fyzickou cestu k kořenový adresář webové aplikace s a *zprostředkovatele*  je název zprostředkovatele chráněné konfigurace (například DataProtectionConfigurationProvider). Můžete také webové aplikace bude zaregistrovaná ve službě IIS můžete zadat virtuální cesta, která místo fyzickou cestu, použijte tuto syntaxi:
-
 
 [!code-console[Main](protecting-connection-strings-and-other-configuration-information-vb/samples/sample6.cmd)]
 
 Následující `aspnet_regiis.exe` šifruje příklad `<connectionStrings>` části pomocí rozhraní DPAPI zprostředkovatele s klíčem úrovni počítače:
 
-
 [!code-console[Main](protecting-connection-strings-and-other-configuration-information-vb/samples/sample7.cmd)]
 
 Podobně platí `aspnet_regiis.exe` nástroj příkazového řádku je možné dešifrovat konfigurační oddíly funkce. Namísto použití `-pef` přepnout, použijte `-pdf` (nebo namísto něj `-pe`, použijte `-pd`). Všimněte si také, že název zprostředkovatele není nutné k dešifrování.
-
 
 [!code-console[Main](protecting-connection-strings-and-other-configuration-information-vb/samples/sample8.cmd)]
 
 > [!NOTE]
 > Protože používáme rozhraní DPAPI poskytovatele, který používá klíče, které jsou specifické pro počítač, je nutné spustit `aspnet_regiis.exe` ze stejného počítače, ve kterém se obsluhuje webové stránky. Například je-li spustit tento program příkazového řádku z místního vývojového počítače a pak nahrajte zašifrovaný soubor Web.config na provozní server, provozní server nebude možné dešifrovat informace o připojovacím řetězci, vzhledem k tomu, že byla přenášena šifrovaná pomocí klíčů konkrétní do svého vývojového počítače. Zprostředkovatel RSA nemá toto omezení, jak je možné exportovat klíčů RSA do jiného počítače.
-
 
 ## <a name="understanding-database-authentication-options"></a>Principy možnosti ověřování databáze
 
@@ -201,7 +178,6 @@ Představte si, že útočník je moct zobrazit vaše aplikace s `Web.config` so
 
 > [!NOTE]
 > Další informace o různých typech ověřování, které jsou k dispozici v systému SQL Server najdete v tématu [vytváření bezpečných aplikací technologie ASP.NET: Ověřování, autorizaci a bezpečnou komunikaci](https://msdn.microsoft.com/library/aa302392.aspx). Další připojovací řetězec příklady ilustrující rozdíly mezi syntaxe ověřování Windows a SQL, najdete v tématu [ConnectionStrings.com](http://www.connectionstrings.com/).
-
 
 ## <a name="summary"></a>Souhrn
 

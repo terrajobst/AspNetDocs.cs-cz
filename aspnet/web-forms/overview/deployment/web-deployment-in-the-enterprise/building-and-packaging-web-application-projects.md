@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 94e92f80-a7e3-4d18-9375-ff8be5d666ac
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/building-and-packaging-web-application-projects
 msc.type: authoredcontent
-ms.openlocfilehash: 82134b8da7ab5ca49fef8e769128db9010fd231f
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 1d0ee0264ce6461d7b0159f1a44de4de31e2d079
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396327"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65114675"
 ---
 # <a name="building-and-packaging-web-application-projects"></a>Sestavení a balení projektů webových aplikací
 
@@ -27,7 +27,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > - Jak nástroj pro nasazení Internetové informační služby (IIS) webu (nasazení webu) se změní na vaší webové aplikace do balíčku pro nasazení.
 > - Sestavení a zabalení zpracovat jak funguje a jaké soubory jsou vytvořeny.
 
-
 V sadě Visual Studio 2010 podporuje WPP procesu sestavení a nasazení pro projekty webových aplikací. WPP poskytuje sadu Microsoft Build Engine (MSBuild) cíle, které rozšiřují funkce nástroje MSBuild a povolte ji integrovat s nasazením webu. V sadě Visual Studio můžete zobrazit tyto rozšířené funkce na stránkách vlastností projektu webové aplikace. **Balení/publikování webu** stránky, společně s **balení/publikování kódu SQL** stránce umožňuje nakonfigurovat jak projektu webové aplikace je zabalená pro účely nasazení po dokončení procesu sestavení.
 
 ![](building-and-packaging-web-application-projects/_static/image1.png)
@@ -36,17 +35,13 @@ V sadě Visual Studio 2010 podporuje WPP procesu sestavení a nasazení pro proj
 
 Pokud jste se podívejte na soubor projektu pro jazyk C#-projekt na základě webové aplikace, uvidíte, že importuje dva soubory .targets.
 
-
 [!code-xml[Main](building-and-packaging-web-application-projects/samples/sample1.xml)]
-
 
 První **Import** příkaz je společné pro všechny projekty Visual C#. Tento soubor *Microsoft.CSharp.targets*, obsahuje cíle a úlohy, které jsou specifické pro jazyk Visual C#. Například kompilátor jazyka C# (**Csc**) je úkol vyvolán tady. *Microsoft.CSharp.targets* souboru zase importy *cílů Microsoft.Common.targets* souboru. Definuje cíle, které jsou společné pro všechny projekty, jako je třeba **sestavení**, **znovu sestavit**, **spustit**, **kompilaci**, a **vyčistit** . Druhá **Import** příkaz je specifické pro projekty webových aplikací. *Microsoft.WebApplication.targets* zase soubor importy *Microsoft.Web.Publishing.targets* souboru. *Microsoft.Web.Publishing.targets* soubor v podstatě *je* WPP. Určuje cíle, jako je třeba **balíčku** a **MSDeployPublish**, který vyvolat Webdeploy dokončit různé úkoly nasazení.
 
 Chcete-li pochopit, jak se používají tyto další cíle v ukázkovém řešení Správce kontaktů, otevřete *Publish.proj* soubor a podívejte se na **BuildProjects** cíl.
 
-
 [!code-xml[Main](building-and-packaging-web-application-projects/samples/sample2.xml)]
-
 
 Používá tento cíl **MSBuild** úkolů k sestavení různé projekty. Všimněte si, že **DeployOnBuild** a **DeployTarget** vlastnosti:
 
@@ -58,7 +53,6 @@ Používá tento cíl **MSBuild** úkolů k sestavení různé projekty. Všimn�
 > [!NOTE]
 > Chcete-li zobrazit soubor projektu (například <em>ContactManager.Mvc.csproj</em>) v sadě Visual Studio 2010, musíte nejprve uvolněte projekt z řešení. V <strong>Průzkumníka řešení</strong> okna, klikněte pravým tlačítkem na uzel projektu a pak klikněte na tlačítko <strong>uvolnit projekt</strong>. Znovu klikněte pravým tlačítkem na uzel projektu a pak klikněte na tlačítko <strong>upravit</strong><em>[soubor projektu]</em>). Soubor projektu se otevře v nezpracované podobě XML. Nezapomeňte znovu načíst projekt, až budete hotovi.  
 > Další informace o MSBuild cíle, úkoly, a <strong>Import</strong> příkazy, naleznete v tématu [vysvětlení souboru projektu](understanding-the-project-file.md). Podrobnější Úvod do souborů projektu a WPP najdete v tématu [uvnitř the Microsoft Build Engine: Pomocí nástroje MSBuild a Team Foundation Build](http://amzn.com/0735645248) Sayed Ibrahim Hashimi a William Bartholomew, ISBN: 978-0-7356-4524-0.
-
 
 ## <a name="what-is-a-web-deployment-package"></a>Co je balíček nasazení webu?
 
@@ -87,7 +81,6 @@ Spolu s balíčku pro nasazení webu proces sestavení generuje dva soubory, kte
 
 > [!NOTE]
 > V sadě Visual Studio 2010 WPP nepodporuje předkompilaci stránek ve webové aplikaci před balení. Další verze sady Visual Studio a WPP bude zahrnovat možnost předkompilování webové aplikace jako možnost balení.
-
 
 ## <a name="conclusion"></a>Závěr
 

@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: fdc3599a-5217-44c1-951f-0eec9812dce7
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 288f5017acde5a103460ace688933609fba0b02c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 87a90b47ae30bee43e0b0c1e078597db54b8e67d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59391023"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113862"
 ---
 # <a name="tutorial-getting-started-with-signalr-1x"></a>Kurz: Začínáme s funkcí SignalR 1.x
 
@@ -22,7 +22,6 @@ podle [Patrick Fletcher](https://github.com/pfletcher), [Tim Teebken](https://gi
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > V tomto kurzu se naučíte používat funkci SignalR k vytvoření aplikace pro chatování v reálném čase. Přidáte SignalR prázdná webová aplikace ASP.NET a vytvořte stránku HTML k odeslání a zobrazení zprávy.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -148,7 +147,6 @@ Následující kód deklaruje proxy server rozbočovače.
 > [!NOTE]
 > V jQuery je odkaz na třídu serveru a jeho členy v stylem camel case. Odkazuje na vzorový kód jazyka C# **ChatHub** třídy v jQuery jako **chatHub**.
 
-
 Následující kód je, jak vytvořit funkci zpětného volání ve skriptu. Třída rozbočovače na serveru volá tuto funkci tak, aby nabízel obsah aktualizací pro jednotlivé klienty. Následující dva řádky, že s kódováním HTML obsah před jeho zobrazení jsou volitelné a zobrazit jednoduchý způsob, jak brání injektáži skriptu.
 
 [!code-html[Main](tutorial-getting-started-with-signalr/samples/sample7.html)]
@@ -157,7 +155,6 @@ Následující kód ukazuje, jak otevřít připojení v centru. Kód spustí p�
 
 > [!NOTE]
 > Tento přístup zajistí, že připojení před provedením obslužná rutina události.
-
 
 [!code-javascript[Main](tutorial-getting-started-with-signalr/samples/sample8.js)]
 

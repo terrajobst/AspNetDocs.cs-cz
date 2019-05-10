@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: b5b86e03-b8ed-46e6-90fa-e1da88ef34e9
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-deployment-properties-for-a-target-environment
 msc.type: authoredcontent
-ms.openlocfilehash: 74fc0f4cb7d3ed7d1ef091cdb8fa829091af5a7a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 9742be7d718384c1b108d5f2c0c43e8e8d4fe8a9
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59388683"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108672"
 ---
 # <a name="configuring-deployment-properties-for-a-target-environment"></a>Konfigurace vlastností nasazeného cílového prostředí
 
@@ -22,7 +22,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Toto téma popisuje postup konfigurace vlastností specifických pro prostředí k nasazení ukázkové řešení Správce kontaktů do určité cílové prostředí.
-
 
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md) řešení&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
@@ -64,7 +63,6 @@ Pokud chcete nasadit řešení Správce kontaktů na cílovém prostředí, mů�
 
 Tato tabulka popisuje účel každé vlastnosti v ukázkovém souboru projektu pro konkrétní prostředí, *Env Dev.proj*a najdete pokyny k hodnoty by měly poskytnout.
 
-
 |                                                        Název vlastnosti                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Podrobnosti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |              <strong>MSDeployComputerName</strong> název cílového webového serveru nebo službě koncového bodu.               |                                                                                                                                                                                                                                              Pokud nasazujete službu vzdáleného agenta na cílový webový server, můžete zadat název cílového počítače (například <strong>TESTWEB1</strong> nebo <strong>TESTWEB1.fabrikam.net</strong>), nebo můžete zadat vzdálený koncový bod agenta (například `http://TESTWEB1/MSDEPLOYAGENTSERVICE`). Nasazení funguje stejně v každém případě. Pokud nasazení provádíte do obslužné rutiny webu nasadit na cílový webový server, musí zadat koncový bod služby a obsahovat název webu služby IIS jako parametru řetězce dotazu (například `https://STAGEWEB1:8172/MSDeploy.axd?site=DemoSite`).                                                                                                                                                                                                                                              |
@@ -87,9 +85,7 @@ V tomto příkladu:
 - Máte instruující, nasazení webu pro použití ověřování NTLM. Nástroj nasazení webu se spustí pomocí přihlašovacích údajů, které jste použili k vyvolání Microsoft Build Engine (MSBuild).
 - Integrované ověřování používáte k nasazení **ContactManager** databáze TESTDB1. Databáze se nasadí pomocí přihlašovacích údajů, které jste použili k vyvolání MSBuild.
 
-
 [!code-xml[Main](configuring-deployment-properties-for-a-target-environment/samples/sample1.xml)]
-
 
 ### <a name="example-2x2014deployment-to-the-web-deploy-handler-endpoint"></a>Příklad 2&#x2014;nasazení na webu nasadit koncový bod obslužné rutiny
 
@@ -100,9 +96,7 @@ V tomto příkladu:
 - Určujete, že nasazení webu by měl zosobnit účet FABRIKAM\stagingdeployer na vzdáleném počítači.
 - Ověřování serveru SQL Server používáte k nasazení **ContactManager** databáze STAGEDB1.
 
-
 [!code-xml[Main](configuring-deployment-properties-for-a-target-environment/samples/sample2.xml)]
-
 
 ## <a name="conclusion"></a>Závěr
 

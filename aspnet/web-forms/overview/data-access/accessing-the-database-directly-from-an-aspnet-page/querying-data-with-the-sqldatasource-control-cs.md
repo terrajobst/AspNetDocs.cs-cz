@@ -8,12 +8,12 @@ ms.date: 02/20/2007
 ms.assetid: 60512d6a-b572-4b7a-beb3-3e44b4d2020c
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f6aa0e4535f88a04419695114d07ea2cf6ac7036
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: de0ad77967af2b1b7d6cca08a0c13df81a278091
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381156"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65115008"
 ---
 # <a name="querying-data-with-the-sqldatasource-control-c"></a>Dotazování na data ovládacím prvkem SqlDataSource (C#)
 
@@ -23,7 +23,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > V předchozích kurzech jsme použili ovládacího prvku ObjectDataSource prezentační vrstvy plně nezávislá na vrstvě přístupu k datům. Spouští se s tímto kurzem, Učíme použití ovládacím prvkem SqlDataSource pro jednoduché aplikace, které nevyžadují striktní oddělení prezentace a přístup k datům.
 
-
 ## <a name="introduction"></a>Úvod
 
 Všechny kurzy jsme ve prověřit, pokud jste použili vrstvené architektury skládající se z prezentace, obchodní logika a přístup k datům vrstvy. Data přístup Layer (DAL) byl vytvořený v prvním kurzu ([vytvoření vrstvy přístupu k datům](../introduction/creating-a-data-access-layer-cs.md)) a vrstvu obchodní logiky za sekundu ([vytvoření vrstvy obchodní logiky](../introduction/creating-a-business-logic-layer-cs.md)). Počínaje [zobrazení dat se prvku ObjectDataSource](../basic-reporting/displaying-data-with-the-objectdatasource-cs.md) kurzu jsme viděli, jak pomocí technologie ASP.NET 2.0 s nový ovládací prvek ObjectDataSource deklarativně rozhraní s architekturou od prezentační vrstvy.
@@ -32,11 +31,9 @@ I když architektura všechny kurzy, pokud mají použít pro práci s daty, je 
 
 ASP.NET 2.0 obsahuje pět předdefinovaných datových ovládací prvky zdroje [SqlDataSource](https://msdn.microsoft.com/library/dz12d98w%28vs.80%29.aspx), [prvku AccessDataSource](https://msdn.microsoft.com/library/8e5545e1.aspx), [ObjectDataSource](https://msdn.microsoft.com/library/9a4kyhcx.aspx), [XmlDataSource](https://msdn.microsoft.com/library/e8d8587a%28en-US,VS.80%29.aspx), a [SiteMapDataSource](https://msdn.microsoft.com/library/5ex9t96x%28en-US,VS.80%29.aspx). Ve třídě SqlDataSource lze použít pro přístup a úpravy dat přímo z relační databáze, včetně Microsoft SQL Server, Microsoft Access, Oracle, MySQL nebo jiné. V tomto kurzu a další tři prozkoumáme tom, jak pracovat s ovládacím prvkem SqlDataSource, zkoumat, jak provádět dotazy a filtrování dat z databáze, jakož i jak používat ve třídě SqlDataSource k vložit, aktualizovat a odstraňovat data.
 
-
 ![Technologie ASP.NET 2.0 obsahuje pět ovládací prvky předdefinované datové zdroje](querying-data-with-the-sqldatasource-control-cs/_static/image1.gif)
 
 **Obrázek 1**: Technologie ASP.NET 2.0 obsahuje pět ovládací prvky předdefinované datové zdroje
-
 
 ## <a name="comparing-the-objectdatasource-and-sqldatasource"></a>Porovnání ObjectDataSource a SqlDataSource
 
@@ -44,15 +41,12 @@ Prvek ObjectDataSource i SqlDataSource ovládací prvky jsou koncepčně, jednod
 
 Ve třídě SqlDataSource poskytuje stejné funkce, ale používá relační databáze, spíše než knihovny objektů. S ovládacím prvkem SqlDataSource jsme musíte zadat připojovací řetězec databáze a ad-hoc dotazy SQL nebo uložené procedury k provedení pro vložení, aktualizaci, odstranění a načíst data. SqlDataSource s `Select()`, `Insert()`, `Update()`, a `Delete()` metody, při vyvolání, připojte se k zadané databázi a odpovídající dotaz SQL. Jak ukazuje následující diagram, tyto metody provádět těžkou práci připojení k databázi, zadání dotazu a vrátí výsledky.
 
-
 ![Ve třídě SqlDataSource slouží jako proxy server a databáze](querying-data-with-the-sqldatasource-control-cs/_static/image2.gif)
 
 **Obrázek 2**: Ve třídě SqlDataSource slouží jako proxy server a databáze
 
-
 > [!NOTE]
 > V tomto kurzu zaměříme na načítání dat z databáze. V [vložení, aktualizace a odstraňování dat ovládacím prvkem SqlDataSource(VB)](inserting-updating-and-deleting-data-with-the-sqldatasource-cs.md) výukový program, uvidíme, jak nakonfigurovat ve třídě SqlDataSource pro podporu vkládání, aktualizaci a odstranění.
-
 
 ## <a name="the-sqldatasource-and-accessdatasource-controls"></a>SqlDataSource a ovládací prvky prvku AccessDataSource
 
@@ -70,79 +64,62 @@ Než začneme zkoumat, jak pracovat přímo s ovládacím prvkem SqlDataSource p
 - `InsertUpdateDelete.aspx`
 - `OptimisticConcurrency.aspx`
 
-
 ![Přidání stránky technologie ASP.NET pro SqlDataSource související kurzy](querying-data-with-the-sqldatasource-control-cs/_static/image3.gif)
 
 **Obrázek 3**: Přidání stránky technologie ASP.NET pro SqlDataSource související kurzy
 
-
 V jiných složkách, jako jsou `Default.aspx` v `SqlDataSource` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
-
 
 [![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](querying-data-with-the-sqldatasource-control-cs/_static/image5.gif)](querying-data-with-the-sqldatasource-control-cs/_static/image4.gif)
 
 **Obrázek 4**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](querying-data-with-the-sqldatasource-control-cs/_static/image6.gif))
 
-
 A konečně, přidejte tyto čtyři stránky jako položky `Web.sitemap` souboru. Konkrétně, přidejte následující kód za vlastní tlačítka přidání ovládacích prvků DataList a Repeater `<siteMapNode>`:
-
 
 [!code-sql[Main](querying-data-with-the-sqldatasource-control-cs/samples/sample1.sql)]
 
 Po aktualizaci `Web.sitemap`, věnujte chvíli zobrazit kurzy web prostřednictvím prohlížeče. V nabídce na levé straně teď obsahuje položky pro úpravy, vložení a odstranění kurzy.
 
-
 ![Mapa webu nyní obsahuje záznamy pro SqlDataSource kurzy](querying-data-with-the-sqldatasource-control-cs/_static/image7.gif)
 
 **Obrázek 5**: Mapa webu nyní obsahuje záznamy pro SqlDataSource kurzy
-
 
 ## <a name="step-2-adding-and-configuring-the-sqldatasource-control"></a>Krok 2: Přidání a konfigurace ovládacím prvkem SqlDataSource
 
 Začněte otevřením `Querying.aspx` stránku `SqlDataSource` složky a přejděte do zobrazení návrhu. Přetáhněte ovládací prvek SqlDataSource z panelu nástrojů do návrháře a nastavte jeho `ID` k `ProductsDataSource`. Stejně jako u prvku ObjectDataSource, ovládacím prvkem SqlDataSource nevytvoří žádné vykresleného výstupu a proto se zobrazí jako šedé políčko na návrhové ploše. Konfigurovat ve třídě SqlDataSource, klikněte na odkaz Konfigurovat zdroj dat z inteligentních značek s SqlDataSource.
 
-
 ![Klikněte na konfiguraci propojení na zdroj dat z inteligentních značek s SqlDataSource](querying-data-with-the-sqldatasource-control-cs/_static/image8.gif)
 
 **Obrázek 6**: Klikněte na konfiguraci propojení na zdroj dat z inteligentních značek s SqlDataSource
-
 
 Tím se zobrazí průvodce Konfigurovat zdroj dat s SqlDataSource ovládacího prvku. Během kroků průvodce s se liší od ovládacího prvku ObjectDataSource s, konečným cílem je poskytovat podrobnosti o tom, jak načíst, vložení, aktualizace a odstranění dat prostřednictvím zdroje dat stejné. Ve třídě SqlDataSource, to zahrnuje určení základní databáze a poskytuje příkazy ad-hoc SQL nebo úložné procedury.
 
 První krok průvodce vyzve nám pro databázi. Rozevírací seznam obsahuje tyto databáze součástí s webovou aplikací `App_Data` složky a ty, které byly přidány do uzlu datového připojení v Průzkumníku serveru. Protože jsme už přidali připojovací řetězec pro `NORTHWIND.MDF` databáze v `App_Data` složku pro náš projekt s `Web.config` soubor, rozevírací seznam obsahuje odkaz na připojovací řetězec, `NORTHWINDConnectionString`. Zvolte tuto položku z rozevíracího seznamu a klikněte na tlačítko Další.
 
-
 ![Z rozevíracího seznamu zvolte NORTHWINDConnectionString](querying-data-with-the-sqldatasource-control-cs/_static/image9.gif)
 
 **Obrázek 7**: Zvolte `NORTHWINDConnectionString` z rozevíracího seznamu
-
 
 Po výběru databáze, průvodce vyzve k zadání dotazu vrátit data. Můžeme určit buď sloupce tabulky nebo zobrazení k vrácení nebo můžete zadat vlastní příkaz SQL nebo uloženou proceduru. Můžete přepínat mezi tato volba prostřednictvím určení vlastní příkaz SQL nebo uloženou proceduru a zadat sloupce z tabulky nebo zobrazení přepínací tlačítka.
 
 > [!NOTE]
 > V tomto příkladu první umožní s zadat sloupce z tabulky nebo zobrazení možností použití. Vytvoříme později v tomto kurzu se vraťte do průvodce a prozkoumejte určení vlastní příkaz SQL nebo uloženou proceduru možnost.
 
-
 Obrázek 8 ukazuje konfigurací při výběru zadat sloupce z tabulky nebo zobrazení přepínací tlačítko na obrazovce příkazu Select. Rozevírací seznam obsahuje sadu tabulek a zobrazení v databázi Northwind pomocí vybrané tabulky nebo sloupce s zobrazení zobrazí zaškrtávací políčko dole v seznamu. V tomto příkladu se vám umožňují s vrátit `ProductID`, `ProductName`, a `UnitPrice` sloupce z `Products` tabulky. Jak ukazuje obrázek 8, po ukazuje výsledný příkaz jazyka SQL, proveďte tyto výběry průvodce `SELECT [ProductID], [ProductName], [UnitPrice] FROM [Products]`.
-
 
 ![Vrácení dat z tabulky produktů](querying-data-with-the-sqldatasource-control-cs/_static/image10.gif)
 
 **Obrázek 8**: Vrátit Data z `Products` tabulky
 
-
 Po nakonfigurování průvodce se vraťte `ProductID`, `ProductName`, a `UnitPrice` sloupce z `Products` tabulku, klikněte na tlačítko Další. Tento poslední obrazovka poskytuje možnost prozkoumat výsledky dotazu nakonfigurovali v předchozím kroku. Kliknutím na tlačítko Testovat dotaz provede nakonfigurované `SELECT` příkaz a zobrazí výsledky v mřížce.
-
 
 ![Klikněte na tlačítko Test dotazu ke kontrole dotaz SELECT](querying-data-with-the-sqldatasource-control-cs/_static/image11.gif)
 
 **Obrázek 9**: Klikněte na tlačítko Test dotaz k revizi vaše `SELECT` dotazu
 
-
 Dokončete průvodce, klikněte na tlačítko Dokončit.
 
 Jako ovládacím prvkem ObjectDataSource, průvodce s SqlDataSource pouze přiřazuje hodnoty vlastnosti ovládacích prvků s totiž [ `ConnectionString` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.connectionstring.aspx) a [ `SelectCommand` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.selectcommand.aspx) vlastnosti. Po dokončení průvodce se vaše SqlDataSource ovládacího prvku s deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](querying-data-with-the-sqldatasource-control-cs/samples/sample2.aspx)]
 
@@ -154,26 +131,21 @@ Jako ovládacím prvkem ObjectDataSource, průvodce s SqlDataSource pouze přiř
 
 Jakmile ve třídě SqlDataSource není nakonfigurovaná, může být vázána k datům webový ovládací prvek, jako je například GridView nebo prvku DetailsView. Pro účely tohoto kurzu nechte s zobrazení dat v GridView. Z panelu nástrojů přetáhněte na stránku GridView a vytvořte mu vazbu k `ProductsDataSource` SqlDataSource výběrem zdroj dat z rozevíracího seznamu v prvku GridView s inteligentním.
 
-
 [![Přidat GridView a svázat s ovládacím prvkem SqlDataSource](querying-data-with-the-sqldatasource-control-cs/_static/image13.gif)](querying-data-with-the-sqldatasource-control-cs/_static/image12.gif)
 
 **Obrázek 10**: Přidat GridView a svázat s ovládacím prvkem SqlDataSource ([kliknutím ji zobrazíte obrázek v plné velikosti](querying-data-with-the-sqldatasource-control-cs/_static/image14.gif))
-
 
 Jakmile jste již vybrali ovládacím prvkem SqlDataSource z rozevíracího seznamu v prvku GridView s inteligentním, Visual Studio automaticky přidá vlastnost BoundField nebo třídě CheckBoxField do prvku GridView. pro jednotlivé sloupce vrácený ovládací prvek zdroje dat. Vzhledem k tomu, že ve třídě SqlDataSource vrátí tři databázové sloupce `ProductID`, `ProductName`, a `UnitPrice` existují tři pole v prvku GridView.
 
 Za chvíli ke konfiguraci GridView s třemi BoundFields. Změnit `ProductName` pole s `HeaderText` nastavte na název produktu a `UnitPrice` pole s cenou. Formátovat také `UnitPrice` poli jako měnu. Po provedení těchto změn, vaše GridView s deklarativní by měl vypadat nějak takto:
 
-
 [!code-aspx[Main](querying-data-with-the-sqldatasource-control-cs/samples/sample3.aspx)]
 
 Navštivte tuto stránku prostřednictvím prohlížeče. Jak ukazuje obrázek 11 prvku GridView uvádí jednotlivé produkty s `ProductID`, `ProductName`, a `UnitPrice` hodnoty.
 
-
 [![GridView zobrazí každý produkt s ProductID, ProductName a UnitPrice hodnoty](querying-data-with-the-sqldatasource-control-cs/_static/image16.gif)](querying-data-with-the-sqldatasource-control-cs/_static/image15.gif)
 
 **Obrázek 11**: Každý produkt zobrazí GridView s `ProductID`, `ProductName`, a `UnitPrice` hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](querying-data-with-the-sqldatasource-control-cs/_static/image17.gif))
-
 
 Při návštěvě stránky prvku GridView vyvolá jeho ovládací prvek zdroje dat s `Select()` metody. Když jsme používali ovládací prvek ObjectDataSource, označuje `ProductsBLL` třída s `GetProducts()` metoda. S ovládacím prvkem SqlDataSource, ale `Select()` metoda naváže připojení k zadané databázi a problémy `SelectCommand` (`SELECT [ProductID], [ProductName], [UnitPrice] FROM [Products]`, v tomto příkladu). Ve třídě SqlDataSource vrátí jeho výsledky, které prvku GridView. pak vytvoří výčet, vytvoření řádku v prvku GridView. pro každý záznam v databázi vrátil.
 
@@ -195,43 +167,33 @@ Při konfiguraci ovládacím prvkem SqlDataSource dotazu používá k vrácení 
 
 Přidejte další ovládací prvek GridView k `Querying.aspx` stránky a zvolte možnost vytvořit nový zdroj dat z rozevíracího seznamu v inteligentních značek. V dalším kroku znamenat, že data se načíst z databáze tím se vytvoří nový ovládací prvek SqlDataSource. Pojmenujte ovládací prvek `ProductsWithCategoryInfoDataSource`.
 
-
 ![Vytvořit nový ovládací prvek SqlDataSource s názvem ProductsWithCategoryInfoDataSource](querying-data-with-the-sqldatasource-control-cs/_static/image18.gif)
 
 **Obrázek 12**: Vytvořit nový ovládací prvek SqlDataSource s názvem `ProductsWithCategoryInfoDataSource`
 
-
 Na další obrazovce dotazem, abychom mohli zadat databázi. Jako jsme to udělali zpět na obrázku 7, vyberte `NORTHWINDConnectionString` z rozevíracího seznamu a klikněte na tlačítko Další. V konfigurovat příkaz Select obrazovky zvolte možnost určení vlastní příkaz SQL nebo uloženou proceduru přepínací tlačítka a klikněte na tlačítko Další. Tím se otevře obrazovku definovat vlastní příkazy nebo uložené procedury, která nabízí karty označené SELECT, UPDATE, INSERT a DELETE. Na každé kartě můžete do textového pole zadejte vlastní příkaz SQL nebo uloženou proceduru z rozevíracího seznamu zvolte. V tomto kurzu se podíváme na zadání vlastní příkaz jazyka SQL; Další kurz obsahuje příklad použití uložené procedury.
-
 
 ![Zadejte příkaz SQL vlastní nebo vyberte uloženou proceduru](querying-data-with-the-sqldatasource-control-cs/_static/image19.gif)
 
 **Obrázek 13**: Zadejte příkaz SQL vlastní nebo vyberte uloženou proceduru
 
-
 Vlastní příkaz jazyka SQL, můžete ručně zadat do textového pole nebo lze sestavit graficky kliknutím na tlačítko Tvůrce dotazů. Z editoru dotazů nebo textového pole, použijte tento dotaz se vraťte `ProductID` a `ProductName` pole z `Products` tabulky pomocí `JOIN` načíst produkt s `CategoryName` z `Categories` tabulky:
 
-
 [!code-sql[Main](querying-data-with-the-sqldatasource-control-cs/samples/sample4.sql)]
-
 
 ![Můžete graficky sestavování dotazu pomocí Tvůrce dotazů](querying-data-with-the-sqldatasource-control-cs/_static/image20.gif)
 
 **Obrázek 14**: Můžete graficky sestavování dotazu pomocí Tvůrce dotazů
 
-
 Po zadání dotaz, klikněte na tlačítko Další přejděte na obrazovku testovat dotaz. Kliknutím na Dokončit dokončíte Průvodce SqlDataSource.
 
 Po dokončení průvodce se prvku GridView, bude mít tři BoundFields přidá do něj zobrazení `ProductID`, `ProductName`, a `CategoryName` sloupců vrácených dotazem a výsledkem je následující kód:
 
-
 [!code-aspx[Main](querying-data-with-the-sqldatasource-control-cs/samples/sample5.aspx)]
-
 
 [![Každý produkt s ID, název názvu a přidružené kategorie zobrazuje prvku GridView.](querying-data-with-the-sqldatasource-control-cs/_static/image22.gif)](querying-data-with-the-sqldatasource-control-cs/_static/image21.gif)
 
 **Obrázek 15**: GridView ukazuje, každý produkt s ID, název a název kategorie přidružené ([kliknutím ji zobrazíte obrázek v plné velikosti](querying-data-with-the-sqldatasource-control-cs/_static/image23.gif))
-
 
 ## <a name="summary"></a>Souhrn
 

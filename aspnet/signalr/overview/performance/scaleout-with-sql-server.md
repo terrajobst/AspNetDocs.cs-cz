@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 98358b6e-9139-4239-ba3a-2d7dd74dd664
 msc.legacyurl: /signalr/overview/performance/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: c0c214ea32ad13b3a63be9ef84bcb4b8bc7311aa
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 709a9ebf8f3396842bee0d87e621c00ae1418ec1
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59393572"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113616"
 ---
 # <a name="signalr-scaleout-with-sql-server"></a>Šklálování aplikace SignalR SQL Serverem
 
@@ -37,7 +37,6 @@ podle [Mike Wasson](https://github.com/MikeWasson), [Patrick Fletcher](https://g
 > ## <a name="questions-and-comments"></a>Otázky a komentáře
 >
 > Napište prosím zpětnou vazbu o tom, jak vám líbilo v tomto kurzu a co můžeme zlepšit v komentářích v dolní části stránky. Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
-
 
 V tomto kurzu použijete SQL Server k distribuci zpráv do aplikace SignalR, která je nasazená ve dvou samostatných instancí služby IIS. V tomto kurzu můžete spustit také na jeden testovací počítač, ale chcete-li získat plný vliv, je třeba nasadit aplikace SignalR pro dva nebo víc serverů. SQL Server musíte nainstalovat také na některý server nebo na samostatný vyhrazený server. Další možností je spustit kurz pomocí virtuálních počítačů v Azure.
 
@@ -87,7 +86,6 @@ Povolí službu Service Broker, pomocí následujícího dotazu SQL:
 
 > [!NOTE]
 > Pokud tento dotaz se zdá, zablokování, ujistěte se, že nejsou žádné aplikace, připojení k databázi.
-
 
 Pokud jste povolili trasování, trasování zobrazí také, zda je povolena služba Service Broker.
 

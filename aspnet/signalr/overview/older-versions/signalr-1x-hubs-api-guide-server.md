@@ -8,12 +8,12 @@ ms.date: 04/17/2013
 ms.assetid: 03e4b9f5-0fea-4d94-959f-014b2762a301
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-server
 msc.type: authoredcontent
-ms.openlocfilehash: 7d75c832f704ea88d365f6a8b83c1c3a024b30ca
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: d9cd3fad36c0300d96c6dbdc61291ef119da2327
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59382248"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113036"
 ---
 # <a name="aspnet-signalr-hubs-api-guide---server-signalr-1x"></a>Pokyny k rozhraní API Center SignalR technologie ASP.NET – Server (SignalR 1.x)
 
@@ -26,7 +26,6 @@ podle [Patrick Fletcher](https://github.com/pfletcher), [Petr Dykstra](https://g
 > Rozhraní API pro rozbočovače SignalR umožňuje vytvářet vzdálených volání procedur (RPC) ze serveru pro připojené klienty a z klientů k serveru. V serverovém kódu můžete definovat metody, které mohou být volány klientů a volat metody, které běží na straně klienta. V klientském kódu můžete definovat metody, které lze volat ze serveru a volání metody, které běží na serveru. Funkce SignalR postará za vás zajistí funkčnost systému klient server.
 > 
 > Funkce SignalR také nabízí nižší úrovně rozhraní API volá trvalé připojení. Úvod do SignalR, rozbočovačů a trvalá připojení, nebo kurz, který ukazuje, jak sestavit kompletní aplikace SignalR, přečtěte si téma [SignalR – Začínáme](index.md).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -516,7 +515,6 @@ Ve třídě Hub, můžete přístup k těmto datům v `Clients.Caller` vlastnost
 
 > [!NOTE]
 > Tento mechanismus pro zachování stavu není určena pro velké objemy dat, od všechno, co vložíte do `state` nebo `Clients.Caller` vlastnost je odbavovaná se každé volání metody. Je vhodné pro menší položky, jako jsou uživatelská jména nebo čítače.
-
 
 <a id="handleErrors"></a>
 

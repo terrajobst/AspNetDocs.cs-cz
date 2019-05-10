@@ -8,12 +8,12 @@ ms.date: 05/30/2007
 ms.assetid: bd87413c-8160-4520-a8a2-43b555c4183a
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3e8fa3fe62ee2f58cd5cfbd32d17a3613cf80c12
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 596414748365c440ca50453c3e905ba6edb43de8
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59382492"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65115003"
 ---
 # <a name="caching-data-with-the-objectdatasource-c"></a>Ukládání dat do mezipaměti ovládacím prvkem ObjectDataSource (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_58_CS.exe) nebo [stahovat PDF](caching-data-with-the-objectdatasource-cs/_static/datatutorial58cs1.pdf)
 
 > Ukládání do mezipaměti může znamenat, že rozdíl mezi stránky pomalá a rychlé webové aplikace. Tento kurz je první ze čtyř, které využívají podrobný pohled na ukládání do mezipaměti v technologii ASP.NET. Přečtěte si klíčové koncepty ukládání do mezipaměti a tom, jak používat ukládání do mezipaměti do prezentační vrstvy do ovládacího prvku ObjectDataSource.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -57,32 +56,25 @@ Než začneme naše zkoumání funkcí ObjectDataSource s ukládání do mezipam
 - `AtApplicationStartup.aspx`
 - `SqlCacheDependencies.aspx`
 
-
 ![Přidání stránky technologie ASP.NET pro kurzy týkající se ukládání do mezipaměti](caching-data-with-the-objectdatasource-cs/_static/image1.png)
 
 **Obrázek 1**: Přidání stránky technologie ASP.NET pro kurzy týkající se ukládání do mezipaměti
 
-
 V jiných složkách, jako jsou `Default.aspx` v `Caching` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
-
 
 [![Obrázek 2: Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](caching-data-with-the-objectdatasource-cs/_static/image3.png)](caching-data-with-the-objectdatasource-cs/_static/image2.png)
 
 **Obrázek 2**: Obrázek 2: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-cs/_static/image4.png))
 
-
 A konečně, přidejte tyto stránky jako položky `Web.sitemap` souboru. Konkrétně, přidejte následující kód za práce s binárními daty `<siteMapNode>`:
-
 
 [!code-xml[Main](caching-data-with-the-objectdatasource-cs/samples/sample1.xml)]
 
 Po aktualizaci `Web.sitemap`, věnujte chvíli zobrazit kurzy web prostřednictvím prohlížeče. V nabídce na levé straně teď obsahuje položky pro ukládání do mezipaměti kurzy.
 
-
 ![Mapa webu nyní obsahuje záznamy pro ukládání do mezipaměti kurzy](caching-data-with-the-objectdatasource-cs/_static/image5.png)
 
 **Obrázek 3**: Mapa webu nyní obsahuje záznamy pro ukládání do mezipaměti kurzy
-
 
 ## <a name="step-2-displaying-a-list-of-products-in-a-web-page"></a>Krok 2: Zobrazení seznamu produktů, které na webové stránce
 
@@ -90,19 +82,15 @@ Tento kurz se věnuje použití prvku ObjectDataSource funkcí ovládacího prvk
 
 Začněte otevřením `ObjectDataSource.aspx` stránku `Caching` složky. Přetáhněte z panelu nástrojů na Návrhář GridView, nastavte jeho `ID` vlastnost `Products`a z inteligentních značek, vyberte a vytvořte jeho vazbu nového ovládacího prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource pracovat `ProductsBLL` třídy.
 
-
 [![Konfigurace ObjectDataSource pomocí třídy ProductsBLL](caching-data-with-the-objectdatasource-cs/_static/image7.png)](caching-data-with-the-objectdatasource-cs/_static/image6.png)
 
 **Obrázek 4**: Konfigurace ObjectDataSource k použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-cs/_static/image8.png))
 
-
 Pro tuto stránku umožní s vytvořit upravitelné GridView tak, aby nám můžete zkoumat, co se stane při změně dat v mezipaměti v ObjectDataSource prostřednictvím rozhraní s ovládacího prvku GridView. Ponechejte rozevíracím seznamu na kartě vyberte nastaví výchozí hodnoty, `GetProducts()`, ale změnit vybrané položky na kartě aktualizace `UpdateProduct` přetížení přijímající `productName`, `unitPrice`, a `productID` jako jeho vstupní parametry.
-
 
 [![Nastavte aktualizace kartu s rozevíracím seznamu příslušné UpdateProduct přetížení](caching-data-with-the-objectdatasource-cs/_static/image10.png)](caching-data-with-the-objectdatasource-cs/_static/image9.png)
 
 **Obrázek 5**: Nastavit kartu aktualizace s rozevíracím seznamu vhodná `UpdateProduct` přetížení ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-cs/_static/image11.png))
-
 
 Nakonec nastavte rozevírací seznamy na kartách INSERT a DELETE na (žádný) a klikněte na tlačítko Dokončit. Po dokončení průvodce bude konfigurace zdroje dat, aplikace Visual Studio nastaví ObjectDataSource s `OldValuesParameterFormatString` vlastnost `original_{0}`. Jak je popsáno v [přehled o vložení, aktualizace a odstranění dat](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs.md) kurz, tato vlastnost musí odebrat z deklarativní syntaxe nebo se nastaví zpátky na výchozí hodnotu, `{0}`, aby naše pracovního postupu aktualizace Pokračujte bez chyb.
 
@@ -113,24 +101,19 @@ Zkontrolujte prvku GridView upravitelné zaškrtnutím políčka Povolit úpravy
 > [!NOTE]
 > Je potřeba zkontrolovat, jak přizpůsobit rozhraní GridView s úpravy? Pokud ano, vraťte se do [přizpůsobení rozhraní pro úpravu dat](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs.md) kurzu.
 
-
 [![Povolte podporu GridView pro úpravy, řazení a stránkování](caching-data-with-the-objectdatasource-cs/_static/image13.png)](caching-data-with-the-objectdatasource-cs/_static/image12.png)
 
 **Obrázek 6**: Povolit podporu úprav, řazení a stránkování prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-cs/_static/image14.png))
 
-
 Po provedení těchto změn ovládacího prvku GridView, ovládacími prvky GridView a prvku ObjectDataSource s deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](caching-data-with-the-objectdatasource-cs/samples/sample2.aspx)]
 
 Jak je vidět na obrázku 7, upravitelné GridView uvádí název, kategorie a cen jednotlivých produktů v databázi. Využít k otestování funkce řazení stránky s výsledky stránkovat a pokud chcete záznam upravit.
 
-
 [![Každý produkt s názvem, kategorie a cena je uveden v Sortable, Pageable, upravitelné GridView](caching-data-with-the-objectdatasource-cs/_static/image16.png)](caching-data-with-the-objectdatasource-cs/_static/image15.png)
 
 **Obrázek 7**: Každý produkt s názvem, kategorie a cena je uveden v Sortable, Pageable, upravitelné ovládacího prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-cs/_static/image17.png))
-
 
 ## <a name="step-3-examining-when-the-objectdatasource-is-requesting-data"></a>Krok 3: Když prvku ObjectDataSource zkoumání jsou žádosti o Data
 
@@ -140,14 +123,11 @@ Toto pořadí událostí dojde každém prvku GridView. musí se vytvořit vazbu
 
 Plně vyhodnotit četnost, se kterým je načítání dat z databáze, umožní s zobrazit zpráva, když se znovu načíst data. Přidat ovládací prvek popisek webového nad prvek GridView s názvem `ODSEvents`. Vymazání jeho `Text` vlastnost a nastavte jeho `EnableViewState` vlastnost `false`. Pod popisek, přidejte ovládací prvek webového tlačítko a nastavte jeho `Text` vlastnost zpětného odeslání.
 
-
 [![Přidejte tlačítko a popisek na stránku nad prvku GridView.](caching-data-with-the-objectdatasource-cs/_static/image19.png)](caching-data-with-the-objectdatasource-cs/_static/image18.png)
 
 **Obrázek 8**: Přidejte popisek a tlačítka do stránky výše prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-cs/_static/image20.png))
 
-
 Během data access, ObjectDataSource s `Selecting` událost je aktivována před vytvořením základní objekt a jeho nakonfigurovaná metoda vyvolána. Vytvořte obslužnou rutinu události pro tuto událost a přidejte následující kód:
-
 
 [!code-csharp[Main](caching-data-with-the-objectdatasource-cs/samples/sample3.cs)]
 
@@ -155,16 +135,13 @@ Pokaždé, když prvku ObjectDataSource učiní žádost vůči architektury pro
 
 Navštivte tuto stránku v prohlížeči. Při první návštěvě stránky, aktivuje událost výběr textu se zobrazí. Klikněte na tlačítko zpětného volání a Všimněte si, že text zmizí (za předpokladu, že prvek GridView s `EnableViewState` je nastavena na `true`, výchozí hodnota). Důvodem je, že na zpětné volání, prvku GridView je znovu vytvořena z svůj stav zobrazení a proto zapnout t kódu pro prvek ObjectDataSource pro svá data. Řazení, stránkování a úpravy dat, ale způsobí, že GridView znovu připojit ke zdroji dat, a proto výběr událost aktivuje se bude zobrazovat text.
 
-
 [![Pokaždé, když prvku GridView je znovu připojeno ke zdroji dat, zobrazí se události Selecting aktivováno](caching-data-with-the-objectdatasource-cs/_static/image22.png)](caching-data-with-the-objectdatasource-cs/_static/image21.png)
 
 **Obrázek 9**: Pokaždé, když prvku GridView je znovu připojeno ke zdroji dat, zobrazí se aktivuje události Selecting ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-cs/_static/image23.png))
 
-
 [![Kliknutím na tlačítko způsobí zpětné odeslání prvku GridView. Chcete-li být znovu vytvořena z svůj stav zobrazení](caching-data-with-the-objectdatasource-cs/_static/image25.png)](caching-data-with-the-objectdatasource-cs/_static/image24.png)
 
 **Obrázek 10**: Kliknutím na tlačítko Postback způsobí, že prvku GridView. Chcete-li být znovu vytvořena z svůj stav zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-cs/_static/image26.png))
-
 
 To může zdát plýtvání, aby se načetla data databáze pokaždé, když je stránkování prostřednictvím nebo seřazená data. Po všech od jsme znovu pomocí výchozího stránkování prvku ObjectDataSource načte všechny záznamy při zobrazení na první stránce. I v případě, že prvku GridView neposkytuje řazení a stránkování podpory, data musí být načíst z databáze pokaždé, když na stránce první návštěvě libovolným uživatelem (a při každém postbacku, pokud je stav zobrazení je zakázané). Ale pokud prvku GridView se zobrazuje na stejná data pro všechny uživatele, jsou tyto žádosti navíc databáze nadbytečný. Případně proč bezpečná není výsledky vrácené z mezipaměti `GetProducts()` metoda a vazby prvku GridView. ty výsledky do mezipaměti?
 
@@ -179,11 +156,9 @@ Nastavením jednoduše několik vlastností, lze nastavit prvku ObjectDataSource
 
 Umožní s nakonfigurovat `ProductsDataSource` ObjectDataSource pro ukládání do mezipaměti svá data po dobu 30 sekund na absolutní měřítko. Nastavit prvek ObjectDataSource s `EnableCaching` vlastnost `true` a jeho `CacheDuration` vlastnost do 30. Nechte `CacheExpirationPolicy` nastavenou na výchozí `Absolute`.
 
-
 [![Konfigurace ObjectDataSource pro ukládání do mezipaměti svá Data po dobu 30 sekund](caching-data-with-the-objectdatasource-cs/_static/image28.png)](caching-data-with-the-objectdatasource-cs/_static/image27.png)
 
 **Obrázek 11**: Konfigurace ObjectDataSource pro ukládání do mezipaměti svá Data po dobu 30 sekund ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-with-the-objectdatasource-cs/_static/image29.png))
-
 
 Uložte změny a návštěvě této stránky v prohlížeči. Výběr textu události vyvolané zobrazí při první návštěvě stránky tak, že počáteční data se nenachází v mezipaměti. Ale následné postbacky spustit kliknutím na Postback tlačítko řazení, stránkování, nebo kliknutím na tlačítko Upravit nebo zrušit *není* redisplay události Selecting aktivuje text. Důvodem je, že `Selecting` události pouze aktivuje se v případě ObjectDataSource získává data od jeho základní objekt; `Selecting` událost se neaktivuje, pokud data se načítají z mezipaměti data.
 
@@ -192,14 +167,11 @@ Po 30 sekund bude vyloučena data z mezipaměti. Data budou odstraněna také z 
 > [!NOTE]
 > Pokud se zobrazí výběr textu aktivuje událost často, i když očekáváte, že ObjectDataSource pracovat se službou data uložená v mezipaměti, může být z důvodu omezení paměti. Pokud není k dispozici dostatek volné paměti, data přidaná do mezipaměti podle ObjectDataSource může mít byla úklid. Pokud se zdá být správně ukládání do mezipaměti dat nebo jenom ty mezipaměti t kódu prvku ObjectDataSource data nedojde, zavřete některé aplikace volné paměti a akci opakujte.
 
-
 Obrázek 12 znázorňuje ObjectDataSource s ukládání do mezipaměti pracovního postupu. Při vyvolání události Selecting text se zobrazí na obrazovce, protože data nebyla v mezipaměti a musel načíst z podkladových objektů. Když tento text nebyl nalezen, ale jeho s vzhledem k tomu, že data byla k dispozici z mezipaměti. Pokud je vrácená data z mezipaměti tam s žádná volání na základní objekt a proto žádný databázový dotaz spustit.
-
 
 ![ObjectDataSource ukládá a načítá Data z mezipaměti dat](caching-data-with-the-objectdatasource-cs/_static/image30.png)
 
 **Obrázek 12**: ObjectDataSource ukládá a načítá Data z mezipaměti dat
-
 
 Každá aplikace technologie ASP.NET má své vlastní datové mezipaměti instance této s sdílené ve všech stránek a návštěvníků. To znamená, že data uložená v mezipaměti dat ObjectDataSource podobně sdílí všichni uživatelé, kteří navštíví stránku. Chcete-li to ověřit, otevřete `ObjectDataSource.aspx` stránku v prohlížeči. Při první návštěvě stránky, výběr události vyvolané textu se zobrazí (za předpokladu, že data byla přidána do mezipaměti podle předchozích testů, nyní byla odebrána). Otevřete druhou instanci prohlížeče a zkopírujte a vložte adresu URL z první instance prohlížeče na druhý. Ve druhé instanci prohlížeče, výběr události vyvolané textu neuvádíme, protože ho používají stejná data jako první v mezipaměti.
 

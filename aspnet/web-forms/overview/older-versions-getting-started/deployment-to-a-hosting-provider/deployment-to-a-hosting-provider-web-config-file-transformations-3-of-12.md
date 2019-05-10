@@ -8,12 +8,12 @@ ms.date: 11/17/2011
 ms.assetid: 2b0df3d9-450b-4ea6-b315-4c9650722cad
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 2b289099f7f9a928b2d63a09ac5ccd685d9d4386
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ed442e2bd3140264facc7644d89589dbbe8840e7
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59406522"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65119373"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-webconfig-file-transformations---3-of-12"></a>Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Transformace souboru Web.Config - 3 12
 
@@ -24,7 +24,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > Tato série kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace, která obsahuje databázi systému SQL Server Compact pomocí sady Visual Studio 2012 RC nebo Visual Studio Express 2012 RC pro Web. Můžete také použít Visual Studio 2010 při instalaci aktualizace Publikovat Web. Úvod do řady, naleznete v tématu [z prvního kurzu této série](deployment-to-a-hosting-provider-introduction-1-of-12.md).
 > 
 > Kurz ukazuje nasazení funkce zavedená po verzi RC sady Visual Studio 2012, ukazuje, jak nasadit edicích systému SQL Server než SQL Server Compact a ukazuje, jak nasadit do Azure App Service Web Apps, najdete v tématu [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -95,7 +94,6 @@ Není nutné k omezení přístupu protokolu chyby v testovacím prostředí, ta
 > [!NOTE] 
 > 
 > **Poznámka k zabezpečení** nikdy zobrazit podrobnosti o chybě veřejně v produkční aplikace, nebo ukládání těchto informací na veřejném místě. Útočníci slouží ke zjišťování ohrožení zabezpečení v lokalitě informace o chybě. Pokud používáte ELMAH ve své aplikaci, je potřeba prozkoumat způsoby, ve kterém by šlo ELMAH minimalizovat rizika zabezpečení. Doporučená konfigurace by neměly být zahrnuté v ELMAH příkladu v tomto kurzu. To je příklad, který jste vybrali, aby bylo možné ukazují, jak zpracovat složku, musí být schopen vytvořit soubory v aplikaci.
-
 
 ## <a name="setting-an-environment-indicator"></a>Nastavení prostředí indikátor
 

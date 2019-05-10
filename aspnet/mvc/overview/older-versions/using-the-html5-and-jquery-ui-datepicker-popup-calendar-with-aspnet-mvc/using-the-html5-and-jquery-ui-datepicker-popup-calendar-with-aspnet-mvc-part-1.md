@@ -8,19 +8,18 @@ ms.date: 08/29/2011
 ms.assetid: c23d27f7-b0cf-44f2-8445-fb69e045c674
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 31a01f250e4f5473e954f040e1a506dbaf61be76
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 6e7d31d96a36b55e2e1a9a475e2d90526cc6a5b2
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59393577"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65112398"
 ---
 # <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-1"></a>Použití jazyka HTML5 a kalendáře jQuery UI Datepicker s architekturou ASP.NET MVC – část 1
 
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > V tomto kurzu se seznámíte se základy práce pomocí editoru šablon, šablony zobrazení a kalendářem jQuery UI datepicker v aplikaci MVC rozhraní ASP.NET Web.
-
 
 V tomto kurzu se seznámíte se základy práce pomocí editoru šablon, zobrazení šablon a jQuery [kalendář automaticky otevírané okno prvkem datepicker v uživatelském rozhraní](http://plugins.jquery.com/project/datepicker) v aplikaci MVC rozhraní ASP.NET Web. Pro účely tohoto kurzu můžete použít Microsoft Visual Web Developer 2010 Express Service Pack 1 (&quot;Visual Web Developer&quot;), což je bezplatná verze sady Microsoft Visual Studio, nebo pokud už máte, který můžete použít Visual Studio 2010 SP1.
 

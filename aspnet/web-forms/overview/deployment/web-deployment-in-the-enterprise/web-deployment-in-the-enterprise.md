@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: b8283698-7b82-42a8-8d83-3aeb18ca7fcc
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise
 msc.type: authoredcontent
-ms.openlocfilehash: 1f2dc0fea9eeca64b9389881470353c5cca473e0
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: bc7bb676a71af4ec3451aa3adf3c03ce3b5200d5
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396314"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65114767"
 ---
 # <a name="web-deployment-in-the-enterprise"></a>Nasazení webu v podniku
 
@@ -24,7 +24,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > Tento kurz popisuje, jak splnit řadu výzvy, které se můžete setkat, když spravujete nasazení podnikových webových aplikací na vývojové, testovací, přípravného a produkčního prostředí. Tento kurz zahrnuje odkaz na řešení spolu s směs koncepčním a orientované na úlohy obsah do vás provedou různými běžné úlohy a postupy.
 > 
 > Italština překlad těchto kurzů, navštivte web [ http://www.lucamorelli.it ](http://www.lucamorelli.it).
-
 
 ## <a name="enterprise-deployment-challenges"></a>Problémy při nasazení Enterprise
 

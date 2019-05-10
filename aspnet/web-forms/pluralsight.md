@@ -8,12 +8,12 @@ ms.date: 12/16/2011
 ms.assetid: c71bb9b2-7136-4ce6-a40a-cc4d9978cfb7
 msc.legacyurl: /web-forms/pluralsight
 msc.type: content
-ms.openlocfilehash: ae41660d96260991defc23c75d2dda5b9183585e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 57885b3b05b3107bbd678791d38e7166a727e5de
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400279"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65113098"
 ---
 # <a name="web-forms-video-training-from-pluralsight"></a>Videokurz o webových formulářích od společnosti Pluralsight
 
@@ -29,11 +29,9 @@ ms.locfileid: "59400279"
 - [ASP.NET s dynamickými daty](https://pluralsight.com/training/Player?author=dan-wahlin&name=webforms-08&mode=live&clip=0&course=aspdotnet-webforms4-intro)
 - [Nasazení webu](https://pluralsight.com/training/Player?author=fritz-onion&name=webforms-09&mode=live&clip=0&course=aspdotnet-webforms4-intro)
 
-
 "Tento kurz, zaznamenaných Dan Wahlin pro Pluralsight, představuje vynikající Úvod do webových formulářů ASP.NET. Jeho důkladné pokrytí začíná Úvod do rozhraní .NET Framework, pokračuje v tom, jak nainstalovat a používat sady Visual Studio, provede postupem vytvoření aplikace (včetně ovládací prvky serveru, přístup k datům a Ajax) a končí techniky nasazení. DaN uživatele ASP.NET odborníkem na hodnotu true a skvělé skládání, takže Nenechte si ujít Tento bezplatný kurz!"
 
 Scott Hanselman, hlavní manažer programu, webová platforma a nástroje Azure, Microsoft
-
 
 ![pluralsight-logo-playbutton](pluralsight/_static/image1.png)
 

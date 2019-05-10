@@ -8,12 +8,12 @@ ms.date: 10/05/2011
 ms.assetid: 76242ce9-e611-41d2-95e8-dc5f406d4bfc
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit
 msc.type: chapter
-ms.openlocfilehash: 795283c33d63272b29b91fd7037c3463bc71abad
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: d7d0426ed427f3b8fc8c7f9c2fe1518b1887d695
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59410744"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65115377"
 ---
 # <a name="older-versions---ajax-control-toolkit"></a>Starší verze – sada nástrojů Ajax Control Toolkit
 
@@ -21,7 +21,6 @@ ms.locfileid: "59410744"
 > 
 > 
 > ![](index/_static/image1.png) DevExpress, vývojáři ukrývá vysoce hodnocený webových formulářů ASP.NET, MVC a ovládacích prvků uživatelského rozhraní HTML5 a architekturu, údržba ASP.NET AJAX Control Toolkit převzal pamětí pro tuto knihovnu open source vysoce požadováno zpět do spolehlivé stavu. [Další informace](https://go.devexpress.com/AjaxControlToolkit_ASP_Resources_Tutorials.aspx).
-
 
 - [Začínáme](getting-started/index.md)
 

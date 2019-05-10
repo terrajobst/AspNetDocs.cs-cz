@@ -8,12 +8,12 @@ ms.date: 04/01/2008
 ms.assetid: 9e4e687c-b4ec-434f-a4ef-edb0b8f365e4
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ed255b4d5938457e82c1fca4d759b6a5691c3f6c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ede2bf737464fde47e304e23255349599c1ea663
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59401761"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65116290"
 ---
 # <a name="building-an-interface-to-select-one-user-account-from-many-c"></a>Vytvoření rozhraní pro výběr jednoho uživatelského účtu z mnoha (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/6/0/e/60e1bd94-e5f9-4d5a-a079-f23c98f4f67d/CS.12.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/0/e/60e1bd94-e5f9-4d5a-a079-f23c98f4f67d/aspnet_tutorial12_SelectUser_cs.pdf)
 
 > V tomto kurzu vytvoříme uživatelského rozhraní pomocí mřížky stránkovaného, filtrování. Zejména našeho uživatelského rozhraní bude skládat z řady LinkButtons pro filtrování výsledků podle počáteční písmeno uživatelské jméno a ovládacího prvku GridView, zobrazíte odpovídající uživatelé. Začneme obsahující všechny uživatelské účty v GridView. Pak v kroku 3, přidáme filtr LinkButtons. Krok 4 zjistí stránkování filtrované výsledky. Rozhraní vytvořený v kroky 2 až 4 se použije v dalších kurzech k provádění úloh správy pro konkrétní uživatelský účet.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -55,11 +54,9 @@ Stránky technologie ASP.NET v `Administration` složky jsou určené výhradně
 
 Průzkumník řešení vašeho projektu v tomto okamžiku by měl vypadat podobně jako obrazovky je vidět na obrázku 1.
 
-
 [![Čtyři nové stránky a v souboru Web.config se přidaly na web](building-an-interface-to-select-one-user-account-from-many-cs/_static/image2.png)](building-an-interface-to-select-one-user-account-from-many-cs/_static/image1.png)
 
 **Obrázek 1**: Čtyři nové stránky a `Web.config` soubor byly přidány k webu ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-cs/_static/image3.png))
-
 
 Nakonec aktualizujte mapy webu (`Web.sitemap`) zahrnout položku pro `ManageUsers.aspx` stránky. Přidejte následující kód XML po `<siteMapNode>` jsme přidali kurzy role.
 
@@ -67,11 +64,9 @@ Nakonec aktualizujte mapy webu (`Web.sitemap`) zahrnout položku pro `ManageUser
 
 Pomocí mapy webu, aktualizovat přejděte na web prostřednictvím prohlížeče. Jak je vidět na obrázku 2, navigaci na levé straně teď obsahuje položky pro správu kurzy.
 
-
 [![Mapa webu obsahuje uzel s názvem Správa uživatelů](building-an-interface-to-select-one-user-account-from-many-cs/_static/image5.png)](building-an-interface-to-select-one-user-account-from-many-cs/_static/image4.png)
 
 **Obrázek 2**: Mapa webu obsahuje uzel s názvem Správa uživatelů ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-cs/_static/image6.png))
-
 
 ## <a name="step-2-listing-all-user-accounts-in-a-gridview"></a>Krok 2: Výpis všech uživatelských účtů v GridView
 
@@ -81,11 +76,9 @@ Otevřít `ManageUsers.aspx` stránku `Administration` složky a přidejte prvku
 
 Pokud chcete zobrazit informace o požadované uživatelském účtu v prvku GridView, nastavte prvku GridView `AutoGenerateColumns` vlastnost na hodnotu False a přidejte BoundFields pro `UserName`, `Email`, a `Comment` vlastnosti a CheckBoxFields pro `IsApproved`, `IsLockedOut`, a `IsOnline` vlastnosti. Tuto konfiguraci můžete použít prostřednictvím ovládacího prvku deklarativní nebo dialogového okna pole. Obrázek 3 ukazuje snímek obrazovky pole poté, co bylo zrušeno na zaškrtávací políčko automaticky generovat pole a BoundFields a CheckBoxFields jsme přidali a nakonfigurovali dialogové okno.
 
-
 [![Přidejte tři BoundFields a tři CheckBoxFields do prvku GridView.](building-an-interface-to-select-one-user-account-from-many-cs/_static/image8.png)](building-an-interface-to-select-one-user-account-from-many-cs/_static/image7.png)
 
 **Obrázek 3**: Přidejte tři BoundFields a tři CheckBoxFields do prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-cs/_static/image9.png))
-
 
 Po dokončení konfigurace vašeho ovládacího prvku GridView, ujistěte se, že jeho deklarativním označení vypadá přibližně takto:
 
@@ -97,11 +90,9 @@ Dále musíme napsat kód, který váže uživatelské účty do prvku GridView.
 
 Za chvíli testovací stránka prostřednictvím prohlížeče. Obrázek 4 ukazuje, `UserAccounts` GridView obsahuje uživatelské jméno, e-mailovou adresu a další relevantní účtu informace pro všechny uživatele v systému.
 
-
 [![Uživatelské účty vypisují v prvku GridView.](building-an-interface-to-select-one-user-account-from-many-cs/_static/image11.png)](building-an-interface-to-select-one-user-account-from-many-cs/_static/image10.png)
 
 **Obrázek 4**: Uživatelské účty vypisují v prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-cs/_static/image12.png))
-
 
 ## <a name="step-3-filtering-the-results-by-the-first-letter-of-the-username"></a>Krok 3: Filtrování výsledků podle první písmeno uživatelského jména
 
@@ -121,15 +112,12 @@ Tato metoda určuje možnosti filtrování jako prvky `string` pole `filterOptio
 
 Obrázek 5 ukazuje, `ManageUsers.aspx` stránce při prohlížení prostřednictvím prohlížeče.
 
-
 [![Opakovači uvádí 27 filtrování LinkButtons](building-an-interface-to-select-one-user-account-from-many-cs/_static/image14.png)](building-an-interface-to-select-one-user-account-from-many-cs/_static/image13.png)
 
 **Obrázek 5**: Repeater uvádí 27 filtrování LinkButtons ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-cs/_static/image15.png))
 
-
 > [!NOTE]
 > Uživatelská jména, může začínat libovolný znak, včetně čísla a interpunkční znaménka. Chcete-li zobrazit tyto účty, bude správce muset použít možnost všechny odkazem (LinkButton). Alternativně můžete přidat odkazem (LinkButton) se vraťte všechny uživatelské účty, které začínat číslicí. Můžu ponechte toto cvičení pro čtečku.
-
 
 Kliknutím na některý z filtrování LinkButtons vyvolá zpětné volání a vyvolá Repeateru `ItemCommand` události, ale není žádná změna v mřížce, protože jsme ještě na psaní jakéhokoli kódu k filtrování výsledků. `Membership` Obsahuje třídy [ `FindUsersByName` metoda](https://technet.microsoft.com/library/system.web.security.membership.findusersbyname.aspx) , která vrací tyto uživatelské účty, jejichž uživatelské jméno odpovídá zadanému vyhledávacímu vzoru. Můžeme použít tuto metodu pro načtení pouze tyto uživatelské účty, jejichž uživatelská jména začínají písmenem určený `CommandName` z filtrované odkazem (LinkButton), který bylo kliknuto.
 
@@ -151,11 +139,9 @@ Vytvořte obslužnou rutinu události pro Repeater `ItemCommand` událostí. Tat
 
 S tímto kódem na místě otestujte si moct funkce filtrování. Při první návštěvě stránky, se zobrazují všechny uživatelské účty (vrátit zpět k obrázek 5). Kliknutí na prvek LinkButton A vyvolá zpětné volání a vyfiltruje výsledky, pouze uživatelské účty, které začínají na A zobrazení.
 
-
 [![Pomocí filtrování LinkButtons můžete zobrazit tyto uživatele, jejichž uživatelské jméno začíná určitým písmenem](building-an-interface-to-select-one-user-account-from-many-cs/_static/image17.png)](building-an-interface-to-select-one-user-account-from-many-cs/_static/image16.png)
 
 **Obrázek 6**: Pomocí filtrování LinkButtons můžete zobrazit tyto uživatele jejichž uživatelské jméno začíná písmenem některých ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-cs/_static/image18.png))
-
 
 ## <a name="step-4-updating-the-gridview-to-use-paging"></a>Krok 4: Aktualizace pomocí stránkování prvku GridView.
 
@@ -171,7 +157,6 @@ Při procházení tisíc záznamů, může být poměrně podstatné rozdíly ve
 > [!NOTE]
 > Podrobnější informace o rozdílech mezi výchozí a vlastní stránkování, jakož i výzvy při implementaci vlastní stránkování, najdete v tématu [efektivně stránkování prostřednictvím velkých objemů dat](https://asp.net/learn/data-access/tutorial-25-cs.aspx). Analýzy výkonu rozdílu mezi výchozí a vlastní stránkování, naleznete v tématu [vlastní stránkování v ASP.NET s SQL Server 2005](http://aspnet.4guysfromrolla.com/articles/031506-1.aspx).
 
-
 Chcete-li implementovat vlastní stránkování, potřebujeme některé mechanismus, podle kterého chcete získat přesné podmnožinu záznamů se zobrazuje v prvku GridView. Dobrou zprávou je, že `Membership` třídy `FindUsersByName` metoda má přetížení, která umožňuje určit index stránky a velikost stránky a vrátí pouze uživatelské účty, které spadají do tohoto rozsahu záznamů.
 
 Konkrétně se toto přetížení má následující podpis: [ `FindUsersByName(usernameToMatch, pageIndex, pageSize, totalRecords)` ](https://msdn.microsoft.com/library/fa5st8b2.aspx).
@@ -180,7 +165,6 @@ Konkrétně se toto přetížení má následující podpis: [ `FindUsersByName(
 
 > [!NOTE]
 > Data vrácená `FindUsersByName` je seřazený podle uživatelského jména; kritéria řazení nejde přizpůsobit.
-
 
 Využívat vlastní stránkování, ale pouze při vázání na ovládací prvek ObjectDataSource, je možné nakonfigurovat prvku GridView. Pro ovládací prvek ObjectDataSource implementovat vlastní stránkování, vyžaduje dvě metody: ten, který je předán index počátečního řádku a maximální počet záznamů, které chcete zobrazit, a vrátí přesné podmnožinu záznamů, které spadají do rozsahu; a metodu, která vrátí celkový počet záznamů stránkování prostřednictvím. `FindUsersByName` Přetížení přijímá index stránky a velikost stránky a vrátí celkový počet záznamů prostřednictvím `out` parametru. Proto je nesoulad rozhraní.
 
@@ -196,11 +180,9 @@ Dále vytvořte obslužnou rutinu události pro každou na prvek LinkButton `Cli
 
 Obrázek 7 znázorňuje čtyři LinkButtons při prohlížení prostřednictvím vizuálního návrhu Web pro vývojáře.
 
-
 [![Dále přidejte první, předchozí, a naposledy LinkButtons pod prvku GridView.](building-an-interface-to-select-one-user-account-from-many-cs/_static/image20.png)](building-an-interface-to-select-one-user-account-from-many-cs/_static/image19.png)
 
 **Obrázek 7**: Nejprve přidat předchozí a další, poslední LinkButtons pod prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-cs/_static/image21.png))
-
 
 ### <a name="keeping-track-of-the-current-page-index"></a>Udržování přehledu o Index aktuální stránky
 
@@ -228,16 +210,13 @@ Posledním krokem je napsat kód pro čtyři LinkButtons `Click` obslužných ru
 
 Obrázky 8 a 9 zobrazit rozhraní vlastní stránkování v akci. Obrázek 8 ukazuje `ManageUsers.aspx` stránce při prohlížení na první stránku dat pro všechny uživatelské účty. Všimněte si, že se zobrazují jenom 10 13 účtů. Kliknutím na odkaz Další nebo poslední vyvolá zpětné volání, aktualizace `PageIndex` 1 a vytvoří vazbu na druhé stránce uživatelské účty do mřížky (viz obrázek 9).
 
-
 [![Prvních 10 uživatelské účty se zobrazí.](building-an-interface-to-select-one-user-account-from-many-cs/_static/image23.png)](building-an-interface-to-select-one-user-account-from-many-cs/_static/image22.png)
 
 **Obrázek 8**: Prvních 10 uživatelské účty se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-cs/_static/image24.png))
 
-
 [![Kliknutím na následující odkaz zobrazí na druhé stránce uživatelské účty](building-an-interface-to-select-one-user-account-from-many-cs/_static/image26.png)](building-an-interface-to-select-one-user-account-from-many-cs/_static/image25.png)
 
 **Obrázek 9**: Kliknutím na odkaz na další zobrazí druhou stránku uživatelských účtů ([kliknutím ji zobrazíte obrázek v plné velikosti](building-an-interface-to-select-one-user-account-from-many-cs/_static/image27.png))
-
 
 ## <a name="summary"></a>Souhrn
 

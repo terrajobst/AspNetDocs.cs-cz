@@ -8,12 +8,12 @@ ms.date: 06/02/2008
 ms.assetid: cb4afbae-9b8f-483d-9729-476d4b9f85fc
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d8ac50874d0325ed9583a16e1b4e19b3becabb99
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 1aeea5af6fee22a91893e52b6ebe15f9ed00db45
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59391510"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65115273"
 ---
 # <a name="testing-the-strength-of-a-password-c"></a>Testování síly hesla (C#)
 
@@ -22,7 +22,6 @@ by [Christian Wenz](https://github.com/wenz)
 [Stáhněte si kód](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/PasswordStrength0.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/passwordstrength0CS.pdf)
 
 > Hesla jsou skoro kdekoli, vyžaduje, aby opožděné uživatelé mívají sklony zvolte jednoduchá hesla, které se podařilo. PasswordStrength ovládacího prvku ASP.NET AJAX Control Toolkit můžete zkontrolovat, jak kvalitní je heslo.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -42,7 +41,6 @@ Hesla jsou skoro kdekoli, vyžaduje, aby opožděné uživatelé mívají sklony
 [!code-aspx[Main](testing-the-strength-of-a-password-cs/samples/sample1.aspx)]
 
 Spuštění stránky a okamžitě zadejte: Poté, co jste zadali, malá písmena, velká písmena, číslice a symboly, heslo se bude považovat za jako nedělitelné.
-
 
 [![Nyní je (úplně) dobré heslo](testing-the-strength-of-a-password-cs/_static/image2.png)](testing-the-strength-of-a-password-cs/_static/image1.png)
 

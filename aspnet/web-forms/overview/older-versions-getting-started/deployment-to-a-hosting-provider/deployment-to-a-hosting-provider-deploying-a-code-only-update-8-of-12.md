@@ -8,12 +8,12 @@ ms.date: 11/17/2011
 ms.assetid: ddf6252f-9413-4c0c-a360-2cef8d231717
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-a-code-only-update-8-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: f06fd5d28613ba8f881df2d1422fead2fff8c35f
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: df6fd11485836345707ac74ec9e97c769e60ac82
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59399889"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132341"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-a-code-only-update---8-of-12"></a>Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Nasazení aktualizace kódu – 8 12
 
@@ -24,7 +24,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > Tato série kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace, která obsahuje databázi systému SQL Server Compact pomocí sady Visual Studio 2012 RC nebo Visual Studio Express 2012 RC pro Web. Můžete také použít Visual Studio 2010 při instalaci aktualizace Publikovat Web. Úvod do řady, naleznete v tématu [z prvního kurzu této série](deployment-to-a-hosting-provider-introduction-1-of-12.md).
 > 
 > Kurz ukazuje nasazení funkce zavedená po verzi RC sady Visual Studio 2012, ukazuje, jak nasadit edicích systému SQL Server než SQL Server Compact a ukazuje, jak nasadit do Azure App Service Web Apps, najdete v tématu [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -86,7 +85,6 @@ Uložte a zavřete **balení/publikování webu** kartu.
 > 
 > [!IMPORTANT]
 > Ujistěte se, že není nutné **odebrat další soubory v cílovém umístění** vybrané v profilech publikování. Pokud vyberete tuto možnost, procesu nasazení se odstraní databáze, které máte v aplikaci\_Data v nasazené lokality který se odstraní aplikaci\_samotné složce Data.
-
 
 ## <a name="preventing-user-access-to-the-production-site-during-update"></a>Zabránění přístupu uživatelů k produkční lokality během aktualizace
 

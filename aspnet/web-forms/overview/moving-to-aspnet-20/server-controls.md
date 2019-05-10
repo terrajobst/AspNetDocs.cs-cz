@@ -8,19 +8,18 @@ ms.date: 02/20/2005
 ms.assetid: 43f6ac47-76fc-4cf7-8e9f-c18ce673dfd8
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/server-controls
 msc.type: authoredcontent
-ms.openlocfilehash: bfbc151af40bf7ccceb5ac298ba812730d4e4ed9
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: c02a633013f061c09141d4f98871848c011a799e
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59420754"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65116713"
 ---
 # <a name="server-controls"></a>Serverové ovládací prvky
 
 by [Microsoft](https://github.com/microsoft)
 
 > ASP.NET 2.0 vylepšuje serverových ovládacích prvků v mnoha způsoby. V tomto modulu probereme některé architektury změny způsobu, technologii ASP.NET 2.0 a Visual Studio 2005 se zabývá serverových ovládacích prvků.
-
 
 ASP.NET 2.0 vylepšuje serverových ovládacích prvků v mnoha způsoby. V tomto modulu probereme některé architektury změny způsobu, technologii ASP.NET 2.0 a Visual Studio 2005 se zabývá serverových ovládacích prvků.
 
@@ -59,15 +58,11 @@ Stav ovládacího prvku v technologii ASP.NET 2.0, řeší tento problém krásn
 > [!NOTE]
 > Stav ovládacího prvku se ukládají společně s stav zobrazení v \_ \_stav zobrazení skrytého pole formuláře.
 
-
 Toto video je návod, zobrazení stavu a stav ovládacího prvku.
-
 
 ![](server-controls/_static/image1.png)
 
-
 [Otevřít Video na celou obrazovku](server-controls/_static/state1.wmv)
-
 
 V pořadí pro serverový ovládací prvek pro čtení a zápis k řízení stavu je třeba provést tři kroky.
 
@@ -114,7 +109,6 @@ V technologii ASP.NET 1.x, konfigurační soubor obsažených &lt;browserCaps&gt
 > [!NOTE]
 > Třída ControlAdapter je abstraktní třída.
 
-
 Podobně jako &lt;browserCaps&gt; kapitoly 1.x souboru s definicí prohlížeče pomocí regulárního výrazu pro analýzu řetězce agenta uživatele za účelem zjištění požadujícího prohlížeče. To je pro tento uživatelský agent definuje konkrétní funkce. ControlAdapter vykreslí ovládací prvek prostřednictvím metody vykreslení. Proto pokud přepíšete metodu vykreslování, neměli by jste volat vykreslení v základní třídě. To může způsobit vykreslování na výskyt dvakrát, jednou pro adaptér a jednou pro samotný ovládací prvek.
 
 ## <a name="developing-a-custom-adapter"></a>Vývoj vlastního adaptéru
@@ -157,21 +151,17 @@ Toto jsou nové serverové ovládací prvky v technologii ASP.NET 2.0. Přejdete
 
 Ovládací prvek obrazová mapa umožňuje přidat hotspotům bitovou kopii, která může iniciovat příspěvek zpět nebo přejděte na adresu URL. Existují tři typy vzniku hotspotů k dispozici. Kruhový aktivní bod RectangleHotSpot a PolygonHotSpot. Aktivní oblasti budou přidány prostřednictvím editor kolekce v sadě Visual Studio nebo programově v kódu. Není k dispozici pro kreslení hotspotů na imagi bez uživatelského rozhraní. Souřadnice a velikost nebo radius aktivního bodu je třeba zadat deklarativně. Neexistuje žádný vizuální znázornění aktivního bodu v návrháři. Pokud aktivní bod je nakonfigurován pro navigaci na adresu URL, adresa URL je zadáno pomocí vlastnosti NavigateUrl aktivního bodu. V případě příspěvek jenom aktivní, PostBackValue vlastnost umožňuje předat řetězec v příspěvku zpět, který se dá načíst v kódu na straně serveru.
 
-
 ![Editor kolekce aktivních bodů v sadě Visual Studio](server-controls/_static/image1.jpg)
 
 **Obrázek 1**: Editor kolekce aktivních bodů v sadě Visual Studio
-
 
 ## <a name="bulletedlist-control"></a>Ovládací prvek BulletedList
 
 Ovládací prvek BulletedList je seznam s odrážkami můžete snadno představovat data vázaná. V seznamu lze provést řazení (číslovaný) nebo prostřednictvím vlastnosti BulletStyle Neseřazený. Každá položka v seznamu je reprezentován objektem ListItem.
 
-
 ![Ovládacího prvku BulletedList v sadě Visual Studio](server-controls/_static/image1.gif)
 
 **Obrázek 2**: Ovládacího prvku BulletedList v sadě Visual Studio
-
 
 ## <a name="hiddenfield-control"></a>Ovládací prvek HiddenField
 
@@ -204,15 +194,11 @@ Je celkem běžné dojde jenom se pokus o získání informací v řadě výraz 
 > [!NOTE]
 > Ovládací prvek Průvodce uchovává informace o stavu pomocí stav ovládacích prvků technologie ASP.NET. Proto vlastnost EnableViewState lze nastavit na hodnotu false, bez jakékoli způsobit škody.
 
-
 Toto video je návod ovládacího prvku Wizard.
-
 
 ![](server-controls/_static/image2.png)
 
-
 [Otevřít Video na celou obrazovku](server-controls/_static/wizard1.wmv)
-
 
 ## <a name="localize-control"></a>Lokalizace ovládacího prvku
 

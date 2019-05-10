@@ -8,19 +8,18 @@ ms.date: 02/10/2010
 ms.assetid: 1365eebb-bdf7-4a05-8d18-7f200531be55
 msc.legacyurl: /whitepapers/ms03-32-issue
 msc.type: content
-ms.openlocfilehash: faad1530a499fd3f46a6a6c6e7c194ba6c55fa6c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e0b6776cbfe22e341ac7105f03daac5074b480fc
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59386291"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65121535"
 ---
 # <a name="fix-for-server-application-unavailable-error-after-applying-security-update-for-ie"></a>Oprava chyby „Serverová aplikace není k dispozici“ po použití aktualizace zabezpečení pro IE
 
 > Tento dokument popisuje opravu, která řeší problém s MS03 32 aktualizace zabezpečení pro Internet Explorer, který má vliv na aplikace ASP.NET 1.0 běžící na Windows XP Professional.
 > 
 > Platí pro technologii ASP.NET 1.0 a Windows XP Professional.
-
 
 Microsoft zjistili problém se MS03 32 aktualizace zabezpečení pro úroveň opravy zabezpečení aplikace Internet Explorer a 1.0 technologie ASP.NET a systémem Windows XP. Opravy nainstalujete ručně, nebo získáním nedávné důležité aktualizace z webu Windows Update.
 

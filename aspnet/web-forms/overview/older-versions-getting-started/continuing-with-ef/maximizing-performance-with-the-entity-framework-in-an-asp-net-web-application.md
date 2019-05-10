@@ -8,19 +8,18 @@ ms.date: 01/26/2011
 ms.assetid: 4e43455e-dfa1-42db-83cb-c987703f04b5
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 116c557ad0d6c158f983da75668e634c9eb9747c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 5630200a1ad1d30f6d89b38e15179f15b699fa9f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379584"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108586"
 ---
 # <a name="maximizing-performance-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a>Dosažení maximálního výkonu se sadou Entity Framework 4.0 v ASP.NET 4 webové aplikace
 
 podle [Petr Dykstra](https://github.com/tdykstra)
 
 > V této sérii kurzů staví na Contoso University webovou aplikaci, která se vytvořila [Začínáme s Entity Framework 4.0](https://asp.net/entity-framework/tutorials#Getting%20Started) série kurzů. Pokud nebyla dokončena v předchozích kurzech, jako výchozí bod pro účely tohoto kurzu můžete [stáhnout aplikaci](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) , kterou by jste vytvořili. Můžete také [stáhnout aplikaci](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) , který vytvoří kompletní série kurzů. Pokud máte dotazy týkající se těchto kurzů, můžete je publikovat [fórum ASP.NET Entity Framework](https://forums.asp.net/1227.aspx).
-
 
 V předchozím kurzu jste viděli, jak zpracování konfliktů souběžnosti. Tento kurz ukazuje možnosti pro zlepšení výkonu webové aplikace ASP.NET, která používá Entity Framework. Dozvíte několik metod pro dosažení maximálního výkonu, nebo pro diagnostiku problémů s výkonem.
 
@@ -43,7 +42,6 @@ Informace uvedené v následující části je potenciálně užitečné pro apl
 > Je celá řada faktorů, včetně řadí velikosti dat požadavků a odpovědí, rychlost databázových dotazů, kolik požadavků, že server lze zařadit do fronty a jak rychle můžete služby a dokonce efektivitu žádné vliv na výkon webové aplikace skript klienta knihovny, které je možné, že používáte. Pokud výkon je velmi důležité ve vaší aplikaci nebo testování nebo role experience systému ukazuje, že není vyhovující výkon aplikace, měli byste postupovat podle normální protokol pro optimalizaci výkonu. Měření k určení, kde dochází k kritické body výkonu a pak Adresujte oblastí, které budou mít největší vliv na výkon aplikací.
 > 
 > Toto téma se zaměřuje především na způsoby, ve kterém může potenciálně zvýšit výkon konkrétně Entity Framework v technologii ASP.NET. Návrhy Zde jsou užitečné, pokud zjistíte, že přístup k datům je jedním z kritické body výkonu ve vaší aplikaci. S výjimkou toho, jak je uvedeno, je zde vysvětleno metody by neměly být zahrnuté &quot;osvědčené postupy&quot; obecně – řada z nich jsou vhodné pouze ve výjimečných případech nebo na adresu velmi konkrétní typy kritické body výkonu.
-
 
 Zahájit kurz, spusťte sadu Visual Studio a otevřete webové aplikace Contoso University, kterým jste pracovali v předchozím kurzu.
 
@@ -179,7 +177,6 @@ Jako alternativu funkcí technologie IntelliTrace v sadě Visual Studio Ultimate
 > [!NOTE]
 > Následující postupy můžete provést pouze v případě, že máte Visual Studio Ultimate.
 
-
 Obnovit původní kód v `GetDepartmentsByName` metodu a poté spusťte *Departments.aspx* stránky v ladicím programu.
 
 V sadě Visual Studio, vyberte **ladění** nabídce a potom **IntelliTrace**a potom **události IntelliTrace**.
@@ -219,14 +216,12 @@ Dotaz z oddělení stal jednoduchý `Select` dotazu bez `Join` klauzule, ale je 
 > [!NOTE]
 > Pokud opožděné načtení povoleno, vzor, který se zobrazí tady pomocí stejného dotazu opakuje tolikrát, kolikrát, může dojít z opožděné načtení. Vzor, který obvykle chcete se vyhnout se opožděné načtení souvisejících dat pro každý řádek v primární tabulce. Pokud jste ověřili, že jeden spojení dotazu je příliš složitý pro je efektivní, by obvykle mohli zlepšit výkon v takových případech změnou primární dotaz, který bude použit předběžné načítání.
 
-
 ## <a name="pre-generating-views"></a>Předem generování zobrazení
 
 Když `ObjectContext` prvním vytvoření objektu v nové doméně aplikace, Entity Framework generuje sadu tříd, které používá pro přístup k databázi. Tyto třídy se nazývají *zobrazení*, a pokud máte velké datový model, generuje tato zobrazení zpozdit na webu odpověď na první žádost o stránku po inicializaci nové aplikační doméně. Toto zpoždění první žádosti můžete snížit vytváření zobrazení v době kompilace místo v době běhu.
 
 > [!NOTE]
 > Pokud aplikace nemá modelu velmi velkých objemů dat, nebo pokud ho máte modelu velkých objemů dat, ale nejste obavy o problém s výkonem, který má vliv pouze úplně první požadavek na stránku po recyklaci služby IIS, můžete tuto část přeskočit. Zobrazení vytváření nestane pokaždé, když vytvoříte instanci `ObjectContext` objektu, protože zobrazení jsou ukládány do mezipaměti v doméně aplikace. Proto pokud se často recyklace aplikace ve službě IIS, velmi málo žádostí stránek je výhodná předem vygenerovaných zobrazení.
-
 
 Můžete předem vygenerovat zobrazení pomocí *EdmGen.exe* nástroj příkazového řádku nebo pomocí *Toolkit transformace šablony textu* šablony (T4). V tomto kurzu použijete šablonu T4.
 

@@ -8,12 +8,12 @@ ms.date: 10/30/2006
 ms.assetid: 6b073fc6-524d-453d-be7c-0c30986de391
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/adding-validation-controls-to-the-datalist-s-editing-interface-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e91ba6a0c4d2f9cad6d88119e7f33931b7ba5772
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: cbf0c5f15399e49673f7c77006211ccff953346d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59412798"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108792"
 ---
 # <a name="adding-validation-controls-to-the-datalists-editing-interface-vb"></a>Přidání validačních ovládacích prvků do rozhraní pro úpravy prvku DataList (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_39_VB.exe) nebo [stahovat PDF](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/datatutorial39vb1.pdf)
 
 > V tomto kurzu uvidíme, jak snadné je přidání validačních ovládacích prvků do prvku DataList EditItemTemplate negace spolehlivá víc úpravy uživatelského rozhraní.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -44,11 +43,9 @@ Předtím, než abychom se mohli podívat na rozšíření předchozího příkl
 2. Přejděte na stránku s deklarativní (kliknutím na tlačítko zdroj v dolní části stránky)
 3. Zkopírujte text v rámci `<asp:Content>` a `</asp:Content>` značky (čáry 3 až 32), jako podle obrázku 1.
 
-
 [![Zkopírujte Text v &lt;asp: Content&gt; ovládacího prvku](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image2.png)](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image1.png)
 
 **Obrázek 2**: Zkopírujte Text v `<asp:Content>` ovládacího prvku ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image3.png))
-
 
 1. Otevřít `UIValidation.aspx` stránky
 2. Přejděte na stránku s deklarativní
@@ -58,11 +55,9 @@ Chcete-li zkopírovat zdrojový kód, otevřete `ErrorHandling.aspx.vb` stránce
 
 Po přesunutí nad obsah a kód z `ErrorHandling.aspx` k `UIValidation.aspx`, využít k otestování stránky v prohlížeči. By měl zobrazit stejný výstup a vyzkoušet stejně v každém z těchto dvou stránkách (viz obrázek 2).
 
-
 [![Na stránce UIValidation.aspx napodobuje funkce v ErrorHandling.aspx](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image5.png)](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image4.png)
 
 **Obrázek 2**: `UIValidation.aspx` Stránky napodobuje funkce v `ErrorHandling.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image6.png))
-
 
 ## <a name="step-2-adding-the-validation-controls-to-the-datalist-s-edititemtemplate"></a>Krok 2: Přidání validačních ovládacích prvků do DataList s EditItemTemplate
 
@@ -81,24 +76,19 @@ V našem kurzu jsme budete muset použít RequiredFieldValidator zajistit, že b
 > [!NOTE]
 > Zatímco ASP.NET 1.x měla tyto stejné pět validačních ovládacích prvků, technologii ASP.NET 2.0 bylo přidáno několik vylepšení, hlavní dvou skriptů na straně klienta se podporují pro prohlížeče kromě aplikace Internet Explorer a schopnost oddílu validačních ovládacích prvků na stránce do ověření skupiny. Další informace o nových funkcích ovládacího prvku ověření ve verzi 2.0, přečtěte si [rozbor validačních ovládacích prvků v technologii ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/112305-1.aspx).
 
-
 Umožní s spustit tak, že přidáte nezbytné validačních ovládacích prvků DataList s `EditItemTemplate`. Tuto úlohu lze provést prostřednictvím návrháře kliknutím na odkaz Upravit šablony v prvku DataList s inteligentním nebo využijte deklarativní syntaxi. Umožní krok s procesem, pomocí možnosti Upravit šablony ze zobrazení návrhu. Po výběru pro úpravy prvku DataList s `EditItemTemplate`, přidejte RequiredFieldValidator jeho přetažením z panelu nástrojů do rozhraní pro úpravy šablony, ho po uvedení `ProductName` textového pole.
-
 
 [![Přidat RequiredFieldValidator do EditItemTemplate po ProductName textového pole](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image8.png)](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image7.png)
 
 **Obrázek 3**: Přidat RequiredFieldValidator k `EditItemTemplate After` `ProductName` textového pole ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image9.png))
 
-
 Všechny ovládací prvky ověřování pracujte ověření vstupu jeden ovládací prvek technologie ASP.NET. Proto potřebujeme k označení, že RequiredFieldValidator jsme právě přidali, měli ověřit proti `ProductName` textové pole; to provádí nastavením ověřovací ovládací prvek s [ `ControlToValidate` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.controltovalidate(VS.80).aspx) k `ID` z odpovídající ovládací prvek webového (`ProductName`, v tomto případě). Dále nastavte [ `ErrorMessage` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.errormessage(VS.80).aspx) k je nutné zadat název produktu s a [ `Text` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.text(VS.80).aspx) k \*. `Text` Hodnota vlastnosti, pokud je zadán, je text, který se zobrazí v ovládacím prvku ověření, pokud se ověření nezdaří. `ErrorMessage` Hodnotu vlastnosti, které je potřeba, se používá prvek; Pokud `Text` hodnota vlastnosti je vynechán, `ErrorMessage` hodnota vlastnosti se zobrazí při ověřování ovládacího prvku na neplatný vstup.
 
 Po nastavení tyto tři vlastnosti RequiredFieldValidator, vaše obrazovka by měla vypadat podobně jako na obrázku 4.
 
-
 [![Nastavení RequiredFieldValidator s ControlToValidate, chybová zpráva a vlastnosti textu](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image11.png)](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image10.png)
 
 **Obrázek 4**: Nastavení RequiredFieldValidator s `ControlToValidate`, `ErrorMessage`, a `Text` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image12.png))
-
 
 S RequiredFieldValidator přidán do `EditItemTemplate`, all, zůstane je přidání nezbytné ověření za cenu produktů s textového pole. Vzhledem k tomu, `UnitPrice` je volitelný při úpravě záznamu, budeme zadávat t nutné přidat RequiredFieldValidator. , Ale potřebujeme přidat CompareValidator zajistit, aby `UnitPrice`, je-li zadán, je ve správném formátu jako měnu a je větší než nebo rovna 0.
 
@@ -106,16 +96,13 @@ Přidat CompareValidator do `EditItemTemplate` a nastavte jeho `ControlToValidat
 
 Po přidání těchto dvou validačních ovládacích prvků, DataList s `EditItemTemplate` s deklarativní syntaxe by měl vypadat nějak takto:
 
-
 [!code-aspx[Main](adding-validation-controls-to-the-datalist-s-editing-interface-vb/samples/sample1.aspx)]
 
 Po provedení těchto změn, otevřete stránku v prohlížeči. Při pokusu vynechat název nebo zadejte hodnotu Neplatná cena při úpravách produktu, se zobrazí hvězdičku vedle textového pole. Jak je vidět na obrázku 5, hodnotu cena, která obsahuje symbol měny, jako je například 19,95 je považovány za neplatné. CompareValidator s `Currency` `Type` umožňuje oddělovače číslic (například mezery nebo období, v závislosti na nastavení jazykové verze) a předních plus nebo mínus, ale nemá *není* povolit symbol měny. Toto chování může perplex uživatelů, jak rozhraní úprav aktuálně vykreslí `UnitPrice` formátu měny.
 
-
 [![Hvězdička se zobrazí vedle textových polí s neplatný vstup](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image14.png)](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image13.png)
 
 **Obrázek 5**: Hvězdička se zobrazí další textová pole s neplatný vstup ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image15.png))
-
 
 Při ověřování funguje jako-se, uživatel musí při úpravách záznam, který není přijatelné, ručně odeberte symbol měny. Kromě toho pokud jsou neplatné vstupy úpravy rozhraní ani aktualizace ani zrušit tlačítka, po kliknutí na, vyvolá zpětné volání. Tlačítko Storno v ideálním případě by vrátil prvku DataList do stavu před úprav bez ohledu na jeho platnost uživatelské vstupy s. Potřebujeme také, ujistěte se, že data na stránce s platnou před aktualizací informace o produktech v ovládacím prvku DataList s `UpdateCommand` obslužná rutina události, jako ovládací prvky ověřování uživatelů, jejichž prohlížeče zadávat t podporu jazyka JavaScript nebo mít lze vynechat logiku na straně klienta svou podporu zakázán.
 
@@ -133,7 +120,6 @@ Díky této změně formátovaný cena úpravy rozhraní zahrnuje čárky jako o
 
 > [!NOTE]
 > Při odebírání formát měny z rozhraní upravovat, můžu být užitečné pro umístění symbolu měny jako text mimo textového pole. Tato stránka slouží jako Nápověda pro uživatele, který není potřeba poskytovat symbol měny.
-
 
 ## <a name="fixing-the-cancel-button"></a>Oprava tlačítka Storno
 
@@ -153,7 +139,6 @@ Pokud má uživatel zakázaný JavaScript, naši stránku navštíví, upraví p
 
 Přidejte následující kód do začátku `UpdateCommand` obslužná rutina události, bezprostředně před `Try` blok:
 
-
 [!code-vb[Main](adding-validation-controls-to-the-datalist-s-editing-interface-vb/samples/sample2.vb)]
 
 Uveďte se pokusí produktu aktualizovat pouze v případě, že odeslaná data je platný. Většina uživatelů, nebudou moct odeslat zpět neplatných dat z důvodu skripty na straně klienta ověření ovládacích prvků, ale uživatelé, jejichž prohlížeče zadávat t podpora jazyka JavaScript nebo, který mají podporu jazyka JavaScript zakázaná, můžete vynechat kontroly na straně klienta a odeslat neplatná data.
@@ -161,18 +146,15 @@ Uveďte se pokusí produktu aktualizovat pouze v případě, že odeslaná data 
 > [!NOTE]
 > Bystří čtenáři budou si možná Vzpomínáte, že při aktualizaci dat prvku GridView, jsme nemusíte explicitně zkontrolovala `Page.IsValid` vlastnost ve třídě použití modelu code-behind naší stránce s. Důvodem je, že prvku GridView consults `Page.IsValid` vlastnost pro nás a pouze pokračovat aktualizace pouze v případě, že vrací hodnotu `True`.
 
-
 ## <a name="step-3-summarizing-data-entry-problems"></a>Krok 3: Shrnutí problémů položka dat
 
 Kromě pěti ověřovacích ovládacích prvků technologie ASP.NET obsahuje [ovládacího prvku ValidationSummary](https://msdn.microsoft.com/library/f9h59855(VS.80).aspx), které ukazuje `ErrorMessage` s těmito validačních ovládacích prvků, které se zjistila neplatná data. Tato souhrnná data lze zobrazit jako text na webové stránce nebo přes pole messagebox modální, na straně klienta. Umožní s vylepšit tento kurz a zahrnout pole messagebox na straně klienta sumarizace jakékoli zaznamenané problémy s ověřením.
 
 K tomu, přetáhněte ovládací prvek souhrnu ověření z panelu nástrojů do návrháře. Umístění t kódu ovládacího prvku ValidationSummary opravdu důležité, protože jsme re chcete nakonfigurovat jenom zobrazit souhrn jako pole messagebox. Po přidání ovládacího prvku, nastavte jeho [ `ShowSummary` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.validationsummary.showsummary(VS.80).aspx) k `False` a jeho [ `ShowMessageBox` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.validationsummary.showmessagebox(VS.80).aspx) k `True`. Uveďte, všechny chyby ověření jsou shrnuté v messagebox na straně klienta (viz obrázek 6).
 
-
 [![Chyby ověření jsou shrnuté v Messagebox na straně klienta](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image17.png)](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image16.png)
 
 **Obrázek 6**: Chyby ověření jsou shrnuté v Messagebox na straně klienta ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-validation-controls-to-the-datalist-s-editing-interface-vb/_static/image18.png))
-
 
 ## <a name="summary"></a>Souhrn
 
