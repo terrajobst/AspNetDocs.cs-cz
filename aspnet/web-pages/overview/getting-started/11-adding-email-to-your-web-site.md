@@ -8,12 +8,12 @@ ms.date: 02/20/2014
 ms.assetid: fc49bcb9-f1a9-4048-8c3f-b60951853200
 msc.legacyurl: /web-pages/overview/getting-started/11-adding-email-to-your-web-site
 msc.type: authoredcontent
-ms.openlocfilehash: 0263f736b96f8e8572536f3783d86c261d7c0512
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 23e9717329525fb5a0ed505c9dc94505d4f9dbbe
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59411225"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130551"
 ---
 # <a name="sending-email-from-an-aspnet-web-pages-razor-site"></a>Odesílání e-mailů z webu rozhraní ASP.NET Web Pages (Razor)
 
@@ -39,7 +39,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > 
 > V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
 
-
 <a id="Sending_Email_Messages"></a>
 ## <a name="sending-email-messages-from-your-website"></a>Odesílání e-mailové zprávy z webu
 
@@ -57,7 +56,6 @@ V tomto postupu vytvoříte dvě stránky. První stránka má formulář, kter�
 
 > [!NOTE]
 > Pro zjednodušení tento příklad kódu inicializuje `WebMail` pomocné rutiny přímo na stránku, kde používáte. Pro skutečné weby, je však lepší představu vložit soubor globální inicializační kód tímto způsobem tak, aby je inicializovat `WebMail` pomocné rutiny pro všechny soubory ve vašem webu. Další informace najdete v tématu [přizpůsobení chování v celém webu pro webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906#Setting_Values_For_Helpers).
-
 
 1. Vytvoření nového webu.
 2. Přidejte novou stránku s názvem *EmailRequest.cshtml* a přidejte následující kód: 
@@ -133,7 +131,6 @@ Můžete také odeslat soubory, které jsou připojené k e-mailové zprávy. V 
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Další prostředky
-
 
 - [Webové stránky ASP.NET (Razor) – průvodce řešením potíží](https://go.microsoft.com/fwlink/?LinkId=253001)
 - [Simple Mail Transfer Protocol](https://msdn.microsoft.com/library/aa480435.aspx)

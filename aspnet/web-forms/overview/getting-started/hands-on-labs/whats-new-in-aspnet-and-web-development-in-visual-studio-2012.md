@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 6d40d276-1642-4a77-b6c9-02ac914f6805
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/whats-new-in-aspnet-and-web-development-in-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: 3833e3f3c6c49ff2b317ad04aff33c9119cb1f41
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 80c77ec65ed86b06e417d3f6ba608e404c46768b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59420208"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132088"
 ---
 # <a name="whats-new-in-aspnet-and-web-development-in-visual-studio-2012"></a>Novinky ASP.NET a webového vývoje v sadě Visual Studio 2012
 
@@ -30,7 +30,6 @@ podle [Campy Web týmu](https://twitter.com/webcamps)
 > Tato laboratoř vás provede vylepšení a nových funkcí popsaných dříve použitím menší změny na ukázkovou webovou aplikaci ve zdrojové složce k dispozici.
 > 
 > Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409 ](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409).
-
 
 <a id="Objectives"></a>
 
@@ -331,7 +330,6 @@ Jeden z osvědčených postupů ve formátu HTML je odsazení vnořené prvky, k
 > [!NOTE]
 > V předchozí verzi sady Visual Studio, inteligentní odsazení byla k dispozici v editoru XML, ale ne v editoru jazyka HTML.
 
-
 1. Ujistěte se, že konfigurace Indenting v editoru HTML je nastavena na inteligentní odsazení. Chcete-li to mohli udělat, vyberte **nástroje | Možnosti** nabídky a pak vyberte **textový Editor | HTML | Karty** stránky v levém podokně na obrazovce. Vyberte možnost Inteligentní odsazení.
 
     ![Nastavení editoru HTML](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image33.png "nastavení editoru HTML")
@@ -433,7 +431,6 @@ V této úloze bude zjišťovat nové ověření jazyka JavaScript pro standardn
 > [!NOTE]
 > Visual Studio 2010 implementované ECMAStript3 dodržování předpisů, zatímco služba Visual Studio 2012 poskytuje ECMAScript5 dodržování předpisů.
 
-
 1. Otevřít **ECMA5script5.js** umístěna ve složce **Scripts\custom** složky projektu. Teď budete testovat ověřování pro ECMAScript5 standard.
 
     [!code-html[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample8.html)]
@@ -493,7 +490,6 @@ V této úloze bude prozkoumání funkcí sady Visual Studio pro dokumentaci XML
 
 > [!NOTE]
 > Ujistěte se, že GotoDefinition.js neobsahuje žádné chyby syntaxe před uložením tohoto souboru.
-
 
 <a id="Exercise4"></a>
 
@@ -675,7 +671,6 @@ V tomto příkladu se dozvíte, jak používat **DynamicFolderBundle** třídy z
 
 > [!NOTE]
 > Kromě toho můžete nasadit tuto aplikaci následující weby Windows Azure [příloha B: Publikování aplikace ASP.NET MVC 4 pomocí nasazení webu](#AppendixB).
-
 
 <a id="Summary"></a>
 ## <a name="summary"></a>Souhrn

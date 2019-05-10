@@ -8,12 +8,12 @@ ms.date: 02/20/2014
 ms.assetid: 332fb3da-e2a5-460d-bb90-dd911e1e2c95
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/10-working-with-video
 msc.type: authoredcontent
-ms.openlocfilehash: 204611513860e268001596b9c7ac9e9c023caa12
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 516d46f38ce8910209f4207c474b0404bf012950
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59399850"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130954"
 ---
 # <a name="displaying-video-in-an-aspnet-web-pages-razor-site"></a>Zobrazení videa na webu rozhraní ASP.NET Web Pages (Razor)
 
@@ -40,7 +40,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 >   
 > 
 > V tomto kurzu funguje taky pomocí služby WebMatrix 3.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -88,7 +87,6 @@ Existuje mnoho formátů videosouborů a každý formát obvykle vyžaduje jiný
 > [!NOTE]
 > V případě, že ještě neznáte Silverlight: *.xap* soubor je komprimovaný soubor, který obsahuje rozložení podle pokynů v *.xaml* souboru spravovaného kódu v sestavení a volitelné materiály. Můžete vytvořit *.xap* souboru v sadě Visual Studio jako projekt aplikace Silverlight.
 
-
 `Silverlight` Přehrávač videa používá jak nastavení, které zadáte pro přehrávač a nastavení, které jsou součástí *.xap* souboru.
 
 > [!TIP] 
@@ -101,7 +99,6 @@ Existuje mnoho formátů videosouborů a každý formát obvykle vyžaduje jiný
 > - `application/x-shockwave-flash`
 > - `application/x-mplayer2`
 > - `application/x-silverlight-2`
-
 
 <a id="Playing_Flash"></a>
 ## <a name="playing-flash-swf-videos"></a>Playing Flash (.swf) Videos
@@ -179,7 +176,6 @@ Tento postup ukazuje, jak k přehrání videa, které jsou obsaženy v technolog
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Další prostředky
-
 
 [Přehled technologie Silverlight](https://msdn.microsoft.com/library/bb404700(VS.95).aspx)
 

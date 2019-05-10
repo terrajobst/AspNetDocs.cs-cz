@@ -8,12 +8,12 @@ ms.date: 04/01/2009
 ms.assetid: a3599cf7-8474-4006-954a-3bc693736b66
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1ef796dc61cc65b6ca5205a5f8baf4dcc4ba05ae
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 1d6adbb245ce534c15ac1adac722b8621002ab15
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59389164"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65127056"
 ---
 # <a name="deploying-your-site-using-an-ftp-client-c"></a>Nasazení webu pomocí klienta FTP (C#)
 
@@ -23,17 +23,14 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > Nejjednodušší způsob, jak nasadit aplikaci ASP.NET je ručně zkopírovat potřebné soubory z vývojového prostředí do produkčního prostředí. Tento kurz ukazuje, jak použít klienta k získání souborů z plochy ke zprostředkovateli webového hostitele.
 
-
 ## <a name="introduction"></a>Úvod
 
 Předchozí kurz o službě zavedená jednoduchou knihy revize webovou aplikaci ASP.NET, která se skládá z několika stránek ASP.NET, hlavní stránky, vlastní základní `Page` třídy, počet imagí, a tři šablony stylů CSS stylů. Nyní jsme připraveni nasadit tuto aplikaci na web hostitele zprostředkovatele, v tomto okamžiku bude aplikace přístupné všem uživatelům s připojením k Internetu!
-
 
 Z našich diskuzích v [ *určující, co soubory musí být nasazeny* ](determining-what-files-need-to-be-deployed-cs.md) výukový program, budeme vědět, co soubory musí být zkopírován do hostitele poskytovatele webových. (Si možná Vzpomínáte, jaké soubory se zkopírují závisí na, jestli vaše aplikace je explicitně nebo automaticky kompilován.) Ale jak jsme získat soubory z vývojového prostředí (naše desktopové verze) až do produkčního prostředí (webový server spravované poskytovatelem webového hostitele)? [ **F** ile **T** transferu **P** rotocol (FTP)](http://en.wikipedia.org/wiki/File_Transfer_Protocol) je běžně používaný protokol pro kopírování souborů z jednoho počítače do jiného přes síť. Další možností je rozšíření serveru FrontPage (FPSE). Tento kurz se zaměřuje na pomocí samostatné FTP klientský software nasadit do produkčního prostředí potřebné soubory z vývojového prostředí.
 
 > [!NOTE]
 > Visual Studio obsahuje nástroje pro publikování webů přes protokol FTP; Tyto nástroje také podívat na nástroje, které používají FPSE, jsou popsané v dalším kurzu.
-
 
 Kopírování souborů přes FTP potřebujeme *klienta FTP* ve vývojovém prostředí. Klient FTP je aplikace, která slouží ke kopírování souborů z počítače, je nainstalovaný na počítači, na kterém běží *FTP server*. (Pokud poskytovatel webového hostitele podporuje přenosy souborů přes FTP, stejně jako většinu, pak se server FTP, který běží na své webové servery.) Nejsou k dispozici několik FTP klientské aplikace. Ve webovém prohlížeči můžete dokonce double klienta FTP. Moje Oblíbené klienta FTP a tak můžu používat pro účely tohoto kurzu je [Filezilly](http://filezilla-project.org/), zdarma, open source klienta FTP, který je k dispozici pro Windows, Linux a počítače Mac. Jakéhokoliv FTP klienta bude fungovat, ale teď tedy můžete používat jakýkoli klient se vyhovuje nejvíce.
 
@@ -68,11 +65,9 @@ Obrázek 1 ukazuje Filezilly po potřebné soubory zkopírovaly. Filezilly zobra
 > [!NOTE]
 > Není nezpůsobily žádné potíže tím, že soubory zdrojového kódu na provozním serveru, jako jsou ignorovány. ASP.NET zakazuje požadavky HTTP na souborech zdrojového kódu ve výchozím nastavení tak, že i v případě, že soubory zdrojového kódu jsou k dispozici na provozním serveru jsou přístupné pro návštěvníky na váš web. (Pokud se uživatel pokusí o navštivte `http://www.yoursite.com/Default.aspx.cs` chybovou stránku, která vysvětluje, použije se tyto typy souborů – `.cs` soubory – jsou zakázané.)
 
-
 [![Pomocí klienta FTP zkopírujte potřebné soubory z plochy na webový server na zprostředkovateli webového hostitele](deploying-your-site-using-an-ftp-client-cs/_static/image2.png)](deploying-your-site-using-an-ftp-client-cs/_static/image1.png)
 
 **Obrázek 1**: Pomocí klienta FTP na webový server na hostiteli poskytovatele webových zkopírujte potřebné soubory z plochu ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-an-ftp-client-cs/_static/image3.png))
-
 
 Po nasazení webu využijte k otestování webu. Pokud jste zakoupili název domény a konfiguraci nastavení DNS správně, můžete navštívit web tak, že zadáte název vaší domény. Alternativně zprostředkovateli webového hostitele by měl zadali jste adresou URL vašeho webu, který bude vypadat podobně jako *accountname*. *webhostprovider*.com nebo *webhostprovider*.com /*accountname*. Například je adresa URL pro svůj účet na slevy ASP.NET: `http://httpruntime.web703.discountasp.net`.
 
@@ -81,11 +76,9 @@ Obrázek 2 ukazuje nasazené lokality recenzí. Všimněte si, že mám teď zob
 > [!NOTE]
 > Pokud dojde k chybě při zobrazení aplikace využít k Ujistěte se, že jste nasadili správnou sadu souborů. V dalším kroku najdete v chybové zprávě, pokud chcete zobrazit, pokud zjistí jakékoli příčiny, problém. Pod můžete zapnout na technickou podporu vaší společnosti webového hostitele nebo zveřejněte svůj dotaz ve fóru odpovídající [fóra ASP.NET](https://forums.asp.net/).
 
-
 [![Server revize adresáře je nyní dostupný všem uživatelům s připojením k Internetu](deploying-your-site-using-an-ftp-client-cs/_static/image5.png)](deploying-your-site-using-an-ftp-client-cs/_static/image4.png)
 
 **Obrázek 2**: Server revize adresáře je nyní dostupný všem uživatelům s připojením k Internetu ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-an-ftp-client-cs/_static/image6.png))
-
 
 ## <a name="deploying-the-book-review-web-site-project"></a>Nasazení projektu webu revize knihy
 
@@ -97,7 +90,6 @@ Jakmile úspěšně sestavíte projekt, zkopírujte následující soubory do ko
 
 > [!NOTE]
 > Pokud jste už nasadili BookReviewsWAP projekt, ale přesto chcete zkuste nasazení BookReviewsWSP projektu, nejprve odstranit všechny soubory na webovém serveru, které byly odeslány při nasazování BookReviewsWAP a pak nasadit soubory pro BookReviewsWSP.
-
 
 - `~/Default.aspx`
 - `~/Default.aspx.cs`
@@ -123,11 +115,9 @@ Jakmile úspěšně sestavíte projekt, zkopírujte následující soubory do ko
 
 Obrázek 3 ukazuje Filezilly po zkopírování si potřebné soubory. Jak je vidět, ASP.NET souborů zdrojového kódu, jako například `About.aspx.cs`, jsou k dispozici na místním počítači (vývojové prostředí) a webového hostitele zprostředkovatele (produkční prostředí), protože soubory kódu je nutné nasadit při použití automatického kompilace.
 
-
 [![Pomocí klienta FTP zkopírujte potřebné soubory z plochy na webový server na zprostředkovateli webového hostitele](deploying-your-site-using-an-ftp-client-cs/_static/image8.png)](deploying-your-site-using-an-ftp-client-cs/_static/image7.png)
 
 **Obrázek 3**: Pomocí klienta FTP na webový server na hostiteli poskytovatele webových zkopírujte potřebné soubory z plochu ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-your-site-using-an-ftp-client-cs/_static/image9.png))
-
 
 Činnost koncového uživatele není ovlivněn model kompilace aplikace. Stejné stránky technologie ASP.NET jsou dostupné a jejich vzhled a chování stejné, zda web se vytvořil pomocí modelu projektu webové aplikace nebo modelu projektu webové stránky.
 
@@ -139,7 +129,6 @@ Jak byste asi očekávali, při opětovné nasazení webové aplikace je potřeb
 
 > [!NOTE]
 > Jedna věc, kterou je potřeba mít na paměti, při použití explicitní kompilace je kdykoli do projektu přidejte novou stránku ASP.NET nebo provést změny související s kódem, budete muset znovu sestavit projekt, který aktualizuje sestavení v `Bin` složky. V důsledku toho budete muset zkopírovat tento aktualizovaný sestavení do produkčního prostředí při aktualizaci webové aplikace v produkčním prostředí (společně s další nové a aktualizované obsah).
-
 
 Také pochopit, že jakékoli změny `Web.config` či soubory v `Bin` adresáře se zastaví a restartuje fond aplikací na webu. Pokud váš stav relace se ukládá pomocí `InProc` režimu (výchozí) pak návštěvníci vašeho webu dojde ke ztrátě jejich stav relace vždy, když se mění tyto soubory klíčů. Abyste zabránili tomuto nebezpečí, zvažte uložení, pomocí relace `StateServer` nebo `SQLServer` režimy. Další informace o tomto tématu najdete [režim stavu relace](https://msdn.microsoft.com/library/ms178586.aspx).
 

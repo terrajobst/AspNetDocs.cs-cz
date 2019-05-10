@@ -8,12 +8,12 @@ ms.date: 01/12/2011
 ms.assetid: b4e76c1a-f66e-43a0-aa72-f39df79c07c1
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: a06def9c434bd79d63bb74d105c1788e993e231a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: acac3ade54cc51c8004f9ea5f0ee4157d15251e5
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59383863"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130179"
 ---
 # <a name="adding-a-new-field-to-the-movie-model-and-table-c"></a>Přidání nového pole do modelu a tabulky Movie (C#)
 
@@ -32,7 +32,6 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 > Pokud používáte Visual Studio 2010 namísto Visual Web Developer 2010, nainstalujte příslušné požadované součásti po kliknutí na následující odkaz: [Visual Studio 2010 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack).
 > 
 > Projekt aplikace Visual Web Developer se zdrojovým kódem jazyka C# je k dispozici v tomto tématu. [Stáhněte si verzi C#](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098). Pokud dáváte přednost jazyka Visual Basic, přejděte [verze jazyka Visual Basic](../vb/intro-to-aspnet-mvc-3.md) tohoto kurzu.
-
 
 V této části budete provádět některé změny tříd modelu a zjistěte, jak můžete aktualizovat schéma databáze tak, aby odpovídaly změny modelu.
 
@@ -84,7 +83,6 @@ Umožňuje aktualizovat aplikaci tak, aby Code First automaticky sníží a znov
 > [!NOTE] 
 > 
 > **Upozornění** byste měli povolit tento přístup automaticky vyřadit a znovu vytvořit databázi pouze při použití databázi vývoj nebo testování a *nikdy* u provozní databáze, která obsahuje reálná data. Použití na provozním serveru může způsobit ztrátu dat.
-
 
 V **Průzkumníka řešení**, klikněte pravým tlačítkem myši *modely* složky, vyberte **přidat**a pak vyberte **třídy**.
 

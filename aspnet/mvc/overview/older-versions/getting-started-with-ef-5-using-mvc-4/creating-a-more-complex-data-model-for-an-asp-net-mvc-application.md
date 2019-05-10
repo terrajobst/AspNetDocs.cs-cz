@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: f81f3d80-3674-4d8e-a9b1-87feed1a93c9
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 15bdaa588792c3cf4a8e6eee651e0675f959f942
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2ba7ca22074fe3c131209482180f8f7706714dd5
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59382228"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129826"
 ---
 # <a name="creating-a-more-complex-data-model-for-an-aspnet-mvc-application-4-of-10"></a>Vytvoření složitějšího datového modelu pro aplikace ASP.NET MVC (4 z 10)
 
@@ -26,7 +26,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > > [!NOTE] 
 > > 
 > > Pokud narazíte na problém nevyřešíte sami, [stáhnout dokončený kapitoly](building-the-ef5-mvc4-chapter-downloads.md) a zkuste problém reprodukovat. Porovnáním kód Dokončený kód v obecně najdete řešení problému. Některé běžné chyby a jejich řešení najdete v tématu [chyby a náhradní řešení.](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)
-
 
 V předchozích kurzech jste pracovali s jednoduchý datový model, který se skládá z tři entity. V tomto kurzu přidáte další entity a relace a tak, že zadáte formátování, ověřování a pravidel mapování database budete Přizpůsobte si datový model. Zobrazí se vám dva způsoby, jak Přizpůsobte si datový model: přidáním atributů do tříd entit a přidáním kódu do třídy kontextu databáze.
 
@@ -52,9 +51,7 @@ V *Models\Student.cs*, přidejte `using` příkaz pro `System.ComponentModel.Dat
 
 `DisplayFormat` Atribut se používá s ohledem na formát data:
 
-
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample2.cs)]
-
 
 `ApplyFormatInEditMode` Nastavení určuje, že zadané formátování také bude použito při hodnota se zobrazí v textovém poli pro úpravu. (Pokud nechcete pro některá pole – například pro hodnoty měny, nemusí chcete symbol měny v textovém poli pro úpravu.)
 
@@ -124,7 +121,6 @@ Můžete také provádět databáze pomocí změny mapování [rozhraní Fluent 
 
 > [!NOTE]
 > Při pokusu o kompilaci před dokončením vytvoření všech těchto tříd entit může docházet k chybám kompilátoru.
-
 
 ## <a name="create-the-instructor-entity"></a>Vytvoření Entity instruktorem
 
@@ -260,7 +256,6 @@ Vlastnosti cizího klíče a navigace zahrnují následující vztahy:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample24.cs)]
 
-
 ## <a name="modifying-the-student-entity"></a>Úprava entit studenta
 
 ![Student_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image10.png)
@@ -378,7 +373,6 @@ Po dokončení úprav &lt; *časové razítko&gt;\_Chap4.cs* soubor, zadejte `up
 > [!code-xml[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample35.xml?highlight=1-2)]
 > 
 > S novou databázi, nejsou žádná data chcete migrovat a `update-database` příkaz je mnohem pravděpodobnější k dokončení bez chyb. Pokyny k odstranění databáze najdete v tématu [jak vyřadit databázi ze sady Visual Studio 2012](http://romiller.com/2013/05/17/how-to-drop-a-database-from-visual-studio-2012/).
-
 
 Otevřít databázi v **Průzkumníka serveru** stejně jako dříve a rozbalte **tabulky** uzel zobrazíte, že všechny tabulky byly vytvořeny. (Pokud stále máte **Průzkumníka serveru** otevřít z dřívější čas, klikněte na tlačítko **aktualizovat** tlačítko.)
 

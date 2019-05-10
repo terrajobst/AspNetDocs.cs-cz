@@ -8,19 +8,18 @@ ms.date: 02/10/2010
 ms.assetid: fa429113-5f8f-4ef4-97c5-5c04900a19fa
 msc.legacyurl: /whitepapers/request-validation
 msc.type: content
-ms.openlocfilehash: d721bb14b9907ae594d1d5207b6f802e84326c9c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 807cccd6fe1acdd6359b014387abd3878840d4cd
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59414722"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130505"
 ---
 # <a name="request-validation---preventing-script-attacks"></a>Ověření požadavku – obrana před skriptovými útoky
 
 > Tento dokument popisuje žádosti o ověření funkce technologie ASP.NET, pokud ve výchozím nastavení, aplikace nebude zpracování nešifrovaného obsahu HTML odeslat na server. Tato žádost o ověření funkce lze zakázat, když aplikace byla navržena tak, aby bezpečně zpracovávat data ve formátu HTML.
 > 
 > Platí pro technologii ASP.NET 1.1 a ASP.NET 2.0.
-
 
 Ověření požadavku, která je součástí technologie ASP.NET od verze 1.1, zabrání serveru přijetí obsahu obsahující bez kódování HTML. Tato funkce je určena k zabránění útoků prostřednictvím injektáže skriptu kterým kód skriptu klienta nebo HTML lze neúmyslně odeslané na server, ukládat a předloží ostatním uživatelům. Stále důrazně doporučujeme, že ověření všech vstupních dat a to v případě potřeby použije kódování HTML.
 

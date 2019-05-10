@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: c979535f-48a3-4ec4-a633-a77889b86ddb
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/deploying-a-specific-build
 msc.type: authoredcontent
-ms.openlocfilehash: 0ab58aee6f1203beaf3990536b059f8209e66547
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 6bede6b36c24ade928ab052e14daec1e017bd0b2
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59393480"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131941"
 ---
 # <a name="deploying-a-specific-build"></a>Nasazení konkrétního sestavení
 
@@ -22,7 +22,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Toto téma popisuje postup nasazení webových balíčků a databázové skripty z konkrétního předchozí sestavení na nové umístění, jako jsou testovací nebo produkční prostředí.
-
 
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
@@ -47,21 +46,15 @@ V [ukázkové řešení](../web-deployment-in-the-enterprise/the-contact-manager
 > [!NOTE]
 > **OutputRoot** je běžně používaný vlastnost název. Soubory Visual C# a Visual Basic projektu tuto vlastnost k uložení umístění kořenového adresáře pro všechna výstupní sestavení také deklarovat.
 
-
 [!code-xml[Main](deploying-a-specific-build/samples/sample1.xml)]
-
 
 Pokud chcete, aby váš soubor projektu pro nasazení webových balíčků a databázové skripty z jiného umístění&#x2014;výstupy předchozích sestavení TFS, jako jsou&#x2014;jednoduše je potřeba přepsat **OutputRoot** vlastnost. Do složky relevantní sestavení byste měli nastavit hodnotu vlastnosti na serveru Team Build. Pokud jste používali nástroj MSBuild z příkazového řádku, můžete zadat hodnotu pro **OutputRoot** jako argument příkazového řádku:
 
-
 [!code-console[Main](deploying-a-specific-build/samples/sample2.cmd)]
-
 
 V praxi, ale také chcete přeskočit **sestavení** cílové&#x2014;neexistuje bod v sestavení vašeho řešení, pokud nemáte v úmyslu použít výstupy sestavení. Může to provedete tak, že určíte cíle, které chcete spustit z příkazového řádku:
 
-
 [!code-console[Main](deploying-a-specific-build/samples/sample3.cmd)]
-
 
 Ale ve většině případů budete chtít vytvořit svoji logiku nasazení do definice sestavení TFS. To umožňuje uživatelům s **zařazovat sestavení do fronty** oprávnění k aktivaci nasazení z jakékoli instalaci sady Visual Studio s připojením k serveru TFS.
 

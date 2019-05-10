@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 200b973c-776b-4a9b-9e82-39fda6120a52
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/setting-up-the-contact-manager-solution
 msc.type: authoredcontent
-ms.openlocfilehash: d0a7c29a590fcde504e5f5227806df62454f6add
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: d9774ee01cb0515d7e733b24baa661f2648bd7c4
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59410484"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131047"
 ---
 # <a name="setting-up-the-contact-manager-solution"></a>Nastavení řešení správce kontaktů
 
@@ -22,7 +22,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Toto téma popisuje, jak stáhnout a nakonfigurovat řešení Správce kontaktů spouštět místně na pracovní stanici vývojáře.
-
 
 ## <a name="system-requirements"></a>Požadavky na systém
 
@@ -70,7 +69,6 @@ Zbytek tohoto oddílu poskytuje ještě s něčím poradit o provedení těchto 
 > [!NOTE]
 > Další informace o aspnet\_regsql nástroj, najdete v článku [nástroj pro registraci serveru SQL technologie ASP.NET (Aspnet\_regsql.exe)](https://msdn.microsoft.com/library/ms229862(v=vs.100).aspx).
 
-
 Abyste měli jistotu, že připojovací řetězce v řešení Správce kontaktů přejděte k vaší místní instanci systému SQL Server Express je dalším krokem.
 
 **Chcete-li aktualizovat připojovací řetězce**
@@ -97,7 +95,6 @@ Teď byste měli být připraveni spustit řešení Správce kontaktů na místn
 
 > [!NOTE]
 > Pokud budete postupovat podle těchto kroků bez vytvoření první databáze aplikace služby ASP.NET databáze se vytvoří při prvním pokusu o vytvoření uživatele. Však ručně vytvořit databázi, nabízí mnohem větší kontrolu nad sadě funkcí služby aplikace, které chcete podporovat.
-
 
 **Chcete-li spustit řešení Správce kontaktů**
 

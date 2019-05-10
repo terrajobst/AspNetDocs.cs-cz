@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 9b2af539-7ad9-47aa-b66e-873bd9906e79
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-database-role-memberships-to-test-environments
 msc.type: authoredcontent
-ms.openlocfilehash: fd0914ed62a280fea290b9f1b150fc25c8ed6d40
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: a15f5bf5f659d151e91ef9e53c5ad55bcd8e2b01
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59385329"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130398"
 ---
 # <a name="deploying-database-role-memberships-to-test-environments"></a>Nasazení členství v databázových rolích do testovacího prostředí
 
@@ -32,7 +32,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > V tomto scénáři je často výhodné a automaticky vytvořte uživatele databáze s členstvím v databázových rolích přiřadit jako součást procesu nasazení.
 > 
 > Klíčovým faktorem je, že tuto operaci musí být podmíněné podle cílového prostředí. Pokud nasazení provádíte pracovní nebo produkční prostředí, budete chtít tuto operaci přeskočit. Pokud nasazení provádíte do vývojář nebo testovacího prostředí, budete chtít nasadit členství v rolích bez dalšího zásahu. Toto téma popisuje jeden z přístupů, které můžete použít k řešení těchto problémů.
-
 
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
@@ -79,13 +78,10 @@ Vytvoříte třeba skript Transact-SQL v mnoha různými způsoby, a na libovoln
 
 V ideálním případě by spustíte všechny požadované skripty jazyka Transact-SQL jako součást skriptu po nasazení při nasazení projektu databáze. Skripty po nasazení není však umožňují spouštět logiky podmíněně na základě konfigurace řešení nebo vlastností sestavení. Alternativou je spuštění skriptů SQL přímo ze souboru projektu MSBuild, tak, že vytvoříte **cílové** element, který provede příkaz sqlcmd.exe. Použijte tento příkaz pro spuštění skriptu na cílové databázi:
 
-
 [!code-console[Main](deploying-database-role-memberships-to-test-environments/samples/sample2.cmd)]
-
 
 > [!NOTE]
 > Další informace o možnostech příkazového řádku sqlcmd najdete v tématu [Nástroj sqlcmd](https://msdn.microsoft.com/library/ms162773.aspx).
-
 
 Před vložením tento příkaz v cíli MSBuild, je potřeba zvážit, za jakých podmínek chcete skript ke spuštění:
 
@@ -100,15 +96,11 @@ Pokud používáte přístup soubor projektu rozdělit podle [vysvětlení soubo
 
 V souboru projektu specifických pro prostředí musíte zadat název databázového serveru, název cílové databáze a logická vlastnost, která umožňuje uživatelům určit, jestli se má nasadit členství v rolích.
 
-
 [!code-xml[Main](deploying-database-role-memberships-to-test-environments/samples/sample3.xml)]
-
 
 V souboru projektu univerzální budete muset zadat umístění sqlcmd spustitelný soubor a umístění, které chcete spustit skript jazyka SQL. Tyto vlastnosti zůstane stejný bez ohledu na cílovém prostředí. Je také potřeba vytvořit cíl nástroje MSBuild k provedení příkazu sqlcmd.
 
-
 [!code-xml[Main](deploying-database-role-memberships-to-test-environments/samples/sample4.xml)]
-
 
 Všimněte si, přidejte umístění testovaného sqlcmd spustitelného souboru jako statická vlastnost, protože to může být užitečné další cíle. Naproti tomu definujete umístění skriptu SQL a syntaxe příkazu sqlcmd jako dynamických vlastností v cíli, jako nebudou požadované předtím, než je cíl proveden. V takovém případě **DeployTestDBPermissions** cíl bude spuštěn pouze pokud jsou splněny tyto podmínky:
 
@@ -117,9 +109,7 @@ Všimněte si, přidejte umístění testovaného sqlcmd spustitelného souboru 
 
 Nakonec se nezapomeňte vyvolat cíl. V *Publish.proj* souboru, provedete tak, že přidáte do seznamu závislostí pro výchozí cíl **FullPublish** cíl. Je potřeba zajistit, aby **DeployTestDBPermissions** target není spuštěn až **PublishDbPackages** byl cíl spuštěn.
 
-
 [!code-xml[Main](deploying-database-role-memberships-to-test-environments/samples/sample5.xml)]
-
 
 ## <a name="conclusion"></a>Závěr
 

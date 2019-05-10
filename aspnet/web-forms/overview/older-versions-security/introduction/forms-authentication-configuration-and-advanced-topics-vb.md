@@ -8,12 +8,12 @@ ms.date: 01/14/2008
 ms.assetid: 829d2f56-5c48-445b-b826-3418a450c788
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c992c782ce52066452b42bc09052ec1985e13200
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 45e924559a88317950ae9fb8a596d3ee373dd661
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59417088"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65127844"
 ---
 # <a name="forms-authentication-configuration-and-advanced-topics-vb"></a>Konfigurace ověřování pomocí formuláře a pokročilá témata (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/2/F/7/2F705A34-F9DE-4112-BBDE-60098089645E/ASPNET_Security_Tutorial_03_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/2/F/7/2F705A34-F9DE-4112-BBDE-60098089645E/aspnet_tutorial03_AuthAdvanced_vb.pdf)
 
 > V tomto kurzu budeme zkoumat různých nastavení ověřování pomocí formulářů a zjistit, jak upravovat pomocí prvku formuláře. To bude mít za následek podrobný přehled o přizpůsobení hodnota časového limitu lístek ověřování formuláře pomocí vlastní adresu URL (například SignIn.aspx místo Login.aspx) a lístků pro ověřování pomocí formulářů bez souborů cookie na přihlašovací stránce.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -37,7 +36,6 @@ Systémem ověřování pomocí formulářů v ASP.NET nabízí celou řadu nast
 [!code-xml[Main](forms-authentication-configuration-and-advanced-topics-vb/samples/sample1.xml)]
 
 Tabulka 1 shrnuje vlastnosti, které je možné přizpůsobit pomocí &lt;forms&gt; elementu. Vzhledem k tomu, že soubor Web.config je soubor XML, názvy atributů v levém sloupci jsou malá a velká písmena.
-
 
 | <strong>Atribut</strong> |                                                                                                                                                                                                                                     <strong>Popis</strong>                                                                                                                                                                                                                                      |
 |----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,7 +58,6 @@ V technologii ASP.NET 2.0 a nad výchozí hodnoty pro ověřování formuláře 
 > [!NOTE]
 > Několik nastavení ověřování pomocí formulářů, jako je například vypršení časového limitu, domény a cesty, zadejte podrobnosti pro výsledný formulářů ověřovacího lístku souboru cookie. Další informace o souborech cookie, jak fungují a jejich různé vlastnosti čtení [v tomto kurzu soubory cookie](http://www.quirksmode.org/js/cookies.html).
 
-
 ### <a name="specifying-the-tickets-timeout-value"></a>Zadání lístku hodnotu časového limitu
 
 Lístek ověřování pomocí formulářů je token, který reprezentuje identitu. Tento token lístků pro ověřování na základě souboru cookie, je uložená ve formě souboru cookie a odeslané na webový server s každým požadavkem. Vlastnictví tokenu, je v podstatě deklaruje, já jsem *uživatelské jméno*, již jste přihlášeni a se používá tak, aby identitu uživatele může uživatel zadat napříč návštěv stránky.
@@ -72,7 +69,6 @@ Je jeden takový bit informace obsažené v lístku *vypršení platnosti*, což
 > [!NOTE]
 > Krok 3 podrobnosti o další techniky použít k ochraně lístku ověřování systémem ověřování formulářů.
 
-
 Při vytváření lístku ověřování, systém ověřování formulářů určuje jeho vypršení platnosti o nastavení časového limitu. Jak je uvedeno v tabulce 1, časový limit nastavení výchozí hodnoty na 30 minut, což znamená, že když se vytvoří lístek ověřování pomocí formulářů jeho vypršení platnosti nastavený na datum a čas v budoucnosti 30 minut.
 
 Vypršení platnosti definuje absolutním čase v budoucnosti kdy vyprší platnost lístku ověřování formulářů. Ale obvykle vývojáři chtějí implementovat klouzavé vypršení platnosti, který se vynuluje pokaždé, když se uživatel znovu navštíví web. Toto chování je určena nastavením slidingExpiration. Pokud je nastavena na hodnotu true (výchozí) pokaždé, když FormsAuthenticationModule ověřuje uživatele, aktualizuje vypršení platnosti lístku. Pokud není nastaven na hodnotu false, vypršení platnosti aktualizován na každý požadavek, a způsobuje-the-ticket vyprší přesně vypršení časového limitu počet minut po kdy byly první-the-ticket vytvořen.
@@ -80,28 +76,22 @@ Vypršení platnosti definuje absolutním čase v budoucnosti kdy vyprší platn
 > [!NOTE]
 > Vypršení platnosti uložené v lístku ověřování je absolutní hodnotu data a času, jako je 2. srpna 2008 11:34 dop. Kromě toho data a času jsou relativní vzhledem k místní čas webového serveru. Toto rozhodnutí o návrhu může mít některé zajímavé vedlejší účinky kolem letního času (DST), což je při hodiny ve Spojených státech amerických dopředu Přesunutí jedné hodiny (za předpokladu, že webový server je hostovaný v národním prostředí, ve kterém se vyskytuje letní čas). Zvažte, co by se stalo pro webové stránky ASP.NET 30 minut vypršení platnosti v čase, který začíná letního času (což je ve 2:00). Představte si, že návštěvník přihlásí k webu 11. března 2008 v 1:55:00. To by generovat ověřovací lístek, jejíž platnost vyprší za 11. března 2008 na 2:25:00 (30 minut do budoucna). Ale po 2:00 hodin se zobrazí kolem, hodiny vrací na 3:00:00 kvůli letního času. Pokud uživatel načte nová stránka šest minut po přihlášení (na 3:01:00), FormsAuthenticationModule zaznamená, že vypršela platnost-the-ticket a přesměruje uživatele na přihlašovací stránku. Podrobnější informace o to a dalších oddities vypršení časového limitu lístek ověřování, jakož i řešení, vyberte si kopii Stefan Schackow *Professional ASP.NET 2.0 zabezpečení, členství a rolí správy* (ISBN: 978-0-7645-9698-8).
 
-
 Obrázek 1 znázorňuje pracovní postup, pokud parametr slidingExpiration nastaven na hodnotu false a časový limit se nastavuje na 30. Všimněte si, že lístek ověřování, které jsou generovány při přihlášení obsahuje datum vypršení platnosti a tato hodnota není aktualizován na následné žádosti. Pokud FormsAuthenticationModule zjistí, že platnost lístku vypršela, zahodí ji a zpracovává žádost jako anonymní.
-
 
 [![Grafická reprezentace lístek ověřování formulářů vypršení platnosti při slidingExpiration má hodnotu false](forms-authentication-configuration-and-advanced-topics-vb/_static/image2.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image1.png)
 
 **Obrázek 01**: Grafická reprezentace lístek ověřování formulářů vypršení platnosti při slidingExpiration má hodnotu false ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image3.png))
 
-
 Obrázek 2 ukazuje pracovní postup, pokud parametr slidingExpiration nastaven na hodnotu true a vypršení časového limitu je nastaven na 30. Při přijetí ověřeného požadavku (s-vypršela platnost lístku) jeho vypršení platnosti se aktualizuje a vypršení časového limitu počtu minut do budoucna.
-
 
 [![Grafická reprezentace lístek ověřování pomocí formulářů Pokud je parametr slidingExpiration true](forms-authentication-configuration-and-advanced-topics-vb/_static/image5.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image4.png)
 
 **Obrázek 02**: Grafická reprezentace lístek ověřování formulářů Pokud je parametr slidingExpiration true ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image6.png))
 
-
 Při použití lístků pro ověřování na základě souboru cookie (výchozí), stane této diskuse o něco více matoucí, protože soubory cookie může mít také vlastní expiries zadaný. Vypršení platnosti souboru cookie (nebo neexistenci) dostane pokyn při by měl být soubor cookie zničení. Pokud chybí soubor cookie vypršení platnosti, byla při vypnutí v prohlížeči. Je-li vypršení platnosti je k dispozici, ale souboru cookie, který zůstane uložen v počítači uživatele do data a času vypršení platnosti podle. Při zničení soubor cookie v prohlížeči, už nebude odeslán na webový server. Odstranění souboru cookie je proto obdobná uživateli protokolování mimo lokalitu.
 
 > [!NOTE]
 > Samozřejmě uživatele může aktivně odebrat všechny soubory cookie uložené ve svém počítači. V aplikaci Internet Explorer 7 bude přejděte na nástroje, možnosti a klikněte na tlačítko Odstranit v části historie procházení. Odtud klikněte na tlačítko Odstranit soubory cookie.
-
 
 Vytvoří na základě relace nebo vypršení platnosti na soubory cookie v závislosti na hodnotě předané do systému ověřování formulářů *persistCookie* parametru. Vzpomínáte, které využívají metody třídy FormsAuthentication GetAuthCookie, SetAuthCookie a RedirectFromLoginPage v dva vstupní parametry: *uživatelské jméno* a *persistCookie*. Přihlašovací stránka, kterou jsme vytvořili v předchozím kurzu zahrnuté zapamatovat zaškrtávacího políčka, která určuje, zda byl vytvořen trvalého souboru cookie. Trvalé soubory cookie jsou založené na vypršení platnosti; dočasné soubory cookie jsou založeného na relacích.
 
@@ -137,7 +127,6 @@ Nastavení automatické rozpoznávání a UseDeviceProfile využívají *profil 
 > [!NOTE]
 > Databáze funkce zařízení je uložena v počtu souborů XML, který využívali [schéma souboru s definicí prohlížeče](https://msdn.microsoft.com/library/ms228122.aspx). Výchozí soubory profilu zařízení jsou umístěny ve složce % WINDIR%\Microsoft.Net\Framework\v2.0.50727\CONFIG\Browsers. Můžete také přidat vlastní soubory do vaší aplikace aplikace\_složka prohlížeče. Další informace najdete v tématu [How To: Zjišťovat typy prohlížečů v rozhraní ASP.NET Web Pages](https://msdn.microsoft.com/library/3yekbd5b.aspx).
 
-
 Ve výchozím nastavení je UseDeviceProfile, lístků pro ověřování pomocí formulářů bez souborů cookie se použijí při návštěvě webu zařízení, jejichž profil hlásí, že nepodporuje soubory cookie.
 
 ### <a name="encoding-the-authentication-ticket-in-the-url"></a>Kódování lístek ověřování v adrese URL
@@ -169,7 +158,6 @@ SomePage.aspx adresy URL v odkazu byl automaticky převeden na adresu URL, kter�
 > [!NOTE]
 > Lístků pro ověřování pomocí formulářů bez souborů cookie dodržovat stejné zásady pro vypršení časového limitu jako lístků pro ověřování na základě souboru cookie. Lístků pro ověřování bez souborů cookie ale náchylnější útoky opakováním, protože lístek ověřování je přímo součástí adresy URL. Představte si uživatel navštíví nějaký web, přihlášení a pak vloží adresu URL kolegu e-mailem. Pokud kolegu klikne na tento odkaz před vypršení platnosti je dosaženo, Zaprotokolují se jako uživatel, který poslal e-mail!
 
-
 ## <a name="step-3-securing-the-authentication-ticket"></a>Krok 3: Lístek ověřování zabezpečení
 
 Lístek ověřování pomocí formulářů se přenášejí prostřednictvím sítě jako buď do souboru cookie nebo vložený přímo v rámci adresy URL. Kromě informací o identitě lístek ověřování mohou zahrnovat také data uživatele (jak jsme uvidí v kroku 4). V důsledku toho je důležité, že je lístek data se šifrují z nepovolaným a (i), který může zaručit,-the-ticket nebylo manipulováno se systém ověřování formulářů.
@@ -180,11 +168,9 @@ Pokud chcete zajistit lístek pravosti, systém ověřování formulářů musí
 
 Při vytváření (nebo změny) lístek ověřování formulářů systému MAC vytvoří a připojí ho k datům lístku. Dorazí další požadavek systému ověřování formulářů porovná MAC a lístek data můžou ověřovat jejich pravost dat lístků. Obrázek 3 ilustruje tento pracovní postup graficky.
 
-
 [![Pravosti lístku je, že jsou splněné prostřednictvím MAC](forms-authentication-configuration-and-advanced-topics-vb/_static/image8.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image7.png)
 
 **Obrázek 03**: Pravosti lístku je, že jsou splněné prostřednictvím MACU ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image9.png))
-
 
 Jaké bezpečnostní opatření se použijí pro lístek ověřování závisí na nastavení ochrany &lt;forms&gt; elementu. Nastavení ochrany může být přiřazen k jednomu z následujících tří hodnot:
 
@@ -226,7 +212,6 @@ Další informace najdete v [How To: Konfigurace MachineKey v technologii ASP.NE
 > [!NOTE]
 > DecryptionKey a validationKey hodnoty byly získány z [Steve Gibson](http://www.grc.com/stevegibson.htm)společnosti [ideální hesla webové stránky](https://www.grc.com/passwords.htm), který generuje náhodné 64 hexadecimálních znaků na každé návštěvě stránky. Chcete-li snížit pravděpodobnost, že tyto klíče provádění svou cestu do produkčních aplikací, se doporučuje nahraďte výše uvedené klíče náhodně generované ty ze stránky ideální hesla.
 
-
 ## <a name="step-4-storing-additional-user-data-in-the-ticket"></a>Krok 4: Ukládání dalších údajů uživatele v lístku
 
 Mnoho webových aplikací zobrazit informace o nebo zobrazení stránky založit na aktuálně přihlášeného uživatele. Na webové stránce může například zobrazit uživatelské jméno a datum, kdy uživatel naposledy přihlášený v horním rohu každé stránky. Ověřovací lístek uloží uživatelské jméno aktuálně přihlášeného uživatele, ale je potřeba žádné další informace, na stránce musí přejít do úložiště uživatele – obvykle databáze - k vyhledání informací není uloženo v lístek ověřování.
@@ -237,11 +222,9 @@ Za účelem uložení dat uživatele v lístku ověřování, musíme psát hodn
 
 Pokaždé, když potřebujeme přístup k datům uloženým v-the-ticket, jsme to tak, že kliknete na aktuální žádost FormsAuthenticationTicket a deserializaci UserData vlastnost. V případě datum narození a zaměstnavatel název příklad jsme by řetězec UserData rozdělit do dvou podřetězců na základě oddělovače (|).
 
-
 [![Dalších informací o uživatelích, které mohou být uloženy v lístku ověřování](forms-authentication-configuration-and-advanced-topics-vb/_static/image11.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image10.png)
 
 **Obrázek 04**: Další uživatele může být uložena v lístku ověřování ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image12.png))
-
 
 ### <a name="writing-information-to-userdata"></a>Zápis informací o UserData
 
@@ -288,7 +271,6 @@ Veškerý tento kód je potřeba, protože UserData vlastnost je jen pro čtení
 > [!NOTE]
 > Kód, který jsme právě prozkoumat ukládá informace specifické pro uživatele v lístku ověřování na základě souborů cookie. Třídy, která je zodpovědná za serializaci lístek ověřování pomocí formulářů k adrese URL jsou interní v rozhraní .NET Framework. Dlouhý text krátký, nelze uložení dat uživatele v lístku ověřování formulářů bez souborů cookie.
 
-
 ### <a name="accessing-the-userdata-information"></a>Přístup k informacím o UserData
 
 V tomto okamžiku název společnosti a název každého uživatele uložená ve vlastnosti UserData lístek ověřování formulářů při přihlášení. Tyto informace je přístupný z lístek ověřování na libovolné stránce bez nutnosti postoupí do úložiště uživatele. Pro ilustraci, jak tyto informace můžou být načten z vlastnosti UserData, můžeme aktualizovat Default.aspx tak, aby jeho uvítací zpráva obsahuje nejen jméno uživatele, ale také společnosti, které fungují pro a jejich funkce.
@@ -301,15 +283,12 @@ Pokud Request.IsAuthenticated má hodnotu True, pak Vítejte zpět, je nejprve n
 
 Obrázek 5 ukazuje snímek obrazovky zobrazení v akci. Přihlaste se jako Scott zobrazí Vítejte zpět zprávu, která obsahuje Scottova společnosti a název.
 
-
 [![Zobrazí se společnosti a názvu aktuálně přihlášení na uživatele](forms-authentication-configuration-and-advanced-topics-vb/_static/image14.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image13.png)
 
 **Obrázek 05**: Společnosti a názvu aktuálně přihlášení na uživatele se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image15.png))
 
-
 > [!NOTE]
 > Lístek ověřování UserData vlastnost slouží jako mezipaměť pro úložiště uživatelů. Stejně jako všechny mezipaměti je potřeba aktualizovat, když se změní podkladová data. Například pokud webové stránky, ze kterého mohou uživatelé aktualizovat svůj profil, musí být pole do mezipaměti ve vlastnosti UserData aktualizovány tak, aby odrážely změny provedené uživatelem.
-
 
 ## <a name="step-5-using-a-custom-principal"></a>Krok 5: Použití vlastních hlavních
 
@@ -322,7 +301,6 @@ Třída GenericPrincipal splňuje požadavky pro většinu scénářů ověřov�
 > [!NOTE]
 > Jak vidíte v budoucích kurzech, když ASP. Je povolená NET framework role vytváří vlastní objekt typu [RolePrincipal](https://msdn.microsoft.com/library/system.web.security.roleprincipal.aspx) a přepíše objekt GenericPrincipal vytvořili ověřování formulářů. Dělá to dokážeme daného objektu zabezpečení IsInRole metodu pro rozhraní s rozhraním API v rámci role.
 
-
 Protože jsme ještě obavy z toho chceme s rolemi ještě, může být pouze z důvodů, proč jsme pro vytvoření vlastní objekt zabezpečení v tomto okamžiku by mít přidružit vlastní objekt IIdentity instančnímu objektu. V kroku 4 jsme se podívali na ukládání dalších informací o uživatelích ve vlastnosti UserData lístek ověřování, zejména uživatelské jméno společnosti a jejich funkce. Informace o UserData je však pouze přístupné prostřednictvím lístek ověřování a pak pouze jako serializovaný řetězec, což znamená, že když chcete zobrazit uživatelské informace uložené v lístku potřebujeme analyzovat vlastnost UserData.
 
 Můžeme vylepšit prostředí pro vývojáře tím, že vytvoříte třídu, která implementuje IIdentity a zahrnuje CompanyName a název vlastnosti. Tímto způsobem, vývojář může získat přístup k názvu společnosti aktuálně přihlášeného uživatele a název přímo prostřednictvím vlastnosti CompanyName a funkce bez potřeby vědět, jak analyzovat vlastnost UserData.
@@ -334,14 +312,11 @@ V tomto kurzu vytvoříme vlastní objekty zabezpečení a identity v aplikaci\_
 > [!NOTE]
 > Aplikace\_složky s kódem lze používat pouze při správě projektu prostřednictvím modelu projektu webu. Pokud používáte [Model projektu webové aplikace](https://msdn.microsoft.com/asp.net/Aa336618.aspx), vytvořte standardní složku a přidejte do třídy. Například můžete přidat novou složku s názvem třídy a umístěte kód existuje.
 
-
 V dalším kroku přidejte dva nové soubory tříd do aplikace\_složky s kódem, jednu s názvem CustomIdentity.vb a jeden s názvem CustomPrincipal.vb.
-
 
 [![Do projektu přidejte CustomIdentity a třídy CustomPrincipal](forms-authentication-configuration-and-advanced-topics-vb/_static/image17.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image16.png)
 
 **Obrázek 06**: Přidat CustomIdentity a CustomPrincipal třídy do projektu knihovny ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image18.png))
-
 
 Třída CustomIdentity zodpovídá za implementaci rozhraní IIdentity, který definuje vlastnost AuthenticationType, ověření identity a název vlastnosti. Kromě těchto požadovaných vlastností nás zajímají vystavení základní ověřovací lístek a také vlastnosti pro název společnosti a název daného uživatele. Zadejte následující kód do třídy CustomIdentity.
 
@@ -361,19 +336,15 @@ Profilace ASP.NET přijímá příchozí žádosti a zpracovává je procházet 
 
 Po události AuthenticateRequest vyvolá kanálu ASP.NET [PostAuthenticateRequest události](https://msdn.microsoft.com/library/system.web.httpapplication.postauthenticaterequest.aspx), což je, pokud jsme nahradit GenericPrincipal objekt vytvořený pomocí FormsAuthenticationModule s instancí naše Objektu CustomPrincipal. Obrázek 7 znázorňuje tento pracovní postup.
 
-
 [![Objekt GenericPrincipal nahrazuje CustomPrincipal PostAuthenticationRequest události](forms-authentication-configuration-and-advanced-topics-vb/_static/image20.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image19.png)
 
 **Obrázek 07**: Objekt GenericPrincipal nahrazuje CustomPrincipal v události PostAuthenticationRequest ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image21.png))
 
-
 Aby bylo možné spouštění kódu v reakci na událost kanálu ASP.NET, můžeme vytvořit obslužnou rutinu události v souboru Global.asax nebo vytvořit vlastní modul HTTP. Pro účely tohoto kurzu vytvoříme obslužné rutiny události v souboru Global.asax. Začněte přidáním Global.asax na váš web. Klikněte pravým tlačítkem na název projektu v Průzkumníku řešení a přidejte položku typu globální třída aplikace s názvem souboru Global.asax.
-
 
 [![Přidat soubor Global.asax na váš web](forms-authentication-configuration-and-advanced-topics-vb/_static/image23.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image22.png)
 
 **Obrázek 08**: Přidat soubor Global.asax na svůj web ([kliknutím ji zobrazíte obrázek v plné velikosti](forms-authentication-configuration-and-advanced-topics-vb/_static/image24.png))
-
 
 Výchozí šablona Global.asax obsahuje obslužné rutiny událostí pro celou řadou události kanálu ASP.NET, včetně počáteční a koncové a [chybová událost](https://msdn.microsoft.com/library/system.web.httpapplication.error.aspx), mimo jiné. Jak jsme už nejsou potřeba pro tuto aplikaci, můžete bez obav odstranit tyto obslužné rutiny událostí. Je událost, které nás zajímají PostAuthenticateRequest. Aktualizujte si soubor Global.asax tak její kód vypadá nějak takto:
 

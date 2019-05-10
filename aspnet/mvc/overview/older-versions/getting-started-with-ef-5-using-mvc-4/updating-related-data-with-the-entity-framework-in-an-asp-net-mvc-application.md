@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 7871dc05-2750-470f-8b4c-3a52511949bc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 5dc49d7467db01e62db147c7083ed62379d23940
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 68f8bdeeb85bc66cf790c2005cf0f0ff24b3b653
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59394156"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129771"
 ---
 # <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-6-of-10"></a>Aktualizace souvisejících dat s Entity Framework v aplikaci ASP.NET MVC (6 10)
 
@@ -26,7 +26,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > > [!NOTE] 
 > > 
 > > Pokud narazíte na problém nevyřešíte sami, [stáhnout dokončený kapitoly](building-the-ef5-mvc4-chapter-downloads.md) a zkuste problém reprodukovat. Porovnáním kód Dokončený kód v obecně najdete řešení problému. Některé běžné chyby a jejich řešení najdete v tématu [chyby a náhradní řešení.](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)
-
 
 V předchozím kurzu zobrazí související data; v tomto kurzu budete aktualizovat související data. U většiny relací to můžete provést aktualizace příslušné pole cizích klíčů. U relací m: n Entity Framework nezveřejňuje tabulky spojení přímo, proto musíte explicitně přidat a odebrat entity do a z odpovídající navigační vlastnosti.
 
@@ -194,14 +193,12 @@ Klikněte na tlačítko **upravit** na instruktorem zobrazíte stránky pro úpr
 Některá přiřazení kurzu a klikněte na tlačítko **Uložit**. Provedené změny se projeví na indexovou stránku.
 
  Poznámka: Přístupem k úpravě dat kurzu kurzů vedených funguje dobře, když je omezený počet kurzů. Pro kolekce, které jsou mnohem větší různé uživatelské rozhraní a jinou metodu aktualizace by vyžaduje.  
- 
 
 ## <a name="update-the-delete-method"></a>Aktualizujte metodu Delete
 
 Změňte kód v metoda HttpPost Delete, takže záznam přiřazení sady office (pokud existuje) se odstraní při odstranění kurzů vedených:
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample22.cs?highlight=6,10)]
-
 
 Pokud se pokusíte odstranit instruktorem, který je přiřazený k oddělení jako správce, získáte chybu referenční integrity. Zobrazit [aktuální verzi tohoto kurzu](../../getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) pro další kód, který se automaticky odeberou kurzů vedených z jakékoli oddělení, ve kterém je přiřazen kurzů vedených jako správce.
 

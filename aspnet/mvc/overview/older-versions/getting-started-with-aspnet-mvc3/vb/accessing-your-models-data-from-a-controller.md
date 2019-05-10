@@ -8,12 +8,12 @@ ms.date: 01/12/2011
 ms.assetid: cad00de1-3c68-4ff4-a436-54236d449459
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 289dd429081fde12699db678e619a9fd5ed98942
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: beaad3440a9f333ab22f29d0c6683d71e8962fc2
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59403282"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130058"
 ---
 # <a name="accessing-your-models-data-from-a-controller-vb"></a>Přístup k datům modelu z kontroleru (VB)
 
@@ -28,7 +28,6 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 > Pokud používáte Visual Studio 2010 namísto Visual Web Developer 2010, nainstalujte příslušné požadované součásti po kliknutí na následující odkaz: [Visual Studio 2010 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack).
 > 
 > Projekt aplikace Visual Web Developer se zdrojovým kódem VB.NET je k dispozici v tomto tématu. [Stáhněte si verzi VB.NET](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098). Pokud dáváte přednost C#, přejděte [verze jazyka C#](../cs/accessing-your-models-data-from-a-controller.md) tohoto kurzu.
-
 
 V této části vytvoříte novou `MoviesController` třídy a napsat kód, který načte data o filmech a zobrazí v prohlížeči pomocí zobrazení šablony. Ujistěte se, že jste svou aplikaci, než budete pokračovat.
 
@@ -112,7 +111,6 @@ Dvakrát klikněte na panel *Movies.sdf* otevřete **Průzkumníka serveru**. Pa
 
 > [!NOTE]
 > Pokud dojde k chybě při poklepání *Movies.sdf*, ujistěte se, že jste nainstalovali **Visual Studio 2010 SP1 nástroje pro SQL Server Compact 4.0**. (Odkazy na software najdete v seznamu požadavků uvedených v části 1 této série kurzů.) Pokud je nyní nainstalovat verzi, budete muset zavřít a znovu otevřete Visual Web Developer.
-
 
 [![DB_explorer](accessing-your-models-data-from-a-controller/_static/image14.png)](accessing-your-models-data-from-a-controller/_static/image13.png)
 

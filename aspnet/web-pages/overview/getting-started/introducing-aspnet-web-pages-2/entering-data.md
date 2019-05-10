@@ -8,12 +8,12 @@ ms.date: 05/28/2015
 ms.assetid: d37c93fc-25fd-4e94-8671-0d437beef206
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/entering-data
 msc.type: authoredcontent
-ms.openlocfilehash: d76f607f1d5e779d43ee15d8f2d697e7b0f147ae
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: b9354a7b97a7df9020a681f709e16a92650cfcf0
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59380116"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132972"
 ---
 # <a name="introducing-aspnet-web-pages---entering-database-data-by-using-forms"></a>Představení rozhraní ASP.NET Web Pages – zadávání dat do databáze pomocí formulářů
 
@@ -36,7 +36,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > - SQL `Insert Into` – příkaz
 > - `Validation` Pomocné rutiny.
 > - `Response.Redirect` Metody.
-
 
 ## <a name="what-youll-build"></a>Co budete vytvářet
 
@@ -155,7 +154,6 @@ Samozřejmě které nechcete umožní uživatelům zadat polovině prázdný fil
 > A poté je důležité pochopit přesně Pokud hodnota je null a když se nachází pouze prázdný řetězec. V kódu *AddMovie* stránky, získáte hodnoty do textových polí pomocí `Request.Form["title"]` a tak dále. Při prvním spuštění stránky (před kliknutím na tlačítko), hodnota `Request.Form["title"]` má hodnotu null. Ale při odeslání formuláře, `Request.Form["title"]` získá hodnotu `title` textového pole. Není zřejmé, ale není null; prázdné textové pole v něm jenom má prázdný řetězec. Proto při spuštění kódu v reakci na panelu klikněte na tlačítko, `Request.Form["title"]` v sobě obsahuje prázdný řetězec.
 > 
 > Toto rozlišení je důležité Při vytváření *filmy* tabulky, můžete explicitně ale nutné dodat, že žádné z polí může mít hodnotu null. Ale zde máte formuláře pro nové filmy a jste se tak rozhodli pole prázdné. Očekáváte by přiměřeně databáze si stěžovat při pokusu o uložení nové filmy, které nebyly k dispozici hodnoty žánr nebo rok. Ale to je bod &mdash; i v případě, že tyto textová pole necháte prázdné, nejsou hodnoty null; jsou prázdné řetězce. Díky tomu budete moct uložit do databáze s těmito sloupci prázdný nové filmy &mdash; , ale není null! &mdash; hodnoty. Proto budete muset Ujistěte se, že uživatelé neodesílejte prázdný řetězec, což lze provést pomocí ověření vstupu uživatele.
-
 
 ### <a name="the-validation-helper"></a>Pomocná rutina pro ověření
 

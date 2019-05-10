@@ -8,12 +8,12 @@ ms.date: 06/09/2009
 ms.assetid: c285dc6f-a1c6-46e6-ac03-3830947f57e3
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1f6e8fd2c31aa4eaf563edc719bbb8d2b3006866
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 95ca336504d05c4ea82b979dd431a6d90fb2f7b4
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59386265"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130281"
 ---
 # <a name="precompiling-your-website-vb"></a>Předkompilace webu (VB)
 
@@ -23,14 +23,12 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > Visual Studio nabízí dva typy projektů vývojáře využívající technologii ASP.NET: Projekty webové aplikace (WAP) a webových projektů (WSPs). Jedním z hlavní rozdíly mezi dva typy projektů je, že WAP musí mít kód explicitně zkompilován před nasazením, zatímco kód v WSP můžete automaticky zkompilovat na webovém serveru. Nicméně je možné předkompilovat WSP před jejich nasazením. Tento kurz popisuje výhody předkompilace a ukazuje, jak předkompilace webu z Visual Studia a z příkazového řádku.
 
-
 ## <a name="introduction"></a>Úvod
 
 Visual Studio nabízí dva různé typy projektů vývojáře využívající technologii ASP.NET: Projekty webových aplikací (WAP) a webových projektů (soubor WSP). Jedním z hlavní rozdíly mezi těmito typy projektů je, že WAP vyžadují *explicitní kompilace* vzhledem k tomu použít WSPs *automatickou kompilaci*, ve výchozím nastavení. S WAP, kompilaci kódu webové aplikace do jednoho sestavení, která je vytvořena na webu `Bin` složky. Nasazení zahrnuje kopírování obsahu značky ( `.aspx.ascx`, a `.master` souborů) v projektu, spolu s v sestavení `Bin` složka; modelu code-behind třídy podotknout není nutné k nasazení. Na druhé straně WSPs nasadíte tak, že zkopírujete na stránkách značek a jejich odpovídající použití modelu code-behind tříd do produkčního prostředí. Použití modelu code-behind třídy se kompilují na vyžádání na webovém serveru.
 
 > [!NOTE]
 > Vraťte se do části "Explicitní kompilace Versus automatickou kompilaci" v [ *určující, co soubory musí být nasazeny* kurzu](determining-what-files-need-to-be-deployed-vb.md) pro další informace o rozdílech mezi projektu modely, explicitní a automatické sestavování a vliv nasazení modelu kompilace.
-
 
 Možnost automatického kompilace se snadno používá. Neexistuje žádné explicitní kompilační krok a upravovat jenom soubory, které byly potřeba k nasazení, že explicitní kompilace vyžaduje nasazení stránky změny kódu a sestavení právě zkompilován. Automatické nasazení však má dva potenciální nedostatky:
 
@@ -49,7 +47,6 @@ WSPs a automatickou kompilaci neexistuje žádné explicitní kompilační krok 
 
 > [!NOTE]
 > Dle očekávání, je dojde k mírnému zpoždění při požadování stránky na webu, který používá automatické kompilaci, kterou trvá chvíli, než server ke kompilaci kódu stránky a uložit výsledného sestavení do první (nebo poprvé, protože byla změněna) disk.
-
 
 Stručně řečeno s explicitní kompilace musíte ke kompilaci zdrojového kódu na webu před nasazením, ukládá modul runtime se nebudou muset provést tento krok. S automatickou kompilaci modul runtime zpracovává kompilace zdrojového kódu na stránkách, ale s cenou mírné inicializace pro první návštěvě stránky, protože byl vytvořen nebo poslední aktualizace.
 
@@ -70,7 +67,6 @@ Nástroj pro kompilaci poskytuje dvě obecné formy kompilace: místní předkom
 > [!NOTE]
 > Další informace o místě předkompilace, podívejte se na [How To: Předkompilace webů ASP.NET](https://msdn.microsoft.com/library/ms227972.aspx) a [předkompilace v technologii ASP.NET 2.0](http://www.odetocode.com/Articles/417.aspx).
 
-
 Místo na stránkách na webu pro kompilaci `Temporary ASP.NET Files` složky, zkompiluje předkompilace pro nasazení na stránkách do adresáře, které si vyberete a ve formátu, který je možné nasadit do produkčního prostředí.
 
 Existují dva typy předkompilace pro nasazení, se budeme věnovat v tomto kurzu: předkompilace aktualizovat uživatelské rozhraní a předkompilace Dal aktualizovat uživatelské rozhraní. Předkompilace se aktualizovat uživatelské rozhraní zůstanou deklarativní v `.aspx`, `.ascx`, a `.master` soubory, což vývojářům zobrazit a v případě potřeby upravit deklarativní na provozním serveru. Generuje předkompilace Dal aktualizovat uživatelské rozhraní `.aspx` stránky, které jsou void veškerý obsah a odebere `.ascx` a `.master` soubory, a tím skrytí deklarativní a zakazují vývojář se to změní produkční prostředí.
@@ -88,7 +84,6 @@ Otevřít revizi WSP knihy ve Visual Studiu, přejděte do nabídky sestavení a
 
 > [!NOTE]
 > V nabídce sestavení možnost publikovat web není k dispozici v aplikaci Visual Web Developer. Pokud používáte aplikaci Visual Web Developer je potřeba použít verzi příkazového řádku nástroje kompilace technologie ASP.NET, který je popsaný v části "předkompilace z příkazového řádku".
-
 
 Až si předkompilace webu, přejděte do cílového umístění, které jste zadali v dialogovém okně Publikovat Web. Za chvíli porovnání obsahu této složky s obsahem webu. **Obrázek 2** ukazuje recenzí složky webu. Všimněte si, že obsahuje `.aspx` a `.aspx.cs` soubory. Všimněte si také, že `Bin` adresář obsahuje pouze jeden soubor `Elmah.dll`, které jsme přidali [předchozím kurzu](logging-error-details-with-elmah-vb.md)
 
@@ -108,7 +103,6 @@ Na rozdíl od explicitní kompilace v WAP předkompilace pro proces nasazení vy
 
 > [!NOTE]
 > Můžete určit, aby nástroj kompilace vytvořte jedno sestavení na stránku ASP.NET, uživatelský ovládací prvek nebo stránka předlohy zaškrtnutím políčka "Používá se oprava pojmenování a jednostránkové sestavení" v dialogovém okně Publikovat Web. S každou stránku ASP.NET, které jsou kompilovány do vlastního sestavení umožňuje jemněji odstupňovanou kontrolu nad nasazením. Například pokud aktualizace jedné webové stránky ASP.NET a potřebné k nasazení tuto změnu, potřebujete jenom nasadíte tuto stránku `.aspx` Souborová služba a přidružené sestavení do produkčního prostředí. Poraďte [jak: Generovat přiděleny pevně určené názvy nástrojem kompilace ASP.NET](https://msdn.microsoft.com/library/ms228040.aspx) Další informace.
-
 
 Cílový adresář umístění obsahuje také soubor, který nebyl součástí předkompilované webového projektu, konkrétně `PrecompiledApp.config`. Tento soubor informuje o tom, že aplikace byla předkompilována modul runtime ASP.NET a určuje, zda byla předkompilována s aktualizovat nebo od poledne aktualizovat UI.
 

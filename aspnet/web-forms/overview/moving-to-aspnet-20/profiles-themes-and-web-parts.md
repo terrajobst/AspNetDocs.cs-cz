@@ -8,19 +8,18 @@ ms.date: 02/20/2005
 ms.assetid: 92df4051-77c6-492c-bd34-23d24189cea4
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/profiles-themes-and-web-parts
 msc.type: authoredcontent
-ms.openlocfilehash: 0f3b376cee8d391eb087664a51cc25e3b58d16b9
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: cf5c45781be6d003d28c6aa27efa08032579a6dd
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59390035"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132787"
 ---
 # <a name="profiles-themes-and-web-parts"></a>Profily, motivy a webové části
 
 by [Microsoft](https://github.com/microsoft)
 
 > Byly zjištěny hlavní změny v konfiguraci a instrumentace v technologii ASP.NET 2.0. Nové rozhraní API technologie ASP.NET konfigurace umožňuje změny konfigurace provedli programově. Kromě toho existují spoustu nových nastavení konfigurace pro nové konfigurace a instrumentace.
-
 
 ASP.NET 2.0 představuje významné zlepšení v oblasti přizpůsobené weby. Kromě funkcí členství, které jsme si popsali ASP.NET profily, motivy a webové části výrazně zlepšuje přizpůsobení webových stránek.
 
@@ -155,16 +154,13 @@ Soubor skinu je soubor XML, který obsahuje definice vlastností pro serverové 
 
 **Obrázek 1** níže ukazuje malé stránky ASP.NET procházet bez použije motiv. **Obrázek 2** ukazuje stejný soubor se použije motiv. Barva pozadí a barvu textu se konfigurují prostřednictvím souboru šablon stylů CSS. Vzhled na tlačítko a textové pole jsou nakonfigurované pomocí souboru skinu uvedené výše.
 
-
 ![Žádné motiv](profiles-themes-and-web-parts/_static/image1.gif)
 
 **Obrázek 1**: Žádné motiv
 
-
 ![Motiv](profiles-themes-and-web-parts/_static/image2.gif)
 
 **Obrázek 2**: Motiv
-
 
 Soubor skinu výše uvedených definuje výchozí vzhled všech ovládacích prvků textového pole a ovládací prvky tlačítek. To znamená, že bude trvat každý ovládací prvek textového pole a ovládací prvek tlačítko Vložit na stránku na tento vzhled. Můžete také definovat vzhled, který lze použít ke konkrétním instancím těchto ovládacích prvků pomocí **SkinID** vlastnost ovládacího prvku.
 
@@ -329,7 +325,6 @@ V této části tohoto průvodce vytvořit stránku, která používá ovládac�
 > [!NOTE]
 > Není potřeba dělat nic. přizpůsobení webových částí; je povoleno standardně pro sada ovládacích prvků webových částí. Při prvním spuštění stránky webové části na web, ASP.NET nastaví výchozího zprostředkovatele individuálního nastavení pro ukládání individuální uživatelská nastavení. Další informace o přizpůsobení najdete v tématu Přehled přizpůsobení webových částí.
 
-
 ### <a name="to-create-a-page-for-containing-web-parts-controls"></a>Vytvoření stránky obsahující ovládací prvky webové části
 
 1. Zavřete stránku výchozí a přidejte novou stránku k lokalitě s názvem WebPartsDemo.aspx.
@@ -402,11 +397,9 @@ Nyní můžete otestovat stránky tak, že k němu přejdete v prohlížeči. Na
 
 **Ukázka části webové stránky na dvě zóny**
 
-
 ![Snímek obrazovky webové části VS návod 1](profiles-themes-and-web-parts/_static/image3.gif)
 
 **Obrázek 3**: Snímek obrazovky webové části VS návod 1
-
 
 V názvu každého ovládacího prvku je šipku dolů, který poskytuje přístup k nabídce příkazů dostupných akcí, které můžete provádět v ovládacím prvku. Klikněte na nabídku akcí pro jeden z ovládacích prvků a pak klikněte na tlačítko **minimalizovat** operací a Všimněte si, že je minimalizován ovládacího prvku. V nabídce Akce klikněte na **obnovení**, a vrátí jeho normální velikost ovládacího prvku.
 
@@ -449,11 +442,9 @@ Teď můžete otestovat schopnost upravovat stránky a změna rozložení.
 
 ### <a name="web-parts-demo-page-with-my-links-control-moved"></a>Části Ukázky webovou stránku pomocí ovládacího prvku mé odkazy přesunout
 
-
 ![Snímek obrazovky webové části VS návod 2](profiles-themes-and-web-parts/_static/image4.gif)
 
 **Obrázek 4**: Snímek obrazovky webové části VS návod 2
-
 
 1. Klikněte na tlačítko **režim zobrazení** rozevírací nabídky a vybereme **Procházet**. Na stránce se aktualizují, zmizí názvy zón a **mé odkazy** řídit zůstanou uložena tam, kam jste umístili.
 2. Abychom si předvedli, přizpůsobení funguje, ukončete prohlížeč a pak znovu načíst stránku. Provedené změny se uloží pro budoucí relace prohlížeče.
@@ -467,22 +458,18 @@ Teď můžete otestovat schopnost upravovat stránky a změna rozložení.
 
 ### <a name="web-parts-demo-page-in-edit-mode"></a>Ukázka části webové stránky v režimu úprav
 
-
 ![Snímek obrazovky webové části VS návod 3](profiles-themes-and-web-parts/_static/image5.gif)
 
 **Obrázek 5**: Snímek obrazovky webové části VS návod 3
-
 
 1. Klikněte na tlačítko **režim zobrazení** nabídky a vybereme **Procházet** vrátit do režimu procházení.
 2. Ovládací prvek má teď aktualizovaný titulek a ohraničení, jak je znázorněno na následujícím snímku obrazovky.
 
 ### <a name="edited-web-parts-demo-page"></a>Upravované stránky webové části Ukázky
 
-
 ![Snímek obrazovky webové části VS návod 4](profiles-themes-and-web-parts/_static/image6.gif)
 
 **Obrázek 4**: Snímek obrazovky webové části VS návod 4
-
 
 ### <a name="adding-web-parts-at-run-time"></a>Přidání webových částí v době běhu
 

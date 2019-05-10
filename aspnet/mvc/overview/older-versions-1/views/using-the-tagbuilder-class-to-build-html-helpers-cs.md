@@ -8,19 +8,18 @@ ms.date: 03/02/2009
 ms.assetid: 3975a52f-bd15-4edd-8f3d-1df93672515b
 msc.legacyurl: /mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3227560c1d0c48f7738e26c87a0dbb140c410eee
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: c8eaea9932a30c744b9a69861619ce9458b5a23a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59410094"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130297"
 ---
 # <a name="using-the-tagbuilder-class-to-build-html-helpers-c"></a>Pomocí třída TagBuilder pro sestavení pomocných rutin HTML (C#)
 
 podle [Stephen Walther](https://github.com/StephenWalther)
 
 > Stephen Walther vás seznámí s třídu v rozhraní ASP.NET MVC s názvem třída TagBuilder užitečné nástroje. Třída TagBuilder můžete použít k snadnému vytváření značky HTML.
-
 
 Architektura ASP.NET MVC zahrnuje užitečný nástroj pro třídu s názvem třída TagBuilder, který vám pomůže při vytváření pomocných rutin HTML. Třída TagBuilder jako název třídy navrhuje, vám umožní snadno vytvářet značky HTML. V tomto kurzu (BRIEF) k dispozici máte přehled o třída TagBuilder a zjistíte, jak použít tuto třídu při vytváření jednoduchých pomocné rutiny HTML, který vykreslí HTML &lt;img&gt; značky.
 
@@ -33,7 +32,6 @@ Třída TagBuilder je obsažen v oboru názvů System.Web.Mvc. Má pět metod:
 - MergeAttribute() – umožňuje přidat atributů pro značku. Existuje více přetížení této metody.
 - SetInnerText() – umožňuje nastavit vnitřní text značky. Vnitřní text je automaticky použije kódování HTML.
 - ToString() – Umožňuje vykreslit značky. Můžete určit, zda chcete vytvořit značku normální, počáteční značku, koncovou značku nebo samouzavírací značky.
-  
 
 Třída TagBuilder má čtyři důležité vlastnosti:
 
@@ -64,11 +62,9 @@ Po vytvoření Image pomocné rutiny, můžete v zobrazení ASP.NET MVC stejně 
 
 [!code-aspx[Main](using-the-tagbuilder-class-to-build-html-helpers-cs/samples/sample2.aspx)]
 
-
 [![Dialogové okno Nový projekt](using-the-tagbuilder-class-to-build-html-helpers-cs/_static/image1.jpg)](using-the-tagbuilder-class-to-build-html-helpers-cs/_static/image1.png)
 
 **Obrázek 01**: Použití pomocné rutiny bitové kopie ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-tagbuilder-class-to-build-html-helpers-cs/_static/image2.png))
-
 
 Všimněte si, že je nutné naimportovat přidružené pomocná rutina obrázku v horní části zobrazení Index.aspx obor názvů. Pomocné rutiny s následující direktivy importu:
 

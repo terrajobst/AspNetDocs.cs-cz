@@ -8,12 +8,12 @@ ms.date: 06/17/2015
 ms.assetid: 7526ed45-a97d-4e8a-8301-01324ef0eff9
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/intro-to-web-pages-programming
 msc.type: authoredcontent
-ms.openlocfilehash: 81c2c6f0070a409c289128ccf5d39f9fff788b48
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 474de7671ac2931e5ba9ff635d77385403644521
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59387344"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130511"
 ---
 # <a name="introducing-aspnet-web-pages---programming-basics"></a>Úvod do ASP.NET Web Pages – základy programování
 
@@ -34,7 +34,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > 
 > - A Správce balíčků NuGet.
 > - `Gravatar` Pomocné rutiny.
-
 
 Tento kurz je primárně cvičení v Úvod k programování syntaxe, které budete používat pro rozhraní ASP.NET Web Pages. Získáte informace o *syntaxe Razor* a kód, který je napsán v jazyce C# je programovací jazyk. Jste získali v předchozím kurzu; balíčku glimpse této syntaxe v tomto kurzu vám objasníme další syntaxe.
 
@@ -60,7 +59,6 @@ Zkopírujte do něj následující do souboru, úplná výměna, co již existuj
 
 > [!NOTE]
 > Při kopírování kód nebo kód z příkladů do stránky odsazení a zarovnání nemusí být stejný jako v tomto kurzu. Jak kód poběží, ale nemají vliv odsazení a zarovnání.
-
 
 [!code-cshtml[Main](intro-to-web-pages-programming/samples/sample1.cshtml)]
 
@@ -126,7 +124,6 @@ Jak budete chtít z prostředí v předchozím kurzu, žádná z kódu Razor nen
 > 
 > Jsme zmínili, to vzhledem k tomu, že pokud hledáte informace o programovacím rozhraní ASP.NET Web Pages, najdete velké množství odkazů na Razor. Velké množství tyto odkazy se však nevztahují na jste postup a může být matoucí. A ve skutečnosti řadu programovacích dotazy jsou ve skutečnosti se informace o práci s jazykem C# nebo práce s technologií ASP.NET. Proto když se podíváte speciálně pro informace o syntaxi Razor, nemusí najít odpovědi, které potřebujete.
 
-
 ## <a name="adding-some-conditional-logic"></a>Přidání některých podmíněnou logiku
 
 Jednou z nejlepších funkcí o pomocí kódu na stránce je, které lze změnit, co se stane, na základě různých podmínek. V této části kurzu jste budete pohrajte si s některé způsoby, jak změnit obsah zobrazený na stránce.
@@ -166,7 +163,6 @@ Proměnné s hodnotami nebo proti výrazy můžete otestovat pomocí *logického
 
 > [!NOTE]
 > Ujistěte se, že si všimnete, že operátor porovnání pro (==) se rovná není stejný jako =. = – Operátor se používá jenom pro přiřazení hodnoty (var = 2). Jsou-li zkombinovány tyto operátory budete buď dojde k chybě nebo získáte některé strangeová výsledky.
-
 
 K otestování, jestli je hodnota true, je úplnou syntaxi if(IsDone == true). Ale můžete použít také if(IsDone) zástupce. Pokud neexistuje žádný operátor porovnání, ASP.NET předpokládá, že testujete pro hodnotu true.
 
@@ -231,7 +227,6 @@ Existuje zdvih tady, jak je vidět. Jako název říká, řetězec dotazu je ře
 > **Datové typy a metody As()**
 > 
 > Jsme uvedli jste, pouze pokud při vytváření proměnné, používat klíčové slovo var. To není celý scénář, ale. Aby bylo možné manipulaci s hodnotami – přidání čísel, nebo řetězení řetězců, nebo porovnávání dat nebo test pro Pravda/Nepravda – C# má pro práci s odpovídající vnitřní reprezentaci hodnoty. C# můžete *obvykle* zjistit, co by měl být tohoto vyjádření (to znamená, co *typ* data) podle co děláte s hodnotami. Teď nebo později ale to nemůžete udělat. Pokud ne, je nutné zvýšit tak, že explicitně jak C# by měla představovat data. Metoda AsBool činí – říká C#, že řetězcovou hodnotu "true" nebo "false" by se měla zpracovávat jako logická hodnota. Podobné metody existovat k reprezentaci řetězce jako jiné typy, jako jsou AsInt (nakládání jako s celým číslem), AsDateTime (nakládání jako datum/čas), AsFloat (nakládání jako číslo s plovoucí desetinnou čárkou) a tak dále. Když použijete tyto metody (), pokud C# nemůže představovat hodnotu řetězce podle požadavku, zobrazí se vám chyba.
-
 
 V kódu stránky, odstranit nebo okomentovat tento prvek (tady se zobrazují komentářem navýšení kapacity):
 

@@ -8,12 +8,12 @@ ms.date: 02/07/2014
 ms.assetid: aa67d304-583b-4bf8-a231-195656cfb587
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-c
 msc.type: authoredcontent
-ms.openlocfilehash: 8237dc6b925ccefc5b411aebc8e7c399dcdc6746
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: d9edcd61e52941c0fd69e645da7e2cf467a632ac
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59407351"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131782"
 ---
 # <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>Úvod k programování v rozhraní ASP.NET Web používající syntaxi Razor (C#)
 
@@ -36,14 +36,12 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > 
 > V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
 
-
 ## <a name="the-top-8-programming-tips"></a>Začátek 8 Tipy pro programování
 
 Tato část uvádí několik tipů, které je nezbytně potřeba ví, jak můžete začít psát kód serveru ASP.NET pomocí syntaxe Razor.
 
 > [!NOTE]
 > Syntaxe Razor je založena na programovací jazyk C# a, který je jazyk, který se často používá s webovými stránkami ASP.NET. Syntaxe Razor, ale také podporuje jazyka Visual Basic a všechno, co uvidíte, že můžete provést také v jazyce Visual Basic. Podrobnosti najdete v tématu dodatku [syntaxe a jazyk Visual Basic](https://go.microsoft.com/fwlink/?LinkId=202908).
-
 
 Později v tomto článku najdete další podrobnosti o většinu těchto programovacích technik.
 
@@ -66,7 +64,6 @@ Je to, jak tyto příkazy vypadat při spuštění stránky v prohlížeči:
 > Pokud je vaším cílem je výstup kód HTML, který vykreslí značky jako značka (třeba `<p></p>` odstavce nebo `<em></em>` pro zvýraznění textu), najdete v části [kombinaci textu, značek a kódu v blocích kódu](#BM_CombiningTextMarkupAndCode) dále v tomto článku.
 > 
 > Další informace o kódování HTML v [práce s formuláři](https://go.microsoft.com/fwlink/?LinkId=202892).
-
 
 ### <a name="2-you-enclose-code-blocks-in-braces"></a>2. Bloky kódu je uzavřít do složených závorek
 
@@ -116,7 +113,6 @@ Tady je výsledkem použití obou těchto příkladech na stránce:
 > [!NOTE]
 > Všimněte si, že `@` znak slouží k označení literálů doslovném řetězci v jazyce C# a označit kód stránek v ASP.NET.
 
-
 ### <a name="6-code-is-case-sensitive"></a>6. Kód je velká a malá písmena
 
 V jazyce C#, klíčová slova (stejně jako `var`, `true`, a `if`) a názvy proměnných jsou malá a velká písmena. Následující řádky kódu vytvářejí dva různé proměnné, `lastName` a `LastName.`
@@ -127,7 +123,6 @@ Pokud deklarujete proměnnou jako `var lastName = "Smith";` a pokud se pokusíte
 
 > [!NOTE]
 > V jazyce Visual Basic, klíčová slova a proměnné jsou *není* velká a malá písmena.
-
 
 ### <a name="7-much-of-your-coding-involves-objects"></a>7. Velká část psaní kódu zahrnuje objekty
 
@@ -161,7 +156,6 @@ Výsledek zobrazí v prohlížeči (po kliknutí na tlačítko **odeslat**):
 > Protokol použitý pro webové stránky (HTTP) podporuje velmi omezený počet metody (akce), které se používají k provádění požadavků na server. Nichž dva nejčastější jsou GET, který slouží k načtení stránky a příspěvku, který se používá k odeslání stránky. Obecně platí uživatel požádá o stránku při prvním požadavku na stránku pomocí GET. Pokud uživatel vyplní ve formuláři a poté klikne na tlačítko Odeslat, prohlížeč odešle požadavek POST na server.
 > 
 > Ve webovém programování často je užitečné vědět, jestli na stránce jsou požadovány jako GET nebo POST, abyste věděli, jak zpracování stránky. ASP.NET Web Pages, můžete použít `IsPost` vlastnosti chcete zobrazit, zda je požadavek GET nebo POST. Pokud je příspěvek, požadavek `IsPost` vlastnost vrátí hodnotu PRAVDA, a můžete provádět věci, jako je čtení hodnoty polí ve formuláři. Mnoho příkladů, zobrazí se vám ukazují, jak zpracovat stránce odlišně v závislosti na hodnotě `IsPost`.
-
 
 ## <a name="a-simple-code-example"></a>Jednoduchým příkladem kódu
 
@@ -217,7 +211,6 @@ Syntaxe Razor poskytuje veškerou sílu technologie ASP.NET, ale pomocí zjednod
 > Pokud aplikace potřebuje pracovat s informacemi o skutečné zákazníka, vytvoří instanci (nebo *vytvoří instanci*) objekt zákazníka. Je každého zákazníka samostatnou instanci `Customer` třídy. Každá instance podporuje stejné vlastnosti a metody, ale hodnoty vlastností pro každou instanci se obvykle liší, protože každý objekt zákazníka je jedinečný. V objektu jednoho zákazníka `LastName` vlastnost může být "Novák"; v jiném objektu zákazníků, `LastName` vlastnost může být "Jones."
 > 
 > Podobně je všechny jednotlivé webové stránky ve vaší lokalitě `Page` objekt, který je instancí `Page` třídy. Je tlačítko na stránce `Button` objekt, který je instancí `Button` třídy a tak dále. Každá instance má vlastní vlastnosti, ale všechny jsou založeny na zadaných v definici třídy objektu.
-
 
 ## <a name="basic-syntax"></a>Základní syntaxe
 
@@ -439,7 +432,6 @@ Následující tabulka uvádí některé běžné metody převodu a testování 
 ## <a name="operators"></a>Operátory
 
 Operátor je klíčové slovo nebo znak, který říká technologie ASP.NET, jaký druh příkaz k provedení ve výrazu. Jazyk C# (a syntaxi Razor, která je založena na něm) podporuje mnoho operátorů, ale je potřeba jenom rozpoznat pár, abyste mohli začít. Následující tabulka shrnuje nejčastější operátory.
-
 
 :::row:::
     :::column:::
@@ -832,7 +824,6 @@ V situacích, kdy váš kód může nastat výjimky a pokud se chcete vyhnout ch
 > [!NOTE]
 > Doporučujeme, abyste je velmi riskantní používat `Response.Redirect` metoda `try/catch` příkazy, protože to může způsobit výjimku na stránce.
 
-
 Následující příklad ukazuje stránka, která vytváří textový soubor na první žádost o a poté zobrazí tlačítko, které umožňuje uživateli otevřít soubor. V příkladu záměrně používá chybný název souboru tak, aby způsobí výjimku. Tento kód obsahuje `catch` příkazy pro dvě výjimky: `FileNotFoundException`, která nastane, pokud název souboru je chybný, a `DirectoryNotFoundException`, která nastane, pokud ASP.NET i nelze najít složku. (Příkaz v tomto příkladu můžete odkomentovat Chcete-li zobrazit, jak se spustí při všechno funguje správně.)
 
 Pokud váš kód nebyl zpracovat výjimky, zobrazí se chybová stránka jako na předchozím snímku obrazovky. Ale `try/catch` část pomůže zabránit uživateli v zobrazení tyto typy chyb.
@@ -843,12 +834,9 @@ Pokud váš kód nebyl zpracovat výjimky, zobrazí se chybová stránka jako na
 
 **Programování v jazyce Visual Basic**
 
-
 [Dodatek: Syntaxe a jazyk Visual Basic](https://go.microsoft.com/fwlink/?LinkId=202908)
 
-
 **Referenční dokumentace**
-
 
 [ASP.NET](https://msdn.microsoft.com/library/ee532866.aspx)
 

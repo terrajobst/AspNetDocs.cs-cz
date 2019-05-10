@@ -8,12 +8,12 @@ ms.date: 03/31/2010
 ms.assetid: 1c4588bb-255d-4088-b319-5208da756f4d
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 032b6665d3e99998dba870c8f7f2cdfec17737bf
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 5d9419053b433f501212783d1cd3d9fb4734d63d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59383068"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133127"
 ---
 # <a name="programmatically-setting-the-objectdatasources-parameter-values-c"></a>Programové nastavení hodnot parametru ObjectDataSource (C#)
 
@@ -23,7 +23,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > V tomto kurzu podíváme na přidání metody do našich DAL a BLL, která přijímá jeden vstupní parametr a vrací data. V příkladu se tento parametr nastavit prostřednictvím kódu programu.
 
-
 ## <a name="introduction"></a>Úvod
 
 Jak jsme viděli v [předchozí kurz o službě](declarative-parameters-cs.md), řadu možností, které jsou k dispozici pro deklarativně předání hodnot parametru ObjectDataSource metody. Pokud je hodnota parametru pevně zakódované, pochází z webový ovládací prvek na stránce nebo v kterýkoli jiný zdroj, který je čitelný ve zdroji dat `Parameter` objektu, například, že hodnota může být vázaný na vstupní parametr bez nutnosti psaní jediného řádku kódu.
@@ -32,11 +31,9 @@ Může nastat situace, ale když hodnota parametru pocházejí z některé zdroj
 
 Pokaždé, když prvku ObjectDataSource `Select` je vyvolána metoda ObjectDataSource nejprve vyvolá jeho [události Selecting](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selecting%28VS.80%29.aspx). Potom je volána metoda ObjectDataSource základní objekt. Jakmile, která se dokončí prvku ObjectDataSource [vybrané události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selected%28VS.80%29.aspx) aktivuje (toto pořadí událostí, které znázorňuje obrázek 1). Parametr hodnoty předané do metody ObjectDataSource základní objekt můžete nastavit nebo upravit v obslužné rutině události pro `Selecting` událostí.
 
-
 [![Je vyvolána ObjectDataSource vybrané a výběr Fire události před a po jeho základního objektu – metoda](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image2.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image1.png)
 
 **Obrázek 1**: Prvku ObjectDataSource `Selected` a `Selecting` je vyvolána metoda Fire události před a po jeho základního objektu ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image3.png))
-
 
 V tomto kurzu se podíváme přidání metody do našich DAL a BLL, která přijímá jeden vstupní parametr `Month`, typu `int` a vrátí `EmployeesDataTable` vyplní zaměstnanců, které mají jejich náborovou výročí v zadaném objektu `Month`. Náš příklad nastaví tento parametr prostřednictvím kódu programu na základě aktuálního měsíce zobrazujícím seznam "Výročí tohoto měsíce."
 
@@ -46,40 +43,31 @@ Pusťme se do práce!
 
 V našem prvním příkladu potřebujeme přidat prostředky k načtení těchto zaměstnanci jehož `HireDate` došlo k chybě v zadaném měsíci. Tuto funkčnost v souladu s naší architektury, je nutné nejprve vytvořit metodu v `EmployeesTableAdapter` , která se mapuje na správný příkaz SQL. Chcete-li to provést, začněte otevřením typová Northwind. Klikněte pravým tlačítkem na `EmployeesTableAdapter` označovat popisky a zvolte Přidat dotaz.
 
-
 [![Přidat nový dotaz EmployeesTableAdapter](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image5.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image4.png)
 
 **Obrázek 2**: Přidat nový dotaz, který `EmployeesTableAdapter` ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image6.png))
 
-
 Zvolte Přidat příkaz SQL, který vrátí řádky. Když se dostanete určení `SELECT` výchozí obrazovky – příkaz `SELECT` příkaz pro `EmployeesTableAdapter` už se načtou. Jednoduše přidejte v `WHERE` klauzule: `WHERE DATEPART(m, HireDate) = @Month`. [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx) je funkce jazyka T-SQL, která vrací část konkrétní datum `datetime` typ; v tomto případě používáme `DATEPART` vrátit z měsíce `HireDate` sloupce.
-
 
 [![Vrácení pouze těch řádky kde HireDate sloupec je menší než nebo rovno @HiredBeforeDate parametr](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image8.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image7.png)
 
 **Obrázek 3**: Vrácení pouze těch řádky kde `HireDate` sloupec je menší než nebo rovna hodnotě `@HiredBeforeDate` parametr ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image9.png))
 
-
 Nakonec změňte `FillBy` a `GetDataBy` metoda názvů pro `FillByHiredDateMonth` a `GetEmployeesByHiredDateMonth`v uvedeném pořadí.
-
 
 [![Vyberte vhodnější názvy metod než FillBy a GetDataBy](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image11.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image10.png)
 
 **Obrázek 4**: Zvolte více odpovídající metoda názvy než `FillBy` a `GetDataBy` ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image12.png))
 
-
 Kliknutím na tlačítko Dokončit dokončete průvodce a vraťte se do datové sady návrhovou plochu. `EmployeesTableAdapter` By teď měl obsahovat novou sadu metod pro přístup k zaměstnance zařazené v zadaném měsíci.
-
 
 [![Nové metody se zobrazí v návrhové ploše datové sady](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image14.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image13.png)
 
 **Obrázek 5**: Nové metody zobrazují v návrhové ploše datové sady ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image15.png))
 
-
 ## <a name="step-2-adding-thegetemployeesbyhireddatemonthmonthmethod-to-the-business-logic-layer"></a>Krok 2: Přidávání`GetEmployeesByHiredDateMonth(month)`metodu pro vrstvy obchodní logiky
 
 Protože naše aplikace architektura používá samostatné vrstvy pro obchodní logiku a data získat přístup k logiku, musíme přidat metody do našich knihoven BLL, který si najali, volání do vrstvy DAL k načtení zaměstnanci před určitým datem. Otevřít `EmployeesBLL.cs` a přidejte následující metodu:
-
 
 [!code-csharp[Main](programmatically-setting-the-objectdatasource-s-parameter-values-cs/samples/sample1.cs)]
 
@@ -89,50 +77,39 @@ Stejně jako u našich jiné metody v této třídě `GetEmployeesByHiredDateMon
 
 Posledním krokem v tomto příkladu je zobrazení těchto zaměstnanců, jehož náborovou výročí je tento měsíc. Začněte přidáním GridView k `ProgrammaticParams.aspx` stránku `BasicReporting` složky a přidejte nový prvek ObjectDataSource jako svůj zdroj dat. Konfigurace ObjectDataSource používat `EmployeesBLL` třídy s `SelectMethod` nastavena na `GetEmployeesByHiredDateMonth(month)`.
 
-
 [![Použití třídy EmployeesBLL](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image17.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image16.png)
 
 **Obrázek 6**: Použití `EmployeesBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image18.png))
-
 
 [![Vyberte z the GetEmployeesByHiredDateMonth(month) – metoda](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image20.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image19.png)
 
 **Obrázek 7**: Vyberte z `GetEmployeesByHiredDateMonth(month)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image21.png))
 
-
 Poslední obrazovka zobrazí dotaz, abychom mohli poskytovat `month` zdroje hodnotu parametru. Vzhledem k tomu, že tato hodnota nastavíme prostřednictvím kódu programu, ponechejte zdroji parametru nastavenou na výchozí hodnotu None možnosti a klikněte na tlačítko Dokončit.
-
 
 [![Ponechte zdrojová sada parametr na hodnotu None](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image23.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image22.png)
 
 **Obrázek 8**: Ponechte zdrojový parametr nastaven na hodnotu None ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image24.png))
 
-
 Tím se vytvoří `Parameter` objektu v prvku ObjectDataSource `SelectParameters` kolekce, ve kterém není zadána žádná hodnota.
-
 
 [!code-aspx[Main](programmatically-setting-the-objectdatasource-s-parameter-values-cs/samples/sample2.aspx)]
 
 Nastavení této hodnoty prostřednictvím kódu programu, potřebujeme vytvořit obslužnou rutinu události pro ObjectDataSource `Selecting` událostí. Chcete-li to provést, přejděte do zobrazení návrhu a dvakrát klikněte na panel prvku ObjectDataSource. Alternativně vyberte ObjectDataSource, přejděte do okna Vlastnosti a klikněte ikonu blesku. V dalším kroku buď poklepejte na položku v textovém poli vedle `Selecting` události nebo zadejte název obslužné rutiny události, kterou chcete použít.
 
-
 ![Klikněte na na ikonu blesku v okně Vlastnosti události ovládacího prvku seznam](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image25.png)
 
 **Obrázek 9**: Klikněte na na ikonu blesku v okně Vlastnosti události ovládacího prvku seznam
 
-
 Oba přístupy přidat novou obslužnou rutinu události pro ObjectDataSource `Selecting` událostí k použití modelu code-behind třídy stránky. V této obslužné rutiny události jsme čtení a zápis do hodnot parametru pomocí `e.InputParameters[parameterName]`, kde *`parameterName`* je hodnota `Name` atribut `<asp:Parameter>` značky ( `InputParameters` kolekce může být také indexované ordinally, stejně jako v `e.InputParameters[index]`). Chcete-li nastavit `month` parametr pro aktuální měsíc, přidejte následující text do `Selecting` obslužné rutiny události:
-
 
 [!code-csharp[Main](programmatically-setting-the-objectdatasource-s-parameter-values-cs/samples/sample3.cs)]
 
 Při návštěvě této stránky prostřednictvím prohlížeče můžeme vidět pouze jednoho zaměstnance byl přijat tento měsíc (březen) Novák Laura, který byl od 1994 ve společnosti.
 
-
 [![Tyto zaměstnanci, jejichž výročí tento měsíc jsou uvedeny.](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image27.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image26.png)
 
 **Obrázek 10**: Tyto zaměstnanci jejichž výročí tento měsíc jsou uvedeny ([kliknutím ji zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image28.png))
-
 
 ## <a name="summary"></a>Souhrn
 

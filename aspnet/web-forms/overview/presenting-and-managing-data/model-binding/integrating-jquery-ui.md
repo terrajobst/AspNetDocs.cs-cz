@@ -8,12 +8,12 @@ ms.date: 02/27/2014
 ms.assetid: 3cbab37b-fb0f-4751-9ec4-74e068c3f380
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/integrating-jquery-ui
 msc.type: authoredcontent
-ms.openlocfilehash: 5e9cbb4ca4c45fabfa53f9e3d2537250f1231ba0
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: c8d711dd44950116f3a3e09d5d12c507918c543f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59421963"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132000"
 ---
 # <a name="integrating-jquery-ui-datepicker-with-model-binding-and-web-forms"></a>Integrace prvku Datepicker uživatelského rozhraní JQuery s vazby modelu a webové formuláře
 
@@ -26,7 +26,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > V tomto kurzu vychází z vytvořeného v projektu [první](retrieving-data.md) a [druhý](updating-deleting-and-creating-data.md) části této série.
 > 
 > Je možné [Stáhnout](https://go.microsoft.com/fwlink/?LinkId=286116) dokončený projekt v jazyce C# nebo VB. Ke stažení kódu funguje pomocí sady Visual Studio 2012 nebo Visual Studio 2013. Používá šablonu Visual Studio 2012, která se trochu liší od sady Visual Studio 2013 šablonu uvedenou v tomto kurzu.
-
 
 ## <a name="what-youll-build"></a>Co budete vytvářet
 

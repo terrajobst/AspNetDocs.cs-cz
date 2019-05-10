@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 634ea84b-f904-4afe-b71b-49cccef4d9cc
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-models-and-data-access
 msc.type: authoredcontent
-ms.openlocfilehash: 53ca3bc4e550f488f3ae4c41f02a636e747107cb
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 90635b617930d0a9c126795f4c8790d542e33dc9
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59384887"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129694"
 ---
 # <a name="aspnet-mvc-4-models-and-data-access"></a>ASP.NET MVC 4 – modely a přístup k datům
 
@@ -53,7 +53,6 @@ Výhody použití tohoto přístupu je, že zůstane modelu nezávisle na stálo
 > 
 > Pokud chcete prozkoumat celé **Music Store** aplikace se nachází v [MVC. Music Store](https://github.com/evilDave/MVC-Music-Store).
 
-
 <a id="Prerequisites"></a>
 
 <a id="Prerequisites"></a>
@@ -89,7 +88,6 @@ Podle následující praktická cvičení se skládá tohoto praktického testov
 
 > [!NOTE]
 > Se sadou každý cvičení **koncové** složku, která obsahuje výsledný řešení byste měli získat po dokončení cvičení. Toto řešení můžete použít jako vodítko, pokud potřebujete další pomoc prostřednictvím praktická cvičení.
-
 
 Odhadovaný čas dokončení tohoto testovacího prostředí: **35 minut**.
 
@@ -186,7 +184,6 @@ V této úloze vytvoříte datový model pro interakci s databází přidali v p
     > [!NOTE]
     > Šablony T4 (.tt) spustit kód pro generování tříd entit a přepíše existující třídy se stejným názvem. V tomto příkladu třídy &quot;alba&quot;, &quot;žánr&quot; a &quot;interpreta&quot; byly přepsat vygenerovaný kód.
 
-
 <a id="Ex1Task3"></a>
 
 <a id="Task_3_-_Building_the_Application"></a>
@@ -273,7 +270,6 @@ Po vygenerování modelu upravíte StoreController poskytnout dat získaných z 
 
 > [!NOTE]
 > Pokud dokončení cvičení 1 a už pracovali s Database First přístup, se teď naučíte stejné výsledky s jiným procesem. Úlohy, které jsou společné s cvičení 1 byly označeny pro usnadnění vaší čtení. Pokud jste nedokončili vykonávat 1 ale chtěli dozvědět přístupu Code First, můžete spustit z tohoto cvičení a získat úplné vysvětlení tohoto tématu.
-
 
 <a id="Ex2Task1"></a>
 
@@ -383,7 +379,6 @@ V této úloze budete aktualizovat StoreController třídy tak, aby místo použ
 > Tato úloha je společné s cvičení 1.
 > 
 > Pokud jste dokončili cvičení 1 se nezapomeňte tyto kroky jsou stejné v obou metod (první databáze nebo kód nejprve). Jsou odlišné v jak se data propojené s modelem, ale přístup k datovým entitám se ještě transparentní z kontroleru.
-
 
 1. Otevřít **Controllers\StoreController.cs** a přidejte následující pole do třídy pro uložení instance **MusicStoreEntities** třídu s názvem **storeDB**:
 

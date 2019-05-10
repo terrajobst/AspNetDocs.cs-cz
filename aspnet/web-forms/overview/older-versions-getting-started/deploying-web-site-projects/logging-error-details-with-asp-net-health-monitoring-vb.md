@@ -8,12 +8,12 @@ ms.date: 06/09/2009
 ms.assetid: 09a6c74e-936a-4c04-8547-5bb313a4e4a3
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a9dd4268ef20b58b674f8ec8313132398fc5f19d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 053b88594e961246d4d9ed6f16d9716d0b9ca955
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59413123"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132386"
 ---
 # <a name="logging-error-details-with-aspnet-health-monitoring-vb"></a>Protokolování podrobností o chybách pomocí monitorování stavu v ASP.NET (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/1/0/C/10CC829F-A808-4302-97D3-59989B8F9C01/ASPNET_Hosting_Tutorial_13_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/5/C/5/5C57DB8C-5DEA-4B3A-92CA-4405544D313B/aspnet_tutorial13_HealthMonitoring_vb.pdf)
 
 > Systém monitorování stavu od Microsoftu poskytuje snadný a přizpůsobit způsob do protokolu různé webové události, včetně neošetřených výjimek. Tento kurz vás provede nastavení stavu monitorování systému k protokolování neošetřených výjimek k databázi a upozornit vývojáře prostřednictvím e-mailovou zprávu.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -67,7 +66,6 @@ Stav monitorování výchozí konfigurace systému je přizpůsobit na základě
 > [!NOTE]
 > `aspnet_regsql.exe` Nástroj byl popsán v [ *konfigurace na webu, že používá aplikační služby* kurzu](configuring-a-website-that-uses-application-services-vb.md) když jsme přidali podporu pro ASP. SÍŤ pro aplikační služby. V důsledku toho již obsahuje databázi na webu knihy recenze `aspnet_WebEvent_LogEvent` uloženou proceduru, která ukládá informace o události do tabulky s názvem `aspnet_WebEvent_Events`.
 
-
 Jakmile budete mít potřebné uložené procedury a tabulky přidá k vaší databázi, už jen zbývá dáte pokyn, aby k protokolování neošetřených výjimek všechny do databáze sledování stavu. To provést tak, že přidáte následující kód na váš web `Web.config` souboru:
 
 [!code-xml[Main](logging-error-details-with-asp-net-health-monitoring-vb/samples/sample2.xml)]
@@ -82,7 +80,6 @@ Tyto informace o konfiguraci nastaví stav monitorování systému do protokolu 
 
 > [!NOTE]
 > `WebBaseErrorEvent` Událost je aktivována pouze pro chyby serveru; není vyvolána pro chyby protokolu HTTP, třeba požadavek na zdroj technologie ASP.NET, který se nenachází. Tím se liší od chování `HttpApplication` třídy `Error` událost, která se vyvolá pro server a chyby protokolu HTTP.
-
 
 Pokud chcete zobrazit stav monitorování v akci, přejděte na webovou stránku a generovat Chyba za běhu návštěvou `Genre.aspx?ID=foo`. Měli byste vidět příslušná chybová stránka – výjimka podrobnosti žlutý obrazovky z smrti (při návštěvě místně) nebo vlastní chybové stránky (při návštěvě webu v produkčním prostředí). Systém monitorování stavu na pozadí protokolovány informace o chybě databáze. Měla by existovat jeden záznam v `aspnet_WebEvent_Events` tabulky (naleznete v tématu **obrázek 1**); tento záznam obsahuje informace o této chybě modulu runtime, že právě došlo k chybě.
 
@@ -99,7 +96,6 @@ Pokud vytvoříte taková ještě stránka, zkontrolujte, zda že je provést po
 
 > [!NOTE]
 > Následujícím kurzu zkoumá alternativní Chyba protokolování a oznámení systému s názvem ELMAH. ELMAH zahrnuje předdefinovaný mechanismus, chcete-li zobrazit v protokolu chyb z obou webové stránky a jako informačního kanálu RSS.
-
 
 ## <a name="logging-events-to-email"></a>Protokolování událostí k e-mailu
 

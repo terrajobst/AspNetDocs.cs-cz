@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 794bd819-00fc-47e2-876d-fc5d15e0de1c
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/troubleshooting-the-packaging-process
 msc.type: authoredcontent
-ms.openlocfilehash: 79774c6a1a1d05d5a7bcd82a5d7aa888933cf089
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 8ad649dfff085a8774cc13c11d8a3e3d48277d66
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59420104"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65128707"
 ---
 # <a name="troubleshooting-the-packaging-process"></a>Řešení potíží s procesem vytváření balíčku
 
@@ -34,7 +34,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > > [!NOTE]
 > > **EnablePackageProcessLoggingAndAssert** vlastnost funguje jenom v případě sestavení projektu pomocí **ladění** konfigurace. Vlastnost je ignorována v jiné konfigurace.
 
-
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
 Metody nasazení v srdci těchto kurzů je založen na rozdělení přístupu soubor projektu je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve které je řízena procesem sestavení dva soubory projektu&#x2014;jeden obsahující pokyny, které platí pro všechny cílové prostředí a jeden obsahuje nastavení pro konkrétní prostředí sestavení a nasazení pro sestavení. V okamžiku sestavení souboru projektu specifických pro prostředí se sloučí do souboru projektu bez ohledu na prostředí a vytvoří kompletní sadu pokynů sestavení.
@@ -45,13 +44,10 @@ Metody nasazení v srdci těchto kurzů je založen na rozdělení přístupu so
 
 Spoustu těchto cílů WPP zahrnují podmíněnou logiku, která ukládá do protokolu Další informace při **EnablePackageProcessLoggingAndAssert** je nastavena na **true**. Například, když se podíváte **balíčku** cíl, můžete vidět, že vytvoří adresář služby dalších protokolů a zapíše seznam souborů do textového souboru, pokud **EnablePackageProcessLoggingAndAssert** rovná **true**.
 
-
 [!code-xml[Main](troubleshooting-the-packaging-process/samples/sample1.xml)]
-
 
 > [!NOTE]
 > WPP cíle, které jsou definovány v *Microsoft.Web.Publishing.targets* souboru ve složce % PROGRAMFILES (x 86) %\MSBuild\Microsoft\VisualStudio\v10.0\Web. Můžete otevřít tento soubor a zkontrolujte cílů v sadě Visual Studio 2010 nebo editoru XML. Zajistíme, abyste neupravovali obsah souboru.
-
 
 ## <a name="enabling-the-additional-logging"></a>Povolení dodatečné protokolování
 
@@ -59,27 +55,20 @@ Můžete zadat hodnotu **EnablePackageProcessLoggingAndAssert** vlastnost různ�
 
 Pokud se sestavení projektu z příkazového řádku můžete zadat hodnotu **EnablePackageProcessLoggingAndAssert** vlastnost jako argument příkazového řádku:
 
-
 [!code-console[Main](troubleshooting-the-packaging-process/samples/sample2.cmd)]
-
 
 Pokud používáte soubor vlastních projektů k sestavení projektů, můžete zahrnout **EnablePackageProcessLoggingAndAssert** hodnotu **vlastnosti** atribut **MSBuild**úloh:
 
-
 [!code-xml[Main](troubleshooting-the-packaging-process/samples/sample3.xml)]
-
 
 Pokud používáte definici sestavení Team Foundation Server (TFS) k sestavení projektů, můžete zadat hodnotu **EnablePackageProcessLoggingAndAssert** vlastnost **argumenty nástroje MSBuild** řádek:![](troubleshooting-the-packaging-process/_static/image1.png)
 
 > [!NOTE]
 > Další informace o vytváření a konfiguraci definic sestavení, naleznete v tématu [vytvoření sestavení definice, že podporuje nasazení](../configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment.md).
 
-
 Případně, pokud chcete, aby zahrnovaly balíček v každém sestavení, můžete upravit soubor projektu pro webový projekt aplikace nastavit **EnablePackageProcessLoggingAndAssert** vlastnost **true**. Měli byste přidat vlastnost na první **PropertyGroup** element v souboru .csproj nebo .vbproj.
 
-
 [!code-xml[Main](troubleshooting-the-packaging-process/samples/sample4.xml)]
-
 
 ## <a name="reviewing-the-log-files"></a>Kontrola souborů protokolu
 
@@ -100,7 +89,6 @@ Seznam souborů, které jste se bude lišit podle věci v projektu a procesu ses
 
 > [!NOTE]
 > Názvy souborů dalších protokolů obvykle odpovídají WPP cíle. Můžete zkontrolovat tyto cíle prozkoumáním *Microsoft.Web.Publishing.targets* souboru ve složce % PROGRAMFILES (x 86) %\MSBuild\Microsoft\VisualStudio\v10.0\Web.
-
 
 Pokud obsah webového balíčku se, co jste očekávali, kontrola těchto souborů může být užitečný způsob, jak identifikovat na jaké bodu ve věci procesu došlo k chybě.
 

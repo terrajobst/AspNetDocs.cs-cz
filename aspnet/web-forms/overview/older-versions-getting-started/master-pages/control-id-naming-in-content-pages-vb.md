@@ -8,12 +8,12 @@ ms.date: 06/10/2008
 ms.assetid: dbb024a6-f043-4fc5-ad66-56556711875b
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: dd60d02c2c3840edd4c0e1244623fcea0cb2db0b
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 27ceb8b30aaad2ad0ed7af5cd852af4acf599c31
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59386317"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131699"
 ---
 # <a name="control-id-naming-in-content-pages-vb"></a>Pojmenovávání ID ovládacích prvků na stránkách obsahu (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/e/e/f/eef369f5-743a-4a52-908f-b6532c4ce0a4/ASPNET_MasterPages_Tutorial_05_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/8/f/6/8f6349e4-6554-405a-bcd7-9b094ba5089a/ASPNET_MasterPages_Tutorial_05_VB.pdf)
 
 > Ilustruje způsob ovládacích prvků ContentPlaceHolder sloužit jako pojmenování kontejnerů a proto ujistěte se, prostřednictvím kódu programu pracovat s ovládacím prvkem obtížné (prostřednictvím FindControl). Vyhledá v tomto problému a alternativní řešení. Také popisuje, jak programově přistupovat k výsledná hodnota ClientID.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -33,7 +32,6 @@ Technologie ASP.NET pro zpracování scénářů, umožňuje některé ovládac�
 > [!NOTE]
 > [ `INamingContainer` Rozhraní](https://msdn.microsoft.com/library/system.web.ui.inamingcontainer.aspx) se používá k označení, že konkrétní serverový ovládací prvek ASP.NET by mělo fungovat jako názvový kontejner. `INamingContainer` Rozhraní není pravopisu si jakékoli metody, které musí implementovat serverový ovládací prvek; místo toho se používá jako značku. Při generování vykreslované značky, pokud ovládací prvek implementuje toto rozhraní potom modul ASP.NET automaticky předpon jeho `ID` vykreslen hodnotu na jeho následovníky `id` hodnoty atributů. Tento proces je popsáno podrobněji v kroku 2.
 
-
 Pojmenování kontejnerů nejenom změnit vygenerované `id` hodnotu atributu, ale také ovlivňují, jak ovládací prvek může prostřednictvím kódu programu odkazovat z třídy modelu code-behind stránky technologie ASP.NET. `FindControl("controlID")` Metoda běžně slouží jako odkaz prostřednictvím kódu programu webový ovládací prvek. Nicméně `FindControl` není proniknout prostřednictvím pojmenování kontejnerů. V důsledku toho nelze použít přímo `Page.FindControl` metoda odkazovat na ovládací prvky GridView nebo jiných názvový kontejner.
 
 Jak vám může mít surmised, hlavní stránky a prvků ContentPlaceHolder jsou obě implementovány jako pojmenování kontejnerů. V tomto kurzu Zkoumáme, jak hlavní prvek HTML stránky vliv `id` hodnoty a způsoby, jak prostřednictvím kódu programu odkazovat webové ovládací prvky v rámci stránky obsahu pomocí `FindControl`.
@@ -42,34 +40,27 @@ Jak vám může mít surmised, hlavní stránky a prvků ContentPlaceHolder jsou
 
 Abychom si předvedli Principy probírané v tomto kurzu, přidejme novou stránku ASP.NET na našem webu. Vytvoření nové stránky obsahu s názvem `IDIssues.aspx` v kořenové složce vytvoříte jejich vazbu na `Site.master` stránky předlohy.
 
-
 ![Přidání obsahu stránky IDIssues.aspx ke kořenové složce](control-id-naming-in-content-pages-vb/_static/image1.png)
 
 **Obrázek 01**: Přidat stránku obsahu `IDIssues.aspx` ke kořenové složce
 
-
 Visual Studio automaticky vytvoří ovládací prvek obsahu pro všechny čtyři prvků ContentPlaceHolder na hlavní stránce. Jak je uvedeno v [ *několik prvků ContentPlaceHolder a výchozí obsah* ](multiple-contentplaceholders-and-default-content-vb.md) výukový program, pokud ovládací prvek obsahu není k dispozici je místo toho vygenerován obsah ContentPlaceHolder výchozí stránky předlohy. Vzhledem k tomu, `QuickLoginUI` a `LeftColumnContent` prvků ContentPlaceHolder obsahovat vhodné výchozí kód pro tuto stránku, pokračujte a odeberte odpovídající ovládací prvky obsahu z `IDIssues.aspx`. V tomto okamžiku deklarativním označení stránky obsahu by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](control-id-naming-in-content-pages-vb/samples/sample1.aspx)]
 
 V [ *zadáním názvu, metaznaček a ostatní hlaviček HTML na stránce předlohy* ](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb.md) kurzu jsme vytvořili vlastní stránku základní třídu (`BasePage`), který automaticky nakonfiguruje název stránky, pokud je není explicitně nastavena. Pro `IDIssues.aspx` stránce používat tuto funkci, na stránce použití modelu code-behind třída musí být odvozen od `BasePage` třídy (místo `System.Web.UI.Page`). Upravte definici třídy modelu code-behind tak, aby to vypadá takto:
 
-
 [!code-vb[Main](control-id-naming-in-content-pages-vb/samples/sample2.vb)]
 
 Nakonec aktualizujte `Web.sitemap` soubor zahrnout položku pro tento nový lekce. Přidat `<siteMapNode>` elementu a nastavte jeho `title` a `url` atributy "Ovládací prvek ID pojmenování problémy" a `~/IDIssues.aspx`v uvedeném pořadí. Po provedení tohoto přidání vašeho `Web.sitemap` souboru značek by měl vypadat nějak takto:
-
 
 [!code-xml[Main](control-id-naming-in-content-pages-vb/samples/sample3.xml)]
 
 Jak znázorňuje obrázek 2, nová položka mapy webu v `Web.sitemap` se okamžitě projeví v lekcích části v levém sloupci.
 
-
 ![Poznatky oddílu teď obsahuje odkaz na &quot;pojmenování problémy s ID ovládacího prvku&quot;](control-id-naming-in-content-pages-vb/_static/image2.png)
 
 **Obrázek 02**: Poznatky oddílu teď obsahuje odkaz na "ID ovládacího prvku pojmenování problémy s"
-
 
 ## <a name="step-2-examining-the-renderedidchanges"></a>Krok 2: Prozkoumání vygenerované`ID`změny
 
@@ -77,19 +68,15 @@ Pro lepší pochopení úpravy ASP.NET modul umožňuje vygenerované `id` hodno
 
 Deklarativní obsahu ovládacího prvku v tomto okamžiku by měl vypadat nějak takto:
 
-
 [!code-aspx[Main](control-id-naming-in-content-pages-vb/samples/sample4.aspx)]
 
 Obrázek 3 ukazuje na stránku při zobrazit pomocí návrháře aplikace Visual Studio.
-
 
 [![Stránka obsahuje tři ovládací prvky webové: textové pole, tlačítko a popisek](control-id-naming-in-content-pages-vb/_static/image4.png)](control-id-naming-in-content-pages-vb/_static/image3.png)
 
 **Obrázek 03**: Zahrnuje tři webové ovládací prvky stránky: textové pole, tlačítko a popisek ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-vb/_static/image5.png))
 
-
 Na stránce prostřednictvím prohlížeče a pak zobrazit zdrojový kód HTML. Jako kód níže ukazuje `id` hodnoty prvků HTML pro textové pole, tlačítko a popisek webové ovládací prvky jsou kombinací `ID` hodnot ovládacích prvků webové a `ID` hodnoty pojmenování kontejnerů na stránce.
-
 
 [!code-html[Main](control-id-naming-in-content-pages-vb/samples/sample5.html)]
 
@@ -97,18 +84,14 @@ Jak je uvedeno výše v tomto kurzu, stránky předlohy a jeho prvků ContentPla
 
 Obrázek 4 ukazuje toto chování. K určení vygenerované `id` z `Age` textového pole začíná `ID` hodnota ovládacího prvku TextBox `Age`. V dalším kroku nahlíželi hierarchii ovládacího prvku. Na každý názvový kontejner (ty uzly broskvoněmi barvou) předpony aktuální vykreslen `id` s názvový kontejner `id`.
 
-
 ![Atributy id přepuštěné jsou založené na ID hodnoty pojmenování kontejnerů](control-id-naming-in-content-pages-vb/_static/image6.png)
 
 **Obrázek 04**: Přepuštěné `id` atributy jsou založené na `ID` hodnoty pojmenování kontejnerů
 
-
 > [!NOTE]
 > Jak jsme probírali `ctl00` část vygenerované `id` představuje atribut `ID` hodnoty stránky předlohy, ale může zajímat, jak tento `ID` hodnotu přišel. Jsme nezadali ho kdekoli v naší hlavní nebo obsahu stránky. Většina serverové ovládací prvky na stránce ASP.NET jsou explicitně přidat prostřednictvím deklarativním označení stránky. `MainContent` Prvek ContentPlaceHolder byla explicitně zadána ve značkách `Site.master`; `Age` textového pole byl definován `IDIssues.aspx`vaší značky. Lze zadat `ID` hodnoty pro tyto typy ovládacích prvků v okně vlastností nebo z deklarativní syntaxe. Další ovládací prvky, jako jsou stránky předlohy, nejsou definovány v deklarativním označení. V důsledku toho jejich `ID` hodnoty musí být automaticky generovány pro nás. Modul sady ASP.NET `ID` hodnoty v době běhu pro tyto ovládací prvky, jejichž ID nebyly explicitně nastavena. Používá vzor pro pojmenování `ctlXX`, kde *XX* je postupně rostoucí celočíselnou hodnotu.
 
-
 Vzhledem k tomu, že hlavní stránce slouží jako kontejneru, webové ovládací prvky definované v hlavní stránka také změnily vykreslené `id` hodnoty atributů. Například `DisplayDate` jsme přidali na stránku předlohy v popisku [ *vytvoření rozložení platného pro celý web pomocí stránek předlohy* ](creating-a-site-wide-layout-using-master-pages-vb.md) kurzu má následující vykreslení značek:
-
 
 [!code-html[Main](control-id-naming-in-content-pages-vb/samples/sample6.html)]
 
@@ -125,18 +108,15 @@ Pro ilustraci použití `FindControl` metody na hledání pro ovládací prvky v
 > [!NOTE]
 > Samozřejmě, není potřeba použít `FindControl` odkazovat ovládací prvky popisku a textového pole v tomto příkladu. Společnost Microsoft může odkazovat přímo pomocí jejich `ID` hodnot vlastností. Můžu použít `FindControl` tady pro ilustraci, co se stane při použití `FindControl` z obsahu stránky.
 
-
 [!code-vb[Main](control-id-naming-in-content-pages-vb/samples/sample7.vb)]
 
 Zatímco syntaxi pro volání `FindControl` metody se mírně liší v první dva řádky `SubmitButton_Click`, jsou sémanticky ekvivalentní. Vzpomínáte, které zahrnují všechny serverové ovládací prvky technologie ASP.NET `FindControl` metoda. Jedná se o `Page` třída, ze které všechny technologie ASP.NET použití modelu code-behind třídy se musí odvozovat z. Proto volání `FindControl("controlID")` je ekvivalentní volání `Page.FindControl("controlID")`, za předpokladu, že nemají potlačena `FindControl` metody ve třídě použití modelu code-behind nebo vlastní základní třídy.
 
 Jakmile zadáte tento kód, přejděte `IDIssues.aspx` stránce prostřednictvím prohlížeče, zadejte svůj věk a klikněte na tlačítko "Odeslat". Po kliknutí na tlačítko "Odeslat" `NullReferenceException` je vyvolána (viz obrázek 5).
 
-
 [![Je aktivována NullReferenceException](control-id-naming-in-content-pages-vb/_static/image8.png)](control-id-naming-in-content-pages-vb/_static/image7.png)
 
 **Obrázek 05**: A `NullReferenceException` je vyvolána ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-vb/_static/image9.png))
-
 
 Pokud nastavíte zarážku `SubmitButton_Click` uvidíte, že obě volání obslužné rutiny události `FindControl` vrátit `Nothing`. `NullReferenceException` Se vyvolá, když jsme pokus o přístup `Age` textového `Text` vlastnost.
 
@@ -148,11 +128,9 @@ Existují dvě alternativní řešení na tuto výzvu: můžeme přejít k podro
 
 Použití `FindControl` na odkaz `Results` popisek nebo `Age` textové pole, musíme volání `FindControl` z ovládacího prvku předchůdce ve stejném pojmenování kontejneru. Jako obrázek 4 jsme si ukázali, `MainContent` je ovládací prvek ContentPlaceHolder pouze nadřazeného člena pro `Results` nebo `Age` , který je v rámci stejného pojmenování kontejneru. Jinými slovy, volání `FindControl` metodu z `MainContent` ovládacího prvku, jak je znázorněno v následujícím fragmentu kódu správně vrátí odkaz na `Results` nebo `Age` ovládacích prvků.
 
-
 [!code-vb[Main](control-id-naming-in-content-pages-vb/samples/sample8.vb)]
 
 Však nelze spolupracujeme se `MainContent` ContentPlaceHolder z našich obsahu stránky použití modelu code-behind třídy pomocí výše uvedené syntaxi, protože je definována ContentPlaceHolder na stránce předlohy. Místo toho, musíme použít `FindControl` k získání odkazu na `MainContent`. Nahraďte kód v `SubmitButton_Click` obslužné rutiny události s těmito změnami:
-
 
 [!code-vb[Main](control-id-naming-in-content-pages-vb/samples/sample9.vb)]
 
@@ -160,23 +138,19 @@ Pokud navštívíte stránku prostřednictvím prohlížeče, zadejte svůj věk
 
 Dřív, než můžete `FindControl` k získání odkazu na `MainContent`, potřebujeme odkaz na ovládací prvek hlavní stránky. Jakmile budeme mít odkaz na hlavní stránku jsme získat odkaz na `MainContent` ContentPlaceHolder prostřednictvím `FindControl` a z něj, odkazy na `Results` popisek a `Age` textového pole (znovu, až pomocí `FindControl`). Ale jak jsme získat odkaz na hlavní stránku? Zkontrolováním `id` atributy v vykreslované značky je zřejmé, která na hlavní stránce `ID` hodnotu `ctl00`. Proto bychom mohli použít `Page.FindControl("ctl00")` získáte odkaz na stránku předlohy, pak použít tento objekt k získání odkazu na `MainContent`, a tak dále. Následující fragment kódu ukazuje tuto logiku:
 
-
 [!code-vb[Main](control-id-naming-in-content-pages-vb/samples/sample10.vb)]
 
 Přestože tento kód bude jistě pracovat, předpokládá, že automaticky generované stránky předlohy `ID` bude vždy `ctl00`. Nikdy je vhodné vytvořit předpoklady o automaticky generované hodnoty.
 
 Naštěstí je přístupný prostřednictvím odkazu na stránce předlohy `Page` třídy `Master` vlastnost. Proto se místo nutnosti použít `FindControl("ctl00")` získáte odkaz na hlavní stránce za účelem přístupu k `MainContent` ContentPlaceHolder, můžeme místo toho použít `Page.Master.FindControl("MainContent")`. Aktualizace `SubmitButton_Click` obslužné rutiny události s následujícím kódem:
 
-
 [!code-vb[Main](control-id-naming-in-content-pages-vb/samples/sample11.vb)]
 
 Tentokrát, na stránce v prohlížeči zadáním váš věk a kliknutím na tlačítko "Odeslat" zobrazí zprávu v `Results` popiskem nebo podle očekávání.
 
-
 [![Věk uživatele je zobrazený v popisku](control-id-naming-in-content-pages-vb/_static/image11.png)](control-id-naming-in-content-pages-vb/_static/image10.png)
 
 **Obrázek 06**: Věk uživatele je zobrazený v popisku ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-vb/_static/image12.png))
-
 
 ### <a name="recursively-searching-through-naming-containers"></a>Rekurzivně prohledávat pojmenování kontejnerů
 
@@ -189,35 +163,28 @@ Dobrou zprávou je, že můžeme vytvořit vlastní `FindControl` metody tohoto 
 > [!NOTE]
 > Rozšiřující metody jsou funkce, která nové 3.0 jazyka C# a Visual Basic 9, které jsou jazyky, které se dodávají pomocí rozhraní .NET Framework verze 3.5 a Visual Studio 2008. Stručně řečeno rozšiřující metody umožňují vývojář, abyste mohli vytvořit novou metodu pro existující typ třídy pomocí speciální syntaxe. Další informace o této užitečné funkce, najdete v mé článku [rozšíření základní typ funkce se rozšiřující metody](http://aspnet.4guysfromrolla.com/articles/120507-1.aspx).
 
-
 Vytvořit metodu rozšíření, přidejte nový soubor, který `App_Code` složku s názvem `PageExtensionMethods.vb`. Přidat metodu rozšíření s názvem `FindControlRecursive` , která přijímá jako vstup `String` parametr s názvem `controlID`. Metody rozšíření fungovalo správně, je důležité, že se třída označena jako `Module` a mít předponu rozšiřující metody `<Extension()>` atribut. Kromě toho všechny metody rozšíření musí přijmout jako svůj první parametr objekt typu, pro kterou platí metody rozšíření.
 
 Přidejte následující kód, který `PageExtensionMethods.vb` souboru k definování to `Module` a `FindControlRecursive` – metoda rozšíření:
-
 
 [!code-vb[Main](control-id-naming-in-content-pages-vb/samples/sample12.vb)]
 
 S tímto kódem na místě, vraťte se do `IDIssues.aspx` použití modelu code-behind třídy a Odkomentujte aktuální stránky `FindControl` volání metody. Nahraďte volání `Page.FindControlRecursive("controlID")`. Co je úhledné o metodách rozšíření je, že se zobrazí přímo v rozevíracích seznamech technologie IntelliSense. Jak je vidět na obrázku 7, pokud zadáte `Page` a pak klikněte na tlačítko období, `FindControlRecursive` metoda je součástí technologie IntelliSense rozevíracího seznamu spolu s druhou `Control` metody třídy.
 
-
 [![Rozšiřující metody jsou zahrnuty v IntelliSense rozevíracích](control-id-naming-in-content-pages-vb/_static/image14.png)](control-id-naming-in-content-pages-vb/_static/image13.png)
 
 **Obrázek 07**: Rozšiřující metody jsou zahrnuty v IntelliSense rozevíracích ([kliknutím ji zobrazíte obrázek v plné velikosti](control-id-naming-in-content-pages-vb/_static/image15.png))
 
-
 Zadejte následující kód do `SubmitButton_Click` obslužné rutiny události a pak ho otestujte na stránce, zadáte svůj věk a kliknutím na tlačítko "Odeslat". Jak je znázorněno na obrázku 6 zpět, výsledný výstup bude zpráva, "Jste stáří let!"
-
 
 [!code-vb[Main](control-id-naming-in-content-pages-vb/samples/sample13.vb)]
 
 > [!NOTE]
 > Protože rozšiřující metody jsou nové 3.0 jazyka C# a Visual Basic 9, pokud používáte Visual Studio 2005 nelze použít rozšiřující metody. Místo toho budete muset implementovat `FindControlRecursive` metody ve třídě pomocné rutiny. [Rick Strahl](http://www.west-wind.com/WebLog/default.aspx) má takových příkladů v jeho blogovém příspěvku [Maser stránek ASP.NET a `FindControl` ](http://www.west-wind.com/WebLog/posts/5127.aspx).
 
-
 ## <a name="step-4-using-the-correctidattribute-value-in-client-side-script"></a>Krok 4: Používáte správné`id`atribut hodnoty ve skriptu na straně klienta
 
 Jak jsme uvedli v úvodu tohoto kurzu, je webový ovládací prvek vykreslen `id` atribut se často používá ve skriptu na straně klienta na prostřednictvím kódu programu odkazovat na konkrétní elementu HTML. Například následující JavaScript odkazuje na element HTML pomocí jeho `id` a potom zobrazí jeho hodnota modální okno se zprávou:
-
 
 [!code-csharp[Main](control-id-naming-in-content-pages-vb/samples/sample14.cs)]
 
@@ -227,11 +194,9 @@ Problém s tímto přístupem je, že při použití stránky předlohy (nebo ji
 
 Dobrou zprávou je, že `id` hodnotu atributu, který je vykreslen je přístupná v kódu na straně serveru pomocí ovládacího prvku webového [ `ClientID` vlastnost](https://msdn.microsoft.com/library/system.web.ui.control.clientid.aspx). Tuto vlastnost měli použít k určení `id` atribut hodnoty používané ve skriptu na straně klienta. Například pro funkce jazyka JavaScript přidejte na stránku, při volání, zobrazuje hodnotu `Age` TextBox modální okno se zprávou, přidejte následující kód, který `Page_Load` obslužné rutiny události:
 
-
 [!code-vb[Main](control-id-naming-in-content-pages-vb/samples/sample15.vb)]
 
 Výše uvedený kód vkládá hodnoty `Age` textového `ClientID` vlastnost do volání JavaScript `getElementById`. Pokud tuto stránku prostřednictvím prohlížeče a zobrazit zdrojový kód HTML, najdete následující kód jazyka JavaScript:
-
 
 [!code-html[Main](control-id-naming-in-content-pages-vb/samples/sample16.html)]
 
@@ -239,7 +204,6 @@ Všimněte si, že jak správné `id` hodnotu, atribut `ctl00_MainContent_Age`, 
 
 > [!NOTE]
 > Tento příklad v jazyce JavaScript pouze ukazuje, jak přidat funkce JavaScriptu, která správně odkazuje na element HTML, který je vykreslen metodou serverový ovládací prvek. Použití této funkce je třeba vytvořit další jazyka JavaScript pro volání funkce po načtení dokumentu nebo když ukáže některá z akcí konkrétního uživatele. Další informace na tyto a související témata, přečtěte si [práce pomocí skriptu na straně klienta](https://msdn.microsoft.com/library/aa479302.aspx).
-
 
 ## <a name="summary"></a>Souhrn
 

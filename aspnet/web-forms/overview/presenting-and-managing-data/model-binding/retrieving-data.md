@@ -8,15 +8,14 @@ ms.date: 02/27/2014
 ms.assetid: 9f24fb82-c7ac-48da-b8e2-51b3da17e365
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
 msc.type: authoredcontent
-ms.openlocfilehash: 29baaf2917e47ac46a78a252721be725b4e9b58f
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 08cb65f9ef8f5c36070454e011f41554d81f333f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398472"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131530"
 ---
 # <a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a>Načtení a zobrazení dat ovládacím prvkem vazby modelu a webové formuláře
-
 
 > V této sérii kurzů ukazuje základní aspekty v použití vazby modelu s projektem aplikace webových formulářů ASP.NET. Vazby modelu díky dat interakce více přímočaré než pracující s daty objektů zdroje (například ObjectDataSource nebo SqlDataSource). Tato série začíná úvodní materiály a přesune pokročilejších pojmech v budoucích kurzech.
 > 
@@ -34,7 +33,6 @@ ms.locfileid: "59398472"
 > - Microsoft Visual Studio 2017 or Microsoft Visual Studio Community 2017
 >   
 > V tomto kurzu se také pracuje s Visual Studio 2012 a Visual Studio 2013, ale existují určité rozdíly v šabloně uživatelského rozhraní a projektu.
-
 
 ## <a name="what-youll-build"></a>Co budete vytvářet
 
@@ -96,7 +94,6 @@ V tomto kurzu budete:
    4. Webový formulář stránky předlohy, vyberte **Site.Master**.
    
    5. Vyberte **OK**.
-   
 
 ## <a name="add-the-data-model"></a>Přidání datového modelu
 
