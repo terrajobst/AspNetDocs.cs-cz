@@ -8,12 +8,12 @@ ms.date: 03/02/2009
 ms.assetid: 204b7e86-f560-4611-8adb-785b33e777b9
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-a-controller-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 180b34e45ae97c64c82906c93aa647c4924d8539
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 60636b79ab5fc06ca904dee90ce74f256e046d12
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398101"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123629"
 ---
 # <a name="creating-a-controller-vb"></a>Vytvoření kontroleru (VB)
 
@@ -21,29 +21,23 @@ podle [Stephen Walther](https://github.com/StephenWalther)
 
 > V tomto kurzu Stephen Walther ukazuje, jak přidat řadič do aplikace ASP.NET MVC.
 
-
 Cílem tohoto kurzu je vysvětlují, jak vytvořit nové technologie ASP.NET MVC řadiče. Zjistíte, jak vytvořit kontrolery, pomocí nabídky přidat kontroler Visual Studio a tím, že ručně vytvoříte soubor třídy.
 
 ### <a name="using-the-add-controller-menu-option"></a>Použití přidání Kontroleru nabídky
 
 Klikněte pravým tlačítkem na složku řadiče v okně Průzkumník řešení Visual Studio a vybrat je nejjednodušší způsob, jak vytvořit nový řadič **přidat, řadič** nabídky (viz obrázek 1). Výběrem této možnosti se otevře **přidat kontroler** dialogového okna (viz obrázek 2).
 
-
 [![Dialogové okno Nový projekt](creating-a-controller-vb/_static/image1.jpg)](creating-a-controller-vb/_static/image1.png)
 
 **Obrázek 01**: Přidání nového řadiče ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-controller-vb/_static/image2.png))
-
 
 [![Dialogové okno Nový projekt](creating-a-controller-vb/_static/image2.jpg)](creating-a-controller-vb/_static/image3.png)
 
 **Obrázek 02**: Dialogové okno Přidat kontroler ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-controller-vb/_static/image4.png))
 
-
 Všimněte si, že první část názvu kontroleru je zvýrazněn **přidat kontroler** dialogového okna. Každý název kontroleru musí končit příponou *řadič*. Můžete například vytvořit řadič s názvem *ProductController* , ale ne řadič s názvem *produktu*.
 
-
 Pokud vytvoříte kontroler, který nebyl nalezen *řadič* příponu pak nebudete mít k vyvolání kontroleru. Neumožňuje tuto--mohu jste plýtvat nespočet hodin život označíte tuto chybu.
-
 
 **Výpis 1 - Controllers\ProductController.vb**
 
@@ -55,11 +49,9 @@ Vždy byste měli vytvořit řadiče ve složce řadiče. V opačném případě
 
 Když vytvoříte řadič, máte možnost automaticky vygenerovat metody akce vytvoření, aktualizace a podrobnosti (viz obrázek 3). Pokud vyberete tuto možnost je vygenerována třída kontroleru v zobrazení 2.
 
-
 [![Automatické vytváření metody akce](creating-a-controller-vb/_static/image3.jpg)](creating-a-controller-vb/_static/image5.png)
 
 **Obrázek 03**: Vytvoření metody akce automaticky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-controller-vb/_static/image6.png))
-
 
 **Výpis 2 - Controllers\CustomerController.vb**
 
@@ -75,11 +67,9 @@ Kontroler ASP.NET MVC je jenom třídy. Pokud dáváte přednost, můžete ignor
 2. Pojmenujte novou třídu PersonController.vb a klikněte na tlačítko **přidat** tlačítko.
 3. Upravte soubor výsledné třídy tak, aby třída dědí ze základní třídy System.Web.Mvc.Controller (viz seznam 3).
 
-
 [![Vytvoření nové třídy](creating-a-controller-vb/_static/image4.jpg)](creating-a-controller-vb/_static/image7.png)
 
 **Obrázek 04**: Vytvoření nové třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-controller-vb/_static/image8.png))
-
 
 **Výpis 3 - Controllers\PersonController.vb**
 

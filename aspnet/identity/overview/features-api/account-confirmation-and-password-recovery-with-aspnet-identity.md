@@ -9,12 +9,12 @@ ms.assetid: 8d54180d-f826-4df7-b503-7debf5ed9fb3
 ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 2e4cd21d66e69590fb1642d7974e4b7f82cba0cb
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ded3a9d931cc4cd4b99c1cb5012469fe66209f76
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396418"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118029"
 ---
 # <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>Účet potvrzení a heslo pro obnovení s ASP.NET Identity (C#)
 
@@ -66,7 +66,6 @@ Výběr **resetování** bude tlačítko potvrďte heslo se resetovalo.
 ## <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace ASP.NET
 
 Začněte tím, že instalaci a používání [Visual Studio 2017](https://visualstudio.microsoft.com/).
-
 
 1. Vytvoření nového projektu ASP.NET Web a vyberte šablonu MVC. Webové formuláře ASP.NET Identity, také podporují tak může podle podobných kroků ve webové aplikaci formulářů.
 2. Změnit ověření **jednotlivé uživatelské účty**.
@@ -153,7 +152,6 @@ V této části použijete ke stažení ucelenější ukázku, kterou pak ve spo
 > [!WARNING]
 > Pokud změníte některá nastavení zabezpečení v této ukázce, výroby aplikací bude chtít projít auditu zabezpečení, která explicitně volá provedené změny.
 
-
 ## <a name="examine-the-code-in-appstartidentityconfigcs"></a>Zkoumání kódu v aplikaci\_Start\IdentityConfig.cs
 
 Vzorek ukazuje, jak vytvořit účet a přidejte ji tak *správce* role. E-mailu v ukázce by měl nahraďte e-mailu, který budete používat pro účet správce. Nejjednodušší způsob teď chcete vytvořit účet správce, je prostřednictvím kódu programu v `Seed` metody. Věříme, že budete mít v budoucnu nástroj, který vám umožní vytvořit a správy uživatelů a rolí. Vzorový kód vám umožní vytvořit a spravovat uživatele a role, ale nejprve musíte mít účet správce ke spuštění role a stránky pro správu uživatelů. V této ukázce se vytvoří účet správce při nasadí databáze.
@@ -184,14 +182,12 @@ Přejděte [Azure SendGrid registrační stránku](https://azure.microsoft.com/g
 > [!NOTE]
 > E-mailoví klienti často přijímají pouze textové zprávy (žádné HTML). Byste měli poskytnout zprávu v text nebo HTML. V příkladu SendGrid výše, používá se k tomu `myMessage.Text` a `myMessage.Html` výše uvedeném kódu.
 
-
 Následující kód ukazuje, jak odeslat e-mailům prostřednictvím [MailMessage](https://msdn.microsoft.com/library/system.net.mail.mailmessage.aspx) třídy where `message.Body` vrátí pouze na odkaz.
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample8.cs)]
 
 > [!WARNING]
 > Zabezpečení – nikdy ukládání citlivých dat ve zdrojovém kódu. Účet a přihlašovací údaje jsou uložené v nastavení appSetting. V Azure, můžete bezpečně uložit tyto hodnoty na **[konfigurovat](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** karta na portálu Azure portal. Zobrazit [osvědčené postupy pro nasazení hesel a dalších citlivých dat do ASP.NET a Azure](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
-
 
 Zadání přihlašovacích údajů Sendgridu, spusťte aplikaci, se registrují v e-mailový alias vyberete potvrdit odkaz v e-mailu. Chcete zjistit, jak to můžete udělat pomocí vaší [Outlook.com](http://outlook.com) e-mailový účet, najdete v článku Jan Atten [ C# konfigurace SMTP pro hostitel SMTP Outlook.Com](http://typecastexception.com/post/2013/12/20/C-SMTP-Configuration-for-OutlookCom-SMTP-Host.aspx) a jeho[ASP.NET Identity 2.0: Nastavení ověření účtu a povolení dvoufaktorového](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx) příspěvky.
 

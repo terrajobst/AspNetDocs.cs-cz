@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: eaece9f5-f80c-428b-b771-5db66d275b7d
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
 msc.type: authoredcontent
-ms.openlocfilehash: 0fb0a331a2a6e2af5c5097db8b57942525d24ffc
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 25767303e3a8a3bfd9fc6c7c10cda32d73e9994d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59384302"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118866"
 ---
 # <a name="continuous-integration-and-continuous-delivery-building-real-world-cloud-apps-with-azure"></a>Průběžná integrace a průběžné doručování (vytváření skutečných cloudových aplikací s Azure)
 
@@ -22,7 +22,6 @@ podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twi
 [Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
 > **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o e kniha najdete v tématu [první kapitoly](introduction.md).
-
 
 První dva vhodné vývojové vzory procesu byly [automatizovat všechno](automate-everything.md) a [správy zdrojového kódu](source-control.md), a třetí model procesu sloučí. Kontinuální integrace (CI) znamená, že pokaždé, když vývojář vrátí kód do úložiště zdrojového kódu, sestavení se automaticky aktivuje. Průběžné doručování (CD) trvá o krok dál: Po úspěšném sestavení a automatizované testy jednotky automaticky nasadit aplikaci do prostředí, kde můžete provést další podrobnější testování.
 
@@ -50,7 +49,6 @@ Služby Azure DevOps poskytuje několik funkcí, které vám pomáhají s vývoj
 - Podporuje automatické zátěžové testování. Zátěžové testování je zásadní pro cloudové aplikace, ale je často opominul, dokud je příliš pozdě. Zátěžový test simuluje hojně používají aplikaci, kterou tisíce uživatelů, která vám umožní najít kritické body a zlepšit propustnost – ještě před vydáním aplikace do produkčního prostředí.
 - Podporuje spolupráce pomocí týmové místnosti, což usnadňuje komunikaci v reálném čase a spolupráci v malých týmů agile.
 - Podporuje agilního řízení projektů.
-
 
 Další informace o průběžnou integraci a doručování funkce Azure DevOps služby najdete v tématu [dokumentace ke službě Azure DevOps](/azure/devops/index).
 

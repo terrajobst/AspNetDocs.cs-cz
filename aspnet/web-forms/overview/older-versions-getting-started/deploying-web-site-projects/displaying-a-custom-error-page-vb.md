@@ -8,12 +8,12 @@ ms.date: 06/09/2009
 ms.assetid: 14873c5d-81a9-455b-bd71-30fb555583e7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: dc3ff989b6861fe62cce0199a62adef6107206d5
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 961959300f5481a297ed8a9a17131c076d1dfd69
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59384185"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65116708"
 ---
 # <a name="displaying-a-custom-error-page-vb"></a>Zobrazení vlastní chybové stránky (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/1/0/C/10CC829F-A808-4302-97D3-59989B8F9C01/ASPNET_Hosting_Tutorial_11_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/5/C/5/5C57DB8C-5DEA-4B3A-92CA-4405544D313B/aspnet_tutorial11_CustomErrors_vb.pdf)
 
 > Co uživateli zobrazí když dojde k chybě za běhu ve webové aplikaci ASP.NET? Odpověď závisí na tom, na webu &lt;customErrors&gt; konfigurace. Ve výchozím nastavení uživatelům se zobrazí mít za následek nápadně žlutý obrazovky proclaiming, že došlo k chybě za běhu. Tento kurz ukazuje, jak upravit tato nastavení pro-vkusnou zobrazení vlastní chybové stránky, která odpovídá vaší lokality vzhled a chování.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -47,7 +46,6 @@ Chyba vývojářům stránky jsou největší zkušenosti se YSOD podrobnosti o 
 > [!NOTE]
 > Chcete-li reprodukovat tuto chybu v ukázkové webové aplikace k dispozici ke stažení můžete buď návštěvu `Genre.aspx?ID=foo` přímo nebo kliknutím na odkaz "Generovat za běhu chyba" v `Default.aspx`.
 
-
 Poznamenejte si informace o výjimce v **obrázek 1**. Zpráva o výjimce, "převod se nezdařil při převodu ze znakového řetězce na typ uniqueidentifier" se nachází v horní části stránky. Typ výjimky, `System.Data.SqlClient.SqlException`, je uvedený také. Je také trasování zásobníku.
 
 [![](displaying-a-custom-error-page-vb/_static/image2.png)](displaying-a-custom-error-page-vb/_static/image1.png)
@@ -61,7 +59,6 @@ Ve výchozím nastavení, YSOD chyba modulu Runtime se zobrazí uživatelům, kt
 
 > [!NOTE]
 > Pokud sledujete a používáte DiscountASP.NET jako webového hostitele, můžete si všimnout, že chyba YSOD Runtime nezobrazí při návštěvě živého webu. Je to proto DiscountASP.NET má své servery ve výchozím nastavení nakonfigurované zobrazíte YSOD podrobnosti o výjimce. Dobrou zprávou je, že toto výchozí chování můžete přepsat tak, že přidáte `<customErrors>` části vašeho `Web.config` souboru. V části "Konfigurace které stránky se zobrazí chyba" prověří `<customErrors>` části podrobně.
-
 
 [![](displaying-a-custom-error-page-vb/_static/image5.png)](displaying-a-custom-error-page-vb/_static/image4.png)
 
@@ -139,7 +136,6 @@ Díky této změně na místě pokaždé, když se uživatel navštívit vzdále
 > [!NOTE]
 > Podívejte se na [404 chybové stránky, další jednou](http://www.smashingmagazine.com/2009/01/29/404-error-pages-one-more-time/) pokyny k vytváření efektivní 404 chybové stránky.
 
-
 [![](displaying-a-custom-error-page-vb/_static/image19.png)](displaying-a-custom-error-page-vb/_static/image18.png)**Obrázek 7**: Vlastní 404 chybovou stránku zobrazí zprávu cílenější než `Oops.aspx`  
  ([Kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-custom-error-page-vb/_static/image20.png)) 
 
@@ -147,7 +143,6 @@ Protože víte, že `404.aspx` stránky se dosáhne, pouze když uživatel odeš
 
 > [!NOTE]
 > Vlastní chybové stránky se zobrazí pouze po odeslání žádosti na prostředek zpracovává modul ASP.NET. Jak jsme probírali v [základní rozdíly mezi IIS a serveru ASP.NET Development Server](core-differences-between-iis-and-the-asp-net-development-server-vb.md) výukový program, webový server může zpracovat určité požadavky samotné. Ve výchozím nastavení webové služby IIS serveru procesy požadavky pro statický obsah – třeba obrázky nebo soubory HTML bez vyvolání modul ASP.NET. V důsledku toho pokud uživatel požaduje soubor obrázku neexistující dostanou zpět služby IIS výchozí chyby 404, nikoli ASP. NET společnosti nakonfigurovat chybovou stránku.
-
 
 ## <a name="summary"></a>Souhrn
 

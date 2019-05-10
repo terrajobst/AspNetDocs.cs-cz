@@ -8,19 +8,18 @@ ms.date: 08/30/2013
 ms.assetid: 0ee21741-c1bf-4025-a9b0-24580cae24bc
 msc.legacyurl: /aspnet/overview/owin-and-katana/an-overview-of-project-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 72f70faa151007558ecbb270143ecd5b37c2134d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 1f28db822930cdfd2ebf4cf9bb27d173f4aa4201
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59392570"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118282"
 ---
 # <a name="an-overview-of-project-katana"></a>Přehled projektu Katana
 
 podle [Howard Dierking](https://github.com/howarddierking)
 
 > ASP.NET Framework je už více než deset let a platformu aktivoval vývoj aplikací webů a služeb. Jak se vyvinula strategie vývoje webové aplikace, rozhraní bylo rozvoj v kroku s technologií, jako je ASP.NET MVC a ASP.NET Web API. Jako vývoj webových aplikací, dalším krokem evoluční bere do světa cloud computingu, Microsoft Office project [Katana](https://channel9.msdn.com/Shows/Web+Camps+TV/The-Katana-Project-OWIN-for-ASPNET) obsahuje základní sadu komponent do aplikace ASP.NET, což jim umožňuje být flexibilní, přenosná, odlehčený a nabízí lepší výkon – jinými slovy, projektu [Katana](https://channel9.msdn.com/Shows/Web+Camps+TV/The-Katana-Project-OWIN-for-ASPNET) cloudu optimalizuje vaše aplikace ASP.NET.
-
 
 ## <a name="why-katana--why-now"></a>Proč Katana – proč teď?
 
@@ -214,7 +213,6 @@ Infrastruktury hostování Katana 2.0 obsahuje SystemWeb a servery s HttpListene
 ## <a name="conclusion"></a>Závěr
 
  Od jeho začátku cíle projektu Katana nebyla k vytvoření a tím vynutit vývojáře a zjistěte další webové rozhraní. Místo toho cílem bylo vytvořit abstrakci pro vývojáře .NET webových aplikací poskytují více možností než dříve bylo možné. Pomocí rozdělení logické vrstvy typické zásobníku webové aplikace do sady replaceable komponenty, umožňuje projektu Katana komponenty v rámci zásobníku ke zlepšení v libovolné míra dává smysl pro tyto součásti. Vytvořením všechny součásti kolem jednoduché abstrakce OWIN Katana umožňuje rozhraní a aplikací vybudovaných nad nich jeho přenositelnost napříč celou řadu různých serverů a hostitelů. Vložením vývojář v ovládacím prvku zásobníku Katana zajistí, že vývojář znamená, že ultimate výběr o tom, jak jednoduché nebo jak bohaté na funkce by měla být zásobníku svůj Web.  
-  
 
 ## <a name="for-more-information-about-katana"></a>Další informace o Katana
 

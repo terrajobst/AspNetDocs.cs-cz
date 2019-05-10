@@ -8,12 +8,12 @@ ms.date: 01/06/2019
 ms.assetid: 9f35ca15-e216-4db6-9ebf-24380b0f31b4
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 2b5d2a355a27bfe9a3aa8b2fa4a2de79c7f74314
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 6894d01af7cd142a5579f73ae5209ca13756ca52
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59387123"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65120741"
 ---
 # <a name="adding-validation"></a>Přidání ověření
 
@@ -84,7 +84,6 @@ Klikněte na tlačítko **vytvořit nový** odkaz na přidání nového videa. V
 > [!NOTE]
 > pro podporu ověřování jQuery pro neanglická národní prostředí, které používají čárkou (",") pro desetinné čárky, je nutné zahrnout NuGet globalizace, jak je popsáno výše v tomto kurzu.
 
-
 Všimněte si, jak formulář automaticky použila červené ohraničení zvýrazněte textová pole, které obsahují neplatná data a je vyzářeno chybovou zprávu ověření odpovídající vedle každé z nich. Chyby se vynucují straně klienta (pomocí jazyků JavaScript a jQuery) a na straně serveru (v případě má zakázaný JavaScript).
 
 Skutečné výhodou je, že nemusíte změnit jediný řádek kódu v `MoviesController` třídy nebo *Create.cshtml* zobrazení, chcete-li povolit toto ověření uživatelského rozhraní. Kontroler a zobrazení, které jste vytvořili dříve v tomto kurzu automaticky vybere nahoru ověřovací pravidla, které jste zadali pomocí atributů ověření na vlastnosti `Movie` třída modelu. Test ověření pomocí `Edit` je použít metody akce a stejné ověřování.
@@ -135,9 +134,7 @@ Otevřít *Movie.cs* souboru a zkoumat `Movie` třídy. [ `System.ComponentModel
 
 `DisplayFormat` Atribut se používá s ohledem na formát data:
 
-
 [!code-csharp[Main](adding-validation/samples/sample8.cs)]
-
 
 `ApplyFormatInEditMode` Nastavení určuje, že zadané formátování také bude použito při hodnota se zobrazí v textovém poli pro úpravu. (Pokud nechcete pro některá pole – například pro hodnoty měny, nemusí chcete symbol měny v textovém poli pro úpravu.)
 
@@ -155,7 +152,6 @@ Pokud používáte `DataType` atribut pomocí pole pro datum, budete muset zadat
 > [!code-csharp[Main](adding-validation/samples/sample9.cs)]
 > 
 > Je potřeba zakázat ověřování jQuery data použít [rozsah](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx) atributem [data a času](https://msdn.microsoft.com/library/system.datetime.aspx). Není obvykle vhodné pro kompilaci pevného data ve vašich modelů použít [rozsah](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx) atribut a [data a času](https://msdn.microsoft.com/library/system.datetime.aspx) se nedoporučuje.
-
 
 Následující kód ukazuje kombinace atributů na jednom řádku:
 

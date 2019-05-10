@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: c61560e9-9f6c-4985-834a-08a3eabf9c3c
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file
 msc.type: authoredcontent
-ms.openlocfilehash: cbad35c9ef83b41e9d3f9a48ff37672d22338e7e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: f1477ff423e4898385066a35b42503f3c70dcc68
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59395222"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65119463"
 ---
 # <a name="creating-and-running-a-deployment-command-file"></a>Vytvoření a spuštění souboru příkazů k nasazení
 
@@ -22,7 +22,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Toto téma popisuje, jak vytvořit soubor příkazů, který vám umožní spustit nasazení, které využívá Microsoft Build Engine (MSBuild) souborů projektu jako krokování a opakovatelného procesu.
-
 
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [Správce kontaktů](the-contact-manager-solution.md) řešení&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
@@ -41,9 +40,7 @@ Jak je popsáno v [Principy procesu sestavení](understanding-the-build-process.
 
 *Publish.proj* soubor používá **importovat** – element pro import souboru projektu pro konkrétní prostředí.
 
-
 [!code-xml[Main](creating-and-running-a-deployment-command-file/samples/sample1.xml)]
-
 
 V důsledku toho použijete-li vytvářet a nasazovat řešení Správce kontaktů MSBuild.exe, musíte:
 
@@ -52,19 +49,14 @@ V důsledku toho použijete-li vytvářet a nasazovat řešení Správce kontakt
 
 K tomuto účelu nástroj MSBuild příkazu by měl vypadat takto:
 
-
 [!code-console[Main](creating-and-running-a-deployment-command-file/samples/sample2.cmd)]
-
 
 Tady je jednoduchý kroku a přesunu do nasazení opakovatelným a krokování. Všechno, co musíte udělat, je přidání příkazu MSBuild do souboru .cmd. V řešení Správce kontaktů publikovat složka obsahuje soubor s názvem *publikovat Dev.cmd* , který přesně to dělá.
 
-
 [!code-console[Main](creating-and-running-a-deployment-command-file/samples/sample3.cmd)]
-
 
 > [!NOTE]
 > **/Fl** přepínač nastaví nástroj MSBuild vytvoří soubor protokolu s názvem *msbuild.log* v pracovním adresáři, ve kterém se vyvolala MSBuild.exe.
-
 
 Nasazení nebo znovu nasadit řešení Správce kontaktů, stačí provést spuštění *publikovat Dev.cmd* souboru. Když spustíte tento soubor, bude nástroj MSBuild:
 
@@ -99,19 +91,14 @@ Když vytvoříte soubor příkazů pro cílové prostředí byste měli dokonč
 
 Vytváření souboru příkazů obsahující pokyny k MSBuild poskytuje rychlý a snadný způsob sestavování a nasazování řešení vícenásobného projektu pro konkrétní cílové prostředí. Pokud je potřeba opakované nasazení svého řešení do cílového prostředí s více, můžete vytvořit více souborů příkazů. V každém souboru příkaz příkaz MSBuild se sestaví stejný soubor projektu univerzální, ale určí soubor jiného projektu pro konkrétní prostředí. Soubor příkazů publikovat vývojáři nebo testovací prostředí může obsahovat například tento příkaz MSBuild:
 
-
 [!code-console[Main](creating-and-running-a-deployment-command-file/samples/sample4.cmd)]
-
 
 Soubor příkazů k publikování do přípravného prostředí může obsahovat tento příkaz MSBuild:
 
-
 [!code-console[Main](creating-and-running-a-deployment-command-file/samples/sample5.cmd)]
-
 
 > [!NOTE]
 > Pokyny k přizpůsobení souborů projektu specifických pro prostředí pro prostředí serveru, naleznete v tématu [nakonfigurovat vlastnosti nasazení pro cílové prostředí](../configuring-server-environments-for-web-deployment/configuring-deployment-properties-for-a-target-environment.md).
-
 
 Můžete také přizpůsobit proces sestavení pro jednotlivá prostředí přepsání vlastností nebo nastavením různé jinými přepínači ve svých rukou nástroje MSBuild. Další informace najdete v tématu [MSBuild Command Line Reference](https://msdn.microsoft.com/library/ms164311.aspx).
 

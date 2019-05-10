@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 6ecd08c1-e364-4cd7-ad4c-806521911585
 msc.legacyurl: /signalr/overview/performance/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: 78efe409ab59df17ae71c26d4e280cc9971a64d2
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 58a7affa1769523955adc76455a1c33be6f49751
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59393246"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65114313"
 ---
 # <a name="signalr-scaleout-with-redis"></a>Šklálování aplikace SignalR službou Redis
 
@@ -38,7 +38,6 @@ podle [Mike Wasson](https://github.com/MikeWasson)
 >
 > Napište prosím zpětnou vazbu o tom, jak vám líbilo v tomto kurzu a co můžeme zlepšit v komentářích v dolní části stránky. Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
 
-
 V tomto kurzu budete používat [Redis](http://redis.io/) k distribuci zpráv do aplikace SignalR, který je nasazen na dvou samostatných instancí služby IIS.
 
 Redis je úložiště klíč / hodnota v paměti. Podporuje také systému zasílání zpráv s modelem publikování a přihlášení k odběru. Propojovací rozhraní systému SignalR Redis používá funkci pub/sub pro předávání zpráv na jiné servery.
@@ -57,7 +56,6 @@ I když v tomto kurzu používá oficiální implementace Redis, k dispozici je 
 > [!NOTE]
 >
 > Škálování aplikace SignalR službou Redis nepodporuje clustery Redis.
-
 
 ## <a name="overview"></a>Přehled
 

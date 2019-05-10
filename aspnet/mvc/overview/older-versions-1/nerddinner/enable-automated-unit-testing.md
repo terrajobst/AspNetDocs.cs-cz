@@ -8,12 +8,12 @@ ms.date: 07/27/2010
 ms.assetid: a19ff2ce-3f7e-4358-9a51-a1403da9c63e
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
 msc.type: authoredcontent
-ms.openlocfilehash: b0c9cd7ab36a8414e0d7d50a68b05bb09a5f24f1
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 09a7aa186605a6cce48ee94028425ded957c00d3
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59387903"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65117346"
 ---
 # <a name="enable-automated-unit-testing"></a>Povolení automatického testování jednotek
 
@@ -26,7 +26,6 @@ by [Microsoft](https://github.com/microsoft)
 > Krok 12 ukazuje, jak vyvíjet sadu automatizované testy jednotky, která ověřit naše funkce NerdDinner a dávají nám provedou změny a vylepšení pro aplikaci v budoucnosti.
 > 
 > Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
-
 
 ## <a name="nerddinner-step-12-unit-testing"></a>NerdDinner krok 12: Testování částí
 
@@ -264,7 +263,6 @@ Zajímavé nové testovací scénář pro nás pro podporu s touto metodou akce 
 Níže jsou dva testy, které ukazuje, jak můžeme zadat formuláře, pošle hodnoty UpdateModel() pomocné metody pro použití. Jsme budete k tomu vytváří se a naplňuje objekt FormCollection a pak ji přiřaďte vlastnost "Položka ValueProvider" v řadiči.
 
 První test ověří, že při úspěšném uložení prohlížeč přesměrován na podrobnosti o akci. Druhý test ověří, že když se pošle neplatný vstup akce znovu zobrazí zobrazení pro úpravy znovu s chybovou zprávou.
-
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample17.cs)]
 

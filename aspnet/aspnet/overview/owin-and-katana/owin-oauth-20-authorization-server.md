@@ -8,12 +8,12 @@ ms.date: 01/28/2019
 ms.assetid: 20acee16-c70c-41e9-b38f-92bfcf9a4c1c
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
 msc.type: authoredcontent
-ms.openlocfilehash: d5c8262d48c79616ca3069c37077ba99ffafb650
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 6523d09e41fe10475d1bcb7fca06b2e0e2d3182c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58426042"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118202"
 ---
 # <a name="owin-oauth-20-authorization-server"></a>Autorizační server OWIN OAuth 2.0
 
@@ -34,7 +34,6 @@ ms.locfileid: "58426042"
 > ## <a name="questions-and-comments"></a>Otázky a komentáře
 >
 > Pokud máte otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je uvést v [Katana projektu na Githubu](https://github.com/aspnet/AspNetKatana/). Pro dotazy a připomínky týkající se tohoto kurzu, samotný naleznete v části poznámky v dolní části stránky.
-
 
 [OAuth 2.0 framework](http://tools.ietf.org/html/rfc6749) umožňuje aplikaci třetí strany k získání omezený přístup ke službě HTTP. Nemusíte používat přihlašovací údaje vlastníka prostředku pro přístup k chráněnému prostředku, klient získá přístupový token (což je řetězec představující konkrétní obor, dobu života a dalších atributů přístup). Přístupové tokeny jsou vystavené klientům třetích stran autorizačního serveru se souhlasem vlastníka prostředku.
 
@@ -175,7 +174,6 @@ Tady je ukázková implementace pro `Provider.GrantResourceOwnerCredentials`:
 > [!NOTE]
 > Výše uvedený kód je určený k objasnění v této části kurzu a nesmí být použita v zabezpečení nebo produkční aplikace. Nekontroluje pověření vlastníky prostředků. Předpokládá, že se každý přihlašovacích údajů je platný a vytvoří novou identitu pro něj. Nové identity se použije k vygenerování přístupového tokenu a obnovovací token. Nahraďte kód vlastní kód pro správu zabezpečení účtu.
 
-
 ### <a name="client-credentials-grant"></a>Udělení pověření klienta
 
 Najdete IETF OAuth 2 [udělení klientských přihlašovacích údajů](http://tools.ietf.org/html/rfc6749#section-4.4) části nyní.
@@ -195,7 +193,6 @@ Tady je ukázková implementace pro `Provider.GrantClientCredentials`:
 
 > [!NOTE]
 > Výše uvedený kód je určený k objasnění v této části kurzu a nesmí být použita v zabezpečení nebo produkční aplikace. Nahraďte kód vlastní kód pro správu klientů.
-
 
 ### <a name="refresh-token"></a>Aktualizovat Token
 
@@ -274,7 +271,6 @@ Tady je ukázkový kód `HomeController` klienta.
 > [!WARNING]
 > Zabezpečení – nikdy zakázat SSL v produkční aplikace. Přihlašovací údaje jsou nyní sítí odesílány ve formátu prostého textu. Výše uvedený kód je jenom pro místní ukázky ladění a prozkoumávání.
 
-
 ### <a name="implicit-grant-client"></a>Implicitní Grant klienta
 
 Tento klient je pomocí kódu jazyka JavaScript:
@@ -296,7 +292,6 @@ Tady je funkce zpětného volání v kódu pro zpracování *SignIn.cshtml* soub
 
 > [!NOTE]
 > Osvědčeným postupem je přesunout na externí soubor jazyka JavaScript a Nevkládat se značkami Razor. Pro zjednodušení této ukázku je kombinovat.
-
 
 ### <a name="resource-owner-password-credentials-grant-client"></a>Heslo vlastníka prostředku přihlašovacích údajů klienta udělení
 

@@ -8,15 +8,14 @@ ms.date: 07/16/2014
 ms.assetid: ba07958c-42e1-4da0-81db-ba6925ed6db0
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 9904582450d4386ef8b8656078f6d40dbd1e10be
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 9e39fd3f2fc9d4e791002450085215096c222fcd
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59412005"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65120008"
 ---
 # <a name="hands-on-lab-real-time-web-applications-with-signalr"></a>Praktické cvičení: Webové aplikace v reálném čase s knihovnou SignalR
-
 
 podle [Campy Web týmu](https://twitter.com/webcamps)
 
@@ -66,7 +65,6 @@ Chcete-li spustit praktická cvičení v této praktické testovací prostředí
 > [!NOTE]
 > Ujistěte se, že jste zaškrtli všechny závislosti pro toto testovací prostředí před spuštěním instalace.
 
-
 <a id="CodeSnippets"></a>
 ### <a name="using-the-code-snippets"></a>Používání fragmentů kódu
 
@@ -74,7 +72,6 @@ V celém dokumentu testovacího prostředí budete vyzváni k vložení bloky k�
 
 > [!NOTE]
 > Každý cvičení se sadou počáteční řešení nachází v **začít** složky výkonu, který umožňuje postupovat podle jednotlivých výkon nezávisle na ostatních. Uvědomte si, že chybí z těchto řešení od fragmenty kódu, které se přidávají během cvičení a nemusí fungovat, dokud nedokončíte výkonu. Uvnitř zdrojový kód pro cvičení, můžete také najdete **End** složku, která obsahuje řešení sady Visual Studio s kódem, který je výsledkem dokončení kroků v odpovídající cvičení. Tato řešení můžete použít jako vodítko, pokud potřebujete další pomoc při práci prostřednictvím této praktické vyzkoušení.
-
 
 ---
 
@@ -90,7 +87,6 @@ Odhadovaný čas dokončení tohoto testovacího prostředí: **60 minut**
 
 > [!NOTE]
 > Při prvním spuštění sady Visual Studio, musíte vybrat jednu z předdefinovaných nastavení kolekce. Každé předdefinované kolekce je navržená tak, aby odpovídala konkrétním vývojářským styl a určuje rozložení oken, chování editoru, fragmenty kódu technologie IntelliSense a možnosti dialogového okna. Postupy v tomto testovacím prostředí jsou uvedené akce potřebné k provedení dané úlohy v sadě Visual Studio při použití **obecným vývojovým nastavením** kolekce. Pokud se rozhodnete různá nastavení kolekce pro vaše vývojové prostředí, mohou existovat rozdíly v krocích, které byste měli vzít v úvahu.
-
 
 <a id="Exercise1"></a>
 ### <a name="exercise-1-working-with-real-time-data-using-signalr"></a>Cvičení 1: Práce s daty v reálném čase s použitím SignalR
@@ -274,7 +270,6 @@ Další informace o tom, jak propojovací rozhraní systému SignalR funguje, na
 > - [Server vysílání](tutorial-server-broadcast-with-signalr.md) (například akciích): Backplanes fungovat dobře pro tento scénář, protože rychlost, jakou jsou odesílány zprávy pro ovládací prvky server.
 > - [Klient klient](tutorial-getting-started-with-signalr.md) (například konverzace): V tomto scénáři propojovacího rozhraní může být kritickým bodem v případě, že počet zpráv, které se škáluje s počtem klientů; To znamená, pokud roste počet zpráv proporcionálně Další klienti se připojují k.
 > - [Vysokofrekvenční Reálný čas](tutorial-high-frequency-realtime-with-signalr.md) (například hry v reálném čase): Propojovací rozhraní se nedoporučuje pro tento scénář.
-
 
 V tomto cvičení použijete **systému SQL Server** k distribuci zpráv napříč **kvíz Informatik** aplikace. Tyto úlohy poběží na jeden testovací počítač Další informace o nastavení konfigurace, ale pokud chcete získat plný vliv, budete muset nasadit aplikace SignalR pro dva nebo víc serverů. SQL Server musíte nainstalovat také na některý server nebo na samostatný vyhrazený server.
 

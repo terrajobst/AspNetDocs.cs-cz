@@ -8,19 +8,18 @@ ms.date: 02/20/2005
 ms.assetid: 2bb109d2-e299-46ea-9054-fa0263b59165
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/caching
 msc.type: authoredcontent
-ms.openlocfilehash: 5e16415df5bd4203995bec943ffa682f7da82357
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 39f4eb7b0859cf52fe3ed2531e9c349b465b9327
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400201"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65116854"
 ---
 # <a name="caching"></a>Ukládání do mezipaměti
 
 by [Microsoft](https://github.com/microsoft)
 
 > Znalost ukládání do mezipaměti je důležité pro správné aplikace ASP.NET. ASP.NET 1.x nabízí tři různé možnosti pro ukládání do mezipaměti; ukládání výstupu do mezipaměti, ukládání do mezipaměti fragment a rozhraní API mezipaměti.
-
 
 Znalost ukládání do mezipaměti je důležité pro správné aplikace ASP.NET. ASP.NET 1.x nabízí tři různé možnosti pro ukládání do mezipaměti; ukládání výstupu do mezipaměti, ukládání do mezipaměti fragment a rozhraní API mezipaměti. Technologie ASP.NET 2.0 nabízí všechny tři z těchto metod, ale přidá některé další důležité funkce. Existuje několik nové závislosti mezipaměti a vývojáři teď mají možnost vytvořit i vlastní mezipaměti závislosti. Konfigurace ukládání do mezipaměti taky vylepšili jsme výrazně v technologii ASP.NET 2.0.
 
@@ -63,7 +62,6 @@ SQL Server 7 a 2000 použít model založený na dotazování pro závislosti me
 > [!NOTE]
 > SQL Server 2005 můžete také použít model založený na dotazování, ale protože model založený na dotazování není nejúčinnější model, je vhodné použít model založených na dotazech (prodiskutována později) s SQL Server 2005.
 
-
 V pořadí závislosti mezipaměti SQL pomocí modelu založeného na dotazování fungovala správně musí mít v tabulkách oznámení jsou povolená. To lze provést prostřednictvím kódu programu pomocí třídy SqlCacheDependencyAdmin nebo s použitím aspnet\_regsql.exe nástroj.
 
 Následující příkaz zaregistruje tabulky produktů v databázi Northwind umístěné na instanci systému SQL Server s názvem *dbase* závislosti mezipaměti SQL.
@@ -84,12 +82,10 @@ Následuje vysvětlení přepínače příkazového řádku používá ve výše
 > [!NOTE]
 > Nejsou k dispozici pro aspnet jinými přepínači\_regsql.exe. Úplný seznam, spusťte aspnet\_regsql.exe-? z příkazového řádku.
 
-
 Při spuštění tohoto příkazu jsou provedeny následující změny k databázi SQL serveru:
 
 - **AspNet\_SqlCacheTablesForChangeNotification** tabulka se přidá. Tato tabulka obsahuje jeden řádek pro každou tabulku v databázi, pro které bylo povoleno závislosti mezipaměti SQL.
 - Následující uložené procedury jsou vytvořeny v databázi:
-
 
 | AspNet\_SqlCachePollingStoredProcedure | Dotazy AspNet\_SqlCacheTablesForChangeNotification tabulky a vrátí všechny tabulky, které jsou povoleny pro závislost mezipaměti SQL a hodnota changeId pro každou tabulku. Tato uložená procedura se používá pro dotazování k určení, zda se data nezměnila. |
 | --- | --- |
@@ -97,7 +93,6 @@ Při spuštění tohoto příkazu jsou provedeny následující změny k databá
 | AspNet\_SqlCacheRegisterTableStoredProcedure | Registruje tabulku závislosti mezipaměti SQL tak, že přidáte nezbytné položky v tabulce oznámení a přidá aktivační událost. |
 | AspNet\_SqlCacheUnRegisterTableStoredProcedure | Zruší registraci tabulku závislosti mezipaměti SQL tak, že odeberete položce v tabulce oznámení a odebírá aktivační událost. |
 | AspNet\_SqlCacheUpdateChangeIdStoredProcedure | Aktualizuje tabulku oznámení zvýšením changeId změněné tabulce. ASP.NET používá tuto hodnotu k určení, zda se data nezměnila. Jak je uvedeno níže, provádí se tato uložená procedura má aktivační procedura vytvoří, když je povolená v tabulce. |
-
 
 - Volá se, aktivační události SQL Server ***tabulky\_název *\_AspNet\_SqlCacheNotification\_aktivační událost** je vytvořený pro tabulku. Tato aktivační událost spouští AspNet\_SqlCacheUpdateChangeIdStoredProcedure při vložení, aktualizace nebo odstranění v tabulce.
 - Role systému SQL Server volá **aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess** je přidána do databáze.
@@ -161,7 +156,6 @@ Můžete také určit, že všechny vaše zdroje dat pro závislosti mezipaměti
 
 > [!NOTE]
 > Další informace o oznámení dotazů v SQL Server 2005 najdete v článku webu knihy Online pro SQL Server.
-
 
 Jinou metodou konfigurace založená na dotazech závislosti mezipaměti SQL je k tomu prostřednictvím kódu programu pomocí třídy SqlCacheDependency. Následující příklad kódu ukazuje, jak to lze provést.
 
@@ -233,7 +227,6 @@ Následující atributy jsou k dispozici v &lt;mezipaměti&gt; element:
 ### <a name="the-ltoutputcachegt-element"></a>&lt;OutputCache&gt; – Element
 
 Jsou k dispozici pro následující atributy &lt;outputCache&gt; elementu.
-
 
 |       <strong>Atribut</strong>        |                                                                                                                                                                                                                                                       <strong>Popis</strong>                                                                                                                                                                                                                                                       |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

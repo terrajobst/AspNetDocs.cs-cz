@@ -8,12 +8,12 @@ ms.date: 01/27/2009
 ms.assetid: 68acd884-fb57-4486-a1be-aaa93e380780
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0dae280dfa3028df5fda95c4366132c99a0dc3b7
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: f2f4372498e5a38bbfcb96d6e9f6338b0ef4df1f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59409197"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123673"
 ---
 # <a name="adding-dynamic-content-to-a-cached-page-vb"></a>Přidání dynamického obsahu do stránky v mezipaměti (VB)
 
@@ -21,16 +21,13 @@ by [Microsoft](https://github.com/microsoft)
 
 > Zjistěte, jak kombinovat dynamická a uložená v mezipaměti obsahu na stejné stránce. Substituce mezipaměti po umožňuje zobrazit dynamický obsah, jako je například reklamy nebo příspěvků v rámci stránky, který má výstup do mezipaměti.
 
-
 Výhod ukládání výstupu do mezipaměti, může výrazně zlepšit výkon aplikace ASP.NET MVC. Na stránce může místo obnovení na stránce každého, když je zobrazení stránky vyžadováno, generovat jednou a uložit do mezipaměti v paměti pro více uživatelů.
 
 Ale dojde k nějakému problému. Co když budete potřebovat zobrazit dynamický obsah na stránce? Představte si například, že chcete zobrazit na stránce proužkové reklamy. Nechcete, aby oznámení o inzerovaném programu banner ukládat do mezipaměti tak, aby každý uživatel uvidí stejné oznámení o inzerovaném programu. Nebylo by si peníze za tímto způsobem.
 
 Naštěstí je jednoduché řešení. Můžete využít funkci ASP.NET Framework, volá *substituce mezipaměti*. Substituce mezipaměti po umožňuje nahradit dynamický obsah na stránce, která se má uložit do mezipaměti v paměti.
 
-
 Za normálních okolností při výstupu do mezipaměti na stránce s použitím &lt;OutputCache&gt; atribut, na stránce se uloží do mezipaměti na serveru a klienta (webový prohlížeč). Při použití mezipaměti po nahrazení stránka je uložit do mezipaměti pouze na serveru.
-
 
 #### <a name="using-post-cache-substitution"></a>Použití mezipaměti po nahrazení
 

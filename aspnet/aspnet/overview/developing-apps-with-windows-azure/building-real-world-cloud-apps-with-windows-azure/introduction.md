@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: accfa16a-ab15-4c26-9ad4-babdc2a77d2e
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: bf9cf1f5be22a5b97ec964277c11ae21066676f0
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 7daf08a88c614288170d676e665403cda244218a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59412408"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118666"
 ---
 # <a name="building-real-world-cloud-apps-with-azure"></a>Sestavování skutečných cloudových aplikací s Azure
 
@@ -24,7 +24,6 @@ podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twi
 > Tato elektronická kniha vás provede přístup založený na základě vzorů vytvořením skutečných cloudových řešení. Tyto vzory se dají použít jak na proces vývoje, tak na architekturu a kódování.
 > 
 > Obsah je založený na prezentaci Scotta guthrie připravil a přednesl jím na Ndc Norwegian Developers Conference () v červnu 2013 ([1. část](http://vimeo.com/68215538), [2. část](http://vimeo.com/68215602)) a na Microsoft Tech Ed Austrálie v Září 2013 ([1. část](https://channel9.msdn.com/Events/TechEd/Australia/2013/AZR324), [2. část](https://channel9.msdn.com/Events/TechEd/Australia/2013/AZR325)). [Řada dalších](more-patterns-and-guidance.md#acknowledgments) aktualizovala a vylepšila obsahu při převodu z videa do psané formy.
-
 
 ## <a name="intended-audience"></a>Cílová skupina
 

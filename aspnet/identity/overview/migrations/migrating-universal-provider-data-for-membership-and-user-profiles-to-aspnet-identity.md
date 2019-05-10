@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: 2e260430-d13c-4658-bd05-e256fc0d63b8
 msc.legacyurl: /identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 1043dce4cdd62f94ae9d2344a9301c1b03426f3d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: de154dde122886976054159ad745982669ca9315
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59422262"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65121376"
 ---
 # <a name="migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity-c"></a>Migrace členských dat od univerzálního zprostředkovatele a uživatelských profilů na ASP.NET Identity (C#)
 
@@ -22,14 +22,12 @@ podle [Pranav Rastogi](https://github.com/rustd), [Rick Anderson]((https://twitt
 
 > Tento kurz popisuje kroky, které jsou potřebné k migraci uživatelů a role data a data uživatelského profilu vytvořeného Universal Providers existující aplikace do modelu ASP.NET Identity. Tento přístup uvedeným k migraci dat profilu uživatele, je použít v aplikaci s také členství SQL.
 
-
 S vydáním sady Visual Studio 2013, tým ASP.NET zavedly nový systém ASP.NET Identity, které si můžete přečíst další informace o této verzi [tady](../../index.md). Na článek migrace webových aplikací před [členství SQL na nový systém identit](migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md), tento článek ukazuje postup při migraci stávajících aplikací, které se řídí modelem poskytovatelé pro správu uživatelů a rolí Nový model Identity. Fokus v tomto kurzu budou primárně na migraci dat profilu uživatele do bez problémů integrovat do nového systému. Migrace informací o uživatelích a role je podobná pro členství v SQL. Postup pro migraci dat profilu je možné v aplikaci s také členství SQL.
 
 Jako příklad Začneme s webovou aplikací vytvořených pomocí Visual Studio 2012, která používá model poskytovatelů. Přidáme pak přidejte kód pro správu profilů, registrace uživatele, data profilu pro uživatele, migraci schématu databáze a potom změňte aplikace pro systém identit pro správu uživatelů a rolí. Jako test migrace vytvořené pomocí Universal Providers uživatelé měli být schopni přihlášení a noví uživatelé by se moci zaregistrovat.
 
 > [!NOTE]
 > Můžete najít úplnou ukázku v [ https://github.com/suhasj/UniversalProviders-Identity-Migrations ](https://github.com/suhasj/UniversalProviders-Identity-Migrations).
-
 
 ## <a name="profile-data-migration-summary"></a>Shrnutí migrace dat profilu
 

@@ -8,15 +8,14 @@ ms.date: 01/15/2019
 ms.assetid: 03960de2-8d95-4444-9169-4426dcc64913
 msc.legacyurl: /signalr/overview/guide-to-the-api/handling-connection-lifetime-events
 msc.type: authoredcontent
-ms.openlocfilehash: 9e6b0b3b86839efa393659531d8b74770226f383
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 5bdf20549fccab5d644e35fdf4ce351540c8620d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59401462"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65119888"
 ---
 # <a name="understanding-and-handling-connection-lifetime-events-in-signalr"></a>Principy a zpracování událostí doby platnosti v knihovně SignalR
-
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
@@ -148,7 +147,6 @@ Některá síťová prostředí záměrně nečinných připojení po zavření 
 >
 > **Důležité**: Posloupnost událostí, je zde popsáno, není zaručeno. SignalR je každý pokus o vyvolání událostí doby platnosti v předvídatelné podle tohoto schématu, ale existuje mnoho variant událostí sítě a mnoha způsoby, ve kterých je zpracovávat základní architektury komunikace, jako jsou přenosu rozhraní API. Například `Reconnected` událost nemusí být vyvolána, když klient znovu připojí, nebo `OnConnected` obslužnou rutinu na serveru může spustit, když neúspěšný pokus o navázání připojení. Toto téma popisuje pouze efekty, které by bylo vytvořeno obvykle některé obvyklé okolnosti.
 
-
 <a id="clientdisconnect"></a>
 
 ### <a name="client-disconnection-scenarios"></a>Scénáře odpojení klienta
@@ -247,7 +245,6 @@ Funkce SignalR verze 2 nemá integrovaného serveru rozhraní API pro odpojení 
 
 > [!WARNING]
 > Zabezpečení – tuto metodu pro odpojení klienti ani rozhraní API navržených integrované bude zabývat scénář napadené klienty se systémem škodlivý kód, protože klienti mohli znovu připojit nebo může dojít k odebrání napadené kód `stopClient` metodu nebo změňte Co to dělá. Na příslušné místo k implementaci stavové ochrany s cílem odepření služby (DOS) je v rámci nebo vrstvy serveru, ale v front-endové infrastruktury.
-
 
 <a id="detectingreasonfordisconnection"></a>
 ## <a name="detecting-the-reason-for-a-disconnection"></a>Zjišťování důvod pro odpojení

@@ -9,18 +9,16 @@ ms.assetid: 38717fc1-5989-43cf-952d-4007cc1dd923
 ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/getting-started/introduction-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 34a0d62d7afcaffa8fbac0bc774d9266efb6b165
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 0268dfc16cd2cfb1e79ee14997a4c5eb247af950
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59413045"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65121543"
 ---
 # <a name="introduction-to-aspnet-identity"></a>Úvod do ASP.NET Identity
 
-
 > Systém členství technologie ASP.NET byla zavedena v systémech ASP.NET 2.0 zpět v roce 2005 a protože pak byly provedeny změny v mnoha způsoby webové aplikace obvykle zpracovávat ověřování a autorizace. ASP.NET Identity je čerstvé podívat, co systém členství by měla být při vytváření moderních aplikací pro web, telefon nebo tablet.
-
 
 ## <a name="background-membership-in-aspnet"></a>Na pozadí: Členství v ASP.NET
 
@@ -122,7 +120,6 @@ ASP.NET Identity je implementováno pomocí následujícího postupu. Cílem toh
    Pokud byl uživatel vytvořen úspěšně, že je podepsán `SignInAsync` metody.  
 
     [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample6.cs?highlight=12)]
-
 
    `SignInManager.SignInAsync` Generuje metodu [ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx). Protože ASP.NET Identity a ověřování souborů Cookie OWIN jsou založené na deklaracích systém, rozhraní framework vyžaduje, aby aplikace generovat objekt ClaimsIdentity pro daného uživatele. ClaimsIdentity obsahuje informace o všech deklarací identity pro uživatele, například ke kterým rolím uživatel patří.   
  

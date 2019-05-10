@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: ba6e6baa-9b9f-471f-b39d-b007a3addadc
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
-ms.openlocfilehash: d27c8c1910a79cea8ccdf4231d3bc2b80a20dc68
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: fd78385e563b7204b29beb4180b7bc932266bdec
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59418362"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65119021"
 ---
 # <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>Automatizace všechno, co (sestavování skutečných cloudových aplikací s Azure)
 
@@ -22,7 +22,6 @@ podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twi
 [Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
 > **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Úvod do e kniha najdete v tématu [první kapitoly](introduction.md).
-
 
 První tři vzory, které se podíváme na ve skutečnosti platí do jakéhokoli projektu vývoje softwaru, ale především pro projekty v cloudu. Tento model je o automatizaci úkolů vývoje. Je důležité tématu, protože ruční procesy jsou pomalé a náchylné; automatizace, kolik z nich, je to možné pomáhá nastavit rychlé, spolehlivé a flexibilní pracovní postup. Je jednoznačně důležité pro vývoj pro cloud, protože můžete snadno automatizovat mnoho úloh, které je obtížné či nemožné automatizace v místním prostředí. Například můžete nastavit celou testovací prostředí, včetně nového webovém serveru a back endové virtuální počítače, databáze, blob storage (úložiště souborů), fronty, atd.
 
@@ -58,10 +57,8 @@ První skript podíváme na jmenuje *New-AzureWebsiteEnv.ps1*. Vytvoří prostř
 
 ### <a name="run-the-script"></a>Spuštění skriptu
 
-
 > [!NOTE]
 > Tato část kapitoly zobrazuje příklady, které zadáte, aby bylo možné je spouštět příkazy a skripty. Tato ukázka a neposkytuje všechno, co potřebujete vědět, chcete-li spustit skripty. Podrobné postupy-k-it pokyny najdete v tématu [příloha: Oprava ukázkovou aplikaci](the-fix-it-sample-application.md#deploybase).
-
 
 Chcete-li spustit skript prostředí PowerShell, který spravuje služby Azure, které je nutné nainstalovat konzolu prostředí Azure PowerShell a nakonfigurujte ho na spolupráci s vaším předplatným Azure. Po nastavení, můžete spustit Fix It prostředí vytváření skriptu s příkaz podobný následujícímu:
 

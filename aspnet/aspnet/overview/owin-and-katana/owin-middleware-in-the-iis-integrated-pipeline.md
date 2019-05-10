@@ -8,19 +8,18 @@ ms.date: 11/07/2013
 ms.assetid: d031c021-33c2-45a5-bf9f-98f8fa78c2ab
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
 msc.type: authoredcontent
-ms.openlocfilehash: 484c01f19014639cc30244ed4f4d014794594aa2
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: bb1211de0a3fe876f5640538034ab5a58b3a070c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59391699"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118228"
 ---
 # <a name="owin-middleware-in-the-iis-integrated-pipeline"></a>Middleware OWIN v integrovaném kanálu IIS
 
 podle [Praburaj manažer](https://github.com/Praburaj), [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Tento článek popisuje, jak spustit komponenty middlewaru OWIN (OMCs) v integrovaném kanálu IIS a jak nastavit událost kanálu OMC poběží. Měli byste si přečíst [Přehled projektu Katana](an-overview-of-project-katana.md) a [rozpoznání spouštěcí třídy OWIN](owin-startup-class-detection.md) před čtením tohoto kurzu. V tomto kurzu byla zapsána od Ricka Andersona ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) ), Chris Ross, Manažer Praburaj a Howard Dierking ( [ @howard \_dierking](https://twitter.com/howard_dierking) ).
-
 
 I když [OWIN](an-overview-of-project-katana.md) middlewarových komponent (OMCs) jsou primárně určený ke spuštění v kanálu nezávislá na server, je možné spouštět v integrovaném kanálu IIS i OMC (**klasického režimu je *není* podporované**). OMC lze pracovat v integrovaném kanálu IIS instalací následujících balíčků z konzoly Správce balíčků (PMC):
 

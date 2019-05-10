@@ -9,12 +9,12 @@ ms.assetid: 248f5fe7-39ba-40ea-ab1e-71a69b0bd649
 ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
 msc.type: authoredcontent
-ms.openlocfilehash: 224fa56a455affcbbdf76eceee5422850415037e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 227a48d76f099f948d89f38219e25ced026d7dcd
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59420767"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118105"
 ---
 # <a name="implementing-a-custom-mysql-aspnet-identity-storage-provider"></a>Implementace vlastního poskytovatele úložiště MySQL ASP.NET Identity
 
@@ -31,7 +31,6 @@ podle [Raquel Soares De Almeida](https://github.com/raquelsa), [Suhas Joshi](htt
 > - Ukazují, jak nahradit výchozí implementace úložiště ASP.NET Identity naší vlastní implementaci na projekt aplikace MVC.
 > 
 > V tomto kurzu byl původně zapsán Raquel Soares De Almeida a Rick Anderson ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) ). Ukázkový projekt byla aktualizována pro Identity 2.0 Suhas Joshi. Tom FitzMacken aktualizoval 2.0 identit tématu.
-
 
 ## <a name="download-completed-project"></a>Stažení se dokončilo projektu
 

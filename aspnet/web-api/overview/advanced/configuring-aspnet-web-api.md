@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: 9e10a700-8d91-4d2e-a31e-b8b569fe867c
 msc.legacyurl: /web-api/overview/advanced/configuring-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 39629ba404e536b29318db00bce8c4443a782497
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 4f76728fa5e4602e35e1b7cb2d41b2245093cad8
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59411940"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65115966"
 ---
 # <a name="configuring-aspnet-web-api-2"></a>Konfigurace rozhraní ASP.NET Web API 2
 
@@ -45,7 +45,6 @@ Nastavení konfigurace webového rozhraní API jsou definovány v [HttpConfigura
 | **Vlastnosti** | Obecná vlastnost kontejneru. |
 | **Trasy** | Kolekce tras. Zobrazit [směrování v rozhraní ASP.NET Web API](../web-api-routing-and-actions/routing-in-aspnet-web-api.md). |
 | **Služby** | Kolekce služeb. Zobrazit [služby](#services). |
-
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -91,11 +90,9 @@ Tento kurz [použití OWIN Self-Host ASP.NET Web API 2](../hosting-aspnet-web-ap
 > [!NOTE]
 > **Služby** kolekce není mechanismus pro obecné účely pro dokáže vložit službu zjišťování nebo závislost. Ukládá pouze typy služeb, které jsou známé rozhraní Web API.
 
-
 **Služby** kolekce je inicializována s výchozí sadou služeb a může poskytnout vlastní vlastní implementace. Některé služby podporují více instancí, zatímco jiné můžou mít jenom jednu instanci. (Ale také může poskytovat služby na úrovni kontroleru; viz [konfigurace na Kontroleru](#percontrollerconfig).
 
 Jednou instancí služby
-
 
 | Služba | Popis |
 | --- | --- |
@@ -116,7 +113,6 @@ Jednou instancí služby
 | **IModelValidatorCache** | Poskytuje mezipaměť validátorů modelů. |
 
 Více instancí služby
-
 
 |                 Služba                 |                                                                                                              Popis                                                                                                               |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

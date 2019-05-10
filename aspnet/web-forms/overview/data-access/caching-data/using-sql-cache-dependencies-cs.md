@@ -8,12 +8,12 @@ ms.date: 05/30/2007
 ms.assetid: 0e91842c-7f10-4aed-8c23-4ee3e2774014
 msc.legacyurl: /web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e70a21e2752c7c8fc8be332a98e1cf7e40b01412
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: b6bc905abbe3b875b0cbe839090e43dae8f491a7
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59417686"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65116901"
 ---
 # <a name="using-sql-cache-dependencies-c"></a>Použití závislostí mezipaměti SQL (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_61_CS.zip) nebo [stahovat PDF](using-sql-cache-dependencies-cs/_static/datatutorial61cs1.pdf)
 
 > Nejjednodušší strategií ukládání do mezipaměti je umožnit data uložená v mezipaměti vyprší po zadaném časovém období. Ale tento jednoduchý přístup znamená, že data uložená v mezipaměti udržuje žádné jejich spojení se jeho podkladového zdroje dat, výsledkem je zastaralá data, která se nachází příliš dlouhý nebo aktuální data, která je příliš brzy vypršela platnost. Lepším řešením je použití třídy SqlCacheDependency tak, aby data zůstanou v mezipaměti, dokud se změnila jeho podkladová data ve službě SQL database. V tomto kurzu se dozvíte, jak.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -48,25 +47,20 @@ Modul runtime ASP.NET sleduje aktuální `changeId` pro tabulku při ukládání
 
 S přístupem dotazování databáze musí být nastavena tak, aby obsahovala infrastruktury popsané výše: předdefinované tabulce (`AspNet_SqlCacheTablesForChangeNotification`), několik uložených procedur a aktivačních událostí na všech tabulek, které lze použít v závislosti mezipaměti SQL na webu aplikace. Tyto tabulky, uložených procedur a aktivačních událostí je možné vytvářet přes příkazový řádek programu `aspnet_regsql.exe`, která byla nalezena v `$WINDOWS$\Microsoft.NET\Framework\version` složky. Chcete-li vytvořit `AspNet_SqlCacheTablesForChangeNotification` tabulky a přidružené uložených procedur, spusťte následující příkaz z příkazového řádku:
 
-
 [!code-console[Main](using-sql-cache-dependencies-cs/samples/sample1.cmd)]
 
 > [!NOTE]
 > Aby se tyto příkazy přihlášení k zadané databázi musí být v [ `db_securityadmin` ](https://msdn.microsoft.com/library/ms188685.aspx) a [ `db_ddladmin` ](https://msdn.microsoft.com/library/ms190667.aspx) role. Prozkoumat odeslán do databáze pomocí jazyka T-SQL `aspnet_regsql.exe` příkazového řádku programu, přečtěte si [tomto blogu](http://scottonwriting.net/sowblog/posts/10709.aspx).
 
-
 Například chcete-li přidat infrastrukturu pro dotazování databáze Microsoft SQL Server s názvem `pubs` na databázovém serveru s názvem `ScottsServer` používáte ověřování Windows, přejděte do příslušného adresáře a z příkazového řádku, zadejte:
-
 
 [!code-console[Main](using-sql-cache-dependencies-cs/samples/sample2.cmd)]
 
 Po přidání infrastruktury na úrovni databáze, potřebujeme přidat aktivační události na těchto tabulkách, které se použijí v závislosti mezipaměti SQL. Použít `aspnet_regsql.exe` příkazového řádku program znovu, ale zadat pomocí názvu tabulky `-t` přepnout a místo `-ed` přepnout použití `-et`, takto:
 
-
 [!code-html[Main](using-sql-cache-dependencies-cs/samples/sample3.html)]
 
 Chcete-li přidat aktivační události pro `authors` a `titles` tabulky na `pubs` databáze na `ScottsServer`, použijte:
-
 
 [!code-console[Main](using-sql-cache-dependencies-cs/samples/sample4.cmd)]
 
@@ -78,32 +72,25 @@ Pro účely tohoto kurzu přidat aktivační události na `Products`, `Categorie
 
 Začněte tím, že zavření sady Visual Studio. Dále otevřete SQL Server Management Studio a zvolte možnost pro připojení k `localhost\SQLExpress` serveru pomocí ověřování Windows.
 
-
 ![Připojení k serveru localhost\SQLExpress](using-sql-cache-dependencies-cs/_static/image1.gif)
 
 **Obrázek 1**: Připojení k `localhost\SQLExpress` serveru
 
-
 Po připojení k serveru, bude zobrazit server Management Studio a obsahovat podsložky pro databáze, zabezpečení a tak dále. Klikněte pravým tlačítkem na složku databází a zvolte možnost připojení. Tím se otevře dialogové okno Připojit databáze (viz obrázek 2). Klikněte na tlačítko Přidat a vyberte `NORTHWND.MDF` složka databáze ve vaší webové aplikace s `App_Data` složky.
-
 
 [![Připojte NORTHWND. MDF databáze ze složky App_Data](using-sql-cache-dependencies-cs/_static/image2.gif)](using-sql-cache-dependencies-cs/_static/image1.png)
 
 **Obrázek 2**: Připojit `NORTHWND.MDF` databáze z `App_Data` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image2.png))
 
-
 Tím přidáte databáze ke složce databáze. Název databáze může být úplná cesta k souboru databáze nebo úplnou cestu zvolený se přidá [GUID](http://en.wikipedia.org/wiki/Globally_Unique_Identifier). Aby se nemusela zadejte tento název zdlouhavé databáze při použití aspnet\_regsql.exe nástroj příkazového řádku, přejmenovat databázi pro více lidských – popisný název kliknutím pravým tlačítkem na databázi jenom připojit a zvolíte přejmenovat. Můžu odebrat přejmenován na DataTutorials Moje databáze.
-
 
 ![Přejmenujte připojené databázi na lidské popisný název](using-sql-cache-dependencies-cs/_static/image3.gif)
 
 **Obrázek 3**: Přejmenujte připojené databázi na lidské popisný název
 
-
 ## <a name="step-3-adding-the-polling-infrastructure-to-the-northwind-database"></a>Krok 3: Přidání dotazování infrastrukturu k databázi Northwind
 
 Teď, když nám připojili `NORTHWND.MDF` databáze z `App_Data` složky, můžeme znovu připraven k přidání infrastruktury cyklického dotazování. Za předpokladu, že jste již přejmenovali databáze do DataTutorials, spusťte následující čtyři příkazy:
-
 
 [!code-console[Main](using-sql-cache-dependencies-cs/samples/sample5.cmd)]
 
@@ -111,16 +98,13 @@ Po spuštění těchto čtyř příkazů, klikněte pravým tlačítkem na náze
 
 Jakmile sada Visual Studio znovu otevřel, přejít k podrobnostem databáze prostřednictvím Průzkumníka serveru. Poznámka: Nová tabulka (`AspNet_SqlCacheTablesForChangeNotification`), nový uložených procedur a aktivačních událostí na `Products`, `Categories`, a `Suppliers` tabulky.
 
-
 ![Databáze nyní obsahuje nezbytné dotazování infrastruktury](using-sql-cache-dependencies-cs/_static/image4.gif)
 
 **Obrázek 4**: Databáze nyní obsahuje nezbytné dotazování infrastruktury
 
-
 ## <a name="step-4-configuring-the-polling-service"></a>Krok 4: Konfigurace služby cyklického dotazování
 
 Po vytvoření potřebné tabulky, triggery a uložené procedury v databázi, je posledním krokem konfigurace cyklického dotazování služby, která se provádí prostřednictvím `Web.config` zadáním databázi, kterou chcete použít a frekvence cyklického dotazování v milisekundách. Následující kód se dotazuje databáze Northwind jednou za sekundu.
-
 
 [!code-xml[Main](using-sql-cache-dependencies-cs/samples/sample6.xml)]
 
@@ -133,7 +117,6 @@ Po vytvoření závislosti mezipaměti SQL systému dotazování se připojit k 
 > [!NOTE]
 > Výše uvedený příklad poskytuje jedinou `pollTime` hodnota v `<sqlCacheDependency>` element, ale můžete volitelně zadat `pollTime` hodnota v `<add>` elementu. To je užitečné, pokud máte více databází a chcete přizpůsobit frekvence cyklického dotazování na databázi.
 
-
 ## <a name="step-5-declaratively-working-with-sql-cache-dependencies"></a>Krok 5: Deklarativně práce s závislosti mezipaměti SQL
 
 V krocích 1 až 4 jsme se podívali na nastavení infrastruktury potřebné databáze a konfigurace systému cyklického dotazování. Pomocí této infrastruktury na místě jsme teď můžete přidávat položky do datové mezipaměti přidružené závislosti mezipaměti SQL pomocí prostřednictvím kódu programu nebo deklarativní technik. V tomto kroku prozkoumáme deklarativně práce s závislosti mezipaměti SQL. V kroku 6 podíváme na programový přístup.
@@ -142,34 +125,27 @@ V krocích 1 až 4 jsme se podívali na nastavení infrastruktury potřebné dat
 
 Abychom si předvedli deklarativně použití závislostí mezipaměti SQL, otevřete `SqlCacheDependencies.aspx` stránku `Caching` složky a GridView přetáhněte z panelu nástrojů do návrháře. Nastavit prvek GridView s `ID` k `ProductsDeclarative` a z inteligentních značek, vyberte a vytvořte jeho vazbu nového prvku ObjectDataSource s názvem `ProductsDataSourceDeclarative`.
 
-
 [![Vytvoření nového prvku ObjectDataSource s názvem ProductsDataSourceDeclarative](using-sql-cache-dependencies-cs/_static/image5.gif)](using-sql-cache-dependencies-cs/_static/image3.png)
 
 **Obrázek 5**: Vytvoření nového prvku ObjectDataSource s názvem `ProductsDataSourceDeclarative` ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image4.png))
 
-
 Konfigurace ObjectDataSource používat `ProductsBLL` třídy a nastavit rozevíracího seznamu vyberte kartě `GetProducts()`. Na kartě aktualizace, zvolte `UpdateProduct` přetížení se třemi vstupní parametry - `productName`, `unitPrice`, a `productID`. Nastavte rozevírací seznamy na (žádný) na kartách INSERT a DELETE.
-
 
 [![Použijte přetížení UpdateProduct se třemi vstupní parametry](using-sql-cache-dependencies-cs/_static/image6.gif)](using-sql-cache-dependencies-cs/_static/image5.png)
 
 **Obrázek 6**: Použijte přetížení UpdateProduct se třemi parametry vstup ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image6.png))
 
-
 [![Nastavení rozevíracího seznamu na (žádný) pro vložení a odstranění karty](using-sql-cache-dependencies-cs/_static/image7.gif)](using-sql-cache-dependencies-cs/_static/image7.png)
 
 **Obrázek 7**: Nastavte rozevírací seznam na (žádný) pro vložení a odstranění karty ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image8.png))
-
 
 Po dokončení Průvodce nakonfigurovat zdroj dat, sada Visual Studio vytvoří BoundFields a CheckBoxFields v prvku GridView. pro každé datové pole. Odebrat všechna pole, ale `ProductName`, `CategoryName`, a `UnitPrice`a tato pole formátu podle svých potřeb. Z inteligentních značek GridView s zaškrtněte zaškrtávací políčka Povolit stránkování, Povolit řazení a povolit úpravy. Visual Studio nastaví ObjectDataSource s `OldValuesParameterFormatString` vlastnost `original_{0}`. Aby funkce úprav GridView s fungovalo správně, buď odeberte tuto vlastnost z deklarativní syntaxe nebo nastavte ji zpět na výchozí hodnotu, zcela `{0}`.
 
 Nakonec přidejte popisek webový ovládací prvek výše GridView a nastavte jeho `ID` vlastnost `ODSEvents` a jeho `EnableViewState` vlastnost `false`. Po provedení těchto změn kódu s deklarativní stránky s by měl vypadat nějak takto. Všimněte si, které jsem ve provedli několik aesthetic přizpůsobení GridView pole, které nejsou potřebné, abychom si předvedli funkci závislosti mezipaměti SQL.
 
-
 [!code-aspx[Main](using-sql-cache-dependencies-cs/samples/sample7.aspx)]
 
 Dále vytvořte obslužnou rutinu události pro prvek ObjectDataSource s `Selecting` událostí a v přidejte následující kód:
-
 
 [!code-csharp[Main](using-sql-cache-dependencies-cs/samples/sample8.cs)]
 
@@ -177,14 +153,11 @@ Vzpomeňte si, že ObjectDataSource s `Selecting` události dochází pouze v p�
 
 Nyní navštivte tuto stránku prostřednictvím prohlížeče. Protože jsme ve ještě provádět žádné ukládání do mezipaměti, pokaždé, když stránku, řazení nebo upravit stránku mřížky by se zobrazit textu, výběr události vyvolané, jak ukazuje obrázek 8.
 
-
 [![Prvek ObjectDataSource s události Selecting aktivuje vždy, když je stránkování prvku GridView, upravit, nebo seřazeno](using-sql-cache-dependencies-cs/_static/image8.gif)](using-sql-cache-dependencies-cs/_static/image9.png)
 
 **Obrázek 8**: Prvek ObjectDataSource s `Selecting` událost je aktivována každý čas stránkování prvku GridView, upravovaný nebo seřazeno ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image10.png))
 
-
 Jak jsme viděli v [ukládání dat do mezipaměti ovládacím prvkem ObjectDataSource](caching-data-with-the-objectdatasource-cs.md) kurz nastavení `EnableCaching` vlastnost `true` způsobí, že ObjectDataSource pro ukládání do mezipaměti svá data po dobu určeného jeho `CacheDuration` vlastnost. Prvku ObjectDataSource má také [ `SqlCacheDependency` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.sqlcachedependency.aspx), přidává jeden nebo více závislostí mezipaměti SQL pro data uložená v mezipaměti pomocí vzoru:
-
 
 [!code-css[Main](using-sql-cache-dependencies-cs/samples/sample9.css)]
 
@@ -193,24 +166,19 @@ Kde *databaseName* je název databáze, jak je uvedeno v `name` atribut `<add>` 
 > [!NOTE]
 > Můžete použít závislosti mezipaměti SQL *a* vypršení platnosti podle času nastavením `EnableCaching` k `true`, `CacheDuration` časový interval a `SqlCacheDependency` na názvy databáze a tabulky. Prvku ObjectDataSource vyřazení svá data po dosažení konce platnosti podle času, nebo když systém dotazování poznámky, že podkladová data databáze změnila, podle toho, co nastane dřív.
 
-
 V prvku GridView `SqlCacheDependencies.aspx` zobrazí data ze dvou tabulek - `Products` a `Categories` (produkt s `CategoryName` prostřednictvím se načítají pole `JOIN` na `Categories`). Proto budeme chtít zadat dvě závislosti mezipaměti SQL: NorthwindDB:Products;NorthwindDB:Categories .
-
 
 [![Konfigurace ObjectDataSource pro podporu ukládání do mezipaměti použití závislostí mezipaměti SQL na produkty a kategorie](using-sql-cache-dependencies-cs/_static/image9.gif)](using-sql-cache-dependencies-cs/_static/image11.png)
 
 **Obrázek 9**: Konfigurace v prvku ObjectDataSource pro podporu ukládání do mezipaměti pomocí závislosti mezipaměti SQL `Products` a `Categories` ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image12.png))
 
-
 Po dokončení konfigurace ObjectDataSource pro podporu ukládání do mezipaměti, otevírat stránku prostřednictvím prohlížeče. Znovu aktivuje události Selecting text by se měla objevit při první návštěvě stránky, ale by měla zmizet po stránkování, řazení nebo kliknutím na tlačítko Upravit nebo zrušit. Důvodem je, že po načtení dat do mezipaměti s ObjectDataSource existuje zůstává až `Products` nebo `Categories` dojde k úpravě tabulky nebo data se aktualizují pomocí prvku GridView.
 
 Po vyvolání stránkování mřížky a poznamenat chybějící události Selecting text, otevřete nové okno prohlížeče a přejděte na kurz základy v úpravy, vložení a odstranění oddílu (`~/EditInsertDelete/Basics.aspx`). Aktualizujte název nebo cena produktu. Pak z první okna prohlížeče, zobrazte na jinou stránku dat, seřazení mřížky nebo klikněte na tlačítko Upravit řádek s. Tentokrát, aktivuje události Selecting by měl znovu, jako jsou databáze, které byla data změny (viz obrázek 10). Pokud text se nezobrazí, chvíli počkejte a zkuste to znovu. Mějte na paměti, že dotazování služby kontroluje změny `Products` tabulky každý `pollTime` milisekund, takže dochází ke zpoždění mezi při aktualizaci podkladových dat a pokud dojde k jejich vyřazení dat uložených v mezipaměti.
 
-
 [![Změna tabulky produktů vyloučí Data produktu uložená v mezipaměti](using-sql-cache-dependencies-cs/_static/image10.gif)](using-sql-cache-dependencies-cs/_static/image13.png)
 
 **Obrázek 10**: Změna tabulky produktů vyloučí produktu Data v mezipaměti ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image14.png))
-
 
 ## <a name="step-6-programmatically-working-with-thesqlcachedependencyclass"></a>Krok 6: Programově pracovat`SqlCacheDependency`třídy
 
@@ -218,48 +186,39 @@ Po vyvolání stránkování mřížky a poznamenat chybějící události Selec
 
 Systém cyklického dotazování `SqlCacheDependency` objekt musí být spojeny s konkrétní dvojici databázi a tabulku. Následující kód například vytvoří `SqlCacheDependency` objektu podle databázi Northwind s `Products` tabulky:
 
-
 [!code-csharp[Main](using-sql-cache-dependencies-cs/samples/sample10.cs)]
 
 Dva vstupní parametry pro `SqlCacheDependency` konstruktor s jsou názvy databáze a tabulky v uvedeném pořadí. Třeba v prvku ObjectDataSource s `SqlCacheDependency` vlastnost, použít název databáze je stejná jako hodnota určená v `name` atribut `<add>` prvek `Web.config`. Název tabulky je skutečný název databázové tabulky.
 
 Přidružení `SqlCacheDependency` s položkou přidány do datové mezipaměti, použijte jednu z `Insert` přetížení metod, které přijímá závislost. Následující kód přidává *hodnotu* do mezipaměti dat na neomezenou dobu, ale přidruží ji k `SqlCacheDependency` na `Products` tabulky. Stručně řečeno *hodnotu* zůstane v mezipaměti, dokud je vyřazena z důvodu omezení paměti, nebo protože dotazování systém zjistil, že `Products` tabulka změnila od uložení do mezipaměti.
 
-
 [!code-csharp[Main](using-sql-cache-dependencies-cs/samples/sample11.cs)]
 
 Ukládání do mezipaměti vrstvu s `ProductsCL` třídy aktuálně ukládá data do mezipaměti z `Products` tabulky pomocí podle času uplynutí 60 sekund. Umožní s aktualizace této třídy tak, aby místo toho používal závislosti mezipaměti SQL. `ProductsCL` Třída s `AddCacheItem` metodu, která je zodpovědný za přidání dat do mezipaměti, aktuálně obsahuje následující kód:
-
 
 [!code-csharp[Main](using-sql-cache-dependencies-cs/samples/sample12.cs)]
 
 Aktualizovat tento kód pro použití `SqlCacheDependency` místo objektu `MasterCacheKeyArray` závislost mezipaměti:
 
-
 [!code-csharp[Main](using-sql-cache-dependencies-cs/samples/sample13.cs)]
 
 Pokud chcete vyzkoušet tuto funkci, přidejte na stránku pod existující GridView `ProductsDeclarative` ovládacího prvku GridView. Nastavit tento nový prvek GridView s `ID` k `ProductsProgrammatic` a prostřednictvím inteligentních značek, jeho vazbu na nového prvku ObjectDataSource s názvem `ProductsDataSourceProgrammatic`. Konfigurace ObjectDataSource používat `ProductsCL` třídy nastavením rozevíracích seznamech vyberte a aktualizace karet `GetProducts` a `UpdateProduct`v uvedeném pořadí.
-
 
 [![Konfigurace ObjectDataSource pomocí třídy ProductsCL](using-sql-cache-dependencies-cs/_static/image11.gif)](using-sql-cache-dependencies-cs/_static/image15.png)
 
 **Obrázek 11**: Konfigurace ObjectDataSource k použití `ProductsCL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image16.png))
 
-
 [![Vyberte z rozevíracího seznamu vyberte kartu s GetProducts – metoda](using-sql-cache-dependencies-cs/_static/image12.gif)](using-sql-cache-dependencies-cs/_static/image17.png)
 
 **Obrázek 12**: Vyberte `GetProducts` metodu z rozevíracího seznamu vyberte kartu s ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image18.png))
-
 
 [![Zvolte z rozevíracího seznamu aktualizace kartu s UpdateProduct – metoda](using-sql-cache-dependencies-cs/_static/image13.gif)](using-sql-cache-dependencies-cs/_static/image19.png)
 
 **Obrázek 13**: Z kartu aktualizace s rozevíracím seznamu zvolte metodu UpdateProduct ([kliknutím ji zobrazíte obrázek v plné velikosti](using-sql-cache-dependencies-cs/_static/image20.png))
 
-
 Po dokončení Průvodce nakonfigurovat zdroj dat, sada Visual Studio vytvoří BoundFields a CheckBoxFields v prvku GridView. pro každé datové pole. Jako s prvním prvku GridView přidaných na tuto stránku, odeberte všechna pole, ale `ProductName`, `CategoryName`, a `UnitPrice`a tato pole formátu podle svých potřeb. Z inteligentních značek GridView s zaškrtněte zaškrtávací políčka Povolit stránkování, Povolit řazení a povolit úpravy. Stejně jako u `ProductsDataSourceDeclarative` nastaví prvek ObjectDataSource, Visual Studio `ProductsDataSourceProgrammatic` ObjectDataSource s `OldValuesParameterFormatString` vlastnost `original_{0}`. Aby funkce úprav GridView s správně fungovat, nastavte tuto vlastnost zpět do `{0}` (nebo zcela odebrat přiřazení vlastnosti z deklarativní syntaxe).
 
 Po dokončení těchto úloh, výsledný ovládacími prvky GridView a ObjectDataSource deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](using-sql-cache-dependencies-cs/samples/sample14.aspx)]
 
@@ -272,7 +231,6 @@ V tomto scénáři se zobrazí jednu ze dvou akcí: buď bude dosaženo zarážk
 > [!NOTE]
 > Toto zpoždění je pravděpodobnější, že se zobrazí při úpravách produktů prostřednictvím GridView v `SqlCacheDependencies.aspx`. V [ukládání dat do mezipaměti v architektuře](caching-data-in-the-architecture-cs.md) kurzu jsme přidali `MasterCacheKeyArray` závislosti, chcete-li zajistit dat, který právě upravujete prostřednictvím mezipaměti `ProductsCL` třída s `UpdateProduct` metoda byl vyřazen z mezipaměti. Ale jsme tuto závislost mezipaměti nahradilo při úpravě `AddCacheItem` metoda dříve v tomto kroku a proto `ProductsCL` třídy nadále zobrazovat data uložená v mezipaměti, dokud se změna – zpráva k dotazování systému `Products` tabulky. Uvidíme, jak zavést `MasterCacheKeyArray` mezipaměti závislostí v kroku 7.
 
-
 ## <a name="step-7-associating-multiple-dependencies-with-a-cached-item"></a>Krok 7: Přidružení více závislostí položku v mezipaměti
 
 Vzpomeňte si, že `MasterCacheKeyArray` závislosti mezipaměti se používá k zajištění toho, aby *všechny* týkající se produktu data se vyřadí jako z mezipaměti, když se aktualizuje jednu položku v ní spojené. Například `GetProductsByCategoryID(categoryID)` metoda mezipamětí `ProductsDataTables` instance pro každý jedinečný *categoryID* hodnotu. Pokud některý z těchto objektů vyřadí `MasterCacheKeyArray` závislost mezipaměti zajišťuje, že ostatní se taky odeberou. Bez této závislosti mezipaměti při změně dat uložených v mezipaměti existuje možnost, že další data v mezipaměti produktů může být zastaralá. V důsledku toho je důležité, že budeme udržovat `MasterCacheKeyArray` závislost mezipaměti při použití závislostí mezipaměti SQL. Nicméně data do mezipaměti s `Insert` metoda povoluje jenom pro objekt jednu závislost.
@@ -283,14 +241,12 @@ Kromě toho při práci s závislosti mezipaměti SQL budeme muset přidružit v
 
 Následuje ukázka aktualizovaný kód pro `ProductsCL` třída s `AddCacheItem` metody. Metoda vytvoří `MasterCacheKeyArray` závislosti spolu s mezipaměti `SqlCacheDependency` objekty pro `Products`, `Categories`, a `Suppliers` tabulky. Tyto jsou všechny zkombinované do jedné `AggregateCacheDependency` objekt s názvem `aggregateDependencies`, který je poté předán `Insert` metody.
 
-
 [!code-csharp[Main](using-sql-cache-dependencies-cs/samples/sample15.cs)]
 
 Otestování tohoto nového kódu si. Nyní se změní na `Products`, `Categories`, nebo `Suppliers` tabulek způsobit, že data uložená v mezipaměti k vyloučení. Kromě toho `ProductsCL` třída s `UpdateProduct` metodu, která je volána při úpravách produktu prostřednictvím prvku GridView, vyloučí `MasterCacheKeyArray` závislosti, což způsobí, že v mezipaměti mezipaměti `ProductsDataTable` vyřazení a data, která mají být znovu načíst následující požadavek.
 
 > [!NOTE]
 > Závislosti mezipaměti SQL, je také možné s [ukládání výstupu do mezipaměti](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/caching/output.aspx). Ukázku této funkce naleznete v tématu: [Pomocí technologie ASP.NET ukládání výstupu do mezipaměti se systémem SQL Server](https://msdn.microsoft.com/library/e3w8402y(VS.80).aspx).
-
 
 ## <a name="summary"></a>Souhrn
 

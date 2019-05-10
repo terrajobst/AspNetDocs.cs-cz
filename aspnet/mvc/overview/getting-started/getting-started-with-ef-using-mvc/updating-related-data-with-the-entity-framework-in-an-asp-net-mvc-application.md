@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: 7ba88418-5d0a-437d-b6dc-7c3816d4ec07
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: d90a327da40ffd6d7956c5fbe019cf9de30c706d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 4d5f6447fdccefdcdf9497a9e94f23243302a0e1
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59407507"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65120897"
 ---
 # <a name="tutorial-update-related-data-with-ef-in-an-aspnet-mvc-app"></a>Kurz: Aktualizace souvisejících dat v aplikaci ASP.NET MVC s EF
 
@@ -126,7 +126,6 @@ Nahradit `HttpPost` `Edit` metodu s následujícím kódem. která zpracovává 
 
 Odkaz na `RetryLimitExceededException` vyžaduje `using` příkaz Přidat – umístěte ukazatel myši nad `RetryLimitExceededException`. Zobrazí se následující zpráva: ![ Zkuste zpráva o výjimce](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image13.png)
 
-
 Vyberte **ukazují možné opravy**, pak **pomocí System.Data.Entity.Infrastructure**
 
 ![Vyřešit výjimku opakování](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image14.png)
@@ -234,7 +233,6 @@ Tento kód nezpracuje scénář jeden kurzů vedených přiřazen jako správce 
 ## <a name="add-office-location-and-courses-to-the-create-page"></a>Přidat na stránku vytvořit pobočky a kurzy
 
 V *InstructorController.cs*, odstranit `HttpGet` a `HttpPost` `Create` metody a místo nich přidejte následující kód:
-
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample25.cs)]
 

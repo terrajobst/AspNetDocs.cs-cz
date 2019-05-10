@@ -8,12 +8,12 @@ ms.date: 02/05/2013
 ms.assetid: a8367c6d-ef94-4dff-a010-5eff9e6eea96
 msc.legacyurl: /single-page-application/overview/introduction/other-libraries
 msc.type: authoredcontent
-ms.openlocfilehash: 70ced1d53b66fbe5ced3606413594707099dda28
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 64a4ad1fb411f7291a5cba634afdf4d2fdb16d55
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59406441"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65116072"
 ---
 # <a name="know-a-library-other-than-knockout"></a>Znáte jiné knihovny než Knockout?
 
@@ -54,7 +54,6 @@ Kromě toho [šablona Hot Towel SPA](../templates/hottowel-template.md) použív
 
 Tady jsou funkcí poskytovaných službou každou šablonu jednostránková aplikace:
 
-
 |                        | ASP.NET SPA | Páteřní | Breeze/Angular | Breeze/KO |  Členskými   | Hot Towel |
 |------------------------|-------------|----------|----------------|-----------|----------|-----------|
 |      Ukázka ToDo       |  &#10003;   |          |    &#10003;    | &#10003;  | &#10003; |           |
@@ -67,4 +66,3 @@ Tady jsou funkcí poskytovaných službou každou šablonu jednostránková apli
 |        Durandal        |             |          |                |           |          | &#10003;  |
 |         Členskými          |             |          |                |           | &#10003; |           |
 |        Knockout        |  &#10003;   |          |                | &#10003;  |          | &#10003;  |
-

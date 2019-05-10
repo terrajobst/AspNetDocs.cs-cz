@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: e3d3e7ba-87f0-4032-bdd3-31f3c1aa9d9c
 msc.legacyurl: /web-api/overview/advanced/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 0ad0b3c63741803e05274df4da3fcbe5481d32a4
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 138ccb5800e801d382c11e3989ec3e3c074a79fe
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59391923"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65115706"
 ---
 # <a name="dependency-injection-in-aspnet-web-api-2"></a>Injektáž závislostí v rozhraní ASP.NET Web API 2
 
@@ -30,7 +30,6 @@ podle [Mike Wasson](https://github.com/MikeWasson)
 > - Webové rozhraní API 2
 > - [Blok aplikací Unity](https://www.nuget.org/packages/Unity/)
 > - Entity Framework 6 (verze 5 taky funguje)
-
 
 ## <a name="what-is-dependency-injection"></a>Co je injektáž závislostí?
 
@@ -88,7 +87,6 @@ Kontejner IoC je softwarová součást, která zodpovídá za správu závislost
 > [!NOTE]
 > "IoC" znamená "inverzi ovládacího prvku", což je obecný vzor, pokud rámec volání do kódu aplikace. Kontejner IoC vytvoří objekty, které "Invertuje" obvyklý tok řízení.
 
-
 V tomto kurzu použijeme [Unity](https://msdn.microsoft.com/library/ff647202.aspx) z Microsoft Patterns &amp; postupy. (Zahrnout další oblíbené knihovny [Castle Windsor](http://www.castleproject.org/), [Spring.Net](http://www.springframework.net/), [Autofac](https://code.google.com/p/autofac/), [Ninject](http://www.ninject.org/), a [StructureMap ](http://structuremap.github.io/documentation/).) Správce balíčků NuGet můžete nainstalovat Unity. Z **nástroje** v aplikaci Visual Studio, vyberte v nabídce **Správce balíčků NuGet**, vyberte **konzoly Správce balíčků**. V okně konzoly Správce balíčků zadejte následující příkaz:
 
 [!code-console[Main](dependency-injection/samples/sample7.cmd)]
@@ -99,7 +97,6 @@ Tady je implementace **IDependencyResolver** tím končí naše kontejner Unity.
 
 > [!NOTE]
 > Pokud **GetService** metodu nelze přeložit typ, měla by vrátit **null**. Pokud **GetServices** metodu nelze přeložit typ, měla by vrátit objekt prázdnou kolekci. Není vyvolávat výjimky pro neznámé typy.
-
 
 ## <a name="configuring-the-dependency-resolver"></a>Konfigurace překladač závislostí
 

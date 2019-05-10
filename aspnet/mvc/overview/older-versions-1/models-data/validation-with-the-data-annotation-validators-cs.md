@@ -8,12 +8,12 @@ ms.date: 05/29/2009
 ms.assetid: 7ca8013e-9dfc-4e33-8336-cdccfd5f9414
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 300fc9f7e82fe8201b083de9e740e1620f5d09b9
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e154384c08adf0c14920afff85e983a67b41707c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59411810"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65122293"
 ---
 # <a name="validation-with-the-data-annotation-validators-c"></a>Ověřování validátory datových poznámek (C#)
 
@@ -21,14 +21,11 @@ by [Microsoft](https://github.com/microsoft)
 
 > Využijte výhod vazač modelu dat poznámky k provedení ověření v rámci aplikace ASP.NET MVC. Zjistěte, jak použít různé typy atributů ověřovacího modulu a pracovat s nimi v Entity Framework společnosti Microsoft.
 
-
 V tomto kurzu se dozvíte, jak používat validátory dat. Poznámka k provedení ověření v aplikaci ASP.NET MVC. Výhodou použití validátory anotace dat je, že umožňují provést ověření, jednoduše tak, že přidáte atribut StringLength nebo jeden nebo více atributů – například požadované – pro vlastnost třídy.
 
 Před použitím validátory Data poznámky, je nutné stáhnout vazač modelu dat poznámky. Ukázky vazače modelu poznámky dat si můžete stáhnout z webu CodePlex kliknutím [tady](http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=24471).
 
-
 Je důležité pochopit, že vazač modelu anotací dat není oficiálním součást rozhraní Microsoft ASP.NET MVC. I když vazač modelu dat poznámky vytvořil tým Microsoft ASP.NET MVC, Microsoft nenabízí oficiální technická podpora pro vazač modelu dat poznámky popsané a použité v tomto kurzu.
-
 
 ## <a name="using-the-data-annotation-model-binder"></a>Použití vazače modelu dat poznámky
 
@@ -40,9 +37,7 @@ Chcete-li použít vazač modelu anotací dat v aplikaci ASP.NET MVC, musíte ne
 
 Vyberte Microsoft.Web.Mvc.DataAnnotations.dll sestavení a sestavení System.ComponentModel.DataAnnotations.dll a klikněte na tlačítko **OK** tlačítko.
 
-
 Nelze použít System.ComponentModel.DataAnnotations.dll sestavení součástí .NET Framework Service Pack 1 s vazač modelu dat poznámky. Musíte použít verzi sestavení System.ComponentModel.DataAnnotations.dll součástí ke stažení ukázková Data poznámky pro vazač modelu.
-
 
 Nakonec budete muset zaregistrovat DataAnnotations vazače modelu v souboru Global.asax. Přidejte následující řádek kódu do aplikace\_obslužná rutina události Start() tak, aby aplikace\_metodu Start() vypadá takto:
 
@@ -64,7 +59,6 @@ Při použití vazače modelu dat poznámky pomocí atributů ověřovacího mod
 > 
 > Při splnění potřeb ověřování nejsou žádné standardní validátory vždy máte možnost vytvořit vlastní validátor atribut děděním nový atribut ověření z atributu základní ověřování.
 
-
 Třída produktu v **výpis 1** ukazuje způsob použití těchto atributů ověřovacího modulu. Název, popis a UnitPrice vlastnosti jsou označeny podle potřeby. Vlastnost Name musí mít délku řetězce, který je kratší než 10 znaků. A konečně vlastnost UnitPrice musí odpovídat vzoru regulárního výrazu, který představuje částku měny.
 
 [!code-csharp[Main](validation-with-the-data-annotation-validators-cs/samples/sample2.cs)]
@@ -76,7 +70,6 @@ Třída produktu ukazuje, jak používat jeden další atribut: atribut DisplayN
 > [!NOTE] 
 > 
 > Pokud chcete kompletně přizpůsobit zprávu o chybě zobrazený validátor můžete přiřadit vlastní chybová zpráva na vlastnost ErrorMessage validátoru takto: `<Required(ErrorMessage:="This field needs a value!")>`
-
 
 Můžete použít třídu produktu v **výpis 1** s Create() akce kontroleru v **výpis 2**. Tato akce kontroleru znovu zobrazí zobrazení pro vytváření, když ze stavů modelu obsahuje nějaké chyby.
 
@@ -97,7 +90,6 @@ Nakonec můžete vytvořit zobrazení v **výpis 3** kliknutím pravým tlačít
 > [!NOTE] 
 > 
 > Id pole odebrat z formuláře vytvořit generovaných **přidat zobrazení** nabídky. Protože pole Id odpovídá sloupec Identity, které nechcete povolit uživatelům zadat hodnotu pro toto pole.
-
 
 Odeslání formuláře pro vytváření produktu a nezadáte hodnoty pro požadované pole a pak chybu ověření zprávy v **obrázek 3** jsou zobrazeny.
 
@@ -138,7 +130,6 @@ Program pro ověření atributy jsou použity k vlastnostem třídy MovieMetaDat
 > [!NOTE] 
 > 
 > Všimněte si, že proxy vlastnosti ve třídě MovieMetaData, není nutné představují stejné typy jako odpovídající vlastnosti ve třídě video. Vlastnost ředitel je například řetězcová vlastnost ve třídě filmů a vlastnosti objektu ve třídě MovieMetaData.
-
 
 Na stránce v **obrázek 6** znázorňuje chybové zprávy vracené při zadání neplatné hodnoty pro vlastnosti video.
 

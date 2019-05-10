@@ -8,19 +8,18 @@ ms.date: 01/27/2009
 ms.assetid: ff8322c9-12f3-4e24-aba6-a38046b9bb0d
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b3c6726c2d08e2e6ac37501f2ab455e427df82bb
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: f6c896c6f5f6d898ac6f99d5998fb29cb73bcb10
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59414047"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65117605"
 ---
 # <a name="creating-model-classes-with-the-entity-framework-vb"></a>Vytvoření tříd modelu v sadě Entity Framework (VB)
 
 by [Microsoft](https://github.com/microsoft)
 
 > V tomto kurzu se dozvíte, jak používat technologie ASP.NET MVC s Entity Framework společnosti Microsoft. Zjistíte, jak používat průvodce Entity k vytvoření datového modelu Entity ADO.NET. V průběhu tohoto kurzu jsme vytvořit webovou aplikaci, která ukazuje, jak vybrat, vkládání, aktualizace a odstranění dat z databáze pomocí Entity Frameworku.
-
 
 Cílem tohoto kurzu je vysvětlují, jak můžete vytvořit datové třídy přístup pomocí Microsoft Entity Framework při sestavování aplikace ASP.NET MVC. Tento kurz předpokládá žádné předchozí informace o Microsoft Entity Framework. Na konci tohoto kurzu budete vědět, jak použít rozhraní Entity Framework pro výběr, vkládání, aktualizaci a odstranění záznamů databáze.
 
@@ -30,13 +29,11 @@ Microsoft Entity Framework je nástroj mapování relací objektů (O/RM), kter�
 > 
 > Neexistuje žádná základní připojení mezi ASP.NET MVC a Entity Framework společnosti Microsoft. Existuje několik alternativ k Entity Frameworku, který vám pomůže s architekturou ASP.NET MVC. Například můžete vytvořit pomocí jiných nástrojů O/RM, jako je například Microsoft LINQ to SQL nebo NHibernate, SubSonic třídách modelu MVC.
 
-
 Aby bylo možné ukazují, jak můžete Microsoft Entity Framework s architekturou ASP.NET MVC, vytvoříme jednoduchou ukázkovou aplikaci. Vytvoříme aplikace Movie Database, která umožňuje zobrazit a upravovat záznamy databáze filmů.
 
 Tento kurz předpokládá, že máte Visual Studio 2008 nebo Visual Web Developer 2008 s aktualizací Service Pack 1. Chcete-li použít rozhraní Entity Framework musíte aktualizací Service Pack 1. Visual Studio 2008 Service Pack 1 nebo s aktualizací Service Pack 1 Visual Web Developer si můžete stáhnout z následující adresy:
 
 > [https://www.asp.net/downloads/](https://www.asp.net/downloads)
-
 
 ## <a name="creating-the-movie-sample-database"></a>Vytvoření ukázkové databáze filmů
 
@@ -108,9 +105,7 @@ Pokud chcete přejmenovat třídu entity, můžete dvakrát klikněte na název 
 
 Nezapomeňte si uložit modelu Entity Data Model po provedení změny kliknutím na tlačítko Save (ikonu diskety). Na pozadí v návrháři entit generuje sadu tříd jazyka Visual Basic .NET. Tyto třídy můžete zobrazit tak, že otevřete soubor MoviesDBModel.Designer.vb z okna Průzkumníka řešení.
 
-
 Neupravujte kód v souboru Designer.vb, protože vaše změny budou přepsány při příštím použití v návrháři entit. Pokud chcete k rozšíření funkčnosti tříd entit, které jsou definovány v souboru Designer.vb pak můžete vytvořit *částečné třídy* v samostatných souborů.
-
 
 #### <a name="selecting-database-records-with-the-entity-framework"></a>Výběr záznamů Database s Entity Framework
 
@@ -158,9 +153,7 @@ Všimněte si, že druhou akci Add() je upravena pomocí atributů AcceptVerbs. 
 
 Druhou akci Add() vytvoří novou instanci třídy film Entity Framework pomocí metody ASP.NET MVC TryUpdateModel(). Metoda TryUpdateModel() přijímá pole v FormCollection předaný metodě Add() a přiřadí hodnoty těchto polí formuláře HTML na třídu video.
 
-
 Při použití rozhraní Entity Framework, je třeba zadat "prázdný seznam" vlastnosti při použití metody TryUpdateModel nebo UpdateModel k aktualizaci vlastností třídu entity.
-
 
 V dalším kroku Add() akci provádí nějaké jednoduchý formulář ověření. Akce ověří, zda název a ředitel pro vlastnosti mají hodnoty. Pokud dojde k chybě ověřování, se přidá chybovou zprávu ověření pro ModelState.
 

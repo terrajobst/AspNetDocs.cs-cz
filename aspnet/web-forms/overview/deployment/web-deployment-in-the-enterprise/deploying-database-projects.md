@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 832f226a-1aa3-4093-8c29-ce4196793259
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-database-projects
 msc.type: authoredcontent
-ms.openlocfilehash: f5b7cecdd1a8dbd9be1bd781cec31c53c9096546
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 221808758492aedb8e8329364e511df28fd11105
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59383216"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65119323"
 ---
 # <a name="deploying-database-projects"></a>Nasazení databázových projektů
 
@@ -23,7 +23,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 
 > [!NOTE]
 > V mnoha scénářích nasazení enterprise potřebujete mít možnost publikovat přírůstkové aktualizace nasazené databáze. Alternativou je znovu vytvořit databázi na každé nasazení, což znamená, že ztratíte všechna data v existující databázi. Pokud pracujete se sadou Visual Studio 2010, pomocí VSDBCMD je doporučený postup pro přírůstkové publikování databáze. Další verze sady Visual Studio a webové publikování kanálu (WPP) však bude obsahovat nástroje, které podporuje přírůstkové publikování přímo.
-
 
 Pokud otevřete ukázkové řešení Správce kontaktů v sadě Visual Studio 2010, uvidíte, že databázový projekt obsahuje vlastnosti složky, která obsahuje čtyři soubory.
 
@@ -81,9 +80,7 @@ Zbývající část tohoto tématu popisuje použití VSDBCMD pomocí nástroje 
 
 Nástroj VSDBCMD vám umožní nasadit databázi pomocí schéma databáze (soubor .dbschema) nebo manifestu nasazení (souboru .deploymanifest). V praxi téměř vždy použijete manifestu nasazení, protože manifest nasazení umožňuje zadat výchozí hodnoty pro různé vlastnosti nasazení a identifikovat všechny skripty SQL před nasazením nebo po nasazení, které chcete spustit. Třeba tento příkaz VSDBCMD slouží k nasazování **ContactManager** databáze pro databázový server v testovacím prostředí:
 
-
 [!code-console[Main](deploying-database-projects/samples/sample1.cmd)]
-
 
 V tomto případě:
 
@@ -107,21 +104,17 @@ Chování **/dd** nebo **/DeployToDatabase** přepínač závisí na tom, jestli
 
 Pokud používáte soubor .deploymanifest, chování je mnohem složitější. Důvodem je, že soubor .deploymanifest obsahuje název vlastnosti **DeployToDatabase** , která také určuje, zda je nasazení databáze.
 
-
 [!code-xml[Main](deploying-database-projects/samples/sample2.xml)]
-
 
 Hodnota této vlastnosti je nastavena podle vlastnosti projektu databáze. Pokud nastavíte **nasazení akce** k **vytvořit nasazení skriptů (.sql)**, bude hodnota **False**. Pokud nastavíte **nasazení akce** k **nasazení skriptů (.sql) vytvořit a nasadit do databáze**, bude hodnota **True**.
 
 > [!NOTE]
 > Tato nastavení jsou spojeny s konkrétní sestavení konfigurace a platforma. Například, pokud nakonfigurujete nastavení **ladění** konfigurace a potom publikovat pomocí **vydání** konfigurace, nastavení se nepoužijí.
 
-
 ![](deploying-database-projects/_static/image3.png)
 
 > [!NOTE]
 > V tomto scénáři **nasazení akce** by měla být vždy nastavená na **vytvořit nasazení skriptů (.sql)**, protože nechcete, aby Visual Studio 2010 pro nasazení vaší databáze. Jinými slovy **DeployToDatabase** vlastnost by měla být vždy **False**.
-
 
 Když **DeployToDatabase** je zadána vlastnost, **/dd** přepínači pouze přepíše vlastnost, pokud je hodnota vlastnosti **false**:
 

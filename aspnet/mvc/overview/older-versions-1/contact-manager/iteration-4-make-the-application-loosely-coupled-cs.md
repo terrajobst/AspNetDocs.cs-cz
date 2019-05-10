@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: 829f589f-e201-4f6e-9ae6-08ae84322065
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-4-make-the-application-loosely-coupled-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8caa88d928517e1c71210cbe55e3961d4baf461a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ce8e3c4ff8a59be9f2f572813db599604216119d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381273"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65117788"
 ---
 # <a name="iteration-4--make-the-application-loosely-coupled-c"></a>Iterace #4 – vytvoření volně spárované aplikace (C#)
 
@@ -22,7 +22,6 @@ by [Microsoft](https://github.com/microsoft)
 [Stáhnout kód](iteration-4-make-the-application-loosely-coupled-cs/_static/contactmanager_4_cs1.zip)
 
 > V této iterace čtvrtý můžeme využít několik způsobů návrhu v softwaru k bylo snazší spravovat a upravovat aplikace Správce kontaktů. Například Refaktorovat jsme naši aplikaci pomocí vzoru úložiště a vzor vkládání závislostí.
-
 
 ## <a name="building-a-contact-management-aspnet-mvc-application-c"></a>Vytvoření aplikace ASP.NET MVC pro správu kontaktů (C#)
 
@@ -54,7 +53,6 @@ V současné době všechny dat přístup a ověřování logikou používanou a
 > 
 > (SRP), třída by měla mít nikdy více než jedním z důvodů, chcete-li změnit. Kombinování řadič, ověřování a logiku databáze je obrovská porušení principu jednu zodpovědnost.
 
-
 Tady je několik důvodů, které možná budete muset upravit svou aplikaci. Možná budete muset přidat nové funkce do vaší aplikace, možná budete muset opravit chybu v aplikaci nebo možná budete muset upravit, jak je implementovaná funkce vaší aplikace. Aplikace jsou zřídka statické. Mají tendenci k růstu a mutovat v čase.
 
 Představte si třeba, abyste se rozhodli změnit, jak implementovat vaše vrstvy přístupu k datům. Pravé teď, kontaktujte správce aplikace používá Microsoft Entity Framework pro přístup k databázi. Ale můžete se rozhodnout migrovat do nového nebo alternativní datový přístup technologie, jako je služeb ADO.NET Data Services nebo NHibernate. Ale protože kód přístupu k datům není izolovaná od kód ověřování a kontroler, neexistuje žádný způsob, jak upravit kód přístupu k datům ve vaší aplikaci bez změny jiný kód, který nesouvisí se přímo k přístupu k datům.
@@ -66,7 +64,6 @@ V této iterace můžeme využít několik způsobů návrhu softwaru, které po
 > [!NOTE] 
 > 
 > Refaktoring je proces přepsání aplikace tak, že neztratí všechny existující funkce.
-
 
 ## <a name="using-the-repository-software-design-pattern"></a>Pomocí vzoru návrhu úložiště softwaru
 
@@ -105,7 +102,6 @@ Programování v rozhraní (abstrakce) místo konkrétních tříd díky naší 
 > 
 > Můžete rychle vytvořit rozhraní z konkrétní třídy v sadě Visual Studio tak, že vyberete možnost nabídky Refaktorujte, extrahování rozhraní. Můžete například nejprve vytvořit třídu EntityContactManagerRepository a pak použijte extrahování rozhraní k automatickému vygenerování IContactManagerRepository rozhraní.
 
-
 ## <a name="using-the-dependency-injection-software-design-pattern"></a>Pomocí vzoru návrhu softwaru injektáž závislostí
 
 Teď, když náš kód přístupu k datům jsme migrovali do samostatné třídy úložiště, musíme upravit kontakt kontroleru k použití této třídy. My podnikneme výhod softwaru návrhový vzor, který volá injektáž závislostí pomocí třídy úložiště v kontroleru.
@@ -127,7 +123,6 @@ Injektáž závislostí konstruktor také díky třídy kontroleru kontakt velmi
 > [!NOTE] 
 > 
 > Pokud chcete úplně oddělit třídy kontroleru kontaktu z konkrétní implementace rozhraní IContactManagerRepository pak můžete využít rozhraní Framework, která podporuje vkládání závislostí, jako je například StructureMap nebo Microsoftu Entity Framework (MEF). S využitím vkládání závislostí framework nikdy musí odkazovat na konkrétní třídy v kódu.
-
 
 ## <a name="creating-a-service-layer"></a>Vytvoření vrstvy služby
 

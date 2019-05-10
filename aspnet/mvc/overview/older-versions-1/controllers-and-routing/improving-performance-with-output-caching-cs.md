@@ -8,19 +8,18 @@ ms.date: 01/27/2009
 ms.assetid: 521c9117-81cd-4d8d-9d96-0256dc7bf50f
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5dd5b96d0365c55cbbfa2dfe0856beda41f915e1
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 548c5bea2e9cf26e0574e72d2c0ea204dbd90f9c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59384758"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123384"
 ---
 # <a name="improving-performance-with-output-caching-c"></a>Zlepšení výkonu ukládáním výstupů do mezipaměti (C#)
 
 by [Microsoft](https://github.com/microsoft)
 
 > V tomto kurzu se dozvíte, jak můžete výrazně vylepšit výkon webových aplikací ASP.NET MVC s využitím ukládání výstupu do mezipaměti. Se dozvíte, jak pro ukládání do mezipaměti výsledek vrácený z akce kontroleru, tak, aby se stejný obsah není nutné vytvořit nový uživatel vyvolá akci každého čas.
-
 
 Cílem tohoto kurzu je vysvětlují, jak může výrazně zlepšit výkon aplikace ASP.NET MVC s využitím do výstupní mezipaměti. Do výstupní mezipaměti můžete ukládat do mezipaměti obsah vrácený akce kontroleru. Tímto způsobem stejný obsah není potřeba generovat každé, když se vyvolá stejné akce kontroleru.
 
@@ -78,7 +77,6 @@ Nastavit vlastnost umístění na některý z následujících hodnot:
 > 
 > · ServerAndClient
 
-
 Ve výchozím nastavení vlastnost umístění má hodnotu Any. Existují však situace, ve kterých můžete ukládat do mezipaměti pouze v prohlížeči nebo pouze na serveru. Například pokud jsou ukládání do mezipaměti informace, které je přizpůsobené pro každého uživatele pak můžete by neměl mít informace v mezipaměti na serveru. Pokud jsou zobrazení různých informací o různých uživatelů by měla mezipaměti informace pouze na straně klienta.
 
 Například kontroler v informacích 3 zpřístupňuje akci s názvem GetName(), který vrací aktuální uživatelské jméno. Pokud se konektoru se přihlásí k webu a vyvolá akci GetName() akce vrátí řetězec "Hi Jack". Pokud následně Jill se přihlásí k webu a vyvolá akci GetName() pak Jana také zobrazí řetězec "Hi Jack". Řetězec je do mezipaměti na webovém serveru pro všechny uživatele, po Jack zpočátku vyvolá akce kontroleru.
@@ -134,7 +132,6 @@ Nastavit vlastnost VaryByParam na následující hodnoty:
 > Žádný = nikdy vytvořit různé verze uložené v mezipaměti
 > 
 > Seznam středníky, parametry = vytvořit různé verze uložené v mezipaměti, vždy, když některý z parametrů řetězce formuláře nebo dotazu v seznamu se liší
-
 
 ## <a name="creating-a-cache-profile"></a>Vytvoření profilu mezipaměti
 

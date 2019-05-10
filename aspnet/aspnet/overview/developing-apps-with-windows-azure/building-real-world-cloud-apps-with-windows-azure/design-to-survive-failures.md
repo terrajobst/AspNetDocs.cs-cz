@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: 364ce84e-5af8-4e08-afc9-75a512b01f84
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
 msc.type: authoredcontent
-ms.openlocfilehash: fbe618acfc70711933996f97657a4326d389b3dd
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 54bfa40a7d853e29c42512ba375271587fb6f565
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59411238"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118833"
 ---
 # <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a>Návrh pro selhání (vytváření skutečných cloudových aplikací s Azure)
 
@@ -22,7 +22,6 @@ podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twi
 [Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
 > **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o e kniha najdete v tématu [první kapitoly](introduction.md).
-
 
 Jednou z věcí, které mají zvážit při vytváření jakéhokoli typu aplikace, ale hlavně jeden, který se spustí v cloudu, ve kterém velké množství lidí použití, jak navrhovat aplikace tak, aby můžete elegantně zpracovat selhání a dál přinášet nemalé hodnoty je co nejvíce je to možné. Zadaný dostatek času, co se chystáte dojde k problémům v jakémkoli prostředí nebo v každém softwarovém systému. Způsob, jakým aplikace zpracovává tyto situace Určuje, jak nespokojený vaši zákazníci můžou získat a jak dlouho budete muset věnovat analýza a řešení problémů.
 

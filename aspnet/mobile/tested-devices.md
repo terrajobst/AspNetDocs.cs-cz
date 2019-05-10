@@ -8,12 +8,12 @@ ms.date: 01/28/2011
 ms.assetid: 51b447d5-eaa1-4df1-917c-f4f2746ed62d
 msc.legacyurl: /mobile/tested-devices
 msc.type: content
-ms.openlocfilehash: ecf8b7d90358fa0410ded9bd33c711016b4cd1d4
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: a4ba973dc67244aa8e2ebf04714c3867de36da2d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59411056"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65121352"
 ---
 # <a name="aspnet-mobile-controls-tested-devices"></a>Zařízení testovaná na mobilní ovládací prvky ASP.NET
 
@@ -24,7 +24,6 @@ ms.locfileid: "59411056"
 > - Aktualizace zařízení 2 [DU 2.0]: *(28 říjen, 2002)*
 > - Aktualizace zařízení 3 [DU 3.0]: *(5 srpen, 2003)*
 > - Aktualizace zařízení 4 [DU 4.0]: *(18 prosinec, 2003)*
-
 
 |    Výrobce     |                      Model                      |       Výrobce prohlížeče        |               Prohlížeč modelu               | Vydáno |
 |---------------------|-------------------------------------------------|-----------------------------------|-------------------------------------------|----------|
@@ -265,8 +264,8 @@ ms.locfileid: "59411056"
 |        Palm         |                       Vx                        |              Omnisky              |                  2.0.0.4                  | MIT 1.0  |
 |      Panasonic      |                      P210i                      | Výrobce OEM. |                  Version                  | MIT 1.0  |
 |      Panasonic      |                   P502i telefon                   | Výrobce OEM. |                  Version                  | MIT 1.0  |
-|      Osobní       |                    Počítač                     |             Microsoft             |           Internet Explorer 5,5           | MIT 1.0  |
-|      Osobní       |                    Počítač                     |             Microsoft             |           Internet Explorer 6.0           | MIT 1.0  |
+|      Osobní       |                    Computer                     |             Microsoft             |           Internet Explorer 5,5           | MIT 1.0  |
+|      Osobní       |                    Computer                     |             Microsoft             |           Internet Explorer 6.0           | MIT 1.0  |
 |         RIM         |                 Blackberry 857                  |             GoAmerica             |           Go.Web 1.8.004 (HTML)           | MIT 1.0  |
 |         RIM         |                 Blackberry 857                  |             GoAmerica             |           Go.Web 6.0.010 (HTML)           | MIT 1.0  |
 |         RIM         |                 Blackberry 950                  |             GoAmerica             |           Go.Web 1.000.6 (HTML)           | MIT 1.0  |

@@ -8,19 +8,18 @@ ms.date: 08/19/2008
 ms.assetid: b0cf4a34-2c1d-4717-bb54-ff029e722990
 msc.legacyurl: /mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0ca34f670202a35c627a514d3394fa430f5d8f26
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 3b0a9509c0600f3598fd1218a7b383430548d4c0
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396340"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123246"
 ---
 # <a name="using-aspnet-mvc-with-different-versions-of-iis-c"></a>Použití ASP.NET MVC s různými verzemi služby IIS (C#)
 
 by [Microsoft](https://github.com/microsoft)
 
 > V tomto kurzu se dozvíte, jak používat rozhraní ASP.NET MVC a směrování adres URL s různými verzemi služby IIS. Zjistíte, různé strategie pro ASP.NET MVC pomocí služby IIS 7.0 (v klasickém režimu), služby IIS 6.0 a starších verzích služby IIS.
-
 
 Architektura ASP.NET MVC, závisí na směrování ASP.NET pro směrování požadavků prohlížeče na akce kontroleru. Pokud chcete využít výhod směrování ASP.NET, budete muset provést další kroky konfigurace na webovém serveru. Všechno závisí na verzi Internetové informační služby (IIS) a režim pro vaši aplikaci zpracování požadavku.
 

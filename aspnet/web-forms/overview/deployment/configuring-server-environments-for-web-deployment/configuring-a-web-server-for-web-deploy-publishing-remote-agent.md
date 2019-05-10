@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 239c7aa8-d09a-4d02-9c0e-6bd52be5f0d5
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent
 msc.type: authoredcontent
-ms.openlocfilehash: d915cb5d7d40bb2cc355a5e45befe124a7b60dc4
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: b3293a9b6a35a162d4e27f061dfd3bfd28e0eda5
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398485"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125991"
 ---
 # <a name="configuring-a-web-server-for-web-deploy-publishing-remote-agent"></a>Konfigurace webového serveru pro publikování nasazeného webu (vzdálený agent)
 
@@ -30,7 +30,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > - Použití *offline nasazení*. Tento přístup vyžaduje nejmenší míru konfigurace webového serveru, ale správce serveru musíte ručně zkopírovat webový balíček na server a importujte ho pomocí Správce služby IIS.
 > 
 > Další informace o klíčové funkce, výhody a nevýhody těchto přístupů, naleznete v tématu [výběr právo přístupu k nasazení webu](choosing-the-right-approach-to-web-deployment.md).
-
 
 ## <a name="is-the-web-deploy-remote-agent-the-right-approach-for-you"></a>Je na webu nasadit vzdálený Agent správný přístup pro vás?
 
@@ -64,7 +63,6 @@ Postup pro každý z těchto postupů se zobrazí v tomto tématu. Úlohy a náz
 > [!NOTE]
 > Další informace o připojení počítače k doméně najdete v tématu [připojení počítače k doméně a protokolování na](https://technet.microsoft.com/library/cc725618(v=WS.10).aspx). Další informace o konfiguraci statických IP adres najdete v tématu [nakonfigurujte statickou IP adresu](https://technet.microsoft.com/library/cc754203(v=ws.10).aspx). Služba vzdáleného agenta je podporována služby IIS 6 a vyšší a není nutné být připojen k doméně. Ale kroky v tomto kurzu se vývoji a testování ve službě IIS 7.5 a postupy pro jiné verze se může lišit.
 
-
 ## <a name="install-products-and-components"></a>Nainstalovat produkty a komponent
 
 Tato část vás provede s instalací požadovaných produktů a komponenty na webovém serveru. Než začnete, je vhodné spuštěním služby Windows Update tak, aby byl váš server plně aktuálním stavu.
@@ -78,7 +76,6 @@ V takovém případě musíte nainstalovat tyto věci:
 
 > [!NOTE]
 > Tento návod popisuje použití instalačního programu webové platformy nainstalovat a nakonfigurovat požadované součásti. I když není nutné používat instalačního programu webové platformy, zjednodušuje proces instalace automaticky zjišťuje závislosti a zajištění vždycky toho nejnovější verze produktu. Další informace najdete v tématu [Microsoft webové platformy verze 3.0](https://go.microsoft.com/?linkid=9805118).
-
 
 **Chcete-li nainstalovat požadované produkty a komponenty**
 
@@ -184,7 +181,6 @@ Nejběžnější přístup je k přiřazení oprávnění pro místní **IIS\_IU
 
 > [!NOTE]
 > Další informace o identity fondu aplikací ve službě IIS 7.5, naleznete v tématu [identity fondu aplikací součásti](https://go.microsoft.com/?linkid=9805123).
-
 
 **Jak nakonfigurovat oprávnění složky pro web služby IIS**
 

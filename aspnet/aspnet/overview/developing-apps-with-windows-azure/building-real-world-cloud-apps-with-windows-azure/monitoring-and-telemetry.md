@@ -8,12 +8,12 @@ ms.date: 07/09/2015
 ms.assetid: 7e986ab5-6615-4638-add7-4614ce7b51db
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
 msc.type: authoredcontent
-ms.openlocfilehash: 48a66eea839f7f48899040ad20bbfee95b9a1902
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2fc8f6cdefe1e940f3e3eafc2b9acc9144690284
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59403906"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118736"
 ---
 # <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>Monitorování a Telemetrie (vytváření skutečných cloudových aplikací s Azure)
 
@@ -23,14 +23,12 @@ podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twi
 
 > **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o e kniha najdete v tématu [první kapitoly](introduction.md).
 
-
 Velké množství lidí Spolehněte se na zákazníky a dát jim vědět, že jejich aplikace je mimo provoz. Který není ve skutečnosti osvědčený postup kdekoli a zvlášť není v cloudu. Neexistuje žádná záruka rychlé oznámení, a Pokud dostanete, často získáte minimální nebo zavádějící data o co se stalo. Dobré systémy telemetrie a přihlašování, které lze vědět, co se děje s vaší aplikací a když se něco pokazí vám zjistíte to hned a budete mít užitečné informace pro práci s.
 
 ## <a name="buy-or-rent-a-telemetry-solution"></a>Koupit nebo poskytovat do nájmu řešení telemetrie
 
 > [!NOTE]
 > Tento článek byl zapsán před [Application Insights](/azure/application-insights/app-insights-overview) byl uvolněn. Application Insights je řešení telemetrie upřednostňovaný přístup v Azure. Zobrazit [nastavení Application Insights pro váš web ASP.NET](/azure/application-insights/app-insights-asp-net) Další informace.
-
 
 Jednou z věcí, to je skvělé o cloudovém prostředí je, že je velmi snadné hodit kupovat nebo poskytovat do nájmu moct vítězství. Telemetrie je příklad. Nevyžaduje spoustu úsilí můžete získat systém velmi se mi líbí telemetrie aktivní a spuštěné, nákladově velmi efektivní. Spousta skvělé partnerů, které se integrují s Azure a některé z nich mít bezplatných vrstev – takže získáte základní telemetrie pro žádnou akci. Tady je několik příkladů z těch, které jsou aktuálně dostupné v Azure:
 

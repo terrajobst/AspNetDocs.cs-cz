@@ -8,12 +8,12 @@ ms.date: 10/17/2013
 ms.assetid: 4085de68-d243-4378-8a64-86236ea8d2da
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: a5de73d93d0af21a3b59d6c21014810184292adb
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 55e635c967e07e193dda0358b020638af46c688e
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379349"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65120837"
 ---
 # <a name="adding-a-new-field"></a>Přidání nového pole
 
@@ -79,7 +79,6 @@ Tím se přidají následující příkaz using:
 > 
 > Další informace o [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) metodu, najdete v článku [postará metodou AddOrUpdate 4.3 EF](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/)...
 
-
 **Stisknutím klávesy CTRL-SHIFT-B a sestavte projekt.** (Následujících kroků selže, pokud není v tomto okamžiku sestavení.)
 
 Dalším krokem je vytvoření `DbMigration` třídu pro počáteční migraci. Migrace vytvoří novou databázi, proto můžete odstranit *movie.mdf* souboru v předchozím kroku.
@@ -138,13 +137,11 @@ Model zálohování kontextu 'MovieDBContext' byl změněn, protože byla vytvo�
 
 Tato chyba se zobrazuje, protože aktualizovaný `Movie` třídy modelu v aplikaci je nyní liší od schématu `Movie` tabulky existující databáze. (Neexistuje žádný `Rating` sloupec v tabulce databáze.)
 
-
 Řešení chyby několika způsoby:
 
 1. Máte rozhraní Entity Framework automaticky vyřadit a znovu vytvořit databázi založené na nové schéma třídy modelu. Tento přístup je velmi vhodné v rané fázi vývojového cyklu při provádění testu databáze; s aktivním vývojem umožňuje rychlý rozvoj schématu modelu a databáze společně. Nevýhodou, je však dojít ke ztrátě existujících dat v databázi, tak můžete *není* chcete použít tento postup u provozní databáze! Použití inicializátoru automaticky naplnit databázi daty testu je často produktivní způsob, jak vyvíjet aplikace. Další informace o databázi inicializátory Entity Framework naleznete v tématu [kurz ASP.NET MVC a Entity Framework](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 2. Explicitně upravte schéma stávající databázi tak, aby odpovídalo tříd modelu. Výhodou tohoto přístupu je, že zachováte vaše data. Můžete tuto změnu provést buď ručně, nebo tak, že vytvoříte databázi změnit skript.
 3. Pomocí migrace Code First aktualizovat schéma databáze.
-
 
 Pro účely tohoto kurzu používáme migrace Code First.
 

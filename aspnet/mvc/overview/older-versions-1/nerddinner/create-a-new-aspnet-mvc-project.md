@@ -8,12 +8,12 @@ ms.date: 07/27/2010
 ms.assetid: 7e0e9928-8fdc-4b74-9882-55fac0976628
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-new-aspnet-mvc-project
 msc.type: authoredcontent
-ms.openlocfilehash: c85db4289698988ead44afd452da17054bab9f07
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 189ddc187fc83db14106b2da199ba12a70a32b45
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59417205"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65117462"
 ---
 # <a name="create-a-new-aspnet-mvc-project"></a>Vytvoření nového projektu ASP.NET MVC
 
@@ -26,7 +26,6 @@ by [Microsoft](https://github.com/microsoft)
 > Krok 1 ukazuje, jak změnit základní struktury aplikace NerdDinner na místě.
 > 
 > Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
-
 
 ## <a name="nerddinner-step-1-file-gtnew-project"></a>NerdDinner krok 1: Soubor -&gt;nový projekt
 

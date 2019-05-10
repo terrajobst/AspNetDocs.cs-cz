@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: f1b0809e-8909-444e-b6bb-a5cd1dea3f72
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 34fce0bef5163ba0423ea00cf4b7507947c45c68
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 7c8eb3d3688674dd2c220b4bd1b5982f2610d0eb
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398069"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123842"
 ---
 # <a name="iteration-7--add-ajax-functionality-c"></a>Iterace #7 – přidání funkcí Ajax (C#)
 
@@ -22,7 +22,6 @@ by [Microsoft](https://github.com/microsoft)
 [Stáhnout kód](iteration-7-add-ajax-functionality-cs/_static/contactmanager_7_cs1.zip)
 
 > V sedmé iteraci můžeme zlepšit rychlost reakce a výkon naší aplikace tak, že přidáte podporu pro Ajax.
-
 
 ## <a name="building-a-contact-management-aspnet-mvc-application-c"></a>Vytvoření aplikace ASP.NET MVC pro správu kontaktů (C#)
 
@@ -92,11 +91,9 @@ Přidejte následující JavaScript zahrnuje uvnitř &lt;head&gt; značky hlavn�
 
 Umožní začít úpravou náš Index zobrazení tak, že kliknete na skupinu kontaktů aktualizuje pouze oblasti zobrazení, která zobrazuje kontakty s. Červeným rámečkem na obrázku 1 obsahuje oblast, která chcete aktualizovat.
 
-
 [![Aktualizuje se jenom kontakty](iteration-7-add-ajax-functionality-cs/_static/image1.jpg)](iteration-7-add-ajax-functionality-cs/_static/image1.png)
 
 **Obrázek 01**: Aktualizují se kontakty pouze ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-cs/_static/image2.png))
-
 
 Prvním krokem je oddělit část zobrazení, které chcete aktualizovat asynchronně do samostatných částečné (uživatelský ovládací prvek zobrazení). Část zobrazení indexu, které zobrazí tabulku kontaktů byl přesunut do částečné v informacích 1.
 
@@ -132,9 +129,7 @@ Všimněte si, že akce Index() nemusí vrátit tolik dat, když uživatel vyvol
 
 Naše upravené zobrazení indexu funguje v případě prohlížeče vyšší úrovně a nižší úrovně. Pokud kliknete na skupinu kontaktů a váš prohlížeč podporuje JavaScript, je aktualizován pouze oblasti zobrazení, která obsahuje seznam kontaktů. Pokud na druhé straně váš prohlížeč nepodporuje jazyk JavaScript, se aktualizuje celého zobrazení.
 
-
 Naše aktualizované zobrazení indexu má jeden problém. Po kliknutí na skupinu kontaktů, není zvýrazní vybrané skupiny. Protože mimo oblast, která se aktualizuje během požadavek Ajax se zobrazí seznam skupin, získejte není zvýrazněný ke správné skupině. Tento problém opravíme v další části.
-
 
 ## <a name="adding-jquery-animation-effects"></a>Přidání efekty animace jQuery
 
@@ -192,11 +187,9 @@ Když uživatel dosáhne prohlížeče zpět nebo tlačítko Předat dál, je vy
 
 V současné době Chcete-li odstranit kontakt, budete muset kliknout na odkaz pro odstranění a poté klikněte na tlačítko Odstranit zobrazí na stránce potvrzení odstranění (viz obrázek 2). Vypadá to, že jako velké množství žádostí stránky něco jednoduchého jako odstraňuje se záznam v databázi.
 
-
 [![Na stránce potvrzení odstranění](iteration-7-add-ajax-functionality-cs/_static/image2.jpg)](iteration-7-add-ajax-functionality-cs/_static/image3.png)
 
 **Obrázek 02**: Na stránce potvrzení odstranění ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-cs/_static/image4.png))
-
 
 Je lákavé přejděte na stránku potvrzení odstranění a odstranit a kontaktovat přímo ze zobrazení pro Index. Neměli byste tento pokušení a vzhledem k tomu, že si tento postup se otevře aplikace bezpečnostní díry. Obecně platí don t chcete provést operaci HTTP GET při vyvolání akce, která změní stav vaší webové aplikace. Při provádění odstranění, chcete provádět metody POST protokolu HTTP, nebo ještě lépe, operace HTTP DELETE.
 
@@ -213,7 +206,6 @@ Odstranit odkaz je vykreslen pomocí následujícího volání metody Ajax.Image
 > [!NOTE] 
 > 
 > Ajax.ImageActionLink() není standardní součástí rozhraní ASP.NET MVC. Ajax.ImageActionLink() je vlastní pomocné metody zahrnutý v projektu správce kontaktů.
-
 
 Parametr AjaxOptions má dvě vlastnosti. Nejprve potvrdit vlastnost slouží k zobrazení potvrzovací dialogové okno automaticky otevírané okno jazyka JavaScript. Za druhé Vlastnost HttpMethod slouží k provádění operací HTTP DELETE.
 
