@@ -8,12 +8,12 @@ ms.date: 08/28/2012
 ms.assetid: 61e0206d-7f32-4018-992d-0a51b48b37dc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 45683fc2b40f58a6344ec8670e6a93df89b587fe
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: b40bb8b06ae7c89a33ae2aead9578cf507503531
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59402905"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129947"
 ---
 # <a name="accessing-your-models-data-from-a-controller"></a>Přístup k datům modelu z kontroleru
 
@@ -21,7 +21,6 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > > [!NOTE]
 > > Je k dispozici aktualizovaná verze tohoto kurzu [tady](../../getting-started/introduction/getting-started.md) , která používá ASP.NET MVC 5 a Visual Studio 2013. Je bezpečnější, postupujte podle mnohem jednodušší a ukazuje další funkce.
-
 
 V této části vytvoříte novou `MoviesController` třídy a napsat kód, který načte data o filmech a zobrazí v prohlížeči pomocí zobrazení šablony.
 
@@ -120,7 +119,6 @@ Dvakrát klikněte na panel *Movies.mdf* otevřete **PRŮZKUMNÍK databáze**, p
 > [!NOTE]
 > Pokud se nezobrazí Průzkumník databáze, z **nástroje** nabídce vyberte možnost **připojit k databázi**, pak zrušit **zvolit zdroj dat** dialogového okna. Tato akce vynutí otevřít Průzkumník databáze.
 
-
 > [!NOTE]
 > Pokud používáte VWD nebo Visual Studio 2010 a objevit chyba podobná ke kterékoli z následujících akcí:
 > 
@@ -128,7 +126,6 @@ Dvakrát klikněte na panel *Movies.mdf* otevřete **PRŮZKUMNÍK databáze**, p
 > - &quot;InvalidOperation výjimka je ošetřena uživatelským kódem&quot; v poskytnutém objektu SqlConnection není určen počáteční katalog.
 > 
 > Je potřeba nainstalovat [SQL Server Data Tools](https://blogs.msdn.com/b/rickandy/archive/2012/08/02/installing-and-using-sql-server-data-tools-ssdt-on-visual-studio-2010-and-vwd.aspx) a [LocalDB](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLLocalDBOnly_11_0). Ověřte, `MovieDBContext` připojovací řetězec zadanou na předchozí stránce.
-
 
 Klikněte pravým tlačítkem myši `Movies` tabulce a vybrat **zobrazit Data tabulky** k zobrazení dat, které jste vytvořili.
 

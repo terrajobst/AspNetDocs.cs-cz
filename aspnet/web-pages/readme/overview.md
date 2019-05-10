@@ -8,12 +8,12 @@ ms.date: 01/06/2011
 ms.assetid: 36c5beeb-45a7-48a0-9c30-f82cdf5c5f5f
 msc.legacyurl: /web-pages/readme
 msc.type: content
-ms.openlocfilehash: 7374b1afafa9ca63309f3c0369c5efd808f7f28a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: fac53e935860a90d8f2aa96699d56d66ade3a40f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59401982"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133196"
 ---
 # <a name="webmatrix-readme"></a>WebMatrix – soubor Readme
 
@@ -23,7 +23,6 @@ ms.locfileid: "59401982"
 
 > [!NOTE]
 > Tento soubor readme platí pro verzi 1.0 služby WebMatrix.
-
 
 - [Přehled](#Overview)
 - [Instalace](#Installation_Notes)
@@ -45,7 +44,6 @@ ms.locfileid: "59401982"
 
 > Microsoft WebMatrix 1.0 je bezplatná webová vývoj zásobník, který nainstaluje během několika minut. Webový server se integruje s databází a programovací rozhraní pro vytvoření jednoho integrovaného rozhraní. Služba WebMatrix můžete použít ke zjednodušení způsobu kódu, testování a publikování vlastní web ASP.NET a PHP, nebo WebMatrix můžete použít ke spuštění nového webu pomocí oblíbených open source aplikace, jako jsou aplikace DotNetNuke, Umbraco, WordPress a Joomla. Služba WebMatrix používá stejný výkonný webový server, databázový stroj a prostředí architektury, které se spustí váš web na Internetu, takže hladký a bezproblémový přechod z vývojového do produkčního prostředí.
 
-
 <a id="Installation_Notes"></a>
 
 ## <a name="installation"></a>Instalace
@@ -54,12 +52,10 @@ ms.locfileid: "59401982"
 > 
 > Pokud máte problémy během instalace, podívejte se na [Poradce při potížích se instalačního programu webové platformy Microsoft](https://go.microsoft.com/fwlink/?LinkId=196212).
 
-
 <a id="InstructionsForPublishingApplications"></a>
 ## <a name="how-to-publish-applications"></a>Jak publikovat aplikace
 
 > Zobrazit [podrobné pokyny pro publikování aplikací](https://go.microsoft.com/fwlink/?LinkID=196149)
-
 
 <a id="ChangesAndIssues"></a>
 
@@ -83,12 +79,10 @@ ms.locfileid: "59401982"
 > - Windows XP SP3
 > - Windows Server 2003 SP2
 
-
 #### <a name="issue-cannot-install-webmatrix-10-if-microsoft-visual-studio-2008-is-installed-without-microsoft-visual-studio-2008-sp1"></a>Problém: Nelze nainstalovat WebMatrix 1.0, pokud Microsoft Visual Studio 2008 se nainstaluje bez Microsoft Visual Studio 2008 SP1
 
 > **Alternativní řešení**  
 > Nainstalujte [Microsoft Visual Studio 2008 SP1](https://www.microsoft.com/downloads/details.aspx?FamilyId=FBEE1648-7106-44A7-9649-6D9F6D58056E&amp;displaylang=en) z webu Microsoft Download Center.
-
 
 #### <a name="issue-some-assemblies-for-sql-server-compact-40-are-not-installed-in-the-gac"></a>Problém: V mezipaměti GAC nejsou nainstalovány některé sestavení pro SQL Server Compact 4.0
 
@@ -104,14 +98,12 @@ ms.locfileid: "59401982"
 >   
 > Potom znovu nainstalujte SQL Server Compact 4.0.
 
-
 #### <a name="issue-cannot-uninstall-sql-server-compact-using-the-command-line"></a>Problém: Nelze odinstalovat, SQL Server Compact pomocí příkazového řádku
 
 > Odinstalace systému SQL Server Compact prostřednictvím parametrů příkazového řádku v této verzi nefunguje.
 > 
 > **Alternativní řešení**  
 > Použití *programy a funkce* v Ovládacích panelech Windows k odinstalaci serveru Microsoft SQL Server Compact 4.0.
-
 
 <a id="Known_Issues_ASPNET"></a>
 
@@ -131,13 +123,11 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > 
 > [!code-xml[Main](overview/samples/sample1.xml)]
 
-
 #### <a id="Changes"></a>  Změny
 
 #### <a name="change-webpagesadminfoldervirtualpath-key-renamed-to-aspadminfoldervirtualpath"></a>Změna: klíč "webPages:AdminFolderVirtualPath" přejmenovat "asp: AdminFolderVirtualPath"
 
 > `webPages:AdminFolderVirtualPath` Klíč, který lze přidat do *web.config* použití byl přejmenován soubor k určení umístění správce balíčků `asp:` obor názvů místo `webPages` oboru názvů. Pokud jste použili tento element, je nutné ho přejmenovat v konfiguračním souboru.
-
 
 #### <a id="Issues"></a>  Známé problémy
 
@@ -146,7 +136,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > Algoritmus pro vytváření a ukládání hesel členství (přihlášení) se změnil na zvýšení zabezpečení. V důsledku toho nebude rozpoznána hesla uložená pro členy (uživatele) vytvořené v Beta verzích ASP.NET Razor. 
 > 
 > **Alternativní řešení** Pokud web není ještě nebyla uvedena do produkčního prostředí, odstranit záznamy uživatelů z databáze členství. Pokud je databáze za provozu, prostřednictvím kódu programu obnovit stávající hesla v databázi členství.
-
 
 #### <a name="issue-unexpected-behavior-when-using-a-custom-user-table-for-membership"></a>Problém: Neočekávané chování při použití vlastní tabulku členství
 
@@ -157,13 +146,11 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > **Alternativní řešení**  
 > Ujistěte se, že název předaný `InitializeDatabaseConnection` metoda shody profilu uživatele v databázi členství tabulku nebo Ujistěte se, že `autoCreateTables` parametr je nastaven na hodnotu false.
 
-
 #### <a name="issue-error-message-the-admin-module-requires-access-to-appdata"></a>Problém: Chybová zpráva "modul Správce vyžaduje přístup k ~/App\_dat."
 
 > Za určitých okolností pokusu o vytvoření uživatelů nebo jinak pracovat s systém členství technologie ASP.NET může způsobit stránky zobrazí chybu *modulu Správce vyžaduje přístup k ~/App\_Data*. K tomu dojde, pokud účet, který služba IIS nebo IIS Express je spuštěný pod nemá oprávnění k vytvoření a zápis do *aplikace\_Data* složky v kořenové složky webu. 
 > 
 > **Alternativní řešení** ručně vytvořit *aplikace\_Data* složky webu. Ujistěte se, zda má účet Windows, na kterém aplikace běží pod (obvykle síťové služby) oprávnění pro čtení a zápisu pro kořenové složky aplikace a podsložky, jako je například aplikace\_Data. Podrobnější informace najdete v článku znalostní báze [problémy se službou SQL Server Express uživatele vytváření instancí a ASP.net Web Application Projects](https://support.microsoft.com/kb/2002980).
-
 
 #### <a name="issue-failed-to-generate-a-user-instance-of-sql-server-error"></a>Problém: "Nepovedlo se vygenerovat uživatelskou instanci systému SQL Server" Chyba
 
@@ -171,13 +158,11 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > 
 > **Alternativní řešení** Ujistěte se, zda má účet Windows, na kterém aplikace běží pod (obvykle síťové služby), jako oprávnění čtení/zápisu pro kořenové složky aplikace a podsložky *aplikace\_Data*. Podrobnější informace najdete v článku znalostní báze [problémy se službou SQL Server Express uživatele vytváření instancí a ASP.net Web Application Projects](https://support.microsoft.com/kb/2002980).
 
-
 #### <a name="issue-files-that-contains-package-manager-resources-or-package-manager-passwords-are-servable-under-iis-60-and-earlier"></a>Problém: Soubory, které obsahuje prostředky balíčku správce nebo Správce balíčků hesla jsou servable v rámci služby IIS 6.0 a starší
 
 > Pokud nasazujete aplikaci rozhraní ASP.NET Web Pages (Razor), který byl vytvořen pomocí verze RC2, a pokud aplikace obsahuje soubor *password.txt* nebo *packagesources.txt* soubor */App\_ Data/admin*, IIS 6.0 bude sloužit soubor, pokud o to požádá potenciálně vystavení hesla pro vaši instanci správce balíčků. 
 > 
 > **Alternativní řešení** přejmenovat *password.txt* nebo *packagesources.txt* do souboru *password.config* nebo *packagesources.config*. Ve výchozím nastavení, služby IIS 6.0 neobsluhuje soubory, které mají *.config* rozšíření. (Ve službě IIS 7, žádné soubory v *aplikace\_Data* složky jsou poskytovány, takže není potřeba přejmenujte soubory.)
-
 
 #### <a name="issue-uninstalling-packages-installed-using-the-beta-3-release-does-not-completely-remove-package-components"></a>Problém: Probíhá odinstalace balíčků nainstalovat pomocí verze Beta 3 neodebere zcela balení komponent
 
@@ -187,7 +172,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > Proveďte tyto kroky:  
 > 1. Odstranit *aplikace\_Data\packages* složky. Tato operace odebere všechny balíčky.   
 > 2. Odstranit *souboru packages.config* soubor v kořenové složce webu.
-
 
 #### <a name="issue-in-visual-studio-invoking-the-web-based-package-manager-takes-the-application-offline"></a>Problém: V sadě Visual Studio vyvolání Správce balíčků webové trvá aplikace do offline režimu
 
@@ -199,13 +183,11 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > **Alternativní řešení**   
 > K práci s balíčky v sadě Visual Studio, použijte místo Správce balíčků webové rozšíření NuGet. Informace najdete v tématu [dokumentace pro NuGet](https://docs.microsoft.com/nuget/). Pokud pracujete s jinými soubory v *aplikace\_Data* složky, vezměte v úvahu zachovat soubory jinde chcete vyhnout tomuto problému. Pokud to není praktické, odstraňte *aplikace\_offline.htm* soubor ručně nebo počkejte, dokud lokalitu přejde do režimu online automaticky (ve výchozím nastavení po 30 sekundách).
 
-
 #### <a name="issue-visual-studio-intellisense-and-project-templates-available-only-in-aspnet-mvc-version-3"></a>Problém: Visual Studio IntelliSense projektu šablony a k dispozici pouze v architektuře ASP.NET MVC verze 3
 
 > Instalace rozhraní ASP.NET Web Pages také neinstaluje nástroje pro Visual Studio jako je například technologie IntelliSense a projekt šablony pro aplikace ASP.NET Web Pages.
 > 
 > **Alternativní řešení** používat technologii IntelliSense a projekt šablony pro aplikace webových stránek ASP.NET v sadě Visual Studio, instalace technologie ASP.NET MVC 3 RC, buď prostřednictvím instalace webové platformy nebo [samostatný instalační program](https://go.microsoft.com/fwlink/?LinkID=191797).
-
 
 #### <a name="issue-reading-feeds-or-other-external-data-via-a-proxy-server"></a>Problém: Informační kanály pro čtení nebo jiných externích dat prostřednictvím serveru proxy
 
@@ -217,7 +199,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > 
 > Další informace o konfiguraci proxy serveru, naleznete v tématu [ &lt;proxy&gt; – Element (nastavení sítě)](https://msdn.microsoft.com/library/sa91de1e.aspx) na webové stránce MSDN.
 
-
 #### <a name="issue-uninstalling-the-net-framework-version-4-disables-aspnet-web-pages-with-razor-syntax"></a>Problém: Odinstalování rozhraní .NET Framework verze 4 zakáže ASP.NET Web Pages se syntaxí Razor
 
 > Pokud odinstalujete rozhraní .NET Framework verze 4 a pak ho znovu nainstalujte, ASP.NET Web Pages se syntaxí Razor je zakázaná. Stránky s *.cshtml* rozšíření správně spustit. Rozhraní ASP.NET Web Pages zaregistruje sestavení v kořenovém adresáři počítač *web.config* souboru a odebírá se rozhraní .NET Framework odebere tento soubor. Opětovná instalace rozhraní .NET Framework nainstalovat novou verzi konfiguračního souboru, ale nepřidá odkaz na sestavení rozhraní ASP.NET Web Pages.
@@ -228,7 +209,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config (64-bit)`
 > 
 > [!code-xml[Main](overview/samples/sample3.xml)]
-
 
 #### <a name="issue-extensionless-urls-do-not-find-cshtmlvbhtml-files-on-iis-7-or-iis-75"></a>Problém: Adresy URL bez přípony nebyl nalezen.cshtml/.vbhtml souborů ve službě IIS 7 nebo IIS 7.5
 
@@ -244,7 +224,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > - Pokud nemáte kontrolu nad do počítače serveru (například nasazujete hostující web), přidejte následující na web *web.config* souboru: 
 > 
 >     [!code-xml[Main](overview/samples/sample4.xml)]
-
 
 #### <a name="issue-deploying-an-application-to-a-computer-that-does-not-have-sql-server-compact-installed"></a>Problém: Nasazení aplikace do počítače, na kterém není SQL Server Compact nainstalovaná
 
@@ -264,7 +243,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > 
 >     [!code-xml[Main](overview/samples/sample5.xml)]
 
-
 #### <a name="issue-database-and-webgrid-helpers-do-not-work-in-medium-trust-in-visual-basic"></a>Problém: "Databázi" a "WebGrid" Pomocníci nefungují na úrovni Medium Trust v jazyce Visual Basic
 
 > Pokud používáte Visual Basic (vytváření *.vbhtml* soubory), `Database` a `WebGrid` pomocné rutiny nebude fungovat, pokud aplikace je nastaveno pro použití úrovni Medium Trust.
@@ -273,7 +251,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > Pokud používáte Visual Studio 2010, lze vyřešit tento problém instalací verze aktualizace Service Pack 1. Dokud je k dispozici konečná verze na verzi SP1, můžete stáhnout Beta verzi SP1 [Microsoft Visual Studio 2010 Service Pack 1 Beta](https://www.microsoft.com/downloads/en/details.aspx?FamilyID=11ea69cb-cf12-4842-a3d7-b32a1e5642e2&amp;displaylang=en) stránky na webu Microsoft Download Center.   
 >   
 > Pokud je toto nepraktické, nebo pokud je velmi riskantní používat Visual Studio 2010, můžete dočasně nastavit aplikace používat plnou důvěryhodnost.
-
 
 #### <a name="issue-applicationpart-resources-are-externally-accessible"></a>Problém: Prostředky, "ApplicationPart" byly dostupné externě
 
@@ -286,14 +263,12 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzi 
 > **Alternativní řešení**   
 > Pokud vytvoříte **ApplicationPart** objektu, ujistěte se, že vložené prostředky spojené s, která **ApplicationPart** objektu sestavení neobsahují citlivé informace.
 
-
 <a id="Known_Issues_WebMatrix"></a>
 
 ### <a name="webmatrix"></a>WebMatrix
 
 > [!NOTE]
 > Informace o problémech s instalací pro službu WebMatrix najdete v tématu [problémy instalace služby WebMatrix](#Known_Issues_Installation) výše v tomto dokumentu.
-
 
 Tato část dokumentu popisuje známé problémy pro vývojové prostředí WebMatrix.
 
@@ -308,7 +283,6 @@ Tato část dokumentu popisuje známé problémy pro vývojové prostředí WebM
 > 5. Uložit *web.config* souboru.
 > 6. Klikněte na tlačítko **databází** a aktualizovat.
 
-
 #### <a name="issue-folders-created-by-webmatrix-cannot-be-deleted"></a>Problém: Nelze odstranit složky vytvořené pomocí služby WebMatrix
 
 > Pokud služba WebMatrix, spuštěná pomocí zvýšenou úroveň oprávnění (to znamená, že jste spustili pomocí služby WebMatrix **spustit jako správce** možnost ve Windows), složky, které jsou vytvořeny pomocí služby WebMatrix nelze odstranit pomocí Průzkumníka Windows.
@@ -319,7 +293,6 @@ Tato část dokumentu popisuje známé problémy pro vývojové prostředí WebM
 > 1. Ve Windows, klikněte na tlačítko **Start**.
 > 2. Zadejte "Windows Explorer" a klikněte pravým tlačítkem na položku **Windows Explorer**.
 > 3. Klikněte na tlačítko **spustit jako správce**. Odstraňte složky.
-
 
 #### <a name="issue-webmatrix-10-is-unable-to-perform-certain-tasks-that-require-elevation"></a>Problém: Služba WebMatrix 1.0 nejde provést určité úlohy, které vyžadují ke zvýšení úrovně oprávnění
 
@@ -334,14 +307,12 @@ Tato část dokumentu popisuje známé problémy pro vývojové prostředí WebM
 > - U Windows Vista nebo Windows 7 povolení nástroje Řízení uživatelských účtů.
 > - Windows XP přidejte uživatele do skupiny zabezpečení Administrators.
 
-
 #### <a name="issue-site-from-web-gallery-is-disabled"></a>Problém: "Web z Galerie webových" je neaktivní
 
 > **Webu z Galerie webových** možnost je zakázaná, pokud není nainstalovaný 3.0 Instalační služby webové platformy.
 > 
 > **Alternativní řešení**  
 > Nainstalujte [instalace webové platformy Microsoft 3.0](https://go.microsoft.com/fwlink/?LinkID=194638).
-
 
 #### <a name="issue-google-chrome-is-not-available-as-a-run-option"></a>Problém: Google Chrome není k dispozici jako možnost spuštění
 
@@ -350,14 +321,12 @@ Tato část dokumentu popisuje známé problémy pro vývojové prostředí WebM
 > **Alternativní řešení**  
 > Některé verze Google Chrome neregistrujte sami správně s výchozí programy funkcí ve Windows. Jako alternativní řešení, spusťte Google Chrome, klikněte na tlačítko *přizpůsobení a řízení Google Chrome* nabídky, klikněte na tlačítko *možnosti*a potom klikněte na tlačítko *zkontrolujte Google Chrome prohlížeči výchozí*.
 
-
 #### <a name="issue-the-foreign-key-dialog-box-doesnt-allow-entering-a-primary-key"></a>Problém: Dialogové okno "Cizí klíč" neumožňuje zadání primární klíč
 
 > **Cizí klíč** dialogové okno k zadání název primárního klíče z primárního klíče tabulky nepovoluje.
 > 
 > **Alternativní řešení**  
 > Je to záměr. Není nutné zadat název primárního klíče z primární klíč tabulky.
-
 
 #### <a name="issue-intellisense-is-not-available-in-webmatrix-for-razor-syntax-c-or-visual-basic"></a>Problém: Technologie IntelliSense není k dispozici v nástroji WebMatrix pro syntaxi Razor C#, nebo Visual Basic
 
@@ -366,7 +335,6 @@ Tato část dokumentu popisuje známé problémy pro vývojové prostředí WebM
 > **Alternativní řešení**   
 > Žádné
 
-
 #### <a name="issue-intellisense-for-html-and-css-suggests-elements-that-are-not-contextually-appropriate"></a>Problém: IntelliSense pro HTML a CSS navrhuje prvky, které nejsou kontextově vhodné
 
 > Technologie IntelliSense pro kód ve službě WebMatrix podporuje HTML pomocí [XHTML 1.0 přechodné schématu](http://www.w3.org/TR/2002/NOTE-xhtml1-schema-20020902/#xhtml1-transitional) a pomocí šablon stylů CSS [schématu CSS 2.1](http://www.w3.org/TR/CSS2/). Protože technologie IntelliSense je založena na tato konkrétní schémata, určité značek, atributy a vlastnosti může být určeno, které nejsou vhodné pro aktuální stránku nebo styl definice. Pro kód HTML může také vést k neočekávaným návrhů v obsahu, který může být interpretován jako poškozený XHTML (například, když nebyly uzavřeny značky). Tento problém může být více patrné, pokud je kurzor na místo uvnitř značku neúplné; v takovém případě může navrhnout nové počáteční značky technologie IntelliSense nebo tuto nabídku Další nesprávné návrhy. 
@@ -374,14 +342,12 @@ Tato část dokumentu popisuje známé problémy pro vývojové prostředí WebM
 > **Alternativní řešení**   
 > Pro kód HTML Ujistěte se, že pracujete v rámci stránky XHTML ve správném formátu a kompletní. Šablony stylů CSS neexistuje žádné alternativní řešení.
 
-
 #### <a name="issue-intellisense-is-not-invoked-while-you-type"></a>Problém: Technologie IntelliSense není vyvolána, když zadáte
 
 > V některých případech technologie IntelliSense nemusí vyvolat při zadávání HTML a CSS v editoru. Konkrétně to může dojít, pokud je kurzor přímo vedle jiný element nebo na konci souboru. 
 > 
 > **Alternativní řešení**   
 > Ujistěte se, že je prázdný znak kolem kurzoru a kurzor není na konci souboru. Technologie IntelliSense můžete také vyvolat ručně stisknutím kombinace kláves Ctrl + mezerník.
-
 
 #### <a name="issue-no-ui-is-available-for-disabling-intellisense"></a>Problém: Žádné uživatelské rozhraní je k dispozici pro zakázání technologie IntelliSense
 
@@ -391,7 +357,6 @@ Tato část dokumentu popisuje známé problémy pro vývojové prostředí WebM
 > Spusťte službu WebMatrix pomocí následujícího příkazu, která zahrnuje přepínač, který zakáže IntelliSense:  
 >   
 > `WebMatrix.exe #ExecuteCommand# EditorIntelliSense off`
-
 
 <a id="Known_Issues_IISExpress"></a>
 ### <a name="iis-express"></a>Služba IIS Express
@@ -417,7 +382,6 @@ Informace o problémech, které se týkají instalace systému SQL Server Compac
 > **Alternativní řešení**  
 > Žádné Aplikace může nějakou dobu instalace, ale nainstaluje správně.
 
-
 ### <a id="Known_Issues_Publishing_Applications"></a>  Publikování aplikací
 
 #### <a name="issue-required-permissions-cannot-be-acquired-error-when-publishing-a-sql-compact-database"></a>Problém: "Požadováno oprávnění nelze získat" chyby při publikování databáze SQL Compact
@@ -437,7 +401,6 @@ Informace o problémech, které se týkají instalace systému SQL Server Compac
 > 
 >     [!code-html[Main](overview/samples/sample8.html)]
 
-
 #### <a name="issue-gallery-and-phpbb-web-applications-display-a-service-is-unavailable-error-after-publishing"></a>Problém: Galerie a systém PhpBB webové aplikace zobrazí chybu "Služba není k dispozici" po publikování
 
 > Za určitých okolností publikování aplikace způsobí chybu "služba není k dispozici".
@@ -445,14 +408,12 @@ Informace o problémech, které se týkají instalace systému SQL Server Compac
 > **Alternativní řešení**  
 > V nástroji WebMatrix, přidat zpětné lomítko (\) na konec názvu serveru v **nastavení publikování** okno a potom aplikaci znovu publikovat.
 
-
 #### <a name="issue-moodle-website-layout-and-links-are-broken-after-publishing"></a>Problém: Systém Moodle webu rozložení a propojení se přeruší po publikování
 
 > Po publikování aplikace Moodle aplikace nebude fungovat správně.
 > 
 > **Alternativní řešení**  
 > V nástroji WebMatrix, přidejte na konec lomítka (/) **název lokality** pole **nastavení publikování** okno a potom aplikaci znovu publikovat.
-
 
 #### <a name="issue-publishing-nopcommerce-fails-with-a-database-error"></a>Problém: Publikování nopCommerce selže s chybou databáze
 
@@ -467,12 +428,10 @@ Informace o problémech, které se týkají instalace systému SQL Server Compac
 > 5. Klikněte na tlačítko **vymazat protokol** tlačítko.
 > 6. NopCommerce znovu publikujte.
 
-
 #### <a name="issue-silverstripe-cms-displays-a-http-500-php-fcgi-error-when-you-download-a-published-site"></a>Problém: Silverstripe CMS zobrazí "HTTP 500 PHP FCGI chyba" při stažení publikovaného webu
 
 > **Alternativní řešení**  
 > Po kliknutí na **stahování publikování webu**, přeskočte `silverstripe-cache/manifest_main` v **publikování náhledu**. Tento soubor se používá pro ukládání do mezipaměti účely a je specifická pro každý počítač.
-
 
 #### <a name="issue-subtext-displays-server-error-in--application-when-you-download-a-published-site"></a>Problém: Subtext zobrazí "Chyba serveru v aplikaci"/"" při stahování publikovaného webu
 
@@ -486,7 +445,6 @@ Informace o problémech, které se týkají instalace systému SQL Server Compac
 > 3. Klikněte na tlačítko **databází** &gt; *[localSubtextDatabase]* &gt; **zabezpečení** &gt; **uživatelé** &gt; *[localSubtextUser*] (výchozí hodnota je `subtextuser`], klikněte pravým tlačítkem a klikněte na tlačítko **vlastnosti**.
 > 4. Vyberte **db\_vlastníka** v části role členství.
 
-
 #### <a name="issue-site-might-not-work-after-publishing-if-the-destination-url-field-is-not-prefixed-with-http-or-https"></a>Problém: Web nemusí fungovat po publikování, pokud není pole "Cílovou adresu URL" předponou http:// nebo https://.
 
 > V **nastavení publikování** dialogové okno, pokud cílová adresa URL nezačíná `http://` nebo `https://`, lokalitě nemusí fungovat po nasazení.
@@ -494,14 +452,12 @@ Informace o problémech, které se týkají instalace systému SQL Server Compac
 > **Alternativní řešení**  
 > Ujistěte se, že před publikováním serveru, cílovou adresu URL v **nastavení publikování** dialogové okno začíná `http://` nebo `https://`.
 
-
 #### <a name="issue-publishing-a-mysql-database-fails-with-the-error-failed-to-publish-the-database-this-can-happen-if-the-remote-database-cannot-run-the-script"></a>Problém: Publikování databáze MySQL se nezdaří s chybou "se nepodařilo publikovat i databázi. To může dojít, pokud vzdálené databázi nepodaří spustit skript."
 
 > Této chybě může dojít k z několika důvodů. Jedním z důvodů, že zobrazí se tato chyba je-li skript databáze obsahuje znak jednoduché uvozovky (') a není cílové databáze MySQL výchozí znakovou sadu UTF-8.
 > 
 > **Alternativní řešení**  
 > Nastavte výchozí znakovou sadu pro vzdálenou databázi MySQL na UTF-8.
-
 
 #### <a name="issue-some-links-are-not-visible-in-dotnetnuke-after-publishing-or-downloading-the-site"></a>Problém: Některé odkazy nejsou viditelné v DotNetNuke po publikování nebo stahování webu
 
@@ -515,12 +471,10 @@ Informace o problémech, které se týkají instalace systému SQL Server Compac
 > 4. Klikněte na tlačítko **vymazat mezipaměť** odkaz pro stránky.
 > 5. Přejděte do dolní části stránky a restartovat aplikaci.
 
-
 #### <a name="issue-some-links-in-atomsite-are-broken-after-you-download-a-published-site"></a>Problém: Některé odkazy v AtomSite se přeruší po stažení publikovaného webu
 
 > **Alternativní řešení**  
 > V *service.config* souboru *users.config* soubor a všechny *.xml* soubory, nahraďte řetězec adresy URL (například `http://myhost.com/atomsite`) s místní (například `http://localhost:1239`).
-
 
 #### <a name="issue-mysql-based-applications-like-wordpress-fail-to-publish-and-report-a-database-error"></a>Problém: Aplikace založené na MySQL, jako je WordPress nepovedlo se publikovat a nahlaste chybu databáze
 
@@ -532,14 +486,12 @@ Informace o problémech, které se týkají instalace systému SQL Server Compac
 > 2. Nainstalujte aplikaci znovu.
 > 3. Publikování aplikace.
 
-
 #### <a name="issue-download-published-site-fails-for-applications-that-have-browser-based-setup"></a>Problém: "Stáhnout publikovaný web" selže u aplikací, které mají nastavení založené na prohlížeči
 
 > Některé aplikace (například Kentico CMS) vyžadují, abyste je spuštění v prohlížeči, aby bylo možné provést nastavení po instalaci, jako je vytvoření databáze. Pokud publikujete třeba aplikaci tímto způsobem bez dokončení instalace založené na prohlížeči, se nezdaří pokus o stažení stejného serveru ze vzdáleného serveru.
 > 
 > **Alternativní řešení**  
 > Dokončete nastavení založené na prohlížeči před publikováním webu.
-
 
 #### <a name="issue-download-published-site-fails-with-a-database-error-for-dotnetnuke-and-kooboo-cms"></a>Problém: "Stáhnout publikovaný web" selže s chybou databáze pro DotNetNuke a Kooboo CMS
 
@@ -549,7 +501,6 @@ Informace o problémech, které se týkají instalace systému SQL Server Compac
 > 
 > **Alternativní řešení**  
 > Pokud je to praktické, znovu publikovat webu (nebo jeho publikování) pomocí přihlašovacích údajů bez oprávnění správce pro databázi.
-
 
 <a id="More_Info"></a>
 

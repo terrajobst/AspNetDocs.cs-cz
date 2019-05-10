@@ -8,19 +8,18 @@ ms.date: 02/10/2010
 ms.assetid: bdea2003-e964-4db5-9092-d56cc7560616
 msc.legacyurl: /whitepapers/side-by-side-with-10
 msc.type: content
-ms.openlocfilehash: c4a371958d8de72628c037b3568551aaa91e0153
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: d03919e8465c28cf00bf057193452396523cb1af
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59380701"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125614"
 ---
 # <a name="aspnet-side-by-side-execution-of-net-framework-10-and-11"></a>ASP.NET – souběžné spuštění .NET Framework 1.0 a 1.1
 
 > Tento dokument White Paper popisuje postup instalace rozhraní .NET 1.0 a 1.1 rozhraní .NET na svém počítači umožní webové aplikaci ASP.NET spustit v jedné verze rozhraní framework.
 > 
 > Platí pro technologii ASP.NET 1.0 a ASP.NET 1.1.
-
 
 V technologii ASP.NET aplikace se říká, že souběžné spuštění, když jsou nainstalovány na stejném počítači, ale používají různé verze rozhraní .NET Framework. Následující téma popisuje postup konfigurace aplikací technologie ASP.NET pro spuštění vedle sebe a obsahuje podrobný postup:
 

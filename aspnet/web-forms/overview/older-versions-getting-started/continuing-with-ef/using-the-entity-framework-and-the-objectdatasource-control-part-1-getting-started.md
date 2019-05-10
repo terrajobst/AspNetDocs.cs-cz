@@ -8,12 +8,12 @@ ms.date: 01/26/2011
 ms.assetid: 244278c1-fec8-4255-8a8a-13bde491c4f5
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: c0f11019c7410b756d592066a7fe33b3e26fd383
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2f14707eb058d438495dd2bc4c17b976c471fc97
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59407195"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131343"
 ---
 # <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-1-getting-started"></a>Použití rozhraní Entity Framework 4.0 a ovládací prvek ObjectDataSource, 1. část: Začínáme
 
@@ -45,7 +45,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > ## <a name="questions"></a>Dotazy
 > 
 > Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET Entity Framework](https://forums.asp.net/1227.aspx), [Entity Framework a LINQ to Entities fórum](https://social.msdn.microsoft.com/forums/adodotnetentityframework/threads/), nebo [ StackOverflow.com](http://stackoverflow.com/).
-
 
 `EntityDataSource` Ovládací prvek umožňuje velmi rychle vytvářet aplikace, ale obvykle vyžaduje značné množství obchodní logika a logika přístupu k datům v udržovat vaše *.aspx* stránky. Pokud očekáváte, že vaše aplikace se jejich složitost v a tak, aby vyžadovala průběžnou údržbu, další dobu vývoje investovat ještě před zahájením Chcete-li vytvořit *n vrstvá* nebo *vrstveným* struktury aplikace je to jednodušší údržbu. Chcete-li implementaci této architektury, oddělte prezentační vrstvy z vrstvy obchodní logiky (BLL) a vrstva přístupu k datům (DAL). Jedním ze způsobů implementace tato struktura je použít `ObjectDataSource` místo ovládacího prvku `EntityDataSource` ovládacího prvku. Při použití `ObjectDataSource` ovládacího prvku, implementovat vlastní kód přístup k datům a pak ho v vyvolat *.aspx* stránek pomocí ovládacího prvku, který má mnoho stejných funkcí jako ostatní ovládací prvky zdroje dat. Díky tomu můžete kombinovat výhody metodiky n vrstvá výhody použití ovládacího prvku webového formuláře pro přístup k datům.
 
@@ -102,7 +101,6 @@ Klikněte na tlačítko **OK** v **tabulky a sloupce** klikněte **Zavřít** v 
 > 
 > Po uložení změn, nebude moct odstranit řádek z `Person` tabulky, pokud to je oddělení správce. V produkční aplikace je při odstranění brání omezení databáze, nebo zadáte kaskádové odstranění by zadat určité chybové zprávě. Příklad toho, jak určit kaskádové odstranění, naleznete v tématu [rozhraní Entity Framework a ASP.NET – získání spustit část 2](../getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-2.md).
 
-
 ### <a name="adding-a-view-to-the-database"></a>Přidání zobrazení do databáze
 
 Na novém *Departments.aspx* stránce, která vytvoříte, chcete poskytnout rozevíracího seznamu instruktorů, s názvy ve formátu "nejprve naposledy" tak, aby uživatelé mohli vybrat správci oddělení. Aby bylo snazší to udělat, vytvoříte zobrazení v databázi. Zobrazení bude obsahovat pouze data vyžadovaná rozevíracího seznamu: úplný název (ve správném formátu) a klíč záznamu.
@@ -136,7 +134,6 @@ V návrháři, uvidíte, že nástroj vytvořili `vInstructorName` entity a nov�
 > [!NOTE]
 > V **výstup** a **seznam chyb** windows, může se zobrazit upozornění oznamující, že nástroj automaticky vytvoří primární klíč pro nový `vInstructorName` zobrazení. Toto je očekávané chování.
 
-
 Když budete odkazovat na nové `vInstructorName` entity v kódu, které nechcete použít vytváření databáze z předpony malé "v" k němu. Proto se přejmenovat entity a sadu entit v modelu.
 
 Otevřít **Model prohlížeče**. Zobrazí `vInstructorName` uveden jako typ entity a zobrazení.
@@ -159,7 +156,6 @@ Tento kód poskytuje jedinou `GetDepartments` metodu, která vrátí všechny en
 
 > [!NOTE]
 > Běžnou praxí je pro vytvoření třídy úložiště pro každý typ entity. V tomto kurzu se používá jednu třídu úložiště pro několik typů entit. Další informace o modelu úložiště, najdete v příspěvcích ve [blog týmu rozhraní Entity Framework](https://blogs.msdn.com/b/adonet/archive/2009/06/16/using-repository-and-unit-of-work-patterns-with-entity-framework-4-0.aspx) a [Julie Lerman blogu](http://thedatafarm.com/blog/data-access/agile-ef4-repository-part-3-fine-tuning-the-repository/).
-
 
 `GetDepartments` Vrátí metoda `IEnumerable` objekt spíše než výjimku `IQueryable` objektu, aby se zajistilo, že vrácená kolekce je použitelná, i když je uvolněn samotného objektu úložiště. `IQueryable` Objekt může způsobit, že přístup k databázi vždy, když se přistupuje, ale objekt úložiště může být uvolněn dobou, ovládací prvek databound pokusí vykreslit data. Mohli byste například vrátit jiný typ kolekce, například `IList` místo objektu `IEnumerable` objektu. Ale vrácení `IEnumerable` objekt zajistí, že můžete provádět úlohy zpracování typické jen pro čtení seznamu jako `foreach` smyčky a dotazů LINQ, ale nelze přidat nebo odebrat položky v kolekci, což může znamenat, že tyto změny budou ukládají do databáze.
 
@@ -309,7 +305,6 @@ Použití *DepartmentsAdd.aspx* stránce Přidat jiného oddělení, a spusťte 
 
 > [!NOTE]
 > Nebude moci upravit řádky, které jste nepřidali (to znamená, které již byly v databázi), protože neplatná data v databázi. Správci pro řádky, které byly vytvořeny s databází jsou pro studenty. Pokud se pokusíte upravit jeden z nich, zobrazí se chybová stránka, která hlásí chybu, jako jsou `'InstructorsDropDownList' has a SelectedValue which is invalid because it does not exist in the list of items.`
-
 
 [![Image10](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image36.png)](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image35.png)
 

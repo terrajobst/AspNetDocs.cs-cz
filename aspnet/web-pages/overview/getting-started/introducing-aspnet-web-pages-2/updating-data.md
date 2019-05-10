@@ -8,12 +8,12 @@ ms.date: 01/02/2018
 ms.assetid: ac86ec9c-6b69-485b-b9e0-8b9127b13e6b
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: 4542ad3ac3e321629bb4de3cd4df12c22ff6cb20
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 8f8bcfb7d9d2416a2699776cadbdaae8e12415ba
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59414618"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131789"
 ---
 # <a name="introducing-aspnet-web-pages---updating-database-data"></a>Úvod do webových stránek ASP.NET – aktualizace databázových dat
 
@@ -37,7 +37,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > - SQL `Update` příkazu.
 > - `Database.Execute` Metody.
 > - Skryté pole (`<input type="hidden">`).
-
 
 ## <a name="what-youll-build"></a>Co budete vytvářet
 
@@ -129,7 +128,6 @@ Sloupec obsahuje *pouze* z kódu, který vykreslí na odkaz, a navíc několik i
 > 
 > Samozřejmě pokud chcete použít pojmenované parametry, budete muset znát názvy parametrů. Služba WebMatrix IntelliSense můžete *zobrazit* názvy, ale nemůžete vyplnit aktuálně je pro vás.
 
-
 ## <a name="creating-the-edit-page"></a>Vytvoření stránky pro úpravu
 
 Nyní můžete vytvořit *EditMovie* stránky. Když uživatelé kliknou **upravit** odkaz, na této stránce se zobrazí skončit.
@@ -206,7 +204,6 @@ Všechny sloupce, můžete zadat v libovolném pořadí a není nutné nutně ak
 > 
 > **Důležité** `Where` klauzule s ID je velmi důležité, protože to je, jak databáze pozná, kterou databázi záznamů, které chcete aktualizovat. Pokud jste minule přestali `Where` klauzule, aktualizovali byste databázi *každý* záznamů v databázi. Ve většině případů, které by byly havárii.
 
-
 V kódu jsou předány aktualizaci hodnot pro příkaz jazyka SQL s použitím zástupných symbolů. Opakovat, co jsme řekli před: z bezpečnostních důvodů *pouze* použít zástupné znaky pro předání hodnot pro příkaz jazyka SQL.
 
 Jakmile tento kód použije `db.Execute` ke spuštění `Update` příkaz, je přesměrován zpět na stránku seznam, kde můžete sledovat změny.
@@ -222,7 +219,6 @@ Jakmile tento kód použije `db.Execute` ke spuštění `Update` příkaz, je p�
 > Samozřejmě `Query` metoda může vrátit pouze jeden řádek. Ale ASP.NET vždy zpracovává výsledky `Query` metoda jako kolekce. I v případě, že metoda vrátí pouze jeden řádek, budete muset extrahovat tento jeden řádek z kolekce. Proto v situacích, kde jste *vědět* získáte zpět pouze jeden řádek, je vhodnější použít trochu `QuerySingle`.
 > 
 > Existuje několik metod, které provádějí konkrétní typy databázových operací. Můžete najít seznam metod databáze [Stručná referenční rozhraní API technologie ASP.NET Web Pages](../../api-reference/asp-net-web-pages-api-reference.md#Data).
-
 
 ## <a name="making-validation-for-the-id-more-robust"></a>Aby ověřování pro ID více robustní
 

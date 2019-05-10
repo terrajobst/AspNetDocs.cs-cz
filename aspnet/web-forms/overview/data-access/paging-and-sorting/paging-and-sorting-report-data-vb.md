@@ -8,12 +8,12 @@ ms.date: 08/15/2006
 ms.assetid: b895e37e-0e69-45cc-a7e4-17ddd2e1b38d
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5f2cd9c752968f11efe74cce1c620d0b7cf6a467
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: b35359de44b974566ed90e3c19afa46ab29975e8
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59408586"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131131"
 ---
 # <a name="paging-and-sorting-report-data-vb"></a>Stránkování a řazení dat sestavy (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_24_VB.exe) nebo [stahovat PDF](paging-and-sorting-report-data-vb/_static/datatutorial24vb1.pdf)
 
 > Stránkování a řazení jsou dvě velmi běžné funkce při zobrazení dat v aplikaci online. V tomto kurzu provedeme první pohled na přidání řazení a stránkování naší sestavy, které jsme se pak stavět v budoucích kurzech.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -40,71 +39,55 @@ Než začneme v tomto kurzu, umožní s nejdřív využít pro přidání strán
 - `SortParameter.aspx`
 - `CustomSortingUI.aspx`
 
-
 ![Vytvořte složku PagingAndSorting a přidávání stránek kurz ASP.NET](paging-and-sorting-report-data-vb/_static/image1.png)
 
 **Obrázek 1**: Vytvořte složku PagingAndSorting a přidávání stránek kurz ASP.NET
 
-
 Dále otevřete `Default.aspx` stránku a přetáhněte ji `SectionLevelTutorialListing.ascx` uživatelského ovládacího prvku od `UserControls` složky na návrhovou plochu. Tento uživatelský ovládací prvek, který jsme vytvořili v [stránky předlohy a navigace na webu](../introduction/master-pages-and-site-navigation-vb.md) kurzu mapy webu a zobrazí výčet tyto kurzy v aktuálním oddílu v seznamu s odrážkami.
-
 
 ![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](paging-and-sorting-report-data-vb/_static/image2.png)
 
 **Obrázek 2**: Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku
 
-
 Abyste měli zobrazení stránkování a řazení kurzů, které jsme vám vytvoření seznamu s odrážkami, potřebujeme přidat je do mapy webu. Otevřít `Web.sitemap` soubor a přidejte následující kód za úpravy, vložení a odstranění uzlu značky mapy webu:
 
-
 [!code-xml[Main](paging-and-sorting-report-data-vb/samples/sample1.xml)]
-
 
 ![Aktualizace mapy webu zahrnout nové stránky ASP.NET](paging-and-sorting-report-data-vb/_static/image3.png)
 
 **Obrázek 3**: Aktualizace mapy webu zahrnout nové stránky ASP.NET
 
-
 ## <a name="step-2-displaying-product-information-in-a-gridview"></a>Krok 2: Zobrazení informací o produktu v GridView
 
 Předtím, než jsme skutečně implementujte stránkování a řazení možnosti, umožní s nejprve vytvořit standardní GridView-seřaditelné, nestránkované –, který obsahuje informace o produktu. Toto je úloha jsme ve provést v mnoha případech před v celé této sérii kurzů tak tyto kroky by měla být obeznámeni. Začněte otevřením `SimplePagingSorting.aspx` stránku a přetáhněte ovládací prvek GridView z panelu nástrojů do Návrháře nastavení jeho `ID` vlastnost `Products`. Dále vytvořte nový prvek ObjectDataSource, který používá třídu ProductsBLL s `GetProducts()` metody, která vrátí všechny informace o produktu.
-
 
 ![Načíst informace o všech produktů pomocí GetProducts() – metoda](paging-and-sorting-report-data-vb/_static/image4.png)
 
 **Obrázek 4**: Načíst informace o všech produktů pomocí GetProducts() – metoda
 
-
 Vzhledem k tomu, že tato sestava už je jen pro čtení sestavy, neexistuje s, stačí namapovat ObjectDataSource s `Insert()`, `Update()`, nebo `Delete()` metody odpovídající `ProductsBLL` metody; proto zvolte (žádný) z rozevíracího seznamu pro příkaz INSERT, UPDATE a odstranění karty.
-
 
 ![Zvolte možnost (žádné) možnost v rozevíracím seznamu v UPDATE, INSERT a odstranit záložky](paging-and-sorting-report-data-vb/_static/image5.png)
 
 **Obrázek 5**: Zvolte možnost (žádné) možnost v rozevíracím seznamu v UPDATE, INSERT a odstranit záložky
 
-
 V dalším kroku umožní s přizpůsobit pole s GridView tak, aby se zobrazují pouze názvy produktů, Dodavatelé, kategorie, ceny a ukončená stavy. Kromě toho teď můžete provádět žádné formátování na úrovni pole změní, jako je například nastavení `HeaderText` vlastnosti nebo formátování ceny jako měnu. Po provedení těchto změn vašeho ovládacího prvku GridView s deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](paging-and-sorting-report-data-vb/samples/sample2.aspx)]
 
 Obrázek 6 doposud zobrazuje náš postup při prohlížení prostřednictvím prohlížeče. Všimněte si, že na stránce jsou uvedeny všechny produkty na jedné obrazovce zobrazuje každý produkt s názvem, kategorie, Dodavatel, ceny a vyřazuje stav.
 
-
 [![Každý produkt patří](paging-and-sorting-report-data-vb/_static/image7.png)](paging-and-sorting-report-data-vb/_static/image6.png)
 
 **Obrázek 6**: Každý produkt patří ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image8.png))
-
 
 ## <a name="step-3-adding-paging-support"></a>Krok 3: Přidání podpory stránkování
 
 Výpis *všechny* produktů na jednu obrazovku může mít za následek přetížení informace pro uživatele perusing data. Abyste se mohli lépe zvládnutelné výsledky, jsme data do menších stránek data rozdělte a umožní uživateli procházení jednu stránku dat najednou. Provedete to stačí zaškrtnout políčko Povolit stránkování v prvku GridView s inteligentním (tím se nastaví prvek GridView s [ `AllowPaging` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.allowpaging.aspx) k `true`).
 
-
 [![Zaškrtnutím políčka Povolit stránkování přidat podporu stránkování](paging-and-sorting-report-data-vb/_static/image10.png)](paging-and-sorting-report-data-vb/_static/image9.png)
 
 **Obrázek 7**: Zaškrtněte políčko Povolit stránkování na přidání podpory stránkování ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image11.png))
-
 
 Povolení stránkování omezuje počet zobrazených na stránce záznamy a přidá *stránkovací rozhraní* do prvku GridView. Výchozí rozhraní stránkování, je znázorněno na obrázku 7, je řada čísla stránek, které uživateli umožňují rychle přejít z jedné stránky dat do jiného. Toto rozhraní stránkování by měla vypadat povědomě, jako jsme ve viděli při přidávání podpory stránkování pro ovládací prvky prvku DetailsView a FormView v posledních kurzy.
 
@@ -124,11 +107,9 @@ Kromě toho ovládacího prvku GridView, DetailsView a FormView všechny nabídk
 
 Umožní s využít ke zlepšení našich rozhraní stránkování prvku GridView s výchozí vzhled. Konkrétně umožní s stránkovací rozhraní, zarovnání vpravo světla šedém pozadí. Namísto nastavení těchto vlastností přímo prostřednictvím GridView s `PagerStyle` vlastností, let s vytvořit třídu šablony stylů CSS v `Styles.css` s názvem `PagerRowStyle` a pak mu přiřaďte `PagerStyle` s `CssClass` vlastnosti prostřednictvím našich motiv. Začněte otevřením `Styles.css` a přidat následující šablony stylů CSS definici třídy:
 
-
 [!code-css[Main](paging-and-sorting-report-data-vb/samples/sample3.css)]
 
 Dále otevřete `GridView.skin` soubor `DataWebControls` složky v rámci `App_Themes` složky. Jak jsme probírali v *stránky předlohy a navigace na webu* výukový program, volitelných vzhledů soubory je možné zadat výchozí hodnoty vlastností pro ovládací prvek webového. Proto se rozšířit stávající nastavení, chcete-li zahrnout nastavení `PagerStyle` s `CssClass` vlastnost `PagerRowStyle`. Navíc umožňují s nakonfigurujte rozhraní stránkování zobrazit maximálně pět číselné stránky tlačítka pomocí `NumericFirstLast` rozhraní stránkování.
-
 
 [!code-aspx[Main](paging-and-sorting-report-data-vb/samples/sample4.aspx)]
 
@@ -136,19 +117,15 @@ Dále otevřete `GridView.skin` soubor `DataWebControls` složky v rámci `App_T
 
 Obrázek 8 ukazuje webové stránky, když uživatel prostřednictvím prohlížeče, poté, co bylo zaškrtnuto políčko Povolit stránkování prvku GridView s a `PagerStyle` a `PagerSettings` konfigurace byly provedeny prostřednictvím `GridView.skin` souboru. Poznámka: jak pouze deset záznamy jsou zobrazeny, a stránkovací rozhraní označuje, že jsme se zobrazuje na první stránku.
 
-
 [![S povoleno stránkování se zobrazují pouze podmnožinu záznamů najednou](paging-and-sorting-report-data-vb/_static/image13.png)](paging-and-sorting-report-data-vb/_static/image12.png)
 
 **Obrázek 8**: S povoleno stránkování, se zobrazují pouze podmnožinu záznamů najednou ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image14.png))
 
-
 Když uživatel klikne na jednu stránku čísel v rozhraní stránkování, vyplývá zpětné volání a stránku znovu načte zobrazující, že požadovaná stránka s záznamy. Obrázek 9 ukazuje výsledky po aktivaci ochrany a zobrazit finální stránku data. Všimněte si, že poslední stránka má jenom jeden záznam. je to proto, že existují záznamy 81 celkem, což vede k osm stránek 10 záznamů na stránku a jednu stránku s jedinou záznam.
-
 
 [![Kliknutím na číslo stránky vyvolá zpětné volání a ukazuje na příslušnou podmnožinu záznamů](paging-and-sorting-report-data-vb/_static/image16.png)](paging-and-sorting-report-data-vb/_static/image15.png)
 
 **Obrázek 9**: Kliknutím na číslo stránky vyvolá zpětné volání a příslušné dílčí záznamy ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image17.png))
-
 
 ## <a name="paging-s-server-side-workflow"></a>Stránkování na straně serveru s pracovního postupu
 
@@ -165,7 +142,6 @@ V dalším kurzu prozkoumáme implementace *vlastní stránkování*. S vlastní
 > [!NOTE]
 > Zatímco výchozí stránkování není vhodná, při stránkování prostřednictvím dostatečně velké množství výsledků nebo pro weby s mnoha souběžných uživatelů, uvědomte si, že vlastní stránkování vyžaduje další změny a úsilí k implementaci a není pouhým zaškrtnutím políčka (což je výchozí stránkování). Proto výchozí stránkování může být ideální volbou pro weby s nízkým provozem, malé nebo když stránkování prostřednictvím výsledku poměrně málo početnému nastaví, jak s mnohem jednodušší a rychlejší k implementaci.
 
-
 Například pokud víme, že nikdy jsme si více než 100 produktů v naší databázi, minimální výkonový zisk plynoucí jako vlastní stránkování je pravděpodobně posunut úsilí nutné k jeho implementaci. Pokud však může jeden den máme tisíců nebo desítek tisíců produktů, *není* implementace vlastní stránkování by nebránily výrazně škálovatelnost naši aplikaci.
 
 ## <a name="step-4-customizing-the-paging-experience"></a>Krok 4: Kustomizace možností stránkování
@@ -174,23 +150,19 @@ Webové ovládací prvky dat zadejte počet vlastností, které slouží k zaji�
 
 Nejprve přidejte ovládací prvek popisek Web na stránku, nastavte jeho `ID` vlastnost `PagingInformation`a vymažte její `Text` vlastnost. Dále vytvořte obslužnou rutinu události pro prvek GridView s `DataBound` událostí a přidejte následující kód:
 
-
 [!code-vb[Main](paging-and-sorting-report-data-vb/samples/sample5.vb)]
 
 Přiřadí tuto obslužnou rutinu události `PagingInformation` popisek s `Text` vlastnost zprávu informující uživatele na stránce nyní navštěvují `Products.PageIndex + 1` mimo celkový počet stránek `Products.PageCount` (přidáme 1 `Products.PageIndex` vlastnost protože `PageIndex` se indexuje zpětně počínaje 0). Volba přiřadit tento popisek s `Text` vlastnost v `DataBound` obslužná rutina události, nikoli `PageIndexChanged` obslužné rutiny události protože `DataBound` událost aktivuje se pokaždé, když vázaná na prvku GridView. vzhledem k tomu `PageIndexChanged` pouze obslužné rutiny události je aktivována, když se změní stránka indexu. Pokud prvku GridView je zpočátku data vázaná na první stránce navštíví, `PageIndexChanging` fire události kódu t (vzhledem k tomu `DataBound` událostí nemá).
 
 Uveďte uživatel se teď zobrazují zprávu s oznámením, jaké stránky navštěvují a kolik celkový počet stránek dat existuje.
 
-
 [![Aktuální číslo stránky a celkový počet stránek zobrazených](paging-and-sorting-report-data-vb/_static/image19.png)](paging-and-sorting-report-data-vb/_static/image18.png)
 
 **Obrázek 10**: Aktuální číslo stránky a celkový počet stránek zobrazených ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image20.png))
 
-
 Kromě ovládacího prvku popisku umožní s také přidat ovládací prvek DropDownList, který obsahuje číslo stránky v prvku GridView s aktuálně zobrazené stránce vybrali. Zde spočívá, že uživatel můžete rychle přejít na aktuální stránce do jiného že jednoduše vyberete nový index stránky z DropDownList. Začněte přidáním DropDownList do Návrháře nastavení jeho `ID` vlastnost `PageList` a zaškrtnete tuto možnost povolit vlastnost AutoPostBack z jeho inteligentních značek.
 
 Pak se vraťte do `DataBound` obslužné rutiny události a přidejte následující kód:
-
 
 [!code-vb[Main](paging-and-sorting-report-data-vb/samples/sample6.vb)]
 
@@ -200,16 +172,13 @@ V dalším kroku budeme potřebovat znovu vytvořit číslo stránky a ten, kter
 
 Nakonec musíme vytvořit obslužnou rutinu události pro DropDownList s `SelectedIndexChanged` událost, která se spustí pokaždé, když uživatel vybrat jinou položku ze seznamu. K vytvoření této obslužné rutiny události, jednoduše dvakrát klikněte na rozevírací seznam v návrháři a potom přidejte následující kód:
 
-
 [!code-vb[Main](paging-and-sorting-report-data-vb/samples/sample7.vb)]
 
 Jak ukazuje obrázek 11 pouze změna GridView s `PageIndex` vlastnosti způsobí, že data, která mají být znovu připojeno k prvku GridView. V prvku GridView s `DataBound` obslužná rutina události, odpovídající DropDownList `ListItem` zaškrtnuto.
 
-
 [![Uživatel je automaticky Přesměrujeme do šestého stránky při výběru položky seznamu stránky 6 rozevíracího seznamu](paging-and-sorting-report-data-vb/_static/image22.png)](paging-and-sorting-report-data-vb/_static/image21.png)
 
 **Obrázek 11**: Uživatel je automaticky Přesměrujeme do šestého stránky při výběru položky seznamu stránky 6 rozevíracího seznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image23.png))
-
 
 ## <a name="step-5-adding-bi-directional-sorting-support"></a>Krok 5: Přidání podpory obousměrné řazení
 
@@ -218,11 +187,9 @@ Přidání obousměrná podpora třídění je stejně jednoduché jako přidán
 > [!NOTE]
 > Pokud používáte vlastní vrstvy přístupu k datům, nikoli zadané datové sady, nemusíte mít možnost Povolit řazení v prvku GridView s inteligentním. Pouze prvků GridViews vázán ke zdrojům dat, které nativně podporují řazení mít toto zaškrtávací políčko k dispozici. Datové sadě zadán poskytuje podporu řazení out-of-the-box, protože poskytuje ADO.NET DataTable `Sort` metoda, která při vyvolání, seřadí s DataTable DataRows pomocí na zadaných kritériích.
 
-
 Pokud vaše DAL nevrací objekty, které nativně podporují řazení, budete muset nakonfigurovat ObjectDataSource k předávání informací řazení do vrstvy obchodní logiky, která lze řadit data nebo mít data seřadit vrstvou DAL. Podíváme, jak řadit data na obchodní logiku a vrstvy přístupu k datům v budoucích kurzech.
 
 Řazení LinkButtons jsou vykresleny jako hypertextové odkazy HTML, jehož aktuální barvy (pro nenavštívených odkazů a tmavě červenou barvu pro navštívený odkaz modrá) nebudou kolidovat s barvu pozadí záhlaví řádku. Místo toho vám umožňují s mají všechny odkazy řádek záhlaví zobrazí bílé, a to bez ohledu na to, zda jsou ve byla navštívili, nebo ne. To lze provést přidáním následujícího `Styles.css` třídy:
-
 
 [!code-css[Main](paging-and-sorting-report-data-vb/samples/sample8.css)]
 
@@ -230,11 +197,9 @@ Tato syntaxe označuje použít bílý text při zobrazení na hypertextové odk
 
 Po přidání této šablony stylů CSS při návštěvě stránky prostřednictvím prohlížeče vaše obrazovka by měla vypadat podobně jako obrázek 12. Zejména obrázek 12 znázorňuje výsledky po kliknutí na odkaz cena pole s záhlaví.
 
-
 [![Výsledky seřazeny podle UnitPrice ve vzestupném pořadí](paging-and-sorting-report-data-vb/_static/image25.png)](paging-and-sorting-report-data-vb/_static/image24.png)
 
 **Obrázek 12**: Výsledky seřazeny podle UnitPrice ve vzestupném pořadí ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image26.png))
-
 
 ## <a name="examining-the-sorting-workflow"></a>Zkoumání řazení pracovního postupu
 
@@ -250,24 +215,19 @@ Jako s výchozí stránkování, výchozí řazení možnost znovu načte *všec
 
 Při vytváření vazby prvku ObjectDataSource do prvku GridView. pomocí rozevíracího seznamu v prvku GridView s inteligentním, automaticky každé pole ovládacího prvku GridView má jeho `SortExpression` přiřazená název datového pole v vlastnost `ProductsRow` třídy. Například `ProductName` Vlastnost BoundField s `SortExpression` je nastavena na `ProductName`, jak je znázorněno v následující kód:
 
-
 [!code-aspx[Main](paging-and-sorting-report-data-vb/samples/sample9.aspx)]
 
 Pole lze nastavit tak, aby se s tím, že zrušíte řazení jeho `SortExpression` vlastnosti (ji přiřadíte prázdný řetězec). Pro znázornění, představte si, že jsme nechtěli umožňuje našim zákazníkům řadit cena naše produkty. `UnitPrice` Vlastnost BoundField s `SortExpression` vlastnost je možné odebrat z deklarativní nebo prostřednictvím pole dialogových oken (která je přístupná po kliknutí na odkaz Upravit sloupce v prvku GridView s inteligentním).
-
 
 ![Výsledky seřazeny podle UnitPrice ve vzestupném pořadí](paging-and-sorting-report-data-vb/_static/image27.png)
 
 **Obrázek 13**: Výsledky seřazeny podle UnitPrice ve vzestupném pořadí
 
-
 Jednou `SortExpression` se odebrala vlastnost `UnitPrice` Vlastnost BoundField, záhlaví se vykreslí jako text, nikoli jako odkaz, a tím brání uživatelům v řazení dat podle ceny.
-
 
 [![Odebráním vlastnost SortExpression mohou uživatelé řadit už produkty podle ceny](paging-and-sorting-report-data-vb/_static/image29.png)](paging-and-sorting-report-data-vb/_static/image28.png)
 
 **Obrázek 14**: Odebráním vlastnost SortExpression mohou uživatelé řadit už produkty podle cena ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image30.png))
-
 
 ## <a name="programmatically-sorting-the-gridview"></a>Programově řazení prvku GridView.
 
@@ -277,16 +237,13 @@ Představte si, že z důvodu jsme vypnuto řazení podle `UnitPrice` byl, proto
 
 K provedení to přidání ovládacího prvku tlačítko Web na stránku, nastavte jeho `ID` vlastnost `SortPriceDescending`a jeho `Text` vlastnost řazení podle ceny. Dále vytvořte obslužnou rutinu události pro tlačítko s `Click` události dvojitým kliknutím ovládacího prvku tlačítko v návrháři. Přidejte následující kód do této obslužné rutiny události:
 
-
 [!code-vb[Main](paging-and-sorting-report-data-vb/samples/sample10.vb)]
 
 Kliknutím na toto tlačítko vrátí uživatele na první stránku s produkty, seřazené podle cenu z nejdražší k nejlevnější (viz obrázek 15).
 
-
 [![Kliknutím na tlačítko Orders produkty z nejnákladnější nejméně](paging-and-sorting-report-data-vb/_static/image32.png)](paging-and-sorting-report-data-vb/_static/image31.png)
 
 **Obrázek 15**: Kliknutím na tlačítko objednávky produktů z the nejnákladnější nejméně ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-and-sorting-report-data-vb/_static/image33.png))
-
 
 ## <a name="summary"></a>Souhrn
 

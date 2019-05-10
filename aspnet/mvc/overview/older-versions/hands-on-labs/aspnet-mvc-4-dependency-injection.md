@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 84c7baca-1c54-4c44-8f52-4282122d6acb
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 86781a1f46ce0c01a5d70b1f0cf8a81f3f96a032
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 15c9d4dcb9e2c6b9f6adf54d65d15737b32cca3b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59405921"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129745"
 ---
 # <a name="aspnet-mvc-4-dependency-injection"></a>ASP.NET MVC 4 – injektáž závislostí
 
@@ -57,7 +57,6 @@ Výhody použití vzoru injektáž závislostí a IOC ovládacího prvku jsou n�
 > [!NOTE]
 > Injektáž závislostí někdy ve srovnání s abstraktní Factory návrhový vzor, ale není lehké rozdíl mezi oba přístupy. DI má rámec práce za vyřešit závislosti voláním továren a registrovaných služeb.
 
-
 Teď, když rozumíte vzor injektáž závislostí, se naučíte v celém tomto testovacím prostředí použít v architektuře ASP.NET MVC 4. Se spustí pomocí vkládání závislostí v **řadiče** zahrnout databázová služba. V dalším kroku použijete injektáž závislostí do **zobrazení** využívání služby a zobrazit informace. Nakonec rozšíříte DI na ASP.NET MVC 4 filtry, vkládání filtr vlastních akcí v řešení.
 
 V tomto praktického testovacího prostředí se dozvíte, jak:
@@ -69,7 +68,6 @@ V tomto praktického testovacího prostředí se dozvíte, jak:
 
 > [!NOTE]
 > Toto testovací prostředí používá Unity.Mvc3 balíček NuGet pro řešení závislostí, ale je možné přizpůsobit libovolné architektury injektáž závislostí pro práci s ASP.NET MVC 4.
-
 
 <a id="Prerequisites"></a>
 
@@ -107,7 +105,6 @@ Podle následující praktická cvičení se skládá tohoto praktického testov
 > [!NOTE]
 > Se sadou každý cvičení **koncové** složku, která obsahuje výsledný řešení byste měli získat po dokončení cvičení. Toto řešení můžete použít jako vodítko, pokud potřebujete další pomoc prostřednictvím praktická cvičení.
 
-
 Odhadovaný čas dokončení tohoto testovacího prostředí: **30 minut**.
 
 <a id="Exercise1"></a>
@@ -137,12 +134,10 @@ Vás bude nižší, než **StoreController** implementace má závislost s **Sto
 > 
 > Chcete-li vyřešit závislost, kontroleru je potřeba vytvořit abstraktní výrobou (třída, která vrací libovolný objekt zadaného typu).
 
-
 [!code-csharp[Main](aspnet-mvc-4-dependency-injection/samples/sample2.cs)]
 
 > [!NOTE]
 > Obdržíte chybu třídy se pokusí vytvořit StoreController bez odeslání objekt služby, protože neexistuje žádný konstruktor deklarovat.
-
 
 <a id="Ex1Task1"></a>
 
@@ -181,7 +176,6 @@ V této úloze bude obsahovat **Unity.Mvc3** balíček NuGet do řešení.
 > Balíček Unity.Mvc3 je navržená pro ASP.NET MVC 3, ale je plně kompatibilní s ASP.NET MVC 4.
 > 
 > Unity pro instanci je kontejner vkládání závislostí jednoduchých, rozšiřitelných s volitelnou podporou a zadejte zachycení. Je kontejner pro obecné účely pro použití v jakéhokoli typu aplikace .NET. Poskytuje společné funkce v včetně mechanismy injektáž závislostí: vytvoření objektu, abstrakce požadavků podle určení závislostí v modulu runtime, flexibilitu a odložením Konfigurace komponent do kontejneru.
-
 
 1. Nainstalujte **Unity.Mvc3** balíček NuGet v **MvcMusicStore** projektu. Chcete-li to provést, otevřete **Konzola správce balíčků** z **zobrazení** | **ostatní Windows**.
 2. Spusťte následující příkaz.
@@ -310,7 +304,6 @@ V předchozí úloze vloží novou závislost uvnitř zobrazení provádět vol�
 > 
 > 
 > [!code-csharp[Main](aspnet-mvc-4-dependency-injection/samples/sample11.cs)]
-
 
 1. Vytvořte /**továren** složky v kořenové složce projektu.
 2. Zahrnout **CustomViewPageActivator.cs** do svého řešení z **/zdroje/prostředky/** k **továren** složky. Chcete-li to mohli udělat, klikněte pravým tlačítkem **/Factories** složky, vyberte **přidat | Existující položka** a pak vyberte **CustomViewPageActivator.cs**. Tato třída implementuje **IViewPageActivator** rozhraní pro uložení kontejneru Unity.

@@ -8,12 +8,12 @@ ms.date: 03/24/2008
 ms.assetid: 113f10b3-a19a-471b-8ff6-db3c79ce8a91
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/creating-and-managing-roles-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3ee858cba449b0a8c8e693970a10ce0182e8c3da
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: a4028abf8b1593c98cb3daad03d8699a13af447d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59412395"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132026"
 ---
 # <a name="creating-and-managing-roles-c"></a>Vytváření a správa rolí (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/6/0/3/6032582f-360d-4739-b935-38721fdb86ea/CS.09.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/0/3/6032582f-360d-4739-b935-38721fdb86ea/aspnet_tutorial09_CreatingRoles_cs.pdf)
 
 > Tento kurz zkoumá kroky potřebné ke konfiguraci rozhraní role. Pod vytváříme webové stránky, vytvářet a odstraňovat role.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -47,11 +46,9 @@ Začněte tím, že vytvoříte novou složku v projektu s názvem `Roles`. V da
 
 Průzkumník řešení vašeho projektu v tomto okamžiku by měl vypadat podobně jako obrazovky je vidět na obrázku 1.
 
-
 [![Čtyři nové stránky byly přidány do složky role](creating-and-managing-roles-cs/_static/image2.png)](creating-and-managing-roles-cs/_static/image1.png)
 
 **Obrázek 1**: Čtyři nové stránky byly přidány do `Roles` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-cs/_static/image3.png))
-
 
 Jednotlivé stránky, v tomto okamžiku má dva ovládací prvky obsahu, jeden pro každou z prvků ContentPlaceHolder na hlavní stránce: `MainContent` a `LoginContent`.
 
@@ -67,11 +64,9 @@ A konečně, můžeme aktualizovat mapy webu (`Web.sitemap`) zahrnout tyto nové
 
 Pomocí mapy webu, aktualizovat přejděte na web prostřednictvím prohlížeče. Jak je vidět na obrázku 2, navigaci na levé straně teď obsahuje položky pro role kurzy.
 
-
 [![Čtyři nové stránky byly přidány do složky role](creating-and-managing-roles-cs/_static/image5.png)](creating-and-managing-roles-cs/_static/image4.png)
 
 **Obrázek 2**: Čtyři nové stránky byly přidány do `Roles` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-cs/_static/image6.png))
-
 
 ## <a name="step-2-specifying-and-configuring-the-roles-framework-provider"></a>Krok 2: Určení a konfigurace poskytovatele rozhraní Framework role
 
@@ -107,7 +102,6 @@ Pomocí této konfigurace značek na místě budeme připravení začít použí
 > [!NOTE]
 > Výše uvedené značek konfigurace znázorňuje použití &lt; `roleManager` &gt; elementu `enabled` a `defaultProvider` atributy. Existuje mnoho dalších atributů, které ovlivňují, jak rozhraní role přidruží informace o rolích na základě uživatele uživatelů. Prozkoumáme tohoto nastavení <a id="_msoanchor_8"> </a> [ *autorizace na základě rolí* ](role-based-authorization-cs.md) kurzu.
 
-
 ## <a name="step-3-examining-the-roles-api"></a>Krok 3: Zkoumání rozhraní API rolí
 
 Funkce rolí rozhraní jsou dostupné prostřednictvím [ `Roles` třída](https://msdn.microsoft.com/library/system.web.security.roles.aspx), který obsahuje třináct statické metody pro provádění operací na základě rolí. Když podíváme na vytváření a odstraňování role v krocích 4 a 6 budeme používat [ `CreateRole` ](https://msdn.microsoft.com/library/system.web.security.roles.createrole.aspx) a [ `DeleteRole` ](https://msdn.microsoft.com/library/system.web.security.roles.deleterole.aspx) metody, které přidat nebo odebrat roli ze systému.
@@ -121,7 +115,6 @@ V <a id="_msoanchor_9"> </a> [ *autorizace na základě rolí* ](role-based-auth
 > [!NOTE]
 > Mějte na paměti, která je vyvolána vždy jeden z těchto metod, `Roles` deleguje třída volání konfigurovaný poskytovatel. V našem případě to znamená, že volání se posílá `SqlRoleProvider`. `SqlRoleProvider` Pak provede operaci příslušnou databázi podle volanou metodu. Například kód `Roles.CreateRole("Administrators")` vede `SqlRoleProvider` provádění `aspnet_Roles_CreateRole` uloženou proceduru, která vloží nový záznam do `aspnet_Roles` tabulku s názvem Správci.
 
-
 Zbývající část tohoto kurzu zkoumá pomocí `Roles` třídy `CreateRole`, `GetAllRoles`, a `DeleteRole` metody pro správu role v systému.
 
 ## <a name="step-4-creating-new-roles"></a>Krok 4: Vytvoření nové role
@@ -130,7 +123,6 @@ Role nabízí způsob, jak libovolně skupiny uživatelů a většinou je toto s
 
 > [!NOTE]
 > Neplatí žádné CreateRoleWizard webový ovládací prvek, je [nástroje pro správu webu technologie ASP.NET](https://msdn.microsoft.com/library/ms228053.aspx), což je místní aplikace v ASP.NET navržené tak, aby vám pomůže s zobrazení a správa konfigurace webové aplikace. Ale nejsem velký fanda nástroje pro správu webu technologie ASP.NET pro dva důvody. Nejprve je o něco obsahujícím chyby a činnost koncového uživatele ponechá být požadovaného mnoho dalších. Za druhé nástroje pro správu webu technologie ASP.NET slouží pouze pracovat místně, to znamená, že budete muset sestavit vlastní role správu webových stránek, když potřebujete vzdáleně spravovat role na živý web. Dva z těchto důvodů v tomto kurzu, kdy se soustředí na vytváření roli potřebné nástroje pro správu na webové stránce, spíše než spoléhání se na nástroje pro správu webu technologie ASP.NET.
-
 
 Otevřít `ManageRoles.aspx` stránku `Roles` složky a přidat textové pole a tlačítko webový ovládací prvek na stránce. Nastavení ovládacího prvku textového pole `ID` vlastnost `RoleName` a na tlačítko `ID` a `Text` vlastností `CreateRoleButton` a vytvořit roli, v uvedeném pořadí. Na stránce deklarativní v tomto okamžiku by měl vypadat nějak takto:
 
@@ -145,22 +137,17 @@ Výše uvedený kód spustí přiřazením zadaný v název oříznutý role `Ro
 > [!NOTE]
 > Asi vás zajímá co se stane, pokud uživatel nemá zadejte libovolnou hodnotu do `RoleName` textového pole. Pokud hodnota předaná do `CreateRole` je metoda `null` nebo prázdný řetězec, výjimka je vyvolána. Podobně pokud je název role obsahuje čárku je vyvolána výjimka. Na stránce v důsledku toho by měl obsahovat validačních ovládacích prvků k zajištění, aby uživatel zadal roli a zda neobsahuje žádné čárkami. Opuštění jako cvičení pro čtečku.
 
-
 Umožňuje vytvořit roli s názvem Správci. Přejděte `ManageRoles.aspx` stránce prostřednictvím prohlížeče, do textového pole zadejte správce (viz obrázek 3) a potom klikněte na tlačítko Vytvořit roli.
-
 
 [![Umožňuje vytvořit roli správce](creating-and-managing-roles-cs/_static/image8.png)](creating-and-managing-roles-cs/_static/image7.png)
 
 **Obrázek 3**: Umožňuje vytvořit roli Administrators ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-cs/_static/image9.png))
 
-
 Co se stane? Vyvolá zpětné volání, ale neexistuje vizuální upozornění, která ve skutečnosti role byla přidána do systému. Aktualizujeme tuto stránku v kroku 5 a zahrnují vizuální zpětnou vazbu. Prozatím se však můžete ověřit, že role byla vytvořena tak, že přejdete `SecurityTutorials.mdf` databáze a zobrazení dat z `aspnet_Roles` tabulky. Jak ukazuje obrázek 4 `aspnet_Roles` tabulka obsahuje záznam pro roli správce právě přidali.
-
 
 [![Aspnet_Roles tabulka obsahuje řádek pro správce](creating-and-managing-roles-cs/_static/image11.png)](creating-and-managing-roles-cs/_static/image10.png)
 
 **Obrázek 4**: `aspnet_Roles` Tabulka obsahuje řádek pro správce ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-cs/_static/image12.png))
-
 
 ## <a name="step-5-displaying-the-roles-in-the-system"></a>Krok 5: Role zobrazení v systému
 
@@ -174,11 +161,9 @@ Můžeme rozšířit `ManageRoles.aspx` stránky, aby zahrnovala seznam aktuáln
 
 S tímto kódem na místě navštivte stránku prostřednictvím prohlížeče. Jak je vidět na obrázku 5, měli byste vidět mřížku s jedním sloupcem označené položky. Mřížka obsahuje řádek pro roli správce, kterou jsme přidali v kroku 4.
 
-
 [![GridView zobrazí role v jednom sloupci](creating-and-managing-roles-cs/_static/image14.png)](creating-and-managing-roles-cs/_static/image13.png)
 
 **Obrázek 5**: GridView zobrazí role v jednom sloupci ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-cs/_static/image15.png))
-
 
 GridView zobrazí jedinou sloupec s názvem položky, protože prvku GridView `AutoGenerateColumns` je nastavena na hodnotu True (výchozí), což způsobí, že prvku GridView. Chcete-li automaticky vytvořit sloupec pro každou vlastnost v jeho `DataSource`. Pole má jednu vlastnost, která představuje prvků v poli, takže jeden sloupec v prvku GridView.
 
@@ -195,18 +180,15 @@ Bez ohledu na to, jaký přístup je použít, prvku GridView výsledný deklara
 > [!NOTE]
 > Obsah tohoto pole se zobrazí pomocí syntaxe databinding `<%# Container.DataItem %>`. Nad rámec tohoto kurzu je důkladné popis Proč tato syntaxe je použita při zobrazení obsahu pole vázána na prvku GridView. Další informace o této věci, předložit [skalární pole vazby na ovládací prvek webových dat](http://aspnet.4guysfromrolla.com/articles/082504-1.aspx).
 
-
 V současné době `RoleList` GridView je vázaný jenom na seznamu rolí, při první návštěvě stránky. Potřebujeme aktualizovat mřížky pokaždé, když se přidá novou roli. Jak toho dosáhnout, aktualizujte `CreateRoleButton` tlačítka `Click` tak, že volá obslužná rutina události `DisplayRolesInGrid` metodu, pokud se vytvoří novou roli.
 
 [!code-csharp[Main](creating-and-managing-roles-cs/samples/sample11.cs)]
 
 Teď, když uživatel přidá novou roli `RoleList` GridView ukazuje roli právě přidané na zpětné volání, poskytuje vizuální zpětnou vazbu, že role se úspěšně vytvořil. Pro znázornění, přejděte `ManageRoles.aspx` stránce prostřednictvím prohlížeče a přidejte roli s názvem správců. Po kliknutí na tlačítko Vytvořit roli, bude následovat zpětné volání a mřížce se aktualizuje a zahrnují správcích a také novou roli vedoucí.
 
-
 [![Role správců se přidala](creating-and-managing-roles-cs/_static/image17.png)](creating-and-managing-roles-cs/_static/image16.png)
 
 **Obrázek 6**: Byla přidána má Role správců ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-cs/_static/image18.png))
-
 
 ## <a name="step-6-deleting-roles"></a>Krok 6: Odstranění role
 
@@ -219,11 +201,9 @@ V tomto okamžiku můžete uživatele vytvořit novou roli a zobrazit všechny e
 
 Můžeme rozšířit v prvku GridView `ManageRoles.aspx` zahrnout odstranění tlačítka, který po kliknutí na odstraní vybranou roli. Začněte přidáním tlačítko pro odstranění k prvku GridView. dialogové okno pole a tlačítko pro odstranění, které se nachází v rámci CommandField možnost přidání. Ujistěte se, odstraňte sloupec úplně vlevo tlačítko a nastavte jeho `DeleteText` vlastnost odstranit roli.
 
-
 [![Přidejte tlačítko pro odstranění RoleList GridView](creating-and-managing-roles-cs/_static/image20.png)](creating-and-managing-roles-cs/_static/image19.png)
 
 **Obrázek 7**: Přidejte tlačítko Odstranit `RoleList` ovládacího prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-and-managing-roles-cs/_static/image21.png))
-
 
 Po přidání tlačítko pro odstranění, deklarativní prvku GridView by měl vypadat nějak takto:
 
@@ -237,7 +217,6 @@ Kód spustí programově odkazováním `RoleNameLabel` ovládací prvek v řádk
 
 > [!NOTE]
 > Tlačítko odstranit roli nevyžaduje, aby jakýkoli druh potvrzení od uživatele před odstraněním role. Jedním z nejjednodušších způsobů k potvrzení akce je prostřednictvím dialogového okna potvrdit na straně klienta. Další informace o této techniky najdete v tématu [přidání Client-Side potvrzení při odstraňování](https://asp.net/learn/data-access/tutorial-42-cs.aspx).
-
 
 ## <a name="summary"></a>Souhrn
 

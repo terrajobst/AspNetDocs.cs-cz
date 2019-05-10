@@ -8,19 +8,18 @@ ms.date: 02/20/2005
 ms.assetid: f2339485-5d78-4c5e-8c0a-dc9b8a315345
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/membership
 msc.type: authoredcontent
-ms.openlocfilehash: f3f8c649932682fd96e0640ddf4595c19c755909
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: da6fc205bd852a818d65425586cec38fdb08d310
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59408183"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131057"
 ---
 # <a name="membership"></a>Členství
 
 by [Microsoft](https://github.com/microsoft)
 
 > Členství technologie ASP.NET je založena na úspěšném modelu ověřování formulářů z ASP.NET 1.x. Ověřování pomocí formulářů technologie ASP.NET poskytuje pohodlný způsob, jak začlenit přihlašovací formulář do aplikace ASP.NET a ověření proti databázi nebo jiného úložiště dat uživatelů.
-
 
 Členství technologie ASP.NET je založena na úspěšném modelu ověřování formulářů z ASP.NET 1.x. Ověřování pomocí formulářů technologie ASP.NET poskytuje pohodlný způsob, jak začlenit přihlašovací formulář do aplikace ASP.NET a ověření proti databázi nebo jiného úložiště dat uživatelů. Členy třídy FormsAuthentication umožňují zpracovat soubory cookie pro ověřování, zkontrolujte platného přihlášení, přihlášení uživatele si atd. Implementace ověřování pomocí formulářů v aplikaci ASP.NET 1.x však může vyžadovat množství kódu.
 
@@ -48,11 +47,9 @@ Pokud používáte SQL Server 7.0 nebo vyšší jako úložiště členství, m�
 
 Po spuštění tohoto příkazu, zobrazí se Průvodce instalací serveru SQL pro ASP.NET jak je znázorněno níže.
 
-
 ![](membership/_static/image1.jpg)
 
 **Obrázek 1**
-
 
 Průvodce instalací serveru SQL pro ASP.NET vytvoří webový server v instanci, kterou zadáte v průvodci. Ale technologie ASP.NET použije připojovací řetězec v souboru machine.config pro připojení k vaší databázi. Ve výchozím nastavení, bude odkazovat tento připojovací řetězec do instance systému SQL Server 2005, takže pokud používáte instanci systému SQL Server 2000 nebo SQL Server 7.0, budete muset změnit připojovací řetězec v souboru machine.config. Tento připojovací řetězec může být umístěn zde:
 
@@ -66,11 +63,9 @@ Dalším krokem konfigurace členství je přidání potřebné informace v soub
 
 Webové rozhraní můžete spustit kliknutím na tlačítko Konfigurace technologie ASP.NET na panelu nástrojů Průzkumníka řešení, jak je znázorněno níže. Můžete také spustit webové rozhraní prostřednictvím automaticky otevíraná okna, které se zobrazí, jakmile jsou vloženy ovládacími prvky pro přihlášení.
 
-
 ![](membership/_static/image2.jpg)
 
 **Obrázek 2**
-
 
 Tím se spustí nástroj Správa webu technologie ASP.NET je uvedeno níže. Správa webu technologie ASP.NET je rozhraní čtyři karty, která umožňuje jednoduše spravovat nastavení aplikace. K dispozici jsou následující karty:
 
@@ -83,21 +78,17 @@ Nástroje pro správu webu umožňuje snadno vytvářet nové uživatele, vytvo�
 
 Spusťte rozhraní Windows, otevřete modul snap-in Internetová informační služba, klikněte pravým tlačítkem na aplikaci a zvolte možnost Vlastnosti. Klikněte na kartu technologie ASP.NET a potom klikněte na tlačítko Upravit konfiguraci. (Aplikace musí být spuštěn v rámci technologie ASP.NET 2.0 pro tlačítko Upravit konfigurace na povolit. Verze technologie ASP.NET můžete nakonfigurovat v okně technologie ASP.NET.) Jak je znázorněno níže, zobrazí se dialogové okno nastavení konfigurace technologie ASP.NET.
 
-
 ![](membership/_static/image3.jpg)
 
 **Obrázek 3**
-
 
 Na kartě Obecné nastavení aplikace a připojovacích řetězců jsou uvedeny. Všechna nastavení kurzívou jsou definovány v nadřazeném konfiguračním souboru (souboru machine.config nebo web.config na vyšší úrovni) a nastavení není v kurzívě z konfiguračního souboru aplikace. Pokud nastavení se přidá, odebrat nebo upravit na úrovni aplikace ASP.NET se přidat, odebrat nebo upravte nastavení v souboru web.config aplikace úrovně místo aby odebrala nastavení z konfiguračního souboru, ze kterého se dědí.
 
 Na kartě ověřování je uveden níže. To je, ve kterém nakonfigurujete nastavení členství. Nastavení ověřování, zprostředkovateli členství, formulářů a zde mohou být konfigurovány zprostředkovatele rolí.
 
-
 ![](membership/_static/image4.jpg)
 
 **Obrázek 4**
-
 
 ## <a name="implementing-membership-in-your-application"></a>Implementace členství ve vašich aplikacích
 
@@ -133,11 +124,9 @@ Prvek přihlašovacího jména zobrazí uživatelské jméno uživatele momentá
 
 Ovládacím prvku CreateUserWizard poskytuje uživatelům pohodlný způsob, jak zaregistrovat pro váš systém členství. Můžete přidat kroky (implementováno jako kolekci WizardSteps) přes rozhraní je uvedeno níže.
 
-
 ![](membership/_static/image5.jpg)
 
 **Obrázek 5**
-
 
 CreateUserWizard je ovládací prvek bez vizuálního vzhledu, který je odvozen od třídy průvodce a poskytuje následující šablony:
 
@@ -167,29 +156,23 @@ Pokud chcete povolit správu rolí ve vaší aplikaci, proveďte následující 
 
 Když **cacheRolesInCookie** atribut je nastaven na hodnotu true, technologie ASP.NET ukládá do mezipaměti členství v roli uživatele do souboru cookie na straně klienta. To umožňuje vyhledávání role probíhat bez volání do Poskytovatel RoleProvider. Při použití tohoto atributu, vývojáři se doporučuje zajistit, aby **cookieProtection** atribut je nastaven na všechny. (Toto je výchozí nastavení.) Tím se zajistí, že cookie data jsou zašifrované a pomáhá zajistit, že nedošlo ke změně obsahu soubory cookie. Role je možné přidat pomocí nástroje pro správu webu. Umožňuje snadno definovat role, přístup k různým částem lokality na základě těchto rolí nakonfigurovat a přiřadit uživatele k rolím.
 
-
 ![](membership/_static/image6.jpg)
 
 **Obrázek 6**
-
 
 Jak uvádíme výš, je možné přidat nové role jednoduše zadávat název role, a potom klikněte na Přidat roli. Existující role dá spravovat nebo odstranit kliknutím na příslušný odkaz v seznamu existujících rolí.
 
 Když spravujete roli, můžete přidat nebo odebrat uživatele, jak je znázorněno níže.
 
-
 ![](membership/_static/image7.jpg)
 
 **Obrázek 7**
 
-
 Zaškrtnutím políčka je v roli uživatele můžete snadno přidat uživatele do konkrétní role. ASP.NET bude automaticky aktualizovat vaše databáze členství odpovídající položky. Také můžete nakonfigurovat pravidla přístupu pro vaši aplikaci. 1.x vývojáře využívající technologii ASP.NET se seznámíte s tím prostřednictvím &lt;autorizace&gt; element v souboru web.config a tato možnost je stále k dispozici v technologii ASP.NET 2.0. Ale jeho usnadňují správu přístupu pravidla pomocí webového serveru nástroje pro správu jak je znázorněno níže.
-
 
 ![](membership/_static/image8.jpg)
 
 **Obrázek 8**
-
 
 V takovém případě je zvýrazněn složky správy (jeho obtížně vidíte, protože nástroj zvýrazní ji v světle šedá) a role správce udělil přístup. Všem ostatním uživatelům je odepřen. Klikněte na tlačítko na ikoně hlavního vyberte pravidlo a pak použijte tlačítka Přesunout nahoru a dolů uspořádat pravidla. Stejně jako u technologie ASP.NET &lt;autorizace&gt; elementu, pravidla se zpracovávají v pořadí, ve kterém jsou uvedeny. Jinými slovy Pokud byly obrácený pořadí pravidel ve výše uvedené snímek, nikdo by mít přístup ke složce pro správu vzhledem k tomu, že první pravidlo, které by se mohl dostat ASP.NET by být pravidlo, které zakazuje všem uživatelům ke složce.
 
@@ -209,19 +192,15 @@ ASP.NET vytvoří instanci RolePrincipal také jako člen aktuálního kontextu.
 
 Teď, když máte představu o správu rolí a členství, umožňuje stručně popisují, jak ovládacího prvku LoginView využívá tuto funkci v technologii ASP.NET 2.0. Jak bylo uvedeno výše ovládacího prvku LoginView je ovládací prvek bez vizuálního vzhledu, který obsahuje dvě šablony ve výchozím nastavení; AnonymousTemplate a LoggedInTemplate. V rámci prvku LoginView úlohy, které dialogové okno je odkaz (viz dole), která umožňuje upravit kolekci RoleGroups.
 
-
 ![](membership/_static/image9.jpg)
 
 **Obrázek 9**
 
-
 Každý objekt RoleGroup obsahuje pole řetězců, který definuje, jaké role, pro které platí RoleGroup. Chcete-li přidat nový RoleGroup do ovládacího prvku LoginView, klikněte na odkaz Upravit kolekci RoleGroups. Na obrázku výše vidíte, že po přidání nového typu RoleGroup pro správce. Výběrem tohoto typu RoleGroup (RoleGroup[0]) z rozevíracího seznamu zobrazení, můžete nakonfigurovat šablonu, která se zobrazí pouze členům role správce. Na obrázku níže jsem přidali nové RoleGroup, které platí pro členy role prodeje a roli distribučního. Tento postup přidá zobrazení rozevírací seznam v dialogovém okně Úlohy LoginView druhý RoleGroup a nic přidat do této šablony se nebude zobrazovat ji žádný uživatel ve Sales nebo distribuce role.
-
 
 ![](membership/_static/image10.jpg)
 
 **Obrázek 10**
-
 
 ## <a name="overriding-the-existing-membership-provider"></a>Přepsání existující zprostředkovatele členství
 

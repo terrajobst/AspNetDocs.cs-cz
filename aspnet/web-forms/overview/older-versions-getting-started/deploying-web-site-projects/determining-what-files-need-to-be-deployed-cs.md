@@ -8,12 +8,12 @@ ms.date: 04/01/2009
 ms.assetid: f8d78a88-cc91-40d8-bce3-3d7954f6033b
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c17e3afaf4406489a14d0537a33fef384d6c5a19
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: c4848f230ee0af5ee9d381e7df9cb1456870eb25
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59408963"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132360"
 ---
 # <a name="determining-what-files-need-to-be-deployed-c"></a>Zjištění souborů, které je potřeba nasadit (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/4/5/F/45F815EC-8B0E-46D3-9FB8-2DC015CCA306/ASPNET_Hosting_Tutorial_02_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/E/8/9/E8920AE6-D441-41A7-8A77-9EF8FF970D8B/aspnet_tutorial02_FilesToDeploy_cs.pdf)
 
 > Soubory musí být nasazeny z vývojového prostředí do produkčního prostředí závisí částečně na tom, jestli aplikace ASP.NET bylo vytvořeno prostřednictvím webu Model nebo Model webových aplikací. Další informace o těchto dvou projektu modelů a vliv nasazení modelu projektu.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -92,20 +91,16 @@ Soubor ke stažení pro účely tohoto kurzu obsahuje aplikaci ASP.NET recenzí.
 
 Obrázek 1 ukazuje snímek obrazovky webu recenzí při prohlížení prostřednictvím prohlížeče. Tady se zobrazí stránka ~ /`Tech/TYASP35.aspx`, který zkontroluje knihu *naučit sami technologie ASP.NET 3.5 za 24 hodin*. Tento navigační prvek určuje, která zahrnuje horní části stránky a v nabídce v levém sloupci jsou založeny na strukturu mapy webu definované v `Web.sitemap`. Obrázek v pravém horním rohu je jedním z knihy titulní Image nachází v `Images` složky. Na webu vzhled a chování jsou definovány pomocí kaskádových pravidla stylů států šablon stylů CSS soubory ve složce styly, zatímco zastřešujícího rozložení stránky je definován na hlavní stránce `Site.master`.
 
-
 [![Na webu knihy kontroly nabízí recenzí na celé řady různých doprovodných produktů](determining-what-files-need-to-be-deployed-cs/_static/image2.png)](determining-what-files-need-to-be-deployed-cs/_static/image1.png)
 
 **Obrázek 1:** Na webu knihy kontroly nabízí recenzí na celé řady různých doprovodných názvy ([kliknutím ji zobrazíte obrázek v plné velikosti](determining-what-files-need-to-be-deployed-cs/_static/image3.png))
-
 
 Tuto aplikaci nebude používat databázi. každou recenzi je implementovaný jako samostatné webové stránky v aplikaci. V tomto kurzu (a další kurzy několik) provede procesem nasazení webové aplikace, která nemá žádné databáze. Ale v budoucích kurzech jsme se zlepšila tuto aplikaci k uložení recenze, čtečky komentáře a další informace v databázi a bude prozkoumejte, jaké kroky je potřeba se provádí, aby správně nasazení s daty webové aplikace.
 
 > [!NOTE]
 > Tyto kurzy zaměřit na hostování aplikací ASP.NET u poskytovatele webového hostitele a není prozkoumat pomocné zajímavá témata zahrnují třeba ASP. NET pro systém lokality mapy nebo pomocí základní `Page` třídy. Další informace o těchto technologií a další informace o dalších tématech zahrnuté v rámci tohoto kurzu najdete na konci každého kurzu v části Další čtení.
 
-
 V tomto kurzu ke stažení obsahuje dvě kopie webovou aplikaci, každý implementovaná jako jiný typ projektu sady Visual Studio: BookReviewsWAP, projekt webové aplikace a BookReviewsWSP webového projektu. Oba projekty vytvořené pomocí aplikace Visual Web Developer 2008 SP1 a pomocí technologie ASP.NET 3.5 SP1. Pro práci s projekty začněte rozzipovávání obsah na plochu. Otevřete projekt webové aplikace (BookReviewsWAP), přejděte do složky BookReviewsWAP a poklikejte na soubor řešení `BookReviewsWAP.sln`. K otevření projektu webové stránky (BookReviewsWSP), spusťte sadu Visual Studio a potom z nabídky soubor, zvolte možnost Otevřít web, vyhledejte `BookReviewsWSP` složky v počítači a klikněte na tlačítko OK.
-
 
 Zbývající dva oddíly v tomto kurzu pohled na soubory budete muset zkopírovat do produkčního prostředí při nasazování aplikace. Následující dva kurzy - *[nasazení vašeho webu pomocí protokolu FTP](deploying-your-site-using-an-ftp-client-cs.md)* a *[nasazení webu pomocí sady Visual Studio](deploying-your-site-using-visual-studio-cs.md)* -ukazují různé způsoby, jak Zkopírujte tyto soubory zprostředkovatele webového hostitele.
 
@@ -115,11 +110,9 @@ Model projektu webové aplikace používá explicitní kompilace – projektu zd
 
 Obrázek 2 ukazuje soubory, které tvoří knihy revize webové aplikace.
 
-
 [![V Průzkumníku řešení zobrazí soubory, které tvoří projektu webové aplikace](determining-what-files-need-to-be-deployed-cs/_static/image5.png)](determining-what-files-need-to-be-deployed-cs/_static/image4.png)
 
 **Obrázek 2**: V Průzkumníku řešení zobrazí soubory, které tvoří projektu webové aplikace
-
 
 K nasazení aplikace ASP.NET vytvořené pomocí modelu počáteční projekt webové aplikace vytvořením aplikace tak, aby explicitně nejnovější zdrojový kód zkompilovat do sestavení. V dalším kroku zkopírujte následující soubory do produkčního prostředí:
 
@@ -131,7 +124,6 @@ Kopírování souborů se zdrojovým kódem na stránkách ASP.NET k produkční
 > [!NOTE]
 > Obrázek 2 ukazuje, `BasePage` třídy je implementovaný jako soubor třídy v projektu umístěn ve složce s názvem `HelperClasses`. Pokud je projekt kompilován kód v `BasePage.cs` soubor je zkompilován spolu s stránek technologie ASP.NET použití modelu code-behind třídy do jednoho sestavení `BookReviewsWAP.dll.` ASP.NET má zvláštní složku s názvem `App_Code` , který slouží k uložení souborů třídy pro Web Projekty webů. Kód v `App_Code` složku automaticky kompilaci a proto by neměl být použit s projekty webových aplikací. Místo toho byste měli umístit soubory třídy vaší aplikace do normální složku s názvem `HelperClasses`, nebo `Classes`, nebo něco podobného. Alternativně můžete umístit soubory tříd v samostatném projektu knihovny tříd.
 
-
 Kromě zkopírování soubory související s ASP.NET revize a sestavení v `Bin` složky, musíte také kopírovat soubory podpory na straně klienta – na obrázky a soubory šablon stylů CSS – stejně jako ostatní soubory podpory na straně serveru, `Web.config` a `Web.sitemap`. Tyto klientské - a -podporu na straně serveru soubory je třeba zkopírovat do produkčního prostředí bez ohledu na to, jestli použít explicitní nebo automatickou kompilaci.
 
 ## <a name="determining-the-files-to-deploy-for-the-web-site-project-files"></a>Určení souborů k nasazení pro souborů webových projektů
@@ -142,11 +134,9 @@ Možnost nabídky sestavení v sadě Visual Studio je k dispozici v projektech w
 
 Obrázek 3 ukazuje soubory, které tvoří knihy revize webový projekt.
 
-
  [![V Průzkumníku řešení zobrazí soubory, které tvoří webového projektu](determining-what-files-need-to-be-deployed-cs/_static/image7.png)](determining-what-files-need-to-be-deployed-cs/_static/image6.png) 
 
 **Obrázek 3**: V Průzkumníku řešení zobrazí soubory, které tvoří webového projektu
-
 
 Nasazení webového projektu zahrnuje kopírování všech souborů souvisejících s ASP.NET do produkčního prostředí –, který obsahuje značky stránky pro stránky ASP.NET, hlavní stránky a uživatelské ovládací prvky, spolu s jejich soubory kódu. Také musíte zkopírovat všechny třídy soubory, jako je například BasePage.cs. Všimněte si, že `BasePage.cs` soubor se nachází v `App_Code` složce, která je speciální složky ASP.NET používá v projektech webu pro soubory tříd. Speciální složky je potřeba vytvořit v produkčním prostředí, stejně, jako soubory tříd v `App_Code` složky ve vývojovém prostředí musí být zkopírován do `App_Code` složky v produkčním prostředí.
 
@@ -154,7 +144,6 @@ Kromě zkopírování souborů ASP.NET značkami a zdrojový kód, musíte také
 
 > [!NOTE]
 > Webové projekty lze také použít explicitní kompilace. Budoucí kurz se zaměřuje jak explicitně zkompilovat projekt webu.
-
 
 ## <a name="summary"></a>Souhrn
 

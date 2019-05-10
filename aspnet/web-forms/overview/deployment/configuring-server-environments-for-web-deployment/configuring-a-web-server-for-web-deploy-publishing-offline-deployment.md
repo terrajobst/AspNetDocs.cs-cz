@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: ba92788f-9f03-44b1-b6b2-af8413e6a35d
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-offline-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 66a784430de734c8b1387c950382472ce59d5ccc
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 873eb9e350d5fadb017b20c4b6d2889e0df00091
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59422132"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65126050"
 ---
 # <a name="configuring-a-web-server-for-web-deploy-publishing-offline-deployment"></a>Konfigurace webového serveru pro publikování nasazeného webu (offline nasazení)
 
@@ -30,7 +30,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > - Použití *offline nasazení*. Tento přístup vyžaduje nejmenší míru konfigurace webového serveru, ale správce serveru musíte ručně zkopírovat webový balíček na server a importujte ho pomocí Správce služby IIS.
 > 
 > Další informace o klíčové funkce, výhody a nevýhody těchto přístupů, naleznete v tématu [výběr právo přístupu k nasazení webu](choosing-the-right-approach-to-web-deployment.md).
-
 
 Ano, pokud vaše síťové infrastruktury nebo zabezpečení omezení brání vzdálené nasazení. Příčinou je pravděpodobně v případě v produkčních prostředích přístupem k Internetu, ve kterém jsou webové servery izolované&#x2014;fyzicky nebo pomocí brány firewall a podsítě&#x2014;od zbytku serverové infrastruktury.
 
@@ -59,7 +58,6 @@ Postup pro každý z těchto postupů se zobrazí v tomto tématu. Úlohy a náz
 > [!NOTE]
 > Další informace o připojení počítače k doméně najdete v tématu [připojení počítače k doméně a protokolování na](https://technet.microsoft.com/library/cc725618(v=WS.10).aspx). Další informace o konfiguraci statických IP adres najdete v tématu [nakonfigurujte statickou IP adresu](https://technet.microsoft.com/library/cc754203(v=ws.10).aspx).
 
-
 ## <a name="install-products-and-components"></a>Nainstalovat produkty a komponent
 
 Tato část vás provede s instalací požadovaných produktů a komponenty na webovém serveru. Než začnete, je vhodné spuštěním služby Windows Update tak, aby byl váš server plně aktuálním stavu.
@@ -73,7 +71,6 @@ V takovém případě musíte nainstalovat tyto věci:
 
 > [!NOTE]
 > Tento návod popisuje použití instalačního programu webové platformy nainstalovat a nakonfigurovat různé součásti. I když není nutné používat instalačního programu webové platformy, zjednodušuje proces instalace automaticky zjišťuje závislosti a zajištění vždycky toho nejnovější verze produktu. Další informace najdete v tématu [Microsoft webové platformy verze 3.0](https://go.microsoft.com/?linkid=9805118).
-
 
 **Chcete-li nainstalovat požadované produkty a komponenty**
 
@@ -180,7 +177,6 @@ Nejběžnější přístup je k přiřazení oprávnění pro místní **IIS\_IU
 > [!NOTE]
 > Další informace o identity fondu aplikací ve službě IIS 7.5, naleznete v tématu [identity fondu aplikací součásti](https://go.microsoft.com/?linkid=9805123).
 
-
 **Jak nakonfigurovat oprávnění složky pro web služby IIS**
 
 1. V Průzkumníku Windows přejděte do umístění vaší místní složky.
@@ -199,7 +195,6 @@ Při instalaci Web Deploy Agent služba pro nasazení webu je nainstalována a s
 
 > [!NOTE]
 > Není potřeba zastavit službu vzdáleného agenta k importu a nasazení webového balíčku ručně. Je však vhodné zastavit a zakázat službu, pokud nemáte v úmyslu použít.
-
 
 Můžete zastavit a zakázat službu v několika ohledech pomocí různých nástrojů příkazového řádku nebo pomocí rutin prostředí Windows PowerShell. Tento postup popisuje jednoduchým řešením by na základě uživatelského rozhraní.
 

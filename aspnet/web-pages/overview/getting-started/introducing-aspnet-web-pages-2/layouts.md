@@ -8,12 +8,12 @@ ms.date: 05/28/2015
 ms.assetid: c85ec591-f8d7-4882-b763-de6ab9f3df7a
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/layouts
 msc.type: authoredcontent
-ms.openlocfilehash: 58f3ec28914a604aa911cc3cb73733f0d58fd49f
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 678eb7089e95e3d221d6b2d82034a62aefa75757
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59390412"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131840"
 ---
 # <a name="introducing-aspnet-web-pages---creating-a-consistent-layout"></a>Úvod do webových stránek ASP.NET – vytvoření konzistentního rozložení
 
@@ -26,7 +26,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > - Rozložení stránky je.
 > - Jak kombinovat rozložení stránek s dynamickým obsahem.
 > - Jak předávat hodnoty na stránku rozložení.
-
 
 ## <a name="about-layouts"></a>Informace o rozložení
 
@@ -167,7 +166,6 @@ Pokud chcete, zobrazte zdroj stránky v prohlížeči. Vidíte, že `<title>` pr
 > Můžete předat libovolný počet hodnot s použitím `Page` objektu. Pokud chcete předat informace o filmu ke stránce rozložení, mohli předat hodnoty pomocí něco jako `Page.MovieTitle` a `Page.Genre` a `Page.MovieYear`. (Nebo jiné názvy, které je určena k ukládání informací.) Jediným požadavkem – což je pravděpodobně zřejmé – je, že budete muset použít stejné názvy v obsahu stránky a rozložení stránky.
 > 
 > Informace o předávání pomocí `Page` objektu se neomezuje na pouze text se zobrazí na stránce rozložení. Můžete předat hodnotu na stránku rozložení a pak použít hodnotu rozhodnout, jestli se mají zobrazovat oddíl na stránce kódu ve stránce rozložení co *.css* soubor použít a tak dále. Předáním hodnoty `Page` objektu jsou stejně jako jakékoli jiné hodnoty, které použijete v kódu. Stačí je, že hodnoty pocházejí z obsahu stránky a jsou předány na stránku rozložení.
-
 
 Otevřít *AddMovie.cshtml* stránce a přidá řádek do horní části kódu, který obsahuje název *AddMovie.cshtml* stránky:
 

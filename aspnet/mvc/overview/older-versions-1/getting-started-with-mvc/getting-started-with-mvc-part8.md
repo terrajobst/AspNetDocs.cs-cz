@@ -8,19 +8,18 @@ ms.date: 08/14/2010
 ms.assetid: 7ae696b9-348f-4993-8ebb-a838acbe0c28
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part8
 msc.type: authoredcontent
-ms.openlocfilehash: 029234cf9a28a80c487504e4e0980c214e45f53a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 1cf092c3db3959d6f47006f1be2ba82833c5dc06
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381962"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65122850"
 ---
 # <a name="adding-a-column-to-the-model"></a>Přidání sloupce do modelu
 
 podle [Scott Hanselman](https://github.com/shanselman)
 
 > Toto je kurz pro začátečníky, který vysvětluje základy ASP.NET MVC. Vytvoříte jednoduchou webovou aplikaci, která čte a zapisuje z databáze. Přejděte [výukové centrum pro ASP.NET MVC](../../../index.md) najít další technologie ASP.NET MVC, kurzů a ukázek.
-
 
 V této části jsme se chystáte projít jak můžeme provádět změny schématu databáze a zpracovat změny v rámci naší aplikace.
 

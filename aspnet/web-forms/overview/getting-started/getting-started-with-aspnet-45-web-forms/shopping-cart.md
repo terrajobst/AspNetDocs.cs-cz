@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 6898c601-6c31-432f-8388-e6843f8a17cb
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/shopping-cart
 msc.type: authoredcontent
-ms.openlocfilehash: e079318b37563b1b7afe0f842f5b463541de0a81
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 1c54449e778eac96133cccdc90d86cbbaf05a70f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59405427"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132113"
 ---
 # <a name="shopping-cart"></a>Nákupní košík
 
@@ -22,7 +22,6 @@ by [Erik Reitan](https://github.com/Erikre)
 [Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
 > V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 for Web. Visual Studio 2013 [projektu se zdrojovým kódem jazyka C#](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) je k dispozici v této sérii kurzů.
-
 
 Tento kurz popisuje obchodní logiku potřebnou k přidání do nákupního košíku do webových formulářů ASP.NET ukázkové aplikace Wingtip Toys. V tomto kurzu vychází z předchozí kurz o "Zobrazení dat a podrobnosti o položkách" a je součástí série kurzů Wingtip Slonovi Store. Po dokončení tohoto kurzu, budou uživatelé ukázkovou aplikaci přidat, odebrat nebo změnit produkty v jejich nákupního košíku.
 
@@ -49,7 +48,6 @@ Dříve v této řadě kurzů jste přidali stránky a kód, chcete-li zobrazit 
 > [!NOTE] 
 > 
 > Stav relace technologie ASP.NET je vhodné místo pro ukládání informací specifických pro uživatele, jejíž platnost vyprší po opuštění webu. Zatímco zneužití stav relace může mít vliv na výkon na větších serverech, světle užívání relace stavu funguje dobře pro demonstrační účely. Ukázkový projekt na adresář Wingtip Toys ukazuje způsob použití stavu relace bez externího poskytovatele, kde stavu relace je uložené v procesu na webovém serveru hostujícím webu. Pro větší serverů, které poskytují více instancí aplikace nebo weby, na kterých běží více instancí aplikace na různých serverech, zvažte použití **služby Windows Azure Cache Service**. Tato služba mezipaměti umožňuje distribuované ukládání do mezipaměti služba, která je externí webový server a řeší problém používání stavu relace v procesu. Další informace najdete v tématu [postupy používání stavu relace ASP.NET pomocí modelu weby Windows Azure](https://docs.microsoft.com/azure/redis-cache/cache-aspnet-session-state-provider).
-
 
 ### <a name="add-cartitem-as-a-model-class"></a>Přidat CartItem jako třídu modelu
 
@@ -128,7 +126,6 @@ Jak už bylo zmíněno dříve, vytvoříte zpracování stránky s názvem *Add
 > [!NOTE] 
 > 
 > Bude změna modelu code-behind (*AddToCart.aspx.cs*) pro tuto stránku, není na stránce uživatelského rozhraní (*AddToCart.aspx*).
-
 
 #### <a name="to-create-the-add-to-cart-functionality"></a>Chcete-li vytvořit přidat do košíku funkce:
 
@@ -215,7 +212,6 @@ Nejprve je potřeba `GetTotal` metoda získá ID nákupního košíku pro danéh
 > [!NOTE] 
 > 
 > Výše uvedený kód používá typ s možnou hodnotou Null "`int?`". Typy připouštějící hodnotu Null, může představovat všechny hodnoty z nadřazeného typu a také jako hodnotu null. Další informace najdete v tématu [typy připouštějící hodnotu Null pomocí](https://msdn.microsoft.com/library/2cf62fcy(v=vs.110).aspx).
-
 
 ### <a name="modify-the-shopping-cart-display"></a>Upravit zobrazení nákupního košíku
 

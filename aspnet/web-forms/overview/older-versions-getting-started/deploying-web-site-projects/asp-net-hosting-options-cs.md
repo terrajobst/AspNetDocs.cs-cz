@@ -8,12 +8,12 @@ ms.date: 04/01/2009
 ms.assetid: 89a1d2bc-fdfd-4c5c-a3b0-49a08baaf63a
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 90285eac8e45d542c4ccca3e3db00493546aac57
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 0ec92a3b719116d8ef457156788ac451a300dbfc
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398446"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130668"
 ---
 # <a name="aspnet-hosting-options-c"></a>Možnosti hostování v technologii ASP.NET (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhnout PDF](http://download.microsoft.com/download/E/8/9/E8920AE6-D441-41A7-8A77-9EF8FF970D8B/aspnet_tutorial01_Basics_cs.pdf)
 
 > Webové aplikace ASP.NET jsou obvykle navržené, vytvořit a otestovat v místním vývojovém prostředí a potřebujete k nasazení do produkčního prostředí, až bude připravená pro vydanou verzi. Tento kurz poskytuje základní přehled o procesu nasazení a slouží jako úvod k této sérii kurzů.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -57,7 +56,6 @@ Informace o konfiguraci pro webovou aplikaci se obvykle nachází v `Web.config`
 
 Kromě změny konfigurace webové aplikace krok 1 také může mít za následek konfigurace pro webový server a databáze. Například pokud stránky ASP.NET vytvoří nebo odstraní soubory z adresáře na webovém serveru pak webový server je potřeba nakonfigurovat tak, aby povolovala tyto úpravy systému souborů. Podobně mohou být oprávnění nebo nastavení ověření, které je potřeba provést k databázi.
 
-
 Krok 2 zahrnuje synchronizaci sady základní stránky technologie ASP.NET a podpůrné soubory mezi vývojovou a provozní prostředí. Konkrétní sada ASP. NET související soubory, které je třeba se dá provést synchronizace mezi těmito dvěma prostředími závisí na typu projektu vytvořené v sadě Visual Studio a je diskuze v dalším kurzu [ *určující, co soubory musí být nasazeny*](determining-what-files-need-to-be-deployed-cs.md). Třetí a čtvrtá kurzy - [ *nasazení vašeho webu pomocí protokolu FTP* ](deploying-your-site-using-an-ftp-client-cs.md) a [ *nasazení webu pomocí sady Visual Studio* ](deploying-your-site-using-visual-studio-cs.md) – prozkoumejte různé nástroje a techniky pro synchronizaci těchto souborů.
 
 Při sestavování aplikací řízených daty jsou obvykle dvě databáze používá: jeden pro vývoj a jeden v produkčním prostředí. Během vývoje schéma databáze vývoje může upravit tak, aby zahrnout nové tabulky, sloupce, uložené procedury a triggery nebo mohou být upraveny odebrat nebo přejmenovat stávající databázové objekty. Mezi časem, které budou provedeny tyto změny a čas, kdy aplikace je nasazená do produkčního prostředí nejsou synchronizované, vývoje a provozu databáze. Tato asynchronie je potřeba opravit během procesu nasazení. Tyto problémy se dají prozkoumat v budoucích kurzech.
@@ -69,7 +67,6 @@ Aplikace ASP.NET je nasadit na jakékoli webové servery, který má rozhraní .
 > [!NOTE]
 > [Služba IIS](https://www.iis.net/) je webový server od Microsoftu na podnikové úrovni. Je dodáván s – Domovská stránka edice systému Windows, jako je například Windows Server 2008 a určitými edicemi systému Windows Vista. Instalace služby IIS k obsluze aplikace ASP.NET ve vývojovém prostředí sady Visual Studio obsahuje webový Server ASP.NET Development nepotřebujete. Webový Server ASP.NET Development však přijímá pouze místní připojení a proto jej nelze použít v produkčním prostředí.
 
-
 Před nasazením webu poskytovatele webového hostitele je nutné rozhodnout údaje, které společnost uzavírat obchody se. Existuje bezpočet webhosting společností ve službě na webu marketplace. Vyhledejte "webhosting společnosti" vrátí více než 5 milionů výsledky. Jak najít ten, který je pro vás nejvhodnější? Váš oblíbený vyhledávací web není dobrý výchozí bod, protože jsou z webových, jako jsou [TopHosts](http://www.tophosts.com/) a [HostCritique](http://www.hostcritique.net/), který porovnání a kontrast různých hostitelských služeb. Jsem také seznámit s kolegy a spolupracovníky žádostí o všechna doporučení; Můžete také požádat o doporučení v [hostování otevřené fórum](https://forums.asp.net/158.aspx) tady na [fóra ASP.NET](https://forums.asp.net/).
 
 Webové hostingové společnosti obvykle nabízejí sdílené plány hostování a vyhrazené plány hostování. Pomocí sdílené hostování jediném webovém serveru hostitele desítky, pokud není stovky různých webů. S vyhrazený hosting zapůjčení počítač ze společnosti, která slouží pouze váš web a Web. Sdílený plán hostování může zahrnují podporu pro stránky ASP.NET umožňuje pracovat s databází Microsoft Access, 5 GB místa na disku a 100 GB měsíčního výstupního provozu šířky pásma pro 9.95 $ za měsíc. Jiný sdílený plán hostování může zahrnují podporu pro stránky ASP.NET, přístup k databázi serveru Microsoft SQL Server 2008, 10 GB místa na disku a 250 GB měsíčního výstupního provozu šířky pásma pro 19,95 USD za měsíc. Vyhrazené plány hostování jsou obvykle mnohem dražší, ocenění několik stovek dolarů za měsíc, ale nabízejí lepší výkon a větší kontrolu, než sdílený možnosti hostování. Jaký plán zvolíte, závisí na rozpočtu, kolik provozu webu přijímá a funkce, které očekáváte, že je budete potřebovat.
@@ -78,7 +75,6 @@ Dva důležité aspekty při výběru poskytovatele webových hostitele jsou zá
 
 > [!NOTE]
 > Některé webové hostingové společnosti soustředit svoje podnikání na konkrétní technologiích, jako je .NET nebo [LAMP](http://en.wikipedia.org/wiki/LAMP_stack) (**L** inux, **A** pache, **M** ySQL, a **P** HP), proto se ujistěte, že společnost vyberete hostuje aplikace ASP.NET. Také zkontrolujte, že podporují verzi technologie ASP.NET, který používáte k sestavení aplikace. A pokud vytváříte aplikace řízené daty, ujistěte se, že nabízí webového hostitele na stejný server databáze a verze, kterou používáte.
-
 
 ## <a name="summary"></a>Souhrn
 

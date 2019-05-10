@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 0bbf7a6e-d7eb-4091-91e4-fff892777f32
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create_the_data_access_layer
 msc.type: authoredcontent
-ms.openlocfilehash: bc91eba17938de15f03ecc1e745aac57c7eac7a1
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 61a9dae22efed9cb7e8957a8c131396cbdeea3c9
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59419493"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131355"
 ---
 # <a name="create-the-data-access-layer"></a>Vytvoření vrstvy přístupu k datům
 
@@ -22,7 +22,6 @@ by [Erik Reitan](https://github.com/Erikre)
 [Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
 > V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 for Web. Visual Studio 2013 [projektu se zdrojovým kódem jazyka C#](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) je k dispozici v této sérii kurzů.
-
 
 Tento kurz popisuje, jak vytvořit, přístup a zkontrolujte data v databázi pomocí webových formulářů ASP.NET a Entity Framework Code First. V tomto kurzu vychází z předchozí kurz o službě "Vytvořit projekt" a je součástí série kurzů Wingtip Slonovi Store. Po dokončení tohoto kurzu, který bude jste vytvořili skupinu tříd přístup k datům, které jsou v *modely* složky projektu.
 
@@ -119,7 +118,6 @@ Jak je vidět ve výše uvedeném kódu, když je vytvořen a inicializován, da
 > 
 > Pokud byste chtěli databáze, kterou chcete znovu vytvořit pokaždé, když byla aplikace spuštěná, můžete použít `DropCreateDatabaseAlways` místo na třídě `DropCreateDatabaseIfModelChanges` třídy. Ale pro tuto řadu kurzů použít `DropCreateDatabaseIfModelChanges` třídy.
 
-
 V tuto chvíli v tomto kurzu budete mít *modely* složky čtyři nové třídy a jednu výchozí třídu:
 
 ![Vytvoření vrstvy přístupu k datům – složku modely](create_the_data_access_layer/_static/image3.png)
@@ -136,7 +134,6 @@ Inicializovat datové modely při spuštění aplikace, budete aktualizovat `App
 > 
 > V Průzkumníku řešení, můžete vybrat, zda *Global.asax* souboru nebo *Global.asax.cs* soubor pro úpravu *Global.asax.cs* souboru.
 
-
 1. Přidejte následující kód zvýrazněné žlutou barvou na `Application_Start` metodu *Global.asax.cs* souboru.   
 
     [!code-csharp[Main](create_the_data_access_layer/samples/sample5.cs?highlight=9-10,22-23)]
@@ -144,7 +141,6 @@ Inicializovat datové modely při spuštění aplikace, budete aktualizovat `App
 > [!NOTE] 
 > 
 > Váš prohlížeč musí podporovat HTML5, chcete-li zobrazit kód zvýrazněn žlutě při prohlížení v této sérii kurzů v prohlížeči.
-
 
 Jak je znázorněno výše uvedený kód při spuštění aplikace, aplikace určuje, že je přístupná inicializátoru, který se spustí při prvním spuštění data. Dva další obory názvů jsou nutné pro přístup k `Database` objektu a `ProductDatabaseInitializer` objektu.
 

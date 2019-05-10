@@ -8,12 +8,12 @@ ms.date: 02/10/2014
 ms.assetid: f3f4b8c8-e8f6-4474-ad94-69228a6c01ee
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/4-working-with-forms
 msc.type: authoredcontent
-ms.openlocfilehash: 680739cbcf54bc9ca7a3bd8167d043ff537eaad5
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ec5ad784978b2d5191d59398fc4b5ed25ae516fb
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59417530"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65128407"
 ---
 # <a name="working-with-html-forms-in-aspnet-web-pages-razor-sites"></a>Práce s formuláři HTML v lokalitách rozhraní ASP.NET Web Pages (Razor)
 
@@ -42,7 +42,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 >   
 > 
 > V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
-
 
 ## <a name="creating-a-simple-html-form"></a>Vytvoření jednoduchého formuláře HTML
 
@@ -89,7 +88,6 @@ Pro zpracování formuláře, přidáte kód, který čte hodnoty zadané pole a
 > Je vhodné použít kódování vždy zobrazí řetězce v jazyce HTML (vstup), že jste získali od uživatele. Pokud to neuděláte, uživatel může pokusit o získání webové stránky ke spuštění škodlivých skriptů nebo provádět další činnosti, která ohrožuje zabezpečení vašeho webu nebo který je právě není to, co chcete. (To je zvlášť důležité, pokud přijímají uživatelský vstup, uložte ho někde a zobrazit později &#8212; , jako například komentář blogu, uživatel kontrolovat nebo něco jako, který.)
 > 
 > Aby se zabránilo tyto problémy, rozhraní ASP.NET Web Pages automaticky umístí kódování HTML jakýkoli text obsahu, který jste výstup z vašeho kódu. Například při zobrazení obsahu proměnné nebo výraz, který používá kód, jako `@MyVar`, rozhraní ASP.NET Web Pages Galerie automaticky kóduje výstup.
-
 
 ## <a name="validating-user-input"></a>Ověřování uživatelského vstupu
 

@@ -8,12 +8,12 @@ ms.date: 06/05/2013
 ms.assetid: e608e263-264d-448b-b0eb-6eeb77713b22
 msc.legacyurl: /signalr/overview/older-versions/handling-connection-lifetime-events
 msc.type: authoredcontent
-ms.openlocfilehash: a8121a2d7c4ed14e296dc72c72ca7c25939a2b50
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2fb671e730a1d41c07b350bf1d64ac1d0b1be55c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59414007"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65128786"
 ---
 # <a name="understanding-and-handling-connection-lifetime-events-in-signalr-1x"></a>Principy a zpracování událostí doby platnosti v knihovně SignalR 1.x
 
@@ -28,7 +28,6 @@ podle [Patrick Fletcher](https://github.com/pfletcher), [Petr Dykstra](https://g
 > - [Zpracování událostí doby platnosti ve třídě centra](index.md)
 > - [Zpracování událostí doby platnosti v klientech jazyka JavaScript](index.md)
 > - [Zpracování událostí doby platnosti v klientů .NET](index.md)
-
 
 ## <a name="overview"></a>Přehled
 
@@ -132,7 +131,6 @@ Některá síťová prostředí záměrně nečinných připojení po zavření 
 > 
 > [!IMPORTANT]
 > Posloupnost událostí, je zde popsáno, není zaručeno. SignalR je každý pokus o vyvolání událostí doby platnosti v předvídatelné podle tohoto schématu, ale existuje mnoho variant událostí sítě a mnoha způsoby, ve kterých je zpracovávat základní architektury komunikace, jako jsou přenosu rozhraní API. Například `Reconnected` událost nemusí být vyvolána, když klient znovu připojí, nebo `OnConnected` obslužnou rutinu na serveru může spustit, když neúspěšný pokus o navázání připojení. Toto téma popisuje pouze efekty, které by bylo vytvořeno obvykle některé obvyklé okolnosti.
-
 
 <a id="clientdisconnect"></a>
 

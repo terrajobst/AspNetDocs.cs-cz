@@ -8,12 +8,12 @@ ms.date: 06/26/2007
 ms.assetid: 7d821db5-6cbb-4b38-af14-198f9155fc82
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2fc7ba3d62d41685c234756709707ff14f81b316
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: c759df39f30b69264187babdb6d3422aff17e99c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59380311"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132841"
 ---
 # <a name="wrapping-database-modifications-within-a-transaction-vb"></a>Zabalení úprav databáze do transakce (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_63_VB.zip) nebo [stahovat PDF](wrapping-database-modifications-within-a-transaction-vb/_static/datatutorial63vb1.pdf)
 
 > Tento kurz je první ze čtyř, která srovnává aktualizace, odstraňování a vkládání dat dávek. V tomto kurzu jsme dozvíte, jak povolit batch změny prováděné jako atomickou operaci, což zajistí, že všechny kroky úspěšné nebo neúspěšné všechny kroky, databázové transakce.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -38,7 +37,6 @@ V tomto kurzu podíváme na tom, jak rozšířit DAL použít databázové trans
 
 > [!NOTE]
 > Při změně dat v rámci dávkové transakce, není vždy nutné atomicitu. V některých případech může být přijatelný mít některé změny dat, které jsou úspěšné a dalším uživatelům ve stejné dávkové nezdaří, třeba při odstranění sady e-mailů z klienta webového e-mailu. Pokud je zde s zpracování databáze chyba, polovině odstranění, ho s pravděpodobně přijatelný, zůstaly odstraněné záznamy zpracovat bez chyb. V takových případech není potřeba DAL upravit tak, aby podporu transakcí databáze. Existují další dávkové operace scénáře, však kde atomicitu je důležité. Pokud zákazník přesune její prostředků z jednoho účtu bank do jiného, musí provést dvě operace: prostředků musí být odečtena od první účet a pak přidá do druhé. Banka nemusí vadit s prvním krokem úspěšné, ale druhý krok nezdaří, může být svým zákazníkům understandably nespokojený. Můžu vám doporučujeme projít tento kurz a implementaci rozšíření pro podporu transakcí databáze i v případě, že nemáte v plánu na jejich použití v dávkové vložení, aktualizace nebo odstranění rozhraní, které nám budete vytvářet v následujících kurzech tři vrstvy Dal.
-
 
 ## <a name="an-overview-of-transactions"></a>Přehled transakcí
 
@@ -56,9 +54,7 @@ Příkazy SQL použitý k vytvoření, potvrzení a vrácení transakce se dají
 > [!NOTE]
 > [ `TransactionScope` Třídy](https://msdn.microsoft.com/library/system.transactions.transactionscope.aspx) v `System.Transactions` obor názvů umožňuje vývojářům programově zabalení řadu příkazů v rámci oboru transakce a zahrnuje podporu pro složité transakce, které se týkají více zdroje, jako jsou dva různé databáze nebo dokonce heterogenních typů úložišť dat, jako je například databáze Microsoft SQL Server, Oracle database a webové služby. Můžu uložit se rozhodli použít transakce ADO.NET pro účely tohoto kurzu místo `TransactionScope` třídy, protože je určené pro databázové transakce a v mnoha případech ADO.NET je mnohem méně náročná. Kromě toho v určitých případech `TransactionScope` třída používá Microsoft distribuované transakce koordinátor (MSDTC). Problémy s konfigurací, implementaci a výkonu okolního MSDTC umožňuje místo specializované a pokročilé tématu a nad rámec těchto kurzů.
 
-
 Při práci se zprostředkovatelem SqlClient v ADO.NET, transakce inicializována prostřednictvím volání [ `SqlConnection` třídy](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) s [ `BeginTransaction` metoda](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.begintransaction.aspx), který vrátí hodnotu [ `SqlTransaction` objekt](https://msdn.microsoft.com/library/system.data.sqlclient.sqltransaction.aspx). Příkazy změny dat, které strukturu transakce jsou umístěny v rámci `try...catch` bloku. Pokud dojde k chybě v příkazu v `try` blokovat spuštění přenosy do `catch` bloku, ve kterém můžete transakce vrácena zpět prostřednictvím `SqlTransaction` objektu s [ `Rollback` metoda](https://msdn.microsoft.com/library/system.data.sqlclient.sqltransaction.rollback.aspx). Pokud všechny příkazy úspěšně dokončil, volání `SqlTransaction` objektu s [ `Commit` metoda](https://msdn.microsoft.com/library/system.data.sqlclient.sqltransaction.commit.aspx) na konci `try` bloku potvrzení transakce. Následující fragment kódu ukazuje tento model. Zobrazit [zachování konzistence databáze s transakcemi](http://aspnet.4guysfromrolla.com/articles/072705-1.aspx) další syntaxe a příklady použití transakcí pomocí ADO.NET.
-
 
 [!code-vb[Main](wrapping-database-modifications-within-a-transaction-vb/samples/sample1.vb)]
 
@@ -74,32 +70,25 @@ Než začneme zkoumat, jak rozšířit vrstvy DAL k podpoře databázové transa
 - `BatchDelete.aspx`
 - `BatchInsert.aspx`
 
-
 ![Přidání stránky technologie ASP.NET pro SqlDataSource související kurzy](wrapping-database-modifications-within-a-transaction-vb/_static/image1.gif)
 
 **Obrázek 1**: Přidání stránky technologie ASP.NET pro SqlDataSource související kurzy
 
-
 Stejně jako u jiných složkách `Default.aspx` použije `SectionLevelTutorialListing.ascx` uživatelského ovládacího prvku seznam kurzů v rámci jeho části. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
-
 
 [![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](wrapping-database-modifications-within-a-transaction-vb/_static/image2.gif)](wrapping-database-modifications-within-a-transaction-vb/_static/image1.png)
 
 **Obrázek 2**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-vb/_static/image2.png))
 
-
 A konečně, přidejte tyto čtyři stránky jako položky `Web.sitemap` souboru. Konkrétně, přidejte následující kód za vlastní nastavení mapy webu `<siteMapNode>`:
-
 
 [!code-xml[Main](wrapping-database-modifications-within-a-transaction-vb/samples/sample2.xml)]
 
 Po aktualizaci `Web.sitemap`, věnujte chvíli zobrazit kurzy web prostřednictvím prohlížeče. V nabídce na levé straně teď obsahuje položky pro práci s daty uspořádanými do dávek kurzy.
 
-
 ![Mapa webu nyní obsahuje záznamy pro práci s daty uspořádanými do dávek kurzy](wrapping-database-modifications-within-a-transaction-vb/_static/image3.gif)
 
 **Obrázek 3**: Mapa webu nyní obsahuje záznamy pro práci s daty uspořádanými do dávek kurzy
-
 
 ## <a name="step-2-updating-the-data-access-layer-to-support-database-transactions"></a>Krok 2: Aktualizuje se vrstva přístupu k datům pro podporu databázové transakce
 
@@ -111,14 +100,11 @@ V některých scénářích chceme zajistit nedělitelnost napříč řadou změ
 
 Datová sada typu `Northwind.xsd` se nachází v `App_Code` složku s `DAL` podsložky. Vytvořte podsložku v `DAL` složku s názvem `TransactionSupport` a přidejte nový soubor třídy s názvem `ProductsTableAdapter.TransactionSupport.vb` (viz obrázek 4). Tento soubor bude obsahovat částečnou implementaci `ProductsTableAdapter` , který obsahuje metody pro provádění změny dat pomocí transakce.
 
-
 ![Přidat složku s názvem TransactionSupport a soubor třídy s názvem ProductsTableAdapter.TransactionSupport.vb](wrapping-database-modifications-within-a-transaction-vb/_static/image4.gif)
 
 **Obrázek 4**: Přidat složku s názvem `TransactionSupport` a soubor třídy s názvem `ProductsTableAdapter.TransactionSupport.vb`
 
-
 Zadejte následující kód do `ProductsTableAdapter.TransactionSupport.vb` souboru:
-
 
 [!code-vb[Main](wrapping-database-modifications-within-a-transaction-vb/samples/sample3.vb)]
 
@@ -130,13 +116,11 @@ Tyto metody poskytují stavební bloky potřebné ke spuštění, vrácení zpě
 
 S těmito metodami kompletní jsme re jste připravení začít přidejte metody do `ProductsDataTable` nebo BLL, který vykonávat řadu příkazů v rámci zastřešující transakce. Následující metoda používá vzor aktualizace služby Batch k aktualizaci `ProductsDataTable` instance pomocí transakce. Spustí transakci voláním `BeginTransaction` metody a poté ji používá `Try...Catch` bloku k vydávání příkazů změny data. Pokud volání `Adapter` objektu s `Update` metodu výsledkem výjimky, provádění přenese na `catch` bloku, ve kterém transakce bude vrácena zpět a znovu vyvolána výjimka. Vzpomeňte si, že `Update` metoda implementuje vzor dávkové aktualizace vytyčením řádky zadané `ProductsDataTable` a provádění potřebných `InsertCommand`, `UpdateCommand`, a `DeleteCommand` s. Pokud některá z těchto příkazů dojde k chybě, transakce se zrušila, vrácení zpět na předchozí změny po celou dobu životnosti s transakcí. By měl `Update` příkaz dokončit bez chyby, transakce se potvrdí v celém rozsahu.
 
-
 [!code-vb[Main](wrapping-database-modifications-within-a-transaction-vb/samples/sample4.vb)]
 
 Přidat `UpdateWithTransaction` metodu `ProductsTableAdapter` třídu v rámci částečné třídy v `ProductsTableAdapter.TransactionSupport.vb`. Případně, tato metoda může být přidán do vrstvy obchodní logiky s `ProductsBLL` třída s atributem několik menších syntaktických změn. Konkrétně, klíčové slovo `Me` v `Me.BeginTransaction()`, `Me.CommitTransaction()`, a `Me.RollbackTransaction()` by bylo potřeba nahradit `Adapter` (Vzpomeňte si, že `Adapter` je název vlastnosti v `ProductsBLL` typu `ProductsTableAdapter`).
 
 `UpdateWithTransaction` Metoda používá vzor aktualizace služby Batch, ale řadu DB přímé volání lze také v rámci oboru transakcí, jak ukazuje následující metody. `DeleteProductsWithTransaction` Metoda přijímá jako vstup `List(Of T)` typu `Integer`, které jsou `ProductID` s odstranit. Metoda inicializuje transakci prostřednictvím volání `BeginTransaction` a pak na `Try` blokovat, iteruje zadaný seznam volání vzor DB přímým `Delete` metoda pro každou `ProductID` hodnotu. Pokud je libovolná z volání `Delete` selže, je kontrola předána `Catch` bloku, ve kterém transakce je vrácena zpět a znovu vyvolána výjimka. Pokud veškerá volání `Delete` úspěšné, pak je transakce potvrzena. Přidejte tuto metodu za účelem `ProductsBLL` třídy.
-
 
 [!code-vb[Main](wrapping-database-modifications-within-a-transaction-vb/samples/sample5.vb)]
 
@@ -154,12 +138,10 @@ V kroku 3 jsme přidali `UpdateWithTransaction` metodu `ProductsTableAdapter` v 
 
 Otevřít `ProductsBLL` třídy soubor a přidejte metodu s názvem `UpdateWithTransaction` volající jednoduše dolů odpovídající metody vrstvy DAL. By měla nyní být dvou nových metod v `ProductsBLL`: `UpdateWithTransaction`, který jste právě přidali, a `DeleteProductsWithTransaction`, který byl přidán v kroku 3.
 
-
 [!code-vb[Main](wrapping-database-modifications-within-a-transaction-vb/samples/sample6.vb)]
 
 > [!NOTE]
 > Tyto metody nejsou zahrnuté `DataObjectMethodAttribute` atribut přiřazený ke Většina metod v `ProductsBLL` třídy vzhledem k tomu, že nám budete volání těchto metod přímo z třídy modelu code-behind stránky ASP.NET. Vzpomeňte si, že `DataObjectMethodAttribute` slouží k nastavení příznaku, jaké metody by se měla objevit v prvku ObjectDataSource s zdroj dat konfigurace průvodce a na kartě jaké (SELECT, UPDATE, INSERT nebo DELETE). Protože prvku GridView. nemá žádné integrovanou podporu pro službu batch, úpravy nebo odstranění, musíme programově volat tyto metody než pomocí bez použití kódu deklarativní přístup.
-
 
 ## <a name="step-5-atomically-updating-database-data-from-the-presentation-layer"></a>Krok 5: Atomicky aktualizace databázových dat od prezentační vrstvy
 
@@ -167,37 +149,29 @@ Pro ilustraci vliv transakce při aktualizaci dávky záznamů, které umožňuj
 
 Začněte otevřením `Transactions.aspx` stránku `BatchData` složky a GridView přetáhněte z panelu nástrojů do návrháře. Nastavte jeho `ID` k `Products` a z inteligentních značek, jeho vazbu na nového prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource přebírat jeho data ze `ProductsBLL` třída s `GetProducts` metody. To bude GridView jen pro čtení, proto nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný) a klikněte na tlačítko Dokončit.
 
-
 [![Konfigurace ObjectDataSource metody GetProducts ProductsBLL třída s](wrapping-database-modifications-within-a-transaction-vb/_static/image5.gif)](wrapping-database-modifications-within-a-transaction-vb/_static/image3.png)
 
 **Obrázek 5**: Konfigurace ObjectDataSource k použití `ProductsBLL` třída s `GetProducts` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-vb/_static/image4.png))
-
 
 [![Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný)](wrapping-database-modifications-within-a-transaction-vb/_static/image6.gif)](wrapping-database-modifications-within-a-transaction-vb/_static/image5.png)
 
 **Obrázek 6**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit záložky (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-vb/_static/image6.png))
 
-
 Po dokončení Průvodce nakonfigurovat zdroj dat, vytvoří Visual Studio BoundFields a třídě CheckBoxField pro datová pole produktu. Odebrat všechna tato pole s výjimkou `ProductID`, `ProductName`, `CategoryID`, a `CategoryName` a přejmenovat `ProductName` a `CategoryName` BoundFields `HeaderText` vlastností produkt a kategorie, v uvedeném pořadí. Z inteligentních značek zaškrtněte možnost Povolit stránkování. Po provedení těchto změn, ovládacími prvky GridView a prvku ObjectDataSource s deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](wrapping-database-modifications-within-a-transaction-vb/samples/sample7.aspx)]
 
 Dále přidejte tři ovládací prvky tlačítka webového nad prvku GridView. Nastavte na první tlačítko s vlastností Text k aktualizaci mřížky, druhý s upravit kategorie (transakce s) a třetí jeden s upravit kategorie (bez transakce).
 
-
 [!code-aspx[Main](wrapping-database-modifications-within-a-transaction-vb/samples/sample8.aspx)]
 
 Zobrazení návrhu v sadě Visual Studio v tomto okamžiku by měla vypadat podobně jako obrazovky je vidět na obrázku 7.
-
 
 [![Tato stránka obsahuje GridView a tři webové ovládací prvky tlačítek](wrapping-database-modifications-within-a-transaction-vb/_static/image7.gif)](wrapping-database-modifications-within-a-transaction-vb/_static/image7.png)
 
 **Obrázek 7**: Tato stránka obsahuje GridView a tři webové ovládací prvky tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-vb/_static/image8.png))
 
-
 Vytváření obslužných rutin událostí pro všechny tři tlačítka s `Click` události a pomocí následujícího kódu:
-
 
 [!code-vb[Main](wrapping-database-modifications-within-a-transaction-vb/samples/sample9.vb)]
 
@@ -209,26 +183,21 @@ Třetí `Click` obslužná rutina události aktualizace produktů `CategoryID` s
 
 Chcete-li toto chování ilustrují, navštivte tuto stránku prostřednictvím prohlížeče. Původně měli byste vidět první stránka dat, jak je znázorněno na obrázku 8. V dalším kroku klikněte na tlačítko Upravit kategorie (transakce s). To způsobí zpětné odeslání a pokus o aktualizaci všech produktů, které `CategoryID` hodnoty, ale bude mít za následek porušení omezení pro cizí klíč (viz obrázek 9).
 
-
 [![Produkty jsou zobrazeny v stránkované GridView](wrapping-database-modifications-within-a-transaction-vb/_static/image8.gif)](wrapping-database-modifications-within-a-transaction-vb/_static/image9.png)
 
 **Obrázek 8**: Produkty jsou zobrazeny v stránkované ovládacího prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-vb/_static/image10.png))
-
 
 [![Přiřazení kategorie výsledků v narušení omezení pro cizí klíč](wrapping-database-modifications-within-a-transaction-vb/_static/image9.gif)](wrapping-database-modifications-within-a-transaction-vb/_static/image11.png)
 
 **Obrázek 9**: Přiřazení kategorie výsledků v porušení omezení cizího klíče ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-vb/_static/image12.png))
 
-
 Nyní stiskněte tlačítko zpět váš prohlížeč s a pak klikněte na tlačítko Aktualizovat čar mřížky. Při aktualizaci dat byste měli vidět přesně stejný výstup, jak je znázorněno na obrázku 8. To znamená, i když některé z produktů `CategoryID` s byly změněné na právní hodnoty a aktualizována v databázi, že byly vráceny zpět, když došlo k porušení omezení pro cizí klíč.
 
 Zkuste to teď kliknutím na tlačítko Upravit kategorie (bez transakce). Výsledkem bude stejná chyba porušení omezení pro cizí klíč (viz obrázek 9), ale v tuto chvíli tyto produkty jehož `CategoryID` hodnoty byly změněny na právní hodnotu, nebudou vráceny zpět. Stiskněte v prohlížeči s tlačítko Zpět a potom na tlačítko Aktualizovat mřížky. Obrázek 10 ukazuje, `CategoryID` s produkty prvních osm byl znovu přiřazen. Například na obrázku 8, měl Chang `CategoryID` 1, ale v obrázek 10 it s změnilo na 2.
 
-
 [![Některé hodnoty ID kategorie produktů nebyly aktualizovány při jiné byly](wrapping-database-modifications-within-a-transaction-vb/_static/image10.gif)](wrapping-database-modifications-within-a-transaction-vb/_static/image13.png)
 
 **Obrázek 10**: Některé produkty `CategoryID` hodnoty nebyly aktualizovány při jiné byly ([kliknutím ji zobrazíte obrázek v plné velikosti](wrapping-database-modifications-within-a-transaction-vb/_static/image14.png))
-
 
 ## <a name="summary"></a>Souhrn
 

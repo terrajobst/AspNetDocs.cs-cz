@@ -8,12 +8,12 @@ ms.date: 05/28/2015
 ms.assetid: 7e85c70e-1a88-4408-8b3d-29611c7713ed
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/publishing
 msc.type: authoredcontent
-ms.openlocfilehash: ece436d44908497d6cf10017ba1ee285bfb4a5b2
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 49a841dbda183bf1d59153b83f694c9f517e0b94
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59382095"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65127751"
 ---
 # <a name="introducing-aspnet-web-pages---publishing-a-site-by-using-webmatrix"></a>Úvod do webových stránek ASP.NET – publikování webu pomocí Webmatrixu
 
@@ -26,7 +26,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > - Microsoft Azure
 > - Webové hostingové společnosti
 
-
 ## <a name="about-publishing-your-site"></a>Publikování webu
 
 Až dosud jste provedli všechny práce na místním počítači, včetně testování stránek. Ke spuštění vaší<em>.cshtml</em> stránky, využili jste webový server, která je integrovaná do služby WebMatrix, konkrétně služby IIS Express. Můžete ale samozřejmě nikdo můžete zobrazit na webu, který jste vytvořili s výjimkou je. Informovat tak ostatní uživatele práci s webem, je nutné ji publikovat na Internetu.
@@ -35,7 +34,6 @@ Pokud již máte přístup k veřejné webový server, publikování znamená, �
 
 > [!NOTE]
 > Můžete mít přístup public webový server prostřednictvím poskytovatele internetových služeb (ISP), který použijete k získání doma internetové služby. Váš poskytovatel hostingu však musí podporovat rozhraní ASP.NET Web Pages. Není mnoho poskytovatelů internetových služeb, ale je vždy vhodné kontrolu.
-
 
 V tomto kurzu dáme vám přehled o tom, jak publikovat. Není praktické poskytnout přesné informace pro všechno, protože proces se trochu liší pro každý poskytovatele hostingu. Ale získáte představu o tom, jak tento proces funguje.
 
@@ -142,7 +140,6 @@ Vyberte si ten, který vám vyhovuje. Pro účely tohoto kurzu jsme vybrali Disc
 > [!NOTE]
 > Námi zvolený prostřednictvím poskytovatele hostitelských služeb pro účely tohoto kurzu, neměly by být vykládány jako o potvrzení této společnosti přes jakýkoli jiný. Ale jsme měli vybrat jednu pro obrázek a DiscountASP.NET je jednou z mnoha společnosti, které podporuje rozhraní ASP.NET Web Pages a protokolu Webdeploy publikovat.
 
-
 Obvykle poté, co jste se zaregistrovali u poskytovatele hostingu, společnost vám pošle e-mailu, který obsahuje uživatelské jméno a heslo, adresu URL webového serveru a tak dále. Pokud hostovací společnost podporuje protokolu Webdeploy, se může odeslat je soubor, který obsahuje nastavení publikování, nebo můžete stáhnout z Internetu. Soubor nastavení publikování zjednodušuje proces za vás.
 
 Pokud jste se zaregistrovali a jste připraveni publikovat, klikněte na tlačítko **publikovat** tlačítko na pásu karet nástroje WebMatrix. **Nastavení publikování** se zobrazí dialogové okno.
@@ -196,7 +193,6 @@ Klikněte na tlačítko **publikovat** tlačítko na pásu karet. Služba WebMat
 > 
 > Ve výchozím nastavení, služba WebMatrix publikuje vaši databázi (*SDF* souboru) pouze při prvním publikování webu. Jakmile se vaše lokalita je publikována a uživatelé interagují s webem, databázi na živém webu má obvykle reálná data lokality. Je nutné přepsat živé databáze s velmi opatrní *SDF* soubor, který je v počítači, který obvykle obsahuje pouze testovací data. To je důvod, proč se zobrazí upozornění **publikování se přepíšou všechny vzdálené databáze**, a proč zaškrtnutí políčka *WebPagesMovies.sdf* ve výchozím nastavení zaškrtnuto.
 
-
 Klikněte na tlačítko **pokračovat**. Služba WebMatrix publikuje změněných souborů a zobrazí zprávu o úspěšném dokončení stejně, jako kdyby poprvé, kterou jste publikovali.
 
 Přejít do živého webu (můžete kliknout na odkaz v zpráva o úspěchu Pokud je stále zobrazena) a ověřte, že vaše změny se publikoval.
@@ -210,7 +206,6 @@ Přejít do živého webu (můžete kliknout na odkaz v zpráva o úspěchu Poku
 > Vzdálené úpravy je snadný způsob, jak provádět změny živého webu. Změny provedené tímto způsobem se však nejsou synchronizované s souborů ve vaší místní lokalitě. K synchronizaci místních souborů s vzdálené lokality, může stahování vzdálených souborů. Tento proces funguje stejně jako publikování, s výjimkou v opačném pořadí.
 > 
 > Nebude popisujeme více o vzdálené úpravy a stáhnout vzdálené zařízení WebMatrix tady. Jsou velmi užitečné, pokud máte více lidem pracovat na stejném místě na různých počítačích. Další informace najdete v tématu [publikování a úprava vzdálené lokality pomocí služby WebMatrix 2 Beta](https://go.microsoft.com/fwlink/?LinkId=251591).
-
 
 ## <a name="additional-resources"></a>Další prostředky
 

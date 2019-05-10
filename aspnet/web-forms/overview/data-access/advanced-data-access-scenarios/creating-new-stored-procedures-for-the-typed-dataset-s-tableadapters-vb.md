@@ -8,12 +8,12 @@ ms.date: 07/18/2007
 ms.assetid: a5a4a9ba-d18d-489a-a6b0-a3c26d6b0274
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1d8387f782ace50f16d44ba8df4df8014d563674
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 19e9800eb3862ad1f78a6cd2616b28deee997876
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396457"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132422"
 ---
 # <a name="creating-new-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>Vytvoření nových uložených procedur prvků TableAdapter typových sad dat (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_67_VB.zip) nebo [stahovat PDF](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/datatutorial67vb1.pdf)
 
 > V předchozích kurzech jsme vytvořili SQL příkazy v našem kódu a předat příkazy databáze, kterou chcete provést. Alternativním přístupem je použití uložené procedury, kde jsou příkazy SQL předem definovaných v databázi. V tomto kurzu jsme zjistěte, jak mají generovat nové uložené procedury pro nás Průvodci vytvořením objektu TableAdapter.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -35,7 +34,6 @@ Při definování TableAdapter nebo přidání nové metody, třídy TableAdapte
 > [!NOTE]
 > Najdete v blogovém příspěvku Rob Howard [Don t použití uložených procedur dosud?](http://grokable.com/2003/11/dont-use-stored-procedures-yet-must-be-suffering-from-nihs-not-invented-here-syndrome/) a [Frans Bouma](https://weblogs.asp.net/fbouma/) s blogu [uložené procedury jsou chybná, M Kay?](https://weblogs.asp.net/fbouma/archive/2003/11/18/38178.aspx) pro živá diskuse o výhody a nevýhody uložené procedury a ad-hoc SQL.
 
-
 ## <a name="stored-procedure-basics"></a>Základy uložené procedury
 
 Funkce jsou společné pro všechny programovací jazyky konstrukce. Funkce je kolekce příkazů, které jsou spouštěny, když je tato funkce volána. Funkce může přijmout vstupní parametry a může volitelně vrátit hodnotu. *[Uložené procedury](http://en.wikipedia.org/wiki/Stored_procedure)*  jsou databáze konstrukce, které řada podobností s funkcí v programovacích jazycích. Uloženou proceduru se skládá ze sady příkazů T-SQL, které jsou spouštěny, když se volá uloženou proceduru. Uloženou proceduru mohou použít nulu pro velký počet vstupních parametrů a může vrátit skalárních hodnot, výstupní parametry nebo nejčastěji sady výsledků z `SELECT` dotazy.
@@ -43,20 +41,16 @@ Funkce jsou společné pro všechny programovací jazyky konstrukce. Funkce je k
 > [!NOTE]
 > Uložené procedury jsou často označovány jako sprocs nebo aktualizace Service packu.
 
-
 Uložené procedury lze vytvořit pomocí [ `CREATE PROCEDURE` ](https://msdn.microsoft.com/library/aa258259(SQL.80).aspx) příkazu T-SQL. Například následující skript T-SQL vytvoří uloženou proceduru s názvem `GetProductsByCategoryID` , která přijímá jeden parametr s názvem `@CategoryID` a vrátí `ProductID`, `ProductName`, `UnitPrice`, a `Discontinued` pole těchto sloupců `Products` tabulky, které mají odpovídající `CategoryID` hodnotu:
-
 
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample1.sql)]
 
 Po vytvoření tuto uloženou proceduru lze volat, použijte tuto syntaxi:
 
-
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample2.sql)]
 
 > [!NOTE]
 > V dalším kurzu prozkoumáme vytváření uložených procedur prostřednictvím integrovaného vývojového prostředí sady Visual Studio. V tomto kurzu ale budeme nechat automaticky vytvořit úložné procedury pro nás Průvodci vytvořením objektu TableAdapter.
-
 
 Kromě jednoduše vrací data, jsou uložené procedury často používány k provádění více příkazů databáze v rámci jedné transakce. Uloženou proceduru s názvem `DeleteCategory`, například může trvat, než `@CategoryID` parametr a provedení dvou `DELETE` příkazy: první, z nich k odstranění souvisejících produktů a druhá odstranění zadané kategorie. Více příkazů v rámci uložené procedury jsou *není* automaticky zabalené v rámci transakce. Další příkazy jazyka T-SQL musí být vystaveno pro zajištění uložená procedura s, který více příkazů zachází jako atomickou operaci. Uvidíme, jak zabalit pomocí uložené procedury s příkazů v rámci oboru transakcí v následujícím kurzu.
 
@@ -77,32 +71,25 @@ Než začneme naše diskuse o vytvoření DAL pomocí uložených procedur, umo�
 - `EncryptingConfigSections.aspx`
 - `ManagedFunctionsAndSprocs.aspx`
 
-
 ![Přidání stránky technologie ASP.NET pro pokročilé datové přístup vrstvy scénáře kurzy](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image1.png)
 
 **Obrázek 1**: Přidání stránky technologie ASP.NET pro pokročilé datové přístup vrstvy scénáře kurzy
 
-
 V jiných složkách, jako jsou `Default.aspx` v `AdvancedDAL` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
-
 
 [![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image3.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image2.png)
 
 **Obrázek 2**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image4.png))
 
-
 A konečně, přidejte tyto stránky jako položky `Web.sitemap` souboru. Konkrétně, přidejte následující kód za práce s daty v dávce `<siteMapNode>`:
-
 
 [!code-xml[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample3.xml)]
 
 Po aktualizaci `Web.sitemap`, věnujte chvíli zobrazit kurzy web prostřednictvím prohlížeče. V nabídce na levé straně teď obsahuje položky pro pokročilé scénáře kurzy vrstvy DAL.
 
-
 ![Mapa webu nyní obsahuje položky pro kurzy DAL pokročilé scénáře](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image5.png)
 
 **Obrázek 3**: Mapa webu nyní obsahuje položky pro kurzy DAL pokročilé scénáře
-
 
 ## <a name="step-2-configuring-a-tableadapter-to-create-new-stored-procedures"></a>Krok 2: Konfigurace objektu typu TableAdapter k vytvoření nových uložených procedur
 
@@ -110,109 +97,84 @@ Abychom si předvedli, vytvoření vrstvy přístupu k datům, která používá
 
 Přidejte novou datovou sadu do projektu kliknutím pravým tlačítkem na `DAL` složky, výběrem přidat novou položku a výběr šablony datové sady, jak je znázorněno na obrázku 4.
 
-
 [![Přidat nový typové datové sady do projektu s názvem NorthwindWithSprocs.xsd](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image7.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image6.png)
 
 **Obrázek 4**: Přidat novou datovou sadu zadali do projektu s názvem `NorthwindWithSprocs.xsd` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image8.png))
-
 
 To bude vytvářet nová datová sada typu, otevřete návrhář, vytvoření nového TableAdapter a spusťte Průvodce nastavením TableAdapter. První krok průvodce nastavením TableAdapter s dotazem, abychom vyberte databázi pro práci s. Připojovací řetězec k databázi Northwind by měly být uvedeny v rozevíracím seznamu. Tuto možnost vyberte a klikněte na tlačítko Další.
 
 Na této obrazovce Další jsme můžete zvolit, jak by měl TableAdapter přistupovat k databázi. V předchozích kurzech jsme vybrali první možnost, použít SQL příkazy. Pro účely tohoto kurzu druhou možnost vyberte, vytvořit nové uložené procedury a klikněte na tlačítko Další.
 
-
 [![Dáte pokyn, aby TableAdapter k vytvoření nových uložených procedur](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image10.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image9.png)
 
 **Obrázek 5**: Dáte pokyn, aby objektu typu TableAdapter na vytvořit nové uložené procedury ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image11.png))
-
 
 Stejně jako s použitím příkazů jazyka SQL ad-hoc, v následujícím kroku jsme vyzváni k zadání `SELECT` příkazu pro TableAdapter s hlavním dotazu. Ale namísto použití `SELECT` příkaz dotazu ad-hoc provést přímo tady zadáte, TableAdapter s Průvodce vytvoří uloženou proceduru, která obsahuje tato `SELECT` dotazu.
 
 Pomocí následujících `SELECT` dotazu pro tuto TableAdapter:
 
-
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample4.sql)]
-
 
 [![Zadejte dotaz SELECT](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image13.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image12.png)
 
 **Obrázek 6**: Zadejte `SELECT` dotazu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image14.png))
 
-
 > [!NOTE]
 > Výše uvedený dotaz se mírně liší od hlavní dotaz `ProductsTableAdapter` v `Northwind` typované datové sady. Vzpomeňte si, že `ProductsTableAdapter` v `Northwind` zadali datová sada obsahuje dvě korelační poddotazy tak, aby název kategorie a název společnosti pro každou kategorii produktů s a dodavateli. V nadcházející [aktualizace komponenty TableAdapter na použití připojí](updating-the-tableadapter-to-use-joins-vb.md) kurzu se podíváme na to přidáním související data do tohoto objektu TableAdapter.
-
 
 Klikněte na tlačítko Upřesnit možnosti chvíli trvat. Odsud můžete určíme, zda průvodce by měl také generovat insert, update a delete příkazy pro TableAdapter, jestli se má použít optimistické řízení souběžnosti a určuje, zda by měla být tabulka dat aktualizují po provedení vkládání a aktualizace. Ve výchozím nastavení je zaškrtnutá možnost příkazy Generovat Insert, Update a Delete. Ponechte zaškrtnuté políčko. Pro účely tohoto kurzu ponechte použijte možnosti optimistického řízení souběžnosti není zaškrtnuto.
 
 Když máte uložené procedury automaticky vytvořené průvodcem TableAdapter, zdá se, že aktualizace dat možnost tabulky se ignoruje. Bez ohledu na to, jestli je toto políčko zaškrtnuté, výsledný insert, update a načíst uložené procedury just vložit nebo aktualizovat jenom záznam, jak uvidíme v kroku 3.
 
-
 ![Ponechte zaškrtnutá možnost příkazy Generovat Insert, Update a Delete](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image15.png)
 
 **Obrázek 7**: Ponechte zaškrtnutá možnost příkazy Generovat Insert, Update a Delete
 
-
 > [!NOTE]
 > Pokud je možnost použít optimistické řízení souběžnosti je zaškrtnuto, průvodce přidá dodatečné podmínky, které `WHERE` klauzuli, která brání data aktualizaci Pokud došlo ke změně v jiných polích. Vraťte se do [implementace optimistického řízení souběžnosti](../editing-inserting-and-deleting-data/implementing-optimistic-concurrency-vb.md) kurz pro další informace o použití funkce řízení TableAdapter s integrovanou optimistického řízení souběžnosti.
 
-
 Po zadání `SELECT` dotazování a potvrdí, že je zaškrtnuté políčko příkazy možnost Generovat Insert, Update a Delete, klikněte na tlačítko Další. Tato další obrazovka ukazuje obrázek 8, vyzve k zadání jména uložené procedury, které průvodce vytvoří pro výběr, vkládání, aktualizaci a odstraňování dat. Změnit tyto uložené procedury názvy `Products_Select`, `Products_Insert`, `Products_Update`, a `Products_Delete`.
-
 
 [![Přejmenovat uložených procedur](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image17.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image16.png)
 
 **Obrázek 8**: Přejmenovat uložené procedury ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image18.png))
 
-
 Na T-SQL najdete v Průvodci vytvořením objektu TableAdapter pomocí vytvořit čtyři uložené procedury, klikněte na tlačítko Náhled skriptu SQL. Z dialogového okna Náhled skriptu SQL může uložit skript do souboru nebo ho zkopírujte do schránky.
-
 
 ![Zobrazit náhled SQL skriptu používaného pro generování uložených procedur](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image19.png)
 
 **Obrázek 9**: Zobrazit náhled SQL skriptu používaného pro generování uložených procedur
 
-
 Po pojmenování uložené procedury, klikněte na tlačítko vedle názvu třídy TableAdapter s odpovídající metody. Stejně jako při použití příkazů jazyka SQL ad-hoc můžeme vytvořit metody, které vyplnit existující objekt DataTable nebo vrátí nový. Můžeme také určit, zda TableAdapter by měl obsahovat vzor DB přímo pro vkládání, aktualizaci a odstraňování záznamů. Ponechat všechny tři zaškrtnutých políček, ale přejmenovat metodu DataTable pro vrácení `GetProducts` (jak je znázorněno na obrázku 10).
-
 
 [![Název metody Fill a GetProducts](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image21.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image20.png)
 
 **Obrázek 10**: Název metody `Fill` a `GetProducts` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image22.png))
 
-
 Kliknutím na tlačítko Další prohlédnout souhrnné informace o krocích, které průvodce provede. Dokončete průvodce kliknutím na tlačítko Dokončit. Po dokončení průvodce budete přesměrováni zpět do datové sady s návrháře, který by teď měl obsahovat `ProductsDataTable`.
-
 
 [![V Návrháři datové sady s se zobrazí nově přidané ProductsDataTable](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image24.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image23.png)
 
 **Obrázek 11**: Datová sada s návrhář zobrazí nově přidané `ProductsDataTable` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image25.png))
 
-
 ## <a name="step-3-examining-the-newly-created-stored-procedures"></a>Krok 3: Zkoumání nově vytvořený uložených procedur
 
 Průvodci vytvořením objektu TableAdapter použít v kroku 2 automaticky vytvořeny uložené procedury pro výběr, vkládání, aktualizaci a odstraňování dat. Těchto uložených procedurách můžete zobrazit nebo upravit pomocí sady Visual Studio přejděte do Průzkumníka serveru a procházení k podrobnostem složka databáze s uložené procedury. Jak ukazuje obrázek 12, databázi Northwind obsahuje čtyři nové uložené procedury: `Products_Delete`, `Products_Insert`, `Products_Select`, a `Products_Update`.
-
 
 ![Čtyři uložené procedury, které jsou vytvořené v kroku 2 najdete ve složce databáze s uloženými procedurami](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image26.png)
 
 **Obrázek 12**: Čtyři uložené procedury, které jsou vytvořené v kroku 2 najdete ve složce databáze s uloženými procedurami
 
-
 > [!NOTE]
 > Pokud se nezobrazí v Průzkumníku serveru, přejděte do zobrazení nabídky a zvolte možnost Průzkumníka serveru. Pokud nevidíte týkající se produktu uložené procedury přidali v kroku 2, zkuste pravým tlačítkem na složku uložené procedury a volbou aktualizovat.
 
-
 Lze zobrazit nebo upravit uložené procedury, klikněte dvakrát na jeho název v Průzkumníku serveru nebo, nebo klikněte pravým tlačítkem na uložené procedury a zvolte Otevřít. Obrázek 13 ukazuje `Products_Delete` uložené procedury, při otevření.
-
 
 [![Uložené procedury lze otevřít a upravit z Visual Studia](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image28.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image27.png)
 
 **Obrázek 13**: Uložené procedury lze otevřít a upravit z v rámci sady Visual Studio ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image29.png))
 
-
 Obsah obou `Products_Delete` a `Products_Select` uložené procedury jsou poměrně jednoduché. `Products_Insert` a `Products_Update` uložené procedury, na druhé straně zaručujete blíže kontroly jak obě pracují `SELECT` příkaz po jejich `INSERT` a `UPDATE` příkazy. Například následující příkaz SQL tvoří `Products_Insert` uložené procedury:
-
 
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample5.sql)]
 
@@ -220,11 +182,9 @@ Uložené procedury přijímá jako vstupní parametry `Products` sloupce, kter�
 
 Následující kód ukazuje tuto funkci. Obsahuje `ProductsTableAdapter` a `ProductsDataTable` vytvořené pro `NorthwindWithSprocs` typované datové sady. Přidání nového produktu do databáze tak, že vytvoříte `ProductsRow` instance, zadávání hodnot a volání TableAdapter s `Update` metodu `ProductsDataTable`. Interně, s TableAdapter `Update` metoda výčet `ProductsRow` instance v objektu DataTable předaným (v tomto příkladu je pouze – ten jsme právě přidali) a provede odpovídající vložení, aktualizace nebo odstranění příkazu. V takovém případě `Products_Insert` uloženou proceduru spustit, který přidá nový záznam do `Products` tabulky a vrátí podrobnosti o záznamu nově přidané. `ProductsRow` Instance s `ProductID` hodnota se pak aktualizuje. Po `Update` metoda dokončí, budeme má přístup k záznamům nově přidané s `ProductID` hodnotu prostřednictvím `ProductsRow` s `ProductID` vlastnost.
 
-
 [!code-vb[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample6.vb)]
 
 `Products_Update` Podobně zahrnuje uložené procedury `SELECT` příkaz po jeho `UPDATE` příkazu.
-
 
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample7.sql)]
 
@@ -234,26 +194,21 @@ Všimněte si, že tato uložená procedura obsahuje dva vstupní parametry pro 
 
 Protože `@Original_ProductID` parametrů je nadbytečný, umožňují s odeberte ho z `Products_Update` úplně uložené procedury. Otevřít `Products_Update` uložené procedury, odstranit `@Original_ProductID` parametr a v `WHERE` klauzuli `UPDATE` prohlášení, změnit název parametru použití z `@Original_ProductID` k `@ProductID`. Po provedení těchto změn, T-SQL v rámci uložené procedury by měl vypadat nějak takto:
 
-
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample8.sql)]
 
 Chcete-li tyto změny uložit do databáze, klikněte na ikonu Uložit na panelu nástrojů nebo stiskněte kombinaci kláves Ctrl + S. V tuto chvíli `Products_Update` neočekávají uložené procedury `@Original_ProductID` vstupní parametr, ale objektu TableAdapter je nakonfigurován k předání těchto parametrů. Zobrazí parametry TableAdapter bude odesílat do `Products_Update` uloženou proceduru výběru objektu TableAdapter v návrháři datových sad, že přejdete do okna Vlastnosti a kliknutím na symbol tří teček v `UpdateCommand` s `Parameters` kolekce. Otevře dialogové okno Editor kolekce parametrů znázorňuje obrázek 14.
-
 
 ![Seznamy parametrů Editor kolekce parametrů použitých předán Products_Update uložené procedury](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image30.png)
 
 **Obrázek 14**: Seznamy parametrů Editor kolekce parametrů použitých předán `Products_Update` uložené procedury
 
-
 Tento parametr odsud můžete odebrat tak, že jednoduše vyberete `@Original_ProductID` parametr ze seznamu členů a kliknete na tlačítko Odebrat.
 
 Alternativně můžete aktualizovat parametry používané pravým tlačítkem myši na TableAdapter v návrháři a zvolíte konfigurace pro všechny metody. Tím se otevře Průvodce konfigurací TableAdapter, výpis uložené procedury používané pro výběr, vkládání, aktualizace a odstranění, spolu s parametry uložené procedury by se měl zobrazit. Pokud kliknete na Aktualizovat rozevírací seznam uvidíte `Products_Update` uložené procedury očekává vstupní parametry, které teď už obsahuje `@Original_ProductID` (viz obrázek 15). Jednoduše klikněte na tlačítko Dokončit k automatické aktualizaci parametru kolekce používané TableAdapter.
 
-
 [![Můžete také použít Průvodce konfigurací s TableAdapter aktualizovat jeho kolekce parametrů metody](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image32.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image31.png)
 
 **Obrázek 15**: Můžete také použít s TableAdapter Průvodce konfigurací a aktualizujte jeho kolekce parametrů metody ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image33.png))
-
 
 ## <a name="step-5-adding-additional-tableadapter-methods"></a>Krok 5: Přidání metody další TableAdapter
 
@@ -261,59 +216,45 @@ Jako znázorněno kroku 2 při vytváření nového objektu TableAdapter je snad
 
 Začněte tím, že pravým tlačítkem myši na TableAdapter a zvolením přidat dotaz v místní nabídce.
 
-
 ![Přidat nový dotaz TableAdapter](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image34.png)
 
 **Obrázek 16**: Přidat nový dotaz TableAdapter
 
-
 Tím spustíte Průvodce konfigurací dotazu TableAdapter, který nejprve zobrazí výzvu k zadání jak by měl TableAdapter přistupovat k databázi. Pokud chcete, aby vytvoří novou úložnou proceduru vytvořen, zvolte možnost vytvořit novou úložnou proceduru možnost a klikněte na tlačítko Další.
-
 
 [![Zvolte možnost vytvořit novou úložnou proceduru možnost](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image36.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image35.png)
 
 **Obrázek 17**: Zvolte možnost vytvořit novou úložnou proceduru možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image37.png))
 
-
 Na další obrazovce zobrazí výzva k identifikaci typu dotazu provést, ať už se vrátit sadu řádků nebo jednu skalární hodnotu nebo provést `UPDATE`, `INSERT`, nebo `DELETE` příkazu. Vzhledem k tomu, `GetProductByProductID(productID)` metoda se vrátí řádek, ponechte SELECT, který vrátí řádek možnost vybraná kliknu na další.
-
 
 [![Zvolte, které vrátí řádek možnost](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image39.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image38.png)
 
 **Obrázek 18**: Zvolte, které vrátí řádek možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image40.png))
 
-
 Na další obrazovce se zobrazí na TableAdapter s hlavní dotaz, který právě uvádí název uložené procedury (`dbo.Products_Select`). Nahraďte názvem uložené procedury následujícím `SELECT` příkaz, který vrátí všechna pole produktu pro konkrétní produkt:
 
-
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample9.sql)]
-
 
 [![Nahraďte názvem uložené procedury výběrový dotaz](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image42.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image41.png)
 
 **Obrázek 19**: Nahraďte název uložené procedury s `SELECT` dotazu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image43.png))
 
-
 Na další obrazovce vás požádá, abyste název uložené procedury, která bude vytvořena. Zadejte název `Products_SelectByProductID` a klikněte na tlačítko Další.
-
 
 [![Název nové Products_SelectByProductID uložené procedury](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image45.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image44.png)
 
 **Obrázek 20**: Pojmenujte novou uloženou proceduru `Products_SelectByProductID` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image46.png))
 
-
 Posledním krokem Průvodce umožňuje změnit způsob názvy generované také určit, jestli se má použít výplně vzor objektu DataTable, vrátit objekt DataTable vzoru, nebo obojí. Tato metoda nechat obě možnosti zaškrtnuté, ale přejmenovat metody k `FillByProductID` a `GetProductByProductID`. Klikněte na tlačítko Další k zobrazení souhrnu kroky Průvodce provede a potom klikněte na tlačítko Dokončit dokončete průvodce.
-
 
 [![Přejmenovat metod TableAdapter s FillByProductID a GetProductByProductID](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image48.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image47.png)
 
 **Obrázek 21**: Přejmenovat metody třídy TableAdapter s `FillByProductID` a `GetProductByProductID` ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image49.png))
 
-
 Po dokončení průvodce se má TableAdapter novou metodu k dispozici, `GetProductByProductID(productID)` , která při vyvolání, spustí `Products_SelectByProductID` uložené procedury, která byla právě vytvořena. Za chvíli chcete-li zobrazit tuto novou úložnou proceduru z Průzkumníka serveru při bližším pohledu na složku uložené procedury a otevřením `Products_SelectByProductID` (pokud ho nevidíte, klikněte pravým tlačítkem na složku uložené procedury a vyberte příkaz Aktualizovat).
 
 Všimněte si, že `SelectByProductID` uložené procedury přijímá `@ProductID` jako vstupní parametr a spustí `SELECT` příkaz, který jsme zadali v průvodci.
-
 
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample10.sql)]
 
@@ -322,7 +263,6 @@ Všimněte si, že `SelectByProductID` uložené procedury přijímá `@ProductI
 V celé řadě kurzů jsme mají strived udržovat vrstvené architektury, ve kterém prezentační vrstvy provedli všechny její volání do vrstvy obchodní logiky (BLL). Aby bylo možné splnit toto rozhodnutí o návrhu, musíme nejprve vytvořit třídu BLL pro nová datová sada typu, než jsme přístup k datům produktů od prezentační vrstvy.
 
 Vytvořte nový soubor třídy `ProductsBLLWithSprocs.vb` v `~/App_Code/BLL` složky a přidejte do ní následující kód:
-
 
 [!code-vb[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample11.vb)]
 
@@ -334,26 +274,21 @@ V tuto chvíli jsme vytvořili vrstvy DAL, který používá uložené procedury
 
 Otevřít `NewSprocs.aspx` stránku `AdvancedDAL` složky a GridView přetáhněte z panelu nástrojů na Návrhář, jeho pojmenování `Products`. V prvku GridView s inteligentním zvolte a vytvořte jeho vazbu nového prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource používat `ProductsBLLWithSprocs` třídy, jak ukazuje obrázek 22.
 
-
 [![Konfigurace ObjectDataSource pomocí třídy ProductsBLLWithSprocs](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image51.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image50.png)
 
 **Obrázek 22**: Konfigurace ObjectDataSource k použití `ProductsBLLWithSprocs` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image52.png))
-
 
 Nabízí dvě možnosti, rozevíracího seznamu vyberte kartě `GetProducts` a `GetProductByProductID`. Protože chceme zobrazit všechny produkty v prvku GridView, zvolte `GetProducts` metody. Rozevírací seznamy na kartách UPDATE, INSERT a DELETE mít pouze jednu metodu. Zajistěte, aby každá z těchto rozevíracích seznamech jeho odpovídající metodu vybrána a potom klikněte na tlačítko Dokončit.
 
 Po dokončení Průvodce ObjectDataSource sady Visual Studio bude přidán BoundFields a třídě CheckBoxField do prvku GridView pro datová pole produktu. Zapněte GridView s integrovanou úpravy a odstraňování funkce zaškrtnutím možnosti Povolit úpravy a Povolit odstranění k dispozici v inteligentních značek.
 
-
 [![Tato stránka obsahuje prvek GridView s úpravy a odstranění je povolená podpora](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image54.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image53.png)
 
 **Obrázek 23**: Tato stránka obsahuje prvek GridView s úpravy a odstranění povolená podpora ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image55.png))
 
-
 Uložit jako jsme probírali v předchozích kurzech se po dokončení průvodce s ObjectDataSource sady Visual Studio `OldValuesParameterFormatString` vlastnost s původní\_{0}. Tato hodnota musí být nastavení bylo vráceno na výchozí hodnotu {0} v pořadí funkcí změny dat fungovala správně zadané parametry očekává pomocí metod v našich knihoven BLL. Proto je potřeba nastavit `OldValuesParameterFormatString` vlastnost {0} nebo úplně odeberte vlastnost z deklarativní syntaxe.
 
 Po dokončení Průvodce nakonfigurovat zdroj dat, zapnutí úpravy a odstranění podpory v prvku GridView a vrácení prvku ObjectDataSource s `OldValuesParameterFormatString` vlastnost na svou výchozí hodnotu, stránka s deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample12.aspx)]
 
@@ -361,11 +296,9 @@ V tuto chvíli jsme mohli pořádek prvku GridView přizpůsobením úpravy rozh
 
 Bez ohledu na to, zda prvku GridView vylepšila nebo ne otestujte na stránku s základní funkce v prohlížeči. Jak ukazuje obrázek 24, na stránce uvedeny produkty v prvku GridView, která poskytuje jeden řádek úpravy a odstranění funkce.
 
-
 [![Produkty lze zobrazit, upravit a odstranit z prvku GridView.](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image57.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image56.png)
 
 **Obrázek 24**: Je možné zobrazit produkty, Upravovaný a odstraněných z prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image58.png))
-
 
 ## <a name="summary"></a>Souhrn
 

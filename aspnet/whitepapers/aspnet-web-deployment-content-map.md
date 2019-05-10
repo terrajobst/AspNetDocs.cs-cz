@@ -8,12 +8,12 @@ ms.date: 03/14/2014
 ms.assetid: 58b583cd-c4ab-47a3-8527-8c92c298c91f
 msc.legacyurl: /whitepapers/aspnet-web-deployment-content-map
 msc.type: content
-ms.openlocfilehash: 3f36f0c504678e1e8b40aef99db81ab99101568b
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 96873c8f2b0ad2415f371aceb651400c801a3338
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59383898"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125665"
 ---
 # <a name="aspnet-web-deployment---recommended-resources"></a>Nasazení webu ASP.NET – doporučené zdroje informací
 
@@ -24,7 +24,6 @@ ms.locfileid: "59383898"
 > > [!NOTE] 
 > > 
 > > Mnohé z těchto prostředků popisují nasazení funkce, které jsou k dispozici pouze v případě, že instalujete nejnovější verzi [aktualizace Visual Studio Web publikovat](https://go.microsoft.com/fwlink/?LinkID=208120). Některé funkce jsou k dispozici pouze v sadě Visual Studio 2012 nebo Visual Studio 2013.
-
 
 Toto téma obsahuje následující oddíly:
 
@@ -48,9 +47,7 @@ Toto téma obsahuje následující oddíly:
 - [Získat pomoc s otázkou konkrétní nasazení](#gettinghelp)
 - [Další prostředky](#additional)
 
-
 <a id="understanding"></a>
-
 
 ## <a name="understanding-deployment-options-for-web-projects"></a>Možnosti nasazení pro webové projekty
 
@@ -59,17 +56,13 @@ Toto téma obsahuje následující oddíly:
 - [Visual Studio 2012 – vylepšení webového publikování](../visual-studio/overview/2012/visual-studio-2012-web-publishing-improvements.md) (Video Scotta Hanselmana,).
 - [Přehled Post pro nasazení webu ve VS 2010](http://vishaljoshi.blogspot.com/2009/09/overview-post-for-web-deployment-in-vs.html) (blog Vishal Joshi). Starší blogový příspěvek, ale některé z prostředků Visual Studio 2010 obsahuje odkazy na informace, které je stále relevantní pro sadu Visual Studio 2012.
 
-
 <a id="findinghosting"></a>
-
 
 ## <a name="finding-hosting-providers-for-an-aspnet-application"></a>Vyhledání poskytovatele pro aplikaci ASP.NET hostingu
 
 - [ASP.NET Hosting](https://asp.net/hosting)
 
-
 <a id="fromvs"></a>
-
 
 ## <a name="deploying-a-web-application-from-visual-studio"></a>Nasazení webové aplikace ze sady Visual Studio
 
@@ -78,7 +71,6 @@ Toto téma obsahuje následující oddíly:
 - [Postupy: Nasazení webového projektu pomocí publikování jedním kliknutím v sadě Visual Studio](https://msdn.microsoft.com/library/dd465337.aspx) (referenční informace pro Průvodce publikování webu v aplikaci Visual Studio.)
 - [Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio](../web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12.md). Toto je starší verze **nasazení webu ASP.NET pomocí sady Visual Studio** uvedených v horní části tohoto oddílu. Užitečné hlavně teď informace o tom, jak nasadit SQL Server Compact databází a postupu při migraci z SQL Server Compact na plnou verzi systému SQL Server.
 - [.NET vícevrstvé aplikace pomocí úložiště tabulky, fronty a objekty BLOB](https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36) (webu Microsoft Azure). 5 část třídílné série kurzů, ukazuje, jak vytvořit projekt MVC a nasadit ho do cloudové služby Windows Azure.
-
 
 <a id="package"></a>
 ## <a name="deploying-a-web-application-by-creating-and-installing-a-web-deployment-package"></a>Nasazení webové aplikace pomocí vytvoření a instalace balíčku pro nasazení webu
@@ -91,9 +83,7 @@ Toto téma obsahuje následující oddíly:
 
 Další informace najdete v článku následující části.
 
-
 <a id="ci"></a>
-
 
 ## <a name="deploying-a-web-application-using-a-continuous-integration-ci-process"></a>Nasazení webové aplikace s využitím procesu kontinuální integrace (CI)
 
@@ -107,9 +97,7 @@ Další informace najdete v článku následující části.
 
 Viz také [zajišťuje, že aplikace je offline během nasazování](aspnet-web-deployment-content-map.md#appoffline) později na této stránce.
 
-
 <a id="transforms"></a>
-
 
 ## <a name="using-webconfig-transformations-to-change-settings-in-the-destination-webconfig-file-or-appconfig-file-during-deployment"></a>Chcete-li změnit nastavení v cílovém souboru Web.config nebo app.config souboru během nasazování pomocí transformace Web.config
 
@@ -121,9 +109,7 @@ Viz také [zajišťuje, že aplikace je offline během nasazování](aspnet-web-
 - [XDT (transformaci dokumentů XML), vydáno na serveru codeplex.com](https://blogs.msdn.com/b/webdev/archive/2013/04/23/xdt-xml-document-transform-released-on-codeplex-com.aspx) (.NET Web Development and Tools blog). Oznamuje dostupnost zdrojového kódu pro modul transformace souboru Web.config a uvádí některé nástroje, které ji používají.
 - [Windows Azure Web Sites: Jak aplikace řetězce a připojovacích řetězců](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx) (blog Microsoft Azure). Alternativa k souboru Web.config transformuje, pokud je vaše cílové prostředí webů Windows Azure a že chcete transformovat `appSettings` nebo `connectionStrings`.
 
-
 <a id="webdeployparms"></a>
-
 
 ## <a name="using-web-deploy-parameters-to-change-settings-in-the-destination-web-application-during-deployment"></a>Chcete-li změnit nastavení v cílové webové aplikace během nasazení pomocí nasazení webu parametrů
 
@@ -134,9 +120,7 @@ Viz také [zajišťuje, že aplikace je offline během nasazování](aspnet-web-
 - [Webové nasazení Parametrizace vs. Transformace souboru Web.config](http://vishaljoshi.blogspot.com/2010/06/parameterization-vs-webconfig.html) (blog Vishal Joshi).
 - [Windows Azure Web Sites: Jak aplikace řetězce a připojovacích řetězců](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx) (blog Microsoft Azure). Alternativa k webové nasazení parametry, pokud je vaše cílové prostředí webů Windows Azure a vy chcete parametrizovat `appSettings` nebo `connectionStrings`.
 
-
 <a id="appoffline"></a>
-
 
 ## <a name="making-sure-an-application-is-off-line-during-deployment"></a>Během nasazení zajišťuje, že aplikace je offline
 
@@ -146,9 +130,7 @@ Viz také [zajišťuje, že aplikace je offline během nasazování](aspnet-web-
 - [Web publikování aktualizací pro aplikaci v režimu offline a usechecksum](https://blogs.msdn.com/b/webdev/archive/2013/10/30/web-publishing-updates-for-app-offline-and-usechecksum.aspx) (vývoj pro Web Microsoft blogu). Další možnost používání aplikace automatizace\_offline.htm souboru.
 - [Webu nasadit ve verzi RTW 3.5](https://blogs.iis.net/msdeploy/archive/2013/07/09/webdeploy-3-5-rtw.aspx) (webu IIS.net). Nová funkce v 3.5 webové nasazení vlastní aplikace\_offline.htm soubory.
 
-
 <a id="databasewithweb"></a>
-
 
 ## <a name="deploying-a-database-or-changes-to-a-database-as-part-of-web-application-deployment"></a>Nasazení do databáze nebo změny do databáze jako součást nasazení webových aplikací
 
@@ -160,9 +142,7 @@ Viz také [zajišťuje, že aplikace je offline během nasazování](aspnet-web-
 
 Podívejte se také nasazení webové aplikace z hlediska vytváření a instalace balíčku pro nasazení webu a nasazení webové aplikace s využitím průběžné integrace (CI) procesu dříve na této stránce.
 
-
 <a id="databaseseparate"></a>
-
 
 ## <a name="deploying-a-database-separately-from-web-application-deployment"></a>Nasazení databáze odděleně od nasazení webových aplikací
 
@@ -174,9 +154,7 @@ Podívejte se také nasazení webové aplikace z hlediska vytváření a instala
 - [Migrace datově orientovaných aplikací do Windows Azure](https://msdn.microsoft.com/library/jj156154.aspx) (MSDN).
 - [Migrace databáze systému SQL Server do služby Windows Azure SQL Database](https://msdn.microsoft.com/library/windowsazure/jj156160.aspx) (MSDN).
 
-
 <a id="aspnetmembership"></a>
-
 
 ## <a name="deploying-a-web-application-that-uses-aspnet-application-services-such-as-membership-and-profiling"></a>Nasazení webové aplikace, který používá aplikace ASP.NET službami, jako je členství a profilace
 
@@ -186,9 +164,7 @@ Podívejte se také nasazení webové aplikace z hlediska vytváření a instala
 - [Konfigurace webu, který používá aplikační služby](../web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-cs.md). Pro webový server projekty ale platí také pro projekty webových aplikací.
 - [Uživatelé a role na provozním webu](../web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-cs.md). Pro webový server projekty ale platí také pro projekty webových aplikací.
 
-
 <a id="precompiling"></a>
-
 
 ## <a name="precompiling-for-deployment"></a>Předkompilace pro nasazení
 
@@ -196,18 +172,14 @@ Podívejte se také nasazení webové aplikace z hlediska vytváření a instala
 - [Balení/publikování karta Web, vlastnosti projektu](https://msdn.microsoft.com/library/dd410108.aspx) (MSDN).
 - [Pokročilé předkompilovat dialogové okno nastavení](https://msdn.microsoft.com/library/hh475319.aspx) (MSDN).
 
-
 <a id="intranet"></a>
-
 
 ## <a name="deploying-an-intranet-web-application"></a>Nasazení webové aplikace sítě intranet
 
 - [Ověřování organizace možnost místní (služby AD FS) pomocí technologie ASP.NET v sadě Visual Studio 2013](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/) (Blog autorem je Vittorio Bertocci.).
 - [Jak vytvořit intranetový server pomocí technologie ASP.NET MVC](https://msdn.microsoft.com/library/gg703322(VS.98).aspx) (MSDN). Starší writen návod pro sadu Visual Studio 2010, neodráží hlavní změny v šablonách projektů intranetu zavedena v sadě Visual Studio 2013.
 
-
 <a id="automating"></a>
-
 
 ## <a name="automating-common-deployment-tasks-that-are-not-automated-out-of-the-box"></a>Automatizaci nejčastějších úloh nasazení, které nejsou automatizované úprav
 
@@ -220,26 +192,20 @@ Podívejte se také nasazení webové aplikace z hlediska vytváření a instala
 - [Tom, jak zabalit sestavení .NET](https://blogs.msdn.com/webdevtools/archive/2010/02/19/how-to-package-com-component.aspx) (blog nástroje pro vývoj pro Web). Postup nasazení sestavení do mezipaměti GAC.
 - [Skript si všechno – inicializace Your Windows virtuální počítač Azure pro vaše webového serveru pomocí služby IIS, Web Deploy a další věci](http://www.tugberkugurlu.com/archive/script-out-everything-initialize-your-windows-azure-vm-for-your-web-server-with-iis-web-deploy-and-other-stuff) (blog Tugberk Ugurlu).
 
-
 <a id="configuringservers"></a>
-
 
 ## <a name="configuring-web-servers-so-that-developers-can-deploy-web-applications-to-them-using-web-deploy"></a>Konfigurace webových serverů, aby vývojáři můžete nasadit webové aplikace k nim pomocí nasazení webu
 
 - [Instalace a konfigurace nasazení webu pro správce a bez oprávnění správce nasazení](https://www.iis.net/learn/install/installing-publishing-technologies/installing-and-configuring-web-deploy) (webu IIS.net).
 
-
 <a id="hostingprovider"></a>
-
 
 ## <a name="configuring-servers-for-a-hosting-provider"></a>Konfigurace serverů pro poskytovatele hostingu
 
 - [Microsoft ASP.NET 4 Průvodce nasazením hostování](https://go.microsoft.com/fwlink/?LinkId=191365) (Microsoft Download Center).
 - [Generování souboru profilu XML](https://www.iis.net/learn/web-hosting/joining-the-web-hosting-gallery/generate-a-profile-xml-file) (webu IIS.net).
 
-
 <a id="troubleshooting"></a>
-
 
 ## <a name="troubleshooting-deployment-problems"></a>Řešení potíží s chybami nasazení
 
@@ -252,18 +218,14 @@ Podívejte se také nasazení webové aplikace z hlediska vytváření a instala
 - [Nejčastější rozdíly mezi vývojovou a provozní konfigurací](../web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs.md).
 - [Hostování aplikací ASP.NET na úrovni Medium Trust](http://www.4guysfromrolla.com/articles/100307-1.aspx) (4 Guys webu Rolla).
 
-
 <a id="gettinghelp"></a>
-
 
 ## <a name="getting-help-with-a-specific-deployment-question"></a>Získat pomoc s otázkou konkrétní nasazení
 
 - [Fórum ASP.NET konfigurace a nasazení](https://forums.asp.net/26.aspx/1?Configuration and Deployment).
 - [StackOverflow.com](http://www.StackOverflow.com).
 
-
 <a id="additional"></a>
-
 
 ## <a name="additional-resources"></a>Další prostředky
 

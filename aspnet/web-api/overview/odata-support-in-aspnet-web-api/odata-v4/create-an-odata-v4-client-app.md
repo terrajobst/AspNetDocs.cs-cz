@@ -8,12 +8,12 @@ ms.date: 06/26/2014
 ms.assetid: 47202362-3808-4add-9a69-c9d1f91d5e4e
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-client-app
 msc.type: authoredcontent
-ms.openlocfilehash: 14d4b01a2ea8a4582294053416b626e7f1801b50
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: a0016cf2cc7bffe6268664395ccb38e140090310
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59411511"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65126125"
 ---
 # <a name="create-an-odata-v4-client-app-c"></a>Vytvoření klientské aplikace OData v4 (C#)
 
@@ -27,7 +27,6 @@ Spustit novou instanci sady Visual Studio a vytvořte nový projekt konzolové a
 
 > [!NOTE]
 > Aplikace konzoly můžete také přidat do stejného řešení sady Visual Studio, která obsahuje službu OData.
-
 
 ## <a name="install-the-odata-client-code-generator"></a>Instalace generátoru kódu klienta OData
 
@@ -43,7 +42,6 @@ Spusťte projekt ProductService ze sady Visual Studio. Ve výchozím nastavení 
 
 > [!NOTE]
 > Když vložíte oba projekty ve stejném řešení, ujistěte se, že ke spuštění ProductService projektu bez ladění. V dalším kroku je potřeba udržet službu při úpravě projektu konzolové aplikace.
-
 
 ## <a name="generate-the-service-proxy"></a>Generování Proxy služby
 

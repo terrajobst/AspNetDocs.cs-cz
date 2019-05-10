@@ -8,19 +8,18 @@ ms.date: 08/23/2012
 ms.assetid: 5894dc13-5d45-4dad-8096-136499120f1d
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: 9e4a2a9fc56393ac816f25a1039b233aa8961608
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 79d6b38c6464a749db9cd6d35e1f277b0adf2a02
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59383834"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129425"
 ---
 # <a name="bundling-and-minification"></a>Vytváření sady a minifikace
 
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Sdružování a minifikace jsou dva postupy můžete použít v technologii ASP.NET 4.5 na zvýšení zatížení doba požadavku. Sdružování a minifikace zlepšuje dobu načítání snížením počtu požadavků na serveru a snížením velikosti požadovaných prostředků (například šablon stylů CSS a JavaScript.)
-
 
 Většina aktuální hlavní prohlížeče omezit počet [současných připojení](http://www.browserscope.org/?category=network) za každý název hostitele na šest. To znamená, že při zpracování šest požadavků, další požadavky na prostředky v hostiteli se zařadí do fronty v prohlížeči. Na následujícím obrázku zobrazuje karty sítě nástroje pro vývojáře IE F12 časování pro prostředky vyžadované o zobrazení a ukázkové aplikace.
 
@@ -96,7 +95,6 @@ Chcete-li povolit sdružování a minifikace, nastavte `debug` hodnotu "false". 
 
 > [!NOTE]
 > Není-li `EnableOptimizations` je `true` nebo atribut v ladění [prvek compilation](https://msdn.microsoft.com/library/s10awwz0.aspx) v *Web.config* soubor je nastavený na `false`, soubory nebudou spojeny ani minifikovaný. Kromě toho se nepoužije .min verzi souborů, úplné ladicí verze bude vybrána. `EnableOptimizations` přepíše atribut v ladění [prvek compilation](https://msdn.microsoft.com/library/s10awwz0.aspx) v *Web.config* souboru
-
 
 ## <a name="using-bundling-and-minification-with-aspnet-web-forms-and-web-pages"></a>Pomocí sdružování a Minifikace s webovými formuláři ASP.NET a webových stránek
 

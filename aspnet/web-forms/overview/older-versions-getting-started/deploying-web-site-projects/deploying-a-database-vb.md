@@ -8,12 +8,12 @@ ms.date: 04/23/2009
 ms.assetid: 96ac3e69-04c7-4917-ad06-5f8968c3fbf1
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f7731570a3c96f579c4717a0ab2b5e0d742457f7
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: add2ca4709ea16b10efb11491f6d3fcddb0efb2e
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59403503"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125729"
 ---
 # <a name="deploying-a-database-vb"></a>Nasazení databáze (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/E/6/F/E6FE3A1F-EE3A-4119-989A-33D1A9F6F6DD/ASPNET_Hosting_Tutorial_07_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/C/3/9/C391A649-B357-4A7B-BAA4-48C96871FEA6/aspnet_tutorial07_DeployDB_vb.pdf)
 
 > Nasazení webové aplikace ASP.NET zahrnuje získání potřebné soubory a prostředky z vývojového prostředí do produkčního prostředí. Pro datově řízených webových aplikací to zahrnuje databázové schéma a data. Tento kurz je první z řady, který popisuje kroky potřebné k úspěšnému nasazení do produkčního prostředí databázi z vývojového prostředí.
-
 
 ### <a name="introduction"></a>Úvod
 
@@ -42,30 +41,24 @@ Aktualizované recenzí webová aplikace používá [SQL Server 2008 Express Edi
 - `Books` -obsahuje záznam pro každou recenzi, se sloupci stejně jako `Title`, `GenreId`, `ReviewDate`, a `Review`, mimo jiné.
 - `Authors` -obsahuje informace o jednotlivých Autor, který se přidal do přezkoumání knihy.
 - `BooksAuthors` -many-to-many vazební tabulka, která určuje, jaké autorům napsali jaké knihy.
-  
 
 Obrázek 1 ukazuje diagramu ER tyto čtyři tabulky.
-
 
 [![Kniha revize webové aplikace s databáze je skládá ze čtyř tabulek](deploying-a-database-vb/_static/image2.jpg)](deploying-a-database-vb/_static/image1.jpg) 
 
 **Obrázek 1**: Kniha revize webové aplikace s databáze je skládá ze čtyř tabulek ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image3.jpg))
 
-
 Předchozí verzi webu recenzí měl samostatné stránky technologie ASP.NET pro jednotlivé knihy. Například se stránka s názvem `~/Tech/TYASP35.aspx` , která obsahovala revize pro *naučit sami technologie ASP.NET 3.5 za 24 hodin*. Tato nová verze s daty webu má revize uložené v databázi a jednu stránku ASP.NET, Review.aspx?ID=*bookId*, zobrazuje revize pro zadaného adresáře. Podobně je Genre.aspx?ID=*genreId* stránku se seznamem přezkoumání knih v zadané žánr.
 
 Hodnoty 2 a 3 zobrazit `Genre.aspx` a `Review.aspx` stránky v akci. Poznačte si adresu URL do adresního řádku pro každou stránku. V obrázku 2 it s Genre.aspx? ID = c 85d164ba-1123-4 47-82a0-c8ec75de7e0e. Protože je 85d164ba-1123-4c47-82a0-c8ec75de7e0e `GenreId` tyto kontroly v lokalitě, které spadají pod tento žánr zobrazí hodnotu pro technologie genre, čtení záhlaví stránky s "Technologie kontroly" a seznamu s odrážkami.
-
 
 [![Na stránce žánr technologie](deploying-a-database-vb/_static/image5.jpg)](deploying-a-database-vb/_static/image4.jpg) 
 
 **Obrázek 2**: Stránky technologie žánr ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image6.jpg))
 
-
 [![Revize pro samostudium: ASP.NET 3.5 za 24 hodin](deploying-a-database-vb/_static/image8.jpg)](deploying-a-database-vb/_static/image7.jpg) 
 
 **Obrázek 3**: Revize pro *naučit sami technologie ASP.NET 3.5 za 24 hodin* ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image9.jpg))
-
 
 Webová aplikace knihy zkontroluje také obsahuje oddíl správy, kde správci mohou přidávat, upravovat a odstranit žánry, revize a vytvářet informace. Všechny návštěvníky v současné době můžete přístup k bodu správy. V budoucích kurzu přidáme podporu pro uživatelské účty a Povolit jenom Autorizovaní uživatelé do stránky pro správu.
 
@@ -95,48 +88,38 @@ Umožní s provedou použitím Průvodce publikováním databáze k databázi re
 
 Otevřete sadu Visual Studio a přejděte `Reviews.mdf` databáze. Pokud používáte aplikaci Visual Web Developer, přejdete na Průzkumník databáze; Pokud používáte Visual Studio, použijte Průzkumníka serveru. Obrázek 4 ukazuje `Reviews.mdf` databáze v Průzkumníku databází v aplikaci Visual Web Developer. Jak ukazuje obrázek 4 `Reviews.mdf` databáze se skládá z čtyři tabulky, tři uložených procedur a uživatelem definované funkce.
 
-
 [![Vyhledejte databázi v Průzkumníku databází nebo Průzkumníka serveru](deploying-a-database-vb/_static/image11.jpg)](deploying-a-database-vb/_static/image10.jpg) 
 
 **Obrázek 4**: Vyhledejte databázi v Průzkumníku databází nebo Průzkumníka serveru ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image12.jpg))
 
-
 Klikněte pravým tlačítkem na název databáze a v místní nabídce zvolte možnost "Publikovat poskytovatele". Spustí se Průvodce publikováním databáze (viz obrázek 5). Klikněte na tlačítko vedle záloh za úvodní obrazovka.
-
 
 [![Úvodní obrazovka Průvodce publikováním databáze](deploying-a-database-vb/_static/image14.jpg)](deploying-a-database-vb/_static/image13.jpg) 
 
 **Obrázek 5**: Úvodní obrazovka publikování průvodce databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image15.jpg))
-
 
 Druhá obrazovka Průvodce zobrazí seznam databází, které jsou přístupné pro Průvodce publikováním databáze a umožňuje zvolit, jestli se má skript všechny objekty ve vybrané databázi nebo pro výběr objektů, které do skriptu. Vyberte příslušnou databázi a ponechat zaškrtnutým políčkem "Skript všechny objekty ve vybrané databázi".
 
 > [!NOTE]
 > Pokud se zobrazí chyba "nejsou žádné objekty v databázi *databaseName* typů skriptovatelný průvodcem" při kliknutí na další obrazovce vidíte na obrázku 6, ujistěte se, že není příliš dlouhou cestu k souboru databáze. Jak je uvedeno v [tuto položku diskuze](http://www.codeplex.com/sqlhost/Thread/View.aspx?ThreadId=11014) na stránce Průvodce publikováním databáze projektu, může nastat tuto chybu, pokud cesta k souboru databáze je příliš dlouhá.
 
-
 [![Úvodní obrazovka Průvodce publikováním databáze](deploying-a-database-vb/_static/image17.jpg)](deploying-a-database-vb/_static/image16.jpg) 
 
 **Obrázek 6**: Úvodní obrazovka publikování průvodce databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image18.jpg))
 
-
 Na další obrazovce můžete vygenerovat soubor skriptu nebo, pokud webového hostitele ji podporuje, publikovat i databázi přímo k vašemu databázovému serveru webového hostitele zprostředkovatele s. Jak je vidět na obrázku 7, mám zapsána do souboru skriptu `C:\REVIEWS.MDF.sql`.
-
 
 [![Databáze do souboru skriptu nebo ji publikovat přímo do Váš_poskytovatel_e webového hostitele](deploying-a-database-vb/_static/image20.jpg)](deploying-a-database-vb/_static/image19.jpg) 
 
 **Obrázek 7**: Databáze do souboru skriptu nebo ji publikovat přímo do webového hostitele Váš_poskytovatel_e ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image21.jpg))
 
-
 Na další obrazovce vás vyzve k zadání širokou škálu možností skriptování. Můžete určit, zda skript by měl obsahovat příkazy drop odebrat tyto stávajících objektů. Výchozí hodnota True, což je v pořádku po prvním nasazení databáze. Můžete také určit, jestli je cílová databáze systému SQL Server 2000, SQL Server 2005 nebo SQL Server 2008. Nakonec můžete určit, jestli se má skript schéma a data, jenom data, nebo pouze schéma. Schéma je shromažďování databázových objektů, tabulek, uložených procedur, zobrazení a tak dále. Data jsou informace, které se nacházejí v tabulkách.
 
 Jak ukazuje obrázek 8, můžu ve je teď nakonfigurovaná tak, aby odstranit existující databázové objekty, průvodce se vygenerovat skript pro databázi systému SQL Server 2008 a publikovat schéma a data.
 
-
 [![Zadejte publikování možnosti](deploying-a-database-vb/_static/image23.jpg)](deploying-a-database-vb/_static/image22.jpg) 
 
 **Obrázek 8**: Zadejte možnosti publikování ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image24.jpg))
-
 
 Poslední dvě obrazovky shrnují akce, které se chystáte provést a zobrazte stav skriptování. Net výsledek spuštění Průvodce je, že máme soubor skriptu, který obsahuje příkazy SQL, které jsou potřebné k vytvoření databáze v produkčním prostředí a jeho naplnění stejná data jako na vývoj.
 
@@ -148,32 +131,25 @@ Lepším řešením je pro připojení přímo k provozním serveru databázi po
 
 Spusťte aplikaci SSMS a připojte se k vašemu web s databázovému serveru hostitele pomocí informací uvedených ve zprostředkovateli webového hostitele.
 
-
 [![Připojení k vašemu databázovému serveru webového hostitele zprostředkovatele s](deploying-a-database-vb/_static/image26.jpg)](deploying-a-database-vb/_static/image25.jpg) 
 
 **Obrázek 9**: Připojení k Váš_poskytovatel_e webového hostitele s databázový Server ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image27.jpg))
 
-
 Rozbalte položku na kartě databáze a vyhledejte vaši databázi. Klikněte na tlačítko Nový dotaz v levém horním rohu panelu nástrojů, vložte v příkazech SQL ze souboru skriptu, který je vytvořený pomocí Průvodce publikováním databáze a klikněte na tlačítko Spustit a spusťte tyto příkazy na provozním serveru databáze. Pokud je mimořádně velký soubor skriptu může trvat několik minut, aby se příkazy.
-
 
 [![Připojení k vašemu databázovému serveru webového hostitele zprostředkovatele s](deploying-a-database-vb/_static/image29.jpg)](deploying-a-database-vb/_static/image28.jpg) 
 
 **Obrázek 10**: Připojení k Váš_poskytovatel_e webového hostitele s databázový Server ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image30.jpg))
 
-
 Všechny existuje tento s je to! Vývoj databáze v tomto okamžiku je duplicitní do produkčního prostředí. Pokud obnovíte databázi v aplikaci SSMS byste měli vidět nové databázové objekty. Obrázku 11 můžete vidět produkční databázi s tabulkami, uložených procedur a uživatelem definovaných funkcí, které zrcadlí na vývoj databází. A protože jsme vydal pokyn pro nástroje Průvodce publikováním databáze k publikování dat, produkčních tabulek databáze s obsahovaly stejná data jako tabulky s vývoj databáze v době, kdy se spustil průvodce. Obrázek 12 se zobrazí data v `Books` tabulku v provozní databázi.
-
 
 [![Duplikovali objekty databáze na produkční databáze](deploying-a-database-vb/_static/image32.jpg)](deploying-a-database-vb/_static/image31.jpg) 
 
 **Obrázek 11**: Databázi objekty mají duplicitní na provozní databázi ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image33.jpg))
 
-
 [![Provozní databáze obsahuje stejná Data jako na vývoj databází](deploying-a-database-vb/_static/image35.jpg)](deploying-a-database-vb/_static/image34.jpg) 
 
 **Obrázek 12**: Provozní databáze obsahuje stejná Data jako na vývoj databází ([kliknutím ji zobrazíte obrázek v plné velikosti](deploying-a-database-vb/_static/image36.jpg))
-
 
 V tuto chvíli jsme nasadili jenom vývoj databáze do produkčního prostředí. Ještě jsme zvažovali nasazení vlastní webové aplikace nebo prověřit, jaké změny v konfiguraci jsou potřeba pro použití provozní databáze je aplikace v produkčním prostředí. V dalším kurzu budeme zabývat těmito problémy!
 

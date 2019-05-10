@@ -8,19 +8,18 @@ ms.date: 02/10/2010
 ms.assetid: d601c540-f86b-4feb-890c-20c806b3da6c
 msc.legacyurl: /whitepapers/aspnet4/breaking-changes
 msc.type: content
-ms.openlocfilehash: a6ae18529afc4df799d95d8b7a98f9bc5add9485
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 65b13065ae5324ce64ec1b87b2127e5277542fb8
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59385537"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125674"
 ---
 # <a name="aspnet-4-breaking-changes"></a>ASP.NET 4 – nejnovější změny
 
 > Tento dokument popisuje změny, které se provedly pro verzi rozhraní .NET Framework 4. Tato verze může potenciálně ovlivnit aplikace, které byly vytvořeny pomocí dřívějších verzích, včetně verzí technologie ASP.NET 4 Beta 1 a beta verze 2.
 > 
 > [Stáhněte si tento dokument White Paper](https://download.microsoft.com/download/7/1/A/71A105A9-89D6-4201-9CC5-AD6A3B7E2F22/ASP_NET_4_Breaking_Changes.pdf)
-
 
 <a id="0.1__Toc256768952"></a><a id="0.1__Toc256770056"></a>
 
@@ -112,7 +111,6 @@ Pokud vaše aplikace obsahuje definice vlastních prohlížečů, které dědí 
 > [!NOTE]
 > **HttpBrowserCapabilities** objektu (který je zveřejněný na stránce **Request.Browser** vlastnost) je řízenou soubory definice prohlížeče. Proto informace vrácené přístupem k vlastnosti tohoto objektu v technologii ASP.NET 4, může být jiný než informace vrácené v dřívější verzi technologie ASP.NET.
 
-
 Můžete se vrátit k původní definice soubory prohlížeče tak, že zkopírujete soubory definice prohlížeče z následující složky:
 
 [!code-console[Main](breaking-changes/samples/sample5.cmd)]
@@ -195,7 +193,6 @@ ASP.NET 4 aplikací, které jsou nakonfigurovány jako podřízené prvky aplika
 Aplikace `childwebapp` složky se nepodaří spustit ve službě IIS 7 nebo IIS 7.5 a bude sestava chyby v konfiguraci. Text chyby bude obsahovat zpráva podobná následující:
 
 - `The requested page cannot be accessed because the related configuration data for the page is invalid.`
-  
 
 - `The configuration section 'configSections' cannot be read because it is missing a section declaration.`
 
@@ -227,7 +224,6 @@ Při vložení **configSections** element v kořenovém adresáři `Web.config` 
 
 > [!NOTE]
 > V následujícím příkladu jsou zabalené řádky pro lepší čitelnost.
-
 
 [!code-xml[Main](breaking-changes/samples/sample8.xml)]
 
@@ -315,7 +311,6 @@ Pokud není praktické přemapovat na webu technologie ASP.NET 2.0 nebo chcete z
 > [!NOTE]
 > Nastavení **EnableExtensionlessUrls** 1 povolí bez přípony chování adresy URL. Toto je výchozí nastavení, pokud není zadána žádná hodnota.
 
-
 <a id="0.1__Toc252995494"></a><a id="0.1__Toc255587643"></a><a id="0.1__Toc256770154"></a><a id="0.1__Toc245724862"></a>
 
 ## <a name="event-handlers-might-not-be-not-raised-in-a-default-document-in-iis-7-or-iis-75-integrated-mode"></a>Obslužné rutiny událostí může není není vyvolána ve výchozí dokument v IIS 7 nebo IIS 7.5 integrovaném režimu
@@ -372,7 +367,6 @@ Jeden scénář nelze vrátit zpět v rozhraní .NET Framework 4: mimo Web čás
 > [!NOTE]
 > **HtmlEncode** a **HtmlDecode** funkce **System.Web.HttpUtility** třídy se přesunul do nového rozhraní .NET Framework 4  **System.Net.WebUtility** třídy. Pokud jste pouze funkcí technologie ASP.NET, který se používal, upravit kód aplikace k používání nového **WebUtility** namísto třídy.
 
-
 Tady je shrnutí změn pro výchozí implementace certifikačních Autorit v technologii ASP.NET 4:
 
 - Domény aplikace technologie ASP.NET jsou nyní homogenní aplikační domény. V doméně aplikace jsou k dispozici pouze sady udělení částečným vztahem důvěryhodnosti a úplného vztahu důvěryhodnosti.
@@ -399,7 +393,6 @@ Kompilované (binární) soubory, které byly vytvořeny pomocí starší verze 
 Knihovny tříd, které používají typy konkrétní členství a upgradu ze starší verze technologie ASP.NET se však nezdaří kompilace při použití v projektu aplikace ASP.NET 4. Projekt knihovny tříd může například selhat ke kompilaci a ohlaste chybu, například následující:
 
 - `The type 'System.Web.Security.MembershipUser' is defined in an assembly that is not referenced. You must add a reference to assembly 'System.Web.ApplicationServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.`
-  
 
 - `The type name 'MembershipUser' could not be found. This type has been forwarded to assembly 'System.Web.ApplicationServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'. Consider adding a reference to that assembly.`
 

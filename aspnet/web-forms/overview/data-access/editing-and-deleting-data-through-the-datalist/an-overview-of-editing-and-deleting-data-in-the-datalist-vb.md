@@ -8,12 +8,12 @@ ms.date: 10/30/2006
 ms.assetid: 9410a23c-9697-4f07-bd71-e62b0ceac655
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4bea4e70dd0c06fbcb0374d1c6a869c06d7e68b7
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 196d567f294aa4da927689a056454696bf2306af
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59387942"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131632"
 ---
 # <a name="an-overview-of-editing-and-deleting-data-in-the-datalist-vb"></a>Přehled úprav a odstraňování dat v ovládacím prvku DataList (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_36_VB.exe) nebo [stahovat PDF](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/datatutorial36vb1.pdf)
 
 > Zatímco prvku DataList nemá vestavěné úpravy a odstranění funkce, v tomto kurzu uvidíme vytvoření ovládacích prvků DataList, který podporuje úpravy a odstraňování podkladová data.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -34,7 +33,6 @@ V tomto kurzu uvidíme, jak vytvořit ovládacích prvků DataList, který podpo
 
 > [!NOTE]
 > Stejně jako prvku DataList chybí ovládacím prvku opakovače mimo pole funkce pro vkládání, aktualizace nebo odstranění. Zatímco tato funkce je možné přidat, prvku DataList obsahuje vlastnosti a události nebyl nalezen v Opakovači, které zjednodušují přidání těchto funkcí. Proto v tomto kurzu, podívejte se na úpravy a odstranění budoucí které se zaměřuje výhradně na ovládacím prvku DataList.
-
 
 ## <a name="step-1-creating-the-editing-and-deleting-tutorials-web-pages"></a>Krok 1: Vytváření webových stránek kurzy úpravy a odstranění
 
@@ -50,32 +48,25 @@ Než začneme, aktualizaci a odstranění dat z a v prvku DataList zkoumání, u
 - `ConfirmationOnDelete.aspx`
 - `UserLevelAccess.aspx`
 
-
 ![Přidání stránky technologie ASP.NET pro kurzy](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image1.png)
 
 **Obrázek 1**: Přidání stránky technologie ASP.NET pro kurzy
 
-
 V jiných složkách, jako jsou `Default.aspx` v `EditDeleteDataList` složka obsahuje seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
-
 
 [![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image3.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image2.png)
 
 **Obrázek 2**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image4.png))
 
-
 A konečně, přidejte na stránkách jako položky `Web.sitemap` souboru. Konkrétně, přidejte následující kód za záznamů Master/Detail sestavy ovládacími prvky DataList a Repeater `<siteMapNode>`:
-
 
 [!code-xml[Main](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/samples/sample1.xml)]
 
 Po aktualizaci `Web.sitemap`, věnujte chvíli zobrazit kurzy web prostřednictvím prohlížeče. V nabídce na levé straně teď obsahuje položky pro DataList úpravy a odstranění kurzy.
 
-
 ![Mapa webu nyní obsahuje záznamy pro DataList úpravy a odstranění kurzy](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image5.png)
 
 **Obrázek 3**: Mapa webu nyní obsahuje záznamy pro DataList úpravy a odstranění kurzy
-
 
 ## <a name="step-2-examining-techniques-for-updating-and-deleting-data"></a>Krok 2: Zkoumání metod pro aktualizace a odstranění dat
 
@@ -106,49 +97,39 @@ V tomto kurzu vytvoříme DataList, který obsahuje informace o produktu a pro j
 
 Začněte otevřením `Basics.aspx` stránku `EditDeleteDataList` složku a v návrhovém zobrazení, přidat na stránku a v prvku DataList. Potom z inteligentních značek v prvku DataList s vytvořte nový prvek ObjectDataSource. Protože Pracujeme s daty produktu, nakonfigurujte ho na použití `ProductsBLL` třídy. K načtení *všechny* produkty, zvolte `GetProducts()` metoda v kartě vyberte.
 
-
 [![Konfigurace ObjectDataSource pomocí třídy ProductsBLL](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image7.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image6.png)
 
 **Obrázek 4**: Konfigurace ObjectDataSource k použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image8.png))
-
 
 [![Vrátí informace o produktu pomocí GetProducts() – metoda](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image10.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image9.png)
 
 **Obrázek 5**: Vrátí informací pomocí produktu `GetProducts()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image11.png))
 
-
 DataList, jako je prvku GridView, není určená pro vkládání nových dat; proto vyberte (žádný) možnost z rozevíracího seznamu na kartě Vložení. Také (žádný) zvolte pro karty UPDATE a DELETE od aktualizace a odstranění se provádí prostřednictvím kódu programu prostřednictvím BLL.
-
 
 [![Potvrďte, že rozevírací seznamy v prvku ObjectDataSource s vložení, aktualizace a odstranění karty jsou nastaveny na (žádný)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image13.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image12.png)
 
 **Obrázek 6**: Potvrďte, že rozevírací seznamy v prvku ObjectDataSource s INSERT, UPDATE a odstranit karty jsou nastaveny na (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image14.png))
-
 
 Po dokončení konfigurace ObjectDataSource, klikněte na tlačítko Dokončit, vrátí do návrháře. Jako jsme viděli v posledních příklady po dokončení konfigurace prvek ObjectDataSource, Visual Studio automaticky odebrat vytvoří `ItemTemplate` pro DropDownList, zobrazení všech datových polí. Nahraďte `ItemTemplate` úlohou, která se zobrazí jenom produkt s názvem a ceny. Také nastavit, `RepeatColumns` vlastnost na 2.
 
 > [!NOTE]
 > Jak je popsáno v *Přehled vložení, aktualizace a odstranění dat* kurzu při upravování dat pomocí prvku ObjectDataSource Naše architektura vyžaduje, jsme odebrali `OldValuesParameterFormatString` vlastnost z prvku ObjectDataSource s deklarativní (nebo ho resetovat na výchozí hodnotu, `{0}`). V tomto kurzu ale použijeme ObjectDataSource pouze pro načítání dat. Proto jsme není potřeba upravovat ObjectDataSource s `OldValuesParameterFormatString` hodnotu vlastnosti (i když to narušit t kódu k tomu).
 
-
 Po nahrazení výchozí DataList `ItemTemplate` vlastní sadou deklarativní na stránce by měl vypadat podobně jako následujícím:
-
 
 [!code-aspx[Main](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/samples/sample2.aspx)]
 
 Chcete-li zobrazit náš postup prostřednictvím prohlížeče chvíli trvat. Obrázek 7 znázorňuje, zobrazuje prvku DataList produktu název a Jednotková cena pro jednotlivé produkty ve dvou sloupcích.
 
-
 [![V prvku DataList dvěma sloupci se zobrazují názvy produktů a ceny](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image16.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image15.png)
 
 **Obrázek 7**: Názvy produktů a ceny jsou zobrazeny v prvku DataList dvěma sloupci ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image17.png))
-
 
 > [!NOTE]
 > Má několik vlastností, které jsou požadovány pro proces aktualizace a odstranění prvku DataList a tyto hodnoty jsou uloženy v zobrazení stavu. Proto se při sestavování a v prvku DataList, která podporuje úpravy nebo odstranění dat, je nezbytné povolit stav zobrazení v prvku DataList s.  
 >   
 > Bystří čtenáři mohou si možná Vzpomínáte, že jsme byli schopni zakázat stavu zobrazení při vytváření upravitelné prvků GridViews DetailsViews a FormViews. Důvodem je, že může obsahovat ovládacích prvků technologie ASP.NET 2.0 *stav ovládacích prvků*, což je stav ukládaný postbacků jako stav zobrazení, ale domnělého nezbytné.
-
 
 Zakazuje zobrazení stavu v prvku GridView pouze vynechá informace o stavu triviální, ale zachová stav ovládacího prvku (které zahrnuje stav nezbytné pro úpravy a odstranění). Prvku DataList s byly vytvořeny v časovém rámci 1.x technologie ASP.NET, nevyužívá stav ovládacího prvku a proto musí mít stav zobrazení povolený. Zobrazit [vs stav ovládacího prvku. Zobrazení stavu](https://msdn.microsoft.com/library/1whwt1k7.aspx) Další informace o účelu stav ovládacího prvku a jak se liší od zobrazení stavu.
 
@@ -160,30 +141,24 @@ Prvku DataList vykreslí na druhé straně jeho položek pomocí šablony. Jen p
 
 `EditItemTemplate` Lze vytvořit pomocí deklarace nebo prostřednictvím návrháře (tak, že vyberete možnost Upravit šablony ovládacích prvků DataList s inteligentním). Chcete-li použít možnost Upravit šablony, nejprve klikněte na odkaz Upravit šablony v inteligentní značky a pak vyberte `EditItemTemplate` položku z rozevíracího seznamu.
 
-
 [![Optimalizované pro práci s DataList s EditItemTemplate](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image19.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image18.png)
 
 **Obrázek 8**: Optimalizované pro práci s DataList s `EditItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image20.png))
 
-
 Potom zadejte název produktu: a cena: a pak přetáhněte z panelu nástrojů do dvou ovládacích prvků textového pole `EditItemTemplate` rozhraní v návrháři. Nastavení textových polí `ID` vlastností `ProductName` a `UnitPrice`.
-
 
 [![Přidat textové pole s názvem produktu a ceny](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image22.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image21.png)
 
 **Obrázek 9**: Přidání textového pole pro produkt s názvem a cena ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image23.png))
-
 
 Potřebujeme vytvořit vazbu odpovídající produktu pole hodnoty dat `Text` vlastnosti dvě textová pole. Z textových polí inteligentní značky, klikněte na odkaz Upravit datové vazby a přidružte příslušné datové pole s `Text` vlastnost, jak je znázorněno na obrázku 10.
 
 > [!NOTE]
 > Při vytváření vazby `UnitPrice` datové pole s cenou při textové pole s `Text` pole, které může naformátujeme ho jako hodnotu měny (`{0:C}`), Obecné číslo (`{0:N}`), nebo nechte neformátovaném tvaru.
 
-
 ![Pole ProductName a UnitPrice Data svázat vlastnosti Text textových polí](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image24.png)
 
 **Obrázek 10**: Vytvoření vazby `ProductName` a `UnitPrice` do pole Data `Text` vlastnosti textových polí
-
 
 Všimněte si, jak se dialogové okno Upravit datové vazby na obrázku 10 *není* patří Obousměrná vazba dat zaškrtávacího políčka, která je k dispozici při úpravách TemplateField v prvku GridView nebo prvku DetailsView nebo šablony ve třídě FormView. Funkce Obousměrná vazba dat povolené hodnoty zadané do vstupní ovládací prvek webového má být automaticky přiřazena k odpovídající prvku ObjectDataSource s `InsertParameters` nebo `UpdateParameters` při vkládání nebo aktualizaci data. Prvku DataList nepodporuje Obousměrná vazba dat, jak uvidíme dále v tomto kurzu se po uživatel provede své změny a je připravený k aktualizaci dat, budeme muset programový přístup k těmto textových polí `Text` vlastnosti a předejte jí jejich hodnot tak, odpovídající `UpdateProduct` metodu `ProductsBLL` třídy.
 
@@ -197,14 +172,11 @@ Mějte na paměti, že tyto události jsou vyvolány *kromě* `ItemCommand` udá
 
 Přidat `EditItemTemplate` dvě tlačítka webové ovládací prvky, jehož `CommandName` je nastavena na aktualizace a další prostředky nastavena na Storno. Po přidání těchto dvou ovládacích prvků tlačítko webové návrháře by měl vypadat nějak takto:
 
-
 [![Přidat aktualizace tlačítka EditItemTemplate a Storno](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image26.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image25.png)
 
 **Obrázek 11**: Přidání tlačítek zrušit a aktualizace `EditItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image27.png))
 
-
 S `EditItemTemplate` kompletní DataList s deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/samples/sample3.aspx)]
 
@@ -214,11 +186,9 @@ V tomto okamžiku naše DataList má úpravy rozhraní definované prostřednict
 
 Po přidání tohoto tlačítka Upravit, věnujte chvíli zobrazíte stránku prostřednictvím prohlížeče. Uveďte by měly zahrnovat každý výpis tlačítko pro úpravy.
 
-
 [![Přidat aktualizace tlačítka EditItemTemplate a Storno](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image29.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image28.png)
 
 **Obrázek 12**: Přidání tlačítek zrušit a aktualizace `EditItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image30.png))
-
 
 Kliknutím na tlačítko vyvolá zpětné volání, ale nemá *není* přineste produkt výpis do režimu úprav. Chcete-li upravit produktu, potřebujeme:
 
@@ -227,18 +197,15 @@ Kliknutím na tlačítko vyvolá zpětné volání, ale nemá *není* přineste 
 
 Od prvku DataList s `EditCommand` událost je aktivována při kliknutí na tlačítko pro úpravy, vytváření `EditCommand` obslužné rutiny události s následujícím kódem:
 
-
 [!code-vb[Main](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/samples/sample4.vb)]
 
 `EditCommand` Obslužná rutina události je předán objekt typu `DataListCommandEventArgs` jako svůj druhý vstupní parametr, který obsahuje odkaz na `DataListItem` došlo ke kliknutí na jehož tlačítko Upravit (`e.Item`). Obslužná rutina události nejprve nastaví DataList s `EditItemIndex` k `ItemIndex` z upravitelnou `DataListItem` a pak znovu připojí data k prvku DataList voláním DataList s `DataBind()` metoda.
 
 Po přidání této obslužné rutiny události, otevírat stránku v prohlížeči. Teď kliknutím na tlačítko Upravit umožňuje kliknutí na produkt upravitelné (viz obrázek 13).
 
-
 [![Kliknutím na tlačítko umožňuje úpravy upravitelné produktu](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image32.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image31.png)
 
 **Obrázek 13**: Kliknutím na tlačítko Upravit umožňuje upravovat produktu ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image33.png))
-
 
 ## <a name="step-6-saving-the-user-s-changes"></a>Krok 6: Ukládají se změny s uživateli
 
@@ -250,7 +217,6 @@ Pokud chcete, aby DataList vykreslit všechny položky v režimu jen pro čtení
 2. Obnovení vazby dat k ovládacím prvku DataList. Od ne `DataListItem` `ItemIndex` es odpovídají DataList s `EditItemIndex`, zobrazí se celá DataList v režimu jen pro čtení.
 
 Tyto kroky můžete provést pomocí následující kód obslužné rutiny události:
-
 
 [!code-vb[Main](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/samples/sample5.vb)]
 
@@ -269,7 +235,6 @@ Pokud chcete získat název aktualizace produktu a ceny, musíme použít `FindC
 
 Následující kód implementuje čtyři kroky:
 
-
 [!code-vb[Main](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/samples/sample6.vb)]
 
 Spustí obslužnou rutinu události, přečtěte si téma v upravených produktu s `ProductID` z `DataKeys` kolekce. Další dvě textová pole v `EditItemTemplate` odkazují a jejich `Text` vlastnosti uložené v místních proměnných, `productNameValue` a `unitPriceValue`. Používáme `Decimal.Parse()` metodu za účelem čtení hodnoty z `UnitPrice` textové pole tak, že pokud zadaná hodnota obsahuje symbol měny, se můžete stále správně převést na `Decimal` hodnotu.
@@ -277,26 +242,21 @@ Spustí obslužnou rutinu události, přečtěte si téma v upravených produktu
 > [!NOTE]
 > Hodnoty z `ProductName` a `UnitPrice` textová pole jsou pouze přiřazeny proměnné productNameValue a unitPriceValue Pokud vlastnosti Text textová pole mají hodnotu zadat. V opačném případě hodnota `Nothing` se používá pro proměnné, která má vliv na aktualizace dat pomocí databáze `NULL` hodnotu. To znamená, náš kód zpracovává převede prázdné řetězce k databázi `NULL` hodnoty, které je výchozí chování úpravy rozhraní v ovládacích prvcích ovládacího prvku GridView, DetailsView a FormView.
 
-
 Po přečtení hodnoty `ProductsBLL` třída s `UpdateProduct` metoda je volána, předávání v názvu produktu s, ceny a `ProductID`. Obslužná rutina události dokončení tak, že vrací stavu předem úpravy pomocí přesně stejné logiky jako v prvku DataList `CancelCommand` obslužné rutiny události.
 
 S `EditCommand`, `CancelCommand`, a `UpdateCommand` dokončení obslužné rutiny událostí, návštěvník můžete upravit název a cena produktu. Obrázky 14 – 16 zobrazit tento pracovní postup úpravy v akci.
-
 
 [![Při první návštěvě stránky, všechny produkty jsou v režimu jen pro čtení](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image35.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image34.png)
 
 **Obrázek 14**: Při první návštěvě stránky, všechny produkty jsou v režimu jen pro čtení ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image36.png))
 
-
 [![Aktualizace produktu s názvem ani cena, klikněte na tlačítko Upravit](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image38.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image37.png)
 
 **Obrázek 15**: Chcete aktualizovat produkt s názvem ani cena, klikněte na tlačítko Upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image39.png))
 
-
 [![Po změně hodnoty, klikněte na tlačítko Aktualizovat pro návrat do režimu jen pro čtení](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image41.png)](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image40.png)
 
 **Obrázek 16**: Po změně hodnoty, klikněte na Aktualizovat vrátit do režimu jen pro čtení ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/_static/image42.png))
-
 
 ## <a name="step-7-adding-delete-capabilities"></a>Krok 7: Přidání možností odstranit
 
@@ -312,11 +272,9 @@ Po kliknutí na tlačítko jehož `CommandName` znamená úpravy, aktualizaci ne
 
 Přidejte tlačítko pro odstranění vedle tlačítka Upravit v `ItemTemplate`a nastavte jeho `CommandName` vlastnosti k odstranění. Po přidání tohoto tlačítka, ovládací prvek třídy DataList s `ItemTemplate` deklarativní syntaxe by měl vypadat takto:
 
-
 [!code-aspx[Main](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/samples/sample7.aspx)]
 
 Dále vytvořte obslužnou rutinu události pro DataList s `DeleteCommand` událostí, pomocí následujícího kódu:
-
 
 [!code-vb[Main](an-overview-of-editing-and-deleting-data-in-the-datalist-vb/samples/sample8.vb)]
 

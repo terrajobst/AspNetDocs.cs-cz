@@ -8,12 +8,12 @@ ms.date: 06/09/2009
 ms.assetid: a5f0439f-18b2-4c89-96ab-75b02c616f46
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a9eca21cba09da8a01d2ed1a8391b9ff367d7231
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 3b3b96232f46e7f9e7cbd47b109bf4b7056ed34a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59395443"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132361"
 ---
 # <a name="logging-error-details-with-elmah-vb"></a>Protokolování podrobností o chybách pomocí knihovny ELMAH (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/1/0/C/10CC829F-A808-4302-97D3-59989B8F9C01/ASPNET_Hosting_Tutorial_14_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/5/C/5/5C57DB8C-5DEA-4B3A-92CA-4405544D313B/aspnet_tutorial14_ELMAH_vb.pdf)
 
 > Chyba protokolování moduly a obslužné rutiny (ELMAH) nabízí jiný přístup k protokolování chyb za běhu v produkčním prostředí. ELMAH je bezplatný open source Chyba knihovny protokolování, který obsahuje funkce, jako je filtrování chyb a možnost, chcete-li zobrazit v protokolu chyb z webové stránky, jako kanál RSS, nebo ho můžete stáhnout jako soubor CSV. Tento kurz vás provede stažením a konfigurace ELMAH.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -36,7 +35,6 @@ Tento kurz vás provede jednotlivými kroky při přidávání ELMAH do aplikace
 
 > [!NOTE]
 > Stav monitorování systému a ELMAH mají své vlastní sady výhody a nevýhody. Neváhejte se zkuste obou systémů a rozhodnout, jaké jeden nejlépe vyhovuje vašim potřebám.
-
 
 ## <a name="adding-elmah-to-an-aspnet-web-application"></a>Přidání knihovny ELMAH do webové aplikace ASP.NET
 
@@ -56,12 +54,10 @@ ELMAH 1.0 BETA 3 (sestavení 10617), nejnovější verze v době psaní, je sou�
 > [!NOTE]
 > `Elmah.dll` Soubor se nachází v souboru pro stažení `Bin` složky, která obsahuje podsložky pro různé verze rozhraní .NET Framework a sestavení pro vydání a ladění. Pro verzi rozhraní framework vhodné používejte sestavení pro vydání. Například, pokud vytváříte webovou aplikaci ASP.NET 3.5, zkopírujte `Elmah.dll` soubor `Bin\net-3.5\Release` složky.
 
-
 V dalším kroku spuštění sady Visual Studio a přidejte sestavení do projektu kliknutím pravým tlačítkem na název webu v Průzkumníku řešení a zvolíte možnost Přidat odkaz v místní nabídce. Tím se zobrazí dialogové okno Přidat odkaz. Přejděte na kartu Procházet a zvolte `Elmah.dll` souboru. Tato akce přidá `Elmah.dll` souborů do webové aplikace `Bin` složky.
 
 > [!NOTE]
 > Typ projektu webových aplikací (WAP) se nezobrazují `Bin` složku v Průzkumníku řešení. Místo toho uvádí seznam těchto položek ve složce odkazy.
-
 
 `Elmah.dll` Sestavení zahrnuje třídy, které využívá systém ELMAH. Tyto třídy se dělí do tři kategorií:
 
@@ -100,7 +96,6 @@ ELMAH vypadá jeho možnosti konfigurace na webu `Web.config` soubor s názvem v
 > [!NOTE]
 > Pokud konfigurujete ELMAH pro aplikaci ASP.NET 1.x odeberte `requirePermission="false"` atribut z `<section>` prvků uvedených výše.
 
-
 Výše uvedené syntaxi zaregistruje vlastní `<elmah>` oddíl a všechny dílčí oddíly: `<security>`, `<errorLog>`, `<errorMail>`, a `<errorFilter>`.
 
 V dalším kroku přidejte `<elmah>` části `Web.config`. V této části by se měla objevit na stejné úrovni jako `<system.web>` elementu. Uvnitř `<elmah>` přidat oddíl `<security>` a `<errorLog>` oddíly takto:
@@ -113,7 +108,6 @@ V dalším kroku přidejte `<elmah>` části `Web.config`. V této části by se
 
 > [!NOTE]
 > ELMAH se dodává s poskytovateli další chybové protokolu, které slouží k protokolování chyb do souboru XML, databáze Microsoft Access, Oracle database a dalšími datovými úložišti. Odkazovat na ukázku `Web.config` soubor, který je součástí knihovny ELMAH stažení informace o tom, jak používat tyto alternativní chyba zprostředkovatele protokolu.
-
 
 ### <a name="step-4-creating-the-error-log-source-infrastructure"></a>Krok 4: Vytvoření zdrojové infrastruktuře protokolu chyba
 
@@ -137,7 +131,6 @@ ELMAH nemá vliv, jaký obsah se zobrazí uživateli, když dojde k neošetřen�
 
 > [!NOTE]
 > Můžete také použít `elmah.axd` stránky dáte pokyn, aby ELMAH generovat chybu testu. Navštívit `elmah.axd/test` (jako v `http://localhost/BookReviews/elmah.axd/test`) způsobí, že ELMAH výjimku typu `Elmah.TestException`, který obsahuje chybovou zprávu: " Toto je test výjimky, která můžete bezpečně ignorovat."
-
 
 **Obrázek 3** zobrazuje v protokolu chyb při návštěvě `elmah.axd` z vývojového prostředí.
 
@@ -184,7 +177,6 @@ Následující Konfigurace povoluje jenom uživatelé v roli správce pro přís
 > [!NOTE]
 > Přidání role správce a tři uživatele v systému – Scott, Jisun a Alice - v [ *konfigurace na webu, že používá aplikační služby* kurzu](configuring-a-website-that-uses-application-services-vb.md). Scott uživatelů a Jisun jsou členové s rolí správce. Další informace o ověřování a autorizace, najdete v mé [kurzy o zabezpečení webu](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md).
 
-
 V protokolu chyb v produkčním prostředí můžete nyní zobrazit vzdálení uživatelé; Vraťte se do **obrázky 3**, **4**, a **5** snímky obrazovky chybové stránky webových protokolů. Ale pokud anonymní nebo bez oprávnění správce. uživatel se pokusí zobrazit chybovou stránku protokolu je automaticky přesměrován na stránku pro přihlášení (`Login.aspx`), jako **obrázek 7** ukazuje.
 
 [![](logging-error-details-with-elmah-vb/_static/image18.png)](logging-error-details-with-elmah-vb/_static/image17.png)
@@ -229,7 +221,6 @@ Následující kód nastaví ELMAH protokolu chyby 404.
 
 > [!NOTE]
 > Nezapomeňte, chcete-li použít filtrování chyb je potřeba se zaregistrovat `ErrorFilterModule` modulu HTTP služby.
-
 
 `<equal>` Element v rámci `<test>` oddíl se označuje jako kontrolní výraz. Pokud se výraz vyhodnotí jako true, chyba filtruje z vaší ELMAH protokolu. Nejsou k dispozici, včetně další kontrolní výrazy: `<greater>`, `<greater-or-equal>`, `<not-equal>`, `<lesser>`, `<lesser-or-equal>`, a tak dále. Můžete také kombinovat pomocí kontrolních výrazů `<and>` a `<or>` logické operátory. A co víc můžete dokonce obsahovat jednoduchý výraz jazyka JavaScript jako kontrolní výraz nebo napsat vlastní kontrolní výrazy v jazyce C# nebo Visual Basic.
 

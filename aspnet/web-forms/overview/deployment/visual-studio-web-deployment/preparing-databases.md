@@ -8,12 +8,12 @@ ms.date: 02/15/2013
 ms.assetid: ae4def81-fa37-4883-a13e-d9896cbf6c36
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
 msc.type: authoredcontent
-ms.openlocfilehash: 786be61d48f26e5765eac0c8d6fad7551897f711
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 72d69c0690c52c41f899e6cbe7cc656e537fe112
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59387682"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131106"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Příprava nasazení databáze
 
@@ -22,7 +22,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 [Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
 > V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, s použitím sady Visual Studio 2012 nebo Visual Studio 2010. Informace o této sérii, naleznete v tématu [z prvního kurzu této série](introduction.md).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -134,7 +133,6 @@ Projekt je nyní připraven k nasazení *ContosoUniversity* databáze. Po nasaze
 > 
 > `Sql("UPDATE Department SET Budget = 1000");`
 
-
 ## <a name="create-scripts-for-membership-database-deployment"></a>Vytváření skriptů pro nasazení databáze členství
 
 Aplikace Contoso University používá ověřování formuláře a systém členství technologie ASP.NET k ověřování a autorizaci uživatelů. **Aktualizace kredity** stránka je přístupný jenom uživatelům, kteří jsou v roli správce.
@@ -160,14 +158,12 @@ Tato databáze nespravuje Entity Framework Code First, takže migrace nelze pou�
 > [!NOTE]
 > Nový systém členství technologie ASP.NET (nyní s názvem ASP.NET Identity) byla zavedena v systému Visual Studio 2013. Nový systém umožňuje zachovat aplikaci a tabulky členství ve stejné databázi a můžete použít migrace Code First pro nasazení obou. Ukázková aplikace používá starší systém členství technologie ASP.NET, které nelze nasadit pomocí migrace Code First. Postupy pro nasazení této databáze členství platí také pro všechny další scénáře, ve kterém se vaše aplikace potřebuje k nasazení databáze SQL serveru, který není vytvořený pomocí platformy Entity Framework Code First.
 
-
 Zde příliš, obvykle nechcete stejná data v produkčním prostředí, které máte ve vývoji. Při první nasadíte lokalitu, je běžné vyloučit většinu nebo všechny uživatelské účty, které vytvoříte pro testování. Proto staženého projektu má dvě databáze členství: *aspnet ContosoUniversity.mdf* s uživateli vývoje a *aspnet. ContosoUniversity Prod.mdf* s produkční uživatele. Pro účely tohoto kurzu uživatelská jména jsou stejné v obou databázích: *správce* a *text nonadmin*. Oba uživatelé mají heslo *devpwd* databáze vývoje a *prodpwd* v provozní databázi.
 
 Nasadíte uživatelům vývoje pro testovací prostředí a produkční uživatele do pracovního a produkčního prostředí. K tomu vytvoříte dva skripty SQL v tomto kurzu, jeden pro vývoj a jeden pro produkční prostředí a v budoucích kurzech nakonfigurujete procesu publikování pro jejich spuštění.
 
 > [!NOTE]
 > Databáze členství ukládá hodnota hash hesla účtu. Za účelem nasazení účty z jednoho počítače do jiného, ujistěte se, že hash rutiny negenerovat různé hodnoty hash na cílovém serveru, než na zdrojovém počítači. Nich vydá stejné hodnoty hash při použití technologie ASP.NET Universal Providers, dokud nezměníte výchozí algoritmus. Výchozí algoritmus je HMACSHA256 a je uveden v **ověření** atribut **[machineKey](https://msdn.microsoft.com/library/system.web.configuration.machinekeysection.aspx)** element v souboru Web.config.
-
 
 Skripty nasazení dat. můžete vytvořit ručně, pomocí SQL Server Management Studio (SSMS), nebo pomocí nástroje třetích stran. Tato zbývající část tohoto kurzu ukazují, jak to udělat v aplikaci SSMS, ale pokud nechcete nainstalovat a používat SSMS můžete získat skripty z úplnou verzi projektu a přeskočit k části, kde jsou uloženy ve složce řešení.
 

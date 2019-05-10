@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 3e9f6e7d-8967-4586-94d5-d3a122f12529
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy
 msc.type: authoredcontent
-ms.openlocfilehash: 017eceb8567859fdbe28bb87af844eee20dfa525
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ba54454bcb6f5e4ceb269b128a6b72a4b75f64be
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59415476"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131401"
 ---
 # <a name="taking-web-applications-offline-with-web-deploy"></a>Převedení webových aplikací offline nástrojem pro nasazení webu
 
@@ -22,7 +22,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Toto téma popisuje, jak provést webové aplikace v režimu offline po dobu trvání automatického nasazení pomocí Internetové informační služby (IIS) nástroj pro nasazení webu (nasazení webu). Uživatelé, kteří přejděte do webové aplikace se přesměrují do *aplikace\_offline.htm* souborů až do dokončení nasazení.
-
 
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
@@ -70,18 +69,13 @@ Dalším krokem je úprava logiky nasazení odebrat po uplynutí a zkopírujte s
 > [!NOTE]
 > V dalším postupu se předpokládá, že používáte vlastní soubor projektu MSBuild řídit proces nasazení, jak je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md). Pokud nasazujete přímo z Visual Studio, budete muset použít jiný přístup. SAYED Ibrahim Hashimi popisuje jeden takový přístup v [jak využít vaše aplikace v režimu Offline během publikování na webu](http://sedodream.com/2012/01/08/HowToTakeYourWebAppOfflineDuringPublishing.aspx).
 
-
 K nasazení *aplikace\_offline* soubor na cílový web služby IIS, je potřeba vyvolat pomocí MSDeploy.exe [Webdeploy **contentPath** poskytovatele](https://technet.microsoft.com/library/dd569034(WS.10).aspx). **ContentPath** zprostředkovatel podporuje fyzický adresář cesty a cesty k webu nebo aplikaci služby IIS, díky tomu je ideální volbou pro synchronizaci souborů mezi složky projektu sady Visual Studio a webové aplikace služby IIS. K nasazení souboru, MSDeploy příkazu by měl vypadat přibližně takto:
-
 
 [!code-console[Main](taking-web-applications-offline-with-web-deploy/samples/sample1.cmd)]
 
-
 Odeberte soubor z cílové lokality na konci procesu nasazení, MSDeploy příkazu by měl vypadat přibližně takto:
 
-
 [!code-console[Main](taking-web-applications-offline-with-web-deploy/samples/sample2.cmd)]
-
 
 K automatizaci těchto příkazů jako součást procesu sestavení a nasazení, musíte integrovat do vlastního souboru projektu MSBuild. Následující postup popisuje, jak to provést.
 
@@ -129,9 +123,7 @@ Web pro publikování kanálu (WPP) používá seznam položek s názvem **Files
 
 *. Wpp.targets* soubor by měl vypadat takto:
 
-
 [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample8.xml)]
-
 
 Toto jsou klíčové body Poznámka: v tomto příkladu:
 
@@ -160,7 +152,6 @@ Při příštím build a balíček projektu webové aplikace, WPP automaticky zj
 
 > [!NOTE]
 > Pokud se nasazení nezdaří, *aplikace\_offline.htm* soubor zůstane na místě a vaše aplikace bude i nadále v režimu offline. Obvykle se jedná o požadované chování. Aby vaše aplikace zpět do online režimu, můžete odstranit *aplikace\_offline.htm* soubor z webového serveru. Případně, pokud opravíte jakékoli chyby a spuštění úspěšné nasazení *aplikace\_offline.htm* soubor bude odstraněn.
-
 
 ## <a name="conclusion"></a>Závěr
 

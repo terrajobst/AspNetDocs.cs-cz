@@ -8,12 +8,12 @@ ms.date: 04/21/2011
 ms.assetid: 94297aa0-1f2d-4d72-bbcb-63f64653e0c0
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: ce866a169e69c0d85fe18ddeccf271f1f235d440
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 3fcfc816cde22c697a78bab2c9ea7ace1bf68501
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381117"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129680"
 ---
 # <a name="part-3-views-and-viewmodels"></a>Část 3: Zobrazení a modely ViewModel
 
@@ -24,7 +24,6 @@ podle [Jon Galloway](https://github.com/jongalloway)
 > Music Store MVC je jednoduché ukázku implementace úložiště prodává hudebních alb online, který implementuje správu základního webu, přihlášení uživatele a nákupního košíku funkce.  
 >   
 > V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. 3. část popisuje zobrazení a modely ViewModel.
-
 
 Zatím jsme jste právě byla vracení řetězců z akce kontroleru. To je dobrý způsob, jak získat představu o fungování řadiče, ale není jak byste k sestavení aplikace skutečný webu. Budeme má lepší způsob, jak generují kód HTML zpět do prohlížečů navštěvující náš web – jeden kde soubory šablony můžete použít k více snadno přizpůsobit obsah HTML odeslání zpět. To je přesně co dělat zobrazení.
 
@@ -257,7 +256,6 @@ Nyní když jsme naše projekt spusťte znovu a přístup k adrese URL /Store/ u
 Kód HTML pro daný seznam žánr vypadá takto:
 
 [!code-html[Main](mvc-music-store-part-3/samples/sample22.html)]
-
 
 > [!div class="step-by-step"]
 > [Předchozí](mvc-music-store-part-2.md)

@@ -8,12 +8,12 @@ ms.date: 02/07/2014
 ms.assetid: b137bd04-25e1-47cb-9d96-ef2e179ecf1f
 msc.legacyurl: /web-pages/overview/getting-started/aspnet-web-pages-razor-faq
 msc.type: authoredcontent
-ms.openlocfilehash: b0e51b2fb73370164af1a38af5e5e15e24608843
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 6fa1b668e915af856a693e79eafb7180ed504dc2
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59418648"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133204"
 ---
 # <a name="aspnet-web-pages-razor-faq"></a>Webové stránky ASP.NET (Razor) – časté otázky
 
@@ -33,7 +33,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 >   
 > 
 > V tomto kurzu se také pracuje s ASP.NET Web Pages 2, služba WebMatrix 2 a sady Visual Studio 2012.
-
 
 - [Jaký je rozdíl mezi webových stránek ASP.NET, webových formulářů ASP.NET a ASP.NET MVC?](#Whats_the_difference_between_ASP.NET_Web_Pages,_ASP.NET_Web_Forms,_and_ASP.NET_MVC)
 - [Potřebuji k práci s webovými stránkami služby WebMatrix?](#Do_I_need_WebMatrix_in_order_to_work_with_Web_Pages)
@@ -130,7 +129,6 @@ Tady jsou některé blogové příspěvky, které ukazují způsoby použití jQ
 
 <a id="AdditionalResources"></a>
 ## <a name="additional-resources"></a>Další prostředky
-
 
 [Webové stránky ASP.NET (Razor) – průvodce řešením potíží](https://go.microsoft.com/fwlink/?LinkId=253001)
 

@@ -8,12 +8,12 @@ ms.date: 02/10/2014
 ms.assetid: 4001cb9b-3bfd-4ace-8a89-1561d8421e2c
 msc.legacyurl: /web-pages/overview/api-reference/asp-net-web-pages-api-reference
 msc.type: authoredcontent
-ms.openlocfilehash: 547b1932c4f8d3684c668561e3fe568a0f272925
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e010307fc0576e8b003fbfe665cae77618d9c9a5
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59416503"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132983"
 ---
 # <a name="aspnet-web-pages-razor-api-quick-reference"></a>Webové stránky ASP.NET (Razor) – rozhraní API rychlé odkazy
 
@@ -32,7 +32,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 >   
 > 
 > V tomto kurzu se také pracuje s ASP.NET Web Pages 2 a ASP.NET Web Pages 1.0 (s výjimkou funkce označené v2).
-
 
 Tato stránka obsahuje referenční informace pro následující:
 

@@ -8,12 +8,12 @@ ms.date: 03/06/2007
 ms.assetid: 32377145-ec25-4715-8370-a1c590a331d5
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-radio-buttons-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d191dd0022c9ec87e2c7df6be8be2a8c6b951ad3
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: bed86ec86533363d7bdbdbf37129c3de85ab7686
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59413019"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131447"
 ---
 # <a name="adding-a-gridview-column-of-radio-buttons-c"></a>Přidání sloupce přepínačů do ovládacího prvku GridView (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_51_CS.exe) nebo [stahovat PDF](adding-a-gridview-column-of-radio-buttons-cs/_static/datatutorial51cs1.pdf)
 
 > V tomto kurzu snaží přidání sloupce přepínačů do ovládacího prvku GridView poskytnutí uživatelského intuitivnější možnost výběru jednoho řádku prvku GridView.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -43,32 +42,25 @@ Než začneme, vylepšení ovládacího prvku GridView, aby zahrnovaly sloupec p
 - `CheckBoxField.aspx`
 - `InsertThroughFooter.aspx`
 
-
 ![Přidání stránky technologie ASP.NET pro SqlDataSource související kurzy](adding-a-gridview-column-of-radio-buttons-cs/_static/image1.gif)
 
 **Obrázek 1**: Přidání stránky technologie ASP.NET pro SqlDataSource související kurzy
 
-
 V jiných složkách, jako jsou `Default.aspx` v `EnhancedGridView` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
-
 
 [![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](adding-a-gridview-column-of-radio-buttons-cs/_static/image2.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image1.png)
 
 **Obrázek 2**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image2.png))
 
-
 A konečně, přidejte tyto čtyři stránky jako položky `Web.sitemap` souboru. Konkrétně, přidejte následující kód za použití ovládacím prvkem SqlDataSource `<siteMapNode>`:
-
 
 [!code-xml[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample1.xml)]
 
 Po aktualizaci `Web.sitemap`, věnujte chvíli zobrazit kurzy web prostřednictvím prohlížeče. V nabídce na levé straně teď obsahuje položky pro úpravy, vložení a odstranění kurzy.
 
-
 ![Mapa webu nyní obsahuje záznamy pro zlepšení kurzy GridView](adding-a-gridview-column-of-radio-buttons-cs/_static/image3.gif)
 
 **Obrázek 3**: Mapa webu nyní obsahuje záznamy pro zlepšení kurzy GridView
-
 
 ## <a name="step-2-displaying-the-suppliers-in-a-gridview"></a>Krok 2: Zobrazení dodavatelů v GridView
 
@@ -76,43 +68,33 @@ Pro tento kurz umožní s sestavení, který obsahuje seznam dodavatelů z USA, 
 
 Začněte otevřením `RadioButtonField.aspx` stránku `EnhancedGridView` složky přetažením GridView z panelu nástrojů do návrháře. Nastavit prvek GridView s `ID` k `Suppliers` a z inteligentních značek, můžete vytvořit nový zdroj dat. Konkrétně vytvořte prvku ObjectDataSource s názvem `SuppliersDataSource` , který si vyžádá data z `SuppliersBLL` objektu.
 
-
 [![Vytvoření nového prvku ObjectDataSource s názvem SuppliersDataSource](adding-a-gridview-column-of-radio-buttons-cs/_static/image4.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image3.png)
 
 **Obrázek 4**: Vytvoření nového prvku ObjectDataSource s názvem `SuppliersDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image4.png))
-
 
 [![Konfigurace ObjectDataSource pomocí třídy SuppliersBLL](adding-a-gridview-column-of-radio-buttons-cs/_static/image5.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image5.png)
 
 **Obrázek 5**: Konfigurace ObjectDataSource k použití `SuppliersBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image6.png))
 
-
 Protože chceme seznam těchto dodavatelů v USA, zvolte `GetSuppliersByCountry(country)` z rozevíracího seznamu na kartě vyberte metodu.
-
 
 [![Konfigurace ObjectDataSource pomocí třídy SuppliersBLL](adding-a-gridview-column-of-radio-buttons-cs/_static/image6.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image7.png)
 
 **Obrázek 6**: Konfigurace ObjectDataSource k použití `SuppliersBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image8.png))
 
-
 Z kartu aktualizace, vyberte možnost (žádné) možnost a klikněte na tlačítko Další.
-
 
 [![Konfigurace ObjectDataSource pomocí třídy SuppliersBLL](adding-a-gridview-column-of-radio-buttons-cs/_static/image7.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image9.png)
 
 **Obrázek 7**: Konfigurace ObjectDataSource k použití `SuppliersBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image10.png))
 
-
 Vzhledem k tomu, `GetSuppliersByCountry(country)` metoda přijímá parametr, pokynů nám průvodce Konfigurovat zdroj dat pro zdroj tohoto parametru. K určení pevně zakódované hodnotu (USA, v tomto příkladu), ponechte tento parametr nastaven na hodnotu None zdroj rozevíracího seznamu a zadejte výchozí hodnotu v textovém poli. Kliknutím na Dokončit dokončíte průvodce.
-
 
 [![Použít USA jako výchozí hodnota pro parametr země](adding-a-gridview-column-of-radio-buttons-cs/_static/image8.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image11.png)
 
 **Obrázek 8**: Použít jako výchozí hodnota pro USA `country` parametr ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image12.png))
 
-
 Po dokončení průvodce bude obsahovat prvku GridView. Vlastnost BoundField pro každé pole data na dodavatele. Odeberte všechny kromě na `CompanyName`, `City`, a `Country` BoundFields a přejmenovat `CompanyName` BoundFields `HeaderText` vlastnost dodavateli. Až to uděláte, ovládacími prvky GridView a ObjectDataSource deklarativní syntaxe by měl vypadat nějak takto.
-
 
 [!code-aspx[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample2.aspx)]
 
@@ -120,11 +102,9 @@ Pro účely tohoto kurzu nechte s povolit uživatelům zobrazit vybraný poskyto
 
 Obrázek 9 ukazuje `Suppliers` prvky GridView a dvě tlačítka webové při prohlížení prostřednictvím prohlížeče.
 
-
 [![Tito poskytovatelé z USA mají jejich název, Město a zemi informace](adding-a-gridview-column-of-radio-buttons-cs/_static/image9.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image13.png)
 
 **Obrázek 9**: Tito poskytovatelé z USA mají jejich název, Město a zemi uvedené informace ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image14.png))
-
 
 ## <a name="step-3-adding-a-column-of-radio-buttons"></a>Krok 3: Přidání sloupce přepínačů
 
@@ -134,14 +114,11 @@ Na začátku může předpokládáme, že požadované uživatelské rozhraní j
 
 Přestože pomocí TemplateField ovládacích prvků RadioButton se nebude poskytovat funkce potřebujeme, umožňují s implementaci tohoto přístupu, protože s vhodné prozkoumat, proč nejsou seskupeny výsledný přepínací tlačítka. Začněte přidáním TemplateField do prvku GridView dodavatelů, takže pole nejvíce vlevo. V dalším kroku z ovládacího prvku GridView s inteligentní značky, klikněte na odkaz Upravit šablony a přetáhněte ovládací prvek RadioButton webového z panelu nástrojů do TemplateField s `ItemTemplate` (viz obrázek 10). Nastavení RadioButton s `ID` vlastnost `RowSelector` a `GroupName` vlastnost `SuppliersGroup`.
 
-
 [![Přidání ovládacího prvku RadioButton ItemTemplate](adding-a-gridview-column-of-radio-buttons-cs/_static/image10.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image15.png)
 
 **Obrázek 10**: Přidání ovládacího prvku RadioButton do `ItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image16.png))
 
-
 Po provedení tyto doplňky prostřednictvím návrháře, vaše značky ovládacího prvku GridView s by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample3.aspx)]
 
@@ -149,14 +126,11 @@ RadioButton – s [ `GroupName` vlastnost](https://msdn.microsoft.com/library/sy
 
 Pomocí ovládacího prvku RadioButton Web přidán do `ItemTemplate`, navštivte tuto stránku prostřednictvím prohlížeče a klikněte na přepínací tlačítka ve mřížka s řádky. Všimněte si, jak nejsou seskupeny přepínačů, což umožňuje vybrat všechny řádky, jako obrázek 11 ukazuje.
 
-
 [![GridView s přepínače nejsou seskupeny](adding-a-gridview-column-of-radio-buttons-cs/_static/image11.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image17.png)
 
 **Obrázek 11**: GridView s přepínače nejsou seskupeny ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image18.png))
 
-
 Z důvodu nejsou seskupeny přepínačů je, protože jejich vykreslené `name` atributy se liší, bez ohledu na stejných `GroupName` nastavení vlastnosti. Pokud chcete zobrazit tyto rozdíly, proveďte zobrazení/zdroj z prohlížeče a zkontrolujte tlačítko na přepínač:
-
 
 [!code-html[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample4.html)]
 
@@ -169,13 +143,11 @@ Short jeho je, že nemůžeme vytvořit sloupce přepínačů do ovládacího pr
 > [!NOTE]
 > Jako ovládací prvek RadioButton webového, přepínač ovládací prvek, když se přidá do šablony, bude obsahovat jedinečný `name` atribut mřížky neseskupené – díky tomu mají přepínací tlačítka. Pokud nejste obeznámeni s ovládacími prvky jazyka HTML, klidně ignorujte tuto poznámku jako ovládací prvky HTML se používá jen občas, zejména v technologii ASP.NET 2.0. Ale pokud jste se chcete dozvědět více, přečtěte si téma [K. Scott Allen](http://odetocode.com/blogs/scott/default.aspx) s blogu [webové ovládací prvky a ovládací prvky HTML](http://www.odetocode.com/Articles/348.aspx).
 
-
 ## <a name="using-a-literal-control-to-inject-radio-button-markup"></a>Pomocí prvku Literal Control vkládat značky tlačítko přepínače
 
 Aby bylo možné správně skupinu pro všechny přepínače v prvku GridView, musíme vložit ručně značek tlačítek přepínače do `ItemTemplate`. Každý přepínač musí stejné `name` atribut, ale musí mít jedinečnou `id` atribut (v případě chceme přistupovat k přepínač prostřednictvím skriptu na straně klienta). Když uživatel vybere tlačítko přepínače a příspěvky zpět na stránku, prohlížeč odešle zpět hodnota vybraného přepínače s `value` atribut. Proto bude nutné každý přepínač jedinečný `value` atribut. Nakonec musíme na zpětné volání, nezapomeňte přidat `checked` atribut pro jeden přepínač, který je vybrán, v opačném případě po uživateli zajistí výběr a příspěvky zpět, přepínačů vrátí do výchozího stavu (všech nevybraných).
 
 Existují dva přístupy, které je možné provést, aby bylo možné vložit kód nízké úrovně do šablony. Jeden je provést kombinaci značek a volání metody definované ve třídě použití modelu code-behind formátování. Tento postup se nejprve podrobněji [použití vlastností TemplateField v ovládacím prvku GridView](../custom-formatting/using-templatefields-in-the-gridview-control-cs.md) kurzu. V našem případě to může vypadat:
-
 
 [!code-aspx[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample5.aspx)]
 
@@ -185,16 +157,13 @@ Jiný přístup k vlastní vloženého nízké úrovně značek v šabloně a si
 
 Začněte tím, že ovládací prvek RadioButton odebrání TemplateField s `ItemTemplate`, jeho nahrazení atributem prvku Literal control. Nastavte ovládacím prvku Literal control s `ID` k `RadioButtonMarkup`.
 
-
 [![Přidejte prvek literál šablony ItemTemplate](adding-a-gridview-column-of-radio-buttons-cs/_static/image12.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image19.png)
 
 **Obrázek 12**: Přidání prvku Literal Control k `ItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image20.png))
 
-
 Dále vytvořte obslužnou rutinu události pro prvek GridView s `RowCreated` událostí. `RowCreated` Událostí je spuštěna jednou pro každý řádek přidán, určuje, jestli data je právě znovu připojeno do prvku GridView. To znamená, že i při zpětném odeslání při dat je znovu načten ze zobrazení stavu `RowCreated` stále aktivuje událost, a to je důvod, proč používáme místo něj `RowDataBound` (což je vyvoláno pouze když explicitně vázaná k datům webový ovládací prvek).
 
 V této obslužné rutiny události pouze chceme, aby bylo možné pokračovat, pokud jsme re se zabývá datovém řádku. Pro každý řádek dat chceme programově odkazovat `RadioButtonMarkup` prvku Literal control a nastavte jeho `Text` vlastnost vygenerovat kód. Jak ukazuje následující kód, značky, protože ho vytvoří rádio tlačítko, jehož `name` atribut je nastaven na `SuppliersGroup`, jehož `id` atribut je nastaven na `RowSelectorX`, kde *X* je index řádku prvku GridView a jejichž `value` atribut je nastaven na index řádku prvku GridView.
-
 
 [!code-csharp[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample6.cs)]
 
@@ -206,11 +175,9 @@ Zpětného odeslání dojde, prohlížeč odesílá zpět `name` a `value` z vyb
 
 Od jsme budete potřebovat k určení vybraného přepínače indexu není pouze v `RowCreated` obslužná rutina události, ale `Click` přidat obslužné rutiny pro ovládací prvky tlačítka webového a umožňují s `SuppliersSelectedIndex` vlastností do třídy modelu code-behind, která vrátí `-1`Pokud bylo vybráno žádné tlačítko přepínače a vybraného indexu, pokud je vybrána jedna přepínačů.
 
-
 [!code-csharp[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample7.cs)]
 
 S touto vlastností přidali, víme přidat `checked="checked"` značek v `RowCreated` obslužné rutiny události při `SuppliersSelectedIndex` rovná `e.Row.RowIndex`. Aktualizujte obslužnou rutinu události pro tuto logiku zahrnout:
-
 
 [!code-csharp[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample8.cs)]
 
@@ -220,7 +187,6 @@ V tuto chvíli jsme přidali sloupec seskupené přepínačů do ovládacího pr
 
 > [!NOTE]
 > Místo použití TemplateField (fokus tento zdlouhavé krok 3), můžeme vytvořit vlastní `DataControlField` třídy, který vykreslí odpovídající uživatelské rozhraní a funkce. [ `DataControlField` Třídy](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datacontrolfield.aspx) je základní třída, ze kterého Vlastnost BoundField, třídě CheckBoxField, TemplateField a dalších předdefinovaných polí ovládacími prvky GridView a DetailsView odvodit. Vytváří se vlastní `DataControlField` třídy by znamenal, že může být přidán jenom pomocí deklarativní syntaxe sloupce přepínačů a také s žádným replikaci funkce na jiných webových stránek a jiných webových aplikací výrazně usnadňuje.
-
 
 Pokud jste již někdy vytvářeli vlastní, kompilaci ovládacích prvků v ASP.NET, ale víte, že to vyžaduje množství legwork a provede s ní celou řadu odlišností a hraniční případy, které musí být pečlivě zpracovat. Proto jsme se forgo sloupce přepínačů jako vlastní implementace `DataControlField` třídy teď a zůstaňte s možností TemplateField. Možná jsme budete mít příležitost k prozkoumání vytvoření, použití a nasazení vlastních `DataControlField` třídy v budoucích kurzech.
 
@@ -232,36 +198,29 @@ Aktuálně jsou dostupné dvě tlačítka webové ovládací prvky na stránce `
 
 Chcete-li poskytují tuto funkci, vytvořit obslužnou rutinu události pro `SendToProducts` tlačítko s `Click` událostí. V kroku 3 jsme přidali `SuppliersSelectedIndex` vybraná vlastnost, která vrátí index řádku, jehož přepínač. Odpovídající `SupplierID` lze získat v prvku GridView s `DataKeys` kolekce a uživatel je pak možné odeslat `~/Filtering/ProductsForSupplierDetails.aspx?SupplierID=SupplierID` pomocí `Response.Redirect("url")`.
 
-
 [!code-csharp[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample9.cs)]
 
 Tento kód funguje nádherně tak dlouho, dokud jeden z přepínačů je vybrat z prvku GridView. Pokud na začátku prvku GridView. nemá žádné přepínací tlačítka vybrána, a uživatel klikne `SendToProducts` tlačítko `SuppliersSelectedIndex` bude `-1`, což způsobí výjimku, která je vyvolána od `-1` je mimo rozsah indexu `DataKeys`kolekce. To není žádný problém, ale pokud jste se rozhodli aktualizovat `RowCreated` obslužná rutina události, jak je popsáno v kroku 3 tak, aby byl první přepínací tlačítko v prvku GridView. původně vybraná.
 
 S ohledem `SuppliersSelectedIndex` hodnotu `-1`, přidání ovládacího prvku popisek na stránku nad prvku GridView. Nastavte jeho `ID` vlastnost `ChooseSupplierMsg`, jeho `CssClass` vlastnost `Warning`, jeho `EnableViewState` a `Visible` vlastností `false`a jeho `Text` vlastnosti prosím vyberte jiného dodavatele z mřížky. Třída CSS `Warning` text se zobrazí červený, kurzíva, tučné písmo, velké písma a je definován v `Styles.css`. Tím, že nastavíte `EnableViewState` a `Visible` vlastností `false`, popisek není generován s výjimkou pro jenom na ty, kde zpětnému volání ovládacího prvku s `Visible` prostřednictvím kódu programu je vlastnost nastavena na `true`.
 
-
 [![Přidání ovládacího prvku popisek nad prvku GridView.](adding-a-gridview-column-of-radio-buttons-cs/_static/image13.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image21.png)
 
 **Obrázek 13**: Přidání popisku webové ovládací prvek výše prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image22.png))
 
-
 Dále rozšířit `Click` obslužnou rutinu události pro zobrazení `ChooseSupplierMsg` popisek Pokud `SuppliersSelectedIndex` je menší než nula a přesměruje uživatele na `~/Filtering/ProductsForSupplierDetails.aspx?SupplierID=SupplierID` jinak.
-
 
 [!code-csharp[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample10.cs)]
 
 Na stránce v prohlížeči a klikněte na tlačítko `SendToProducts` tlačítko před výběrem jiného dodavatele z prvku GridView. Jak ukazuje obrázek 14, zobrazí se `ChooseSupplierMsg` popisek. V dalším kroku vyberte dodavatele a klikněte na tlačítko `SendToProducts` tlačítko. To bude whisk na stránku se seznamem poskytl dodavatel vybrané produkty. Obrázek 15 ukazuje `ProductsForSupplierDetails.aspx` stránky, kde byla vybrána Bigfoot pivovary dodavatele.
 
-
 [![Pokud je vybraný žádný poskytovatel, zobrazí se popisek ChooseSupplierMsg](adding-a-gridview-column-of-radio-buttons-cs/_static/image14.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image23.png)
 
 **Obrázek 14**: `ChooseSupplierMsg` Popisek se zobrazí, pokud je vybraný žádný poskytovatel ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image24.png))
 
-
 [![Produkty s vybraný poskytovatel se zobrazují v ProductsForSupplierDetails.aspx](adding-a-gridview-column-of-radio-buttons-cs/_static/image15.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image25.png)
 
 **Obrázek 15**: Produkty s vybraný poskytovatel se zobrazují v `ProductsForSupplierDetails.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image26.png))
-
 
 ## <a name="step-5-displaying-the-selected-supplier-s-products-on-the-same-page"></a>Krok 5: Zobrazení produkty s vybranou dodavatele na stejné stránce.
 
@@ -269,24 +228,19 @@ V kroku 4 jsme viděli, jak uživatele poslat na jiné webové stránky k zobraz
 
 Od nás zajímá jenom tohoto prvku GridView produktů zobrazíte po vybral jiného dodavatele, přidejte ovládací prvek Panel webová pod `Suppliers` prvku GridView, nastavení jeho `ID` k `ProductsBySupplierPanel` a jeho `Visible` vlastnost `false`. V rámci panelu, přidejte text produkty pro vybrané dodavatele, za nímž následuje GridView s názvem `ProductsBySupplier`. V prvku GridView s inteligentních značek zvolte a vytvořte jeho vazbu nového prvku ObjectDataSource s názvem `ProductsBySupplierDataSource`.
 
-
 [![Svázání prvku ProductsBySupplier GridView nového prvku ObjectDataSource](adding-a-gridview-column-of-radio-buttons-cs/_static/image16.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image27.png)
 
 **Obrázek 16**: Vytvoření vazby `ProductsBySupplier` GridView pro nový prvek ObjectDataSource ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image28.png))
 
-
 V dalším kroku nakonfigurujte ObjectDataSource používat `ProductsBLL` třídy. Protože chceme získat tyto produkty poskytnuté dodavatelem vybrané, zadat, že by měla vyvolat ObjectDataSource `GetProductsBySupplierID(supplierID)` metodu pro načtení jeho data. Vyberte (žádné) z rozevíracích seznamů v UPDATE, INSERT a DELETE karty.
-
 
 [![Konfigurace ObjectDataSource GetProductsBySupplierID(supplierID) metody](adding-a-gridview-column-of-radio-buttons-cs/_static/image17.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image29.png)
 
 **Obrázek 17**: Konfigurace ObjectDataSource k použití `GetProductsBySupplierID(supplierID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image30.png))
 
-
 [![Nastavte rozevírací seznamy na (žádný) v UPDATE, INSERT a odstranit záložky](adding-a-gridview-column-of-radio-buttons-cs/_static/image18.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image31.png)
 
 **Obrázek 18**: Nastavte rozevírací seznamy na (žádný) v UPDATE, INSERT a odstranit záložky ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image32.png))
-
 
 Po dokončení konfigurace SELECT, UPDATE, Vložit a odstranit karty, klikněte na tlačítko Další. Vzhledem k tomu, `GetProductsBySupplierID(supplierID)` metoda očekává, že vstupní parametr, průvodce vytvořit zdroj dat vyzve nám jako zdroj pro hodnotu parametru s.
 
@@ -294,19 +248,15 @@ Máme k dispozici několik možností, které jsou tady v určení zdroje s hodn
 
 Můžeme také používat třídě ControlParameter a odkazovat na `Suppliers` GridView s [ `SelectedValue` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedvalue.aspx) (viz obrázek 19). GridView s `SelectedValue` vrátí vlastnost `DataKey` odpovídající hodnotu [ `SelectedIndex` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedindex.aspx). Aby tato možnost fungovala, budeme potřebovat programově nastavit prvek GridView s `SelectedIndex` vlastnosti pro vybraný řádek při `ListProducts` po kliknutí na tlačítko. Jako dodatečná výhoda, tak, že nastavíte `SelectedIndex`, vybraný záznam se převezmou `SelectedRowStyle` definované v `DataWebControls` motivu (žlutým pozadím).
 
-
 [![Třídě ControlParameter použijte k určení SelectedValue ovládacího prvku GridView s jako zdroj parametru](adding-a-gridview-column-of-radio-buttons-cs/_static/image19.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image33.png)
 
 **Obrázek 19**: Třídě ControlParameter použijte k určení GridView s SelectedValue jako zdroj parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image34.png))
 
-
 Po dokončení průvodce bude Visual Studio automaticky přidá pole pro produkt s datová pole. Odeberte všechny kromě na `ProductName`, `CategoryName`, a `UnitPrice` BoundFields a změňte `HeaderText` vlastnosti na produkt, kategorie a ceny. Konfigurace `UnitPrice` Vlastnost BoundField tak, aby její hodnota je formátován jako měnu. Po provedení těchto změn, Panel ovládacího prvku GridView a prvku ObjectDataSource s deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample11.aspx)]
 
 K provedení tohoto cvičení, musíme nastavit prvek GridView s `SelectedIndex` vlastnost `SelectedSuppliersIndex` a `ProductsBySupplierPanel` Panel s `Visible` vlastnost `true` při `ListProducts` po kliknutí na tlačítko. Chcete-li to provést, vytvořte obslužnou rutinu události pro `ListProducts` tlačítko webový ovládací prvek s `Click` událostí a přidejte následující kód:
-
 
 [!code-csharp[Main](adding-a-gridview-column-of-radio-buttons-cs/samples/sample12.cs)]
 
@@ -314,11 +264,9 @@ Pokud dodavatel nebyla vybrána z prvku GridView, `ChooseSupplierMsg` popisek se
 
 Obrázek 20 zobrazuje výsledky poté, co byla vybrána Bigfoot pivovary dodavatele a zobrazit produkty na tlačítku pro stránky se kliklo.
 
-
 [![Produkty poskytnuté Bigfoot pivovary jsou uvedeny na stejné stránce.](adding-a-gridview-column-of-radio-buttons-cs/_static/image20.gif)](adding-a-gridview-column-of-radio-buttons-cs/_static/image35.png)
 
 **Obrázek 20**: Produkty poskytnuté Bigfoot pivovary jsou uvedeny na stejné stránce ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-radio-buttons-cs/_static/image36.png))
-
 
 ## <a name="summary"></a>Souhrn
 

@@ -8,12 +8,12 @@ ms.date: 06/26/2007
 ms.assetid: d191a204-d7ea-458d-b81c-0b9049ecb55f
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d1809c869253ecb454e427a5092015a69009da5c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 94e432815d5c597f7e98a0059e2b1cf9add2953b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59386941"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134644"
 ---
 # <a name="batch-updating-vb"></a>Dávkové aktualizace (VB)
 
@@ -23,24 +23,20 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > Zjistěte, jak aktualizace více záznamů databáze v rámci jedné operace. Ve vrstvě uživatelského rozhraní při sestavování ovládacího prvku GridView, kde každý řádek je možné upravovat. V datové vrstvě přístupu jsme zabalit více operací aktualizace v rámci transakce zajistit, že všechny aktualizace proběhnou úspěšně, nebo všechny aktualizace jsou vráceny zpět.
 
-
 ## <a name="introduction"></a>Úvod
 
 V [předchozím kurzu](wrapping-database-modifications-within-a-transaction-vb.md) jsme viděli, jak rozšířit vrstvy přístupu k datům s přidanou podporou pro databázové transakce. Databázové transakce zaručit, že řadu příkazů změny dat, bude zacházeno jako jednu atomickou operaci, což zajistí, že selže, všechny změny, nebo všechny proběhne úspěšně. Pomocí této nízké úrovně vrstvy DAL funkce eliminuje jsme re připravené k zapnutí naši pozornost k vytvoření rozhraní pro úpravu dat služby batch.
 
 V tomto kurzu vytvoříme ovládacího prvku GridView, kde každý řádek představuje upravitelné (viz obrázek 1). Protože každý řádek se vykreslí v jeho úpravy rozhraní tam s není nutné pro sloupec upravit, aktualizovat a stornovací tlačítka. Místo toho se nacházejí dvě aktualizace produktů tlačítka na stránce, která po kliknutí na vytvořit výčet řádky GridView a aktualizaci databáze.
 
-
 [![Upravit je každý řádek v prvku GridView.](batch-updating-vb/_static/image1.gif)](batch-updating-vb/_static/image1.png)
 
 **Obrázek 1**: Každý řádek v prvku GridView je upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image2.png))
-
 
 Začínáme s let!
 
 > [!NOTE]
 > V [provádění dávkových aktualizací](../editing-and-deleting-data-through-the-datalist/performing-batch-updates-vb.md) kurzu jsme vytvořili batch úpravy rozhraní, pomocí ovládacího prvku DataList. V tomto kurzu se liší od předchozí v, který se používá GridView a aktualizace služby batch se provádí v rámci oboru transakce. Po dokončení tohoto kurzu neváhejte se vrátit k předchozí kurzu a aktualizovat ho na použití přidali v předchozím kurzu funkce související s transakce databáze.
-
 
 ## <a name="examining-the-steps-for-making-all-gridview-rows-editable"></a>Zkoumání kroky pro vytvoření upravovat všechny řádky GridView
 
@@ -56,27 +52,21 @@ Příštích několika krocích vytvoříme zcela upravitelné ovládacího prvk
 
 Předtím, než jsme starat o vytváření GridView kde jsou řádky se upravovat, ať s začněte tím, že jednoduše zobrazení informací o produktu. Otevřít `BatchUpdate.aspx` stránku `BatchData` složky a GridView přetáhněte z panelu nástrojů do návrháře. Nastavit prvek GridView s `ID` k `ProductsGrid` a z inteligentních značek, vyberte a vytvořte jeho vazbu nového prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource načíst data z `ProductsBLL` třída s `GetProducts` metody.
 
-
 [![Konfigurace ObjectDataSource pomocí třídy ProductsBLL](batch-updating-vb/_static/image2.gif)](batch-updating-vb/_static/image3.png)
 
 **Obrázek 2**: Konfigurace ObjectDataSource k použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image4.png))
-
 
 [![Načíst pomocí metody GetProducts Data produktu.](batch-updating-vb/_static/image3.gif)](batch-updating-vb/_static/image5.png)
 
 **Obrázek 3**: Načtení dat pomocí produktu `GetProducts` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image6.png))
 
-
 Jako prvku GridView jsou funkce úprav ObjectDataSource s navrženy pro práci na základě na řádek. Pokud chcete aktualizovat sadu záznamů, potřebujeme psát hodně kódu ve třídě použití modelu code-behind stránky s ASP.NET, která seskupuje data do dávek a předává je BLL. Proto nastavte rozevírací seznamy v prvku ObjectDataSource s UPDATE, INSERT a DELETE karty na (žádný). Kliknutím na Dokončit dokončíte průvodce.
-
 
 [![Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný)](batch-updating-vb/_static/image4.gif)](batch-updating-vb/_static/image7.png)
 
 **Obrázek 4**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit záložky (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image8.png))
 
-
 Po dokončení Průvodce nakonfigurovat zdroj dat, ObjectDataSource s deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](batch-updating-vb/samples/sample1.aspx)]
 
@@ -87,14 +77,11 @@ V tuto chvíli má tři BoundFields v prvku GridView (`ProductName`, `CategoryNa
 > [!NOTE]
 > Prozkoumali jsme vytvoření a úprava vlastností TemplateField v [přizpůsobení rozhraní pro úpravu dat](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb.md) kurzu. Projdeme kroky převedením BoundFields ve třídě CheckBoxField do vlastností TemplateField a jejich úpravy definice rozhraní v jejich `ItemTemplate` s, ale pokud jste nevíte rady nebo potřebujete občerstvit don t váhání jako zpětná reference na tento starší kurz.
 
-
 Na prvek GridView s inteligentní značku klikněte na odkaz Upravit sloupce otevřete dialogové okno pole. V dalším kroku vyberte každé pole a klikněte na odkaz TemplateField převést toto pole.
-
 
 ![Převést existující BoundFields ve třídě CheckBoxField vlastností TemplateField](batch-updating-vb/_static/image5.gif)
 
 **Obrázek 5**: Převést existující BoundFields ve třídě CheckBoxField vlastností TemplateField
-
 
 Teď, když je každé pole TemplateField, můžeme znovu připravený k přesunutí úpravy rozhraní z `EditItemTemplate` s `ItemTemplate` s.
 
@@ -106,21 +93,17 @@ Umožní s začínat `ProductName` TemplateField. Klikněte na odkaz Upravit ša
 
 V dalším kroku přidejte RequiredFieldValidator k `ItemTemplate` zajistit, že uživatel zadá hodnotu pro každý produkt s názvem. Nastavte `ControlToValidate` Vlastnost ProductName; `ErrorMessage` vlastnost je nutné zadat název produktu. a `Text` vlastnost \*. Po provedení těchto doplňky `ItemTemplate`, vaše obrazovka by měla vypadat podobně jako na obrázku 6.
 
-
 [![Nyní TemplateField ProductName obsahuje textové pole a RequiredFieldValidator](batch-updating-vb/_static/image6.gif)](batch-updating-vb/_static/image9.png)
 
 **Obrázek 6**: `ProductName` TemplateField teď obsahuje textové pole a RequiredFieldValidator ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image10.png))
-
 
 Pro `UnitPrice` úpravy rozhraní, začněte tím, že kopírování z textového pole `EditItemTemplate` k `ItemTemplate`. V dalším kroku umístit $ před do textového pole a nastavte jeho `ID` vlastnost UnitPrice a jeho `Columns` vlastnost na 8.
 
 Přidejte také CompareValidator k `UnitPrice` s `ItemTemplate` tak, aby byl tímto uživatelem zadaná hodnota platná měny hodnotu větší než nebo rovna hodnotě 0,00 USD. Nastavit program pro ověření s `ControlToValidate` vlastnost UnitPrice, jeho `ErrorMessage` vlastnost, musíte zadat hodnotu měny platný. Prosím vynechat všechny měny symboly., jeho `Text` vlastnost \*, jeho `Type` vlastnost `Currency`, jeho `Operator` vlastnost `GreaterThanEqual`a jeho `ValueToCompare` vlastnost na hodnotu 0.
 
-
 [![Umožňuje přidat CompareValidator zajistit Zadaná cena je nezáporná hodnota měny](batch-updating-vb/_static/image7.gif)](batch-updating-vb/_static/image11.png)
 
 **Obrázek 7**: Přidání CompareValidator zajistit Zadaná cena je nezáporná hodnota měny ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image12.png))
-
 
 Pro `Discontinued` TemplateField můžete použít políčko již definována v `ItemTemplate`. Stačí nastavit jeho `ID` k vyřazeno a jeho `Enabled` vlastnost `True`.
 
@@ -131,51 +114,39 @@ Pro `Discontinued` TemplateField můžete použít políčko již definována v 
 > [!NOTE]
 > [Přizpůsobení rozhraní pro úpravu dat](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb.md) kurz obsahuje důkladné a kompletní informace o přizpůsobení šablony zahrnout DropDownList textové pole na rozdíl od. Zde uvedené kroky jsou kompletní, zobrazí se jim tersely. Pro podrobnější pohled na vytváření a konfiguraci kategorií DropDownList, vraťte se do [přizpůsobení rozhraní pro úpravu dat](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb.md) kurzu.
 
-
 Přetáhněte z panelu nástrojů do DropDownList `CategoryName` TemplateField s `ItemTemplate`a nastavte jeho `ID` k `Categories`. V tuto chvíli jsme byste obvykle definovali zdroj dat s DropDownLists prostřednictvím inteligentních značek, vytváření nového prvku ObjectDataSource. Ale tato možnost přidá ObjectDataSource v rámci `ItemTemplate`, jejímž výsledkem bude ObjectDataSource instance vytvořené pro každý řádek prvku GridView. Místo toho umožní vytvořit ObjectDataSource mimo GridView s vlastností TemplateField s. Ukončit úpravu šablony a prvku ObjectDataSource přetáhněte z panelu nástrojů na Návrhář pod `ProductsDataSource` ObjectDataSource. Název nového prvku ObjectDataSource `CategoriesDataSource` a nakonfigurujte ho na použití `CategoriesBLL` třída s `GetCategories` metody.
-
 
 [![Konfigurace ObjectDataSource pomocí třídy CategoriesBLL](batch-updating-vb/_static/image8.gif)](batch-updating-vb/_static/image13.png)
 
 **Obrázek 8**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image14.png))
 
-
 [![Načtení kategorie dat pomocí GetCategories – metoda](batch-updating-vb/_static/image9.gif)](batch-updating-vb/_static/image15.png)
 
 **Obrázek 9**: Načtení dat pomocí kategorie `GetCategories` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image16.png))
 
-
 Protože tento prvek ObjectDataSource slouží pouze k načtení dat, nastavte rozevírací seznamy na kartách UPDATE a DELETE na (žádný). Kliknutím na Dokončit dokončíte průvodce.
-
 
 [![Sada rozevírací seznamy v aktualizaci a odstranění karty na (žádný)](batch-updating-vb/_static/image10.gif)](batch-updating-vb/_static/image17.png)
 
 **Obrázek 10**: Nastavte rozevírací seznam obsahuje v aktualizaci a odstranění karty (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image18.png))
 
-
 Po dokončení průvodce, `CategoriesDataSource` s deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](batch-updating-vb/samples/sample2.aspx)]
 
 S `CategoriesDataSource` vytvoření a konfiguraci, vrátit `CategoryName` TemplateField s `ItemTemplate` a z s DropDownList inteligentní značky, klikněte na odkaz zvolit zdroj dat. V Průvodci konfigurací zdroje dat, vyberte `CategoriesDataSource` možnost v prvním rozevíracím seznamu a rozhodnout, že `CategoryName` použitý pro zobrazení a `CategoryID` jako hodnotu.
 
-
 [![Svázat CategoriesDataSource DropDownList](batch-updating-vb/_static/image11.gif)](batch-updating-vb/_static/image19.png)
 
 **Obrázek 11**: DropDownList k vytvoření vazby `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image20.png))
 
-
 V tomto okamžiku `Categories` DropDownList uvádí všechny kategorie, ale to není automaticky, ale vyberte odpovídající kategorii produktu, který je vázán na řádku prvku GridView. K tomu budeme muset nastavit `Categories` DropDownList s `SelectedValue` produktu s `CategoryID` hodnotu. Klikněte na odkaz upravit vlastnosti DataBindings z DropDownList s inteligentním a přidružte `SelectedValue` vlastnost s `CategoryID` datové pole, jak ukazuje obrázek 12.
-
 
 ![Hodnota ID kategorie produktů s svázat vlastnost SelectedValue DropDownList s](batch-updating-vb/_static/image12.gif)
 
 **Obrázek 12**: Vytvoření vazby produkt s `CategoryID` hodnota, která má DropDownList s `SelectedValue` vlastnost
 
-
 Jeden poslední problém zůstane: Pokud máte t kódu produktu `CategoryID` zadána hodnota potom příkaz vázání dat na `SelectedValue` způsobí výjimku. Důvodem je, že DropDownList obsahuje pouze položky v kategoriích a nenabízí možnost pro tyto produkty, které mají `NULL` databáze hodnotu `CategoryID`. Chcete-li to napravit, nastavte DropDownList s `AppendDataBoundItems` vlastnost `True` a přidat novou položku do DropDownList, vynechání `Value` vlastnost z deklarativní syntaxe. To znamená, ujistěte se, že `Categories` DropDownList s deklarativní syntaxe vypadá takto:
-
 
 [!code-aspx[Main](batch-updating-vb/samples/sample3.aspx)]
 
@@ -184,32 +155,25 @@ Poznámka: Jak `<asp:ListItem Value="">` --vyberte jednu – má jeho `Value` at
 > [!NOTE]
 > Existuje problém potenciální výkon a škálovatelnost tady, který je za zmínku. Protože každý řádek obsahuje DropDownList, který používá `CategoriesDataSource` jako zdroj dat `CategoriesBLL` třída s `GetCategories` volaná metoda *n* za stránku navštíví, kde *n* je počet řádky v prvku GridView. Tyto *n* volání `GetCategories` za následek *n* dotazy do databáze. Tento dopad na databázi může trh díky ukládání do mezipaměti vrácené kategorií v mezipaměti na základě žádosti nebo prostřednictvím ukládání do mezipaměti vrstvy pomocí ukládání do mezipaměti, závislost nebo velmi na základě krátkého formátu času vypršení platnosti SQL. Další informace o základě požadavku možnost ukládání do mezipaměti najdete v článku [ `HttpContext.Items` Store mezipaměti jednotlivé žádosti](http://aspnet.4guysfromrolla.com/articles/060904-1.aspx).
 
-
 ## <a name="step-4-completing-the-editing-interface"></a>Krok 4: Dokončení úprav rozhraní
 
 Jsme ve provedli několik změn do šablon GridView s bez pozastavení zobrazíte náš postup. Chcete-li zobrazit náš postup prostřednictvím prohlížeče chvíli trvat. Jak ukazuje obrázek 13, každý řádek je vykreslen pomocí jeho `ItemTemplate`, který obsahuje buňky s úpravy rozhraní.
-
 
 [![Upravit je každý řádek prvku GridView](batch-updating-vb/_static/image13.gif)](batch-updating-vb/_static/image21.png)
 
 **Obrázek 13**: Každý řádek prvku GridView je upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image22.png))
 
-
 Existuje několik menších problémů formátování, které jsme byste měli věnovat pozornost v tomto okamžiku. Nejprve, Všimněte si, že `UnitPrice` hodnota obsahuje čtyři desetinné čárky. Tento problém můžete vrátit `UnitPrice` TemplateField s `ItemTemplate` a z textového pole s inteligentní značky, klikněte na odkaz Upravit datové vazby. Dále určit, že `Text` vlastnost by měla být formátovaný jako číslo.
-
 
 ![Vlastnost Text naformátovat jako číslo](batch-updating-vb/_static/image14.gif)
 
 **Obrázek 14**: Formát `Text` vlastnost jako číslo
 
-
 Za druhé, vám umožňují s center zaškrtávací políčko ve `Discontinued` sloupec (spíše než to zarovnané vlevo). Klikněte na Upravit sloupce z ovládacího prvku GridView s inteligentním a vyberte `Discontinued` TemplateField ze seznamu polí v levém dolním rohu. K podrobnostem `ItemStyle` a nastavit `HorizontalAlign` vlastnost na System Center, jak ukazuje obrázek 15.
-
 
 ![System Center ukončená zaškrtávací políčko](batch-updating-vb/_static/image15.gif)
 
 **Obrázek 15**: System Center `Discontinued` zaškrtávací políčko
-
 
 V dalším kroku přidejte ovládací prvek souhrnu ověření na stránku a nastavte jeho `ShowMessageBox` vlastnost `True` a jeho `ShowSummary` vlastnost `False`. Také přidat tlačítko webové ovládací prvky, které při kliknutí na, aktualizuje uživatelské změny s. Konkrétně, přidejte dva ovládací prvky tlačítka Web, nad prvku GridView a uvedený níže, nastavení oba ovládací prvky `Text` vlastnosti k aktualizaci produktů.
 
@@ -217,23 +181,19 @@ Od GridView s úpravy rozhraní je definováno v jeho vlastností TemplateField 
 
 Po provedení výše uvedených změny formátování, přidávání ovládací prvky tlačítka a odebírání nadbytečné `EditItemTemplate` s, vaše stránka s deklarativní syntaxe by měl vypadat nějak takto:
 
-
 [!code-aspx[Main](batch-updating-vb/samples/sample4.aspx)]
 
 Obrázek 16 zobrazuje tuto stránku při prohlížení prostřednictvím prohlížeče, po přidání ovládacích prvků webového tlačítko a formátování změny.
 
-
 [![Stránka nyní obsahuje dvě tlačítka aktualizace produktů](batch-updating-vb/_static/image16.gif)](batch-updating-vb/_static/image23.png)
 
 **Obrázek 16**: Stránka nyní obsahuje dvě aktualizace produktů tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-updating-vb/_static/image24.png))
-
 
 ## <a name="step-5-updating-the-products"></a>Krok 5: Aktualizace produktů
 
 Když uživatel navštíví tuto stránku, bude proveďte své změny a klikněte na jeden z dvě tlačítka aktualizací produktů. Od tohoto okamžiku musíme nějakým způsobem uložit hodnoty uživatel zadal pro každý řádek do `ProductsDataTable` instance a předat ho do knihoven BLL metodu, která se pak předejte, který `ProductsDataTable` instance s vrstvou DAL `UpdateWithTransaction` metody. `UpdateWithTransaction` Metody, které jsme vytvořili v [předchozím kurzu](wrapping-database-modifications-within-a-transaction-vb.md), zajistí, že batch změny se pak zaktualizuje jako atomickou operaci.
 
 Vytvořit metodu s názvem `BatchUpdate` v `BatchUpdate.aspx.vb` a přidejte následující kód:
-
 
 [!code-vb[Main](batch-updating-vb/samples/sample5.vb)]
 
@@ -246,11 +206,9 @@ Dávkové aktualizace algoritmus používaný pro účely tohoto kurzu aktualizu
 > [!NOTE]
 > Po vytvoření vazby zdroje dat na GridView prostřednictvím jeho inteligentních značek, Visual Studio automaticky přiřadí klíčové hodnoty datového zdroje s primární GridView s `DataKeyNames` vlastnost. Pokud jste se neváže ObjectDataSource do prvku GridView. pomocí inteligentních značek GridView s jak je uvedeno v kroku 1, pak budete muset ručně nastavit prvek GridView s `DataKeyNames` vlastnosti ProductID za účelem přístupu k `ProductID` hodnotu pro každý řádek prostřednictvím `DataKeys` kolekce.
 
-
 Kód použitý v `BatchUpdate` je podobný, který používá v BLL s `UpdateProduct` metod, hlavní rozdíl je, že `UpdateProduct` metody pouze jediný `ProductRow` instance je načten z architektury. Kód, který se přiřadí vlastnosti `ProductRow` stejná mezi `UpdateProducts` metody a kódu v rámci `For Each` smyčky v `BatchUpdate`, jak je na celkový systém.
 
 K dokončení tohoto kurzu, musíme mít `BatchUpdate` metoda vyvolána v případě kliknutí na některý z tlačítka aktualizací produktů. Vytváření obslužných rutin událostí pro `Click` událostí, které tyto dva ovládací prvky tlačítka a přidejte následující kód do obslužné rutiny událostí:
-
 
 [!code-vb[Main](batch-updating-vb/samples/sample6.vb)]
 
@@ -264,7 +222,6 @@ K otestování tohoto kódu chvíli trvat. Navštivte `BatchUpdate.aspx` prostř
 
 Pro tyto typy situací označuje termín, zvažte použití následujících `BatchUpdateAlternate` metoda místo:
 
-
 [!code-vb[Main](batch-updating-vb/samples/sample7.vb)]
 
 `BatchMethodAlternate` začne tím, že vytvoříte nová prázdná `ProductsDataTable` s názvem `products`. Následně prochází GridView s `Rows` kolekce a pro každý řádek získá informace o daném produktu pomocí BLL s `GetProductByProductID(productID)` metody. Načtený `ProductsRow` instance má jeho vlastnosti aktualizovat stejným způsobem jako `BatchUpdate`, ale po aktualizaci řádku je importovat do `products` `ProductsDataTable` prostřednictvím DataTable s [ `ImportRow(DataRow)` metoda](https://msdn.microsoft.com/library/system.data.datatable.importrow(VS.80).aspx).
@@ -272,7 +229,6 @@ Pro tyto typy situací označuje termín, zvažte použití následujících `Ba
 Po `For Each` dokončení smyčky `products` obsahuje jeden `ProductsRow` instance pro každý řádek v prvku GridView. Od všech `ProductsRow` instancí jsou přidané do `products` (místo aktualizace), pokud jsme slepě předejte ji do `UpdateWithTransaction` metoda `ProductsTableAdapter` se pokusí vložit jednotlivých záznamů do databáze. Místo toho musíme určit, že každý z těchto řádků se změnila (nepřidáno).
 
 Toho můžete docílit tak, že přidáte novou metodu BLL s názvem `UpdateProductsWithTransaction`. `UpdateProductsWithTransaction`, jak vidíte níže, nastaví `RowState` jednotlivých `ProductsRow` instance v `ProductsDataTable` k `Modified` a poté předá `ProductsDataTable` do vrstvy DAL s `UpdateWithTransaction` – metoda.
-
 
 [!code-vb[Main](batch-updating-vb/samples/sample8.vb)]
 

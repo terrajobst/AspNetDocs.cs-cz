@@ -8,12 +8,12 @@ ms.date: 07/11/2008
 ms.assetid: 32d54638-71b2-491d-81f4-f7417a13a62f
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 986c4b109fc0e809867853da728bcd12654a80ec
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 52f3563a59647c3bc48c5c4d7e40ce8941d18268
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59394676"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132305"
 ---
 # <a name="interacting-with-the-master-page-from-the-content-page-c"></a>Interakce stránky předlohy se stránkou obsahu (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/1/8/4/184e24fa-fcc8-47fa-ac99-4b6a52d41e97/ASPNET_MasterPages_Tutorial_06_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/e/b/4/eb4abb10-c416-4ba4-9899-32577715b1bd/ASPNET_MasterPages_Tutorial_06_CS.pdf)
 
 > Zkoumá, jak volat metody, nastavte vlastnosti, další stránky předlohy se stránkou z kódu na stránce obsahu.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -45,7 +44,6 @@ Když uživatel navštíví stránku přidat nový záznam, zobrazí se mu uživ
 > [!NOTE]
 > I v případě, že zakážete prvku GridView zobrazení stavu tak, aby znovu připojí k jeho základního zdroje dat na každém postbacku, stále nezobrazí just přidá záznam vzhledem k tomu, že data svázaná s dříve v životního cyklu stránky než při přidání nového záznamu datab prvku GridView. služby ase.
 
-
 Chcete-li to napravit tak, aby právě přidali záznam se zobrazí na stránce předlohy prvku GridView na zpětné dáte pokyn, aby GridView znovu připojit ke zdroji dat potřebujeme *po* byl přidán nový záznam do databáze. To vyžaduje interakci mezi obsahem a stránky předlohy, protože je rozhraní pro přidání nového záznamu (a jeho obslužné rutiny událostí) se v obsahu stránky, ale prvku GridView, kterou je potřeba aktualizovat na stránce předlohy.
 
 Protože aktualizuje zobrazení stránky předlohy z obslužné rutiny události na stránce obsahu je jedním z nejběžnějších potřeby interakce stránky předlohy a obsahu, podíváme se na toto téma podrobněji. Soubor ke stažení pro účely tohoto kurzu obsahuje databázi Microsoft SQL Server 2005 Express Edition s názvem `NORTHWIND.MDF` na webu `App_Data` složky. Databáze Northwind ukládá produktu, zaměstnance a informace o prodeji pro fiktivní společnosti Northwind Traders.
@@ -55,24 +53,19 @@ Procházení krok 1 až pět naposledy zobrazení přidat produkty v prvku GridV
 > [!NOTE]
 > V tomto kurzu není delve do konkrétních podrobnostech pracovat s daty v ASP.NET. Kroky pro vytvoření stránky předlohy pro zobrazení dat a obsahu stránky pro vkládání dat jsou kompletní, ještě breezy. Pro podrobnější pohled na zobrazení a vkládání dat a použití ovládacích prvků SqlDataSource a ovládacího prvku GridView najdete na konci tohoto kurzu prostředků v části Další údaje.
 
-
 ## <a name="step-1-displaying-the-five-most-recently-added-products-in-the-master-page"></a>Krok 1: Zobrazení pět naposledy přidaný produktů na stránce předlohy
 
 Otevřít `Site.master` stránku předlohy a přidejte popisek a do ovládacího prvku GridView `leftContent` `<div>`. Vymazání popisku `Text` vlastnost, nastavte jeho `EnableViewState` vlastnost na hodnotu false a jeho `ID` vlastnost `GridMessage`; nastavit prvku GridView `ID` vlastnost `RecentProducts`. Z návrháře, dále rozbalte inteligentní značky prvku GridView a zvolte možnost pro vytvoření vazby na nový zdroj dat. Otevře se Průvodce konfigurací zdroje dat. Protože v databázi Northwind `App_Data` složka je databáze Microsoft SQL Server, můžete vytvořit SqlDataSource tak, že vyberete (viz obrázek 1); název ve třídě SqlDataSource `RecentProductsDataSource`.
-
 
 [![Svázat s ovládacím prvkem SqlDataSource s názvem RecentProductsDataSource prvku GridView.](interacting-with-the-master-page-from-the-content-page-cs/_static/image2.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image1.png)
 
 **Obrázek 01**: Svázat ovládací prvek SqlDataSource název prvku GridView `RecentProductsDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image3.png))
 
-
 Dalším krokem výzva k určení, co se připojit k databázi. Zvolte `NORTHWIND.MDF` databázových souborů z rozevíracího seznamu a klikněte na tlačítko Další. Protože to je poprvé, kdy jsme použili této databáze, průvodce bude nabízet k uložení připojovacího řetězce v `Web.config`. Jeho uložení připojovacího řetězce, pomocí názvu `NorthwindConnectionString`.
-
 
 [![Připojení k databázi Northwind](interacting-with-the-master-page-from-the-content-page-cs/_static/image5.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image4.png)
 
 **Obrázek 02**: Připojení k databázi Northwind ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image6.png))
-
 
 Průvodce konfigurace zdroje dat poskytuje dva prostředky, které lze zadat dotaz použitý k načtení dat:
 
@@ -81,19 +74,15 @@ Průvodce konfigurace zdroje dat poskytuje dva prostředky, které lze zadat dot
 
 Protože chceme návratové že jen pět naposledy přidaný produkty, potřebujeme zadat vlastní příkaz jazyka SQL. Pomocí následujícího dotazu SELECT:
 
-
 [!code-sql[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample1.sql)]
 
 `TOP 5` – Klíčové slovo vrací jenom prvních pět záznamů z dotazu. `Products` Primárního klíče tabulky `ProductID`, je `IDENTITY` sloupec, který nám zajišťuje, že každého nového produktu do tabulky přidat bude mít hodnotu větší než předchozí položka. Proto řazení výsledků podle `ProductID` v sestupném pořadí vrátí produkty počínaje naposledy vytvořený z nich.
-
 
 [![Vrátí pět naposledy přidané produktů](interacting-with-the-master-page-from-the-content-page-cs/_static/image8.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image7.png)
 
 **Obrázek 03**: Vrátí pět nejčastěji nedávno přidali produktů ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image9.png))
 
-
 Po dokončení průvodce se sada Visual Studio generuje dvě BoundFields pro prvek GridView zobrazíte `ProductName` a `UnitPrice` pole vrácená z databáze. Deklarativní hlavní stránky v tomto okamžiku by měl obsahovat značky podobný následujícímu:
-
 
 [!code-aspx[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample2.aspx)]
 
@@ -101,30 +90,24 @@ Jak je vidět, obsahuje značky: ovládací prvek popisek webového (`GridMessag
 
 Pomocí tohoto ovládacího prvku GridView vytvořen a jeho SqlDataSource ovládací prvek nakonfigurovat přejděte na webovou stránku prostřednictvím prohlížeče. Jak je vidět na obrázku 4, zobrazí se, že se přidala do mřížky v levém dolním rohu, který obsahuje pět naposledy produktů.
 
-
 [![Pět naposledy přidané produktů zobrazí prvku GridView.](interacting-with-the-master-page-from-the-content-page-cs/_static/image11.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image10.png)
 
 **Obrázek 04**: Pět nejčastěji nedávno přidali produktů zobrazí prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image12.png))
 
-
 > [!NOTE]
 > Nebojte se vyčistit vzhled prvku GridView. Některé návrhy zahrnují formátování zobrazených `UnitPrice` hodnotu jako měnu a použití písma a barvy pozadí ke zlepšení vzhledu mřížky.
-
 
 ## <a name="step-2-creating-a-content-page-to-add-new-products"></a>Krok 2: Vytvoření obsahu stránky pro přidání nové produkty
 
 Naše dalším krokem je vytvoření obsahu stránky, ze kterého může uživatel přidat nový produkt, který má `Products` tabulky. Přidejte novou stránku obsahu, aby `Admin` složku s názvem `AddProduct.aspx`a vytvořte mu vazbu k `Site.master` stránky předlohy. Obrázek 5 ukazuje Průzkumník řešení po přidání této stránce na webu.
 
-
 [![Přidejte novou stránku ASP.NET ke složce Admin](interacting-with-the-master-page-from-the-content-page-cs/_static/image14.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image13.png)
 
 **Obrázek 05**: Přidejte novou stránku ASP.NET `Admin` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image15.png))
 
-
 Připomínáme, že v [ *zadáním názvu, metaznaček a ostatní hlaviček HTML na stránce předlohy* ](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md) kurzu jsme vytvořili vlastní stránku základní třídu s názvem `BasePage` , který v případě, že byla vygenerována název stránky není explicitně nastavena. Přejděte `AddProduct.aspx` kódu stránky třídy a nechat ji odvodit z `BasePage` (místo z `System.Web.UI.Page`).
 
 Nakonec aktualizujte `Web.sitemap` soubor zahrnout položku pro tento účel. Přidejte následující kód pod `<siteMapNode>` pro lekce problémy pojmenování ID ovládacího prvku:
-
 
 [!code-xml[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample3.xml)]
 
@@ -132,11 +115,9 @@ Jak je znázorněno na obrázku 6, přidání tohoto `<siteMapNode>` element se 
 
 Vraťte se na `AddProduct.aspx`. V ovládacím prvku obsahu pro `MainContent` ContentPlaceHolder, přidejte ovládací prvek DetailsView a pojmenujte ho `NewProduct`. Svázat s ovládacím prvku DetailsView. nový ovládací prvek SqlDataSource s názvem `NewProductDataSource`. Jako s ovládacím prvkem SqlDataSource v kroku 1, nakonfigurovat průvodce tak, aby používal databázi Northwind a pokud se rozhodnete zadat vlastní příkaz jazyka SQL. Vzhledem k tomu, že ovládacím prvku DetailsView se použije k přidání položky do databáze, potřeba zadat současně `SELECT` příkazu a `INSERT` příkazu. Pomocí následujících `SELECT` dotazu:
 
-
 [!code-sql[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample4.sql)]
 
 Potom přidejte následující ze záložky vložení `INSERT` – příkaz:
-
 
 [!code-sql[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample5.sql)]
 
@@ -144,17 +125,14 @@ Po dokončení Průvodce přejít na ovládacím prvku DetailsView inteligentní
 
 A je to! Můžeme otestovat tuto stránku. Navštivte `AddProduct.aspx` prostřednictvím prohlížeče, zadejte název a cena (viz obrázek 6).
 
-
 [![Přidání nového produktu do databáze](interacting-with-the-master-page-from-the-content-page-cs/_static/image17.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image16.png)
 
 **Obrázek 06**: Přidání nového produktu do databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image18.png))
-
 
 Po zadání názvu a cena za nový produkt, klikněte na tlačítko Vložit. To způsobí, že formulář odeslat zpět. Na zpětné volání, ovládacím prvkem SqlDataSource společnosti `INSERT` je proveden příkaz; jeho dva parametry jsou vyplněna hodnot zadaných uživatelem v ovládacím prvku DetailsView dvou ovládacích prvků textového pole. Bohužel neexistuje žádný vizuální zpětnou vazbu, že došlo k vložení. Bylo by dobré si mají zpráva zobrazená, potvrzení, že byl přidán nový záznam. Můžu ponechte toto cvičení pro čtečku. Navíc po přidání nového záznamu v ovládacím prvku DetailsView. GridView na hlavní stránce stále zobrazuje stejné pět záznamů jako před; neobsahuje záznam právě přidali. Prozkoumáme jak to napravit v dalších krocích.
 
 > [!NOTE]
 > Kromě přidání nějakou formu vizuální zpětnou vazbu, která jsou insert proběhla úspěšně, by neváhejte se také aktualizovat zahrnout ověřování v rozhraní vkládání ovládacím prvku DetailsView. V současné době neexistuje žádné ověřování. Pokud uživatel zadá neplatná hodnota pro `UnitPrice` pole, jako například "příliš drahé," na zpětné být vyvolána výjimka, když se systém pokusí převést tento řetězec na desetinné číslo. Další informace o přizpůsobení vkládání rozhraní, přečtěte si [ *přizpůsobení rozhraní pro úpravu dat* kurzu](../../data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs.md) z mé [práce s Data sérii](../../data-access/index.md).
-
 
 ## <a name="step-3-creating-public-properties-and-methods-in-the-master-page"></a>Krok 3: Vytvoření veřejné vlastnosti a metody na stránce předlohy
 
@@ -162,11 +140,9 @@ V kroku 1 jsme přidali ovládací prvek popisek Web s názvem `GridMessage` nad
 
 Vzhledem k tomu, že ovládací prvek popisku je implementovaný jako chráněné členské proměnné v rámci stránky předlohy nelze přistupovat přímo z obsahu stránky. Chcete-li pracovat s popiskem v rámci stránky předlohy ze stránky obsahu (nebo k tomuto účelu libovolný ovládací prvek webové stránce předlohy) potřebujeme vytvořit na stránce předlohy, která poskytuje ovládací prvek nebo slouží jako proxy server, podle kterého jednoho z jeho vlastností můžou být veřejná vlastnost  získat přístup. Přidejte následující syntaxi použití modelu code-behind třídy stránky předlohy k vystavení popisku `Text` vlastnost:
 
-
 [!code-csharp[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample6.cs)]
 
 Při přidání nového záznamu `Products` tabulku z obsahu stránky `RecentProducts` GridView na hlavní stránce potřebuje znovu její podkladový zdroj dat připojit. Znovu připojit volání GridView jeho `DataBind` metoda. Protože GridView na hlavní stránce není přístupný prostřednictvím kódu programu na obsahu stránky, budeme potřeba vytvořit veřejnou metodu na stránce předlohy, která při volání, znovu připojí data k prvku GridView. Přidejte následující metodu do třídy modelu code-behind na hlavní stránce:
-
 
 [!code-csharp[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample7.cs)]
 
@@ -174,7 +150,6 @@ S `GridMessageText` vlastnost a `RefreshRecentProductsGrid` metoda na místě, s
 
 > [!NOTE]
 > Nezapomeňte k označení hlavní stránky vlastností a metod jako `public`. Pokud jste není označení explicitně těchto vlastností a metod jako `public`, nebudou přístupné z obsahu stránky.
-
 
 ## <a name="step-4-calling-the-master-pages-public-members-from-a-content-page"></a>Krok 4: Volání na stránce předlohy veřejné členy z obsahu stránky
 
@@ -193,20 +168,16 @@ Všechna rozhraní ASP.NET web pages, musí být odvozen od `Page` třídu, kter
 
 `Master` Vlastnost vrátí objekt typu [ `MasterPage` ](https://msdn.microsoft.com/library/system.web.ui.masterpage.aspx) (také umístěny ve `System.Web.UI` oboru názvů) která je základní typ, ze kterého jsou všechny stránky předlohy odvozeny z. Proto pro použití veřejné vlastnosti nebo metody definované v náš web stránku předlohy jsme musíte přetypovat `MasterPage` objekt vrácený z `Master` vlastnost příslušného typu. Protože jsme pojmenovali naše soubor předlohové stránky `Site.master`, označovala jako třída použití modelu code-behind `Site`. Proto následující kód přetypování `Page.Master` vlastnost instance třídy lokality.
 
-
 [!code-csharp[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample8.cs)]
 
 Když teď máme zasazena volného typu `Page.Master` vlastnost `Site` typ odkazujeme vlastnostem a metodám, které jsou specifické pro lokalitu. Jak ukazuje obrázek 7, veřejná vlastnost `GridMessageText` se zobrazí v rozevíracím seznamu technologie IntelliSense.
-
 
 [![Technologie IntelliSense zobrazuje veřejné vlastnosti a metody naši stránku předlohy](interacting-with-the-master-page-from-the-content-page-cs/_static/image20.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image19.png)
 
 **Obrázek 07**: Technologie IntelliSense zobrazuje naši stránku předlohy veřejné vlastnosti a metody ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image21.png))
 
-
 > [!NOTE]
 > Pokud pojmenujete vaší soubor předlohové stránky `MasterPage.master` je název třídy modelu code-behind na hlavní stránce `MasterPage`. To může vést k nejednoznačný kódu při přetypování z typu `System.Web.UI.MasterPage` do vaší `MasterPage` třídy. Stručně řečeno musíte k plnému určení typu, který se přetypování na, což může být trochu složité, při použití modelu projektu webové stránky. Moje návrhu může být buď Ujistěte se, že při vytváření stránky předlohy ji pojmenujete jinak než `MasterPage.master` nebo ještě lepší vytvořit silného typu odkaz na hlavní stránku.
-
 
 ### <a name="creating-a-strongly-typed-reference-with-themastertypedirective"></a>Vytvoření odkazu silného typu pomocí`@MasterType`– direktiva
 
@@ -216,7 +187,6 @@ Automatické generování kódu, ke kterému dochází pokaždé, když navští
 
 Použití [ `@MasterType` směrnice](https://msdn.microsoft.com/library/ms228274.aspx) informovat modul ASP.NET typ stránky obsahu stránky předlohy. `@MasterType` Směrnice může přijmout typ název stránky předlohy nebo cesta k souboru. Chcete-li určit, že `AddProduct.aspx` stránce používá `Site.master` jako jeho stránku předlohy, přidejte následující direktivy k hornímu okraji `AddProduct.aspx`:
 
-
 [!code-aspx[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample9.aspx)]
 
 Tato direktiva dá pokyn modulu ASP.NET přidání silného typu odkazu na hlavní stránku prostřednictvím vlastnosti s názvem `Master`. S `@MasterType` direktiv v místě, můžeme můžete volat `Site.master` hlavním veřejné vlastnosti a metody přímo pomocí stránky `Master` vlastnost bez žádné přetypování.
@@ -224,11 +194,9 @@ Tato direktiva dá pokyn modulu ASP.NET přidání silného typu odkazu na hlavn
 > [!NOTE]
 > Vynecháte-li `@MasterType` směrnice, syntaxe `Page.Master` a `Master` vrátí stejnou věc: objekt volného typu na hlavní stránku. Pokud zahrnete `@MasterType` pak – direktiva `Master` vrátí odkaz na zadanou stránku předlohy silného typu. `Page.Master`, ale stále vrátí volného typu odkaz. Podrobnější rozbor důvod, proč tomu tak a jak `Master` vlastnost je vytvořen při `@MasterType` – direktiva je součástí naleznete v tématu [K. Scott Allen](http://odetocode.com/blogs/scott/default.aspx)na blogu [ `@MasterType` v technologii ASP.NET 2.0](http://odetocode.com/Blogs/scott/archive/2005/07/16/1944.aspx).
 
-
 ### <a name="updating-the-master-page-after-adding-a-new-product"></a>Aktualizace stránky předlohy se stránkou po přidání nového produktu
 
 Teď, když víme, jak vyvolat veřejné vlastnosti a metody ze stránky obsahu stránky předlohy, jsme připraveni aktualizovat `AddProduct.aspx` stránce tak, aby na hlavní stránce se aktualizují po přidání nového produktu. Na začátku kroku 4 jsme vytvořili obslužnou rutinu události pro ovládací prvek DetailsView `ItemInserting` událost, která spustí ihned po nového produktu se přidala do databáze. Přidejte následující kód do této obslužné rutiny události:
-
 
 [!code-csharp[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample10.cs)]
 
@@ -236,11 +204,9 @@ Ve výše uvedeném kódu používá obě volného typu `Page.Master` vlastnost 
 
 Obrázek 8 ukazuje `AddProduct.aspx` stránku ihned po nového produktu - Scottova Soda – byla přidána do databáze. Mějte na paměti, že je název produktu právě přidali jste si poznamenali v popisku stránky předlohy a prvku GridView aktualizovala zahrnout produktu a jeho cenou.
 
-
 [![Popisek a GridView zobrazit právě přidané produktu na stránce předlohy](interacting-with-the-master-page-from-the-content-page-cs/_static/image23.png)](interacting-with-the-master-page-from-the-content-page-cs/_static/image22.png)
 
 **Obrázek 08**: Popisek stránky předlohy a GridView zobrazit Just-Added produktu ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image24.png))
-
 
 ## <a name="summary"></a>Souhrn
 

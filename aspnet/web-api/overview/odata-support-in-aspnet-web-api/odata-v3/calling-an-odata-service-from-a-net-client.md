@@ -8,12 +8,12 @@ ms.date: 02/26/2014
 ms.assetid: 6f448917-ad23-4dcc-9789-897fad74051b
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/calling-an-odata-service-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: d35c0057f5c29e399e45d0a58467de7f106d9994
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 6b5ab979518615356baaeeb824e0a621eb59a38f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59389970"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130787"
 ---
 # <a name="calling-an-odata-service-from-a-net-client-c"></a>Volání služby OData z klienta .NET (C#)
 
@@ -29,7 +29,6 @@ podle [Mike Wasson](https://github.com/MikeWasson)
 > - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) (funguje v sadě Visual Studio 2012)
 > - [Klientská knihovna pro WCF Data Services](https://msdn.microsoft.com/library/cc668772.aspx)
 > - Web API 2. (V příkladu služby OData se vytvořil pomocí webového rozhraní API 2, ale klientské aplikace nezávisí na webového rozhraní API.)
-
 
 V tomto kurzu můžu projdete kroky vytvoření klientské aplikace, která volá ze služby OData. Služba OData zveřejňuje následující entity:
 
@@ -57,7 +56,6 @@ Dále otevřete jinou instanci sady Visual Studio a vytvořte projekt konzolové
 
 > [!NOTE]
 > Zbývající kroky najdete v projektu konzoly.
-
 
 V Průzkumníku řešení klikněte pravým tlačítkem na **odkazy** a vyberte **přidat odkaz na službu**.
 
@@ -201,7 +199,6 @@ Aktualizace se provádí při volání **SaveChanges**. Ve výchozím nastavení
 
 > [!NOTE]
 > Proč PATCH a MERGE? Původní specifikaci HTTP 1.1 ([RCF 2616](http://tools.ietf.org/html/rfc2616)) nedefinuje žádné metoda protokolu HTTP se sémantikou "částečné aktualizace". Specifikace prostředí OData pro podporu částečné aktualizace definované MERGE – metoda. V roce 2010 [RFC 5789](http://tools.ietf.org/html/rfc5789) definované metodu PATCH pro částečné aktualizace. Si můžete přečíst některé z historie v tomto [blogový příspěvek](https://blogs.msdn.com/b/astoriateam/archive/2008/05/20/merge-vs-replace-semantics-for-update-operations.aspx) na blogu WCF Data Services. OPRAVA je v současné době upřednostňované nad SLOUČENÍ. Kontroler OData vytvořený generování uživatelského rozhraní webového rozhraní API podporuje obě metody.
-
 
 Pokud mají být nahrazeny celou entity (PUT sémantiku), zadejte **ReplaceOnUpdate** možnost. To způsobí, že WCF odeslat požadavek HTTP PUT.
 

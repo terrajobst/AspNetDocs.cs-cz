@@ -8,12 +8,12 @@ ms.date: 01/13/2008
 ms.assetid: 07e15538-2f29-40c6-b2e7-e6115075ac83
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/security-basics-and-asp-net-support-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8f6fb4348e6ff703d329331b908e41763f24bb1f
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 75ed2e2d0d9e15d186cf39ddd376beae99a06b30
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59402944"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132281"
 ---
 # <a name="security-basics-and-aspnet-support-c"></a>Základy zabezpečení a podpora ASP.NET (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhnout PDF](http://download.microsoft.com/download/2/F/7/2F705A34-F9DE-4112-BBDE-60098089645E/aspnet_tutorial01_Basics_cs.pdf)
 
 > Toto je první kurz v sérii kurzů, které bude zkoumat techniky pro návštěvníky prostřednictvím webového formuláře pro ověřování, autorizaci přístupu ke konkrétní stránky a funkce a správa uživatelských účtů v aplikaci ASP.NET.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -45,7 +44,6 @@ V tomto kurzu se budeme zabývat koncepty důležité zabezpečení a jaká zař
 
 > [!NOTE]
 > Zabezpečení je důležitou součástí jakékoli aplikace, která zahrnuje fyzického, technologického a zásady rozhodnutí a vyžaduje vysoký stupeň znalosti plánování a domény. V této sérii kurzů není určen jako vodítko pro vývoj zabezpečené webové aplikace. Místo toho zaměřuje konkrétně na ověřování pomocí formulářů, autorizace, uživatelských účtů a rolí. Zatímco některé koncepty zabezpečení obkroužení vyřešit tyto problémy jsou popsány v této sérii, ostatní jsou ponechána neprozkoumaných.
-
 
 ## <a name="authentication-authorization-user-accounts-and-roles"></a>Ověřování, autorizace, uživatelských účtů a rolí
 
@@ -75,11 +73,9 @@ Ověřovací pracovní postup Windows používá jednu z následujících postup
 
 Všechny tři techniky fungují přibližně stejně: když neoprávněným, anonymní žádosti o přijetí, webový server odešle zpět odpověď HTTP, která označuje, že autorizace je potřeba pokračovat. Prohlížeč zobrazí modální dialogové okno, které výzvu k zadání uživatelského jména a hesla (viz obrázek 1). Tyto informace se pak posílají zpět do webového serveru pomocí hlavičky protokolu HTTP.
 
-
 ![Modální dialogové okno se zobrazí výzva k jeho přihlašovacím údajům](security-basics-and-asp-net-support-cs/_static/image1.png)
 
 **Obrázek 1**: Modální dialogové okno se zobrazí výzva k jeho přihlašovacím údajům
-
 
 Zadané přihlašovací údaje se ověří proti Store uživatelské web server Windows. To znamená, že každý ověřený uživatel ve vaší webové aplikace musí mít účet Windows ve vaší organizaci. To je běžné ve scénářích s intranetem. Ve skutečnosti při používání integrovaného ověřování Windows v prostředí intranetu, prohlížeč automaticky poskytne webový server pověření používaná pro přihlášení k síti, a tím potlačení dialogových oken na obrázku 1. Ověřování Windows jsou skvělé pro intranetové aplikace, je obvykle bylo neproveditelné pro aplikace, vzhledem k tomu, že nechcete vytvářet účty Windows pro každého uživatele, která se zaregistruje ve vaší lokalitě.
 
@@ -93,11 +89,9 @@ Obrázek 2 ukazuje pracovní postup ověřování formulářů z vyšší úrovn
 
 Po úspěšném přihlášení uživatele patří následné žádosti HTTP lístek ověřování pomocí formulářů. Systém ověřování formulářů identifikuje pouze uživatele – je systém autorizace, která určuje, zda má uživatel přístup k požadovanému prostředku.
 
-
 ![Ověřovací pracovní postup formulářů](security-basics-and-asp-net-support-cs/_static/image2.png)
 
 **Obrázek 2**: Ověřovací pracovní postup formulářů
-
 
 Budou věnovat podrobněji ověřování pomocí formulářů mnohem podrobněji v následujících dvou kurzech[Přehled ověřování založené na formulářích](an-overview-of-forms-authentication-cs.md) a [konfigurace ověřování formulářů a témata pokročilé](forms-authentication-configuration-and-advanced-topics-cs.md). Další informace o ASP. Možnosti ověřování pro sítě, naleznete v tématu [ověřování ASP.NET](https://msdn.microsoft.com/library/eeyk640h.aspx).
 
@@ -113,7 +107,6 @@ Soubor ověřování a autorizace adres URL definovat autorizační pravidla pro
 Tyto úpravy na úrovni stránky, můžete to udělat pomocí deklarace nebo prostřednictvím kódu programu. K zobrazení pro jiný obsah než ověřené uživatele, přetáhněte jednoduše anonymní [ovládacího prvku LoginView](https://msdn.microsoft.com/library/system.web.ui.webcontrols.loginview.aspx) na stránku a do jeho AnonymousTemplate a LoggedInTemplate šablony zadejte příslušný obsah. Alternativně můžete programově určit, zda je aktuální požadavek ověřen, kdo tento uživatel je a jaké role patří (pokud existuje). Tyto informace můžete poté zobrazit nebo skrýt sloupce v mřížce nebo panelů na stránce.
 
 Tato řada obsahuje tři kurzy, které se soustředí na autorizaci. ***Autorizace na základě uživatele***zkoumá, jak omezit přístup na stránku nebo stránky v adresáři pro konkrétní uživatelské účty; ***Autorizační role na základě*** zjistí úroveň; a konečně, poskytnutí autorizační pravidla v roli ***zobrazení obsahu na základě právě protokolovány v uživatele*** tento kurz popisuje úpravy konkrétní na stránce obsah a funkce na základě uživatele na stránce. Další informace o ASP. Možnosti autorizace vaší sítě, naleznete v tématu [autorizaci ASP.NET](https://msdn.microsoft.com/library/wce3kxhd.aspx).
-
 
 ## <a name="user-accounts-and-roles"></a>Uživatelské účty a role
 
@@ -139,11 +132,9 @@ Microsoft dodává se dvěma třídami zprostředkovatele členství v rozhraní
 
 V této sérii kurzů se zaměřuje výhradně na SqlMembershipProvider.
 
-
 [![Zprostředkovatel Model umožňuje různé implementace bude bez problémů zapojen do rozhraní Framework&lt;/ strong&gt;](security-basics-and-asp-net-support-cs/_static/image4.png)](security-basics-and-asp-net-support-cs/_static/image3.png)
 
 **Obrázek 03**: Zprostředkovatel Model umožňuje různé implementace bude bez problémů zapojen do rozhraní Framework ([kliknutím ji zobrazíte obrázek v plné velikosti](security-basics-and-asp-net-support-cs/_static/image5.png))
-
 
 Výhodou podle modelu poskytovatele je, že můžete alternativní implementace vyvinutá společností Microsoft, externích dodavatelů nebo jednotlivé vývojáře a bezproblémově zapojí se do rozhraní členství. Například společnost Microsoft vydala [zprostředkovatel členství pro databáze aplikace Microsoft Access](https://download.microsoft.com/download/5/5/b/55bc291f-4316-4fd7-9269-dbf9edbaada8/sampleaccessproviders.vsi). Další informace o zprostředkovateli členství, najdete [sada nástrojů pro poskytovatele](https://msdn.microsoft.com/asp.net/aa336558.aspx), která obsahuje návod zprostředkovateli členství, ukázka vlastních poskytovatelů, více než 100 stránky dokumentace na podle modelu poskytovatele a dokončení zdrojový kód pro předdefinované zprostředkovatele členství (konkrétně ActiveDirectoryMembershipProvider a SqlMembershipProvider).
 

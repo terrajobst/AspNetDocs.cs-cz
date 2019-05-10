@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 5b982451-547b-4a2f-a5dc-79bc64d84d40
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-build-process
 msc.type: authoredcontent
-ms.openlocfilehash: 6f526b9842e02031b54b0a7519486ef8aa69021b
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 802d93f7ca987d018967275bae68b8c56d883a25
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59397393"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130943"
 ---
 # <a name="understanding-the-build-process"></a>Vysvětlení procesu sestavení
 
@@ -25,7 +25,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > 
 > > [!NOTE]
 > > V předchozím tématu [vysvětlení souboru projektu](understanding-the-project-file.md), popsané klíčové komponenty souboru projektu MSBuild a představil nový koncept rozdělte soubory projektu pro podporu nasazení na víc cílových prostředí. Pokud již nejste obeznámeni s těchto konceptů, měli byste zkontrolovat [vysvětlení souboru projektu](understanding-the-project-file.md) předtím, než začnete Procházet v tomto tématu.
-
 
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
@@ -64,54 +63,40 @@ Ukázkové řešení můžete použít pro sledování tohoto procesu podrobněj
 > [!NOTE]
 > Pokyny k přizpůsobení souborů projektu specifických pro prostředí pro prostředí serveru, naleznete v tématu [nakonfigurovat vlastnosti nasazení pro cílové prostředí](../configuring-server-environments-for-web-deployment/configuring-deployment-properties-for-a-target-environment.md).
 
-
 ## <a name="invoking-the-build-and-deployment-process"></a>Vyvolání sestavení a proces nasazení
 
 K nasazení řešení Správce kontaktů do testovacího prostředí pro vývojáře, vývojář běží *publikovat Dev.cmd* souboru příkazů. Tím se vyvolá MSBuild.exe, určení *Publish.proj* jako souboru projektu pro spuštění a *Env Dev.proj* jako hodnotu parametru.
 
-
 [!code-console[Main](understanding-the-build-process/samples/sample1.cmd)]
-
 
 > [!NOTE]
 > **/Fl** přepnout (zkratka pro **/fileLogger**) protokoluje výstup sestavení do souboru s názvem *msbuild.log* v aktuálním adresáři. Další informace najdete v tématu [MSBuild Command Line Reference](https://msdn.microsoft.com/library/ms164311.aspx).
 
-
 V tomto okamžiku MSBuild spustí, načte *Publish.proj* soubor a spustí zpracování pokyny v něm. První instrukce říká MSBuild pro import projektu souboru, který **TargetEnvPropsFile** parametr určuje.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample2.xml)]
-
 
 **TargetEnvPropsFile** určuje parametr *Env Dev.proj* souboru, takže MSBuild sloučí obsah *Env Dev.proj* soubor do  *Publish.proj* souboru.
 
 Další prvky, které MSBuild zjistí v souboru sloučeného projektu jsou vlastnosti skupiny. Vlastnosti se zpracovávají v pořadí, v jakém jsou uvedeny v souboru. Nástroj MSBuild vytvoří pár klíč hodnota pro každou vlastnost zajištění, že jsou splněny všechny zadané podmínky. Vlastnosti definované dále v souboru se přepíšou všechny vlastnosti se stejným názvem definovali dříve v souboru. Představme si třeba, **OutputRoot** vlastnosti.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample3.xml)]
-
 
 Když MSBuild zpracovává první **OutputRoot** elementu, poskytuje s podobným názvem parametr nebyl zadán, nastaví hodnotu vlastnosti **OutputRoot** vlastnost **... \Publish\Out**. Pokud se setká druhý **OutputRoot** element, pokud je podmínka vyhodnocena jako **true**, přepíše hodnotu **OutputRoot** vlastnost s hodnotou **OutDir** parametru.
 
 Další prvek, který zjistí MSBuild je skupina jedné položky, který obsahuje položku s názvem **ProjectsToBuild**.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample4.xml)]
-
 
 Nástroj MSBuild zpracovává tento pokyn vytvořením seznamu položek s názvem **ProjectsToBuild**. V takovém případě seznamu položek obsahuje pouze jednu hodnotu&#x2014;cestu a název souboru řešení.
 
 V tomto okamžiku zbývající prvky jsou cíle. Cíle jsou zpracována jinak z vlastností a položek&#x2014;v podstatě se zpracuje cílů, pokud jsou buď explicitně zadaná uživatelem nebo vyvolat jiný konstruktor v rámci souboru projektu. Vzpomeňte si, že otevírání **projektu** značka zahrnuje **defaulttargets –** atribut.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample5.xml)]
-
 
 Toto dá pokyn MSBuild, který má být vyvolán **FullPublish** zadán cíl, není-li cíle při vyvolání MSBuild.exe. **FullPublish** cíl neobsahuje žádné úkoly; místo toho ji jednoduše určuje seznam závislostí.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample6.xml)]
-
 
 Tato závislost říká MSBuild uvedeném v pořadí ke spuštění **FullPublish** cíl, potřebuje k vyvolání tento seznam cílů v uvedeném pořadí:
 
@@ -125,16 +110,13 @@ Tato závislost říká MSBuild uvedeném v pořadí ke spuštění **FullPublis
 
 **Vyčistit** cíl v podstatě odstraní výstupnímu adresáři a veškerý jeho obsah jako příprava pro nové sestavení.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample7.xml)]
-
 
 Všimněte si, že obsahuje cíl **ItemGroup** elementu. Při definování vlastností nebo položek v rámci **cílové** elementu, kterou vytváříte *dynamické* vlastností a položek. Jinými slovy vlastnosti nebo položky nebudou zpracovány dokud je cíl proveden. Výstupní adresář nemusí existovat nebo obsahovat všechny soubory až do zahájení procesu sestavení, takže nemůže vytvořit  **\_soubory FilesToDelete** jako statické položky seznamu, budete muset počkat, dokud probíhá spuštění. V důsledku toho sestavení seznamu jako dynamické položky v rámci cíle.
 
 > [!NOTE]
 > V tomto případě vzhledem k tomu, **Vyčistit** cíl je první provádět, není nutné skutečné na použití skupiny dynamické položky. Je však vhodné použít dynamické vlastnosti a položky v tomto typu scénáře, protože můžete chtít provést cíle v jiném pořadí v určitém okamžiku.  
 > Také by měl cílem vyhnout se deklarace položky, které se nikdy nepoužívá. Pokud máte položky, které budou použity pouze konkrétní cíl, zvažte umístění uvnitř cíl, který chcete odebrat všechny zbytečnou režii v procesu sestavení.
-
 
 Dynamické položky jste si poznamenali, **Vyčistit** cíl je celkem jasné a využívá integrovanou **zpráva**, **odstranit**, a **removedir –** úlohy:
 
@@ -147,9 +129,7 @@ Dynamické položky jste si poznamenali, **Vyčistit** cíl je celkem jasné a v
 
 **BuildProjects** cíl v podstatě sestavení všech projektů v ukázkovém řešení.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample8.xml)]
-
 
 Tento cíl se podrobně popsány v některých v předchozím tématu [vysvětlení souboru projektu](understanding-the-project-file.md), pro ilustraci, jak úlohy a cíle odkazovat vlastností a položek. V tuto chvíli vás zajímají hlavně **MSBuild** úloh. Tento úkol můžete použít k sestavení více projektů. Úloha nevytvoří nové instance nástroje MSBuild.exe; používá aktuální spuštěné instance pro každý projekt sestavit. Klíčové body zájmu v tomto příkladu jsou vlastnosti nasazení:
 
@@ -159,14 +139,11 @@ Tento cíl se podrobně popsány v některých v předchozím tématu [vysvětle
 > [!NOTE]
 > **Balíčku** cílové vyvolá webového publikování kanálu (WPP), který poskytuje integraci nástroje MSBuild a nasazení webu. Pokud chcete podívejte se na předdefinované cíle, které poskytuje WPP kontrolu *Microsoft.Web.Publishing.targets* souboru ve složce % PROGRAMFILES (x 86) %\MSBuild\Microsoft\VisualStudio\v10.0\Web.
 
-
 ### <a name="the-gatherpackagesforpublishing-target"></a>Cíl GatherPackagesForPublishing
 
 Pokud jste studovat **GatherPackagesForPublishing** cíl, můžete si všimnout, že neobsahuje ve skutečnosti žádné úlohy. Místo toho obsahuje skupinu jednu položku, která definuje tři dynamické položky.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample9.xml)]
-
 
 Tyto položky najdete balíčky pro nasazení, které byly vytvořeny při **BuildProjects** byl cíl spuštěn. Můžete nelze definovat tyto položky staticky v souboru projektu, protože soubory, na které odkazují na položky neexistují až **BuildProjects** je cíl proveden. Místo toho musíte položky definované dynamicky v rámci cíl, který není vyvolána, dokud nebude po **BuildProjects** je cíl proveden.
 
@@ -177,7 +154,6 @@ Položky nejsou použity uvnitř tohoto cíle&#x2014;tento cíl sestavení jedno
 > [!NOTE]
 > Soubor .deploymanifest se vygeneruje, když vytváříte projekt databáze a používá stejné schéma jako soubor projektu MSBuild. Obsahuje všechny informace potřebné k nasazení databáze, včetně umístění schéma databáze (.dbschema) a podrobnosti o skripty před a po nasazení. Další informace najdete v tématu [přehled z databáze sestavení a nasazení](https://msdn.microsoft.com/library/aa833165.aspx).
 
-
 Získáte další informace o způsobu nasazení balíčků a manifesty nasazení databáze vytváří a používají v [sestavení a balení projektů webových aplikací](building-and-packaging-web-application-projects.md) a [nasazení databázové projekty](deploying-database-projects.md).
 
 ### <a name="the-publishdbpackages-target"></a>Cíl PublishDbPackages
@@ -186,9 +162,7 @@ Stručně vzato **PublishDbPackages** cílové vyvolá VSDBCMD nástroj pro nasa
 
 Napřed si všimněte, že obsahuje počáteční značka **výstupy** atribut.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample10.xml)]
-
 
 Toto je příklad *dávkování cíle*. V souborech projektu MSBuild dávkování je technika pro iterace přes kolekce. Hodnota **výstupy** atribut, **"% (DbPublishPackages.Identity)"**, odkazuje **Identity** vlastností metadat **DbPublishPackages**  seznam položek. Tento typ notation **Outputs=%***(ItemList.ItemMetadataName)*, je přeložen jako:
 
@@ -198,26 +172,20 @@ Toto je příklad *dávkování cíle*. V souborech projektu MSBuild dávkován�
 > [!NOTE]
 > **Identita** je jedním z [integrovaná metadata hodnoty](https://msdn.microsoft.com/library/ms164313.aspx) , která je přiřazená každé položce při vytvoření. Odkazuje na hodnotu **zahrnout** atribut **položky** element&#x2014;jinými slovy, cesta a název souboru položky.
 
-
 V takovém případě vzhledem k tomu, že by neměla existovat více než jednu položku se stejným cestu a název souboru, v podstatě spolupracujeme s velikostí dávky jednoho. Cílem je provedena jednou pro každý balíček databáze.
 
 Zobrazí se podobná zápis ve  **\_Cmd** vlastnost, která vytvoří příkaz VSDBCMD pomocí příslušných přepínačů.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample11.xml)]
-
 
 V takovém případě **%(DbPublishPackages.DatabaseConnectionString)**, **%(DbPublishPackages.TargetDatabase)**, a **%(DbPublishPackages.FullPath)** všechny najdete metadata hodnot **DbPublishPackages** kolekci položek.  **\_Cmd** vlastnost používá **Exec** úkol, který vyvolá příkaz.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample12.xml)]
-
 
 V důsledku tohoto zápisu **Exec** úloh vytvoří na základě jedinečných kombinací dávky **DatabaseConnectionString**, **TargetDatabase**a **FullPath** hodnoty metadat a tato úloha spustí jednou pro každé dávky. Toto je příklad *dávkování úloh*. Nicméně, protože cílové úrovni dávkování má již rozdělen naše kolekce položek do dávek jedné položky **Exec** úkol se spustí jednou a jen jednou pro každou iteraci cíle. Jinými slovy tato úloha vyvolá nástroj VSDBCMD jednou pro každý balíček databáze v rámci řešení.
 
 > [!NOTE]
 > Další informace o cíl a dávkové zpracování úloh, naleznete v části nástroje MSBuild [dávkování](https://msdn.microsoft.com/library/ms171473.aspx), [Metadata položek v dávkování cíle](https://msdn.microsoft.com/library/ms228229.aspx), a [Metadata položek v dávkování úloh](https://msdn.microsoft.com/library/ms171474.aspx).
-
 
 ### <a name="the-publishwebpackages-target"></a>Cíl PublishWebPackages
 
@@ -228,15 +196,11 @@ Už v tomto okamžiku jste vyvolat **BuildProjects** cíl, který generuje balí
 
 Stejně jako **PublishDbPackages** cíl, **PublishWebPackages** target používá k zajištění, že cíl je provede jednou pro každý balíček webové dávkování cíle.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample13.xml)]
-
 
 V rámci cíle **Exec** úkolů se používá ke spuštění *deploy.cmd* souboru pro každý web balíček.
 
-
 [!code-xml[Main](understanding-the-build-process/samples/sample14.xml)]
-
 
 Další informace o konfiguraci nasazení webových balíčků naleznete v tématu [sestavení a balení projektů webových aplikací](building-and-packaging-web-application-projects.md).
 

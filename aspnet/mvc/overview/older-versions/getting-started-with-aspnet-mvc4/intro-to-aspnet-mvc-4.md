@@ -8,12 +8,12 @@ ms.date: 08/15/2012
 ms.assetid: ed66530a-04d5-49eb-b76a-85be1f57c437
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: ecc0733c2850bc157c7ee5b251787152393481fc
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 9762ac77f7460cc123e67b9eb57a17f4b83ed54c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59385246"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129876"
 ---
 # <a name="intro-to-aspnet-mvc-4"></a>Úvod do ASP.NET MVC 4
 
@@ -36,12 +36,10 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 >
 > V tomto kurzu byla zapsána od Ricka Andersona ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) ).
 
-
 ## <a name="what-youll-build"></a>Co budete vytvářet
 
 > [!NOTE]
 > Pokud v tomto kurzu je k dispozici aktualizovaná verze [tady](../../getting-started/introduction/getting-started.md) pomocí [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013). Nové kurz používá ASP.NET MVC 5, která nabízí mnoho vylepšení v porovnání s v tomto kurzu.
-
 
 Budete implementujte jednoduchou aplikaci výpis film, který podporuje vytváření, úprav, vyhledávání a zobrazení videa z databáze. Níže jsou uvedeny dva snímky obrazovky z aplikace, kterou vytvoříte. Stránka zobrazující seznam videa z databáze obsahuje:
 

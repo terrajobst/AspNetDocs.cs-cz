@@ -8,12 +8,12 @@ ms.date: 07/17/2006
 ms.assetid: 49d8a66c-3ea8-4087-839f-179d1d94512a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 14b9070a462741aab7230963e3e1298368b8e6aa
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: bf3e7ffe6122db33f8cf28f7544fdfa064f9c612
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59420988"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131165"
 ---
 # <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-c"></a>Zpracování výjimek na úrovni knihoven BLL a DAL na stránce ASP.NET (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_18_CS.exe) nebo [stahovat PDF](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/datatutorial18cs1.pdf)
 
 > V tomto kurzu uvidíme, jak zobrazit popisné a informativní chybová zpráva při vložení, aktualizaci nebo odstranění operace datům v technologii ASP.NET ovládací prvek webového dojde k výjimce.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -44,16 +43,13 @@ V předchozím kurzu jsme vytvořili upravovat prvek GridView s právě dvě pol
 
 Pro tento scénář budeme potřebovat další přetížení `UpdateProduct` metody, který přijímá čtyři parametry: název produktu, cena za jednotku, jednotky na skladě a ID. Přidejte následující metodu do `ProductsBLL` třídy:
 
-
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/samples/sample1.cs)]
 
 Pomocí této metody kompletní jsme připraveni vytvořit stránku ASP.NET, která umožňuje upravit tyto čtyři pole konkrétního produktu. Otevřít `ErrorHandling.aspx` stránku `EditInsertDelete` složky a přidat na stránku prostřednictvím návrháře GridView. Svázání prvku GridView nový prvek ObjectDataSource, mapování `Select()` metodu `ProductsBLL` třídy `GetProducts()` metoda a `Update()` metodu `UpdateProduct` přetížení právě vytvořili.
 
-
 [![Použijte přetížení metody UpdateProduct, která přijímá čtyři vstupní parametry](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image2.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image1.png)
 
 **Obrázek 1**: Použití `UpdateProduct` přetížení, že přijímá čtyři vstupní parametry metody ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image3.png))
-
 
 Tím se vytvoří ObjectDataSource s `UpdateParameters` kolekce s čtyři parametry a GridView s polem pro každé pole produktu. Deklarativní ObjectDataSource přiřadí `OldValuesParameterFormatString` vlastnost hodnota `original_{0}`, které způsobí výjimku, protože naše třída BLL Neočekáváme, že vstupní parametr s názvem `original_productID` předat. Nezapomeňte odebrat toto nastavení zcela z deklarativní syntaxe (nebo ji nastavte na výchozí hodnotu `{0}`).
 
@@ -61,40 +57,31 @@ V dalším kroku Zredukovat GridView zahrnout pouze `ProductName`, `QuantityPerU
 
 V předchozím kurzu jsme se podívali na tom, jak formátovat `UnitPrice` Vlastnost BoundField jako měnu v režimu jen pro čtení i v režimu úprav. Pojďme si stejné tady. Připomínáme, že to vyžaduje nastavení vlastnost BoundField `DataFormatString` vlastnost `{0:c}`, jeho `HtmlEncode` vlastnost `false`a jeho `ApplyFormatInEditMode` k `true`, jak je znázorněno na obrázku 2.
 
-
 [![Nakonfigurovat vlastnost UnitPrice BoundField zobrazení jako měna](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image5.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image4.png)
 
 **Obrázek 2**: Konfigurace `UnitPrice` Vlastnost BoundField chcete zobrazit ve formátu měny ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image6.png))
 
-
 Formátování `UnitPrice` jako měnu v rozhraní úprav vyžaduje vytvoření obslužné rutiny události pro prvku GridView `RowUpdating` událost, která analyzuje řetězec ve formátu měny do `decimal` hodnotu. Vzpomeňte si, že `RowUpdating` obslužné rutiny události z poslední kurz zkontrolovány také zajistit, aby uživatel zadat `UnitPrice` hodnotu. Ale pro účely tohoto kurzu povolíme uživatele chcete vynechat, nechte cena.
-
 
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/samples/sample2.cs)]
 
 Zahrnuje naše GridView `QuantityPerUnit` Vlastnost BoundField, ale tato vlastnost BoundField by měly být pouze pro účely zobrazení a neměla by být upravitelné uživatelem. Toto uspořádání, stačí nastavit BoundFields `ReadOnly` vlastnost `true`.
 
-
 [![Nastavte vlastnost QuantityPerUnit BoundField jen pro čtení](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image8.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image7.png)
 
 **Obrázek 3**: Ujistěte se, `QuantityPerUnit` Vlastnost BoundField jen pro čtení ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image9.png))
 
-
 A konečně zaškrtněte políčko Povolit úpravy z inteligentních značek v prvku GridView. Po dokončení těchto kroků `ErrorHandling.aspx` stránky návrháře vypadat podobně jako na obrázku 4.
-
 
 [![Odeberte všechny kromě potřebnou BoundFields a kontrola povolit úpravy zaškrtávací políčko](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image11.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image10.png)
 
 **Obrázek 4**: Odeberte všechny kromě the potřeby BoundFields a zaškrtněte políčko Povolit úpravy ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image12.png))
 
-
 V tuto chvíli máme seznam všech produktů `ProductName`, `QuantityPerUnit`, `UnitPrice`, a `UnitsInStock` pole; však pouze `ProductName`, `UnitPrice`, a `UnitsInStock` pole lze upravovat.
-
 
 [![Uživatelé mohou nyní snadno upravit produkty, názvy, ceny a jednotky v uložených pole](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image14.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image13.png)
 
 **Obrázek 5**: Uživatelé mohou nyní snadno upravit produkty, které se názvy, ceny a jednotky v zásobách pole ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image15.png))
-
 
 ## <a name="step-2-gracefully-handling-dal-level-exceptions"></a>Krok 2: Řádně zpracování výjimek na úrovni vrstvy DAL
 
@@ -104,11 +91,9 @@ V závislosti na konfiguraci webové aplikace a určuje, jestli navštívený ap
 
 Obrázek 6 se zobrazuje obrazovka došlo při pokusu o aktualizaci produktu bez zadání `ProductName` hodnotu. Toto je výchozí podrobnou chybovou zprávu se zobrazí, když přes něj procházejí `localhost`.
 
-
 [![Vynechání podrobnosti výjimky budou zobrazovaný název produktu](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image17.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image16.png)
 
 **Obrázek 6**: Vynechání produktu název bude zobrazení Podrobnosti o výjimce ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image18.png))
-
 
 Tyto podrobnosti výjimky jsou užitečné při testování aplikace, nabízí ten samý koncového uživatele s obrazovkou, i v případě výjimky je menší než ideální. Koncový uživatel nejspíš nebude vědět, co `NoNullAllowedException` je nebo důvod, proč se způsobilo. Lepším řešením je uživateli zprostředkovali přívětivější zpráva s vysvětlením, že došlo k potížím při pokusu o aktualizaci produktu.
 
@@ -116,14 +101,11 @@ Pokud dojde k výjimce při provádění této operace, události po úrovně pr
 
 Začněte tím, že přidáte popisek na stránku ASP.NET, nastavení jeho `ID` vlastnost `ExceptionDetails` a vymazání jeho `Text` vlastnost. Pokud chcete vykreslení oko uživatele do této zprávy, nastavte jeho `CssClass` vlastnost `Warning`, tedy třídu šablony stylů CSS, přidali jsme do `Styles.css` souboru v předchozím kurzu. Připomínáme, že tato třída šablon stylů CSS způsobí, že popisek zobrazený červené, kurzíva, tučné písmo, velmi velkým písmem.
 
-
 [![Přidání ovládacího prvku popisek na stránku](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image20.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image19.png)
 
 **Obrázek 7**: Přidání ovládacího prvku popisek na stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image21.png))
 
-
 Protože chceme, aby tento popisek webový ovládací prvek uvidí pouze ihned poté, co došlo k výjimce, nastavte jeho `Visible` vlastnost na hodnotu false v `Page_Load` obslužné rutiny události:
-
 
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/samples/sample3.cs)]
 
@@ -132,21 +114,16 @@ S tímto kódem, na první návštěvě stránky a následné zpětného odeslá
 > [!NOTE]
 > Můžeme odebrat také nezbytná pro nastavení `ExceptionDetails` ovládacího prvku `Visible` vlastnost `Page_Load` přiřazením jeho `Visible` vlastnost `false` v deklarativní syntaxe a zakázání svůj stav zobrazení (nastavení jeho `EnableViewState` vlastnost `false`). Použijeme tuto alternativním přístupem v budoucích kurzech.
 
-
 Pomocí ovládacího prvku popisku přidali, naším dalším krokem je vytvoření obslužné rutiny události pro prvku GridView `RowUpdated` událostí. V Návrháři vyberte prvku GridView, přejít do okna Vlastnosti a klikněte ikonu blesku, výpis událostí prvku GridView. Musí již být položka existuje prvku GridView `RowUpdating` události, jako jsme vytvořili dříve v tomto kurzu obslužnou rutinu události pro tuto událost. Vytvořte obslužnou rutinu události pro `RowUpdated` také události.
-
 
 ![Vytvořte obslužnou rutinu události pro událost RowUpdated metody prvku GridView.](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image22.png)
 
 **Obrázek 8**: Vytvořte obslužnou rutinu události pro prvku GridView `RowUpdated` událostí
 
-
 > [!NOTE]
 > Můžete také vytvořit obslužnou rutinu události prostřednictvím rozevírací seznamy v horní části souboru kódu na pozadí třídy. Vyberte z rozevíracího seznamu na levé straně prvku GridView a `RowUpdated` událostí než ten, na pravé straně.
 
-
 Vytvoření této obslužné rutiny události bude přidejte následující kód do třídy modelu code-behind stránky ASP.NET:
-
 
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/samples/sample4.cs)]
 
@@ -164,29 +141,24 @@ Náš kód, pak by měl zkontrolujte `Exception` není `null`, což znamená, ž
 
 Tento následující kód provede tyto cíle:
 
-
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/samples/sample5.cs)]
 
 Tato obslužná rutina události začíná tak, že zkontrolujete, jestli `e.Exception` je `null`. Pokud ne, `ExceptionDetails` popisku `Visible` je nastavena na `true` a jeho `Text` vlastnost "Došlo k potížím při aktualizaci produktu." Podrobnosti o skutečné výjimce, která byla vydána jsou umístěny v `e.Exception` objektu `InnerException` vlastnost. Prozkoumat Tento vnitřní výjimka, a pokud určitého typu, se připojí další, užitečné zprávy `ExceptionDetails` popisku `Text` vlastnost. A konečně `ExceptionHandled` a `KeepInEditMode` obě vlastnosti jsou nastaveny na `true`.
 
 Obrázek 9 ukazuje snímek obrazovky na této stránce při vynechání název produktu; Obrázek 10 ukazuje výsledky při zadávání neplatné `UnitPrice` hodnotu (-50).
 
-
 [![Vlastnost ProductName BoundField musí obsahovat hodnotu](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image24.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image23.png)
 
 **Obrázek 9**: `ProductName` Vlastnost BoundField musí obsahovat hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image25.png))
-
 
 [![Záporné hodnoty UnitPrice není povoleno](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image27.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image26.png)
 
 **Obrázek 10**: Záporná `UnitPrice` není povolené jsou hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image28.png))
 
-
 Tím, že nastavíte `e.ExceptionHandled` vlastnost `true`, `RowUpdated` obslužné rutiny událostí udává, že ošetřila výjimku. Výjimky proto nebude šířit do modulu runtime ASP.NET.
 
 > [!NOTE]
 > Obrázky 9 a 10 zobrazit řádné způsob, jak zpracovat výjimky vyvolané z důvodu neplatný uživatelský vstup. V ideálním případě však tyto neplatné vstupní se nikdy dosah vrstvy obchodní logiky na prvním místě, protože stránky ASP.NET by měl zajistit, aby vstupů uživatele platná před vyvoláním `ProductsBLL` třídy `UpdateProduct` metody. V následujícím kurzem uvidíme přidání validačních ovládacích prvků do rozhraní úpravy a vložení zajistit, aby data odeslaná do vrstvy obchodní logiky odpovídá obchodní pravidla. Ovládací prvky ověřování nejen zakázat vyvolání `UpdateProduct` metodu, dokud uživatel uvedl dat je platný, ale také poskytují další činnost koncového uživatele pro identifikaci problémů vstupní data.
-
 
 ## <a name="step-3-gracefully-handling-bll-level-exceptions"></a>Krok 3: Řádně zpracování výjimek na úrovni knihoven BLL
 
@@ -194,20 +166,16 @@ Při vkládání, aktualizaci nebo odstraňování dat, vrstva přístupu k dat�
 
 Pro `UpdateProduct` v tomto kurzu vytvořili přetížení, Pojďme přidat obchodní pravidlo, které zakazuje `UnitPrice` pole z nastavena na novou hodnotu, která je více než dvojnásobný původní `UnitPrice` hodnotu. Chcete-li to provést, upravte `UpdateProduct` přetížení tak, aby této kontrole a vyvolá výjimku `ApplicationException` Pokud je toto pravidlo porušeno. Aktualizovaná metoda takto:
 
-
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/samples/sample6.cs)]
 
 Tato změna způsobí libovolné price aktualizaci, která se více než dvojnásobný stávající ceny `ApplicationException` vyvolání. Stejně jako výjimky vyvolané z vrstvy DAL tomto BLL vyvolána `ApplicationException` můžete zjištěna a zpracovávány v prvku GridView `RowUpdated` obslužné rutiny události. Ve skutečnosti `RowUpdated` kód obslužné rutiny události, jak je uvedená, správně rozpozná tuto výjimku a zobrazí `ApplicationException`společnosti `Message` hodnotu vlastnosti. Obrázku 11 můžete vidět snímku obrazovky, když se uživatel pokusí aktualizovat cena Chai $ 50,00, což je více než double jeho aktuální cena 19,95.
-
 
 [![Obchodní pravidla zakázat zvýšení ceny, které víc než dvakrát ceny produktu](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image30.png)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image29.png)
 
 **Obrázek 11**: Obchodní pravidla zakázat zvýšení, které víc než dvakrát ceny produktu ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/_static/image31.png))
 
-
 > [!NOTE]
 > V ideálním případě by být refaktorovány naše obchodní logiky pravidla z celkového počtu `UpdateProduct` přetížení metody a do běžnou metodu. To je ponecháno cvičení pro čtečku.
-
 
 ## <a name="summary"></a>Souhrn
 

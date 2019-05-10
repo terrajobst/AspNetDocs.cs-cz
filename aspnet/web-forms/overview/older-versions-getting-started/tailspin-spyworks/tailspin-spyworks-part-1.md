@@ -8,12 +8,12 @@ ms.date: 07/21/2010
 ms.assetid: 15d4652b-d5aa-4172-b186-2c7f96ba316d
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 70d2efb789d694a0aaecc046615c7b3622079dc1
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 05a3ace3d8fef9c1f3593f7948e42b4725d70134
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59385355"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130556"
 ---
 # <a name="part-1-file--new-project"></a>Část 1: Soubor > Nový projekt
 
@@ -23,7 +23,6 @@ podle [Joe Stagner](https://github.com/JoeStagner)
 > 
 > V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace Tailspin Spyworks. 1. část obsahuje přehled a soubor/nový projekt.
 
-
 ## <a id="_Toc260221666"></a>  Přehled
 
 Tento kurz je Úvod do webových formulářů ASP.NET. Jsme budete spuštění pomalu, takže Začátečník úrovně webové vývojové prostředí je v pořádku.
@@ -31,7 +30,6 @@ Tento kurz je Úvod do webových formulářů ASP.NET. Jsme budete spuštění p
 Aplikace, kterou jsme vám sestavení je jednoduché online úložiště.
 
 ![](tailspin-spyworks-part-1/_static/image1.jpg)
-
 
 Návštěvníci můžete přejít pomocí produktů podle kategorie:
 
@@ -54,7 +52,6 @@ Přistoupíte k ověření je vyzve k
 Po změně pořadí, se zobrazí obrazovka s potvrzením jednoduchý:
 
 ![](tailspin-spyworks-part-1/_static/image7.jpg)
-
 
 Budete Začneme tím, že vytvoříte nový projekt webových formulářů ASP.NET v sadě Visual Studio 2010 a postupně přidáme funkce, které chcete vytvořit kompletní funkční aplikaci. Cestou se budeme zabývat přístup k databázi, zobrazením seznamu a mřížky, stránky aktualizace dat, ověřování dat pomocí stránek předlohy pro rozložení konzistentní stránek, AJAX, ověřování, členství uživatele a další.
 

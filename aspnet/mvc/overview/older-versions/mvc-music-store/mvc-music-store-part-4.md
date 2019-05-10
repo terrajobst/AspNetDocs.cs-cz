@@ -8,12 +8,12 @@ ms.date: 04/21/2011
 ms.assetid: ab55ca81-ab9b-44a0-8700-dc6da2599335
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 40fec3a2ef4ee8d5e4abe4be4dfa144720a88a41
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 402be340f1ea3344675e7b859cea8c5130cfc8ee
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59391179"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129648"
 ---
 # <a name="part-4-models-and-data-access"></a>Část 4: Modely a přístup k datům
 
@@ -24,7 +24,6 @@ podle [Jon Galloway](https://github.com/jongalloway)
 > Music Store MVC je jednoduché ukázku implementace úložiště prodává hudebních alb online, který implementuje správu základního webu, přihlášení uživatele a nákupního košíku funkce.
 > 
 > V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. 4. část se věnuje modely a přístup k datům.
-
 
 Zatím jsme jste právě byla předávání "fiktivní data" z našich řadičů naše zobrazení šablony. Nyní jsme připraveni připojení skutečná databáze. V tomto kurzu probereme jak používat SQL Server Compact Edition (často označované jako SQL CE) jako naše databázového stroje. SQL CE je databáze založená na bezplatné, embedded, souborech, který nevyžaduje, aby všechny instalace nebo konfigurace, která je to velmi vhodné pro místní vývoj.
 

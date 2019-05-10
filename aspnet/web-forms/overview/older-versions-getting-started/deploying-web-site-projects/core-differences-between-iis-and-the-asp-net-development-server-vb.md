@@ -8,12 +8,12 @@ ms.date: 04/01/2009
 ms.assetid: 090e9205-52f3-4d72-ae31-44775b8b8421
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e156b15356b02c25ad3dbb082096fc41ee35e465
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 6556935aafa954f83a9efafdf4e0850e7730a947
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59403698"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65127123"
 ---
 # <a name="core-differences-between-iis-and-the-aspnet-development-server-vb"></a>Hlavní rozdíly mezi službou IIS a serverem ASP.NET Development Server (VB)
 
@@ -23,11 +23,9 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > Při testování aplikace ASP.NET místně, je pravděpodobné, že používáte webový Server ASP.NET Development. Provozním webu je však pravděpodobně s podporou služby IIS. Existují určité rozdíly mezi jak tyto webové servery zpracovávat požadavky a tyto rozdíly mohou mít následky důležité. Tento kurz zkoumá některé informace poskytnuty rozdíly.
 
-
 ## <a name="introduction"></a>Úvod
 
 Pokaždé, když uživatel navštíví aplikaci ASP.NET jeho prohlížeč odešle požadavek na web. Tento požadavek je neexistoval software webového serveru, který koordinuje s modulem runtime ASP.NET pro vygenerování a vrátí obsah pro požadovaný prostředek. [**můžu** nternetu **můžu** nformation **S** ervices (IIS)](http://en.wikipedia.org/wiki/Internet_Information_Services) jsou sada služeb, které poskytují běžné internetové funkce pro Windows servery. Služba IIS je nejčastěji používanou webový server pro aplikace ASP.NET v produkčním prostředí; Pravděpodobně je webový software serveru zprostředkovateli webového hostitele používá k obsluze aplikace ASP.NET. IIS také slouží jako webový server software ve vývojovém prostředí, i když to zahrnuje instalaci služby IIS a jeho konfigurace správně.
-
 
 Vývojový Server ASP.NET je možnost alternativní webového serveru pro vývojové prostředí; dodává se sadou a je integrována do sady Visual Studio. Pokud webová aplikace je nakonfigurovaná pro použití služby IIS, serveru ASP.NET Development Server automaticky spustit a používat jako webový server poprvé, navštivte webovou stránku z Visual Studia. Jsme vytvořili v ukázkové webové aplikace [ *určující, co soubory musí být nasazeny* ](determining-what-files-need-to-be-deployed-vb.md) kurzu byly i souboru na základě systému webové aplikace, které nebyly nakonfigurovány na používání služby IIS. Proto při návštěvě některý z těchto webů v sadě Visual Studio se používá vývojový Server ASP.NET.
 
@@ -46,22 +44,17 @@ K zobrazení tohoto typu chyby v akci, jsem vytvořil stránku recenzí webové 
 > [!NOTE]
 > [ `File.WriteAllText` Metoda](https://msdn.microsoft.com/library/system.io.file.writealltext.aspx) vytvoří nový soubor, pokud neexistuje a pak zapíše zadaný obsah do něj. Pokud soubor již existuje, přepíše existující obsah.
 
-
 Dále přejděte *naučit sami technologie ASP.NET 3.5 za 24 hodin* stránku revize knihy ve vývojovém prostředí pomocí serveru ASP.NET Development Server. Za předpokladu, že jste přihlášení k počítači pomocí účtu, který má odpovídající oprávnění k vytvoření a úprava textového souboru ve webovém kořenovém adresáři aplikace recenze knihy zobrazí stejná jako předtím, ale pokaždé, když je stránka navštívené datum a čas a uživatele  IP adresa je uložen v `LastTYASP35Access.txt` souboru. Přejděte v prohlížeči do tohoto souboru. měli byste vidět zprávu podobně jako na obrázku 1.
-
 
 [![Textový soubor obsahuje poslední datum a čas byla Navštívená recenze knihy&lt;](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image2.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image1.png)
 
 **Obrázek 1**: Textový soubor obsahuje poslední datum a čas byla Navštívená recenze knihy ([kliknutím ji zobrazíte obrázek v plné velikosti](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image3.png))
 
-
 Nasazení webové aplikace do produkčního prostředí a potom navštivte hostovanou *naučit sami technologie ASP.NET 3.5 za 24 hodin* stránku revize knihy. V tomto okamžiku by měla buď najdete na stránce Kontrola knihy jako normální nebo chybovou zprávu zobrazenou na obrázku 2. Někteří poskytovatelé webového hostitele udělit oprávnění k zápisu do anonymní účet počítače ASP.NET, ve kterém bude případ stránce fungovat bez chyb. Pokud však zprostředkovateli webového hostitele zakazuje přístup pro zápis pro anonymní účet pak [ `UnauthorizedAccessException` výjimky](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) se vyvolá, když `TYASP35.aspx` stránku pokusí se zapsat aktuální datum a čas `LastTYASP35Access.txt` souboru.
-
 
 [![Výchozí účet počítače používaný službou IIS nemá oprávnění k zápisu do systému souborů](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image5.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image4.png)
 
 **Obrázek 2**: Výchozí počítače účet používaný službou IIS nemá není mají oprávnění k zápisu do systému souborů ([kliknutím ji zobrazíte obrázek v plné velikosti](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image6.png))
-
 
 Dobrou zprávou je, že většina poskytovatelů webového hostitele obsahuje nějaké oprávnění nástroj, který vám umožní určit oprávnění systému souborů na vašem webu. Povolit anonymní přístup zápisu účtu technologie ASP.NET do kořenového adresáře a pak otevírat stránku revize knihy. (V případě potřeby požádejte poskytovatele hostitele webových žádostí o pomoc na tom, jak udělit oprávnění k zápisu do výchozího účtu technologie ASP.NET.) Tentokrát by se měly načíst stránky bez chyb a `LastTYASP35Access.txt` úspěšně vytvoří soubor.
 
@@ -75,7 +68,6 @@ Modul runtime ASP.NET provede několik kroků k vygenerování požadovaného ob
 
 > [!NOTE]
 > Pro důkladné přezkoumání ASP. NET pro ověřování pomocí formulářů, autorizace adres URL a další funkce související s účtem uživatele nezapomeňte se podívat Můj [kurzy o zabezpečení webu](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md).
-
 
 Vezměte v úvahu web, který podporuje uživatelské účty pomocí ověřování na základě formulářů a má složku, která pomocí autorizace adres URL, konfigurace umožňuje pouze ověřeným uživatelům. Představte si, že tato složka obsahuje stránek ASP.NET a soubory PDF a že cílem je, že jenom ověření uživatelé mohou zobrazit tyto soubory PDF.
 
@@ -95,19 +87,15 @@ Pomocí serveru ASP.NET Development Server, přejděte na web a zadejte adresu U
 
 Zadáte tuto adresu URL do adresního řádku způsobí, že prohlížeč odeslat požadavek na serveru ASP.NET Development Server k souboru. Požadavek na modul runtime ASP.NET ke zpracování do rukou serveru ASP.NET Development Server. Protože jsme ještě nepřihlásili a protože `Web.config` v `PrivateDocs` složky je konfigurován k odepření anonymní přístup, modul runtime ASP.NET automaticky přesměruje na přihlašovací stránku nám `Login.aspx` (viz obrázek 3). Když uživatel přesměrování na přihlašovací stránce portálu, technologie ASP.NET obsahuje `ReturnUrl` parametr řetězce dotazu, který označuje stránce uživatel se pokusil k zobrazení. Po úspěšném přihlášení uživatele mohou být vráceny na tuto stránku.
 
-
 [![Neoprávnění uživatelé jsou automaticky přesměrováni na stránku pro přihlášení](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image8.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image7.png)
 
 **Obrázek 3**: Neoprávnění uživatelé jsou automaticky přesměrováni na stránku pro přihlášení ([kliknutím ji zobrazíte obrázek v plné velikosti](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image9.png))
 
-
 Nyní Podíváme se, jak to chová v produkčním prostředí. Nasaďte aplikaci a zadejte adresu URL s přímým přístupem na jeden z dokumentů PDF v `PrivateDocs` složky v produkčním prostředí. Tento parametr vyzve prohlížeče k odeslání souboru žádosti o služby IIS. Protože je požadován statický soubor, služba IIS načte a vrátí soubor bez vyvolání modul runtime ASP.NET. V důsledku toho došlo provedené; žádné kontroly autorizace adresy URL obsah údajně privátní PDF jsou přístupné všem uživatelům, kteří ví přímá adresa URL k souboru.
-
 
 [![Anonymní uživatelé můžou stahovat soubory PDF privátní tak, že zadáte přímá adresa URL k souboru](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image11.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image10.png)
 
 **Obrázek 4**: Anonymní uživatelé si můžou stáhnout privátní PDF souborů ve vstupu přímá adresa URL k souboru ([kliknutím ji zobrazíte obrázek v plné velikosti](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image12.png))
-
 
 ### <a name="performing-forms-based-authentication-and-url-authentication-on-static-files-with-iis-7"></a>Provádí se ověřování pomocí formulářů a ověřování adresy URL na statické soubory pomocí služby IIS 7
 
@@ -121,7 +109,6 @@ Tento kód nastaví službu IIS 7, aby používal ověřování a autorizace mod
 
 > [!NOTE]
 > Pokud váš poskytovatel webového hostitele se pořád používá služby IIS 6 nelze použít funkci integrovaného kanálu. Jeden alternativní řešení, je vložit soukromé dokumenty ve složce, která zakazuje přístup protokolu HTTP (například `App_Data`) a pak vytvořit stránku k poskytování těchto dokumentů. Tato stránka může volat `GetPDF.aspx`a je předán název PDF prostřednictvím parametru řetězce dotazu. `GetPDF.aspx` Stránka by nejdřív ověřte, že uživatel má oprávnění k zobrazení souboru a pokud ano, byste použili [ `Response.WriteFile(filePath)` ](https://msdn.microsoft.com/library/system.web.httpresponse.writefile.aspx) metoda obsah požadovaný soubor PDF odeslat zpět klientovi. Tuto techniku by také fungovat pro službu IIS 7, pokud, aby k povolení integrovaného kanálu.
-
 
 ## <a name="summary"></a>Souhrn
 

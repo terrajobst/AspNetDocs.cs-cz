@@ -8,12 +8,12 @@ ms.date: 04/01/2009
 ms.assetid: 548e75f6-4d6c-4cb4-8da8-417915eb8393
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 48af71fc5ff4dad3371687726660a5d914236df5
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 5ff344bdff379a72a5fc3d26ab66afb095cd2e0d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379375"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125753"
 ---
 # <a name="common-configuration-differences-between-development-and-production-vb"></a>Nejčastější rozdíly mezi vývojovou a produkční konfigurací (VB)
 
@@ -23,9 +23,7 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > V předchozích kurzech jsme nasadili našeho webu tak, že zkopírujete všechny relevantní soubory z vývojového prostředí do produkčního prostředí. To však není existovat konfigurace rozdíly mezi prostředími, které vyžaduje, aby každé prostředí mají jedinečný soubor Web.config. V tomto kurzu zkoumá Typická konfigurace rozdíly a zkoumá strategie pro udržování samostatné konfigurační informace.
 
-
 ## <a name="introduction"></a>Úvod
-
 
 Poslední dva kurzy prošli nasazení jednoduché webové aplikace. [ *Nasazení webu pomocí klienta FTP* ](deploying-your-site-using-an-ftp-client-vb.md) kurz vám ukázal, jak používat samostatný klient FTP pro kopírování potřebné soubory z vývojového prostředí až po produkční. Předchozím kurzu [ *nasazení webu pomocí sady Visual Studio*](deploying-your-site-using-visual-studio-vb.md), podívali se na nasazení pomocí nástroje pro kopírování webu sady Visual Studio a možností publikovat. V obou kurzech každý soubor v produkčním prostředí se kopie souboru ve vývojovém prostředí. To však není, konfigurační soubory v produkčním prostředí tak, aby se liší od těch, které ve vývojovém prostředí. Konfigurace webové aplikace je uložena v `Web.config` souboru a obvykle obsahuje informace o externích zdrojů, jako je například databáze, web a servery e-mailu. Obsahuje také chování aplikace v určitých situacích, jako je například kurz akce se má provést při dojde k neošetřené výjimce.
 
@@ -40,7 +38,6 @@ Typickým příkladem informací o konfiguraci, která se liší podle prostřed
 > [!NOTE]
 > Budoucí kurzy prozkoumání, nasazení aplikace řízené daty, v tomto okamžiku začneme budete zabývat, jaké jsou specifikace jak databázové připojovací řetězce jsou uložené v konfiguračním souboru.
 
-
 Zamýšlené chování vývojovém a produkčním prostředí se podstatně liší. Webové aplikace ve vývojovém prostředí se vytváří, otestovat a ladění malá skupina vývojářů. V produkčním prostředí se tu samou aplikaci návštěvě mnoho různých souběžných uživatelů. Technologie ASP.NET obsahuje řadu funkcí, které pomůžou vývojářům při testování a ladění aplikace, ale tyto funkce by mělo být zakázáno pro výkon a z bezpečnostních důvodů v produkčním prostředí. Podívejme se na několik těchto nastavení konfigurace.
 
 ### <a name="configuration-settings-that-impact-performance"></a>Nastavení konfigurace, které ovlivňují výkon
@@ -51,7 +48,6 @@ Atribut ladění je jedním z vašich nejdůležitějších atributů `<compilat
 
 > [!NOTE]
 > `WebResource.axd` integrované obslužná rutina HTTP přišla v technologii ASP.NET 2.0, který ovládací prvky serveru použijte k načtení vložených prostředků, jako jsou soubory skriptu, obrázky, soubory šablon stylů CSS a další obsah. Další informace o tom, `WebResource.axd` funguje a jak ho použít pro přístup k vložené prostředky z vašich vlastních serverových ovládacích prvků naleznete v tématu [přístup k vložené prostředky prostřednictvím adresu URL pomocí `WebResource.axd` ](http://aspnet.4guysfromrolla.com/articles/080906-1.aspx).
-
 
 `<compilation>` Elementu `debug` atribut je obvykle nastaven na hodnotu "true" ve vývojovém prostředí. Ve skutečnosti tento atribut musí být nastaven na "true", aby bylo možné ladit webové aplikace; Pokud se pokusíte ladit aplikace ASP.NET ze sady Visual Studio a `debug` atribut je nastaven na hodnotu "false", Visual Studio se zobrazí zpráva vysvětlením, že aplikace nejde ladit, dokud `debug` atribut je nastaven na "true" a bude nabídka je k provedení této změny za vás.
 
@@ -71,7 +67,6 @@ Při vývoji a testování aplikace umožňuje zobrazit podrobnosti o jakoukoli 
 
 > [!NOTE]
 > Výchozí hodnota `<customErrors>` část nastavení se zobrazí podrobnosti o výjimce zprávy pouze v případě, že na stránce přístupu prostřednictvím místního hostitele a v opačném případě se zobrazí chybová stránka obecný modul runtime. To není ideální, ale je ujištěním vědět, že výchozí chování není zobrazit podrobnosti o výjimce pro jiné než místní návštěvníky. Budoucí kurz zkoumá `<customErrors>` části podrobněji a ukazuje, jak mají vlastní chybové stránky zobrazí, když dojde k chybě v produkčním prostředí.
-
 
 Další funkcí technologie ASP.NET, které jsou užitečné při vývoji se trasování. Trasování, pokud je povoleno, zaznamenává informace o jednotlivých příchozích požadavků a poskytuje zvláštní webové stránky, `Trace.axd`, pro zobrazení Podrobnosti o poslední žádosti. Můžete zapnout a nakonfigurovat trasování prostřednictvím [ `<trace>` element](https://msdn.microsoft.com/library/6915t83k.aspx) v `Web.config`.
 
@@ -111,7 +106,6 @@ Další informace o použití projektu nasazení webu, projděte si [v tomto čl
 
 > [!NOTE]
 > Nasazení webového projektu nelze použít s aplikaci Visual Web Developer, protože nasazení webového projektu je implementovaný jako Visual Studio Add-In a Visual Studio Express (včetně edice Visual Web Developer) nepodporují Add-Ins.
-
 
 ## <a name="summary"></a>Souhrn
 

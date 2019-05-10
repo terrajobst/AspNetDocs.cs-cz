@@ -8,12 +8,12 @@ ms.date: 08/15/2012
 ms.assetid: c7e4e1ab-4932-4614-9f53-aaf7c706d498
 msc.legacyurl: /mvc/overview/views/using-page-inspector-in-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: ef0ae42e1c6114849a311164eac242db6dab2b1d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 5da3e142c52a770f59222c21d9f9a53cbbdbf498
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59385793"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65126343"
 ---
 # <a name="using-page-inspector-in-aspnet-mvc"></a>Použití Page Inspectoru v ASP.NET MVC
 
@@ -38,7 +38,6 @@ podle Tim Ammann
 > - [Výběr barvy šablon stylů CSS](#css_color_picker)
 > - [Mapování elementů dynamických stránek pro jazyk JavaScript](#map_dynamic_elements)
 
-
 <a id="_prerequisites"></a><a id="_1_prerequisites"></a>
 
 ## <a name="prerequisites"></a>Požadavky
@@ -47,7 +46,6 @@ podle Tim Ammann
 
 > [!NOTE]
 > Chcete-li získat nejnovější verzi nástroje Page Inspector, použijte [instalačního programu webové platformy](https://go.microsoft.com/fwlink/?LinkId=255386) k instalaci sady Windows Azure SDK pro .NET 2.0.
-
 
 Nástroj Page Inspector je součástí nástroje Microsoft Web Developer Tools. Nejnovější verze je verze 1.3. Zjištění verze máte, spusťte Visual Studio a vyberte **o Microsoft Visual Studio** z **pomáhají** nabídky.
 
@@ -179,7 +177,6 @@ Zaškrtněte toto políčko znovu, klikněte dvakrát na hodnotu vlastnosti a zm
 > [!NOTE]
 > Tato funkce vyžaduje verzi 1.3 nástroj Page Inspector.
 
-
 Funkce Automatická synchronizace šablon stylů CSS lze upravit přímo soubor šablony stylů CSS a podívejte se změny okamžitě v prohlížeči nástroj Page Inspector.
 
 Klikněte na tlačítko **zkontrolujte, jestli se** uvést do režimu kontroly nástroje Page Inspector.
@@ -238,7 +235,6 @@ Verze 1.3 nástroj Page Inspector můžete nyní mapa položky, které byly dyna
 
 > [!NOTE]
 > Šablona jednostránková aplikace vyžaduje [ASP.NET and Web Tools 2012.2](https://go.microsoft.com/fwlink/?LinkId=282650) aktualizovat.
-
 
 V sadě Visual Studio, zvolte **souboru** &gt; **nový projekt**. Na levé straně rozbalte **Visual C#** vyberte **webové**a pak vyberte **webová aplikace ASP.NET MVC4**. Klikněte na **OK**.
 

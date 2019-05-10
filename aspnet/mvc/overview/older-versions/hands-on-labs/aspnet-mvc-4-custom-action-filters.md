@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 969ab824-1b98-4552-81fe-b60ef5fc6887
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-custom-action-filters
 msc.type: authoredcontent
-ms.openlocfilehash: 32587c7b0fd3075cd46678922b40bda2019f3a26
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: eaeb32180f79fabf557cbc38ff067eb26b47fea7
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381130"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129754"
 ---
 # <a name="aspnet-mvc-4-custom-action-filters"></a>ASP.NET MVC 4 – filtr vlastních akcí
 
@@ -76,7 +76,6 @@ Odhadovaný čas dokončení tohoto testovacího prostředí: **30 minut**.
 > [!NOTE]
 > Se sadou každý cvičení **koncové** složku, která obsahuje výsledný řešení byste měli získat po dokončení cvičení. Toto řešení můžete použít jako vodítko, pokud potřebujete další pomoc prostřednictvím praktická cvičení.
 
-
 <a id="Exercise1"></a>
 
 <a id="Exercise_1_Logging_Actions"></a>
@@ -95,7 +94,6 @@ Filtr se rozšíří **ActionFilterAttributeClass** a přepsat **OnActionExecuti
 > - **Výjimka** filtr, který se spustí, pokud je neošetřená výjimka vyvolaná někde v metodě akce, počínaje filtry autorizace a konče spuštění výsledku. Filtry výjimek je možné pro úlohy, jako je protokolování nebo zobrazení chybové stránky.
 > 
 > Další informace o poskytovatelích filtry najdete v tomto odkazu MSDN: ([https://msdn.microsoft.com/library/dd410209.aspx](https://msdn.microsoft.com/library/dd410209.aspx)).
-
 
 <a id="AboutLoggingFeature"></a>
 
@@ -132,7 +130,6 @@ V této úloze vytvoříte třídu atributu vlastní filtr, který bude obsahova
 > - **OnResultExecuted**(ResultExecutedContext filterContext): Po provedení výsledku (po je zobrazení vykresleno).
 > 
 > Tak, že přepíšete některé z těchto metod na odvozenou třídu, můžete provést filtrování kódu.
-
 
 1. Otevřít **začít** řešení nachází v **\Source\Ex01-LoggingActions\Begin** složky.
 
@@ -352,7 +349,6 @@ V této úloze budete aktualizovat řešení k registraci nového filtru (**MyNe
 
 > [!NOTE]
 > Kromě toho můžete nasadit tuto aplikaci následující weby Windows Azure [příloha B: Publikování aplikace ASP.NET MVC 4 pomocí nasazení webu](#AppendixB).
-
 
 ---
 

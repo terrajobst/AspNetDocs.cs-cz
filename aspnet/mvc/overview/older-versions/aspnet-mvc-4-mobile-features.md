@@ -8,19 +8,18 @@ ms.date: 08/15/2012
 ms.assetid: 27dc4fc8-1b51-43b0-933f-fc1b52476523
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: de65e01b888d9ed15da3903f086b40c49b32b9fb
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 62050f561440a2c0fbbe91ec49fb1f9e30885e9f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59402411"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130348"
 ---
 # <a name="aspnet-mvc-4-mobile-features"></a>ASP.NET MVC 4 – mobilní funkce
 
 Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Je teď verze MVC 5 s ukázkami kódu v tomto kurzu [nasazení webové aplikace ASP.NET MVC 5 Mobile na webech Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/).
-
 
 V tomto kurzu se seznámíte se základy práce s mobilními funkcemi webové aplikace ASP.NET MVC 4. Pro účely tohoto kurzu můžete použít [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/products/express) nebo Visual Web Developer 2010 Express Service Pack 1 (&quot;Visual Web Developer nebo VWD&quot;). Pokud už máte, můžete profesionální verzi sady Visual Studio.
 
@@ -214,7 +213,6 @@ Následující kód ukazuje kompletní *Global.asax* souboru.
 > [!NOTE]
 > Pokud používáte Internet Explorer 9 a nevidíte `BundleMobileConfig` řádek výše v zvýraznit žlutý, klikněte na tlačítko [kompatibilního zobrazení tlačítka](https://windows.microsoft.com/windows7/How-to-use-Compatibility-View-in-Internet-Explorer-9)![obrázek kompatibilní zobrazení tlačítka (vypnuto)](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg " Obrázek tlačítka kompatibilního zobrazení (vypnuto)") v Internet Exploreru, chcete-li změnit z přehledu ikonu ![obrázek kompatibilní zobrazení tlačítka (vypnuto)](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "obrázek kompatibilní zobrazení tlačítka (vypnuté) ") plnou barvu ![obrázku (na) tlačítko pro kompatibilní zobrazení](http://res1.windows.microsoft.com/resbox/en/Windows 7/main/156805ff-3130-481b-a12d-4d3a96470f36_14.jpg "obrázku (na) tlačítko pro kompatibilní zobrazení"). Případně můžete zobrazit v tomto kurzu v aplikaci FireFox nebo Chrome.
 
-
 Otevřít *MvcMobile\Views\Shared\\_Layout.Mobile.cshtml* a přidejte následující kód přímo po `Html.Partial` volání:
 
 [!code-cshtml[Main](aspnet-mvc-4-mobile-features/samples/sample12.cshtml)]
@@ -229,7 +227,6 @@ Sestavení aplikace a v emulátoru vašeho mobilního prohlížeče přejděte *
 
 > [!NOTE]
 > Můžete ladit mobilní konkrétním kódu pomocí [nastavení identifikační řetězec prohlížeče](http://www.howtogeek.com/113439/how-to-change-your-browsers-user-agent-without-installing-any-extensions/) pro aplikace Internet Explorer nebo Chrome Iphonů a pak pomocí nástroje pro vývojáře F-12. Pokud se nezobrazí v mobilním prohlížeči **Domů**, **mluvčího**, **značky**, a **datum** odkazy jako tlačítka, odkazy na jQuery Mobile skriptů a souborů CSS jsou pravděpodobně není správné.
-
 
 Kromě změn stylů se zobrazí **mobilní zobrazení** a odkaz, který umožňuje přepnout do zobrazení plochy z mobilní zobrazení. Zvolte **zobrazení plochy** propojení a zobrazení plochy se zobrazí.
 
@@ -251,7 +248,6 @@ Aktualizovat *AllTags* zobrazení v mobilním prohlížeči. Můžete nyní proc
 > a přidejte následující záhlaví *Views\Shared\\_Layout.cshtml* souboru.
 >
 > [!code-html[Main](aspnet-mvc-4-mobile-features/samples/sample16.html)]
-
 
 Přejděte *AllTags* stránky v desktopovém prohlížeči. Ve widgetu přepínači zobrazení není v desktopovém prohlížeči zobrazen, protože se přidá jenom do mobilní rozložení stránky. Později v tomto kurzu uvidíte, jak můžete přidat widget přepínači zobrazení do zobrazení plochy.
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 5c76891d-e515-4885-b576-76bd2c494efe
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
 msc.type: authoredcontent
-ms.openlocfilehash: 7834b5c418de9d05ee870641cfd7c7f9956ab210
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 06816f3555a806d41caf562b910a4ec4427b13bd
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59402996"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134224"
 ---
 # <a name="ui-and-navigation"></a>Uživatelské rozhraní a navigace
 
@@ -22,7 +22,6 @@ by [Erik Reitan](https://github.com/Erikre)
 [Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
 > V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 for Web. Visual Studio 2013 [projektu se zdrojovým kódem jazyka C#](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) je k dispozici v této sérii kurzů.
-
 
 V tomto kurzu se upraví uživatelského rozhraní z výchozí webové aplikace k podpoře funkce úložiště front-aplikace Wingtip Toys. Také budete přidávat jednoduché a data svázaná navigace. V tomto kurzu vychází z předchozí kurz o službě "Vytvoření the vrstvy přístupu k datům" a je součástí série kurzů na adresář Wingtip Toys.
 
@@ -75,7 +74,6 @@ Pokud není zadána `@Page` direktiv na stránce nebo pokud direktivu neobsahuje
 > [!NOTE] 
 > 
 > *Machine.config* také obsahuje podrobné informace o nastavení všechny možné konfigurace.
-
 
 ### <a name="web-server-controls"></a>Ovládací prvky webového serveru
 
@@ -181,7 +179,6 @@ V tomto kurzu se změní vzhled a chování aplikace Wingtip Toys nahrazením so
 > 
 > Používá šablony webové aplikace ASP.NET *Bundle.config* souboru v kořenovém adresáři projektu pro uložení této cesty souborů CSS Bootstrapu.
 
-
 ### <a name="modifying-the-default-navigation"></a>Změna výchozí navigace
 
 Výchozí navigaci na každé stránce v aplikaci můžete upravit změnou prvek seznamu Neseřazený navigace, který je v *Site.Master* stránky.
@@ -196,7 +193,6 @@ Jak je vidět ve výše uvedené ve formátu HTML můžete upravit každé polo�
 > [!NOTE] 
 > 
 > Tilda (`~`) znak se používá k určení, která `href` cesta začíná v kořenovém adresáři projektu.
-
 
 ### <a name="adding-a-data-control-to-display-navigation-data"></a>Přidání ovládacího prvku dat k zobrazení dat navigace
 
@@ -215,7 +211,6 @@ Tento kód zobrazí všechny kategorie z databáze. **ListView** ovládací prve
 > **Tip**
 > 
 > Když přidáte tak, že zadáte během vývoje kódu, můžete byste si být jisti, že platným členem objektu je najít, protože se silnými typy, ovládací prvky dat zobrazit dostupné členy podle technologie IntelliSense. Technologie IntelliSense nabízí možnosti odpovídající kontext kódu při psaní kódu, jako jsou vlastnosti, metody a objekty.
-
 
 V dalším kroku budete implementovat `GetCategories` metoda načíst data.
 
@@ -253,7 +248,6 @@ Otevřít *Web.config* soubor a podívejte se na část řetězce připojení. V
 > [!NOTE] 
 > 
 > Pokud *aplikace\_Data* složka není viditelný, nebo pokud tato složka je prázdný, vyberte **aktualizovat** ikonu a pak **zobrazit všechny soubory** ikonu v horní části **Průzkumníka řešení** okna. Rozbalení šířku **Průzkumníka řešení** windows může být nutné zobrazení všech dostupných ikon.
-
 
 Teď si můžete prohlédnout data obsažená v *wingtiptoys.mdf* databázový soubor s použitím **Průzkumníka serveru** okna.
 

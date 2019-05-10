@@ -8,12 +8,12 @@ ms.date: 11/17/2011
 ms.assetid: a8d776af-4735-4612-87f6-9f326587f2d3
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-a-database-update-9-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 3bae4d72c8b653a5cda500b05dde50c6a7201589
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 3a5600aff3ba63cb7046e42d0bfd587c4181d99e
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59413110"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130275"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-a-database-update---9-of-12"></a>Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Nasazení aktualizace databáze - 9 12
 
@@ -24,7 +24,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > Tato série kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace, která obsahuje databázi systému SQL Server Compact pomocí sady Visual Studio 2012 RC nebo Visual Studio Express 2012 RC pro Web. Můžete také použít Visual Studio 2010 při instalaci aktualizace Publikovat Web. Úvod do řady, naleznete v tématu [z prvního kurzu této série](deployment-to-a-hosting-provider-introduction-1-of-12.md).
 > 
 > Kurz ukazuje nasazení funkce zavedená po verzi RC sady Visual Studio 2012, ukazuje, jak nasadit edicích systému SQL Server než SQL Server Compact a ukazuje, jak nasadit do Azure App Service Web Apps, najdete v tématu [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -88,7 +87,6 @@ Teď můžete nasadit do produkčního prostředí. Jediným rozdílem je, že b
 
 > [!NOTE]
 > Když vaše aplikace je používána v provozním prostředí by měl být implementace plánu zálohování. To znamená, které by měl být pravidelně kopírování *školní-Prod.sdf* a *aspnet Prod.sdf* soubory z produkční lokality do zabezpečeného úložiště, a měli udržování několika generací těchto zálohování. Při aktualizaci databáze, měli byste zajistit záložní kopie z bezprostředně před provedením změny. Potom Pokud došlo k chybě a není objevit až po jeho nasazení do produkčního prostředí, stále budete moci obnovit databázi do stavu, ve kterém byl předtím, než začal být poškozen.
-
 
 Když Visual Studio otevře adresu URL domovské stránky v prohlížeči *aplikace\_offline.htm* zobrazí se stránka. Po odstranění *aplikace\_offline.htm* soubor, můžete přejít na domovskou stránku znovu a ověřte, že se aktualizace úspěšně nasadilo.
 

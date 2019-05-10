@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 44761193-04ba-4990-9f90-145d3c10a716
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 71ff3c269c5d1ed43a67d19442eda8e9d4728295
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: d0d6c9dd5234c8085b5c1dea5552854486314010
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59405700"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129777"
 ---
 # <a name="implementing-the-repository-and-unit-of-work-patterns-in-an-aspnet-mvc-application-9-of-10"></a>Implementace úložiště a jednotky pracovních vzorů v aplikaci ASP.NET MVC (9, 10)
 
@@ -26,7 +26,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > > [!NOTE] 
 > > 
 > > Pokud narazíte na problém nevyřešíte sami, [stáhnout dokončený kapitoly](building-the-ef5-mvc4-chapter-downloads.md) a zkuste problém reprodukovat. Porovnáním kód Dokončený kód v obecně najdete řešení problému. Některé běžné chyby a jejich řešení najdete v tématu [chyby a náhradní řešení.](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)
-
 
 V předchozím kurzu použijete ke snížení redundantní kód v dědičnosti `Student` a `Instructor` tříd entit. V tomto kurzu uvidíte některé způsoby, jak používat úložiště a jednotky pracovních vzorů pro operace CRUD. Stejně jako v předchozím kurzu v tohohle změníte způsob, jak kód funguje se stránkami jste již vytvořili namísto vytváření nové stránky.
 
@@ -51,7 +50,6 @@ V této řadě kurzů nebude vytvořit testy jednotek. Úvod do TDD s aplikace M
 
 > [!NOTE]
 > Existuje mnoho způsobů, jak implementovat úložiště a jednotky pracovních vzorů. Třídy úložiště můžete použít i bez jednotek práce třídy. Můžete implementovat jednoho úložiště pro všechny typy entit a jeden pro každý typ. Pokud se rozhodnete implementovat, jeden pro každý typ, můžete použít samostatné třídy, obecná základní třída a odvozené třídy, nebo abstraktní základní třída a odvozené třídy. Můžete zahrnout obchodní logiku v úložišti nebo omezit na logikou přístupu k datům. Můžete také sestavit vrstvu HAL do vaší třídy kontextu databáze s použitím [IDbSet](https://msdn.microsoft.com/library/gg679233(v=vs.103).aspx) rozhraní existuje místo [DbSet](https://msdn.microsoft.com/library/system.data.entity.dbset(v=vs.103).aspx) typy pro sady entit. Přístupem k implementaci abstraktní vrstvu uvedené v tomto kurzu je jednou z možností je třeba zvážit, ne doporučení pro všechny scénáře a prostředí.
-
 
 ## <a name="creating-the-student-repository-class"></a>Vytvoření třídy úložiště studenta
 
@@ -142,7 +140,6 @@ V původní verzi kódu `students` je zadán jako `IQueryable` objektu. Dotaz se
 > [!code-sql[Main](implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application/samples/sample16.sql)]
 > 
 > (Následující kurz vysvětluje, jak prozkoumat dotazy odeslané do systému SQL Server.)
-
 
 Následující části ukazuje, jak implementovat metody úložiště, které vám umožní určit, že by měl tuto práci provádí databáze.
 

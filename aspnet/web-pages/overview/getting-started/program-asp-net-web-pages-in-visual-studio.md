@@ -8,12 +8,12 @@ ms.date: 02/13/2014
 ms.assetid: 0acfec5a-48f2-4766-a801-a0f426966f0a
 msc.legacyurl: /web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio
 msc.type: authoredcontent
-ms.openlocfilehash: 6d25eb99f87c4c3d2c96e021e79a13c90da4a035
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 1a76098779d05912bf7bdf2de5fdce024770752c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59414488"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134613"
 ---
 # <a name="programming-aspnet-web-pages-razor-using-visual-studio"></a>Programování webových stránek ASP.NET (Razor) pomocí sady Visual Studio
 
@@ -37,7 +37,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 >
 >
 > V tomto kurzu se také pracuje s ASP.NET Web Pages 2, Visual Studio 2012, Visual Studio 2010 a službě WebMatrix 2.
-
 
 Můžete naprogramovat ASP.NET Web pages se syntaxí Razor pomocí služby WebMatrix nebo mnoha jiných editorů kódu. Můžete také použít Microsoft Visual Studio, což je plně vybavené integrované vývojové prostředí (IDE), která poskytuje výkonnou sadu nástrojů pro vytváření mnoho typů aplikací (ne jenom weby). Chcete-li pracovat se stránkami ASP.NET Razor, můžete použít [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017).
 

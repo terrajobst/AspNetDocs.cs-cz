@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: e42c8388-04ed-4341-9fdb-41b1b4c06320
 msc.legacyurl: /web-api/overview/formats-and-model-binding/parameter-binding-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: f121f12ce689a079412bbd5392fde4fea863ff1f
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: da0b9e12fcbe5cd2bfb5478162b7453d34931edf
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59401969"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65127512"
 ---
 # <a name="parameter-binding-in-aspnet-web-api"></a>Parametr vazby v rozhraní ASP.NET Web API
 
@@ -173,7 +173,6 @@ Tady je **HttpParameterBinding** , který získá z požadovaného záhlaví ETa
 
 > [!NOTE]
 > Pokud vaše **ExecuteBindingAsync** metoda načte text zprávy s požadavkem, přepsat **WillReadBody** vlastnost vrátí hodnotu true. Text žádosti může být, že bez vyrovnávací paměti datového proudu, který lze číst pouze jednou, takže webového rozhraní API vynucuje pravidla, že nejvýše jedna vazba můžete číst hlavní část textu zprávy.
-
 
 Chcete-li použít vlastní **HttpParameterBinding**, můžete definovat, která je odvozena z atributu **ParameterBindingAttribute**. Pro `ETagParameterBinding`, budeme definovat dva atributy, jeden pro `if-match` záhlaví a jeden pro `if-none-match` záhlaví. Obě jsou odvozeny od abstraktní základní třídy.
 

@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: 1cd7525d-de5e-4ab6-94f0-51480d3255d1
 msc.legacyurl: /web-api/overview/formats-and-model-binding/json-and-xml-serialization
 msc.type: authoredcontent
-ms.openlocfilehash: a9e7ed63a55c146976e0221214e722f3a2292fee
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 00fa07f00eabf7e6c883c5e9ceaf9a38a8f49605
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59408274"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65126172"
 ---
 # <a name="json-and-xml-serialization-in-aspnet-web-api"></a>Serializace JSON a XML v rozhraní ASP.NET Web API
 
@@ -221,7 +221,6 @@ Všimněte si, že serializátor přidá &quot;$id&quot; vlastnost na oba objekt
 
 > [!NOTE]
 > Odkazy na objekty nejsou standardní ve formátu JSON. Před použitím této funkce, zvažte, jestli vaši klienti budou moci analyzovat výsledky. Může být lepší jednoduše odstranit z grafu cykly. Například odkaz z zaměstnance zpět do oddělení, není v tomto příkladu skutečně nutná.
-
 
 Pokud chcete zachovat odkazy na objekty ve formátu XML, máte dvě možnosti. Jednodušší možností je přidat `[DataContract(IsReference=true)]` do vaší třídy modelu. *IsReference* parametr povoluje odkazy na objekty. Nezapomeňte, že **kontraktu dat DataContract** díky serializace vyjádřit výslovný souhlas, takže budete muset přidat **DataMember** atributy vlastnosti:
 

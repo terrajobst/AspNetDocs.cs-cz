@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: 6980ee2e-d6b0-4a08-8fb6-ab96362dd0e3
 msc.legacyurl: /web-api/overview/hosting-aspnet-web-api/host-aspnet-web-api-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: bfb23aafb814010e8651965dad91ca20a37fd786
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ec9904e0bff090be0f504036ae73977cfca0cb31
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59404621"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130838"
 ---
 # <a name="host-aspnet-web-api-2-in-an-azure-worker-role"></a>Hostovat rozhraní ASP.NET Web API 2 v roli pracovního procesu Azure
 
@@ -32,7 +32,6 @@ podle [Mike Wasson](https://github.com/MikeWasson)
 > - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - Webové rozhraní API 2
 > - [Sada Azure SDK for .NET 2.3](https://azure.microsoft.com/downloads/)
-
 
 ## <a name="create-a-microsoft-azure-project"></a>Vytvořte projekt Microsoft Azure
 
@@ -123,7 +122,6 @@ Sestavte řešení a stisknutím klávesy F5 spusťte aplikaci místně v emulá
 
 > [!NOTE]
 > Pokud dojde k výjimce následujícím postupem, najdete [tento příspěvek na blogu](https://blogs.msdn.com/b/praburaj/archive/2013/11/20/fileloadexception-on-microsoft-owin-when-running-on-worker-role.aspx) alternativní řešení. "Nelze načíst soubor nebo sestavení" Microsoft.Owin, verze = 2.0.2.0, jazyková verze = neutral, PublicKeyToken = 31bf3856ad364e35' nebo některou z jeho závislostí. Definice manifestu sestavení neodpovídá odkazu na sestavení. (Výjimka na základě hodnoty HRESULT: 0x80131040)"
-
 
 Emulátor služby výpočty místní IP adresa přiřadí ke koncovému bodu. IP adresu můžete najít zobrazením Uživatelském prostředí emulátoru výpočtů. Klikněte pravým tlačítkem na hlavním panelu oznamovací oblasti ikonu emulátoru a vyberte **zobrazit Uživatelském prostředí emulátoru výpočtů**.
 

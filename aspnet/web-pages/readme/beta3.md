@@ -8,12 +8,12 @@ ms.date: 01/10/2011
 ms.assetid: ffa3d5c9-91e5-4da3-b409-560b0c7fbbf0
 msc.legacyurl: /web-pages/readme/beta3
 msc.type: content
-ms.openlocfilehash: 7f0c5ff599235157bd11f5f86a26b8882e0f29dc
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: dc1d9237c04a7fcdbf4db6ccc8c36d255f6de003
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381806"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65124113"
 ---
 # <a name="web-matrix-and-aspnet-web-pages-razor-beta-3-release-readme"></a>Soubor Readme o nástroji WebMatrix a webových stránkách ASP.NET (Razor) verze Beta 3
 
@@ -41,7 +41,6 @@ ms.locfileid: "59381806"
 
 > Microsoft WebMatrix Beta je bezplatná webová vývoj zásobník, který nainstaluje během několika minut. Webový server se integruje s databází a programovací rozhraní pro vytvoření jednoho integrovaného rozhraní. Beta verze služby WebMatrix můžete použít ke zjednodušení způsobu kódu, testování a publikování vlastní web ASP.NET a PHP nebo beta verze služby WebMatrix můžete použít ke spuštění nového webu pomocí oblíbených open source aplikace, jako jsou aplikace DotNetNuke, Umbraco, WordPress a Joomla. Beta verze služby WebMatrix používá stejný výkonný webový server, databázový stroj a prostředí architektury, které se spustí váš web na Internetu, takže hladký a bezproblémový přechod z vývojového do produkčního prostředí.
 
-
 <a id="Installation_Notes"></a>
 
 ## <a name="installation"></a>Instalace
@@ -50,13 +49,11 @@ ms.locfileid: "59381806"
 > 
 > Pokud máte problémy během instalace, podívejte se na [Poradce při potížích se instalačního programu webové platformy Microsoft](https://go.microsoft.com/fwlink/?LinkId=196212).
 
-
 <a id="Installation_Notes0"></a>
 
 ## <a name="instructions-for-publishing-applications"></a>Pokyny k publikování aplikace
 
 > Zobrazit [podrobné pokyny pro publikování aplikací](https://go.microsoft.com/fwlink/?LinkID=196149)
-
 
 <a id="Known_Issues"></a>
 
@@ -80,12 +77,10 @@ ms.locfileid: "59381806"
 > - Windows XP SP3
 > - Windows Server 2003 SP2
 
-
 #### <a name="issue-cannot-install-webmatrix-beta-3-if-microsoft-visual-studio-2008-is-installed-without-microsoft-visual-studio-2008-sp1"></a>Problém: Nelze nainstalovat WebMatrix Beta 3, pokud Microsoft Visual Studio 2008 se nainstaluje bez Microsoft Visual Studio 2008 SP1
 
 > **Alternativní řešení**  
 > Nainstalujte [Microsoft Visual Studio 2008 SP1](https://www.microsoft.com/downloads/details.aspx?FamilyId=FBEE1648-7106-44A7-9649-6D9F6D58056E&amp;displaylang=en) z webu Microsoft Download Center.
-
 
 #### <a name="issue-some-assemblies-for-sql-server-compact-40-are-not-installed-in-the-gac"></a>Problém: V mezipaměti GAC nejsou nainstalovány některé sestavení pro SQL Server Compact 4.0
 
@@ -101,14 +96,12 @@ ms.locfileid: "59381806"
 >   
 > Potom znovu nainstalujte SQL Server Compact 4.0.
 
-
 #### <a name="issue-cannot-uninstall-sql-server-compact-using-the-command-line"></a>Problém: Nelze odinstalovat, SQL Server Compact pomocí příkazového řádku
 
 > Odinstalace systému SQL Server Compact prostřednictvím parametrů příkazového řádku v této verzi nefunguje.
 > 
 > **Alternativní řešení**  
 > Použití *programy a funkce* v Ovládacích panelech Windows k odinstalaci serveru Microsoft SQL Server Compact 4.0.
-
 
 <a id="Known_Issues_ASPNET"></a>
 
@@ -134,7 +127,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > [!code-cshtml[Main](beta3/samples/sample1.cshtml)]
 
-
 <a id="Changes"></a>
 
 #### <a name="changes-in-beta-3-for-aspnet-web-pages-with-razor-syntax"></a>Změny ve verzi Beta 3 pro rozhraní ASP.NET Web Pages se syntaxí Razor
@@ -142,7 +134,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 #### <a name="change-hrefattribute-method-removed"></a>Změna: Metoda "HrefAttribute" Odebrat
 
 > `HrefAttribute` Metodu `WebPage` třída odebrala. Tato pomocná použitý ke kódování problematické znaky v adresách URL. To se už nevyžaduje, protože syntaxe Razor rozhraní ASP.NET Galerie automaticky kóduje řetězce. (Pomocí nové `Html.Raw` metoda k vykreslení nekódovaného řetězce.)
-
 
 #### <a name="change-syntax-for-declarative-helper-helpers-changed"></a>Změna: Syntaxe pro deklarativní "@helper" změnit pomocné rutiny
 
@@ -158,16 +149,13 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > Všimněte si, že `@{ }` znaků kolem počáteční kód v pomocné rutiny se už nepoužívá. Je to proto, že obsah pomocné rutiny jsou považovány za blok kódu ve výchozím nastavení. Pomocná rutina vykreslí značku, která začíná otevřením `<a>` značky. Pokud musí pomocné rutiny vykreslení prostý text nebo značky, které neobsahují ukončovací značky (například `<meta>` značky), obsah vykreslený musí být v `<text></text>` značky.
 
-
 #### <a name="change-webpagecontexthttpcontext-removed"></a>Změna: "WebPageContext.HttpContext" Odebrat
 
 > `WebPageContext.HttpContext` Se odebrala vlastnost. Místo nich se používá `HttpContext.Current`. ( `WebPageContext.HttpContext` Vlastnost jednoduše zabalené to.)
 
-
 #### <a name="change-facebook-helper-moved-to-new-package"></a>Změna: Pomocník "Facebook" přesunout do nového balíčku
 
 > `Facebook` Přesunula do pomocné rutiny *Facebook.Helper* knihovny, která zahrnuje `Facebook` pomocné rutiny a další funkce. Je nutné nainstalovat tuto knihovnu jako samostatný balíček, jak je popsáno v "Instalace pomocné rutiny pomocí Správce balíčků" v tomto kurzu [Začínáme se stránkami ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202889).
-
 
 #### <a name="change-membership-role-and-security-types-moves-to-new-assembly"></a>Změna: Typy členství, Role a zabezpečení přesune do nové sestavení
 
@@ -178,13 +166,11 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > - `SimpleRoleProvider`
 > - `WebSecurity`
 
-
 #### <a name="change-tagbuilder-class-moved-to-systemwebwebpagesdll-assembly"></a>Změna: Třída "TagBuilder" přesunuta do System.Web.WebPages.dll sestavení
 
 > `TagBuilde` Třídy jazyka r byla přesunuta do System.Web.WebPages.dll sestavení. Dřív to bylo v sestavení, který byl součástí technologie ASP.NET MVC. Tato změna znamená, že není nutné instalovat ASP.NET MVC, aby bylo možné používat `TagBuilder` třídy.
 > 
 > Třída je však stále v `System.Web.Mvc` oboru názvů. Chcete-li použít `TagBuilder` třídy (například ve vlastní syntaxe Razor rozhraní ASP.NET pomocné rutiny), musí odkazovat obor názvů (například přidáním `@using System.Web.Mvc` kódu).
-
 
 #### <a name="change-request-validation-syntax-changed-validation-class-removed"></a>Změna: Žádost o ověření syntaxe se změnily. Odebrat třídu "Ověřování"
 
@@ -197,7 +183,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > Chcete-li zakázat automatické ověření, zavolejte `Request.Unvalidated` metoda, předejte název pole nebo jiný objekt příspěvku, který chcete obejít ověření žádosti pro. Tuto metodu můžete použít k ověření pro všechny položky v obejít `Form`, `QueryString`, `Cookies`, a `ServerVariables` kolekce. Následující příklady ukazují, jak používat `Unvalidated` metody:
 > 
 > [!code-csharp[Main](beta3/samples/sample4.cs)]
-
 
 <a id="Issues"></a>
 
@@ -212,13 +197,11 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > **Alternativní řešení**  
 > Ujistěte se, že název předaný `InitializeDatabaseConnection` metoda shody profilu uživatele v databázi členství tabulku nebo Ujistěte se, že `autoCreateTables` parametr je nastaven na hodnotu false.
 
-
 #### <a name="issue-failed-to-generate-a-user-instance-of-sql-server-error"></a>Problém: "Nepovedlo se vygenerovat uživatelskou instanci systému SQL Server" Chyba
 
 > Pokud aplikace Web služby WebMatrix používá systém SQL Server Express a je spuštěna služba IIS 7.5 na Windows 7 nebo Windows Server 2008 R2, může se zobrazit chyba, která označuje, že SQL Server nemůže načíst cestu uživatele místní aplikace v době běhu.
 > 
 > **Alternativní řešení** Ujistěte se, zda má účet Windows, na kterém aplikace běží pod (obvykle síťové služby), jako oprávnění čtení/zápisu pro kořenové složky aplikace a podsložky *aplikace\_Data*. Podrobnější informace najdete v článku znalostní báze [problémy se službou SQL Server Express uživatele vytváření instancí a ASP.net Web Application Projects](https://support.microsoft.com/kb/2002980).
-
 
 #### <a name="issue-in-visual-studio-namespaces-for-custom-assemblies-dlls-are-not-imported-automatically"></a>Problém: V sadě Visual Studio nejsou automaticky importovány obory názvů pro vlastní sestavení (knihovny DLL)
 
@@ -227,13 +210,11 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > **Alternativní řešení**  
 > Zahrnout `using` – příkaz (`imports` v jazyce Visual Basic), která odkazuje na entity, které nejsou rozpoznány v době návrhu.
 
-
 #### <a name="issue-visual-studio-intellisense-and-project-templates-available-only-in-aspnet-mvc-version-3"></a>Problém: Visual Studio IntelliSense projektu šablony a k dispozici pouze v architektuře ASP.NET MVC verze 3
 
 > Instalace rozhraní ASP.NET Web Pages také neinstaluje nástroje pro Visual Studio jako je například technologie IntelliSense a projekt šablony pro aplikace ASP.NET Web Pages.
 > 
 > **Alternativní řešení** používat technologii IntelliSense a projekt šablony pro aplikace webových stránek ASP.NET v sadě Visual Studio, instalace technologie ASP.NET MVC 3 RC, buď prostřednictvím instalace webové platformy nebo [samostatný instalační program](https://go.microsoft.com/fwlink/?LinkID=191797).
-
 
 #### <a name="issue-lthelpergt-class-cannot-be-found-error"></a>Problém: "&lt;pomocné rutiny&gt; třída nebyla nalezena" Chyba
 
@@ -241,7 +222,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > **Alternativní řešení**  
 > Odkomentujte volání jakékoli pomocné rutiny v lokalitě, spusťte  *\_správce* stránce a nainstalujte balíček nebo balíčky, které obsahují pomocné rutiny, které chcete použít. Po instalaci balíčku, zrušte komentář u řádků, které odkazují na pomocné rutiny.
-
 
 #### <a name="issue-deploying-beta-3-aspnet-razor-assemblies-to-the-bin-folder-might-not-work-on-hosting-sites"></a>Problém: Nasazení Beta 3 ASP.NET Razor sestavení do složky Bin nemusí fungovat na hostování webů
 
@@ -253,7 +233,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > **Alternativní řešení** obraťte se na svého poskytovatele hostingových služeb, abyste se přesvědčili, že se zobrazují chyby z důvodu konfliktu mezi verzí zprostředkovatele sestavení a ta vaše. Pokud ano, požádejte poskytovatele hostingu sestavení v GAC serveru.
 
-
 #### <a name="issue-reading-feeds-or-other-external-data-via-a-proxy-server"></a>Problém: Informační kanály pro čtení nebo jiných externích dat prostřednictvím serveru proxy
 
 > Pokud serveru se systémem lokality je za proxy serverem, může být nutné nakonfigurovat informace o proxy serveru v *Web.config* souboru, aby bylo možné číst informace, které pocházejí z mimo váš web. Například, pokud použijete `ReCaptcha` pomocné rutiny, Pomocník komunikuje se službou nástroje reCAPTCHA, ale mohou být blokovány váš proxy server. Podobně informační kanály, které se používají v ASP.NET Web Pages, jako je například informačního kanálu používat Správce balíčků může vyžadovat konfiguraci proxy serveru.
@@ -264,7 +243,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > Další informace o konfiguraci proxy serveru, naleznete v tématu [ &lt;proxy&gt; – Element (nastavení sítě)](https://msdn.microsoft.com/library/sa91de1e.aspx) na webové stránce MSDN.
 
-
 #### <a name="issue-microsoftwebinfrastructuredll-cannot-be-loaded-error"></a>Problém: Chyba "Microsoft.Web.Infrastructure.dll nelze načíst."
 
 > Pokud dříve nainstalované verze Beta 1 z rozhraní ASP.NET Web Pages se syntaxí Razor a nainstalujte verze Beta 3, nainstaluje se všechny odpovídající sestavení v GAC s výjimkou *Microsoft.Web.Infrastructure.dll*. V důsledku toho při spuštění ASP.NET Razor pages, se zobrazí chyba, že *Microsoft.Web.Infrastructure.dll* nelze načíst.
@@ -273,7 +251,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > **Alternativní řešení**  
 > V Ovládacích panelech odinstalujte rozhraní ASP.NET Web Pages. Znovu nainstalujte na verzi Beta 3.
-
 
 #### <a name="issue-uninstalling-the-net-framework-version-4-disables-aspnet-web-pages-with-razor-syntax"></a>Problém: Odinstalování rozhraní .NET Framework verze 4 zakáže ASP.NET Web Pages se syntaxí Razor
 
@@ -287,14 +264,12 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > [!code-xml[Main](beta3/samples/sample6.xml)]
 
-
 #### <a name="issue-applications-previously-deployed-with-aspnet-assemblies-in-the-bin-folder-experience-errors"></a>Problém: Dříve nasazenými technologií ASP.NET sestavení ve složce Bin aplikace dochází k chybám
 
 > Během nasazování, kopie sestavení rozhraní ASP.NET Web Pages (například *Microsoft.WebPages.dll*) k *Bin* složky na serveru webu. (To může dojít automaticky během nasazení nebo proto, že vývojáři explicitně zkopírovat sestavení.) Ale když je nainstalována verze Beta 3, chyby dojde k, jako jsou chyby, které určité typy nelze nalézt. K tomu dochází, protože počet typů rozhraní ASP.NET Web Pages se přesunuly do různých oborech názvů pro verzi Beta 3.
 > 
 > **Alternativní řešení**   
 > Zrušte *Bin* složka nasazenou aplikaci, zkopírujte nové sestavení do složky (nebo znovu nasadit aplikaci) a poté restartujte aplikaci.
-
 
 #### <a name="issue-extensionless-urls-do-not-find-cshtmlvbhtml-files-on-iis-7-or-iis-75"></a>Problém: Adresy URL bez přípony nebyl nalezen.cshtml/.vbhtml souborů ve službě IIS 7 nebo IIS 7.5
 
@@ -312,7 +287,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > [!code-xml[Main](beta3/samples/sample7.xml)]
 
-
 #### <a name="issue-using-web-application-project-or-aspnet-mvc-and-aspnet-web-pages-in-the-same-application"></a>Problém: Ve stejné aplikaci pomocí projektu webové aplikace nebo technologie ASP.NET MVC a ASP.NET Web pages
 
 > Pokud v projektu webové aplikace nebo aplikace ASP.NET MVC byly pomocí webových stránek ASP.NET, může se zobrazit chyba, která *WebPageHttpApplication* nebyl nalezen.
@@ -327,7 +301,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > [!code-csharp[Main](beta3/samples/sample9.cs)]
 > 
 > Změnu, která byla zavedena v platnosti obrátí na vydání Beta 1 z rozhraní ASP.NET Web Pages se syntaxí Razor.
-
 
 #### <a name="issue-deploying-an-application-to-a-computer-that-does-not-have-sql-server-compact-installed"></a>Problém: Nasazení aplikace do počítače, na kterém není SQL Server Compact nainstalovaná
 
@@ -345,7 +318,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > 
 > [!code-xml[Main](beta3/samples/sample10.xml)]
-
 
 #### <a name="issue-database-and-webgrid-helpers-do-not-work-in-medium-trust-in-visual-basic"></a>Problém: Databáze a WebGrid pomocné rutiny nefungují na úrovni Medium Trust v jazyce Visual Basic
 
@@ -380,7 +352,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > [!code-vb[Main](beta3/samples/sample16.vb)]
 
-
 #### <a name="issue-microsoft-visual-c-2008-runtime-libraries-are-required"></a>Problém: Jsou vyžadovány knihovny prostředí runtime Microsoft Visual C++ 2008
 
 > Nativní knihovny DLL systému SQL Server Compact 4.0 potřebovat Microsoft Visual C++ 2008 Runtime Libraries (x 86, IA64 a x 64), aktualizace Service Pack 1.
@@ -392,7 +363,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > [!NOTE]
 > Poznámka: instalace rozhraní .NET Framework 2.0, 3.0, nebo se 4 *není* instalaci Visual C++ 2008 modulu Runtime knihoven SP1.
-
 
 #### <a name="issue-if-sql-server-compact-is-installed-prior-to-installing-net-framework-on-the-computer-its-provider-invariant-name-is-not-registered-in-the-net-framework-machineconfig-file"></a>Problém: Pokud je SQL Server Compact nainstalovaný před instalací rozhraní .NET Framework v počítači, jeho výchozí název zprostředkovatele není zaregistrovaný v souboru machine.config rozhraní .NET Framework
 
@@ -408,7 +378,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 > Přeinstalujte [SQL Server Compact 4.0 CTP1](https://www.microsoft.com/downloads/details.aspx?FamilyID=0d2357ea-324f-46fd-88fc-7364c80e4fdb&amp;displaylang=en).
 
-
 <a id="Known_Issues_Installing_Applications"></a>
 
 ### <a name="installing-applications"></a>Instalace aplikací
@@ -417,7 +386,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 
 > **Alternativní řešení**  
 > Žádné Aplikace může nějakou dobu instalace, ale nainstaluje správně.
-
 
 <a id="Known_Issues_Publishing_Applications"></a>
 
@@ -430,14 +398,12 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > **Alternativní řešení**  
 > Ujistěte se, že před publikováním serveru, cílovou adresu URL v **nastavení publikování** dialogové okno začíná `http://` nebo `https://`.
 
-
 #### <a name="issue-publishing-a-mysql-database-fails-with-the-error-failed-to-publish-the-database-this-can-happen-if-the-remote-database-cannot-run-the-script"></a>Problém: Publikování databáze MySQL se nezdaří s chybou "se nepodařilo publikovat i databázi. To může dojít, pokud vzdálené databázi nepodaří spustit skript."
 
 > Této chybě může dojít k z několika důvodů. Jedním z důvodů, že zobrazí se tato chyba je-li skript databáze obsahuje znak jednoduché uvozovky (') a není cílové databáze MySQL výchozí znakovou sadu UTF-8.
 > 
 > **Alternativní řešení**  
 > Nastavte výchozí znakovou sadu pro vzdálenou databázi MySQL na UTF-8.
-
 
 <a id="Known_Issues_Other_Issues"></a>
 
@@ -448,7 +414,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > Při spuštění sestavy pro lokalitu, pokud zadáte text v *filtr podle adresy URL* pole a klikněte na tlačítko *hledání*, nic se nestane. Důvodem je, že tento ovládací prvek není funkční i *Group* stav sestavy je nastavený na *typ problému*, což je výchozí hodnota.
 > 
 > **Alternativní řešení** v *Group By* kartu pásu karet klikněte na tlačítko *URL* seskupit položky podle jejich zdroj adresy URL. Textové pole a tlačítko Filtrovat položky jsou funkční i v tomto stavu.
-
 
 #### <a name="issue-wcf-applications-fail-to-run-with-iis-express"></a>Problém: Aplikace WCF neúspěšné spuštění službou IIS Express
 
@@ -469,7 +434,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > 
 >     [!code-console[Main](beta3/samples/sample19.cmd)]
 
-
 #### <a name="issue-webmatrix-beta-3-is-unable-to-perform-certain-tasks-that-require-elevation"></a>Problém: Služba WebMatrix Beta 3 není schopen provést určité úlohy, které vyžadují ke zvýšení úrovně oprávnění
 
 > Služba WebMatrix Beta 3 není schopen provést určité úlohy, které vyžadují ke zvýšení úrovně oprávnění, například při instalaci dalších komponent v následujících situacích:
@@ -483,14 +447,12 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > - U Windows Vista nebo Windows 7 povolení nástroje Řízení uživatelských účtů.
 > - Windows XP přidejte uživatele do skupiny zabezpečení Administrators.
 
-
 #### <a name="issue-site-from-web-gallery-is-disabled"></a>Problém: "Web z Galerie webových" je neaktivní
 
 > **Webu z Galerie webových** možnost je zakázaná, pokud není nainstalovaný 3.0 Instalační služby webové platformy.
 > 
 > **Alternativní řešení**  
 > Nainstalujte [instalace webové platformy Microsoft 3.0](https://go.microsoft.com/fwlink/?LinkID=194638).
-
 
 #### <a name="issue-on-windows-server-2003-iis-express-does-not-start-for-a-non-administrative-user"></a>Problém: V systému Windows Server 2003 službu IIS Express nelze spustit pro uživatele bez oprávnění správce
 
@@ -501,14 +463,12 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 >   
 > [Aplikace, která je tím, že uživatel bez oprávnění správce nemůže naslouchat na počítače, na kterém aplikace běží ve Windows Vista, Windows Server 2003 nebo Windows XP přenos pomocí protokolu HTTP.](https://support.microsoft.com/kb/939786)
 
-
 #### <a name="issue-google-chrome-is-not-available-as-a-run-option"></a>Problém: Google Chrome není k dispozici jako možnost spuštění
 
 > Google Chrome se nezobrazí v seznamu prohlížečů v rámci **spustit** na **Domů** kartu.
 > 
 > **Alternativní řešení**  
 > Některé verze Google Chrome neregistrujte sami správně s výchozí programy funkcí ve Windows. Jako alternativní řešení, spusťte Google Chrome, klikněte na tlačítko *přizpůsobení a řízení Google Chrome* nabídky, klikněte na tlačítko *možnosti*a potom klikněte na tlačítko *zkontrolujte Google Chrome prohlížeči výchozí*.
-
 
 #### <a name="issue-the-foreign-key-dialog-box-doesnt-allow-entering-a-primary-key"></a>Problém: Dialogové okno "Cizí klíč" neumožňuje zadání primární klíč
 
@@ -517,14 +477,12 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > **Alternativní řešení**  
 > Je to záměr. Není nutné zadat název primárního klíče z primární klíč tabulky.
 
-
 #### <a name="issue-the-relationships-button-is-disabled"></a>Problém: Tlačítko "Relace" je zakázané.
 
 > **Vztahy** tlačítko **tabulky** kartu **databází** pracovní prostor je zakázaná pro databáze systému SQL Server Compact.
 > 
 > **Alternativní řešení**  
 > Žádné SQL Server Compact nepodporuje relace mezi tabulkami.
-
 
 #### <a name="issue-parameterized-sql-queries-throw-exceptions"></a>Problém: Parametrizované dotazy SQL vyvolat výjimky
 
@@ -536,7 +494,6 @@ Tato část dokumentu popisuje nové funkce, změny a známé problémy s verzí
 > [!code-sql[Main](beta3/samples/sample20.sql)]
 > 
 > [!code-vb[Main](beta3/samples/sample21.vb)]
-
 
 <a id="More_Info"></a>
 

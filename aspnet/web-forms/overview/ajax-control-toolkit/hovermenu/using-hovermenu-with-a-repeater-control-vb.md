@@ -8,12 +8,12 @@ ms.date: 06/02/2008
 ms.assetid: 7f07c112-cd4f-4427-9699-57cfab2791fd
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/hovermenu/using-hovermenu-with-a-repeater-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 963850e1048d4fde573f28244fd32d0c4232fda4
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: fa9b11ea064bd8181381f8374cc96b8eea6aa72b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59399187"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65127095"
 ---
 # <a name="using-hovermenu-with-a-repeater-control-vb"></a>Použití nabídky HoverMenu s ovládacím prvkem Repeater (VB)
 
@@ -22,7 +22,6 @@ by [Christian Wenz](https://github.com/wenz)
 [Stáhněte si kód](http://download.microsoft.com/download/b/0/6/b06fe835-5b8f-4c00-aef8-062c19d75b95/HoverMenu1.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/hovermenu1VB.pdf)
 
 > Nabídky HoverMenu ovládacího prvku AJAX Control Toolkit obsahuje efekt jednoduché místní nabídky: Při umístění ukazatele myši nad prvkem, zobrazí se na určené pozici automaticky otevíraného okna. Je také možné použít tento ovládací prvek v rámci prvku repeater.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -51,7 +50,6 @@ Nyní `HoverMenuExtender` vstupu do play. Tak, aby každý prvek ve zdroji dat z
 [!code-aspx[Main](using-hovermenu-with-a-repeater-control-vb/samples/sample4.aspx)]
 
 Teď všechny položky ve zdroji dat se zobrazí automaticky otevíraného okna na pravé straně (`PopupPosition` atribut) po prodlevě 50 MS (`PopDelay` atributu).
-
 
 [![V nabídce při najetí myší se zobrazí vedle každé položky v opakovači](using-hovermenu-with-a-repeater-control-vb/_static/image2.png)](using-hovermenu-with-a-repeater-control-vb/_static/image1.png)
 

@@ -8,12 +8,12 @@ ms.date: 02/27/2014
 ms.assetid: b90978bd-795d-4871-9ade-1671caff5730
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/using-query-string-values-to-retrieve-data
 msc.type: authoredcontent
-ms.openlocfilehash: 7ba95f24085c403c669bc5d6df4dee7c87fbd90a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 143ddcb40b576a3129e659b90bfc8321c061a547
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59414241"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130240"
 ---
 # <a name="using-query-string-values-to-filter-data-with-model-binding-and-web-forms"></a>Použití hodnot řetězce dotazu pro filtrování dat pomocí vazby modelu a webové formuláře
 
@@ -26,7 +26,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > V tomto kurzu vychází z vytvořeného v projektu [starší](retrieving-data.md) části této série.
 > 
 > Je možné [Stáhnout](https://go.microsoft.com/fwlink/?LinkId=286116) dokončený projekt v jazyce C# nebo VB. Ke stažení kódu funguje pomocí sady Visual Studio 2012 nebo Visual Studio 2013. Používá šablonu Visual Studio 2012, která se trochu liší od sady Visual Studio 2013 šablonu uvedenou v tomto kurzu.
-
 
 ## <a name="what-youll-build"></a>Co budete vytvářet
 

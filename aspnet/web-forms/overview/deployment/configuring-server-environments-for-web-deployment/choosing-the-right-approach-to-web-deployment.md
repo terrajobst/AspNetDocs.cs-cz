@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 787a53fd-9901-4a11-9d58-61e0509cda45
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 65b77b016e02c2d9c8ff2b925b1567f26a6a05cc
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 13f784dd8e6404806104d56b026b3c41ca178892
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59407910"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65128474"
 ---
 # <a name="choosing-the-right-approach-to-web-deployment"></a>Výběr správného přístupu k nasazení webu
 
@@ -30,7 +30,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > 
 > Konfigurace webových serverů cíl bude záviset na jaký přístup k nasazení, který chcete použít. Toto téma vám pomůže rozhodnout, jaký přístup k nasazení je pro vás nejvhodnější.
 
-
 Tato tabulka zobrazuje hlavní výhody a nevýhody obou těchto nasazení přístupů, společně s scénáře, které nejvíce obvykle vyhovují jednotlivým přístupům.
 
 | Přístup | Výhody | Nevýhody | Typické scénáře |
@@ -39,35 +38,26 @@ Tato tabulka zobrazuje hlavní výhody a nevýhody obou těchto nasazení přís
 | Dočasné agenta | Není nutné nainstalovat nasazení webu v cílovém počítači. Automaticky se používá nejnovější verzi nástroje nasazení webu. | Uživatel musí být správce na cílovém serveru. uživatele nejde zadat alternativní přihlašovací údaje. | Vývojových prostředích. Testovací prostředí. |
 | Obslužná rutina nasazení webu | Uživatelé bez oprávnění správce můžou nasazovat obsah. Je vhodný pro pravidelné aktualizace webové aplikace a obsah. | Je mnohem složitější nastavení. | Pracovní prostředí. Produkční prostředí intranetu. Hostované prostředí. |
 | Offline nasazení | Je velmi snadné nastavení. Je vhodná pro izolované prostředí. | Správce serveru musíte ručně zkopírovat a importovat pokaždé, když webového balíčku. | Přístupem k Internetu produkční prostředí. Izolované prostředí sítě. |
-  
 
 ## <a name="using-the-remote-agent"></a>Pomocí vzdáleného agenta
 
 Když instalujete nasazení webu pomocí výchozích nastavení na cílovém serveru, je automaticky nainstalována a spuštěna Služba agenta nasazení webu ("vzdáleného agenta"). Ve výchozím nastavení vzdálený agent zpřístupňuje koncový bod HTTP na této adrese:
 
-
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample1.cmd)]
-
 
 > [!NOTE]
 > Můžete nahradit [*server*] s názvem počítače webového serveru, IP adresu pro váš webový server nebo název hostitele, který překládá na vašem webovém serveru.
 
-
 Správci serveru můžete nasadit webové balíčky ze vzdáleného umístění, jako je počítač vývojář nebo serveru sestavení, tak, že zadáte tuto adresu koncového bodu. Předpokládejme například, že Matt Hink společnosti Fabrikam, Inc. vytvořený projekt ContactManager.Mvc webové aplikace na svém vývojovém počítači. Proces sestavení generuje webový balíček, spolu s *. deploy.cmd* soubor, který obsahuje příkazy Webdeploy požadovaná k instalaci balíčku. Pokud Matt je správce serveru na serveru TESTWEB1, si můžete nasadit webové aplikace na webovém serveru test spuštěním následujícího příkazu na svém vývojovém počítači:
-
 
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample2.cmd)]
 
-
 Ve skutečnosti může spustitelný soubor pro nasazení webu odvodit adresu koncového bodu vzdáleného agenta, pokud zadáte název počítače, takže Matt pouze na tento typ musí:
-
 
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample3.cmd)]
 
-
 > [!NOTE]
 > Další informace o nasazení webu syntaxe příkazového řádku a *. deploy.cmd* soubory, naleznete v tématu [jak: Instalace balíčku pro nasazení pomocí souboru deploy.cmd](https://msdn.microsoft.com/library/ff356104.aspx).
-
 
 Vzdálený agent nabízí jednoduchý způsob, jak nasadit obsah ze vzdáleného umístění, a tento přístup můžete pracovat s jedním kliknutím nebo automatizované nasazení. Uživatel, který spouští příkaz nasazení však také musí být správce domény nebo členem místní skupiny administrators na cílovém serveru. Kromě toho vzdálený agent nepodporuje základní ověřování, takže nelze předat alternativní přihlašovací údaje na příkazovém řádku.
 
@@ -81,13 +71,10 @@ Dočasné agent přístup k nasazení je podobný přístup vzdáleného agenta.
 
 Pokud chcete použít nastavení poskytovatele temp agenta, přidejte **/g** příznak, který váš příkaz nasazení:
 
-
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample4.cmd)]
-
 
 > [!NOTE]
 > Pokud nelze použít dočasný agenta v cílovém počítači, je instalována webová služba agenta nasazení i v případě, že služba není spuštěná.
-
 
 Výhodou tohoto přístupu je, že není nutné udržovat instalace rozšíření nasazení webu na cílových serverech. Kromě toho není nutné zajistit, že zdrojový a cílový počítač používají stejnou verzi nástroje nasazení webu. Tento přístup však vykazuje stejná omezení instančního objektu jako vzdálený agent přístup, a to, že pokud chcete nasadit obsah musí být místní správce na cílovém serveru a je podporován pouze ověřování NTLM. Přístup temp agent také vyžaduje mnohem více počáteční konfiguraci cílového prostředí.
 
@@ -99,31 +86,23 @@ Pro službu IIS 7 a vyšší Web Deploy nabízí alternativní nasazení příst
 
 Ve výchozím nastavení vzdálený agent zpřístupňuje koncový bod HTTP na této adrese:
 
-
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample5.cmd)]
-
 
 > [!NOTE]
 > Můžete nahradit [*server*] s názvem počítače webového serveru, IP adresu pro váš webový server nebo název hostitele, který překládá na vašem webovém serveru.
-
 
 Velkou výhodou obslužné rutiny nasazení webu přes vzdálený agent a temp agenta, je můžete konfigurovat služby IIS umožňuje uživatelům bez oprávnění správce k nasazení aplikace a obsah pro určité weby služby IIS. Obslužné rutiny nasazení webu také podporuje základní ověřování, takže můžete zadat alternativní přihlašovací údaje jako parametry v příkazům nasazení webu. Hlavní nevýhodou je, že obslužné rutiny nasazení webu je zpočátku mnohem složitější nastavení a konfigurace.
 
 V případě uživatelů bez oprávnění správce služby webové správy (WMSvc) pouze umožní uživateli k připojení do služby IIS pomocí připojení úrovni webu, nikoli připojení úrovni serveru. Pro přístup k určité lokalitě, můžete zahrnout řetězec dotazu jednotlivých lokalit na adresu koncového bodu:
 
-
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample6.cmd)]
-
 
 Předpokládejme například, že procesu sestavení je nakonfigurovaný pro automatické nasazení do přípravného prostředí po každém úspěšném sestavení webové aplikace. Pokud jste použili postup vzdáleného agenta, je třeba vytvořit identitu procesu sestavení správce na cílovém serveru. Naproti tomu obslužné rutiny webu nasadit přístup můžete poskytnout uživatele bez oprávnění správce&#x2014;**FABRIKAM\stagingdeployer** v tomto případě&#x2014;oprávnění pouze konkrétní web služby IIS a proces sestavení může poskytnout tyto přihlašovací údaje pro nasazení webového balíčku.
 
-
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample7.cmd)]
-
 
 > [!NOTE]
 > Další informace o syntaxi a nasazení webu operace příkazového řádku najdete v tématu [webové nasazení Command Line Reference](https://technet.microsoft.com/library/dd568991(v=ws.10).aspx). Další informace o používání *. deploy.cmd* souborů naleznete v tématu [jak: Instalace balíčku pro nasazení pomocí souboru deploy.cmd](https://msdn.microsoft.com/library/ff356104.aspx).
-
 
 Obslužné rutiny nasazení webu poskytuje užitečné přístup k nasazení v pracovním prostředí, hostované prostředí a intranetoví produkční prostředí, kde je k dispozici vzdálený přístup k serveru, ale nejsou přihlašovací údaje správce.
 

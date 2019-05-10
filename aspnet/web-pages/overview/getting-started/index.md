@@ -8,17 +8,16 @@ ms.date: 05/18/2012
 ms.assetid: 99253c4e-a125-4c21-85e7-a6dd74d93892
 msc.legacyurl: /web-pages/overview/getting-started
 msc.type: chapter
-ms.openlocfilehash: 3e5b9d1a3bac0cf1ab042f473f8fd508069000a5
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 50a249d0e64cff2a8c4f16f38f530b6d52f755de
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59408573"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133177"
 ---
 # <a name="getting-started-with-aspnet-web-pages"></a>Začínáme s webovými stránkami ASP.NET
 
 > Jaké webové stránky a služba WebMatrix jsou, a jak nainstalovat vše, co, Začínáme a nasaďte servery.
-
 
 - [Programování webových stránek ASP.NET v sadě Visual Studio](program-asp-net-web-pages-in-visual-studio.md)
 - [Úvod do programování webu ASP.NET pomocí syntaxe Razor](introducing-razor-syntax-c.md)

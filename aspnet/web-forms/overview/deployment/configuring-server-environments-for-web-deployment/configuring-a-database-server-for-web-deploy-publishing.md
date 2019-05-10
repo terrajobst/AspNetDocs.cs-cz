@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: e7c447f9-eddf-4bbe-9f18-3326d965d093
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-database-server-for-web-deploy-publishing
 msc.type: authoredcontent
-ms.openlocfilehash: 2cd99e23904276e89cf043a2332ad07c0f01716d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ade3c1ba1c470092f512436f39b8831458408c2c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59415346"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131579"
 ---
 # <a name="configuring-a-database-server-for-web-deploy-publishing"></a>Konfigurace databázového serveru pro publikování nasazeného webu
 
@@ -24,7 +24,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > Toto téma popisuje, jak konfigurovat databázový server SQL Server 2008 R2 pro podporu nasazení webu a publikování.
 > 
 > Úlohy popsané v tomto tématu jsou společné pro každý scénář nasazení&#x2014;nezáleží, jestli vaše webové servery jsou nakonfigurovány pro použití služby vzdálený Agent nástroje nasazení webu služby IIS (Web Deploy), obslužné rutiny webu nasadit nebo offline nasazení nebo aplikace běží na jednom webovém serveru nebo v serverové farmě. Způsob nasazení databáze se může změnit podle požadavků na zabezpečení a další důležité informace. Například můžete nasadit databázi s nebo bez něj ukázková data, a můžete nasadit mapování uživatelů na role nebo ruční konfigurace po nasazení. Způsob, jakým konfigurování serveru databáze však zůstala stejná.
-
 
 Není nutné instalovat žádné další produkty a nástroje do konfigurace databázového serveru pro podporu nasazení webu. Za předpokladu, že databázový server a webový server běží na různých počítačích, stačí jednoduše:
 
@@ -46,7 +45,6 @@ Pouze musí obsahovat instanci systému SQL Server **služby databázového stro
 
 > [!NOTE]
 > Další informace o připojení počítače k doméně najdete v tématu [připojení počítače k doméně a protokolování na](https://technet.microsoft.com/library/cc725618(v=WS.10).aspx). Další informace o konfiguraci statických IP adres najdete v tématu [nakonfigurujte statickou IP adresu](https://technet.microsoft.com/library/cc754203(v=ws.10).aspx). Další informace o instalaci systému SQL Server, naleznete v tématu [instalace systému SQL Server 2008 R2](https://technet.microsoft.com/library/bb500395.aspx).
-
 
 ## <a name="enable-remote-access-to-sql-server"></a>Povolit vzdálený přístup k systému SQL Server
 
@@ -96,11 +94,9 @@ Za předpokladu, že používáte výchozí instanci systému SQL Server, budete
 | --- | --- | --- | --- |
 | Příchozí | Jakýkoli | 1433 | TCP |
 | Odchozí | 1433 | Jakýkoli | TCP |
-  
 
 > [!NOTE]
 > Technicky klientský počítač použije náhodně přidělenému portu TCP 1024 až 5000 ke komunikaci s SQL serverem a pravidla brány firewall můžete omezit odpovídajícím způsobem. Další informace o portech SQL serveru a brány firewall najdete v tématu [čísla portů TCP/IP potřebných pro komunikaci jazyka SQL přes bránu firewall](https://go.microsoft.com/?linkid=9805125) a [jak: Konfigurace serveru tak, aby naslouchal specifickému portu TCP (SQL Server Configuration Manager)](https://msdn.microsoft.com/library/ms177440.aspx).
-
 
 Ve většině prostředí systému Windows Server bude pravděpodobně nutné konfigurace brány Windows Firewall na databázovém serveru. Ve výchozím nastavení brány Windows Firewall umožňuje veškerý odchozí provoz, není-li pravidlo výslovně zakazuje. Chcete-li webový server pro přístup k databázi, musíte nakonfigurovat příchozí pravidlo, které umožní provoz TCP na číslo portu, který používá instanci systému SQL Server. Pokud používáte výchozí instanci systému SQL Server, můžete použít následující postup konfigurace tohoto pravidla.
 
@@ -136,7 +132,6 @@ Pokud vaše webová aplikace běží na serverové farmy, nikoli na jeden server
 
 > [!NOTE]
 > Další informace o identity fondu aplikací a přístup k síťovým prostředkům, naleznete v tématu [identity fondu aplikací součásti](https://go.microsoft.com/?linkid=9805123).
-
 
 Tyto úlohy v různých způsobů, jak můžete přistupovat. Chcete-li vytvořit přihlášení, můžete buď:
 
@@ -182,14 +177,12 @@ Ruční mapování databázových rolí je často více než odpovídající pro
 > [!NOTE]
 > Další informace o projekty serveru a databázových projektů, naleznete v tématu [Visual Studio 2010 SQL Server databázové projekty](https://msdn.microsoft.com/library/ff678491.aspx).
 
-
 ## <a name="configure-permissions-for-the-deployment-account"></a>Konfigurace oprávnění pro účet nasazení
 
 Pokud účet, který použijete ke spuštění nasazení není správcem SQL serveru, musíte také vytvořit přihlašovací údaje pro tento účet. Chcete-li vytvořit databázi, musí být účet členem skupiny **dbcreator** role serveru nebo mít ekvivalentní oprávnění.
 
 > [!NOTE]
 > Pokud použijete nasazení webu nebo VSDBCMD nasadit databázi, můžete přihlašovací údaje Windows nebo přihlašovací údaje SQL serveru (Pokud je vaše instance systému SQL Server je nakonfigurovaný pro podporu ověřování ve smíšeném režimu). Následující postup předpokládá, že chcete použít přihlašovací údaje Windows, ale není nic vám zastavení ze systému SQL Server uživatelské jméno a heslo v připojovacím řetězci při konfiguraci nasazení.
-
 
 **Nastavení oprávnění pro účet nasazení**
 

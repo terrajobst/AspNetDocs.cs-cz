@@ -8,19 +8,18 @@ ms.date: 02/20/2005
 ms.assetid: 21ebbaee-7ed8-45ae-b6c1-c27c88342e48
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/configuration-and-instrumentation
 msc.type: authoredcontent
-ms.openlocfilehash: b06f105b16087f97788e0ab360af41f538d2c1ac
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: cd5bedce5459e8cf8e72df8de69ebd82f2d97789
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400799"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131722"
 ---
 # <a name="configuration-and-instrumentation"></a>Konfigurace a instrumentace
 
 by [Microsoft](https://github.com/microsoft)
 
 > Byly zjištěny hlavní změny v konfiguraci a instrumentace v technologii ASP.NET 2.0. Nové rozhraní API technologie ASP.NET konfigurace umožňuje změny konfigurace provedli programově. Kromě toho existují spoustu nových nastavení konfigurace pro nové konfigurace a instrumentace.
-
 
 Byly zjištěny hlavní změny v konfiguraci a instrumentace v technologii ASP.NET 2.0. Nové rozhraní API technologie ASP.NET konfigurace umožňuje změny konfigurace provedli programově. Kromě toho existují spoustu nových nastavení konfigurace pro nové konfigurace a instrumentace.
 
@@ -40,7 +39,6 @@ Rozhraní API konfigurace ASP.NET obsahuje sadu objektů správy technologie ASP
 > [!NOTE]
 > Konfigurace rozhraní API nepodporuje vytváření aplikací služby IIS.
 
-
 ## <a name="working-with-local-and-remote-configuration-settings"></a>Práce s místními a vzdálenými konfigurační nastavení
 
 Objekt konfigurace představuje sloučené zobrazení nastavení konfigurace, které se vztahují na konkrétní fyzické entity, například počítač, nebo logická entita, jako je například aplikace nebo webovou stránku. Zadaná logická entita může existovat v místním počítači nebo na vzdáleném serveru. Pokud neexistuje žádný konfigurační soubor pro zadaná entita, představuje objekt konfigurace výchozího nastavení konfigurace definované v souboru Machine.config.
@@ -58,7 +56,6 @@ Použijte metodu GetSection nebo GetSectionGroup číst informace o konfiguraci.
 
 > [!NOTE]
 > Pokud používáte statické metody GetSection přijímající parametr cesty, parametr path musí odkazovat na aplikace, ve kterém kód běží. V opačném případě parametr je ignorován a vrátí informace o konfiguraci pro aktuálně spuštěné aplikaci.
-
 
 ### <a name="writing"></a>Zápis
 
@@ -97,7 +94,6 @@ Konfigurace, který představuje objekt nepředstavuje konkrétní konfiguračn�
 
 > [!NOTE]
 > Všimněte si, že pokud /ProductInfo cesta neexistuje, výše uvedený kód vrátí výchozí konfiguraci, jak je uvedeno v souboru machine.config.
-
 
 Až budete mít objekt konfigurace, můžete pak použít metodu GetSection nebo GetSectionGroup zobrazit podrobné informace o nastavení konfigurace. Následující příklad získá odkaz na nastavení zosobnění pro výše uvedené ProductInfo žádosti:
 
@@ -199,7 +195,6 @@ Můžete také přeposílat události k e-mailu. Dejte pozor, o které pravidel 
 
 > [!NOTE]
 > Ani jeden z těchto zprostředkovatelů e-mailu je nakonfigurován za vás. Bude potřeba je přidat do souboru Web.config.
-
 
 Hlavní rozdíl mezi poskytovateli tyto dva e-mailu je, že SimpleMailWebEventProvider odešle e-mailů v obecné šabloně, která nelze upravit. Ukázkový soubor Web.config tohoto poskytovatele e-mailu přidá do seznamu zprostředkovatelů nakonfigurované pomocí následující pravidla:
 
@@ -313,7 +308,6 @@ Můžete také znovu zkompilovat aplikaci na místě po přidání nové zdrojov
 > [!NOTE]
 > Kompilace aplikace, která obsahuje vnořené aplikace nebude zkompilován vnořené aplikace. Vnořené aplikace musí být kompilován samostatně.
 
-
 ### <a name="compiling-an-application-for-deploymenthttpsmsdnmicrosoftcomlibraryms229863aspx"></a>[Kompilace aplikace pro nasazení](https://msdn.microsoft.com/library/ms229863.aspx)
 
 Zkompilovat aplikaci pro nasazení (kompilace do cílového umístění) tak, že zadáte parametr targetDir. Parametr targetDir může být konečné umístění pro webovou aplikaci nebo kompilovanou aplikaci je možné nasadit další. Použití **-u** možnost zkompiluje aplikaci tak, že můžete provádět změny určité soubory kompilované aplikace bez opětovné kompilace. ASPNET\_compiler.exe rozlišuje mezi typy souborů statické a dynamické a zpracovává je jiným způsobem, při vytváření výsledné aplikace.
@@ -371,7 +365,6 @@ Každý z následujících labs navazuje na předchozí labs. Je potřeba prové
 2. Přidáte nový soubor webové konfigurace do lokality.
 3. V souboru web.config přidejte následující:
 
-
 [!code-xml[Main](configuration-and-instrumentation/samples/sample14.xml)]
 
 Tím se zajistí, že máte oprávnění ukládat změny v souboru web.config.
@@ -381,22 +374,18 @@ Tím se zajistí, že máte oprávnění ukládat změny v souboru web.config.
 3. Změnit ID ovládacího prvku Button **btnToggleDebug** a Text, který má **změnit stav ladění**.
 4. Otevřete zobrazení kódu pro použití modelu code-behind soubor Default.aspx a přidejte **pomocí** příkaz pro **System.Web.Configuration** následujícím způsobem:
 
-
 [!code-csharp[Main](configuration-and-instrumentation/samples/sample15.cs)]
 
 1. Přidejte dvě soukromé proměnné třídy a na stránce\_metody Init, jak je znázorněno níže:
-
 
 [!code-csharp[Main](configuration-and-instrumentation/samples/sample16.cs)]
 
 1. Přidejte následující kód na stránku\_zatížení:
 
-
 [!code-csharp[Main](configuration-and-instrumentation/samples/sample17.cs)]
 
 1. Uložit a procházet default.aspx. Všimněte si, že ovládací prvek Label zobrazí aktuální stav ladění.
 2. Dvakrát klikněte na ovládací prvek tlačítko v návrháři a přidejte následující kód pro událost Click pro ovládací prvek tlačítka:
-
 
 [!code-csharp[Main](configuration-and-instrumentation/samples/sample18.cs)]
 
@@ -413,16 +402,13 @@ V tomto testovacím prostředí vytvoří kód, který vám umožní zapínat pr
 4. Přidáte nový popisek na stránku default.aspx. ID se má změnit **lblLogAppEvents**.
 5. Otevřete zobrazení použití modelu code-behind default.aspx a přidejte novou deklaraci proměnné typu HealthMonitoringSection, jak je znázorněno níže:
 
-
 [!code-csharp[Main](configuration-and-instrumentation/samples/sample19.cs)]
 
 1. Přidejte následující kód do existující kód ve třídě stránky\_Init:
 
-
 [!code-csharp[Main](configuration-and-instrumentation/samples/sample20.cs)]
 
 1. Dvakrát klikněte na DropDownList a událost SelectedIndexChanged. přidejte následující kód:
-
 
 [!code-csharp[Main](configuration-and-instrumentation/samples/sample21.cs)]
 

@@ -8,12 +8,12 @@ ms.date: 05/28/2015
 ms.assetid: 81ed82bf-b940-44f1-b94a-555d0cb7cc98
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 msc.type: authoredcontent
-ms.openlocfilehash: f88f7a31551abda029bee0ec16aa35ce2ef5d2f0
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: f57661077ec3bb13f3d4ec41b130bda4d2fb9070
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59385953"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132950"
 ---
 # <a name="introducing-aspnet-web-pages---html-form-basics"></a>Úvod do ASP.NET Web Pages – základy formulářů HTML
 
@@ -33,7 +33,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > 
 > - `Request` Objektu.
 > - SQL `Where` klauzuli.
-
 
 ## <a name="what-youll-build"></a>Co budete vytvářet
 
@@ -82,7 +81,6 @@ Spuštění na stránce tento kód vytvoří jednoduchý formulář, který vypa
 > 
 > (Další informace o příkazů HTTP, najdete v článku [definice metod](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) článku na webu W3C.)
 
-
 Většina elementy vstupu uživatele jsou ve formátu HTML `<input>` elementy. Vypadají `<input type="type" name="name">,` kde *typ* označuje druh uživatele vstupní ovládací prvek. Ty běžné jsou tyto prvky:
 
 - Textové pole: `<input type="text">`
@@ -104,7 +102,6 @@ Můžete také použít `<textarea>` prvku k vytvoření víceřádkového texto
 > Jak je možné, že, HTML je v přechodném stavu a nejnovější verzi (HTML5) zahrnuje podporu pro intuitivnější způsoby, jak uživatelé můžou zadat informace. Například HTML5 (Vývojář) můžete zjistit, na stránce, že chcete, aby uživatel zadal datum. Prohlížeči můžete pak automaticky zobrazí kalendáře spíše než by uživatel musel ručně zadejte datum. HTML5 je však nová a se zatím nepodporuje ve všech prohlížečích.
 > 
 > ASP.NET Web Pages podporuje HTML5 vstup v rozsahu, který nemá webového prohlížeče. Pro představu o nové atributy pro `<input>` naleznete HTML5 elementu [HTML &lt;vstupní&gt; zadejte atribut](http://www.w3schools.com/html/html_form_input_types.asp) W3Schools lokality.
-
 
 ## <a name="creating-the-form"></a>Vytvoření formuláře
 
@@ -176,7 +173,6 @@ Tento blok nastaví fáze pro vytvoření dotazu, který používá hledaný ter
 > 
 > Je dobrým zvykem a buďte konkrétní podmnožinu `Request` , že máte zájem, jako je `Request.Form` nebo `Request.QueryString`. Pro jednoduché stránky, které vytváříte v tomto kurzu je pravděpodobně doesn't make skutečně žádný rozdíl. Ale při vytváření složitějších stránek, používá explicitní verzi `Request.Form` nebo `Request.QueryString` vám může pomoct vyhnout problémům, které mohou vzniknout, když se tato stránka obsahuje formulář (nebo více formulářů), soubory cookie, hodnoty řetězce dotazu a tak dále.
 
-
 ## <a name="creating-a-query-by-using-a-search-term"></a>Vytvoření dotazu pomocí hledaný termín.
 
 Teď, když víte, jak získat hledaný termín, který uživatel zadal, můžete vytvořit dotaz, který ji používá. Mějte na paměti, že pokud chcete získat všechny položky video z databáze, používáte dotaz SQL, který bude vypadat jako tento příkaz:
@@ -218,7 +214,6 @@ Pokud jste v kostce řečeno všechny tyto prvky, získáte následující kód:
 > **Důležité!** Použití zástupných symbolů (jako je `@0`) k předání hodnot pro příkaz SQL je *velmi důležité* pro zabezpečení. Způsob, jak ho tady vidíte, se zástupnými symboly pro různá data, je jediný způsob, jak je potřeba vytvořit příkazy jazyka SQL.
 > 
 > Nikdy vytvořit příkaz SQL vložením společně (spojováním) textového literálu a hodnoty, který jste získali od uživatele. Zřetězení uživatelský vstup do příkazu SQL se otevře web *útok prostřednictvím injektáže SQL* kde uživatel se zlými úmysly odešle hodnoty na stránku, která hack vaší databáze. (Další informace v článku [útok prostřednictvím injektáže SQL](https://msdn.microsoft.com/library/ms161953.aspx) webu MSDN.)
-
 
 ## <a name="updating-the-movies-page-with-search-code"></a>Aktualizace na stránce videa pomocí vyhledávání kódu
 
@@ -280,7 +275,6 @@ Na této stránce můžete mít také nastavit `value` atribut `searchTerm` prom
 
 > [!NOTE]
 > "Nepamatujete" hodnotu textového pole, který se používá pro hesla. Bylo by bezpečnostní riziko lidí nabídnout vyplnit pole pro heslo pomocí kódu.
-
 
 Znovu spusťte stránky, zadejte rozšířením podle tematických a klikněte na **hledání žánr**. Tentokrát nejen zobrazí výsledky hledání, ale do textového pole si pamatuje zadáte čas poslední:
 

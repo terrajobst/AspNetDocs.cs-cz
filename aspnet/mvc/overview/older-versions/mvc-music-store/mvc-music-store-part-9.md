@@ -8,12 +8,12 @@ ms.date: 04/21/2011
 ms.assetid: d65c5c2b-a039-463f-ad29-25cf9fb7a1ba
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-9
 msc.type: authoredcontent
-ms.openlocfilehash: c7151351b087439f17457b254cd9e373af21cae3
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 040bc0ccef889fb9a7c3d9b5ce88c75b7b754248
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59380896"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129627"
 ---
 # <a name="part-9-registration-and-checkout"></a>Část 9: Registrace a pokladna
 
@@ -24,7 +24,6 @@ podle [Jon Galloway](https://github.com/jongalloway)
 > Music Store MVC je jednoduché ukázku implementace úložiště prodává hudebních alb online, který implementuje správu základního webu, přihlášení uživatele a nákupního košíku funkce.  
 >   
 > V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. Část 9 pokrývá registrace a pokladna.
-
 
 V této části budeme vytvářet CheckoutController, která bude shromažďovat adresu zákazník a platební údaje. Začneme vyžadovat uživatelům registrovat před rezervace, takže tento řadič bude vyžadovat ověření.
 
@@ -158,7 +157,6 @@ Výchozí šablona zahrnuje zobrazení chyb ve sdílené složce zobrazení tak,
 Protože toto je stránka obecné chybě, je velmi jednoduchý obsah. Budete zahrnujeme zprávu a odkaz přejděte na předchozí stránku v historii, pokud chce uživatel znovu opakujte akci.
 
 [!code-cshtml[Main](mvc-music-store-part-9/samples/sample13.cshtml)]
-
 
 > [!div class="step-by-step"]
 > [Předchozí](mvc-music-store-part-8.md)

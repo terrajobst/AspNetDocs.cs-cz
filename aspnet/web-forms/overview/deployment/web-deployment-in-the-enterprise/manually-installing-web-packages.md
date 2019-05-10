@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: f11d22a7-5d32-4ad0-8a9b-276460a61c06
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/manually-installing-web-packages
 msc.type: authoredcontent
-ms.openlocfilehash: 9d0e57eb85242a0d6fa8ca9eef7f6c741862069d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: f778549d3e26989a2e71ef21171adec521842729
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59408794"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132135"
 ---
 # <a name="manually-installing-web-packages"></a>Ruční instalace webových balíčků
 
@@ -29,7 +29,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > 
 > V těchto scénářích může být vaší jedinou možností k portu webový balíček na cílový server a ji manuálně naimportovat do služby IIS. Přestože tento přístup vylučuje automatického nasazení, je stále vysoce efektivní technikou pro publikování webové aplikace&#x2014;jednoduše zkopírovat soubor zip jeden webový server a pomocí Průvodce vás provede procesem importu.
 
-
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
 ## <a name="task-overview"></a>Přehled úloh
@@ -44,7 +43,6 @@ Toto téma se ukazují, jak provést tyto postupy. Úlohy a názorné postupy v 
 
 > [!NOTE]
 > Toto téma je nejlepší použít ve spojení s [nakonfigurovat webový Server pro nasazení publikování na webu (Offline nasazení)](../configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-offline-deployment.md), který vysvětluje, jak nainstalovat požadované součásti a přípravě webu služby IIS k importu balíčku naimportovány.
-
 
 ## <a name="create-a-web-deployment-package"></a>Vytvoření balíčku pro nasazení webu
 
@@ -68,9 +66,7 @@ Kdykoli v sadě Visual Studio 2010 můžete vytvořit balíček nasazení webu p
 
 Můžete vytvořit balíček nasazení webu z příkazového řádku vyvoláním **balíčku** cíl v projektu webové aplikace pomocí nástroje MSBuild. Příkaz by měl vypadat takto:
 
-
 [!code-console[Main](manually-installing-web-packages/samples/sample1.cmd)]
-
 
 Podle toho, co můžete přistupovat použít, konečný výsledek je stejný. WPP vytvoří balíčku pro nasazení webu jako soubor zip, spolu s různými Podpůrné prostředky ve výstupní složce pro váš projekt webové aplikace.
 

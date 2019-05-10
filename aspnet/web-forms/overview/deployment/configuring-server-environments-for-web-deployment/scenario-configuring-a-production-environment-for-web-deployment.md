@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 2e861511-450e-4752-a61e-4a01933f9b6e
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-production-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 586508039b9a3d78492aa02a77a1f29c64668b5e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2d76e715cdbf6ec484fa0ff98b3b3d1d8dfd3961
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59409691"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125837"
 ---
 # <a name="scenario-configuring-a-production-environment-for-web-deployment"></a>Scénář: Konfigurace provozního prostředí pro nasazení webu
 
@@ -22,7 +22,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Toto téma popisuje běžné webové scénář nasazení pro produkční prostředí a vysvětluje úlohy, které potřebujete k dokončení pro nastavení prostředí podobné.
-
 
 Produkčním prostředí je konečný cíl pro webovou aplikaci nebo Web. Pomocí tohoto bodu aplikace prošel testování, nasazení do přípravného prostředí a je připravená "za provozu." Charakteristiky produkčním prostředí může značně lišit podle povahu a účel webového obsahu, velikost vaší organizace, cílovou skupinu a spoustu dalších faktorů. Ve scénáři podnikové úrovni produkčním prostředí může mít tyto charakteristiky:
 
@@ -33,7 +32,6 @@ Produkčním prostředí je konečný cíl pro webovou aplikaci nebo Web. Pomoc�
 
 > [!NOTE]
 > Horizontální navýšení kapacity nasazení databáze na více serverech je nad rámec tohoto kurzu. Další informace o této oblasti, obraťte se prosím [SQL Server Books Online](https://technet.microsoft.com/library/ms130214.aspx).
-
 
 Například v našem [kurz scénář](../deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md), Team Build server zahrnuje definice sestavení, které umožňují uživateli vytvořit řešení Správce kontaktů a nasazení do přípravného prostředí v jediném kroku. Když je aplikace připravená k nasazení do produkčního prostředí, z důvodu omezení stanovené požadavky na zabezpečení a síťové infrastruktury, musíte ručně zkopírovat webový balíček do produkční webový server a importovat správce produkčního prostředí ji pomocí Správce Internetové informační služby (IIS).
 

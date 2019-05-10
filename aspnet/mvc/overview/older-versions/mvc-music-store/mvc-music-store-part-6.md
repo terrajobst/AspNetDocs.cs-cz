@@ -8,12 +8,12 @@ ms.date: 04/21/2011
 ms.assetid: b3193d33-2d0b-4d98-9712-58bd897c62ec
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6
 msc.type: authoredcontent
-ms.openlocfilehash: b1e7bd0b16190b00e0e78a01ef71475e1c8d048a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: bc031dd5be61cc6707c522f85f6af77a420c8b31
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59394819"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65129659"
 ---
 # <a name="part-6-using-data-annotations-for-model-validation"></a>Část 6: Používání datových poznámek k ověření modelu
 
@@ -24,7 +24,6 @@ podle [Jon Galloway](https://github.com/jongalloway)
 > Music Store MVC je jednoduché ukázku implementace úložiště prodává hudebních alb online, který implementuje správu základního webu, přihlášení uživatele a nákupního košíku funkce.  
 >   
 > V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. 6. část se věnuje datových poznámek k ověření modelu.
-
 
 Máme závažný problém s naší vytvořit a upravit formuláři: Nejedná se žádné ověření. Můžeme udělat kroky, jako je nechat prázdné povinná pole nebo typ písmena v poli pro cenu a první chyba, kterou uvidíme se z databáze.
 
@@ -76,7 +75,6 @@ Naštěstí šablony vygenerované uživatelské rozhraní ASP.NET MVC 3 mají n
 Zadáte jedno písmeno v poli s názvem splňuje požadavky ověřování, tak ověření zprávy se okamžitě odebere.
 
 ![](mvc-music-store-part-6/_static/image3.png)
-
 
 > [!div class="step-by-step"]
 > [Předchozí](mvc-music-store-part-5.md)

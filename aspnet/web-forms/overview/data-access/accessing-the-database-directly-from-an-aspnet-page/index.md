@@ -8,17 +8,16 @@ ms.date: 10/05/2011
 ms.assetid: 134a202f-4eef-41fc-8e91-70efba338389
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page
 msc.type: chapter
-ms.openlocfilehash: 9558d4131205b3d696f8ce70476ff575fbccf20e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 11266f9b347aeb994ac2d6c866f475feeeb244e3
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59407689"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132465"
 ---
 # <a name="accessing-the-database-directly-from-an-aspnet-page"></a>Přiřazení databáze přímo ze stránky ASP.NET
 
 > Tyto kurzy vám ukážou, jak přímo dotazovat databázi, pokud není nutné přísnou oddělení prezentace a vrstvy přístupu k datům pomocí ovládacím prvkem SqlDataSource.
-
 
 - [Dotazování na data ovládacím prvkem SqlDataSource (C#)](querying-data-with-the-sqldatasource-control-cs.md)
 - [Použití parametrizovaných dotazů s ovládacím prvkem SqlDataSource (C#)](using-parameterized-queries-with-the-sqldatasource-cs.md)

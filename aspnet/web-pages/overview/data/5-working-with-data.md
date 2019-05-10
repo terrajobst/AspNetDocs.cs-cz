@@ -8,12 +8,12 @@ ms.date: 02/18/2014
 ms.assetid: 673d502f-2c16-4a6f-bb63-dbfd9a77ef47
 msc.legacyurl: /web-pages/overview/data/5-working-with-data
 msc.type: authoredcontent
-ms.openlocfilehash: 0fc828e39cfcce22d4cc226954cf7d1731b04e42
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 4ed2a2a1ee3cff7a50e67b6571b85f74d01efab7
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379778"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133219"
 ---
 # <a name="introduction-to-working-with-a-database-in-aspnet-web-pages-razor-sites"></a>Úvod k práci s databází v rozhraní ASP.NET Web Pages servery (Razor)
 
@@ -44,7 +44,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > 
 > V tomto kurzu funguje taky pomocí služby WebMatrix 3. Můžete použít 3 webových stránek ASP.NET a Visual Studio 2013 (nebo Visual Studio Express 2013 for Web); uživatelské rozhraní, ale bude lišit.
 
-
 ## <a name="introduction-to-databases"></a>Úvod do databáze
 
 Představte typické adresáře. Pro každou položku v adresáři (to znamená, že pro každou osobu) mají různé druhy informace, jako je jméno, příjmení, adresu, e-mailovou adresu a telefonní číslo.
@@ -67,7 +66,6 @@ Pomocí této základní znalosti o databáze, jste připraveni zjistěte, jak v
 > Ukládejte data v mnoha způsoby, včetně textových souborů a tabulek. Pro většinu obchodních použití ale data se ukládají v relační databázi.
 > 
 > Tento článek není velmi hluboce přejděte do databáze. Ale můžete se setkat se vás seznámí s tím něco o nich. V relační databázi je informace logicky rozdělena do samostatných tabulek. Například databázi pro školy může obsahovat samostatných tabulek pro studenty a pro nabídky třídy. Databáze softwaru (jako je SQL Server) podporuje výkonné příkazy, které vám umožní dynamicky vytvořit relace mezi tabulkami. Můžete například relační databáze k navázání vztahu logické mezi studentů a zařízení, chcete-li vytvořit plán. Ukládání dat v samostatných tabulkách zjednodušuje struktura tabulky a snižuje nutnost zachovat redundantních dat v tabulkách.
-
 
 ## <a name="creating-a-database"></a>Vytvoření databáze
 
@@ -173,7 +171,6 @@ Jakmile máte databázi s daty v něm můžete zobrazit data na webové stránce
 > 
 > Existují desítek příkazů SQL, ale všechny se řídí vzorem následujícím způsobem. Příkazy SQL můžete použít k vytvoření databázových tabulek, počet záznamů v tabulce, výpočtu ceny a provádět mnoho dalších operacích.
 
-
 ## <a name="inserting-data-in-a-database"></a>Vložení dat do databáze
 
 Tato část ukazuje, jak vytvořit stránku, která umožňuje uživatelům přidání nového produktu do *produktu* databázové tabulky. Po vložení nového záznamu produktu na stránce se zobrazí aktualizovaná tabulka pomocí *ListProducts.cshtml* stránku, kterou jste vytvořili v předchozí části.
@@ -238,7 +235,6 @@ Poté, co byl zadán data do tabulky, můžete potřebovat ji aktualizovat. Tent
 > [!NOTE] 
 > 
 > **Důležité** do produkční webové stránky, obvykle omezíte kdo má povoleno provádět změny na data. Informace o tom, jak nastavit členství a způsoby, jak autorizovat uživatele k provádění úloh na webu, naleznete v tématu [přidání zabezpečení a s členstvím na server webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202904).
-
 
 1. Na webu vytvořte nový soubor CSHTML *EditProducts.cshtml*.
 2. Nahraďte stávající kód v souboru následujícím kódem:
@@ -321,7 +317,6 @@ Tato část ukazuje, jak umožnit uživatelům odstranit produkt z *produktu* da
 > 
 > **Důležité** do produkční webové stránky, obvykle omezíte kdo má povoleno provádět změny na data. Informace o tom, jak nastavit členství a způsoby, jak autorizovat uživatele k provádění úloh na webu, naleznete v tématu [přidání zabezpečení a s členstvím na server webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202904).
 
-
 1. Na webu vytvořte nový soubor CSHTML *ListProductsForDelete.cshtml*.
 2. Nahraďte existující kód následujícím kódem:
 
@@ -384,7 +379,6 @@ Tato část ukazuje, jak umožnit uživatelům odstranit produkt z *produktu* da
 > Jak je uvedeno, `Database.Open` metoda vám umožňuje předat název databáze nebo připojovací řetězec a budete přijít na to, které chcete použít. To je velmi užitečné při nasazování (publikovat) vašeho webu. Můžete použít *SDF* soubor *aplikace\_Data* složky při vývoji a testování vašeho webu. Při přesunu vašeho webu do provozního serveru, můžete použít připojovací řetězec v *Web.config* soubor, který má stejný název jako vaše *SDF* souboru, ale, že odkazuje na poskytovatele hostingu database &#8212;vše bez nutnosti měnit kód.
 > 
 > Nakonec, pokud chcete pracovat přímo s připojovacím řetězcem, můžete volat `Database.OpenConnectionString` a předáte jeho skutečné připojovacího řetězce namísto pouze název jednoho v *Web.config* souboru. To může být užitečné v situacích, kde z nějakého důvodu nemáte přístup na připojovací řetězec (nebo hodnoty, například *SDF* název_souboru) dokud je stránka je spuštěná. Pro většinu scénářů, ale můžete použít `Database.Open` jak je popsáno v tomto článku.
-
 
 ## <a name="additional-resources"></a>Další prostředky
 

@@ -8,12 +8,12 @@ ms.date: 04/23/2009
 ms.assetid: a64a7aa0-6608-449e-83bf-1ef8cceee504
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 66b6df78a8ffed3ea7c586a995b8df8563d908bb
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 68ce0ab099c30306f5683d8b81a894bf6433ffed
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59407208"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130884"
 ---
 # <a name="configuring-the-production-web-application-to-use-the-production-database-vb"></a>Konfigurace produkční webové aplikace pro použití produkční databáze (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/E/6/F/E6FE3A1F-EE3A-4119-989A-33D1A9F6F6DD/ASPNET_Hosting_Tutorial_08_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/C/3/9/C391A649-B357-4A7B-BAA4-48C96871FEA6/aspnet_tutorial08_DBConfig_vb.pdf)
 
 > Jak je popsáno v předchozích kurzech, není, informací o konfiguraci se liší mezi vývojovou a provozní prostředí. To platí zejména pro datově řízených webových aplikací, jako připojovací řetězce databáze se liší mezi vývojovou a provozní prostředí. Tento kurz se věnuje způsobům konfigurace produkční prostředí, aby zahrnovalo příslušný připojovací řetězec podrobněji.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -44,7 +43,6 @@ Připojovací řetězec – zdroj dat =. \SQLEXPRESS; AttachDbFilename = | Zabez
 - `AttachDbFilename` -Určuje umístění souboru databáze. Hodnota obsahuje zástupný symbol `|DataDirectory|`, který je přeložen na úplnou cestu aplikace s `App_Data` složky v době běhu.
 - `Integrated Security` -Logická hodnota, která určuje, jestli se má používat zadaného uživatelského jména a hesla při připojování k databázi (false) nebo Windows aktuální přihlašovací údaje účtu (pravda).
 - `User Instance` -možnost konfigurace specifické pro SQL Server Express edice, která určuje, jestli se má povolit uživatelům bez oprávnění správce na místním počítači připojení a připojení k databázi SQL Server Express Edition. Zobrazit [instance SQL serveru Express uživatele](https://msdn.microsoft.com/library/ms254504.aspx) pro další informace o tomto nastavení.
-  
 
 Možnosti povolené připojovacího řetězce závisí na databázi se připojujete k a [ADO.NET](http://ADO.NET) použitý zprostředkovatel databáze. Například připojovací řetězec pro připojení k serveru Microsoft SQL Server se liší od databáze, která používá pro připojení k databázi Oracle. Podobně připojení k databázi serveru Microsoft SQL Server pomocí poskytovatel Sqlclienta používá řetězec jiné připojení než při použití zprostředkovatele OLE DB.
 
@@ -52,19 +50,15 @@ Připojovací řetězec databáze můžete vytvořit ručně pomocí web [Connec
 
 Otevřít Visual Studio a přejděte do okna Průzkumník serveru (v aplikaci Visual Web Developer, toto okno se nazývá Průzkumník databáze). Klikněte pravým tlačítkem na možnost datová připojení a zvolte možnost Přidat připojení z místní nabídky. Tím se zobrazí Průvodce na obrázku 1. Vyberte příslušný zdroj dat a klikněte na pokračovat.
 
-
 [![Zvolte možnost pro přidání nové databáze do Průzkumníka serveru](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image2.jpg)](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image1.jpg) 
 
 **Obrázek 1**: Zvolte možnost pro přidání nové databáze do Průzkumníka serveru ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image3.jpg))
 
-
 Dále určete různé informace o připojení k databázi (viz obrázek 2). Pokud jste zaregistrovali pomocí webového hostování společnosti, které by měl mít poskytl informace o tom, jak připojit k databázi – název databázového serveru, název databáze, uživatelské jméno a heslo pro připojení k databázi a tak dále. Po zadání těchto informací klikněte na tlačítko OK, chcete-li dokončit tohoto průvodce a přidejte databáze do Průzkumníka serveru.
-
 
 [![Zadejte informace o připojení k databázi](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image5.jpg)](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image4.jpg) 
 
 **Obrázek 2**: Zadejte informace o připojení k databázi ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image6.jpg))
-
 
 Produkční databáze prostředí by měl nyní obsažena v Průzkumníku serveru. Vyberte databázi z Průzkumníku serveru a přejděte do okna Vlastnosti. Zde najdete vlastnost s názvem připojovacího řetězce připojovacím řetězcem s databází. Za předpokladu, že používáte databáze Microsoft SQL Server v produkčním prostředí a poskytovatel Sqlclienta připojovací řetězec by měl vypadat nějak takto:
 
@@ -87,14 +81,11 @@ Pokud máte více formalizovanou pracovní postup nasazení, buď ručně změni
 > [!NOTE]
 > Pokud omylem nasazení `Web.config` soubor, který obsahuje připojovací řetězec databáze vývoj pak bude k chybě při aplikace v produkčním prostředí se pokusí připojit k databázi. Tato chyba manifesty jako `SqlException` a zobrazí se zpráva oznámení, že server nebyl nalezen nebo nebyl přístupný.
 
-
 Po nasazení webu do produkčního prostředí, přejděte na web produkční prostřednictvím prohlížeče. By měl zobrazit a využívat stejné prostředí pro uživatele jako při místním spuštění aplikace řízené daty. Samozřejmě při návštěvě webu na produkční lokality využívá k tomu provozní server databáze, zatímco navštívit web ve vývojovém prostředí používá databázi ve vývoji. Obrázek 3 ukazuje *naučit sami technologie ASP.NET 3.5 za 24 hodin* zkontrolovat stránku na webu v produkčním prostředí (Poznámka: adresu URL v adresním řádku prohlížeče s).
-
 
 [![Data-Driven aplikace je nyní k dispozici v produkčním prostředí.](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image8.jpg)](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image7.jpg) 
 
 **Obrázek 3**: Data-Driven aplikace je nyní k dispozici v produkčním prostředí. ([Kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image9.jpg))
-
 
 ### <a name="storing-connection-strings-in-a-separate-configuration-file"></a>Ukládání připojovacích řetězců do samostatného konfiguračního souboru
 
@@ -113,14 +104,11 @@ Vytvořte kopii souboru databaseConnectionStrings.dev.config a pojmenujte ho dat
 > [!NOTE]
 > Můžete pojmenovat konfiguračního souboru něco jiného než databaseConnectionStrings.config, pokud d rádi používáte, jako například `connectionStrings.config` nebo `dbInfo.config`. Určitě chcete pojmenovat soubor s `.config` rozšíření jako `.config` soubory, ve výchozím nastavení, nejsou obsluhovány modul ASP.NET. Pokud zadáte soubor jiný název, třeba `connectionStrings.txt`, uživatel může odkazovat prohlížeč tak, aby [www.yoursite.com/ConfigSettings/connectionStrings.txt](http://www.yoursite.com/ConfigSettings/connectionStrings.txt) a zobrazit obsah souboru!
 
-
 V tomto okamžiku `ConfigSections` složka by měla obsahovat tři soubory (viz obrázek 4). Soubory databaseConnectionStrings.dev.config a databaseConnectionStrings.production.config obsahují připojovací řetězce pro vývoj a provoz prostředí, v uvedeném pořadí. DatabaseConnectionStrings.config soubor obsahuje informace o připojovacím řetězci, který se použije webové aplikace za běhu. V důsledku toho databaseConnectionStrings.config soubor by měl být shodný se souborem databaseConnectionStrings.dev.config ve vývojovém prostředí, zatímco u produkčních databaseConnectionStrings.config soubor by měl být stejný jako databaseConnectionStrings.production.config.
-
 
 [![ConfigSections](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image11.jpg)](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image10.jpg) 
 
 **Obrázek 4**: ConfigSections ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image12.jpg))
-
 
 Nyní potřebujeme dáte pokyn, aby `Web.config` použít soubor databaseConnectionStrings.config pro její připojovací řetězec úložiště. Otevřít `Web.config` a nahraďte existující `<connectionStrings>` element následujícím kódem:
 
@@ -132,7 +120,6 @@ Tato změna vývojovém a produkčním prostředí obsahovat stejné `Web.config
 
 > [!NOTE]
 > Můžete zadat informace pro všechny `Web.config` element na samostatný soubor a použít `configSource` atribut používat jako reference v rámci `Web.config`.
-
 
 ## <a name="summary"></a>Souhrn
 

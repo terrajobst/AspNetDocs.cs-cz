@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 664ec95e-b0c9-4f43-a39f-798d0f2a7e08
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal
 msc.type: authoredcontent
-ms.openlocfilehash: a0895c2246bc08f50645a865ce2dfffecfbb56a6
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 0fc4e85a86289667566a76537dd1573f4d9b2bf0
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59391153"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131728"
 ---
 # <a name="checkout-and-payment-with-paypal"></a>Pokladna a platba přes PayPal
 
@@ -23,7 +23,6 @@ by [Erik Reitan](https://github.com/Erikre)
 
 > V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 for Web. Visual Studio 2013 [projektu se zdrojovým kódem jazyka C#](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) je k dispozici v této sérii kurzů.
 
-
 Tento kurz popisuje, jak upravit ukázkové aplikace Wingtip Toys autorizace uživatelů, registrace a platba pomocí PayPal. Jenom uživatelé, kteří jsou přihlášení bude mít autorizaci k nákupu produktů. Šablona projektu webových formulářů ASP.NET 4.5 předdefinované uživatelské registraci funkce již obsahuje velkou část, co potřebujete. Přidejte funkcemi při placení Express PayPal. V tomto kurzu budete používat PayPal pro vývojáře, testovací prostředí, takže se nepřenesou žádná skutečná fondů. Na konci tohoto kurzu budete testovat aplikaci tak, že vyberete produktů pro přidání do nákupního košíku, kliknutím na tlačítko Pokladna a přenosu dat do testování webu PayPal. Na webové stránce testování PayPal bude potvrzení dopravě a platebních údajů a pak se vraťte do místní ukázkové aplikace Wingtip Toys pro potvrzení a dokončení nákupu.
 
 Existuje několik procesorů zkušení plateb, kteří se specializují v online nakupování tuto adresu škálovatelnost a zabezpečení. Vývoj v ASP.NET zvažte výhody využití platebních řešení třetí strany před implementací nákupního a zakoupení řešení.
@@ -31,7 +30,6 @@ Existuje několik procesorů zkušení plateb, kteří se specializují v online
 > [!NOTE] 
 > 
 > Ukázkové aplikace Wingtip Toys je navržená k zobrazí konkrétní technologie ASP.NET konceptů a funkcí, které jsou k dispozici pro webové vývojáře využívající technologii ASP.NET. Tato ukázková aplikace nebyl optimalizován pro všechny možné okolnosti, škálovatelnost a zabezpečení.
-
 
 ## <a name="what-youll-learn"></a>Co se dozvíte:
 
@@ -150,7 +148,6 @@ Kromě ověřování kurzu také použije role pro implementaci autorizace. Jeno
 > [!NOTE] 
 > 
 > Aplikace Windows Live přijímat pouze za provozu adresu URL pro webovou stránku, funkční, tak adresy URL místního webu nelze použít pro testování přihlášení.
-
 
 Následující postup vám umožní přidat zprostředkovatele ověřování Google.
 
@@ -306,7 +303,6 @@ Umístíte většinou PayPal kódu do jedné třídy. Tato třída obsahuje meto
 > 
 > V této ukázkové aplikaci jednoduše přidáváte přihlašovací údaje do souboru C# (cs). Nicméně v implementované řešení, je vhodné zvážit šifrování svoje přihlašovací údaje v konfiguračním souboru.
 
-
 Třída NVPAPICaller obsahuje většinu funkčnosti PayPal. Kód ve třídě poskytuje metody, které jsou potřebné k tomu test nakupovat PayPal testovací prostředí. Následující tři služby PayPal funkce se používají k zajištění nákup:
 
 - `SetExpressCheckout` – funkce
@@ -318,7 +314,6 @@ Třída NVPAPICaller obsahuje většinu funkčnosti PayPal. Kód ve třídě pos
 > [!NOTE] 
 > 
 > PayPal umožňuje zahrnout podrobnosti o volitelné nákupu na základě [specifikace rozhraní API služby PayPal pro](https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&amp;content_ID=developer/e_howto_api_nvp_r_SetExpressCheckout). Rozšířením kód v ukázkové aplikaci Wingtip Toys může obsahovat podrobnosti o lokalizaci, popisů produktů, daň, zákaznické číslo služby, jakož i mnoho dalších volitelná pole.
-
 
 Všimněte si, že vrátit a zrušit adresy URL, které jsou určené v **ShortcutExpressCheckout** metoda používat číslo portu.
 
@@ -395,7 +390,6 @@ Po návratu z PayPal, *CheckoutReview.aspx* zobrazí se stránka ukázkové apli
 > Výběrem **upravit pole**, **pole** se zobrazí dialogové okno. V tomto dialogovém jednoduše můžete kontrolovat vizuální vlastnosti, jako například **ItemStyle**, nástroje **DetailsView** ovládacího prvku.
 > 
 > ![Pokladna a platba přes PayPal – dialogové okno pole](checkout-and-payment-with-paypal/_static/image19.png)
-
 
 ### <a name="complete-purchase"></a>Dokončete nákup
 

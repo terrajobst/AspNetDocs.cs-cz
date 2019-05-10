@@ -8,12 +8,12 @@ ms.date: 02/15/2013
 ms.assetid: 5a2a927b-14cb-40bc-867a-f0680f9febd7
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
 msc.type: authoredcontent
-ms.openlocfilehash: 15a5984048ba2aca9fedcb7bc4bb77eb440f21ee
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 595723d9c6ea9cc40bb0ae896524ee828c4ebce2
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379453"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65128433"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-webconfig-file-transformations"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Transformace souboru Web.config
 
@@ -22,7 +22,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 [Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
 > V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, s použitím sady Visual Studio 2012 nebo Visual Studio 2010. Informace o této sérii, naleznete v tématu [z prvního kurzu této série](introduction.md).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -106,7 +105,6 @@ Při testování webu po nasazení budete také testovat k ověření, že toto 
 > 
 > **Poznámka k zabezpečení** nikdy zobrazit podrobnosti o chybě veřejně v produkční aplikace, nebo ukládání těchto informací na veřejném místě. Útočníci slouží ke zjišťování ohrožení zabezpečení v lokalitě informace o chybě. Pokud používáte ELMAH ve své aplikaci, nakonfigurujte ELMAH minimalizovat rizika zabezpečení. Doporučená konfigurace by neměly být zahrnuté v ELMAH příkladu v tomto kurzu. To je příklad, který jste vybrali, aby bylo možné ukazují, jak zpracovat složku, musí být schopen vytvořit soubory v aplikaci. Další informace najdete v tématu [zabezpečení koncového bodu ELMAH](https://code.google.com/p/elmah/wiki/SecuringErrorLogPages).
 
-
 ## <a name="a-setting-that-youll-handle-in-publish-profile-transformation-files"></a>Nastavení, která bude zpracovávat v soubory transformace profil publikování
 
 Běžný scénář, kdy je, aby *Web.config* soubor nastavení, která musí být v každém prostředí, který nasadíte do jiné. Například aplikace, která volá službu WCF může potřebovat jiný koncový bod v testovacím a produkčním prostředí. Aplikace Contoso University zahrnuje také nastavení tohoto druhu. Toto nastavení řídí viditelné ukazatele na stránkách webu, který říká prostředí, ve kterém pracujete, jako je například vývojové, testovací nebo produkční prostředí. Hodnota nastavení určuje, zda se aplikace připojí "(vývoj)" nebo "(testovací)" na hlavní nadpis *Site.Master* hlavní stránky:
@@ -131,7 +129,6 @@ Tato transformace patří transformace soubory profilu publikování, které jst
 
 > [!NOTE]
 > Protože toto nastavení se `<appSettings>` element, můžete mít Další alternativou k určení transformace při nasazování do služby Web Apps v Azure App Service naleznete v tématu [Web.config zadání nastavení v Azure](#watransforms) výše v v tomto tématu.
-
 
 ## <a name="setting-connection-strings"></a>Nastavení připojovacích řetězců
 
