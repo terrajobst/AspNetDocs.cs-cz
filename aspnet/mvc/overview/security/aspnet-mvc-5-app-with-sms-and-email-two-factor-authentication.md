@@ -8,12 +8,12 @@ ms.date: 08/20/2015
 ms.assetid: f50a5cdb-c06a-46ed-aa14-fc5b049dc8dc
 msc.legacyurl: /mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: 25d21efaf2f01ee1c162408a3caf699ac818aaa7
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2a0275959cbada52b53adca984ee1023a2ee2552
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59384953"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65112348"
 ---
 # <a name="aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication"></a>Aplikace ASP.NET MVC 5 s dvoufaktorovým ověřováním pomocí SMS a e-mailu
 
@@ -22,7 +22,6 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 > V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 5 s dvoufaktorovým ověřováním. By se měla Dokončit [vytvořit zabezpečenou webovou aplikaci ASP.NET MVC 5 s přihlášením, resetovat heslo a potvrzení e-mailu](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md) než budete pokračovat. Můžete stáhnout hotovou aplikaci [tady](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952). Položka ke stažení obsahuje ladění pomocné rutiny, které umožňují otestovat bez nastavení e-mailem nebo poskytovatele služby SMS serveru SMS a e-mailové potvrzení.
 > 
 > V tomto kurzu zapsal [Rick Anderson](https://blogs.msdn.com/rickAndy) (Twitter: [ @RickAndMSFT ](https://twitter.com/RickAndMSFT) ).
-
 
 - [Vytvoření aplikace ASP.NET MVC](#createMvc)
 - [Nastavení služby SMS pro dvoufaktorového ověřování](#SMS)
@@ -36,7 +35,6 @@ Začněte tím, že instalaci a používání [Visual Studio Express 2013 for We
 
 > [!NOTE]
 > Upozornění: By se měla Dokončit [vytvořit zabezpečenou webovou aplikaci ASP.NET MVC 5 s přihlášením, resetovat heslo a potvrzení e-mailu](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md) než budete pokračovat. Je nutné nainstalovat [Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465) nebo vyšší, k dokončení tohoto kurzu.
-
 
 1. Vytvoření nového projektu ASP.NET Web a vyberte šablonu MVC. Webové formuláře také podporuje ASP.NET Identity, takže může podle podobných kroků ve webové aplikaci formulářů.  
     ![](aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication/_static/image1.png)

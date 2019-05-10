@@ -8,12 +8,12 @@ ms.date: 02/17/2014
 ms.assetid: f15ab392-c05e-4269-83bf-7c6d2b8c8ec8
 msc.legacyurl: /web-pages/overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devices
 msc.type: authoredcontent
-ms.openlocfilehash: dbcd25331387f8606343e551302bc3ed1f9b2c25
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: c012348d65e48a275cb0e4808fef2a7f31e5fb33
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379505"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133522"
 ---
 # <a name="rendering-aspnet-web-pages-razor-sites-for-mobile-devices"></a>Vykreslení webů s ASP.NET webovými stránkami (Razor) pro mobilní zařízení
 
@@ -33,7 +33,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 >   
 > 
 > V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
-
 
 Webové stránky ASP.NET umožňuje vytvářet vlastní zobrazení pro vykreslení obsahu na mobilní telefon nebo jiné zařízení.
 
@@ -55,9 +54,7 @@ Následující příklad ukazuje, jak povolit mobilní vykreslování přidání
 > [!NOTE]
 > K otestování mobilních stránek, můžete použít simulátor mobilní zařízení, na kterém běží na stolním počítači. Tento nástroj umožňuje testování webových stránek, jak by vypadala na mobilních zařízeních (to znamená, obvykle s mnohem menší umožňuje zobrazit oblast). Jedním z příkladů simulátoru je [doplňků uživatelského agenta přepínání](http://addons.mozilla.org/firefox/addon/user-agent-switcher/) pro Mozilla Firefox, která vám umožňuje emulovat různá mobilní prohlížeče v desktopové verzi Firefox.
 
-
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Další prostředky
-
 
 [Emulátor Windows Phone](https://msdn.microsoft.com/library/ff402563(v=VS.92).aspx)

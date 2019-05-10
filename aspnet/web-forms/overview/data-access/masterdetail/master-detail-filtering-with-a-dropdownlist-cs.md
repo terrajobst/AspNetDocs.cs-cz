@@ -8,12 +8,12 @@ ms.date: 03/31/2010
 ms.assetid: 53e659cc-eefb-40c1-a1dc-559481c99443
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8edc18968625036964c0120b83f8ebb149dbf87a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 37ef5a31d1715885d06129fc2ef8f7aef7923741
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59393428"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131992"
 ---
 # <a name="masterdetail-filtering-with-a-dropdownlist-c"></a>Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/6/3/463cf87c-4724-4cbc-b7b5-3f866f43ba50/ASPNET_Data_Tutorial_7_CS.exe) nebo [stahovat PDF](master-detail-filtering-with-a-dropdownlist-cs/_static/datatutorial07cs1.pdf)
 
 > V tomto kurzu uvidíme, jak zobrazit hlavní záznamy v ovládací prvek DropDownList a podrobnosti vybrané položky seznamu v GridView.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -34,63 +33,49 @@ Existuje mnoho způsobů, kterými je možné implementovat záznamů master/det
 
 Naší sestavy záznamů master/detail zobrazí seznam kategorií v DropDownList, s produkty položku vybraného seznamu zobrazí další dolů na stránce v GridView. První úkol náskok před nám, pak je kategorie zobrazuje v DropDownList. Otevřít `FilterByDropDownList.aspx` stránku `Filtering` složky, přetáhněte z panelu nástrojů do návrháře na stránce DropDownList a nastavte jeho `ID` vlastnost `Categories`. Pak klikněte na odkaz zvolit zdroj dat z inteligentních značek DropDownList. Zobrazí se Průvodce konfigurací zdroje dat.
 
-
 [![Zadejte zdroj dat DropDownList](master-detail-filtering-with-a-dropdownlist-cs/_static/image2.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image1.png)
 
 **Obrázek 1**: Zadejte zdroj dat DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image3.png))
 
-
 Vybrat přidání nového prvku ObjectDataSource s názvem `CategoriesDataSource` , která vyvolává `CategoriesBLL` třídy `GetCategories()` metody.
-
 
 [![Přidat nový prvek ObjectDataSource s názvem CategoriesDataSource](master-detail-filtering-with-a-dropdownlist-cs/_static/image5.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image4.png)
 
 **Obrázek 2**: Přidat nový prvek ObjectDataSource s názvem `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image6.png))
 
-
 [![Zvolte možnost použití třídy CategoriesBLL](master-detail-filtering-with-a-dropdownlist-cs/_static/image8.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image7.png)
 
 **Obrázek 3**: Zvolte pro použití `CategoriesBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image9.png))
-
 
 [![Konfigurace ObjectDataSource GetCategories() metody](master-detail-filtering-with-a-dropdownlist-cs/_static/image11.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image10.png)
 
 **Obrázek 4**: Konfigurace ObjectDataSource k použití `GetCategories()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image12.png))
 
-
 Po dokončení konfigurace prvek ObjectDataSource, musíme určit, jaké pole zdroje dat mají být zobrazeny v DropDownList a které jedna by měla být přiřazen jako hodnota pro položku seznamu. Máte `CategoryName` pole jako zobrazení a `CategoryID` jako hodnotu pro každou položku seznamu.
-
 
 [![Mít zobrazení DropDownList CategoryName pole a CategoryID použijte jako hodnotu](master-detail-filtering-with-a-dropdownlist-cs/_static/image14.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image13.png)
 
 **Obrázek 5**: Zobrazit DropDownList `CategoryName` pole a použití `CategoryID` jako hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image15.png))
 
-
 V tuto chvíli máme, který je naplněn záznamy z ovládací prvek DropDownList `Categories` tabulky (vše lze provést během přibližně šest sekund). Obrázek 6 doposud zobrazuje náš postup při prohlížení prostřednictvím prohlížeče.
-
 
 [![Rozevírací seznam aktuálních kategorií](master-detail-filtering-with-a-dropdownlist-cs/_static/image17.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image16.png)
 
 **Obrázek 6**: Rozevírací seznam aktuálních kategorií ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image18.png))
 
-
 ## <a name="step-2-adding-the-products-gridview"></a>Krok 2: Přidání ovládacího prvku GridView produkty
 
 Tento poslední krok v naší sestavy záznamů master/detail je seznam produktů spojené s vybranou kategorii. K tomu přidat na stránku GridView a vytvoření nového prvku ObjectDataSource s názvem `productsDataSource`. Mít `productsDataSource` jatečné data z ovládacího prvku `ProductsBLL` třídy `GetProductsByCategoryID(categoryID)` metody.
-
 
 [![Vyberte metodu GetProductsByCategoryID(categoryID)](master-detail-filtering-with-a-dropdownlist-cs/_static/image20.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image19.png)
 
 **Obrázek 7**: Vyberte `GetProductsByCategoryID(categoryID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image21.png))
 
-
 Po výběru této metody, Průvodce ObjectDataSource nám vyzve k zadání hodnoty pro metody *`categoryID`* parametru. Chcete použít hodnotu vybraného `categories` DropDownList položka nastavena na ovládací prvek a ControlID na zdroji parametru `Categories`.
-
 
 [![Nastavit ID kategorie parametr na hodnotu DropDownList kategorie](master-detail-filtering-with-a-dropdownlist-cs/_static/image23.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image22.png)
 
 **Obrázek 8**: Nastavte *`categoryID`* parametr na hodnotu `Categories` DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image24.png))
-
 
 Podívejte se na náš postup v prohlížeči chvíli trvat. Při první návštěvě stránky, produkty patří do vybrané kategorie (nápoje) se zobrazí (jak je znázorněno na obrázku 9), ale změna DropDownList neaktualizuje data. Je to proto zpětné volání, musí dojít k prvku GridView. Chcete-li aktualizovat. K tomu že máme k dispozici dvě možnosti (ani jeden z nich vyžaduje psaní jakéhokoli kódu):
 
@@ -99,16 +84,13 @@ Podívejte se na náš postup v prohlížeči chvíli trvat. Při první návšt
 
 Obrázky 9 a 10 ukazují sestavu záznamů master/detail v akci.
 
-
 [![Při první návštěvě stránky, se zobrazují produkty nápoje](master-detail-filtering-with-a-dropdownlist-cs/_static/image26.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image25.png)
 
 **Obrázek 9**: Při první návštěvě stránky, produkty nápoje zobrazují ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image27.png))
 
-
 [![Výběr nového produktu (produkty) automaticky vyvolá zpětné volání, aktualizace prvku GridView.](master-detail-filtering-with-a-dropdownlist-cs/_static/image29.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image28.png)
 
 **Obrázek 10**: Výběr nového produktu (produkty) automaticky vyvolá zpětné volání, aktualizace prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image30.png))
-
 
 ## <a name="adding-a----choose-a-category----list-item"></a>Přidání položky seznamu "--zvolit některou kategorii--"
 
@@ -116,11 +98,9 @@ Při první návštěvě `FilterByDropDownList.aspx` stránce kategorie DropDown
 
 Chcete-li přidat novou položku seznamu do DropDownList, přejděte do okna Vlastnosti a klikněte na symbol tří teček v `Items` vlastnost. Přidat novou položku seznamu s `Text` "--zvolit některou kategorii--" a `Value` `-1`.
 
-
 [![Přidání--výběrem kategorie – položka seznamu](master-detail-filtering-with-a-dropdownlist-cs/_static/image32.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image31.png)
 
 **Obrázek 11**: Přidání--výběrem kategorie – položka seznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image33.png))
-
 
 Alternativně můžete přidat položku seznamu tak, že přidáte následující kód k DropDownList:
 
@@ -128,19 +108,15 @@ Alternativně můžete přidat položku seznamu tak, že přidáte následujíc�
 
 Kromě toho musíme nastavit ovládací prvek DropDownList `AppendDataBoundItems` na hodnotu True, protože při kategorií jsou svázány s DropDownList z ObjectDataSource, budete-li přepsat všechny ručně přidané položky `AppendDataBoundItems` není pravda.
 
-
 ![Nastavte vlastnost AppendDataBoundItems na hodnotu True](master-detail-filtering-with-a-dropdownlist-cs/_static/image34.png)
 
 **Obrázek 12**: Nastavte `AppendDataBoundItems` vlastnost na hodnotu True
 
-
 Po provedení těchto změn při první návštěvě stránky je vybraná možnost "--zvolit některou kategorii--" a jsou zobrazeny žádné produkty.
-
 
 [![Ve počáteční načtení stránky nejsou zobrazeny žádné produkty.](master-detail-filtering-with-a-dropdownlist-cs/_static/image36.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image35.png)
 
 **Obrázek 13**: Jsou zobrazeny na počáteční stránky načtěte žádné produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image37.png))
-
 
 Z důvodu žádné produkty jsou vzhledem k tomu, že je vybrána položka seznamu "--zvolit některou kategorii--" zobrazí, když je, protože její hodnota je `-1` a v databázi s neodpovídají žádné produkty `CategoryID` z `-1`. Pokud je to chování, které chcete, aby pak budete mít v tomto okamžiku! Pokud však chcete zobrazit *všechny* kategorií při výběru položky seznamu "--zvolit některou kategorii--", vraťte se do `ProductsBLL` třídy a přizpůsobit `GetProductsByCategoryID(categoryID)` metodu tak, že volá `GetProducts()` – metoda Pokud předaný v *`categoryID`* parametru je menší než nula:
 
@@ -150,11 +126,9 @@ Techniku použít zde je podobný přístup jsme slouží k zobrazení všech do
 
 Snímek obrazovky znázorňuje obrázek 14 `FilterByDropDownList.aspx` když je vybraná možnost "--zvolit některou kategorii--". Tady všech produktů, které jsou ve výchozím nastavení zobrazí a uživatele můžete zúžit zobrazení výběrem konkrétní kategorie.
 
-
 [![Všechny produkty jsou teď uvedené ve výchozím nastavení](master-detail-filtering-with-a-dropdownlist-cs/_static/image39.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image38.png)
 
 **Obrázek 14**: Všechny produkty jsou teď uvedené ve výchozím nastavení ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-a-dropdownlist-cs/_static/image40.png))
-
 
 ## <a name="summary"></a>Souhrn
 

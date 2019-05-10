@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: a172979a-1318-4318-a9c6-4f9560d26267
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
 msc.type: authoredcontent
-ms.openlocfilehash: 865e901618b48bc4bfdc6d7a3ca4e8868d4cb46b
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 8ae8cb1a322afb95c5d2e8d5e73c7825c7b2fe5a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59412980"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108314"
 ---
 # <a name="customizing-database-deployments-for-multiple-environments"></a>Přizpůsobení nasazené databáze pro různá prostředí
 
@@ -30,7 +30,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > Když nasadíte databázový projekt do více cílů, budete často chcete přizpůsobit vlastnosti nasazení databáze pro každé cílové prostředí. Například v testovacích prostředích je by obvykle znovu vytvořit databázi při každém nasazení, že v přípravném nebo produkčním prostředí by bylo mnohem větší pravděpodobnost Ujistěte se, přírůstkové aktualizace zachovat data.
 > 
 > V databázi projektu sady Visual Studio 2010 nastavení nasazení jsou obsaženy v souboru konfigurace (.sqldeployment) nasazení. Jak vytvořit soubory konfigurace nasazení specifických pro prostředí a určit, který chcete použít jako parametr VSDBCMD se zobrazí v tomto tématu.
-
 
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
@@ -76,11 +75,9 @@ Tato tabulka ukazuje typické nasazení nastavení pro jiné cílové prostřed�
 | **Proveďte zálohu databáze před nasazením** | False | Možná | Pravda |
 | **Generovat příkazy DROP pro objekty, které jsou v cílové databázi, ale nejsou v projektu databáze** | False | Pravda | Pravda |
 | **Nepoužívejte příkaz ALTER ASSEMBLY příkazy aktualizovat typy CLR** | False | False | False |
-  
 
 > [!NOTE]
 > Další informace o vlastnosti nasazení databáze a důležité informace o prostředí, najdete v části [přehled o nastavení databázového projektu](https://msdn.microsoft.com/library/aa833291(v=VS.100).aspx), [jak: Konfigurace vlastností pro podrobnosti o nasazení](https://msdn.microsoft.com/library/dd172125.aspx), [sestavení a nasazení databáze do izolované vývojové prostředí](https://msdn.microsoft.com/library/dd193409.aspx), a [sestavování a nasazování databází do přípravného nebo produkčního prostředí](https://msdn.microsoft.com/library/dd193413.aspx).
-
 
 Pro podporu nasazení databázový projekt do více cílů, měli vytvořit konfigurační soubor nasazení pro každé cílové prostředí.
 
@@ -104,13 +101,10 @@ Při použití konfigurace řešení (jako je ladění a vydání) v rámci sady
 
 Chcete-li zadat konfigurační soubor nasazení do vašeho VSDBCMD, použijte **p:/DeploymentConfigurationFile** přepnutí a zadejte úplnou cestu k souboru. Tím se přepíše konfigurační soubor nasazení, který identifikuje manifest nasazení. Například můžete použít tento příkaz VSDBCMD k nasazení **ContactManager** databáze do testovacího prostředí:
 
-
 [!code-console[Main](customizing-database-deployments-for-multiple-environments/samples/sample1.cmd)]
-
 
 > [!NOTE]
 > Všimněte si, že proces sestavení může přejmenujte svůj soubor .sqldeployment, když ho zkopíruje soubor do výstupního adresáře.
-
 
 Pokud používáte proměnných příkazu SQL v SQL skripty před nasazením nebo po nasazení, můžete použít podobný přístup k přidružení souboru .sqlcmdvars specifických pro prostředí s nasazením. V tomto případě použijete **p:/SqlCommandVariablesFile** přepínač k identifikaci souboru .sqlcmdvars.
 
@@ -118,9 +112,7 @@ Pokud používáte proměnných příkazu SQL v SQL skripty před nasazením neb
 
 Můžete vyvolat příkaz VSDBCMD ze souboru projektu MSBuild pomocí **Exec** úkol v rámci cíl nástroje MSBuild. Ve své nejjednodušší podobě by vypadalo takto:
 
-
 [!code-xml[Main](customizing-database-deployments-for-multiple-environments/samples/sample2.xml)]
-
 
 - V praxi aby soubory projektu se snadno čte a opakovaně používat, je budete chtít vytvořit vlastnosti, které chcete ukládat různé parametry příkazového řádku. To usnadňuje uživatelům poskytnout hodnoty vlastností v souboru projektu pro konkrétní prostředí nebo přepsat výchozí hodnoty z příkazového řádku MSBuild. Pokud použijete přístup soubor projektu rozdělit podle [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), pokyny pro sestavení a vlastnosti mezi dvěma soubory by měly rozdělit odpovídajícím způsobem:
 - Nastavení pro konkrétní prostředí, jako je název souboru konfigurace nasazení, připojovací řetězec databáze a název cílové databáze by měl přejít v souboru projektu pro konkrétní prostředí.

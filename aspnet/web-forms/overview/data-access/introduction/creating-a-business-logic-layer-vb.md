@@ -8,12 +8,12 @@ ms.date: 03/31/2010
 ms.assetid: 142e5181-29ce-4bb9-907b-2a0becf7928b
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-business-logic-layer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 63efa46410e821947c6b0ee4ecd0c790fbf793e3
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e11d9d758d6bae5b657a8be51e7ee223923abc84
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59380090"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108241"
 ---
 # <a name="creating-a-business-logic-layer-vb"></a>Vytvoření vrstvy obchodní logiky (VB)
 
@@ -23,18 +23,15 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > V tomto kurzu uvidíme, jak centralizovat obchodních pravidel do obchodní logiku vrstvy (BLL), která slouží jako zprostředkovatel pro výměnu dat mezi prezentační vrstvou a vrstvy DAL.
 
-
 ## <a name="introduction"></a>Úvod
 
 Data přístup Layer (DAL) vytvořené v [první kurz](creating-a-data-access-layer-vb.md) jasně odděluje data přístup logiky od logiky prezentace. Ale při DAL čistě odděluje podrobnosti o přístupu dat od prezentační vrstvy, nevynucuje žádná obchodní pravidla, která jim umožňují uplatnit. Například pro naši aplikaci budeme chtít zakázat `CategoryID` nebo `SupplierID` pole `Products` tabulka, která má být změněna při `Discontinued` je nastaveno na 1 nebo budeme chtít vynutit pravidla služební zákazu situace, kdy Zaměstnanec spravuje uživatele, který byl přijat po nich. Další z typických možností je možná jenom uživatelé autorizace v konkrétní roli můžete odstranit produktů nebo můžete změnit `UnitPrice` hodnotu.
 
 V tomto kurzu uvidíme, jak centralizovat těchto obchodních pravidel do obchodní logiku vrstvy (BLL), která slouží jako zprostředkovatel pro výměnu dat mezi prezentační vrstvou a vrstvy DAL. V reálné aplikaci BLL by měla být implementována jako samostatný projekt knihovny tříd; ale tyto kurzy jsme budete implementovat BLL jako řadu objektů třídy v našich `App_Code` složku pro zjednodušení strukturu projektu. Obrázek 1 ukazuje architekturu vztahy mezi prezentační vrstvou, knihoven BLL a DAL.
 
-
 ![BLL odděluje prezentační vrstvy z vrstvy přístupu k datům a ukládá obchodní pravidla](creating-a-business-logic-layer-vb/_static/image1.png)
 
 **Obrázek 1**: BLL odděluje prezentační vrstvy z vrstvy přístupu k datům a ukládá obchodní pravidla
-
 
 Místo vytvoření samostatné třídy k implementaci naše [obchodní logiky](http://en.wikipedia.org/wiki/Business_logic), jsme také může umístit tuto logiku přímo v datové sadě zadán pomocí částečných tříd. Příklad vytvoření a rozšiřování typované datové sady vraťte se k první kurz.
 
@@ -46,17 +43,14 @@ Chcete-li více čistě oddělte třídy související s vrstvou DAL a BLL, vytv
 
 Dále vytvořte čtyři soubory tříd BLL v `BLL` podsložky. Chcete-li to provést, klikněte pravým tlačítkem na `BLL` podsložku, zvolte možnost Přidat novou položku a zvolte šablonu třídy. Název třídy čtyři `ProductsBLL`, `CategoriesBLL`, `SuppliersBLL`, a `EmployeesBLL`.
 
-
 ![Čtyři nové třídy přidat složku App_Code](creating-a-business-logic-layer-vb/_static/image2.png)
 
 **Obrázek 2**: Přidat čtyři nové třídy `App_Code` složky
-
 
 V dalším kroku přidejme metody do všech tříd jednoduše zabalit metody definované pro objekty TableAdapter z prvního kurzu. Teď tyto metody se právě volají přímo do vrstvy DAL; se vrátíme později a přidejte veškeré potřebné obchodní logiky.
 
 > [!NOTE]
 > Pokud používáte Visual Studio Standard Edition nebo vyšší (to znamená, že *není* pomocí Visual Web Developer), Volitelně můžete navrhnout vizuálně pomocí tříd [návrhář tříd](https://msdn.microsoft.com/library/default.asp?url=/library/dv_vstechart/html/clssdsgnr.asp). Odkazovat [blogu návrháře tříd](https://blogs.msdn.com/classdesigner/default.aspx) Další informace o této nové funkce v sadě Visual Studio.
-
 
 Pro `ProductsBLL` třídy, je potřeba přidat celkem sedmi metod:
 
@@ -69,7 +63,6 @@ Pro `ProductsBLL` třídy, je potřeba přidat celkem sedmi metod:
 - `DeleteProduct(productID)` Odstraní zadaný produkt z databáze
 
 ProductsBLL.vb
-
 
 [!code-vb[Main](creating-a-business-logic-layer-vb/samples/sample1.vb)]
 
@@ -109,7 +102,6 @@ S `ProductsBLL` třídy kompletní, stále je potřeba přidat tříd pro práci
 
 Je jedna metoda za zmínku `SuppliersBLL` třídy `UpdateSupplierAddress` metody. Tato metoda poskytuje rozhraní pro aktualizaci jenom informace o adrese dodavatele. Interně tato metoda načte v `SupplierDataRow` objekt pro zadaný `supplierID` (pomocí `GetSupplierBySupplierID`), nastaví vlastností souvisejících s adresou a pak zavolá do `SupplierDataTable`společnosti `Update` metoda. `UpdateSupplierAddress` Metoda takto:
 
-
 [!code-vb[Main](creating-a-business-logic-layer-vb/samples/sample2.vb)]
 
 Odkazovat na soubor ke stažení v tomto článku pro moje úplnou implementaci třídy BLL.
@@ -118,21 +110,17 @@ Odkazovat na soubor ke stažení v tomto článku pro moje úplnou implementaci 
 
 V tomto prvním kurzu jsme viděli příklady pracovat přímo s datovou sadou zadali prostřednictvím kódu programu, ale přidání z našich tříd BLL prezentační vrstvy by měl fungovat BLL místo toho. V `AllProducts.aspx` příklad z první kurz `ProductsTableAdapter` byla použita k vytvoření vazby seznam produktů prvku GridView, jak je znázorněno v následujícím kódu:
 
-
 [!code-vb[Main](creating-a-business-logic-layer-vb/samples/sample3.vb)]
 
 Použít nové BLL třídy, všechny, které je potřeba změnit je, stačí nahradit prvním řádku kódu `ProductsTableAdapter` objektu `ProductBLL` objektu:
-
 
 [!code-vb[Main](creating-a-business-logic-layer-vb/samples/sample4.vb)]
 
 Třídy BLL lze přistupovat pomocí ObjectDataSource také deklarativně (jak můžete datové sady typu). Budeme mluvit o ObjectDataSource podrobněji v následujících kurzech.
 
-
 [![Zobrazí se seznam produktů v GridView](creating-a-business-logic-layer-vb/_static/image4.png)](creating-a-business-logic-layer-vb/_static/image3.png)
 
 **Obrázek 3**: Zobrazí se seznam produktů v GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-business-logic-layer-vb/_static/image5.png))
-
 
 ## <a name="step-3-adding-field-level-validation-to-the-datarow-classes"></a>Krok 3: Přidání ověření na úrovni pole třídy objektu DataRow
 
@@ -147,24 +135,19 @@ Tato pravidla můžete a by měl být vyjádřen na úrovni databáze. Znak limi
 
 Kromě vynucuje tato pravidla na databázi by také měly být vynucují na úrovni datové sady. Délka pole a určuje, zda je hodnota požadované nebo volitelné jsou ve skutečnosti už zachycena pro každý objekt DataTable sadu objektů DataColumns. Zobrazíte existující ověření na úrovni pole automaticky k dispozici, přejděte na návrháři datových sad, vyberte pole z jednoho DataTables a přejděte do okna Vlastnosti. Jak ukazuje obrázek 4 `QuantityPerUnit` objekt DataColumn v `ProductsDataTable` má maximální délku 20 znaků a neumožňuje procházet spojené `NULL` hodnoty. Pokud jsme pokus o nastavení `ProductsDataRow`společnosti `QuantityPerUnit` vlastnost na hodnotu řetězce, který je delší než 20 znaků `ArgumentException` bude vyvolána výjimka.
 
-
 [![Objekt DataColumn poskytuje základní ověření na úrovni pole](creating-a-business-logic-layer-vb/_static/image7.png)](creating-a-business-logic-layer-vb/_static/image6.png)
 
 **Obrázek 4**: Objekt DataColumn poskytuje základní úrovni pole ověření ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-business-logic-layer-vb/_static/image8.png))
 
-
 Bohužel jsme nelze zadat rozsah kontroly, jako `UnitPrice` hodnota musí být větší než nebo rovna hodnotě nula, v okně Vlastnosti. Aby bylo možné poskytovat tento typ pole potřebujeme vytvořit obslužnou rutinu události pro DataTable [columnchanging –](https://msdn.microsoft.com/library/system.data.datatable.columnchanging%28VS.80%29.aspx) událostí. Jak je uvedeno v [předchozím kurzu](creating-a-data-access-layer-vb.md), datové sady, datové tabulky a datového řádku objektů vytvořených typované datové sady je možné rozšířit pomocí částečných tříd. Tímto způsobem můžeme vytvářet `ColumnChanging` obslužné rutiny události pro `ProductsDataTable` třídy. Začněte tím, že vytvoření třídy v `App_Code` složku s názvem `ProductsDataTable.ColumnChanging.vb`.
-
 
 [![Přidejte novou třídu ke složce App_Code](creating-a-business-logic-layer-vb/_static/image10.png)](creating-a-business-logic-layer-vb/_static/image9.png)
 
 **Obrázek 5**: Přidejte novou třídu do `App_Code` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-business-logic-layer-vb/_static/image11.png))
 
-
 Dále vytvořte obslužnou rutinu události pro `ColumnChanging` událost, která zajistí, že `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`, a `ReorderLevel` hodnoty ve sloupcích (není-li `NULL`) jsou větší než nebo rovna hodnotě nula. Pokud tyto sloupce je mimo rozsah, výjimku `ArgumentException`.
 
 ProductsDataTable.ColumnChanging.vb
-
 
 [!code-vb[Main](creating-a-business-logic-layer-vb/samples/sample5.vb)]
 
@@ -182,13 +165,11 @@ Představte si, že naše obchodní pravidla určují, že produkt nelze označi
 
 K vynucení toto obchodní pravidlo v `UpdateProducts` začít kontrolou, jestli metoda `Discontinued` byl nastaven na `True` a proto jsme by volání `GetProductsBySupplierID` určit počet produktů jsme zakoupili od dodavatele tohoto produktu. Pokud pouze jeden produkt zakoupen od tohoto dodavatele, jsme throw `ApplicationException`.
 
-
 [!code-vb[Main](creating-a-business-logic-layer-vb/samples/sample6.vb)]
 
 ## <a name="responding-to-validation-errors-in-the-presentation-tier"></a>Reakce na chyby ověření do prezentační vrstvy
 
 Při volání BLL od prezentační vrstvy můžeme rozhodnout, zda pokus o zpracovávat všechny výjimky, které může být vyvolána, nebo jim bublinový až technologie ASP.NET (což vyvolá `HttpApplication`společnosti `Error` událostí). Ke zpracování výjimky při práci s BLL prostřednictvím kódu programu, můžeme použít [zkuste... Zachytit](https://msdn.microsoft.com/library/fk6t46tz%28VS.80%29.aspx) bloku, jako v následujícím příkladu:
-
 
 [!code-vb[Main](creating-a-business-logic-layer-vb/samples/sample7.vb)]
 

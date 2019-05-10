@@ -8,12 +8,12 @@ ms.date: 01/23/2019
 ms.assetid: 1e1927c0-ded1-4752-80fd-a146628d2f09
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint
 msc.type: authoredcontent
-ms.openlocfilehash: c6a4aa4eb563fd77d5afd9248175d5f5b7984d19
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 81d134cbd3231b9a0d5537ccbd1bbfe6419254af
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57071416"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108718"
 ---
 # <a name="create-an-odata-v4-endpoint-using-aspnet-web-api"></a>Vytvoření koncového bodu OData v4 pomocí rozhraní ASP.NET Web API 
 
@@ -45,8 +45,6 @@ Rozbalte **nainstalováno** &gt; **Visual C#**  &gt; **webové**a vyberte **webo
 
 Vyberte **OK**.
 
-
-
 [![](create-an-odata-v4-endpoint/_static/image8.png)](create-an-odata-v4-endpoint/_static/image8.png)
 
 Vyberte **prázdný** šablony. V části **přidat složky a základní odkazy pro:** vyberte **webového rozhraní API**. Vyberte **OK**.
@@ -70,7 +68,6 @@ V Průzkumníku řešení klikněte pravým tlačítkem na složku modely. V mí
 > [!NOTE]
 > Podle konvence tříd modelu jsou umístěny ve složce modely, ale není nutné postupovat podle tohoto vytváření názvů pro svoje vlastní projekty.
 
-
 Název třídy `Product`. V souboru Product.cs nahraďte často používaný kód následujícím kódem:
 
 [!code-csharp[Main](create-an-odata-v4-endpoint/samples/sample2.cs)]
@@ -83,7 +80,6 @@ V tomto kurzu použijeme Entity Framework (EF) Code First k vytvoření back-end
 
 > [!NOTE]
 > Web API OData EF nevyžaduje. Použijte všechny vrstvy přístup k datům, která jsou dobře převeditelné entity databáze do modelů.
-
 
 Nejdřív nainstalujte balíček NuGet pro EF. Z **nástroje** nabídce vyberte možnost **Správce balíčků NuGet** &gt; **Konzola správce balíčků**. V okně konzoly Správce balíčků zadejte příkaz:
 
@@ -130,7 +126,6 @@ V Průzkumníku řešení klikněte pravým tlačítkem na složku řadiče a vy
 
 > [!NOTE]
 > Verzi tohoto kurzu pro prostředí OData v3 používá **přidat kontroler** generování uživatelského rozhraní. V současné době neexistuje žádný generování uživatelského rozhraní pro OData v4.
-
 
 Často používaný kód v ProductsController.cs nahraďte následujícím kódem.
 

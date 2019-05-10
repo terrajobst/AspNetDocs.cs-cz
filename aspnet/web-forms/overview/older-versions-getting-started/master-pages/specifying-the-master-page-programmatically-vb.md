@@ -8,12 +8,12 @@ ms.date: 07/28/2008
 ms.assetid: 0edcd653-f24a-41aa-aef4-75f868fe5ac2
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 96f6ebb47af38c77cba11a92c883700730324226
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: d075d0b66da8a0f4e2f0155c08b09a02a4ca71fb
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59389229"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65106943"
 ---
 # <a name="specifying-the-master-page-programmatically-vb"></a>Programové určení stránky předlohy (VB)
 
@@ -23,11 +23,9 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > Vyhledá v nastavení obsahu stránky hlavní stránku prostřednictvím kódu programu přes PreInit obslužné rutiny události.
 
-
 ## <a name="introduction"></a>Úvod
 
 Od zahajovací příklad v [ *vytváření webu rozložení pomocí stránek předlohy*](creating-a-site-wide-layout-using-master-pages-vb.md), veškerý obsah stránky neodkazujete jejich stránky předlohy deklarativně prostřednictvím `MasterPageFile` atribut `@Page`směrnice. Například následující `@Page` – direktiva odkazuje stránky obsahu na stránce předlohy `Site.master`:
-
 
 [!code-aspx[Main](specifying-the-master-page-programmatically-vb/samples/sample1.aspx)]
 
@@ -41,11 +39,9 @@ Pokaždé, když je přijat požadavek na webovém serveru, který je stránku o
 
 Obrázek 1 znázorňuje tuto fusion. Krok 1 na obrázku 1 zobrazí původní obsah a hierarchie ovládací prvek stránky předlohy. Na konci ocáskem fázi PreInit obsah jsou ovládací prvky na stránce přidány do odpovídajících prvků ContentPlaceHolder na stránce předlohy (krok 2). Po tomto fusion stránky předlohy slouží jako kořenový hierarchii roztaveného ovládacích prvků. Tento ovládací prvek začleněny hierarchie se pak přidá do stránky a vytvoření hierarchie dokončené ovládacího prvku (krok 3). Net výsledkem je, že na stránce ovládacího prvku hierarchie obsahuje hierarchii roztaveného ovládacích prvků.
 
-
 [![Stránky předlohy a stránky obsahu ovládacího prvku hierarchií jsou začleněny společně během fáze PreInit](specifying-the-master-page-programmatically-vb/_static/image2.png)](specifying-the-master-page-programmatically-vb/_static/image1.png)
 
 **Obrázek 01**: Stránky předlohy a stránky obsahu ovládacího prvku hierarchií jsou začleněny společně během fáze PreInit ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image3.png))
-
 
 ## <a name="step-2-setting-themasterpagefileproperty-from-code"></a>Krok 2: Nastavení`MasterPageFile`vlastnost z kódu
 
@@ -55,18 +51,15 @@ Na začátku fáze PreInit `Page` objektu vyvolá jeho [ `PreInit` události](ht
 
 Začněte otevřením `Default.aspx.vb`, soubor třídy modelu code-behind náš web domovské stránky. Přidat obslužnou rutinu události pro danou stránku `PreInit` události tak, že zadáte následující kód:
 
-
 [!code-vb[Main](specifying-the-master-page-programmatically-vb/samples/sample2.vb)]
 
 Tady jsme nastavili `MasterPageFile` vlastnost. Aktualizovat kód tak, aby přiřadí hodnotu "~ / Site.master" k `MasterPageFile` vlastnost.
-
 
 [!code-vb[Main](specifying-the-master-page-programmatically-vb/samples/sample3.vb)]
 
 Pokud nastavíte zarážku a, který začíná ladění vám zobrazí pokaždé, když `Default.aspx` navštívené stránky nebo pokaždé, když se zpětného odeslání na tuto stránku `Page_PreInit` spustí obslužnou rutinu události a `MasterPageFile` je přiřazená vlastnost "~ / Site.master".
 
 Alternativně můžete přepsat `Page` třídy `OnPreInit` metoda a nastavte `MasterPageFile` existuje vlastnost. V tomto příkladu teď není nastavený na hlavní stránce v konkrétní stránce, ale spíše z `BasePage`. Si možná Vzpomínáte, že jsme vytvořili vlastní stránku základní třídu (`BasePage`) zpátky [ *zadáním názvu, metaznaček a ostatní hlaviček HTML na stránce předlohy* ](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb.md) kurzu. Aktuálně `BasePage` přepsání `Page` třídy `OnLoadComplete` metody, kde se nastaví na stránce `Title` vlastnost podle data mapy webu. Aktualizujme `BasePage` také přepsat `OnPreInit` metoda programové určení stránky předlohy.
-
 
 [!code-vb[Main](specifying-the-master-page-programmatically-vb/samples/sample4.vb)]
 
@@ -82,11 +75,9 @@ Zda `MasterPageFile` je nastavena prostřednictvím `@Page` – direktiva nebo p
 
 Stručně řečeno, je potřeba nechat `MasterPageFile` atribut `@Page` směrnice mohli využívat bohaté možnosti návrhu v sadě Visual Studio.
 
-
 [![Použití sady Visual Studio @Page atribut direktivy MasterPageFile k vykreslení zobrazení návrhu](specifying-the-master-page-programmatically-vb/_static/image5.png)](specifying-the-master-page-programmatically-vb/_static/image4.png)
 
 **Obrázek 02**: Visual Studio používá `@Page` direktivy `MasterPageFile` atribut k vykreslení zobrazení Návrh ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image6.png))
-
 
 ## <a name="step-3-creating-an-alternative-master-page"></a>Krok 3: Vytvoření stránky předlohy alternativní
 
@@ -96,22 +87,18 @@ Podívejme se na tom, jak dynamicky načíst stránku předlohy za běhu na zák
 
 Vytvoření nové stránky předlohy v kořenové složce s názvem `Alternate.master`. Přidat nové šablony stylů také na web s názvem `AlternateStyles.css`.
 
-
 [![Přidejte další stránky předlohy a šablon stylů CSS soubor na web](specifying-the-master-page-programmatically-vb/_static/image8.png)](specifying-the-master-page-programmatically-vb/_static/image7.png)
 
 **Obrázek 03**: Přidat jiné stránky předlohy a souborů CSS na web ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image9.png))
-
 
 Jsme navrhli tak `Alternate.master` stránku předlohy, která mají název zobrazený v horní části stránky, na střed a na navy na pozadí. Jsme distribuován levého sloupce a přesunout obsah pod `MainContent` ovládací prvek ContentPlaceHolder, který teď pokrývá celou šířku stránky. Kromě toho nixed neuspořádaný seznam poznatky a nahradili jsme ho s vodorovné seznamu výše `MainContent`. Jsem také aktualizovat písma a barvy použité na hlavní stránce (a při rozšíření i pro její obsahu stránky). Obrázek 4 ukazuje `Default.aspx` při použití `Alternate.master` stránky předlohy.
 
 > [!NOTE]
 > Technologie ASP.NET obsahuje schopnost definovat *motivy*. Motiv je kolekce obrázků, souborů CSS a styl související webové nastavení vlastností ovládacího prvku, které se můžou uplatnit na stránky v době běhu. Motivy jsou způsob, jak přejít, pokud váš web rozložení se liší pouze v obrázcích zobrazí a jejich pravidla šablon stylů CSS. V případě rozložení více podstatně liší například pomocí jiné webové ovládací prvky nebo s výrazně jiné rozložení, je potřeba používat samostatné stránky předlohy. Na konci tohoto kurzu pro další informace o motivech najdete v části Další čtení.
 
-
 [![Stránek s obsahem teď můžete použít nový vzhled a chování](specifying-the-master-page-programmatically-vb/_static/image11.png)](specifying-the-master-page-programmatically-vb/_static/image10.png)
 
 **Obrázek 04**: Stránek s obsahem teď můžete použít nový vzhled a chování ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image12.png))
-
 
 Když jsou začleněny předlohy a obsahu stránek kódu, `MasterPage` třídy kontroluje, ujistěte se, že každý obsah ovládacího prvku obsahu stránce odkazuje ContentPlaceHolder na stránce předlohy. Pokud je nalezen ovládací prvek obsahu, který odkazuje na neexistující ContentPlaceHolder, je vyvolána výjimka. Jinými slovy, je nutné, že stránka předlohy přiřazení obsahu stránky mít ContentPlaceHolder pro každý ovládací prvek na stránce obsahu obsahu.
 
@@ -126,11 +113,9 @@ Stránky obsahu v našem webu patří jen jeden nebo dva ovládací prvky obsahu
 
 Chcete-li získat vaše `Alternate.master` stránku předlohy, která vypadat podobně jako dolovat (viz obrázek 4), začněte tím, že definice stylů stránky předlohy v `AlternateStyles.css` šablony stylů. Přidat následující pravidla do `AlternateStyles.css`:
 
-
 [!code-css[Main](specifying-the-master-page-programmatically-vb/samples/sample5.css)]
 
 V dalším kroku přidejte následující deklarativní k `Alternate.master`. Jak je vidět, `Alternate.master` obsahuje čtyři ovládací prvky ContentPlaceHolder se stejným `ID` hodnoty jako ovládací prvky ContentPlaceHolder `Site.master`. Kromě toho obsahuje ovládací prvek ScriptManager, což je nezbytné pro tyto stránky na našem webu, které používají rozhraní ASP.NET AJAX framework.
-
 
 [!code-aspx[Main](specifying-the-master-page-programmatically-vb/samples/sample6.aspx)]
 
@@ -139,7 +124,6 @@ V dalším kroku přidejte následující deklarativní k `Alternate.master`. Ja
 K otestování této nové aktualizace stránky předlohy `BasePage` třídy `OnPreInit` metodu tak, aby `MasterPageFile` vlastnost je přiřazena hodnota `"~/Alternate.maser"` a potom přejděte na webovou stránku. Každé stránky by mělo fungovat bez chyb s výjimkou dvou: `~/Admin/AddProduct.aspx` a `~/Admin/Products.aspx`. Přidání produktu do ovládacího prvku DetailsView v `~/Admin/AddProduct.aspx` vede `NullReferenceException` z řádku kódu, který se pokouší nastavit na hlavní stránce `GridMessageText` vlastnost. Při návštěvě `~/Admin/Products.aspx` `InvalidCastException` je vyvolána při načtení stránky s touto zprávou: "Nelze přetypovat objekt typu" ASP.alternate\_hlavní ' na typ ' ASP.site\_předlohy "."
 
 K těmto chybám, protože `Site.master` použití modelu code-behind třída zahrnuje veřejné události, vlastnosti a metody, které nejsou definovány v `Alternate.master`. Část značky tyto dvě stránky mají `@MasterType` direktiva, která odkazuje `Site.master` stránky předlohy.
-
 
 [!code-aspx[Main](specifying-the-master-page-programmatically-vb/samples/sample7.aspx)]
 
@@ -157,18 +141,15 @@ Můžeme také muset definovat `PricesDoubled` událost v `BaseMasterPage` a pos
 
 Aktualizace vašeho `BaseMasterPage` třídy tak, aby obsahoval následující kód:
 
-
 [!code-vb[Main](specifying-the-master-page-programmatically-vb/samples/sample8.vb)]
 
 Dále přejděte `Site.master` použití modelu code-behind třídy a nechat ji odvodit z `BaseMasterPage`. Protože `BaseMasterPage` obsahuje členy označené `MustOverride` potřebujeme k přepsání těchto členů tady v `Site.master`. Přidat `Overrides` – klíčové slovo do definice metody a vlastnosti. Také aktualizovat kód, který vyvolá `PricesDoubled` událost v `DoublePrice` tlačítka `Click` obslužné rutiny události pomocí volání na základní třídu `OnPricesDoubled` metody.
 
 Po změnách `Site.master` použití modelu code-behind třída by měla obsahovat následující kód:
 
-
 [!code-vb[Main](specifying-the-master-page-programmatically-vb/samples/sample9.vb)]
 
 Musíme také aktualizovat `Alternate.master`na použití modelu code-behind třídy odvozovat z `BaseMasterPage` a přepsat dva `MustOverride` členy. Ale protože `Alternate.master` neobsahuje GridView, že seznamy nejnovější produkty ani popisek, který zobrazí zprávu po nového produktu je přidána do databáze, tyto metody není nutné nic dělat.
-
 
 [!code-vb[Main](specifying-the-master-page-programmatically-vb/samples/sample10.vb)]
 
@@ -176,11 +157,9 @@ Musíme také aktualizovat `Alternate.master`na použití modelu code-behind tř
 
 Teď, když jsme dokončili `BaseMasterPage` třídy a naše dvě hlavní stránky rozšíření, posledním krokem je aktualizovat `~/Admin/AddProduct.aspx` a `~/Admin/Products.aspx` stránky, které odkazují na tento společný typ. Začněte změnou `@MasterType` direktiv v obou stránky:
 
-
 [!code-aspx[Main](specifying-the-master-page-programmatically-vb/samples/sample11.aspx)]
 
 Do:
-
 
 [!code-aspx[Main](specifying-the-master-page-programmatically-vb/samples/sample12.aspx)]
 
@@ -188,11 +167,9 @@ Namísto odkazování na cestu k souboru `@MasterType` vlastnosti nyní odkazuje
 
 Je jeden menší změnu, kterou je potřeba provést v `~/Admin/AddProduct.aspx`. Ovládací prvek DetailsView `ItemInserted` obslužná rutina události používá i silných `Master` vlastnosti a volného typu `Page.Master` vlastnost. Opravili jsme silného typu odkazu, když jsme aktualizovali `@MasterType` směrnice, ale stále potřeba aktualizovat volného typu odkazu. Nahraďte následující řádek kódu:
 
-
 [!code-vb[Main](specifying-the-master-page-programmatically-vb/samples/sample13.vb)]
 
 Následujícím kódem a která přetypovává `Page.Master` základní typ:
-
 
 [!code-vb[Main](specifying-the-master-page-programmatically-vb/samples/sample14.vb)]
 
@@ -205,14 +182,11 @@ Pojďme vytvořit webovou stránku, která umožňuje uživateli zvolit hlavní 
 > [!NOTE]
 > Protože `Site.master` a `Alternate.master` mají stejnou sadu ovládacích prvků ContentPlaceHolder nebude vadit, jaké stránky předlohy, zvolte při vytváření nového obsahu stránky. Pro zajištění konzistence, můžu Navrhněte pomocí `Site.master`.
 
-
 [![Přidejte novou stránku obsahu na web](specifying-the-master-page-programmatically-vb/_static/image14.png)](specifying-the-master-page-programmatically-vb/_static/image13.png)
 
 **Obrázek 05**: Přidejte novou stránku obsahu na web ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image15.png))
 
-
 Aktualizace `Web.sitemap` soubor zahrnout položku pro tento účel. Přidejte následující kód pod `<siteMapNode>` pro stránky předlohy a ASP.NET AJAX lekce:
-
 
 [!code-xml[Main](specifying-the-master-page-programmatically-vb/samples/sample15.xml)]
 
@@ -220,11 +194,9 @@ Před přidáním libovolný obsah `ChooseMasterPage.aspx` stránku využít k a
 
 Přidání ovládacího prvku tlačítko Web na stránku a nastavit jeho `ID` a `Text` vlastností `SaveLayout` a "Uložit rozložení výběru", v uvedeném pořadí. Na stránce deklarativní v tuto chvíli by měl vypadat nějak takto:
 
-
 [!code-aspx[Main](specifying-the-master-page-programmatically-vb/samples/sample16.aspx)]
 
 Při první návštěvě stránky budeme potřebovat zobrazit aktuálně vybrané stránce předlohy podle volby uživatele. Vytvoření `Page_Load` obslužné rutiny události a přidejte následující kód:
-
 
 [!code-vb[Main](specifying-the-master-page-programmatically-vb/samples/sample17.vb)]
 
@@ -232,34 +204,27 @@ Výše uvedený kód provede pouze při první návštěvě stránky (a ne na n�
 
 Potřebujeme kód, který uloží výběru uživatele do `MyMasterPage` proměnné relace. Vytvořte obslužnou rutinu události pro `SaveLayout` tlačítka `Click` událostí a přidejte následující kód:
 
-
 [!code-vb[Main](specifying-the-master-page-programmatically-vb/samples/sample18.vb)]
 
 > [!NOTE]
 > Časem `Click` spustí obslužnou rutinu události na zpětné volání, již byla vybrána na stránce předlohy. Proto rozevíracího seznamu výběru uživatele nebudou platit až do přejděte na další stránku. `Response.Redirect` Prohlížeč znovu požádat o `ChooseMasterPage.aspx`.
 
-
 S `ChooseMasterPage.aspx` stránka dokončení našich posledním úkolu je, aby `BasePage` přiřadit `MasterPageFile` nastavenou na hodnotu `MyMasterPage` proměnné relace. Pokud není nastavena proměnná relace `BasePage` ve výchozím nastavení `Site.master`.
-
 
 [!code-vb[Main](specifying-the-master-page-programmatically-vb/samples/sample19.vb)]
 
 > [!NOTE]
 > Přestěhoval jsem se kód, který se přiřadí `Page` objektu `MasterPageFile` vlastnost z celkového počtu `OnPreInit` obslužné rutiny události a do dvou samostatných metod. Tato metoda první `SetMasterPageFile`, přiřadí `MasterPageFile` vlastnost na hodnotu vrácenou příkazem druhá metoda `GetMasterPageFileFromSession`. Můžu označené `SetMasterPageFile` metoda `Overridable` tak, že budoucí třídy, které rozšiřují `BasePage` můžete volitelně přepsat implementaci vlastní logiky, v případě potřeby. Ukážeme příklad přepsání `BasePage`společnosti `SetMasterPageFile` vlastnost v dalším kurzu.
 
-
 S tímto kódem na místě, přejděte `ChooseMasterPage.aspx` stránky. Na začátku `Site.master` je vybrané (viz obrázek 6) stránka předlohy, ale uživatel může vybrat různé stránky předlohy z rozevíracího seznamu.
-
 
 [![Stránky obsahu se zobrazí na stránce předlohy Site.master](specifying-the-master-page-programmatically-vb/_static/image17.png)](specifying-the-master-page-programmatically-vb/_static/image16.png)
 
 **Obrázek 06**: Obsah stránky se zobrazí pomocí `Site.master` stránky předlohy ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image18.png))
 
-
 [![Stránky obsahu se teď zobrazují používající stránku předlohy Alternate.master](specifying-the-master-page-programmatically-vb/_static/image20.png)](specifying-the-master-page-programmatically-vb/_static/image19.png)
 
 **Obrázek 07**: Obsah stránky jsou nyní zobrazeny pomocí `Alternate.master` stránky předlohy ([kliknutím ji zobrazíte obrázek v plné velikosti](specifying-the-master-page-programmatically-vb/_static/image21.png))
-
 
 ## <a name="summary"></a>Souhrn
 

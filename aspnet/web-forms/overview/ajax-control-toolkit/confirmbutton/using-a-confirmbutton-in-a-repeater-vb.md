@@ -8,12 +8,12 @@ ms.date: 06/02/2008
 ms.assetid: 18c31709-3f9d-4d93-8b01-f1356bf610b4
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4850493e7a16aa9364396d1bbd3fe3e0db0f47db
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 026426d4dec61433bfa9edc66f934fa3ef6146c3
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59388098"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108833"
 ---
 # <a name="using-a-confirmbutton-in-a-repeater-vb"></a>Použití ovládacího prvku ConfirmButton v repeateru (VB)
 
@@ -22,7 +22,6 @@ by [Christian Wenz](https://github.com/wenz)
 [Stáhněte si kód](http://download.microsoft.com/download/8/6/d/86dea6c6-bb92-4fa6-aa14-f8c0f82100f5/ConfirmButton1.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/confirmbutton1VB.pdf)
 
 > Zařízení extender ConfirmButton v sadou nástrojů AJAX Control Toolkit vytvoří Ano/žádnou místní nabídku, když uživatel klikne na tlačítko (včetně prvek LinkButton). Pouze Ano po kliknutí na tlačítka akce provádí, jinak zrušena. To je možné v repeateru.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -45,7 +44,6 @@ Potom zdroj dat je povinný. Z důvodu zjednodušení jsou načteny pouze první
 Tento zdroj dat je pak možné v rámci repeateru. Obvyklým způsobem `DataBinder.Eval()` metoda načte data ze zdroje dat. `ConfirmButtonExtender` Ovládací prvek musí být umístěn pak v rámci `<ItemTemplate>` části opakovače tak, že se zobrazí pro každou položku ve zdroji dat.
 
 [!code-aspx[Main](using-a-confirmbutton-in-a-repeater-vb/samples/sample3.aspx)]
-
 
 [![Tlačítko potvrzení se zobrazí vedle každé položky ze zdroje dat.](using-a-confirmbutton-in-a-repeater-vb/_static/image2.png)](using-a-confirmbutton-in-a-repeater-vb/_static/image1.png)
 

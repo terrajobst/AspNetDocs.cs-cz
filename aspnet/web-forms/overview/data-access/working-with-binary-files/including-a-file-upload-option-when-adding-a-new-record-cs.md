@@ -8,12 +8,12 @@ ms.date: 03/27/2007
 ms.assetid: 362ade25-3965-4fb2-88d2-835c4786244f
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9ec09bfcadaa56401a08a389028766ee04f1daad
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 648703bdd5ed985332291b16e973c417cef36cde
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379875"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131983"
 ---
 # <a name="including-a-file-upload-option-when-adding-a-new-record-c"></a>Zahrnutí možnosti nahrání souboru při přidání nového záznamu (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_56_CS.exe) nebo [stahovat PDF](including-a-file-upload-option-when-adding-a-new-record-cs/_static/datatutorial56cs1.pdf)
 
 > Tento kurz ukazuje, jak vytvořit webové rozhraní, který umožňuje uživateli zadat text data i nahrát binární soubory. Pro ilustraci, možnosti, které jsou k dispozici pro ukládání binárních dat, jeden soubor uloží v databázi, zatímco druhá je uložen v systému souborů.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -41,40 +40,32 @@ Protože `CategoriesTableAdapter` s hlavní dotaz neodkazuje `Picture` sloupce, 
 > [!NOTE]
 > Tato obtěžování hlukem je bez problému, při použití uložené procedury místo SQL příkazy ad-hoc. Budoucí kurzu bude prozkoumat pomocí uložené procedury namísto SQL příkazy ad-hoc v vrstvy přístupu k datům.
 
-
 Chcete-li se vyhnout této potenciálnímu starostí, nikoli úprava příkazů SQL automaticky generované umožní s místo vytvoření nové metody pro TableAdapter. Tuto metodu s názvem `InsertWithPicture`, bude přijímat hodnoty `CategoryName`, `Description`, `BrochurePath`, a `Picture` sloupců a spusťte `INSERT` příkaz, který uchovává všechny čtyři hodnoty v novém záznamu.
 
 Otevřete datovou sadu typu a z návrháře, klikněte pravým tlačítkem na `CategoriesTableAdapter` s záhlaví a v místní nabídce zvolte možnost přidat dotaz. Otevře se Průvodce konfigurací dotazu TableAdapter, který začíná nám požádá, jak se má TableAdapter dotazovat by měl přístup k databázi. Zvolte možnost použít SQL příkazy a klikněte na tlačítko Další. Dalším krokem vyzve k zadání typu dotazu vygenerování. Protože jsme k vytvoření dotazu na přidání nového záznamu `Categories` tabulky, zvolte vložení a klikněte na tlačítko Další.
-
 
 [![Vyberte možnost Vložit](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image1.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image1.png)
 
 **Obrázek 1**: Vyberte možnost Vložit ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image2.png))
 
-
 Nyní potřebujeme k určení `INSERT` příkaz jazyka SQL. Průvodce automaticky navrhne `INSERT` příkaz odpovídající s hlavním dotazu objektu TableAdapter. V takovém případě ji s `INSERT` příkaz, který se vloží `CategoryName`, `Description`, a `BrochurePath` hodnoty. Aktualizujte příkaz tak, aby `Picture` sloupec je zahrnut spolu s `@Picture` parametr, takto:
-
 
 [!code-sql[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample1.sql)]
 
 Poslední obrazovka průvodce výzva pojmenujte novou metodu objektu TableAdapter. Zadejte `InsertWithPicture` a klikněte na tlačítko Dokončit.
 
-
 [![Název nové InsertWithPicture TableAdapter – metoda](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image2.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image3.png)
 
 **Obrázek 2**: Pojmenujte novou metodu TableAdapter `InsertWithPicture` ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image4.png))
-
 
 ## <a name="step-2-updating-the-business-logic-layer"></a>Krok 2: Aktualizace vrstvy obchodní logiky
 
 Protože prezentační vrstva by měla pouze rozhraní s vrstvy obchodní logiky, spíše než bude vynecháno, přejdete přímo na vrstvy přístupu k datům, je nutné vytvořit BLL metodu, která volá metodu DAL jsme právě vytvořili (`InsertWithPicture`). Pro účely tohoto kurzu vytvořte metodu v `CategoriesBLL` třídu s názvem `InsertWithPicture` , který přijímá jako vstupní tři `string` s a `byte` pole. `string` Vstupní parametry jsou pro kategorii s názvem, popis a si brožuru o cestu k souboru, zatímco `byte` pole je pro binární obsah obrázek kategorie s. Jak ukazuje následující kód, tato metoda BLL vyvolá metodu odpovídající vrstvy DAL:
 
-
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample2.cs)]
 
 > [!NOTE]
 > Ujistěte se, že jste uložili datové sadě zadán před přidáním `InsertWithPicture` metodu BLL. Protože `CategoriesTableAdapter` kód třídy je automaticky vytvářen založené na datové sadě zadán, pokud don t uložte provedené změny k datové sadě zadán `Adapter` vlastnost nebude vědět o `InsertWithPicture` metody.
-
 
 ## <a name="step-3-listing-the-existing-categories-and-their-binary-data"></a>Krok 3: Výpis existující kategorie a jejich binárních dat
 
@@ -82,19 +73,15 @@ V tomto kurzu vytvoříme stránku, která umožňuje koncovým uživatelům př
 
 Začněte otevřením `DisplayOrDownload.aspx` stránku ze `BinaryData` složky. Přejděte do zobrazení zdroje a zkopírujte ovládacími prvky GridView a prvku ObjectDataSource s deklarativní syntaxe, vložte ho v rámci `<asp:Content>` prvek `UploadInDetailsView.aspx`. Také, nezapomeňte zkopírovat don t `GenerateBrochureLink` metody třídy modelu code-behind `DisplayOrDownload.aspx` k `UploadInDetailsView.aspx`.
 
-
 [![Zkopírujte a vložte z DisplayOrDownload.aspx UploadInDetailsView.aspx deklarativní syntaxe](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image3.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image5.png)
 
 **Obrázek 3**: Zkopírujte a vložte deklarativní syntaxe z `DisplayOrDownload.aspx` k `UploadInDetailsView.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image6.png))
 
-
 Po zkopírování deklarativní syntaxe a `GenerateBrochureLink` metodu přes `UploadInDetailsView.aspx` stránku, prohlížení stránky prostřednictvím prohlížeče k zajištění, že všechno, co se zkopíruje správně. Měli byste vidět GridView výpis osm kategorií, která obsahuje odkaz ke stažení brožura, stejně jako kategorie s obrázek.
-
 
 [![Teď byste měli vidět jednotlivých kategorií spolu s jeho binární Data](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image4.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image7.png)
 
 **Obrázek 4**: Teď byste měli vidět jednotlivých kategorií spolu s jeho binárních dat ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image8.png))
-
 
 ## <a name="step-4-configuring-thecategoriesdatasourceto-support-inserting"></a>Krok 4: Konfigurace`CategoriesDataSource`k vkládání podpory
 
@@ -102,18 +89,14 @@ Po zkopírování deklarativní syntaxe a `GenerateBrochureLink` metodu přes `U
 
 Začněte kliknutím na odkaz Konfigurovat zdroj dat z prvku ObjectDataSource s inteligentním. Na první obrazovce se zobrazí objekt zdroje dat je nakonfigurováno pro práci s `CategoriesBLL`. Toto políčko nechat jako-je a klikněte na tlačítko Další přejděte na obrazovku definovat metody dat. Přejít na kartu vložení a vybrat `InsertWithPicture` metodu z rozevíracího seznamu. Kliknutím na Dokončit dokončíte průvodce.
 
-
 [![Konfigurace ObjectDataSource InsertWithPicture metody](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image5.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image9.png)
 
 **Obrázek 5**: Konfigurace ObjectDataSource používat `InsertWithPicture` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image10.png))
 
-
 > [!NOTE]
 > Po dokončení průvodce bude Visual Studio požádat, pokud chcete aktualizovat pole a klíče, který se znova vygeneruje dat webové ovládací prvky pole. Zvolte možnost Ne, protože kliknutím na tlačítko Ano, přepíše všechna pole vlastní nastavení provedené může mít.
 
-
 Po dokončení průvodce, prvku ObjectDataSource teď bude zahrnovat hodnotu pro jeho `InsertMethod` vlastnost stejně jako `InsertParameters` čtyři kategorie sloupců jako následující kód ukazuje:
-
 
 [!code-aspx[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample3.aspx)]
 
@@ -123,11 +106,9 @@ Jako první se věnují [přehled o vložení, aktualizace a odstranění dat](.
 
 Začněte tím, že přetažením z panelu nástrojů na Návrhář nad prvku GridView, nastavení DetailsView jeho `ID` vlastnost `NewCategory` a mazání navýšení kapacity `Height` a `Width` hodnot vlastností. Z inteligentních značek prvek DetailsView s vázat na existující `CategoriesDataSource` a potom zaškrtněte políčko Povolit vložení.
 
-
 [![Svázat s ovládacím prvku DetailsView CategoriesDataSource a Povolit vložení](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image6.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image11.png)
 
 **Obrázek 6**: Ovládacím prvku DetailsView. k vytvoření vazby `CategoriesDataSource` a Povolit vložení ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image12.png))
-
 
 Chcete-li trvale vykreslení ovládacím prvku DetailsView. v jeho vkládání rozhraní, nastavte jeho `DefaultMode` vlastnost `Insert`.
 
@@ -135,14 +116,11 @@ Všimněte si, že ovládacím prvku DetailsView má pět BoundFields `CategoryI
 
 Odeberte `NumberOfProducts` Vlastnost BoundField zcela DetailsView a pak aktualizujte `HeaderText` vlastnosti `CategoryName` a `BrochurePath` BoundFields kategorii a brožura, v uvedeném pořadí. V dalším kroku převést `BrochurePath` Vlastnost BoundField na pole TemplateField a přidat nový TemplateField obrázku, poskytuje tento nový TemplateField `HeaderText` hodnotu obrázku. Přesunout `Picture` TemplateField tak, že je mezi `BrochurePath` TemplateField a CommandField.
 
-
 ![Svázat s ovládacím prvku DetailsView CategoriesDataSource a Povolit vložení](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image7.gif)
 
 **Obrázek 7**: Ovládacím prvku DetailsView. k vytvoření vazby `CategoriesDataSource` a Povolit vložení
 
-
 Pokud jste převedli `BrochurePath` obsahuje vlastnost BoundField na pole TemplateField prostřednictvím dialogového okna Upravit pole pole TemplateField `ItemTemplate`, `EditItemTemplate`, a `InsertItemTemplate`. Pouze `InsertItemTemplate` je potřeba, ale tak můžete bez obav odstranit tyto dvě šablony. V tomto okamžiku vaše prvek DetailsView s deklarativní syntaxe by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample4.aspx)]
 
@@ -152,14 +130,11 @@ V současné době `BrochurePath` TemplateField s `InsertItemTemplate` obsahuje 
 
 Z prvku DetailsView s inteligentní značku, zvolte možnost Upravit šablony a pak vyberte `BrochurePath` TemplateField s `InsertItemTemplate` z rozevíracího seznamu. Odeberte textového pole a pak přetáhněte FileUpload ovládacího prvku z panelu nástrojů do šablony. Nastavení ovládacího prvku FileUpload s `ID` k `BrochureUpload`. Podobně, přidání ovládacího prvku FileUpload `Picture` TemplateField s `InsertItemTemplate`. Nastavit tento ovládací prvek FileUpload s `ID` k `PictureUpload`.
 
-
 [![Přidejte ovládací prvek odesílání souborů při odpovědích InsertItemTemplate](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image8.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image13.png)
 
 **Obrázek 8**: Přidání ovládacího prvku odesílání souborů při odpovědích `InsertItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image14.png))
 
-
 Po provedení tyto doplňky, budou dva TemplateField s deklarativní syntaxe:
-
 
 [!code-aspx[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample5.aspx)]
 
@@ -170,13 +145,11 @@ Pokud nějaký uživatel odešle typu souboru, musíme zrušit insert a zobrazit
 > [!NOTE]
 > V ideálním případě by `CategoryName` a `Description` BoundFields by převedou na hodnoty vlastností TemplateField a jejich vkládání rozhraní přizpůsobit. `Description` Vkládání rozhraní, například by pravděpodobně aby lépe vyhovoval prostřednictvím ve víceřádkovém textovém poli. A protože `CategoryName` sloupec nepřijímá `NULL` hodnoty, RequiredFieldValidator by se měl přidat k zajištění uživatel zadá hodnotu pro název nové kategorie s. Tyto kroky jako cvičení zůstanou čtečku. Vraťte se do [přizpůsobení rozhraní pro úpravu dat](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs.md) pro hlubší pohled na rozšiřování úpravy rozhraní data.
 
-
 ## <a name="step-6-saving-the-uploaded-brochure-to-the-web-server-s-file-system"></a>Krok 6: Ukládání nahraného – příručka k systému souborů webového serveru s
 
 Když uživatel zadá hodnoty pro novou kategorii a klikne na tlačítko Vložit, dojde k zpětné volání a kterou se vkládání pracovního postupu. První, prvek DetailsView s [ `ItemInserting` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.iteminserting.aspx) aktivována. Další, ObjectDataSource s `Insert()` je metoda vyvolána, výsledek bude přidán do nového záznamu `Categories` tabulky. Po tomto prvku DetailsView s [ `ItemInserted` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.iteminserted.aspx) aktivována.
 
 Před ObjectDataSource s `Insert()` vyvolání metody, jsme nutné nejdříve zkontrolovat, že příslušný soubor typy nahraný uživatelem a uložte si brožuru o PDF do systému souborů webového serveru s. Vytvořte obslužnou rutinu události pro prvek DetailsView s `ItemInserting` událostí a přidejte následující kód:
-
 
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample6.cs)]
 
@@ -185,16 +158,13 @@ Obslužná rutina události spustí odkazováním `BrochureUpload` FileUpload ov
 > [!NOTE]
 > Spoléhání se na rozšíření s nahraný soubor není sure-fire techniku pro zajištění, že je nahraný soubor dokumentu PDF. Uživatel může mít platný dokument PDF s příponou `.Brochure`, nebo může mít provést bez PDF dokument a je uveden `.pdf` rozšíření. Binární obsah souboru s by bylo potřeba vyšetřit programově více jednoznačně ověří typ souboru. Takové důkladné přístupy, ale jsou často přehnaně; kontroluje se rozšíření stačí pro většinu scénářů.
 
-
 Jak je popsáno v [nahrávání souborů](uploading-files-cs.md) výukový program, musí věnovat pozornost při ukládání souborů do systému souborů, tak tento jeden uživatel s nahrávání nepřepisuje s jinou. Pro účely tohoto kurzu jsme se pokusí použít stejný název jako nahraný soubor. Pokud už existuje soubor v `~/Brochures` adresář se stejným název tohoto souboru, ale můžeme vám připojte číslo na konci dokud nebude nalezen jedinečný název. Například, pokud uživatel nahraje si brožuru o soubor s názvem `Meats.pdf`, ale již existuje soubor s názvem `Meats.pdf` v `~/Brochures` složky, Změníme názvu uloženého souboru `Meats-1.pdf`. Pokud, který existuje, Zkusíme `Meats-2.pdf`, a tak dále, dokud nebude nalezen jedinečný název souboru.
 
 Následující kód používá [ `File.Exists(path)` metoda](https://msdn.microsoft.com/library/system.io.file.exists.aspx) k určení, zda soubor již existuje s názvem zadaného souboru. Pokud ano, bude pokračovat vyzkoušet nové názvy souborů pro brožura, dokud nebude nalezen žádný konflikt.
 
-
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample7.cs)]
 
 Jakmile byl nalezen platný název souboru, soubor je potřeba uložit do systému souborů a prvku ObjectDataSource s `brochurePath``InsertParameter` hodnota musí být aktualizovány tak, aby tento název souboru je zapsána do databáze. Jak jsme viděli v *nahrávání souborů* kurzu se soubor můžete uložit pomocí ovládacího prvku FileUpload s `SaveAs(path)` metody. Chcete-li aktualizovat prvek ObjectDataSource s `brochurePath` parametrů, použijte `e.Values` kolekce.
-
 
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample8.cs)]
 
@@ -204,13 +174,11 @@ K ukládání nahraného obrázku na novém `Categories` záznam, musíme přiř
 
 Zatímco `Categories` tabulky umožňuje `NULL` hodnoty `Picture` sloupec, všechny kategorie aktuálně obsahovat obrázek. Umožní s nutí uživatele zadat obrázek při přidávání nové kategorie prostřednictvím této stránky. Následující kód zkontroluje, ujistěte se, že obrázek je nahraný a má odpovídající rozšíření.
 
-
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample9.cs)]
 
 Tento kód by měl být umístěn *před* kódu z kroku 6 tak, že pokud dojde k potížím s nahrání obrázku, obslužné rutiny události bude ukončen, než si brožuru o soubor se uloží do systému souborů.
 
 Za předpokladu, že příslušný soubor se odeslal, přiřadíte odeslaný binární obsah s hodnota parametru obrázku s následující řádek kódu:
-
 
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample10.cs)]
 
@@ -218,41 +186,33 @@ Za předpokladu, že příslušný soubor se odeslal, přiřadíte odeslaný bin
 
 Pro úplnost je zde `ItemInserting` obslužné rutiny události v celém rozsahu:
 
-
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample11.cs)]
 
 ## <a name="step-8-fixing-thedisplaycategorypictureaspxpage"></a>Krok 8: Oprava`DisplayCategoryPicture.aspx`stránky
 
 Umožňují s využít k otestování rozhraní vkládání a `ItemInserting` obslužná rutina události, který byl vytvořen za posledních několik kroků. Přejděte `UploadInDetailsView.aspx` stránce prostřednictvím prohlížeče a pokus o přidání kategorie, ale vynechejte obrázek nebo zadejte jiné JPG obrázek nebo brožuru – soubor PDF. Ve všech těchto případech se zobrazí chybová zpráva a pracovní postup vložit zrušena.
 
-
 [![Upozornění se zobrazí, pokud je odeslána neplatný typ souboru](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image9.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image15.png)
 
 **Obrázek 9**: Upozornění se zobrazí, pokud je odeslána neplatný typ souboru ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image16.png))
 
-
 Jakmile si ověříte, že stránka vyžaduje obrázek k nahrání a nebude přijímat bez PDF nebo jiných JPG soubory, přidat novou kategorii s platnou obrázek JPG, když si brožuru o pole necháte prázdné. Po kliknutí na tlačítko pro vložení se bude odeslat zpět na stránku a přibude nový záznam `Categories` tabulku s nahraného obrázku s binární obsah uložen přímo v databázi. Prvku GridView se aktualizuje a zobrazí řádek pro nově přidaná kategorie, ale, jak ukazuje obrázek 10 nový obrázek s kategorie nevykreslí správně.
-
 
 [![Novou kategorii s, který není zobrazen obrázek](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image10.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image17.png)
 
 **Obrázek 10**: S novou kategorii není zobrazen obrázek ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image18.png))
 
-
 Důvod se nezobrazí nový obrázek je vzhledem k tomu, `DisplayCategoryPicture.aspx` stránka, která vrací obrázek s zadané kategorie je nakonfigurován ke zpracování rastrové obrázky, které mají hlavičku OLE. Tato hlavička 78 bajtů je odebrána z `Picture` sloupec s binární obsah před jejich odesláním zpět do klienta. Ale soubor .jpg, který jsme nahráli nové kategorie neobsahuje toto záhlaví OLE; Proto budou odebrány z binární data bitové kopie s platný, nezbytné bajtů.
 
 Protože jsou nyní obě rastrové obrázky s hlavičkami OLE a formátu JPG využívá v `Categories` tabulky, musíme aktualizovat `DisplayCategoryPicture.aspx` tak, aby hlavičku OLE odstranění původního osm kategorií a obchází odstranění pro novější záznamy kategorie. V následujícím kurzem prozkoumáme jak aktualizovat stávající záznam s image a aktualizujeme všechny obrázky staré kategorie tak, aby byly formátu JPG využívá. Prozatím se však použijte následující kód v `DisplayCategoryPicture.aspx` k odebrání hlaviček OLE pouze pro tyto původní osm kategorií:
-
 
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample12.cs)]
 
 Díky této změně obrázek JPG je nyní správně vykreslen v prvku GridView.
 
-
 [![Obrázky ve formátu JPG pro nové kategorie jsou vykresleny správně](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image11.gif)](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image19.png)
 
 **Obrázek 11**: Obrázky ve formátu JPG pro nové kategorie jsou vykresleny správně ([kliknutím ji zobrazíte obrázek v plné velikosti](including-a-file-upload-option-when-adding-a-new-record-cs/_static/image20.png))
-
 
 ## <a name="step-9-deleting-the-brochure-in-the-face-of-an-exception"></a>Krok 9: Odstraňuje se si brožuru o i v případě výjimky
 
@@ -261,7 +221,6 @@ Jedním z problémů v systému souborů webového serveru s ukládání binárn
 Nyní, co se stane, pokud se databáze nachází v režimu offline nebo pokud dojde k chybě v `INSERT` příkaz jazyka SQL? Jasně se nezdaří vložit, aby žádný nový řádek kategorie se přidají do databáze. Ale ještě máme si brožuru o nahraný soubor na souborový systém webového serveru s!. Tento soubor je nutné odstranit i v případě výjimku při vkládání pracovního postupu.
 
 Jak je popsáno výše v [zpracování knihoven BLL a výjimek úrovni DAL na stránce ASP.NET](../editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md) kurz, když dojde k výjimce z v rámci hlubin architektura je pronikají do prostřednictvím různých vrstev. V prezentační vrstvě, můžeme určit, pokud došlo k výjimce z prvku DetailsView s `ItemInserted` událostí. Tato obslužná rutina události také poskytuje hodnoty prvku ObjectDataSource s `InsertParameters`. Proto vytvoříme obslužná rutina události `ItemInserted` událost, která zkontroluje, jestli došlo k výjimce a pokud ano, odstraní soubor určený parametrem ObjectDataSource s `brochurePath` parametr:
-
 
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample13.cs)]
 

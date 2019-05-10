@@ -8,12 +8,12 @@ ms.date: 02/27/2014
 ms.assetid: 7ef664b3-1cc8-4cbf-bb18-9f0f3a3ada2b
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/adding-business-logic-layer
 msc.type: authoredcontent
-ms.openlocfilehash: a229ebd71c913f3fe086892786988d0b3e42ec88
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: a824d06d3781e11706f2a48d44ea3ad89bdb7c8b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59411576"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65109161"
 ---
 # <a name="adding-business-logic-layer-to-a-project-that-uses-model-binding-and-web-forms"></a>Přidání vrstvy obchodní logiky do projektu, který používá vazbu modelu a webové formuláře
 
@@ -26,7 +26,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > V tomto kurzu vychází z vytvořeného v projektu [starší](retrieving-data.md) části této série.
 > 
 > Je možné [Stáhnout](https://go.microsoft.com/fwlink/?LinkId=286116) dokončený projekt v jazyce C# nebo VB. Ke stažení kódu funguje pomocí sady Visual Studio 2012 nebo Visual Studio 2013. Používá šablonu Visual Studio 2012, která se trochu liší od sady Visual Studio 2013 šablonu uvedenou v tomto kurzu.
-
 
 ## <a name="what-youll-build"></a>Co budete vytvářet
 

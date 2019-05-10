@@ -8,12 +8,12 @@ ms.date: 06/02/2008
 ms.assetid: fd2a1c52-d717-44af-8a61-67c8279bb26e
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 020f7bbe797a2c04f1ff97ea2056345028f700fb
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 4a3a743eef80d74d37be772ea70ac609028090ee
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59407611"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108446"
 ---
 # <a name="allowing-only-certain-characters-in-a-text-box-c"></a>Povolení určitých znaků v textovém poli (C#)
 
@@ -22,7 +22,6 @@ by [Christian Wenz](https://github.com/wenz)
 [Stáhněte si kód](http://download.microsoft.com/download/4/c/2/4c2def7a-0d23-4055-91f9-1f18504167d7/FilteredTextBox0.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/filteredtextbox0CS.pdf)
 
 > Validačních ovládacích prvků technologie ASP.NET můžete zajistit, že jsou povolené jenom některé znaky ve vstupu uživatele. Ale to stále nezabrání uživatelům zadáte neplatné znaky pokus o odeslání formuláře.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -54,7 +53,6 @@ Tady je zápis `FilteredTextBoxExtender` ovládací prvek, který umožňuje pou
 [!code-aspx[Main](allowing-only-certain-characters-in-a-text-box-cs/samples/sample3.aspx)]
 
 Spustit na stránku a zkuste zadat písmeno, pokud je povolen jazyk JavaScript, nebude fungovat; na stránce se ale zobrazí číslic. Všimněte si však, že ochranu `FilteredTextBox` poskytuje není odrážky testování: Pokud je povolen jazyk JavaScript, žádná data můžete zadat do textového pole, proto je nutné použít další ověřovací prostředky, například ASP. Ovládací prvky ověřování vaší sítě.
-
 
 [![Můžete zadat pouze číslice](allowing-only-certain-characters-in-a-text-box-cs/_static/image2.png)](allowing-only-certain-characters-in-a-text-box-cs/_static/image1.png)
 

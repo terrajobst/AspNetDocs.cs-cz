@@ -8,12 +8,12 @@ ms.date: 04/23/2009
 ms.assetid: 9c31a42f-d8bb-4c0f-9ccc-597d4f70ac42
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b8ec246c2f35f3d7fa5bcf67aa6f157195028176
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 43c6dbdc2155f50e2302b7c8929f378065e2f509
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379518"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65106923"
 ---
 # <a name="configuring-a-website-that-uses-application-services-vb"></a>Konfigurace webu, který používá aplikační služby (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/E/6/F/E6FE3A1F-EE3A-4119-989A-33D1A9F6F6DD/ASPNET_Hosting_Tutorial_09_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/C/3/9/C391A649-B357-4A7B-BAA4-48C96871FEA6/aspnet_tutorial09_AppServicesConfig_vb.pdf)
 
 > Verze technologie ASP.NET 2.0 zavedli řadu aplikační služby, které jsou součástí rozhraní .NET Framework a slouží jako sadu stavebních bloků služby, které vám umožní doplnit celou řadu funkcí do webové aplikace. Tento kurz popisuje, jak nakonfigurovat webovou stránku v provozním prostředí použít aplikačních služeb a řeší běžné problémy se správou uživatelské účty a role na provozním prostředí.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -34,7 +33,6 @@ Verze technologie ASP.NET 2.0 zavedené řadu *aplikačních služeb*, které js
 - **Mapa webu** – rozhraní API pro definování lokality s logickou strukturou v podobě hierarchie, které lze zobrazit pomocí navigační ovládací prvky, jako je například nabídek a s popisem cesty.
 - **Přizpůsobení** – rozhraní API pro udržování vlastní předvolby, se nejčastěji používají [ *WebParts*](https://msdn.microsoft.com/library/e0s9t4ck.aspx).
 - **Monitorování stavu** – rozhraní API pro monitorování výkonu, zabezpečení, chyby a jiné metriky stavu systému pro provozní webové aplikace.
-  
 
 Aplikační služby API nejsou vázané na konkrétní implementaci. Místo toho dáte pokyn aplikační služby, které chcete použít konkrétní *poskytovatele*, a tohoto zprostředkovatele implementuje pomocí konkrétní technologii. Nejčastěji používané zprostředkovatelé pro internetové webové aplikace hostované na webhosting společnosti jsou těchto zprostředkovatelů, které používají implementace databáze systému SQL Server. Například `SqlMembershipProvider` je zprostředkovatele pro členství v rozhraní API, které jsou uloženy informace o uživatelském účtu v databázi Microsoft SQL Server.
 
@@ -42,7 +40,6 @@ Použití aplikačních služeb a systému SQL Server zprostředkovatelů přid�
 
 > [!NOTE]
 > Rozhraní API byly navrženy pomocí aplikační služby [ *modelu poskytovatele*](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx), návrhový vzor, který umožňuje rozhraní API s podrobnosti implementace poskytované v době běhu. Rozhraní .NET Framework se dodává s celou řadou poskytovatelů služeb aplikací, které lze použít, jako `SqlMembershipProvider` a `SqlRoleProvider`, které jsou zprostředkovatelů pro členství a rolí API, která používá SQL Server databáze implementace. Můžete také vytvořit a modulu plug-in vlastního zprostředkovatele. Ve skutečnosti recenzí webové aplikace už obsahuje vlastního zprostředkovatele pro rozhraní API pro mapy webu (`ReviewSiteMapProvider`), což vytvoří mapa webu z dat v `Genres` a `Books` tabulky v databázi.
-
 
 Tento kurz pracuje s podívat, jak můžu rozšířit recenzí webové aplikace pro použití rozhraní API rolí a členství. Potom se provede nasazení webové aplikace, který používá aplikační služby s implementací databáze systému SQL Server a řešení běžných problémů se správou uživatelské účty a role na provozním prostředí, uzavře.
 
@@ -53,7 +50,6 @@ Za posledních několik kurzů, které webové aplikace zkontroluje knihy se akt
 > [!NOTE]
 > Můžu odebrat vytvoří tři uživatelské účty ve webové aplikaci recenzí: Scott, Jisun a Alice. Všechny tři uživatelé mají stejné heslo: **heslo!** Scott a Jisun jsou v roli správce, není Alice. Stránky webu s bez správy jsou stále dostupné pro anonymní uživatele. To znamená, nepotřebujete k přihlášení k webu, pokud chcete spravovat, v takovém případě musíte se přihlásit jako uživatel v roli správce.
 
-
 Aktualizovali jsme stránky předlohy knihy revize aplikace s zahrnout jiného uživatelského rozhraní pro ověřený a anonymní uživatele. Pokud je anonymní uživatel navštíví web marcela vidí odkazu pro přihlášení v pravém horním rohu. Ověřený uživatel se zobrazí se zpráva "Vítejte zpět, *uživatelské jméno*!" a odkaz na odhlášení. Tam s také na přihlašovací stránce (`~/Login.aspx`), která obsahuje ovládací prvek webové přihlášení, která poskytuje uživatelské rozhraní a logiky za účelem ověřování totožnosti návštěvník. Pouze správci mohou vytvářet nové účty. (Nejsou stránky pro vytváření a správa uživatelských účtů v `~/Admin` složky.)
 
 ### <a name="configuring-the-membership-and-roles-apis"></a>Konfigurace členství a rolí rozhraní API
@@ -62,7 +58,6 @@ Webová aplikace recenzí používá členství a rolí rozhraní API pro podpor
 
 > [!NOTE]
 > V tomto kurzu není určen jako podrobné zkoumání v konfiguraci webové aplikace pro podporu rozhraní API rolí a členství. Důkladný rozbor tato rozhraní API a kroky musíte provést konfiguraci webu k jejich použití, přečtěte si prosím Moje [ *kurzy o zabezpečení webu*](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md).
-
 
 Použití aplikačních služeb s databází SQL Server, musíte nejprve přidat databázové objekty používané těchto poskytovatelů pro databáze, místo, kam chcete uživatelský účet a uložené informace o rolích. Tyto objekty požadované databáze zahrnují celou řadu tabulek, zobrazení a uložených procedur. Pokud není uvedeno jinak, `SqlMembershipProvider` a `SqlRoleProvider` třídy zprostředkovatele použití systému SQL Server Express Edition databázi s názvem `ASPNETDB` umístěný v aplikaci s `App_Data` složky; pokud takové databáze buď neexistuje, automaticky se vytvoří s nezbytné databázových objektů pomocí těchto zprostředkovatelů za běhu.
 
@@ -73,7 +68,6 @@ Pokud chcete přidat aplikace databázových objektů do databáze služby jiné
 [!code-xml[Main](configuring-a-website-that-uses-application-services-vb/samples/sample1.xml)]
 
 `Web.config` Soubor s `<authentication>` element je také nakonfigurovaný pro podporu ověřování pomocí formulářů.
-  
 
 [!code-xml[Main](configuring-a-website-that-uses-application-services-vb/samples/sample2.xml)]
 
@@ -100,43 +94,34 @@ Technologie ASP.NET se dodává s nice [ *nástroj pro správu webového serveru
 > [!NOTE]
 > `aspnet_regsql.exe` Nástroj vytvoří databázové objekty v zadané databázi. Se nemigruje data v těchto objektů databáze z databáze vývoje do provozní databáze. Pokud jste v úmyslu kopírovat informace o uživatelském účtu a role databáze vývoje do provozní databáze použijte techniky popsané v *nasazení databáze* kurzu.
 
-
 Umožní s, podívejte se na tom, jak přidat k produkční databázi pomocí databázových objektů `aspnet_regsql.exe` nástroj. Začněte tím, že otevřete Průzkumníka Windows a přejděte k adresáři rozhraní .NET Framework verze 2.0 ve vašem počítači %WINDIR%\ Microsoft.NET\Framework\v2.0.50727. Existuje byste měli najít `aspnet_regsql.exe` nástroj. Tento nástroj se dá použít z příkazového řádku, ale zahrnuje také grafické uživatelské rozhraní; dvakrát klikněte `aspnet_regsql.exe` souboru ke spuštění grafického komponenty.
 
 Nástroj spustí zobrazením úvodní obrazovky s vysvětlením účelu. Klikněte na tlačítko vedle záloh na obrazovku "Vyberte možnost instalace", která je znázorněna na obrázku 1. Odsud můžete přidat databázové objekty aplikační služby nebo je odebrat z databáze. Vzhledem k tomu, že budeme chtít přidat tyto objekty k provozní databázi, vyberte možnost "Konfigurovat SQL Server pro aplikační služby" a klikněte na tlačítko Další.
 
-
 [![Vyberte konfigurace systému SQL Server pro služby aplikací](configuring-a-website-that-uses-application-services-vb/_static/image2.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image1.jpg)
 
 **Obrázek 1**: Nakonfigurujte systém SQL Server se rozhodnete pro aplikační služby ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-a-website-that-uses-application-services-vb/_static/image3.jpg))
-
 
 V "Vyberte do serveru a databázi" obrazovky vyzve k zadání informace pro připojení k databázi. Zadejte databázový server, zabezpečovací přihlašovací údaje a název databáze, který vám poskytne váš webhosting společnosti a klikněte na tlačítko Další.
 
 > [!NOTE]
 > Po zadání vašeho databázového serveru a přihlašovací údaje mohou dojde k chybě při rozšiřování rozevírací seznam databází. `aspnet_regsql.exe` Nástroj pro dotazy `sysdatabases` systémová tabulka načíst seznam databází na serveru, ale některé webové hostování společnosti uzamknutí jejich databázové servery tak, aby tyto informace není veřejně k dispozici. Pokud se zobrazí tato chyba můžete zadat název databáze přímo do rozevíracího seznamu.
 
-
 [![Zadat nástroj s informací o připojení databáze s](configuring-a-website-that-uses-application-services-vb/_static/image5.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image4.jpg)
 
 **Obrázek 2**: Zadat nástroj s databáze s informací o připojení ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-a-website-that-uses-application-services-vb/_static/image6.jpg))
 
-
 Na další obrazovce shrnuje akce, které se chystáte provést, a to, které objekty databáze služeb aplikací se chystáte přidat k zadané databázi. Klikněte na tlačítko vedle dokončení této akce. Po chvíli se zobrazí na poslední obrazovce poznamenat, že databázové objekty byly přidány (servery viz obrázek 3).
-
 
 [![Úspěch! Aplikace služby databázové objekty byly přidány do provozní databáze](configuring-a-website-that-uses-application-services-vb/_static/image8.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image7.jpg)
 
 **Obrázek 3**: Úspěch! Aplikaci služby databáze objekty byly přidány do provozní databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-a-website-that-uses-application-services-vb/_static/image9.jpg))
 
-
 Pokud chcete ověřit, že aplikace služby databázové objekty byly úspěšně přidány do provozní databáze, otevřete SQL Server Management Studio a připojte se k provozní databázi. Jak je vidět na obrázku 4, měli byste vidět tabulky databáze služeb aplikací ve vaší databázi `aspnet_Applications`, `aspnet_Membership`, `aspnet_Users`a tak dále.
-
 
 [![Potvrďte, že databázové objekty byly přidány do provozní databáze](configuring-a-website-that-uses-application-services-vb/_static/image11.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image10.jpg)
 
 **Obrázek 4**: Potvrďte, že databázové objekty byly přidány do provozní databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-a-website-that-uses-application-services-vb/_static/image12.jpg))
-
 
 Je potřeba jenom použít `aspnet_regsql.exe` nástroj při nasazení webové aplikace poprvé nebo poprvé po spuštění služby aplikace. Jakmile tyto databázové objekty na provozní databázi, kterou nebudete muset znovu přidat ani upravit.
 
@@ -152,7 +137,6 @@ Ale co se stane, když `applicationName` atribut není zadán v `Web.config`? V 
 
 > [!NOTE]
 > Pokud se v této situaci – s uživatelskými účty, které jsou zkopírovány do ostrého provozu neshodný `ApplicationId` hodnota – můžete napsat dotaz k aktualizaci těchto nesprávné `ApplicationId` hodnoty `ApplicationId` používat v produkčním prostředí. Po aktualizaci uživatele, jejichž účty byly vytvořeny ve vývojovém prostředí teď bude moct přihlásit do webové aplikace v produkčním prostředí.
-
 
 Dobrou zprávou je, že je jednoduchý krok můžete provést k zajištění, že dvě prostředí použít stejné `ApplicationId` – je explicitně nastaveno `applicationName` atribut `Web.config` pro všech zprostředkovatelů služby vaší aplikace. Explicitně nastavit `applicationName` atribut na "BookReviews" `<membership>` a `<roleManager>` prvky jako tento fragment kódu z `Web.config` ukazuje.
 
@@ -171,11 +155,9 @@ Připomínáme, že starší kurz aktualizovali webovou aplikaci recenzí zahrno
 > [!NOTE]
 > Pro další informace o použití rozhraní API rolí a členství spolu s ovládacích prvků technologie ASP.NET související s přihlášením, nezapomeňte si přečíst Moje [ *kurzy o zabezpečení webu*](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md). Další informace o přizpůsobení ovládacího prvku CreateUserWizard najdete [ *vytváření uživatelských účtů* ](../../older-versions-security/membership/creating-user-accounts-vb.md) a [ *ukládání Další informace o uživateli* ](../../older-versions-security/membership/storing-additional-user-information-vb.md) kurzy nebo rezervace [ *Erich Peterson* ](http://www.erichpeterson.com/) článku s [ *přizpůsobení ovládacího prvku CreateUserWizard* ](http://aspnet.4guysfromrolla.com/articles/070506-1.aspx).
 
-
 [![Správci mohou vytvářet nové uživatelské účty](configuring-a-website-that-uses-application-services-vb/_static/image14.jpg)](configuring-a-website-that-uses-application-services-vb/_static/image13.jpg)
 
 **Obrázek 5**: Správci mohou vytvářet nové uživatelské účty ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-a-website-that-uses-application-services-vb/_static/image15.jpg))
-
 
 Pokud je nutné úplné funkce aplikace WSAT rezervaci [ *se zajištěním provozu svůj vlastní nástroj pro správu webu*](http://aspnet.4guysfromrolla.com/articles/052307-1.aspx), ve které autor Dan Clem vás provede procesem vytváření vlastního nástroje WSAT jako. DaN sdílené složky zdrojového kódu s jeho aplikace (v jazyce C#) a poskytuje podrobné pokyny pro přidání do vašeho prostředí webu.
 

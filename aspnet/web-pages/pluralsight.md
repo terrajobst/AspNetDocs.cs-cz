@@ -8,15 +8,14 @@ ms.date: 05/18/2012
 ms.assetid: 79eca52c-e7ad-44ab-a3e4-d8093e9da5a7
 msc.legacyurl: /web-pages/pluralsight
 msc.type: content
-ms.openlocfilehash: 78e4d3aedd183e8ec91a8c833e4b60894ae214ec
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 5485b68f8ed87952a6d09e1880e6d8ce39eea73a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59401189"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108572"
 ---
 # <a name="webmatrix-and-web-pages-video-training-from-pluralsight"></a>Videokurz o nástroji WebMatrix a webových stránkách od společnosti Pluralsight
-
 
 > [!NOTE] 
 > Služba WebMatrix už nedoporučuje jako integrované vývojové prostředí pro ASP.NET Web Pages. Použití [sady Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).
@@ -32,11 +31,9 @@ ms.locfileid: "59401189"
 - [Správa zdrojového kódu](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m9&mode=live&clip=0&course=webmatrix-introduction)
 - [Mobilní weby](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m10&mode=live&clip=0&course=webmatrix-introduction)
 
-
 "Tento kurz zaznamenaných Matt Milner pro Pluralsight je skvělý způsob, jak získat všechny podrobnosti, které je potřeba vytvořit dynamické datově řízené aplikace využívající rozhraní ASP.NET Web Pages, ale také výkonnou novou syntaxi Razor. Velké objemy díky Pluralsight pro tento zdroj zdarma! Přehrávač videa, obsah a tok je velice dobře Hotovo. Neváhejte se teď podívat!"
 
 Scott Hanselman, hlavní manažer programu, webová platforma a nástroje Azure, Microsoft
-
 
 ![pluralsight-logo-playbutton](pluralsight/_static/image1.png)
 

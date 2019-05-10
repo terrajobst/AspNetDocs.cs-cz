@@ -8,19 +8,18 @@ ms.date: 02/20/2005
 ms.assetid: 78fd0e92-f9c6-4e96-a5e9-0375b307a828
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/data-source-controls
 msc.type: authoredcontent
-ms.openlocfilehash: 3ba9fdaaf655f6510d3ebf6ce0930fbf4000add3
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: a2e2cfbec3e5aebf42a2de30bab7d45b4b610298
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59388865"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65109564"
 ---
 # <a name="data-source-controls"></a>Ovládací prvky zdroje dat
 
 by [Microsoft](https://github.com/microsoft)
 
 > DataGrid – ovládací prvek technologie ASP.NET 1.x označené skvělé zlepšení v přístupu k datům ve webových aplikacích. Však nebyl jako uživatelsky přívětivé, jako by byly. Stále vyžaduje značné množství kódu, který z něj získat mnoho užitečných funkcí. Například je model v všechna data access přejeme v 1.x.
-
 
 DataGrid – ovládací prvek technologie ASP.NET 1.x označené skvělé zlepšení v přístupu k datům ve webových aplikacích. Však nebyl jako uživatelsky přívětivé, jako by byly. Stále vyžaduje značné množství kódu, který z něj získat mnoho užitečných funkcí. Například je model v všechna data access přejeme v 1.x.
 
@@ -30,7 +29,6 @@ Ovládací prvky zdroje dat k dispozici žádné uživatelské rozhraní. Jsou i
 
 > [!NOTE]
 > Jak uvidíte později, že jsou také ukládání do mezipaměti výhody získat pomocí ovládací prvky zdroje dat.
-
 
 ## <a name="storing-connection-strings"></a>Ukládání připojovacích řetězců
 
@@ -42,7 +40,6 @@ Následující fragment kódu přidá nový připojovací řetězec.
 
 > [!NOTE]
 > Stejně jako u &lt;appSettings&gt; části &lt;connectionStrings&gt; mimo se zobrazí část &lt;system.web&gt; oddílu v konfiguračním souboru.
-
 
 Pokud chcete použít tento připojovací řetězec, můžete použijte následující syntaxi, při nastavení atributu ConnectionString serverového ovládacího prvku.
 
@@ -81,7 +78,6 @@ Pokud chcete používat ve třídě SqlDataSource, jednoduše zadejte hodnotu pr
 > [!NOTE]
 > Protože třída DataSourceControl automaticky uzavře spojení za vás, by měla snížit počet volání zákazníka generovaných nevrácení připojení k databázi.
 
-
 Následující fragment kódu váže ovládací prvek DropDownList s ovládacím prvkem SqlDataSource pomocí připojovacího řetězce, která je uložena v konfiguračním souboru, jak je znázorněno výše.
 
 [!code-aspx[Main](data-source-controls/samples/sample3.aspx)]
@@ -90,7 +86,6 @@ Jak je znázorněno výše, určuje vlastnost DataSourceMode ve třídě SqlData
 
 > [!NOTE]
 > Při ukládání do mezipaměti SqlDataSource nebo prvku AccessDataSource, vlastnost DataSourceMode je nastavena na hodnotu DataSet. Pokud povolíte ukládání do mezipaměti s DataSourceMode DataReader dojde k vyvolání výjimky.
-
 
 ## <a name="sqldatasource-properties"></a>Vlastnosti SqlDataSource
 
@@ -162,7 +157,6 @@ Prvku AccessDataSource ProviderName základní SqlDataSource bude vždycky nasta
 
 > [!NOTE]
 > Accessové databáze, které jsou uloženy v rámci tohoto webu musí být umístěné ve aplikace\_datový adresář. ASP.NET nebude povolovat ukládání souborů do tohoto adresáře, které budete procházet. Budete muset udělit oprávnění ke čtení a zápis do ní účet procesu\_adresář dat při použití databáze aplikace Access.
-
 
 ## <a name="the-xmldatasource-control"></a>Ovládací prvek XmlDataSource
 

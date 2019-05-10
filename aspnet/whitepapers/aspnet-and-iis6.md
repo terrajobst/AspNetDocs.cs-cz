@@ -8,19 +8,18 @@ ms.date: 02/10/2010
 ms.assetid: 5a5537bf-2aaa-49e7-839f-9e6522b829d8
 msc.legacyurl: /whitepapers/aspnet-and-iis6
 msc.type: content
-ms.openlocfilehash: dbdf6d2815a05465b0ffb7bb322c9f80af13a251
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2e7812f34481afe9a71927c0d9ba2a9abc9632e4
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59405154"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65106795"
 ---
 # <a name="running-aspnet-11-with-iis-60"></a>Spuštění ASP.NET 1.1 se službou IIS 6.0
 
 > Sice systému Windows Server 2003, zahrnuje službu IIS 6.0 a ASP.NET 1.1, jsou ve výchozím nastavení zakázané tyto komponenty. Tento dokument White Paper popisuje postup při povolování služby IIS 6.0 a ASP.NET 1.1 a doporučuje několik nastavení konfigurace, abyste získali optimální výkon služby IIS a ASP.NET.
 > 
 > Platí pro technologii ASP.NET 1.1 a IIS 6.0.
-
 
 ASP.NET 1.1 se dodává se systémem Windows Server 2003, který taky obsahuje nejnovější verzi nástroje Internet Information Server (IIS) verze 6.0. Služba IIS 6.0 a ASP.NET 1.1 jsou navržené tak bez problémů integrovat a ASP.NET výchozí nastavení pro nový model procesu pracovního procesu služby IIS 6.0.
 

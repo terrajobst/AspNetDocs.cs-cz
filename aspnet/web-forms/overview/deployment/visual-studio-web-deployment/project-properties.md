@@ -8,12 +8,12 @@ ms.date: 02/15/2013
 ms.assetid: ec1cec4c-a75f-47af-a2ba-b1e2f971d24b
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/project-properties
 msc.type: authoredcontent
-ms.openlocfilehash: 464146bc8af5cf978902a3e634398ed3f8d15404
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e17155317e484c8efdf87a1598fb2795b1619587
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400045"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65109639"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-project-properties"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Vlastnosti projektu
 
@@ -22,7 +22,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 [Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
 > V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, s použitím sady Visual Studio 2012 nebo Visual Studio 2010. Informace o této sérii, naleznete v tématu [z prvního kurzu této série](introduction.md).
-
 
 ## <a name="overview"></a>Přehled
 

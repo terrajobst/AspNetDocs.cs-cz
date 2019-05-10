@@ -8,12 +8,12 @@ ms.date: 03/31/2010
 ms.assetid: 67b25f4c-2823-42b6-b07d-1d650b3fd711
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 268403a7b832596421120a24c64580f63eb987c3
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ae21259a14378ea6b41f5d45cf2cac6954175dfa
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59383870"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65109107"
 ---
 # <a name="using-the-formviews-templates-vb"></a>Pomocí šablony ovládacího prvku FormView (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/5/7/0/57084608-dfb3-4781-991c-407d086e2adc/ASPNET_Data_Tutorial_14_VB.exe) nebo [stahovat PDF](using-the-formview-s-templates-vb/_static/datatutorial14vb1.pdf)
 
 > Na rozdíl od ovládacím prvku DetailsView FormView se skládá z polí. Místo toho FormView je vykreslen pomocí šablony. V tomto kurzu, kterou prozkoumáme pomocí ovládacího prvku FormView prezentovat méně od rigidních zobrazovat data.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -39,21 +38,17 @@ Na rozdíl od ovládacím prvku DetailsView FormView se skládá z polí. Vlastn
 
 V tomto kurzu, kterou prozkoumáme pomocí ovládacího prvku FormView prezentovat méně od rigidních zobrazení produktů. Místo generování pole pro název, kategorie, dodavatele a tak dále, třídě FormView společnosti `ItemTemplate` zobrazí tyto hodnoty pomocí kombinace header element a `<table>` (viz obrázek 1).
 
-
 [![Dělí FormView rozložení mřížky v ovládacím prvku DetailsView.](using-the-formview-s-templates-vb/_static/image2.png)](using-the-formview-s-templates-vb/_static/image1.png)
 
 **Obrázek 1**: FormView rozdělí Grid-Like rozložení viděli v ovládacím prvku DetailsView ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-formview-s-templates-vb/_static/image3.png))
-
 
 ## <a name="step-1-binding-the-data-to-the-formview"></a>Krok 1: Vytvoření vazby dat na třídě FormView
 
 Otevřít `FormView.aspx` stránku a přetáhněte z panelu nástrojů do návrháře FormView. Při prvním přidání FormView se zobrazí jako šedé pole, že nám, které `ItemTemplate` je potřeba.
 
-
 [![FormView nelze vytvořit v návrháři, dokud nebude poskytnuta šablona ItemTemplate](using-the-formview-s-templates-vb/_static/image5.png)](using-the-formview-s-templates-vb/_static/image4.png)
 
 **Obrázek 2**: FormView nelze vytvořit v Návrháři až `ItemTemplate` je k dispozici ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-formview-s-templates-vb/_static/image6.png))
-
 
 `ItemTemplate` Lze vytvořit ručně (pomocí deklarativní syntaxe) nebo může být automaticky vytvořený ve třídě FormView vytvoření vazby na ovládací prvek zdroje dat pomocí návrháře. To automaticky vytvořený `ItemTemplate` obsahuje kód HTML, zobrazí název jednotlivých polí a popisek ovládací prvek, jehož `Text` vlastnost je vázána na hodnotu pole. Tento přístup také automaticky vytvoří `InsertItemTemplate` a `EditItemTemplate`, které plní vstupní ovládací prvky pro každé pole dat vrácených ovládací prvek zdroje dat.
 
@@ -62,7 +57,6 @@ Pokud chcete automaticky vytvořit šablonu, z ovládacího prvku FormView intel
 Pokud byste raději `ItemTemplate` ručně, můžete přidat a nakonfigurovat ObjectDataSource jeho přetažením z panelu nástrojů do návrháře. Však nemají nastavený zdroj dat třídy FormView z návrháře. Místo toho přejděte na zobrazení zdroje a ručně nastavte ovládacího prvku FormView `DataSourceID` vlastnost `ID` hodnotu ObjectDataSource. V dalším kroku ručně přidejte `ItemTemplate`.
 
 Bez ohledu na to, jaký přístup jste se rozhodli využít, v tuto chvíli vašeho ovládacího prvku FormView deklarativní by měl vypadat:
-
 
 [!code-aspx[Main](using-the-formview-s-templates-vb/samples/sample1.aspx)]
 
@@ -76,7 +70,6 @@ Tento kód lze zadat v rozhraní úprav ovládacího prvku FormView šablona v N
 
 Následující kód ukazuje FormView deklarativní po `ItemTemplate`pro strukturu se dokončila:
 
-
 [!code-aspx[Main](using-the-formview-s-templates-vb/samples/sample2.aspx)]
 
 Všimněte si, že syntaxe databinding – `<%# Eval("ProductName") %>`pro příklad můžete vloží přímo do výstupu šablony. To znamená, nemusí být přiřazené na ovládací prvek Label `Text` vlastnost. Například máme `ProductName` hodnoty zobrazené v `<h3>` prvku pomocí `<h3><%# Eval("ProductName") %></h3>`, které pro produkt se zobrazí takto Chai `<h3>Chai</h3>`.
@@ -87,16 +80,13 @@ Vzhledem k tomu, aby bylo možné zobrazit nejsou k dispozici s FormView, žádn
 
 S `ItemTemplate` dokončení se zobrazí informace o produktu mnohem více plynulé způsobem. Porovnejte prvku DetailsView. výstup z poslední kurz (obrázek 3) s výstupem ve třídě FormView generována v tomto kurzu (obrázek 4).
 
-
 [![Od Rigidních výstup prvku DetailsView.](using-the-formview-s-templates-vb/_static/image8.png)](using-the-formview-s-templates-vb/_static/image7.png)
 
 **Obrázek 3**: Od Rigidních výstup prvku DetailsView ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-formview-s-templates-vb/_static/image9.png))
 
-
 [![Plynulé výstup FormView](using-the-formview-s-templates-vb/_static/image11.png)](using-the-formview-s-templates-vb/_static/image10.png)
 
 **Obrázek 4**: Výstup FormView dynamiky ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-formview-s-templates-vb/_static/image12.png))
-
 
 ## <a name="summary"></a>Souhrn
 

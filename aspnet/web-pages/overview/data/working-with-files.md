@@ -8,12 +8,12 @@ ms.date: 02/20/2014
 ms.assetid: eee916e4-ba4c-439a-a24e-68df7d45a569
 msc.legacyurl: /web-pages/overview/data/working-with-files
 msc.type: authoredcontent
-ms.openlocfilehash: 4a62cce3af57b507882744f948ce208becdb03ac
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 3ff852232212ddda4930597731911be60c092667
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59382300"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108950"
 ---
 # <a name="working-with-files-in-an-aspnet-web-pages-razor-site"></a>Práce se soubory na webu rozhraní ASP.NET Web Pages (Razor)
 
@@ -48,7 +48,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 >   
 > 
 > V tomto kurzu funguje taky pomocí služby WebMatrix 3.
-
 
 <a id="Creating_a_Text_File"></a>
 ## <a name="creating-a-text-file-and-writing-data-to-it"></a>Textový soubor a zapíše Data do ní
@@ -145,7 +144,6 @@ Tento postup ukazuje, jak číst a zobrazení dat, který jste vytvořili v pře
 > 
 > Aplikace Microsoft Excel můžete použít k uložení dat obsažených v tabulce jako soubor CSV (*CSV* souboru). Když použijete, je soubor uložen ve formátu prostého textu, není ve formátu aplikace Excel. Každý řádek v tabulce jsou oddělené oddělovačem zalomení řádku textového souboru a jednotlivých datových položek je oddělit je čárkami. Kód zobrazený v předchozím příkladu můžete použít ke čtení Excelového souboru CSV jenom tak, že změníte název datového souboru ve vašem kódu.
 
-
 <a id="Deleting_Files"></a>
 ## <a name="deleting-files"></a>Odstraňování souborů
 
@@ -154,7 +152,6 @@ Chcete-li odstranit soubory z vašeho webu, můžete použít `File.Delete` meto
 > [!NOTE] 
 > 
 > **Důležité** do produkční webové stránky, obvykle omezíte kdo má povoleno provádět změny na data. Informace o tom, jak nastavit členství a způsoby, jak autorizovat uživatele k provádění úloh na webu, naleznete v tématu [přidání zabezpečení a s členstvím na server webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202904).
-
 
 1. Na webu vytvořte podsložku s názvem *image*.
 2. Zkopírujte jeden nebo více *.jpg* soubory do *imagí* složky.
@@ -255,7 +252,6 @@ V předchozím příkladu můžete umožnit uživatelům nahrát jeden soubor. A
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Další prostředky
-
 
 [Práce s obrázky na webu rozhraní ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=202897)
 

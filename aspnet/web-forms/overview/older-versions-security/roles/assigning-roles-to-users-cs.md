@@ -8,12 +8,12 @@ ms.date: 03/24/2008
 ms.assetid: d522639a-5aca-421e-9a76-d73f95607f57
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/assigning-roles-to-users-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 93a0af00d9e32e044f408a1ca8a2cea73e906d66
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 482460248fb070b273c1ff97515152cacf66dbce
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59380278"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108693"
 ---
 # <a name="assigning-roles-to-users-c"></a>Přiřazení rolí uživatelům (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/6/0/3/6032582f-360d-4739-b935-38721fdb86ea/CS.10.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/0/3/6032582f-360d-4739-b935-38721fdb86ea/aspnet_tutorial10_AssigningRoles_cs.pdf)
 
 > V tomto kurzu vytvoříme dvě stránky technologie ASP.NET pro pomoc se správou, které uživatelé patří do rolích. První stránka bude obsahovat zařízení, pokud chcete zobrazit, co uživatelé patří do dané role, ke kterým rolím konkrétní uživatel patří do a možnost přiřazení nebo odebrání určitého uživatele z určité role. Na druhé stránce jsme se rozšířit ovládacím prvku CreateUserWizard tak, že obsahují krok k určení, jaké role nově vytvořený uživatel patří. To je užitečné v situacích, kde je možné vytvořit nové uživatelské účty správce.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -43,7 +42,6 @@ Začneme s vytvářením rozhraní "uživatelem". Toto rozhraní se skládají z
 > [!NOTE]
 > Pomocí rozevíracího seznamu pro seznam uživatelských účtů není ideální volbou pro websites tam, kde může být stovky uživatelských účtů. Rozevírací seznam je navržena k umožnění uživateli vybrat jednu z položek v poměrně krátké seznam možností. To rychle nepraktický roste počet položek seznamu. Pokud sestavujete web, který bude mít potenciálně velkého počtu uživatelských účtů, můžete zvážit použití alternativní uživatelským rozhraním, jako je stránkované GridView nebo filterable rozhraní, které jsou uvedeny vyzve návštěvníka zvolit písmenem a pak pouze zobrazí uživatelé, jejichž uživatelské jméno začíná vybrané písmeno.
 
-
 ## <a name="step-1-building-the-by-user-user-interface"></a>Krok 1: Vytvoření uživatelského rozhraní "Uživatelem"
 
 Otevřít `UsersAndRoles.aspx` stránky. V horní části stránky, přidejte ovládací prvek popisek Web s názvem `ActionStatus` a vymažte její `Text` vlastnost. Tento popisek použije k poskytnutí zpětné vazby na akce prováděné, zobrazování zpráv, jako jsou, "Tito uživatele byl přidán do Administrators role" nebo "Jisun uživatele byl odebrán z role správců." Pokud chcete tyto zprávy odlišit, nastavte jeho `CssClass` vlastnost "Důležitá".
@@ -56,11 +54,9 @@ Dále přidejte následující definice třídy šablony stylů CSS do `Styles.c
 
 Tato definice šablony stylů CSS dostane pokyn, aby zobrazení pomocí velké, červenou písma popisku. Obrázek 1 ukazuje tento efekt prostřednictvím návrháře Visual Studio.
 
-
 [![Vlastnosti popisku CssClass výsledkem písmo velké, Red](assigning-roles-to-users-cs/_static/image2.png)](assigning-roles-to-users-cs/_static/image1.png)
 
 **Obrázek 1**: Jmenovky `CssClass` vlastnost za následek velký, písmo Red ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image3.png))
-
 
 Dále přidejte DropDownList na stránku, nastavte jeho `ID` vlastnost `UserList`a nastavte jeho `AutoPostBack` vlastnost na hodnotu True. Použijeme tuto DropDownList seznam všech uživatelů v systému. Tato DropDownList bude vázán k kolekce objektů MembershipUser. Protože chceme, aby DropDownList zobrazit Vlastnost UserName objekt MembershipUser (a použít ji jako hodnotu položky seznamu), nastavte DropDownList `DataTextField` a `DataValueField` vlastnosti "UserName".
 
@@ -83,7 +79,6 @@ Nyní jsme připraveni napsat kód k vytvoření vazby sadu uživatelských úč
 > [!NOTE]
 > `Membership.GetAllUsers` Metoda má dvě přetížení: jednu, která nepřijímá žádné vstupní parametry a vrátí všechny uživatele a jednu, která přijímá celočíselné hodnoty pro index stránky a velikost stránky a vrátí pouze zadaný dílčí sadu uživatelů. Když existuje velké množství uživatelské účty se zobrazí v prvku stránkované uživatelského rozhraní, druhé přetížení lze efektivněji procházení uživatele vzhledem k tomu, že vrátí jenom přesné podmnožině uživatelské účty a ne všechny z nich.
 
-
 `BindRolesToList` Metoda začíná voláním `Roles` třídy [ `GetAllRoles` metoda](https://msdn.microsoft.com/library/system.web.security.roles.getallroles.aspx), která vrací pole řetězců obsahující role v systému. Tato pole řetězců je pak vázán na opakovače.
 
 Nakonec musíme tyto dvě metody volat při prvním načtení stránky. Přidejte následující kód, který `Page_Load` obslužné rutiny události:
@@ -92,11 +87,9 @@ Nakonec musíme tyto dvě metody volat při prvním načtení stránky. Přidejt
 
 S tímto kódem na místě věnujte chvíli najdete na stránce prostřednictvím prohlížeče; vaše obrazovka by měla vypadat podobně jako na obrázku 2. Všechny uživatelské účty, naplní se v rozevíracím seznamu a pod, každá role se zobrazí jako zaškrtávací políčko. Protože jsme nastavili `AutoPostBack` vlastnosti DropDownList a vlastnost CheckBoxes na hodnotu True, změna vybraného uživatele nebo kontrola nebo zrušíte zaškrtnutí role vyvolá zpětné volání. Neprovede se žádná akce, ale protože musíme ještě napište kód pro zpracování těchto akcí. Jsme budete řešit tyto úlohy v následujících dvou částech.
 
-
 [![Na stránce zobrazí uživatelé a role](assigning-roles-to-users-cs/_static/image5.png)](assigning-roles-to-users-cs/_static/image4.png)
 
 **Obrázek 2**: Na stránce zobrazí uživatelé a role ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image6.png))
-
 
 ### <a name="checking-the-roles-the-selected-user-belongs-to"></a>Kontrola role vybraného uživatele patří do
 
@@ -108,7 +101,6 @@ Výše uvedený kód spustí tak, že určíte, který je vybraný uživatel. Pa
 
 > [!NOTE]
 > `selectedUserRoles.Contains<string>(...)` Syntaxe nebude kompilovat, pokud používáte technologii ASP.NET verze 2.0. `Contains<string>` Metoda je součástí [LINQ knihovny](http://en.wikipedia.org/wiki/Language_Integrated_Query), což je nová technologie ASP.NET 3.5. Pokud stále používáte technologii ASP.NET verze 2.0, použijte [ `Array.IndexOf<string>` metoda](https://msdn.microsoft.com/library/eha9t187.aspx) místo.
-
 
 `CheckRolesForSelectedUser` Metoda musí být volána ve dvou případech: při prvním načtení stránky a pokaždé, když `UserList` změně vybraného indexu DropDownList společnosti. Proto volání této metody z `Page_Load` obslužné rutiny události (po volání `BindUsersToUserList` a `BindRolesToList`). Také, vytvořit obslužnou rutinu události pro DropDownList `SelectedIndexChanged` událostí a volání této metody z něj.
 
@@ -134,19 +126,15 @@ Výše uvedený kód spustí programově odkazováním na zaškrtávací políč
 
 Za chvíli otestovat na této stránce prostřednictvím prohlížeče. Vyberte uživatele Tito a pak přidejte Tito do role správců a správců.
 
-
 [![Byla přidána tito správci a správci rolí](assigning-roles-to-users-cs/_static/image8.png)](assigning-roles-to-users-cs/_static/image7.png)
 
 **Obrázek 3**: Byla přidána tito správci a správci rolí ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image9.png))
 
-
 V dalším kroku vyberte uživatele Bruce z rozevíracího seznamu. Je zpětné volání a zaškrtávací políčka Repeateru jsou aktualizovány pomocí `CheckRolesForSelectedUser`. Protože Bruce zatím nepatří k žádné roli, nekontrolované dvě zaškrtávací políčka. V dalším kroku přidejte Bruce k roli správců.
-
 
 [![Bruce byl přidán do Role správců](assigning-roles-to-users-cs/_static/image11.png)](assigning-roles-to-users-cs/_static/image10.png)
 
 **Obrázek 4**: Bruce byl přidán do Role správců ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image12.png))
-
 
 Provést ještě další ověření funkce `CheckRolesForSelectedUser` metoda, vyberte uživatele, než jsou Tito a Bruce. Všimněte si, jak jsou automaticky není zaškrtnuto zaškrtávací políčka, které označuje, že nepatří k žádné roli. Vraťte se do Tito. Zaškrtávací políčka správců a správců by měly být porovnány.
 
@@ -166,11 +154,9 @@ Potřebujeme k naplnění `RoleList` DropDownList s sadu rolí v systému. Pokud
 
 Poslední dva řádky v `BindRolesToList` metoda byly přidány do sadu rolí pro vytvoření vazby `RoleList` ovládací prvek DropDownList. Obrázek 5 ukazuje konečný výsledek při prohlížení prostřednictvím prohlížeče – v rozevíracím seznamu vyplní rolí v systému.
 
-
 [![Role se zobrazí v RoleList DropDownList](assigning-roles-to-users-cs/_static/image14.png)](assigning-roles-to-users-cs/_static/image13.png)
 
 **Obrázek 5**: Role se zobrazí v `RoleList` DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image15.png))
-
 
 ### <a name="displaying-the-users-that-belong-to-the-selected-role"></a>Zobrazení, které patří k vybrané roli uživatele
 
@@ -186,11 +172,9 @@ Tato metoda musí být volána ve dvou případech: při počátečním načten�
 
 S tímto kódem na místě `RolesUserList` GridView zobrazeno uživatelům, kteří patří do vybrané roli. Jak je vidět na obrázku 6, se skládá z dva členy role správců: Bruce a Tito.
 
-
 [![Uvádí uživatele, kteří patří do vybrané Role prvku GridView.](assigning-roles-to-users-cs/_static/image17.png)](assigning-roles-to-users-cs/_static/image16.png)
 
 **Obrázek 6**: Prvku GridView uvádí ty uživatelů, patří do vybrané Role ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image18.png))
-
 
 ### <a name="removing-users-from-the-selected-role"></a>Odstraňují se uživatelé z vybrané Role.
 
@@ -198,11 +182,9 @@ Můžeme rozšířit `RolesUserList` GridView tak, že obsahují sloupec "Remove
 
 Začněte přidáním pole tlačítko Odstranit do prvku GridView. Ujistěte se, toto pole se zobrazí jako archivované nejvíce vlevo a změnit jeho `DeleteText` vlastnost "Odebrat" z "Odstranit" (výchozí).
 
-
 [![Přidat](assigning-roles-to-users-cs/_static/image20.png)](assigning-roles-to-users-cs/_static/image19.png)
 
 **Obrázek 7**: Přidání tlačítka "Odebrat" do prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image21.png))
-
 
 Po kliknutí na tlačítko "Remove" vyplývá zpětné volání a prvku GridView `RowDeleting` událost se vyvolá. Potřebujeme vytvořit obslužnou rutinu události pro tuto událost a napsat kód, který odebere uživatele z vybrané role. Vytvořte obslužnou rutinu události a pak přidejte následující kód:
 
@@ -213,14 +195,11 @@ Kód spustí tak, že určíte název vybrané role. Následně prostřednictví
 > [!NOTE]
 > Pomocí tlačítka "Odebrat" nevyžaduje, aby jakýkoli druh potvrzení od uživatele před odebráním uživatele z role. Můžu pozvat k přidání určitou úroveň potvrzení uživatelem. Jedním z nejjednodušších způsobů k potvrzení akce je prostřednictvím dialogového okna potvrdit na straně klienta. Další informace o této techniky najdete v tématu [přidání Client-Side potvrzení při odstraňování](https://asp.net/learn/data-access/tutorial-42-cs.aspx).
 
-
 Obrázek 8 ukazuje na stránku, jakmile uživatel Tito byl odebrán ze skupiny správců.
-
 
 [![Jenže Tito už není nadřízeným](assigning-roles-to-users-cs/_static/image23.png)](assigning-roles-to-users-cs/_static/image22.png)
 
 **Obrázek 8**: Jenže Tito už není nadřízeným ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image24.png))
-
 
 ### <a name="adding-new-users-to-the-selected-role"></a>Přidání nových uživatelů do vybrané Role.
 
@@ -241,22 +220,17 @@ Většina kódu v `Click` obslužná rutina události provádí různé ověřov
 > [!NOTE]
 > Pokud chcete mít jistotu, že zadaný uživatel již nepatří do vybrané role, používáme [ `Roles.IsUserInRole(userName, roleName)` metoda](https://msdn.microsoft.com/library/system.web.security.roles.isuserinrole.aspx), která vrací logickou hodnotu označující, zda *uživatelské jméno* je členem skupiny *roleName*. Použijeme tuto metodu znovu v <a id="_msoanchor_2"> </a> [další kurz](role-based-authorization-cs.md) když se podíváme na ověřování na základě rolí.
 
-
 Na stránce prostřednictvím prohlížeče a vyberte roli správců z `RoleList` DropDownList. Zkuste zadat neplatné uživatelské jméno – měla zobrazit zpráva s vysvětlením, že uživatel neexistuje v systému.
-
 
 [![Nelze přidat neexistující uživatele k roli](assigning-roles-to-users-cs/_static/image26.png)](assigning-roles-to-users-cs/_static/image25.png)
 
 **Obrázek 9**: Nelze přidat neexistující uživatele k roli ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image27.png))
 
-
 Nyní přidejte platného uživatele. Pokračujte a znovu přidejte Tito do role správců.
-
 
 [![Tito je opět Supervisor!](assigning-roles-to-users-cs/_static/image29.png)](assigning-roles-to-users-cs/_static/image28.png)
 
 **Obrázek 10**: Tito je opět Supervisor!  ([Kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image30.png))
-
 
 ## <a name="step-3-cross-updating-the-by-user-and-by-role-interfaces"></a>Krok 3: Aktualizuje se mezi "User" a "Role" rozhraní
 
@@ -289,11 +263,9 @@ Otevřít `CreateUserWizardWithRoles.aspx` stránce a přidání ovládacího pr
 
 V dalším kroku vyberte "Přidat nebo odebrat `WizardSteps`..." z inteligentních značek CreateUserWizard a přidejte nový `WizardStep`a nastavte jeho `ID` k `SpecifyRolesStep`. Přesunout `SpecifyRolesStep WizardStep` tak, že jde o za krok "Sign k svůj nový účet", ale před krokem "Dokončených". Nastavte `WizardStep`společnosti `Title` vlastnost rolím"zadejte", jeho `StepType` vlastnost `Step`a jeho `AllowReturn` vlastnost na hodnotu False.
 
-
 [![Přidat](assigning-roles-to-users-cs/_static/image32.png)](assigning-roles-to-users-cs/_static/image31.png)
 
 **Obrázek 11**: Přidání "Zadejte rolí" `WizardStep` k CreateUserWizard ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image33.png))
-
 
 Po této změně vašeho CreateUserWizard deklarativní by měl vypadat nějak takto:
 
@@ -317,27 +289,21 @@ Pokud uživatel právě dosáhl krok "Dokončeno", obslužná rutina události v
 
 Navštivte tuto stránku prostřednictvím prohlížeče. Prvním krokem při CreateUserWizard je standardní krok "Sign k svůj nový účet", který zobrazí výzvu k zadání nové uživatelské jméno, heslo, e-mailu a další informace o klíči. Zadejte informace k vytvoření nového uživatele s názvem Wanda.
 
-
 [![Vytvoření nového uživatele s názvem Wanda](assigning-roles-to-users-cs/_static/image35.png)](assigning-roles-to-users-cs/_static/image34.png)
 
 **Obrázek 12**: Vytvořit nový účet uživatele s názvem Wanda ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image36.png))
 
-
 Klikněte na tlačítko "Create User". CreateUserWizard interně volá `Membership.CreateUser` metoda vytvoření nového uživatelského účtu a pak pokračuje k dalšímu kroku, "Zadejte role." Tady jsou uvedené role systému. Zaškrtněte políčko nadřízeným a klikněte na tlačítko Další.
-
 
 [![Ujistěte se, Wanda členem Role správců](assigning-roles-to-users-cs/_static/image38.png)](assigning-roles-to-users-cs/_static/image37.png)
 
 **Obrázek 13**: Ujistěte se, Wanda členem Role správců ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image39.png))
 
-
 Kliknutím na další způsobí, že zpětné volání a aktualizace `ActiveStep` na krok "Dokončit". V `ActiveStepChanged` obslužná rutina události, nedávno vytvořen uživatelský účet je přiřazen k roli správců. Chcete-li to ověřit, vraťte se na `UsersAndRoles.aspx` stránku a vybrat správců z `RoleList` DropDownList. Jak ukazuje obrázek 14 správců jsou nyní tvořené tři uživatele: Bruce, Tito a Wanda.
-
 
 [![Bruce, Tito a Wanda jsou všech správců](assigning-roles-to-users-cs/_static/image41.png)](assigning-roles-to-users-cs/_static/image40.png)
 
 **Obrázek 14**: Bruce, Tito a Wanda jsou všechny správců ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-cs/_static/image42.png))
-
 
 ## <a name="summary"></a>Souhrn
 

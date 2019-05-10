@@ -8,19 +8,18 @@ ms.date: 02/10/2010
 ms.assetid: d7729af4-1eda-4ff2-8b61-dbbe4fc11d10
 msc.legacyurl: /whitepapers/aspnet4
 msc.type: content
-ms.openlocfilehash: 0991ce5c866aa9e31ef23812e953d9ee10dda3d1
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: fbbb9e2ef6ce540f0ab422d2b80e4a5409076c83
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59409717"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132931"
 ---
 # <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu
 
 > Tento dokument poskytuje přehled o řadu nových funkcí pro technologii ASP.NET, které jsou zahrnuty v rozhraní.NET Framework 4 a v sadě Visual Studio 2010.
 > 
 > [Stáhněte si tento dokument White Paper](https://download.microsoft.com/download/7/1/A/71A105A9-89D6-4201-9CC5-AD6A3B7E2F22/ASP_NET_4_and_Visual_Studio_2010_Web_Development_Overview.pdf)
-
 
 **Obsah**
 
@@ -145,7 +144,6 @@ Nová funkce škálovatelnost s názvem *automatického spuštění* , že pří
 > 
 > Další informace najdete v tématu [Application warm-up 1.0](https://www.iis.net/extensions/applicationwarmup%20on%20the%20IIS.net) na webu IIS.net. Názorný postup ukazuje, jak použít funkci zahřívání, naleznete v tématu [Začínáme s modulem IIS 7.5 aplikace zahřívání](https://www.iis.net/learn/manage) na webu IIS.net.
 
-
 Použít funkci automatického spuštění, nastaví správce služby IIS ve službě IIS 7.5 s použitím následující konfigurace v automaticky spustit fond aplikací `applicationHost.config` souboru:
 
 [!code-xml[Main](overview/samples/sample5.xml)]
@@ -206,7 +204,6 @@ Ve výchozím nastavení *requestPathInvalidChars* atribut definuje osm znaků j
 
 > [!NOTE]
 > Poznámka: ASP.NET 4 vždy odmítne cestami URL, které obsahují znaky v rozsahu ASCII od 0x00 do 0x1F, protože ty jsou neplatné znaky adresy URL, jak jsou definovány v dokumentu RFC 2396 sdružení IETF ([http://www.ietf.org/rfc/rfc2396.txt](http://www.ietf.org/rfc/rfc2396.txt)). Ve verzích Windows serveru, na kterých běží služby IIS 6 nebo vyšší, ovladač http.sys protokolu zařízení automaticky odmítne adresy URL se tyto znaky.
-
 
 <a id="0.2__Toc253429245"></a><a id="0.2__Toc243304619"></a>
 
@@ -270,7 +267,6 @@ ASP.NET 4 využívá nové funkce Sledování prostředků zavedených v modulu 
 
 > [!NOTE]
 > Poznámka: `aspnet.config` je soubor v adresáři, ve kterém je nainstalováno rozhraní .NET Framework. Není `Web.config` souboru.
-
 
 Když *appdomainresourcemonitoring –* funkce povolená, dvě nové čítače výkonu jsou k dispozici v kategorii "Aplikací technologie ASP.NET" výkonu: *% času procesoru spravované* a  *Spravované paměti používá*. Obě tyto čítače výkonu použít nové funkce správy prostředků domény aplikace CLR ke sledování odhadovaný čas procesoru a využití spravované paměti jednotlivých aplikací ASP.NET. V důsledku toho v technologii ASP.NET 4 Správci mít podrobnější přehled o spotřebě prostředků jednotlivých aplikací spuštěných v jedné pracovní proces.
 
@@ -678,7 +674,6 @@ V této ukázce *ClientIDMode* je nastavena na *statické* pro nejkrajnější *
 > [!NOTE]
 > Všimněte si, že je na vás, abyste měli jistotu, že jsou jedinečné identifikátory vykreslovaných ovládacích prvků. Pokud nejsou, může dojít k narušení žádné funkce, které vyžaduje jedinečný ID pro jednotlivé elementy HTML, jako je například klient *document.getElementById* funkce.
 
-
 #### <a name="creating-predictable-client-ids-in-data-bound-controls"></a>Vytváření předvídatelné ID klienta v ovládacích prvcích vázaných na Data
 
 *ClientID* hodnoty, které jsou generovány pro ovládací prvky v ovládacím prvku seznamu vázaného na data pomocí starší verze algoritmu mohou být dlouhé a nejsou ve skutečnosti předvídatelné. *ClientIDMode* funkce vám umožňují mít větší kontrolu nad jak tyto identifikátory jsou generovány.
@@ -1004,12 +999,10 @@ Předchozí příklad vykreslí následující výstup, aniž by *tabulky*, *tr*
 
 > Obsah
 
-
 Toto vylepšení můžete usnadňují styl obsah ovládacího prvku pomocí šablon stylů CSS, protože žádné neočekávané značky jsou vykreslovány pomocí ovládacího prvku.
 
 > [!NOTE]
 > Poznámka: Tato změna zakáže podporu pro funkci Automatické formátování v návrháři aplikace Visual Studio 2010, protože už není *tabulky* element, který může hostovat atributy stylu, které jsou generovány možnost automaticky formátovat.
-
 
 <a id="0.2__Toc253429270"></a><a id="0.2__Toc243304644"></a>
 
@@ -1057,7 +1050,6 @@ Předchozí kód generuje následující kód HTML:
 
 > [!NOTE]
 > Poznámka: Pokud nastavíte *RepeatLayout* k *OrderedList* nebo *rozložení UnorderedList*, *RepeatDirection* vlastnost již nelze použít a bude Vyvolejte výjimku za běhu, pokud byla nastavena v rámci značek nebo kódu. Vlastnost by nemají žádnou hodnotu, protože je definována rozložení vizuálu z těchto ovládacích prvků, místo použití šablon stylů CSS.
-
 
 <a id="0.2__Toc253429272"></a><a id="0.2__Toc243304646"></a>
 
@@ -1146,7 +1138,6 @@ Dynamická Data byla zavedena ve verzi rozhraní .NET Framework 3.5 SP1 v polovi
 
 > [!NOTE]
 > Poznámka: Další informace naleznete [dynamických dat dokumentaci](https://msdn.microsoft.com/library/cc488545.aspx) v knihovně MSDN.
-
 
 Pro technologii ASP.NET 4 dynamických dat je vylepšená poskytnout vývojáři získají vyšší výkon pro rychlé vytváření datově řízených webových serverů.
 

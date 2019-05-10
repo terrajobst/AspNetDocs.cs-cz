@@ -8,12 +8,12 @@ ms.date: 07/17/2006
 ms.assetid: f6e2a12a-2b5e-48fd-8db3-1e94a500c19a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d7a6f29dc660cff2bfa9db8f9790d73e51a2cc1c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 31d6cd9ca7181ea9fea2ba3e30ccaafcb4578483
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59420130"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108866"
 ---
 # <a name="adding-client-side-confirmation-when-deleting-c"></a>Přidání potvrzení odstranění na straně klienta (C#)
 
@@ -23,7 +23,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > V rozhraní, která jsme dosud vytvořili uživatel může omylem odstranit data po kliknutí na tlačítko odstranit, pokud jsou určeny k klikněte na tlačítko Upravit. V tomto kurzu přidáme dialogovému oknu potvrzení na straně klienta, který se zobrazí, když dojde ke kliknutí na tlačítko Odstranit.
 
-
 ## <a name="introduction"></a>Úvod
 
 Za posledních několik kurzů jsme ve viděli, jak zajistit vložení, úpravy a odstranění možnosti použít naší aplikace architektury, ObjectDataSource a data webové ovládací prvky ve vzájemné součinnosti. Odstraňování jsme rozhraní ve prověřit, jaký se skládá z odstranění tlačítko, které při kliknutí na, vyvolá zpětné volání a vyvolá ObjectDataSource s `Delete()` metoda. `Delete()` Metoda potom vyvolá metodu nakonfigurované z vrstvy obchodní logiky, která rozšíří volání do vrstvy přístupu k datům, vydávání skutečnou `DELETE` příkaz do databáze.
@@ -32,11 +31,9 @@ Toto uživatelské rozhraní umožňuje návštěvníkům odstraňovat záznamy 
 
 JavaScript `confirm(string)` funkce zobrazuje svůj parametr vstupního řetězce jako text v modální dialogové okno, které součástí jsou dvě tlačítka – OK a zrušení (viz obrázek 1). `confirm(string)` Funkce vrátí hodnotu typu Boolean v závislosti na tom, jaké je stisknuto tlačítko (`true`, pokud uživatel klikne na tlačítko OK, a `false` Pokud klikněte na tlačítko Storno).
 
-
 ![JavaScript confirm(string) metoda zobrazí modální, Messagebox na straně klienta](adding-client-side-confirmation-when-deleting-cs/_static/image1.png)
 
 **Obrázek 1**: JavaScript `confirm(string)` metoda zobrazí prvek Messagebox modální, na straně klienta
-
 
 Při odeslání formuláře, pokud hodnota `false` vrátí obslužnou rutinu události na straně klienta a odeslání formuláře se zrušila. Díky této funkci můžete máme odstranění tlačítka s klientské `onclick` obslužná rutina události návratová hodnota volání `confirm("Are you sure you want to delete this product?")`. Pokud uživatel klikne na tlačítko Storno, `confirm(string)` vrátí false, a tím způsobující odesílání formuláře zrušit. S žádné zpětné volání produktu, jejíž tlačítko pro odstranění došlo ke kliknutí na neodstraní. Pokud však uživatel klikne na tlačítko OK v dialogovém okně potvrzení, zpětné volání bude dál nepokračuje a produkt se odstraní. Poraďte [s využitím jazyka JavaScript `confirm()` metody k odeslání formuláře ovládacího prvku](http://www.webreference.com/programming/javascript/confirm/) Další informace o této techniky.
 
@@ -45,13 +42,11 @@ Přidání nezbytné skriptu na straně klienta při použití šablony než př
 > [!NOTE]
 > Pomocí technik potvrzení na straně klienta, jako jsou popsané v tomto kurzu se předpokládá, že vaši uživatelé navštěvují v prohlížečích, které podporují jazyka JavaScript a, ke kterým mají povolen jazyk JavaScript. Pokud některý z těchto předpokladů neplatí pro konkrétního uživatele, kliknutím na tlačítko odstranit okamžitě vyvolávají zpětné odeslání (nejsou zobrazena pole messagebox potvrzení).
 
-
 ## <a name="step-1-creating-a-formview-that-supports-deletion"></a>Krok 1: Vytvoření FormView, která podporuje odstranění
 
 Začněte přidáním FormView k `ConfirmationOnDelete.aspx` stránku `EditInsertDelete` složku vytvoříte jejich vazbu na nový prvek ObjectDataSource, který získává informace o produktech přes zpět `ProductsBLL` třída s `GetProducts()` – metoda. Také nakonfigurovat prvku ObjectDataSource tak, aby `ProductsBLL` třída s `DeleteProduct(productID)` metoda je mapován na prvek ObjectDataSource s `Delete()` metody; Ujistěte se, že kartách INSERT, UPDATE a rozevírací seznamy jsou nastaveny na (žádný). A konečně zaškrtněte políčko Povolit stránkování ve třídě FormView s inteligentním.
 
 Po provedení těchto kroků bude nový prvek ObjectDataSource s deklarativní vypadat nějak takto:
-
 
 [!code-aspx[Main](adding-client-side-confirmation-when-deleting-cs/samples/sample1.aspx)]
 
@@ -59,23 +54,19 @@ Stejně jako v naší poslední příklady, které nepoužili optimistického ř
 
 Protože byla svázána se ovládací prvek ObjectDataSource, který podporuje pouze odstraňuje, FormView s `ItemTemplate` nabízí jenom tlačítko odstranit, ve kterém chybí tlačítka New a Update. FormView s deklarativní, ale obsahuje nadbytečnými `EditItemTemplate` a `InsertItemTemplate`, které je možné odebrat. Využít k přizpůsobení `ItemTemplate` tak, že se zobrazuje pouze podmnožinu produktu datová pole. Můžu uložit nakonfigurovaný dolování, aby se zobrazil název produktu s v `<h3>` záhlaví nad jeho dodavatele a kategorie názvy (spolu s tlačítko Odstranit).
 
-
 [!code-aspx[Main](adding-client-side-confirmation-when-deleting-cs/samples/sample2.aspx)]
 
 S těmito změnami máme plně funkční webovou stránku, která umožňuje uživatelům přepínat prostřednictvím produktů jeden najednou, s možností odstranit produkt jednoduše kliknutím na tlačítko Odstranit. Obrázek 2 ukazuje snímek obrazovky náš postup doposud při prohlížení prostřednictvím prohlížeče.
 
-
 [![FormView s informacemi o jednoho produktu](adding-client-side-confirmation-when-deleting-cs/_static/image3.png)](adding-client-side-confirmation-when-deleting-cs/_static/image2.png)
 
 **Obrázek 2**: FormView zobrazuje informace o jeden produkt ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-client-side-confirmation-when-deleting-cs/_static/image4.png))
-
 
 ## <a name="step-2-calling-the-confirmstring-function-from-the-delete-buttons-client-side-onclick-event"></a>Krok 2: Volání z odstranění tlačítka Client-Side onclick události confirm(string) – funkce
 
 S FormView vytvořili, posledním krokem je konfigurace tlačítko odstranit takové, že ho s kliknutí návštěvníkem jazyka JavaScript `confirm(string)` vyvolání funkce. Přidání skriptu na straně klienta tlačítko, odkazem (LinkButton) nebo ImageButton s klientským `onclick` událostí lze provést prostřednictvím `OnClientClick property`, což je nová technologie ASP.NET 2.0. Protože chceme hodnotu `confirm(string)` funkce vrátila, jednoduše nastavte tuto vlastnost na: `return confirm('Are you certain that you want to delete this product?');`
 
 Po této změně deklarativní syntaxe s odkazem (LinkButton) odstranit by měla vypadat podobně jako:
-
 
 [!code-aspx[Main](adding-client-side-confirmation-when-deleting-cs/samples/sample3.aspx)]
 
@@ -84,11 +75,9 @@ Všechny existuje tento s je to! Obrázek 3 ukazuje snímek obrazovky toto potvr
 > [!NOTE]
 > Řetězec předaný do `confirm(string)` funkce JavaScript, která jsou odděleny apostrofy (spíše než uvozovky). V jazyce JavaScript může být oddělené řetězce buď znaku. Apostrofy tady používáme tak, aby oddělovače pro řetězec předat do `confirm(string)` nezavádí nejednoznačnost pomocí oddělovače pro `OnClientClick` hodnotu vlastnosti.
 
-
 [![Potvrzení se teď zobrazují při kliknutím na tlačítko Odstranit](adding-client-side-confirmation-when-deleting-cs/_static/image6.png)](adding-client-side-confirmation-when-deleting-cs/_static/image5.png)
 
 **Obrázek 3**: Potvrzení se teď zobrazují při kliknutím na tlačítko Odstranit ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-client-side-confirmation-when-deleting-cs/_static/image7.png))
-
 
 ## <a name="step-3-configuring-the-onclientclick-property-for-the-delete-button-in-a-commandfield"></a>Krok 3: Konfigurace vlastností OnClientClick pro tlačítko Odstranit v CommandField
 
@@ -97,21 +86,17 @@ Při práci s tlačítko, odkazem (LinkButton) nebo ImageButton přímo v šablo
 > [!NOTE]
 > Při nastavování tlačítko s `OnClientClick` vlastnost v odpovídajícím `DataBound` obslužná rutina události, máme přístup k data byla vázána na aktuální záznam. To znamená, že můžeme rozšířit o potvrzení zprávy zahrnout podrobnosti o konkrétním záznamu, jako jsou například "Jste si jisti, že chcete odstranit produkt Chai?" Tato vlastní nastavení je také možné v šablonách pomocí syntaxe datové vazby.
 
-
 Postup nastavení `OnClientClick` vlastnost tlačítkem Delete (tlačítky) v CommandField, umožňují s GridView přidat na stránku. Konfigurace tohoto ovládacího prvku GridView používat stejný ovládací prvek ObjectDataSource, který používá FormView. Také omezte GridView s BoundFields zahrnout pouze s názvem produktu, kategorie a dodavateli. A konečně zaškrtněte políčko Povolit odstranění z ovládacího prvku GridView s inteligentním. Tím přidáte CommandField GridView s `Columns` kolekce s jeho `ShowDeleteButton` nastavenou na `true`.
 
 Po provedení těchto změn, vaše GridView s deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](adding-client-side-confirmation-when-deleting-cs/samples/sample4.aspx)]
 
 CommandField obsahuje jednu instanci odstranit odkazem (LinkButton), který je možné programově přistupovat z ovládacího prvku GridView s `RowDataBound` obslužné rutiny události. Jakmile se odkazuje, jsme nastavili jeho `OnClientClick` vlastnost odpovídajícím způsobem. Vytvořte obslužnou rutinu události pro `RowDataBound` události pomocí následujícího kódu:
 
-
 [!code-csharp[Main](adding-client-side-confirmation-when-deleting-cs/samples/sample5.cs)]
 
 Tato obslužná rutina události funguje s řádky dat (ty, které se mají na tlačítko Odstranit) a začne programově odkazováním na tlačítko Odstranit. Obecně používají následující vzor:
-
 
 [!code-csharp[Main](adding-client-side-confirmation-when-deleting-cs/samples/sample6.cs)]
 
@@ -126,18 +111,15 @@ S těmito změnami dokončeno kliknutím na tlačítko Odstranit v zobrazení Gr
 > [!NOTE]
 > Tento postup můžete použít také k programovému přístupu ke tlačítko Odstranit v CommandField v DetailsView. Prvku DetailsView, ale d vytvořit obslužnou rutinu události pro `DataBound` událost, protože nemá žádné ovládacím prvku DetailsView `RowDataBound` událostí.
 
-
 [![Kliknutím na tlačítko Odstranit prvek GridView s zobrazí dialogové okno Vlastní potvrzení](adding-client-side-confirmation-when-deleting-cs/_static/image9.png)](adding-client-side-confirmation-when-deleting-cs/_static/image8.png)
 
 **Obrázek 4**: Kliknutí na prvek GridView s tlačítko pro odstranění zobrazí přizpůsobit potvrzovací dialogové okno ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-client-side-confirmation-when-deleting-cs/_static/image10.png))
-
 
 ## <a name="using-templatefields"></a>Použití vlastností TemplateField
 
 Jednu z nevýhod CommandField je, že jeho tlačítka je možný přes indexování a zda výsledný objekt musí být přetypovat na typ odpovídající tlačítka (Button, odkazem (LinkButton) nebo ImageButton). Použití "čísla magic" a pevně zakódované typy vyzývá problémy, které nejde zjistit až do modulu runtime. Například pokud se vám nebo jiným vývojářem, přidat nová tlačítka na CommandField v určitém okamžiku v budoucnu (jako je například tlačítko pro úpravy) nebo změny `ButtonType` vlastnosti existujícího kódu se stále zkompiluje bez chyb, ale na stránce může způsobit výjimku nebo neočekávané chování v závislosti na tom, jak byla zapsána váš kód a jaké změny byly provedeny.
 
 Alternativním přístupem je převést s ovládacími prvky GridView a DetailsView CommandFields vlastností TemplateField. Tím se vygeneruje TemplateField s `ItemTemplate` pro jednotlivá tlačítka CommandField, který má odkazem (LinkButton) (nebo tlačítko nebo ImageButton). Tato tlačítka `OnClientClick` vlastnosti je možné přiřadit deklarativně, jako jsme viděli s FormView, nebo můžete programově přistupovat do příslušné `DataBound` obslužné rutiny události pomocí následujícího vzorce:
-
 
 [!code-csharp[Main](adding-client-side-confirmation-when-deleting-cs/samples/sample7.cs)]
 

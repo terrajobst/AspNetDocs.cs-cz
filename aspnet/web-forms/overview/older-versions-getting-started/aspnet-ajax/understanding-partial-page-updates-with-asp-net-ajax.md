@@ -8,12 +8,12 @@ ms.date: 03/28/2008
 ms.assetid: 54d9df99-1161-4899-b4e8-2679c85915e7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-partial-page-updates-with-asp-net-ajax
 msc.type: authoredcontent
-ms.openlocfilehash: d2d7982a4e0175824ffede965dc8206219485df2
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: aa842aeb228abc763540d8ca8dafdfdca0b8b395
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396470"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65109017"
 ---
 # <a name="understanding-partial-page-updates-with-aspnet-ajax"></a>Principy částečných aktualizací stránek technologií ASP.NET AJAX
 
@@ -22,7 +22,6 @@ podle [– Scott Cate](https://github.com/scottcate)
 [Stáhnout PDF](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial01_Partial_Page_Updates_cs.pdf)
 
 > Možná nejviditelnější funkce rozšíření ASP.NET AJAX je schopnost provést na stránce částečné nebo přírůstkové aktualizace bez provedení úplného zpětného odeslání na server bez změn kódu a změny minimální značek. Výhody jsou rozsáhlé – stav ve vašich multimédiích (třeba Adobe Flash nebo Windows Media) je beze změny, je snížení nákladů na šířku pásma a klient nedochází k blikání obvykle spojené se zpětné volání.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -48,7 +47,6 @@ Schopnost integrovat vykreslování části stránky je integrována do technolo
 
 ## <a name="walkthrough-integrating-partial-rendering-into-an-existing-project"></a>Návod: Integrace částečného zobrazení do existujícího projektu
 
-
 1. V systému Microsoft Visual Studio 2008, vytvořte nový projekt webu ASP.NET tak, že přejdete do <em>souboru</em>  <em>- &gt; nový</em>  <em>- &gt; webu</em> a vyberete webovou stránku ASP.NET z tohoto dialogového okna. Název můžete libovolně a můžete ji nainstalovat do systému souborů nebo do Internetové informační služby (IIS).
 2. Zobrazí se prázdný výchozí stránka s základní kód technologie ASP.NET (formulář na straně serveru a `@Page` – direktiva). Přetáhněte popisek s názvem `Label1` a tlačítko s názvem `Button1` na stránku v rámci elementu formuláře. Libovolně může nastavit jejich vlastnosti text.
 3. V návrhovém zobrazení, klikněte dvakrát na `Button1` pro vygenerování obslužné rutiny použití modelu code-behind. V rámci této obslužné rutiny události nastavit `Label1.Text` na kliknutí na tlačítko! .
@@ -64,11 +62,9 @@ Schopnost integrovat vykreslování části stránky je integrována do technolo
 1. Stisknutím klávesy F5 spusťte webovou stránku. Visual Studio vás vyzve k přidání souboru web.config pro povolení ladění; Uděláte to tak. Když kliknete na tlačítko, Všimněte si, aktualizuje stránku ke změně textu v popisku a se vám stručný blikání překreslení stránky.
 2. Po zavření okna prohlížeče, vrátí se sadou Visual Studio a na stránce značek. Přejděte dolů na panelu nástrojů sady Visual Studio a najít na kartě s popiskem rozšíření AJAX. (Pokud nemáte na této kartě vzhledem k tomu, že používáte starší verzi rozšíření AJAX nebo Atlas, najdete v návodu k registraci položky panelu nástrojů rozšíření AJAX dále v tomto dokumentu White Paper, nebo nainstalovat aktuální verzi s instalačním programem Windows ke stažení z webu).
 
-
 [![](understanding-partial-page-updates-with-asp-net-ajax/_static/image2.png)](understanding-partial-page-updates-with-asp-net-ajax/_static/image1.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-partial-page-updates-with-asp-net-ajax/_static/image3.png))
-
 
 1. <em>Známý problém:</em>Pokud nainstalujete do počítače, který už má nainstalovaný s příponami AJAX technologie ASP.NET 2.0 Visual Studio 2005 Visual Studio 2008, Visual Studio 2008 naimportuje položky panelu nástrojů rozšíření AJAX. Můžete zjistit, zda je tento případ prozkoumáním Popis součástí; slibují by měla verzi 3.5.0.0. Pokud, Řekněme, že verze 2.0.0.0, pak jste naimportovali vaše staré položky panelu nástrojů a bude nutné ručně naimportovat pomocí dialogového okna Výběr položek sady nástrojů v sadě Visual Studio. Nebude možné přidat ovládací prvky verze 2 pomocí návrháře.
 
@@ -76,11 +72,9 @@ Schopnost integrovat vykreslování části stránky je integrována do technolo
 3. Přetáhněte uzavírací `</asp:UpdatePanel>` označit za koncem element přepínače tak, aby prvek je ve správném formátu ovládací prvky popisku a tlačítko zabalena.
 4. Po zahájení `<asp:UpdatePanel>` značku, začněte otevřením nové značky. Všimněte si, že technologie IntelliSense zobrazí dvě možnosti. V takovém případě vytvořte `<ContentTemplate>` značky. Ujistěte se, zda zabalit tato značka kolem popisek a tlačítko tak, aby kód je ve správném formátu.
 
-
 [![](understanding-partial-page-updates-with-asp-net-ajax/_static/image5.png)](understanding-partial-page-updates-with-asp-net-ajax/_static/image4.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-partial-page-updates-with-asp-net-ajax/_static/image6.png))
-
 
 1. Kdekoli v rámci `<form>` prvek, ovládací prvek ScriptManager zahrnout dvojitým kliknutím na `ScriptManager` položky na panelu nástrojů.
 2. Upravit `<asp:ScriptManager>` označit tak, že obsahují atribut `EnablePartialRendering= true`.
@@ -93,11 +87,9 @@ Schopnost integrovat vykreslování části stránky je integrována do technolo
 
 1. Co je nového v sadě Visual Studio 2008: Soubor web.config, která se dodává s webu technologie ASP.NET šablony projektu automaticky obsahuje všechny potřebné odkazy na rozšíření ASP.NET AJAX a obsahuje opatřený komentáři oddíly, které mohou být zrušení komentářem povolit další informace o konfiguraci funkce. Visual Studio 2005 měli podobné šablony, když byly nainstalované rozšíření AJAX technologie ASP.NET 2.0. Ale v sadě Visual Studio 2008, jsou rozšíření AJAX odhlásit ve výchozím nastavení (to znamená, že se odkazuje ve výchozím nastavení, ale je možné odebrat jako odkazy).
 
-
 [![](understanding-partial-page-updates-with-asp-net-ajax/_static/image8.png)](understanding-partial-page-updates-with-asp-net-ajax/_static/image7.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-partial-page-updates-with-asp-net-ajax/_static/image9.png))
-
 
 1. Stisknutím klávesy F5 spusťte svůj web. Všimněte si, jak byly nezbytné pro podporu částečného zobrazení bez změny zdrojového kódu – pouze kód byl změněn.
 
@@ -233,16 +225,13 @@ Prvku UpdatePanel funguje jako něco černé skříňky, obtékání postbacků 
 
 Vezměte v úvahu formulář, který mimo jiné má poštovní směrovací číslo textové pole, která se má naplnit pole Město a stát na formulář nebo ovládací prvek. Tento formulář nakonec shromažďuje informace o členství, včetně názvu, adrese a kontaktní údaje uživatele. Existuje mnoho aspekty návrhu, abyste vezměte v úvahu, na základě požadavků na určitém projektu.
 
-
 [![](understanding-partial-page-updates-with-asp-net-ajax/_static/image11.png)](understanding-partial-page-updates-with-asp-net-ajax/_static/image10.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-partial-page-updates-with-asp-net-ajax/_static/image12.png))
 
-
 [![](understanding-partial-page-updates-with-asp-net-ajax/_static/image14.png)](understanding-partial-page-updates-with-asp-net-ajax/_static/image13.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-partial-page-updates-with-asp-net-ajax/_static/image15.png))
-
 
 V původní iteraci této aplikace byla vytvořena ovládací prvek, který součástí rozsahu registrační data uživatele, včetně PSČ, Město a stát. Celý ovládací prvek byl zabalen do ovládacího prvku UpdatePanel a přetaženy webového formuláře. Když PSČ je zadané uživatelem, zjistí prvku UpdatePanel událostí (odpovídající událost TextChanged v back endu, tak, že zadáte aktivační události nebo s použitím vlastnost ChildrenAsTriggers vlastností nastavenou na hodnotu true). AJAX příspěvky všechna pole v rámci ovládacího prvku UpdatePanel, protože nezachytává FireBug (viz diagram na pravé straně).
 
@@ -252,11 +241,9 @@ To může být také vás zajímá, zobrazíte jak aktualizace technologie ASP.N
 
 Opětovné vygenerování modelu DOM se aktivuje celou řadu dalších problémů:
 
-
 [![](understanding-partial-page-updates-with-asp-net-ajax/_static/image17.png)](understanding-partial-page-updates-with-asp-net-ajax/_static/image16.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-partial-page-updates-with-asp-net-ajax/_static/image18.png))
-
 
 - Pokud je element s fokusem HTML v prvku UpdatePanel, ztratí fokus. Tedy pro uživatele, kteří stisknutí klávesy Tab ukončíte PSČ textového pole, jejich umístěním by byl do textového pole Město. Ale po aktualizaci prvku UpdatePanel zobrazení, formuláře by už neměly mít fokus a stisknutím klávesy Tab by byly spuštěny zvýraznění prvky výběru (například odkazy).
 - Pokud libovolný vlastní skript na straně klienta se používá, přístup k modelu DOM prvky, odkazy na trvalé pomocí funkcí může být nefunkční po částečné zpětného odeslání.

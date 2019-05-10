@@ -8,12 +8,12 @@ ms.date: 02/20/2014
 ms.assetid: 4eb060cc-cf14-41ae-bab1-14a2c15332d0
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/validating-user-input-in-aspnet-web-pages-sites
 msc.type: authoredcontent
-ms.openlocfilehash: fd3ba36891aa66f78c28c538a4d3ba0da6736765
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e6f8e1051d09d11f1756bfada44a73ba7c2a1db2
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59392986"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108601"
 ---
 # <a name="validating-user-input-in-aspnet-web-pages-razor-sites"></a>Ověřování uživatelského vstupu v lokalitách rozhraní ASP.NET Web Pages (Razor)
 
@@ -42,7 +42,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > 
 > V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
 
-
 Tento článek obsahuje následující části:
 
 - [Přehled ověřování uživatelského vstupu](#Overview_of_User_Input_Validation)
@@ -65,7 +64,6 @@ Můžete mít také určitá omezení na hodnotách. I v případě, že uživat
 > [!NOTE] 
 > 
 > **Důležité** ověřování uživatelského vstupu je také důležité pro zabezpečení. Omezíte hodnoty, které mohou uživatelé zadat ve formulářích, snížíte pravděpodobnost, že někdo můžete zadat hodnotu, která může ohrozit zabezpečení vašeho webu.
-
 
 <a id="Validating_User_Input"></a>
 ## <a name="validating-user-input"></a>Ověřování uživatelského vstupu
@@ -114,7 +112,6 @@ Můžete přidat podporu k provedení ověření v klientského skriptu. V takov
 > [!NOTE]
 > I když používáte ověřování na straně klienta, provede se ověření vždycky také v serverovém kódu. Provedení ověření v serverovém kódu je v rámci bezpečnostních opatření v případě, že uživatelé obejít ověřování na základě klienta.
 
-
 1. Zaregistrujte následující knihovny jazyka JavaScript na stránce:  
 
     [!code-html[Main](validating-user-input-in-aspnet-web-pages-sites/samples/sample3.html)]
@@ -159,7 +156,6 @@ Zadáte-li tento blok stylu na příkladu stránky z dříve v tomto článku, z
 > [!NOTE]
 > Pokud nepoužíváte ověřování na straně klienta v ASP.NET Web Pages 2, šablon stylů CSS třídy pro `<input>` elementy (`input-validation-error` a `input-validation-valid` nemají žádný vliv.
 
-
 ### <a name="static-and-dynamic-error-display"></a>Chyby statické a dynamické zobrazení
 
 Pravidla šablon stylů CSS pocházet uvedený jako dvojice, například `validation-summary-errors` a `validation-summary-valid`. Tyto páry umožňují definovat pravidla pro obě podmínky: chybovou podmínku a podmínku "normální" (bez chyb). Je důležité pochopit, že vždy vykreslení značky pro zobrazení chyb, i když nejsou žádné chyby. Například, když má stránka `Html.ValidationSummary` metody v kódu, zdroj stránky bude obsahovat následující kód, i když je zobrazení stránky vyžadováno poprvé:
@@ -182,7 +178,6 @@ V tomto případě chcete Ujistěte se, že hodnota, která je předána na str�
 > [!NOTE] 
 > 
 > **Důležité** vždy ověřte hodnoty, které jste získali z *jakékoli* zdroje, včetně hodnoty pole formuláře, hodnoty řetězce dotazu a hodnoty souboru cookie. Je snadné lidem, kteří tato místa změňte (třeba ke škodlivým účelům). Proto je nutné zkontrolovat tyto hodnoty z důvodu ochrany vašich aplikací.
-
 
 Následující příklad ukazuje, jak může ověřit hodnotu, která je předána v řetězci dotazu. Kód se ověřuje, že hodnota není prázdná a že se jedná o celé číslo.
 

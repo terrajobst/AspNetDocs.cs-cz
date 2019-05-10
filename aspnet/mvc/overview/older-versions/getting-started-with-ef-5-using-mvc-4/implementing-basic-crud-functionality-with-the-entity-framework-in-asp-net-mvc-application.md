@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: f7bace3f-b85a-47ff-b5fe-49e81441cdf9
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: be1fcf2c7a0eec5473b2e3a10f51d7e22656b671
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: d42c13b01d798b6c35327826812e853d327eeae9
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59402203"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65112496"
 ---
 # <a name="implementing-basic-crud-functionality-with-the-entity-framework-in-aspnet-mvc-application-2-of-10"></a>Implementace základních funkcí CRUD s rozhraním Entity Framework v aplikaci ASP.NET MVC (2 z 10)
 
@@ -27,12 +27,10 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > > 
 > > Pokud narazíte na problém nevyřešíte sami, [stáhnout dokončený kapitoly](building-the-ef5-mvc4-chapter-downloads.md) a zkuste problém reprodukovat. Porovnáním kód Dokončený kód v obecně najdete řešení problému. Některé běžné chyby a jejich řešení najdete v tématu [chyby a náhradní řešení.](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)
 
-
 V předchozím kurzu jste vytvořili aplikaci MVC, která ukládá a zobrazuje data pomocí rozhraní Entity Framework a SQL Server LocalDB. V tomto kurzu zkontrolujete a přizpůsobit CRUD (vytváření, čtení, aktualizace nebo odstranění) kód, který generování uživatelského rozhraní MVC se automaticky vytvoří za vás do kontrolerů a zobrazení.
 
 > [!NOTE]
 > Je běžnou praxí pro implementaci vzoru úložiště chcete-li vytvořit vrstvu HAL mezi řadiči a vrstva přístupu k datům. Pro zjednodušení tyto kurzy, nebude implementovat úložiště až do novější kurzu této série.
-
 
 V tomto kurzu vytvoříte následujících webových stránek:
 

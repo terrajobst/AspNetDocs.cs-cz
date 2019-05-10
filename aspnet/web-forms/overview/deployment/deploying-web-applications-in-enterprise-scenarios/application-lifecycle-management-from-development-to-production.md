@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: f97a1145-6470-4bca-8f15-ccfb25fb903c
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: 3b7f154936222c85bd7897ea10cbb5ae9d1aa670
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 230cf4393db0ee19cfc42ed54359d61e7926a49d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59408937"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65109290"
 ---
 # <a name="application-lifecycle-management-from-development-to-production"></a>Správa životního cyklu aplikací: Od vývoje k ostrému provozu
 
@@ -27,7 +27,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > 
 > > [!NOTE]
 > > Z důvodu zjednodušení není v tomto tématu popisují aktualizace databáze jako součást procesu nasazení. Však provedením přírůstkové aktualizace funkcí databáze je požadavek mnoho podnikových scénářích nasazení, a můžete najít pokyny o tom, jak to provést později v této řadě kurzů. Další informace najdete v tématu [nasazení databázové projekty](../web-deployment-in-the-enterprise/deploying-database-projects.md).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -94,7 +93,6 @@ Spustit nasazení, uživatel provede *Publish.proj* soubor pomocí nástroje MSB
 > Způsob, jakým tyto soubory vlastních projektů práce je nezávislá mechanismus, který používáte k vyvolání MSBuild. Například můžete použít příkazový řádek MSBuild přímo, jak je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md). Soubory projektu můžete spustit z příkazového souboru, jak je popsáno v [vytvoření a spuštění souboru příkazů k nasazení](../web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file.md). Alternativně můžete spustit soubory projektu z definice sestavení v TFS, jak je popsáno v [vytvoření definice sestavení nasazení podporuje](../configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment.md).  
 > V každém případě konečný výsledek je stejný&#x2014;MSBuild spustí soubor sloučené projektu a řešení nasadí do cílového prostředí. To vám poskytuje značnou flexibilitu v tom, jak aktivovat váš proces publikování.
 
-
 Jakmile vytvořil soubory vlastních projektů, Matt se přidají do složky řešení a vrací do správy zdrojového kódu.
 
 ### <a name="create-build-definitions"></a>Vytvoření definice sestavení
@@ -125,15 +123,12 @@ Konečným výsledkem bude, že pokud řešení je sestaveno úspěšně a úsp�
 
 **DeployToTest** sestavení definice poskytuje tyto argumenty nástroje MSBuild:
 
-
 [!code-console[Main](application-lifecycle-management-from-development-to-production/samples/sample1.cmd)]
-
 
 **DeployOnBuild = true** a **DeployTarget = balíček** vlastnosti jsou používány při vytváření týmového sestavení projektů v rámci řešení. Pokud je projekt webové aplikace, tyto vlastnosti dáte pokyn, aby nástroj MSBuild vytvoří balíček pro nasazení webového projektu. **TargetEnvPropsFile** vlastnost říká *Publish.proj* kde najít soubor projektu specifických pro prostředí pro import souboru.
 
 > [!NOTE]
 > Podrobný návod o tom, jak vytvořit definici sestavení tímto způsobem, naleznete v tématu [vytvoření definice sestavení nasazení podporuje](../configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment.md).
-
 
 *Publish.proj* soubor obsahuje cíle, které každý projekt v řešení sestavit. Ale také obsahuje podmíněnou logiku, přeskočí těchto sestavení cíle Pokud provedete souboru ve službě Team Build. Díky tomu můžete využít výhod funkce další sestavení, které Team Build nabízí, jako je možnost spouštět testy jednotek. Pokud sestavení řešení nebo jednotky testů selhání, *Publish.proj* soubor nebude provedeno a aplikace nebude nasazena.
 
@@ -164,9 +159,7 @@ Toto je souhrnný proces pro nasazení do přípravného prostředí:
 
 **DeployToStaging** sestavení definice poskytuje tyto argumenty nástroje MSBuild:
 
-
 [!code-console[Main](application-lifecycle-management-from-development-to-production/samples/sample2.cmd)]
-
 
 **TargetEnvPropsFile** vlastnost říká *Publish.proj* kde najít soubor projektu specifických pro prostředí pro import souboru. **OutputRoot** vlastnost přepíše integrovanou hodnotu a označuje umístění složky sestavení, která obsahuje prostředky, které chcete nasadit. Při Rob zařadí do fronty sestavení, použije **parametry** kartu k poskytování aktualizovanou hodnotu pro **OutputRoot** vlastnost.
 
@@ -175,24 +168,19 @@ Toto je souhrnný proces pro nasazení do přípravného prostředí:
 > [!NOTE]
 > Další informace o tom, jak vytvořit definici sestavení tímto způsobem, naleznete v tématu [nasadit konkrétní sestavení](../configuring-team-foundation-server-for-web-deployment/deploying-a-specific-build.md).
 
-
 **DeployToStaging-WhatIf** definice sestavení obsahuje stejnou logiku nasazení, jako **DeployToStaging** definice sestavení. Však zahrnuje další argument **WhatIf = true**:
 
-
 [!code-console[Main](application-lifecycle-management-from-development-to-production/samples/sample3.cmd)]
-
 
 V rámci *Publish.proj* souboru **WhatIf** vlastnost indikuje, že všechny prostředky nasazení by se měly zveřejňovat v režimu "what if". Soubory protokolu jsou generovány jinými slovy, jako kdyby nasazení bývali dopředu, ale nic se ve skutečnosti nezmění v cílovém prostředí. Díky tomu můžete vyhodnotit její dopad navrhované nasazení&#x2014;v konkrétní, co bude nechejte se přidat, co se budou aktualizovat, a co bude odstraněn&#x2014;předtím, než ve skutečnosti provedete nějaké změny.
 
 > [!NOTE]
 > Další informace o tom, jak nakonfigurovat "what if" nasazení najdete v tématu [provádění nasazení "What If"](../advanced-enterprise-web-deployment/performing-a-what-if-deployment.md).
 
-
 Po nasazení aplikace na primární webový server v testovacím prostředí, WFF aplikace automaticky synchronizovat na všechny servery v serverové farmě.
 
 > [!NOTE]
 > Další informace o konfiguraci WFF synchronizovat webových serverů, najdete v části [vytvoření serverové farmy pomocí rozhraní Web Farm Framework](../configuring-server-environments-for-web-deployment/creating-a-server-farm-with-the-web-farm-framework.md).
-
 
 ## <a name="deployment-to-production"></a>Nasazení do produkčního prostředí
 

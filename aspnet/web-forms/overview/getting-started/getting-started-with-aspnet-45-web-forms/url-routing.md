@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 4f4bf092-c400-471f-a876-78fda0417890
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 992cea256302231ee7031a21c798117b73eaa01c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: f8a374be79a41b34dc8f17fa8d44c6e0680984d7
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59384315"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108604"
 ---
 # <a name="url-routing"></a>Směrování adresy URL
 
@@ -22,7 +22,6 @@ by [Erik Reitan](https://github.com/Erikre)
 [Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
 > V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 for Web. Visual Studio 2013 [projektu se zdrojovým kódem jazyka C#](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) je k dispozici v této sérii kurzů.
-
 
 V tomto kurzu budete upravovat ukázkové aplikace Wingtip Toys pro podporu směrování adres URL. Směrování umožňuje webové aplikace pomocí adresy URL, které jsou popisný usnadňuje mějte na paměti a lépe podporuje vyhledávací weby. V tomto kurzu vychází z předchozí kurz o službě "Členství a správa" a je součástí série kurzů na adresář Wingtip Toys.
 
@@ -82,7 +81,6 @@ Druhý parametr trasy, která zahrnuje dynamické hodnoty zadané ve složených
 > **Optional**
 > 
 > Vám může být jednodušší ke správě vašeho kódu tak, `RegisterCustomRoutes` metodu pro samostatné třídy. V *logiky* složku, vytvořte samostatné `RouteActions` třídy. Přesunout výše `RegisterCustomRoutes` metodu z *Global.asax.cs* souboru do nové `RoutesActions` třídy. Použití `RoleActions` třídy a `createAdmin` jako příklad toho, jak volat metodu `RegisterCustomRoutes` metodu z *Global.asax.cs* souboru.
-
 
 Také jste si všimli `RegisterRoutes` pomocí volání metody `RouteConfig` objekt na začátku `Application_Start` obslužné rutiny události. Při volání k implementaci výchozí směrování. Byl zahrnutý jako výchozí kód, když vytvoříte aplikaci pomocí šablony webových formulářů v sadě Visual Studio.
 

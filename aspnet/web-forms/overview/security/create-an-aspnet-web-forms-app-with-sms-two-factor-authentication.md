@@ -8,12 +8,12 @@ ms.date: 10/09/2014
 ms.assetid: 716264ae-ab72-45de-bfc5-53a6237089cf
 msc.legacyurl: /web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: 2010de510cf44bba1b95d29dbdb573ab78f452f7
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 02c511f0e99e306daaf595da5bc618fe738e806c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59411355"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65106791"
 ---
 # <a name="create-an-aspnet-web-forms-app-with-sms-two-factor-authentication-c"></a>Vytvoření aplikace webových formulářů ASP.NET s dvoufaktorovým ověřováním prostřednictvím SMS (C#)
 
@@ -22,7 +22,6 @@ by [Erik Reitan](https://github.com/Erikre)
 [Stáhněte si aplikaci rozhraní ASP.NET Web Forms s e-mailu a Dvojúrovňového ověřování pomocí SMS](https://code.msdn.microsoft.com/ASPNET-Web-Forms-App-with-5a0ff94e)
 
 > V tomto kurzu se dozvíte, jak vytvořit aplikaci webových formulářů ASP.NET s dvoufaktorovým ověřováním. V tomto kurzu je navržená k doplnění kurz s názvem [vytvoření zabezpečené aplikace webových formulářů ASP.NET s registrací uživatele, e-mailové potvrzení a resetováním hesla](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset.md). Kromě toho tento kurz je založený na Rick Anderson [kurz ASP.NET MVC](../../../mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md).
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -42,7 +41,6 @@ Začněte tím, že instalaci a používání [Visual Studio Express 2013 for We
 
 > [!NOTE]
 > Důležité: Je nutné nainstalovat [Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465) nebo vyšší, k dokončení tohoto kurzu.
-
 
 1. Vytvoření nového projektu (**souboru**  - &gt; **nový projekt**) a vyberte **webová aplikace ASP.NET** šablony spolu s rozhraní .NET Framework od verze 4.5.2 **nový projekt** dialogové okno.
 2. Z **nový projekt ASP.NET** dialogové okno, vyberte **webových formulářů** šablony. Ponechte výchozí ověřování jako **jednotlivé uživatelské účty**. Potom klikněte na **OK** k vytvoření nového projektu.  

@@ -8,12 +8,12 @@ ms.date: 09/13/2006
 ms.assetid: 83e3d759-82b8-41e6-8d62-f0f4b3edec41
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7ea11f436d8f0455621d22c4d5a5b4d6b6ece68f
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 00ae512a23b9097d1077ae572b4e4377e322882f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59386421"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108411"
 ---
 # <a name="formatting-the-datalist-and-repeater-based-upon-data-c"></a>Formátování ovládacích prvků DataList a Repeater na základě dat (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_30_CS.exe) nebo [stahovat PDF](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/datatutorial30cs1.pdf)
 
 > V tomto kurzu jsme projdete kroky příklady, jak jsme formát vzhled ovládacích prvků DataList a Repeater ovládací prvky, buď s použitím formátování funkcí v rámci šablony nebo zpracování událostí datové vazby.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -60,7 +59,6 @@ Při vytváření vazby dat k ovládacím prvku opakovače, prochází přesně 
 > [!NOTE]
 > Bystří čtenáři možná jste si všimli mírné anomálií mezi posloupnost kroků, které probíhají, když v prvku DataList a Repeater jsou vázány na data a po prvku GridView je vázán na data. Na konci ocáskem proces vytváření vazby dat prvku GridView vyvolá `DataBound` události; ale ovládací prvek DataList ani Repeater mít takovou událost. Je to proto ovládacích prvků DataList a Repeater byly vytvořeny v časovém rámci 1.x technologie ASP.NET, před vzor obslužné rutiny události před instrumentací a po ní úrovně stalo běžné.
 
-
 Například s použitím prvku GridView, je vytvořit obslužnou rutinu události pro jednu z možností pro formátování na základě dat `ItemDataBound` událostí. Tato obslužná rutina události by kontrolovat, který má právě vázán na data `DataListItem` nebo `RepeaterItem` a ovlivňuje formátování ovládacího prvku podle potřeby.
 
 Pro ovládací prvek DataList změny formátování pro celou položku je možné implementovat pomocí `DataListItem` s stylu vlastnosti, které zahrnují standardní `Font`, `ForeColor`, `BackColor`, `CssClass`, a tak dále. Ovlivňuje formátování konkrétní webové ovládací prvky v rámci šablony ovládacích prvků DataList s potřebujeme pro programově přístup a úpravy stylu těchto ovládacích prvků. Jsme viděli, jak provést tuto znovu v *vlastní formátování založené na Data* kurzu. Jako ovládacím prvku Repeater `RepeaterItem` třída nemá žádné vlastnosti stylu; proto všechny související se stylem změny provedené `RepeaterItem` v `ItemDataBound` obslužné rutiny události musí provést programově přístup k a aktualizace webové ovládací prvky v rámci Šablona.
@@ -73,11 +71,9 @@ Předtím, než jsme se starat o formátování, umožňují s nejprve vytvořit
 
 Jakmile zreplikovali funkce ovládacích prvků DataList a ObjectDataSource `Basics.aspx` do `Formatting.aspx`, věnujte chvíli změnit DataList s `ID` vlastnost z `DataList1` do více popisné `ItemDataBoundFormattingExample`. V dalším kroku prvku DataList zobrazte v prohlížeči. Jak ukazuje obrázek 1 pouze formátování rozdíl mezi jednotlivé produkty je, že barvu pozadí alternativy.
 
-
 [![Produkty jsou uvedené v ovládacím prvku DataList](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image2.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image1.png)
 
 **Obrázek 1**: Produkty jsou uvedené v ovládacím prvku DataList ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image3.png))
-
 
 Pro účely tohoto kurzu nechte s formátování prvku DataList tak, aby žádné produkty s méně než 20,00 $za cenu budou mít i její název a jednotky cen zvýrazněné žlutou barvou.
 
@@ -86,7 +82,6 @@ Pro účely tohoto kurzu nechte s formátování prvku DataList tak, aby žádn�
 Protože pouze tyto produkty s cenou pod 20,00 $za bude mít vlastní formátování použité, jsme musí být schopní určit, každý s cena produktu. Při vytváření vazby dat k a v prvku DataList, prvku DataList zobrazí záznamy ve zdroji dat a pro každý záznam, vytvoří `DataListItem` instance záznam zdroje dat k vytvoření vazby `DataListItem`. Po konkrétní záznam s dat byla svázána se aktuální `DataListItem` objekt DataList s `ItemDataBound` událost se aktivuje. Můžeme vytvořit obslužnou rutinu události pro tuto událost ke kontrole datových hodnot pro aktuální `DataListItem` a na základě těchto hodnot, proveďte změny formátování nezbytné.
 
 Vytvoření `ItemDataBound` události ovládacích prvcích DataList a přidejte následující kód:
-
 
 [!code-csharp[Main](formatting-the-datalist-and-repeater-based-upon-data-cs/samples/sample1.cs)]
 
@@ -111,28 +106,22 @@ Jakmile víme, že je cena produkt s méně než 20,00 $, už jen zbývá její 
 
 K formátování použít, stačí nastavit dva ovládací prvky popisek webového `CssClass` vlastností `AffordablePriceEmphasis`, jak je znázorněno v následujícím kódu:
 
-
 [!code-csharp[Main](formatting-the-datalist-and-repeater-based-upon-data-cs/samples/sample2.cs)]
 
 S `ItemDataBound` obslužná rutina události dokončení, opakování `Formatting.aspx` stránku v prohlížeči. Jak znázorňuje obrázek 2 mají tyto produkty s cenami za 20,00 $za své jméno a cena zvýrazní.
-
 
 [![Tyto produkty méně než 20,00 $za zvýrazněné](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image5.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image4.png)
 
 **Obrázek 2**: Tyto produkty méně než 20,00 $za jsou zvýrazněny ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image6.png))
 
-
 > [!NOTE]
 > Protože prvku DataList se vykreslí jako HTML `<table>`, jeho `DataListItem` instance mají stylu vlastnosti, které je možné nastavit konkrétní stylu na celé položky. Například, pokud chceme, abyste měli na očích *celý* položky žlutý při jeho cena byla menší než 20,00 $ jsme by mohly nahradit kód, na který odkazuje popisky a nastavte jejich `CssClass` vlastnosti s následujícím řádkem kódu: `e.Item.CssClass = "AffordablePriceEmphasis"` (viz obrázek 3).
 
-
 `RepeaterItem` , Které tvoří ovládacím prvku opakovače však don t nabízejí tyto vlastnosti stylu úrovni. Proto použití vlastního formátování u Opakovači vyžaduje použití vlastnosti stylu webové ovládací prvky v rámci šablon opakovače s stejným způsobem, jako jsme to udělali na obrázku 2.
-
 
 [![Celý položka produktu je zvýrazněn pro produkty v rámci 20,00 $](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image8.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image7.png)
 
 **Obrázek 3**: Celý položka produktu je zvýrazněn pro produkty v rámci 20,00 $ ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image9.png))
-
 
 ## <a name="using-formatting-functions-from-within-the-template"></a>Použití formátování funkcí z v rámci šablony
 
@@ -140,23 +129,19 @@ V *použití vlastností TemplateField v ovládacím prvku GridView* kurzu jsme 
 
 Abychom si předvedli formátování funkcí, umožňují s máte produktové informace obsahují text [VYŘAZENO] vedle názvu produktu s, pokud ho s ukončena. Navíc umožňují s mají zvýrazněné žlutou if cena ho s méně než 20,00 $za (jako jsme to udělali `ItemDataBound` příklad obslužná rutina události); Pokud je 20,00 $za cenu nebo s vyšší, vám umožňují zobrazit skutečná cena, ale místo toho volat text prosím pro cenové nabídky. Obrázek 4 ukazuje snímek obrazovky produkty výpisu se tato formátování pravidla platila.
 
-
 [![Nákladné produktů cena je nahrazena textem, vyvolejte funkci pro cenové nabídky](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image11.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image10.png)
 
 **Obrázek 4**: Nákladné produktů, cena je nahrazena textem, vyvolejte funkci pro cenové nabídky ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image12.png))
 
-
 ## <a name="step-1-create-the-formatting-functions"></a>Krok 1: Vytvořit formátování funkce
 
 V tomto příkladu budeme potřebovat dvě funkce formátování, ten, který se zobrazí spolu s textem [VYŘAZENO], název produktu v případě potřeby a jiné zobrazující zvýrazněný cena, pokud ho s méně než 20,00 $za nebo textu, vyvolejte funkci pro Cenová nabídka jinak. Umožní s tyto funkce můžete vytvářet v třídě modelu code-behind stránky s ASP.NET a pojmenujte je `DisplayProductNameAndDiscontinuedStatus` a `DisplayPrice`. Obě metody musíte vrátí kód HTML pro vykreslení jako řetězec a oba musí být označen `Protected` (nebo `Public`) aby bylo možné vyvolat z část deklarativní syntaxe stránky s ASP.NET. Následující kód pro tyto dvě metody:
-
 
 [!code-csharp[Main](formatting-the-datalist-and-repeater-based-upon-data-cs/samples/sample3.cs)]
 
 Všimněte si, že `DisplayProductNameAndDiscontinuedStatus` metoda přijímá hodnoty `productName` a `discontinued` data polí jako skalární hodnoty, zatímco `DisplayPrice` metoda přijímá `ProductsRow` instance (spíše než `unitPrice` skalární hodnota). Bude fungovat oběma; však-li funkci formátování pracuje s skalárních hodnot, které mohou obsahovat databáze `NULL` hodnoty (například `UnitPrice`; ani `ProductName` ani `Discontinued` povolit `NULL` hodnoty), musí být přijata zvláštní pozornost při zpracování těchto Skalární vstupy.
 
 Konkrétně se vstupní parametr musí být typu `Object` příchozí hodnoty. může se stát, že `DBNull` instanci místo očekávaným datovým typem. Kromě toho musí být provedena kontrola k určení, zda je hodnota příchozí databáze `NULL` hodnotu. To znamená pokud chceme `DisplayPrice` metodu tak, aby přijímal cena jako skalární hodnota, jsme d muset pomocí následujícího kódu:
-
 
 [!code-csharp[Main](formatting-the-datalist-and-repeater-based-upon-data-cs/samples/sample4.cs)]
 
@@ -166,26 +151,21 @@ Všimněte si, že `unitPrice` vstupní parametr je typu `Object` a zjistit, pok
 
 S formátování funkce přidané do třídy použití modelu code-behind stránky s naší technologie ASP.NET, už jen zbývá k vyvolání těchto funkcí z prvku DataList s formátování `ItemTemplate`. Volat funkci formátování ze šablony, umístíte volání funkce v rámci Syntaxe datové vazby:
 
-
 [!code-aspx[Main](formatting-the-datalist-and-repeater-based-upon-data-cs/samples/sample5.aspx)]
 
 V ovládacím prvku DataList s `ItemTemplate` `ProductNameLabel` popisek webový ovládací prvek nyní zobrazuje název produktu s přiřazením jeho `Text` vlastnost výsledek z `<%# Eval("ProductName") %>`. Pokud chcete mít v případě potřeby zobrazí název a text [VYŘAZENO], aktualizujte deklarativní syntaxe tak, aby místo toho přiřadí `Text` vlastnost hodnotu z `DisplayProductNameAndDiscontinuedStatus` metody. Pokud tak učiníte, musíte předáváme produkt s názvem a ukončená hodnot pomocí `Eval("columnName")` syntaxe. `Eval` Vrátí hodnotu typu `Object`, ale `DisplayProductNameAndDiscontinuedStatus` metoda očekává, že vstupní parametry typu `String` a `Boolean`, proto jsme musíte přetypovat hodnot vrácených `Eval` metoda očekávaným vstupním parametrem typy, například takto:
-
 
 [!code-aspx[Main](formatting-the-datalist-and-repeater-based-upon-data-cs/samples/sample6.aspx)]
 
 Pokud chcete zobrazit ceny, nám stačí nastavit `UnitPriceLabel` popisek s `Text` vlastnost na hodnotu vrácenou příkazem `DisplayPrice` metody, stejně jako jsme to udělali pro zobrazení názvu produktu s a [zrušit] text. Namísto předání `UnitPrice` jako skalární vstupní parametr, místo toho předáváme celý `ProductsRow` instance:
 
-
 [!code-aspx[Main](formatting-the-datalist-and-repeater-based-upon-data-cs/samples/sample7.aspx)]
 
 Při volání pro formátování funkce na místě věnujte chvíli zobrazíte náš postup v prohlížeči. Vaše obrazovka by měla vypadat podobně jako na obrázku 5, s odpojené produkty, včetně textu [VYŘAZENO] a tyto produkty ocenění více než 20,00 $za s jejich cena nahrazena textem prosím volání pro cenové nabídky.
 
-
 [![Nákladné produktů cena je nahrazena textem, vyvolejte funkci pro cenové nabídky](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image14.png)](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image13.png)
 
 **Obrázek 5**: Nákladné produktů, cena je nahrazena textem, vyvolejte funkci pro cenové nabídky ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-cs/_static/image15.png))
-
 
 ## <a name="summary"></a>Souhrn
 

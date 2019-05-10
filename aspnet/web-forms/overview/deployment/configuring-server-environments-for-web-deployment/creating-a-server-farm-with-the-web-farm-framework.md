@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 656dd06d-806c-467c-863d-9fc45e5ba3ab
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/creating-a-server-farm-with-the-web-farm-framework
 msc.type: authoredcontent
-ms.openlocfilehash: 19c061e83257e118aee74c9373a627b8c56defe3
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 204996514bed336e60ab77f184a923f04e7e2bba
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59421235"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65106911"
 ---
 # <a name="creating-a-server-farm-with-the-web-farm-framework"></a>Vytvoření serverové farmy na platformě Web Farm Framework
 
@@ -22,7 +22,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Toto téma popisuje, jak můžete vytvořit a nakonfigurovat webovou farmu serveru z kolekce serverů webové farmy Framework (WFF) 2.0.
-
 
 WFF umožňuje synchronizaci produkty webové platformy a součásti webové aplikace, weby a nastavení konfigurace na několik serverů s vyrovnáváním zatížení web. V situacích, kdy potřebujete víc než jednom webovém serveru, jako přípravného a produkčního prostředí to může výrazně zjednodušit nasazení a konfiguraci procesu. Můžete nasadit webové aplikace k jednomu serveru&#x2014; *primární server*&#x2014;a WFF budou automaticky replikovat této webové aplikace na všech ostatních serverech web v serverové farmě.
 
@@ -63,7 +62,6 @@ K dokončení úlohy a názorné postupy v tomto tématu, budete potřebovat ale
 
 > [!NOTE]
 > Další informace o připojení počítače k doméně najdete v tématu [připojení počítače k doméně a protokolování na](https://technet.microsoft.com/library/cc725618(v=WS.10).aspx). Další informace o konfiguraci statických IP adres najdete v tématu [nakonfigurujte statickou IP adresu](https://technet.microsoft.com/library/cc754203(v=ws.10).aspx).
-
 
 ## <a name="create-the-wff-controller-server"></a>Vytvoření serveru WFF Kontroleru
 
@@ -185,7 +183,6 @@ WFF slouží k integraci úzce s IIS ARR. Umožní využít této integrace bude
 
 > [!NOTE]
 > Není nutné používat WFF; směrování žádostí na aplikace můžete nakonfigurovat WFF pro práci s řešení vyrovnávání zatížení třetích stran. Další informace najdete v tématu [přehled Web Farm Framework 2.0 pro službu IIS 7](https://go.microsoft.com/?linkid=9805126).
-
 
 Vyrovnávání zatížení pomocí směrování žádostí na aplikace je složité téma, většina z nich je nad rámec tohoto kurzu. Můžete ale následující postup k instalaci modulu Směrování žádostí na aplikace a začít pracovat se službou Vyrovnávání zatížení.
 

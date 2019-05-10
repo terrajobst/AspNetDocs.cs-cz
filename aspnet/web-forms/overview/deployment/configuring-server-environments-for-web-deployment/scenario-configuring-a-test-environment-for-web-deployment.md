@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 44a22ac7-1fc7-4174-b946-c6129fb6a19b
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-test-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 7ea8c74a6621200e3a0d52a7c37fed6b5eeff4e5
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: d580e550f2461837f0e8a4e477273348b49cb53e
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59391621"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132397"
 ---
 # <a name="scenario-configuring-a-test-environment-for-web-deployment"></a>Scénář: Konfigurace testovacího prostředí pro nasazení webu
 
@@ -22,7 +22,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Toto téma popisuje běžné webové scénář nasazení pro vývojáře nebo testovací prostředí a vysvětluje úlohy, které potřebujete k dokončení pro nastavení prostředí podobné.
-
 
 Když vývojáři pracují na webové aplikace, jsou často budete poskytnut přístup k prostředí serveru, který můžete použít k testování změny do svých aplikací v reálné nastavení. Tento druh vývojové nebo testovací prostředí obvykle má tyto vlastnosti:
 
@@ -47,7 +46,6 @@ Testovací prostředí musí podporovat krokování nebo automatizovat nasazení
 
 > [!NOTE]
 > Můžete také použít [nasazení webu na vyžádání](https://technet.microsoft.com/library/ee517345(WS.10).aspx) ("temp agent"). Toto je podobný přístup vzdáleného agenta z hlediska požadavky a omezení.
-
 
 V tomto případě vývojáři oprávnění správce na cílových serverech a testovacího prostředí není předmětem pravidla striktní bezpečnostní omezení, tedy logickou volbou konfigurace serveru webového testu pro podporu nasazení pomocí vzdáleného agenta. To není tak složitý a vyžaduje menší počáteční nastavení, než obslužná rutina nasazení webového přístupu. Také budete muset konfigurovat databázový server pro podporu vzdáleného přístupu a nasazení.
 

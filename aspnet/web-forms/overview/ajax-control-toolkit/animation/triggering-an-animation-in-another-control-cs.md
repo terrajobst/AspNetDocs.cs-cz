@@ -8,12 +8,12 @@ ms.date: 06/02/2008
 ms.assetid: e5d99c2b-d8ee-413c-80d5-c120cffb0a4c
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ca383b7a82b754c7556dcea3bcdb8e28e5c7a45d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 1db5468d3c1d35b25aea0d5ff331a742ce421191
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59384848"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132918"
 ---
 # <a name="triggering-an-animation-in-another-control-c"></a>Aktivace animace jiného ovládacího prvku (C#)
 
@@ -22,7 +22,6 @@ by [Christian Wenz](https://github.com/wenz)
 [Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation8.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation8CS.pdf)
 
 > Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Obecně platí spuštění animace se aktivuje interakce uživatele s stejný ovládací prvek. Je však také možné pracovat s jeden ovládací prvek a potom animace jiného ovládacího prvku.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -55,7 +54,6 @@ V rámci `<Animations>` uzlu, místo animace jako obvykle. Aby bylo možné je m
 [!code-aspx[Main](triggering-an-animation-in-another-control-cs/samples/sample6.aspx)]
 
 Poznámka: zvláštní pořadí, ve kterém se zobrazují jednotlivé animace. Za prvé získá tlačítko Deaktivovat po spuštění animace. Protože neexistuje žádné `AnimationTarget` atribut v `<EnableAction>` element, tato animace se použije pro původní ovládacího prvku: tlačítko. Animace další dva kroky se provádějí paralelně (`<Parallel>` element). Obě mají jejich `AnimationTarget` nastavte atributy na `"Panel1"`, tedy animace panelu, ne na tlačítko.
-
 
 [![Panel animace spuštěna, kliknutí myší na tlačítko](triggering-an-animation-in-another-control-cs/_static/image2.png)](triggering-an-animation-in-another-control-cs/_static/image1.png)
 

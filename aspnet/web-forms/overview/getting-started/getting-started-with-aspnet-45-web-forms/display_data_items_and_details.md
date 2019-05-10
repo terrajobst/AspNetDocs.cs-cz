@@ -8,12 +8,12 @@ ms.date: 1/04/2019
 ms.assetid: 64a491a8-0ed6-4c2f-9c1c-412962eb6006
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/display_data_items_and_details
 msc.type: authoredcontent
-ms.openlocfilehash: 54896da5565c9383f13fc352da26bbdc3cb63a76
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 130c9ffd29df612dac5bb954830a2eb9b738aaf0
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59405362"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65109624"
 ---
 # <a name="display-data-items-and-details"></a>Zobrazení datových položek a podrobnosti
 
@@ -97,7 +97,6 @@ Tento kód ukazuje `GetProducts` metoda, která **ListView** ovládacího prvku 
 
 Když platnou kategorii je předán jako řetězec dotazu na stránce výsledky dotazu jsou omezené na tyto produkty v databázi, které odpovídají `categoryId` hodnotu. Například pokud *ProductsList.aspx* Toto je adresa URL stránky:
 
-
 [!code-console[Main](display_data_items_and_details/samples/sample4.cmd)]
 
 Na stránce se zobrazí pouze produkty, kde `categoryId` rovná `1`.
@@ -164,7 +163,6 @@ Nyní můžete spustit aplikaci, abyste viděli zobrazí jednotlivé produkty po
     ![Zobrazení dat položek a podrobnosti - produkty](display_data_items_and_details/_static/image4.png)
     
 4. Zavřete prohlížeč.
-
 
 ## <a name="additional-resources"></a>Další zdroje
 

@@ -8,12 +8,12 @@ ms.date: 03/31/2010
 ms.assetid: 871a4574-f89c-4214-b786-79253ed3653b
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bd5433b724dcafe8e816254523cb4b38c3be1104
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 96003d3e93fc92aaaf39f39f1bb6512d687dc451
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59403165"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108274"
 ---
 # <a name="custom-formatting-based-upon-data-c"></a>Vlastní formátování založené na datech (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/6/9/969e5c94-dfb6-4e47-9570-d6d9e704c3c1/ASPNET_Data_Tutorial_11_CS.exe) nebo [stahovat PDF](custom-formatting-based-upon-data-cs/_static/datatutorial11cs1.pdf)
 
 > Úprava formát ovládacího prvku GridView, DetailsView nebo FormView na základě něj navázaná data lze provést několika různými způsoby. V tomto kurzu podíváme na tom, jak provádět data vázaná formátování prostřednictvím datové vazby a RowDataBound obslužné rutiny událostí.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -48,37 +47,29 @@ Otevřít `CustomColors.aspx` stránku `CustomFormatting` složky, přetáhněte
 
 Když prvku ObjectDataSource vázaný na ovládacím prvku DetailsView, věnujte chvíli upravit seznam polí. Jste se rozhodli odebrat `ProductID`, `SupplierID`, `CategoryID`, `UnitsInStock`, `UnitsOnOrder`, `ReorderLevel`, a `Discontinued` BoundFields přejmenovat a zbývající BoundFields přeformátovali. Jsem také odstraněné `Width` a `Height` nastavení. Protože ovládacím prvku DetailsView zobrazí jenom jeden záznam, musíme povolit stránkování, aby koncový uživatel Chcete-li zobrazit všechny produkty. To tak, že zaškrtnete políčko Povolit stránkování v ovládacím prvku DetailsView inteligentních značek.
 
-
 [![Zaškrtněte políčko Povolit stránkování v ovládacím prvku DetailsView inteligentních značek](custom-formatting-based-upon-data-cs/_static/image2.png)](custom-formatting-based-upon-data-cs/_static/image1.png)
 
 **Obrázek 1**: Zaškrtněte políčko Povolit stránkování v ovládacím prvku DetailsView inteligentních značek ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-cs/_static/image3.png))
 
-
 Po provedení těchto změn bude DetailsView značky:
-
 
 [!code-aspx[Main](custom-formatting-based-upon-data-cs/samples/sample1.aspx)]
 
 Využijte k otestování této stránky v prohlížeči.
 
-
 [![Ovládací prvek DetailsView zobrazí jeden produkt v čase](custom-formatting-based-upon-data-cs/_static/image5.png)](custom-formatting-based-upon-data-cs/_static/image4.png)
 
 **Obrázek 2**: Prvek DetailsView ovládací prvek zobrazí jeden produkt v čase ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-cs/_static/image6.png))
-
 
 ## <a name="step-2-programmatically-determining-the-value-of-the-data-in-the-databound-event-handler"></a>Krok 2: Programové určení hodnoty dat v obslužné rutině události datové vazby
 
 Pokud chcete zobrazit ceny pro tyto produkty písmeny tučné písmo, kurzívu jehož `UnitPrice` hodnota přesahuje $75.00, musíme nejprve moct určení prostřednictvím kódu programu `UnitPrice` hodnotu. Pro ovládacím prvku DetailsView. To lze provést v `DataBound` obslužné rutiny události. Vytvořit událost obslužné rutiny kliknete na ovládacím prvku DetailsView. v Návrháři pak přejděte do okna Vlastnosti. Stisknutím klávesy F4 zobrazíte ji, pokud není viditelný, nebo přejděte do nabídky zobrazení a vyberte možnost nabídky okna Vlastnosti. V okně Vlastnosti klikněte na na ikonu blesku na seznamu událostí v ovládacím prvku DetailsView. V dalším kroku buď poklepejte `DataBound` události nebo zadejte název obslužné rutiny události, kterou chcete vytvořit.
 
-
 ![Vytvořte obslužnou rutinu události pro událost datové vazby](custom-formatting-based-upon-data-cs/_static/image7.png)
 
 **Obrázek 3**: Vytvořte obslužnou rutinu události pro `DataBound` událostí
 
-
 Tím se automaticky vytvořit obslužnou rutinu události a můžete přejít k části kódu ve kterém byl přidán. V tomto okamžiku se zobrazí:
-
 
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample2.cs)]
 
@@ -86,12 +77,10 @@ Data vázaná na ovládacím prvku DetailsView je přístupná prostřednictvím
 
 Následující kód ukazuje, jak určit, zda `UnitPrice` je vázán na ovládacím prvku DetailsView hodnota větší než $75.00:
 
-
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample3.cs)]
 
 > [!NOTE]
 > Protože `UnitPrice` může mít `NULL` hodnota v databázi, doporučujeme nejdřív zkontrolujte, abyste měli jistotu, že jsme se zabývají `NULL` hodnotu před přístupem k `ProductsRow`společnosti `UnitPrice` vlastnost. Tato kontrola je důležité protože jsme pokusu o přístup k `UnitPrice` vlastnosti, když má `NULL` hodnotu `ProductsRow` vyvolá objekt [strongtypingexception – výjimka](https://msdn.microsoft.com/library/system.data.strongtypingexception.aspx).
-
 
 ## <a name="step-3-formatting-the-unitprice-value-in-the-detailsview"></a>Krok 3: Formátování hodnoty UnitPrice v ovládacím prvku DetailsView.
 
@@ -99,36 +88,29 @@ V tuto chvíli můžeme určit, zda `UnitPrice` hodnotu hranice do ovládacího 
 
 Programově přístup k řádku je nutné znát indexu na řádek, který začíná hodnotou 0. `UnitPrice` Řádek je pátý řádek v ovládacím prvku DetailsView předá index 4 a zpřístupňování prostřednictvím kódu programu pomocí `ExpensiveProductsPriceInBoldItalic.Rows[4]`. V tuto chvíli jsme může mít celý řádek obsah zobrazit v písmo tučné písmo, kurzívu, můžete pomocí následujícího kódu:
 
-
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample4.cs)]
 
 Nicméně díky tomu budou *obě* popisek (cena) a hodnota tučné písmo a kurzíva. Pokud Chceme mít pouze hodnotu tučné písmo a kurzíva musíme použít formátování na druhý buňky v řádku, což lze provést pomocí následujícího:
-
 
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample5.cs)]
 
 Protože našich kurzů pro jaký jste použili šablony stylů udržovat čisté oddělení mezi vykreslované značky a informace týkající se stylu, místo nastavení vlastnosti konkrétního stylu, jak je znázorněno výše můžeme místo toho použijte třídu šablony stylů CSS. Otevřít `Styles.css` šablony stylů a přidejte novou třídu šablony stylů CSS s názvem `ExpensivePriceEmphasis` s následující definice:
 
-
 [!code-css[Main](custom-formatting-based-upon-data-cs/samples/sample6.css)]
 
 Potom v `DataBound` obslužná rutina události, nastavte na buňku `CssClass` vlastnost `ExpensivePriceEmphasis`. Následující kód ukazuje `DataBound` obslužné rutiny události v celém rozsahu:
-
 
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample7.cs)]
 
 Při prohlížení Chai, která stojí méně než 75.00 $, zobrazí se cena uvedená normálním písmem (viz obrázek 4). Ale při prohlížení Niku Kobe Mishi, jehož cena $97.00 cena se zobrazí v písmo tučné písmo, kurzívu (viz obrázek 5).
 
-
 [![Ceny za méně než $75.00 jsou zobrazeny v normální písmo](custom-formatting-based-upon-data-cs/_static/image9.png)](custom-formatting-based-upon-data-cs/_static/image8.png)
 
 **Obrázek 4**: Ceny za méně než $75.00 jsou zobrazeny v normální písmo ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-cs/_static/image10.png))
 
-
 [![Ceny nákladné produkty, které se zobrazují v tučné, kurzíva písma](custom-formatting-based-upon-data-cs/_static/image12.png)](custom-formatting-based-upon-data-cs/_static/image11.png)
 
 **Obrázek 5**: Ceny nákladné produkty, které se zobrazují v tučné, kurzíva písma ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-cs/_static/image13.png))
-
 
 ## <a name="using-the-formview-controlsdataboundevent-handler"></a>Použití ovládacího prvku FormView`DataBound`obslužné rutiny události
 
@@ -144,7 +126,6 @@ Přidat FormView k `CustomColors.aspx` stránce pod DetailsView a nastavte jeho 
 
 Po tyto úpravy vašeho ovládacího prvku FormView značek by měl vypadat nějak takto:
 
-
 [!code-aspx[Main](custom-formatting-based-upon-data-cs/samples/sample8.aspx)]
 
 Všimněte si, `ItemTemplate` obsahuje:
@@ -157,14 +138,11 @@ Všimněte si, `ItemTemplate` obsahuje:
 
 Pomocí značky ovládacího prvku FormView kompletní, dalším krokem je prostřednictvím kódu programu určete, jestli `UnitsInStock` hodnota je menší než nebo rovno 10. Toho dosahuje přesně stejným způsobem s FormView jako byl s ovládacím prvku DetailsView. Začněte vytvořením obslužnou rutinu události pro ovládacího prvku FormView `DataBound` událostí.
 
-
 ![Vytvořte obslužnou rutinu události datové vazby](custom-formatting-based-upon-data-cs/_static/image14.png)
 
 **Obrázek 6**: Vytvořte `DataBound` obslužné rutiny události
 
-
 Události přetypování obslužná rutina ovládacího prvku FormView `DataItem` vlastnost `ProductsRow` instance a určit, jestli `UnitsInPrice` hodnotu tak, že musíme zobrazení red písmem.
-
 
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample9.cs)]
 
@@ -172,35 +150,28 @@ Události přetypování obslužná rutina ovládacího prvku FormView `DataItem
 
 Posledním krokem je pro formátování zobrazených `UnitsInStock` hodnotu red písmeny, pokud hodnota je 10 nebo méně. K tomu potřebujeme k programovému přístupu ke službě `UnitsInStockLabel` v ovládacím prvku `ItemTemplate` a nastavit jeho vlastnosti stylu tak, aby jeho textu se zobrazí červeně. Chcete-li získat přístup k webové řízení v šabloně, použijte `FindControl("controlID")` metoda takto:
 
-
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample10.cs)]
 
 V našem příkladu chceme, aby pro přístup k popisku ovládací prvek, jehož `ID` hodnotu `UnitsInStockLabel`, takže bychom použili:
 
-
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample11.cs)]
 
 Jakmile budeme mít programový odkaz na ovládací prvek, jsme jde upravit její vlastnosti stylu podle potřeby. Jako u předchozího příkladu, jsem vytvořil třídu šablony stylů CSS v `Styles.css` s názvem `LowUnitsInStockEmphasis`. Stylu na ovládacím prvku popisek Web, nastavte jeho `CssClass` vlastnost odpovídajícím způsobem.
-
 
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample12.cs)]
 
 > [!NOTE]
 > Syntaxe pro formátování šablonu programově přístup k ovládacímu prvku pomocí webové `FindControl("controlID")` a nastavením jeho vlastnosti související se stylem lze také při použití [vlastností TemplateField](https://msdn.microsoft.com/library/system.web.ui.webcontrols.templatefield(VS.80).aspx) v prvku DetailsView nebo GridView ovládací prvky. Prozkoumáme vlastností TemplateField v následujícím kurzem.
 
-
 Obrázky 7 znázorňuje FormView při prohlížení produktu jehož `UnitsInStock` hodnota je větší než 10, zatímco v produktu na obrázku 8 je jeho hodnota menší než 10.
-
 
 [![Pro produkty s dostatečně velké jednotky v zásobách ne vlastní formátování](custom-formatting-based-upon-data-cs/_static/image16.png)](custom-formatting-based-upon-data-cs/_static/image15.png)
 
 **Obrázek 7**: Pro produkty s dostatečně velké jednotky v zásobách, ne vlastní formátování ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-cs/_static/image17.png))
 
-
 [![Jednotky v zásobách číslo se zobrazí červeně pro tyto produkty s hodnoty 10 nebo méně](custom-formatting-based-upon-data-cs/_static/image19.png)](custom-formatting-based-upon-data-cs/_static/image18.png)
 
 **Obrázek 8**: Jednotky v zásobách číslo se zobrazí červeně pro tyto produkty s hodnoty 10 nebo méně ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-cs/_static/image20.png))
-
 
 ## <a name="formatting-with-the-gridviewsrowdataboundevent"></a>Formátování pomocí prvku GridView`RowDataBound`událostí
 
@@ -237,16 +208,13 @@ Chcete-li přizpůsobit formát jednotlivých záznamů prvku GridView, pak pot�
 
 Přidejte prvek GridView ve třídě FormView z předchozího příkladu a nastavte jeho `ID` vlastnost `HighlightCheapProducts`. Vzhledem k tomu, že už máme ObjectDataSource, který vrátí všechny produkty na stránce, vytvořit vazbu s, který v prvku GridView. Nakonec upravte prvku GridView BoundFields právě produktů názvy, kategorie a ceny. Za tyto úpravy prvku GridView značek by měl vypadat jako:
 
-
 [!code-aspx[Main](custom-formatting-based-upon-data-cs/samples/sample13.aspx)]
 
 Obrázek 9 ukazuje náš postup do této chvíle při prohlížení prostřednictvím prohlížeče.
 
-
 [![Název, kategorie a ceny pro každý produkt obsahuje seznam prvku GridView.](custom-formatting-based-upon-data-cs/_static/image22.png)](custom-formatting-based-upon-data-cs/_static/image21.png)
 
 **Obrázek 9**: GridView uvádí název, kategorie a ceny pro každý produkt ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-cs/_static/image23.png))
-
 
 ## <a name="step-8-programmatically-determining-the-value-of-the-data-in-the-rowdatabound-event-handler"></a>Krok 8: Programové určení hodnoty dat v obslužné rutině události RowDataBound
 
@@ -254,19 +222,15 @@ Když `ProductsDataTable` je vázán na prvku GridView. jeho `ProductsRow` insta
 
 Tato obslužná rutina události je možné vytvořit pomocí stejného postupu jako FormView a prvku DetailsView.
 
-
 ![Vytvořte obslužnou rutinu události pro událost RowDataBound prvku GridView.](custom-formatting-based-upon-data-cs/_static/image24.png)
 
 **Obrázek 10**: Vytvořte obslužnou rutinu události pro prvku GridView `RowDataBound` událostí
 
-
 Vytvoření obslužné rutiny události tímto způsobem způsobí, že následující kód, který automaticky přidá do části kódu stránky ASP.NET:
-
 
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample14.cs)]
 
 Když `RowDataBound` událost je aktivována, obslužná rutina události je předána jako druhý parametr objektu typu `GridViewRowEventArgs`, který má vlastnost s názvem `Row`. Tato vlastnost vrátí odkaz na `GridViewRow` , který byl pouze data vázaná. Pro přístup `ProductsRow` instance je vázán na `GridViewRow` používáme `DataItem` vlastnost takto:
-
 
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample15.cs)]
 
@@ -281,7 +245,6 @@ Při práci s `RowDataBound` obslužná rutina události je důležité mít na 
 
 Protože `EmptyDataRow`, `Header`, `Footer`, a `Pager` řádků nejsou přidružené k `DataSource` záznamu, bude vždy mají `null` hodnotu pro jejich `DataItem` vlastnost. Z tohoto důvodu, než se pokusíte o práci s aktuální `GridViewRow`společnosti `DataItem` vlastnost, nejprve musíte zajišťujeme, že jsme pracujete s `DataRow`. Toho můžete docílit tak, že zkontrolujete `GridViewRow`společnosti `RowType` vlastnost takto:
 
-
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample16.cs)]
 
 ## <a name="step-9-highlighting-the-row-yellow-when-the-unitprice-value-is-less-than-1000"></a>Krok 9: Zvýraznění žlutý při the UnitPrice hodnota řádku je menší než 10,00 USD
@@ -290,19 +253,15 @@ Posledním krokem je prostřednictvím kódu programu zvýraznit celý `GridView
 
 Místo `GridViewID.Rows[index]`, nám může odkazovat na aktuální `GridViewRow` instance v `RowDataBound` pomocí obslužné rutiny události `e.Row`. To znamená, v pořadí zvýrazněte aktuálního `GridViewRow` z instance `RowDataBound` bychom použili obslužné rutiny události:
 
-
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample17.cs)]
 
 Místo nastavení `GridViewRow`společnosti `BackColor` vlastnost přímo, můžeme zůstat u pomocí tříd šablon stylů CSS. Vytvořil jsem třídu šablony stylů CSS s názvem `AffordablePriceEmphasis` , který nastavuje barvu pozadí na žlutou. Dokončené `RowDataBound` následuje obslužné rutiny události:
 
-
 [!code-csharp[Main](custom-formatting-based-upon-data-cs/samples/sample18.cs)]
-
 
 [![Největší dostupnou produkty jsou zvýrazněn žlutou](custom-formatting-based-upon-data-cs/_static/image26.png)](custom-formatting-based-upon-data-cs/_static/image25.png)
 
 **Obrázek 11**: Největší dostupnou produkty jsou zvýrazněn žlutou ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-formatting-based-upon-data-cs/_static/image27.png))
-
 
 ## <a name="summary"></a>Souhrn
 

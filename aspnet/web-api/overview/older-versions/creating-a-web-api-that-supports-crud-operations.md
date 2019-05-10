@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: c125ca47-606a-4d6f-a1fc-1fc62928af93
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
-ms.openlocfilehash: 855c3fa35d82173c87d13adb51e10fd13698ade5
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 3c2a41482b7f9b60a8864b853df23ab5991b6da7
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381351"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65108732"
 ---
 # <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>Povolení operací CRUD v ASP.NET Web API 1
 
@@ -29,7 +29,6 @@ podle [Mike Wasson](https://github.com/MikeWasson)
 > 
 > - Visual Studio 2012
 > - Webové rozhraní API 1 (také funguje s webovým rozhraním API 2)
-
 
 Zastupuje CRUD &quot;vytvoření, čtení, aktualizace a odstraňování,&quot; jsou čtyři základní databázových operací. Mnoho služeb HTTP taky model operace CRUD prostřednictvím REST nebo jako REST API.
 
@@ -52,7 +51,7 @@ Všimněte si, že některé identifikátory URI obsahovat číslo product ID v 
 
 Produkty API definuje identifikátory URI pro dva typy prostředků:
 
-| Prostředek | Identifikátor URI |
+| Resource | Identifikátor URI |
 | --- | --- |
 | Seznam všech produktů. | / api/produkty |
 | Jednotlivé produkty. | / webové rozhraníAPI/produkty/*id* |
@@ -136,7 +135,6 @@ V **přidat kontroler** průvodce, názvu kontroleru &quot;ProductsController&qu
 > [!NOTE]
 > Není nutné převést vaše řadiče do složky s názvem řadiče. Název složky není důležité. je jednoduše pohodlný způsob, jak uspořádat zdrojové soubory.
 
-
 **Přidat kontroler** průvodce vytvořit soubor s názvem ProductsController.cs ve složce řadiče. Pokud tento soubor ještě není otevřený, klikněte dvakrát na soubor otevřete. Přidejte následující **pomocí** – příkaz:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample4.cs)]
@@ -147,7 +145,6 @@ Přidat pole, která obsahuje **IProductRepository** instance.
 
 > [!NOTE]
 > Volání `new ProductRepository()` v řadiči není optimální, protože propojuje kontroleru pro konkrétní implementaci `IProductRepository`. Lepším řešením, naleznete v tématu [použitím překladač závislostí webové rozhraní API](../advanced/dependency-injection.md).
-
 
 ## <a name="getting-a-resource"></a>Získání prostředku
 
@@ -205,7 +202,6 @@ Všimněte si, že je návratový typ metody teď **objekt HttpResponseMessage**
 
 > [!NOTE]
 > V tomto příkladu neověřuje, `Product`. Informace o ověření modelu naleznete v tématu [ověření modelu v rozhraní ASP.NET Web API](../formats-and-model-binding/model-validation-in-aspnet-web-api.md).
-
 
 ## <a name="updating-a-resource"></a>Aktualizuje se prostředek
 

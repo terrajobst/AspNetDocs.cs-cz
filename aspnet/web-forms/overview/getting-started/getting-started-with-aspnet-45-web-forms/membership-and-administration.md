@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 732a2316-e49f-4f72-becd-0cd72f14457e
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/membership-and-administration
 msc.type: authoredcontent
-ms.openlocfilehash: 7263a7d7ee791be8a1369934aac4d091736a658b
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 59f859ea30572fbe66184f29555ac2c5c2f22f82
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59417478"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65132116"
 ---
 # <a name="membership-and-administration"></a>Členství a správa
 
@@ -22,7 +22,6 @@ by [Erik Reitan](https://github.com/Erikre)
 [Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
 > V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 for Web. Visual Studio 2013 [projektu se zdrojovým kódem jazyka C#](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) je k dispozici v této sérii kurzů.
-
 
 V tomto kurzu se dozvíte, jak aktualizovat ukázkové aplikace Wingtip Toys přidat vlastní roli a používat ASP.NET Identity. Je také ukazuje, jak implementovat stránku pro správu ze kterého uživatel s vlastní role můžete přidávat a odebírat produkty z webu.
 
@@ -81,7 +80,6 @@ Výše uvedený kód nejprve vytvoří kontext databáze pro databázi členstv�
 > 
 > Pokud chcete k ukládání dat o členství spolu s daty o produktu, můžete zvážit použití stejné **DbContext** , který jste použili k uložení dat produktu ve výše uvedeném kódu.
 
-
  *Interní* – klíčové slovo je modifikátor přístupu pro typy (například třídy) a členy typů (například metody nebo vlastnosti). Vnitřní typy nebo členy jsou přístupné jenom v souborech, které jsou obsaženy ve stejném sestavení *(.dll* souboru). Když vytváříte aplikaci, soubor sestavení *(.dll*) se vytvoří, která obsahuje kód, který se spustí při spuštění aplikace. 
 
 A `RoleStore` objektu, který poskytuje správu rolí, je založeno na kontext databáze.
@@ -89,7 +87,6 @@ A `RoleStore` objektu, který poskytuje správu rolí, je založeno na kontext d
 > [!NOTE] 
 > 
 > Všimněte si, že `RoleStore` je vytvořen objekt používá obecný `IdentityRole` typu. To znamená, že `RoleStore` je povolen pouze tak, aby obsahovala `IdentityRole` objekty. Také pomocí obecných typů prostředků v paměti jsou zpracovány lépe.
-
 
 Dále `RoleManager` objektu, je vytvořena na základě `RoleStore` objekt, který jste právě vytvořili. `RoleManager` rozhraní API, které lze automaticky uloží změny související s rolemi zpřístupňuje objektu `RoleStore`. `RoleManager` Je povolen pouze tak, aby obsahovala `IdentityRole` objekty, protože tento kód použije `<IdentityRole>` obecného typu.
 
@@ -102,7 +99,6 @@ Dále vytvoříte uživatele "canEditUser" tak, že vytvoříte nový `Applicati
 > [!NOTE] 
 > 
 > Zpracování chyb bude aktualizován v průběhu kurzu "Zpracování chyb technologie ASP.NET" dále v této sérii kurzů.
-
 
 Při příštím spuštění aplikace uživatel s názvem "canEditUser" se přidá jako roli s názvem "hodnoty canEdit" aplikace. Později v tomto kurzu se přihlásíte jako uživatele "canEditUser" a zobrazte další možnosti, které budou přidány během tohoto kurzu. Rozhraní API podrobnosti o ASP.NET Identity najdete v tématu [Microsoft.AspNet.Identity Namespace](https://msdn.microsoft.com/library/microsoft.aspnet.identity(v=vs.111).aspx). Další podrobnosti o inicializaci systému ASP.NET Identity najdete v tématu [AspnetIdentitySample](https://github.com/rustd/AspnetIdentitySample/blob/master/AspnetIdentitySample/App_Start/IdentityConfig.cs).
 

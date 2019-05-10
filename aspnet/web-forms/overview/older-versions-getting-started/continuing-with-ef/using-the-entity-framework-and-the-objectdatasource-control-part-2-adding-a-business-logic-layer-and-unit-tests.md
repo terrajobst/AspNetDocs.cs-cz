@@ -8,19 +8,18 @@ ms.date: 01/26/2011
 ms.assetid: efb0e677-10b8-48dc-93d3-9ba3902dd807
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests
 msc.type: authoredcontent
-ms.openlocfilehash: 4d436b0e5d605027cfcf5243f615f9ac167c5888
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 24344cc33d7c26d7c408db26c0530ef2c708a7d3
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59388046"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133456"
 ---
 # <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests"></a>Použití rozhraní Entity Framework 4.0 a ovládací prvek ObjectDataSource, 2. část: Přidání vrstvy obchodní logiky a testy jednotek
 
 podle [Petr Dykstra](https://github.com/tdykstra)
 
 > V této sérii kurzů staví na Contoso University webovou aplikaci, která se vytvořila [Začínáme s Entity Framework 4.0](https://asp.net/entity-framework/tutorials#Getting%20Started) série kurzů. Pokud nebyla dokončena v předchozích kurzech, jako výchozí bod pro účely tohoto kurzu můžete [stáhnout aplikaci](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) , kterou by jste vytvořili. Můžete také [stáhnout aplikaci](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) , který vytvoří kompletní série kurzů. Pokud máte dotazy týkající se těchto kurzů, můžete je publikovat [fórum ASP.NET Entity Framework](https://forums.asp.net/1227.aspx).
-
 
 V předchozím kurzu jste vytvořili vícevrstvou webovou aplikaci pomocí rozhraní Entity Framework a `ObjectDataSource` ovládacího prvku. Tento kurz ukazuje, jak přidat obchodní logiky a zajistit přitom ochranu vrstvy obchodní logiky (BLL) a přístup k datům layer (DAL) samostatné a ukazuje, jak vytvořit automatizované testy jednotky pro BLL.
 
@@ -72,7 +71,6 @@ CRUD metody, které volají třídu úložiště a dva konstruktory umožňují 
 
 > [!NOTE]
 > Objekty entity jsou technicky vzato stále není ignorujících, protože při vytváření instance ze tříd, které dědí z rozhraní Entity Framework `EntityObject` třídy. Pro dokončení trvalost neznalosti, můžete použít *prostý starší objekty CLR*, nebo *POCOs*, místo objekty, které dědí `EntityObject` třídy. Použití POCOs je nad rámec tohoto kurzu. Další informace najdete v tématu [testovatelnost a Entity Framework 4.0](https://msdn.microsoft.com/library/ff714955.aspx) na webu MSDN.)
-
 
 Teď se můžete připojit `ObjectDataSource` ovládacích prvků pro obchodní logiku místo na třídě k úložišti a ověřte, že vše funguje stejně jako dříve.
 

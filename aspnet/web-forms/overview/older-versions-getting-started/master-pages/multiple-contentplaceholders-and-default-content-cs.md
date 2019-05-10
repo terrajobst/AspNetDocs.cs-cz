@@ -8,12 +8,12 @@ ms.date: 05/21/2008
 ms.assetid: b9b9798b-027d-46cc-9636-473378e437ac
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2900c9d519c445e0f732f21a3d48cd082d0116ca
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2196446bf870a3b7ceba01656d0415deac0c7124
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59413149"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65106889"
 ---
 # <a name="multiple-contentplaceholders-and-default-content-c"></a>Několik prvků ContentPlaceHolder a výchozí obsah (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/e/e/f/eef369f5-743a-4a52-908f-b6532c4ce0a4/ASPNET_MasterPages_Tutorial_02_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/8/f/6/8f6349e4-6554-405a-bcd7-9b094ba5089a/ASPNET_MasterPages_Tutorial_02_CS.pdf)
 
 > Zkoumá, jak přidat více zástupné znaky obsahu místě na hlavní stránku, jakož i jak určit výchozí obsah v obsahu místo zástupné znaky.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -36,19 +35,15 @@ Jak dokazuje dvou ovládacích prvků ContentPlaceHolder v `Site.master`, hlavn�
 
 Obrázek 1 ukazuje `Default.aspx` při prohlížení prostřednictvím prohlížeče. Oblast červeně v kruhu je odpovídající kód specifický pro stránku `MainContent`.
 
-
 [![Oblasti v kroužku ukazuje oblasti aktuálně přizpůsobitelné na základě po stránkách](multiple-contentplaceholders-and-default-content-cs/_static/image2.png)](multiple-contentplaceholders-and-default-content-cs/_static/image1.png)
 
 **Obrázek 01**: Na základě stránku po stránce se zobrazí v oblasti aktuálně přizpůsobitelné Circled oblasti ([kliknutím ji zobrazíte obrázek v plné velikosti](multiple-contentplaceholders-and-default-content-cs/_static/image3.png))
 
-
 Představte si, že kromě oblasti je znázorněno na obrázku 1, musíme také přidat položky specifické pro stránku do levého sloupce pod poznatky a novinky oddíly. K tomu, přidáme jiný ovládací prvek ContentPlaceHolder na stránce předlohy. Pokud chcete postupovat s námi, otevřete `Site.master` hlavní stránky v aplikaci Visual Web Developer a pak přetáhněte ovládací prvek ContentPlaceHolder z panelu nástrojů na Návrhář za část zprávy. Nastavte ContentPlaceHolder `ID` k `LeftColumnContent`.
-
 
 [![Přidání ovládacího prvku ContentPlaceHolder na levém sloupci stránky předlohy](multiple-contentplaceholders-and-default-content-cs/_static/image5.png)](multiple-contentplaceholders-and-default-content-cs/_static/image4.png)
 
 **Obrázek 02**: Přidání ovládacího prvku ContentPlaceHolder na stránce předlohy levý sloupec ([kliknutím ji zobrazíte obrázek v plné velikosti](multiple-contentplaceholders-and-default-content-cs/_static/image6.png))
-
 
 Přidání `LeftColumnContent` ContentPlaceHolder na stránce předlohy, jsme můžete definovat obsah pro tuto oblast na základě stránku po stránce zahrnutím obsahem ovládací prvek na stránce, jehož `ContentPlaceHolderID` je nastavena na `LeftColumnContent`. Zkoumáme, tento proces v kroku 2.
 
@@ -66,11 +61,9 @@ Zadejte nějaký obsah do ovládacího prvku obsahu odkazující `MainContent` p
 
 Po přidání tohoto kódu, najdete na stránce prostřednictvím prohlížeče. Jak ukazuje obrázek 3 kód umístí do `Content3` ovládací prvek obsahu se zobrazí v levém sloupci pod oddíl novinek (v kruhu červeně). Kód umístí do `Content2` se zobrazí v pravé části stránky (v kruhu modře).
 
-
 [![V levém sloupci nyní zahrnuje obsah specifický pro stránku pod oddílem novinky](multiple-contentplaceholders-and-default-content-cs/_static/image8.png)](multiple-contentplaceholders-and-default-content-cs/_static/image7.png)
 
 **Obrázek 03**: Vlevo sloupce teď zahrnuje specifické pro stránku obsahu pod the oddíl novinek ([kliknutím ji zobrazíte obrázek v plné velikosti](multiple-contentplaceholders-and-default-content-cs/_static/image9.png))
-
 
 ### <a name="defining-content-in-existing-content-pages"></a>Definování obsahu ve stávajících obsahu stránek
 
@@ -80,11 +73,9 @@ Na rozdíl od většiny ovládacích prvků technologie ASP.NET v panelu nástro
 
 Chcete-li přidat ovládací prvek obsahu pro `LeftColumnContent` ContentPlaceHolder na `About.aspx`rozbalte ContentPlaceHolder jeho inteligentních značek a klikněte na odkaz vytvořit vlastní obsah.
 
-
 [![Zobrazení návrhu pro About.aspx ukazuje LeftColumnContent ContentPlaceHolder](multiple-contentplaceholders-and-default-content-cs/_static/image11.png)](multiple-contentplaceholders-and-default-content-cs/_static/image10.png)
 
 **Obrázek 04**: Zobrazení návrhu pro `About.aspx` ukazuje `LeftColumnContent` ContentPlaceHolder ([kliknutím ji zobrazíte obrázek v plné velikosti](multiple-contentplaceholders-and-default-content-cs/_static/image12.png))
-
 
 Kliknutím na vytvořit vlastní obsah odkaz generuje nezbytné obsah ovládacího prvku na stránku a nastaví její `ContentPlaceHolderID` vlastnost ContentPlaceHolder jeho `ID`. Například klepnutím na odkaz na vytvořit vlastní obsah `LeftColumnContent` v oblasti `About.aspx` na stránku přidá následující kód:
 
@@ -96,11 +87,9 @@ ASP.NET nevyžaduje, aby všechny obsahu stránky obsahují ovládací prvky obs
 
 V současné době `Default.aspx` obsahuje dva ovládací prvky obsahu pro `head` a `MainContent` prvků ContentPlaceHolder; nemá ovládací prvek obsahu pro `LeftColumnContent`. V důsledku toho, kdy `Default.aspx` je vykreslen `LeftColumnContent` ContentPlaceHolder jeho výchozí obsah se používá. Protože ještě musíme definovat žádné výchozí obsah pro tento prvek ContentPlaceHolder, výsledkem je, že žádné značky je vygenerován pro tuto oblast. Ověřte toto chování, najdete v tématu `Default.aspx` prostřednictvím prohlížeče. Jak je vidět na obrázku 5, žádné značky je vygenerován v levém sloupci pod oddíl novinek.
 
-
 [![Žádný obsah je vykreslen pro LeftColumnContent ContentPlaceHolder](multiple-contentplaceholders-and-default-content-cs/_static/image14.png)](multiple-contentplaceholders-and-default-content-cs/_static/image13.png)
 
 **Obrázek 05**: Žádný obsah je vykreslen pro `LeftColumnContent` ContentPlaceHolder ([kliknutím ji zobrazíte obrázek v plné velikosti](multiple-contentplaceholders-and-default-content-cs/_static/image15.png))
-
 
 ## <a name="step-3-specifying-default-content-in-the-master-page"></a>Krok 3: Určení výchozí obsah na stránce předlohy
 
@@ -113,7 +102,6 @@ Lepším řešením je definovat jako ContentPlaceHolder jeho výchozí obsah te
 > [!NOTE]
 > Zbývající část tohoto kurzu aktualizuje našeho webu zahrnout rozhraní přihlášení v levém sloupci pro všechny stránky, ale na přihlašovací stránku. V tomto kurzu ale nezkoumá konfigurace webu pro podporu uživatelských účtů. Další informace o tomto tématu najdete Moje [ověřování pomocí formulářů, autorizace, uživatelských účtů a rolí](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md) kurzy.
 
-
 ### <a name="adding-a-contentplaceholder-and-specifying-its-default-content"></a>Přidávání ContentPlaceHolder a určení výchozí obsah
 
 Otevřít `Site.master` stránku předlohy a přidejte následující kód do levého sloupce mezi `DateDisplay` popisek a praktických poznatcích části:
@@ -122,11 +110,9 @@ Otevřít `Site.master` stránku předlohy a přidejte následující kód do le
 
 Po přidání tento kód by měl vypadat podobně jako na obrázku 6 návrhové zobrazení hlavní stránky.
 
-
 [![Stránky předlohy se stránkou obsahuje ovládací prvek Login](multiple-contentplaceholders-and-default-content-cs/_static/image17.png)](multiple-contentplaceholders-and-default-content-cs/_static/image16.png)
 
 **Obrázek 06**: Stránky předlohy se stránkou obsahuje ovládací prvek Login ([kliknutím ji zobrazíte obrázek v plné velikosti](multiple-contentplaceholders-and-default-content-cs/_static/image18.png))
-
 
 Tento prvek ContentPlaceHolder `QuickLoginUI`, má ovládací prvek webové přihlášení jako výchozí obsah. Ovládací prvek Login zobrazí uživatelské rozhraní, které výzvu k zadání uživatelského jména a hesla společně s tlačítko přihlásit. Po kliknutí na tlačítko přihlásit, ovládací prvek Login interně ověřuje přihlašovací údaje uživatele do rozhraní API služby členství. Pokud chcete použít tento ovládací prvek Login v praxi, musíte nakonfigurovat tak, aby používal členství. Toto téma je nad rámec tohoto kurzu; získat Moje [ověřování pomocí formulářů, autorizace, uživatelských účtů a rolí](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md) kurzy pro další informace o vytváření webové aplikace, která podporuje uživatelské účty.
 
@@ -144,11 +130,9 @@ Po definování obsah `MainContent` a `LeftColumnContent` oblastí, deklarativn�
 
 Obrázek 7 znázorňuje tuto stránku při prohlížení prostřednictvím prohlížeče. Protože tato stránka udává ovládací prvek obsahu pro `QuickLoginUI` ContentPlaceHolder, přepíše výchozí obsahu zadaného na stránce předlohy. Výsledkem je, že ovládací prvek Login zobrazí v zobrazení (viz obrázek 6) není na této stránce vykresleno návrhu stránky předlohy.
 
-
 [![Na přihlašovací stránku Represses QuickLoginUI ContentPlaceHolder výchozí obsah](multiple-contentplaceholders-and-default-content-cs/_static/image20.png)](multiple-contentplaceholders-and-default-content-cs/_static/image19.png)
 
 **Obrázek 07**: Přihlašovací stránka Represses `QuickLoginUI` ContentPlaceHolder jeho výchozí obsah ([kliknutím ji zobrazíte obrázek v plné velikosti](multiple-contentplaceholders-and-default-content-cs/_static/image21.png))
-
 
 ### <a name="using-the-default-content-in-new-pages"></a>Použití výchozí obsah v nové stránky
 
@@ -160,11 +144,9 @@ Chcete-li odebrat ovládací prvek obsahu, můžete ručně odstranit jeho dekla
 
 Obrázek 8 ukazuje `Default.aspx` při prohlížení prostřednictvím prohlížeče. Vzpomeňte si, že `Default.aspx` má jenom dvě ovládacích prvků obsahu uvedených v jeho deklarativním označení – jeden pro `head` a jeden pro `MainContent`. V důsledku toho výchozí obsah pro `LeftColumnContent` a `QuickLoginUI` prvků ContentPlaceHolder jsou zobrazeny.
 
-
 [![Zobrazují výchozí obsah pro LeftColumnContent a prvků ContentPlaceHolder QuickLoginUI](multiple-contentplaceholders-and-default-content-cs/_static/image23.png)](multiple-contentplaceholders-and-default-content-cs/_static/image22.png)
 
 **Obrázek 08**: Části výchozí obsah pro `LeftColumnContent` a `QuickLoginUI` prvků ContentPlaceHolder zobrazují ([kliknutím ji zobrazíte obrázek v plné velikosti](multiple-contentplaceholders-and-default-content-cs/_static/image24.png))
-
 
 ## <a name="summary"></a>Souhrn
 
