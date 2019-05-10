@@ -8,12 +8,12 @@ ms.date: 07/17/2006
 ms.assetid: c9bd10a7-eff8-4d8c-bec9-963c2aef2d6e
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f38f217b0a7c7e656cf46d442c98949be5d43b62
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 8740f60f905d59b504c6a63f46b07fca17c8b0d8
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59385563"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134521"
 ---
 # <a name="examining-the-events-associated-with-inserting-updating-and-deleting-vb"></a>Zkoumání událostí spojených s vložením, aktualizací a odstraněním (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_17_VB.exe) nebo [stahovat PDF](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/datatutorial17vb1.pdf)
 
 > V tomto kurzu, kterou prozkoumáme použití událostí, ke kterým dochází před, během a po vložení aktualizaci nebo odstranění operace datům v technologii ASP.NET ovládací prvek webu. Také jsme zobrazí přizpůsobení úpravy rozhraní aktualizovat pouze podmnožinu polí produktů.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -36,11 +35,9 @@ Během této posloupnosti kroků, aktivuje počet událostí, umožňuje nám vy
 
 Obrázek 1 znázorňuje tuto řadu událostí a kroků při aktualizaci GridView. Vzor události na obrázku 1 není jedinečný pro aktualizaci GridView. Vkládání, aktualizaci nebo odstranění dat z prvku GridView, DetailsView nebo FormView vysráží stejné pořadí provedení před instrumentací a po ní úroveň události pro ovládací prvek webových dat a ObjectDataSource.
 
-
 [![Série před a po událostech Fire při aktualizaci dat v GridView](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image2.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image1.png)
 
 **Obrázek 1**: Řada před a po událostech Fire při aktualizaci dat v GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image3.png))
-
 
 V tomto kurzu, kterou prozkoumáme pomocí těchto událostí pro rozšíření integrovaných vkládání aktualizaci a odstraňování možnosti data technologie ASP.NET webové ovládací prvky. Také jsme zobrazí přizpůsobení úpravy rozhraní aktualizovat pouze podmnožinu polí produktů.
 
@@ -52,31 +49,25 @@ Pokud nám chcete poskytnout data webový ovládací prvek, který umožňuje ko
 
 Konkrétně můžeme vytvořit stránku, která zobrazuje jenom `ProductName` a `UnitPrice` pole upravitelné prvku GridView. Úpravy rozhraní prvku GridView pouze umožní uživateli aktualizovat dvě zobrazené pole `ProductName` a `UnitPrice`. Protože tato editační rozhraní poskytuje pouze podmnožinu pole produktu, potřebujeme buď vytvořit ObjectDataSource, používající stávající BLL `UpdateProduct` metoda a má chybějící hodnoty polí produkt programově v jeho `Updating` událostí Obslužná rutina nebo jsme muset vytvořit novou metodu BLL, která očekává pouze podmnožinu polí definovaných v prvku GridView. Pro účely tohoto kurzu, můžeme použít druhou možnost a přetížit `UpdateProduct` metody, ten, který má v pouhých tří vstupní parametry: `productName`, `unitPrice`, a `productID`:
 
-
 [!code-vb[Main](examining-the-events-associated-with-inserting-updating-and-deleting-vb/samples/sample1.vb)]
 
 Jako původní `UpdateProduct` metoda, toto přetížení začíná tak, že zkontrolujete, jestli je v databázi se zadaným produktem `ProductID`. Pokud ne, vrátí `False`, což indikuje, že žádost o aktualizaci informace o produktu se nezdařilo. V opačném případě aktualizuje existující záznam produktu `ProductName` a `UnitPrice` pole odpovídajícím způsobem a potvrdí aktualizace voláním objektu TableAdapter `Update()` metodu `ProductsRow` instance.
 
 Tato uveďte do našich `ProductsBLL` třídy, jsme připraveni vytvořit zjednodušené rozhraní ovládacího prvku GridView. Otevřít `DataModificationEvents.aspx` v `EditInsertDelete` složky a přidat na stránku GridView. Vytvoření nového prvku ObjectDataSource a nakonfigurujte ho na použití `ProductsBLL` třídy s jeho `Select()` mapování metody `GetProducts` a jeho `Update()` metoda mapování `UpdateProduct` přetížení, které přijímá pouze `productName`, `unitPrice`, a `productID` vstupní parametry. Obrázek 2 ukazuje průvodce vytvořit zdroj dat při mapování ObjectDataSource `Update()` metodu `ProductsBLL` vaší třídy nový `UpdateProduct` přetížení metody.
 
-
 [![Map – Metoda Update() ObjectDataSource nové UpdateProduct přetížení](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image5.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image4.png)
 
 **Obrázek 2**: Mapování ObjectDataSource `Update()` metodu pro nový `UpdateProduct` přetížení ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image6.png))
 
-
 Vzhledem k tomu, že náš příklad bude zpočátku právě potřebujete mít možnost upravovat data, ale ne pro vložení nebo odstranění záznamů, věnujte chvíli explicitně určit ObjectDataSource `Insert()` a `Delete()` metody by neměly být namapované na žádnou `ProductsBLL` metody třídy tak, že přejdete na kartách INSERT a DELETE a zvolíte (žádný) z rozevíracího seznamu.
-
 
 [![Zvolte z rozevíracího seznamu pro vložení a odstranění karty (žádný)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image8.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image7.png)
 
 **Obrázek 3**: Zvolte (žádný) z rozevíracího seznamu pro vložení a odstranění karty ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image9.png))
 
-
 Po dokončení tohoto průvodce, zaškrtněte políčko Povolit úpravy z inteligentních značek v prvku GridView.
 
 Dokončení průvodce vytvořit zdroj dat a vazby, která do prvku GridView Visual Studio vytvořila deklarativní syntaxe pro oba ovládací prvky. Přejděte do zobrazení zdroje ke kontrole ObjectDataSource deklarativní, který je uveden níže:
-
 
 [!code-aspx[Main](examining-the-events-associated-with-inserting-updating-and-deleting-vb/samples/sample2.aspx)]
 
@@ -87,25 +78,19 @@ Všimněte si, že prvku ObjectDataSource `OldValuesParameterFormatString` je na
 > [!NOTE]
 > Pokud jednoduše smažte `OldValuesParameterFormatString` hodnota vlastnosti z okna vlastnosti v okně návrhu, vlastnost zůstanou uchovány deklarativní syntaxe, ale bude nastavena na prázdný řetězec. Buď odeberte vlastnost úplně z deklarativní syntaxe, nebo v okně Vlastnosti nastavte hodnotu na výchozí hodnotu `{0}`.
 
-
 Když prvku ObjectDataSource má jenom `UpdateParameters` pro název, cena a ID produktu Visual Studio přidala Vlastnost BoundField nebo třídě CheckBoxField v prvku GridView. pro každé pole produktu.
-
 
 [![GridView obsahuje vlastnost BoundField nebo třídě CheckBoxField pro každé pole produktu](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image11.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image10.png)
 
 **Obrázek 4**: GridView obsahuje vlastnost BoundField nebo třídě CheckBoxField pro každé pole produktu ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image12.png))
 
-
 Když koncový uživatel upravuje produktu a jeho aktualizace tlačítko klikne, zobrazí prvku GridView těchto polí, která nejsou jen pro čtení. Potom nastaví hodnotu vlastnosti odpovídající parametr v prvku ObjectDataSource `UpdateParameters` kolekce k hodnotě zadané uživatelem. Pokud se nejedná o odpovídající parametr, prvku GridView. přidá jej do kolekce. Proto pokud naše GridView obsahuje BoundFields a CheckBoxFields pro všechna pole produkt, ObjectDataSource skončí volání `UpdateProduct` přetížení přebírající ve všech těchto parametrů, přestože, který prvku ObjectDataSource deklarativní určuje jenom tři vstupních parametrů (viz obrázek 5). Podobně, pokud je kombinace bez – jen pro čtení produktu se pole v prvku GridView, který neodpovídá instalovanému vstupní parametry pro `UpdateProduct` přetížení, bude vyvolána výjimka při pokusu o aktualizaci.
-
 
 [![GridView se přidat parametry do kolekce UpdateParameters ObjectDataSource](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image14.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image13.png)
 
 **Obrázek 5**: GridView se přidat parametry do ObjectDataSource `UpdateParameters` kolekce ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image15.png))
 
-
 K zajištění, že prvku ObjectDataSource vyvolá `UpdateProduct` přetížení, které přijímá pouze produkt název, cena a ID, potřebujeme k omezení prvku GridView s tím, že upravitelná pole pro jenom `ProductName` a `UnitPrice`. Toho můžete docílit tak, že odeberete jiné BoundFields a CheckBoxFields, tak, že nastavíte ty ostatní pole `ReadOnly` vlastnost `True`, nebo kombinaci obou. Pro účely tohoto kurzu můžeme jednoduše odebrat všechna pole prvku GridView s výjimkou `ProductName` a `UnitPrice` BoundFields, po jejímž uplynutí bude vypadat prvku GridView deklarativní:
-
 
 [!code-aspx[Main](examining-the-events-associated-with-inserting-updating-and-deleting-vb/samples/sample3.aspx)]
 
@@ -113,54 +98,42 @@ I v případě, `UpdateProduct` přetížení očekává tři parametry, máme d
 
 Naše prvku GridView, spolu s `UpdateProduct` přetížení, umožňuje uživateli upravit jenom název a cena produktu bez ztráty v ostatních polích produktu.
 
-
 [![Rozhraní umožňuje úpravy jenom název a produktu cena](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image17.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image16.png)
 
 **Obrázek 6**: Rozhraní umožňuje úpravy jenom název a produktu cena ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image18.png))
 
-
 > [!NOTE]
 > Jak je popsáno v předchozím kurzu, je životně důležitá, že GridView s zobrazení stav povoleno (výchozí chování). Pokud nastavíte GridView s `EnableViewState` vlastnost `false`, spustíte riskujete souběžných uživatelů zaznamenává neúmyslnému odstranění nebo úpravy. Zobrazit [upozornění: Souběžnosti vydávání s ASP.NET 2.0 prvků GridViews/DetailsView/FormViews tuto podporu úpravy nebo odstranění a jejichž stav zobrazení je zakázané](http://scottonwriting.net/sowblog/posts/10054.aspx) Další informace.
-
 
 ## <a name="improving-theunitpriceformatting"></a>Zlepšení`UnitPrice`formátování
 
 Zatímco GridView příklad znázorňuje obrázek 6 funguje `UnitPrice` pole není vůbec ve formátu, což vede k zobrazení ceny, které se nejsou uvedeny žádné měny symboly a má čtyři desetinná místa. Použít měny formátování bez možností úprav řádků, stačí nastavit `UnitPrice` Vlastnost BoundField `DataFormatString` vlastnost `{0:c}` a jeho `HtmlEncode` vlastnost `False`.
 
-
 [![Odpovídajícím způsobem nastavit vlastnosti HtmlEncode a DataFormatString pole UnitPrice](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image20.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image19.png)
 
 **Obrázek 7**: Nastavte `UnitPrice`společnosti `DataFormatString` a `HtmlEncode` vlastnosti odpovídajícím způsobem ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image21.png))
 
-
 Díky této změně bez možností úprav řádků formátování ceny jako měnu; upravená řádek, ale stále zobrazuje hodnotu bez symbolu měny a čtyři desetinná místa.
-
 
 [![Bez možností úprav řádků jsou teď naformátované jako hodnoty měny](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image23.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image22.png)
 
 **Obrázek 8**: Bez možností úprav řádků jsou nyní ve formátu jako hodnoty měny ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image24.png))
 
-
 Formátování podle pokynů `DataFormatString` vlastnost můžete použít na úpravy rozhraní tak, že nastavíte vlastnost BoundField `ApplyFormatInEditMode` vlastnost `True` (výchozí hodnota je `False`). Tuto vlastnost nastavte na za chvíli `True`.
-
 
 [![Nastavte vlastnost UnitPrice BoundField ApplyFormatInEditMode vlastnost na hodnotu True](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image26.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image25.png)
 
 **Obrázek 9**: Nastavte `UnitPrice` Vlastnost BoundField `ApplyFormatInEditMode` vlastnost `True` ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image27.png))
 
-
 S touto změnou hodnoty `UnitPrice` zobrazí v upravený řádek je formát měny.
-
 
 [![Upravovaný řádek UnitPrice hodnota je teď ve formátu měny](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image29.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image28.png)
 
 **Obrázek 10**: Upravovaný řádek `UnitPrice` hodnota je nyní formátu měny ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image30.png))
 
-
 Symbol měny v textovém poli však aktualizace produktu, jako je $19.00 vyvolá `FormatException`. Pokusy prvku GridView přiřadit hodnoty uživatelem zadané prvku ObjectDataSource `UpdateParameters` kolekce nelze převést `UnitPrice` řetězce "$19.00" do `Decimal` vyžaduje parametr (viz obrázek 11). Chcete-li to napravit můžeme vytvořit obslužnou rutinu události pro prvku GridView `RowUpdating` události a ho parsovat uživatelem zadané `UnitPrice` jako formátu měny `Decimal`.
 
 Prvku GridView `RowUpdating` události přijímá jako svůj druhý parametr objektu typu [GridViewUpdateEventArgs](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridviewupdateeventargs(VS.80).aspx), což zahrnuje `NewValues` slovníku jako jeden z jeho vlastnosti, které obsahuje uživatelem zadané hodnoty připravené k odeslání přiřazená ObjectDataSource `UpdateParameters` kolekce. Jsme můžete přepsat existující `UnitPrice` hodnotu `NewValues` kolekce s desetinnou hodnotou analyzovat s následujícími řádky kódu ve formátu měny `RowUpdating` obslužné rutiny události:
-
 
 [!code-vb[Main](examining-the-events-associated-with-inserting-updating-and-deleting-vb/samples/sample4.vb)]
 
@@ -168,11 +141,9 @@ Pokud uživatel dodal `UnitPrice` hodnotu (například "$19.00"), tato hodnota j
 
 Obrázku 11 můžete vidět potíže způsobené symboly měny v uživatelem zadané `UnitPrice`, spolu s jak prvku GridView `RowUpdating` obslužná rutina události je možné využít správně analyzovat tyto vstup.
 
-
 [![Upravovaný řádek UnitPrice hodnota je teď ve formátu měny](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image32.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image31.png)
 
 **Obrázek 11**: Upravovaný řádek `UnitPrice` hodnota je nyní formátu měny ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image33.png))
-
 
 ## <a name="step-2-prohibitingnull-unitprices"></a>Krok 2: Zákaz`NULL UnitPrices`
 
@@ -182,34 +153,27 @@ Zatímco databáze nakonfigurována, aby umožňovala `NULL` hodnoty v `Products
 
 Začněte přidáním ovládacího prvku popisku webovou stránku s názvem `MustProvideUnitPriceMessage`. Tento ovládací prvek popisku se zobrazí, pokud se uživateli nepodaří zadat `UnitPrice` hodnotu při aktualizaci produktu. Nastavte jeho `Text` vlastnost "Produktu musí poskytnout cenu." Vytvořili jste taky novou třídu šablony stylů CSS v `Styles.css` s názvem `Warning` s následující definice:
 
-
 [!code-css[Main](examining-the-events-associated-with-inserting-updating-and-deleting-vb/samples/sample5.css)]
 
 Nakonec nastavte jeho `CssClass` vlastnost `Warning`. V tomto okamžiku návrháře by se zobrazit upozornění v červené, tučné, kurzíva, velmi velké velikosti písma nad prvku GridView, jak ukazuje obrázek 12.
-
 
 [![Popisek se přidala nad prvku GridView.](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image35.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image34.png)
 
 **Obrázek 12**: Popisek má byla přidána nad prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image36.png))
 
-
 Ve výchozím nastavení, by měl být skrytý tento popisek, takže nastavte jeho `Visible` vlastnost `False` v `Page_Load` obslužné rutiny události:
-
 
 [!code-vb[Main](examining-the-events-associated-with-inserting-updating-and-deleting-vb/samples/sample6.vb)]
 
 Pokud se uživatel pokusí o aktualizaci produktu bez zadání `UnitPrice`, chceme zrušit aktualizaci a zobrazit popisek upozornění. Posílení prvku GridView `RowUpdating` obslužná rutina události následujícím způsobem:
 
-
 [!code-vb[Main](examining-the-events-associated-with-inserting-updating-and-deleting-vb/samples/sample7.vb)]
 
 Pokud se uživatel pokusí uložit produktu bez zadání cenu, aktualizace se zrušila, a zobrazí se zpráva užitečné. Zatímco databáze (a obchodní logiky) umožňuje `NULL` `UnitPrice` s, konkrétní stránku ASP.NET tak není.
 
-
 [![Uživatel nemůže opustit UnitPrice prázdné](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image38.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image37.png)
 
 **Obrázek 13**: Uživatel nemůže opustit `UnitPrice` prázdné ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image39.png))
-
 
 Zatím jsme viděli, jak pomocí prvku GridView `RowUpdating` událostí prostřednictvím kódu programu měnit hodnoty parametrů přiřazená ObjectDataSource `UpdateParameters` kolekce a jak zrušit aktualizaci zpracovat úplně se vynechá. Tyto koncepty přenesou na ovládacím prvku DetailsView a FormView a platí také pro vložení a odstranění.
 
@@ -228,19 +192,15 @@ Ke konfiguraci ObjectDataSource, vyberte odkaz Konfigurovat zdroj dat z jeho int
 
 Ponechte `Insert()` metody odkazující na `AddProduct` metody, ale znovu nastavit SMAZAT kartu rozevíracího seznamu na (žádný).
 
-
 [![Nastavení rozevíracího seznamu na kartě Vložení AddProduct – metoda](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image41.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image40.png)
 
 **Obrázek 14**: Nastavte na kartě Vložení rozevíracího seznamu `AddProduct` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image42.png))
-
 
 [![Nastavte SMAZAT kartu rozevíracího seznamu na (žádný)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image44.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image43.png)
 
 **Obrázek 15**: Odstranit kartu rozevíracího seznamu na (žádný) sad ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image45.png))
 
-
 Po provedení těchto změn, deklarativní syntaxe ObjectDataSource rozšíří na `InsertParameters` kolekce, jak je znázorněno níže:
-
 
 [!code-aspx[Main](examining-the-events-associated-with-inserting-updating-and-deleting-vb/samples/sample8.aspx)]
 
@@ -248,32 +208,25 @@ Znovu spustit průvodce přidat zpět `OldValuesParameterFormatString` vlastnost
 
 Ovládacím prvkem ObjectDataSource vkládání zajišťuje inteligentních značek v ovládacím prvku DetailsView teď bude zahrnovat zaškrtávací políčko Povolit vložení; Vraťte se do návrháře a zaškrtněte tuto možnost. V dalším kroku Zredukovat ovládacím prvku DetailsView, takže má jenom dvě BoundFields - `ProductName` a `UnitPrice` – a CommandField. Deklarativní syntaxe ovládacím prvku DetailsView v tomto okamžiku by mělo vypadat jako:
 
-
 [!code-aspx[Main](examining-the-events-associated-with-inserting-updating-and-deleting-vb/samples/sample9.aspx)]
 
 Obrázek 16 ukazuje tuto stránku, když v tomto okamžiku zobrazit pomocí prohlížeče. Jak je vidět, ovládacím prvku DetailsView se zobrazuje název a cena první produktu (Chai). Chceme, ale vkládání rozhraní, které poskytuje prostředky pro uživatele pro rychlé přidání nového produktu do databáze.
-
 
 [![Ovládacím prvku DetailsView se aktuálně zobrazují v režimu jen pro čtení](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image47.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image46.png)
 
 **Obrázek 16**: Ovládacím prvku DetailsView se aktuálně zobrazují v režimu jen pro čtení ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image48.png))
 
-
 Chcete-li zobrazit ovládacím prvku DetailsView. v režimu vkládání musíme nastavit `DefaultMode` vlastnost `Inserting`. To vykreslí ovládacím prvku DetailsView. v režimu vkládání, když uživatel poprvé a udržuje ho došlo po vložení nového záznamu. Jak ukazuje obrázek 17 takové DetailsView poskytuje rychlé rozhraní pro přidání nového záznamu.
-
 
 [![Ovládacím prvku DetailsView poskytuje rozhraní pro rychlé přidání nového produktu](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image50.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image49.png)
 
 **Obrázek 17**: Ovládacím prvku DetailsView poskytuje rozhraní pro rychlé přidání nového produktu ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image51.png))
 
-
 Když uživatel zadá název produktu a cena (například "Acme Water" a 1,99 jako obrázek 17) a klikne na tlačítko Vložit, vyplývá zpětné volání a začíná vkládání pracovního postupu, ukončené v novém záznamu produktu se přidávají do databáze. Ovládacím prvku DetailsView udržuje jeho vkládání rozhraní a prvku GridView je automaticky znovu připojeno ke zdroji dat tak, aby obsahovaly nového produktu, jak ukazuje obrázek 18.
-
 
 ![Produkt](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image52.png)
 
 **Obrázek 18**: Produkt "Acme Water" se přidala do databáze
-
 
 Zatímco GridView v obrázek 18, nezobrazí produktu pole chybí z rozhraní DetailsView `CategoryID`, `SupplierID`, `QuantityPerUnit`, a tak dále jsou přiřazeny `NULL` databáze hodnoty. Vidíte to provedením následujících kroků:
 
@@ -284,11 +237,9 @@ Zatímco GridView v obrázek 18, nezobrazí produktu pole chybí z rozhraní Det
 
 Tím se zobrazí všechny záznamy v `Products` tabulky. Obrázek 19 ukazuje, všechny sloupce náš nový produkt jiného než `ProductID`, `ProductName`, a `UnitPrice` mají `NULL` hodnoty.
 
-
 [![Produktu pole není k dispozici v ovládacím prvku DetailsView jsou přiřazeny hodnoty NULL](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image54.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image53.png)
 
 **Obrázek 19**: Produktu pole není k dispozici v ovládacím prvku DetailsView jsou přiřazeny `NULL` hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image55.png))
-
 
 Může být vhodné poskytnout jiné než výchozí hodnotu `NULL` pro jeden nebo více z těchto hodnot sloupce, buď protože `NULL` není nejvhodnější výchozí nebo proto, že neumožňuje přímo v samotném sloupci databáze `NULL` s. Provedete to tak jsme můžete prostřednictvím kódu programu nastavit hodnoty parametrů ovládacím prvku DetailsView `InputParameters` kolekce. Toto přiřazení lze provést buď v obslužné rutiny ovládacím prvku DetailsView `ItemInserting` události nebo ObjectDataSource `Inserting` událostí. Protože se už podívali jsme události před instrumentací a po ní úroveň s využitím datových webové řízení úrovně, podíváme se na používání událostí prvku ObjectDataSource této doby.
 
@@ -299,24 +250,19 @@ Pro účely tohoto kurzu Představte si, že pro naši aplikaci při přidání 
 > [!NOTE]
 > V reálné aplikaci budete pravděpodobně chtít buď nechat uživatele zadejte kategorie a dodavatele nebo by pro ně podle kritérií vybrat tuto hodnotu nebo obchodní logiky (spíše než slepě výběr ID 1). Bez ohledu na to v příkladu ukazuje, jak prostřednictvím kódu programu nastavit hodnotu vstupního parametru ObjectDataSource předem úroveň události.
 
-
 Za chvíli vytvořit obslužnou rutinu události pro ObjectDataSource `Inserting` událostí. Všimněte si, že obslužná rutina události druhé vstupní parametr je objekt typu `ObjectDataSourceMethodEventArgs`, který má vlastnost, která má přístup ke kolekci parametrů (`InputParameters`) a vlastnost na zrušení operace (`Cancel`).
-
 
 [!code-vb[Main](examining-the-events-associated-with-inserting-updating-and-deleting-vb/samples/sample10.vb)]
 
 V tomto okamžiku `InputParameters` vlastnost obsahuje ObjectDataSource `InsertParameters` kolekce s hodnoty přiřazené v ovládacím prvku DetailsView. Chcete-li změnit hodnotu některého z těchto parametrů, jednoduše použijte: `e.InputParameters("paramName") = value`. Proto se nastavit `CategoryID` a `SupplierID` hodnoty 1, upravte `Inserting` obslužná rutina události vypadat nějak takto:
 
-
 [!code-vb[Main](examining-the-events-associated-with-inserting-updating-and-deleting-vb/samples/sample11.vb)]
 
 Tento čas při přidání nového produktu (například Acme Soda), `CategoryID` a `SupplierID` sloupce nového produktu jsou nastaveny na hodnotu 1 (viz obrázek 20).
 
-
 [![Nové produkty teď mají jejich CategoryID a ID dodavatele hodnoty nastavené na hodnotu 1](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image57.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image56.png)
 
 **Obrázek 20**: Nové produkty teď mají jejich `CategoryID` a `SupplierID` hodnoty nastavené na hodnotu 1 ([kliknutím ji zobrazíte obrázek v plné velikosti](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image58.png))
-
 
 ## <a name="summary"></a>Souhrn
 

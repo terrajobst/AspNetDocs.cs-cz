@@ -8,12 +8,12 @@ ms.date: 10/07/2008
 ms.assetid: d6e758b6-6571-484d-a132-34ee6c47747a
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 99b18de33e266adb626f4ab53ff20b1f52102900
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: c5ee59873468b4928b45ec586386e28cbe94c728
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59417582"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65122440"
 ---
 # <a name="displaying-a-table-of-database-data-c"></a>Zobrazení tabulky databázových dat (C#)
 
@@ -23,7 +23,6 @@ by [Microsoft](https://github.com/microsoft)
 
 > V tomto kurzu se můžu ukazují dvě metody zobrazení sady záznamů v databázi. Můžu zobrazit dvě metody formátování sadu záznamů databáze v tabulku HTML. Nejprve mohu zobrazit, jak lze formátovat záznamů databáze přímo v rámci zobrazení. V dalším kroku můžu ukazují, jak můžete využít výhod částečných zobrazení při formátování záznamy v databázi.
 
-
 Cílem tohoto kurzu je vysvětlují, jak můžete zobrazit tabulku HTML databázových dat v aplikaci ASP.NET MVC. Nejprve se dozvíte, jak použít nástroje pro generování uživatelského rozhraní zahrnuté v sadě Visual Studio ke generování zobrazení, které se automaticky zobrazí sadu záznamů. V dalším kroku se dozvíte, jak použít částečné jako šablonu při formátování záznamy v databázi.
 
 ## <a name="create-the-model-classes"></a>Vytvoření tříd modelu
@@ -32,7 +31,6 @@ Budeme zobrazit sadu záznamů v tabulce databáze filmů. V tabulce databáze f
 
 <a id="0.3_table01"></a>
 
-
 | **Název sloupce** | **Datový typ** | **Povolit hodnoty Null** |
 | --- | --- | --- |
 | ID | Int | False |
@@ -40,13 +38,11 @@ Budeme zobrazit sadu záznamů v tabulce databáze filmů. V tabulce databáze f
 | Ředitel | NVarchar(50) | False |
 | DateReleased | DateTime | False |
 
-
 Aby mohl představovat filmy tabulky v naší aplikaci ASP.NET MVC, musíme vytvořit třídu modelu. V tomto kurzu vytvoříme pomocí Microsoft Entity Framework našich tříd modelu.
 
 > [!NOTE] 
 > 
 > V tomto kurzu používáme Microsoft Entity Framework. Je důležité pochopit, že můžete použít celou řadu různých technologií pro interakci s databází z aplikace ASP.NET MVC včetně technologie LINQ to SQL nebo NHibernate, ADO.NET.
-
 
 Použijte následující postup spuštění Průvodce datovým modelem Entity:
 
@@ -60,19 +56,15 @@ Po kliknutí na tlačítko Přidat, zobrazí se Průvodce datovým modelem Entit
 2. V **vyberte datové připojení** kroku, použijte *MoviesDB.mdf* datové připojení a názvu *MoviesDBEntities* pro nastavení připojení. Klikněte na tlačítko **Další** tlačítko.
 3. V **zvolte vaše databázové objekty** krok, rozbalte uzel tabulky, vyberte v tabulce videa. Zadejte obor názvů *modely* a klikněte na tlačítko **Dokončit** tlačítko.
 
-
 [![Vytvoření LINQ na třídy SQL](displaying-a-table-of-database-data-cs/_static/image1.jpg)](displaying-a-table-of-database-data-cs/_static/image1.png)
 
 **Obrázek 01**: Vytvoření LINQ na třídy SQL ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image2.png))
 
-
 Po dokončení Průvodce datovým modelem Entity, otevře se Návrhář Entity Data Model. Návrhář zobrazeno filmy entity (viz obrázek 2).
-
 
 [![Entity Data Model Designer](displaying-a-table-of-database-data-cs/_static/image2.jpg)](displaying-a-table-of-database-data-cs/_static/image3.png)
 
 **Obrázek 02**: Entity Data Model Designer ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image4.png))
-
 
 Potřebujeme, aby jednu změnu, abychom mohli pokračovat. Průvodce Entity Data vygeneruje třídu modelu s názvem *filmy* , který představuje tabulku databáze filmů. Vzhledem k tomu použijeme filmy třídy představující konkrétní videa, potřeba změnit název třídy, která má být *film* místo *filmy* (singulární spíše než množné číslo).
 
@@ -82,19 +74,15 @@ Dvakrát klikněte na název třídy na návrhové ploše a změňte název tř�
 
 Teď, když jsme způsob, jak reprezentaci našich záznamů databáze, můžeme vytvořit kontroler, který vrátí kolekce filmů. V okně Průzkumník řešení Visual Studio klikněte pravým tlačítkem na složku řadiče a vyberte možnost nabídky **přidat, řadič** (viz obrázek 3).
 
-
 [![Přidání Kontroleru nabídky](displaying-a-table-of-database-data-cs/_static/image3.jpg)](displaying-a-table-of-database-data-cs/_static/image5.png)
 
 **Obrázek 03**: V nabídce Přidat kontroler ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image6.png))
 
-
 Když **přidat kontroler** se zobrazí dialogové okno, zadejte název řadiče MovieController (viz obrázek 4). Klikněte na tlačítko **přidat** tlačítko pro přidání nového řadiče.
-
 
 [![Dialogové okno Přidat kontroler](displaying-a-table-of-database-data-cs/_static/image4.jpg)](displaying-a-table-of-database-data-cs/_static/image7.png)
 
 **Obrázek 04**: Dialogové okno Přidat kontroler ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image8.png))
-
 
 Musíme akce Index() vystavené film řadič tak, aby vracel sadu záznamů databáze změnit. Upravte kontrolér tak, aby vypadal jako řadič v informacích 1.
 
@@ -116,19 +104,15 @@ Sestavení aplikace tak, že vyberete možnost nabídky **vytvořit, sestavit ř
 
 Klikněte pravým tlačítkem na akce Index() a vyberte možnost nabídky **přidat zobrazení** (viz obrázek 5).
 
-
 [![Přidání zobrazení](displaying-a-table-of-database-data-cs/_static/image5.jpg)](displaying-a-table-of-database-data-cs/_static/image9.png)
 
 **Obrázek 05**: Přidání zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image10.png))
 
-
 V **přidat zobrazení** dialogového okna, zaškrtněte políčko s popiskem **vytvoření zobrazení se silnými typy**. Vyberte třídu film, jako **zobrazení dat třídy**. Vyberte *seznamu* jako **zobrazit obsah** (viz obrázek 6). Výběr tyto možnosti budou generovat zobrazení silného typu, který zobrazí seznam filmy.
-
 
 [![Dialogové okno Přidat zobrazení](displaying-a-table-of-database-data-cs/_static/image6.jpg)](displaying-a-table-of-database-data-cs/_static/image11.png)
 
 **Obrázek 06**: Dialogové okno Přidat zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image12.png))
-
 
 Po klepnutí **přidat** automaticky generováno tlačítko, zobrazení, ve výpisu 2. Toto zobrazení obsahuje kód potřebný k iteraci v rámci kolekce filmů a zobrazit vlastnosti videa.
 
@@ -138,11 +122,9 @@ Po klepnutí **přidat** automaticky generováno tlačítko, zobrazení, ve výp
 
 Aplikaci můžete spustit tak, že vyberete možnost nabídky **ladit, spustit ladění** (nebo stisknutí klávesy F5). Spuštění aplikace se spustí aplikace Internet Explorer. Když přejdete na adresu URL /Movie uvidíte stránku na obrázku 7.
 
-
 [![Tabulku filmy](displaying-a-table-of-database-data-cs/_static/image7.jpg)](displaying-a-table-of-database-data-cs/_static/image13.png)
 
 **Obrázek 07**: Tabulku filmy ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-cs/_static/image14.png))
-
 
 Pokud se vám nic o vzhledu mřížky databázových záznamů na obrázku 7 můžete jednoduše upravit zobrazení indexu. Například můžete změnit *DateReleased* záhlaví *datum vydání* úpravou zobrazení indexu.
 
@@ -178,9 +160,7 @@ Zobrazení v informacích 4 obsahuje smyčku foreach, která iteruje přes všec
 
 Upravené Index zobrazení vykreslí velmi stejné tabulky HTML záznamů databáze. Ale zobrazení je výrazně zjednodušené.
 
-
 Metoda RenderPartial() je jiná než většina jiných metod helper, protože nevrací řetězec. Proto musí volat metoda RenderPartial() použití &lt;% Html.RenderPartial(); %&gt; místo &lt;% = Html.RenderPartial(); %&gt;.
-
 
 ## <a name="summary"></a>Souhrn
 

@@ -8,12 +8,12 @@ ms.date: 02/14/2014
 ms.assetid: 961e525b-7700-469e-8a68-d7010b6fb68c
 msc.legacyurl: /web-pages/overview/performance-and-traffic/15-caching-to-improve-the-performance-of-your-website
 msc.type: authoredcontent
-ms.openlocfilehash: 10b853966ba80b673e1a6786987893f919369e7a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 01796d3ca699a6af5d9162b22a926551435c2040
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59412902"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134578"
 ---
 # <a name="caching-data-in-an-aspnet-web-pages-razor-site-for-better-performance"></a>Ukládání do mezipaměti dat na webu rozhraní ASP.NET Web Pages (Razor) pro zajištění lepšího výkonu
 
@@ -38,7 +38,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > 
 > V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
 
-
 Pokaždé, když uživatel požádá o stránku z lokality, webový server má provést úkony za účelem splnění žádosti. Některé stránky na serveru může být potřeba provádět úlohy, které dlouho (relativně), třeba načítání dat z databáze. I v případě, že tyto úlohy nevyřídí dlouho v absolutních číslech, pokud váš web narazí hodně provoz, můžete ušetřit na celou řadu jednotlivých požadavků, které způsobují webový server k provedení úlohy složitá nebo pomalé až spoustu práce. Takže v konečném důsledku to může ovlivnit výkon lokality.
 
 Jedním způsobem, jak zvýšit výkon vašeho webu za okolností tímto způsobem je ukládání dat do mezipaměti. Pokud váš web získá opakované požadavky stejné informace a informace není potřeba změnit pro každou osobu a není čas citlivé, ne znovu načíst nebo přepočítání, můžete načíst data jednou a potom uložení výsledků. Při příštím žádost pochází k tomu informace, stačí ho obdržíte z mezipaměti.
@@ -47,7 +46,6 @@ Obecně platí mezipaměti informace, které se nemění příliš často. Když
 
 > [!NOTE]
 > Položky v mezipaměti může být odstraněna z důvodu jiné než jejich platnost. Například webový server může být dočasně nedostatek paměti a je jedním ze způsobů jeho paměti mohl uvolnit paměť vyvoláním položky z mezipaměti. Jak uvidíte, i když jste dali informace do mezipaměti, máte ověřte, že je stále existuje, když je potřebujete.
-
 
 Představte si, že váš web má stránka zobrazující aktuální teplotu a předpověď počasí. Chcete-li získat tento typ informací, může odeslat požadavek na externí služby. Protože tyto informace nedojde ke změně většinu (v rámci dvouhodinovými časovými období, třeba) a od externích volání vyžaduje čas a šířku pásma, je vhodným kandidátem pro ukládání do mezipaměti.
 
@@ -77,7 +75,6 @@ Technologie ASP.NET obsahuje `WebCache` pomocné rutiny, které umožňuje snadn
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Další prostředky
-
 
 - [Zobrazení dat v grafu](https://go.microsoft.com/fwlink/?LinkId=202895)
 - [Reference k rozhraní API WebCache](https://msdn.microsoft.com/library/system.web.helpers.webcache(v=vs.99).aspx) (MSDN)

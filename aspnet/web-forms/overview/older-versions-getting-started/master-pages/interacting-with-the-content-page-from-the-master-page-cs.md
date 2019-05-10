@@ -8,12 +8,12 @@ ms.date: 07/11/2008
 ms.assetid: 3282df5e-516c-4972-8666-313828b90fb5
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a2b6d3a5ceb66c14a78b02182f49d76c72becbd4
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 341724253e9149724ff988232b0e312897756f58
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59413643"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134378"
 ---
 # <a name="interacting-with-the-content-page-from-the-master-page-c"></a>Interakce stránky předlohy se stránkou obsahu (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/1/8/4/184e24fa-fcc8-47fa-ac99-4b6a52d41e97/ASPNET_MasterPages_Tutorial_07_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/e/b/4/eb4abb10-c416-4ba4-9899-32577715b1bd/ASPNET_MasterPages_Tutorial_07_CS.pdf)
 
 > Zkoumá, jak volat metody, nastavte vlastnosti atd stránky obsahu z kódu na stránce předlohy.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -50,16 +49,13 @@ Tato zbývající část tohoto kurzu implementuje uvedené v úvodu; stránky o
 
 Naše první je k vytvoření obsahu stránky, která zobrazuje seznam produktů z databáze Northwind. (Databázi Northwind k projektu jsme přidali v předchozím kurzu [ *interakce stránky obsahu se stránkou předlohy*](interacting-with-the-master-page-from-the-content-page-cs.md).) Začněte tím, že přidání nové stránky ASP.NET do `~/Admin` složku s názvem `Products.aspx`a vytvořte mu vazbu k `Site.master` stránky předlohy. Obrázek 1 ukazuje Průzkumník řešení po přidání této stránce na webu.
 
-
 [![Přidejte novou stránku ASP.NET ke složce Admin](interacting-with-the-content-page-from-the-master-page-cs/_static/image2.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image1.png)
 
 **Obrázek 01**: Přidejte novou stránku ASP.NET `Admin` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-cs/_static/image3.png))
 
-
 Připomínáme, že [ *zadáním názvu, metaznaček a ostatní hlaviček HTML na stránce předlohy* ](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md) kurzu jsme vytvořili vlastní stránku základní třídu s názvem `BasePage` název stránky, který generuje, pokud není Nastavte explicitně. Přejděte `Products.aspx` kódu stránky třídy a nechat ji odvodit z `BasePage` (místo z `System.Web.UI.Page`).
 
 Nakonec aktualizujte `Web.sitemap` soubor zahrnout položku pro tento účel. Přidejte následující kód pod `<siteMapNode>` pro obsah, který se interakce stránky předlohy lekce:
-
 
 [!code-xml[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample1.xml)]
 
@@ -67,42 +63,32 @@ Přidání tohoto `<siteMapNode>` element se projeví v lekcí seznamu (viz obr�
 
 Vraťte se na `Products.aspx`. V ovládacím prvku obsahu pro `MainContent`, přidejte ovládací prvek GridView a pojmenujte ho `ProductsGrid`. Svázání prvku GridView. nový ovládací prvek SqlDataSource s názvem `ProductsDataSource`.
 
-
 [![Nový ovládací prvek SqlDataSource svázání prvku GridView.](interacting-with-the-content-page-from-the-master-page-cs/_static/image5.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image4.png)
 
 **Obrázek 02**: Nový ovládací prvek SqlDataSource svázání prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-cs/_static/image6.png))
 
-
 Nakonfigurujte průvodce tak, aby používal databázi Northwind. Pokud jste pracovali kroky v předchozím kurzu, pak byste už měli mít připojovací řetězec s názvem `NorthwindConnectionString` v `Web.config`. Z rozevíracího seznamu zvolte tento připojovací řetězec, jak je znázorněno na obrázku 3.
-
 
 [![Konfigurace ve třídě SqlDataSource používat databázi Northwind](interacting-with-the-content-page-from-the-master-page-cs/_static/image8.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image7.png)
 
 **Obrázek 03**: Konfigurace ve třídě SqlDataSource k použití databáze Northwind ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-cs/_static/image9.png))
 
-
 Dále určete ovládací prvek zdroje dat `SELECT` příkaz tabulky produktů výběrem z rozevíracího seznamu a vrací `ProductName` a `UnitPrice` sloupce (viz obrázek 4). Klikněte na tlačítko Další a pak dokončete průvodce Konfigurace zdroje dat dokončit.
-
 
 [![Vrátí pole ProductName a UnitPrice z tabulky produktů](interacting-with-the-content-page-from-the-master-page-cs/_static/image11.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image10.png)
 
 **Obrázek 04**: Vrátit `ProductName` a `UnitPrice` pole z `Products` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-cs/_static/image12.png))
 
-
 A je to! Visual Studio po dokončení průvodce přidá do ovládacího prvku GridView zrcadlící dvě pole vrácené ovládacím prvkem SqlDataSource dvě BoundFields. Následující značky prvku GridView a SqlDataSource řízení. Obrázek 5 ukazuje výsledky při prohlížení prostřednictvím prohlížeče.
 
-
 [!code-aspx[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample2.aspx)]
-
 
 [![Každý produkt a cena je uveden v prvku GridView.](interacting-with-the-content-page-from-the-master-page-cs/_static/image14.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image13.png)
 
 **Obrázek 05**: Každý produkt a cena je uveden v prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-cs/_static/image15.png))
 
-
 > [!NOTE]
 > Nebojte se vyčistit vzhled prvku GridView. Některé návrhy zahrnovat formátování zobrazená hodnota UnitPrice jako měnu a použití písma a barvy pozadí ke zlepšení vzhledu mřížky. Další informace o zobrazení a formátování dat v technologii ASP.NET, najdete v mé [práce s Data sérii](../../data-access/index.md).
-
 
 ## <a name="step-2-adding-a-double-prices-button-to-the-master-page"></a>Krok 2: Přidání tlačítka Double ceny na stránku předlohy
 
@@ -110,32 +96,25 @@ Naše dalším krokem je přidání ovládacího prvku tlačítko webového k hl
 
 Dále přidejte ovládacím prvkem SqlDataSource na hlavní stránku pojmenování `DoublePricesDataSource`. Tato SqlDataSource se použije ke spuštění `UPDATE` příkaz na dvojnásobek všechny ceny. Konkrétně, musíme nastavit jeho `ConnectionString` a `UpdateCommand` vlastnosti na příslušný připojovací řetězec a `UPDATE` příkazu. Pak potřebujeme k volání tohoto ovládacího prvku SqlDataSource `Update` metoda při `DoublePrice` po kliknutí na tlačítko. Chcete-li nastavit `ConnectionString` a `UpdateCommand` vlastnosti, vyberte ovládacím prvkem SqlDataSource a potom přejděte do okna Vlastnosti. `ConnectionString` Seznamů vlastností těchto připojovací řetězce, které už jsou uložené ve `Web.config` v rozevíracím seznamu, zvolte `NorthwindConnectionString` možnosti, jak je znázorněno na obrázku 6.
 
-
 [![Konfigurace ve třídě SqlDataSource používat NorthwindConnectionString](interacting-with-the-content-page-from-the-master-page-cs/_static/image17.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image16.png)
 
 **Obrázek 06**: Konfigurace ve třídě SqlDataSource k použití `NorthwindConnectionString` ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-cs/_static/image18.png))
 
-
 Chcete-li nastavit `UpdateCommand` vlastnost, vyhledejte možnost UpdateQuery v okně Vlastnosti. Tato vlastnost, pokud je vybráno, zobrazí tlačítko se třemi tečkami; Kliknutím na toto tlačítko zobrazit dialogové okno Editor příkazů a parametrů je znázorněno na obrázku 7. Zadejte následující příkaz `UPDATE` příkaz do textového pole v dialogovém okně:
-
 
 [!code-sql[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample3.sql)]
 
 Tento příkaz při spuštění bude dvakrát `UnitPrice` hodnotu pro každý záznam v `Products` tabulky.
 
-
 [![Nastavte vlastnost UpdateCommand SqlDataSource.](interacting-with-the-content-page-from-the-master-page-cs/_static/image20.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image19.png)
 
 **Obrázek 07**: Nastavte na SqlDataSource `UpdateCommand` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-cs/_static/image21.png))
 
-
 Po nastavení těchto vlastností, vaše tlačítko a SqlDataSource ovládacích prvků deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample4.aspx)]
 
 Už jen zbývá volat jeho `Update` metoda při `DoublePrice` po kliknutí na tlačítko. Vytvoření `Click` obslužné rutiny události pro `DoublePrice` tlačítko a přidejte následující kód:
-
 
 [!code-csharp[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample5.cs)]
 
@@ -157,26 +136,21 @@ Druhý parametr předaný obslužné rutiny události může obsahovat další i
 > [!NOTE]
 > Další informace o vytváření vyvolávání a zpracování událostí, naleznete v tématu [události a delegáti](https://msdn.microsoft.com/library/17sde2xt.aspx) a [– delegáti událostí v jednoduché anglické](http://www.codeproject.com/KB/cs/eventdelegates.aspx).
 
-
 Chcete-li definovat událost, použijte následující syntaxi:
-
 
 [!code-csharp[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample6.cs)]
 
 Vzhledem k tomu, že musíme upozornit stránky obsahu, že uživatel klikl `DoublePrice` tlačítko a není potřeba předávají jakýchkoli dalších informací, můžeme použít delegát události `EventHandler`, která definuje obslužnou rutinu události, která přijímá jako jeho sekunda Parametr objektu typu `System.EventArgs`. Vytvořit událost na stránce předlohy, přidejte následující řádek kódu do třídy modelu code-behind na hlavní stránce:
 
-
 [!code-csharp[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample7.cs)]
 
 Výše uvedený kód přidá veřejná událost na hlavní stránku s názvem `PricesDoubled`. Nyní potřebujeme vyvolat tuto událost po ceny být dvojitá. Pro vyvolání události použijte následující syntaxi:
-
 
 [!code-csharp[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample8.cs)]
 
 Kde *odesílatele* a *eventArgs* jsou hodnoty, které chcete předat do obslužné rutiny události odběratele.
 
 Aktualizace `DoublePrice` `Click` obslužné rutiny události s následujícím kódem:
-
 
 [!code-csharp[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample9.cs)]
 
@@ -188,11 +162,9 @@ V tuto chvíli na hlavní stránce vyvolá jeho `PricesDoubled` událost pokažd
 
 Začněte vytvořením obslužné rutiny události s názvem `Master_PricesDoubled`. Z důvodu jak jsme definovali `PricesDoubled` událostí na hlavní stránce dva vstupní parametry obslužné rutiny události musí být typy `Object` a `EventArgs`v uvedeném pořadí. Ve volání obslužné rutiny události `ProductsGrid` prvku GridView `DataBind` metoda znovu připojit data do mřížky.
 
-
 [!code-csharp[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample10.cs)]
 
 Hotový kód pro obslužnou rutinu události, ale ještě jsme do svážete stránky předlohy `PricesDoubled` událost pro tuto obslužnou rutinu události. Odběrateli vedení vodiče událost na obslužnou rutinu události prostřednictvím následující syntaxi:
-
 
 [!code-csharp[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample11.cs)]
 
@@ -201,7 +173,6 @@ Hotový kód pro obslužnou rutinu události, ale ještě jsme do svážete str�
 Tento kód její události musí být provedeny na první návštěvě stránky a následné zpětného odeslání a se budou objevovat v určitém bodě životního cyklu stránky, která předchází při události mohou být vyvolány. Vhodná doba přidejte událost její kód je ve fázi PreInit dojde k velmi brzy v životní cyklus stránky.
 
 Otevřít `~/Admin/Products.aspx` a vytvořit `Page_PreInit` obslužné rutiny události:
-
 
 [!code-csharp[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample12.cs)]
 
@@ -212,11 +183,9 @@ Aby bylo možné dokončit tento kód její potřebujeme programový odkaz na hl
 
 Použijeme druhý přístup. Přidejte následující `@MasterType` direktiv k hornímu okraji deklarativním označení stránky:
 
-
 [!code-aspx[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample13.aspx)]
 
 Přidejte následující kód její události v `Page_PreInit` obslužné rutiny události:
-
 
 [!code-csharp[Main](interacting-with-the-content-page-from-the-master-page-cs/samples/sample14.cs)]
 
@@ -224,16 +193,13 @@ S tímto kódem na místě GridView na stránce obsahu aktualizují pokaždé, k
 
 Toto chování ilustrují obrázky 8 a 9. Obrázek 8 ukazuje na stránku, když první uživatel. Všimněte si, že cena hodnoty v obou `RecentProducts` ovládacího prvku GridView (v levém sloupci předlohové stránky) a `ProductsGrid` ovládacího prvku GridView (na stránce obsahu). Obrázek 9 ukazuje stejné obrazovce ihned po `DoublePrice` kliknutí na tlačítko. Jak je vidět nové ceny se okamžitě projeví v obou prvků GridViews.
 
-
 [![Počáteční cena hodnoty](interacting-with-the-content-page-from-the-master-page-cs/_static/image23.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image22.png)
 
 **Obrázek 08**: Počáteční cena hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-cs/_static/image24.png))
 
-
 [![Ceny Just-Doubled jsou zobrazeny v prvků GridViews](interacting-with-the-content-page-from-the-master-page-cs/_static/image26.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image25.png)
 
 **Obrázek 09**: Ceny Just-Doubled jsou zobrazeny v prvků GridViews ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-cs/_static/image27.png))
-
 
 ## <a name="summary"></a>Souhrn
 

@@ -8,12 +8,12 @@ ms.date: 04/23/2009
 ms.assetid: 07b8905d-78ac-4252-97fb-8675b3fb0bbf
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-vb
 msc.type: authoredcontent
-ms.openlocfilehash: afd287836337d0f9411daac805c3e9bcbb2dbadb
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 27a5ceda5f9b5227e26036c5405612dcbc15b48e
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59385069"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130242"
 ---
 # <a name="strategies-for-database-development-and-deployment-vb"></a>Strategie vývoje a nasazení databází (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhnout PDF](http://download.microsoft.com/download/C/3/9/C391A649-B357-4A7B-BAA4-48C96871FEA6/aspnet_tutorial10_DBDevel_vb.pdf)
 
 > Při nasazování aplikace řízené daty poprvé slepě můžete zkopírovat databázi ve vývojovém prostředí do produkčního prostředí. Ale provádění blind kopírování v následné nasazení přepíše všechna data do provozní databáze. Místo toho nasazení databáze zahrnuje použití změn provedených v databázi vývoj od posledního nasazení do provozní databáze. Tento kurz zkoumá tyto výzvy a nabízí různé strategie, která vám pomůže s chronicling a aplikováním změny provedené od posledního nasazení do databáze.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -54,13 +53,11 @@ Nejjednodušší způsob, jak udržovat protokolu změn do datového modelu ve v
 
 <a id="0.8_table01"></a>
 
-
 | **Datum změny** | **Podrobnosti o změně** |
 | --- | --- |
 | 2009-02-03: | Přidaný sloupec `DepartmentID` (`int`, NOT NULL) do `Employees` tabulky. Přidat omezení cizího klíče z `Departments.DepartmentID` k `Employees.DepartmentID`. |
 | 2009-02-05: | Odebrané sloupce `TotalWeight` z `Orders` tabulky. Související data již zaznamenaná v `OrderDetails` záznamy. |
 | 2009-02-12: | Vytvoří `ProductCategories` tabulky. Existují tři sloupce: `ProductCategoryID` (`int`, `IDENTITY`, `NOT NULL`), `CategoryName` (`nvarchar(50)`, `NOT NULL`), a `Active` (`bit`, `NOT NULL`). Přidat omezení primárního klíče na `ProductCategoryID`a výchozí hodnotu 1 `Active`. |
-
 
 Existuje mnoho z nevýhod tohoto přístupu. Pokud začínáte není k dispozici žádnou naději pro automatizaci. Kdykoli těchto změn je potřeba použít k databázi – například když je aplikace nasazená – vývojář musí implementovat ručně každý změnit, postupně po jednom. Kromě toho pokud budete potřebovat k rekonstrukci konkrétní verzi databáze ze standardních hodnot pomocí protokolu změn, to uděláte tak bude trvat více a více času nárůstu velikosti souboru protokolu. Tato metoda jiné nevýhodou je, že jasné a úroveň podrobností každé položky protokolu změn je ponecháno na osobu záznam změny. V týmu s více vývojářů některé mohou vytvořit podrobnější čitelnější a přesnější položky než jiné. Překlepy a další data související s lidských položka chyby jsou také je to možné.
 
@@ -70,7 +67,6 @@ Váš protokol změn v souvislém textu, admittedly, není velmi propracovaných
 
 > [!NOTE]
 > Informace v protokolu změn je technicky, stačí do nasazení – čas, můžu doporučují udržovat historii změn. Ale namísto zachování jeden, neustále se rozšiřující soubor protokolu změn, zvažte, jestli by různých změna souboru protokolu pro každou verzi databáze. Obvykle můžete na verzi databáze pokaždé, když je nasazená. Díky udržování protokolu změn protokolů můžete, od výchozího stavu, znovu vytvořit všechny verze databáze spuštěním skripty protokolu změn od verze 1 a budete pokračovat, dokud se nedostanete na verzi, budete muset znovu vytvořit.
-
 
 ## <a name="recording-the-sql-change-statements"></a>Záznam změn příkazy SQL
 
@@ -95,18 +91,14 @@ Existují různé nástroje třetích stran databáze porovnání nabízí mnoho
 > [!NOTE]
 > V době psaní tohoto textu byl aktuální verze SQL Compare verze 7.1, s edicí Standard ocenění 395 $. Můžete absolvovat stáhněte si bezplatnou zkušební verzi 14 dní.
 
-
 Při spuštění porovnání SQL otevře se dialogové okno porovnání projektů zobrazující uložených projektů SQL Compare. Vytvořte nový projekt. Spustí se Průvodce konfigurací projektu, který vyzve k zadání informací o databázi k porovnání (viz obrázek 1). Zadejte informace pro vývoj a provoz prostředí databáze.
-
 
 [![Porovnání vývoje a provozních databází](strategies-for-database-development-and-deployment-vb/_static/image2.jpg)](strategies-for-database-development-and-deployment-vb/_static/image1.jpg)
 
 **Obrázek 1**: Porovnání vývoje a provozních databází ([kliknutím ji zobrazíte obrázek v plné velikosti](strategies-for-database-development-and-deployment-vb/_static/image3.jpg))
 
-
 > [!NOTE]
 > Pokud vaše vývojové prostředí databázi je v souboru databáze SQL Express Edition `App_Data` složku vašeho webu, budete muset zaregistrovat databáze v databázi serveru SQL Server Express, abyste mohli vybrat z dialogových oken na obrázku 1. Nejjednodušší způsob, jak to provést, je otevřete SQL Server Management Studio (SSMS), připojte se k databázovému serveru SQL Server Express a připojte databázi. Pokud nemáte v počítači nainstalovanou aplikaci SSMS můžete stáhnout a nainstalovat bezplatnou [ *SQL Server 2008 Management Studio základní verze*](https://www.microsoft.com/downloads/details.aspx?FamilyId=7522A683-4CB2-454E-B908-E805E9BD4E28&amp;displaylang=en).
-
 
 Kromě výběru databázi, kterou chcete porovnat, můžete také zadat různá nastavení porovnání na kartě Možnosti. Jednou z možností, které chcete zapnout je "Ignorovat omezení a index názvy." Připomínáme, že v předchozím kurzu jsme přidali aplikace služby databázových objektů databáze vývoje a provozu. Pokud jste použili `aspnet_regsql.exe` nástroj k vytváření těchto objektů na provozní databázi a zjistíte, že primární klíč a názvy jedinečné omezení se liší mezi vývojovou a provozní databáze. V důsledku toho porovnání SQL se označí všechny tabulky aplikace služby jako lišící se. "Ignorovat omezení a index názvy" můžete buď nechat nezaškrtnuté a synchronizovat omezení názvů, nebo dáte pokyn, aby SQL Compare ignorovat tyto rozdíly.
 
@@ -115,11 +107,9 @@ Po výběru databázi, kterou chcete porovnat (a možnosti porovnání revize), 
 > [!NOTE]
 > Datový model změny provedené v tomto kurzu jste dokončili pro ilustraci, pomocí nástroje porovnání databáze. Tyto změny v databázi nenajde v budoucích kurzech.
 
-
 [![Porovnání SQL jsou uvedeny rozdíly mezi vývojovou a provozních databází](strategies-for-database-development-and-deployment-vb/_static/image5.jpg)](strategies-for-database-development-and-deployment-vb/_static/image4.jpg)
 
 **Obrázek 2**: Porovnání SQL jsou uvedené rozdíly mezi vývoje a provozních databází ([kliknutím ji zobrazíte obrázek v plné velikosti](strategies-for-database-development-and-deployment-vb/_static/image6.jpg))
-
 
 Porovnání SQL boří databázových objektů do skupin, rychle zobrazí objekty, které existují v databázi i databázi, ale se liší, které existují objekty v jedné databázi, ale nikoli u druhého a jaké objekty jsou identické. Jak vidíte, jsou dva objekty, které existují v databázi i databázi, ale jsou odlišné: `Authors` tabulku, která má sloupec přidali, a `Books` tabulku, která obsahovala jeden odebrat. Existuje jeden objekt, který existuje pouze v databázi vývoj, konkrétně nově vytvořený `Ratings` tabulky. A 117 objekty, které jsou stejné v obou databázích.
 
@@ -127,17 +117,14 @@ Výběr objektu databáze zobrazí v okně SQL ve službě, která ukazuje, jak 
 
 Po kontrole rozdíly a výběr objektů, které chcete synchronizovat, je dalším krokem je ke generování potřeba aktualizovat schéma produkční databáze s příkazy SQL tak, aby odpovídala databázi vývoj. To lze provést pomocí Průvodce synchronizace. Průvodce synchronizace potvrdí, které objekty k synchronizaci a shrnuje akce plánování (viz obrázek 3). Můžete synchronizovat databáze hned nebo generovat skript SQL příkazy, které lze spustit ve volném čase.
 
-
 [![Pomocí Průvodce synchronizace můžete synchronizovat vaše schémata databáze](strategies-for-database-development-and-deployment-vb/_static/image8.jpg)](strategies-for-database-development-and-deployment-vb/_static/image7.jpg)
 
 **Obrázek 3**: Pomocí Průvodce synchronizace synchronizovat vaše schémata databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](strategies-for-database-development-and-deployment-vb/_static/image9.jpg))
-
 
 Porovnání nástroje databáze, jako je Red Software brány s porovnání SQL Zkontrolujte použití změn schématu databáze vývoje do provozní databáze, tak i pomocí ukázání a kliknutí.
 
 > [!NOTE]
 > Porovnání SQL porovná a synchronizuje dvě databáze *schémata*. Bohužel to neobsahuje porovnání a synchronizovat data v tabulkách dvě databáze. Software brány Red nabízejí produkt s názvem [ *porovnání dat SQL* ](http://www.red-gate.com/products/SQL_Data_Compare/) , který porovnává a provede synchronizaci dat mezi dvěma databázemi, ale je samostatný produkt z porovnání SQL a jiné $395 náklady.
-
 
 ## <a name="taking-the-application-offline-during-deployment"></a>Přepnutí aplikace do offline režimu během nasazení
 

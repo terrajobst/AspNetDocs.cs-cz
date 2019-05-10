@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: 719727b7-bef3-45ad-bfe9-ba5bcdb2305f
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs
 msc.type: authoredcontent
-ms.openlocfilehash: 1f093e348216750cbadb6e52f524e5edd4d6c498
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 86833a890da759e489dd11dc9afb128a9b7a75e3
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59390269"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125262"
 ---
 # <a name="hands-on-lab-build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs"></a>Praktické cvičení: Sestavení jednostránkové aplikace (SPA) pomocí webového rozhraní API ASP.NET a Angular.js
 
@@ -34,7 +34,6 @@ Tradiční webových aplikací inicializuje klienta (prohlížeč) komunikaci se
 > 
 > 
 > Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://aka.ms/webcamps-training-kit ](https://aka.ms/webcamps-training-kit).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -66,7 +65,6 @@ Chcete-li spustit praktická cvičení v této praktické testovací prostředí
 > [!NOTE]
 > Ujistěte se, že jste zaškrtli všechny závislosti pro toto testovací prostředí před spuštěním instalace.
 
-
 <a id="CodeSnippets"></a>
 ### <a name="using-the-code-snippets"></a>Používání fragmentů kódu
 
@@ -74,7 +72,6 @@ V celém dokumentu testovacího prostředí budete vyzváni k vložení bloky k�
 
 > [!NOTE]
 > Každý cvičení se sadou počáteční řešení nachází v **začít** složky výkonu, který umožňuje postupovat podle jednotlivých výkon nezávisle na ostatních. Uvědomte si, že chybí z těchto řešení od fragmenty kódu, které se přidávají během cvičení a nemusí fungovat, dokud nedokončíte výkonu. Uvnitř zdrojový kód pro cvičení, můžete také najdete **End** složku, která obsahuje řešení sady Visual Studio s kódem, který je výsledkem dokončení kroků v odpovídající cvičení. Tato řešení můžete použít jako vodítko, pokud potřebujete další pomoc při práci prostřednictvím této praktické vyzkoušení.
-
 
 ---
 
@@ -90,7 +87,6 @@ Odhadovaný čas dokončení tohoto testovacího prostředí: **60 minut**
 
 > [!NOTE]
 > Při prvním spuštění sady Visual Studio, musíte vybrat jednu z předdefinovaných nastavení kolekce. Každé předdefinované kolekce je navržená tak, aby odpovídala konkrétním vývojářským styl a určuje rozložení oken, chování editoru, fragmenty kódu technologie IntelliSense a možnosti dialogového okna. Postupy v tomto testovacím prostředí jsou uvedené akce potřebné k provedení dané úlohy v sadě Visual Studio při použití **obecným vývojovým nastavením** kolekce. Pokud se rozhodnete různá nastavení kolekce pro vaše vývojové prostředí, mohou existovat rozdíly v krocích, které byste měli vzít v úvahu.
-
 
 <a id="Exercise1"></a>
 ### <a name="exercise-1-creating-a-web-api"></a>Cvičení 1: Vytvoření webového rozhraní API
@@ -251,7 +247,6 @@ V této úloze ověříte, že služba webového rozhraní API, kterou jste vytv
 > 
 > ![Možnosti aplikace Internet Explorer](build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs/_static/image9.png)
 
-
 1. Stisknutím klávesy **F5** ke spuštění řešení. **Přihlášení** stránka by se měla zobrazit v prohlížeči.
 
     > [!NOTE]
@@ -309,7 +304,6 @@ Začněte instalací AngularJS z konzoly Správce balíčků sady Visual Studio.
 
 > [!NOTE]
 > Další informace o AngularJS [ [ http://angularjs.org/ ](http://angularjs.org/) ](http://angularjs.org/).
-
 
 1. Otevřete **Visual Studio Express 2013 for Web** a otevřete **GeekQuiz.sln** řešení nachází v **zdroj/Ex2-CreatingASPAInterface/Begin** složky. Alternativně můžete pokračovat v řešení, který jste získali v předchozím cvičení.
 2. Otevřít **Konzola správce balíčků** z **nástroje** > **Správce balíčků NuGet**. Zadejte následující příkaz k instalaci **AngularJS.Core** balíček NuGet.

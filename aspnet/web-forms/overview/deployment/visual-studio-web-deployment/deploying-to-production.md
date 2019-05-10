@@ -8,12 +8,12 @@ ms.date: 02/15/2013
 ms.assetid: 416438a1-3b2f-4d27-bf53-6b76223c33bf
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: 19cda45ce1b425462ec491bcc86b7a0b76dec162
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: b9c4a4d035c78b4f4c53942219ccfa3048c7a82b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59409795"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133809"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Nasazení do produkčního prostředí
 
@@ -22,7 +22,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 [Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
 > V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, s použitím sady Visual Studio 2012 nebo Visual Studio 2010. Informace o této sérii, naleznete v tématu [z prvního kurzu této série](introduction.md).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -41,7 +40,6 @@ Pokud ještě nemáte účet Azure, můžete během několika minut vytvořit Be
 > [!NOTE]
 > Protože v tomto kurzu byla zapsána, Azure App Service přidali novou funkci k automatizaci mnoha procesy pro vytvoření přípravného a produkčního prostředí. Zobrazit [nastavení přípravných prostředí pro web apps ve službě Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-staged-publishing/).
 
-
 Jak je vysvětleno v [nasadit testovací prostředí, najdete v kurzu](deploying-to-iis.md), nejvíce spolehlivé testovací prostředí je webová stránka na poskytovatele hostingu, který má stejně jako webové pracoviště. V mnoha poskytovatelé hostingu byste museli zvážit výhody tohoto proti významné další poplatky, ale v Azure můžete vytvořit další bezplatná webová aplikace jako pracovní aplikace. Budete potřebovat databázi a další výdaje za, která přes výdaje provozní databáze bude mít buď žádný nebo minimální. V Azure platíte velikost úložiště databáze, které používáte, a nikoli pro každou databázi, a bude minimální velikost dalšího úložiště, které budete používat v testovacím prostředí.
 
 Jak je vysvětleno v [nasadit do testovacího prostředí kurzu](deploying-to-iis.md), do pracovního a produkčního prostředí se chystáte nasadit do jedné databáze dvě databáze. Pokud byste chtěli je oddělit, proces by stejné s tím rozdílem, že vytvoříte další databáze pro jednotlivá prostředí a vyberete řetězec správné cíl pro každou databázi, když vytvoříte profil publikování.
@@ -50,7 +48,6 @@ V této části kurzu vytvoříte webovou aplikaci a databázi pro testovací pr
 
 > [!NOTE]
 > Následující kroky ukazují, jak vytvořit webovou aplikaci ve službě Azure App Service pomocí portálu pro správu Azure. V nejnovější verzi sady Azure SDK můžete také provést bez opuštění sady Visual Studio pomocí Průzkumníka serveru. V sadě Visual Studio 2013 můžete také vytvořit webovou aplikaci přímo z dialogového okna pro publikování. Další informace najdete v tématu [vytvoření webové aplikace ASP.NET ve službě Azure App Service.](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)
-
 
 1. V [portálu pro správu Azure](https://manage.windowsazure.com/), klikněte na tlačítko **Websites**a potom klikněte na tlačítko **nový**.
 2. Klikněte na tlačítko **webu**a potom klikněte na tlačítko **vytvořit vlastní**.
@@ -97,7 +94,6 @@ Teď, když jste vytvořili webovou aplikaci a databázi pro testovací prostře
 
 > [!NOTE]
 > Tyto pokyny ukazují, jak vytvořit profil publikování stažením *.publishsettings* soubor, který funguje nejen pro Azure, ale také pro externí poskytovatele hostingu. Nejnovější sadu Azure SDK můžete také připojit přímo k Azure ze sady Visual Studio a zvolte ze seznamu webových aplikací, které máte ve svém účtu Azure. V sadě Visual Studio 2013, můžete přihlásit k Azure z **publikování webu** dialogové okno nebo **Průzkumníka serveru** okna. Další informace najdete v tématu [vytvoření webové aplikace ASP.NET ve službě Azure App Service](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
-
 
 ### <a name="download-the-publishsettings-file"></a>Stáhněte si soubor .publishsettings
 
@@ -165,7 +161,6 @@ Teď, když jste vytvořili webovou aplikaci a databázi pro testovací prostře
 
 > [!NOTE]
 > Tato část ukazuje, jak zřídit transformaci Web.config pro ukazatel prostředí. Vzhledem k tomu, se indikátor nachází ve `<appSettings>` element, můžete mít Další alternativou k určení transformace při nasazování do služby Azure App Service. Další informace najdete v tématu [nastavení zadáte Web.config v Azure](web-config-transformations.md#watransforms).
-
 
 1. V **Průzkumníka řešení**, rozbalte **vlastnosti**a potom rozbalte **PublishProfiles**.
 2. Klikněte pravým tlačítkem na *Staging.pubxml*a potom klikněte na tlačítko **přidat konfigurační transformace**.

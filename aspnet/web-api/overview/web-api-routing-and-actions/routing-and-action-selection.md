@@ -8,12 +8,12 @@ ms.date: 12/14/2018
 ms.assetid: bcf2d223-cb7f-411e-be05-f43e96a14015
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/routing-and-action-selection
 msc.type: authoredcontent
-ms.openlocfilehash: 238efd312a73e2452ca5f679f2b8f5ed1336c4dc
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 62114e56fb29e80c93b82dcb78ce2bc2a123a83b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59385875"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133657"
 ---
 # <a name="routing-and-action-selection-in-aspnet-web-api"></a>Směrování a výběr akce v rozhraní ASP.NET Web API
 
@@ -23,7 +23,6 @@ Tento článek popisuje, jak rozhraní ASP.NET Web API směruje požadavek HTTP 
 
 > [!NOTE]
 > Přehled směrování, naleznete v tématu [směrování v rozhraní ASP.NET Web API](routing-in-aspnet-web-api.md).
-
 
 Tento článek ukazuje podrobnosti o procesu směrování. Pokud vytváříte projekt webového rozhraní API a zjistíte, že některé požadavky Nezískávat směrovány očekávaným způsobem, snad Tento článek vám pomůže.
 
@@ -135,7 +134,6 @@ Jednoduché typy zahrnují všechny [primitivní typy rozhraní .NET Framework](
 
 > [!NOTE]
 > Je možné přepsat výchozí pravidla pro vazbu. Zobrazit [vazbu parametru WebAPI pod pokličkou](https://blogs.msdn.com/b/jmstall/archive/2012/05/11/webapi-parameter-binding-under-the-hood.aspx).
-
 
 Tedy tady je výběr algoritmu akce.
 

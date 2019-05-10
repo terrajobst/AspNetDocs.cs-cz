@@ -8,12 +8,12 @@ ms.date: 01/27/2009
 ms.assetid: 2dcb44a4-5cbf-4d62-b363-718104082d86
 msc.legacyurl: /mvc/overview/older-versions-1/overview/asp-net-mvc-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 149312e2ddf0a5023a4a12f5b05852f7da6b18f8
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 73965c71f37de13e3813df089a253fde528ea7ee
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59418167"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65128216"
 ---
 # <a name="aspnet-mvc-overview"></a>ASP.NET MVC – přehled
 
@@ -21,18 +21,15 @@ by [Microsoft](https://github.com/microsoft)
 
 > Přečtěte si o rozdílech mezi aplikace ASP.NET MVC a aplikace webových formulářů ASP.NET. Zjistěte, jak rozhodnout, kdy k sestavení aplikace ASP.NET MVC.
 
-
 Vzor architektury Model-View-Controller (MVC) rozděluje aplikace do tří hlavních součástí: model, zobrazení a kontroler. Architektura ASP.NET MVC poskytuje alternativu ke vzoru webových formulářů ASP.NET pro vytváření webové aplikace založené na MVC. Architektura ASP.NET MVC je jednoduchý, s možností intenzivního testování prezentační platforma, která (stejně jako u aplikací webových formulářů) je integrovaná s stávajících funkcí technologie ASP.NET, jako je například stránky předlohy a ověřování na základě členství. Architektura MVC je definována v **System.Web.Mvc** obor názvů a je součástí základní, podporované **System.Web** oboru názvů.   
   
 MVC je standardní návrhový vzor, který mnoho vývojářů znají. Některé typy webových aplikací budou těžit z rozhraní MVC. Ostatní bude dál používat tradiční vzor aplikací ASP.NET, která je založena na webové formuláře a zpětná vystavení. Jiné typy webových aplikací budou tyto dva přístupy; kombinovat. žádný přístup nezahrnuje druhé.   
   
 Architektura MVC zahrnuje následující součásti:
 
-
 [![Vyvolání akce kontroleru, který očekává, že hodnota parametru](asp-net-mvc-overview/_static/image1.jpg)](asp-net-mvc-overview/_static/image1.png)
 
 **Obrázek 01**: Vyvolání akce kontroleru, který očekává, že hodnota parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](asp-net-mvc-overview/_static/image2.png))
-
 
 - **Modely**. Objekty modelů jsou části aplikace, které implementují logiku pro datovou doménu s aplikací. Objekty modelu často, získávání a ukládání stavu modelu v databázi. Objekt produktu může například získat informace z databáze, pracovat s nimi a pak zapsat aktualizované informace zpět do tabulky produktů v systému SQL Server.
 

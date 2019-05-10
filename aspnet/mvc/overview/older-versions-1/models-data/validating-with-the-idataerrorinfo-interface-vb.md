@@ -8,19 +8,18 @@ ms.date: 03/02/2009
 ms.assetid: 3a8a9d9f-82dd-4959-b7c6-960e9ce95df1
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c64e1ea1562c3a0cfe4fb33f1c3033bb9c31bd2c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 8ff3adc5db8114dcca2c66d937e1706f0bac0d30
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59402736"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65117551"
 ---
 # <a name="validating-with-the-idataerrorinfo-interface-vb"></a>Ověřování v rozhraní IDataErrorInfo (VB)
 
 podle [Stephen Walther](https://github.com/StephenWalther)
 
 > Stephen Walther se dozvíte, jak zobrazit chybové zprávy ověření na vlastních implementací rozhraní IDataErrorInfo v třídě modelu.
-
 
 Cílem tohoto kurzu je vysvětlit jedním z přístupů k provedení ověření v aplikaci ASP.NET MVC. Zjistíte, jak zabránit odeslání formuláře HTML bez zadání hodnot požadovaných polí. V tomto kurzu se dozvíte, jak provádět ověření pomocí rozhraní IErrorDataInfo.
 
@@ -30,7 +29,6 @@ V tomto kurzu použiju MoviesDB databáze a tabulky databáze filmů. Tato tabul
 
 <a id="0.6_table01"></a>
 
-
 | **Název sloupce** | **Datový typ** | **Povolit hodnoty Null** |
 | --- | --- | --- |
 | ID | Int | False |
@@ -38,19 +36,15 @@ V tomto kurzu použiju MoviesDB databáze a tabulky databáze filmů. Tato tabul
 | Ředitel | Nvarchar(100) | False |
 | DateReleased | DateTime | False |
 
-
 V tomto kurzu pomocí Microsoft Entity Framework vytvořit Moje databáze třídy modelu. Třída film vygenerovaným rozhraním Entity Framework se zobrazí na obrázku 1.
-
 
 [![Video entity](validating-with-the-idataerrorinfo-interface-vb/_static/image1.jpg)](validating-with-the-idataerrorinfo-interface-vb/_static/image1.png)
 
 **Obrázek 01**: Movie entity ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-vb/_static/image2.png))
 
-
 > [!NOTE] 
 > 
 > Další informace o použití rozhraní Entity Framework pro generování tříd modelu vaší databáze najdete v tématu Moje kurz s názvem vytváření tříd modelu s použitím rozhraní Entity Framework.
-
 
 ## <a name="the-controller-class"></a>Třída Kontroleru
 
@@ -72,11 +66,9 @@ Vlastnost IsValid vrátí hodnotu false, když dojde k chybě ověřování. V t
 
 Třída Video je vygenerovaným rozhraním Entity Framework. Pokud rozbalte soubor MoviesDBModel.edmx v okně Průzkumník řešení a otevřete soubor MoviesDBModel.Designer.vb v editoru kódu vidíte kód pro třídu Movie (viz obrázek 2).
 
-
 [![Kód pro entitu Movie](validating-with-the-idataerrorinfo-interface-vb/_static/image2.jpg)](validating-with-the-idataerrorinfo-interface-vb/_static/image3.png)
 
 **Obrázek 02**: Kód pro entitu Movie ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-vb/_static/image4.png))
-
 
 Třída Video je částečnou třídu. To znamená, že můžeme přidat jiné částečné třídy se stejným názvem k rozšíření funkčnosti film třídy. Přidáme náš logiku ověřování novou třídu.
 
@@ -110,7 +102,6 @@ Můžete využít výhod těchto částečné metody třídy film přidat logiku
 > [!NOTE] 
 > 
 > Částečná metoda je metoda definovaná ve třídě, není nutná pro implementaci. Pokud není implementovat částečnou metodu kompilátor odebere podpis metody a všechny volání metody tady nejsou žádné běhové náklady spojené s částečnou metodu. V editoru Visual Studio Code, můžete přidat částečná metoda zadáním klíčového slova *částečné* následovaný mezerami, chcete-li zobrazit seznam částečných zobrazení k implementaci.
-
 
 **Výpis 3 - Models\Movie.vb**
 
@@ -146,11 +137,9 @@ V informacích 4 kontroluje vlastnost indexeru \_předaný kolekce chyb, pokud o
 
 Není nutné upravovat kontroler Home žádným způsobem pomocí upravené třídy film. Stránky zobrazené na obrázku 3 znázorňuje, co se stane, když je zadána žádná hodnota pro název nebo ředitel pole formuláře.
 
-
 [![Automatické vytváření metody akce](validating-with-the-idataerrorinfo-interface-vb/_static/image3.jpg)](validating-with-the-idataerrorinfo-interface-vb/_static/image5.png)
 
 **Obrázek 03**: Formulář s chybějící hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-vb/_static/image6.png))
-
 
 Všimněte si, že hodnota DateReleased proběhne automaticky. Protože vlastnost DateReleased nepřijímá hodnoty NULL, DefaultModelBinder Chyba ověřování pro tuto vlastnost automaticky při vygeneruje nemá hodnotu. Pokud chcete upravit chybové zprávy pro vlastnost DateReleased budete muset vytvořit vlastní vazač modelu.
 

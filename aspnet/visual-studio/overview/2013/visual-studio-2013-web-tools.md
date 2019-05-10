@@ -8,12 +8,12 @@ ms.date: 07/16/2014
 ms.assetid: 09e82351-816b-402d-acd1-0f9ac6901d16
 msc.legacyurl: /visual-studio/overview/2013/visual-studio-2013-web-tools
 msc.type: authoredcontent
-ms.openlocfilehash: 874542305bd3f47066cfae595919285ed079aa53
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2fb987dd9b26ad9f0e8a88fd881bde4505ec4148
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59421066"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65115898"
 ---
 # <a name="hands-on-lab-visual-studio-2013-web-tools"></a>Praktické cvičení: Webové nástroje v sadě Visual Studio 2013
 
@@ -28,7 +28,6 @@ podle [Campy Web týmu](https://twitter.com/webcamps)
 > Veškerý tento výkon je k dispozici pro rozšíření, usnadňuje rozšíření editorů výkonné nové funkce tak, aby odpovídala vašim potřebám. Web Essentials je kolekce (většinou) související s webem vylepšení sady Visual Studio. Obsahuje i velké množství nového dokončování IntelliSense (hlavně u šablon stylů CSS), nové funkce Browser Link, automatické soubory JSHint pro jazyk JavaScript, nová upozornění pro HTML a CSS a mnoho dalších funkcí, které jsou nezbytné pro moderního webového vývoje.
 > 
 > Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://aka.ms/webcamps-training-kit ](https://aka.ms/webcamps-training-kit).
-
 
 <a id="Overview"></a>
 ## <a name="overview"></a>Přehled
@@ -64,7 +63,6 @@ Chcete-li spustit praktická cvičení v této praktické testovací prostředí
 > [!NOTE]
 > Ujistěte se, že jste zaškrtli všechny závislosti pro toto testovací prostředí před spuštěním instalace.
 
-
 <a id="CodeSnippets"></a>
 ### <a name="using-the-code-snippets"></a>Používání fragmentů kódu
 
@@ -72,7 +70,6 @@ V celém dokumentu testovacího prostředí budete vyzváni k vložení bloky k�
 
 > [!NOTE]
 > Každý cvičení se sadou počáteční řešení nachází v **začít** složky výkonu, který umožňuje postupovat podle jednotlivých výkon nezávisle na ostatních. Uvědomte si, že chybí z těchto řešení od fragmenty kódu, které se přidávají během cvičení a nemusí fungovat, dokud nedokončíte výkonu. Uvnitř zdrojový kód pro cvičení, můžete také najdete **End** složku, která obsahuje řešení sady Visual Studio s kódem, který je výsledkem dokončení kroků v odpovídající cvičení. Tato řešení můžete použít jako vodítko, pokud potřebujete další pomoc při práci prostřednictvím této praktické vyzkoušení.
-
 
 ---
 
@@ -86,7 +83,6 @@ Toto praktické testovací prostředí obsahuje následující praktická cviče
 
 > [!NOTE]
 > Při prvním spuštění sady Visual Studio, musíte vybrat jednu z předdefinovaných nastavení kolekce. Každé předdefinované kolekce je navržená tak, aby odpovídala konkrétním vývojářským styl a určuje rozložení oken, chování editoru, fragmenty kódu technologie IntelliSense a možnosti dialogového okna. Postupy v tomto testovacím prostředí jsou uvedené akce potřebné k provedení dané úlohy v sadě Visual Studio při použití **obecným vývojovým nastavením** kolekce. Pokud se rozhodnete různá nastavení kolekce pro vaše vývojové prostředí, mohou existovat rozdíly v krocích, které byste měli vzít v úvahu.
-
 
 <a id="Exercise1"></a>
 ### <a name="exercise-1-working-with-browser-link-and-web-essentials"></a>Cvičení 1: Práce s Browser Link a Web Essentials

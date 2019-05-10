@@ -8,19 +8,18 @@ ms.date: 05/12/2009
 ms.assetid: 96b56eca-a892-45a4-96b4-67e61178650a
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4428ef0a6cec4c348bc48d069b990798508c21d4
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 7850e745f5985688c95fc7f649ccbb06b2f66e20
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59391660"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65127165"
 ---
 # <a name="creating-a-custom-ajax-control-toolkit-control-extender-c"></a>Vytvoření vlastního rozšiřujícího ovládacího prvku AJAX Control Toolkit (C#)
 
 by [Microsoft](https://github.com/microsoft)
 
 > Vlastní zařízení Extender umožňují přizpůsobit a rozšířit možnosti ovládacích prvků ASP.NET, bez nutnosti vytvářet nové třídy.
-
 
 V tomto kurzu se dozvíte, jak vytvořit vlastní – extender ovládacího prvku AJAX Control Toolkit. Vytvoříme jednoduchý, ale užitečné a nové rozšíření, která změní stav tlačítka ze zakázaného na povolený, když zadáte text do pole TextBox. Po přečtení tohoto kurzu, budete moct rozšířit ASP.NET AJAX Toolkit s vlastní ovládací prvek extenderů.
 
@@ -36,19 +35,15 @@ Naše nové zařízení extender ovládacího prvku má název rozšiřujícího
 
 Můžete integrovat DisabledButton rozšiřujícího objektu do ovládacího prvku textového pole a tlačítko. Před zadáním textu je tlačítko neaktivní a do textového pole a tlačítko vypadat nějak takto:
 
-
 [![](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image2.png)](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image1.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image3.png))
 
-
 Jakmile začnete zadávat text, tlačítko je povoleno a do textového pole a tlačítko vypadat nějak takto:
-
 
 [![](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image5.png)](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image4.png)
 
 ([Kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image6.png))
-
 
 K vytvoření naší – extender ovládacího prvku, potřebujeme vytvořit následující tři soubory:
 
@@ -78,11 +73,9 @@ V dalším kroku potřeba vytvořit projekt knihovny tříd, který bude obsahov
 
 Po dokončení těchto kroků okna Průzkumník řešení by měl vypadat jako obrázek 1.
 
-
 [![Řešení pomocí projektu knihovny webu a třídy](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image8.png)](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image7.png)
 
 **Obrázek 01**: Řešení pomocí projektu knihovny webu a třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image9.png))
-
 
 Dále je třeba přidat všechny potřebné reference sestavení do projektu knihovny tříd:
 
@@ -99,11 +92,9 @@ Dále je třeba přidat všechny potřebné reference sestavení do projektu kni
 
 Po dokončení těchto kroků, odkazy na složky projektu knihovny tříd by mělo vypadat jako na obrázku 2.
 
-
 [![Složka s odkazy s požadované odkazy](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image11.png)](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image10.png)
 
 **Obrázek 02**: Složka s odkazy s odkazy na požadovaná ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image12.png))
-
 
 ## <a name="creating-the-custom-control-extender"></a>Vytvoření extenderu vlastního ovládacího prvku
 
@@ -122,9 +113,7 @@ V dalším kroku Všimněte si, že třída zahrnuje následující dva atributy
 
 Atribut webového prostředku se používá pro vložení souboru MyControlBehavior.js JavaScriptu do sestavení při kompilaci vlastního zařízení extender. Atribut ClientScriptResource slouží k načtení skriptu MyControlBehavior.js ze sestavení při použití vlastního zařízení extender na webové stránce.
 
-
 Aby atributy webového prostředku a ClientScriptResource pracovat musíte zkompilovat soubor jazyka JavaScript jako vložený prostředek. Vyberte ho v okně Průzkumníka řešení, otevřete seznam vlastností a přiřaďte hodnotu *integrovaný prostředek* k **akce sestavení** vlastnost.
-
 
 Všimněte si, že – extender ovládacího prvku také obsahuje atribut TargetControlType. Tento atribut slouží k určení typu ovládacího prvku, který je rozšířit pomocí – extender ovládacího prvku. V případě výpis 1 extender ovládacího prvku slouží k prodloužení textové pole.
 
@@ -154,11 +143,9 @@ Metodu initialize() přidruží obslužnou rutinu události keyup cílového ele
 
 Mějte na paměti, že je nutné kompilovat soubor jazyka JavaScript v informacích 3 jako vložený prostředek. Vyberte ho v okně Průzkumníka řešení, otevřete seznam vlastností a přiřaďte hodnotu *integrovaný prostředek* k **akce sestavení** vlastnosti (viz obrázek 3). Tato možnost je k dispozici v sadě Visual Studio a Visual Web Developer.
 
-
 [![Přidání souboru jazyka JavaScript jako vložený prostředek](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image14.png)](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image13.png)
 
 **Obrázek 03**: Přidání souboru jazyka JavaScript jako vložený prostředek ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image15.png))
-
 
 ## <a name="creating-the-custom-extender-designer"></a>Vytvoření vlastního zařízení Extender návrháře
 
@@ -183,11 +170,9 @@ Teď, když jsme dokončili, vytvoření extenderu ovládacího prvku DisabledBu
 
 Po dokončení těchto kroků – extender ovládacího prvku DisabledButton objevit na panelu nástrojů (viz obrázek 4).
 
-
 [![DisabledButton na panelu nástrojů](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image17.png)](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image16.png)
 
 **Obrázek 04**: DisabledButton na panelu nástrojů ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image18.png))
-
 
 Dále musíme vytvořit novou stránku ASP.NET. Postupujte podle těchto kroků:
 
@@ -196,7 +181,6 @@ Dále musíme vytvořit novou stránku ASP.NET. Postupujte podle těchto kroků:
 3. Přetáhněte ovládací prvek textového pole na stránce.
 4. Přetáhněte ovládací prvek tlačítko na stránku.
 5. V okně Vlastnosti změňte vlastnost ID tlačítek na hodnotu <em>btnSave</em> a vlastnost textu na hodnotu *Uložit\**.
-  
 
 Na stránce jsme vytvořili pomocí standardního ovládacího prvku ASP.NET textového pole a tlačítko.
 
@@ -205,11 +189,9 @@ Dále musíme rozšířit ovládací prvek TextBox s DisabledButton rozšiřují
 1. Vyberte **přidat zařízení Extender** úloh možnost otevření dialogového okna rozšíření průvodce (viz obrázek 5). Všimněte si, že dialogového okna obsahuje naše vlastního zařízení extender DisabledButton.
 2. Vyberte zařízení extender DisabledButton a klikněte na tlačítko **OK** tlačítko.
 
-
 [![Dialogové okno Průvodce rozšiřujícího objektu](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image20.png)](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image19.png)
 
 **Obrázek 05**: Dialogové okno Průvodce zařízení Extender ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image21.png))
-
 
 Nakonec jsme můžete nastavit vlastnosti DisabledButton rozšiřujícího objektu. Vlastnosti DisabledButton rozšiřujícího objektu, který můžete upravit tak, že upravíte vlastnosti ovládacího prvku textového pole:
 
@@ -217,19 +199,15 @@ Nakonec jsme můžete nastavit vlastnosti DisabledButton rozšiřujícího objek
 2. V okně Vlastnosti rozbalte uzel zařízení Extender (viz obrázek 6).
 3. Přiřaďte hodnotu *Uložit* DisabledText vlastnosti a hodnotu *btnSave* TargetButtonID vlastnosti.
 
-
 [![Nastavení vlastností rozšíření](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image23.png)](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image22.png)
 
 **Obrázek 06**: Nastavení vlastností zařízení extender ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image24.png))
 
-
 Při spuštění stránky (stisknutím klávesy F5) ovládacího prvku tlačítko je zpočátku zakázáno. Jakmile začnete zadávat text do textového pole, tlačítko ovládací prvek je povoleno (viz obrázek 7).
-
 
 [![Zařízení extender DisabledButton v akci](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image26.png)](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image25.png)
 
 **Obrázek 07**: Zařízení extender DisabledButton v akci ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-custom-ajax-control-toolkit-control-extender-cs/_static/image27.png))
-
 
 ## <a name="summary"></a>Souhrn
 

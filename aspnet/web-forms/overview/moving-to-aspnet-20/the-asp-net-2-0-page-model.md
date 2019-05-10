@@ -8,19 +8,18 @@ ms.date: 02/20/2005
 ms.assetid: af4575a3-0ae3-4638-ba4d-218fad7a1642
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/the-asp-net-2-0-page-model
 msc.type: authoredcontent
-ms.openlocfilehash: 09f8389a04c5600ca9ee8365a9dc5a0d607c0a4d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: bcb71b2b5a484e8756406867e08e8aa699a9024d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59403919"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65127919"
 ---
 # <a name="the-aspnet-20-page-model"></a>Model 2.0 stránky ASP.NET
 
 by [Microsoft](https://github.com/microsoft)
 
 > V technologii ASP.NET 1.x, vývojáři měli možnost volby mezi model pomocí vloženého kódu a model kódu použití modelu code-behind. Použití modelu Code-behind může být implementovaná pomocí atributu Src nebo atribut CodeBehind @Page směrnice. V technologii ASP.NET 2.0 vývojáři stále mít možnost volby mezi vloženého kódu a použití modelu code-behind, ale došlo k použití modelu code-behind modelu významná vylepšení.
-
 
 V technologii ASP.NET 1.x, vývojáři měli možnost volby mezi model pomocí vloženého kódu a model kódu použití modelu code-behind. Použití modelu Code-behind může být implementovaná pomocí atributu Src nebo atribut CodeBehind @Page směrnice. V technologii ASP.NET 2.0 vývojáři stále mít možnost volby mezi vloženého kódu a použití modelu code-behind, ale došlo k použití modelu code-behind modelu významná vylepšení.
 
@@ -47,12 +46,10 @@ Definice typické třídy v souboru kódu ASP.NET 2.0 může vypadat takto:
 > [!NOTE]
 > C# a Visual Basic jsou pouze spravované jazyky, které aktuálně podporují částečné třídy. Proto vývojáři, kteří používají J# nebude možné použít model použití modelu code-behind v technologii ASP.NET 2.0.
 
-
 Nový model zvyšuje model použití modelu code-behind, protože vývojáři budou mít soubory kódu, které obsahují pouze kód, který jste vytvořili. Také nabízí true oddělení kódu a obsahu vzhledem k tomu, že neexistují žádné instance deklarace proměnných v souboru kódu na pozadí.
 
 > [!NOTE]
 > Částečné třídy pro stránku ASPX je, kde vazby události dojde, vývojáře jazyka Visual Basic můžete realizovat zvýšení snížený výkon pomocí klíčového slova popisovače v modelu code-behind svázat události. C# nemá žádný ekvivalent klíčového slova.
-
 
 ## <a name="new--page-directive-attributes"></a>Nové atributy @ Page – direktiva
 
@@ -128,12 +125,9 @@ Další nová funkce – Direktiva @ Page v technologii ASP.NET 2.0 je možnost 
 
 **SomeText** atribut – Direktiva @ Page nastaví počáteční hodnotu vlastnosti SomeText v základní třídě pro *Hello!*. Následující video je návod, nastaví počáteční hodnotu veřejnou vlastnost v základní třídě – Direktiva @ Page.
 
-
 ![](the-asp-net-2-0-page-model/_static/image1.png)
 
-
 [Otevřít Video na celou obrazovku](the-asp-net-2-0-page-model/_static/setprop1.wmv)
-
 
 ## <a name="new-public-properties-of-the-page-class"></a>Nové veřejné vlastnosti třídy stránky
 
@@ -365,12 +359,9 @@ Na stránce, když se pošle zpět na stránku, která zahájí zpětné volán�
 
 Následující video je návod, zpětné volání mezi stránkami.
 
-
 ![](the-asp-net-2-0-page-model/_static/image2.png)
 
-
 [Otevřít Video na celou obrazovku](the-asp-net-2-0-page-model/_static/xpage1.wmv)
-
 
 ## <a name="more-details-on-cross-page-postbacks"></a>Další podrobnosti o postbacků mezi stránkami
 
@@ -423,16 +414,12 @@ Dalším krokem je volání metody AddOnPreRenderCompleteAsync v určitém bodě
 
 Video níže je návod požadavku asynchronní stránky.
 
-
 ![](the-asp-net-2-0-page-model/_static/image3.png)
-
 
 [Otevřít Video na celou obrazovku](the-asp-net-2-0-page-model/_static/async1.wmv)
 
-
 > [!NOTE]
 > Stránku asynchronní nevykresluje do prohlížeče, dokud se nedokončí EndEventHandler. Žádné nejisté, ale někteří vývojáři budou představit asynchronních jako podobný zpětná volání asynchronní. Je důležité si uvědomit, že nejsou. Výhoda pro asynchronní požadavků je, že první pracovní vlákno mohou být vráceny do fondu vláken zpracování nových požadavků, a tím snižuje kolize kvůli se vstupně-výstupních operací, které jsou vázány, atd.
-
 
 ## <a name="script-callbacks-in-aspnet-20"></a>Zpětná volání skriptu v ASP.NET 2.0
 
@@ -459,14 +446,12 @@ Jak už bylo zmíněno dříve, je zapouzdřena volání XMLHttp v obslužná ru
 > [!NOTE]
 > \_\_doPostBack se zobrazí stránku ve scénáři skript zpětného volání klienta. Ale není použit pro zpětné volání.
 
-
 Argumenty pro webovém formuláři\_DoCallback funkce na straně klienta jsou k dispozici prostřednictvím funkce na straně serveru GetCallbackEventReference, která by obvykle nazývat stránce\_zatížení. Typické volání GetCallbackEventReference může vypadat takto:
 
 [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample12.cs)]
 
 > [!NOTE]
 > V takovém případě je cm instancí ClientScriptManager. Třída ClientScriptManager se budeme dále v tomto modulu.
-
 
 Existuje několik přetížené verze GetCallbackEventReference. V takovém případě argumenty jsou následující:
 
@@ -522,12 +507,9 @@ Rozhraní ICallbackEventHandler obsahuje dvě metody, které je nutné implement
 
 Po dokončení výše uvedené kroky, jste připraveni k provádění zpětného volání skriptu v ASP.NET 2.0.
 
-
 ![](the-asp-net-2-0-page-model/_static/image4.png)
 
-
 [Otevřít Video na celou obrazovku](the-asp-net-2-0-page-model/_static/callback1.wmv)
-
 
 Zpětná volání skriptu v ASP.NET jsou podporovány v jakémkoli prohlížeči, který podporuje provedete XMLHttp volání. To zahrnuje všechny moderní prohlížeče používá ještě dnes. Aplikace Internet Explorer používá objektu XMLHttp ActiveX při použití vnitřního objektu XMLHttp dalších moderních prohlížečů (včetně nadcházející aplikace Internet Explorer 7). K určení prostřednictvím kódu programu, pokud je prohlížeč podporuje zpětná volání, můžete použít **Request.Browser.SupportCallback** vlastnost. Tato vlastnost vrátí **true** Pokud klienta, který podporuje zpětná volání skriptu.
 
@@ -537,7 +519,6 @@ Skripty klienta v technologii ASP.NET 2.0 jsou spravované prostřednictvím pou
 
 > [!NOTE]
 > Skript po úspěšné registraci na stránce, jakékoli následné pokusy o registraci stejný skript jednoduše výsledkem skriptu není zaregistrovaný podruhé. Budou přidány žádné duplicitní skripty a dojde k žádné výjimce. Aby se zabránilo zbytečným výpočtu, jsou metody, které můžete použít k určení, jestli skript je už zaregistrovaný, takže není pokusí zaregistrovat víc než jednou.
-
 
 Metody ClientScriptManager by měl být všechny aktuální vývojáře využívající technologii ASP.NET:
 
@@ -580,7 +561,6 @@ Tento kód vytvoří následující kód na vykreslené stránce:
 > [!NOTE]
 > Blok skriptu se vykreslí v dolní části stránky.
 
-
 Pomocí této metody IsClientScriptIncludeRegistered určit, jestli je skript už zaregistrovaný. To umožňuje vyhnout se znovu zaregistrovat skript.
 
 ## <a name="registerstartupscript"></a>RegisterStartupScript
@@ -590,13 +570,11 @@ Metoda RegisterStartupScript používá stejné argumenty jako metodu RegisterCl
 > [!NOTE]
 > Když si zaregistrujete funkce s RegisterStartupScript, tato funkce nebude spuštěno, dokud ho explicitně volat v kódu na straně klienta.
 
-
 Pomocí metody IsStartupScriptRegistered můžete určit, jestli je skript už zaregistrovaný a vyhnout se znovu zaregistrovat skript.
 
 ## <a name="other-clientscriptmanager-methods"></a>Jiné metody ClientScriptManager
 
 Tady jsou některé z dalších užitečných metod ClientScriptManager třídy.
-
 
 |  <strong>GetCallbackEventReference</strong>   |                                                 Viz zpětná volání skriptu dříve v tomto modulu.                                                 |
 |-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
@@ -606,4 +584,3 @@ Tady jsou některé z dalších užitečných metod ClientScriptManager třídy.
 | <strong>RegisterClientScriptResource</strong> |     Zaregistruje prostředek webové stránky. Toto jsou prostředky součástí sestavení a zpracovat nová obslužná rutina WebResource.axd.      |
 |     <strong>RegisterHiddenField</strong>      |                                                 Zaregistruje skryté pole formuláře se stránkou.                                                 |
 |  <strong>RegisterOnSubmitStatement</strong>   |                                  Zaregistruje kód na straně klienta, který se spustí, když se odešle formulář HTML.                                   |
-

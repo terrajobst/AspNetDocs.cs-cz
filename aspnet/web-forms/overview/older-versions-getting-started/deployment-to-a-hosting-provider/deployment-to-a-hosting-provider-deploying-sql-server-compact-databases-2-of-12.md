@@ -8,12 +8,12 @@ ms.date: 11/17/2011
 ms.assetid: c3c76516-4c48-4153-bd03-d70e3a3edbb0
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: cc8568847e050e868a3e7563b5fc1fc6fbf25d86
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: b265d210ff3b1eeb8697a973cc245f6c97b3eb07
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59405479"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134183"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Nasazování databází SQL Server Compact - 2 z 12
 
@@ -24,7 +24,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > Tato série kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace, která obsahuje databázi systému SQL Server Compact pomocí sady Visual Studio 2012 RC nebo Visual Studio Express 2012 RC pro Web. Můžete také použít Visual Studio 2010 při instalaci aktualizace Publikovat Web. Úvod do řady, naleznete v tématu [z prvního kurzu této série](deployment-to-a-hosting-provider-introduction-1-of-12.md).
 > 
 > Kurz ukazuje nasazení funkce zavedená po verzi RC sady Visual Studio 2012, ukazuje, jak nasadit edicích systému SQL Server než SQL Server Compact a ukazuje, jak nasadit do Azure App Service Web Apps, najdete v tématu [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -144,7 +143,6 @@ Tento výběr nabídky přidá následující kód, který `using` příkazů v 
 > 
 > Tento příklad ukazuje pro tento kurz používá `AddOrUpdate` metodu `Seed` metoda migrace Code First `Configuration` třídy. Kód volá první migrace `Seed` za každou migraci a tato metoda aktualizuje řádky, které již byl vložen a vloží je, pokud ještě neexistují. `AddOrUpdate` Metody nemusí být nejlepší volbou pro váš scénář. Další informace najdete v tématu [postará metodou AddOrUpdate 4.3 EF](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/) na blogu Julie Lerman.
 
-
 Stisknutím klávesy CTRL-SHIFT-B a sestavte projekt.
 
 Dalším krokem je vytvoření `DbMigration` třídu pro počáteční migraci. Chcete, aby tato migrace k vytvoření nové databáze, takže budete muset odstranit databázi, která již existuje. Databáze systému SQL Server Compact jsou obsaženy v *SDF* soubory *aplikace\_Data* složky. V **Průzkumníka řešení**, rozbalte *aplikace\_Data* zobrazit dvě databáze systému SQL Server Compact do projektu ContosoUniversity, které jsou reprezentovány *SDF*soubory.
@@ -187,7 +185,6 @@ Při první nasadíte lokalitu, je běžné vyloučit většinu nebo všechny u�
 
 > [!NOTE]
 > Databáze členství ukládá hodnota hash hesla účtu. Za účelem nasazení účty z jednoho počítače do jiného, ujistěte se, že hash rutiny negenerovat různé hodnoty hash na cílovém serveru, než na zdrojovém počítači. Nich vydá stejné hodnoty hash při použití technologie ASP.NET Universal Providers, dokud nezměníte výchozí algoritmus. Výchozí algoritmus je HMACSHA256 a je uveden v **ověření** atribut **[machineKey](https://msdn.microsoft.com/library/w8h3skw9.aspx)** element v souboru Web.config.
-
 
 Databáze členství není spravován migrace Code First a neexistuje žádný inicializátor automatické, který nasazení nasazuje databáze s testovací účty (jako je databáze školy). Proto zajistit testovacích dat, které jsou k dispozici budete vytvořte kopii testovací databázi před vytvořením nového.
 

@@ -8,19 +8,18 @@ ms.date: 01/27/2009
 ms.assetid: 61644169-e8b1-45dd-bf96-9c2301b69879
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 29f7dded2f6fc2e8ce588dab2949b59ddb6f1fc4
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2e0e365c287fc455015d237ea466301335805d14
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59388904"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65122450"
 ---
 # <a name="creating-model-classes-with-the-entity-framework-c"></a>Vytvoření tříd modelu v sadě Entity Framework (C#)
 
 by [Microsoft](https://github.com/microsoft)
 
 > V tomto kurzu se dozvíte, jak používat technologie ASP.NET MVC s Entity Framework společnosti Microsoft. Zjistíte, jak používat průvodce Entity k vytvoření datového modelu Entity ADO.NET. V průběhu tohoto kurzu jsme vytvořit webovou aplikaci, která ukazuje, jak vybrat, vkládání, aktualizace a odstranění dat z databáze pomocí Entity Frameworku.
-
 
 Cílem tohoto kurzu je vysvětlují, jak můžete vytvořit datové třídy přístup pomocí Microsoft Entity Framework při sestavování aplikace ASP.NET MVC. Tento kurz předpokládá žádné předchozí informace o Microsoft Entity Framework. Na konci tohoto kurzu budete vědět, jak použít rozhraní Entity Framework pro výběr, vkládání, aktualizaci a odstranění záznamů databáze.
 
@@ -32,11 +31,9 @@ Tento kurz předpokládá, že máte Visual Studio 2008 nebo Visual Web Develope
 
 > [https://www.asp.net/downloads/](https://www.asp.net/downloads)
 
-
 > [!NOTE] 
 > 
 > Neexistuje žádná základní připojení mezi ASP.NET MVC a Entity Framework společnosti Microsoft. Existuje několik alternativ k Entity Frameworku, který vám pomůže s architekturou ASP.NET MVC. Například můžete vytvořit pomocí jiných nástrojů O/RM, jako je například Microsoft LINQ to SQL nebo NHibernate, SubSonic třídách modelu MVC.
-
 
 ## <a name="creating-the-movie-sample-database"></a>Vytvoření ukázkové databáze filmů
 
@@ -108,9 +105,7 @@ Pokud chcete přejmenovat třídu entity, můžete dvakrát klikněte na název 
 
 Nezapomeňte si uložit modelu Entity Data Model po provedení změny kliknutím na tlačítko Save (ikonu diskety). Na pozadí v návrháři entit generuje sadu tříd C#. Tyto třídy můžete zobrazit tak, že otevřete soubor MoviesDBModel.Designer.cs z okna Průzkumníka řešení.
 
-
 Neupravujte kód v souboru Designer.cs, protože vaše změny budou přepsány při příštím použití v návrháři entit. Pokud chcete k rozšíření funkčnosti tříd entit, které jsou definovány v souboru Designer.cs pak můžete vytvořit *částečné třídy* v samostatných souborů.
-
 
 #### <a name="selecting-database-records-with-the-entity-framework"></a>Výběr záznamů Database s Entity Framework
 
@@ -122,9 +117,7 @@ Můžeme pustit do vytvoření aplikace Movie Database tak, že vytvoříte str�
 
 Všimněte si, že řadič v informacích 1 obsahuje konstruktor. Konstruktor inicializuje pole třídu úrovně s názvem \_db. \_Db pole představuje entity databáze vygenerovaným rozhraním Entity Framework společnosti Microsoft. \_Db pole je instance třídy MoviesDBEntities, který byl vygenerován v návrháři entit.
 
-
 Pokud chcete používat třídu theMoviesDBEntities v kontroler Home, je nutné naimportovat MovieEntityApp.Models obor názvů (*MVCProjectName*. Modely).
-
 
 \_Db pole se používá v rámci akce Index() k načtení záznamů v tabulce databáze filmů. Výraz \_db. MovieSet představuje všechny záznamy v tabulce databáze filmů. Metoda ToList() slouží k převedení sadu filmy do obecné kolekce filmů objektů (seznam&lt;film&gt;).
 
@@ -162,9 +155,7 @@ Všimněte si, že druhou akci Add() je upravena pomocí atributů AcceptVerbs. 
 
 Druhou akci Add() vytvoří novou instanci třídy film Entity Framework pomocí metody ASP.NET MVC TryUpdateModel(). Metoda TryUpdateModel() přijímá pole v FormCollection předaný metodě Add() a přiřadí hodnoty těchto polí formuláře HTML na třídu video.
 
-
 Při použití rozhraní Entity Framework, je třeba zadat "prázdný seznam" vlastnosti při použití metody TryUpdateModel nebo UpdateModel k aktualizaci vlastností třídu entity.
-
 
 V dalším kroku Add() akci provádí nějaké jednoduchý formulář ověření. Akce ověří, zda název a ředitel pro vlastnosti mají hodnoty. Pokud dojde k chybě ověřování, se přidá chybovou zprávu ověření pro ModelState.
 

@@ -8,12 +8,12 @@ ms.date: 08/03/2007
 ms.assetid: d57dfa2b-d627-45cb-b5b1-abbf3159d770
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a6097a32f0a67436b786fcdd808964ac6b832439
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 5c66514dffea5b25f616ffaf9c595b5270c1082e
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59419571"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133384"
 ---
 # <a name="configuring-the-data-access-layers-connection--and-command-level-settings-vb"></a>Konfigurace připojení vrstvy přístupu k datům a nastavení na úrovni příkazu (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_72_VB.zip) nebo [stahovat PDF](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/datatutorial72vb1.pdf)
 
 > Objekty TableAdapter v datové sadě zadán automaticky postará o připojení k databázi, vydávání příkazů a naplnění DataTable s výsledky. Existují situace, ale když chceme, aby se postaral o tyto podrobnosti si a v tomto kurzu jsme zjistěte, jak získat přístup k nastavení databáze úroveň připojení a příkazu v TableAdapter.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -50,24 +49,19 @@ S výjimkou [zabalení úprav databáze do transakce](../working-with-batched-da
 
 Každá třída TableAdapter má `Connection` vlastnost, která určuje informace o připojení databáze. Tento typ dat vlastnosti s a `ConnectionString` hodnota se určují podle výběru v Průvodci konfigurací TableAdapter. Připomínáme, že když jsme nejprve přidat TableAdapter k datové sadě zadán tento průvodce výzva pro databázi zdroje (viz obrázek 1). Rozevíracím seznamu v prvním kroku zahrnuje tyto databáze zadané v konfiguračním souboru, jakož i jiných databází v Průzkumníku serveru s datová připojení. Pokud databáze, kterou chceme použít neexistuje v rozevíracím seznamu, nové připojení k databázi je možné zadat tak kliknutím na tlačítko nové připojení a poskytuje informace o připojení potřebné.
 
-
 [![Prvním krokem Průvodce nastavením TableAdapter](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image2.png)](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image1.png)
 
 **Obrázek 1**: Prvním krokem Průvodce nastavením TableAdapter ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image3.png))
-
 
 Umožňují s věnujte chvíli kontrole kódu pro TableAdapter s `Connection` vlastnost. Jak je uvedeno v [vytvoření vrstvy přístupu k datům](../introduction/creating-a-data-access-layer-vb.md) kurzu jsme zobrazit automaticky vygenerovaný kód TableAdapter tak, že přejdete do okna zobrazení tříd, podrobnostem příslušné třídy a následným dvojitým kliknutím název členu.
 
 Přejděte do okna zobrazení třídy tak, že přejdete do nabídky zobrazení a zvolíte zobrazení tříd (nebo zadáním kombinace kláves Ctrl + Shift + C). V horní polovině okno Zobrazení tříd, přejít k podrobnostem `NorthwindTableAdapters` obor názvů a vyberte `ProductsTableAdapter` třídy. Bude se zobrazovat `ProductsTableAdapter` s členy v dolní polovině zobrazení tříd, jak je znázorněno na obrázku 2. Dvakrát klikněte `Connection` vlastnost zobrazíte jeho kód.
 
-
 ![Dvakrát klikněte na vlastnost připojení v zobrazení tříd a zobrazte jeho automaticky generovaný kód](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image4.png)
 
 **Obrázek 2**: Dvakrát klikněte na vlastnost připojení v zobrazení tříd a zobrazte jeho automaticky generovaný kód
 
-
 TableAdapter s `Connection` vlastností a další související připojení kódu takto:
-
 
 [!code-vb[Main](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/samples/sample1.vb)]
 
@@ -84,17 +78,13 @@ Umožní s rozšířit `ProductsTableAdapter` v `Northwind` datovou sadu, která
 > [!NOTE]
 > A *připojovací řetězec* je řetězec, který určuje informace o připojení databáze, jako je například zprostředkovatele má být použit, umístění databáze, přihlašovací údaje pro ověření a další nastavení vztahující se k databázi. Seznam vzorů řetězec připojení používaný řadou úložišť dat a poskytovatelů najdete v tématu [ConnectionStrings.com](http://www.connectionstrings.com/).
 
-
 Jak je popsáno v [vytvoření vrstvy přístupu k datům](../introduction/creating-a-data-access-layer-vb.md) kurzu typované datové sady s automaticky generované třídy je možné rozšířit pomocí částečných tříd. Nejprve vytvořte novou podsložku v projektu s názvem `ConnectionAndCommandSettings` pod `~/App_Code/DAL` složky.
-
 
 ![Přidat podsložku s názvem ConnectionAndCommandSettings](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image5.png)
 
 **Obrázek 3**: Přidat podsložku s názvem `ConnectionAndCommandSettings`
 
-
 Přidejte nový soubor třídy s názvem `ProductsTableAdapter.ConnectionAndCommandSettings.vb` a zadejte následující kód:
-
 
 [!code-vb[Main](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/samples/sample2.vb)]
 
@@ -108,11 +98,9 @@ Tato částečná třída zveřejňuje pouze jedné vlastnosti takové základn�
 
 Otevřít `Northwind` datovou sadu, klikněte na `ProductsTableAdapter` v návrháři a přejděte do okna Vlastnosti. Uvidíte `ConnectionModifier` nastavit na výchozí hodnotu, `Assembly`. Chcete-li `Connection` mimo sestavení s typované datové sady, změny k dispozici `ConnectionModifier` vlastnost `Public`.
 
-
 [![Úroveň připojení s vlastnosti usnadnění přístupu lze nakonfigurovat přes vlastnost ConnectionModifier](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image7.png)](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image6.png)
 
 **Obrázek 4**: `Connection` Vlastnost s usnadnění úroveň lze nakonfigurovat prostřednictvím `ConnectionModifier` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image8.png))
-
 
 Uložte datovou sadu a pak se vraťte k `ProductsBLL` třídy. Než, přejděte na jednu z existujících metod a zadejte `Adapter` a potom stiskněte klávesu období zobrazíte technologie IntelliSense. Tento seznam by měl obsahovat `Connection` vlastnost, což znamená, že teď můžete prostřednictvím kódu programu číst nebo z BLL přiřadit nastavení úroveň připojení.
 
@@ -132,7 +120,6 @@ Kromě jeho hlavním dotazu objektu TableAdapter může zahrnovat proměnný po�
 
 Umožňují s za chvíli si prohlédnout kód vygenerovaný `ProductsTableAdapter` v `Northwind` datovou sadu pro tyto dvě vlastnosti a jejich podpůrné členské proměnné a pomocné metody:
 
-
 [!code-vb[Main](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/samples/sample3.vb)]
 
 Kód `Adapter` a `CommandCollection` u vlastnosti úzce napodobuje `Connection` vlastnost. Existují členské proměnné, které obsahují objekty používané vlastnosti. Vlastnosti `Get` přistupující objekty začněte tím, že kontroluje se, pokud je odpovídající členskou proměnnou `Nothing`. Pokud ano, inicializační metoda je volána, který vytvoří instanci členské proměnné a přiřadí základní vlastnosti související se příkaz.
@@ -147,14 +134,12 @@ Představte si například, že došlo ke některých dotazů v TableAdapter, kt
 
 Povolit `CommandTimeout` vlastnost možné upravit tak, že BLL, přidejte následující `Public` metodu `ProductsDataTable` pomocí souboru částečné třídy vytvořili v kroku 2 (`ProductsTableAdapter.ConnectionAndCommandSettings.vb`):
 
-
 [!code-vb[Main](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/samples/sample4.vb)]
 
 Tato metoda může vyvolat z knihoven BLL nebo prezentační vrstva nastavit časový limit příkazu pro všechny problémy s příkazy instancí TableAdapter.
 
 > [!NOTE]
 > `Adapter` a `CommandCollection` vlastnosti jsou označeny jako `Private`, což znamená, že je přístupný pouze z kódu v rámci objektu TableAdapter. Na rozdíl od `Connection` vlastnost, tyto modifikátory přístupu se nedají konfigurovat. Proto pokud je nutné vystavit vlastnosti na úrovni příkazu na ostatních vrstvách v architektuře, která je nutné použít částečné třídy přístup bylo uvedeno výše, k poskytování `Public` metoda nebo vlastnost, která čte nebo zapisuje do `Private` příkaz objekty.
-
 
 ## <a name="summary"></a>Souhrn
 

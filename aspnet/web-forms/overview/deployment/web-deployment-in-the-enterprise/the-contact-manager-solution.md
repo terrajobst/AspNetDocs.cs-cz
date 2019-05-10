@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 4d8c8d19-055b-4b70-9ee1-f748f0db3a01
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/the-contact-manager-solution
 msc.type: authoredcontent
-ms.openlocfilehash: 7998b5bb2983410479123514661a4ddb67afc8c6
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 12ed7827f7392e559e04121386f7cd045de8462b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398368"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130918"
 ---
 # <a name="the-contact-manager-solution"></a>Řešení správce kontaktů
 
@@ -24,7 +24,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > To [sérii kurzů](web-deployment-in-the-enterprise.md) používá ukázkové řešení&#x2014;řešení Správce kontaktů&#x2014;reprezentující aplikaci podnikové úrovni s realistické úroveň složitosti. Toto téma představuje řešení Správce kontaktů, popisuje klíčové komponenty řešení a identifikuje problémy při nasazení tohoto typu aplikace na různé cílové platformy v podnikovém prostředí.
 > 
 > Při práci v těchto kurzech procházení témat, můžete použít jako referenční implementaci, který ukazuje, jak lze splnit určité problémy v podnikových scénářích nasazení řešení Správce kontaktů. Dalším tématu s názvem [nastavení Up the řešení Správce kontaktů](setting-up-the-contact-manager-solution.md), popisuje, jak stáhnout a spustit řešení na vaši vývojářskou pracovní stanici.
-
 
 ## <a name="solution-overview"></a>Přehled řešení
 
@@ -45,7 +44,6 @@ Koncepční úrovni zapadají součástmi řešení takto:
 
 > [!NOTE]
 > Když webové aplikace ASP.NET MVC 3 používá poskytovatele členství prostředí ASP.NET, všechny stránky v rámci webové aplikace povolit anonymní přístup. Toto není jasně realistické konfigurace. Toto řešení je ale nastavit tímto způsobem, aby bylo snazší nasadit a testovat řešení bez konfigurace uživatelských účtů a rolí.
-
 
 ## <a name="deployment-challenges"></a>Problémy při nasazení
 

@@ -9,19 +9,18 @@ ms.assetid: 15253312-a92c-43ba-908e-b5dacd3d08b8
 ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider
 msc.type: authoredcontent
-ms.openlocfilehash: 6a73efb7d577cc70ca5ebaa69e8fdd03f3735ae4
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e89ed139657c5ce9ddcc56879946c62038919483
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59379661"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65121448"
 ---
 # <a name="aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider-c"></a>ASP.NET Identity: Použití úložiště MySQL zprostředkovatele EntityFramework MySQL (C#)
 
 podle [Maurycy Markowski](https://github.com/maumar), [Raquel Soares De Almeida](https://github.com/raquelsa), [Robert McMurray](https://github.com/rmcmurray)
 
 > V tomto kurzu se dozvíte, jak nahradit výchozí mechanismem úložiště dat pro [ **ASP.NET Identity** ](introduction-to-aspnet-identity.md) s s MySQL zprostředkovatele EntityFramework (zprostředkovatel SQL klient).
-
 
 V následujících tématech se budeme v tomto kurzu:
 
@@ -90,7 +89,6 @@ Aby EntityFramework pro připojení k databázi MySQL budete muset nainstalovat 
 > [!NOTE]
 > Toto je předběžná verze sestavení, a proto může obsahovat chyby. Předběžná verze zprostředkovatele byste neměli používat v produkčním prostředí.
 
-
 [Klikněte na tlačítko se rozbalí na následujícím obrázku.]
 
 [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image22.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image21.png)
@@ -101,7 +99,6 @@ V této části budete konfigurovat Entity Framework pro použití MySQL poskyto
 
 > [!NOTE]
 > Následující příklady obsahují konkrétní sestavení verze pro MySql.Data.dll. Pokud se změní verze sestavení, musíte změnit nastavení odpovídající konfigurace se správnou verzí.
-
 
 1. Otevřete soubor Web.config pro váš projekt v sadě Visual Studio 2013.
 2. Vyhledejte následující nastavení konfigurace, které definují výchozí databáze zprostředkovatelů a objektů factory pro Entity Framework:
@@ -131,7 +128,6 @@ MySQL zprostředkovatele, který je vybrané v tomto kurzu aktuálně nepodporuj
 
 > [!NOTE]
 > Tento krok není povinný, pokud se chcete připojit k instanci systému SQL Server v Azure nebo pokud používáte databázi, která je hostovaná v místním prostředí.
-
 
 Pokud chcete vytvořit vlastní Entity Framework inicializátor pro MySQL, postupujte následovně:
 

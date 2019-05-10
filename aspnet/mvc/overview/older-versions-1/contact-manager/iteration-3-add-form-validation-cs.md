@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: 51a0d175-913b-43d8-95e3-840fb96ad1a9
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-3-add-form-validation-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 973878ef0afd62035b3fc840371e6c6223c8951c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: af2e86e820f60f0a3d8e3db8f78eba67ef63579a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59413786"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123951"
 ---
 # <a name="iteration-3--add-form-validation-c"></a>Iterace #3 – Přidání ověřovacího formuláře (C#)
 
@@ -23,9 +23,7 @@ by [Microsoft](https://github.com/microsoft)
 
 > Ve třetí iterace přidáme ověření základní formulář. Můžeme zabránit neoprávněným osobám v odeslání formuláře bez dokončení vyžadovaná pole formuláře. Také ověření e-mailových adres a telefonních čísel.
 
-
 ## <a name="building-a-contact-management-aspnet-mvc-application-c"></a>Vytvoření aplikace ASP.NET MVC pro správu kontaktů (C#)
-  
 
 V této sérii kurzů jsme integrovali celou aplikaci kontakt správy od začátku na dokončení. Obraťte se na správce aplikace umožňuje ukládat kontaktní údaje - jména, telefonní čísla a e-mailové adresy – seznam lidí.
 
@@ -45,16 +43,13 @@ Vytváříme aplikaci přes více iterací. S každou iterací zvyšujeme postup
 
 - Iterace #7 – přidání funkcí Ajax. V sedmé iteraci můžeme zlepšit rychlost reakce a výkon naší aplikace tak, že přidáte podporu pro Ajax.
 
-
 ## <a name="this-iteration"></a>Tuto iteraci
 
 V této druhé iterace kontaktujte správce aplikace přidáme ověření základní formulář. Můžeme zabránit neoprávněným osobám v odesílání kontaktu bez zadání hodnoty povinných polí formuláře. Také ověření telefonní čísla a e-mailové adresy (viz obrázek 1).
 
-
 [![Dialogové okno Nový projekt](iteration-3-add-form-validation-cs/_static/image1.jpg)](iteration-3-add-form-validation-cs/_static/image1.png)
 
 **Obrázek 01**: Formulář s ověřováním ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-3-add-form-validation-cs/_static/image2.png))
-
 
 V této iterace přidáme ověřovací logiku přímo na akce kontroleru. Obecně toto není doporučený postup pro přidání ověřování do aplikace ASP.NET MVC. Lepším řešením je umístit logiku ověřování s aplikací v samostatném [vrstva služby](http://martinfowler.com/eaaCatalog/serviceLayer.html). V další iteraci jsme Refaktorovat kontaktujte správce aplikace provádět jednodušší údržbu aplikace.
 
@@ -86,7 +81,6 @@ Chyba ověření pole Třída se používá k úpravě stylu výstupu vykreslen 
 > 
 > Můžete upravit třídy List stylu popsané v této části pro přizpůsobení vzhledu chybových zpráv ověření.
 
-
 ## <a name="adding-validation-logic-to-the-create-action"></a>Přidat logiku ověřování k vytvoření akce
 
 V tuto chvíli, zobrazení pro vytváření nikdy nezobrazí chybových zpráv ověření, protože jsme nenapsali logiku pro generování všechny zprávy. Aby bylo možné zobrazit chybových zpráv ověření, budete muset přidat chybové zprávy ModelState.
@@ -94,7 +88,6 @@ V tuto chvíli, zobrazení pro vytváření nikdy nezobrazí chybových zpráv o
 > [!NOTE] 
 > 
 > Metoda UpdateModel() přidá chybové zprávy do ModelState automaticky při dojde k chybám přiřazení hodnoty pole formuláře na vlastnost. Například pokud se pokusíte přiřadit řetězec "apple" datum narození vlastnost, která přijímá hodnoty data a času, pak metoda UpdateModel() přidá chybu do ModelState.
-
 
 Upravená Metoda Create() výpis 2 obsahuje nový oddíl, který ověřuje vlastnosti třídy kontakt před nový kontakt se vloží do databáze.
 
@@ -116,7 +109,6 @@ Po provedení ověřovacích pravidel, je vlastnost IsValid ModelState zaškrtnu
 > [!NOTE] 
 > 
 > Zobrazilo se mi regulárních výrazů pro ověření telefonní číslo a e-mailová adresa z úložiště regulárních výrazů v [*http://regexlib.com*](http://regexlib.com)
-
 
 ## <a name="adding-validation-logic-to-the-edit-action"></a>Přidat logiku ověřování k akci Upravit
 

@@ -8,12 +8,12 @@ ms.date: 11/27/2012
 ms.assetid: 6dfb51ea-9f4d-4e70-916c-8ef8344a88d6
 msc.legacyurl: /web-api/overview/security/authentication-and-authorization-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 5dc4471039938a429a85c891594c3a6651c6ef9d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 368d2b9456d12b2bb4063a23333e5c8837faa3b8
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59388527"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134724"
 ---
 # <a name="authentication-and-authorization-in-aspnet-web-api"></a>Ověřování a autorizace v rozhraní ASP.NET Web API
 
@@ -28,7 +28,6 @@ První článek v sérii poskytuje obecný přehled o ověřování a autorizace
 
 > [!NOTE]
 > Díky osoby, která revidovala tuto řadu a poskytuje cenné zpětné vazby: Rick Anderson, Levi Broderick, Jiří Dorrans, Tom Dykstra, Hongmei Ge, David Matson, Daniel Roth, Tim Teebken.
-
 
 ## <a name="authentication"></a>Ověřování
 
@@ -101,7 +100,6 @@ V předchozích příkladech filtr umožňuje všem ověřeným uživatelům př
 
 > [!NOTE]
 > **Třídy AuthorizeAttribute** filtru pro kontrolery rozhraní Web API se nachází v **System.Web.Http** oboru názvů. Je podobné filtr pro kontrolery MVC v **System.Web.Mvc** obor názvů, který není kompatibilní s kontrolerů rozhraní Web API.
-
 
 ### <a name="custom-authorization-filters"></a>Filtry autorizace
 

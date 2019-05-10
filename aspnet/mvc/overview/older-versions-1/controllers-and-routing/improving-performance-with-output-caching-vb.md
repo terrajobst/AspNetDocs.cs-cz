@@ -8,19 +8,18 @@ ms.date: 01/27/2009
 ms.assetid: 0e7b4d85-2c46-4eaf-b6a8-6cd566a67334
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0f824bd5e080d42a9df3525ca47b87bcef407f7a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: b713b56e149f196794b3223ba88e3b41bf3e34c4
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59405622"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123377"
 ---
 # <a name="improving-performance-with-output-caching-vb"></a>Zlepšení výkonu ukládáním výstupů do mezipaměti (VB)
 
 by [Microsoft](https://github.com/microsoft)
 
 > V tomto kurzu se dozvíte, jak můžete výrazně vylepšit výkon webových aplikací ASP.NET MVC s využitím ukládání výstupu do mezipaměti. Se dozvíte, jak pro ukládání do mezipaměti výsledek vrácený z akce kontroleru, tak, aby se stejný obsah není nutné vytvořit nový uživatel vyvolá akci každého čas.
-
 
 Cílem tohoto kurzu je vysvětlují, jak může výrazně zlepšit výkon aplikace ASP.NET MVC s využitím do výstupní mezipaměti. Do výstupní mezipaměti můžete ukládat do mezipaměti obsah vrácený akce kontroleru. Tímto způsobem stejný obsah není potřeba generovat každé, když se vyvolá stejné akce kontroleru.
 
@@ -36,9 +35,7 @@ Povolit ukládání výstupu do mezipaměti tak, že přidáte &lt;OutputCache&g
 
 [!code-vb[Main](improving-performance-with-output-caching-vb/samples/sample1.vb)]
 
-
 Ve verzi Beta verzím rozhraní ASP.NET MVC, ukládání výstupu do mezipaměti nefunguje pro adresu URL podobnou [ http://www.MySite.com/ ](http://www.mysite.com/). Místo toho musíte zadat adresu URL jako [ http://www.MySite.com/Home/Index ](http://www.mysite.com/Home/Index).
-
 
 V 1 výpis výstupu akce Index() je do mezipaměti 10 sekund. Pokud dáváte přednost, můžete zadat mnohem delší dobu mezipaměti. Například pokud chcete mezipaměť výstupu akce kontroleru za jeden den potom můžete zadat dobu trvání mezipaměti 86 400 sekund (60 sekund \* 60 minut \* 24 hodin).
 
@@ -79,7 +76,6 @@ Nastavit vlastnost umístění na některý z následujících hodnot:
 > · None
 > 
 > · ServerAndClient
-
 
 Ve výchozím nastavení vlastnost umístění má hodnotu Any. Existují však situace, ve kterých můžete ukládat do mezipaměti pouze v prohlížeči nebo pouze na serveru. Například pokud jsou ukládání do mezipaměti informace, které je přizpůsobené pro každého uživatele pak můžete by neměl mít informace v mezipaměti na serveru. Pokud jsou zobrazení různých informací o různých uživatelů by měla mezipaměti informace pouze na straně klienta.
 
@@ -136,7 +132,6 @@ Nastavit vlastnost VaryByParam na následující hodnoty:
 > Žádný = nikdy vytvořit různé verze uložené v mezipaměti
 > 
 > Seznam středníky, parametry = vytvořit různé verze uložené v mezipaměti, vždy, když některý z parametrů řetězce formuláře nebo dotazu v seznamu se liší
-
 
 #### <a name="creating-a-cache-profile"></a>Vytvoření profilu mezipaměti
 

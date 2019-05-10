@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 73232292-a5fe-4720-82a1-8f6553effd1f
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/using-page-inspector-in-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: d85fab0aeec86013761fc07ada1789b7719b24d9
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: f42b1be2697ba7d1145b3e334fe8f4ebf019cd12
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396554"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133558"
 ---
 # <a name="using-page-inspector-in-visual-studio-2012"></a>Použití Page Inspectoru v sadě Visual Studio 2012
 
@@ -36,7 +36,6 @@ podle [Campy Web týmu](https://twitter.com/webcamps)
 > Tato laboratoř vás provede vylepšení a nových funkcí popsaných dříve použitím menší změny na ukázkovou webovou aplikaci ve zdrojové složce k dispozici.
 > 
 > Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409 ](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409).
-
 
 <a id="Objectives"></a>
 
@@ -73,7 +72,6 @@ Toto praktické testovací prostředí obsahuje následující praktická cviče
 
 > [!NOTE]
 > Každý cvičení je přiložena počáteční řešení, umístěný ve složce Begin výkonu, který umožňuje postupovat podle jednotlivých výkon nezávisle na ostatních. Uvnitř zdrojový kód pro cvičení a také najdete složku koncovým obsahující řešení sady Visual Studio s kódem, který je výsledkem dokončení kroků v odpovídající cvičení. Tato řešení můžete použít jako vodítko, pokud potřebujete další pomoc při práci prostřednictvím této praktické vyzkoušení.
-
 
 Odhadovaný čas dokončení tohoto testovacího prostředí: **30 minut**.
 

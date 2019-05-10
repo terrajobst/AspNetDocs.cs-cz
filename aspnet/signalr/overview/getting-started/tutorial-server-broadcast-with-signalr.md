@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: 1568247f-60b5-4eca-96e0-e661fbb2b273
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: aa8c0be6e4a758da34fc6eed902e31049d0a9a9c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 14924109fff8db3e537e6bc08b6dc868792ee660
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379726"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65119928"
 ---
 # <a name="tutorial-server-broadcast-with-signalr-2"></a>Kurz: Server vysílání s knihovnou SignalR 2
 
@@ -39,7 +39,6 @@ V tomto kurzu se naučíte:
 
 > [!IMPORTANT]
 > Pokud nechcete, aby pro seznámení se základními kroky při vytváření aplikace, můžete nainstalovat balíček SignalR.Sample v novém projektu prázdná webová aplikace ASP.NET. Pokud balíček NuGet nainstalovat bez provedení kroků v tomto kurzu, postupujte podle pokynů v *readme.txt* souboru. Ke spuštění balíčku je třeba přidat OWIN startup třídy, který volá `ConfigureSignalR` metoda ve nainstalovaným balíčkem. Pokud nemůžete přidat třídu pro spuštění OWIN, dojde k chybě. Zobrazit [nainstalovat vzorovou StockTicker](#install-the-stockticker-sample) části tohoto článku.
-
 
 ## <a name="prerequisites"></a>Požadavky
 

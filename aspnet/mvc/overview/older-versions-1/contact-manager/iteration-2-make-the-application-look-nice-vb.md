@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: f65cb436-e493-46fd-9608-384b27385aa1
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-2-make-the-application-look-nice-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 21f7974fe066543d6db1d17d462398a998d0171e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: cd392baaefcfc9eef3551bc534e0b912ccd349cc
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59382573"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123974"
 ---
 # <a name="iteration-2--make-the-application-look-nice-vb"></a>Iterace #2 – Vytvoření aplikace vypadat nice (VB)
 
@@ -23,9 +23,7 @@ by [Microsoft](https://github.com/microsoft)
 
 > V této iterace můžeme zlepšit vzhled aplikace tak, že změna výchozích hlavní stránka zobrazení ASP.NET MVC a stylů CSS.
 
-
 ## <a name="building-a-contact-management-aspnet-mvc-application-vb"></a>Vytvoření aplikace pro správu kontaktů ASP.NET MVC (VB)
-  
 
 V této sérii kurzů jsme integrovali celou aplikaci kontakt správy od začátku na dokončení. Obraťte se na správce aplikace lze ukládat kontaktní údaje – jména, telefonní čísla a e-mailové adresy – seznam lidí.
 
@@ -49,11 +47,9 @@ Vytváříme aplikaci přes více iterací. S každou iterací zvyšujeme postup
 
 Cílem této iterace je k vylepšení vzhledu aplikace Správce kontaktů. Správce kontaktů v současné době používá výchozí hlavní stránka zobrazení ASP.NET MVC a stylů CSS (viz obrázek 1). Tyto don t vypadat chybný, ale nejsou zobrazeny t chcete správce kontaktů vás pod rouškou stejně jako každý jiný web ASP.NET MVC. Chcete nahradit tyto soubory vlastních souborů.
 
-
 [![Dialogové okno Nový projekt](iteration-2-make-the-application-look-nice-vb/_static/image1.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image1.png)
 
 **Obrázek 01**: Výchozí vzhled aplikace ASP.NET MVC ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-2-make-the-application-look-nice-vb/_static/image2.png))
-
 
 V této iterace můžu se zabývají dva přístupy ke zlepšení jeho vizuální návrh naši aplikaci. Nejprve můžu ukazují, jak využít výhod technologie ASP.NET MVC Galerie ke stažení bezplatné návrh šablony ASP.NET MVC. Galerie ASP.NET MVC vám umožňuje vytvořit profesionální webovou aplikaci, aniž by každé dílo.
 
@@ -67,11 +63,9 @@ Galerie ASP.NET MVC je bezplatný zdroj poskytnutých microsoftem. Galerie ASP.N
 
 ASP.NET MVC Galerie hostitelem kolekce návrhů bezplatné webů, které byly vytvořeny speciálně pro použití v projektu aplikace ASP.NET MVC. Návrhy, se nahraje členové komunity. Návštěvníci do galerie můžete hlasovat pro své oblíbené návrhy (viz obrázek 2).
 
-
 [![Dialogové okno Nový projekt](iteration-2-make-the-application-look-nice-vb/_static/image2.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image3.png)
 
 **Obrázek 02**: Galerie ASP.NET MVC ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-2-make-the-application-look-nice-vb/_static/image4.png))
-
 
 Jak se píše v tomto kurzu, je nejoblíbenější návrhu v galerii s názvem října podle Davida Hauser návrh. Tento návrh můžete použít pro projektu aplikace ASP.NET MVC pomocí následujících kroků:
 
@@ -82,29 +76,23 @@ Jak se píše v tomto kurzu, je nejoblíbenější návrhu v galerii s názvem �
 5. Klikněte pravým tlačítkem na uzel projektu ContactManager v okně Průzkumník řešení Visual Studio a vyberte možnost nabídky **vložit** (viz obrázek 4).
 6. Vyberte možnost nabídky sady Visual Studio **upravit, najít a nahradit, rychlého nahrazení** a nahraďte *[MyProjectName]* s *ContactManager* (viz obrázek 5).
 
-
 [![Dialogové okno Nový projekt](iteration-2-make-the-application-look-nice-vb/_static/image3.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image5.png)
 
 **Obrázek 03**: Odblokování soubor stažený z webu ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-2-make-the-application-look-nice-vb/_static/image6.png))
-
 
 [![Dialogové okno Nový projekt](iteration-2-make-the-application-look-nice-vb/_static/image4.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image7.png)
 
 **Obrázek 04**: Přepsání souborů v Průzkumníku řešení ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-2-make-the-application-look-nice-vb/_static/image8.png))
 
-
 [![Dialogové okno Nový projekt](iteration-2-make-the-application-look-nice-vb/_static/image5.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image9.png)
 
 **Obrázek 05**: Nahraďte ContactManager [názevprojektu] ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-2-make-the-application-look-nice-vb/_static/image10.png))
 
-
 Po dokončení těchto kroků bude vaše webová aplikace používat nový návrh. Na stránce na obrázku 6 znázorňuje vzhledu aplikace Správce kontaktů s návrhem. října.
-
 
 [![Dialogové okno Nový projekt](iteration-2-make-the-application-look-nice-vb/_static/image6.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image11.png)
 
 **Obrázek 06**: ContactManager šablonou dne ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-2-make-the-application-look-nice-vb/_static/image12.png))
-
 
 ## <a name="creating-a-custom-aspnet-mvc-design"></a>Vytváření návrhu vlastní technologie ASP.NET MVC
 
@@ -114,11 +102,9 @@ Ale můžete potřebovat vytvořit zcela jedinečný pro váš web. V takovém p
 
 Můžu si správce kontaktů z iterace č. 1 a poslali projektu do návrhu společnosti. Nevlastní sady Visual Studio (shame na ně!), ale neměli, které prezentují na problém. Studenti mohli zdarma stáhnout z Microsoft Visual Web Developer [ https://www.asp.net ](https://www.asp.net) web a otevřete Správce kontaktů aplikaci Visual Web Developer. V několika dnů jejich měli vytvořen návrhu na obrázku 7.
 
-
 [![Dialogové okno Nový projekt](iteration-2-make-the-application-look-nice-vb/_static/image7.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image13.png)
 
 **Obrázek 07**: Návrh Správce kontaktů ASP.NET MVC ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-2-make-the-application-look-nice-vb/_static/image14.png))
-
 
 Nový design se skládal z dva hlavní soubory: nový soubor šablony stylů CSS a nový soubor předlohové stránky zobrazení. Hlavní stránka zobrazení obsahuje rozložení a sdíleného obsahu pro zobrazení v aplikaci ASP.NET MVC. Například hlavní stránky zobrazení obsahuje záhlaví, navigačních karet a zápatí, která se zobrazí na obrázku 7. Můžu přepsal existující Site.Master zobrazení stránky předlohy v složku Views\Shared pomocí nového souboru Site.Master společnosti návrhu
 
@@ -138,11 +124,9 @@ Metoda Html.ActionLink() vykreslí celý hypertextový odkaz. Metoda Url.Action(
 
 Všimněte si kromě toho, nový návrh obsahuje karty vybrané a nezaškrtnuté. Například na obrázku 8 **vytvořit nový kontakt** vybraná karta a **kontaktů** není vybraná karta.
 
-
 [![Dialogové okno Nový projekt](iteration-2-make-the-application-look-nice-vb/_static/image8.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image15.png)
 
 **Obrázek 08**: Zaškrtnuto a zrušení výběru karty ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-2-make-the-application-look-nice-vb/_static/image16.png))
-
 
 Pro podporu vykreslování karet vybrané a nezaškrtnuté, jsem vytvořil vlastní pomocné rutiny HTML s názvem MenuItemHelper. Tato pomocná metoda vykreslí buď &lt;li&gt; značku nebo &lt;li třídy = "vybraný"&gt; značky v závislosti na tom, jestli aktuální kontroleru a akce odpovídá názvu kontroleru a akce předané do pomocné rutiny. Kód MenuItemHelper je obsažen v informacích 1.
 

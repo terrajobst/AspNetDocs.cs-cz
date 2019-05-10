@@ -8,12 +8,12 @@ ms.date: 10/15/2014
 ms.assetid: 92c84846-f0ea-4b5e-94b6-5004874eb060
 msc.legacyurl: /web-api/overview/security/individual-accounts-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 29c3670ad7ab93acb0be878e5bd961d0ea446eee
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 7492c4aa4c2a0a8aeed64c3462bda8fc51f35a6b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396224"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134301"
 ---
 # <a name="secure-a-web-api-with-individual-accounts-and-local-login-in-aspnet-web-api-22"></a>Zabezpečení webového rozhraní API s jednotlivých účtů a místní přihlášení v rozhraní ASP.NET Web API 2.2
 
@@ -29,7 +29,6 @@ podle [Mike Wasson](https://github.com/MikeWasson)
 > - [Visual Studio 2013 Update 3](https://www.microsoft.com/visualstudio/eng/2013-downloads)
 > - [Web API 2.2](../releases/whats-new-in-aspnet-web-api-22.md)
 > - [ASP.NET Identity 2.1](../../../identity/index.md)
-
 
 V sadě Visual Studio 2013 šablonu projektu webového rozhraní API nabízí tři možnosti pro ověřování:
 
@@ -239,7 +238,6 @@ V `WebApiConfig.Register` metody následující kód nastaví ověřování pro 
 
 > [!NOTE]
 > Konkrétně se část aplikace MVC použít ověřování pomocí formulářů, které ukládá přihlašovací údaje do souboru cookie. Ověřování na základě souboru cookie vyžaduje použití tokenů proti padělání, prevenci proti útokům CSRF. To je problém pro webová rozhraní API, protože neexistuje žádný pohodlný způsob pro webové rozhraní API k odeslání do tokenu proti zfalšování klientovi. (Další informace o tomto problému naleznete v tématu [prevence útoků CSRF v rozhraní Web API](preventing-cross-site-request-forgery-csrf-attacks.md).) Volání **SuppressDefaultHostAuthentication** zajistí, že webové rozhraní API není zranitelný vůči útokům CSRF z přihlašovací údaje uložené v souborech cookie.
-
 
 Když klient požádá o chráněný prostředek, stane se v kanálu webového rozhraní API:
 

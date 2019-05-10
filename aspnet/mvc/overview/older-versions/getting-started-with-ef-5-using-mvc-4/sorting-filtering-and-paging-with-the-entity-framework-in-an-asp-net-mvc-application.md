@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 8af630e0-fffa-4110-9eca-c96e201b2724
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 4220327388703b773011921bb206976b04b07e34
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 9510eb8094a55346bec2e0dab2a15ee79d211c88
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59397900"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65126518"
 ---
 # <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application-3-of-10"></a>Řazení, filtrování a stránkování s Entity Framework v aplikaci ASP.NET MVC (3 10)
 
@@ -26,7 +26,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > > [!NOTE] 
 > > 
 > > Pokud narazíte na problém nevyřešíte sami, [stáhnout dokončený kapitoly](building-the-ef5-mvc4-chapter-downloads.md) a zkuste problém reprodukovat. Porovnáním kód Dokončený kód v obecně najdete řešení problému. Některé běžné chyby a jejich řešení najdete v tématu [chyby a náhradní řešení.](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)
-
 
 V předchozím kurzu jste implementovali sadu webových stránek pro základní operace CRUD pro `Student` entity. V tomto kurzu přidáte řazení, filtrování a stránkování funkce, které **studenty** indexovou stránku. Také vytvoříte stránky, která provádí jednoduché seskupení.
 
@@ -93,7 +92,6 @@ Přidání `searchString` parametr `Index` metody. Jste také přidali do přík
 
 > [!NOTE]
 > V mnoha případech můžete volání stejné metody na sadu entit Entity Framework nebo jako rozšiřující metody na kolekci v paměti. Výsledky jsou obvykle stejné, ale v některých případech může lišit. Například rozhraní .NET Framework provádění `Contains` metoda vrátí všechny řádky, pokud předáte prázdný řetězec, ale poskytovateli rozhraní Entity Framework pro SQL Server Compact 4.0 vrátí nulový počet řádků prázdné řetězce. Proto kódem v příkladu (vložení `Where` výroku uvnitř `if` příkaz) zajišťuje, že získáte stejné výsledky pro všechny verze SQL serveru. Také, implementace rozhraní .NET Framework `Contains` metoda provádí porovnání velká a malá písmena ve výchozím nastavení, ale zprostředkovatele Entity Framework SQL Server provést porovnávání ve výchozím nastavení. Proto volání `ToUpper` metoda provést test explicitně velkých a malých písmen zajišťuje, že výsledky neměňte při změně kódu později použít úložiště, které vrátí `IEnumerable` kolekce místo `IQueryable` objektu. (Při volání `Contains` metodu `IEnumerable` kolekce, získat implementace rozhraní .NET Framework;. při jeho volání na `IQueryable` objektu, získáte implementace poskytovatele databáze.)
-
 
 ### <a name="add-a-search-box-to-the-student-index-view"></a>Přidat vyhledávací pole k zobrazení indexu studenta
 
@@ -378,7 +376,6 @@ Můžete najít nasazenou verzi souboru Web.config na vašem počítači v *Cont
 
 > [!NOTE]
 > Webové aplikace neimplementuje zabezpečení, takže každý, kdo najde adresu URL mohou změnit data. Pokyny o tom, jak zabezpečit webovou stránku, naleznete v tématu [nasazení zabezpečenou aplikaci ASP.NET MVC pomocí členství, OAuth a SQL Database na webu Windows Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Můžete zabránit ostatním uživatelům z webu pomocí portálu správy Windows Azure nebo **Průzkumníka serveru** v sadě Visual Studio Web zastavit.
-
 
 ![](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image35.png)
 

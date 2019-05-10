@@ -8,12 +8,12 @@ ms.date: 05/28/2015
 ms.assetid: b3a006a0-3ea2-4d45-b833-e20e3a3c0a1a
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data
 msc.type: authoredcontent
-ms.openlocfilehash: 5415913626eb063a4cb1013ba03857c130487f42
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 9e665ca8dd064c23a8b8bd3593014969d0c3da48
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59412174"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65128521"
 ---
 # <a name="introducing-aspnet-web-pages---displaying-data"></a>Úvod do webových stránek ASP.NET – zobrazení dat
 
@@ -34,7 +34,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > 
 > - Databázové nástroje WebMatrix.
 > - `WebGrid` pomocné rutiny.
-
 
 ## <a name="what-youll-build"></a>Co budete vytvářet
 
@@ -96,7 +95,6 @@ Záložku **datový typ** seznam a zvolte **int**. Tato hodnota určuje, že slo
 
 > [!NOTE]
 > Nebude voláme ho žádné najdete tady (mnohem), ale můžete použít standardní klávesnice gesta Windows pro navigaci v této mřížce. Například můžete vytvořit kartu mezi poli, stačí začít psát, abyste mohli vybrat položku v seznamu a tak dále.
-
 
 Karta minulé **výchozí hodnota** pole (to znamená, že necháte prázdné). Záložku **je primární klíč** zaškrtněte políčko a vyberte ji. Tato možnost informuje databázi, která *ID* sloupec bude obsahovat data, která identifikuje jednotlivé řádky. (To znamená, že každý řádek bude mít jedinečnou hodnotu ve sloupci ID, který vám pomůže najít tento řádek.)
 
@@ -177,7 +175,6 @@ Ke spuštění mřížky, budete muset napsat pár řádků kódu. Těchto něko
 > [!NOTE]
 > Ve skutečnosti máte celou řadu možností pro zobrazení dat na stránce. `WebGrid` pomocné rutiny je jen jednou. Rozhodli jsme se pro účely tohoto kurzu vzhledem k tomu, že je nejjednodušší způsob, jak zobrazit data, a proto je poměrně flexibilní. V následující kurz uvidíte, jak používat další "Ruční" způsob, jak pracovat s daty na stránce, která uděluje více přímou kontrolu nad způsob zobrazení dat.
 
-
 V levém podokně v nástroji WebMatrix, klikněte na tlačítko **soubory** pracovního prostoru.
 
 Je nový vytvořená databáze zobrazí v *aplikace\_Data* složky. Pokud složka ještě neexistuje, služba WebMatrix vytvoření nové databáze. (Složka může mít existoval Pokud jste dříve nainstalovali pomocné rutiny.)
@@ -241,7 +238,6 @@ V této fázi databázi otevřít, zobrazila data mají být, a jste připravili
 > Pro některé z těchto operací (např. vkládání a odstranění záznamů) proces, který žádá o operaci musí mít příslušná oprávnění v databázi. To je důvod, proč pro produkční databáze je často nutné zadat uživatelské jméno a heslo při připojování k databázi.
 > 
 > Existují desítek příkazů SQL, ale všechny se řídí vzorem stejně jako příkazy, kterou tady vidíte. Příkazy SQL můžete použít k vytvoření databázových tabulek, počet záznamů v tabulce, výpočtu ceny a provádět mnoho dalších operacích.
-
 
 ### <a name="adding-markup-to-display-the-data"></a>Přidání značek k zobrazení dat
 

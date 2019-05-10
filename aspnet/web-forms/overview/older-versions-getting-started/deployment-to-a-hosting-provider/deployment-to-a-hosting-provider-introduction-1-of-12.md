@@ -8,12 +8,12 @@ ms.date: 11/17/2011
 ms.assetid: a2d7f33b-8c4a-4b48-9fb1-9139cf9b9878
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: ae53e23dda3ac63e26590edab692188bb44e9f65
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 838ee5b3620c50ca5f29ff8cb2c2ac876d3041d8
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59413201"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133301"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-introduction---1-of-12"></a>Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio: Úvod - 1 z 12
 
@@ -30,7 +30,6 @@ podle [Petr Dykstra](https://github.com/tdykstra)
 > V kurzech předpokládají, že víte, jak pracovat s ASP.NET v sadě Visual Studio. Pokud to neuděláte, je vhodné oddělení na zahájení [základní technologie ASP.NET webové formuláře kurzu](../tailspin-spyworks/tailspin-spyworks-part-1.md) nebo [základní kurz ASP.NET MVC](../../../../mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md).
 > 
 > Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET nasazení](https://forums.asp.net/26.aspx/1?Configuration+and+Deployment).
-
 
 ## <a name="overview"></a>Přehled
 

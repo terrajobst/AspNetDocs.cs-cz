@@ -8,12 +8,12 @@ ms.date: 07/04/2012
 ms.assetid: 792f4513-a508-4d14-a0dd-1a2fe282c7bb
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 54b3afac9b19962b02336a35909b208c4e3f7504
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 9e045b17434d46fa1b6e7942db95ecad67c34a46
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400552"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134747"
 ---
 # <a name="part-4-adding-an-admin-view"></a>Část 4: Přidání zobrazení pro správce
 
@@ -52,7 +52,6 @@ V Průzkumníku řešení rozbalte složku zobrazení a poté rozbalte složku S
 > [!NOTE]
 > V projektu vzorku můžu provedli několik dalších tyto kosmetické změny, jako je například nahradit řetězec "Zde bude vaše logo". Tyto nemají vliv na funkce aplikace. Je možné projekt stáhnout a porovnat soubory.
 
-
 Spusťte aplikaci a klikněte na odkaz "Admin", který se zobrazí v horní části domovské stránky. Na stránce správy by měl vypadat nějak takto:
 
 ![](using-web-api-with-entity-framework-part-4/_static/image3.png)
@@ -79,7 +78,6 @@ Otevřete soubor AdminController.cs a přidejte **Authorize** atribut pro celou 
 
 > [!NOTE]
 > MVC a webového rozhraní API, jak definovat **Authorize** atributy v různých oborech názvů. Aplikace MVC používá **System.Web.Mvc.AuthorizeAttribute**, zatímco webového rozhraní API používá **System.Web.Http.AuthorizeAttribute**.
-
 
 Pouze správci teď mohou zobrazit stránky pro správu. Navíc pokud odešlete požadavek HTTP kontroleru pro správce, žádost musí obsahovat soubor cookie ověřování. Pokud ne, server odešle odpověď HTTP 401 (Neautorizováno). Zobrazí se to ve Fiddleru odesláním požadavek GET na `http://localhost:*port*/api/admin`.
 

@@ -8,12 +8,12 @@ ms.date: 06/02/2008
 ms.assetid: 5138b8fe-98ff-4e73-a00b-e263fc3ff11d
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/dynamically-controlling-updatepanel-animations-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0767b66a035069629c15e658c1e75ea78a7bd07b
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 29c2673aa7b018cbe8c66eb72c256b69a2193a47
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59407650"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134033"
 ---
 # <a name="dynamically-controlling-updatepanel-animations-c"></a>Dynamické řízení animací ovládacím prvkem UpdatePanel (C#)
 
@@ -23,7 +23,6 @@ by [Christian Wenz](https://github.com/wenz)
 
 > Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Obsah prvku UpdatePanel existuje speciální rozšiřujícího objektu, která se spoléhá na rozhraní .NET framework animace: UpdatePanelAnimation. Můžete taky fungují společně s aktivačních událostí UpdatePanel.
 
-
 ## <a name="overview"></a>Přehled
 
 Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Pro obsah `UpdatePanel`, speciální rozšiřující objekt existuje, která se spoléhá na rozhraní .NET framework animace: `UpdatePanelAnimation`. Můžete také pracovat společně s `UpdatePanel` aktivační události.
@@ -32,31 +31,25 @@ Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího 
 
 Prvním krokem je jako obvykle zahrnují `ScriptManager` na stránce tak, aby je načtena knihovna ASP.NET AJAX a Control Toolkit je možné:
 
-
 [!code-aspx[Main](dynamically-controlling-updatepanel-animations-cs/samples/sample1.aspx)]
 
 Animace v tomto scénáři se použijí k zobrazení aktuálního času. Tyto informace lze zapsat do label using `Page_Load()` metodu, nebo (z důvodu zjednodušení) se používá následující vloženého kódu:
-
 
 [!code-aspx[Main](dynamically-controlling-updatepanel-animations-cs/samples/sample2.aspx)]
 
 Kromě toho se vytvoří tlačítko aktivovat aktualizaci čas:
 
-
 [!code-aspx[Main](dynamically-controlling-updatepanel-animations-cs/samples/sample3.aspx)]
 
 Tento kód pak přejde do `<ContentTemplate>` část `UpdatePanel` elementu. Na panelu `UpdateMode` atribut musí být nastaven na `"Conditional"`, protože pouze aktivačních událostí může aktualizovat obsah panelu. V `<Triggers>` část `UpdatePanel`, je vytvořen a vázané na aktivační událost asynchronní postback `Click` událost tlačítka. Proto, když uživatel klikne na tlačítko, `UpdatePanel` je aktualizováno. Tady je zápis `UpdatePanel` ovládacího prvku:
-
 
 [!code-aspx[Main](dynamically-controlling-updatepanel-animations-cs/samples/sample4.aspx)]
 
 Nakonec `UpdatePanelAnimationExtender` musí být nakonfigurované: Nastavte `TargetControlID` atribut ID panelu a definovat animace v rámci zařízení extender. Pozvolného v díky smysl, která vytvoří nice visual důraz na čas aktualizace. Vaše zařízení extender značky pak může vypadat nějak takto:
 
-
 [!code-aspx[Main](dynamically-controlling-updatepanel-animations-cs/samples/sample5.aspx)]
 
 Spusťte soubor v prohlížeči. Pokaždé, když kliknete na tlačítko, aktuální čas je uveden v panelu vždy pozvolného po dobu trvání jedné sekundy.
-
 
 [![Aktuální čas je pozvolného](dynamically-controlling-updatepanel-animations-cs/_static/image2.png)](dynamically-controlling-updatepanel-animations-cs/_static/image1.png)
 

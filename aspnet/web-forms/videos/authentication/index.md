@@ -8,17 +8,16 @@ ms.date: 10/05/2011
 ms.assetid: 4a365e58-9b18-4bd2-bfd5-6981e7f2e179
 msc.legacyurl: /web-forms/videos/authentication
 msc.type: chapter
-ms.openlocfilehash: 68c1acdaaf1e6674f4dc3bcca0557382407ca147
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 9802eee31ecafeb17a09d6c154d811b3d0bb01de
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400110"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133752"
 ---
 # <a name="authentication"></a>Ověřování
 
 > Jak implementovat a spravovat zabezpečení (ověřování) v aplikaci technologie ASP.NET.
-
 
 - [Použití ověřování založeného na základních formulářích v ASP.NET](using-basic-forms-authentication-in-aspnet.md)
 - [Změna vlastností ověřování pomocí formulářů](how-to-change-the-forms-authentication-properties.md)

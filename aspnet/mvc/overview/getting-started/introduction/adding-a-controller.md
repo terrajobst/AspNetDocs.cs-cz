@@ -8,12 +8,12 @@ ms.date: 10/17/2013
 ms.assetid: cc764f3b-6921-486a-8f44-c6ccd1249acd
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: ad5f32a08270ce318c03e1b29acd74d12bbb3d3b
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: da914986ff020879dfe634967b39b32250cbf43b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59394052"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65120853"
 ---
 # <a name="adding-a-controller"></a>Přidání kontroleru
 
@@ -34,13 +34,11 @@ Společnost Microsoft a budete moct pokrývající všechny tyto koncepty v tét
 
 Začněme tím, že vytvoříte třídu kontroleru. V **Průzkumníka řešení**, klikněte pravým tlačítkem na *řadiče* složku a pak klikněte na tlačítko **přidat**, pak **řadič**.
 
-
 ![](adding-a-controller/_static/image1.png)
 
 V **přidat vygenerované uživatelské rozhraní** dialogové okno, klikněte na tlačítko **kontroler MVC 5 – prázdný**a potom klikněte na tlačítko **přidat**.
 
 ![](adding-a-controller/_static/image2.png)  
- 
 
 Pojmenujte nový kontroler "HelloWorldController" a klikněte na tlačítko **přidat**.
 
@@ -80,7 +78,6 @@ Pojďme mírně upravte příklad tak, aby některé informace o parametrech z a
 
 > [!NOTE]
 > Poznámka k zabezpečení: Kód výše používá [HttpUtility.HtmlEncode](https://msdn.microsoft.com/library/ee360286(v=vs.110).aspx) k ochraně aplikace před zlými úmysly vstup (konkrétně JavaScript). Další informace najdete v části [jak: Ochrana proti zneužití skriptu ve webové aplikaci s použitím kódování HTML na řetězce](https://msdn.microsoft.com/library/a2a4yykt(v=vs.100).aspx).
-
 
  Spusťte aplikaci a přejděte na adresu URL příklad (`http://localhost:xxxx/HelloWorld/Welcome?name=Scott&numtimes=4`). Můžete vyzkoušet různé hodnoty pro `name` a `numtimes` v adrese URL. [Systém vazby modelu ASP.NET MVC](http://odetocode.com/Blogs/scott/archive/2009/04/27/6-tips-for-asp-net-mvc-model-binding.aspx) automaticky mapují pojmenované parametry z řetězce dotazu do adresního řádku parametrům ve své metodě.
 

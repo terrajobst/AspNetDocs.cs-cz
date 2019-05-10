@@ -8,19 +8,18 @@ ms.date: 02/20/2005
 ms.assetid: 9c0cce4d-efd9-4c14-b0e8-a1a140abb3f4
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/master-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 348e28778e0e7d96230534df1d61386ed39f8f11
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 36f2caf7c2c9bcafd22c8f6681c1d6b19fe5078a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381143"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131062"
 ---
 # <a name="master-pages"></a>Stránky předlohy
 
 by [Microsoft](https://github.com/microsoft)
 
 > Jednou z klíčových komponent, které mají úspěšné webu je konzistentní vzhled a chování. V technologii ASP.NET 1.x, vývojáři použít uživatelské ovládací prvky k replikaci společné prvky stránky do webové aplikace. Jistě, který je možná řešení, pomocí uživatelské ovládací prvky mají určité nevýhody. Například změna pozice ovládacího prvku uživatel vyžaduje změnu více stránek na webu. Uživatelské ovládací prvky se nevykreslují také v návrhovém zobrazení po vloženého na stránce.
-
 
 Jednou z klíčových komponent, které mají úspěšné webu je konzistentní vzhled a chování. V technologii ASP.NET 1.x, vývojáři použít uživatelské ovládací prvky k replikaci společné prvky stránky do webové aplikace. Jistě, který je možná řešení, pomocí uživatelské ovládací prvky mají určité nevýhody. Například změna pozice ovládacího prvku uživatel vyžaduje změnu více stránek na webu. Uživatelské ovládací prvky se nevykreslují také v návrhovém zobrazení po vloženého na stránce.
 
@@ -47,14 +46,11 @@ Hlavní stránka může obsahovat libovolný počet ovládacích prvků ContentP
 > [!NOTE]
 > Často se poslechněte si lidé popisují hlavní stránky jako základní třída pro jiné stránky. Thats ve skutečnosti není pravda. Vztah mezi hlavní stránky a stránky obsahu není jedním dědičnosti.
 
-
 **Obrázek 1** ukazuje na stránku předlohy a související stránky obsahu, jak se objeví v sadě Visual Studio 2005. Zobrazí se ovládací prvek ContentPlaceHolder na stránce předlohy a odpovídající ovládací prvek na stránce obsahu obsahu. Všimněte si, že obsah stránky předlohy, která je mimo ContentPlaceHolder je zobrazena šedě na stránce obsahu, ale. Pouze obsah uvnitř ContentPlaceHolder může být nahrazen stránky obsahu. Veškerý obsah, který přichází z hlavní stránka je neměnný.
-
 
 ![Stránky předlohy a stránky jeho přidružené obsahu](master-pages/_static/image1.jpg)
 
 **Obrázek 1**: Stránky předlohy a stránky jeho přidružené obsahu
-
 
 ## <a name="creating-a-master-page"></a>Vytvoření stránky předlohy
 
@@ -65,11 +61,9 @@ Pokud chcete vytvořit novou stránku předlohy:
 3. Zvolte soubor předlohové z tohoto dialogového okna Přidat novou položku, jak je znázorněno v **obrázek 2**.
 4. Klikněte na tlačítko Přidat.
 
-
 ![Vytváří se nová stránka předlohy](master-pages/_static/image2.jpg)
 
 **Obrázek 2**: Vytváří se nová stránka předlohy
-
 
 Všimněte si, že přípona souboru pro hlavní stránku *.master*. Toto je jeden ze způsobů, jak se liší od běžné stránky na stránku předlohy. Hlavní rozdíl je, že náhrada @Page direktiv, obsahuje stránky předlohy @Master – direktiva. Přepněte do zobrazení zdroje pro hlavní stránky, které jste právě vytvořili a projděte si kód.
 
@@ -86,29 +80,23 @@ V tomto testovacím prostředí vytvoříte novou stránku předlohy a definovat
     3. Vyberte ovládací prvek ContentPlaceHolder kliknutím na vystínovanou horního ohraničení ovládacího prvku a odstraňte ji stisknutím klávesy DELETE na klávesnici.
     4. Vložit novou tabulku s využitím *záhlaví a na straně* šablony, jak je znázorněno na obrázku 3. Změňte šířku a výšku na 90 % tak, aby celá tabulka je zobrazen v návrháři.
 
-
 ![](master-pages/_static/image3.jpg)
 
 **Obrázek 3**
-
 
 1. Umístěte kurzor do jednotlivých buněk v tabulce a nastavit *valign* vlastnost *horní*.
 2. Z panelu nástrojů vložte ovládací prvek ContentPlaceHolder v horní buňka v tabulce (buňku záhlaví.)
 3. Když vložíte tento ovládací prvek ContentPlaceHolder, si všimnete, výška řádku bude trvat skoro celou stránku, jak je znázorněno na obrázku 4. Nemusíte mít obavy o, který v tomto okamžiku.
 
-
 ![Prázdné místo je do jedné buňky jako ContentPlaceHolder](master-pages/_static/image1.gif)
 
 **Obrázek 4**: Prázdné místo je do jedné buňky jako ContentPlaceHolder
 
-
 1. Umístěte ovládací prvek ContentPlaceHolder dvě buňky. Jakmile se další ovládací prvky ContentPlaceHolder jste vložili, velikost buněk tabulky by měla být dle očekávání. Na stránce by měla vypadat stránka zobrazená v **obrázek 5**.
-
 
 ![Hlavní u všech ovládacích prvků ContentPlaceHolder. Všimněte si, co by měl být je výška buňky pro buňku záhlaví nyní](master-pages/_static/image2.gif)
 
 **Obrázek 5**: Hlavní u všech ovládacích prvků ContentPlaceHolder. Všimněte si, co by měl být je výška buňky pro buňku záhlaví nyní
-
 
 1. Do každé tři ovládací prvky ContentPlaceHolder zadejte nějaký text podle vašeho výběru.
 2. Uložte jako exercise1.master stránky předlohy.
@@ -117,11 +105,9 @@ V tomto testovacím prostředí vytvoříte novou stránku předlohy a definovat
 5. Vyberte **webový formulář** v dialogovém okně Přidat novou položku.
 6. Ujistěte se, že je zaškrtnuté políčko vyberte stránku předlohy, jak je znázorněno na obrázku 6.
 
-
 ![Přidání nové stránky obsahu](master-pages/_static/image3.gif)
 
 **Obrázek 6**: Přidání nové stránky obsahu
-
 
 1. Klikněte na tlačítko Přidat.
 2. Vyberte exercise1.master vyberte v dialogovém okně stránky předlohy jak je znázorněno na obrázku 7.
@@ -129,11 +115,9 @@ V tomto testovacím prostředí vytvoříte novou stránku předlohy a definovat
 
 Nová stránka obsahu se zobrazí v sadě Visual Studio s jeden ovládací prvek obsahu pro každý ovládací prvek ContentPlaceHolder na stránce předlohy. Ve výchozím nastavení ovládací prvky obsahu jsou prázdné, kde můžete přidat vlastní obsah. Pokud chcete pro něho používat obsah z ovládacího prvku ContentPlaceHolder na stránce předlohy, jednoduše klikněte na symbol inteligentní značky (malé černé šipky v pravém horním rohu ovládacího prvku) a zvolte *výchozí obsah předlohy* z inteligentních značek, jak je znázorněno v **obrázek 8**. Pokud tak učiníte, položka nabídky se změní na *vytvořit vlastní obsah*. Kliknutím na od tohoto okamžiku odebere obsah z hlavní stránky umožňují definovat vlastní obsah pro konkrétní ovládací prvek obsahu.
 
-
 ![Nastavení ovládacího prvku obsahu na výchozí obsah stránky předlohy](master-pages/_static/image4.gif)
 
 **Obrázek 7**: Nastavení ovládacího prvku obsahu na výchozí obsah stránky předlohy
-
 
 ## <a name="connecting-master-page-and-content-pages"></a>Propojení stránky předlohy a obsahu stránek
 
@@ -183,15 +167,11 @@ Všimněte si, že v tomto scénáři, hlavní podřízené je také pro hlavní
 > [!NOTE]
 > Podpora návrháře není k dispozici pro vložené hlavní stránky. Při vývoji pomocí vnořené hlavní servery, je potřeba použít zobrazení zdroje.
 
-
 Toto video ukazuje návod k používání vložené hlavní stránky.
-
 
 ![](master-pages/_static/image1.png)
 
-
 [Otevřít Video na celou obrazovku](master-pages/_static/nested1.wmv)
-
 
 ![Výběr stránky předlohy](master-pages/_static/image4.jpg)
 

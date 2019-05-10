@@ -8,12 +8,12 @@ ms.date: 08/15/2006
 ms.assetid: 59c01998-9326-4ecb-9392-cb9615962140
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 21f37dc1ffbcb7e8e15e4bed261b68ffc0388c21
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2031c8d43afbdcdae3110ce3d7c3ec9e88c7261a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59388423"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133323"
 ---
 # <a name="efficiently-paging-through-large-amounts-of-data-c"></a>Účinné stránkování velkých objemů dat (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_25_CS.exe) nebo [stahovat PDF](efficiently-paging-through-large-amounts-of-data-cs/_static/datatutorial25cs1.pdf)
 
 > Výchozí možnost stránkování prvku prezentace dat není vhodná, při práci s velkými objemy dat, jako jeho základní ovládací prvek zdroje dat zjišťuje všechny záznamy, i když se zobrazí pouze podmnožinu dat. V takových případech jsme musíte zapnout na vlastní stránkování.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -37,7 +36,6 @@ Výzvy vlastní stránkování je schopnost vytvořit dotaz, který vrátí pře
 
 > [!NOTE]
 > Přesné výkonový zisk plynoucí vykazují vlastní stránkování, závisí na celkový počet záznamů stránkování prostřednictvím a zatížení umístěných na databázovém serveru. Na konci tohoto kurzu podíváme na některé hrubý metriky, které prezentovat výhod ve výkonu, které získali prostřednictvím vlastní stránkování.
-
 
 ## <a name="step-1-understanding-the-custom-paging-process"></a>Krok 1: Vysvětlení procesu vlastní stránkování
 
@@ -62,47 +60,37 @@ V následujících dvou kroků prozkoumáme skriptu SQL nutné odpovědět na ty
 
 Před Zkoumáme, jak získat přesné podmnožinu záznamů pro na stránce se zobrazí, umožní s nejdřív se podívejte na tom, jak vrátit celkový počet záznamů stránkování prostřednictvím. Tyto informace je potřeba, abyste mohli správně nakonfigurovat uživatelského rozhraní stránkování. Celkový počet záznamů vrácených dotazem SQL konkrétní můžete získat pomocí [ `COUNT` agregační funkce](https://msdn.microsoft.com/library/ms175997.aspx). Například, chcete-li zjistit celkový počet záznamů v `Products` tabulku, můžeme použít následující dotaz:
 
-
 [!code-sql[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample1.sql)]
 
 Umožní s přidejte metodu k naší DAL, která vrací tyto informace. Zejména, vytvoříme DAL metodu nazvanou `TotalNumberOfProducts()` , který se spustí `SELECT` výše uvedeném příkazu.
 
 Začněte otevřením `Northwind.xsd` soubor typované datové sady v `App_Code/DAL` složky. Pak klikněte pravým tlačítkem na `ProductsTableAdapter` v návrháři a zvolte Přidat dotaz. Jako jsme viděli v předchozích kurzech se ve to umožní, abychom mohli přidat novou metodu vrstvy Dal, která při vyvolání, spustí konkrétní příkaz SQL nebo uloženou proceduru. Stejně jako u našich metody TableAdapter v předchozích kurzech, použijte příkaz SQL ad-hoc optimalizované pro tento jeden.
 
-
 ![Použití příkazu SQL Ad-Hoc](efficiently-paging-through-large-amounts-of-data-cs/_static/image1.png)
 
 **Obrázek 1**: Použití příkazu SQL Ad-Hoc
 
-
 Na další obrazovce můžeme určit, jaký typ dotazu vytvořte. Vzhledem k tomu, že tento dotaz vrátí jednu skalární hodnota celkový počet záznamů v `Products` zvolte tabulky `SELECT` vracející možnost hodnotu jednom.
-
 
 ![Konfigurovat dotaz, který bude použit příkaz SELECT, který vrací jedinou hodnotu](efficiently-paging-through-large-amounts-of-data-cs/_static/image2.png)
 
 **Obrázek 2**: Konfigurovat dotaz, který bude použit příkaz SELECT, který vrací jedinou hodnotu
 
-
 Po označující typ použití dotazu, budeme dále musíte zadat dotaz.
-
 
 ![Použití vyberte COUNT(*) z dotazu produkty](efficiently-paging-through-large-amounts-of-data-cs/_static/image3.png)
 
 **Obrázek 3**: Použít vyberte počet (\*) od produktů dotazu
 
-
 Nakonec zadejte název metody. Stejně jako s výše uvedené, umožňují použít `TotalNumberOfProducts`.
-
 
 ![Pojmenujte TotalNumberOfProducts DAL – metoda](efficiently-paging-through-large-amounts-of-data-cs/_static/image4.png)
 
 **Obrázek 4**: Pojmenujte TotalNumberOfProducts DAL – metoda
 
-
 Po kliknutí na tlačítko Dokončit, průvodce přidá `TotalNumberOfProducts` metoda vrstvy Dal. Metody vracející skalární v DAL vrátí typy připouštějící hodnotu Null v případě, že výsledkem bude příkaz jazyka SQL je `NULL`. Naše `COUNT` dotaz, ale vždy vrátí non -`NULL` hodnota; bez ohledu na to, vrátí metoda DAL s možnou hodnotou Null celé číslo.
 
 Kromě metodu DAL potřebujeme také metody v BLL. Otevřít `ProductsBLL` třídy soubor a přidejte `TotalNumberOfProducts` metodu, která jednoduše volá, aby s vrstvou DAL `TotalNumberOfProducts` metoda:
-
 
 [!code-csharp[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample2.cs)]
 
@@ -127,41 +115,33 @@ V tomto kurzu se implementuje pomocí vlastní stránkování `ROW_NUMBER()` –
 
 `ROW_NUMBER()` – Klíčové slovo přidružený k pořadí jednotlivých záznamů vrácených průběhu konkrétní řazení pomocí následující syntaxe:
 
-
 [!code-sql[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample3.sql)]
 
 `ROW_NUMBER()` vrátí číselnou hodnotu, která určuje pořadí pro každý záznam s ohledem na uvedené pořadí. Například zobrazíte počet rozměrů pro jednotlivé produkty, seřazené od nejvíce nákladné nejméně, můžeme použít následující dotaz:
-
 
 [!code-sql[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample4.sql)]
 
 Obrázek 5 ukazuje tento dotaz s výsledky při spuštění v okně dotazu v sadě Visual Studio. Všimněte si, že produkty jsou řazeny podle cen, spolu s pořadí ceny pro každý řádek.
 
-
 ![Cena řád je součástí pro každý záznam vrátil](efficiently-paging-through-large-amounts-of-data-cs/_static/image5.png)
 
 **Obrázek 5**: Cena řád je součástí pro každý záznam vrátil
 
-
 > [!NOTE]
 > `ROW_NUMBER()` pouze jedna z mnoha nových funkcí hodnocení je k dispozici v systému SQL Server 2005. Podrobnější diskuzi o `ROW_NUMBER()`, společně s další hodnocení funkce, přečtěte si [vrácení seřazených výsledků s Microsoft SQL Server 2005](http://www.4guysfromrolla.com/webtech/010406-1.shtml).
-
 
 Při hodnocení výsledky podle zadaného `ORDER BY` sloupec v `OVER` – klauzule (`UnitPrice`, v předchozím příkladu), SQL Server musí řazení výsledků. To je rychlá operace v případě clusterovaného indexu přes sloupců, které jsou právě výsledky seřazené podle, nebo pokud je pokrytí indexu, ale může být dražší jinak. Chcete-li zvýšit výkon pro dotazy na dostatečně velký, zvažte přidání neclusterovaný index pro sloupec, podle kterého se výsledky jsou řazeny podle. Zobrazit [hodnocení funkcí a výkonu v systému SQL Server 2005](http://www.sql-server-performance.com/ak_ranking_functions.asp) pro podrobnější pohled na důležité informace o výkonu.
 
 Hodnocení informace vrácené `ROW_NUMBER()` nelze použít přímo v `WHERE` klauzuli. Ale odvozené tabulky je možné vrátit `ROW_NUMBER()` výsledek, který pak může objevit v `WHERE` klauzuli. Například následující dotaz používá odvozené tabulky budou vráceny sloupce ProductName a UnitPrice spolu s `ROW_NUMBER()` výsledek a pak používá `WHERE` klauzule pouze vráceny produkty, jejichž cena řád je 11 až 20:
 
-
 [!code-sql[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample5.sql)]
 
 Tento koncept trochu další rozšíření, můžeme využít tento přístup pro načtení konkrétní stránky údaje požadované hodnoty Start Index řádku a maximální počet řádků:
-
 
 [!code-html[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample6.html)]
 
 > [!NOTE]
 > Jak uvidíme dále v tomto kurzu *`StartRowIndex`* poskytnutých ObjectDataSource indexování od nuly, že `ROW_NUMBER()` hodnotu vrácenou příkazem SQL Server 2005 je indexováno od 1. Proto `WHERE` klauzule vrátí záznamy kde `PriceRank` striktně větší než *`StartRowIndex`* a menší než nebo rovna hodnotě *`StartRowIndex`*  +  *`MaximumRows`*.
-
 
 Nyní, který jsme probírali jak ve `ROW_NUMBER()` lze použít k načtení konkrétní stránky dat, na základě hodnot Start Index řádku a maximální počet řádků, teď musíme implementovat tuto logiku metody v knihoven BLL a DAL.
 
@@ -169,67 +149,51 @@ Při vytváření tohoto dotazu že musí rozhodneme řazení podle kterého se 
 
 V předchozí části jsme vytvořili metodu DAL jako ad-hoc příkazu SQL. Bohužel analyzátor jazyka T-SQL v sadě Visual Studio používá t TableAdapter Průvodce kódu jako `OVER` syntaxe používané `ROW_NUMBER()` funkce. Tato metoda DAL jsme proto musíte vytvořit jako uloženou proceduru. V Průzkumníku serveru vyberte z nabídky Zobrazit (nebo přístupů Ctrl + Alt + S) a rozbalte `NORTHWND.MDF` uzlu. Pokud chcete přidat novou úložnou proceduru, klikněte pravým tlačítkem na uzel uložené procedury a zvolte Přidat novou uloženou proceduru (viz obrázek 6).
 
-
 ![Přidat novou úložnou proceduru pro stránkování prostřednictvím produktů](efficiently-paging-through-large-amounts-of-data-cs/_static/image6.png)
 
 **Obrázek 6**: Přidat novou úložnou proceduru pro stránkování prostřednictvím produktů
 
-
 Tuto uloženou proceduru by měla přijímat dvě celočíselné vstupní parametry - `@startRowIndex` a `@maximumRows` a použít `ROW_NUMBER()` funkce seřazené podle `ProductName` pole vrací pouze řádky větší než zadaný `@startRowIndex` a menší než nebo rovno `@startRowIndex`  +  `@maximumRow` s. Zadejte následující skript do nové uložené procedury a pak klikněte na ikonu Uložit do databáze přidat uložené procedury.
-
 
 [!code-sql[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample7.sql)]
 
 Po vytvoření uložené procedury, věnujte chvíli otestování. Klikněte pravým tlačítkem na `GetProductsPaged` uloženou proceduru název v Průzkumníku serveru a zvolte možnost spouštět. Visual Studio vás pak vyzve k zadání vstupní parametry `@startRowIndex` a `@maximumRow` s (viz obrázek 7). Zkuste jiné hodnoty a podívejte se na výsledky.
 
-
 ![Zadejte hodnotu @startRowIndex a @maximumRows parametry](efficiently-paging-through-large-amounts-of-data-cs/_static/image7.png)
 
 <strong>Obrázek 7</strong>: Zadejte hodnotu @startRowIndex a @maximumRows parametry
 
-
 Po výběru těchto vstupní hodnoty parametrů, v okně výstupu se zobrazí výsledky. Obrázek 8 ukazuje výsledky při předávání v 10 pro obě `@startRowIndex` a `@maximumRows` parametry.
-
 
 [![Jsou vráceny záznamy, že by se zobrazí v druhé Data stránky](efficiently-paging-through-large-amounts-of-data-cs/_static/image9.png)](efficiently-paging-through-large-amounts-of-data-cs/_static/image8.png)
 
 **Obrázek 8**: Záznamy, že by se zobrazí v druhé stránce Data jsou vráceny ([kliknutím ji zobrazíte obrázek v plné velikosti](efficiently-paging-through-large-amounts-of-data-cs/_static/image10.png))
 
-
 Tuto uloženou proceduru vytvořili, můžeme znovu připravený k vytvoření `ProductsTableAdapter` metody. Otevřít `Northwind.xsd` typová, klikněte pravým tlačítkem v `ProductsTableAdapter`a zvolte možnost přidat dotaz. Místo vytváření dotazů pomocí příkazu SQL ad-hoc, vytvořte ho pomocí stávající úložnou proceduru.
-
 
 ![Vytvořit metodu DAL pomocí stávající úložnou proceduru](efficiently-paging-through-large-amounts-of-data-cs/_static/image11.png)
 
 **Obrázek 9**: Vytvořit metodu DAL pomocí stávající úložnou proceduru
 
-
 Dále jsme vyzváni k výběru uloženou proceduru, která se má vyvolat. Vyberte si `GetProductsPaged` uloženou proceduru z rozevíracího seznamu.
-
 
 ![Zvolte GetProductsPaged uloženou proceduru z rozevíracího seznamu](efficiently-paging-through-large-amounts-of-data-cs/_static/image12.png)
 
 **Obrázek 10**: Zvolte GetProductsPaged uloženou proceduru z rozevíracího seznamu
 
-
 Na další obrazovce pak zeptá, jaký druh dat je vrácený uložená procedura: tabulková data, jedinou hodnotu nebo žádnou hodnotu. Vzhledem k tomu, `GetProductsPaged` uložené procedury může vrátit více záznamů, označuje, že vrátí tabulková data.
-
 
 ![Označuje, že bude procedura vracet tabulková Data](efficiently-paging-through-large-amounts-of-data-cs/_static/image13.png)
 
 **Obrázek 11**: Označuje, že bude procedura vracet tabulková Data
 
-
 Nakonec uveďte názvy metod, které chcete vytvořili. Stejně jako u našich kurzů pro předchozí, pokračujte a vytvoření datové tabulky metod pomocí obou výplně a vrátit tabulku DataTable. Pojmenujte první metodu `FillPaged` a druhá `GetProductsPaged`.
-
 
 ![Název metody FillPaged a GetProductsPaged](efficiently-paging-through-large-amounts-of-data-cs/_static/image14.png)
 
 **Obrázek 12**: Název metody FillPaged a GetProductsPaged
 
-
 Kromě toho vytvořit vrstvy DAL metody vrátit konkrétní stránce produktů, musíme také poskytuje tyto funkce v BLL. Stejná jako metoda DAL s BLL GetProductsPaged metoda dvou celé číslo vstupů pro určení Start Index řádku a maximální počet řádků, musíte přijmout a musí vracet jenom ty záznamy, které spadají do zadaného rozsahu. Vytvoření BLL metody ve třídě ProductsBLL pouze volání dolů do s vrstvou DAL GetProductsPaged metody, například takto:
-
 
 [!code-csharp[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample8.cs)]
 
@@ -239,34 +203,27 @@ Můžete použít libovolný název pro metody s BLL vstupní parametry, ale pro
 
 U knihoven BLL a DAL metod pro konkrétní podmnožinu záznamů úplný přístup k řízení jsme znovu připravený k vytvoření GridView této stránky si její podkladové záznamy používá vlastní stránkování. Začněte otevřením `EfficientPaging.aspx` stránku `PagingAndSorting` složky, přidejte na stránku GridView a nakonfigurujte ho na použití nového ovládacího prvku ObjectDataSource. V našich kurzech posledních jsme měli často ObjectDataSource konfigurován pro použití `ProductsBLL` třída s `GetProducts` metody. Tentokrát ale chceme použít `GetProductsPaged` metoda místo toho od `GetProducts` vrátí metoda *všechny* produktů v databázi vzhledem k tomu `GetProductsPaged` vrátí jenom konkrétní podmnožinu záznamů.
 
-
 ![Konfigurace ObjectDataSource metody GetProductsPaged ProductsBLL třída s](efficiently-paging-through-large-amounts-of-data-cs/_static/image15.png)
 
 **Obrázek 13**: Konfigurace ObjectDataSource metody GetProductsPaged ProductsBLL třída s
-
 
 Od jsme opětovné vytváření GridView jen pro čtení věnujte chvíli nastavit metodu rozevíracího seznamu v INSERT, UPDATE a odstranit karty na (žádný).
 
 V dalším kroku průvodce ObjectDataSource vyzve nám zdroje `GetProductsPaged` metody s `startRowIndex` a `maximumRows` vstupní hodnoty parametrů. Tyto vstupní parametry to jednoduše ve skutečnosti nastaví v prvku GridView automaticky ponechte zdrojová sada na hodnotu None a klikněte na tlačítko Dokončit.
 
-
 ![Ponechte vstupní parametr zdroje jako None](efficiently-paging-through-large-amounts-of-data-cs/_static/image16.png)
 
 **Obrázek 14**: Ponechte vstupní parametr zdroje jako None
 
-
 Po dokončení Průvodce prvek ObjectDataSource, bude prvku GridView obsahovat vlastnost BoundField nebo třídě CheckBoxField pro každé pole data produktu. Teď můžete přizpůsobit vzhled ovládacího prvku GridView s podle svých potřeb. Můžu odebrat přihlášení k zobrazení pouze `ProductName`, `CategoryName`, `SupplierName`, `QuantityPerUnit`, a `UnitPrice` BoundFields. Nakonfigurujte také GridView pro podporu stránkování zaškrtnutím políčka Povolit stránkování v jeho inteligentních značek. Po provedení těchto změn ovládacími prvky GridView a ObjectDataSource deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample9.aspx)]
 
 Pokud na stránce prostřednictvím prohlížeče prvku GridView. je však není odkud nalezen.
 
-
 ![GridView se nezobrazuje](efficiently-paging-through-large-amounts-of-data-cs/_static/image17.png)
 
 **Obrázek 15**: GridView se nezobrazuje
-
 
 Protože ObjectDataSource právě používá 0 jako hodnoty pro oba prvku GridView. chybí `GetProductsPaged` `startRowIndex` a `maximumRows` vstupní parametry. Proto výsledný dotaz SQL vrací žádné záznamy a proto se nezobrazí prvku GridView.
 
@@ -279,28 +236,22 @@ Chcete-li to napravit, musíme nakonfigurovat ObjectDataSource používat vlastn
 
 Po provedení těchto změn, deklarativní syntaxe prvku ObjectDataSource s by měl vypadat nějak takto:
 
-
 [!code-aspx[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample10.aspx)]
 
 Všimněte si, že `EnablePaging` a `SelectCountMethod` byly nastaveny a `<asp:Parameter>` prvky byly odebrány. Obrázek 16 ukazuje snímek obrazovky okna vlastnosti po provedení těchto změn.
-
 
 ![Pokud chcete použít vlastní stránkování, konfigurace ovládacího prvku ObjectDataSource](efficiently-paging-through-large-amounts-of-data-cs/_static/image18.png)
 
 **Obrázek 16**: Pokud chcete použít vlastní stránkování, konfigurace ovládacího prvku ObjectDataSource
 
-
 Po provedení těchto změn, navštivte tuto stránku prostřednictvím prohlížeče. Měli byste vidět 10 produkty uvedené, seřazené podle abecedy. Chcete-li si jednu stránku dat najednou chvíli trvat. Neplatí žádné rozdíly ve visual z pohledu koncového uživatele s mezi stránkování výchozí a vlastní stránkování, vlastní stránkování efektivněji stránky velkých objemů dat, jak načítat pouze ty záznamy, které je třeba má být zobrazen pro danou stránku.
-
 
 [![Data, Objednáno podle produktu s názvem, je stránkování pomocí vlastní stránkování](efficiently-paging-through-large-amounts-of-data-cs/_static/image20.png)](efficiently-paging-through-large-amounts-of-data-cs/_static/image19.png)
 
 **Obrázek 17**: Data, Objednáno podle produktu s názvem, je stránkování pomocí vlastní stránkování ([kliknutím ji zobrazíte obrázek v plné velikosti](efficiently-paging-through-large-amounts-of-data-cs/_static/image21.png))
 
-
 > [!NOTE]
 > Na stránce s vlastní stránkování, počítat hodnotu vrácenou příkazem ObjectDataSource s `SelectCountMethod` je uložena v prvku GridView s zobrazení stavu. Další proměnné ovládacího prvku GridView `PageIndex`, `EditIndex`, `SelectedIndex`, `DataKeys` kolekce a tak dále se ukládají v *stav ovládacích prvků*, což je trvalý bez ohledu na hodnotu GridView s `EnableViewState` Vlastnost. Protože `PageCount` se ukládají hodnoty postbacků pomocí zobrazení stavu, při použití rozhraní stránkování, který zahrnuje odkaz můžete přejít na poslední stránku, je nutné povolit stav zobrazení ovládacího prvku GridView s. (Pokud rozhraní stránkování neobsahuje přímý odkaz na poslední stránce, pak můžete kdykoli deaktivovat stavu zobrazení.)
-
 
 Kliknutím na odkaz na poslední stránku vyvolá zpětné volání a dává pokyn prvku GridView. Chcete-li aktualizovat jeho `PageIndex` vlastnost. Pokud dojde ke kliknutí na odkaz na poslední stránku, přiřadí prvku GridView jeho `PageIndex` vlastnost na jednu hodnotu menší než jeho `PageCount` vlastnost. Zobrazení stavu Zakázáno `PageCount` hodnota se ztratí mezi ostatními postbacků a `PageIndex` přiřazen maximální celočíselnou hodnotu. V dalším kroku prvku GridView, pokusí se zjistit počáteční index řádku tak, `PageSize` a `PageCount` vlastnosti. Výsledkem je `OverflowException` od produktu je větší než velikost maximální povolené celé číslo.
 
@@ -308,11 +259,9 @@ Kliknutím na odkaz na poslední stránku vyvolá zpětné volání a dává pok
 
 Naše aktuální vlastní implementaci stránkování vyžaduje objednávky, podle kterého je stránkování dat prostřednictvím staticky při vytváření `GetProductsPaged` uložené procedury. Můžete však pravděpodobně jste si poznamenali, že prvek GridView s inteligentním obsahuje zaškrtávací políčko Povolit řazení kromě možnost Povolit stránkování. Bohužel přidání podpory pro řazení do prvku GridView s naší aktuální vlastní implementaci stránkování bude pouze se záznamy řadily na aktuálně zobrazené stránce data. Například pokud nakonfigurujete prvku GridView a také podporuje stránkování, při prohlížení na první stránku dat, seřaďte podle názvu produktu v sestupném pořadí, bude převraťte pořadí produktů na stránce 1. Jak ukazuje obrázek 18, například Carnarvon tygři zobrazuje jako první produktu při řazení ve vzestupném abecedním pořadí, které ignoruje 71 jiné produkty, které po Carnarvon tygři abecedně; jen takové záznamy na první stránce jsou považovány za v řazení.
 
-
 [![Má řazení proběhnout pouze Data zobrazí na aktuální stránce.](efficiently-paging-through-large-amounts-of-data-cs/_static/image23.png)](efficiently-paging-through-large-amounts-of-data-cs/_static/image22.png)
 
 **Obrázek 18**: Pouze Data zobrazí na aktuální stránce má řazení proběhnout ([kliknutím ji zobrazíte obrázek v plné velikosti](efficiently-paging-through-large-amounts-of-data-cs/_static/image24.png))
-
 
 Řazení platí pouze pro aktuální stránku dat, protože řazení dochází po načetla data z knihoven BLL s `GetProductsPaged` metoda a tato metoda vrátí pouze záznamy pro konkrétní stránku. K implementaci neřadí správně, musíme předat výraz řazení pro `GetProductsPaged` metoda tak, aby data lze seřadit správně před vrácením konkrétní stránky data. Uvidíme, jak to provést v následujícím kurzem.
 
@@ -333,11 +282,9 @@ Chcete-li vyřešit tím, který máme k dispozici dvě možnosti. První je vyt
 
 Tento přístup funguje, protože aktualizuje `PageIndex` po kroku 1, ale před kroku 2. V kroku 2, proto se vrátí odpovídající sadu záznamů. K tomu použijte kód podobný tomuto:
 
-
 [!code-csharp[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample11.cs)]
 
 Alternativní řešení je vytvořit obslužnou rutinu události pro prvek ObjectDataSource s `RowDeleted` událostí a nastavit `AffectedRows` vlastnost na hodnotu 1. Po odstranění záznamu v kroku 1 (ale před opětovné načtení dat v kroku 2), aktualizuje prvku GridView jeho `PageIndex` vlastnost Pokud operace vliv na jeden nebo více řádků. Ale `AffectedRows` vlastnost není nastavená ObjectDataSource a proto je tento krok vynechat. Jedním ze způsobů, aby tento krok provést je ručně nastavit `AffectedRows` vlastnosti, pokud se operace odstranění úspěšně dokončí. Můžete to provést pomocí kódu, jako je následující:
-
 
 [!code-csharp[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample12.cs)]
 
@@ -351,14 +298,12 @@ Bohužel neexistuje s bez velikosti, která tady všechny odpovědi. Zvýšení 
 
 Článek min, [vlastní stránkování v technologii ASP.NET 2.0 pomocí serveru SQL Server 2005](http://aspnet.4guysfromrolla.com/articles/031506-1.aspx), obsahuje některé testy výkonnosti mám spuštěných vykazovat rozdíly ve výkonu mezi tyto dva postupy stránkování při procházení tabulky databáze s 50 000 záznamů. V těchto testech můžu prověřit, čas k provedení dotazu na úrovni serveru SQL Server (pomocí [SQL Profiler](https://msdn.microsoft.com/library/ms173757.aspx)) a na stránku ASP.NET pomocí [funkce trasování s ASP.NET](https://msdn.microsoft.com/library/y13fw6we.aspx). Mějte na paměti, že tyto testy byly spuštěny na můj vývoj pole s jedním aktivním uživatelem a proto jsou unscientific a ne napodobují vzorů zatížení typické webu. Bez ohledu na to výsledky ukazují relativní rozdíly v čase spuštění pro výchozí a vlastní stránkování při práci s dostatečně velké objemy dat.
 
-
 |  | **Střední Doba trvání (s)** | **Operace čtení** |
 | --- | --- | --- |
 | **Výchozí stránkování SQL Profiler** | 1.411 | 383 |
 | **Vlastní stránkování SQL Profiler** | 0.002 | 29 |
 | **Výchozí trasování procesu ASP.NET stránkování** | 2.379 | *NENÍ K DISPOZICI* |
 | **Vlastní stránkování ASP.NET trasování** | 0.029 | *NENÍ K DISPOZICI* |
-
 
 Jak je vidět, načtení konkrétní stránky dat vyžaduje 354 méně čtení v průměru a za zlomek času dokončení. Na stránce technologie ASP.NET, vlastní stránka byla schopna vykreslit v blízkosti 1/100<sup>th</sup> dobu, jakou trvalo při použití výchozího stránkování. Zobrazit [Moje článku](http://aspnet.4guysfromrolla.com/articles/031506-1.aspx) Další informace o těchto výsledků spolu s kódem a databázi, která si můžete stáhnout pro reprodukci tyto testy ve vlastním prostředí.
 

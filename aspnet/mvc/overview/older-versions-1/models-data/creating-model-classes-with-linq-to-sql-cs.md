@@ -8,12 +8,12 @@ ms.date: 10/07/2008
 ms.assetid: f84b4a16-e8bb-49e8-87a0-1832879a3501
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d1895b03a2aa877bfd279995dc5647c5efefade6
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e81575a05a24c60ffb16c4a6688f6cfdc5a19f30
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59414202"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65122710"
 ---
 # <a name="creating-model-classes-with-linq-to-sql-c"></a>Vytvoření tříd modelu pomocí LINQ to SQL (C#)
 
@@ -22,7 +22,6 @@ by [Microsoft](https://github.com/microsoft)
 [Stáhnout PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_10_CS.pdf)
 
 > Cílem tohoto kurzu je vysvětlit jednu z metod vytvoření tříd modelu pro aplikace ASP.NET MVC. V tomto kurzu se dozvíte, jak k vytvoření tříd modelu a provádění přístup k databázi s využitím Microsoft LINQ to SQL.
-
 
 Cílem tohoto kurzu je vysvětlit jednu z metod vytvoření tříd modelu pro aplikace ASP.NET MVC. V tomto kurzu se dozvíte, jak k vytvoření tříd modelu a provádění přístup k databázi s využitím Microsoft LINQ to SQL
 
@@ -42,29 +41,23 @@ V tomto kurzu používám LINQ to SQL pro dotazování a aktualizaci databáze. 
 
 V tomto kurzu – k ilustraci, jak se dají vytvářet tříd modelu – jsme sestavení jednoduché aplikace Movie database. Prvním krokem je vytvoření nové databáze. Klikněte pravým tlačítkem na aplikaci\_složce dat v okně Průzkumníka řešení a vyberte možnost nabídky **přidat, nová položka**. Vyberte **databázi systému SQL Server** šablony, zadejte pro něj název MoviesDB.mdf a klikněte na tlačítko **přidat** tlačítko (viz obrázek 1).
 
-
 [![Přidání nové databáze SQL serveru](creating-model-classes-with-linq-to-sql-cs/_static/image2.png)](creating-model-classes-with-linq-to-sql-cs/_static/image1.png)
 
 **Obrázek 01**: Přidání nové databáze SQL serveru ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-cs/_static/image3.png))
-
 
 Jakmile vytvoříte novou databázi, můžete otevřít databázi dvojitým kliknutím na soubor MoviesDB.mdf v aplikaci\_složku Data. Dvojitým kliknutím na soubor MoviesDB.mdf se otevře okno Průzkumníka serveru (viz obrázek 2).
 
 Okno Průzkumníka serveru je volána v okně Průzkumník databáze při použití aplikace Visual Web Developer.
 
-
 [![Pomocí Průzkumníka serveru](creating-model-classes-with-linq-to-sql-cs/_static/image5.png)](creating-model-classes-with-linq-to-sql-cs/_static/image4.png)
 
 **Obrázek 02**: Pomocí Průzkumníka serveru ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-cs/_static/image6.png))
 
-
 Potřebujeme přidat jedné tabulky do databáze, která představuje naše videa. Klikněte pravým tlačítkem na složku tabulky a vyberte možnost nabídky **přidat novou tabulku**. Tato možnost nabídky vyberete, otevře se Návrhář tabulky (viz obrázek 3).
-
 
 [![Pomocí Průzkumníka serveru](creating-model-classes-with-linq-to-sql-cs/_static/image8.png)](creating-model-classes-with-linq-to-sql-cs/_static/image7.png)
 
 **Obrázek 03**: Návrhář tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-cs/_static/image9.png))
-
 
 Potřebujeme přidat následující sloupce do naší tabulky databáze:
 
@@ -82,19 +75,15 @@ Dále je třeba označit Id sloupec jako sloupec Identity přiřazením hodnotu 
 
 Náš model MVC bude obsahovat LINQ na třídy SQL, které představují tblMovie databázové tabulky. Klikněte pravým tlačítkem na složku modely, vyberte je nejjednodušší způsob, jak vytvořit tyto třídy LINQ to SQL **přidat, nová položka**, vyberte LINQ na třídy SQL šablonu, zadejte název Movie.dbml třídy a klikněte na **přidat**tlačítko (viz obrázek 4).
 
-
 [![Vytvoření LINQ na třídy SQL](creating-model-classes-with-linq-to-sql-cs/_static/image11.png)](creating-model-classes-with-linq-to-sql-cs/_static/image10.png)
 
 **Obrázek 04**: Vytvoření LINQ na třídy SQL ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-cs/_static/image12.png))
 
-
 Ihned po vytvoření film LINQ na třídy SQL, zobrazí se Návrhář relací objektů. Databázové tabulky můžete přetáhnout z okna Průzkumníka serveru do Návrháře relací objektů k vytvoření třídy LINQ to SQL, které představují konkrétní databázové tabulky. Je potřeba přidat tblMovie databázové tabulky do Návrháře relací objektů (viz obrázek 5).
-
 
 [![Pomocí Návrháře relací objektů](creating-model-classes-with-linq-to-sql-cs/_static/image14.png)](creating-model-classes-with-linq-to-sql-cs/_static/image13.png)
 
 **Obrázek 05**: Pomocí Návrháře relací objektů ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-cs/_static/image15.png))
-
 
 Ve výchozím nastavení vytvoří Návrhář relací objektů třídy s velmi stejný název jako tabulku databáze, můžete přetáhnout do návrháře. Nechceme však volat Naše třída `tblMovie`. Proto klikněte na název třídy v návrháři a změnit název třídy na video.
 
@@ -130,19 +119,15 @@ Pokud spustíte aplikaci po změně `HomeController` třídy a Index zobrazení 
 
 Chcete-li přidat záznamy `tblMovies` tabulky databáze, klikněte pravým tlačítkem myši `tblMovies` databázové tabulce v okně Průzkumníka serveru (okno Průzkumník databáze v aplikaci Visual Web Developer) a vyberte možnost nabídky Zobrazit Data tabulky. Můžete vložit `movie` záznamů pomocí mřížky, která se zobrazí (viz obrázek 6).
 
-
 [![Vložení videa](creating-model-classes-with-linq-to-sql-cs/_static/image17.png)](creating-model-classes-with-linq-to-sql-cs/_static/image16.png)
 
 **Obrázek 06**: Vložení videa ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-cs/_static/image18.png))
 
-
 Poté, co přidáte některé záznamy databáze `tblMovies` tabulky a spusťte aplikaci, zobrazí se stránka na obrázku 7. Všechny záznamy databáze filmů se zobrazí v seznamu s odrážkami.
-
 
 [![Zobrazení videa pomocí zobrazení indexu](creating-model-classes-with-linq-to-sql-cs/_static/image20.png)](creating-model-classes-with-linq-to-sql-cs/_static/image19.png)
 
 **Obrázek 07**: Zobrazení videa pomocí zobrazení indexu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-model-classes-with-linq-to-sql-cs/_static/image21.png))
-
 
 ## <a name="using-the-repository-pattern"></a>Použití modelu úložiště
 

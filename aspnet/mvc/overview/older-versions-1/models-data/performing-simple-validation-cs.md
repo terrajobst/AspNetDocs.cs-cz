@@ -8,12 +8,12 @@ ms.date: 03/02/2009
 ms.assetid: 21383c9d-6aea-4bad-a99b-b5f2c9d6503f
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/performing-simple-validation-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 12fe89ec83a33ece2971c8186783326d165cbf79
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e33f522af74efe97b5a245e956bc0b918ea769af
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59388501"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65122357"
 ---
 # <a name="performing-simple-validation-c"></a>Provedení jednoduchého ověření (C#)
 
@@ -21,16 +21,13 @@ podle [Stephen Walther](https://github.com/StephenWalther)
 
 > Zjistěte, jak provést ověření v aplikaci ASP.NET MVC. V tomto kurzu se zavádí Stephen Walther vám stav modelu a pomocných rutin HTML ověření.
 
-
 Cílem tohoto kurzu je vysvětlují, jak můžete provést ověření v rámci aplikace ASP.NET MVC. Například se dozvíte, jak zabránit odeslání formuláře, který neobsahuje hodnotu pro požadované pole. Zjistíte, jak používat stav modelu a pomocných rutin HTML ověření.
 
 ## <a name="understanding-model-state"></a>Porozumění stavu modelu
 
 Používáte stav modelu - nebo přesněji, slovník stavu modelu – pro reprezentaci chyby ověření. Například akce Create() ve výpisu 1 ověří vlastnosti třídy produktu před přidáním třídy produktu do databáze.
 
-
 Můžu mi doporučujeme přidat logiku ověřování nebo databáze do kontroleru. Kontroler může obsahovat pouze logiku související řízení toku aplikace. Zástupce pro zjednodušení jsme se rozhodli.
-
 
 **Výpis 1 - Controllers\ProductController.cs**
 
@@ -52,19 +49,15 @@ Pomocné rutiny Html.ValidationMessage() a Html.ValidationSummary() se používa
 4. Z **zobrazit obsah** rozevíracího seznamu vyberte možnost vytvořit.
 5. Klikněte na tlačítko **Přidat**.
 
-
 Ujistěte se, že vytváříte aplikaci před přidáním zobrazení. V opačném případě nebude zobrazovat seznam tříd **zobrazení dat třídy** rozevíracího seznamu.
-
 
 [![Dialogové okno Nový projekt](performing-simple-validation-cs/_static/image1.jpg)](performing-simple-validation-cs/_static/image1.png)
 
 **Obrázek 01**: Přidání zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-cs/_static/image2.png))
 
-
 [![Dialogové okno Nový projekt](performing-simple-validation-cs/_static/image2.jpg)](performing-simple-validation-cs/_static/image3.png)
 
 **Obrázek 02**: Vytvoření zobrazení se silnými typy ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-cs/_static/image4.png))
-
 
 Po dokončení těchto kroků, získáte v informacích 2 zobrazení pro vytváření.
 
@@ -78,11 +71,9 @@ Pomocná rutina Html.ValidationMessage() se nazývá vedle každého pole formul
 
 Na stránce na obrázku 3 znázorňuje chybové zprávy, který je vykreslen metodou ověřování pomocné rutiny, když se odešle formulář, chybějící pole a neplatné hodnoty.
 
-
 [![Dialogové okno Nový projekt](performing-simple-validation-cs/_static/image3.jpg)](performing-simple-validation-cs/_static/image5.png)
 
 **Obrázek 03**: Zobrazení pro vytváření odeslanou s problémy ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-cs/_static/image6.png))
-
 
 Všimněte si, že vzhled HTML vstupní pole se nezmění, i když dojde k chybě ověřování. Pomocné rutiny vykreslení Html.TextBox() *třídy = "Chyba vstupu ověřování"* atribut, když dojde k chybě ověřování přidružený k vlastnosti vykreslen metodou Html.TextBox() helper.
 
@@ -98,16 +89,13 @@ Můžete upravit tyto šablony třídy List stylu a proto upravit vzhled chyby o
 > 
 > Třída HtmlHelper obsahuje statické vlastnosti jen pro čtení pro načítání názvů ověřování související s CSS třídy. Tyto statické vlastnosti jsou pojmenovány ValidationInputCssClassName ValidationFieldCssClassName a ValidationSummaryCssClassName.
 
-
 ## <a name="prebinding-validation-and-postbinding-validation"></a>Prebinding ověřování a ověřování Postbinding
 
 Pokud odeslání formuláře HTML pro vytváření produktu, a zadáte neplatnou hodnotu pro pole price a žádná hodnota pro pole UnitsInStock, získáte ověřovacích zpráv, který zobrazí obrázek 4. Odkud pocházejí tyto chybových zpráv ověření ze?
 
-
 [![Dialogové okno Nový projekt](performing-simple-validation-cs/_static/image4.jpg)](performing-simple-validation-cs/_static/image7.png)
 
 **Obrázek 04**: Prebinding chyby ověření ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-simple-validation-cs/_static/image8.png))
-
 
 Existují ve skutečnosti dva typy chybových zpráv ověření – těch, které generuje předtím, než pole formuláře HTML, které jsou vázány na třídu a jsou generovány po polí formuláře, které jsou vázány na třídu. Jinými slovy, existují prebinding chyby ověření a postbinding chyby ověření.
 

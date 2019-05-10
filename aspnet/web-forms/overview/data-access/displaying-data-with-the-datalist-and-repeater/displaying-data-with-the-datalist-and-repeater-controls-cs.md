@@ -8,12 +8,12 @@ ms.date: 09/13/2006
 ms.assetid: 0591cacc-b34b-4cf6-885e-2c9953bb0946
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bf9930a3704d4ae6f0cb012a1512e23b29435f76
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: a8930b9c5c25b40f667817a254a4ec4b6a19928a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400188"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134546"
 ---
 # <a name="displaying-data-with-the-datalist-and-repeater-controls-c"></a>Zobrazení dat ovládacími prvky DataList a Repeater (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_29_CS.exe) nebo [stahovat PDF](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/datatutorial29cs1.pdf)
 
 > V předchozích kurzech budeme mít používá k zobrazení dat ovládacím prvku GridView. Od v tomto kurzu se podíváme na vytváření běžných sestav vzorů s ovládacími prvky DataList a Repeater od základní informace o zobrazení dat ovládacím prvkem tyto ovládací prvky.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -42,88 +41,69 @@ Než začneme v tomto kurzu, umožní s nejdřív využít pro přidání strán
 - `RepeatColumnAndDirection.aspx`
 - `NestedControls.aspx`
 
-
 ![Vytvořte složku DataListRepeaterBasics a přidávání stránek kurz ASP.NET](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image1.png)
 
 **Obrázek 1**: Vytvoření `DataListRepeaterBasics` složky a přidávání stránek kurz ASP.NET
 
-
 Otevřít `Default.aspx` stránku a přetáhněte ji `SectionLevelTutorialListing.ascx` uživatelského ovládacího prvku od `UserControls` složky na návrhovou plochu. Tento uživatelský ovládací prvek, který jsme vytvořili v [stránky předlohy a navigace na webu](../introduction/master-pages-and-site-navigation-cs.md) kurzu mapy webu a zobrazí výčet kurzy z aktuálního oddílu v seznamu s odrážkami.
-
 
 [![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image3.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image2.png)
 
 **Obrázek 2**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image4.png))
 
-
 Pokud chcete zobrazit seznam s odrážkami v ovládacích prvcích DataList a Repeater kurzech, které nám budete vytvářet, potřebujeme přidat je do mapy webu. Otevřít `Web.sitemap` a přidejte následující kód za kód uzel mapy webu přidání vlastního tlačítka:
 
-
 [!code-xml[Main](displaying-data-with-the-datalist-and-repeater-controls-cs/samples/sample1.xml)]
-
 
 ![Aktualizace mapy webu zahrnout nové stránky ASP.NET](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image5.png)
 
 **Obrázek 3**: Aktualizace mapy webu zahrnout nové stránky ASP.NET
 
-
 ## <a name="step-2-displaying-product-information-with-the-datalist"></a>Krok 2: Zobrazení informací o produktu pomocí prvku DataList
 
 Podobný třídě FormView, ovládací prvek DataList s vykreslí výstup závisí na šablony spíše než BoundFields CheckBoxFields a tak dále. Na rozdíl od třídy FormView prvku DataList slouží k zobrazení sadu záznamů, místo solitary jeden. Umožní s začít v tomto kurzu se podívat na vazby informací o produktu a v prvku DataList. Začněte otevřením `Basics.aspx` stránku `DataListRepeaterBasics` složky. A v prvku DataList v dalším kroku přetáhněte z panelu nástrojů do návrháře. Jak ukazuje obrázek 4 před určením šablony ovládacích prvků DataList s návrháři zobrazí jako šedé pole.
-
 
 [![Přetáhněte z panelu nástrojů na Návrhář prvku DataList](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image7.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image6.png)
 
 **Obrázek 4**: Přetažením ovládacích prvků DataList z panelu nástrojů na the návrháře ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image8.png))
 
-
 V prvku DataList s inteligentní značky, přidejte nový prvek ObjectDataSource a nakonfigurujte ho na použití `ProductsBLL` třída s `GetProducts` metody. Protože opětovné vytváření DataList jen pro čtení v tomto kurzu nastavíme rozevíracího seznamu na (žádný) v Průvodci s vložit, aktualizovat a odstraňovat karty.
-
 
 [![Rozhodnout vytvořit nového prvku ObjectDataSource](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image10.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image9.png)
 
 **Obrázek 5**: Optimalizované k vytvoření nového prvku ObjectDataSource ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image11.png))
 
-
 [![Konfigurace ObjectDataSource pomocí třídy ProductsBLL](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image13.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image12.png)
 
 **Obrázek 6**: Konfigurace ObjectDataSource k použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image14.png))
-
 
 [![Načíst informace o všech produktů pomocí GetProducts – metoda](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image16.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image15.png)
 
 **Obrázek 7**: Načíst informace o všech produktů pomocí `GetProducts` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image17.png))
 
-
 Po konfiguraci ObjectDataSource a jeho přidružením k prvku DataList prostřednictvím jeho inteligentních značek, vytvoří Visual Studio automaticky `ItemTemplate` v ovládacím prvku DataList, která zobrazuje název a hodnotu každé datové pole vrácené zdroje dat (najdete v článku Kód níže). Toto výchozí nastavení `ItemTemplate` vzhled je shodná s automaticky vytvoří při vytvoření vazby zdroje dat na třídy FormView pomocí návrháře šablony.
-
 
 [!code-aspx[Main](displaying-data-with-the-datalist-and-repeater-controls-cs/samples/sample2.aspx)]
 
 > [!NOTE]
 > Připomínáme, že po vytvoření vazby zdroje dat k ovládacímu prvku FormView prostřednictvím inteligentních značek s FormView, Visual Studio vytvořeno `ItemTemplate`, `InsertItemTemplate`, a `EditItemTemplate`. Pomocí prvku DataList, ale pouze `ItemTemplate` se vytvoří. Je to proto prvku DataList nemá stejný integrované úpravy a vložení podporu, kterou nabízí ve třídě FormView. Prvku DataList obsahovat upravit a odstranit související události a úpravy a odstranění podpory lze přidat pomocí hodně kódu, ale zde s jednoduchou out-of-the-box nepodporuje jako s FormView. Uvidíme, jak zahrnout úpravy a odstranění podpory s prvku DataList v budoucích kurzech.
 
-
 Umožní s využít ke zlepšení vzhledu této šablony. Místo zobrazení všech datových polí, umožnit zobrazit pouze s názvem produktu, Dodavatel, kategorie, množství na jednotku a cena za jednotku s. Kromě toho vám umožňují s zobrazovaný název v `<h4>` záhlaví a rozložení zbývající pole pomocí `<table>` pod nadpisem.
 
 Pokud chcete tyto změny, které můžete provést buď pomocí šablony funkce v Návrháři z prvku DataList s inteligentní značky, klikněte na odkaz Upravit šablony nebo můžete upravit šablonu ručně pomocí deklarativní syntaxe s stránky pro úpravu. Pokud použijete možnost Upravit šablony v návrháři, výsledný kód nemusí přesně odpovídat následující značky, ale při zobrazení v prohlížeči by měl vypadají velmi podobně jako obrazovky je vidět na obrázku 8.
-
 
 [!code-aspx[Main](displaying-data-with-the-datalist-and-repeater-controls-cs/samples/sample3.aspx)]
 
 > [!NOTE]
 > V příkladu výše používá popisek webové ovládací prvky jejichž `Text` vlastnost přiřazena hodnota Syntaxe datové vazby. Také jsme může zapomněli popisky úplně se vynechá, psát v syntaxi datové vazby. To znamená, že místo použití `<asp:Label ID="CategoryNameLabel" runat="server" Text='<%# Eval("CategoryName") %>' />` jsme mohli místo toho použít deklarativní syntaxe `<%# Eval("CategoryName") %>`.
 
-
 Nechat na ovládací prvky popisek webových, ale nabízí dvě výhody. Nejprve nabízí jednodušší způsob formátování dat na základě dat, jak uvidíme v dalším kurzu. Za druhé: možnost Upravit šablony v návrháři kódu t zobrazení datové vazby deklarativní syntaxe, které se zobrazí mimo některé webový ovládací prvek. Místo toho rozhraní upravit šablony je navržené pro usnadnění práce s statické značek a webové ovládací prvky a předpokládá, že všechny datové vazby se provede pomocí dialogového okna Upravit datové vazby, který je přístupný z inteligentních značek webové ovládací prvky.
 
 Proto při práci s DataList, které poskytuje možnost úpravy šablony prostřednictvím návrháře, chci raději použít popisek webové ovládací prvky tak, aby obsah je dostupný prostřednictvím rozhraní upravit šablony. Jak uvidíme krátce, Opakovači vyžaduje, upravit obsah šablony s ze zobrazení zdroje. V důsledku toho při vytváření šablony s Repeater můžu budete často vynechat popisek webové ovládací prvky, pokud vím, že budete muset formátování vzhledu data vázaná text podle programovou logiku.
 
-
 [![Každý produkt s výstup je vykreslen pomocí prvku DataList s ItemTemplate](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image19.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image18.png)
 
 **Obrázek 8**: Každý produkt s výstup je vykreslen pomocí prvku DataList s `ItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image20.png))
-
 
 ## <a name="step-3-improving-the-appearance-of-the-datalist"></a>Krok 3: Zlepšení vzhledu prvku DataList
 
@@ -133,14 +113,11 @@ Jak je popsáno v [zobrazení dat se prvku ObjectDataSource](../basic-reporting/
 
 Chcete-li přidat soubor vzhledu, klikněte pravým tlačítkem na `App_Themes/DataWebControls` složky, zvolte možnost Přidat novou položku a ze seznamu vyberte možnost soubor vzhledu. Pojmenujte soubor `DataList.skin`.
 
-
 [![Vytvořte nový soubor vzhledu DataList.skin](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image22.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image21.png)
 
 **Obrázek 9**: Vytvořit nový soubor vzhledu název `DataList.skin` ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image23.png))
 
-
 Použijte následující kód pro `DataList.skin` souboru:
-
 
 [!code-aspx[Main](displaying-data-with-the-datalist-and-repeater-controls-cs/samples/sample4.aspx)]
 
@@ -148,11 +125,9 @@ Tato nastavení přiřadit stejné třídy šablony stylů CSS příslušné vla
 
 Přidání tohoto souboru skinu vzhled ovládacích prvků DataList s aktualizován v Návrháři (budete muset aktualizovat zobrazení návrháře, aby viděli efekt nový soubor vzhledu; v nabídce Zobrazit, vyberte příkaz Aktualizovat). Jak je vidět na obrázku 10, má každý střídavé produkt světle růžová pozadí.
 
-
 [![Vytvořte nový soubor vzhledu DataList.skin](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image25.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image24.png)
 
 **Obrázek 10**: Vytvořit nový soubor vzhledu název `DataList.skin` ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image26.png))
-
 
 ## <a name="step-4-exploring-the-datalist-s-other-templates"></a>Krok 4: Zkoumání prvku DataList s ostatními šablonami
 
@@ -170,36 +145,28 @@ Při zadávání `HeaderTemplate` nebo `FooterTemplate`, prvku DataList přidá 
 > [!NOTE]
 > Jak jsme viděli v [zobrazuje souhrnné informace v zápatí prvku GridView s](../custom-formatting/displaying-summary-information-in-the-gridview-s-footer-cs.md) kurz, zatímco řádky záhlaví a zápatí zadávat t podporu databinding syntaxe, informace týkající se dat můžete vloží přímo do těchto řádků z GridView s `RowDataBound` obslužné rutiny události. Tato technika může být použito pro obě výpočtu mezisoučtů nebo jiných informací z dat vázány na ovládací prvek také přiřadit tyto informace v zápatí je uvedené. Stejný princip můžete použít u ovládacích prvků DataList a Repeater; jediným rozdílem je, že pro obslužnou rutinu události pro vytvoření ovládacích prvků DataList a Repeater `ItemDataBound` událostí (místo pro `RowDataBound` událostí).
 
-
 V našem příkladu vám umožňují s mají název produktu informace zobrazené v horní části DataList s výsledky do `<h3>` záhlaví. Chcete-li to provést, přidejte `HeaderTemplate` s odpovídající značky. Z návrháře, můžete to provést kliknutím na odkaz Upravit šablony v prvku DataList s inteligentním, výběr šablony záhlaví z rozevíracího seznamu a zadáním textu po výběru možnosti záhlaví 3 z rozevíracího seznamu styl seznamu (viz obrázek 11).
-
 
 [![Přidat parametr HeaderTemplate s informacemi o produktu Text](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image28.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image27.png)
 
 **Obrázek 11**: Přidat `HeaderTemplate` s informacemi o produktu Text ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image29.png))
 
-
 Případně jde přidat pomocí deklarace tak, že zadáte následující kód v rámci `<asp:DataList>` značky:
-
 
 [!code-html[Main](displaying-data-with-the-datalist-and-repeater-controls-cs/samples/sample5.html)]
 
 Přidání hodně mezeru mezi každou výpis produktů, umožní s přidat `SeparatorTemplate` , která obsahuje řádek mezi každé části. Vodorovná čára značky (`<hr>`), přidá tyto oddělovač. Vytvořte `SeparatorTemplate` tak, aby byly následující kód:
-
 
 [!code-html[Main](displaying-data-with-the-datalist-and-repeater-controls-cs/samples/sample6.html)]
 
 > [!NOTE]
 > Podobně jako `HeaderTemplate` a `FooterTemplates`, `SeparatorTemplate` není vázán na libovolný záznam ze zdroje dat, a proto nemůže přímo přístupu zdroj dat záznamů, které jsou vázány na ovládacím prvku DataList.
 
-
 Po provedení sčítání, při zobrazení stránky přes prohlížeč by měl vypadat podobně jako obrázek 12. Poznamenejte si řádek záhlaví a řádek mezi každou výpis produktů.
-
 
 [![Prvku DataList obsahuje řádek záhlaví a vodorovná čára mezi každou výpis produktů](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image31.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image30.png)
 
 **Obrázek 12**: Prvku DataList obsahuje řádek záhlaví a vodorovné pravidlo mezi každý výpis produktů ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image32.png))
-
 
 ## <a name="step-5-rendering-specific-markup-with-the-repeater-control"></a>Krok 5: Vykreslování konkrétní značky s ovládacím prvkem Repeater
 
@@ -221,54 +188,43 @@ V technologii ASP.NET 1.x, ovládací prvek se běžně používá k zobrazení 
 > [!NOTE]
 > ASP.NET 2.0 představuje nové [ovládacího prvku BulletedList](https://msdn.microsoft.com/library/ms228101.aspx), které mohou být vázány na ovládací prvek zdroje dat zobrazíte jednoduchý seznam s odrážkami. Pomocí ovládacího prvku BulletedList jsme není potřeba zadávat žádné související seznamu HTML; Místo toho jsme jednoduše určíte pole se zobrazí jako text pro každou položku seznamu.
 
-
 Opakovači slouží jako bloku catch. všechna data webový ovládací prvek. Pokud není existující ovládací prvek, který generuje potřebné značky, je možné ovládacím prvku opakovače. Pro ilustraci použití opakovače umožní mít seznam kategorií zobrazený nad DataList informace o produktu vytvořili v kroku 2 s. Zejména umožňují s mít kategorie zobrazuje ve formátu HTML jednoho řádku `<table>` s každou kategorii, zobrazí jako sloupec v tabulce.
 
 K tomu spuštění přetažením ovládacím prvkem Repeater z panelu nástrojů na Návrhář nad DataList informace o produktu. Stejně jako u prvku DataList, Opakovači otevření zobrazí jako šedé pole až do jeho šablony byly definovány.
-
 
 [![Přidat Repeateru do návrháře](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image34.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image33.png)
 
 **Obrázek 13**: Přidat do návrháře Repeateru ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image35.png))
 
-
 Existuje jenom jedna možnost s v opakovače s inteligentní značky: Vyberte zdroj dat. Optimalizované k vytvoření nového prvku ObjectDataSource a nakonfigurujte ho na použití `CategoriesBLL` třída s `GetCategories` metody.
-
 
 [![Vytvoření nového prvku ObjectDataSource](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image37.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image36.png)
 
 **Obrázek 14**: Vytvoření nového prvku ObjectDataSource ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image38.png))
 
-
 [![Konfigurace ObjectDataSource pomocí třídy CategoriesBLL](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image40.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image39.png)
 
 **Obrázek 15**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image41.png))
-
 
 [![Načíst informace o všech kategorií pomocí GetCategories – metoda](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image43.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image42.png)
 
 **Obrázek 16**: Načíst informace o všech kategorií pomocí `GetCategories` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image44.png))
 
-
 Na rozdíl od prvku DataList Visual Studio neprovádí automatické vytváření šablona ItemTemplate pro Opakovači po vazby ke zdroji dat. Kromě toho šablony opakovače s nelze nakonfigurovat pomocí návrháře a musí být zadán deklarativně.
 
 Chcete-li zobrazit kategorie jako jeden řádek `<table>` sloupec pro každou kategorii, potřebujeme Repeater a vygenerovat kód podobný následujícímu:
-
 
 [!code-html[Main](displaying-data-with-the-datalist-and-repeater-controls-cs/samples/sample7.html)]
 
 Vzhledem k tomu, `<td>Category X</td>` text je část se bude opakovat, budou se zobrazovat opakovače s ItemTemplate. Kód, který se zobrazí před – `<table><tr>` -budou umístěny do `HeaderTemplate` při koncové značky - `</tr></table>` -budou umístěny do `FooterTemplate`. Zadejte tato nastavení šablony, přejděte na deklarativní části stránky ASP.NET po kliknutí na tlačítko zdroj v levém dolním rohu a zadejte následující syntaxi:
 
-
 [!code-aspx[Main](displaying-data-with-the-datalist-and-repeater-controls-cs/samples/sample8.aspx)]
 
 Opakovači vysílá přesné značek podle jeho šablony, nic jiného, nic méně. Obrázek 17 zobrazí výstup s Repeater při prohlížení prostřednictvím prohlížeče.
 
-
 [![Jeden řádek HTML &lt;tabulky&gt; uvádí každou kategorii v samostatném sloupci](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image46.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image45.png)
 
 **Obrázek 17**: Jeden řádek HTML `<table>` uvádí každou kategorii v samostatném sloupci ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image47.png))
-
 
 ## <a name="step-6-improving-the-appearance-of-the-repeater"></a>Krok 6: Zlepšení vzhledu Opakovači
 
@@ -276,26 +232,21 @@ Protože Opakovači vysílá přesně značek určené šablony, by měl mít ja
 
 V našem příkladu umožní s mít sloupce kategorie alternativní barvy pozadí, třeba s střídavé řádky v ovládacím prvku DataList. Provedete to tak, musíme přiřadit `RowStyle` třídu šablony stylů CSS pro každou položku Repeater a `AlternatingRowStyle` třídu šablony stylů CSS na jednotlivé střídavé položky Repeater prostřednictvím `ItemTemplate` a `AlternatingItemTemplate` šablony, například takto:
 
-
 [!code-aspx[Main](displaying-data-with-the-datalist-and-repeater-controls-cs/samples/sample9.aspx)]
 
 Umožňuje také přidat řádek záhlaví do výstupu s textem kategorie produktů s. Protože jsme zadávat t vědět kolik sloupců naše vyplývající `<table>` se skládá, je nejjednodušší způsob, jak vygenerovat řádek záhlaví, která se zaručeně rozložit všechny sloupce použití *dvě* `<table>` s. První `<table>` bude obsahovat dva řádky záhlaví a řádek, který bude obsahovat druhý, jednoho řádku `<table>` sloupec pro každou kategorii, která má v systému. To znamená, že chceme, aby generoval následující kód:
-
 
 [!code-html[Main](displaying-data-with-the-datalist-and-repeater-controls-cs/samples/sample10.html)]
 
 Následující `HeaderTemplate` a `FooterTemplate` za následek požadované značky:
 
-
 [!code-aspx[Main](displaying-data-with-the-datalist-and-repeater-controls-cs/samples/sample11.aspx)]
 
 Po provedení těchto změn se zobrazí obrázek 18 opakovače.
 
-
 [![Alternativní barva pozadí sloupce kategorie a obsahuje řádek záhlaví](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image49.png)](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image48.png)
 
 **Obrázek 18**: Kategorie sloupce Alternativní barva pozadí a zahrnuje řádek záhlaví ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-cs/_static/image50.png))
-
 
 ## <a name="summary"></a>Souhrn
 

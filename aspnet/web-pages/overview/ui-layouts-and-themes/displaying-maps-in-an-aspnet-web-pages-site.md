@@ -8,12 +8,12 @@ ms.date: 02/20/2014
 ms.assetid: b5c268dd-ca6a-4562-b94c-a220fcf01f58
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/displaying-maps-in-an-aspnet-web-pages-site
 msc.type: authoredcontent
-ms.openlocfilehash: 6e5c01c3602bd313ebca467b65563b7abfd7ffe2
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 36f3b753cf312504892872ff54bef49854588990
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400097"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65124183"
 ---
 # <a name="displaying-maps-in-an-aspnet-web-pages-razor-site"></a>Zobrazení map na webu rozhraní ASP.NET Web Pages (Razor)
 
@@ -40,7 +40,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 >   
 > 
 > V tomto kurzu funguje taky pomocí služby WebMatrix 3.
-
 
 Na webových stránkách, můžete zobrazit mapování na stránce pomocí `Maps` pomocné rutiny. Můžete generovat mapy založené na adresu nebo na sadu souřadnice zeměpisné šířky a délky. `Maps` Umožňuje volání do mapy Oblíbené moduly včetně Bing, Google, Yahoo a MapQuest třídy.
 
@@ -109,6 +108,5 @@ Tento příklad ukazuje způsob vytvoření mapy podle souřadnic. Tento příkl
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Další prostředky
-
 
 [Reference k rozhraní API Microsoft.Maps](https://msdn.microsoft.com/library/gg427611.aspx)

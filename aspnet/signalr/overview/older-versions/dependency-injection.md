@@ -8,12 +8,12 @@ ms.date: 05/15/2013
 ms.assetid: eaa206c4-edb3-487e-8fcb-54a3261fed36
 msc.legacyurl: /signalr/overview/older-versions/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 615120684d032562ba2570e22b2dcdeaeaae340e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: de838ab6b3a299eb1e5ebeb9fa3c583478ce3e56
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59404088"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65117072"
 ---
 # <a name="dependency-injection-in-signalr-1x"></a>Injektáž závislostí v centrech SignalR 1.x
 
@@ -75,7 +75,6 @@ Jedním řešením je použití kontejner IoC. Kontejner IoC je softwarová sou�
 
 > [!NOTE]
 > "IoC" znamená "inverzi ovládacího prvku", což je obecný vzor, pokud rámec volání do kódu aplikace. Kontejner IoC vytvoří objekty, které "Invertuje" obvyklý tok řízení.
-
 
 ## <a name="using-ioc-containers-in-signalr"></a>Použití technologie IoC kontejnerů v knihovně SignalR
 

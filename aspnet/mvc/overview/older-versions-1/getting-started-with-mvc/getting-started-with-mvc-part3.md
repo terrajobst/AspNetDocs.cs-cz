@@ -8,19 +8,18 @@ ms.date: 08/14/2010
 ms.assetid: e8f1515c-c277-47ff-a23e-224118f13f02
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part3
 msc.type: authoredcontent
-ms.openlocfilehash: 3eff3aceea302c51e6970bb13fbee3a8bf98a71d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 462b1210c45da67058899193afcea973f3daf122
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59411979"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123042"
 ---
 # <a name="adding-a-view"></a>Přidání zobrazení
 
 podle [Scott Hanselman](https://github.com/shanselman)
 
 > Toto je kurz pro začátečníky, který vysvětluje základy ASP.NET MVC. Vytvoříte jednoduchou webovou aplikaci, která čte a zapisuje z databáze. Přejděte [výukové centrum pro ASP.NET MVC](../../../index.md) najít další technologie ASP.NET MVC, kurzů a ukázek.
-
 
 V této části budeme se podívat, jak můžeme nechat Naše třída HelloWorldController čistě zapouzdření generování odpovědi HTML zpátky do klienta pomocí souboru šablony zobrazení.
 
@@ -99,7 +98,6 @@ I když je na více řádcích, naše úvodní metoda je ve skutečnosti jenom d
 Teď potřebujeme úvodní zobrazit šablonu! V metodě Vítejte klikněte pravým tlačítkem a vyberte Přidat zobrazení. Tentokrát vytvoříme zkontrolujte "Vytvořit zobrazení se silnými typy" a vyberte třídu naše WelcomeViewModel z rozevíracího seznamu. Toto nové zobrazení pouze vědět o WelcomeViewModels a žádné další typy objektů.
 
 > *POZNÁMKA: Bude potřeba zkompilováno jednou po přidání vašeho WelcomeViewModel pro zobrazení v rozevíracím seznamu.*
-
 
 Zde je, jak by měla vypadat dialogové okno Přidat zobrazení. Klikněte na tlačítko Přidat. ![Přidat že zobrazení v kruhu](getting-started-with-mvc-part3/_static/image10.png)
 

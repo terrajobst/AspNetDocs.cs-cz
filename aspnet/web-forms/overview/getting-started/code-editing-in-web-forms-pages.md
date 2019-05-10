@@ -8,12 +8,12 @@ ms.date: 03/03/2014
 ms.assetid: 5344b74e-b888-479a-92bc-601a33bd61a2
 msc.legacyurl: /web-forms/overview/getting-started/code-editing-in-web-forms-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 328dc6fb61ac562131b11b36b40f574ca5a53866
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 3473ad476fbbebc58e12586334b4600f57cf17ed
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59397367"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134243"
 ---
 # <a name="code-editing-aspnet-web-forms-in-visual-studio-2013"></a>Úprava kódu webových formulářů ASP.NET v sadě Visual Studio 2013
 
@@ -31,7 +31,6 @@ V tomto návodu se dozvíte, jak:
 - Vložte fragmenty kódu.
 
 ## <a name="prerequisites"></a>Požadavky
-
 
 K dokončení tohoto návodu budete potřebovat:
 
@@ -65,14 +64,11 @@ V této části tohoto návodu vytvoříte projekt webové aplikace a přidejte 
 
     Visual Studio vytvoří nový projekt, který obsahuje předem připravených funkce na základě šablony webových formulářů.
 
-
 ## <a name="creating-a-new-aspnet-web-forms-page"></a>Vytváří se nové technologie ASP.NET webové stránky s formuláři
-
 
 Při vytváření nové aplikace webových formulářů pomocí **webová aplikace ASP.NET** šablony projektu, Visual Studio přidá stránky ASP.NET (webové formuláře – stránka) s názvem *Default.aspx*, stejně jako několik dalších souborů a složky. Můžete použít *Default.aspx* stránku jako domovské stránky pro webové aplikace. Ale v tomto návodu vytvoříte a pracovat s novou stránku.
 
 ### <a name="to-add-a-page-to-the-web-application"></a>Přidání stránky do webové aplikace
-
 
 1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na název webové aplikace (v tomto kurzu je název aplikace **BasicWebSite**) a potom klikněte na tlačítko **přidat**  - &gt; **Nová položka**.   
 **Přidat novou položku** se zobrazí dialogové okno.
@@ -82,14 +78,11 @@ Při vytváření nové aplikace webových formulářů pomocí **webová aplika
  Visual Studio vytvoří novou stránku a otevře jej.
 4. Dále nastavte tuto novou stránku jako výchozí úvodní stránka. V **Průzkumníka řešení**, klikněte pravým tlačítkem na novou stránku s názvem *FirstWebPage.aspx* a vyberte **nastavit jako úvodní stránku**. Při příštím spuštění této aplikace pro testování náš postup, se automaticky zobrazí tuto novou stránku v prohlížeči.
 
-
 ## <a name="correcting-inline-coding-errors"></a>Oprava chyby kódování vložené
-
 
 Editor kódu v sadě Visual Studio vám umožní zabránit chybám při psaní kódu, a pokud jste chybu, editor kódu umožňuje k opravě chyby. V této části tohoto návodu budete psát jediného řádku kódu, které ilustrují funkce opravy chyb v editoru.
 
 ### <a name="to-correct-simple-coding-errors-in-visual-studio"></a>Chcete-li opravit chyby jednoduché psaní kódu v sadě Visual Studio
-
 
 1. V **návrhu** dvakrát klikněte na prázdnou stránku vytvořit obslužnou rutinu události pro **zatížení** události pro danou stránku.   
    Obslužná rutina události používáte pouze jako bod kódu.
@@ -109,7 +102,6 @@ Editor kódu v sadě Visual Studio vám umožní zabránit chybám při psaní k
     > [!NOTE] 
     > 
     > Zobrazení aktuálního kódu formátování nastavení v sadě Visual Studio tak, že vyberete **nástroje**  - &gt; **možnosti**  - &gt; **písma a Barvy**.
-
 
 ## <a name="refactoring-and-renaming"></a>Refaktoring a přejmenování
 
@@ -156,7 +148,6 @@ Při práci s proměnných a také objekty, můžete chtít poté, co je již od
 
 ### <a name="to-use-refactoring-to-rename-a-variable"></a>Chcete-li použít refaktoring pro přejmenování proměnné
 
-
 1. V **klikněte na tlačítko** obslužná rutina události, vyhledejte následující řádek:
 
     [!code-csharp[Main](code-editing-in-web-forms-pages/samples/sample6.cs)]
@@ -173,7 +164,6 @@ Při práci s proměnných a také objekty, můžete chtít poté, co je již od
     [!code-csharp[Main](code-editing-in-web-forms-pages/samples/sample7.cs)]
 
     Proměnná `alist` v tomto řádku není přejmenovat, protože nepředstavuje stejnou hodnotu jako proměnnou `alist` přejmenovaný. Proměnná `alist` v `DisplayArray` deklarace je lokální proměnná pro tuto metodu. To ukazuje, že pomocí refaktoring přejmenování proměnné se liší od jednoduše provedením akce najít a nahradit v editoru; Refaktoring přejmenování proměnné se znalostí sémantiku proměnné, která funguje s.
-
 
 ## <a name="inserting-snippets"></a>Vkládání fragmentů kódu
 

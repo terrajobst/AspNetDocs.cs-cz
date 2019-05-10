@@ -8,12 +8,12 @@ ms.date: 01/20/2014
 ms.assetid: 979d6c9f-0129-4e5b-ae56-4507b281b86d
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: 65e2268418501f89a77a0ba20f7960a618c2e9b7
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 7da1805d8a7066e82743dc9bd7e024cc9813ee89
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59405453"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125466"
 ---
 # <a name="attribute-routing-in-aspnet-web-api-2"></a>Směrování atributů v rozhraní ASP.NET Web API 2
 
@@ -97,7 +97,6 @@ Pokud je povoleno směrování atributů, tento kód vyvolá výjimku. Pokud pro
 
 > [!NOTE]
 > Další informace najdete v tématu [konfigurace webového rozhraní API s hostování v technologii ASP.NET](../advanced/configuring-aspnet-web-api.md#webhost).
-
 
 <a id="add-routes"></a>
 ## <a name="adding-route-attributes"></a>Přidávání atributů trasy

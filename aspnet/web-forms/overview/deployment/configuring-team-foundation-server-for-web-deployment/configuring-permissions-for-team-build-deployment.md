@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 2488a91e-b0a8-465a-b874-3233f724b56b
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 62e5c5622743447e1119141469c894dc905e6b43
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 5699f72af6b8d7f18d1a2c631dfdedd63c66e1e6
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381052"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133858"
 ---
 # <a name="configuring-permissions-for-team-build-deployment"></a>Konfigurace oprávnění pro nasazení týmového sestavení
 
@@ -22,7 +22,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Toto téma popisuje, jak nakonfigurovat oprávnění, které umožňují sestavení serveru nasazení obsahu do webové servery a databázové servery jako součást automatizovaného procesu sestavení.
-
 
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
@@ -36,7 +35,6 @@ Při instalaci služby Team Foundation Server (TFS) 2010 sestavení, zadejte ide
 
 > [!NOTE]
 > Účet Network Service používá účet počítače pro ověření do jiných počítačů. Účty počítače mít podobu *[název domény]\[název počítače]* **$**&#x2014;například **FABRIKAM\TFSBUILD$**. V důsledku toho pokud je sestavovací služba spuštěná, používat identitu síťové služby, byste měli udělit libovolné požadovaná oprávnění pro identitu účtu počítače pro váš server sestavení.
-
 
 ## <a name="configuring-web-server-permissions"></a>Konfigurace oprávnění webového serveru
 

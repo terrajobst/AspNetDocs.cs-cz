@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: fe47a018-f6d0-4979-80e7-5b1fa75a5865
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 97a60274d9306ea0ee332fcc1ab9e487355dbedb
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e11c91a824446572aaf0b3bc6954b9b8ffb4eaff
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59384934"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133960"
 ---
 # <a name="creating-a-build-definition-that-supports-deployment"></a>Vytvoření definice nasazení, která podporuje nasazení
 
@@ -22,7 +22,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Pokud chcete provádět jakékoliv sestavení v Team Foundation Server (TFS) 2010, musíte vytvořit definici sestavení v rámci týmového projektu. Toto téma popisuje postup vytvoření nové definice sestavení v TFS a řízení nasazení webu jako součást procesu sestavení v Team Build.
-
 
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
@@ -40,7 +39,6 @@ Definice sestavení je mechanismus, který řídí, jak a kdy dojde k sestavení
 
 > [!NOTE]
 > Další informace o definicích sestavení naleznete v tématu [definovat svůj proces sestavení](https://msdn.microsoft.com/library/ms181715.aspx).
-
 
 Toto téma se ukazují, jak vytvořit definici sestavení, která používá CI, tak, aby sestavení se aktivuje, když vývojář vrátí nový obsah. Pokud byl sestaven úspěšně, sestavovací služba spustí soubor vlastní projekt k nasazení řešení do testovacího prostředí.
 
@@ -60,7 +58,6 @@ Další části je vysvětlen postup implementace tohoto procesu tak, že vytvo�
 
 > [!NOTE]
 > Tento postup&#x2014;ve kterém automatizované jeden proces sestavení, testy a nasadí řešení&#x2014;by mohla být nejvhodnější pro nasazení pro testovací prostředí. Pro testovací a produkční prostředí budete pravděpodobně mnohem více chcete nasadit obsah z předchozího buildu, který jste již ověření a ověření v testovacím prostředí. Tento postup je popsaný v dalším tématu [nasazení konkrétního sestavení](deploying-a-specific-build.md).
-
 
 ### <a name="who-performs-this-procedure"></a>Kdo provádí tento postup?
 
@@ -142,7 +139,6 @@ Tyto informace slouží k řešení selhání sestavení a řešit jakékoli pro
 
 > [!NOTE]
 > Sestavení, které jsou spouštěny logiky nasazení budou pravděpodobně fungovat, dokud jste udělili server sestavení všechna oprávnění nutná v cílovém prostředí. Další informace najdete v tématu [konfigurace oprávnění pro nasazení sestavení týmu](configuring-permissions-for-team-build-deployment.md).
-
 
 ## <a name="monitor-the-build-process"></a>Monitorování procesu sestavení
 

@@ -8,12 +8,12 @@ ms.date: 01/06/2019
 ms.assetid: 52a4d5fe-aa31-4471-b3cb-a064f82cb791
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 4a4627bdce8b8f2085150aa08cdc4c1271e09e09
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: c42ec77b5d5107f3ef70e13b779fc1bebef70a14
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59422002"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65120707"
 ---
 # <a name="examining-the-edit-methods-and-edit-view"></a>Zkoumání metod Edit a zobrazení pro úpravy
 
@@ -98,7 +98,6 @@ Všechny `HttpGet` metody podobné tvar. Dostanou video (nebo seznam objektů, v
 ## <a name="jquery-validation-for-non-english-locales"></a>k ověřování jQuery pro neanglická národní prostředí
 
 Pokud používáte jazykovou verzi US English počítače, můžete tuto část přeskočit a přejít k dalšímu kurzu. Můžete stáhnout Globalize verzi tohoto kurzu [tady](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=16475). Vynikající kurz dvě části na mezinárodní prostředí, najdete v tématu [Nadeem na ASP.NET MVC 5 internacionalizace](http://afana.me/post/aspnet-mvc-internationalization.aspx).
-
 
 > [!NOTE]
 > pro podporu ověřování jQuery pro neanglická národní prostředí, které používají čárku (&quot;,&quot;) pro desetinné čárky a USA retweetovat neanglické formáty kalendářního data, musíte zahrnout *globalize.js* a konkrétní  *cultures/Globalize.cultures.js* souboru (z [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) a JavaScript, který chcete použít `Globalize.parseFloat`. Jiné než anglické jazykové ověřování jQuery můžete získat z NuGet. (Neinstalujte Globalize Pokud používáte anglické národní prostředí.)

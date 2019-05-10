@@ -8,12 +8,12 @@ ms.date: 02/17/2014
 ms.assetid: 360bc6e1-84c5-4b8e-a84c-ea48ab807aa4
 msc.legacyurl: /web-pages/overview/performance-and-traffic/14-analyzing-traffic
 msc.type: authoredcontent
-ms.openlocfilehash: a99ed5cc8875ef9f39234e3f394b46b5782d0bc1
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 095a5572c755446e0661c052ca9de82d636429fd
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59390217"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134600"
 ---
 # <a name="tracking-visitor-information-analytics-for-an-aspnet-web-pages-razor-site"></a>Sledování návštěvníka informace (Analytics) pro ASP.NET Web Pages (Razor)
 
@@ -35,7 +35,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > 
 > - Rozhraní ASP.NET Web Pages (Razor) 2
 > - Knihovnu ASP.NET Web Helpers (balíček NuGet)
-
 
 Analýza je obecný termín pro technologie, která měří provoz na vašem webu to vám umožní pochopit, jak ostatní používají Web. Mnoho služeb analytics jsou k dispozici, včetně služby od Google, Yahoo, StatCounter a dalších.
 
@@ -60,7 +59,6 @@ V tomto postupu vytvoříte stránku rozložení, který používá `GetGoogleHt
 
 > [!NOTE]
 > Když vytvoříte účet analytics, je zaregistrovat adresu URL webu, který chcete sledovat. Pokud testujete všechno, co v místním počítači, můžete nebude sledovat skutečný provoz (pouze provoz je můžete), tak nebude možné zaznamenat a zobrazit statistiku serveru. Ale tento postup ukazuje, jak přidat analytics pomocné rutiny na stránku. Při publikování webu živého webu bude odesílat informace do vašeho zprostředkovatele datové analýzy.
-
 
 1. Přidejte knihovnu ASP.NET Web Helpers na váš web, jak je popsáno v [instalace pomocné rutiny na webu technologie ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=252372), pokud jste to ještě nepřidali.
 2. Vytvoření účtu pomocí Google Analytics a poznamenejte název účtu.

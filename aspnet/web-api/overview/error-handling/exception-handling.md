@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: cbebeb37-2594-41f2-b71a-f4f26520d512
 msc.legacyurl: /web-api/overview/error-handling/exception-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 08b3663c1f9a08b8b3600113c32aeffb36c0d990
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: dbdbab6aefec840e2fec9e9cd33f3d124093750e
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59399317"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125304"
 ---
 # <a name="exception-handling-in-aspnet-web-api"></a>Zpracování výjimek v rozhraní ASP.NET Web API
 
@@ -49,7 +49,6 @@ Filtry výjimek implementovat **System.Web.Http.Filters.IExceptionFilter** rozhr
 
 > [!NOTE]
 > Filtry výjimek v rozhraní ASP.NET Web API jsou podobné těm v architektuře ASP.NET MVC. Nicméně jsou deklarovány v samostatném oboru názvů a funkce samostatně. Zejména v případě **HandleErrorAttribute** třída používaná v MVC nezpracovává výjimky vyvolané kontrolerů rozhraní Web API.
-
 
 Tady je filtr, který převede **NotImplementedException** 501 Neimplementováno kód výjimky na stav protokolu HTTP:
 

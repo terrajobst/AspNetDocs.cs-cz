@@ -8,12 +8,12 @@ ms.date: 10/16/2008
 ms.assetid: e83812f2-c53e-4a43-a7c1-d64c59ecf694
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: bbedc11b9b1225b1047350c1c84a116ecef0c380
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: fb3ed252a9232a2f5a1ad4257156a142bbe5b174
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59407403"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123177"
 ---
 # <a name="understanding-action-filters-vb"></a>Principy filtrů akcí (VB)
 
@@ -22,7 +22,6 @@ by [Microsoft](https://github.com/microsoft)
 [Stáhnout PDF](http://download.microsoft.com/download/e/f/3/ef3f2ff6-7424-48f7-bdaa-180ef64c3490/ASPNET_MVC_Tutorial_14_VB.pdf)
 
 > Cílem tohoto kurzu je vysvětlit filtrů akce. Filtr akce je atribut, který můžete použít na akce kontroleru--nebo celý kontroler –, který mění způsob, jakým provedením akce.
-
 
 ## <a name="understanding-action-filters"></a>Principy filtrů akcí
 
@@ -48,11 +47,9 @@ Například kontroler dat v informacích 1 zpřístupňuje akci s názvem `Index
 
 Pokud opakovaně vyvoláte `Index()` akce zadáním adresy URL/Data/Index do adresního řádku prohlížeče a při aktualizaci tlačítko více než jednou, zobrazí se stejnou dobu 10 sekund. Výstup `Index()` akce se uloží do mezipaměti po dobu 10 sekund (viz obrázek 1).
 
-
 [![Čas v mezipaměti](understanding-action-filters-vb/_static/image2.png)](understanding-action-filters-vb/_static/image1.png)
 
 **Obrázek 01**: V mezipaměti Doba ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-action-filters-vb/_static/image3.png))
-
 
 V jedné akce filtru – výpis 1 `OutputCache` filtr akce – platí pro `Index()` metoda. Pokud potřebujete, můžete provést několik filtrů akce u stejné akce. Například můžete chtít použít i `OutputCache` a `HandleError` filtrů Akce na stejnou akci.
 
@@ -106,11 +103,9 @@ Aby bylo možné ukazují, jak se dají vytvářet filtr vlastních akcí, vytvo
 
 V informacích 2 `OnActionExecuting()`, `OnActionExecuted()`, `OnResultExecuting()`, a `OnResultExecuted()` volání metody `Log()` metody. Název metody a aktuální data trasy, která je předána `Log()` metody. `Log()` Metoda zapíše zprávu do okna výstup Visual Studia (viz obrázek 2).
 
-
 [![Zápis v okně Výstup Visual Studia](understanding-action-filters-vb/_static/image5.png)](understanding-action-filters-vb/_static/image4.png)
 
 **Obrázek 02**: Zápis v okně Výstup Visual Studia ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-action-filters-vb/_static/image6.png))
-
 
 Kontroler Home v informacích 3 znázorňuje, jak je možné použít filtr protokolu akcí do třídy celý kontroler. Vždy, když některou z akcí, které jsou vystavené kontroler Home jsou vyvolány – buď `Index()` metoda nebo `About()` metoda – fáze zpracování akce se Zaprotokolují v okně Výstup Visual Studia.
 

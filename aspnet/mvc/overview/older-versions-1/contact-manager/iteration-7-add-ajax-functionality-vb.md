@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: f640e063-150e-453d-8cfc-7e54a6ce0f1e
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3df4258b2de309aed5a3a598caeb1e7332c321f6
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: cee2b6e7c7517a1e03ae26d5233fc438857a030c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59383954"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123880"
 ---
 # <a name="iteration-7--add-ajax-functionality-vb"></a>Iterace #7 – přidání funkcí Ajax (VB)
 
@@ -23,9 +23,7 @@ by [Microsoft](https://github.com/microsoft)
 
 > V sedmé iteraci můžeme zlepšit rychlost reakce a výkon naší aplikace tak, že přidáte podporu pro Ajax.
 
-
 ## <a name="building-a-contact-management-aspnet-mvc-application-vb"></a>Vytvoření aplikace pro správu kontaktů ASP.NET MVC (VB)
-  
 
 V této sérii kurzů jsme integrovali celou aplikaci kontakt správy od začátku na dokončení. Obraťte se na správce aplikace umožňuje ukládat kontaktní údaje - jména, telefonní čísla a e-mailové adresy – seznam lidí.
 
@@ -93,11 +91,9 @@ Přidejte následující JavaScript zahrnuje uvnitř &lt;head&gt; značky hlavn�
 
 Umožní začít úpravou náš Index zobrazení tak, že kliknete na skupinu kontaktů aktualizuje pouze oblasti zobrazení, která zobrazuje kontakty s. Červeným rámečkem na obrázku 1 obsahuje oblast, která chcete aktualizovat.
 
-
 [![Aktualizuje se jenom kontakty](iteration-7-add-ajax-functionality-vb/_static/image1.jpg)](iteration-7-add-ajax-functionality-vb/_static/image1.png)
 
 **Obrázek 01**: Aktualizují se kontakty pouze ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-vb/_static/image2.png))
-
 
 Prvním krokem je oddělit část zobrazení, které chcete aktualizovat asynchronně do samostatných částečné (uživatelský ovládací prvek zobrazení). Část zobrazení indexu, které zobrazí tabulku kontaktů byl přesunut do částečné v informacích 1.
 
@@ -133,9 +129,7 @@ Všimněte si, že akce Index() nemusí vrátit tolik dat, když uživatel vyvol
 
 Naše upravené zobrazení indexu funguje v případě prohlížeče vyšší úrovně a nižší úrovně. Pokud kliknete na skupinu kontaktů a váš prohlížeč podporuje JavaScript, je aktualizován pouze oblasti zobrazení, která obsahuje seznam kontaktů. Pokud na druhé straně váš prohlížeč nepodporuje jazyk JavaScript, se aktualizuje celého zobrazení.
 
-
 Naše aktualizované zobrazení indexu má jeden problém. Po kliknutí na skupinu kontaktů, není zvýrazní vybrané skupiny. Protože mimo oblast, která se aktualizuje během požadavek Ajax se zobrazí seznam skupin, získejte není zvýrazněný ke správné skupině. Tento problém opravíme v další části.
-
 
 ## <a name="adding-jquery-animation-effects"></a>Přidání efekty animace jQuery
 
@@ -193,11 +187,9 @@ Když uživatel dosáhne prohlížeče zpět nebo tlačítko Předat dál, je vy
 
 V současné době Chcete-li odstranit kontakt, budete muset kliknout na odkaz pro odstranění a poté klikněte na tlačítko Odstranit zobrazí na stránce potvrzení odstranění (viz obrázek 2). Vypadá to, že jako velké množství žádostí stránky něco jednoduchého jako odstraňuje se záznam v databázi.
 
-
 [![Na stránce potvrzení odstranění](iteration-7-add-ajax-functionality-vb/_static/image2.jpg)](iteration-7-add-ajax-functionality-vb/_static/image3.png)
 
 **Obrázek 02**: Na stránce potvrzení odstranění ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-vb/_static/image4.png))
-
 
 Je lákavé přejděte na stránku potvrzení odstranění a odstranit a kontaktovat přímo ze zobrazení pro Index. Neměli byste tento pokušení a vzhledem k tomu, že si tento postup se otevře aplikace bezpečnostní díry. Obecně platí don t chcete provést operaci HTTP GET při vyvolání akce, která změní stav vaší webové aplikace. Při provádění odstranění, chcete provádět metody POST protokolu HTTP, nebo ještě lépe, operace HTTP DELETE.
 
@@ -214,7 +206,6 @@ Odstranit odkaz je vykreslen pomocí následujícího volání metody Ajax.Image
 > [!NOTE] 
 > 
 > Ajax.ImageActionLink() není standardní součástí rozhraní ASP.NET MVC. Ajax.ImageActionLink() je vlastní pomocné metody zahrnutý v projektu správce kontaktů.
-
 
 Parametr AjaxOptions má dvě vlastnosti. Nejprve potvrdit vlastnost slouží k zobrazení potvrzovací dialogové okno automaticky otevírané okno jazyka JavaScript. Za druhé Vlastnost HttpMethod slouží k provádění operací HTTP DELETE.
 

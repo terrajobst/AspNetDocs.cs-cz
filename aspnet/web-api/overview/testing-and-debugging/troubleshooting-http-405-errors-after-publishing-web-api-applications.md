@@ -8,12 +8,12 @@ ms.date: 01/23/2019
 ms.assetid: 07ec7d37-023f-43ea-b471-60b08ce338f7
 msc.legacyurl: /web-api/overview/testing-and-debugging/troubleshooting-http-405-errors-after-publishing-web-api-applications
 msc.type: authoredcontent
-ms.openlocfilehash: ce5b617cc1032d190cc2450aa554b462ea6f6156
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 336df47dd4bda813839913676f12a51b899c0cf9
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57066211"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65121985"
 ---
 # <a name="troubleshooting-http-405-errors-after-publishing-web-api-applications"></a>Řešení potíží s chybami HTTP 405 po publikování aplikace webového rozhraní API
 
@@ -24,7 +24,6 @@ ms.locfileid: "57066211"
 > 
 > - [Internetové informační služby (IIS)](https://www.iis.net/) (verze 7 nebo novější)
 > - [Webové rozhraní API](../../index.md) 
-
 
 Webové rozhraní API aplikace obvykle používají několika běžných příkazů HTTP: GET, POST, PUT, DELETE a někdy oprava. Který říká, vývojáři mohou spustit v situacích, kde tyto akce jsou implementované jiný modul služby IIS na provozním serveru, což vede k situaci, ve kterém kontroler Web API, která funguje správně v sadě Visual Studio nebo na vývojovém serveru vrátí HTTP 405 při nasazení do provozního serveru došlo k chybě. Naštěstí je snadno vyřešit tento problém, ale řešení zaručuje vysvětlení, proč dochází k problému.
 
@@ -58,18 +57,13 @@ Ale při lze metodu HTTP je nakonfigurován pro použití na serveru, ale je zak
 
 Následující příklad HTTP žádosti a odpovědi ukazuje situaci, kdy při pokusu o VLOŽTE hodnotu do webového rozhraní API aplikace na webovém serveru je v klientovi HTTP, a server vrátí chybu HTTP, které stavy, které metoda PUT není povolený:
 
-
 Požadavek protokolu HTTP:
-
 
 [!code-console[Main](troubleshooting-http-405-errors-after-publishing-web-api-applications/samples/sample1.cmd)]
 
-
 Odpověď HTTP:
 
-
 [!code-console[Main](troubleshooting-http-405-errors-after-publishing-web-api-applications/samples/sample2.cmd)]
-
 
 V tomto příkladu klienta HTTP poslali žádost o platný JSON na adresu URL pro aplikaci webového rozhraní API na webový server, ale server vrátil HTTP 405 chybovou zprávu, která označuje, že metodu PUT nebyla povolena pro adresu URL. Pokud identifikátor URI požadavku neodpovídá trasu pro aplikace webového rozhraní API, naproti tomu by server vrátit chybu HTTP 404 ***nebyl nalezen*** chyby.
 

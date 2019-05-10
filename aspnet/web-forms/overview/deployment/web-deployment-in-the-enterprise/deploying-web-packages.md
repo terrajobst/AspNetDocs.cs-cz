@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: a5c5eed2-8683-40a5-a2e1-35c9f8d17c29
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-web-packages
 msc.type: authoredcontent
-ms.openlocfilehash: c42fa327c324ac2b721268c56782a24755ec7225
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 91b99e6e250342851aea6860164b6f6af54818d1
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59391062"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65119331"
 ---
 # <a name="deploying-web-packages"></a>Nasazení webových balíčků
 
@@ -37,7 +37,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > - Právě jste vytvořili a zabalené webové aplikace, jak je popsáno v [sestavení a balení projektů webových aplikací](building-and-packaging-web-application-projects.md).
 > - Jsme změnili *SetParameters.xml* soubor k poskytování hodnot parametrů pro cílové prostředí, jak je popsáno v [konfigurace parametrů nasazení webového balíčku](configuring-parameters-for-web-package-deployment.md).
 
-
 Spuštění [*název projektu*]*. deploy.cmd* soubor je nejjednodušší způsob, jak nasadit webový balíček. Zejména pomocí *. deploy.cmd* file nabízí tyto výhody oproti použití MSDeploy.exe přímo:
 
 - Není nutné zadat umístění balíčku pro nasazení webu&#x2014; *. deploy.cmd* souboru již ví, kde je.
@@ -52,9 +51,7 @@ Než použijete *. deploy.cmd* uvést pro nasazení webového balíčku, ujistě
 
 *. Deploy.cmd* soubor podporuje různé možnosti příkazového řádku. Když spustíte tento soubor z příkazového řádku, toto je základní syntaxe:
 
-
 [!code-console[Main](deploying-web-packages/samples/sample1.cmd)]
-
 
 Musíte zadat buď **/T** příznak nebo **/Y** příznak označující, zda chcete v uvedeném pořadí provést spuštění zkušební verze nebo živé nasazení (nepoužívejte oba příznaky v jednom příkazu). Tato tabulka vysvětluje účel každého z těchto příznaků.
 
@@ -71,7 +68,6 @@ Musíte zadat buď **/T** příznak nebo **/Y** příznak označující, zda chc
 
 > [!NOTE]
 > Pokaždé, když proces sestavení vytvoří webový balíček, také vytvoří soubor s názvem *[název projektu] .deploy-readme.txt* , který popisuje tyto možnosti nasazení.
-
 
 Kromě těchto příznaků, můžete zadat nastavení operace nasazení webu jako další *. deploy.cmd* parametry. Veškerá další nastavení, které jste zadali, se jednoduše předává do příslušný základní příkaz MSDeploy.exe. Další informace o těchto nastaveních najdete v tématu [nastavení operace nasazení webu](https://technet.microsoft.com/library/dd569089(WS.10).aspx).
 
@@ -94,9 +90,7 @@ V tomto příkladu:
 
 Pro ilustraci způsob použití *. deploy.cmd* soubor zjednodušuje proces nasazení, podívejte se na, který získá vygenerována a spustit při spuštění příkazu MSDeploy.exe *ContactManager.Mvc.deploy.cmd* pomocí možnosti zobrazené výše.
 
-
 [!code-console[Main](deploying-web-packages/samples/sample3.cmd)]
-
 
 Další informace o používání *. deploy.cmd* soubor pro nasazení webového balíčku naleznete v tématu [jak: Instalace balíčku pro nasazení pomocí souboru deploy.cmd](https://msdn.microsoft.com/library/ff356104.aspx).
 
@@ -152,13 +146,10 @@ V mnoha podnikové scénáře budete chtít nasadit jako součást větší krok
 
 V ukázkovém řešení Správce kontaktů, podívejte se na **PublishWebPackages** target v *Publish.proj* souboru. Tento cíl se spustí jednou pro každou *. deploy.cmd* soubor určený seznam položek s názvem **PublishPackages**. Cíl používá vlastností a metadat položky k vytvoření kompletní sadu hodnot argumentů pro každý *. deploy.cmd* souboru a následně použije **Exec** úkolů ke spuštění příkazu.
 
-
 [!code-xml[Main](deploying-web-packages/samples/sample8.xml)]
-
 
 > [!NOTE]
 > Širší přehled modelu soubor projektu v ukázkovém řešení a úvod do projektu vlastní soubory v obecné, najdete v tématu [vysvětlení souboru projektu](understanding-the-project-file.md) a [Principy procesu sestavení](understanding-the-build-process.md).
-
 
 ## <a name="endpoint-considerations"></a>Důležité informace o koncový bod
 
@@ -166,33 +157,24 @@ Bez ohledu na to, jestli nasazení webového balíčku spuštěním *. deploy.cm
 
 Pokud cílový webový server je nakonfigurován pro nasazení pomocí služby vzdáleného agenta pro nasazení webu, zadejte cílovou adresu URL služby jako cíl.
 
-
 [!code-console[Main](deploying-web-packages/samples/sample9.cmd)]
-
 
 Alternativně můžete zadat název serveru samostatně jako cíl a nasazení webu se odvodit adresu URL vzdáleného agenta služby.
 
-
 [!code-console[Main](deploying-web-packages/samples/sample10.cmd)]
-
 
 Pokud cílový webový server je nakonfigurován k nasazení pomocí obslužné rutiny nasazení webu, musíte zadat adresu koncového bodu služby webové správy (WMSvc) služby IIS jako cíl. Ve výchozím nastavení tato akce trvá formuláře:
 
-
 [!code-console[Main](deploying-web-packages/samples/sample11.cmd)]
-
 
 Můžete cílit na některý z těchto koncových bodů, buď pomocí *. deploy.cmd* souboru nebo přímo MSDeploy.exe. Nicméně pokud chcete do obslužné rutiny nasazení webu nasadit jako uživatel bez oprávnění správce, jak je popsáno v [nakonfigurovat webový Server pro nasazení publikování na webu (nasazení obslužná rutina webových)](../configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md), budete muset přidat řetězec dotazu k adrese koncového bodu služby.
 
-
 [!code-console[Main](deploying-web-packages/samples/sample12.cmd)]
-
 
 Důvodem je, že uživatel bez oprávnění správce nemá přístup na úrovni serveru služby IIS; uživatel má přístup pouze k konkrétní web služby IIS. V době psaní textu kvůli chybě v webového publikování kanálu (WPP), nelze spustit *. deploy.cmd* soubor pomocí adresy koncového bodu, který obsahuje řetězec dotazu. V tomto scénáři budete muset nasadit přímo pomocí MSDeploy.exe webového balíčku.
 
 > [!NOTE]
 > Další informace o službě vzdáleného agenta pro nasazení webu a obslužné rutiny nasazení webu, naleznete v tématu [výběr právo přístupu k nasazení webu](../configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment.md). Pokyny ke konfiguraci souborů projektu specifických pro prostředí pro nasazení s těmito koncovými body najdete v tématu [nakonfigurovat vlastnosti nasazení pro cílové prostředí](../configuring-server-environments-for-web-deployment/configuring-deployment-properties-for-a-target-environment.md).
-
 
 ## <a name="authentication-considerations"></a>Důležité informace o ověřování
 

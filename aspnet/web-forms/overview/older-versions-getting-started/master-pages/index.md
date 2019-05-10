@@ -8,17 +8,16 @@ ms.date: 11/04/2011
 ms.assetid: bc30f0ec-cf8f-4a33-9eee-513be872ac9c
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages
 msc.type: chapter
-ms.openlocfilehash: 9119e16fbd6ac872cfcdf5497c5ca3d8d0b5d5e2
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 3847269a495d54b0986bab245023daff4a43386a
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59413617"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134155"
 ---
 # <a name="aspnet-35---web-forms-master-pages"></a>ASP.NET 3.5 – stránky předlohy webových formulářů
 
 > Jak vytvořit a použít k vytvoření konzistentního rozložení v aplikace webových formulářů ASP.NET stránky předlohy a stránky obsahu.
-
 
 - [Vytvoření rozložení platného pro celý web pomocí stránek předlohy (C#)](creating-a-site-wide-layout-using-master-pages-cs.md)
 - [Několik prvků ContentPlaceHolder a výchozí obsah (C#)](multiple-contentplaceholders-and-default-content-cs.md)

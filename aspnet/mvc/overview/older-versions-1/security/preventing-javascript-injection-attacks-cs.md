@@ -8,12 +8,12 @@ ms.date: 08/19/2008
 ms.assetid: d0136da6-81a4-4815-b002-baa84744c09e
 msc.legacyurl: /mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2d954cbc001a62f021f942f1ff44522a2769f516
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e7294be63ac06dbf548df9d99c07503d4bfff55f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59389573"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125488"
 ---
 # <a name="preventing-javascript-injection-attacks-c"></a>Prevence útoků založených na injektáži JavaScriptu (C#)
 
@@ -23,7 +23,6 @@ podle [Stephen Walther](https://github.com/StephenWalther)
 
 > Zabránit útoky prostřednictvím injektáže jazyka JavaScript a skriptování napříč weby útoky na vás. V tomto kurzu Stephen Walther vysvětluje, jak můžete snadno, aby zhatila tyto typy útoků pomocí kódování obsahu v jazyce HTML.
 
-
 Cílem tohoto kurzu je vysvětlují, jak můžete zabránit útoků založených na injektáži JavaScriptu v aplikacích ASP.NET MVC. Tento kurz popisuje dvou přístupů týkající se ochrana vašeho webu vůči útoku prostřednictvím injektáže skriptu JavaScript. Zjistíte, jak zabránit útoků založených na injektáži JavaScriptu pomocí kódování data, která můžete zobrazit. Také se dozvíte, jak zabránit útoků založených na injektáži JavaScriptu kódování, který můžete přijímat data.
 
 ## <a name="what-is-a-javascript-injection-attack"></a>Co je útok prostřednictvím injektáže JavaScript?
@@ -32,11 +31,9 @@ Pokaždé, když se přijímají vstup uživatele a opětovnému zobrazení uži
 
 Představte si, že vytvoříte web zpětné vazby zákazníka (viz obrázek 1). Zákazníky můžete přejděte na webovou stránku a zadejte zpětnou vazbu o svých zkušenostech s použitím vašich produktů. Když zákazník odešle jejich zpětné vazby, se zobrazí na stránce zpětnou vazbu znovu zpětnou vazbu.
 
-
 [![Web zpětné vazby zákazníka](preventing-javascript-injection-attacks-cs/_static/image2.png)](preventing-javascript-injection-attacks-cs/_static/image1.png)
 
 **Obrázek 01**: Web zpětné vazby zákazníka ([kliknutím ji zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image3.png))
-
 
 Web zpětné vazby zákazníka používá `controller` v informacích 1. To `controller` obsahuje dvě akce s názvem `Index()` a `Create()`.
 
@@ -64,11 +61,9 @@ Představte si, zadejte následující text do formuláře zpětné vazby zákaz
 
 Tento text představuje skript jazyka JavaScript, která zobrazuje do pole zpráva s výstrahou. Jakmile někdo odešle tento skript do zpětné vazby formuláře, zpráva <em>poč!</em> se zobrazí pokaždé, když se každý uživatel navštíví web zpětné vazby zákazníka v budoucnu (viz obrázek 2).
 
-
 [![Vkládání jazyka JavaScript](preventing-javascript-injection-attacks-cs/_static/image5.png)](preventing-javascript-injection-attacks-cs/_static/image4.png)
 
 **Obrázek 02**: Vkládání jazyka JavaScript ([kliknutím ji zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image6.png))
-
 
 Vaše první odezvy do útoků založených na injektáži JavaScriptu teď může být apathy. Si možná myslíte, že jsou útoků založených na injektáži JavaScriptu jednoduše typem *pouze poškození vzhledu* útoku. Může domnívat, že nikdo dělat vše, co skutečně evil provedením útoku prostřednictvím injektáže skriptu JavaScript.
 
@@ -92,11 +87,9 @@ Všimněte si, že hodnota `feedback.Message` je HTML kódováním než hodnota 
 
 Jaké jsou mean do formátu HTML zakódujte řetězec? Při HTML kódování řetězce, nebezpečné znaky, jako `<` a `>` nahrazují HTML odkazy na entity, jako `&lt;` a `&gt;`. Takže když řetězec `<script>alert("Boo!")</script>` je ve formátu HTML s kódováním získá k převést `&lt;script&gt;alert(&quot;Boo!&quot;)&lt;/script&gt;`. Kódovaný řetězec se již provádí jako skriptu JavaScript při prohlížečem interpretovány. Místo toho můžete získat neškodné stránku na obrázku 3.
 
-
 [![Nepotlačí útoku jazyka JavaScript](preventing-javascript-injection-attacks-cs/_static/image8.png)](preventing-javascript-injection-attacks-cs/_static/image7.png)
 
 **Obrázek 03**: Potlačována útoku jazyka JavaScript ([kliknutím ji zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image9.png))
-
 
 Všimněte si, že v `Index` zobrazit výpis 3 pouze hodnotu `feedback.Message` je zakódován. Hodnota `feedback.EntryDate` není kódován. Potřebujete jenom zakódovat data zadaná uživatelem. Protože hodnota EntryDate byl vygenerován v kontroleru, není nutné do formátu HTML kódujete tuto hodnotu.
 

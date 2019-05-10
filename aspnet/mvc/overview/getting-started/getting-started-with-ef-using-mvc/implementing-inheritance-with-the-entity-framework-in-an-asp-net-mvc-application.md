@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: 08834147-77ec-454a-bb7a-d931d2a40dab
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 3ebabd626e0b862e09f19552648406aab959f882
-ms.sourcegitcommit: 289e051cc8a90e8f7127e239fda73047bde4de12
+ms.openlocfilehash: 6a410c2e818ed87bbcac588063eb4eeaf3d2b9ee
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58423309"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65120889"
 ---
 # <a name="template-implement-inheritance-with-ef-in-an-aspnet-mvc-5-app"></a>Šablony: Implementace dědičnosti s EF v aplikaci ASP.NET MVC 5
 
@@ -100,7 +100,6 @@ V balíčku správce konzoly (konzolu PMC), zadejte následující příkaz:
 Spustit `Update-Database` příkazu v konzole PMC. Příkaz se nezdaří v tomto okamžiku, když máme existující data, která migrace nebude vědět, jak zpracovat. Získáte třeba následující chybová zpráva:
 
 > *Nelze vyřadit objekt "dbo. Instruktorem ' protože se odkazuje omezení FOREIGN KEY.*
-
 
 Otevřít *migrace\&lt; časové razítko&gt;\_Inheritance.cs* a nahraďte `Up` metodu s následujícím kódem:
 

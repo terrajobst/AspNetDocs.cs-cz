@@ -8,12 +8,12 @@ ms.date: 07/17/2006
 ms.assetid: b651dc58-93c7-4f83-a74e-3b99f6d60848
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 61b3d54b73e33040baf93a8b7705dfb231835b40
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e1329868766f0304d0f852b2e592eca1e21ef4d4
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59410445"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134332"
 ---
 # <a name="an-overview-of-inserting-updating-and-deleting-data-c"></a>Přehled vložení, aktualizace a odstranění dat (C#)
 
@@ -23,7 +23,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 > V tomto kurzu uvidíme, jak namapovat ObjectDataSource Insert(), Update(), a Delete() metody do metody BLL třídy, jak se dá nakonfigurovat ovládací prvky GridView DetailsView a FormView k poskytování funkcí změny dat.
 
-
 ## <a name="introduction"></a>Úvod
 
 Za posledních několik kurzů jsme jsme se zaměřili na způsob zobrazení dat na stránce ASP.NET pomocí ovládacích prvků ovládacího prvku GridView, DetailsView a FormView. Tyto ovládací prvky se jednoduše pracovat s daty zadat k nim. Tyto ovládací prvky běžně, přístup k datům prostřednictvím použití prvku zdroje dat, jako je například ObjectDataSource. Zaznamenali jsme, jak prvku ObjectDataSource funguje jako proxy mezi stránky technologie ASP.NET a příslušná data. Když GridView potřebuje k zobrazení dat, vyvolá jeho ObjectDataSource `Select()` metodu, která pak volá metodu z našich obchodní logiky vrstvy (BLL), která volá metodu příslušná Data Access vrstvy (DAL) TableAdapter, který pak odesílá `SELECT` dotaz k databázi Northwind.
@@ -32,11 +31,9 @@ Vzpomeňte si, že když jsme vytvořili objekty TableAdapter v DAL v [v našem 
 
 Kromě jeho `Select()` metody ObjectDataSource má také `Insert()`, `Update()`, a `Delete()` metody. Podobně jako `Select()` metody tyto tři metody lze mapovat na metody v základní objekt. Když je nakonfigurován ke vložení, aktualizace nebo odstranění dat, ovládací prvky GridView, DetailsView a FormView nabízí uživatelské rozhraní pro úpravu podkladová data. Toto uživatelské rozhraní zavolá `Insert()`, `Update()`, a `Delete()` metody prvku ObjectDataSource, které poté vyvolat základní objekt přidružený k tomuto metody (viz obrázek 1).
 
-
 [![ObjectDataSource Insert() Update() a Delete() metody slouží jako proxy server do BLL](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image2.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image1.png)
 
 **Obrázek 1**: Prvku ObjectDataSource `Insert()`, `Update()`, a `Delete()` metody slouží jako proxy server do BLL ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image3.png))
-
 
 V tomto kurzu uvidíme, jak namapovat ObjectDataSource `Insert()`, `Update()`, a `Delete()` metody metod tříd v BLL, jakož i jak nakonfigurovat ovládací prvky GridView, DetailsView a FormView poskytnout úprava dat Možnosti.
 
@@ -54,32 +51,25 @@ Než začneme, jak vkládat, aktualizovat a odstranit data zkoumat, nejprve věn
 - `ConfirmationOnDelete.aspx`
 - `UserLevelAccess.aspx`
 
-
 ![Přidání stránky technologie ASP.NET pro kurzy týkající se změny dat](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image4.png)
 
 **Obrázek 2**: Přidání stránky technologie ASP.NET pro kurzy týkající se změny dat
 
-
 V jiných složkách, jako jsou `Default.aspx` v `EditInsertDelete` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Proto přidat tento uživatelský ovládací prvek `Default.aspx` jeho přetažením z Průzkumníka řešení do zobrazení návrhu.
-
 
 [![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image6.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image5.png)
 
 **Obrázek 3**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image7.png))
 
-
 A konečně, přidejte na stránkách jako položky `Web.sitemap` souboru. Konkrétně, přidejte následující kód za přizpůsobené formátování `<siteMapNode>`:
-
 
 [!code-xml[Main](an-overview-of-inserting-updating-and-deleting-data-cs/samples/sample1.xml)]
 
 Po aktualizaci `Web.sitemap`, věnujte chvíli zobrazit kurzy web prostřednictvím prohlížeče. V nabídce na levé straně teď obsahuje položky pro úpravy, vložení a odstranění kurzy.
 
-
 ![Mapa webu nyní obsahuje záznamy pro úpravy, vložení a odstranění kurzy](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image8.png)
 
 **Obrázek 4**: Mapa webu nyní obsahuje záznamy pro úpravy, vložení a odstranění kurzy
-
 
 ## <a name="step-2-adding-and-configuring-the-objectdatasource-control"></a>Krok 2: Přidání a konfigurace ovládacího prvku ObjectDataSource
 
@@ -87,40 +77,31 @@ Od verze ovládacího prvku GridView, DetailsView a FormView každý se liší v
 
 Otevřít `Basics.aspx` stránky, přetáhněte z panelu nástrojů do návrháře prvku ObjectDataSource a klikněte na odkaz Konfigurovat zdroj dat z jeho inteligentních značek. Vzhledem k tomu, `ProductsBLL` je jediná BLL třída, která obsahuje úpravy, vložení a odstranění metody, nakonfigurujte prvku ObjectDataSource použít tuto třídu.
 
-
 [![Konfigurace ObjectDataSource pomocí třídy ProductsBLL](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image10.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image9.png)
 
 **Obrázek 5**: Konfigurace ObjectDataSource k použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image11.png))
 
-
 Na další obrazovce určíme jaké metody `ProductsBLL` třídy jsou mapované na ObjectDataSource `Select()`, `Insert()`, `Update()`, a `Delete()` vyberete příslušnou kartu a zvolíte metodu z rozevíracího seznamu. Obrázek 6, která by měla vypadat povědomě nyní, mapuje ObjectDataSource `Select()` metodu `ProductsBLL` třídy `GetProducts()` metody. `Insert()`, `Update()`, A `Delete()` metody lze nakonfigurovat tak, že vyberete příslušnou kartu v seznamu nahoře.
-
 
 [![Prvku ObjectDataSource vrátit všechny produkty](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image13.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image12.png)
 
 **Obrázek 6**: Máte prvku ObjectDataSource vrátit všechny produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image14.png))
 
-
 Obrázky 7, 8 a 9 zobrazit UPDATE, INSERT a DELETE prvku ObjectDataSource karty. Konfigurace těchto karet tak, aby `Insert()`, `Update()`, a `Delete()` vyvolání metody `ProductsBLL` třídy `UpdateProduct`, `AddProduct`, a `DeleteProduct` metody, v uvedeném pořadí.
-
 
 [![Map – Metoda Update() ObjectDataSource metodě UpdateProduct ProductBLL třídy](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image16.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image15.png)
 
 **Obrázek 7**: Mapování ObjectDataSource `Update()` metodu `ProductBLL` třídy `UpdateProduct` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image17.png))
 
-
 [![Map – metoda Insert() ObjectDataSource metodě AddProduct ProductBLL třídy](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image19.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image18.png)
 
 **Obrázek 8**: Mapování ObjectDataSource `Insert()` metodu `ProductBLL` třídy přidat `Product` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image20.png))
-
 
 [![Map – Metoda Delete() ObjectDataSource metodě DeleteProduct ProductBLL třídy](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image22.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image21.png)
 
 **Obrázek 9**: Mapování ObjectDataSource `Delete()` metodu `ProductBLL` třídy `DeleteProduct` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image23.png))
 
-
 Mohli jste si všimnout, že rozevírací seznamy na kartách UPDATE, INSERT a DELETE již měli tyto metody vybrali. Toto je díky používáme `DataObjectMethodAttribute` , který upraví metody `ProductsBLL`. Například metoda DeleteProduct má následující podpis:
-
 
 [!code-csharp[Main](an-overview-of-inserting-updating-and-deleting-data-cs/samples/sample2.cs)]
 
@@ -131,7 +112,6 @@ Až se ujistíte, že odpovídající `ProductsBLL` metody jsou mapovány na Obj
 ## <a name="examining-the-objectdatasources-markup"></a>Zkoumání kódu prvku ObjectDataSource
 
 Po dokončení konfigurace ObjectDataSource prostřednictvím jeho průvodce, přejděte do zobrazení zdroje k prozkoumání vygenerované deklarativní. `<asp:ObjectDataSource>` Značka určuje základní objekt a metody, která se má vyvolat. Kromě toho existují `DeleteParameters`, `UpdateParameters`, a `InsertParameters` , která mapují na vstupní parametry pro `ProductsBLL` třídy `AddProduct`, `UpdateProduct`, a `DeleteProduct` metody:
-
 
 [!code-aspx[Main](an-overview-of-inserting-updating-and-deleting-data-cs/samples/sample3.aspx)]
 
@@ -149,7 +129,6 @@ Není-li to ale dost vážně zrušte v tomto okamžiku, Nedělejte si starosti,
 > [!NOTE]
 > Pokud jednoduše smažte `OldValuesParameterFormatString` hodnota vlastnosti z okna vlastnosti v okně návrhu, vlastnost zůstanou uchovány deklarativní syntaxe, ale nastavit na prázdný řetězec. To bohužel stále způsobí stejným problémem bylo uvedeno výše. Proto se buď odstranit vlastnost úplně z deklarativní syntaxe, nebo v okně Vlastnosti nastavte hodnotu na výchozí hodnotu, `{0}`.
 
-
 ## <a name="step-3-adding-a-data-web-control-and-configuring-it-for-data-modification"></a>Krok 3: Přidání ovládacího prvku webových dat a nakonfigurovat jej pro úpravu dat
 
 Když prvku ObjectDataSource byl přidán na stránku a nakonfigurované, jsme připraveni přidat data webové ovládací prvky stránky k zobrazení dat i prostředkem pro koncového uživatele jej upravit. Podíváme na prvku GridView, DetailsView a FormView samostatně, jak tyto webové ovládací prvky dat se liší v jejich funkcí změny dat a konfigurace.
@@ -159,7 +138,6 @@ Uvidíme ve zbývající části tohoto článku, přidání velmi základní ú
 ## <a name="deleting-data-from-the-gridview"></a>Odstranění dat z prvku GridView.
 
 Začněte přetažením GridView z panelu nástrojů do návrháře. V dalším kroku svázat ObjectDataSource prvku GridView. výběrem z rozevíracího seznamu v prvku GridView inteligentních značek. V tomto okamžiku prvku GridView deklarativní bude:
-
 
 [!code-aspx[Main](an-overview-of-inserting-updating-and-deleting-data-cs/samples/sample4.aspx)]
 
@@ -181,53 +159,42 @@ Hodnoty přiřazené k `DeleteParameters` jsou hodnoty `DataKeyNames` pole pro �
 > [!NOTE]
 > `DataKeys` Kolekce je uložen v stav ovládacího prvku GridView s, to znamená, že `DataKeys` hodnoty se zachová napříč postback i v případě, že stav zobrazení ovládacího prvku GridView s byla zakázána. Je však velmi důležité, zůstane stav zobrazení prvků GridViews, která podporuje úpravy nebo odstranění (výchozí chování) povolen. Pokud nastavíte GridView s `EnableViewState` vlastnost `false`, úpravy a odstraňování chování bude fungovat pro jednoho uživatele, ale pokud existují souběžných uživatelů odstranění dat, existuje možnost náhodně může tyto souběžných uživatelů odstranit nebo upravit záznamy, které jsou nechtěli. Zobrazit Moje blogu [upozornění: Souběžnosti vydávání s ASP.NET 2.0 prvků GridViews/DetailsView/FormViews tuto podporu úpravy nebo odstranění a jejichž stav zobrazení je zakázané](http://scottonwriting.net/sowblog/archive/2006/10/03/163215.aspx), další informace.
 
-
 Toto upozornění stejným platí také pro DetailsViews a FormViews.
 
 Přidat k GridView odstranění funkce, jednoduše přejděte do jeho inteligentních značek a zaškrtněte políčko Povolit odstranění.
-
 
 ![Zaškrtněte políčko Povolit odstranění zaškrtávací políčko](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image24.png)
 
 **Obrázek 10**: Zaškrtněte políčko Povolit odstranění zaškrtávací políčko
 
-
 Zaškrtnete políčko Povolit odstranění z inteligentních značek přidá CommandField do prvku GridView. Vykreslí CommandField sloupce v prvku GridView. pomocí tlačítka pro provádění jedné nebo více z následujících úloh: výběr záznamu, úpravy záznamu a odstranění záznamu. Jsme viděli dříve CommandField v akci s výběru záznamů [Master/Detail pomocí volitelných GridView hlavní DetailView podrobnosti](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md) kurzu.
 
 CommandField obsahuje řadu `ShowXButton` vlastnosti, které označují, jaké sérii tlačítek se zobrazí v CommandField. Zaškrtnutím políčka Povolit odstranění CommandField jehož `ShowDeleteButton` vlastnost `true` byl přidán do kolekce sloupců ovládacího prvku GridView.
-
 
 [!code-aspx[Main](an-overview-of-inserting-updating-and-deleting-data-cs/samples/sample5.aspx)]
 
 V tomto okamžiku believe to nebo ne jsme hotovi s přidáváním odstranění podpory do prvku GridView! Jak ukazuje obrázek 11 při návštěvě této stránky prostřednictvím prohlížeče sloupec tlačítka Odstranit je k dispozici.
 
-
 [![CommandField přidá sloupec tlačítka Odstranit](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image26.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image25.png)
 
 **Obrázek 11**: Přidá sloupce z odstranění tlačítka CommandField ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image27.png))
-
 
 Pokud jste se vytváříte v tomto kurzu od samotného začátku sami, při testování této stránce kliknutím na tlačítko Odstranit vyvolá výjimku. Pokračujte ve čtení se dozvíte, proč se tyto výjimky vyvolána a jak je opravit.
 
 > [!NOTE]
 > Pokud jste postupovali společně pomocí stahování doprovodném tento kurz, již byly zahrnutí pro tyto problémy. Ale můžu vám doporučujeme si podrobnosti níže vám pomůže identifikovat problémy, které mohou vzniknout a vhodné řešení.
 
-
 Pokud při pokusu o odstranění produktu, dojde k výjimce, jejíž zprávy je podobný "*prvek ObjectDataSource"ObjectDataSource1"nenalezl neobecnou metodu 'DeleteProduct", který obsahuje parametry: productID, původní\_ ProductID*, "zapomněli jste pravděpodobně odebrat `OldValuesParameterFormatString` vlastnost z ObjectDataSource. S `OldValuesParameterFormatString` vlastnost určena, ObjectDataSource pokusí předávání v obou `productID` a `original_ProductID` vstupní parametry pro `DeleteProduct` metody. `DeleteProduct`, ale přijímá pouze jeden vstupní parametr, proto výjimku. Odebírá `OldValuesParameterFormatString` vlastnost (nebo ji nastavíte na `{0}`) dává pokyn k nebude pokoušet a zajistěte tak předání původního vstupního parametru ObjectDataSource.
-
 
 [![Ujistěte se, že vlastnosti OldValuesParameterFormatString se vymazala navýšení kapacity](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image29.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image28.png)
 
 **Obrázek 12**: Ujistěte se, že `OldValuesParameterFormatString` vlastnost má byl vymazán navýšení kapacity ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image30.png))
 
-
 I v případě, že odstraněn `OldValuesParameterFormatString` vlastnost, stále získáte výjimku při pokusu o odstranění produktu s touto zprávou: "*The odstranit příkaz způsobil konflikt s omezením odkaz" FK\_pořadí\_podrobnosti\_produkty, které*. " Databáze Northwind obsahuje omezení cizího klíče mezi `Order Details` a `Products` tabulky, což znamená, že produkt ze systému nelze odstranit, pokud jeden nebo více záznamů pro něj v `Order Details` tabulky. Vzhledem k tomu, že má každý produkt v databázi Northwind alespoň jeden záznam `Order Details`, nemůžeme odstranit všechny produkty, dokud jsme nejprve odstranit záznamy podrobnosti o produktu přidružené objednávky.
-
 
 [![Omezení cizího klíče zakazuje odstranění produkty](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image32.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image31.png)
 
 **Obrázek 13**: Omezení pro cizí klíč zakazuje odstranění produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image33.png))
-
 
 V našem kurzu teď stačí odstranit všechny záznamy z `Order Details` tabulky. V reálné aplikaci byste musíme buď:
 
@@ -237,17 +204,14 @@ V našem kurzu teď stačí odstranit všechny záznamy z `Order Details` tabulk
 
 Teď stačí odstranit všechny záznamy z `Order Details` tabulky pro obejití omezení cizího klíče. Přejděte do Průzkumníka serveru v sadě Visual Studio, klikněte pravým tlačítkem na `NORTHWND.MDF` uzel a vyberte nový dotaz. Potom v okně dotazu spusťte následující příkaz SQL: `DELETE FROM [Order Details]`
 
-
 [![Odstranit všechny záznamy z tabulky Details pořadí](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image35.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image34.png)
 
 **Obrázek 14**: Odstranit všechny záznamy `Order Details` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image36.png))
-
 
 Po vymazání navýšení kapacity `Order Details` tabulky kliknutím na tlačítko Odstranit odstraníte produktu bez chyb. Pokud kliknete na tlačítko Odstranit nedojde k odstranění produktu, zkontrolujte, ujistěte se, že prvku GridView `DataKeyNames` je nastavena na pole primárního klíče (`ProductID`).
 
 > [!NOTE]
 > Když kliknete na tlačítko Odstranit vyplývá zpětné volání a záznam odstranit. To může být nebezpečné, protože jde snadno omylem kliknete na tlačítko Odstranit nesprávný řádek. V budoucích kurzech uvidíme, jak přidat potvrzení na straně klienta při odstranění záznamu.
-
 
 ## <a name="editing-data-with-the-gridview"></a>Úpravy dat pomocí prvku GridView.
 
@@ -269,24 +233,19 @@ Přiřazené hodnoty primárního klíče `UpdateParameters` v kroku 1 pocházej
 
 Úpravy funkce lze aktivovat pouze zaškrtnutím políčka Povolit úpravy v prvku GridView inteligentních značek.
 
-
 ![Zaškrtněte políčko Povolit úpravy zaškrtávací políčko](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image37.png)
 
 **Obrázek 15**: Zaškrtněte políčko Povolit úpravy zaškrtávací políčko
 
-
 Kontrola zaškrtávací políčko Povolit úpravy se přidá CommandField (v případě potřeby) a nastavte jeho `ShowEditButton` vlastnost `true`. Jak jsme viděli dříve, CommandField obsahuje řadu `ShowXButton` vlastnosti, které označují, jaké sérii tlačítek se zobrazí v CommandField. Zaškrtnete políčko Povolit úpravy přidá `ShowEditButton` vlastnost na existující CommandField:
-
 
 [!code-aspx[Main](an-overview-of-inserting-updating-and-deleting-data-cs/samples/sample6.aspx)]
 
 To je vše je k přidání podpory pro základní úpravy. Jak Figure16 ukazuje, je místo hrubého rozhraní úprav každá vlastnost BoundField jehož `ReadOnly` je nastavena na `false` (výchozí) je vykreslen jako textové pole. To zahrnuje pole, jako jsou `CategoryID` a `SupplierID`, které jsou klíčů s jinými tabulkami.
 
-
 [![Kliknutím na tlačítko pro úpravy s Chai zobrazí řádek v režimu úprav](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image39.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image38.png)
 
 **Obrázek 16**: Klepnutím na položku s Chai tlačítko Upravit zobrazíte řádek v režimu úprav ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image40.png))
-
 
 Kromě vyzývají, chcete-li upravit hodnoty cizího klíče přímo, chybí rozhraní úprav rozhraní následujícími způsoby:
 
@@ -303,24 +262,19 @@ Jak jsme viděli v předchozích kurzech se ovládacím prvku DetailsView. ovlá
 
 Abychom si předvedli možnosti úprav dat prvku GridView, začněte přidáním prvku DetailsView k `Basics.aspx` stránce nad existujícího ovládacího prvku GridView a jeho vazbu na existující prvek ObjectDataSource prostřednictvím inteligentních značek v ovládacím prvku DetailsView. Další vymazání ovládacím prvku DetailsView `Height` a `Width` vlastnosti a zaškrtněte možnost Povolit stránkování z inteligentních značek. Aby se povolily úpravy, vložení a odstranění podpory, stačí zaškrtnout políčka Povolit úpravy, Povolit vložení a povolení odstranění v inteligentních značek.
 
-
 ![Konfigurace ovládacím prvku DetailsView. k podpoře úpravy, vložení a odstranění](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image41.png)
 
 **Obrázek 17**: Konfigurace ovládacím prvku DetailsView. k podpoře úpravy, vložení a odstranění
 
-
 Jako s použitím prvku GridView, přidání, úpravy, vložení nebo odstranění podpory přidá CommandField do ovládacího prvku DetailsView, jak ukazuje následující deklarativní syntaxe:
-
 
 [!code-aspx[Main](an-overview-of-inserting-updating-and-deleting-data-cs/samples/sample7.aspx)]
 
 Všimněte si, že prvku DetailsView CommandField se zobrazí na konci kolekce sloupců ve výchozím nastavení. Protože ovládacím prvku DetailsView pole jsou vykresleny jako řádky, CommandField představována jedním řádkem s vloženým, upravovat a odstraňovat tlačítek v dolní části ovládacím prvku DetailsView.
 
-
 [![Konfigurace ovládacím prvku DetailsView. k podpoře úpravy, vložení a odstranění](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image43.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image42.png)
 
 **Obrázek 18**: Konfigurace ovládacím prvku DetailsView. pro podporu úpravy, vložení a odstranění ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image44.png))
-
 
 Stejně jako u prvku GridView. Kliknutím na tlačítko Odstranit spustí stejnou posloupnost událostí: a postbacku; Následuje ovládacím prvku DetailsView naplnění jeho ObjectDataSource `DeleteParameters` na základě `DataKeyNames` hodnoty; a dokončit pomocí volání jeho ObjectDataSource `Delete()` metodu, která ve skutečnosti produktu odebere z databáze. Úpravy v ovládacím prvku DetailsView také funguje způsobem, který je stejný jako u prvku GridView.
 
@@ -328,31 +282,24 @@ Pro vkládání, koncový uživatel předloží nové tlačítko, které, po kli
 
 Při vytváření vazby zdroje dat k prvku DetailsView prostřednictvím inteligentních značek, Visual Studio nastaví `InsertVisible` vlastnost `false` pouze u polí s automatickým krokem. Pole jen pro čtení, jako jsou `CategoryName` a `SupplierName`, se zobrazí v uživatelském rozhraní "režimu vkládání", pokud jejich `InsertVisible` je explicitně nastavena na `false`. Za chvíli nastavit tyto dvě pole `InsertVisible` vlastností `false`, buď prostřednictvím ovládacím prvku DetailsView deklarativní syntaxe nebo upravit pole na odkaz v inteligentních značek. Obrázek 19 zobrazuje nastavení `InsertVisible` vlastností `false` kliknutím na Upravit pole na odkaz.
 
-
 [![Northwind Traders teď nabízí Acme čaje](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image46.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image45.png)
 
 **Obrázek 19**: Northwind Traders teď nabízí Acme čaje ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image47.png))
 
-
 Po nastavení `InsertVisible` vlastnosti, zobrazení `Basics.aspx` stránku v prohlížeči a klikněte na tlačítko Nový. Obrázek 20 ukazuje ovládacím prvku DetailsView. při přidávání nové nápoje Acme čaje naší řadě produktů.
-
 
 [![Northwind Traders teď nabízí Acme čaje](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image49.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image48.png)
 
 **Obrázek 20**: Northwind Traders teď nabízí Acme čaje ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image50.png))
 
-
 Po zadání podrobností pro Acme čaj a kliknutím na tlačítko pro vložení, vyplývá zpětné volání a přidá nový záznam `Products` databázové tabulky. Od tohoto prvku DetailsView zobrazuje seznam produktů v pořadí, které existují v tabulce databáze, jsme musí na poslední stránce produktu Chcete-li zobrazit nový produkt.
-
 
 [![Podrobnosti o Acme čaje](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image52.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image51.png)
 
 **Obrázek 21**: Podrobnosti o Acme čaje ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image53.png))
 
-
 > [!NOTE]
 > Ovládacím prvku DetailsView [CurrentMode vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.currentmode(VS.80).aspx) označuje rozhraní se zobrazí a může být jedna z následujících hodnot: `Edit`, `Insert`, nebo `ReadOnly`. [Vlastnost DefaultMode](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.defaultmode(VS.80).aspx) označuje režim ovládacím prvku DetailsView vrátí po úpravy nebo vložení bylo dokončeno a je užitečné pro zobrazení DetailsView, který je trvale v režimu úpravy nebo režimu vkládání.
-
 
 Bod a klikněte na vkládání a možností prvku DetailsView úprav trpí stejná omezení jako prvku GridView: uživatel musí zadat existující `CategoryID` a `SupplierID` hodnoty prostřednictvím textové pole; chybí rozhraní jakékoli logiky ověřování; všechny pole produktů, které nejsou povoleny `NULL` hodnoty nebo nemají výchozí hodnotu zadanou na úrovni databáze, musí být součástí vkládání rozhraní a tak dále.
 
@@ -366,16 +313,13 @@ Pro ilustraci těchto technik, začněte přidáním FormView k `Basics.aspx` st
 
 Následující příklad zobrazuje deklarativní pro ovládacího prvku FormView `ItemTemplate` po FormView byla svázána se ObjectDataSource. Ve výchozím nastavení, je každý produkt pole hodnoty – datový typ Boolean vázán na `Text` vlastnost ovládacího prvku popisku webového při každé pole logická hodnota (`Discontinued`) je vázán na `Checked` vlastnost zablokovaný ovládací prvek zaškrtávací políčko Web. Aby aktivovat určité FormView chování při kliknutí na tlačítka Nový, Edit a Delete, je nutné, jejich `CommandName` nastavit hodnoty na `New`, `Edit`, a `Delete`v uvedeném pořadí.
 
-
 [!code-aspx[Main](an-overview-of-inserting-updating-and-deleting-data-cs/samples/sample8.aspx)]
 
 Obrázek 22 ukazuje ovládacího prvku FormView `ItemTemplate` při prohlížení prostřednictvím prohlížeče. Každé pole produktu je uvedený s tlačítka Nový, Edit a Delete v dolní části.
 
-
 [![ItemTemplate Defaut FormView obsahuje seznam všech polí produktů spolu s nové, upravovat a odstraňovat tlačítka](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image55.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image54.png)
 
 **Obrázek 22**: Defaut FormView `ItemTemplate` uvádí každý produkt pole společně s nové, úpravy a odstranění tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image56.png))
-
 
 Třeba v prvku GridView a DetailsView, kliknutím na tlačítko Odstranit nebo jakékoli tlačítko, odkazem (LinkButton) nebo ImageButton jehož `CommandName` vlastnost je nastavena na odstranění příčiny zpětné volání, naplní ObjectDataSource `DeleteParameters` podle FormView `DataKeyNames`hodnotu a vyvolá ObjectDataSource `Delete()` metody.
 
@@ -383,7 +327,6 @@ Po kliknutí na tlačítko Upravit vyplývá zpětné volání a dat je znovu p�
 
 > [!NOTE]
 > Jeden menšímu problému se ovládacího prvku FormView automatické generování `EditItemTemplate` je, že se vykresluje textové pole webové ovládací prvky pro těchto polí, která jsou jen pro čtení, například `CategoryName` a `SupplierName`. Uvidíme, jak to za chvíli.
-
 
 Ovládací prvky v textovém poli `EditItemTemplate` mají jejich `Text` vlastnost vázána na hodnoty jejich odpovídajících dat pole pomocí *dvousměrnou datovou vazbou*. Obousměrná vazba dat udávají `<%# Bind("dataField") %>`, provádí vázání dat i při vytváření vazby dat k šabloně a při naplňování ObjectDataSource parametry pro vložení nebo úprava záznamů. To znamená, když uživatel klepne na tlačítko Upravit z `ItemTemplate`, `Bind()` metoda vrátí hodnotu zadané datové pole. Až uživatel provede jejich změny a klikne na tlačítko aktualizace, hodnoty odeslána zpět, která odpovídají datových polí zadat pomocí `Bind()` aplikují i na ObjectDataSource `UpdateParameters`. Můžete také jednosměrnou vázání dat udávají `<%# Eval("dataField") %>`, pouze načte pole hodnoty dat při vytváření vazby dat k šabloně a nemá *není* návratové hodnoty uživatel zadal pro zdroj dat parametry na zpětné volání.
 
@@ -395,16 +338,13 @@ Naše `EditItemTemplate`, v tomto bodu, způsobí výjimku, která je vyvolána,
 
 Po kliknutí na tlačítko Upravit pro Chai 23 obrázek ukazuje FormView v prohlížeči. Všimněte si, že `SupplierName` a `CategoryName` pole zobrazená v `ItemTemplate` už nejsou k dispozici, protože právě odebrali jsme z `EditItemTemplate`. Po kliknutí na tlačítko Aktualizovat pokračuje FormView přes stejnou posloupnost kroků jako ovládací prvky GridView a prvku DetailsView.
 
-
 [![Ve výchozím nastavení EditItemTemplate zobrazuje jednotlivá pole upravitelné produktu jako textové pole nebo zaškrtávacího políčka](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image58.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image57.png)
 
 **Obrázek 23**: Ve výchozím nastavení `EditItemTemplate` ukazuje, každý upravitelné pole produktu jako textové pole nebo zaškrtávacího políčka ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image59.png))
 
-
 Při klepnutí na tlačítko Vložit ovládacího prvku FormView `ItemTemplate` vyplývá zpětného odeslání. Žádná data však je vázán na třídě FormView, protože se přidává nový záznam. `InsertItemTemplate` Rozhraní zahrnuje webové ovládací prvky pro přidání nového záznamu společně s tlačítka Vložit a zrušit. Výchozí hodnota `InsertItemTemplate` generovaný sady Visual Studio obsahuje textové pole pro každé pole hodnota – datový typ Boolean a zaškrtávací políčko pro každé pole logická hodnota, podobně jako automaticky generovaný `EditItemTemplate`v rozhraní. TextBox – ovládací prvky mají jejich `Text` vlastnost vázána na hodnotu odpovídající datové pole pomocí dvousměrnou datovou vazbou.
 
 Následující kód ukazuje ovládacího prvku FormView `InsertItemTemplate`. Všimněte si, že `Bind()` metoda se používá v syntaxi databinding tady a vložení a zrušit tlačítko webové ovládací prvky mají jejich `CommandName` vlastnosti nastavené odpovídajícím způsobem.
-
 
 [!code-aspx[Main](an-overview-of-inserting-updating-and-deleting-data-cs/samples/sample10.aspx)]
 
@@ -412,22 +352,18 @@ Existuje subtlety pomocí ovládacího prvku FormView automatické generování 
 
 Obrázek 24 FormView zobrazuje v prohlížeči při přidání nového produktu, Acme kávu. Všimněte si, že `SupplierName` a `CategoryName` pole zobrazená v `ItemTemplate` už nejsou k dispozici, protože jsme právě odebrali. Při kliknutí na tlačítko Vložit pokračuje FormView prostřednictvím stejné pořadí kroků jako ovládací prvek DetailsView, přidání nového záznamu do `Products` tabulky. Obrázek 25 zobrazuje podrobnosti o produktu Acme kávy ve třídě FormView po byla vložena.
 
-
 [![InsertItemTemplate určuje rozhraní vložení ovládacího prvku FormView](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image61.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image60.png)
 
 **Obrázek 24**: `InsertItemTemplate` Určuje rozhraní vložení ovládacího prvku FormView ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image62.png))
-
 
 [![Podrobnosti o nového produktu, Acme kávy, se zobrazí ve třídě FormView](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image64.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image63.png)
 
 **Obrázek 25**: Podrobnosti o nového produktu, Acme kávy, se zobrazí ve třídě FormView ([kliknutím ji zobrazíte obrázek v plné velikosti](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image65.png))
 
-
 Tak, že oddělíte si jen pro čtení, úpravy a vložení rozhraní tři samostatné šablony FormView umožňuje jemnější stupeň kontroly nad tato rozhraní než DetailsView a ovládacího prvku GridView.
 
 > [!NOTE]
 > Například, FormView prvku DetailsView `CurrentMode` určuje vlastnost rozhraní se zobrazí a jeho `DefaultMode` vlastnost označuje režim FormView vrátí po úpravy nebo vložení bylo dokončeno.
-
 
 ## <a name="summary"></a>Souhrn
 

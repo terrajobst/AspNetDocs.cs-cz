@@ -8,12 +8,12 @@ ms.date: 06/02/2008
 ms.assetid: 848e6bcf-4c3f-4d14-974d-e45b9444ab79
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1b955c43a0fc95bda87843fc4a5c9e56aef3dfc6
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 72c697bc2a2005d3ff116cf2f73d80e23bb526dd
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400994"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65124924"
 ---
 # <a name="drag-and-drop-via-reorderlist-vb"></a>Přetažení ovládacím prvkem ReorderList (VB)
 
@@ -22,7 +22,6 @@ by [Christian Wenz](https://github.com/wenz)
 [Stáhněte si kód](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/ReorderList5.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/reorderlist5VB.pdf)
 
 > Ovládacím prvkem ReorderList ovládacího prvku AJAX Control Toolkit poskytuje seznam, který může být přeuspořádány uživatelem pomocí přetažení. Aktuální pořadí položek v seznamu se na serveru zachován.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -43,19 +42,15 @@ V této databázi, vytvořte novou tabulku s názvem `AJAX` s těmito čtyřmi s
 - `description` (varchar(50), NULL)
 - `position` (int, NULL).
 
-
 [![Rozložení tabulky AJAX](drag-and-drop-via-reorderlist-vb/_static/image2.png)](drag-and-drop-via-reorderlist-vb/_static/image1.png)
 
 Rozložení tabulky AJAX ([kliknutím ji zobrazíte obrázek v plné velikosti](drag-and-drop-via-reorderlist-vb/_static/image3.png))
 
-
 V dalším kroku vyplnění tabulky pomocí několika hodnot. Všimněte si, že `position` sloupec obsahuje pořadí řazení elementů.
-
 
 [![Počáteční data v tabulce AJAX](drag-and-drop-via-reorderlist-vb/_static/image5.png)](drag-and-drop-via-reorderlist-vb/_static/image4.png)
 
 Počáteční data v tabulce AJAX ([kliknutím ji zobrazíte obrázek v plné velikosti](drag-and-drop-via-reorderlist-vb/_static/image6.png))
-
 
 Další krok se vyžaduje k vygenerování `SqlDataSource` řízení ke komunikaci s novou databázi a její tabulky. Zdroj dat musí podporovat `SELECT` a `UPDATE` příkazy jazyka SQL. Pokud později změníte pořadí prvků seznamu, `ReorderList` ovládací prvek automaticky odešle dvě hodnoty ke zdroji dat `Update` příkaz: novou pozici a ID elementu. Proto se zdroj dat, musí `<UpdateParameters>` části tyto dvě hodnoty:
 
@@ -81,7 +76,6 @@ A konečně `ScriptManager` inicializuje ovládací prvek ASP.NET AJAX stránky:
 [!code-aspx[Main](drag-and-drop-via-reorderlist-vb/samples/sample4.aspx)]
 
 Spuštění tohoto příkladu v prohlížeči a trochu Změna uspořádání položek seznamu. Potom načtěte tuto stránku a podívejte se na databázi. Upravený pozice pravděpodobně nebyla zachována a odrážejí hodnoty v `position` sloupec v databázi a že všechno bez jakékoli kódu pouze s použitím značek.
-
 
 [![Data v databázi se změní podle nového pořadí položek seznamu](drag-and-drop-via-reorderlist-vb/_static/image8.png)](drag-and-drop-via-reorderlist-vb/_static/image7.png)
 

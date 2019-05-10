@@ -8,19 +8,18 @@ ms.date: 10/02/2014
 ms.assetid: 0a8d6044-5fab-4213-82d6-5618d5601358
 msc.legacyurl: /web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: 3df728891103de9c8e461ab9507237c9b14e8251
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: af3653bc164810126bc3bf8f1b1794d75642d807
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59390685"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133807"
 ---
 # <a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Vytvoření zabezpečené aplikace webových formulářů ASP.NET s registrací uživatele, potvrzením e-mailu a resetováním hesla (C#)
 
 by [Erik Reitan](https://github.com/Erikre)
 
 > V tomto kurzu se dozvíte, jak vytvořit aplikaci webových formulářů ASP.NET s registrací uživatele, e-mailové potvrzení a resetování hesla pomocí systém členství technologie ASP.NET Identity. Tento kurz je založený na Rick Anderson [kurz ASP.NET MVC](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md).
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -43,7 +42,6 @@ Začněte tím, že instalaci a používání [Visual Studio Express 2013 for We
 
 > [!NOTE]
 > Upozornění: Je nutné nainstalovat [Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465) nebo vyšší, k dokončení tohoto kurzu.
-
 
 1. Vytvoření nového projektu (**souboru**  - &gt; **nový projekt**) a vyberte **webová aplikace ASP.NET** šablony a nejnovější rozhraní .NET Framework verze z **nový projekt** dialogové okno.
 2. Z **nový projekt ASP.NET** dialogové okno, vyberte **webových formulářů** šablony. Ponechte výchozí ověřování jako **jednotlivé uživatelské účty**. Pokud chcete hostovat aplikace ve službě Azure, nechte **hostovat v cloudu** zaškrtávací políčko zaškrtnuto.   
@@ -95,7 +93,6 @@ Tento kurz vysvětluje pouze přidání e-mailové oznámení prostřednictvím 
 ### <a name="enable-email-confirmation"></a>Povolení e-mailové potvrzení
 
  Pokud chcete povolit e-mailové potvrzení, upravíte registrační kód pomocí následujících kroků.  
- 
 
 1. V *účet* složku, otevřete *Register.aspx.cs* použití modelu code-behind a aktualizovat `CreateUser_Click` metoda umožňuje následující zvýrazněný změny: 
 

@@ -8,12 +8,12 @@ ms.date: 02/17/2014
 ms.assetid: a8aac1ac-89de-4415-afe0-97a41c6423d2
 msc.legacyurl: /web-pages/overview/routing/creating-readable-urls-in-aspnet-web-pages-sites
 msc.type: authoredcontent
-ms.openlocfilehash: bfce6120b76d68a3f212639eafa6aa091d7e345d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 832db8e144cab730f16c78f67c12feb9b7c92c7c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59381780"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131772"
 ---
 # <a name="creating-readable-urls-in-aspnet-web-pages-razor-sites"></a>Vytvoření čitelných adres URL webů s ASP.NET webovými stránkami (Razor)
 
@@ -33,7 +33,6 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 >   
 > 
 > V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
-
 
 ## <a name="about-routing"></a>O směrování
 
@@ -77,7 +76,6 @@ Pokud hledání nenašel žádné přesně odpovídá *.cshtml* soubory v jejich
 > [!NOTE]
 > Jasno, požadavky na konkrétní stránky (to znamená, požadavky, které obsahují *.cshtml* příponu názvu souboru) pracovat stejně jako byste očekávali. Žádost, jako jsou `http://www.contoso.com/a/b.cshtml` poběží na stránce *b.cshtml* zcela v pořádku.
 
-
 Uvnitř stránky, můžete získat informace o cestě na stránce `UrlData` vlastnost, která je do slovníku. Představte si, že máte soubor s názvem *ViewCustomers.cshtml* a webu získá této žádosti:
 
 `http://mysite.com/myWebSite/ViewCustomers/1000`
@@ -88,7 +86,6 @@ Podle popisu ve výše uvedených pravidel, požadavek bude přejděte na strán
 
 > [!NOTE]
 > Protože směrování nezahrnuje celý názvy, může být nejednoznačnost Pokud máte stránky, které mají stejné ale různé přípony názvu souboru (například *MyPage.cshtml* a *MyPage.html*) . Pokud se chcete vyhnout problémy se směrováním, je nejlepší, abyste měli jistotu, že není nutné stránek ve vaší lokalitě, jejichž názvy se liší pouze velikostí svého rozšíření.
-
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Další prostředky

@@ -8,12 +8,12 @@ ms.date: 03/27/2007
 ms.assetid: 9201656a-e1c2-4020-824b-18fb632d2925
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0f8207d1b25882b2cef269b64b43500d14c32976
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 05c4f0dd8517e348d72c28ea915960a4a725e46e
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59394286"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133599"
 ---
 # <a name="displaying-binary-data-in-the-data-web-controls-vb"></a>Zobrazení binárních dat ve webových ovládacích prvcích dat (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_55_VB.exe) nebo [stahovat PDF](displaying-binary-data-in-the-data-web-controls-vb/_static/datatutorial55vb1.pdf)
 
 > V tomto kurzu jsme podívejte se na možnosti prezentovat binární data na webové stránce, včetně zobrazení souboru bitové kopie a poskytování odkaz 'Ke stažení' soubor PDF.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -40,11 +39,9 @@ V předchozím kurzu jsme viděli, jak pomocí ovládacího prvku FileUpload. M�
 
 V tomto kurzu s ke stažení najdete sedm souborů PDF brožura v `~/Brochures` složky, jeden pro každou z kategorií s výjimkou ryby. Můžu záměrně vynechán, přidání brožuru ryby si ukážeme, jak zvládnout scénáře, ve kterém mají všechny záznamy přidružené binární data. Chcete-li aktualizovat `Categories` tabulky s těmito hodnotami, klikněte pravým tlačítkem na `Categories` uzlu z Průzkumníka serveru a zvolte možnost zobrazit Data tabulky. Zadejte virtuální cesty k souborům – Příručka pro každou kategorii, která má brožuru, jak ukazuje obrázek 1. Protože neexistuje žádný – Příručka pro kategorii ryby, nechte své `BrochurePath` hodnota sloupce s jako `NULL`.
 
-
 [![Ručně zadejte hodnoty pro sloupec BrochurePath tabulky s kategorií](displaying-binary-data-in-the-data-web-controls-vb/_static/image1.gif)](displaying-binary-data-in-the-data-web-controls-vb/_static/image1.png)
 
 **Obrázek 1**: Ručně zadejte hodnoty pro `Categories` tabulky s `BrochurePath` sloupec ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-vb/_static/image2.png))
-
 
 ## <a name="step-2-providing-a-download-link-for-the-brochures-in-a-gridview"></a>Krok 2: Poskytuje odkaz ke stažení pro brožury v GridView
 
@@ -52,55 +49,43 @@ S `BrochurePath` zadané hodnoty `Categories` tabulku, můžeme znovu připraven
 
 Začněte tím, že přetažením z panelu nástrojů na Návrhář GridView `DisplayOrDownloadData.aspx` stránku `BinaryData` složky. Nastavit prvek GridView s `ID` k `Categories` a prostřednictvím inteligentních značek GridView s tlačítko pro vytvoření vazby ke zdroji dat nový. Konkrétně svázat ObjectDataSource s názvem `CategoriesDataSource` načítající data s využitím `CategoriesBLL` objektu s `GetCategories()` metody.
 
-
 [![Vytvoření nového prvku ObjectDataSource s názvem CategoriesDataSource](displaying-binary-data-in-the-data-web-controls-vb/_static/image2.gif)](displaying-binary-data-in-the-data-web-controls-vb/_static/image3.png)
 
 **Obrázek 2**: Vytvoření nového prvku ObjectDataSource s názvem `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-vb/_static/image4.png))
-
 
 [![Konfigurace ObjectDataSource pomocí třídy CategoriesBLL](displaying-binary-data-in-the-data-web-controls-vb/_static/image3.gif)](displaying-binary-data-in-the-data-web-controls-vb/_static/image5.png)
 
 **Obrázek 3**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-vb/_static/image6.png))
 
-
 [![Načíst seznam kategorií pomocí GetCategories() – metoda](displaying-binary-data-in-the-data-web-controls-vb/_static/image4.gif)](displaying-binary-data-in-the-data-web-controls-vb/_static/image7.png)
 
 **Obrázek 4**: Načíst seznam kategorií pomocí `GetCategories()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-vb/_static/image8.png))
 
-
 Po dokončení Průvodce nakonfigurovat zdroj dat, sada Visual Studio automaticky přidá vlastnost BoundField k `Categories` GridView pro `CategoryID`, `CategoryName`, `Description`, `NumberOfProducts`, a `BrochurePath` `DataColumn` s. Pokračujte a odebrat `NumberOfProducts` Vlastnost BoundField od `GetCategories()` metody s dotazu nejsou tyto informace načíst. Odstranit také `CategoryID` Vlastnost BoundField a přejmenovat `CategoryName` a `BrochurePath` BoundFields `HeaderText` vlastnosti do kategorií a – příručka, v uvedeném pořadí. Po provedení těchto změn vašeho ovládacího prvku GridView a prvku ObjectDataSource s deklarativní by měl vypadat nějak takto:
-
 
 [!code-aspx[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample1.aspx)]
 
 Zobrazení této stránky prostřednictvím prohlížeče (viz obrázek 5). Každý osm kategorií je uvedený. Sedm kategorií s `BrochurePath` hodnoty mají `BrochurePath` hodnoty zobrazené v příslušných Vlastnost BoundField. Ryby, který má `NULL` hodnotu pro jeho `BrochurePath`, zobrazí na prázdnou buňku.
 
-
 [![Je uvedená každá kategorie s název, popis a hodnotu BrochurePath](displaying-binary-data-in-the-data-web-controls-vb/_static/image5.gif)](displaying-binary-data-in-the-data-web-controls-vb/_static/image9.png)
 
 **Obrázek 5**: Každá kategorie s název, popis, a `BrochurePath` hodnota uvedená ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-vb/_static/image10.png))
 
-
 Místo zobrazování textu `BrochurePath` sloupce, chceme vytvořit odkaz na brožura. Chcete-li to provést, odeberte `BrochurePath` Vlastnost BoundField a nahraďte ji metodou HyperLinkField. Nastavte nový s HyperLinkField `HeaderText` vlastnost brožuru, na jeho `Text` vlastnost si brožuru o zobrazení a jeho `DataNavigateUrlFields` vlastnost `BrochurePath`.
-
 
 ![Přidat HyperLinkField pro BrochurePath](displaying-binary-data-in-the-data-web-controls-vb/_static/image6.gif)
 
 **Obrázek 6**: Přidat HyperLinkField pro `BrochurePath`
 
-
 Sloupec odkazů se přidá do prvku GridView, jak je vidět na obrázku 7. Kliknutím na odkaz si brožuru o zobrazení se zobrazí přímo v prohlížeči PDF nebo vyzvat uživatele ke stažení souboru, v závislosti na tom, jestli je nainstalovaná čtečka PDF a prohlížeč s nastavení.
-
 
 [![Brožura s kategorie lze zobrazit kliknutím na odkaz si brožuru o zobrazení](displaying-binary-data-in-the-data-web-controls-vb/_static/image7.gif)](displaying-binary-data-in-the-data-web-controls-vb/_static/image11.png)
 
 **Obrázek 7**: Kategorie s si brožuru o lze zobrazit kliknutím na odkaz zobrazit si brožuru o ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-vb/_static/image12.png))
 
-
 [![Zobrazí se kategorie s si brožuru o PDF](displaying-binary-data-in-the-data-web-controls-vb/_static/image8.gif)](displaying-binary-data-in-the-data-web-controls-vb/_static/image13.png)
 
 **Obrázek 8**: Zobrazí kategorie s si brožuru o PDF ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-vb/_static/image14.png))
-
 
 ## <a name="hiding-the-view-brochure-text-for-categories-without-a-brochure"></a>Skrývání textu si brožuru o zobrazení kategorií bez brožuru
 
@@ -110,19 +95,15 @@ Aby bylo možné poskytovat toto chování, musíme použít na pole TemplateFie
 
 Proměnit HyperLinkField TemplateField tak, že vyberete `BrochurePath` HyperLinkField a potom kliknete na převést toto pole na pole TemplateField na odkaz v dialogovém okně Upravit sloupce.
 
-
 ![Převést HyperLinkField TemplateField](displaying-binary-data-in-the-data-web-controls-vb/_static/image9.gif)
 
 **Obrázek 9**: Převést HyperLinkField TemplateField
 
-
 Tím se vytvoří TemplateField s `ItemTemplate` obsahující hypertextový odkaz webové ovládací prvek, jehož `NavigateUrl` vlastnost je vázána na `BrochurePath` hodnotu. Nahraďte tento kód pomocí volání metody `GenerateBrochureLink`a předejte hodnotu `BrochurePath`:
-
 
 [!code-aspx[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample2.aspx)]
 
 Dále vytvořte `Protected` stránce metoda v ASP.NET s použití modelu code-behind třídu s názvem `GenerateBrochureLink` , která vrací `String` a přijímá `Object` jako vstupní parametr.
-
 
 [!code-vb[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample3.vb)]
 
@@ -130,18 +111,15 @@ Tato metoda určuje, zda předaným `Object` hodnota je databáze `NULL` a pokud
 
 Obrázek 10 ukazuje na stránku, až tyto změny se použily. Všimněte si, že ryby kategorie s `BrochurePath` pole teď zobrazuje text bez – příručka k dispozici.
 
-
 [![Text bez si brožuru o dostupná se zobrazí pro tyto kategorie bez si brožuru o](displaying-binary-data-in-the-data-web-controls-vb/_static/image10.gif)](displaying-binary-data-in-the-data-web-controls-vb/_static/image15.png)
 
 **Obrázek 10**: Text bez si brožuru o dostupná se zobrazí pro tyto kategorie bez brožura ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-vb/_static/image16.png))
-
 
 ## <a name="step-3-adding-a-web-page-to-display-a-category-s-picture"></a>Krok 3: Přidání webové stránky k zobrazení obrázku s kategorií
 
 Když uživatel navštíví stránku ASP.NET, obdrží tento uživatel ASP.NET stránky s HTML. Přijatý kód HTML je jenom text a neobsahuje žádné binární data. Žádná další binární data, jako jsou obrázky, zvukové soubory, aplikace Macromedia Flash, vložený Windows Media Player videa a tak dále, existují jako samostatné prostředky na webovém serveru. Obsahuje odkazy na tyto soubory HTML, ale nezahrnuje skutečný obsah souborů.
 
 Například ve formátu HTML `<img>` prvek slouží jako odkaz obrázek s `src` atribut odkazující na soubor obrázku takto:
-
 
 [!code-html[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample4.html)]
 
@@ -151,13 +129,11 @@ Pokud chcete zobrazit nebo povolit uživatelům stahovat binární data, která 
 
 Přidejte novou stránku ASP.NET `BinaryData` složku s názvem `DisplayCategoryPicture.aspx`. Pokud tak učiníte, nechte na hlavní stránce vyberte zaškrtávací políčko nezaškrtnuté. Očekává, že tuto stránku `CategoryID` hodnoty v řetězci dotazu a vrátí binárních dat této kategorie s `Picture` sloupce. Vzhledem k tomu, že tato stránka vrátí binárních dat a nic jiného, není nutné žádné značky v oddílu HTML. Proto klikněte na kartě Zdroj v levém dolním rohu a odebrat všechny značky stránky s s výjimkou `<%@ Page %>` směrnice. To znamená `DisplayCategoryPicture.aspx` s deklarativní by měl obsahovat jeden řádek:
 
-
 [!code-aspx[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample5.aspx)]
 
 Pokud se zobrazí `MasterPageFile` atribut `<%@ Page %>` směrnice, odeberte ji.
 
 Ve třídě použití modelu code-behind stránky s přidejte následující kód, který `Page_Load` obslužné rutiny události:
-
 
 [!code-vb[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample6.vb)]
 
@@ -167,14 +143,11 @@ Tento kód spustí, přečtěte si téma v `CategoryID` hodnotu řetězce dotazu
 
 Pomocí této stránky vytvořené, lze zobrazit obrázek určité kategorie s návštěvou `DisplayCategoryPicture.aspx?CategoryID=categoryID`. Obrázku 11 můžete vidět nápoje obrázek kategorie s, který si můžete prohlížet `DisplayCategoryPicture.aspx?CategoryID=1`.
 
-
 [![Kategorie nápoje s, se zobrazí obrázek](displaying-binary-data-in-the-data-web-controls-vb/_static/image11.gif)](displaying-binary-data-in-the-data-web-controls-vb/_static/image17.png)
 
 **Obrázek 11**: Kategorie nápoje s se zobrazí obrázek ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-vb/_static/image18.png))
 
-
 Pokud při návštěvě `DisplayCategoryPicture.aspx?CategoryID=categoryID`, obdržíte výjimku, která čte nelze přetypovat objekt typu "hodnotu System.DBNull' na typ System.Byte [], existují dvě věci, které mohou být příčinou to. Nejprve je potřeba `Categories` tabulky s `Picture` sloupec nepovoluje `NULL` hodnoty. `DisplayCategoryPicture.aspx` Stránky, ale předpokládá se non -`NULL` hodnoty, které jsou k dispozici. `Picture` Vlastnost `CategoriesDataTable` nelze přistupovat přímo, pokud má `NULL` hodnotu. Pokud chcete povolit `NULL` hodnoty `Picture` sloupce, d chcete zahrnout následující podmínky:
-
 
 [!code-vb[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample7.vb)]
 
@@ -185,7 +158,6 @@ Tato výjimka je může také tehdy, když `CategoriesTableAdapter` s `GetCatego
 > [!NOTE]
 > Pokaždé, když `DisplayCategoryPicture.aspx` je navštívili, databázi přistupuje a vrátí data obrázku s zadané kategorie. Pokud nedošlo ke změně obrázku s kategorie vzhledem k tomu, že uživatel má naposledy zobrazené ji, ale je to plýtvání úsilí. Naštěstí HTTP umožňuje *podmíněné získá*. Pomocí podmíněného GET, odešle klientovi provádějícímu žádost HTTP společně [ `If-Modified-Since` hlavičky protokolu HTTP](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) , který obsahuje datum a čas klienta posledního načtení tohoto prostředku z webového serveru. Pokud obsah se nezměnil, protože tento parametr zadán datum, webový server může odpovědět [nedojde ke změně stavový kód (304)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) a forgo odesílá zpět požadovaný prostředek s obsahem. Stručně řečeno tento postup přišla webový server nebudou muset odeslat zpět obsah pro prostředek, pokud ho nebyl změněn od klienta posledního použití.
 
-
 K implementaci tohoto chování však vyžaduje, abyste přidali `PictureLastModified` sloupec, který se `Categories` tabulky k zachycení, kdy `Picture` sloupce došlo k poslední aktualizaci a také kód pro kontrolu `If-Modified-Since` záhlaví. Další informace o `If-Modified-Since` záhlaví a podmíněné pracovní postup GET, najdete v části [podmíněné GET protokolu HTTP pro hackery RSS](http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers) a [A hlouběji podívejte se na provádění požadavků HTTP na stránce ASP.NET](http://aspnet.4guysfromrolla.com/articles/122204-1.aspx).
 
 ## <a name="step-4-displaying-the-category-pictures-in-a-gridview"></a>Krok 4: Zobrazení kategorií obrázky v GridView
@@ -194,24 +166,19 @@ Když teď máme webové stránky k zobrazení určité kategorie s obrázku, m�
 
 Umožní s rozšířit `Categories` GridView v `DisplayOrDownloadData.aspx` přidáním ImageField zobrazíte všechny kategorie s obrázky. Jednoduše přidejte třídy ImageField a nastavte jeho `DataImageUrlField` a `DataImageUrlFormatString` vlastností `CategoryID` a `DisplayCategoryPicture.aspx?CategoryID={0}`v uvedeném pořadí. Tím se vytvoří, který vykreslí sloupce GridView `<img>` elementu jehož `src` atribut odkazy `DisplayCategoryPicture.aspx?CategoryID={0}`, kde {0} nahradí řádky GridView s `CategoryID` hodnotu.
 
-
 ![Přidat ImageField do prvku GridView.](displaying-binary-data-in-the-data-web-controls-vb/_static/image12.gif)
 
 **Obrázek 12**: Přidat ImageField do prvku GridView.
 
-
 Po přidání třídy ImageField, vaše GridView s deklarativní syntaxe by měl vypadat jako soothe následující:
-
 
 [!code-aspx[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample8.aspx)]
 
 Za chvíli zobrazení této stránky prostřednictvím prohlížeče. Všimněte si, jak každý záznam nyní obsahuje obrázek pro kategorii.
 
-
 [![Zobrazí se kategorie s obrázek pro každý řádek](displaying-binary-data-in-the-data-web-controls-vb/_static/image13.gif)](displaying-binary-data-in-the-data-web-controls-vb/_static/image19.png)
 
 **Obrázek 13**: Zobrazí se kategorie s obrázek pro každý řádek ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-vb/_static/image20.png))
-
 
 ## <a name="summary"></a>Souhrn
 

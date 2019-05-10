@@ -8,12 +8,12 @@ ms.date: 01/28/2019
 ms.assetid: 3bb8eb15-b518-44f5-a67d-a27e051aedc6
 msc.legacyurl: /web-api/overview/security/external-authentication-services
 msc.type: authoredcontent
-ms.openlocfilehash: de9b64e6c582059ec66ab352f60773f50af7b1ff
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: b2571552a3f8040ff42bfa0a9fa48981f71a1e4b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57078142"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133566"
 ---
 # <a name="external-authentication-services-with-aspnet-web-api-c"></a>Externí ověřovací služby pomocí rozhraní ASP.NET Web API (C#)
 
@@ -72,7 +72,6 @@ V příkladech v tomto návodu ukazuje, jak nakonfigurovat každou z podporovan�
 
 > [!NOTE]
 > V případě potřeby budete muset přidat váš plně kvalifikovaný název domény pro nastavení pro externí ověřovací služby. Tento požadavek je založená na omezení zabezpečení u některých služeb externího ověřování, které vyžadují plně kvalifikovaný název v nastavení aplikace tak, aby odpovídala plně kvalifikovaný název, který používá vaši klienti. (Postup se liší u každé externí ověřovací služby, budete muset dokumentaci pro každou službu externí ověřování chcete zobrazit, pokud to je potřeba a jak nakonfigurovat tato nastavení.) Pokud je potřeba nakonfigurovat službu IIS Express použijte plně kvalifikovaný název domény pro testování tohoto prostředí najdete v tématu [konfigurace služby IIS Express použijte plně kvalifikovaný název domény](#FQDN) dále v tomto názorném postupu.
-
 
 <a id="SAMPLE"></a>
 ## <a name="create-a-sample-web-application"></a>Vytvořte ukázkovou webovou aplikaci
@@ -139,7 +138,6 @@ Po získání ID aplikace a tajný klíč, pokud chcete povolit ověřování s�
 ## <a name="enabling-google-authentication"></a>Povolení ověřování Google
 
 Pomocí služby Google ověřování musíte vytvořit účet pro vývojáře Google a váš projekt bude vyžadovat ID aplikace a tajný klíč z Googlu mohl fungovat. Informace o vytváření vývojářský účet Google a získání ID aplikace a tajný klíč, najdete v části [ https://developers.google.com ](https://developers.google.com).
-
 
 Pokud chcete povolit ověřování Google pro vaši webovou aplikaci, postupujte následovně:
 

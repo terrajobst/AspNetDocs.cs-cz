@@ -8,19 +8,18 @@ ms.date: 07/30/2013
 ms.assetid: 82324ef0-3b75-4f63-a217-76ef4036ec93
 msc.legacyurl: /aspnet/overview/owin-and-katana/enabling-windows-authentication-in-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 6d90538ace07402b655b8cd1d9c6e4d5c6dff424
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 3d81e7e1bf13ab63417378fba0c5ab80213f404b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59411199"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65118327"
 ---
 # <a name="enabling-windows-authentication-in-katana"></a>Povolení ověřování systému Windows v sadě Katana
 
 podle [Mike Wasson](https://github.com/MikeWasson)
 
 > Tento článek ukazuje, jak povolit ověřování Windows v sadě Katana. Popisuje dva scénáře: Pomocí služby IIS pro hostování Katana a pomocí HttpListener Katana samoobslužné hostování ve vlastním procesu. Děkujeme, že Jiří Dorrans, David Matson a Chris Ross revize v tomto článku.
-
 
 Katana je implementace společnosti Microsoft [OWIN](http://owin.org/), Open Web Interface pro .NET. Můžete si přečíst Úvod do OWIN a Katana [tady](an-overview-of-project-katana.md). Architektura OWIN má několik vrstev:
 

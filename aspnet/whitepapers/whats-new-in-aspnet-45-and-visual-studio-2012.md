@@ -8,17 +8,16 @@ ms.date: 02/29/2012
 ms.assetid: ba1fabb4-31a3-4ebf-8327-41a6bbba6eaf
 msc.legacyurl: /whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012
 msc.type: content
-ms.openlocfilehash: 5f50721b6f263b9cb025f5fa57c923dadeddcd28
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 32fbf7c25b00f3f0796c4c3fdd38ca2a86c89199
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59410588"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133678"
 ---
 # <a name="whats-new-in-aspnet-45-and-visual-studio-2012"></a>Novinky v ASP.NET 4.5 a v sadě Visual Studio 2012
 
 > Tento dokument popisuje nové funkce a vylepšení, která jsou uvedena v technologii ASP.NET 4.5. Také popisuje vylepšení pro vývoj pro web v sadě Visual Studio 2012. Tento dokument byl původně publikován na 29. února 2012.
-
 
 - [Modul Runtime ASP.NET Core a Framework](#_Toc318097372)
 
@@ -190,10 +189,8 @@ Pak můžete použít *HttpRequest.Unvalidated* vlastnost načíst hodnotu neov�
 
 [!code-csharp[Main](whats-new-in-aspnet-45-and-visual-studio-2012/samples/sample6.cs)]
 
-
 > [!WARNING]
 > Zabezpečení – *používejte obezřetně, data neověřené žádosti!* ASP.NET 4.5 přidané vlastnosti neověřené žádosti a kolekcí zjednodušit přístup k datům specifickou neověřené žádosti. Vlastní ověřovací však musíte provést na požadavek nezpracovaných dat k zajištění, že není nebezpečné text vykreslen pro uživatele.
-
 
 <a id="_Toc318097382"></a>
 ### <a name="antixss-library"></a>Knihovny AntiXSS
@@ -383,11 +380,9 @@ Výrazy vázání dat, jako je to ale nepodporují funkce jako IntelliSense pro 
 
 ASP.NET 4.5 a tento problém vyřešit, přidává možnost deklarovat datový typ dat, která je vytvořena vazba ovládacího prvku na. Můžete to provést pomocí nové *ItemType* vlastnost. Když nastavíte tuto vlastnost, dvě nové typované proměnné jsou k dispozici v oboru výrazy vázání dat: *Položka* a *položku BindItem*. Protože proměnné jsou silného typu, získáte všechny výhody vývojové prostředí sady Visual Studio.
 
-
 Obousměrný výrazy vázání dat, použijte *položku BindItem* proměnné:
 
 [!code-aspx[Main](whats-new-in-aspnet-45-and-visual-studio-2012/samples/sample21.aspx)]
-
 
 Většina ovládacích prvků v rámci webových formulářů ASP.NET, které podporují vytváření datových vazeb mají byla aktualizována o podporu *ItemType* vlastnost.
 

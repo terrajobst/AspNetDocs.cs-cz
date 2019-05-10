@@ -8,12 +8,12 @@ ms.date: 06/09/2009
 ms.assetid: 051296f0-9519-4e78-835c-d868da13b0a0
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d917982d5bd97bf1fa9d926e761c6fe847bb0574
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 1c28f520f710f77689548158e88d87d1051235d8
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59394195"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65124223"
 ---
 # <a name="processing-unhandled-exceptions-vb"></a>Zpracování neošetřených výjimek (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Zobrazení nebo stažení ukázkového kódu](https://github.com/aspnet/AspNetDocs/tree/master/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb/samples) ([stažení](/aspnet/core/tutorials/index#how-to-download-a-sample))
 
 > Pokud dojde k chybě za běhu na webovou aplikaci v produkčním prostředí je důležité informovat vývojáře a protokolovat chyby tak, aby může být zjištěna později v čase. Tento kurz obsahuje přehled toho, jak ASP.NET zpracovává chyby za běhu a zkoumá jeden způsob, jak mají vlastní kód spustit pokaždé, když se bubliny neošetřené výjimce až modul runtime ASP.NET.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -34,7 +33,6 @@ Tento kurz ukazuje, jak získat přístup k podrobnosti k neošetřené výjimce
 
 > [!NOTE]
 > Informace vyšetřovány v tomto kurzu jsou nejužitečnější tehdy, pokud budete potřebovat ke zpracování neošetřených výjimek způsobem jedinečný nebo vlastní. V případech, kdy je potřeba jenom zaprotokolování výjimky a upozornění vývojář pomocí knihovny protokolování chyb je způsob, jak přejít. Následující dva kurzy poskytovat přehled o dvou tyto knihovny.
-
 
 ## <a name="executing-code-when-theerrorevent-is-raised"></a>Při provádění kódu`Error`událost je aktivována
 
@@ -56,7 +54,6 @@ Obsah a struktura `Global.asax` soubor vytvořený pomocí sady Visual Studio se
 > [!NOTE]
 > Při nasazení aplikace ASP.NET je nutné zkopírovat `Global.asax` souboru do produkčního prostředí. `Global.asax.vb` Soubor, který je vytvořen v WAP, není potřeba zkopírovat do produkčního prostředí, protože tento kód je zkompilován sestavení projektu.
 
-
 Obslužné rutiny událostí, vytvoří šablona globální třídy aplikace Visual Studio nejsou vyčerpávající. Můžete přidat obslužnou rutinu události pro všechny `HttpApplication` události pojmenováním obslužná rutina události `Application_EventName`. Můžete například přidat následující kód, který `Global.asax` souboru se má vytvořit obslužnou rutinu události pro [ `AuthorizeRequest` události](https://msdn.microsoft.com/library/system.web.httpapplication.authorizerequest.aspx):
 
 [!code-vb[Main](processing-unhandled-exceptions-vb/samples/sample1.vb)]
@@ -65,7 +62,6 @@ Podobně můžete odebrat všechny obslužné rutiny událostí vytvořených š
 
 > [!NOTE]
 > *Z modulů HTTP* nabízejí jiný způsob, jak definovat obslužné rutiny událostí pro `HttpApplication` události. Z modulů HTTP jsou vytvořeny jako soubor třídy, který můžete umístit přímo v rámci projektu webové aplikace nebo rozdělen do samostatné knihovně tříd. Protože se může být rozdělen do knihovny tříd, modulů HTTP nabízí flexibilní a opakovaně použitelné model pro vytváření `HttpApplication` obslužných rutin událostí. Vzhledem k tomu `Global.asax` soubor je konkrétní do webové aplikace, kde se nachází, mohou být zkompilovány z modulů HTTP do sestavení, v tomto okamžiku přidání modulu protokolu HTTP na web je snadné – stačí vyřazením sestavení `Bin` složky a registrace V modulu `Web.config`. V tomto kurzu není podívejte se na vytváření a používání modulů HTTP, ale dvě protokolování chyb knihovny použité v následujících kurzech dva jsou implementovány jako moduly protokolu HTTP. Další informace o výhodách z modulů HTTP najdete [pomocí protokolu HTTP moduly a obslužné rutiny pro vytvoření modulární komponenty technologie ASP.NET](https://msdn.microsoft.com/library/aa479332.aspx).
-
 
 ## <a name="retrieving-information-about-the-unhandled-exception"></a>Načítání informací o neošetřené výjimky
 
@@ -92,7 +88,6 @@ Třídy, v rozhraní .NET Framework [ `System.Net.Mail` obor názvů](https://ms
 > [!NOTE]
 > `<system.net>` Element obsahuje nastavení serveru SMTP, který se používá `SmtpClient` třídy při odesílání e-mailu. Váš web pravděpodobně firma poskytující hosting má server SMTP, který můžete použít k odesílání e-mailu z vaší aplikace. Informace o nastavení serveru SMTP, kterou byste měli použít ve webové aplikaci naleznete v části Podpora webového hostitele.
 
-
 Přidejte následující kód, který `Application_Error` obslužnou rutinu události pro odeslání vývojář e-mailu, když dojde k chybě:
 
 [!code-vb[Main](processing-unhandled-exceptions-vb/samples/sample4.vb)]
@@ -105,7 +100,6 @@ Posledním krokem je odeslat `MailMessage`. To se provádí tak, že vytvoříte
 
 > [!NOTE]
 > Před použitím tohoto kódu ve webové aplikaci budete chtít změnit hodnoty `ToAddress` a `FromAddress` konstanty support@example.com e-mailu adresu e-mailové oznámení chyb by měly být odeslány na a pocházejí z. Také budete muset zadat nastavení serveru SMTP v `<system.net>` tématu `Web.config`. Vyhledejte poskytovatele webového hostitele k určení nastavení serveru SMTP použít.
-
 
 S tímto kódem na místě kdykoliv dojde k chybě vývojáře přijde e-mailové zprávě, která shrnuje chybu a také YSOD. V předchozím kurzu jsme prokázali Chyba za běhu navštívit Genre.aspx a předáním neplatný `ID` hodnotu pomocí řetězce dotazu, jako je třeba `Genre.aspx?ID=foo`. Na stránce s `Global.asax` soubor na místě produkuje stejné prostředí pro uživatele v předchozím kurzu – ve vývojovém prostředí budete i další zobrazíte výjimky podrobnosti žlutý obrazovka smrti, zatímco v produkčním prostředí budete Zobrazit vlastní chybovou stránku. Kromě tohoto chování existující vývojář se odešle e-mailu.
 

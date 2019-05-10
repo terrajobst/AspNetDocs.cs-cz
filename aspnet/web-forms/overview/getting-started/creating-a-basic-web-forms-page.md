@@ -8,12 +8,12 @@ ms.date: 03/03/2014
 ms.assetid: a2f1c635-0817-4a9a-8c13-d5b5d29727c0
 msc.legacyurl: /web-forms/overview/getting-started/creating-a-basic-web-forms-page
 msc.type: authoredcontent
-ms.openlocfilehash: bf3336c2467553ba3714bbd4fbb41a35a0490768
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 80254135d2d363ea151e2ea70aeca988b33b0d4d
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59410601"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134666"
 ---
 # <a name="using-visual-studio-2013-to-create-a-basic-aspnet-45-web-forms-page"></a>Chcete-li vytvořit základní technologie ASP.NET 4.5 webové stránky s formuláři pomocí sady Visual Studio 2013
 # 
@@ -45,7 +45,6 @@ K dokončení tohoto návodu budete potřebovat:
     >   
     > Pokud používáte Visual Studio, Tento názorný průvodce předpokládá, že jste vybrali **vývoj pro Web** kolekce nastavení při prvním spuštění sady Visual Studio. Další informace najdete v tématu [jak: Vyberte nastavení prostředí vývoje webu](https://msdn.microsoft.com/library/ff521558.aspx).
 
-
 ## <a name="creating-a-web-application-project-and-a-page"></a>Vytvoření projektu webové aplikace a na stránce
 
 <a id="sectionToggle0"></a>
@@ -69,16 +68,13 @@ V této části tohoto návodu vytvoříte projekt webové aplikace a přidejte 
     Visual Studio vytvoří nový projekt, který obsahuje předem připravených funkce na základě šablony webových formulářů. To poskytuje nejen vám *Home.aspx* stránky, *About.aspx* stránky, *Contact.aspx* stránce, ale také zahrnuje funkce členství, který registruje uživatele a uloží jejich pověření tak, aby se můžete přihlásit na web. Když se vytvoří nová stránka, ve výchozím nastavení sada Visual Studio zobrazí stránku v **zdroj** zobrazení, kde můžete vidět prvky jazyka HTML na stránce. Následující obrázek znázorňuje, co se zobrazí v **zdroj** zobrazit v případě, že jste vytvořili novou webovou stránku s názvem *BasicWebApp.aspx*.  
     ![Zobrazení zdroje](creating-a-basic-web-forms-page/_static/image4.png)
 
-
 ### <a name="a-tour-of-the-visual-studio-web-development-environment"></a>Prohlídka prostředí vývoj webu sady Visual Studio
-
 
 Než budete pokračovat úpravou stránky, je vhodné se seznámit s vývojovým prostředím sady Visual Studio. Následující obrázek ukazuje windows a nástroje, které jsou k dispozici v sadě Visual Studio a Visual Studio Express for Web.
 
 > [!NOTE] 
 > 
 > Tento diagram zobrazuje výchozí a umístění oken. **Zobrazení** nabídka umožňuje zobrazit další okna a změna uspořádání a změna velikosti windows podle vlastních potřeb. Pokud již byly provedeny změny uspořádání oken, nebudou odpovídat, co vidíte na obrázku.
-
 
  Prostředí sady Visual Studio
 
@@ -96,14 +92,11 @@ Prohlédněte si výše uvedené obrázek a hledat shodu textů v následující
 - **Panel nástrojů**. Obsahuje ovládací prvky a elementy HTML, které můžete přetáhnout do stránky. **Panel nástrojů** prvky jsou seskupeny podle běžné funkce.
 - S **erver Explorer**. Zobrazí připojení k databázi. Pokud se nezobrazí Průzkumník serveru, v nabídce zobrazit kliknutím na Průzkumníka serveru.
 
-
 ### <a name="creating-a-new-aspnet-web-forms-page"></a>Vytváří se nové technologie ASP.NET webové stránky s formuláři
-
 
 Při vytváření nové aplikace webových formulářů pomocí **webová aplikace ASP.NET** šablony projektu, Visual Studio přidá stránky ASP.NET (webové formuláře – stránka) s názvem *Default.aspx*, stejně jako několik dalších souborů a složky. Můžete použít *Default.aspx* stránku jako domovské stránky pro webové aplikace. Ale v tomto návodu vytvoříte a pracovat s novou stránku.
 
 ### <a name="to-add-a-page-to-the-web-application"></a>Přidání stránky do webové aplikace
-
 
 1. Zavřít *Default.aspx* stránky. Chcete-li to provést, klikněte na kartu, která zobrazuje název souboru a pak klikněte na možnost Zavřít.
 2. V **Průzkumníka řešení**, klikněte pravým tlačítkem na název webové aplikace (v tomto kurzu je název aplikace **BasicWebSite**) a potom klikněte na tlačítko **přidat**  - &gt; **Nová položka**.   
@@ -113,14 +106,11 @@ Při vytváření nové aplikace webových formulářů pomocí **webová aplika
 4. Klikněte na tlačítko **přidat** do svého projektu přidat webovou stránku.  
 Visual Studio vytvoří novou stránku a otevře jej.
 
-
 ### <a name="adding-html-to-the-page"></a>Přidání kódu HTML na stránce
-
 
 V této části Průvodce přidáte některé statický text na stránce.
 
 ### <a name="to-add-text-to-the-page"></a>Chcete-li přidat text na stránce
-
 
 1. V dolní části okna dokumentu, klikněte na tlačítko **návrhu** tab přepnete na **návrhu** zobrazení.
 
@@ -136,14 +126,11 @@ V této části Průvodce přidáte některé statický text na stránce.
     Zobrazí se kód HTML v **zdroj** zobrazení, které jste vytvořili, když jste zadali v **návrhu** zobrazení.  
     ![Webovou stránku pomocí statického textu](creating-a-basic-web-forms-page/_static/image8.png)
 
-
 ### <a name="running-the-page"></a>Spuštění stránky
-
 
 Než budete pokračovat přidáním ovládacích prvků na stránce, které můžete ji spustit.
 
 ### <a name="to-run-the-page"></a>Ke spuštění stránky
-
 
 1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na *FirstWebPage.aspx* a vyberte **nastavit jako úvodní stránku**.
 2. Stisknutím klávesy **CTRL + F5** ke spuštění stránky.
@@ -153,9 +140,7 @@ Než budete pokračovat přidáním ovládacích prvků na stránce, které mů�
     Zobrazení stránky v prohlížeči můžete můžete také kliknout pravým tlačítkem na stránce v **Průzkumníka řešení** a vyberte **zobrazit v prohlížeči**.
 3. Zavřete prohlížeč Zastavit webovou aplikaci.
 
-
 ## <a name="adding-and-programming-controls"></a>Přidání a programování ovládacích prvků
-
 
 <a id="sectionToggle1"></a>
 
@@ -164,7 +149,6 @@ Nyní přidáte serverových ovládacích prvků na stránce. Serverové ovláda
 Přidáte [tlačítko](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx) ovládací prvek, [textového pole](https://msdn.microsoft.com/library/system.web.ui.webcontrols.textbox.aspx) ovládací prvek a [popisek](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx) ovládací prvek na stránce a napište kód pro zpracování [klikněte na tlačítko](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.click.aspx) událost pro [tlačítko](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx) ovládacího prvku.
 
 ### <a name="to-add-controls-to-the-page"></a>Chcete-li přidat ovládací prvky na stránce
-
 
 1. Klikněte na tlačítko **návrhu** tab přepnete na **návrhu** zobrazení.
 2. Umístěte kurzor na konci **Vítá vás Visual Web Developer** text a stiskněte klávesu **ENTER** uvolnit místo v pěti nebo několikrát **div** pole elementu.
@@ -179,14 +163,11 @@ Všimněte si, že budete muset Rozbalit **nástrojů** na levé straně zobrazt
 
     ![Tři ovládací prvky v návrhovém zobrazení](creating-a-basic-web-forms-page/_static/image9.png "tři ovládací prvky v návrhovém zobrazení")
 
-
 ### <a name="setting-control-properties"></a>Nastavení vlastností ovládacího prvku
-
 
 Visual Studio nabízí různé způsoby, jak nastavit vlastnosti ovládacích prvků na stránce. V této části Průvodce se nastavit vlastnosti v obou **návrhu** zobrazení a **zdroj** zobrazení.
 
 ### <a name="to-set-control-properties"></a>Chcete-li nastavit vlastnosti ovládacího prvku
-
 
 1. Nejprve zobrazte **vlastnosti** windows tak, že vyberete **zobrazení** nabídka -&gt; **ostatní Windows**  - &gt; **Okno vlastností**. Můžete také vybrat **F4** zobrazíte **vlastnosti** okna.
 2. Vyberte [tlačítko](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx) ovládacího prvku a pak v **vlastnosti** okno, nastavte hodnotu **Text** k **zobrazovaný název**. Text, který jste zadali se zobrazí na tlačítku v návrháři, jak je znázorněno na následujícím obrázku.
@@ -217,14 +198,11 @@ Visual Studio nabízí různé způsoby, jak nastavit vlastnosti ovládacích pr
 
     **ForeColor** atribut se dokončila s barvu, která jste vybrali, včetně uzavírací uvozovky.
 
-
 ### <a name="programming-the-button-control"></a>Programování ovládacího prvku tlačítko
-
 
 V tomto návodu budete psát kód, který čte název, že uživatel zadá do textového pole a potom zobrazí název v [popisek](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx) ovládacího prvku.
 
 ### <a name="add-a-default-button-event-handler"></a>Přidat obslužnou rutinu výchozí tlačítko události
-
 
 1. Přepnout na **návrhu** zobrazení.
 2. Dvakrát klikněte [tlačítko](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx) ovládacího prvku.
@@ -252,14 +230,11 @@ V tomto návodu budete psát kód, který čte název, že uživatel zadá do te
 
     Obslužné rutiny události můžete mít libovolný název. název, který se zobrazí se výchozí název vytvořený pomocí sady Visual Studio. Důležité je, že bude použit název **OnClick** atribut v kódu HTML musí odpovídat názvu metody definované v modelu code-behind.
 
-
 ### <a name="running-the-page"></a>Spuštění stránky
-
 
 Teď můžete otestovat serverových ovládacích prvků na stránce.
 
 ### <a name="to-run-the-page"></a>Ke spuštění stránky
-
 
 1. Stisknutím klávesy **CTRL + F5** ke spuštění stránky v prohlížeči. Pokud dojde k chybě, spusťte opětovnou kontrolu výše uvedených kroků.
 2. Zadejte název do textového pole a klikněte na tlačítko **zobrazovaný název** tlačítko.
@@ -270,7 +245,6 @@ Teď můžete otestovat serverových ovládacích prvků na stránce.
     Ve zdrojovém kódu stránky zobrazí bez jakékoli serverový kód HTML. Konkrétně se nezobrazí **&lt;asp:&gt;** prvky, které jste pracovali v **zdroj** zobrazení. Při spuštění stránky ASP.NET zpracovává serverové ovládací prvky a vykreslí elementy HTML na stránce, které provádějí funkce, které představují ovládací prvek. Například **&lt;asp: Button&gt;** ovládací prvek vykreslen jako kód HTML **&lt;typ vstupu =&quot;odeslat&quot; &gt;** element.
 4. Zavřete prohlížeč.
 
-
 ## <a name="working-with-additional-controls"></a>Práce s další ovládací prvky
 
 <a id="sectionToggle2"></a>
@@ -280,7 +254,6 @@ V této části tohoto návodu budete pracovat s [kalendáře](https://msdn.micr
 V této části, které přidáte [System.Web.UI.WebControls.Calendar](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.aspx) ovládací prvek na stránce a naformátovat ho.
 
 ### <a name="to-add-a-calendar-control"></a>Přidání ovládacího prvku Kalendář
-
 
 1. V sadě Visual Studio, přepněte na **návrhu** zobrazení.
 2. Z **standardní** část **nástrojů**, přetáhněte [kalendáře](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.aspx) na stránce ovládací prvek a umístěte ho níže **div** element, který obsahuje další ovládací prvky.
@@ -300,14 +273,11 @@ V této části, které přidáte [System.Web.UI.WebControls.Calendar](https://m
 
     ![Ovládací prvek ve zdrojovém zobrazení Kalendář](creating-a-basic-web-forms-page/_static/image15.png "ovládacího prvku v zobrazení zdroje v kalendáři")
 
-
 ### <a name="programming-the-calendar-control"></a>Programování ovládacího prvku Kalendář
-
 
 V této části programu [kalendáře](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.aspx) ovládací prvek pro zobrazení aktuálně vybrané datum.
 
 ### <a name="to-program-the-calendar-control"></a>Chcete-li aplikaci prvku kalendáře
-
 
 1. V **návrhu** , poklikejte na [kalendáře](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.aspx) ovládacího prvku.
 
@@ -316,19 +286,15 @@ V této části programu [kalendáře](https://msdn.microsoft.com/library/system
 
     [!code-csharp[Main](creating-a-basic-web-forms-page/samples/sample3.cs?highlight=3)]
 
-
     [!code-vb[Main](creating-a-basic-web-forms-page/samples/sample4.vb?highlight=2)]
 
     Ve výše uvedeném kódu nastaví text ovládacího prvku popisku k vybraným datem ovládacího prvku kalendář.
 
-
 ### <a name="running-the-page"></a>Spuštění stránky
-
 
 Teď můžete otestovat v kalendáři.
 
 ### <a name="to-run-the-page"></a>Ke spuštění stránky
-
 
 1. Stisknutím klávesy **CTRL + F5** ke spuštění stránky v prohlížeči.
 2. Klikněte na datum v kalendáři.
@@ -339,9 +305,7 @@ Teď můžete otestovat v kalendáři.
     Všimněte si, že [kalendáře](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.aspx) poskytla ovládací prvek na stránce jako **tabulky**, se každý den jako **td** elementu.
 4. Zavřete prohlížeč.
 
-
 ## <a name="next-steps"></a>Další kroky
-
 
 <a id="nextStepsToggle"></a>
 

@@ -8,19 +8,18 @@ ms.date: 03/02/2009
 ms.assetid: c8d93e11-ef78-4a30-afbc-f30419000a60
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5f8eeeaa9bd77c0259f680198e57ade8d49cd06b
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: b1b53bea899deecef203551b23c087944e3990ab
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59382613"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65123453"
 ---
 # <a name="creating-an-action-vb"></a>Vytvoření akce (VB)
 
 by [Microsoft](https://github.com/microsoft)
 
 > Zjistěte, jak přidat novou akci kontroler ASP.NET MVC. Další informace o požadavcích pro metodu na akci.
-
 
 Cílem tohoto kurzu je vysvětlují, jak můžete vytvořit nové akce kontroleru. Informace o požadavky na metodu akce. Také se dozvíte, jak zabránit metodu vystaven jako akci.
 
@@ -55,7 +54,6 @@ Pokud je potřeba vytvořit veřejnou metodu do třídy kontroleru a nechcete vy
 [!code-vb[Main](creating-an-action-vb/samples/sample2.vb)]
 
 Pokud při pokusu o vyvolání akce kontroleru CompanySecrets() zadáním /Work/CompanySecrets do adresního řádku prohlížeče zobrazí se zpráva chyby na obrázku 1.
-
 
 [![Volání metody NonAction](creating-an-action-vb/_static/image1.jpg)](creating-an-action-vb/_static/image1.png)
 

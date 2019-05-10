@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: b9775f41-352a-4f82-baa6-23e95b342e20
 msc.legacyurl: /web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
 msc.type: authoredcontent
-ms.openlocfilehash: a5c7804c2336e91dc171b5da52819436472e81cf
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: c5da14a6856f551343b6fb14f0aedc659e792f6b
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59412447"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65122081"
 ---
 # <a name="calling-web-api-from-a-windows-phone-8-application-c"></a>Volání webového rozhraní API z aplikace pro Windows Phone 8 (C#)
 
@@ -40,7 +40,6 @@ V tomto kurzu začátku do konce se dozvíte, jak pomocí webového rozhraní AP
 > [!NOTE]
 > Pokud se chystáte otestovat připojení mezi webovým rozhraním API a projekty pro Windows Phone 8 v místním systému, budete muset postupujte podle pokynů *[připojení k rozhraní API webové aplikace v místním emulátorem Windows Phone 8 Počítač](https://go.microsoft.com/fwlink/?LinkId=324014)* článku nastavte testovací prostředí.
 
-
 <a id="STEP1"></a>
 ### <a name="step-1-creating-the-web-api-bookstore-project"></a>Krok 1: Vytvoření webového rozhraní API knihkupectví projektu
 
@@ -50,20 +49,16 @@ Prvním krokem tohoto kurzu začátku do konce, je vytvořit projekt webového r
 2. Klikněte na tlačítko **souboru**, pak **nové**a potom **projektu**.
 3. Když **nový projekt** se zobrazí dialogové okno, rozbalte položku **nainstalováno**, pak **šablony**, pak **Visual C#** a pak **Webové**.
 
-
    | [![](calling-web-api-from-a-windows-phone-8-application/_static/image2.png)](calling-web-api-from-a-windows-phone-8-application/_static/image1.png) |
    |-----------------------------------------------------------------------------------------------------------------------------------------------------|
    |                                                                Klikněte na obrázek rozbalení                                                                |
 
-
 4. Zvýrazněte **webová aplikace ASP.NET**, zadejte **knihkupectví** pro název projektu a pak klikněte na tlačítko **OK**.
 5. Když **nový projekt ASP.NET** dialogové okno se zobrazí, vyberte **webového rozhraní API** šablonu a pak klikněte na tlačítko **OK**.
-
 
    | [![](calling-web-api-from-a-windows-phone-8-application/_static/image4.png)](calling-web-api-from-a-windows-phone-8-application/_static/image3.png) |
    |-----------------------------------------------------------------------------------------------------------------------------------------------------|
    |                                                                Klikněte na obrázek rozbalení                                                                |
-
 
 6. Při otevření projektu webového rozhraní API, odeberte z projektu vzorku kontroleru:
 
@@ -195,8 +190,6 @@ Pokud aplikace nemůže komunikovat s webové rozhraní API, zobrazí se chybov�
 
 Pokud klepnete na chybovou zprávu, zobrazí se další podrobnosti o chybě:
 
-
 | [![](calling-web-api-from-a-windows-phone-8-application/_static/image16.png)](calling-web-api-from-a-windows-phone-8-application/_static/image15.png) |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|
 |                                                                 Klikněte na obrázek rozbalení                                                                 |
-

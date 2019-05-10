@@ -8,12 +8,12 @@ ms.date: 01/29/2017
 ms.assetid: 90ebf911-1c46-4470-b876-1335bd0f590f
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler
 msc.type: authoredcontent
-ms.openlocfilehash: cf18a8860d34daa23f61e3dde13c2c79c6c0d4a5
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 51a8fdf44199b5a4735e0e00657639b191f51255
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57073078"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65125985"
 ---
 # <a name="configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler"></a>Konfigurace webového serveru pro publikování nasazeného webu (obslužná rutina nasazení webu)
 
@@ -28,7 +28,6 @@ ms.locfileid: "57073078"
 > - Použití *offline nasazení*. Tento přístup vyžaduje nejmenší míru konfigurace webového serveru, ale správce serveru musíte ručně zkopírovat webový balíček na server a importujte ho pomocí Správce služby IIS.
 > 
 > Další informace o klíčové funkce, výhody a nevýhody těchto přístupů, naleznete v tématu [výběr právo přístupu k nasazení webu](choosing-the-right-approach-to-web-deployment.md).
-
 
 Ano, pokud chcete povolit uživatelům bez oprávnění správce pro nasazení obsahu pro konkrétní weby služby IIS. Tento přístup je často žádoucí v tyto druhy scénářů:
 
@@ -64,7 +63,6 @@ Postup pro každý z těchto postupů se zobrazí v tomto tématu. Úlohy a náz
 > [!NOTE]
 > Další informace o připojení počítače k doméně najdete v tématu [připojení počítače k doméně a protokolování na](https://technet.microsoft.com/library/cc725618(v=WS.10).aspx). Další informace o konfiguraci statických IP adres najdete v tématu [nakonfigurujte statickou IP adresu](https://technet.microsoft.com/library/cc754203(v=ws.10).aspx).
 
-
 ## <a name="install-products-and-components"></a>Nainstalovat produkty a komponent
 
 Tato část vás provede s instalací požadovaných produktů a komponenty na webovém serveru. Než začnete, je vhodné spuštěním služby Windows Update tak, aby byl váš server plně aktuálním stavu.
@@ -80,7 +78,6 @@ V takovém případě musíte nainstalovat tyto věci:
 
 > [!NOTE]
 > Tento návod popisuje použití instalačního programu webové platformy nainstalovat a nakonfigurovat různé součásti. I když není nutné používat instalačního programu webové platformy, zjednodušuje proces instalace automaticky zjišťuje závislosti a zajištění vždycky toho nejnovější verze produktu. Další informace najdete v tématu [instalačního programu webové platformy Microsoft](https://go.microsoft.com/?linkid=9805118).
-
 
 **Chcete-li nainstalovat požadované produkty a komponenty**
 
@@ -239,7 +236,6 @@ Nejběžnější přístup je k přiřazení oprávnění pro místní **IIS\_IU
 > [!NOTE]
 > Další informace o identity fondu aplikací ve službě IIS 7.5, naleznete v tématu [identity fondu aplikací součásti](https://go.microsoft.com/?linkid=9805123).
 
-
 **Jak nakonfigurovat oprávnění složky pro web služby IIS**
 
 1. V Průzkumníku Windows přejděte do umístění vaší místní složky.
@@ -281,7 +277,6 @@ Ve výchozím nastavení webová služba správy služby IIS naslouchá na TCP p
 | --- | --- | --- | --- |
 | Příchozí | Jakýkoli | 8172 | TCP |
 | Odchozí | 8172 | Jakýkoli | TCP |
-  
 
 Další informace o konfiguraci pravidel brány Windows Firewall, najdete v části [konfigurace pravidel brány Firewall](https://technet.microsoft.com/library/dd448559(WS.10).aspx). Brány firewall třetích stran najdete v dokumentaci k produktu.
 

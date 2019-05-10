@@ -9,12 +9,12 @@ ms.assetid: 053e23c4-13c9-40fa-87cb-3e9b0823b31e
 ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: c41fc06ad98665f7d48efde030c1341b06e49dd0
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 4ca9c141b0b48acf2c775a083398d3fb66b51cc2
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59395287"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65121427"
 ---
 # <a name="two-factorauthentication-using-sms-and-email-with-aspnet-identity"></a>Dvoufaktorové ověřování pomocí SMS a e-mailu s ASP.NET Identity
 
@@ -23,7 +23,6 @@ podle [Haovi společnosti ani](https://github.com/HaoK), [Pranav Rastogi](https:
 > Tento kurzu se dozvíte, jak nastavit dvojúrovňového ověřování (2FA) pomocí SMS a e-mailu.
 > 
 > Tento článek zapsal Rick Anderson ([@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)), Pranav Rastogi ([@rustd](https://twitter.com/rustd)), ani Haovi společnosti a Suhas Joshi. Ukázka NuGet zapsal primárně ani Haovi společnosti.
-
 
 Toto téma obsahuje následující:
 
@@ -43,7 +42,6 @@ V této části použijete Stáhnout ukázku, kterou pak ve spolupráci s NuGet.
 > [!NOTE]
 > Upozornění: Musíte nainstalovat Visual Studio [2013 Update 2](https://go.microsoft.com/fwlink/?LinkId=390521) k dokončení tohoto kurzu.
 
-
 1. Vytvořte nový ***prázdný*** webový projekt ASP.NET.
 2. V konzole Správce balíčků zadejte následující příkazy:  
   
@@ -58,7 +56,6 @@ V této části použijete Stáhnout ukázku, kterou pak ve spolupráci s NuGet.
 
 > [!NOTE]
 > Upozornění: Pokud změníte některá nastavení zabezpečení v této ukázce, výroby aplikací bude chtít projít auditu zabezpečení, který explicitně vám sdělí, provedené změny.
-
 
 <a id="SMS"></a>
 
@@ -212,7 +209,6 @@ Můžete přidat další poskytovatelé 2FA, jako je například generátory kó
 
 > [!NOTE]
 > 2FA kódy jsou generovány pomocí [podle času jednorázové heslo algoritmus](http://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm) a kódy jsou platné po dobu 6 minut. Pokud budete postupovat víc než šest minut zadejte kód, získáte neplatný kód chybovou zprávu.
-
 
 <a id="combine"></a>
 

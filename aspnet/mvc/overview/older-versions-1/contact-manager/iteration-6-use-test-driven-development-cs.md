@@ -8,12 +8,12 @@ ms.date: 02/20/2009
 ms.assetid: 013c3c26-7dc3-41d1-8064-f233c86008b5
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-6-use-test-driven-development-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 94885984ebad90523369dcf5771d0f77a753008f
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: aee0ff9d8d7f17e8a00dab12467bd3a3457fbe18
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59405661"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65117759"
 ---
 # <a name="iteration-6--use-test-driven-development-c"></a>Iterace #6 – použití vývoje řízeného (C#)
 
@@ -23,9 +23,7 @@ by [Microsoft](https://github.com/microsoft)
 
 > V této iterace šestého přidáme nové funkce do naší aplikace tak, že nejprve zápis testů jednotek a psaní kódu pro testování částí. V této iterace můžeme přidat skupiny kontaktů.
 
-
 ## <a name="building-a-contact-management-aspnet-mvc-application-c"></a>Vytvoření aplikace ASP.NET MVC pro správu kontaktů (C#)
-  
 
 V této sérii kurzů jsme integrovali celou aplikaci kontakt správy od začátku na dokončení. Obraťte se na správce aplikace umožňuje ukládat kontaktní údaje - jména, telefonní čísla a e-mailové adresy – seznam lidí.
 
@@ -73,7 +71,6 @@ Nakonec vývoj řízený testováním vynutí pro psaní jednotkových testů ja
 > 
 > Další informace o vývoj řízený testováním, můžu jenom doporučit, abyste si přečetli Michael peří knihy **práci efektivně pomocí starší verze kódu**.
 
-
 V této iterace přidáme nové funkce do naší aplikace Správce kontaktů. Přidáváme podporu pro skupiny kontaktu. Můžete použít kontakt skupiny pro uspořádání vašich kontaktů do kategorií, například obchodní a skupiny typu Friend.
 
 Tato nová funkce přidáme k naší aplikace pomocí následujícího postupu řízeného vývoje. Budeme psát testech jednotek nejprve prostě budeme psát všechny našeho kódu proti tyto testy.
@@ -112,11 +109,9 @@ Naši první uživatelský scénář je, že uživatel by měl zobrazit seznam s
 
 Vytvořte nový test jednotek kliknutím pravým tlačítkem složku řadiče v projektu ContactManager.Tests výběr **přidat, otestovat nové**a výběrem možnosti **testování částí** šablony (viz obrázek 1). Název nové jednotky testování GroupControllerTest.cs a klikněte na tlačítko **OK** tlačítko.
 
-
 [![Přidání testování částí GroupControllerTest](iteration-6-use-test-driven-development-cs/_static/image1.jpg)](iteration-6-use-test-driven-development-cs/_static/image1.png)
 
 **Obrázek 01**: Přidání testování částí GroupControllerTest ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image2.png))
-
 
 Výpis 1 je součástí naší první test částí. Tento test ověřuje, že metoda Index() skupiny kontroleru vrátí sadu skupin. Test ověří, že kolekci skupin se vrátí v zobrazení data.
 
@@ -140,11 +135,9 @@ Třída kontroleru skupiny v informacích 2 obsahuje úplné minimální kód po
 
 Poté, co jsme do našich projektu přidat třídy GroupController a skupiny, naši první test částí úspěšně dokončí (viz obrázek 2). Jsme udělali minimální práci potřebnou k projde testem. Je čas oslavili.
 
-
 [![Úspěch!](iteration-6-use-test-driven-development-cs/_static/image2.jpg)](iteration-6-use-test-driven-development-cs/_static/image3.png)
 
 **Obrázek 02**: Úspěch! ([Kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image4.png))
-
 
 ## <a name="creating-contact-groups"></a>Vytvoření skupiny kontaktů
 
@@ -220,7 +213,6 @@ Výpis 11 obsahuje novou třídu FakeContactManagerRepository, která implementu
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample12.cs)]
 
-
 Nakonec se tyto změny v návrhu aplikace od nás vyžadovat provést určité změny pro naše testy jednotek. Nyní potřebujeme používat FakeContactManagerRepository při provádění testů jednotek. Aktualizované GroupControllerTest třídy jsou obsaženy v informacích 12.
 
 **Listing 12 - Controllers\GroupControllerTest.cs**
@@ -242,12 +234,10 @@ Potřebujeme vytvořit novou tabulku databáze skupiny. Postupujte podle těchto
 
 <a id="0.11_table01"></a>
 
-
 | **Název sloupce** | **Datový typ** | **Povolit hodnoty Null** |
 | --- | --- | --- |
 | ID | int | False |
 | Name | nvarchar(50) | False |
-
 
 V dalším kroku budeme potřebovat odstranit všechna data z tabulky kontaktů (v opačném případě jsme nebude možné vytvořit relaci mezi tabulkami kontakty a skupiny). Postupujte podle těchto kroků:
 
@@ -266,16 +256,13 @@ Dále musíme definovat vztah mezi skupiny databázové tabulky a stávající d
 8. Kliknutím na tlačítko Zavřít zavřete dialogové okno vztahy cizího klíče.
 9. Kliknutím na tlačítko Uložit uložte změny do tabulky kontaktů.
 
-
 [![Vytvoření relace tabulky databáze](iteration-6-use-test-driven-development-cs/_static/image3.jpg)](iteration-6-use-test-driven-development-cs/_static/image5.png)
 
 **Obrázek 03**: Vytvoření relace tabulky databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image6.png))
 
-
 [![Určení relací mezi tabulkami](iteration-6-use-test-driven-development-cs/_static/image4.jpg)](iteration-6-use-test-driven-development-cs/_static/image7.png)
 
 **Obrázek 04**: Určení relací mezi tabulkami ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image8.png))
-
 
 ### <a name="updating-our-data-model"></a>Aktualizuje se naše datového modelu
 
@@ -287,19 +274,15 @@ Dále musíme aktualizovat naše datový model, který představuje nové datab�
 4. Klikněte pravým tlačítkem na skupiny entit a vyberte možnost nabídky **přejmenovat**. Změňte název *skupiny* entitu, kterou chcete *skupiny* (singulární).
 5. Klikněte pravým tlačítkem na skupiny navigační vlastnost, která se zobrazí v dolní části entitu kontakt. Změňte název *skupiny* navigační vlastnost pro *skupiny* (singulární).
 
-
 [![Aktualizace modelu Entity Framework z databáze](iteration-6-use-test-driven-development-cs/_static/image5.jpg)](iteration-6-use-test-driven-development-cs/_static/image9.png)
 
 **Obrázek 05**: Aktualizace modelu Entity Framework z databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image10.png))
 
-
 Po dokončení těchto kroků bude reprezentovat datového modelu kontakty a skupiny tabulek. V návrháři entit by se měla zobrazit obě entity (viz obrázek 6).
-
 
 [![Zobrazení skupiny a kontakt v návrháři entit](iteration-6-use-test-driven-development-cs/_static/image6.jpg)](iteration-6-use-test-driven-development-cs/_static/image11.png)
 
 **Obrázek 06**: Zobrazení skupiny a kontakt v návrháři entit ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image12.png))
-
 
 ### <a name="creating-our-repository-classes"></a>Vytváření naší třídy úložiště
 
@@ -328,11 +311,9 @@ Potřebujeme vytvořit následující nová zobrazení pro správu kontaktů sku
 - Views\Group\Index.aspx – zobrazí seznam skupin kontaktů
 - Views\Group\Delete.aspx – formulář zobrazí potvrzení k odstranění skupiny kontaktů
 
-
 [![Zobrazení skupiny Index](iteration-6-use-test-driven-development-cs/_static/image7.jpg)](iteration-6-use-test-driven-development-cs/_static/image13.png)
 
 **Obrázek 07**: Zobrazení skupiny indexu ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image14.png))
-
 
 Potřebujeme upravit následující stávající zobrazení, aby zahrnovaly skupiny kontaktů:
 
@@ -342,11 +323,9 @@ Potřebujeme upravit následující stávající zobrazení, aby zahrnovaly skup
 
 Zobrazí se změny zobrazení pohledem na aplikace sady Visual Studio, který doprovází tento kurz. Například obrázek 8 znázorňuje zobrazení indexu kontaktu.
 
-
 [![Zobrazení indexu kontaktu](iteration-6-use-test-driven-development-cs/_static/image8.jpg)](iteration-6-use-test-driven-development-cs/_static/image15.png)
 
 **Obrázek 08**: Zobrazení indexu kontakt ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-6-use-test-driven-development-cs/_static/image16.png))
-
 
 ## <a name="summary"></a>Souhrn
 

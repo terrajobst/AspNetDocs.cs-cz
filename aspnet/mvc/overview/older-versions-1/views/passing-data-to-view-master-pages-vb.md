@@ -8,12 +8,12 @@ ms.date: 10/16/2008
 ms.assetid: 37a1ebae-8773-408f-8645-d21da7ff9ae1
 msc.legacyurl: /mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7de5a1545ee59e671058f09789ce69d5062d3655
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: ebf670fc0d8cf2cfd7df01d07d4119122b61a6a1
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59380974"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65130423"
 ---
 # <a name="passing-data-to-view-master-pages-vb"></a>Předání dat stránkám předlohy pro zobrazení (VB)
 
@@ -23,7 +23,6 @@ by [Microsoft](https://github.com/microsoft)
 
 > Cílem tohoto kurzu je vysvětlují, jak můžete předat data z kontroleru na hlavní stránku zobrazení. Prozkoumáme dvou strategií pro předávání dat na hlavní stránku zobrazení. Nejprve si popíšeme jednoduchém řešení, která vede aplikaci, která je obtížné udržovat. V dalším kroku prozkoumáme mnohem lepší řešení, která vyžaduje trochu více práce počáteční ale výsledky v mnohem jednodušší údržbu aplikace.
 
-
 ## <a name="passing-data-to-view-master-pages"></a>Předání dat stránkám předlohy pro zobrazení
 
 Cílem tohoto kurzu je vysvětlují, jak můžete předat data z kontroleru na hlavní stránku zobrazení. Prozkoumáme dvou strategií pro předávání dat na hlavní stránku zobrazení. Nejprve si popíšeme jednoduchém řešení, která vede aplikaci, která je obtížné udržovat. V dalším kroku prozkoumáme mnohem lepší řešení, která vyžaduje trochu více práce počáteční ale výsledky v mnohem jednodušší údržbu aplikace.
@@ -32,11 +31,9 @@ Cílem tohoto kurzu je vysvětlují, jak můžete předat data z kontroleru na h
 
 Představte si, že vytváříte aplikace movie database a chcete zobrazit seznam kategorií video na každé stránce v aplikaci (viz obrázek 1). Představte si kromě toho, že seznam kategorií video je uložena v tabulce databáze. V takovém případě to dává smysl pro načtení daných kategorií z databáze a zobrazit seznam kategorií filmu v rámci hlavní stránky zobrazení.
 
-
 [![Zobrazení kategorií filmu v zobrazení stránky předlohy](passing-data-to-view-master-pages-vb/_static/image2.png)](passing-data-to-view-master-pages-vb/_static/image1.png)
 
 **Obrázek 01**: Zobrazení kategorií filmu v zobrazení stránky předlohy ([kliknutím ji zobrazíte obrázek v plné velikosti](passing-data-to-view-master-pages-vb/_static/image3.png))
-
 
 Tady je problém. Jak načtete seznam kategorií video na stránce předlohy Je lákavé přímo volat metody třídy modelu na hlavní stránce. Jinými slovy je lákavé obsahovalo kód pro načítání dat z databáze přímo v hlavní stránku. Ale obcházení vaše řadiče MVC pro přístup k databázi by mohla narušit jasně oddělit oblasti zájmu, který je jedním z hlavních výhod sestavení aplikace MVC.
 
@@ -58,11 +55,9 @@ Všimněte si, jak `Index()` a `Details()` akce přidání dvou položek, chcete
 
 `Details()` Akce také přidá dva klíče s názvem kategorie a videa. Kategorie klíč znovu, představuje seznamu kategorií video zobrazí při zobrazení stránky předlohy. Klíč filmy představuje seznam video v konkrétní kategorii, zobrazí na stránce podrobností zobrazení (viz obrázek 2).
 
-
 [![Zobrazení podrobností](passing-data-to-view-master-pages-vb/_static/image5.png)](passing-data-to-view-master-pages-vb/_static/image4.png)
 
 **Obrázek 02**: Zobrazení podrobností ([kliknutím ji zobrazíte obrázek v plné velikosti](passing-data-to-view-master-pages-vb/_static/image6.png))
-
 
 Zobrazení indexu je obsažen v informacích 2. Jednoduše Iteruje přes seznam filmy reprezentována filmy položku v zobrazení data.
 

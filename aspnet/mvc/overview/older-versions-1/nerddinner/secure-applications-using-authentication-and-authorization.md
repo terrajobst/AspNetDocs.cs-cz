@@ -8,12 +8,12 @@ ms.date: 07/27/2010
 ms.assetid: 9e4d5cac-b071-440c-b044-20b6d0c964fb
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/secure-applications-using-authentication-and-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: 102e4c2f1fe122669021a159b60f0943fe92fbf2
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 8d509c5f15bb4d5014e53b8dc2a736454238e72c
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396444"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65122231"
 ---
 # <a name="secure-applications-using-authentication-and-authorization"></a>Zabezpečení aplikací ověřováním a autorizací
 
@@ -26,7 +26,6 @@ by [Microsoft](https://github.com/microsoft)
 > Krok 9 ukazuje, jak přidat ověřování a autorizace pro zabezpečení naší aplikace NerdDinner tak, aby uživatelé potřebují k registraci a přihlášení na web za účelem vytvoření nové večeří a jenom uživatel, který je hostitelem dinner můžete upravit ho později.
 > 
 > Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
-
 
 ## <a name="nerddinner-step-9-authentication-and-authorization"></a>NerdDinner krok 9: Ověřování a autorizace
 

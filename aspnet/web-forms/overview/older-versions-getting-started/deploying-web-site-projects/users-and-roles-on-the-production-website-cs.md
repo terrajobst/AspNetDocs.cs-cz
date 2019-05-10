@@ -8,12 +8,12 @@ ms.date: 06/09/2009
 ms.assetid: dbc54313-5d05-4285-98b3-726edea6d0c9
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 691de0a29ce4798d2f18a58141b833db9cddb2d5
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2c213d443197e24168b4799056374ec25d0b6e0f
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396600"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134221"
 ---
 # <a name="users-and-roles-on-the-production-website-c"></a>Uživatelé a role na provozním webu (C#)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhnout PDF](http://download.microsoft.com/download/5/C/5/5C57DB8C-5DEA-4B3A-92CA-4405544D313B/aspnet_tutorial16_CustomAWAT_cs.pdf)
 
 > Nástroj pro správu webu technologie ASP.NET (WSAT) poskytuje webové uživatelské rozhraní pro konfiguraci nastavení členství a rolí a pro vytváření, úpravy a odstraňování uživatelů a rolí. Bohužel WSAT funguje pouze v případě uživatel přejde v localhost, což znamená, že nelze dosáhnout nástroj pro správu webu produkční prostřednictvím prohlížeče. Dobrou zprávou je, že jsou alternativní postupy, které umožňují spravovat uživatele a role v produkčním prostředí. V tomto kurzu zjistí těchto alternativních řešení a dalších.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -80,7 +79,6 @@ Nemůžete se přihlásit jako Sam ve vývojovém prostředí informace o uživa
 
 > [!NOTE]
 > Nezapomeňte změnit připojovací řetězec `databaseConnectionStrings.config` souboru zpět do databáze vývoje je připojovací řetězec, až to budete mít práce s jinak WSAT budete pracovat s použitím provozních dat při testování webu prostřednictvím vývoje prostředí. Také vzít v úvahu, zatímco technika, kterou jsme právě probírali nám umožňuje používat WSAT ke vzdálené správě uživatelů a rolí, měnit změny na žádné z ostatních WSAT konfigurace možností (pravidla přístupu, SMTP nastavení, ladění a trasování nastavení a tak dále) `Web.config` souboru. V důsledku toho všechny změny provedené nastavení použijí do vývojového prostředí a ne do produkčního prostředí.
-
 
 ## <a name="creating-custom-user-and-role-management-web-pages"></a>Vytvoření vlastního uživatele a roli správy webové stránky
 

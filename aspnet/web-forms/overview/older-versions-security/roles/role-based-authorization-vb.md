@@ -8,12 +8,12 @@ ms.date: 03/24/2008
 ms.assetid: 83b4f5a4-4f5a-4380-ba33-f0b5c5ac6a75
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/role-based-authorization-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 05b014538891e6c058c4d4bd4125de434f59d9fe
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 2cccb05d3bd18562ccc03ce0047ccea9b514abc7
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59389684"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65134627"
 ---
 # <a name="role-based-authorization-vb"></a>Ověřování založené na rolích (VB)
 
@@ -22,7 +22,6 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 [Stáhněte si kód](http://download.microsoft.com/download/6/0/3/6032582f-360d-4739-b935-38721fdb86ea/VB.11.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/0/3/6032582f-360d-4739-b935-38721fdb86ea/aspnet_tutorial11_RoleAuth_vb.pdf)
 
 > Tento kurz pracuje s podívat, jak rozhraní role přidruží role uživatele jeho kontext zabezpečení. Poté zkoumá, jak použít autorizačních pravidel adres URL na základě rolí. Následující, že se podíváme na pomocí deklarativní a programová prostředky pro změnu zobrazená data a funkce nabízené stránky ASP.NET.
-
 
 ## <a name="introduction"></a>Úvod
 
@@ -46,11 +45,9 @@ Obrázek 1 znázorňuje pracovním postupem kanálu ASP.NET při použití ově�
 
 Pokud anonymní uživatel navštíví web, ani `FormsAuthenticationModule` ani `RoleManagerModule` vytvoří objekt zabezpečení.
 
-
 [![Události kanálu ASP.NET pro ověřeného uživatele při použití ověřování pomocí formulářů a rozhraní role](role-based-authorization-vb/_static/image2.png)](role-based-authorization-vb/_static/image1.png)
 
 **Obrázek 1**: Události kanálu ASP.NET pro k ověření uživatele při použití ověřování pomocí formulářů a rozhraní role ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image3.png))
-
 
 ### <a name="caching-role-information-in-a-cookie"></a>Ukládání do mezipaměti informace o rolích do souboru cookie
 
@@ -58,17 +55,14 @@ Pokud anonymní uživatel navštíví web, ani `FormsAuthenticationModule` ani `
 
 Pokud role framework je nakonfigurovaný pro ukládání do mezipaměti role uživatele do souboru cookie `RoleManagerModule` během profilace ASP.NET vytvoří soubor cookie [ `EndRequest` události](https://msdn.microsoft.com/library/system.web.httpapplication.endrequest.aspx). Tento soubor cookie se používá v následné žádosti v `PostAuthenticateRequest`, což je, když `RolePrincipal` je vytvořen objekt. Pokud má soubor cookie platný a nevypršela, data v souboru cookie, který je analyzovat a použitých k naplnění rolí uživatele, a tím ukládání `RolePrincipal` nebudou muset provést volání do `Roles` třídu k určení rolí uživatele. Obrázek 2 znázorňuje tento pracovní postup.
 
-
 [![Informace o rolích uživatele mohou být uloženy do souboru cookie kvůli zvýšení výkonu](role-based-authorization-vb/_static/image5.png)](role-based-authorization-vb/_static/image4.png)
 
 **Obrázek 2**: Uživatelské Role informace mohou být uloženy do souboru cookie ke zlepšení výkonu ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image6.png))
-
 
 Ve výchozím nastavení je zakázána mechanismus roli mezipaměti souborů cookie. Povolit prostřednictvím `<roleManager>`; konfigurace značek v `Web.config`. Jsme probírali pomocí [ `<roleManager>` element](https://msdn.microsoft.com/library/ms164660.aspx) určit zprostředkovatele rolí v <a id="_msoanchor_4"> </a> [ *vytváření a Správa rolí* ](creating-and-managing-roles-vb.md) kurzu Proto byste už měli mít tento element ve vaší aplikaci `Web.config` souboru. Nastavení mezipaměti souborů cookie role jsou zadané jako atributy `<roleManager>`; element a jsou shrnutá v tabulce 1.
 
 > [!NOTE]
 > Konfigurace nastavení uvedená v tabulce 1 zadejte vlastnosti výsledného souboru cookie roli mezipaměti. Další informace o souborech cookie, jak fungují a jejich různé vlastnosti čtení [v tomto kurzu soubory cookie](http://www.quirksmode.org/js/cookies.html).
-
 
 | <strong>Vlastnost</strong> |                                                                                                                                                                                                                                                                                                                                                         <strong>Popis</strong>                                                                                                                                                                                                                                                                                                                                                          |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -96,7 +90,6 @@ A je to! Rozhraní role se od nynějška, ukládat do mezipaměti rolí uživate
 > [!NOTE]
 > Microsoftu pro vzory &amp; odrazuje skupiny postupy od používání souborů cookie trvalý roli mezipaměti. Vzhledem k tomu, že vlastníkem daného souboru cookie mezipaměti roli je dostatečná prokázat, že členství v roli, pokud se hacker nějakým způsobem můžete získat přístup k souboru cookie platné uživatelské mohl zosobnit uživatele. Pravděpodobnost takových případů zvětší, když je soubor cookie se ukládají v prohlížeči uživatele. Další informace o toto doporučení zabezpečení, stejně jako ostatní otázky zabezpečení, najdete [seznam otázek zabezpečení pro technologii ASP.NET 2.0](https://msdn.microsoft.com/library/ms998375.aspx).
 
-
 ## <a name="step-1-defining-role-based-url-authorization-rules"></a>Krok 1: Definování autorizačních pravidel adres URL na základě rolí
 
 Jak je popsáno v <a id="_msoanchor_6"> </a> [ *autorizace na základě uživatele* ](../membership/user-based-authorization-vb.md) kurzu autorizace adres URL nabízí prostředky pro omezení přístupu k sadě stránek na uživatele podle uživatele nebo roli role základ. Adresa URL autorizační pravidla jsou vypsány v `Web.config` pomocí [ `<authorization>` element](https://msdn.microsoft.com/library/8d82143t.aspx) s `<allow>` a `<deny>` podřízené prvky. Kromě související s uživateli autorizačních pravidel popsaných v předchozích kurzech se každý `<allow>` a `<deny>` může také obsahovat podřízený element:
@@ -114,11 +107,9 @@ Nakonfigurujeme naši aplikaci tak, aby `ManageRoles.aspx`, `UsersAndRoles.aspx`
 
 K tomu, začněte přidáním `Web.config` do souboru `Roles` složky.
 
-
 [![Přidat soubor Web.config pro role adresáře](role-based-authorization-vb/_static/image8.png)](role-based-authorization-vb/_static/image7.png)
 
 **Obrázek 3**: Přidat `Web.config` do souboru `Roles` adresáře ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image9.png))
-
 
 V dalším kroku přidejte následující kód do konfigurace `Web.config`:
 
@@ -128,23 +119,18 @@ V dalším kroku přidejte následující kód do konfigurace `Web.config`:
 
 Po uložení změn `Web.config`, přihlaste se jako uživatel, který se nenachází v roli správce a poté na některém z chráněných stránky. `UrlAuthorizationModule` Zjistí, že nemáte oprávnění k navštívení požadovaný prostředek; v důsledku toho `FormsAuthenticationModule` přesměruje vás na přihlašovací stránku. Na stránce přihlášení vás pak přesměruje na `UnauthorizedAccess.aspx` stránky (viz obrázek 4). Tento poslední přesměrování z přihlašovací stránky k `UnauthorizedAccess.aspx` nastává z důvodu kódu jsme přidali na stránku pro přihlášení v kroku 2 <a id="_msoanchor_7"> </a> [ *autorizace na základě uživatele* ](../membership/user-based-authorization-vb.md) kurzu. Konkrétně se na přihlašovací stránku automaticky přesměruje všem ověřeným uživatelům `UnauthorizedAccess.aspx` pokud obsahuje řetězec dotazu `ReturnUrl` parametr, jako tento parametr určuje, že uživatel dorazily na přihlašovací stránku po pokusu o zobrazení stránky, pracoval bruno není oprávnění k zobrazení.
 
-
 [![Jenom uživatelé v roli správce můžete zobrazit chráněné stránky](role-based-authorization-vb/_static/image11.png)](role-based-authorization-vb/_static/image10.png)
 
 **Obrázek 4**: Jenom uživatelé v roli správce můžete zobrazit na stránkách chráněné ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image12.png))
 
-
 Odhlásit a pak se přihlaste jako uživatel, který je v roli správce. Teď byste měli moct zobrazit tři stránky chráněné.
-
 
 [![Navštívit tito UsersAndRoles.aspx stránce vzhledem k tomu, že je v roli správce](role-based-authorization-vb/_static/image14.png)](role-based-authorization-vb/_static/image13.png)
 
 **Obrázek 5**: Navštívit tito `UsersAndRoles.aspx` stránce vzhledem k tomu, že je v roli správce ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image15.png))
 
-
 > [!NOTE]
 > Při zadávání autorizačních pravidel adres URL – rolí nebo uživatelů – je důležité mít na paměti, že pravidla jsou analyzované jeden po druhém, shora dolů. Jakmile se najde shoda, je uživatel povolen nebo odepřen přístup, v závislosti na if v byla nalezena shoda `<allow>` nebo `<deny>` elementu. **Pokud není nalezena žádná shoda, uživateli je udělen přístup.** V důsledku toho pokud chcete omezit přístup k jedné nebo více uživatelských účtů, je nutné použít `<deny>` prvek jako poslední prvek v konfiguraci autorizace adresy URL. **Pokud neobsahují autorizačních pravidel adres URL**`<deny>`**elementu, všichni uživatelé budou mít přístup.** Podrobnější informace o tom, jak se analyzují autorizačních pravidel adres URL, vraťte se do "podívat, jak `UrlAuthorizationModule` používá autorizační pravidla udělit nebo odepřít přístup" část <a id="_msoanchor_8"> </a> [  *Autorizace na základě uživatele* ](../membership/user-based-authorization-vb.md) kurzu.
-
 
 ## <a name="step-2-limiting-functionality-based-on-the-currently-logged-in-users-roles"></a>Krok 2: Omezení funkcí podle aktuálně přihlášený role uživatele.
 
@@ -157,7 +143,6 @@ Pojďme vytvořit stránku, která obsahuje seznam všech uživatelských účt�
 > [!NOTE]
 > Stránky ASP.NET, které se chystáte sestavení používá k zobrazení uživatelských účtů ovládacím prvku GridView. Od tohoto kurzu, kterou řada se zaměřuje na ověřování pomocí formulářů, autorizace, uživatelských účtů a rolí nechci strávit příliš mnoho času diskuze o vnitřní fungování ovládacího prvku GridView. Tento kurz poskytuje konkrétní podrobné pokyny pro nastavení této stránky, ne delve podrobnosti, proč byly provedeny některé možnosti, nebo konkrétní vlastnosti vliv mají na vykresleného výstupu. Pro důkladné přezkoumání ovládacího prvku GridView, podívejte se na můj *[pracovat s daty v ASP.NET 2.0](../../data-access/index.md)* série kurzů.
 
-
 Začněte otevřením `RoleBasedAuthorization.aspx` stránku `Roles` složky. Přetáhněte GridView ze stránky do návrháře a nastavte jeho `ID` k `UserGrid`. Za chvíli budeme psát kód, který volá `Membership`.`GetAllUsers` Metoda a sváže s výsledný `MembershipUserCollection` objektu do prvku GridView. `MembershipUserCollection` Obsahuje `MembershipUser` objekt pro každý uživatelský účet v systému. `MembershipUser` objekty mají vlastnosti, jako je `UserName`,`Email`,`LastLoginDate` a tak dále.
 
 Předtím, než jsme napsali kód, který váže uživatelské účty do mřížky, Pojďme nejdříve definovat pole prvku GridView. Inteligentní značky prvku GridView, klikněte na odkaz "Upravit sloupce" Spustit dialogové okno pole (viz obrázek 6). Z tohoto místa, zrušte zaškrtnutí políčka "Automatické generování pole" v levém dolním rohu. Protože chceme, aby tento GridView zahrnout úpravy a odstranění možnosti, přidejte CommandField a nastavit jeho `ShowEditButton` a `ShowDeleteButton` vlastnosti na hodnotu True. V dalším kroku přidejte čtyři pole pro zobrazení `UserName`, `Email`, `LastLoginDate`, a `Comment` vlastnosti. Použít vlastnost BoundField pro dvě vlastnosti jen pro čtení (`UserName` a `LastLoginDate`) a vlastností TemplateField v obou polích upravitelné (`Email` a `Comment`).
@@ -166,11 +151,9 @@ Mít první zobrazení Vlastnost BoundField `UserName` vlastnost; nastavte jeho 
 
 Nastavte `HeaderText` vlastnosti dvou vlastností TemplateField "Email" a "Komentář".
 
-
 [![Pole prvku GridView je možné nakonfigurovat pomocí pole dialogových oken](role-based-authorization-vb/_static/image17.png)](role-based-authorization-vb/_static/image16.png)
 
 **Obrázek 6**: Prvku GridView pole může být nakonfigurované přes the dialogové okno pole ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image18.png))
-
 
 Nyní potřebujeme k definování `ItemTemplate` a `EditItemTemplate` "Email" a "Komentář" vlastností TemplateField. Přidání ovládacího prvku popisku k jednotlivým `ItemTemplates` a vytvořit vazbu jejich `Text` vlastnosti, které chcete `Email` a `Comment` vlastnosti, v uvedeném pořadí.
 
@@ -192,15 +175,12 @@ Nyní jsme dokončili deklarativní tuto stránku. Naše dalším úkolem je sad
 
 S tímto kódem na místě navštivte stránku prostřednictvím prohlížeče. Jak je vidět na obrázku 7, měli byste vidět GridView výpis informace o jednotlivých uživatelských účtů v systému.
 
-
 [![UserGrid GridView uvádí informace o jednotlivých uživatelů v systému](role-based-authorization-vb/_static/image20.png)](role-based-authorization-vb/_static/image19.png)
 
 **Obrázek 7**: `UserGrid` GridView uvádí informace o každý uživatel v systému ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image21.png))
 
-
 > [!NOTE]
 > `UserGrid` GridView obsahuje seznam všech uživatelů v nestránkovaném rozhraní. Toto rozhraní jednoduché tabulky není vhodné pro scénáře, kdy existuje několik desítek nebo více uživatelů. Jednou z možností je nakonfigurovat pro povolení stránkování prvku GridView. `Membership.GetAllUsers` Metoda má dvě přetížení: jednu, která nepřijímá žádné vstupní parametry a vrátí všechny uživatele a jednu, která přijímá celočíselné hodnoty pro index stránky a velikost stránky a vrátí pouze zadaný dílčí sadu uživatelů. Druhé přetížení je možné efektivněji stránkovat uživatele vzhledem k tomu, že vrátí jenom na přesné podmnožinu uživatelské účty spíše než *všechny* z nich. Pokud máte tisíce uživatelské účty, můžete chtít zvážit filtru rozhraní, ten, který se zobrazí pouze tito uživatelé, jejichž uživatelské jméno začíná znakem vybrané pro instanci. [ `Membership.FindUsersByName` Metoda](https://msdn.microsoft.com/library/system.web.security.membership.findusersbyname.aspx) je ideální pro vytvoření filtru na základě uživatelského rozhraní. Podíváme se na vytváření takových rozhraní v budoucích kurzech.
-
 
 Ovládací prvek GridView nabízí integrovanou úpravy a odstranění podpory, když je ovládací prvek vázán na správně nakonfigurovaných data správy zdrojového kódu, jako je například SqlDataSource nebo prvku ObjectDataSource. `UserGrid` Prvku GridView, má ale jeho data prostřednictvím kódu programu vázaná; proto jsme musíte napsat kód k provedení těchto dvou úloh. Konkrétně budeme muset vytváření obslužných rutin událostí pro prvku GridView `RowEditing`, `RowCancelingEdit`, `RowUpdating`, a `RowDeleting` události, které jsou aktivovány, pokud návštěvník prvku GridView klikne na tlačítko Upravit, zrušení, aktualizaci, nebo odstranění tlačítka.
 
@@ -221,7 +201,6 @@ Výše obslužná rutina události začne zachytávat `UserName` hodnotu z prvku
 > [!NOTE]
 > Tlačítko Odstranit nevyžaduje, aby jakýkoli druh potvrzení od uživatele před odstraněním účtu uživatele. Můžu vám doporučujeme přidat nějakou formu potvrzení uživatele Chcete-li snížit riziko náhodnému odstranění účtu. Jedním z nejjednodušších způsobů k potvrzení akce je prostřednictvím dialogového okna potvrdit na straně klienta. Další informace o této techniky najdete v tématu [přidání Client-Side potvrzení při odstraňování](https://asp.net/learn/data-access/tutorial-42-vb.aspx).
 
-
 Ověřte, že tato stránka funguje podle očekávání. Je třeba moct upravovat libovolný uživatel e-mailovou adresu a komentáře, jakož i odstranit libovolný uživatelský účet. Vzhledem k tomu, `RoleBasedAuthorization.aspx` stránka je přístupný pro všechny uživatele, každý uživatel – i anonymní návštěvníků – můžete tuto stránku a upravovat a odstraňovat uživatelské účty! Umožňuje aktualizovat tuto stránku tak, že jenom uživatelé v rolích správců a správců můžete upravit uživatele e-mailovou adresu a přidejte komentář a pouze správci mohou odstranit uživatelský účet.
 
 V části "Použití ovládací prvek zobrazení přihlášení" zjistí pomocí ovládacího prvku LoginView zobrazíte pokyny specifické pro roli uživatele. Pokud uživatel v roli správce navštíví tuto stránku, vám ukážeme pokyny o tom, jak upravit a odstranit uživatele. Pokud uživatel do role správců dosáhne této stránky, budeme se zobrazí pokyny na úpravy uživatelů. A pokud návštěvníka je anonymní, nebo se nenachází v roli správci nebo správci, zobrazí se zpráva s vysvětlením, že se nedají upravit ani odstranit informace o uživatelském účtu. V části "Programově omezení funkce" napíšeme kód, který se prostřednictvím kódu programu zobrazí nebo skryje tlačítko Upravit a odstranit na základě role uživatele.
@@ -238,11 +217,9 @@ Kromě `AnonymousTemplate` a `LoggedInTemplate`, mohou zahrnovat ovládacího pr
 
 Ke správě kolekci RoleGroups, klikněte na odkaz "Upravit kolekci RoleGroups" z inteligentní značky ovládacího prvku zpřístupnit nahoru Editor kolekce RoleGroup. Přidejte dva nové kolekci RoleGroups. Nastavte první RoleGroup `Roles` vlastnost "Administrators" a na "Nadřízeným" druhé.
 
-
 [![Správa šablon specifické pro Role LoginView prostřednictvím Editor kolekce RoleGroup.](role-based-authorization-vb/_static/image23.png)](role-based-authorization-vb/_static/image22.png)
 
 **Obrázek 8**: Správa LoginView konkrétní Role šablony prostřednictvím the Editor kolekce RoleGroup. ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image24.png))
-
 
 Kliknutím na OK zavřete Editor kolekce RoleGroup.; Tím se aktualizuje LoginView deklarativní zahrnout `<RoleGroups>` části s `<asp:RoleGroup>` podřízený element pro každé RoleGroup definované v Editor kolekce RoleGroup. Navíc "Zobrazení" rozevírací seznam v inteligentních značek LoginView – které původně uvedeny jenom `AnonymousTemplate` a `LoggedInTemplate` – teď zahrnuje přidání kolekci RoleGroups také.
 
@@ -254,26 +231,21 @@ Po provedení těchto změn, uložit na stránku a potom navštivte pomocí proh
 
 V dalším kroku přihlaste jako uživatel, který je členem role správců. Tentokrát by se měla zobrazit konkrétní role správců zprávy (viz obrázek 9). A pokud jste přihlášení jako uživatel v roli, měli byste vidět konkrétní role Správci zprávy (viz obrázek 10) správců.
 
-
 [![Bruce se zobrazí zpráva konkrétní Role správců](role-based-authorization-vb/_static/image26.png)](role-based-authorization-vb/_static/image25.png)
 
 **Obrázek 9**: Bruce se zobrazí zpráva konkrétní Role správců ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image27.png))
-
 
 [![Tito se zobrazí zprávy specifické pro roli správce](role-based-authorization-vb/_static/image29.png)](role-based-authorization-vb/_static/image28.png)
 
 **Obrázek 10**: Tito se zobrazí zprávy specifické pro roli správce ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image30.png))
 
-
 Jako snímky obrazovky v obrázcích 9 a 10 zobrazit vykreslí LoginView pouze jedna šablona i v případě, že platí více šablon. Bruce a Tito i přihlášení uživatele, ale LoginView vykreslí pouze odpovídající RoleGroup a ne `LoggedInTemplate`. Kromě toho Tito patří do role správců a správců, ale ovládacího prvku LoginView vykreslí šablon specifické pro roli správci místo vedoucí jednoho.
 
 Obrázek 11 znázorňuje použit v ovládacím prvku LoginView stanovit, jakou šablonu k vykreslení pracovního postupu. Všimněte si, že pokud je více než jeden zadaný RoleGroup šablony LoginView vykreslí *první* RoleGroup, který odpovídá. Jinými slovy Pokud jsme měli umístit RoleGroup nadřízeným jako první RoleGroup a správci jako druhý, pak když Tito uživatel tuto stránku mu zobrazoval se vám zpráva správců.
 
-
 [![Ovládacího prvku LoginView pracovního postupu pro určení, jaké šablony pro vykreslení](role-based-authorization-vb/_static/image32.png)](role-based-authorization-vb/_static/image31.png)
 
 **Obrázek 11**: Ovládacího prvku LoginView pracovního postupu pro určení, co šablona pro vykreslení ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image33.png))
-
 
 ### <a name="programmatically-limiting-functionality"></a>Programová omezení funkcí
 
@@ -281,11 +253,9 @@ Zatímco ovládacího prvku LoginView zobrazí různé pokyny na základě role 
 
 Nejjednodušší způsob, jak prostřednictvím kódu programu odkazovat na ovládací prvky CommandField je nejprve převeďte do šablony. K tomu, klikněte na odkaz "Upravit sloupce" z inteligentních značek v prvku GridView, vyberte CommandField ze seznamu aktuálního pole a klikněte na odkaz "Převést toto pole TemplateField". Tím se změní CommandField TemplateField s `ItemTemplate` a `EditItemTemplate`. `ItemTemplate` Obsahuje úpravy a odstranění LinkButtons při `EditItemTemplate` jsou uloženy aktualizace a LinkButtons zrušit.
 
-
 [![Převést CommandField TemplateField](role-based-authorization-vb/_static/image35.png)](role-based-authorization-vb/_static/image34.png)
 
 **Obrázek 12**: Převést CommandField do TemplateField ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image36.png))
-
 
 Upravit a odstranit LinkButtons v aktualizaci `ItemTemplate`a nastavte jejich `ID` vlastnosti a hodnoty `EditButton` a `DeleteButton`v uvedeném pořadí.
 
@@ -304,7 +274,6 @@ Pokud jsme pracovali s řádek dat, který není v režimu úprav, upravit a ods
 > [!NOTE]
 > Jsme mohli použít role třídy přímo, nahraďte volání `User.IsInRole(roleName)` voláním [ `Roles.IsUserInRole(roleName)` metoda](https://msdn.microsoft.com/library/system.web.security.roles.isuserinrole.aspx). Jsem se rozhodla používat objekt zabezpečení `IsInRole(roleName)` metoda v tomto příkladě vzhledem k tomu je mnohem efektivnější než přímo pomocí rozhraní API rolí. Dříve v tomto kurzu jsme nakonfigurovali Správce rolí pro ukládání do mezipaměti role uživatele v souboru cookie. Tento soubor cookie dat uložených v mezipaměti je využít pouze při daného objektu zabezpečení `IsInRole(roleName)` metoda je volána, Přímá volání rozhraní API rolí vždy zahrnovat postoupí do úložiště rolí. I v případě, že role nejsou uložené v mezipaměti v souboru cookie, volání objektu zabezpečení `IsInRole(roleName)` metoda je obvykle efektivnější, protože když je volána pro poprvé během požadavku se ukládá do mezipaměti výsledky. Rozhraní API rolí na druhé straně neprovádí žádné ukládání do mezipaměti. Vzhledem k tomu, `RowCreated` událost je aktivována jednou pro každý řádek v prvku GridView, pomocí `User.IsInRole(roleName)` zahrnuje pouze jednu cestu k úložišti role vzhledem k tomu `Roles.IsUserInRole(roleName)` vyžaduje *N* zkracuje dobu odezvy, kde *N* je Počet uživatelských účtů, zobrazují v mřížce.
 
-
 Tlačítko Upravit `Visible` je nastavena na `True` Pokud je uživatel na této stránce v roli správci nebo správci; jinak je nastavená na `False`. Tlačítko pro odstranění `Visible` je nastavena na `True` pouze v případě, že je uživatel v roli správce.
 
 Vyzkoušejte tuto stránku prostřednictvím prohlížeče. Pokud jste na stránce jako anonymní návštěvníků nebo jako uživatel, který není nadřízeným ani správcem, CommandField je prázdná. je stále existuje, ale jako dynamického zajišťování sliver bez úpravy nebo odstranění tlačítka.
@@ -312,27 +281,21 @@ Vyzkoušejte tuto stránku prostřednictvím prohlížeče. Pokud jste na strán
 > [!NOTE]
 > Je možné skrýt CommandField úplně při bez nadřízeného a bez oprávnění správce je na stránce. Můžu ponechte toto cvičení pro čtečku.
 
-
 [![Upravit a odstranit tlačítka jsou skryté jiných správců a správců bez](role-based-authorization-vb/_static/image38.png)](role-based-authorization-vb/_static/image37.png)
 
 **Obrázek 13**: Upravit a odstranit tlačítka jsou skryté jiných správců a správců bez ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image39.png))
 
-
 Pokud uživatel, který patří do role správců (ale ne k roli Administrators) navštíví, uvidí jenom na tlačítko Upravit.
-
 
 [![Tlačítko Upravit je k dispozici pro vedoucí, je skrytý tlačítko Odstranit](role-based-authorization-vb/_static/image41.png)](role-based-authorization-vb/_static/image40.png)
 
 **Obrázek 14**: Tlačítko Upravit je k dispozici pro vedoucí, tlačítko Odstranit je skrytý ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image42.png))
 
-
 A pokud správce navštíví, které má přístup k tlačítka úpravy a odstranění.
-
 
 [![Upravit a odstranit tlačítka jsou k dispozici pouze pro správce](role-based-authorization-vb/_static/image44.png)](role-based-authorization-vb/_static/image43.png)
 
 **Obrázek 15**: Upravit a odstranit tlačítka jsou k dispozici pouze pro správce ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image45.png))
-
 
 ## <a name="step-3-applying-role-based-authorization-rules-to-classes-and-methods"></a>Krok 3: Použití pravidel ověřování na základě Role u tříd a metod
 
@@ -348,18 +311,14 @@ Přiblížíme pomocí `PrincipalPermission` atribut v prvku GridView `RowUpdati
 
 Atribut pro `RowUpdating` obslužná rutina události přikazuje, že jenom uživatelé v rolích správců nebo správců můžete spustit obslužnou rutinu události, kde jako atribut `RowDeleting` obslužná rutina události omezuje spuštění pro uživatele ve Správci role.
 
-
 > [!NOTE]
 > `PrincipalPermission` Atribut je reprezentovaný jako třída v `System.Security.Permissions` oboru názvů. Nezapomeňte si přidat `Imports System.Security.Permissions` příkazu v horní části souboru třídy modelu code-behind import tohoto oboru názvů.
 
-
 Pokud nějakým způsobem, který není správcem pokusy o spuštění `RowDeleting` obslužná rutina události, nebo pokud bez správce nebo bez oprávnění správce pokusí spustit `RowUpdating` obslužná rutina události, vyvolá se modul .NET runtime `SecurityException`.
-
 
 [![Pokud je kontext zabezpečení nemá oprávnění k provádění metody, je vyvolána SecurityException –](role-based-authorization-vb/_static/image47.png)](role-based-authorization-vb/_static/image46.png)
 
 **Obrázek 16**: Pokud je kontext zabezpečení nemá oprávnění k provádění metody, `SecurityException` je vyvolána výjimka ([kliknutím ji zobrazíte obrázek v plné velikosti](role-based-authorization-vb/_static/image48.png))
-
 
 Kromě stránek ASP.NET mají mnoho aplikací také architekturu, která zahrnuje různé vrstvy, jako je například obchodní logiky a vrstvy přístupu k datům. Tyto vrstvy jsou obvykle implementovány jako knihovny tříd a nabízejí třídy a metody pro provádění obchodní logiku a data související funkce. `PrincipalPermission` Atribut je užitečné při použití autorizační pravidla i tyto vrstvy.
 

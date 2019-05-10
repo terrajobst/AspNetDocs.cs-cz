@@ -8,12 +8,12 @@ ms.date: 07/27/2010
 ms.assetid: 5c6371c0-a944-4adf-a28e-5afbdd011ca8
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/nerddinner-wrap-up
 msc.type: authoredcontent
-ms.openlocfilehash: 49c5f762fdd6d99f1af8a10d057852299a266e50
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 4e25a4a3a953e97c9a292506a9511f28874925ab
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59421040"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65128357"
 ---
 # <a name="nerddinner-wrap-up"></a>Zabalení aplikace NerdDinner
 
@@ -24,7 +24,6 @@ by [Microsoft](https://github.com/microsoft)
 > To je do svého závěru kurzu NerdDinner a poskytuje informace o tom, jak získat další informace.
 > 
 > Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
-
 
 Naše aplikace NerdDinner je nyní dokončena a připravena k nasazení na webu.
 

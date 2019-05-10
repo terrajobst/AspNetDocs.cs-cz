@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: f4cc2d40-6a78-429b-b06f-07d000d4caad
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 4da291af4042e6e09c6917703b160ca717eecd15
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: a262ce43d7199fb1015d54d0b7c213857c360946
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59407988"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133894"
 ---
 # <a name="excluding-files-and-folders-from-deployment"></a>Vyloučení souborů a složek z nasazení
 
@@ -22,7 +22,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Toto téma popisuje, jak můžete vyloučit soubory a složky z balíčku pro nasazení webu při sestavení a zabalení webové aplikace.
-
 
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
@@ -48,7 +47,6 @@ Pokud zvolíte **pouze soubory potřebné ke spuštění této aplikace**, WPP s
 > [!NOTE]
 > Logika, která určuje soubory, které chcete zahrnout je obsažen v tomto souboru:   
 > *%ProgramFiles%\MSBuild\Microsoft\VisualStudio\v10.0\Web\ Microsoft.Web.Publishing.OnlyFilesToRunTheApp.targets*
-
 
 ## <a name="excluding-specific-files-and-folders"></a>Vyloučení určitých souborů a složek
 
@@ -77,9 +75,7 @@ I když může pracovat s souborů vyloučit konkrétní soubory a složky proje
 
 Toto je základní struktura *. wpp.targets* souboru:
 
-
 [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample1.xml)]
-
 
 Všimněte si, že každá položka obsahuje prvek položky metadat s názvem **FromTarget**. Toto je volitelná hodnota, která nemá vliv na procesu sestavení. jednoduše slouží k označení, proč byly vynechány konkrétní soubory nebo složky, pokud někdo kontroluje protokoly sestavení.
 

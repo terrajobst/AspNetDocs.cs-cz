@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: 55f1ae45-fcb5-43a9-8415-fa5b935fc9c9
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/running-windows-powershell-scripts-from-msbuild-project-files
 msc.type: authoredcontent
-ms.openlocfilehash: 198f8c907cf866bd0fd1ae67cf7169a63dda4bc9
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 7b09c07b8b7c2a61ca534f7a66a929593f3d04ca
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59384687"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65131561"
 ---
 # <a name="running-windows-powershell-scripts-from-msbuild-project-files"></a>Spuštění skriptů Windows PowerShellu ze souborů projektu MSBuild
 
@@ -35,7 +35,6 @@ podle [Jason Lee](https://github.com/jrjlee)
 > 
 > Toto téma se zobrazí spuštění skriptů Windows Powershellu z vlastního cíle v souboru projektu Microsoft Build Engine (MSBuild) místně i vzdáleně.
 
-
 Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
 
 Metody nasazení v srdci těchto kurzů je založen na rozdělení přístupu soubor projektu je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve které je řízena procesem sestavení dva soubory projektu&#x2014;jeden obsahující pokyny, které platí pro všechny cílové prostředí a jeden obsahuje nastavení pro konkrétní prostředí sestavení a nasazení pro sestavení. V okamžiku sestavení souboru projektu specifických pro prostředí se sloučí do souboru projektu bez ohledu na prostředí a vytvoří kompletní sadu pokynů sestavení.
@@ -55,15 +54,11 @@ Toto téma se ukazují, jak provést tyto postupy. Úlohy a názorné postupy v 
 
 Úlohy v tomto tématu použijte ukázkový skript prostředí Windows PowerShell s názvem **LogDeploy.ps1** si ukážeme, jak spouštět skripty MSBuild. **LogDeploy.ps1** skript obsahuje jednoduchou funkci, která zapíše položku jedním řádkem do souboru protokolu:
 
-
 [!code-powershell[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample1.ps1)]
-
 
 **LogDeploy.ps1** skript přijímá dva parametry. První parametr představuje úplnou cestu k souboru protokolu, do které chcete přidat položku, a druhý parametr představuje cíl nasazení, který chcete nahrát do souboru protokolu. Když spustíte skript, přidá nový řádek do souboru protokolu v tomto formátu:
 
-
 [!code-html[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample2.html)]
-
 
 Chcete-li **LogDeploy.ps1** skript k dispozici pro MSBuild, budete muset:
 
@@ -82,21 +77,15 @@ V některých případech můžete chtít spustit skripty Windows Powershellu na
 
 Z hlediska syntaxi skriptu Windows Powershellu ze souboru projektu MSBuild je stejný jako regulární příkazovém řádku spustíte skript prostředí Windows PowerShell. Je nutné vyvolat powershell.exe spustitelný soubor a použít **– příkaz** přepínač k poskytování příkazů Windows Powershellu, aby fungoval. (V prostředí Windows PowerShell verze 2, můžete také použít **– soubor** přepínače). Příkaz by měl provést tento formát:
 
-
 [!code-console[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample3.cmd)]
-
 
 Příklad:
 
-
 [!code-console[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample4.cmd)]
-
 
 Pokud cesta ke skriptu obsahuje mezery, budete muset uzavřít cesta k souboru v jednoduchých uvozovkách předchází znak ampersand. Dvojité uvozovky, nemůžete použít, protože jste už použili k uzavření příkazu:
 
-
 [!code-console[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample5.cmd)]
-
 
 Existuje několik dalších důležitých informací při vyvolání tento příkaz MSBuild. Nejprve, měli byste zahrnout **– NonInteractive** příznak Ujistěte se, že se skript spustí tiše. V dalším kroku, měli byste zahrnout **– ExecutionPolicy** příznak s hodnotou odpovídající argument. Toto nastavení určuje zásady spouštění, že bude vztahovat na váš skript prostředí Windows PowerShell a umožňuje potlačit výchozí zásadu spouštění, což může zabránit spuštění skriptu. Můžete vybrat z těchto argumentů:
 
@@ -114,15 +103,11 @@ Nakonec musíte řídicí vyhrazené znaky XML, ke kterým dochází v příkazu
 
 - Pokud provedete tyto změny, bude příkaz vypadat takto:
 
-
 [!code-console[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample6.cmd)]
-
 
 V rámci vlastního souboru projektu MSBuild, můžete vytvořit nový cíl a použít **Exec** úkolů ke spuštění tohoto příkazu:
 
-
 [!code-xml[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample7.xml)]
-
 
 V tomto příkladu Všimněte si, že:
 
@@ -139,34 +124,24 @@ Prostředí Windows PowerShell je schopen spuštění skriptů ve vzdálených p
 > [!NOTE]
 > Než použijete **Invoke-Command** rutiny prostředí Windows PowerShell spouštět skripty ve vzdáleném počítači, je nutné nakonfigurovat naslouchací proces služby WinRM tak, aby přijímal vzdálená zprávy. Můžete to provést spuštěním příkazu **winrm quickconfig** na vzdáleném počítači. Další informace najdete v tématu [instalace a konfigurace pro Windows Vzdálená správa](https://msdn.microsoft.com/library/windows/desktop/aa384372(v=vs.85).aspx).
 
-
 V okně Windows Powershellu, můžete využít tuto syntaxi pro spuštění **LogDeploy.ps1** skriptů ve vzdáleném počítači:
 
-
 [!code-powershell[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample8.ps1)]
-
 
 > [!NOTE]
 > Existují různé způsoby použití **Invoke-Command** ke spuštění skriptu je nejvíc přímočarý soubor, ale tento přístup při je potřeba zadat hodnoty parametrů a spravovat cesty obsahující mezery.
 
-
 Pokud při spuštění z příkazového řádku, je potřeba vyvolat spustitelný soubor Windows Powershellu a použít **– příkaz** parametr vaše pokyny:
-
 
 [!code-console[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample9.cmd)]
 
-
 Jako dříve, budete muset zadat nějaké další přepínače a řídicí vyhrazené znaky XML, když spustíte příkaz MSBUILD:
-
 
 [!code-console[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample10.cmd)]
 
-
 A konečně, stejně jako dříve, můžete použít **Exec** úkol v rámci vlastního cíle nástroje MSBuild pro provedení příkazu:
 
-
 [!code-xml[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample11.xml)]
-
 
 Při spouštění tohoto cíle jako součást procesu sestavení prostředí Windows PowerShell se spustí skript na počítači zadaném v **– computername** argument.
 
