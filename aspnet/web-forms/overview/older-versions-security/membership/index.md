@@ -8,25 +8,24 @@ ms.date: 10/05/2011
 ms.assetid: 96fc5552-05cd-4547-909f-9bb3176e44d6
 msc.legacyurl: /web-forms/overview/older-versions-security/membership
 msc.type: chapter
-ms.openlocfilehash: 7cb965a79cf9d367b74efa2fe1fd1493cce1c19e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: eca16fea2cce2cef84e0a66e18c1bee0b9e54e94
+ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59414605"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65133088"
 ---
-# <a name="aspnet-35---membership"></a><span data-ttu-id="1f143-103">ASP.NET 3.5 – členství</span><span class="sxs-lookup"><span data-stu-id="1f143-103">ASP.NET 3.5 - Membership</span></span>
+# <a name="aspnet-35---membership"></a><span data-ttu-id="17a81-103">ASP.NET 3.5 – členství</span><span class="sxs-lookup"><span data-stu-id="17a81-103">ASP.NET 3.5 - Membership</span></span>
 
-> <span data-ttu-id="1f143-104">V této sérii kurzů prozkoumá techniky pro použití systému integrované členství (zabezpečení) vytvořit uživatelské účty a konfigurace autorizačních pravidel.</span><span class="sxs-lookup"><span data-stu-id="1f143-104">This tutorial series examines techniques for using the built-in membership (security) system to create user accounts and configure authorization rules.</span></span>
+> <span data-ttu-id="17a81-104">V této sérii kurzů prozkoumá techniky pro použití systému integrované členství (zabezpečení) vytvořit uživatelské účty a konfigurace autorizačních pravidel.</span><span class="sxs-lookup"><span data-stu-id="17a81-104">This tutorial series examines techniques for using the built-in membership (security) system to create user accounts and configure authorization rules.</span></span>
 
-
-- [<span data-ttu-id="1f143-105">Vytvoření schématu členství v SQL Serveru (C#)</span><span class="sxs-lookup"><span data-stu-id="1f143-105">Creating the Membership Schema in SQL Server (C#)</span></span>](creating-the-membership-schema-in-sql-server-cs.md)
-- [<span data-ttu-id="1f143-106">Vytváření uživatelských účtů (C#)</span><span class="sxs-lookup"><span data-stu-id="1f143-106">Creating User Accounts (C#)</span></span>](creating-user-accounts-cs.md)
-- [<span data-ttu-id="1f143-107">Ověření přihlašovacích údajů uživatele v úložišti uživatelů, kteří jsou členy (C#)</span><span class="sxs-lookup"><span data-stu-id="1f143-107">Validating User Credentials Against the Membership User Store (C#)</span></span>](validating-user-credentials-against-the-membership-user-store-cs.md)
-- [<span data-ttu-id="1f143-108">Ověřování založené na uživatelích (C#)</span><span class="sxs-lookup"><span data-stu-id="1f143-108">User-Based Authorization (C#)</span></span>](user-based-authorization-cs.md)
-- [<span data-ttu-id="1f143-109">Ukládání dalších informací o uživatelích (C#)</span><span class="sxs-lookup"><span data-stu-id="1f143-109">Storing Additional User Information (C#)</span></span>](storing-additional-user-information-cs.md)
-- [<span data-ttu-id="1f143-110">Vytvoření schématu členství v SQL Serveru (VB)</span><span class="sxs-lookup"><span data-stu-id="1f143-110">Creating the Membership Schema in SQL Server (VB)</span></span>](creating-the-membership-schema-in-sql-server-vb.md)
-- [<span data-ttu-id="1f143-111">Vytváření uživatelských účtů (VB)</span><span class="sxs-lookup"><span data-stu-id="1f143-111">Creating User Accounts (VB)</span></span>](creating-user-accounts-vb.md)
-- [<span data-ttu-id="1f143-112">Ověření přihlašovacích údajů uživatele v úložišti uživatelů, kteří jsou členy (VB)</span><span class="sxs-lookup"><span data-stu-id="1f143-112">Validating User Credentials Against the Membership User Store (VB)</span></span>](validating-user-credentials-against-the-membership-user-store-vb.md)
-- [<span data-ttu-id="1f143-113">Ověřování založené na uživatelích (VB)</span><span class="sxs-lookup"><span data-stu-id="1f143-113">User-Based Authorization (VB)</span></span>](user-based-authorization-vb.md)
-- [<span data-ttu-id="1f143-114">Ukládání dalších informací o uživatelích (VB)</span><span class="sxs-lookup"><span data-stu-id="1f143-114">Storing Additional User Information (VB)</span></span>](storing-additional-user-information-vb.md)
+- [<span data-ttu-id="17a81-105">Vytvoření schématu členství v SQL Serveru (C#)</span><span class="sxs-lookup"><span data-stu-id="17a81-105">Creating the Membership Schema in SQL Server (C#)</span></span>](creating-the-membership-schema-in-sql-server-cs.md)
+- [<span data-ttu-id="17a81-106">Vytváření uživatelských účtů (C#)</span><span class="sxs-lookup"><span data-stu-id="17a81-106">Creating User Accounts (C#)</span></span>](creating-user-accounts-cs.md)
+- [<span data-ttu-id="17a81-107">Ověření přihlašovacích údajů uživatele v úložišti uživatelů, kteří jsou členy (C#)</span><span class="sxs-lookup"><span data-stu-id="17a81-107">Validating User Credentials Against the Membership User Store (C#)</span></span>](validating-user-credentials-against-the-membership-user-store-cs.md)
+- [<span data-ttu-id="17a81-108">Ověřování založené na uživatelích (C#)</span><span class="sxs-lookup"><span data-stu-id="17a81-108">User-Based Authorization (C#)</span></span>](user-based-authorization-cs.md)
+- [<span data-ttu-id="17a81-109">Ukládání dalších informací o uživatelích (C#)</span><span class="sxs-lookup"><span data-stu-id="17a81-109">Storing Additional User Information (C#)</span></span>](storing-additional-user-information-cs.md)
+- [<span data-ttu-id="17a81-110">Vytvoření schématu členství v SQL Serveru (VB)</span><span class="sxs-lookup"><span data-stu-id="17a81-110">Creating the Membership Schema in SQL Server (VB)</span></span>](creating-the-membership-schema-in-sql-server-vb.md)
+- [<span data-ttu-id="17a81-111">Vytváření uživatelských účtů (VB)</span><span class="sxs-lookup"><span data-stu-id="17a81-111">Creating User Accounts (VB)</span></span>](creating-user-accounts-vb.md)
+- [<span data-ttu-id="17a81-112">Ověření přihlašovacích údajů uživatele v úložišti uživatelů, kteří jsou členy (VB)</span><span class="sxs-lookup"><span data-stu-id="17a81-112">Validating User Credentials Against the Membership User Store (VB)</span></span>](validating-user-credentials-against-the-membership-user-store-vb.md)
+- [<span data-ttu-id="17a81-113">Ověřování založené na uživatelích (VB)</span><span class="sxs-lookup"><span data-stu-id="17a81-113">User-Based Authorization (VB)</span></span>](user-based-authorization-vb.md)
+- [<span data-ttu-id="17a81-114">Ukládání dalších informací o uživatelích (VB)</span><span class="sxs-lookup"><span data-stu-id="17a81-114">Storing Additional User Information (VB)</span></span>](storing-additional-user-information-vb.md)
