@@ -130,7 +130,7 @@ Následující postup popisuje, jak vytvořit web a nakonfigurujte ho.
 Vaše lokalita obsahuje další funkce, které mohou uživatelé spravovat své účty. Uživatelé takto:
 
 - Změňte své heslo. Po přihlášení, klikněte na uživatelské jméno (což je odkaz). To přejdou na stránku, kde můžete vytvořit nové heslo (*Account/ChangePassword.cshtml*).
-- Obnovte zapomenuté heslo. Na stránce přihlášení je odkaz (**zapomněli jste heslo?**), která přebírá uživatele na stránku (*Account/ForgotPassword.cshtml*) ve kterém můžete zadat e-mailovou adresu. Web je odešle e-mailovou zprávu, která má odkaz, který mohou kliknout, aby bylo možné nastavit nové heslo (*Account/PasswordReset.cshtml*).
+- Obnovte zapomenuté heslo. Na stránce přihlášení je odkaz (**zapomněli jste heslo?** ), která přebírá uživatele na stránku (*Account/ForgotPassword.cshtml*) ve kterém můžete zadat e-mailovou adresu. Web je odešle e-mailovou zprávu, která má odkaz, který mohou kliknout, aby bylo možné nastavit nové heslo (*Account/PasswordReset.cshtml*).
 
 Můžete taky umožnit uživatelům přihlásit se pomocí externí web, může taky, jak je popsáno později.
 
@@ -166,7 +166,7 @@ V tomto postupu vytvoříte složku, která bude obsahovat stránky, které jsou
 Chcete-li zabezpečit přístup k více stránek, můžete postupujte takto:
 
 - Přidáte kontrolu zabezpečení na každou stránku.
-- Vytvoření  *\_PageStart.cshtml* stránku ve složce, kde chráněné ponechat a přidat existuje kontrolu zabezpečení.  *\_PageStart.cshtml* stránky funguje jako globální stránky pro všechny stránky ve složce. Tato technika je vysvětleno podrobněji [přizpůsobení chování v celém webu pro webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906#Using__PageStart.cshtml_to_Restrict_Folder_Access).
+- Vytvoření  *\_PageStart.cshtml* stránku ve složce, kde chráněné ponechat a přidat existuje kontrolu zabezpečení. *\_PageStart.cshtml* stránky funguje jako globální stránky pro všechny stránky ve složce. Tato technika je vysvětleno podrobněji [přizpůsobení chování v celém webu pro webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906#Using__PageStart.cshtml_to_Restrict_Folder_Access).
 
 ## <a name="creating-security-for-groups-of-users-roles"></a>Vytváření zabezpečení pro skupiny uživatelů (role)
 
