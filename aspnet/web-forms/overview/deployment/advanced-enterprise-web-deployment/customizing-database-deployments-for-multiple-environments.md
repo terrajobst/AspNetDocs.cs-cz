@@ -88,7 +88,7 @@ Pro podporu nasazení databázový projekt do více cílů, měli vytvořit konf
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image1.png)
 3. V **nové konfigurační soubor nasazení** dialogové okno pole, zadejte smysluplný název souboru (například **TestEnvironment.sqldeployment**) a potom klikněte na tlačítko **Uložit**.
-4. Na *[název_souboru] *** .sqldeployment** stránky, nastavit vlastnosti nasazení tak, aby odpovídaly požadavkům vaší cílové prostředí a pak soubor uložte.
+4. Na *[název_souboru]* **.sqldeployment** stránky, nastavit vlastnosti nasazení tak, aby odpovídaly požadavkům vaší cílové prostředí a pak soubor uložte.
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image2.png)
 5. Všimněte si, že se přidá nový soubor do vlastnosti složky v projektu databáze.
