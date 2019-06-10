@@ -83,7 +83,7 @@ Soubor projektu je obvykle potřeba poskytují velké množství informací, aby
 
 [!code-xml[Main](understanding-the-project-file/samples/sample2.xml)]
 
-Pokud chcete načíst hodnotu vlastnosti, použijte formát **$(***PropertyName***) ***.* Například pro načtení hodnoty **ServerName** vlastnost, zadali byste:
+Pokud chcete načíst hodnotu vlastnosti, použijte formát * *$(***PropertyName***)***.* Například pro načtení hodnoty **ServerName** vlastnost, zadali byste:
 
 [!code-powershell[Main](understanding-the-project-file/samples/sample3.ps1)]
 
@@ -161,8 +161,8 @@ Cíle a úlohy může obsahovat **podmínku** atributy. V důsledku toho můžet
 
 Obecně řečeno při vytváření užitečných úlohy a cíle, musíte odkazovat na vlastnosti a položky, které jste definovali jinde v souboru projektu:
 
-- Pokud chcete použít hodnotu vlastnosti, zadejte **$(***PropertyName***)**, kde *PropertyName* je název **vlastnost** element nebo název parametr.
-- Chcete-li použít položku, zadejte **@(***ItemName***)**, kde *ItemName* je název **položky** elementu.
+- Pokud chcete použít hodnotu vlastnosti, zadejte **$(***PropertyName***)** , kde *PropertyName* je název **vlastnost** element nebo název parametr.
+- Chcete-li použít položku, zadejte **@(***ItemName***)** , kde *ItemName* je název **položky** elementu.
 
 > [!NOTE]
 > Mějte na paměti, že pokud vytvoříte více položek se stejným názvem, které sestavujete seznamu. Naopak pokud vytvoříte více vlastností se stejným názvem, poslední hodnota vlastnosti je poskytnout přepíše jakékoli předchozí vlastnosti se stejným názvem&#x2014;vlastnost může obsahovat pouze jednu hodnotu.
