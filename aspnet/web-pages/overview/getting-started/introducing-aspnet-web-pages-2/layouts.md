@@ -133,7 +133,7 @@ Chcete provést změny podobné změny stránky na webu – *EditMovie.cshtml* a
 
 ## <a name="passing-title-information-to-the-layout-page"></a>Informace o předávání titulech ke stránce rozložení
 
- *\_Layout.cshtml* má stránka, kterou jste vytvořili `<title>` element, který je nastavena na "Můj web video". Většina prohlížečů zobrazit obsah tohoto prvku jako text na kartě:
+*\_Layout.cshtml* má stránka, kterou jste vytvořili `<title>` element, který je nastavena na "Můj web video". Většina prohlížečů zobrazit obsah tohoto prvku jako text na kartě:
 
 ![Na stránce &lt;název&gt; element zobrazí na kartě prohlížeče](layouts/_static/image8.png)
 

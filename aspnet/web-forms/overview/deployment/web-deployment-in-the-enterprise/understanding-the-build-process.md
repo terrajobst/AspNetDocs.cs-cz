@@ -164,7 +164,7 @@ Napřed si všimněte, že obsahuje počáteční značka **výstupy** atribut.
 
 [!code-xml[Main](understanding-the-build-process/samples/sample10.xml)]
 
-Toto je příklad *dávkování cíle*. V souborech projektu MSBuild dávkování je technika pro iterace přes kolekce. Hodnota **výstupy** atribut, **"% (DbPublishPackages.Identity)"**, odkazuje **Identity** vlastností metadat **DbPublishPackages**  seznam položek. Tento typ notation **Outputs=%***(ItemList.ItemMetadataName)*, je přeložen jako:
+Toto je příklad *dávkování cíle*. V souborech projektu MSBuild dávkování je technika pro iterace přes kolekce. Hodnota **výstupy** atribut, **"% (DbPublishPackages.Identity)"** , odkazuje **Identity** vlastností metadat **DbPublishPackages**  seznam položek. Tento typ notation **Outputs=%** *(ItemList.ItemMetadataName)* , je přeložen jako:
 
 - Rozdělit položky v **DbPublishPackages** do dávek položek, které obsahují stejné **Identity** hodnota metadat.
 - Spusťte cíl jednou za služby batch.
@@ -178,7 +178,7 @@ Zobrazí se podobná zápis ve  **\_Cmd** vlastnost, která vytvoří příkaz V
 
 [!code-xml[Main](understanding-the-build-process/samples/sample11.xml)]
 
-V takovém případě **%(DbPublishPackages.DatabaseConnectionString)**, **%(DbPublishPackages.TargetDatabase)**, a **%(DbPublishPackages.FullPath)** všechny najdete metadata hodnot **DbPublishPackages** kolekci položek.  **\_Cmd** vlastnost používá **Exec** úkol, který vyvolá příkaz.
+V takovém případě **%(DbPublishPackages.DatabaseConnectionString)** , **%(DbPublishPackages.TargetDatabase)** , a **%(DbPublishPackages.FullPath)** všechny najdete metadata hodnot **DbPublishPackages** kolekci položek. **\_Cmd** vlastnost používá **Exec** úkol, který vyvolá příkaz.
 
 [!code-xml[Main](understanding-the-build-process/samples/sample12.xml)]
 
