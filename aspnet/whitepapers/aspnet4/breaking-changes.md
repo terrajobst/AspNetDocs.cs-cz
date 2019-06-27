@@ -8,12 +8,12 @@ ms.date: 02/10/2010
 ms.assetid: d601c540-f86b-4feb-890c-20c806b3da6c
 msc.legacyurl: /whitepapers/aspnet4/breaking-changes
 msc.type: content
-ms.openlocfilehash: 65b13065ae5324ce64ec1b87b2127e5277542fb8
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 8ccad3b40a723c92a3164de082e1f94577141008
+ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65125674"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67411201"
 ---
 # <a name="aspnet-4-breaking-changes"></a>ASP.NET 4 – nejnovější změny
 
@@ -362,7 +362,7 @@ Po obnovení do starší verze CAS modelu jsou povoleny následující chování
 - Několik sad oprávnění v jediné doméně aplikace jsou povoleny.
 - Kontrolní výrazy explicitní oprávnění nejsou požadována pro sestavení v mezipaměti GAC, které jsou vyvolány pouze technologie ASP.NET nebo jiný kód rozhraní .NET Framework je na zásobníku.
 
-Jeden scénář nelze vrátit zpět v rozhraní .NET Framework 4: mimo Web částečným vztahem důvěryhodnosti aplikace můžou zavolat už určitých rozhraní API v System.Web.dll a System.Web.Extensions.dll. V předchozích verzích rozhraní .NET Framework bylo možné mimo Web částečným vztahem důvěryhodnosti aplikací se explicitně udělí oprávnění <strong>AspNetHostingPermission</strong> oprávnění. Tyto aplikace pak může použít <strong>System.Web.HttpUtility</strong>, napíše <strong>System.Web.ClientServices.\< / strong > * obory názvů a typy související s členství, role a profily. Volání těchto typů z aplikace s částečnou důvěryhodností mimo Web je již nejsou podporovány v rozhraní .NET Framework 4.
+Jeden scénář nelze vrátit zpět v rozhraní .NET Framework 4: mimo Web částečným vztahem důvěryhodnosti aplikace můžou zavolat už určitých rozhraní API v System.Web.dll a System.Web.Extensions.dll. V předchozích verzích rozhraní .NET Framework bylo možné mimo Web částečným vztahem důvěryhodnosti aplikací se explicitně udělí oprávnění **AspNetHostingPermission** oprávnění. Tyto aplikace pak může použít **System.Web.HttpUtility**, napíše **System.Web.ClientServices.\***  obory názvů a typy související s členství, role a profily. Volání těchto typů z aplikace s částečnou důvěryhodností mimo Web je již nejsou podporovány v rozhraní .NET Framework 4.
 
 > [!NOTE]
 > **HtmlEncode** a **HtmlDecode** funkce **System.Web.HttpUtility** třídy se přesunul do nového rozhraní .NET Framework 4  **System.Net.WebUtility** třídy. Pokud jste pouze funkcí technologie ASP.NET, který se používal, upravit kód aplikace k používání nového **WebUtility** namísto třídy.

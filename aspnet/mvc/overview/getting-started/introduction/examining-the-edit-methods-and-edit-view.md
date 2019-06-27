@@ -8,12 +8,12 @@ ms.date: 01/06/2019
 ms.assetid: 52a4d5fe-aa31-4471-b3cb-a064f82cb791
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: c42ec77b5d5107f3ef70e13b779fc1bebef70a14
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 264f2ec5c497682f5e3e202dd69a835ff228e75b
+ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65120707"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67410859"
 ---
 # <a name="examining-the-edit-methods-and-edit-view"></a>Zkoumání metod Edit a zobrazení pro úpravy
 
@@ -21,7 +21,7 @@ Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 [!INCLUDE [Tutorial Note](sample/code-location.md)]
 
-V této části budete zkontrolujte vygenerovaný `Edit` metody akce a zobrazení kontroleru video. Ale nejprve bude trvat krátký zneužití Chcete-li datum vydání vypadat lépe. Otevřít *Models\Movie.cs* a přidejte zvýrazněné řádky je uvedeno níže:
+V této části budete zkontrolujte vygenerovaný `Edit` metody akce a zobrazení kontroleru video. Ale nejprve provedeme krátký zneužití Chcete-li datum vydání vypadat lépe. Otevřít *Models\Movie.cs* a přidejte zvýrazněné řádky je uvedeno níže:
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample1.cs?highlight=2,12-14)]
 

@@ -8,12 +8,12 @@ ms.date: 02/20/2014
 ms.assetid: eee916e4-ba4c-439a-a24e-68df7d45a569
 msc.legacyurl: /web-pages/overview/data/working-with-files
 msc.type: authoredcontent
-ms.openlocfilehash: 3ff852232212ddda4930597731911be60c092667
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 684c47a8a8480dc040e5144144577c94c35d39e5
+ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108950"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67411191"
 ---
 # <a name="working-with-files-in-an-aspnet-web-pages-razor-site"></a>Práce se soubory na webu rozhraní ASP.NET Web Pages (Razor)
 
@@ -22,7 +22,7 @@ podle [Tom FitzMacken](https://github.com/tfitzmac)
 > Tento článek vysvětluje, jak číst, zapisovat, připojit, odstranit a nahrát soubory na webu rozhraní ASP.NET Web Pages (Razor).
 > 
 > > [!NOTE]
-> > Pokud chcete nahrání imagí a manipulaci s nimi (například překlopit nebo změnit jejich velikost), najdete v článku [práce s obrázky na webu technologie ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=202897).
+> > Pokud chcete nahrání imagí a manipulaci s nimi (například překlopit nebo změnit jejich velikost), najdete v článku [práce s obrázky na webu technologie ASP.NET Web Pages](/aspnet/web-pages/overview/ui-layouts-and-themes/9-working-with-images).
 > 
 > 
 > **Co se dozvíte:** 
@@ -72,7 +72,7 @@ Pokud chcete uložit data do textového souboru, můžete použít `File.WriteAl
 
     Pak vytvořte proměnnou (`dataFile`), která obsahuje umístění a název souboru pro uložení dat v. Nastavení umístění vyžaduje některé speciální zacházení. Ve službě websites, je špatný postup najdete v kódu absolutní cesty, jako je *C:\Folder\File.txt* pro soubory na webovém serveru. Pokud se přesune na webu budou chybné absolutní cestu. Kromě toho hostované lokality (na rozdíl od svého počítače) obvykle ještě neznáte co je správná cesta při psaní kódu.
 
-    Někdy ale (jako je teď pro zápis do souboru) nutné úplnou cestu. Řešení, je použít `MapPath` metodu `Server` objektu. Vrátí úplnou cestu na váš web. K získání cesty pro kořenové složky webu, můžete uživatele `~` – operátor (k represen vaší lokality virtuální kořenové) k `MapPath`. (Můžete také předat název podsložky, jako je *~/App\_Data /*, k získání cesty k této podsložce.) Pak lze zřetězit Další informace, na kterou metoda vrátí Chcete-li vytvořit úplnou cestu. V tomto příkladu přidáte název souboru. (Další informace o tom, jak pracovat s cestami k souborům a složkám v [Úvod do ASP.NET Web Pages programování pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkId=195205#ID_WorkingWithFileAndFolderPaths).)
+    Někdy ale (jako je teď pro zápis do souboru) nutné úplnou cestu. Řešení, je použít `MapPath` metodu `Server` objektu. Vrátí úplnou cestu na váš web. K získání cesty pro kořenové složky webu, můžete uživatele `~` – operátor (k represen vaší lokality virtuální kořenové) k `MapPath`. (Můžete také předat název podsložky, jako je *~/App\_Data /* , k získání cesty k této podsložce.) Pak lze zřetězit Další informace, na kterou metoda vrátí Chcete-li vytvořit úplnou cestu. V tomto příkladu přidáte název souboru. (Další informace o tom, jak pracovat s cestami k souborům a složkám v [Úvod do ASP.NET Web Pages programování pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkId=195205#ID_WorkingWithFileAndFolderPaths).)
 
     Soubor je uložen v *aplikace\_Data* složky. Tato složka je zvláštní v technologii ASP.NET, který se používá k ukládání dat souborů, jak je popsáno v [Úvod k práci s databází na webech ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=195209).
 
@@ -147,7 +147,7 @@ Tento postup ukazuje, jak číst a zobrazení dat, který jste vytvořili v pře
 <a id="Deleting_Files"></a>
 ## <a name="deleting-files"></a>Odstraňování souborů
 
-Chcete-li odstranit soubory z vašeho webu, můžete použít `File.Delete` metody. Tento postup ukazuje, jak umožnit uživatelům odstranit bitovou kopii (*.jpg* souboru) ze *imagí* složku v případě, že znáte název souboru.
+Chcete-li odstranit soubory z vašeho webu, můžete použít `File.Delete` metody. Tento postup ukazuje, jak umožnit uživatelům odstranit bitovou kopii ( *.jpg* souboru) ze *imagí* složku v případě, že znáte název souboru.
 
 > [!NOTE] 
 > 

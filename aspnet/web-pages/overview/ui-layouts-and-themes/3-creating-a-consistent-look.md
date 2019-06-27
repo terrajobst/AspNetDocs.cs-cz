@@ -8,12 +8,12 @@ ms.date: 03/10/2014
 ms.assetid: d7bd001b-6db2-4422-9b78-f3d08b743b00
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/3-creating-a-consistent-look
 msc.type: authoredcontent
-ms.openlocfilehash: 7d580b3812c4a09d6bc8d34c46dc82339ba40ee8
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 3f63ce68ae4c13970ac0df196167ace0b22b592c
+ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133375"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67411258"
 ---
 # <a name="creating-a-consistent-layout-in-aspnet-web-pages-razor-sites"></a>Vytvoření konzistentního rozložení v lokalitách rozhraní ASP.NET Web Pages (Razor)
 
@@ -53,7 +53,7 @@ Následující diagram znázorňuje, jak obsah blokuje práce. Když prohlíže�
 
 V tomto postupu vytvoříte stránku, která odkazuje na dva bloky obsahu (záhlaví nebo zápatí), které se nacházejí v samostatných souborech. Tyto stejné bloky obsahu můžete použít na libovolné stránce na webu. Jakmile budete hotovi, získáte na stránce takto:
 
-![Snímek obrazovky zobrazující stránku v prohlížeči, který je výsledkem spuštění stránky, která obsahuje volání metodě RenderPage.](3-creating-a-consistent-look/_static/image2.jpg)
+![Snímek obrazovky zobrazující stránku v prohlížeči, který je výsledkem spuštění stránky, která obsahuje volání metodě RenderPage.](3-creating-a-consistent-look/_static/image2.png)
 
 1. V kořenové složce vašeho webu, vytvořte soubor s názvem *Index.cshtml*.
 2. Nahraďte existující kód následujícím kódem:
@@ -118,7 +118,7 @@ Následující postup ukazuje, jak vytvořit rozložení stránky obsahu stránk
     Toto je stránka, která bude používat stránku rozložení. Blok kódu v horní části stránky označuje stránce rozložení, které se má použít pro formátování tohoto obsahu.
 7. Spustit *Content1.cshtml* v prohlížeči. Na vykreslené stránce používá formát a šablony stylů definovaná v  *\_Layout1.cshtml* a text (obsah) definované v *Content1.cshtml*.
 
-    ![[image]](3-creating-a-consistent-look/_static/image4.jpg)
+    ![[image]](3-creating-a-consistent-look/_static/image4.png)
 
     Krok 6 a vytvořte další stránky obsahu, které pak můžete sdílet stejnou stránku rozložení, můžete opakovat.
 
@@ -148,7 +148,7 @@ Tento postup ukazuje, jak vytvořit stránku obsahu, který má více oddílů o
     Tato stránka obsahu obsahuje blok kódu v horní části stránky. Každý pojmenovaný oddíl je obsažen v části bloku. Zbývající části stránky obsahuje výchozí (nepojmenované) části obsahu.
 4. Spustit *Content2.cshtml* v prohlížeči.
 
-    ![Snímek obrazovky zobrazující stránku v prohlížeči, který je výsledkem spuštění stránky, která obsahuje volání metodě RenderSection.](3-creating-a-consistent-look/_static/image6.jpg)
+    ![Snímek obrazovky zobrazující stránku v prohlížeči, který je výsledkem spuštění stránky, která obsahuje volání metodě RenderSection.](3-creating-a-consistent-look/_static/image6.png)
 
 ## <a name="making-content-sections-optional"></a>Provádění nepovinné oddíly obsahu.
 
@@ -165,7 +165,7 @@ Však můžete přepsat toto chování pro pojmenovaný oddíl deklarováním od
     [!code-cshtml[Main](3-creating-a-consistent-look/samples/sample12.cshtml)]
 2. Uložit na stránku a pak ho spusťte v prohlížeči. Chybová zpráva se zobrazí, protože obsah stránky neposkytuje obsah pro oddíl definovaný v rozložení stránky, konkrétně oddíl hlavičky.
 
-    ![Snímek obrazovky, který se zobrazuje chyba, ke které dojde při spuštění stránky, která volá metodu RenderSection, ale odpovídající oddíl není k dispozici.](3-creating-a-consistent-look/_static/image7.jpg)
+    ![Snímek obrazovky, který se zobrazuje chyba, ke které dojde při spuštění stránky, která volá metodu RenderSection, ale odpovídající oddíl není k dispozici.](3-creating-a-consistent-look/_static/image7.png)
 3. V *Shared* složku, otevřete  *\_Layout2.cshtml* stránce a nahraďte tento řádek:
 
     [!code-javascript[Main](3-creating-a-consistent-look/samples/sample13.js)]
@@ -210,10 +210,10 @@ Následující postup ukazuje, jak předat data z obsahu stránky pro stránku r
     [!code-html[Main](3-creating-a-consistent-look/samples/sample18.html)]
 4. Spustit *Content3.cshtml* stránku v prohlížeči. Zobrazí se na stránce se seznamem na levé straně stránky viditelná a **skrýt seznam** tlačítko dole.
 
-    ![Snímek obrazovky zobrazující stránku, která obsahuje seznam a tlačítko s textem "Skrýt seznam".](3-creating-a-consistent-look/_static/image10.jpg)
+    ![Snímek obrazovky zobrazující stránku, která obsahuje seznam a tlačítko s textem "Skrýt seznam".](3-creating-a-consistent-look/_static/image10.png)
 5. Klikněte na tlačítko **skrýt seznam**. V seznamu zmizí a tlačítko se změní na **zobrazit seznam**.
 
-    ![Snímek obrazovky zobrazující stránku, která se nenachází v seznamu a tlačítko, které se říká zobrazit seznam.](3-creating-a-consistent-look/_static/image11.jpg)
+    ![Snímek obrazovky zobrazující stránku, která se nenachází v seznamu a tlačítko, které se říká zobrazit seznam.](3-creating-a-consistent-look/_static/image11.png)
 6. Klikněte na tlačítko **zobrazit seznam** tlačítko a v seznamu se zobrazí znovu.
 
 ## <a name="additional-resources"></a>Další prostředky

@@ -8,12 +8,12 @@ ms.date: 06/09/2009
 ms.assetid: cb061642-faf3-41b2-9372-69e13444d458
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f56241a6a3d1d54f917d366b08edb4a1a43bbce8
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 2b84b4e0f57bdddb83fc79494b66be76edcad664
+ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134451"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67411018"
 ---
 # <a name="displaying-a-custom-error-page-c"></a>Zobrazení vlastní chybové stránky (C#)
 
@@ -137,8 +137,10 @@ Díky této změně na místě pokaždé, když se uživatel navštívit vzdále
 > [!NOTE]
 > Podívejte se na [404 chybové stránky, další jednou](http://www.smashingmagazine.com/2009/01/29/404-error-pages-one-more-time/) pokyny k vytváření efektivní 404 chybové stránky.
 
-[![](displaying-a-custom-error-page-cs/_static/image19.png)](displaying-a-custom-error-page-cs/_static/image18.png)**Obrázek 7**: Vlastní 404 chybovou stránku zobrazí zprávu cílenější než `Oops.aspx`  
- ([Kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-custom-error-page-cs/_static/image20.png)) 
+[![](displaying-a-custom-error-page-cs/_static/image19.png)](displaying-a-custom-error-page-cs/_static/image18.png)
+
+**Obrázek 7**: Vlastní 404 chybovou stránku zobrazí zprávu cílenější než `Oops.aspx`  
+([Kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-custom-error-page-cs/_static/image20.png)) 
 
 Protože víte, že `404.aspx` stránky se dosáhne, pouze když uživatel odešle požadavek pro stránku, který nebyl nalezen, můžete vylepšit tento vlastní chybové stránky zahrnují funkce, které pomůžou uživatele vyřešit tento konkrétní typ chyby. Například můžete vytvořit tabulku databáze, která mapuje známé špatné adresy URL do správné adresy URL a pak je mít `404.aspx` vlastní chybovou stránku spuštění dotazu na tabulky a navrhnout stránek, které uživatel může být pokouší o spojení.
 

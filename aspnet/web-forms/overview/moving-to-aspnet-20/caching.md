@@ -8,12 +8,12 @@ ms.date: 02/20/2005
 ms.assetid: 2bb109d2-e299-46ea-9054-fa0263b59165
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/caching
 msc.type: authoredcontent
-ms.openlocfilehash: 39f4eb7b0859cf52fe3ed2531e9c349b465b9327
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 4f0b021ca6ca151544dd9fb0587ed9e0cf14ff65
+ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65116854"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67411241"
 ---
 # <a name="caching"></a>Ukládání do mezipaměti
 
@@ -94,7 +94,7 @@ Při spuštění tohoto příkazu jsou provedeny následující změny k databá
 | AspNet\_SqlCacheUnRegisterTableStoredProcedure | Zruší registraci tabulku závislosti mezipaměti SQL tak, že odeberete položce v tabulce oznámení a odebírá aktivační událost. |
 | AspNet\_SqlCacheUpdateChangeIdStoredProcedure | Aktualizuje tabulku oznámení zvýšením changeId změněné tabulce. ASP.NET používá tuto hodnotu k určení, zda se data nezměnila. Jak je uvedeno níže, provádí se tato uložená procedura má aktivační procedura vytvoří, když je povolená v tabulce. |
 
-- Volá se, aktivační události SQL Server ***tabulky\_název *\_AspNet\_SqlCacheNotification\_aktivační událost** je vytvořený pro tabulku. Tato aktivační událost spouští AspNet\_SqlCacheUpdateChangeIdStoredProcedure při vložení, aktualizace nebo odstranění v tabulce.
+- Volá se, aktivační události SQL Server  **_tabulky\_název_\_AspNet\_SqlCacheNotification\_aktivační událost** je vytvořený pro tabulku. Tato aktivační událost spouští AspNet\_SqlCacheUpdateChangeIdStoredProcedure při vložení, aktualizace nebo odstranění v tabulce.
 - Role systému SQL Server volá **aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess** je přidána do databáze.
 
 **Aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess** role systému SQL Server má oprávnění EXEC AspNet\_SqlCachePollingStoredProcedure. Aby model dotazování fungovala správně, musíte přidat váš účet procesu aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess role. Aspnet\_regsql.exe nástroj to nebude udělal za vás.

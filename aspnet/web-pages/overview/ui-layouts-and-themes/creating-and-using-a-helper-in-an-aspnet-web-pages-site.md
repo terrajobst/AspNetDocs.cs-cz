@@ -8,12 +8,12 @@ ms.date: 02/17/2014
 ms.assetid: 46bff772-01e0-40f0-9ae6-9e18c5442ee6
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/creating-and-using-a-helper-in-an-aspnet-web-pages-site
 msc.type: authoredcontent
-ms.openlocfilehash: 1f5109324ff3ce919e88fe976587a179eeaa5a5d
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 380663951094c9fc7d5f0601e30995fa073a204b
+ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65116039"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67410966"
 ---
 # <a name="creating-and-using-a-helper-in-an-aspnet-web-pages-razor-site"></a>Vytvoření a použití pomocné rutiny na webu technologie ASP.NET Web Pages (Razor)
 
@@ -71,7 +71,7 @@ Tento postup ukazuje, jak vytvořit pomocné rutiny, která vytvoří Všimněte
     Chcete-li volat pomocné rutiny, které jste vytvořili, použijte `@` za nímž následuje název souboru, kde pomocné rutiny je, tečku a potom název pomocné rutiny. (Pokud jste měli více složek *aplikace\_kód* složky, můžete použít syntaxi `@FolderName.FileName.HelperName` volat váš pomocný objekt v rámci žádné vnořené složky). Text, který přidáte do uvozovek v závorkách je text, který pomocné rutiny se zobrazí jako součást Poznámka na webové stránce.
 3. Uložit na stránku a spustíte ji v prohlížeči. Pomocná rutina generuje Poznámka položku přímo ve kterém jste volali pomocné rutiny: mezi dva odstavce.
 
-    ![Snímek obrazovky zobrazující stránku v prohlížeči a způsob, jakým pomocné rutiny vygeneruje kód, který vloží polem a zadaný text.](creating-and-using-a-helper-in-an-aspnet-web-pages-site/_static/image1.jpg)
+    ![Snímek obrazovky zobrazující stránku v prohlížeči a způsob, jakým pomocné rutiny vygeneruje kód, který vloží polem a zadaný text.](creating-and-using-a-helper-in-an-aspnet-web-pages-site/_static/image1.png)
 
 ## <a name="additional-resources"></a>Další prostředky
 
