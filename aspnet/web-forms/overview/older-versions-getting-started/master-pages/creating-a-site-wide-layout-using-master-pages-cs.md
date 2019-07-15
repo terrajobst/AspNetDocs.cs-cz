@@ -25,7 +25,7 @@ podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
 
 ## <a name="introduction"></a>Úvod
 
-Jeden atribut dobře navržené webové stránky je rozložení konzistentní stránky webu. Vezměme si jako příklad www.asp.net webu. V době psaní tohoto návodu každé stránky má stejný obsah v horní a dolní části stránky. Jak ukazuje obrázek 1 zobrazuje velmi horní části každé stránky šedého panelu se seznamem Communities společnosti Microsoft. Pod, který je logo společnosti, seznam jazyků, do kterých byl přeložen webu a základní části: Domovská stránka, Začínáme, přečtěte si víc, soubory ke stažení a tak dále. Dolní části stránky, obsahuje informace o reklamy na www.asp.net, prohlášení o autorských právech a odkaz na prohlášení o ochraně osobních údajů.
+Jeden atribut dobře navržené webové stránky je rozložení konzistentní stránky webu. Vezměme si jako příklad [www.asp.net](www.asp.net) webu. V době psaní tohoto návodu každé stránky má stejný obsah v horní a dolní části stránky. Jak ukazuje obrázek 1 zobrazuje velmi horní části každé stránky šedého panelu se seznamem Communities společnosti Microsoft. Pod, který je logo společnosti, seznam jazyků, do kterých byl přeložen webu a základní části: Domovská stránka, Začínáme, přečtěte si víc, soubory ke stažení a tak dále. Dolní části stránky, obsahuje informace o reklamy na www.asp.net, prohlášení o autorských právech a odkaz na prohlášení o ochraně osobních údajů.
 
 [![Na webu www.asp.net využívá konzistentní vzhled a chování na všech stránkách](creating-a-site-wide-layout-using-master-pages-cs/_static/image2.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image1.png)
 
