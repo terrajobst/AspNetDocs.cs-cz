@@ -234,7 +234,7 @@ Pokud chcete adresy URL /Mobile kontaktovat, akce indexu na HomeController uvnit
 
 To znamená, že mobilní Domovská stránka nyní bude umístěn na /Mobile, nikoli/Mobile Domů, protože "Home" je teď výchozí název kontroleru implicitně mobilních stránek.
 
-Dále si všimněte, že tak, že přidáte druhý HomeController do vaší aplikace (například mobilní tu, nejen u desktopového existující jeden), jste budete zrušili domovské stránce regulární klasické pracovní plochy. Dojde k selhání s chybou "*bylo nalezeno několik typů, které se shodují s řadičem s názvem"Home"*". Chcete-li tento problém vyřešit, aktualizujte nejvyšší úrovně konfigurace směrování (v Global.asax.cs) k určení, že by klasické pracovní plochy HomeController po nejednoznačnosti mají přednost:
+Dále si všimněte, že tak, že přidáte druhý HomeController do vaší aplikace (například mobilní tu, nejen u desktopového existující jeden), jste budete zrušili domovské stránce regulární klasické pracovní plochy. Dojde k selhání s chybou "*bylo nalezeno několik typů, které se shodují s řadičem s názvem"Home"* ". Chcete-li tento problém vyřešit, aktualizujte nejvyšší úrovně konfigurace směrování (v Global.asax.cs) k určení, že by klasické pracovní plochy HomeController po nejednoznačnosti mají přednost:
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample9.cs)]
 
