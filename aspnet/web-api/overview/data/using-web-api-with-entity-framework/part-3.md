@@ -63,19 +63,19 @@ Rozhraní API umožňuje operace CRUD v databázi. Zde je souhrn rozhraní API.
 
 | Autoři |  |
 | --- | -- |
-| ZÍSKÁNÍ rozhraní api/autorů | Získáte všichni autoři. |
-| Rozhraní api GET/autoři / {id} | Získat Autor podle ID. |
-| PŘÍSPĚVEK/api/autorů | Vytvořte nový Autor. |
-| Vložení/webové rozhraní API/autoři / {id} | Aktualizujte existující Autor. |
-| ODSTRANIT/webové rozhraní API/autoři / {id} | Odstraňte Autor. |
+| GET api/authors | Získáte všichni autoři. |
+| GET api/authors/{id} | Získat Autor podle ID. |
+| POST /api/authors | Vytvořte nový Autor. |
+| PUT /api/authors/{id} | Aktualizujte existující Autor. |
+| DELETE /api/authors/{id} | Odstraňte Autor. |
 
 | Knihy |  |
 | --- | -- |
-| ZÍSKAT /api/books | Získáte všechny knihy. |
-| ZÍSKAT/webové rozhraní API/books / {id} | Získat knihu podle ID. |
-| Publikovat/api/knihy | Vytvoření nového adresáře. |
-| Vložení/webové rozhraní API/books / {id} | Aktualizace existujícího adresáře. |
-| ODSTRANIT/webové rozhraní API/books / {id} | Odstraňte knihy. |
+| GET /api/books | Získáte všechny knihy. |
+| GET /api/books/{id} | Získat knihu podle ID. |
+| POST /api/books | Vytvoření nového adresáře. |
+| PUT /api/books/{id} | Aktualizace existujícího adresáře. |
+| DELETE /api/books/{id} | Odstraňte knihy. |
 
 ## <a name="view-the-database-optional"></a>Zobrazení databáze (nepovinné)
 
