@@ -309,7 +309,7 @@ V tomto kurzu jste se dozvěděli o zpracování chyb na úrovni aplikace, kód 
 
 ## <a name="tutorial-series-conclusion"></a>Uzavření série kurzů
 
-*Děkujeme, že následující společně. Doufám, že této sérii kurzů přispěl blíže seznamují s webových formulářů ASP.NET. Pokud potřebujete další informace o funkcích webových formulářů v ASP.NET 4.5 a Visual Studio 2013 k dispozici, najdete v článku* [ *ASP.NET and Web Tools pro Visual Studio 2013 – poznámky k* ](../../../../visual-studio/overview/2013/release-notes.md)  *. Také je potřeba podívejte se na kurz podle* * **další kroky *** oddílu a defintely vyzkoušet* [ *bezplatnou zkušební verzi Azure* ](https://azure.microsoft.com/pricing/free-trial/)* .*
+*Děkujeme, že následující společně. Doufám, že této sérii kurzů přispěl blíže seznamují s webových formulářů ASP.NET. Pokud potřebujete další informace o funkcích webových formulářů v ASP.NET 4.5 a Visual Studio 2013 k dispozici, najdete v článku* [ *ASP.NET and Web Tools pro Visual Studio 2013 – poznámky k* ](../../../../visual-studio/overview/2013/release-notes.md)  *. Také je potřeba podívejte se na kurz podle ** **další kroky** **oddílu a defintely vyzkoušet* [*bezplatnou zkušební verzi Azure*](https://azure.microsoft.com/pricing/free-trial/)* .*
 
 ![Děkujeme vám – Erik](aspnet-error-handling/_static/image10.png)  
 
