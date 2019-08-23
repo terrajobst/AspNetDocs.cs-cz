@@ -1,105 +1,105 @@
 ---
 uid: overview
-title: 'ASP.NET: Přehled | Dokumentace Microsoftu'
+title: Přehled ASP.NET | Microsoft Docs
 author: rick-anderson
-description: Úvod do ASP.NET, bezplatná rozhraní pro vytváření webů, webových aplikací a webových rozhraní API.
+description: Seznámení s ASP.NET, bezplatnou architekturou pro vytváření webů, webových aplikací a webových rozhraní API.
 ms.assetid: 3a309468-f1ca-4e51-b9c3-536af79d7a8b
 ms.author: riande
-ms.date: 03/12/2010
+ms.date: 08/10/2019
 msc.legacyurl: ''
 msc.type: content
-ms.openlocfilehash: d4b96bd2ff99bb30ff59b9697a27e33acb0f719d
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 9a6d08849f09c9d7a779df64f70e8770d2af3c87
+ms.sourcegitcommit: b67ffd5b2c5cff01ec4c8eb12a21f693f2e11887
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65120082"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995290"
 ---
 # <a name="aspnet-overview"></a>Přehled ASP.NET
 
-ASP.NET je bezplatné webové rozhraní pro vytváření skvělých webů a webových aplikací s využitím HTML, CSS a JavaScriptu. Můžete také vytvářet webová rozhraní API a používat technologie pro reálný čas, jako jsou webové sokety.
+ASP.NET je bezplatná webová platforma pro vytváření skvělých webů a webových aplikací s využitím HTML, CSS a JavaScriptu. Můžete také vytvářet webová rozhraní API a používat technologie v reálném čase, jako jsou webové sokety.
 
-[ASP.NET Core](https://docs.microsoft.com/aspnet/core/) představuje alternativu k ASP.NET.  Zobrazit [pokyny o tom, jak zvolte mezi ASP.NET a ASP.NET Core](https://docs.microsoft.com/aspnet/core/choose-aspnet-framework).
+[ASP.NET Core](https://docs.microsoft.com/aspnet/core/) je alternativou k ASP.NET.  Přečtěte si [pokyny k výběru mezi ASP.NET a ASP.NET Core](https://docs.microsoft.com/aspnet/core/choose-aspnet-framework).
 
 ## <a name="get-started"></a>Začínáme
 
-Nainstalujte [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community edition, bezplatné integrované vývojové prostředí pro ASP.NET ve Windows.
+Nainstalujte si [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community Edition, bezplatné integrované vývojové prostředí (IDE) pro ASP.NET ve Windows.
 
 ## <a name="websites-and-web-applications"></a>Weby a webové aplikace
 
- Technologie ASP.NET nabízí tři architektury pro vytváření webových aplikací: Webové formuláře ASP.NET MVC a ASP.NET Web Pages. Všechny tři architektury jsou stabilní a až po zralé a vývoje skvělé nové webové aplikace můžete vytvořit pomocí některé z nich. Bez ohledu na to, jakou architekturu zvolíte získáte všechny výhody a funkce technologie ASP.NET všude.
+ ASP.NET nabízí tři architektury pro vytváření webových aplikací: Webové formuláře, ASP.NET MVC a webové stránky ASP.NET. Všechny tři architektury jsou stabilní a vyspělé a můžete vytvořit skvělé webové aplikace pomocí kterékoli z nich. Bez ohledu na to, jakou architekturu zvolíte, získáte všechny výhody a funkce ASP.NET všude.
 
-Každé rozhraní, zaměřuje na jiný vývojářský style. Ten, který zvolíte, závisí na kombinaci vaše programovací prostředky (znalostní báze, znalosti a zkušenosti s vývojem), typ aplikace, kterou vytváříte a přístupu k vývoji, které už znáte.
+Každé rozhraní cílí na jiný styl vývoje. Ten, který zvolíte, závisí na kombinaci vašich programovacích prostředků (znalosti, dovednosti a vývojové prostředí), typu aplikace, kterou vytváříte, a přístupu pro vývoj, se kterým jste spokojeni.
 
-Níže je uveden přehled každé rozhraní a několik nápadů, jak zvolit mezi nimi. Pokud dáváte přednost úvodní video, přečtěte si téma [vytváření webů s ASP.NET](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/Making-Websites-with-ASPNET) a [novinky nástroje pro Web?](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/what-is-web-tools)
+Níže je uveden přehled každé z architektur a několik nápadů, jak mezi nimi vybírat. Pokud dáváte přednost předvedení videa, přečtěte si téma [vytváření webů pomocí ASP.NET](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/Making-Websites-with-ASPNET) a [co jsou webové nástroje?](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/what-is-web-tools)
 
-|   | Pokud máte prostředí | Stylu vývoje | Odborných znalostí |
+|   | Pokud máte zkušenosti s | Styl vývoje | Posudk |
 |-----------|----------------------|-----------------------------------------------------|----------------|
-| webové formuláře | Win Forms, WPF, .NET | Rychlý vývoj pomocí bohatá Knihovna ovládacích prvků, které provádí zapouzdření kódu HTML | Střední úroveň, pokročilé RAD |
-| MVC       | Aplikace Ruby on Rails, .NET  | Plnou kontrolu nad značky HTML, kód a značky oddělené a usnadňují psaní testů. Nejlepší volbou pro mobilní a jednostránkové aplikace (SPA). | Střední úroveň, Upřesnit |
-| Webové stránky  | Klasické ASP, PHP     | Značka jazyka HTML a váš kód společně ve stejném souboru | Nové, střední úroveň |
+| webové formuláře | Formuláře Win, WPF, .NET | Rychlý vývoj s využitím bohatých knihoven ovládacích prvků, které zapouzdřují značky HTML | Střední úroveň, pokročilá RAD |
+| MVC       | Ruby na železnici, .NET  | Úplná kontrola značek HTML, kódu a značek oddělených a snadné zápisu testů. Nejlepší volba pro mobilní a jednostránkové aplikace (SPA). | Střední úroveň, rozšířené |
+| Webové stránky  | Klasický ASP, PHP     | HTML značky a váš kód společně ve stejném souboru | Novinka, střední úroveň |
 
 ### <a name="web-forms"></a>webové formuláře
 
-Pomocí webových formulářů ASP.NET můžete vytvářet dynamické weby s využitím známý model přetažení myší, založené na událostech. Návrhová plocha a stovky ovládacích prvků a komponent vám umožní rychle vytvořit sofistikované, výkonné uživatelského rozhraní – weby s přístup k datům.
+Pomocí webových formulářů ASP.NET můžete vytvářet dynamické weby pomocí známého modelu založeného na událostech a přetahování. Návrhová plocha a stovky ovládacích prvků a komponent vám umožní rychle vytvořit sofistikované a výkonné weby na základě uživatelského rozhraní s přístupem k datům.
 
-[Další informace o webových formulářů](web-forms/index.md)
+[Další informace o webových formulářích](web-forms/index.md)
 
 ### <a name="mvc"></a>MVC
 
-ASP.NET MVC poskytuje výkonný, na základě vzorů způsob tvorby dynamických webů, která umožňuje jasně oddělit oblasti zájmu a dává vám plnou kontrolu nad značkami pro prostřednictvím agilního vývoje. ASP.NET MVC zahrnuje řadu funkcí, které umožňují rychlé a podporou TDD vývoj pro vytváření sofistikovaných aplikací s využitím nejnovějších webových standardů.
+ASP.NET MVC poskytuje výkonný a vzorový způsob vytváření dynamických webů, který umožňuje čistě rozdělit se o obavy a poskytuje plnou kontrolu nad značkou pro užívejte a agilní vývoj. ASP.NET MVC zahrnuje řadu funkcí, které umožňují rychlý vývoj s použitím TDD pro vytváření sofistikovaných aplikací využívajících nejnovější webové standardy.
 
 [Další informace o MVC](mvc/index.md)
 
 ### <a name="aspnet-web-pages"></a>ASP.NET – webové stránky
 
-ASP.NET Web Pages a syntaxe Razor poskytují rychlý, přístupný a jednoduchý způsob kombinování kódu serveru s jazykem HTML za účelem vytvoření dynamického webového obsahu. Připojení k databázím, přidat video, odkaz na weby sociálních sítí a zahrnout mnoho funkcí, které vám pomůžou vytvářet nádherné weby, které v souladu s nejnovějšími webovými standardy.
+ASP.NET webové stránky a syntaxe Razor poskytují rychlý a snadný způsob, jak kombinovat serverový kód s HTML a vytvořit tak dynamický webový obsah. Připojte se k databázím, přidejte video, připojte se k webům sociální sítě a zahrňte spoustu dalších funkcí, které vám pomůžou vytvořit krásné weby, které odpovídají nejnovějším webovým standardům.
 
 [Další informace o webových stránkách](web-pages/index.md)
 
-### <a name="notes-about-web-forms-mvc-and-web-pages"></a>Poznámky o webové formuláře, MVC a Web Pages
+### <a name="notes-about-web-forms-mvc-and-web-pages"></a>Poznámky k webovým formulářům, MVC a webovým stránkám
 
-Všechny tři architektury ASP.NET jsou založeny na rozhraní .NET Framework a sdílet základní funkce rozhraní .NET a technologie ASP.NET. Například všechny tři architektury nabízejí kolem členství na základě modelu zabezpečení přihlášení a všechny tři sdílení stejných prostředků pro správu požadavků, zpracování relace a tak dále, které jsou součástí sady funkcí technologie ASP.NET core.
+Všechny tři ASP.NET architektury jsou založené na .NET Framework a sdílejí základní funkce rozhraní .NET a ASP.NET. Například všechny tři architektury nabízejí model zabezpečení přihlášení podle členství a všechny tři sdílejí stejné možnosti pro správu požadavků, zpracování relací atd., které jsou součástí základní funkce ASP.NET.
 
-Kromě toho tři rozhraní nejsou zcela nezávislé a výběrem jedné nebrání použití jiného. Jelikož rozhraní mohou existovat vedle sebe v stejnou webovou aplikaci, není nic neobvyklého, najdete v článku jednotlivých součástí aplikace napsané v různých rozhraní. Například určených pro zákazníky části aplikace mohou být vytvořeny v MVC pro optimalizaci kódu při přístupu k datům a správu části jsou vyvíjeny ve webových formulářích výhod ovládací prvky dat a přístup k datům jednoduché.
+Kromě toho tři architektury nejsou zcela nezávislé a výběr jedné z nich nevylučuje použití jiného. Vzhledem k tomu, že rozhraní můžou existovat ve stejné webové aplikaci, není běžné zobrazovat jednotlivé komponenty aplikací napsané pomocí různých rozhraní. Například zákaznické části aplikace mohou být vyvíjeny v MVC, aby bylo možné optimalizovat označení, zatímco části pro přístup k datům a správu jsou vyvíjeny ve webových formulářích pro využití výhod ovládacích prvků dat a jednoduchého přístupu k datům.
 
 ## <a name="web-apis"></a>Webová rozhraní API
 
-ASP.NET Web API je architektura, která usnadňuje sestavování služeb HTTP, které jsou poskytovány širokému spektru klientů, včetně prohlížečů a mobilních zařízení. ASP.NET Web API je ideální platformu pro sestavování aplikací RESTful v rozhraní .NET Framework.
+Webové rozhraní API ASP.NET je rozhraní, které usnadňuje sestavování služeb HTTP, které dosáhnou široké škály klientů, včetně prohlížečů a mobilních zařízení. Webové rozhraní API ASP.NET je ideální platformou pro sestavování aplikací RESTful na .NET Framework.
 
-[Další informace o rozhraní Web API](web-api/index.md)
+[Další informace o webovém rozhraní API](web-api/index.md)
 
 <!-- Put first under Web API TOC:  Watch video (9 minutes) https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/services-and-aspnet -->
 
-## <a name="real-time-technologies"></a>Technologie pro reálný čas
+## <a name="real-time-technologies"></a>Technologie v reálném čase
 
-Funkce SignalR technologie ASP.NET je nová knihovna pro vývojáře využívající technologii ASP.NET, který usnadňuje vývoj funkcí v reálném čase. Funkce SignalR umožňuje obousměrnou komunikaci mezi serverem a klientem. Servery můžete nabízet obsah připojeným klientům okamžitě, jakmile je k dispozici. Podporuje objekty Websocket SignalR a spadne zpět na jiné kompatibilní techniky pro starší prohlížeče. Funkce SignalR zahrnuje rozhraní API pro správu připojení (pro instanci, připojení a odpojení události), seskupování připojení a autorizaci.
+ASP.NET Signal je nová knihovna pro vývojáře v ASP.NET, která usnadňuje vývoj webových funkcí v reálném čase. Signál umožňuje obousměrnou komunikaci mezi serverem a klientem. Servery můžou okamžitě nabízet obsah do připojených klientů, jakmile budou k dispozici. Signál podporuje webové sokety a vrací se k jiným kompatibilním technikům pro starší prohlížeče. Signal obsahuje rozhraní API pro správu připojení (například události připojení a odpojení), seskupování připojení a autorizaci.
 
-[Další informace o funkci SignalR](signalr/index.md)
+[Další informace o signalizaci](signalr/index.md)
 
 <!-- Put first under SignalR TOC:  Watch video (6 minutes) https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/signalr-and-the-real-time-web -->
 
 ## <a name="mobile-apps-and-sites"></a>Mobilní aplikace a weby
 
-ASP.NET může power nativních mobilních aplikací pomocí back-end rozhraní Web API, mobilní weby pomocí přizpůsobivý návrh architektury, jako je Twitter Bootstrap. Pokud vytváříte nativní mobilní aplikace, je snadné vytvořit na základě JSON webové rozhraní API pro přístup k datům popisovač, ověřování a nabízená oznámení pro vaši aplikaci. Pokud vytváříte responzivní webu pro mobilní zařízení, můžete použít jakékoli architektury šablon stylů CSS nebo otevřít mřížky systému dáváte přednost, nebo vyberte výkonné mobilní systém, jako je jQuery Mobile nebo Sencha a skvělé mobilní aplikace s PhoneGap.
+ASP.NET může využívat nativní mobilní aplikace s back-end webovým rozhraním API a mobilními weby s odezvou na vývojové architektury, jako je třeba spuštění Twitteru. Pokud vytváříte nativní mobilní aplikaci, je snadné vytvořit webové rozhraní API na bázi JSON pro zpracování přístupu k datům, ověřování a nabízených oznámení pro vaši aplikaci. Pokud vytváříte reagující mobilní web, můžete použít libovolný nebo otevřený systém mřížky, který dáváte přednost, nebo můžete vybrat výkonný mobilní systém jako jQuery Mobile nebo Sencha a skvělé mobilní aplikace s PhoneGap.
 
-[Další informace o vývoji pro mobilní aplikace a lokality](mobile/index.md)
+[Další informace o mobilní aplikaci a vývoji webu](mobile/index.md)
 
 <!-- Put first under mobile TOC:  Watch video (11 minutes) https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-and-mobile -->
 
 ## <a name="single-page-applications"></a>Jednostránkové aplikace
 
-ASP.NET jedním jednostránková aplikace (SPA) pomáhá vytvářet aplikace, které obsahují důležité interakce na straně klienta pomocí HTML 5, CSS 3 a JavaScript. Visual Studio obsahuje šablony pro vytváření jednostránkové aplikace pomocí rozhraní knockout.js a ASP.NET Web API. Kromě předdefinovaných šablon SPA komunitou vytvořených SPA šablony jsou také k dispozici ke stažení.
+ASP.NET aplikace (SPA) pomáhá sestavovat aplikace, které zahrnují významné interakce na straně klienta, pomocí HTML 5, šablon stylů CSS 3 a JavaScriptu. Visual Studio obsahuje šablonu pro vytváření aplikací s jedním stránkou pomocí rozhraní vyseknutí. js a ASP.NET webového rozhraní API. Kromě předdefinovaných šablon zabezpečeného ověřování hesla (Spa) jsou k dispozici také šablony zabezpečené pro vytvoření komunity, které lze stáhnout.
 
-[Další informace o vývoji pro jednostránkové aplikace](single-page-application/index.md)
+[Další informace o vývoji jednostránkové aplikace](single-page-application/index.md)
 
 ## <a name="webhooks"></a>WebHooky
 
-Webhooky se odlehčeného vzoru HTTP poskytuje jednoduché pub/sub model pro vzájemné propojení dohromady webová rozhraní API a služby SaaS. Případě určité události ve službě, oznámení se posílá ve formuláři požadavku HTTP POST pro registrované předplatitele. Požadavek POST obsahuje informace o události, která umožňuje příjemci příslušně na ně reagovat.
+Webhooky je zjednodušený vzor HTTP, který poskytuje jednoduchý model Pub/sub pro zapojení do společné webové rozhraní API a služeb SaaS. Když dojde k události ve službě, pošle se oznámení ve formě požadavku HTTP POST registrovaným předplatitelům. Požadavek POST obsahuje informace o události, která umožňuje příjemci reagovat odpovídajícím způsobem.
 
-Webhooky jsou vystavené velkým množstvím služeb včetně Dropboxu, Githubu, Instagramu, MailChimp, PayPal, Slack, Trello a mnoho dalších. Například Webhooku může znamenat, že došlo ke změně souboru na Dropboxu, změny kódu byl potvrzen v Githubu, nebo platby byl zahájen v PayPal nebo vytvoření karty v Trellu.
+Webhooky jsou vystavené velkým počtem služeb, včetně Dropboxu, GitHubu, Instagramu, MailChimp, PayPal, časové rezervy, Trello a spousty dalších. Webhook může například značit, že se soubor změnil v Dropboxu nebo že se změnila Změna kódu na GitHubu, nebo když se v rámci služby PayPal iniciovala platba nebo byla vytvořena karta v Trello.
 
-[Další informace o Webhooků](webhooks/index.md)
+[Další informace o webhookech](webhooks/index.md)
 
 <!--
 Create Deployment TOC based on https://www.asp.net/aspnet/overview/deployment

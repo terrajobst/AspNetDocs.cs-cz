@@ -1,91 +1,91 @@
 ---
 uid: whitepapers/aspnet4/overview
-title: ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu | Dokumentace Microsoftu
+title: ASP.NET 4 a Visual Studio 2010 – přehled vývoje webů | Microsoft Docs
 author: rick-anderson
-description: Tento dokument poskytuje přehled o řadu nových funkcí pro technologii ASP.NET, které jsou zahrnuty v rozhraní.NET Framework 4 a v sadě Visual Studio 2010.
+description: Tento dokument obsahuje přehled mnoha nových funkcí pro ASP.NET, které jsou součástí the.NET Framework 4 a Visual Studio 2010.
 ms.author: riande
 ms.date: 02/10/2010
 ms.assetid: d7729af4-1eda-4ff2-8b61-dbbe4fc11d10
 msc.legacyurl: /whitepapers/aspnet4
 msc.type: content
-ms.openlocfilehash: fbbb9e2ef6ce540f0ab422d2b80e4a5409076c83
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 8c93952adb33d1ce7008ebff9d032a71eb2a5f74
+ms.sourcegitcommit: b67ffd5b2c5cff01ec4c8eb12a21f693f2e11887
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132931"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995448"
 ---
 # <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu
 
-> Tento dokument poskytuje přehled o řadu nových funkcí pro technologii ASP.NET, které jsou zahrnuty v rozhraní.NET Framework 4 a v sadě Visual Studio 2010.
+> Tento dokument obsahuje přehled mnoha nových funkcí pro ASP.NET, které jsou součástí the.NET Framework 4 a Visual Studio 2010.
 > 
-> [Stáhněte si tento dokument White Paper](https://download.microsoft.com/download/7/1/A/71A105A9-89D6-4201-9CC5-AD6A3B7E2F22/ASP_NET_4_and_Visual_Studio_2010_Web_Development_Overview.pdf)
+> [Stáhnout tento dokument White Paper](https://download.microsoft.com/download/7/1/A/71A105A9-89D6-4201-9CC5-AD6A3B7E2F22/ASP_NET_4_and_Visual_Studio_2010_Web_Development_Overview.pdf)
 
 **Obsah**
 
 **[Core Services](#0.2__Toc253429238 "_Toc253429238")**  
-[Soubor Web.config refaktoring](#0.2__Toc253429239 "_Toc253429239")  
-[Ukládání do mezipaměti Extensible výstup](#0.2__Toc253429240 "_Toc253429240")  
-[Automatické spuštění webové aplikace](#0.2__Toc253429241 "_Toc253429241")  
-[Trvalé přesměrování stránky](#0.2__Toc253429242 "_Toc253429242")  
-[Zmenšení stav relace](#0.2__Toc253429243 "_Toc253429243")  
-[Zvětšení rozsahu povolené adresy URL](#0.2__Toc253429244 "_Toc253429244")  
-[Ověření požadavku Extensible](#0.2__Toc253429245 "_Toc253429245")  
-[Objekt ukládání do mezipaměti a ukládání do mezipaměti rozšiřitelnosti objektu](#0.2__Toc253429246 "_Toc253429246")  
-[Rozšiřitelné HTML, URL a kódování hlaviček protokolu HTTP](#0.2__Toc253429247 "_Toc253429247")  
-[Monitorování výkonu pro jednotlivé aplikace v jedné pracovní proces](#0.2__Toc253429248 "_Toc253429248")  
+[Refaktoring souboru Web. config] (#0.2__Toc253429239 "_Toc253429239")  
+[Rozšiřitelné ukládání výstupu do mezipaměti] (#0.2__Toc253429240 "_Toc253429240")  
+[Automatické spouštění webových aplikací] (#0.2__Toc253429241 "_Toc253429241")  
+[Trvalé přesměrování stránky] (#0.2__Toc253429242 "_Toc253429242")  
+[Zmenší se stav relace] . (#0.2__Toc253429243 "_Toc253429243")  
+[Rozšíření rozsahu povolených adres URL] (#0.2__Toc253429244 "_Toc253429244")  
+[Rozšiřitelné ověřování žádostí] (#0.2__Toc253429245 "_Toc253429245")  
+[Ukládání objektů do mezipaměti a rozšiřitelnost objektů do mezipaměti] (#0.2__Toc253429246 "_Toc253429246")  
+[Extensible HTML, adresa URL a kódování hlaviček protokolu HTTP] (#0.2__Toc253429247 "_Toc253429247")  
+[Sledování výkonu pro jednotlivé aplikace v jednom pracovním procesu] (#0.2__Toc253429248 "_Toc253429248")  
 [Multi-Targeting](#0.2__Toc253429249 "_Toc253429249")
 
 **[Ajax](#0.2__Toc253429250 "_Toc253429250")**  
-[jQuery zahrnuté s webovými formuláři a MVC](#0.2__Toc253429251 "_Toc253429251")  
-[Podpora sítě pro doručování obsahu](#0.2__Toc253429252 "_Toc253429252")  
+[jQuery zahrnutý do webových formulářů a MVC] (#0.2__Toc253429251 "_Toc253429251")  
+[Podpora Content Delivery Network] (#0.2__Toc253429252 "_Toc253429252")  
 [ScriptManager Explicit Scripts](#0.2__Toc253429253 "_Toc253429253")
 
 **[Web Forms](#0.2__Toc253429256 "_Toc253429256")**  
-[Nastavení metaznaček Page.MetaKeywords a vlastnosti Page.MetaDescription](#0.2__Toc253429257 "_Toc253429257")  
-[Umožňuje zobrazit stav jednotlivých ovládacích prvků](#0.2__Toc253429258 "_Toc253429258")  
-[Změny možností prohlížeče](#0.2__Toc253429259 "_Toc253429259")  
-[Směrování v technologii ASP.NET 4](#0.2__Toc253429260 "_Toc253429260")  
-[Nastavení ID klienta](#0.2__Toc253429261 "_Toc253429261")  
-[Trvalý výběr řádku v ovládacích prvcích dat](#0.2__Toc253429262 "_Toc253429262")  
+[Nastavení meta značek pomocí vlastností Page. MetaKeywords a Page. MetaDescription] (#0.2__Toc253429257 "_Toc253429257")  
+[Povolení stavu zobrazení pro jednotlivé ovládací prvky] (#0.2__Toc253429258 "_Toc253429258")  
+[Změny možností prohlížeče] (#0.2__Toc253429259 "_Toc253429259")  
+[Směrování v ASP.NET 4] (#0.2__Toc253429260 "_Toc253429260")  
+[Nastavení ID klientů] (#0.2__Toc253429261 "_Toc253429261")  
+[Trvalé vybírání výběru řádků v datových ovládacích prvcích] (#0.2__Toc253429262 "_Toc253429262")  
 [ASP.NET Chart Control](#0.2__Toc253429263 "_Toc253429263")  
-[Filtrování dat pomocí ovládacího prvku QueryExtender](#0.2__Toc253429264 "_Toc253429264")  
-[Kódovaný výrazů v kódu HTML](#0.2__Toc253429265 "_Toc253429265")  
-[Změny v šabloně projektu](#0.2__Toc253429266 "_Toc253429266")  
+[Filtrování dat pomocí ovládacího prvku třídou QueryExtender] (#0.2__Toc253429264 "_Toc253429264")  
+[Výrazy kódovaného kódu ve formátu HTML] (#0.2__Toc253429265 "_Toc253429265")  
+[Změny šablony projektu] (#0.2__Toc253429266 "_Toc253429266")  
 [CSS Improvements](#0.2__Toc253429267 "_Toc253429267")  
-[Skrytí div prvky kolem skryté pole](#0.2__Toc253429268 "_Toc253429268")  
-[Vykreslování vnější tabulky pro ovládací prvky bez vizuálního vzhledu](#0.2__Toc253429269 "_Toc253429269")  
-[Vylepšení ovládacího prvku ListView](#0.2__Toc253429270 "_Toc253429270")  
-[CheckBoxList a vylepšení řízení RadioButtonList](#0.2__Toc253429271 "_Toc253429271")  
-[Vylepšení správy nabídky](#0.2__Toc253429272 "_Toc253429272")  
-[Wizard and CreateUserWizard Controls 56](#0.2__Toc253429273 "_Toc253429273")
+[Skrytí prvků div kolem skrytých polí] (#0.2__Toc253429268 "_Toc253429268")  
+[Vykreslení vnější tabulky pro ovládací prvky] s šablonou (#0.2__Toc253429269 "_Toc253429269")  
+[Vylepšení ovládacího prvku ListView] (#0.2__Toc253429270 "_Toc253429270")  
+[Vylepšení ovládacího prvku CheckBoxList a RadioButtonList] (#0.2__Toc253429271 "_Toc253429271")  
+[Vylepšení ovládacích prvků nabídky] (#0.2__Toc253429272 "_Toc253429272")  
+[Průvodce a ovládací prvky ovládacím createuserwizard 56] (#0.2__Toc253429273 "_Toc253429273")
 
 **[ASP.NET MVC](#0.2__Toc253429274 "_Toc253429274")**  
-[Areas Support](#0.2__Toc253429275 "_Toc253429275")  
-[Podpora ověřování dat poznámky atributu](#0.2__Toc253429276 "_Toc253429276")  
-[Pomocnými objekty](#0.2__Toc253429277 "_Toc253429277")
+[Podpora oblastí] (#0.2__Toc253429275 "_Toc253429275")  
+[Podpora ověřování atributů poznámky k datům] (#0.2__Toc253429276 "_Toc253429276")  
+[Pomocník] s šablonami (#0.2__Toc253429277 "_Toc253429277")
 
 **[Dynamic Data](#0.2__Toc253429278 "_Toc253429278")**  
-[Povolení dynamických dat u existujících projektů](#0.2__Toc253429279 "_Toc253429279")  
-[Syntaxe deklarativní ovládacího prvku DynamicDataManager](#0.2__Toc253429280 "_Toc253429280")  
-[Šablony entit](#0.2__Toc253429281 "_Toc253429281")  
-[Nové šablony polí pro adresy URL a e-mailové adresy](#0.2__Toc253429282 "_Toc253429282")  
-[Vytváření odkazů pomocí ovládacího prvku DynamicHyperLink](#0.2__Toc253429283 "_Toc253429283")  
-[Podpora dědičnosti v datovém modelu](#0.2__Toc253429284 "_Toc253429284")  
-[Podpora pro relace m: N (pouze Entity Framework)](#0.2__Toc253429285 "_Toc253429285")  
-[Nové atributy pro ovládací prvek zobrazení a podporu výčtů](#0.2__Toc253429286 "_Toc253429286")  
-[Vylepšená podpora pro filtry](#0.2__Toc253429287 "_Toc253429287")
+[Povolení dynamických dat pro existující projekty] (#0.2__Toc253429279 "_Toc253429279")  
+[Deklarativní syntaxe ovládacího prvku ovládacího prvku DynamicDataManager] (#0.2__Toc253429280 "_Toc253429280")  
+[Šablony entit] (#0.2__Toc253429281 "_Toc253429281")  
+[Nové šablony polí pro adresy URL a e-mailové adresy] (#0.2__Toc253429282 "_Toc253429282")  
+[Vytváření odkazů pomocí ovládacího prvku ovládací DynamicHyperLink] (#0.2__Toc253429283 "_Toc253429283")  
+[Podpora dědičnosti v datovém modelu] (#0.2__Toc253429284 "_Toc253429284")  
+[Podpora relací m:n (jenom Entity Framework)] (#0.2__Toc253429285 "_Toc253429285")  
+[Nové atributy pro řízení zobrazení a podpory výčtů] (#0.2__Toc253429286 "_Toc253429286")  
+[Rozšířená podpora pro filtry] (#0.2__Toc253429287 "_Toc253429287")
 
-**[Vylepšení Visual Studio 2010 webového vývoje](#0.2__Toc253429288 "_Toc253429288")**  
-[Vylepšená Kompatibilita šablon stylů CSS](#0.2__Toc253429289 "_Toc253429289")  
-[HTML a JavaScript fragmenty](#0.2__Toc253429290 "_Toc253429290")  
+**[Vylepšení vývoje webu sady Visual Studio 2010] (#0.2__Toc253429288 "_Toc253429288")**  
+[Vylepšená kompatibilita šablon stylů CSS] (#0.2__Toc253429289 "_Toc253429289")  
+[Fragmenty kódu HTML a JavaScriptu] (#0.2__Toc253429290 "_Toc253429290")  
 [JavaScript IntelliSense Enhancements](#0.2__Toc253429291 "_Toc253429291")
 
-**[Webové nasazení aplikací pomocí sady Visual Studio 2010](#0.2__Toc253429292 "_Toc253429292")**  
+**[Nasazení webové aplikace pomocí sady Visual Studio 2010] (#0.2__Toc253429292 "_Toc253429292")**  
 [Web Packaging](#0.2__Toc253429293 "_Toc253429293")  
 [Web.config Transformation](#0.2__Toc253429294 "_Toc253429294")  
-[Database Deployment](#0.2__Toc253429295 "_Toc253429295")  
-[Publikování jedním kliknutím pro webové aplikace](#0.2__Toc253429296 "_Toc253429296")  
+[Nasazení databáze] (#0.2__Toc253429295 "_Toc253429295")  
+[Publikování jedním kliknutím pro webové aplikace] (#0.2__Toc253429296 "_Toc253429296")  
 [Resources](#0.2__Toc253429297 "_Toc253429297")
 
 **[Disclaimer](#0.2__Toc253429298 "_Toc253429298")**
@@ -94,198 +94,198 @@ ms.locfileid: "65132931"
 
 ## <a name="core-services"></a>Základní služby
 
-ASP.NET 4 zavádí řadu funkcí, které zlepšují služby ASP.NET core jako je například ukládání výstupu do mezipaměti a ukládání stavu relace.
+ASP.NET 4 zavádí řadu funkcí, které zlepšují základní služby ASP.NET, jako je ukládání výstupu do mezipaměti a ukládání stavu relací.
 
 <a id="0.2__Toc243304613"></a><a id="0.2__Toc253429239"></a><a id="0.2__Toc224729019"></a>
 
-### <a name="webconfig-file-refactoring"></a>Soubor Web.config refaktoring
+### <a name="webconfig-file-refactoring"></a>Refaktoring souboru Web. config
 
-`Web.config` Soubor, který obsahuje konfiguraci pro webovou aplikaci zvětšila výrazně za posledních několik verzí rozhraní .NET Framework byly přidány nové funkce, jako je například Ajax, směrování a integrace se službou IIS 7. To bylo obtížnější konfigurace nebo spuštění nové webové aplikace bez nástroje, jako je Visual Studio. V rozhraní .NET Framework 4, hlavní konfigurační prvky byly přesunuty do `machine.config` souborů a aplikací, které jsou nyní dědí nastavení. Díky tomu `Web.config` soubor v aplikacích ASP.NET 4 prázdný nebo obsahovat jenom následující řádky, které určují verzi rozhraní Framework aplikace je cílen na verzi pro Visual Studio:
+`Web.config` Soubor, který obsahuje konfiguraci webové aplikace, se výrazně zvětšil v posledních několika verzích .NET Framework, protože byly přidány nové funkce, jako je například AJAX, směrování a integrace se službou IIS 7. Díky tomu bylo obtížnější nakonfigurovat nebo spustit nové webové aplikace bez nástroje, jako je například Visual Studio. V. rozhraní .NET Framework 4, hlavní prvky konfigurace byly přesunuty do `machine.config` souboru a aplikace nyní dědí tato nastavení. To umožňuje, `Web.config` aby soubor v aplikacích ASP.NET 4 buď prázdný, nebo obsahoval pouze následující řádky, které určují verzi rozhraní .NET Framework, na kterou je aplikace cílena:
 
 [!code-xml[Main](overview/samples/sample1.xml)]
 
 <a id="0.2__Toc253429240"></a><a id="0.2__Toc243304614"></a>
 
-### <a name="extensible-output-caching"></a>Ukládání Extensible výstupu do mezipaměti
+### <a name="extensible-output-caching"></a>Rozšiřitelné ukládání výstupu do mezipaměti
 
-Od doby, která byla vydána ASP.NET 1.0 má ukládání výstupu do mezipaměti umožňuje vývojářům ukládat generovaný výstup stránky, ovládací prvky a odpovědi protokolu HTTP v paměti. V následující webové požadavky ASP.NET obsluhoval obsah rychleji načtením generovaný výstup z paměti namísto znova se generuje výstup úplně od začátku. Ale tento přístup má omezení – vygenerovaný obsah má vždy být uloženy v paměti a na serverech, na kterých dochází k velkému provozu se mohou utkat paměti používané ukládání výstupu do mezipaměti s nároky na paměť z jiných částí webové aplikace.
+Vzhledem k tomu, že čas vydání ASP.NET 1,0, ukládání výstupu do mezipaměti umožňuje vývojářům ukládat generovaný výstup stránek, ovládacích prvků a odpovědí HTTP do paměti. Na následujících webových požadavcích může ASP.NET poskytovat obsah rychleji díky načtení vygenerovaného výstupu z paměti místo opětovného generování výstupu od začátku. Tento přístup má ale omezení – vygenerovaný obsah vždycky musí být uložený v paměti a na serverech, u kterých dochází k velkým objemům provozu, může paměť spotřebovaná výstupním ukládáním do mezipaměti soutěžit s nároky na paměť z jiných částí webové aplikace.
 
-ASP.NET 4 přidá bod rozšiřitelnosti pro ukládání výstupu do mezipaměti, která vám umožní nakonfigurovat jeden nebo více vlastních poskytovatelů výstupní mezipaměti. Výstupní mezipaměť mohou poskytovatelé každý použitý mechanizmus úložiště zachovat obsah HTML. Díky tomu je možné vytvořit vlastního zprostředkovatele mezipaměti výstupu pro různé trvalost mechanismy, které mohou zahrnovat místních nebo vzdálených disků, cloudového úložiště a distribuované mezipaměti.
+ASP.NET 4 přidá bod rozšiřitelnosti do ukládání výstupu do mezipaměti, který umožňuje konfigurovat jednoho nebo více vlastních poskytovatelů výstupní mezipaměti. Poskytovatelé výstupní mezipaměti můžou použít jakýkoliv mechanismus úložiště k uchování obsahu HTML. Díky tomu je možné vytvářet vlastní poskytovatele výstupní mezipaměti pro různé mechanismy trvalosti, které můžou zahrnovat místní nebo vzdálené disky, cloudové úložiště a moduly distribuovaných mezipamětí.
 
-Vytvoření vlastního zprostředkovatele mezipaměti výstupu jako třída, která je odvozena z nové *System.Web.Caching.OutputCacheProvider* typu. Potom můžete nakonfigurovat poskytovatele v `Web.config` soubor pomocí nových *poskytovatelé* podsekce *outputCache* elementu, jak je znázorněno v následujícím příkladu:
+Vlastní poskytovatele výstupní mezipaměti vytvoříte jako třídu, která je odvozena od nového typu *System. Web. Caching. OutputCacheProvider* . Pak můžete nakonfigurovat zprostředkovatele v `Web.config` souboru pomocí nového dílčího oddílu *providers* elementu *OutputCache* , jak je znázorněno v následujícím příkladu:
 
 [!code-xml[Main](overview/samples/sample2.xml)]
 
-Ve výchozím nastavení v technologii ASP.NET 4, všechny odpovědi protokolu HTTP, vykreslené stránky a ovládací prvky pomocí mezipaměti v paměti, jak je znázorněno v předchozím příkladu, kde *defaultProvider* atribut je nastaven na AspNetInternalProvider. Můžete změnit výchozí zprostředkovatel výstupní mezipaměti použít pro webovou aplikaci tak, že zadáte název jiného zprostředkovatele *defaultProvider*.
+Ve výchozím nastavení v ASP.NET 4 všechny odpovědi HTTP, vykreslené stránky a ovládací prvky používají výstupní mezipaměť v paměti, jak je znázorněno v předchozím příkladu, kde je atribut *defaultProvider* nastaven na hodnotu AspNetInternalProvider. Výchozí zprostředkovatele výstupní mezipaměti, který se používá pro webovou aplikaci, můžete změnit zadáním jiného názvu poskytovatele pro hodnotu *defaultProvider*.
 
-Kromě toho můžete vybrat různé zprostředkovatele výstupní mezipaměti pro ovládací prvek a každý požadavek. Nejjednodušší způsob, jak vybrat různé zprostředkovatele výstupní mezipaměti pro jiné webové uživatelské ovládací prvky je provést to deklarativně pomocí nových *providerName* atribut v direktivě ovládacího prvku, jak je znázorněno v následujícím příkladu:
+Kromě toho můžete vybrat různé poskytovatele výstupní mezipaměti pro jednotlivé ovládací prvky a jednotlivé požadavky. Nejjednodušší způsob, jak zvolit jiného poskytovatele výstupní mezipaměti pro různé webové uživatelské ovládací prvky, je provést deklarativní postup pomocí nového atributu *ProviderName* v direktivě ovládacího prvku, jak je znázorněno v následujícím příkladu:
 
 [!code-aspx[Main](overview/samples/sample3.aspx)]
 
-Určení poskytovatele různé výstupní mezipaměti pro požadavek HTTP vyžaduje trochu více práce. Místo určení deklarativně poskytovatele, přepíšete novou *GetOuputCacheProviderName* metodu `Global.asax` souboru programově zadat poskytovatele pro konkrétní žádost. Následující příklad ukazuje, jak to provést.
+Zadání jiného zprostředkovatele výstupní mezipaměti pro požadavek HTTP vyžaduje trochu více práce. Namísto deklarativního určení poskytovatele přepíšete novou metodu *GetOuputCacheProviderName* v `Global.asax` souboru tak, aby programově určila, který poskytovatel se má použít pro konkrétní požadavek. Následující příklad ukazuje, jak to provést.
 
 [!code-csharp[Main](overview/samples/sample4.cs)]
 
-Přidání rozšíření poskytovatel výstupní mezipaměti ASP.NET 4 můžete nyní fungujícího agresivnější a inteligentnější strategie ukládání výstupu do mezipaměti pro webové servery. Například je nyní možné pro ukládání do mezipaměti na stránkách "Top 10" lokality v paměti, při ukládání do mezipaměti stránek, které získáte nižší provoz na disku. Alternativně můžete ukládat do mezipaměti každou kombinaci se liší podle vykreslované stránky, ale pomocí distribuované mezipaměti tak, aby spotřebu paměti se sníženou zátěží z front-endové webové servery.
+S přidáním rozšiřitelnosti poskytovatele výstupní mezipaměti do ASP.NET 4 teď můžete ve svých webech pokračovat efektivněji a více inteligentními strategiemi pro ukládání výstupu do mezipaměti. Například je možné ukládat do mezipaměti stránky "Top 10" stránek v paměti, při ukládání stránek do mezipaměti, které získávají nižší provoz na disku. Alternativně můžete ukládat do mezipaměti všechny různé kombinace pro vykreslenou stránku, ale použít distribuovanou mezipaměť, aby byla spotřeba paměti převedena z front-end webových serverů.
 
 <a id="0.2__Toc224729020"></a><a id="0.2__Toc253429241"></a><a id="0.2__Toc243304615"></a>
 
-### <a name="auto-start-web-applications"></a>Automatické spuštění webové aplikace
+### <a name="auto-start-web-applications"></a>Automatické spouštění webových aplikací
 
-Některé webové aplikace potřebovat k načtení velkého objemu dat nebo provádět nákladné inicializace ještě před obsluhou prvního požadavku na zpracování. V předchozích verzích technologie ASP.NET pro tyto situace, museli jste navrhnout vlastní přístupy k "probuzení" aplikace ASP.NET a potom spusťte kód inicializace během *aplikace\_zatížení* metodu `Global.asax` soubor.
+Některé webové aplikace potřebují před obsluhou první žádosti načíst velké objemy dat nebo provést náročné zpracování inicializace. V dřívějších verzích ASP.NET byly pro tyto situace nutné navrhnout vlastní přístupy do "probuzení" ASP.NET aplikace a pak spustit inicializační kód během metody *načtení aplikace\_* v `Global.asax` souboru.
 
-Nová funkce škálovatelnost s názvem *automatického spuštění* , že přímo adresy tento scénář je k dispozici ASP.NET 4 spuštění ve službě IIS 7.5 na Windows Server 2008 R2. Funkce automatického spuštění poskytuje řízený přístup pro spuštění fondu aplikací, inicializace aplikace ASP.NET a potom přijímá žádosti protokolu HTTP.
+Nová funkce škálovatelnosti s názvem *Automatický start* , která přímo řeší tento scénář, je k dispozici, když ASP.NET 4 běží ve službě IIS 7,5 v systému Windows Server 2008 R2. Funkce automatického spuštění poskytuje řízený přístup pro spuštění fondu aplikací, inicializaci aplikace ASP.NET a následné přijetí požadavků HTTP.
 
 > [!NOTE] 
 > 
-> Modul zahřívání aplikace služby IIS pro službu IIS 7.5
+> Modul pro zahřívání aplikace služby IIS pro IIS 7,5
 > 
-> Tým služby IIS vydala první verzi beta testování zahřívání modulu aplikace pro službu IIS 7.5. Díky tomu je zahájení práce s vaší aplikací ještě jednodušší než dříve popsané. Místo psaní vlastního kódu, zadejte adresy URL prostředků ke spuštění před webová aplikace přijímá žádosti od sítě. Tato zahřívání nastává při spuštění služby IIS (Pokud jste nakonfigurovali se fond aplikací IIS jako *AlwaysRunning*) a kdy se recykluje pracovní proces služby IIS. Během recyklace i nadále spouštět požadavky, dokud se nově vytvořená pracovního procesu je plně provozní teplotu, tak, aby aplikace prostředí bez přerušení nebo jiné problémy způsobené mezipamětí unprimed původní pracovní proces služby IIS. Všimněte si, že tento modul funguje s všech verzí technologie ASP.NET, počínaje verzí 2.0.
+> Tým služby IIS vydal první beta verzi testovacího modulu aplikace pro IIS 7,5. Tím se aplikace zahřívá ještě před tím, než je popsáno výše. Místo psaní vlastního kódu zadáte adresy URL prostředků, které se mají provést, než webová aplikace přijme požadavky ze sítě. K tomuto zahřívání dojde během spouštění služby IIS (Pokud jste nakonfigurovali fond aplikací IIS jako *AlwaysRunning*) a při recyklování pracovního procesu služby IIS. Během recyklování stará pracovní proces služby IIS nadále zpracovává požadavky, dokud se nově vytvořený pracovní proces plně neuvolní, takže aplikace nebudou mít žádné přerušení ani jiné problémy z důvodu neprvotních mezipamětí. Všimněte si, že tento modul funguje s libovolnou verzí ASP.NET, počínaje verzí 2,0.
 > 
-> Další informace najdete v tématu [Application warm-up 1.0](https://www.iis.net/extensions/applicationwarmup%20on%20the%20IIS.net) na webu IIS.net. Názorný postup ukazuje, jak použít funkci zahřívání, naleznete v tématu [Začínáme s modulem IIS 7.5 aplikace zahřívání](https://www.iis.net/learn/manage) na webu IIS.net.
+> Další informace najdete v tématu [zahřívání aplikace](https://www.iis.net/extensions/applicationwarmup%20on%20the%20IIS.net) na webu IIS.NET. Návod, který ukazuje, jak používat funkci pro zahřívání, najdete v tématu [Začínáme s modulem pro zahřívání aplikace IIS 7,5](https://www.iis.net/learn/manage) na webu IIS.NET.
 
-Použít funkci automatického spuštění, nastaví správce služby IIS ve službě IIS 7.5 s použitím následující konfigurace v automaticky spustit fond aplikací `applicationHost.config` souboru:
+Aby bylo možné používat funkci automatického spuštění, Správce služby IIS nastaví fond aplikací ve službě IIS 7,5 tak, aby se automaticky spouštěl pomocí následující konfigurace v `applicationHost.config` souboru:
 
 [!code-xml[Main](overview/samples/sample5.xml)]
 
-Protože jediného fondu aplikací může obsahovat více aplikací, můžete zadat jednotlivé aplikace automaticky spustit s použitím následující konfigurace v `applicationHost.config` souboru:
+Vzhledem k tomu, že jeden fond aplikací může obsahovat více aplikací, určíte jednotlivé aplikace, které mají být automaticky spuštěny, `applicationHost.config` pomocí následující konfigurace v souboru:
 
 [!code-xml[Main](overview/samples/sample6.xml)]
 
-Pokud je server služby IIS 7.5 spouštěná studeného nebo samostatný fond aplikací recykluje, IIS 7.5 pomocí informací v `applicationHost.config` souboru můžete zjistit, které vyžadují webovou aplikací automaticky spustit. Pro každou aplikaci, která je označena pro automatické spouštění IIS 7.5 odešle požadavek na technologii ASP.NET 4 a spusťte tak aplikaci ve stavu, během které aplikaci dočasně nepřijímá požadavky HTTP. Pokud je v tomto stavu, ASP.NET vytvoří instanci typu definovaného *serviceAutoStartProvider* atribut (jak je znázorněno v předchozím příkladu) a zavolá jeho veřejné vstupní bod.
+Pokud je server služby IIS 7,5 studeny nebo pokud dojde k recyklování jednotlivých fondů aplikací, služba IIS 7,5 používá informace v `applicationHost.config` souboru k určení, které webové aplikace je třeba automaticky spustit. Pro každou aplikaci, která je označena pro automatické spuštění, pošle služba IIS 7.5 požadavek na ASP.NET 4 ke spuštění aplikace ve stavu, během kterého aplikace dočasně nepřijímá požadavky HTTP. Pokud je v tomto stavu, ASP.NET vytvoří instanci typu definovaného atributem *serviceAutoStartProvider* (jak je znázorněno v předchozím příkladu) a volá do svého veřejného vstupního bodu.
 
-Vytvoření spravované automaticky spouštěná typu s nezbytné vstupní bod implementací *IProcessHostPreloadClient* rozhraní, jak je znázorněno v následujícím příkladu:
+Můžete vytvořit spravovaný typ automatického spuštění s nezbytným vstupním bodem implementací rozhraní *neimplementuje IProcessHostPreloadClient* , jak je znázorněno v následujícím příkladu:
 
 [!code-csharp[Main](overview/samples/sample7.cs)]
 
-Po inicializaci váš kód běží v *přednačtení* metodou a metodou vrátí, aplikace ASP.NET je připravena ke zpracování požadavků.
+Po spuštění inicializačního kódu v metodě *přednačtení* a návratovou metodou bude aplikace ASP.NET připravená na zpracování požadavků.
 
-Přidání automatické spouštění služby IIS.5 a technologii ASP.NET 4 Teď máte jasně definované přístup k provedení inicializace náročné aplikace před zpracováním první žádosti protokolu HTTP. Například můžete použít novou funkci automatického spuštění pro inicializaci aplikace a pak signál pro vyrovnávání zatížení, že aplikace byla inicializována a připravená přijmout provoz protokolu HTTP.
+Díky přidání automatického startu ke službě IIS 0,5 a ASP.NET 4 teď máte jasně definovaný přístup k náročné inicializaci aplikace před zpracováním prvního požadavku HTTP. Můžete například použít novou funkci automatického spuštění k inicializaci aplikace a pak signalizovat Nástroj pro vyrovnávání zatížení, že aplikace byla inicializována a připravena přijímat přenosy HTTP.
 
 <a id="0.2__Toc224729021"></a><a id="0.2__Toc253429242"></a><a id="0.2__Toc243304616"></a>
 
 ### <a name="permanently-redirecting-a-page"></a>Trvalé přesměrování stránky
 
-To je běžný postup ve webových aplikacích pro přesun stránek a další obsah kolem v čase, což může vést ke kumulaci zastaralé odkazů na vyhledávací weby. V technologii ASP.NET, vývojáři obvykle zpracovat požadavky na původní adresy URL pomocí *Response.Redirect* metodu pro předání požadavku na novou adresu URL. Ale *přesměrování* metoda problémy odpověď HTTP 302 nalezen (dočasné přesměrování), což vede k další HTTP odezvy při uživatelé pokusí přistoupit k původní adresy URL.
+Mezi webovými aplikacemi se běžně přesouvá stránky a další obsah v průběhu času, což může vést k akumulaci zastaralých odkazů ve vyhledávačích. V ASP.NET vývojáři tradičně zpracovali požadavky na staré adresy URL pomocí metody *Response. Redirect* pro přesměrování požadavku na novou adresu URL. Metoda *přesměrování* však vystaví odpověď nalezeno http 302 (dočasné přesměrování), což vede k tomu, že se uživatelé pokusí o přístup ke starým adresám URL.
 
-ASP.NET 4 přidá nový *RedirectPermanent* Pomocná metoda, která usnadňuje problém HTTP 301 trvale přesunuto odpovědi, jako v následujícím příkladu:
+ASP.NET 4 přidává novou pomocnou metodu *RedirectPermanent* , která usnadňuje vystavení HTTP 301 přesunutí trvalých odpovědí, jako v následujícím příkladu:
 
 [!code-csharp[Main](overview/samples/sample8.cs)]
 
-Vyhledávací weby a jiní agenti pro uživatele, které rozpoznají trvalé přesměrování uloží novou adresu URL, která souvisí s obsahem, který odstraňuje nepotřebné odezvy provedené v prohlížeči pro dočasné přesměrování.
+Vyhledávací moduly a další uživatelské agenti, kteří rozpoznávají trvalé přesměrování, uloží novou adresu URL, která je přidružená k obsahu, což eliminuje nepotřebnou dobu odezvy, kterou prohlížeč provede pro dočasné přesměrování.
 
 <a id="0.2__Toc224729022"></a><a id="0.2__Toc253429243"></a><a id="0.2__Toc243304617"></a>
 
-### <a name="shrinking-session-state"></a>Zmenšení stav relace
+### <a name="shrinking-session-state"></a>Zmenší se stav relace.
 
-Technologie ASP.NET poskytuje dvě výchozí možnosti pro ukládání stavu relace ve webové farmě: Zprostředkovatel stavu relace, která vyvolá serveru stavu relace mimo proces a zprostředkovatel stavu relace, který ukládá data v databázi Microsoft SQL Server. Vzhledem k tomu, že obě možnosti zahrnují ukládání informací o stavu mimo pracovní proces webové aplikace, musí být serializován, před odesláním do vzdáleného úložiště stavu relace. V závislosti na tom, kolik informací vývojář ukládá stav relace můžou růst poměrně značnou velikost serializovaná data.
+ASP.NET poskytuje dvě výchozí možnosti pro ukládání stavu relace napříč webovou farmou: Zprostředkovatel stavu relace, který vyvolá nezpracovaný Server stavu relace, a poskytovatele stavu relace, který ukládá data do databáze Microsoft SQL Server. Vzhledem k tomu, že obě možnosti zahrnují ukládání informací o stavu mimo pracovní proces webové aplikace, je nutné před odesláním do vzdáleného úložiště serializovat stav relace. V závislosti na tom, kolik informací vývojář ukládá do stavu relace, může být velikost serializovaných dat poměrně velká.
 
-ASP.NET 4 zavádí nové možnosti komprese pro oba typy zprostředkovatele stavu relací mimo proces. Když *compressionEnabled* možnost konfigurace je znázorněno v následujícím příkladu je nastavena na *true*, ASP.NET se komprimovat (a dekomprimovat) serializovaný stav relace s použitím rozhraní .NET Framework  *System.IO.Compression.GZipStream* třídy.
+ASP.NET 4 zavádí novou možnost komprese pro oba typy zprostředkovatelů stavu relací mimo proces. Pokud je možnost konfigurace *compressionEnabled* zobrazená v následujícím příkladu nastavená na *hodnotu true*, ASP.NET komprimuje (a dekomprimuje) serializovaný stav relace pomocí třídy .NET Framework *System. IO. Compression. GZipStream* . .
 
 [!code-xml[Main](overview/samples/sample9.xml)]
 
-Jednoduché přidání nového atributu `Web.config` souboru aplikací s náhradní cyklů procesoru na webových serverech můžou realizovat značné snížení velikosti serializovaná data stavu relace.
+Díky jednoduchému přidání nového atributu do `Web.config` souboru může aplikace s náhradními cykly procesoru na webových serverech realizovat výrazné snížení velikosti serializovaných dat o stavu relace.
 
 <a id="0.2__Toc253429244"></a><a id="0.2__Toc243304618"></a>
 
-### <a name="expanding-the-range-of-allowable-urls"></a>Zvětšení rozsahu povolené adresy URL
+### <a name="expanding-the-range-of-allowable-urls"></a>Rozšíření rozsahu povolených adres URL
 
-ASP.NET 4 zavádí nové možnosti pro rozšíření velikost adresy URL aplikace. Předchozí verze technologie ASP.NET omezením délky cesty adresy URL do 260 znaků podle cesty k souboru omezení systému souborů NTFS. V technologii ASP.NET 4, máte možnost zvětšit (nebo zmenšit) tento limit, v závislosti na vaší aplikace pomocí dvou nových *httpRuntime* atributů konfigurace. Následující příklad ukazuje tyto nové atributy.
+ASP.NET 4 zavádí nové možnosti rozšíření velikosti adres URL aplikací. Předchozí verze ASP.NET omezené cesty URL délky na 260 znaků na základě limitu souborů NTFS. V ASP.NET 4 máte možnost tento limit zvýšit (nebo snížit) pro vaše aplikace pomocí dvou nových atributů konfigurace prostředí *httpRuntime* . Následující příklad ukazuje tyto nové atributy.
 
 [!code-xml[Main](overview/samples/sample10.xml)]
 
-Chcete-li povolit delší nebo kratší cesty (část adresy URL, která nezahrnuje protokol, název serveru a řetězce dotazu), upravte *[parametru maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* atribut. Povolit řetězce dotazu delší nebo kratší, upravte hodnotu *[parametru maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* atribut.
+Pro povolení delších nebo kratších cest (část adresy URL, která nezahrnuje protokol, název serveru a řetězec dotazu), upravte atribut *[nakonfigurovanou parametru MaxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* . Pro povolení delších nebo kratších řetězců dotazu upravte hodnotu atributu *[nakonfigurovanou parametru MaxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* .
 
-ASP.NET 4 můžete také nakonfigurovat znaky, které jsou používány znak zaškrtnutí adresy URL. Když ASP.NET vyhledá neplatný znak v část cesty adresy URL, zamítne žádost a vyvolá chybu HTTP 400. V předchozích verzích technologie ASP.NET byly omezené na pevnou sadu znaků kontroly znaků adresy URL. V technologii ASP.NET 4, můžete přizpůsobit sadu platné znaky, pomocí nové *requestPathInvalidChars* atribut *httpRuntime* prvek konfigurace, jak je znázorněno v následujícím příkladu:
+ASP.NET 4 také umožňuje nakonfigurovat znaky používané kontrolou znaků adresy URL. Když ASP.NET najde neplatný znak v části cesty adresy URL, požadavek odmítne a vydá chybu HTTP 400. V předchozích verzích ASP.NET byly kontroly znaků adresy URL omezeny na pevně danou sadu znaků. V ASP.NET 4 můžete přizpůsobit sadu platných znaků pomocí nového atributu *RequestPathInvalidCharacters* konfiguračního prvku *httpRuntime* , jak je znázorněno v následujícím příkladu:
 
 [!code-xml[Main](overview/samples/sample11.xml)]
 
-Ve výchozím nastavení *requestPathInvalidChars* atribut definuje osm znaků jako neplatný. (V řetězci, který je přiřazen k *requestPathInvalidChars* ve výchozím nastavení, menší než (&lt;), je větší než (&gt;) a znak ampersand (&amp;) kódování znaků, protože `Web.config` souboru je soubor XML.) Podle potřeby můžete přizpůsobit sadu neplatné znaky.
+Ve výchozím nastavení definuje atribut *RequestPathInvalidCharacters* osm znaků jako neplatných. (V řetězci, který je přiřazen k *RequestPathInvalidCharacters* ve výchozím nastavení jsou zakódovány&lt;znaky menší než ()&gt;, větší než ()&amp;a ampersand (), protože `Web.config` soubor je soubor XML.) V případě potřeby můžete upravit sadu neplatných znaků.
 
 > [!NOTE]
-> Poznámka: ASP.NET 4 vždy odmítne cestami URL, které obsahují znaky v rozsahu ASCII od 0x00 do 0x1F, protože ty jsou neplatné znaky adresy URL, jak jsou definovány v dokumentu RFC 2396 sdružení IETF ([http://www.ietf.org/rfc/rfc2396.txt](http://www.ietf.org/rfc/rfc2396.txt)). Ve verzích Windows serveru, na kterých běží služby IIS 6 nebo vyšší, ovladač http.sys protokolu zařízení automaticky odmítne adresy URL se tyto znaky.
+> Poznámka ASP.NET 4: vždy odmítne cesty URL, které obsahují znaky v rozsahu ASCII – 0x00 až 0x1F, protože to jsou neplatné znaky adresy URL definované v dokumentu RFC 2396 sdružení IETF[http://www.ietf.org/rfc/rfc2396.txt](http://www.ietf.org/rfc/rfc2396.txt)(). V případě verzí Windows serveru, na kterých běží IIS 6 nebo vyšší, ovladač zařízení protokolu HTTP. sys automaticky odmítá adresy URL těmito znaky.
 
 <a id="0.2__Toc253429245"></a><a id="0.2__Toc243304619"></a>
 
-### <a name="extensible-request-validation"></a>Ověření Extensible žádosti
+### <a name="extensible-request-validation"></a>Rozšiřitelné ověřování žádostí
 
-Ověření požadavku ASP.NET prohledá příchozí data požadavku HTTP pro řetězce, které se běžně používají v útoky skriptování napříč weby (XSS). Pokud se nenajdou potenciální řetězce XSS, žádost o ověření označí podezřelý řetězec a vrátí chybu. Ověření integrované žádosti chybovou zprávu pouze v případě, že nalezne nejběžnější řetězců používané v útoky XSS. Předchozí pokusy o nastavení ověření XSS agresivnější výsledkem příliš mnoho falešných poplachů. Zákazníci však může být vhodné, žádost o ověření, který je agresivnější, nebo naopak může být vhodné záměrně zmírnit XSS kontroly pro konkrétní stránky, nebo pro konkrétní typy žádostí.
+Ověření žádosti ASP.NET vyhledá příchozí data požadavku HTTP pro řetězce, které se běžně používají při útocích skriptování mezi weby (XSS). Pokud jsou nalezeny potenciálně řetězce XSS, žádosti o ověření označí podezřelý řetězec a vrátí chybu. Integrované ověřování žádostí vrátí chybu pouze v případě, že najde nejběžnější řetězce používané v útocích XSS. Předchozí pokusy o, aby ověřování XSS bylo více agresivní, vedlo k příliš mnoha falešně pozitivním hodnotám. Zákazníci ale můžou chtít, aby ověřování žádostí bylo výkonnější nebo naopak mohlo chtít záměrně uvolnit kontroly XSS pro konkrétní stránky nebo konkrétní typy požadavků.
 
-V technologii ASP.NET 4 žádosti o ověření funkce byl proveden extensible tak, aby můžete použít logiku vlastního ověření žádosti. Pokud chcete rozšířit ověření žádosti, vytvořte třídu, která je odvozena z nové *System.Web.Util.RequestValidator* typu a nakonfigurovat aplikaci (v *httpRuntime* část `Web.config`souboru) pro použití vlastního typu. Následující příklad ukazuje, jak nakonfigurovat vlastní ověření žádosti třídy:
+V ASP.NET 4 byla funkce ověření žádosti rozšiřitelná, takže můžete používat vlastní logiku pro ověření požadavků. Chcete-li provést prodloužení žádosti o ověření, vytvořte třídu, která je odvozena z nového typu *System. Web. util. RequestValidator* , a nakonfigurujete aplikaci (v `Web.config` oddílu httpRuntime souboru) tak, aby používala vlastní typ. Následující příklad ukazuje, jak nakonfigurovat vlastní třídu pro ověření požadavků:
 
 [!code-xml[Main](overview/samples/sample12.xml)]
 
-Nové *requestValidationType* atribut vyžaduje standardní řetězec identifikátor typ rozhraní .NET Framework, který určuje třídu, která poskytuje vlastní žádosti o ověření. Technologie ASP.NET pro každý požadavek, vyvolá vlastní typ zpracovat každou část příchozí data požadavku HTTP. Adresy URL příchozích, všechny hlavičky protokolu HTTP (soubory cookie a vlastní hlavičky) a obsahu entity jsou všechny dostupné pro kontrolu třídou vlastní žádosti o ověření, je znázorněno v následujícím příkladu:
+Nový atribut *RequestValidationType* vyžaduje standardní .NET Framework řetězec identifikátoru typu, který určuje třídu, která poskytuje vlastní ověření žádosti. Pro každý požadavek ASP.NET vyvolá vlastní typ pro zpracování jednotlivých příchozích dat požadavků HTTP. Příchozí adresa URL, všechny hlavičky protokolu HTTP (soubory cookie a vlastní hlavičky) a tělo entity jsou k dispozici pro kontrolu vlastní třídou ověření žádosti, jak je znázorněno v následujícím příkladu:
 
 [!code-csharp[Main](overview/samples/sample13.cs)]
 
-V případech, kdy nechcete ke kontrole část příchozích dat protokolu HTTP, třída ověření žádosti může vrátit zpět k umožní ověření žádosti ASP.NET výchozí spuštění prostým voláním *základní. IsValidRequestString.*
+V případech, kdy nechcete kontrolovat příchozí data HTTP, může třída ověření žádosti přejít zpět, aby bylo možné ASP.NET výchozí požadavek spustit pouhým voláním *Base. IsValidRequestString.*
 
 <a id="0.2__Toc253429246"></a><a id="0.2__Toc243304620"></a>
 
-### <a name="object-caching-and-object-caching-extensibility"></a>Objekt, ukládání do mezipaměti a rozšiřitelnost ukládání objektů
+### <a name="object-caching-and-object-caching-extensibility"></a>Ukládání objektů do mezipaměti a rozšiřitelnost objektů do mezipaměti
 
-Od své první verze technologie ASP.NET je součástí výkonné objektů v paměti cache (*System.Web.Caching.Cache*). Implementace mezipaměti byla oblíbených tak, že byl použit v jiných webových aplikací. Je ale není vhodný pro aplikaci Windows Forms a WPF zahrnout odkaz na `System.Web.dll` chci mít možnost použití objektu mezipaměti ASP.NET.
+Od první vydané verze ASP.NET zahrnulo výkonnou mezipaměť objektů v paměti (*System. Web. Caching. cache*). Implementace mezipaměti je tak oblíbená, že se použila v jiných než webových aplikacích. Je však nevhodné, aby aplikace model Windows Forms nebo WPF zahrnovaly odkaz na `System.Web.dll` pouze to, aby bylo možné použít mezipaměť objektů ASP.NET.
 
-Chcete-li ukládání do mezipaměti k dispozici pro všechny aplikace, rozhraní .NET Framework 4 zavádí nové sestavení, nový obor názvů, některé základní typy a konkrétní implementaci mezipaměti. Nové `System.Runtime.Caching.dll` sestavení obsahuje nové rozhraní API ukládání do mezipaměti v *System.Runtime.Caching* oboru názvů. Obor názvů obsahuje dvě základní sady tříd:
+Aby bylo ukládání do mezipaměti k dispozici pro všechny aplikace, .NET Framework 4 zavádí nové sestavení, nový obor názvů, některé základní typy a konkrétní implementaci ukládání do mezipaměti. Nové `System.Runtime.Caching.dll` sestavení obsahuje nové rozhraní API pro ukládání do mezipaměti v oboru názvů *System. Runtime. Caching* . Obor názvů obsahuje dvě základní sady tříd:
 
-- Abstraktní typy, které poskytují základ pro vytváření jakéhokoli typu implementace vlastní mezipaměti.
-- Implementace mezipaměti konkrétních objektů v paměti do mezipaměti ( *System.Runtime.Caching.MemoryCache* třídy).
+- Abstraktní typy, které poskytují základ pro vytvoření jakéhokoli typu vlastní implementace mezipaměti.
+- Konkrétní implementace mezipaměti objektů v paměti (třída *System. Runtime. Caching. MemoryCache* ).
 
-Nové *MemoryCache* třídy je modelována ve vyrovnávací paměti ASP.NET a velkou část logiky modul vnitřní mezipaměti sdílí s technologií ASP.NET. I když veřejné rozhraní API ukládání do mezipaměti v *System.Runtime.Caching* byla aktualizována a podporuje vývoj vlastních mezipamětí, pokud jste už použili technologie ASP.NET *mezipaměti* objektu, najdete známé koncepty Nová rozhraní API.
+Nová třída *MemoryCache* je úzce modelována v mezipaměti ASP.NET a sdílí většinu logiky modulu interní mezipaměti s ASP.NET. I když rozhraní API pro veřejné ukládání do mezipaměti v *System. Runtime. Caching* bylo aktualizované tak, aby podporovalo vývoj vlastních mezipamětí, pokud jste použili objekt ASP.NET *cache* , najdete v nových rozhraních API známé koncepty.
 
-Podrobné informace o novém *MemoryCache* třídy a podpora základního rozhraní API by vyžadovaly celý dokument. Ale následující příklad dává představu o fungování nové rozhraní API mezipaměti. V příkladu napsané pro aplikace Windows Forms, bez jakékoli závislosti `System.Web.dll`.
+Podrobná diskuse nové třídy *MemoryCache* a podpůrná základní rozhraní API by vyžadovala celý dokument. Následující příklad vám ale poskytne představu o tom, jak nové rozhraní API mezipaměti funguje. Příklad byl napsán pro model Windows Forms aplikaci bez jakékoli závislosti `System.Web.dll`.
 
 [!code-csharp[Main](overview/samples/sample14.cs)]
 
 <a id="0.2__Toc253429247"></a><a id="0.2__Toc243304621"></a>
 
-### <a name="extensible-html-url-and-http-header-encoding"></a>Rozšiřitelné HTML, URL a kódování hlaviček protokolu HTTP
+### <a name="extensible-html-url-and-http-header-encoding"></a>Extensible HTML, adresa URL a kódování hlaviček protokolu HTTP
 
-V technologii ASP.NET 4 můžete vytvořit vlastní kódování rutiny pro následující běžné úlohy kódování textu:
+V ASP.NET 4 můžete vytvořit vlastní rutiny kódování pro následující běžné úlohy kódování textu:
 
 - Kódování HTML.
-- Kódování URL.
+- Kódování adresy URL.
 - Kódování atributu HTML.
-- Kódování odchozí záhlaví HTTP.
+- Kódování odchozích hlaviček protokolu HTTP.
 
-Můžete vytvořit vlastní kodér odvozením z nové *System.Web.Util.HttpEncoder* typu a potom konfiguraci technologie ASP.NET použijte vlastní typ v *httpRuntime* část `Web.config` soubor jako můžete vidět v následujícím příkladu:
+Vlastní kodér můžete vytvořit odvozením z nového typu *System. Web. util. HttpEncoder* a následnou konfigurací ASP.NET pro použití vlastního typu v `Web.config` oddílu *httpRuntime* souboru, jak je znázorněno v následujícím příkladu:
 
 [!code-xml[Main](overview/samples/sample15.xml)]
 
-Po dokončení konfigurace vlastní kodér, ASP.NET automaticky volá vlastní implementaci kódování vždy, když veřejné metody z kódování *System.Web.HttpUtility* nebo *System.Web.HttpServerUtility* třídy se nazývají. To umožní jedné části webové vývojový tým vytvořit vlastní kodér, který implementuje agresivní kódování znaků, zatímco zbytek týmu vývoje webu používá veřejnou kódování rozhraní API technologie ASP.NET. Vlastní kodér v nakonfigurováním centrálně *httpRuntime* elementu zaručuje, že všechna volání kódování textu z veřejné kódování rozhraní API technologie ASP.NET jsou směrovány vlastní kodér.
+Po nakonfigurování vlastního kodéru ASP.NET automaticky volá vlastní implementaci kódování vždy, když jsou volány veřejné metody kódování tříd *System. Web. HttpUtility* nebo *System. Web. HttpServerUtility* . To umožňuje, aby jedna část týmu vývoje webu vytvořila vlastní kodér, který implementuje agresivní kódování znaků, zatímco zbytek týmu vývoje webu nadále používá rozhraní API pro kódování ASP.NET. Centrální konfigurací vlastního kodéru v prvku *httpRuntime* je zaručeno, že všechna volání kódování textu z rozhraní API pro kódování ASP.NET jsou směrována prostřednictvím vlastního kodéru.
 
 <a id="0.2__Toc253429248"></a><a id="0.2__Toc243304622"></a>
 
-### <a name="performance-monitoring-for-individual-applications-in-a-single-worker-process"></a>Monitorování výkonu pro jednotlivé aplikace v jedné pracovní proces
+### <a name="performance-monitoring-for-individual-applications-in-a-single-worker-process"></a>Sledování výkonu pro jednotlivé aplikace v jednom pracovním procesu
 
-Pokud chcete zvýšit počet webů, které je možné hostovat na jednom serveru, mnoho hostitelům spustit více aplikací prostředí ASP.NET v jeden pracovní proces. Je-li používat více aplikací jednoho sdíleného pracovního procesu, je ale obtížné pro správce serveru k identifikaci jednotlivých aplikace, ke které dochází k potížím.
+Aby bylo možné zvýšit počet webů, které lze hostovat na jednom serveru, mnoho hostitelů v jednom pracovním procesu spouští více aplikací ASP.NET. Pokud ale více aplikací používá jeden sdílený pracovní proces, je obtížné správcům serverů identifikovat jednotlivé aplikace, u kterých dochází k problémům.
 
-ASP.NET 4 využívá nové funkce Sledování prostředků zavedených v modulu CLR. Pokud chcete povolit tuto funkci, můžete přidat následující fragment kódu konfigurace XML pro `aspnet.config` konfigurační soubor.
+ASP.NET 4 využívá novou funkci pro monitorování prostředků, kterou zavádí modul CLR. Chcete-li povolit tuto funkci, můžete přidat následující fragment konfigurace XML do `aspnet.config` konfiguračního souboru.
 
 [!code-xml[Main](overview/samples/sample16.xml)]
 
 > [!NOTE]
-> Poznámka: `aspnet.config` je soubor v adresáři, ve kterém je nainstalováno rozhraní .NET Framework. Není `Web.config` souboru.
+> Všimněte si `aspnet.config` , že se soubor nachází v adresáři, ve kterém je nainstalovaná .NET Framework. Nejedná se o `Web.config` soubor.
 
-Když *appdomainresourcemonitoring –* funkce povolená, dvě nové čítače výkonu jsou k dispozici v kategorii "Aplikací technologie ASP.NET" výkonu: *% času procesoru spravované* a  *Spravované paměti používá*. Obě tyto čítače výkonu použít nové funkce správy prostředků domény aplikace CLR ke sledování odhadovaný čas procesoru a využití spravované paměti jednotlivých aplikací ASP.NET. V důsledku toho v technologii ASP.NET 4 Správci mít podrobnější přehled o spotřebě prostředků jednotlivých aplikací spuštěných v jedné pracovní proces.
+Pokud je povolená funkce *appDomainResourceMonitoring* , jsou v kategorii výkonu "aplikace ASP.NET" k dispozici dva nové čítače výkonu: *% času spravovaného procesoru* a *použitá spravovaná paměť*. Oba tyto čítače výkonu využívají novou funkci správy prostředků aplikace CLR v doméně ke sledování odhadovaného času procesoru a využití spravované paměti u jednotlivých aplikací ASP.NET. V důsledku toho se v ASP.NET 4 teď pro správce zobrazí podrobnější zobrazení spotřeby prostředků jednotlivých aplikací spuštěných v jednom pracovním procesu.
 
 <a id="0.2__Toc253429249"></a><a id="0.2__Toc243304623"></a>
 
 ### <a name="multi-targeting"></a>Cílení na více verzí
 
-Můžete vytvořit aplikaci, která cílí na konkrétní verzi rozhraní .NET Framework. V technologii ASP.NET 4, nový atribut v *kompilace* elementu `Web.config` souboru umožňuje cílit na rozhraní .NET Framework 4 a novější. Pokud explicitně je cílem rozhraní .NET Framework 4 a zadáte-li volitelné prvky v `Web.config` souboru, například položky pro *system.codedom*, tyto prvky musí být správná pro rozhraní .NET Framework 4. (Pokud sdělení nebudete cílit na explicitně rozhraní .NET Framework 4, Cílová architektura, která je odvozen z chybějící položky v `Web.config` souboru.)
+Můžete vytvořit aplikaci, která cílí na konkrétní verzi .NET Framework. V ASP.NET 4 umožňuje nový atribut v elementu `Web.config` *compilation* v souboru cílit na .NET Framework 4 a novější. Pokud explicitně cílíte na .NET Framework 4 a pokud zahrnete volitelné prvky do `Web.config` souboru, například do záznamů pro *System. CodeDom*, tyto prvky musí být správné pro .NET Framework 4. (Pokud nechcete explicitně cílit na .NET Framework 4, cílové rozhraní je odvozeno z nedostatku položky v `Web.config` souboru.)
 
-Následující příklad ukazuje použití *targetFramework* atribut *kompilace* elementu `Web.config` souboru.
+Následující příklad ukazuje použití atributu *targetFramework* v `Web.config` elementu *compilation* v souboru.
 
 [!code-xml[Main](overview/samples/sample17.xml)]
 
-Mějte na paměti následující skutečnosti související cílení na určitou verzi rozhraní .NET Framework:
+Všimněte si následujícího informací o cílení na konkrétní verzi .NET Framework:
 
-- Ve fondu aplikací rozhraní .NET Framework 4, systém sestavení ASP.NET se předpokládá .NET Framework 4 jako cíl Pokud `Web.config` soubor neobsahuje *targetFramework* atribut nebo, pokud `Web.config` soubor nebyl nalezen. (Může mít kódování měnit vaší aplikace, aby byla spouštěna rozhraní .NET Framework 4.)
-- Zadáte-li *targetFramework* atribut a pokud *system.codeDom* element je definován v `Web.config` soubor, tento soubor musí obsahovat správné položky pro rozhraní .NET Framework 4.
-- Pokud používáte *aspnet\_kompilátoru* příkazu pro předkompilaci aplikace (například v prostředí sestavení), je nutné použít správnou verzi *aspnet\_kompilátoru* příkaz pro cílovou architekturu. Použijte kompilátor dodávané s rozhraním .NET Framework 2.0 (% WINDIR%\Microsoft.NET\Framework\v2.0.50727) ke kompilaci pro rozhraní .NET Framework 3.5 a starší verze. Kompilaci aplikací vytvořených pomocí dané rozhraní nebo pomocí novější verze pomocí kompilátoru, která se dodává s rozhraní .NET Framework 4.
-- V době běhu, kterou kompilátor používá nejnovější sestavení rozhraní, které jsou nainstalovány v počítači (a tedy v mezipaměti GAC). Pokud aktualizace je později provedené v rámci (například hypotetické verze 4.1 je nainstalována), budou moct používat funkce v novější verzi rozhraní framework, i když *targetFramework* atribut cílí na starší verzi (například 4.0). (Ale v době návrhu v sadě Visual Studio 2010 nebo při použití *aspnet\_kompilátoru* příkazu, použití novějších funkcí rozhraní Framework způsobí chyby kompilátoru).
+- Ve fondu aplikací .NET Framework 4 předpokládá systém sestavení ASP.NET .NET Framework 4 jako cíl, pokud `Web.config` soubor neobsahuje `Web.config` atribut *targetFramework* , nebo pokud soubor chybí. (Může být nutné provést změny v kódování vaší aplikace, aby byly spouštěny pod .NET Framework 4.)
+- Pokud zahrnete atribut *targetFramework* a pokud je v `Web.config` souboru definován element *System. CodeDom* , musí tento soubor obsahovat správné položky .NET Framework 4.
+- Používáte-li příkaz *ASPNET\_Compiler* k předkompilování aplikace (například v prostředí sestavení), je nutné použít správnou verzi příkazu *ASPNET\_Compiler* pro cílovou architekturu. Použijte kompilátor dodaný s .NET Framework 2,0 (%WINDIR%\Microsoft.NET\Framework\v2.0.50727) ke kompilaci pro .NET Framework 3,5 a starší verze. Použijte kompilátor, který je dodáván s .NET Framework 4 ke kompilaci aplikací vytvořených pomocí této architektury nebo použití novějších verzí.
+- V době běhu kompilátor používá nejnovější sestavení rozhraní, která jsou nainstalována v počítači (a proto v mezipaměti GAC). Pokud je aktualizace provedena později v rozhraní (například je nainstalována hypotetická verze 4,1), budete moci používat funkce v novější verzi rozhraní i v případě, že atribut *targetFramework* cílí na nižší verzi (například 4,0). (Avšak v době návrhu v aplikaci Visual Studio 2010 nebo při použití příkazu *kompilátoru ASPNET\_* , způsobí použití novějších funkcí rozhraní chyby kompilátoru).
 
 <a id="0.2__Toc224729023"></a><a id="0.2__Toc253429250"></a><a id="0.2__Toc243304624"></a>
 
@@ -293,61 +293,61 @@ Mějte na paměti následující skutečnosti související cílení na určitou
 
 <a id="0.2__Toc253429251"></a><a id="0.2__Toc243304625"></a>
 
-### <a name="jquery-included-with-web-forms-and-mvc"></a>jQuery zahrnuté s webovými formuláři a MVC
+### <a name="jquery-included-with-web-forms-and-mvc"></a>jQuery zahrnutý do webových formulářů a MVC
 
-Šablony sady Visual Studio pro webové formuláře a MVC zahrnout knihovny jQuery open source. Při vytváření nového webu nebo projekt je vytvořen skripty složku obsahující následující soubory 3:
+Šablony sady Visual Studio pro webové formuláře i MVC obsahují Open Source knihovnu jQuery. Při vytváření nového webu nebo projektu se vytvoří složka skripty obsahující následující 3 soubory:
 
-- jQuery-1.4.1.js – lidsky čitelném, nezmenšená verzi knihovny jQuery.
-- jQuery-14.1.min.js – minifikovaný verzi knihovny jQuery.
-- jQuery-1.4.1-vsdoc.js – soubor dokumentace technologie Intellisense pro knihovnu jQuery.
+- jQuery 1.4.1. js – unminified verze knihovny jQuery, která je čitelná pro člověka.
+- jQuery 14,1. min. js – verze minifikovaného knihovny jQuery.
+- jQuery 1.4.1-vsdoc. js – soubor dokumentace technologie IntelliSense pro knihovnu jQuery.
 
-Zahrnují nezmenšenou verzi jQuery při vývoji aplikace. Zahrňte minifikovaný verzi jQuery aplikacích v produkčním prostředí.
+Při vývoji aplikace zahrňte unminified verzi jQuery. Zahrňte minifikovaného verzi jQuery pro produkční aplikace.
 
-Například následující stránky webových formulářů ukazuje, jak je možné používat jQuery a změňte barvu pozadí ovládacích prvků technologie ASP.NET textového pole na žlutou, pokud mají fokus.
+Například následující stránka webového formuláře ukazuje, jak lze pomocí jQuery změnit barvu pozadí ovládacích prvků TextBox ASP.NET na žlutou, pokud mají fokus.
 
 [!code-aspx[Main](overview/samples/sample18.aspx)]
 
 <a id="0.2__Toc253429252"></a><a id="0.2__Toc243304626"></a>
 
-### <a name="content-delivery-network-support"></a>Podpora služby Content Delivery Network
+### <a name="content-delivery-network-support"></a>Podpora Content Delivery Network
 
-Microsoft Ajax Content Delivery Network (CDN) umožňuje snadno přidat k vaší webové aplikace technologie ASP.NET Ajax a jQuery skripty. Například můžete začít používat knihovny jQuery jednoduše tak, že přidáte `<script>` značky na stránku, která odkazuje na adresu Ajax.microsoft.com takto:
+Microsoft Ajax Content Delivery Network (CDN) umožňuje snadno přidávat do svých webových aplikací skripty ASP.NET AJAX a jQuery. Knihovnu jQuery můžete například začít jednoduše tak, že přidáte `<script>` značku na stránku, která odkazuje na AJAX.Microsoft.com takto:
 
 [!code-html[Main](overview/samples/sample19.html)]
 
-S využitím Microsoft Ajax CDN může výrazně zlepšit výkon aplikací Ajax. Obsah Microsoft Ajax CDN jsou ukládány do mezipaměti na serverech umístěných po celém světě. Kromě toho Microsoft Ajax CDN umožňuje prohlížečům uložené v mezipaměti soubory jazyka JavaScript pro webové stránky, které se nacházejí v různých doménách.
+Díky využití služby Microsoft Ajax CDN můžete významně zlepšit výkon aplikací AJAX. Obsah Microsoft Ajax CDN je uložený v mezipaměti na serverech umístěných po celém světě. Kromě toho Microsoft Ajax CDN umožňuje prohlížečům znovu použít soubory JavaScriptu v mezipaměti pro weby, které se nacházejí v různých doménách.
 
-Microsoft Ajax Content Delivery Network podporuje protokol SSL (HTTPS), v případě, že budete muset poskytnout webové stránky s použitím Secure Sockets Layer.
+Microsoft Ajax Content Delivery Network podporuje protokol SSL (HTTPS) pro případ, že potřebujete poskytovat webovou stránku pomocí SSL (Secure Sockets Layer).
 
-Implementujte záložní CDN není k dispozici. Testování na náhradní řešení.
+Pokud CDN není k dispozici, implementujte záložní. Otestujte záložní.
 
-Další informace o Microsoft Ajax CDN, naleznete na následujícím webu:
+Další informace o službě Microsoft Ajax CDN najdete na následujícím webu:
 
 [https://www.asp.net/ajaxlibrary/CDN.ashx](../../ajax/cdn/overview.md)
 
-Správce skriptů ASP.NET podporuje Microsoft Ajax CDN. Jednoduše tak, že nastavení jednu vlastnost, vlastnost EnableCdn můžete načíst všechny soubory jazyka JavaScript technologie ASP.NET framework z CDN:
+ScriptManager ASP.NET podporuje Microsoft Ajax CDN. Jednoduše nastavením jedné vlastnosti – vlastnost EnableCdn můžete načíst všechny soubory JavaScriptu rozhraní ASP.NET Framework z CDN:
 
 [!code-aspx[Main](overview/samples/sample20.aspx)]
 
-Jakmile nastavíte vlastnost EnableCdn na hodnotu true, rozhraní ASP.NET se načtou všechny soubory jazyka JavaScript technologie ASP.NET framework CDN, včetně všech souborů JavaScript používá pro ověřování polí a prvku UpdatePanel. Nastavení této jednu vlastnost může mít výrazný dopad na výkon webové aplikace.
+Po nastavení vlastnosti EnableCdn na hodnotu true rozhraní ASP.NET Framework načte všechny soubory JavaScriptu ASP.NET Framework ze sítě CDN včetně všech souborů JavaScriptu používaných pro ověřování a UpdatePanel. Nastavení této vlastnosti může mít výrazný vliv na výkon vaší webové aplikace.
 
-Můžete nastavit cestu k CDN pro soubory JavaScriptu pomocí atributu webového prostředku. Vlastnosti nového CdnPath Určuje cestu k CDN používá, když nastavíte vlastnost EnableCdn na hodnotu true:
+Můžete nastavit cestu CDN pro vlastní soubory JavaScriptu pomocí atributu WebResource. Nová vlastnost CdnPath Určuje cestu k CDN použité v případě, že nastavíte vlastnost EnableCdn na hodnotu true:
 
 [!code-csharp[Main](overview/samples/sample21.cs)]
 
 <a id="0.2__Toc253429253"></a><a id="0.2__Toc243304627"></a>
 
-### <a name="scriptmanager-explicit-scripts"></a>ScriptManager Explicit Scripts
+### <a name="scriptmanager-explicit-scripts"></a>Explicitní skripty ScriptManager
 
-V minulosti Pokud jste použili ASP.NET ScriptManger pak jste museli podstupovat načíst celý monolitické knihovna ASP.NET Ajax. S využitím nové vlastnosti ScriptManager.AjaxFrameworkMode, můžete nastavit přesně načíst součásti knihovna ASP.NET Ajax a načíst pouze součásti knihovna ASP.NET Ajax, které potřebujete.
+Pokud jste v minulosti použili ASP.NET ScriptManger, pak jste museli načíst celou knihovnu monolitické ASP.NET AJAX. Když využijete novou vlastnost ScriptManager. AjaxFrameworkMode, můžete přesně řídit, které součásti knihovny AJAX ASP.NET Library jsou načteny a načteny pouze součásti knihovny ASP.NET AJAX, kterou potřebujete.
 
-Vlastnost ScriptManager.AjaxFrameworkMode můžete nastavit následující hodnoty:
+Vlastnost ScriptManager. AjaxFrameworkMode lze nastavit na následující hodnoty:
 
-- Povolené – Určuje, zda ovládací prvek ScriptManager automaticky obsahuje MicrosoftAjax.js souboru skriptu, což je soubor skriptu kombinované každého skriptu framework core (starší chování).
-- Zakázané – Určuje, že všechny funkce skripty Microsoft Ajax vypnuté a, že ovládací prvek ScriptManager neodkazuje na žádné skripty automaticky.
-- Explicitní – Určuje, že bude obsahovat explicitně skriptových odkazů do jednotlivých framework core skript, který vyžaduje vaše stránka a, že bude obsahovat odkazy na závislosti, které vyžaduje každý soubor skriptu.
+- Enabled – určuje, že ovládací prvek ScriptManager automaticky obsahuje soubor skriptu MicrosoftAjax. js, což je kombinovaný soubor skriptu každého skriptu Core Framework (starší chování).
+- Zakázáno – určuje, že všechny funkce skriptu Microsoft AJAX jsou zakázané a že ovládací prvek ScriptManager neodkazuje na žádné skripty automaticky.
+- Explicitní – určuje, že budete explicitně zahrnovat odkazy na skripty do samostatného souboru skriptu pro jednotlivé architektury, který vaše stránka vyžaduje, a že budete mít odkazy na závislosti, které každý soubor skriptu vyžaduje.
 
-Například pokud nastavíte vlastnost AjaxFrameworkMode explicitní hodnotu pak můžete zadat konkrétní skripty komponent technologie ASP.NET Ajax, které potřebujete:
+Například pokud nastavíte vlastnost AjaxFrameworkMode na hodnotu explicitní, můžete určit konkrétní skripty komponenty AJAX v ASP.NET, které potřebujete:
 
 [!code-aspx[Main](overview/samples/sample22.aspx)]
 
@@ -355,93 +355,93 @@ Například pokud nastavíte vlastnost AjaxFrameworkMode explicitní hodnotu pak
 
 ## <a name="web-forms"></a>webové formuláře
 
-Webové formuláře byla funkce jádra ASP.NET oproti verzi 1.0 technologie ASP.NET. Mnoho vylepšení byly v této oblasti pro technologii ASP.NET 4, včetně následujících:
+Webové formuláře byly základní funkcí v ASP.NET od vydání ASP.NET 1,0. V této oblasti se nachází celá řada vylepšení pro ASP.NET 4, včetně následujících:
 
-- Možnost nastavit *meta* značky.
-- Větší kontrolu nad stavu zobrazení.
-- Jednodušší způsoby, jak pracovat s možností prohlížeče.
-- Podpora použití směrování s webovými formuláři ASP.NET.
-- Větší kontrolu nad generované identifikátory.
-- Umožňuje zachovat vybranými řádky v ovládacích prvcích dat.
-- Větší kontrolu nad zobrazený HTML v *FormView* a *ListView* ovládacích prvků.
-- Podpora pro ovládací prvky zdroje dat filtrování.
+- Možnost nastavení *meta* značek.
+- Větší kontrola nad stavem zobrazení.
+- Jednodušší způsoby práce s funkcemi prohlížeče.
+- Podpora pro použití směrování ASP.NET s webovými formuláři.
+- Větší kontrola nad generovanými identifikátory.
+- Možnost zachovat vybrané řádky v ovládacích prvcích dat.
+- Větší kontrola nad vykresleným HTML v ovládacích prvcích *FormView* a *ListView* .
+- Podpora filtrování pro ovládací prvky zdroje dat.
 
 <a id="0.2__Toc224729033"></a><a id="0.2__Toc253429257"></a><a id="0.2__Toc243304631"></a>
 
-### <a name="setting-meta-tags-with-the-pagemetakeywords-and-pagemetadescription-properties"></a>Nastavení metaznaček Page.MetaKeywords a Page.MetaDescription vlastnosti
+### <a name="setting-meta-tags-with-the-pagemetakeywords-and-pagemetadescription-properties"></a>Nastavení meta značek pomocí vlastností Page. MetaKeywords a Page. MetaDescription
 
-ASP.NET 4 přidá dvě vlastnosti *stránky* třídy, *MetaKeywords* a *MetaDescription*. Tyto dvě vlastnosti představují odpovídající *meta* značky na stránce, jak je znázorněno v následujícím příkladu:
+ASP.NET 4 přidá dvě vlastnosti do třídy *Page* , *MetaKeywords* a *MetaDescription*. Tyto dvě vlastnosti reprezentují odpovídající *metaznačky* značek na stránce, jak je znázorněno v následujícím příkladu:
 
 [!code-aspx[Main](overview/samples/sample23.aspx)]
 
-Tyto dvě vlastnosti fungovat stejně způsobu, jakým na stránce *název* nemá vlastnost. Jsou-li postupovat podle těchto pravidel:
+Tyto dvě vlastnosti fungují stejným způsobem jako vlastnost nadpisu stránky . Dodržují tato pravidla:
 
-1. Pokud existují žádné *meta* značek v *head* element, který se shodovat s názvy vlastností (to znamená, název = "klíčová slova" pro *Page.MetaKeywords* a název = "Popis"  *Page.MetaDescription*, což znamená, že tyto vlastnosti nebyly nastaveny), *meta* značky se přidají do stránky při vykreslení.
-2. Pokud už *meta* značky s těmito názvy těchto vlastností představovat get a set metod pro obsah existující značky.
+1. Pokud element *head* neobsahuje žádné *metaznačky* , které by odpovídaly názvům vlastností (tj. Name = "Keywords" pro *Page. MetaKeywords* a Name = "Description" pro *Page. MetaDescription*, což znamená, že tyto vlastnosti nebyly nastaveny ), značky *meta* budou přidány na stránku, když je vykreslena.
+2. Pokud již existují *meta* značky s těmito názvy, tyto vlastnosti se chovají jako metody Get a set pro obsah existujících značek.
 
-Tyto vlastnosti můžete nastavit v době běhu, který umožňuje získat obsah z databáze nebo jiného zdroje, a který umožňuje nastavit značky dynamicky popište, co je pro konkrétní stránka.
+Tyto vlastnosti lze nastavit za běhu, což vám umožní získat obsah z databáze nebo jiného zdroje, což umožňuje dynamicky nastavit značky pro popis toho, k čemu konkrétní stránka slouží.
 
-Můžete také nastavit *klíčová slova* a *popis* vlastnosti *@ Page* direktiv v horní části kódu stránky webových formulářů, jako v následujícím příkladu:
+Můžete také nastavit vlastnosti *klíčová slova* a *Popis* v direktivě *@ Page* v horní části značky stránky webových formulářů, jako v následujícím příkladu:
 
 [!code-aspx[Main](overview/samples/sample24.aspx)]
 
-Tím se přepíše *meta* obsah (pokud existuje) na stránce už deklarovaný.
+Tato akce přepíše obsah *metaznačky* (pokud existuje) již deklarovaný na stránce.
 
-Obsah popisu *meta* značky se používají pro vylepšení hledání výpis náhledy v Googlu. (Podrobnosti najdete v tématu [zlepšit fragmenty kódu se jednotlivé popis meta](http://googlewebmastercentral.blogspot.com/2007/09/improve-snippets-with-meta-description.html) na blogu Google správce webového serveru centrální.) Google a Windows Live Search nepoužívejte obsah klíčových slov pro všechno, co, ale může další vyhledávací weby. Další informace najdete v tématu [Meta klíčová slova Rady](http://www.searchengineguide.com/richard-ball/meta-keywords-a.php) na webu vyhledávací modul průvodce.
+Obsah *meta* značky Description se používá ke zlepšení výsledků hledání v náhledech v Google. (Podrobnosti najdete v tématu [zlepšení fragmentů kódu pomocí Meta Description změně](http://googlewebmastercentral.blogspot.com/2007/09/improve-snippets-with-meta-description.html) v centrálním blogu správce internetového správce.) Google a Windows Live Search nepoužívají obsah klíčových slov pro cokoli, ale může to být i u jiných vyhledávacích strojů. Další informace najdete v tématu [doporučení META klíčová slova](http://www.searchengineguide.com/richard-ball/meta-keywords-a.php) na webu průvodce vyhledávacími moduly.
 
-Tyto nové vlastnosti jsou jednoduchá funkce, ale se ušetřit z požadavku přidejte ručně nebo psaní vlastního kódu k vytvoření *meta* značky.
+Tyto nové vlastnosti jsou jednoduchou funkcí, ale ukládají vám z požadavku, aby je bylo možné přidat ručně nebo pomocí vlastního kódu pro vytvoření *meta* značek.
 
 <a id="0.2__Toc224729034"></a><a id="0.2__Toc253429258"></a><a id="0.2__Toc243304632"></a>
 
-### <a name="enabling-view-state-for-individual-controls"></a>Umožňuje zobrazit stav jednotlivých ovládacích prvků
+### <a name="enabling-view-state-for-individual-controls"></a>Povolení stavu zobrazení pro jednotlivé ovládací prvky
 
-Ve výchozím nastavení je povolen stav zobrazení stránky, což má za následek, že každý ovládací prvek na stránce potenciálně uloží stav zobrazení, i v případě, že není nutné pro aplikaci. Data stavu zobrazení je součástí kódu, že na stránce generuje a zvyšuje množství čas potřebný k odeslání stránky klientovi a znovu ji publikovat. Ukládání více zobrazení stavu, než je nezbytné, může způsobit významné snížení výkonu. V předchozích verzích technologie ASP.NET vývojáři může zakázat zobrazit stav jednotlivých ovládacích prvků za účelem snížení velikosti stránky, ale museli dělat to explicitně pro jednotlivé ovládací prvky. V technologii ASP.NET 4, zahrnují ovládací prvky webového serveru *ViewStateMode* vlastnost, která vám umožní zakázat zobrazení stavu ve výchozím nastavení a potom ji povolit pouze pro ovládací prvky, které vyžadují na stránce.
+Ve výchozím nastavení je pro stránku povolen stav zobrazení, s výsledkem, že každý ovládací prvek na stránce potenciálně ukládá stav zobrazení, i když není pro aplikaci vyžadován. Data o stavu zobrazení jsou součástí značky, kterou vygeneruje stránka, a zvyšují dobu potřebnou k odeslání stránky klientovi a jeho následnému vrácení. Ukládání většího stavu zobrazení, než je nutné, může způsobit výrazné snížení výkonu. V dřívějších verzích ASP.NET můžou vývojáři zakázat stav zobrazení pro jednotlivé ovládací prvky, aby se snížila velikost stránky, ale museli tak učinit explicitně pro jednotlivé ovládací prvky. V ASP.NET 4 obsahují ovládací prvky webového serveru vlastnost *ViewStateMode* , která umožňuje zakázat stav zobrazení ve výchozím nastavení a pak ho povolit pouze pro ovládací prvky, které to vyžadují na stránce.
 
-*ViewStateMode* vlastnost přijímá výčet, který má tři hodnoty: *Povolené*, *zakázané*, a *dědit*. *Povolené* umožňuje zobrazit stav pro tento ovládací prvek a pro všechny podřízené ovládací prvky, které jsou nastaveny na *Zdědit* nebo mít nic nastaveno. *Zakázané* zakáže zobrazení stavu, a *Zdědit* Určuje, že používá ovládací prvek *ViewStateMode* nastavení z nadřazeného ovládacího prvku.
+Vlastnost *ViewStateMode* přebírá výčet, který má tři hodnoty: *Povoleno*, *zakázáno*a *Zdědit*. *Povoleno* umožňuje zobrazit stav pro tento ovládací prvek a pro všechny podřízené ovládací prvky, které jsou nastaveny na dědění nebo nemají žádnou hodnotu. *Disabled* zakáže stav zobrazení a *dědění* určuje, že ovládací prvek používá nastavení *ViewStateMode* z nadřazeného ovládacího prvku.
 
-Následující příklad ukazuje způsob, jakým *ViewStateMode* vlastnost funguje. Hodnoty pro zahrnuje značek a kódu pro ovládací prvky na následující stránce *ViewStateMode* vlastnost:
+Následující příklad ukazuje, jak funguje vlastnost *ViewStateMode* . Značky a kód pro ovládací prvky na následující stránce obsahují hodnoty pro vlastnost *ViewStateMode* :
 
 [!code-aspx[Main](overview/samples/sample25.aspx)]
 
-Jak je vidět, kód zakazuje stav zobrazení ovládacího prvku PlaceHolder1. Podřízený ovládací prvek label1 zdědí tuto hodnotu vlastnosti (*Zdědit* je výchozí hodnota pro *ViewStateMode* pro ovládací prvky.) a proto uloží stav žádné zobrazení. V ovládacím prvku PlaceHolder2 *ViewStateMode* je nastavena na *povoleno*, takže tuto vlastnost dědí label2 a uloží stav zobrazení. Při prvním načtení stránky, *Text* vlastnost objektu i *popisek* ovládacích prvků je nastaven na řetězec "[třídu DynamicValue]".
+Jak vidíte, kód umožňuje zakázat stav zobrazení pro ovládací prvek PlaceHolder1. Podřízený ovládací prvek Label1 zdědí tuto hodnotu vlastnosti (vlastnost*Inherit* je výchozí hodnota pro ovládací prvky *ViewStateMode* ), a proto neuloží žádný stav zobrazení. V ovládacím prvku PlaceHolder2 je *ViewStateMode* nastaven na *povoleno*, takže Label2 zdědí tuto vlastnost a ukládá stav zobrazení. Při prvním načtení stránky je vlastnost *text* obou ovládacích prvků *popisek* nastavena na řetězec "[třídu dynamicvalue]".
 
-Efekt z těchto nastavení je, že při prvním načtení stránky, se zobrazí následující výstup v prohlížeči:
+Vlivem těchto nastavení je to, že při prvním načtení stránky se v prohlížeči zobrazí následující výstup:
 
-Zakázané `: [DynamicValue]`
+Zabezpečen`: [DynamicValue]`
 
-Povoleno:`[DynamicValue]`
+Umožněn`[DynamicValue]`
 
-Po zpětné volání, ale se zobrazí následující výstup:
+Po zpětném odeslání se ale zobrazí následující výstup:
 
-Zakázané `: [DeclaredValue]`
+Zabezpečen`: [DeclaredValue]`
 
-Povoleno:`[DynamicValue]`
+Umožněn`[DynamicValue]`
 
-Ovládací prvek label1 (jehož *ViewStateMode* nastavena na hodnotu *zakázané*) nebyla zachována hodnotu, která byla nastavena na v kódu. Však určit, label2 (jehož *ViewStateMode* nastavena na hodnotu *povoleno*) je zachována jeho stav.
+Ovládací prvek Label1 (jehož hodnota *ViewStateMode* je nastavená na *disabled*) nezachovává hodnotu, na kterou byl v kódu nastaven. Nicméně ovládací prvek Label2 (jehož hodnota *ViewStateMode* je nastavená na *Enabled*) zachovává svůj stav.
 
-Můžete také nastavit *ViewStateMode* v *@ Page* direktivy, jako v následujícím příkladu:
+*ViewStateMode* můžete také nastavit v direktivě *@ Page* , jako v následujícím příkladu:
 
 [!code-aspx[Main](overview/samples/sample26.aspx)]
 
-*Stránky* třída je právě jiný ovládací prvek; funguje jako nadřazený ovládací prvek pro všechny ostatní ovládací prvky na stránce. Výchozí hodnota *ViewStateMode* je *povoleno* pro instance *stránky*. Protože ovládacích prvků ve výchozím nastavení *Zdědit*, zdědí ovládacích prvků *povoleno* hodnota vlastnosti, pokud nenastavíte *ViewStateMode* na úrovni stránky nebo ovládací prvek.
+Třída *stránky* je pouze jiný ovládací prvek; funguje jako nadřazený ovládací prvek pro všechny ostatní ovládací prvky na stránce. Výchozí hodnota *ViewStateMode* je *povolena* pro instance *stránky*. Vzhledem k tomu,že ovládací prvky, které jsou ve výchozím nastavení děděny, zdědí ovládací prvky vlastnost *Enabled* , pokud jste nenastavili *ViewStateMode* na úrovni stránky nebo ovládacího prvku.
 
-Hodnota *ViewStateMode* určuje vlastnost, pokud stav zobrazení je zachován pouze v případě *EnableViewState* je nastavena na *true*. Pokud *EnableViewState* je nastavena na *false*, nebude Udržovat stav zobrazení i v případě *ViewStateMode* je nastavena na *povoleno*.
+Hodnota vlastnosti *ViewStateMode* určuje, zda je stav zobrazení udržován pouze v případě, že je vlastnost *EnableViewState* nastavena na *hodnotu true*. Pokud je vlastnost *EnableViewState* nastavená na *false*, stav zobrazení se nezachová ani v případě, že je *ViewStateMode* nastavené na *povoleno*.
 
-Je vhodné využít k použití této funkce s *ContentPlaceHolder* ovládacích prvků v hlavní stránky, kde můžete nastavit *ViewStateMode* k *zakázané* pro hlavní stránky a pak povolte jednotlivě pro *ContentPlaceHolder* ovládací prvky, které pak obsahovat ovládací prvky, které vyžadují zobrazení stavu.
+Dobrá možnost použití této funkce je s ovládacími prvky *ContentPlaceHolder* na stránkách předlohy, kde můžete nastavit *ViewStateMode* na *disabled* pro stránku předlohy a pak ji povolit individuálně pro ovládací prvky *ContentPlaceHolder* , které zase obsahuje ovládací prvky, které vyžadují stav zobrazení.
 
 <a id="0.2__Toc224729035"></a><a id="0.2__Toc253429259"></a><a id="0.2__Toc243304633"></a>
 
-### <a name="changes-to-browser-capabilities"></a>Změny možnosti prohlížeče
+### <a name="changes-to-browser-capabilities"></a>Změny možností prohlížeče
 
-Určuje možnosti prohlížeče, které uživatel používá k procházení webu pomocí funkci s názvem ASP.NET *možnosti prohlížeče*. Možnosti prohlížeče jsou reprezentovány *HttpBrowserCapabilities* objektu (vystavené *Request.Browser* vlastnost). Například můžete použít *HttpBrowserCapabilities* objektem pro určení, zda typu a verzi aktuální prohlížeč podporuje konkrétní verzi jazyka JavaScript. Nebo můžete použít *HttpBrowserCapabilities* objektem pro určení, zda požadavek pochází z mobilního zařízení.
+ASP.NET určuje možnosti prohlížeče, které uživatel používá k procházení webu pomocí funkce s názvem *Možnosti prohlížeče*. Schopnosti prohlížeče jsou reprezentovány objektem *HttpBrowserCapabilities* (vystaveno vlastností *Request. browser* ). Například můžete použít objekt *HttpBrowserCapabilities* k určení, zda typ a verze aktuálního prohlížeče podporují určitou verzi JavaScriptu. Nebo můžete použít objekt *HttpBrowserCapabilities* k určení, zda požadavek pochází z mobilního zařízení.
 
-*HttpBrowserCapabilities* objekt doprovází sadu souborů definic prohlížeče. Tyto soubory obsahují informace o možnostech konkrétní prohlížečů. V technologii ASP.NET 4 se aktualizovaly těchto souborů definic prohlížeč bude obsahovat informace o naposledy zavedení prohlížeče a zařízení, jako jsou Google Chrome, výzkumu v pohybu BlackBerry smartphony a Apple iPhone.
+Objekt *HttpBrowserCapabilities* je řízen sadou definičních souborů prohlížeče. Tyto soubory obsahují informace o možnostech konkrétního prohlížeče. V ASP.NET 4 se tyto soubory definic prohlížeče aktualizovaly tak, aby obsahovaly informace o nedávno zavedených prohlížečích a zařízeních, jako je Google Chrome, výzkum v oblasti Motion BlackBerry smartphone a Apple iPhone.
 
-Následující seznam obsahuje nový prohlížeč souborů definic:
+V následujícím seznamu jsou uvedeny nové soubory definice prohlížeče:
 
 - *blackberry.browser*
 - *chrome.browser*
-- *Default.Browser*
+- *Výchozí prohlížeč*
 - *firefox.browser*
 - *gateway.browser*
 - *generic.browser*
@@ -451,594 +451,594 @@ Následující seznam obsahuje nový prohlížeč souborů definic:
 - *opera.browser*
 - *safari.browser*
 
-#### <a name="using-browser-capabilities-providers"></a>Použití poskytovatelů možnosti prohlížeče
+#### <a name="using-browser-capabilities-providers"></a>Použití poskytovatelů možností prohlížeče
 
-V technologii ASP.NET 3.5 Service Pack 1, můžete definovat možnosti, které má prohlížeč následujícími způsoby:
+V ASP.NET verze 3,5 Service Pack 1 můžete definovat možnosti, které má prohlížeč v následujících ohledech:
 
-- Na úrovni počítače, vytvořit nebo aktualizovat `.browser` soubor XML v následující složce:
+- Na úrovni počítače vytvoříte nebo aktualizujete `.browser` soubor XML v následující složce:
 
 - [!code-console[Main](overview/samples/sample27.cmd)]
 
-- Po definování schopnostech prohlížeče spustíte následující příkaz z Visual Studio příkazového řádku Pokud chcete znovu vytvořit sestavení možností prohlížeče a přidejte ji do mezipaměti GAC:
+- Po definování schopnosti prohlížeče spustíte následující příkaz z příkazového řádku sady Visual Studio, abyste mohli znovu sestavit sestavení schopností prohlížeče a přidat ho do GAC:
 
 - [!code-console[Main](overview/samples/sample28.cmd)]
 
-- Pro jednotlivé aplikace, můžete vytvořit `.browser` souboru v aplikačním `App_Browsers` složky.
+- Pro jednotlivé aplikace vytvoříte `.browser` soubor ve `App_Browsers` složce aplikace.
 
-Tyto přístupy vyžadovat změnu souborů XML a změn na úrovni počítače, je nutné restartovat aplikaci po spuštění aspnet\_regbrowsers.exe procesu.
+Tyto přístupy vyžadují, abyste změnili soubory XML a pro změny na úrovni počítače, musíte po spuštění procesu ASPNET\_regbrowsers. exe restartovat aplikaci.
 
-ASP.NET 4 obsahuje funkci označovanou jako *poskytovatelé možností prohlížeče*. Jak název napovídá, díky tomu se vytvořit zprostředkovatele, který můžete použít k určení schopností prohlížeče váš vlastní kód.
+ASP.NET 4 zahrnuje funkci označovanou jako *poskytovatelé možností prohlížeče*. Jak název navrhuje, umožňuje vytvořit poskytovatele, který zase umožňuje používat vlastní kód k určení možností prohlížeče.
 
-V praxi vývojáři často nemá definován vlastní prohlížeč. Prohlížeč souborů jsou těžko aktualizovat, proces aktualizuje je poměrně složité a syntaxe XML pro `.browser` soubory můžou být složité a definovat. Co by tento proces značně zjednodušují je, pokud byly nějaké běžné definice syntaxe prohlížeče, nebo databáze, který obsahoval definice aktuální prohlížeč nebo dokonce i webovou službu pro tyto databáze. Nové funkce poskytovatele možnosti prohlížeče díky scénářů je to možné a praktické pro vývojáře třetích stran.
+V praxi vývojáři často nedefinují možnosti vlastního prohlížeče. Je obtížné aktualizovat soubory v prohlížeči. proces jejich aktualizace je poměrně složitý a syntaxe XML pro `.browser` soubory může být složitá pro použití a definování. To by vedlo k tomu, že v případě, že existovala společná syntaxe definice prohlížeče nebo databáze, která obsahuje aktuální definice prohlížeče nebo je to i webová služba pro takovou databázi, je tento proces mnohem jednodušší. Funkce pro nové poskytovatele schopností prohlížeče tyto scénáře umožňují a jsou praktické pro vývojáře třetích stran.
 
-Existují dva hlavní přístupy pro pomocí nové funkce poskytovatele funkce prohlížeče technologie ASP.NET 4: definice funkce rozšíření schopností prohlížeče technologie ASP.NET nebo úplného nahrazení. Následující části popisují nejprve jak nahradit funkci a jak ji rozšířit.
+Existují dva hlavní přístupy k používání nové funkce poskytovatele možností prohlížeče ASP.NET 4: rozšíření funkcí definice schopností prohlížeče ASP.NET nebo jejich úplné nahrazení. Následující části popisují první způsob, jak tyto funkce nahradit, a postup, jak je zvětšit.
 
-#### <a name="replacing-the-aspnet-browser-capabilities-functionality"></a>Nahrazení funkce možností prohlížeče technologie ASP.NET
+#### <a name="replacing-the-aspnet-browser-capabilities-functionality"></a>Nahrazení funkcí možností prohlížeče ASP.NET
 
-Pro nahrazení definice funkcí technologie ASP.NET prohlížeče možnosti zcela, postupujte takto:
+K úplnému nahrazení funkce definice schopností prohlížeče ASP.NET použijte následující postup:
 
-1. Vytvořte třídu poskytovatele, který je odvozen z *HttpCapabilitiesProvider* a, která přepíše *GetBrowserCapabilities* metody, jako v následujícím příkladu: 
+1. Vytvořte třídu zprostředkovatele, která je odvozena z *HttpCapabilitiesProvider* a přepíše metodu *GetBrowserCapabilities* , jak je uvedeno v následujícím příkladu: 
 
     [!code-csharp[Main](overview/samples/sample29.cs)]
 
-    Kód v tomto příkladě vytvoří novou *HttpBrowserCapabilities* objektu, zadáním pouze funkci s názvem prohlížeče a nastavíte tuto možnost na MyCustomBrowser.
-2. Zaregistrujte poskytovatele s aplikací. 
+    Kód v tomto příkladu vytvoří nový objekt *HttpBrowserCapabilities* , který určí pouze schopnost s názvem Browser a nastaví tuto schopnost na MyCustomBrowser.
+2. Zaregistrujte zprostředkovatele v aplikaci. 
 
-    Chcete-li použít zprostředkovatele s aplikací, je nutné přidat *poskytovatele* atribut *browserCaps* tématu `Web.config` nebo `Machine.config` soubory. (Můžete také definovat atributů zprostředkovatele *umístění* – element pro konkrétní adresáře v aplikaci, jako je složka pro konkrétní mobilní zařízení.) Následující příklad ukazuje, jak nastavit *poskytovatele* atribut v konfiguračním souboru:
+    Aby bylo možné použít poskytovatele s aplikací, je nutné přidat atribut `Web.config` *Provider* do oddílu browserCaps v souborech nebo. `Machine.config` (Můžete také definovat atributy poskytovatele v elementu *umístění* pro konkrétní adresáře v aplikaci, například ve složce pro určité mobilní zařízení.) Následující příklad ukazuje, jak nastavit atribut *Provider* v konfiguračním souboru:
 
     [!code-xml[Main](overview/samples/sample30.xml)]
 
-    Dalším způsobem, jak registrovat nová definice funkce prohlížeč je při použití kódu, jak je znázorněno v následujícím příkladu:
+    Dalším způsobem, jak zaregistrovat novou definici schopností prohlížeče, je použít kód, jak je znázorněno v následujícím příkladu:
 
     [!code-csharp[Main](overview/samples/sample31.cs)]
 
-    Tento kód musí být spuštěn *aplikace\_Start* událost `Global.asax` souboru. Jakékoli změny *BrowserCapabilitiesProvider* třídy se musí vyskytovat před provedením žádný kód v aplikaci, pokud chcete mít jistotu, že mezipaměť zůstane v platném stavu pro příkaz vyřešený *HttpCapabilitiesBase* objektu.
+    Tento kód musí být spuštěn v *události\_spuštění aplikace* daného `Global.asax` souboru. Aby se zajistilo, že mezipaměť zůstane v platném stavu pro vyřešený objekt *HttpCapabilitiesBase* , musí dojít ke změně třídy *BrowserCapabilitiesProvider* .
 
-#### <a name="caching-the-httpbrowsercapabilities-object"></a>Ukládání do mezipaměti HttpBrowserCapabilities objektu
+#### <a name="caching-the-httpbrowsercapabilities-object"></a>Ukládání objektu HttpBrowserCapabilities do mezipaměti
 
-V předchozím příkladu má jeden problém, který je, že by kód spustit pokaždé, když vlastního zprostředkovatele je vyvolána, pokud chcete získat *HttpBrowserCapabilities* objektu. Více než jednou. to může nastat při každém požadavku. V příkladu kódu pro zprostředkovatele není nutné velká. Nicméně pokud kód ve zprostředkovateli vlastní provádí pracné v pořadí zobrazíte *HttpBrowserCapabilities* objektu, to může ovlivnit výkon. K tomu nedocházelo, můžete ukládat do mezipaměti *HttpBrowserCapabilities* objektu. Postupujte podle těchto kroků:
+Předchozí příklad obsahuje jeden problém, což znamená, že kód se spustí pokaždé, když se vyvolá vlastní zprostředkovatel, aby se získal objekt *HttpBrowserCapabilities* . Tato situace může nastat několikrát během každé žádosti. V příkladu kód poskytovatele nedělá mnoho. Nicméně pokud kód ve vlastním zprostředkovateli provádí významnou práci, aby získal objekt *HttpBrowserCapabilities* , může to mít vliv na výkon. Chcete-li zabránit tomu, aby se to stalo, můžete objekt *HttpBrowserCapabilities* Uložit do mezipaměti. Postupujte podle těchto kroků:
 
-1. Vytvořte třídu, která je odvozena z *HttpCapabilitiesProvider*, například v následujícím příkladu: 
+1. Vytvořte třídu, která je odvozena z *HttpCapabilitiesProvider*, podobně jako v následujícím příkladu: 
 
     [!code-csharp[Main](overview/samples/sample32.cs)]
 
-    V příkladu se kód vygeneruje klíč mezipaměti pomocí volání vlastní metody BuildCacheKey a získá dobu do mezipaměti pomocí volání vlastní metody GetCacheTime. Kód poté přidá vyřešený *HttpBrowserCapabilities* objektů do mezipaměti. Objekt je možné načíst z mezipaměti a opakovaně použít na následné žádosti, které usnadňují použití vlastního zprostředkovatele.
+    V příkladu kód generuje klíč mezipaměti voláním vlastní metody BuildCacheKey a získá dobu ukládání do mezipaměti voláním vlastní metody GetCacheTime. Kód pak přidá vyřešený objekt *HttpBrowserCapabilities* do mezipaměti. Objekt lze načíst z mezipaměti a znovu použít u dalších požadavků, které využívají vlastního zprostředkovatele.
 2. Zaregistrujte poskytovatele s aplikací, jak je popsáno v předchozím postupu.
 
-#### <a name="extending-aspnet-browser-capabilities-functionality"></a>Rozšíření funkcí možnosti prohlížeče technologie ASP.NET
+#### <a name="extending-aspnet-browser-capabilities-functionality"></a>Rozšíření funkcí prohlížeče ASP.NET
 
-Předchozí část popisuje, jak vytvořit nový *HttpBrowserCapabilities* objektu v technologii ASP.NET 4. Funkce Možnosti prohlížeče technologie ASP.NET můžete také rozšířit přidáním nových definic možnosti prohlížeče na ty, které už jsou v technologii ASP.NET. Můžete to provést bez použití prohlížeče definice XML. Následující postup ukazuje jak.
+Předchozí část popisuje, jak vytvořit nový objekt *HttpBrowserCapabilities* v ASP.NET 4. Funkce prohlížeče ASP.NET můžete také roztáhnout přidáním nových definic schopností prohlížeče do těch, které jsou už v ASP.NET. To můžete provést bez použití definic prohlížeče XML. Následující postup ukazuje, jak.
 
-1. Vytvořte třídu, která je odvozena z *HttpCapabilitiesEvaluator* a, která přepíše *GetBrowserCapabilities* způsob, jak je znázorněno v následujícím příkladu: 
+1. Vytvořte třídu, která je odvozena z *HttpCapabilitiesEvaluator* a přepíše metodu *GetBrowserCapabilities* , jak je znázorněno v následujícím příkladu: 
 
     [!code-csharp[Main](overview/samples/sample33.cs)]
 
-    Tento kód používá funkci ASP.NET prohlížeče možnosti nejprve pokusit se identifikovat prohlížeč. Ale pokud se podaří identifikovat žádný prohlížeč na základě informací definované v požadavku (tj. Pokud *prohlížeče* vlastnost *HttpBrowserCapabilities* objektu je řetězec "Neznámý"), kód volá vlastní zprostředkovatel (MyBrowserCapabilitiesEvaluator) k identifikaci prohlížeče.
-2. Zaregistrujte poskytovatele s aplikací, jak je popsáno v předchozím příkladu.
+    Tento kód nejprve používá funkci schopností prohlížeče ASP.NET k pokusu o identifikaci prohlížeče. Pokud však není identifikován žádný prohlížeč na základě informací definovaných v žádosti (tj. Pokud je vlastnost *prohlížeče* objektu *HttpBrowserCapabilities* řetězec "unknown"), kód volá vlastního zprostředkovatele ( MyBrowserCapabilitiesEvaluator) pro identifikaci prohlížeče.
+2. Zaregistrujte poskytovatele u aplikace, jak je popsáno v předchozím příkladu.
 
-#### <a name="extending-browser-capabilities-functionality-by-adding-new-capabilities-to-existing-capabilities-definitions"></a>Rozšíření prohlížeče možnosti funkce přidáním nových funkcí do existující definice funkce
+#### <a name="extending-browser-capabilities-functionality-by-adding-new-capabilities-to-existing-capabilities-definitions"></a>Rozšíření funkcí prohlížeče přidáním nových funkcí do stávajících definic schopností
 
-Kromě vytvoření vlastní prohlížeč definice zprostředkovatele a dynamicky se vytvoří nová definicí prohlížeče můžete rozšířit stávající definicí prohlížeče doplněná o funkce. To vám umožní používat definice, která je blízko co chcete, ale nemá pouze několik možností. Chcete-li to provést, postupujte následovně.
+Kromě vytvoření vlastního poskytovatele definice prohlížeče a dynamického vytváření nových definic prohlížeče můžete rozšířit existující definice prohlížečů o další možnosti. To vám umožní použít definici, která se blíží k tomu, co potřebujete, ale nemá jenom několik možností. K tomu použijte následující postup.
 
-1. Vytvořte třídu, která je odvozena z *HttpCapabilitiesEvaluator* a, která přepíše *GetBrowserCapabilities* způsob, jak je znázorněno v následujícím příkladu: 
+1. Vytvořte třídu, která je odvozena z *HttpCapabilitiesEvaluator* a přepíše metodu *GetBrowserCapabilities* , jak je znázorněno v následujícím příkladu: 
 
     [!code-csharp[Main](overview/samples/sample34.cs)]
 
-    Ukázkový kód rozšiřuje existující ASP.NET *HttpCapabilitiesEvaluator* třídy a získá *HttpBrowserCapabilities* objekt, který odpovídá aktuální definice požadavku s použitím následujícího kódu :
+    Ukázkový kód rozšiřuje existující třídu ASP.NET *HttpCapabilitiesEvaluator* a získá objekt *HttpBrowserCapabilities* , který odpovídá aktuální definici žádosti pomocí následujícího kódu:
 
     [!code-csharp[Main](overview/samples/sample35.cs)]
 
-    Kód poté můžete přidat nebo upravit možnosti tohoto prohlížeče. Existují dva způsoby, jak zadat novou funkci prohlížeče:
+    Kód pak může přidat nebo změnit schopnost tohoto prohlížeče. Existují dva způsoby, jak zadat novou funkci prohlížeče:
 
-    - Přidat dvojici klíč/hodnota do *IDictionary* objekt, který je zveřejněný prostřednictvím *možnosti* vlastnost *HttpCapabilitiesBase* objektu. V předchozím příkladu kód přidá možnost s názvem vícedotykové s hodnotou *true*.
-    - Nastavit vlastnosti existující *HttpCapabilitiesBase* objektu. V předchozím příkladu kód nastaví *snímků* vlastnost *true*. Tato vlastnost je jednoduše přistupujícího *IDictionary* objekt, který je zveřejněný prostřednictvím *možnosti* vlastnost. 
+    - Přidejte dvojici klíč/hodnota k objektu *IDictionary* , který je vystavený vlastností *Capabilities* objektu *HttpCapabilitiesBase* . V předchozím příkladu kód přidá schopnost s názvem MultiTouch s hodnotou *true*.
+    - Nastavte existující vlastnosti objektu *HttpCapabilitiesBase* . V předchozím příkladu kód nastaví vlastnost *rámců* na *hodnotu true*. Tato vlastnost je jednoduše přistupující objekt pro objekt *IDictionary* , který je vystavený vlastností *Capabilities* . 
 
         > [!NOTE]
-        > Poznámka: Tento model se vztahuje na jakoukoli vlastnost *HttpBrowserCapabilities*, včetně adaptérů ovládacích prvků.
-2. Zaregistrujte poskytovatele s aplikací, jak je popsáno v předchozím kroku.
+        > Poznámka: Tento model se vztahuje na jakoukoliv vlastnost *HttpBrowserCapabilities*, včetně adaptérů ovládacích prvků.
+2. Zaregistrujte poskytovatele s aplikací, jak je popsáno v předchozím postupu.
 
 <a id="0.2__Toc224729036"></a><a id="0.2__Toc253429260"></a><a id="0.2__Toc243304634"></a>
 
-### <a name="routing-in-aspnet-4"></a>Směrování v technologii ASP.NET 4
+### <a name="routing-in-aspnet-4"></a>Směrování v ASP.NET 4
 
-ASP.NET 4 přidá integrovanou podporu pro použití směrování s webovými formuláři. Směrování umožňuje nakonfigurovat aplikaci tak, aby přijímal žádosti adresy URL, které nelze namapovat na fyzické soubory. Místo toho můžete směrování k definování adresy URL, která jsou srozumitelné pro uživatele a, které mohou pomoci s optimalizací vyhledávače (SEO) pro vaši aplikaci. Adresa URL pro stránku, která zobrazí produktové kategorie v existující aplikaci může například vypadat jako v následujícím příkladu:
+ASP.NET 4 přidává integrovanou podporu pro používání směrování s webovými formuláři. Směrování umožňuje nakonfigurovat aplikaci tak, aby přijímala adresy URL požadavků, které nemapují fyzické soubory. Místo toho můžete použít směrování k definování adres URL, které jsou smysluplné pro uživatele a které můžou pro vaši aplikaci pomáhat s optimalizací vyhledávačů (SEO). Například adresa URL stránky, která zobrazuje kategorie produktů v existující aplikaci, může vypadat jako v následujícím příkladu:
 
 [!code-console[Main](overview/samples/sample36.cmd)]
 
-Pomocí směrování, můžete nakonfigurovat aplikaci tak, aby přijímal následující adresu URL k vykreslení tyto informace:
+Pomocí směrování můžete nakonfigurovat aplikaci tak, aby při vykreslování stejných informací přijímala následující adresu URL:
 
 [!code-console[Main](overview/samples/sample37.cmd)]
 
-Směrování byl k dispozici od verze technologie ASP.NET 3.5 SP1. (Příklad toho, jak pomocí směrování v technologii ASP.NET 3.5 SP1, naleznete v příspěvku [pomocí směrování s webových formulářů](http://haacked.com/archive/2008/03/11/using-routing-with-webforms.aspx "název této položky.") v blogu phila Haacka.) ASP.NET 4 však zahrnuje některé funkce, které usnadňují použití směrování, včetně následujících:
+Směrování bylo od verze ASP.NET 3,5 SP1 k dispozici. (Příklad použití směrování v ASP.NET 3,5 SP1 najdete v tématu [použití směrování s]názvem WebForms(http://haacked.com/archive/2008/03/11/using-routing-with-webforms.aspx "této položky.") na blogu Filip Haack.) ASP.NET 4 ale obsahuje některé funkce, které usnadňují používání směrování, včetně následujících:
 
-- *PageRouteHandler* třídy, která je jednoduchý obslužnou rutinu HTTP, které používáte při definování tras. Třída předá data, požadavek se přesměruje na stránku.
-- Nové vlastnosti *HttpRequest.RequestContext* a *Page.RouteData* (což je proxy serverem, který *HttpRequest.RequestContext.RouteData* objekt). Tyto vlastnosti usnadňují přístup k informacím, který je předán z trasy.
-- Následující nového Tvůrce výrazů, které jsou definovány v *System.Web.Compilation.RouteUrlExpressionBuilder* a *System.Web.Compilation.RouteValueExpressionBuilder*:
-- *RouteUrl*, která poskytuje jednoduchý způsob, jak vytvořit adresu URL, která odpovídá adrese URL trasy v rámci serverový ovládací prvek ASP.NET.
-- *RouteValue*, která poskytuje jednoduchý způsob, jak extrahovat informace z *RouteContext* objektu.
-- *RouteParameter* třídu, která je snazší předat data obsažená v *RouteContext* objektu do dotazu pro ovládací prvek zdroje dat (podobně jako [ *FormParameter* ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formparameter.aspx)).
+- Třída *PageRouteHandler* , což je jednoduchá obslužná rutina http, kterou použijete při definování tras. Třída předává data na stránku, na kterou je požadavek směrován.
+- Nové vlastnosti *HttpRequest. třída RequestContext* a *Page. parametr RouteData* (což je proxy server pro objekt *HttpRequest. Třída requestContext. parametr RouteData* ). Tyto vlastnosti usnadňují přístup k informacím, které se předávají z trasy.
+- Následující nové tvůrci výrazů, které jsou definovány v *System. Web. Compilation. RouteUrlExpressionBuilder* a *System. Web. Compilation. RouteValueExpressionBuilder*:
+- *RouteUrl*, která poskytuje jednoduchý způsob, jak vytvořit adresu URL, která odpovídá adrese URL trasy v rámci ovládacího prvku ASP.NET serveru.
+- *RouteValue*, která poskytuje jednoduchý způsob, jak extrahovat informace z objektu *RouteContext* .
+- Třída *RouteParameter* , která usnadňuje předávání dat obsažených v objektu *RouteContext* do dotazu pro řízení zdrojů dat (podobně jako [*FormParameter*](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formparameter.aspx)).
 
 #### <a name="routing-for-web-forms-pages"></a>Směrování pro stránky webových formulářů
 
-Následující příklad ukazuje, jak definovat trasu webových formulářů pomocí nových *MapPageRoute* metodu *trasy* třídy:
+Následující příklad ukazuje, jak definovat trasu webových formulářů pomocí nové metody *MapPageRoute* třídy *Route* :
 
 [!code-csharp[Main](overview/samples/sample38.cs)]
 
-ASP.NET 4 zavádí *MapPageRoute* metody. Následující příklad je ekvivalentní k definici SearchRoute je znázorněno v předchozím příkladu, ale používá *PageRouteHandler* třídy.
+ASP.NET 4 zavádí metodu *MapPageRoute* . Následující příklad je ekvivalentní k definici SearchRoute, která je uvedená v předchozím příkladu, ale používá třídu *PageRouteHandler* .
 
 [!code-csharp[Main](overview/samples/sample39.cs)]
 
-Kódem v příkladu mapuje trasu na fyzickou stránku (v prvním postupu k `~/search.aspx`). První definice trasy také určuje, že by měl parametr s názvem searchterm extrahovat z adresy URL a předána na stránku.
+Kód v příkladu mapuje trasu na fyzickou stránku (v první trase na `~/search.aspx`). První definice trasy také určuje, že parametr s názvem searchterm by měl být extrahován z adresy URL a předán na stránku.
 
-*MapPageRoute* metoda podporuje následující přetížení metody:
+Metoda *MapPageRoute* podporuje následující přetížení metod:
 
-- *MapPageRoute (routeName řetězec, řetězec routeUrl, řetězec %{physicalfile/, bool checkPhysicalUrlAccess)*
-- *MapPageRoute (routeName řetězec, řetězec routeUrl, řetězec %{physicalfile/, bool checkPhysicalUrlAccess, RouteValueDictionary výchozí nastavení)*
-- *MapPageRoute (routeName řetězec, řetězec routeUrl, řetězec %{physicalfile/, bool checkPhysicalUrlAccess, RouteValueDictionary výchozí hodnoty, omezení RouteValueDictionary)*
+- *MapPageRoute (řetězec-řetěz, řetězec routeUrl, String physicalFile, bool checkPhysicalUrlAccess)*
+- *MapPageRoute (řetězec-řetěz, řetězec routeUrl, String physicalFile, bool checkPhysicalUrlAccess, RouteValueDictionary Defaults)*
+- *MapPageRoute (řetězec, řetěz, řetězec routeUrl, String physicalFile, bool checkPhysicalUrlAccess, RouteValueDictionary Defaults, omezení RouteValueDictionary)*
 
-*CheckPhysicalUrlAccess* parametr určuje, zda trasa by měla kontrolovat oprávnění zabezpečení pro fyzickou stránku směrování (v tomto případě search.aspx) a oprávnění na příchozí adrese URL (v tomto případě do vyhledávacího pole / {searchterm}). Pokud hodnota *checkPhysicalUrlAccess* je *false*, zkontroluje pouze oprávnění příchozí adrese URL. Tato oprávnění jsou definovány v `Web.config` soubor pomocí nastavení, jako je následující:
+Parametr *checkPhysicalUrlAccess* určuje, zda má trasa kontrolovat oprávnění zabezpečení pro fyzickou stránku, na kterou se směruje (v tomto případě Search. aspx) a oprávnění na příchozí adrese URL (v tomto případě Search/{searchterm}). Pokud je hodnota *checkPhysicalUrlAccess* *false*, budou kontrolována pouze oprávnění příchozí adresy URL. Tato oprávnění jsou definována v `Web.config` souboru pomocí následujících nastavení:
 
 [!code-xml[Main](overview/samples/sample40.xml)]
 
-Příklad konfigurace přístup byl odepřen na fyzickou stránku `search.aspx` pro všechny uživatele kromě těch, kteří jsou v roli správce. Když *checkPhysicalUrlAccess* parametr je nastaven na *true* (což je výchozí hodnota), pouze správci jsou povolena pro přístup k adrese URL /search/ {searchterm}, protože je search.aspx fyzickou stránku omezeno na uživatele v této roli. Pokud *checkPhysicalUrlAccess* je nastavena na *false* a lokalita je nakonfigurovaná, jak je znázorněno v předchozím příkladu, jsou povoleny všechny ověřené uživatele pro přístup k adrese URL /search/ {searchterm}.
+V příkladech konfigurace je přístup odepřen na fyzickou stránku `search.aspx` pro všechny uživatele s výjimkou těch, kteří jsou v roli správce. Pokud je parametr *checkPhysicalUrlAccess* nastaven na *hodnotu true* (což je výchozí hodnota), budou mít přístup k adrese URL/Search/{searchterm} jenom oprávnění uživatelé s oprávněními správce, protože fyzická stránka hledání. aspx je omezená na uživatele v této roli. Pokud je *checkPhysicalUrlAccess* nastavené na *false* a lokalita je nakonfigurovaná tak, jak je znázorněno v předchozím příkladu, všichni ověření uživatelé mají povolený přístup k adrese URL/Search/{searchterm}.
 
-#### <a name="reading-routing-information-in-a-web-forms-page"></a>Čtení směrování informace na webové stránce formulářů
+#### <a name="reading-routing-information-in-a-web-forms-page"></a>Čtení informací o směrování na stránce webového formuláře
 
-V kódu fyzické stránky webových formulářů, dostanete informace, které směrování se extrahují z adresy URL (nebo jiné informace, který má jiný objekt přidán do *RouteData* objektů) pomocí dvou nových vlastností: *HttpRequest.RequestContext* a *Page.RouteData*. (*Page.RouteData* zabalí *HttpRequest.RequestContext.RouteData*.) Následující příklad ukazuje, jak používat *Page.RouteData*.
+V kódu fyzické stránky webových formulářů můžete získat přístup k informacím, které směrování vyvolalo z adresy URL (nebo jiné informace, že byl do objektu *parametr RouteData* přidán jiný objekt) pomocí dvou nových vlastností: *HttpRequest. třída RequestContext* a *Page. parametr RouteData*. (*Page. parametr RouteData* zabalí *HttpRequest. Třída requestContext. parametr RouteData*.) Následující příklad ukazuje, jak použít *Page. parametr RouteData*.
 
 [!code-csharp[Main](overview/samples/sample41.cs)]
 
-Kód extrahuje hodnotu, která byla předána parametru searchterm definované v trase příklad výše. Vezměte v úvahu následující adresu URL požadavku:
+Kód extrahuje hodnotu, která byla předána parametru searchterm, jak je definováno v příkladu předchozí trasy. Vezměte v úvahu následující adresu URL požadavku:
 
 [!code-console[Main](overview/samples/sample42.cmd)]
 
-Při této žádosti se slova "scott" by být vykreslen v `search.aspx` stránky.
+Po provedení tohoto požadavku se na `search.aspx` stránce vykreslí slovo "Scott".
 
 #### <a name="accessing-routing-information-in-markup"></a>Přístup k informacím o směrování v kódu
 
-Metody popsané v předchozí části ukazuje, jak získat data trasy v kódu v stránky s webovými formuláři. Můžete také použít výrazy ve značkách, které poskytují přístup ke stejným informacím. Tvůrce výrazů jsou výkonné a elegantní způsob, jak pracovat s deklarativního kódu. (Další informace naleznete v příspěvku [Express sami pomocí vlastního tvůrce výrazů](http://haacked.com/archive/2006/11/29/Express_Yourself_With_Custom_Expression_Builders.aspx) v blogu phila Haacka.)
+Metoda popsaná v předchozí části ukazuje, jak získat data směrování v kódu na stránce webového formuláře. Můžete také použít výrazy v kódu, které vám umožní přístup ke stejným informacím. Tvůrci výrazů představují výkonný a elegantní způsob práce s deklarativním kódem. (Další informace najdete v tématu [s vlastními tvůrci výrazů](http://haacked.com/archive/2006/11/29/Express_Yourself_With_Custom_Expression_Builders.aspx) na blogu Filip Haack.)
 
-ASP.NET 4 obsahuje dvě nové Tvůrce výrazů pro směrování webových formulářů. Následující příklad ukazuje způsob jejich použití.
+ASP.NET 4 obsahuje dva nové tvůrci výrazů pro směrování webových formulářů. Následující příklad ukazuje, jak je používat.
 
 [!code-aspx[Main](overview/samples/sample43.aspx)]
 
-V tomto příkladu *RouteUrl* výrazu se používá k definování adresy URL, která je založena na parametru trasy. To vám ušetří pevně zakódovat s úplnou adresu URL do kódu a můžete později změnit strukturu adresy URL bez nutnosti změny na tomto odkazu.
+V příkladu se výraz *RouteUrl* používá k definování adresy URL, která je založena na parametru směrování. Tím se ušetříte tím, že zadáte úplnou adresu URL do značky a umožníte změnit strukturu adresy URL později bez nutnosti jakékoli změny tohoto odkazu.
 
-Na základě trasy definovali dříve, tento kód generuje následující adresu URL:
+V závislosti na dříve definované trase generuje tento kód následující adresu URL:
 
 [!code-console[Main](overview/samples/sample44.cmd)]
 
-ASP.NET automaticky funguje správné směrování (to znamená, generuje správnou adresu URL) na základě vstupních parametrů. Můžete použít také název trasy ve výrazu, který umožňuje určit trasu k použití.
+ASP.NET automaticky funguje v závislosti na vstupních parametrech správnou trasou (to znamená, že generuje správnou adresu URL). Do výrazu můžete také zahrnout název směrování, který vám umožní určit trasu, která se má použít.
 
-Následující příklad ukazuje způsob použití *RouteValue* výrazu.
+Následující příklad ukazuje, jak použít výraz *RouteValue* .
 
 [!code-aspx[Main](overview/samples/sample45.aspx)]
 
-Při spuštění stránky, která obsahuje tento ovládací prvek je hodnota "scott" zobrazený v popisku.
+Když se stránka obsahující tento ovládací prvek spustí, zobrazí se v popisku hodnota "Scott".
 
-*RouteValue* výraz umožňují snadno používat data trasy v kódu a jeho se vyhnete nutnosti pracovat s mnohem složitější Page.RouteData["x"] syntaxe v kódu.
+Výraz *RouteValue* usnadňuje použití směrovacích dat ve značkách a zabraňuje tomu, aby v kódu používala složitější syntaxi Page. parametr RouteData ["x"].
 
-#### <a name="using-route-data-for-data-source-control-parameters"></a>Použití dat trasy pro parametrů ovládací prvek zdroje dat
+#### <a name="using-route-data-for-data-source-control-parameters"></a>Použití dat směrování pro parametry ovládacího prvku zdroje dat
 
-*RouteParameter* třída umožňuje zadat jako hodnotu parametru pro dotazy v ovládacím prvku zdroje dat data trasy. To [funguje podobně jako](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formparameter.aspx) třídy, jak je znázorněno v následujícím příkladu:
+Třída *RouteParameter* umožňuje zadat data směrování jako hodnotu parametru pro dotazy v ovládacím prvku zdroje dat. [Funguje podobně](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formparameter.aspx) jako třída, jak je znázorněno v následujícím příkladu:
 
 [!code-aspx[Main](overview/samples/sample46.aspx)]
 
-V takovém případě se hodnota searchterm parametr trasa se použije pro @companyname parametr *vyberte* příkazu.
+V tomto případě se hodnota parametru Route searchterm použije pro @companyname parametr v příkazu *Select* .
 
 <a id="0.2__Toc224729037"></a><a id="0.2__Toc253429261"></a><a id="0.2__Toc243304635"></a>
 
-### <a name="setting-client-ids"></a>Nastavení ID klienta
+### <a name="setting-client-ids"></a>Nastavení ID klientů
 
-Nové *ClientIDMode* vlastnost řeší dlouhotrvající problém v technologii ASP.NET, a to, jak vytvořit ovládací prvky *id* atribut pro elementy, které vykreslují. Vědět, *id* atribut pro elementy vykreslované je důležité, pokud vaše aplikace obsahuje klientský skript, který odkazuje na tyto prvky.
+Nová vlastnost *ClientIDMode* řeší dlouhotrvající problém v ASP.NET, konkrétně způsob, jakým ovládací prvky vytvoří atribut *ID* pro prvky, které vykreslují. Znalost atributu *ID* pro vykreslené elementy je důležitá, pokud vaše aplikace obsahuje skript klienta, který na tyto prvky odkazuje.
 
-*Id* atribut v jazyce HTML, který je generován pro ovládací prvky webového serveru je generován a základě *ClientID* vlastnost ovládacího prvku. Až do technologie ASP.NET 4, algoritmus pro generování *id* atribut z *ClientID* vlastnosti se mají zřetězit názvový kontejner (pokud existuje) s ID a v případě opakovaných ovládací prvky (jako v ovládací prvky dat), chcete-li přidat předponu a pořadové číslo. Když to má vždycky zaručeno, že jsou jedinečné identifikátory ovládacích prvků na stránce, algoritmus umožňují řídit ID, které nebyly předvídatelný a byly proto obtížné odkaz v klientského skriptu.
+Atribut *ID* ve formátu HTML, který je vykreslen pro ovládací prvky webového serveru, je vygenerován na základě vlastnosti *ClientID* ovládacího prvku. Do ASP.NET 4 byl algoritmus pro vygenerování atributu *ID* z vlastnosti *ClientID* zřetězený názvový kontejner (pokud existuje) s ID a v případě opakovaných ovládacích prvků (jako v ovládacích prvcích dat) pro přidání předpony a sekvenčního prvku. Automatické. I když má vždycky zaručeno, že identifikátory ovládacích prvků na stránce jsou jedinečné, výsledkem algoritmu jsou ID ovládacích prvků, které nebyly předvídatelné, a bylo by proto obtížné odkazovat v klientském skriptu.
 
-Nové *ClientIDMode* vlastnost umožňuje určit přesnější způsob, jakým vygeneruje ID klienta pro ovládací prvky. Můžete nastavit *ClientIDMode* vlastnost pro libovolný ovládací prvek, včetně stránky. Je to možné nastavení jsou následující:
+Nová vlastnost *ClientIDMode* umožňuje zadat přesnější způsob generování ID klienta pro ovládací prvky. Můžete nastavit vlastnost *ClientIDMode* pro jakýkoli ovládací prvek, včetně stránky. Možná nastavení jsou následující:
 
-- *AutoID* – jedná se o ekvivalent algoritmus pro generování *ClientID* hodnoty vlastností použitých v předchozích verzích technologie ASP.NET.
-- *Statické* – Určuje, který *ClientID* hodnota bude stejné jako ID bez zřetězení ID nadřazeného objektu pojmenování kontejnerů. To může být užitečné ve webových ovládacích prvcích uživatele. Vzhledem k tomu, že uživatelský ovládací prvek webu mohou být umístěny na různých stránkách a ovládacích prvků jiný kontejner, může být obtížné je napsat skript pro ovládací prvky, které používají klienta *AutoID* algoritmus protože nelze předvídat, co se bude hodnoty ID .
-- *Předvídatelný* – tato možnost je především pro použití v ovládacích prvcích dat, které používají opakující se šablony. Zřetězí vlastnosti ID ovládacího prvku pojmenování kontejnerů, ale vygenerovaný *ClientID* hodnoty neobsahují řetězci, například "ctlxxx". Toto nastavení funguje ve spojení s *ClientIDRowSuffix* vlastnost ovládacího prvku. Můžete nastavit *ClientIDRowSuffix* vlastnost na název datového pole a hodnotu daného pole se používá jako přípona pro generované *ClientID* hodnotu. Obvykle byste použili primární klíč datový záznam jako *ClientIDRowSuffix* hodnotu.
-- *Dědit* – toto nastavení je výchozí chování pro ovládací prvky, určuje, že generování ID ovládacího prvku je stejný jako jeho nadřazený objekt.
+- *AutoID* – jedná se o ekvivalent algoritmu pro generování hodnot vlastností *ClientID* , které byly použity v dřívějších verzích nástroje ASP.NET.
+- *Static* – určuje, že hodnota *ClientID* bude stejná jako ID bez zřetězení identifikátorů nadřazených názvových kontejnerů. To může být užitečné pro webové uživatelské ovládací prvky. Vzhledem k tomu, že webový uživatelský ovládací prvek může být umístěn na různých stránkách a v různých ovládacích prvcích kontejneru, může být obtížné napsat klientský skript pro ovládací prvky, které používají algoritmus *AutoID* , protože nemůžete předpovědět, jaké hodnoty ID budou.
+- *Předvídatelné* – Tato možnost je primárně určena pro použití v ovládacích prvcích dat, které používají opakující se šablony. Zřetězuje vlastnosti ID názvových kontejnerů ovládacího prvku, ale generované hodnoty *ClientID* neobsahují řetězce, jako je například "ctlxxx". Toto nastavení funguje ve spojení s vlastností *ClientIDRowSuffix* ovládacího prvku. Vlastnost *ClientIDRowSuffix* nastavíte na název datového pole a hodnota tohoto pole se použije jako přípona pro generovanou hodnotu *ClientID* . Obvykle byste použili primární klíč datového záznamu jako hodnotu *ClientIDRowSuffix* .
+- *Inherit* – toto nastavení je výchozí chování pro ovládací prvky. Určuje, že generování ID ovládacího prvku je stejné jako jeho nadřazený objekt.
 
-Můžete nastavit *ClientIDMode* vlastností na úrovni stránky. Definuje výchozí *ClientIDMode* hodnotu pro všechny ovládací prvky na aktuální stránce.
+Vlastnost *ClientIDMode* lze nastavit na úrovni stránky. To definuje výchozí hodnotu *ClientIDMode* pro všechny ovládací prvky na aktuální stránce.
 
-Výchozí hodnota *ClientIDMode* hodnota na úrovni stránky je *AutoID*a ve výchozím nastavení *ClientIDMode* hodnotu na úrovni řízení *Zdědit*. V důsledku toho pokud nenastavíte tato vlastnost kdekoli ve vašem kódu, všechny ovládací prvky budou ve výchozím nastavení *AutoID* algoritmus.
+Výchozí hodnota *ClientIDMode* na úrovni stránky je *AutoID*a výchozí hodnota *ClientIDMode* na úrovni ovládacího prvku je *děděna*. V důsledku toho, pokud nenastavíte tuto vlastnost kdekoli v kódu, všechny ovládací prvky budou standardně *AutoID* algoritmus.
 
-Nastavte hodnotu úrovni stránky v *@ Page* směrnice, jak je znázorněno v následujícím příkladu:
+Hodnotu na úrovni stránky nastavíte v direktivě *@ Page* , jak je znázorněno v následujícím příkladu:
 
 [!code-aspx[Main](overview/samples/sample47.aspx)]
 
-Můžete také nastavit *ClientIDMode* hodnoty v konfiguračním souboru na úrovni počítače (počítače) nebo na úrovni aplikace. Definuje výchozí *ClientIDMode* nastavení pro všechny ovládací prvky na všech stránkách v aplikaci. Pokud hodnotu nastavíte na úrovni počítače, definuje výchozí *ClientIDMode* nastavení pro všechny weby na tomto počítači. Následující příklad ukazuje *ClientIDMode* nastavení v konfiguračním souboru:
+Hodnotu *ClientIDMode* můžete také nastavit v konfiguračním souboru, a to buď na úrovni počítače (počítač), nebo na úrovni aplikace. To definuje výchozí nastavení *ClientIDMode* pro všechny ovládací prvky na všech stránkách v aplikaci. Pokud nastavíte hodnotu na úrovni počítače, definuje se výchozí nastavení *ClientIDMode* pro všechny weby na tomto počítači. Následující příklad ukazuje nastavení *ClientIDMode* v konfiguračním souboru:
 
 [!code-xml[Main](overview/samples/sample48.xml)]
 
-Jak bylo uvedeno dříve, hodnota *ClientID* vlastnost je odvozen z názvový kontejner pro nadřazený ovládací prvek. V některých případech, například při použití stránky předlohy ovládací prvky můžete skončit s ID jako v následujícím vykreslení HTML:
+Jak bylo uvedeno dříve, hodnota vlastnosti *ClientID* je odvozena z názvového kontejneru pro nadřazený ovládací prvek ovládacího prvku. V některých případech, například při použití stránek předlohy, mohou ovládací prvky končit ID, jako jsou ty v následujícím vykresleném HTML:
 
 [!code-html[Main](overview/samples/sample49.html)]
 
-I v případě, *vstupní* uvedené ve značce elementu (z *textového pole* ovládací prvek) je jenom dva pojmenování kontejnerů hluboké na stránce (vnořeného *ContentPlaceholder* ovládací prvky), kvůli způsobu, jakým jsou zpracovány stránky předlohy konečný výsledek je ID ovládacího prvku, jako je následující:
+I když je *vstupní* prvek zobrazený v kódu (z ovládacího prvku *TextBox* ) pouze dva kontejnery pojmenování hluboko na stránce (vnořené ovládací prvky *ContentPlaceHolder* ), z důvodu způsobu zpracování stránek předlohy je konečný výsledek ID ovládacího prvku jako následující:
 
 [!code-console[Main](overview/samples/sample50.cmd)]
 
-Toto ID se musí být jedinečný ve stránce, ale je zbytečně dlouho pro většinu účelů. Představte si, že chcete zkrátit délku vygenerované ID a mít větší kontrolu nad způsob ID generování. (Například chcete odstranit předpony "ctlxxx".) Nejjednodušší způsob, jak toho dosáhnout, je nastavení *ClientIDMode* vlastnost, jak je znázorněno v následujícím příkladu:
+U tohoto ID je zaručeno, že je na stránce jedinečný, ale pro většinu účelů je to zbytečně dlouhé. Představte si, že chcete snížit délku vykresleného ID a mít větší kontrolu nad tím, jak se ID vygeneruje. (Například chcete odstranit předpony "ctlxxx".) Nejjednodušší způsob, jak toho dosáhnout, je nastavit vlastnost *ClientIDMode* , jak je znázorněno v následujícím příkladu:
 
 [!code-aspx[Main](overview/samples/sample51.aspx)]
 
-V této ukázce *ClientIDMode* je nastavena na *statické* pro nejkrajnější *NamingPanel* elementu a nastaven na *Predictable* pro vnitřní *NamingControl* elementu. Toto nastavení má za následek následující značky (zbytek stránky a stránky předlohy se předpokládá, že stejná jako v předchozím příkladu):
+V této ukázce je vlastnost *ClientIDMode* nastavena na hodnotu *static* pro nejvzdálenější element *NamingPanel* a je nastavena na *předvídatelné* pro vnitřní prvek *NamingControl* . Toto nastavení má za následek následující značky (zbytek stránky a stránka předlohy se považuje za stejnou jako v předchozím příkladu):
 
 [!code-html[Main](overview/samples/sample52.html)]
 
-*Statické* nastavení má vliv na resetování pojmenování hierarchie pro všechny ovládací prvky uvnitř nejkrajnější *NamingPanel* elementu a vyloučit *ContentPlaceHolder* a *MasterPage* ID z vygenerované ID. ( *Název* atribut vykreslené prvků je poškozena, takže normální funkce technologie ASP.NET je zachován z důvodu události, zobrazení stavu a tak dále.) Vedlejším účinkem resetování hierarchii názvů je, že i v případě, že přesunete značky *NamingPanel* prvků, které mají jiný *ContentPlaceholder* ovládací prvek vykreslené client ID zůstávají stejné.
+*Statické* nastavení má vliv na resetování hierarchie názvů pro všechny ovládací prvky uvnitř nejvzdálenějšího prvku *NamingPanel* a odstranění identifikátorů *ContentPlaceHolder* a *MasterPage* z generovaného ID. ( *Název* atributu vykreslených prvků není nijak ovlivněn, takže normální funkce ASP.NET jsou uchovány pro události, stav zobrazení a tak dále.) Vedlejším účinkem resetování hierarchie názvů je, že i když přesunete značky pro prvky *NamingPanel* do jiného ovládacího prvku *ContentPlaceHolder* , vykreslená ID klientů zůstanou stejná.
 
 > [!NOTE]
-> Všimněte si, že je na vás, abyste měli jistotu, že jsou jedinečné identifikátory vykreslovaných ovládacích prvků. Pokud nejsou, může dojít k narušení žádné funkce, které vyžaduje jedinečný ID pro jednotlivé elementy HTML, jako je například klient *document.getElementById* funkce.
+> Všimněte si, že je k dispaměti, abyste se ujistili, že ID vykreslených ovládacích prvků jsou jedinečná. Pokud nejsou, může přerušit všechny funkce, které vyžadují jedinečné identifikátory pro jednotlivé prvky HTML, jako je například klient *Document. getElementById* .
 
-#### <a name="creating-predictable-client-ids-in-data-bound-controls"></a>Vytváření předvídatelné ID klienta v ovládacích prvcích vázaných na Data
+#### <a name="creating-predictable-client-ids-in-data-bound-controls"></a>Vytváření předvídatelných ID klientů v ovládacích prvcích vázaných na data
 
-*ClientID* hodnoty, které jsou generovány pro ovládací prvky v ovládacím prvku seznamu vázaného na data pomocí starší verze algoritmu mohou být dlouhé a nejsou ve skutečnosti předvídatelné. *ClientIDMode* funkce vám umožňují mít větší kontrolu nad jak tyto identifikátory jsou generovány.
+Hodnoty *ClientID* , které jsou generovány pro ovládací prvky v ovládacím prvku seznamu vázaného na data pomocí staršího algoritmu, mohou být dlouhé a nejsou skutečně předvídatelné. Funkce *ClientIDMode* vám může pomáhat získat větší kontrolu nad tím, jak se tyto identifikátory generují.
 
-Obsahuje kód v následujícím příkladu *ListView* ovládacího prvku:
+Označení v následujícím příkladu obsahuje ovládací prvek *ListView* :
 
 [!code-aspx[Main](overview/samples/sample53.aspx)]
 
-V předchozím příkladu *ClientIDMode* a *RowClientIDRowSuffix* vlastnosti nastavené v kódu. *ClientIDRowSuffix* vlastnost lze použít pouze v ovládacích prvcích vázaných na data, a její chování se liší v závislosti na tom, který ovládací prvek, kterou používáte. Rozdíly jsou tyto:
+V předchozím příkladu jsou vlastnosti *ClientIDMode* a *RowClientIDRowSuffix* nastaveny v označení. Vlastnost *ClientIDRowSuffix* lze použít pouze v ovládacích prvcích vázaných na data a její chování se liší v závislosti na tom, který ovládací prvek používáte. Rozdíly jsou tyto:
 
-- *GridView* ovládacího prvku – můžete určit, název jednoho nebo více sloupců ve zdroji dat, které jsou zkombinované v době běhu k vytvoření ID klienta. Například pokud nastavíte *RowClientIDRowSuffix* na "ProductName; ProductId", určit ID pro elementy vykreslované bude mít formát podobný tomuto:
+- Ovládací prvek *GridView* – můžete zadat název jednoho nebo více sloupců ve zdroji dat, které jsou kombinovány v době běhu, a vytvořit tak ID klientů. Například pokud nastavíte *RowClientIDRowSuffix* na "ProductName, ProductID", identifikátory ovládacího prvku pro vykreslené elementy budou mít formát podobný následujícímu:
 
 - [!code-console[Main](overview/samples/sample54.cmd)]
 
-- *ListView* ovládacího prvku – můžete zadat jeden sloupec ve zdroji dat, která se připojuje k ID klienta. Například pokud nastavíte *ClientIDRowSuffix* na "ProductName"; ID vykreslovaných ovládacích prvků bude mít formát podobný tomuto:
+- *ListView* – ovládací prvek – můžete zadat jeden sloupec ve zdroji dat, který je připojen k ID klienta. Například pokud nastavíte *ClientIDRowSuffix* na "ProductName", vygenerované identifikátory ovládacího prvku budou mít formát podobný následujícímu:
 
 - [!code-console[Main](overview/samples/sample55.cmd)]
 
-- V tomto případě koncové 1 je odvozen od ID produktu z aktuální datové položky.
+- V tomto případě je koncové číslo 1 odvozeno z ID produktu aktuální datové položky.
 
-- *Repeater* ovládacího prvku – tento ovládací prvek není podporován *ClientIDRowSuffix* vlastnost. V *Repeater* slouží ovládací prvek, index aktuálního řádku. Při použití ClientIDMode = "Predictable" with *Repeater* řízení, klienta jsou generovány ID, které mají tento formát:
+- *Repeater* – ovládací prvek – tento ovládací prvek nepodporuje vlastnost *ClientIDRowSuffix* . V ovládacím prvku *Repeater* je použit index aktuálního řádku. Při použití ClientIDMode = "předvídatelného" s ovládacím prvkem *Repeater* se generují ID klientů, které mají následující formát:
 
 - [!code-console[Main](overview/samples/sample56.cmd)]
 
-- Koncové 0 je index aktuálního řádku.
+- Koncová hodnota 0 je index aktuálního řádku.
 
-*FormView* a *DetailsView* ovládací prvky, které nepodporují nezobrazují více řádků *ClientIDRowSuffix* vlastnost.
+Ovládací prvky *FormView* a *DetailsView* nezobrazují více řádků, takže nepodporují vlastnost *ClientIDRowSuffix* .
 
 <a id="0.2__Toc224729038"></a><a id="0.2__Toc253429262"></a><a id="0.2__Toc243304636"></a>
 
-### <a name="persisting-row-selection-in-data-controls"></a>Trvalý výběr řádku v ovládacích prvcích dat
+### <a name="persisting-row-selection-in-data-controls"></a>Trvalé vybírání výběru řádků v datových ovládacích prvcích
 
-*GridView* a *ListView* ovládací prvky můžete umožnit uživatelům vybrat řádek. V předchozích verzích technologie ASP.NET byly výběr podle index řádku na stránce. Například pokud vyberte třetí položka na stránce 1 a potom přejít na stránku 2, třetí položka na této stránce vybrali.
+Ovládací prvky *GridView* a *ListView* můžou dovolit uživatelům vybrat řádek. V předchozích verzích ASP.NET byl výběr založen na indexu řádku na stránce. Pokud například vyberete třetí položku na stránce 1 a pak přejdete na stránku 2, vybere se třetí položka na této stránce.
 
-Trvalý výběr byl zpočátku podporována pouze v projektech dynamických dat v rozhraní .NET Framework 3.5 SP1. Pokud je tato funkce povolena, aktuální vybrané položky podle klíče dat pro položku. To znamená, že pokud vyberete třetí řádek na stránce 1 a přejít na stránku 2, nevybere se na stránce 2. Když se vrátíte na stránku 1, třetí řádek je stále vybrán. Trvalý výběr se teď podporuje pro *GridView* a *ListView* ovládacích prvků ve všech projektech pomocí *EnablePersistedSelection* vlastnost, jak je znázorněno Následující příklad:
+Trvalý výběr byl zpočátku podporován pouze v dynamických datových projektech v .NET Framework 3,5 SP1. Když je tato funkce povolená, aktuální vybraná položka je založena na datovém klíči pro položku. To znamená, že pokud na stránce 1 vyberete třetí řádek a přesunete na stránku 2, na stránce 2 není nic vybráno. Když přejdete zpátky na stránku 1, třetí řádek je stále vybraný. Trvalý výběr je nyní podporován pro ovládací prvky *GridView* a *ListView* ve všech projektech pomocí vlastnosti *EnablePersistedSelection* , jak je znázorněno v následujícím příkladu:
 
 [!code-aspx[Main](overview/samples/sample57.aspx)]
 
 <a id="0.2__Toc253429263"></a><a id="0.2__Toc243304637"></a>
 
-### <a name="aspnet-chart-control"></a>Ovládací prvek ASP.NET grafu
+### <a name="aspnet-chart-control"></a>Ovládací prvek grafu ASP.NET
 
-Technologie ASP.NET *grafu* rozšíří ovládací prvek nabídky vizualizace dat v rozhraní .NET Framework. Použití *grafu* ovládacího prvku, můžete vytvořit stránky technologie ASP.NET, které mají intuitivní a vizuálně působivé grafy pro komplexní statistické nebo finanční analýzu. Technologie ASP.NET *grafu* ovládací prvek byl zaveden jako doplněk k vydání verze rozhraní .NET Framework verze 3.5 SP1 a je součástí verze rozhraní .NET Framework 4.
+Ovládací prvek *grafu* ASP.NET rozbalí nabídky vizualizace dat v .NET Framework. Pomocí ovládacího prvku *graf* můžete vytvářet ASP.NET stránky, které mají intuitivní a vizuálně působivé grafy pro komplexní statistické nebo finanční analýzy. Ovládací prvek *grafu* ASP.NET byl představen jako doplněk pro verzi .NET Framework verze 3,5 SP1 a je součástí verze .NET Framework 4.
 
 Ovládací prvek obsahuje následující funkce:
 
-- 35 typy různých grafů.
-- Neomezený počet oblasti grafu, názvy, legendy a poznámky.
-- Celou řadu nastavení vzhledu pro všechny prvky grafu.
-- 3D podpory u většiny typů grafů.
-- Inteligentní popisky, které může automaticky přizpůsobit kolem datových bodů.
-- Čáry pruhů, oddělovacích čar měřítka osy a logaritmické měřítko.
-- Více než 50 finanční a statistické vzorce pro analýzu dat a transformace.
-- Jednoduchá vazba a manipulace dat grafu.
-- Podpora pro běžné formáty dat, jako je například data, času a měny.
-- Podpora přizpůsobení založený na událostech a interaktivitě, včetně klienta klikněte na tlačítko události pomocí rozhraní Ajax.
+- 35 různých typů grafů.
+- Neomezený počet oblastí grafu, názvů, legend a poznámek.
+- Širokou škálu nastavení vzhledu pro všechny prvky grafu.
+- podpora 3D pro většinu typů grafů.
+- Inteligentní popisky dat, které lze automaticky umístit kolem datových bodů.
+- Čáry pruhů, oddělovacích čar měřítka a logaritmické měřítko.
+- Více než 50 finančních a statistických vzorců pro analýzu a transformaci dat.
+- Jednoduchá vazba a manipulace s daty grafu
+- Podpora pro běžné formáty dat, jako jsou data, časy a měna
+- Podpora pro interaktivitu a přizpůsobení událostí, včetně událostí klientského kliknutí v AJAX.
 - Správa stavu.
-- Binární datové proudy.
+- Binární streamování.
 
-Následující obrázky znázorňují příklady finanční grafy, které vytváří ovládací prvek ASP.NET grafu.
+Následující obrázky znázorňují příklady finančních grafů vyprodukovaných ovládacím prvkem grafu ASP.NET.
 
 <a id="0.2_graphic17"></a>![](overview/_static/image1.png)
 
-Obrázek 2: Příklady ovládacích prvků technologie ASP.NET grafu
+Obrázek 2: Příklady ovládacích prvků grafu ASP.NET
 
-Pro další příklady toho, jak pomocí ovládacího prvku grafu ASP.NET stáhnout ukázkový kód [ukázky prostředí pro Microsoft Chart Controls](https://go.microsoft.com/fwlink/?LinkId=128300) stránky na webu MSDN. Další ukázky komunity můžete najít v obsahu [fórum ovládacího prvku grafu](https://go.microsoft.com/fwlink/?LinkId=128713).
+Další příklady použití ovládacího prvku graf ASP.NET najdete v tématu Ukázka kódu na stránce [ukázek prostředí pro ovládací prvky Microsoft Chart](https://go.microsoft.com/fwlink/?LinkId=128300) na webu MSDN. Další ukázky obsahu komunity najdete na [fóru řízení grafu](https://go.microsoft.com/fwlink/?LinkId=128713).
 
-#### <a name="adding-the-chart-control-to-an-aspnet-page"></a>Přidání ovládacího prvku grafu na stránku ASP.NET
+#### <a name="adding-the-chart-control-to-an-aspnet-page"></a>Přidání ovládacího prvku graf na stránku ASP.NET
 
-Následující příklad ukazuje, jak přidat *grafu* ovládacího prvku pro stránku ASP.NET pomocí značek. V tomto příkladu *grafu* ovládací prvek vytvoří sloupcový graf na základě statických datových bodů.
+Následující příklad ukazuje, jak přidat ovládací prvek *grafu* na stránku ASP.NET pomocí značek. V tomto příkladu generuje ovládací prvek *graf* pro statické datové body sloupcový graf.
 
 [!code-aspx[Main](overview/samples/sample58.aspx)]
 
-#### <a name="using-3-d-charts"></a>Používání 3D grafů
+#### <a name="using-3-d-charts"></a>Použití 3D grafů
 
-*Grafu* obsahuje ovládací prvek *ChartAreas* kolekce, která může obsahovat *ChartArea* objekty, které definují vlastnosti oblasti grafu. Například pokud chcete použít 3D pro oblasti grafu, použijte *Area3DStyle* vlastnost jako v následujícím příkladu:
+Ovládací prvek *grafu* obsahuje kolekci *ChartArea* , která může obsahovat objekty *ChartArea* definující charakteristiky oblastí grafu. Chcete-li například pro oblast grafu použít 3D, použijte vlastnost *Area3DStyle* jako v následujícím příkladu:
 
 [!code-aspx[Main](overview/samples/sample59.aspx)]
 
-Následující obrázek znázorňuje 3D grafem s čtyři řady *panelu* typ grafu.
+Následující obrázek ukazuje prostorový graf se čtyřmi řadami typu pruhového grafu.
 
 <a id="0.2_graphic18"></a>![](overview/_static/image2.png)
 
-Obrázek 3: 3D pruhový graf
+Obrázek 3: Prostorový pruhový graf
 
-#### <a name="using-scale-breaks-and-logarithmic-scales"></a>Pomocí oddělovacích čar měřítka osy a logaritmické stupnice
+#### <a name="using-scale-breaks-and-logarithmic-scales"></a>Použití oddělovacích čar měřítka a logaritmických stupnicí
 
-Jsou dvě další způsoby, jak do grafu přidat sofistikovanější oddělovacích čar měřítka osy a logaritmických stupnicí. Tyto funkce jsou specifické pro každou osu v oblasti grafu. Například pokud chcete použít tyto funkce na primární osy Y oblasti grafu, použijte *AxisY.IsLogarithmic* a *ScaleBreakStyle* vlastnosti v *ChartArea* objektu. Následující fragment kódu ukazuje, jak pomocí oddělovacích čar měřítka osy na primární ose Y.
+Oddělovací čáry měřítka a logaritmická měřítka jsou dva další způsoby, jak přidat sofistikovanější do grafu. Tyto funkce jsou specifické pro každou osu v oblasti grafu. Chcete-li například použít tyto funkce na primární ose Y oblasti grafu, použijte vlastnost *Axis.* ScaleBreakStyle a vlastnosti v objektu *ChartArea* . Následující fragment kódu ukazuje, jak používat oddělovací čáry měřítka na primární ose Y.
 
 [!code-aspx[Main](overview/samples/sample60.aspx)]
 
-Obrázek níže ukazuje osu Y pomocí oddělovacích čar měřítka osy povolena.
+Následující obrázek ukazuje osu Y s povolenými oddělovacími oddělovači stupnice.
 
 <a id="0.2_graphic19"></a>![](overview/_static/image3.png)
 
-Obrázek 4: Oddělovacích čar měřítka osy
+Obrázek 4: Oddělovací čáry měřítka
 
 <a id="0.2__QueryExtender"></a><a id="0.2__Toc224729041"></a><a id="0.2__Toc253429264"></a><a id="0.2__Toc243304638"></a>
 
-### <a name="filtering-data-with-the-queryextender-control"></a>Filtrování dat pomocí ovládacího prvku QueryExtender
+### <a name="filtering-data-with-the-queryextender-control"></a>Filtrování dat pomocí ovládacího prvku třídou QueryExtender
 
-K filtrování dat je velmi běžné úlohy pro vývojáře, kteří vytvářejí datově řízených webových stránek. Tradičně provedení vytvořením *kde* ovládací prvky zdroje klauzule v datech. Tento přístup může být složité a v některých případech *kde* syntaxe nebude využívat všechny funkce podkladové databáze.
+Velmi běžnou úlohou pro vývojáře, kteří vytvářejí webové stránky řízené daty, je filtrování dat. To je tradičně provedeno vytvořením klauzulí *WHERE* v ovládacích prvcích zdroje dat. Tento přístup může být složitý a v některých případech syntaxe *WHERE* neumožňuje využívat všechny funkce podkladové databáze.
 
-Aby filtrování snadněji, nový *QueryExtender* ovládací prvek byl přidán v technologii ASP.NET 4. Tento ovládací prvek lze přidat do *EntityDataSource* nebo *LinqDataSource* ovládací prvky, chcete-li filtrovat data vrácená z těchto ovládacích prvků. Vzhledem k tomu, *QueryExtender* ovládací prvek závisí na LINQ, filtr je použit na databázovém serveru předtím, než se odešlou na stránku, která má za následek velmi efektivní operace.
+Aby bylo filtrování snazší, přidal se do ASP.NET 4 nový ovládací prvek *třídou QueryExtender* . Tento ovládací prvek lze přidat k ovládacím prvkům *EntityDataSource* nebo *LinqDataSource* za účelem filtrování dat vrácených těmito ovládacími prvky. Vzhledem k tomu, že ovládací prvek *třídou QueryExtender* spoléhá na LINQ, na databázovém serveru se použije filtr předtím, než se data odešlou na stránku, což má za následek velice efektivní operace.
 
-*QueryExtender* ovládací prvek podporuje širokou škálu možností filtrování. Následující části popisují tyto možnosti a poskytnout příklady, jak je používat.
+Ovládací prvek *třídou QueryExtender* podporuje celou řadu možností filtrování. Následující části popisují tyto možnosti a poskytují příklady, jak je používat.
 
 #### <a name="search"></a>Hledat
 
-Pro možnost Hledat *QueryExtender* ovládání provede vyhledávání v zadaná pole. V následujícím příkladu používá ovládací prvek text, který je zadán v TextBoxSearch ovládacího prvku a hledání obsahu v `ProductName` a `Supplier.CompanyName` sloupce v datech, která je vrácena z *LinqDataSource* ovládací prvek.
+Pro možnost hledání provede ovládací prvek *třídou QueryExtender* hledání v zadaných polích. V následujícím příkladu ovládací prvek používá text, který je zadán v ovládacím prvku TextBoxSearch a hledá jeho obsah ve `ProductName` sloupcích a `Supplier.CompanyName` v datech, která jsou vrácena z ovládacího prvku *LinqDataSource* .
 
 [!code-aspx[Main](overview/samples/sample61.aspx)]
 
 #### <a name="range"></a>Rozsah
 
-Možnost rozsah je podobné možnosti vyhledávání, ale Určuje dvojici hodnot k definování rozsahu. V následujícím příkladu *QueryExtender* ovládací prvek vyhledávání `UnitPrice` sloupec data vrácená z *zdroje dat LinqDataSource* ovládacího prvku. Rozsah je od TextBoxFrom a TextBoxTo ovládacích prvků na stránce pro čtení.
+Možnost rozsah je podobná možnosti hledání, ale určuje dvojici hodnot pro definování rozsahu. V následujícím příkladu ovládací prvek *třídou QueryExtender* vyhledá `UnitPrice` sloupec v datech vrácených z ovládacího prvku *LinqDataSource* . Rozsah je čten z ovládacích prvků TextBoxFrom a TextBoxTo na stránce.
 
 [!code-aspx[Main](overview/samples/sample62.aspx)]
 
 #### <a name="propertyexpression"></a>PropertyExpression
 
-Možnost Vlastnosti výrazu umožňuje definovat porovnání s hodnotou vlastnosti. Pokud je výraz vyhodnocen *true*, je vrácena data, která je zkoumají. V následujícím příkladu *QueryExtender* ovládací prvek filtruje data pomocí dat v porovnání `Discontinued` sloupce na hodnotu z ovládacího prvku CheckBoxDiscontinued na stránce.
+Možnost výrazu vlastnosti umožňuje definovat porovnání s hodnotou vlastnosti. Pokud se výraz vyhodnotí jako *true*, vrátí se data, která se vyhodnocují. V následujícím příkladu ovládací prvek *třídou QueryExtender* filtruje data porovnáním dat ve `Discontinued` sloupci s hodnotou z ovládacího prvku CheckBoxDiscontinued na stránce.
 
 [!code-aspx[Main](overview/samples/sample63.aspx)]
 
 #### <a name="customexpression"></a>CustomExpression
 
-Nakonec můžete určit pomocí vlastního výrazu *QueryExtender* ovládacího prvku. Tato možnost umožňuje volání funkce stránky, které definuje vlastní filtr logiku. Následující příklad ukazuje, jak deklarativně specifikovat vlastního výrazu v *QueryExtender* ovládacího prvku.
+Nakonec můžete zadat vlastní výraz pro použití s ovládacím prvkem *třídou QueryExtender* . Tato možnost umožňuje zavolat funkci na stránce, která definuje vlastní logiku filtru. Následující příklad ukazuje, jak deklarativně zadat vlastní výraz v ovládacím prvku *třídou QueryExtender* .
 
 [!code-aspx[Main](overview/samples/sample64.aspx)]
 
-Následující příklad ukazuje vlastní funkce, která je volána *QueryExtender* ovládacího prvku. V tomto případě namísto použití databázového dotazu, který zahrnuje *kde* klauzule, tento kód použije dotaz LINQ filtrovat data.
+Následující příklad ukazuje vlastní funkci, která je vyvolána ovládacím prvkem *třídou QueryExtender* . V tomto případě, namísto použití databázového dotazu, který obsahuje klauzuli *WHERE* , kód používá dotaz LINQ k filtrování dat.
 
 [!code-csharp[Main](overview/samples/sample65.cs)]
 
-Tyto příklady ukazují jenom jeden výraz používá *QueryExtender* ovládací prvek v čase. Však může obsahovat několik výrazů uvnitř *QueryExtender* ovládacího prvku.
+Tyto příklady znázorňují v jednom okamžiku pouze jeden výraz, který se používá v ovládacím prvku *třídou QueryExtender* . Do ovládacího prvku *třídou QueryExtender* však lze zahrnout více výrazů.
 
 <a id="0.2__Toc253429265"></a><a id="0.2__Toc243304639"></a>
 
-### <a name="html-encoded-code-expressions"></a>Kódovaný výrazů v kódu HTML
+### <a name="html-encoded-code-expressions"></a>Výrazy kódovaného kódu ve formátu HTML
 
-Některé weby technologie ASP.NET (zejména s ASP.NET MVC) výrazně spoléhají na použití `<%` =  `expression %>` syntaxe (často označované jako "code útržky") pro zápis textu do odpovědi. Při použití výrazů v kódu, je snadné zapomenout určený ke kódování HTML, text, pokud text pochází od uživatele zadání, ho můžete nechat stránky otevřené útoky XSS (skriptování mezi).
+Některé weby ASP.NET (zejména s ASP.NET MVC) spoléhají silně na použití `<%` =  `expression %>` syntaxe (často označované jako "Code Nuggets"), která zapisuje nějaký text do odpovědi. Pokud používáte výrazy kódu, je snadné zakódovat text ve formátu HTML, pokud text pochází ze vstupu uživatele, může zůstat stránky otevřené pro útok XSS (křížení skriptování mezi weby).
 
-ASP.NET 4 zavádí následující nové syntaxe pro výrazy kódu:
+ASP.NET 4 zavádí následující novou syntaxi pro výrazy kódu:
 
 [!code-aspx[Main](overview/samples/sample66.aspx)]
 
-Tato syntaxe používá kódování HTML ve výchozím nastavení při zápisu do odpovědi. Tento nový výraz se přeloží efektivně takto:
+Tato syntaxe při zápisu do odpovědi používá kódování HTML ve výchozím nastavení. Tento nový výraz se efektivně převede na následující:
 
 [!code-aspx[Main](overview/samples/sample67.aspx)]
 
-Například &lt;%: Žádost o ["UserInput"] %&gt; provádí na základě hodnoty kódování HTML *žádost o ["UserInput"]*.
+Například &lt;%: Request ["userinput"]%&gt; provádí kódování HTML na hodnotě *požadavku ["userinput"]* .
 
-Cílem této funkce je možné nahradit všechny výskyty stará syntaxe novou syntaxi tak, aby se muset rozhodnout při každém kroku, který z nich použít. Existují však případy, ve kterých je výstup má být ve formátu HTML nebo je již kódovat, v takovém případě to může vést k double kódování.
+Cílem této funkce je, aby bylo možné nahradit všechny výskyty staré syntaxe novou syntaxí, takže nebudete muset se rozhodnout pro každý krok, který se má použít. Existují však případy, kdy je výstup textu určen jako HTML nebo je již kódován. v takovém případě to může vést k dvojímu kódování.
 
-Pro případy, technologii ASP.NET 4 zavádí nové rozhraní *IHtmlString*, spolu s konkrétní implementaci *HtmlString*. Instance těchto typů umožňují značí, že návratová hodnota je již správně kódovaný (nebo jinak prozkoumat) pro zobrazení ve formátu HTML a, proto hodnota by neměla být kódovaný jazykem HTML znovu. Například následující by neměl být (a není) kódovaný jazykem HTML:
+V těchto případech ASP.NET 4 zavádí nové rozhraní *IHtmlString*spolu s konkrétní implementací *HtmlString*. Instance těchto typů umožňují určit, že návratová hodnota je již správně kódována (nebo jinak prověřena) pro zobrazení jako HTML a že hodnota by proto neměla být znovu kódována ve formátu HTML. Například následující by neměl být (a není) kódovaný v jazyce HTML:
 
 [!code-aspx[Main](overview/samples/sample68.aspx)]
 
-ASP.NET MVC 2 pomocné metody bylo aktualizováno, aby tuto novou syntaxi pracovat tak, aby nebyly double, kódování, ale pouze při spouštění technologie ASP.NET 4. Tato nová syntaxe nefunguje při spuštění aplikace pomocí technologie ASP.NET 3.5 SP1.
+Pomocné metody ASP.NET MVC 2 byly aktualizovány tak, aby fungovaly s touto novou syntaxí, takže nejsou dvojitě zakódovány, ale pouze v případě, že používáte ASP.NET 4. Tato nová syntaxe nefunguje, když aplikaci spouštíte pomocí ASP.NET 3,5 SP1.
 
-Uvědomte si, že nejsou tím však zaručena ochranu před útoky XSS. Kód HTML, který používá hodnoty atributů, které nejsou v uvozovkách může například obsahovat uživatelský vstup, přesto náchylné. Všimněte si, výstup ovládací prvky technologie ASP.NET a ASP.NET MVC pomocné rutiny vždy obsahuje hodnoty atributů do uvozovek, což je doporučený postup.
+Mějte na paměti, že to nezaručuje ochranu proti útokům XSS. Například kód HTML, který používá hodnoty atributu, které nejsou v uvozovkách, může obsahovat vstup uživatele, který je stále náchylný. Všimněte si, že výstup ovládacích prvků ASP.NET a ASP.NET pomocníka MVC vždy obsahuje hodnoty atributu v uvozovkách, což je doporučený přístup.
 
-Tato syntaxe, neprovádí kódování, JavaScript, například při vytváření řetězec jazyka JavaScript v závislosti na vstup uživatele.
+Podobně tato syntaxe neprovádí kódování jazyka JavaScript, například při vytváření řetězce JavaScriptu na základě vstupu uživatele.
 
 <a id="0.2__Toc253429266"></a><a id="0.2__Toc243304640"></a>
 
-### <a name="project-template-changes"></a>Změny v šabloně projektu
+### <a name="project-template-changes"></a>Změny šablony projektu
 
-V předchozích verzích technologie ASP.NET, když pomocí sady Visual Studio vytvořte nový projekt webu nebo projekt webové aplikace a výsledné projekty obsahují jenom stránku Default.aspx, výchozí `Web.config` souboru a `App_Data` složky, jak je znázorněno v následujícím Obrázek:
+V dřívějších verzích ASP.NET, když použijete Visual Studio k vytvoření nového projektu webu nebo projektu webové aplikace, výsledné projekty obsahují pouze stránku Default. aspx, výchozí `Web.config` soubor `App_Data` a složku, jak je znázorněno v následujícím příkladu. obrázek
 
 <a id="0.2_graphic1A"></a>![](overview/_static/image4.png)
 
-Visual Studio také podporuje typ projektu prázdný web, který neobsahuje žádné soubory vůbec, jak je znázorněno na následujícím obrázku:
+Visual Studio také podporuje prázdný typ projektu webu, který neobsahuje žádné soubory, jak je znázorněno na následujícím obrázku:
 
 <a id="0.2_graphic1B"></a>![](overview/_static/image5.png)
 
-Výsledkem je, že pro začátečníky, je velmi málo pokyny o tom, jak vytvářet produkční webové aplikace. ASP.NET 4 proto zavádí tři nové šablony, jeden pro prázdný projekt webové aplikace a jeden pro projekt webové aplikace a webové stránky.
+Výsledkem je, že pro začátečníky existuje velmi málo informací o tom, jak vytvořit produkční webovou aplikaci. Proto ASP.NET 4 zavádí tři nové šablony, jednu pro prázdný projekt webové aplikace a jednu pro webovou aplikaci a projekt webu.
 
-#### <a name="empty-web-application-template"></a>Šablona prázdná webové aplikace
+#### <a name="empty-web-application-template"></a>Prázdná šablona webové aplikace
 
-Jak název napovídá, šablona prázdná webová aplikace je stripped-down projektu webové aplikace. Vyberte tuto šablonu projektu v dialogovém okně Nový projekt sady Visual Studio, jak je znázorněno na následujícím obrázku:
+Jak je navrženo, prázdná šablona webové aplikace je dewebový projekt webové aplikace. Tuto šablonu projektu vyberete v dialogovém okně Nový projekt aplikace Visual Studio, jak je znázorněno na následujícím obrázku:
 
 [![](overview/_static/image7.png)](overview/_static/image6.png)
 
-([Kliknutím ji zobrazíte obrázek v plné velikosti](overview/_static/image8.png))
+([Kliknutím zobrazíte obrázek v plné velikosti.](overview/_static/image8.png))
 
-Když vytvoříte prázdný webové aplikace ASP.NET, sada Visual Studio vytvoří následující složky rozložení:
+Když vytvoříte prázdnou webovou aplikaci v ASP.NET, Visual Studio vytvoří následující rozložení složky:
 
 <a id="0.2_graphic1D"></a>![](overview/_static/image9.png)
 
-To se podobá rozložení Prázdný web ze starších verzí prostředí ASP.NET, s jednou výjimkou. V sadě Visual Studio 2010, prázdná webová aplikace a prázdného webu projekty obsahují následující minimální `Web.config` soubor, který obsahuje informace, které slouží k identifikaci rozhraní framework, pro kterou projekt cílí pomocí sady Visual Studio:
+To je podobné jako prázdné rozložení webu z dřívějších verzí ASP.NET, s jednou výjimkou. V aplikaci Visual Studio 2010 prázdné webové aplikace a prázdné webové projekty obsahují následující minimální `Web.config` soubor, který obsahuje informace používané v aplikaci Visual Studio k identifikaci architektury, na kterou projekt cílí:
 
 <a id="0.2_graphic1E"></a>![](overview/_static/image10.png)
 
-Bez něj *targetFramework* vlastnost, výchozí hodnota je Visual Studio k zachování kompatibility při otevírání starší aplikace cílí na rozhraní .NET Framework 2.0.
+Bez této vlastnosti *targetFramework* se v aplikaci Visual Studio standardně cílí na .NET Framework 2,0, aby při otevírání starších aplikací zůstala zachována kompatibilita.
 
-#### <a name="web-application-and-web-site-project-templates"></a>Webová aplikace a šablony projektu webového serveru
+#### <a name="web-application-and-web-site-project-templates"></a>Šablony projektů webové aplikace a webu
 
-Další dvě nové šablony projektů, které jsou součástí sady Visual Studio 2010 obsahují důležité změny. Následující obrázek znázorňuje rozložení projektu, který je vytvořen při vytvoření nového projektu webové aplikace. (Rozložení pro webový projekt je prakticky totožný.)
+Další dvě nové šablony projektu, které jsou dodávány se sadou Visual Studio 2010, obsahují významné změny. Následující obrázek ukazuje rozložení projektu, které je vytvořeno při vytváření nového projektu webové aplikace. (Rozložení projektu webu je prakticky identické.)
 
 - <a id="0.2_graphic1F"></a>![](overview/_static/image11.png)
 
-Projekt obsahuje několik souborů, které nebyly vytvořeny v dřívějších verzích. Kromě toho nový projekt webové aplikace se nakonfigurují funkce základního členství, která umožňuje rychle začít pracovat v zabezpečení přístupu k nové aplikaci. Z důvodu této zařazení `Web.config` soubor pro nový projekt obsahuje položky, které se používají ke konfiguraci členství, role a profily. Následující příklad ukazuje `Web.config` soubor pro nový projekt webové aplikace. (V tomto případě *roleManager* je zakázaná.)
+Projekt obsahuje několik souborů, které nebyly vytvořeny v dřívějších verzích. Kromě toho je nový projekt webové aplikace nakonfigurován se základními funkcemi členství, což vám umožní rychle začít v zabezpečení přístupu k nové aplikaci. Z důvodu tohoto zahrnutí `Web.config` soubor pro nový projekt obsahuje položky, které se používají ke konfiguraci členství, rolí a profilů. Následující příklad ukazuje `Web.config` soubor pro nový projekt webové aplikace. (V tomto případě je *roleManager* zakázaný.)
 
 [![](overview/_static/image13.png)](overview/_static/image12.png)
 
-([Kliknutím ji zobrazíte obrázek v plné velikosti](overview/_static/image14.png))
+([Kliknutím zobrazíte obrázek v plné velikosti.](overview/_static/image14.png))
 
-Projekt obsahuje také druhý `Web.config` soubor `Account` adresáře. Druhý soubor konfigurace zajišťuje zabezpečený přístup ke stránce ChangePassword.aspx nezaprotokolované u uživatelů. Následující příklad ukazuje obsah druhého `Web.config` souboru.
+Projekt obsahuje také druhý `Web.config` soubor `Account` v adresáři. Druhý konfigurační soubor poskytuje způsob, jak zabezpečit přístup ke stránce ChangePassword. aspx pro přihlášené uživatele. Následující příklad ukazuje obsah druhého `Web.config` souboru.
 
 ![](overview/_static/image15.png)
 
-Stránky vytvořené ve výchozím nastavení nové projektové šablony také obsahovat více obsahu, než v předchozích verzích. Projekt obsahuje výchozí stránky předlohy a souborů šablon stylů CSS a výchozí stránka (Default.aspx) je nakonfigurován na použití stránky předlohy ve výchozím nastavení. Výsledkem je, že při spuštění webové aplikace nebo webu poprvé, výchozí stránka (domů) je již funkční. Ve skutečnosti je podobná výchozí stránky, které se zobrazí po spuštění nové aplikace MVC.
+Stránky vytvořené ve výchozím nastavení v nových šablonách projektů také obsahují více obsahu než v předchozích verzích. Projekt obsahuje výchozí stránku předlohy a soubor CSS a výchozí stránka (default. aspx) je nastavena na používání hlavní stránky ve výchozím nastavení. Výsledkem je, že při prvním spuštění webové aplikace nebo webu je již funkční výchozí (Domovská) stránka. Ve skutečnosti se podobá výchozí stránce, kterou vidíte při spuštění nové aplikace MVC.
 
 [![](overview/_static/image17.png)](overview/_static/image16.png)
 
-([Kliknutím ji zobrazíte obrázek v plné velikosti](overview/_static/image18.png))
+([Kliknutím zobrazíte obrázek v plné velikosti.](overview/_static/image18.png))
 
-Záměrem těchto změn šablon projektu je s pokyny o tom, jak můžete začít sestavovat novou webovou aplikaci. S sémanticky, striktní XHTML 1.0 kompatibilní značek a rozložení, který je určen pomocí šablon stylů CSS stránek v šablonách představují doporučené postupy pro vytváření aplikací v prostředí ASP.NET 4. Výchozí stránky mají navíc rozložení se dvěma sloupci, který můžete snadno přizpůsobit.
+Záměrem těchto změn v šablonách projektů je poskytnout pokyny, jak začít vytvářet novou webovou aplikaci. V případě sémanticky správné značky kompatibilní s NORMou XHTML 1,0 a s rozložením, které je zadáno pomocí šablon stylů CSS, stránky v šablonách reprezentují osvědčené postupy pro sestavování webových aplikací ASP.NET 4. Výchozí stránky mají také rozložení se dvěma sloupci, které lze snadno přizpůsobit.
 
-Představte si například, že pro nové webové aplikace chcete změnit některé barvy a vložit loga společnosti místo logo Moje aplikace technologie ASP.NET. K tomuto účelu vytvořte nový adresář v rámci `Content` k uložení obrázek loga:
+Představte si například, že pro novou webovou aplikaci, kterou chcete změnit některé barvy, a místo loga moje aplikace ASP.NET vložte logo společnosti. Chcete-li to provést, vytvořte nový adresář pod `Content` položkou uložit obrázek loga:
 
 <a id="0.2_graphic23"></a>![](overview/_static/image19.png)
 
-Chcete-li přidat bitovou kopii na stránku, poté otevřete `Site.Master` souboru, kde je definován text My ASP.NET Application a nahraďte ho hodnotou *image* elementu jehož *src* atribut je nastaven na nové logo Image, jako v následujícím příkladu:
+Chcete-li přidat obrázek na stránku, otevřete `Site.Master` soubor, najděte, kde je text aplikace My ASP.NET definován, a nahraďte ho prvkem *obrázku* , jehož atribut *Src* je nastaven na nový obrázek loga, jak je uvedeno v následujícím příkladu:
 
 [![](overview/_static/image21.png)](overview/_static/image20.png)
 
-([Kliknutím ji zobrazíte obrázek v plné velikosti](overview/_static/image22.png))
+([Kliknutím zobrazíte obrázek v plné velikosti.](overview/_static/image22.png))
 
-Můžete přejít do souboru Site.css a změnit definice třídy šablony stylů CSS změnit barvu pozadí stránky stejně jako u záhlaví.
+Pak můžete přejít do souboru Web. CSS a upravit definice třídy CSS a změnit barvu pozadí stránky a také záhlaví.
 
-Výsledkem těchto změn je, že můžete zobrazit vlastní domovskou stránku s velmi málo úsilí:
+Výsledkem těchto změn je, že můžete zobrazit vlastní domovskou stránku s velmi malým úsilím:
 
 [![](overview/_static/image24.png)](overview/_static/image23.png)
 
-([Kliknutím ji zobrazíte obrázek v plné velikosti](overview/_static/image25.png))
+([Kliknutím zobrazíte obrázek v plné velikosti.](overview/_static/image25.png))
 
 <a id="0.2__Toc253429267"></a><a id="0.2__Toc243304641"></a>
 
 ### <a name="css-improvements"></a>Vylepšení šablon stylů CSS
 
-Jedna z hlavních oblastech práce v technologii ASP.NET 4 se stále k pomáhají vykreslovat kód HTML, který je v souladu s nejnovějšími standardy HTML. To zahrnuje změny jak serverových ovládacích prvků ASP.NET pomocí stylů CSS.
+Jednou z hlavních oblastí práce v ASP.NET 4 bylo pomáhat s vykreslováním HTML, který je kompatibilní s nejnovějšími standardy HTML. To zahrnuje změny způsobu, jakým ovládací prvky webového serveru ASP.NET používají šablony stylů CSS.
 
 #### <a name="compatibility-setting-for-rendering"></a>Nastavení kompatibility pro vykreslování
 
-Ve výchozím nastavení, když webová aplikace nebo webu cílí na rozhraní .NET Framework 4 *controlRenderingCompatibilityVersion* atribut *stránky* prvek je nastaven na "4.0". Tento element je definována v úrovni počítače `Web.config` souboru a ve výchozím nastavení se vztahuje na všechny aplikace ASP.NET 4:
+Ve výchozím nastavení platí, že pokud webová aplikace nebo web cílí na .NET Framework 4, atribut *controlRenderingCompatibilityVersion* elementu *Pages* je nastaven na hodnotu "4,0". Tento prvek je definovaný v souboru na úrovni `Web.config` počítače a ve výchozím nastavení platí pro všechny aplikace ASP.NET 4:
 
 [!code-xml[Main](overview/samples/sample69.xml)]
 
-Hodnota pro *controlRenderingCompatibility* je řetězec, který umožňuje potenciální nové definice verze v budoucích vezích se. V aktuální verzi jsou podporovány následující hodnoty pro tuto vlastnost:
+Hodnota pro *controlRenderingCompatibility* je řetězec, který umožňuje v budoucích verzích povolit nové definice verzí. V aktuální verzi jsou pro tuto vlastnost podporovány následující hodnoty:
 
-- "3.5". Toto nastavení označuje starší vykreslování a značky. Kód pro vykreslení ovládacích prvků je zpětně kompatibilní 100 % a nastavení *xhtmlConformance* vlastnost zachovaný.
-- "4.0". Pokud toto nastavení má vlastnost, ovládací prvky ASP.NET webového serveru postupujte takto:
-- *XhtmlConformance* vlastnost je vždy považován za "Strict". V důsledku toho ovládací prvky vykreslení kódu XHTML 1.0 Strict.
-- Zakázání ovládací prvky bez zadání už vykreslí neplatný styly.
-- *div* prvky kolem skrytá pole jsou nyní ve stylu tak, že není konfliktu s uživatelsky vytvořených pravidel šablon stylů CSS.
-- Ovládací prvky nabídky vykreslení značky, které jsou sémanticky správné a jestli splňují přístupnosti.
-- Ovládací prvky ověřování nezobrazují vložené styly.
-- Ovládací prvky, které dříve vykresluje ohraničení = "0" (ovládací prvky, které jsou odvozeny z technologie ASP.NET *tabulky* ovládacího prvku a technologie ASP.NET *Image* ovládací prvek) už zobrazovat tento atribut.
+- "3.5". Toto nastavení označuje starší verze vykreslování a značek. Značky vykreslené ovládacími prvky jsou 100% zpětně kompatibilní a nastavení vlastnosti *xhtmlConformance* je dodrženo.
+- "4.0". Pokud má vlastnost toto nastavení, ovládací prvky webového serveru ASP.NET:
+- Vlastnost *xhtmlConformance* je vždy považována za "Strict". V důsledku toho ovládací prvky vykreslují striktní značky XHTML 1,0.
+- Zákaz nevstupních ovládacích prvků již nevykresluje neplatné styly.
+- prvky *div* kolem skrytých polí jsou nyní ve stylu, takže nekolidují s uživatelem vytvořenými pravidly šablon stylů CSS.
+- Ovládací prvky nabídky vykreslují kód, který je sémanticky správný a dodržuje pokyny pro usnadnění přístupu.
+- Ovládací prvky ověřování nevykreslují vložené styly.
+- Ovládací prvky, které dříve vykreslily Border = "0" (ovládací prvky, které jsou odvozeny z ovládacího prvku *tabulka* ASP.NET a ovládací prvek *Obrázek* ASP.NET) již tento atribut nevykreslí.
 
 #### <a name="disabling-controls"></a>Zakázání ovládacích prvků
 
-V technologii ASP.NET 3.5 SP1 a předchozí verze rozhraní framework vykreslí *zakázané* atribut v kódu HTML pro všechny ovládací prvek, jehož *povoleno* vlastnost nastavena na hodnotu *false*. Nicméně podle specifikace HTML 4.01, pouze *vstupní* prvky musí mít tento atribut.
+V ASP.NET 3,5 SP1 a starších verzích rozhraní vykresluje atribut disabled v kódu HTML pro všechny ovládací prvky, jejichž vlastnost *Enabled* je nastavena na *hodnotu false*. V souladu se specifikací HTML 4,01 by však měl mít tento atribut pouze *vstupní* prvky.
 
-V technologii ASP.NET 4, můžete nastavit *controlRenderingCompatibilityVersion* vlastnost "3.5", jako v následujícím příkladu:
+V ASP.NET 4 můžete nastavit vlastnost *controlRenderingCompatibilityVersion* na hodnotu "3,5", jak je znázorněno v následujícím příkladu:
 
 [!code-xml[Main](overview/samples/sample70.xml)]
 
-Můžete například vytvořit značku *popisek* ovládacího prvku následujícím postupem, který zakáže ovládací prvek:
+Můžete vytvořit značku pro ovládací prvek *popisek* , jako je následující, což zakáže ovládací prvek:
 
 [!code-aspx[Main](overview/samples/sample71.aspx)]
 
-*Popisek* vykreslení ovládacího prvku HTML následující:
+Ovládací prvek *popisek* by vykresluje následující kód HTML:
 
 [!code-html[Main](overview/samples/sample72.html)]
 
-V technologii ASP.NET 4, můžete nastavit *controlRenderingCompatibilityVersion* "4.0". V takovém případě je řízeno jen tento vykreslení *vstupní* prvky vykreslí *zakázané* atribut při ovládacího prvku *povoleno* je nastavena na *false* . Ovládací prvky, které nezobrazují HTML *vstupní* místo vykreslení elementů *třídy* atribut, který odkazuje na třídu šablony stylů CSS, která můžete použít k definování zakázané vzhled ovládacího prvku. Například *popisek* ovládací prvek je znázorněno v předchozím příkladu by generují následující kód:
+V ASP.NET 4 můžete nastavit *controlRenderingCompatibilityVersion* na "4,0". V takovém případě pouze ovládací prvky, které vykreslují *vstupní* prvky, vykreslí atribut *disabled* , pokud je vlastnost *Enabled* ovládacího prvku nastavena na *hodnotu false*. Ovládací prvky, které nevykreslují *vstupní* prvky HTML, vykreslí atribut *třídy* , který odkazuje na třídu šablony stylů CSS, kterou lze použít k definování zakázaného vzhledu ovládacího prvku. Například ovládací prvek *popisku* zobrazený v předchozím příkladu by generoval následující kód:
 
 [!code-html[Main](overview/samples/sample73.html)]
 
-Výchozí hodnota pro třídu, která zadané pro tento ovládací prvek je "aspNetDisabled". Však můžete změnit výchozí hodnotu nastavením statické *DisabledCssClass* statická vlastnost *WebControl* třídy. Pro vývojáře řízení chování pro konkrétní ovládací prvek lze také definovat pomocí *SupportsDisabledAttribute* vlastnost.
+Výchozí hodnota pro třídu, která je určená pro tento ovládací prvek, je "aspNetDisabled". Tuto výchozí hodnotu však můžete změnit nastavením statické vlastnosti static *DisabledCssClass* třídy *WebControl* . Pro vývojáře ovládacích prvků lze chování použít pro konkrétní ovládací prvek také definovat pomocí vlastnosti *SupportsDisabledAttribute* .
 
 <a id="0.2__Toc253429268"></a><a id="0.2__Toc243304642"></a>
 
-### <a name="hiding-div-elements-around-hidden-fields"></a>Skrytí div prvky kolem skrytá pole
+### <a name="hiding-div-elements-around-hidden-fields"></a>Skrytí prvků div kolem skrytých polí
 
-ASP.NET 2.0 a novějších verzích vykreslovat skrytá pole specifické pro systém (například *skryté* element sloužící k ukládání informací o stavu zobrazení) uvnitř *div* – element pro dosažení souladu se standardem XHTML. Nicméně to může způsobit problém při má vliv na pravidla šablony stylů CSS *div* elementů na stránce. Například to může vést k řádku jeden pixel povolí, na stránce kolem skryté *div* elementy. V technologii ASP.NET 4 *div* prvky, které uzavřete skrytých polí generovaných ASP.NET přidejte odkaz na třídu šablony stylů CSS jako v následujícím příkladu:
+ASP.NET 2,0 a novější verze vykreslí skrytá pole specifická pro systém (například *skrytý* element, který se používá k ukládání informací o stavu zobrazení) uvnitř elementu *div* , aby bylo možné dodržovat Standard XHTML. To však může způsobit problém, pokud pravidlo CSS ovlivňuje prvky *div* na stránce. Například může mít za následek, že se na stránce kolem skrytých prvků *div* zobrazí čára o velikosti 1 obr. V ASP.NET 4 prvky *div* , které obklopují skrytá pole vygenerovaná ASP.NET přidejte odkaz na třídu CSS jako v následujícím příkladu:
 
 [!code-html[Main](overview/samples/sample74.html)]
 
-Potom můžete definovat třídu CSS, která se vztahuje pouze na *skryté* prvky, které jsou generovány pomocí technologie ASP.NET, jako v následujícím příkladu:
+Pak můžete definovat třídu šablony stylů CSS, která se vztahuje pouze na *skryté* prvky, které jsou generovány pomocí ASP.NET, jako v následujícím příkladu:
 
 [!code-css[Main](overview/samples/sample75.css)]
 
 <a id="0.2__Toc253429269"></a><a id="0.2__Toc243304643"></a>
 
-### <a name="rendering-an-outer-table-for-templated-controls"></a>Vykreslování vnější tabulky pro ovládací prvky bez vizuálního vzhledu
+### <a name="rendering-an-outer-table-for-templated-controls"></a>Vykreslení vnější tabulky pro ovládací prvky s šablonou
 
-Ve výchozím nastavení jsou následující ovládací prvky serveru v prostředí ASP.NET, které nepodporují šablony automaticky zabaleny ve vnější tabulky, která se používá k aplikování vložené styly:
+Ve výchozím nastavení následující ovládací prvky webového serveru ASP.NET, které podporují šablony, jsou automaticky zabaleny do vnější tabulky, která se používá k aplikování vložených stylů:
 
-- *FormView*
+- *Třídě*
 - *Přihlášení*
 - *PasswordRecovery*
 - *ChangePassword*
 - *Průvodce*
 - *CreateUserWizard*
 
-Novou vlastnost s názvem *vlastnost RenderOuterTable* byl přidán do těchto ovládacích prvků, které umožňuje vnější tabulka, která má být odebrán z kódu. Zvažte například následující příklad *FormView* ovládacího prvku:
+Do těchto ovládacích prvků byla přidána nová vlastnost s názvem *RenderOuterTable* , která umožňuje odebrat vnější tabulku ze značky. Zvažte například následující příklad ovládacího prvku *FormView* :
 
 [!code-aspx[Main](overview/samples/sample76.aspx)]
 
-Tento kód vykreslí na stránku, která obsahuje tabulku HTML následující výstup:
+Tento kód vykresluje následující výstup na stránku, která obsahuje tabulku HTML:
 
 [!code-html[Main](overview/samples/sample77.html)]
 
-Pokud chcete zabránit vykreslení v tabulce, můžete nastavit *FormView* ovládacího prvku *vlastnost RenderOuterTable* vlastnosti, jako v následujícím příkladu:
+Chcete-li zabránit vykreslování tabulky, můžete nastavit vlastnost *RenderOuterTable* ovládacího prvku *FormView* , jak je uvedeno v následujícím příkladu:
 
 [!code-aspx[Main](overview/samples/sample78.aspx)]
 
-Předchozí příklad vykreslí následující výstup, aniž by *tabulky*, *tr*, a *td* prvky:
+Předchozí příklad vykreslí následující výstup bez elementů *Table*, *TR*a *td* :
 
 > Obsah
 
-Toto vylepšení můžete usnadňují styl obsah ovládacího prvku pomocí šablon stylů CSS, protože žádné neočekávané značky jsou vykreslovány pomocí ovládacího prvku.
+Toto vylepšení může zjednodušit styl obsahu ovládacího prvku pomocí šablony stylů CSS, protože ovládací prvek nevykresluje žádné neočekávané značky.
 
 > [!NOTE]
-> Poznámka: Tato změna zakáže podporu pro funkci Automatické formátování v návrháři aplikace Visual Studio 2010, protože už není *tabulky* element, který může hostovat atributy stylu, které jsou generovány možnost automaticky formátovat.
+> Všimněte si, že tato změna zakazuje podporu pro funkci automatického formátování v návrháři sady Visual Studio 2010, protože již není element *Table* , který by mohl mít atributy stylu hostitele, které jsou generovány pomocí možnosti automatického formátu.
 
 <a id="0.2__Toc253429270"></a><a id="0.2__Toc243304644"></a>
 
 ### <a name="listview-control-enhancements"></a>Vylepšení ovládacího prvku ListView
 
-*ListView* ovládacího prvku provedl usnadňuje používání v technologii ASP.NET 4. Starší verze ovládacího prvku vyžaduje, abyste určili šablony rozložení, který obsahoval serverový ovládací prvek s ID známé. Následující kód ukazuje, jak používat Typickým příkladem *ListView* ovládacího prvku v technologii ASP.NET 3.5.
+V ASP.NET 4 bylo snazší použít ovládací prvek *ListView* . V dřívější verzi ovládacího prvku je nutné zadat šablonu rozložení, která obsahovala serverový ovládací prvek se známým ID. Následující kód ukazuje typický příklad použití ovládacího prvku *ListView* v ASP.NET 3,5.
 
 [!code-aspx[Main](overview/samples/sample79.aspx)]
 
-V technologii ASP.NET 4 *ListView* ovládací prvek nevyžaduje, aby šablona rozložení. Značek je znázorněno v předchozím příkladu je možné nahradit následující kód:
+V ASP.NET 4 ovládací prvek *ListView* nevyžaduje šablonu rozložení. Značka uvedená v předchozím příkladu může být nahrazena následujícím kódem:
 
 [!code-aspx[Main](overview/samples/sample80.aspx)]
 
 <a id="0.2__Toc253429271"></a><a id="0.2__Toc243304645"></a>
 
-### <a name="checkboxlist-and-radiobuttonlist-control-enhancements"></a>CheckBoxList a rozšíření RadioButtonList ovládacího prvku
+### <a name="checkboxlist-and-radiobuttonlist-control-enhancements"></a>Vylepšení ovládacího prvku CheckBoxList a RadioButtonList
 
-V technologii ASP.NET 3.5, můžete zadat rozložení *CheckBoxList* a *RadioButtonList* pomocí následující dvě nastavení:
+V ASP.NET 3,5 můžete určit rozložení pro *CheckBoxList* a *RadioButtonList* pomocí následujících dvou nastavení:
 
-- *Tok*. Ovládací prvek vykreslí *span* prvky tak, aby obsahovala jeho obsah.
-- *Tabulka*. Ovládací prvek vykreslí *tabulky* element tak, aby obsahovala jeho obsah.
+- *Tok*. Ovládací prvek vykresluje prvky *span* tak, aby obsahoval jeho obsah.
+- *Tabulka*: Ovládací prvek vykresluje prvek *tabulky* obsahující jeho obsah.
 
 Následující příklad ukazuje značky pro každý z těchto ovládacích prvků.
 
 [!code-aspx[Main](overview/samples/sample81.aspx)]
 
-Ve výchozím nastavení ovládací prvky vykreslí ve formátu HTML podobný následujícímu:
+Ve výchozím nastavení vykreslují ovládací prvky HTML podobný následujícímu:
 
 [!code-html[Main](overview/samples/sample82.html)]
 
-Protože tyto ovládací prvky obsahují seznamy položek k vykreslení sémanticky HTML vykreslovat jejich obsah pomocí seznamu HTML (*li*) elementy. To usnadňuje pro uživatele, kteří webových stránek pomocí technologie pro usnadnění čtení a usnadňuje ovládací prvky stylu pomocí šablon stylů CSS.
+Vzhledem k tomu, že tyto ovládací prvky obsahují seznamy položek, pro vykreslování sémantického správného formátu HTML, by měly vykreslovat jejich obsah pomocí prvků seznamu HTML (*li*). To usnadňuje uživatelům, kteří čtou webové stránky pomocí technologie pro usnadnění, a usnadňují používání ovládacích prvků stylu CSS.
 
-V technologii ASP.NET 4 *CheckBoxList* a *RadioButtonList* řídí podporu pro následující nové hodnoty *RepeatLayout* vlastnost:
+V ASP.NET 4 podporují ovládací prvky *CheckBoxList* a *RadioButtonList* pro vlastnost *RepeatLayout ovládacího* následující nové hodnoty:
 
-- *OrderedList* – obsah se vykreslí jako *li* elementů v rámci *ol* elementu.
-- *Rozložení UnorderedList* – obsah se vykreslí jako *li* elementů v rámci *ul* elementu.
+- *OrderedList* – obsah se vykresluje jako *li* element v rámci elementu *ol* .
+- *Rozložení UnorderedList* – obsah se vykresluje jako *li* element v elementu *ul* .
 
 Následující příklad ukazuje, jak použít tyto nové hodnoty.
 
@@ -1049,152 +1049,152 @@ Předchozí kód generuje následující kód HTML:
 [!code-html[Main](overview/samples/sample84.html)]
 
 > [!NOTE]
-> Poznámka: Pokud nastavíte *RepeatLayout* k *OrderedList* nebo *rozložení UnorderedList*, *RepeatDirection* vlastnost již nelze použít a bude Vyvolejte výjimku za běhu, pokud byla nastavena v rámci značek nebo kódu. Vlastnost by nemají žádnou hodnotu, protože je definována rozložení vizuálu z těchto ovládacích prvků, místo použití šablon stylů CSS.
+> Poznámka: Pokud nastavíte *RepeatLayout ovládacího* na *OrderedList* nebo *rozložení UnorderedList*, vlastnost *RepeatDirection* již nemůže být použita a v době běhu vyvolá výjimku, pokud byla vlastnost nastavena v rámci kódu nebo kódu. Vlastnost by neměl žádnou hodnotu, protože vizuální rozložení těchto ovládacích prvků je místo toho definováno pomocí šablony stylů CSS.
 
 <a id="0.2__Toc253429272"></a><a id="0.2__Toc243304646"></a>
 
-### <a name="menu-control-improvements"></a>Vylepšení ovládacího prvku nabídka
+### <a name="menu-control-improvements"></a>Vylepšení ovládacích prvků nabídky
 
-Před technologii ASP.NET 4 *nabídky* ovládací prvek vykreslen řadě tabulek HTML. To udělali obtížnější použít styly CSS mimo nastavení vložených vlastností a nebyl také kompatibilní se standardy usnadnění.
+Před ASP.NET 4 ovládací prvek *nabídky* vykreslil řadu tabulek HTML. To ztěžuje použití stylů CSS mimo nastavení vložených vlastností a také nedodržuje standardy přístupnosti.
 
-V technologii ASP.NET 4 vykreslí ovládací prvek nyní pomocí sémantické značky, který obsahuje Neseřazený seznam a seznam prvků jazyka HTML. Následující příklad ukazuje značky na stránce ASP.NET pro *nabídky* ovládacího prvku.
+V ASP.NET 4 ovládací prvek nyní vykresluje HTML pomocí sémantického kódu, který se skládá z neuspořádaného seznamu a prvků seznamu. Následující příklad ukazuje značky na stránce ASP.NET pro ovládací prvek *nabídky* .
 
 [!code-aspx[Main](overview/samples/sample85.aspx)]
 
-Při vykreslení stránky, ovládací prvek vytvoří následující kód HTML ( *onclick* byl vynechán kód pro přehlednost):
+Když se stránka vykreslí, ovládací prvek vytvoří následující kód HTML (kód při *kliknutí* byl vynechán pro přehlednost):
 
 [!code-html[Main](overview/samples/sample86.html)]
 
-Kromě vylepšení vykreslování navigaci pomocí klávesnice nabídky je vylepšená správa fokus. Když *nabídky* ovládací prvek získá fokus, můžete použít klávesy se šipkami přejít elementy. *Nabídky* ovládací prvek nyní také připojí dostupné bohaté rolí internet aplikace (ARIA) a pro atributy ke splnění[výskytů](http://www.w3.org/TR/wai-aria-practices/#menu "nabídky ARIA pokyny")lepší usnadnění přístupu.
+Kromě vylepšení vykreslování bylo vylepšena navigace pomocí klávesnice v nabídce s využitím správy fokusu. Když ovládací prvek *nabídky* získá fokus, můžete použít klávesy se šipkami k procházení prvků. Ovládací prvek *nabídky* teď také připojí přístup k rolím a atributům následují ve bohatých internetových aplikacích (ARIA) a pořiďte si Rady pro lepší přístupnost[v](http://www.w3.org/TR/wai-aria-practices/#menu "nabídce")
 
-Styly pro ovládací prvek nabídky se zobrazují v styl bloku v horní části stránky, nikoli podle vykreslené elementů HTML. Pokud chcete využít plnou kontrolu nad používání stylů pro ovládací prvek, můžete nastavit nový *IncludeStyleBlock* vlastnost *false*, v takovém případě není aktivováno, blok stylu. Jeden ze způsobů použití této vlastnosti je použití funkce automaticky formátovat v návrháři aplikace Visual Studio k nastavení vzhledu nabídky. Můžete pak spuštění stránky, otevřete zdroj stránky a zkopírujte blok vykreslené stylu na externí soubor šablony stylů CSS. V sadě Visual Studio zrušit jeho styl a sada *IncludeStyleBlock* k *false*. Výsledkem je, že vzhled nabídky je definován pomocí stylů v externí šabloně stylů.
+Styly pro ovládací prvek nabídky jsou vykreslovány v bloku stylu v horní části stránky, nikoli v řádku s vykreslenými prvky jazyka HTML. Pokud chcete mít plnou kontrolu nad stylem ovládacího prvku, můžete nastavit novou vlastnost *IncludeStyleBlock* na *hodnotu false*. v takovém případě není blok stylu vygenerován. Jedním ze způsobů, jak tuto vlastnost použít, je použít funkci automatického formátování v návrháři sady Visual Studio k nastavení vzhledu nabídky. Pak můžete spustit stránku, otevřít zdroj stránky a potom zkopírovat zavykreslený blok stylu do externího souboru CSS. V sadě Visual Studio vraťte styly zpět a nastavte *IncludeStyleBlock* na *false*(NEPRAVDA). Výsledkem je, že se vzhled nabídky definuje pomocí stylů v externí šabloně stylů.
 
 <a id="0.2__Toc253429273"></a><a id="0.2__Toc243304647"></a>
 
-### <a name="wizard-and-createuserwizard-controls"></a>Průvodce a CreateUserWizard ovládacích prvků
+### <a name="wizard-and-createuserwizard-controls"></a>Průvodce a ovládací prvky ovládacím CreateUserWizard
 
-Technologie ASP.NET *průvodce* a *CreateUserWizard* ovládacích prvků nepodporují šablony, které umožňují definovat HTML, které vykreslují. (*CreateUserWizard* je odvozena z *průvodce*.) Následující příklad ukazuje kód pro plně šablony *CreateUserWizard* ovládacího prvku:
+*Průvodce* ASP.NET a ovládací prvky *ovládacím CreateUserWizard* podporují šablony, které umožňují definovat kód HTML, který vykreslují. (*Ovládacím CreateUserWizard* se odvozuje od *Průvodce*.) Následující příklad ukazuje značku pro plně *ovládacím CreateUserWizard* ovládací prvek s šablonou:
 
 [!code-aspx[Main](overview/samples/sample87.aspx)]
 
-Vykreslí ovládací prvek HTML podobný následujícímu:
+Ovládací prvek vykresluje kód HTML podobný následujícímu:
 
 [!code-html[Main](overview/samples/sample88.html)]
 
-V technologii ASP.NET 3.5 SP1, i když změníte obsah šablony, pořád máte omezenou kontrolu nad výstup *průvodce* ovládacího prvku. V technologii ASP.NET 4, můžete vytvořit *LayoutTemplate* šablony a vložit *zástupný symbol* ovládací prvky (pomocí vyhrazené názvy) k určení způsobu *ovládacího prvku průvodce* k vykreslení. Následující příklad ukazuje toto:
+V ASP.NET 3,5 SP1, i když můžete změnit obsah šablony, máte stále omezenou kontrolu nad výstupem ovládacího prvku *Průvodce* . V ASP.NET 4 můžete vytvořit šablonu šablony *LayoutTemplate* a vložit zástupné ovládací prvky (pomocí rezervovaných názvů) a určit tak, jak chcete, aby se *ovládací prvek Průvodce* vykreslil. Následující příklad ukazuje:
 
 [!code-aspx[Main](overview/samples/sample89.aspx)]
 
-Tento příklad obsahuje následující zástupné symboly v pojmenované *LayoutTemplate* element:
+Příklad obsahuje následující pojmenované zástupné symboly v elementu *LayoutTemplate* :
 
-- *headerPlaceholder* – v době běhu, to je nahrazena obsah *HeaderTemplate* elementu.
-- *sideBarPlaceholder* – v době běhu, to je nahrazena obsah *třída SideBarTemplate* elementu.
-- *wizardStepPlaceHolder* – v době běhu, to je nahrazena obsah *WizardStepTemplate* elementu.
-- *navigationPlaceholder* – v době běhu, to je nahrazena žádné navigační šablony, které jste definovali.
+- *headerPlaceholder* – v době běhu je toto nahrazeno obsahem elementu *Šablona HeaderTemplate* .
+- *sideBarPlaceholder* – v době běhu je toto nahrazeno obsahem elementu *oddíl SideBarTemplate* .
+- *wizardStepPlaceHolder* – v době běhu je toto nahrazeno obsahem elementu *WizardStepTemplate* .
+- *navigationPlaceholder* – v době běhu je tato nahrazena všemi navigačními šablonami, které jste definovali.
 
-Značky v příkladu, který používá zástupné symboly vykreslí následující kód HTML (bez obsahu ve skutečnosti definovány v šablonách):
+Označení v příkladu, který používá zástupné symboly, vykresluje následující HTML (bez obsahu, který je ve skutečnosti definovaný v šablonách):
 
 [!code-html[Main](overview/samples/sample90.html)]
 
-Je pouze kód HTML, který není nyní uživatelem definované *span* elementu. (Očekáváme, který v budoucích verzích, dokonce i pomocí *span* element se nevykreslí.) Tuto chybu vám plnou kontrolu nad prakticky veškerý obsah, který je generován *průvodce* ovládacího prvku.
+Jediný kód HTML, který není nyní definován uživatelem, je prvek *span* . (V budoucích verzích předpokládáme, že i element *span* nebude vykreslený.) Teď vám poskytne plnou kontrolu nad prakticky veškerým obsahem generovaným ovládacím prvkem *Průvodce* .
 
 <a id="0.2_dyndata"></a><a id="0.2__Toc253429274"></a><a id="0.2__Toc243304648"></a><a id="0.2__Toc224729042"></a>
 
 ## <a name="aspnet-mvc"></a>ASP.NET MVC
 
-ASP.NET MVC byla zavedená jako rozšiřovatelnou platformu pro doplněk pro technologie ASP.NET 3.5 SP1 v března 2009. Visual Studio 2010 obsahuje 2 technologie ASP.NET MVC, která zahrnuje nové funkce a možnosti.
+ASP.NET MVC byla představena jako doplňková architektura pro ASP.NET 3,5 SP1 v březnu 2009. Visual Studio 2010 obsahuje ASP.NET MVC 2, který obsahuje nové funkce a možnosti.
 
 <a id="0.2__Toc253429275"></a>
 
-### <a name="areas-support"></a>Oblasti podpory
+### <a name="areas-support"></a>Podpora oblastí
 
-Oblasti umožňují skupiny kontrolerů a zobrazení do části rozsáhlé aplikace v relativní izolaci od ostatních oddílů. Každou oblast, kterou je možné implementovat jako samostatné projektu ASP.NET MVC, která může poté odkazovat hlavní aplikace. To pomáhá se správou složitosti, když vytváříte rozsáhlé aplikace a usnadňuje tak více týmy pracovat společně na jedné aplikace.
+Oblasti umožňují seskupit řadiče a zobrazení do sekcí velké aplikace v relativní izolaci od ostatních oddílů. Každou oblast lze implementovat jako samostatný projekt ASP.NET MVC, na který může odkazovat hlavní aplikace. To pomáhá spravovat složitost při sestavování rozsáhlých aplikací a usnadňuje spolupráci více týmů v rámci jedné aplikace.
 
 <a id="0.2__Toc253429276"></a>
 
-### <a name="data-annotation-attribute-validation-support"></a>Podpora ověřování atributů dat – Poznámka
+### <a name="data-annotation-attribute-validation-support"></a>Podpora ověřování atributů poznámky k datům
 
-*DataAnnotations* atributy umožňují logiku ověřování k modelu připojit pomocí atributy metadat. *DataAnnotations* atributy byly zavedeny v Dynamická Data technologie ASP.NET v technologii ASP.NET 3.5 SP1. Tyto atributy jsou integrované do výchozí vazač modelu a poskytují způsob metadaty řízenou ověření vstupu uživatele.
+Atributy DataAnnotations umožňují připojit logiku ověřování k modelu pomocí atributů metadat. V ASP.NET dynamických datech v ASP.NET 3,5 SP1 byly představeny atributy DataAnnotations. Tyto atributy byly integrovány do výchozího pořadače modelů a poskytují prostředky založené na metadatech pro ověření vstupu uživatele.
 
 <a id="0.2__Toc253429277"></a>
 
-### <a name="templated-helpers"></a>Pomocnými objekty
+### <a name="templated-helpers"></a>Pomocník s šablonami
 
-Pomocnými objekty se vám umožní automaticky přidružit úpravy a zobrazení šablony s datovými typy. Pomocné šablony můžete použít například k určení, že je prvek uživatelského rozhraní pro výběr data automaticky generován pro *System.DateTime* hodnotu. To se podobá šablony polí v dynamických dat ASP.NET.
+Pomocníky s šablonou umožňují automaticky přidružit šablony pro úpravy a zobrazení s datovými typy. Například můžete použít pomocníka šablony k určení, že prvek uživatelského rozhraní pro výběr data je automaticky vykreslen pro hodnotu *System. DateTime* . To se podobá šablonám polí v dynamických datech ASP.NET.
 
-*Html.EditorFor* a *Html.DisplayFor* pomocné metody mají integrovanou podporu pro vykreslení standardních datových typů i složité objekty s více vlastnostmi. Jsou také přizpůsobit vykreslení tím, že umožní použít atributy dat. Poznámka jako *DisplayName* a *ScaffoldColumn* k *ViewModel* objektu.
+Pomocné metody *HTML. EditorFor* a *HTML. DisplayFor* mají integrovanou podporu pro vykreslování standardních datových typů i pro komplexní objekty s více vlastnostmi. Také přizpůsobují vykreslování tím, že vám umožní použít pro objekt *ViewModel* atributy poznámek k datům, jako je *DisplayName* a *ScaffoldColumn* .
 
-Často chcete přizpůsobit výstup z pomocné rutiny uživatelského rozhraní ještě dál a získejte úplnou kontrolu nad co je vygenerována. *Html.EditorFor* a *Html.DisplayFor* pomocné metody podporují použití šablon mechanismus, který umožňuje definovat externí šablony, které můžete přepsat a ovládací prvek vykreslen výstup. Šablony lze vykreslit jednotlivě pro třídu.
+Často budete chtít výstup z pomocníků uživatelského rozhraní ještě více přizpůsobit a mít úplnou kontrolu nad tím, co je vygenerováno. Pomocné metody *HTML. EditorFor* a *HTML. DisplayFor* podporují tento mechanismus pomocí mechanismu šablonování, který umožňuje definovat externí šablony, které mohou přepsat a řídit výstup vykreslený. Šablony lze vykreslit jednotlivě pro třídu.
 
 <a id="0.2__Toc253429278"></a><a id="0.2__Toc243304649"></a>
 
-## <a name="dynamic-data"></a>Dynamická Data
+## <a name="dynamic-data"></a>Dynamická data
 
-Dynamická Data byla zavedena ve verzi rozhraní .NET Framework 3.5 SP1 v polovině roku 2008. Tato funkce poskytuje mnoho vylepšení pro vytváření aplikací řízených daty, včetně následujících:
+Dynamická data byla představena ve verzi .NET Framework 3,5 SP1 v polovině 2008. Tato funkce poskytuje mnoho vylepšení pro vytváření aplikací založených na datech, včetně následujících:
 
-- RAD prostředí rychle vytvářet webové stránky řízené daty.
-- Automatické ověřování, který je založen na omezení definovaná v datovém modelu.
-- Schopnost snadno změnit kód generovaný pro pole v *GridView* a *DetailsView* ovládacích prvků pomocí šablon pole, které jsou součástí projektu Dynamická Data.
+- Prostředí RAD pro rychlé vytvoření webu založeného na datech.
+- Automatické ověřování založené na omezeních definovaných v datovém modelu.
+- Možnost snadné změny kódu, který je generován pro pole v ovládacích prvcích *GridView* a *DetailsView* pomocí šablon polí, které jsou součástí projektu dynamických dat.
 
 > [!NOTE]
-> Poznámka: Další informace naleznete [dynamických dat dokumentaci](https://msdn.microsoft.com/library/cc488545.aspx) v knihovně MSDN.
+> Poznámka: Další informace naleznete v [dokumentaci k dynamickým datům](https://msdn.microsoft.com/library/cc488545.aspx) v knihovně MSDN.
 
-Pro technologii ASP.NET 4 dynamických dat je vylepšená poskytnout vývojáři získají vyšší výkon pro rychlé vytváření datově řízených webových serverů.
+U ASP.NET 4 se rozšířila dynamická data, která vývojářům ještě zvyšují výkon pro rychlé vytváření webů založených na datech.
 
 <a id="0.2__Toc253429279"></a><a id="0.2__Toc243304650"></a>
 
-### <a name="enabling-dynamic-data-for-existing-projects"></a>Povolení dynamických dat u existujících projektů
+### <a name="enabling-dynamic-data-for-existing-projects"></a>Povolení dynamických dat pro existující projekty
 
-Dynamické funkce Data, která poskytuje rozhraní .NET Framework 3.5 SP1 přinesl nové funkce, jako je následující:
+Funkce dynamických dat, které byly dodávány ve službě .NET Framework 3,5 SP1, dostaly nové funkce, například následující:
 
-- Pole šablony – poskytují tyto na základě dat typu šablony pro ovládací prvky vázané na data. Pole šablony poskytují jednodušší způsob, jak přizpůsobit vzhled ovládacích prvcích dat než při použití šablony polí pro každé pole.
-- Ověřování – Dynamická Data vám umožní používat atributy u datových tříd k určení ověření pro běžné scénáře, jako jsou povinná pole, kontrolu rozsahu, kontrolu typu, porovnávání vzorů pomocí regulárních výrazů a vlastní ověřování. Ověřování se vynucují ovládacími prvky dat.
+- Šablony polí – tyto poskytují šablony založené na datových typech pro ovládací prvky vázané na data. Šablony polí poskytují jednodušší způsob, jak přizpůsobit vzhled ovládacích prvků dat než použití polí šablon pro každé pole.
+- Ověřování – dynamická data umožňují používat atributy u datových tříd k určení ověřování pro běžné scénáře, jako jsou povinná pole, kontrola rozsahu, kontrola typu, porovnávání vzorů pomocí regulárních výrazů a vlastní ověřování. Ověřování je vynutilo ovládacími prvky dat.
 
-Tyto funkce však má následující požadavky:
+Tyto funkce ale měly následující požadavky:
 
-- Vrstva přístupu k datům měl být založený na rozhraní Entity Framework a LINQ to SQL.
-- Pouze data source ovládací prvky pro tyto funkce se nepodporuje *EntityDataSource* nebo *LinqDataSource* ovládacích prvků.
-- Funkce vyžaduje webový projekt, který měl nebyl vytvořen pomocí dynamických dat nebo entity dynamických dat šablony mají všechny soubory, které jsou vyžadovány k podpoře funkce.
+- Vrstva přístupu k datům měla být založená na Entity Framework nebo LINQ to SQL.
+- Jediné ovládací prvky zdroje dat, které jsou podporovány pro tyto funkce, byly ovládací prvky *EntityDataSource* nebo *LinqDataSource* .
+- Funkce vyžadovala webový projekt, který byl vytvořen pomocí šablon dynamických dat nebo dynamických datových entit, aby měly všechny soubory, které byly požadovány pro podporu funkce.
 
-Hlavním cílem podporu dynamických dat v technologii ASP.NET 4 je povolení nových funkcí dynamických dat pro každou aplikaci ASP.NET. Následující příklad ukazuje značky pro ovládací prvky, které můžete využít výhod funkce Dynamická Data v existující stránky.
+Hlavním cílem podpory dynamických dat v ASP.NET 4 je povolení nové funkce dynamických dat pro všechny aplikace ASP.NET. Následující příklad ukazuje značky pro ovládací prvky, které mohou využívat funkci dynamických dat na stávající stránce.
 
 [!code-aspx[Main](overview/samples/sample91.aspx)]
 
-V kódu stránky musíte přidat následující kód chcete-li povolit podporu dynamických dat pro tyto ovládací prvky:
+V kódu stránky musí být přidán následující kód, aby bylo možné povolit podporu dynamických dat pro tyto ovládací prvky:
 
 [!code-csharp[Main](overview/samples/sample92.cs)]
 
-Když *GridView* ovládací prvek je v režimu úprav, dynamickými daty automaticky ověří, zda zadaná data ve správném formátu. Pokud není, zobrazí se chybová zpráva.
+Když je ovládací prvek *GridView* v režimu úprav, dynamická data automaticky ověří, že zadaná data jsou ve správném formátu. Pokud není, zobrazí se chybová zpráva.
 
-Tato funkce také přináší i další výhody, jako je například schopnost určit výchozí hodnoty pro režimu vkládání. Bez Dynamická Data, implementovat výchozí hodnotu pro pole, musíte přiřadit události, vyhledejte ovládací prvek (pomocí *FindControl*) a nastavení jeho hodnoty. V technologii ASP.NET 4 *EnableDynamicData* volání podporuje druhý parametr, který umožňuje předat výchozí hodnoty pro všechna pole objektu, jak je znázorněno v tomto příkladu:
+Tato funkce také poskytuje další výhody, jako je možnost zadat výchozí hodnoty pro režim vkládání. Bez dynamických dat, chcete-li implementovat výchozí hodnotu pro pole, je nutné se připojit k události, vyhledat ovládací prvek (pomocí *FindControl*) a nastavit jeho hodnotu. V ASP.NET 4 volání *EnableDynamicData* podporuje druhý parametr, který umožňuje předat výchozí hodnoty pro jakékoli pole objektu, jak je znázorněno v následujícím příkladu:
 
 [!code-csharp[Main](overview/samples/sample93.cs)]
 
 <a id="0.2__Toc224729043"></a><a id="0.2__Toc253429280"></a><a id="0.2__Toc243304651"></a>
 
-### <a name="declarative-dynamicdatamanager-control-syntax"></a>Syntaxe deklarativní ovládacího prvku DynamicDataManager
+### <a name="declarative-dynamicdatamanager-control-syntax"></a>Deklarativní syntaxe ovládacího prvku ovládacího prvku DynamicDataManager
 
-*DynamicDataManager* ovládací prvek je vylepšená tak, aby ji můžete nakonfigurovat deklarativně, stejně jako u většiny ovládacích prvků v ASP.NET, namísto pouze v kódu. Zápis *DynamicDataManager* ovládací prvek vypadat jako v následujícím příkladu:
+Ovládací prvek *ovládacího prvku DynamicDataManager* byl vylepšen, takže jej lze nakonfigurovat deklarativně, jako u většiny ovládacích prvků v ASP.NET, namísto pouze v kódu. Označení ovládacího prvku *ovládacího prvku DynamicDataManager* vypadá jako v následujícím příkladu:
 
 [!code-aspx[Main](overview/samples/sample94.aspx)]
 
-Tato značka umožňuje chování dynamických dat pro ovládací prvek GridView1, na který odkazuje *DataControls* část *DynamicDataManager* ovládacího prvku.
+Tento kód umožňuje dynamické chování dat pro ovládací prvek GridView1, na který je odkazováno v oddíle DataControls ovládacího prvku *ovládacího prvku DynamicDataManager* .
 
 <a id="0.2__Toc224729044"></a><a id="0.2__Toc253429281"></a><a id="0.2__Toc243304652"></a>
 
 ### <a name="entity-templates"></a>Šablony entit
 
-Šablony entit nabízí nový způsob přizpůsobení rozložení dat, aniž by bylo potřeba vytvořit vlastní stránky. Stránce použití šablon *FormView* ovládacího prvku (místo *DetailsView* řídit, jak použít v šablonách stránky v dřívějších verzích dynamických dat) a *DynamicEntity* ovládací prvek vykreslovat šablony entit. To dává větší kontrolu nad značkami, které je vykresleno dynamickými daty.
+Šablony entit nabízejí nový způsob přizpůsobení rozložení dat bez nutnosti vytvořit vlastní stránku. Šablony stránky používají ovládací prvek *FormView* (namísto ovládacího prvku *DetailsView* , jak je použit v šablonách stránky v dřívějších verzích dynamických dat) a ovládací prvek *DynamicEntity* pro vykreslení šablon entit. Tím získáte větší kontrolu nad značkou, která je vykreslena dynamickými daty.
 
-Následující seznam uvádí nové rozložení adresáře projektu, který obsahuje šablony entity:
+Následující seznam zobrazuje nové rozložení adresáře projektu, které obsahuje šablony entit:
 
 [!code-console[Main](overview/samples/sample95.cmd)]
 
-`EntityTemplate` Adresář obsahuje šablony pro objekty modelu dat zobrazení. Ve výchozím nastavení, objekty jsou vykreslovány pomocí `Default.ascx` šablonu, která obsahuje kód, který vypadá stejně jako kód vytvořil *DetailsView* ovládací prvek používat Dynamická Data technologie ASP.NET 3.5 SP1. Následující příklad ukazuje kód pro `Default.ascx` ovládacího prvku:
+`EntityTemplate` Adresář obsahuje šablony pro zobrazení objektů datového modelu. Ve výchozím nastavení jsou objekty vykreslovány pomocí `Default.ascx` šablony, která poskytuje značky, které jsou vytvořeny pomocí ovládacího prvku *DetailsView* používaného pomocí dynamických dat v ASP.NET 3,5 SP1. Následující příklad ukazuje značku `Default.ascx` ovládacího prvku:
 
 [!code-aspx[Main](overview/samples/sample96.aspx)]
 
-Chcete-li změnit vzhled a chování pro celou lokalitu se dá upravit výchozí šablony. Šablony pro zobrazení a úpravě operací vložení. Nové šablony mohou být přidány na základě názvu objektu dat. Chcete-li změnit vzhled a chování pouze jeden typ objektu. Můžete například přidat následující šablony:
+Výchozí šablony lze upravit pro změnu vzhledu a chování celého webu. K dispozici jsou šablony pro operace zobrazení, úprav a vložení. Nové šablony lze přidat na základě názvu datového objektu, aby bylo možné změnit vzhled a chování pouze jednoho typu objektu. Můžete například přidat následující šablonu:
 
 [!code-console[Main](overview/samples/sample97.cmd)]
 
@@ -1202,7 +1202,7 @@ Chcete-li změnit vzhled a chování pro celou lokalitu se dá upravit výchozí
 
 [!code-aspx[Main](overview/samples/sample98.aspx)]
 
-Nové entity šablony se zobrazí na stránce s použitím nového *DynamicEntity* ovládacího prvku. V době běhu tento ovládací prvek nahrazena obsahu entity šablony. Následující kód ukazuje *FormView* v ovládacím prvku `Detail.aspx` stránku šablony, který používá šablonu entity. Všimněte si, že *DynamicEntity* elementu v kódu.
+Nové šablony entit se zobrazí na stránce pomocí nového ovládacího prvku *DynamicEntity* . V době běhu je tento ovládací prvek nahrazen obsahem šablony entity. Následující kód ukazuje ovládací prvek *FormView* v `Detail.aspx` šabloně stránky, který používá šablonu entity. Všimněte si, že element *DynamicEntity* ve značce.
 
 [!code-aspx[Main](overview/samples/sample99.aspx)]
 
@@ -1210,172 +1210,172 @@ Nové entity šablony se zobrazí na stránce s použitím nového *DynamicEntit
 
 ### <a name="new-field-templates-for-urls-and-email-addresses"></a>Nové šablony polí pro adresy URL a e-mailové adresy
 
-ASP.NET 4 zavádí dvě nové šablony předdefinované pole `EmailAddress.ascx` a `Url.ascx`. Tyto šablony jsou používány pro pole, které jsou označeny jako *EmailAddress* nebo *Url* s *datový typ* atribut. Pro *EmailAddress* objekty, pole se zobrazí jako hypertextový odkaz, který je vytvořen pomocí *mailto:* protokolu. Když uživatelé kliknou na odkaz, otevře uživatele e-mailového klienta a vytvoří kostru zprávu. Objekty typu *Url* se zobrazí jako hypertextové odkazy, běžný.
+ASP.NET 4 zavádí dvě nové předdefinované šablony `EmailAddress.ascx` polí a. `Url.ascx` Tyto šablony jsou používány pro pole, která jsou označena jako *EmailAddress* nebo *URL* s atributem *DataType* . Pro objekty *EmailAddress* se pole zobrazí jako hypertextový odkaz, který je vytvořen pomocí protokolu *mailto:* . Když uživatel klikne na odkaz, otevře se e-mailový klient uživatele a vytvoří kostru zprávy. Objekty, které jsou zadány jako *URL* , se zobrazují jako běžné hypertextové odkazy.
 
-Následující příklad ukazuje, jak by pole označená.
+Následující příklad ukazuje, jak budou označena pole.
 
 [!code-csharp[Main](overview/samples/sample100.cs)]
 
 <a id="0.2__Toc224729046"></a><a id="0.2__Toc253429283"></a><a id="0.2__Toc243304654"></a>
 
-### <a name="creating-links-with-the-dynamichyperlink-control"></a>Vytváření odkazů pomocí ovládacího prvku DynamicHyperLink
+### <a name="creating-links-with-the-dynamichyperlink-control"></a>Vytváření odkazů pomocí ovládacího prvku ovládací DynamicHyperLink
 
-Dynamická Data používají novou funkci směrování, která byla přidána v rozhraní .NET Framework 3.5 SP1 pro řízení adresy URL, které koncovým uživatelům zobrazí při přístupu k webové stránce. Nové *DynamicHyperLink* ovládací prvek umožňuje snadno vytvářet odkazy na stránky webu s dynamickými daty. Následující příklad ukazuje způsob použití *DynamicHyperLink* ovládacího prvku:
+Dynamická data používají novou funkci směrování, která byla přidána v .NET Framework 3,5 SP1 pro řízení adres URL, které koncoví uživatelé uvidí při přístupu k webu. Nový ovládací prvek *ovládací DynamicHyperLink* usnadňuje vytváření odkazů na stránky v dynamickém datovém webu. Následující příklad ukazuje, jak použít ovládací prvek *ovládací DynamicHyperLink* :
 
 [!code-aspx[Main](overview/samples/sample101.aspx)]
 
-Tento kód vytvoří odkaz, který odkazuje na stránce seznamu `Products` tabulky podle trasy, které jsou definovány v `Global.asax` souboru. Ovládací prvek automaticky používá výchozí název tabulky založenou na stránce Dynamická Data.
+Tento kód vytvoří odkaz, který odkazuje na stránku seznamu pro `Products` tabulku založenou na trasách, které jsou definovány `Global.asax` v souboru. Ovládací prvek automaticky používá výchozí název tabulky, na kterém je založena stránka dynamická data.
 
 <a id="0.2__Toc224729047"></a><a id="0.2__Toc253429284"></a><a id="0.2__Toc243304655"></a>
 
 ### <a name="support-for-inheritance-in-the-data-model"></a>Podpora dědičnosti v datovém modelu
 
-Jak Entity Framework a LINQ to SQL v jejich datové modely podporují dědičnost. Příkladem může být databázi, která má `InsurancePolicy` tabulky. Může také obsahovat `CarPolicy` a `HousePolicy` tabulky, které mají stejná pole jako `InsurancePolicy` a pak přidejte další pole. Dynamická Data byla změněna pochopit zděděných objektů v datovém modelu a podporu generování uživatelského rozhraní pro zděděné tabulky.
+Entity Framework i LINQ to SQL podporují dědičnost ve svých datových modelech. Příkladem může být databáze s `InsurancePolicy` tabulkou. Může také obsahovat `CarPolicy` tabulky a `HousePolicy` , které mají stejná pole jako `InsurancePolicy` a pak přidat další pole. Byla změněna dynamická data, aby bylo možné pochopit zděděné objekty v datovém modelu a podporovat generování uživatelského rozhraní pro zděděné tabulky.
 
 <a id="0.2__Toc224729048"></a><a id="0.2__Toc253429285"></a><a id="0.2__Toc243304656"></a>
 
-### <a name="support-for-many-to-many-relationships-entity-framework-only"></a>Podpora pro relace m: N (pouze Entity Framework)
+### <a name="support-for-many-to-many-relationships-entity-framework-only"></a>Podpora relací M:n (jenom Entity Framework)
 
-Má bohatou podporu pro many-to-many relace mezi tabulkami, které je implementované vystavení vztahu jako kolekce v Entity Framework *Entity* objektu. Nové `ManyToMany.ascx` a `ManyToMany_Edit.ascx` šablony pole byly přidány k poskytování podpory pro zobrazování a upravování dat, který je součástí relace many-to-many.
+Entity Framework má bohatou podporu pro relace m:n mezi tabulkami, které jsou implementovány vyvoláním relace jako kolekce objektu *entity* . Přidali `ManyToMany.ascx` jsme `ManyToMany_Edit.ascx` nové a šablony polí, které poskytují podporu pro zobrazování a úpravu dat, která jsou součástí vztahů m:n.
 
 <a id="0.2__Toc224729049"></a><a id="0.2__Toc253429286"></a><a id="0.2__Toc243304657"></a>
 
-### <a name="new-attributes-to-control-display-and-support-enumerations"></a>Nové atributy pro ovládací prvek zobrazení a podporu výčtů
+### <a name="new-attributes-to-control-display-and-support-enumerations"></a>Nové atributy pro řízení zobrazení a podpory výčtů
 
-*DisplayAttribute* byl přidán do vám poskytnou další řízení zobrazení polí. *DisplayName* atribut v dřívějších verzích dynamických dat je možné změnit název, který se používá jako popisek pro pole povolená. Nové *DisplayAttribute* třída umožňuje určit další možnosti pro zobrazení pole, jako je například pořadí, ve které se zobrazí pole a určuje, zda pole se použije jako filtr. Atribut také poskytuje nezávislé kontrolu nad název použitý pro popisky *GridView* řídit, název použitý v *prvku DetailsView* řídit, text nápovědy pro pole, a použít vodoznak pro pole (Pokud je toto pole přijímá textový vstup).
+Přidaný *DisplayAttribute* vám poskytne další kontrolu nad tím, jak se pole zobrazují. Atribut *DisplayName* v dřívějších verzích dynamických dat vám umožní změnit název, který se používá jako titulek pro pole. Nová třída *DisplayAttribute* vám umožňuje určit více možností pro zobrazení pole, například pořadí, ve kterém se pole zobrazuje, a informace o tom, jestli se pole použije jako filtr. Atribut také poskytuje nezávislé řízení názvu používaného pro popisky v ovládacím prvku *GridView* , název použitý v ovládacím prvku *DetailsView* , text v nápovědě pro pole a vodoznak, který se používá pro pole (Pokud pole akceptuje textový vstup).
 
-*EnumDataTypeAttribute* třídy je přidaný do umožňují mapování polí na výčty. Při použití tohoto atributu na pole, zadejte typ výčtu. Dynamická Data používají nové `Enumeration.ascx` pole šablony k vytvoření uživatelského rozhraní pro zobrazení a úpravy hodnot výčtu. Šablona mapuje hodnoty z databáze, které mají názvy ve výčtu.
+Přidala se třída *atribut EnumDataTypeAttribute* , která umožňuje mapovat pole na výčty. Při použití tohoto atributu u pole zadáte typ výčtu. Dynamická data používají novou `Enumeration.ascx` šablonu pole k vytvoření uživatelského rozhraní pro zobrazení a úpravy hodnot výčtu. Šablona mapuje hodnoty z databáze na názvy ve výčtu.
 
 <a id="0.2__Toc224729050"></a><a id="0.2__Toc253429287"></a><a id="0.2__Toc243304658"></a>
 
-### <a name="enhanced-support-for-filters"></a>Vylepšená podpora pro filtry
+### <a name="enhanced-support-for-filters"></a>Rozšířená podpora pro filtry
 
-Dynamická Data 1.0 součástí integrované filtry pro logickou sloupce a sloupce cizího klíče. Filtry nepovolil určete, zda se zobrazí, nebo v jakém byly zobrazeny. Nové *DisplayAttribute* atribut adresy obou těchto problémů tím, že můžete řídit, jestli se sloupce zobrazí jako filtr a v jakém pořadí se bude zobrazovat.
+Dynamické datové 1,0 dodávané s integrovanými filtry pro logické sloupce a sloupce cizího klíče. Filtry neumožňují určit, zda byly zobrazeny nebo v jakém pořadí byly zobrazeny. Nový atribut *DisplayAttribute* řeší oba tyto problémy tím, že poskytuje kontrolu nad tím, zda se sloupec zobrazí jako filtr a v jakém pořadí bude zobrazen.
 
-Další vylepšení je, že podpora filtrování byl znovu[zapsána do pomocí nové](#0.2__QueryExtender "_QueryExtender") funkce webových formulářů. To vám umožní vytvořit filtry bez nutnosti znalost ovládací prvek zdroje dat, který se použije filtry. Spolu s těmito příponami filtry také dostalo do šablon ovládacích prvků, které vám umožní přidávat nové značky. Nakonec *DisplayAttribute* třídy již bylo zmíněno dříve umožňuje výchozí filtr k přepsání ve stejném způsobu, jakým *UIHint* umožňuje pole výchozí šablonu pro sloupec k přepsání.
+Dalším vylepšením je, že podpora filtrování byla znovu zapsána,[aby používala novou]funkci(#0.2__QueryExtender "_QueryExtender") webových formulářů. To vám umožní vytvořit filtry bez nutnosti znalosti ovládacího prvku zdroje dat, se kterými se filtry budou používat. Společně s těmito rozšířeními byly filtry také změněny na ovládací prvky šablon, což umožňuje přidat nové. Nakonec výše zmíněná třída *DisplayAttribute* umožňuje přepsat výchozí filtr stejným způsobem, jakým *UIHint* umožňuje přepsat výchozí šablonu pole pro sloupec.
 
 <a id="0.2__Toc224729051"></a><a id="0.2__Toc253429288"></a><a id="0.2__Toc243304659"></a>
 
-## <a name="visual-studio-2010-web-development-improvements"></a>Vylepšení webového vývoje Visual Studio 2010
+## <a name="visual-studio-2010-web-development-improvements"></a>Vylepšení vývoje webu sady Visual Studio 2010
 
-Vývoj pro web v sadě Visual Studio 2010 bylo vylepšeno pro lepší Kompatibilita šablon stylů CSS, vyšší produktivitu prostřednictvím fragmentů kódu HTML a ASP.NET a nové dynamické technologie IntelliSense jazyka JavaScript.
+Vývoj pro web v aplikaci Visual Studio 2010 byl vylepšen pro větší kompatibilitu šablon stylů CSS, zvýšení produktivity pomocí HTML a ASP.NET fragmentů kódu a nového dynamického JavaScriptu jazyka IntelliSense.
 
 <a id="0.2__Toc224729052"></a><a id="0.2__Toc253429289"></a><a id="0.2__Toc243304660"></a>
 
-### <a name="improved-css-compatibility"></a>Kompatibilita vylepšené šablony stylů CSS
+### <a name="improved-css-compatibility"></a>Vylepšená kompatibilita šablon stylů CSS
 
-Návrhář Visual Web Developer v sadě Visual Studio 2010 je aktualizovaná na striktnější dodržování pravidel šablon stylů CSS 2.1 standardy. Návrhář lépe zachová integrita zdrojový kód HTML a je výkonnější než v předchozích verzích sady Visual Studio. Pod pokličkou architektury také byla vylepšena se bude lépe povolit budoucí vylepšení v vykreslování, rozložení a použitelnost.
+Návrhář aplikace Visual Web Developer v aplikaci Visual Studio 2010 byl aktualizován pro zlepšení dodržování standardů šablon stylů CSS 2,1. Návrhář lépe zachovává integritu zdroje HTML a je robustnější než v předchozích verzích sady Visual Studio. V rámci digestoře se také provedla vylepšení architektury, která budou lépe umožňovat budoucí vylepšení vykreslování, rozložení a služby.
 
 <a id="0.2__Toc224729053"></a><a id="0.2__Toc253429290"></a><a id="0.2__Toc243304661"></a>
 
-### <a name="html-and-javascript-snippets"></a>Fragmenty HTML a JavaScript
+### <a name="html-and-javascript-snippets"></a>Fragmenty kódu HTML a JavaScriptu
 
-V editoru HTML IntelliSense automaticky dokončuje názvy značek. Funkce fragmenty kódu technologie IntelliSense automaticky dokončuje celý značek a dalších. V sadě Visual Studio 2010 jsou podporovány fragmenty kódu technologie IntelliSense pro JavaScript, C# a Visual Basic, které byly podporovány v dřívějších verzích sady Visual Studio.
+V editoru HTML technologie IntelliSense automaticky dokončuje názvy značek. Funkce fragmentů technologie IntelliSense automaticky dokončuje celé značky a další. V aplikaci Visual Studio 2010 jsou fragmenty technologie IntelliSense podporovány pro JavaScript, C# společně a Visual Basic, které byly podporovány v dřívějších verzích sady Visual Studio.
 
-Visual Studio 2010 obsahuje více než 200 fragmenty kódu, které vám pomohou automatické dokončování společné značky technologie ASP.NET a HTML, včetně požadovaných atributů (jako je například runat = "server") a společné atributy, které jsou specifické pro značky (například *ID*,  *DataSourceID*, *ControlToValidate*, a *Text*).
+Visual Studio 2010 obsahuje více než 200 fragmentů kódu, které vám pomůžou s automatickým dokončováním běžných značek ASP.NET a HTML, včetně požadovaných atributů (například runat = "Server") a společných atributů specifických pro značku (například *ID*, *DataSourceID*,  *ControlToValidate*a *text*).
 
-Další fragmenty kódu si můžete stáhnout, nebo můžete napsat vlastní fragmenty kódu, které provádí zapouzdření bloky kódu, které vy nebo váš tým používat pro běžné úlohy.
+Můžete stáhnout další fragmenty kódu nebo můžete napsat vlastní fragmenty, které zapouzdřují bloky kódu, které vy nebo váš tým používáte pro běžné úkoly.
 
 <a id="0.2__Toc224729054"></a><a id="0.2__Toc253429291"></a><a id="0.2__Toc243304662"></a>
 
-### <a name="javascript-intellisense-enhancements"></a>Vylepšení technologie IntelliSense jazyka JavaScript
+### <a name="javascript-intellisense-enhancements"></a>Vylepšení JavaScript IntelliSense
 
-V sadě Visual Studio 2010 jsme přepracovali technologie IntelliSense jazyka JavaScript poskytovat ještě bohatší možnosti úprav. Technologie IntelliSense nyní rozpoznává objekty, které byly vytvořeny dynamicky metodami, jako například *registerNamespace* a podobné techniky, které používají jiné architektury JavaScriptu. Bylo vylepšeno výkonu k analýze velkých knihovny skriptů a k zobrazení technologie IntelliSense s žádné nebo téměř žádné zpoždění zpracování. Kompatibilita se výrazně zvýšil na podporu téměř všechny knihovny třetích stran a pro podporu různých stylů psaní kódu. Dokumentační komentáře jsou analyzovány teď hned při psaní a okamžitě se využívají technologii IntelliSense.
+V jazyce Visual 2010 byla přepracována technologie JavaScript IntelliSense, aby poskytovala ještě bohatší možnosti úprav. Technologie IntelliSense nyní rozpoznává objekty, které byly dynamicky generovány metodami, jako je například *registerNamespace* , a podobnými technikami, které používá jiné rozhraní JavaScript. Vylepšili jsme výkon při analýze velkých knihoven skriptů a zobrazení IntelliSense s malým nebo žádným zpožděním zpracování. Kompatibilita se významně zvýšila, aby podporovala skoro všechny knihovny třetích stran a podporovaly různé styly kódování. Dokumentační komentáře jsou nyní analyzovány při psaní a jsou okamžitě využity technologií IntelliSense.
 
 <a id="0.2__Toc224729055"></a><a id="0.2__Toc253429292"></a><a id="0.2__Toc243304663"></a>
 
-## <a name="web-application-deployment-with-visual-studio-2010"></a>Nasazení webové aplikace sadou Visual Studio 2010
+## <a name="web-application-deployment-with-visual-studio-2010"></a>Nasazení webové aplikace pomocí sady Visual Studio 2010
 
-Když vývojáře využívající technologii ASP.NET nasazení webové aplikace, často zjistí, že se narazí problémy, jako je následující:
+Když vývojáři ASP.NET nasadí webovou aplikaci, často zjistí, že narazí na následující problémy:
 
-- Nasazení do sdíleného hostingu lokality vyžaduje technologie, jako je FTP, který může být pomalé. Kromě toho je nutné ručně provést úlohy, jako je spouštění skriptů SQL, pokud chcete nakonfigurovat databázi a je nutné změnit nastavení služby IIS, jako je například konfigurace virtuálního adresáře složky jako aplikace.
-- V podnikovém prostředí, kromě nasazení souborů webové aplikace správců často třeba upravit konfiguračních souborů ASP.NET a nastavení služby IIS. Správce databáze musí spustit sérii skripty SQL zobrazíte databáze aplikace spuštěná. Tato zařízení jsou náročné na práci, obvykle trvat hodiny a musí být zdokumentována pečlivě.
+- Nasazení do sdíleného hostitelského serveru vyžaduje technologie, jako je FTP, což může být pomalé. Kromě toho je nutné ručně provést úlohy, jako je spouštění skriptů SQL pro konfiguraci databáze, a je třeba změnit nastavení služby IIS, jako je například konfigurace složky virtuálního adresáře jako aplikace.
+- V podnikovém prostředí musí správci kromě nasazení souborů webové aplikace často upravovat konfigurační soubory ASP.NET a nastavení služby IIS. Správci databáze musí spustit sérii skriptů SQL pro získání databáze aplikace. Takové instalace jsou náročné na práci, ale jsou často hodiny dokončené a je nutné je pečlivě zdokumentovat.
 
-Visual Studio 2010 obsahuje technologie, které řeší tyto problémy a které umožňují bez problémů nasazování webových aplikací. Jednu z těchto technologií je nástroj pro nasazení webu služby IIS (MsDeploy.exe).
+Visual Studio 2010 obsahuje technologie, které řeší tyto problémy a umožňují bezproblémové nasazení webových aplikací. Jednou z těchto technologií je nástroj pro nasazení webu služby IIS (MsDeploy. exe).
 
-Webové nasazení funkce v sadě Visual Studio 2010 následující hlavní oblasti:
+Funkce pro nasazení webu v aplikaci Visual Studio 2010 obsahují následující hlavní oblasti:
 
-- Vytváření webových balíčků
-- Transformace souboru Web.config
+- Balíčky webu
+- Transformace Web. config
 - Nasazení databáze
 - Publikování jedním kliknutím pro webové aplikace
 
-Následující části obsahují podrobnosti o těchto funkcích.
+Následující části obsahují podrobné informace o těchto funkcích.
 
 <a id="0.2__Toc224729056"></a><a id="0.2__Toc253429293"></a><a id="0.2__Toc243304664"></a>
 
-### <a name="web-packaging"></a>Vytváření webových balíčků
+### <a name="web-packaging"></a>Balíčky webu
 
-K vytvoření komprimovaný soubor (ZIP) pro vaši aplikaci, která se označuje jako Visual Studio 2010 používá nástroj MSDeploy *webového balíčku*. Soubor balíčku obsahuje metadata o vaší aplikace spolu s následujícím obsahem:
+Sada Visual Studio 2010 používá nástroj MSDeploy k vytvoření komprimovaného souboru (. zip) pro vaši aplikaci, který se označuje jako *webový balíček*. Soubor balíčku obsahuje metadata o vaší aplikaci a následující obsah:
 
-- Nastavení služby IIS, která zahrnuje nastavení fondu aplikací, nastavení chyb stránky a tak dále.
-- Skutečné webový obsah, včetně webových stránek, uživatelské ovládací prvky, statický obsah (obrázky a soubory HTML) a tak dále.
-- Schémata databáze systému SQL Server a data.
-- Certifikáty zabezpečení, součástí k instalaci v mezipaměti GAC, nastavení registru a tak dále.
+- Nastavení služby IIS, které zahrnuje nastavení fondu aplikací, nastavení chybových stránek atd.
+- Skutečný webový obsah, který zahrnuje webové stránky, uživatelské ovládací prvky, statický obsah (obrázky a soubory HTML) atd.
+- SQL Server schémat a dat databáze.
+- Certifikáty zabezpečení, součásti k instalaci v globální mezipaměti sestavení (GAC), nastavení registru atd.
 
-Webový balíček můžete zkopírovat u libovolného serveru a pomocí Správce služby IIS nainstalovat ručně. Další možností pro automatické nasazení, balíček nainstalujete pomocí příkazů příkazového řádku nebo pomocí rozhraní API nasazení.
+Webový balíček můžete zkopírovat na libovolný server a pak ho nainstalovat ručně pomocí Správce služby IIS. Případně pro automatizované nasazení lze balíček nainstalovat pomocí příkazů příkazového řádku nebo pomocí rozhraní API pro nasazení.
 
-Visual Studio 2010 poskytuje integrované úlohy MSBuild a cíle k vytvoření webových balíčků. Další informace najdete v tématu [ASP.NET Web Application Project Deployment Overview](https://msdn.microsoft.com/library/dd394698%28VS.100%29.aspx) na webu MSDN a [10 + 20 důvody, proč by měl vytvořit webový balíček](http://vishaljoshi.blogspot.com/2009/07/10-20-reasons-why-you-should-create-web.html) na blogu Vishal Joshi.
+Visual Studio 2010 poskytuje předdefinované úlohy a cíle nástroje MSBuild pro vytváření webových balíčků. Další informace najdete v tématu [Přehled nasazení projektu webové aplikace ASP.NET](https://msdn.microsoft.com/library/dd394698%28VS.100%29.aspx) na webu MSDN a [10 + 20 důvodů, proč byste měli vytvořit webový balíček](http://vishaljoshi.blogspot.com/2009/07/10-20-reasons-why-you-should-create-web.html) na blogu Vishal Joshi.
 
 <a id="0.2__Toc224729057"></a><a id="0.2__Toc253429294"></a><a id="0.2__Toc243304665"></a>
 
 ### <a name="webconfig-transformation"></a>Web.config Transformation
 
-Pro nasazení webové aplikace Visual Studio 2010 zavádí [transformaci dokumentů XML (XDT)](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html), což je funkce, který umožňuje transformovat `Web.config` soubor z nastavení pro vývoj na výrobní nastavení. Nastavení transformace jsou určené v transformační soubory s názvem `web.debug.config`, `web.release.config`, a tak dále. (Názvy tyto soubory odpovídají MSBuild konfigurace). Transformační soubor obsahuje pouze změny, které je třeba provést pro nasazený `Web.config` souboru. Určete změny pomocí jednoduché syntaxe.
+V případě nasazení webové aplikace Visual Studio 2010 zavádí [XML Document Transforming (XDT)](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html), což je funkce, která umožňuje transformovat `Web.config` soubor z nastavení pro vývoj na produkční nastavení. Nastavení transformace jsou uvedena v transformačních souborech `web.debug.config`s `web.release.config`názvem, a tak dále. (Názvy těchto souborů odpovídají konfiguracím MSBuild.) Transformační soubor obsahuje pouze změny, které je třeba provést v nasazeném `Web.config` souboru. Změny se určují pomocí jednoduché syntaxe.
 
-Následující příklad ukazuje část `web.release.config` souboru, který může být vytvořen pro nasazení vaší verze konfigurace. Nahradit – klíčové slovo v příkladu, který určuje během nasazení *připojovací řetězec* uzlu `Web.config` soubor se nahradí hodnotami, které jsou uvedené v příkladu.
+Následující příklad ukazuje část `web.release.config` souboru, která může být vytvořena pro nasazení konfigurace vydané verze. Klíčové slovo Replace v příkladu určuje, že během nasazování bude uzel *ConnectionString* v `Web.config` souboru nahrazen hodnotami uvedenými v příkladu.
 
 [!code-xml[Main](overview/samples/sample102.xml)]
 
-Další informace najdete v tématu [syntaxe transformace souboru Web.config pro nasazení projektu webové aplikace](https://msdn.microsoft.com/library/dd465326%28VS.100%29.aspx) na MSDN <a id="0.2_a"> </a> webu a[nasazení webu: Transformace souboru Web.Config](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html) na blogu Vishal Joshi.
+Další informace naleznete v tématu [Syntaxe transformace Web. config pro nasazení projektu webové aplikace](https://msdn.microsoft.com/library/dd465326%28VS.100%29.aspx) na webu MSDN <a id="0.2_a"></a> a[nasazení webu: Transformace](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html) Web. config na blogu Vishal Joshi.
 
 <a id="0.2__Toc224729058"></a><a id="0.2__Toc253429295"></a><a id="0.2__Toc243304666"></a>
 
 ### <a name="database-deployment"></a>Nasazení databáze
 
-Balíček pro nasazení sady Visual Studio 2010 může obsahovat závislosti na databáze SQL serveru. Jako součást definice balíčku zadejte připojovací řetězec pro zdrojovou databázi. Při vytváření webového balíčku Visual Studio 2010 vytvoří skripty SQL pro schéma databáze a volitelně pro data a pak přidá do balíčku. Můžete také zadat vlastní skripty SQL a určete pořadí, ve kterém by měl spustit na serveru. V době nasazení můžete zadat připojovací řetězec, který je vhodný pro cílový server; proces nasazení ke spouštění skriptů, které vytvoří schéma databáze a přidejte data použije tento připojovací řetězec.
+Balíček pro nasazení sady Visual Studio 2010 může zahrnovat závislosti na databázích SQL Server. V rámci definice balíčku zadejte připojovací řetězec pro zdrojovou databázi. Při vytváření webového balíčku vytvoří Visual Studio 2010 skripty SQL pro schéma databáze a volitelně data a přidá je do balíčku. Můžete také zadat vlastní skripty SQL a určit pořadí, ve kterém by se měly spouštět na serveru. V okamžiku nasazení zadejte připojovací řetězec, který je vhodný pro cílový server. proces nasazení pak pomocí tohoto připojovacího řetězce spustí skripty, které vytvářejí schéma databáze a data přidávají.
 
-Kromě toho pomocí jedním kliknutím publikovat, můžete nakonfigurovat nasazení publikování databáze přímo, když je aplikace publikována na vzdálený web sdíleného hostingu. Další informace najdete v tématu [jak: Nasazení databáze se projekt webové aplikace](https://msdn.microsoft.com/library/dd465343%28VS.100%29.aspx) na webu MSDN a [nasazení databáze s VS 2010](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html) na blogu Vishal Joshi.
+Kromě toho můžete pomocí publikování jedním kliknutím nakonfigurovat nasazení pro publikování databáze přímo při publikování aplikace na vzdálené sdílené hostitelské lokalitě. Další informace najdete v tématu [jak: Nasazení databáze s projektem](https://msdn.microsoft.com/library/dd465343%28VS.100%29.aspx) webové aplikace na webu MSDN a [nasazení databáze s vs 2010](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html) na blogu Vishal Joshi.
 
 <a id="0.2__Toc224729059"></a><a id="0.2__Toc253429296"></a><a id="0.2__Toc243304667"></a>
 
 ### <a name="one-click-publish-for-web-applications"></a>Publikování jedním kliknutím pro webové aplikace
 
-Visual Studio 2010 také vám umožní používat vzdálenou správu služby IIS pro publikování webových aplikací na vzdálený server. Vytvoříte profil publikování pro hostitelský účet nebo servery testů nebo přípravných servery. Každý profil můžete bezpečně uložit příslušná pověření. Pak můžete nasadit do některé z cílových serverů s jedním kliknutím na webu jedním kliknutím pomocí nástrojů pro publikování. S Visual Studio 2010 můžete také publikovat pomocí příkazového řádku MSBuild. To vám umožní nakonfigurovat prostředí sestavení týmu, aby zahrnovalo publikování v modelu průběžné integrace.
+Visual Studio 2010 také umožňuje používat službu IIS Remote Management Service k publikování webové aplikace na vzdáleném serveru. Můžete vytvořit profil publikování pro svůj hostitelský účet nebo pro testovací servery nebo pracovní servery. Každý profil může bezpečně ukládat příslušné přihlašovací údaje. Pak můžete nasadit na libovolný cílový server jedním kliknutím pomocí panelu nástrojů pro publikování na webu jedním kliknutím. Pomocí sady Visual Studio 2010 můžete také publikovat pomocí příkazového řádku MSBuild. To vám umožní nakonfigurovat prostředí týmu sestavení tak, aby zahrnovalo publikování v modelu průběžné integrace.
 
-Další informace najdete v tématu [jak: Nasazení webové aplikace projektu pomocí publikování jedním kliknutím a nasazení webu](https://msdn.microsoft.com/library/dd465337%28VS.100%29.aspx) na webu MSDN a [Web publikovat kliknutím 1 s VS 2010](http://vishaljoshi.blogspot.com/2009/05/web-1-click-publish-with-vs-2010.html) na blogu Vishal Joshi. Chcete-li zobrazit videa prezentace o nasazení webové aplikace v sadě Visual Studio 2010, naleznete v tématu [VS 2010 pro webové vývojáře náhledy](http://vishaljoshi.blogspot.com/2008/12/vs-2010-for-web-developer-previews.html) na blogu Vishal Joshi.
+Další informace najdete v tématu [jak: Nasazení projektu webové aplikace pomocí publikování jedním kliknutím a nasazení webu](https://msdn.microsoft.com/library/dd465337%28VS.100%29.aspx) na webu MSDN a v části [Web 1 – klikněte na publikovat v sadě vs 2010](http://vishaljoshi.blogspot.com/2009/05/web-1-click-publish-with-vs-2010.html) na blogu pro Vishal Joshi. Chcete-li zobrazit video prezentace týkající se nasazení webové aplikace v sadě Visual Studio 2010, přečtěte si téma [VS 2010 pro webové verze Developer](http://vishaljoshi.blogspot.com/2008/12/vs-2010-for-web-developer-previews.html) Preview na blogu Vishal Joshi.
 
 <a id="0.2__Toc224729060"></a><a id="0.2__Toc253429297"></a><a id="0.2__Toc243304668"></a>
 
 ### <a name="resources"></a>Prostředky
 
-Na následujících webech poskytují další informace o technologii ASP.NET 4 a Visual Studio 2010.
+Následující weby poskytují další informace o ASP.NET 4 a Visual Studio 2010.
 
-- [ASP.NET 4](https://msdn.microsoft.com/library/ee532866%28VS.100%29.aspx) – oficiální dokumentaci pro technologii ASP.NET 4 na webové stránce MSDN.
-- [https://www.asp.net/](https://www.asp.net/) – ASP.NET týmu vlastní webové stránky.
-- [https://www.asp.net/dynamicdata/](https://msdn.microsoft.com/library/cc488545.aspx) a [obsahu mapy Dynamická Data technologie ASP.NET](https://msdn.microsoft.com/library/cc488545%28VS.100%29.aspx) – Online prostředků na webu technologie ASP.NET a v oficiální dokumentaci pro dynamická Data technologie ASP.NET.
-- [https://www.asp.net/ajax/](../../ajax/index.md) – Hlavní webový zdroj pro vývoj pro ASP.NET Ajax.
-- [https://blogs.msdn.com/webdevtools/](https://blogs.msdn.com/webdevtools/) – V týmu Visual Web Developer blogu, který obsahuje informace o funkcích v sadě Visual Studio 2010.
-- [Skvělá webová sada ASP.NET](https://github.com/aspnet/AspNetWebStack) – hlavní webový prostředek pro verzi preview verze technologie ASP.NET.
+- [ASP.NET 4](https://msdn.microsoft.com/library/ee532866%28VS.100%29.aspx) – oficiální dokumentace pro ASP.NET 4 na webu MSDN.
+- [https://www.asp.net/](https://www.asp.net/)– Vlastní web týmu ASP.NET.
+- [https://www.asp.net/dynamicdata/](https://msdn.microsoft.com/library/cc488545.aspx)a [ASP.NET se mapa obsahu dynamických dat](https://msdn.microsoft.com/library/cc488545%28VS.100%29.aspx) – online prostředky na týmovém webu ASP.NET a v oficiální dokumentaci pro ASP.NET dynamická data.
+- [https://www.asp.net/ajax/](../../ajax/index.md)– Hlavní webový prostředek pro vývoj v ASP.NET AJAX.
+- [https://blogs.msdn.com/webdevtools/](https://blogs.msdn.com/webdevtools/)– Blog týmu Visual Web Developer, který obsahuje informace o funkcích sady Visual Studio 2010.
+- [ASP.NET webstack](https://github.com/aspnet/AspNetWebStack) – hlavní webový prostředek pro verzi preview verze ASP.NET.
 
 <a id="0.2__Toc224729061"></a><a id="0.2__Toc253429298"></a><a id="0.2__Toc243304669"></a>
 
 ## <a name="disclaimer"></a>Právní omezení
 
-Toto je předběžná dokumentu a může podstatně změnit před finální komerční verzi softwaru, které jsou popsány zde.
+Toto je předběžný dokument a může být podstatně měněn před konečným komerčním vydáním softwaru popsaného v tomto dokumentu.
 
-Informace obsažené v tomto dokumentu představují aktuální pohled společnosti Microsoft Corporation na tyto problémy k datu publikování. Protože Microsoft reagovat na měnící se podmínky na trhu, neměly by být vykládány jako závazek Microsoftu a společnost Microsoft nemůže zaručit přesnost jakýchkoli informací, které jsou prezentovány po provedení datu publikování.
+Informace obsažené v tomto dokumentu představují aktuální pohled společnosti Microsoft Corporation na problémy, které jsou popsány k datu publikování. Vzhledem k tomu, že Microsoft musí reagovat na měnící se podmínky na trhu, neměl by být interpretován jako závazek společnosti Microsoft a společnost Microsoft nemůže zaručit přesnost všech informací, které jsou uvedeny po datu publikování.
 
-Tento dokument White Paper se pouze k informačním účelům. MICROSOFT NEPOSKYTUJE ŽÁDNÉ ZÁRUKY, VÝSLOVNÝCH, ODVOZENÝCH NEBO ZÁKONNÝCH, INFORMACE V TOMTO DOKUMENTU.
+Tento dokument White Paper slouží pouze k informativním účelům. SPOLEČNOST MICROSOFT NEPOSKYTUJE ŽÁDNÉ ZÁRUKY, AŤ UŽ VÝSLOVNĚ UVEDENÉ, PŘEDPOKLÁDANÉ NEBO STATUTÁRNÍ, JAKO INFORMACE V TOMTO DOKUMENTU.
 
-V souladu s příslušnými zákony o autorských právech je zodpovědný uživatel. Bez omezení autorská práva, žádná část tohoto dokumentu může být reprodukovat, uložené v zavedené rozšiřován nebo jakýmkoli způsobem (electronic, mechanickým, mechanicky, záznam nebo jinak) nebo pro libovolný účel, bez výslovného písemného povolení společnosti Microsoft Corporation.
+Dodržování všech platných zákonů o autorských právech je zodpovědností uživatele. Bez omezení práv v rámci autorského práva nesmí být žádná část tohoto dokumentu reprodukována, ukládána do systému pro načítání nebo převedena v jakémkoli tvaru nebo jakýmkoli prostředkem (elektronickými, mechanicky, fotokopírováním, záznamem nebo jiným) nebo pro jakékoli účely. bez výslovného písemného svolení společnosti Microsoft Corporation.
 
-Společnost Microsoft může vlastnit patenty, patentové přihlášky, ochranné známky, autorská práva nebo další práva na duševní vlastnictví přihlášky v tomto dokumentu. Výslovně uvedeno v písemné licenční smlouvě se společností Microsoft, poskytnutím tohoto dokumentu vám není udělena licence k těmto patentům, ochranné známky, autorská práva nebo jinému duševnímu vlastnictví.
+Společnost Microsoft může mít patenty, patentové aplikace, ochranné známky, autorská práva nebo jiná práva duševního vlastnictví, která zahrnují předmět v tomto dokumentu. S výjimkou výslovně uvedených v písemné licenční smlouvě od společnosti Microsoft vám poskytnutí tohoto dokumentu neposkytuje žádnou licenci na tyto patenty, ochranné známky, autorská práva ani jiné duševní vlastnictví.
 
-Pokud není uvedeno jinak, společnosti, organizace, produkty, názvy domén, e-mailové adresy, loga, osoby, místa a události použité v ukázkách jsou smyšlené. proto žádné jejich spojení se žádné skutečnou společností, organizací, produktu, název domény, e-mailu adresy, loga, osoby, místa nebo událostí je určena ji vyvozovat.
+Pokud není uvedeno jinak, jsou ukázkové společnosti, organizace, produkty, názvy domén, e-mailové adresy, loga, osoby, místa a události uvedené v ukázkách smyšlené a bez jakýchkoli souvislostí se skutečnou společností, organizací, produktem, názvem domény, e-mailem. adresa, logo, osoba, místo nebo událost jsou zamýšlené nebo by se měly odvodit.
 
 © 2009 Microsoft Corporation. Všechna práva vyhrazena.
 
-Microsoft a Windows jsou registrované ochranné známky nebo ochranné známky společnosti Microsoft Corporation ve Spojených státech amerických a dalších zemích.
+Microsoft a Windows jsou buď registrované ochranné známky, nebo ochranné známky společnosti Microsoft Corporation v USA a dalších zemích.
 
-Názvy skutečných společností a produktů mohou být ochrannými známkami příslušných vlastníků.
+Názvy skutečných společností a produktů uvedených v tomto dokumentu můžou být ochranné známky jejich příslušných vlastníků.
