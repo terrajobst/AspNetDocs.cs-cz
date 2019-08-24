@@ -1,30 +1,30 @@
 ---
 uid: webhooks/source
-title: ASP.NET – Webhooky zdrojový kód a balíčky NuGet | Dokumentace Microsoftu
+title: Zdrojový kód Webhooku ASP.NET a balíčky NuGet | Microsoft Docs
 author: rick-anderson
-description: Odkazy na zdrojový kód ASP.NET – Webhooky a balíčky NuGet
+description: Odkazy na zdrojový kód webhooků ASP.NET a balíčky NuGet
 ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: 91a62bfa-ea3a-41f9-a2e1-e90d2c8fc8ca
-ms.openlocfilehash: f88d9247f9d8aa0c5edc1ffc462be21d9319a725
-ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
+ms.openlocfilehash: 8d07848754d9efda9c893b8ba54ac6d0c0214a53
+ms.sourcegitcommit: b95316530fa51087d6c400ff91814fe37e73f7e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67410806"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70000705"
 ---
-# <a name="aspnet-webhooks-source-code-and-nuget-packages"></a><span data-ttu-id="d88b1-103">ASP.NET – Webhooky zdrojový kód a balíčky NuGet</span><span class="sxs-lookup"><span data-stu-id="d88b1-103">ASP.NET WebHooks source code and NuGet packages</span></span>
+# <a name="aspnet-webhooks-source-code-and-nuget-packages"></a><span data-ttu-id="86b20-103">Zdrojový kód Webhooku ASP.NET a balíčky NuGet</span><span class="sxs-lookup"><span data-stu-id="86b20-103">ASP.NET WebHooks source code and NuGet packages</span></span>
 
-<span data-ttu-id="d88b1-104">Microsoft ASP.NET WebHooks je součástí Microsoft ASP.NET řadu modulů a je hostovaný jako [Open Source projekt na Githubu](https://github.com/aspnet/WebHooks).</span><span class="sxs-lookup"><span data-stu-id="d88b1-104">Microsoft ASP.NET WebHooks is part of the Microsoft ASP.NET family of modules and is hosted as an [Open Source Project on GitHub](https://github.com/aspnet/WebHooks).</span></span> <span data-ttu-id="d88b1-105">To znamená, že jsme přijímat příspěvky, ale podívejte se prosím na [příspěvek pokyny](https://github.com/aspnet/Home/blob/master/CONTRIBUTING.md) před odesláním žádosti o přijetí změn.</span><span class="sxs-lookup"><span data-stu-id="d88b1-105">This means that we accept contributions, but please look at the [Contribution Guidelines](https://github.com/aspnet/Home/blob/master/CONTRIBUTING.md) before submitting a pull request.</span></span>
+<span data-ttu-id="86b20-104">Microsoft ASP.NET webhooků je součástí řady Microsoft ASP.NET modulů a hostuje se jako [Open source projekt na GitHubu](https://github.com/aspnet/WebHooks).</span><span class="sxs-lookup"><span data-stu-id="86b20-104">Microsoft ASP.NET WebHooks is part of the Microsoft ASP.NET family of modules and is hosted as an [Open Source Project on GitHub](https://github.com/aspnet/WebHooks).</span></span> <span data-ttu-id="86b20-105">To znamená, že budeme přijímat příspěvky, ale před odesláním žádosti o přijetí změn se prosím podívejte na [pokyny pro příspěvky](https://github.com/aspnet/Home/blob/master/CONTRIBUTING.md) .</span><span class="sxs-lookup"><span data-stu-id="86b20-105">This means that we accept contributions, but please look at the [Contribution Guidelines](https://github.com/aspnet/Home/blob/master/CONTRIBUTING.md) before submitting a pull request.</span></span>
 
-<span data-ttu-id="d88b1-106">Tuto dokumentaci online, které právě čtete nyní také hostována jako [Open Source na Githubu](http://docs.asp.net/en/latest/contribute/style-guide.html#style-guide) a také přijímá příspěvky.</span><span class="sxs-lookup"><span data-stu-id="d88b1-106">This online documentation which you are reading now is also hosted as [Open Source on GitHub](http://docs.asp.net/en/latest/contribute/style-guide.html#style-guide) and also accepts contributions.</span></span>
+<span data-ttu-id="86b20-106">Tato online dokumentace, kterou právě čtete, je také hostována jako [Open source na GitHubu](http://docs.asp.net/en/latest/contribute/style-guide.html#style-guide) a přijímá i příspěvky.</span><span class="sxs-lookup"><span data-stu-id="86b20-106">This online documentation which you are reading now is also hosted as [Open Source on GitHub](http://docs.asp.net/en/latest/contribute/style-guide.html#style-guide) and also accepts contributions.</span></span>
 
-## <a name="nuget-packages"></a><span data-ttu-id="d88b1-107">Balíčky NuGet</span><span class="sxs-lookup"><span data-stu-id="d88b1-107">NuGet packages</span></span>
+## <a name="nuget-packages"></a><span data-ttu-id="86b20-107">Balíčky NuGet</span><span class="sxs-lookup"><span data-stu-id="86b20-107">NuGet packages</span></span>
 
-<span data-ttu-id="d88b1-108">[Balíčky NuGet](https://nuget.org/packages?q=Microsoft.AspNet.WebHooks) jsou rozdělené do tří částí:</span><span class="sxs-lookup"><span data-stu-id="d88b1-108">The [NuGet packages](https://nuget.org/packages?q=Microsoft.AspNet.WebHooks) are divided into three parts:</span></span>
+<span data-ttu-id="86b20-108">[Balíčky NuGet](https://nuget.org/packages?q=Microsoft.AspNet.WebHooks) jsou rozdělené na tři části:</span><span class="sxs-lookup"><span data-stu-id="86b20-108">The [NuGet packages](https://nuget.org/packages?q=Microsoft.AspNet.WebHooks) are divided into three parts:</span></span>
 
-* <span data-ttu-id="d88b1-109">[Běžné](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Common): Běžné balíček, který je sdílen mezi odesílateli a příjemci.</span><span class="sxs-lookup"><span data-stu-id="d88b1-109">[Common](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Common): A common package that is shared between senders and receivers.</span></span>
+* <span data-ttu-id="86b20-109">[Běžné](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Common): Společný balíček, který je sdílen mezi odesílateli a přijímači.</span><span class="sxs-lookup"><span data-stu-id="86b20-109">[Common](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Common): A common package that is shared between senders and receivers.</span></span>
 
-* <span data-ttu-id="d88b1-110">[Odesílatel](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Custom): Sada balíčků podporuje odesílání vlastních Webhooků do jiné.</span><span class="sxs-lookup"><span data-stu-id="d88b1-110">[Sender](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Custom): A set of packages supporting sending your own WebHooks to others.</span></span> <span data-ttu-id="d88b1-111">Funkce pro odesílání Webhooky jsou popsány podrobněji [odesílání Webhooky](sending/senders).</span><span class="sxs-lookup"><span data-stu-id="d88b1-111">The functionality for sending WebHooks is described in more detail in [Sending WebHooks](sending/senders).</span></span>
+* <span data-ttu-id="86b20-110">[Odesílatel](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Custom): Sada balíčků, které podporují odesílání vlastních webhooků jiným uživatelům.</span><span class="sxs-lookup"><span data-stu-id="86b20-110">[Sender](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Custom): A set of packages supporting sending your own WebHooks to others.</span></span> <span data-ttu-id="86b20-111">Funkce pro odesílání webhooků je podrobněji popsána v tématu [odesílání](sending/senders.md)webhooků.</span><span class="sxs-lookup"><span data-stu-id="86b20-111">The functionality for sending WebHooks is described in more detail in [Sending WebHooks](sending/senders.md).</span></span>
 
-* <span data-ttu-id="d88b1-112">[Příjemci](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers): Sada balíčků podpora přijímá Webhooky od ostatních.</span><span class="sxs-lookup"><span data-stu-id="d88b1-112">[Receivers](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers): A set of packages supporting receiving WebHooks from others.</span></span> <span data-ttu-id="d88b1-113">Funkce pro příjem Webhooky jsou popsány podrobněji [přijímá Webhooky](receiving/index.md).</span><span class="sxs-lookup"><span data-stu-id="d88b1-113">The functionality for receiving WebHooks is described in more detail in [Receiving WebHooks](receiving/index.md).</span></span>
+* <span data-ttu-id="86b20-112">[Přijímače](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers): Sada balíčků podporující příjem webhooků od ostatních.</span><span class="sxs-lookup"><span data-stu-id="86b20-112">[Receivers](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers): A set of packages supporting receiving WebHooks from others.</span></span> <span data-ttu-id="86b20-113">Funkce pro příjem webhooků je podrobněji popsána v tématu [příjem](receiving/index.md)webhooků.</span><span class="sxs-lookup"><span data-stu-id="86b20-113">The functionality for receiving WebHooks is described in more detail in [Receiving WebHooks](receiving/index.md).</span></span>
