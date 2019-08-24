@@ -1,39 +1,39 @@
 ---
 uid: webhooks/index
-title: 'Webhooky ASP.NET: Přehled | Dokumentace Microsoftu'
+title: Přehled webhooků ASP.NET | Microsoft Docs
 author: rick-anderson
-description: Úvod do ASP.NET – Webhooky.
+description: Úvod do webhooků ASP.NET
 ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: 5e2843f0-f499-448f-a712-33d4e9858321
-ms.openlocfilehash: 702cc0bf0d0bb887c64bec19e1faf249bd96617a
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: aa65a20e1af16d58533e37fafc77ac246e0fe327
+ms.sourcegitcommit: b95316530fa51087d6c400ff91814fe37e73f7e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796065"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70000734"
 ---
-# <a name="aspnet-webhooks-overview"></a>Přehled ASP.NET – Webhooky
+# <a name="aspnet-webhooks-overview"></a>Přehled webhooků ASP.NET
 
-Webhooky se odlehčeného vzoru HTTP poskytuje jednoduché pub/sub model pro vzájemné propojení dohromady webová rozhraní API a služby SaaS. Případě určité události ve službě, oznámení se posílá ve formuláři požadavku HTTP POST pro registrované předplatitele. Požadavek POST obsahuje informace o události, která umožňuje příjemci příslušně na ně reagovat.
+Webhooky je zjednodušený vzor HTTP, který poskytuje jednoduchý model Pub/sub pro zapojení do společné webové rozhraní API a služeb SaaS. Když dojde k události ve službě, pošle se oznámení ve formě požadavku HTTP POST registrovaným předplatitelům. Požadavek POST obsahuje informace o události, která umožňuje příjemci reagovat odpovídajícím způsobem.
 
-Z důvodu jejich jednoduchost Webhooky jsou již vystavené velkým množstvím služeb včetně [Dropboxu](http://dropbox.com/), [Githubu](http://www.github.com/), [Bitbucket](https://bitbucket.org/), [MailChimp ](http://www.mailchimp.com/), [PayPal](http://www.paypal.com/), [Slack](http://www.slack.com), [Stripe](http://www.stripe.com), [Trello](http://www.trello.com/)a mnoho dalších. Například Webhooku může znamenat, že soubor byl změněn v [Dropboxu](http://dropbox.com/), změny kódu byl potvrzen v Githubu nebo platby byl zahájen v [PayPal](http://www.paypal.com/), nebo na kartě se vytvořil v [ Trello](http://www.trello.com/). Možností je nekonečně!
+Z důvodu jejich jednoduchosti jsou Webhooky již zveřejněny velkým počtem služeb, včetně Dropboxu [](http://dropbox.com/), [GitHubu](http://www.github.com/), [Bitbucket](https://bitbucket.org/), [MailChimp](http://www.mailchimp.com/), [PayPal](http://www.paypal.com/), [časové rezervy](http://www.slack.com), prokládaných, [Trello](http://www.trello.com/)a mnoha. [](http://www.stripe.com) aktuálnější. Webhook může například značit, že se soubor změnil v Dropboxu nebo [](http://dropbox.com/)že se změnila Změna kódu na GitHubu, nebo když se v rámci služby [PayPal](http://www.paypal.com/)iniciovala platba nebo byla vytvořena karta v [Trello](http://www.trello.com/). Možnosti jsou nekonečné.
 
-Microsoft ASP.NET WebHooks usnadňuje odesílat i přijímat Webhooků jako součást aplikace ASP.NET:
+Microsoft ASP.NET webhookům usnadňuje posílání i příjem webhooků jako součást vaší aplikace ASP.NET:
 
-* Na straně příjmu poskytuje společný model pro příjem a zpracování Webhooků z různých zprostředkovatelů Webhooku. Jde o předpřipravených s podporou [Dropboxu](http://dropbox.com/), [Githubu](http://www.github.com/), [Bitbucket](https://bitbucket.org/), [MailChimp](http://www.mailchimp.com/), [PayPal](http://www.paypal.com/), [Pusheru](http://www.pusher.com), [Salesforce](http://www.salesforce.com), [Slack](http://www.slack.com), [Stripe](http://www.stripe.com), [Trello](http://www.trello.com/),[ WordPress](http://www.wordpress.com) a [Zendesku](https://www.zendesk.com/) je ale také snadné přidat podporu pro víc.
+* Na straně příjmu poskytuje společný model pro příjem a zpracování webhooků z libovolného počtu zprostředkovatelů webhooků. Vychází ze seznamu s podporou Dropboxu, [](http://dropbox.com/)GitHubu [](http://www.github.com/), [Bitbucket](https://bitbucket.org/), [MailChimp](http://www.mailchimp.com/), [PayPal](http://www.paypal.com/), [Pusher](http://www.pusher.com), [Salesforce](http://www.salesforce.com), [časové rezervy](http://www.slack.com), [Stripe](http://www.stripe.com), [Trello](http://www.trello.com/),[WordPress](http://www.wordpress.com) a [Zendesk](https://www.zendesk.com/) , ale můžete snadno přidat podporu.
 
-* Na straně odesílání poskytuje podporu pro správu a ukládání předplatná stejně jako u odesílání oznámení událostí na správnou sadu předplatitele. To umožňuje definovat vlastní sadu událostí, můžete se přihlásit k odběru a upozorňovat na co se stane, předplatitele.
+* Na straně odeslání poskytuje podporu pro správu a ukládání předplatných a také pro odesílání oznámení o událostech do správné sady předplatitelů. To vám umožní definovat vlastní sadu událostí, které se předplatitelům můžou přihlásit k odběru a upozorňovat na ně, když k nim dojde.
 
-Dvě části je možné společně nebo od sebe v závislosti na vašem scénáři. Pokud potřebujete přijímá Webhooky z jiných služeb, můžete použít jenom část příjemce; Pokud chcete vystavit Webhooky pro ostatní uživatele používat, můžete přesně to provést.
+Tyto dvě části můžete v závislosti na vašem scénáři použít společně nebo odděleně. Pokud potřebujete pouze příjem webhooků z jiných služeb, můžete použít pouze část přijímače. Pokud chcete, aby Webhooky využívaly jenom pro jiné, stačí, když to uděláte.
 
-Kód, zaměřuje na technologie ASP.NET Web API 2 a ASP.NET MVC 5 a je k dispozici jako [OSS na Githubu](https://github.com/aspnet/WebHooks).
+Cílení kódu ASP.NET webové rozhraní API 2 a ASP.NET MVC 5 a je k dispozici jako [OSS na GitHubu](https://github.com/aspnet/WebHooks).
 
-## <a name="webhooks-overview"></a>Přehled Webhooků
+## <a name="webhooks-overview"></a>Přehled webhooků
 
-Webhooky se vzor, což znamená, že se mění, jak se používá od služby do služby, ale základní myšlenka je stejný. Si můžete představit Webhooků jako modelu jednoduché pub/sub kde uživatel může přihlásit k odběru událostí děje jinde. Oznamování událostí se rozšíří jako požadavky HTTP POST, který obsahuje informace o samotné události.
+Webhooky je vzor, který znamená, že se liší v tom, jak se používá ze služby k provozu, ale základní nápad je stejný. Webhooky si můžete představit jako jednoduchý model Pub/sub, kde se uživatel může přihlásit k odběru událostí jinde. Oznámení událostí se šíří jako požadavky HTTP POST obsahující informace o samotné události.
 
-Odeslání požadavku HTTP POST obvykle obsahuje objekt JSON nebo data formuláře HTML určené Webhooku odesílatele, včetně informací o události Webhooku k aktivaci. Například příklad těla požadavku POST Webhooku z [Githubu](http://www.github.com/) vypadá podobně jako tento jako výsledek vytvoří nový problém v konkrétní úložiště:
+Požadavek HTTP POST obvykle obsahuje objekt JSON nebo data formuláře HTML určená odesílatelem Webhooku, včetně informací o události, která způsobuje, že se Webhook spustí. Například text požadavku POST Webhooku z GitHubu [](http://www.github.com/) vypadá jako v důsledku otevření nového problému v konkrétním úložišti:
 
 ```json
 {
@@ -61,34 +61,34 @@ Odeslání požadavku HTTP POST obvykle obsahuje objekt JSON nebo data formulá�
 }
 ```
 
-Požadavek POST tak, aby byl WebHook skutečně zamýšlené odesílatele, je zabezpečené nějakým způsobem a poté ověřeno, příjemce. Například [Webhooky Githubu](https://developer.github.com/webhooks/) zahrnuje *X-Hub-podpis* hlavičku protokolu HTTP s hodnotu hash obsahu žádosti, které je zaškrtnuto implementací příjemce, aby nemuseli se starat o něm.
+Chcete-li zajistit, aby Webhook byl skutečně od zamýšleného odesílatele, je žádost POST zabezpečena způsobem a poté ověřena příjemcem. Například Webhooky [GitHubu](https://developer.github.com/webhooks/) zahrnují hlavičku HTTP *X-hub-Signature* s hodnotou hash textu žádosti, která je kontrolována implementací příjemce, takže se o ně nemusíte starat.
 
-WebHook flow obecně přejde vypadat přibližně takto:
+Tok Webhooku se obecně podobá tomuto:
 
-* Odesílatel Webhooku zpřístupňuje události, které se můžete přihlásit k odběru klienta. Události, které popisují pozorovatelných změny systému, například které nová datová položka byla vložený, aby proces dokončil nebo něco jiného.
+* Odesílatel Webhooku zpřístupňuje události, ke kterým se může klient přihlásit. Události popisují pozorovatelné změny v systému, například zda byla vložena nová datová položka, byl dokončen proces nebo něco jiného.
 
-* Příjemce Webhooku přihlásí registrace Webhooku, který se skládá ze čtyř akcí:
+* Přihlášení k odběru přijímače Webhooku pomocí registrace Webhooku sestávající ze čtyř věcí:
 
-     1. Identifikátor URI pro kde by měla ve formuláři požadavku HTTP POST; odeslat oznámení události
+     1. Identifikátor URI, kde má být oznámení o události odesíláno ve formě požadavku HTTP POST;
 
-     2. Sady filtrů popisující konkrétní události, pro které by měl být aktivována WebHook;
+     2. Sada filtrů popisujících konkrétní události, pro které by se Webhook měl aktivovat;
 
-     3. Tajný klíč, který se používá k podepsání žádosti HTTP POST;
+     3. Tajný klíč, který se používá k podepsání požadavku HTTP POST;
 
-     4. Další data, která mají být zahrnuty v požadavku HTTP POST. Například to může být další pole hlavičky protokolu HTTP nebo vlastností obsažených v textu požadavku HTTP POST.
+     4. Další data, která mají být součástí požadavku HTTP POST. To může být například další pole záhlaví protokolu HTTP nebo vlastnosti, které jsou součástí textu žádosti HTTP POST.
 
-* Po události dojde, jsou nalezeny odpovídající registrace Webhooku a odeslání požadavků HTTP POST. Obvykle jsou generování požadavky HTTP POST na opakovat několikrát, pokud pro z nějakého důvodu, že příjemce neodpovídá nebo výsledky požadavku HTTP POST do reakce na chybu.
+* Jakmile dojde k události, budou nalezeny vyhovující registrace Webhooku a odešlou se požadavky HTTP POST. Obvykle se generování požadavků HTTP POST opakuje několikrát, pokud z nějakého důvodu příjemce neodpovídá nebo požadavek HTTP POST způsobí chybovou odpověď.
 
-## <a name="webhooks-processing-pipeline"></a>Webhooky zpracování kanálu
+## <a name="webhooks-processing-pipeline"></a>Kanál pro zpracování webhooků
 
-Microsoft ASP.NET WebHooks zpracování kanálu pro příchozí Webhooky vypadá takto:
+Kanál pro zpracování Microsoft ASP.NET webhooků pro příchozí Webhooky vypadá takto:
 
-![ASP.NET – Webhooky zpracování kanálu](_static/WebHookReceivers.png)
+![Kanál pro zpracování webhooků ASP.NET](_static/WebHookReceivers.png)
 
-Jsou zde dva klíčové koncepty *příjemci* a *obslužné rutiny*:
+Tady jsou tyto dvě klíčové koncepty *přijímače* a *obslužné rutiny*:
 
-* *Příjemci* nesou odpovědnost za zpracování konkrétní flavor Webhooku od daného odesílatele a pro vynucení kontroly zabezpečení tak, aby byl požadavek Webhooku skutečně zamýšlené odesílatele.
+* *Přijímače* zodpovídají za zpracování konkrétního charakteru Webhooku od daného odesílatele a pro vynucování kontrol zabezpečení, aby bylo zajištěno, že požadavek Webhooku skutečně pochází od zamýšleného odesílatele.
 
-* *Obslužné rutiny* jsou obvykle, kde uživatelského kódu probíhá zpracování konkrétní Webhooku.
+* *Obslužné rutiny* jsou obvykle v případě, kdy uživatelský kód spouští zpracování konkrétního Webhooku.
 
-V následujících uzlech jsou tyto koncepty popsané v další podrobnosti.
+V následujících uzlech jsou tyto koncepty popsány v části Další podrobnosti.

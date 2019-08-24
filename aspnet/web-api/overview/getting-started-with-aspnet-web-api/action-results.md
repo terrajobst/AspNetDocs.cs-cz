@@ -1,48 +1,46 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/action-results
-title: Výsledky akcí ve webovém rozhraní API 2 – ASP.NET 4.x
+title: Výsledek akce ve webovém rozhraní API 2 – ASP.NET 4. x
 author: MikeWasson
-description: Popisuje, jak rozhraní ASP.NET Web API převede návratovou hodnotu z akce kontroleru do zpráva s odpovědí HTTP v technologii ASP.NET 4.x.
+description: Popisuje způsob, jakým webové rozhraní API ASP.NET převádí návratovou hodnotu z akce kontroleru na zprávu odpovědi HTTP v ASP.NET 4. x.
 ms.author: riande
 ms.date: 02/03/2014
 ms.custom: seoapril2019
 ms.assetid: 2fc4797c-38ef-4cc7-926c-ca431c4739e8
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/action-results
 msc.type: authoredcontent
-ms.openlocfilehash: 87f71938a5c5f38d3a456ba9339540f67e236e1a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 1eaaf8e87168096683212fa66d3ddf415ad6b22b
+ms.sourcegitcommit: b95316530fa51087d6c400ff91814fe37e73f7e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400890"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70000720"
 ---
 # <a name="action-results-in-web-api-2"></a>Výsledky akcí ve webovém rozhraní API 2
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+Toto téma popisuje, jak webové rozhraní API ASP.NET převádí návratovou hodnotu z akce kontroleru na zprávu HTTP Response.
 
-Toto téma popisuje, jak rozhraní ASP.NET Web API převede návratovou hodnotu z akce kontroleru do zprávy s odpovědí HTTP.
-
-Akce kontroleru webového rozhraní API může vrátit kterýkoli z následujících:
+Akce kontroleru webového rozhraní API může vracet následující:
 
 1. void
 2. **HttpResponseMessage**
 3. **IHttpActionResult**
-4. Jiný typ
+4. Nějaký jiný typ
 
-Podle toho, která z nich je vrácena, webové rozhraní API k vytvoření odpovědi HTTP používá jiný mechanismus.
+V závislosti na tom, které z těchto funkcí se vrátí, webové rozhraní API použije jiný mechanismus k vytvoření odpovědi HTTP.
 
-| Návratový typ | Způsob, jak vytvořit webové rozhraní API odpovědi |
+| Návratový typ | Způsob, jakým webové rozhraní API vytvoří odpověď |
 | --- | --- |
-| void | Vrátí prázdný 204 (žádný obsah) |
-| **HttpResponseMessage** | Převeďte přímo na zprávy s odpovědí HTTP. |
-| **IHttpActionResult** | Volání **ExecuteAsync** k vytvoření **objekt HttpResponseMessage**, převeďte do zprávy s odpovědí HTTP. |
-| Jiný typ | Zápis serializovaná návratovou hodnotu do datové části odpovědi; Vrátí 200 (OK). |
+| void | Vrátit prázdné číslo 204 (žádný obsah) |
+| **HttpResponseMessage** | Převeďte přímo na zprávu odpovědi HTTP. |
+| **IHttpActionResult** | Voláním **metody ExecuteAsync** vytvořte **HttpResponseMessage**a pak proveďte převod na zprávu odpovědi HTTP. |
+| Jiný typ | Zapsat serializovanou návratovou hodnotu do těla odpovědi; Vrátí 200 (OK). |
 
 Zbývající část tohoto tématu popisuje jednotlivé možnosti podrobněji.
 
 ## <a name="void"></a>void
 
-Pokud je návratový typ `void`, webové rozhraní API jednoduše vrátí prázdnou odpověď HTTP se stavovým kódem 204 (žádný obsah).
+Pokud je `void`návratový typ, webové rozhraní API jednoduše vrátí prázdnou odpověď HTTP se stavovým kódem 204 (žádný obsah).
 
 Příklad kontroleru:
 
@@ -54,37 +52,37 @@ Odpověď HTTP:
 
 ## <a name="httpresponsemessage"></a>HttpResponseMessage
 
-Pokud tato akce vrátí [objekt HttpResponseMessage](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.aspx), webového rozhraní API převede návratovou hodnotu přímo do zprávu odpovědi HTTP pomocí vlastnosti **objekt HttpResponseMessage** objekt pro naplnění odpověď.
+Pokud akce vrátí [HttpResponseMessage](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.aspx), webové rozhraní API převede návratovou hodnotu přímo do zprávy odpovědi HTTP pomocí vlastností objektu **HttpResponseMessage** k naplnění odpovědi.
 
-Tato možnost poskytuje velké množství kontrolu nad zprávy s odpovědí. Například následující akce kontroleru nastaví hlavičku Cache-Control.
+Tato možnost vám poskytne velkou kontrolu nad zprávou odpovědi. Například následující akce kontroleru nastaví hlavičku Cache-Control.
 
 [!code-csharp[Main](action-results/samples/sample3.cs)]
 
-Odpověď:
+Základě
 
 [!code-console[Main](action-results/samples/sample4.cmd?highlight=2)]
 
-Pokud předáte do modelu domény **CreateResponse** metodu, pomocí webového rozhraní API [formátovací modul médií](../formats-and-model-binding/media-formatters.md) zapsat serializovaný model do datové části odpovědi.
+Pokud předáte doménový model metodě **CreateResponse** , webové rozhraní API pomocí formátovacího modulu [médií](../formats-and-model-binding/media-formatters.md) zapíše serializovaný model do těla odpovědi.
 
 [!code-csharp[Main](action-results/samples/sample5.cs)]
 
-Webové rozhraní API používá hlavičky Accept v požadavku k výběru formátovacího modulu. Další informace najdete v tématu [vyjednávání obsahu](../formats-and-model-binding/content-negotiation.md).
+Webové rozhraní API používá k výběru formátovacího modulu hlavičku Accept v žádosti. Další informace najdete v tématu [vyjednávání obsahu](../formats-and-model-binding/content-negotiation.md).
 
 ## <a name="ihttpactionresult"></a>IHttpActionResult
 
-**IHttpActionResult** rozhraní byl zaveden ve webovém rozhraní API 2. V podstatě definuje **objekt HttpResponseMessage** objekt pro vytváření. Tady jsou některé výhody použití **IHttpActionResult** rozhraní:
+Rozhraní **IHttpActionResult** bylo zavedeno ve webovém rozhraní API 2. V podstatě definuje objekt pro vytváření **HttpResponseMessage** . Zde jsou některé výhody použití rozhraní **IHttpActionResult** :
 
-- Zjednodušuje [testování částí](../testing-and-debugging/unit-testing-controllers-in-web-api.md) řadičů.
-- Přesune běžné logiku pro vytváření odpovědí HTTP na samostatné třídy.
-- Díky záměr jasnější, akce kontroleru skrytím nízké úrovně podrobnosti o vytváření odpovědi.
+- Zjednodušuje [testování částí](../testing-and-debugging/unit-testing-controllers-in-web-api.md) vašich řadičů.
+- Přesune společnou logiku pro vytváření odpovědí HTTP na samostatné třídy.
+- Provede záměr akce kontroleru tím, že skryje podrobnosti nízké úrovně konstrukce odpovědi.
 
-**IHttpActionResult** obsahuje jedinou metodu **ExecuteAsync**, který asynchronně vytvoří **objekt HttpResponseMessage** instance.
+**IHttpActionResult** obsahuje jedinou metodu **metody ExecuteAsync**, která asynchronně vytvoří instanci **HttpResponseMessage** .
 
 [!code-csharp[Main](action-results/samples/sample6.cs)]
 
-Akce kontroleru vrátí-li **IHttpActionResult**, volá webové rozhraní API **ExecuteAsync** metodu pro vytvoření **objekt HttpResponseMessage**. Potom převede **objekt HttpResponseMessage** do zprávy s odpovědí HTTP.
+Pokud akce kontroleru vrátí **IHttpActionResult**, webové rozhraní API zavolá metodu **metody ExecuteAsync** , která vytvoří **HttpResponseMessage**. Pak převede **HttpResponseMessage** na zprávu odpovědi HTTP.
 
-Tady je jednoduchá implementace **IHttpActionResult** , který vytváří ve formátu prostého textu odpovědi:
+Tady je jednoduchá implementace **IHttpActionResult** , která vytvoří odpověď v podobě prostého textu:
 
 [!code-csharp[Main](action-results/samples/sample7.cs)]
 
@@ -92,30 +90,30 @@ Příklad akce kontroleru:
 
 [!code-csharp[Main](action-results/samples/sample8.cs)]
 
-Odpověď:
+Základě
 
 [!code-console[Main](action-results/samples/sample9.cmd)]
 
-Častěji, použije **IHttpActionResult** implementace, které jsou definovány v **[System.Web.Http.Results](https://msdn.microsoft.com/library/system.web.http.results.aspx)** oboru názvů. **Objektu ApiController** třída definuje pomocné metody, které vracejí výsledky těchto předdefinovaných akcí.
+Častěji používáte implementace **IHttpActionResult** definované v oboru názvů **[System. Web. http. Results](https://msdn.microsoft.com/library/system.web.http.results.aspx)** . Třída **ApiController** definuje pomocné metody, které vracejí tyto předdefinované výsledky akcí.
 
-V následujícím příkladu, pokud požadavku se neshoduje s ID existujícího produktu, zavolá kontroleru [ApiController.NotFound](https://msdn.microsoft.com/library/system.web.http.apicontroller.notfound.aspx) pro vytvoření odpovědi 404 (Nenalezeno). Jinak kontroler volá [ApiController.OK](https://msdn.microsoft.com/library/dn314591.aspx), vytváří se odpověď 200 (OK), který obsahuje produktu.
+Pokud se v následujícím příkladu požadavek neshoduje s existujícím ID produktu, kontroler zavolá [ApiController. NotFound](https://msdn.microsoft.com/library/system.web.http.apicontroller.notfound.aspx) , aby vytvořil odpověď 404 (Nenalezeno). V opačném případě kontroler zavolá [ApiController. ok](https://msdn.microsoft.com/library/dn314591.aspx), čímž se vytvoří odpověď 200 (ok), která obsahuje daný produkt.
 
 [!code-csharp[Main](action-results/samples/sample10.cs)]
 
 ## <a name="other-return-types"></a>Jiné návratové typy
 
-Pro všechny ostatní návratové typy webového rozhraní API používá [formátovací modul médií](../formats-and-model-binding/media-formatters.md) k serializaci návratovou hodnotu. Webové rozhraní API zapíše serializované hodnoty do datové části odpovědi. Stavový kód odpovědi je 200 (OK).
+Pro všechny ostatní návratové typy používá webové rozhraní API [formátovací modul médií](../formats-and-model-binding/media-formatters.md) k serializaci návratové hodnoty. Webové rozhraní API zapisuje serializovanou hodnotu do těla odpovědi. Stavový kód odpovědi je 200 (OK).
 
 [!code-csharp[Main](action-results/samples/sample11.cs)]
 
-Nevýhody tohoto přístupu je, že se nedá vrátit přímo kód chyby, jako je například 404. Však může vrátit **HttpResponseException** pro kódy chyb. Další informace najdete v tématu [zpracování výjimek v rozhraní ASP.NET Web API](../error-handling/exception-handling.md).
+Nevýhodou tohoto přístupu je, že nemůžete přímo vracet kód chyby, například 404. Můžete však vyvolat **HttpResponseException** pro kódy chyb. Další informace najdete v tématu [zpracování výjimek ve webovém rozhraní API ASP.NET](../error-handling/exception-handling.md).
 
-Webové rozhraní API používá hlavičky Accept v požadavku k výběru formátovacího modulu. Další informace najdete v tématu [vyjednávání obsahu](../formats-and-model-binding/content-negotiation.md).
+Webové rozhraní API používá k výběru formátovacího modulu hlavičku Accept v žádosti. Další informace najdete v tématu [vyjednávání obsahu](../formats-and-model-binding/content-negotiation.md).
 
 Příklad žádosti
 
 [!code-console[Main](action-results/samples/sample12.cmd)]
 
-Příklad odpovědi:
+Příklad odpovědi
 
 [!code-console[Main](action-results/samples/sample13.cmd)]
