@@ -10,10 +10,10 @@ ms.assetid: f35a9b0c-49ef-4cde-b06d-19d1543feb0b
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
 ms.openlocfilehash: d7cc83a5b78a60f575f5c3065079679189296a0c
-ms.sourcegitcommit: f774732a3960fca079438a88a5472c37cf7be08a
+ms.sourcegitcommit: fe5c7512383a9b0a05d321ff10d3cca1611556f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "58425272"
 ---
 # <a name="tutorial-learn-about-advanced-ef-scenarios-for-an-mvc-5-web-app"></a>Kurz: Přečtěte si o rozšířených scénářích EF pro webovou aplikaci MVC 5.
@@ -194,7 +194,7 @@ Ve většině případů nemusíte znát použití proxy serverů, ale existují
 
 - V některých případech můžete chtít zabránit Entity Framework v vytváření instancí proxy serveru. Například při serializaci entit, které obecně požadujete třídy POCO, nikoli proxy třídy. Jedním ze způsobů, jak zabránit problémům s serializací, je serializace objektů přenosu dat (DTO) místo objektů entit, jak je znázorněno v kurzu [použití webového rozhraní API s Entity Framework](../../../../web-api/overview/data/using-web-api-with-entity-framework/part-1.md) . Další možností je [zakázat vytvoření proxy serveru](https://msdn.microsoft.com/data/jj592886.aspx).
 - Při vytváření instance třídy entity pomocí `new` operátoru nezískáte instanci proxy. To znamená, že nezískáte funkce, jako je opožděné načítání a automatické sledování změn. Obvykle je to v pořádku. obecně nepotřebujete opožděné načítání, protože vytváříte novou entitu, která není v databázi, a obecně nepotřebujete sledování změn, pokud entitu výslovně označíte jako `Added`. Pokud však potřebujete opožděné načítání a potřebujete sledování změn, můžete vytvořit nové instance entit s proxy objekty pomocí metody `DbSet` [Create](https://msdn.microsoft.com/library/gg679504.aspx) třídy.
-- Je možné, že budete chtít z typu proxy získat skutečný typ entity. Pomocí metody `ObjectContext` GetObjectType [](https://msdn.microsoft.com/library/system.data.objects.objectcontext.getobjecttype.aspx) třídy lze získat skutečný typ entity instance typu proxy serveru.
+- Je možné, že budete chtít z typu proxy získat skutečný typ entity. Pomocí metody `ObjectContext` [GetObjectType](https://msdn.microsoft.com/library/system.data.objects.objectcontext.getobjecttype.aspx) třídy lze získat skutečný typ entity instance typu proxy serveru.
 
 Další informace najdete v tématu [práce se servery proxy](https://msdn.microsoft.com/data/JJ592886.aspx) na webu MSDN.
 
@@ -226,7 +226,7 @@ Když zavoláte `SaveChanges` metodu, ve výchozím nastavení Entity Framework 
 
 ## <a name="entity-framework-source-code"></a>Zdrojový kód Entity Framework
 
-Zdrojový kód pro Entity Framework 6 je k dispozici [](https://github.com/aspnet/EntityFramework6)na GitHubu. Můžete zakódovat chyby a můžete přispět vlastní vylepšení zdrojového kódu EF.
+Zdrojový kód pro Entity Framework 6 je k dispozici na [GitHubu](https://github.com/aspnet/EntityFramework6). Můžete zakódovat chyby a můžete přispět vlastní vylepšení zdrojového kódu EF.
 
 I když je zdrojový kód otevřený, Entity Framework je plně podporovaný jako produkt společnosti Microsoft. Tým Microsoft Entity Framework udržuje kontrolu nad tím, které příspěvky jsou přijaty, a testuje všechny změny kódu, aby se zajistila kvalita jednotlivých verzí.
 
@@ -294,7 +294,7 @@ Ověřte připojovací řetězec. Pokud jste databázi odstranili ručně, změ�
 
 ## <a name="additional-resources"></a>Další zdroje
 
- Další informace o tom, jak pracovat s daty pomocí Entity Framework, najdete na [stránce dokumentace EF na webech MSDN](https://msdn.microsoft.com/data/ee712907) a ASP.NET, které jsou doporučeny pro [přístup k datům](../../../../whitepapers/aspnet-data-access-content-map.md).
+ Další informace o tom, jak pracovat s daty pomocí Entity Framework, najdete na [stránce dokumentace EF na webech MSDN](https://msdn.microsoft.com/data/ee712907) a ASP.NET, které jsou [doporučeny pro přístup k datům](../../../../whitepapers/aspnet-data-access-content-map.md).
 
 Další informace o tom, jak nasadit webovou aplikaci po sestavení, najdete v tématu [ASP.NET Web Deployment – doporučené prostředky](../../../../whitepapers/aspnet-web-deployment-content-map.md) v knihovně MSDN.
 
