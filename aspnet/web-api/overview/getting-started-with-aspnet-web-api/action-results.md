@@ -9,14 +9,16 @@ ms.custom: seoapril2019
 ms.assetid: 2fc4797c-38ef-4cc7-926c-ca431c4739e8
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/action-results
 msc.type: authoredcontent
-ms.openlocfilehash: 1eaaf8e87168096683212fa66d3ddf415ad6b22b
-ms.sourcegitcommit: b95316530fa51087d6c400ff91814fe37e73f7e8
+ms.openlocfilehash: f00ac0db453053e53d6d6942dd1557b409f4167b
+ms.sourcegitcommit: 4b324a11131e38f920126066b94ff478aa9927f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70000720"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70985836"
 ---
 # <a name="action-results-in-web-api-2"></a>Výsledky akcí ve webovém rozhraní API 2
+
+[!INCLUDE[](~/includes/coreWebAPI.md)]
 
 Toto téma popisuje, jak webové rozhraní API ASP.NET převádí návratovou hodnotu z akce kontroleru na zprávu HTTP Response.
 
@@ -62,7 +64,7 @@ Základě
 
 [!code-console[Main](action-results/samples/sample4.cmd?highlight=2)]
 
-Pokud předáte doménový model metodě **CreateResponse** , webové rozhraní API pomocí formátovacího modulu [médií](../formats-and-model-binding/media-formatters.md) zapíše serializovaný model do těla odpovědi.
+Pokud předáte doménový model metodě **CreateResponse** , webové rozhraní API pomocí [formátovacího modulu médií](../formats-and-model-binding/media-formatters.md) zapíše serializovaný model do těla odpovědi.
 
 [!code-csharp[Main](action-results/samples/sample5.cs)]
 
