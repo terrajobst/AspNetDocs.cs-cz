@@ -1,7 +1,7 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
-title: 'Kurz: Čtení souvisejících dat s EF v aplikaci ASP.NET MVC'
-description: V tomto kurzu budete čtení a zobrazení souvisejících dat – to znamená, že data, která načte Entity Framework do navigační vlastnosti.
+title: 'Kurz: čtení souvisejících dat pomocí EF v aplikaci ASP.NET MVC'
+description: V tomto kurzu si přečtete a zobrazíte související data – to znamená data, která Entity Framework načíst do vlastností navigace.
 author: tdykstra
 ms.author: riande
 ms.date: 01/22/2019
@@ -9,174 +9,174 @@ ms.topic: tutorial
 ms.assetid: 18cdd896-8ed9-4547-b143-114711e3eafb
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 61bd7cd9be2fbf83f72382c8e94505222295bdbb
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: d804c8dd45ad131949260c85d9d9c6683bfe9646
+ms.sourcegitcommit: 84b1681d4e6253e30468c8df8a09fe03beea9309
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070066"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73445658"
 ---
-[Stáhnout dokončený projekt](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+# <a name="tutorial-read-related-data-with-ef-in-an-aspnet-mvc-app"></a>Kurz: čtení souvisejících dat pomocí EF v aplikaci ASP.NET MVC
 
-> Ukázková webová aplikace Contoso University ukazuje, jak vytvářet aplikace ASP.NET MVC 5 pomocí Entity Framework 6 kód první a Visual Studio. Informace o této sérii kurzů, naleznete v tématu [z prvního kurzu této série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+V předchozím kurzu jste dokončili model školních dat. V tomto kurzu si přečtete a zobrazíte související data – to znamená data, která Entity Framework načíst do vlastností navigace.
 
-# <a name="tutorial-read-related-data-with-ef-in-an-aspnet-mvc-app"></a>Kurz: Čtení souvisejících dat s EF v aplikaci ASP.NET MVC
-
-V předchozím kurzu jste dokončili školní datového modelu. V tomto kurzu budete čtení a zobrazení souvisejících dat – to znamená, že data, která načte Entity Framework do navigační vlastnosti.
-
-Na následujících obrázcích stránky, kterou budete pracovat.
+Následující ilustrace znázorňují stránky, se kterými budete pracovat.
 
 ![](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
 
 ![Instructors_index_page_with_instructor_and_course_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
 
-V tomto kurzu se naučíte:
+[Stáhnout dokončený projekt](https://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+
+> Ukázková webová aplikace společnosti Contoso University ukazuje, jak vytvářet aplikace ASP.NET MVC 5 pomocí Code First Entity Framework 6 a sady Visual Studio. Informace o řadě kurzů najdete v [prvním kurzu v řadě](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+
+V tomto kurzu:
 
 > [!div class="checklist"]
-> * Zjistěte, jak načíst související data
-> * Vytvoření stránky kurzy
-> * Vytvoření stránky Instruktoři
+> * Naučte se načítat související data
+> * Vytvoření stránky kurzů
+> * Vytvoření stránky instruktory
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Vytvoření složitějšího datového modelu](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)
+* [Vytvoření komplexnějšího datového modelu](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)
 
-## <a name="learn-how-to-load-related-data"></a>Zjistěte, jak načíst související data
+## <a name="learn-how-to-load-related-data"></a>Naučte se načítat související data
 
-Existuje několik způsobů, Entity Framework mohou načíst související data do navigační vlastnosti entity:
+Existuje několik způsobů, jak může Entity Framework načíst související data do navigačních vlastností entity:
 
-- *Opožděné načtení*. Pokud entita je nejdřív přečíst, související data nebude načten. Ale při prvním pokusu o přístup k vlastnosti navigace data požadovaná pro tuto navigační vlastnost je automaticky načte. Výsledkem je více dotazy odeslané do databáze – jeden pro samotné entity a jeden pokaždé, když související data entity musí být načten. `DbContext` Třídy ve výchozím nastavení povoluje opožděné načtení.
+- *Opožděné načítání*. Při prvním načtení entity se nenačte související data. Při prvním pokusu o přístup k navigační vlastnosti je však automaticky načtena data potřebná pro tuto vlastnost navigace. Výsledkem je, že se do databáze pošle víc dotazů – jednu pro samotnou entitu a druhou, a to pokaždé, když se musí načíst související data pro danou entitu. Třída `DbContext` ve výchozím nastavení umožňuje opožděné načítání.
 
     ![Lazy_loading_example](https://asp.net/media/2577850/Windows-Live-Writer_Reading-Re.NET-MVC-Application-5-of-10h1_ADC3_Lazy_loading_example_2c44eabb-5fd3-485a-837d-8e3d053f2c0c.png)
-- *Předběžné načítání*. Při čtení entity související data načíst společně. Obvykle v důsledku jednoho spojení dotaz, který zkopíruje všechna data, který je nezbytný. Předběžné načítání určíte pomocí `Include` metody.
+- *Eager načítání*. Když se entita přečte, načtou se spolu s ní související data. To obvykle vede k tomu, že se vytvoří dotaz s jedním spojením, který načte všechna potřebná data. Eager načítání lze zadat pomocí metody `Include`.
 
     ![Eager_loading_example](https://asp.net/media/2577856/Windows-Live-Writer_Reading-Re.NET-MVC-Application-5-of-10h1_ADC3_Eager_loading_example_33f907ff-f0b0-4057-8e75-05a8cacac807.png)
-- *Explicitní načtení*. To se podobá opožděné načtení, s tím rozdílem, že explicitně načíst související data v kódu. je tomu tak není automaticky při přístupu k vlastnosti navigace. Ruční načtení souvisejících dat tím, že získáme položka správce stavu objektu pro entitu a volání [Collection.Load](https://msdn.microsoft.com/library/gg696220(v=vs.103).aspx) metodu pro kolekce nebo [Reference.Load](https://msdn.microsoft.com/library/gg679166(v=vs.103).aspx) metodu pro vlastnosti, které hostují jedna entita. (V následujícím příkladu, pokud chcete načíst správce navigační vlastnost, by byly nahrazeny `Collection(x => x.Courses)` s `Reference(x => x.Administrator)`.) Obvykle můžete využít explicitní načtení jenom v případě, že aktivovali jsme opožděné načtení vypnout.
+- *Explicitní načítání*. To se podobá opožděnému načítání, s tím rozdílem, že explicitně načtete související data v kódu; k tomu nedochází automaticky při přístupu k navigační vlastnosti. Související data načtoute ručně tak, že získáte položku Správce stavu objektu pro entitu a zavoláte metodu [Collection. Load](https://msdn.microsoft.com/library/gg696220(v=vs.103).aspx) pro kolekce nebo metodu [reference. Load](https://msdn.microsoft.com/library/gg679166(v=vs.103).aspx) pro vlastnosti, které uchovávají jednu entitu. (Pokud jste chtěli načíst navigační vlastnost správce, měli byste v následujícím příkladu nahradit `Collection(x => x.Courses)` `Reference(x => x.Administrator)`.) Obvykle byste měli explicitní načítání používat pouze v případě, že jste zapnuli opožděné načítání.
 
     ![Explicit_loading_example](https://asp.net/media/2577862/Windows-Live-Writer_Reading-Re.NET-MVC-Application-5-of-10h1_ADC3_Explicit_loading_example_79d8c368-6d82-426f-be9a-2b443644ab15.png)
 
-Protože jejich není okamžitě hodnoty vlastností, opožděné načtení a explicitní načtení se obě označují jako *odložené načítání*.
+Vzhledem k tomu, že ihned nezískají hodnoty vlastností, opožděné načítání a explicitní načítání jsou také označovány jako *odložené načítání*.
 
 ### <a name="performance-considerations"></a>Důležité informace o výkonu
 
-Pokud víte, že budete potřebovat pro každou entitu načíst související data, nemůžou dočkat, až načítání často nabízí nejlepší výkon, protože jednoho dotazu odeslaného do databáze je obvykle mnohem efektivnější než samostatné dotazy pro každou entitu načíst. Například ve výše uvedených příkladech předpokládejme, že každé oddělení má deset související kurzy. Předběžné načítání příklad způsobí pouze jednou (spojení) dotazu a jeden odezvy k databázi. Opožděné načtení a příklady explicitní načtení obě způsobí jedenáct dotazy a jedenáct zpátečních cest k databázi. Další zpátečních cest k databázi jsou zvlášť ztráty výkonu, když má vysokou latenci.
+Pokud víte, že pro každou načtenou entitu potřebujete související data, Eager načítání často nabízí nejlepší výkon, protože jediný dotaz odeslaný do databáze je obvykle efektivnější než samostatné dotazy pro každou načtenou entitu. Například ve výše uvedených příkladech předpokládáme, že každé oddělení má deset souvisejících kurzů. Příkladem Eager načtení může být pouze jeden (JOIN) dotaz a jedna zpáteční cesta k databázi. Příklady opožděného načítání a explicitního načítání budou mít za následek jedenácté dotazy a jedenácté odezvy na databázi. Další výměna cest k databázi je obzvláště neškodná na výkon, pokud je latence vysoká.
 
-Na druhé straně v některých případech je efektivnější opožděné načtení. Předběžné načítání může vést k velmi složité spojení být vytvořen, kterou SQL Server nemůže zpracovat efektivně. Nebo pokud potřebujete přístup k entity navigační vlastnosti pouze pro dílčí sadu entit se zpracování, opožděné načtení může být lepší provést, protože nemůžou dočkat, až načítání by byl načten více dat, než potřebujete. Pokud je nejdůležitější výkon, je nejvhodnější pro testování výkonu oba způsoby, aby bylo možné správně se rozhodnout.
+Na druhé straně je v některých scénářích opožděné načítání efektivnější. Načtení Eager může způsobit, že se vygeneruje velmi složité spojení, které SQL Server nemůže efektivně zpracovat. Nebo pokud potřebujete přístup k vlastnostem navigace entity jenom pro podmnožinu sady entit, které zpracováváte, může být opožděné načítání lepší, protože Eager načítání by načetlo víc dat, než kolik potřebujete. Pokud je výkon kritický, je nejlepší testovat výkon oběma způsoby, abyste mohli nejlépe vybrat.
 
-Opožděné načtení může zastínit kód, který způsobuje problémy s výkonem. Kód, který nemá určenou nemůžou dočkat, až nebo explicitní načtení, ale zpracovává velký počet entit a používá několik vlastností navigace v každé iteraci například může být velmi neefektivní (z důvodu počet zpátečních cest k databázi). Aplikace, který provádí i při vývoji pomocí SQL serveru na místní může mít problémy s výkonem při přesunu do Azure SQL Database z důvodu vyšší latence a opožděné načtení. Profiluje dotazy databáze s realistické zkušební zatížení vám pomůže určit, pokud opožděné načtení je vhodné. Další informace najdete v části [uvedení Entity Framework strategií: Načítání souvisejících dat](https://msdn.microsoft.com/magazine/hh205756.aspx) a [chcete snížit latenci sítě pro SQL Azure pomocí Entity Frameworku](https://msdn.microsoft.com/magazine/gg309181.aspx).
+Opožděné načítání může maskovat kód, který způsobuje problémy s výkonem. Například kód, který nespecifikuje Eager nebo explicitní načítání, ale zpracovává velký objem entit a používá několik navigačních vlastností v každé iteraci, může být velmi neefektivní (kvůli velkému počtu zpátečních cest k databázi). Aplikace, která při vývoji používá místní SQL Server, může mít problémy s výkonem při přesunu na Azure SQL Database z důvodu zvýšené latence a opožděného načítání. Profilování dotazů databáze pomocí realistického zatížení testu vám pomůže určit, jestli je vhodné opožděné načítání. Další informace najdete v tématu [strategie Demystifying Entity Framework: načtení souvisejících dat](https://msdn.microsoft.com/magazine/hh205756.aspx) a [použití Entity Framework ke snížení latence sítě na SQL Azure](https://msdn.microsoft.com/magazine/gg309181.aspx).
 
-### <a name="disable-lazy-loading-before-serialization"></a>Zakázat před serializací opožděné načtení
+### <a name="disable-lazy-loading-before-serialization"></a>Zakázat opožděné načítání před serializací
 
-Necháte-li opožděné načtení povoleno během serializace, můžete skončit dotazování podstatně víc dat, než jste zamýšleli. Serializace obecně funguje tak, že přístup k každou vlastnost v instanci typu. Přístup k vlastnostem aktivuje opožděné načtení a entit opožděné načíst serializují. Procesu serializace následně přistupuje k opožděné načtení entity potenciálně nezpůsobil další opožděné načtení a serializace se jednotlivé vlastnosti. Pokud chcete zabránit této run-away řetězové reakce, zapněte opožděné načtení vypnout před serializovat entity.
+Pokud necháte při serializaci povoleno opožděné načítání, můžete ukončit dotazování podstatně více dat, než jste zamýšleli. Serializace obecně funguje při přístupu k jednotlivým vlastnostem instance typu. Přístup k vlastnostem aktivuje opožděné načítání a tyto opožděné načtené entity jsou serializovány. Proces serializace pak přistupuje ke všem vlastnostem opožděně načtených entit, což potenciálně způsobuje ještě více opožděného načítání a serializaci. Chcete-li zabránit této reakci řetězu spuštění, před serializací entity zapněte opožděné načtení.
 
-Serializace může také složité třídy proxy, které používá Entity Framework, jak je vysvětleno v [kurz pro pokročilé scénáře](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#proxies).
+Serializace může být také složitá třídami proxy, které používá Entity Framework, jak je vysvětleno v [kurzu pokročilé scénáře](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#proxies).
 
-Jedním ze způsobů, aby nedocházelo k problémům serializace je určená k serializaci objektů pro přenos dat (DTO) namísto objekty entity, jak je znázorněno [pomocí webového rozhraní API s Entity Framework](../../../../web-api/overview/data/using-web-api-with-entity-framework/part-5.md) kurzu.
+Jedním ze způsobů, jak zabránit problémům s serializací, je serializace objektů přenosu dat (DTO) místo objektů entit, jak je znázorněno v kurzu [použití webového rozhraní API s Entity Framework](../../../../web-api/overview/data/using-web-api-with-entity-framework/part-5.md) .
 
-Pokud nepoužíváte DTO, můžete zakázat opožděné načtení a nedocházelo k problémům s proxy službou [zakázání vytváření proxy](https://msdn.microsoft.com/data/jj592886.aspx).
+Pokud DTO nepoužíváte, můžete zakázat opožděné načítání a vyhnout se problémům s proxy tím, že [zakážete vytváření proxy serveru](https://msdn.microsoft.com/data/jj592886.aspx).
 
-Tady jsou některé další [způsoby, jak zakázat opožděné načtení](https://msdn.microsoft.com/data/jj574232):
+Zde jsou některé další [způsoby, jak zakázat opožděné načítání](https://msdn.microsoft.com/data/jj574232):
 
-- Pro konkrétní navigační vlastnosti vynechat, nechte `virtual` – klíčové slovo deklarovat vlastnost.
-- Pro všechny vlastnosti navigace, nastavte `LazyLoadingEnabled` k `false`, vložte následující kód v konstruktoru třídy kontextu:
+- U specifických vlastností navigace vynechejte klíčové slovo `virtual` při deklaraci vlastnosti.
+- Pro všechny navigační vlastnosti nastavte `LazyLoadingEnabled` na `false`a vložte následující kód do konstruktoru třídy Context:
 
     [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
-## <a name="create-a-courses-page"></a>Vytvoření stránky kurzy
+## <a name="create-a-courses-page"></a>Vytvoření stránky kurzů
 
-`Course` Entita obsahuje vlastnost navigace, která obsahuje `Department` entity, která je přiřazena celé oddělení. Chcete-li zobrazit název přiřazený oddělení v seznamu kurzů, je potřeba získat `Name` vlastnost z `Department` entity, která je v `Course.Department` navigační vlastnost.
+Entita `Course` obsahuje navigační vlastnost, která obsahuje entitu `Department` oddělení, ke kterému je kurz přiřazen. Pokud chcete v seznamu kurzů zobrazit název přiřazeného oddělení, musíte získat vlastnost `Name` z `Department` entity, která je ve vlastnosti navigace v `Course.Department`.
 
-Vytvoření řadiče s názvem `CourseController` (ne CoursesController) pro `Course` typ entity, pomocí stejných možností pro **kontroler MVC 5 se zobrazeními, používá nástroj Entity Framework** generátor, který jste provedli dříve pro `Student` kontroleru:
+Vytvořte kontroler s názvem `CourseController` (ne CoursesController) pro typ entity `Course` pomocí stejných možností pro **kontroler MVC 5 se zobrazeními, a to pomocí entity Frameworkho** lešení, které jste předtím použili pro řadič `Student`:
 
-| Nastavení | Hodnota |
+| Nastavením | Hodnota |
 | ------- | ----- |
-| Třída modelů | Vyberte **kurzu (ContosoUniversity.Models)**. |
-| Třída kontextu dat | Vyberte **SchoolContext (ContosoUniversity.DAL)**. |
-| Název řadiče | Zadejte *CourseController*. Znovu ne *CoursesController* s *s*. Pokud jste vybrali **kurzu (ContosoUniversity.Models)**, **názvu Kontroleru** hodnota se vyplní automaticky. Budete muset změnit hodnotu. |
+| Třída modelu | Vyberte **kurz (ContosoUniversity. Models)** . |
+| Třída kontextu dat | Vyberte **SchoolContext (ContosoUniversity. dal)** . |
+| Název kontroleru | Zadejte *CourseController*. Znovu *CoursesController* *s s.* Po výběru **kurzu (ContosoUniversity. Models)** se hodnota **název kontroleru** vyplní automaticky. Je nutné změnit hodnotu. |
 
-Ponechte výchozí hodnoty a přidat kontroler.
+Ponechte ostatní výchozí hodnoty a přidejte kontroler.
 
-Otevřít *Controllers\CourseController.cs* a podívejte se na `Index` metody:
+Otevřete *Controllers\CourseController.cs* a podívejte se na metodu `Index`:
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.cs)]
 
-Automatické generování uživatelského rozhraní má zadanou předběžné načítání pro `Department` navigační vlastnost s použitím `Include` metody.
+Automatické generování uživatelského rozhraní určilo Eager načítání pro navigační vlastnost `Department` pomocí metody `Include`.
 
-Otevřít *Views\Course\Index.cshtml* a nahraďte kód šablony následujícím kódem. Změny jsou zvýrazněny:
+Otevřete *Views\Course\Index.cshtml* a nahraďte kód šablony následujícím kódem. Změny jsou zvýrazněny:
 
 [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample3.cshtml?highlight=4,7,14-16,23-25,31-33,40-42)]
 
-Automaticky generovaný kód, které jste udělali následující změny:
+Provedli jste následující změny ve vygenerovaném kódu:
 
-- Změnit záhlaví z **Index** k **kurzy**.
-- Přidá **číslo** sloupec, který ukazuje `CourseID` hodnotu vlastnosti. Ve výchozím nastavení nejsou automaticky generovaný primární klíče, protože jsou obvykle nemá význam pro koncové uživatele. Ale v tomto případě má smysl primární klíč a chcete zobrazit.
-- Přesunout **oddělení** sloupec na pravou stranu a změnit jeho záhlaví. Scaffolder správně zvolili zobrazíte `Name` vlastnost z `Department` entity, ale tady na stránce kurzu by měl být na záhlaví sloupce **oddělení** spíše než **název**.
+- Změnili jste záhlaví z **indexu** na **kurzy**.
+- Byl přidán sloupec **číslo** , který zobrazuje hodnotu vlastnosti `CourseID`. Ve výchozím nastavení nejsou primární klíče vygenerované, protože jsou normálně nevýznamné pro koncové uživatele. V tomto případě je však primární klíč smysluplný a chcete jej zobrazit.
+- Přesunuli jsme sloupec **oddělení** na pravou stranu a změnili jeho záhlaví. Modul pro generování uživatelského rozhraní se správně rozhodl zobrazit vlastnost `Name` z entity `Department`, ale na stránce kurzu by záhlaví sloupce mělo být **oddělením** , nikoli **názvem**.
 
-Všimněte si, že pro oddělení sloupců, automaticky generovaný kód zobrazí `Name` vlastnost `Department` entity, který je načten do `Department` navigační vlastnost:
+Všimněte si, že pro sloupec oddělení obsahuje generovaný kód vlastnost `Name` `Department` entity, která je načtena do vlastnosti `Department` navigace:
 
 [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample4.cshtml?highlight=2)]
 
-Spuštění stránky (vyberte **kurzy** kartu na domovské stránce Contoso University) zobrazíte seznam s názvy oddělení.
+Pokud chcete zobrazit seznam s názvy oddělení, spusťte stránku (vyberte kartu **kurzy** na domovské stránce společnosti Contoso University).
 
-## <a name="create-an-instructors-page"></a>Vytvoření stránky Instruktoři
+## <a name="create-an-instructors-page"></a>Vytvoření stránky instruktory
 
-V této části vytvoříte řadič a zobrazit `Instructor` entitu, aby bylo možné zobrazit stránku Instruktoři. Tato stránka načte a zobrazí související data následujícími způsoby:
+V této části vytvoříte kontrolér a zobrazení pro entitu `Instructor`, aby se zobrazila stránka instruktoři. Tato stránka čte a zobrazuje související data následujícími způsoby:
 
-- V seznamu instruktorů zobrazí související data z `OfficeAssignment` entity. `Instructor` a `OfficeAssignment` entity jsou ve vztahu k nule nebo jednom. Budete používat pro předběžné načítání `OfficeAssignment` entity. Jak jsme vysvětlili výše, předběžné načítání je obvykle mnohem efektivnější, když potřebujete související data pro všechny načtené řádky v tabulce primární. V takovém případě budete chtít zobrazit přiřazení office pro všechny zobrazené Instruktoři.
-- Když uživatel vybere instruktorem, související `Course` entity jsou zobrazeny. `Instructor` a `Course` entity jsou v relaci m: m. Budete používat pro předběžné načítání `Course` entit a jejich související `Department` entity. Opožděné načtení v takovém případě může být mnohem efektivnější, protože potřebujete jenom pro vybrané kurzů vedených kurzů. Však tento příklad ukazuje způsob použití předběžné načítání pro navigační vlastnosti v rámci entity, které představují samy o sobě v navigační vlastnosti.
-- Když uživatel vybere kurz, související data z `Enrollments` se zobrazí sada entit. `Course` a `Enrollment` entity jsou v vztah jeden mnoho. Přidejte explicitní načtení pro `Enrollment` entit a jejich související `Student` entity. (Explicitní načtení není nutný, protože je povolené opožděné načtení, ale to ukazuje, jak provést explicitní načtení.)
+- Seznam instruktorů zobrazuje související data z `OfficeAssignment` entitu. Entity `Instructor` a `OfficeAssignment` jsou v relaci jednosměrového a nulového vztahu. Pro `OfficeAssignment` entit budete používat načítání Eager. Jak bylo vysvětleno dříve, načítání Eager je obvykle efektivnější, pokud potřebujete související data pro všechny načtené řádky primární tabulky. V takovém případě chcete zobrazit přiřazení Office pro všechny zobrazené instruktory.
+- Když uživatel vybere instruktora, zobrazí se související entity `Course`. Entity `Instructor` a `Course` jsou v relaci m:n. Pro `Course` entit a jejich souvisejících `Department` entit budete používat Eager načítání. V tomto případě může být opožděné načítání efektivnější, protože potřebujete kurzy jenom pro vybraného instruktora. Tento příklad ukazuje, jak používat Eager načítání pro navigační vlastnosti v rámci entit, které jsou samy v navigační vlastnosti.
+- Když uživatel vybere kurz, zobrazí se související data ze sady entit `Enrollments`. Entity `Course` a `Enrollment` jsou v relaci 1: n. Přidáte explicitní načítání `Enrollment` entit a jejich souvisejících `Student` entit. (Explicitní načítání není nutné, protože je povolené opožděné načítání, ale ukazuje, jak provést explicitní načítání.)
 
-### <a name="create-a-view-model-for-the-instructor-index-view"></a>Vytvoření modelu zobrazení pro zobrazení indexu instruktorem
+### <a name="create-a-view-model-for-the-instructor-index-view"></a>Vytvoření modelu zobrazení pro zobrazení indexu instruktora
 
-Na stránce Instruktoři zobrazují třech různých tabulkách. Proto vytvoříte zobrazení modelu, který obsahuje tři vlastnosti každé obsahující data pro jednu z tabulek.
+Stránka instruktoři zobrazuje tři různé tabulky. Proto vytvoříte model zobrazení, který obsahuje tři vlastnosti, z nichž každý uchovává data pro jednu z tabulek.
 
-V *modely ViewModels* složku, vytvořte *InstructorIndexData.cs* a nahraďte existující kód následujícím kódem:
+Ve složce *ViewModels* vytvořte *InstructorIndexData.cs* a nahraďte existující kód následujícím kódem:
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample5.cs)]
 
-### <a name="create-the-instructor-controller-and-views"></a>Vytvoření Kontroleru instruktorem a zobrazení
+### <a name="create-the-instructor-controller-and-views"></a>Vytvoření kontroleru a zobrazení instruktora
 
-Vytvoření `InstructorController` (ne InstructorsController) kontroler s EF čtení/zápis akce:
+Vytvoření kontroleru `InstructorController` (ne InstructorsController) s akcí EF pro čtení/zápis:
 
-| Nastavení | Hodnota |
+| Nastavením | Hodnota |
 | ------- | ----- |
-| Třída modelů | Vyberte **kurzů vedených (ContosoUniversity.Models)**. |
-| Třída kontextu dat | Vyberte **SchoolContext (ContosoUniversity.DAL)**. |
-| Název řadiče | Zadejte *InstructorController*. Znovu ne *InstructorsController* s *s*. Pokud jste vybrali **kurzu (ContosoUniversity.Models)**, **názvu Kontroleru** hodnota se vyplní automaticky. Budete muset změnit hodnotu. |
+| Třída modelu | Vyberte **instruktor (ContosoUniversity. Models)** . |
+| Třída kontextu dat | Vyberte **SchoolContext (ContosoUniversity. dal)** . |
+| Název kontroleru | Zadejte *InstructorController*. Znovu *InstructorsController* *s s.* Po výběru **kurzu (ContosoUniversity. Models)** se hodnota **název kontroleru** vyplní automaticky. Je nutné změnit hodnotu. |
 
-Ponechte výchozí hodnoty a přidat kontroler.
+Ponechte ostatní výchozí hodnoty a přidejte kontroler.
 
-Otevřít *Controllers\InstructorController.cs* a přidejte `using` příkaz pro `ViewModels` obor názvů:
+Otevřete *Controllers\InstructorController.cs* a přidejte příkaz `using` pro obor názvů `ViewModels`:
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample6.cs)]
 
-Automaticky generovaný kód v `Index` určuje předběžné načítání pouze pro metody `OfficeAssignment` navigační vlastnost:
+Generovaný kód v metodě `Index` určuje Eager načítání pouze pro `OfficeAssignment` navigační vlastnost:
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample7.cs)]
 
-Nahradit `Index` metody následující kód pro načtení další související data a vložit ho do modelu zobrazení:
+Chcete-li načíst další související data a vložit je do modelu zobrazení, nahraďte metodu `Index` následujícím kódem:
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample8.cs)]
 
-Metoda přijímá data volitelné trasy (`id`) a parametru řetězce dotazu (`courseID`), zadejte hodnoty ID vybrané instruktorem a vybrané kurzu a splní všechna požadovaná data do zobrazení. Parametry jsou poskytovány **vyberte** hypertextové odkazy na stránky.
+Metoda přijímá volitelná data směrování (`id`) a parametr řetězce dotazu (`courseID`), který poskytuje hodnoty ID vybraného instruktora a vybraný kurz a předá všechna požadovaná data zobrazení. Parametry jsou k dispozici na stránce **vybrané** hypertextové odkazy.
 
-Vytváření instance zobrazení modelu a jeho uvedením seznamu instruktorů začíná kód. Předběžné načítání pro Určuje kód `Instructor.OfficeAssignment` a `Instructor.Courses` navigační vlastnost.
+Kód začíná vytvořením instance modelu zobrazení a jeho vložením do seznamu instruktorů. Kód určuje Eager načítání pro `Instructor.OfficeAssignment` a navigační vlastnost `Instructor.Courses`.
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample9.cs?highlight=3-4)]
 
-Druhá `Include` metoda načte kurzy a jednotlivých kurzů, který je načten funguje předběžné načítání pro `Course.Department` navigační vlastnost.
+Druhá metoda `Include` načte kurzy a pro každý kurz, který je načte, se Eager načítání pro `Course.Department` navigační vlastnost.
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample10.cs)]
 
-Jak už bylo zmíněno dříve, nemůžou dočkat, až načítání se nevyžadují, ale se provádí pro zvýšení výkonu. Protože zobrazení vždycky vyžaduje, aby `OfficeAssignment` entity, je efektivnější pro načtení, které ve stejném dotazu. `Course` entity jsou požadovány při výběru instruktorem na webové stránce, takže předběžné načítání je obecně lepší než opožděné načtení jenom v případě, že na stránce se zobrazí častěji kurzu vybrali než bez.
+Jak bylo zmíněno dříve, Eager načítání není vyžadováno, ale je provedeno za účelem zvýšení výkonu. Vzhledem k tomu, že zobrazení vždy vyžaduje `OfficeAssignment` entitu, je efektivnější ho načíst ve stejném dotazu. `Course` entity jsou požadovány, když je na webové stránce vybrán instruktor, takže načítání Eager je lepší než opožděné načítání pouze v případě, že se stránka zobrazuje častěji s kurzem vybraným než bez.
 
-Pokud jste vybrali ID instruktorem, vybraných kurzů vedených je načten ze seznamu školitelů v modelu zobrazení. Model zobrazení `Courses` vlastnost je pak načten pomocí `Course` entity z této kurzů vedených `Courses` navigační vlastnost.
+Pokud bylo vybráno ID instruktora, je vybraný instruktor načten ze seznamu instruktorů v modelu zobrazení. Vlastnost `Courses` modelu zobrazení je poté načtena s `Course` entit z `Courses` navigační vlastnost tohoto instruktora.
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample11.cs)]
 
-`Where` Metoda vrátí kolekci, ale v tomto případě kritéria předat výsledek této metody v jedné `Instructor` entity se vrací. `Single` Metoda převede kolekci do jednoho `Instructor` entity, která umožňuje přístup k dané entity `Courses` vlastnost.
+Metoda `Where` vrací kolekci, ale v tomto případě kritéria předaná této metodě mají za následek jenom jednu entitu `Instructor`, která se vrací. Metoda `Single` převede kolekci na jedinou entitu `Instructor`, která vám umožní přístup k vlastnosti `Courses` této entity.
 
-Můžete použít [jeden](https://msdn.microsoft.com/library/system.linq.enumerable.single.aspx) metody na kolekci, když víte, kolekce budou mít pouze jednu položku. `Single` Metoda vyvolá výjimku, pokud do něho předaný kolekce je prázdná, nebo pokud existuje více než jednu položku. Alternativou je [SingleOrDefault](https://msdn.microsoft.com/library/bb342451.aspx), která vrátí výchozí hodnotu (`null` v tomto případě) Pokud kolekce je prázdná. Ale v tomto případě bude stále výsledkem výjimku (z pokusu o nalezení `Courses` vlastnosti `null` odkaz), a zpráva o výjimce by méně jasně ukazovat na příčinu problému. Při volání `Single` metodu, můžete také předat `Where` podmínku namísto volání metody `Where` metoda samostatně:
+[Jedinou](https://msdn.microsoft.com/library/system.linq.enumerable.single.aspx) metodu pro kolekci použijete, když víte, že kolekce bude obsahovat pouze jednu položku. Metoda `Single` vyvolá výjimku, pokud je předaná kolekce prázdná nebo je-li k dispozici více než jedna položka. Alternativa je [SingleOrDefault](https://msdn.microsoft.com/library/bb342451.aspx), která vrací výchozí hodnotu (`null` v tomto případě), pokud je kolekce prázdná. Nicméně v tomto případě by přesto došlo k výjimce (při pokusu o nalezení vlastnosti `Courses` na `null` odkazu) a zpráva o výjimce by byla méně zřetelně označovala příčinu problému. Při volání metody `Single` lze také předat podmínku `Where` namísto volání metody `Where` samostatně:
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cs)]
 
@@ -184,69 +184,69 @@ Namísto:
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample13.cs)]
 
-Dále pokud jste vybrali kurz, vybrané kurzu se načte z seznam kurzů v zobrazení modelu. Potom zobrazení modelu `Enrollments` vlastnosti je načtena s `Enrollment` entity z tohoto kurzu `Enrollments` navigační vlastnost.
+V dalším případě se vybraný kurz načte ze seznamu kurzů v modelu zobrazení. Vlastnost `Enrollments` modelu zobrazení je načtena s `Enrollment` entitami z `Enrollments` navigační vlastnost tohoto kurzu.
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample14.cs)]
 
-### <a name="modify-the-instructor-index-view"></a>Úprava zobrazení indexu instruktorem
+### <a name="modify-the-instructor-index-view"></a>Úprava zobrazení indexu instruktorů
 
-V *Views\Instructor\Index.cshtml*, nahraďte kód šablony následujícím kódem. Změny jsou zvýrazněny:
+V *Views\Instructor\Index.cshtml*nahraďte kód šablony následujícím kódem. Změny jsou zvýrazněny:
 
 [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample15.cshtml?highlight=1,4,14-18,21,23-28,38-43,45)]
 
-Stávající kód, které jste udělali následující změny:
+V existujícím kódu jste provedli následující změny:
 
-- Změnit třídu modelu `InstructorIndexData`.
-- Změnil se název stránky z **Index** k **Instruktoři**.
-- Přidá **Office** sloupec, který zobrazuje `item.OfficeAssignment.Location` pouze tehdy, pokud `item.OfficeAssignment` nemá hodnotu null. (Protože je to vztah jeden: nula nebo 1, nemusí být se souvisejícím `OfficeAssignment` entity.)
+- Změnila třídu modelu na `InstructorIndexData`.
+- Změnila se název stránky z **indexu** na **instruktory**.
+- Přidání sloupce **Office** , který zobrazí `item.OfficeAssignment.Location` pouze v případě, že `item.OfficeAssignment` není null. (Vzhledem k tomu, že se jedná o relaci typu 1:1, nemusí se jednat o související entitu `OfficeAssignment`.)
 
     [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample16.cshtml)]
-- Přidání kódu, která dynamicky přidá `class="success"` k `tr` element vybraných kurzů vedených. Tím se nastaví barvu pozadí vybraného řádku s využitím [Bootstrap](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap) třídy.
+- Přidaný kód, který bude dynamicky přidávat `class="success"` do `tr`ho prvku vybraného instruktora. Tím se nastaví barva pozadí pro vybraný řádek pomocí třídy [bootstrap](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap) .
 
     [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample17.cshtml)]
-- Přidat nový `ActionLink` označené jako **vyberte** bezprostředně před další odkazy na každém řádku, což způsobí, že ID vybraných kurzů vedených k odeslání do `Index` metoda.
+- Přidali jsme nový `ActionLink` označený jako **vybraný bezprostředně před** ostatními odkazy v každém řádku, což způsobí odeslání vybraného ID instruktoru do metody `Index`.
 
-Spusťte aplikaci a vyberte **Instruktoři** kartu. Na stránce se zobrazí `Location` související vlastnost `OfficeAssignment` entit a prázdné tabulky buňky při žádné související `OfficeAssignment` entity.
+Spusťte aplikaci a vyberte kartu **instruktory** . Stránka zobrazuje vlastnost `Location` souvisejících entit `OfficeAssignment` a prázdnou buňku tabulky, pokud neexistuje žádná související entita `OfficeAssignment`.
 
-V *Views\Instructor\Index.cshtml* soubor po zavření `table` – element (na konci souboru), přidejte následující kód. Tento kód zobrazí seznam kurzů související s instruktorem, pokud je vybrána instruktorem.
+V souboru *Views\Instructor\Index.cshtml* přidejte po zavření `table` element (na konci souboru) následující kód. Tento kód zobrazuje seznam kurzů souvisejících s instruktorem, když je vybrán instruktor.
 
 [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample18.cshtml)]
 
-Tento kód čte `Courses` vlastnost model zobrazení zobrazíte seznam kurzů. Poskytuje také `Select` hypertextový odkaz, který odesílá ID vybrané kurz `Index` metody akce.
+Tento kód načte vlastnost `Courses` modelu zobrazení a zobrazí seznam kurzů. Poskytuje taky `Select` hypertextový odkaz, který pošle ID vybraného kurzu do metody `Index` akce.
 
-Spustit na stránku a vybrat instruktorem. Nyní uvidíte tabulku, která zobrazuje kurzy přiřazen k vybrané instruktorem a jednotlivých kurzů se zobrazí název přiřazený oddělení.
+Spusťte stránku a vyberte instruktor. Nyní se zobrazí mřížka zobrazující kurzy přiřazené k vybranému instruktorovi a pro každý kurz vidíte název přiřazeného oddělení.
 
-Za blok kódu, který jste právě přidali přidejte následující kód. Zobrazí seznam studentů, kteří se zaregistrují v kurzu při výběru tohoto kurzu.
+Po tom, co jste právě přidali blok kódu, přidejte následující kód. Zobrazí se seznam studentů, kteří jsou v kurzu při výběru tohoto kurzu zaregistrovaní.
 
 [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample19.cshtml)]
 
-Tento kód čte `Enrollments` vlastnost model zobrazení, aby bylo možné zobrazit seznam studentů zaregistrovaný do kurzu.
+Tento kód načte vlastnost `Enrollments` modelu zobrazení, aby se zobrazil seznam studentů zaregistrovaných v kurzu.
 
-Spustit na stránku a vybrat instruktorem. Vyberte kurzu zobrazíte seznam registrovaná studentů a jejich kvality.
+Spusťte stránku a vyberte instruktor. Pak vyberte kurz, ve kterém se zobrazí seznam zaregistrovaných studentů a jejich třídy.
 
-### <a name="adding-explicit-loading"></a>Přidání explicitní načtení
+### <a name="adding-explicit-loading"></a>Přidávání explicitního načítání
 
-Otevřít *InstructorController.cs* a podívejte se jak `Index` metoda načte seznam registrace pro vybrané kurzu:
+Otevřete *InstructorController.cs* a podívejte se, jak metoda `Index` získá seznam zápisů pro vybraný kurz:
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample20.cs)]
 
-Když jste získali seznam školitelů, jste zadali předběžné načítání pro `Courses` navigační vlastnost a `Department` vlastnost jednotlivých kurzů. Pak vložíte `Courses` kolekce v modelu zobrazení a nyní získáváte přístup k `Enrollments` navigační vlastnost z entit v této kolekci. Protože jste neurčili, nevložily předběžné načítání pro `Course.Enrollments` navigační vlastnost, data z dané vlastnosti se zobrazuje na stránce v důsledku opožděné načtení.
+Když jste načetli seznam instruktorů, zadali jste Eager načítání pro vlastnost navigace `Courses` a vlastnost `Department` každého kurzu. Pak vložíte kolekci `Courses` do modelu zobrazení a teď k `Enrollments` navigační vlastnost přistupujete z jedné entity v této kolekci. Vzhledem k tomu, že jste nezadali Eager načítání pro vlastnost navigace `Course.Enrollments`, data z této vlastnosti se zobrazí na stránce v důsledku opožděného načítání.
 
-Pokud jste zakázali opožděné načtení beze změny kódu žádným jiným způsobem, `Enrollments` vlastnost by bez ohledu na to, kolik registrace na kurz ve skutečnosti měla hodnotu null. V takovém případě se načíst `Enrollments` vlastnost, je potřeba zadat předběžné načítání nebo explicitní načtení. Už jste viděli postup předběžné načítání. Chcete-li zobrazit příklad explicitní načtení, nahraďte `Index` metodu s následujícím kódem, který explicitně načte `Enrollments` vlastnost. Zvýrazní se kód změnil.
+Pokud jste zakázali opožděné načítání beze změny kódu jiným způsobem, vlastnost `Enrollments` by měla hodnotu null, bez ohledu na to, kolik registrů v kurzu skutečně mělo. V takovém případě, pokud chcete načíst vlastnost `Enrollments`, je nutné zadat buď načítání Eager nebo explicitní načítání. Už jste viděli, jak Eager načíst. Aby bylo možné zobrazit příklad explicitního načítání, nahraďte metodu `Index` následujícím kódem, který explicitně načte vlastnost `Enrollments`. Změněný kód je zvýrazněný.
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample21.cs?highlight=20-31)]
 
-Po získání vybrané `Course` entity, nový kód explicitně načte tento kurz `Enrollments` navigační vlastnost:
+Po získání vybrané entity `Course` se v novém kódu explicitně načte vlastnost navigace pro `Enrollments` tohoto kurzu:
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample22.cs)]
 
-Pak explicitně načte každý `Enrollment` týkající entity `Student` entity:
+Pak explicitně načte všechny související entity `Student` `Enrollment` entit:
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample23.cs)]
 
-Všimněte si, že používáte `Collection` metoda načíst vlastnost kolekce, ale pro vlastnost, která obsahuje pouze jednu entitu, můžete použít `Reference` metody.
+Všimněte si, že pomocí metody `Collection` načíst vlastnost kolekce, ale u vlastnosti, která obsahuje pouze jednu entitu, použijete metodu `Reference`.
 
-Spustit kurzů vedených indexovou stránku a zobrazí se vám nijak neliší obsah zobrazený na stránce, i když jste změnili, jak načíst data.
+Spusťte stránku index instruktora nyní a uvidíte, že se na stránce zobrazuje žádný rozdíl, i když jste změnili způsob, jakým se data načítají.
 
 ## <a name="get-the-code"></a>Získat kód
 
@@ -254,18 +254,18 @@ Spustit kurzů vedených indexovou stránku a zobrazí se vám nijak neliší ob
 
 ## <a name="additional-resources"></a>Další zdroje
 
-Odkazy na další zdroje Entity Framework najdete v [přístup k datům ASP.NET – doporučené zdroje informací](../../../../whitepapers/aspnet-data-access-content-map.md).
+Odkazy na další prostředky Entity Framework najdete v [prostředcích, které jsou doporučeny pro přístup k datům ASP.NET](../../../../whitepapers/aspnet-data-access-content-map.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Zjistili jste, jak načíst související data
-> * Vytvoření stránky kurzy
-> * Vytvoří stránku Instruktoři
+> * Stránka vytvoření kurzů
+> * Stránka s instruktory se vytvořila.
 
-Přejděte k dalším článku se naučíte, jak aktualizovat související data.
+Přejděte k dalšímu článku, kde se dozvíte, jak aktualizovat související data.
 
 > [!div class="nextstepaction"]
 > [Aktualizace souvisejících dat](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
