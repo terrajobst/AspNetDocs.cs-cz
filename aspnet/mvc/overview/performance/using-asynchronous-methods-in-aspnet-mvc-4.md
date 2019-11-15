@@ -1,178 +1,178 @@
 ---
 uid: mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4
-title: Použití asynchronních metod v architektuře ASP.NET MVC 4 | Dokumentace Microsoftu
+title: Použití asynchronních metod v ASP.NET MVC 4 | Microsoft Docs
 author: Rick-Anderson
-description: V tomto kurzu se seznámíte se základy vytváření asynchronní aplikace ASP.NET MVC Web pomocí Visual Studio Express 2012 pro Web, který je zdarma ve...
+description: V tomto kurzu se naučíte základy vytváření asynchronní webové aplikace ASP.NET MVC pomocí Visual Studio Express 2012 pro web, což je zdarma...
 ms.author: riande
 ms.date: 06/06/2012
 ms.assetid: a56572ba-81c3-47af-826d-941e9c4775ec
 msc.legacyurl: /mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 8d42ebf770e1b75e2867cca36e71423ba9467ee2
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 5df6a9c136b1934b3afd731eb0ceac1e0faa483e
+ms.sourcegitcommit: 6f0e10e4ca61a1e5534b09c655fd35cdc6886c8a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65112439"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74115077"
 ---
 # <a name="using-asynchronous-methods-in-aspnet-mvc-4"></a>Použití asynchronních metod v ASP.NET MVC 4
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+Od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
-> V tomto kurzu se seznámíte se základy vytváření asynchronní aplikace v prostředí ASP.NET MVC pomocí [Visual Studio Express 2012 pro Web](https://www.microsoft.com/visualstudio/11), což je bezplatná verze sady Microsoft Visual Studio. Můžete také použít [Visual Studio 2012](https://www.microsoft.com/visualstudio/11).
+> V tomto kurzu se naučíte základy vytváření asynchronní webové aplikace ASP.NET MVC pomocí [Visual Studio Express 2012 pro web](https://www.microsoft.com/visualstudio/11), což je bezplatná verze Microsoft Visual Studio. Můžete také použít [Visual Studio 2012](https://www.microsoft.com/visualstudio/11).
 > 
-> Úplnou ukázku je k dispozici pro účely tohoto kurzu na githubu [https://github.com/RickAndMSFT/Async-ASP.NET/](https://github.com/RickAndMSFT/Async-ASP.NET/)
+> Pro tento kurz na GitHubu je k dispozici kompletní ukázka [https://github.com/RickAndMSFT/Async-ASP.NET/](https://github.com/RickAndMSFT/Async-ASP.NET/)
 
-ASP.NET MVC 4 [řadič](https://msdn.microsoft.com/library/system.web.mvc.controller(VS.108).aspx) třídy v kombinaci [.NET 4.5](https://msdn.microsoft.com/library/w0x726c2(VS.110).aspx) umožňuje psát asynchronní akce metody, které vracejí objekt typu [úloh&lt;ActionResult&gt; ](https://msdn.microsoft.com/library/dd321424(VS.110).aspx). Rozhraní .NET Framework 4 zavedena asynchronní programovací koncept se označuje jako [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) a podporuje ASP.NET MVC 4 [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx). Úkoly jsou reprezentovány **úloh** typu a souvisejících typů v [System.Threading.Tasks](https://msdn.microsoft.com/library/system.threading.tasks.aspx) oboru názvů. Rozhraní .NET Framework 4.5 je založena na této asynchronní podporu [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) a [asynchronní](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) klíčová slova, která usnadňuje práci s [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) objekty mnohem méně složitý než předchozí asynchronní přístupy. [Await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) – klíčové slovo je syntaktické sdružená hodnota určující, které jsou části kódu by měla asynchronně čekat na další část kódu. [Asynchronní](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) – klíčové slovo představuje pomocného parametru, který můžete použít k označení metod jako úkolově orientovanou asynchronní metody. Kombinace **await**, **asynchronní**a **úloh** objektu je snazší pro vás bude psaní asynchronního kódu v rozhraní .NET 4.5. Nový model pro asynchronní metody je volána *Task-based Asynchronous Pattern* (**klepněte**). Tento kurz předpokládá, že máte některé znalost asynchronní programování pomocí [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) a [asynchronní](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) klíčová slova a [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) oboru názvů.
+Třída [kontroleru](https://msdn.microsoft.com/library/system.web.mvc.controller(VS.108).aspx) ASP.NET MVC 4 v kombinaci [.NET 4,5](https://msdn.microsoft.com/library/w0x726c2(VS.110).aspx) umožňuje psát asynchronní metody akcí, které vracejí objekt typu [Task&lt;ActionResult&gt;](https://msdn.microsoft.com/library/dd321424(VS.110).aspx). .NET Framework 4 představila asynchronní programovací koncept, který je označován jako [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) a ASP.NET MVC [4.](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) Úkoly jsou reprezentovány typem **úkolu** a souvisejícími typy v oboru názvů [System. Threading. Tasks](https://msdn.microsoft.com/library/system.threading.tasks.aspx) . .NET Framework 4,5 sestaví k této asynchronní podpoře s klíčovým slovem [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) a [Async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) , která umožňují pracovat s objekty [úlohy](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) mnohem méně složitější než předchozí asynchronní přístupy. Klíčové slovo [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) je syntaktická zkratka pro značící, že část kódu by měla asynchronně čekat na nějakou jinou část kódu. Klíčové slovo [Async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) představuje pomocný parametr, který můžete použít k označení metod jako asynchronních metod založených na úlohách. Kombinace **operátoru await**, **Async**a objektu **Task** usnadňuje psaní asynchronního kódu v rozhraní .NET 4,5. Nový model pro asynchronní metody se nazývá *asynchronní vzor založený na úlohách* (**klepněte**). V tomto kurzu se předpokládá, že máte zkušenosti s asynchronním programováním pomocí klíčových slov [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) a [Async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) a oboru názvů [úkolu](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) .
 
-Další informace na pomocí [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) a [asynchronní](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) klíčová slova a [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) obor názvů, naleznete v následujících odkazech.
+Další informace o klíčovém slově [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) a [Async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) a oboru názvů [úkolů](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) naleznete v následujících odkazech.
 
-- [Dokument White Paper: Asynchronii v rozhraní .NET](https://go.microsoft.com/fwlink/?LinkId=204844)
-- [Async/Await – nejčastější dotazy](https://blogs.msdn.com/b/pfxteam/archive/2012/04/12/10293335.aspx)
-- [Visual Studio Asynchronous Programming](https://msdn.microsoft.com/vstudio/gg316360)
+- [Dokument White Paper: asynchronii v .NET](https://go.microsoft.com/fwlink/?LinkId=204844)
+- [Nejčastější dotazy k Async/await](https://blogs.msdn.com/b/pfxteam/archive/2012/04/12/10293335.aspx)
+- [Asynchronní programování v aplikaci Visual Studio](https://msdn.microsoft.com/vstudio/gg316360)
 
-## <a id="HowRequestsProcessedByTP"></a>  Zpracování požadavků ve fondu vláken
+## <a id="HowRequestsProcessedByTP"></a>Způsob zpracování požadavků fondem vláken
 
-Rozhraní .NET Framework na webový server udržuje fondu vláken, které se používají ke zpracování požadavků ASP.NET. Když přijde požadavek, vlákno z fondu odesílá ke zpracování této žádosti. Pokud je požadavek zpracován synchronně, vlákna, která zpracuje požadavek je zaneprázdněn při žádost se zpracovává, a že vlákno nemůže jiná žádost.   
+Na webovém serveru .NET Framework udržuje fond vláken, která se používají k obsluhování požadavků ASP.NET. Když požadavek dorazí, vlákno z fondu se odešle do zpracování tohoto požadavku. Pokud je požadavek zpracováván synchronně, vlákno, který zpracovává požadavek, je při zpracování žádosti zaneprázdněno a vlákno nemůže obsluhovat jiný požadavek.   
   
-To nemusí být problém, protože fond vláken můžete převést na dostatečně velký, aby mnoho zaneprázdněná vlákna. Ale je omezený počet vláken ve fondu vláken (výchozí maximum pro rozhraní .NET 4.5 je 5 000). Ve velkých aplikací s vysokou souběžnosti dlouhodobé požadavky může být k dispozici všechna vlákna zaneprázdněn. Tento stav se označuje jako vyčerpání vlákna. Když je dosaženo této podmínce, webový server zařadí do fronty požadavků. Pokud zaplnění fronty požadavků, webový server odmítá požadavky se stavem HTTP 503 (příliš zaneprázdněný Server). Fondu vláken CLR má omezení na nové vlákno injektáže. Pokud je souběžnost vzorcům (to znamená, vaše webová stránka náhle získáte velký počet požadavků) a všechna vlákna k dispozici žádosti je zaneprázdněná kvůli volání back-end s vysokou latencí, míra vkládání omezené vlákna můžete provádět reagovat velmi špatný. Kromě toho má každém novém vláknu přidán do fondu vláken režijní náklady (jako je například 1 MB paměti zásobníku). V případě webové aplikace pomocí synchronní metody volání mezi službami vysokou latencí, kde fondu vláken se zvětšuje výchozí rozhraní .NET 4.5 maximálně 5 000 vlákna by využívat přibližně 5 GB více paměti, než je možné aplikaci na stejné žádosti o službu pomocí asynchronní metody a pouze 50 vláken. Když provádíte asynchronní práce, ne vždy používáte vlákno. Například pokud provedete požadavek asynchronní webové služby, ASP.NET nebudete používat žádného vlákna mezi **asynchronní** volání metody a **await**. Použití fondu vláken k žádosti o služby s vysokou latencí může vést k velké paměťové nároky a nízké využití hardwaru serveru.
+Nemusí se jednat o problém, protože fond vláken je možné dostatečně velký, aby se vešel do mnoha zaneprázdněných vláken. Počet vláken ve fondu vláken je ale omezený (výchozí maximum pro .NET 4,5 je 5 000). Ve velkých aplikacích s vysokou souběžnou délkou dlouhotrvajících požadavků můžou být všechna dostupná vlákna zaneprázdněná. Tato podmínka se označuje jako vyčerpání vlákna. Po dosažení tohoto stavu vyřadí webové servery požadavky. Pokud se fronta požadavků zaplní, webový server odmítne žádosti se stavem HTTP 503 (Server je příliš zaneprázdněný). Fond vláken CLR má omezení pro vkládání nových vláken. Pokud je souběžnost souběžnosti (to znamená, že váš web může náhle obdržet velký počet požadavků) a že všechna dostupná vlákna požadavků jsou zaneprázdněna z důvodu back-endu s vysokou latencí, může vaše aplikace velmi špatně reagovat. Každé nové vlákno přidané do fondu vláken má navíc režii (například 1 MB paměti zásobníku). Webová aplikace, která používá synchronní metody pro obsluhu vysoké latence, kdy se fond vláken zvětšuje na standard .NET 4,5, ve výchozím nastavení maximum je 5 000 vláken, což by využilo přibližně 5 GB paměti, než je aplikace schopná, aby služba používala stejné požadavky. asynchronní metody a jenom 50 vláken. Při asynchronní práci nepoužíváte vždy vlákno. Například při provádění asynchronní žádosti webové služby nebude ASP.NET používat žádná vlákna mezi voláním **asynchronní** metody a **await**. Použití fondu vláken ke zpracování žádostí s vysokou latencí může způsobit velké nároky na paměť a špatné využití hardwaru serveru.
 
-## <a name="processing-asynchronous-requests"></a>Asynchronní zpracování požadavků
+## <a name="processing-asynchronous-requests"></a>Zpracování asynchronních požadavků
 
-Ve webové aplikaci, která se zobrazí velký počet souběžných požadavků na objem požadovaný při spuštění nebo má vzorcům zatížení (kde souběžnosti prudce zvyšuje) provádění asynchronní volání webové služby zvyšuje rychlost odezvy aplikace. Asynchronní požadavek trvá stejně jako požadavek na synchronní zpracování. Pokud požadavek webové služby volání, které vyžaduje dva sekund na dokončení, požadavek trvá 2 sekundy, zda je provedena synchronně nebo asynchronně. Ale při asynchronním volání není vlákno blokováno reagovat na další požadavky a bude čekat na dokončení první žádosti. Proto asynchronních žádostí zabránit růstu žádosti o služby Řízení front a vlákna fondu pokud existuje velký počet souběžných požadavků, které vyvolají dlouho běžící operace.
+Ve webové aplikaci, která vidí velký počet souběžných požadavků při spuštění nebo má zátěžové zatížení (kde se souběžně roste souběžně), provádí volání webové služby asynchronní odezvu aplikace. Asynchronní požadavek trvá zpracování jako synchronní požadavek stejným časem. Pokud požadavek provede volání webové služby, které vyžaduje dokončení dvou sekund, požadavek trvá dvě sekundy, ať už se provádí synchronně nebo asynchronně. Během asynchronního volání ale vlákno neblokuje reakci na jiné požadavky, zatímco čeká na dokončení první žádosti. Asynchronní požadavky proto zabraňují zařazování požadavků a nárůstu fondu vláken, pokud existuje celá řada souběžných požadavků, které spouštějí dlouhotrvající operace.
 
-## <a id="ChoosingSyncVasync"></a>  Volba metody synchronní nebo asynchronní akce
+## <a id="ChoosingSyncVasync"></a>Výběr metod synchronní nebo asynchronní akce
 
-Tato část uvádí pokyny pro použití metody synchronní nebo asynchronní akce. Toto jsou jen pokyny; Prozkoumejte každou aplikaci zvlášť pro určení, zda asynchronní metody pomoci s výkonem.
+V této části jsou uvedeny pokyny pro použití synchronních nebo asynchronních metod akcí. Jsou to jenom pokyny. Prověřte každou aplikaci jednotlivě a určete, zda asynchronní metody pomůžou s výkonem.
 
-Obecně platí používejte synchronní metody byly splněny následující podmínky:
+Obecně platí, že použijte synchronní metody pro následující podmínky:
 
-- Operace jsou jednoduché nebo krátce běžící.
-- Zjednodušení je mnohem důležitější než efektivitu.
-- Operace jsou primárně procesoru operace místo operace, které zahrnují rozsáhlou disku nebo nároky na síť. Pomocí metod asynchronní akce pro operace vázané na procesor žádné výhody a má za následek další režie.
+- Operace jsou jednoduché nebo krátkodobé.
+- Jednoduchost je důležitější než efektivita.
+- Operace jsou primárně operace CPU místo operací, které zahrnují velký výkon disku nebo síťové režie. Použití asynchronních metod akcí na operacích vázaných na procesor poskytuje žádné výhody a má za následek větší režii.
 
-  Obecně platí použijte asynchronní metody byly splněny následující podmínky:
+Obecně použijte asynchronní metody pro následující podmínky:
 
-- Volání služby, které lze využívat pomocí asynchronní metody a používáte .NET 4.5 nebo vyšší.
-- Operace jsou vázané na síť nebo vstupně-výstupní místo vázané na procesor.
-- Paralelismu je důležitější než zjednodušení kódu.
-- Chcete poskytovat mechanismus, který umožňuje uživatelům zrušit dlouho probíhající požadavek.
-- Když výhodu, že přepínání vlákna větší váhu než náklady na přepnutí kontextu. Obecně platí měli byste zajistit metodu asynchronní Pokud se synchronní metoda čeká na vlákno požadavku ASP.NET v průběhu zpracování operace žádná práce. Tím, že volání asynchronní, vlákno požadavku ASP.NET není zastaven, přičemž to nic a bude čekat na dokončení žádosti webové služby.
-- Testování ukazuje, že jsou blokující operace problémové místo výkonu webu a, že služba IIS můžete další žádosti o služby s použitím těchto blokujících volání asynchronní metody.
+- Voláte služby, které mohou být spotřebovány prostřednictvím asynchronních metod, a používáte rozhraní .NET 4,5 nebo vyšší.
+- Operace jsou vázané na síť nebo vstupně-výstupní operace, nikoli vázané na procesor.
+- Paralelismus je důležitější než jednoduchost kódu.
+- Chcete poskytnout mechanismus, který umožňuje uživatelům zrušit dlouho běžící požadavek.
+- Pokud výhoda přepínání vláken převáží náklady na přepínač kontextu. Obecně byste měli provést asynchronní metodu, pokud synchronní metoda čeká na vlákno žádosti ASP.NET, zatímco neprovádí žádnou práci. Provedením asynchronního volání není vlákno žádosti ASP.NET zastaveno, protože čeká na dokončení žádosti webové služby.
+- Testování ukazuje, že blokující operace jsou kritické pro výkon lokality a že služba IIS může obsluhovat více požadavků pomocí asynchronních metod pro tato blokující volání.
 
-  Ukázky ke stažení ukazuje, jak efektivně používat metody asynchronní akce. Poskytnutou ukázkou, je navržená k poskytování jednoduchého ukázka asynchronního programování v architektuře ASP.NET MVC 4 pomocí rozhraní .NET 4.5. Ukázka nemá představovat referenční architekturu pro asynchronní programování v architektuře ASP.NET MVC. Ukázkový program volání [rozhraní ASP.NET Web API](../../../web-api/index.md) metody, které pak volat [Task.Delay](https://msdn.microsoft.com/library/hh139096(VS.110).aspx) pro simulaci volání dlouhotrvající webové služby. Většinu provozních aplikací nezobrazí takové zřejmé výhody použití metody asynchronní akce.   
+Ukázka ke stažení ukazuje, jak efektivně používat asynchronní metody akcí. Uvedená ukázka byla navržena tak, aby poskytovala jednoduchou ukázku asynchronního programování v ASP.NET MVC 4 pomocí .NET 4,5. Vzorek není určen jako referenční architektura pro asynchronní programování v ASP.NET MVC. Vzorový program volá metody [ASP.NET webového rozhraní API](../../../web-api/index.md) , které zavolají [Task. Delay](https://msdn.microsoft.com/library/hh139096(VS.110).aspx) pro simulaci dlouhotrvajících volání webové služby. Většina produkčních aplikací nebude zobrazovat takové zjevné výhody použití asynchronních metod akcí.   
   
-Několik aplikace vyžadují všechny metody akce byla asynchronní. Převod několik akcí synchronní metody na asynchronní metody často, poskytuje nejlepší účinnosti zvýšení množství práce potřebné.
+Několik aplikací vyžaduje, aby všechny metody akcí byly asynchronní. Často převod několika synchronních metod akcí na asynchronní metody poskytuje nejlepší zvýšení efektivity pro požadovanou práci.
 
-## <a id="SampleApp"></a>  Ukázkové aplikace
+## <a id="SampleApp"></a>Ukázková aplikace
 
-Můžete stáhnout ukázkovou aplikaci z [ https://github.com/RickAndMSFT/Async-ASP.NET/ ](https://github.com/RickAndMSFT/Async-ASP.NET) na [Githubu](https://github.com/) lokality. Úložiště se skládá ze tří projektů:
+Ukázkovou aplikaci si můžete stáhnout z [https://github.com/RickAndMSFT/Async-ASP.NET/](https://github.com/RickAndMSFT/Async-ASP.NET) na webu [GitHub](https://github.com/) . Úložiště se skládá ze tří projektů:
 
-- *Mvc4Async*: Projekt ASP.NET MVC 4, který obsahuje kód použitý v tomto kurzu. Provede volání webového rozhraní API **WebAPIpgw** služby.
-- *WebAPIpgw*: Projekt ASP.NET MVC 4 webového rozhraní API, který implementuje `Products, Gizmos and Widgets` řadiče. Poskytuje data pro *WebAppAsync* projektu a *Mvc4Async* projektu.
-- *WebAppAsync*: Projekt webových formulářů ASP.NET používá v jiném kurzu.
+- *Mvc4Async*: projekt ASP.NET MVC 4 obsahující kód použitý v tomto kurzu. Provádí volání rozhraní Web API ke službě **WebAPIpgw** .
+- *WebAPIpgw*: projekt webového rozhraní API ASP.NET MVC 4, který implementuje řadiče `Products, Gizmos and Widgets`. Poskytuje data pro projekt *WebAppAsync* a projekt *Mvc4Async* .
+- *WebAppAsync*: projekt webových formulářů ASP.NET použitý v jiném kurzu.
 
-## <a id="GizmosSynch"></a>  Metoda Gizma synchronní akce
+## <a id="GizmosSynch"></a>Metoda synchronní akce Gizma
 
- Následující kód ukazuje `Gizmos` metody synchronní akce, která se používá k zobrazení seznamu gizma. (Pro účely tohoto článku gizmo je fiktivní mechanickým zařízení.) 
+ Následující kód ukazuje metodu `Gizmos` synchronní akci, která se používá k zobrazení seznamu gizma. (Pro tento článek je Gizmo fiktivní mechanické zařízení.) 
 
 [!code-csharp[Main](using-asynchronous-methods-in-aspnet-mvc-4/samples/sample1.cs)]
 
-Následující kód ukazuje `GetGizmos` metody gizmo služby.
+Následující kód ukazuje metodu `GetGizmos` služby Gizmo.
 
 [!code-csharp[Main](using-asynchronous-methods-in-aspnet-mvc-4/samples/sample2.cs)]
 
-`GizmoService GetGizmos` Metoda předává identifikátor URI služby technologie ASP.NET webové rozhraní API HTTP, který vrátí seznam hodnot gizma data. *WebAPIpgw* projekt obsahuje implementaci webového rozhraní API `gizmos, widget` a `product` řadiče.  
-Následující obrázek zobrazuje gizma z ukázkového projektu.
+Metoda `GizmoService GetGizmos` předává identifikátor URI službě HTTP webového rozhraní API ASP.NET, která vrací seznam dat gizma. Projekt *WebAPIpgw* obsahuje implementaci `gizmos, widget` webového rozhraní API a `product`ch řadičů.  
+Na následujícím obrázku je znázorněno zobrazení gizma z ukázkového projektu.
 
-![Gizmos](using-asynchronous-methods-in-aspnet-mvc-4/_static/image1.png)
+![Gizma](using-asynchronous-methods-in-aspnet-mvc-4/_static/image1.png)
 
-## <a id="CreatingAsynchGizmos"></a>  Vytváření Gizma asynchronní metody akce
+## <a id="CreatingAsynchGizmos"></a>Vytvoření asynchronní metody akce Gizma
 
-Ukázka používá nový [asynchronní](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) a [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) klíčová slova (k dispozici v rozhraní .NET 4.5 a Visual Studio 2012) nechat kompilátor, zodpovídá za údržbu složitější transformace nezbytné pro asynchronní programování. Kompilátor umožňuje psát kód pomocí konstrukce jazyka C# pro synchronní řízení toku a kompilátor automaticky použije transformace, která je potřeba použít zpětná volání k zabránění blokování vlákna.
+Ukázka používá nová klíčová slova [Async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) a [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) (k dispozici v rozhraních .NET 4,5 a Visual Studio 2012), aby kompilátor mohl být zodpovědný za údržbu složitých transformací potřebných pro asynchronní programování. Kompilátor umožňuje psát kód pomocí C#konstrukce asynchronního toku řízení a kompilátor automaticky aplikuje transformace potřebné k použití zpětných volání, aby nedocházelo k blokování vláken.
 
-Následující kód ukazuje `Gizmos` synchronní metoda a `GizmosAsync` asynchronní metody. Pokud váš prohlížeč podporuje [HTML 5 `<mark>` element](http://www.w3.org/wiki/HTML/Elements/mark), uvidíte změny v `GizmosAsync` v žlutý zvýraznění.
+Následující kód ukazuje `Gizmos` synchronní metodu a `GizmosAsync` asynchronní metodu. Pokud prohlížeč podporuje [prvek `<mark>` HTML 5](http://www.w3.org/wiki/HTML/Elements/mark), uvidíte změny v `GizmosAsync` žlutým zvýrazněním.
 
 [!code-csharp[Main](using-asynchronous-methods-in-aspnet-mvc-4/samples/sample3.cs)]
 
 [!code-csharp[Main](using-asynchronous-methods-in-aspnet-mvc-4/samples/sample4.cs?highlight=1,3,5)]
 
- Následující změny byly použity na Povolit `GizmosAsync` byla asynchronní.
+ Následující změny byly aplikovány, aby bylo možné `GizmosAsync` být asynchronní.
 
-- Metoda je označena třídou [asynchronní](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) – klíčové slovo, které instruuje kompilátor generovat zpětná volání pro část textu a automaticky vytvářet `Task<ActionResult>` , která je vrácena.
-- &quot;Asynchronní&quot; byl připojeným k názvu metody. Připojení "Async" se nevyžadují, ale je konvence při psaní asynchronních metod.
-- Návratový typ se změnil z `ActionResult` k `Task<ActionResult>`. Návratový typ `Task<ActionResult>` představuje probíhající práci a poskytuje volající metody s popisovačem, prostřednictvím které se má počkat na dokončení asynchronní operace. V tomto případě se volající webové služby. `Task<ActionResult>` představuje probíhající práci s jako výsledek `ActionResult.`
-- [Await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) – klíčové slovo byla použita k volání webové služby.
-- Volala se asynchronní webového rozhraní API služby (`GetGizmosAsync`).
+- Metoda je označena pomocí klíčového slova [Async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) , které dává kompilátoru pokyn ke generování zpětných volání pro části těla a k automatickému vytvoření `Task<ActionResult>`, který je vrácen.
+- k názvu metody se připojila &quot;Async&quot;. Připojení "Async" není vyžadováno, ale je to konvence při psaní asynchronních metod.
+- Návratový typ se změnil z `ActionResult` na `Task<ActionResult>`. Návratový typ `Task<ActionResult>` představuje průběžnou práci a poskytuje volajícím metody s popisovačem, přes který má počkat na dokončení asynchronní operace. V tomto případě je volající webové služby. `Task<ActionResult>` představuje probíhající práci s výsledkem `ActionResult.`
+- Klíčové slovo [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) bylo použito pro volání webové služby.
+- Bylo voláno rozhraní API asynchronní webové služby (`GetGizmosAsync`).
 
-Uvnitř `GetGizmosAsync` body jiné asynchronní metody, metoda `GetGizmosAsync` je volána. `GetGizmosAsync` okamžitě se vrátí `Task<List<Gizmo>>` , který se nakonec dokončí když jsou data dostupná. Vzhledem k tomu, že nechcete dělat nic dalšího, dokud nebudete mít gizmo data, kód očekává úkol (pomocí **await** – klíčové slovo). Můžete použít **await** – klíčové slovo pouze v metodách opatřen poznámkou **asynchronní** – klíčové slovo.
+V těle metody `GetGizmosAsync` jiné asynchronní metody je volána `GetGizmosAsync`. `GetGizmosAsync` okamžitě vrátí `Task<List<Gizmo>>`, která se nakonec dokončí, když budou data k dispozici. Vzhledem k tomu, že nechcete nic dalšího dělat, dokud nebudete mít Gizmo data, kód očekává úlohu (pomocí klíčového slova **await** ). Klíčové slovo **await** lze použít pouze v metodách popsaných pomocí klíčového slova **Async** .
 
-**Await** – klíčové slovo neblokuje vlákno, dokud je úloha dokončena. Zaregistruje pro zbývající metody jako zpětné volání na úkolu a okamžitě se vrátí. Když nakonec dokončení očekávaného úkolu, bude vyvolání tohoto zpětného volání a tak pokračuje v provádění metody vpravo tam, kde skončila. Další informace o použití [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) a [asynchronní](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) klíčová slova a [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) obor názvů, najdete v článku [asynchronní odkazy](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async).
+Klíčové slovo **await** neblokuje vlákno, dokud není úloha dokončena. Zaregistruje zbytek metody jako zpětné volání na úkolu a okamžitě se vrátí. Když se nakonec očekávaný úkol dokončí, vyvolá toto zpětné volání, takže bude pokračovat v provádění metody přímo tam, kde byla vypnuta. Další informace o použití klíčových slov [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) a [Async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) a oboru názvů [úkolů](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) naleznete v tématu [asynchronní odkazy](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async).
 
-Následující kód ukazuje `GetGizmos` a `GetGizmosAsync` metody.
+Následující kód ukazuje metody `GetGizmos` a `GetGizmosAsync`.
 
 [!code-csharp[Main](using-asynchronous-methods-in-aspnet-mvc-4/samples/sample5.cs)]
 
 [!code-csharp[Main](using-asynchronous-methods-in-aspnet-mvc-4/samples/sample6.cs?highlight=1,4-8)]
 
- Asynchronní změny jsou podobné těm, které jsou provedeny **GizmosAsync** výše. 
+ Asynchronní změny jsou podobné těm, které jste udělali výše v **GizmosAsync** . 
 
-- Podpis metody je opatřen poznámkou [asynchronní](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) – klíčové slovo, návratový typ se změnil na `Task<List<Gizmo>>`, a *asynchronní* byl připojeným k názvu metody.
-- Asynchronní [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(VS.110).aspx) třída se používá namísto [WebClient](https://msdn.microsoft.com/library/system.net.webclient.aspx) třídy.
-- [Await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) – klíčové slovo aplikováno [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(VS.110).aspx) asynchronní metody.
+- Podpis metody byl opatřen poznámkami pomocí klíčového slova [Async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) , návratový typ byl změněn na `Task<List<Gizmo>>`a k názvu metody byl přidán *Async* .
+- Namísto třídy [WebClient](https://msdn.microsoft.com/library/system.net.webclient.aspx) se používá asynchronní třída [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(VS.110).aspx) .
+- Klíčové slovo [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) bylo použito pro asynchronní metody [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(VS.110).aspx) .
 
-Následující obrázek ukazuje asynchronní gizmo zobrazení.
+Na následujícím obrázku vidíte zobrazení asynchronního Gizmo.
 
 ![async](using-asynchronous-methods-in-aspnet-mvc-4/_static/image2.png)
 
-Prezentace prohlížeče gizma dat je stejný jako zobrazení vytvořené pomocí synchronní volání. Jediným rozdílem je, že asynchronní verze může být výkonnější pod velkým zatížením.
+Prezentace prohlížečů gizma dat je shodná se zobrazením vytvořeným synchronním voláním. Jediným rozdílem je, že asynchronní verze může být větší výkon při velkém zatížení.
 
-## <a id="Parallel"></a>  Paralelní provádění více operací
+## <a id="Parallel"></a>Paralelní provádění více operací
 
-Asynchronní akce metody mají výraznou výhodu nad synchronních metod při akci musíte provést několik nezávislých operací. V ukázce k dispozici, synchronní metoda `PWG`(pro produkty, Widgetů a Gizma) zobrazuje výsledky zobrazíte seznam produktů, widgetů a gizma tři volání webové služby. [Rozhraní ASP.NET Web API](../../../web-api/index.md) projekt, který poskytuje tyto služby používá [Task.Delay](https://msdn.microsoft.com/library/hh139096(VS.110).aspx) k simulaci latence pomalého volání. Pokud zpoždění nastavená na 500 milisekund, asynchronní `PWGasync` metoda trvá o něco více než 500 milisekund do dokončení při synchronní `PWG` verze převezme 1 500 milisekund. Synchronní `PWG` je znázorněna v následujícím kódu.
+Metody asynchronní akce mají významnou výhodu oproti synchronním metodám, pokud akce musí provádět několik nezávislých operací. V zadané ukázce se synchronní metoda `PWG`(pro Products, widgets a Gizma) zobrazí výsledky tří volání webové služby, které získá seznam produktů, widgetů a gizma. Projekt [webového rozhraní API ASP.NET](../../../web-api/index.md) , který poskytuje tyto služby, používá [Task. Delay](https://msdn.microsoft.com/library/hh139096(VS.110).aspx) k simulaci latence nebo pomalých síťových volání. Pokud je zpoždění nastavené na 500 milisekund, asynchronní metoda `PWGasync` trvá několik málo než 500 milisekund, zatímco synchronní `PWG`á verze přebírá více než 1 500 milisekund. Metoda synchronního `PWG` je uvedena v následujícím kódu.
 
 [!code-csharp[Main](using-asynchronous-methods-in-aspnet-mvc-4/samples/sample7.cs)]
 
-Asynchronní `PWGasync` je znázorněna v následujícím kódu.
+Metoda asynchronního `PWGasync` je uvedena v následujícím kódu.
 
 [!code-csharp[Main](using-asynchronous-methods-in-aspnet-mvc-4/samples/sample8.cs?highlight=1,3,12)]
 
-Následující obrázek ukazuje zobrazení vrácených **PWGasync** metody.
+Následující obrázek znázorňuje zobrazení vrácené z metody **PWGasync** .
 
 ![pwgAsync](using-asynchronous-methods-in-aspnet-mvc-4/_static/image3.png)
 
-## <a id="CancelToken"></a>  Pomocí tokenu zrušení
+## <a id="CancelToken"></a>Použití tokenu zrušení
 
-Asynchronní akce metody vracející `Task<ActionResult>`jsou možné zrušit, které se přijaly [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken(VS.110).aspx) parametr, pokud je k dispozici s [hodnota vlastnosti AsyncTimeout](https://msdn.microsoft.com/library/system.web.mvc.asynctimeoutattribute(VS.108).aspx) atribut. Následující kód ukazuje `GizmosCancelAsync` metoda s časovým limitem 150 milisekund.
+Asynchronní metody akcí vracející `Task<ActionResult>`jsou zrušitelné, to znamená, že přebírají parametr [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken(VS.110).aspx) , pokud je jeden k dispozici s atributem [hodnota vlastnosti AsyncTimeout](https://msdn.microsoft.com/library/system.web.mvc.asynctimeoutattribute(VS.108).aspx) . Následující kód ukazuje metodu `GizmosCancelAsync` s časovým limitem 150 milisekund.
 
 [!code-csharp[Main](using-asynchronous-methods-in-aspnet-mvc-4/samples/sample9.cs?highlight=1-3,5,10)]
 
-Následující kód ukazuje GetGizmosAsync přetížení, která přijímá [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken(VS.110).aspx) parametru.
+Následující kód ukazuje přetížení GetGizmosAsync, které přijímá parametr [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken(VS.110).aspx) .
 
 [!code-csharp[Main](using-asynchronous-methods-in-aspnet-mvc-4/samples/sample10.cs)]
 
-V ukázkové aplikaci k dispozici, vyberete *ukázku Token zrušení* propojit volání `GizmosCancelAsync` metoda a ukazuje zrušení asynchronní volání.
+V ukázkové aplikaci, která je k dispozici, vyberte odkaz *demo tokenu zrušení* , který volá metodu `GizmosCancelAsync` a demonstruje zrušení asynchronního volání.
 
-## <a id="ServerConfig"></a>  Konfigurace serveru pro volání webové služby vysokou souběžnosti/vysoká latence
+## <a id="ServerConfig"></a>Konfigurace serveru pro volání webové služby vysoké souběžnosti nebo vysoké latence
 
-Jak začít využívat výhod asynchronní webovou aplikaci, můžete potřebovat udělat nějaké změny ve výchozí konfiguraci serveru. Zachovat následující v úvahu při konfiguraci a zátěžové testování asynchronní webové aplikace.
+Aby bylo možné využít výhody asynchronní webové aplikace, může být nutné provést některé změny výchozí konfigurace serveru. Při konfiguraci a zátěži testování asynchronní webové aplikace mějte na paměti následující skutečnosti.
 
-- Windows klient operačních systémů Windows 7, Windows Vista a mít maximálně 10 souběžných požadavků. Je třeba operační systém Windows Server na jeho výhody asynchronních metod v případě velkého zatížení.
-- Registrace rozhraní .NET 4.5 se službou IIS z příkazového řádku se zvýšenými oprávněními:  
-  %windir%\Microsoft.NET\Framework64\v4.0.30319\aspnet\_regiis -i  
-  Zobrazit [ASP.NET IIS Registrační nástroj (Aspnet\_regiis.exe)](https://msdn.microsoft.com/library/k6h9cz8h.aspx)
-- Možná budete muset zvýšit [HTTP.sys](https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture) limit fronty z výchozí hodnoty 1 000 až 5 000. Pokud je nastavení příliš nízké, může se zobrazit [HTTP.sys](https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture) zamítnout žádosti se stavem HTTP 503. Chcete-li změnit HTTP.sys limit fronty:
+- Windows 7, Windows Vista a všechny klientské operační systémy Windows mají maximálně 10 souběžných požadavků. Budete potřebovat serverový operační systém Windows, abyste viděli výhody asynchronních metod při vysokém zatížení.
+- Registrace .NET 4,5 se službou IIS z příkazového řádku se zvýšenými oprávněními:  
+  %windir%\Microsoft.NET\Framework64\v4.0.30319\aspnet\_regiis – i  
+  Viz [registrační nástroj služby IIS pro ASP.NET (Aspnet\_regiis. exe)](https://msdn.microsoft.com/library/k6h9cz8h.aspx) .
+- Možná budete muset zvýšit limit fronty [http. sys](https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture) z výchozí hodnoty 1 000 na 5 000. Pokud je nastavení příliš nízké, může se stát, že žádosti o odmítnutí [http. sys](https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture) se zobrazí ve stavu HTTP 503. Změna limitu fronty HTTP. sys:
 
     - Otevřete Správce služby IIS a přejděte do podokna fondy aplikací.
-    - Klikněte pravým tlačítkem myši na cílový fond aplikací a vyberte **Upřesnit nastavení**.  
-        ![advanced](using-asynchronous-methods-in-aspnet-mvc-4/_static/image4.png)
-    - V **Upřesnit nastavení** dialogovém okně Změnit *délka fronty* od 1 do 5 000 000.  
-        ![Délka fronty](using-asynchronous-methods-in-aspnet-mvc-4/_static/image5.png)  
+    - Klikněte pravým tlačítkem na cílový fond aplikací a vyberte **Upřesnit nastavení**.  
+        ![pokročilé](using-asynchronous-methods-in-aspnet-mvc-4/_static/image4.png)
+    - V dialogovém okně **Upřesnit nastavení** změňte *délku fronty* z 1 000 na 5 000.  
+        Délka fronty ![](using-asynchronous-methods-in-aspnet-mvc-4/_static/image5.png)  
   
-  Poznámka: výše uvedené, Image rozhraní .NET framework je uveden jako verzi 4.0, i když se fond aplikací používá rozhraní .NET 4.5. Informace o tom této nesrovnalosti, naleznete v následujících tématech:
+  Všimněte si, že na obrázcích výše je rozhraní .NET Framework uvedeno jako v 4.0, i když fond aplikací používá rozhraní .NET 4,5. Pro pochopení této nesrovnalosti si přečtěte následující informace:
 
-    - [Správa verzí rozhraní .NET a cílení na více platforem - .NET 4.5 je místní upgrade na rozhraní .NET 4.0](http://www.hanselman.com/blog/NETVersioningAndMultiTargetingNET45IsAnInplaceUpgradeToNET40.aspx)
-    - [Nastavení aplikace služby IIS nebo fondu aplikací, používat technologii ASP.NET 3.5 spíše než 2.0](http://www.hanselman.com/blog/HowToSetAnIISApplicationOrAppPoolToUseASPNET35RatherThan20.aspx)
-    - [Verze rozhraní .NET framework a závislosti](https://msdn.microsoft.com/library/bb822049(VS.110).aspx)
-- Pokud vaše aplikace používá webové služby nebo System.NET ke komunikaci s back-end pomocí protokolu HTTP budete možná muset zvýšit [connectionManagement/maxconnection](https://msdn.microsoft.com/library/fb6y0fyc(VS.110).aspx) elementu. Pro aplikace ASP.NET je omezen pomocí funkce automatické konfigurace 12krát větší počet procesorů. To znamená, že na quad-proc, můžete mít nejvýše 12 \* 4 = 48 souběžných připojení na koncový bod IP. Protože to je vázán na [autoConfig](https://msdn.microsoft.com/library/7w2sway1(VS.110).aspx), nejjednodušší způsob, jak zvýšit `maxconnection` v ASP.NET, aplikace je nastavit [System.Net.ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(VS.110).aspx) programově v z `Application_Start` metodu *global.asax* souboru. Najdete v ukázce stahovat pro příklad.
-- V rozhraní .NET 4.5, výchozí 5000 pro [maxconcurrentrequestspercpu technologie](https://blogs.msdn.com/tmarq/archive/2007/07/21/asp-net-thread-usage-on-iis-7-0-and-6-0.aspx) by měla být v pořádku.
+    - [Verze rozhraní .NET a cílení na více verzí – .NET 4,5 je místní upgrade na rozhraní .NET 4,0](http://www.hanselman.com/blog/NETVersioningAndMultiTargetingNET45IsAnInplaceUpgradeToNET40.aspx)
+    - [Jak nastavit aplikaci IIS nebo službu AppPool na použití ASP.NET 3,5 místo 2,0](http://www.hanselman.com/blog/HowToSetAnIISApplicationOrAppPoolToUseASPNET35RatherThan20.aspx)
+    - [.NET Framework verze a závislosti](https://msdn.microsoft.com/library/bb822049(VS.110).aspx)
+- Pokud vaše aplikace používá webové služby nebo System.NET ke komunikaci s back-endu přes protokol HTTP, může být nutné zvýšit [connectionManagement/maxconnection](https://msdn.microsoft.com/library/fb6y0fyc(VS.110).aspx) element. U aplikací ASP.NET to je omezené funkcí Automatická konfigurace na 12 časů počtu procesorů. To znamená, že u čtyřjádrových procesů můžete mít maximálně 12 \* 4 = 48 souběžných připojení k koncovému bodu IP adres. Vzhledem k tomu, že se jedná o přizpůsobitelné [automatické konfigurace](https://msdn.microsoft.com/library/7w2sway1(VS.110).aspx), nejjednodušší způsob, jak zvýšit `maxconnection` v aplikaci ASP.NET, je nastavit [System .NET. Třída ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(VS.110).aspx) programově v metodě `Application_Start` v souboru *Global. asax* . Příklad najdete v ukázkovém souboru ke stažení.
+- V rozhraní .NET 4,5 by měla být výchozí hodnota 5000 pro [maxConcurrentRequestsPerCPU](https://blogs.msdn.com/tmarq/archive/2007/07/21/asp-net-thread-usage-on-iis-7-0-and-6-0.aspx) .
