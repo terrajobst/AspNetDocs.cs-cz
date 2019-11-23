@@ -117,7 +117,7 @@ Zadáním více prvků **položky** se stejným názvem efektivně vytvoříte p
 
 [!code-xml[Main](understanding-the-project-file/samples/sample7.xml)]
 
-Tímto způsobem soubor projektu instruuje nástroj MSBuild, aby vytvořil seznam souborů, které je potřeba zpracovat stejným způsobem&#x2014;jako **odkaz** obsahuje sestavení, která musí být na místě pro úspěšné sestavení. seznam **kompilací** obsahuje kód. soubory, které je třeba zkompilovat, a seznam **obsahu** obsahuje prostředky, které je nutné zkopírovat beze změny. Podíváme se na to, jak proces sestavení odkazuje a používá tyto položky dále v tomto tématu.
+Tímto způsobem soubor projektu instruuje nástroj MSBuild, aby vytvořil seznam souborů, které je třeba zpracovat stejným&#x2014;způsobem jako **odkaz** obsahuje sestavení, která musí být určena pro úspěšné sestavení, seznam **kompilací** obsahuje soubory kódu, které musí být zkompilovány, a seznam **obsahu** obsahuje prostředky, které je nutné zkopírovat beze změny. Podíváme se na to, jak proces sestavení odkazuje a používá tyto položky dále v tomto tématu.
 
 Prvky položky mohou také zahrnovat podřízené elementy [ItemMetadata –](https://msdn.microsoft.com/library/ms164284.aspx) . Jsou to uživatelsky definované páry klíč-hodnota a v podstatě představují vlastnosti, které jsou specifické pro danou položku. Například velké množství prvků položky **kompilace** v souboru projektu zahrnuje podřízené elementy **DependentUpon** .
 

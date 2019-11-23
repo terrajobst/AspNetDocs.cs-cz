@@ -1,6 +1,6 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis
-title: 'ASP.NET nasazení webu pomocí sady Visual Studio: Nasazování do testu | Microsoft Docs'
+title: 'ASP.NET nasazení webu pomocí sady Visual Studio: nasazení do testu | Microsoft Docs'
 author: tdykstra
 description: V této sérii kurzů se dozvíte, jak nasadit (publikovat) webovou aplikaci ASP.NET, která bude Azure App Service Web Apps nebo poskytovateli hostingu třetí strany, pomocí usin...
 ms.author: riande
@@ -15,9 +15,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/13/2019
 ms.locfileid: "70985858"
 ---
-# <a name="aspnet-web-deployment-using-visual-studio-deploying-to-test"></a>ASP.NET nasazení webu pomocí sady Visual Studio: Nasazení do testovacího prostředí
+# <a name="aspnet-web-deployment-using-visual-studio-deploying-to-test"></a>ASP.NET nasazení webu pomocí sady Visual Studio: nasazení do testování
 
-Tím, že [Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
 V této sérii kurzů se dozvíte, jak nasadit (publikovat) webovou aplikaci ASP.NET, která bude Azure App Service Web Apps nebo poskytovateli hostování třetí strany pomocí sady Visual Studio 2017. Informace o řadě najdete v [prvním kurzu v řadě](introduction.md).
 
@@ -43,7 +43,7 @@ Možnost 2 je nejspolehlivější způsob testování. Pokud použijete možnost
 
 Další informace o používání webových serverů v aplikaci Visual Studio naleznete v tématu [webové servery v aplikaci Visual Studio pro webové projekty ASP.NET](https://msdn.microsoft.com/library/58wxa9w5.aspx).
 
-Poznámku Pokud se vám zobrazí chybová zpráva nebo při procházení kurzu něco nefunguje, zkontrolujte [stránku Poradce při potížích](troubleshooting.md).
+Připomenutí: Pokud obdržíte chybovou zprávu nebo něco nefunguje při procházení tohoto kurzu, zkontrolujte [stránku Poradce při potížích](troubleshooting.md).
 
 ## <a name="download-the-contoso-university-starter-project"></a>Stáhnout projekt contoso University Starter
 
@@ -67,7 +67,7 @@ Pokud chcete nasadit službu IIS na svém vývojovém počítači, zkontrolujte,
 
      Zobrazí se zpráva oznamující, že se nainstaluje služba IIS 7. Odkaz funguje pro IIS 8 ve Windows 8; u systému Windows 8 a novějších verzí ale Projděte následující kroky, abyste se ujistili, že je nainstalovaná ASP.NET 4,7:
 
-   * Otevřete **Ovládací panely** >  > programy programy**a funkce** **zapnout nebo vypnout funkce systému Windows.**  > 
+   * Otevřete **Ovládací panely** > **programy** > **programy a funkce** > **zapnout nebo vypnout funkce systému Windows**.
 
    * Rozbalte **Internetová informační služba**, **webové služby**a **funkce pro vývoj aplikací**.
    
@@ -95,7 +95,7 @@ Po instalaci služby IIS spusťte **Správce služby IIS** , abyste se ujistili,
 
 4. Pokud vidíte pouze dva fondy aplikací a obě jsou nastaveny na .NET Framework 2,0, nainstalujte ASP.NET 4 do služby IIS.
 
-   V systému Windows 8 nebo novějším se podívejte na předchozí část s pokyny pro zajištění, že je nainstalovaná verze ASP.NET 4,7, nebo si přečtěte, [Jak nainstalovat ASP.NET 4,5 v systému Windows 8 a Windows Server 2012](https://support.microsoft.com/kb/2736284). V případě systému Windows 7 otevřete okno příkazového řádku kliknutím pravým tlačítkem myši na **příkazový řádek** v nabídce **Start** systému Windows a výběrem možnosti **Spustit jako správce**. Spuštěním [ASPNET\_regiis. exe](https://msdn.microsoft.com/library/k6h9cz8h.aspx) nainstalujete ASP.NET 4 do služby IIS pomocí následujících příkazů. (V 32 systémech nahraďte "Framework64" rozhraním "Framework".)
+   V systému Windows 8 nebo novějším se podívejte na předchozí část s pokyny pro zajištění, že je nainstalovaná verze ASP.NET 4,7, nebo si přečtěte, [Jak nainstalovat ASP.NET 4,5 v systému Windows 8 a Windows Server 2012](https://support.microsoft.com/kb/2736284). V případě systému Windows 7 otevřete okno příkazového řádku kliknutím pravým tlačítkem myši na **příkazový řádek** v nabídce **Start** systému Windows a výběrem možnosti **Spustit jako správce**. Spuštěním příkazu [aspnet\_regiis. exe](https://msdn.microsoft.com/library/k6h9cz8h.aspx) nainstalujete ASP.NET 4 do služby IIS pomocí následujících příkazů. (V 32 systémech nahraďte "Framework64" rozhraním "Framework".)
 
    [!code-console[Main](deploying-to-iis/samples/sample1.cmd)]
 
@@ -109,7 +109,7 @@ Po instalaci služby IIS spusťte **Správce služby IIS** , abyste se ujistili,
 
 7. V dialogovém okně **Upravit fond aplikací** změňte **verzi .NET CLR** na **.NET CLR v 4.0.30319**. Vyberte **OK**.
 
-   ![Selecting_. NET _4_for_DefaultAppPool](deploying-to-iis/_static/image6a.png)
+   ![Selecting_. NET_4_for_DefaultAppPool](deploying-to-iis/_static/image6a.png)
 
 Nyní jste připraveni publikovat webovou aplikaci do služby IIS. Nejprve však vytvořte databáze pro testování.
 
@@ -119,7 +119,7 @@ Nyní jste připraveni publikovat webovou aplikaci do služby IIS. Nejprve však
 
 LocalDB není navržený tak, aby fungoval ve službě IIS, takže vaše testovací prostředí musí mít nainstalovaný SQL Server Express. Pokud používáte Visual Studio 2010 SQL Server Express, je již ve výchozím nastavení nainstalován. Pokud používáte Visual Studio 2012 nebo novější, nainstalujte SQL Server Express.
 
-Pokud chcete nainstalovat SQL Server Express, Stáhněte si ho z [webu Download Center a nainstalujte ho. Edice](https://www.microsoft.com/sql-server/sql-server-editions-express)Microsoft SQL Server 2017 Express. 
+Pokud chcete nainstalovat SQL Server Express, Stáhněte si ho a nainstalujte si ho z [webu Download Center: Microsoft SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express). 
 
 Na první stránce centra instalace SQL Server vyberte **nový SQL Server samostatnou instalaci nebo přidejte funkce do existující instalace** a postupujte podle pokynů pro přijetí výchozích možností. V Průvodci instalací přijměte výchozí nastavení. Další informace o možnostech instalace najdete v tématu [instalace SQL Server v Průvodci instalací (nastavení)](https://msdn.microsoft.com/library/ms143219.aspx).
 
@@ -164,7 +164,7 @@ V aplikaci Visual Studio otevřete řešení contoso University. Klikněte prav�
 > Tento skript je navržený tak, aby fungoval s SQL Server Express 2012 nebo novějším a s nastavením služby IIS ve Windows 10, Windows 8 nebo Windows 7, jak jsou uvedeny v tomto kurzu. Pokud používáte jinou verzi SQL Server nebo Windows nebo pokud jste v počítači nastavili službu IIS odlišně, může se stát, že se budou vyžadovat změny v tomto skriptu. Další informace o SQL Server skriptů naleznete v tématu [SQL Server Books Online](https://go.microsoft.com/fwlink/?LinkId=132511).
 
 > [!NOTE] 
-> **Poznámka k zabezpečení** Tento skript poskytuje `db_owner` uživateli oprávnění k přístupu k databázi v době běhu, což je to, co budete mít v produkčním prostředí. V některých scénářích můžete chtít zadat uživatele, který má úplná oprávnění aktualizace schématu databáze jenom pro nasazení, a určit pro dobu běhu jiného uživatele, který má oprávnění jenom pro čtení a zápis dat. Další informace najdete v tématu [Kontrola automatických změn souboru Web. config pro migrace Code First](#reviewingmigrations) dále v tomto kurzu.
+> **Poznámka k zabezpečení** Tento skript poskytuje `db_owner` oprávnění uživateli, který přistupuje k databázi v době běhu, což je to, co budete mít v produkčním prostředí. V některých scénářích můžete chtít zadat uživatele, který má úplná oprávnění aktualizace schématu databáze jenom pro nasazení, a určit pro dobu běhu jiného uživatele, který má oprávnění jenom pro čtení a zápis dat. Další informace najdete v tématu [Kontrola automatických změn souboru Web. config pro migrace Code First](#reviewingmigrations) dále v tomto kurzu.
 
 <a id="publish"></a>
 
@@ -229,9 +229,9 @@ Před publikováním se ujistěte, že používáte aplikaci Visual Studio v re�
 
 10. Rozevírací seznam **Konfigurace** určuje konfiguraci sestavení, která se má nasadit. Nechte nastavenou na výchozí hodnotu **vydaná verze**. V tomto kurzu nebudete nasazovat sestavení pro ladění.
 
-11. Rozbalte položku **Možnosti publikování souboru**. Vyberte **vyloučit soubory ze složky data\_aplikací**.
+11. Rozbalte položku **Možnosti publikování souboru**. Vyberte **vyloučit soubory ze složky\_dat aplikace**.
 
-    V testovacím prostředí aplikace přistupuje k databázím, které jste vytvořili v místní instanci SQL Server Express, nikoli v souborech. mdf ve složce *data aplikací\_* .
+    V testovacím prostředí aplikace přistupuje k databázím, které jste vytvořili v místní instanci SQL Server Express, nikoli v souborech MDF ve složce *App\_data* .
 
 12. Nechte **předkompilovat během publikování** a zrušte zaškrtnutí políček **odebrat další soubory v cílovém umístění** .
 
@@ -246,7 +246,7 @@ Před publikováním se ujistěte, že používáte aplikaci Visual Studio v re�
     > 
     > Například pokud máte webovou aplikaci v podsložce na serveru, když nasadíte projekt do kořenové složky, podsložka bude odstraněna. Můžete mít jeden projekt pro hlavní web na contoso.com a jiný projekt pro blog na contoso.com/blog. Aplikace blogu je v podsložce. Pokud při nasazení hlavní lokality vyberete možnost **odebrat další soubory v cíli** , aplikace blogu se odstraní.
     > 
-    > Pro jiný příklad se může stát\_, že se složka s daty vaší aplikace neočekávaně odstranila. Některé databáze, například soubory databáze SQL Server Compact Store ve složce data\_aplikací. Po počátečním nasazení nechcete uchovávat soubory databáze v následných nasazeních, takže vyberete **vyloučit data aplikací\_** na kartě Balení/publikování webu. Pokud jste vybrali možnost **odebrat další soubory v cílovém umístění** , vaše soubory databáze a složka data aplikace\_budou při příštím publikování smazány.
+    > Pro jiný příklad se může stát, že se vaše aplikace\_datovou složku neočekávaně odstranila. Některé databáze, například soubory databáze SQL Server Compact Store ve složce App\_data. Po počátečním nasazení nechcete uchovávat soubory databáze v následných nasazeních, takže vyberete **vyloučit aplikace\_data** na kartě Balení/publikování webu. Pokud jste vybrali možnost **odebrat další soubory v cílovém umístění** , vaše soubory databáze a aplikace\_data samotné se odstraní při příštím publikování.
 
 ### <a name="configure-deployment-for-the-membership-database"></a>Konfigurace nasazení pro databázi členství
 
@@ -258,7 +258,7 @@ Následující postup platí pro databázi **DefaultConnection** v části **dat
 
    Proces nasazení vloží tento připojovací řetězec do nasazeného souboru Web. config, protože je vybrán **použít tento připojovací řetězec za běhu** .
 
-    Připojovací řetězec můžete také získat z **Průzkumník serveru**. V **Průzkumník serveru**rozbalte **datová připojení**  **&lt;&gt;** a vyberte databázi MachineName \SQLExpress.ASPNET-ContosoUniversity a potom v okně **vlastnosti** zkopírujte **připojovací řetězec.** hodnota. Tento připojovací řetězec bude mít jedno další nastavení, které můžete odstranit: `Pooling=False`.
+    Připojovací řetězec můžete také získat z **Průzkumník serveru**. V **Průzkumník serveru**rozbalte **datová připojení** a vyberte **&lt;nazev_pocitace&gt;\SQLExpress.ASPNET-ContosoUniversity** databázi a potom v okně **vlastnosti** Zkopírujte hodnotu **připojovacího řetězce** . Tento připojovací řetězec bude mít jedno další nastavení, které můžete odstranit: `Pooling=False`.
 
 2. Vyberte **aktualizovat databázi**.
 
@@ -276,9 +276,9 @@ Následující postup platí pro databázi **DefaultConnection** v části **dat
 
 ### <a name="configure-deployment-for-the-application-database"></a>Konfigurace nasazení pro databázi aplikace
 
-Když aplikace Visual Studio zjistí třídu `DbContext` Entity Framework, vytvoří položku v sekci **databáze** , která má zaškrtávací políčko **Spustit migrace Code First** místo v poli **aktualizace databáze** . V tomto kurzu použijete toto zaškrtávací políčko k určení Migrace Code Firstho nasazení.
+Když aplikace Visual Studio zjistí třídu Entity Framework `DbContext`, vytvoří položku v sekci **databáze** , která má zaškrtávací políčko **Spustit migrace Code First** místo zaškrtávacího políčka **databáze aktualizace** . V tomto kurzu použijete toto zaškrtávací políčko k určení Migrace Code Firstho nasazení.
 
-V některých scénářích můžete použít `DbContext` databázi, ale chcete použít poskytovatele dbDacFx místo migrace k nasazení databáze. V takovém případě si přečtěte téma [návody nasazení Code First databáze bez migrace?](https://msdn.microsoft.com/library/ee942158.aspx#deploy_code_first_without_migrations) v nejčastějších dotazech k nasazení webu ASP.NET na webu MSDN.
+V některých scénářích můžete použít databázi `DbContext`, ale chcete použít poskytovatele dbDacFx místo migrace k nasazení databáze. V takovém případě si přečtěte téma [návody nasazení Code First databáze bez migrace?](https://msdn.microsoft.com/library/ee942158.aspx#deploy_code_first_without_migrations) v nejčastějších dotazech k nasazení webu ASP.NET na webu MSDN.
 
 Následující postup platí pro databázi **SchoolContext** v části **databáze** dialogového okna.
 
@@ -314,7 +314,7 @@ Následující postup platí pro databázi **SchoolContext** v části **databá
 
     Když použijete profil publikování testu, tato transformace nastaví indikátor prostředí na "test". V nasazeném webu uvidíte "(test)" za nadpisem "contoso University" H1.
 
-6. Soubor uložte a zavřete.
+6. Uložte soubor a zavřete ho.
 
 7. Klikněte pravým tlačítkem myši na soubor *Web. test. config* a vyberte možnost **Náhled transformace** , abyste se ujistili, že transformace, kterou jste zakódujete, poskytuje očekávané změny.
 
@@ -344,7 +344,7 @@ Následující postup platí pro databázi **SchoolContext** v části **databá
 
 Všimněte si, že indikátor prostředí zobrazuje "(test)" místo "(dev)", což ukazuje, že transformace *Web. config* pro indikátor prostředí byla úspěšná.
 
-Spuštěním stránky **instruktory** ověřte, zda Code First dosazení databáze s daty instruktory. Když vyberete tuto stránku, může trvat několik minut, než se načte, protože Code First vytvoří databázi a pak spustí `Seed` metodu. (Neudělal to, když jste na domovské stránce, protože aplikace se ještě nepokoušela o přístup k databázi.)
+Spuštěním stránky **instruktory** ověřte, zda Code First dosazení databáze s daty instruktory. Když vyberete tuto stránku, může trvat několik minut, než se načtou, protože Code First vytvoří databázi a potom spustí metodu `Seed`. (Neudělal to, když jste na domovské stránce, protože aplikace se ještě nepokoušela o přístup k databázi.)
 
 Vyberte kartu **studenti** a ověřte, zda nasazená databáze nemá žádné studenty.
 
@@ -366,7 +366,7 @@ Proces nasazení také vytvořil nový připojovací řetězec pro Migrace Code 
 
 ![Připojovací řetězec Database_Publish](deploying-to-iis/_static/image22.png)
 
-Tento dodatečný připojovací řetězec umožňuje zadat jeden uživatelský účet pro aktualizace schématu databáze a jiný uživatelský účet pro přístup k datům aplikací. Můžete například přiřadit roli **vlastníka\_databáze** migrace Code First a **databázi DataReader databáze\_DataReader** s rolemi **DB\_datawrite** do aplikace. Jedná se o běžný způsob obrany, který brání potenciálně škodlivému kódu v aplikaci ve změně schématu databáze. (K tomu může dojít například při úspěšném útoku injektáže SQL.) Tyto kurzy tento model nepoužívají. K implementaci tohoto modelu ve vašem scénáři proveďte tyto kroky:
+Tento dodatečný připojovací řetězec umožňuje zadat jeden uživatelský účet pro aktualizace schématu databáze a jiný uživatelský účet pro přístup k datům aplikací. Můžete například přiřadit roli **vlastníka databáze\_** migrace Code First a **DB\_DataReader** s DB\_rolemi **datawrite** do aplikace. Jedná se o běžný způsob obrany, který brání potenciálně škodlivému kódu v aplikaci ve změně schématu databáze. (K tomu může dojít například při úspěšném útoku injektáže SQL.) Tyto kurzy tento model nepoužívají. K implementaci tohoto modelu ve vašem scénáři proveďte tyto kroky:
 
 1. V průvodci **publikování webu** na kartě **Nastavení** zadejte připojovací řetězec, který určuje uživatele s úplnými oprávněními pro aktualizaci schématu databáze. Zrušte zaškrtnutí políčka **použít tento připojovací řetězec za běhu** . V nasazeném souboru Web. config se jedná o `DatabasePublish` připojovací řetězec.
 
@@ -392,5 +392,5 @@ Informace o spuštění služby IIS nebo IIS Express v aplikaci Visual Studio na
 Informace o tom, jaké problémy mohou nastat, když vaše aplikace běží ve středním vztahu důvěryhodnosti, najdete v tématu [hostování aplikací ASP.NET ve středním vztahu důvěryhodnosti](http://www.4guysfromrolla.com/articles/100307-1.aspx) na čtyřech kyberbezpečnosti z webu Rolla.
 
 > [!div class="step-by-step"]
-> [Předchozí](project-properties.md)Další
-> [](setting-folder-permissions.md)
+> [Předchozí](project-properties.md)
+> [Další](setting-folder-permissions.md)
