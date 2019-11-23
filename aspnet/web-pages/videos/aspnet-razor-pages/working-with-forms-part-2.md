@@ -15,15 +15,15 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/02/2019
 ms.locfileid: "73445513"
 ---
-# <a name="working-with-forms-part-2"></a><span data-ttu-id="d2c41-103">Práce s formuláři (2. část)</span><span class="sxs-lookup"><span data-stu-id="d2c41-103">Working with Forms (Part 2)</span></span>
+# <a name="working-with-forms-part-2"></a><span data-ttu-id="aba81-103">Práce s formuláři (2. část)</span><span class="sxs-lookup"><span data-stu-id="aba81-103">Working with Forms (Part 2)</span></span>
 
-<span data-ttu-id="d2c41-104">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="d2c41-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="aba81-104">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="aba81-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="d2c41-105">Kurz k používání videa v kurzu práce s formuláři (část 2)</span><span class="sxs-lookup"><span data-stu-id="d2c41-105">Video accompaniment to the Working with Forms tutorial (Part 2)</span></span>
+<span data-ttu-id="aba81-105">Kurz k používání videa v kurzu práce s formuláři (část 2)</span><span class="sxs-lookup"><span data-stu-id="aba81-105">Video accompaniment to the Working with Forms tutorial (Part 2)</span></span>
 
-<span data-ttu-id="d2c41-106">[&#9654;Sledovat video (16 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-forms-(part-2))</span><span class="sxs-lookup"><span data-stu-id="d2c41-106">[&#9654; Watch video (16 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-forms-(part-2))</span></span>
+<span data-ttu-id="aba81-106">[&#9654;Sledovat video (16 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-forms-(part-2))</span><span class="sxs-lookup"><span data-stu-id="aba81-106">[&#9654; Watch video (16 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-forms-(part-2))</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="d2c41-107">[Předchozí](working-with-forms-part-1.md)
-> [Další](working-with-data-part-1.md)</span><span class="sxs-lookup"><span data-stu-id="d2c41-107">[Previous](working-with-forms-part-1.md)
+> <span data-ttu-id="aba81-107">[Předchozí](working-with-forms-part-1.md)
+> [Další](working-with-data-part-1.md)</span><span class="sxs-lookup"><span data-stu-id="aba81-107">[Previous](working-with-forms-part-1.md)
 [Next](working-with-data-part-1.md)</span></span>

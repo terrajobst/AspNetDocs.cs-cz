@@ -15,15 +15,15 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/02/2019
 ms.locfileid: "73445719"
 ---
-# <a name="working-with-data-part-1"></a><span data-ttu-id="a0b22-103">Práce s daty (1. část)</span><span class="sxs-lookup"><span data-stu-id="a0b22-103">Working with Data (Part 1)</span></span>
+# <a name="working-with-data-part-1"></a><span data-ttu-id="80f5b-103">Práce s daty (1. část)</span><span class="sxs-lookup"><span data-stu-id="80f5b-103">Working with Data (Part 1)</span></span>
 
-<span data-ttu-id="a0b22-104">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="a0b22-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="80f5b-104">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="80f5b-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="a0b22-105">Kurz k práci s daty (část 1)</span><span class="sxs-lookup"><span data-stu-id="a0b22-105">Video accompaniment to the Working with Data tutorial (Part 1)</span></span>
+<span data-ttu-id="80f5b-105">Kurz k práci s daty (část 1)</span><span class="sxs-lookup"><span data-stu-id="80f5b-105">Video accompaniment to the Working with Data tutorial (Part 1)</span></span>
 
-<span data-ttu-id="a0b22-106">[&#9654;Sledovat video (8 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-data-(part-1))</span><span class="sxs-lookup"><span data-stu-id="a0b22-106">[&#9654; Watch video (8 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-data-(part-1))</span></span>
+<span data-ttu-id="80f5b-106">[&#9654;Sledovat video (8 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-data-(part-1))</span><span class="sxs-lookup"><span data-stu-id="80f5b-106">[&#9654; Watch video (8 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-data-(part-1))</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="a0b22-107">[Předchozí](working-with-forms-part-2.md)
-> [Další](working-with-data-part-2.md)</span><span class="sxs-lookup"><span data-stu-id="a0b22-107">[Previous](working-with-forms-part-2.md)
+> <span data-ttu-id="80f5b-107">[Předchozí](working-with-forms-part-2.md)
+> [Další](working-with-data-part-2.md)</span><span class="sxs-lookup"><span data-stu-id="80f5b-107">[Previous](working-with-forms-part-2.md)
 [Next](working-with-data-part-2.md)</span></span>

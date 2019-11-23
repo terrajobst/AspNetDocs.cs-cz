@@ -15,15 +15,15 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/02/2019
 ms.locfileid: "73445647"
 ---
-# <a name="creating-a-consistent-look-part-1"></a><span data-ttu-id="997dd-103">Vytvoření konzistentního vzhledu (1. část)</span><span class="sxs-lookup"><span data-stu-id="997dd-103">Creating a Consistent Look (Part 1)</span></span>
+# <a name="creating-a-consistent-look-part-1"></a><span data-ttu-id="4e99a-103">Vytvoření konzistentního vzhledu (1. část)</span><span class="sxs-lookup"><span data-stu-id="4e99a-103">Creating a Consistent Look (Part 1)</span></span>
 
-<span data-ttu-id="997dd-104">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="997dd-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="4e99a-104">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="4e99a-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="997dd-105">Video s doprovodnou výukou k vytvoření konzistentního vzhledu (část 1)</span><span class="sxs-lookup"><span data-stu-id="997dd-105">Video accompaniment to the Creating a Consistent Look tutorial (part 1)</span></span>
+<span data-ttu-id="4e99a-105">Video s doprovodnou výukou k vytvoření konzistentního vzhledu (část 1)</span><span class="sxs-lookup"><span data-stu-id="4e99a-105">Video accompaniment to the Creating a Consistent Look tutorial (part 1)</span></span>
 
-<span data-ttu-id="997dd-106">[&#9654;Přehrát video (23 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-a-consistent-look-(part-1))</span><span class="sxs-lookup"><span data-stu-id="997dd-106">[&#9654; Watch video (23 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-a-consistent-look-(part-1))</span></span>
+<span data-ttu-id="4e99a-106">[&#9654;Přehrát video (23 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-a-consistent-look-(part-1))</span><span class="sxs-lookup"><span data-stu-id="4e99a-106">[&#9654; Watch video (23 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-a-consistent-look-(part-1))</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="997dd-107">[Předchozí](introduction-to-aspnet-web-programming-using-the-razor-syntax.md)
-> [Další](creating-a-consistent-look-part-2.md)</span><span class="sxs-lookup"><span data-stu-id="997dd-107">[Previous](introduction-to-aspnet-web-programming-using-the-razor-syntax.md)
+> <span data-ttu-id="4e99a-107">[Předchozí](introduction-to-aspnet-web-programming-using-the-razor-syntax.md)
+> [Další](creating-a-consistent-look-part-2.md)</span><span class="sxs-lookup"><span data-stu-id="4e99a-107">[Previous](introduction-to-aspnet-web-programming-using-the-razor-syntax.md)
 [Next](creating-a-consistent-look-part-2.md)</span></span>
