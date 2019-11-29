@@ -1,62 +1,62 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from-the-server-side-vb
-title: Úpravy animací na straně serveru (VB) | Dokumentace Microsoftu
+title: Úprava animací ze strany serveru (VB) | Microsoft Docs
 author: wenz
-description: Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Animace může také...
+description: Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Animace také mohou...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: addcf4aa-340a-460b-9c64-506424a1f725
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from-the-server-side-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5ba5a32b53fc304ec3a3f1af5c6533a6a0622ac0
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: ebc311d1a931ad611d9556799c94440d41a9cf49
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65127353"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74575205"
 ---
-# <a name="modifying-animations-from-the-server-side-vb"></a>Úpravy animací na straně serveru (VB)
+# <a name="modifying-animations-from-the-server-side-vb"></a>Změna animací ze strany serveru (VB)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation9.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation9VB.pdf)
+[Stažení kódu](https://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation9.vb.zip) nebo [stažení PDF](https://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation9VB.pdf)
 
-> Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Animace nejspíš se změní taky na straně serveru
+> Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Animace se taky můžou změnit na straně serveru.
 
 ## <a name="overview"></a>Přehled
 
-Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Animace nejspíš se změní taky na straně serveru
+Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Animace se taky můžou změnit na straně serveru.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Za prvé, zahrnout `ScriptManager` na stránce; potom technologie ASP.NET AJAX je načíst knihovnu, což umožňuje použití Control Toolkit:
+Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 
 [!code-aspx[Main](modifying-animations-from-the-server-side-vb/samples/sample1.aspx)]
 
-Animace se použijí pro panel text, který vypadá takto:
+Animace se použije na panel textu, který vypadá takto:
 
 [!code-aspx[Main](modifying-animations-from-the-server-side-vb/samples/sample2.aspx)]
 
-V přidružené třídy šablony stylů CSS pro panel definovat barvu pozadí nice a také nastavit Pevná šířka panelu:
+V přidružené třídě CSS pro panel definujte Skvělé barvy pozadí a také nastavte pevnou šířku panelu:
 
 [!code-css[Main](modifying-animations-from-the-server-side-vb/samples/sample3.css)]
 
-Zbytek kódu běží na straně serveru a nepoužívá značky Místo toho používá kód k vytvoření `AnimationExtender` ovládacího prvku:
+Zbytek kódu se spouští na straně serveru a nepoužívá značky; místo toho používá kód k vytvoření `AnimationExtender`ho ovládacího prvku:
 
 [!code-aspx[Main](modifying-animations-from-the-server-side-vb/samples/sample4.aspx)]
 
-Ale Control Toolkit aktuálně neposkytuje přístup rozhraní API k vytvoření jednotlivých animace. Je však možné nastavit `AnimationExtender`animace vlastností na řetězec obsahující kód XML, použít při přiřazování animací deklarativně. Chcete-li vytvořit XML, který nesmí obsahovat `<Animations>` element můžete použít XML rozhraní .NET Framework podporují, nebo jako v následujícím kódu, stačí zadat řetězec:
+Sada Control Toolkit ale v současné době neposkytuje přístup rozhraní API k vytváření jednotlivých animací. Je však možné nastavit vlastnost animací `AnimationExtender`na řetězec obsahující značku XML použitou při deklarativním přiřazení animací. Chcete-li vytvořit XML, které nesmí obsahovat prvek `<Animations>` můžete použít podporu XML .NET Framework nebo, jak je uvedeno v následujícím kódu, pouze zadat řetězec:
 
 [!code-vb[Main](modifying-animations-from-the-server-side-vb/samples/sample5.vb)]
 
-Nakonec přidejte `AnimationExtender` ovládací prvek na aktuální stránku v rámci `<form runat="server">` elementu, ujistěte se, že animaci je součástí a spustí:
+Nakonec přidejte ovládací prvek `AnimationExtender` do aktuální stránky v rámci `<form runat="server">` elementu a ujistěte se, že je animace zahrnutá a spuštěná:
 
 [!code-vb[Main](modifying-animations-from-the-server-side-vb/samples/sample6.vb)]
 
-[![Animace se vytvoří pomocí kódu na straně serveru C# /VB](modifying-animations-from-the-server-side-vb/_static/image2.png)](modifying-animations-from-the-server-side-vb/_static/image1.png)
+[![je animace vytvořena pomocí kódu/VB na straně C#serveru](modifying-animations-from-the-server-side-vb/_static/image2.png)](modifying-animations-from-the-server-side-vb/_static/image1.png)
 
-Animace se vytvoří pomocí kódu na straně serveru C# /VB ([kliknutím ji zobrazíte obrázek v plné velikosti](modifying-animations-from-the-server-side-vb/_static/image3.png))
+Animace je vytvořena pomocí/vb kódu na straně C#serveru ([kliknutím zobrazíte obrázek v plné velikosti).](modifying-animations-from-the-server-side-vb/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](triggering-an-animation-in-another-control-vb.md)
-> [další](executing-animations-using-client-side-code-vb.md)
+> [Další](executing-animations-using-client-side-code-vb.md)

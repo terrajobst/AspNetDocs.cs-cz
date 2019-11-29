@@ -1,70 +1,70 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-cs
-title: Spuštění animací klientským kódem (C#) | Dokumentace Microsoftu
+title: Spouštění animací pomocí kódu na straně klienta (C#) | Microsoft Docs
 author: wenz
-description: Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Spuštění animace...
+description: Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Spuštění animace...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 0270e0df-6fde-4a8f-a2cb-2cacc55143f2
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 23727e8f34afdd073b21aa1e7381237c48e699c4
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: b6ba1553b9c8c51d5d6ae1679e53f9cc1d17b769
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132721"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74599671"
 ---
 # <a name="executing-animations-using-client-side-code-c"></a>Spuštění animací klientským kódem (C#)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation10.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation10CS.pdf)
+[Stažení kódu](https://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation10.cs.zip) nebo [stažení PDF](https://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation10CS.pdf)
 
-> Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Spuštění animace může také aktivovat pomocí vlastního kódu jazyka JavaScript na straně klienta.
+> Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Spuštění animace se může také aktivovat pomocí vlastního kódu JavaScriptu na straně klienta.
 
 ## <a name="overview"></a>Přehled
 
-Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Spuštění animace může také aktivovat pomocí vlastního kódu jazyka JavaScript na straně klienta.
+Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Spuštění animace se může také aktivovat pomocí vlastního kódu JavaScriptu na straně klienta.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Za prvé, zahrnout `ScriptManager` na stránce; potom technologie ASP.NET AJAX je načíst knihovnu, což umožňuje použití Control Toolkit:
+Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 
 [!code-aspx[Main](executing-animations-using-client-side-code-cs/samples/sample1.aspx)]
 
-Animace se použijí pro panel text, který vypadá takto:
+Animace se použije na panel textu, který vypadá takto:
 
 [!code-aspx[Main](executing-animations-using-client-side-code-cs/samples/sample2.aspx)]
 
-V přidružené třídy šablony stylů CSS pro panel definovat barvu pozadí nice a také nastavit Pevná šířka panelu:
+V přidružené třídě CSS pro panel definujte Skvělé barvy pozadí a také nastavte pevnou šířku panelu:
 
 [!code-css[Main](executing-animations-using-client-side-code-cs/samples/sample3.css)]
 
-Pak přidejte `AnimationExtender` na stránku, poskytování `ID`, `TargetControlID` atribut a povinný údaj `runat="server"`:
+Pak přidejte `AnimationExtender` na stránku a zadejte `ID`, atribut `TargetControlID` a povinný `runat="server"`:
 
 [!code-aspx[Main](executing-animations-using-client-side-code-cs/samples/sample4.aspx)]
 
-V rámci `<Animations>` uzlu, použijte `<OnClick>` spuštění animací uživatel klikne na tlačítko na panelu. Přidejte dva animace provádět paralelně:
+V uzlu `<Animations>` pomocí `<OnClick>` spustit animace, jakmile uživatel klikne na panel. Přidejte dvě animace, které se mají spustit paralelně:
 
 [!code-xml[Main](executing-animations-using-client-side-code-cs/samples/sample5.xml)]
 
-Představu Tato animace (a jakékoli jiné animace vytvořené pomocí Control Toolkit) je provedeno pomocí kódu jazyka JavaScript, po spuštění stránky. Za prvé jsme potřebují přístup k `AnimationExtender` ovládacího prvku. Poskytuje knihovna ASP.NET AJAX `$find()` funkce pro tuto úlohu:
+Pro účely ukázky je tato animace (a jakákoli jiná animace vytvořená pomocí sady Control Toolkit) spouštěna pomocí kódu jazyka JavaScript po spuštění stránky. Nejdřív potřebujeme přístup k ovládacímu prvku `AnimationExtender`. Knihovna ASP.NET AJAX poskytuje funkci `$find()` pro tuto úlohu:
 
 [!code-csharp[Main](executing-animations-using-client-side-code-cs/samples/sample6.cs)]
 
-`AnimationExtender` Ovládací prvek poskytuje plnohodnotné rozhraní API, včetně metod s názvy shodné s obslužné rutiny událostí používá v kódu XML: `OnClick()`, `OnLoad()`, a tak dále. Například volání `OnClick()` spuštění animace v rámci metody `<OnClick>` elementu `AnimationExtender` ovládacího prvku:
+Ovládací prvek `AnimationExtender` zpřístupňuje bohatá rozhraní API, včetně metod s názvy shodnými s obslužnými rutinami událostí použitými v kódu XML: `OnClick()`, `OnLoad()`a tak dále. Například volání metody `OnClick()` spustí animaci v rámci elementu `<OnClick>` ovládacího prvku `AnimationExtender`:
 
 [!code-javascript[Main](executing-animations-using-client-side-code-cs/samples/sample7.js)]
 
-Tady je kompletní kód JavaScript na straně klienta, který emuluje klikněte na panelu, jakmile úplným načtením stránky, Všimněte si, že `pageLoad()` se používá název funkce, které je voláno rozhraním ASP.NET AJAX jednou na stránce a zahrnuty všechny byly knihoven jazyka JavaScript načíst.
+Zde je kompletní kód JavaScriptu na straně klienta, který emuluje kliknutí na panel po úplném načtení stránky, Všimněte si, že se používá název funkce `pageLoad()`, který je volán ASP.NET AJAX po načtení stránky a všech zahrnutých knihoven JavaScriptu.
 
 [!code-html[Main](executing-animations-using-client-side-code-cs/samples/sample8.html)]
 
-[![Animace se spustí okamžitě, bez kliknutí myší](executing-animations-using-client-side-code-cs/_static/image2.png)](executing-animations-using-client-side-code-cs/_static/image1.png)
+[![se animace spustí hned bez kliknutí myší.](executing-animations-using-client-side-code-cs/_static/image2.png)](executing-animations-using-client-side-code-cs/_static/image1.png)
 
-Animace se spustí okamžitě, bez kliknutí myší ([kliknutím ji zobrazíte obrázek v plné velikosti](executing-animations-using-client-side-code-cs/_static/image3.png))
+Animace se spustí okamžitě bez kliknutí myší ([kliknutím zobrazíte obrázek v plné velikosti).](executing-animations-using-client-side-code-cs/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](modifying-animations-from-the-server-side-cs.md)
-> [další](changing-an-animation-using-client-side-code-cs.md)
+> [Další](changing-an-animation-using-client-side-code-cs.md)

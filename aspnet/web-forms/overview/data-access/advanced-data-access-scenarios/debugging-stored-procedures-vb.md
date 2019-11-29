@@ -1,170 +1,170 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-vb
-title: Ladění uložených procedur (VB) | Dokumentace Microsoftu
+title: Ladění uložených procedur (VB) | Microsoft Docs
 author: rick-anderson
-description: Edice sady Visual Studio Professional a systém týmu vám umožní nastavit zarážky a vstoupit do uložených procedur v rámci SQL serveru, ladí uložené...
+description: Edice Visual Studio Professional a Team System umožňují nastavit zarážky a krokovat s tím, že se v rámci SQL Server nastavují uložené procedury a ladění se uloží...
 ms.author: riande
 ms.date: 08/03/2007
 ms.assetid: 9ed8ccb5-5f31-4eb4-976d-cabf4b45ca09
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e02f259d0c9833a91bd1592f46e0a4e30d59cea1
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 13d213ef4baf493a4f05a82daae8d2dc3b0aa61b
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131852"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74604669"
 ---
 # <a name="debugging-stored-procedures-vb"></a>Ladění uložených procedur (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_74_VB.zip) nebo [stahovat PDF](debugging-stored-procedures-vb/_static/datatutorial74vb1.pdf)
+[Stažení kódu](https://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_74_VB.zip) nebo [stažení PDF](debugging-stored-procedures-vb/_static/datatutorial74vb1.pdf)
 
-> Edice sady Visual Studio Professional a systém týmu umožní nastavit zarážky a vstoupit do uložených procedur v rámci SQL serveru, vytváření, ladění uložených procedur stejně snadné jako ladění kódu aplikace. Tento kurz ukazuje přímé ladění databáze a ladění aplikací uložených procedur.
+> Edice Visual Studio Professional a Team System umožňují nastavit zarážky a krokovat s tím, že se v rámci SQL Server nastavují uložené procedury a budou ladit uložené procedury stejně snadné jako ladit kód aplikace. Tento kurz ukazuje přímé ladění databáze a ladění aplikací uložených procedur.
 
 ## <a name="introduction"></a>Úvod
 
-Visual Studio nabízí bohaté možnosti ladění. Pomocí několika kliknutí myši, nebo stisknutí kláves ji možné používat zarážky pro zastavení provádění programu a zkontrolujte jeho stav a řízení toku s. Společně s laděním kódu aplikace Visual Studio nabízí podporu pro ladění uložených procedur z v rámci SQL serveru. Stejným způsobem, jako je možné nastavit zarážky v kódu ASP.NET použití modelu code-behind třídy nebo třídy vrstvy obchodní logiky, takže příliš může být vystavili v rámci uložené procedury.
+Visual Studio poskytuje bohatou ladicí prostředí. S několika úhozy stisknutými klávesami nebo kliknutím na myš lze pomocí zarážek zastavit provádění programu a prozkoumávat jeho stav a tok řízení. Spolu s laděním kódu aplikace nabízí Visual Studio podporu pro ladění uložených procedur z SQL Server. Stejně jako zarážky lze nastavit v rámci kódu třídy ASP.NET kódu na pozadí nebo třídy vrstvy obchodní logiky, takže je možné je také umístit v uložených procedurách.
 
-V tomto kurzu se podíváme na krokování s vnořením do uložených procedur z Průzkumníka serveru Visual Studia a jak nastavit zarážky, které jsou přístupů při uložená procedura je volána z běžící aplikaci ASP.NET.
-
-> [!NOTE]
-> Uložené procedury bohužel pouze může být vkročili a ladit pomocí verze Professional a systémy týmu sady Visual Studio. Pokud používáte standardní verze sady Visual Studio nebo Visual Web Developer, určitě můžete číst podél projdeme kroky potřebné k ladění uložených procedur, ale nebudete mít k replikaci těchto kroků v tomto počítači.
-
-## <a name="sql-server-debugging-concepts"></a>Koncepty ladění SQL serveru
-
-Microsoft SQL Server 2005 je navržená k poskytování integrace s [Common Language Runtime (CLR)](https://msdn.microsoft.com/netframework/aa497266.aspx), což je modul runtime používá všechna sestavení rozhraní .NET. V důsledku toho systém SQL Server 2005 podporuje spravovanou databázovou objekty. To znamená můžete vytvořit databázové objekty, jako jsou uložených procedur a uživatelsky definovaných funkcí (UDF) jako metody ve třídě jazyka Visual Basic. Díky tomu těchto uložených procedurách a uživatelem definovanými funkcemi využívat základní funkce v rozhraní .NET Framework a ze své vlastní třídy. SQL Server 2005 samozřejmě, také poskytuje podporu pro databázové objekty jazyka T-SQL.
-
-SQL Server 2005 nabízí podporu ladění pro T-SQL a spravované databázové objekty. Však tyto objekty lze pouze ladit pomocí edice sady Visual Studio 2005 Professional a systémy týmu. V tomto kurzu prozkoumáme ladění databázové objekty jazyka T-SQL. Následujícím kurzu zjistí ladění spravované databázové objekty.
-
-[Přehled T-SQL a CLR ladění v systému SQL Server 2005](https://blogs.msdn.com/sqlclr/archive/2006/06/29/651644.aspx) blogu z [týmu SQL Server 2005 CLR Integration](https://blogs.msdn.com/sqlclr/default.aspx) zvýrazní tři způsoby, chcete-li ladit objektů systému SQL Server 2005 ze sady Visual Studio:
-
-- **Přímé ladění databáze (DDD)** – z Průzkumníka serveru můžete pustíme do jakékoli objekt databáze T-SQL, jako je například uložených procedur a uživatelem definovanými funkcemi. Prozkoumáme DDD v kroku 1.
-- **Ladění aplikace** – můžeme nastavit zarážky v rámci objektu databáze a spusťte naši aplikaci ASP.NET. Pokud je spuštěn databázový objekt, bude dosaženo zarážkou a ovládacího prvku nastavená, aby ladicí program. Všimněte si, že s laděním aplikace jsme nelze krokovat s vnořením databázový objekt od kódu aplikace. Zarážky musí explicitně nastavené v těchto uložených procedur a uživatelem definovanými funkcemi kam chceme, aby se ladicí program zastaví. Ladění aplikací je zkontrolován v kroku 2.
-- **Ladění z projektu SQL Server** – edice sady Visual Studio Professional a systémy týmu obsahovat typ projektu SQL Server, která se běžně používá k vytvoření spravované databázové objekty. Prozkoumáme pomocí projekty systému SQL Server a ladění jejich obsah v dalším kurzu.
-
-Visual Studio dokáže ladit uložených procedur na místní a vzdálené instance systému SQL Server. Místní instanci systému SQL Server je ten, který je nainstalován ve stejném počítači jako Visual Studio. Pokud není databáze serveru SQL Server, který používáte na svém vývojovém počítači, považuje vzdálenou instanci. Těchto kurzech používáme místní instance systému SQL Server. Ladění uložených procedur ve vzdálené instanci SQL serveru vyžaduje další konfigurační kroky než při ladění uložených procedur na místní instanci.
-
-Pokud použijete místní instanci systému SQL Server, můžete začněte krokem 1 a projít tento kurz na konec. Pokud používáte vzdálenou instanci SQL serveru, ale budete nejprve musíte zajistit, aby při ladění, které se protokolují do svého vývojového počítače s Windows uživatelský účet, který má přihlašovací jméno SQL serveru na vzdálenou instanci. Kromě toho toto přihlášení k databázi a přihlášení k databázi používaný pro připojení k databázi z běžící aplikaci technologie ASP.NET musí být členy `sysadmin` role. Naleznete v tématu ladění T-SQL databázové objekty v části Vzdálená instance na konci tohoto kurzu pro další informace o konfiguraci sady Visual Studio a ladit vzdálenou instanci systému SQL Server.
-
-A konečně Pochopte, podporu pro databázové objekty jazyka T-SQL ladění není jako funkce bohaté jako podporu ladění pro aplikace .NET. Například podmínky zarážky a filtry nejsou podporovány, jen podmnožinu ladění systému windows jsou k dispozici, nemůžete použít funkce upravit a pokračovat, příkazovém vykreslením zbytečné a podobně. Zobrazit [omezení týkající se příkazy ladicího programu a funkce](https://msdn.microsoft.com/library/ms165035(VS.80).aspx) Další informace.
-
-## <a name="step-1-directly-stepping-into-a-stored-procedure"></a>Krok 1: Přímo krokování s vnořením do uložené procedury
-
-Visual Studio usnadňuje přímo ladit databázový objekt. Umožní s, podívejte se na tom, jak pomocí funkce přímé ladění databáze (DDD) můžete krokovat s vnořením `Products_SelectByCategoryID` uloženou proceduru v databázi Northwind. Jak již název napovídá, `Products_SelectByCategoryID` vrátí informace o produktu pro určité kategorie; byl vytvořen [použití existující uložené procedury, pro zadané datové sady s objekty TableAdapter](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) kurzu. Začneme přejitím do Průzkumníka serveru a rozbalte uzel databáze Northwind. V dalším kroku k podrobnostem složky uložené procedury, klikněte pravým tlačítkem na `Products_SelectByCategoryID` uložené procedury a zvolte možnost krok do uloženou proceduru v místní nabídce. Tím se spustí ladicí program.
-
-Protože `Products_SelectByCategoryID` uložená procedura očekává, že `@CategoryID` vstupní parametr jsme vyzve k zadání této hodnoty. Zadejte hodnotu 1, která vrátí informace o nápoje.
-
-![Použijte hodnotu 1 pro @CategoryID parametr](debugging-stored-procedures-vb/_static/image1.png)
-
-**Obrázek 1**: Použijte hodnotu 1 pro `@CategoryID` parametr
-
-Po zadání hodnoty pro `@CategoryID` parametr uložené procedury je proveden. Místo spuštění k dokončení, ale ladicí program zastaví spuštění na první příkaz. Všimněte si žlutá šipka na okraji označující aktuální umístění v uložené proceduře. Můžete zobrazit a upravit hodnoty parametrů prostřednictvím okna kukátka nebo najede myší název parametru v uložené proceduře.
-
-[![Ladicí program se zastavil na první příkaz uložená procedura](debugging-stored-procedures-vb/_static/image3.png)](debugging-stored-procedures-vb/_static/image2.png)
-
-**Obrázek 2**: Ladicí program se zastavil na první příkaz uloženou proceduru ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image4.png))
-
-Chcete-li si jeden příkaz uloženou proceduru najednou, klikněte na tlačítko Krokovat s přeskočením na panelu nástrojů nebo stiskněte klávesu F10. `Products_SelectByCategoryID` Uložené procedury obsahuje jediný `SELECT` příkazu, takže tím F10 Krokovat přes jeden příkaz, který se dokončí provádění uložené procedury. Po dokončení uložené procedury, výstup se zobrazí v okně Výstup a ladicí program se ukončí.
+V tomto kurzu se podíváme na kroky do uložených procedur z Průzkumník serveru v sadě Visual Studio a také na postup nastavení zarážek, které jsou dosaženy při volání uložené procedury z běžící aplikace ASP.NET.
 
 > [!NOTE]
-> T-SQL ladění dochází na úrovni příkazu; nelze krokování s vnořením `SELECT` příkazu.
+> Uložené procedury lze bohužel využít pouze ve verzích Professional a Team Systems sady Visual Studio. Pokud používáte Visual Web Developer nebo standardní verzi sady Visual Studio, budete připraveni si přečíst spolu s postupem, který je nezbytný pro ladění uložených procedur, ale tyto kroky nebude možné replikovat na vašem počítači.
 
-## <a name="step-2-configuring-the-website-for-application-debugging"></a>Krok 2: Konfigurace webu pro ladění aplikací
+## <a name="sql-server-debugging-concepts"></a>Koncepty ladění SQL Server
 
-Při ladění uloženou proceduru z Průzkumníka serveru po ruce, v mnoha scénářích nás zajímají více ladění uložené procedury, když je volána z naší aplikace technologie ASP.NET. Můžete přidat zarážky pro uloženou proceduru z Visual Studia a potom spusťte ladění aplikace ASP.NET. Při vyvolání uložené procedury se zarážkami z aplikace, provádění se zastaví na zarážce a můžeme zobrazit a změnit hodnoty parametrů uložené procedury s a projít jeho příkazy stejným způsobem, jako jsme to udělali v kroku 1.
+Microsoft SQL Server 2005 byla navržena tak, aby poskytovala integraci s modulem [CLR (Common Language Runtime)](https://msdn.microsoft.com/netframework/aa497266.aspx), což je modul runtime používaný všemi sestaveními .NET. V důsledku toho SQL Server 2005 podporuje objekty spravované databáze. To znamená, že můžete vytvořit databázové objekty, jako jsou uložené procedury a uživatelsky definované funkce (UDF) jako metody ve třídě Visual Basic. To umožňuje těmto uloženým procedurám a UDF využívat funkce v .NET Framework a z vlastních tříd. Samozřejmě SQL Server 2005 také poskytuje podporu pro objekty databáze T-SQL.
 
-Než můžeme začít ladění uložené procedury volané z aplikace, musíte dáte pokyn, aby webová aplikace ASP.NET pro integraci s ladicím programem systému SQL Server. Začněte tím, že pravým tlačítkem myši na název webu v Průzkumníku řešení (`ASPNET_Data_Tutorial_74_VB`). V místní nabídce zvolte možnost stránky vlastností, vyberte položku Možnosti spuštění na levé straně a zaškrtněte políčko systému SQL Server v části ladicí programy (viz obrázek 3).
+SQL Server 2005 nabízí podporu ladění pro objekty T-SQL i pro objekty spravované databáze. Tyto objekty se ale dají ladit jenom v edicích Visual Studio 2005 Professional a Team Systems. V tomto kurzu prověříme ladění objektů databáze T-SQL. V dalším kurzu se podíváme na ladění spravovaných databázových objektů.
 
-[![Zaškrtněte políčko SQL serveru na stránkách vlastností s aplikací](debugging-stored-procedures-vb/_static/image6.png)](debugging-stored-procedures-vb/_static/image5.png)
+[Přehled ladění T-SQL a CLR v položce SQL Server 2005](https://blogs.msdn.com/sqlclr/archive/2006/06/29/651644.aspx) blogu [integrace SQL Server 2005 CLR](https://blogs.msdn.com/sqlclr/default.aspx) obsahuje tři způsoby, jak ladit SQL Server 2005 objektů ze sady Visual Studio:
 
-**Obrázek 3**: Zaškrtněte políčko SQL serveru v aplikaci s stránky vlastností ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image7.png))
+- **Přímé ladění databáze (DDD)** – z Průzkumník serveru můžeme Krokovat s libovolným objektem databáze T-SQL, například s uloženými procedurami a UDF. Podíváme se na DDD v kroku 1.
+- **Ladění aplikace** – můžeme nastavovat zarážky v rámci objektu databáze a pak spustit naši aplikaci ASP.NET. Při spuštění objektu databáze se zarážka narazí a ovládací prvek se přepnul do ladicího programu. Všimněte si, že při ladění aplikace nemůžeme Krokovat s databázovým objektem z kódu aplikace. Je nutné explicitně nastavit zarážky v těchto uložených procedurách nebo UDF, kde chceme zastavit ladicí program. Ladění aplikace se prozkoumá počínaje krokem 2.
+- **Ladění z SQL Server Visual Studio Professional projektů** a týmových systémů zahrnuje SQL Server typ projektu, který se běžně používá k vytváření objektů spravované databáze. Podíváme se na použití projektů SQL Server a ladění obsahu v dalším kurzu.
 
-Kromě toho jsme muset aktualizovat připojovací řetězec databáze používané aplikací tak, aby sdružování připojení je zakázáno. Při připojení k databázi se ukončí, odpovídající `SqlConnection` objekt nachází ve fondu k dispozici připojení. Při navazování připojení k databázi, objekt k dispozici připojení můžete získat z tohoto fondu spíše než by bylo nutné vytvořit a vytvořit nové připojení. Tato sdružování připojení objekty je vylepšení výkonu a je ve výchozím nastavení povolené. Ale při ladění chceme, chcete-li vypnout sdružování připojení, protože ladění infrastruktury není správně navázán při práci s připojením, který byl odebrán z fondu.
+Visual Studio může ladit uložené procedury na místních a vzdálených SQL Server instancích. Místní instance SQL Server je ta, která je nainstalovaná na stejném počítači jako Visual Studio. Pokud se databáze SQL Server, kterou používáte, nenachází ve vývojovém počítači, je považována za vzdálenou instanci. V těchto kurzech používáme místní instance SQL Server. Ladění uložených procedur ve vzdálené instanci systému SQL Server vyžaduje více kroků konfigurace než při ladění uložených procedur na místní instanci.
 
-Chcete-li sdružování připojení zakázáno, aktualizujte `NORTHWNDConnectionString` v `Web.config` tak, že obsahují nastavení `Pooling=false` .
+Pokud používáte instanci místního SQL Server, můžete začít s krokem 1 a tento kurz vyřešit na konci. Používáte-li instanci vzdáleného SQL Server, budete nejprve muset zajistit, aby při ladění jste přihlášeni k vývojovému počítači pomocí uživatelského účtu systému Windows, který má SQL Server přihlášení na vzdálené instanci. Kromě toho musí být toto přihlášení k databázi i přihlášení databáze používané pro připojení k databázi z běžící aplikace ASP.NET členy role `sysadmin`. Další informace o konfiguraci sady Visual Studio a SQL Server k ladění vzdálené instance naleznete v části ladění T-SQL Database objektů na vzdálených instancích na konci tohoto kurzu.
+
+Nakonec je třeba pochopit, že podpora ladění pro objekty databáze T-SQL není jako podpora ladění pro aplikace .NET jako rozšířená. Například podmínky zarážky a filtry nejsou podporovány, k dispozici je pouze podmnožina ladicích oken, nelze použít příkaz Upravit a pokračovat, okamžité okno je vygenerováno nepoužitelné a tak dále. Další informace najdete v tématu [omezení příkazů a funkcí ladicího programu](https://msdn.microsoft.com/library/ms165035(VS.80).aspx) .
+
+## <a name="step-1-directly-stepping-into-a-stored-procedure"></a>Krok 1: přímé krokování do uložené procedury
+
+Visual Studio usnadňuje přímé ladění databázového objektu. Pojďme se podívat na to, jak používat funkci přímého ladění databáze (DDD) ke krokování do `Products_SelectByCategoryID` uložené procedury v databázi Northwind. Jak název naznačuje, `Products_SelectByCategoryID` vrátí informace o produktu pro konkrétní kategorii. byl vytvořen v kurzu [použití existujících uložených procedur pro typový DataSet s objekty TableAdapter](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) . Začněte tím, že na Průzkumník serveru zahájíte a rozbalíte uzel databáze Northwind. Potom přejděte do složky uložené procedury, klikněte pravým tlačítkem na uloženou proceduru `Products_SelectByCategoryID` a v místní nabídce vyberte možnost krok do uložené procedury. Tím se spustí ladicí program.
+
+Vzhledem k tomu, že `Products_SelectByCategoryID` uložená procedura očekává `@CategoryID` vstupní parametr, zobrazí se výzva k poskytnutí této hodnoty. Zadejte hodnotu 1, která bude vracet informace o nápojích.
+
+![Pro parametr @CategoryID použijte hodnotu 1.](debugging-stored-procedures-vb/_static/image1.png)
+
+**Obrázek 1**: pro parametr `@CategoryID` použijte hodnotu 1.
+
+Po zadání hodnoty parametru `@CategoryID` je uložená procedura spuštěna. Místo spuštění k dokončení, ale ladicí program zastaví provádění prvního příkazu. Poznamenejte si žlutou šipku na okraji a určete aktuální umístění v uložené proceduře. Hodnoty parametrů můžete zobrazit a upravit pomocí okno Kukátko nebo přesunutím ukazatele myši na název parametru v uložené proceduře.
+
+[![, že se ladicí program zastavil v prvním příkazu uložené procedury](debugging-stored-procedures-vb/_static/image3.png)](debugging-stored-procedures-vb/_static/image2.png)
+
+**Obrázek 2**: ladicí program se zastavil v prvním příkazu uložené procedury ([kliknutím zobrazíte obrázek v plné velikosti).](debugging-stored-procedures-vb/_static/image4.png)
+
+Chcete-li postupně procházet uloženou proceduru v jednom příkazu, klikněte na tlačítko krokovat na panelu nástrojů nebo stiskněte klávesu F10. Uložená procedura `Products_SelectByCategoryID` obsahuje jeden příkaz `SELECT`, takže se při stisknutí klávesy F10 pozastaví jediný příkaz a dokončí se spuštění uložené procedury. Po dokončení uložené procedury se její výstup zobrazí v okně výstup a ladicí program skončí.
+
+> [!NOTE]
+> Ladění T-SQL probíhá na úrovni příkazu; příkaz `SELECT` nelze krokovat.
+
+## <a name="step-2-configuring-the-website-for-application-debugging"></a>Krok 2: Konfigurace webu pro ladění aplikace
+
+Při ladění uložené procedury přímo z Průzkumník serveru je užitečná, v mnoha scénářích je více zajímáme o ladění uložené procedury při jejím volání z naší aplikace ASP.NET. Do uložené procedury v sadě Visual Studio můžeme přidat zarážky a pak začít ladit aplikaci ASP.NET. Když je z aplikace vyvolána uložená procedura se zarážkami, spuštění se zastaví na zarážce a můžeme zobrazit a změnit hodnoty parametrů uložené procedury a krokovat s jejími příkazy, stejně jako v kroku 1.
+
+Před zahájením ladění uložených procedur volaných z aplikace musíme dát pokyn webové aplikaci ASP.NET, aby byla integrována s ladicím programem SQL Server. Začněte tím, že kliknete pravým tlačítkem na název webu v Průzkumník řešení (`ASPNET_Data_Tutorial_74_VB`). Zvolte možnost stránky vlastností z kontextové nabídky, vyberte položku Možnosti spuštění vlevo a zaškrtněte políčko SQL Server v části ladicí programy (viz obrázek 3).
+
+[![zaškrtněte políčko SQL Server na stránkách vlastností aplikace.](debugging-stored-procedures-vb/_static/image6.png)](debugging-stored-procedures-vb/_static/image5.png)
+
+**Obrázek 3**: zaškrtněte políčko SQL Server na stránkách vlastností aplikace ([kliknutím zobrazíte obrázek v plné velikosti).](debugging-stored-procedures-vb/_static/image7.png)
+
+Kromě toho je potřeba aktualizovat připojovací řetězec databáze, který aplikace používá, aby bylo sdružování připojení zakázané. Při zavření připojení k databázi se odpovídající objekt `SqlConnection` umístí do fondu dostupných připojení. Při navazování připojení k databázi je možné z tohoto fondu načíst dostupný objekt připojení, ale nemusíte vytvářet a navazovat nové připojení. Toto sdružování objektů připojení je vylepšení výkonu a je ve výchozím nastavení povoleno. Nicméně když ladění chceme vypnout sdružování připojení, protože při práci s připojením, které bylo získáno z fondu, není správně znovu navázána infrastruktura ladění.
+
+Pokud chcete zakázat sdružování připojení, aktualizujte `NORTHWNDConnectionString` v `Web.config` tak, aby obsahovalo `Pooling=false` nastavení.
 
 [!code-xml[Main](debugging-stored-procedures-vb/samples/sample1.xml)]
 
 > [!NOTE]
-> Po dokončení ladění systému SQL Server prostřednictvím aplikace ASP.NET je potřeba obnovit odebráním sdružování připojení `Pooling` nastavení z připojovacího řetězce (nebo nastavením na `Pooling=true` ).
+> Po dokončení ladění SQL Server prostřednictvím aplikace ASP.NET Nezapomeňte obnovit sdružování připojení odebráním nastavení `Pooling` z připojovacího řetězce (nebo jeho nastavením na `Pooling=true`).
 
-Aplikace ASP.NET je v tuto chvíli nakonfigurovaná umožňující Visual Studio pro ladění objektů databáze systému SQL Server při vyvolání prostřednictvím webové aplikace. Vše, co zůstává teď má přidejte zarážku na uložené procedury a spustit ladění!
+V tomto okamžiku byla aplikace ASP.NET nakonfigurována tak, aby umožnila aplikaci Visual Studio při vyvolání prostřednictvím webové aplikace ladit objekty databáze SQL Server. Vše, co zbývá nyní, je přidat zarážku do uložené procedury a spustit ladění!
 
 ## <a name="step-3-adding-a-breakpoint-and-debugging"></a>Krok 3: Přidání zarážky a ladění
 
-Otevřít `Products_SelectByCategoryID` uložené procedury a nastavte zarážku na začátku `SELECT` příkaz kliknutím na okraji v příslušném umístění nebo umístěním kurzoru na začátku `SELECT` příkazu a stisknutím F9. Jak ukazuje obrázek 4, zarážka se zobrazí jako červená tečka na okraj.
+Otevřete uloženou proceduru `Products_SelectByCategoryID` a nastavte zarážku na začátku `SELECT`, a to tak, že kliknete na příslušné místo nebo umístíte kurzor na začátek příkazu `SELECT` a zahájíte F9. Obrázek 4 znázorňuje, že se zarážka zobrazuje v okraji jako červený kroužek.
 
-[![Nastavit zarážku Products_SelectByCategoryID uložené procedury](debugging-stored-procedures-vb/_static/image9.png)](debugging-stored-procedures-vb/_static/image8.png)
+[![nastavit zarážku v uložené proceduře Products_SelectByCategoryID](debugging-stored-procedures-vb/_static/image9.png)](debugging-stored-procedures-vb/_static/image8.png)
 
-**Obrázek 4**: Nastavit zarážku `Products_SelectByCategoryID` uloženou proceduru ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image10.png))
+**Obrázek 4**: nastavení zarážky v uložené proceduře `Products_SelectByCategoryID` ([kliknutím zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image10.png))
 
-Aby objekt databáze SQL k ladění pomocí klientské aplikace je nutné konfiguraci této databáze v zájmu podpory ladění aplikace. Při prvním nastavení zarážky, toto nastavení by měl automaticky přepnout, ale je vhodné zkontrolovat. Klikněte pravým tlačítkem na `NORTHWND.MDF` uzlu v Průzkumníku serveru. V místní nabídce by měl obsahovat checked nabídky položky s názvem ladění aplikací.
+Aby bylo možné objekt databáze SQL ladit prostřednictvím klientské aplikace, je nezbytné, aby byla databáze nakonfigurována pro podporu ladění aplikace. Když nakonfigurujete zarážku, toto nastavení by mělo být automaticky přepnuto na, ale je obezřetné pro dvojité kontroly. Pravým tlačítkem myši klikněte na uzel `NORTHWND.MDF` v Průzkumník serveru. Místní nabídka by měla obsahovat položku kontrolované nabídky s názvem ladění aplikace.
 
-![Ujistěte se, že je povolená možnost ladění aplikací](debugging-stored-procedures-vb/_static/image11.png)
+![Ujistěte se, že je povolená možnost ladění aplikace.](debugging-stored-procedures-vb/_static/image11.png)
 
-**Obrázek 5**: Ujistěte se, že je povolená možnost ladění aplikací
+**Obrázek 5**: Ujistěte se, že je povolená možnost ladění aplikace.
 
-Nastavení zarážky a povolená možnost ladění aplikací jsou připravený k ladění uložené procedury při volání z aplikace ASP.NET. Spusťte ladicí program tak, že přejdete do nabídky ladění a Výběr stisknutím klávesy F5 nebo kliknutím na zelený spustit ladění, vyzkoušejte ikonu na panelu nástrojů. To se spustit ladicí program a spusťte web.
+Když je nastavená zarážka a je povolená možnost ladění aplikace, můžeme při volání z aplikace ASP.NET ladit uloženou proceduru. Spusťte ladicí program tak, že přejdete do nabídky ladění a zvolíte Spustit ladění, když kliknete na F5 nebo na ikonu zeleného přehrávání na panelu nástrojů. Tím se spustí ladicí program a spustí se web.
 
-`Products_SelectByCategoryID` Uloženou proceduru byl vytvořen v [použití existující uložené procedury, pro zadané datové sady s objekty TableAdapter](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) kurzu. Jeho odpovídající webové stránky (`~/AdvancedDAL/ExistingSprocs.aspx`) obsahuje GridView zobrazující výsledky vrácené tuto uloženou proceduru. Navštivte tuto stránku v prohlížeči. Při dosažení stránky k zarážce v `Products_SelectByCategoryID` dosáhnou uložené procedury a ovládací prvek vrátí k sadě Visual Studio. Stejně jako v kroku 1, můžete krokovat pro uloženou proceduru s příkazy a zobrazit a upravit hodnoty parametrů.
+`Products_SelectByCategoryID` uloženou proceduru se vytvořil v kurzu [použití existujících uložených procedur pro typový DataSet s objekty TableAdapter](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) . Jeho odpovídající webová stránka (`~/AdvancedDAL/ExistingSprocs.aspx`) obsahuje prvek GridView, který zobrazuje výsledky vrácené touto uloženou procedurou. Navštivte tuto stránku v prohlížeči. Po dosažení stránky bude dosaženo zarážky v uložené proceduře `Products_SelectByCategoryID` a ovládací prvek vrácen do sady Visual Studio. Stejně jako v kroku 1 můžete krokovat s příkazy uložené procedury a zobrazit a upravit hodnoty parametrů.
 
-[![Na stránce ExistingSprocs.aspx zpočátku zobrazí nápoje](debugging-stored-procedures-vb/_static/image13.png)](debugging-stored-procedures-vb/_static/image12.png)
+[![stránce ExistingSprocs. aspx se zpočátku zobrazí nápoje.](debugging-stored-procedures-vb/_static/image13.png)](debugging-stored-procedures-vb/_static/image12.png)
 
-**Obrázek 6**: `ExistingSprocs.aspx` Stránky zpočátku zobrazí nápoje ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image14.png))
+**Obrázek 6**: na stránce `ExistingSprocs.aspx` se zpočátku zobrazují nápoje ([kliknutím zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image14.png)).
 
-[![Uložená procedura s bylo dosaženo zarážky](debugging-stored-procedures-vb/_static/image16.png)](debugging-stored-procedures-vb/_static/image15.png)
+[![bylo dosaženo zarážky uložené procedury s.](debugging-stored-procedures-vb/_static/image16.png)](debugging-stored-procedures-vb/_static/image15.png)
 
-**Obrázek 7**: Uložená procedura s, bylo dosaženo zarážky ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image17.png))
+**Obrázek 7**: bylo dosaženo zarážky uložené procedury s ([kliknutím zobrazíte obrázek v plné velikosti).](debugging-stored-procedures-vb/_static/image17.png)
 
-Jako okno kukátka v obrázek 7 znázorňuje, hodnota `@CategoryID` parametru je 1. Důvodem je, že `ExistingSprocs.aspx` stránky otevření zobrazí produkty do kategorie Nápoje, který má `CategoryID` hodnotu 1. Z rozevíracího seznamu vyberte jinou kategorii. To způsobí, že zpětné volání a znovu spustí `Products_SelectByCategoryID` uložené procedury. Dosažení zarážky znovu, tentokrát ale `@CategoryID` parametr s hodnotou odpovídá položce vybrané rozevíracího seznamu s `CategoryID`.
+Jak ukazuje okno Kukátko na obrázku 7, hodnota parametru `@CategoryID` je 1. Důvodem je, že stránka `ExistingSprocs.aspx` zpočátku zobrazuje produkty v kategorii nápoje, která má `CategoryID` hodnotu 1. Z rozevíracího seznamu vyberte jinou kategorii. To způsobí, že postback a znovu spustí uloženou proceduru `Products_SelectByCategoryID`. Zarážka je znovu navolána, ale tentokrát hodnota parametru `@CategoryID` odráží vybranou položku rozevíracího seznamu `CategoryID`.
 
-[![Z rozevíracího seznamu zvolte jinou kategorii](debugging-stored-procedures-vb/_static/image19.png)](debugging-stored-procedures-vb/_static/image18.png)
+[![v rozevíracím seznamu zvolit jinou kategorii](debugging-stored-procedures-vb/_static/image19.png)](debugging-stored-procedures-vb/_static/image18.png)
 
-**Obrázek 8**: Z rozevíracího seznamu zvolte jinou kategorii ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image20.png))
+**Obrázek 8**: v rozevíracím seznamu vyberte jinou kategorii ([kliknutím zobrazíte obrázek v plné velikosti).](debugging-stored-procedures-vb/_static/image20.png)
 
-[![@CategoryID Parametr odráží kategorii vybrané z webové stránky](debugging-stored-procedures-vb/_static/image22.png)](debugging-stored-procedures-vb/_static/image21.png)
+[![parametr @CategoryID odráží kategorii vybranou z webové stránky.](debugging-stored-procedures-vb/_static/image22.png)](debugging-stored-procedures-vb/_static/image21.png)
 
-**Obrázek 9**: `@CategoryID` Parametr odráží vybrat kategorii z webové stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](debugging-stored-procedures-vb/_static/image23.png))
+**Obrázek 9**: parametr `@CategoryID` odráží kategorii vybranou z webové stránky ([kliknutím zobrazíte obrázek v plné velikosti).](debugging-stored-procedures-vb/_static/image23.png)
 
 > [!NOTE]
-> Pokud k zarážce v `Products_SelectByCategoryID` uložená procedura není přístupů při návštěvě `ExistingSprocs.aspx` stránky, ujistěte se, že po kontrole zaškrtávací políčko systému SQL Server v části ladicích programů aplikace ASP.NET s vlastností, že byl sdružování připojení zakázané, a zda je povolena databáze s možností ladění aplikací. Pokud znovu stále dochází k problémům, restartujte Visual Studio a zkuste to znovu.
+> Pokud se zarážka v uložené proceduře `Products_SelectByCategoryID` při návštěvě stránky `ExistingSprocs.aspx` neprojeví, ujistěte se, že je zaškrtnuto políčko SQL Server v části ladicí programy na stránce vlastností aplikace ASP.NET, že sdružování připojení je zakázané a že je povolená možnost ladění aplikace Database s. Pokud stále dochází k problémům, restartujte Visual Studio a zkuste to znovu.
 
-## <a name="debugging-t-sql-database-objects-on-remote-instances"></a>Ladění objektů jazyka T-SQL Database na vzdálenou instancí
+## <a name="debugging-t-sql-database-objects-on-remote-instances"></a>Ladění T-SQL Database objektů na vzdálených instancích
 
-Ladění databázových objektů pomocí sady Visual Studio je poměrně jednoduché, když je instance databáze serveru SQL Server na stejném počítači jako Visual Studio. Ale pokud SQL Server a Visual Studio jsou umístěny na různých počítačích pak pozor, je vyžadována konfigurace zobrazíte vše funguje správně. Existují dva základní úkoly, které jsme se potýkají s:
+Ladění databázových objektů prostřednictvím sady Visual Studio je poměrně jasné, pokud je instance databáze SQL Server na stejném počítači jako Visual Studio. Pokud se však SQL Server a aplikace Visual Studio nacházejí v různých počítačích, je nutné provést určitou pečlivou konfiguraci, aby vše správně fungovalo. Existují dva základní úlohy:
 
-- Ujistěte se, že přihlašovací údaje používané pro připojení k databázi pomocí ADO.NET patří do `sysadmin` role.
-- Ujistěte se, že uživatelský účet Windows, který se používá sada Visual Studio na vývojovém počítači platný účet přihlášení serveru SQL Server, který patří do `sysadmin` role.
+- Ujistěte se, že přihlášení použité pro připojení k databázi prostřednictvím ADO.NET patří do role `sysadmin`.
+- Ujistěte se, že uživatelský účet systému Windows používaný aplikací Visual Studio ve vývojovém počítači je platným přihlašovacím účtem SQL Server, který patří do role `sysadmin`.
 
-Prvním krokem je poměrně přímočarý. Nejprve, určete uživatelský účet použitý k připojení k databázi z aplikace v ASP.NET a poté z SQL Server Management Studio, přidejte tento přihlašovací účet, který `sysadmin` role.
+První krok je poměrně jednoduchý. Nejdřív identifikujte uživatelský účet použitý k připojení k databázi z aplikace ASP.NET a potom z SQL Server Management Studio přidejte tento přihlašovací účet do role `sysadmin`.
 
-Druhá úloha vyžaduje, aby uživatelský účet Windows, který používáte k ladění aplikace platné přihlašovací údaje na vzdálené databáze. Ale je pravděpodobné, že má účet Windows, kterým přihlášení do pracovní stanice s není platného přihlášení SQL serveru. Místo přidávání účtu konkrétní přihlášení k systému SQL Server, je lepší volbou je určit některé Windows uživatelský účet jako účet ladění systému SQL Server. Chcete-li ladit databázových objektů vzdálené instance systému SQL Server, by pak spusťte Visual Studio pomocí přihlašovacích údajů tohoto Windows přihlašovací účet s.
+Druhý úkol vyžaduje, aby uživatelský účet systému Windows, který používáte k ladění aplikace, byl platným přihlašovacím jménem na vzdálené databázi. Je ale pravděpodobné, že účet systému Windows, ke kterému jste se přihlásili, není platným přihlašovacím SQL Server. Místo přidání vašeho konkrétního přihlašovacího účtu do SQL Server je vhodnější určit jako účet služby SQL Server ladění nějaký uživatelský účet systému Windows. Chcete-li poté ladit databázové objekty instance vzdálené SQL Server, spusťte sadu Visual Studio s použitím přihlašovacích údajů přihlašovacího účtu systému Windows.
 
-Příklad by měly pomoci objasnit věci. Představte si, že je účet Windows s názvem `SQLDebug` v rámci domény Windows. Tento účet by bylo potřeba přidat do vzdálené instance systému SQL Server jako platné přihlašovací údaje a člen `sysadmin` role. Potom, chcete-li ladit vzdálenou instanci systému SQL Server ze sady Visual Studio, musíme spuštění sady Visual Studio jako `SQLDebug` uživatele. To může být provádí protokolování z našich pracovní stanice, přihlaste se zpět jako `SQLDebug`, a potom spustí Visual Studio, ale jednodušší přístup může být přihlášení k naší pracovní stanice pomocí vlastní přihlašovací údaje a pak použijte `runas.exe` ke spuštění sady Visual Studio jako `SQLDebug` uživatele. `runas.exe` Umožňuje konkrétní aplikace, která provede v cestě guise jiný uživatelský účet. Spusťte sadu Visual Studio jako `SQLDebug`, můžete například zadat následující příkaz na příkazovém řádku:
+Příkladem může být vyjasnění věcí. Představte si, že v doméně Windows je účet systému Windows s názvem `SQLDebug`. Tento účet by se musel do instance vzdálené SQL Server přidat jako platné přihlášení a jako člen role `sysadmin`. Pokud pak chcete ladit vzdálenou SQL Server instanci ze sady Visual Studio, musíme jako `SQLDebug`ho uživatele spustit Visual Studio. To se dá udělat tak, že se odhlásíte z naší pracovní stanice, přihlásíte se zpátky jako `SQLDebug`a pak spustíte Visual Studio, ale jednodušší přístup se přihlaste k naší pracovní stanici pomocí vlastních přihlašovacích údajů a pak pomocí `runas.exe` spustíte Visual Studio jako `SQLDebug` uživatele. `runas.exe` umožňuje spuštění konkrétní aplikace pod GUI jiného uživatelského účtu. Chcete-li spustit aplikaci Visual Studio jako `SQLDebug`, můžete do příkazového řádku zadat následující příkaz:
 
 [!code-console[Main](debugging-stored-procedures-vb/samples/sample2.cmd)]
 
-Podrobnější vysvětlení o tomto procesu najdete v tématu [William R. Vaughn](http://betav.com/BLOG/billva/) s *Hitchhiker s příručka k sadě Visual Studio a SQL Server, sedmý Edition* stejně jako [How To: Nastavení oprávnění serveru SQL pro ladění](https://msdn.microsoft.com/library/w1bhybwz(VS.80).aspx).
+Podrobnější vysvětlení tohoto procesu naleznete v části [William R. Vaughn](http://betav.com/BLOG/billva/) s *hitchhiker s Guide to Visual Studio a SQL Server, sedm Edition a* [Jak: nastavit SQL Server oprávnění pro ladění](https://msdn.microsoft.com/library/w1bhybwz(VS.80).aspx).
 
 > [!NOTE]
-> Pokud vývojovém počítači se systémem Windows XP Service Pack 2, budete muset nakonfigurovat bránu pro povolení vzdáleného ladění. [Postupy: Povolit ladění na SQL Server 2005](https://msdn.microsoft.com/library/s0fk6z6e(VS.80).aspx) poznámky článku to probíhá ve dvou krocích: (a) na hostitelském počítači Visual Studio, je nutné přidat `Devenv.exe` do seznamu výjimek a otevřete port TCP 135; a (b) na vzdáleném počítači (SQL), je nutné otevřít TCP 135 port a přidejte `sqlservr.exe` do seznamu výjimek. Pokud zásady vaší domény vyžadují síťové komunikace, chcete-li to provést prostřednictvím protokolu IPSec, musíte otevřít porty UDP 4500 a UDP 500.
+> Pokud na vašem vývojovém počítači běží Windows XP Service Pack 2, budete muset nakonfigurovat bránu firewall pro připojení k Internetu, aby povolovala vzdálené ladění. Článek [Postupy: povolení ladění SQL Server 2005](https://msdn.microsoft.com/library/s0fk6z6e(VS.80).aspx) obsahuje poznámky k tomu, že se jedná o dva kroky: (a) na hostitelském počítači sady Visual Studio, je třeba přidat `Devenv.exe` do seznamu výjimek a otevřít port TCP 135; a (b) na vzdáleném počítači (SQL) musíte otevřít port TCP 135 a přidat `sqlservr.exe` do seznamu výjimek. Pokud vaše zásady domény vyžadují síťovou komunikaci pomocí protokolu IPSec, je nutné otevřít porty UDP 4500 a UDP 500.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Kromě toho, že podpora ladění pro kód aplikace .NET, Visual Studio také poskytuje širokou škálu možností pro SQL Server 2005 ladění. V tomto kurzu jsme se podívali na dvě z těchto možností: Přímé ladění databáze a ladění aplikací. Přímo ladit databázový objekt jazyka T-SQL, vyhledejte objekt prostřednictvím Průzkumníka serveru pak klepněte na něj pravým tlačítkem myši a zvolte Krokovat s vnořením. Tím se spustí ladicí program a zastaví na prvním příkazem v objektu databáze, v tomto okamžiku můžete krokovat pro objekt s příkazy a zobrazit a upravit hodnoty parametrů. V kroku 1 jsme použili tento postup můžete krokovat s vnořením `Products_SelectByCategoryID` uložené procedury.
+Kromě poskytování podpory ladění pro kód aplikace .NET nabízí Visual Studio také řadu možností ladění pro SQL Server 2005. V tomto kurzu jsme se podívali na dvě z těchto možností: přímé ladění databáze a ladění aplikací. Chcete-li přímo ladit objekt databáze T-SQL, vyhledejte objekt pomocí Průzkumník serveru klikněte na něj pravým tlačítkem myši a vyberte možnost Krokovat s vnořením. Tím se spustí ladicí program a zablokuje se na prvním příkazu v databázovém objektu, ve kterém je možné Krokovat s příkazy Object a zobrazovat a upravovat hodnoty parametrů. V kroku 1 jsme použili tento přístup ke krokování s `Products_SelectByCategoryID` uloženou procedurou.
 
-Ladění aplikací umožňuje zarážek pro nastavení přímo v rámci databázové objekty. Při vyvolání objektu databáze se zarážkami z klientské aplikace (například webové aplikace ASP.NET), program zastaví, protože ladicí program má. Ladění aplikací je užitečné, protože více jasně ukazuje, jakou akci aplikace způsobí, že databázových objektů má být volána. Ale vyžaduje trochu další konfigurace a nastavení než přímé ladění databáze.
+Ladění aplikace umožňuje, aby se zarážky nastavily přímo v rámci databázových objektů. Když je objekt databáze se zarážkami vyvolán z klientské aplikace (například webové aplikace ASP.NET), program se zastaví, když ladicí program převezme. Ladění aplikace je užitečné, protože jasně ukazuje, co akce aplikace způsobí vyvolání konkrétního databázového objektu. Vyžaduje ale trochu více konfigurací a nastavení než přímé ladění databáze.
 
-Databázové objekty lze také ladit přes projekty systému SQL Server. Se podíváme na použití projekty systému SQL Server a jak se dají použít k vytváření a ladění spravované databázové objekty v dalším kurzu.
+Objekty databáze lze také ladit prostřednictvím SQL Serverch projektů. Podíváme se na použití SQL Server projekty a jejich použití k vytváření a ladění objektů spravované databáze v dalším kurzu.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
 > [!div class="step-by-step"]
 > [Předchozí](protecting-connection-strings-and-other-configuration-information-vb.md)
-> [další](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb.md)
+> [Další](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb.md)

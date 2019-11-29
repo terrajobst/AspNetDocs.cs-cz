@@ -1,132 +1,132 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs
-title: Nejčastější rozdíly mezi vývojovou a provozní (C#) konfigurací | Dokumentace Microsoftu
+title: Běžné rozdíly v konfiguraci mezi vývojem aC#výrobou () | Microsoft Docs
 author: rick-anderson
-description: V předchozích kurzech jsme nasadili našeho webu tak, že zkopírujete všechny relevantní soubory z vývojového prostředí do produkčního prostředí. Ale můžu...
+description: V předchozích kurzech jsme nasadili náš web kopírováním všech relevantních souborů z vývojového prostředí do provozního prostředí. Ale i...
 ms.author: riande
 ms.date: 04/01/2009
 ms.assetid: 721a5c37-7e21-48e0-832e-535c6351dcae
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 265243a54eb5ab28a7f76d2df32a9442d61862a5
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 60379c87a8cf58b89066a6070ac659e65930b4fa
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130655"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74620422"
 ---
 # <a name="common-configuration-differences-between-development-and-production-c"></a>Nejčastější rozdíly mezi vývojovou a provozní konfigurací (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhnout PDF](http://download.microsoft.com/download/E/8/9/E8920AE6-D441-41A7-8A77-9EF8FF970D8B/aspnet_tutorial05_ConfigDifferences_cs.pdf)
+[Stáhnout PDF](https://download.microsoft.com/download/E/8/9/E8920AE6-D441-41A7-8A77-9EF8FF970D8B/aspnet_tutorial05_ConfigDifferences_cs.pdf)
 
-> V předchozích kurzech jsme nasadili našeho webu tak, že zkopírujete všechny relevantní soubory z vývojového prostředí do produkčního prostředí. To však není existovat konfigurace rozdíly mezi prostředími, které vyžaduje, aby každé prostředí mají jedinečný soubor Web.config. V tomto kurzu zkoumá Typická konfigurace rozdíly a zkoumá strategie pro udržování samostatné konfigurační informace.
+> V předchozích kurzech jsme nasadili náš web kopírováním všech relevantních souborů z vývojového prostředí do provozního prostředí. Nejedná se ale o rozdíl mezi tím, že existují rozdíly v konfiguraci mezi prostředími, což vyžaduje, aby každé prostředí mělo jedinečný soubor Web. config. V tomto kurzu se podíváme na typické rozdíly v konfiguraci a vyhledáte strategie pro udržování samostatných informací o konfiguraci.
 
 ## <a name="introduction"></a>Úvod
 
-Poslední dva kurzy prošli nasazení jednoduché webové aplikace. [ *Nasazení webu pomocí klienta FTP* ](deploying-your-site-using-an-ftp-client-cs.md) kurz vám ukázal, jak používat samostatný klient FTP pro kopírování potřebné soubory z vývojového prostředí až po produkční. Předchozím kurzu [ *nasazení webu pomocí sady Visual Studio*](deploying-your-site-using-visual-studio-cs.md), podívali se na nasazení pomocí nástroje pro kopírování webu sady Visual Studio a možností publikovat. V obou kurzech každý soubor v produkčním prostředí se kopie souboru ve vývojovém prostředí. To však není, konfigurační soubory v produkčním prostředí tak, aby se liší od těch, které ve vývojovém prostředí. Konfigurace webové aplikace je uložena v `Web.config` souboru a obvykle obsahuje informace o externích zdrojů, jako je například databáze, web a servery e-mailu. Obsahuje také chování aplikace v určitých situacích, jako je například kurz akce se má provést při dojde k neošetřené výjimce.
+Poslední dva kurzy vás provedl prostřednictvím nasazení jednoduché webové aplikace. Kurz [*nasazení webu pomocí klienta FTP*](deploying-your-site-using-an-ftp-client-cs.md) ukázal použití samostatného klienta FTP ke zkopírování potřebných souborů z vývojového prostředí až po produkční prostředí. V předchozím kurzu, [*nasazení webu pomocí sady Visual Studio*](deploying-your-site-using-visual-studio-cs.md), prohlédlo se do nasazení pomocí nástroje pro kopírování webu sady Visual Studio a možnosti publikování. V obou kurzech byl každý soubor v produkčním prostředí kopií souboru ve vývojovém prostředí. Není to ale běžné pro konfigurační soubory v produkčním prostředí, aby se lišily od těch ve vývojovém prostředí. Konfigurace webové aplikace je uložena v souboru `Web.config` a obvykle obsahuje informace o externích prostředcích, jako jsou databáze, webové a e-mailové servery. Také naplní chování aplikace v určitých situacích, například v případě, že je třeba provést akci, když dojde k neošetřené výjimce.
 
-Při nasazení webové aplikace je důležité informace o správné konfiguraci ukládaly do produkčního prostředí. Ve většině případů `Web.config` soubor ve vývojovém prostředí nelze zkopírovat do produkčního prostředí jako-je. Místo toho přizpůsobenou verzi `Web.config` musí být odeslán do produkčního prostředí. V tomto kurzu stručně kontroly některé z běžnějších rozdíly konfigurací; taky shrnuje některé postupy pro udržování různých konfiguračních informací mezi prostředími.
+Při nasazení webové aplikace je důležité, aby byly správné informace o konfiguraci v produkčním prostředí. Ve většině případů se `Web.config` soubor ve vývojovém prostředí nedá zkopírovat do produkčního prostředí tak, jak je. Místo toho je potřeba nahrát přizpůsobenou verzi `Web.config` do produkčního prostředí. V tomto kurzu se krátce posuzuje některé z častých rozdílů v konfiguraci. shrnuje také některé techniky pro zachování různých konfiguračních informací mezi prostředími.
 
-## <a name="typical-configuration-differences-between-the-development-and-production-environments"></a>Typická konfigurace rozdíly mezi vývojovou a provozní prostředí
+## <a name="typical-configuration-differences-between-the-development-and-production-environments"></a>Typické rozdíly v konfiguraci mezi vývojovým a produkčním prostředím
 
-`Web.config` Soubor obsahuje celé řady různých doprovodných informace o konfiguraci aplikace ASP.NET. Některé tyto informace o konfiguraci je stejný bez ohledu na prostředí. Například nastavení ověřování a autorizačních pravidel adres URL států v `Web.config` souboru `<authentication>` a `<authorization>` prvky jsou obvykle stejné bez ohledu na prostředí. Ale dalších konfiguračních údajů – například informace o externí prostředky – obvykle se liší v závislosti na prostředí.
+`Web.config` soubor obsahuje řadu informací o konfiguraci pro ASP.NET aplikaci. Některé z těchto informací o konfiguraci jsou stejné bez ohledu na prostředí. Například nastavení ověřování a autorizační pravidla URL, která jsou popsaná v `<authentication>` `Web.config` souboru a `<authorization>` prvky jsou obvykle stejné bez ohledu na prostředí. Jiné konfigurační informace, například informace o externích prostředcích, se obvykle liší v závislosti na prostředí.
 
-Typickým příkladem informací o konfiguraci, která se liší podle prostředí jsou řetězce připojení databáze. Když webové aplikace komunikuje se serverem databáze musí nejprve navázat připojení a, který se dosahuje prostřednictvím [připojovací řetězec](http://www.connectionstrings.com/Articles/Show/what-is-a-connection-string). I když je možné pevně kódovat připojovací řetězec databáze přímo do webových stránek nebo kód, který se připojuje k databázi, je nejlepší umístit `Web.config`společnosti [ `<connectionStrings>` element](https://msdn.microsoft.com/library/bf7sd233.aspx) tak, aby připojovací řetězec informace jsou v jednom centralizované umístění. Často jinou databázi se používá během vývoje. než se používá v produkčním prostředí; informace o připojovacím řetězci v důsledku toho musí být jedinečný pro každé prostředí.
-
-> [!NOTE]
-> Budoucí kurzy prozkoumání, nasazení aplikace řízené daty, v tomto okamžiku začneme budete zabývat, jaké jsou specifikace jak databázové připojovací řetězce jsou uložené v konfiguračním souboru.
-
-Zamýšlené chování vývojovém a produkčním prostředí se podstatně liší. Webové aplikace ve vývojovém prostředí se vytváří, otestovat a ladění malá skupina vývojářů. V produkčním prostředí se tu samou aplikaci návštěvě mnoho různých souběžných uživatelů. Technologie ASP.NET obsahuje řadu funkcí, které pomůžou vývojářům při testování a ladění aplikace, ale tyto funkce by mělo být zakázáno pro výkon a z bezpečnostních důvodů v produkčním prostředí. Podívejme se na několik těchto nastavení konfigurace.
-
-### <a name="configuration-settings-that-impact-performance"></a>Nastavení konfigurace, které ovlivňují výkon
-
-Při návštěvě stránky ASP.NET pro první (nebo prvním spuštění po došlo k jeho změně), jeho deklarativním označení musí být převeden do třídy a tato třída musí být zkompilovány. Pokud webová aplikace používá automatické kompilace na stránce použití modelu code-behind třídy musí ke kompilaci, příliš. Můžete nakonfigurovat celé řady různých doprovodných možnosti kompilace prostřednictvím `Web.config` souboru [ `<compilation>` element](https://msdn.microsoft.com/library/s10awwz0.aspx).
-
-Atribut ladění je jedním z vašich nejdůležitějších atributů `<compilation>` elementu. Pokud `debug` atribut je nastaven na "true", zkompilovaná sestavení zahrnout symboly ladění, které jsou potřeba při ladění aplikace v sadě Visual Studio. Ale symboly ladění zvětšují velikost sestavení a ukládat požadavky na další paměť při spuštění kódu. Kromě toho, kdy `debug` atribut je nastaven na "true" veškerý obsah vrácený `WebResource.axd` neukládají do mezipaměti, což znamená, že pokaždé, když uživatel navštíví stránku bude potřeba znovu si stáhněte statický obsah vrácený `WebResource.axd`.
+Řetězce připojení databáze představují základní příklad informací o konfiguraci, které se liší v závislosti na prostředí. Když webová aplikace komunikuje s databázovým serverem, musí nejdřív navázat připojení a dosáhnout pomocí [připojovacího řetězce](http://www.connectionstrings.com/Articles/Show/what-is-a-connection-string). Přestože je možné pevný kód databázového připojovacího řetězce přímo na webových stránkách nebo v kódu, který se připojuje k databázi, je nejlepší umístit `Web.config`[`<connectionStrings>` prvek](https://msdn.microsoft.com/library/bf7sd233.aspx) tak, aby informace o připojovacím řetězci byly v jediném, centralizovaném umístění. Často se během vývoje používá jiná databáze, než se používá v produkčním prostředí. v důsledku toho musí být informace o připojovacím řetězci jedinečné pro každé prostředí.
 
 > [!NOTE]
-> `WebResource.axd` integrované obslužná rutina HTTP přišla v technologii ASP.NET 2.0, který ovládací prvky serveru použijte k načtení vložených prostředků, jako jsou soubory skriptu, obrázky, soubory šablon stylů CSS a další obsah. Další informace o tom, `WebResource.axd` funguje a jak ho použít pro přístup k vložené prostředky z vašich vlastních serverových ovládacích prvků naleznete v tématu [přístup k vložené prostředky prostřednictvím adresu URL pomocí `WebResource.axd` ](http://aspnet.4guysfromrolla.com/articles/080906-1.aspx).
+> V budoucích kurzech se dozvíte, jak nasazovat aplikace řízené daty. v tomto okamžiku se podrobně do konkrétních údajů o tom, jak se databázové připojovací řetězce ukládají do konfiguračního souboru.
 
-`<compilation>` Elementu `debug` atribut je obvykle nastaven na hodnotu "true" ve vývojovém prostředí. Ve skutečnosti tento atribut musí být nastaven na "true", aby bylo možné ladit webové aplikace; Pokud se pokusíte ladit aplikace ASP.NET ze sady Visual Studio a `debug` atribut je nastaven na hodnotu "false", Visual Studio se zobrazí zpráva vysvětlením, že aplikace nejde ladit, dokud `debug` atribut je nastaven na "true" a bude nabídka je k provedení této změny za vás.
+Zamýšlené chování vývojových a produkčních prostředí se podstatně liší. Webová aplikace ve vývojovém prostředí je vytvářena, testována a Laděna malou skupinou vývojářů. V produkčním prostředí je stejná aplikace navštívená mnoha různými souběžnými uživateli. ASP.NET obsahuje řadu funkcí, které vývojářům pomůžou při testování a ladění aplikace, ale tyto funkce by se měly zakázat z důvodů výkonu a zabezpečení v produkčním prostředí. Pojďme se podívat na několik takových nastavení konfigurace.
 
-Měli byste **nikdy** mít `debug` nastavený atribut na hodnotu "true" v produkčním prostředí z důvodu jeho dopad na výkon. Podrobnější informace o tomto tématu najdete [Scott Guthrie](https://weblogs.asp.net/scottgu/)pro blogový příspěvek [není spustit produkční ASP.NET aplikace s `debug="true"` povoleno](https://weblogs.asp.net/scottgu/442448).
+### <a name="configuration-settings-that-impact-performance"></a>Nastavení konfigurace, která mají vliv na výkon
+
+Pokud je stránka ASP.NET navštívena poprvé (nebo při prvním provedení změny), je nutné její deklarativní označení převést na třídu a tato třída musí být zkompilována. Pokud webová aplikace používá automatickou kompilaci, musí být zkompilována také třída kódu na pozadí stránky. Můžete nakonfigurovat sortiment možností kompilace prostřednictvím [`<compilation>` elementu](https://msdn.microsoft.com/library/s10awwz0.aspx)`Web.config` souboru.
+
+Atribut debug je jedním z nejdůležitějších atributů v prvku `<compilation>`. Pokud je atribut `debug` nastaven na hodnotu "true", zkompilované sestavení obsahují symboly ladění, které jsou potřeba při ladění aplikace v sadě Visual Studio. Ale symboly ladění zvyšují velikost sestavení a při spuštění kódu nastavují další požadavky na paměť. Pokud je navíc atribut `debug` nastaven na hodnotu "true", jakýkoli obsah vrácený `WebResource.axd` není uložen do mezipaměti, což znamená, že pokaždé, když uživatel navštíví stránku, bude muset znovu stáhnout statický obsah vrácený `WebResource.axd`.
+
+> [!NOTE]
+> `WebResource.axd` je vestavěná obslužná rutina protokolu HTTP představená v ASP.NET 2,0, kterou serverové ovládací prvky používají k načtení integrovaných prostředků, jako jsou soubory skriptu, obrázky, soubory CSS a další obsah. Další informace o tom, jak `WebResource.axd` funguje a jak je můžete použít pro přístup k vloženým prostředkům z vlastních serverových ovládacích prvků, najdete v tématu [přístup k integrovaným prostředkům přes adresu URL pomocí `WebResource.axd`](http://aspnet.4guysfromrolla.com/articles/080906-1.aspx).
+
+Atribut `debug` elementu `<compilation>` je obvykle ve vývojovém prostředí nastaven na hodnotu "true". Ve skutečnosti musí být tento atribut nastaven na hodnotu "true", aby bylo možné ladit webovou aplikaci. Pokud se pokusíte ladit aplikaci ASP.NET ze sady Visual Studio a atribut `debug` je nastaven na hodnotu "false", sada Visual Studio zobrazí zprávu s vysvětlením, že aplikaci nelze ladit, dokud není atribut `debug` nastaven na hodnotu "true" a nabídne tuto změnu pro vás.
+
+V produkčním prostředí by **nikdy** neměl být atribut `debug` nastaven na hodnotu "true", protože má vliv na výkon. Podrobnější diskusi k tomuto tématu najdete v blogovém příspěvku [Scott Guthrie](https://weblogs.asp.net/scottgu/). [nespouštějte produkční aplikace ASP.NET s povoleným `debug="true"`](https://weblogs.asp.net/scottgu/442448).
 
 ### <a name="custom-errors-and-tracing"></a>Vlastní chyby a trasování
 
-Když dojde k neošetřené výjimce v aplikaci ASP.NET bubliny až do modulu runtime, alespoň jednu ze tří akcí se stane:
+V případě, že dojde k neošetřené výjimce v aplikaci ASP.NET, zobrazí se s modulem runtime až do doby, kdy se stane jedna ze tří věcí:
 
-- Zobrazí se chybová zpráva obecný modul runtime. Tato stránka informuje uživatele, aby došlo k chybě modulu runtime, ale neposkytuje žádné podrobnosti o chybě.
-- Zobrazí se podrobnosti o zprávu o výjimce, který obsahuje informace o výjimce, která byla právě vydána.
-- Zobrazí se vlastní chybovou stránku, což je stránka technologie ASP.NET, který vytvoříte, který zobrazuje všechny zprávy, které očekáváte.
+- Zobrazí se obecná chybová zpráva modulu runtime. Tato stránka informuje uživatele o tom, že došlo k chybě za běhu, ale neposkytuje žádné podrobnosti o této chybě.
+- Zobrazí se zpráva s podrobnostmi o výjimce, která obsahuje informace o výjimce, která byla právě vyvolána.
+- Zobrazí se vlastní chybová stránka, což je ASP.NET stránka, kterou vytvoříte, která zobrazuje jakoukoli zprávu, kterou si přejete.
 
-Co se stane, že i v případě neošetřené výjimce závisí `Web.config` souboru [ `<customErrors>` části](https://msdn.microsoft.com/library/h0hfz6fc.aspx).
+Co se stane na tváři neošetřené výjimky, závisí na [`<customErrors>` oddílu](https://msdn.microsoft.com/library/h0hfz6fc.aspx)`Web.config` souboru.
 
-Při vývoji a testování aplikace umožňuje zobrazit podrobnosti o jakoukoli výjimku v prohlížeči. Zobrazuje podrobnosti o výjimce v aplikaci v produkčním prostředí je však možné bezpečnostní riziko. Kromě toho je unflattering a díky neprofesionálně webu. V ideálním případě by v případě neošetřené výjimce webové aplikace ve vývojovém prostředí se zobrazí podrobnosti o této výjimky během stejné aplikace v produkčním prostředí se zobrazí vlastní chybové stránky.
-
-> [!NOTE]
-> Výchozí hodnota `<customErrors>` část nastavení se zobrazí podrobnosti o výjimce zprávy pouze v případě, že na stránce přístupu prostřednictvím místního hostitele a v opačném případě se zobrazí chybová stránka obecný modul runtime. To není ideální, ale je ujištěním vědět, že výchozí chování není zobrazit podrobnosti o výjimce pro jiné než místní návštěvníky. Budoucí kurz zkoumá `<customErrors>` části podrobněji a ukazuje, jak mají vlastní chybové stránky zobrazí, když dojde k chybě v produkčním prostředí.
-
-Další funkcí technologie ASP.NET, které jsou užitečné při vývoji se trasování. Trasování, pokud je povoleno, zaznamenává informace o jednotlivých příchozích požadavků a poskytuje zvláštní webové stránky, `Trace.axd`, pro zobrazení Podrobnosti o poslední žádosti. Můžete zapnout a nakonfigurovat trasování prostřednictvím [ `<trace>` element](https://msdn.microsoft.com/library/6915t83k.aspx) v `Web.config`.
-
-Pokud povolíte trasování Ujistěte se, že to je zakázané v produkčním prostředí. Informace o trasování zahrnuje soubory cookie, data relace a další potenciálně citlivé informace, a proto je důležité pro vypnutí trasování v produkčním prostředí. Dobrou zprávou je, že ve výchozím nastavení, trasování je zakázáno a `Trace.axd` soubor je k dispozici pouze prostřednictvím místního hostitele. Je-li změnit toto výchozí nastavení při vývoji Ujistěte se, že jsou vypnuté zpět v produkčním prostředí.
-
-## <a name="techniques-for-maintaining-separate-configuration-information"></a>Techniky pro zachování informací o samostatné konfiguraci
-
-S různá nastavení konfigurace ve vývojovém a produkčním prostředí komplikuje proces nasazení. V předchozích kurzech dvě proces nasazení týká, všechny potřebné soubory kopírování z vývojového do produkčního prostředí, ale tento přístup funguje, pouze pokud informace o konfiguraci jsou stejné v obou prostředích. Existuje řada různých technik pro nasazení aplikace s různými informace o konfiguraci. Pojďme katalogu některé z těchto možností pro hostované webové aplikace.
-
-### <a name="manually-deploying-the-production-environment-configuration-file"></a>Ruční nasazení konfiguračního souboru produkční prostředí
-
-Nejjednodušším způsobem je udržovat dvě verze `Web.config` souboru: jeden pro vývojové prostředí a druhý pro produkční prostředí. Nasazení webu do produkčního prostředí zahrnuje kopírování všech souborů na produkční server ve vývojovém prostředí *s výjimkou* pro `Web.config` souboru. Místo toho na produkční prostředí specifické pro `Web.config` souboru má být zkopírováno do produkčního prostředí.
-
-Tento přístup není velmi složité, ale snadno implementovat, protože informace o konfiguraci mění jen zřídka. Je nejvhodnější pro aplikace s malý vývojový tým, které jsou hostované na jednom webovém serveru a jejichž informace o konfiguraci se zřídka mění. Bylo nejvíce chráněném při ruční nasazení aplikace soubory pomocí samostatného klienta FTP. Při použití nástroje pro kopírování webu sady Visual Studio nebo možností publikovat budete muset nejdřív použít specifické pro nasazení `Web.config` souboru s kategorií specifické pro produkční před nasazením a po dokončení nasazení je prohodit.
-
-### <a name="change-the-configuration-during-the-build-or-deployment-process"></a>Změna konfigurace během sestavování nebo procesu nasazení
-
-Diskuse doposud jste předpokládá, že proces sestavení a nasazení ad-hoc. Větší mnoha softwarových projektech mají více stanovení procesy, které zajišťují použití open sourcové uživatelské, nebo nástrojů třetích stran. Tyto projekty můžete pravděpodobně přizpůsobit proces sestavení nebo nasazení odpovídajícím způsobem upravit informace o konfiguraci, předtím, než se vloží do produkčního prostředí. Pokud vytváříte webové aplikace pomocí [MSBuild](http://en.wikipedia.org/wiki/MSBuild), [NAnt](http://nant.sourceforge.net/), nebo nějaký jiný nástroj sestavení, je pravděpodobně přidat krok sestavení změnit `Web.config` soubor zahrnout nastavení specifická pro produkční. Váš pracovní postup nasazení může programově připojit k serveru správy zdrojů a načíst odpovídající `Web.config` souboru.
-
-Skutečný přístup k zařazení správné konfigurační informace do produkčního prostředí se liší běžně podle nástroje a pracovního postupu. V důsledku toho jsme se pustíte do dále v tomto tématu. Pokud používáte sestavení oblíbené nástroje, jako je MSBuild nebo NAnt najdete články nasazení a kurzy specifická pro tyto nástroje prostřednictvím vyhledávání na webu.
-
-### <a name="managing-configuration-differences-via-the-web-deployment-project-add-in"></a>Správa konfigurace rozdíly pomocí nasazení webu projektu doplňku
-
-V 2006 Společnost Microsoft vydala Add-In vývoj webového projektu pro Visual Studio 2005. Doplněk pro sadu Visual Studio 2008 byla vydána v roce 2008. Add-In umožňuje pro vývojáře využívající technologii ASP.NET vytvořit samostatný webový projekt nasazení společně s jejich projektu webové aplikace, po sestavení, explicitně zkompiluje webové aplikace a zkopíruje soubory, které chcete nasadit do místního výstupního adresáře. Projekt webové aplikace pomocí nástroje MSBuild na pozadí.
-
-Ve výchozím nastavení, vývojové prostředí společnosti `Web.config` soubor je zkopírován do výstupního adresáře, ale můžete nastavit nasazení webového projektu přizpůsobení
-
-informace o konfiguraci, který se zkopíruje do tohoto adresáře následujícími způsoby:
-
-- Prostřednictvím `Web.config` souborů nahrazení oddílu, ve kterém můžete zadat oddílu, který má nahradit a soubor XML, který obsahuje náhradní text.
-- Zadáním cesty k souboru zdrojového externí konfigurace. Tato možnost aktivní, webový projekt nasazení zkopíruje konkrétní `Web.config` soubor do výstupního adresáře. (místo `Web.config` soubor se používá ve vývojovém prostředí).
-- Přidáním vlastních pravidel do souboru MSBuild používaný nasazení webového projektu.
-
-Nasazení webové aplikace sestavení projektu nasazení webu a pak zkopírujte soubory ze složky výstup projektu do produkčního prostředí.
-
-Další informace o použití projektu nasazení webu, projděte si [v tomto článku projekty nasazení webu](https://msdn.microsoft.com/magazine/cc163448.aspx) od vydání duben 2007 [Zpravodaj MSDN Magazine](https://msdn.microsoft.com/magazine/default.aspx), nebo se obraťte na odkazy v části Další čtení na účelem tohoto kurzu.
+Při vývoji a testování aplikace pomáhá zobrazit podrobnosti o jakékoli výjimce v prohlížeči. Zobrazení podrobností o výjimce v aplikaci v produkčním prostředí je však potenciální bezpečnostní riziko. Navíc je unflattering a váš web vypadá neprofesionálně. V ideálním případě v případě neošetřené výjimky zobrazí webová aplikace ve vývojovém prostředí podrobnosti o výjimce, zatímco stejná aplikace v produkčním prostředí zobrazí vlastní chybovou stránku.
 
 > [!NOTE]
-> Nasazení webového projektu nelze použít s aplikaci Visual Web Developer, protože nasazení webového projektu je implementovaný jako Visual Studio Add-In a Visual Studio Express (včetně edice Visual Web Developer) nepodporují Add-Ins.
+> Výchozí nastavení oddílu `<customErrors>` zobrazuje zprávu o podrobnostech výjimky pouze v případě, že stránka je navštívena prostřednictvím místního hostitele, a v opačném případě zobrazuje chybovou stránku Obecné za běhu. To není ideální, ale zajišťuje, že výchozí chování neodhalí podrobnosti o výjimce nemístním návštěvníkům. Budoucí kurz podrobněji prověřuje část `<customErrors>` podrobněji a ukazuje, jak mít vlastní chybovou stránku zobrazenou v případě, že dojde k chybě v produkčním prostředí.
 
-## <a name="summary"></a>Souhrn
+Další funkcí ASP.NET, která je užitečná při vývoji, je trasování. Trasování, pokud je povoleno, zaznamenává informace o jednotlivých příchozích žádostech a poskytuje speciální webovou stránku `Trace.axd`pro zobrazení posledních podrobností žádosti. Trasování můžete zapnout a nakonfigurovat pomocí [elementu`<trace>`](https://msdn.microsoft.com/library/6915t83k.aspx) v `Web.config`.
 
-Externí prostředky a chování při vývoji webové aplikace se obvykle liší od kdy je tu samou aplikaci v produkčním prostředí. Například databázové připojovací řetězce, možnosti kompilace a chování, když dojde k neošetřené výjimce běžně lišit mezi prostředími. Proces nasazení musí přizpůsobení těchto rozdílů. Jak jsme probírali v tomto kurzu, nejjednodušším přístupem je ručně zkopírovat soubor alternativní konfigurace do produkčního prostředí. Elegantnější řešení je možné při použití na webové nasazení projektu doplňku nebo s více formalizovanou proces sestavení nebo nasazení, který zvládne tyto úpravy.
+Pokud povolíte trasování, ujistěte se, že je v produkčním prostředí zakázané. Vzhledem k tomu, že informace o trasování zahrnují soubory cookie, data relace a další potenciálně citlivé informace, je důležité zakázat trasování v produkčním prostředí. Dobrá zpráva je, že ve výchozím nastavení je trasování zakázané a `Trace.axd` soubor je dostupný jenom přes localhost. Pokud toto výchozí nastavení změníte při vývoji, ujistěte se, že jsou v produkčním prostředí zase vypnuté.
 
-Všechno nejlepší programování!
+## <a name="techniques-for-maintaining-separate-configuration-information"></a>Techniky správy oddělených informací o konfiguraci
+
+Různá nastavení konfigurace ve vývojovém a produkčním prostředí ztěžuje proces nasazení. V předchozích dvou kurzech se během procesu nasazení zkopírovaly všechny nezbytné soubory z vývoje do produkčního prostředí, ale tento přístup funguje jenom v případě, že konfigurační informace jsou v obou prostředích stejné. Existuje řada technik pro nasazení aplikace s různými konfiguračními informacemi. Pojďme tyto možnosti zařadit do katalogu pro hostované webové aplikace.
+
+### <a name="manually-deploying-the-production-environment-configuration-file"></a>Ruční nasazení konfiguračního souboru produkčního prostředí
+
+Nejjednodušším přístupem je udržovat dvě verze `Web.config` souboru: jeden pro vývojové prostředí a jeden pro produkční prostředí. Nasazení lokality do provozu zahrnuje kopírování všech souborů na provozní server ve vývojovém prostředí *s výjimkou* `Web.config` souboru. Místo toho se do produkčního souboru zkopíruje soubor `Web.config` specifický pro produkční prostředí.
+
+Tento přístup není příliš složitý, ale je možné jej snadno implementovat, protože informace o konfiguraci se nečasto mění. Funguje nejlépe pro aplikace s malým vývojovým týmem, který je hostovaný na jednom webovém serveru a jehož konfigurační informace se zřídka mění. Při ručním nasazování souborů aplikace pomocí samostatného klienta FTP se jedná o většinu Tenable. Když použijete nástroj pro kopírování webu sady Visual Studio nebo možnost publikování, budete muset před nasazením nejprve vyměňovat soubor `Web.config` specifický pro nasazení s konkrétní výrobou a pak je po dokončení nasazení znovu zaměnit.
+
+### <a name="change-the-configuration-during-the-build-or-deployment-process"></a>Změna konfigurace během procesu sestavení nebo nasazení
+
+V dosavadních diskuzích se předpokládá proces sestavení a nasazení ad hoc. Mnoho větších softwarových projektů má více formálních procesů, které využívají open source nástroje nebo nástroje třetích stran. V takových projektech si pravděpodobně můžete přizpůsobit proces sestavení nebo nasazení a odpovídajícím způsobem upravit informace o konfiguraci před jejich odesláním do produkčního prostředí. Pokud sestavíte webovou aplikaci pomocí nástroje [MSBuild](http://en.wikipedia.org/wiki/MSBuild), [NAnt](http://nant.sourceforge.net/)nebo nějakého jiného nástroje sestavení, můžete přidat krok sestavení, který upraví soubor `Web.config` tak, aby zahrnoval nastavení specifické pro určitou provozní hodnotu. Pracovní postup nasazení by se mohl programově připojit k serveru správy zdrojového kódu a načíst příslušný soubor `Web.config`.
+
+Skutečný přístup k tomu, aby se informace o konfiguraci do provozu získaly, se výrazně liší v závislosti na vašich nástrojích a pracovním postupu. V takovém případě nebudeme dál do tohoto tématu dohlížet. Pokud používáte oblíbený nástroj sestavení, jako je MSBuild nebo NAnt, můžete najít články týkající se nasazení a kurzy specifické pro tyto nástroje prostřednictvím vyhledávání na webu.
+
+### <a name="managing-configuration-differences-via-the-web-deployment-project-add-in"></a>Správa rozdílů v konfiguraci prostřednictvím doplňku projektu nasazení webu
+
+V 2006 společnost Microsoft vydala doplněk projektu pro vývoj webu pro Visual Studio 2005. Doplněk pro Visual Studio 2008 byl vydaný v 2008. Tento doplněk umožňuje vývojářům v ASP.NET vytvořit samostatný projekt webového nasazení společně se svým projektem webové aplikace, který při sestavení explicitně zkompiluje webovou aplikaci a zkopíruje soubory pro nasazení do místního výstupního adresáře. Projekt webové aplikace používá MSBuild na pozadí.
+
+Ve výchozím nastavení je soubor `Web.config` vývojového prostředí zkopírován do výstupního adresáře, ale můžete nastavit projekt nasazení webu pro přizpůsobení
+
+informace o konfiguraci, které se zkopírují do tohoto adresáře, následujícími způsoby:
+
+- Pomocí `Web.config` nahrazení oddílu souboru, ve kterém zadáte oddíl, který se má nahradit, a soubor XML, který obsahuje nahrazující text.
+- Zadáním cesty k externímu zdrojovému souboru konfigurace. Když je tato možnost vybraná, projekt nasazení webu zkopíruje určitý soubor `Web.config` do výstupního adresáře (místo `Web.config` souboru používaného ve vývojovém prostředí).
+- Přidáním vlastních pravidel do souboru MSBuild používaného projektem nasazení webu.
+
+Chcete-li nasadit webovou aplikaci, sestavte projekt nasazení webu a potom zkopírujte soubory z výstupní složky projektu do produkčního prostředí.
+
+Další informace o používání projektu nasazení webu najdete v [tomto článku o projektech nasazení webu](https://msdn.microsoft.com/magazine/cc163448.aspx) od vydání 2007. dubna na [webu MSDN Magazine](https://msdn.microsoft.com/magazine/default.aspx)nebo si Projděte odkazy v části Další informace na konci tohoto kurzu.
+
+> [!NOTE]
+> Projekt nasazení webu se sadou Visual Web Developer nelze použít, protože projekt nasazení webu je implementován jako doplněk sady Visual Studio a edice Visual Studio Express (včetně aplikace Visual Web Developer) nepodporují doplňky.
+
+## <a name="summary"></a>Přehled
+
+Externí prostředky a chování webové aplikace ve vývoji se obvykle liší od situace, kdy je stejná aplikace v produkčním prostředí. Například databázové připojovací řetězce, možnosti kompilace a chování, když dojde k neošetřené výjimce, se obvykle liší mezi prostředími. Proces nasazení musí vyhovovat těmto rozdílům. Jak je popsáno v tomto kurzu, nejjednodušší způsob je ruční zkopírování alternativního konfiguračního souboru do produkčního prostředí. Při použití doplňku projektu nasazení webu nebo s více formálními procesy sestavení nebo nasazení, které mohou přizpůsobit taková přizpůsobení, jsou k dispozici další elegantní řešení.
+
+Šťastné programování!
 
 ### <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
 - [Vysvětlení připojovacích řetězců](http://www.connectionstrings.com/Articles/Show/what-is-a-connection-string)
-- [Databázové připojovací řetězce @ ConnectionStrings.com](http://www.connectionstrings.com/)
-- [Nelze spustit produkční aplikace ASP.NET s `debug="true"` povoleno](https://weblogs.asp.net/scottgu/Don_1920_t-run-production-ASP.NET-Applications-with-debug_3D001D20_true_1D20_-enabled)
-- [Řádně zpracování neošetřené výjimky - zobrazení uživatelsky přívětivé chybové stránky](http://aspnet.4guysfromrolla.com/articles/090606-1.aspx)
-- [Postup: Použít projekt webové nasazení sady Visual Studio 2008?](../../../videos/how-do-i/how-do-i-use-a-visual-studio-2008-web-deployment-project.md)
+- [Připojovací řetězce databáze @ ConnectionStrings.com](http://www.connectionstrings.com/)
+- [Nespouštějte produkční aplikace v ASP.NET s povoleným `debug="true"`](https://weblogs.asp.net/scottgu/Don_1920_t-run-production-ASP.NET-Applications-with-debug_3D001D20_true_1D20_-enabled)
+- [Řádné reakce na neošetřené výjimky – zobrazení uživatelsky přívětivých chybových stránek](http://aspnet.4guysfromrolla.com/articles/090606-1.aspx)
+- [Jak můžu: použít projekt nasazení webu sady Visual Studio 2008?](../../../videos/how-do-i/how-do-i-use-a-visual-studio-2008-web-deployment-project.md)
 - [Nastavení konfigurace klíče při nasazení databáze](http://aspnet.4guysfromrolla.com/articles/121008-1.aspx)
-- [Visual Studio 2008 nasazení projekty stažením z webu](https://www.microsoft.com/downloads/details.aspx?FamilyId=0AA30AE8-C73B-4BDD-BB1B-FE697256C459&amp;displaylang=en) | [Visual Studio 2005 nasazení projekty stažením z webu](https://download.microsoft.com/download/9/4/9/9496adc4-574e-4043-bb70-bc841e27f13c/WebDeploymentSetup.msi)
-- [Projekty nasazení webu 2008 VS](https://weblogs.asp.net/scottgu/archive/2005/11/06/429723.aspx) | [VS 2008 webové nasazení projektu podporu všeobecně dostupné](https://weblogs.asp.net/scottgu/archive/2008/01/28/vs-2008-web-deployment-project-support-released.aspx)
+- [Projekty nasazení webu sady Visual studio 2008 stáhnout](https://www.microsoft.com/downloads/details.aspx?FamilyId=0AA30AE8-C73B-4BDD-BB1B-FE697256C459&amp;displaylang=en) | [projekty nasazení sady Visual Studio 2005 stáhnout](https://download.microsoft.com/download/9/4/9/9496adc4-574e-4043-bb70-bc841e27f13c/WebDeploymentSetup.msi)
+- [Projekty nasazení webu vs 2008](https://weblogs.asp.net/scottgu/archive/2005/11/06/429723.aspx) | [a podpora projektů nasazení webu vs 2008](https://weblogs.asp.net/scottgu/archive/2008/01/28/vs-2008-web-deployment-project-support-released.aspx)
 - [Projekty nasazení webu](https://msdn.microsoft.com/magazine/cc163448.aspx)
 
 > [!div class="step-by-step"]
 > [Předchozí](deploying-your-site-using-visual-studio-cs.md)
-> [další](core-differences-between-iis-and-the-asp-net-development-server-cs.md)
+> [Další](core-differences-between-iis-and-the-asp-net-development-server-cs.md)

@@ -8,20 +8,20 @@ ms.date: 09/08/2014
 ms.assetid: 423498f7-1a4b-44a1-b342-5f39d0bcf94f
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: f420be369801208fa875d9a60e6e154afbe84aa7
-ms.sourcegitcommit: b67ffd5b2c5cff01ec4c8eb12a21f693f2e11887
+ms.openlocfilehash: 9514142ca50b33470a3f4c033e4f8e319a9ee09b
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69995305"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74636458"
 ---
 # <a name="aspnet-error-handling"></a>Zpracování chyb v ASP.NET
 
 od [Erik Reitan](https://github.com/Erikre)
 
-[Stáhnout vzorový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [Stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
+[Stáhnout vzorový projekt Wingtip Toys (C#)](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [Stáhnout elektronickou knihu (PDF)](https://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
-> V této sérii kurzů se naučíte základy vytváření webových formulářů ASP.NET pomocí ASP.NET 4,5 a Microsoft Visual Studio Express 2013 pro web. K dispozici je Visual Studio 2013 [projekt C# se zdrojovým kódem](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) , který se doprovází v této sérii kurzů.
+> V této sérii kurzů se naučíte základy vytváření webových formulářů ASP.NET pomocí ASP.NET 4,5 a Microsoft Visual Studio Express 2013 pro web. K dispozici je Visual Studio 2013 [projekt se C# zdrojovým kódem](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) , který se doprovází v této sérii kurzů.
 
 V tomto kurzu upravíte ukázkovou aplikaci Wingtip Toys, která bude zahrnovat zpracování chyb a protokolování chyb. Zpracování chyb umožní aplikaci řádným způsobem zpracovávat chyby a zobrazovat chybové zprávy. Protokolování chyb vám umožní najít a opravit chyby, ke kterým došlo. Tento kurz sestaví na předchozím kurzu "směrování adresy URL" a je součástí série kurzů Wingtip Toys.
 
@@ -37,17 +37,17 @@ V tomto kurzu upravíte ukázkovou aplikaci Wingtip Toys, která bude zahrnovat 
 
 ASP.NET aplikace musí být schopné zpracovávat chyby, ke kterým dochází během provádění konzistentním způsobem. ASP.NET používá modul CLR (Common Language Runtime), který poskytuje způsob upozorňování aplikací s chybami jednotným způsobem. Dojde-li k chybě, je vyvolána výjimka. Výjimka je jakákoli chyba, podmínka nebo neočekávané chování, ke kterému dojde v aplikaci.
 
-V .NET Framework výjimka je objekt, který dědí z `System.Exception` třídy. Výjimka je vyvolána z oblasti kódu, kde došlo k problému. Výjimka je předána zásobníku volání do místa, kde aplikace poskytuje kód pro zpracování výjimky. Pokud aplikace výjimku nezpracovává, prohlížeč je nucen zobrazit podrobnosti o chybě.
+V .NET Framework výjimka je objekt, který dědí z třídy `System.Exception`. Výjimka je vyvolána z oblasti kódu, kde došlo k problému. Výjimka je předána zásobníku volání do místa, kde aplikace poskytuje kód pro zpracování výjimky. Pokud aplikace výjimku nezpracovává, prohlížeč je nucen zobrazit podrobnosti o chybě.
 
-Osvědčeným postupem je zpracovávat chyby v na úrovni kódu v `Try` / `Catch` / `Finally` blocích v rámci vašeho kódu. Zkuste umístit tyto bloky tak, aby mohl uživatel opravit problémy v kontextu, ve kterém k nim došlo. Pokud jsou bloky zpracování chyb příliš daleko od místa, kde došlo k chybě, bude obtížnější poskytnout uživatelům informace, které potřebují k vyřešení problému.
+Osvědčeným postupem je zpracovávat chyby v na úrovni kódu v `Try`/`Catch`/`Finally` bloky v rámci vašeho kódu. Zkuste umístit tyto bloky tak, aby mohl uživatel opravit problémy v kontextu, ve kterém k nim došlo. Pokud jsou bloky zpracování chyb příliš daleko od místa, kde došlo k chybě, bude obtížnější poskytnout uživatelům informace, které potřebují k vyřešení problému.
 
 ### <a name="exception-class"></a>Exception – třída
 
-Třída Exception je základní třída, ze které dědí výjimky. Většina objektů Exception je instance některé odvozené třídy třídy Exception, jako je `SystemException` třída `IndexOutOfRangeException` , třída nebo `ArgumentNullException` třída. Třída Exception má vlastnosti, jako je `StackTrace` vlastnost `InnerException` , vlastnost a `Message` vlastnost, které poskytují konkrétní informace o chybě, ke které došlo.
+Třída Exception je základní třída, ze které dědí výjimky. Většina objektů výjimky je instancemi některé odvozené třídy třídy Exception, jako je například třída `SystemException`, třída `IndexOutOfRangeException` nebo třída `ArgumentNullException`. Třída Exception má vlastnosti, jako je například vlastnost `StackTrace`, vlastnost `InnerException` a vlastnost `Message`, které poskytují konkrétní informace o chybě, k níž došlo.
 
 ### <a name="exception-inheritance-hierarchy"></a>Hierarchie dědičnosti výjimek
 
-Modul runtime má základní sadu výjimek odvozenou od `SystemException` třídy, kterou modul runtime vyvolá při zjištění výjimky. Většina tříd, které dědí z třídy Exception, jako je `IndexOutOfRangeException` třída `ArgumentNullException` a třída, neimplementují další členy. Proto nejdůležitější informace pro výjimku lze nalézt v hierarchii výjimek, název výjimky a informace obsažené v výjimce.
+Modul runtime má základní sadu výjimek odvozený od `SystemException` třídy, kterou modul runtime vyvolá při zjištění výjimky. Většina tříd, které dědí z třídy Exception, jako je například třída `IndexOutOfRangeException` a `ArgumentNullException` třídy, neimplementuje další členy. Proto nejdůležitější informace pro výjimku lze nalézt v hierarchii výjimek, název výjimky a informace obsažené v výjimce.
 
 ### <a name="exception-handling-hierarchy"></a>Hierarchie zpracování výjimek
 
@@ -61,15 +61,15 @@ Pokud aplikace zpracovává výjimky, další informace o výjimce, která je zd
 
 ### <a name="application-level-error-handling"></a>Zpracování chyb na úrovni aplikace
 
-Můžete zpracovat výchozí chyby na úrovni aplikace buď úpravou konfigurace aplikace, nebo přidáním `Application_Error` obslužné rutiny do souboru *Global. asax* vaší aplikace.
+Můžete zpracovat výchozí chyby na úrovni aplikace buď úpravou konfigurace aplikace, nebo přidáním obslužné rutiny `Application_Error` v souboru *Global. asax* vaší aplikace.
 
-Můžete zpracovat výchozí chyby a chyby protokolu HTTP přidáním `customErrors` oddílu do souboru *Web. config* . V `customErrors` části můžete zadat výchozí stránku, na kterou budou uživatelé přesměrováni, když dojde k chybě. Umožňuje taky zadat jednotlivé stránky pro konkrétní chyby stavového kódu.
+Můžete zpracovat výchozí chyby a chyby protokolu HTTP přidáním oddílu `customErrors` do souboru *Web. config* . Část `customErrors` umožňuje zadat výchozí stránku, na kterou budou uživatelé přesměrováni, když dojde k chybě. Umožňuje taky zadat jednotlivé stránky pro konkrétní chyby stavového kódu.
 
 [!code-xml[Main](aspnet-error-handling/samples/sample1.xml?highlight=3-5)]
 
 Když ale použijete konfiguraci k přesměrování uživatele na jinou stránku, nezískáte podrobnosti o chybě, ke které došlo.
 
-Můžete však zachytit chyby, ke kterým dochází kdekoli v aplikaci, přidáním kódu do `Application_Error` obslužné rutiny v souboru *Global. asax* .
+Můžete však zachytit chyby, ke kterým dochází kdekoli v aplikaci, přidáním kódu do obslužné rutiny `Application_Error` v souboru *Global. asax* .
 
 [!code-csharp[Main](aspnet-error-handling/samples/sample2.cs)]
 
@@ -79,44 +79,44 @@ Obslužná rutina na úrovni stránky vrátí uživatele na stránku, kde došlo
 
 Obvykle byste použili obslužnou rutinu chyb na úrovni stránky k protokolování neošetřených chyb nebo k převzetí uživatele na stránku, která může zobrazit užitečné informace.
 
-Tento příklad kódu ukazuje obslužnou rutinu pro událost Error na webové stránce ASP.NET. Tato obslužná rutina zachytí všechny výjimky, které ještě `try` nejsou zpracovávány / `catch` v blocích na stránce.
+Tento příklad kódu ukazuje obslužnou rutinu pro událost Error na webové stránce ASP.NET. Tato obslužná rutina zachytí všechny výjimky, které ještě nejsou zpracovávány v `try`/`catch` bloky na stránce.
 
 [!code-csharp[Main](aspnet-error-handling/samples/sample3.cs)]
 
-Po zpracování chyby je nutné ji vymazat voláním `ClearError` metody objektu serveru (`HttpServerUtility` třídy), jinak se zobrazí chyba, která byla dříve nastala.
+Po zpracování chyby je nutné ji vymazat voláním metody `ClearError` objektu Server (`HttpServerUtility` třídy), jinak se zobrazí chyba, která byla dříve nastala.
 
 ### <a name="code-level-error-handling"></a>Zpracování chyb na úrovni kódu
 
 Příkaz try-catch se skládá z bloku try následovaného jednou nebo více klauzulemi catch, které určují obslužné rutiny pro různé výjimky. Je-li vyvolána výjimka, modul CLR (Common Language Runtime) vyhledá příkaz catch, který zpracovává tuto výjimku. Pokud aktuálně spuštěná metoda neobsahuje blok catch, modul CLR vyhledá metodu, která volala aktuální metodu, a tak dále, do zásobníku volání. Pokud není nalezen žádný blok catch, modul CLR zobrazí uživateli neošetřenou zprávu o výjimce a zastaví provádění programu.
 
-Následující příklad kódu ukazuje běžný `try` způsob použití / `catch` / prozpracováníchyb`finally` .
+Následující příklad kódu ukazuje běžný způsob použití `try`/`catch`/`finally` pro zpracování chyb.
 
 [!code-csharp[Main](aspnet-error-handling/samples/sample4.cs)]
 
-Ve výše uvedeném kódu blok try obsahuje kód, který je nutné chránit před možnou výjimkou. Blok je proveden, dokud není vyvolána výjimka nebo je blok úspěšně dokončen. Pokud dojde k `IOException`výjimce nebo výjimce, je spuštění přeneseno na jinou stránku. `FileNotFoundException` Pak se spustí kód obsažený v bloku finally, bez ohledu na to, jestli došlo k chybě nebo ne.
+Ve výše uvedeném kódu blok try obsahuje kód, který je nutné chránit před možnou výjimkou. Blok je proveden, dokud není vyvolána výjimka nebo je blok úspěšně dokončen. Pokud dojde k výjimce `FileNotFoundException` nebo k výjimce `IOException`, je spuštění přeneseno na jinou stránku. Pak se spustí kód obsažený v bloku finally, bez ohledu na to, jestli došlo k chybě nebo ne.
 
 ## <a name="adding-error-logging-support"></a>Přidání podpory protokolování chyb
 
-Před přidáním zpracování chyb do ukázkové aplikace Wingtip Toys přidáte podporu protokolování chyb přidáním `ExceptionUtility` třídy do složky *logiky* . Tím dojde k tomu, že se pokaždé, když aplikace zpracovává chybu, do souboru protokolu chyb přidá podrobnosti o chybě.
+Před přidáním zpracování chyb do ukázkové aplikace Wingtip Toys přidáte podporu protokolování chyb přidáním třídy `ExceptionUtility` do složky *Logic* . Tím dojde k tomu, že se pokaždé, když aplikace zpracovává chybu, do souboru protokolu chyb přidá podrobnosti o chybě.
 
-1. Klikněte pravým tlačítkem na složku *Logic* a pak vyberte **Přidat**  - &gt; **novou položku**.   
-   **Přidat novou položku** se zobrazí dialogové okno.
-2. Na levé straně vyberte skupinu šablon  - **vizuálního C#**  &gt; **kódu** . Pak vyberte **Třída**v prostředním seznamu a pojmenujte ji **ExceptionUtility.cs**.
-3. Zvolte **přidat**. Zobrazí se nový soubor třídy.
+1. Klikněte pravým tlačítkem na složku *Logic* a pak vyberte **Přidat** -&gt; **Nová položka**.   
+   Zobrazí se dialogové okno **Přidat novou položku** .
+2. Na levé straně vyberte skupinu šablon **kódu** &gt; **Visual C#**  -. Pak vyberte **Třída**v prostředním seznamu a pojmenujte ji **ExceptionUtility.cs**.
+3. Klikněte na tlačítko **Přidat**. Zobrazí se nový soubor třídy.
 4. Existující kód nahraďte následujícím kódem:  
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample5.cs)]
 
-Pokud dojde k výjimce, lze výjimku zapsat do souboru protokolu výjimky voláním `LogException` metody. Tato metoda přijímá dva parametry, objekt výjimky a řetězec obsahující podrobnosti o zdroji výjimky. Protokol výjimek se zapisuje do souboru *. txt* ve složce *data aplikací\_* .
+Pokud dojde k výjimce, lze výjimku zapsat do souboru protokolu výjimky voláním metody `LogException`. Tato metoda přijímá dva parametry, objekt výjimky a řetězec obsahující podrobnosti o zdroji výjimky. Protokol výjimek se zapisuje do souboru *. txt* ve složce *App\_data* .
 
 ### <a name="adding-an-error-page"></a>Přidání chybové stránky
 
 V ukázkové aplikaci Wingtip Toys se k zobrazení chyb použije jedna stránka. Chybová stránka je navržena tak, aby zobrazovala zabezpečenou chybovou zprávu uživatelům webu. Pokud je však uživatel vývojářem, který vytváří požadavek HTTP, který je obsluhován místně na počítači, ve kterém je kód umístěn, budou na chybové stránce zobrazeny další podrobnosti o chybě.
 
-1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na název projektu (**Wingtip Toys**) a vyberte možnost **Přidat**  - &gt; **novou položku**.   
-   **Přidat novou položku** se zobrazí dialogové okno.
-2. Na levé straně vyberte skupinu  - **Visual C#**  &gt; **Web** Templates. V prostředním seznamu vyberte **webový formulář s hlavní stránkou**a pojmenujte ho **ErrorPage. aspx**.
-3. Klikněte na **Přidat**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na název projektu (**Wingtip Toys**) a vyberte **Přidat** -&gt; **Nová položka**.   
+   Zobrazí se dialogové okno **Přidat novou položku** .
+2. Na levé straně vyberte skupinu **Visual C#**  -&gt; **Web** Templates. V prostředním seznamu vyberte **webový formulář s hlavní stránkou**a pojmenujte ho **ErrorPage. aspx**.
+3. Klikněte na tlačítko **Přidat**.
 4. Vyberte soubor *Web. Master* jako stránku předlohy a pak klikněte na **tlačítko OK**.
 5. Existující značku nahraďte následujícím kódem:   
 
@@ -125,23 +125,23 @@ V ukázkové aplikaci Wingtip Toys se k zobrazení chyb použije jedna stránka.
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample7.cs)]
 
-Po zobrazení `Page_Load` chybové stránky se spustí obslužná rutina události. `Page_Load` V obslužné rutině je určeno umístění, kde byla chyba poprvé zpracována. Poslední chyba, ke které došlo, je určena voláním `GetLastError` metody objektu Server. Pokud již výjimka neexistuje, je vytvořena obecná výjimka. Pokud byl požadavek HTTP proveden místně, zobrazí se všechny podrobnosti o chybě. V takovém případě se tyto podrobnosti o chybě zobrazí jenom na místním počítači, na kterém je spuštěná webová aplikace. Po zobrazení informací o chybě se do souboru protokolu přidá chyba a na serveru se vymaže chyba.
+Po zobrazení chybové stránky se spustí obslužná rutina události `Page_Load`. V obslužné rutině `Page_Load` je určeno umístění, kde byla chyba poprvé zpracována. Poslední chyba, ke které došlo, je určena voláním metody `GetLastError` objektu Server. Pokud již výjimka neexistuje, je vytvořena obecná výjimka. Pokud byl požadavek HTTP proveden místně, zobrazí se všechny podrobnosti o chybě. V takovém případě se tyto podrobnosti o chybě zobrazí jenom na místním počítači, na kterém je spuštěná webová aplikace. Po zobrazení informací o chybě se do souboru protokolu přidá chyba a na serveru se vymaže chyba.
 
 ### <a name="displaying-unhandled-error-messages-for-the-application"></a>Zobrazení neošetřených chybových zpráv pro aplikaci
 
-Přidáním `customErrors` oddílu do souboru *Web. config* můžete rychle zpracovávat jednoduché chyby, ke kterým dochází v celé aplikaci. Můžete také určit, jak se mají zpracovávat chyby na základě jejich hodnoty stavového kódu, například 404-soubor nebyl nalezen.
+Přidáním oddílu `customErrors` do souboru *Web. config* můžete rychle zpracovávat jednoduché chyby, ke kterým dochází v celé aplikaci. Můžete také určit, jak se mají zpracovávat chyby na základě jejich hodnoty stavového kódu, například 404-soubor nebyl nalezen.
 
 #### <a name="update-the-configuration"></a>Aktualizace konfigurace
 
-Aktualizujte konfiguraci přidáním `customErrors` oddílu do souboru *Web. config* .
+Aktualizujte konfiguraci přidáním oddílu `customErrors` do souboru *Web. config* .
 
 1. V **Průzkumník řešení**vyhledejte a otevřete soubor *Web. config* v kořenovém adresáři ukázkové aplikace Wingtip Toys.
-2. Přidejte oddíl do souboru *Web. config* v rámci `<system.web>` uzlu následujícím způsobem: `customErrors`   
+2. Přidejte část `customErrors` do souboru *Web. config* v uzlu `<system.web>` následujícím způsobem:   
 
     [!code-xml[Main](aspnet-error-handling/samples/sample8.xml?highlight=3-5)]
 3. Uložte soubor *Web. config* .
 
-`customErrors` Oddíl určuje režim, který je nastaven na zapnuto. Určuje `defaultRedirect`také, který instruuje aplikaci, na kterou stránka přejde, když dojde k chybě. Kromě toho jste přidali konkrétní chybový prvek, který určuje, jak se má zpracovat Chyba 404, když se stránka nenajde. Později v tomto kurzu přidáte další zpracování chyb, které bude zachytit podrobnosti o chybě na úrovni aplikace.
+Oddíl `customErrors` určuje režim, který je nastaven na zapnuto. Určuje také `defaultRedirect`, který instruuje aplikaci, na kterou stránka přejde, když dojde k chybě. Kromě toho jste přidali konkrétní chybový prvek, který určuje, jak se má zpracovat Chyba 404, když se stránka nenajde. Později v tomto kurzu přidáte další zpracování chyb, které bude zachytit podrobnosti o chybě na úrovni aplikace.
 
 #### <a name="running-the-application"></a>Spuštění aplikace
 
@@ -149,7 +149,7 @@ Nyní můžete spustit aplikaci a zobrazit aktualizované trasy.
 
 1. Stisknutím klávesy **F5** spusťte ukázkovou aplikaci Wingtip Toys.  
  Prohlížeč otevře a zobrazí stránku *Default. aspx* .
-2. Do prohlížeče zadejte následující adresu URL (nezapomeňte použít číslo portu) :  
+2. Do prohlížeče zadejte následující adresu URL ( **nezapomeňte použít číslo** portu):  
     `https://localhost:44300/NoPage.aspx`
 3. Zkontrolujte *ErrorPage. aspx* zobrazený v prohlížeči. 
 
@@ -163,11 +163,11 @@ Chcete-li ověřit, jak bude aplikace fungovat, když dojde k chybě, můžete v
 
 1. Otevřete kód na pozadí stránky *Default. aspx* v aplikaci Visual Studio.   
    Zobrazí se stránka *Default.aspx.cs* s kódem na pozadí.
-2. `Page_Load` V obslužné rutině přidejte kód tak, aby se obslužná rutina zobrazila takto:   
+2. V obslužné rutině `Page_Load` přidejte kód tak, aby se obslužná rutina zobrazila takto:   
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample9.cs?highlight=3-4)]
 
-Je možné vytvořit různé různé typy výjimek. Ve výše uvedeném kódu vytváříte `InvalidOperationException` , když je načtena stránka *Default. aspx* .
+Je možné vytvořit různé různé typy výjimek. Ve výše uvedeném kódu vytváříte `InvalidOperationException`, když je načtena stránka *Default. aspx* .
 
 #### <a name="running-the-application"></a>Spuštění aplikace
 
@@ -183,46 +183,46 @@ Můžete spustit aplikaci, abyste viděli, jak aplikace zpracovává výjimku.
 
     ![Zpracování chyb ASP.NET – chybová stránka](aspnet-error-handling/_static/image2.png)
 
-Jak vidíte v podrobnostech o chybě, výjimka byla zachycena `customError` oddílem v souboru *Web. config* .
+Jak vidíte v podrobnostech o chybě, výjimka byla zachycena v sekci `customError` v souboru *Web. config* .
 
 ### <a name="adding-application-level-error-handling"></a>Přidání zpracování chyb na úrovni aplikace
 
-Místo zachycení výjimky pomocí `customErrors` oddílu v souboru *Web. config* , kde získáte malé informace o výjimce, můžete zachytit chybu na úrovni aplikace a načíst podrobnosti o chybě.
+Místo zachycení výjimky pomocí oddílu `customErrors` v souboru *Web. config* , kde získáte informace o výjimce, můžete zachytit chybu na úrovni aplikace a načíst podrobnosti o chybě.
 
 1. V **Průzkumník řešení**vyhledejte a otevřete soubor *Global.asax.cs* .
-2. Přidejte obslužnou rutinu **chyb aplikace\_** tak, aby se zobrazila takto:   
+2. Přidejte obslužnou rutinu **chyb aplikace\_** , aby se zobrazila takto:   
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample10.cs)]
 
-Pokud v aplikaci dojde k chybě, `Application_Error` je volána obslužná rutina. V této obslužné rutině je poslední výjimka načtena a přezkoumána. Pokud výjimka nebyla ošetřena a výjimka obsahuje podrobnosti vnitřní výjimky (tj `InnerException` . není null), aplikace přenese spuštění na chybovou stránku, kde se zobrazují podrobnosti o výjimce.
+Pokud v aplikaci dojde k chybě, je volána obslužná rutina `Application_Error`. V této obslužné rutině je poslední výjimka načtena a přezkoumána. Pokud výjimka nebyla ošetřena a výjimka obsahuje podrobnosti vnitřní výjimky (tj. `InnerException` není null), aplikace přenese spuštění do chybové stránky, kde jsou zobrazeny podrobnosti o výjimce.
 
 #### <a name="running-the-application"></a>Spuštění aplikace
 
 Můžete spustit aplikaci, chcete-li zobrazit další podrobnosti o chybě, které jsou k dispozici, pomocí zpracování výjimky na úrovni aplikace.
 
 1. Stisknutím **kombinace kláves CTRL + F5** spusťte ukázkovou aplikaci Wingtip Toys.  
- Aplikace vyvolá `InvalidOperationException` .
+ Aplikace vyvolá `InvalidOperationException`.
 2. Zkontrolujte *ErrorPage. aspx* zobrazený v prohlížeči. 
 
     ![Zpracování chyb ASP.NET – Chyba na úrovni aplikace](aspnet-error-handling/_static/image3.png)
 
 ### <a name="adding-page-level-error-handling"></a>Přidání zpracování chyb na úrovni stránky
 
-Zpracování chyb na úrovni stránky můžete přidat na stránku buď pomocí přidání `ErrorPage` atributu `@Page` do direktivy stránky `Page_Error` , nebo přidáním obslužné rutiny události do kódu na pozadí stránky. V této části přidáte `Page_Error` obslužnou rutinu události, která převede provádění na stránku *ErrorPage. aspx* .
+Zpracování chyb na úrovni stránky můžete přidat na stránku buď pomocí přidání atributu `ErrorPage` k direktivě `@Page` stránky, nebo přidáním obslužné rutiny události `Page_Error` do kódu na pozadí stránky. V této části přidáte `Page_Error` obslužnou rutinu události, která převede provádění na stránku *ErrorPage. aspx* .
 
 1. V **Průzkumník řešení**vyhledejte a otevřete soubor *Default.aspx.cs* .
-2. `Page_Error` Přidejte obslužnou rutinu, aby se kód na pozadí zobrazil následovně:   
+2. Přidejte obslužnou rutinu `Page_Error` tak, aby se kód na pozadí zobrazoval takto:   
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample11.cs?highlight=18-30)]
 
-Pokud na stránce dojde k chybě, `Page_Error` je volána obslužná rutina události. V této obslužné rutině je poslední výjimka načtena a přezkoumána. Dojde-li k chybě `Page_Error` , obslužná rutina události převede provádění na chybovou stránku, kde se zobrazí podrobnosti o výjimce. `InvalidOperationException`
+Když na stránce dojde k chybě, je volána obslužná rutina události `Page_Error`. V této obslužné rutině je poslední výjimka načtena a přezkoumána. Pokud dojde k `InvalidOperationException`, obslužná rutina události `Page_Error` přenese provádění na chybovou stránku, kde se zobrazují podrobnosti o výjimce.
 
 #### <a name="running-the-application"></a>Spuštění aplikace
 
 Nyní můžete spustit aplikaci a zobrazit aktualizované trasy.
 
 1. Stisknutím **kombinace kláves CTRL + F5** spusťte ukázkovou aplikaci Wingtip Toys.  
- Aplikace vyvolá `InvalidOperationException` .
+ Aplikace vyvolá `InvalidOperationException`.
 2. Zkontrolujte *ErrorPage. aspx* zobrazený v prohlížeči. 
 
     ![Zpracování chyb ASP.NET – Chyba na úrovni stránky](aspnet-error-handling/_static/image4.png)
@@ -233,7 +233,7 @@ Nyní můžete spustit aplikaci a zobrazit aktualizované trasy.
 Aby mohla ukázková aplikace Wingtip Toys fungovat bez vyvolání výjimky, kterou jste přidali dříve v tomto kurzu, odeberte výjimku.
 
 1. Otevřete kód na pozadí stránky *Default. aspx* .
-2. `Page_Load` V obslužné rutině odstraňte kód, který vyvolá výjimku, aby se obslužná rutina zobrazila takto:   
+2. V obslužné rutině `Page_Load` odstraňte kód, který vyvolá výjimku, aby se obslužná rutina zobrazila takto:   
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample12.cs)]
 
@@ -242,17 +242,17 @@ Aby mohla ukázková aplikace Wingtip Toys fungovat bez vyvolání výjimky, kte
 Jak bylo zmíněno dříve v tomto kurzu, můžete přidat příkazy try/catch k pokusu o spuštění části kódu a zpracování první chyby, ke které dojde. V tomto příkladu zapíšete podrobnosti o chybě pouze do souboru protokolu chyb, aby bylo možné chybu později zkontrolovat.
 
 1. V **Průzkumník řešení**ve složce *Logic* najděte a otevřete soubor *PayPalFunctions.cs* .
-2. Aktualizujte `HttpCall` metodu tak, že se kód zobrazí takto:   
+2. Aktualizujte metodu `HttpCall` tak, že se kód zobrazí takto:   
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample13.cs?highlight=20,22-23)]
 
-Výše uvedený kód volá `LogException` metodu, která je obsažena `ExceptionUtility` ve třídě. Do složky logiky jste přidali soubor třídy *ExceptionUtility.cs* dříve v tomto kurzu. `LogException` Metoda přebírá dva parametry. První parametr je objekt výjimky. Druhý parametr je řetězec, který slouží k rozpoznání zdroje chyby.
+Výše uvedený kód volá metodu `LogException`, která je obsažena ve třídě `ExceptionUtility`. Do složky *logiky* jste přidali soubor třídy *ExceptionUtility.cs* dříve v tomto kurzu. Metoda `LogException` přijímá dva parametry. První parametr je objekt výjimky. Druhý parametr je řetězec, který slouží k rozpoznání zdroje chyby.
 
 ### <a name="inspecting-the-error-logging-information"></a>Kontrola informací o protokolování chyb
 
 Jak už bylo zmíněno dříve, můžete pomocí protokolu chyb určit, které chyby ve vaší aplikaci byste měli nejdřív opravit. Samozřejmě se budou zaznamenávat jenom chyby, které byly zachyceny a zapsány do protokolu chyb.
 
-1. V **Průzkumník řešení**vyhledejte a otevřete soubor *. txt* ve složce *\_data aplikací* .   
+1. V **Průzkumník řešení**vyhledejte a otevřete soubor *. txt* ve složce *App\_data* .   
  V horní části **Průzkumník řešení** možná budete muset vybrat možnost**Zobrazit všechny soubory**nebo**aktualizovat**, aby se zobrazil soubor s chybou *. txt* .
 2. Zkontrolujte protokol chyb zobrazený v aplikaci Visual Studio: 
 
@@ -274,7 +274,7 @@ KNIHOVNY ELMAH (moduly a obslužné rutiny protokolu chyb) je Protokolovací za�
 
 Než budete moct pracovat s knihovny ELMAH, musíte si ho nainstalovat. To je snadné pomocí instalačního programu balíčku *NuGet* . Jak bylo zmíněno dříve v této sérii kurzů, NuGet je rozšíření sady Visual Studio, které usnadňuje instalaci a aktualizaci Open Source knihoven a nástrojů v sadě Visual Studio.
 
-1. V sadě Visual Studio vyberte v nabídce **nástroje** možnost **správce** > balíčků NuGet**Spravovat balíčky NuGet pro řešení**. 
+1. V sadě Visual Studio v nabídce **nástroje** vyberte **správce balíčků NuGet** > **Spravovat balíčky NuGet pro řešení**. 
 
     ![Zpracování chyb ASP.NET – Správa balíčků NuGet pro řešení](aspnet-error-handling/_static/image6.png)
 2. V sadě Visual Studio se zobrazí dialogové okno **Spravovat balíčky NuGet** .
@@ -297,13 +297,13 @@ Zobrazení protokolu knihovny ELMAH je jednoduché, ale nejprve vytvoříte neo�
 
 1. Stisknutím **kombinace kláves CTRL + F5** spusťte ukázkovou aplikaci Wingtip Toys.
 2. Pokud chcete do protokolu knihovny ELMAH zapsat neošetřenou výjimku, přejděte v prohlížeči na následující adresu URL (pomocí čísla portu):  
-    `https://localhost:44300/NoPage.aspx`Zobrazí se chybová stránka.
+    `https://localhost:44300/NoPage.aspx` zobrazí se chybová stránka.
 3. Pokud chcete zobrazit protokol knihovny ELMAH, přejděte v prohlížeči na následující adresu URL (pomocí čísla portu):  
     `https://localhost:44300/elmah.axd`
 
     ![Zpracování chyb ASP.NET – protokol chyb knihovny ELMAH](aspnet-error-handling/_static/image9.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
 V tomto kurzu jste se dozvěděli o zpracování chyb na úrovni aplikace, na úrovni stránky a na úrovni kódu. Také jste se naučili, jak protokolovat ošetřené a neošetřené chyby pro pozdější kontrolu. Přidali jste nástroj knihovny ELMAH, který poskytuje protokolování výjimek a oznámení do vaší aplikace pomocí NuGet. Dále jste se dozvěděli o významu bezpečných chybových zpráv.
 
@@ -322,39 +322,39 @@ Další informace o nasazení webové aplikace do Microsoft Azure najdete v tém
 [Microsoft Azure – bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/)  
  Publikování webu do Microsoft Azure vám ušetří čas, údržbu a náklady. Je to rychlý proces nasazení webové aplikace do Azure. Pokud potřebujete zachovat a monitorovat svou webovou aplikaci, Azure nabízí celou řadu nástrojů a služeb. Spravujte data, provoz, identitu, zálohování, zasílání zpráv, média a výkon v Azure. A to vše je k dispozici v rámci velmi nákladově efektivního přístupu.
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-[Protokolování podrobností o chybách pomocí monitorování stavu ASP.NET](../../older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs.md)   
-[ELMAH](https://code.google.com/p/elmah/)
+[Protokolování podrobností o chybách pomocí  monitorování stavu ASP.NET](../../older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs.md)  
+[KNIHOVNY ELMAH](https://code.google.com/p/elmah/)
 
-## <a name="acknowledgements"></a>Potvrzení
+## <a name="acknowledgements"></a>Poděkování
 
 Chci nás zasílat na následující lidi, kteří významně přispěli k obsahu této série kurzů:
 
 - [Alberto Poblacion, MVP &amp; MCT, Španělsko](https://mvp.microsoft.com/mvp/Alberto%20Poblacion%20Bolano-36772)
-- [Alex Thissen, Nizozemsko](http://blog.alexthissen.nl/) (Twitter: [@alexthissen](http://twitter.com/alexthissen))
+- [Alex Thissen, Nizozemsko](http://blog.alexthissen.nl/) (twitter: [@alexthissen](http://twitter.com/alexthissen))
 - [Andre Tournier, USA](http://andret503.wordpress.com/)
 - Apurva Joshi, Microsoft
 - [Bojan Vrhovnik, Slovinsko](http://twitter.com/bvrhovnik)
-- [Bruno Sonnino, Brazílie](http://msmvps.com/blogs/bsonnino) (Twitter: [@bsonnino](http://twitter.com/bsonnino))
+- [Bruno Sonnino, Brazílie](http://msmvps.com/blogs/bsonnino) (twitter: [@bsonnino](http://twitter.com/bsonnino))
 - [Carlos dos Santos, Brazílie](http://www.carloscds.net/)
-- [Dave Campbell, USA](http://www.wynapse.com/) (Twitter: [@windowsdevnews](http://twitter.com/windowsdevnews))
-- [Jan Galloway, Microsoft](https://weblogs.asp.net/jgalloway) (Twitter: [@jongalloway](http://twitter.com/jongalloway))
-- [Michael otrub, USA](http://www.930solutions.com/) (Twitter: [@mrsharps](http://twitter.com/mrsharps))
+- [Dave Campbell, USA](http://www.wynapse.com/) (twitter: [@windowsdevnews](http://twitter.com/windowsdevnews))
+- [Jan Galloway, Microsoft](https://weblogs.asp.net/jgalloway) (twitter: [@jongalloway](http://twitter.com/jongalloway))
+- [Michael otrub, USA](http://www.930solutions.com/) (twitter: [@mrsharps](http://twitter.com/mrsharps))
 - Mike Pope
-- [Prodejci Mitchel, USA](http://www.mitchelsellers.com/) (Twitter: [@MitchelSellers](http://twitter.com/MitchelSellers))
+- [Prodejci Mitchel, USA](http://www.mitchelsellers.com/) (twitter: [@MitchelSellers](http://twitter.com/MitchelSellers))
 - [Paul Cociuba, Microsoft](http://linqto.me/Links/pcociuba)
-- [Paulo Morgado, Portugal](http://paulomorgado.net/)
-- [Pranav Rastogi, Microsoft](https://blogs.msdn.com/b/pranav_rastogi)
+- [Paulo Morgado, Portugalsko](http://paulomorgado.net/)
+- [Pranav Rastogi předvádí, Microsoft](https://blogs.msdn.com/b/pranav_rastogi)
 - [Tim Ammann, Microsoft](https://blogs.iis.net/timamm/default.aspx)
 - [Dykstra, Microsoft](https://blogs.msdn.com/aspnetue)
 
 ## <a name="community-contributions"></a>Komunitní příspěvky
 
 - Graham Mendick ([@grahammendick](http://twitter.com/grahammendick))  
-  Ukázka kódu souvisejícího se službou Visual Studio 2012 na webu MSDN: [Navigace – Wingtip Toys](https://code.msdn.microsoft.com/Navigation-Wingtip-Toys-5f0daba2)
+  Ukázka kódu souvisejícího se službou Visual Studio 2012 na webu MSDN: [Navigace Wingtip Toys](https://code.msdn.microsoft.com/Navigation-Wingtip-Toys-5f0daba2)
 - James Chaney ([jchaney@agvance.net](mailto:jchaney@agvance.net))  
-  Ukázka kódu souvisejícího se službou Visual Studio 2012 na webu MSDN: [Série kurzů pro webové formuláře v ASP.NET 4,5 v Visual Basic](https://code.msdn.microsoft.com/ASPNET-45-Web-Forms-f37f0f63)
+  Ukázka kódu související s Visual Studiem 2012 na webu MSDN: [série kurzů ASP.NET 4,5 Web Forms v Visual Basic](https://code.msdn.microsoft.com/ASPNET-45-Web-Forms-f37f0f63)
 - Andrielle Azevedo – Microsoft Technical publikum Přispěvatel (Twitter: @driazevedo)  
   Překlad sady Visual Studio 2012: [Iniciando com ASP.NET Web Forms 4,5-parte 1-Introdução e Visão Geral](https://andrielleazevedo.wordpress.com/2013/01/24/iniciando-com-asp-net-web-forms-4-5-introducao-e-visao-geral/)
 

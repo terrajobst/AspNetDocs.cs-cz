@@ -1,317 +1,317 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-debugging-capabilities
-title: Principy možnosti ladění technologie ASP.NET AJAX | Dokumentace Microsoftu
+title: Principy funkcí ladění v ASP.NET AJAX | Microsoft Docs
 author: scottcate
-description: Umožňuje ladit kód je konkrétní dovednosti, které každý vývojář by měl mít v jejich arsenál bez ohledu na technologii, kterou používá. Přestože celá řada vývojářů...
+description: Možnost ladění kódu je dovedností, že každý vývojář by měl mít v Arsenal bez ohledu na technologii, kterou používají. I když je mnoho vývojářů...
 ms.author: riande
 ms.date: 03/28/2008
 ms.assetid: 7f9380c6-19f7-4c82-a019-916ec6dffc9c
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-debugging-capabilities
 msc.type: authoredcontent
-ms.openlocfilehash: d33c45c50d4f8edc899f3fe63ede11ad98d45823
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 08ced380f3551407d757524dbc84b5feeeb5482b
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131893"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74601443"
 ---
 # <a name="understanding-aspnet-ajax-debugging-capabilities"></a>Principy a možnosti ladění pomocí technologie ASP.NET AJAX
 
-podle [– Scott Cate](https://github.com/scottcate)
+[Scott Cate](https://github.com/scottcate)
 
-[Stáhnout PDF](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial06_Debugging_MS_Ajax_Applications_cs.pdf)
+[Stáhnout PDF](https://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial06_Debugging_MS_Ajax_Applications_cs.pdf)
 
-> Umožňuje ladit kód je konkrétní dovednosti, které každý vývojář by měl mít v jejich arsenál bez ohledu na technologii, kterou používá. Celá řada vývojářů jsou zvyklí ladění aplikací ASP.NET, které používají Kód VB.NET nebo C# pomocí sady Visual Studio .NET nebo Web Developer Express, některé nejste vědomi, že je také velmi užitečné pro ladění kódu na straně klienta, třeba JavaScript. Stejný typ techniky použít k ladění aplikací .NET můžete použít také k aplikacím s povoleným AJAX a přesněji řečeno aplikací technologie ASP.NET AJAX.
+> Možnost ladění kódu je dovedností, že každý vývojář by měl mít v Arsenal bez ohledu na technologii, kterou používají. I když je mnoho vývojářů zvyklé použít Visual Studio .NET nebo Web Developer Express k ladění aplikací ASP.NET, které používají C# VB.NET nebo kód, některé nevědí, že je to také extrémně užitečné pro ladění kódu na straně klienta, jako je například JavaScript. Stejný typ technik, který se používá pro ladění aplikací .NET, je možné použít také pro aplikace podporující AJAX a konkrétnější aplikace ASP.NET AJAX.
 
-## <a name="debugging-aspnet-ajax-applications"></a>Ladění aplikací ASP.NET AJAX
+## <a name="debugging-aspnet-ajax-applications"></a>Ladění aplikací AJAX v ASP.NET
 
-DaN Wahlin
+Dan Wahlin
 
-Umožňuje ladit kód je konkrétní dovednosti, které každý vývojář by měl mít v jejich arsenál bez ohledu na technologii, kterou používá. Je samozřejmé, že principy, které jsou k dispozici různé možnosti ladění můžete uložit obrovské množství času na projekt a možná dokonce i pár obrovskému. Celá řada vývojářů jsou zvyklí ladění aplikací ASP.NET, které používají Kód VB.NET nebo C# pomocí sady Visual Studio .NET nebo Web Developer Express, některé nejste vědomi, že je také velmi užitečné pro ladění kódu na straně klienta, třeba JavaScript. Stejný typ techniky použít k ladění aplikací .NET můžete použít také k aplikacím s povoleným AJAX a přesněji řečeno aplikací technologie ASP.NET AJAX.
+Možnost ladění kódu je dovedností, že každý vývojář by měl mít v Arsenal bez ohledu na technologii, kterou používají. Je to bez toho, že porozumění různým možnostem ladění, které jsou k dispozici, může ušetřit obrovské množství času v projektu a možná i několik souvisejícím problémům správou. I když je mnoho vývojářů zvyklé použít Visual Studio .NET nebo Web Developer Express k ladění aplikací ASP.NET, které používají C# VB.NET nebo kód, některé nevědí, že je to také extrémně užitečné pro ladění kódu na straně klienta, jako je například JavaScript. Stejný typ technik, který se používá pro ladění aplikací .NET, je možné použít také pro aplikace podporující AJAX a konkrétnější aplikace ASP.NET AJAX.
 
-V tomto článku uvidíte, jak Visual Studio 2008 a několik dalších nástrojů slouží k ladění aplikací ASP.NET AJAX k rychlému vyhledání chyb a další problémy. Toto pojednání bude zahrnovat informace o povolení aplikace Internet Explorer 6 nebo vyšší pro ladění, pomocí sady Visual Studio 2008 a Průzkumník skriptů, které krokovat kód také pomocí jiných nástrojů zdarma, jako je vývoj pro webové pomocné rutiny. Budete se také dozvíte, jak ladit aplikace technologie ASP.NET AJAX v aplikaci Firefox pomocí rozšíření s názvem Firebug který umožní procházet kód JavaScriptu přímo v prohlížeči bez dalších nástrojů. Nakonec se seznámíte s tříd v knihovně technologie ASP.NET AJAX, který vám pomůže s různými ladění úkoly, jako je například příkazy kódu kontrolní výraz a trasování.
+V tomto článku se dozvíte, jak se dá použít Visual Studio 2008 a několik dalších nástrojů k ladění aplikací ASP.NET AJAX pro rychlé vyhledání chyb a dalších problémů. Tato diskuze bude obsahovat informace o tom, jak povolit Internet Explorer 6 nebo vyšší pro ladění, pomocí sady Visual Studio 2008 a Průzkumníka skriptů Procházet kód a používat jiné bezplatné nástroje, jako je například Pomocník pro vývoj webu. Naučíte se také, jak ladit aplikace ASP.NET AJAX v aplikaci Firefox pomocí rozšíření s názvem Firebug, které umožňuje krokovat kód JavaScriptu přímo v prohlížeči bez jakýchkoli dalších nástrojů. Nakonec se zavedete do tříd v knihovně ASP.NET AJAX, která může pomáhat s různými úlohami ladění, jako jsou například trasování a příkazy kontrolního výrazu kódu.
 
-Před pokusem o ladění stránek v prohlížeči Internet Explorer nejsou pomocí několika jednoduchých kroků, které budete muset provést, aby je pro ladění. Pojďme se podívat na některé základní nastavení požadavky, které je potřeba provést, abyste mohli začít.
+Předtím, než se pokusíte ladit stránky zobrazené v aplikaci Internet Explorer, je třeba provést několik základních kroků, abyste je mohli povolit pro ladění. Pojďme se podívat na některé základní požadavky na instalaci, které je potřeba provést, aby bylo možné začít.
 
 ## <a name="configuring-internet-explorer-for-debugging"></a>Konfigurace aplikace Internet Explorer pro ladění
 
-Většina lidí nejsou nepotřebujete vidět problémy JavaScriptu došlo k na webovou stránku zobrazit pomocí aplikace Internet Explorer. Ve skutečnosti se průměrný uživatel nemusí ani vědět, co dělat, když se zobrazila chybová zpráva. Možnosti ladění se v důsledku toho vypnuto ve výchozím nastavení v prohlížeči. Je však velmi jednoduché zapnete ladění a začít využívat při vývoji nových aplikací AJAX.
+Většina lidí se zajímá o problémech s JavaScriptem na webu zobrazeném v Internet Exploreru. V tomto faktě průměrný uživatel nedokázal ani zjistit, co dělat, když se jim zobrazila chybová zpráva. V důsledku toho jsou možnosti ladění ve výchozím nastavení v prohlížeči vypnuté. Je však velmi jednoduché zapnout ladění a umístit je, aby se používaly při vývoji nových aplikací AJAX.
 
-Pokud chcete povolit funkce ladění, přejděte na možnosti Internetu nástrojů v nabídce aplikace Internet Explorer a vyberte kartu Upřesnit. V rámci oddílu procházení zajistěte, aby Nekontrolovaná následující položky:
+Chcete-li povolit funkci ladění, přejděte do části nástroje Možnosti Internetu v nabídce Internet Explorer a vyberte kartu Upřesnit. V části procházení se ujistěte, že nejsou zaškrtnuté následující položky:
 
-- Zakázat ladění skriptů (aplikace Internet Explorer)
-- Zakázat ladění skriptů (ostatní)
+- Zakázat ladění skriptů (Internet Explorer)
+- Zakázat ladění skriptů (jiné)
 
-I když není požadováno, pokud se snažíte ladit aplikaci pravděpodobně budete chtít použít všechny chyby jazyka JavaScript na stránce budou okamžitě viditelné a zřejmý. Můžete vynutit všechny chyby zobrazený v okně se zprávou, zaškrtnutím políčka "Zobrazovat oznámení o každé chybě skriptu". Když je skvělou možností, jak zapnout, když vyvíjíte aplikaci, to může být nepříjemné, pokud jste právě perusing ostatních webů vzhledem k tomu, že pravděpodobnost vzniku chyby jazyka JavaScript jsou tom docela dobře.
+I když se snažíte ladit aplikaci, i když se to nepožaduje, budete pravděpodobně chtít, aby se chyby JavaScriptu na stránce hned zobrazovaly a zjevně viděli. Zaškrtnutím políčka Zobrazit oznámení o každé chybě skriptu můžete vynutit, aby se všechny chyby zobrazily v okně se zprávou. I když je to skvělý způsob, jak zapnout, když vyvíjíte aplikaci, může se rychle stát obtěžující, pokud jste perusing jenom jiné weby, protože vaše pravděpodobnost výskytu chyb JavaScriptu je poměrně dobrá.
 
-Obrázek 1 ukazuje, jaké aplikace Internet Explorer Upřesnit dialogového okna by měl vypadat po byl správně nakonfigurován pro ladění.
+Obrázek 1 ukazuje, co má dialogové okno Upřesnit v aplikaci Internet Explorer zobrazit po správném nakonfigurování pro ladění.
 
-[![Konfigurace aplikace Internet Explorer pro ladění.](understanding-asp-net-ajax-debugging-capabilities/_static/image2.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image1.png)
+[![konfiguraci aplikace Internet Explorer pro ladění.](understanding-asp-net-ajax-debugging-capabilities/_static/image2.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image1.png)
 
-**Obrázek 1**: Konfigurace aplikace Internet Explorer pro ladění.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image3.png))
+**Obrázek 1**: Konfigurace aplikace Internet Explorer pro ladění.  ([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image3.png))
 
-Jakmile ladění je zapnutý, zobrazí se vám nové položky nabídky se zobrazí v nabídce zobrazení s názvem Script Debugger. Má dvě možnosti, které jsou k dispozici včetně Open a zalomení na další příkaz. Pokud je vybrána Open budete vyzváni k ladění na stránce v sadě Visual Studio 2008 (Všimněte si, že Visual Web Developer Express můžete také použít pro ladění). Pokud je nainstalováno Visual Studio .NET můžete použít tuto instanci nebo vytvořte novou instanci. Pokud je vybrána zalomení na další příkaz budete vyzváni k ladění stránku při spuštění kódu jazyka JavaScript. Pokud kód jazyka JavaScript provádí v události při načtení stránky můžete aktualizovat na stránce Aktivovat ladicí relaci. Pokud kód jazyka JavaScript se spustí po kliknutí na tlačítko ladicí program se spustí ihned po kliknutí na tlačítko.
+Po zapnutí ladění se v nabídce zobrazení s názvem ladicí program skriptu zobrazí nová položka nabídky. K dispozici jsou dvě možnosti, včetně příkazu otevřít a přerušit u dalšího příkazu. Když je vybrána možnost otevřít, zobrazí se výzva k ladění stránky v aplikaci Visual Studio 2008 (Všimněte si, že Visual Web Developer Express lze také použít pro ladění). Pokud je aktuálně spuštěna aplikace Visual Studio .NET, můžete zvolit použití této instance nebo k vytvoření nové instance. Když je vybrána možnost přerušení u dalšího příkazu, zobrazí se výzva k ladění stránky při spuštění kódu jazyka JavaScript. Pokud se JavaScriptový kód spustí v události načtení stránky, můžete aktualizovat stránku, aby se aktivovala relace ladění. Pokud se po kliknutí na tlačítko spustí kód jazyka JavaScript, ladicí program se spustí hned po kliknutí na tlačítko.
 
 > [!NOTE]
-> Pokud používáte v systému Windows Vista s přístup k řízení Uživatelských účtů povolené a je nutné spuštění jako správce sady Visual Studio 2008, Visual Studio se nepodaří připojit k procesu, když se zobrazí výzva k připojení. Chcete-li tento problém obejít, nejprve spusťte sadu Visual Studio a použít tuto instanci k ladění.
+> Pokud používáte systém Windows Vista s povoleným uživatelským Access Control (UAC) a máte sadu Visual Studio 2008 nastavenou na spouštění jako správce, Visual Studio se při zobrazení výzvy k připojení nepřipojí k procesu. Chcete-li tento problém obejít, spusťte nejprve aplikaci Visual Studio a pomocí této instance proveďte ladění.
 
-I když další část popisuje, jak ladit stránky technologie ASP.NET AJAX přímo z v rámci sady Visual Studio 2008, pomocí Internet Exploreru Script Debugger možnost je užitečná při stránka je již otevřen a chcete podrobněji seznámit.
+I když v další části ukážeme, jak ladit stránku ASP.NET AJAX přímo ze sady Visual Studio 2008, je možnost použití ladicího programu skriptů Internet Exploreru užitečná v případě, že je stránka už otevřená a Vy byste ji chtěli úplně zkontrolovat.
 
-## <a name="debugging-with-visual-studio-2008"></a>Ladění pomocí Visual Studio 2008
+## <a name="debugging-with-visual-studio-2008"></a>Ladění pomocí sady Visual Studio 2008
 
-Visual Studio 2008 poskytuje funkce pro ladění, který vývojářům po celém světě využívají každý den k ladění aplikací .NET. Integrované ladicího programu můžete krokovat kód, zobrazení dat objektů, sledovat určité proměnné sledování zásobníku volání a spoustu dalších věcí. Kromě ladění VB.NET nebo C# kód, ladicí program je také užitečné pro ladění aplikací ASP.NET AJAX a vám umožní procházet kód JavaScriptu řádek po řádku. Podrobnosti, které následují fokus na techniky, které slouží k ladění skriptů na straně klienta místo poskytování discourse na celkový proces ladění aplikací pomocí sady Visual Studio 2008.
+Visual Studio 2008 poskytuje funkce ladění, které vývojáři po celém světě spoléhají na to, že budou ladit aplikace .NET. Integrovaný ladicí program umožňuje procházet kód, zobrazovat data objektů, sledovat konkrétní proměnné, monitorovat zásobník volání a mnohem více. Kromě ladění VB.NET nebo C# kódu je ladicí program také užitečný pro ladění aplikací ASP.NET AJAX a umožní krokovat kód JavaScriptu řádek po řádku. Podrobnosti, které následují jako zaměření na techniky, které lze použít k ladění souborů skriptu na straně klienta namísto poskytování jakéhokoli procesu ladění aplikací pomocí sady Visual Studio 2008.
 
-Proces ladění na stránce v sadě Visual Studio 2008 může být spuštěný v několika různými způsoby. Nejprve můžete použít Internet Explorer Script Debugger možností uvedených v předchozí části. Tento postup funguje dobře, když se už načtení stránky v prohlížeči a chcete spustit ladění. Alternativně můžete klikněte pravým tlačítkem na stránku .aspx v Průzkumníku řešení a z nabídky vyberte nastavit jako úvodní stránku. Pokud jste zvyklí ladění stránek ASP.NET pak pravděpodobně udělali to. Po stisknutí klávesy F5 můžete ladit stránky. Ale zatímco obecně můžete nastavit zarážku kamkoli chcete v VB.NET nebo C# kód, který není vždy případu s použitím jazyka JavaScript jak zjistíte dále.
+Proces ladění stránky v aplikaci Visual Studio 2008 lze spustit několika různými způsoby. Nejprve můžete použít možnost ladicí program skriptů Internet Exploreru, jak je uvedeno v předchozí části. Tato funkce funguje dobře, když je stránka již načtena v prohlížeči a chcete spustit ladění. Případně můžete kliknout pravým tlačítkem na stránku ASPX v Průzkumník řešení a v nabídce vybrat nastavit jako úvodní stránku. Pokud jste zvyklí ladit stránky ASP.NET, pravděpodobně jste to udělali dříve. Po stisknutí klávesy F5 se stránka může ladit. Nicméně, zatímco můžete obecně nastavit zarážku kdekoli, kde byste chtěli v VB.NET nebo C# v kódu, to znamená, že se při zobrazení další zobrazí vždy případ s JavaScriptem.
 
-*Vložený oproti externích skriptů*
+*Vložené versus externí skripty*
 
-Ladicí program sady Visual Studio 2008 zpracuje JavaScript embedded liší od externí soubory jazyka JavaScript na stránce. Pomocí externích skriptů soubory můžete otevřít soubor a nastavte zarážku na kterýkoli řádek, který zvolíte. Zarážky lze nastavit kliknutím v oblasti šedé na hlavním panelu na levé straně okna editoru kódu. Když je vložený JavaScript přímo na stránku pomocí `<script>` není značky, nastavením zarážky v oblasti šedé na hlavním panelu klikněte na možnost. Pokusí se nastavit zarážku na řádek vloženého skriptu bude výsledkem je výstraha s oznámením "Toto není platné umístění zarážky".
+Ladicí program sady Visual Studio 2008 zpracovává JavaScript vložený na stránce odlišnou od externích souborů JavaScriptu. U externích souborů skriptu můžete soubor otevřít a nastavit zarážku na jakémkoli řádku, který zvolíte. Zarážky lze nastavit kliknutím v oblasti šedého zásobníku vlevo v okně editoru kódu. Když je JavaScript vložen přímo na stránku pomocí značky `<script>`, nastavení zarážky kliknutím na šedou oblast zásobníku není možnost. Pokusy o nastavení zarážky na řádku vloženého skriptu budou mít za následek upozornění, že "Toto není platné umístění pro zarážku".
 
-Tento problém můžete obejít přesunutím kód do souboru JS externí a odkazuje pomocí atributu src &lt;skript&gt; značky:
+Tento problém můžete obejít přesunutím kódu do externího souboru. js a odkazem na něj pomocí atributu src &lt;značku&gt; skriptu:
 
 [!code-html[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample1.html)]
 
-Co když přesunutí kódu do externího souboru není nebo vyžaduje více práce než stojí? Zatímco nelze nastavit zarážku pomocí editoru, můžete přidat příkaz ladicího programu přímo do kódu, ve kterém chcete spustit ladění. Můžete také třídu Sys.Debug k dispozici v knihovně technologie ASP.NET AJAX k vynucení, chcete-li spustit ladění. Zobrazí další informace o třídě Sys.Debug dále v tomto článku.
+Co dělat, když přesunete kód do externího souboru, není možnost nebo vyžaduje více práce, než kolik stojí? I když nemůžete nastavit zarážku pomocí editoru, můžete přidat příkaz ladicího programu přímo do kódu, kde chcete spustit ladění. Můžete také použít třídu sys. Debug dostupnou v knihovně AJAX ASP.NET k vynucení spuštění ladění. Další informace o třídě sys. Debug najdete dále v tomto článku.
 
-Příklad použití `debugger` – klíčové slovo je zobrazena ve výpisu 1. V tomto příkladu vynutí ladicí program na přerušení správné, než je provedeno volání funkce aktualizace.
+Příklad použití klíčového slova `debugger` je zobrazen v seznamu 1. Tento příklad vynutí, aby se ladicí program před voláním funkce Update nastavil na přerušení.
 
-**Výpis 1. Pomocí klíčového slova ladicího programu k vynucení přerušení ladicího programu sady Visual Studio .NET.**
+**Výpis 1. Použití klíčového slova ladicího programu pro vynucení přerušení ladicího programu sady Visual Studio .NET.**
 
 [!code-javascript[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample2.js)]
 
-Po spuštění příkazu ladicího programu se výzva k ladění na stránce pomocí sady Visual Studio .NET a můžete začít kód krokovat. Při provádění jste to vy, může dojít k potížím s přístupem k soubory skriptu knihovna ASP.NET AJAX na stránce můžeme použít podívejte se na pomocí sady Visual Studio. Průzkumník skriptů vaší sítě.
+Jakmile se objeví příkaz ladicího programu, budete vyzváni k ladění stránky pomocí sady Visual Studio .NET a můžete začít s procházením kódu. V takovém případě může dojít k potížím s přístupem k souborům skriptů knihovny AJAX ASP.NET, které se používají na stránce, takže se podíváme na používání sady Visual Studio. Průzkumník skriptů sítě.
 
-## <a name="using-visual-studio-net-windows-to-debug"></a>Chcete-li ladit pomocí sady Visual Studio .NET Windows
+## <a name="using-visual-studio-net-windows-to-debug"></a>Ladění pomocí Windows v prostředí Visual Studio .NET
 
-Po spuštění relace ladění a začnete procházení kódu pomocí klávesy F11 výchozí, můžete narazit je znázorněno v chybovém dialogovém okně naleznete v tématu na obrázku 2, pokud jsou všechny soubory skriptu na stránce použít otevřený a dostupný pro ladění.
+Po spuštění relace ladění a zahájení procházení kódu pomocí výchozí klávesy F11 se může zobrazit dialogové okno chyby zobrazené v části Obrázek 2, pokud nejsou všechny soubory skriptu použité na stránce otevřené a dostupné pro ladění.
 
-[![Dialogové okno s chybou zobrazuje, když je pro ladění k dispozici žádný zdrojový kód.](understanding-asp-net-ajax-debugging-capabilities/_static/image5.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image4.png)
+[Pokud není k dispozici žádný zdrojový kód pro ladění, zobrazí se dialogové okno chyby ![.](understanding-asp-net-ajax-debugging-capabilities/_static/image5.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image4.png)
 
-**Obrázek 2**: Dialogové okno s chybou zobrazuje, když je pro ladění k dispozici žádný zdrojový kód.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image6.png))
+**Obrázek 2**: dialogové okno chyby zobrazené, pokud není k dispozici žádný zdrojový kód pro ladění.  ([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image6.png))
 
-Toto dialogové okno se zobrazí, protože Visual Studio .NET není se, jak získat ke zdrojovému kódu některých skriptů odkazuje na stránku. Když to může být poměrně frustrující zpočátku je jednoduchý oprava. Po spuštění relace ladění a na zarážku, přejděte do okna ladit skript Průzkumníka Windows v nabídce sady Visual Studio 2008 nebo pomocí klávesové zkratky Ctrl + Alt + N.
+Toto dialogové okno se zobrazí, protože Visual Studio .NET nezajišťuje, jak získat ke zdrojovému kódu některých skriptů, na které stránka odkazuje. I když to může být poměrně frustrující, existuje jednoduchá oprava. Jakmile spustíte relaci ladění a zaškrtnete zarážku, přejděte do okna ladit Průzkumník skriptů Windows v nabídce Visual Studio 2008 nebo použijte klávesovou zkratku CTRL + ALT + N.
 
 > [!NOTE]
-> Není-li v nabídce Průzkumníka skriptu uvedené, přejděte na **nástroje** > **vlastní** > **příkazy** v nabídce sady Visual Studio .NET. Vyhledejte **ladění** položka v kategoriích části a klikněte na něj zobrazíte všechny položky nabídky k dispozici. V seznamu příkazů posuňte se dolů Průzkumník skriptů a přetáhněte ji na ladění Windows v nabídce již bylo zmíněno dříve. To zpřístupní položka nabídky Průzkumník skriptů pokaždé, když spustíte Visual Studio .NET.
+> Pokud nevidíte nabídku Průzkumník skriptů v seznamu, přejděte na **nástroje** > **přizpůsobení** **příkazů** > v nabídce Visual Studio .NET. Vyhledejte položku **ladit** v části kategorie a kliknutím na ni zobrazíte všechny dostupné položky nabídky. V seznamu příkazy přejděte dolů ke skriptu Průzkumník skriptů a přetáhněte ho do nabídky Ladit Windows v předchozí části. Tím se zpřístupní položka nabídky Průzkumníka skriptů při každém spuštění sady Visual Studio .NET.
 
-Průzkumník skriptu lze použít k zobrazení všech skripty používané na stránce a otevřít v editoru kódu. Jakmile se otevře Průzkumník skriptů, dvakrát klikněte na stránku .aspx, která se právě ladí a otevře se v okně editoru kódu. Proveďte stejnou akci pro všechny ostatní skripty uvedené v podokně skriptu. Jakmile se všechny skripty jsou otevřeny v okně kódu můžete stisknutím klávesy F11 (a použití jiných ladění klávesové zkratky) pro jednotlivé kroky v kódu. Obrázek 3 ukazuje příklad Průzkumníka skriptu. Vypíše aktuální soubor laděného (Demo.aspx) a také dva vlastní skripty a dva skripty dynamicky vloženy do stránky technologie ASP.NET AJAX ScriptManager.
+Průzkumník skriptů lze použít k zobrazení všech skriptů používaných na stránce a jejich otevření v editoru kódu. Jakmile je Průzkumník skriptů otevřený, dvakrát klikněte na právě laděnou stránku. aspx a otevřete ji v okně Editor kódu. Proveďte stejnou akci pro všechny ostatní skripty zobrazené v Průzkumníkovi skriptů. Po otevření všech skriptů v okně Code (kód) můžete stisknout klávesu F11 (a použít jiné klávesové zkratky pro ladění) a krokovat kód. Obrázek 3 ukazuje příklad Průzkumníka skriptů. Zobrazuje seznam aktuálně laděných souborů (demo. aspx) a také dva vlastní skripty a dva skripty dynamicky vložené do stránky pomocí ovládacího prvku ASP.NET AJAX AJAX.
 
-[![Průzkumník skriptů zajistí jednoduchý přístup k skripty používané na stránce.](understanding-asp-net-ajax-debugging-capabilities/_static/image8.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image7.png)
+[![Průzkumník skriptů poskytuje snadný přístup ke skriptům používaným na stránce.](understanding-asp-net-ajax-debugging-capabilities/_static/image8.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image7.png)
 
-**Obrázek 3**. Průzkumník skriptů zajistí jednoduchý přístup k skripty používané na stránce.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image9.png))
+**Obrázek 3**. Průzkumník skriptů poskytuje snadný přístup ke skriptům, které se používají na stránce.  ([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image9.png))
 
-Několik dalších windows také umožňuje poskytují užitečné informace, jak procházet kód na stránce. Například chcete-li zobrazit hodnoty v různých proměnných použitých ve stránce, příkazovém k vyhodnocení, jestli konkrétní proměnné nebo podmínky a zobrazte výstup můžete v okně místních hodnot. V okně výstupu můžete použít také k zobrazení příkazů trasování zapsat pomocí funkce Sys.Debug.trace (což se budeme dále v tomto článku) nebo aplikaci Internet Explorer Debug.writeln – funkce.
+Několik dalších oken lze také použít k poskytnutí užitečných informací při procházení kódu na stránce. Například můžete použít okno místní hodnoty k zobrazení hodnot různých proměnných použitých na stránce, okamžité okno pro vyhodnocení konkrétních proměnných nebo podmínek a zobrazení výstupu. Můžete také použít okno výstup k zobrazení příkazů trasování zapsaných pomocí funkce sys. Debug. Trace (která bude popsána dále v tomto článku) nebo funkce Debug. writeln – aplikace Internet Explorer.
 
-Jak můžete krokovat kód pomocí ladicího programu můžete myší proměnné v kódu k zobrazení hodnoty, které jsou přiřazeny. Ale ladicímu prostředku skriptů příležitostně nezobrazí nic jako myší dané proměnné jazyka JavaScript. Pokud chcete zobrazit hodnotu, zvýrazněte příkaz nebo proměnnou, kterou se snažíte zobrazit v okně editoru kódu a potom myší nad ním. Přestože tento postup nefunguje v každé situaci, v mnoha případech budete moci zobrazit hodnota nemusíte hledat v různých ladicí okno, jako je třeba v okně místních hodnot.
+Při procházení kódu pomocí ladicího programu můžete ukazatel myši nad proměnnými v kódu zobrazit tak, aby se zobrazila hodnota, která je přiřazena. Ladicí program skriptu občas ale při pohybu mezi danou proměnnou JavaScriptu nezobrazuje cokoli. Chcete-li zobrazit hodnotu, zvýrazněte příkaz nebo proměnnou, kterou se snažíte zobrazit v okně editoru kódu, a potom na ni myší. I když tato technika v každé situaci nefunguje, mnoho času bude možné zobrazit hodnotu bez nutnosti Hledat v jiném ladicím okně, jako je okno místních hodnot.
 
-Výukové video demonstrace některé funkce popsané Tady můžete zobrazit [ http://www.xmlforasp.net ](http://www.xmlforasp.net).
+Video, které demonstruje některé z funkcí, které jsou zde popsané, můžete zobrazit na [http://www.xmlforasp.net](http://www.xmlforasp.net).
 
-## <a name="debugging-with-web-development-helper"></a>Ladění pomocí webového vývoje pomocné rutiny
+## <a name="debugging-with-web-development-helper"></a>Ladění pomocí Pomocníka pro vývoj webu
 
-I když jsou velmi podporuje nástroje pro ladění sady Visual Studio 2008 (a Visual Web Developer Express 2008), existují další možnosti, které můžete použít také, které jsou nižšími nároky. Jednou z nejnovější nástroje potřebné k vydané je pomocná vývoj pro Web. Nikhil Kothari společnosti Microsoft, (jeden z klíčů architekty technologie ASP.NET AJAX v Microsoftu) napsal tento vynikající nástroj, který můžete provádět mnoho různých úloh z jednoduchého ladění při zobrazení zprávy požadavku a odpovědi protokolu HTTP. Vývoj webové pomocné rutiny si můžete stáhnout tady [ http://projects.nikhilk.net/Projects/WebDevHelper.aspx ](http://projects.nikhilk.net/Projects/WebDevHelper.aspx).
+I když je Visual Studio 2008 (a Visual Web Developer Express 2008) velmi kompatibilní nástroje pro ladění, existují další možnosti, které je možné použít, i když jsou v něm méně světla. Jedním z nejnovějších nástrojů, které mají být vydány, je Pomocník pro vývoj webu. Nikhil Kothari Microsoftu (jeden z klíčových ASP.NET AJAX architektů v Microsoftu) vytvořil tento vynikající nástroj, který může provádět mnoho různých úloh od jednoduchého ladění pro zobrazení požadavků HTTP a odpovědí na zprávy. Pomocníka pro vývoj webů se dá stáhnout na [http://projects.nikhilk.net/Projects/WebDevHelper.aspx](http://projects.nikhilk.net/Projects/WebDevHelper.aspx).
 
-Pomocné rutiny vývoj pro web je možné přímo v aplikaci Internet Explorer, takže je pohodlné používat ho. Spuštění tak, že vyberete pomocné rutiny vývoje webových nástrojů v nabídce aplikace Internet Explorer. Otevře se nástroj v dolní části prohlížeče, což je skvělé, protože není nutné opustit prohlížeč, aby provést několik úloh, jako je například protokolování zpráv požadavků a odpovědí HTTP. Obrázek 4 ukazuje, jak pomocné rutiny vývoj pro Web vypadá v praxi.
+Pomocník pro vývoj webu lze použít přímo v aplikaci Internet Explorer, což usnadňuje použití. Spustí se tak, že v nabídce Internet Exploreru vyberete nástroje pro webový vývoj a pomůcku. Tím se v dolní části prohlížeče otevře nástroj, který je dobrý, protože nemusíte opustit prohlížeč, aby bylo možné provádět několik úloh, jako je požadavek HTTP a protokolování zpráv odpovědí. Obrázek 4 ukazuje, jaký Pomocník pro vývoj webů vypadá jako v akci.
 
-[![Vývoj webové pomocné rutiny](understanding-asp-net-ajax-debugging-capabilities/_static/image11.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image10.png)
+[![Pomocník pro vývoj webu](understanding-asp-net-ajax-debugging-capabilities/_static/image11.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image10.png)
 
-**Obrázek 4**: Web Development pomocné rutiny ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image12.png))
+**Obrázek 4**: Pomocník pro vývoj webu ([kliknutím zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image12.png))
 
-Vývoj webové pomocné rutiny není nástroj budete používat ke krokování kódu řádek po řádku jako s Visual Studio 2008. Ale můžete použít k zobrazení výstupu trasování, snadno vyhodnotit proměnné ve skriptu nebo prozkoumat data jsou v objektu JSON. Je také velmi užitečné při prohlížení data, která je předána do a z stránka technologie ASP.NET AJAX a serveru.
+Pomocník pro vývoj webu není nástroj, který použijete pro krokování kódu podle řádku jako u sady Visual Studio 2008. Dá se ale použít k zobrazení výstupu trasování, ke snadnému vyhodnocení proměnných ve skriptu nebo k prozkoumávání dat uvnitř objektu JSON. Je také velmi užitečné pro zobrazení dat, která jsou předána a ze stránky ASP.NET AJAX a serveru.
 
-Jakmile pomocné rutiny vývoj pro Web je otevřen v aplikaci Internet Explorer, musí být ladění skriptů povoleno tak, že vyberete skript povolení ladění skriptu z nabídky pomocné rutiny vývoj pro Web jak je znázorněno na obrázku 4 výše. Díky tomu nástroj pro zachycení chyb, ke kterým dochází při spuštění stránky. Umožňuje také snadný přístup k trasování zpráv, které jsou výstupem na stránce. Trasovací informace zobrazit nebo spustit příkazy skriptu pro testování různých funkcí v rámci stránky, vyberte skript zobrazit skript konzoly z nabídky pomocné rutiny vývoj pro Web. To poskytuje přístup k příkazové okno a jednoduché podokna.
+Po otevření Pomocníka pro vývoj na webu v aplikaci Internet Explorer musí být ladění skriptů povoleno výběrem skriptu povolit ladění skriptu v nabídce pomocníka webu pro vývoj, jak je uvedeno výše na obrázku 4. To umožňuje nástroji zachytit chyby, ke kterým dochází při spuštění stránky. Umožňuje také snadný přístup ke trasovacím zprávám, které jsou na stránce výstup. Chcete-li zobrazit informace o trasování nebo provést příkazy skriptu pro testování různých funkcí v rámci stránky, vyberte možnost skript zobrazit konzolu skriptu v nabídce Pomocník pro webový vývoj. To poskytuje přístup k příkazovému oknu a jednoduchému okamžitému oknu.
 
-*Zobrazení zpráv trasování a Data objektu JSON*
+*Zobrazení zpráv trasování a dat objektu JSON*
 
-Příkazové podokno umožňuje spouštět příkazy skriptu nebo dokonce načtení nebo uložení skripty, které se používají k testování různých funkcí na stránce. V příkazovém okně zobrazí zprávy trasování a ladění zapsal stránky zobrazení. Výpis 2 ukazuje, jak zapsat zprávu trasování pomocí aplikace Internet Explorer Debug.writeln – funkce.
+Příkazové okno lze použít ke spuštění příkazů skriptu nebo dokonce k načtení nebo uložení skriptů používaných k testování různých funkcí na stránce. V příkazovém okně se zobrazují zprávy o trasování nebo ladění vypsané stránkou, která je zobrazena. Výpis 2 ukazuje, jak napsat zprávu trasování pomocí funkce Debug. writeln – v Internet Exploreru.
 
-**Výpis 2. Zápis zprávy trasování na straně klienta pomocí třídu ladění.**
+**Výpis 2. Zápis zprávy trasování na straně klienta pomocí třídy ladění.**
 
 [!code-javascript[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample3.js)]
 
-Pokud vlastnost LastName obsahuje hodnotu Doe, pomocné rutiny vývoj pro Web se zobrazí zpráva "jméno: Doe"v příkazovém okně konzole skriptu (za předpokladu, že je povoleno ladění). Vývoj webové pomocné rutiny také přidá objekt nejvyšší úrovně debugService na stránky, které je možné zapsat informace trasování nebo zobrazení obsahu objektů JSON. Výpis 3 ukazuje příklad použití funkce trasování debugService třídy.
+Pokud vlastnost LastName obsahuje hodnotu Novák, Pomocník pro vývoj webu zobrazí v příkazovém okně konzoly skriptu zprávu "jméno osoby: Novák" (za předpokladu, že ladění je povolené). Pomocník pro vývoj webu také přidá objekt debugService na nejvyšší úrovni do stránek, které lze použít k zápisu trasovacích informací nebo k zobrazení obsahu objektů JSON. Výpis 3 ukazuje příklad použití funkce Trace třídy debugService.
 
-**Výpis 3. Pomocí třídy pomocné rutiny webového vývoje debugService k zápisu zprávy trasování.**
+**Výpis 3. Použití třídy debugService pomocníka pro vývoj webu k zápisu zprávy trasování.**
 
 [!code-javascript[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample4.js)]
 
-Užitečnou funkci třídy debugService je, že bude fungovat i v případě, že ladění není povoleno v aplikaci Internet Explorer, což usnadňuje vždy přístup k datům trasování při spouštění pomocníka vývoj pro Web. Při ladění na stránce se nepoužívá nástroj, příkazů trasování bude ignorovat, protože volání window.debugService vrátí hodnotu false.
+Dobrá funkce třídy debugService je, že bude fungovat i v případě, že ladění není povoleno v aplikaci Internet Explorer, což usnadňuje vždy přístup k datům trasování při spuštění pomocníka pro vývoj webu. Když se nástroj nepoužívá pro ladění stránky, příkazy trasování budou ignorovány, protože volání window. debugService vrátí hodnotu false.
 
-Třída debugService také umožňuje data JSON objektu lze zobrazit pomocí okna pomocné vývoj pro Web inspector. Výpis 4 vytvoří jednoduchý objekt JSON obsahující data osob. Po vytvoření objektu je volána k debugService zkontrolovat třídy funkce umožní vizuálně zkontroloval objekt JSON.
+Třída debugService také umožňuje zobrazit data objektu JSON pomocí okna inspektora nástroje pro vývoj webu. Výpis 4 vytvoří jednoduchý objekt JSON obsahující data osob. Po vytvoření objektu je provedeno volání funkce kontroly třídy debugService, která umožňuje vizuální kontrolu objektu JSON.
 
-**Výpis 4. Chcete-li zobrazit data objektu JSON pomocí funkce debugService.inspect.**
+**Výpis 4. Použití funkce debugService. prověřit k zobrazení dat objektu JSON.**
 
 [!code-javascript[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample5.js)]
 
-Na stránce nebo prostřednictvím podokna volání funkce GetPerson() způsobí v dialogovém okně Inspektor objektů povolí, jak je znázorněno na obrázku 5. Vlastnosti v rámci objektu můžete změnit dynamicky zvýrazněním, změna hodnoty uvedené v textovém poli hodnotu a potom kliknutím na odkaz aktualizace. Použití inspektoru objektu je přehledné zobrazení dat objektu JSON a experimentovat s použitím různých hodnot vlastností.
+Volání funkce getperson () na stránce nebo v příkazovém podokně způsobí zobrazení dialogového okna inspektoru objektu, jak je znázorněno na obrázku 5. Vlastnosti v rámci objektu lze dynamicky měnit jejich zvýrazněním, změnou hodnoty zobrazeného v textovém poli hodnota a kliknutím na odkaz aktualizace. Použití inspektoru objektu usnadňuje zobrazení dat objektu JSON a experimentování s použitím různých hodnot k vlastnostem.
 
 *Chyby ladění*
 
-Kromě povolení trasování data a objekty JSON, který se má zobrazit, můžete také Web Development pomocné pomoci při ladění chyby na stránce. Pokud dojde k chybě, zobrazí výzva k pokračování na další řádek kódu nebo ladění skriptu (viz obrázek 6). Chyba skriptu dialogového okna okno zobrazí se kompletní volání zásobníku a čísla řádků mohli snadno identifikovat, kde jsou problémy ve skriptu pro.
+Kromě toho, že se mají zobrazit data trasování a objekty JSON, může pomocník pro vývoj webu také pomoci při ladění chyb na stránce. Pokud dojde k chybě, zobrazí se výzva k pokračování na další řádek kódu nebo ladění skriptu (viz obrázek 6). Dialogové okno chyba skriptu zobrazuje kompletní zásobník volání a čísla řádků, takže můžete snadno identifikovat, kde jsou problémy v rámci skriptu.
 
-[![V okně Inspektor objektů pomocí zobrazení objektu JSON.](understanding-asp-net-ajax-debugging-capabilities/_static/image14.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image13.png)
+[![pomocí okna Inspektoru objektů zobrazit objekt JSON.](understanding-asp-net-ajax-debugging-capabilities/_static/image14.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image13.png)
 
-**Obrázek 5**: V okně Inspektor objektů pomocí zobrazení objektu JSON.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image15.png))
+**Obrázek 5**: použití okna Inspektoru objektů k zobrazení objektu JSON.  ([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image15.png))
 
-Výběr možnosti ladění umožňuje spouštění příkazů skriptu přímo v okně okamžité pomocné rutiny webového vývoje k zobrazení hodnot proměnných, vypsat objekty JSON a navíc více. Pokud je znovu provést stejnou akci, která způsobila chybu a Visual Studio 2008 je k dispozici na počítači, se výzva ke spuštění relace ladění můžete krokovat kód řádek po řádku, jak je popsáno v předchozí části.
+Výběr možnosti ladění umožňuje spustit příkazy skriptu přímo v příkazovém podokně pomocníka pro vývoj webu, který umožňuje zobrazit hodnotu proměnných, zapisovat objekty JSON a navíc další. Pokud je znovu provedena stejná akce, která aktivovala chybu, a v počítači je k dispozici Visual Studio 2008, zobrazí se výzva ke spuštění relace ladění, takže můžete krokovat kód podle řádku, jak je popsáno v předchozí části.
 
-[![Webového vývoje pomocné dialogové okno chyby skriptu](understanding-asp-net-ajax-debugging-capabilities/_static/image17.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image16.png)
+[![dialogového okna chyby skriptu pomocníka pro vývoj webu](understanding-asp-net-ajax-debugging-capabilities/_static/image17.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image16.png)
 
-**Obrázek 6**: Webového vývoje pomocné dialogové okno chyby skriptu ([kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image18.png))
+**Obrázek 6**: dialogové okno chyby skriptu pomocníka pro vývoj webu ([kliknutím zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image18.png))
 
-*Kontrola požadavku a odpovědi na zprávy*
+*Kontrola zpráv žádosti a odpovědi*
 
-Při ladění stránek ASP.NET AJAX je často užitečné prohlédnout si žádostí a odpovědí zprávy odeslané mezi stránkou a serveru. Zobrazení obsahu v rámci zpráv umožňuje zobrazit, pokud je správná data předávána a také velikost zpráv. Vývoj webové pomocné rutiny poskytuje vynikající funkce protokolu HTTP zpráv protokolovacího nástroje, se kterou snadno zobrazit data jako nezpracovaný text nebo v přehlednějším tvaru.
+Při ladění stránek AJAX ASP.NET je často užitečné zobrazovat zprávy žádosti a odpovědi odeslané mezi stránkou a serverem. Zobrazení obsahu v rámci zpráv vám umožní zjistit, jestli se předávají vhodná data, a také velikost zpráv. Pomocník pro vývoj webu nabízí vynikající funkci protokolovacího nástroje zpráv HTTP, která usnadňuje zobrazení dat jako nezpracovaných textu nebo v čitelnějším formátu.
 
-Zobrazení zpráv požadavků a odpovědí technologie ASP.NET AJAX, musí být tak, že vyberete HTTP povolit protokolování HTTP z nabídky pomocné rutiny vývoj pro Web povoleno protokolování HTTP. Po povolení všech zpráv odeslaných z aktuální stránky lze zobrazit v prohlížeči protokolu HTTP, který se dá dostat tak, že vyberete HTTP zobrazit protokoly HTTP.
+Pokud chcete zobrazit zprávy žádosti a odpovědi AJAX ASP.NET, musí být povolený protokolovací nástroj HTTP tím, že v nabídce Pomocník pro vývoj webu vybere protokol HTTP povolit protokolování HTTP. Po povolení můžete všechny zprávy odeslané z aktuální stránky zobrazit v prohlížeči protokolu HTTP, ke kterému se dostanete tak, že vyberete HTTP zobrazit protokoly HTTP.
 
-I když zobrazení nezpracovaný text odeslaný v každé zprávě požadavku nebo odpovědi je určitě užitečné (a možnost v pomocné vývoj pro Web), je často snazší zobrazit data zprávy ve formátu více grafických. Jakmile bylo povoleno protokolování HTTP a zprávy byly zaprotokolovány, data zprávy lze zobrazit dvojitým kliknutím na tuto zprávu najdete v protokolu HTTP log vieweru. To vám umožní zobrazit všechny hlavičky přidružené k zprávu, stejně jako skutečný zpráva obsahu. Obrázek 7 znázorňuje příklad zprávy s požadavkem a zprávy s odpovědí zobrazit v okně nástroje HTTP Log Viewer.
+I když zobrazení nezpracovaného textu odeslaného v každé zprávě žádosti nebo odpovědi je určitě užitečné (a možnost v nástroji Web Development Helper), je často snazší zobrazit data zpráv v podrobnějším formátu. Po povolení protokolování protokolu HTTP a zaznamenání zpráv do protokolu lze zobrazit data zpráv dvojitým kliknutím na zprávu v prohlížeči protokolu HTTP. Díky tomu můžete zobrazit všechna záhlaví přidružená ke zprávě a také obsah samotné zprávy. Obrázek 7 ukazuje příklad zprávy s požadavkem a zprávy s odpovědí zobrazované v okně prohlížeče protokolu HTTP.
 
-[![Chcete-li zobrazit data zprávy požadavku a odpovědi pomocí Prohlížeč protokolu HTTP.](understanding-asp-net-ajax-debugging-capabilities/_static/image20.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image19.png)
+[Pokud chcete zobrazit data žádosti a odpovědi, ![pomocí prohlížeče protokolu HTTP.](understanding-asp-net-ajax-debugging-capabilities/_static/image20.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image19.png)
 
-**Obrázek 7**: Chcete-li zobrazit data zprávy požadavku a odpovědi pomocí Prohlížeč protokolu HTTP.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image21.png))
+**Obrázek 7**: použití prohlížeče protokolu HTTP k zobrazení dat žádosti a odpovědi.  ([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image21.png))
 
-Prohlížeč protokolu HTTP automaticky analyzuje objekty JSON a zobrazí ho pomocí stromového zobrazení tak rychle a snadno zobrazit data vlastnosti objektu. Při použití ovládacího prvku UpdatePanel na stránce technologie ASP.NET AJAX, prohlížeč každá část zprávy na jednotlivé části dělí, jak je znázorněno na obrázku 8. To je skvělé funkce, která usnadňuje mnohem viděl a pochopil, co je ve zprávě porovnání s zobrazení nezpracovaná data zpráv.
+Prohlížeč protokolu HTTP automaticky analyzuje objekty JSON a zobrazí je pomocí stromového zobrazení, které umožňuje rychlý a snadný pohled na data vlastností objektu. Když se na stránce ASP.NET AJAX používá UpdatePanel, prohlížeč rozdělí každou část zprávy na jednotlivé části, jak je znázorněno na obrázku 8. Jedná se o skvělou funkci, která usnadňuje zobrazení a porozumění tomu, co je ve zprávě ve srovnání s prohlížením nezpracovaných dat zpráv.
 
-[![Prvek UpdatePanel zprávu odpovědi zobrazit pomocí prohlížeče protokolu HTTP.](understanding-asp-net-ajax-debugging-capabilities/_static/image23.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image22.png)
+[![zprávu odpovědi ovládacího prvku UpdatePanel zobrazovanou v prohlížeči protokolu HTTP.](understanding-asp-net-ajax-debugging-capabilities/_static/image23.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image22.png)
 
-**Obrázek 8**: Prvek UpdatePanel zprávu odpovědi zobrazit pomocí prohlížeče protokolu HTTP.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image24.png))
+**Obrázek 8**: zpráva odpovědi ovládacího prvku UpdatePanel zobrazovaná pomocí prohlížeče protokolu HTTP.  ([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image24.png))
 
-Existuje několik dalších nástrojů, které slouží k zobrazení zpráv požadavků a odpovědí kromě webového vývoje pomocné rutiny. Další dobrá možností je Fiddler, která je k dispozici zdarma na [ http://www.fiddlertool.com ](http://www.fiddlertool.com). I když aplikaci Fiddler nebude zde popsané, je také vhodné při je potřeba důkladně zkontrolovat záhlaví zpráv a data.
+K dispozici je několik dalších nástrojů, které se dají použít k zobrazení žádostí a odpovědí kromě pomocníka pro vývoj webů. Další dobrá možnost je Fiddler, která je dostupná zdarma na [http://www.fiddlertool.com](http://www.fiddlertool.com). I když zde Fiddler nebude popsána, je to také dobrá možnost, pokud potřebujete důkladně zkontrolovat záhlaví a data zpráv.
 
-## <a name="debugging-with-firefox-and-firebug"></a>Ladění pomocí Firefoxu a Firebug
+## <a name="debugging-with-firefox-and-firebug"></a>Ladění pomocí Firefox a Firebug
 
-Aplikace Internet Explorer je stále nejpoužívanější prohlížeče, ostatní prohlížeče, jako je například Firefox staly poměrně Oblíbené a jsou používány více. Díky tomu budete chtít zobrazit a ladit vaše stránky technologie ASP.NET AJAX v aplikaci Firefox také aplikace Internet Explorer k zajištění, že vaše aplikace fungovat správně. I když Firefox nelze spojit přímo do sady Visual Studio 2008 pro ladění, má příponu volá Firebug, který slouží k ladění stránek. FireBug si můžete zdarma stáhnout tak, že přejdete do [ http://www.getfirebug.com ](http://www.getfirebug.com).
+I když je Internet Explorer stále nejpoužívanějším prohlížečem, další prohlížeče, jako je Firefox, jsou poměrně oblíbené a jsou používány více a více. V důsledku toho budete chtít zobrazit a ladit stránky ASP.NET AJAX v prohlížeči Firefox a také aplikaci Internet Explorer, abyste zajistili správnou funkčnost vašich aplikací. I když se Firefox nemůže spojit přímo se Visual Studio 2008 pro ladění, má rozšíření s názvem Firebug, které lze použít k ladění stránek. Firebug se dá zdarma stáhnout tak, že na [http://www.getfirebug.com](http://www.getfirebug.com).
 
-FireBug poskytuje plně vybavené prostředí ladění, který slouží k procházení kódu řádek po řádku, přístup k všechny skripty používané v rámci stránky, zobrazit strukturu modelu DOM, zobrazení stylů CSS a dokonce i sledování událostí, ke kterým dochází na stránce. Po instalaci Firebug je možný výběrem otevřete Firebug Firebug nástroje z nabídky Firefox. Jako pomocné rutiny vývoj pro Web slouží Firebug přímo v prohlížeči, i když můžete použít také jako samostatné aplikace.
+Firebug poskytuje plnohodnotné ladicí prostředí, které lze použít ke krokování kódu řádek po řádku, přístupu ke všem skriptům používaným na stránce, zobrazení struktur modelu DOM, zobrazení stylů CSS a dokonce i ke sledování událostí, ke kterým dochází na stránce. Po nainstalování Firebug k němu můžete vybrat nástroje Firebug otevřít Firebug v nabídce Firefox. Podobně jako pomocník pro vývoj webu se Firebug používá přímo v prohlížeči, i když je možné ho použít jako samostatnou aplikaci.
 
-Po spuštění Firebug zarážky můžete nastavit na kterýkoli řádek v souboru jazyka JavaScript, zda skript je součástí na stránce, nebo ne. Nastavit zarážku, nejdřív načtěte příslušnou stránku, kterou chcete ladit v aplikaci Firefox. Po načtení stránky vyberte skript, který chcete ladit z rozevíracího seznamu pro Firebug skripty. Zobrazí se všechny skripty používané stránky. Kliknutím na Firebug šedé na hlavním panelu oblast na řádku kde zarážka by měly patřit musí jako v sadě Visual Studio 2008 byla nastavena zarážka.
+Po spuštění Firebug lze nastavit zarážky na jakémkoli řádku souboru JavaScriptu, zda je skript vložen na stránku nebo ne. Chcete-li nastavit zarážku, napřed načtěte příslušnou stránku, kterou chcete ladit v prohlížeči Firefox. Po načtení stránky vyberte z rozevíracího seznamu skripty v Firebug skript, který chcete ladit. Zobrazí se všechny skripty používané stránkou. Zarážka je nastavená tak, že kliknete na šedou oblast Firebug zásobníku na řádku, kde by měla zarážka jít, třeba v sadě Visual Studio 2008.
 
-Po nastavení zarážky v Firebug lze provést akce potřebné ke spuštění skriptu, který je potřeba ladit, jako je například kliknutí na tlačítko nebo aktualizovat prohlížeč, aby aktivovat události při načtení. Spuštění se automaticky zastaví na řádek obsahující zarážku. Obrázek 9 ukazuje příklad, který se spustil zarážku v Firebug.
+Po nastavení zarážky v Firebug můžete provést akci potřebnou ke spuštění skriptu, který je třeba ladit, například kliknutím na tlačítko nebo obnovením prohlížeče aktivovat událost při načtení. Spuštění se automaticky zastaví na řádku obsahujícím zarážku. Obrázek 9 ukazuje příklad zarážky, která se aktivovala v Firebug.
 
-[![Zarážky v Firebug zpracování.](understanding-asp-net-ajax-debugging-capabilities/_static/image26.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image25.png)
+[![zpracování zarážek v Firebug.](understanding-asp-net-ajax-debugging-capabilities/_static/image26.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image25.png)
 
-**Obrázek 9**: Zarážky v Firebug zpracování.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image27.png))
+**Obrázek 9**: zpracování zarážek v Firebug.  ([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image27.png))
 
-Po dosažení zarážky můžete krokovat s vnořením, Krokovat přes nebo kroku mimo kód pomocí tlačítek se šipkami. Jak krokovat kód skriptu proměnné se zobrazí v pravé části ladicí program umožňuje zobrazit hodnoty a její procházení do objektů. FireBug také obsahuje zásobník volání rozevírací seznam postup spuštění skriptu, které vedly k aktuální řádek, který se právě ladí.
+Po dosažení zarážky můžete krokovat krok dovnitř, Krokovat s vnořením kódu pomocí tlačítek se šipkami. Při procházení kódu jsou proměnné skriptu zobrazeny v pravé části ladicího programu, což vám umožní zobrazit hodnoty a přejít k podrobnostem objektů. Firebug také obsahuje rozevírací seznam zásobník volání pro zobrazení kroků spuštění skriptu, které vedly k ladění aktuálního řádku.
 
-FireBug také zahrnuje okna konzoly, která slouží k testování různých skript příkazy, proměnné vyhodnoceny a zobrazit výstup trasování. Kliknutím na kartu konzoly v horní části okna Firebug přístupu. Na stránce, který se právě ladí můžete také "kontrolovány" zobrazíte kliknutím na kartě zkontrolujte, jestli se jeho strukturu modelu DOM a obsah. Při budou zvýrazněny myši přes různé prvky modelu DOM zobrazují v okně Inspektor odpovídající části stránky vám usnadní najdete v článku použití elementu na stránce. Hodnoty atributů, které jsou přidružené k daného elementu je možné změnit "live" a experimentovat s použití různých šířkách, styly atd. pro element. To je skvělé funkce, která vám ušetří nemusíte neustále přepínání v editor zdrojového kódu a prohlížeče Firefox, chcete-li zobrazit jak jednoduché změny projeví na stránce.
+Firebug také obsahuje okno konzoly, které lze použít k otestování různých příkazů skriptu, vyhodnocování proměnných a zobrazení výstupu trasování. K němu se dostanete kliknutím na kartu konzola v horní části okna Firebug. Laděná stránka může obsahovat také "prověření", aby se zobrazila její struktura a obsah DOM kliknutím na kartu zkontrolovat. Při přetažení na jiné prvky modelu DOM zobrazené v okně inspektora se zvýrazní příslušná část stránky, která usnadňuje zjištění, kde se element na stránce používá. Hodnoty atributu přidružené k danému elementu lze změnit "Live" a experimentovat s použitím různých šířek, stylů atd. na prvek. Tato funkce je dobrá, která vám ušetří možnost nepřetržitě přepínat mezi editorem zdrojového kódu a prohlížečem Firefox, aby se zobrazilo, jak jednoduché změny ovlivní stránku.
 
-Obrázek 10 ukazuje příklad použití inspektoru modelu DOM k vyhledání textové pole s názvem txtCountry na stránce. Inspektor Firebug lze také zobrazit používané stránky, jakož i události, ke kterým dochází například sledování pohybu myši, kliknutí na tlačítko plus další styly CSS.
+Obrázek 10 ukazuje příklad použití nástroje DOM Inspector k nalezení textového pole s názvem txtCountry na stránce. Firebug Inspector lze také použít k zobrazení stylů CSS použitých na stránce a také k událostem, ke kterým dochází, jako je sledování pohybu myši, kliknutí na tlačítko a další.
 
-[![Použití modelu DOM inspectoru Firebug společnosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image29.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image28.png)
+[![pomocí inspektoru DOM v Firebug.](understanding-asp-net-ajax-debugging-capabilities/_static/image29.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image28.png)
 
-**Obrázek 10**: Použití modelu DOM inspectoru Firebug společnosti.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image30.png))
+**Obrázek 10**: použití inspektoru DOM v Firebug.  ([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image30.png))
 
-FireBug poskytuje odlehčené způsob, jak rychle ladit stránku přímo v aplikaci Firefox, jakož i skvělým nástrojem pro kontrolu různé prvky v rámci stránky.
+Firebug poskytuje lehký způsob, jak rychle ladit stránku přímo v prohlížeči Firefox a také skvělý nástroj pro kontrolu různých prvků v rámci stránky.
 
-## <a name="debugging-support-in-aspnet-ajax"></a>Podpora ladění v rozhraní ASP.NET AJAX
+## <a name="debugging-support-in-aspnet-ajax"></a>Podpora ladění v ASP.NET AJAX
 
-Knihovna ASP.NET AJAX obsahuje mnoho různých tříd, které slouží ke zjednodušení procesu přidávání funkcí AJAX do webové stránky. Tyto třídy můžete použít k vyhledání elementů v rámci stránky a s nimi manipulovat, přidání nových ovládacích prvků, volání webové služby a i zpracování událostí. Knihovna ASP.NET AJAX obsahuje také třídy, které můžete použít k vylepšení procesů ladění stránek. V této části budete zavedené třídy Sys.Debug a zobrazit, jak můžete použít v aplikacích.
+Knihovna ASP.NET AJAX obsahuje mnoho různých tříd, které lze použít ke zjednodušení procesu přidávání schopností AJAX do webové stránky. Tyto třídy můžete použít k vyhledání prvků v rámci stránky a manipulaci s nimi, přidání nových ovládacích prvků, volání webových služeb a dokonce zpracování událostí. Knihovna ASP.NET AJAX obsahuje také třídy, které lze použít k rozšíření procesu stránek ladění. V této části se zavedete do třídy Sys. Debug a zjistíte, jak se dá použít v aplikacích.
 
-*Pomocí třídy Sys.Debug*
+*Použití třídy Sys. Debug*
 
-Sys.Debug třídy (třídy jazyka JavaScript v oboru názvů Sys) je možné provádět několik různých funkcí včetně zápisu výstupu trasování provádění kódu kontrolní výrazy a vynucení selhání tak, aby ji bylo možné ladit kódu. Používá se často v souborech ladění technologie ASP.NET AJAX library (ve výchozím nastavení nainstalované na C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025\MicrosoftAjaxLibrary\System.Web.Extensions\1.0.61025.0) k provedení podmíněné testy) volá se, kontrolní výrazy), které zajistí parametry jsou předány správné funkce, že objekty obsahují očekávaná data a psát příkazy trasování.
+Třída Sys. Debug (třída JavaScriptu, která se nachází v oboru názvů sys), se dá použít k provedení několika různých funkcí, jako je například zápis výstupu trasování, provádění kontrolních výrazů kódu a vynucené selhání kódu, aby bylo možné ho ladit. Používá se rozsáhle v souborech ladění knihovny ASP.NET AJAX (ve výchozím nastavení nainstalované ve složce C:\Program Files\Microsoft ASP. NET\ASP.NET 2,0 AJAX Extensions\v1.0.61025\MicrosoftAjaxLibrary\System.Web.Extensions\1.0.61025.0) k provádění podmíněných testů ( označované jako kontrolní výrazy), které zajišťují, že parametry jsou správně předány funkcím, že objekty obsahují očekávaná data a zapisují příkazy TRACE.
 
-Třída Sys.Debug zveřejňuje několik různých funkcí, které lze použít ke zpracování trasování, kontrolní výrazy kódu nebo selhání, jak je znázorněno v tabulce 1.
+Třída Sys. Debug zpřístupňuje několik různých funkcí, které lze použít ke zpracování trasování, kontrolních výrazů kódu nebo selhání, jak je uvedeno v tabulce 1.
 
-**Tabulka 1. Sys.Debug funkcí třídy.**
+**Tabulka 1. Funkce třídy Sys. Debug.**
 
 | **Název funkce** | **Popis** |
 | --- | --- |
-| vyhodnocení (podmínka, zprávy, displayCaller) | Vyhodnotí, že parametr podmínky hodnotu true. Pokud se testovaná podmínka hodnotu false, okno se zprávou se použije k zobrazení hodnoty parametru zprávy. Pokud má parametr displayCaller hodnotu true, metoda zobrazí také informace o volajícím. |
-| clearTrace() | Odstraní příkazy výstup z operace trasování. |
-| Fail(Message) | Způsobí, že program k zastavení spuštěného procesu a do ladicího programu. Parametr message umožňuje zadat příslušný důvod selhání. |
-| trace(Message) | Zapíše parametr zprávu do výstupu trasování. |
-| traceDump (objektu, název) | Vrácení dat objektu v čitelném formátu. Název parametru slouží k zadejte jmenovku pro trasování s výpisem paměti. Ve výchozím nastavení se zapíšou všech podřízených objektů v rámci objektu jsou zálohované. |
+| Assert (podmínka; zpráva; displayCaller) | Vyhodnotí, že parametr Condition má hodnotu true. Pokud je testovaná podmínka nepravdivá, použije se k zobrazení hodnoty parametru zprávy okno se zprávou. Pokud má parametr displayCaller hodnotu true, metoda také zobrazí informace o volajícím. |
+| clearTrace() | Vymaže výstup příkazů z operací trasování. |
+| Chyba (zpráva) | Způsobí, že program zastaví provádění a přeruší do ladicího programu. Pomocí parametru zprávy lze určit důvod selhání. |
+| trasování (zpráva) | Zapíše parametr zprávy do výstupu trasování. |
+| traceDump (objekt; název) | Vytvoří výstup dat objektu v čitelném formátu. Parametr Name lze použít k poskytnutí popisku pro výpis trasování. Všechny dílčí objekty v rámci objektu, které jsou předmětem dumpingu, budou ve výchozím nastavení zapsány. |
 
-Trasování na straně klienta je možné stejným způsobem jako funkce trasování, která je k dispozici v technologii ASP.NET. To umožňuje různé zprávy snadno vidět bez přerušení tok z aplikace. Výpis 5 ukazuje příklad použití funkce Sys.Debug.trace k zápisu do protokolu trasování. Tato funkce přebírá jednoduše zprávu, která by měla být zapsán jako parametr.
+Trasování na straně klienta lze použít téměř stejným způsobem jako funkce trasování, které jsou k dispozici v ASP.NET. Umožňuje snadno zobrazit různé zprávy bez přerušení toku aplikace. Výpis 5 ukazuje příklad použití funkce sys. Debug. Trace k zápisu do protokolu trasování. Tato funkce jednoduše vezme zprávu, která by se měla zapsat jako parametr.
 
-**Seznam 5. Pomocí funkce Sys.Debug.trace.**
+**Výpis 5. Pomocí funkce sys. Debug. Trace.**
 
 [!code-javascript[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample6.js)]
 
-Pokud při spuštění uvedeno v informacích 5 kódu nezobrazí žádný výstup trasování na stránce. Jediný způsob, jak vidět, jak to má používat k dispozici ve Visual Studio .NET, vývoj pro webové pomocné rutiny nebo Firebug okno konzoly. Pokud chcete zobrazit výstup trasování na stránce pak bude potřeba přidat značku TextArea a přiřaďte mu id TraceConsole, jak je ukázáno dále:
+Pokud spustíte kód zobrazený v seznamu 5, na stránce se nezobrazí žádný výstup trasování. Jediným způsobem, jak se podívat, je použít okno konzoly, které je k dispozici v aplikaci Visual Studio .NET, webové vývojové pomůcky nebo Firebug. Pokud chcete zobrazit výstup trasování na stránce, budete muset přidat značku TextArea a dát mu ID TraceConsole, jak je uvedeno dále:
 
 [!code-html[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample7.html)]
 
-Všechny příkazy Sys.Debug.trace na stránce se zapíšou do TraceConsole TextArea.
+Jakékoli příkazy sys. Debug. Trace na stránce se zapíší do TraceConsole TextArea.
 
-V případech, ve kterém chcete zobrazit data obsažená v objektu JSON můžete použít funkci traceDump Sys.Debug třídy. Tato funkce přebírá dva parametry, včetně objektu, který by měl být zálohované do konzoly pro trasovacího a název, který slouží k identifikaci objektu ve výstupu trasování. Výpis 6 ukazuje příklad použití funkce traceDump.
+V případech, kdy chcete zobrazit data obsažená v objektu JSON, můžete použít funkci traceDump třídy Sys. Debug. Tato funkce přijímá dva parametry, včetně objektu, které by měly být dumpingové do konzoly trasování, a název, který lze použít k identifikaci objektu ve výstupu trasování. Výpis 6 ukazuje příklad použití funkce traceDump.
 
-**Výpis 6. Pomocí funkce Sys.Debug.traceDump.**
+**Výpis 6. Použití funkce sys. Debug. traceDump**
 
 [!code-javascript[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample8.js)]
 
-Obrázek 11 zobrazuje výstup z volání funkce Sys.Debug.traceDump. Všimněte si, že kromě zápisu dat objektu osoba, také zapíše data adresu sub objektu.
+Obrázek 11 ukazuje výstup z volání funkce sys. Debug. traceDump. Všimněte si, že kromě vypsání dat objektu osoby také zapisuje data dílčího objektu Address.
 
-Kromě trasování, Sys.Debug třídy lze také provést kontrolní výrazy kódu. Kontrolní výrazy se používají k otestování, zda jsou splněny konkrétní podmínky, když aplikace běží. Ladicí verze knihovny skripty AJAX technologie ASP.NET obsahují několik Assert – příkazy k testování různých podmínek.
+Kromě trasování lze třídu sys. debug použít také k provádění kontrolních výrazů kódu. Kontrolní výrazy se používají k otestování, jestli jsou při spuštění aplikace splněné konkrétní podmínky. Ladicí verze skriptů knihovny ASP.NET AJAX obsahuje několik příkazů kontrolního výrazu pro otestování různých podmínek.
 
-Výpis 7 ukazuje příklad použití funkce Sys.Debug.assert k otestování podmínky. Kód testuje, zda adresa objektu má hodnotu null, před aktualizací osoba.
+Výpis 7 ukazuje příklad použití funkce sys. Debug. Assert k otestování podmínky. Kód testuje, zda je objekt adresy null před aktualizací objektu Person.
 
-[![Výstup Sys.Debug.traceDump funkce.](understanding-asp-net-ajax-debugging-capabilities/_static/image32.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image31.png)
+[![výstup funkce sys. Debug. traceDump.](understanding-asp-net-ajax-debugging-capabilities/_static/image32.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image31.png)
 
-**Obrázek 11**: Výstup Sys.Debug.traceDump funkce.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image33.png))
+**Obrázek 11**: výstup funkce sys. Debug. traceDump  ([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image33.png))
 
-**Výpis 7. Pomocí funkce Debug.Assert –.**
+**Výpis 7. Pomocí funkce Debug. Assert.**
 
 [!code-javascript[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample9.js)]
 
-Tři parametry jsou předány včetně podmínku, která má vyhodnotit, zpráva se zobrazí, pokud výraz vrátí hodnotu false a zda mají být zobrazeny informace o volajícím. V případech, kdy kontrolní výraz selže bude zprávy zobrazit, a také informace o subjektu volajícím Pokud dřív platilo třetí parametr. Obrázek 12 znázorňuje příklad dialogové okno selhání, který se zobrazí, pokud výraz je vidět na výpisu 7 se nezdaří.
+Tři parametry jsou předány, včetně podmínky k vyhodnocení, zprávy, která se zobrazí, pokud kontrolní výraz vrátí hodnotu false a zda se mají zobrazit informace o volajícím. V případech, kdy se kontrolní výraz nezdaří, se zpráva zobrazí také jako informace o volajícím, pokud byl třetí parametr pravdivý. Obrázek 12 ukazuje příklad dialogového okna selhání, které se zobrazí, pokud se kontrolní výraz uvedený v seznamu 7 nezdaří.
 
-Konečná funkce pro pokrytí je Sys.Debug.fail. Pokud chcete vynutit selhání na konkrétní řádek ve skriptu kódu můžete přidat volání Sys.Debug.fail spíše než příkaz ladicího programu, obvykle používaných v aplikacích jazyka JavaScript. Funkce Sys.Debug.fail přijímá jako parametr jeden řetězec, který představuje důvod selhání, jak je ukázáno dále:
+Koncová funkce, která se má krýt, je sys. Debug. selžou. Pokud chcete vynutit selhání kódu na konkrétním řádku ve skriptu, můžete přidat sys. Debug. uncalled, nikoli příkaz ladicího programu, který se obvykle používá v aplikacích JavaScriptu. Funkce sys. Debug. Failure přijímá parametr jednoho řetězce, který představuje důvod selhání, jak je uvedeno dále:
 
 [!code-css[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample10.css)]
 
-[![Zpráva o selhání Sys.Debug.assert.](understanding-asp-net-ajax-debugging-capabilities/_static/image35.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image34.png)
+[![zprávu o chybě sys. Debug. Assert.](understanding-asp-net-ajax-debugging-capabilities/_static/image35.png)](understanding-asp-net-ajax-debugging-capabilities/_static/image34.png)
 
-**Obrázek 12**: Zpráva o selhání Sys.Debug.assert.  ([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-debugging-capabilities/_static/image36.png))
+**Obrázek 12**: zpráva o chybě sys. Debug. Assert  ([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-debugging-capabilities/_static/image36.png))
 
-Při výpisu Sys.Debug.fail dochází při provádění skriptu, hodnota parametru zpráva se zobrazí v konzole ladění aplikace, jako je Visual Studio 2008 a zobrazí se výzva k ladění aplikace. Jeden případ, kdy to může být užitečná při nelze nastavit zarážku s Visual Studio 2008 na vložený skript, ale chtěli kódu pro ukončení na konkrétní řádek, takže si můžete prohlédnout hodnoty proměnných.
+Pokud při provádění skriptu dojde k chybě sys. Debug. selhání, hodnota parametru zprávy se zobrazí v konzole ladicí aplikace, jako je například Visual Studio 2008, a zobrazí se výzva k ladění aplikace. Jeden případ, kde to může být poměrně užitečné, je, že nemůžete nastavit zarážku se sadou Visual Studio 2008 na vloženém skriptu, ale chcete, aby se kód zastavil na konkrétním řádku, abyste mohli zkontrolovat hodnotu proměnných.
 
-*Principy vlastnosti ovládacího prvku ScriptManager ScriptMode*
+*Princip vlastnosti ScriptMode ovládacího prvku ScriptManager*
 
-Knihovna ASP.NET AJAX obsahuje ladění a vydání verze skriptu, které jsou nainstalovány na C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025\MicrosoftAjaxLibrary\System.Web.Extensions\1.0.61025.0 ve výchozím nastavení. Ladění skriptů se přehledně naformátovaná, snadno čitelný a mít několik volání Sys.Debug.assert rozmístěno jinde v rámci jejich při vydání skripty vynechají prázdné znaky a pomocí třídy Sys.Debug opatrně minimalizovat jejich celkovou velikost.
+Knihovna ASP.NET AJAX obsahuje verze skriptu ladění a verze, které jsou ve výchozím nastavení nainstalovány ve složce C:\Program Files\Microsoft ASP. NET\ASP.NET 2,0 AJAX Extensions\v1.0.61025\MicrosoftAjaxLibrary\System.Web.Extensions\1.0.61025.0. Ladicí skripty jsou v současné době naformátovány, snadno čitelné a mají několik volání sys. Debug. Assert, zatímco skripty vydaných verzí mají odpuštění prázdných znaků, a k minimalizaci celkové velikosti používají třídu sys. Debug.
 
-Ovládací prvek ScriptManager přidat do stránky technologie ASP.NET AJAX načte atribut compilation element debug v souboru web.config, chcete-li určit, které verze knihovny skriptů pro načtení. Můžete však určit, zda ladit nebo vydaná verze skriptů jsou načtené (knihovna skripty nebo vlastní skripty) tak, že změníte vlastnost ScriptMode. ScriptMode přijímá výčet ScriptMode, jejíž členové zahrnují automatické, ladění, vydání a dědičnosti.
+Ovládací prvek ScriptManager přidaný do stránek ASP.NET AJAX přečte atribut debug elementu compilation v souboru Web. config a určí, které verze skriptů knihovny se mají načíst. Změnou vlastnosti ScriptMode ale můžete řídit, jestli se mají načítat skripty pro ladění nebo vydávání (skripty knihovny nebo vaše vlastní skripty). ScriptMode přijímá výčet ScriptMode, jehož členové obsahují auto, ladit, vydávat a zdědit.
 
-Výchozí hodnota ScriptMode na hodnotu Auto, což znamená, že bude kontrolovat ScriptManager atribut debug v souboru web.config. Při ladění má hodnotu false ScriptManager načte verzi technologie ASP.NET AJAX knihovny skriptů. Při ladění má hodnotu true ladicí verzi tyto skripty načtou. Změna vlastnosti ScriptMode vydání nebo ladění způsobí, že ovládacímu prvku ScriptManager načítat příslušné skripty bez ohledu na to, jakou hodnotu má atribut debug v souboru web.config. Výpis 8 ukazuje příklad použití ovládacího prvku ScriptManager načítat skripty ladění z knihovny ASP.NET AJAX.
+ScriptMode má výchozí hodnotu auto, což znamená, že ovládací objekt ScriptManager zkontroluje atribut debug v souboru Web. config. Když je ladění false, ovládacímu prvku ScriptManager se načte prodejní verze skriptů knihovny ASP.NET AJAX. Je-li hodnota ladění pravdivá, bude načtena ladicí verze skriptů. Změna vlastnosti ScriptMode na Release nebo Debug vynutí ovládacímu prvku ScriptManager načíst příslušné skripty bez ohledu na to, jakou hodnotu má atribut debug v souboru Web. config. Výpis 8 ukazuje příklad použití ovládacího prvku ScriptManager k načtení skriptů ladění z knihovny ASP.NET AJAX.
 
-**Výpis 8. Načítají se ladění skriptů pomocí ScriptManager**.
+**Výpis 8. Načítají se skripty ladění pomocí ovládacího prvku ScriptManager**.
 
 [!code-aspx[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample11.aspx)]
 
-Různé verze vlastních skriptů (ladění nebo vydání) můžete také načíst pomocí prvku ScriptManager skripty vlastnosti spolu s komponentou ScriptReference, jak je vidět na výpisu 9.
+Můžete také načíst různé verze (ladění nebo vydání) vlastních skriptů pomocí vlastnosti skripty ovládacího prvku ScriptManager společně s komponentou ScriptReference, jak je uvedeno v seznamu 9.
 
-**Výpis 9. Načítání vlastních skriptů používajících ScriptManager.**
+**Výpis 9. Načítají se vlastní skripty pomocí ovládacího prvku ScriptManager.**
 
 [!code-aspx[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample12.aspx)]
 
 > [!NOTE]
-> Pokud načítáte vlastní skripty pomocí komponenty ScriptReference musíte upozornit ScriptManager po dokončení načítání skriptu přidejte následující kód v dolní části skriptu:
+> Pokud načítáte vlastní skripty pomocí komponenty ScriptReference, je nutné, aby byl ovládací prvek ScriptManager upozorněn po dokončení načítání skriptu přidáním následujícího kódu do dolní části skriptu:
 
 [!code-csharp[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample13.cs)]
 
-Kód je vidět na výpisu 9 říká vyhledejte ladicí verzi souboru, který uživatel tak bude automaticky hledat Person.debug.js místo Person.js ovládacímu prvku ScriptManager. Pokud se soubor Person.debug.js nenajde, že bude vyvolána chyba.
+Kód zobrazený v seznamu 9 instruuje ovládacímu prvku ScriptManager, aby vyhledal ladicí verzi skriptu person, aby automaticky hledal Person. Debug. js místo Person. js. Pokud soubor Person. Debug. js nebyl nalezen, bude vyvolána chyba.
 
-V případech, kdy chcete, aby ladění nebo vlastní skript, který se má načíst verzi na základě hodnoty vlastnosti ScriptMode nastavena ovládacímu prvku ScriptManager můžete nastavit vlastnosti ovládacího prvku ScriptReference ScriptMode do dědičnosti. To způsobí, že správná verze vlastní skript, který se má načíst stupněm MODERATE prvku ScriptManager ScriptMode vlastnost jak je uvedeno v informacích 10. Protože ScriptMode vlastnost ovládacího prvku ScriptManager je nastavena na ladění, skript Person.debug.js načíst a použít na stránce.
+V případech, kdy chcete načíst ladicí nebo prodejní verzi vlastního skriptu na základě hodnoty vlastnosti ScriptMode nastavené v ovládacím prvku ScriptManager, můžete nastavit vlastnost ScriptMode ovládacího prvku ScriptReference na dědění. Tím dojde k načtení správné verze vlastního skriptu na základě vlastnosti ScriptMode ovládacího prvku ScriptManager, jak je uvedeno v seznamu 10. Vzhledem k tomu, že vlastnost ScriptMode ovládacího prvku ScriptManager je nastavena na hodnotu ladit, bude na stránce načten a použit skript Person. Debug. js.
 
-**Seznam 10. ScriptMode dědění z objektu ScriptManager pro vlastní skripty.**
+**Výpis 10. Dědění ScriptMode z ovládacího prvku ScriptManager pro vlastní skripty.**
 
 [!code-aspx[Main](understanding-asp-net-ajax-debugging-capabilities/samples/sample14.aspx)]
 
-Pomocí vlastnosti ScriptMode odpovídajícím způsobem můžete snadněji ladit aplikace a zjednodušuje celý proces. Skripty verze knihovny ASP.NET AJAX se místo toho obtížně procházení a čtení, protože formátování kódu byla odebrána při ladění skriptů se formátují speciálně pro účely ladění.
+Pomocí vlastnosti ScriptMode můžete snadno ladit aplikace a zjednodušit celkový proces. Skripty pro vydaných verzí knihovny ASP.NET AJAX jsou obtížně krokovat a čteny, protože formátování kódu bylo odebráno v době, kdy skripty ladění jsou formátovány speciálně pro účely ladění.
 
 ## <a name="conclusion"></a>Závěr
 
-Technologie ASP.NET AJAX od Microsoftu poskytuje solidní základ pro vytváření aplikací s podporou jazyka AJAX, která můžou zvýšit celkové prostředí koncového uživatele. Ale jako se jakékoli programovací technologie, chyby a další potíže s aplikacemi jistě, vyvstanou vám. Znalosti o různých možnostech ladění k dispozici můžete spoustu času a výsledek uložit do více stabilní produkt.
+Technologie Microsoft ASP.NET AJAX poskytuje Solid Foundation pro vytváření aplikací s podporou jazyka AJAX, které můžou zlepšit celkové prostředí koncového uživatele. Nicméně stejně jako u jakékoli programovací technologie, chyby a další problémy s aplikacemi budou určitě nastat. Znalost různých dostupných možností ladění může ušetřit spoustu času a způsobit tak stabilnější produkt.
 
-V tomto článku jste se seznámili s několik různých postupů pro ladění stránek ASP.NET AJAX, včetně aplikace Internet Explorer s Visual Studio 2008, pomocné rutiny Web Development a Firebug. Tyto nástroje můžete zjednodušit celkový proces ladění, protože můžete používat data proměnných, provede kódu řádek po řádku a zobrazit příkazy trasování. Kromě různých ladicí nástroje popsané také viděli použití třídy Sys.Debug knihovna ASP.NET AJAX v aplikaci a použití třídy správce skriptů pro načtení ladění a vydání verze skriptů.
+V tomto článku jste se seznámili s několika různými postupy pro ladění stránek ASP.NET AJAX, včetně aplikace Internet Explorer se sadou Visual Studio 2008, pomocníka pro vývoj webů a Firebug. Tyto nástroje mohou zjednodušit celkový proces ladění, protože můžete získat přístup k proměnným datům, procházením kódu řádek a zobrazení příkazů trasování. Kromě různých popsaných ladicích nástrojů jste si také viděli, jak lze v aplikaci použít třídu sys. Debug knihovny ASP.NET AJAX, a jak lze třídu ScriptManager použít k načtení ladění nebo vydání verzí skriptů.
 
-## <a name="bio"></a>Bio
+## <a name="bio"></a>Dostupnost
 
-DaN Wahlin (Microsoft Most Valuable Professional pro ASP.NET a webových služeb XML) je .NET development instruktorem a architektura konzultant na technické školení rozhraní ([www.interfacett.com)](http://www.interfacett.com). DaN založil XML pro vývojáře v prostředí ASP.NET Web ([www.XMLforASP.NET](http://www.XMLforASP.NET)), která je na mluvčího INETA kancelář a přednáší na konferencích několik. DaN spoluautorem DNA Windows Professional (Wrox), technologie ASP.NET: Tipy, kurzy a kód (edice), ASP.NET 1.1 Insider řešení, Professional ASP.NET 2.0 AJAX (Wrox), technologie ASP.NET 2.0 MVP změní a vytvořené XML pro vývojáře využívající technologii ASP.NET (edice). Když mu není psaní kódu, články nebo knihy, Dan infrastrukturální, zápis a Hudba záznam a přehrávání golf a Basketbalový se svou ženou a děti.
+Dan Wahlin (Microsoft nejvíc Professional for ASP.NET and XML Web Services) je instruktor pro vývoj a architekturu pro vývoj rozhraní .NET na úrovni technického školení ([www.interfacett.com)](http://www.interfacett.com). Daň ze sady XML pro vývojáře na webu ASP.NET ([www.XMLforASP.NET](http://www.XMLforASP.NET)) je v kanceláři mluvčího v INETA a mluví na několika konferencích. Specialista na spolupracovníka Windows DNA (Wrox), ASP.NET: tipy, kurzy a Code (Sams), ASP.NET 1,1 řešení Insider, Professional ASP.NET 2,0 AJAX (Wrox), ASP.NET 2,0 MVP Hackatony a vytvořil XML pro vývojáře ASP.NET (Sams). Když není psaní kódu, článků nebo knih, Dan, požívá psaní a zaznamenávání hudby a hraní Golfů a basketbalový s jeho manželkou a dětem.
 
-Scott Cate má práce s Microsoft webových technologiích od roku 1997 a je prezident myKB.com ([www.myKB.com](http://www.myKB.com)) kde mu se specializuje na technologie ASP.NET psaní aplikací, zaměřuje na znalostní báze softwarová řešení založených na. Scott můžete kontaktovat prostřednictvím e-mailové adrese [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) nebo na svém blogu [ScottCate.com](http://ScottCate.com)
+Scott Cate spolupracuje s webovými technologiemi Microsoftu od 1997 a je prezidentem myKB.com ([www.myKB.com](http://www.myKB.com)), kde se specializuje při psaní aplikací založených na ASP.NET zaměřené na softwarová řešení ve znalostní bázi Knowledge Base. Scott se dá kontaktovat e-mailem na [scott.cate@myKB.com](mailto:scott.cate@myKB.com) nebo jeho blogu na [ScottCate.com](http://ScottCate.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](understanding-asp-net-ajax-web-services.md)

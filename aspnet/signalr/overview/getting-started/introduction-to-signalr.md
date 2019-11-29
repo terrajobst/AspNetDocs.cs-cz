@@ -1,161 +1,161 @@
 ---
 uid: signalr/overview/getting-started/introduction-to-signalr
-title: Úvod ke knihovně SignalR | Dokumentace Microsoftu
+title: Úvod do signalizace | Microsoft Docs
 author: bradygaster
-description: Tento článek popisuje, co je SignalR a některé z řešení, která byla navržena k vytvoření.
+description: Tento článek popisuje, co je signalizace a některá z řešení, která byla navržena pro vytvoření.
 ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: 0fab5e35-8c1f-43d4-8635-b8aba8766a71
 msc.legacyurl: /signalr/overview/getting-started/introduction-to-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 3598ac3d16a2065d1fb76d1637f0ae84797f630c
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 11b494b4839c646b018098c76a8a9ae0a2169757
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65120100"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74600494"
 ---
 # <a name="introduction-to-signalr"></a>Úvod ke knihovně SignalR
 
-podle [Patrick Fletcher](https://github.com/pfletcher)
+Po [Fletcheru](https://github.com/pfletcher)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> Tento článek popisuje, co je SignalR a některé z řešení, která byla navržena k vytvoření. 
+> Tento článek popisuje, co je signalizace a některá z řešení, která byla navržena pro vytvoření. 
 > 
-> ## <a name="questions-and-comments"></a>Otázky a komentáře
+> ## <a name="questions-and-comments"></a>Dotazy a komentáře
 > 
-> Napište prosím zpětnou vazbu o tom, jak vám líbilo v tomto kurzu a co můžeme zlepšit v komentářích v dolní části stránky. Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](https://stackoverflow.com/questions/tagged/signalr).
+> Přečtěte si prosím svůj názor na to, jak se vám tento kurz líbí a co bychom mohli vylepšit v komentářích v dolní části stránky. Pokud máte dotazy, které přímo nesouvisejí s kurzem, můžete je publikovat do [fóra signálu ASP.NET](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](https://stackoverflow.com/questions/tagged/signalr).
 
-## <a name="what-is-signalr"></a>Co je SignalR?
+## <a name="what-is-signalr"></a>Co je signál?
 
-Funkce SignalR technologie ASP.NET představují knihovnu pro vývojáře využívající technologii ASP.NET, která zjednodušuje proces přidávání funkce webu v reálném čase do aplikací. Funkce webu v reálném čase je schopnost nabízených kód serveru obsah připojeným klientům okamžitě, jakmile je k dispozici, namísto nutnosti čekat klient k vyžádání nových dat serveru.
+ASP.NET Signal je knihovna pro vývojáře v ASP.NET, která zjednodušuje proces přidávání webových funkcí v reálném čase do aplikací. Webová funkce v reálném čase je možnost, aby server nabízel obsah nabízeného oznámení připojeným klientům hned, jakmile bude k dispozici, místo toho, aby server čekal na vyžádání nových dat klientem.
 
-SignalR je možné přidat jakýkoliv druh funkcí "v reálném čase" pro vaši aplikaci ASP.NET. Při konverzace se často používá jako příklad, můžete udělat mnohem více. Kdykoli uživatel aktualizuje zobrazíte nová data na webové stránce nebo stránce implementuje [dlouhé dotazování](http://en.wikipedia.org/wiki/Push_technology#Long_polling) načte nová data, je kandidátem pro použití aplikace SignalR. Mezi příklady patří řídicí panely a monitorování aplikací, aplikace pro spolupráci (jako je například simultánní úpravy dokumentů), úlohy, průběh aktualizace a v reálném čase formuláře.
+Pomocí signálu lze do aplikace ASP.NET přidat libovolný druh webové funkce v reálném čase. I když se chat často používá jako příklad, můžete si udělat spoustu dalších. Pokaždé, když uživatel aktualizuje webovou stránku, aby zobrazil nová data, nebo pokud stránka implementuje [dlouhé cyklické dotazování](http://en.wikipedia.org/wiki/Push_technology#Long_polling) pro načtení nových dat, je kandidátem na použití signalizace. Mezi příklady patří řídicí panely a monitorovací aplikace, aplikace pro spolupráci (například současná úprava dokumentů), aktualizace průběhu úloh a formuláře v reálném čase.
 
-Funkce SignalR také umožňuje zcela nové typy webových aplikací, které vyžadují vysoká frekvence aktualizace ze serveru, například v reálném čase hry.
+Signal také umožňuje zcela nové typy webových aplikací, které vyžadují aktualizace s vysokou frekvencí ze serveru, například hraní her v reálném čase.
 
-Funkce SignalR poskytuje jednoduché rozhraní API pro vytváření server klient vzdálených volání procedur (RPC), které volají funkce JavaScript v klientovi prohlížeče (a ostatní klientských platformách) z kódu .NET na straně serveru. Funkce SignalR také zahrnuje rozhraní API pro správu připojení (pro instanci, připojení a odpojení události) a seskupení připojení.
+Signalizace poskytuje jednoduché rozhraní API pro vytváření vzdálených procedur vzdáleného volání procedur (RPC), které volají funkce JavaScriptu v klientských prohlížečích (a dalších klientských platformách) z kódu .NET na straně serveru. Návěstí obsahuje také rozhraní API pro správu připojení (například události připojení a odpojení) a seskupování připojení.
 
-![Vyvolání metody s knihovnou SignalR](introduction-to-signalr/_static/image1.png)
+![Vyvolání metod pomocí signalizace](introduction-to-signalr/_static/image1.png)
 
-Funkce SignalR automaticky zpracovává připojení správy a umožňuje zprávy všesměrového vysílání na všechny připojené klienty najednou, jako je chatovací místnosti. Můžete také odesílají zprávy službě konkrétních klientů. Připojení mezi klientem a serverem je trvalé, na rozdíl od klasického připojení HTTP, které je obnoveno pro každé komunikace směrem.
+Signaler zpracovává správu připojení automaticky a umožňuje vysílat zprávy všem připojeným klientům současně, jako je chatovací místnost. Můžete také odesílat zprávy konkrétním klientům. Připojení mezi klientem a serverem je trvalé, na rozdíl od klasického připojení HTTP, které je pro každou komunikaci znovu navázáno.
 
-Funkce SignalR podporuje funkce "serveru push", ve kterém můžete volat kód serveru navýšení kapacity pro klientský kód v prohlížeči pomocí vzdáleného volání procedur (RPC), spíše než běžné typu žádost odpověď modelu na webu ještě dnes.
+Signalizace podporuje funkci nabízeného oznámení "serveru, při které kód serveru může volat klientský kód v prohlížeči pomocí vzdáleného volání procedur (RPC), nikoli model požadavků, který je v současnosti společný na webu.
 
-Aplikace knihovnou SignalR můžete škálovat do tisíců klientů pomocí služby Service Bus, SQL Server nebo [Redis](http://redis.io).
+Aplikace Signal se můžou škálovat na tisíce klientů pomocí Service Bus, SQL Server nebo [Redis](http://redis.io).
 
-SignalR je open source, přístupné prostřednictvím [Githubu](https://github.com/signalr).
+Signalizace je open source, který je přístupný prostřednictvím [GitHubu](https://github.com/signalr).
 
-## <a name="signalr-and-websocket"></a>SignalR a protokol WebSocket
+## <a name="signalr-and-websocket"></a>Signál a WebSocket
 
-SignalR používá nové dopravní WebSocket, pokud je k dispozici a přejde zpět na starší přenos v případě potřeby. Při psaní by jistě vaší aplikace pomocí WebSocket přímo, pomocí SignalR znamená, že se již děje mnoho dalších funkcí, které je nutné implementovat. Co je nejdůležitější to znamená, že můžete kód vaší aplikace využít WebSocket bez starosti o vytvoření samostatného kódu cesty pro starší klienty. SignalR také chrání před starosti o aktualizacích WebSocket, protože SignalR je aktualizována na podporu změn v podkladové dopravy poskytuje konzistentní rozhraní aplikace napříč různými verzemi WebSocket.
+Nástroj Signal používá novou dopravu protokolu WebSocket, pokud je k dispozici, a v případě potřeby se vrátí do starších přenosů. I když byste mohli aplikaci opravdu psát pomocí protokolu WebSocket přímo, pomocí nástroje Signaler znamená, že je pro vás již provedeno mnoho dalších funkcí, které byste museli implementovat. Nejdůležitější to znamená, že můžete kód aplikace využít k tomu, abyste mohli využívat WebSocket, aniž byste se museli starat o vytvoření samostatné cesty kódu pro starší klienty. Signalizace vás také chrání před tím, než se nemusíte starat o aktualizace WebSocket, protože byl signál aktualizován tak, aby podporoval změny v podkladovém přenosu, a poskytuje tak jednotné rozhraní pro různé verze protokolu WebSocket.
 
 <a id="transports"></a>
 
-## <a name="transports-and-fallbacks"></a>Přenosy a náhrad
+## <a name="transports-and-fallbacks"></a>Přenosová a záložní
 
-SignalR je abstrakcí některé přenosy, které jsou potřeba k práci v reálném čase mezi klientem a serverem. Připojení SignalR se spustí jako HTTP a je pak povýšen na připojení soketu WebSocket, pokud je k dispozici. Objekt WebSocket je ideální přenosu pro funkci SignalR, protože nejúčinnější využívá paměť serveru, má nejnižší latenci a má nejvíce základní funkce (například plně duplexní komunikace mezi klientem a serverem), ale má také nejpřísnější požadavky: Protokol WebSocket vyžaduje server musí používat Windows Server 2012 nebo Windows 8 a rozhraní .NET Framework 4.5. Pokud tyto požadavky nejsou splněny, SignalR se pokusí použít další přenosy, aby jeho připojení.
+Signalizace je abstrakcí přes některé z přenosů, které jsou potřeba k tomu, aby fungovaly v reálném čase mezi klientem a serverem. Připojení k signalizaci začíná jako HTTP a pak se převýší na připojení protokolu WebSocket, pokud je k dispozici. WebSocket je ideální přenos pro signál, protože zajišťuje nejúčinnější využití paměti serveru, má nejnižší latenci a má nejvíce základní funkce (například plně duplexní komunikaci mezi klientem a serverem), ale má i nejpřísnější z nich. požadavky: WebSocket vyžaduje, aby server používal Windows Server 2012 nebo Windows 8 a .NET Framework 4,5. Pokud tyto požadavky nejsou splněné, pokusí se signál k vytvoření připojení použít jiné přenosy.
 
-### <a name="html-5-transports"></a>Přenáší HTML 5
+### <a name="html-5-transports"></a>Přenosy HTML 5
 
-Tyto přenosy závisí na podporu [HTML 5](http://en.wikipedia.org/wiki/HTML5). Pokud prohlížeč klienta nepodporuje standardu HTML 5, použije se starší přenosy.
+Tato přenosová rychlost závisí na podpoře [HTML 5](http://en.wikipedia.org/wiki/HTML5). Pokud prohlížeč klienta nepodporuje standard HTML 5, budou použity starší přenosy.
 
-- **Protokol WebSocket** (Pokud serveru i prohlížeče určit, jakým může podpořit objektu websocket na straně). Objekt WebSocket je pouze přenosu, který vytvoří true trvalé, pokud vytvoříte obousměrný připojení mezi klientem a serverem. Ale protokolu WebSocket má také nejpřísnějšími požadavky na; je plně podporovaný jenom v nejnovějších verzích Microsoft Internet Explorer, Google Chrome a Mozilla Firefox a má jenom částečnou implementaci v dalších prohlížečích, jako je například Opera a Safari.
-- **Události odeslané serverem**, označovaný také jako EventSource (Pokud je prohlížeč podporuje odeslání událostí na serveru, který je v podstatě všech prohlížečích, s výjimkou aplikace Internet Explorer).
+- **WebSocket** (Pokud server i prohlížeč uvádí, že můžou podporovat WebSocket). Jediný přenos, který vytváří skutečné obousměrné připojení mezi klientem a serverem, je WebSocket. Ale WebSocket má i nejpřísnější požadavky. je plně podporovaný jenom v nejnovějších verzích Microsoft Internet Exploreru, Google Chrome a Mozilla Firefox a má jenom částečnou implementaci v jiných prohlížečích, jako je třeba Opera a Safari.
+- **Server odeslal události**, označované také jako EventSource (Pokud prohlížeč podporuje události odeslané serverem, které jsou v podstatě všechny prohlížeče kromě aplikace Internet Explorer.)
 
-### <a name="comet-transports"></a>Přenosy Comet
+### <a name="comet-transports"></a>Comet transporty
 
-Následující přenosy jsou založeny na [Comet](http://en.wikipedia.org/wiki/Comet_(programming)) model webové aplikace 00Z prohlížeči nebo jiném klientovi udržuje dlouhodobě uložená požadavek HTTP, který server můžete použít k zápisu dat do klienta bez klienta konkrétně o to požádá.
+Následující přenosy jsou založené na modelu webové aplikace [Comet](http://en.wikipedia.org/wiki/Comet_(programming)) , ve kterém prohlížeč nebo jiný klient udržuje dlouhotrvající požadavek HTTP, který může server použít k zápisu dat do klienta bez nutnosti vyžádání klienta.
 
-- **Navždy rámec** (pro aplikaci Internet Explorer). Navždy rámce vytváří skrytý element IFrame, který odešle požadavek na koncový bod na serveru, která není dokončena. Server pak průběžně odešle skript klienta, který je proveden okamžitě, poskytuje jednosměrnou v reálném čase připojení ze serveru do klienta. Připojení z klienta k serveru pomocí samostatného připojení ze serveru pro připojení klienta, a jako standardní požadavek HTTP se vytvoří nové připojení pro jednotlivá data, která se pošle.
-- **Dlouhý interval dotazování AJAX**. Dlouhý interval dotazování nevytváří trvalé připojení, ale místo toho dotazuje server s žádostí, které zůstávají otevřené, dokud nebude tento server odpoví, v tomto okamžiku se připojení uzavře, a okamžitě vyžádání nového připojení. To může způsobit určitou latenci, zatímco připojení se obnoví.
+- **Snímek navždy** (jenom pro Internet Explorer). Navždy Frame vytvoří skrytý prvek IFrame, který vytvoří požadavek na koncový bod na serveru, který není úplný. Server pak průběžně odesílá skript klientovi, který je okamžitě spuštěn, a poskytuje jednosměrné připojení ze serveru k klientovi. Připojení od klienta k serveru používá samostatné připojení ze serveru ke klientskému připojení a podobně jako standardní požadavek HTTP, vytvoří se nové připojení pro každou část dat, která se musí odeslat.
+- **Dlouhé cyklické dotazování AJAX** Při dlouhém cyklickém dotazování se nevytváří trvalé připojení, ale místo toho se server dotazuje s požadavkem, který zůstane otevřený, dokud server neodpoví. v tomto okamžiku se připojení zavře a nové připojení se vyžádá hned. To může způsobit určitou latenci při resetování připojení.
 
-Další informace o jaké přenosy jsou podporovány v rámci které konfigurace najdete v tématu [podporované platformy](supported-platforms.md).
+Další informace o tom, jaké přenosy jsou podporovány v rámci jakých konfigurací, najdete v tématu [podporované platformy](supported-platforms.md).
 
-### <a name="transport-selection-process"></a>Proces přenosu výběr
+### <a name="transport-selection-process"></a>Proces výběru přenosu
 
-Následující seznam obsahuje kroky, které používá SignalR rozhodnout, které používaného přenosu.
+V následujícím seznamu jsou uvedeny kroky, které nástroj Signal používá k rozhodnutí, který přenos se má použít.
 
-1. Pokud je prohlížeč Internet Explorer 8 nebo dřívější verzí, se používá dlouhý interval dotazování.
-2. Pokud je nakonfigurovaný JSONP (to znamená `jsonp` parametr je nastaven na `true` zahájení připojení), dlouhé dotazování se používá.
-3. Pokud mezi doménami právě připojení (tj. Pokud koncových bodů SignalR není ve stejné doméně jako stránka hostingu), bude objekt WebSocket použit, pokud se splní následující kritéria:
+1. Pokud je prohlížeč Internet Explorer 8 nebo starší, je použito dlouhé dotazování.
+2. Pokud je nakonfigurováno JSONP (to znamená, že parametr `jsonp` je nastaven na hodnotu `true` při spuštění připojení), bude použito dlouhé cyklické dotazování.
+3. Pokud se provádí připojení mezi doménami (tj. Pokud koncový bod návěstí není ve stejné doméně jako hostující stránka), použije se WebSocket, pokud se splní následující kritéria:
 
-   - Klient podporuje CORS (sdílení prostředků různého původu). Podrobnosti, které klienti podpora CORS, najdete v části [CORS v caniuse.com](http://www.caniuse.com/CORS).
-   - Klient podporuje protokol WebSocket
-   - Podporuje objektu websocket na straně serveru
+   - Klient podporuje CORS (sdílení prostředků mezi zdroji). Podrobnosti o tom, které klienty podporují CORS, najdete v tématu [CORS na adrese caniuse.com](http://www.caniuse.com/CORS).
+   - Klient podporuje WebSocket.
+   - Server podporuje WebSocket.
 
-     Pokud se nesplní žádné z těchto kritérií, dlouhé dotazování použít. Další informace o připojeních mezi doménami, najdete v části [jak k navázání připojení mezi doménami](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain).
-4. Pokud není nakonfigurovaný JSONP a připojení není mezi doménami, objektu websocket na straně se použijí, pokud klient i server podporovat.
-5. Pokud klient nebo server nepodporují protokolu WebSocket, události odeslané serverem se používá, pokud je k dispozici.
-6. Pokud události odeslání serveru není k dispozici, dojde k pokusu o navždy rámce.
-7. Pokud se nezdaří navždy rámce, dlouhé dotazování se používá.
+     Pokud některá z těchto kritérií nejsou splněná, použije se dlouhé cyklické dotazování. Další informace o připojeních mezi doménami najdete v tématu [jak vytvořit připojení mezi doménami](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain).
+4. Pokud není nakonfigurované JSONP a připojení není mezi doménami, bude se používat protokol WebSocket, pokud ho podporuje klient i server.
+5. Pokud klient nebo server nepodporují WebSocket, používají se události odeslané serverem, pokud je k dispozici.
+6. Pokud nejsou události odeslané serverem k dispozici, bude proveden pokus o spuštění navždy.
+7. Pokud se rámec navždy nezdařil, je použito dlouhé cyklické dotazování.
 
 <a id="MonitoringTransports"></a>
 ### <a name="monitoring-transports"></a>Monitorování přenosů
 
-Můžete určit, jaký přenos vaše aplikace používá povolením protokolování na rozbočovače a otevřete okno konzoly v prohlížeči.
+Způsob, jakým se aplikace používá, můžete určit tak, že povolíte protokolování v centru a otevřete okno konzoly v prohlížeči.
 
-Povolení protokolování pro vaše Centrum událostí v prohlížeči, přidáním následujícího příkazu do klientské aplikace:
+Pokud chcete povolit protokolování událostí vašeho centra v prohlížeči, přidejte do své klientské aplikace následující příkaz:
 
 `$.connection.hub.logging = true;`
 
-- V aplikaci Internet Explorer stisknutím klávesy F12 otevřete Nástroje pro vývojáře a klikněte na kartu konzoly.
+- V Internet Exploreru otevřete nástroje pro vývojáře stisknutím klávesy F12 a klikněte na kartu konzola.
 
-    ![V Microsoft Internet Explorer](introduction-to-signalr/_static/image2.png)
-- V prohlížeči Chrome otevřete stisknutím kombinace kláves Ctrl + Shift + J konzolu.
+    ![Konzola v aplikaci Microsoft Internet Explorer](introduction-to-signalr/_static/image2.png)
+- V Chrome otevřete konzolu stisknutím kombinace kláves Ctrl + Shift + J.
 
-    ![Konzoly v prohlížeči Google Chrome](introduction-to-signalr/_static/image3.png)
+    ![Konzola v Google Chrome](introduction-to-signalr/_static/image3.png)
 
-Otevřete konzoly a protokolování povoleno budete moci zobrazit, které přenosu se používá v systému SignalR.
+Otevřete-li konzolu nástroje a protokolování povoleno, budete moci zjistit, který přenos je používán signálem.
 
-![Konzola znázorňující přenos pomocí protokolu WebSocket aplikace Internet Explorer](introduction-to-signalr/_static/image4.png)
+![Konzola v Internet Exploreru, která zobrazuje přenos protokolu WebSocket](introduction-to-signalr/_static/image4.png)
 
 ### <a name="specifying-a-transport"></a>Určení přenosu
 
-Vyjednávání přenos trvá určitou část času a klient/server prostředky. Pokud jsou známé možnosti klienta, pak přenos je možné zadat při spuštění připojení klienta. Následující fragment kódu ukazuje spuštění pomocí přenosu Ajax dlouhý interval dotazování, jako by se použily, pokud byla uložena, že klient nepodporuje žádný jiný protokol pro připojení:
+Vyjednávání přenosu trvá určitou dobu a prostředky klienta a serveru. Pokud jsou funkce klienta známé, pak je možné zadat přenos při spuštění připojení klienta. Následující fragment kódu ukazuje spuštění připojení pomocí přenosu dlouhého cyklického dotazování AJAX, jak by bylo známo, že klient nepodporoval žádný jiný protokol:
 
 `connection.start({ transport: 'longPolling' });`
 
-Pokud chcete, aby klient vyzkoušet konkrétní přenosy v pořadí, můžete zadat záložní pořadí. Následující fragment kódu ukazuje chybě objektu websocket na straně a služeb při selhání, který, že přejdete přímo na dlouhé dotazování.
+Záložní pořadí můžete určit, pokud chcete, aby klient vyzkoušel konkrétní přenosy v daném pořadí. Následující fragment kódu ukazuje vyzkoušení protokolu WebSocket a nedaří se mu, přejít přímo na dlouhé cyklické dotazování.
 
 `connection.start({ transport: ['webSockets','longPolling'] });`
 
-Řetězcové konstanty pro zadání přenosy jsou definovány takto:
+Řetězcové konstanty pro určení přenosů jsou definovány takto:
 
 - `webSockets`
 - `foreverFrame`
 - `serverSentEvents`
 - `longPolling`
 
-## <a name="connections-and-hubs"></a>Připojeními a rozbočovači
+## <a name="connections-and-hubs"></a>Připojení a rozbočovače
 
-Rozhraní API SignalR obsahuje dva modely pro komunikaci mezi klienty a servery: Trvalé připojeními a rozbočovači.
+Rozhraní API pro signalizaci obsahuje dva modely pro komunikaci mezi klienty a servery: trvalá připojení a rozbočovače.
 
-Připojení představuje jednoduchý koncový bod pro odesílání zpráv jednoho příjemce, seskupené nebo všesměrového vysílání. Poskytuje trvalé připojení rozhraní API (představovanými v kódu .NET třídou PersistentConnection), vývojář přímý přístup k nižší úrovně komunikační protokol, který zveřejňuje funkce SignalR. Pomocí připojení komunikační model bude zkušenosti vývojáře, kteří používají rozhraní API založená na připojení jako je Windows Communication Foundation.
+Připojení představuje jednoduchý koncový bod pro odesílání, seskupené nebo všesměrové zprávy o jednom příjemci. Rozhraní API trvalého připojení (reprezentované třídou PersistentConnection ve službě .NET code) dává vývojáři přímý přístup k komunikačnímu protokolu nižší úrovně, který signál zpřístupňuje. Použití komunikačního modelu připojení bude známé vývojářům, kteří používali rozhraní API založená na připojeních, jako je například Windows Communication Foundation.
 
-Centrum je více základní kanál postavené na rozhraní API připojení, které umožňuje klientem a serverem pro volání metod na sobě navzájem přímo. Funkce SignalR zpracovává odeslání přes hranice počítače stejně, jako by magic, umožňuje klientům volání metod na serveru jako snadno jako místní metody a naopak. Pomocí centra komunikační model bude pro vývojáře, kteří použili vzdáleného volání rozhraní API, jako je .NET Remoting srozumitelná. Použití rozbočovače také umožňuje předání silného typu parametrů k metodám, povolení vazby modelu.
+Rozbočovač je více kanálů vysoké úrovně postavených na rozhraní API pro připojení, které umožňuje klientovi a serveru volat metody navzájem přímo. Nástroj Signal zpracovává odesílání přes hranice počítačů, jako by to bylo, že pokud je to Magic, umožňuje klientům volat metody na serveru stejně jako místní metody a naopak. Použití komunikačního modelu hub bude známé vývojářům, kteří používali vzdálená rozhraní API pro vyvolání, jako je například Vzdálená komunikace rozhraní .NET. Použití centra také umožňuje předat parametry silného typu metodám a povolit vazbu modelu.
 
 ### <a name="architecture-diagram"></a>Diagram architektury
 
-Následující diagram znázorňuje vztah mezi rozbočovače, trvalé připojení a základní technologie používané pro přenosy.
+Následující diagram znázorňuje vztah mezi centry, trvalými připojeními a základními technologiemi používanými pro přenos.
 
-![Diagram architektury SignalR znázorňující rozhraní API, přenosy a klientů](introduction-to-signalr/_static/image5.png)
+![Diagram architektury signalizace znázorňující rozhraní API, přenosy a klienty](introduction-to-signalr/_static/image5.png)
 
-### <a name="how-hubs-work"></a>Jak fungují rozbočovače
+### <a name="how-hubs-work"></a>Jak fungují centra
 
-Když na straně serveru kód volá metody na straně klienta, paket posílání přes aktivní přenos, který obsahuje název a parametry metody, která se má volat (při odesílání objektu jako parametru metody, je serializován pomocí formátu JSON). Klient pak odpovídá názvu metody do metody definované v kódu na straně klienta. Pokud se zjistí shoda, metoda klienta se spustí pomocí dat deserializovat parametr.
+Když kód na straně serveru volá metodu na klientovi, pošle se paket přes aktivní přenos, který obsahuje název a parametry metody, která se má volat (když se objekt pošle jako parametr metody, je serializovaný pomocí JSON). Klient pak bude odpovídat názvu metody na metody definované v kódu na straně klienta. Pokud existuje shoda, metoda klienta bude provedena pomocí deserializovaných dat parametrů.
 
-Volání metody, které je možné monitorovat pomocí nástrojů, jako je [Fiddleru.](http://fiddler2.com/) Následující obrázek ukazuje volání metody odesílat webového prohlížeče klienta v podokně protokoly Fiddleru ze serveru funkce SignalR. Volání metody, které je odesílány z centrum s názvem `MoveShapeHub`, a volaná metoda je volána `updateShape`.
+Volání metody lze monitorovat pomocí nástrojů, jako je [Fiddler.](http://fiddler2.com/) Následující obrázek znázorňuje volání metody odeslané ze serveru signalizace do klienta webového prohlížeče v podokně protokoly v Fiddler. Volání metody je odesíláno z rozbočovače s názvem `MoveShapeHub`a metoda, která je vyvolána, se nazývá `updateShape`.
 
-![Zobrazení protokolu Fiddleru zobrazující provoz SignalR](introduction-to-signalr/_static/image6.png)
+![Zobrazení protokolu Fiddler zobrazujícího přenos signálu](introduction-to-signalr/_static/image6.png)
 
-V tomto příkladu je přiřazen název centra `H` parametr; metodu se určuje podle názvu `M` parametr a datech odesílaných do metody se určuje podle `A` parametru. Vytvoření aplikace, které vygenerovalo tuto zprávu v [vysokofrekvenční Reálný čas](tutorial-high-frequency-realtime-with-signalr.md) kurzu.
+V tomto příkladu je název centra identifikovaný pomocí parametru `H`; název metody je identifikován parametrem `M` a data, která jsou odesílána do metody, jsou určena parametrem `A`. Aplikace, která vygenerovala tuto zprávu, se vytvoří v kurzu s [vysokou frekvencí v reálném čase](tutorial-high-frequency-realtime-with-signalr.md) .
 
-### <a name="choosing-a-communication-model"></a>Výběr modelu komunikace
+### <a name="choosing-a-communication-model"></a>Výběr komunikačního modelu
 
-Většina aplikací musí použít rozhraní API rozbočovače. Připojení rozhraní API se daly použít v následujících případech:
+Většina aplikací by měla používat rozhraní API centra. Rozhraní API pro připojení lze použít v následujících případech:
 
-- Formát skutečné byla odeslána zpráva musí být zadán.
-- Vývojář upřednostňuje pro práci s jako model zasílání zpráv nebo dispatching spíše než modelu vzdálené volání.
-- Existující aplikaci, která používá model zasílání zpráv je při přenosu používat funkci SignalR.
+- Je nutné zadat formát skutečné odesílané zprávy.
+- Vývojář preferuje práci s modelem zasílání zpráv a odesílání a nikoli s modelem vzdáleného vyvolání.
+- Existující aplikace, která používá model zasílání zpráv, je přenášena na použití signalizace.

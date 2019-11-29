@@ -1,36 +1,36 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/calling-an-odata-service-from-a-net-client
-title: Volání služby OData z klienta .NET (C#) | Dokumentace Microsoftu
+title: Volání služby OData z klienta .NET (C#) | Microsoft Docs
 author: MikeWasson
-description: Tento kurz ukazuje postupy při volání služby OData z klientské aplikace C#. Verze softwaru, které jsou používané v kurzu Visual Studio 2013 (funguje s Visual S...
+description: V tomto kurzu se dozvíte, jak volat službu OData C# z klientské aplikace. Verze softwaru používané v tomto kurzu Visual Studio 2013 (funguje s Visual S...
 ms.author: riande
 ms.date: 02/26/2014
 ms.assetid: 6f448917-ad23-4dcc-9789-897fad74051b
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/calling-an-odata-service-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 6b5ab979518615356baaeeb824e0a621eb59a38f
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 6a289fcb843634eeeefef1e0767e04e0be8b6973
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130787"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74600395"
 ---
 # <a name="calling-an-odata-service-from-a-net-client-c"></a>Volání služby OData z klienta .NET (C#)
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-[Stáhnout dokončený projekt](http://code.msdn.microsoft.com/ASPNET-Web-API-OData-cecdb524)
+[Stáhnout dokončený projekt](https://code.msdn.microsoft.com/ASPNET-Web-API-OData-cecdb524)
 
-> Tento kurz ukazuje postupy při volání služby OData z klientské aplikace C#.
+> V tomto kurzu se dozvíte, jak volat službu OData C# z klientské aplikace.
 >
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 >
 >
-> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) (funguje v sadě Visual Studio 2012)
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) (funguje se sadou Visual Studio 2012)
 > - [Klientská knihovna pro WCF Data Services](https://msdn.microsoft.com/library/cc668772.aspx)
-> - Web API 2. (V příkladu služby OData se vytvořil pomocí webového rozhraní API 2, ale klientské aplikace nezávisí na webového rozhraní API.)
+> - Webové rozhraní API 2 (Ukázková Služba OData je sestavená pomocí webového rozhraní API 2, ale klientská aplikace nezávisí na webovém rozhraní API.)
 
-V tomto kurzu můžu projdete kroky vytvoření klientské aplikace, která volá ze služby OData. Služba OData zveřejňuje následující entity:
+V tomto kurzu Vás provedeme vytvořením klientské aplikace, která volá službu OData. Služba OData zpřístupňuje následující entity:
 
 - `Product`
 - `Supplier`
@@ -38,30 +38,30 @@ V tomto kurzu můžu projdete kroky vytvoření klientské aplikace, která vol�
 
 ![](calling-an-odata-service-from-a-net-client/_static/image1.png)
 
-Následující články popisují, jak implementovat služby OData v rozhraní Web API. (Není nutné číst o tomto kurzu se ale.)
+Následující články popisují implementaci služby OData ve webovém rozhraní API. (K pochopení tohoto kurzu ale nemusíte číst.)
 
-- [Vytváří se koncový bod OData ve webovém rozhraní API 2](creating-an-odata-endpoint.md)
-- [Relace entit OData ve webovém rozhraní API 2](working-with-entity-relations.md)
+- [Vytvoření koncového bodu OData ve webovém rozhraní API 2](creating-an-odata-endpoint.md)
+- [Vztahy entit OData ve webovém rozhraní API 2](working-with-entity-relations.md)
 - [Akce OData ve webovém rozhraní API 2](odata-actions.md)
 
-## <a name="generate-the-service-proxy"></a>Generování Proxy služby
+## <a name="generate-the-service-proxy"></a>Vygenerovat proxy služby
 
-Prvním krokem je generovat proxy služby. Proxy služby je třída rozhraní .NET, která definuje metody pro přístup ke službě OData. Proxy server překládá volání metod na požadavky HTTP.
+Prvním krokem je vygenerování proxy služby. Proxy služby je třída rozhraní .NET, která definuje metody pro přístup ke službě OData. Proxy překládá volání metod na požadavky HTTP.
 
 ![](calling-an-odata-service-from-a-net-client/_static/image2.png)
 
-Začněte tak, že otevřete projekt služby OData v aplikaci Visual Studio. Stisknutím kláves CTRL + F5 ke spuštění služby místně v rámci služby IIS Express. Poznámka: na místní adrese, včetně číslo portu, který přiřazuje sady Visual Studio. Tato adresa bude potřebovat při vytváření proxy serveru.
+Začněte otevřením projektu služby OData v aplikaci Visual Studio. Stisknutím kombinace kláves CTRL + F5 spusťte službu místně v IIS Express. Poznamenejte si místní adresu, včetně čísla portu, které Visual Studio přiřadí. Tuto adresu budete potřebovat při vytváření proxy serveru.
 
-Dále otevřete jinou instanci sady Visual Studio a vytvořte projekt konzolové aplikace. Konzolová aplikace bude naše klientské aplikace OData. (Můžete také přidat projekt do stejného řešení jako službu.)
+Potom otevřete jinou instanci aplikace Visual Studio a vytvořte projekt konzolové aplikace. Konzolová aplikace bude naše klientská aplikace OData. (Projekt můžete také přidat ke stejnému řešení jako služba.)
 
 > [!NOTE]
-> Zbývající kroky najdete v projektu konzoly.
+> Zbývající kroky odkazují na projekt konzoly.
 
-V Průzkumníku řešení klikněte pravým tlačítkem na **odkazy** a vyberte **přidat odkaz na službu**.
+V Průzkumník řešení klikněte pravým tlačítkem na **odkazy** a vyberte **Přidat odkaz na službu**.
 
 ![](calling-an-odata-service-from-a-net-client/_static/image3.png)
 
-V **přidat odkaz na službu** dialogové okno, zadejte adresu služby OData:
+V dialogovém okně **Přidat odkaz na službu** zadejte adresu služby OData:
 
 [!code-console[Main](calling-an-odata-service-from-a-net-client/samples/sample1.cmd)]
 
@@ -69,159 +69,159 @@ kde *port* je číslo portu.
 
 [![](calling-an-odata-service-from-a-net-client/_static/image5.png)](calling-an-odata-service-from-a-net-client/_static/image4.png)
 
-Pro **Namespace**, zadejte "ProductService". Tato možnost určuje obor názvů, třídy proxy.
+Do možnosti **obor názvů**zadejte "ProductService". Tato možnost definuje obor názvů třídy proxy serveru.
 
-Klikněte na tlačítko **Přejít**. Visual Studio načte dokument metadat OData ke zjišťování entit ve službě.
+Klikněte na **Přejít**. Visual Studio přečte dokument metadat OData, ve kterém zjistí entity ve službě.
 
 [![](calling-an-odata-service-from-a-net-client/_static/image7.png)](calling-an-odata-service-from-a-net-client/_static/image6.png)
 
-Klikněte na tlačítko **OK** do svého projektu přidat třídu proxy.
+Kliknutím na tlačítko **OK** přidejte třídu proxy do projektu.
 
 ![](calling-an-odata-service-from-a-net-client/_static/image8.png)
 
-## <a name="create-an-instance-of-the-service-proxy-class"></a>Vytvoření Instance třídy Proxy služby
+## <a name="create-an-instance-of-the-service-proxy-class"></a>Vytvoření instance proxy třídy služby
 
-Uvnitř vaší `Main` metodu, vytvořte novou instanci třídy proxy, následujícím způsobem:
+V rámci metody `Main` vytvořte novou instanci třídy proxy následujícím způsobem:
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample2.cs)]
 
-Znovu použijte číslo skutečný port ve kterém je vaše služba spuštěná. Při nasazování služby budete používat identifikátor URI služby za provozu. Není nutné aktualizovat server proxy.
+Znovu použijte skutečné číslo portu, ve kterém je vaše služba spuštěná. Při nasazení služby použijete identifikátor URI živé služby. Nemusíte aktualizovat proxy server.
 
-Následující kód přidá obslužnou rutinu události, která zobrazí žádost o identifikátory URI v okně konzoly. Tento krok není povinný, ale je zajímavé zobrazíte identifikátory URI pro každý dotaz.
+Následující kód přidá obslužnou rutinu události, která vytiskne identifikátor URI žádosti do okna konzoly. Tento krok není povinný, ale je zajímavé zobrazit identifikátory URI pro každý dotaz.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample3.cs)]
 
-## <a name="query-the-service"></a>Dotazování na službu
+## <a name="query-the-service"></a>Dotazování služby
 
-Následující kód načte seznam produktů ze služby OData.
+Následující kód získá seznam produktů ze služby OData.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample4.cs)]
 
-Všimněte si, že nemusíte psát jakýkoli kód k odeslání požadavku HTTP a parsovat odpovědi. Proxy třída nemá tomto automaticky při vytvoření výčtu `Container.Products` kolekce **foreach** smyčky.
+Všimněte si, že nemusíte psát žádný kód pro odeslání požadavku HTTP nebo analýzu odpovědi. Třída proxy to provede automaticky při vytváření výčtu kolekce `Container.Products` ve smyčce **foreach** .
 
-Když aplikaci spouštíte, výstup by měl vypadat nějak takto:
+Když aplikaci spustíte, výstup by měl vypadat takto:
 
 [!code-console[Main](calling-an-odata-service-from-a-net-client/samples/sample5.cmd)]
 
-Chcete-li získat entity podle ID, použijte `where` klauzuli.
+Chcete-li získat entitu podle ID, použijte klauzuli `where`.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample6.cs)]
 
-Pro zbývající část tohoto tématu, mohu nezobrazí celý `Main` fungovat, pouze kód, které jsou potřebné k vyvolání služby.
+Pro zbytek tohoto tématu nezobrazujeme celou `Main` funkci, jenom kód potřebný k volání služby.
 
-## <a name="apply-query-options"></a>Použije možnosti dotazu
+## <a name="apply-query-options"></a>Použít možnosti dotazu
 
-OData definuje [možnosti dotazu](../supporting-odata-query-options.md) , který slouží k filtrování, řazení, data stránky a tak dále. V proxy služby můžete použít tyto možnosti s použitím různých LINQ – výrazy.
+OData definuje [Možnosti dotazu](../supporting-odata-query-options.md) , které se dají použít k filtrování, řazení, stránkování dat a tak dále. V proxy službě můžete tyto možnosti použít pomocí různých výrazů LINQ.
 
-V této části ukážeme si stručný příklady. Další podrobnosti najdete v tématu [aspekty LINQ (WCF Data Services)](https://msdn.microsoft.com/library/ee622463.aspx) na webové stránce MSDN.
+V této části se zobrazí stručné příklady. Další podrobnosti najdete v tématu věnovaném [hlediskům LINQ (WCF Data Services)](https://msdn.microsoft.com/library/ee622463.aspx) na webu MSDN.
 
 ### <a name="filtering-filter"></a>Filtrování ($filter)
 
-Chcete-li filtrovat, použijte `where` klauzuli. Následující příklad filtry podle kategorie produktu.
+Chcete-li filtrovat, použijte klauzuli `where`. Následující příklad filtruje podle kategorie produktu.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample7.cs)]
 
-Tento kód odpovídá následující dotaz OData.
+Tento kód odpovídá následujícímu dotazu OData.
 
 [!code-console[Main](calling-an-odata-service-from-a-net-client/samples/sample8.cmd)]
 
-Všimněte si, že se převede proxy serveru `where` klauzuli do OData `$filter` výrazu.
+Všimněte si, že proxy převede klauzuli `where` na výraz `$filter` OData.
 
 ### <a name="sorting-orderby"></a>Řazení ($orderby)
 
-Chcete-li seřadit, použijte `orderby` klauzuli. V následujícím příkladu se seřadí podle cena od nejvyšší po nejnižší.
+K řazení použijte klauzuli `orderby`. Následující příklad seřadí podle ceny od nejvyšších po nejnižší.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample9.cs)]
 
-Tady je odpovídající žádost OData.
+Zde je odpovídající požadavek OData.
 
 [!code-console[Main](calling-an-odata-service-from-a-net-client/samples/sample10.cmd)]
 
 ### <a name="client-side-paging-skip-and-top"></a>Stránkování na straně klienta ($skip a $top)
 
-Pro velká entita sady klient může chtít omezit počet výsledků. Klient může například zobrazit 10 položek najednou. Tento postup se nazývá *stránkování na straně klienta*. (K dispozici je také [stránkování na straně serveru](../supporting-odata-query-options.md#server-paging), kde server omezí počet výsledků.) Stránkování na straně klienta, použijte LINQ **přeskočit** a **trvat** metody. V následujícím příkladu Přeskočí prvních 40 výsledky a přijímá další 10.
+U rozsáhlých sad entit může klient chtít omezit počet výsledků. Klient může například zobrazit 10 položek najednou. Označuje se jako *stránkování na straně klienta*. (K dispozici je také [stránkování na straně serveru](../supporting-odata-query-options.md#server-paging), kde server omezuje počet výsledků.) Chcete-li provést stránkování na straně klienta, použijte metody LINQ **Skip** a **probrat** . Následující příklad přeskočí prvních 40 výsledků a provede následující 10.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample11.cs)]
 
-Tady je odpovídající žádost OData:
+Toto je odpovídající požadavek OData:
 
 [!code-console[Main](calling-an-odata-service-from-a-net-client/samples/sample12.cmd)]
 
-### <a name="select-select-and-expand-expand"></a>Vyberte ($select) a rozbalení ($expand)
+### <a name="select-select-and-expand-expand"></a>Select ($select) a expand ($expand)
 
-Chcete-li zahrnout související entity, použijte `DataServiceQuery<t>.Expand` metody. Například chcete zahrnout `Supplier` pro každou `Product`:
+Chcete-li zahrnout související entity, použijte metodu `DataServiceQuery<t>.Expand`. Pokud například chcete zahrnout `Supplier` pro každý `Product`:
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample13.cs)]
 
-Tady je odpovídající žádost OData:
+Toto je odpovídající požadavek OData:
 
 [!code-console[Main](calling-an-odata-service-from-a-net-client/samples/sample14.cmd)]
 
-Chcete-li změnit tvar dané odpovědi, použití LINQ **vyberte** klauzuli. Následující příklad získá pouze název každého produktu se žádné vlastnosti.
+Chcete-li změnit tvar odpovědi, použijte klauzuli LINQ **Select** . Následující příklad získá jenom název každého produktu bez dalších vlastností.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample15.cs)]
 
-Tady je odpovídající žádost OData:
+Toto je odpovídající požadavek OData:
 
 [!code-console[Main](calling-an-odata-service-from-a-net-client/samples/sample16.cmd)]
 
-Klauzule select může obsahovat související entity. V takovém případě Nevolejte **Rozbalit**; proxy server v tomto případě automaticky zahrnuje rozšíření. Následující příklad získá název a dodavatele výhod každého produktu.
+Klauzule SELECT může zahrnovat související entity. V takovém případě Nevolejte příkaz **expand**; proxy server automaticky obsahuje rozšíření v tomto případě. Následující příklad získá název a dodavatel každého produktu.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample17.cs)]
 
-Tady je odpovídající žádost OData. Všimněte si, že zahrnuje **$expand** možnost.
+Zde je odpovídající požadavek OData. Všimněte si, že obsahuje možnost **$expand** .
 
 [!code-console[Main](calling-an-odata-service-from-a-net-client/samples/sample18.cmd)]
 
-Další informace o $select a $expand rozbalte naleznete v tématu [pomocí $select $expand a $value ve webovém rozhraní API 2](../using-select-expand-and-value.md).
+Další informace o $select a $expand najdete v tématu [použití $Select, $expand a $Value ve webovém rozhraní API 2](../using-select-expand-and-value.md).
 
 ## <a name="add-a-new-entity"></a>Přidat novou entitu
 
-Chcete-li přidat nové entity na sadu entit, zavolejte `AddToEntitySet`, kde *objektu EntitySet* je název sady entit. Například `AddToProducts` přidá nový `Product` k `Products` sady entit. Při generování proxy WCF Data Services automaticky vytvoří tyto silného typu **AddTo** metody.
+Chcete-li přidat novou entitu do sady entit, zavolejte `AddToEntitySet`, kde *EntitySet* je název sady entit. `AddToProducts` například přidá novou `Product` do sady entit `Products`. Když vygenerujete proxy server, WCF Data Services automaticky vytvoří tyto metody silného typu **AddTo** .
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample19.cs)]
 
-Chcete-li přidat propojení mezi dvěma entitami, použijte **AddLink** a **SetLink** metody. Následující kód přidá nový dodavatele a nového produktu a vytvoří propojení mezi nimi.
+Chcete-li přidat propojení mezi dvěma entitami, použijte metody **addlink** a **SetLink** . Následující kód přidá nového dodavatele a nový produkt a vytvoří propojení mezi nimi.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample20.cs)]
 
-Použití **AddLink** po navigační vlastnost kolekce. V tomto příkladu přidáváme produkt, který má `Products` kolekce na dodavatele.
+Pokud je navigační vlastnost kolekce, použijte **addlink** . V tomto příkladu přidáme produkt do kolekce `Products` na dodavatele.
 
-Použití **SetLink** po jedné entity navigační vlastnost. V tomto příkladu jsme nastavujete `Supplier` vlastnost na produktu.
+Pokud je navigační vlastnost jediná entita, použijte **SetLink** . V tomto příkladu nastavujeme vlastnost `Supplier` v produktu.
 
-## <a name="update--patch"></a>Aktualizovat nebo oprava
+## <a name="update--patch"></a>Aktualizovat/opravit
 
-Chcete-li aktualizovat entitu, zavolejte **UpdateObject** metody.
+Chcete-li aktualizovat entitu, zavolejte metodu **UpdateObject** .
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample21.cs)]
 
-Aktualizace se provádí při volání **SaveChanges**. Ve výchozím nastavení WCF odešle požadavek HTTP SLOUČENÍ. **PatchOnUpdate** přikazuje WCF místo odeslání HTTP PATCH.
+Aktualizace je provedena při volání **metody SaveChanges**. Ve výchozím nastavení posílá WCF požadavek na sloučení HTTP. Možnost **PatchOnUpdate** instruuje WCF, aby místo toho odeslal opravu http.
 
 > [!NOTE]
-> Proč PATCH a MERGE? Původní specifikaci HTTP 1.1 ([RCF 2616](http://tools.ietf.org/html/rfc2616)) nedefinuje žádné metoda protokolu HTTP se sémantikou "částečné aktualizace". Specifikace prostředí OData pro podporu částečné aktualizace definované MERGE – metoda. V roce 2010 [RFC 5789](http://tools.ietf.org/html/rfc5789) definované metodu PATCH pro částečné aktualizace. Si můžete přečíst některé z historie v tomto [blogový příspěvek](https://blogs.msdn.com/b/astoriateam/archive/2008/05/20/merge-vs-replace-semantics-for-update-operations.aspx) na blogu WCF Data Services. OPRAVA je v současné době upřednostňované nad SLOUČENÍ. Kontroler OData vytvořený generování uživatelského rozhraní webového rozhraní API podporuje obě metody.
+> Proč je oprava oproti sloučení? Původní specifikace protokolu HTTP 1,1 ([RCF 2616](http://tools.ietf.org/html/rfc2616)) nedefinovala žádnou metodu HTTP se sémantikou "částečná aktualizace". Pro podporu částečných aktualizací specifikace OData definovala metodu sloučení. V 2010 se v [RFC 5789](http://tools.ietf.org/html/rfc5789) definovala metoda opravy pro částečné aktualizace. V tomto [příspěvku blogu](https://blogs.msdn.com/b/astoriateam/archive/2008/05/20/merge-vs-replace-semantics-for-update-operations.aspx) na blogu WCF Data Services si můžete přečíst některé historie. V současné době se při sloučení upřednostňuje oprava. Kontroler OData vytvořený pomocí generování uživatelského rozhraní webového rozhraní API podporuje obě metody.
 
-Pokud mají být nahrazeny celou entity (PUT sémantiku), zadejte **ReplaceOnUpdate** možnost. To způsobí, že WCF odeslat požadavek HTTP PUT.
+Pokud chcete nahradit celou entitu (uvést sémantiku), zadejte možnost **ReplaceOnUpdate** . To způsobí, že WCF odešle požadavek HTTP PUT.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample22.cs)]
 
-## <a name="delete-an-entity"></a>Odstranit entitu
+## <a name="delete-an-entity"></a>Odstranění entity
 
-Chcete-li odstranit entitu, zavolejte **DeleteObject**.
+Pokud chcete entitu odstranit, zavolejte na **OdstranitObjekt**.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample23.cs)]
 
 ## <a name="invoke-an-odata-action"></a>Vyvolat akci OData
 
-V prostředí OData [akce](odata-actions.md) představují způsob, jak přidat chování na straně serveru, které nejsou snadno definované jako operace CRUD u entit.
+V OData představují [Akce](odata-actions.md) způsob, jak přidat chování na straně serveru, které není snadno definované jako operace CRUD u entit.
 
-I když dokument metadat OData popisuje akce, třídy proxy nevytvoří žádné metody silného typu pro ně. Stále můžete vyvolat akci OData pomocí obecného **Execute** metody. Je ale potřeba znát datové typy parametrů a návratové hodnoty.
+I když dokument metadat OData popisuje akce, Třída proxy nevytváří pro ně žádné metody silného typu. Můžete přesto vyvolat akci OData pomocí obecné metody **Execute** . Budete ale muset znát datové typy parametrů a vrácenou hodnotu.
 
-Například `RateProduct` akce přijímá parametr s názvem "Hodnocení" typu `Int32` a vrátí `double`. Následující kód ukazuje, jak vyvolat tuto akci.
+Například akce `RateProduct` přijímá parametr s názvem "hodnocení" typu `Int32` a vrátí `double`. Následující kód ukazuje, jak tuto akci vyvolat.
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample24.cs)]
 
-Další informace najdete v tématu[volání operací služby a akce](https://msdn.microsoft.com/library/hh230677.aspx).
+Další informace najdete v tématu[volání operací a akcí služby](https://msdn.microsoft.com/library/hh230677.aspx).
 
-Jednou z možností je rozšířit **kontejneru** třídy silného typu metodu, která vyvolá akci:
+Jednou z možností je zvětšit třídu **kontejneru** tak, aby poskytovala metodu silného typu, která vyvolá tuto akci:
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample25.cs)]

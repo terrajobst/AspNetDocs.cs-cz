@@ -1,62 +1,62 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/accordion/dynamically-adding-an-accordion-pane-cs
-title: Dynamické přidání podokna ovládacího prvku Accordion (C#) | Dokumentace Microsoftu
+title: Dynamické Přidání podokna pro přiznávání (C#) | Microsoft Docs
 author: wenz
-description: Ovládacího prvku Accordion sadou nástrojů AJAX Control Toolkit poskytuje více podoken a umožňuje uživateli zobrazit jeden z nich najednou. Panely jsou obvykle deklarované w...
+description: Řízení přiznávání v ovládacím prvku AJAX Control Toolkit poskytuje více podoken a umožňuje uživateli zobrazit jeden z nich najednou. Panely jsou obvykle deklarovány w...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 66d88cfa-f26f-46b1-ad52-1c9e03c04a48
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/accordion/dynamically-adding-an-accordion-pane-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7134c95845ec7f22b5216e10b50ab8f81cd24806
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 2834f56bd77c412923f4a8f382e670727f70eae4
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131250"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74607250"
 ---
-# <a name="dynamically-adding-an-accordion-pane-c"></a>Dynamické přidání podokna ovládacího prvku Accordion (C#)
+# <a name="dynamically-adding-an-accordion-pane-c"></a>Dynamické Přidání podokna pro přiznávání (C#)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/5/6/d/56d50cef-2011-4c8f-9891-7edc6dc57df9/Accordion2.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/accordion2CS.pdf)
+[Stažení kódu](https://download.microsoft.com/download/5/6/d/56d50cef-2011-4c8f-9891-7edc6dc57df9/Accordion2.cs.zip) nebo [stažení PDF](https://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/accordion2CS.pdf)
 
-> Ovládacího prvku Accordion sadou nástrojů AJAX Control Toolkit poskytuje více podoken a umožňuje uživateli zobrazit jeden z nich najednou. Panely jsou obvykle deklarované v rámci samotné stránky, ale kód na straně serveru slouží k dosažení stejného výsledku.
+> Řízení přiznávání v ovládacím prvku AJAX Control Toolkit poskytuje více podoken a umožňuje uživateli zobrazit jeden z nich najednou. Panely jsou obvykle deklarovány v rámci samotné stránky, ale kód na straně serveru lze použít k dosažení stejného výsledku.
 
 ## <a name="overview"></a>Přehled
 
-Ovládacího prvku Accordion sadou nástrojů AJAX Control Toolkit poskytuje více podoken a umožňuje uživateli zobrazit jeden z nich najednou. Panely jsou obvykle deklarované v rámci samotné stránky, ale kód na straně serveru slouží k dosažení stejného výsledku.
+Řízení přiznávání v ovládacím prvku AJAX Control Toolkit poskytuje více podoken a umožňuje uživateli zobrazit jeden z nich najednou. Panely jsou obvykle deklarovány v rámci samotné stránky, ale kód na straně serveru lze použít k dosažení stejného výsledku.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Ovládací prvek Accordion poskytuje všechny důležité vlastnosti do kódu na straně serveru. Mimo jiné `Panes` vlastnost uděluje přístup ke kolekci podoken, které tvoří prvku typu Accordion. Každé podokno je typu `AccordionPane`. Proto je jednoduché vytvořit takové podokno:
+Řízení přiznávání zveřejňuje všechny důležité vlastnosti kódu na straně serveru. Mimo jiné vlastnost `Panes` uděluje přístup ke kolekci podoken, která tvoří danou přiznávání. Každé podokno je typu `AccordionPane`. Proto je triviální vytvořit takové podokno:
 
 [!code-csharp[Main](dynamically-adding-an-accordion-pane-cs/samples/sample1.cs)]
 
-`HeaderContainer` Vlastnost `AccordionPane` poskytuje přístup k ovládacím prvkům technologie ASP.NET v záhlaví podokna; `ContentContainer` vlastnost `AccordionPane` dělá to samé pro části obsahu podokna. To umožňuje kódu ASP.NET k přidání obsahu do podokna:
+Vlastnost `HeaderContainer` `AccordionPane` poskytuje přístup k ovládacím prvkům ASP.NET v části záhlaví v podokně; vlastnost `ContentContainer` `AccordionPane` má pro oddíl Content v podokně stejný obsah. To umožňuje ASP.NET kódu přidávat obsah do podoken:
 
 [!code-csharp[Main](dynamically-adding-an-accordion-pane-cs/samples/sample2.cs)]
 
-Nakonec pane(s) musí být přidané do `Panes` kolekce prvku typu Accordion:
+Nakonec je třeba přidat podokna do `Panes` kolekce přiznávání:
 
 [!code-csharp[Main](dynamically-adding-an-accordion-pane-cs/samples/sample3.cs)]
 
-Tady je kompletní kód na straně serveru, který přidá dvě podokna ovládacího prvku Accordion:
+Tady je kompletní kód na straně serveru, který do ovládacího prvku pro řízení přihlašování přičítá dvě podokna:
 
 [!code-aspx[Main](dynamically-adding-an-accordion-pane-cs/samples/sample4.aspx)]
 
-Pouze chybí element je prvku typu Accordion samostatně, což závisí na přítomnosti technologie ASP.NET `ScriptManager` ovládacího prvku:
+Jediným chybějícím prvkem je samotné přiznávání, které závisí na přítomnosti ovládacího prvku ASP.NET `ScriptManager`:
 
 [!code-aspx[Main](dynamically-adding-an-accordion-pane-cs/samples/sample5.aspx)]
 
-K dokončení příkladu, dvě šablony stylů CSS třídy odkazuje v ovládacím prvku typu Accordion poskytují informace o stylu prohlížeče:
+Chcete-li dokončit příklad, dvě třídy CSS, na které se odkazuje v ovládacím prvku pro přiznávání, poskytují informace o stylu prohlížeče:
 
 [!code-css[Main](dynamically-adding-an-accordion-pane-cs/samples/sample6.css)]
 
-[![Data prvku typu accordion dynamicky přidal kód na straně serveru](dynamically-adding-an-accordion-pane-cs/_static/image2.png)](dynamically-adding-an-accordion-pane-cs/_static/image1.png)
+[![data v přiznávání dynamicky přidal kód na straně serveru.](dynamically-adding-an-accordion-pane-cs/_static/image2.png)](dynamically-adding-an-accordion-pane-cs/_static/image1.png)
 
-Data prvku typu accordion dynamicky přidal kód na straně serveru ([kliknutím ji zobrazíte obrázek v plné velikosti](dynamically-adding-an-accordion-pane-cs/_static/image3.png))
+Data v přiznávání se dynamicky přidala přes kód na straně serveru ([kliknutím zobrazíte obrázek v plné velikosti).](dynamically-adding-an-accordion-pane-cs/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](databinding-to-an-accordion-cs.md)
-> [další](databinding-to-an-accordion-vb.md)
+> [Další](databinding-to-an-accordion-vb.md)

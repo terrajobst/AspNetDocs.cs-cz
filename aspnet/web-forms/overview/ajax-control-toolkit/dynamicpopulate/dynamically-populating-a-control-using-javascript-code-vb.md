@@ -1,62 +1,62 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-using-javascript-code-vb
-title: Dynamické naplnění ovládacího prvku Javascriptovým kódem (VB) | Dokumentace Microsoftu
+title: Dynamické naplnění ovládacího prvku pomocí kódu jazyka JavaScript (VB) | Microsoft Docs
 author: wenz
-description: ASP.NET AJAX Control Toolkit ovládacího prvku DynamicPopulate volání webové služby (nebo metodu stránky) a vyplní výsledné hodnoty do cílového ovládacího prvku na t...
+description: Ovládací prvek ovládacího prvku DynamicPopulate v ASP.NET AJAX Control Toolkit volá webovou službu (nebo metodu stránky) a vyplní výslednou hodnotu do cílového ovládacího prvku na t...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 90582e54-3e90-432a-9da5-689fb39ed56b
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-using-javascript-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7fc9ce6ecf01508fe426a9241cd6fbe362df4657
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: b2bd5b1571ccebc9baa501b29743aecdb4543fb2
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132709"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74599190"
 ---
 # <a name="dynamically-populating-a-control-using-javascript-code-vb"></a>Dynamické naplnění ovládacího prvku javascriptovým kódem (VB)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/d/8/f/d8f2f6f9-1b7c-46ad-9252-e1fc81bdea3e/dynamicpopulate1.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/dynamicpopulate1VB.pdf)
+[Stažení kódu](https://download.microsoft.com/download/d/8/f/d8f2f6f9-1b7c-46ad-9252-e1fc81bdea3e/dynamicpopulate1.vb.zip) nebo [stažení PDF](https://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/dynamicpopulate1VB.pdf)
 
-> DynamicPopulate ovládacího prvku ASP.NET AJAX Control Toolkit volání webové služby (nebo metodu stránky) a zkopíruje výslednou hodnotu na cílový ovládací prvek na stránce bez aktualizace stránky. Je také možné aktivovat naplnění psát vlastní kód JavaScript na straně klienta.
+> Ovládací prvek ovládacího prvku DynamicPopulate v ASP.NET AJAX Control Toolkit volá webovou službu (nebo metodu stránky) a vyplní výslednou hodnotu do cílového ovládacího prvku na stránce bez obnovení stránky. Je také možné aktivovat plnění pomocí vlastního kódu JavaScriptu na straně klienta.
 
 ## <a name="overview"></a>Přehled
 
-`DynamicPopulate` Ovládacího prvku ASP.NET AJAX Control Toolkit volání webové služby (nebo metodu stránky) a zkopíruje výslednou hodnotu na cílový ovládací prvek na stránce bez aktualizace stránky. Je také možné aktivovat naplnění psát vlastní kód JavaScript na straně klienta.
+Ovládací prvek `DynamicPopulate` v ASP.NET AJAX Control Toolkit volá webovou službu (nebo metodu stránky) a vyplní výslednou hodnotu do cílového ovládacího prvku na stránce bez obnovení stránky. Je také možné aktivovat plnění pomocí vlastního kódu JavaScriptu na straně klienta.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Za prvé, třeba webové služby ASP.NET, která implementuje metodu, které jsou volány `DynamicPopulateExtender` ovládacího prvku. Webová služba implementuje metodu `getDate()` , která očekává jeden argument typu řetězec, volá `contextKey`, protože `DynamicPopulate` ovládací prvek odešle jednu část informací o kontextu se každé volání webové služby. Zde je kód (soubor `DynamicPopulate.vb.asmx`) načte aktuální datum v jednom ze tří formátů:
+Nejprve potřebujete webovou službu ASP.NET, která implementuje metodu volanou ovládacím prvkem `DynamicPopulateExtender`. Webová služba implementuje metodu `getDate()`, která očekává jeden argument typu String, nazvaný `contextKey`, protože ovládací prvek `DynamicPopulate` odesílá jednu část informací o kontextu s každým voláním webové služby. Zde je kód (soubor `DynamicPopulate.vb.asmx`), který načte aktuální datum v jednom ze tří formátů:
 
 [!code-aspx[Main](dynamically-populating-a-control-using-javascript-code-vb/samples/sample1.aspx)]
 
-V dalším kroku vytvoření nového webu technologie ASP.NET a začít pomocí ovládacího prvku ASP.NET AJAX ScriptManager:
+V dalším kroku vytvořte nový web ASP.NET a začněte s ovládacím prvkem ASP.NET AJAX ScriptManager:
 
 [!code-aspx[Main](dynamically-populating-a-control-using-javascript-code-vb/samples/sample2.aspx)]
 
-Pak přidejte ovládací prvek popisku (například pomocí ovládacího prvku HTML se stejným názvem, nebo `<asp:Label />` ovládací prvek webu) který se později zobrazí výsledek volání webové služby.
+Pak přidejte ovládací prvek popisek (například pomocí ovládacího prvku HTML se stejným názvem nebo ovládacího prvku `<asp:Label />` Web), který bude později zobrazovat výsledek volání webové služby.
 
 [!code-aspx[Main](dynamically-populating-a-control-using-javascript-code-vb/samples/sample3.aspx)]
 
-V dalším kroku zahrnout `DynamicPopulateExtender` řídit a poskytnout informace o webových službách, cílový ovládací prvek, ale nikoli název ovládacího prvku, které aktivuje naplnění to se provede později pomocí vlastního jazyka JavaScript!
+Dále zahrňte ovládací prvek `DynamicPopulateExtender` a poskytněte informace o webové službě, cílový ovládací prvek, ale ne název ovládacího prvku, který aktivuje tuto populaci, a to pomocí vlastního JavaScriptu!
 
 [!code-aspx[Main](dynamically-populating-a-control-using-javascript-code-vb/samples/sample4.aspx)]
 
-Teď do části jazyka JavaScript. `$find()` Funkce definované knihovnou ASP.NET AJAX, jako například vrátí odkaz na serverové objekty technologie ASP.NET AJAX Control Toolkit `DynamicPopulateExtender`. V aktuálním souboru `$find("dpe")` vrátí odkaz na ten `DynamicPopulateExtender` ovládací prvek na stránce. Poskytuje metodu s názvem `populate()` který spustí proces dynamické naplnění. `populate()` Metoda vyžaduje jeden argument: kontext klíče, který bude sloužit jako argument `getDate()` webovou metodu. Takže například `$find("dpe").populate("format1")` by naplnit popisek s aktuální datum ve formátu měsíc roku dny.
+Nyní do části JavaScriptu. Funkce `$find()` definovaná knihovnou ASP.NET AJAX vrací odkaz na objekty na straně serveru sady nástrojů ASP.NET AJAX Control Toolkit, jako je například `DynamicPopulateExtender`. V aktuálním souboru `$find("dpe")` vrátí odkaz na jeden ovládací prvek `DynamicPopulateExtender` na stránce. Zpřístupňuje metodu nazvanou `populate()`, která aktivuje proces dynamického naplnění. Metoda `populate()` vyžaduje jeden argument: kontextový klíč, který bude sloužit jako argument webové metody `getDate()`. Například `$find("dpe").populate("format1")` by popisek naplnil aktuální datum ve formátu měsíc-den v roce.
 
-Aby ukázku trochu více flexibilní, může uživatel teď vybrat mezi několika formátů data. Pro každou z nich zobrazí se přepínač. Jednou uživatel klikne na přepínač, kód jazyka JavaScript dynamicky naplní popisek s vybraným datem formátu. Tady jsou tyto přepínače:
+Aby byla ukázka pružnější, uživatel teď může zvolit několik formátů data. Pro každý z nich je zobrazen přepínač. Jakmile uživatel klikne na přepínač, kód jazyka JavaScript dynamicky naplní popisek na vybraný formát data. Tady jsou tato Rádiová tlačítka:
 
 [!code-aspx[Main](dynamically-populating-a-control-using-javascript-code-vb/samples/sample5.aspx)]
 
-Všimněte si, že v rámci kontextu přepínací tlačítko, výraz jazyka JavaScript `this.value` odkazuje na hodnotu aktuální tlačítko, které je přesně stejné informace `getDate()` metoda můžete pracovat.
+Všimněte si, že v kontextu přepínače, výraz jazyka JavaScript `this.value` odkazuje na hodnotu aktuálního tlačítka, které se stane přesně stejnými informacemi, se kterou může metoda `getDate()` pracovat.
 
-[![Klikněte na tlačítko načte data ze serveru ve formátu určeném](dynamically-populating-a-control-using-javascript-code-vb/_static/image2.png)](dynamically-populating-a-control-using-javascript-code-vb/_static/image1.png)
+[![kliknutí na tlačítko načte datum ze serveru ve formátu zadaném](dynamically-populating-a-control-using-javascript-code-vb/_static/image2.png)](dynamically-populating-a-control-using-javascript-code-vb/_static/image1.png)
 
-Klikněte na tlačítko načte data ze serveru ve formátu určeném ([kliknutím ji zobrazíte obrázek v plné velikosti](dynamically-populating-a-control-using-javascript-code-vb/_static/image3.png))
+Kliknutím na tlačítko načtete datum ze serveru v zadaném formátu ([kliknutím zobrazíte obrázek v plné velikosti).](dynamically-populating-a-control-using-javascript-code-vb/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](dynamically-populating-a-control-vb.md)
-> [další](using-dynamicpopulate-with-a-user-control-and-javascript-vb.md)
+> [Další](using-dynamicpopulate-with-a-user-control-and-javascript-vb.md)

@@ -1,258 +1,258 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-cs
-title: Vytvoření rozložení platného pro celý web pomocí stránek předlohy (C#) | Dokumentace Microsoftu
+title: Vytvoření rozložení v rámci webu pomocí stránek předlohy (C#) | Microsoft Docs
 author: rick-anderson
-description: Tomto kurzu se dozvíte základní informace o stránku předlohy. A to, co jsou hlavní stránky, jak funguje jeden vytvořit stránku předlohy, jaké jsou obsahu místo zástupné znaky, jak funguje jeden cr...
+description: V tomto kurzu se zobrazí základy hlavní stránky. To znamená, co jsou stránky předlohy, jak vytvoří hlavní stránku, co je to držitelé obsahu, jak provede jeden dobropis...
 ms.author: riande
 ms.date: 05/21/2008
 ms.assetid: 78f8d194-03b9-44a5-8255-90e7cd1c2ee1
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4ef4cc44a5d1adb936beea421a295ae84052d3c4
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 1a5e85c443a2a3642ec185ab1897c43cdb2ab1f7
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65116612"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74619516"
 ---
 # <a name="creating-a-site-wide-layout-using-master-pages-c"></a>Vytvoření rozložení platného pro celý web pomocí stránek předlohy (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/e/e/f/eef369f5-743a-4a52-908f-b6532c4ce0a4/ASPNET_MasterPages_Tutorial_01_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/8/f/6/8f6349e4-6554-405a-bcd7-9b094ba5089a/ASPNET_MasterPages_Tutorial_01_CS.pdf)
+[Stažení kódu](https://download.microsoft.com/download/e/e/f/eef369f5-743a-4a52-908f-b6532c4ce0a4/ASPNET_MasterPages_Tutorial_01_CS.zip) nebo [stažení PDF](https://download.microsoft.com/download/8/f/6/8f6349e4-6554-405a-bcd7-9b094ba5089a/ASPNET_MasterPages_Tutorial_01_CS.pdf)
 
-> Tomto kurzu se dozvíte základní informace o stránku předlohy. A to, co jsou hlavní stránky, jak jeden vytvořit stránku předlohy, jaké jsou obsahu místo zástupné znaky, jak jeden vytvořit stránky ASP.NET, která používá stránku předlohy tak, jak změny stránky předlohy se automaticky projeví v jeho přidružené obsahu stránky a tak dále.
+> V tomto kurzu se zobrazí základy hlavní stránky. To, co jsou stránky předlohy, jak vytvoří hlavní stránku, co jsou držitele obsahu, jak vytvoří stránku ASP.NET, která používá hlavní stránku, jak probíhá změna hlavní stránky, jak se automaticky projeví na svých přidružených stránkách obsahu a tak dále.
 
 ## <a name="introduction"></a>Úvod
 
-Jeden atribut dobře navržené webové stránky je rozložení konzistentní stránky webu. Vezměme si jako příklad [www.asp.net](www.asp.net) webu. V době psaní tohoto návodu každé stránky má stejný obsah v horní a dolní části stránky. Jak ukazuje obrázek 1 zobrazuje velmi horní části každé stránky šedého panelu se seznamem Communities společnosti Microsoft. Pod, který je logo společnosti, seznam jazyků, do kterých byl přeložen webu a základní části: Domovská stránka, Začínáme, přečtěte si víc, soubory ke stažení a tak dále. Dolní části stránky, obsahuje informace o reklamy na www.asp.net, prohlášení o autorských právech a odkaz na prohlášení o ochraně osobních údajů.
+Jeden atribut dobře navrženého webu je konzistentní rozložení stránky na úrovni webu. Vezměte si například web www.asp.net. V době psaní tohoto zápisu má každá stránka stejný obsah v horní a dolní části stránky. Jak ukazuje obrázek 1, v horní horní části každé stránky se zobrazuje šedý pruh se seznamem komunit Microsoftu. Pod tím je logo lokality, seznam jazyků, do kterých byl web přeložen, a základní oddíly: domů, začínáme, informace, soubory ke stažení a tak dále. Stejně tak dolní část stránky obsahuje informace o reklamě v www.asp.net, prohlášení o autorských právech a odkaz na prohlášení o zásadách ochrany osobních údajů.
 
-[![Na webu www.asp.net využívá konzistentní vzhled a chování na všech stránkách](creating-a-site-wide-layout-using-master-pages-cs/_static/image2.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image1.png)
+[![web www.asp.net využívá konzistentní vzhled a chování napříč všemi stránkami.](creating-a-site-wide-layout-using-master-pages-cs/_static/image2.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image1.png)
 
-<strong>Obrázek 01</strong>: Www.asp.net web využívá konzistentní vzhled a pocit, že mezi všechny stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image3.png))
+<strong>Obrázek 01</strong>: web www.ASP.NET využívá konzistentní vzhled a chování napříč všemi stránkami ([kliknutím zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image3.png)).
 
-Jiný atribut dobře navržené lokality je snadné, pomocí kterého lze změnit vzhled tohoto webu. Obrázek 1 ukazuje na domovskou stránku www.asp.net od března 2008, ale a publikování v tomto kurzu, mohl změnit vzhled a chování. Možná se rozbalí položky nabídky podél horního zahrnout nová část pro rozhraní MVC. Nebo možná bude unveiled radikálně nový design pro různé barvy, písma a rozložení. Při použití těchto změn celá lokalita by měla být rychlý a jednoduchý proces, který nevyžaduje úpravy tisíce webové stránky, které tvoří webu.
+Dalším atributem dobře navržené lokality je jednoduchost, se kterým se dá změnit vzhled webu. Obrázek 1 zobrazuje domovskou stránku www.asp.net od března 2008, ale mezi teď a publikací tohoto kurzu se možná změnil vzhled a chování. Možná se položky nabídky podél horní části rozšíří, aby zahrnovaly nový oddíl pro rozhraní MVC. Nebo je možné, že se odsadí nový návrh s různými barvami, písmy a rozložením, představili. Použití takových změn u celého webu by mělo být rychlý a jednoduchý proces, který nevyžaduje úpravu tisíců webových stránek, které tvoří Web.
 
-Vytvoření šablony webu stránky v technologii ASP.NET je možné prostřednictvím *stránky předlohy*. Řečeno v kostce, hlavní stránka je speciální typ stránky ASP.NET, která definuje značky, které jsou společné mezi všemi *stránky obsahu* a oblasti, které můžete přizpůsobit na základě obsahu stránky obsahu stránky. (Stránka obsahu je stránky ASP.NET, která je vázána na hlavní stránku.) Pokaždé, když se změní rozložení stránky předlohy nebo formátování, všechny její obsah stránky výstupu podobně okamžitě aktualizován, takže se dají aplikovat změny webu vzhled stejně snadné jako aktualizace a nasazení jednoho souboru (konkrétně, hlavní stránky).
+Vytváření šablony stránky na úrovni webu v ASP.NET je možné prostřednictvím použití *stránek předlohy*. Ve kostce je hlavní stránkou speciální typ stránky ASP.NET, která definuje kód, který je společný pro všechny *stránky obsahu* , i oblasti, které jsou přizpůsobitelné na základě stránky obsahu stránky po obsahu. (Stránka obsahu je stránka ASP.NET, která je svázána s hlavní stránkou.) Pokaždé, když se změní rozložení nebo formátování hlavní stránky, okamžitě se aktualizují všechny jeho výstup stránky obsahu, což usnadňuje aktualizaci a nasazení jednoho souboru (konkrétně stránky předlohy).
 
-Toto je první kurz série kurzů, které se zabývají pomocí stránek předlohy. V průběhu této sérii kurzů jsme:
+Toto je první kurz v sérii kurzů, které se probírají pomocí stránek předlohy. V průběhu této série kurzů jsme:
 
-- Zkontrolujte vytvoření hlavní stránky a jejich přidružené stránky obsahu
-- Popisují širokou škálu tipů, triků a depeší,
-- Identifikovat běžné nástrahy stránky předlohy a prozkoumat řešení
-- Informace o tom, pro přístup k hlavní stránce z obsahu stránky a naopak,
-- Zjistěte, jak zadat stránku obsahu stránky předlohy v době běhu a
-- Další rozšířené témata stránky předlohy.
+- Kontrola vytváření stránek předloh a jejich přidružených stránek obsahu
+- Prodiskutujte celou řadu tipů, triky a depeší,
+- Identifikujte společnou stránku nástrah a Prozkoumejte alternativní řešení.
+- Podívejte se, jak získat přístup k hlavní stránce ze stránky obsahu a naopak,
+- Naučte se, jak určit stránku předlohy stránky obsahu za běhu a
+- Další témata upřesňujících stránek předlohy.
 
-Tyto kurzy jsou zaměřené na být stručné a poskytují podrobné pokyny s dostatečným snímky obrazovky, který vás provede procesem vizuálně. Každý kurz je dostupná v C# a Visual Basic verze a nabízí ke stažení kompletní kód používá.
+Tyto kurzy jsou stručné a poskytují podrobné pokyny s mnoha snímky obrazovky, které vás provedou procesem vizuálně. Každý kurz je k dispozici v C# a Visual Basic verzích a zahrnuje stažení kompletního používaného kódu.
 
-V tomto kurzu zahajovací začíná podívejte se na stránku předlohy základy. Jsme popisují, jak fungují stránky předlohy, podívejte se na vytváření stránky předlohy a přidružené obsahu stránky pomocí Visual Web Developer a naleznete v tématu jak na stránku předlohy se okamžitě projeví v jeho obsahu stránky. Pusťme se do práce!
+Tento kurz konference začíná zobrazením základů stránky předlohy. Probereme, jak fungují stránky předlohy, podívejte se na téma Vytvoření stránky předlohy a přidružených obsahu pomocí nástroje Visual Web Developer a podívejte se, jak se změny na hlavní stránce projeví okamžitě na stránkách obsahu. Pojďme začít!
 
-## <a name="understanding-how-master-pages-work"></a>Vysvětlení, jak fungují stránky předlohy
+## <a name="understanding-how-master-pages-work"></a>Princip fungování stránek předlohy
 
-Vytvoření webu s rozložení konzistentní stránky webu vyžaduje, aby každé webové stránky generování běžných formátování kódu kromě jeho vlastní obsah. Například i když každý kurz nebo fórum příspěvek na www.asp.net má svůj vlastní jedinečný obsah, každá z těchto stránek také vykreslit řadu běžných `<div>` prvky, které zobrazují odkazy oddílů nejvyšší úrovně: Domů Začínáme, přečtěte si a tak dále.
+Vytváření webu s konzistentním rozložením stránky v celém webu vyžaduje, aby každá webová stránka kromě vlastního obsahu generovala i společné formátovací značky. Například zatímco každý kurz nebo příspěvek fóra na www.asp.net má svůj vlastní jedinečný obsah, každá z těchto stránek také vykreslí řadu běžných `<div>` prvků, které zobrazují odkazy na nejvyšší úrovni: domů, začínáme, informace a tak dále.
 
-Existuje řada různých technik vytváření webových stránek s konzistentní vzhled a chování. Naivní přístupem je jednoduše zkopírujte a vložte společné značky rozložení do všech webových stránek, ale tento přístup má několik nevýhody. Pokud začínáte pokaždé, když se vytvoří nová stránka, nezapomeňte zkopírovat a vložit sdíleného obsahu do stránky. Takové zkopírováním a vložením operace jsou zralé chyby pouze podmnožinu sdílenému kódu může nechtěně zkopírujte do nové stránky. A na začátek ho, tento přístup zajišťuje, nahradíte stávající vzhled webu nový reálné problémy vzhledem k tomu, aby bylo možné používat nový vzhled a chování nutné upravit každé jedné stránky na webu.
+Existují různé techniky pro vytváření webových stránek s konzistentním pohledem a chováním. Naive přístupem je jednoduše zkopírovat a vložit společné označení rozložení na všechny webové stránky, ale tento přístup má řadu downsides. U startů se při každém vytvoření nové stránky musíte pamatovat na zkopírování a vložení sdíleného obsahu na stránku. Tyto operace kopírování a vkládání jsou zralé kvůli chybě, protože můžete omylem zkopírovat pouze podmnožinu sdílených značek na novou stránku. A pokud ho chcete vypnout, tento přístup nahrazuje stávající vzhled v rámci nejrůznějších webů, protože každá jediná stránka v lokalitě musí být upravena, aby bylo možné nový vzhled a chování použít.
 
-Před ASP.NET verze 2.0, stránce vývojáři často umístit společné značky v [uživatelské ovládací prvky](https://msdn.microsoft.com/library/y6wb1a0e.aspx) a pak přidá tyto uživatelské ovládací prvky pro každou jednotlivou stránku. Tento přístup vyžaduje, že vývojář stránky nezapomeňte ručně přidat uživatelské ovládací prvky pro každou novou stránku, ale pro snazší změny webu nepovoluje, protože při aktualizaci společné značky potřeba upravit pouze uživatelské ovládací prvky. Bohužel Visual Studio .NET 2002 a 2003 – verze sady Visual Studio použít k vytvoření aplikace ASP.NET 1.x – uživatelské ovládací prvky v návrhovém zobrazení se vykresluje jako šedá pole. V důsledku toho stránky vývojářům, kteří používají tento přístup není využijte WYSIWYG návrhové prostředí.
+Před ASP.NET verze 2,0 vývojáři stránky často umístili společné značky v [uživatelských ovládacích prvcích](https://msdn.microsoft.com/library/y6wb1a0e.aspx) a pak přidali tyto uživatelské ovládací prvky na každou stránku a všechny stránky. Tento přístup vyžaduje, aby si vývojář stránky ručně přidal uživatelské ovládací prvky na všechny nové stránky, ale povolily se pro snazší úpravy v rámci lokality, protože když aktualizujete společné značky, stačí, když aktualizujete Common Markup pouze uživatelské ovládací prvky, které je třeba upravit. Ale Visual Studio .NET 2002 a 2003 – verze sady Visual Studio použité k vytváření ASP.NETch aplikací s 1. x – vykreslené uživatelské ovládací prvky v zobrazení Návrh jako šedá pole. V důsledku toho nezpůsobí vývojáři stránek použití tohoto přístupu prostředí WYSIWYG v době návrhu.
 
-Nedostatky používání uživatelských ovládacích prvků se zákazníky a vyřešené v technologii ASP.NET verze 2.0 a Visual Studio 2005 se zavedením *stránky předlohy*. Hlavní stránka je speciální typ stránky ASP.NET, která definuje značky webu a *oblastech* tam, kde se spojená *stránky obsahu* definovat své vlastní značky. Jak vidíte v kroku 1, tyto oblasti jsou definovány ovládací prvky ContentPlaceHolder. Ovládací prvek ContentPlaceHolder jednoduše označuje pozici v hierarchii ovládacích prvků stránky předlohy, kde můžete vloženy vlastní obsah stránky obsahu.
-
-> [!NOTE]
-> Základní koncepty a funkce stránek předlohy nebyl změněn od ASP.NET verze 2.0. Visual Studio 2008 však nabízí podporu návrhu pro vložené hlavní stránky, funkce, která chyběla v sadě Visual Studio 2005. Podíváme se na použití vložené hlavní stránky v budoucích kurzech.
-
-Obrázek 2 ukazuje, jak může vypadat na hlavní stránce pro www.asp.net. Všimněte si, že na hlavní stránce definuje společné rozložení pro celý web - kód v horní, dolní a pravé části každé stránky – a také prvku ContentPlaceHolder na levý střed, kde je umístěn jedinečné obsah pro každou jednotlivou stránku webové.
-
-![Stránka předlohy definuje rozložení pro celý web a upravitelnou oblastí na základě obsahu stránky obsahu stránky](creating-a-site-wide-layout-using-master-pages-cs/_static/image4.png)
-
-**Obrázek 02**: Stránka předlohy definuje rozložení pro celý web a upravitelnou oblastí na základě obsahu stránky obsahu stránky
-
-Po definování hlavní stránky může být vázána na nové stránky ASP.NET prostřednictvím značek zaškrtávací políčko. Tyto stránky ASP.NET – volána stránky obsahu – obsahují ovládací prvek obsahu pro všechny ovládací prvky ContentPlaceHolder na hlavní stránce. Při návštěvě stránky obsahu prostřednictvím prohlížeče modulu ASP.NET vytvoří hierarchii ovládacích prvků stránky předlohy a vkládá hierarchii ovládacích prvků stránky obsahu do příslušných místech. Tato hierarchie kombinované ovládací prvek se vykreslí a výsledného souboru HTML se vrátí do prohlížeče koncového uživatele. V důsledku toho stránky obsahu vysílá společné značky definované v jeho hlavní stránky mimo ovládacích prvků ContentPlaceHolder a kód specifický pro stránku definované v rámci své vlastní ovládací prvky obsahu. Obrázek 3 ilustruje tento koncept.
-
-[![Požadovaná stránka značek je začleněny do stránky předlohy](creating-a-site-wide-layout-using-master-pages-cs/_static/image6.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image5.png)
-
-**Obrázek 03**: Stránka požadovaná značka je začleněny do stránky předlohy ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image7.png))
-
-Teď, když máte jsme zmínili, jak fungují stránky předlohy, Pojďme se na pohled na vytváření stránky předlohy a přidružené obsahu stránky pomocí Visual Web Developer.
+Nedostatky použití uživatelských ovládacích prvků byly řešeny v ASP.NET verze 2,0 a Visual Studio 2005 pomocí úvodních *stránek předlohy*. Stránka předlohy je speciální typ stránky ASP.NET, která definuje značky v rámci lokality i *oblasti* , kde přidružené *stránky obsahu* definují vlastní značky. Jak uvidíme v kroku 1, tyto oblasti jsou definovány ovládacími prvky ContentPlaceHolder. Ovládací prvek ContentPlaceHolder jednoduše označuje pozici v hierarchii ovládacích prvků hlavní stránky, kde může být vlastní obsah vložen pomocí stránky obsahu.
 
 > [!NOTE]
-> Pokud chcete oslovit širokou cílovou skupinu je to možné, webu technologie ASP.NET při sestavování v celé této sérii kurzů se vytvoří pomocí technologie ASP.NET 3.5 společnosti Microsoft bezplatnou verzi Visual Studio 2008 [Visual Web Developer 2008](https://www.microsoft.com/express/vwd/). Pokud jste dosud nebyly upgradovány na technologii ASP.NET 3.5, Nedělejte si starosti – Principy probírané v těchto kurzech pracovní stejně dobře s technologií ASP.NET 2.0 a Visual Studio 2005. Ale některé ukázkové aplikace mohou používat nové funkce rozhraní .NET Framework verze 3.5; Když se používají funkce specifické pro 3.5, můžu zahrnout poznámku, která popisuje, jak implementovat podobné funkce ve verzi 2.0. Mějte na paměti, která ukázkové aplikace dostupné pro stahování jednotlivých kurzů cílového rozhraní .NET Framework verze 3.5, což vede k `Web.config` soubor, který obsahuje prvky konfigurace specifické pro 3.5 a odkazy na obory názvů specifických 3.5 v `using` příkazy ve třídách modelu code-behind stránky technologie ASP.NET. Dlouhý text krátký, pokud ještě nemáte k instalaci rozhraní .NET 3.5 na počítači poté ke stažení webové aplikace nebude fungovat bez první odebrání značky specifické 3.5 z `Web.config`. Zobrazit [rozbor ASP.NET verze 3.5. `Web.config` souboru](http://www.4guysfromrolla.com/articles/121207-1.aspx) Další informace o tomto tématu. Budete také muset odebrat `using` příkazy, které odkazují na obory názvů specifických 3.5.
+> Základní koncepty a funkce hlavních stránek se od verze 2,0 ASP.NET nezměnily. Visual Studio 2008 však nabízí podporu pro vnořené stránky předloh, což je funkce, která v aplikaci Visual Studio 2005 chyběla. V budoucím kurzu se podíváme na použití vnořených stránek předlohy.
 
-## <a name="step-1-creating-a-master-page"></a>Krok 1: Vytvoření stránky předlohy
+Obrázek 2 ukazuje, jak může vypadat hlavní stránka www.asp.net. Všimněte si, že stránka předlohy definuje společné rozložení na úrovni webu – značky v horním, dolním a pravé straně každé stránky a také ovládací prvek ContentPlaceHolder v prostřední levé straně, kde se nachází jedinečný obsah pro každou jednotlivou webovou stránku.
 
-Než budeme můžete věnovat vytváření a použití stránky předlohy a obsahu, musíte nejprve webové stránky ASP.NET. Začněte vytvořením nového webu souboru na základě systému technologie ASP.NET. K tomu, spusťte aplikaci Visual Web Developer a pak přejděte do nabídky soubor a zvolte nový web zobrazení dialogového okna Nový web (viz obrázek 4). Výběr šablony webové stránky ASP.NET, nastavte rozevírací seznam umístění do systému souborů, vyberte složku, umístěte na webu a nastavit jazyk C#. Tím se vytvoří nový web s `Default.aspx` stránka ASP.NET `App_Data` složky a `Web.config` souboru.
+![Stránka předlohy definuje rozložení na úrovni webu a oblasti, které lze upravovat na stránce obsahu – podle obsahu.](creating-a-site-wide-layout-using-master-pages-cs/_static/image4.png)
+
+**Obrázek 02**: Stránka předlohy definuje rozložení na úrovni webu a oblasti, které lze upravovat na stránce obsahu – podle obsahu stránky.
+
+Po definování hlavní stránky může být vazba na nové stránky ASP.NET pomocí zaškrtnutí políčka. Tyto stránky ASP.NET – označované jako stránky obsahu – obsahují ovládací prvek obsahu pro každé ovládací prvky ContentPlaceHolder na stránce předlohy. Když se stránka obsahu navštíví prostřednictvím prohlížeče, modul ASP.NET vytvoří hierarchii ovládacích prvků hlavní stránky a vloží hierarchii ovládacích prvků stránky obsahu na příslušné místo. Tato kombinovaná hierarchie ovládacích prvků se vykreslí a výsledný HTML se vrátí do prohlížeče koncového uživatele. V důsledku toho stránka obsahu vygeneruje společné značky definované v jeho hlavní stránce mimo ovládací prvky ContentPlaceHolder a označení stránky definované v rámci svých vlastních ovládacích prvků obsahu. Tento koncept znázorňuje obrázek 3.
+
+[![se značky požadované stránky zatavené na stránku předlohy](creating-a-site-wide-layout-using-master-pages-cs/_static/image6.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image5.png)
+
+**Obrázek 03**: vyžádané označení stránky je pokryto na stránce předlohy ([kliknutím zobrazíte obrázek v plné velikosti).](creating-a-site-wide-layout-using-master-pages-cs/_static/image7.png)
+
+Teď, když jsme probrali, jak fungují stránky předloh, se podívejme na vytváření předloh a přidružených stránek obsahu pomocí nástroje Visual Web Developer.
 
 > [!NOTE]
-> Visual Studio podporuje dva režimy správy projektu: Webové projekty a projekty webových aplikací. Webové projekty chybí soubor projektu, že projekty webových aplikací napodobuje architekturu projektu v aplikaci Visual Studio .NET 2002/2003 – zahrnout soubor projektu a kompilaci zdrojového kódu v projektu do jednoho sestavení, který je umístěn do `/bin` složka. Visual Studio 2005 zpočátku pouze podporovaných webových projektů, i když [modelu projektu webové aplikace](https://msdn.microsoft.com/library/aa730880(vs.80).aspx) bylo znovu zavedeno s aktualizací Service Pack 1; Visual Studio 2008 nabízí oba modely projektu. Visual Web Developer 2005 a edice 2008, ale podporují pouze webové projekty. Používám modelu projektu webové stránky Moje ukázky v této sérii kurzů. Pokud používáte jiné Express edition a chcete místo toho použít model projektu webové aplikace, můžete tak učinit, ale mějte na paměti, že mohou být některé nesrovnalosti mezi zobrazí na obrazovce a kroky, které je nutné provést porovnání se zobrazí snímky obrazovky a instructio k dispozici v těchto kurzech NS.
+> Aby bylo možné oslovit nejširší možnou cílovou skupinu, web ASP.NET, který sestavíme v této sérii kurzů, se vytvoří pomocí ASP.NET 3,5 s bezplatnou verzí sady Visual Studio 2008 společnosti Microsoft, která je v sadě Visual Studio, [Visual Web Developer 2008](https://www.microsoft.com/express/vwd/). Pokud jste ještě neupgradovali na ASP.NET 3,5, nedělejte si starosti – koncepty popsané v těchto kurzech fungují stejně dobře i s ASP.NET 2,0 a sadou Visual Studio 2005. Některé ukázkové aplikace ale můžou používat nové funkce .NET Framework verze 3,5; Při použití specifických funkcí 3,5 jsem si všimněte, že je popsán postup implementace podobných funkcí ve verzi 2,0. Mějte na paměti, že ukázkové aplikace, které jsou k dispozici ke stažení z každého kurzu, cílí na .NET Framework verze 3,5, což vede k `Web.config` souboru, který obsahuje prvky konfigurace specifické pro 3,5 a odkazy na obory názvů specifické pro 3,5 v příkazech `using` v třídách kódu na pozadí stránek ASP.NET. Dlouhý příběh – Pokud jste ještě na svém počítači nainstalovali .NET 3,5, nebude webová aplikace ke stažení fungovat, aniž byste nejdřív odebrali značku 3,5 určenou z `Web.config`. Další informace o tomto tématu najdete v článku o [deprotínající se `Web.config` souboru verze 3.5 pro ASP.NET](http://www.4guysfromrolla.com/articles/121207-1.aspx) . Také budete muset odebrat `using` příkazy, které odkazují na obory názvů specifické pro 3,5.
 
-[![Vytvoření nového souboru na základě systému webového serveru](creating-a-site-wide-layout-using-master-pages-cs/_static/image9.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image8.png)
+## <a name="step-1-creating-a-master-page"></a>Krok 1: vytvoření hlavní stránky
 
-**Obrázek 04**: Vytvoření webu New File System-Based ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image10.png))
+Než budeme moct prozkoumat vytváření a používání stránek hlavní a obsah, musíme nejdřív potřebovat web ASP.NET. Začněte vytvořením nového webu ASP.NET založeného na systému souborů. Chcete-li to provést, spusťte Visual Web Developer a pak přejděte do nabídky soubor a zvolte možnost Nový web a zobrazí se dialogové okno Nový web (viz obrázek 4). Vyberte šablonu webu ASP.NET, nastavte rozevírací seznam umístění na systém souborů, vyberte složku, kam chcete umístit web, a nastavte jazyk na C#. Tím se vytvoří nový web s `Default.aspx` stránkou ASP.NET, `App_Data` složkou a souborem `Web.config`.
 
-Dále přidejte na stránku předlohy k lokalitě v kořenovém adresáři pravým tlačítkem myši na název projektu, výběrem přidat novou položku a výběr šablony stránky předlohy. Všimněte si, že hlavní stránky končit příponou `.master`. Název této nové stránky předlohy `Site.master` a klikněte na tlačítko Přidat.
+> [!NOTE]
+> Visual Studio podporuje dva režimy řízení projektů: projekty webu a projekty webových aplikací. Webové projekty neobsahují soubor projektu, zatímco projekty webové aplikace napodobují architekturu projektu v aplikaci Visual Studio .NET 2002/2003 – obsahují soubor projektu a zkompiluje zdrojový kód projektu do jednoho sestavení, které je umístěno ve složce `/bin`. Visual Studio 2005 zpočátku podporuje jenom webové projekty, i když se [model projektu webové aplikace](https://msdn.microsoft.com/library/aa730880(vs.80).aspx) znovu představil s aktualizací Service Pack 1. Visual Studio 2008 nabízí jak modely projektu. Edice Visual Web Developer 2005 a 2008 však podporují pouze projekty webu. Používám model projektu webu pro moje ukázky v této sérii kurzů. Pokud používáte jinou edici než Express a chcete místo toho použít model projektu webové aplikace, můžete to udělat, ale mějte na paměti, že mezi tím, co vidíte na obrazovce, a kroky, které je třeba vzít v úvahu, se může stát, že se zobrazují a instructioé snímky obrazovky. NS dodané v těchto kurzech.
 
-[![Přidat stránku předlohy s názvem Site.master na web](creating-a-site-wide-layout-using-master-pages-cs/_static/image12.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image11.png)
+[![vytvoření nového webu založeného na systému souborů](creating-a-site-wide-layout-using-master-pages-cs/_static/image9.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image8.png)
 
-**Obrázek 05**: Přidat název stránky předlohy `Site.master` na web ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image13.png))
+**Obrázek 04**: vytvoření nového webu založeného na systému souborů ([kliknutím zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image10.png))
 
-Přidání nového souboru hlavní stránky prostřednictvím Visual Web Developer vytvoří hlavní stránku s následující kód:
+V dalším kroku přidejte do kořenového adresáře stránku předlohy kliknutím pravým tlačítkem myši na název projektu, zvolením možnosti Přidat novou položku a výběrem šablony stránky předlohy. Všimněte si, že stránky předlohy končí rozšířením `.master`. Pojmenujte tuto novou stránku předlohy `Site.master` a klikněte na Přidat.
+
+[![přidat hlavní stránku s názvem site. Master na web](creating-a-site-wide-layout-using-master-pages-cs/_static/image12.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image11.png)
+
+**Obrázek 05**: přidejte do webu stránku předlohy s názvem `Site.master` ([kliknutím zobrazíte obrázek v plné velikosti).](creating-a-site-wide-layout-using-master-pages-cs/_static/image13.png)
+
+Přidání nového souboru hlavní stránky pomocí nástroje Visual Web Developer vytvoří hlavní stránku s následujícím deklarativním označením:
 
 [!code-aspx[Main](creating-a-site-wide-layout-using-master-pages-cs/samples/sample1.aspx)]
 
-První řádek v deklarativním označení [ `@Master` směrnice](https://msdn.microsoft.com/library/ms228176.aspx). `@Master` – Direktiva je podobný [ `@Page` – direktiva](https://msdn.microsoft.com/library/ydy4x04a.aspx) , který se zobrazí na stránkách ASP.NET. Definuje jazyk na straně serveru (C#) a informace o umístění a dědičnost třídy modelu code-behind na hlavní stránce.
+První řádek v deklarativní značce označení je [direktiva`@Master`](https://msdn.microsoft.com/library/ms228176.aspx). Direktiva `@Master` je podobná [direktivě`@Page`](https://msdn.microsoft.com/library/ydy4x04a.aspx) , která se zobrazuje na stránkách ASP.NET. Definuje jazyk na straně serveru (C#) a informace o umístění a dědičnosti třídy kódu na pozadí hlavní stránky.
 
-`DOCTYPE` a deklarativní stránky se zobrazí pod `@Master` směrnice. Stránka obsahuje statický kód HTML spolu s čtyři ovládací prvky na straně serveru:
+`DOCTYPE` a deklarativní označení stránky se zobrazí pod direktivou `@Master`. Stránka obsahuje statický kód HTML spolu se čtyřmi serverovými ovládacími prvky:
 
-- **Webový formulář ( `<form runat="server">`)** – protože všechny stránky ASP.NET obvykle mají webového formuláře – a protože hlavní stránka může obsahovat webové ovládací prvky, které musí být uvedena v rámci webového formuláře – je potřeba přidat webový formulář do hlavní stránky (místo přidávání webového formuláře do e stránka ACH obsahu).
-- **Ovládací prvek ContentPlaceHolder s názvem `ContentPlaceHolder1`**  -tento ovládací prvek ContentPlaceHolder se zobrazí v rámci webového formuláře a slouží jako oblast obsahu stránky uživatelského rozhraní.
-- **Na straně serveru `<head>` element** – `<head>` element má `runat="server"` atribut zpřístupnění prostřednictvím kódu na straně serveru. `<head>` Element je implementovaná tímto způsobem tak, aby název stránky a další `<head>`-týkající se kód může přidat nebo upravit prostřednictvím kódu programu. Například nastavení stránky ASP.NET `Title` změny vlastností `<title>` element vykreslen metodou `<head>` serverový ovládací prvek.
-- **Ovládací prvek ContentPlaceHolder s názvem `head`**  -tento ovládací prvek ContentPlaceHolder se zobrazí v rámci `<head>` server řízení a můžou používat deklarativně přidání obsahu do `<head>` elementu.
+- **Webový formulář (`<form runat="server">`)** – protože všechny stránky ASP.NET mají typicky webový formulář – a protože stránka předlohy může obsahovat webové ovládací prvky, které se musí objevit v rámci webového formuláře – nezapomeňte přidat webový formulář na stránku předlohy (místo přidání webového formuláře na každou stránku obsahu).
+- **Ovládací prvek ContentPlaceHolder s názvem `ContentPlaceHolder1`** – tento ovládací prvek ContentPlaceHolder se zobrazí v rámci webového formuláře a slouží jako oblast pro uživatelské rozhraní stránky obsahu.
+- **`<head>` element na straně serveru** – `<head>` prvek má atribut `runat="server"`, který ho zpřístupní prostřednictvím kódu na straně serveru. `<head>` prvek je implementován tímto způsobem, aby bylo možné přidat nebo upravit název stránky a jiné značky `<head>`. Například nastavení vlastnosti `Title` stránky ASP.NET mění prvek `<title>` vykreslený ovládacím prvkem `<head>` Server.
+- **Ovládací prvek ContentPlaceHolder nazvaný `head`** – tento ovládací prvek ContentPlaceHolder se zobrazí v ovládacím prvku `<head>` Server a lze jej použít k deklarativnímu přidání obsahu do `<head>` elementu.
 
-Tato výchozí značka deklarativní stránky předlohy slouží jako výchozí bod pro vytvoření vlastní stránky předlohy. Nebojte se, k úpravě HTML nebo přidání dalších webových ovládacích prvcích nebo prvků ContentPlaceHolder na hlavní stránku.
+Tato výchozí hlavní stránka je deklarativní označení slouží jako výchozí bod pro návrh vlastních stránek předlohy. Můžete upravovat kód HTML nebo přidat další webové ovládací prvky nebo prvky ContentPlaceHoldery na stránku předlohy.
 
 > [!NOTE]
-> Při návrhu stránky předlohy Ujistěte se, že webový formulář obsahuje stránky předlohy a alespoň jeden prvek ContentPlaceHolder se zobrazí v rámci tohoto webového formuláře.
+> Při návrhu stránky předlohy se ujistěte, že stránka předlohy obsahuje webový formulář a že v tomto webovém formuláři se zobrazí alespoň jeden ovládací prvek ContentPlaceHolder.
 
-### <a name="creating-a-simple-site-layout"></a>Vytvoření rozložení platného pro jednoduché lokality
+### <a name="creating-a-simple-site-layout"></a>Vytvoření jednoduchého rozložení webu
 
-Umožňuje rozbalit `Site.master`na výchozí deklarativní, chcete-li vytvořit rozložení webu, kde všechny stránky sdílet: společné hlavičky; levý sloupec s navigace, zprávy a další obsah webu; a přidáme zápatí, který zobrazuje ikonu "S využitím pomocí technologie Microsoft ASP.NET". Obrázek 6 zobrazuje konečný výsledek stránky předlohy, když jeden z jeho obsahu stránky je zobrazit pomocí prohlížeče. Červené v kroužku oblast na obrázku 6 je specifické pro právě navštívené stránky (`Default.aspx`); další obsah je na hlavní stránce definován a proto konzistentní vzhledem k aplikacím na všech stránkách obsahu.
+Nyní rozbalíme výchozí deklarativní označení `Site.master`k vytvoření rozložení lokality, kde všechny stránky sdílí: společné záhlaví; levý sloupec s navigací, novinkami a dalším obsahem na úrovni webu; a zápatí, které zobrazuje ikonu "používá se Microsoft ASP.NET". Obrázek 6 znázorňuje konečný výsledek stránky předlohy, když se jedna z jeho stránek obsahu zobrazí v prohlížeči. Oblast červeného kruhu na obrázku 6 je specifická pro navštívenou stránku (`Default.aspx`); druhý obsah je definován na stránce předlohy, a proto je konzistentní napříč všemi stránkami obsahu.
 
-[![Stránky předlohy se stránkou definuje značky pro horní, doleva a dolní části](creating-a-site-wide-layout-using-master-pages-cs/_static/image15.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image14.png)
+[![stránka předlohy definuje označení pro horní, levou a dolní část.](creating-a-site-wide-layout-using-master-pages-cs/_static/image15.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image14.png)
 
-**Obrázek 06**: Hlavní stránka definuje značky pro horní, doleva a dolní části ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image16.png))
+**Obrázek 6**: Stránka předlohy definuje označení pro horní, levou a dolní část ([kliknutím zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image16.png)).
 
-Pokud chcete dosáhnout rozložení webu je znázorněno na obrázku 6, začněte tím, že aktualizace `Site.master` stránku předlohy tak, aby obsahoval následující deklarativní:
+Chcete-li dosáhnout rozložení lokality na obrázku 6, začněte aktualizací stránky předlohy `Site.master` tak, aby obsahovala následující deklarativní označení:
 
 [!code-aspx[Main](creating-a-site-wide-layout-using-master-pages-cs/samples/sample2.aspx)]
 
-Rozložení stránky předlohy je definován pomocí řady `<div>` elementů HTML. `topContent` `<div>` Obsahuje kód, který se zobrazí v horní části každé stránky, zatímco `mainContent`, `leftContent`, a `footerContent` `<div>` s slouží k zobrazení obsahu na stránce, v levém sloupci a "s využitím ve společnosti Microsoft Ikona technologie ASP.NET", v uvedeném pořadí. Kromě přidání těchto `<div>` prvky, jsem také přejmenovat `ID` vlastnost primární ovládací prvek ContentPlaceHolder z `ContentPlaceHolder1` k `MainContent`.
+Rozložení stránky předlohy je definováno pomocí řady `<div>` prvků jazyka HTML. `topContent` `<div>` obsahuje značku, která se zobrazí v horní části každé stránky, zatímco `mainContent`, `leftContent`a `footerContent` `<div>` s slouží k zobrazení obsahu stránky, levého sloupce a ikony "napájeno z Microsoft ASP.NET" v uvedeném pořadí. Kromě přidání těchto prvků `<div>` také přejmenováni vlastnost `ID` primárního ovládacího prvku ContentPlaceHolder z `ContentPlaceHolder1` na `MainContent`.
 
-Pravidla formátování a rozložení pro tyto roztříděné `<div>` elementů je států v [šablony stylů CSS (Cascading)](http://en.wikipedia.org/wiki/Cascading_Style_Sheets) souboru `Styles.css`, které je zadáno pomocí &lt;odkaz&gt; element v stránka předlohy &lt;head&gt; elementu. Tyto různé pravidla definují vzhled a chování každého `<div>` element bylo uvedeno výše. Například `topContent` `<div>` má element, který zobrazí text "Hlavní stránky kurzy" a odkaz, jeho formátování pravidla stanovená dokumentem `Styles.css` následujícím způsobem:
+Pravidla formátování a rozložení pro tyto položky roztříděné `<div>` prvky jsou v souboru [CSS (Cascading StyleSheet)](http://en.wikipedia.org/wiki/Cascading_Style_Sheets) `Styles.css`, který je zadán prostřednictvím elementu &lt;odkaz&gt; prvku na &lt;Head&gt; elementu stránky předlohy. Tato různá pravidla definují vzhled a chování každého prvku `<div>` uvedeného výše. Například prvek `topContent` `<div>`, který zobrazuje text "kurzy stránek předlohy" a odkaz na jeho pravidla formátování určená v `Styles.css` následujícím způsobem:
 
 [!code-css[Main](creating-a-site-wide-layout-using-master-pages-cs/samples/sample3.css)]
 
-Pokud postupujete na počítač, budete muset stáhnout související kód v tomto kurzu a přidat `Styles.css` soubor do projektu. Podobně je také potřeba vytvořit složku s názvem Imagí a zkopírujte na ikonu "S využitím pomocí technologie Microsoft ASP.NET" ze staženého ukázkovému webu do vašeho projektu.
+Pokud jste na svém počítači, budete si muset stáhnout doprovodný kód tohoto kurzu a přidat soubor `Styles.css` do projektu. Podobně také budete muset vytvořit složku s názvem images a zkopírovat ikonu "používá se Microsoft ASP.NET" ze staženého ukázkového webu do vašeho projektu.
 
 > [!NOTE]
-> Informace o formátování webové stránky a šablony stylů CSS je nad rámec tohoto článku. Další informace o CSS, podívejte se [šablon stylů CSS kurzy](http://www.w3schools.com/css/default.asp) na [W3Schools.com](http://www.w3schools.com/). Také neváhejte si stáhnout související kód v tomto kurzu a pohrát si s nastavením šablony stylů CSS v `Styles.css` abyste viděli efekt různá pravidla formátování.
+> Diskuze o formátování šablon stylů CSS a webových stránek překračuje rámec tohoto článku. Další informace o šablonách stylů CSS najdete v [kurzech šablon stylů CSS](http://www.w3schools.com/css/default.asp) na adrese [w3schools.com](http://www.w3schools.com/). Můžu také povzbudit, abyste si stáhli doprovodný kód tohoto kurzu a nahráli s nastaveními CSS v `Styles.css`, abyste viděli účinky různých pravidel formátování.
 
-### <a name="creating-a-master-page-using-an-existing-design-template"></a>Vytvoření pomocí existující šablonu návrhu stránky předlohy
+### <a name="creating-a-master-page-using-an-existing-design-template"></a>Vytvoření hlavní stránky pomocí existující šablony návrhu
 
-V průběhu let jsem začlenění několik webových aplikací ASP.NET pro (krátkodobé používání) – pro střední firmy. Některé z mých klientů má existující lokality rozložení, které chtěli používat; ostatní pověřili příslušné grafický Návrhář. Několik svěřených mi návrh webu rozložení. Jak se dá zjistit podle obrázku 6, tasking programátorovi, aby návrh rozložení tohoto webu je obvykle vhodné tak, že má váš účetní provádět open-heart surgery, zatímco vaše lékař nemá daně.
+V průběhu let jsem sestavil řadu webových aplikací ASP.NET pro malé až střední společnosti. Někteří moji klienti mají existující rozložení lokality, které chtěli použít; jiní uživatelé mají příslušného návrháře grafiky. Několik svěřených mě pro návrh rozložení webu. Jak je znázorněno na obrázku 6, úkoly programátora pro návrh rozložení webu se obvykle považují za to, že váš účet bude mít otevřený – srdce chirurgie, zatímco váš lékař vaše daně provádí.
 
-Naštěstí innumerous weby, které nabízejí bezplatné šablony návrhu ve formátu HTML – Google vrátil více než 6 milionů výsledky pro hledaný termín "šablony bezplatné webu." Moje Oblíbené struktur je [OpenDesigns.org](http://opendesigns.org/). Jakmile najdete šablonu webu, který rádi používáte, přidejte do projektu webu souborů šablon stylů CSS a bitových kopií a integrovat šablony HTML stránky předlohy.
-
-> [!NOTE]
-> Microsoft taky nabízí řadu [bez šablony ASP.NET návrhu Start Kit](https://msdn.microsoft.com/asp.net/aa336613.aspx) , které integrují do dialogového okna Nový web v sadě Visual Studio.
-
-## <a name="step-2-creating-associated-content-pages"></a>Krok 2: Vytváření související stránky obsahu
-
-S hlavní stránkou vytvořili budeme připravení začít vytvářet stránky technologie ASP.NET, které jsou vázány na hlavní stránku. Tyto stránky se označují jako *stránky obsahu*.
-
-Umožňuje přidat nové stránky ASP.NET do projektu a vytvořte mu vazbu k `Site.master` stránky předlohy. Klikněte pravým tlačítkem na název projektu v Průzkumníku řešení a zvolte možnost Přidat novou položku. Vyberte šablonu Webový formulář, zadejte název `About.aspx`a potom zaškrtněte políčko "Vybrat hlavní stránku", jak je znázorněno na obrázku 7. Tím se zobrazí Select dialogového okna stránky předlohy pole (viz obrázek 8) z kde můžete vybrat hlavní stránku.
+Naštěstí je k dispozici několik webů, které nabízejí bezplatné šablony návrhu HTML – Google vrátilo více než 6 000 000 výsledků pro hledaný termín "bezplatné šablony webu". Jedna z oblíbených položek je [OpenDesigns.org](http://opendesigns.org/). Jakmile najdete šablonu webu, kterou chcete, přidejte soubory CSS a obrázky do projektu webu a integrujte HTML šablony do své stránky předlohy.
 
 > [!NOTE]
-> Pokud jste vytvořili pomocí modelu projektu webové aplikace namísto modelu projektu webové stránky webu ASP.NET neuvidíte zaškrtávací políčko "Vybrat hlavní stránku" v dialogovém okně Přidat novou položku je znázorněno na obrázku 7. K vytvoření obsahu musí stránku při projekt webové aplikace pomocí modelu vyberte šablonu Webový formulář obsahu místo šabloně webového formuláře. Po výběrem webový formulář obsahu šablony a kliknutím na Přidat, vyberte stejný hlavní stránky se zobrazí dialogové okno je znázorněno na obrázku 8.
+> Microsoft taky nabízí řadu [bezplatných šablon ASP.NET design Kit](https://msdn.microsoft.com/asp.net/aa336613.aspx) , které se integrují do dialogového okna Nový web v sadě Visual Studio.
 
-[![Přidejte novou stránku obsahu](creating-a-site-wide-layout-using-master-pages-cs/_static/image18.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image17.png)
+## <a name="step-2-creating-associated-content-pages"></a>Krok 2: vytvoření přidružených stránek obsahu
 
-**Obrázek 07**: Přidejte novou stránku obsahu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image19.png))
+Po vytvoření stránky předlohy jsme připraveni začít vytvářet ASP.NET stránky, které jsou svázané se stránkou předlohy. Tyto stránky se označují jako *stránky obsahu*.
 
-[![Vyberte na stránce předlohy Site.master](creating-a-site-wide-layout-using-master-pages-cs/_static/image21.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image20.png)
+Pojďme přidat novou ASP.NET stránku do projektu a vytvořit její vazby na stránku předlohy `Site.master`. V Průzkumník řešení klikněte pravým tlačítkem myši na název projektu a vyberte možnost Přidat novou položku. Vyberte šablonu webového formuláře, zadejte název `About.aspx`a potom zaškrtněte políčko "vybrat hlavní stránku", jak je znázorněno na obrázku 7. Tím se zobrazí dialogové okno Výběr stránky předlohy (viz obrázek 8), ze kterého můžete zvolit předlohovou stránku, kterou chcete použít.
 
-**Obrázek 08**: Vyberte `Site.master` stránky předlohy ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image22.png))
+> [!NOTE]
+> Pokud jste web ASP.NET vytvořili pomocí modelu projektu webové aplikace namísto modelu projektu webu, nezobrazí se v dialogovém okně Přidat novou položku zobrazená na obrázku 7 zaškrtávací políčko vybrat hlavní stránku. Chcete-li vytvořit stránku obsahu při použití modelu projektu webové aplikace, musíte zvolit šablonu formuláře webového obsahu místo šablony webového formuláře. Po výběru šablony formuláře webového obsahu a kliknutí na tlačítko Přidat se zobrazí dialogové okno Výběr stránky předlohy zobrazené na obrázku 8.
 
-Jak ukazuje následující kód obsahuje nové stránky obsahu `@Page` směrnice, odkazuje zpátky na jeho hlavní stránky a ovládací prvek obsahu pro všechny ovládací prvky ContentPlaceHolder na hlavní stránce.
+[![přidání nové stránky obsahu](creating-a-site-wide-layout-using-master-pages-cs/_static/image18.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image17.png)
+
+**Obrázek 07**: Přidání nové stránky obsahu ([kliknutím zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image19.png))
+
+[![vybrat hlavní stránku site. Master.](creating-a-site-wide-layout-using-master-pages-cs/_static/image21.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image20.png)
+
+**Obrázek 08**: Výběr stránky předlohy `Site.master` ([kliknutím zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image22.png))
+
+Jak ukazuje následující deklarativní kód, nová stránka obsahu obsahuje direktivu `@Page`, která odkazuje zpět na svou hlavní stránku a ovládací prvek obsahu pro každé ovládací prvky ContentPlaceHolder stránky předlohy.
 
 [!code-aspx[Main](creating-a-site-wide-layout-using-master-pages-cs/samples/sample4.aspx)]
 
 > [!NOTE]
-> V části "Vytvoření jednoduché rozložení webu" v kroku 1 můžu přejmenovat `ContentPlaceHolder1` k `MainContent`. Pokud jste tento ovládací prvek ContentPlaceHolder nepřejmenovali `ID` stejným způsobem, budou mírně lišit deklarativní obsahu stránky v označení uvedené výše. Konkrétně, druhý obsahu ovládacího prvku `ContentPlaceHolderID` projeví `ID` odpovídajícího prvku ContentPlaceHolder v ovládacím prvku stránky předlohy.
+> V části "Vytvoření jednoduchého rozložení lokality" v kroku 1 byl přejmenován `ContentPlaceHolder1` na `MainContent`. Pokud jste nezměnili přejmenování tohoto `ID` ovládacího prvku ContentPlaceHolder stejným způsobem, deklarativní označení stránky obsahu se mírně liší od označení uvedeného výše. To znamená, že druhý `ContentPlaceHolderID` ovládacího prvku obsahu bude odrážet `ID` odpovídajícího ovládacího prvku ContentPlaceHolder na stránce předlohy.
 
-Při generování obsahu stránky, musíte modul ASP.NET prověřování na stránce ovládací prvky s ovládacími prvky ContentPlaceHolder jeho hlavní stránky obsahu. Modul ASP.NET zjistí hlavní stránce stránky obsahu z `@Page` direktivy `MasterPageFile` atribut. Jak ukazuje výše uvedené značky, tuto stránku obsahu je vázán na `~/Site.master`.
+Při vykreslování stránky obsahu musí modul ASP.NET pořídit ovládací prvky obsahu stránky ovládacími prvky ContentPlaceHolder stránky předlohy. Modul ASP.NET určuje stránku předlohy stránky obsahu z atributu `MasterPageFile` direktivy `@Page`. Jak je uvedeno výše, je tato stránka obsahu svázána s `~/Site.master`.
 
-Vzhledem k tomu, že hlavní stránka má dva ovládací prvky ContentPlaceHolder - `head` a `MainContent` -Visual Web Developer vygenerované dva ovládací prvky obsahu. Každý ovládací prvek odkazuje na konkrétní ContentPlaceHolder prostřednictvím jeho `ContentPlaceHolderID` vlastnost.
+Vzhledem k tomu, že stránka předlohy obsahuje dva ovládací prvky ContentPlaceHolder-`head` a `MainContent`-vizuální webový vývojář vygeneroval dva ovládací prvky obsahu. Každý ovládací prvek obsahu odkazuje na konkrétní prvek ContentPlaceHolder prostřednictvím jeho vlastnosti `ContentPlaceHolderID`.
 
-Kde je hlavní stránky lesku za předchozí postupy šablony webu s jejich podpory během návrhu. Obrázek 9 ukazuje `About.aspx` stránky obsahu, když zobrazit pomocí zobrazení návrhu Visual Web Developer. Mějte na paměti, zatímco je zobrazen obsah stránky předlohy, je zobrazena šedě a nelze ji změnit. Ovládací prvky obsahu odpovídajících prvků ContentPlaceHolder stránky předlohy se, ale upravovat. A stejně jako s jakoukoli jinou stránku ASP.NET můžete vytvořit stránku obsahu rozhraní tak, že přidáte webové ovládací prvky prostřednictvím zobrazení Zdroj nebo návrhu.
+Kde stránky předlohy vychází z předchozích technik šablon na úrovni webu, je jejich podpora v době návrhu. Obrázek 9 ukazuje stránku `About.aspx` obsahu při zobrazení pomocí zobrazení Návrh aplikace Visual Web Developer. Všimněte si, že když je obsah stránky předlohy viditelný, je zobrazen šedě a nelze jej upravit. Ovládací prvky obsahu odpovídající prvkům ContentPlaceHolder stránky předlohy jsou však editovatelné. A stejně jako u jakékoli jiné stránky ASP.NET můžete vytvořit rozhraní stránky obsahu přidáním webových ovládacích prvků prostřednictvím zobrazení zdroje nebo návrh.
 
-[![Návrhové zobrazení obsahu stránky zobrazí obsah specifický pro stránku a hlavní stránky](creating-a-site-wide-layout-using-master-pages-cs/_static/image24.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image23.png)
+[![zobrazení návrhu stránky obsahu se zobrazí obsah pro stránku a stránku předlohy pro konkrétní stránku.](creating-a-site-wide-layout-using-master-pages-cs/_static/image24.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image23.png)
 
-**Obrázek 09**: Stránky obsahu návrhové zobrazení zobrazí i konkrétní stránku a obsahu stránek předlohy ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image25.png))
+**Obrázek 09**: návrhové zobrazení stránky obsahu zobrazuje obsah stránky a stránky předlohy ([kliknutím zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image25.png)).
 
-### <a name="adding-markup-and-web-controls-to-the-content-page"></a>Přidání značky a ovládací prvky webové stránky obsahu
+### <a name="adding-markup-and-web-controls-to-the-content-page"></a>Přidání značek a webových ovládacích prvků na stránku obsahu
 
-Za chvíli nějaký obsah pro vytvoření `About.aspx` stránky. Jak je vidět na obrázku 10, zadali nadpisů "O autorovi" a pár odstavců text, ale teď můžete přidat ovládací prvky webového příliš. Po vytvoření tohoto rozhraní, přejděte `About.aspx` stránky prostřednictvím prohlížeče.
+Chvíli vytvořte nějaký obsah pro stránku `About.aspx`. Jak vidíte na obrázku 10, zadali jsme nadpis "o autorovi" a několik odstavců textu, ale můžete také volně přidávat webové ovládací prvky. Po vytvoření tohoto rozhraní navštivte stránku `About.aspx` v prohlížeči.
 
-[![Na stránce About.aspx prostřednictvím prohlížeče](creating-a-site-wide-layout-using-master-pages-cs/_static/image27.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image26.png)
+[![stránku About. aspx najdete v prohlížeči.](creating-a-site-wide-layout-using-master-pages-cs/_static/image27.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image26.png)
 
-**Obrázek 10**: Přejděte `About.aspx` stránku prostřednictvím prohlížeči ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image28.png))
+**Obrázek 10**: navštivte stránku `About.aspx` v prohlížeči ([kliknutím zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image28.png)).
 
-Je důležité pochopit, že požadovaná stránka obsahu a jeho přidružené hlavní stránky jsou začleněny a se vykresluje jako celek zcela na webovém serveru. Koncový uživatel prohlížeče odeslaný výsledný, roztaveného HTML. Chcete-li to ověřit, zobrazení kódu HTML přijatých prohlížeče tak, že přejdete do nabídky zobrazení a zvolíte zdroj. Všimněte si, že neexistují žádné snímky nebo jiných specializovaných techniky pro zobrazení dvou různých webových stránek v jednom okně.
+Je důležité pochopit, že požadovaná stránka obsahu a její přidružená stránka předlohy jsou pojistá a vykreslená na webovém serveru jako celek. V prohlížeči koncového uživatele se pak pošle výsledný pojistka HTML. Pokud to chcete ověřit, zobrazte HTML přijatý prohlížečem tak, že v nabídce zobrazení kliknete na možnost zdroj. Všimněte si, že neexistují žádné rámce ani žádné jiné specializované postupy pro zobrazení dvou různých webových stránek v jednom okně.
 
-### <a name="binding-a-master-page-to-an-existing-aspnet-page"></a>Vytvoření vazby hlavní stránky na stávající stránku ASP.NET
+### <a name="binding-a-master-page-to-an-existing-aspnet-page"></a>Navázání stránky předlohy na existující stránku ASP.NET
 
-Jak jsme viděli v tomto kroku, přidání nové stránky obsahu do webové aplikace ASP.NET je stejně jednoduché jako zaškrtnete políčko "Vybrat hlavní stránku" a vybrat hlavní stránku. Bohužel převod stávající stránku ASP.NET na stránku předlohy není snadné.
+Jak jsme viděli v tomto kroku, přidání nové stránky obsahu do webové aplikace ASP.NET je tak jednoduché, protože kontroluje zaškrtnutí políčka "vybrat hlavní stránku" a výběr stránky předlohy. Bohužel převod stávající stránky ASP.NET na hlavní stránku není tak snadné.
 
-Vytvořit vazbu na stránku předlohy na stávající stránku ASP.NET je třeba provést následující kroky:
+K navázání stránky předlohy na existující stránku ASP.NET je třeba provést následující kroky:
 
-1. Přidat `MasterPageFile` atribut na stránku ASP.NET `@Page` směrnice, odkazuje na příslušnou stránku předlohy.
-2. Přidání ovládacích prvků obsahu všech prvků ContentPlaceHolder na stránce předlohy.
-3. Selektivně vyjmout a vložit existující obsah stránky ASP.NET do odpovídající ovládací prvky obsahu. Řeknu "selektivně" zde, protože stránka technologie ASP.NET pravděpodobně obsahuje kód, který je již vyjádřena stránky předlohy, jako `DOCTYPE`, `<html>` elementu a webového formuláře.
+1. Přidejte atribut `MasterPageFile` k direktivě `@Page` stránky ASP.NET, na kterou odkazuje na příslušnou stránku předlohy.
+2. Přidejte ovládací prvky obsahu pro každý prvek ContentPlaceHolder na stránce předlohy.
+3. Selektivně vyjměte a vložte existující obsah stránky ASP.NET do odpovídajících ovládacích prvků obsahu. Jsem tady říká "selektivní", protože stránka ASP.NET pravděpodobně obsahuje kód, který je již vyjádřený stránkou předlohy, jako je například `DOCTYPE`, `<html>` prvek a webový formulář.
 
-Podrobné pokyny k tomuto procesu spolu se snímky obrazovky, projděte si [Scott Guthrie](https://weblogs.asp.net/scottgu/)společnosti [pomocí stránek předlohy a navigace na webu](http://webproject.scottgu.com/CSharp/MasterPages/MasterPages.aspx) kurzu. "Aktualizace `Default.aspx` a `DataSample.aspx` použití stránky předlohy se stránkou" část podrobně popisuje tyto kroky.
+Podrobné pokyny k tomuto procesu spolu se snímky obrazovky najdete v kurzu [Guthrie](https://weblogs.asp.net/scottgu/) [používání stránek předlohy a navigace na webu](http://webproject.scottgu.com/CSharp/MasterPages/MasterPages.aspx) . Podrobné informace o tomto postupu najdete v části aktualizace `Default.aspx` a `DataSample.aspx` použití stránky předlohy.
 
-Protože je snazší vytvářet nové stránky obsahu, než je můžete převést stávající stránky technologie ASP.NET na stránky obsahu, doporučuje se, že při každém vytvoření nového webu ASP.NET na stránku předlohy do lokality přidat. Vytvořit vazbu všech nových stránek ASP.NET na tuto stránku předlohy. Nedělejte si starosti, pokud počáteční stránky předlohy je velmi jednoduché nebo prostý; na hlavní stránce můžete aktualizovat později.
+Vzhledem k tomu, že je mnohem snazší vytvořit nové stránky obsahu, než je převod existujících ASP.NET stránek na stránky obsahu, doporučujeme, abyste při každém vytvoření nového webu ASP.NET přidali do lokality hlavní stránku. Vytvoří vazby všech nových ASP.NET stránek na tuto stránku předlohy. Nedělejte si starosti, pokud je počáteční hlavní stránka velmi jednoduchá nebo prostá. stránku předlohy můžete aktualizovat později.
 
 > [!NOTE]
-> Při vytváření nové aplikace ASP.NET, aplikace Visual Web Developer přidá `Default.aspx` stránky, který není vázán na hlavní stránku. Pokud si chcete Postup převedení stávající stránku ASP.NET na stránku obsahu, pokračujte a činit se `Default.aspx`. Alternativně můžete odstranit `Default.aspx` a potom je znovu přidat, ale tentokrát zaškrtnete políčko "Vyberte stránka předlohy".
+> Při vytváření nové aplikace ASP.NET `Default.aspx` přidá Visual Web Developer stránku, která není svázána s hlavní stránkou. Pokud chcete procvičit převod stávající stránky ASP.NET na stránku obsahu, pokračujte a udělejte to pomocí `Default.aspx`. Alternativně můžete odstranit `Default.aspx` a pak je znovu přidat, ale tentokrát kontrolujete zaškrtnutí políčka "vybrat hlavní stránku".
 
-## <a name="step-3-updating-the-master-pages-markup"></a>Krok 3: Aktualizace kódu stránky předlohy
+## <a name="step-3-updating-the-master-pages-markup"></a>Krok 3: aktualizace značek stránky předlohy
 
-Jedním z hlavních výhod hlavní stránky je, že jedna stránka předlohy slouží k definování celkového rozložení pro mnoho stránky na webu. Proto se aktualizace v lokalitě vzhled a chování vyžaduje aktualizaci jednoho souboru – stránka předlohy.
+Jednou z hlavních výhod stránek předloh je, že k definování celkového rozložení pro celou řadu stránek na webu můžete použít jednu hlavní stránku. Proto aktualizace vzhledu lokality a chování vyžaduje aktualizaci jednoho souboru – hlavní stránka.
 
-Pro toto chování ilustrují, aktualizaci Pojďme naší hlavní stránky, aby zahrnovala aktuální datum v horní části v levém sloupci. Přidejte popisek s názvem `DateDisplay` k `leftContent` `<div>`.
+Pro ilustraci tohoto chování aktualizujeme naši hlavní stránku tak, aby obsahovala aktuální datum v horní části levého sloupce. Přidejte popisek s názvem `DateDisplay` do `<div>``leftContent`.
 
 [!code-aspx[Main](creating-a-site-wide-layout-using-master-pages-cs/samples/sample5.aspx)]
 
-Dále vytvořte `Page_Load` obslužné rutiny události pro hlavní stránky a přidejte následující kód:
+Dále vytvořte obslužnou rutinu události `Page_Load` pro stránku předlohy a přidejte následující kód:
 
 [!code-csharp[Main](creating-a-site-wide-layout-using-master-pages-cs/samples/sample6.cs)]
 
-Ve výše uvedeném kódu nastaví popisku `Text` vlastnosti na aktuální datum a čas ve formátu den v týdnu, název měsíce a dne dvěma číslicemi (viz obrázek 11). Díky této změně návštěvě jeden z obsahu stránky. Jak ukazuje obrázek 11, výsledný kód okamžitě aktualizován zahrnout změnit na stránce předlohy.
+Výše uvedený kód nastaví vlastnost `Text` popisku na aktuální datum a čas zformátovaný jako den v týdnu, název měsíce a den se dvěma číslicemi (viz obrázek 11). Pomocí této změny znovu navštivte jednu z vašich stránek obsahu. Jak ukazuje obrázek 11, výsledné označení je okamžitě aktualizováno, aby zahrnovalo změnu na stránku předlohy.
 
-[![Změny na stránku předlohy se projeví při prohlížení stránku obsahu](creating-a-site-wide-layout-using-master-pages-cs/_static/image30.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image29.png)
+[Při zobrazení stránky obsahu se projeví ![změny na stránce předlohy.](creating-a-site-wide-layout-using-master-pages-cs/_static/image30.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image29.png)
 
-**Obrázek 11**: Změny na stránku předlohy se projeví při prohlížení stránku obsahu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-site-wide-layout-using-master-pages-cs/_static/image31.png))
+**Obrázek 11**: při zobrazení stránky obsahu se projeví změny na stránce předlohy ([kliknutím zobrazíte obrázek v plné velikosti).](creating-a-site-wide-layout-using-master-pages-cs/_static/image31.png)
 
 > [!NOTE]
-> Jak ukazuje tento příklad, hlavní stránky mohou obsahovat webové serverové ovládací prvky, kód a obslužné rutiny událostí.
+> Jak ukazuje tento příklad, stránky předlohy mohou obsahovat webové ovládací prvky na straně serveru, kód a obslužné rutiny událostí.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Stránky předlohy povolit vývojáře využívající technologii ASP.NET a navrhněte rozložení konzistentní webu, který je možné snadno aktualizovat. Vytvoření hlavní stránky a jejich přidružené stránky obsahu je snadné – stačí vytvořit standardní stránky technologie ASP.NET, jako Visual Web Developer nabízí bohatou podporu návrhu.
+Stránky předlohy umožňují vývojářům ASP.NET navrhovat konzistentní rozložení v rámci webu, které je snadno aktualizovatelné. Vytváření stránek předloh a jejich přidružených stránek obsahu je jednoduché jako vytváření standardních ASP.NET stránek, protože Visual Web Developer nabízí bohatou podporu při návrhu.
 
-Stránka předlohy příkladu jsme vytvořili v tomto kurzu má dva ovládací prvky ContentPlaceHolder `head` a `MainContent`. Jsme zadali pouze značky `MainContent` ContentPlaceHolder v ovládacím prvku naši stránku obsahu, ale. V dalším kurzu se podíváme na použití více obsahu ovládacích prvků na stránce obsahu. Můžeme také zjistit, jak definovat výchozí kód pro obsah ovládací prvky v rámci stránky předlohy a jak přepínat mezi pomocí výchozího kódu definované v hlavní stránky a poskytuje vlastní značky ze stránky obsahu.
+Příklad stránky předlohy, kterou jsme vytvořili v tomto kurzu, obsahoval dva ovládací prvky ContentPlaceHolder, `head` a `MainContent`. Do naší stránky obsahu jsme ale uvedli jenom označení pro `MainContent` ovládací prvek ContentPlaceHolder. V dalším kurzu se podíváme na použití více ovládacích prvků obsahu na stránce obsahu. Také se naučíte, jak definovat výchozí značky pro ovládací prvky obsahu v rámci stránky předlohy, a jak přepínat mezi použitím výchozího kódu definovaného na stránce předlohy a poskytováním vlastního kódu ze stránky obsahu.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ### <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
-- [Technologie ASP.NET pro profesionální návrháře využívající: Bezplatná šablony návrhu a pokyny na vytváření webů ASP.NET pomocí webových standardů](https://msdn.microsoft.com/asp.net/aa336602.aspx)
-- [Přehled ASP.NET hlavní stránky](https://msdn.microsoft.com/library/wtxbf3hh.aspx)
-- [Šablony kaskádových šablony stylů (CSS) kurzů](http://www.w3schools.com/css/default.asp)
-- [Použije dynamické nastavení názvu stránky](http://aspnet.4guysfromrolla.com/articles/051006-1.aspx)
+- [ASP.NET pro návrháře: Bezplatné šablony návrhu a pokyny k vytváření webů ASP.NET pomocí webových standardů](https://msdn.microsoft.com/asp.net/aa336602.aspx)
+- [ASP.NET hlavní stránky – přehled](https://msdn.microsoft.com/library/wtxbf3hh.aspx)
+- [Pokyny pro kaskádové šablony stylů (CSS)](http://www.w3schools.com/css/default.asp)
+- [Dynamické nastavení názvu stránky](http://aspnet.4guysfromrolla.com/articles/051006-1.aspx)
 - [Stránky předlohy v ASP.NET](http://www.odetocode.com/articles/419.aspx)
-- [Kurzy rychlý start stránky předlohy](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/masterpages/default.aspx)
+- [Kurzy rychlý Start stránek předloh](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/masterpages/default.aspx)
 
 ### <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor více ASP/ASP.NET knih a Zakladatel 4GuysFromRolla.com pracuje s Microsoft webových technologií od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami technologie ASP.NET 3.5 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott může být dostupný na adrese [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím na svém blogu [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor několika stránek ASP/ASP. NET Books a zakladatel of 4GuysFromRolla.com, pracoval s webovými technologiemi microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 3,5 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott se dá kontaktovat [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu na [http://ScottOnWriting.NET](http://scottonwriting.net/).
 
-### <a name="special-thanks-to"></a>Speciální k
+### <a name="special-thanks-to"></a>Zvláštní díky
 
-Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
+Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com).
 
 > [!div class="step-by-step"]
 > [Next](multiple-contentplaceholders-and-default-content-cs.md)

@@ -1,160 +1,160 @@
 ---
 uid: config-builder
-title: Konfigurace počítačů pro technologii ASP.NET
+title: Tvůrci konfigurace pro ASP.NET
 author: rick-anderson
-description: Další informace o získání konfigurační data ze zdrojů než hodnoty web.config z externích zdrojů.
+description: Naučte se získat konfigurační data z jiných zdrojů než hodnot Web. config z externích zdrojů.
 ms.author: riande
 ms.date: 10/29/2018
 msc.type: content
-ms.openlocfilehash: 2bec828aa01d2c17f5374c3b1804b7444ec03dda
-ms.sourcegitcommit: 2d53ed9e4c8b19d3526cbc689bfa8394c9449cec
+ms.openlocfilehash: 5299d9ab057c3096773955a7461e77a80673ebfe
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59905693"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74586755"
 ---
-# <a name="configuration-builders-for-aspnet"></a>Konfigurace počítačů pro technologii ASP.NET
+# <a name="configuration-builders-for-aspnet"></a>Tvůrci konfigurace pro ASP.NET
 
-Podle [Stephen Molloy](https://github.com/StephenMolloy) a [Rick Anderson](https://twitter.com/RickAndMSFT)
+Od [Stephen Molloy](https://github.com/StephenMolloy) a [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Konfigurace počítačů poskytují moderní a agilní mechanismus pro aplikace v ASP.NET k získání hodnoty konfigurace z externích zdrojů.
+Tvůrci konfigurace poskytují moderní a agilní mechanizmus pro aplikace ASP.NET k získání hodnot konfigurace z externích zdrojů.
 
-Konfigurace počítačů:
+Tvůrci konfigurace:
 
-* Jsou k dispozici v rozhraní .NET Framework 4.7.1 a novějším.
-* Nabízejí flexibilní mechanismus pro čtení konfigurační hodnoty.
-* Řešení některých základních potřeb aplikace tak, jak přesunout do kontejneru a fokusem prostředí v cloudu.
-* Můžete použít ke zlepšení ochrany konfigurační data kreslením z dříve k dispozici zdrojů (například Azure Key Vault a proměnnými prostředí) v konfigurační systém .NET.
+* Jsou k dispozici v .NET Framework 4.7.1 a novějším.
+* Poskytněte flexibilní mechanizmus pro čtení hodnot konfigurace.
+* Při přesunu do kontejneru a prostředí zaměřeného na Cloud se řeší některé základní požadavky aplikací.
+* Dá se použít ke zlepšení ochrany konfiguračních dat vykreslováním ze zdrojů, které byly dřív nedostupné (například Azure Key Vault a proměnných prostředí) v konfiguračním systému .NET.
 
-## <a name="keyvalue-configuration-builders"></a>Tvůrci konfigurace klíč hodnota
+## <a name="keyvalue-configuration-builders"></a>Tvůrci konfigurace klíč/hodnota
 
-Běžný scénář, který může být zpracována tvůrci konfigurace je mechanismus nahrazení základní klíč/hodnota pro konfigurační oddíly funkce, které se řídí vzorem klíč/hodnota. Rozhraní .NET Framework konceptu ConfigurationBuilders není omezena pouze na konkrétní konfigurační oddíly funkce nebo vzorce. Nicméně mnoho tvůrci konfigurace v `Microsoft.Configuration.ConfigurationBuilders` ([githubu](https://github.com/aspnet/MicrosoftConfigurationBuilders), [NuGet](https://www.nuget.org/packages?q=Microsoft.Configuration.ConfigurationBuilders)) práce v rámci vzoru klíč/hodnota.
+Běžným scénářem, který mohou být zpracovány konfiguračními sestavami, je poskytnout základní mechanismus pro nahrazení klíč/hodnota pro konfigurační oddíly, které následují po vzorci klíč/hodnota. .NET Framework koncept ConfigurationBuilders není omezený na konkrétní konfigurační oddíly nebo vzory. Mnoho konfiguračních sestavení v `Microsoft.Configuration.ConfigurationBuilders` ([GitHub](https://github.com/aspnet/MicrosoftConfigurationBuilders), [NuGet](https://www.nuget.org/packages?q=Microsoft.Configuration.ConfigurationBuilders)) ale funguje v rámci vzoru klíč/hodnota.
 
-## <a name="keyvalue-configuration-builders-settings"></a>Nastavení tvůrci konfigurace klíč hodnota
+## <a name="keyvalue-configuration-builders-settings"></a>Nastavení tvůrců konfigurace klíč/hodnota
 
-Následující nastavení se vztahuje na všechny konfigurace Tvůrce klíč/hodnota v `Microsoft.Configuration.ConfigurationBuilders`.
+Následující nastavení platí pro všechna sestavení konfigurace klíč/hodnota v `Microsoft.Configuration.ConfigurationBuilders`.
 
 ### <a name="mode"></a>Režim
 
-Tvůrci konfiguraci pomocí externího zdroje informací klíč/hodnota k naplnění vybraný klíč/hodnota prvků konfigurace systému. Konkrétně `<appSettings/>` a `<connectionStrings/>` oddíly přijímat zvláštní zacházení z konfigurace počítačů. Tvůrci pracovat v tří režimů:
+Tvůrci konfigurace používají externí zdroj informací o klíčích a hodnotách k naplnění vybraných prvků klíč/hodnota konfiguračního systému. Konkrétně oddíly `<appSettings/>` a `<connectionStrings/>` dostanou zvláštní zacházení od tvůrců konfigurace. Tvůrci pracují ve třech režimech:
 
-* `Strict` – Výchozí režim. V tomto režimu konfigurace Tvůrce pracuje pouze se dobře známé klíč/hodnota-zaměřenou na konfigurační oddíly funkce. `Strict` Režim zobrazí každý klíč v části. Pokud se najde odpovídající klíče v externím zdroji:
+* `Strict` – výchozí režim. V tomto režimu nástroj Configuration Builder pracuje pouze s dobře známými konfiguračními oddíly orientovanými na klíč/hodnotu. `Strict` režim vytvoří výčet jednotlivých klíčů v části. Pokud je v externím zdroji nalezen shodný klíč:
 
-   * Tvůrci konfigurace nahraďte hodnotu v konfigurační sekci výslednou hodnotu z externího zdroje.
-* `Greedy` – Tento režim je úzce souvisí s `Strict` režimu. Místo omezeno na klíče, které již existují v původní konfiguraci:
+   * Tvůrci konfigurace nahradí hodnotu ve výsledném oddílu konfigurace hodnotou z externího zdroje.
+* `Greedy` – tento režim úzce souvisí s režimem `Strict`. Místo toho, aby se omezily na klíče, které už existují v původní konfiguraci:
 
-  * Konfigurace počítačů přidá všechny páry klíč/hodnota z externího zdroje do výsledné konfigurační oddíl.
+  * Tvůrci konfigurace přidají všechny páry klíč/hodnota z externího zdroje do výsledného konfiguračního oddílu.
 
-* `Expand` -Funguje v nezpracovaném kódu XML předtím, než je analyzován do konfiguračního oddílu objektu. To můžete představit jako rozšíření tokenů v řetězci. Libovolná součást Nezpracovaný řetězec XML, který odpovídá vzoru `${token}` je kandidát pro rozšíření tokenu. Pokud není nalezena žádná odpovídající hodnota v externím zdroji, token, který se nemění. Tvůrci v tomto režimu nejsou omezeny `<appSettings/>` a `<connectionStrings/>` oddíly.
+* `Expand` – funguje v nezpracovaném formátu XML před tím, než se analyzuje do objektu konfiguračního oddílu. Lze si představit jako rozšíření tokenů v řetězci. Jakákoli část nezpracovaného řetězce XML, který odpovídá vzoru `${token}`, je kandidátem pro rozšíření tokenu. Pokud se v externím zdroji nenajde žádná odpovídající hodnota, token se nemění. Tvůrci v tomto režimu nejsou omezeni na oddíly `<appSettings/>` a `<connectionStrings/>`.
 
-Následující kód z *web.config* umožňuje [EnvironmentConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.Environment/) v `Strict` režimu:
+Následující kód ze *souboru Web. config* povolí [EnvironmentConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.Environment/) v režimu `Strict`:
 
 [!code-xml[Main](config-builder/MyConfigBuilders/WebDefault.config?name=snippet)]
 
-Následující kód čtení `<appSettings/>` a `<connectionStrings/>` je znázorněno v předchozím *web.config* souboru:
+Následující kód přečte `<appSettings/>` a `<connectionStrings/>` uvedeny v předchozím souboru *Web. config* :
 
 [!code-csharp[Main](config-builder/MyConfigBuilders/About.aspx.cs)]
 
-Předchozí kód nastaví hodnoty vlastností:
+Předchozí kód nastaví hodnoty vlastností na:
 
-* Hodnoty *web.config* souboru, pokud nejsou nastavené klíče v seznamu proměnných prostředí.
-* Hodnoty prostředí proměnné, když nastavení.
+* Hodnoty v souboru *Web. config* , pokud klíče nejsou nastaveny v proměnných prostředí.
+* Hodnoty proměnné prostředí, je-li nastavena.
 
-Například `ServiceID` bude obsahovat:
+`ServiceID` například bude obsahovat:
 
-* "ServiceID hodnotu ze souboru web.config", pokud je proměnná prostředí `ServiceID` není nastaven.
-* Hodnota `ServiceID` prostředí proměnné, když nastavení.
+* "Idslužby hodnota z Web. config", pokud není nastavená proměnná prostředí `ServiceID`.
+* Hodnota proměnné prostředí `ServiceID`, je-li nastavena.
 
-Na následujícím obrázku `<appSettings/>` klíče/hodnoty z předchozího *web.config* souboru sadu v editoru prostředí:
+Následující obrázek ukazuje `<appSettings/>` klíče nebo hodnoty z předchozího souboru *Web. config* , který je nastaven v editoru prostředí:
 
-![editor prostředí](config-builder/static/env.png)
+![Editor prostředí](config-builder/static/env.png)
 
-Poznámka: Můžete potřebovat ukončit a restartovat Visual Studio pro zobrazení změn v proměnných prostředí.
+Poznámka: Pokud chcete zobrazit změny v proměnných prostředí, možná budete muset aplikaci Visual Studio ukončit a restartovat.
 
-### <a name="prefix-handling"></a>Předpona zpracování
+### <a name="prefix-handling"></a>Zpracování předpon
 
-Předpony klíčů můžete zjednodušit nastavení klíče, protože:
+Klíčové předpony můžou zjednodušit nastavení klíčů z těchto důvodů:
 
-* Konfigurace rozhraní .NET Framework je složitá a vnořené.
-* Externí klíč/hodnota zdroje jsou často na úrovni basic a bez stromové struktury podle povahy. Například nejsou vnořené proměnné prostředí.
+* Konfigurace .NET Framework je složitá a vnořená.
+* Zdroje externích klíčů a hodnot jsou běžně základní a ploché podle povahy. Například proměnné prostředí nejsou vnořené.
 
-Použít některou z následujících dvou přístupů vkládat obě `<appSettings/>` a `<connectionStrings/>` do konfigurace prostřednictvím proměnné prostředí:
+K vložení `<appSettings/>` a `<connectionStrings/>` do konfigurace prostřednictvím proměnných prostředí použijte některý z následujících přístupů:
 
-* S `EnvironmentConfigBuilder` ve výchozím `Strict` režimu a odpovídající názvy klíčů v konfiguračním souboru. Předchozí kód a kód používá tento přístup. Tento přístup můžete **není** stejně jako s názvem klíče v obou `<appSettings/>` a `<connectionStrings/>`.
-* Použijte dva `EnvironmentConfigBuilder`ve `Greedy` režimu s odlišné předpony a `stripPrefix`. Díky tomuto přístupu může číst aplikace `<appSettings/>` a `<connectionStrings/>` bez nutnosti aktualizovat konfigurační soubor. Další části [stripPrefix](#stripprefix), ukazuje, jak to provést.
-* Použijte dva `EnvironmentConfigBuilder`ve `Greedy` režimu s odlišné předpony. Díky tomuto přístupu nemůže mít duplicitní názvy klíčů jako názvy klíčů se musí lišit podle předpony.  Příklad:
+* S `EnvironmentConfigBuilder` ve výchozím režimu `Strict` a příslušnými názvy klíčů v konfiguračním souboru. Předchozí kód a kód přebírají tento přístup. Pomocí tohoto přístupu **nemůžete** mít v `<appSettings/>` i `<connectionStrings/>`stejné pojmenované klíče.
+* Použijte dva `EnvironmentConfigBuilder`s v režimu `Greedy` s jedinečnými předponami a `stripPrefix`. S tímto přístupem může aplikace číst `<appSettings/>` a `<connectionStrings/>` bez nutnosti aktualizovat konfigurační soubor. V další části [stripPrefix](#stripprefix)se dozvíte, jak to provést.
+* Použijte dva `EnvironmentConfigBuilder`s v režimu `Greedy` s jedinečnými předponami. U tohoto přístupu nemůžete mít duplicitní názvy klíčů, protože názvy klíčů se musí lišit podle předpony.  Příklad:
 
 [!code-xml[Main](config-builder/MyConfigBuilders/WebPrefix.config?name=snippet&highlight=11-99)]
 
-S předchozím kódu je možné zadat konfiguraci pro dvě různé oddíly stejného zdroje bez stromové struktury klíč/hodnota.
+S předchozím označením je možné použít stejný zdroj nestrukturovaného klíče nebo hodnoty k naplnění konfigurace dvou různých oddílů.
 
-Na následujícím obrázku `<appSettings/>` a `<connectionStrings/>` klíče/hodnoty z předchozího *web.config* souboru sadu v editoru prostředí:
+Následující obrázek ukazuje `<appSettings/>` a `<connectionStrings/>` klíče/hodnoty z předchozího souboru *Web. config* , který je nastaven v editoru prostředí:
 
-![editor prostředí](config-builder/static/prefix.png)
+![Editor prostředí](config-builder/static/prefix.png)
 
-Následující kód čtení `<appSettings/>` a `<connectionStrings/>` klíče/hodnoty obsažené v předchozím *web.config* souboru:
+Následující kód přečte `<appSettings/>` a `<connectionStrings/>` klíče/hodnoty obsažené v předchozím souboru *Web. config* :
 
 [!code-csharp[Main](config-builder/MyConfigBuilders/Contact.aspx.cs?name=snippet)]
 
-Předchozí kód nastaví hodnoty vlastností:
+Předchozí kód nastaví hodnoty vlastností na:
 
-* Hodnoty *web.config* souboru, pokud nejsou nastavené klíče v seznamu proměnných prostředí.
-* Hodnoty prostředí proměnné, když nastavení.
+* Hodnoty v souboru *Web. config* , pokud klíče nejsou nastaveny v proměnných prostředí.
+* Hodnoty proměnné prostředí, je-li nastavena.
 
-Například použití předchozího *web.config* souboru, jsou nastavené klíče/hodnoty v předchozím obrázku editor prostředí a předchozí kód, následující hodnoty:
+Například pomocí předchozího souboru *Web. config* , klíčů/hodnot v předchozí imagi editoru prostředí a předchozího kódu jsou nastaveny následující hodnoty:
 
 |  Key              | Hodnota |
 | ----------------- | ------------ |
-|     AppSetting_ServiceID           | AppSetting_ServiceID Obálka proměnných|
-|    AppSetting_default            | AppSetting_default hodnotu z prostředí |
-|       ConnStr_default         | Val ConnStr_default z env|
+|     AppSetting_ServiceID           | AppSetting_ServiceID z proměnných ENV|
+|    AppSetting_default            | AppSetting_default hodnota z ENV |
+|       ConnStr_default         | ConnStr_default Val ze ENV|
 
 ### <a name="stripprefix"></a>stripPrefix
 
-`stripPrefix`: logickou hodnotu, výchozí hodnota je `false`. 
+`stripPrefix`: logická hodnota, výchozí hodnota je `false`. 
 
-Předchozí kód XML odděluje nastavení aplikace připojovací řetězce, ale vyžaduje všechny klíče v *web.config* souboru pomocí zadané předpony. Například předponu `AppSetting` musí být přidané do `ServiceID` klíč ("AppSetting_ServiceID"). S `stripPrefix`, předpona, která se nepoužívá *web.config* souboru. Předpona, která se vyžaduje Tvůrce zdroj konfigurace (například v prostředí.) Předpokládáme, že se Většina vývojářů používá `stripPrefix`.
+Předchozí kód XML odděluje nastavení aplikace z připojovacích řetězců, ale vyžaduje, aby všechny klíče v souboru *Web. config* používaly zadanou předponu. Například `AppSetting` předpony musí být přidány do klíče `ServiceID` ("AppSetting_ServiceID"). V `stripPrefix`se předpona nepoužívá v souboru *Web. config* . Ve zdroji tvůrce konfigurace je vyžadována předpona (například v prostředí). Předpokládáme, že většina vývojářů použije `stripPrefix`.
 
-Aplikace obvykle pruhu vypnout předponu. Následující *web.config* odstraní předpona:
+Aplikace obvykle vycházejí z předpony. Následující soubor *Web. config* vyříznout tuto předponu:
 
 [!code-xml[Main](config-builder/MyConfigBuilders/WebPrefixStrip.config?name=snippet&highlight=14,19)]
 
-V předchozím *web.config* souboru, `default` klíč je v obou `<appSettings/>` a `<connectionStrings/>`.
+V předchozím souboru *Web. config* je `default` klíč v `<appSettings/>` i `<connectionStrings/>`.
 
-Na následujícím obrázku `<appSettings/>` a `<connectionStrings/>` klíče/hodnoty z předchozího *web.config* souboru sadu v editoru prostředí:
+Následující obrázek ukazuje `<appSettings/>` a `<connectionStrings/>` klíče/hodnoty z předchozího souboru *Web. config* , který je nastaven v editoru prostředí:
 
-![editor prostředí](config-builder/static/prefix.png)
+![Editor prostředí](config-builder/static/prefix.png)
 
-Následující kód čtení `<appSettings/>` a `<connectionStrings/>` klíče/hodnoty obsažené v předchozím *web.config* souboru:
+Následující kód přečte `<appSettings/>` a `<connectionStrings/>` klíče/hodnoty obsažené v předchozím souboru *Web. config* :
 
 [!code-csharp[Main](config-builder/MyConfigBuilders/About2.aspx.cs?name=snippet)]
 
-Předchozí kód nastaví hodnoty vlastností:
+Předchozí kód nastaví hodnoty vlastností na:
 
-* Hodnoty *web.config* souboru, pokud nejsou nastavené klíče v seznamu proměnných prostředí.
-* Hodnoty prostředí proměnné, když nastavení.
+* Hodnoty v souboru *Web. config* , pokud klíče nejsou nastaveny v proměnných prostředí.
+* Hodnoty proměnné prostředí, je-li nastavena.
 
-Například použití předchozího *web.config* souboru, jsou nastavené klíče/hodnoty v předchozím obrázku editor prostředí a předchozí kód, následující hodnoty:
+Například pomocí předchozího souboru *Web. config* , klíčů/hodnot v předchozí imagi editoru prostředí a předchozího kódu jsou nastaveny následující hodnoty:
 
-|  Key              | Value |
+|  Key              | Hodnota |
 | ----------------- | ------------ |
-|     ID služby           | AppSetting_ServiceID Obálka proměnných|
-|    default            | AppSetting_default hodnotu z prostředí |
-|    default         | Val ConnStr_default z env|
+|     Idslužby           | AppSetting_ServiceID z proměnných ENV|
+|    výchozí            | AppSetting_default hodnota z ENV |
+|    výchozí         | ConnStr_default Val ze ENV|
 
 ### <a name="tokenpattern"></a>tokenPattern
 
-`tokenPattern`: Řetězec, výchozí hodnota je `@"\$\{(\w+)\}"`
+`tokenPattern`: řetězec, výchozí nastavení `@"\$\{(\w+)\}"`
 
-`Expand` Chování tvůrci vyhledá nezpracovaném kódu XML pro tokeny, které vypadají jako `${token}`. Vyhledávání se provádí s regulárním výrazem výchozí `@"\$\{(\w+)\}"`. Množinu znaků, který odpovídá `\w` je přísnější než XML a mnoho zdrojů konfiguraci umožňují. Použití `tokenPattern` při více znaků, než `@"\$\{(\w+)\}"` jsou nezbytné název tokenu.
+Chování `Expand` v sestavách vyhledává nezpracovaný kód XML pro tokeny, které vypadají jako `${token}`. Hledání se provádí s výchozím regulárním výrazem `@"\$\{(\w+)\}"`. Sada znaků, které odpovídají `\w`, je větší než XML a mnoho zdrojů konfigurace povoluje. Pokud název tokenu vyžaduje více znaků, než je `@"\$\{(\w+)\}"`, použijte `tokenPattern`.
 
-`tokenPattern`: Řetězec:
+`tokenPattern`: řetězec:
 
-* Umožňuje vývojářům měnit regulární výraz, který se použije k porovnání s tokenu.
-* Abyste měli jistotu, že je ve správném formátu, nebezpečné regulární výraz se provádí bez ověření.
-* Musí obsahovat skupinu zachycení. Celý regulární výraz se musí shodovat celý token. První zachycení musí být název tokenu k vyhledání ve zdroji konfigurace.
+* Umožňuje vývojářům změnit regulární výraz, který se používá pro odpovídající tokeny.
+* Neprovádí se žádné ověření, abyste se ujistili, že se jedná o správný regulární výraz, který není bezpečný.
+* Musí obsahovat skupinu zachycení. Celý regulární výraz se musí shodovat s celým tokenem. První zachycení musí být název tokenu, aby bylo možné vyhledat zdroj konfigurace.
 
-## <a name="configuration-builders-in-microsoftconfigurationconfigurationbuilders"></a>Konfigurace počítačů v Microsoft.Configuration.ConfigurationBuilders
+## <a name="configuration-builders-in-microsoftconfigurationconfigurationbuilders"></a>Tvůrci konfigurace v Microsoft. Configuration. ConfigurationBuilders
 
 ### <a name="environmentconfigbuilder"></a>EnvironmentConfigBuilder
 
@@ -167,17 +167,17 @@ Například použití předchozího *web.config* souboru, jsou nastavené klíč
 
 [EnvironmentConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.Environment/):
 
-* Je nejjednodušší konfiguraci počítačů.
-* Čte hodnoty z prostředí.
+* Je nejjednodušší pro sestavovatele konfigurace.
+* Přečte hodnoty z prostředí.
 * Nemá žádné další možnosti konfigurace.
-* `name` Hodnota atributu je volitelný.
+* Hodnota atributu `name` je libovolná.
 
-**Poznámka:** V prostředí kontejneru Windows jsou vloženy do prostředí vstupního bodu procesu pouze proměnné nastavené v době běhu. Aplikace, na kterých běží jako služba nebo bez vstupního bodu procesu není vyzvednutí tyto proměnné není-li jinak vloží mechanismem v kontejneru. Pro [IIS](https://github.com/Microsoft/iis-docker/pull/41)/[ASP.NET](https://github.com/Microsoft/aspnet-docker)– na základě kontejnerů, aktuální verze [ServiceMonitor.exe](https://github.com/Microsoft/iis-docker/pull/41) zpracovává to *DefaultAppPool* pouze. Ostatní varianty kontejnerů na základě Windows může být potřeba vyvíjet své vlastní mechanismus vkládání pro procesy bez vstupního bodu.
+**Poznámka:** V prostředí kontejneru Windows jsou proměnné nastavené v době běhu vloženy pouze do prostředí procesu EntryPoint. Aplikace, které běží jako služba nebo jiný než vstupní bod, nevezmou tyto proměnné, pokud nejsou jinak vloženy pomocí mechanismu v kontejneru. V případě kontejnerů založených na [službě IIS](https://github.com/Microsoft/iis-docker/pull/41)/[ASP.NET](https://github.com/Microsoft/aspnet-docker)aktuální verze [ServiceMonitor. exe](https://github.com/Microsoft/iis-docker/pull/41) zpracovává tuto službu pouze v rámci aplikace *DefaultAppPool* . Jiné varianty kontejneru založené na systému Windows můžou potřebovat vyvinout vlastní mechanizmy injektáže pro procesy, které nejsou typu EntryPoint.
 
 ### <a name="usersecretsconfigbuilder"></a>UserSecretsConfigBuilder
 
 > [!WARNING]
-> Nikdy ukládat hesla, citlivé připojovací řetězce nebo jiných citlivých dat. ve zdrojovém kódu. Tajné klíče v produkčním prostředí by se neměly pro vývoj nebo testování.
+> Nikdy neukládejte hesla, citlivé připojovací řetězce ani další citlivá data ve zdrojovém kódu. Provozní tajemství by se neměla používat pro vývoj nebo testování.
 
 ```xml
 <add name="UserSecrets"
@@ -188,16 +188,16 @@ Například použití předchozího *web.config* souboru, jsou nastavené klíč
     Microsoft.Configuration.ConfigurationBuilders.UserSecrets" />
 ```
 
-Tvůrce tato konfigurace poskytuje podobné funkce [ASP.NET Core tajný klíč správce](/aspnet/core/security/app-secrets).
+Tento nástroj Configuration Manager poskytuje funkci podobnou [ASP.NET Core správce tajných klíčů](/aspnet/core/security/app-secrets).
 
-[UserSecretsConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.UserSecrets/) je možné použít v projektech .NET Framework, ale je třeba zadat soubor tajných kódů. Alternativně můžete definovat `UserSecretsId` vlastnost v projektu soubor a vytvořte soubor raw tajné kódy ve správném umístění pro čtení. Zachovat externí závislosti mimo váš projekt, soubor tajného kódu je ve formátu XML. Formát XML je k implementaci se týká a formát byste se neměli spoléhat. Pokud je potřeba sdílet *secrets.json* soubor s projekty .NET Core, zvažte použití [SimpleJsonConfigBuilder](#simplejsonconfigbuilder). `SimpleJsonConfigBuilder` Formátování pro .NET Core byste také zvážit podrobnost implementace může změnit.
+[UserSecretsConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.UserSecrets/) se dá použít v projektech .NET Framework, ale musí se zadat soubor tajných klíčů. Alternativně můžete definovat vlastnost `UserSecretsId` v souboru projektu a vytvořit nezpracovaný soubor tajných klíčů ve správném umístění pro čtení. Chcete-li zachovat externí závislosti mimo váš projekt, tajný soubor je ve formátu XML. Formátování XML je podrobné informace o implementaci a formát by neměl spoléhat na. Pokud potřebujete sdílet soubor *tajných kódů. JSON* s projekty .NET Core, zvažte použití [SimpleJsonConfigBuilder](#simplejsonconfigbuilder). Formát `SimpleJsonConfigBuilder` pro .NET Core by měl být také považován za podrobnosti implementace, které se mohou změnit.
 
-Konfigurace atributů pro `UserSecretsConfigBuilder`:
+Konfigurační atributy pro `UserSecretsConfigBuilder`:
 
-* `userSecretsId` – Toto je upřednostňovanou metodou pro určení souboru XML tajných kódů. Pracuje podobně až po .NET Core, který používá `UserSecretsId` pro uložení tohoto identifikátoru vlastnosti projektu. Řetězec musí být jedinečný, nemusí být identifikátor GUID. Pomocí tohoto atributu `UserSecretsConfigBuilder` dobře známé místní umístění (`%APPDATA%\Microsoft\UserSecrets\<UserSecrets Id>\secrets.xml`) pro soubor tajných kódů, které patří do tohoto identifikátoru.
-* `userSecretsFile` -Volitelný atribut určení souboru, který obsahuje tajné klíče. `~` Znak lze použít na začátku tak, aby odkazovaly kořenový adresář aplikace. Buď tento atribut nebo `userSecretsId` atribut je vyžadován. Pokud jsou zadány oba `userSecretsFile` přednost.
-* `optional`: logická hodnota, výchozí hodnota `true` – brání výjimku, pokud nelze najít soubor tajných kódů. 
-* `name` Hodnota atributu je volitelný.
+* `userSecretsId` – jedná se o upřednostňovanou metodu pro identifikaci souboru tajných kódů XML. Funguje podobně jako rozhraní .NET Core, které používá vlastnost projektu `UserSecretsId` k uložení tohoto identifikátoru. Řetězec musí být jedinečný, nemusí se jednat o identifikátor GUID. U tohoto atributu `UserSecretsConfigBuilder` pro soubor tajných kódů patřící k tomuto identifikátoru najít dobře známé místní umístění (`%APPDATA%\Microsoft\UserSecrets\<UserSecrets Id>\secrets.xml`).
+* `userSecretsFile` – volitelný atribut určující soubor obsahující tajné klíče. `~` znak lze použít na začátku pro odkaz na kořen aplikace. Je vyžadován buď tento atribut, nebo atribut `userSecretsId`. Pokud jsou zadány obě, má `userSecretsFile` přednost.
+* `optional`: Boolean, výchozí hodnota `true` – zabrání výjimce, pokud nebyl nalezen soubor tajných klíčů. 
+* Hodnota atributu `name` je libovolná.
 
 Soubor tajných kódů má následující formát:
 
@@ -226,13 +226,13 @@ Soubor tajných kódů má následující formát:
 
 [AzureKeyVaultConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.Azure/) čte hodnoty uložené v [Azure Key Vault](/azure/key-vault/key-vault-whatis).
 
-`vaultName` je vyžadováno (název trezoru), nebo identifikátor URI pro trezor. Povolit řízení, o které trezoru pro připojení k další atributy, ale jsou nutné jenom v případě aplikace není spuštěna v prostředí, která funguje s `Microsoft.Azure.Services.AppAuthentication`. Knihovny ověřování služby Azure se používá k automaticky získávají informace o připojení z prostředí pro spouštění Pokud je to možné. Můžete přepsat automaticky vyzvednutí informace o připojení tím, že poskytuje připojovací řetězec.
+`vaultName` se vyžaduje (buď název trezoru, nebo identifikátor URI k trezoru). Ostatní atributy umožňují řízení, ke kterému trezoru se má připojit, ale jsou nezbytné pouze v případě, že aplikace neběží v prostředí, které funguje s `Microsoft.Azure.Services.AppAuthentication`. Knihovna ověřování služeb Azure slouží k automatickému výběru informací o připojení z prováděcího prostředí, pokud je to možné. K automatickému výběru informací o připojení můžete potlačit zadáním připojovacího řetězce.
 
-* `vaultName` – Požadováno pokud `uri` v není k dispozici. Určuje název úložiště ve vašem předplatném Azure, ze kterého se mají číst páry klíč/hodnota.
-* `connectionString` – Připojovací řetězec použitelný [AzureServiceTokenProvider](https://docs.microsoft.com/en-us/azure/key-vault/service-to-service-authentication#connection-string-support)
-* `uri` -Připojení s ostatními poskytovateli služby Key Vault se zadaným `uri` hodnotu. Pokud není zadán, Azure (`vaultName`) je poskytovatel trezoru.
-* `version` -Azure Key Vault poskytuje funkce správy verzí pro tajné kódy. Pokud `version` není zadána, Tvůrce pouze načte tajných kódů odpovídající této verze.
-* `preloadSecretNames` – Ve výchozím nastavení tato querys Tvůrce **všechny** klíče názvy v trezoru klíčů po jeho inicializaci. Pokud chcete zabránit, všechny hodnoty klíče pro čtení, tento atribut nastavte na `false`. Nastavení na `false` přečte tajných kódů jeden po druhém. Tajné kódy, které postupně po jednom můžete užitečné, pokud trezor umožňuje přístup "Get" ale ne "seznam" přístup ke čtení. **Poznámka:** Při použití `Greedy` režimu `preloadSecretNames` musí být `true` (výchozí nastavení.)
+* `vaultName` – vyžaduje se, pokud `uri` není k dispozici. Určuje název trezoru v předplatném Azure, ze kterého se mají číst páry klíč/hodnota.
+* `connectionString` – připojovací řetězec použitelný pomocí [AzureServiceTokenProvider](https://docs.microsoft.com/azure/key-vault/service-to-service-authentication#connection-string-support)
+* `uri` – připojuje se k jiným poskytovatelům Key Vault se zadanou `uri` hodnotou. Pokud není zadaný, Azure (`vaultName`) je poskytovatelem trezoru.
+* `version`-Azure Key Vault poskytuje funkci správy verzí tajných kódů. Je-li zadán `version`, tvůrce načte pouze tajné kódy, které odpovídají této verzi.
+* `preloadSecretNames` – ve výchozím nastavení bude tento tvůrce dotazovat **všechny** názvy klíčů v trezoru klíčů při inicializaci. Chcete-li zabránit čtení všech hodnot klíče, nastavte tento atribut na `false`. Když toto nastavení nastavíte na `false` přečtou tajné klíče po jednom. Čtení tajných kódů po jednom může být užitečné, pokud trezor umožňuje přístup "získat", ale ne "seznam". **Poznámka:** Při použití režimu `Greedy` musí být `preloadSecretNames` `true` (výchozí nastavení).
 
 ### <a name="keyperfileconfigbuilder"></a>KeyPerFileConfigBuilder
 
@@ -247,19 +247,19 @@ Soubor tajných kódů má následující formát:
     Microsoft.Configuration.ConfigurationBuilders.KeyPerFile" />
 ```
 
-[KeyPerFileConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.KeyPerFile/) je základní konfigurace tvůrce, který používá souborů v adresáři jako zdroj hodnoty. Název souboru je klíč a obsah se hodnota. Tvůrce této konfigurace může být užitečné při spuštění v prostředí iniciovat organizovaně, což kontejneru. Systémy, jako je Docker Swarm a Kubernetes poskytují `secrets` na své kontejnery iniciovat organizovaně, což windows tímto způsobem na soubor klíče.
+[KeyPerFileConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.KeyPerFile/) je základní nástroj Configuration Builder, který jako zdroj hodnot používá soubory adresáře. Název souboru je klíč a obsah je hodnota. Tento nástroj Configuration Builder může být užitečný při spuštění v prostředí orchestrace kontejnerů. Systémy, jako jsou Docker Swarm a Kubernetes, poskytují `secrets` do jejich orchestrace kontejnerů Windows v tomto způsobu souboru pro daný klíč.
 
 Podrobnosti atributu:
 
-* `directoryPath` -Vyžaduje. Určuje cestu k vyhledání hodnoty. Docker pro Windows se tajné kódy jsou uložené v *C:\ProgramData\Docker\secrets* adresáře ve výchozím nastavení.
-* `ignorePrefix` – Soubory, které začínat touto předponou budou vyloučeny. Výchozí hodnota je "ignorovat.".
-* `keyDelimiter` – Výchozí hodnota je `null`. -Li zadána, Tvůrce konfigurace prochází přes několik úrovní adresáře, vytváření názvy klíčů s tímto oddělovačem. Pokud je tato hodnota `null`, Tvůrce konfigurace prohledá pouze na nejvyšší úrovni adresáře.
-* `optional` – Výchozí hodnota je `false`. Určuje, zda by měl Tvůrce konfigurace způsobit chyby, pokud zdrojový adresář neexistuje.
+* `directoryPath` – povinné. Určuje cestu pro hledání hodnot. Docker for Windows tajné klíče jsou ve výchozím nastavení ukládány do adresáře *C:\ProgramData\Docker\secrets* .
+* `ignorePrefix` – soubory, které začínají touto předponou, jsou vyloučené. Výchozí hodnota je ignore.
+* `keyDelimiter` – výchozí hodnota je `null`. Je-li tento parametr zadán, projde nástroj Configuration Builder více úrovní adresáře a sestaví názvy klíčů pomocí tohoto oddělovače. Pokud je tato hodnota `null`, nástroj Configuration Builder se vyhledá jenom na nejvyšší úrovni adresáře.
+* `optional` – výchozí hodnota je `false`. Určuje, zda má nástroj Configuration Builder způsobit chyby v případě, že zdrojový adresář neexistuje.
 
 ### <a name="simplejsonconfigbuilder"></a>SimpleJsonConfigBuilder
 
 > [!WARNING]
-> Nikdy ukládat hesla, citlivé připojovací řetězce nebo jiných citlivých dat. ve zdrojovém kódu. Tajné klíče v produkčním prostředí by se neměly pro vývoj nebo testování.
+> Nikdy neukládejte hesla, citlivé připojovací řetězce ani další citlivá data ve zdrojovém kódu. Provozní tajemství by se neměla používat pro vývoj nebo testování.
 
 ```xml
 <add name="SimpleJson"
@@ -271,16 +271,16 @@ Podrobnosti atributu:
     Microsoft.Configuration.ConfigurationBuilders.Json" />
 ```
 
-Projekty .NET core často používají pro konfigurační soubory JSON. [SimpleJsonConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.Json/) Tvůrce umožňuje soubory .NET Core JSON pro použití v rozhraní .NET Framework. Tvůrce této konfigurace je poskytuje základní mapování ze zdroje bez stromové struktury klíč/hodnota do oblasti konkrétní klíč/hodnota konfigurace rozhraní .NET Framework. Tato konfigurace Tvůrce nemá **není** poskytují pro hierarchické konfigurace. Základní soubor JSON je podobný slovník, není komplexní hierarchický objekt. Víceúrovňových hierarchických soubor lze použít. Tento zprostředkovatel `flatten`s hloubkou připojením názvu vlastnosti na každé úrovni pomocí `:` jako oddělovač.
+Projekty .NET Core často používají soubory JSON pro konfiguraci. Tvůrce [SimpleJsonConfigBuilder](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.Json/) umožňuje používat v .NET Framework soubory JSON pro .NET Core. Tento nástroj Configuration Builder poskytuje základní mapování ze zdroje nestrukturovaných klíčů a hodnot do konkrétních oblastí s klíči a hodnotami konfigurace .NET Framework. Tento nástroj Configuration Builder **neposkytuje hierarchické** konfigurace. Soubor zálohy JSON je podobný slovníku, nikoli složitému hierarchickému objektu. Můžete použít hierarchický soubor s více úrovněmi. Tento poskytovatel `flatten`s hloubkou připojením názvu vlastnosti na všech úrovních pomocí `:` jako oddělovače.
 
 Podrobnosti atributu:
 
-* `jsonFile` -Vyžaduje. Určuje soubor JSON, který se má načíst z. `~` Znak je možné při spuštění aplikace kořen odkazu.
-* `optional` -Logická hodnota, výchozí hodnota je `true`. Brání generování výjimek, pokud nelze najít soubor JSON.
-* `jsonMode` - `[Flat|Sectional]`. `Flat` je výchozí nastavení. Když `jsonMode` je `Flat`, soubor JSON je zdrojem plochý klíč/hodnota. `EnvironmentConfigBuilder` a `AzureKeyVaultConfigBuilder` jsou také zdrojů bez stromové struktury klíč/hodnota. Když `SimpleJsonConfigBuilder` je nakonfigurovaný v `Sectional` režimu:
+* `jsonFile` – povinné. Určuje soubor JSON, ze kterého se má číst. `~` znak lze použít na začátku pro odkaz na kořen aplikace.
+* `optional` – logická hodnota, výchozí hodnota je `true`. Zabraňuje vyvolání výjimek, pokud nelze najít soubor JSON.
+* `jsonMode` - `[Flat|Sectional]`. výchozím nastavením je `Flat`. Je-li `jsonMode` `Flat`, je soubor JSON jedním zdrojem nestrukturovaných klíč/hodnota. `EnvironmentConfigBuilder` a `AzureKeyVaultConfigBuilder` jsou také jedním nestrukturovaným zdrojem klíčů a hodnot. Když je `SimpleJsonConfigBuilder` nakonfigurovaný v režimu `Sectional`:
 
-  * Soubor JSON je jenom na nejvyšší úrovni koncepčně rozdělen do více slovníky.
-  * Každý z slovníků platí jenom pro konfigurační oddíl, který odpovídá názvu vlastností nejvyšší úrovně připojená k nim. Příklad:
+  * Soubor JSON je koncepčně rozdělený přímo na nejvyšší úrovni do více slovníků.
+  * Každý ze slovníků je použit pouze pro konfigurační oddíl, který odpovídá názvu vlastnosti nejvyšší úrovně, který je k nim připojen. Příklad:
 
 ```json
     {
@@ -295,18 +295,18 @@ Podrobnosti atributu:
     }
 ```
 
-## <a name="implementing-a-custom-keyvalue-configuration-builder"></a>Implementace Tvůrce vlastní klíč/hodnota konfigurace
+## <a name="implementing-a-custom-keyvalue-configuration-builder"></a>Implementace vlastního tvůrce konfigurace klíčů a hodnot
 
-Pokud konfigurace tvůrci nevyhovují vašim potřebám, můžete napsat vlastní. `KeyValueConfigBuilder` Základní třídy se stará o nahrazení režimy a většina obavy předponu. Projekt implementující potřebovat pouze:
+Pokud konfigurační tvůrci nevyhovují vašim potřebám, můžete napsat vlastní. `KeyValueConfigBuilder` základní třída zpracovává substituční režimy a většinu otázek. Implementující projekt vyžaduje jenom:
 
-* Dědit ze základní třídy a implementovat základní příčiny páry klíč/hodnota pomocí `GetValue` a `GetAllValues`:
-* Přidat [Microsoft.Configuration.ConfigurationBuilders.Base](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.Base/) do projektu.
+* Dědí ze základní třídy a implementuje základní zdroj párů klíč/hodnota prostřednictvím `GetValue` a `GetAllValues`:
+* Přidejte do projektu [Microsoft. Configuration. ConfigurationBuilders. Base](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.Base/) .
 
 [!code-csharp[Main](config-builder/MyConfigBuilders/MyCustomConfigBuilder.cs)]
 
-`KeyValueConfigBuilder` Základní třída poskytuje většinu práce a konzistentní chování napříč klíč/hodnota konfigurace počítačů.
+`KeyValueConfigBuilder` základní třída poskytuje mnoho práce a konzistentní chování napříč sestavami konfigurace klíčů a hodnot.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-* [Úložiště GitHub tvůrci konfigurace](https://github.com/aspnet/MicrosoftConfigurationBuilders)
-* [Ověřování služba služba do služby Azure Key Vault pomocí rozhraní .NET](/azure/key-vault/service-to-service-authentication#connection-string-support)
+* [Úložiště GitHubu pro sestavovatele konfigurace](https://github.com/aspnet/MicrosoftConfigurationBuilders)
+* [Ověřování služba-služba pro Azure Key Vault pomocí .NET](/azure/key-vault/service-to-service-authentication#connection-string-support)

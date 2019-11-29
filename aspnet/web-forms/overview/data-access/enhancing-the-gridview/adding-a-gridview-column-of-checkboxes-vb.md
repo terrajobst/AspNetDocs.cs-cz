@@ -1,139 +1,139 @@
 ---
 uid: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-vb
-title: Přidání sloupce zaškrtávacích políček (VB) do ovládacího prvku GridView | Dokumentace Microsoftu
+title: Přidání sloupce zaškrtávacích políček do prvku GridView (VB) | Microsoft Docs
 author: rick-anderson
-description: Tento kurz zkoumá postup přidání sloupce zaškrtávacích políček do ovládacího prvku GridView uživatel poskytnout intuitivní způsob výběru více řádků G....
+description: V tomto kurzu se podíváme na postup přidání sloupce zaškrtávacích políček do ovládacího prvku GridView, který uživateli poskytne intuitivní způsob výběru více řádků G...
 ms.author: riande
 ms.date: 03/06/2007
 ms.assetid: 39253d05-75c0-41c7-b9d4-a6c58ecf69ce
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cc16464ab02b9ea5ef329c58bdf51c26d8d1eec9
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: c620b2eac5844d4030c1309b45e7d6a72d1f386a
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108207"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74592424"
 ---
 # <a name="adding-a-gridview-column-of-checkboxes-vb"></a>Přidání sloupce zaškrtávacích políček do ovládacího prvku GridView (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_52_VB.exe) nebo [stahovat PDF](adding-a-gridview-column-of-checkboxes-vb/_static/datatutorial52vb1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_52_VB.exe) nebo [Stáhnout PDF](adding-a-gridview-column-of-checkboxes-vb/_static/datatutorial52vb1.pdf)
 
-> V tomto kurzu snaží přidání sloupce zaškrtávacích políček do ovládacího prvku GridView uživatel poskytnout intuitivní způsob výběru více řádků z prvku GridView.
+> V tomto kurzu se podíváme na postup přidání sloupce zaškrtávacích políček do ovládacího prvku GridView, který uživateli poskytne intuitivní způsob výběru více řádků prvku GridView.
 
 ## <a name="introduction"></a>Úvod
 
-V předchozím kurzu jsme se zaměřili na tom, jak přidání sloupce přepínačů do ovládacího prvku GridView pro účely výběru konkrétního záznamu. Sloupce přepínačů je vhodné uživatelské rozhraní, když uživatel je omezen na maximálně jednu položku výběru z mřížky. V některých případech však může chceme, aby uživatel mohl vybrat libovolný počet položek z mřížky. Webové e-mailové klienty, například obvykle zobrazí seznam zpráv s sloupce zaškrtávacích políček. Uživatele můžete vybrat libovolný počet zpráv a pak provést některé akce, například přesun e-mailů do jiné složky nebo jejich odstranění.
+V předchozím kurzu jsme prozkoumali, jak do prvku GridView přidat sloupec přepínacích tlačítek pro účely výběru konkrétního záznamu. Sloupec přepínacích tlačítek je vhodné uživatelské rozhraní, když je uživatel omezen na výběr maximálně jedné položky z mřížky. Občas ale můžeme chtít uživateli dovolit vybrat libovolný počet položek z mřížky. Webové e-mailové klienty, například obvykle zobrazují seznam zpráv se sloupcem zaškrtávacích políček. Uživatel může vybrat libovolný počet zpráv a pak provést některé akce, například přesunutí e-mailů do jiné složky nebo jejich odstranění.
 
-V tomto kurzu jsme se zobrazí přidání sloupce zaškrtávacích políček a jak určit, jaké zaškrtávací políčka byly vráceny na zpětné volání. Zejména vytvoříme příklad, který úzce napodobuje uživatelské rozhraní klienta webového e-mailu. Náš příklad bude obsahovat stránkovaného GridView výpis produktů `Products` databázové tabulky pomocí checkbox v každém řádku (viz obrázek 1). Tlačítko Odstranit vybrané produkty, po kliknutí na dojde k odstranění těchto vybraných produktů.
+V tomto kurzu se dozvíte, jak přidat sloupec zaškrtávacích políček a jak určit, která zaškrtávací políčka byla kontrolována při postbacku. Konkrétně sestavíme příklad, který bude úzce napodobovat webové uživatelské rozhraní e-mailového klienta. Náš příklad obsahuje stránkované zobrazení obsahující seznam produktů v tabulce databáze `Products` a zaškrtávací políčko v každém řádku (viz obrázek 1). Tlačítko Odstranit vybrané produkty po kliknutí odstraní vybrané produkty.
 
-[![Každý řádek produkt obsahuje zaškrtávací políčko](adding-a-gridview-column-of-checkboxes-vb/_static/image1.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image1.png)
+[![každý řádek produktu obsahuje zaškrtávací políčko](adding-a-gridview-column-of-checkboxes-vb/_static/image1.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image1.png)
 
-**Obrázek 1**: Každý řádek produkt obsahuje zaškrtávací políčko ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image2.png))
+**Obrázek 1**: každý řádek produktu obsahuje zaškrtávací políčko ([kliknutím zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image2.png)).
 
 ## <a name="step-1-adding-a-paged-gridview-that-lists-product-information"></a>Krok 1: Přidání stránkovaného prvku GridView, který obsahuje informace o produktu
 
-Předtím, než jsme starat o přidání sloupce zaškrtávacích políček, umožní s první zaměřit se na seznam produktů v prvku GridView, který podporuje stránkování. Začněte otevřením `CheckBoxField.aspx` stránku `EnhancedGridView` složky a GridView přetáhněte z panelu nástrojů do Návrháře nastavení jeho `ID` k `Products`. Dále zvolte k vytvoření nového prvku ObjectDataSource s názvem vazby prvku GridView `ProductsDataSource`. Konfigurace ObjectDataSource používat `ProductsBLL` třídy, volání `GetProducts()` metoda vrátit data. Od tohoto ovládacího prvku GridView budou jen pro čtení, nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
+Předtím, než se obáváme o přidání sloupce zaškrtávacích políček, se nejdříve zaměřte na výpis produktů v prvku GridView, který podporuje stránkování. Začněte otevřením stránky `CheckBoxField.aspx` ve složce `EnhancedGridView` a přetažením prvku GridView z panelu nástrojů do návrháře, nastavením jeho `ID` na `Products`. Dále můžete zvolit svázání prvku GridView s novým prvkem ObjectDataSource s názvem `ProductsDataSource`. Nakonfigurujte prvek ObjectDataSource tak, aby používal třídu `ProductsBLL`, zavoláním metody `GetProducts()`, která vrátí data. Vzhledem k tomu, že tento prvek GridView bude jen pro čtení, nastavte rozevírací seznamy na kartách aktualizace, vložení a odstranění na (žádné).
 
-[![Vytvoření nového prvku ObjectDataSource s názvem ProductsDataSource](adding-a-gridview-column-of-checkboxes-vb/_static/image2.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image3.png)
+[![vytvořit nový prvek ObjectDataSource s názvem ProductsDataSource](adding-a-gridview-column-of-checkboxes-vb/_static/image2.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image3.png)
 
-**Obrázek 2**: Vytvoření nového prvku ObjectDataSource s názvem `ProductsDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image4.png))
+**Obrázek 2**: vytvoření nového prvku ObjectDataSource s názvem `ProductsDataSource` ([kliknutím zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image4.png))
 
-[![Konfigurace ObjectDataSource k načtení dat pomocí GetProducts() – metoda](adding-a-gridview-column-of-checkboxes-vb/_static/image3.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image5.png)
+[![nakonfigurovat prvek ObjectDataSource pro načtení dat pomocí metody GetProducts ()](adding-a-gridview-column-of-checkboxes-vb/_static/image3.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image5.png)
 
-**Obrázek 3**: Prvek ObjectDataSource k načtení dat pomocí konfigurace `GetProducts()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image6.png))
+**Obrázek 3**: Konfigurace prvku ObjectDataSource pro načtení dat pomocí metody `GetProducts()` ([kliknutím zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image6.png))
 
-[![Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný)](adding-a-gridview-column-of-checkboxes-vb/_static/image4.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image7.png)
+[![nastavení rozevíracích seznamů na kartách aktualizace, vložení a odstranění na (žádné)](adding-a-gridview-column-of-checkboxes-vb/_static/image4.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image7.png)
 
-**Obrázek 4**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit záložky (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image8.png))
+**Obrázek 4**: nastavení rozevíracích seznamů na kartách aktualizace, vložení a odstranění na (žádné) ([kliknutím zobrazíte obrázek v plné velikosti).](adding-a-gridview-column-of-checkboxes-vb/_static/image8.png)
 
-Po dokončení Průvodce nakonfigurovat zdroj dat, sada Visual Studio automaticky vytvoří BoundColumns a CheckBoxColumn týkající se produktu datových polí. Postupem uvedeným v předchozím kurzu, odeberte všechny kromě na `ProductName`, `CategoryName`, a `UnitPrice` BoundFields a změnit `HeaderText` vlastnosti na produkt, kategorie a ceny. Konfigurace `UnitPrice` Vlastnost BoundField tak, aby její hodnota je formátován jako měnu. Také nakonfigurujte GridView pro podporu stránkování zaškrtnutím políčka Povolit stránkování z inteligentních značek.
+Po dokončení Průvodce konfigurací zdroje dat vytvoří Visual Studio pro datová pole související s produktem automaticky ovládací prvky pro vytváření vázaných dat a CheckBoxColumn. Stejně jako v předchozím kurzu odeberte všechny kromě `ProductName`, `CategoryName`a `UnitPrice` BoundFields a změňte `HeaderText` vlastnosti na produkt, kategorii a cenu. Nakonfigurujte `UnitPrice` vlastnost BoundField, aby se jeho hodnota formátovala jako měna. Také nakonfigurujte prvek GridView tak, aby podporoval stránkování zaškrtnutím políčka Povolit stránkování z inteligentní značky.
 
-Umožňuje také přidat uživatelské rozhraní pro odstranění vybrané produkty s. Přidat ovládací prvek tlačítko webového pod prvku GridView, nastavením jeho `ID` k `DeleteSelectedProducts` a jeho `Text` vlastnost odstranit vybrané produkty. Místo skutečného odstranění produktů z databáze, v tomto příkladu jsme budete jenom zobrazovat zpráva, produkty, které by byly odstraněny. Tuto skutečnost zohlednit, přidejte ovládací prvek webového popisek pod tlačítko. Nastavit jeho ID na `DeleteResults`, zrušte zaškrtnutí políčka si jeho `Text` vlastnost a nastavte jeho `Visible` a `EnableViewState` vlastností `False`.
+Umožňuje také přidat uživatelské rozhraní pro odstranění vybraných produktů. Přidejte webové ovládací prvky tlačítko pod prvek GridView, nastavením jeho `ID` na `DeleteSelectedProducts` a jeho vlastnost `Text` k odstranění vybraných produktů. Místo toho, abyste z databáze skutečně odstranili produkty, se v tomto příkladu zobrazí jen zpráva s informacemi o tom, které produkty byly odstraněny. Chcete-li to přizpůsobit, přidejte ovládací prvek popisek webu pod tlačítko. Nastavte jeho ID na `DeleteResults`, vymažte jeho vlastnost `Text` a nastavte jeho vlastnosti `Visible` a `EnableViewState` na `False`.
 
-Po provedení těchto změn, by měl ovládacího prvku GridView, prvek ObjectDataSource, tlačítko a popisek s deklarativní podobný následujícímu:
+Po provedení těchto změn by deklarativní označení GridView, ObjectDataSource, Button a Label s popisky měly vypadat podobně jako následující:
 
 [!code-aspx[Main](adding-a-gridview-column-of-checkboxes-vb/samples/sample1.aspx)]
 
-Za chvíli zobrazíte stránku v prohlížeči (viz obrázek 5). V tomto okamžiku byste měli vidět, název, kategorie a cena za prvních deseti produkty.
+Chvíli si zobrazte stránku v prohlížeči (viz obrázek 5). V tomto okamžiku byste měli vidět název, kategorii a cenu prvních deseti produktů.
 
-[![Název, kategorie a cena prvních deset produktů jsou uvedeny.](adding-a-gridview-column-of-checkboxes-vb/_static/image5.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image9.png)
+[![je uveden název, kategorie a cena za prvních deset produktů.](adding-a-gridview-column-of-checkboxes-vb/_static/image5.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image9.png)
 
-**Obrázek 5**: Název, kategorie a cena prvních deset produktů jsou uvedeny ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image10.png))
+**Obrázek 5**: v seznamu je uveden název, kategorie a cena prvních deseti produktů ([kliknutím zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image10.png)).
 
 ## <a name="step-2-adding-a-column-of-checkboxes"></a>Krok 2: Přidání sloupce zaškrtávacích políček
 
-Protože ASP.NET 2.0 obsahuje třídě CheckBoxField, jeden myslíte, že ho může použít k přidání sloupce zaškrtávacích políček ovládacího prvku GridView. Bohužel to není případ, protože třídě CheckBoxField je navržen pro práci s polem Boolean – datový. Chcete-li použít třídě CheckBoxField jsme tedy musíte zadat podkladové datové pole, jehož hodnota je konzultaci k určení, zda je vykreslené políčko zaškrtnuté. Třídě CheckBoxField jsme nelze použít k obsahuje pouze sloupec není zaškrtnuto zaškrtávací políčka.
+Vzhledem k tomu, že ASP.NET 2,0 obsahuje třídě CheckBoxField podporována, může se stát, že se dá použít k přidání sloupce zaškrtávacích políček do prvku GridView. Bohužel, to znamená, že třídě CheckBoxField podporována je navržen pro práci s logickým datovým polem. To znamená, že aby bylo možné použít třídě CheckBoxField podporována, je nutné zadat podkladové datové pole, jehož hodnota je kontrolována, aby bylo zjištěno, zda je zaškrtnuté políčko vykresleno. Třídě CheckBoxField podporována nemůžeme použít pro pouhé zahrnutí sloupce nezaškrtnutých políček.
 
-Místo toho jsme musí přidat TemplateField a přidejte ovládací prvek zaškrtávací políčko Web pro jeho `ItemTemplate`. Pokračovat a přidat k TemplateField `Products` GridView a nastavte ji na první pole (úplně vlevo). Z ovládacího prvku GridView s inteligentní značky, klikněte na odkaz Upravit šablony a potom přetáhněte ovládací prvek zaškrtávací políčko Web z panelu nástrojů do `ItemTemplate`. Nastavit toto zaškrtávací políčko s `ID` vlastnost `ProductSelector`.
+Místo toho je nutné přidat TemplateField a přidat webový ovládací prvek CheckBox do jeho `ItemTemplate`. Pokračujte a přidejte TemplateField do `Products` GridView a nastavte ho jako první (úplně vlevo) pole. Z inteligentní značky GridView s klikněte na odkaz Upravit šablony a přetáhněte webový ovládací prvek CheckBox ze sady nástrojů do `ItemTemplate`. Nastavte tuto vlastnost `ID` vlastností na `ProductSelector`.
 
-[![Přidejte ovládací prvek zaškrtávací políčko Web s názvem ProductSelector k TemplateField s ItemTemplate](adding-a-gridview-column-of-checkboxes-vb/_static/image6.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image11.png)
+[![přidat webový ovládací prvek CheckBox s názvem ProductSelector do vlastnosti TemplateField s ItemTemplate](adding-a-gridview-column-of-checkboxes-vb/_static/image6.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image11.png)
 
-**Obrázek 6**: Přidat pojmenovanou ovládací prvek zaškrtávací políčko Web `ProductSelector` do TemplateField s `ItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image12.png))
+**Obrázek 6**: Přidejte webový ovládací prvek CheckBox s názvem `ProductSelector` do `ItemTemplate` TemplateField s ([kliknutím zobrazíte obrázek v plné velikosti).](adding-a-gridview-column-of-checkboxes-vb/_static/image12.png)
 
-Každý řádek s TemplateField a zaškrtávací políčko webové ovládací prvek přidat, teď obsahuje zaškrtávací políčko. Obrázek 7 znázorňuje tuto stránku při zobrazení v prohlížeči po přidání TemplateField a zaškrtávací políčko.
+Po přidání webového ovládacího prvku TemplateField a CheckBox teď každý řádek obsahuje zaškrtávací políčko. Obrázek 7 ukazuje tuto stránku při zobrazení v prohlížeči po přidání pole TemplateField a CheckBox.
 
-[![Každý řádek produktu nyní obsahuje zaškrtávací políčko](adding-a-gridview-column-of-checkboxes-vb/_static/image7.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image13.png)
+[![každý produktový řádek teď obsahuje zaškrtávací políčko.](adding-a-gridview-column-of-checkboxes-vb/_static/image7.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image13.png)
 
-**Obrázek 7**: Každý řádek produktu nyní obsahuje zaškrtávací políčko ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image14.png))
+**Obrázek 7**: každý produktový řádek teď obsahuje zaškrtávací políčko ([kliknutím zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image14.png)).
 
-## <a name="step-3-determining-what-checkboxes-were-checked-on-postback"></a>Krok 3: Určení, jaké zaškrtávací políčka byly vráceny na zpětné volání
+## <a name="step-3-determining-what-checkboxes-were-checked-on-postback"></a>Krok 3: určení, která zaškrtávací políčka byla kontrolována při postbacku
 
-V tuto chvíli máme sloupec zaškrtávací políčka, ale žádný způsob, jak určit, jaké zaškrtávací políčka byly vráceny na zpětné volání. Při kliknutí na tlačítko Odstranit vybrané produkty, ale potřebujeme vědět, jaké zaškrtávací políčka byly vráceny, pokud chcete odstranit tyto produkty.
+V tuto chvíli máme sloupec se zaškrtávacími políčky, ale neexistuje žádný způsob, jak určit, která zaškrtávací políčka byla zkontrolována při zpětném odeslání. Když se klikne na tlačítko Odstranit vybrané produkty, potřebujeme, abyste věděli, jaké zaškrtávací políčko bylo zkontrolováno, aby bylo možné tyto produkty odstranit.
 
-GridView s [ `Rows` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rows.aspx) poskytuje přístup k datovým řádkům při prvku GridView. Společnost Microsoft může iterovat v rámci těchto řádků, programový přístup k ovládacím prvku zaškrtávací políčko a potom prostudovat si jeho `Checked` a určí, zda byla vybrána na zaškrtávací políčko.
+Vlastnost GridView s [`Rows`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rows.aspx) poskytuje přístup k datovým řádkům v prvku GridView. Můžeme iterovat prostřednictvím těchto řádků, programově získat přístup k ovládacímu prvku CheckBox a potom pomocí jeho vlastnosti `Checked` zjistit, zda bylo políčko zaškrtnuto.
 
-Vytvořte obslužnou rutinu události pro `DeleteSelectedProducts` tlačítko webový ovládací prvek s `Click` událostí a přidejte následující kód:
+Vytvořte obslužnou rutinu události pro webové ovládací prvky tlačítko `DeleteSelectedProducts` `Click` událost a přidejte následující kód:
 
 [!code-vb[Main](adding-a-gridview-column-of-checkboxes-vb/samples/sample2.vb)]
 
-`Rows` Vlastnost vrátí kolekci `GridViewRow` instance tuto strukturu řádky dat s ovládacího prvku GridView. `For Each` Smyčky tady zobrazí tuto kolekci. Pro každou `GridViewRow` objektu, řádku s zaškrtávací políčko je programově přistupovat pomocí `row.FindControl("controlID")`. Pokud je zaškrtnuté políčko, odpovídající řádek s `ProductID` hodnota je načten z `DataKeys` kolekce. V tomto cvičení, můžeme jednoduše zobrazit informativní zprávy v `DeleteResults` popisek, i když v aplikaci funkční jsme d místo toho volají `ProductsBLL` třída s `DeleteProduct(productID)` metody.
+Vlastnost `Rows` vrací kolekci instancí `GridViewRow`, které strukturu datové řádky GridView s. Zde `For Each` cyklus vyčíslí tuto kolekci. Pro každý objekt `GridViewRow` je zaškrtávací políčko řádky s programově dostupné pomocí `row.FindControl("controlID")`. Pokud je zaškrtávací políčko zaškrtnuto, bude z kolekce `DataKeys` načtena odpovídající hodnota `ProductID`. V tomto cvičení jednoduše zobrazíme informativní zprávu v popisku `DeleteResults`, i když v pracovní aplikaci zavoláme metodu `DeleteProduct(productID)` `ProductsBLL` třídy s.
 
-Přidání této obslužné rutiny události kliknutí na tlačítko Odstranit vybrané produkty teď zobrazí `ProductID` s vybraných produktů.
+Po přidání této obslužné rutiny události se kliknutím na tlačítko Odstranit vybrané produkty teď zobrazí `ProductID` s vybraných produktů.
 
-[![Po kliknutí na tlačítko vybrané produkty odstranit jsou uvedeny produkty ProductIDs vybrané](adding-a-gridview-column-of-checkboxes-vb/_static/image8.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image15.png)
+[![, když se klikne na tlačítko Odstranit vybrané produkty, zobrazí se vybrané produkty ProductID.](adding-a-gridview-column-of-checkboxes-vb/_static/image8.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image15.png)
 
-**Obrázek 8**: Při odstranění vybrané produkty je stisknuto tlačítko vybrané produkty `ProductID` s patří ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image16.png))
+**Obrázek 8**: když se na tlačítko Odstranit vybrané produkty klikne na vybrané produkty `ProductID` s, zobrazí se seznam ([kliknutím zobrazíte obrázek v plné velikosti).](adding-a-gridview-column-of-checkboxes-vb/_static/image16.png)
 
-## <a name="step-4-adding-check-all-and-uncheck-all-buttons"></a>Krok 4: Přidání zaškrtnout vše a zrušte zaškrtnutí políčka všechna tlačítka
+## <a name="step-4-adding-check-all-and-uncheck-all-buttons"></a>Krok 4: přidání všech tlačítek a zrušení kontroly všech tlačítek
 
-Pokud chce uživatel odstranit všechny produkty na aktuální stránce, že musíte zkontrolovat, všech deset zaškrtávací políčka. Můžeme vám pomoct urychlit tento proces přidáním a zkontrolovat všechny tlačítko, které, po kliknutí na vybere všechny zaškrtávací políčka v mřížce. Zrušte zaškrtnutí všech tlačítko by stejně vhodné.
+Pokud chce uživatel odstranit všechny produkty na aktuální stránce, musí zaškrtnout každé deset zaškrtávacích políček. Tento proces můžeme přispět tak, že přidáte tlačítko pro kontrolu všech, které po kliknutí vybere všechna zaškrtávací políčka v mřížce. Tlačítko zrušit kontrolu všech by bylo stejně užitečné.
 
-Přidejte dva ovládací prvky tlačítka webovou stránku, je umístit nad prvku GridView. Nastavte první z nich s `ID` k `CheckAll` a jeho `Text` vlastnost zkontrolovat všechny; nastavte druhá s `ID` k `UncheckAll` a jeho `Text` vlastnost zrušit zaškrtnutí všech.
+Přidejte dvě webové ovládací prvky tlačítka na stránku a umístěte je nad prvek GridView. Nastavte první `ID` s pro `CheckAll` a jeho vlastnost `Text` pro kontrolu všech; nastavte druhý `ID` s `UncheckAll` a jeho vlastnost `Text` na zrušit kontrolu všech.
 
 [!code-aspx[Main](adding-a-gridview-column-of-checkboxes-vb/samples/sample3.aspx)]
 
-Dále vytvořte metodu v třídě modelu code-behind s názvem `ToggleCheckState(checkState)` , při vyvolání, zobrazí `Products` GridView s `Rows` kolekce a nastaví každý zaškrtávacího políčka s `Checked` k hodnotě předané v *– checkState*  parametru.
+Dále vytvořte metodu v třídě Code-on s názvem `ToggleCheckState(checkState)`, která při vyvolání vytvoří výčet `Products` kolekce `Rows` GridView. a nastaví každou vlastnost CheckBox s `Checked` na hodnotu předaného parametru *checkState* .
 
 [!code-vb[Main](adding-a-gridview-column-of-checkboxes-vb/samples/sample4.vb)]
 
-Dále vytvořte `Click` obslužné rutiny událostí pro `CheckAll` a `UncheckAll` tlačítka. V `CheckAll` obslužné rutiny události s, jednoduše volání `ToggleCheckState(True)`; v `UncheckAll`, volání `ToggleCheckState(False)`.
+Dále vytvořte obslužné rutiny událostí `Click` pro tlačítka `CheckAll` a `UncheckAll`. V obslužné rutině události `CheckAll` s, jednoduše zavolejte `ToggleCheckState(True)`; v `UncheckAll`volejte `ToggleCheckState(False)`.
 
 [!code-vb[Main](adding-a-gridview-column-of-checkboxes-vb/samples/sample5.vb)]
 
-S tímto kódem kliknutím na tlačítko Zkontrolovat všechny vyvolá zpětné volání a kontroluje všechny zaškrtávacích políček v prvku GridView. Kliknutím na zrušit zaškrtnutí všech, zruší výběr nakresleného všech zaškrtávacích políček. Obrázek 9 ukazuje obrazovky po byly vráceny na tlačítko Zkontrolovat všechny.
+V tomto kódu kliknutím na tlačítko zkontrolovat vše způsobí postback a zkontroluje všechna zaškrtávací políčka v prvku GridView. Podobně klikněte na zrušit zaškrtnutí všech políček zrušit výběr. Obrázek 9 zobrazí obrazovku po zaškrtnutí tlačítka pro kontrolu všech.
 
-[![Kliknutím na kontrolu, kterou všechny tlačítko vybere všech zaškrtávacích políček](adding-a-gridview-column-of-checkboxes-vb/_static/image9.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image17.png)
+[![kliknutí na tlačítko pro kontrolu všech výběrová zaškrtávací políčka](adding-a-gridview-column-of-checkboxes-vb/_static/image9.gif)](adding-a-gridview-column-of-checkboxes-vb/_static/image17.png)
 
-**Obrázek 9**: Kliknutím zkontrolovat všechny tlačítko vybere všech zaškrtávacích políček ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image18.png))
+**Obrázek 9**: kliknutím na tlačítko pro kontrolu všech vyberete zaškrtávací políčka ([kliknutím zobrazíte obrázek v plné velikosti](adding-a-gridview-column-of-checkboxes-vb/_static/image18.png)).
 
 > [!NOTE]
-> Při zobrazení sloupce zaškrtávacích políček, jedním z přístupů pro výběr nebo unselecting všechna zaškrtávací políčka je zaškrtávací políčko v řádku záhlaví. Kromě toho aktuální zaškrtnout vše / zrušit zaškrtnutí všech implementace vyžaduje zpětného odeslání. Zaškrtávací políčka může být zaškrtnuté nebo nezaškrtnuté, ale výhradně pomocí skriptu na straně klienta, získat tak zacílíte činnost koncového uživatele. Prozkoumejte používání zaškrtávací políčko v řádku záhlaví pro zaškrtnout vše a zrušte zaškrtnutí všech podrobně spolu se zabývat pomocí technik na straně klienta, přečtěte si [kontrolu všech zaškrtávacích políček do ovládacího prvku GridView pomocí skriptu na straně klienta a zaškrtněte všechna políčka](http://aspnet.4guysfromrolla.com/articles/053106-1.aspx).
+> Při zobrazování sloupce zaškrtávacích políček je jedním z přístupů k výběru nebo odvolbě všech zaškrtávacích políček zaškrtávací políčko v řádku záhlaví. Aktuální kontrolu a zrušit kontrolu všech implementací navíc vyžaduje postback. Zaškrtávací políčka lze zaškrtnout nebo zrušit bez zaškrtnutí, ale výhradně prostřednictvím skriptu na straně klienta, čímž zajistíte snappier uživatelské prostředí. Chcete-li se podívat na zaškrtávací políčko pro kontrolu všech a zrušit zaškrtnutí všech podrobností, společně s diskusí o používání technik na straně klienta, zaškrtněte políčko kontrolovat [všechna políčka v prvku GridView pomocí skriptu na straně klienta a zaškrtnutím políčka zaškrtnout vše](http://aspnet.4guysfromrolla.com/articles/053106-1.aspx).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-V případech, kdy potřebujete umožněte uživatelům si vybrat libovolný počet řádků z prvku GridView než budete pokračovat je přidání sloupce zaškrtávacích políček jednu možnost. Jak jsme viděli v tomto kurzu, včetně sloupce zaškrtávacích políček v prvku GridView. má za následek přidání TemplateField s ovládacím prvkem webového zaškrtávací políčko. Pomocí webového ovládacího prvku (oproti injektáž kódu přímo do šablony, jako jsme to udělali v předchozím kurzu) technologie ASP.NET automaticky si pamatuje co zaškrtávací políčka byly a nebyly vráceny napříč zpětného odeslání. Můžeme také programový přístup k zaškrtávací políčka v kódu k určení, zda je daný políčko zaškrtnuté, nebo chcete změnit zaškrtnutém stavu.
+V případech, kdy potřebujete umožnit uživatelům zvolit libovolný počet řádků z prvku GridView, než budete pokračovat, přidání sloupce zaškrtávacích políček je jedna možnost. Jak jsme viděli v tomto kurzu, včetně sloupce zaškrtávacích políček v prvku GridView, zahrnuje přidání pole TemplateField s webovým ovládacím prvkem CheckBox. Pomocí webového ovládacího prvku (proti vložení značek přímo do šablony, jako jsme to dělali v předchozím kurzu) ASP.NET automaticky pamatuje, jaké zaškrtávací políčko byly a nebyly zkontrolovány v rámci zpětného odeslání. K určení, zda je dané zaškrtávací políčko zaškrtnuto, nebo ke změně stavu zaškrtnutí, můžeme také programově přistupovat k zaškrtávacím políčkům v kódu.
 
-V tomto kurzu, posledním blokem podívali se na přidání sloupec pro výběr řádků k prvku GridView. V následujícím kurzem prozkoumáme, jak se trochu práce, můžeme přidat vkládání funkcí do prvku GridView.
+Tento kurz a poslední z nich se prohlédlo přidáním sloupce selektor řádku do prvku GridView. V našem dalším kurzu budeme posuzovat, jak, v rámci práce, můžeme do prvku GridView přidat možnosti vkládání.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
 > [!div class="step-by-step"]
 > [Předchozí](adding-a-gridview-column-of-radio-buttons-vb.md)
-> [další](inserting-a-new-record-from-the-gridview-s-footer-vb.md)
+> [Další](inserting-a-new-record-from-the-gridview-s-footer-vb.md)

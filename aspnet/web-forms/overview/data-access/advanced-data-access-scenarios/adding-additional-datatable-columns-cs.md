@@ -1,189 +1,189 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-cs
-title: Přidávání sloupců do další tabulky DataTable (C#) | Dokumentace Microsoftu
+title: Přidání dalších sloupců DataTable (C#) | Microsoft Docs
 author: rick-anderson
-description: Při použití třídy TableAdapter průvodce k vytvoření datové sady typu, odpovídající objekt DataTable obsahuje sloupce vrácené dotazem hlavní databáze. Ale existovat...
+description: Když pomocí Průvodce TableAdapter vytvoříte typovou datovou sadu, odpovídající objekt DataTable obsahuje sloupce vracené hlavním databázovým dotazem. Ale existuje...
 ms.author: riande
 ms.date: 07/18/2007
 ms.assetid: 615f3361-f21f-4338-8bc1-fce8ae071de9
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 931a918d51c1accec1757a9370c8e611a9a038ec
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: a96f254aa54e7077456ac1a9bd6c5e2a17619d96
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65124441"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74610712"
 ---
 # <a name="adding-additional-datatable-columns-c"></a>Přidání dalších sloupců do tabulky DataTable (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_70_CS.zip) nebo [stahovat PDF](adding-additional-datatable-columns-cs/_static/datatutorial70cs1.pdf)
+[Stažení kódu](https://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_70_CS.zip) nebo [stažení PDF](adding-additional-datatable-columns-cs/_static/datatutorial70cs1.pdf)
 
-> Při použití třídy TableAdapter průvodce k vytvoření datové sady typu, odpovídající objekt DataTable obsahuje sloupce vrácené dotazem hlavní databáze. Existují situace, kdy objekt DataTable musí obsahovat další sloupce. V tomto kurzu jsme dozvíte, proč se doporučuje uložené procedury, až budeme potřebovat další sloupců do tabulky DataTable.
+> Když pomocí Průvodce TableAdapter vytvoříte typovou datovou sadu, odpovídající objekt DataTable obsahuje sloupce vracené hlavním databázovým dotazem. Existují však situace, kdy objekt DataTable musí zahrnovat další sloupce. V tomto kurzu se dozvíte, proč se doporučuje ukládání uložených procedur, když potřebujeme další sloupce DataTable.
 
 ## <a name="introduction"></a>Úvod
 
-Při přidávání objektu typu TableAdapter k datové sadě zadán, odpovídající schématu s DataTable je určena s hlavním dotazu objektu TableAdapter. Například, pokud hlavním dotazem datová pole *A*, *B*, a *C*, objekt DataTable bude mít tři odpovídající sloupce s názvem *A*, *B*, a *C*. Kromě jeho hlavním dotazu objektu TableAdapter může obsahovat další dotazy, které vracejí možná podmnožinu dat na základě některých parametrů. Například, navíc k `ProductsTableAdapter` s hlavním dotazu, který vrací informace o všech produktů, také obsahuje metody, jako je `GetProductsByCategoryID(categoryID)` a `GetProductByProductID(productID)`, který vrací informace určitý produkt na základě zadaného parametru.
+Při přidávání TableAdapter do typové datové sady je odpovídající schéma DataTable s určeno hlavním dotazem TableAdapter s. Například pokud hlavní dotaz vrátí datová pole *a*, *b*a *c*, bude mít DataTable tři odpovídající sloupce s názvem *a*, *b*a *c*. Kromě hlavního dotazu může TableAdapter zahrnovat další dotazy, které vracejí, případně i podmnožinu dat na základě některého parametru. Například kromě hlavního dotazu `ProductsTableAdapter` s, který vrací informace o všech produktech, obsahuje také metody jako `GetProductsByCategoryID(categoryID)` a `GetProductByProductID(productID)`, které vracejí konkrétní informace o produktu na základě zadaného parametru.
 
-Model s schématu s DataTable odrážejí s hlavním dotazu objektu TableAdapter funguje dobře v případě, že všechny metody třídy TableAdapter s vrátí stejnou nebo méně datových polí než procesory zadané v hlavním dotazu. Pokud TableAdapter metoda musí vracet další datová pole, pak jsme byste rozšířit schéma objektu DataTable s odpovídajícím způsobem. V [Master/Detail, použití odrážkovém seznamu v hlavních záznamů s podrobnostmi v prvku DataList](../filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md) kurzu jsme přidali metodu `CategoriesTableAdapter` vrácená `CategoryID`, `CategoryName`, a `Description` datová pole, které jsou definovány v Hlavní dotaz plus `NumberOfProducts`, další datové pole, která hlásí počet produktů, které jsou spojené s každou kategorii. Přidali jsme ručně nový sloupec, `CategoriesDataTable` k zachycení `NumberOfProducts` datové pole hodnotu z této nové metody.
+Model, ve kterém je schéma DataTable, odráží hlavní dotaz TableAdapter s, pokud všechny metody TableAdaptery vrátí stejné nebo méně datových polí, než jsou zadaná v hlavním dotazu. Pokud metoda TableAdapter potřebuje vrátit další datová pole, měli bychom odpovídajícím způsobem rozbalovat schéma DataTable s. V [seznamu a podrobnostech pomocí seznamu hlavních záznamů s odrážkami s kurzem podrobností DataList](../filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md) jsme přidali metodu do `CategoriesTableAdapter`, která vrátila datová pole `CategoryID`, `CategoryName`a `Description` definovaná v hlavním dotazu a `NumberOfProducts`, další datové pole, které oznámilo počet produktů přidružených ke každé kategorii. Ručně jsme do `CategoriesDataTable` přidali nový sloupec, aby se z této nové metody zachytí hodnota datového pole `NumberOfProducts`.
 
-Jak je popsáno v [nahrávání souborů](../working-with-binary-files/uploading-files-cs.md) výukový program, skvělé třeba dávat pozor pomocí instancí TableAdapter, kde použít SQL příkazy ad-hoc a metod, jejichž datová pole nejsou přesně shodné hlavního dotazu. Pokud je znovu spustit Průvodce konfigurací TableAdapter, bude se aktualizovat všechny metody třídy TableAdapter s tak, aby jejich seznam polí dat odpovídá hlavního dotazu. Všechny metody se seznamy vlastní sloupec v důsledku toho se vrátit do seznamu sloupců hlavního dotazu s a nevrací očekávaná data. Tento problém nevzniká při použití uložených procedur.
+Jak je popsáno v kurzu [nahrávání souborů](../working-with-binary-files/uploading-files-cs.md) , je potřeba věnovat velkou péči s objekty TableAdapter, které používají příkazy SQL ad hoc, a mají metody, jejichž datová pole neodpovídají přesně hlavnímu dotazu. Pokud se Průvodce konfigurací TableAdapter znovu spustí, aktualizuje všechny metody TableAdapter s tak, aby se jejich seznam datových polí shodoval s hlavním dotazem. V důsledku toho se všechny metody s přizpůsobenými seznamy sloupců vrátí do seznamu sloupců hlavní dotaz s a nevrátí očekávaná data. Tento problém se neprojeví při použití uložených procedur.
 
-V tomto kurzu se podíváme na tom, jak rozšířit schéma objektu DataTable s zahrnout další sloupce. Z důvodu brittleness TableAdapter při použití příkazů jazyka SQL ad-hoc v tomto kurzu budeme používat uložené procedury. Odkazovat [vytváří se nové uložené procedury, pro zadané datové sady s objekty TableAdapter](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md) a [použití existující uložené procedury, pro zadané datové sady s objekty TableAdapter](https://data-access/tutorials/using-existing-stored-procedures-for-the-typed-dataset-amp-rsquo-s-tableadapters-cs) kurzy pro další informace o konfigurace objektu typu TableAdapter na pouze pomocí uložených procedur.
+V tomto kurzu se podíváme na to, jak rozšíříte schéma DataTable s, aby zahrnovalo další sloupce. V tomto kurzu použijeme k tomu, aby se brittlenessy TableAdapter při použití příkazů SQL ad hoc. v tomto kurzu budeme používat uložené procedury. Další informace o konfiguraci TableAdapter pro použití uložených procedur najdete v tématu [vytváření nových uložených procedur pro typovou sadu dat s objekty TableAdapter](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md) a [použití existujících uložených procedur pro kurzy typované sady dat s objekty TableAdapter](https://data-access/tutorials/using-existing-stored-procedures-for-the-typed-dataset-amp-rsquo-s-tableadapters-cs) .
 
-## <a name="step-1-adding-apricequartilecolumn-to-theproductsdatatable"></a>Krok 1: Přidání`PriceQuartile`sloupec, který se`ProductsDataTable`
+## <a name="step-1-adding-apricequartilecolumn-to-theproductsdatatable"></a>Krok 1: Přidání sloupce`PriceQuartile`do`ProductsDataTable`
 
-V *vytváří se nové uložené procedury, pro zadané datové sady s objekty TableAdapter* kurzu jsme vytvořili datovou sadu typu s názvem `NorthwindWithSprocs`. Tato datová sada v současné době obsahuje dva DataTables: `ProductsDataTable` a `EmployeesDataTable`. `ProductsTableAdapter` Má následující tři metody:
+V kurzu *vytváření nových uložených procedur pro typovou datovou sadu s objekty TableAdapter* jsme vytvořili typovou datovou sadu s názvem `NorthwindWithSprocs`. Tato datová sada aktuálně obsahuje dvě datové tabulky: `ProductsDataTable` a `EmployeesDataTable`. `ProductsTableAdapter` má následující tři metody:
 
-- `GetProducts` -Hlavní dotaz, který vrátí všechny záznamy z `Products` tabulky
-- `GetProductsByCategoryID(categoryID)` -Vrátí všechny produkty se zadaným *categoryID*.
-- `GetProductByProductID(productID)` -Vrátí konkrétní produkt se zadaným *productID*.
+- `GetProducts` – hlavní dotaz, který vrátí všechny záznamy z tabulky `Products`
+- `GetProductsByCategoryID(categoryID)` – vrátí všechny produkty se zadaným *KódKategorie*.
+- `GetProductByProductID(productID)` – vrátí konkrétní produkt se zadaným *ProductID*.
 
-Vrátí stejnou sadu datových polí, a to všech sloupců z hlavního dotazu a další dvě metody všechny `Products` tabulky. Neexistují žádné korelační poddotazy nebo `JOIN` s načítání souvisejících dat ze `Categories` nebo `Suppliers` tabulky. Proto `ProductsDataTable` nemá odpovídající sloupec pro každé pole v `Products` tabulky.
+Hlavní dotaz a dvě další metody vrací stejnou sadu datových polí, konkrétně všechny sloupce z `Products` tabulky. Neexistují žádné korelační poddotazy nebo `JOIN` s přijímáním souvisejících dat z tabulek `Categories` nebo `Suppliers`. Proto má `ProductsDataTable` odpovídající sloupec pro každé pole v tabulce `Products`.
 
-Pro účely tohoto kurzu vám umožňují s přidejte metodu k `ProductsTableAdapter` s názvem `GetProductsWithPriceQuartile` , který vrátí všechny produkty. Kromě datových polí standardní produkty `GetProductsWithPriceQuartile` bude také obsahovat `PriceQuartile` datové pole, která určuje, za které QUARTIL cena produktu s spadá. Například, budou mít tyto produkty, jejichž ceny jsou uvedeny v nejdražší 25 % `PriceQuartile` hodnotu 1, zatímco ty, jejichž ceny spadat do posledních 25 % bude mít hodnotu 4. Než jsme starat o vytvoření uložené procedury tyto informace mají vracet, ale nejprve musíte aktualizovat `ProductsDataTable` zahrnout sloupec obsahoval `PriceQuartile` výsledky při `GetProductsWithPriceQuartile` metoda se používá.
+Pro účely tohoto kurzu přidejte do `ProductsTableAdapter` s názvem `GetProductsWithPriceQuartile` metodu, která vrátí všechny produkty. Kromě standardních datových polí produktu bude `GetProductsWithPriceQuartile` také obsahovat `PriceQuartile` datové pole, které indikuje, že funkce QUARTIL ceny produktů spadá do rozsahu. Například u produktů, jejichž ceny jsou v nejdražším 25%, bude mít `PriceQuartile` hodnotu 1, zatímco ceny, jejichž ceny spadají do 25% nejnižší ceny, budou mít hodnotu 4. Než se obáváme, jak vytvořit uloženou proceduru, aby se tyto informace vracely, nejdřív je potřeba aktualizovat `ProductsDataTable` tak, aby obsahovala sloupec, který bude obsahovat výsledky `PriceQuartile` při použití `GetProductsWithPriceQuartile` metody.
 
-Otevřít `NorthwindWithSprocs` datovou sadu a klikněte pravým tlačítkem na `ProductsDataTable`. V místní nabídce zvolte možnost Přidat a pak vyberte sloupec.
+Otevřete `NorthwindWithSprocs` datovou sadu a klikněte pravým tlačítkem na `ProductsDataTable`. V kontextové nabídce zvolte Přidat a pak vyberte sloupec.
 
-[![Přidat nový sloupec ProductsDataTable](adding-additional-datatable-columns-cs/_static/image2.png)](adding-additional-datatable-columns-cs/_static/image1.png)
+[![přidat nový sloupec do ProductsDataTable](adding-additional-datatable-columns-cs/_static/image2.png)](adding-additional-datatable-columns-cs/_static/image1.png)
 
-**Obrázek 1**: Přidat nový sloupec, `ProductsDataTable` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image3.png))
+**Obrázek 1**: Přidání nového sloupce do `ProductsDataTable` ([kliknutím zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image3.png))
 
-Nový sloupec se přidá do DataTable s názvem Sloupec1 typu `System.String`. Potřebujeme aktualizovat tento sloupec s názvem PriceQuartile a jeho typ ke `System.Int32` vzhledem k tomu, že se použije k uložení číslo mezi 1 a 4. Vyberte sloupec nově přidané `ProductsDataTable` a v okně Vlastnosti nastavte `Name` vlastnost PriceQuartile a `DataType` vlastnost `System.Int32`.
+Tím se přidá nový sloupec do objektu DataTable s názvem Sloupec1 typu `System.String`. Musíme tento název sloupce aktualizovat tak, aby PriceQuartile a jeho typ `System.Int32`, protože se použije k uložení čísla mezi 1 a 4. Vyberte nově přidaný sloupec v `ProductsDataTable` a z okno Vlastnosti nastavte vlastnost `Name` na hodnotu PriceQuartile a vlastnost `DataType` na `System.Int32`.
 
-[![Nastavte nový sloupec s název a datový typ vlastnosti](adding-additional-datatable-columns-cs/_static/image5.png)](adding-additional-datatable-columns-cs/_static/image4.png)
+[![nastavit nové vlastnosti název sloupce a datového typu.](adding-additional-datatable-columns-cs/_static/image5.png)](adding-additional-datatable-columns-cs/_static/image4.png)
 
-**Obrázek 2**: Nastavte nový sloupec s `Name` a `DataType` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image6.png))
+**Obrázek 2**: nastavení nových `Name` sloupců a vlastností `DataType` ([kliknutím zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image6.png))
 
-Jak je vidět na obrázku 2, jsou další vlastnosti, které můžete nastavit, jako jsou hodnoty ve sloupci určuje, zda musí být jedinečné, pokud sloupec je sloupec s automatickým krokem, zda databáze `NULL` hodnoty jsou povoleny a tak dále. Ponechte tyto hodnoty výchozí nastavení.
+Jak ukazuje obrázek 2, existují další vlastnosti, které lze nastavit, například zda musí být hodnoty ve sloupci jedinečné, pokud se jedná o sloupec s automatickým přírůstem, bez ohledu na to, zda jsou povoleny hodnoty `NULL` databáze a tak dále. Ponechte tyto hodnoty nastavené na výchozí hodnoty.
 
-## <a name="step-2-creating-thegetproductswithpricequartilemethod"></a>Krok 2: Vytváří`GetProductsWithPriceQuartile`– metoda
+## <a name="step-2-creating-thegetproductswithpricequartilemethod"></a>Krok 2: vytvoření metody`GetProductsWithPriceQuartile`
 
-Teď, když `ProductsDataTable` byl aktualizován na zahrnují `PriceQuartile` sloupce, budeme připravení vytvořit `GetProductsWithPriceQuartile` metoda. Začněte tím, že pravým tlačítkem myši na TableAdapter a zvolením přidat dotaz v místní nabídce. Tím se vyvolá průvodce konfigurací dotazu TableAdapter, který nejprve nám vyzve k tom, zda chceme použít SQL příkazy ad-hoc nebo nové nebo existující uložené procedury. Protože jsme zadávat t ještě nemáte uložené procedury, která vrací data QUARTIL cena, umožní s povolit TableAdapter vytvořte tuto uloženou proceduru pro nás. Výběr možnosti vytvořit nové uložené procedury a klikněte na tlačítko Další.
+Teď, když se `ProductsDataTable` aktualizovala tak, aby obsahovala `PriceQuartile` sloupec, jsme připraveni vytvořit metodu `GetProductsWithPriceQuartile`. Začněte tím, že kliknete pravým tlačítkem na TableAdapter a zvolíte přidat dotaz z kontextové nabídky. Tím se zobrazí Průvodce konfigurací dotazu TableAdapter, který vás nejdřív vyzve k tomu, jestli chceme použít příkazy SQL ad hoc nebo novou nebo existující uloženou proceduru. Vzhledem k tomu, že ještě nemáme uloženou proceduru, která vrací data o nákladech, umožňují TableAdapter vytvořit tuto uloženou proceduru pro nás. Vyberte možnost vytvořit novou uloženou proceduru a klikněte na tlačítko Další.
 
-[![Dáte pokyn, aby TableAdapter průvodce k vytvoření uložené procedury pro nás](adding-additional-datatable-columns-cs/_static/image8.png)](adding-additional-datatable-columns-cs/_static/image7.png)
+[![instruuje Průvodce TableAdapter, aby vytvořil uloženou proceduru pro nás.](adding-additional-datatable-columns-cs/_static/image8.png)](adding-additional-datatable-columns-cs/_static/image7.png)
 
-**Obrázek 3**: Dáte pokyn, aby průvodce TableAdapter vytvořte uložené procedury pro USA ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image9.png))
+**Obrázek 3**: Řekněte průvodci TableAdapter, aby vytvořil uloženou proceduru pro nás ([kliknutím zobrazíte obrázek v plné velikosti).](adding-additional-datatable-columns-cs/_static/image9.png)
 
-Na následující obrazovce je znázorněno na obrázku 4, zobrazí Průvodce požadavek nám jaký typ dotazu přidat. Protože `GetProductsWithPriceQuartile` metoda vrátí všechny sloupce a záznamy ze `Products` tabulku, vyberte, které vrací řádky možnost a klikněte na tlačítko Další.
+Na další obrazovce zobrazené na obrázku 4 Průvodce požádá o typ dotazu, který se má přidat. Vzhledem k tomu, že metoda `GetProductsWithPriceQuartile` vrátí všechny sloupce a záznamy z tabulky `Products`, vyberte možnost vybrat, které vrací řádky, a klikněte na tlačítko Další.
 
-[![Dotaz bude příkaz SELECT tohoto vrátí více řádků](adding-additional-datatable-columns-cs/_static/image11.png)](adding-additional-datatable-columns-cs/_static/image10.png)
+[![náš dotaz bude příkaz SELECT, který vrátí více řádků.](adding-additional-datatable-columns-cs/_static/image11.png)](adding-additional-datatable-columns-cs/_static/image10.png)
 
-**Obrázek 4**: Dotaz bude `SELECT` příkaz této vrátí více řádků ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image12.png))
+**Obrázek 4**: náš dotaz bude příkaz `SELECT`, který vrací více řádků ([kliknutím zobrazíte obrázek v plné velikosti).](adding-additional-datatable-columns-cs/_static/image12.png)
 
-Dále jsme se výzva k zadání `SELECT` dotazu. V průvodci zadejte následující dotaz:
+V dalším kroku se zobrazí výzva k zadání dotazu na `SELECT`. Do průvodce zadejte následující dotaz:
 
 [!code-sql[Main](adding-additional-datatable-columns-cs/samples/sample1.sql)]
 
-Výše uvedeném dotazu používá SQL Server 2005 s novou [ `NTILE` funkce](https://msdn.microsoft.com/library/ms175126.aspx) výsledky rozdělit do čtyř skupin, ve kterém jsou určeny skupiny `UnitPrice` hodnoty seřazeny v sestupném pořadí.
+Výše uvedený dotaz využije SQL Server 2005 s nové [funkce`NTILE`](https://msdn.microsoft.com/library/ms175126.aspx) k rozdělení výsledků do čtyř skupin, kde jsou skupiny určeny hodnotami `UnitPrice` seřazenými v sestupném pořadí.
 
-Bohužel Tvůrce dotazů není známo, jak analyzovat `OVER` – klíčové slovo a bude se zobrazovat chyby při analýze výše uvedeném dotazu. Proto výše uvedeném dotazu přímo do textového pole zadejte v Průvodci bez použití editoru dotazů.
-
-> [!NOTE]
-> Další informace o ntile povolen a SQL Server 2005 s najdete v dalších funkcí hodnocení [vrácení seřazených výsledků s Microsoft SQL Server 2005](http://www.4guysfromrolla.com/webtech/010406-1.shtml) a [hodnocení funkce v tématu](https://msdn.microsoft.com/library/ms189798.aspx) z [SQL Server 2005 Books Online](https://msdn.microsoft.com/library/ms189798.aspx).
-
-Po zadání `SELECT` dotazů a kliknutí na tlačítko Další, Průvodce výzva k zadání názvu pro uloženou proceduru se vytvoří. Pojmenujte novou úložnou proceduru `Products_SelectWithPriceQuartile` a klikněte na tlačítko Další.
-
-[![Název uložené procedury Products_SelectWithPriceQuartile](adding-additional-datatable-columns-cs/_static/image14.png)](adding-additional-datatable-columns-cs/_static/image13.png)
-
-**Obrázek 5**: Název uložené procedury `Products_SelectWithPriceQuartile` ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image15.png))
-
-Nakonec jsme se výzva k pojmenování metody TableAdapter. Nechte obou výplně datové tabulky a vrátí objekt DataTable zaškrtnutých políček a název metody `FillWithPriceQuartile` a `GetProductsWithPriceQuartile`.
-
-[![Název TableAdapter s metod a klikněte na tlačítko Dokončit](adding-additional-datatable-columns-cs/_static/image17.png)](adding-additional-datatable-columns-cs/_static/image16.png)
-
-**Obrázek 6**: Název TableAdapter s metod a kliknutím na tlačítko Dokončit ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image18.png))
-
-S `SELECT` zadaný dotaz a uložených procedur a metody třídy TableAdapter s názvem, klikněte na tlačítko Dokončit dokončete průvodce. V tomto okamžiku se může zobrazit upozornění nebo dvě z Průvodce chci říct, že `OVER` konstrukci SQL nebo příkaz nejsou podporovány. Tato upozornění můžete ignorovat.
-
-Po dokončení průvodce, by měl obsahovat objektu TableAdapter `FillWithPriceQuartile` a `GetProductsWithPriceQuartile` metody a databáze by měl obsahovat uložené procedury s názvem `Products_SelectWithPriceQuartile`. Za chvíli ověřte, že TableAdapter skutečně obsahují tato nová metoda a že uloženou proceduru správně přidán do databáze. Při kontrole databáze, pokud se nezobrazí uloženou proceduru zkuste pravým tlačítkem myši na složku uložené procedury a vyberte aktualizovat.
-
-![Ověřte, že byla přidána nová metoda do TableAdapter](adding-additional-datatable-columns-cs/_static/image19.png)
-
-**Obrázek 7**: Ověřte, že byla přidána nová metoda do TableAdapter
-
-[![Ujistěte se, že databáze obsahuje Products_SelectWithPriceQuartile uložené procedury](adding-additional-datatable-columns-cs/_static/image21.png)](adding-additional-datatable-columns-cs/_static/image20.png)
-
-**Obrázek 8**: Ujistěte se, že databáze obsahuje `Products_SelectWithPriceQuartile` uloženou proceduru ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image22.png))
+Tvůrce dotazů bohužel neví, jak analyzovat klíčové slovo `OVER` a zobrazí při analýze výše uvedeného dotazu chybu. Proto zadejte výše uvedený dotaz přímo do textového pole v průvodci bez použití Tvůrce dotazů.
 
 > [!NOTE]
-> Jednou z výhod použití uložených procedur místo SQL příkazy ad-hoc je, že znovu spustíte Průvodce konfigurací TableAdapter nezmění sloupec seznamy uložené procedury. To ověřte tak, že pravým tlačítkem myši na TableAdapter, vyberete možnost konfigurace v místní nabídce spusťte průvodce a pak kliknutím na tlačítko Dokončit k jejímu dokončení. Dále přejděte do databáze a zobrazení `Products_SelectWithPriceQuartile` uložené procedury. Všimněte si, že byl změněn jeho seznamu sloupců. Měli jsme používali SQL příkazy ad-hoc, znovu spustíte Průvodce konfigurací TableAdapter by se vrátíte tento dotaz s seznam sloupců tak, aby odpovídaly hlavního dotazu seznamu sloupců, odpadne ntile povolen příkaz z dotazu použitého `GetProductsWithPriceQuartile` metody.
+> Další informace o dalších funkcích hodnocení NTILE a SQL Server 2005 s najdete v tématu věnovaném [vrácení seřazených výsledků pomocí Microsoft SQL Server 2005](http://www.4guysfromrolla.com/webtech/010406-1.shtml) a [oddílu funkcí hodnocení](https://msdn.microsoft.com/library/ms189798.aspx) [2005 SQL Server Knihy online](https://msdn.microsoft.com/library/ms189798.aspx).
 
-Když vrstvy přístupu k datům s `GetProductsWithPriceQuartile` vyvolání metody, TableAdapter provede `Products_SelectWithPriceQuartile` uložené procedury a přidá řádek do `ProductsDataTable` pro každý záznam vrátil. Datová pole vrácené uložené procedury jsou namapovány na `ProductsDataTable` s sloupce. Vzhledem k tomu, že je `PriceQuartile` data pole vrácené z uložené procedury, jeho hodnota přiřazena `ProductsDataTable` s `PriceQuartile` sloupce.
+Po zadání `SELECT` dotazu a kliknutí na tlačítko Další vás průvodce vyzve k zadání názvu pro uloženou proceduru, kterou vytvoří. Pojmenujte novou uloženou proceduru `Products_SelectWithPriceQuartile` a klikněte na tlačítko Další.
 
-Pro tyto metody TableAdapter, jejichž dotazy nevrátí `PriceQuartile` datové pole, `PriceQuartile` sloupec s hodnotou je hodnotu zadanou pomocí jeho `DefaultValue` vlastnost. Jak je vidět na obrázku 2, tato hodnota nastavená na `DBNull`, výchozí hodnota. Pokud si přejete jinou výchozí hodnotu, stačí nastavit `DefaultValue` vlastnost odpovídajícím způsobem. Dejte pozor, který `DefaultValue` je hodnota platná zadané sloupce s `DataType` (například `System.Int32` pro `PriceQuartile` sloupec).
+[![uloženou proceduru pojmenovat Products_SelectWithPriceQuartile](adding-additional-datatable-columns-cs/_static/image14.png)](adding-additional-datatable-columns-cs/_static/image13.png)
 
-V tuto chvíli jsme jste provedli kroky pro přidání dalších sloupců do DataTable. Pokud chcete ověřit, že tento další sloupec funguje podle očekávání, umožní vytvořit stránku ASP.NET, která zobrazí každý produkt s názvem, ceny a cena QUARTIL s. Než to, ale nejprve musíme aktualizovat vrstvy obchodní logiky obsahovat metodu, která volá na s vrstvou DAL `GetProductsWithPriceQuartile` metody. Budeme aktualizovat BLL v dalším kroku v kroku 3 a pak vytvořte stránku ASP.NET v kroku 4.
+**Obrázek 5**: pojmenujte uloženou proceduru `Products_SelectWithPriceQuartile` ([kliknutím zobrazíte obrázek v plné velikosti).](adding-additional-datatable-columns-cs/_static/image15.png)
 
-## <a name="step-3-augmenting-the-business-logic-layer"></a>Krok 3: Rozšíření vrstvy obchodní logiky
+Nakonec se zobrazí výzva k pojmenování metod TableAdapter. Ponechte naplnit objekt DataTable a vraťte zaškrtávací políčka DataTable a pojmenujte metody `FillWithPriceQuartile` a `GetProductsWithPriceQuartile`.
 
-Předtím, než jsme pomocí nové `GetProductsWithPriceQuartile` metoda od prezentační vrstvy jsme měli nejprve přidat odpovídající metody do BLL. Otevřít `ProductsBLLWithSprocs` třídy soubor a přidejte následující kód:
+[![pojmenovat metody TableAdapter a klikněte na Dokončit.](adding-additional-datatable-columns-cs/_static/image17.png)](adding-additional-datatable-columns-cs/_static/image16.png)
+
+**Obrázek 6**: pojmenujte metody TableAdapter s a klikněte na Dokončit ([kliknutím zobrazíte obrázek v plné velikosti).](adding-additional-datatable-columns-cs/_static/image18.png)
+
+Když je zadaný dotaz `SELECT` a metody uložené procedury a TableAdapter s názvem, kliknutím na Dokončit dokončete průvodce. V tomto okamžiku se vám může zobrazit upozornění nebo dva z nich, že `OVER` konstrukce nebo příkaz jazyka SQL není podporován. Tato upozornění je možné ignorovat.
+
+Po dokončení průvodce by měl TableAdapter zahrnovat metody `FillWithPriceQuartile` a `GetProductsWithPriceQuartile` a databáze by měla obsahovat uloženou proceduru s názvem `Products_SelectWithPriceQuartile`. Chvíli počkejte, než ověříte, že TableAdapter skutečně obsahuje tuto novou metodu a že uložená procedura byla správně přidána do databáze. Pokud nevidíte uloženou proceduru v databázi, klikněte pravým tlačítkem na složku uložené procedury a zvolte možnost aktualizovat.
+
+![Ověřte, že se do TableAdapter přidala nová metoda.](adding-additional-datatable-columns-cs/_static/image19.png)
+
+**Obrázek 7**: ověření, zda byla do TableAdapter přidána nová metoda
+
+[![zajistěte, aby databáze obsahovala uloženou proceduru Products_SelectWithPriceQuartile](adding-additional-datatable-columns-cs/_static/image21.png)](adding-additional-datatable-columns-cs/_static/image20.png)
+
+**Obrázek 8**: Ujistěte se, že databáze obsahuje `Products_SelectWithPriceQuartile` uloženou proceduru ([kliknutím zobrazíte obrázek v plné velikosti).](adding-additional-datatable-columns-cs/_static/image22.png)
+
+> [!NOTE]
+> Jednou z výhod použití uložených procedur místo ad-hoc příkazů SQL je, že opětovné spuštění Průvodce konfigurací TableAdapter neupraví seznam sloupců uložených procedur. Ověřte to tak, že kliknete pravým tlačítkem na TableAdapter, zvolíte možnost konfigurace z kontextové nabídky a spustíte průvodce a pak kliknutím na Dokončit dokončete jeho dokončení. V dalším kroku přejdete do databáze a zobrazíte uloženou proceduru `Products_SelectWithPriceQuartile`. Všimněte si, že se seznam sloupců nezměnil. Používali jsme příkazy SQL ad hoc, ale opětovné spuštění Průvodce konfigurací TableAdapter by vrátilo tento seznam sloupců dotazu s dotazem na hlavní seznam sloupců dotazu, čímž se odstraní příkaz NTILE z dotazu, který používá metoda `GetProductsWithPriceQuartile`.
+
+Při vyvolání metody Data Access Layer s `GetProductsWithPriceQuartile` spustí TableAdapter `Products_SelectWithPriceQuartile` uloženou proceduru a přidá řádek do `ProductsDataTable` pro každý vrácený záznam. Datová pole vrácená uloženou procedurou jsou namapována na sloupce `ProductsDataTable` s. Vzhledem k tomu, že v uložené proceduře je vráceno datové pole `PriceQuartile`, je jeho hodnota přiřazena do sloupce `ProductsDataTable` s `PriceQuartile`.
+
+Pro tyto metody TableAdapter, jejichž dotazy nevracejí `PriceQuartile` datové pole, je hodnota `PriceQuartile` sloupci s hodnotou určenou vlastností `DefaultValue`. Jak ukazuje obrázek 2, tato hodnota je nastavená na `DBNull`, výchozí. Pokud dáváte přednost jiné výchozí hodnotě, jednoduše nastavte vlastnost `DefaultValue` odpovídajícím způsobem. Stačí se ujistit, že hodnota `DefaultValue` je platná pro `DataType` sloupce (tj. `System.Int32` pro sloupec `PriceQuartile`).
+
+V tuto chvíli jsme provedli nezbytné kroky pro přidání dalšího sloupce do objektu DataTable. Chcete-li ověřit, zda tento další sloupec funguje podle očekávání, můžete vytvořit stránku ASP.NET, která zobrazuje jednotlivé produkty s názvem, cenou a kvartil ceny. Předtím, než to provedeme, nejdřív je potřeba aktualizovat vrstvu obchodní logiky tak, aby zahrnovala metodu, která volá metodu `GetProductsWithPriceQuartile` DAL s. KNIHOVEN BLL budeme aktualizovat dál, v kroku 3, a pak vytvořte stránku ASP.NET v kroku 4.
+
+## <a name="step-3-augmenting-the-business-logic-layer"></a>Krok 3: rozšíření vrstvy obchodní logiky
+
+Předtím, než použijeme novou `GetProductsWithPriceQuartile` metodu z prezentační vrstvy, doporučujeme nejprve přidat odpovídající metodu do knihoven BLL. Otevřete soubor `ProductsBLLWithSprocs` třídy a přidejte následující kód:
 
 [!code-csharp[Main](adding-additional-datatable-columns-cs/samples/sample2.cs)]
 
-Data načtení metod v, jako jsou `ProductsBLLWithSprocs`, `GetProductsWithPriceQuartile` metoda provede jednoduché volání DAL s odpovídající `GetProductsWithPriceQuartile` metodu a vrátí jeho výsledky.
+Podobně jako jiné metody načítání dat v `ProductsBLLWithSprocs`volá metoda `GetProductsWithPriceQuartile` jednoduše volání metody DAL s odpovídající `GetProductsWithPriceQuartile` a vrátí její výsledky.
 
-## <a name="step-4-displaying-the-price-quartile-information-in-an-aspnet-web-page"></a>Krok 4: Zobrazení informací o QUARTIL cena na webové stránce ASP.NET
+## <a name="step-4-displaying-the-price-quartile-information-in-an-aspnet-web-page"></a>Krok 4: zobrazení informací o kvartil ceny na webové stránce ASP.NET
 
-Přidání knihoven BLL dokončení jsme znovu připravený k vytvoření stránky technologie ASP.NET, který zobrazuje QUARTIL ceny pro každý produkt. Otevřít `AddingColumns.aspx` stránku `AdvancedDAL` složky a GridView přetáhněte z panelu nástrojů do Návrháře nastavení jeho `ID` vlastnost `Products`. Z inteligentních značek GridView s vázat na nového prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource používat `ProductsBLLWithSprocs` třída s `GetProductsWithPriceQuartile` metody. Vzhledem k tomu, že to bude jen pro čtení mřížky, nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
+Po dokončení doplňování knihoven BLL jsme připraveni vytvořit stránku ASP.NET, na které se zobrazí kvartil ceny pro každý produkt. Otevřete stránku `AddingColumns.aspx` ve složce `AdvancedDAL` a přetáhněte prvek GridView z panelu nástrojů do návrháře a nastavte jeho vlastnost `ID` na `Products`. Z inteligentní značky GridView s, navažte ji na nový prvek ObjectDataSource s názvem `ProductsDataSource`. Nakonfigurujte prvek ObjectDataSource tak, aby používal metodu `ProductsBLLWithSprocs` třídy s `GetProductsWithPriceQuartile`. Vzhledem k tomu, že se jedná o mřížku jen pro čtení, nastavte rozevírací seznamy na kartách aktualizace, vložení a odstranění na (žádné).
 
-[![Konfigurace ObjectDataSource pomocí třídy ProductsBLLWithSprocs](adding-additional-datatable-columns-cs/_static/image24.png)](adding-additional-datatable-columns-cs/_static/image23.png)
+[![nakonfigurovat prvek ObjectDataSource tak, aby používal třídu ProductsBLLWithSprocs](adding-additional-datatable-columns-cs/_static/image24.png)](adding-additional-datatable-columns-cs/_static/image23.png)
 
-**Obrázek 9**: Konfigurace ObjectDataSource k použití `ProductsBLLWithSprocs` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image25.png))
+**Obrázek 9**: Konfigurace prvku ObjectDataSource, aby používal třídu `ProductsBLLWithSprocs` ([kliknutím zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image25.png))
 
-[![Získávání informací o produktech z GetProductsWithPriceQuartile – metoda](adding-additional-datatable-columns-cs/_static/image27.png)](adding-additional-datatable-columns-cs/_static/image26.png)
+[![načíst informace o produktu z metody GetProductsWithPriceQuartile](adding-additional-datatable-columns-cs/_static/image27.png)](adding-additional-datatable-columns-cs/_static/image26.png)
 
-**Obrázek 10**: Získávání informací o produktech z `GetProductsWithPriceQuartile` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image28.png))
+**Obrázek 10**: načtení informací o produktu z metody `GetProductsWithPriceQuartile` ([kliknutím zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image28.png))
 
-Po dokončení Průvodce nakonfigurovat zdroj dat, sada Visual Studio automaticky přidá vlastnost BoundField nebo třídě CheckBoxField do prvku GridView. pro každý vrácený metodou datová pole. Jedním z těchto polí je `PriceQuartile`, což je sloupec přidali jsme `ProductsDataTable` v kroku 1.
+Po dokončení Průvodce konfigurací zdroje dat bude Visual Studio automaticky přidávat vlastnost BoundField nebo třídě CheckBoxField podporována do prvku GridView pro každé z datových polí vrácených metodou. Jedno z těchto datových polí je `PriceQuartile`, což je sloupec, který jsme přidali do `ProductsDataTable` v kroku 1.
 
-Upravit pole ovládacího prvku GridView s odebráním všech ale na `ProductName`, `UnitPrice`, a `PriceQuartile` BoundFields. Konfigurace `UnitPrice` Vlastnost BoundField a jeho hodnotu jako měnu naformátovat `UnitPrice` a `PriceQuartile` BoundFields a System center zarovnaný doprava, v uvedeném pořadí. Nakonec aktualizujte zbývající BoundFields `HeaderText` vlastnosti na produkt, ceny a cena QUARTIL, v uvedeném pořadí. Také zaškrtněte políčko Povolit řazení z inteligentních značek s ovládacího prvku GridView.
+Upravte pole GridView s tím, že odeberete všechny kromě `ProductName`, `UnitPrice`a `PriceQuartile` BoundFields. Nakonfigurujte `UnitPrice` vlastnost BoundField, abyste nastavili jeho hodnotu jako měnu a `UnitPrice` a `PriceQuartile` BoundFields a zarovnaná na střed. Nakonec aktualizujte zbývající vlastnosti BoundFields `HeaderText` na produkt, cenu a kvartil ceny v uvedeném pořadí. Také zaškrtněte políčko Povolit řazení z inteligentní značky GridView.
 
-Po změnách ovládacími prvky GridView a prvku ObjectDataSource s deklarativní by měl vypadat nějak takto:
+Po těchto úpravách by deklarativní označení GridView a ObjectDataSource s mělo vypadat takto:
 
 [!code-aspx[Main](adding-additional-datatable-columns-cs/samples/sample3.aspx)]
 
-Obrázku 11 můžete vidět tuto stránku, když uživatel prostřednictvím prohlížeče. Všimněte si, že na začátku produkty jsou řazeny podle jejich cena v sestupném pořadí u každého produktu přiřazené odpovídající `PriceQuartile` hodnotu. Samozřejmě tato data můžou být řada seřazena podle jiných kritérií se cena sloupec kvartil stále odráží hodnocení produktu s s ohledem na cenu (viz obrázek 12).
+Obrázek 11 ukazuje tuto stránku, když se navštíví přes prohlížeč. Všimněte si, že zpočátku jsou produkty seřazené podle ceny v sestupném pořadí s každým produktem přiřazeným příslušné `PriceQuartile`é hodnotě. Tato data je samozřejmě možné seřadit podle jiných kritérií s hodnotou data QUARTIL (cena), která je stále v souladu s hodnocením produktů s ohledem na cenu (viz obrázek 12).
 
-[![Produkty jsou řazeny podle jejich cenu](adding-additional-datatable-columns-cs/_static/image30.png)](adding-additional-datatable-columns-cs/_static/image29.png)
+[![produkty jsou seřazené podle jejich cen](adding-additional-datatable-columns-cs/_static/image30.png)](adding-additional-datatable-columns-cs/_static/image29.png)
 
-**Obrázek 11**: Produkty jsou řazeny podle jejich cenu ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image31.png))
+**Obrázek 11**: produkty jsou seřazené podle jejich cen ([kliknutím zobrazíte obrázek v plné velikosti).](adding-additional-datatable-columns-cs/_static/image31.png)
 
-[![Produkty jsou řazeny podle svých názvů](adding-additional-datatable-columns-cs/_static/image33.png)](adding-additional-datatable-columns-cs/_static/image32.png)
+[![produkty jsou seřazené podle jejich názvů.](adding-additional-datatable-columns-cs/_static/image33.png)](adding-additional-datatable-columns-cs/_static/image32.png)
 
-**Obrázek 12**: Produkty jsou řazeny podle svých názvů ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image34.png))
+**Obrázek 12**: produkty jsou seřazené podle jejich názvů ([kliknutím zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-cs/_static/image34.png)).
 
 > [!NOTE]
-> Po zadání několika řádků kódu jsme mohli rozšířit prvku GridView tak, aby vybarvenými řádky produkt na základě jejich `PriceQuartile` hodnotu. Společnost Microsoft může barva tyto produkty v první kvartil světle zelená, ve druhém QUARTIL žlutě a tak dále. Neváhejte se za chvíli přidat tuto funkci. Pokud potřebujete občerstvit o formátování GridView, obraťte se [vlastní formátování založené na Data](../custom-formatting/custom-formatting-based-upon-data-cs.md) kurzu.
+> Pomocí několika řádků kódu jsme mohli prvek GridView rozšířit tak, aby na základě jeho `PriceQuartile` vybarvené řádky produktu. Tyto produkty můžeme nabarvit v první kvartil a světle zelenou, ta ve druhé kvartil je světle žlutá a tak dále. Doporučuje se chvíli trvat, než tuto funkci přidáte. Pokud potřebujete aktualizační program pro formátování prvku GridView, přečtěte si kurz [vlastní formátování na základě data](../custom-formatting/custom-formatting-based-upon-data-cs.md) .
 
-## <a name="an-alternative-approach---creating-another-tableadapter"></a>Alternativním přístupem – vytváření jiné třídy TableAdapter
+## <a name="an-alternative-approach---creating-another-tableadapter"></a>Alternativní přístup – vytváření dalších TableAdapter
 
-Jak jsme viděli v tomto kurzu se při přidání metody do třídy TableAdapter, který vrací datových polí než ty, které států hlavního dotazu, můžeme přidat odpovídající sloupce do objektu DataTable. Takový přístup, ale funguje dobře jenom v případě, že existují malý počet metod v TableAdapter, které vracejí různých datových polí, a pokud tato alternativní datové pole se neliší o příliš mnoho z hlavního dotazu.
+Jak jsme to viděli v tomto kurzu, při přidávání metody do TableAdapter, která vrací datová pole, která vrací hlavní dotaz, můžeme do objektu DataTable přidat odpovídající sloupce. Takový přístup ale funguje i v případě, že v TableAdapter existuje malý počet metod, které vracejí různá datová pole a pokud se tato alternativní datová pole neliší od hlavního dotazu.
 
-Místo přidávání sloupců do objektu DataTable, můžete místo toho přidat jiné třídy TableAdapter do datové sady, který obsahuje metodu z první třídy TableAdapter, které vracejí různých datových polí. Pro účely tohoto kurzu množstvím než přidávat `PriceQuartile` sloupec, který se `ProductsDataTable` (kde používá se pouze podle `GetProductsWithPriceQuartile` metoda), může do jsme přidali další TableAdapter datovou sadu s názvem `ProductsWithPriceQuartileTableAdapter` , který používá `Products_SelectWithPriceQuartile` uložená postup jako jeho hlavním dotazem. Stránky ASP.NET, které jsou potřeba k získání informací o produktu s QUARTIL cena byste použili `ProductsWithPriceQuartileTableAdapter`, zatímco ty, které ne může pokračovat v používání `ProductsTableAdapter`.
+Místo přidávání sloupců do objektu DataTable můžete místo toho přidat další TableAdapter do datové sady, která obsahuje metody z prvního TableAdapter, která vrací různá datová pole. Pro tento kurz místo přidání sloupce `PriceQuartile` do `ProductsDataTable` (kde ho používá jenom metoda `GetProductsWithPriceQuartile`) jsme mohli přidat další TableAdapter do datové sady s názvem `ProductsWithPriceQuartileTableAdapter`, která jako svůj hlavní dotaz používala uloženou proceduru `Products_SelectWithPriceQuartile`. ASP.NET stránky, které jsou potřeba k získání informací o produktech s využitím funkce Price, by používaly `ProductsWithPriceQuartileTableAdapter`, zatímco ty, které nemohly `ProductsTableAdapter`používat.
 
-Přidáním nového TableAdapter DataTables zůstanou untarnished a jejich sloupců přesně zrcadlení datová pole vrácené z metody s jejich TableAdapter. Další objekty TableAdapter lze však zavést opakujících se úloh a funkcí. Například, pokud tyto stránky ASP.NET, která se zobrazí `PriceQuartile` sloupec také potřeba poskytnout vložení, aktualizace a odstranění podpory, `ProductsWithPriceQuartileTableAdapter` byste potřebovali mít jeho `InsertCommand`, `UpdateCommand`, a `DeleteCommand` vlastnosti správně konfigurovat. Zatímco bude zrcadlit tyto vlastnosti `ProductsTableAdapter` s touto konfigurací zavádí další krok. Kromě toho nyní existují dva způsoby, jak aktualizovat, odstranit nebo přidat produkt do databáze - prostřednictvím `ProductsTableAdapter` a `ProductsWithPriceQuartileTableAdapter` třídy.
+Přidáním nového TableAdapter datové tabulky zůstanou untarnished a jejich sloupce přesně zrcadlí datová pole vrácená metodami TableAdapter s. Další objekty TableAdapter ale můžou vést k opakujícím se úlohám a funkcím. Například pokud jsou tyto stránky ASP.NET se zobrazeným sloupcem `PriceQuartile` také nezbytné k zajištění podpory vložení, aktualizace a odstranění, `ProductsWithPriceQuartileTableAdapter` by musel mít správně nakonfigurovanou vlastnost `InsertCommand`, `UpdateCommand`a `DeleteCommand`. I když tyto vlastnosti zrcadlí `ProductsTableAdapter` s, tato konfigurace zavádí další krok. Kromě toho existují dva způsoby, jak aktualizovat, odstranit nebo přidat produkt do databáze-prostřednictvím tříd `ProductsTableAdapter` a `ProductsWithPriceQuartileTableAdapter`.
 
-Zahrnuje stažení pro účely tohoto kurzu `ProductsWithPriceQuartileTableAdapter` třídy v `NorthwindWithSprocs` datovou sadu, která tento alternativní postup znázorňuje.
+Stažení pro tento kurz obsahuje třídu `ProductsWithPriceQuartileTableAdapter` v datové sadě `NorthwindWithSprocs`, která ukazuje tento alternativní přístup.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Ve většině scénářů si všechny metody v objektu typu TableAdapter vrátí stejnou sadu datových polí, ale existují situace, kdy konkrétní metody nebo dvou může být zapotřebí vracet další pole. Například v [Master/Detail, použití odrážkovém seznamu v hlavních záznamů s podrobnostmi v prvku DataList](../filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md) kurzu jsme přidali metodu `CategoriesTableAdapter` , kromě datových polí hlavního dotazu s vrátil `NumberOfProducts` pole, které hlásí počet produktů, které jsou spojené s každou kategorii. V tomto kurzu jsme se podívali na přidání metody v `ProductsTableAdapter` vrácená `PriceQuartile` pole kromě hlavního dotazu s datová pole. K zaznamenání dat o další pole vrácené pomocí metod TableAdapter s že potřebujeme přidat odpovídající sloupce do objektu DataTable.
+Ve většině scénářů vrátí všechny metody v TableAdapter stejnou sadu datových polí, ale v některých případech nastane čas, kdy konkrétní metoda nebo dvě nemusí vracet další pole. Například v [seznamu hlavní/podrobnosti pomocí seznamu hlavních záznamů s odrážkami s kurzem podrobností DataList](../filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md) jsme přidali metodu do `CategoriesTableAdapter`, který kromě datových polí Main Query s vrátí `NumberOfProducts` pole, které oznámilo počet produktů přidružených ke každé kategorii. V tomto kurzu jsme se vyhledali přidáním metody do `ProductsTableAdapter`, která kromě datových polí Main Query s vrátila pole `PriceQuartile`. K zachycení dalších datových polí vrácených metodami TableAdapter s musíme do objektu DataTable přidat odpovídající sloupce.
 
-Pokud plánujete ruční přidávání sloupců do DataTable, doporučuje se, že TableAdapter pomocí uložených procedur. Pokud TableAdapter používá příkazy SQL ad-hoc, kdykoli TableAdapter spuštění Průvodce konfigurací všechny metody seznamů polí data obnovit datová pole vráceného hlavním dotazem. Tento problém nerozšiřuje třídu na uložené procedury, což je důvod, proč se doporučují a byly použity v tomto kurzu.
+Pokud plánujete ručně přidávat sloupce do objektu DataTable, je doporučeno, aby TableAdapter používal uložené procedury. Pokud TableAdapter používá příkazy SQL ad hoc, pokaždé, když se spustí Průvodce konfigurací TableAdapter, se vrátí do datových polí vrácených hlavním dotazem. Tento problém se nerozšiřuje na uložené procedury, což je důvod, proč jsou doporučené a byly použity v tomto kurzu.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí revidující pro účely tohoto kurzu byly Randym Schmidt, Jacky Goor, Bernadette Leigh a Hilton Giesenow. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Recenzenti potenciálních zákazníků pro tento kurz byly Randy Schmidt, Jacky Goor, Bernadette Leigh a Hilton Giesenow. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](updating-the-tableadapter-to-use-joins-cs.md)
-> [další](working-with-computed-columns-cs.md)
+> [Další](working-with-computed-columns-cs.md)

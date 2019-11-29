@@ -1,69 +1,69 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/project-properties
-title: 'Nasazení webu ASP.NET pomocí sady Visual Studio: Vlastnosti projektu | Dokumentace Microsoftu'
+title: 'Nasazení webu ASP.NET pomocí sady Visual Studio: vlastnosti projektu | Microsoft Docs'
 author: tdykstra
-description: V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, podle usin...
+description: V této sérii kurzů se dozvíte, jak nasadit (publikovat) webovou aplikaci ASP.NET, která bude Azure App Service Web Apps nebo poskytovateli hostingu třetí strany, pomocí usin...
 ms.author: riande
 ms.date: 02/15/2013
 ms.assetid: ec1cec4c-a75f-47af-a2ba-b1e2f971d24b
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/project-properties
 msc.type: authoredcontent
-ms.openlocfilehash: e17155317e484c8efdf87a1598fb2795b1619587
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: b2811791a897c9166f6222c23dddc6921e5267ab
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65109639"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74614943"
 ---
-# <a name="aspnet-web-deployment-using-visual-studio-project-properties"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Vlastnosti projektu
+# <a name="aspnet-web-deployment-using-visual-studio-project-properties"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: vlastnosti projektu
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-[Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
+[Stáhnout počáteční projekt](https://go.microsoft.com/fwlink/p/?LinkId=282627)
 
-> V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, s použitím sady Visual Studio 2012 nebo Visual Studio 2010. Informace o této sérii, naleznete v tématu [z prvního kurzu této série](introduction.md).
+> V této sérii kurzů se dozvíte, jak nasadit (publikovat) webovou aplikaci ASP.NET, která umožňuje Azure App Service Web Apps nebo poskytovateli hostingu třetí strany, pomocí sady Visual Studio 2012 nebo Visual Studio 2010. Informace o řadě najdete v [prvním kurzu v řadě](introduction.md).
 
 ## <a name="overview"></a>Přehled
 
-Některé možnosti nasazení jsou nakonfigurovány ve vlastnostech projektu, které jsou uloženy v souboru projektu ( *.csproj* nebo *.vbproj* souboru). Ve většině případů jsou výchozí hodnoty z těchto nastavení, co chcete, ale můžete použít **vlastnosti projektu** uživatelského rozhraní, které jsou součástí Visual Studia pro práci s těmito nastaveními Pokud máte, tím je Změníme. V tomto kurzu zkontrolujete nastavení nasazení v **vlastnosti projektu**. Můžete také vytvořit zástupný soubor, který způsobí, že prázdnou složku pro nasazení.
+Některé možnosti nasazení jsou nakonfigurovány ve vlastnostech projektu, které jsou uloženy v souboru projektu (soubor *. csproj* nebo *. vbproj* ). Ve většině případů jsou výchozí hodnoty těchto nastavení vhodné, ale můžete použít **Vlastnosti projektu** integrované do sady Visual Studio pro práci s těmito nastaveními, pokud je třeba je změnit. V tomto kurzu si prohlédnete nastavení nasazení ve **vlastnostech projektu**. Také vytvoříte zástupný soubor, který způsobí nasazení prázdné složky.
 
-## <a name="configure-deployment-settings-in-the-project-properties-window"></a>Konfigurovat nastavení nasazení v okně Vlastnosti projektu
+## <a name="configure-deployment-settings-in-the-project-properties-window"></a>Konfigurace nastavení nasazení v okně vlastností projektu
 
-Většinu nastavení, které ovlivňují, co se stane během nasazení jsou zahrnuty v profilu publikování, jak uvidíte v následujících kurzech. Několik nastavení, které byste měli vědět, jsou umístěny v **balení/publikování** karet **vlastnosti projektu** okna. Tato nastavení jsou zadány pro každou konfiguraci sestavení – to znamená, mohou mít různá nastavení pro sestavení pro vydání, než kolik máte pro sestavení pro ladění.
+Většina nastavení, která mají vliv na to, co se stane během nasazení, jsou součástí profilu publikování, jak vidíte v následujících kurzech. Několik nastavení, o kterých byste měli vědět, se nachází na kartách **balení a publikování** okna **vlastností projektu** . Tato nastavení jsou určena pro každou konfiguraci sestavení – to znamená, že můžete mít různá nastavení pro sestavení pro vydání, než pro sestavení pro ladění.
 
-V **Průzkumníku řešení**, klikněte pravým tlačítkem myši **ContosoUniversity** projekt, vyberte **vlastnosti**a pak vyberte **balení/publikování webu**kartu.
+V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **ContosoUniversity** , vyberte **vlastnosti**a pak vyberte kartu **balíček/publikovat web** .
 
-![Kartě Balení/publikování webu](project-properties/_static/image1.png)
+![Karta Balení/publikování webu](project-properties/_static/image1.png)
 
-Pokud se zobrazí v okně, použije se výchozí zobrazuje nastavení konfigurace podle toho, která sestavení je aktuálně aktivních pro řešení. Pokud **konfigurace** pole nenaznačuje, že **aktivní (verze)** vyberte **vydání** mohla zobrazit nastavení konfigurace sestavení pro vydání. Sestavení pro vydání budete nasazovat do testovacích i produkčních prostředí.
+Po zobrazení okna se ve výchozím nastavení zobrazí nastavení pro každou konfiguraci sestavení, která je pro toto řešení aktuálně aktivní. Pokud pole **Konfigurace** neuvádí možnost **aktivní (vydání)** , vyberte **verze** , aby se zobrazila nastavení pro konfiguraci sestavení pro vydání. Nasadíte sestavení vydaných verzí do testovacího i produkčního prostředí.
 
 ![Výběr konfigurace sestavení pro vydání](project-properties/_static/image2.png)
 
-S **aktivní (verze)** nebo **vydání** vybrali, se zobrazí hodnoty, které platí při nasazení pomocí konfigurace verze sestavení:
+Když vyberete možnost **aktivní (vydaná verze)** nebo **vydaná verze** , zobrazí se hodnoty, které jsou platné při nasazení pomocí konfigurace sestavení verze:
 
-- V **položky, které chcete nasadit** pole **pouze soubory potřebné ke spuštění aplikace** zaškrtnuto. Další možnosti jsou **všechny soubory v tomto projektu** nebo **všechny soubory v této složce projektu**. Ponechte výchozí výběr, beze změny byste se vyhnout soubory zdrojového kódu, například nasazení. Toto nastavení je důvod, proč složky obsahující binární soubory systému SQL Server Compact musí být zahrnutý v projektu. Další informace o tomto nastavení najdete v tématu **Proč nejsou všechny soubory ve složce projektu nasazení?** v [technologie ASP.NET webové aplikace projektu nasazení – nejčastější dotazy](https://msdn.microsoft.com/library/ee942158.aspx).
-- **Vyloučit generované symboly ladění** zaškrtnuto. Nesmí být ladění při použití této konfigurace sestavení.
-- **Zahrnout všechny databáze, které jsou nakonfigurované v kartě Balení/publikování kódu SQL** zaškrtnuto. Určuje, zda sady Visual Studio nasadí databáze, jakož i soubory. I když zaškrtnutí políčka popisek pouze zmínky **balení/publikování kódu SQL** kartu, zrušíte zaškrtnutí tohoto políčka by také zakázat nasazení databáze, který je nakonfigurovaný v profilu publikování. Můžete se být způsobem, který později, tak zaškrtnutí políčka musí zůstat vybrané. **Balení/publikování kódu SQL** karta se používá pro starší verze databáze publikování metodu, která nebudete používat v těchto kurzech.
-- **Nastavení balíčku pro nasazení webových** část se nevztahuje, protože používáte jedním kliknutím publikovat v těchto kurzech.
+- V poli **položky k nasazení** se vybere **pouze soubory potřebné ke spuštění aplikace** . Další možnosti jsou **všechny soubory v tomto projektu** nebo **všechny soubory v této složce projektu**. Když necháte výchozí výběr beze změny, nebudete například nasazovat soubory zdrojového kódu. Toto nastavení je důvod, proč se složky obsahující SQL Server Compact binární soubory měly zahrnout do projektu. Další informace o tomto nastavení najdete v tématu **Proč se nepovedlo nasadit všechny soubory ve složce projektu?** v tématu [Nejčastější dotazy k nasazení projektu webové aplikace ASP.NET](https://msdn.microsoft.com/library/ee942158.aspx).
+- Je vybraná možnost **vyloučit vygenerované symboly ladění** . Při použití této konfigurace sestavení nebudete ladit.
+- Je vybraná možnost **Zahrnout všechny databáze nakonfigurované na kartě Balení/publikování SQL** . Určuje, zda bude Visual Studio nasazovat databáze i soubory. I když popisek zaškrtávacího políčka zmiňuje kartu **Package/Publishing SQL** , zrušení zaškrtnutí tohoto políčka také zakáže nasazení databáze, které je nakonfigurováno v profilu publikování. Budete to provádět později, takže zaškrtávací políčko musí zůstat zaškrtnuté. Karta **Balení/publikování kódu SQL** se používá pro metodu publikování starší databáze, kterou v těchto kurzech nebudete používat.
+- Oddíl **nastavení balíčku pro nasazení webu** neplatí, protože v těchto kurzech používáte publikování jedním kliknutím.
 
-Změnit **konfigurace** rozevíracího seznamu pro ladění, pokud chcete zobrazit výchozí nastavení pro sestavení pro ladění. Hodnoty jsou stejné, s výjimkou **Vyloučit generované symboly ladění** je prázdná, takže můžete ladit při nasazování sestavení pro ladění.
+Změnou rozevíracího seznamu **Konfigurace** na ladit zobrazíte výchozí nastavení pro sestavení pro ladění. Hodnoty jsou stejné, s výjimkou **vyloučených vygenerovaných symbolů ladění** je vymazáno, aby bylo možné ladit při nasazení sestavení ladění.
 
-## <a name="make-sure-that-the-elmah-folder-gets-deployed"></a>Ujistěte se, že se nasadí Elmah složky
+## <a name="make-sure-that-the-elmah-folder-gets-deployed"></a>Ujistěte se, že se nasadí složka knihovny elmah.
 
-Jak už jste viděli v předchozím kurzu, [balíček NuGet knihovny Elmah](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx) poskytuje funkce pro protokolování a vykazováním chyb. Aplikace Contoso University Elmah nakonfigurovaný k ukládání podrobnosti o chybě ve složce s názvem *Elmah*:
+Jak jste viděli v předchozím kurzu, [balíček NuGet knihovny elmah](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx) poskytuje funkce pro protokolování chyb a vytváření sestav. Ve složce s názvem *knihovny elmah*je v aplikaci Contoso University knihovny elmah nakonfigurovaná tak, aby ukládala podrobnosti o chybách:
 
-![Elmah složky](project-properties/_static/image3.png)
+![Knihovny elmah složka](project-properties/_static/image3.png)
 
-Vyloučení určitých souborů nebo složek z nasazení je běžné požadavky; Dalším příkladem může být složka, která mohou uživatelé odeslat soubory do. Nechcete, aby se soubory protokolu nebo nahrát soubory, které byly vytvořeny ve vašem vývojovém prostředí k nasazení do produkčního prostředí. A Pokud nasazujete aktualizace do produkčního prostředí, které nechcete, aby proces nasazení k odstranění souborů, které existují v produkčním prostředí. (V závislosti na tom, jak nastavit možnost nasazení, pokud soubor existuje v cílové lokalitě, ale ne zdrojové lokality, když nasazujete, Web Deploy neodstraní z cílového umístění.)
+Běžným požadavkem je vyloučení určitých souborů nebo složek z nasazení. Dalším příkladem může být složka, do které můžou uživatelé nahrávat soubory. Nechcete nasadit soubory protokolu ani nahrané soubory, které byly vytvořeny ve vašem vývojovém prostředí, do produkčního prostředí. A pokud nasazujete aktualizaci do produkčního prostředí, nechcete, aby proces nasazení odstranil soubory, které existují v produkčním prostředí. (V závislosti na nastavení možnosti nasazení, pokud soubor existuje v cílové lokalitě, ale ne ve zdrojové lokalitě při nasazení, Nasazení webu ho odstraní z cílového umístění.)
 
-Jak už jste viděli dříve v tomto kurzu **položky, které chcete nasadit** možnost **balení/publikování webu** karty nastavená na **pouze soubory potřebné ke spuštění této aplikace**. V důsledku toho soubory protokolů, které jsou vytvořeny pomocí knihovny Elmah ve vývoji nebude nasazena, což je, co byste chtěli. (Má být nasazen, bylo by nutné zahrnutý v projektu a jejich **akce sestavení** vlastnost musel být nastaveno na **obsahu**. Další informace najdete v tématu **Proč nejsou všechny soubory ve složce projektu nasazení?** v [technologie ASP.NET webové aplikace projektu nasazení – nejčastější dotazy](https://msdn.microsoft.com/library/ee942158.aspx)). Ale Webdeploy nebude vytvořte složku v cílové lokalitě pokud existuje alespoň jeden soubor zkopírujte do něj. Proto přidáte *.txt* soubor do složky tak, aby fungoval jako zástupný symbol, takže budou zkopírovány složky.
+Jak jste viděli dříve v tomto kurzu, možnost **položky k nasazení** na kartě **balení nebo publikování webu** je nastavena **pouze na soubory potřebné ke spuštění této aplikace**. V důsledku toho nebudou nasazeny soubory protokolu vytvořené nástrojem knihovny elmah ve vývoji, což je to, co chcete udělat. (Aby bylo možné je nasadit, museli by být zahrnuti do projektu a vlastnost **Akce sestavení** by musel být nastavena na **obsah**. Další informace najdete v tématu **Proč se nepovedlo nasadit všechny soubory ve složce projektu?** v tématu [Nejčastější dotazy k nasazení projektu webové aplikace ASP.NET](https://msdn.microsoft.com/library/ee942158.aspx). Nasazení webu však nevytvoří složku v cílové lokalitě, pokud k ní není k dispozici alespoň jeden soubor. Proto do složky přidáte soubor *. txt* , který bude fungovat jako zástupný symbol, aby se složka zkopírovala.
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem myši *Elmah* složky, vyberte **přidat novou položku**a vytvořte textový soubor s názvem *Placeholder.txt*. Vložte následující text do něj: "Toto je zástupný soubor k zajištění, že se nasadí složky". a uložte soubor. To je všechno musíte udělat, pokud chcete mít jistotu, že sada Visual Studio nasadí tento soubor a složku probíhá, protože **akce sestavení** vlastnost *.txt* souborů je nastavena na **obsahu**ve výchozím nastavení.
+V **Průzkumník řešení**klikněte pravým tlačítkem myši na složku *knihovny elmah* , vyberte možnost **Přidat novou položku**a vytvořte textový soubor s názvem *zástupný text. txt*. Vložte do něj následující text: "Jedná se o zástupný soubor, aby bylo zajištěno, že se složka bude nasazovat". a uložte soubor. To je všechno, co musíte udělat, aby se zajistilo, že Visual Studio nasadí tento soubor a složku, ve které je, protože vlastnost **Akce sestavení** souborů *. txt* je ve výchozím nastavení nastavená na **obsah** .
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Teď jste dokončili všechny kroky nastavení nasazení. V dalším kurzu budete nasazení webu společnosti Contoso University do testovacího prostředí a ho vyzkoušeli.
+Nyní jste dokončili všechny úlohy nastavování nasazení. V dalším kurzu nasadíte web společnosti Contoso University do testovacího prostředí a otestujete ho.
 
 > [!div class="step-by-step"]
 > [Předchozí](web-config-transformations.md)
-> [další](deploying-to-iis.md)
+> [Další](deploying-to-iis.md)

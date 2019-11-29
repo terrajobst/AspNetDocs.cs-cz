@@ -1,165 +1,165 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting/sorting-custom-paged-data-vb
-title: Řazení s vlastním stránkováním dat (VB) | Dokumentace Microsoftu
+title: Řazení vlastních stránkovaných dat (VB) | Microsoft Docs
 author: rick-anderson
-description: V předchozím kurzu jsme zjistili, jak implementovat vlastní stránkování, při zobrazení dat na webové stránce. V tomto kurzu jsme zjistit, jak rozšířit předchozí...
+description: V předchozím kurzu jsme zjistili, jak implementovat vlastní stránkování při prezentaci dat na webové stránce. V tomto kurzu se naučíme, jak výše uvedený postup zvětšit...
 ms.author: riande
 ms.date: 08/15/2006
 ms.assetid: 4823a186-caaf-4116-a318-c7ff4d955ddc
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/sorting-custom-paged-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4c0d015c7d0a294464a3c22dd14a1ad98fbf3235
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 934c7558d907611732ae6f04c553bc9e295c569b
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131385"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74618499"
 ---
 # <a name="sorting-custom-paged-data-vb"></a>Řazení dat s vlastním stránkováním (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_26_VB.exe) nebo [stahovat PDF](sorting-custom-paged-data-vb/_static/datatutorial26vb1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_26_VB.exe) nebo [Stáhnout PDF](sorting-custom-paged-data-vb/_static/datatutorial26vb1.pdf)
 
-> V předchozím kurzu jsme zjistili, jak implementovat vlastní stránkování, při zobrazení dat na webové stránce. V tomto kurzu jsme zjistit, jak rozšířit předchozí příklad zahrnující podporu pro řazení vlastní stránkování.
+> V předchozím kurzu jsme zjistili, jak implementovat vlastní stránkování při prezentaci dat na webové stránce. V tomto kurzu se naučíme, jak výše uvedený příklad zvětšit, aby zahrnoval podporu pro řazení vlastního stránkování.
 
 ## <a name="introduction"></a>Úvod
 
-Ve srovnání s výchozí stránkování, vlastní stránkování může zlepšit výkon stránkování prostřednictvím dat o několik řádů, provádění vlastní stránkování de facto stane Volba implementace stránkovacího při procházení velkých objemů dat po stránkách. Implementace vlastní stránkování se tak zapojí víc než implementovat výchozí stránkování, zejména v případě, že přidání řazení kombinaci. V tomto kurzu budete rozšíříme příklad od předchozí zahrnující podporu pro řazení *a* vlastní stránkování.
+Ve srovnání s výchozím stránkováním může vlastní stránkování zlepšit výkon stránkování prostřednictvím dat několika různými objednávkami a udělat si vlastní stránkování – volba de facto stránkování implementace při stránkování prostřednictvím velkých objemů dat. Implementace vlastního stránkování je větší než implementace výchozího stránkování, ale zejména při přidávání řazení do kombinace. V tomto kurzu rozšíříme příklad z předchozí verze, aby se zahrnula podpora pro řazení *a* vlastní stránkování.
 
 > [!NOTE]
-> Protože v tomto kurzu navazuje na předchozí jeden před začátek využít ke zkopírování deklarativní syntaxe v rámci `<asp:Content>` element z předchozího kurzu s webové stránky (`EfficientPaging.aspx`) a vložte jej mezi `<asp:Content>` prvek `SortParameter.aspx` stránky. Vraťte se ke kroku 1 z [přidání validačních ovládacích prvků pro úpravy a vložení rozhraní](../editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md) kurz podrobnější informace o replikaci do jiné funkce jednu stránku ASP.NET.
+> Vzhledem k tomu, že tento kurz sestaví na předchozí straně, před začátkem kopírování deklarativní syntaxe v rámci `<asp:Content>` elementu z předchozí webové stránky kurzu (`EfficientPaging.aspx`) a vložení mezi `<asp:Content>` elementu na stránce `SortParameter.aspx`. Podívejte se zpátky na krok 1 v tématu [Přidání ovládacích prvků ověřování do kurzu pro úpravy a vkládání rozhraní](../editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md) , kde najdete podrobnější diskuzi o replikaci funkčnosti jedné stránky ASP.NET do druhé.
 
-## <a name="step-1-reexamining-the-custom-paging-technique"></a>Krok 1: Přezkoumání vlastní stránkování technika
+## <a name="step-1-reexamining-the-custom-paging-technique"></a>Krok 1: Kontrola vlastní techniky stránkování
 
-Pro vlastní stránkování fungovalo správně, musíme implementovat některé techniky, které můžete efektivně vzít konkrétní podmnožinu záznamů zadané parametry Start Index řádku a maximální počet řádků. Existuje několik postupů, které slouží k dosažení tohoto cíle. V předchozím kurzu jsme se podívali na způsoby použití nového serveru Microsoft SQL Server 2005 s `ROW_NUMBER()` hodnocení funkce. Stručně řečeno `ROW_NUMBER()` hodnocení funkce přiřadí každý řádek vrácený dotaz, který je seřazené podle pořadí řazení zadané číslo řádku. Na příslušnou podmnožinu záznamů se potom získá tak, že vrací určitou část číslované výsledky. Následující dotaz ukazuje, jak používat tuto techniku ke vráceny produkty číslované 11 až 20 při hodnocení výsledky seřazené podle abecedy podle `ProductName`:
+Aby vlastní stránkování fungovalo správně, je nutné implementovat určitou techniku, která může efektivně připustit konkrétní podmnožinu záznamů s indexem počátečního řádku a maximálním počtem parametrů řádků. Existuje několik postupů, které lze použít k dosažení tohoto cíle. V předchozím kurzu jsme se vyhledali pomocí Microsoft SQL Server 2005 s nové funkce hodnocení `ROW_NUMBER()`. V krátkém případě funkce třídění `ROW_NUMBER()` přiřadí číslo řádku každému řádku vrácenému dotazem, který je seřazen podle zadaného pořadí řazení. Příslušná podmnožina záznamů se pak získá tak, že se vrátí konkrétní část očíslovaných výsledků. Následující dotaz znázorňuje, jak použít tuto techniku k vrácení těchto produktů číslovaných 11 až 20 při řazení výsledků seřazené podle abecedy podle `ProductName`:
 
 [!code-sql[Main](sorting-custom-paged-data-vb/samples/sample1.sql)]
 
-Tento postup funguje dobře pro stránkování pomocí konkrétní řazení (`ProductName` seřazená podle abecedy, v tomto případě), ale je potřeba upravit tak, aby zobrazit výsledky seřazené podle různých řadicí výraz dotazu. V ideálním případě by mohla být přepsána výše uvedeném dotazu určený parametrem `OVER` klauzuli, například takto:
+Tato technika funguje dobře pro stránkování pomocí konkrétního pořadí řazení (`ProductName` v tomto případě seřazené podle abecedy), ale dotaz musí být upraven, aby zobrazoval výsledky seřazené podle jiného výrazu řazení. V ideálním případě lze výše uvedený dotaz přepsat tak, aby používal parametr v klauzuli `OVER`, například:
 
 [!code-sql[Main](sorting-custom-paged-data-vb/samples/sample2.sql)]
 
-Bohužel parametrizované `ORDER BY` klauzule nejsou povoleny. Místo toho musíte vytvořit uloženou proceduru, která přijímá `@sortExpression` vstupní parametr, ale používá jedno z následujících náhradních postupů:
+Nicméně parametrizované klauzule `ORDER BY` nejsou povoleny. Místo toho je nutné vytvořit uloženou proceduru, která přijímá vstupní parametr `@sortExpression`, ale používá jedno z následujících řešení:
 
-- Psaní dotazů pevně zakódované pro jednotlivé výrazy řazení, které mohou být použity; potom použijte `IF/ELSE` příkazy jazyka T-SQL k určení dotazu, který chcete spustit.
-- Použití `CASE` příkazu zadejte dynamické `ORDER BY` na základě výrazů `@sortExpressio` n vstupní parametr; viz slouží k části dynamicky řazení výsledků dotazu v [Power SQL `CASE` příkazy](http://www.4guysfromrolla.com/webtech/102704-1.shtml) Další informace.
-- Vytvořit odpovídající dotazu jako řetězec v uložené proceduře a pak použijte [ `sp_executesql` systémové uložené procedury](https://msdn.microsoft.com/library/ms188001.aspx) ke spuštění dynamický dotaz.
+- Zápis pevně kódovaných dotazů pro každý výraz řazení, který může být použit; pak pomocí `IF/ELSE` příkazů T-SQL určete, který dotaz se má provést.
+- Pomocí příkazu `CASE` můžete poskytnout dynamické `ORDER BY` výrazy založené na vstupním parametru `@sortExpressio` n. Další informace najdete v části využívané k dynamickému řazení výsledků dotazu v tématu [výkon příkazů SQL `CASE`](http://www.4guysfromrolla.com/webtech/102704-1.shtml) .
+- Vyplní příslušný dotaz jako řetězec v uložené proceduře a pak pomocí [uložené procedury `sp_executesql` systému](https://msdn.microsoft.com/library/ms188001.aspx) spusťte dynamický dotaz.
 
-Každá z těchto alternativních řešení obsahuje určité nevýhody. První možnost není jako udržovatelného jako další dvě jako vyžaduje, že vytvoříte dotaz pro každý možné řadicí výraz. Proto pokud později se rozhodnete přidat nové, seřaditelných pole do prvku GridView. je také potřeba vrátit zpět a aktualizovat uložené procedury. Druhý přístup má několik odlišností, které představují otázky výkonu při řazení podle sloupce jiné než řetězec databáze a také vykazuje stejné problémy udržovatelnosti jako první. A třetí volby, který používá dynamic SQL, představuje riziko útoků prostřednictvím injektáže SQL, pokud má útočník k spustit uloženou proceduru předání jako vstupní parametr hodnoty podle vlastního uvážení.
+Každé z těchto alternativních řešení obsahuje některé nevýhody. První možnost není stejná jako druhá druhá, protože vyžaduje, abyste vytvořili dotaz pro každý možný výraz řazení. Proto pokud se později rozhodnete přidat nová pole, která lze seřadit na prvek GridView, budete také muset vrátit zpět a aktualizovat uloženou proceduru. Druhý přístup má několik odlišností, které zavádějí problémy související s výkonem při řazení neřetězcovými sloupci databáze a zároveň trpí stejnými problémy udržovatelnosti jako první. A třetí volba, která používá dynamický SQL, zavádí riziko pro útok prostřednictvím injektáže SQL, pokud útočník může spustit uloženou proceduru procházející v hodnotách vstupních parametrů jejich výběru.
 
-Když žádný z těchto postupů je ideálním řešením, myslím, že třetí možnost je nejlepší tři. S jejím použitím dynamic SQL nabízí úroveň flexibilitu, které další dvě tomu tak není. Kromě toho útok prostřednictvím injektáže SQL může zneužít pouze v případě útočník je možné spustit uloženou proceduru předání vstupních parametrů podle svého výběru. Protože DAL používá parametrizované dotazy, ADO.NET bude chránit tyto parametry, které se odesílají do databáze prostřednictvím architektury, což znamená, že zranitelnost útoku prostřednictvím injektáže SQL existuje pouze v případě, že útočník může přímo spustit uloženou proceduru.
+I když žádný z těchto přístupů není ideální, myslíme na to, že třetí možnost je nejlepší z těchto tří možností. S využitím dynamického SQL nabízí úroveň flexibility, které ostatní dva nemají. Útok na injektáže SQL je navíc možné zneužít pouze v případě, že útočník může spustit uloženou proceduru procházející vstupními parametry svého výběru. Vzhledem k tomu, že DAL používá parametrizované dotazy, ADO.NET bude chránit tyto parametry, které se odesílají do databáze prostřednictvím architektury, což znamená, že zranitelnost proti útokům prostřednictvím injektáže SQL existuje jenom v případě, že by útočník mohl přímo spustit uloženou proceduru.
 
-Pro implementaci této funkce, vytvořte novou úložnou proceduru v databázi Northwind s názvem `GetProductsPagedAndSorted`. Tuto uloženou proceduru by měla přijímat tři vstupní parametry: `@sortExpression`, vstupní parametr typu `nvarchar(100`), která určuje, jak mají být řazeny výsledky a vloží přímo po `ORDER BY` text `OVER` klauzule; a `@startRowIndex` a `@maximumRows`, stejné dvě celočíselné vstupní parametry z `GetProductsPaged` uloženou proceduru vyšetřovány v předchozím kurzu. Vytvořte `GetProductsPagedAndSorted` uložené procedury pomocí následujícího skriptu:
+K implementaci této funkce vytvořte v databázi Northwind novou uloženou proceduru s názvem `GetProductsPagedAndSorted`. Tato uložená procedura by měla přijímat tři vstupní parametry: `@sortExpression`, vstupní parametr typu `nvarchar(100`), který určuje, jak by měly být výsledky seřazeny a vloženy přímo po `ORDER BY` textu v klauzuli `OVER`; a `@startRowIndex` a `@maximumRows`, stejné dva celočíselné vstupní parametry z `GetProductsPaged` uložené procedury byly zkontrolovány v předchozím kurzu. Pomocí následujícího skriptu vytvořte `GetProductsPagedAndSorted` uloženou proceduru:
 
 [!code-sql[Main](sorting-custom-paged-data-vb/samples/sample3.sql)]
 
-Spustí uloženou proceduru tak zajistit, aby hodnotu `@sortExpression` nebyl zadán parametr. Pokud není nalezena, výsledky jsou seřazené podle `ProductID`. V dalším kroku je vytvořená dynamický dotaz SQL. Všimněte si, že zde dynamický dotaz SQL se mírně liší od naše předchozí dotazy, které se používá k načtení všech řádků z tabulky produktů. V předchozích příkladech můžeme získat jednotlivých kategorií produktů s přidružené s a dodavateli s názvy pomocí poddotazu. Toto rozhodnutí bylo zpátky [vytvoření vrstvy přístupu k datům](../introduction/creating-a-data-access-layer-vb.md) kurzu a bylo provedeno namísto použití `JOIN` s protože TableAdapter nelze automaticky vytvořit přidružené vložení, aktualizace a odstranění metody pro tento dotazy. `GetProductsPagedAndSorted` Uloženou proceduru, ale musí používat `JOIN` s výsledky provést řazení podle názvů kategorií nebo na dodavatele.
+Uložená procedura začíná tím, že zajistí, že je zadána hodnota parametru `@sortExpression`. Pokud chybí, výsledky jsou seřazené podle `ProductID`. Dále je vytvořen dynamický dotaz SQL. Všimněte si, že se tady dynamický dotaz SQL mírně liší od předchozích dotazů použitých k načtení všech řádků z tabulky Products. V předchozích příkladech jsme získali jednotlivé typy přidružených kategorií s a dodavatelů s použitím poddotazu. Toto rozhodnutí bylo provedeno zpět v kurzu [Vytvoření vrstvy přístupu k datům](../introduction/creating-a-data-access-layer-vb.md) a bylo provedeno místo použití `JOIN` s, protože TableAdapter nemůže automaticky vytvořit související metody vložení, aktualizace a odstranění pro takové dotazy. `GetProductsPagedAndSorted` uloženou proceduru ale musí použít `JOIN` s, aby se výsledky objednaly podle kategorií nebo názvů dodavatelů.
 
-Tento dynamický dotaz se sestavil zřetězením části statické dotazu a `@sortExpression`, `@startRowIndex`, a `@maximumRows` parametry. Protože `@startRowIndex` a `@maximumRows` jsou celočíselné parametry, je potřeba je převést na nvarchars aby bylo možné správně zřetězení. Jakmile byl vytvořen tento dynamický dotaz SQL, je proveden prostřednictvím `sp_executesql`.
+Tento dynamický dotaz je sestaven zřetězením částí statických dotazů a parametrů `@sortExpression`, `@startRowIndex`a `@maximumRows`. Vzhledem k tomu, že `@startRowIndex` a `@maximumRows` jsou parametry typu Integer, je nutné je převést na hodnoty nvarchar, aby byly správně zřetězeny. Po sestavení tohoto dynamického dotazu SQL je provedeno prostřednictvím `sp_executesql`.
 
-Za chvíli otestovat tuto uloženou proceduru s různými hodnotami parametru `@sortExpression`, `@startRowIndex`, a `@maximumRows` parametry. Z Průzkumníka serveru klikněte pravým tlačítkem na název uložené procedury a zvolte spustit. Tím se otevře dialogové okno Spustit uloženou proceduru, do kterého můžete zadat vstupní parametry (viz obrázek 1). Chcete-li seřadit výsledky podle názvu kategorie, použijte CategoryName pro `@sortExpression` hodnota parametru; chcete-li seřadit podle názvu společnosti dodavatele s, použijte CompanyName. Po zadání hodnot parametrů, klikněte na tlačítko OK. Výsledky se zobrazí v okně výstup. Obrázek 2 ukazuje výsledky při vrácení produktů seřazených 11 až 20 při řazení podle `UnitPrice` v sestupném pořadí.
+Chvíli počkejte, než tuto uloženou proceduru otestujete s různými hodnotami parametrů `@sortExpression`, `@startRowIndex`a `@maximumRows`. V Průzkumník serveru klikněte pravým tlačítkem na název uložené procedury a vyberte spustit. Tím se zobrazí dialogové okno spustit uloženou proceduru, do kterého můžete zadat vstupní parametry (viz obrázek 1). Pro seřazení výsledků podle názvu kategorie použijte NázevKategorie pro hodnotu parametru `@sortExpression`. Chcete-li seřadit podle názvu společnosti dodavatele s, použijte CompanyName. Po zadání hodnot parametrů klikněte na OK. Výsledky se zobrazí v okně výstup. Na obrázku 2 se zobrazují výsledky při vracení produktů při řazení podle `UnitPrice` v sestupném pořadí podle hodnocení 11 až 20.
 
-![Vyzkoušejte si různé hodnoty pro vstupní parametry uložené procedury s tři](sorting-custom-paged-data-vb/_static/image1.png)
+![Zkuste jiné hodnoty pro uložené procedury s třemi vstupními parametry.](sorting-custom-paged-data-vb/_static/image1.png)
 
-**Obrázek 1**: Vyzkoušejte si různé hodnoty pro vstupní parametry uložené procedury s tři
+**Obrázek 1**: zkuste použít jiné hodnoty pro uložené procedury s třemi vstupními parametry.
 
-[![Uložená procedura s výsledky jsou zobrazeny v okně výstupu](sorting-custom-paged-data-vb/_static/image3.png)](sorting-custom-paged-data-vb/_static/image2.png)
+[![uložené procedury s výsledky se zobrazují v okno Výstup](sorting-custom-paged-data-vb/_static/image3.png)](sorting-custom-paged-data-vb/_static/image2.png)
 
-**Obrázek 2**: Uložená procedura s výsledky jsou zobrazeny v okně výstupu ([kliknutím ji zobrazíte obrázek v plné velikosti](sorting-custom-paged-data-vb/_static/image4.png))
+**Obrázek 2**: výsledky uložené procedury s jsou zobrazeny v okno výstup ([kliknutím zobrazíte obrázek v plné velikosti).](sorting-custom-paged-data-vb/_static/image4.png)
 
 > [!NOTE]
-> Při hodnocení výsledky podle zadaného `ORDER BY` sloupec `OVER` klauzule, SQL Server musí řazení výsledků. To je rychlá operace v případě clusterovaného indexu přes sloupců, které jsou právě výsledky seřazené podle nebo pokud je pokrytí indexu, ale může být dražší jinak. Chcete-li zvýšit výkon pro dotazy na dostatečně velký, zvažte přidání neclusterovaný index pro sloupec, podle kterého se výsledky jsou řazeny podle. Odkazovat na [hodnocení funkcí a výkonu v systému SQL Server 2005](http://www.sql-server-performance.com/ak_ranking_functions.asp) další podrobnosti.
+> Při řazení výsledků podle zadaného `ORDER BY` sloupce v klauzuli `OVER` musí SQL Server seřadit výsledky. Jedná se o rychlou operaci, pokud je ve sloupcích clusterovaný index, výsledky jsou seřazeny podle nebo v případě, že existuje pokrýváný index, ale může být levnější v jiném. Pro zlepšení výkonu pro dostatečně velké dotazy zvažte přidání neclusterovaných indexů pro sloupec, podle kterého jsou výsledky seřazeny. Další podrobnosti najdete v tématu věnovaném [funkcím řazení a výkonu v SQL Server 2005](http://www.sql-server-performance.com/ak_ranking_functions.asp) .
 
-## <a name="step-2-augmenting-the-data-access-and-business-logic-layers"></a>Krok 2: Rozšíření přístup k datům a vrstvy obchodní logiky
+## <a name="step-2-augmenting-the-data-access-and-business-logic-layers"></a>Krok 2: rozšíření vrstvy přístupu k datům a obchodní logiky
 
-S `GetProductsPagedAndSorted` úložná procedura vytvořila naším dalším krokem je poskytují způsob provedení tuto úložnou proceduru prostřednictvím naší aplikace architektury. To má za následek přidání vrstvy DAL a BLL odpovídající metodu. Umožní s začněte tím, že přidání metody do vrstvy DAL. Otevřít `Northwind.xsd` typová, klikněte pravým tlačítkem na `ProductsTableAdapter`a v místní nabídce zvolte možnost přidat dotaz. Jako jsme to udělali v předchozím kurzu, chceme konfigurovat tato nová metoda DAL použít stávající úložnou proceduru - `GetProductsPagedAndSorted`, v tomto případě. Začněte tak, že má nové metody třídy TableAdapter používat stávající úložnou proceduru.
+Když je vytvořená uložená procedura `GetProductsPagedAndSorted`, je dalším krokem poskytnutí prostředků ke spuštění této uložené procedury prostřednictvím naší aplikační architektury. To zahrnuje přidání vhodné metody do DAL i do knihoven BLL. Nechte začít přidáním metody do DAL. Otevřete `Northwind.xsd` typovou datovou sadu, klikněte pravým tlačítkem na `ProductsTableAdapter`a v místní nabídce vyberte možnost Přidat dotaz. Stejně jako v předchozím kurzu chceme tuto novou metodu DAL nakonfigurovat tak, aby používala existující uloženou proceduru – `GetProductsPagedAndSorted`v tomto případě. Začněte tím, že chcete, aby nová metoda TableAdapter používala existující uloženou proceduru.
 
-![Zvolit stávající úložnou proceduru](sorting-custom-paged-data-vb/_static/image5.png)
+![Zvolit použití existující uložené procedury](sorting-custom-paged-data-vb/_static/image5.png)
 
-**Obrázek 3**: Zvolit stávající úložnou proceduru
+**Obrázek 3**: Volba použití existující uložené procedury
 
-Uložené procedury k použití, vyberte `GetProductsPagedAndSorted` uloženou proceduru z rozevíracího seznamu na další obrazovce.
+Chcete-li určit uloženou proceduru, kterou chcete použít, vyberte v rozevíracím seznamu na další obrazovce `GetProductsPagedAndSorted` uloženou proceduru.
 
-![Použít GetProductsPagedAndSorted uložené procedury](sorting-custom-paged-data-vb/_static/image6.png)
+![Použít uloženou proceduru GetProductsPagedAndSorted](sorting-custom-paged-data-vb/_static/image6.png)
 
-**Obrázek 4**: Použít GetProductsPagedAndSorted uložené procedury
+**Obrázek 4**: použijte uloženou proceduru GetProductsPagedAndSorted.
 
-Tuto uloženou proceduru vrátí sadu záznamů jako jeho výsledky tedy na další obrazovce znamenat, že vrátí tabulková data.
+Tato uložená procedura vrátí sadu záznamů jako výsledek tak, aby na další obrazovce označovala, že vrátí tabulková data.
 
-![Označuje, že bude procedura vracet tabulková Data](sorting-custom-paged-data-vb/_static/image7.png)
+![Označení, že uložená procedura vrátí tabulková data](sorting-custom-paged-data-vb/_static/image7.png)
 
-**Obrázek 5**: Označuje, že bude procedura vracet tabulková Data
+**Obrázek 5**: označení, že uložená procedura vrátí tabulková data
 
-Nakonec vytvořte DAL metody, které použít obě výplně DataTable a vrátit objekt DataTable vzory, názvy metod `FillPagedAndSorted` a `GetProductsPagedAndSorted`v uvedeném pořadí.
+Nakonec vytvořte metody DAL, které používají naplnit DataTable a vracejí vzor DataTable, a pojmenujte metody `FillPagedAndSorted` a `GetProductsPagedAndSorted`, v uvedeném pořadí.
 
-![Zvolte názvy metod](sorting-custom-paged-data-vb/_static/image8.png)
+![Zvolit názvy metod](sorting-custom-paged-data-vb/_static/image8.png)
 
-**Obrázek 6**: Zvolte názvy metod
+**Obrázek 6**: volba názvů metod
 
-Nyní, který jsme ve rozšířené DAL, můžeme znovu připravený k zapnutí knihoven BLL. Otevřít `ProductsBLL` třídy soubor a přidejte novou metodu `GetProductsPagedAndSorted`. Tato metoda je potřeba přijmout tři vstupní parametry `sortExpression`, `startRowIndex`, a `maximumRows` a měla by volat jednoduše do vrstvy DAL s `GetProductsPagedAndSorted` metody takto:
+Teď, když jsme rozšířili DAL, jsme znovu připraveni na knihoven BLL. Otevřete soubor `ProductsBLL` třídy a přidejte novou metodu `GetProductsPagedAndSorted`. Tato metoda musí přijmout tři vstupní parametry `sortExpression`, `startRowIndex`a `maximumRows` a měla by se jednoduše zavolat do `GetProductsPagedAndSorted`é metody DAL s, například takto:
 
 [!code-vb[Main](sorting-custom-paged-data-vb/samples/sample4.vb)]
 
-## <a name="step-3-configuring-the-objectdatasource-to-pass-in-the-sortexpression-parameter"></a>Krok 3: Konfigurace v parametru SortExpression ObjectDataSource průchodu
+## <a name="step-3-configuring-the-objectdatasource-to-pass-in-the-sortexpression-parameter"></a>Krok 3: Konfigurace prvku ObjectDataSource, který bude předávat parametr SortExpression
 
-S vylepšila DAL a BLL zahrnují metody, které využívají `GetProductsPagedAndSorted` uložené procedury, všechny zbývající okamžiku, kdy je ke konfiguraci ObjectDataSource v `SortParameter.aspx` stránku nové metody knihoven BLL a a zajistěte tak předání `SortExpression` na základě parametru sloupec, který uživatel požaduje seřadit výsledky podle.
+Po rozšíření DAL a knihoven BLL, aby zahrnovaly metody, které využívají `GetProductsPagedAndSorted` uloženou proceduru, vše zůstává ke konfiguraci prvku ObjectDataSource na stránce `SortParameter.aspx`, aby používala novou metodu knihoven BLL a předávala parametr `SortExpression` na základě sloupce, podle kterého uživatel požadoval řazení výsledků.
 
-Začněte změnou ObjectDataSource s `SelectMethod` z `GetProductsPaged` k `GetProductsPagedAndSorted`. To lze provést pomocí Průvodce konfigurace zdroje dat, v okně Vlastnosti nebo přímo pomocí deklarativní syntaxe. V dalším kroku potřeba zadat hodnotu pro prvek ObjectDataSource s [ `SortParameterName` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.sortparametername.aspx). Pokud je tato vlastnost nastavena, a zajistěte tak předání GridView s pokusí ObjectDataSource `SortExpression` vlastnost `SelectMethod`. Zejména ObjectDataSource hledá vstupní parametr, jehož název je rovna hodnotě tohoto `SortParameterName` vlastnost. Od verze BLL s `GetProductsPagedAndSorted` metoda má vstupní parametr řazení výraz s názvem `sortExpression`, nastavte ObjectDataSource s `SortExpression` vlastnost sortExpression.
+Začněte změnou `SelectMethod` ObjectDataSource s z `GetProductsPaged` na `GetProductsPagedAndSorted`. To lze provést pomocí Průvodce konfigurací zdroje dat, z okno Vlastnosti nebo přímo prostřednictvím deklarativní syntaxe. Dále je potřeba zadat hodnotu [vlastnosti`SortParameterName`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.sortparametername.aspx)ObjectDataSource s. Je-li tato vlastnost nastavena, prvek ObjectDataSource se pokusí předat do `SelectMethod`vlastnosti `SortExpression` prvku GridView. Konkrétně prvek ObjectDataSource hledá vstupní parametr, jehož název je roven hodnotě vlastnosti `SortParameterName`. Vzhledem k tomu, že metoda knihoven BLL s `GetProductsPagedAndSorted` obsahuje vstupní parametr výrazu řazení s názvem `sortExpression`, nastavte vlastnost ObjectDataSource s `SortExpression` na sortExpression.
 
-Po provedení těchto dvou změn, deklarativní syntaxe prvku ObjectDataSource s by měl vypadat nějak takto:
+Po provedení těchto dvou změn by deklarativní syntaxe ObjectDataSource s měla vypadat podobně jako v následujícím příkladu:
 
 [!code-aspx[Main](sorting-custom-paged-data-vb/samples/sample5.aspx)]
 
 > [!NOTE]
-> Jako v předchozím kurzu, ujistěte se, že nemá prvku ObjectDataSource *není* zahrnout sortExpression, startRowIndex nebo maximumRows vstupní parametry svou kolekci prvků vlastnosti SelectParameters obsahovat.
+> Stejně jako v předchozím kurzu zajistěte, aby prvek ObjectDataSource *nezahrnul vstupní* parametry SortExpression, StartRowIndex nebo MaximumRows do své kolekce SelectParameters.
 
-Pokud chcete povolit řazení v prvku GridView, stačí zaškrtnout políčko Povolit řazení v prvku GridView s inteligentní značky, které nastaví prvek GridView s `AllowSorting` vlastnost `true` a způsobí text záhlaví pro každý sloupec mohl být vykreslen jako odkazem (LinkButton). Když koncový uživatel klikne na jednu z hlaviček LinkButtons, vyplývá zpětné volání a probíhají následující kroky:
+Chcete-li v prvku GridView Povolit řazení, stačí zaškrtnout políčko Povolit řazení v inteligentní značce GridView s, která nastaví vlastnost `AllowSorting` prvku GridView, aby `true` a způsobila, že text záhlaví každého sloupce bude vykreslen jako LinkButton. Když koncový uživatel klikne na jednu z hlaviček LinkButtons, vystavení se podstaví a následující kroky se zobrazí:
 
-1. Aktualizace prvku GridView jeho [ `SortExpression` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.sortexpression.aspx) na hodnotu `SortExpression` pole, jehož záhlaví propojení došlo ke kliknutí na
-2. Prvku ObjectDataSource vyvolá BLL s `GetProductsPagedAndSorted` metodu GridView s `SortExpression` vlastnost jako hodnotu pro metodu s `sortExpression` vstupní parametr (společně s odpovídající `startRowIndex` a `maximumRows` vstupních parametrů)
-3. Vyvolá s vrstvou DAL BLL `GetProductsPagedAndSorted` – metoda
-4. Spustí DAL `GetProductsPagedAndSorted` předáním hodnoty uložené procedury, v `@sortExpression` parametr (spolu s `@startRowIndex` a `@maximumRows` vstupních parametrů)
-5. Uložená procedura vrátí příslušnou podmnožinu dat do knihoven BLL, který vrátí ji do prvku ObjectDataSource; Tato data je pak vázán na prvku GridView, vykreslí do kódu HTML a odesílat koncového uživatele
+1. Prvek GridView aktualizuje svou [vlastnost`SortExpression`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.sortexpression.aspx) na hodnotu `SortExpression` pole, jehož odkaz na hlavičku byl kliknuto.
+2. Prvek ObjectDataSource vyvolá metodu `GetProductsPagedAndSorted` knihoven BLL s, která předá vlastnost GridView s `SortExpression` jako hodnotu pro vstupní parametr metody `sortExpression` (spolu s příslušnými `startRowIndex` a `maximumRows` hodnotami vstupních parametrů).
+3. KNIHOVEN BLL vyvolá metodu DAL s `GetProductsPagedAndSorted`.
+4. DAL spustí `GetProductsPagedAndSorted` uloženou proceduru, předává parametr `@sortExpression` (spolu s `@startRowIndex`mi a `@maximumRows` hodnotami vstupních parametrů).
+5. Uložená procedura vrátí příslušnou podmnožinu dat do knihoven BLL, která je vrátí do prvku ObjectDataSource; Tato data jsou následně svázána s prvku GridView, vykreslena do kódu HTML a odeslána koncovému uživateli.
 
-Obrázek 7 znázorňuje první stránka výsledků při řazení podle `UnitPrice` ve vzestupném pořadí.
+Obrázek 7 zobrazuje první stránku výsledků při řazení podle `UnitPrice` ve vzestupném pořadí.
 
-[![Výsledky jsou seřazené podle pole UnitPrice](sorting-custom-paged-data-vb/_static/image10.png)](sorting-custom-paged-data-vb/_static/image9.png)
+[![výsledky jsou seřazené podle JednotkováCena.](sorting-custom-paged-data-vb/_static/image10.png)](sorting-custom-paged-data-vb/_static/image9.png)
 
-**Obrázek 7**: Výsledky jsou seřazené podle pole UnitPrice ([kliknutím ji zobrazíte obrázek v plné velikosti](sorting-custom-paged-data-vb/_static/image11.png))
+**Obrázek 7**: výsledky jsou seřazené podle hodnoty UnitPrice ([kliknutím zobrazíte obrázek v plné velikosti](sorting-custom-paged-data-vb/_static/image11.png)).
 
-Když aktuální implementace může správně seřadit výsledky podle názvu produktu, název kategorie, množství jednotky a cena za jednotku, pokus o řazení výsledků dodavatelem název výsledky v výjimku při běhu (viz obrázek 8).
+I když aktuální implementace může správně seřadit výsledky podle názvu produktu, názvu kategorie, množství na jednotku a jednotkové ceny a při pokusu o seřazení výsledků podle názvu dodavatele dojde k výjimce za běhu (viz obrázek 8).
 
-![Pokus o výsledky seřaďte podle dodavatele výsledkem následující výjimka za běhu](sorting-custom-paged-data-vb/_static/image12.png)
+![Při pokusu o seřazení výsledků dodavatelem dojde k následující výjimce za běhu.](sorting-custom-paged-data-vb/_static/image12.png)
 
-**Obrázek 8**: Pokus o výsledky seřaďte podle dodavatele výsledkem následující výjimka za běhu
+**Obrázek 8**: při pokusu o seřazení výsledků dodavatelem dojde k následující výjimce za běhu.
 
-Touto výjimkou způsobeno `SortExpression` z ovládacího prvku GridView s `SupplierName` nastavena vlastnost BoundField `SupplierName`. Ale název s od dodavatele v `Suppliers` tabulka ve skutečnosti se nazývá `CompanyName` jsme s aliasem tento název sloupce jako `SupplierName`. Ale `OVER` klauzule používané `ROW_NUMBER()` funkce nelze použít alias a musí používat skutečný název sloupce. Proto se změnit `SupplierName` Vlastnost BoundField s `SortExpression` z dodavatel na CompanyName (viz obrázek 9). Jak ukazuje obrázek 10 po této změně mohou být řazeny výsledky dodavatelem.
+K této výjimce dojde, protože `SortExpression` prvku GridView `SupplierName` vlastnost BoundField je nastavena na `SupplierName`. Název dodavatele v `Suppliers` tabulce se ale ve skutečnosti označuje jako `CompanyName` pro tento název sloupce jsme jako `SupplierName`i alias. Klauzule `OVER` používaná funkcí `ROW_NUMBER()` ale nemůže alias použít a musí používat skutečný název sloupce. Proto změňte `SupplierName` vlastnost BoundField s `SortExpression` z hodnoty dodavatel na CompanyName (viz obrázek 9). Jak ukazuje obrázek 10, po této změně se výsledky dají seřadit podle dodavatele.
 
-![Změnit vlastnosti BoundField Dodavatel s SortExpression CompanyName](sorting-custom-paged-data-vb/_static/image13.png)
+![Změňte pole dodavatel vlastnost BoundField s SortExpression na CompanyName.](sorting-custom-paged-data-vb/_static/image13.png)
 
-**Obrázek 9**: Změnit vlastnosti BoundField Dodavatel s SortExpression CompanyName
+**Obrázek 9**: Změna vlastnost BoundField dodavatele s SortExpression na CompanyName
 
-[![Můžete teď být řazeny výsledky podle dodavatele](sorting-custom-paged-data-vb/_static/image15.png)](sorting-custom-paged-data-vb/_static/image14.png)
+[![výsledků se teď dají seřadit podle dodavatele.](sorting-custom-paged-data-vb/_static/image15.png)](sorting-custom-paged-data-vb/_static/image14.png)
 
-**Obrázek 10**: Výsledky můžete teď být řazeny podle dodavatele ([kliknutím ji zobrazíte obrázek v plné velikosti](sorting-custom-paged-data-vb/_static/image16.png))
+**Obrázek 10**: výsledky se teď dají seřadit podle dodavatele ([kliknutím zobrazíte obrázek v plné velikosti).](sorting-custom-paged-data-vb/_static/image16.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Vlastní implementaci stránkování, které jsme se zaměřili na v předchozím kurzu vyžaduje, aby byl specifikován pořadí, ve kterém byly výsledky který se má seřadit v době návrhu. Stručně řečeno to znamená, že vlastní implementaci stránkování, která jsme implementovali může Ne, ve stejnou dobu, zadejte možnosti řazení. V tomto kurzu jsme toto omezení overcame rozšířením uloženou proceduru z první zahrnout `@sortExpression` vstupní parametr, který by mohl být řazeny výsledky.
+Implementace vlastního stránkování, kterou jsme prozkoumali v předchozím kurzu, vyžaduje, aby bylo v době návrhu zadáno pořadí, podle kterého byly výsledky seřazeny. V krátké době to znamenalo, že implementace vlastního stránkování, kterou jsme implementovali, se ve stejnou chvíli nepovedla, ale nabízí možnosti řazení. V tomto kurzu toto omezení overcame rozšířením úložné procedury z prvního na zahrnutí vstupního parametru `@sortExpression`, podle kterého by bylo možné seřadit výsledky.
 
-Po vytvoření to uloženou proceduru včetně vytváření nových metod v knihoven BLL a DAL, jsme byli schopni implementovat prvku GridView, která nabízí i řazení a vlastní stránkování prvku ObjectDataSource a zajistěte tak předání GridView s aktuální konfigurací `SortExpression` vlastnost BLL `SelectMethod`.
+Po vytvoření této uložené procedury a vytvoření nových metod v rámci DAL a knihoven BLL jsme dokázali implementovat ovládací prvek GridView, který nabídl řazení i vlastní stránkování, a to tak, že se prvek ObjectDataSource nastaví tak, aby předával v rámci vlastnosti GridViewa s aktuálním `SortExpression` do `SelectMethod`knihoven BLL.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Santos Carlose. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontrolor pro tento kurz byl Carlos Santos. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](efficiently-paging-through-large-amounts-of-data-vb.md)
-> [další](creating-a-customized-sorting-user-interface-vb.md)
+> [Další](creating-a-customized-sorting-user-interface-vb.md)

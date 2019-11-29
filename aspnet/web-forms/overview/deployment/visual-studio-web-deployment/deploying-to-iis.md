@@ -8,12 +8,12 @@ ms.date: 01/16/2019
 ms.assetid: 8bf2c4fb-4ee5-4841-bfc2-03462c1f7a7a
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis
 msc.type: authoredcontent
-ms.openlocfilehash: c45003325832258466a787bc589bf40e844248a2
-ms.sourcegitcommit: 4b324a11131e38f920126066b94ff478aa9927f8
+ms.openlocfilehash: 738318cce442fdc5d58dd1e4c992d4941be2487e
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985858"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74591243"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-deploying-to-test"></a>ASP.NET nasazení webu pomocí sady Visual Studio: nasazení do testování
 
@@ -49,7 +49,7 @@ Připomenutí: Pokud obdržíte chybovou zprávu nebo něco nefunguje při proch
 
 Stáhněte a nainstalujte si řešení a projekt společnosti Contoso University Visual Studio Start. Toto řešení obsahuje dokončený kurz. 
 
-[Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
+[Stáhnout počáteční projekt](https://go.microsoft.com/fwlink/p/?LinkId=282627)
 
 ## <a name="install-iis"></a>Instalace služby IIS
 
@@ -174,19 +174,19 @@ Profil publikování můžete nakonfigurovat tak, aby během nasazení spouště
 
 1. V aplikaci Visual Studio otevřete soubor *grant. SQL* , který jste vytvořili dříve.
 
-2. Vyberte **Connect** (Připojit). 
+2. Vyberte **připojit**. 
 
     ![Tlačítko připojit](deploying-to-iis/_static/image11.png)
 
-3. V dialogovém okně **připojit k serveru** jako **název serveru**zadejte *.\SQLEXPRESS* . Vyberte **Connect** (Připojit).
+3. V dialogovém okně **připojit k serveru** jako **název serveru**zadejte *.\SQLEXPRESS* . Vyberte **připojit**.
 
-4. V rozevíracím seznamu databáze vyberte **ContosoUniversity**. Vyberte **Provést**. 
+4. V rozevíracím seznamu databáze vyberte **ContosoUniversity**. Vyberte **provést**. 
 
    ![](deploying-to-iis/_static/image12.png)
 
 Výchozí identita fondu aplikací nyní má dostatečná oprávnění v databázi aplikace, aby bylo možné Migrace Code First vytvořit tabulky databáze při spuštění aplikace.
 
-## <a name="publish-to-iis"></a>Publikování do služby IIS
+## <a name="publish-to-iis"></a>Publikování ve službě IIS
 
 Existuje několik způsobů, jak můžete nasadit do služby IIS pomocí sady Visual Studio a Nasazení webu:
 
@@ -201,7 +201,7 @@ Před publikováním se ujistěte, že používáte aplikaci Visual Studio v re�
 
 ### <a name="create-the-publish-profile"></a>Vytvořit profil publikování
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **ContosoUniversity** (ne na projekt **ContosoUniversity. dal** ). Vyberte **Publikovat**. Zobrazí se stránka **publikování** .
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **ContosoUniversity** (ne na projekt **ContosoUniversity. dal** ). Vyberte **publikovat**. Zobrazí se stránka **publikování** .
 
 2. Vyberte **Nový profil**. Zobrazí se dialogové okno **vybrat cíl publikování** .
 
@@ -314,7 +314,7 @@ Následující postup platí pro databázi **SchoolContext** v části **databá
 
     Když použijete profil publikování testu, tato transformace nastaví indikátor prostředí na "test". V nasazeném webu uvidíte "(test)" za nadpisem "contoso University" H1.
 
-6. Uložte soubor a zavřete ho.
+6. Soubor uložte a zavřete.
 
 7. Klikněte pravým tlačítkem myši na soubor *Web. test. config* a vyberte možnost **Náhled transformace** , abyste se ujistili, že transformace, kterou jste zakódujete, poskytuje očekávané změny.
 
@@ -330,7 +330,7 @@ Následující postup platí pro databázi **SchoolContext** v části **databá
 
    Můžete také vybrat odkaz **databáze verze Preview** a zobrazit skripty, které se spustí v databázi členství. (Nejsou spouštěny žádné skripty pro nasazení Migrace Code First, takže není k dispozici žádné zobrazení databáze aplikace.)
 
-3. Vyberte **Publikovat**.
+3. Vyberte **publikovat**.
 
    Pokud Visual Studio není v režimu správce, může se zobrazit chybová zpráva s oprávněním. V takovém případě zavřete Visual Studio, otevřete ho v režimu správce a zkuste publikování znovu.
 
@@ -372,7 +372,7 @@ Tento dodatečný připojovací řetězec umožňuje zadat jeden uživatelský �
 
 2. Vytvořte transformaci souboru Web. config pro připojovací řetězec, který má aplikace používat v době běhu.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
 Nyní jste nasadili aplikaci do služby IIS na vývojovém počítači a otestovali ji.
 

@@ -1,239 +1,239 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
-title: Použití stávajících uložených procedur komponentami TableAdapter typové datové sady (VB) | Dokumentace Microsoftu
+title: Použití existujících uložených procedur pro objekty TableAdapter typované datové sady (VB) | Microsoft Docs
 author: rick-anderson
-description: V předchozím kurzu jsme zjistili, jak použít Průvodce vytvořením objektu TableAdapter na nové úložné procedury. V tomto kurzu jsme dozvíte, jak stejný TableAdapter...
+description: V předchozím kurzu jsme zjistili, jak pomocí Průvodce TableAdapter vygenerovat nové uložené procedury. V tomto kurzu se naučíme, jak stejné TableAdapter...
 ms.author: riande
 ms.date: 07/18/2007
 ms.assetid: 2da25f6a-757e-4e7b-a812-1575288d8f7a
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a019162b16f225429fbb9473a68049f1e80462b7
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: e35c3d6a98516a07f6119e6cb9dbeb99bc28fe33
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131191"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74613606"
 ---
 # <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>Použití stávajících uložených procedur komponentami TableAdapter typových sad dat (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_68_VB.zip) nebo [stahovat PDF](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/datatutorial68vb1.pdf)
+[Stažení kódu](https://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_68_VB.zip) nebo [stažení PDF](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/datatutorial68vb1.pdf)
 
-> V předchozím kurzu jsme zjistili, jak použít Průvodce vytvořením objektu TableAdapter na nové úložné procedury. V tomto kurzu jsme dozvíte, jak pracovat stejným Průvodce TableAdapter s existující uložené procedury. Můžeme také zjistěte, jak ručně přidat nové uložené procedury do databáze.
+> V předchozím kurzu jsme zjistili, jak pomocí Průvodce TableAdapter vygenerovat nové uložené procedury. V tomto kurzu se dozvíte, jak může stejný Průvodce TableAdapter pracovat se stávajícími uloženými procedurami. Také se dozvíte, jak ručně přidat nové uložené procedury do naší databáze.
 
 ## <a name="introduction"></a>Úvod
 
-V [předchozím kurzu](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) jsme viděli, jak typované datové sady s objekty TableAdapter je možné nakonfigurovat pouze pomocí uložených procedur na SQL příkazy dat než ad-hoc přístup. Konkrétně jsme se zaměřili na tom, jak má TableAdapter průvodce automaticky vytvoří těchto uložených procedurách. Pokud přenášíte starší verze aplikace pro technologii ASP.NET 2.0 nebo při vytváření na webu technologie ASP.NET 2.0 kolem existující datový model, je pravděpodobné, že databáze již obsahuje uložené procedury, které potřebujeme. Také budete chtít vytvořit uložené procedury, ručně nebo pomocí některé nástroje, než Průvodce TableAdapter, který automaticky vygeneruje uložené procedury.
+V [předchozím kurzu](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) jsme viděli, jak může být zadaná datová sada s objekty TableAdapter nakonfigurovaná tak, aby používala uložené procedury pro přístup k datům, nikoli k příkazům SQL ad hoc. Zejména jsme prozkoumali, jak má Průvodce TableAdapter automaticky vytvořit tyto uložené procedury. Při přenosu starší verze aplikace do ASP.NET 2,0 nebo při sestavování webu ASP.NET 2,0 kolem existujícího datového modelu je pravděpodobné, že databáze již obsahuje uložené procedury, které potřebujeme. Alternativně můžete chtít vytvořit uložené procedury ručně nebo pomocí jiného nástroje než Průvodce TableAdapter, který automaticky vygeneruje vaše uložené procedury.
 
-V tomto kurzu se podíváme na tom, jak konfigurovat TableAdapter používat existující uložené procedury. Vzhledem k tomu, že databáze Northwind obsahuje jenom malou sadu předdefinovaných uložené procedury, také podíváme na kroky potřebné pro ruční přidání nové uložené procedury do databáze pomocí prostředí Visual Studio. Začínáme s let!
+V tomto kurzu se podíváme na to, jak nakonfigurovat TableAdapter na použití existujících uložených procedur. Vzhledem k tomu, že databáze Northwind má pouze malou sadu vestavěných uložených procedur, podíváme se také na kroky potřebné k ručnímu přidání nových uložených procedur do databáze prostřednictvím prostředí sady Visual Studio. Pojďme začít!
 
 > [!NOTE]
-> V [zabalení úprav databáze do transakce](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) kurzu jsme přidali metody do třídy TableAdapter pro podporu transakcí (`BeginTransaction`, `CommitTransaction`, a tak dále). Alternativně je možné spravovat transakce v rámci uložené procedury, která nevyžaduje žádné úpravy kódu vrstvy přístupu k datům. V tomto kurzu se podíváme příkazů T-SQL ke spuštění příkazů s uloženou proceduru v rámci oboru transakce.
+> V rámci kurzových [úprav v rámci transakce](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) jsme do TableAdapter přidali metody pro podporu transakcí (`BeginTransaction`, `CommitTransaction`a tak dále). Transakce lze případně spravovat zcela v rámci uložené procedury, která nevyžaduje žádné úpravy kódu vrstvy přístupu k datům. V tomto kurzu prozkoumáme příkazy T-SQL, které se použijí ke spuštění příkazů uložené procedury s v rámci rozsahu transakce.
 
-## <a name="step-1-adding-stored-procedures-to-the-northwind-database"></a>Krok 1: Přidání uložené procedury k databázi Northwind
+## <a name="step-1-adding-stored-procedures-to-the-northwind-database"></a>Krok 1: Přidání uložených procedur do databáze Northwind
 
-Visual Studio umožňuje snadno přidat nové uložené procedury do databáze. Umožňují s přidat novou úložnou proceduru k databázi Northwind, která vrací všechny sloupce z `Products` tabulky pro ty, které mají určitý `CategoryID` hodnotu. Z okna Průzkumníka serveru rozbalte databázi Northwind, aby jeho složky - databázových diagramů, tabulek, zobrazení a tak dále - zobrazí. Jak jsme viděli v předchozím kurzu, uložené procedury složka obsahuje databáze s existující uložené procedury. Pokud chcete přidat novou úložnou proceduru, jednoduše klikněte pravým tlačítkem na složku uložené procedury a zvolte možnost Přidat novou uloženou proceduru v místní nabídce.
+Visual Studio usnadňuje přidání nových uložených procedur do databáze. Přidáme do databáze Northwind novou uloženou proceduru, která vrátí všechny sloupce z `Products` tabulky pro ty, které mají určitou hodnotu `CategoryID`. V okně Průzkumník serveru rozbalte databázi Northwind, aby se zobrazily její složky – diagramy databáze, tabulky, zobrazení a tak dále. Jak jsme viděli v předchozím kurzu, složka uložené procedury obsahuje databázi s existujícími uloženými procedurami. Chcete-li přidat novou uloženou proceduru, jednoduše klikněte pravým tlačítkem myši na složku uložené procedury a v místní nabídce vyberte možnost Přidat novou uloženou proceduru.
 
-[![Klikněte pravým tlačítkem na složku uložené procedury a přidejte novou úložnou proceduru](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image2.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image1.png)
+[![klikněte pravým tlačítkem na složku uložené procedury a přidejte novou uloženou proceduru.](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image2.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image1.png)
 
-**Obrázek 1**: Klikněte pravým tlačítkem na složku uložené procedury a přidat novou uloženou proceduru ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image3.png))
+**Obrázek 1**: klikněte pravým tlačítkem na složku uložené procedury a přidejte novou uloženou proceduru ([kliknutím zobrazíte obrázek v plné velikosti).](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image3.png)
 
-Jak ukazuje obrázek 1, výběrem možnosti Přidat novou uloženou proceduru otevře okno skriptu v sadě Visual Studio s obrysem skriptu SQL, které jsou potřeba k vytvoření uložené procedury. To je náš úloh podpořili tento skript a spustit ho v tomto okamžiku uloženou proceduru se přidají do databáze.
+Jak ukazuje obrázek 1, výběrem možnosti Přidat novou uloženou proceduru se otevře okno skriptu v aplikaci Visual Studio s osnovou SQL skriptu potřebného k vytvoření uložené procedury. Tato úloha se dá využít k uložení tohoto skriptu a jeho provedení. v takovém případě bude uložená procedura přidána do databáze.
 
 Zadejte následující skript:
 
 [!code-sql[Main](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample1.sql)]
 
-Tento skript při spuštění, přidá novou úložnou proceduru k databázi Northwind s názvem `Products_SelectByCategoryID`. Tuto uloženou proceduru přijímá jeden vstupní parametr (`@CategoryID`, typu `int`) a vrátí všechna pole pro tyto produkty k odpovídajícímu `CategoryID` hodnotu.
+Když se tento skript spustí, přidá se do databáze Northwind s názvem `Products_SelectByCategoryID`nová uložená procedura. Tato uložená procedura přijímá jeden vstupní parametr (`@CategoryID`typu `int`) a vrací všechna pole pro tyto produkty s hodnotou odpovídajícího `CategoryID`.
 
-Chcete-li to provést `CREATE PROCEDURE` skriptu a přidat uložené procedury do databáze, klikněte na ikonu Uložit na panelu nástrojů nebo stiskněte kombinaci kláves Ctrl + S. Až to uděláte, aktualizuje složku uložené procedury, zobrazující nově vytvořený uložené procedury. Skript v okně se navíc změní subtlety z `CREATE PROCEDURE dbo.Products_SelectProductByCategoryID` k `ALTER PROCEDURE` `dbo.Products_SelectProductByCategoryID`. `CREATE PROCEDURE` Přidá novou úložnou proceduru do databáze, zatímco `ALTER PROCEDURE` aktualizuje nějakou existující. Od začátku skriptu se změnila na `ALTER PROCEDURE`, změna uložených procedur vstupní parametry nebo příkazy SQL, a kliknutím na ikonu uložení se aktualizovat uložené procedury s těmito změnami.
+Chcete-li spustit tento skript `CREATE PROCEDURE` a přidat uloženou proceduru do databáze, klikněte na panelu nástrojů na ikonu Uložit nebo stiskněte klávesu CTRL + S. Po takovém případě se složka uložených procedur aktualizuje a zobrazí nově vytvořenou uloženou proceduru. Také se skript v okně změní Subtlety z `CREATE PROCEDURE dbo.Products_SelectProductByCategoryID` na `ALTER PROCEDURE` `dbo.Products_SelectProductByCategoryID`. `CREATE PROCEDURE` do databáze přidá novou uloženou proceduru, zatímco `ALTER PROCEDURE` aktualizuje stávající. Vzhledem k tomu, že se začátek skriptu změnil na `ALTER PROCEDURE`, změna vstupních parametrů uložených procedur nebo příkazů SQL a kliknutí na ikonu Uložit aktualizuje uloženou proceduru těmito změnami.
 
-Obrázek 2 ukazuje Visual Studio po `Products_SelectByCategoryID` uložená procedura byla uložena.
+Obrázek 2 ukazuje Visual Studio po uložení uložené procedury `Products_SelectByCategoryID`.
 
-[![Uložená procedura Products_SelectByCategoryID byla přidána do databáze](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image5.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image4.png)
+[![se uložená procedura Products_SelectByCategoryID přidala do databáze.](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image5.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image4.png)
 
-**Obrázek 2**: Uložená procedura `Products_SelectByCategoryID` byla přidána do databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image6.png))
+**Obrázek 2**: uložená procedura `Products_SelectByCategoryID` byla přidána do databáze ([kliknutím zobrazíte obrázek v plné velikosti).](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image6.png)
 
-## <a name="step-2-configuring-the-tableadapter-to-use-an-existing-stored-procedure"></a>Krok 2: Konfigurace TableAdapter používat stávající úložnou proceduru
+## <a name="step-2-configuring-the-tableadapter-to-use-an-existing-stored-procedure"></a>Krok 2: Konfigurace TableAdapter pro použití existující uložené procedury
 
-Teď, když `Products_SelectByCategoryID` uložené procedury byla přidána do databáze, můžeme nakonfigurovat naše vrstvy přístupu k datům při jedné z jeho metod vyvolání používat tuto uloženou proceduru. Zejména, přidáme `GetProductsByCategoryID(<_i22_>categoryID)<!--_i22_-->` metodu `ProductsTableAdapter` v `NorthwindWithSprocs` typová, která volá `Products_SelectByCategoryID` uložené procedury, které jsme právě vytvořili.
+Teď, když se do databáze přidala uložená procedura `Products_SelectByCategoryID`, můžeme nakonfigurovat vrstvu přístupu k datům, aby používala tuto uloženou proceduru, když je vyvolána jedna z jejích metod. Konkrétně přidáme metodu `GetProductsByCategoryID(<_i22_>categoryID)<!--_i22_-->` do `ProductsTableAdapter` v datové sadě `NorthwindWithSprocs` typu, která volá `Products_SelectByCategoryID` uloženou proceduru, kterou jsme právě vytvořili.
 
-Začněte otevřením `NorthwindWithSprocs` datové sady. Klikněte pravým tlačítkem na `ProductsTableAdapter` a zvolte Přidat dotaz spustíte Průvodce konfigurací dotazu TableAdapter. V [předchozím kurzu](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) jsme se rozhodli mají TableAdapter vytvořit novou úložnou proceduru pro nás. Pro účely tohoto kurzu, ale chceme propojí nové metody třídy TableAdapter ke stávající `Products_SelectByCategoryID` uložené procedury. Proto možnost použití existující uložené procedury z prvního kroku průvodce s a pak klikněte na tlačítko Další.
+Začněte tím, že otevřete `NorthwindWithSprocs` datovou sadu. Klikněte pravým tlačítkem na `ProductsTableAdapter` a výběrem možnosti Přidat dotaz spusťte Průvodce konfigurací dotazu TableAdapter. V [předchozím kurzu](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md) jsme se rozhodli, že TableAdapter vytvoří novou uloženou proceduru pro nás. Pro tento kurz ale chceme, aby se nová metoda TableAdapter nacházela na stávající uloženou proceduru `Products_SelectByCategoryID`. Proto v prvním kroku průvodce použijte možnost použít existující uloženou proceduru a potom klikněte na tlačítko Další.
 
-[![Zvolte možnost použít existující uložené procedury možnost](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image8.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image7.png)
+[![zvolit možnost použít existující uloženou proceduru](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image8.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image7.png)
 
-**Obrázek 3**: Zvolte možnost použít existující uložené procedury možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image9.png))
+**Obrázek 3**: vyberte možnost použít existující uloženou proceduru ([kliknutím zobrazíte obrázek v plné velikosti).](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image9.png)
 
-Na tomto obrázku poskytuje že rozevíracího seznamu naplní databázi s uložené procedury. Výběr uložené procedury jsou uvedeny na levé straně a datová pole, která vrátí (pokud existuje) na pravé straně její vstupní parametry. Zvolte `Products_SelectByCategoryID` uloženou proceduru ze seznamu a klikněte na tlačítko Další.
+Následující obrazovka nabízí rozevírací seznam naplněný uloženými procedurami databáze. Výběr uložené procedury vypíše vstupní parametry na levé straně a datová pole, která se vrátí (pokud existují) na pravé straně. V seznamu vyberte uloženou proceduru `Products_SelectByCategoryID` a klikněte na další.
 
-[![Vyberte Products_SelectByCategoryID uložené procedury](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image11.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image10.png)
+[![vybrat uloženou proceduru Products_SelectByCategoryID](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image11.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image10.png)
 
-**Obrázek 4**: Vyberte si `Products_SelectByCategoryID` uloženou proceduru ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image12.png))
+**Obrázek 4**: vyberte uloženou proceduru `Products_SelectByCategoryID` ([kliknutím zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image12.png)).
 
-Na další obrazovce zeptá nám jaký druh dat je vrácený uložené procedury a naše odpověď určí typ vrácený metodou s TableAdapter. Například pokud Udáváme, že se vrátí tabulková data, metoda vrátí `ProductsDataTable` instanci naplněnou záznamů vrácených uložené procedury. Naopak pokud Udáváme, že tuto uloženou proceduru vrací jedinou hodnotu objektu TableAdapter se vrátí `Object` , která je přiřazena hodnota v prvním sloupci první záznam, vrátí uloženou proceduru.
+Na další obrazovce se zobrazí informace o tom, jaký druh dat je vrácen uloženou procedurou, a naše odpověď zde určuje typ vrácený metodou TableAdapter s. Například pokud oznamujeme, že se vrátí tabulková data, metoda vrátí instanci `ProductsDataTable` naplněnou záznamy vrácenými uloženou procedurou. Naproti tomu, pokud oznamujeme, že tato uložená procedura vrátí jedinou hodnotu, `Object` TableAdapter vrátí hodnotu, která je přiřazena k hodnotě v prvním sloupci prvního záznamu vráceného uloženou procedurou.
 
-Vzhledem k tomu, `Products_SelectByCategoryID` uložené procedury jsou vráceny všechny produkty, které patří do určité kategorie, zvolte první odpověď – tabulkových dat – a klikněte na tlačítko Další.
+Vzhledem k tomu, že `Products_SelectByCategoryID` uložená procedura vrátí všechny produkty patřící do konkrétní kategorie, vyberte první data v tabulkovém typu odpovědi a klikněte na další.
 
-[![Označuje, že bude procedura vracet tabulková Data](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image14.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image13.png)
+[![označují, že uložená procedura vrátí tabulková data](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image14.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image13.png)
 
-**Obrázek 5**: Označuje, že uložené procedury vrátí tabulková Data ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image15.png))
+**Obrázek 5**: označení, že uložená procedura vrátí tabulková data ([kliknutím zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image15.png))
 
-Už jen zbývá k označení metody vzorů, které za nímž následuje názvy pro tyto metody. Ponechte obou výplně DataTable a vrátit DataTable možnosti zaškrtnuté, ale přejmenovat metody k `FillByCategoryID` a `GetProductsByCategoryID`. Klikněte na další Zkontrolujte souhrn úlohy, které průvodce provede. Pokud vše vypadá v pořádku, klikněte na tlačítko Dokončit.
+To vše zůstává, chcete-li určit, jaké vzory metod použít a které jsou následovány názvy těchto metod. Ponechte naplnit DataTable a vraťte možnosti DataTable, ale přejmenujte metody na `FillByCategoryID` a `GetProductsByCategoryID`. Pak klikněte na další a zkontrolujte souhrnné úkoly, které průvodce provede. Pokud vše vypadá správně, klikněte na Dokončit.
 
-[![Název metody FillByCategoryID a GetProductsByCategoryID](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image17.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image16.png)
+[![pojmenovat metody FillByCategoryID a GetProductsByCategoryID](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image17.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image16.png)
 
-**Obrázek 6**: Název metody `FillByCategoryID` a `GetProductsByCategoryID` ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image18.png))
+**Obrázek 6**: pojmenování metod `FillByCategoryID` a `GetProductsByCategoryID` ([kliknutím zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image18.png))
 
 > [!NOTE]
-> Metody TableAdapter, který jsme právě vytvořili, `FillByCategoryID` a `GetProductsByCategoryID`, očekávat vstupní parametr typu `Integer`. Tato hodnota vstupního parametru je předán do uložené procedury prostřednictvím jeho `@CategoryID` parametru. Pokud změníte `Products_SelectByCategory` parametry uložené procedury s, bude nutné také aktualizovat parametry pro tyto metody třídy TableAdapter. Jak je popsáno v [předchozí kurz o službě](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md), to můžete udělat v jednom ze dvou způsobů: ruční přidáním nebo odebráním parametrů z kolekce parametrů nebo opětovným spuštěním Průvodce TableAdapter.
+> Metody TableAdapter, které jsme právě vytvořili, `FillByCategoryID` a `GetProductsByCategoryID`, očekávají vstupní parametr typu `Integer`. Tato hodnota vstupního parametru se předává do uložené procedury prostřednictvím parametru `@CategoryID`. Pokud změníte `Products_SelectByCategory` uložené procedury s parametry, budete muset také aktualizovat parametry těchto metod TableAdapter. Jak je popsáno v [předchozím kurzu](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md), lze to provést jedním ze dvou způsobů: ručním přidáním nebo odebráním parametrů z kolekce Parameters nebo spuštěním Průvodce TableAdapter.
 
-## <a name="step-3-adding-agetproductsbycategoryidcategoryidmethod-to-the-bll"></a>Krok 3: Přidání`GetProductsByCategoryID(categoryID)`metodu BLL
+## <a name="step-3-adding-agetproductsbycategoryidcategoryidmethod-to-the-bll"></a>Krok 3: Přidání metody`GetProductsByCategoryID(categoryID)`do knihoven BLL
 
-S `GetProductsByCategoryID` metoda DAL kompletní, dalším krokem je poskytnout přístup k této metodě v vrstvy obchodní logiky. Otevřít `ProductsBLLWithSprocs` třídy soubor a přidejte následující metodu:
+Po dokončení metody `GetProductsByCategoryID` DAL je dalším krokem poskytnutí přístupu k této metodě ve vrstvě obchodní logiky. Otevřete soubor `ProductsBLLWithSprocs` třídy a přidejte následující metodu:
 
 [!code-vb[Main](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample2.vb)]
 
-Tato metoda BLL jednoduše vrací `ProductsDataTable` vrácená z `ProductsTableAdapter` s `GetProductsByCategoryID` metody. `DataObjectMethodAttribute` Atribut poskytuje metadata používá Průvodce konfigurace zdroje dat s ObjectDataSource. Konkrétně tato metoda se zobrazí v rozevíracím seznamu vyberte kartu s.
+Tato metoda knihoven BLL jednoduše vrátí `ProductsDataTable` vrácenou metodou `ProductsTableAdapter` s `GetProductsByCategoryID`. Atribut `DataObjectMethodAttribute` poskytuje metadata používaná průvodcem zdroj dat v prvku ObjectDataSource s konfigurací. Konkrétně se tato metoda zobrazí v rozevíracím seznamu vybrat kartu s.
 
-## <a name="step-4-displaying-products-by-category"></a>Krok 4: Zobrazení produktů podle kategorie
+## <a name="step-4-displaying-products-by-category"></a>Krok 4: zobrazení produktů podle kategorií
 
-K otestování nově přidaný `Products_SelectByCategoryID` uložené procedury a odpovídající vrstvy DAL a BLL metody, umožní vytvořit stránku ASP.NET, která obsahuje DropDownList a GridView s. DropDownList zobrazí seznam všech kategorií v databázi, zatímco prvku GridView zobrazí produkty, které patří do vybrané kategorie.
+Chcete-li otestovat nově přidanou `Products_SelectByCategoryID` uloženou proceduru a odpovídající metody DAL a knihoven BLL, vytvoříme stránku ASP.NET, která obsahuje DropDownList a GridView. DropDownList zobrazí seznam všech kategorií v databázi, zatímco v prvku GridView se zobrazí produkty patřící do vybrané kategorie.
 
 > [!NOTE]
-> Jsme vytvořili záznamů master/detail rozhraní pomocí DropDownLists v předchozích kurzech. Podrobnější rozbor implementace záznamů master/detail sestavu, najdete [filtrování záznamů Master/Detail s DropDownList](../masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md) kurzu.
+> V předchozích kurzech jsme vytvořili rozhraní hlavní/podrobnosti pomocí ovládacích prvků DropDownList. Podrobnější pohled na implementaci takové sestavy hlavní/podrobnosti najdete v kurzu zobrazení [hlavního/podrobného filtru pomocí DropDownList](../masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md) .
 
-Otevřít `ExistingSprocs.aspx` stránku `AdvancedDAL` složky a DropDownList přetáhněte z panelu nástrojů do návrháře. Nastavte DropDownList s `ID` vlastnost `Categories` a jeho `AutoPostBack` vlastnost `True`. V dalším kroku z inteligentních značek, připojení k nové ObjectDataSource s názvem DropDownList `CategoriesDataSource`. Nakonfigurujte prvku ObjectDataSource tak, aby ho načte data z `CategoriesBLL` třída s `GetCategories` metody. Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
+Otevřete stránku `ExistingSprocs.aspx` ve složce `AdvancedDAL` a přetáhněte DropDownList z panelu nástrojů na Návrhář. Nastavte vlastnost `ID` DropDownList s na `Categories` a její vlastnost `AutoPostBack` na `True`. Dále z jeho inteligentní značky vytvořte objekt DropDownList s novým prvkem ObjectDataSource s názvem `CategoriesDataSource`. Nakonfigurujte prvek ObjectDataSource tak, aby načítají jeho data z metody `CategoriesBLL` třídy s `GetCategories`. Nastavte rozevírací seznamy na kartách aktualizace, vložení a odstranění na (žádné).
 
-[![Načtení dat z metody GetCategories CategoriesBLL třída s](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image20.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image19.png)
+[![načíst data z metody CategoriesBLL třídy s GetCategories](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image20.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image19.png)
 
-**Obrázek 7**: Načtení dat z `CategoriesBLL` třída s `GetCategories` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image21.png))
+**Obrázek 7**: načtení dat z metody `GetCategories` `CategoriesBLL` třídy s ([kliknutím zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image21.png))
 
-[![Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image23.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image22.png)
+[![nastavení rozevíracích seznamů na kartách aktualizace, vložení a odstranění na (žádné)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image23.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image22.png)
 
-**Obrázek 8**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit záložky (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image24.png))
+**Obrázek 8**: nastavení rozevíracích seznamů na kartách aktualizace, vložení a odstranění na (žádné) ([kliknutím zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image24.png))
 
-Po dokončení Průvodce prvek ObjectDataSource, nakonfigurujte DropDownList zobrazíte `CategoryName` pole data a použít `CategoryID` pole jako `Value` pro každou `ListItem`.
+Po dokončení průvodce ObjectDataSource nakonfigurujte DropDownList tak, aby zobrazilo pole `CategoryName` dat a `CategoryID` pole jako `Value` pro každý `ListItem`.
 
-V tomto okamžiku by DropDownList a prvku ObjectDataSource s deklarativní podobný následujícímu:
+V tomto okamžiku by deklarativní označení DropDownList a ObjectDataSource s mělo vypadat podobně jako následující:
 
 [!code-aspx[Main](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample3.aspx)]
 
-V dalším kroku přetáhněte GridView na Návrhář, že ho umístíte pod DropDownList. Nastavit prvek GridView s `ID` k `ProductsByCategory` a z inteligentních značek, jeho vazbu na nového prvku ObjectDataSource s názvem `ProductsByCategoryDataSource`. Konfigurace `ProductsByCategoryDataSource` ObjectDataSource používat `ProductsBLLWithSprocs` načtení třídy, minimu měl svoje data pomocí `GetProductsByCategoryID(categoryID)` – metoda. Protože tato GridView budou použity pouze k zobrazení dat, nastavte rozevírací seznamy v UPDATE, INSERT a odstraňovat karty na (žádný) a klikněte na tlačítko Další.
+Dále přetáhněte prvek GridView do návrháře a umístěte jej pod ovládací prvek DropDownList. Nastavte `ID` prvku GridView s `ProductsByCategory` a ze své inteligentní značky jej navažte na nový prvek ObjectDataSource s názvem `ProductsByCategoryDataSource`. Nakonfigurujte `ProductsByCategoryDataSource` prvek ObjectDataSource pro použití `ProductsBLLWithSprocs` třídy, který získá data pomocí metody `GetProductsByCategoryID(categoryID)`. Vzhledem k tomu, že se tento prvek GridView použije jenom k zobrazení dat, nastavte rozevírací seznamy na kartách aktualizace, vložení a odstranění na (žádné) a klikněte na další.
 
-[![Konfigurace ObjectDataSource pomocí třídy ProductsBLLWithSprocs](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image26.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image25.png)
+[![nakonfigurovat prvek ObjectDataSource tak, aby používal třídu ProductsBLLWithSprocs](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image26.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image25.png)
 
-**Obrázek 9**: Konfigurace ObjectDataSource k použití `ProductsBLLWithSprocs` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image27.png))
+**Obrázek 9**: Konfigurace prvku ObjectDataSource, aby používal třídu `ProductsBLLWithSprocs` ([kliknutím zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image27.png))
 
-[![Načtení dat z GetProductsByCategoryID(categoryID) – metoda](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image29.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image28.png)
+[![načíst data z metody GetProductsByCategoryID (KódKategorie)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image29.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image28.png)
 
-**Obrázek 10**: Načtení dat z `GetProductsByCategoryID(categoryID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image30.png))
+**Obrázek 10**: načtení dat z metody `GetProductsByCategoryID(categoryID)` ([kliknutím zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image30.png))
 
-Metoda zvolit na kartě vyberte očekává parametr, takže poslední krok v průvodci zobrazí výzvu, nám pro zdroj s parametrem. Nastavte parametr zdroj rozevíracího seznamu ovládacího prvku a zvolte `Categories` ovládacího prvku z rozevíracího seznamu ControlID. Kliknutím na Dokončit dokončíte průvodce.
+Metoda zvolená na kartě vybrat očekává parametr, takže poslední krok průvodce vás vyzve k zadání zdroje parametru s. V rozevíracím seznamu zdroj parametrů nastavte ovládací prvek a vyberte ovládací prvek `Categories` v rozevíracím seznamu ControlID. Kliknutím na Dokončit dokončete průvodce.
 
-[![Pomocí kategorií DropDownList jako zdroj categoryID parametr](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image32.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image31.png)
+[![použít kategorii DropDownList jako zdroj parametru KódKategorie](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image32.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image31.png)
 
-**Obrázek 11**: Použití `Categories` DropDownList jako zdroj `categoryID` parametr ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image33.png))
+**Obrázek 11**: jako zdroj parametru `categoryID` použijte `Categories` DropDownList ([kliknutím zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image33.png)).
 
-Po dokončení průvodce bude prvek ObjectDataSource, Visual Studio přidá BoundFields a třídě CheckBoxField pro každé pole data produktu. Teď můžete k přizpůsobení těchto polí podle svých potřeb.
+Po dokončení průvodce ObjectDataSource Visual Studio přidá BoundFields a třídě CheckBoxField podporována pro každé pole dat produktu. V takovém případě můžete tato pole přizpůsobit podle potřeby.
 
-Na stránce prostřednictvím prohlížeče. Při návštěvě stránky vybrané kategorie Nápoje a odpovídající produkty uvedenými v mřížce. Změny rozevíracího seznamu do alternativní kategorie, jako obrázek 12 znázorňuje, vyvolá zpětné volání a znovu načte mřížky s produkty nově vybranou kategorii.
+Navštivte stránku v prohlížeči. Při návštěvě stránky je vybrána kategorie nápoje a odpovídající produkty uvedené v mřížce. Změna rozevíracího seznamu na alternativní kategorii, jak ukazuje obrázek 12, způsobí postback a znovu načte mřížku s produkty nově vybrané kategorie.
 
-[![Produkty v kategorii vytvořit jsou zobrazeny.](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image35.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image34.png)
+[![se zobrazí produkty v kategorii plodiny.](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image35.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image34.png)
 
-**Obrázek 12**: Produkty v kategorii vytvoření se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image36.png))
+**Obrázek 12**: zobrazí se produkty v kategorii plodiny ([kliknutím zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image36.png)).
 
-## <a name="step-5-wrapping-a-stored-procedure-s-statements-within-the-scope-of-a-transaction"></a>Krok 5: Zabalení uložené procedury s příkazy v rámci oboru transakcí
+## <a name="step-5-wrapping-a-stored-procedure-s-statements-within-the-scope-of-a-transaction"></a>Krok 5: zabalení uložených procedur s příkazy v rámci oboru transakce
 
-V [zabalení úprav databáze do transakce](../working-with-batched-data/wrapping-database-modifications-within-a-transaction-vb.md) kurzu jsme probírali techniky pro provádění řadu příkazů změny databáze v rámci oboru transakce. Vzpomínáte, změny v zastřešující transakce provést buď všechny úspěšné nebo převzetí služeb při všech, uzavřené atomicitu. Mezi dostupné techniky pro použití transakcí patří:
+V rámci kurzových [úprav v rámci transakce](../working-with-batched-data/wrapping-database-modifications-within-a-transaction-vb.md) jsme provedli postupy pro provádění řady příkazů pro úpravu databáze v rámci rozsahu transakce. Navrácení změn provedených v rámci zastřešující transakce buď úspěšně, nebo neúspěšných, s jistotou nedělitelnost Mezi techniky použití transakcí patří:
 
-- Použití tříd v `System.Transactions` oboru názvů
-- Vrstva přístupu k datům s pomocí ADO.NET třídy typu `SqlTransaction`, a
-- Přidání příkazů T-SQL transakce přímo v rámci uložené procedury
+- Pomocí tříd v oboru názvů `System.Transactions`,
+- Vrstva přístupu k datům používá třídy ADO.NET jako `SqlTransaction`a
+- Přidání příkazů transakce T-SQL přímo do uložené procedury
 
-*Zabalení úprav databáze do transakce* kurz v DAL použít třídy rozhraní ADO.NET. Zbývající část tohoto kurzu zkoumá, jak spravovat transakci pomocí příkazů T-SQL z v rámci uložené procedury.
+V *rámci kurzu transakce zalamování změn databáze* byly použity třídy ADO.NET v dal. Zbývající část tohoto kurzu prověřuje způsob správy transakce pomocí příkazů T-SQL z uložené procedury.
 
-Jsou tři příkazy SQL klíče pro ruční spuštění, potvrzení a vrácení zpět transakcí `BEGIN TRANSACTION`, `COMMIT TRANSACTION`, a `ROLLBACK TRANSACTION`v uvedeném pořadí. Jako s přístupem ADO.NET, při použití transakcí v rámci uložené procedury, musíme použít následujícímu vzoru:
+Tři klíčové příkazy jazyka SQL pro ruční spuštění, potvrzení a vrácení transakce jsou `BEGIN TRANSACTION`, `COMMIT TRANSACTION`a `ROLLBACK TRANSACTION`v uvedeném pořadí. Podobně jako u přístupu ADO.NET potřebuje při použití transakcí z uložené procedury použít následující vzor:
 
-1. Označení začátku transakce.
-2. Spouštění příkazů jazyka SQL, které tvoří příslušnou transakci.
-3. Pokud dojde k chybě v některém z příkazů z kroku 2, vrácení transakce.
-4. Pokud všechny příkazy z kroku 2 dokončena bez chyb, potvrzení transakce.
+1. Označuje začátek transakce.
+2. Spusťte příkazy SQL, které tvoří transakci.
+3. Pokud dojde k chybě v některém z příkazů z kroku 2, vraťte transakci zpět.
+4. Pokud všechny příkazy z kroku 2 se dokončí bez chyby, potvrďte transakci.
 
-Tento model je implementovat v syntaxi T-SQL pomocí následující šablony:
+Tento model může být implementován v syntaxi T-SQL pomocí následující šablony:
 
 [!code-sql[Main](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample4.sql)]
 
-Šablona spustí definováním `TRY...CATCH` zablokovat, použít konstrukce nový SQL Server 2005. Jak je `Try...Catch` blokuje v jazyce Visual Basic, SQL `TRY...CATCH` spouští příkazy v bloku `TRY` bloku. Pokud libovolný příkaz vyvolá chybu, ovládací prvek bude převeden okamžitě na `CATCH` bloku.
+Šablona začíná definováním `TRY...CATCH`ho bloku, konstrukce nového do SQL Server 2005. Podobně jako u `Try...Catch`ch bloků v Visual Basic spustí blok SQL `TRY...CATCH` příkazy v bloku `TRY`. Pokud některý příkaz vyvolá chybu, řízení je okamžitě převedeno na blok `CATCH`.
 
-Pokud zde nejsou žádné chyby provádění příkazů SQL tuto strukturu transakce, `COMMIT TRANSACTION` příkazu potvrdí změny a dokončení transakce. Pokud jeden z příkazů však způsobí chybu, `ROLLBACK TRANSACTION` v `CATCH` bloku se vrátí do stavu před zahájením transakce databáze. Uložená procedura také vyvolává chybu pomocí [příkaz RAISERROR](https://msdn.microsoft.com/library/ms178592.aspx), které způsobí, že `SqlException` vyvolání v aplikaci.
+Pokud nedochází k žádným chybám, které provádějí příkazy SQL, které strukturu transakci, příkaz `COMMIT TRANSACTION` potvrdí změny a dokončí transakci. Pokud však jeden z příkazů způsobí chybu, `ROLLBACK TRANSACTION` v bloku `CATCH` vrátí databázi do stavu před zahájením transakce. Uložená procedura také vyvolá chybu pomocí [příkazu RAISERROR](https://msdn.microsoft.com/library/ms178592.aspx), který způsobí, že `SqlException` v aplikaci vyvolána.
 
 > [!NOTE]
-> Vzhledem k tomu, `TRY...CATCH` blok je nový SQL Server 2005, výše uvedené šablony nebude fungovat, pokud používáte starší verze systému Microsoft SQL Server. Pokud nepoužíváte SQL Server 2005, projděte si [Správa transakcí v SQL serveru uložené procedury](http://www.4guysfromrolla.com/webtech/080305-1.shtml) šablony, která bude fungovat s jinými verzemi SQL serveru.
+> Vzhledem k tomu, že je `TRY...CATCH` blok novinkou SQL Server 2005, nebude tato šablona fungovat, pokud používáte starší verze Microsoft SQL Server. Pokud nepoužíváte SQL Server 2005, prostudujte si část [Správa transakcí v SQL Server uložených procedurách](http://www.4guysfromrolla.com/webtech/080305-1.shtml) pro šablonu, která bude fungovat s jinými verzemi SQL Server.
 
-Podívejte se na konkrétní příklad s let. Existuje omezení cizího klíče mezi `Categories` a `Products` tabulek, což znamená, že každá `CategoryID` pole `Products` tabulky musí být namapovaný na `CategoryID` hodnota v `Categories` tabulky. Jakoukoli akci, která by mohla narušit omezení, jako je například pokus o odstranění kategorii, která má související produkty, výsledkem je porušení omezení pro cizí klíč. Chcete-li to ověřit návštěvě příklad aktualizace a odstranění stávajících binárních dat ve spolupráci s oddílem binárních dat (`~/BinaryData/UpdatingAndDeleting.aspx`). Tato stránka obsahuje seznam jednotlivých kategorií v systému spolu s tlačítka pro úpravy a odstranění (viz obrázek 13), ale pokud se pokusíte odstranit kategorii, která má související produkty – například nápoje - odstranění nezdaří z důvodu narušení omezení pro cizí klíč (viz obrázek 14).
+Pojďme se podívat na konkrétní příklad. Mezi tabulkami `Categories` a `Products` existuje omezení cizího klíče, což znamená, že každé `CategoryID` pole v tabulce `Products` musí být namapováno na `CategoryID` hodnotu v tabulce `Categories`. Výsledkem jakékoli akce, která by porušila toto omezení, například pokus o odstranění kategorie s přidruženými produkty, má za následek porušení omezení cizího klíče. Pokud to chcete ověřit, přečtěte si příklad aktualizace a odstranění stávajících binárních dat v části práce s binárními daty (`~/BinaryData/UpdatingAndDeleting.aspx`). Tato stránka obsahuje všechny kategorie v systému spolu s tlačítky upravit a odstranit (viz obrázek 13), ale pokud se pokusíte odstranit kategorii, která má přidružené produkty, například nápoje – odstranění se nezdaří kvůli porušení omezení cizího klíče (viz obrázek 14).
 
-[![Každá kategorie se zobrazí v prvku GridView s upravit a odstranit tlačítka](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image38.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image37.png)
+[![se každá kategorie zobrazuje v prvku GridView s tlačítky upravit a odstranit](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image38.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image37.png)
 
-**Obrázek 13**: Každá kategorie se zobrazí v prvku GridView s upravit a odstranit tlačítka ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image39.png))
+**Obrázek 13**: Každá kategorie se zobrazuje v prvku GridView s tlačítky upravit a odstranit ([kliknutím zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image39.png)).
 
-[![Nelze odstranit kategorii, která má existující produkty](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image41.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image40.png)
+[![nemůžete odstranit kategorii, která má existující produkty.](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image41.png)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image40.png)
 
-**Obrázek 14**: Nelze odstranit kategorii, která má existující produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image42.png))
+**Obrázek 14**: nelze odstranit kategorii, která obsahuje existující produkty ([kliknutím zobrazíte obrázek v plné velikosti).](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image42.png)
 
-Představte si však, že chceme povolit kategorie má být odstraněn bez ohledu na to, zda mají přiřazené produktů. Odstranit kategorii s produkty, představte si, že chceme také odstranit existující produkty (i když další možností je jednoduše nastavte své produkty `CategoryID` hodnoty `NULL`). Tato funkce může implementované pomocí pravidel cascade omezení cizího klíče. Můžeme také vytvořit uloženou proceduru, která přijímá `@CategoryID` vstupní parametr a při vyvolání, explicitně odstraní všechna související produkty a potom zadané kategorie.
+Představte si, že ale chceme, aby se kategorie odstranily bez ohledu na to, jestli mají přidružené produkty. Pokud má být kategorie s produkty smazána, Představte si, že chceme také odstranit stávající produkty (i když další možností je jednoduše nastavit produkty `CategoryID` hodnoty na `NULL`). Tato funkce se dá implementovat pomocí pravidel kaskádového omezení cizího klíče. Alternativně můžeme vytvořit uloženou proceduru, která přijímá vstupní parametr `@CategoryID` a při vyvolání explicitně odstraní všechny přidružené produkty a pak zadanou kategorii.
 
-Naše první pokus o uloženou proceduru mohou vypadat nějak takto:
+Náš první pokus na takovou uloženou proceduru by mohl vypadat takto:
 
 [!code-sql[Main](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample5.sql)]
 
-Zatímco jednoznačně tato akce odstraní přidružené produktů a kategorii, neučiní tak v části zastřešující transakce. Představte si, že se na některé další omezení pro cizí klíč `Categories` nebude odstranění konkrétní `@CategoryID` hodnotu. Problém je, že v takovém případě všech produktů, které se odstraní předtím, než jsme pokus o odstranění kategorii. Net výsledkem je, že pro tyto kategorie tuto uloženou proceduru by odebrat všechny její produkty zatímco zůstala kategorie, protože s ním stále související záznamy v jiné tabulce.
+I když se tím neodstraní přidružené produkty a kategorie, neudělá to v rámci transakce. Představte si, že je u `Categories` nějaké jiné omezení cizího klíče, které by bránilo odstranění konkrétní `@CategoryID` hodnoty. Problémem je to, že v takovém případě se před pokusem o odstranění kategorie odstraní všechny produkty. Čistý výsledek je takový, že pro takovou kategorii by tato uložená procedura odebrala všechny své produkty, zatímco tato kategorie stále obsahuje související záznamy v některé jiné tabulce.
 
-Pokud uložená procedura byly zabalené v rámci oboru transakce, ale při odstraní pro `Products` tabulka bude vrácena zpět i v případě se nepovedlo odstranit `Categories`. Následující skript uložené procedury používá transakce, aby zajistil atomicitu mezi těmito dvěma `DELETE` příkazy:
+Pokud byla uložená procedura zabalena v rámci rozsahu transakce, ale odstranění do `Products` tabulky by se vrátilo zpět na tvář neúspěšného odstranění při `Categories`. Následující skript uložených procedur používá transakci k zajištění nedělitelnost mezi dvěma příkazy `DELETE`:
 
 [!code-sql[Main](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample6.sql)]
 
-Za chvíli přidat `Categories_Delete` uložené procedury k databázi Northwind. Vraťte se ke kroku 1 pokyny k přidání uložených procedur do databáze.
+Chvíli přidejte `Categories_Delete` uloženou proceduru do databáze Northwind. Pokyny k přidání uložených procedur do databáze najdete v části zpět ke kroku 1.
 
-## <a name="step-6-updating-thecategoriestableadapter"></a>Krok 6: Aktualizuje se`CategoriesTableAdapter`
+## <a name="step-6-updating-thecategoriestableadapter"></a>Krok 6: aktualizace`CategoriesTableAdapter`
 
-Při jsme přidali `Categories_Delete` uložené procedury do databáze, DAL je aktuálně nakonfigurován pro použití ad-hoc SQL k provedení odstranit. Potřebujeme aktualizovat `CategoriesTableAdapter` a dostane pokyn, aby používat `Categories_Delete` místo toho uložená procedura.
-
-> [!NOTE]
-> Dříve v tomto kurzu jsme pracovali `NorthwindWithSprocs` datové sady. Ale, že datová sada obsahuje pouze jednu entitu, `ProductsDataTable`, a My potřebujeme práce s kategoriemi. Proto pro zbývající část tohoto kurzu, když mám mluvit o m Data Access Layer I, který se odkazuje na `Northwind` datové sady, který jsme vytvořili první v [vytvoření vrstvy přístupu k datům](../introduction/creating-a-data-access-layer-vb.md) kurzu.
-
-Otevřete datovou sadu Northwind, vyberte `CategoriesTableAdapter`a přejděte do okna Vlastnosti. Seznamy vlastností okna `InsertCommand`, `UpdateCommand`, `DeleteCommand`, a `SelectCommand` používané TableAdapter, jakož i její název a informace o připojení. Rozbalte `DeleteCommand` vlastnost zobrazíte její podrobnosti. Jak ukazuje obrázek 15 `DeleteCommand` s `CommandType` je nastavena na Text, který se má poslat v textu nastaví `CommandText` vlastnosti jako datový typ dotazu SQL ad-hoc.
-
-![V návrháři a zobrazte její vlastnosti v okně Vlastnosti vyberte CategoriesTableAdapter](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image43.png)
-
-**Obrázek 15**: Vyberte `CategoriesTableAdapter` v návrháři a zobrazte její vlastnosti v okně Vlastnosti
-
-Chcete-li změnit tato nastavení, v okně Vlastnosti vyberte text (událost DeleteCommand) a z rozevíracího seznamu zvolte (nové). Touto akcí vymažete si nastavení `CommandText`, `CommandType`, a `Parameters` vlastnosti. Dále nastavte `CommandType` vlastnost `StoredProcedure` a pak zadejte název uložené procedury pro `CommandText` (`dbo.Categories_Delete`). Pokud jste nezapomeňte napřed zadejte vlastnosti v uvedeném pořadí – `CommandType` a pak `CommandText` – Visual Studio automaticky naplní kolekci parametrů. Pokud nezadáte tyto vlastnosti v tomto pořadí, budete muset ručně přidat parametry prostřednictvím Editor kolekce parametrů. V obou případech je třeba ji zkontrolovat kliknout na symbol tří teček v vlastnost Parameters zpřístupnit nahoru Editor kolekce parametrů pro ověření, že správný parametr nastavení byly provedeny změny (viz obrázek 16) s. Pokud se nezobrazí žádné parametry v dialogovém okně, přidejte `@CategoryID` parametr ručně (není potřeba přidat `@RETURN_VALUE` parametr).
-
-![Ujistěte se, že parametry nastavení jsou správně](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image44.png)
-
-**Obrázek 16**: Ujistěte se, že parametry nastavení jsou správně
-
-Po DAL se aktualizovala, odstraňuje se kategorie bude automaticky odstraní všechny jeho související produkty a učinit v rámci zastřešující transakce. Chcete-li to ověřit, vraťte se na stránku aktualizace a odstranění stávajících binárních dat a klikněte na tlačítko Odstranit pro některou z kategorií. Jeden jediným kliknutím myší kategorie a všechny jeho přidružené produkty se odstraní.
+I když jsme do databáze přidali `Categories_Delete` uloženou proceduru, je DAL v současné době nakonfigurovaná k provedení odstranění pomocí ad hoc příkazů SQL. Musíme aktualizovat `CategoriesTableAdapter` a dát mu pokyn použít místo toho `Categories_Delete` uloženou proceduru.
 
 > [!NOTE]
-> Před testováním `Categories_Delete` uložené procedury, které se odstraní celou řadou produkty spolu s vybranou kategorii, může být vhodné vytvořit záložní kopii databáze. Pokud používáte `NORTHWND.MDF` databáze v `App_Data`, jednoduše zavřete sadu Visual Studio a zkopírujte soubory MDF a LDF v `App_Data` do nějaké složky. Po otestování funkce, můžete obnovit databázi zavření sady Visual Studio a nahradí aktuální MDF a LDF soubory `App_Data` pomocí záložní kopie.
+> Dříve v tomto kurzu jsme pracovali s `NorthwindWithSprocs` datovou sadou. Tato datová sada ale má jenom jednu entitu, `ProductsDataTable`a potřebujeme pracovat s kategoriemi. Proto ve zbývající části tohoto kurzu zjistíte, že se ve vrstvě pro přístup k datům I m odkazuje na `Northwind` datovou sadu, kterou jsme vytvořili poprvé v kurzu [Vytvoření vrstvy přístupu k datům](../introduction/creating-a-data-access-layer-vb.md) .
 
-## <a name="summary"></a>Souhrn
+Otevřete datovou sadu Northwind, vyberte `CategoriesTableAdapter`a přejít na okno Vlastnosti. Okno Vlastnosti uvádí `InsertCommand`, `UpdateCommand`, `DeleteCommand`a `SelectCommand` používané v TableAdapter a také název a informace o připojení. Rozbalením vlastnosti `DeleteCommand` zobrazíte její podrobnosti. Jak ukazuje obrázek 15, vlastnost `DeleteCommand` s `CommandType` je nastavena na text, který dává pokyn k odeslání textu ve vlastnosti `CommandText` jako dotaz SQL ad-hoc.
 
-Průvodci vytvořením objektu TableAdapter s budou automaticky generovat uložené procedury pro nás, existují situace, kdy jsme může již takové vytvářet úložné procedury nebo chcete je vytvořit ručně nebo pomocí jiných nástrojů místo. Takových scénářů TableAdapter lze také nastavit tak, aby odkazoval na stávající úložnou proceduru. V tomto kurzu jsme se podívali na tom, jak ručně přidat uložené procedury do databáze prostřednictvím prostředí sady Visual Studio a jak propojí metod TableAdapter s těchto uložených procedurách. Můžeme také prozkoumat příkazů T-SQL a skript používaným pro počáteční potvrzení a vrácení zpět transakcí z v rámci uložené procedury.
+![Vyberte CategoriesTableAdapter v návrháři, aby se zobrazily jeho vlastnosti v okně Vlastnosti.](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image43.png)
 
-Všechno nejlepší programování!
+**Obrázek 15**: vyberte `CategoriesTableAdapter` v návrháři, aby se zobrazily jeho vlastnosti v okně Vlastnosti.
+
+Chcete-li změnit tato nastavení, vyberte v okno Vlastnosti text (DeleteCommand) a v rozevíracím seznamu zvolte možnost (nové). Tím se vymažou nastavení vlastností `CommandText`, `CommandType`a `Parameters`. V dalším kroku nastavte vlastnost `CommandType` na `StoredProcedure` a potom zadejte název uložené procedury pro `CommandText` (`dbo.Categories_Delete`). Pokud zadáte vlastnosti v tomto pořadí – nejdříve `CommandType` a potom `CommandText` – Visual Studio automaticky naplní kolekci Parameters. Pokud tyto vlastnosti v tomto pořadí nezadáte, budete muset ručně přidat parametry pomocí editoru kolekce Parameters. V obou případech je vhodné kliknout na tři tečky ve vlastnosti Parameters a vyvolat tak editor kolekce Parameters, aby bylo možné ověřit, zda byly provedeny správné změny nastavení parametrů (viz obrázek 16). Pokud v dialogovém okně nevidíte žádné parametry, přidejte parametr `@CategoryID` ručně (nemusíte `@RETURN_VALUE` parametr přidat).
+
+![Ujistěte se, že je nastavení parametrů správné.](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image44.png)
+
+**Obrázek 16**: Ujistěte se, že je nastavení parametrů správné.
+
+Po aktualizaci DAL dojde k odstranění kategorie k automatickému odstranění všech přidružených produktů a k tomu v rámci transakce. Pokud to chcete ověřit, vraťte se na stránku aktualizace a odstranění stávajících binárních dat a klikněte na tlačítko Odstranit pro jednu z kategorií. Jedním kliknutím myši se odstraní kategorie a všechny její přidružené produkty.
+
+> [!NOTE]
+> Než otestujete `Categories_Delete` uloženou proceduru, která odstraní řadu produktů společně s vybranou kategorií, může být vhodné vytvořit záložní kopii vaší databáze. Pokud používáte databázi `NORTHWND.MDF` v `App_Data`, stačí zavřít aplikaci Visual Studio a zkopírovat soubory MDF a LDF v `App_Data` do jiné složky. Po otestování funkčnosti můžete databázi obnovit ukončením sady Visual Studio a nahrazením aktuálních souborů MDF a LDF v `App_Data` záložními kopiemi.
+
+## <a name="summary"></a>Přehled
+
+I když Průvodce TableAdapterí automaticky vygeneruje uložené procedury pro nás, nastane čas, kdy je možné tyto uložené procedury už vytvořit nebo je chtít vytvořit ručně nebo pomocí jiných nástrojů. Pro uspokojení takových scénářů může být TableAdapter také nakonfigurován tak, aby odkazoval na stávající uloženou proceduru. V tomto kurzu jsme se vyhlédli do postupu ručního přidání uložených procedur do databáze prostřednictvím prostředí sady Visual Studio a způsobu, jak tyto uložené procedury nakabelovat metody TableAdapter s. Prozkoumali jsme také příkazy T-SQL a vzor skriptu, který se používá pro spouštění, potvrzování a vracení zpětných transakcí z uložené procedury.
+
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí revidující pro účely tohoto kurzu byly Hilton Geisenow, S ren Jakub Lauritsen a Teresy Murphy. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontroloři vedoucích k tomuto kurzu byli Hilton Geisenow, S Ren Jacob Lauritsen a Teresa Murphy. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
-> [další](updating-the-tableadapter-to-use-joins-vb.md)
+> [Další](updating-the-tableadapter-to-use-joins-vb.md)

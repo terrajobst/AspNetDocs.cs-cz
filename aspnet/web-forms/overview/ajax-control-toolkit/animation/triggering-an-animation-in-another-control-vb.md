@@ -1,64 +1,64 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-vb
-title: Aktivace animace v jiného ovládacího prvku (VB) | Dokumentace Microsoftu
+title: Aktivace animace v jiném ovládacím prvku (VB) | Microsoft Docs
 author: wenz
-description: Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Obecně platí, spouští se...
+description: Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Obecně se spouští...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 25ebaf1f-5a9f-423d-98c7-1d694e93664f
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cc27e44ae42865eebbf67da69dbe1aa43a57a4d7
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 6a4af2324afab7519170c123b6ea7c57ab3e03fb
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65128172"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74575034"
 ---
 # <a name="triggering-an-animation-in-another-control-vb"></a>Aktivace animace jiného ovládacího prvku (VB)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation8.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation8VB.pdf)
+[Stažení kódu](https://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation8.vb.zip) nebo [stažení PDF](https://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation8VB.pdf)
 
-> Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Obecně platí spuštění animace se aktivuje interakce uživatele s stejný ovládací prvek. Je však také možné pracovat s jeden ovládací prvek a potom animace jiného ovládacího prvku.
+> Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Obecně se spouští animace pomocí interakce uživatele se stejným ovládacím prvkem. Je však také možné pracovat s jedním ovládacím prvkem a následně animacem jiného ovládacího prvku.
 
 ## <a name="overview"></a>Přehled
 
-Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Obecně platí spuštění animace se aktivuje interakce uživatele s stejný ovládací prvek. Je však také možné pracovat s jeden ovládací prvek a potom animace jiného ovládacího prvku.
+Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Obecně se spouští animace pomocí interakce uživatele se stejným ovládacím prvkem. Je však také možné pracovat s jedním ovládacím prvkem a následně animacem jiného ovládacího prvku.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Za prvé, zahrnout `ScriptManager` na stránce; potom technologie ASP.NET AJAX je načíst knihovnu, což umožňuje použití Control Toolkit:
+Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 
 [!code-aspx[Main](triggering-an-animation-in-another-control-vb/samples/sample1.aspx)]
 
-Animace se použijí pro panel text, který vypadá takto:
+Animace se použije na panel textu, který vypadá takto:
 
 [!code-aspx[Main](triggering-an-animation-in-another-control-vb/samples/sample2.aspx)]
 
-V přidružené třídy šablony stylů CSS pro panel definovat barvu pozadí nice a také nastavit Pevná šířka panelu:
+V přidružené třídě CSS pro panel definujte Skvělé barvy pozadí a také nastavte pevnou šířku panelu:
 
 [!code-css[Main](triggering-an-animation-in-another-control-vb/samples/sample3.css)]
 
-Pokud chcete začít animace panelu, je HTML tlačítko použít. Všimněte si, že `<input type="button" />` nejvyšších přes `<asp:Button />` od tudy zpětné volání, když uživatel klikne na toto tlačítko.
+Aby bylo možné začít animovat panel, je použito tlačítko HTML. Všimněte si, že `<input type="button" />` je výhodnější pro `<asp:Button />`, protože nepožadujeme postback, když uživatel na toto tlačítko klikne.
 
 [!code-aspx[Main](triggering-an-animation-in-another-control-vb/samples/sample4.aspx)]
 
-Pak přidejte `AnimationExtender` na stránku, poskytování `ID`, `TargetControlID` atribut a povinný údaj `runat="server"`. Je důležité nastavit `TargetControlID` ID tlačítko (elementu animace aktivace), aby Identifikátor panelu (elementu animované)
+Pak přidejte `AnimationExtender` na stránku a poskytněte `ID`, atribut `TargetControlID` a povinný `runat="server"`. Je důležité nastavit `TargetControlID` na ID tlačítka (element, který aktivuje animaci), nikoli na ID panelu (element je animovaný).
 
 [!code-aspx[Main](triggering-an-animation-in-another-control-vb/samples/sample5.aspx)]
 
-V rámci `<Animations>` uzlu, místo animace jako obvykle. Aby bylo možné je měnit panelu, není toto tlačítko, nastavte `AnimationTarget` atribut pro každý prvek animace v rámci `AnimationExtender`. Hodnota pro `AnimationTarget` je samozřejmě ID panelu. Tímto způsobem animací dojít s panelem, nikoli zpětným na spouštěcí tlačítko. Tady je `AnimationExtender` kód pro tento scénář:
+V uzlu `<Animations>` umístěte animace obvyklým způsobem. Aby bylo možné změnit panel, nikoli tlačítko, nastavte atribut `AnimationTarget` pro všechny elementy animace v rámci `AnimationExtender`. Hodnota pro `AnimationTarget` je ID panelu kurzu. Tímto způsobem se animace vyskytují s panelem, nikoli s tlačítkem aktivovat. Tady je `AnimationExtender` značky pro tento scénář:
 
 [!code-aspx[Main](triggering-an-animation-in-another-control-vb/samples/sample6.aspx)]
 
-Poznámka: zvláštní pořadí, ve kterém se zobrazují jednotlivé animace. Za prvé získá tlačítko Deaktivovat po spuštění animace. Protože neexistuje žádné `AnimationTarget` atribut v `<EnableAction>` element, tato animace se použije pro původní ovládacího prvku: tlačítko. Animace další dva kroky se provádějí paralelně (`<Parallel>` element). Obě mají jejich `AnimationTarget` nastavte atributy na `"Panel1"`, tedy animace panelu, ne na tlačítko.
+Všimněte si speciálního pořadí, ve kterém se jednotlivé animace zobrazí. Nejprve se tlačítko po spuštění animace deaktivuje. Vzhledem k tomu, že v elementu `<EnableAction>` není žádný atribut `AnimationTarget`, tato animace se aplikuje na ovládací prvek původce: tlačítko. Následující dva kroky animace je třeba provést paralelně (`<Parallel>` element). Oba mají své `AnimationTarget` atributy nastavené na `"Panel1"`, takže animován panel, ne tlačítko.
 
-[![Panel animace spuštěna, kliknutí myší na tlačítko](triggering-an-animation-in-another-control-vb/_static/image2.png)](triggering-an-animation-in-another-control-vb/_static/image1.png)
+[![kliknutí myší na tlačítko spustí animaci panelu](triggering-an-animation-in-another-control-vb/_static/image2.png)](triggering-an-animation-in-another-control-vb/_static/image1.png)
 
-Panel animace spuštěna, kliknutí myší na tlačítko ([kliknutím ji zobrazíte obrázek v plné velikosti](triggering-an-animation-in-another-control-vb/_static/image3.png))
+Kliknutím na tlačítko myši na tlačítko se spustí animace panelu ([kliknutím zobrazíte obrázek v plné velikosti).](triggering-an-animation-in-another-control-vb/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](disabling-actions-during-animation-vb.md)
-> [další](modifying-animations-from-the-server-side-vb.md)
+> [Další](modifying-animations-from-the-server-side-vb.md)

@@ -1,68 +1,68 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs
-title: Použití postbacků s ovládacím prvkem ReorderList (C#) | Dokumentace Microsoftu
+title: Použití zpětného volání s ReorderListC#() | Microsoft Docs
 author: wenz
-description: Ovládacím prvkem ReorderList ovládacího prvku AJAX Control Toolkit poskytuje seznam, který může být přeuspořádány uživatelem pomocí přetažení. Pokaždé, když je pořadí v seznamu změníte, po...
+description: Ovládací prvek ReorderList v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení. Pokaždé, když je přeobjednán seznam, a...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 70d5d106-b547-442c-a7fd-3492b3e3d646
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 86fb3475b8c2a9578b59945e40539183b967bbed
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: f83201fc6fd458e730b6bb5ffee184d303b52e90
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65124711"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74611400"
 ---
 # <a name="using-postbacks-with-reorderlist-c"></a>Použití postbacků s ovládacím prvkem ReorderList (C#)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/ReorderList4.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/reorderlist4CS.pdf)
+[Stažení kódu](https://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/ReorderList4.cs.zip) nebo [stažení PDF](https://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/reorderlist4CS.pdf)
 
-> Ovládacím prvkem ReorderList ovládacího prvku AJAX Control Toolkit poskytuje seznam, který může být přeuspořádány uživatelem pomocí přetažení. Pokaždé, když je pořadí v seznamu změníte, zpětné volání informuje server změny.
+> Ovládací prvek ReorderList v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení. Pokaždé, když je seznam seřazený, zpětné volání sdělí serveru změny.
 
 ## <a name="overview"></a>Přehled
 
-`ReorderList` Ovládacího prvku AJAX Control Toolkit poskytuje seznam, který může být přeuspořádány uživatelem pomocí přetažení. Pokaždé, když je pořadí v seznamu změníte, zpětné volání informuje server změny.
+Ovládací prvek `ReorderList` v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení. Pokaždé, když je seznam seřazený, zpětné volání sdělí serveru změny.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Existuje několik datových zdrojů pro `ReorderList` ovládacího prvku. Jeden má používat `XmlDataSource` ovládacího prvku:
+K dispozici je několik možných zdrojů dat pro ovládací prvek `ReorderList`. Jedním z nich je použití ovládacího prvku `XmlDataSource`:
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample1.aspx)]
 
-Vázat tento XML tak, aby `ReorderList` postbacků ovládacího prvku a povolit, následující atributy musí být nastavena:
+Aby bylo možné vytvořit vazby tohoto XML k ovládacímu prvku `ReorderList` a povolit zpětná volání, musí být nastaveny následující atributy:
 
 - `DataSourceID`: ID zdroje dat
-- `SortOrderField`: Vlastnost, která má řadit podle
-- `AllowReorder`: Jestli se má povolit uživatelům změnit uspořádání seznamu elementů
-- `PostBackOnReorder`: Jestli chcete vytvořit zpětné volání pokaždé, když je změnit jejich uspořádání seznamu
+- `SortOrderField`: vlastnost, podle které se má řadit
+- `AllowReorder`: Určuje, zda má uživatel změnit pořadí prvků seznamu.
+- `PostBackOnReorder`: bez ohledu na to, jestli se má vytvořit postback při změně uspořádání seznamu
 
-Tady je odpovídající značky ovládacího prvku:
+Toto je vhodný kód pro ovládací prvek:
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample2.aspx)]
 
-V rámci `ReorderList` ovládacího prvku, konkrétní data ze zdroje dat, může být vázaný pomocí `Eval()` metody:
+V rámci ovládacího prvku `ReorderList` mohou být konkrétní data ze zdroje dat vázána pomocí `Eval()` metody:
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample3.aspx)]
 
-Na libovolné pozici na stránce popisek bude obsahovat informace, kdy poslední změny pořadí došlo k chybě:
+Na libovolné pozici na stránce bude popisek obsahovat informace, když došlo k poslední změně pořadí:
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample4.aspx)]
 
-Tento popisek je vyplněna text v kódu na straně serveru, zpracování zpětného volání:
+Tento popisek je vyplněn textem v kódu na straně serveru, který zpracovává postback:
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample5.aspx)]
 
-Nakonec, aby bylo možné aktivovat funkce technologie ASP.NET AJAX a Control Toolkit `ScriptManager` ovládací prvek je třeba umístit na stránce:
+Nakonec, aby bylo možné aktivovat funkci ASP.NET AJAX a Control Toolkit, musí být ovládací prvek `ScriptManager` umístěn na stránce:
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample6.aspx)]
 
-[![Každá změna uspořádání aktivuje zpětné volání](using-postbacks-with-reorderlist-cs/_static/image2.png)](using-postbacks-with-reorderlist-cs/_static/image1.png)
+[![každé změnu pořadí spustí postback.](using-postbacks-with-reorderlist-cs/_static/image2.png)](using-postbacks-with-reorderlist-cs/_static/image1.png)
 
-Každá změna uspořádání aktivuje zpětné volání ([kliknutím ji zobrazíte obrázek v plné velikosti](using-postbacks-with-reorderlist-cs/_static/image3.png))
+Každé přeřazení aktivuje postback ([kliknutím zobrazíte obrázek v plné velikosti).](using-postbacks-with-reorderlist-cs/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Next](drag-and-drop-via-reorderlist-cs.md)

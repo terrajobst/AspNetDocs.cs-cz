@@ -1,231 +1,231 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-cs
-title: Práce s vypočtenými sloupci (C#) | Dokumentace Microsoftu
+title: Práce s počítanými sloupciC#() | Microsoft Docs
 author: rick-anderson
-description: Při vytváření tabulky databáze Microsoft SQL Server umožňuje definovat počítaný sloupec, jehož hodnota se počítá z výrazu, který obvykle referen...
+description: Při vytváření tabulky databáze Microsoft SQL Server umožňuje definovat počítaný sloupec, jehož hodnota je vypočítána z výrazu, který je obvykle referen...
 ms.author: riande
 ms.date: 08/03/2007
 ms.assetid: 57459065-ed7c-4dfe-ac9c-54c093abc261
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 91568543496904f3db0146eee4e414eb2c61c49e
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: ad6a96f2721510c2478f707c8eed018ae797f27a
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108558"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74603476"
 ---
 # <a name="working-with-computed-columns-c"></a>Práce s vypočítanými sloupci (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_71_CS.zip) nebo [stahovat PDF](working-with-computed-columns-cs/_static/datatutorial71cs1.pdf)
+[Stažení kódu](https://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_71_CS.zip) nebo [stažení PDF](working-with-computed-columns-cs/_static/datatutorial71cs1.pdf)
 
-> Při vytváření tabulky databáze Microsoft SQL serveru můžete zadat počítaný sloupec, jehož hodnota se počítá od výraz, který obvykle odkazuje na jiné hodnoty do stejného databázového záznamu. Tyto hodnoty jsou jen pro čtení na databázi, která vyžaduje zvláštní aspekty při práci s objekty TableAdapter. V tomto kurzu naučíte čelit výzvám kompenzaci vypočítané sloupce.
+> Při vytváření tabulky databáze Microsoft SQL Server umožňuje definovat počítaný sloupec, jehož hodnota je vypočítána z výrazu, který obvykle odkazuje na jiné hodnoty ve stejném záznamu databáze. Tyto hodnoty jsou v databázi jen pro čtení, což vyžaduje zvláštní požadavky při práci s objekty TableAdapter. V tomto kurzu se dozvíte, jak splnit problémy, které představují vypočítané sloupce.
 
 ## <a name="introduction"></a>Úvod
 
-Microsoft SQL Server umožňuje  *[vypočítané sloupce](https://msdn.microsoft.com/library/ms191250.aspx)*, které jsou sloupce, jejichž hodnoty se počítají na základě výraz, který obvykle odkazuje na hodnoty z jiných sloupců stejné tabulky. Jako příklad může mít čas datového modelu pro sledování tabulku s názvem `ServiceLog` se sloupci včetně `ServicePerformed`, `EmployeeID`, `Rate`, a `Duration`, mimo jiné. Zatímco dlužná částka za služby položky (rychlost vynásobené DURATION) může být počítá prostřednictvím webové stránky nebo jiných programových rozhraní, může být po ruce, aby zahrnovaly sloupec v `ServiceLog` tabulku s názvem `AmountDue` který nahlásit to informace. Tento sloupec nemohl být vytvořen jako normální sloupec, ale třeba kdykoli aktualizovat `Rate` nebo `Duration` změnit hodnoty sloupce. Lepším řešením může být Ujistěte se, `AmountDue` sloupec počítaný sloupec pomocí výrazu `Rate * Duration`. To by způsobilo systému SQL Server se automaticky vypočítá `AmountDue` hodnota ve sloupci pokaždé, když na ni bylo odkazováno v dotazu.
+Microsoft SQL Server umožňuje *[vypočítané sloupce](https://msdn.microsoft.com/library/ms191250.aspx)* , které jsou sloupce, jejichž hodnoty jsou vypočítány z výrazu, který obvykle odkazuje na hodnoty z jiných sloupců ve stejné tabulce. Například datový model sledování času může mít tabulku s názvem `ServiceLog` se sloupci, včetně `ServicePerformed`, `EmployeeID`, `Rate`a `Duration`, mimo jiné. I když může být částka splatná na jednu z položek služby (sazba vynásobená dobou trvání) pomocí webové stránky nebo jiného programového rozhraní, může být užitečné zahrnout sloupec do `ServiceLog` tabulky s názvem `AmountDue`, která tyto informace ohlásila. Tento sloupec se dá vytvořit jako normální sloupec, ale je potřeba ho aktualizovat, aby se změnily hodnoty `Rate` nebo `Duration` sloupce. Lepším řešením je nastavit `AmountDue` sloupec jako počítaný sloupec pomocí `Rate * Duration`výrazů. To by způsobilo, SQL Server automaticky vypočítat hodnotu `AmountDue` sloupce pokaždé, když se na ni odkazuje v dotazu.
 
-Protože počítaný sloupec s hodnotou je určeno výrazem, tyto sloupce jsou jen pro čtení, a proto nelze hodnoty jim přiřadili v `INSERT` nebo `UPDATE` příkazy. Ale když počítané sloupce jsou součástí hlavním dotazu objektu TableAdapter, který používá příkazy SQL ad-hoc, jsou automaticky součástí automaticky generovanou `INSERT` a `UPDATE` příkazy. V důsledku toho s TableAdapter `INSERT` a `UPDATE` dotazy a `InsertCommand` a `UpdateCommand` vlastnosti se musí aktualizovat na odebrat odkazy na žádné vypočítané sloupce.
+Vzhledem k tomu, že hodnota počítaného sloupce je určena výrazem, jsou tyto sloupce určeny pouze pro čtení, a proto nemohou mít přiřazené hodnoty v `INSERT` nebo `UPDATE`ch příkazech. Pokud jsou však vypočítané sloupce součástí hlavního dotazu pro TableAdapter, který používá příkazy SQL ad hoc, jsou automaticky zahrnuty do automaticky generovaných příkazů `INSERT` a `UPDATE`. V důsledku toho je nutné aktualizovat TableAdapter s `INSERT` a `UPDATE` dotazy a `InsertCommand` a `UpdateCommand` vlastnosti pro odebrání odkazů na vypočítané sloupce.
 
-Problémy může vyvolávat použití vypočítané sloupce pomocí prvku TableAdapter, který používá příkazy SQL ad-hoc, který je TableAdapter s `INSERT` a `UPDATE` dotazy jsou automaticky obnovovány kdykoli dokončení Průvodce konfigurací TableAdapter. Proto počítané sloupce se ručně odebrat z `INSERT` a `UPDATE` dotazy se znovu zobrazí, pokud je znovu spusťte průvodce. Ačkoli objekty TableAdapter, které používají uložené procedury nejsou t trpí tento brittleness, mají své vlastní Adaptivní režim, které nám budou řešit v kroku 3.
+Jednou z výzev k použití počítaných sloupců s TableAdapter, který používá příkazy SQL ad-hoc, je, že se automaticky znovu vygenerovaly dotazy TableAdapter s `INSERT` a `UPDATE`, kdykoli Průvodce konfigurací TableAdapter dokončen. Proto se vypočítané sloupce ručně odeberou z `INSERT` a dotazy `UPDATE` se znovu zobrazí, pokud se průvodce znovu spustí. I když objekty TableAdapter, které používají uložené procedury, od tohoto brittleness nepřijde, mají vlastní adaptivní, které budeme řešit v kroku 3.
 
-V tomto kurzu přidáme počítaný sloupec, `Suppliers` tabulky v databázi Northwind a pak vytvořte odpovídající TableAdapter pro práci s touto tabulkou a jeho počítaný sloupec. Máme naši TableAdapter pomocí uložených procedur místo SQL příkazy ad-hoc tak, aby naše vlastní nastavení nejsou ztracena při použití Průvodce konfigurací TableAdapter.
+V tomto kurzu přidáme vypočítaný sloupec do tabulky `Suppliers` v databázi Northwind a pak vytvoříte odpovídající TableAdapter pro práci s touto tabulkou a jejím vypočítaným sloupcem. Naše TableAdapter použije uložené procedury místo ad-hoc příkazů SQL, takže naše přizpůsobení nebudou po použití Průvodce konfigurací TableAdapter ztracena.
 
-Začínáme s let!
+Pojďme začít!
 
-## <a name="step-1-adding-a-computed-column-to-thesupplierstable"></a>Krok 1: Přidání počítaného sloupce do`Suppliers`tabulky
+## <a name="step-1-adding-a-computed-column-to-thesupplierstable"></a>Krok 1: Přidání vypočítaného sloupce do tabulky`Suppliers`
 
-Databáze Northwind nemá žádné vypočítané sloupce, takže bude potřeba přidat jeden sami. Pro tento kurz nechat přidat počítaný sloupec s `Suppliers` tabulce nazvané `FullContactName` , který vrátí jméno kontaktu s, název a fungují pro společnost v následujícím formátu: `ContactName` (`ContactTitle`, `CompanyName`). Tento počítaný sloupec může použít v sestavách, při zobrazení informací o dodavatelů.
+Databáze Northwind neobsahuje žádné počítané sloupce, takže je potřeba přidat jednu dodržovali. V tomto kurzu přidáme vypočítaný sloupec do tabulky `Suppliers` s názvem `FullContactName`, která vrací kontakt s názvem, názvem a společností, pro kterou pracují, v následujícím formátu: `ContactName` (`ContactTitle`, `CompanyName`). Tento počítaný sloupec může být použit v sestavách při zobrazení informací o dodavatelích.
 
-Začněte otevřením `Suppliers` definice tabulky kliknutím pravým tlačítkem na `Suppliers` v Průzkumníku serveru tabulku a zvolíte Otevřít definici tabulky v místní nabídce. Zobrazí se sloupce v tabulce a jejich vlastností, jako je datový typ, zda povolit `NULL` s a tak dále. Chcete-li přidat počítaný sloupec, začněte zadáním názvu sloupce v definici tabulky. Dále zadejte jeho výraz do textového pole (vzorec) části specifikace vypočítaného sloupce v okně Vlastnosti sloupce (viz obrázek 1). Název počítaného sloupce `FullContactName` a použijte následující výraz:
+Začněte otevřením `Suppliers` definice tabulky kliknutím pravým tlačítkem myši na tabulku `Suppliers` v Průzkumník serveru a výběrem možnosti otevřít definici tabulky z kontextové nabídky. Zobrazí se sloupce tabulky a jejich vlastnosti, jako je například datový typ, ať už `NULL` s a tak dále. Chcete-li přidat vypočítaný sloupec, začněte zadáním názvu sloupce do definice tabulky. V dalším kroku zadejte svůj výraz do textového pole (vzorec) pod oddílem specifikace vypočítaného sloupce ve sloupci okno Vlastnosti (viz obrázek 1). Vypočítaný sloupec pojmenujte `FullContactName` a použijte následující výraz:
 
 [!code-sql[Main](working-with-computed-columns-cs/samples/sample1.sql)]
 
-Všimněte si, že by řetězců mohou být spojeny v SQL pomocí `+` operátor. `CASE` Příkaz lze použít jako podmíněné v některém tradičním programovacím jazyce. Ve výše uvedeném výrazu `CASE` příkaz lze přečíst jako: Pokud `ContactTitle` není `NULL` ve výstupu `ContactTitle` hodnota zřetězená s čárkou, jinak generovat žádnou akci. Další informace o užitečnost `CASE` příkaz, naleznete v tématu [Power SQL `CASE` příkazy](http://www.4guysfromrolla.com/webtech/102704-1.shtml).
+Všimněte si, že řetězce lze zřetězit v SQL pomocí operátoru `+`. Příkaz `CASE` lze použít jako podmíněný v tradičním programovacím jazyce. Ve výrazu výše lze příkaz `CASE` přečíst jako: Pokud `ContactTitle` není `NULL` pak výstup hodnoty `ContactTitle` zřetězené s čárkou, jinak vygeneruje nic. Další informace o užitečnosti `CASE` příkazu naleznete v tématu [výkon příkazů SQL `CASE`](http://www.4guysfromrolla.com/webtech/102704-1.shtml).
 
 > [!NOTE]
-> Namísto použití `CASE` prohlášení, můžou také použili jsme `ISNULL(ContactTitle, '')`. [`ISNULL(checkExpression, replacementValue)`](https://msdn.microsoft.com/library/ms184325.aspx) Vrátí *checkExpression* Pokud to je jiná než NULL, jinak vrátí *zastaralá*. While buď `ISNULL` nebo `CASE` bude fungovat v tomto případě existují komplikovanější scénáře kde flexibilitu `CASE` příkazu nesmí odpovídat podvýrazu `ISNULL`.
+> Místo použití `CASE`ho příkazu zde můžeme použít jinou `ISNULL(ContactTitle, '')`. [`ISNULL(checkExpression, replacementValue)`](https://msdn.microsoft.com/library/ms184325.aspx) vrátí *checkExpression* , pokud není null, jinak vrátí *replacementValue*. I když `ISNULL` nebo `CASE` v této instanci budou fungovat, existují složitější scénáře, kdy flexibilitu příkazu `CASE` nemůže odpovídat `ISNULL`.
 
-Po přidání Tento počítaný sloupec vaše obrazovka by měla vypadat obrazovky na obrázku 1.
+Po přidání tohoto vypočítaného sloupce by vaše obrazovka měla vypadat jako snímek obrazovky na obrázku 1.
 
-[![Přidejte počítaný sloupec s názvem FullContactName k tabulce dodavatelů](working-with-computed-columns-cs/_static/image2.png)](working-with-computed-columns-cs/_static/image1.png)
+[![do tabulky Dodavatelé přidat vypočítaný sloupec s názvem FullContactName](working-with-computed-columns-cs/_static/image2.png)](working-with-computed-columns-cs/_static/image1.png)
 
-**Obrázek 1**: Přidat počítaný sloupec s názvem `FullContactName` k `Suppliers` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image3.png))
+**Obrázek 1**: přidejte do tabulky `Suppliers` vypočítaný sloupec s názvem `FullContactName` ([kliknutím zobrazíte obrázek v plné velikosti).](working-with-computed-columns-cs/_static/image3.png)
 
-Po pojmenování počítaný sloupec a jeho výrazu, uložte změny do tabulky a kliknutím na ikonu Uložit na panelu nástrojů, stisknutím Ctrl + S nebo tak, že přejdete do nabídky soubor a zvolíte Uložit `Suppliers`.
+Po pojmenování vypočítaného sloupce a zadání jeho výrazu uložte změny v tabulce kliknutím na ikonu Uložit na panelu nástrojů, podržením klávesy CTRL + S nebo přechodem do nabídky soubor a výběrem možnosti Uložit `Suppliers`.
 
-Ukládá se tabulka by měl aktualizovat Průzkumníka serveru, včetně právě přidán sloupec v `Suppliers` seznam sloupců tabulky s. Kromě toho výraz do textové pole (vzorce) automaticky přizpůsobí ekvivalentní výraz, který odstraní nepotřebné prázdné znaky, zobrazí se kolem názvy sloupců s hranaté závorky (`[]`) a obsahuje závorky, chcete-li zobrazit více explicitně pořadí operací:
+Uložení tabulky by mělo aktualizovat Průzkumník serveru, včetně právě přidaného sloupce v seznamu sloupců `Suppliers` tabulky s. Kromě toho se výraz zadaný do textového pole (vzorec) automaticky upraví na ekvivalentní výraz, který odstraní nadbytečné prázdné znaky, obklopuje názvy sloupců s hranatými závorkami (`[]`) a obsahuje závorky k explicitnímu zobrazení pořadí operací:
 
 [!code-sql[Main](working-with-computed-columns-cs/samples/sample2.sql)]
 
-Další informace o vypočítané sloupce v systému Microsoft SQL Server, najdete [technické dokumentace](https://msdn.microsoft.com/library/ms191250.aspx). Podívejte se také [jak: Zadat vypočítaného sloupce](https://msdn.microsoft.com/library/ms188300.aspx) podrobný názorný postup vytvoření počítaného sloupce.
+Další informace o vypočítaných sloupcích v Microsoft SQL Server najdete v [technické dokumentaci](https://msdn.microsoft.com/library/ms191250.aspx). Také si přečtěte téma [Postupy: určení vypočítaných sloupců](https://msdn.microsoft.com/library/ms188300.aspx) pro podrobný návod k vytváření počítaných sloupců.
 
 > [!NOTE]
-> Ve výchozím nastavení vypočítané sloupce nejsou fyzicky uložené v tabulce, ale místo toho bude vždy přepočítána, které jsou odkazovány v dotazu. Zaškrtnutím políčka se jako trvalý, ale můžete dát pokyn, SQL Server k ukládání fyzicky počítaný sloupec v tabulce. Díky tomu má být vytvořena na počítaný sloupec, což může zlepšit výkon dotazů, které používají hodnotu počítaný sloupec v indexu jejich `WHERE` klauzule. Zobrazit [vytváření indexů pro vypočítané sloupce](https://msdn.microsoft.com/library/ms189292.aspx) Další informace.
+> Ve výchozím nastavení nejsou vypočítané sloupce fyzicky uloženy v tabulce, ale místo toho jsou přepočítány pokaždé, když jsou odkazovány v dotazu. Zaškrtnutím políčka je trvalé, ale můžete dát SQL Server k fyzickému uložení vypočítaného sloupce v tabulce. To umožňuje vytvořit index pro vypočítaný sloupec, což může zlepšit výkon dotazů, které používají vypočítanou hodnotu sloupce ve svých `WHERE` klauzulích. Další informace najdete v tématu [vytváření indexů na počítaných sloupcích](https://msdn.microsoft.com/library/ms189292.aspx) .
 
-## <a name="step-2-viewing-the-computed-column-s-values"></a>Krok 2: Zobrazení hodnot s počítaný sloupec
+## <a name="step-2-viewing-the-computed-column-s-values"></a>Krok 2: zobrazení hodnot počítaných sloupců
 
-Než začneme práce na vrstvy přístupu k datům, umožňují s trvat několik minut zobrazíte `FullContactName` hodnoty. Z Průzkumníka serveru, klikněte pravým tlačítkem na `Suppliers` název tabulky a v místní nabídce zvolte nový dotaz. Tím se otevře okno s dotazem, který vyzve se k nám se rozhodnout, jaké tabulky v dotazu. Přidat `Suppliers` tabulky a klikněte na tlačítko Zavřít. Dalším krokem je kontrola `CompanyName`, `ContactName`, `ContactTitle`, a `FullContactName` sloupce z tabulky. Nakonec klikněte na ikonu červeného vykřičníku na panelu nástrojů k provedení dotazu a zobrazit výsledky.
+Předtím, než začneme pracovat na vrstvě pro přístup k datům, může trvat několik minut, než se zobrazí `FullContactName` hodnoty. Z Průzkumník serveru klikněte pravým tlačítkem myši na název tabulky `Suppliers` a v místní nabídce vyberte možnost Nový dotaz. Tím zobrazíte okno dotazu, které vás vyzve k výběru tabulek, které se mají zahrnout do dotazu. Přidejte `Suppliers`ovou tabulku a klikněte na Zavřít. Dále v tabulce Dodavatelé vyhledejte sloupce `CompanyName`, `ContactName`, `ContactTitle`a `FullContactName`. Nakonec klikněte na ikonu červeného vykřičníku na panelu nástrojů a spusťte dotaz a zobrazte výsledky.
 
-Jak je vidět na obrázku 2, budou výsledky obsahovat `FullContactName`, se seznamem `CompanyName`, `ContactName`, a `ContactTitle` sloupců pomocí formátu možnosti;`ContactName` (`ContactTitle`, `CompanyName`) .
+Jak ukazuje obrázek 2, výsledky zahrnují `FullContactName`, které vypisuje sloupce `CompanyName`, `ContactName`a `ContactTitle` ve formátu ";`ContactName` (`ContactTitle`, `CompanyName`).
 
-[![FullContactName používá formát ContactName (funkce, CompanyName)](working-with-computed-columns-cs/_static/image5.png)](working-with-computed-columns-cs/_static/image4.png)
+[![FullContactName používá formát kontakt (ContactTitle, CompanyName).](working-with-computed-columns-cs/_static/image5.png)](working-with-computed-columns-cs/_static/image4.png)
 
-**Obrázek 2**: `FullContactName` Používá formát `ContactName` (`ContactTitle`, `CompanyName`) ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image6.png))
+**Obrázek 2**: `FullContactName` používá formát `ContactName` (`ContactTitle`, `CompanyName`) ([kliknutím zobrazíte obrázek v plné velikosti).](working-with-computed-columns-cs/_static/image6.png)
 
-## <a name="step-3-adding-thesupplierstableadapterto-the-data-access-layer"></a>Krok 3: Přidávání`SuppliersTableAdapter`do vrstvy přístupu k datům
+## <a name="step-3-adding-thesupplierstableadapterto-the-data-access-layer"></a>Krok 3: Přidání`SuppliersTableAdapter`do vrstvy přístupu k datům
 
-Chcete-li pracovat s informacemi o dodavatele v naší aplikaci musíme nejprve vytvořit TableAdapter a DataTable v našich vrstvy DAL. V ideálním případě by to jejich provedení pomocí stejný jednoduchý postup prozkoumat v předchozích kurzech. Práce s vypočtenými sloupci však zavádí několik vráskami, které přicházejí diskuse.
+Aby bylo možné pracovat s informacemi o dodavatelích v naší aplikaci, musíme nejdřív vytvořit TableAdapter a DataTable v naší DAL. V ideálním případě by to bylo provedeno pomocí stejných přímočarých kroků, které byly zkontrolovány v předchozích kurzech. Práce s počítanými sloupci ale zavádí několik wrinklesů, které je dobré diskutovat.
 
-Pokud používáte TableAdapter, který používá příkazy SQL ad-hoc, můžete jednoduše zahrnout počítaný sloupec v hlavním dotazu objektu TableAdapter s prostřednictvím Průvodce konfigurací TableAdapter. To však automaticky vygeneruje `INSERT` a `UPDATE` příkazy, které obsahují počítaný sloupec. Při pokusu provést jednu z těchto metod `SqlException` zprávou sloupci *Názevsloupce* nejde upravit, protože je počítaný sloupec nebo je výsledkem operátoru UNION, bude vyvolána. Zatímco `INSERT` a `UPDATE` příkaz je možné ručně upravit pomocí TableAdapter s `InsertCommand` a `UpdateCommand` vlastnosti, tato přizpůsobení budou ztraceny pokaždé, když se Průvodce nastavením TableAdapter je spouštět znovu.
+Pokud používáte TableAdapter, který používá příkazy SQL ad hoc, můžete do hlavního dotazu TableAdaptery jednoduše vložit vypočítaný sloupec prostřednictvím Průvodce konfigurací TableAdapter. Tato akce však automaticky generuje `INSERT` a `UPDATE` příkazy, které obsahují vypočítaný sloupec. Pokud se pokusíte spustit jednu z těchto metod, `SqlException` se zprávou sloupec *ColumnName* sloupce nelze změnit, protože se jedná o vypočítaný sloupec nebo je vyvolána výsledek OPERÁTORu sjednocení. I když lze příkaz `INSERT` a `UPDATE` ručně upravit prostřednictvím `InsertCommand` TableAdapter s a `UpdateCommand` vlastností, budou při každém opětovném spuštění Průvodce konfigurací TableAdapter ztraceny tyto vlastní úpravy.
 
-Z důvodu brittleness objekty TableAdapter, použít SQL příkazy ad-hoc se doporučuje, můžeme pomocí uložených procedur při práci s vypočítanými sloupci. Pokud používáte existující uložené procedury, jednoduše nakonfigurujte TableAdapter jak je popsáno v [použití existující uložené procedury, pro zadané datové sady s objekty TableAdapter](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md) kurzu. Pokud máte TableAdapter průvodce vytvořit úložné procedury pro vás, ale je potřeba zpočátku vynechat žádné vypočítané sloupce z hlavního dotazu. Pokud zahrnete počítaný sloupec v hlavním dotazu, Průvodce konfigurací TableAdapter bude informovat, po dokončení, nelze vytvořit odpovídající uložené procedury. Stručně řečeno, musíme nejprve nakonfigurujte TableAdapter pomocí počítaného sloupce bez hlavního dotazu a potom ručně aktualizovat odpovídající uložené procedury a TableAdapter s `SelectCommand` zahrnout počítaný sloupec. Tento přístup je podobný tomu použitému v [aktualizace komponenty TableAdapter kvůli použití](updating-the-tableadapter-to-use-joins-cs.md)`JOIN`*s* kurzu.
+Vzhledem k tomu, že brittleness objekty TableAdapter, které používají příkazy SQL ad-hoc, se doporučuje použít uložené procedury při práci s vypočítanými sloupci. Pokud používáte stávající uložené procedury, jednoduše nakonfigurujte TableAdapter, jak je popsáno v kurzu [použití existujících uložených procedur pro typový objekty TableAdapter sady typů](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md) . Máte-li Průvodce TableAdapter vytvořit uložené procedury pro vás, je důležité nejprve vynechat všechny vypočítané sloupce z hlavního dotazu. Pokud zahrnete do hlavního dotazu vypočítaný sloupec, Průvodce konfigurací TableAdapter vám po dokončení upozorní, že nemůže vytvořit odpovídající uložené procedury. V krátkém případě je potřeba nejdřív nakonfigurovat TableAdapter pomocí vypočítaného hlavního dotazu bez sloupců a pak ručně aktualizovat odpovídající uloženou proceduru a `SelectCommand` TableAdapter s, aby zahrnovaly vypočítaný sloupec. Tento přístup je podobný jako ten, který se používá v kurzu [aktualizace TableAdapter pro použití](updating-the-tableadapter-to-use-joins-cs.md)`JOIN`*s* .
 
-Pro účely tohoto kurzu nechte s přidáním nového TableAdapter a automaticky vytvořit úložné procedury pro nás. V důsledku toho budeme muset nejdřív vynechat, nechte `FullContactName` počítaného sloupce z hlavního dotazu.
+Pro tento kurz přidejte nové TableAdapter a nechte si automaticky vytvořit uložené procedury pro nás. V důsledku toho bude nutné zpočátku z hlavního dotazu vynechat vypočítaný sloupec `FullContactName`.
 
-Začněte otevřením `NorthwindWithSprocs` datovou sadu v `~/App_Code/DAL` složky. Klikněte pravým tlačítkem v návrháři a v kontextové nabídce zvolte možnost pro přidání nového TableAdapter. Tím spustíte Průvodce konfigurací TableAdapter. Zadejte dotaz na data z databáze (`NORTHWNDConnectionString` z `Web.config`) a klikněte na tlačítko Další. Protože ještě nevytvořili žádné uložené procedury pro dotazování nebo úpravě `Suppliers` tabulku, vyberte možnost vytvořit nové uložené procedury možnost tak, aby tento průvodce je vytvořit pro nás a klikněte na tlačítko Další.
+Začněte tím, že otevřete `NorthwindWithSprocs` datovou sadu ve složce `~/App_Code/DAL`. Klikněte pravým tlačítkem myši v návrháři a v místní nabídce vyberte možnost Přidat nový TableAdapter. Tím se spustí Průvodce konfigurací TableAdapter. Zadejte databázi, ze které se mají dotazovat data (`NORTHWNDConnectionString` z `Web.config`) a klikněte na další. Vzhledem k tomu, že jsme ještě nevytvořili žádné uložené procedury pro dotazování nebo úpravu `Suppliers` tabulky, vyberte možnost vytvořit nové uložené procedury, aby ji průvodce vytvořil pro nás a klikněte na další.
 
-[![Zvolte možnost vytvořit nové uložené procedury možnost](working-with-computed-columns-cs/_static/image8.png)](working-with-computed-columns-cs/_static/image7.png)
+[![zvolit možnost vytvořit nové uložené procedury](working-with-computed-columns-cs/_static/image8.png)](working-with-computed-columns-cs/_static/image7.png)
 
-**Obrázek 3**: Zvolte možnost vytvořit nové uložené procedury možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image9.png))
+**Obrázek 3**: vyberte možnost vytvořit nové uložené procedury ([kliknutím zobrazíte obrázek v plné velikosti).](working-with-computed-columns-cs/_static/image9.png)
 
-Následný krok nám vyzve k zadání hlavního dotazu. Zadejte následující dotaz, který vrátí `SupplierID`, `CompanyName`, `ContactName`, a `ContactTitle` sloupce pro každého dodavatele. Všimněte si, že tento dotaz záměrně vynechá počítaný sloupec (`FullContactName`); aktualizujeme odpovídající uložené procedury, která patří tento sloupec v kroku 4.
+V dalším kroku se zobrazí výzva pro hlavní dotaz. Zadejte následující dotaz, který vrací sloupce `SupplierID`, `CompanyName`, `ContactName`a `ContactTitle` pro každého dodavatele. Všimněte si, že tento dotaz záměrně vynechá vypočítaný sloupec (`FullContactName`); odpovídající uloženou proceduru aktualizujeme tak, aby obsahovala tento sloupec v kroku 4.
 
 [!code-sql[Main](working-with-computed-columns-cs/samples/sample3.sql)]
 
-Po zadání hlavního dotazu a kliknutím na tlačítko Další, ho přes Průvodce zřídit nám čtyři uložené procedury, které budou generovat název. Název těchto uložených procedurách `Suppliers_Select`, `Suppliers_Insert`, `Suppliers_Update`, a `Suppliers_Delete`, jak ukazuje obrázek 4.
+Po zadání hlavního dotazu a kliknutí na tlačítko Další vám Průvodce umožní pojmenovat čtyři uložené procedury, které budou vygenerovány. Pojmenujte tyto uložené procedury `Suppliers_Select`, `Suppliers_Insert`, `Suppliers_Update`a `Suppliers_Delete`, jak ukazuje obrázek 4.
 
-[![Přizpůsobení názvů automaticky generované uložené procedury](working-with-computed-columns-cs/_static/image11.png)](working-with-computed-columns-cs/_static/image10.png)
+[![přizpůsobení názvů automaticky generovaných uložených procedur](working-with-computed-columns-cs/_static/image11.png)](working-with-computed-columns-cs/_static/image10.png)
 
-**Obrázek 4**: Přizpůsobení názvů Auto-Generated uložené procedury ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image12.png))
+**Obrázek 4**: Přizpůsobení názvů automaticky generovaných uložených procedur ([kliknutím zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image12.png))
 
-V dalším kroku průvodce umožňuje nám zadat tyto vzory se dají použít k přístupu a aktualizace dat a název metody třídy TableAdapter s. Ponechat všechny tři zaškrtnutých políček, ale přejmenovat `GetData` metodu `GetSuppliers`. Kliknutím na Dokončit dokončíte průvodce.
+Další krok průvodce vám umožní pojmenovat metody TableAdapter s a zadat vzory používané pro přístup k datům a jejich aktualizaci. Nechejte zaškrtnutá všechna tři zaškrtávací políčka, ale přejmenujte metodu `GetData` na `GetSuppliers`. Kliknutím na Dokončit dokončete průvodce.
 
-[![Přejmenovat na GetSuppliers GetData – metoda](working-with-computed-columns-cs/_static/image14.png)](working-with-computed-columns-cs/_static/image13.png)
+[![přejmenovat metodu GetData na getsuppliers](working-with-computed-columns-cs/_static/image14.png)](working-with-computed-columns-cs/_static/image13.png)
 
-**Obrázek 5**: Přejmenovat `GetData` metodu `GetSuppliers` ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image15.png))
+**Obrázek 5**: Přejmenujte metodu `GetData` na `GetSuppliers` ([kliknutím zobrazíte obrázek v plné velikosti).](working-with-computed-columns-cs/_static/image15.png)
 
-Po kliknutí na tlačítko Dokončit, bude průvodce vytvořit čtyři uložené procedury a přidat do datové sady typu TableAdapter a odpovídající objekt DataTable.
+Po kliknutí na tlačítko Dokončit průvodce vytvoří čtyři uložené procedury a přidá TableAdapter a odpovídající DataTable do typované datové sady.
 
-## <a name="step-4-including-the-computed-column-in-the-tableadapter-s-main-query"></a>Krok 4: V hlavním dotazu objektu TableAdapter s včetně počítaný sloupec
+## <a name="step-4-including-the-computed-column-in-the-tableadapter-s-main-query"></a>Krok 4: zahrnutí vypočítaného sloupce do hlavního dotazu TableAdapter s
 
-Nyní potřebujeme k aktualizaci objektu TableAdapter a DataTable vytvořený v kroku 3, které chcete zahrnout `FullContactName` počítaný sloupec. To zahrnuje dva kroky:
+Teď je potřeba aktualizovat TableAdapter a DataTable vytvořené v kroku 3, aby zahrnovaly vypočítaný sloupec `FullContactName`. To zahrnuje dva kroky:
 
-1. Aktualizuje `Suppliers_Select` uloženou proceduru se vraťte `FullContactName` počítanému sloupci, a
-2. Aktualizuje se objekt DataTable zahrnout odpovídající `FullContactName` sloupce.
+1. Aktualizace uložené procedury `Suppliers_Select` pro vrácení `FullContactName` vypočítaného sloupce a
+2. Aktualizace objektu DataTable tak, aby zahrnovala odpovídající sloupec `FullContactName`.
 
-Začněte tím, že přejdete do Průzkumníka serveru a procházení k podrobnostem složky uložené procedury. Otevřít `Suppliers_Select` uloženou proceduru včetně aktualizace `SELECT` dotaz pro přidání `FullContactName` počítaný sloupec:
+Začněte tím, že přejdete na Průzkumník serveru a rozcházíte do složky uložené procedury. Otevřete `Suppliers_Select` uloženou proceduru a aktualizujte dotaz `SELECT` tak, aby zahrnoval `FullContactName` počítaný sloupec:
 
 [!code-sql[Main](working-with-computed-columns-cs/samples/sample4.sql)]
 
-Uložte změny do uložené procedury, kliknutím na ikonu Uložit na panelu nástrojů, stisknutím Ctrl + S nebo kliknutím Uložit `Suppliers_Select` možnost z nabídky soubor.
+Uložte změny uložené procedury kliknutím na ikonu Uložit na panelu nástrojů, podržením klávesy CTRL + S nebo výběrem možnosti Uložit `Suppliers_Select` v nabídce soubor.
 
-Pak se vraťte do návrháře datových sad, klikněte pravým tlačítkem na `SuppliersTableAdapter`a zvolte možnost konfigurace v místní nabídce. Všimněte si, že `Suppliers_Select` teď obsahuje sloupec `FullContactName` sloupce v kolekci jeho datových sloupců.
+Potom se vraťte do návrháře DataSet, klikněte pravým tlačítkem na `SuppliersTableAdapter`a v místní nabídce vyberte Konfigurovat. Všimněte si, že sloupec `Suppliers_Select` nyní obsahuje sloupec `FullContactName` v kolekci datových sloupců.
 
-[![Spusťte Průvodce konfigurací s TableAdapter aktualizovat sloupce s DataTable](working-with-computed-columns-cs/_static/image17.png)](working-with-computed-columns-cs/_static/image16.png)
+[Pokud chcete aktualizovat sloupce DataTable s, ![spusťte Průvodce konfigurací TableAdapter s.](working-with-computed-columns-cs/_static/image17.png)](working-with-computed-columns-cs/_static/image16.png)
 
-**Obrázek 6**: Spustit s TableAdapter Průvodce konfigurací a Update DataTable s sloupce ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image18.png))
+**Obrázek 6**: spusťte Průvodce konfigurací TableAdapter s a aktualizujte sloupce DataTable s ([kliknutím zobrazíte obrázek v plné velikosti).](working-with-computed-columns-cs/_static/image18.png)
 
-Kliknutím na Dokončit dokončíte průvodce. Tím se automaticky přidá odpovídající sloupec, který `SuppliersDataTable`. Průvodci vytvořením objektu TableAdapter je dostatečně inteligentní, chcete-li zjistit, který `FullContactName` sloupec je počítaný sloupec, takže je jen pro čtení. V důsledku toho, nastaví hlavičku sloupce s `ReadOnly` vlastnost `true`. Chcete-li to ověřit, vyberte sloupec, ze `SuppliersDataTable` a přejděte do okna vlastností (viz obrázek 7). Všimněte si, že `FullContactName` sloupec s `DataType` a `MaxLength` vlastnosti jsou nastaveny také odpovídajícím způsobem.
+Kliknutím na Dokončit dokončete průvodce. Tím se automaticky přidá odpovídající sloupec do `SuppliersDataTable`. Průvodce TableAdapter je dostatečně inteligentní, aby zjistil, že `FullContactName` sloupec je vypočítaný sloupec, a proto jen pro čtení. V důsledku toho nastaví vlastnost `ReadOnly` sloupců na hodnotu `true`. Pokud to chcete ověřit, vyberte sloupec z `SuppliersDataTable` a potom přejděte na okno Vlastnosti (viz obrázek 7). Všimněte si, že vlastnosti `FullContactName` sloupce s `DataType` a `MaxLength` jsou nastaveny také odpovídajícím způsobem.
 
-[![FullContactName sloupec je označen jen pro čtení](working-with-computed-columns-cs/_static/image20.png)](working-with-computed-columns-cs/_static/image19.png)
+[![sloupec FullContactName je označen jen pro čtení.](working-with-computed-columns-cs/_static/image20.png)](working-with-computed-columns-cs/_static/image19.png)
 
-**Obrázek 7**: `FullContactName` Sloupec je označen jen pro čtení ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image21.png))
+**Obrázek 7**: `FullContactName` sloupec je označen jen pro čtení ([kliknutím zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image21.png)).
 
-## <a name="step-5-adding-agetsupplierbysupplieridmethod-to-the-tableadapter"></a>Krok 5: Přidávání`GetSupplierBySupplierID`metody TableAdapter
+## <a name="step-5-adding-agetsupplierbysupplieridmethod-to-the-tableadapter"></a>Krok 5: Přidání metody`GetSupplierBySupplierID`do TableAdapter
 
-Pro účely tohoto kurzu vytvoříme stránky ASP.NET, která zobrazuje dodavatelů aktualizovatelné mřížky. V posledních kurzy aktualizovali jsme jeden záznam z vrstvy obchodní logiky načtením, že konkrétní záznam z vrstvy DAL jako DataTable silného typu, aktualizuje jeho vlastnosti a potom odešlete aktualizovaný DataTable zpět do vrstvy DAL šíření změn databáze. K provedení tento první krok - načítání záznamu aktualizováno z hodnoty DAL - musíme nejprve přidat `GetSupplierBySupplierID(supplierID)` metoda vrstvy Dal.
+V tomto kurzu vytvoříme stránku ASP.NET, která zobrazí dodavatele v mřížce s aktualizovatelným zobrazením. V minulých kurzech aktualizovali jeden záznam z vrstvy obchodní logiky načtením tohoto konkrétního záznamu z DAL jako silně typovaného objektu DataTable, aktualizací vlastností a následným odesláním aktualizovaného objektu DataTable zpátky zpět na DAL, aby se změny rozšířily. databáze. Abyste mohli provést tento první krok – načte se záznam, který se aktualizuje z DAL, musíme nejdřív do DAL přidat metodu `GetSupplierBySupplierID(supplierID)`.
 
-Klikněte pravým tlačítkem na `SuppliersTableAdapter` v návrhu datové sady a v místní nabídce zvolte možnost přidat dotaz. Jako jsme to udělali v kroku 3, umožněte průvodci vytvořit novou úložnou proceduru pro nás tak, že vyberete možnost vytvořit novou úložnou proceduru (vrátit zpět k obrázek 3 pro snímek obrazovky tohoto průvodce kroku). Protože tato metoda vrátí záznam s více sloupců, označuje, že chceme použít dotaz SQL, který je s výběrem, který vrátí řádky a klikněte na tlačítko Další.
+Pravým tlačítkem myši klikněte na `SuppliersTableAdapter` v návrhu datové sady a vyberte možnost Přidat dotaz z kontextové nabídky. Stejně jako v kroku 3 nechejte průvodce pro nás vytvořit novou úložnou proceduru, a to tak, že vyberete možnost vytvořit novou uloženou proceduru (snímek obrazovky tohoto kroku průvodce najdete zpátky na obrázek 3). Vzhledem k tomu, že tato metoda vrátí záznam s více sloupci, určete, že chceme použít dotaz SQL, který je SELECT, který vrací řádky a klikněte na tlačítko Další.
 
-[![Zvolte, který vrátí řádky možnost](working-with-computed-columns-cs/_static/image23.png)](working-with-computed-columns-cs/_static/image22.png)
+[![zvolte možnost vybrat, které vrací řádky.](working-with-computed-columns-cs/_static/image23.png)](working-with-computed-columns-cs/_static/image22.png)
 
-**Obrázek 8**: Zvolte, který vrátí řádky možnost ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image24.png))
+**Obrázek 8**: zvolte možnost vybrat, které vrací řádky ([kliknutím zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image24.png)).
 
-Následný krok vyzve k nám na dotaz, který chcete použít pro tuto metodu. Zadejte následující příkaz, který vrací stejné datová pole jako hlavní dotaz, ale pro konkrétní dodavatele.
+V dalším kroku se zobrazí výzva pro dotaz, který se má použít pro tuto metodu. Zadejte následující příkaz, který vrátí stejná datová pole jako hlavní dotaz, ale pro konkrétního dodavatele.
 
 [!code-sql[Main](working-with-computed-columns-cs/samples/sample5.sql)]
 
-Na další obrazovce dotazem, abychom uložené procedury, které se bude automaticky generovaný název. Pojmenujte tuto uloženou proceduru `Suppliers_SelectBySupplierID` a klikněte na tlačítko Další.
+Na další obrazovce se dozvíte, jak pojmenovat uloženou proceduru, která se vygeneruje automaticky. Pojmenujte tuto uloženou proceduru `Suppliers_SelectBySupplierID` a klikněte na tlačítko Další.
 
-[![Název uložené procedury Suppliers_SelectBySupplierID](working-with-computed-columns-cs/_static/image26.png)](working-with-computed-columns-cs/_static/image25.png)
+[![uloženou proceduru pojmenovat Suppliers_SelectBySupplierID](working-with-computed-columns-cs/_static/image26.png)](working-with-computed-columns-cs/_static/image25.png)
 
-**Obrázek 9**: Název uložené procedury `Suppliers_SelectBySupplierID` ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image27.png))
+**Obrázek 9**: pojmenujte uloženou proceduru `Suppliers_SelectBySupplierID` ([kliknutím zobrazíte obrázek v plné velikosti).](working-with-computed-columns-cs/_static/image27.png)
 
-A konečně Průvodce pokynů nám dat přístup vzory a názvy metod pro TableAdapter. Ponechte obou zaškrtnutých políček, ale přejmenovat `FillBy` a `GetDataBy` metody `FillBySupplierID` a `GetSupplierBySupplierID`v uvedeném pořadí.
+Nakonec průvodce vyzve k zadání vzorů přístupu k datům a názvů metod, které se mají použít pro TableAdapter. Ponechte zaškrtnuté obě políčka, ale přejmenujte `FillBy` a `GetDataBy` metody na `FillBySupplierID` a `GetSupplierBySupplierID`, v uvedeném pořadí.
 
-[![Název metody FillBySupplierID TableAdapter a GetSupplierBySupplierID](working-with-computed-columns-cs/_static/image29.png)](working-with-computed-columns-cs/_static/image28.png)
+[![pojmenovat metody TableAdapter FillBySupplierID a GetSupplierBySupplierID](working-with-computed-columns-cs/_static/image29.png)](working-with-computed-columns-cs/_static/image28.png)
 
-**Obrázek 10**: Název metody třídy TableAdapter `FillBySupplierID` a `GetSupplierBySupplierID` ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image30.png))
+**Obrázek 10**: pojmenování metod TableAdapter `FillBySupplierID` a `GetSupplierBySupplierID` ([kliknutím zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image30.png))
 
-Kliknutím na Dokončit dokončíte průvodce.
+Kliknutím na Dokončit dokončete průvodce.
 
-## <a name="step-6-creating-the-business-logic-layer"></a>Krok 6: Vytvoření vrstvy obchodní logiky
+## <a name="step-6-creating-the-business-logic-layer"></a>Krok 6: vytvoření vrstvy obchodní logiky
 
-Než vytvoříme stránky ASP.NET, která používá počítaný sloupec vytvořili v kroku 1, musíme nejprve přidat odpovídající metody v BLL. Naši stránku ASP.NET, který vytvoříme v kroku 7, vám umožní uživatelům zobrazit a upravit dodavatelů. Proto potřebujeme našich knihoven BLL minimálně poskytnout metodu k získání všech dodavatelů a druhý k aktualizaci konkrétního dodavatele.
+Než vytvoříme stránku ASP.NET, která používá vypočítaný sloupec vytvořený v kroku 1, nejdřív je potřeba přidat odpovídající metody do knihoven BLL. Naše stránka ASP.NET, kterou vytvoříme v kroku 7, umožní uživatelům zobrazit a upravit dodavatele. Proto potřebujeme, aby naše knihoven BLL poskytovala minimálně metodu pro získání všech dodavatelů a dalšího pro aktualizaci konkrétního dodavatele.
 
-Vytvořte nový soubor třídy `SuppliersBLLWithSprocs` v `~/App_Code/BLL` složky a přidejte následující kód:
+Ve složce `~/App_Code/BLL` vytvořte nový soubor třídy s názvem `SuppliersBLLWithSprocs` a přidejte následující kód:
 
 [!code-csharp[Main](working-with-computed-columns-cs/samples/sample6.cs)]
 
-Jako jiné třídy BLL `SuppliersBLLWithSprocs` má `protected` `Adapter` vlastnost, která vrací instanci `SuppliersTableAdapter` třídy spolu se dvěma `public` metody: `GetSuppliers` a `UpdateSupplier`. `GetSuppliers` Volá metodu a vrátí `SuppliersDataTable` vrácené odpovídající `GetSupplier` metoda ve vrstvy přístupu k datům. `UpdateSupplier` Metoda načte informace o konkrétní dodavatele aktualizuje prostřednictvím volání s vrstvou DAL `GetSupplierBySupplierID(supplierID)` metody. Pak aktualizuje `CategoryName`, `ContactName`, a `ContactTitle` vlastnosti a potvrdí tyto změny do databáze voláním vrstvy přístupu k datům s `Update` předejte v upraveném `SuppliersRow` objektu.
+Podobně jako ostatní třídy knihoven BLL má `SuppliersBLLWithSprocs` vlastnost `protected` `Adapter`, která vrací instanci `SuppliersTableAdapter` společně se dvěma `public` metodami: `GetSuppliers` a `UpdateSupplier`. Metoda `GetSuppliers` volá a vrátí `SuppliersDataTable` vracené odpovídající `GetSupplier` metodou ve vrstvě přístupu k datům. Metoda `UpdateSupplier` načte informace o určitém dodavateli, který je aktualizován prostřednictvím volání metody DAL s `GetSupplierBySupplierID(supplierID)`. Poté aktualizuje vlastnosti `CategoryName`, `ContactName`a `ContactTitle` a potvrdí tyto změny v databázi voláním metody pro přístup k datům v metodě `Update` a předáním upraveného objektu `SuppliersRow`.
 
 > [!NOTE]
-> S výjimkou `SupplierID` a `CompanyName`, povolit všechny sloupce v tabulce Dodavatelé `NULL` hodnoty. Proto pokud předaný `contactName` nebo `contactTitle` parametry jsou `null` musíme nastavit odpovídající `ContactName` a `ContactTitle` vlastnosti, které chcete `NULL` databáze pomocí hodnoty `SetContactNameNull` a `SetContactTitleNull`metody, v uvedeném pořadí.
+> S výjimkou `SupplierID` a `CompanyName`všechny sloupce v tabulce Dodavatelé povolují `NULL` hodnoty. Proto pokud jsou předané `contactName` nebo `contactTitle` parametry `null` potřebujeme nastavit odpovídající `ContactName` a `ContactTitle` vlastnosti na hodnotu databáze `NULL` pomocí `SetContactNameNull` a `SetContactTitleNull`ch metod, v uvedeném pořadí.
 
-## <a name="step-7-working-with-the-computed-column-from-the-presentation-layer"></a>Krok 7: Práce s vypočítaným sloupcem od prezentační vrstvy
+## <a name="step-7-working-with-the-computed-column-from-the-presentation-layer"></a>Krok 7: práce s vypočítaným sloupcem z prezentační vrstvy
 
-Počítaný sloupec přidán do `Suppliers` tabulky a vrstvy DAL a BLL příslušným způsobem aktualizuje, jsme připraveni k sestavení, která funguje s stránky ASP.NET `FullContactName` počítaný sloupec. Začněte otevřením `ComputedColumns.aspx` stránku `AdvancedDAL` složky a GridView přetáhněte z panelu nástrojů do návrháře. Nastavit prvek GridView s `ID` vlastnost `Suppliers` a z inteligentních značek, jeho vazbu na nového prvku ObjectDataSource s názvem `SuppliersDataSource`. Konfigurace ObjectDataSource používat `SuppliersBLLWithSprocs` třídy jsme přidali zpět v kroku 6 a klikněte na tlačítko Další.
+Když je vypočítaný sloupec přidaný do tabulky `Suppliers` a odpovídajícím způsobem se aktualizuje a knihoven BLL, budeme připraveni vytvořit stránku ASP.NET, která funguje s vypočítaným sloupcem `FullContactName`. Začněte otevřením stránky `ComputedColumns.aspx` ve složce `AdvancedDAL` a přetažením prvku GridView z panelu nástrojů do návrháře. Nastavte vlastnost `ID` ovládacího prvku GridView na `Suppliers` a ze své inteligentní značky ji navažte na nový prvek ObjectDataSource s názvem `SuppliersDataSource`. Nakonfigurujte prvek ObjectDataSource tak, aby používal třídu `SuppliersBLLWithSprocs`, kterou jsme přidali zpátky v kroku 6, a klikněte na další.
 
-[![Konfigurace ObjectDataSource pomocí třídy SuppliersBLLWithSprocs](working-with-computed-columns-cs/_static/image32.png)](working-with-computed-columns-cs/_static/image31.png)
+[![nakonfigurovat prvek ObjectDataSource tak, aby používal třídu SuppliersBLLWithSprocs](working-with-computed-columns-cs/_static/image32.png)](working-with-computed-columns-cs/_static/image31.png)
 
-**Obrázek 11**: Konfigurace ObjectDataSource k použití `SuppliersBLLWithSprocs` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image33.png))
+**Obrázek 11**: Konfigurace prvku ObjectDataSource, aby používal třídu `SuppliersBLLWithSprocs` ([kliknutím zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image33.png))
 
-Existují pouze dvě metody definované v `SuppliersBLLWithSprocs` třídy: `GetSuppliers` a `UpdateSupplier`. Ujistěte se, že tyto dvě metody jsou uvedeny v seznamu vyberte a aktualizovat karty, v uvedeném pořadí a klikněte na tlačítko Dokončit dokončete konfiguraci ObjectDataSource.
+V `SuppliersBLLWithSprocs` třídy jsou definovány pouze dvě metody: `GetSuppliers` a `UpdateSupplier`. Zajistěte, aby byly tyto dvě metody zadány na kartách vybrat a aktualizovat, a kliknutím na tlačítko Dokončit dokončíte konfiguraci prvku ObjectDataSource.
 
-Po dokončení Průvodce konfigurací zdroje dat sada Visual Studio přidá vlastnost BoundField pro každé pole data vrácená. Odeberte `SupplierID` Vlastnost BoundField a změnit `HeaderText` vlastnosti `CompanyName`, `ContactName`, `ContactTitle`, a `FullContactName` BoundFields společnosti, kontakt, název a příjmení kontaktu v uvedeném pořadí. Z inteligentních značek zaškrtněte políčko Povolit úpravy zapnout GridView s integrované funkce pro úpravy.
+Po dokončení Průvodce konfigurací zdroje dat přidá Visual Studio vlastnost BoundField pro každé vracená datová pole. Odeberte `SupplierID` vlastnost BoundField a změňte vlastnosti `HeaderText` `CompanyName`, `ContactName`, `ContactTitle`a `FullContactName` BoundFields na společnost, jméno kontaktu, název a jméno a příjmení kontaktní osoby v uvedeném pořadí. Z inteligentní značky zaškrtněte políčko Povolit úpravy a zapněte možnosti úprav integrované v prvku GridView.
 
-Kromě přidání BoundFields do prvku GridView, dokončení Průvodce zdrojem dat navíc způsobí, že Visual Studio pro nastavení prvku ObjectDataSource s `OldValuesParameterFormatString` vlastnost s původní\_{0}. Vrátit zpět, toto nastavení zpět na výchozí hodnotu, {0} .
+Kromě přidání BoundFields do prvku GridView, doplňování Průvodce zdrojem dat také způsobí, že sada Visual Studio nastaví vlastnost ObjectDataSource `OldValuesParameterFormatString` na původní\_{0}. Vrátí toto nastavení zpět na výchozí hodnotu {0}.
 
-Po provedení těchto úprav ovládacího prvku GridView a prvek ObjectDataSource, jejich deklarativní by měl vypadat nějak takto:
+Po provedení těchto úprav prvku GridView a ObjectDataSource by jejich deklarativní označení mělo vypadat podobně jako následující:
 
 [!code-aspx[Main](working-with-computed-columns-cs/samples/sample7.aspx)]
 
-V dalším kroku navštivte tuto stránku prostřednictvím prohlížeče. Jak ukazuje obrázek 12 každého dodavatele je uveden v tabulce, která zahrnuje `FullContactName` sloupec, jehož hodnota je jednoduše zřetězení tři sloupce naformátovaná jako `ContactName` (`ContactTitle`, `CompanyName`).
+Potom navštivte tuto stránku v prohlížeči. Jak ukazuje obrázek 12, je každý dodavatel uveden v mřížce, která obsahuje sloupec `FullContactName`, jehož hodnota je jednoduše zřetězení dalších tří sloupců formátovaných jako `ContactName` (`ContactTitle`, `CompanyName`).
 
-[![Každý poskytovatel je uveden v mřížce](working-with-computed-columns-cs/_static/image35.png)](working-with-computed-columns-cs/_static/image34.png)
+[![je každý dodavatel uveden v mřížce.](working-with-computed-columns-cs/_static/image35.png)](working-with-computed-columns-cs/_static/image34.png)
 
-**Obrázek 12**: Každý poskytovatel je uveden v mřížce ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image36.png))
+**Obrázek 12**: v mřížce je uveden každý dodavatel ([kliknutím zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image36.png)).
 
-Kliknutím na tlačítko Upravit pro konkrétní dodavatele vyvolá zpětné volání a dokončí vykreslování tento řádek v jeho úpravy rozhraní (viz obrázek 13). První tři sloupce se vykreslí v jejich výchozí úpravy rozhraní – ovládací prvek textové pole, jehož `Text` je nastavena na hodnotu pole data. `FullContactName` Sloupec, ale zůstává jako text. Když BoundFields byly přidány do prvku GridView, po dokončení Průvodce konfigurací zdroje dat `FullContactName` Vlastnost BoundField s `ReadOnly` nastavenou na `true` protože odpovídající `FullContactName` sloupec v `SuppliersDataTable` má jeho `ReadOnly` nastavenou na `true`. Jak je uvedeno v kroku 4 `FullContactName` s `ReadOnly` nastavenou na `true` protože TableAdapter zjistila, že sloupec je počítaný sloupec.
+Kliknutím na tlačítko Upravit u určitého dodavatele dojde k postbacku a tento řádek je vykreslen v rozhraní pro úpravy (viz obrázek 13). První tři sloupce vykreslí v jejich výchozím rozhraní pro úpravy – ovládací prvek TextBox, jehož vlastnost `Text` je nastavena na hodnotu datového pole. Sloupec `FullContactName` však zůstává jako text. Po přidání BoundFields do prvku GridView při dokončování Průvodce konfigurací zdroje dat byla vlastnost `ReadOnly` `FullContactName` vlastnost BoundField s nastavena na hodnotu `true`, protože odpovídající sloupec `FullContactName` v `SuppliersDataTable` má vlastnost `ReadOnly` nastavena na `true`. Jak je uvedeno v kroku 4, vlastnost `FullContactName` s `ReadOnly` byla nastavena na hodnotu `true`, protože sloupec zjistil, že sloupec byl vypočítaným sloupcem.
 
-[![Je FullContactName sloupce nejde upravit](working-with-computed-columns-cs/_static/image38.png)](working-with-computed-columns-cs/_static/image37.png)
+[![sloupec FullContactName nelze upravovat.](working-with-computed-columns-cs/_static/image38.png)](working-with-computed-columns-cs/_static/image37.png)
 
-**Obrázek 13**: `FullContactName` Sloupec nejde upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image39.png))
+**Obrázek 13**: sloupec `FullContactName` není upravitelný ([kliknutím zobrazíte obrázek v plné velikosti](working-with-computed-columns-cs/_static/image39.png)).
 
-Pokračujte a aktualizovat hodnotu jednoho nebo více sloupců, upravovat a kliknutím na tlačítko Aktualizovat. Poznámka: Jak `FullContactName` s hodnota se automaticky aktualizuje tak, aby odrážely změny.
+Pokračujte a aktualizujte hodnotu jednoho nebo více upravitelných sloupců a klikněte na aktualizovat. Všimněte si, jak je hodnota `FullContactName` s automaticky aktualizována, aby odrážela změnu.
 
 > [!NOTE]
-> Prvku GridView. v současnosti využívá BoundFields pro upravitelná pole, což vede k výchozí úpravy rozhraní. Vzhledem k tomu, `CompanyName` pole je povinné, by měly být převedeny TemplateField zahrnuje RequiredFieldValidator. Můžu ponechte toto cvičení pro dotčené čtečku. Poraďte [přidání validačních ovládacích prvků pro úpravy a vložení rozhraní](../editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md) kurz podrobné pokyny o převod na pole TemplateField Vlastnost BoundField a přidání validačních ovládacích prvků.
+> Prvek GridView aktuálně používá BoundFields pro upravitelná pole, což vede k výchozímu rozhraní pro úpravy. Vzhledem k tomu, že pole `CompanyName` je požadováno, mělo by být převedeno na TemplateField, který obsahuje RequiredFieldValidator. Ponechám se to jako cvičení pro zúčastněný čtenář. Podrobné pokyny k převodu vlastnost BoundField na TemplateField a přidání ovládacích prvků ověřování najdete v kurzu [Přidání ovládacích prvků ověřování do kurzu pro úpravy a vložení rozhraní](../editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md) .
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Při definování schématu pro tabulku, Microsoft SQL Server umožňuje zařazení vypočítané sloupce. Jedná se o sloupce, jejichž hodnoty se počítají na základě výraz, který obvykle odkazuje na hodnoty od ostatních sloupců ve stejném záznamu. Od hodnoty pro počítané sloupce jsou založené na výrazu, jsou jen pro čtení a nelze jí přiřadit hodnotu v `INSERT` nebo `UPDATE` příkazu. Zavádí se problémy při použití počítaný sloupec v hlavním dotazu objektu TableAdapter, který se pokusí automaticky generovat odpovídající `INSERT`, `UPDATE`, a `DELETE` příkazy.
+Při definování schématu pro tabulku Microsoft SQL Server umožňuje zahrnutí počítaných sloupců. Jedná se o sloupce, jejichž hodnoty se počítají z výrazu, který obvykle odkazuje na hodnoty z jiných sloupců ve stejném záznamu. Vzhledem k tomu, že hodnoty pro vypočítané sloupce jsou založené na výrazu, jsou jen pro čtení a nelze jí přiřadit hodnotu v `INSERT` nebo v příkazu `UPDATE`. To přináší problémy při použití vypočítaného sloupce v hlavním dotazu TableAdapter, který se pokusí automaticky vygenerovat odpovídající příkazy `INSERT`, `UPDATE`a `DELETE`.
 
-V tomto kurzu jsme probírali techniky pro obcházení výzvy související vypočítané sloupce. Konkrétně jsme použili uložené procedury v našich TableAdapter překonat brittleness přináší v prvcích TableAdapters, použít SQL příkazy ad-hoc. Když s průvodci vytvořením objektu TableAdapter vytvořit nové uložené procedury, je důležité, vidíme, že hlavní dotaz zpočátku vynechat žádné vypočítané sloupce, protože jejich přítomnost zabraňuje změny uložené procedury data generovaná. Po dokončení počáteční konfigurace TableAdapter jeho `SelectCommand` uložené procedury lze retooled zahrnout žádné vypočítané sloupce.
+V tomto kurzu jsme probrali techniky pro obcházení výzev, které představují vypočítané sloupce. Konkrétně jsme použili uložené procedury v našich TableAdapter k překonání brittlenesse v objekty TableAdapter, které používají ad-hoc příkazy SQL. Když Průvodce TableAdapter vytvoří nové uložené procedury, je důležité, aby hlavní dotaz zpočátku vynechal vypočítané sloupce, protože jejich přítomnost brání vygenerování uložených procedur úprav dat. Po navýšení konfigurace TableAdapter můžete znovu použít jeho `SelectCommand` uloženou proceduru, aby zahrnovala všechny vypočítané sloupce.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí revidující pro účely tohoto kurzu byly Hilton Geisenow a Teresy Murphy. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontroloři vedoucích k tomuto kurzu byli Hilton Geisenow a Teresa Murphy. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](adding-additional-datatable-columns-cs.md)
-> [další](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)
+> [Další](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)

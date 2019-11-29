@@ -1,373 +1,373 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-cs
-title: Implementace optimistického řízení souběžnosti (C#) | Dokumentace Microsoftu
+title: Implementace optimistického řízení souběžnosti (C#) | Microsoft Docs
 author: rick-anderson
-description: Pro webovou aplikaci, která umožňuje více uživatelům upravovat data existuje riziko, že dva uživatelé mohou upravovat stejná data ve stejnou dobu. V tomto tutori...
+description: U webové aplikace, která umožňuje více uživatelům upravovat data, existuje riziko, že dva uživatelé mohou současně upravovat stejná data. V tomto tutori...
 ms.author: riande
 ms.date: 07/17/2006
 ms.assetid: 56e15b33-93b8-43ad-8e19-44c6647ea05c
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0628755b659cea5bbb0f6906908fd1eca99cbe9d
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 3cddb0efd28249ffc5708ece39c80581d078a5a2
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108505"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74617486"
 ---
 # <a name="implementing-optimistic-concurrency-c"></a>Implementace optimistického řízení souběžnosti (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_21_CS.exe) nebo [stahovat PDF](implementing-optimistic-concurrency-cs/_static/datatutorial21cs1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_21_CS.exe) nebo [Stáhnout PDF](implementing-optimistic-concurrency-cs/_static/datatutorial21cs1.pdf)
 
-> Pro webovou aplikaci, která umožňuje více uživatelům upravovat data existuje riziko, že dva uživatelé mohou upravovat stejná data ve stejnou dobu. V tomto kurzu Implementujeme optimistické řízení souběžného zpracování toto riziko.
+> U webové aplikace, která umožňuje více uživatelům upravovat data, existuje riziko, že dva uživatelé mohou současně upravovat stejná data. V tomto kurzu implementujeme optimistické řízení souběžnosti pro zpracování tohoto rizika.
 
 ## <a name="introduction"></a>Úvod
 
-Pro webové aplikace, které jenom povolit uživatelům zobrazit data, nebo pro ty, které zahrnují jenom jeden uživatel, který lze upravovat data neexistuje žádné hrozby dvou souběžných uživatelů náhodnému přepsání nepřípustným změny. Pro webové aplikace, které umožňují více uživatelům aktualizovat nebo odstranit data ale není potenciál pro jednoho uživatele změny nebudou kolidovat s jiných souběžných uživatelů. Bez jakékoli zásady souběžnosti na místě když dva uživatele současně upravujete jeden záznam uživatele, který potvrdí její změny poslední přepíše změny provedené při první.
+U webových aplikací, které umožňují uživatelům pouze zobrazovat data nebo pro ty, které obsahují pouze jednoho uživatele, který může upravovat data, neexistuje hrozba dvou souběžných uživatelů, kteří by omylem přepsali nějaké další změny. U webových aplikací, které umožňují více uživatelům aktualizovat nebo odstraňovat data, je však možné, že změny jednoho uživatele v konfliktu s jiným souběžným uživatelem. Pokud neexistují žádné zásady souběžnosti, když dva uživatelé současně upravují jeden záznam, uživatel, který poslední změny potvrdí, přepíše změny provedené v prvním z nich.
 
-Představte si například, že dva uživatelé, Jisun a Sam, byly oba navštívit stránku v naší aplikaci, která návštěvníci, aktualizovat a odstraňovat produktům prostřednictvím ovládacího prvku GridView. Obě klikněte na tlačítko Upravit v prvku GridView. přibližně ve stejnou dobu. Jisun název produktu se změní na "Chai čaje" a klikne na tlačítko Aktualizovat. Net výsledek je `UPDATE` příkaz, který je odeslán do databáze, která nastavuje hodnoty *všechny* aktualizovatelné polí produktu (i když Jisun aktualizovat jenom jedno pole `ProductName`). V tomto okamžiku databáze má hodnoty "Chai kávy," do kategorie Nápoje dodavatele exotické tekutin a podobně pro tento konkrétní produkt. Však GridView na obrazovce pro Sam stále ukazovat název produktu v řádku prvku GridView upravitelné "Chai". Několik sekund poté, co Jisun změny byly potvrzeny, Sam aktualizuje kategorii produkty koření a klikne na tlačítko Aktualizovat. Výsledkem je `UPDATE` příkaz odeslán do databáze, který nastaví název produktu a "Chai" `CategoryID` na odpovídající ID kategorie Nápoje a tak dále. Být přepsán Jisun na změny v názvu produktu. Obrázek 1 graficky znázorňuje Tato série událostí.
+Představte si například, že dva uživatelé, Jisun a Sam, navštívili stránku v naší aplikaci, která umožnila návštěvníkům aktualizovat a odstranit produkty prostřednictvím ovládacího prvku GridView. Obě klikněte na tlačítko Upravit v prvku GridView kolem stejného času. Jisun změní název produktu na "Chai čaj" a klikne na tlačítko Aktualizovat. Čistým výsledkem je příkaz `UPDATE`, který se pošle do databáze, která nastaví *všechna* pole s aktualizovatelným produktem (i když Jisun aktualizuje jenom jedno pole `ProductName`). V tomto okamžiku má databáze hodnoty "Chai čaj", "kategorie nápoje, exotické kapaliny dodavatele a tak dále pro tento konkrétní produkt. Ale v prvku GridView na obrazovce Sam se stále zobrazuje název produktu v upravitelném řádku GridView jako "Chai". Několik sekund po potvrzení změn Jisun aktualizuje správce Sam kategorii na koření a klikne na aktualizovat. Výsledkem je příkaz `UPDATE` odeslaný do databáze, která nastaví název produktu na "Chai", `CategoryID` na odpovídající ID kategorie nápojů atd. Změny názvu produktu Jisun byly přepsány. Obrázek 1 graficky znázorňuje tuto řadu událostí.
 
-[![Pokud dva uživatele najednou aktualizovat záznam existuje s potenciál pro jednoho uživatele s změní přepsat další prostředky](implementing-optimistic-concurrency-cs/_static/image2.png)](implementing-optimistic-concurrency-cs/_static/image1.png)
+[![, když dva uživatelé současně aktualizují záznam, u kterých se může změnit jeden uživatel a přepsat ostatní s.](implementing-optimistic-concurrency-cs/_static/image2.png)](implementing-optimistic-concurrency-cs/_static/image1.png)
 
-**Obrázek 1**: Když dva uživatele současně aktualizovat existuje záznam s potenciál pro jednoho uživatele s změny přepsat tím s ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image3.png))
+**Obrázek 1**: když dva uživatelé současně aktualizují záznam, který je potenciální pro změny jednoho uživatele, aby přepsal ostatní s ([kliknutím zobrazíte obrázek v plné velikosti).](implementing-optimistic-concurrency-cs/_static/image3.png)
 
-Podobně když dva uživatelé navštěvují stránku, jeden uživatel může být uprostřed aktualizaci záznamu, když je odstraněn jiným uživatelem. Nebo až když uživatel načte stránku kliknutím na tlačítko pro odstranění, změněn jiným uživatelem mohou mít obsah daného záznamu.
+Podobně platí, že když se na stránce zobrazí dva uživatelé, může být jedním uživatelem průběhu aktualizace záznamu, když ho odstraní jiný uživatel. Nebo v případě, že uživatel načte stránku a klikne na tlačítko Odstranit, mohl jiný uživatel změnit obsah tohoto záznamu.
 
-Existují tři [řízení souběžnosti](http://en.wikipedia.org/wiki/Concurrency_control) strategií, které jsou k dispozici:
+K dispozici jsou tři strategie [řízení souběžnosti](http://en.wikipedia.org/wiki/Concurrency_control) :
 
-- **Neprovádět žádnou akci** – Pokud souběžnými uživateli upravovat stejný záznam, dejte posledního potvrzení win (výchozí nastavení)
-- [**Optimistická souběžnost** ](http://en.wikipedia.org/wiki/Optimistic_concurrency_control) -předpokládat, i když to může být souběžnosti je v konfliktu every teď nebo později, většinu času takové nedojde ke konfliktu; proto, pokud vzniknout konflikt, jednoduše informovat uživatele, který jejich změny nelze uložit, protože jiný uživatel upravil stejná data
-- **Pesimistická souběžnost** -předpokládají, že je v konfliktu souběžnosti běžné a uvedli, že uživatelé nebudou tolerovat vrácení jako jejich změny nebyly uloženy kvůli souběžnou aktivitu jiným uživatelem; proto, když se jeden uživatel spustí aktualizaci záznamu, uzamkne tak, aby , a tím brání ostatní uživatelé z úpravy nebo odstranění záznamu, dokud uživatel potvrdí jejich úpravy
+- **Nedělat nic** – Pokud se souběžným uživatelům mění stejný záznam, nechte si poslední potvrzování změn (výchozí chování).
+- [**Optimistická souběžnost**](http://en.wikipedia.org/wiki/Optimistic_concurrency_control) – předpokládá, že zatímco v současnosti může dojít ke konfliktům souběžnosti, a pak i velká většina času, ke kterému nedochází, ke konfliktům nedojde. Proto pokud dojde ke konfliktu, stačí informovat uživatele, že jejich změny nelze uložit, protože stejná data změnil jiný uživatel.
+- **Pesimistická souběžnost** – předpokládá, že konflikty souběžnosti jsou maloobchodech a že uživatelé nemůžou tolerovat své změny v důsledku souběžné aktivity jiného uživatele. Proto když jeden uživatel spustí aktualizaci záznamu, zamkne ho a zabrání tak ostatním uživatelům v úpravách nebo odstraňování tohoto záznamu, dokud uživatel nepotvrdí jejich změny.
 
-Všech našich kurzů pro jaký jste použili výchozí strategie řešení souběžnosti – konkrétně, nám sdělili jste poslední zápis vyhrát. V tomto kurzu prozkoumáme implementace optimistického řízení souběžnosti.
+Všechny naše kurzy proto používaly výchozí strategii překladu souběžnosti – konkrétně si ponechá poslední soubor k zápisu. V tomto kurzu podíváme se, jak implementovat optimistické řízení souběžnosti.
 
 > [!NOTE]
-> Podíváme se na Pesimistická souběžnost příklady v této sérii kurzů. Pesimistická souběžnost se používá zřídka, protože tyto zámky, není-li správně uvolní, když to, můžete zabránit aktualizace dat jiným uživatelům. Například pokud uživatel uzamkne záznam pro úpravy a pak opustí den odemknutí ji, žádný jiný uživatel bude moct aktualizovat dokud původní uživatel vrátí a dokončí jeho aktualizaci. Proto v situacích, kdy je použít Pesimistická souběžnost, je obvykle, když se dosáhne, zruší zámek vypršení časového limitu. Lístek prodejních webů, ke kterým uživatel dokončí proces zpracování objednávky, uzamknout konkrétní sedadel umístění krátkou dobu, je příkladem pesimistické řízení souběžnosti.
+> V této sérii kurzů se nebudeme pohlížet na pesimistické příklady souběžnosti. Pesimistická souběžnost se používá zřídka, protože takové zámky, pokud nejsou řádně odstraněné, můžou ostatním uživatelům zabránit v aktualizaci dat. Pokud uživatel například zamkne záznam pro úpravy a potom před jeho odemknutím opustí den, nebude moci tento záznam aktualizovat, dokud původní uživatel nevrátí a nedokončí svoji aktualizaci. Proto v situacích, kde je používána pesimistická souběžnost, je obvykle časový limit, který, pokud je dosaženo, zrušení zámku. Websites pro prodej lístků, které zablokují konkrétní umístění pro umístění po krátké době, kdy uživatel dokončí proces objednávky, je příkladem pesimistické řízení souběžnosti.
 
-## <a name="step-1-looking-at-how-optimistic-concurrency-is-implemented"></a>Krok 1: Je implementován pohledu na tom, jak optimistického řízení souběžnosti
+## <a name="step-1-looking-at-how-optimistic-concurrency-is-implemented"></a>Krok 1: Podívejte se, jak je Optimistická souběžnost implementována
 
-Tím zajistíte, že záznam bude aktualizován nebo odstraněn má stejné hodnoty, stejně jako při aktualizaci nebo odstranění proces spuštění funguje optimistického řízení souběžnosti. Například při kliknutí na tlačítko Upravit v upravitelné prvku GridView, hodnoty záznamu jsou číst z databáze a zobrazena v textových polí a dalších webových ovládacích prvcích. Tyto původní hodnoty jsou uloženy ve prvku GridView. Později až uživatel provede své změny a klikne na tlačítko Aktualizovat, původní hodnoty a nové hodnoty se odesílají do vrstvy obchodní logiky a pak dolů vrstvy přístupu k datům. Vrstva přístupu k datům, musíte vydat příkaz SQL, který pouze aktualizovat záznam, pokud původní hodnoty, které uživatel zahájil úpravy jsou identické s hodnotami stále v databázi. Obrázek 2 znázorňuje tato posloupnost událostí.
+Optimistické řízení souběžnosti funguje tak, že zajistí, že záznam, který má být aktualizován nebo odstraněn, má stejné hodnoty jako při zahájení procesu aktualizace nebo odstranění. Například když kliknete na tlačítko Upravit ve upravitelném prvku GridView, hodnoty záznamu se čtou z databáze a zobrazují se v textových polích a dalších webových ovládacích prvcích. Tyto původní hodnoty jsou uloženy v prvku GridView. Později poté, co uživatel provede změny a klikne na tlačítko Aktualizovat, původní hodnoty a nové hodnoty se odešlou do vrstvy obchodní logiky a pak dolů do vrstvy přístupu k datům. Vrstva přístupu k datům musí vydat příkaz SQL, který bude aktualizovat pouze v případě, že původní hodnoty, které uživatel začal upravovat, jsou shodné s hodnotami stále v databázi. Obrázek 2 znázorňuje tuto posloupnost událostí.
 
-[![Pro Update nebo Delete na úspěšné původní hodnoty musí být rovna aktuální hodnoty databáze](implementing-optimistic-concurrency-cs/_static/image5.png)](implementing-optimistic-concurrency-cs/_static/image4.png)
+[![aby se aktualizace nebo odstranění zdařily, měly by se původní hodnoty rovnat aktuálním hodnotám databáze.](implementing-optimistic-concurrency-cs/_static/image5.png)](implementing-optimistic-concurrency-cs/_static/image4.png)
 
-**Obrázek 2**: Pro Update nebo Delete na hodnotu úspěch, původní hodnoty musí být rovna aktuální hodnot v databázi ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image6.png))
+**Obrázek 2**: aby byla aktualizace nebo odstranění úspěšná, původní hodnoty se musí shodovat s aktuálními hodnotami databáze ([kliknutím zobrazíte obrázek v plné velikosti).](implementing-optimistic-concurrency-cs/_static/image6.png)
 
-Existují různé přístupy k implementace optimistického řízení souběžnosti (naleznete v tématu [Peter A. Bromberg](http://peterbromberg.net/)společnosti [optimistického řízení souběžnosti aktualizace logiky](http://www.eggheadcafe.com/articles/20050719.asp) stručný přehled o na řadu možností). Typová ADO.NET poskytuje jednu implementaci, která se dá nakonfigurovat s právě značek zaškrtávací políčko. Povolení optimistického řízení souběžnosti pro TableAdapter v datové sadě zadán argumentech objektu TableAdapter `UPDATE` a `DELETE` příkazy, které chcete zahrnout všechny původní hodnoty v porovnání `WHERE` klauzuli. Následující `UPDATE` příkazu, například aktualizace názvu a cena produktu pouze v případě, že aktuální hodnoty v databázi jsou stejné hodnoty, které byly původně načteny při aktualizaci záznamu v prvku GridView. `@ProductName` a `@UnitPrice` parametry obsahovat nové hodnoty zadané uživatelem, zatímco `@original_ProductName` a `@original_UnitPrice` obsahují hodnoty, které byly původně načten do prvku GridView, když došlo ke kliknutí na tlačítko Upravit:
+Existují různé přístupy k implementaci optimistického řízení souběžnosti (viz [Petra a. Bromberg](http://peterbromberg.net/) [optimistická logika souběžného zpracování](http://www.eggheadcafe.com/articles/20050719.asp) pro Stručný pohled na řadu možností). Typová datová sada ADO.NET poskytuje jednu implementaci, která může být nakonfigurována pouze pomocí zaškrtnutí políčka. Povolení optimistického řízení souběžnosti pro TableAdapter ve typované datové sadě rozšiřuje příkazy `UPDATE` TableAdapter a `DELETE`, aby zahrnovaly porovnání všech původních hodnot v klauzuli `WHERE`. Následující příkaz `UPDATE` například aktualizuje název a cenu produktu pouze v případě, že aktuální hodnoty databáze jsou rovny hodnotám, které byly původně načteny při aktualizaci záznamu v prvku GridView. Parametry `@ProductName` a `@UnitPrice` obsahují nové hodnoty zadané uživatelem, zatímco `@original_ProductName` a `@original_UnitPrice` obsahují hodnoty, které byly původně načteny do prvku GridView při kliknutí na tlačítko pro úpravy:
 
 [!code-sql[Main](implementing-optimistic-concurrency-cs/samples/sample1.sql)]
 
 > [!NOTE]
-> To `UPDATE` zjednodušili jsme příkaz pro lepší čitelnost. V praxi však `UnitPrice` vrátit se změnami `WHERE` bude složitější, protože klauzule `UnitPrice` může obsahovat `NULL` s a kontrolu v případě `NULL = NULL` vždy vrátí hodnotu False (místo toho je nutné použít `IS NULL`).
+> Tento příkaz `UPDATE` byl pro čtení zjednodušen. V praxi by `UnitPrice` v klauzuli `WHERE` došlo k většímu podílu, protože `UnitPrice` může obsahovat `NULL` s a kontrola, zda `NULL = NULL` Always vrátí hodnotu false (místo toho musíte použít `IS NULL`).
 
-Kromě použití různých základní `UPDATE` příkaz konfigurace TableAdapter použít optimistické souběžnosti taky změní podpis jeho DB přímé metody. Pamatujete z naší první kurz [ *vytvoření vrstvy přístupu k datům*](../introduction/creating-a-data-access-layer-cs.md), DB přímých metod byly ty, které přijímá seznam skalární hodnoty jako vstupní parametry (místo DataRow silného typu nebo Objekt DataTable instance). Při použití optimistického řízení souběžnosti, DB přímé `Update()` a `Delete()` metody patří vstupní parametry pro původní hodnoty. Kromě toho kód v BLL pro používání služby batch aktualizace modelu ( `Update()` přetížení metody, které přijímají DataRows a DataTables spíše než skalární hodnoty) musí být změněny také.
+Kromě použití jiného podkladového příkazu `UPDATE` konfigurace TableAdapter na použití optimistické souběžnosti mění také signaturu svých přímých metod databáze. Navrácení z našeho prvního kurzu, [*Vytvoření vrstvy přístupu k datům*](../introduction/creating-a-data-access-layer-cs.md), na kterou přímo metody databáze dostaly ty, které jako vstupní parametry přijaly seznam skalárních hodnot (spíše než silně typované instance DataRow nebo DataTable). Při použití optimistické souběžnosti metoda DB Direct `Update()` a `Delete()` zahrnuje vstupní parametry pro původní hodnoty. Kromě toho je nutné změnit také kód v knihoven BLL pro použití vzorce aktualizace dávky (přetížení metody `Update()`, které přijímají objekty DataRows a DataTables namísto skalárních hodnot).
 
-Spíše než rozšiřte naše stávající objektů TableAdapter od DAL optimistického řízení souběžnosti (což by vyžadovalo přechod změna BLL tak, aby vyhovovaly), můžeme použít místo toho vytvořte nové zadané datové sady s názvem `NorthwindOptimisticConcurrency`, pro které přidáme `Products` TableAdapter, který používá Optimistická souběžnost. Pod vytvoříme `ProductsOptimisticConcurrencyBLL` třídu vrstvy obchodní logiky, která má odpovídající změny podporují optimistickou souběžnost vrstvy DAL. Po tomto základy byla přijata, budeme připravení vytvořit na stránce ASP.NET.
+Místo toho, abyste rozšířili naše stávající objekty TableAdapter DAL k používání optimistické souběžnosti (což by vyžadovalo změnu knihoven BLL na), vytvoříme místo toho novou typovou datovou sadu s názvem `NorthwindOptimisticConcurrency`, do které přidáme `Products` TableAdapter, která používá optimistickou souběžnost. Za tímto účelem vytvoříme třídu vrstvy `ProductsOptimisticConcurrencyBLL` obchodní logiky, která bude mít odpovídající úpravy pro podporu optimistické souběžnosti DAL. Po navýšení tohoto základyu budete připraveni vytvořit stránku ASP.NET.
 
-## <a name="step-2-creating-a-data-access-layer-that-supports-optimistic-concurrency"></a>Krok 2: Vytvoření vrstvy přístupu k datům, která podporuje optimistické řízení souběžnosti
+## <a name="step-2-creating-a-data-access-layer-that-supports-optimistic-concurrency"></a>Krok 2: vytvoření vrstvy přístupu k datům, která podporuje optimistickou souběžnost
 
-Chcete-li vytvořit nové datové sady typu, klikněte pravým tlačítkem na `DAL` složky v rámci `App_Code` složky a přidejte novou datovou sadu s názvem `NorthwindOptimisticConcurrency`. Jak jsme viděli v první kurz, tím tak bude přidán nový TableAdapter do typová, automaticky se spouští Průvodce nastavením TableAdapter. Na první obrazovce jsme výzva zadat databázi pro připojení k – připojení ke stejné databázi Northwind pomocí průvodce `NORTHWNDConnectionString` nastavení z `Web.config`.
+Chcete-li vytvořit novou typovou datovou sadu, klikněte pravým tlačítkem myši na složku `DAL` ve složce `App_Code` a přidejte novou datovou sadu s názvem `NorthwindOptimisticConcurrency`. Jak jsme viděli v prvním kurzu, tak se k typované datové sadě přidá nový TableAdapter a automaticky se spustí Průvodce konfigurací TableAdapter. Na první obrazovce se zobrazí výzva k zadání databáze pro připojení k databázi Northwind pomocí nastavení `NORTHWNDConnectionString` z `Web.config`.
 
-[![Připojení ke stejné databázi Northwind](implementing-optimistic-concurrency-cs/_static/image8.png)](implementing-optimistic-concurrency-cs/_static/image7.png)
+[![se připojit ke stejné databázi Northwind](implementing-optimistic-concurrency-cs/_static/image8.png)](implementing-optimistic-concurrency-cs/_static/image7.png)
 
-**Obrázek 3**: Připojení ke stejné databázi Northwind ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image9.png))
+**Obrázek 3**: Připojte se ke stejné databázi Northwind ([kliknutím zobrazíte obrázek v plné velikosti).](implementing-optimistic-concurrency-cs/_static/image9.png)
 
-Dále jsme se výzva k tom, jak zadávat dotazy na data: pomocí příkazu SQL ad-hoc, nové uložené procedury nebo existující uložené procedury. Protože jsme použili ad-hoc dotazy SQL v našich původní DAL, tuto možnost použijte tady také.
+V dalším kroku se zobrazí výzva k dotazování na data: prostřednictvím příkazu SQL ad-hoc, nové uložené procedury nebo existující uložené procedury. Vzhledem k tomu, že jsme v naší původní úrovni DAL používali dotazy SQL ad hoc, použijte tuto možnost i tady.
 
-[![Zadat Data pro načtení pomocí Ad-Hoc příkazu SQL](implementing-optimistic-concurrency-cs/_static/image11.png)](implementing-optimistic-concurrency-cs/_static/image10.png)
+[![zadat data, která se mají načíst pomocí příkazu SQL ad hoc](implementing-optimistic-concurrency-cs/_static/image11.png)](implementing-optimistic-concurrency-cs/_static/image10.png)
 
-**Obrázek 4**: Zadejte Data pro načtení pomocí příkazu SQL Ad-Hoc ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image12.png))
+**Obrázek 4**: určení dat, která se mají načíst pomocí příkazu SQL ad hoc ([kliknutím zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image12.png))
 
-Na následujícím obrázku zadejte dotaz SQL, který bude použit k načtení informací o produktu. Použijeme přesně stejný dotaz SQL použitý pro `Products` TableAdapter z našich původní DAL, který vrátí všechny `Product` sloupce spolu s názvy dodavatele a kategorie produktu:
+Na následující obrazovce zadejte dotaz SQL, který se použije k načtení informací o produktu. Pojďme použít přesně stejný dotaz SQL, který se používá pro `Products` TableAdapter z našeho původního DAL, který vrátí všechny `Product` sloupce společně s názvy dodavatele a kategorií produktů:
 
 [!code-sql[Main](implementing-optimistic-concurrency-cs/samples/sample2.sql)]
 
-[![V původní DAL použít stejný dotaz SQL z produktů TableAdapter](implementing-optimistic-concurrency-cs/_static/image14.png)](implementing-optimistic-concurrency-cs/_static/image13.png)
+[![použít stejný dotaz SQL z produktů, které TableAdapter původní DAL.](implementing-optimistic-concurrency-cs/_static/image14.png)](implementing-optimistic-concurrency-cs/_static/image13.png)
 
-**Obrázek 5**: Použijte stejný dotaz SQL z `Products` TableAdapter v původní vrstvy DAL ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image15.png))
+**Obrázek 5**: použijte stejný dotaz SQL z `Products` TableAdapter v původním dal ([kliknutím zobrazíte obrázek v plné velikosti).](implementing-optimistic-concurrency-cs/_static/image15.png)
 
-Před přechodem na další obrazovce klikněte na tlačítko Upřesnit možnosti. Pokud chcete, aby tento ovládací prvek TableAdapter využívají optimistického řízení souběžnosti, stačí zaškrtněte políčko "Pomocí optimistického řízení souběžnosti".
+Než přejdete na další obrazovku, klikněte na tlačítko Upřesnit možnosti. Chcete-li, aby tato TableAdapter využívala optimistické řízení souběžnosti, stačí zaškrtnout políčko použít optimistickou souběžnost.
 
-[![Povolit optimistického řízení souběžnosti podle kontroluje &quot;použít optimistické řízení souběžnosti&quot; zaškrtávací políčko](implementing-optimistic-concurrency-cs/_static/image17.png)](implementing-optimistic-concurrency-cs/_static/image16.png)
+[![Povolit řízení souběžnosti kontrolou zaškrtnutím políčka &quot;použít optimistickou souběžnost&quot;](implementing-optimistic-concurrency-cs/_static/image17.png)](implementing-optimistic-concurrency-cs/_static/image16.png)
 
-**Obrázek 6**: Povolit zaškrtnutím políčka "Pomocí optimistického řízení souběžnosti" optimistického řízení souběžnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image18.png))
+**Obrázek 6**: povolení optimistického řízení souběžnosti zaškrtnutím políčka použít optimistickou souběžnost ([kliknutím zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image18.png))
 
-A konečně označit, že by měl TableAdapter použít vzory přístupu k datům, které naplnit DataTable a vrátit tabulku DataTable; také určit, že by měl být vytvořen přímých metod DB. Změňte název metody pro vrácení objektu DataTable vzor z GetData GetProducts, tak, aby zrcadlí zásady vytváření názvů, který jsme použili v našich původní DAL.
+Nakonec uveďte, že by měl TableAdapter použít vzory přístupu k datům, které naplní DataTable a vrátí DataTable. také naznačovat, že by měly být vytvořeny metody přímé databáze. Změňte název metody pro návrat vzoru DataTable z GetData na GetProducts, aby bylo možné zrcadlit podle konvencí pojmenování, které jsme použili v naší původní DAL.
 
-[![Mít TableAdapter využívat všechny vzory přístupu k datům](implementing-optimistic-concurrency-cs/_static/image20.png)](implementing-optimistic-concurrency-cs/_static/image19.png)
+[![TableAdapter využívat všechny vzory přístupu k datům](implementing-optimistic-concurrency-cs/_static/image20.png)](implementing-optimistic-concurrency-cs/_static/image19.png)
 
-**Obrázek 7**: Máte TableAdapter využívat všechny vzory přístupu k datům ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image21.png))
+**Obrázek 7**: TableAdapter využije všechny vzory přístupu k datům ([kliknutím zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image21.png)).
 
-Po dokončení průvodce bude obsahovat návrháři datových sad silného typu `Products` DataTable a TableAdapter. Za chvíli přejmenovat objekt DataTable z `Products` k `ProductsOptimisticConcurrency`, což lze provést pravým tlačítkem myši na záhlaví okna DataTable a zvolením přejmenovat v místní nabídce.
+Po dokončení průvodce bude Návrhář DataSet obsahovat `Products` DataTable a TableAdapter se silným typem. Přejmenujte DataTable z `Products` na `ProductsOptimisticConcurrency`, což lze provést tak, že kliknete pravým tlačítkem na záhlaví objektu DataTable a zvolíte možnost Přejmenovat z kontextové nabídky.
 
-[![Objekt DataTable a TableAdapter jsou přidané do typové datové sady](implementing-optimistic-concurrency-cs/_static/image23.png)](implementing-optimistic-concurrency-cs/_static/image22.png)
+[![objekt DataTable a TableAdapter byly přidány do typované datové sady.](implementing-optimistic-concurrency-cs/_static/image23.png)](implementing-optimistic-concurrency-cs/_static/image22.png)
 
-**Obrázek 8**: Objekt DataTable a byly přidány do datové sady typu TableAdapter ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image24.png))
+**Obrázek 8**: do typované datové sady se přidala tabulka DataTable a TableAdapter ([kliknutím zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image24.png)).
 
-Chcete-li zobrazit rozdíly mezi `UPDATE` a `DELETE` dotazy mezi `ProductsOptimisticConcurrency` TableAdapter, (ta používá optimistické řízení souběžnosti) a TableAdapter produkty (což není), kliknutím na TableAdapter a přejděte do okna Vlastnosti. V `DeleteCommand` a `UpdateCommand` vlastností `CommandText` objektu třídy subproperties můžete zobrazit výchozí syntaxi SQL, který se odešle do databáze, když jsou vyvolány DAL aktualizace nebo odstranění související metody. Pro `ProductsOptimisticConcurrency` TableAdapter `DELETE` je použít příkaz:
+Chcete-li zobrazit rozdíly mezi `UPDATE` a `DELETE` dotazech mezi `ProductsOptimisticConcurrency` TableAdapter (která používá Optimistická souběžnost) a produkty TableAdapter (což ne), klikněte na TableAdapter a přejděte na okno Vlastnosti. Ve vlastnostech `DeleteCommand` a `UpdateCommand` `CommandText` dílčí vlastnosti můžete zobrazit vlastní syntaxi SQL, která se pošle do databáze v případě, že jsou vyvolány metody týkající se aktualizace nebo odstranění DAL. Pro `ProductsOptimisticConcurrency` TableAdapter je použit příkaz `DELETE`:
 
 [!code-sql[Main](implementing-optimistic-concurrency-cs/samples/sample3.sql)]
 
-Vzhledem k tomu `DELETE` příkazu pro TableAdapter produktu v našich původní DAL je mnohem jednodušší:
+Vzhledem k tomu, že příkaz `DELETE` TableAdapter produktu v našem originálu DAL je mnohem jednodušší:
 
 [!code-sql[Main](implementing-optimistic-concurrency-cs/samples/sample4.sql)]
 
-Jak je vidět `WHERE` klauzuli v `DELETE` příkazu pro TableAdapter, který používá optimistické řízení souběžnosti zahrnuje porovnání mezi jednotlivými `Product` tabulky existující hodnoty ve sloupcích a původní hodnoty v době Section.Selectable posledního prvku GridView (nebo prvku DetailsView nebo FormView). Od všech polí kromě `ProductID`, `ProductName`, a `Discontinued` může mít `NULL` kontroly, další parametry a hodnoty jsou zahrnuty správně porovnat `NULL` hodnoty v `WHERE` klauzuli.
+Jak vidíte, klauzule `WHERE` v příkazu `DELETE` pro TableAdapter, který používá optimistickou souběžnost, zahrnuje porovnání mezi každou z existujících hodnot sloupců tabulky `Product` a původními hodnotami v době, kdy byl objekt GridView (nebo DetailsView) naposledy vyplněn. Vzhledem k tomu, že všechna pole kromě `ProductID`, `ProductName`a `Discontinued` mohou mít `NULL` hodnoty, jsou zahrnuty další parametry a kontroly pro správné porovnání `NULL` hodnot v klauzuli `WHERE`.
 
-Jsme nebude přidávat žádné další DataTables optimistického řízení souběžnosti povolené datovou pro účely tohoto kurzu, jak naši stránku ASP.NET poskytne pouze aktualizace nebo odstranění informací o produktu. Nicméně stále potřeba přidat `GetProductByProductID(productID)` metodu `ProductsOptimisticConcurrency` TableAdapter.
+Pro tento kurz nebudeme přidávat žádné další datové tabulky pro optimistickou datovou sadu s povoleným souběžným zpracováním, protože naše stránka ASP.NET bude poskytovat jenom aktualizaci a odstraňování informací o produktu. Pořád ale potřebujeme přidat metodu `GetProductByProductID(productID)` do `ProductsOptimisticConcurrency` TableAdapter.
 
-Chcete-li to provést, klikněte pravým tlačítkem na záhlaví objektu TableAdapter (oblasti vpravo nahoře `Fill` a `GetProducts` názvy metod) a v místní nabídce zvolte možnost přidat dotaz. Tím spustíte Průvodce konfigurací dotazu TableAdapter. Jak s naší TableAdapter počáteční konfiguraci, rozhodnout vytvořit `GetProductByProductID(productID)` metodu pomocí příkazu SQL ad-hoc (viz obrázek 4). Protože `GetProductByProductID(productID)` metoda vrátí informace o daném produktu, označení, že je tento dotaz `SELECT` typ, který vrátí řádky dotazu.
+Chcete-li to provést, klikněte pravým tlačítkem myši na záhlaví TableAdapter (oblast vpravo nad `Fill` a `GetProducts` názvy metod) a v místní nabídce vyberte možnost Přidat dotaz. Tím se spustí Průvodce konfigurací dotazu TableAdapter. Stejně jako u našich počátečních konfigurací TableAdapter se můžete rozhodnout vytvořit metodu `GetProductByProductID(productID)` pomocí ad-hoc příkazu SQL (viz obrázek 4). Vzhledem k tomu, že metoda `GetProductByProductID(productID)` vrací informace o konkrétním produktu, znamená to, že tento dotaz je `SELECT` typ dotazu, který vrací řádky.
 
-[![Označit jako typ dotazu &quot;SELECT, který vrací řádky&quot;](implementing-optimistic-concurrency-cs/_static/image26.png)](implementing-optimistic-concurrency-cs/_static/image25.png)
+[![označit typ dotazu jako &quot;vyberte, který vrací řádky&quot;](implementing-optimistic-concurrency-cs/_static/image26.png)](implementing-optimistic-concurrency-cs/_static/image25.png)
 
-**Obrázek 9**: Označit jako typ dotazu "`SELECT` které vrátí řádky" ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image27.png))
+**Obrázek 9**: označte typ dotazu jako`SELECT`, která vrací řádky ([kliknutím zobrazíte obrázek v plné velikosti).](implementing-optimistic-concurrency-cs/_static/image27.png)
 
-Na další obrazovce jsme se výzva k zadání dotazu SQL pro použití s výchozí dotaz TableAdapter už načtené. Rozšířit existující dotaz pro přidání klauzule `WHERE ProductID = @ProductID`, jak je znázorněno na obrázku 10.
+Na další obrazovce se zobrazí výzva k použití dotazu SQL s předem načteným výchozím dotazem TableAdapter. Rozšiřte existující dotaz tak, aby zahrnoval klauzuli `WHERE ProductID = @ProductID`, jak je znázorněno na obrázku 10.
 
-[![Přidat klauzuli WHERE klauzule, která už načtené dotaz, který vrátí záznam určitý produkt](implementing-optimistic-concurrency-cs/_static/image29.png)](implementing-optimistic-concurrency-cs/_static/image28.png)
+[![do předem načteného dotazu přidat klauzuli WHERE, která vrátí konkrétní záznam produktu](implementing-optimistic-concurrency-cs/_static/image29.png)](implementing-optimistic-concurrency-cs/_static/image28.png)
 
-**Obrázek 10**: Přidat `WHERE` klauzule Pre-Loaded dotaz, který vrací konkrétní záznam produktu ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image30.png))
+**Obrázek 10**: přidání klauzule `WHERE` do předem načteného dotazu pro vrácení konkrétního záznamu produktu ([kliknutím zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image30.png))
 
-Nakonec změňte názvy vytvořena metoda k `FillByProductID` a `GetProductByProductID`.
+Nakonec Změňte názvy generovaných metod na `FillByProductID` a `GetProductByProductID`.
 
-[![Přejmenovat metodu FillByProductID a GetProductByProductID](implementing-optimistic-concurrency-cs/_static/image32.png)](implementing-optimistic-concurrency-cs/_static/image31.png)
+[![přejmenovat metody na FillByProductID a GetProductByProductID](implementing-optimistic-concurrency-cs/_static/image32.png)](implementing-optimistic-concurrency-cs/_static/image31.png)
 
-**Obrázek 11**: Přejmenovat metody `FillByProductID` a `GetProductByProductID` ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image33.png))
+**Obrázek 11**: přejmenování metod `FillByProductID` a `GetProductByProductID` ([kliknutím zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image33.png))
 
-Pomocí tohoto průvodce kompletní TableAdapter teď obsahuje dvě metody pro načítání dat: `GetProducts()`, která vrací *všechny* produkty; a `GetProductByProductID(productID)`, která vrací zadaný produkt.
+Po dokončení tohoto průvodce TableAdapter nyní obsahuje dvě metody pro načítání dat: `GetProducts()`, které vrátí *všechny* produkty. a `GetProductByProductID(productID)`, které vrátí zadaný produkt.
 
-## <a name="step-3-creating-a-business-logic-layer-for-the-optimistic-concurrency-enabled-dal"></a>Krok 3: Vytvoření vrstvy obchodní logiky pro optimistického řízení souběžnosti povolené DAL
+## <a name="step-3-creating-a-business-logic-layer-for-the-optimistic-concurrency-enabled-dal"></a>Krok 3: vytvoření vrstvy obchodní logiky pro optimistickou souběžnost s povoleným přeměnum DAL
 
-Naše stávající `ProductsBLL` třída obsahuje příklady použití aktualizace služby batch a s přímým přístupem vzory DB. `AddProduct` Metoda a `UpdateProduct` obě přetížení pomocí vzoru aktualizace služby batch předání v `ProductRow` instanci metody Update objektu TableAdapter. `DeleteProduct` Metodě na druhé straně používá vzor s přímým přístupem DB, volání objektu TableAdapter `Delete(productID)` metody.
+Naše existující třída `ProductsBLL` obsahuje příklady použití vzorových jak dávková aktualizace, tak i databáze Direct. Metoda `AddProduct` a `UpdateProduct` přetížení používají vzor aktualizace Batch, který předává instanci `ProductRow` k metodě aktualizace TableAdapter. `DeleteProduct` metoda na druhé straně používá model přímé DB, který volá metodu `Delete(productID)` TableAdapter.
 
-S novými `ProductsOptimisticConcurrency` TableAdapter, databáze přímé metody nyní vyžadovat, že původní hodnoty také předávat v. Například `Delete` metoda očekává nyní deset vstupní parametry: původní `ProductID`, `ProductName`, `SupplierID`, `CategoryID`, `QuantityPerUnit`, `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`, `ReorderLevel`, a `Discontinued`. Používá hodnoty těchto dalších vstupních parametrů v `WHERE` klauzuli `DELETE` příkaz odesílají do databáze, pouze pokud mapování aktuálních hodnot databázi do původního odstranění zadaný záznam.
+Pomocí nového `ProductsOptimisticConcurrency` TableAdapter metody DB Direct nyní vyžadují, aby byly původní hodnoty také předány. Například metoda `Delete` nyní očekává deset vstupních parametrů: původní `ProductID`, `ProductName`, `SupplierID`, `CategoryID`, `QuantityPerUnit`, `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`, `ReorderLevel`a `Discontinued`. Používá tyto další hodnoty vstupních parametrů v klauzuli `WHERE` příkazu `DELETE`, který se posílá do databáze. zadaný záznam se odstraní jenom v případě, že jsou aktuální hodnoty databáze namapované na původní.
 
-Při podpisu metody pro TableAdapter `Update` nedošlo ke změně metody používané ve vzoru aktualizace služby batch, je kód potřebný k zaznamenání původní a nové hodnoty. Proto namísto pokusí použít optimistické souběžnosti povolené DAL s naší stávající `ProductsBLL` třídy, vytvoříme novou třídu vrstvy obchodní logiky pro práci s naší nové vrstvy DAL.
+I když se signatura metody `Update` TableAdapter použitá ve vzorku aktualizace dávky nezměnila, kód potřebný k záznamu původní a nové hodnoty má. Proto se namísto pokusu o použití optimistické souběžnosti s naší existující `ProductsBLL` třídy vytvoří nová třída vrstvy obchodní logiky, která vám umožní pracovat s naším novým DAL.
 
-Přidejte třídu pojmenovanou `ProductsOptimisticConcurrencyBLL` k `BLL` složky v rámci `App_Code` složky.
+Přidejte třídu s názvem `ProductsOptimisticConcurrencyBLL` do složky `BLL` ve složce `App_Code`.
 
-![Přidat třídu ProductsOptimisticConcurrencyBLL BLL složky](implementing-optimistic-concurrency-cs/_static/image34.png)
+![Přidání třídy ProductsOptimisticConcurrencyBLL do složky knihoven BLL](implementing-optimistic-concurrency-cs/_static/image34.png)
 
-**Obrázek 12**: Přidat `ProductsOptimisticConcurrencyBLL` třídy do složky knihoven BLL
+**Obrázek 12**: přidání třídy `ProductsOptimisticConcurrencyBLL` do složky knihoven BLL
 
-Dále přidejte následující kód, který `ProductsOptimisticConcurrencyBLL` třídy:
+Dále přidejte následující kód do třídy `ProductsOptimisticConcurrencyBLL`:
 
 [!code-csharp[Main](implementing-optimistic-concurrency-cs/samples/sample5.cs)]
 
-Všimněte si, pomocí `NorthwindOptimisticConcurrencyTableAdapters` příkaz nad počáteční deklaraci třídy. `NorthwindOptimisticConcurrencyTableAdapters` Obsahuje obor názvů `ProductsOptimisticConcurrencyTableAdapter` třídu, která poskytuje metody pro vrstvy DAL. Také před deklaraci třídy zjistíte, `System.ComponentModel.DataObject` atribut, který dává pokyn sady Visual Studio pro tuto třídu v prvku ObjectDataSource Průvodce rozevíracího seznamu.
+Všimněte si, že příkaz using `NorthwindOptimisticConcurrencyTableAdapters` překračuje začátek deklarace třídy. Obor názvů `NorthwindOptimisticConcurrencyTableAdapters` obsahuje třídu `ProductsOptimisticConcurrencyTableAdapter`, která poskytuje metody DAL. Také před deklarací třídy najdete atribut `System.ComponentModel.DataObject`, který instruuje Visual Studio, aby zahrnoval tuto třídu v rozevíracím seznamu Průvodce ObjectDataSource.
 
-`ProductsOptimisticConcurrencyBLL`Společnosti `Adapter` vlastnost poskytuje rychlý přístup k instanci `ProductsOptimisticConcurrencyTableAdapter` třídy a odpovídá používaným v našich původní třídy BLL (`ProductsBLL`, `CategoriesBLL`, a tak dále). Nakonec `GetProducts()` metoda provede jednoduché volání DAL `GetProducts()` metodu a vrátí `ProductsOptimisticConcurrencyDataTable` vyplní objekt `ProductsOptimisticConcurrencyRow` instance pro každý produkt záznam v databázi.
+Vlastnost `Adapter` `ProductsOptimisticConcurrencyBLL`poskytuje rychlý přístup k instanci třídy `ProductsOptimisticConcurrencyTableAdapter` a řídí se vzorem použitým v našich původních třídách knihoven BLL (`ProductsBLL`, `CategoriesBLL`atd.). Nakonec metoda `GetProducts()` jednoduše zavolá do metody `GetProducts()` DAL a vrátí objekt `ProductsOptimisticConcurrencyDataTable` naplněný instancí `ProductsOptimisticConcurrencyRow` pro každý záznam produktu v databázi.
 
-## <a name="deleting-a-product-using-the-db-direct-pattern-with-optimistic-concurrency"></a>Odstraňuje se produkt s přímým přístupem vzor DB pomocí optimistického řízení souběžnosti
+## <a name="deleting-a-product-using-the-db-direct-pattern-with-optimistic-concurrency"></a>Odstranění produktu pomocí přímého vzoru DB s optimistické souběžnosti
 
-Při použití vzoru s přímým přístupem DB proti DAL, který používá Optimistická souběžnost, musí být předán nových a původních hodnot metody. Pro odstranění, nejsou žádné nové hodnoty, takže potřebujete předaný pouze původní hodnoty. V našich knihoven BLL potom můžeme musí přijmout všechny původní parametry jako vstupní parametry. Teď se podívejme `DeleteProduct` metodu `ProductsOptimisticConcurrencyBLL` třídy pomocí přímé metody DB. To znamená, že tato metoda je potřeba provést ve všech polích data deset produktů jako vstupní parametry a předat tyto vrstvy Dal, jak je znázorněno v následujícím kódu:
+Při použití modelu přímého přenosu databáze proti DAL, který používá optimistickou souběžnost, musí metody předat nové a původní hodnoty. Pro odstranění nejsou k dispozici žádné nové hodnoty, takže je potřeba předávat jenom původní hodnoty. V našem knihoven BLL musíte přijmout všechny původní parametry jako vstupní parametry. Pojďme mít metodu `DeleteProduct` ve třídě `ProductsOptimisticConcurrencyBLL` použijte metodu DB Direct. To znamená, že tato metoda musí převzít všechna deset datových polí produktu jako vstupní parametry a předat je do DAL, jak je znázorněno v následujícím kódu:
 
 [!code-csharp[Main](implementing-optimistic-concurrency-cs/samples/sample6.cs)]
 
-Pokud původní hodnoty – tyto hodnoty, které byly naposledy načtené do ovládacího prvku GridView (nebo prvku DetailsView nebo FormView) - liší od hodnot v databázi, když uživatel klikne na tlačítko Odstranit `WHERE` klauzule nebudou shodovat se záznam v databázi a žádné záznamy bude mít vliv. Proto objektu TableAdapter `Delete` vrátí metoda `0` a BLL `DeleteProduct` vrátí metoda `false`.
+Pokud původní hodnoty – tyto hodnoty, které byly naposledy načteny do prvku GridView (nebo DetailsView nebo FormView), se liší od hodnot v databázi, když uživatel klikne na tlačítko Odstranit, klauzule `WHERE` nebude odpovídat žádnému záznamu databáze a nebudou ovlivněny žádné záznamy. Proto bude metoda `Delete` TableAdapter vracet `0` a metoda `DeleteProduct` knihoven BLL vrátí `false`.
 
-## <a name="updating-a-product-using-the-batch-update-pattern-with-optimistic-concurrency"></a>Aktualizace produktu vzor aktualizace služby Batch pomocí optimistického řízení souběžnosti
+## <a name="updating-a-product-using-the-batch-update-pattern-with-optimistic-concurrency"></a>Aktualizace produktu pomocí vzorce aktualizace dávky s optimistické souběžnosti
 
-Jak bylo uvedeno dříve, objektu TableAdapter `Update` metoda pro vzor aktualizace služby batch, má stejnou signaturu metody bez ohledu na to, jestli použijí optimistického řízení souběžnosti. A to `Update` metoda očekává, že řádek dat, pole DataRows, datové tabulky nebo typované datové sady. Neexistují žádné další vstupní parametry pro určení původní hodnoty. To je možné, protože objekt DataTable uchovává informace o původní a upravené hodnoty pro jeho DataRow(s). Když DAL vydá jeho `UPDATE` příkazu, `@original_ColumnName` parametry jsou vyplněna původní hodnoty objekt DataRow, že `@ColumnName` parametry jsou vyplněna změněné hodnoty objekt DataRow.
+Jak bylo uvedeno dříve, TableAdapter metoda pro vzor aktualizace dávky má stejnou signaturu metody bez ohledu na to, zda je nebo není k dis`Update` Optimistická souběžnost. Konkrétně metoda `Update` očekává objekt DataRow, pole DataRows, DataTable nebo typovou datovou sadu. Pro zadání původních hodnot nejsou k dispozici žádné další vstupní parametry. To je možné, protože objekt DataTable sleduje původní a změněné hodnoty pro jeho objekty DataRow (y). Když hodnota DAL vydá svůj `UPDATE` příkaz, naplní se parametry `@original_ColumnName` původními hodnotami objektu DataRow, zatímco parametry `@ColumnName` jsou naplněny změněnými hodnotami objektu DataRow.
 
-V `ProductsBLL` třídy, (ta používá naše původní, optimistického řízení souběžnosti DAL), při použití vzoru aktualizace služby batch k aktualizaci informací o produktu náš kód provede následující posloupnost událostí:
+Ve třídě `ProductsBLL` (která používá naši původní neoptimistickou souběžnost DAL) při použití vzorce aktualizace dávky k aktualizaci informací o produktu náš kód provede následující posloupnost událostí:
 
-1. Přečtěte si informace o aktuální databáze produktu do `ProductRow` instance pomocí objektu TableAdapter `GetProductByProductID(productID)` – metoda
-2. Přiřazení nové hodnoty, které mají `ProductRow` instanci z kroku 1
-3. Volání objektu TableAdapter `Update` metodu `ProductRow` instance
+1. Přečtěte si informace o produktu Current Database do instance `ProductRow` pomocí `GetProductByProductID(productID)` metody TableAdapter
+2. Přiřaďte nové hodnoty k instanci `ProductRow` z kroku 1.
+3. Zavolejte metodu `Update` TableAdapter a předejte ji do instance `ProductRow`
 
-Tahle posloupnost kroků, ale nebude podporovat správně optimistického řízení souběžnosti protože `ProductRow` v kroku 1 se vyplní přímo z databáze, což znamená, že původní hodnoty používané datového řádku jsou ty, které momentálně existují v databáze a těch, které se váží k prvku GridView. na začátku procesu úprav. Místo toho při použití optimistické souběžnosti podporou DAL, musíme alter `UpdateProduct` přetížení metody použít následující kroky:
+Tato sekvence kroků ale nebude správně podporovat optimistickou souběžnost, protože `ProductRow` naplněná v kroku 1 je naplněna přímo z databáze, což znamená, že původní hodnoty použité objektem DataRow jsou ty, které aktuálně existují v databázi, a nikoli ty, které byly vázány na prvek GridView na začátku procesu úprav. Místo toho musíme při použití optimistické souběžnosti s povolenou metodou DAL změnit přetížení metody `UpdateProduct`, aby bylo možné použít následující kroky:
 
-1. Přečtěte si informace o aktuální databáze produktu do `ProductsOptimisticConcurrencyRow` instance pomocí objektu TableAdapter `GetProductByProductID(productID)` – metoda
-2. Přiřazení *původní* hodnoty `ProductsOptimisticConcurrencyRow` instanci z kroku 1
-3. Volání `ProductsOptimisticConcurrencyRow` instance `AcceptChanges()` metoda, která nastaví objekt DataRow, jeho aktuální hodnoty jsou "" původního
-4. Přiřazení *nové* hodnoty `ProductsOptimisticConcurrencyRow` instance
-5. Volání objektu TableAdapter `Update` metodu `ProductsOptimisticConcurrencyRow` instance
+1. Přečtěte si informace o produktu Current Database do instance `ProductsOptimisticConcurrencyRow` pomocí `GetProductByProductID(productID)` metody TableAdapter
+2. Přiřaďte *původní* hodnoty k instanci `ProductsOptimisticConcurrencyRow` z kroku 1.
+3. Zavolejte metodu `AcceptChanges()` instance `ProductsOptimisticConcurrencyRow`, která instruuje, že aktuální hodnoty jsou "původní".
+4. Přiřaďte *nové* hodnoty k instanci `ProductsOptimisticConcurrencyRow`.
+5. Zavolejte metodu `Update` TableAdapter a předejte ji do instance `ProductsOptimisticConcurrencyRow`
 
-Krok 1 čtení ve všech hodnot v aktuální databázi pro záznam zadaný produkt. Tento krok je nadbytečný v `UpdateProduct` přetížení, která aktualizuje *všechny* produktu sloupců (jako tyto hodnoty jsou přepsány v kroku 2), ale je nezbytné pro tyto přetížení, kde jsou pouze podmnožina hodnot sloupců předaný jako vstupní parametry. Jakmile se přiřadily původní hodnoty `ProductsOptimisticConcurrencyRow` instanci, `AcceptChanges()` metoda je volána, který označuje aktuální hodnoty objektu DataRow jako původní hodnoty, které se použijí v `@original_ColumnName` parametry v `UPDATE` příkazu. V dalším kroku nové hodnoty parametrů jsou přiřazeny k `ProductsOptimisticConcurrencyRow` a nakonec `Update` vyvoláním metody předáním datového řádku.
+Krok 1 přečte všechny aktuální hodnoty databáze pro zadaný záznam produktu. Tento krok je nadbytečný v `UpdateProduct` přetížení, které aktualizuje *všechny* sloupce produktu (protože tyto hodnoty jsou v kroku 2 přepsány), ale jsou nezbytné pro ta přetížení, kde jsou jako vstupní parametry předány pouze podmnožina hodnot sloupců. Po přiřazení původních hodnot k instanci `ProductsOptimisticConcurrencyRow` je volána metoda `AcceptChanges()`, která označuje aktuální hodnoty objektu DataRow jako původní hodnoty, které mají být použity v parametrech `@original_ColumnName` v příkazu `UPDATE`. Dále jsou nové hodnoty parametrů přiřazeny `ProductsOptimisticConcurrencyRow` a nakonec je vyvolána metoda `Update`, která předává objekt DataRow.
 
-Následující kód ukazuje `UpdateProduct` přetížení přijímající všechna data produktu pole jako vstupní parametry. Zatímco není vidět tady `ProductsOptimisticConcurrencyBLL` součástí staženého souboru pro tento kurz obsahuje také třídy `UpdateProduct` přetížení, které přijímá jenom název a produktu cena jako vstupní parametry.
+Následující kód ukazuje `UpdateProduct` přetížení, které přijímá všechna pole dat produktu jako vstupní parametry. I když tady není zobrazená, třída `ProductsOptimisticConcurrencyBLL` obsažená ve stahování pro tento kurz obsahuje taky `UpdateProduct` přetížení, které přijímá jenom název a cenu produktu jako vstupní parametry.
 
 [!code-csharp[Main](implementing-optimistic-concurrency-cs/samples/sample7.cs)]
 
-## <a name="step-4-passing-the-original-and-new-values-from-the-aspnet-page-to-the-bll-methods"></a>Krok 4: Předávání původní a nové hodnoty ze stránky ASP.NET do metody BLL
+## <a name="step-4-passing-the-original-and-new-values-from-the-aspnet-page-to-the-bll-methods"></a>Krok 4: předání původní a nové hodnoty ze stránky ASP.NET do metod knihoven BLL
 
-Pomocí vrstvy DAL a BLL kompletní už jen zbývá k vytvoření stránky ASP.NET, který můžete využít logiku optimistického řízení souběžnosti integrované do systému. Konkrétně data webový ovládací prvek (ovládacího prvku GridView, DetailsView nebo FormView) musí mějte na paměti, že jeho původní hodnoty a ObjectDataSource musí projít obě sady hodnot do vrstvy obchodní logiky. Kromě toho musí být nakonfigurován na stránce ASP.NET bez výpadku zpracovávat porušení souběžnosti.
+V případě, že je DAL a knihoven BLL kompletní, vše zůstává k vytvoření stránky ASP.NET, která může využít logiku optimistického souběžnosti integrovaného systému. Konkrétně musí webový ovládací prvek data (GridView, DetailsView nebo FormView) pamatovat jeho původní hodnoty a prvek ObjectDataSource musí předat obě sady hodnot do vrstvy obchodní logiky. Kromě toho musí být stránka ASP.NET nakonfigurována tak, aby řádně zpracovávala narušení souběžnosti.
 
-Začněte otevřením `OptimisticConcurrency.aspx` stránku `EditInsertDelete` složky a přidání do Návrháře nastavení GridView jeho `ID` vlastnost `ProductsGrid`. Z inteligentních značek prvku GridView, rozhodnout vytvořit nového prvku ObjectDataSource s názvem `ProductsOptimisticConcurrencyDataSource`. Protože chceme, aby tento prvek ObjectDataSource použití vrstvy DAL, který podporuje optimistické řízení souběžnosti, nakonfigurujte ho na použití `ProductsOptimisticConcurrencyBLL` objektu.
+Začněte otevřením stránky `OptimisticConcurrency.aspx` ve složce `EditInsertDelete` a přidáním prvku GridView do návrháře, nastavením jeho vlastnosti `ID` na `ProductsGrid`. Z inteligentní značky GridViewu se můžete rozhodnout pro vytvoření nového prvku ObjectDataSource s názvem `ProductsOptimisticConcurrencyDataSource`. Vzhledem k tomu, že chceme, aby tato ObjectDataSource používala, která podporuje optimistickou souběžnost, nakonfigurujte ji tak, aby používala objekt `ProductsOptimisticConcurrencyBLL`.
 
-[![Použití prvku ObjectDataSource mají ProductsOptimisticConcurrencyBLL objektu](implementing-optimistic-concurrency-cs/_static/image36.png)](implementing-optimistic-concurrency-cs/_static/image35.png)
+[![mají prvek ObjectDataSource použít objekt ProductsOptimisticConcurrencyBLL](implementing-optimistic-concurrency-cs/_static/image36.png)](implementing-optimistic-concurrency-cs/_static/image35.png)
 
-**Obrázek 13**: Mají použití prvku ObjectDataSource `ProductsOptimisticConcurrencyBLL` objektu ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image37.png))
+**Obrázek 13**: v prvku ObjectDataSource použijte objekt `ProductsOptimisticConcurrencyBLL` ([kliknutím zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image37.png)).
 
-Zvolte `GetProducts`, `UpdateProduct`, a `DeleteProduct` metody z rozevíracích seznamů v průvodci. Pro metodu UpdateProduct, použijte přetížení, která přijímá všechna pole data produktu.
+V průvodci vyberte metody `GetProducts`, `UpdateProduct`a `DeleteProduct` z rozevíracích seznamů. Pro metodu UpdateProduct použijte přetížení, které přijímá všechna datová pole produktu.
 
 ## <a name="configuring-the-objectdatasource-controls-properties"></a>Konfigurace vlastností ovládacího prvku ObjectDataSource
 
-Po dokončení průvodce, deklarativní ObjectDataSource by měl vypadat nějak takto:
+Po dokončení průvodce by deklarativní označení prvku ObjectDataSource mělo vypadat takto:
 
 [!code-aspx[Main](implementing-optimistic-concurrency-cs/samples/sample8.aspx)]
 
-Jak je vidět `DeleteParameters` kolekce obsahuje `Parameter` instance pro každý deset vstupních parametrů v `ProductsOptimisticConcurrencyBLL` třídy `DeleteProduct` metoda. Podobně `UpdateParameters` kolekce obsahuje `Parameter` instance pro každý vstupní parametry v `UpdateProduct`.
+Jak vidíte, kolekce `DeleteParameters` obsahuje instanci `Parameter` pro každý z deseti vstupních parametrů v metodě `DeleteProduct` třídy `ProductsOptimisticConcurrencyBLL`. Podobně kolekce `UpdateParameters` obsahuje `Parameter` instanci pro každý vstupní parametr v `UpdateProduct`.
 
-Pro tyto předchozích kurzů, které se podílejí úpravu dat, doporučujeme odebrat ObjectDataSource `OldValuesParameterFormatString` vlastnosti v tomto okamžiku, protože tato vlastnost určuje, že metoda BLL očekává, že původní (nebo původní) hodnoty předávané, jakož i nové hodnoty. Kromě toho tato hodnota vlastnosti označuje názvy vstupních parametrů pro původní hodnoty. Protože jsme v původní hodnoty do BLL prochází, proveďte *není* odeberte tuto vlastnost.
+V předchozích kurzech, které se týkají změny dat, bychom v tomto okamžiku odebrali vlastnost `OldValuesParameterFormatString` ObjectDataSource, protože tato vlastnost označuje, že metoda knihoven BLL očekává, že se původní (nebo původní) hodnoty mají předat, a také nové hodnoty. Kromě toho tato hodnota vlastnosti označuje názvy vstupních parametrů pro původní hodnoty. Vzhledem k tomu, že do knihoven BLL přecházejí původní hodnoty, *neodstraňujte* tuto vlastnost.
 
 > [!NOTE]
-> Hodnota `OldValuesParameterFormatString` vlastnost musí být namapovaný na názvy vstupních parametrů v BLL, které očekávají původní hodnoty. Protože jsme pojmenovali tyto parametry `original_productName`, `original_supplierID`, a tak dále, můžete nechat `OldValuesParameterFormatString` hodnota vlastnosti jako `original_{0}`. Pokud však vstupních parametrů metody BLL měl názvy jako `old_productName`, `old_supplierID`, a tak dále, je potřeba aktualizovat `OldValuesParameterFormatString` vlastnost `old_{0}`.
+> Hodnota vlastnosti `OldValuesParameterFormatString` musí být namapována na názvy vstupních parametrů v knihoven BLL, které očekávají původní hodnoty. Vzhledem k tomu, že jsme tyto parametry jmenovali `original_productName`, `original_supplierID`a tak dále, můžete hodnotu vlastnosti `OldValuesParameterFormatString` ponechat jako `original_{0}`. Pokud však vstupní parametry metod knihoven BLL měly názvy, například `old_productName`, `old_supplierID`a tak dále, je nutné aktualizovat vlastnost `OldValuesParameterFormatString` na `old_{0}`.
 
-Existuje jedno nastavení konečné vlastnost, kterou je potřeba provést v pořadí pro prvek ObjectDataSource správně předat metody BLL původní hodnoty. Má ObjectDataSource [vlastnost ConflictDetection](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.conflictdetection.aspx) , který lze přiřadit k [jednu ze dvou hodnot](https://msdn.microsoft.com/library/system.web.ui.conflictoptions.aspx):
+Existuje jedno nastavení konečné vlastnosti, které je nutné provést, aby prvek ObjectDataSource správně předával původní hodnoty metodám knihoven BLL. Prvek ObjectDataSource má [vlastnost ConflictDetection](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.conflictdetection.aspx) , kterou lze přiřadit [jedné ze dvou hodnot](https://msdn.microsoft.com/library/system.web.ui.conflictoptions.aspx):
 
-- `OverwriteChanges` – Výchozí hodnota. původní vstupních parametrů metody BLL neodesílá původní hodnoty
-- `CompareAllValues` – odesílat BLL metody; původní hodnoty Tuto možnost zvolte, pokud optimistickou metodu souběžného zpracování
+- `OverwriteChanges` – výchozí hodnota; neodesílá původní hodnoty do původních vstupních parametrů metod knihoven BLL.
+- `CompareAllValues` – pošle původní hodnoty metodám knihoven BLL; tuto možnost vyberte při použití optimistického řízení souběžnosti.
 
-Za chvíli nastavit `ConflictDetection` vlastnost `CompareAllValues`.
+Chvíli počkejte, než se nastaví vlastnost `ConflictDetection` na `CompareAllValues`.
 
-## <a name="configuring-the-gridviews-properties-and-fields"></a>Konfigurace vlastnosti a pole prvku GridView.
+## <a name="configuring-the-gridviews-properties-and-fields"></a>Konfigurace vlastností a polí prvku GridView
 
-S vlastnostmi ObjectDataSource správně nakonfigurované obraťme pozornost pro nastavení prvku GridView. Nejprve protože chceme, aby GridView pro podporu úpravy a odstranění, klikněte na tlačítko Povolit úpravy a Povolit odstranění zaškrtávací políčka z inteligentních značek v prvku GridView. Tím se přidá CommandField jehož `ShowEditButton` a `ShowDeleteButton` jsou nastaveny na `true`.
+Když jsou vlastnosti prvku ObjectDataSource správně nakonfigurované, pojďme věnovat pozornost nastavení prvku GridView. Vzhledem k tomu, že chceme, aby prvek GridView podporoval úpravy a odstranění, klikněte na zaškrtávací políčka Povolit úpravy a povolit odstranění z inteligentní značky prvku GridView. Tím se přidá CommandField, jehož `ShowEditButton` a `ShowDeleteButton` jsou obě nastaveny na `true`.
 
-Při vázání na `ProductsOptimisticConcurrencyDataSource` prvek ObjectDataSource, prvku GridView obsahuje pole pro každé pole data produktu. Při takové GridView lze upravovat, je jakoukoli jinou přijatelné uživatelské prostředí. `CategoryID` a `SupplierID` BoundFields budou vykreslovat jako textová pole, by uživatel musel zadejte příslušnou kategorii a dodavatele jako ID čísla. Bude bez formátování pro číselná pole a ovládací prvky bez ověření k zajištění, že byl zadán název produktu a že je cena ze jednotku, jednotek v zásobách, jednotky v pořadí a hodnoty úrovně pro změnu uspořádání jsou obě správné číselné hodnoty a jsou větší než nebo rovno na nulu.
+Pokud je svázán s `ProductsOptimisticConcurrencyDataSource` ObjectDataSource, prvek GridView obsahuje pole pro každé datové pole produktu. I když takový prvek GridView lze upravovat, uživatelské prostředí je cokoli, ale přijatelné. `CategoryID` a `SupplierID` BoundFields se vykreslí jako textová pole a vyžadují, aby uživatel zadal příslušnou kategorii a dodavatele jako čísla ID. Pro číselná pole nebude žádné formátování a žádné ovládací prvky ověřování, aby se zajistilo, že byl dodán název produktu a že jednotková cena, jednotky v zásobách, jednotky v objednávce a změnit pořadí hodnot úrovně jsou správné číselné hodnoty a jsou větší než nebo rovny. na nulu.
 
-Jak jsme probírali v *přidání validačních ovládacích prvků pro úpravy a vložení rozhraní* a *přizpůsobení rozhraní pro úpravu dat* kurzy, uživatelské rozhraní je možné přizpůsobit pomocí Nahraďte vlastností TemplateField BoundFields. Můžu upravili tohoto ovládacího prvku GridView a jeho úprav rozhraní následujícími způsoby:
+Jak jsme popsali v tématu *přidávání ověřovacích ovládacích prvků do rozhraní pro úpravy a vkládání* a *přizpůsobení kurzů rozhraní pro úpravu dat* , lze uživatelské rozhraní přizpůsobit nahrazením BoundFields pomocí templatefields. Tento prvek GridView a jeho rozhraní pro úpravy jsem změnil (a) následujícími způsoby:
 
-- Odebrat `ProductID`, `SupplierName`, a `CategoryName` BoundFields
-- Převést `ProductName` Vlastnost BoundField na pole TemplateField a přidali ovládací prvek RequiredFieldValidation.
-- Převést `CategoryID` a `SupplierID` BoundFields do vlastností TemplateField a upravit úprav rozhraní DropDownLists spíše než textová pole. V těchto vlastností TemplateField `ItemTemplates`, `CategoryName` a `SupplierName` datová pole se zobrazí.
-- Převést `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`, a `ReorderLevel` BoundFields vlastností TemplateField a přidání ovládacích prvků CompareValidator.
+- Odebrání `ProductID`, `SupplierName`a `CategoryName` BoundFields
+- Byl převeden `ProductName` vlastnost BoundField na TemplateField a přidán ovládací prvek RequiredFieldValidation.
+- Převedli jsme `CategoryID` a `SupplierID` BoundFields na TemplateFields a upravili jsme rozhraní pro úpravy tak, aby místo textových polí používala DropDownList. V těchto TemplateFieldch `ItemTemplates`se zobrazí `CategoryName` a `SupplierName` datová pole.
+- Převedly se `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`a `ReorderLevel` BoundFields na TemplateFields a přidali ovládací prvky CompareValidator.
 
-Protože jsme jste už se zaměřili na tom, jak provádět tyto úlohy v předchozích kurzech, můžu budete jenom seznam konečné deklarativní syntaxe tady a ponechte implementaci z hlediska.
+Vzhledem k tomu, že jsme už prozkoumali, jak tyto úlohy provést v předchozích kurzech, stačí jenom vypsat tu konečnou deklarativní syntaxi a ponechání implementace v praxi.
 
 [!code-aspx[Main](implementing-optimistic-concurrency-cs/samples/sample9.aspx)]
 
-Jsme velmi blízko s plně funkční příklad. Existuje však několik odlišností, které budou ovládat si a námi způsobit problémy. Kromě toho potřebujeme ještě nějaké rozhraní, které uživatele upozorní, když došlo k narušení souběžného zpracování.
+Máme moc blízko, že máme plně funkční příklad. Existuje však několik odlišnostíů, které se budou podařit a mohou způsobovat problémy s námi. Dál potřebujeme některé rozhraní, které uživatele upozorní na to, kdy došlo k narušení souběžnosti.
 
 > [!NOTE]
-> V pořadí dat webový ovládací prvek ObjectDataSource (které jsou potom předány knihoven BLL) správně předat původní hodnoty, je důležité, který prvku GridView `EnableViewState` je nastavena na `true` (výchozí). Pokud zakážete stav zobrazení, se ztratí, původní hodnoty na zpětné volání.
+> Aby webové ovládací prvek data mohl správně předat původní hodnoty do prvku ObjectDataSource (které jsou poté předány do knihoven BLL), je důležité, aby vlastnost `EnableViewState` prvku GridView byla nastavena na `true` (výchozí). Pokud stav zobrazení zakážete, původní hodnoty se při postbacku ztratí.
 
-## <a name="passing-the-correct-original-values-to-the-objectdatasource"></a>Předejte správné původní hodnoty prvku ObjectDataSource
+## <a name="passing-the-correct-original-values-to-the-objectdatasource"></a>Předání správných původních hodnot prvku ObjectDataSource
 
-Existuje několik možných problémů s způsob, jakým byl nakonfigurován prvku GridView. Pokud ObjectDataSource `ConflictDetection` je nastavena na `CompareAllValues` (jako je náš), když prvku ObjectDataSource `Update()` nebo `Delete()` jsou metody vyvolány pomocí ovládacího prvku GridView (nebo prvku DetailsView nebo FormView), ObjectDataSource pokusí zkopírovat Původní hodnoty prvku GridView do jeho odpovídající `Parameter` instancí. Vraťte se na obrázku 2 pro grafickou reprezentaci tohoto procesu.
+Existuje několik problémů se způsobem konfigurace prvku GridView. Pokud je vlastnost `ConflictDetection` prvku ObjectDataSource nastavena na hodnotu `CompareAllValues` (jako je naše), při volání metody `Update()` nebo `Delete()` prvku GridView (nebo DetailsView), se ObjectDataSource pokusí zkopírovat původní hodnoty prvku GridView do příslušných `Parameter` instancí. Pro grafické znázornění tohoto procesu se podívejte zpátky na obrázek 2.
 
-Konkrétně prvku GridView původní hodnoty jsou přiřazeny hodnoty v příkazy Obousměrná vazba dat pokaždé, když vázaná k prvku GridView. Proto je důležité, že všechny požadované původní hodnoty se zachycuje prostřednictvím dvousměrnou datovou vazbou a že jsou k dispozici ve formátu převést.
+Konkrétně jsou hodnoty z původních hodnot prvku GridView přiřazeny v případě, že jsou data svázána s prvku GridView. Proto je nutné, aby všechny požadované původní hodnoty byly zachyceny prostřednictvím obousměrné vazby dat a aby byly poskytnuty v převoditelné podobě.
 
-Chcete-li zjistit, proč je důležité, věnujte chvíli najdete na naší stránce v prohlížeči. Podle očekávání, uvádí prvku GridView. každý produkt pomocí tlačítka Upravit a odstranit v levém sloupci.
+Pokud chcete zjistit, proč je to důležité, chvíli počkejte, než navštívíte naši stránku v prohlížeči. Podle očekávání je v prvku GridView uveden každý produkt s tlačítkem upravit a odstranit ve sloupci nejvíce vlevo.
 
-[![Produkty jsou uvedené v GridView](implementing-optimistic-concurrency-cs/_static/image39.png)](implementing-optimistic-concurrency-cs/_static/image38.png)
+[![jsou produkty uvedeny v prvku GridView.](implementing-optimistic-concurrency-cs/_static/image39.png)](implementing-optimistic-concurrency-cs/_static/image38.png)
 
-**Obrázek 14**: Produkty jsou uvedené v GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image40.png))
+**Obrázek 14**: produkty jsou uvedeny v prvku GridView ([kliknutím zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image40.png)).
 
-Pokud kliknete na tlačítko Odstranit pro některý z produktů `FormatException` je vyvolána výjimka.
+Pokud kliknete na tlačítko Odstranit pro libovolný produkt, je vyvolána `FormatException`.
 
-[![Pokus o odstranění jakékoli výsledky produktů v FormatException](implementing-optimistic-concurrency-cs/_static/image42.png)](implementing-optimistic-concurrency-cs/_static/image41.png)
+[![pokusu o odstranění jakéhokoli výsledku produktu v rámci aplikace FormatException](implementing-optimistic-concurrency-cs/_static/image42.png)](implementing-optimistic-concurrency-cs/_static/image41.png)
 
-**Obrázek 15**: Pokus o odstranění Any výsledky produktů v `FormatException` ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image43.png))
+**Obrázek 15**: pokus o odstranění jakýchkoliv výsledků produktu v `FormatException` ([kliknutím zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image43.png))
 
-`FormatException` Se vyvolá, když prvku ObjectDataSource se pokusí přečíst v původní `UnitPrice` hodnotu. Protože `ItemTemplate` má `UnitPrice` formátu měny (`<%# Bind("UnitPrice", "{0:C}") %>`), obsahuje symbol měny, jako je 19,95. `FormatException` Dochází při ObjectDataSource se pokusí převést tento řetězec do `decimal`. Chcete-li tento problém obejít, máme řadu možností:
+`FormatException` je vyvolána, když se prvek ObjectDataSource pokusí přečíst původní hodnotu `UnitPrice`. Vzhledem k tomu, že `ItemTemplate` má `UnitPrice` formátované jako měna (`<%# Bind("UnitPrice", "{0:C}") %>`), zahrnuje symbol měny, například $19,95. K `FormatException` dojde, když se prvek ObjectDataSource pokusí převést tento řetězec na `decimal`. K obcházení tohoto problému máme několik možností:
 
-- Odebrat formátování měny `ItemTemplate`. To znamená, že místo použití `<%# Bind("UnitPrice", "{0:C}") %>`, jednoduše použijte `<%# Bind("UnitPrice") %>`. Nevýhodou této je, že cena již formátována.
-- Zobrazení `UnitPrice` formátu měny v `ItemTemplate`, ale použít `Eval` – klíčové slovo jak toho dosáhnout. Vzpomeňte si, že `Eval` provádí jednosměrné datové vazby. Stále potřebujeme pro poskytování `UnitPrice` hodnoty pro původní hodnoty, proto budeme i nadále potřebovat příkaz Obousměrná vazba dat v `ItemTemplate`, ale to je možné použít v ovládacím prvku popisek webového jehož `Visible` je nastavena na `false`. Ve vlastnosti ItemTemplate, můžeme použít následující kód:
+- Odebere formátování měny z `ItemTemplate`. To znamená, že místo použití `<%# Bind("UnitPrice", "{0:C}") %>`stačí použít `<%# Bind("UnitPrice") %>`. Nevýhodou je, že cena už není naformátovaná.
+- Umožňuje zobrazit `UnitPrice` v `ItemTemplate`formátovat jako měnu, ale k tomu použijte klíčové slovo `Eval`. Odvolání tohoto `Eval` provádí jednosměrnou vazbu. Pro původní hodnoty stále potřebujeme zadat `UnitPrice` hodnotu, takže v `ItemTemplate`pořád potřebujeme obousměrný příkaz DataBinding, ale dá se umístit do ovládacího prvku popisek webu, jehož vlastnost `Visible` je nastavená na `false`. V šabloně ItemTemplate můžeme použít následující kód:
 
 [!code-aspx[Main](implementing-optimistic-concurrency-cs/samples/sample10.aspx)]
 
-- Odebrat formátování měny `ItemTemplate`s použitím `<%# Bind("UnitPrice") %>`. V prvku GridView `RowDataBound` obslužná rutina události, programově přístup k webu popisek ovládací prvek v rámci kterého `UnitPrice` hodnota se zobrazí a nastavte jeho `Text` vlastnost formátovaná verze.
-- Nechte `UnitPrice` naformátovaná jako měnu. V prvku GridView `RowDeleting` obslužná rutina události, nahraďte existující původní `UnitPrice` hodnotu (19,95 USD) se skutečný desítkovou hodnotu pomocí `Decimal.Parse`. Jsme viděli, jak provést něco podobného v `RowUpdating` obslužné rutině událostí ve [ *zpracování knihoven BLL a výjimek úrovni DAL na stránce ASP.NET* ](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md) kurzu.
+- Odeberte formátování měny z `ItemTemplate`pomocí `<%# Bind("UnitPrice") %>`. V obslužné rutině události `RowDataBound` prvku GridView programově přístup k ovládacímu prvku popisek webu, ve kterém je zobrazena hodnota `UnitPrice` a nastavte její vlastnost `Text` na naformátovanou verzi.
+- Ponechte `UnitPrice` formátovanou jako měnu. V obslužné rutině události `RowDeleting` prvku GridView nahraďte existující hodnotu `UnitPrice` ($19,95) skutečnou hodnotou typu Decimal pomocí `Decimal.Parse`. Zjistili jsme, jak v knihoven BLL obslužné rutiny při [*zpracování výjimek na úrovni a dal v kurzu ASP.NET stránky*](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md) udělat něco podobného jako v obslužné rutině události `RowUpdating`.
 
-Moje například volba pro druhý postup přidání skrytých popisek webové ovládací prvek, jehož `Text` vlastnost je obousměrný data vázaná neformátovaný `UnitPrice` hodnotu.
+V tomto příkladu jsem se rozhodl s druhým přístupem, a to přidáním skrytého webového ovládacího prvku popisek, jehož vlastnost `Text` je obousměrná data vázaná na neformátovanou `UnitPrice` hodnotu.
 
-Po vyřešení tohoto problému, zkuste to znovu kliknutím na tlačítko Odstranit pro některý z produktů. Tentokrát získáte `InvalidOperationException` kdy pokusí vyvolat BLL ObjectDataSource `UpdateProduct` metody.
+Po vyřešení tohoto problému zkuste znovu kliknout na tlačítko Odstranit pro libovolný produkt. Tentokrát získáte `InvalidOperationException`, když se ObjectDataSource pokusí vyvolat metodu `UpdateProduct` knihoven BLL.
 
-[![Prvku ObjectDataSource nebyla nalezena metoda s vstupní parametry, které chce odeslat](implementing-optimistic-concurrency-cs/_static/image45.png)](implementing-optimistic-concurrency-cs/_static/image44.png)
+[![prvek ObjectDataSource nemůže najít metodu se vstupními parametry, které chce odeslat.](implementing-optimistic-concurrency-cs/_static/image45.png)](implementing-optimistic-concurrency-cs/_static/image44.png)
 
-**Obrázek 16**: Nelze nalézt metodu s vstupní parametry, které chce odeslat, ObjectDataSource ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image46.png))
+**Obrázek 16**: prvek ObjectDataSource nemůže najít metodu se vstupními parametry, které chce odeslat ([kliknutím zobrazíte obrázek v plné velikosti).](implementing-optimistic-concurrency-cs/_static/image46.png)
 
-Prohlížení zpráva pro výjimku, je jasné, že chce vyvolání BLL ObjectDataSource `DeleteProduct` metoda, která zahrnuje `original_CategoryName` a `original_SupplierName` vstupní parametry. Důvodem je, že `ItemTemplate` iterátory `CategoryID` a `SupplierID` vlastností TemplateField aktuálně obsahují příkazy obousměrné vazby `CategoryName` a `SupplierName` datová pole. Místo toho musíme zahrnout `Bind` příkazy `CategoryID` a `SupplierID` datová pole. K tomu, nahraďte existující příkazy vazby s `Eval` příkazy a pak přidejte ovládací prvky skrytý popisku, jejichž `Text` vlastnosti, které jsou vázány na `CategoryID` a `SupplierID` datových polí pomocí Obousměrná vazba dat, jak je znázorněno níže:
+Při prohlížení zprávy o výjimce je jasné, že prvek ObjectDataSource chce vyvolat metodu knihoven BLL `DeleteProduct`, která zahrnuje `original_CategoryName` a vstupní parametry `original_SupplierName`. Důvodem je, že `ItemTemplate` s pro `CategoryID` a `SupplierID` TemplateFields aktuálně obsahují obousměrné příkazy BIND s datovými poli `CategoryName` a `SupplierName`. Místo toho je potřeba zahrnout `Bind` příkazy do datových polí `CategoryID` a `SupplierID`. Chcete-li to provést, nahraďte existující příkazy BIND příkazy `Eval` a poté přidejte skryté ovládací prvky popisek, jejichž `Text` vlastnosti jsou vázány na `CategoryID` a `SupplierID` datových polí pomocí obousměrné datové sady, jak je znázorněno níže:
 
 [!code-aspx[Main](implementing-optimistic-concurrency-cs/samples/sample11.aspx)]
 
-S těmito změnami jsme schopní teď úspěšně odstranit a upravit informace o produktu! V kroku 5 podíváme na tom, jak ověřit, že jsou detekovány porušení souběžnosti. Ale chvíli trvat pár minut a zkuste aktualizovat a odstranit několik záznamů zajistit, že aktualizace a odstranění pro jednoho uživatele funguje podle očekávání.
+S těmito změnami teď dokážeme úspěšně odstranit a upravit informace o produktu! V kroku 5 se podíváme na to, jak ověřit, že se zjišťují narušení souběžnosti. Prozatím ale počkejte několik minut, než se pokusíte aktualizovat a odstranit pár záznamů, abyste zajistili, že aktualizace a odstraňování pro jednoho uživatele funguje podle očekávání.
 
-## <a name="step-5-testing-the-optimistic-concurrency-support"></a>Krok 5: Podpora optimistické souběžnosti testování
+## <a name="step-5-testing-the-optimistic-concurrency-support"></a>Krok 5: testování podpory optimistického řízení souběžnosti
 
-Pokud chcete ověřit, že porušení souběžnosti se zjištěné (spíše než výsledkem dat slepě přepsání), potřebujeme otevře dvě okna prohlížeče na tuto stránku. V obou případech prohlížeče klikněte na tlačítko Upravit pro Chai. Jen v jedné z prohlížečů, změňte název na "Chai čaje" a kliknutím na tlačítko Aktualizovat. Aktualizace by měla úspěšné a prvku GridView. vraťte se do stavu předem úprav s "Chai čaje" jako nový název produktu.
+Aby bylo možné ověřit, že došlo k narušení souběžnosti (místo toho, aby se data nemusela přepsat), musíme na této stránce otevřít dva okna prohlížeče. V obou instancích prohlížeče klikněte na tlačítko Upravit pro příkaz Chai. Pak v jednom z prohlížečů změňte název na "Chai čaj" a klikněte na aktualizovat. Aktualizace by měla být úspěšná a vracet prvek GridView do stavu před úpravou "Chai čaj" jako nový název produktu.
 
-V další okno instance prohlížeče ale textového pole název produktu stále hlásí "Chai". V této druhé okno prohlížeče, aktualizujte `UnitPrice` k `25.00`. Bez podpory optimistického řízení souběžnosti kliknutím na tlačítko Aktualizovat v druhé instanci prohlížeče se změní název produktu zpět "Chai", a tím přepsání změny provedené při první instanci prohlížeče. Pomocí optimistického řízení souběžnosti použijí, ale kliknutím na tlačítko Aktualizovat v druhé instanci prohlížeče vede [dbconcurrencyexception –](https://msdn.microsoft.com/library/system.data.dbconcurrencyexception.aspx).
+V ostatních instancích okna prohlížeče se ale v textovém poli název produktu stále zobrazuje "Chai". V tomto druhém okně prohlížeče aktualizujte `UnitPrice` na `25.00`. Bez podpory optimistického řízení souběžnosti po kliknutí na aktualizovat ve druhé instanci prohlížeče se změní název produktu zpět na "Chai". tím se přepíší změny provedené první instancí prohlížeče. S využitím optimistické souběžnosti, ale kliknutím na tlačítko Aktualizovat v druhé instanci prohlížeče dojde k [DBConcurrencyException –](https://msdn.microsoft.com/library/system.data.dbconcurrencyexception.aspx).
 
-[![Když je zjištěna narušení souběžného zpracování, je vyvolána výjimka dbconcurrencyexception –](implementing-optimistic-concurrency-cs/_static/image48.png)](implementing-optimistic-concurrency-cs/_static/image47.png)
+[![, když se zjistí porušení souběžnosti, vyvolá se DBConcurrencyException –.](implementing-optimistic-concurrency-cs/_static/image48.png)](implementing-optimistic-concurrency-cs/_static/image47.png)
 
-**Obrázek 17**: Když je zjištěna narušení souběžného zpracování, `DBConcurrencyException` je vyvolána výjimka ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image49.png))
+**Obrázek 17**: když se zjistí porušení souběžnosti, vyvolá se `DBConcurrencyException` ([kliknutím zobrazíte obrázek v plné velikosti).](implementing-optimistic-concurrency-cs/_static/image49.png)
 
-`DBConcurrencyException` Je pouze vyvolána, když se používá vzor aktualizace služby batch DAL. Model s přímým přístupem DB nevyvolá výjimku, pouze znamená, že byly ovlivněny žádné řádky. Pro znázornění je vrátíte do jejich předem úprav stavu ovládacího prvku GridView obě instance prohlížeče. V dalším kroku v první instanci prohlížeče, klikněte na tlačítko Upravit a změnit název produktu z "Chai čaje" zpět do "Chai" a kliknutím na tlačítko Aktualizovat. V druhém okně prohlížeče klikněte na tlačítko Odstranit pro Chai.
+`DBConcurrencyException` se vyvolá pouze v případě, že je využíván vzor hromadné aktualizace dávky DAL. Model přímé databáze nevyvolává výjimku, ale pouze označuje, že nebyly ovlivněny žádné řádky. K tomu je potřeba, aby oba instance prohlížeče vracely stav před úpravou. Potom v první instanci prohlížeče klikněte na tlačítko Upravit a změňte název produktu z "Chai čaj" zpět na "Chai" a klikněte na aktualizovat. V druhém okně prohlížeče klikněte na tlačítko Odstranit pro příkaz Chai.
 
-Po kliknutí na tlačítko odstranit, na stránce odešle zpět, prvku GridView vyvolá ObjectDataSource `Delete()` metoda a ObjectDataSource zavolá `ProductsOptimisticConcurrencyBLL` třídy `DeleteProduct` předejte podél původní hodnoty. Původní `ProductName` hodnota druhou instanci prohlížeče není "Chai čaje", což se neshoduje s aktuálním `ProductName` hodnotou uloženou v databázi. Proto `DELETE` prohlášení vydané do databáze ovlivňuje nulový počet řádků, protože neexistuje žádný záznam v databázi, která `WHERE` klauzule splňuje. `DeleteProduct` Vrátí metoda `false` a ObjectDataSource dat je znovu připojeno k prvku GridView.
+Po kliknutí na tlačítko Odstranit se stránka publikuje zpět, prvek GridView Vyvolá metodu `Delete()` prvku ObjectDataSource a prvek ObjectDataSource se zavolá do `DeleteProduct` metody `ProductsOptimisticConcurrencyBLL` třídy, přičemž se přesměruje na původní hodnoty. Původní hodnota `ProductName` druhé instance prohlížeče je "Chai čaj", která se neshoduje s aktuální `ProductName` hodnotou v databázi. Proto příkaz `DELETE` vydaný pro databázi má vliv na nulové řádky, protože v databázi není žádný záznam, který splňuje klauzule `WHERE`. Metoda `DeleteProduct` vrací `false` a data prvku ObjectDataSource jsou znovu svázána s ovládacím prvkem GridView.
 
-Z pohledu koncového uživatele kliknutím na tlačítko Odstranit pro Chai čaje v druhém okně prohlížeče způsobil tuto obrazovku na flash a po vracející se zpět, je stále existuje, ale teď je uveden jako "Chai" (product name změny provedené první prohlížeče instance). Pokud uživatel klikne na tlačítko Odstranit znovu, bude odstranění úspěšné, jako je původní prvku GridView `ProductName` hodnotu ("Chai") nyní odpovídá hodnotě v databázi.
+V perspektivě koncového uživatele kliknutí na tlačítko Odstranit pro Chai čaj v druhém okně prohlížeče způsobilo, že se obrazovka Flash a po návratu zpátky produkt pořád obsahuje, i když je teď uvedený jako "Chai" (Změna názvu produktu vytvořeného prvním prohlížečem). instance). Pokud uživatel klikne na tlačítko Odstranit znovu, odstranění bude úspěšné, protože původní hodnota `ProductName` ovládacího prvku GridView ("Chai") nyní odpovídá hodnotě v databázi.
 
-V obou těchto případech činnost koncového uživatele je daleko od ideální. Jasně nechceme uživateli zobrazit podrobnosti o nitty-gritty `DBConcurrencyException` výjimka při použití vzoru aktualizace služby batch. A jak uživatelé příkaz nejde provést, ale neexistuje žádná upřesnění důvod, proč je trochu matoucí chování při použití vzoru s přímým přístupem DB.
+V obou těchto případech je činnost koncového uživatele mnohem z ideálního. Jasně nechceme uživateli zobrazit Nitty-Gritty podrobnosti o výjimce `DBConcurrencyException` při použití vzorce aktualizace dávky. A chování při použití vzoru DB Direct je trochu matoucí, protože příkaz uživatele se nezdařil, ale nedošlo k přesnému uvedení důvodu.
 
-Chcete-li vyřešit tyto dva problémy, vytvoříme popisek webové ovládací prvky na stránce zadání zdůvodnění na důvod, proč aktualizaci nebo odstranění se nezdařilo. Pro vzor aktualizace služby batch, můžeme určit, zda je či není `DBConcurrencyException` popisek upozornění došlo k výjimce v obslužné rutině událostí na úrovni po prvku GridView, zobrazení, podle potřeby. Přímé metody DB jsme můžete prozkoumat vrácenou hodnotu metody BLL (což je `true` Pokud byla vliv na jeden řádek, `false` jinak) a podle potřeby se zobrazí informační zpráva.
+Abychom tyto dva problémy napravili, můžeme na stránce Vytvořit popisek webové ovládací prvky, které poskytují vysvětlení, proč se aktualizace nebo odstranění nepovedlo. Pro vzor dávkové aktualizace můžeme určit, zda došlo k výjimce `DBConcurrencyException` v obslužné rutině události na post-Level prvku GridView a zobrazit popisek upozornění podle potřeby. Pro metodu DB Direct můžeme zkontrolovat návratovou hodnotu metody knihoven BLL (což je `true`, pokud byl ovlivněn jeden řádek, `false` jinak) a podle potřeby zobrazit informační zprávu.
 
-## <a name="step-6-adding-informational-messages-and-displaying-them-in-the-face-of-a-concurrency-violation"></a>Krok 6: Přidání informačních zpráv a zobrazování i v případě narušení souběžného zpracování
+## <a name="step-6-adding-informational-messages-and-displaying-them-in-the-face-of-a-concurrency-violation"></a>Krok 6: Přidání informačních zpráv a jejich zobrazení na tvář narušení souběžnosti
 
-Pokud dojde k narušení souběžného zpracování, chování monitorujícím závisí na Určuje, zda byla použita aktualizace služby batch nebo DB model s přímým přístupem vrstvy DAL. V našem kurzu používá oba vzorky se vzorem aktualizace služby batch používá pro aktualizace a DB přímé vzor použitý k odstranění. Začněte tím, Pojďme přidejte dva ovládací prvky popisek Web na stránku, která vysvětluje, že při pokusu o odstranění nebo aktualizaci dat došlo k narušení souběžného zpracování. Nastavení ovládacího prvku popisku `Visible` a `EnableViewState` vlastností `false`; to způsobí, že je na každé stránce, navštivte jako skryté, s výjimkou toho, kteří navštíví konkrétní stránce where jejich `Visible` prostřednictvím kódu programu je vlastnost nastavena na `true`.
+Když dojde k narušení souběžnosti, chování se projeví v závislosti na tom, jestli se použil vzor pro dávkovou aktualizaci nebo přímý DB. Náš kurz používá oba vzory s vzorem aktualizace dávky, který se používá pro aktualizaci, a vzor databáze Direct použitý k odstranění. Chcete-li začít, přidejte na naši stránku dva webové ovládací prvky Label, které vysvětlují, že při pokusu o odstranění nebo aktualizaci dat došlo k narušení souběžnosti. Nastavte vlastnosti ovládacího prvku popisek `Visible` a `EnableViewState` na `false`; To způsobí, že budou skryté na každé návštěvě stránky s výjimkou toho, že se jedná o konkrétní stránky, u nichž je jejich vlastnost `Visible` programově nastavená na `true`.
 
 [!code-aspx[Main](implementing-optimistic-concurrency-cs/samples/sample12.aspx)]
 
-Kromě nastavení jejich `Visible`, `EnabledViewState`, a `Text` vlastnosti, také je nastavené `CssClass` vlastnost `Warning`, což způsobí, že popisek uživatele zobrazeného ve velké, červený, kurzíva, tučné písmo. CSS `Warning` třídy byla definována a přidán do Styles.css zpátky *zkoumání události spojené s vložení, aktualizace a odstranění* kurzu.
+Kromě nastavení vlastností `Visible`, `EnabledViewState`a `Text` jsem také nastavil (a) vlastnost `CssClass` na `Warning`, což způsobí zobrazení popisku ve velkém, červené, kurzívě a tučném písmu. Tato třída CSS `Warning` byla definována a přidána do stylů. CSS zpátky při *zkoumání událostí souvisejících s kurzem vložení, aktualizace a odstranění* .
 
-Po přidání tyto popisky, by měla vypadat podobně jako obrázek 18 návrháře v sadě Visual Studio.
+Po přidání těchto popisků by měl Návrhář v aplikaci Visual Studio vypadat podobně jako obrázek 18.
 
-[![Byly přidány dva ovládací prvky popisek na stránku](implementing-optimistic-concurrency-cs/_static/image51.png)](implementing-optimistic-concurrency-cs/_static/image50.png)
+[na stránku se přidaly dva ovládací prvky Label ![.](implementing-optimistic-concurrency-cs/_static/image51.png)](implementing-optimistic-concurrency-cs/_static/image50.png)
 
-**Obrázek 18**: Dva popisek ovládacích prvků přidaných na stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image52.png))
+**Obrázek 18**: na stránku bylo přidáno dva ovládací prvky popisku ([kliknutím zobrazíte obrázek v plné velikosti).](implementing-optimistic-concurrency-cs/_static/image52.png)
 
-Pomocí těchto ovládacích prvků webového popisek na místě jsme připraveni prozkoumat jak zjistit, kdy narušení souběžného zpracování došlo, ve kterém bodu odpovídajícího označení `Visible` nastavenou na `true`, informační zprávou.
+S těmito webovými ovládacími prvky popisků jsme připraveni zjistit, jak určit, kdy došlo k narušení souběžnosti. v takovém případě je možné vlastnost `Visible` popisku nastavit na `true`a zobrazit informační zprávu.
 
-## <a name="handling-concurrency-violations-when-updating"></a>Narušení souběžného zpracování při aktualizaci
+## <a name="handling-concurrency-violations-when-updating"></a>Manipulace s porušením souběžnosti při aktualizaci
 
-Nejprve podíváme na způsob zpracování souběžnosti porušení, při použití vzoru aktualizace služby batch. Od těchto porušení s listem aktualizace vzor Příčina `DBConcurrencyException` výjimka, která je vyvolána, potřebujeme přidat kód na stránku ASP.NET k určení, zda `DBConcurrencyException` během procesu aktualizace došlo k výjimce. Pokud jsme tedy by se zobrazit zpráva pro uživatele s vysvětlením své změny nebyly uloženy, protože změněn jiným uživatelem měly stejná data mezi při zahájil úpravy záznamu a při kliknutí na tlačítko Aktualizovat.
+Nejdřív se podíváme na to, jak zvládnout porušení souběžnosti při použití vzorce aktualizace dávky. Vzhledem k tomu, že taková porušení se vzorkem aktualizace dávky způsobí vyvolání výjimky `DBConcurrencyException`, musíme na naši stránku ASP.NET přidat kód, který určí, jestli během procesu aktualizace došlo k výjimce `DBConcurrencyException`. Pokud ano, měli byste uživateli zobrazit zprávu, že jejich změny nebyly uloženy, protože jiná uživatel změnil stejná data mezi tím, kdy začala upravovat záznam a po kliknutí na tlačítko Aktualizovat.
 
-Jak jsme viděli v *zpracování knihoven BLL a výjimek úrovni DAL na stránce ASP.NET* kurz takové výjimky mohou být zjištěna a potlačit v obslužných rutinách událostí po úrovně ovládacího prvku webových dat. Proto potřebujeme vytvořit obslužnou rutinu události pro prvku GridView `RowUpdated` událost, která kontroluje, jestli `DBConcurrencyException` byla vyvolána výjimka. Tato obslužná rutina události je předán odkaz na jakékoli výjimce, která byla vygenerována během procesu aktualizace, jak je znázorněno v případě, že obslužná rutina kódu níže:
+Jak jsme viděli v kurzu *zpracování knihoven BLL a na úrovni dal v kurzu stránky ASP.NET* , takové výjimky se dají detekovat a potlačit v obslužných rutinách událostí na úrovni ovládacího prvku webové správy dat. Proto musíme vytvořit obslužnou rutinu události pro událost `RowUpdated` prvku GridView, která kontroluje, zda byla vyvolána výjimka `DBConcurrencyException`. Tato obslužná rutina události je předána odkaz na jakoukoliv výjimku, která byla vyvolána během procesu aktualizace, jak je znázorněno v následujícím kódu obslužné rutiny události:
 
 [!code-csharp[Main](implementing-optimistic-concurrency-cs/samples/sample13.cs)]
 
-Face z `DBConcurrencyException` této obslužné rutiny události výjimky, se zobrazí `UpdateConflictMessage` ovládacímu prvku popisek a znamená, že výjimka byla zpracována. S tímto kódem na místě, pokud při aktualizaci záznamu, dojde k narušení souběžného zpracování uživatele změny budou ztraceny, vzhledem k tomu, že by přepsání změn jiného uživatele ve stejnou dobu. Zejména je prvku GridView. vrátí do stavu před úpravy a vázána na aktuální data databáze. Tím se aktualizuje řádek prvku GridView změnami druhého uživatele, které byly dříve nejsou viditelné. Kromě toho `UpdateConflictMessage` ovládací prvek popisku vysvětlí uživateli, co se právě stalo. Tahle posloupnost událostí je podrobně popsaná v obrázek 19.
+Na straně `DBConcurrencyException` výjimky tato obslužná rutina události zobrazuje ovládací prvek `UpdateConflictMessage` popisek a indikuje, že byla výjimka zpracována. Pokud je tento kód na místě, když při aktualizaci záznamu dojde k narušení souběžnosti, změny uživatele se ztratí, protože by přepsali změny jiného uživatele ve stejnou dobu. Konkrétně je prvek GridView vrácen do svého stavu před úpravou a svázán s aktuálními daty databáze. Tím se aktualizuje řádek prvku GridView o změny provedené jiným uživatelem, které byly dříve neviditelné. Kromě toho ovládací prvek popisek `UpdateConflictMessage` vysvětlí uživateli, co se právě stalo. Tato posloupnost událostí je podrobně popsána na obrázku 19.
 
-[![Uživatel s aktualizací jsou ztraceny stěně narušení souběžného zpracování](implementing-optimistic-concurrency-cs/_static/image54.png)](implementing-optimistic-concurrency-cs/_static/image53.png)
+[![, že se aktualizace uživatelů ztratí při narušení souběžnosti](implementing-optimistic-concurrency-cs/_static/image54.png)](implementing-optimistic-concurrency-cs/_static/image53.png)
 
-**Obrázek 19**: Uživatel s aktualizací jsou ztraceny stěně narušení souběžného zpracování ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image55.png))
+**Obrázek 19**: při narušení souběžnosti dojde ke ztrátě aktualizací uživatelů ([kliknutím zobrazíte obrázek s plnou velikostí](implementing-optimistic-concurrency-cs/_static/image55.png)).
 
 > [!NOTE]
-> Alternativně namísto vrácení prvku GridView do předem úprav stavu, může necháme prvku GridView ve stavu úprav tak, že nastavíte `KeepInEditMode` vlastnost předaným `GridViewUpdatedEventArgs` objektu na hodnotu true. Pokud je provést tento postup, ale ujistěte se, znovu připojit data, která mají prvku GridView (vyvoláním jeho `DataBind()` metoda) tak, aby druhý uživatel hodnoty jsou načteny do rozhraní pro úpravy. Kód, který je k dispozici ke stažení v tomto kurzu má tyto dva řádky kódu ve `RowUpdated` zakomentované obslužné rutiny události; jednoduše zrušte komentář u tyto řádky kódu, které mají prvku GridView zůstávají v režimu úprav po narušení souběžného zpracování.
+> Alternativně, namísto vrácení prvku GridView do stavu před úpravou, můžeme opustit prvek GridView ve svém stavu úprav nastavením vlastnosti `KeepInEditMode` předaného objektu `GridViewUpdatedEventArgs` na hodnotu true. Pokud tento postup použijete, je však nutné, aby se data znovu navázala na prvek GridView (vyvoláním jeho `DataBind()` metody), aby byly hodnoty ostatních uživatelů načteny do rozhraní pro úpravy. Kód, který je k dispozici ke stažení v tomto kurzu, má tyto dva řádky kódu v obslužné rutině události `RowUpdated` s komentářem. jednoduše Odkomentujte tyto řádky kódu, aby ovládací prvek GridView zůstal v režimu úprav po porušení souběžnosti.
 
 ## <a name="responding-to-concurrency-violations-when-deleting"></a>Reakce na porušení souběžnosti při odstraňování
 
-Pomocí vzoru s přímým přístupem DB není žádná výjimka vyvolána i v případě narušení souběžného zpracování. Místo toho příkaz database jednoduše má vliv na žádné záznamy, jako v klauzuli WHERE se neshoduje s žádným záznamem. Všechny metody úpravy dat v BLL vytvoří byly navrženy tak, že vrátí logickou hodnotu označující, zda jejich vliv na přesně jeden záznam. Proto pokud chcete zjistit, pokud se při odstranění záznamu došlo k narušení souběžného zpracování, jsme prozkoumat vrácenou hodnotu BLL `DeleteProduct` metody.
+Při přímém vzoru DB není při narušení souběžnosti vyvolána žádná výjimka. Místo toho databázový příkaz jednoduše neovlivní žádné záznamy, protože klauzule WHERE neodpovídá žádnému záznamu. Všechny metody změny dat vytvořené v knihoven BLL byly navrženy tak, aby vracely logickou hodnotu, která určuje, zda ovlivnila přesně jeden záznam. Proto, aby bylo možné zjistit, jestli při odstraňování záznamu došlo k narušení souběžnosti, můžeme prostudovat návratovou hodnotu metody `DeleteProduct` knihoven BLL.
 
-Návratová hodnota metody BLL se dají prozkoumat v obslužné rutině událostí po úrovně prvku ObjectDataSource prostřednictvím `ReturnValue` vlastnost `ObjectDataSourceStatusEventArgs` objekt předaný do obslužné rutiny události. Od nás zajímají určující návratovou hodnotu z `DeleteProduct` metoda, je nutné vytvořit obslužnou rutinu události pro ObjectDataSource `Deleted` událostí. `ReturnValue` Vlastnost je typu `object` a může být `null` Pokud došlo k výjimce a metodu byl přerušen před dokončením ho může vracet hodnotu. Proto jsme měli nejdřív zajistit, aby `ReturnValue` jedná o vlastnost neumožňující `null` a je logická hodnota. Za předpokladu, že tato kontrola proběhne, ukážeme `DeleteConflictMessage` ovládacímu prvku popisek, pokud `ReturnValue` je `false`. Můžete to provést pomocí následujícího kódu:
+Návratovou hodnotu pro metodu knihoven BLL lze prozkoumat v obslužných rutinách události na úrovni ovládacího prvku ObjectDataSource prostřednictvím vlastnosti `ReturnValue` objektu `ObjectDataSourceStatusEventArgs` předaného do obslužné rutiny události. Vzhledem k tomu, že vás zajímá určení návratové hodnoty z metody `DeleteProduct`, musíme vytvořit obslužnou rutinu události pro událost `Deleted` prvku ObjectDataSource. Vlastnost `ReturnValue` je typu `object` a může být `null`, pokud byla vyvolána výjimka a metoda byla přerušena před tím, než by mohla vracet hodnotu. Proto je třeba nejprve zajistit, aby vlastnost `ReturnValue` nebyla `null` a je logická hodnota. Za předpokladu, že tato kontrola projde, zobrazí se `DeleteConflictMessage` ovládací prvek popisek, pokud je `ReturnValue` `false`. To lze provést pomocí následujícího kódu:
 
 [!code-csharp[Main](implementing-optimistic-concurrency-cs/samples/sample14.cs)]
 
-I v případě narušení souběžného zpracování je odstranit žádost uživatele zrušena. Aktualizaci prvku GridView zobrazující, že změny, ke kterým došlo u záznamu daného mezi časem uživatele načtení stránky a má po kliknutí na tlačítko Odstranit. Když je porušení pravidel ukáže, `DeleteConflictMessage` se zobrazí popisek s vysvětlením, co právě se stalo (viz obrázek 20).
+V případě porušení souběžnosti se žádost o odstranění uživatele zruší. Prvek GridView se aktualizuje a zobrazí změny, ke kterým došlo pro daný záznam mezi časem, kdy uživatel stránku načetl, a když klikl na tlačítko Odstranit. Pokud takové porušení nastane, zobrazí se popisek `DeleteConflictMessage`, který vysvětluje, co se právě stalo (viz obrázek 20).
 
-[![Uživatel s Delete se zruší i v případě narušení souběžného zpracování](implementing-optimistic-concurrency-cs/_static/image57.png)](implementing-optimistic-concurrency-cs/_static/image56.png)
+[![odstranění uživatele se zrušilo na straně porušení souběžnosti.](implementing-optimistic-concurrency-cs/_static/image57.png)](implementing-optimistic-concurrency-cs/_static/image56.png)
 
-**Obrázek 20**: Uživatel s Delete se zruší i v případě narušení souběžného zpracování ([kliknutím ji zobrazíte obrázek v plné velikosti](implementing-optimistic-concurrency-cs/_static/image58.png))
+**Obrázek 20**: odstranění uživatele se zrušilo na straně porušení souběžnosti ([kliknutím zobrazíte obrázek v plné velikosti).](implementing-optimistic-concurrency-cs/_static/image58.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Příležitosti k porušení souběžnosti existovat v každé aplikaci, která umožňuje víc souběžných uživatelů, aktualizovat nebo odstranit data. Pokud takové porušení nejsou zahrnuté u, pokud dva uživatele najednou aktualizovat stejná data, kdo získá poslední zápis "WINS", přepíše jiný uživatel změní změny. Vývojářům můžete alternativně implementovat buď řízení souběžnosti optimistického nebo pesimistického. Optimistického řízení souběžnosti se předpokládá, že porušení souběžnosti jen zřídka a jednoduše nepovoluje aktualizaci nebo odstraňte příkaz, který bude představovat narušení souběžného zpracování. Pesimistické řízení souběžnosti předpokládá, že tento souběžnosti porušení jsou časté a jeden uživatel jednoduše odmítnutí aktualizace nebo odstranění příkaz není platný. S pesimistické řízení souběžnosti aktualizaci záznamu zahrnuje uzamčení, a tím brání ostatní uživatelé ve změnách nebo odstranění záznamu, když je zamknutý.
+Příležitosti pro narušení souběžnosti existují v každé aplikaci, která umožňuje více souběžným uživatelům aktualizovat nebo odstraňovat data. Pokud se taková porušení neúčtují pro, když dva uživatelé současně aktualizují stejná data, která jsou v posledním zápisu "WINS", přepíše změny provedené ostatními uživateli. Vývojáři mohou případně implementovat buď optimistické, nebo pesimistické řízení souběžnosti. Optimistické řízení souběžnosti předpokládá, že narušení souběžnosti jsou zřídka a jednoduše nepovoluje příkaz Update nebo DELETE, který by představoval narušení souběžnosti. Pesimistické řízení souběžnosti předpokládá, že narušení souběžnosti často a jednoduše odmítání aktualizace jednoho uživatele nebo příkazu k odstranění není přijatelné. Díky pesimistické kontrole souběžnosti aktualizace záznamů zahrnuje jejich uzamykání, což brání ostatním uživatelům v úpravách nebo odstraňování záznamu v době, kdy je uzamčen.
 
-Typované datové sady v .NET poskytuje funkce pro podporu optimistického řízení souběžnosti. Konkrétně se `UPDATE` a `DELETE` příkazy vydané do databáze zahrnují všechny sloupce v tabulce, a zajistí tak, že aktualizace nebo odstranění se vztahuje pouze na Pokud aktuální data záznamu odpovídají s původními daty uživatel měl při provádění jejich aktualizace nebo odstranění. Jakmile DAL není nakonfigurovaná podpora optimistické souběžnosti, je potřeba aktualizovat BLL metody. Kromě toho stránky ASP.NET, která volá BLL musí být nakonfigurován tak, obnoví původní hodnoty z jeho data webový ovládací prvek ObjectDataSource a předává je do BLL.
+Typová datová sada v rozhraní .NET poskytuje funkce pro podporu optimistického řízení souběžnosti. Konkrétně příkazy `UPDATE` a `DELETE` vydané do databáze obsahují všechny sloupce tabulky, čímž se zajistí, že aktualizace nebo odstranění budou provedeny pouze v případě, že se aktuální data záznamu shodují s původními daty, která měla uživatel při provádění aktualizace nebo odstranění. Jakmile je DAL nakonfigurovaný tak, aby podporoval optimistickou souběžnost, metody knihoven BLL je potřeba aktualizovat. Kromě toho musí být stránka ASP.NET, která volá do knihoven BLL, nakonfigurována tak, aby prvek ObjectDataSource načítají původní hodnoty z ovládacího prvku data a předává je do knihoven BLL.
 
-Jak jsme viděli v tomto kurzu, implementace optimistického řízení souběžnosti ve webové aplikaci ASP.NET zahrnuje aktualizace knihoven BLL a DAL a přidání podpory na stránce ASP.NET. Určuje, jestli tato přidání práce je z pohledu investování času a úsilí závisí na vaší aplikace. Pokud máte málo souběžných uživatelů, aktualizace dat nebo data, která jsou aktualizace se liší od sebe, řízení souběžnosti není problém s klíče. Pokud ale pravidelně máte více uživatelům ve vaší lokalitě pracovat se stejnými daty, řízení souběžnosti pomáhají zabránit jeden uživatel aktualizace nebo odstranění nechtěně přepsání jiného uživatele.
+Jak jsme viděli v tomto kurzu, implementace optimistického řízení souběžnosti ve webové aplikaci ASP.NET zahrnuje aktualizaci DAL a knihoven BLL a přidání podpory na stránku ASP.NET. Bez ohledu na to, jestli tato přidaná práce představuje moudrou investici vašeho času a úsilí, záleží na vaší aplikaci. Pokud nechcete, aby souběžní uživatelé aktualizovali data, nebo se data, která aktualizují, liší od sebe, pak řízení souběžnosti není klíčový problém. Pokud ale pravidelně máte na svém webu více uživatelů, kteří pracují se stejnými daty, řízení souběžnosti může zabránit tomu, aby se aktualizace jednoho uživatele nebo odstranění z unwittingly přepsaly jiným.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
 > [!div class="step-by-step"]
 > [Předchozí](customizing-the-data-modification-interface-cs.md)
-> [další](adding-client-side-confirmation-when-deleting-cs.md)
+> [Další](adding-client-side-confirmation-when-deleting-cs.md)

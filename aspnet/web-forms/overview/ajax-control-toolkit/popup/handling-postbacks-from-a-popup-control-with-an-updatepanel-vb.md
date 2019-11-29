@@ -1,60 +1,60 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-vb
-title: Zpracování postbacků extenderu Popupcontrol ovládacím prvkem UpdatePanel (VB) | Dokumentace Microsoftu
+title: Zpracování zpětného volání z překryvného ovládacího prvku s ovládacím prvkem UpdatePanel (VB) | Microsoft Docs
 author: wenz
-description: Zařízení extender PopupControl v sadou nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevíraného okna, když se aktivuje jiný ovládací prvek. Zvláštní pozornost je třeba vzít...
+description: PopupControl Extender v sadě nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevírané okno v případě, že je aktivován jakýkoli jiný ovládací prvek. Zvláštní péče je nutné vzít v potaz...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: ec9db57c-9f68-402a-bf4c-0d63d5f6908e
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7f7d35035e70c04a1a14213e79bb140c5476bf60
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: dd045ae56696c7944df98cf805ba812fde1bb4ff
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65115291"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74598774"
 ---
 # <a name="handling-postbacks-from-a-popup-control-with-an-updatepanel-vb"></a>Zpracování postbacků ovládacího prvku PopupControl ovládacím prvkem UpdatePanel (VB)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/PopupControl2.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/popupcontrol2VB.pdf)
+[Stažení kódu](https://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/PopupControl2.vb.zip) nebo [stažení PDF](https://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/popupcontrol2VB.pdf)
 
-> Zařízení extender PopupControl v sadou nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevíraného okna, když se aktivuje jiný ovládací prvek. Zvláštní pozornost musí být provedeny, když dojde k takové rozbalené postbacku.
+> PopupControl Extender v sadě nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevírané okno v případě, že je aktivován jakýkoli jiný ovládací prvek. Zvláštní péči je nutné provést, pokud dojde k postbacku v takovém překryvném okně.
 
 ## <a name="overview"></a>Přehled
 
-Zařízení extender PopupControl v sadou nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevíraného okna, když se aktivuje jiný ovládací prvek. Zvláštní pozornost musí být provedeny, když dojde k takové rozbalené postbacku.
+PopupControl Extender v sadě nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevírané okno v případě, že je aktivován jakýkoli jiný ovládací prvek. Zvláštní péči je nutné provést, pokud dojde k postbacku v takovém překryvném okně.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Při použití `PopupControl` s zpětné volání, `UpdatePanel` může zabránit aktualizace stránky způsobené zpětné volání. Následující kód definuje několik důležité elementy:
+Při použití `PopupControl` s postbackem může `UpdatePanel` zabránit aktualizaci stránky způsobenou postbackem. Následující kód definuje několik důležitých prvků:
 
-- A `ScriptManager` tak, aby funguje technologie ASP.NET AJAX Control Toolkit
-- Dvě `TextBox` ovládací prvky, které aktivují obě automaticky otevíraného okna
-- A `Panel` ovládací prvek, který bude sloužit jako automaticky otevíraného okna
-- V rámci panelu `Calendar` ovládací prvek se vloží v rámci `UpdatePanel` ovládacího prvku
-- Dvě `PopupControlExtender` ovládací prvky, které přiřadit do textových polí panelu
+- Ovládací prvek `ScriptManager`, aby sada nástrojů ASP.NET AJAX Control
+- Dva `TextBox` ovládací prvky, které spustí místní nabídku
+- Ovládací prvek `Panel`, který bude sloužit jako místní nabídka
+- V rámci tohoto panelu je ovládací prvek `Calendar` vložený v rámci ovládacího prvku `UpdatePanel`
+- Dva `PopupControlExtender` ovládací prvky, které přiřadí panel k textovým polím
 
 [!code-aspx[Main](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/samples/sample1.aspx)]
 
-Všimněte si, že `OnSelectionChanged` atribut `Calendar` nastavit ovládací prvek. Takže když uživatel vybere datum v kalendáři, dojde k zpětné volání a metody na straně serveru `c1_SelectionChanged()` provádí. V rámci této metody musí načíst aktuální datum a zapíše zpět do textového pole.
+Všimněte si, že atribut `OnSelectionChanged` ovládacího prvku `Calendar` je nastaven. Takže když uživatel vybere datum v kalendáři, dojde k postbacku a spustí se `c1_SelectionChanged()` metoda na straně serveru. V rámci této metody musí být aktuální datum načteno a zapsáno zpět do textového pole.
 
-Syntaxe, která vypadá takto: Za prvé, proxy pro objekt `PopupControlExtender` na stránce je nutné vygenerovat. ASP.NET AJAX Control Toolkit nabízí `GetProxyForCurrentPopup()` metody. Objekt, vrátí tato metoda podporuje `Commit()` metodu, která odešle hodnotu zpět na ovládací prvek, který aktivuje místní nabídka (ne ovládací prvek, která aktivuje volání metody!). Následující kód obsahuje vybrané datum jako argument pro `Commit()` metody způsobí kódu ke zpětnému zápisu vybraného data do textového pole:
+Tato syntaxe je následující: první ze všech musí být vygenerován objekt proxy pro `PopupControlExtender` na stránce. ASP.NET AJAX Control Toolkit nabízí metodu `GetProxyForCurrentPopup()`. Objekt, který vrací tato metoda, podporuje metodu `Commit()`, která pošle hodnotu zpět do ovládacího prvku, který aktivoval místní nabídku (nikoli ovládací prvek, který aktivoval volání metody!). Následující kód poskytuje vybrané datum jako argument metody `Commit()`, což způsobí, že kód zapíše vybrané datum zpět do textového pole:
 
 [!code-aspx[Main](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/samples/sample2.aspx)]
 
-Nyní pokaždé, když kliknete na datum kalendáře přidružené textového pole, se zobrazí vybrané datum vytvoření ovládacího prvku pro výběr data, která aktuálně najdete na počet webů.
+Když teď kliknete na datum kalendáře, zobrazí se vybrané datum v přidruženém textovém poli a vytvoří se ovládací prvek pro výběr data, který se teď dá najít na mnoha webech.
 
-[![Když uživatel klikne do textového pole, zobrazí se v kalendáři](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image2.png)](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image1.png)
+[![kalendáři se zobrazí, když uživatel klikne do textového pole.](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image2.png)](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image1.png)
 
-Když uživatel klikne do textového pole, zobrazí se v kalendáři ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image3.png))
+Kalendář se zobrazí, když uživatel klikne do textového pole ([kliknutím zobrazíte obrázek v plné velikosti).](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image3.png)
 
-[![Kliknutím na datum umístí ho do textového pole](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image5.png)](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image4.png)
+[![kliknutí na datum vloží do textového pole.](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image5.png)](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image4.png)
 
-Kliknutím na datum umístí ho do textového pole ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image6.png))
+Kliknutím na datum se vloží do textového pole ([kliknutím zobrazíte obrázek v plné velikosti).](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image6.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](using-multiple-popup-controls-vb.md)
-> [další](handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)
+> [Další](handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)

@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-1
-title: 'Část 1: Přehled a vytvoření projektu | Dokumentace Microsoftu'
+title: 'Část 1: Přehled a vytvoření projektu | Microsoft Docs'
 author: MikeWasson
 description: ''
 ms.author: riande
@@ -8,86 +8,86 @@ ms.date: 07/03/2012
 ms.assetid: 94421d86-68c4-4471-bf5f-82d654a17252
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: d5a72dbfe1530e457ec16df5c7d50b03b5f63502
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: a76a18f2bd95969358452085ef342fdca8a386e2
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59384211"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74600328"
 ---
 # <a name="part-1-overview-and-creating-the-project"></a>Část 1: Přehled a vytvoření projektu
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-[Stáhnout dokončený projekt](http://code.msdn.microsoft.com/ASP-NET-Web-API-with-afa30545)
+[Stáhnout dokončený projekt](https://code.msdn.microsoft.com/ASP-NET-Web-API-with-afa30545)
 
-Entity Framework je objektově/relační mapování rozhraní. Mapuje se na entity v relační databázi objektů domény ve vašem kódu. Ve většině případů není nutné se starat o databázové vrstvě, protože rozhraní Entity Framework za vás postará o ho. Váš kód provádí úpravy objektů a změny se ukládají do databáze.
+Entity Framework je rozhraní pro mapování objektů a relačních objektů. Mapuje doménové objekty ve vašem kódu na entity v relační databázi. Ve většině případů se nemusíte starat o databázovou vrstvu, protože ji Entity Framework postará za vás. Kód zpracovává objekty a změny jsou uchovány v databázi.
 
-## <a name="about-the-tutorial"></a>Informace o kurzu
+## <a name="about-the-tutorial"></a>O tomto kurzu
 
-V tomto kurzu vytvoříte jednoduchou úložiště aplikací. Existují dvě hlavní části aplikace. Normální uživatelé mohou zobrazit produkty a vytvoření objednávky:
+V tomto kurzu vytvoříte jednoduchou aplikaci ze Storu. Existují dvě hlavní části aplikace. Normální uživatelé mohou zobrazit produkty a vytvářet objednávky:
 
 ![](using-web-api-with-entity-framework-part-1/_static/image1.png)
 
-Správci mohou vytvořit, odstranit nebo upravit produkty:
+Správci můžou vytvořit, odstranit nebo upravit produkty:
 
 ![](using-web-api-with-entity-framework-part-1/_static/image2.png)
 
-## <a name="skills-youll-learn"></a>Dovednosti, které se dozvíte
+## <a name="skills-youll-learn"></a>Dovednosti, se kterými se naučíte
 
-Zde je, co se dozvíte:
+Tady je seznam toho, co se naučíte:
 
-- Jak používat rozhraní Entity Framework s webovým rozhraním API technologie ASP.NET.
-- Jak používat rozhraní knockout.js k vytvoření dynamického uživatelského rozhraní klienta.
-- Jak používat ověřování pomocí formulářů s webovým rozhraním API pro ověřování uživatelů.
+- Jak používat Entity Framework s webovým rozhraním API ASP.NET
+- Jak použít vyseknutí. js k vytvoření dynamického uživatelského rozhraní klienta.
+- Jak používat ověřování pomocí formulářů s webovým rozhraním API k ověřování uživatelů.
 
-I když v tomto kurzu je samostatný, můžete chtít nejdřív přečíst následující kurzy:
+I když je tento kurz samostatný, možná si budete chtít nejdřív přečíst následující kurzy:
 
-- [Vaše první rozhraní ASP.NET Web API](../../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md)
-- [Vytvoření webového rozhraní API, která podporuje operace CRUD](../creating-a-web-api-that-supports-crud-operations.md)
+- [Vaše první webové rozhraní API ASP.NET](../../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md)
+- [Vytvoření webového rozhraní API, které podporuje operace CRUD](../creating-a-web-api-that-supports-crud-operations.md)
 
-Základní znalost [ASP.NET MVC](../../../../mvc/index.md) je také užitečné.
+K [disASP.NET](../../../../mvc/index.md) je také užitečné některé znalosti o MVC.
 
 ## <a name="overview"></a>Přehled
 
-Na vysoké úrovni je tady Architektura aplikace:
+V nejvyšší úrovni je tady architektura aplikace:
 
-- ASP.NET MVC vygeneruje stránky HTML klienta.
-- Rozhraní ASP.NET Web API zveřejňuje operace CRUD s daty (výrobky a objednávky).
-- Entity Framework překládá modely C# používá webového rozhraní API do entity databáze.
+- ASP.NET MVC vygeneruje stránky HTML pro klienta.
+- Webové rozhraní API ASP.NET zpřístupňuje operace CRUD s daty (produkty a objednávky).
+- Entity Framework překládá C# modely používané WEBOVÝm rozhraním API do databázových entit.
 
 ![](using-web-api-with-entity-framework-part-1/_static/image3.png)
 
-Následující diagram znázorňuje, jak jsou reprezentovány objekty domény v různých vrstvách aplikace: Databázové vrstvě, objektový model a nakonec přenosový formát, který se používá k přenosu dat do klienta prostřednictvím protokolu HTTP.
+Následující diagram znázorňuje způsob reprezentace objektů domény v různých vrstvách aplikace: databázová vrstva, objektový model a nakonec formát drátu, který slouží k přenosu dat do klienta prostřednictvím protokolu HTTP.
 
 ![](using-web-api-with-entity-framework-part-1/_static/image4.png)
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-Můžete vytvořit projekt kurz pomocí Visual Web Developer Express nebo plná verze Visual Studio.
+Můžete vytvořit projekt kurzu pomocí aplikace Visual Web Developer Express nebo plné verze sady Visual Studio.
 
-Z **Start** klikněte na **nový projekt**.
+Na **úvodní** stránce klikněte na **Nový projekt**.
 
-V **šablony** vyberte **nainstalované šablony** a rozbalte **Visual C#** uzlu. V části **Visual C#** vyberte **webové**. V seznamu šablon projektu vyberte **webové aplikace ASP.NET MVC 4**. Pojmenujte projekt "ProductStore" a klikněte na tlačítko **OK**.
+V podokně **šablony** vyberte **Nainstalované šablony** a rozbalte uzel  **C# vizuál** . V **části C#vizuál** vyberte **Web**. V seznamu šablon projektu vyberte **ASP.NET webová aplikace MVC 4**. Pojmenujte projekt "ProductStore" a klikněte na tlačítko **OK**.
 
 ![](using-web-api-with-entity-framework-part-1/_static/image5.png)
 
-V **nového projektu ASP.NET MVC 4** dialogového okna, vyberte **internetovou aplikaci** a klikněte na tlačítko **OK**.
+V dialogovém okně **Nový projekt ASP.NET MVC 4** vyberte možnost **Internet aplikace** a klikněte na tlačítko **OK**.
 
 ![](using-web-api-with-entity-framework-part-1/_static/image6.png)
 
-"Internetové aplikace" šablona vytvoří aplikaci ASP.NET MVC, která podporuje ověřování pomocí formulářů. Pokud nyní aplikaci spustíte, už má některé funkce:
+Šablona "Internetová aplikace" vytvoří aplikaci ASP.NET MVC, která podporuje ověřování formulářů. Pokud teď aplikaci spustíte, už obsahuje některé funkce:
 
-- Noví uživatelé můžete zaregistrovat klepnutím na odkaz "Register" v pravém horním rohu.
-- Registrovaní uživatelé přihlásit po klepnutí na odkaz "Přihlásit".
+- Noví uživatelé se můžou zaregistrovat kliknutím na odkaz zaregistrovat v pravém horním rohu.
+- Registrovaní uživatelé se můžou přihlásit kliknutím na odkaz Přihlásit se.
 
-Informace o členství se ukládají v databázi, která se vytvoří automaticky. Další informace o ověřování pomocí formulářů v ASP.NET MVC naleznete v tématu [názorný postup: Použití ověřování pomocí formulářů v ASP.NET MVC](https://msdn.microsoft.com/library/ff398049(VS.98).aspx).
+Informace o členství jsou trvalé v databázi, která je vytvořena automaticky. Další informace o ověřování pomocí formulářů v ASP.NET MVC najdete v tématu [Návod: použití ověřování pomocí formulářů v ASP.NET MVC](https://msdn.microsoft.com/library/ff398049(VS.98).aspx).
 
 ## <a name="update-the-css-file"></a>Aktualizovat soubor CSS
 
-Tento krok je kosmetické, ale budou stránky se pak takto předchozí snímky obrazovky.
+Tento krok je kosmetický, ale stránky se vykreslí jako dřívější snímky obrazovky.
 
-V Průzkumníku řešení rozbalte složku obsahu a otevřete soubor s názvem Site.css. Přidejte následující stylů CSS:
+V Průzkumník řešení rozbalte složku obsahu a otevřete soubor s názvem site. CSS. Přidejte následující styly CSS:
 
 [!code-css[Main](using-web-api-with-entity-framework-part-1/samples/sample1.css)]
 

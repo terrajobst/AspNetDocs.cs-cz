@@ -1,266 +1,266 @@
 ---
 uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-vb
-title: Použití parametrizovaných dotazů s ovládacím prvkem SqlDataSource (VB) | Dokumentace Microsoftu
+title: Použití parametrizovaných dotazů ve třídě SqlDataSource (VB) | Microsoft Docs
 author: rick-anderson
-description: V tomto kurzu jsme naše pohled na ovládacím prvkem SqlDataSource pokračovat a zjistěte, jak definovat parametrizované dotazy. Parametry lze zadat obě decla...
+description: V tomto kurzu budeme pokračovat v hledání na ovládacím prvku SqlDataSource a naučíte se, jak definovat parametrizované dotazy. Parametry lze zadat současně deklaraci...
 ms.author: riande
 ms.date: 02/20/2007
 ms.assetid: e322f34c-83b7-41ea-ab65-ab1e0bdcc609
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 70da58fce30dfbb174b502e104190c5940b10c97
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 19b93ff6c0878ae6ed546d347cafef95fd2a01e6
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65124305"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74598045"
 ---
 # <a name="using-parameterized-queries-with-the-sqldatasource-vb"></a>Použití parametrizovaných dotazů s ovládacím prvkem SqlDataSource (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_48_VB.exe) nebo [stahovat PDF](using-parameterized-queries-with-the-sqldatasource-vb/_static/datatutorial48vb1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_48_VB.exe) nebo [Stáhnout PDF](using-parameterized-queries-with-the-sqldatasource-vb/_static/datatutorial48vb1.pdf)
 
-> V tomto kurzu jsme naše pohled na ovládacím prvkem SqlDataSource pokračovat a zjistěte, jak definovat parametrizované dotazy. Parametry se dá nastavit pomocí deklarace i prostřednictvím kódu programu a je mohly vyžádat z mnoha umístění jako řetězec dotazu, relace stavu, další ovládací prvky a další.
+> V tomto kurzu budeme pokračovat v hledání na ovládacím prvku SqlDataSource a naučíte se, jak definovat parametrizované dotazy. Parametry lze zadat deklarativně i programově a lze je načíst z několika umístění, jako je například QueryString, stav relace, další ovládací prvky a další.
 
 ## <a name="introduction"></a>Úvod
 
-V předchozím kurzu jsme viděli, jak pomocí ovládacím prvkem SqlDataSource data přímo z databáze. Pomocí Průvodce konfigurace zdroje dat, můžeme může zvolte databázi a pak jednu: Vybrat sloupce, které chcete vrátit z tabulky nebo zobrazení. Zadejte vlastní příkaz SQL; nebo použijte uloženou proceduru. Zda výběr sloupců v tabulce nebo zobrazení nebo zadat vlastní příkaz jazyka SQL, ve třídě SqlDataSource ovládací prvek s `SelectCommand` vlastnost je přiřazena výsledný SQL ad-hoc `SELECT` příkazu a je to `SELECT` příkaz, který je spuštěna při SqlDataSource s `Select()` vyvolání metody (buď prostřednictvím kódu programu, nebo automaticky z dat webový ovládací prvek).
+V předchozím kurzu jsme viděli, jak použít ovládací prvek SqlDataSource k načtení dat přímo z databáze. Pomocí Průvodce konfigurací zdroje dat můžeme zvolit databázi a potom buď: Vyberte sloupce, které se mají vrátit z tabulky nebo zobrazení. Zadejte vlastní příkaz SQL. nebo použijte uloženou proceduru. Bez ohledu na `SELECT` to, jestli se mají vybrat sloupce z tabulky nebo zobrazit nebo zadat vlastní příkaz SQL, se vlastnosti `SelectCommand` ovládacího prvku SqlDataSource přiřadí Výsledný příkaz SQL `SELECT`, který se spustí při vyvolání metody `Select()` SqlDataSource (buď prostřednictvím kódu programu, nebo automaticky z webového ovládacího prvku data).
 
-SQL `SELECT` příkazů použité v předchozím kurzu s ukázky chybějící `WHERE` klauzule. V `SELECT` příkazu `WHERE` klauzuli lze použít k omezení vrácené výsledky. Například pokud chcete zobrazit názvy produktů ocenění více než 50,00 $, můžeme použít následující dotaz:
+Příkazy SQL `SELECT` používané v předchozích ukázkách kurzu s chybí `WHERE` klauzulí. V příkazu `SELECT` lze použít klauzuli `WHERE` k omezení vrácených výsledků. Pokud například chcete zobrazit názvy produktů více než $50,00, můžeme použít následující dotaz:
 
 [!code-sql[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample1.sql)]
 
-Obvykle hodnot použitých v `WHERE` klauzule se určuje na základě některých externího zdroje, jako je například hodnota řetězce dotazu, proměnné relace nebo uživatelského vstupu z webový ovládací prvek na stránce. V ideálním případě jsou tyto vstupy určené prostřednictvím *parametry*. S Microsoft SQL Server, parametry jsou rozlišeny pomocí `@parameterName`, například:
+Hodnoty používané v klauzuli `WHERE` se obvykle určují pomocí některého externího zdroje, jako je například hodnota QueryString, proměnná relace nebo vstup uživatele z webového ovládacího prvku na stránce. V ideálním případě jsou tyto vstupy zadány pomocí *parametrů*. U Microsoft SQL Server jsou parametry označeny pomocí `@parameterName`, jako v:
 
 [!code-sql[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample2.sql)]
 
-Ve třídě SqlDataSource podporuje parametrizované dotazy, obě `SELECT` příkazy a `INSERT`, `UPDATE`, a `DELETE` příkazy. Kromě toho hodnot parametrů může být automaticky získaných z různých zdrojů, řetězec dotazu, stav relace, ovládací prvky na stránce a tak dále nebo je možné přiřadit prostřednictvím kódu programu. V tomto kurzu se podíváme, jak definovat parametrizované dotazy a také, jak zadat parametr hodnoty deklarativně i prostřednictvím kódu programu.
+Třída SqlDataSource podporuje parametrizované dotazy, pro `SELECT` příkazy a `INSERT`, `UPDATE`a `DELETE` příkazy. Hodnoty parametrů je navíc možné automaticky načíst z nejrůznějších zdrojů. QueryString, stav relace, ovládací prvky na stránce a tak dále lze přiřadit programově. V tomto kurzu se dozvíte, jak definovat parametrizované dotazy a jak deklarativně i programově zadat hodnoty parametrů.
 
 > [!NOTE]
-> V předchozím kurzu jsme porovnání prvek ObjectDataSource, který byl náš nástroj podle výběru přes nejprve 46 kurzy s ovládacím prvkem SqlDataSource zmínku jejich koncepční podobnosti. Tyto podobnosti rozšířit také na parametry. Prvek ObjectDataSource s parametry namapované na vstupní parametry pro metody v vrstvy obchodní logiky. S ovládacím prvkem SqlDataSource parametry jsou definované přímo v rámci dotazu SQL. Oba ovládací prvky mají kolekce parametrů pro jejich `Select()`, `Insert()`, `Update()`, a `Delete()` metod a jak může mít tyto hodnoty parametrů naplněny z předem definovaných zdroje (hodnoty řetězce dotazu, proměnné relace a tak dále ) nebo prostřednictvím kódu programu přiřazen.
+> V předchozím kurzu jsme porovnali prvek ObjectDataSource, který je nášm nástrojem, který je v prvních 46 kurzech, který se nachází ve třídě SqlDataSource a označuje jejich koncepční podobnosti. Tyto podobnosti se také rozšíří na parametry. Parametry ObjectDataSource s mapované na vstupní parametry pro metody ve vrstvě obchodní logiky. Pomocí SqlDataSource jsou parametry definovány přímo v rámci dotazu SQL. Oba ovládací prvky mají kolekce parametrů pro jejich `Select()`, `Insert()`, `Update()`a metody `Delete()` a obě můžou mít tyto hodnoty parametrů naplněné z předdefinovaných zdrojů (hodnoty QueryString, proměnné relace atd.) nebo přiřazené programově.
 
 ## <a name="creating-a-parameterized-query"></a>Vytvoření parametrického dotazu
 
-Průvodce konfigurace zdroje dat SqlDataSource ovládacího prvku s nabízí tři způsoby definování příkazu ke spuštění pro načtení záznamů databáze:
+Průvodce pro ovládací prvek SqlDataSource s konfigurací zdroje dat nabízí tři cesty vedoucíy pro definování příkazu, který se má provést pro načtení záznamů databáze:
 
-- Výběrem sloupců z existující tabulky nebo zobrazení
-- Tak, že zadáte vlastní příkaz SQL nebo
+- Když vybíráte sloupce z existující tabulky nebo zobrazení,
+- Zadáním vlastního příkazu SQL nebo
 - Výběrem uložené procedury
 
-Při výběru sloupců z existující tabulky nebo zobrazení, parametry `WHERE` potřeba zadat klauzuli prostřednictvím přidat `WHERE` klauzule dialogovému oknu. Při vytváření vlastní příkaz jazyka SQL, ale můžete zadat parametry přímo do `WHERE` – klauzule (pomocí `@parameterName` k označení každého parametru). A [uloženou proceduru](http://www.awprofessional.com/articles/article.asp?p=25288&amp;rl=1) se skládá z jednoho nebo více příkazů SQL, a tyto příkazy mohou být parametrizovány. Parametry použité v příkazech SQL, ale musí být předán v jako vstupní parametry uložené procedury.
+Když vybíráte sloupce z existující tabulky nebo zobrazení, parametry klauzule `WHERE` musí být zadány pomocí dialogového okna Přidat `WHERE` klauzuli. Při vytváření vlastního příkazu SQL však můžete zadat parametry přímo do klauzule `WHERE` (pomocí `@parameterName` pro označení každého parametru). [Uložená procedura](http://www.awprofessional.com/articles/article.asp?p=25288&amp;rl=1) se skládá z jednoho nebo více příkazů SQL a tyto příkazy mohou být parametrizované. Parametry použité v příkazech jazyka SQL však musí být předány jako vstupní parametry do uložené procedury.
 
-Od vytvoření parametrického dotazu závisí na tom SqlDataSource s `SelectCommand` je zadaný, umožněte s podívejte se na všech třech přístupy. Chcete-li začít, otevřete `ParameterizedQueries.aspx` stránku `SqlDataSource` složky, přetáhněte z panelu nástrojů na Návrhář ovládacím prvkem SqlDataSource a nastavte jeho `ID` k `Products25BucksAndUnderDataSource`. Klikněte na odkaz Konfigurovat zdroj dat z ovládacího prvku s inteligentním. Vyberte databáze, kterou chcete použít (`NORTHWINDConnectionString`) a klikněte na tlačítko Další.
+Vzhledem k tomu, že vytvoření parametrizovaného dotazu závisí na tom, jak je `SelectCommand` SqlDataSource, se můžeme podívat na všechny tři přístupy. Chcete-li začít, otevřete stránku `ParameterizedQueries.aspx` ve složce `SqlDataSource`, přetáhněte ovládací prvek SqlDataSource ze sady nástrojů do návrháře a nastavte jeho `ID` na `Products25BucksAndUnderDataSource`. Potom klikněte na odkaz konfigurace zdroje dat z inteligentní značky Control s. Vyberte databázi, kterou chcete použít (`NORTHWINDConnectionString`) a klikněte na další.
 
-## <a name="step-1-adding-awhereclause-when-picking-the-columns-from-a-table-or-view"></a>Krok 1: Přidání`WHERE`klauzule při výběru sloupců z tabulky nebo zobrazení
+## <a name="step-1-adding-awhereclause-when-picking-the-columns-from-a-table-or-view"></a>Krok 1: Přidání klauzule`WHERE`při výběru sloupců z tabulky nebo zobrazení
 
-Při výběru dat k vrácení z databáze s ovládacím prvkem SqlDataSource, průvodce Konfigurovat zdroj dat umožňuje jednoduše vybrat sloupce, které chcete vrátit z existující tabulky nebo zobrazení (viz obrázek 1). To tedy automaticky vytvoří SQL `SELECT` příkazu, který je, co se odesílá do databáze při SqlDataSource s `Select()` vyvolání metody. Jako jsme to udělali v předchozím kurzu, vyberte tabulku produktů z rozevíracího seznamu a zkontrolujte, `ProductID`, `ProductName`, a `UnitPrice` sloupce.
+Když vyberete data, která se mají vrátit z databáze pomocí ovládacího prvku SqlDataSource, Průvodce konfigurací zdroje dat nám umožní jednoduše vybrat sloupce, které se vrátí z existující tabulky nebo zobrazení (viz obrázek 1). Tím se automaticky vytvoří příkaz SQL `SELECT`, který je odeslán do databáze při vyvolání metody SqlDataSource s `Select()`. Stejně jako v předchozím kurzu vyberte v rozevíracím seznamu tabulku Products a zaškrtněte sloupce `ProductID`, `ProductName`a `UnitPrice`.
 
-[![Vybrat sloupce, které chcete vrátit z tabulky nebo zobrazení](using-parameterized-queries-with-the-sqldatasource-vb/_static/image1.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image1.png)
+[![vybrat sloupce, které se mají vrátit z tabulky nebo zobrazení](using-parameterized-queries-with-the-sqldatasource-vb/_static/image1.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image1.png)
 
-**Obrázek 1**: Vyberte sloupce, které chcete vrátit z tabulky nebo zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image2.png))
+**Obrázek 1**: Vyberte sloupce, které se mají vrátit z tabulky nebo zobrazení ([kliknutím zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image2.png)).
 
-Zahrnout `WHERE` klauzuli v `SELECT` příkaz, klikněte na tlačítko `WHERE` tlačítko, kterým se zobrazí přidat `WHERE` klauzule dialogové okno (viz obrázek 2). Přidání parametru omezit rozsah výsledků vrácených `SELECT` dotazování, nejdřív vyberte sloupec pro filtrování dat podle. V dalším kroku vyberte operátor, který má použít pro filtrování (=, &lt;, &lt;=, &gt;, a tak dále). Nakonec vyberte zdroj s hodnotu parametru, jako ze stavu řetězce dotazu nebo v jiné relaci. Až nakonfigurujete parametr, klikněte na tlačítko Přidat jej v zahrnout `SELECT` dotazu.
+Chcete-li do příkazu `SELECT` zahrnout klauzuli `WHERE`, klikněte na tlačítko `WHERE`, které vyvolá dialogové okno Přidat `WHERE` klauzuli (viz obrázek 2). Chcete-li přidat parametr pro omezení výsledků vrácených dotazem `SELECT`, nejprve vyberte sloupec, podle kterého chcete data filtrovat. Dále vyberte operátor, který se má použít pro filtrování (=, &lt;, &lt;=, &gt;atd.). Nakonec vyberte zdroj hodnoty parametru s, například ze stavu QueryString nebo relace. Po nakonfigurování parametru klikněte na tlačítko Přidat a zahrňte ho do `SELECT`ového dotazu.
 
-V tomto příkladu vám umožňují s vrátit pouze těch výsledků kde `UnitPrice` hodnota je menší než nebo rovna 25,00 $. Proto vyberte `UnitPrice` z rozevíracího seznamu sloupců a &lt;= z rozevíracího seznamu operátor. Při použití hodnoty pevně zakódované parametru (např. $25,00) nebo pokud hodnota parametru je třeba zadat prostřednictvím kódu programu, vyberte žádný z rozevíracího seznamu zdrojů. Dále zadejte hodnotu parametru pevně zakódované v textovém poli hodnota 25,00 a dokončete proces kliknutím na tlačítko Přidat.
+V tomto příkladu vrátíme pouze výsledky, kde `UnitPrice` hodnota je menší nebo rovna $25,00. Proto vyberte `UnitPrice` z rozevíracího seznamu sloupec a &lt;= v rozevíracím seznamu operátor. Při použití pevně zakódované hodnoty parametru (například $25,00) nebo pokud má být hodnota parametru zadána programově, vyberte v rozevíracím seznamu zdroj možnost žádná. Potom do textového pole hodnota 25,00 zadejte pevně zakódovaný parametr a kliknutím na tlačítko Přidat proces dokončete.
 
-[![Omezit rozsah výsledků vrácených přidat WHERE dialogové okno – klauzule](using-parameterized-queries-with-the-sqldatasource-vb/_static/image2.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image3.png)
+[![omezit výsledky vrácené z dialogového okna Přidat klauzuli WHERE](using-parameterized-queries-with-the-sqldatasource-vb/_static/image2.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image3.png)
 
-**Obrázek 2**: Omezit výsledky vrácené přidat `WHERE` dialogové okno – klauzule ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image4.png))
+**Obrázek 2**: omezení výsledků vrácených z dialogového okna přidat klauzuli `WHERE` ([kliknutím zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image4.png))
 
-Po přidání parametru, klikněte na tlačítko OK se vraťte do Průvodce konfigurace zdroje dat. `SELECT` Příkaz v dolní části průvodce by teď měl obsahovat `WHERE` klauzule s parametrem s názvem `@UnitPrice`:
+Po přidání parametru se kliknutím na tlačítko OK vraťte do Průvodce konfigurací zdroje dat. Příkaz `SELECT` v dolní části Průvodce by teď měl obsahovat klauzuli `WHERE` s parametrem s názvem `@UnitPrice`:
 
 [!code-sql[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample3.sql)]
 
 > [!NOTE]
-> Pokud zadáte více podmínek v `WHERE` klauzule z přidat `WHERE` klauzule dialogové okno, průvodce připojí, je pomocí `AND` operátor. Pokud je potřeba zahrnout `OR` v `WHERE` klauzuli (například `WHERE UnitPrice <= @UnitPrice OR Discontinued = 1`) pak budete muset sestavit `SELECT` prostřednictvím vlastní obrazovky příkaz SQL.
+> Pokud v klauzuli `WHERE` zadáte v dialogovém okně Přidat `WHERE` klauzuli více podmínek, průvodce je spojí s operátorem `AND`. Pokud potřebujete zahrnout `OR` do klauzule `WHERE` (například `WHERE UnitPrice <= @UnitPrice OR Discontinued = 1`), musíte vytvořit `SELECT` příkaz pomocí vlastní obrazovky příkazů SQL.
 
-Dokončení konfigurace ovládacím prvkem SqlDataSource (klikněte na tlačítko Další, pak dokončete) a pak zkontrolujte SqlDataSource s deklarativní. Značky teď zahrnuje `<SelectParameters>` kolekce, která obsahuje zdroje pro parametry v `SelectCommand`.
+Dokončete konfiguraci značky SqlDataSource (klikněte na tlačítko Další a pak na Dokončit) a pak zkontrolujte deklarativní označení SqlDataSource s. Značka nyní obsahuje kolekci `<SelectParameters>`, která vypíše zdroje pro parametry v `SelectCommand`.
 
 [!code-aspx[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample4.aspx)]
 
-Při SqlDataSource s `Select()` je vyvolána metoda `UnitPrice` hodnota parametru (25,00) platí pro `@UnitPrice` parametr `SelectCommand` před odesláním do databáze. Net výsledkem je pouze produkty, menší nebo rovna $25,00 vrácená `Products` tabulky. GridView potvrdit, přidat na stránku, vázat na tento zdroj dat a pak zobrazte stránku prostřednictvím prohlížeče. Měli byste vidět pouze produkty uvedené, které jsou menší než nebo rovna $25,00, potvrdí obr. 3.
+Při vyvolání metody `Select()` SqlDataSource, je před odesláním do databáze v `SelectCommand` `@UnitPrice` použita hodnota parametru `UnitPrice` (25,00). Výsledkem je, že v `Products` tabulce jsou vráceny pouze ty produkty menší nebo rovny $25,00. Potvrďte to tak, že na stránku přidáte prvek GridView, svážete ho s tímto zdrojem dat a pak tuto stránku zobrazíte v prohlížeči. Měli byste vidět jenom ty produkty, které jsou uvedené v seznamu, který je menší nebo roven $25,00, jak obrázek 3 potvrdí.
 
-[![Jsou zobrazeny pouze ty produkty menší než nebo rovno 25,00 $](using-parameterized-queries-with-the-sqldatasource-vb/_static/image3.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image5.png)
+[![se zobrazí jenom ty produkty, které jsou menší nebo rovny $25,00.](using-parameterized-queries-with-the-sqldatasource-vb/_static/image3.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image5.png)
 
-**Obrázek 3**: Jsou zobrazeny pouze ty produkty menší než nebo rovno 25,00 $ ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image6.png))
+**Obrázek 3**: zobrazuje se jenom tento počet produktů, které jsou menší nebo rovny $25,00 ([kliknutím zobrazíte obrázek v plné velikosti).](using-parameterized-queries-with-the-sqldatasource-vb/_static/image6.png)
 
-## <a name="step-2-adding-parameters-to-a-custom-sql-statement"></a>Krok 2: Přidávání parametrů k vlastní SQL příkaz
+## <a name="step-2-adding-parameters-to-a-custom-sql-statement"></a>Krok 2: Přidání parametrů do vlastního příkazu SQL
 
-Při přidávání vlastního příkazu SQL můžete zadat `WHERE` klauzule explicitně nebo zadejte hodnotu v buňce filtr Tvůrce dotazů. Abychom to umožní s zobrazit jenom tyto produkty v ovládacího prvku GridView, jejichž ceny jsou kratší než určitá mezní hodnotu. Začněte tím, že přidáte textové pole na `ParameterizedQueries.aspx` stránku a shromažďovat tato prahová hodnota od uživatele. Nastavit textové pole s `ID` vlastnost `MaxPrice`. Přidání ovládacího prvku tlačítko a nastavte jeho `Text` vlastnosti k zobrazení odpovídající produkty.
+Při přidávání vlastního příkazu SQL můžete zadat klauzuli `WHERE` explicitně nebo zadat hodnotu do buňky filtru Tvůrce dotazů. K tomu je možné Ukázat, že se zobrazí pouze tyto produkty v prvku GridView, jejichž ceny jsou nižší než určitá prahová hodnota. Začněte přidáním textového pole na stránku `ParameterizedQueries.aspx`, aby se tato prahová hodnota z uživatele shromáždila. Nastavte vlastnost TextBox s `ID` na `MaxPrice`. Přidejte webový ovládací prvek tlačítko a nastavte jeho vlastnost `Text`, aby se zobrazily odpovídající produkty.
 
-V dalším kroku přetáhněte na stránku GridView a od jeho inteligentních značek můžete vytvořit nové SqlDataSource s názvem `ProductsFilteredByPriceDataSource`. Z Průvodce konfigurace zdroje dat, přejděte k určení vlastní příkaz SQL nebo uloženou proceduru obrazovky (viz obrázek 4) a zadejte následující příkaz:
+Dále přetáhněte prvek GridView na stránku a z jeho inteligentní značky vyberte, chcete-li vytvořit novou SqlDataSource s názvem `ProductsFilteredByPriceDataSource`. V Průvodci konfigurací zdroje dat přejděte na obrazovku zadat vlastní příkaz SQL nebo uloženou proceduru (viz obrázek 4) a zadejte následující dotaz:
 
 [!code-sql[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample5.sql)]
 
-Po zadání dotazu (ručně nebo pomocí Tvůrce dotazů), klikněte na tlačítko Další.
+Po zadání dotazu (buď ručně nebo prostřednictvím Tvůrce dotazů) klikněte na další.
 
-[![Vrátit pouze produkty, menší než hodnota parametru](using-parameterized-queries-with-the-sqldatasource-vb/_static/image4.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image7.png)
+[![vrátit pouze ty produkty, které jsou menší nebo rovny hodnotě parametru](using-parameterized-queries-with-the-sqldatasource-vb/_static/image4.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image7.png)
 
-**Obrázek 4**: Vrácení pouze těch produkty menší než nebo rovno hodnota parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image8.png))
+**Obrázek 4**: vrácení pouze těch produktů, které jsou menší nebo rovny hodnotě parametru ([kliknutím zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image8.png))
 
-Protože dotaz obsahuje parametry, na další obrazovce Průvodce nám vyzve k zadání zdrojové hodnoty parametrů. Vyberte ovládací prvek ze seznamu parametrů zdroj rozevíracího seznamu a `MaxPrice` (ovládací prvek TextBox s `ID` hodnota) z rozevíracího seznamu ControlID. Můžete také zadat volitelnou výchozí hodnotu pro použití v případě, kde uživatel nebyl zadali jakýkoli text do `MaxPrice` textového pole. Prozatím, nezadávejte výchozí hodnotu.
+Vzhledem k tomu, že dotaz obsahuje parametry, zobrazí další obrazovka v průvodci nápovědu pro zdroj hodnot parametrů. Z rozevíracího seznamu zdroj parametrů vyberte ovládací prvek a `MaxPrice` (ovládací prvek TextBox s `ID` hodnota) z rozevíracího seznamu ControlID. Můžete také zadat volitelnou výchozí hodnotu, která se použije v případě, že uživatel nezadal žádný text do textového pole `MaxPrice`. V tomto časovém období nezadávejte výchozí hodnotu.
 
-[![MaxPrice TextBox s vlastností Text slouží jako zdroj parametru](using-parameterized-queries-with-the-sqldatasource-vb/_static/image5.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image9.png)
+[![vlastnost text TextBox MaxPrice s textem se používá jako zdroj parametru.](using-parameterized-queries-with-the-sqldatasource-vb/_static/image5.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image9.png)
 
-**Obrázek 5**: `MaxPrice` Textové pole s `Text` vlastnost se používá jako zdroj parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image10.png))
+**Obrázek 5**: vlastnost `MaxPrice` TextBox s `Text` se používá jako zdroj parametru ([kliknutím zobrazíte obrázek v plné velikosti).](using-parameterized-queries-with-the-sqldatasource-vb/_static/image10.png)
 
-Dokončete průvodce Konfigurace zdroje dat kliknutím na další a pak dokončit. Deklarativní ovládacího prvku GridView, textového pole, tlačítka a SqlDataSource takto:
+Dokončete Průvodce konfigurací zdroje dat kliknutím na tlačítko Další a potom na Dokončit. Následuje deklarativní označení pro prvek GridView, TextBox, Button a SqlDataSource:
 
 [!code-aspx[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample6.aspx)]
 
-Všimněte si, že parametr ve třídě SqlDataSource s `<SelectParameters>` oddíl je `ControlParameter`, což zahrnuje další vlastnosti, jako je `ControlID` a `PropertyName`. Při SqlDataSource s `Select()` je vyvolána metoda `ControlParameter` vezme hodnoty ze zadané vlastnosti ovládacího prvku webové a přiřadí ji k odpovídajícím parametrem `SelectCommand`. V tomto příkladu `MaxPrice` s vlastnost Text slouží jako `@MaxPrice` hodnotu parametru.
+Všimněte si, že parametr v sekci `<SelectParameters>` SqlDataSource je `ControlParameter`, která zahrnuje další vlastnosti, jako je `ControlID` a `PropertyName`. Když je vyvolána metoda `Select()` SqlDataSource, `ControlParameter` převede hodnotu ze zadané vlastnosti ovládacího prvku web a přiřadí ji k odpovídajícímu parametru v `SelectCommand`. V tomto příkladu se jako hodnota parametru `@MaxPrice` používá vlastnost text `MaxPrice` s.
 
-Chcete-li zobrazit tuto stránku prostřednictvím prohlížeče chvíli trvat. Při první návštěvě stránky nebo pokaždé, když `MaxPrice` textového pole chybí hodnota žádné záznamy se zobrazují v prvku GridView.
+Tuto stránku si můžete zobrazit pomocí prohlížeče. Při první návštěvě stránky nebo pokaždé, když `MaxPrice` textového pole chybí hodnota, se v prvku GridView zobrazí žádné záznamy.
 
-[![Nejsou žádné záznamy, že se že zobrazí při the MaxPrice textové pole je prázdné](using-parameterized-queries-with-the-sqldatasource-vb/_static/image6.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image11.png)
+[Když je textové pole MaxPrice prázdné, neobjeví se žádné záznamy. ![](using-parameterized-queries-with-the-sqldatasource-vb/_static/image6.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image11.png)
 
-**Obrázek 6**: Nejsou žádné záznamy zobrazit, když `MaxPrice` textové pole je prázdné ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image12.png))
+**Obrázek 6**: když je textové pole `MaxPrice` prázdné ([kliknutím zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image12.png)), nezobrazí se žádné záznamy.
 
-Jsou zobrazeny žádné produkty. Důvodem je to proto, že ve výchozím nastavení, je převedena na prázdný řetězec pro hodnotu parametru do databáze `NULL` hodnotu. Od porovnání `[UnitPrice] <= NULL` vždycky vyhodnotí jako False, nevrátí žádné výsledky.
+Důvod, proč nejsou zobrazeny žádné produkty, je, že ve výchozím nastavení je prázdný řetězec pro hodnotu parametru převeden na hodnotu `NULL` databáze. Vzhledem k tomu, že se porovnání `[UnitPrice] <= NULL` vždy vyhodnocuje jako false, nejsou vráceny žádné výsledky.
 
-Zadejte hodnotu do textového pole, jako je 5.00 a klikněte na tlačítko Zobrazit odpovídající produkty. Na zpětné volání ve třídě SqlDataSource informuje o tom, že se že změnilo v prvku GridView, že jedna z jeho zdroje parametru. V důsledku toho prvku GridView znovu připojí k zobrazování těchto produktů, které je menší než nebo rovna $5.00 ve třídě SqlDataSource.
+Do textového pole zadejte hodnotu, třeba 5,00, a klikněte na tlačítko Zobrazit porovnání produktů. Při zpětném volání, třída SqlDataSource informuje prvek GridView, že došlo ke změně některého z jeho zdrojů parametrů. V důsledku toho se prvek GridView znovu připojí ke třídě SqlDataSource a zobrazí tyto produkty menší nebo rovny $5,00.
 
-[![Produkty menší než nebo rovno $5.00 jsou zobrazeny.](using-parameterized-queries-with-the-sqldatasource-vb/_static/image7.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image13.png)
+[Zobrazí se ![é produkty menší nebo rovny $5,00.](using-parameterized-queries-with-the-sqldatasource-vb/_static/image7.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image13.png)
 
-**Obrázek 7**: Se zobrazují produkty menší než nebo rovno 5.00 $ ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image14.png))
+**Obrázek 7**: zobrazí se produkty, které jsou menší nebo rovny $5,00 ([kliknutím zobrazíte obrázek v plné velikosti).](using-parameterized-queries-with-the-sqldatasource-vb/_static/image14.png)
 
-## <a name="initially-displaying-all-products"></a>Zpočátku zobrazuje všechny produkty
+## <a name="initially-displaying-all-products"></a>Počáteční zobrazení všech produktů
 
-Namísto zobrazení žádné produkty při prvním načtení stránky, budeme chtít zobrazit *všechny* produktů. Jedním ze způsobů, chcete-li vypsat všechny produkty pokaždé, když `MaxPrice` textové pole je prázdné, je nastavit výchozí hodnotu parametru s některé neskutečně vysokou hodnotu, jako je 1000000, protože s nepravděpodobné, že Northwind Traders se někdy mají inventarizovat jejichž cena za jednotku překračuje $ 1 000 000. Tento přístup je však shortsighted a nemusí fungovat v jiných situacích.
+Místo zobrazování žádného produktu při prvním načtení stránky můžeme zobrazit *všechny* produkty. Jedním ze způsobů, jak zobrazit seznam všech produktů pokaždé, když je textové pole `MaxPrice` prázdné, je nastavit výchozí hodnotu parametru s některými neskutečně vysokou hodnotou, jako je 1000000, protože je pravděpodobné, že v seznamu Northwind Traders bude někdy inventář, jehož jednotková cena překračuje $1 000 000. Tento přístup je ale shortsighted a nemusí fungovat v jiných situacích.
 
-V předchozích kurzech - [deklarované parametry](../basic-reporting/declarative-parameters-vb.md) a [filtrování záznamů Master/Detail s DropDownList](../masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md) jsme se potýkají s podobný problém. Existuje naším řešením bylo vložte tuto logiku vrstvy obchodní logiky. Konkrétně BLL prozkoumat příchozí hodnoty a pokud se jednalo `NULL` nebo některé vyhrazenou hodnotou, volání, byla směrována do vrstvy DAL metodu, která vrátí všechny záznamy. Pokud hodnota příchozí běžné hodnoty filtrování, došlo k volání metody DAL, který spouští příkaz SQL, který používá parametrizované `WHERE` klauzule se zadanou hodnotou.
+V předchozích kurzech – [deklarativní parametry](../basic-reporting/declarative-parameters-vb.md) a [filtrování hlavního/podrobného filtru s ovládacím prvkem DropDownList](../masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md) jsme dělali s podobným problémem. Naše řešení mělo tuto logiku vložit do vrstvy obchodní logiky. Konkrétně knihoven BLL zkontroloval příchozí hodnotu, a pokud `NULL` nebo nějaké rezervované hodnoty, bylo volání směrováno na metodu DAL, která vrátila všechny záznamy. Pokud byla vstupní hodnota normální hodnotou filtrování, bylo provedeno volání metody DAL, která provedla příkaz jazyka SQL, který použil parametrizovanou klauzuli `WHERE` se zadanou hodnotou.
 
-Bohužel jsme se nebude používat architekturu při použití ve třídě SqlDataSource. Místo toho, musíme přizpůsobit příkaz jazyka SQL a monetizace zkopírovat všechny záznamy, pokud `@MaximumPrice` parametr `NULL` nebo některé rezervovanou hodnotu. Pro toto cvičení, vám umožňují s jste ho tak, že pokud `@MaximumPrice` rovná parametru `-1.0`, pak *všechny* záznamy mají být vráceny (`-1.0` funguje jako rezervovanou hodnotu, protože žádný produkt, který může mít negativní `UnitPrice`hodnotu). K tomu můžeme použít následující příkaz SQL:
+Bohužel při použití SqlDataSource tuto architekturu vynecháváme. Místo toho je potřeba přizpůsobit příkaz SQL inteligentnímu převzetí všech záznamů, pokud je parametr `@MaximumPrice` `NULL` nebo některá rezervovaná hodnota. Pro účely tohoto cvičení ji nechte mít, aby v případě, že je parametr `@MaximumPrice` stejný jako `-1.0`, byly vráceny *všechny* záznamy (`-1.0` fungovat jako rezervovaná hodnota, protože žádný produkt nemůže mít záporný `UnitPrice` hodnotu). K tomu můžeme použít následující příkaz SQL:
 
 [!code-sql[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample7.sql)]
 
-To `WHERE` klauzule vrátí *všechny* zaznamená, pokud `@MaximumPrice` rovná parametru `-1.0`. Pokud hodnota parametru není `-1.0`, pouze produkty, jejichž `UnitPrice` je menší než nebo rovna hodnotě `@MaximumPrice` se vrátí hodnota parametru. Tím, že nastavíte na výchozí hodnotu `@MaximumPrice` parametr `-1.0`, při prvním načtení stránky (nebo vždy, když `MaxPrice` textové pole je prázdné), `@MaximumPrice` bude mít hodnotu `-1.0` a zobrazí všechny produkty.
+Tato klauzule `WHERE` vrátí *všechny* záznamy, pokud se parametr `@MaximumPrice` rovná `-1.0`. Pokud hodnota parametru není `-1.0`, vrátí se pouze ty produkty, jejichž `UnitPrice` je menší nebo rovno hodnotě `@MaximumPrice` parametru. Nastavením výchozí hodnoty parametru `@MaximumPrice` na `-1.0`, při prvním načtení stránky (nebo pokaždé, když je pole `MaxPrice` prázdné) `@MaximumPrice` bude mít hodnotu `-1.0` a zobrazí se všechny produkty.
 
-[![Teď všechny produkty, které jsou zobrazeny při the MaxPrice textové pole je prázdné](using-parameterized-queries-with-the-sqldatasource-vb/_static/image8.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image15.png)
+[Když je textové pole MaxPrice prázdné, ![se teď všechny produkty zobrazovat.](using-parameterized-queries-with-the-sqldatasource-vb/_static/image8.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image15.png)
 
-**Obrázek 8**: Teď všechny produkty se zobrazí, když `MaxPrice` textové pole je prázdné ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image16.png))
+**Obrázek 8**: teď se zobrazí všechny produkty, když je textové pole `MaxPrice` prázdné ([kliknutím zobrazíte obrázek v plné velikosti).](using-parameterized-queries-with-the-sqldatasource-vb/_static/image16.png)
 
-Existuje několik upozornění si s tímto přístupem. Nejprve dobré si uvědomit, že je datový typ parametru s vyvozena na základě jeho použití s v dotazu SQL. Pokud změníte `WHERE` klauzule z `@MaximumPrice = -1.0` k `@MaximumPrice = -1`, modul runtime zpracovává parametr jako celé číslo. Pokud se pokusíte přiřadit `MaxPrice` textového pole na hodnotu decimal (např. 5.00), dojde k chybě protože 5.00 nelze převést na celé číslo. Chcete-li to napravit, buď Ujistěte se, že používáte `@MaximumPrice = -1.0` v `WHERE` klauzule nebo vyšší, nastavte `ControlParameter` objektu s `Type` vlastnost na desetinné číslo.
+S tímto přístupem je potřeba vzít v paměti několik aspektů. Nejprve si pojistěte, aby datový typ parametru s byl odvozen využitím IT v dotazu SQL. Změníte-li klauzuli `WHERE` z `@MaximumPrice = -1.0` na `@MaximumPrice = -1`, modul runtime zpracuje parametr jako celé číslo. Pokud se pak pokusíte přiřadit `MaxPrice` TextBox k desítkové hodnotě (například 5,00), dojde k chybě, protože nemůže převést 5,00 na celé číslo. Chcete-li tento problém napravit, buď se ujistěte, že používáte `@MaximumPrice = -1.0` v klauzuli `WHERE` nebo ještě lépe nastavte vlastnost `ControlParameter` objektů s `Type` na hodnotu Decimal.
 
-Za druhé, tak, že přidáte `OR @MaximumPrice = -1.0` k `WHERE` klauzule dotazu modul nemůže použít index na `UnitPrice` (za předpokladu, že jeden existuje), což by vedlo k prohledávání tabulky. Pokud jsou dostatečně velký počet záznamů v může ovlivnit výkon `Products` tabulky. Lepším řešením může být přesunout tuto logiku do uložené procedury kde `IF` by provést příkaz `SELECT` dotaz z `Products` tabulky bez `WHERE` klauzuli, pokud všechny záznamy se muset vrátit, nebo jeden jehož `WHERE` klauzule WHERE obsahuje pouze `UnitPrice` kritéria, tak, aby indexu můžete použít.
+Po přidání `OR @MaximumPrice = -1.0` do klauzule `WHERE` nemůže dotazovací modul použít index v `UnitPrice` (za předpokladu, že existuje), což by vedlo k prohledávání tabulky. To může mít vliv na výkon, pokud je v `Products` tabulce dostatečně velký počet záznamů. Lepším přístupem je přesunutí této logiky do úložné procedury, kde příkaz `IF` buď provede `SELECT` dotaz z tabulky `Products` bez klauzule `WHERE`, pokud se mají vrátit všechny záznamy, nebo jedna z jejích klauzulí `WHERE` obsahuje pouze kritéria `UnitPrice`, aby bylo možné použít index.
 
-## <a name="step-3-creating-and-using-parameterized-stored-procedures"></a>Krok 3: Vytváření a používání parametrizované uložené procedury
+## <a name="step-3-creating-and-using-parameterized-stored-procedures"></a>Krok 3: vytvoření a použití parametrizovaných uložených procedur
 
-Uložené procedury může obsahovat sadu vstupní parametry, které je pak možné použít v příkazů SQL definovaný v rámci uložené procedury. Při konfiguraci ve třídě SqlDataSource použití uložené procedury, která přijímá vstupní parametry, lze tyto hodnoty parametrů zadat pomocí stejné techniky stejně jako u příkazů SQL ad-hoc.
+Uložené procedury mohou zahrnovat sadu vstupních parametrů, které lze použít v příkazech jazyka SQL definovaných v rámci uložené procedury. Při konfiguraci aplikace SqlDataSource tak, aby používala uloženou proceduru, která přijímá vstupní parametry, lze tyto hodnoty parametrů zadat stejným způsobem jako s příkazy SQL ad-hoc.
 
-Pro ilustraci použití uložených procedur v ovládacím prvkem SqlDataSource umožňují s vytvořit novou úložnou proceduru v databázi Northwind s názvem `GetProductsByCategory`, který přijme parametr s názvem `@CategoryID` a vrátí všechny sloupce produkty jehož `CategoryID` odpovídá sloupci `@CategoryID`. Vytvoření uložené procedury, přejděte do Průzkumníka serveru a k podrobnostem `NORTHWND.MDF` databáze. (Pokud don t zobrazí v Průzkumníku serveru, otevřete ho tak, že přejdete do nabídky zobrazení a výběrem možnosti Průzkumníka serveru.)
+Chcete-li ilustrovat použití uložených procedur ve třídě SqlDataSource, je nutné vytvořit novou uloženou proceduru v databázi Northwind s názvem `GetProductsByCategory`, která přijímá parametr s názvem `@CategoryID` a vrátí všechny sloupce produktů, jejichž `CategoryID` sloupec odpovídá `@CategoryID`. Chcete-li vytvořit uloženou proceduru, přejděte do Průzkumník serveru a přejděte do databáze `NORTHWND.MDF`. (Pokud nevidíte Průzkumník serveru, přepněte ho do nabídky zobrazení a vyberte možnost Průzkumník serveru.)
 
-Z `NORTHWND.MDF` databázi, klikněte pravým tlačítkem na složku uložené procedury, zvolte možnost Přidat novou uloženou proceduru a zadejte následující syntaxi:
+Z databáze `NORTHWND.MDF` klikněte pravým tlačítkem na složku uložené procedury, vyberte možnost Přidat novou uloženou proceduru a zadejte následující syntaxi:
 
 [!code-sql[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample8.sql)]
 
-Klikněte na tlačítko Uložit ikona (nebo Ctrl + S) Chcete-li uložit uloženou proceduru. Uložené procedury můžete otestovat tak, že kliknete pravým tlačítkem ve složce uložené procedury a zvolíte Execute. To vás vyzve k zadání parametrů uložené procedury s (`@CategoryID`, v tomto případě), po který výsledky se zobrazí v okně výstup.
+Uložte uloženou proceduru kliknutím na ikonu Uložit (nebo CTRL + S). Uloženou proceduru můžete otestovat tak, že na ni kliknete pravým tlačítkem ze složky uložené procedury a kliknete na spustit. Zobrazí se výzva k zadání parametrů uložené procedury (`@CategoryID`v této instanci), po jejichž uplynutí se výsledky zobrazí v okně výstup.
 
-[![GetProductsByCategory uložené procedury při spuštění s @CategoryID 1](using-parameterized-queries-with-the-sqldatasource-vb/_static/image9.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image17.png)
+[![uloženou proceduru GetProductsByCategory při spuštění s @CategoryID 1](using-parameterized-queries-with-the-sqldatasource-vb/_static/image9.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image17.png)
 
-**Obrázek 9**: `GetProductsByCategory` Uložená procedura při spuštění s `@CategoryID` 1 ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image18.png))
+**Obrázek 9**: `GetProductsByCategory` uloženou proceduru při spuštění s `@CategoryID` 1 ([kliknutím zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image18.png))
 
-Umožní použít tuto uloženou proceduru k zobrazení všech produktů do kategorie Nápoje v GridView s. Přidání nového ovládacího prvku GridView na stránku a jeho vazbu na nové třídě SqlDataSource s názvem `BeverageProductsDataSource`. Pokračovat k určení vlastní příkaz SQL nebo uloženou proceduru obrazovky, vyberte přepínač uložené procedury a vybrat `GetProductsByCategory` uloženou proceduru z rozevíracího seznamu.
+Tuto uloženou proceduru můžete použít k zobrazení všech produktů v kategorii nápoje v prvku GridView. Přidejte na stránku nový prvek GridView a vytvořte jeho vazby k nové třídě SqlDataSource s názvem `BeverageProductsDataSource`. Přejděte na obrazovku zadat vlastní příkaz SQL nebo uloženou proceduru, vyberte přepínač uložené procedury a z rozevíracího seznamu vyberte `GetProductsByCategory` uloženou proceduru.
 
-[![Vyberte GetProductsByCategory uloženou proceduru z rozevíracího seznamu](using-parameterized-queries-with-the-sqldatasource-vb/_static/image10.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image19.png)
+[![v rozevíracím seznamu vyberte uloženou proceduru GetProductsByCategory.](using-parameterized-queries-with-the-sqldatasource-vb/_static/image10.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image19.png)
 
-**Obrázek 10**: Vyberte `GetProductsByCategory` uloženou proceduru z rozevíracího seznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image20.png))
+**Obrázek 10**: v rozevíracím seznamu vyberte uloženou proceduru `GetProductsByCategory` ([kliknutím zobrazíte obrázek v plné velikosti).](using-parameterized-queries-with-the-sqldatasource-vb/_static/image20.png)
 
-Protože uložené procedury přijímá jako vstupní parametr (`@CategoryID`), klikněte na další výzvy nám jako zdroj pro tuto hodnotu s parametrem. Do této skupiny nápoje `CategoryID` 1, tak ponechte žádný parametr zdroj rozevíracího seznamu a zadejte do textového pole Výchozí hodnota 1.
+Vzhledem k tomu, že úložná procedura akceptuje vstupní parametr (`@CategoryID`), zobrazí se kliknutím na další výzva k zadání zdroje pro tuto hodnotu parametru s. `CategoryID` nápoje mají hodnotu 1, takže rozevírací seznam zdroj parametrů ponechte v žádné a zadejte hodnotu 1 do textového pole DefaultValue.
 
-[![Pomocí pevně zakódovaného hodnotu 1 vrátit produkty do kategorie Nápoje](using-parameterized-queries-with-the-sqldatasource-vb/_static/image11.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image21.png)
+[pro vrácení produktů v kategorii nápoje ![použít pevně kódovanou hodnotu 1.](using-parameterized-queries-with-the-sqldatasource-vb/_static/image11.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image21.png)
 
-**Obrázek 11**: Vrátí produkty do kategorie Nápoje pomocí Hard-Coded hodnotu 1 ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image22.png))
+**Obrázek 11**: použití pevně zakódované hodnoty 1 pro vrácení produktů v kategorii nápoje ([kliknutím zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image22.png))
 
-Jak ukazuje následující deklarativní, při použití uložené procedury SqlDataSource s `SelectCommand` je nastavena na název uložené procedury a [ `SelectCommandType` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.selectcommandtype.aspx) je nastavena na `StoredProcedure`, která udává který `SelectCommand` je název uložené procedury, spíše než ad-hoc příkazu SQL.
+Jak ukazuje následující deklarativní označení, při použití uložené procedury je vlastnost SqlDataSource s `SelectCommand` nastavena na název uložené procedury a [vlastnost`SelectCommandType`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.selectcommandtype.aspx) je nastavena na hodnotu `StoredProcedure`, což značí, že `SelectCommand` je název uložené procedury a nikoli příkaz SQL ad-hoc.
 
 [!code-aspx[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample9.aspx)]
 
-Otestování stránky v prohlížeči. Jsou zobrazeny pouze produkty, které patří do kategorie Nápoje, i když *všechny* produktu jsou zobrazena pole od `GetProductsByCategory` uloženou proceduru vrátí všechny sloupce `Products` tabulky. Můžeme samozřejmě může omezit nebo přizpůsobit pole zobrazené v prvku GridView z dialogového okna s upravit sloupce prvku GridView.
+Otestujte stránku v prohlížeči. Zobrazí se pouze ty produkty, které patří do kategorie nápoje, i když se zobrazí *všechna* pole produktu, protože `GetProductsByCategory` uložená procedura vrátí všechny sloupce z tabulky `Products`. Můžeme samozřejmě omezit nebo přizpůsobit pole zobrazená v prvku GridView v dialogovém okně Upravit sloupce GridView.
 
-[![Jsou zobrazeny všechny nápoje](using-parameterized-queries-with-the-sqldatasource-vb/_static/image12.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image23.png)
+[![zobrazí se všechny nápoje.](using-parameterized-queries-with-the-sqldatasource-vb/_static/image12.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image23.png)
 
-**Obrázek 12**: Jsou zobrazeny všechny nápoje ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image24.png))
+**Obrázek 12**: zobrazí se všechny nápoje ([kliknutím zobrazíte obrázek v plné velikosti).](using-parameterized-queries-with-the-sqldatasource-vb/_static/image24.png)
 
-## <a name="step-4-programmatically-invoking-a-sqldatasource-sselectstatement"></a>Krok 4: Programová volání SqlDataSource s`Select()`– příkaz
+## <a name="step-4-programmatically-invoking-a-sqldatasource-sselectstatement"></a>Krok 4: vyvolání příkazu`Select()`SqlDataSource s pomocí kódu programu
 
-V příkladech jsme ve zatím viděli v předchozím kurzu a v tomto kurzu jste SqlDataSource ovládací prvky svázané s přímo do GridView. Data ovládacího prvku s SqlDataSource, ale prostřednictvím kódu programu přístupný a uvedené v kódu. To může být zvláště užitečné při dotazování na data budete muset zkontrolovat, ale don t potřebovat zobrazit ho. Namísto nutnosti psát všechny často používaný kód ADO.NET pro připojení k databázi, zadejte příkaz a načtení výsledků, můžete nechat ve třídě SqlDataSource zpracovat tento monotónní kód.
+Příklady, které jsme si poznamenali v předchozím kurzu, a v tomto kurzu mají i nadále vázané ovládací prvky SqlDataSource přímo na prvek GridView. Data ovládacího prvku SqlDataSource však lze programově přistupovat a zobrazit v kódu. To může být zvláště užitečné, když potřebujete zadat dotaz na data, abyste je zkontrolovali, ale nemusíte je zobrazit. Místo toho, abyste museli zapisovat všechen často používaný kód ADO.NET pro připojení k databázi, zadejte příkaz a načtěte výsledky. můžete tak nechat, aby tento kód monotonous zpracovala třída SqlDataSource.
 
-Pro ilustraci práci s SqlDataSource s dat prostřednictvím kódu programu, představte si, že vašemu nadřízenému dosáhla jste se žádostí o vytvoření webové stránky, která zobrazuje název náhodně vybranou kategorii a její související produkty. To znamená, když uživatel navštíví tuto stránku, chceme náhodně zvolit některou kategorii ze `Categories` tabulky, zobrazovaný název kategorie a potom zobrazí seznam produktů, které patří do této kategorie spadají.
+Představte si, že se vám při práci s daty ve třídě SqlDataSource s data připravuje váš nadřízený, na který se přibližuje požadavek na vytvoření webové stránky, která zobrazuje název náhodně vybrané kategorie a jejích přidružených produktů. To znamená, že když uživatel navštíví tuto stránku, chceme v tabulce `Categories` náhodně zvolit kategorii, zobrazit název kategorie a pak uvést seznam produktů patřících do této kategorie.
 
-K tomu potřebujeme dva SqlDataSource ovládací prvky jeden a zkopírovat náhodné kategorie z `Categories` zobrazíte kategorie produktů s tabulkami. Vytvoříme ve třídě SqlDataSource, který načte záznam náhodné kategorie v tomto kroku; Krok 5 zjistí vytváření ve třídě SqlDataSource, který načte produkty s kategorie.
+Abychom to dosáhli, potřebujeme dva ovládací prvky SqlDataSource pro vytvoření náhodné kategorie z `Categories` tabulky a další pro získání produktů kategorie s. Vytvoříme SqlDataSource, která v tomto kroku načte náhodný záznam kategorie. Krok 5 se zabývá vytvářením značky SqlDataSource, která načítá produkty kategorie s.
 
-Začněte přidáním SqlDataSource k `ParameterizedQueries.aspx` a nastavte jeho `ID` k `RandomCategoryDataSource`. Nakonfigurujte ji tak, aby používala následujícího dotazu SQL:
+Začněte přidáním SqlDataSource do `ParameterizedQueries.aspx` a nastavte jeho `ID` na `RandomCategoryDataSource`. Nakonfigurujte ji tak, aby používala následující dotaz SQL:
 
 [!code-sql[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample10.sql)]
 
-`ORDER BY NEWID()` Vrátí záznamy seřadit v náhodném pořadí (viz [použití `NEWID()` náhodně řazení záznamů](http://www.sqlteam.com/item.asp?ItemID=8747)). `SELECT TOP 1` Vrátí první záznam ze sady výsledků. V kostce řečeno, tento dotaz vrátí `CategoryID` a `CategoryName` hodnot sloupců z jedné, náhodně vybrané kategorie.
+`ORDER BY NEWID()` vrátí záznamy seřazené v náhodném pořadí (viz [použití `NEWID()` k náhodnému řazení záznamů](http://www.sqlteam.com/item.asp?ItemID=8747)). `SELECT TOP 1` vrátí první záznam ze sady výsledků dotazu. Tento dotaz společně vloží hodnoty sloupce `CategoryID` a `CategoryName` z jedné náhodně vybrané kategorie.
 
-Zobrazíte kategorie s `CategoryName` hodnota, přidání ovládacího prvku popisek na stránku a nastavit jeho `ID` vlastnost `CategoryNameLabel`a vymažte její `Text` vlastnost. Data můžete programově načítat ze ovládacím prvkem SqlDataSource, potřebujeme k vyvolání jeho `Select()` metoda. [ `Select()` Metoda](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.select.aspx) očekává, že jeden vstupní parametr typu [ `DataSourceSelectArguments` ](https://msdn.microsoft.com/library/system.web.ui.datasourceselectarguments.aspx), která určuje, jak by měl být messaged data před vrácením. Můžete uvést pokyny pro řazení a filtrování dat a používá data, která webové ovládací prvky při řazení nebo procházení dat z ovládacího prvku SqlDataSource po stránkách. V našem příkladu však budeme zadávat t potřeba data upravit před vrácením a proto bude předáno `DataSourceSelectArguments.Empty` objektu.
+Chcete-li zobrazit kategorii s `CategoryName` hodnotou, přidejte na stránku webový ovládací prvek popisek, nastavte jeho vlastnost `ID` na hodnotu `CategoryNameLabel`a vymažte jeho vlastnost `Text`. Abychom mohli programově načíst data z ovládacího prvku SqlDataSource, musíme vyvolat jeho `Select()` metodu. [Metoda`Select()`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.select.aspx) očekává jeden vstupní parametr typu [`DataSourceSelectArguments`](https://msdn.microsoft.com/library/system.web.ui.datasourceselectarguments.aspx), který určuje, jak se mají data před vrácením vrátit. To může zahrnovat pokyny pro řazení a filtrování dat a používá se při řazení nebo stránkování přes data z ovládacího prvku SqlDataSource k datovým webovým ovládacím prvkům. Pro náš příklad ale potřebujeme, aby data byla před vrácením změněna, a proto budou předána do objektu `DataSourceSelectArguments.Empty`.
 
-`Select()` Metoda vrátí objekt, který implementuje `IEnumerable`. Vrácený přesný typ závisí na hodnotě ovládacím prvkem SqlDataSource s [ `DataSourceMode` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.datasourcemode.aspx). Jak je popsáno v předchozím kurzu, může tato vlastnost nastavená na hodnotu buď `DataSet` nebo `DataReader`. Pokud nastavena na `DataSet`, `Select()` metoda vrátí hodnotu [DataView](https://msdn.microsoft.com/library/01s96x0z.aspx) objekt; Pokud `DataReader`, vrátí objekt, který implementuje [ `IDataReader` ](https://msdn.microsoft.com/library/system.data.idatareader.aspx). Protože `RandomCategoryDataSource` SqlDataSource má jeho `DataSourceMode` nastavenou na `DataSet` (výchozí), budeme pracovat s objektem DataView.
+Metoda `Select()` vrátí objekt, který implementuje `IEnumerable`. Přesný typ vrácený závisí na hodnotě [vlastnosti`DataSourceMode`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.datasourcemode.aspx)ovládacího prvku SqlDataSource. Jak je popsáno v předchozím kurzu, tato vlastnost může být nastavena na hodnotu buď `DataSet`, nebo `DataReader`. Pokud je nastavena na `DataSet`, metoda `Select()` vrátí objekt [DataView](https://msdn.microsoft.com/library/01s96x0z.aspx) ; Pokud je nastaveno na `DataReader`, vrátí objekt, který implementuje [`IDataReader`](https://msdn.microsoft.com/library/system.data.idatareader.aspx). Vzhledem k tomu, že `RandomCategoryDataSource` SqlDataSource má svou vlastnost `DataSourceMode` nastavenou na `DataSet` (výchozí), budeme pracovat s objektem DataView.
 
-Následující kód ukazuje, jak načíst záznamy ze `RandomCategoryDataSource` SqlDataSource jako zobrazení dat a také způsob čtení `CategoryName` hodnota sloupce z prvního řádku DataView:
+Následující kód ilustruje, jak načíst záznamy z `RandomCategoryDataSource` SqlDataSource jako objekt DataView a jak načíst `CategoryName` hodnotu sloupce z prvního řádku DataView:
 
 [!code-vb[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample11.vb)]
 
-`randomCategoryView(0)` Vrátí první `DataRowView` v DataView. `randomCategoryView(0)("CategoryName")` Vrátí hodnotu `CategoryName` sloupec v této první řádek. Všimněte si, že je DataView volného typu. Chcete-li odkazovat na konkrétní sloupce potřebujeme předat název sloupce jako řetězec (v tomto případě CategoryName). Obrázek 13 zobrazuje zpráva zobrazená v `CategoryNameLabel` při zobrazení stránky. Samozřejmě kategorie skutečný název zobrazený náhodně zvolí `RandomCategoryDataSource` SqlDataSource na každé návštěvě stránky (včetně postbacků).
+`randomCategoryView(0)` vrátí první `DataRowView` v objektu DataView. `randomCategoryView(0)("CategoryName")` vrátí hodnotu sloupce `CategoryName` v tomto prvním řádku. Všimněte si, že DataView je volně typované. Chcete-li odkazovat na konkrétní hodnotu sloupce, musíme předat název sloupce jako řetězec (CategoryName, v tomto případě). Obrázek 13 zobrazuje zprávu zobrazenou v `CategoryNameLabel` při zobrazení stránky. Skutečný název kategorie se samozřejmě náhodně vybere na základě `RandomCategoryDataSource` SqlDataSource na každé návštěvě stránky (včetně postbacků).
 
-[![S náhodně vybrané kategorie, název se zobrazí.](using-parameterized-queries-with-the-sqldatasource-vb/_static/image13.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image25.png)
+[![se zobrazí náhodně vybraný název kategorie s.](using-parameterized-queries-with-the-sqldatasource-vb/_static/image13.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image25.png)
 
-**Obrázek 13**: S náhodně vybrané kategorie, název se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image26.png))
+**Obrázek 13**: zobrazí se náhodně vybraný název kategorie s ([kliknutím zobrazíte obrázek v plné velikosti).](using-parameterized-queries-with-the-sqldatasource-vb/_static/image26.png)
 
 > [!NOTE]
-> Pokud s ovládacím prvkem SqlDataSource `DataSourceMode` nastavili vlastnost `DataReader`, návratová hodnota z `Select()` metoda byste potřebovali přetypovat `IDataReader`. Ke čtení `CategoryName` hodnota sloupce z prvního řádku, jsme d použijte kód jako:
+> Pokud byla vlastnost `DataSourceMode` ovládacího prvku SqlDataSource nastavena na hodnotu `DataReader`, návratová hodnota z metody `Select()` by musela být převedena na `IDataReader`. Pro načtení `CategoryName` hodnoty sloupce z prvního řádku používáme kód jako:
 
 [!code-vb[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample12.vb)]
 
-S ovládacím prvkem SqlDataSource náhodně vyberete kategorii, můžeme znovu připraven k přidání prvku GridView, který obsahuje seznam kategorií s produkty.
+Při náhodném výběru kategorie se znovu připravujeme k přidání prvku GridView, který obsahuje seznam produktů kategorií.
 
 > [!NOTE]
-> Místo použití popisku webový ovládací prvek pro zobrazení s názvem kategorie, může do jsme přidali FormView nebo prvku DetailsView. na stránce vytvoříte jejich vazbu na ovládacím prvkem SqlDataSource. Použití popisku, ale povoleno nám a objevujte jak programově volat SqlDataSource s `Select()` příkazu a pracovat s jeho Výsledná data v kódu.
+> Namísto použití webového ovládacího prvku popisek k zobrazení kategorie s název jsme mohli na stránku přidat FormView nebo DetailsView a vytvořit vazbu na třídě SqlDataSource. Použití popisku ale nám umožňuje prozkoumat, jak programově vyvolat příkaz SqlDataSource s `Select()` a pracovat s jeho výslednými daty v kódu.
 
-## <a name="step-5-assigning-parameter-values-programmatically"></a>Krok 5: Přiřazení hodnoty parametrů prostřednictvím kódu programu
+## <a name="step-5-assigning-parameter-values-programmatically"></a>Krok 5: přiřazení hodnot parametrů prostřednictvím kódu programu
 
-Ve všech příkladech jsme ve zatím viděli v tomto kurzu použili hodnotu pevně zakódované parametru nebo jeden z jednoho z předem definovaných parametrů zdrojů (hodnotu querystring, ovládací prvek webové stránky a tak dále). Ale SqlDataSource ovládacího prvku s parametry můžete nastavit také prostřednictvím kódu programu. K dokončení našich aktuální příklad, potřebujeme SqlDataSource, který vrátí všechny produkty, které patří do zadané kategorie. Bude mít tento SqlDataSource `CategoryID` parametr, jehož hodnota se musí nastavit na základě `CategoryID` vrácenou hodnotu sloupce `RandomCategoryDataSource` SqlDataSource v `Page_Load` obslužné rutiny události.
+Všechny příklady, které jsme doposud viděli v tomto kurzu, použily pevně zakódované hodnoty parametru nebo jeden z předdefinovaných zdrojů parametrů (hodnota QueryString, webový ovládací prvek na stránce atd.). Parametry ovládacího prvku SqlDataSource ale lze nastavit také programově. Abychom dokončili náš aktuální příklad, potřebujeme SqlDataSource, který vrátí všechny produkty patřící do určité kategorie. Tato třída SqlDataSource bude mít parametr `CategoryID`, jehož hodnota musí být nastavena na základě hodnoty `CategoryID` sloupce vráceného `RandomCategoryDataSource`m SqlDataSource v obslužné rutině události `Page_Load`.
 
-Začněte přidáním GridView na stránku a jeho vazbu na nové třídě SqlDataSource s názvem `ProductsByCategoryDataSource`. Mnohem postupem uvedeným v kroku 3, nakonfigurujte ve třídě SqlDataSource tak, aby vyvolá `GetProductsByCategory` uložené procedury. Nechat sadu parametrů zdrojové rozevírací seznam na hodnotu None, ale nezadávejte výchozí hodnotu, jak prostřednictvím kódu programu nastavíme tuto výchozí hodnotu.
+Začněte přidáním prvku GridView na stránku a vytvořte jeho vazby na novou třídě SqlDataSource s názvem `ProductsByCategoryDataSource`. Podobně jako v kroku 3, nakonfigurujete SqlDataSource, aby vyvolalo `GetProductsByCategory` uloženou proceduru. Rozevírací seznam pro zdroj parametrů nechejte nastavený na žádná, ale nezadávejte výchozí hodnotu, protože tuto výchozí hodnotu nastavíme programově.
 
-[![Nezadávejte parametr zdroje nebo výchozí hodnotu](using-parameterized-queries-with-the-sqldatasource-vb/_static/image14.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image27.png)
+[![nespecifikovat zdroj parametru nebo výchozí hodnotu](using-parameterized-queries-with-the-sqldatasource-vb/_static/image14.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image27.png)
 
-**Obrázek 14**: Proveďte není zadán parametr zdroj nebo výchozí hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image28.png))
+**Obrázek 14**: nezadávejte zdroj parametru ani výchozí hodnotu ([kliknutím zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image28.png)).
 
-Po dokončení Průvodce SqlDataSource výsledný deklarativní by měl vypadat nějak takto:
+Po dokončení průvodce SqlDataSource by výsledný deklarativní kód měl vypadat podobně jako následující:
 
 [!code-aspx[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample13.aspx)]
 
-My je můžeme přiřadit `DefaultValue` z `CategoryID` programově v parametru `Page_Load` obslužné rutiny události:
+`DefaultValue` parametru `CategoryID` můžeme programově přiřadit v obslužné rutině události `Page_Load`:
 
 [!code-vb[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample14.vb)]
 
-Uveďte stránka obsahuje GridView zobrazující produkty související s náhodně vybranou kategorii.
+S tímto sčítáním stránka obsahuje prvek GridView, který zobrazuje produkty přidružené k náhodně vybrané kategorii.
 
-[![Nezadávejte parametr zdroje nebo výchozí hodnotu](using-parameterized-queries-with-the-sqldatasource-vb/_static/image15.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image29.png)
+[![nespecifikovat zdroj parametru nebo výchozí hodnotu](using-parameterized-queries-with-the-sqldatasource-vb/_static/image15.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image29.png)
 
-**Obrázek 15**: Proveďte není zadán parametr zdroj nebo výchozí hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image30.png))
+**Obrázek 15**: nezadávejte zdroj parametru ani výchozí hodnotu ([kliknutím zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image30.png)).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Ve třídě SqlDataSource vývojářům stránky k definování parametrizované dotazy, jehož hodnoty parametrů můžete pevně zakódované, získaných z předem definovaných parametrů zdroje nebo prostřednictvím kódu programu přiřazen. V tomto kurzu jsme viděli, jak vytvořit parametrický dotaz z Průvodce konfigurace zdroje dat pro ad-hoc dotazy SQL a uložených procedur. Také jsme se podívali na použití pevně zakódované parametr zdrojů, webový ovládací prvek jako zdroj parametru a programově určující hodnotu parametru.
+Třída SqlDataSource umožňuje vývojářům stránek definovat parametrizované dotazy, jejichž hodnoty parametrů mohou být pevně kódované, získány z předem definovaných zdrojů parametrů nebo přiřazeny programově. V tomto kurzu jsme zjistili, jak vytvořit parametrizovaný dotaz pomocí Průvodce konfigurací zdroje dat pro dotazy SQL ad hoc i pro uložené procedury. Zjistili jsme také použití pevně zakódovaných zdrojů parametrů, webového ovládacího prvku jako zdroje parametrů a programovému zadání hodnoty parametru.
 
-Stejně jako ovládacím prvkem ObjectDataSource, ovládacím prvkem SqlDataSource také umožňuje upravovat podkladová data. V dalším kurzu podíváme na tom, jak definovat `INSERT`, `UPDATE`, a `DELETE` příkazy s ovládacím prvkem SqlDataSource. Jakmile se přidaly tyto příkazy, jsme můžete využít předdefinované vložení, úpravy a odstranění funkce přináší ovládací prvky GridView, DetailsView a FormView.
+Podobně jako u prvku ObjectDataSource, třída SqlDataSource také poskytuje možnosti pro úpravu jeho podkladových dat. V dalším kurzu se podíváme na to, jak definovat `INSERT`, `UPDATE`a `DELETE` příkazy ve třídě SqlDataSource. Po přidání těchto příkazů můžeme využít integrované funkce vkládání, úprav a odstraňování, které jsou součástí ovládacích prvků GridView, DetailsView a FormView.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí revidující pro účely tohoto kurzu byly Scott Clyde, Randell Schmidt a Ken Pespisa. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Recenzenti potenciálních zákazníků pro tento kurz byly Scott Clyde, Randell Schmidt a Ken Pespisa. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](querying-data-with-the-sqldatasource-control-vb.md)
-> [další](inserting-updating-and-deleting-data-with-the-sqldatasource-vb.md)
+> [Další](inserting-updating-and-deleting-data-with-the-sqldatasource-vb.md)

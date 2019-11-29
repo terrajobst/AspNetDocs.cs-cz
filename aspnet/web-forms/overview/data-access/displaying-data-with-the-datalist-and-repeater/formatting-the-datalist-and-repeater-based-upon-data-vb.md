@@ -1,91 +1,91 @@
 ---
 uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-vb
-title: Formátování ovládacích prvků DataList a Repeater na základě dat (VB) | Dokumentace Microsoftu
+title: Formátování prvku DataList a Repeater na základě dat (VB) | Microsoft Docs
 author: rick-anderson
-description: V tomto kurzu jsme projdete kroky příklady, jak jsme formát vzhled ovládacích prvků DataList a Repeater ovládací prvky, buď pomocí funkce formátování se...
+description: V tomto kurzu budeme postupovat podle příkladů formátování vzhledu ovládacích prvků DataList a Repeater, a to buď pomocí funkcí formátování s...
 ms.author: riande
 ms.date: 09/13/2006
 ms.assetid: e2f401ae-37bb-4b19-aa97-d6b385d40f88
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 50e6ce94a807b9ca1e3634382aa72b87fc35502f
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: c9b60e4dacd992962942034e84c01cb82e039c81
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131180"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74636727"
 ---
 # <a name="formatting-the-datalist-and-repeater-based-upon-data-vb"></a>Formátování ovládacích prvků DataList a Repeater na základě dat (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_30_VB.exe) nebo [stahovat PDF](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/datatutorial30vb1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_30_VB.exe) nebo [Stáhnout PDF](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/datatutorial30vb1.pdf)
 
-> V tomto kurzu jsme projdete kroky příklady, jak jsme formát vzhled ovládacích prvků DataList a Repeater ovládací prvky, buď s použitím formátování funkcí v rámci šablony nebo zpracování událostí datové vazby.
+> V tomto kurzu si projdeme příklady, jak naformátovat vzhled ovládacích prvků DataList a Repeater, a to buď pomocí funkcí formátování v rámci šablon, nebo pomocí zpracování události DataBound.
 
 ## <a name="introduction"></a>Úvod
 
-Jak jsme viděli v předchozím kurzu, prvku DataList nabízí celou řadu vlastnosti stylu, které ovlivňují její vzhled. Konkrétně jsme viděli, jak chcete přiřadit výchozí šablony stylů CSS třídy DataList s `HeaderStyle`, `ItemStyle`, `AlternatingItemStyle`, a `SelectedItemStyle` vlastnosti. Kromě tyto čtyři vlastnosti prvku DataList zahrnuje celou řadu dalších vlastností stylu například `Font`, `ForeColor`, `BackColor`, a `BorderWidth`, pár. Ovládací prvek Repeater neobsahuje žádné vlastnosti stylu. Tato nastavení stylu se musí provádět přímo v kódu v šablonách opakovače s.
+Jak jsme viděli v předchozím kurzu, DataList nabízí řadu vlastností souvisejících s Style, které mají vliv na jeho vzhled. Konkrétně jsme viděli, jak přiřadit výchozí třídy CSS k vlastnostem DataList s `HeaderStyle`, `ItemStyle`, `AlternatingItemStyle`a `SelectedItemStyle`. Kromě těchto čtyř vlastností prvek DataList zahrnuje řadu dalších vlastností souvisejících s Style, například `Font`, `ForeColor`, `BackColor`a `BorderWidth`pro pojmenování několika. Ovládací prvek Repeater neobsahuje žádné vlastnosti související s Style. Jakékoli takové nastavení stylu musí být provedeno přímo v rámci značky v šablonách Repeater.
 
-Často ale formátování dat závisí na vlastní data. Například při výpisu produkty budeme chtít zobrazení informací o produktu v barvu písma světle šedá, pokud je přerušeno nebo nám chcete zvýraznit `UnitsInStock` hodnotu, pokud je nula. Jak jsme viděli v předchozích kurzech, ovládacího prvku GridView, DetailsView a FormView nabízí dva různé způsoby, jak formátovat jejich vzhled na základě svých dat:
+Často ale, jak mají být data naformátovaná, závisí na samotných datech. Například při výpisu produktů může být vhodné zobrazit informace o produktech v barvě šedé barvy písma, pokud je přerušit, nebo můžete chtít zvýraznit `UnitsInStock` hodnotu, pokud je nula. Jak jsme viděli v předchozích kurzech, GridView, DetailsView a FormView nabízí dva různé způsoby formátování jejich vzhledu na základě jejich dat:
 
-- **`DataBound` Události** vytvořit obslužnou rutinu události pro příslušné `DataBound` událost, která aktivuje se po data byla svázána se jednotlivé položky (pro prvek GridView byla `RowDataBound` události; u ovládacích prvků DataList a Repeater je`ItemDataBound`událostí). V takovém případě se dají prozkoumat obslužnou rutinu, pouze data vázaná a formátování rozhodnutí provedli. Jsme se zaměřili na tuto techniku ve [vlastní formátování založené na Data](../custom-formatting/custom-formatting-based-upon-data-vb.md) kurzu.
-- **Formátování funkcí v šablonách** při použití vlastností TemplateField v prvku DetailsView nebo GridView ovládacích prvků, nebo v šabloně v ovládacím prvku FormView, můžeme přidat do třídy modelu code-behind stránky s ASP.NET, vrstvy obchodní logiky nebo některý formátování – funkce Další knihovny tříd, který je přístupný z webové aplikace. Tato funkce formátování může přijmout libovolný počet vstupních parametrů, ale musí vrátit kód HTML pro vykreslení v šabloně. Formátování funkce byly nejprve kontrolován [použití vlastností TemplateField v ovládacím prvku GridView](../custom-formatting/using-templatefields-in-the-gridview-control-vb.md) kurzu.
+- **Událost `DataBound`** vytvoří obslužnou rutinu události pro příslušnou událost `DataBound`, která se aktivuje poté, co byla data svázána s každou položkou (pro ovládací prvek GridView, že se jednalo o událost `RowDataBound`; u prvku DataList a v případě opakování je `ItemDataBound` událost). V této obslužné rutině události lze pouze prověřit data a naformátovat provedené rozhodnutí. Tuto techniku jsme zkoumali ve [vlastním formátování na základě kurzu dat](../custom-formatting/custom-formatting-based-upon-data-vb.md) .
+- **Formátování funkcí v šablonách** při použití vlastností TemplateField v ovládacím prvku DetailsView nebo GridView nebo šabloně v ovládacím prvku FormView můžeme přidat funkci formátování do třídy ASP.NET stránky s kódem na pozadí, vrstvy obchodní logiky nebo jakékoli jiné knihovny tříd, která je přístupná z webové aplikace. Tato funkce formátování může přijmout libovolný počet vstupních parametrů, ale musí vrátit kód HTML, který se má vykreslit v šabloně. Funkce formátování byly nejprve přezkoumány v kurzu [použití templatefields v ovládacím prvku GridView](../custom-formatting/using-templatefields-in-the-gridview-control-vb.md) .
 
-Obě tyto metody formátování jsou k dispozici s ovládacími prvky DataList a Repeater. V tomto kurzu jsme projdete kroky příklady použití obě tyto metody pro oba ovládací prvky.
+Obě tyto techniky formátování jsou k dispozici společně s ovládacími prvky DataList a Repeater. V tomto kurzu budeme procházet příklady pomocí obou postupů pro oba ovládací prvky.
 
-## <a name="using-theitemdataboundevent-handler"></a>Použití`ItemDataBound`obslužné rutiny události
+## <a name="using-theitemdataboundevent-handler"></a>Použití obslužné rutiny události`ItemDataBound`
 
-Když data svázaná s a v prvku DataList, z ovládacího prvku zdroje dat nebo prostřednictvím kódu programu přidělením data do ovládacího prvku s `DataSource` vlastnosti a volání jeho `DataBind()` metoda DataList s `DataBinding` aktivuje události, zdroj dat, výčtu, a každý záznam dat je vázán na ovládacím prvku DataList. Pro každý záznam ve zdroji dat, vytvoří prvku DataList [ `DataListItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistitem.aspx) objektu, který je pak vázána na aktuální záznam. Během tohoto procesu prvku DataList vyvolává dvě události:
+Když jsou data svázána s ovládacím prvkem DataList, buď z ovládacího prvku zdroje dat, nebo prostřednictvím programově přiřazují data do vlastnosti `DataSource` ovládacího prvku a voláním jeho metody `DataBind()`, aktivuje se událost DataList s `DataBinding`, zdroj dat se zobrazí ve výčtu a každý datový záznam je svázán s prvkem DataList. Pro každý záznam ve zdroji dat vytvoří prvek DataList objekt [`DataListItem`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistitem.aspx) , který je následně svázán s aktuálním záznamem. Během tohoto procesu DataList vyvolá dvě události:
 
-- **`ItemCreated`** Aktivuje se po `DataListItem` se vytvořil
-- **`ItemDataBound`** Aktivuje se po aktuální záznam byl vázán `DataListItem`
+- **`ItemCreated`** aktivovaná po vytvoření `DataListItem`
+- **`ItemDataBound`** aktivuje se po vazbě aktuálního záznamu na `DataListItem`
 
-Následující kroky popisují proces vytváření vazby dat pro ovládací prvek DataList.
+Následující kroky popisují proces vytváření datových vazeb pro ovládací prvek DataList.
 
-1. DataList s [ `DataBinding` události](https://msdn.microsoft.com/library/system.web.ui.control.databinding.aspx) aktivována
-2. Data je vázán na ovládacím prvku DataList  
+1. [Událost`DataBinding`](https://msdn.microsoft.com/library/system.web.ui.control.databinding.aspx) DataList se aktivuje.
+2. Data jsou svázána s ovládacím prvky DataList  
   
-   Pro každý záznam ve zdroji dat. 
+   Pro každý záznam ve zdroji dat 
 
-    1. Vytvoření `DataListItem` objektu
-    2. Oheň [ `ItemCreated` událostí](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemcreated.aspx)
-    3. Záznam, který chcete vytvořit vazbu `DataListItem`
-    4. Oheň [ `ItemDataBound` událostí](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemdatabound.aspx)
-    5. Přidat `DataListItem` k `Items` kolekce
+    1. Vytvoření objektu `DataListItem`
+    2. Vyvolat [událost`ItemCreated`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemcreated.aspx)
+    3. Navázání záznamu na `DataListItem`
+    4. Vyvolat [událost`ItemDataBound`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemdatabound.aspx)
+    5. Přidání `DataListItem` do kolekce `Items`
 
-Při vytváření vazby dat k ovládacím prvku opakovače, prochází přesně stejnou posloupnost kroků. Jediným rozdílem je, že místo `DataListItem` vytváří instance, používá opakovače [ `RepeaterItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem(VS.80).aspx)s.
+Při vázání dat k ovládacímu prvku Repeater postupuje přes přesně stejné pořadí kroků. Jediným rozdílem je, že se místo vytvoření instancí `DataListItem` používá Repeater [`RepeaterItem`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem(VS.80).aspx)s.
 
 > [!NOTE]
-> Bystří čtenáři možná jste si všimli mírné anomálií mezi posloupnost kroků, které probíhají, když v prvku DataList a Repeater jsou vázány na data a po prvku GridView je vázán na data. Na konci ocáskem proces vytváření vazby dat prvku GridView vyvolá `DataBound` události; ale ovládací prvek DataList ani Repeater mít takovou událost. Je to proto ovládacích prvků DataList a Repeater byly vytvořeny v časovém rámci 1.x technologie ASP.NET, před vzor obslužné rutiny události před instrumentací a po ní úrovně stalo běžné.
+> Čtečka bystří mohla zaznamenat mírnou anomálii mezi sekvencí kroků, které se zobrazí, když jsou prvky DataList a Repeater svázány s daty versus při vázání prvku GridView na data. Na konci procesu vytváření datových vazeb prvek GridView Vyvolá událost `DataBound`; Nicméně ovládací prvek DataList ani Repeater takové události neexistují. Důvodem je to, že ovládací prvky DataList a Repeater byly vytvořeny zpátky v časovém limitu ASP.NET 1. x před tím, než se vzorek obslužné rutiny události před a po úrovni stala běžným.
 
-Například s použitím prvku GridView, je vytvořit obslužnou rutinu události pro jednu z možností pro formátování na základě dat `ItemDataBound` událostí. Tato obslužná rutina události by kontrolovat, který má právě vázán na data `DataListItem` nebo `RepeaterItem` a ovlivňuje formátování ovládacího prvku podle potřeby.
+Podobně jako u prvku GridView, jedna možnost pro formátování na základě dat je vytvořit obslužnou rutinu události pro událost `ItemDataBound`. Tato obslužná rutina události by zkontrolovala data, která byla právě svázána s `DataListItem` nebo `RepeaterItem` a mají vliv na formátování ovládacího prvku podle potřeby.
 
-Pro ovládací prvek DataList změny formátování pro celou položku je možné implementovat pomocí `DataListItem` s stylu vlastnosti, které zahrnují standardní `Font`, `ForeColor`, `BackColor`, `CssClass`, a tak dále. Ovlivňuje formátování konkrétní webové ovládací prvky v rámci šablony ovládacích prvků DataList s potřebujeme pro programově přístup a úpravy stylu těchto ovládacích prvků. Jsme viděli, jak provést tuto znovu v *vlastní formátování založené na Data* kurzu. Jako ovládacím prvku Repeater `RepeaterItem` třída nemá žádné vlastnosti stylu; proto všechny související se stylem změny provedené `RepeaterItem` v `ItemDataBound` obslužné rutiny události musí provést programově přístup k a aktualizace webové ovládací prvky v rámci Šablona.
+U ovládacího prvku DataList lze formátování změn pro celou položku implementovat pomocí vlastností souvisejících s `DataListItem` s, které zahrnují standardní `Font`, `ForeColor`, `BackColor`, `CssClass`a tak dále. Abychom ovlivnili formátování konkrétního webového ovládacího prvku v rámci šablony DataList s, potřebujeme programově přistupovat k těmto webovým ovládacím prvkům a upravovat jejich styly. Zjistili jsme, jak to udělat zpátky ve *vlastním formátování na základě kurzu dat* . Stejně jako ovládací prvek Repeater, třída `RepeaterItem` nemá žádné vlastnosti související se styly; Proto všechny změny stylu související se stylem `RepeaterItem` v obslužné rutině události `ItemDataBound` musí být provedeny programově při přístupu k webovým ovládacím prvkům a jejich aktualizace v rámci šablony.
 
-Vzhledem k tomu, `ItemDataBound` formátování techniku pro prvky DataList a Repeater jsou téměř identické, náš příklad se zaměřuje na pomocí prvku DataList.
+Vzhledem k tomu, že je způsob formátování `ItemDataBound` pro prvky DataList a Repeat prakticky identický, náš příklad se soustředí na použití prvku DataList.
 
-## <a name="step-1-displaying-product-information-in-the-datalist"></a>Krok 1: Zobrazení informací o produktu v ovládacím prvku DataList
+## <a name="step-1-displaying-product-information-in-the-datalist"></a>Krok 1: zobrazení informací o produktu v prvku DataList
 
-Předtím, než jsme se starat o formátování, umožňují s nejprve vytvořit stránku, která se používá k zobrazení informací o produktu a v prvku DataList. V [předchozí kurz o službě](displaying-data-with-the-datalist-and-repeater-controls-vb.md) jsme vytvořili, a v prvku DataList jehož `ItemTemplate` zobrazí každý produkt s názvem, kategorie, Dodavatel, množství na jednotku a ceny. Umožní s opakujte tuto funkci tady v tomto kurzu. K tomu můžete buď vytvořit znovu ovládacích prvcích DataList a jeho ObjectDataSource úplně od začátku, nebo můžete zkopírovat tyto ovládací prvky na stránce vytvořili v předchozím kurzu (`Basics.aspx`) a vložte je do stránky pro účely tohoto kurzu (`Formatting.aspx`).
+Než se obáváme formátování, nechte nejdřív vytvořit stránku, která používá DataList k zobrazení informací o produktu. V [předchozím kurzu](displaying-data-with-the-datalist-and-repeater-controls-vb.md) jsme vytvořili prvek DataList, jehož `ItemTemplate` zobrazuje každý název produktu, kategorii, dodavatele, množství na jednotku a cenu. Tuto funkci teď můžete opakovat v tomto kurzu. K tomuto účelu můžete buď znovu vytvořit DataList a jeho prvek ObjectDataSource od začátku, nebo můžete zkopírovat tyto ovládací prvky ze stránky vytvořené v předchozím kurzu (`Basics.aspx`) a vložit je na stránku tohoto kurzu (`Formatting.aspx`).
 
-Jakmile zreplikovali funkce ovládacích prvků DataList a ObjectDataSource `Basics.aspx` do `Formatting.aspx`, věnujte chvíli změnit DataList s `ID` vlastnost z `DataList1` do více popisné `ItemDataBoundFormattingExample`. V dalším kroku prvku DataList zobrazte v prohlížeči. Jak ukazuje obrázek 1 pouze formátování rozdíl mezi jednotlivé produkty je, že barvu pozadí alternativy.
+Po replikaci funkcí DataList a ObjectDataSource z `Basics.aspx` do `Formatting.aspx`chvíli počkejte, aby se změnila vlastnost `ID` prvku DataList s `DataList1` na výstižnější `ItemDataBoundFormattingExample`. Dále Zobrazte prvek DataList v prohlížeči. Jak ukazuje obrázek 1, jediný rozdíl formátování mezi jednotlivými produkty je to, že barvy pozadí se liší.
 
-[![Produkty jsou uvedené v ovládacím prvku DataList](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image2.png)](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image1.png)
+[![jsou produkty uvedeny v ovládacím prvku DataList](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image2.png)](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image1.png)
 
-**Obrázek 1**: Produkty jsou uvedené v ovládacím prvku DataList ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image3.png))
+**Obrázek 1**: produkty jsou uvedeny v ovládacím prvku DataList ([kliknutím zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image3.png)).
 
-Pro účely tohoto kurzu nechte s formátování prvku DataList tak, aby žádné produkty s méně než 20,00 $za cenu budou mít i její název a jednotky cen zvýrazněné žlutou barvou.
+Pro tento kurz si naformátujte prvek DataList tak, že všechny produkty s cenou menší než $20,00 budou mít název a bude zvýrazněna žlutá cena.
 
-## <a name="step-2-programmatically-determining-the-value-of-the-data-in-the-itemdatabound-event-handler"></a>Krok 2: Programové určení hodnoty dat v obslužné rutině události ItemDataBound
+## <a name="step-2-programmatically-determining-the-value-of-the-data-in-the-itemdatabound-event-handler"></a>Krok 2: určení hodnoty dat v obslužné rutině události ItemDataBound prostřednictvím kódu programu
 
-Protože pouze tyto produkty s cenou pod 20,00 $za bude mít vlastní formátování použité, jsme musí být schopní určit, každý s cena produktu. Při vytváření vazby dat k a v prvku DataList, prvku DataList zobrazí záznamy ve zdroji dat a pro každý záznam, vytvoří `DataListItem` instance záznam zdroje dat k vytvoření vazby `DataListItem`. Po konkrétní záznam s dat byla svázána se aktuální `DataListItem` objekt DataList s `ItemDataBound` událost se aktivuje. Můžeme vytvořit obslužnou rutinu události pro tuto událost ke kontrole datových hodnot pro aktuální `DataListItem` a na základě těchto hodnot, proveďte změny formátování nezbytné.
+Vzhledem k tomu, že se vlastní formátování používá jenom u produktů s cenou $20,00, musí být schopné určit každou cenu produktu. Při vázání dat k prvku DataList vytvoří prvek DataList záznamy ve zdroji dat a pro každý záznam vytvoří instanci `DataListItem` a naváže záznam zdroje dat k `DataListItem`. Po vazbě konkrétního záznamu s objektem `DataListItem` je vyvolána událost DataList s `ItemDataBound`. Pro tuto událost můžeme vytvořit obslužnou rutinu události pro kontrolu hodnot dat pro aktuální `DataListItem` a na základě těchto hodnot udělat změny formátování, které jsou potřeba.
 
-Vytvoření `ItemDataBound` události ovládacích prvcích DataList a přidejte následující kód:
+Vytvořte událost `ItemDataBound` pro prvek DataList a přidejte následující kód:
 
 [!code-vb[Main](formatting-the-datalist-and-repeater-based-upon-data-vb/samples/sample1.vb)]
 
-Zatímco koncept a sémantika DataList s `ItemDataBound` obslužnou rutinu události jsou stejné jako používaným v nástroji GridView s `RowDataBound` obslužné rutině událostí ve *vlastní formátování založené na Data* kurzu syntaxe se liší mírně. Při `ItemDataBound` dojde k aktivaci události, `DataListItem` právě vázané na data je předána do odpovídající obslužnou rutinu události prostřednictvím `e.Item` (místo `e.Row`, stejně jako u ovládacího prvku GridView s `RowDataBound` obslužná rutina události). DataList s `ItemDataBound` vyvolá obslužnou rutinu události pro *každý* řádky přidané do prvku DataList, včetně řádky záhlaví, zápatí řádky a Oddělovač řádků. Informace o produktu je však vázaný jenom na řádky dat. Proto při použití `ItemDataBound` události a kontrolovat data vázaná na ovládacím prvku DataList, musíme nejprve ujistěte se, že jsme k práci s datovou položku. Toho můžete docílit tak, že zkontrolujete `DataListItem` s [ `ItemType` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistitem.itemtype.aspx), což může mít jednu z [osm následujícího](https://msdn.microsoft.com/library/system.web.ui.webcontrols.listitemtype.aspx):
+I když je koncept a sémantika v rámci obslužné rutiny události `ItemDataBound` DataList, stejná jako ta, kterou používá obslužná rutina události `RowDataBound` GridView s, ve *vlastním formátování na základě kurzu dat* , syntaxe se mírně liší. Při aktivaci události `ItemDataBound` je `DataListItem` pouze vázaný na data předána do odpovídající obslužné rutiny události prostřednictvím `e.Item` (namísto `e.Row`, jako u obslužné rutiny události prvku GridView s `RowDataBound`). Obslužná rutina události `ItemDataBound` DataList se aktivuje pro *každý* řádek přidaný do prvku DataList, včetně řádků záhlaví, řádků zápatí a oddělovacích řádků. Informace o produktu jsou však vázány pouze na řádky dat. Proto při použití události `ItemDataBound` ke kontrole dat vázaných na prvek DataList musíme nejdřív zkontrolovat, že budeme znovu pracovat s datovou položkou. Můžete to provést tak, že zkontrolujete [vlastnost`ItemType`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistitem.itemtype.aspx)`DataListItem` s, která může mít jednu z [následujících osmi hodnot](https://msdn.microsoft.com/library/system.web.ui.webcontrols.listitemtype.aspx):
 
 - `AlternatingItem`
 - `EditItem`
@@ -96,93 +96,93 @@ Zatímco koncept a sémantika DataList s `ItemDataBound` obslužnou rutinu udál
 - `SelectedItem`
 - `Separator`
 
-Obě `Item` a `AlternatingItem``DataListItem` s strukturu prvku DataList s datovými položkami. Za předpokladu, že můžeme znovu pracovat `Item` nebo `AlternatingItem`, přístupu k skutečnou `ProductsRow` instanci, která byla vázána na aktuální `DataListItem`. `DataListItem` s [ `DataItem` vlastnost](https://msdn.microsoft.com/system.web.ui.webcontrols.datalistitem.dataitem.aspx) obsahuje odkaz na `DataRowView` objekt, jehož `Row` vlastnost obsahuje odkaz na skutečnou `ProductsRow` objektu.
+`Item` i `AlternatingItem``DataListItem` s strukturu datové položky DataList s. Za předpokladu, že provedeme `Item` nebo `AlternatingItem`, přistupujeme ke skutečné instanci `ProductsRow`, která byla svázána s aktuálním `DataListItem`. Vlastnost `DataListItem` s [`DataItem`](https://msdn.microsoft.com/system.web.ui.webcontrols.datalistitem.dataitem.aspx) obsahuje odkaz na objekt `DataRowView`, jehož vlastnost `Row` poskytuje odkaz na skutečný objekt `ProductsRow`.
 
-V dalším kroku zkontrolujeme `ProductsRow` instance s `UnitPrice` vlastnost. Od tabulky produktů s `UnitPrice` pole `NULL` hodnoty, než se pokusíte o přístup k `UnitPrice` vlastnost jsme měli by nejdřív zkontrolovat k zjištění, zda má `NULL` hodnotu pomocí `IsUnitPriceNull()` metoda. Pokud `UnitPrice` hodnota není `NULL`, jsme potom zkontrolujte, jestli ho s méně než 20,00 $za. Pokud je ve skutečnosti v části 20,00 $za, pak musíme použít vlastní formátování.
+Potom zkontrolujeme vlastnost `ProductsRow` instance s `UnitPrice`. Vzhledem k tomu, že pole `UnitPrice` tabulky produktů umožňuje `NULL` hodnoty, před pokusem o přístup k vlastnosti `UnitPrice` byste nejprve měli zjistit, zda má `NULL` hodnotu pomocí metody `IsUnitPriceNull()`. Pokud hodnota `UnitPrice` není `NULL`, zkontrolujeme, jestli je méně než $20,00. Pokud je to ve skutečnosti $20,00, je nutné použít vlastní formátování.
 
-## <a name="step-3-highlighting-the-product-s-name-and-price"></a>Krok 3: Zvýraznění s názvem produktu a ceny
+## <a name="step-3-highlighting-the-product-s-name-and-price"></a>Krok 3: zvýraznění názvu a ceny produktu
 
-Jakmile víme, že je cena produkt s méně než 20,00 $, už jen zbývá její název a ceny. K tomu musíte nejdřív prostřednictvím kódu programu odkazujeme ovládací prvky popisku v `ItemTemplate` , který zobrazí název produktu s a ceny. Dále musíme nechat na nich zobrazovat žlutým pozadím. Informace o formátování můžete použít přímou úpravou popisky `BackColor` vlastnosti (`LabelID.BackColor = Color.Yellow`); v ideálním případě by však všechny záležitosti související s zobrazení by měl být vyjádřen prostřednictvím šablony stylů CSS. Ve skutečnosti už máme šablony stylů, která poskytuje požadovanou formátování definované v `Styles.css`  -  `AffordablePriceEmphasis`, který byl vytvořen a zabývá *vlastní formátování založené na Data* kurzu.
+Jakmile zjistíte, že cena za produkt je menší než $20,00, vše zůstává pro zdůraznění jejího názvu a ceny. Abychom to mohli udělat, musíte nejdřív programově odkazovat na ovládací prvky popisku v `ItemTemplate`, které zobrazují název a cenu produktu. V dalším kroku je potřeba, aby se zobrazila žlutá pozadí. Tyto informace o formátování lze použít přímou úpravou popisků `BackColor` vlastností (`LabelID.BackColor = Color.Yellow`); v ideálním případě by se měly všechny otázky související s displejem vyjádřit prostřednictvím kaskádových šablon stylů. Ve skutečnosti už máme šablonu stylů, která poskytuje požadované formátování definované v `Styles.css` - `AffordablePriceEmphasis`, která byla vytvořena a diskutována ve *vlastním formátování na základě kurzu data* .
 
-K formátování použít, stačí nastavit dva ovládací prvky popisek webového `CssClass` vlastností `AffordablePriceEmphasis`, jak je znázorněno v následujícím kódu:
+Chcete-li použít formátování, jednoduše nastavte ovládací prvky pro dva popisky `CssClass` vlastnosti na `AffordablePriceEmphasis`, jak je znázorněno v následujícím kódu:
 
 [!code-vb[Main](formatting-the-datalist-and-repeater-based-upon-data-vb/samples/sample2.vb)]
 
-S `ItemDataBound` obslužná rutina události dokončení, opakování `Formatting.aspx` stránku v prohlížeči. Jak znázorňuje obrázek 2 mají tyto produkty s cenami za 20,00 $za své jméno a cena zvýrazní.
+Po dokončení obslužné rutiny události `ItemDataBound` znovu navštivte stránku `Formatting.aspx` v prohlížeči. Jak ukazuje obrázek 2, tyto produkty s cenou v $20,00 mají své jméno i cenu zvýrazněnou.
 
-[![Tyto produkty méně než 20,00 $za zvýrazněné](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image5.png)](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image4.png)
+[![jsou tyto produkty méně než $20,00 zvýrazněny.](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image5.png)](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image4.png)
 
-**Obrázek 2**: Tyto produkty méně než 20,00 $za jsou zvýrazněny ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image6.png))
+**Obrázek 2**: zvýrazní se tyto produkty menší než $20,00 ([kliknutím zobrazíte obrázek v plné velikosti).](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image6.png)
 
 > [!NOTE]
-> Protože prvku DataList se vykreslí jako HTML `<table>`, jeho `DataListItem` instance mají stylu vlastnosti, které je možné nastavit konkrétní stylu na celé položky. Například, pokud chceme, abyste měli na očích *celý* položky žlutý při jeho cena byla menší než 20,00 $ jsme by mohly nahradit kód, na který odkazuje popisky a nastavte jejich `CssClass` vlastnosti s následujícím řádkem kódu: `e.Item.CssClass = "AffordablePriceEmphasis"` (viz obrázek 3).
+> Vzhledem k tomu, že je prvek DataList vykreslen jako `<table>`HTML, mají jeho `DataListItem` instance vlastnosti související se styly, které lze nastavit tak, aby pro celou položku použili konkrétní styl. Pokud jsme například chtěli zdůraznit *celou* položku žlutou, pokud její cena byla menší než $20,00, mohli bychom nahradit kód, na který odkazuje popisky, a nastavit jejich `CssClass` vlastnosti pomocí následujícího řádku kódu: `e.Item.CssClass = "AffordablePriceEmphasis"` (viz obrázek 3).
 
-`RepeaterItem` , Které tvoří ovládacím prvku opakovače však don t nabízejí tyto vlastnosti stylu úrovni. Proto použití vlastního formátování u Opakovači vyžaduje použití vlastnosti stylu webové ovládací prvky v rámci šablon opakovače s stejným způsobem, jako jsme to udělali na obrázku 2.
+`RepeaterItem` s, které tvoří ovládací prvek Repeater, ale nenabízejí takové vlastnosti na úrovni stylu. Proto použití vlastního formátování na Repeater vyžaduje použití vlastností stylu pro webové ovládací prvky v rámci šablon Repeater, stejně jako na obrázku 2.
 
-[![Celý položka produktu je zvýrazněn pro produkty v rámci 20,00 $](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image8.png)](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image7.png)
+[![je pro produkty pod položkou $20,00 zvýrazněna celá položka produktu](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image8.png)](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image7.png)
 
-**Obrázek 3**: Celý položka produktu je zvýrazněn pro produkty v rámci 20,00 $ ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image9.png))
+**Obrázek 3**: pro produkty pod $20,00 se zvýrazní celá položka produktu ([kliknutím zobrazíte obrázek v plné velikosti).](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image9.png)
 
-## <a name="using-formatting-functions-from-within-the-template"></a>Použití formátování funkcí z v rámci šablony
+## <a name="using-formatting-functions-from-within-the-template"></a>Použití funkcí formátování v rámci šablony
 
-V *použití vlastností TemplateField v ovládacím prvku GridView* kurzu jsme viděli, jak použít vlastní formátování založené na datech pomocí formátování funkci uvnitř ovládacího prvku GridView TemplateField vázaným na řádky GridView s. Formátování funkce je metoda, která může být vyvolána z šablony a vrátí kód HTML, aby byly vypuštěny na příslušné místo. Formátování funkce mohou být umístěné ve třídě ASP.NET stránky s kódem na pozadí nebo může být centralizované do třídy souborů v `App_Code` složce nebo v samostatném projektu knihovny tříd. Přesun formátování funkce mimo třídu s kódem na pozadí stránky technologie ASP.NET je ideální, pokud máte v úmyslu používat stejnou funkci formátování více stránek v ASP.NET, nebo v jiných webových aplikací ASP.NET.
+V kurzu *použití templatefields v kurzu ovládacího prvku GridView* jsme viděli, jak použít funkci formátování v rámci prvku GridView TemplateField k použití vlastního formátování na základě dat svázaných s řádky GridView. Funkce formátování je metoda, kterou lze vyvolat ze šablony a vrátí kód HTML, který má být vygenerován na svém místě. Funkce formátování se mohou nacházet ve třídě ASP.NET stránky s kódem na pozadí nebo může být centralizovaná do souborů třídy ve složce `App_Code` nebo v samostatném projektu knihovny tříd. Přesunutí funkce formátování mimo třídu ASP.NET stránky s kódem na pozadí je ideální, pokud plánujete použití stejné funkce formátování na více stránkách ASP.NET nebo v jiných ASP.NET webových aplikacích.
 
-Abychom si předvedli formátování funkcí, umožňují s máte produktové informace obsahují text [VYŘAZENO] vedle názvu produktu s, pokud ho s ukončena. Navíc umožňují s mají zvýrazněné žlutou if cena ho s méně než 20,00 $za (jako jsme to udělali `ItemDataBound` příklad obslužná rutina události); Pokud je 20,00 $za cenu nebo s vyšší, vám umožňují zobrazit skutečná cena, ale místo toho volat text prosím pro cenové nabídky. Obrázek 4 ukazuje snímek obrazovky produkty výpisu se tato formátování pravidla platila.
+Aby bylo možné předvést funkce formátování, obsahují informace o produktu text [UKONČENo] vedle názvu produktu, pokud je ukončen. Také je možné nechat zvýrazněnou cenu žlutou, pokud je menší než $20,00 (jako v příkladu obslužné rutiny události `ItemDataBound`). Pokud je cena $20,00 nebo vyšší, nezobrazuje se vám skutečná cena, ale místo toho je třeba zavolat na cenovou nabídku. Obrázek 4 znázorňuje snímek obrazovky se seznamem produktů, u kterých se tato pravidla formátování aplikují.
 
-[![Nákladné produktů cena je nahrazena textem, vyvolejte funkci pro cenové nabídky](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image11.png)](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image10.png)
+[![u drahých produktů se cena nahradí textem, zavolá se na cenovou nabídku.](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image11.png)](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image10.png)
 
-**Obrázek 4**: Nákladné produktů, cena je nahrazena textem, vyvolejte funkci pro cenové nabídky ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image12.png))
+**Obrázek 4**: u drahých produktů je cena nahrazena textem, volá se za cenu nabídky ([kliknutím zobrazíte obrázek v plné velikosti).](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image12.png)
 
-## <a name="step-1-create-the-formatting-functions"></a>Krok 1: Vytvořit formátování funkce
+## <a name="step-1-create-the-formatting-functions"></a>Krok 1: vytvoření funkcí formátování
 
-V tomto příkladu budeme potřebovat dvě funkce formátování, ten, který se zobrazí spolu s textem [VYŘAZENO], název produktu v případě potřeby a jiné zobrazující zvýrazněný cena, pokud ho s méně než 20,00 $za nebo textu, vyvolejte funkci pro Cenová nabídka jinak. Umožní s tyto funkce můžete vytvářet v třídě modelu code-behind stránky s ASP.NET a pojmenujte je `DisplayProductNameAndDiscontinuedStatus` a `DisplayPrice`. Obě metody musíte vrátí kód HTML pro vykreslení jako řetězec a oba musí být označen `Protected` (nebo `Public`) aby bylo možné vyvolat z část deklarativní syntaxe stránky s ASP.NET. Následující kód pro tyto dvě metody:
+V tomto příkladu potřebujeme dvě funkce formátování, jednu, která zobrazuje název produktu spolu s textem [UKONČENo], pokud je to potřeba, a další, který zobrazí zvýrazněnou cenu, pokud je menší než $20,00, nebo text, zavolejte na cenovou nabídku jinak. Umožňuje vytvořit tyto funkce ve třídě ASP.NET stránky s kódem na pozadí a pojmenovat je `DisplayProductNameAndDiscontinuedStatus` a `DisplayPrice`. Obě metody musí vrátit kód HTML, který se má vykreslit jako řetězec, a obě musí být označené jako `Protected` (nebo `Public`), aby je bylo možné vyvolat z části s deklarativní syntaxí stránky ASP.NET Page. Kód těchto dvou metod je následující:
 
 [!code-vb[Main](formatting-the-datalist-and-repeater-based-upon-data-vb/samples/sample3.vb)]
 
-Všimněte si, že `DisplayProductNameAndDiscontinuedStatus` metoda přijímá hodnoty `productName` a `discontinued` data polí jako skalární hodnoty, zatímco `DisplayPrice` metoda přijímá `ProductsRow` instance (spíše než `unitPrice` skalární hodnota). Bude fungovat oběma; však-li funkci formátování pracuje s skalárních hodnot, které mohou obsahovat databáze `NULL` hodnoty (například `UnitPrice`; ani `ProductName` ani `Discontinued` povolit `NULL` hodnoty), musí být přijata zvláštní pozornost při zpracování těchto Skalární vstupy.
+Všimněte si, že metoda `DisplayProductNameAndDiscontinuedStatus` přijímá hodnoty datových polí `productName` a `discontinued` jako skalární hodnoty, zatímco metoda `DisplayPrice` akceptuje `ProductsRow` instanci (spíše než `unitPrice` skalární hodnota). Bude fungovat buď přístup. Pokud však funkce formátování pracuje se skalárními hodnotami, které mohou obsahovat databázové `NULL` hodnoty (například `UnitPrice`; ani `ProductName` ani `Discontinued` Allow `NULL` Values), musí být při zpracování těchto skalárních vstupů provedena zvláštní péče.
 
-Konkrétně se vstupní parametr musí být typu `Object` příchozí hodnoty. může se stát, že `DBNull` instanci místo očekávaným datovým typem. Kromě toho musí být provedena kontrola k určení, zda je hodnota příchozí databáze `NULL` hodnotu. To znamená pokud chceme `DisplayPrice` metodu tak, aby přijímal cena jako skalární hodnota, jsme d muset pomocí následujícího kódu:
+Konkrétně musí být vstupní parametr typu `Object`, protože příchozí hodnota může být `DBNull` instance namísto očekávaného datového typu. Kromě toho je nutné provést kontrolu, aby bylo možné určit, zda je hodnota `NULL` databáze hodnota. To znamená, že pokud jsme chtěli, aby `DisplayPrice` metoda přijmout tuto cenu jako skalární hodnotu, je potřeba použít následující kód:
 
 [!code-vb[Main](formatting-the-datalist-and-repeater-based-upon-data-vb/samples/sample4.vb)]
 
-Všimněte si, že `unitPrice` vstupní parametr je typu `Object` a zjistit, pokud byla změněna podmíněný příkaz `unitPrice` je `DBNull` nebo ne. Kromě toho od `unitPrice` vstupní parametr předaný jako `Object`, musí být přetypovat na desítkovou hodnotu.
+Všimněte si, že vstupní parametr `unitPrice` je typu `Object` a že došlo k úpravě podmíněného příkazu, aby bylo možné zjistit, zda `unitPrice` `DBNull` nebo nikoli. Navíc vzhledem k tomu, že vstupní parametr `unitPrice` je předán jako `Object`, musí být přetypování na desítkovou hodnotu.
 
-## <a name="step-2-calling-the-formatting-function-from-the-datalist-s-itemtemplate"></a>Krok 2: Volání z ovládacích prvků DataList s ItemTemplate formátování – funkce
+## <a name="step-2-calling-the-formatting-function-from-the-datalist-s-itemtemplate"></a>Krok 2: volání funkce formátování z prvku DataList s funkcí ItemTemplate
 
-S formátování funkce přidané do třídy použití modelu code-behind stránky s naší technologie ASP.NET, už jen zbývá k vyvolání těchto funkcí z prvku DataList s formátování `ItemTemplate`. Volat funkci formátování ze šablony, umístíte volání funkce v rámci Syntaxe datové vazby:
+Díky funkcím formátování přidaným do naší třídy ASP.NET stránky s kódem na pozadí vše, co zbývá, je vyvolat tyto funkce formátování z prvku DataList s `ItemTemplate`. Chcete-li volat funkci formátování ze šablony, umístěte volání funkce v rámci syntaxe datové vazby:
 
 [!code-aspx[Main](formatting-the-datalist-and-repeater-based-upon-data-vb/samples/sample5.aspx)]
 
-V ovládacím prvku DataList s `ItemTemplate` `ProductNameLabel` popisek webový ovládací prvek nyní zobrazuje název produktu s přiřazením jeho `Text` vlastnost výsledek z `<%# Eval("ProductName") %>`. Pokud chcete mít v případě potřeby zobrazí název a text [VYŘAZENO], aktualizujte deklarativní syntaxe tak, aby místo toho přiřadí `Text` vlastnost hodnotu z `DisplayProductNameAndDiscontinuedStatus` metody. Pokud tak učiníte, musíte předáváme produkt s názvem a ukončená hodnot pomocí `Eval("columnName")` syntaxe. `Eval` Vrátí hodnotu typu `Object`, ale `DisplayProductNameAndDiscontinuedStatus` metoda očekává, že vstupní parametry typu `String` a `Boolean`, proto jsme musíte přetypovat hodnot vrácených `Eval` metoda očekávaným vstupním parametrem typy, například takto:
+V ovládacím prvku DataList s `ItemTemplate` webový ovládací prvek `ProductNameLabel` Label aktuálně zobrazuje název produktu přiřazením jeho vlastnosti `Text` výsledku `<%# Eval("ProductName") %>`. Aby se zobrazil název a text [UKONČENo], v případě potřeby aktualizujte deklarativní syntaxi tak, aby místo toho přiřadí vlastnost `Text` hodnotu `DisplayProductNameAndDiscontinuedStatus` metody. V takovém případě je nutné předat název produktu a ukončené hodnoty pomocí syntaxe `Eval("columnName")`. `Eval` vrací hodnotu typu `Object`, ale metoda `DisplayProductNameAndDiscontinuedStatus` očekává vstupní parametry typu `String` a `Boolean`; Proto je nutné přetypovat hodnoty vrácené metodou `Eval` na očekávané typy vstupních parametrů, například takto:
 
 [!code-aspx[Main](formatting-the-datalist-and-repeater-based-upon-data-vb/samples/sample6.aspx)]
 
-Pokud chcete zobrazit ceny, nám stačí nastavit `UnitPriceLabel` popisek s `Text` vlastnost na hodnotu vrácenou příkazem `DisplayPrice` metody, stejně jako jsme to udělali pro zobrazení názvu produktu s a [zrušit] text. Namísto předání `UnitPrice` jako skalární vstupní parametr, místo toho předáváme celý `ProductsRow` instance:
+Chcete-li zobrazit cenu, můžeme jednoduše nastavit vlastnost `UnitPriceLabel` popisek s `Text` na hodnotu vrácenou metodou `DisplayPrice`, stejně jako jsme provedli pro zobrazení názvu produktu a [ukončen] text. Místo předání v `UnitPrice` jako skalární vstupní parametr je však místo toho předána celá `ProductsRow` instance:
 
 [!code-aspx[Main](formatting-the-datalist-and-repeater-based-upon-data-vb/samples/sample7.aspx)]
 
-Při volání pro formátování funkce na místě věnujte chvíli zobrazíte náš postup v prohlížeči. Vaše obrazovka by měla vypadat podobně jako na obrázku 5, s odpojené produkty, včetně textu [VYŘAZENO] a tyto produkty ocenění více než 20,00 $za s jejich cena nahrazena textem prosím volání pro cenové nabídky.
+Díky volání funkcí formátování si chvíli počkejte, než se zobrazí náš průběh v prohlížeči. Vaše obrazovka by měla vypadat podobně jako na obrázku 5, s vyřazenými produkty, včetně textu [VYŘAZENo], a náklady na více než $20,00, jejichž cena se nahradila textem, zavolejte na cenovou nabídku.
 
-[![Nákladné produktů cena je nahrazena textem, vyvolejte funkci pro cenové nabídky](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image14.png)](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image13.png)
+[![u drahých produktů se cena nahradí textem, zavolá se na cenovou nabídku.](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image14.png)](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image13.png)
 
-**Obrázek 5**: Nákladné produktů, cena je nahrazena textem, vyvolejte funkci pro cenové nabídky ([kliknutím ji zobrazíte obrázek v plné velikosti](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image15.png))
+**Obrázek 5**: u drahých produktů je cena nahrazena textem, volá se za cenu nabídky ([kliknutím zobrazíte obrázek v plné velikosti).](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image15.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Formátování obsah ovládacího prvku DataList nebo Repeater na základě dat, můžete to provést pomocí dvou technik. Jako první postup se používá k vytvoření obslužné rutiny události pro `ItemDataBound` událost, která aktivuje každý záznam ve zdroji dat je vázán na nové `DataListItem` nebo `RepeaterItem`. V `ItemDataBound` obslužná rutina události, se dají prozkoumat data aktuální položky s a pak můžete použít formátování na obsah šablony, nebo pro `DataListItem` s celou položku samotný.
+Formátování obsahu ovládacího prvku DataList nebo Repeater v závislosti na datech lze provést pomocí dvou technik. Prvním postupem je vytvořit obslužnou rutinu události pro událost `ItemDataBound`, která se aktivuje, když se každý záznam ve zdroji dat váže k novému `DataListItem` nebo `RepeaterItem`. V obslužné rutině události `ItemDataBound` lze zkontrolovat data aktuální položky, a poté lze použít formátování na obsah šablony nebo pro `DataListItem` na celou položku samotnou.
 
-Vlastní formátování můžete alternativně realizované prostřednictvím funkce formátování. Formátování funkce je metoda, která lze volat z prvku DataList nebo Repeater s šablony, které vrátí kód HTML a vygenerovat na příslušné místo. Často HTML vrácené funkcí formátování se určuje podle hodnoty svázaný s aktuální položkou. Tyto hodnoty mohou být předány do funkci formátování jako skalární hodnoty nebo předáním celý objekt svázaný s položkou (například `ProductsRow` instance).
+Případně lze vlastní formátování realizovat prostřednictvím funkcí formátování. Funkce formátování je metoda, kterou lze vyvolat z šablon DataList nebo Repeater s, které vrátí kód HTML pro vygenerování na svém místě. KÓD HTML vrácený funkcí formátování se často určuje podle hodnot svázaných s aktuální položkou. Tyto hodnoty lze předat do funkce formátování, buď jako skalární hodnoty, nebo předáním celého objektu vázaného na položku (například instance `ProductsRow`).
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí revidující pro účely tohoto kurzu byly Yaakov Ellis, Randy Schmidt a Liz Shulok. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontroloři vedoucích k tomuto kurzu byli Yaakov Ellis, Randy Schmidt a Liz Shulok. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](displaying-data-with-the-datalist-and-repeater-controls-vb.md)
-> [další](showing-multiple-records-per-row-with-the-datalist-control-vb.md)
+> [Další](showing-multiple-records-per-row-with-the-datalist-control-vb.md)

@@ -1,71 +1,71 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-vb
-title: Boj s roboty (VB) | Dokumentace Microsoftu
+title: Boj roboty (VB) | Microsoft Docs
 author: wenz
-description: Automatizované robotů sádra webové protokoly a další weby s nevyžádanou poštou, odesílání formulářů komentář bez nutnosti zásahu uživatele. Ovládací prvek NoBot v Con technologie ASP.NET AJAX...
+description: Automatizované roboty sádry Weblogs a další weby s nevyžádanými zprávami, odesílání formulářů komentářů bez zásahu uživatele. Ovládací prvek NoBot v ASP.NET AJAX con...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: e9803150-452d-4521-97e3-d75d5599383c
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e493ecfb31716355f33c320bb4467fcef1a2437d
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: a8ca71b96cb84c97b1a60ae6a3d1a129cd1b0b10
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132579"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74606403"
 ---
 # <a name="fighting-bots-vb"></a>Boj s roboty (VB)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/NoBot0.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/nobot0VB.pdf)
+[Stažení kódu](https://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/NoBot0.vb.zip) nebo [stažení PDF](https://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/nobot0VB.pdf)
 
-> Automatizované robotů sádra webové protokoly a další weby s nevyžádanou poštou, odesílání formulářů komentář bez nutnosti zásahu uživatele. Ovládací prvek NoBot v ASP.NET AJAX Control Toolkit může pomoct bojují těchto robotů.
+> Automatizované roboty sádry Weblogs a další weby s nevyžádanými zprávami, odesílání formulářů komentářů bez zásahu uživatele. Ovládací prvek NoBot v ASP.NET AJAX Control Toolkit může přispět k boji s těmito robotyy.
 
 ## <a name="overview"></a>Přehled
 
-Automatizované robotů sádra webové protokoly a další weby s nevyžádanou poštou, odesílání formulářů komentář bez nutnosti zásahu uživatele. Ovládací prvek NoBot v ASP.NET AJAX Control Toolkit může pomoct bojují těchto robotů.
+Automatizované roboty sádry Weblogs a další weby s nevyžádanými zprávami, odesílání formulářů komentářů bez zásahu uživatele. Ovládací prvek NoBot v ASP.NET AJAX Control Toolkit může přispět k boji s těmito robotyy.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Jeden běžný postup, se kterými porazíte robotů je použití CAPTCHAs zcela automatizovat veřejné Turing test zjistit počítače a od sebe lidí. Turing test byl původně test kde někdo museli rozhodovat, jestli je partnerem komunikace člověk nebo počítač. Na webu testu CAPTCHA obvykle obsahuje bitovou kopii s některé zkreslený písmena v něm. Cílem je, že může číst pouze lidských písmena v imagi, zatímco OCR algoritmy se nezdaří.
+Jedním z běžných způsobů, jak předpovědět roboty, je použití CAPTCHAs plně automatizovaného testu veřejné Turing testování, které sděluje počítačům a Člověkům. Test Turing byl původně testem, který někdo potřebuje k rozhodnutí, jestli je komunikační partner člověk nebo počítač. Na webu se CAPTCHA obvykle skládá z obrázku s některými dedeformovanými písmeny. Nápad je, že písmena na obrázku může přečíst jenom člověk, zatímco algoritmy optického rozpoznávání se nezdaří.
 
-Existuje několik výhod a nevýhod tohoto přístupu diskusi o to je však nad rámec tohoto kurzu. Je však ovládacího prvku v ASP.NET AJAX Control Toolkit, který nabízí podobný přístup: `NoBot`. Je snazší překonat než testu CAPTCHA, ale je velmi snadno používá a tarify velmi dobře ve službě websites jako blogy, kde bude považován za úspěšné Pokud většinu nevyžádané pošty pokusy jsou zrušena, což `NoBot` ovládacího prvku můžete provést.
+Tento přístup má několik výhod a nevýhody, ale diskuze nad rámec tohoto kurzu. V ovládacím prvku ASP.NET AJAX Control Toolkit je však ovládací prvek, který poskytuje podobný přístup: `NoBot`. Je snazší je překonat než CAPTCHA, ale je velmi snadné použít a tarify na webech, jako jsou Blogy, kde se považují za úspěch, pokud dojde k překonání většiny nevyžádaných zpráv, které může ovládací prvek `NoBot` provádět.
 
-`NoBot` zachycuje postback aktuální webové formuláře ASP.NET, pokud je splněna alespoň jedna z těchto podmínek:
+`NoBot` zachycuje postback aktuálního webového formuláře ASP.NET, pokud je splněna alespoň jedna z těchto podmínek:
 
-- Prohlížeči nepodaří vyřešit díl stavebnice JavaScript (například při deaktivaci JavaScript)
-- Formulář pro rychlé odeslané uživatele
-- IP adresa klienta odeslání formuláře příliš často v určitou dobu.
+- Prohlížeč nedokáže vyřešit skládanku JavaScriptu (například při deaktivaci JavaScriptu).
+- Uživatel odeslal formulář do funkce Fast.
+- IP adresa klienta odeslala formulář příliš často v určitém časovém období.
 
-Za účelem ověření pro tyto podmínky `NoBot` ovládací prvek požaduje tyto atributy (všechny z nich volitelný):
+Aby bylo možné kontrolovat tyto podmínky, ovládací prvek `NoBot` vyžaduje tyto atributy (všechny nepovinné):
 
-- `ResponseMinimumDelaySeconds` minimální velikost sady sekund mezi jednotlivými zpětnými odesláními
-- `CutoffWindowSeconds` Délka Časový interval, ve kterém jsou postbacků extenderu jedna IP adresa míry
-- `CutoffMaximumInstances` maximální velikost sady sekund na časový interval
+- `ResponseMinimumDelaySeconds` minimální doba v sekundách mezi zpětnými odesláními
+- `CutoffWindowSeconds` Délka časového intervalu, ve kterém se zpětná volání z jedné IP adresy měří
+- `CutoffMaximumInstances` maximální dobu v sekundách za časový interval
 
-Následující kód požadavky tohoto aspoň 2 sekundy uplynout mezi jednotlivými zpětnými odesláními a, které existují pouze pět zpětného odeslání nebo nižší v rámci intervalu 30 sekund:
+Následující značka vyžaduje, aby mezi zpětnými odesláními a v intervalu 30 sekund uplynula alespoň dvě sekundy:
 
 [!code-aspx[Main](fighting-bots-vb/samples/sample1.aspx)]
 
-Potom jako obvykle, nezapomeňte zahrnout `ScriptManager` na stránce tak, aby je načtena knihovna ASP.NET AJAX a Control Toolkit je možné:
+Pak jako obvykle nezapomeňte zahrnout `ScriptManager` do stránky, aby se načetla knihovna AJAX ASP.NET a mohla by se používat ovládací sada Toolkit:
 
 [!code-aspx[Main](fighting-bots-vb/samples/sample2.aspx)]
 
-Protože většina kontrol `NoBot` dělá dojít na straně serveru, je potřeba zkontrolovat výsledek tyto ověření. To lze provést zavoláním `NoBot`společnosti `IsValid()` metody. Má jeden argument (jako `out` parametr /`ByRef` parametrů) typu `NoBotState`. Řetězcové vyjádření obsahuje příčinu selhání kontroly a `Valid` jinak. Následující kód vracel zprávu podle `NoBot`je výsledek:
+Vzhledem k tomu, že většina kontrol `NoBot` probíhá na straně serveru, je nutné zkontrolovat výsledek těchto ověření. To lze provést voláním metody `IsValid()` `NoBot`. Má jeden argument (jako `out` parametr/`ByRef` parametr), který je typu `NoBotState`. Jeho řetězcová reprezentace obsahuje důvod, kdy se ověření nepovede, a `Valid` jinak. Následující kód vytvoří výstup zprávy podle výsledku `NoBot`:
 
 [!code-aspx[Main](fighting-bots-vb/samples/sample3.aspx)]
 
-Nakonec musíte formuláře pro odeslání a prvku popisku na výstup zprávu, a vy budete hotovi!
+Nakonec potřebujete formulář pro odeslání a označení prvku pro výstup zprávy a Vy jste hotovi.
 
 [!code-aspx[Main](fighting-bots-vb/samples/sample4.aspx)]
 
-Při spouštění tohoto skriptu a deaktivovat JavaScript nebo odesláním formuláře v prvních dvou sekund nebo odesláním formuláře sedminásobně během 30 sekund, zobrazí se chybová zpráva. Ale pomocí tohoto ovládacího prvku obezřetně, protože pouze 90 95 % uživatelé mít JavaScript aktivovat, proto se nezdaří % 5 až 10 uživatelů `NoBot`v testu.
+Když spustíte tento skript a deaktivujete JavaScript nebo odešlete formulář během prvních dvou sekund nebo formulář odešlete do třiceti sekund, zobrazí se chybová zpráva. Tento ovládací prvek se však dá použít i v takovém případě, protože k aktivaci JavaScriptu má jenom asi 90-95% uživatelů, takže 5-10% uživatelů selže `NoBot`testu.
 
-[![Tato chybová zpráva by mohla být způsobena robota](fighting-bots-vb/_static/image2.png)](fighting-bots-vb/_static/image1.png)
+[![tato chybová zpráva mohla být způsobená robotem.](fighting-bots-vb/_static/image2.png)](fighting-bots-vb/_static/image1.png)
 
-Tato chybová zpráva by mohla být způsobena robota ([kliknutím ji zobrazíte obrázek v plné velikosti](fighting-bots-vb/_static/image3.png))
+Tato chybová zpráva mohla být způsobena robotem ([kliknutím zobrazíte obrázek v plné velikosti).](fighting-bots-vb/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](fighting-bots-cs.md)

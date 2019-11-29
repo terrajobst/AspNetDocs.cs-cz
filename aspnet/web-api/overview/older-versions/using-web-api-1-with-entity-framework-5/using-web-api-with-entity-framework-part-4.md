@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-4
-title: 'Část 4: Přidání zobrazení pro správce | Dokumentace Microsoftu'
+title: '4\. část: Přidání zobrazení Správce | Microsoft Docs'
 author: MikeWasson
 description: ''
 ms.author: riande
@@ -8,79 +8,79 @@ ms.date: 07/04/2012
 ms.assetid: 792f4513-a508-4d14-a0dd-1a2fe282c7bb
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 9e045b17434d46fa1b6e7942db95ecad67c34a46
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 664aeb33031e933322886a6d6bdd989277e9fda2
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134747"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74600018"
 ---
-# <a name="part-4-adding-an-admin-view"></a>Část 4: Přidání zobrazení pro správce
+# <a name="part-4-adding-an-admin-view"></a>4\. část: Přidání zobrazení pro správu
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-[Stáhnout dokončený projekt](http://code.msdn.microsoft.com/ASP-NET-Web-API-with-afa30545)
+[Stáhnout dokončený projekt](https://code.msdn.microsoft.com/ASP-NET-Web-API-with-afa30545)
 
-## <a name="add-an-admin-view"></a>Přidání zobrazení správce
+## <a name="add-an-admin-view"></a>Přidat zobrazení Správce
 
-Teď vytvoříme zapnout na straně klienta a přidáme stránku, která využívají data z kontroleru pro správce. Na stránce vám umožní uživatelům vytvořit, upravit nebo odstranit produktů, pomocí zasílání požadavků AJAX na kontroleru.
+Teď se změní na stranu klienta a přidá se stránka, která může využívat data z kontroleru správce. Stránka umožní uživatelům vytvářet, upravovat nebo odstraňovat produkty, a to odesláním požadavků AJAX do kontroleru.
 
-V Průzkumníku řešení rozbalte složku řadiče a otevřete soubor s názvem HomeController.cs. Tento soubor obsahuje kontroler MVC. Přidat metodu s názvem `Admin`:
+V Průzkumník řešení rozbalte složku řadiče a otevřete soubor s názvem HomeController.cs. Tento soubor obsahuje kontroler MVC. Přidejte metodu s názvem `Admin`:
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-4/samples/sample1.cs)]
 
-**HttpRouteUrl** metoda vytvoří identifikátor URI pro webové rozhraní API, a to uchovává v kontejneru a zobrazení pro pozdější.
+Metoda **HttpRouteUrl** vytvoří identifikátor URI webového rozhraní API a uložíme ho do balíčku zobrazení pro pozdější verzi.
 
-V dalším kroku umístění kurzoru text v rámci `Admin` metodě akce, pak klikněte pravým tlačítkem a vyberte **přidat zobrazení**. Tím se otevře **přidat zobrazení** dialogového okna.
+Dále umístěte kurzor na text do metody `Admin` akce, klikněte pravým tlačítkem myši a vyberte možnost **Přidat zobrazení**. Tím se zobrazí dialogové okno **Přidat zobrazení** .
 
 ![](using-web-api-with-entity-framework-part-4/_static/image1.png)
 
-V **přidat zobrazení** dialogového okna, název zobrazení "Admin". Zaškrtněte políčko s popiskem **vytvoření zobrazení se silnými typy**. V části **třídy modelu**, vyberte "Produktu (ProductStore.Models)". Všechny další možnosti ponechte jejich výchozí hodnoty.
+V dialogovém okně **Přidat zobrazení** pojmenujte zobrazení "admin". Zaškrtněte políčko s názvem **vytvořit zobrazení silného typu**. V části **třída modelu**vyberte produkt (ProductStore. Models). U ostatních možností ponechte výchozí hodnoty.
 
 ![](using-web-api-with-entity-framework-part-4/_static/image2.png)
 
-Kliknutím na **přidat** přidá soubor s názvem Admin.cshtml v rámci zobrazení Domů. Otevřete tento soubor a přidejte následující kód HTML. Tento kód HTML definuje strukturu stránky, ale žádné funkce je připraveno, ještě.
+Kliknutím na **Přidat** přidáte do zobrazení/domů soubor s názvem admin. cshtml. Otevřete tento soubor a přidejte následující kód HTML. Tento kód HTML definuje strukturu stránky, ale ještě není kabelem funkční.
 
 [!code-cshtml[Main](using-web-api-with-entity-framework-part-4/samples/sample2.cshtml)]
 
-## <a name="create-a-link-to-the-admin-page"></a>Vytvořit odkaz na stránku pro správu
+## <a name="create-a-link-to-the-admin-page"></a>Vytvoří odkaz na stránku správce.
 
-V Průzkumníku řešení rozbalte složku zobrazení a poté rozbalte složku Shared. Otevřete soubor s názvem \_Layout.cshtml. Vyhledejte **ul** element s id = "nabídka" a odkaz akce pro zobrazení správce:
+V Průzkumník řešení rozbalte složku zobrazení a potom rozbalte sdílenou složku. Otevřete soubor s názvem \_layout. cshtml. Vyhledejte element **ul** s ID = "nabídka" a odkaz akce pro zobrazení Správce:
 
 [!code-cshtml[Main](using-web-api-with-entity-framework-part-4/samples/sample3.cshtml)]
 
 > [!NOTE]
-> V projektu vzorku můžu provedli několik dalších tyto kosmetické změny, jako je například nahradit řetězec "Zde bude vaše logo". Tyto nemají vliv na funkce aplikace. Je možné projekt stáhnout a porovnat soubory.
+> V ukázkovém projektu jsem udělal několik dalších změn kosmetických prostředků, jako je například nahrazení řetězce "vaše logo". Neovlivňují funkce aplikace. Můžete stáhnout projekt a porovnat soubory.
 
-Spusťte aplikaci a klikněte na odkaz "Admin", který se zobrazí v horní části domovské stránky. Na stránce správy by měl vypadat nějak takto:
+Spusťte aplikaci a klikněte na odkaz správce, který se zobrazí v horní části domovské stránky. Stránka pro správu by měla vypadat takto:
 
 ![](using-web-api-with-entity-framework-part-4/_static/image3.png)
 
-Pravé teď na stránce nic nedělá. V další části používáme rozhraní Knockout.js k vytvoření dynamického uživatelského rozhraní.
+V tuto chvíli stránka není cokoli dělat. V další části použijeme vyseknutí. js k vytvoření dynamického uživatelského rozhraní.
 
 ## <a name="add-authorization"></a>Přidat autorizaci
 
-Na stránce správy je nyní k dispozici všem uživatelům následujícím webu. Změňme ji omezit oprávnění správcům.
+Stránka pro správu je aktuálně přístupná všem návštěvníkům webu. Pojďme to změnit, aby se omezilo oprávnění pro správce.
 
-Začněte přidáním role "Správce" a uživatel s oprávněním správce. V Průzkumníku řešení rozbalte složku filtry a otevřete soubor s názvem InitializeSimpleMembershipAttribute.cs. Vyhledejte `SimpleMembershipInitializer` konstruktoru. Po volání **WebSecurity.InitializeDatabaseConnection**, přidejte následující kód:
+Začněte přidáním role správce a uživatele správce. V Průzkumník řešení rozbalte složku filtry a otevřete soubor s názvem InitializeSimpleMembershipAttribute.cs. Vyhledejte konstruktor `SimpleMembershipInitializer`. Po volání metody **WebSecurity. InitializeDatabaseConnection**přidejte následující kód:
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-4/samples/sample4.cs)]
 
-Toto je quick-and-dirty způsob, jak přidat roli "Správce" a vytvořte uživatele pro roli.
+Toto je rychlý a špinavý způsob, jak přidat roli správce a vytvořit uživatele pro tuto roli.
 
-V Průzkumníku řešení rozbalte složku řadiče a otevření souboru HomeController.cs. Přidat **Authorize** atribut `Admin` metody.
+V Průzkumník řešení rozbalte složku řadiče a otevřete soubor HomeController.cs. Přidejte atribut **autorizace** do metody `Admin`.
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-4/samples/sample5.cs)]
 
-Otevřete soubor AdminController.cs a přidejte **Authorize** atribut pro celou `AdminController` třídy.
+Otevřete soubor AdminController.cs a přidejte atribut **autorizuje** do celé `AdminController` třídy.
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-4/samples/sample6.cs)]
 
 > [!NOTE]
-> MVC a webového rozhraní API, jak definovat **Authorize** atributy v různých oborech názvů. Aplikace MVC používá **System.Web.Mvc.AuthorizeAttribute**, zatímco webového rozhraní API používá **System.Web.Http.AuthorizeAttribute**.
+> MVC a webové rozhraní API definují **autorizační** atributy v různých oborech názvů. MVC používá **System. Web. Mvc. AuthorizeAttribute**, zatímco webové rozhraní API používá **System. Web. http. AuthorizeAttribute**.
 
-Pouze správci teď mohou zobrazit stránky pro správu. Navíc pokud odešlete požadavek HTTP kontroleru pro správce, žádost musí obsahovat soubor cookie ověřování. Pokud ne, server odešle odpověď HTTP 401 (Neautorizováno). Zobrazí se to ve Fiddleru odesláním požadavek GET na `http://localhost:*port*/api/admin`.
+Stránku Správce teď můžou zobrazit jenom správci. Pokud odešlete požadavek HTTP kontroleru správce, musí požadavek obsahovat ověřovací soubor cookie. V takovém případě pošle Server odpověď HTTP 401 (Neautorizovaná). Můžete to zobrazit v Fiddler odesláním žádosti o získání `http://localhost:*port*/api/admin`.
 
 > [!div class="step-by-step"]
 > [Předchozí](using-web-api-with-entity-framework-part-3.md)
-> [další](using-web-api-with-entity-framework-part-5.md)
+> [Další](using-web-api-with-entity-framework-part-5.md)

@@ -1,213 +1,213 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Aktualizace souvisejících dat s Entity Framework v aplikaci ASP.NET MVC (6 10) | Dokumentace Microsoftu
+title: Aktualizace souvisejících dat s Entity Framework v aplikaci ASP.NET MVC (6 z 10) | Microsoft Docs
 author: tdykstra
-description: Contoso University ukázkovou webovou aplikaci ukazuje postup vytvoření aplikace ASP.NET MVC 4 pomocí Entity Framework 5 Code First a sady Visual Studio...
+description: Ukázková webová aplikace společnosti Contoso University ukazuje, jak vytvářet aplikace ASP.NET MVC 4 pomocí Code First Entity Framework 5 a Visual Studio...
 ms.author: riande
 ms.date: 07/30/2013
 ms.assetid: 7871dc05-2750-470f-8b4c-3a52511949bc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 68f8bdeeb85bc66cf790c2005cf0f0ff24b3b653
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: d29cb172d642b67947b461d1a7e55d01872bb8c2
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65129771"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74592444"
 ---
-# <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-6-of-10"></a>Aktualizace souvisejících dat s Entity Framework v aplikaci ASP.NET MVC (6 10)
+# <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-6-of-10"></a>Aktualizace souvisejících dat s Entity Framework v aplikaci ASP.NET MVC (6 z 10)
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-[Stáhnout dokončený projekt](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
+[Stáhnout dokončený projekt](https://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
-> Contoso University ukázkovou webovou aplikaci ukazuje, jak vytvářet aplikace ASP.NET MVC 4 pomocí Entity Framework 5 Code First a Visual Studio 2012. Informace o této sérii kurzů, naleznete v tématu [z prvního kurzu této série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Série kurzů můžete začít od začátku nebo [stáhnout počáteční projekt pro tuto kapitolu](building-the-ef5-mvc4-chapter-downloads.md) a začněte tady.
+> Ukázková webová aplikace společnosti Contoso University ukazuje, jak vytvářet aplikace ASP.NET MVC 4 pomocí Code First Entity Framework 5 a Visual Studio 2012. Informace o řadě kurzů najdete v [prvním kurzu v řadě](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Řadu kurzů můžete spustit na začátku nebo [si stáhnout počáteční projekt pro tuto kapitolu](building-the-ef5-mvc4-chapter-downloads.md) a začít zde.
 > 
 > > [!NOTE] 
 > > 
-> > Pokud narazíte na problém nevyřešíte sami, [stáhnout dokončený kapitoly](building-the-ef5-mvc4-chapter-downloads.md) a zkuste problém reprodukovat. Porovnáním kód Dokončený kód v obecně najdete řešení problému. Některé běžné chyby a jejich řešení najdete v tématu [chyby a náhradní řešení.](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)
+> > Pokud narazíte na problém, který nemůžete vyřešit, [Stáhněte si dokončenou kapitolu](building-the-ef5-mvc4-chapter-downloads.md) a pokuste se problém reprodukován. Řešení problému můžete obecně najít porovnáním kódu s dokončeným kódem. Některé běžné chyby a jejich řešení najdete v tématu [chyby a alternativní řešení.](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)
 
-V předchozím kurzu zobrazí související data; v tomto kurzu budete aktualizovat související data. U většiny relací to můžete provést aktualizace příslušné pole cizích klíčů. U relací m: n Entity Framework nezveřejňuje tabulky spojení přímo, proto musíte explicitně přidat a odebrat entity do a z odpovídající navigační vlastnosti.
+V předchozím kurzu jste zobrazili související data. v tomto kurzu aktualizujete související data. U většiny vztahů se to dá udělat tak, že aktualizujete příslušná pole cizího klíče. U vztahů m:n nezveřejňuje Entity Framework přímo tabulku JOIN, takže musíte explicitně přidat a odebrat entity z a do příslušných vlastností navigace.
 
-Na následujících obrázcích stránky, kterou budete pracovat.
+Následující ilustrace znázorňují stránky, se kterými budete pracovat.
 
 ![Course_create_page](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
 
 ![Instructor_edit_page_with_courses](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
 
-## <a name="customize-the-create-and-edit-pages-for-courses"></a>Přizpůsobení vytvoření a úprava stránky pro kurzy
+## <a name="customize-the-create-and-edit-pages-for-courses"></a>Přizpůsobení stránek pro vytváření a úpravy pro kurzy
 
-Při vytvoření nové entity kurzu musí mít relaci k existující oddělení. K provedení této obsahuje automaticky generovaný kód metody kontroleru a vytvořit a upravit zobrazení, které zahrnují rozevíracího seznamu pro výběr oddělení. Sady rozevíracího seznamu `Course.DepartmentID` vlastnost cizího klíče, a to je všechny Entity Framework, které potřebujete-li načíst `Department` navigační vlastnost s příslušnou `Department` entity. Budete používat automaticky generovaný kód, ale mírně se přidání zpracování chyb a rozevírací seznam seřadit změnit.
+Když se vytvoří nová entita kurzu, musí mít relaci s existujícím oddělením. Pro usnadnění tohoto kódu se vygenerovaný kód skládá z metod kontroleru a vytváření a upravování zobrazení, která obsahují rozevírací seznam pro výběr oddělení. Rozevírací seznam nastaví vlastnost `Course.DepartmentID` cizího klíče a to je vše, co Entity Framework potřebuje, aby se načetla vlastnost `Department` navigace s příslušnou `Department`ou entitou. Použijete generovaný kód, ale mírně ho změníte a přidáte tak zpracování chyb a seřadíte rozevírací seznam.
 
-V *CourseController.cs*, odstraňte čtyři `Edit` a `Create` metody a nahraďte následujícím kódem:
+V *CourseController.cs*odstraňte čtyři metody `Edit` a `Create` a nahraďte je následujícím kódem:
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs?highlight=3,10,13-14,21-27,34,41,44-45,52-58,62-68)]
 
-`PopulateDepartmentsDropDownList` Metoda načte seznam všech oddělení seřazené podle názvu, vytvoří `SelectList` kolekce rozevírací seznam a předá zobrazení v kolekci `ViewBag` vlastnost. Metoda přijímá volitelný `selectedDepartment` parametr, který umožňuje volajícímu kódu k určení, které se při vykreslení rozevíracího seznamu vybrat položku. Zobrazení předá název `DepartmentID` k [ `DropDownList` pomocné rutiny](../working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc.md), a pomocné rutiny pak mohl podívat `ViewBag` objekt pro `SelectList` s názvem `DepartmentID`.
+Metoda `PopulateDepartmentsDropDownList` načte seznam všech oddělení seřazených podle názvu, vytvoří kolekci `SelectList` pro rozevírací seznam a předá kolekci do zobrazení ve vlastnosti `ViewBag`. Metoda přijímá volitelný parametr `selectedDepartment`, který umožňuje volajícímu kódu určit položku, která bude vybrána při vykreslení rozevíracího seznamu. Zobrazení pojmenuje `DepartmentID` do [pomocné rutiny `DropDownList`](../working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc.md)a pomoc pak ví, že v objektu `ViewBag` vyhledá `SelectList` s názvem `DepartmentID`.
 
-`HttpGet` `Create` Volání metod `PopulateDepartmentsDropDownList` metody bez nastavení vybrané položky, protože pro nový kurz oddělení nedojde k ještě:
+Metoda `HttpGet` `Create` volá metodu `PopulateDepartmentsDropDownList` bez nastavení vybrané položky, protože pro nový kurz se oddělení ještě nevytvořilo:
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.cs)]
 
-`HttpGet` `Edit` Metoda nastaví vybrané položky na základě ID oddělení, které je již přiřazen ke kurzu, který právě upravujete:
+Metoda `HttpGet` `Edit` Nastaví vybranou položku na základě ID oddělení, které je již přiřazeno k upravovanému kurzu:
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample3.cs)]
 
-`HttpPost` Metody pro oba `Create` a `Edit` také obsahovat kód, který nastaví vybrané položky při jejich opětovné zobrazení na stránce po chybě:
+Metody `HttpPost` pro `Create` a `Edit` také obsahují kód, který nastaví vybranou položku, když znovu zobrazí stránku po chybě:
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample4.cs)]
 
-Tento kód se zajistí, že při stránce se zobrazí znovu, chcete-li zobrazit chybová zpráva, ať oddělení byla vybrána pořád vybraný.
+Tento kód zajišťuje, že když se znovu zobrazí stránka s chybovou zprávou, zůstane vybraná možnost jakékoliv oddělení.
 
-V *Views\Course\Create.cshtml*, přidejte zvýrazněný kód k vytvoření nové pole kurz čísla před **název** pole. Jak je popsáno v předchozí kurzu, nejsou ve výchozím nastavení automaticky pole primárního klíče, ale tento primární klíč má smysl, takže má uživatel moct zadat hodnotu klíče.
+V *Views\Course\Create.cshtml*přidejte zvýrazněný kód pro vytvoření nového pole číslo kurzu před polem title ( **název** ). Jak je vysvětleno v předchozím kurzu, pole primárních klíčů se ve výchozím nastavení nestandardují, ale tento primární klíč je smysluplný, takže chcete, aby uživatel mohl zadat hodnotu klíče.
 
 [!code-cshtml[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample5.cshtml?highlight=17-23)]
 
-V *Views\Course\Edit.cshtml*, *Views\Course\Delete.cshtml*, a *Views\Course\Details.cshtml*, přidejte pole číslo kurzu před **nadpisu**  pole. Protože je primární klíč, se zobrazí, ale nelze změnit.
+V *Views\Course\Edit.cshtml*, *Views\Course\Delete.cshtml*a *Views\Course\Details.cshtml*přidejte pole číslo kurzu před pole **název** . Vzhledem k tomu, že se jedná o primární klíč, je zobrazený, ale nedá se změnit.
 
 [!code-cshtml[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample6.cshtml)]
 
-Spustit **vytvořit** stránky (Zobrazit kurz indexovou stránku a klikněte na tlačítko **vytvořit nový**) a zadejte data pro nový kurzu:
+Spusťte stránku **vytvořit** (Zobrazit index kurzu, klikněte na **vytvořit nový**) a zadejte data nového kurzu:
 
 ![Course_create_page](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
 
-Klikněte na možnost **Vytvořit**. Kurz indexovou stránku se zobrazí nové kurzu přidat do seznamu. Název oddělení v seznamu Index stránky pochází z navigační vlastnosti zobrazující, že byla správně vytvoří vztah.
+Klikněte na **vytvořit**. Na stránce index kurzu se zobrazí nový kurz přidaný do seznamu. Název oddělení v seznamu stránek indexu pochází z navigační vlastnosti, která ukazuje, že relace byla správně vytvořena.
 
 ![Course_Index_page_showing_new_course](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
 
-Spustit **upravit** stránky (Zobrazit kurz indexovou stránku a klikněte na tlačítko **upravit** v kurzu).
+Spusťte stránku **Upravit** (zobrazí se stránka index kurzu a v kurzu klikněte na **Upravit** ).
 
 ![Course_edit_page](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
 
-Data na stránce a klikněte na tlačítko **Uložit**. S daty aktualizovaný kurz se zobrazí stránka kurzu indexu.
+Změňte data na stránce a klikněte na **Uložit**. Zobrazí se stránka index kurzu s aktualizovanými daty kurzu.
 
-## <a name="adding-an-edit-page-for-instructors"></a>Přidání stránky pro úpravu pro vyučující
+## <a name="adding-an-edit-page-for-instructors"></a>Přidání stránky pro úpravy pro instruktory
 
-Při úpravě záznamu instruktorem, budete chtít být schopen aktualizovat přiřazení kanceláře instruktorem. `Instructor` Entita má vztah k nule nebo jednom s `OfficeAssignment` entity, což znamená, že je nutné zpracovat v následujících případech:
+Když upravíte záznam instruktora, chcete mít schopnost aktualizovat přiřazení kanceláře instruktora. Entita `Instructor` má relaci typu 1:1 s entitou `OfficeAssignment`, což znamená, že je nutné zpracovat následující situace:
 
-- Pokud uživatel vymaže přiřazení kanceláře a původně hodnotu, je třeba odebrat a odstranit `OfficeAssignment` entity.
-- Pokud uživatel zadá hodnotu přiřazení office a ho původně byla prázdná, je třeba vytvořit novou `OfficeAssignment` entity.
-- Pokud uživatel změní hodnotu přiřazení kanceláře, musíte změnit hodnotu v existujícím `OfficeAssignment` entity.
+- Pokud uživatel zruší přiřazení sady Office a původně měl hodnotu, je nutné odebrat a odstranit `OfficeAssignment` entitu.
+- Pokud uživatel zadá hodnotu přiřazení Office a původně byl prázdný, musíte vytvořit novou entitu `OfficeAssignment`.
+- Pokud uživatel změní hodnotu přiřazení Office, musíte změnit hodnotu v existující entitě `OfficeAssignment`.
 
-Otevřít *InstructorController.cs* a podívejte se na `HttpGet` `Edit` metody:
+Otevřete *InstructorController.cs* a podívejte se na metodu `HttpGet` `Edit`:
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample7.cs)]
 
-Automaticky generovaný kód není, co chcete. Nastavení dat pro rozevíracího seznamu, ale je nutné je textové pole. Tato metoda nahraďte následujícím kódem:
+Vygenerovaný kód tady není tak, jak chcete. Je nastavená data pro rozevírací seznam, ale vy budete potřebovat textové pole. Tuto metodu nahraďte následujícím kódem:
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample8.cs)]
 
-Tento kód klesne `ViewBag` příkazu a přidá předběžné načítání pro přidružený `OfficeAssignment` entity. Předběžné načítání s nelze provést `Find` metoda, proto `Where` a `Single` metody se používají místo toho vybrat instruktorem.
+Tento kód zruší příkaz `ViewBag` a přidá Eager načítání pro přidruženou entitu `OfficeAssignment`. Eager se nedá načíst pomocí metody `Find`, takže se místo toho používají metody `Where` a `Single` k výběru instruktora.
 
-Nahradit `HttpPost` `Edit` metodu s následujícím kódem. která zpracovává aktualizace přiřazení sady office:
+Metodu `HttpPost` `Edit` nahraďte následujícím kódem. který zpracovává aktualizace přiřazení Office:
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample9.cs)]
 
-Kód provede následující akce:
+Kód provede následující:
 
-- Získá aktuální `Instructor` entit z databáze pomocí předběžné načítání pro `OfficeAssignment` navigační vlastnost. To je stejný jako co jste se naučili `HttpGet` `Edit` metody.
-- Aktualizuje načtený `Instructor` entity s hodnotami z vazače modelu. [TryUpdateModel](https://msdn.microsoft.com/library/dd470908(v=vs.108).aspx) vám umožní použít přetížení *seznamu povolených IP adres* vlastnosti, které chcete zahrnout. To zabraňuje typu over-pass-the účtování, jak je vysvětleno v [druhé části kurzu](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md).
+- Načte aktuální entitu `Instructor` z databáze pomocí načítání Eager pro navigační vlastnost `OfficeAssignment`. To se shoduje s tím, co jste provedli v metodě `HttpGet` `Edit`.
+- Aktualizuje načtenou entitu `Instructor` hodnotami z pořadače modelů. [TryUpdateModel](https://msdn.microsoft.com/library/dd470908(v=vs.108).aspx) přetížení umožňuje seznam *povolených* vlastností, které chcete zahrnout. Tím zabráníte převzetí služeb při selhání, jak je vysvětleno v [druhém kurzu](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md).
 
     [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample10.cs)]
-- Pokud office umístění je prázdné, nastaví `Instructor.OfficeAssignment` vlastnost na hodnotu null tak, aby příslušného řádku v `OfficeAssignment` tabulce se odstraní.
+- Pokud je umístění kanceláře prázdné, vlastnost `Instructor.OfficeAssignment` nastaví na hodnotu null, aby se související řádek v tabulce `OfficeAssignment` odstranil.
 
     [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample11.cs)]
 - Uloží změny do databáze.
 
-V *Views\Instructor\Edit.cshtml*, poté, co `div` prvky pro **datum přijetí** pole, přidat nové pole pro úpravy pobočce:
+V *Views\Instructor\Edit.cshtml*po prvcích `div` pro pole **Datum přijetí** přidejte nové pole pro úpravy umístění kanceláře:
 
 [!code-cshtml[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cshtml)]
 
-Spuštění stránky (vyberte **Instruktoři** kartu a potom klikněte na tlačítko **upravit** na instruktorem). Změnit **pobočce** a klikněte na tlačítko **Uložit**.
+Spusťte stránku (vyberte kartu **instruktoři** a pak klikněte na **Upravit** v instruktorovi). Změňte **umístění kanceláře** a klikněte na **Uložit**.
 
 ![Changing_the_office_location](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
-## <a name="adding-course-assignments-to-the-instructor-edit-page"></a>Stránka upravit přidáním kurzu přiřazení kurzů vedených
+## <a name="adding-course-assignments-to-the-instructor-edit-page"></a>Přidání přiřazení kurzů do stránky pro úpravu instruktorů
 
-Instruktoři může představuje libovolný počet kurzů. Teď budete vylepšit kurzů vedených upravit stránku tak, že přidáte změnit přiřazení kurz pomocí skupiny zaškrtávacích políček, jak je znázorněno na následujícím snímku obrazovky:
+Instruktoři můžou učit libovolný počet kurzů. Nyní vylepšíte stránku pro úpravu instruktoru přidáním možnosti změnit přiřazení kurzů pomocí skupiny zaškrtávacích políček, jak je znázorněno na následujícím snímku obrazovky:
 
 ![Instructor_edit_page_with_courses](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
 
-Vztah mezi `Course` a `Instructor` entity je many-to-many, což znamená, že nemáte přímý přístup k tabulce spojení. Místo toho budou přidávat a odebírat entity do a z `Instructor.Courses` navigační vlastnost.
+Vztah mezi `Course` a `Instructor` entitami je mnoho až mnoho, což znamená, že nemáte přímý přístup k tabulce JOIN. Místo toho přidáte nebo odeberete entity do a z `Instructor.Courses` navigační vlastnost.
 
-Rozhraní, které vám umožní měnit které kurzy instruktorem je přiřazená je skupina zaškrtávacích políček. Zaškrtávací políčko pro každý kurz v databázi se zobrazí a jsou ty, které se kurzů vedených je aktuálně přiřazená k vybrané. Uživatel může vyberte nebo zrušte zaškrtnutí políček, chcete-li změnit přiřazení kurzu. Kdyby mnohem větší počet kurzů, by pravděpodobně chtít použít jinou metodu prezentace dat v zobrazení, ale můžete využít stejnou metodu manipulace s navigační vlastnosti, aby bylo možné vytvořit nebo odstranit relace.
+Uživatelské rozhraní, které umožňuje změnit, ke kterým kurzům je instruktor přiřazen, je skupina zaškrtávacích políček. Zobrazí se zaškrtávací políčko pro každý kurz v databázi a jsou vybrány ty, ke kterým je instruktor aktuálně přiřazen. Uživatel může zaškrtnutím nebo zrušením zaškrtnutí políček změnit přiřazení kurzů. Pokud byl počet kurzů mnohem větší, pravděpodobně budete chtít použít jinou metodu prezentace dat v zobrazení, ale při vytváření nebo odstraňování relací byste měli použít stejnou metodu manipulace s navigačními vlastnostmi.
 
-Pro zadání dat pro zobrazení seznamu zaškrtávacích políček, použijete třídu modelu zobrazení. Vytvoření *AssignedCourseData.cs* v *modely ViewModels* složky a nahraďte existující kód následujícím kódem:
+Chcete-li poskytnout data do zobrazení pro seznam zaškrtávacích políček, použijte třídu zobrazení modelu. Vytvořte *AssignedCourseData.cs* ve složce *ViewModels* a nahraďte existující kód následujícím kódem:
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample13.cs)]
 
-V *InstructorController.cs*, nahraďte `HttpGet` `Edit` metodu s následujícím kódem. Změny jsou zvýrazněné.
+V *InstructorController.cs*nahraďte metodu `HttpGet` `Edit` následujícím kódem. Změny jsou zvýrazněny.
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample14.cs?highlight=5,8,12-27)]
 
-Kód přidá předběžné načítání pro `Courses` navigační vlastnost a volá novou `PopulateAssignedCourseData` metodu k dispozici informaci pro použití pole zaškrtávací políčko `AssignedCourseData` zobrazení třídy modelu.
+Kód přidá načtení Eager pro vlastnost navigace `Courses` a zavolá novou metodu `PopulateAssignedCourseData` k poskytnutí informací pro pole zaškrtávacího políčka pomocí třídy zobrazení `AssignedCourseData`.
 
-Kód v `PopulateAssignedCourseData` metoda přečte všechny `Course` třída entity-li načíst seznam kurzů pomocí zobrazení modelu. Jednotlivých kurzů, kód kontroluje, zda existuje kurz v kurzů vedených `Courses` navigační vlastnost. Chcete-li vytvořit efektivní vyhledávání při kontrole, zda je přiřazen kurzů vedených kurz, kurzy přiřazená kurzů vedených jsou vloženy do [HashSet](https://msdn.microsoft.com/library/bb359438.aspx) kolekce. `Assigned` Je nastavena na `true` kurzy kurzů vedených přiřazena. Zobrazení bude tuto vlastnost použít k určení, které Kontrola polí musí být zobrazen jako vybraný. Nakonec je předán zobrazení v seznamu `ViewBag` vlastnost.
+Kód v metodě `PopulateAssignedCourseData` čte všechny `Course` entit, aby bylo možné načíst seznam kurzů pomocí třídy zobrazení modelu. Pro každý kurz kód kontroluje, zda se v `Courses` navigační vlastnost instruktory vyskytuje kurz. K vytvoření efektivního vyhledávání při kontrole, jestli je kurz přiřazen instruktorovi, jsou kurzy přiřazené k instruktorovi vloženy do kolekce [HashSet –](https://msdn.microsoft.com/library/bb359438.aspx) . Vlastnost `Assigned` je nastavena na `true` pro kurzy, ke kterým je instruktor přiřazen. Zobrazení použije tuto vlastnost k určení, která zaškrtávací políčka se musí zobrazit jako vybraná. Nakonec se seznam předává do zobrazení ve vlastnosti `ViewBag`.
 
-Dál přidejte kód, který se spouští, když uživatel klikne **Uložit**. Nahradit `HttpPost` `Edit` metodu s následujícím kódem, který volá novou metodu, která aktualizuje `Courses` vlastnost navigace `Instructor` entity. Změny jsou zvýrazněné.
+Dále přidejte kód, který se spustí, když uživatel klikne na **Uložit**. Nahraďte metodu `HttpPost` `Edit` následujícím kódem, který volá novou metodu, která aktualizuje `Courses` navigační vlastnost entity `Instructor`. Změny jsou zvýrazněny.
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample15.cs?highlight=3,7,20,33,37-65)]
 
-Protože zobrazení se nemusí kolekce `Course` entity, vazače modelu se nedají automaticky aktualizovat `Courses` navigační vlastnost. Namísto použití vazače modelu k aktualizaci navigační vlastnost kurzů, můžete to udělat na novém `UpdateInstructorCourses` metody. Proto je třeba vyloučit `Courses` vlastnost z vazby modelu. To nevyžaduje změny kódu, který volá [TryUpdateModel](https://msdn.microsoft.com/library/dd470908(v=vs.98).aspx) vzhledem k tomu, že používáte *přidávání na seznam povolených* přetížení a `Courses` není v seznamu pro zahrnutí.
+Vzhledem k tomu, že zobrazení nemá kolekci `Course` entit, pořadač modelů nemůže automaticky aktualizovat navigační vlastnost `Courses`. Místo použití pořadače modelů k aktualizaci navigační vlastnosti kurzů to provedete v nové metodě `UpdateInstructorCourses`. Proto je nutné vyloučit vlastnost `Courses` z vazby modelu. To nevyžaduje žádné změny kódu, který volá [TryUpdateModel](https://msdn.microsoft.com/library/dd470908(v=vs.98).aspx) , protože používáte přetížení seznamu *povolených* položek a `Courses` není v seznamu zahrnutí.
 
-Pokud není žádná kontrola se zaškrtnuta, kód v `UpdateInstructorCourses` inicializuje `Courses` navigační vlastnost s prázdnou kolekci:
+Pokud nebyla vybrána žádná zaškrtávací políčka, kód v `UpdateInstructorCourses` inicializuje vlastnost `Courses` navigace s prázdnou kolekcí:
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample16.cs)]
 
-Kód pak projde všechny kurzy v databázi a zkontroluje každý kurz oproti těm, které jsou přiřazeny k instruktorem a ty, které byly vybrány v zobrazení. K usnadnění efektivnější vyhledávání, druhé dvě kolekce jsou uloženy v `HashSet` objekty.
+Kód pak projde všemi kurzy v databázi a zkontroluje každý kurz s těmi, které jsou aktuálně přiřazeny k instruktorovi, a k těm, které byly vybrány v zobrazení. Aby bylo možné efektivně vyhledávat, jsou tyto dvě kolekce uloženy v `HashSet`ch objektech.
 
-Pokud zaškrtli políčko pro kurz ale kurzu není v `Instructor.Courses` navigační vlastnost, kurz je přidán do kolekce ve vlastnosti navigace.
+Pokud je vybráno zaškrtávací políčko pro kurz, ale kurz není v navigační vlastnosti `Instructor.Courses`, kurz se přidá do kolekce v navigační vlastnosti.
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample17.cs)]
 
-Pokud není zaškrtnuté políčko kurzům, ale celé probíhá `Instructor.Courses` navigační vlastnost, kurz je odebrána z navigační vlastnost.
+Pokud není vybrané zaškrtávací políčko pro kurz, ale kurz je v navigační vlastnosti `Instructor.Courses`, kurz se odebere z navigační vlastnosti.
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample18.cs)]
 
-V *Views\Instructor\Edit.cshtml*, přidat **kurzy** pole s polem zaškrtávacích políček tak, že přidáte následující zvýrazněný kód ihned po `div` prvky pro `OfficeAssignment` pole:
+V *Views\Instructor\Edit.cshtml*přidejte pole **kurzů** s polem zaškrtávacích políček přidáním následujícího zvýrazněného kódu hned za prvky `div` pro pole `OfficeAssignment`:
 
 [!code-cshtml[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample19.cshtml?highlight=51-73)]
 
-Tento kód vytvoří tabulku HTML, který obsahuje tři sloupce. V každém sloupci, představuje zaškrtávací políčko, za nímž následuje, který se skládá z kurzu počet a názvy popisků. Všechna zaškrtávací políčka mají stejný název ("selectedCourses"), která informuje o tom, které mají být považovány za skupinu vazače modelu. `value` Atribut každé zaškrtávací políčko je nastaven na hodnotu `CourseID.` při odeslání stránky vazače modelu předá kontroler, který se skládá z pole `CourseID` pouze zaškrtávací políčka, které jsou vybrané hodnoty.
+Tento kód vytvoří tabulku HTML, která má tři sloupce. V každém sloupci je zaškrtávací políčko následované titulkem, který se skládá z čísla a názvu kurzu. Všechna zaškrtávací políčka mají stejný název ("selectedCourses"), který informuje pořadač modelů o tom, že se mají považovat za skupinu. Atribut `value` každé zaškrtávací políčko je nastaven na hodnotu `CourseID.` při zveřejnění stránky, pořadač modelu předává pole do kontroleru, který se skládá z `CourseID`ch hodnot pouze pro zaškrtávací políčka, která jsou vybrána.
 
-Když zaškrtávací políčka jsou zpočátku vykresleno, mít ty, které jsou pro kurzy, které jsou přiřazeny kurzů vedených `checked` atributy, které vybere je (zobrazí se jim zaškrtnutí).
+Při počátečním vygenerování zaškrtávacích políček se u kurzů přiřazených k instruktoru `checked` atributy, které je vyberou (zobrazí se zaškrtnuté).
 
-Po změně přiřazení kurzu, budete chtít mít možnost ověřit změny návratu na web `Index` stránky. Proto budete muset přidat sloupec do tabulky na této stránce. V tomto případě není nutné použít `ViewBag` objektu, protože je již v informace, které chcete zobrazit `Courses` vlastnost navigace `Instructor` entita, která se předá do stránky jako model.
+Po změně přiřazení kurzů budete chtít, abyste mohli ověřit změny, když se lokalita vrátí na stránku `Index`. Proto je nutné přidat sloupec do tabulky na této stránce. V takovém případě nemusíte používat objekt `ViewBag`, protože informace, které chcete zobrazit, jsou již v `Courses` navigační vlastnosti entity `Instructor`, kterou předáváte na stránku jako model.
 
-V *Views\Instructor\Index.cshtml*, přidejte **kurzy** záhlaví hned za **Office** záhlaví, jak je znázorněno v následujícím příkladu:
+V *Views\Instructor\Index.cshtml*přidejte nadpis **kurzů** hned za záhlaví **kanceláře** , jak je znázorněno v následujícím příkladu:
 
 [!code-html[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample20.html?highlight=7)]
 
-Pak přidejte novou buňku podrobností hned za buňku office umístění podrobností:
+Pak přidejte novou buňku s podrobnostmi hned za buňku s podrobnostmi umístění kanceláře:
 
 [!code-cshtml[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample21.cshtml?highlight=19,50-57)]
 
-Spustit **kurzů vedených Index** stránku, abyste zobrazili kurzy přiřazené jednotlivých kurzů vedených:
+Spuštěním stránky **index instruktora** zobrazíte kurzy přiřazené jednotlivým instruktorům:
 
 ![Instructor_index_page](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
 
-Klikněte na tlačítko **upravit** na instruktorem zobrazíte stránky pro úpravu.
+Kliknutím na tlačítko **Upravit** na instruktoru zobrazíte stránku pro úpravy.
 
 ![Instructor_edit_page_with_courses](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
 
-Některá přiřazení kurzu a klikněte na tlačítko **Uložit**. Provedené změny se projeví na indexovou stránku.
+Změňte některá přiřazení kurzů a klikněte na **Uložit**. Změny, které provedete, se projeví na stránce indexu.
 
- Poznámka: Přístupem k úpravě dat kurzu kurzů vedených funguje dobře, když je omezený počet kurzů. Pro kolekce, které jsou mnohem větší různé uživatelské rozhraní a jinou metodu aktualizace by vyžaduje.  
+ Poznámka: přístup pro úpravy dat kurzu vyučující funguje dobře, když je k dispozici omezený počet kurzů. Pro kolekce, které jsou mnohem větší, by se vyžadovalo jiné uživatelské rozhraní a odlišná metoda aktualizace.  
 
-## <a name="update-the-delete-method"></a>Aktualizujte metodu Delete
+## <a name="update-the-delete-method"></a>Aktualizace metody DELETE
 
-Změňte kód v metoda HttpPost Delete, takže záznam přiřazení sady office (pokud existuje) se odstraní při odstranění kurzů vedených:
+Změňte kód v metodě HttpPost Delete tak, aby se při odstranění instruktoru odstranil záznam přiřazení Office (pokud existuje):
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample22.cs?highlight=6,10)]
 
-Pokud se pokusíte odstranit instruktorem, který je přiřazený k oddělení jako správce, získáte chybu referenční integrity. Zobrazit [aktuální verzi tohoto kurzu](../../getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) pro další kód, který se automaticky odeberou kurzů vedených z jakékoli oddělení, ve kterém je přiřazen kurzů vedených jako správce.
+Pokud se pokusíte odstranit instruktora, který je přiřazený oddělení jako správce, zobrazí se chyba referenční integrity. Viz [aktuální verze tohoto kurzu](../../getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) pro další kód, který automaticky odebere instruktora z libovolného oddělení, kde je instruktor přiřazen jako správce.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Teď jste dokončili tento úvod k práci s související data. Pokud v těchto kurzech jste provedli operace CRUD úplný rozsah, ale nebyly řešit potíže se souběžností. V dalším kurzu se zavést tématu souběžnosti, popisují možnosti pro její zpracování a přidejte souběžnosti CRUD kódu, který jste už zadali jednu entitu typu.
+Právě jste dokončili tento Úvod k práci se souvisejícími daty. Zatím v těchto kurzech jste provedli celou škálu operací CRUD, ale zatím jste se nezabýváte problémy s souběžnosti. V dalším kurzu budeme zavádět téma souběžnosti, vysvětlit možnosti pro jeho zpracování a přidat zpracování souběžnosti do kódu CRUD, který jste už napsali pro jeden typ entity.
 
-Odkazy na další zdroje Entity Framework najdete na konci [poslední kurz v této sérii](advanced-entity-framework-scenarios-for-an-mvc-web-application.md).
+Odkazy na jiné prostředky Entity Framework najdete na konci [posledního kurzu v této řadě](advanced-entity-framework-scenarios-for-an-mvc-web-application.md).
 
 > [!div class="step-by-step"]
 > [Předchozí](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [další](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [Další](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)

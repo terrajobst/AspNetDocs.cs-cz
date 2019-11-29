@@ -1,398 +1,398 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
-title: 'Příloha: Oprava ukázkové aplikace (sestavování skutečných cloudových aplikací s Azure) | Dokumentace Microsoftu'
+title: 'Příloha: Ukázková aplikace pro opravu IT (vytváření skutečných cloudových aplikací s Azure) | Microsoft Docs'
 author: MikeWasson
-description: Vytváření reálného světa cloudových aplikací s Azure e kniha je založená na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které se dají mu...
+description: Vytváření reálných cloudových aplikací pomocí Azure je založené na prezentaci vyvinuté Scottem Guthrie. Vysvětluje 13 vzorů a postupů, které mohou...
 ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: 1bc333c5-f096-4ea7-b170-779accc21c1a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: d3a965ccf7ca001d3178819f88836b59f2893bb0
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: e6fda47babd3c2505315f42667c45f09482218c2
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59406415"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74583749"
 ---
-# <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>Příloha: Oprava ukázkové aplikace (sestavování skutečných cloudových aplikací s Azure)
+# <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>Příloha: Ukázková aplikace pro opravu IT (vytváření skutečných cloudových aplikací s Azure)
 
-podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Petr Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
 
-[Stáhněte si opravu ho projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)
+[Stáhnout opravit projekt IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)
 
-> **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o e kniha najdete v tématu [první kapitoly](introduction.md).
+> **Vytváření reálných cloudových aplikací pomocí Azure** je založené na prezentaci vyvinuté Scottem Guthrie. Vysvětluje 13 vzorů a postupů, které vám pomůžou úspěšně vyvíjet webové aplikace pro Cloud. Informace o elektronické příručce najdete v [první kapitole](introduction.md).
 
-Tento dodatek ke Cloudovým aplikacím reálného světa vytváření s Azure e kniha obsahuje následující oddíly, které poskytují další informace o Fix It ukázkové aplikace, můžete si stáhnout:
+Tento dodatek k vytváření reálných cloudových aplikací pomocí Azure obsahuje následující oddíly, které obsahují další informace o ukázkové aplikaci pro opravu IT, kterou si můžete stáhnout:
 
 - [Známé problémy](#knownissues)
 - [Osvědčené postupy](#bestpractices)
-- [Jak spustit aplikaci v sadě Visual Studio v místním počítači](#run-in-vs)
-- [Jak nasadit základní aplikaci do Azure App Service Web Apps pomocí skriptů Windows Powershellu](#deploybase)
+- [Jak spustit aplikaci ze sady Visual Studio na místním počítači](#run-in-vs)
+- [Postup nasazení základní aplikace pro Azure App Service Web Apps pomocí skriptů prostředí Windows PowerShell](#deploybase)
 - [Řešení potíží se skripty prostředí Windows PowerShell](#troubleshooting)
-- [Jak nasadit aplikaci s frontou zpracování pro Azure App Service Web Apps a Azure Cloud Service](#deployqueues)
+- [Nasazení aplikace se zpracováním fronty pro Azure App Service Web Apps a cloudovou službu Azure](#deployqueues)
 
 <a id="knownissues"></a>
 ## <a name="known-issues"></a>Známé problémy
 
-Aplikace Fix It byla původně vyvinuta k ilustraci co nejsnáze některé vzory uvedené v této e kniha. Ale protože elektronickou knihu o vytváření skutečných aplikací, jsme podroben kód opravit kontrolu a testování procesu podobný co jsme byste to udělali pro verze softwaru. Našli jsme několik problémů a stejně jako u všech aplikací v reálném světě, některé z nich jsme vyřešili a některé z nich jsme odložena na novější verzi.
+Oprava IT aplikace byla původně vyvinuta, aby se co nejvíce zobrazovalo jako některé ze vzorů uvedených v této elektronické knize. Vzhledem k tomu, že elektronická kniha se chystá sestavovat reálné aplikace, jsme zjistili, že tento kód opravujeme do procesu kontroly a testování podobně jako v případě vydaných softwaru. Zjistili jsme řadu problémů a stejně jako u jakékoli reálné aplikace jsme opravili některé z nich a některé z nich jsme odložili na pozdější verzi.
 
-Následující seznam obsahuje problémy, které mělo by se řešit v produkční aplikace, ale jeden z důvodu nebo jiného, který jsme se rozhodli adresu v počáteční verzi ukázková aplikace Fix It.
+Následující seznam obsahuje problémy, které by se měly řešit v produkční aplikaci, ale z jednoho důvodu nebo jiného rozhodla neřešit v počáteční verzi ukázkové aplikace této opravy.
 
-### <a name="security"></a>Zabezpečení
+### <a name="security"></a>Zabezpečení –
 
-- Ujistěte se, že úlohy nelze přiřadit k neexistující vlastníka.
-- Ujistěte se, že můžete jenom zobrazit a upravit úlohy, které jste vytvořili nebo které jsou vám přiřazeny.
+- Ujistěte se, že nemůžete přiřadit úkol neexistujícímu vlastníkovi.
+- Ujistěte se, že můžete zobrazovat a upravovat jenom úkoly, které jste vytvořili nebo vám byly přiřazeni.
 - Pro přihlašovací stránky a soubory cookie pro ověřování použijte protokol HTTPS.
-- Zadejte časový limit pro soubory cookie pro ověřování.
+- Zadejte časový limit pro soubory cookie ověřování.
 
-### <a name="input-validation"></a>Ověření vstupu
+### <a name="input-validation"></a>Ověřování vstupu
 
-Obecně byste udělali produkční aplikace více ověřování vstupu než aplikace Fix It. Například velikost obrázku / povolený pro nahrávání by měla být omezena velikost souboru obrázku.
+Obecně platí, že produkční aplikace by prověřila více ověřování vstupu než aplikace opravit IT. Například velikost souboru obrázku nebo obrázku, která je povolena pro nahrávání, by měla být omezená.
 
-### <a name="administrator-functionality"></a>Funkce správce
+### <a name="administrator-functionality"></a>Funkce Správce
 
-Správce by měl být změnit vlastnictví na úlohy existující. Tvůrce úkolu může například ponechte společnost opuštění nikdo s autoritou udržovat úkolu, pokud je povolený přístup pro správu.
+Správce by měl být schopný měnit vlastnictví u stávajících úloh. Například tvůrce úlohy může opustit společnost, přičemž nikdo nebude mít oprávnění k údržbě úlohy, pokud není povolen přístup pro správu.
 
-### <a name="queue-message-processing"></a>Zpracování zpráv fronty
+### <a name="queue-message-processing"></a>Zpracování zprávy ve frontě
 
-Zpracování v aplikaci opravit fronty zpráv bylo navrženo jako jednoduchá k ilustraci vzor založený na frontě práce s minimální část kódu. Tento jednoduchý kód by být dostačující pro skutečné produkční aplikace.
+Zpracování zprávy ve frontě v aplikaci Fix it bylo navrženo tak, aby bylo znázorněno jako jednoduché pro ilustraci vzoru práce orientovaného na fronty s minimálním množstvím kódu. Tento jednoduchý kód by neměl být vhodný pro skutečnou produkční aplikaci.
 
-- Kód není zaručeno, že každá zpráva fronty bude zpracováno nejvýše jednou. Když dostanete zprávu z fronty, je časový limit, během které je neviditelné do jiných naslouchacích procesů fronty zprávu. Pokud časový limit vyprší před odstraněním zprávy, se zpráva zobrazí znovu. Proto pokud se instance role pracovního procesu, kterou zůstane delší dobu zpracování zprávy, je teoreticky může pro tutéž zprávu zpracovat dvakrát, což vede k duplicitní úloh v databázi. Další informace o tomto problému najdete v tématu [pomocí front Azure Storage](https://msdn.microsoft.com/library/ff803365.aspx#sec7).
-- Logiku dotazování fronta může být cenově výhodnější podle dávkování načítání zpráv. Pokaždé, když voláte [CloudQueue.GetMessageAsync](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.queue.cloudqueue.getmessageasync.aspx), je transakční náklady. Místo toho můžete volat [CloudQueue.GetMessagesAsync](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.queue.cloudqueue.getmessagesasync.aspx) (Poznámka: množném čísle "), který získá více zpráv v rámci jedné transakce. Náklady na transakce pro front Azure Storage jsou velmi nízký, proto dopad na náklady není podstatné ve většině scénářů.
-- Těsné smyčce v kódu zpracování zpráv fronty způsobí, že spřažení procesoru, která nevyužívá efektivně vícejádrových virtuálních počítačů. Návrh s lepší byste použili paralelismus úloh k paralelnímu spuštění několika úloh s modifikátorem async.
-- Zpracování fronty zpráv má pouze základní výjimku zpracování. Například kód nezpracuje [nezpracovatelné zprávy](https://msdn.microsoft.com/library/ms789028.aspx). (Při zpracování zprávy způsobí výjimku, je nutné protokolovat chyby a odstranění zprávy, nebo roli pracovního procesu se pokusí znovu zpracován a smyčka bude pokračovat po neomezenou dobu.)
+- Kód nezaručuje, že každá zpráva fronty bude zpracována pouze jednou. Když dostanete zprávu z fronty, dojde k vypršení časového limitu, během kterého je zpráva neviditelná pro ostatní naslouchací procesy front. Pokud časový limit vyprší před odstraněním zprávy, bude zpráva opět viditelná. Proto pokud instance role pracovního procesu stráví dlouhou dobu zpracováním zprávy, je teoreticky možné, že se stejnou zprávu zpracuje dvakrát a výsledkem je duplicitní úloha v databázi. Další informace o tomto problému najdete v tématu [použití Azure Storagech front](https://msdn.microsoft.com/library/ff803365.aspx#sec7).
+- Logika cyklického dotazování fronty by mohla být cenově výhodnější díky dávkovému načítání zpráv. Pokaždé, když zavoláte [CloudQueue. GetMessageAsync](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.queue.cloudqueue.getmessageasync.aspx), bude se jednat o transakční náklady. Místo toho můžete volat [CloudQueue. GetMessagesAsync](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.queue.cloudqueue.getmessagesasync.aspx) (Všimněte si plural '), který získá více zpráv v jedné transakci. Náklady na transakce pro fronty Azure Storage jsou velmi nízké, takže dopad na náklady není ve většině případů podstatný.
+- Těsná smyčka ve frontě kódu pro zpracování zpráv způsobuje spřažení PROCESORů, což efektivně nevyužívá virtuální počítače s více jádry. Lepší návrh by používal úlohu paralelismu k paralelnímu spuštění několika asynchronních úloh.
+- Zpracování zprávy ve frontě má pouze zpracování výjimek základní. Kód například nezpracovává [poškozené zprávy](https://msdn.microsoft.com/library/ms789028.aspx). (Pokud zpracování zprávy způsobí výjimku, musíte chybu zaprotokolovat a zprávu odstranit, nebo se role pracovního procesu pokusí o její zpracování znovu a smyčka bude pokračovat po dobu neurčitou.)
 
-### <a name="sql-queries-are-unbounded"></a>Dotazy SQL jsou bez vazby
+### <a name="sql-queries-are-unbounded"></a>Dotazy SQL jsou bez vazby.
 
-Aktuální Fix It kód umístí bez omezení na tom, kolik řádků může vrátit dotazech pro Index stránky. Pokud velkého objemu úloh je zadán do databáze, velikost výsledný přijetí seznamů může způsobit problémy s výkonem. Toto řešení je k implementaci stránkování. Příklad najdete v tématu [řazení, filtrování a stránkování s rozhraním Entity Framework v aplikaci ASP.NET MVC](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md).
+Aktuální kód opravy neomezuje počet řádků, které mohou vracet dotazy na stránky indexu. Pokud je do databáze vložen velký objem úloh, může dojít k problémům s výkonem v případě, že velikost výsledných seznamů byla přijata. Řešením je implementovat stránkování. Příklad najdete v tématu [řazení, filtrování a stránkování s Entity Framework v aplikaci ASP.NET MVC](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md).
 
-### <a name="view-models-recommended"></a>Zobrazit modely doporučuje
+### <a name="view-models-recommended"></a>Doporučené modely zobrazení
 
-Aplikace Fix It používá třídu entity FixItTask k předávání informací mezi kontrolerem a zobrazení. Osvědčeným postupem je použití modelů zobrazení. Navržené s ohledem na co je potřeba pro trvalost dat, zatímco model zobrazení nelze navrhovat pro prezentaci dat model domény (například třídy entit FixItTask). Další informace najdete v tématu [12 osvědčených postupů technologie ASP.NET MVC](http://codeclimber.net.nz/archive/2009/10/27/12-asp.net-mvc-best-practices.aspx).
+Aplikace Fix it používá třídu entity FixItTask k předávání informací mezi kontrolkou a zobrazením. Osvědčeným postupem je použití modelů zobrazení. Doménový model (např. Třída entity FixItTask) je navržený kolem toho, co je potřeba pro trvalost dat, zatímco model zobrazení může být navržený pro prezentaci dat. Další informace najdete v článku o [osvědčených postupech pro ASP.NET MVC](https://codeclimber.net.nz/archive/2009/10/27/12-asp.net-mvc-best-practices.aspx).
 
-### <a name="secure-image-blob-recommended"></a>Doporučuje objekt blob zabezpečené image
+### <a name="secure-image-blob-recommended"></a>Doporučuje se objekt BLOB zabezpečeného obrazu.
 
-Obchody Fix It nahraných obrázků jako public, což znamená, že každý, kdo najde adrese URL přístup k bitové kopie. Image šlo zabezpečit namísto veřejná.
+Oprava IT aplikace ukládá nahrané obrázky jako veřejné, což znamená, že přístup k obrázkům má kdokoli, kdo najde adresu URL. Image se můžou zabezpečit místo veřejného.
 
-### <a name="no-powershell-automation-scripts-for-queues"></a>Žádný automatizační skripty prostředí PowerShell pro fronty
+### <a name="no-powershell-automation-scripts-for-queues"></a>Žádné skripty automatizace PowerShellu pro fronty
 
-Ukázkové skripty Powershellu automation byly vytvořeny pouze pro základní verzi Fix It, který spouští kompletně v Azure App Service Web Apps. Jsme neposkytovaly skripty pro nastavení a nasazení do webové aplikace a cloudové služby prostředí požadovanou ke zpracování fronty.
+Ukázkové skripty PowerShellu pro automatizaci byly zapsány pouze pro základní verzi, která ji spouští zcela v Azure App Service Web Apps. Neposkytli jsme skripty pro nastavení a nasazení webové aplikace a prostředí cloudové služby, které je potřeba pro zpracování fronty.
 
-### <a name="special-handling-for-html-codes-in-user-input"></a>Zvláštní zacházení HTML kódy vstup uživatele
+### <a name="special-handling-for-html-codes-in-user-input"></a>Speciální zpracování kódů HTML ve vstupu uživatele
 
-ASP.NET automaticky brání mnoho způsobů, ve kterých uživatelé se zlými úmysly se může pokusit útoky skriptování napříč weby tak, že zadáte skript uživatele textová vstupní pole. A MVC `DisplayFor` pomocné rutiny, které slouží k zobrazení úkolů produkty a poznámky automaticky umístí kódování HTML hodnoty, které se odešle do prohlížeče. Ale v produkční aplikaci můžete chtít provést další míry. Další informace najdete v tématu [žádost o ověření v technologii ASP.NET](https://msdn.microsoft.com/library/hh882339.aspx).
+ASP.NET automaticky zabraňuje mnoha způsobům, jak se mohou uživatelé zlými úmysly pokusit o útoky prostřednictvím skriptování mezi weby zadáním skriptu do textových polí vstupu uživatele. A Pomocník pro MVC `DisplayFor`, který slouží k zobrazení názvů úkolů a poznámek, automaticky kóduje kód HTML, který posílá do prohlížeče. V produkční aplikaci ale možná budete chtít provést další měření. Další informace najdete v tématu [žádosti o ověření v ASP.NET](https://msdn.microsoft.com/library/hh882339.aspx).
 
 <a id="bestpractices"></a>
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Toto jsou některé problémy, které byly odstraněny po se objeví ve službě revize kódu a testování k původní verzi aplikace Fix It. Některé byly způsobeny původní kodér nebude vědět, zejména osvědčeným postupem je některé jednoduše protože kód byl zapsán rychle a není určen pro verze softwaru. V případě, že je něco, co jsme se naučili v této revizi jsme už výpis problémy většinou neřeší a testování, které mohou být užitečné ostatním uživatelům, kteří jsou také vývoji webových aplikací.
+Níže jsou uvedené některé problémy, které byly opraveny po zjištění v revizi kódu a testování původní verze aplikace pro opravu IT. Některé byly způsobeny tím, že původní programátor si nevědí o konkrétním osvědčeném postupu. stačí, když kód byl rychle napsán a nebyl určen pro vydaný software. Zde uvedené problémy uvádíme v případě, že se něco naučilo z této recenze a testování, které by mohlo být užitečné pro ostatní, kteří také vyvíjí webové aplikace.
 
-### <a name="dispose-the-database-repository"></a>Uvolnění úložiště databáze
+### <a name="dispose-the-database-repository"></a>Uvolnit úložiště databáze
 
-`FixItTaskRepository` Třídy musí disponovat Entity Framework `DbContext` instance. To jsme implementací `IDisposable` v `FixItTaskRepository` třídy:
+Třída `FixItTaskRepository` musí uvolnit instanci Entity Framework `DbContext`. Provedli jsme to implementací `IDisposable` ve třídě `FixItTaskRepository`:
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample1.cs)]
 
-Všimněte si, že bude automaticky dispose AutoFac `FixItTaskRepository` instance, proto nepotřebujeme explicitně uvolnit.
+Všimněte si, že AutoFac automaticky odstraní instanci `FixItTaskRepository`, takže ji nemusíme explicitně vyřadit.
 
-Další možností je odebrat `DbContext` členské proměnné z `FixItTaskRepository`a místo toho vytvořte místní `DbContext` proměnné v rámci každé metody úložiště uvnitř `using` příkazu. Příklad:
+Další možností je odebrat `DbContext` členskou proměnnou z `FixItTaskRepository`a místo toho vytvořit místní `DbContext` proměnnou v rámci každé metody úložiště uvnitř příkazu `using`. Příklad:
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample2.cs)]
 
-### <a name="register-singletons-as-such-with-di"></a>Registraci jednotlivých prvků v důsledku DI
+### <a name="register-singletons-as-such-with-di"></a>Zaregistrujte singleton jako například pomocí DI.
 
-Od jenom jednu instanci `PhotoService` třídy a `Logger` třídy je potřeba, by měly být tyto třídy [zaregistrovaný jako jediné instance pro vkládání závislostí](https://code.google.com/p/autofac/wiki/InstanceScope) v *DependenciesConfig.cs*:
+Vzhledem k tomu, že je potřeba jenom jedna instance třídy `PhotoService` a `Logger` třídy, měly by se tyto třídy [zaregistrovat jako samostatné instance pro vkládání závislostí](https://code.google.com/p/autofac/wiki/InstanceScope) v *DependenciesConfig.cs*:
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample3.cs?highlight=1,3)]
 
-### <a name="security-dont-show-error-details-to-users"></a>Zabezpečení: Není uživatelům zobrazit podrobnosti o chybě
+### <a name="security-dont-show-error-details-to-users"></a>Zabezpečení: Nezobrazovat podrobnosti o chybách uživatelům
 
-Původní aplikace Fix It neměli mít obecné chybové stránky a právě umožní všechny výjimky bublinu až do uživatelského rozhraní, takže některé výjimky, jako jsou chyby připojení databáze by mohlo způsobit úplné trasování zásobníku je zobrazená v prohlížeči. Podrobné informace o chybě můžete někdy usnadnění útoky uživateli se zlými úmysly. Toto řešení je protokolovat podrobnosti o výjimce a zobrazit chybovou stránku pro uživatele, který neobsahuje podrobnosti o chybě. Aplikace Fix It byl již protokolování a aby bylo možné zobrazit chybovou stránku, přidali jsme `<customErrors mode=On>` v souboru Web.config.
+Původní aplikace Fix it neobsahovala obecnou chybovou stránku, takže všechny výjimky, jako například chyby připojení k databázi, by mohly vést k zobrazení úplného trasování zásobníku v prohlížeči. Podrobné informace o chybě mohou někdy usnadnit útoky uživatelů se zlými úmysly. Řešením je zaprotokolovat podrobnosti výjimky a zobrazit uživateli chybovou stránku, která neobsahuje podrobnosti o chybě. V souboru Web. config jsme doplnili `<customErrors mode=On>` opravit IT aplikaci a aby se zobrazila chybová stránka.
 
 [!code-xml[Main](the-fix-it-sample-application/samples/sample4.xml?highlight=2)]
 
-Ve výchozím nastavení to způsobí, že *Views\Shared\Error.cshtml* má být zobrazen pro chyby. Můžete přizpůsobit *Error.cshtml* nebo vytvořte zobrazení vlastní chybové stránky a přidejte `defaultRedirect` atribut. Můžete také určit různé chybové stránky pro konkrétní chyby.
+Ve výchozím nastavení to způsobí, že se *Views\Shared\Error.cshtml* zobrazí chyby. Můžete přizpůsobit *Error. cshtml* nebo vytvořit vlastní zobrazení chybové stránky a přidat atribut `defaultRedirect`. Můžete také zadat různé chybové stránky pro konkrétní chyby.
 
-### <a name="security-only-allow-a-task-to-be-edited-by-its-creator"></a>Zabezpečení: Povolte pouze na upravit jeho tvůrcem úlohy
+### <a name="security-only-allow-a-task-to-be-edited-by-its-creator"></a>Zabezpečení: umožňuje pouze upravovat úkol tvůrcem.
 
-Na stránce rejstříku řídicího panelu zobrazuje pouze úlohy vytvořené pomocí přihlášeného uživatele, ale uživatel se zlými úmysly může vytvořit adresu URL s ID úkolu jiného uživatele. Přidali jsme kód v *DashboardController.cs* vrátit kód 404 v takovém případě:
+Stránka index řídicího panelu zobrazuje jenom úkoly vytvořené přihlášeným uživatelem, ale uživatel se zlými úmysly může vytvořit adresu URL s ID pro úlohu jiného uživatele. Do *DashboardController.cs* jsme přidali kód, který vrátí 404 v tomto případě:
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample5.cs?highlight=9-14,24-29)]
 
-### <a name="dont-swallow-exceptions"></a>Není spolknout výjimky
+### <a name="dont-swallow-exceptions"></a>Bez požití výjimek
 
-Původní aplikace Fix It právě vrátila hodnotu null po přihlášení výjimku, která je výsledkem dotazu SQL:
+Původní aplikace, která ji opravila, vrátila po protokolování výjimky, která byla výsledkem dotazu SQL, jenom null:
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample6.cs?highlight=4)]
 
-To by být zobrazovat uživateli, jako kdyby dotazu bylo úspěšné, ale právě nevrátil žádné řádky. Řešení je pro opětovné vyvolání výjimky po zachycení a protokolování:
+To by mělo vypadat uživateli, jako kdyby dotaz uspěl, ale nevrátil žádné řádky. Řešením je znovu vyvolat výjimku po zachycení a protokolování:
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample7.cs)]
 
 ### <a name="catch-all-exceptions-in-worker-roles"></a>Zachytit všechny výjimky v rolích pracovního procesu
 
-Způsobí, že všechny neošetřené výjimky v roli pracovního procesu virtuálního počítače k provedení recyklace, proto chcete zabalit všechno, co dělat v bloku try-catch a zpracovávat všechny výjimky.
+Jakékoli neošetřené výjimky v roli pracovního procesu způsobí, že se virtuální počítač recykluje, takže budete chtít zabalit všechno, co děláte do bloku try-catch, a zpracovat všechny výjimky.
 
-### <a name="specify-length-for-string-properties-in-entity-classes"></a>Zadejte hodnotu pro vlastnosti řetězce v tříd entit
+### <a name="specify-length-for-string-properties-in-entity-classes"></a>Zadat délku pro vlastnosti řetězce v třídách entit
 
-Aby bylo možné zobrazit jednoduchého kódu, původní verze aplikace Fix It neurčili délek polí entity FixItTask a výsledkem byly definované jako varchar(max) v databázi. Uživatelské rozhraní díky tomu bude přijímat téměř jakýkoli objem vstup. Určení sad omezení délky, které se vztahují jak na uživatele vstup webové stránky a velikost sloupce v databázi:
+Aby bylo možné zobrazit jednoduchý kód, původní verze aplikace, ve které se tato oprava nezměnila, nespecifikuje délky polí FixItTask entity a v důsledku toho byly definovány jako varchar (max) v databázi. V důsledku toho uživatelské rozhraní přijme skoro jakékoli množství vstupu. Určení délek nastaví omezení, která platí pro vstup uživatele na webové stránce a v velikosti sloupce v databázi:
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample8.cs?highlight=4,7,10,12,14)]
 
-### <a name="mark-private-members-as-readonly-when-they-arent-expected-to-change"></a>Soukromé členy označit jako jen pro čtení se neočekává změna
+### <a name="mark-private-members-as-readonly-when-they-arent-expected-to-change"></a>Označit soukromé členy jako jen pro čtení, pokud se neočekává změna
 
-Například v `DashboardController` instance třídy `FixItTaskRepository` se vytvoří a neočekává se změnit, takže jsme definovali jako [jen pro čtení](https://msdn.microsoft.com/library/acdd6hb7.aspx).
+Například ve třídě `DashboardController` je vytvořena instance `FixItTaskRepository`, která se neočekává, že se změní, takže jsme ji definovali jako [jen pro čtení](https://msdn.microsoft.com/library/acdd6hb7.aspx).
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample9.cs?highlight=3)]
 
-### <a name="use-listany-instead-of-listcount-gt-0"></a>Pomocí seznamu. Metoda any() namísto seznamu. Count() &gt; 0
+### <a name="use-listany-instead-of-listcount-gt-0"></a>Použijte seznam. Any () místo seznamu. Count () &gt; 0
 
-Pokud budete vás zajímá, zda jeden nebo více položek v seznamu podle zadaných kritérií, použijte [všechny](https://msdn.microsoft.com/library/bb534972.aspx) metody, protože se vrací jako položky kritériím přizpůsobení nenajde, že `Count` metoda má vždy pro iteraci přes všechny položky. Řídicí panel *Index.cshtml* soubor původně měli tento kód:
+Pokud vás zajímá, že jedna nebo více položek v seznamu odpovídají zadaným kritériím, použijte metodu [Any](https://msdn.microsoft.com/library/bb534972.aspx) , protože se vrátí hned po nalezení položky, zatímco metoda `Count` vždy musí iterovat všemi položkami. V souboru *. cshtml s indexem* řídicího panelu byl původně tento kód:
 
 [!code-cshtml[Main](the-fix-it-sample-application/samples/sample10.cshtml)]
 
-Jsme změnili na toto:
+Změnili jsme to na toto:
 
 [!code-cshtml[Main](the-fix-it-sample-application/samples/sample11.cshtml?highlight=1)]
 
-### <a name="generate-urls-in-mvc-views-using-mvc-helpers"></a>Generování adresy URL v zobrazení MVC pomocí pomocné rutiny MVC
+### <a name="generate-urls-in-mvc-views-using-mvc-helpers"></a>Generování adres URL v zobrazeních MVC pomocí pomocníků MVC
 
-Pro **opravte ji vytvořit** tlačítko na domovské stránce Fix It aplikace pevné programový anchor element:
+V případě tlačítka pro **Vytvoření opravy** na domovské stránce se v aplikaci oprava, která je pevně zakóduje, dopravuje element kotvy:
 
 [!code-cshtml[Main](the-fix-it-sample-application/samples/sample12.cshtml)]
 
-Pro zobrazení nebo akce odkazy tímto způsobem je vhodnější použít [Url.Action](https://msdn.microsoft.com/library/system.web.mvc.urlhelper.action.aspx) pomocné rutiny HTML, například:
+U odkazů na zobrazení a akce, jako je to, je vhodnější použít [adresu URL.](https://msdn.microsoft.com/library/system.web.mvc.urlhelper.action.aspx) pomocník HTML, například:
 
 [!code-cshtml[Main](the-fix-it-sample-application/samples/sample13.cshtml)]
 
-### <a name="use-taskdelay-instead-of-threadsleep-in-worker-role"></a>Nahrazujícím Task.Delay Thread.Sleep v roli pracovního procesu
+### <a name="use-taskdelay-instead-of-threadsleep-in-worker-role"></a>Použijte Task. Delay místo Thread. spánek v roli pracovního procesu.
 
-Vloží nový projekt šablony `Thread.Sleep` v ukázce kódu pro roli pracovního procesu, ale způsobuje vlákna do režimu spánku, může způsobit fondu vláken nejde vytvořit podřízený další zbytečné vlákna. Který můžete vyhnout použitím [Task.Delay](https://msdn.microsoft.com/library/hh139096.aspx) místo.
+Šablona New-Project vloží `Thread.Sleep` do vzorového kódu pro roli pracovního procesu, ale způsobí, že vlákno do režimu spánku může způsobit, že fond vláken vytvoří další zbytečná vlákna. K tomu se můžete vyhnout pomocí [Task. Delay](https://msdn.microsoft.com/library/hh139096.aspx) místo.
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample14.cs?highlight=11)]
 
-### <a name="avoid-async-void"></a>Vyhněte se async void
+### <a name="avoid-async-void"></a>Vyhnout se asynchronnímu anulování
 
-Pokud asynchronní metody nemusí vracet hodnotu, vraťte se `Task` typ spíše než `void`.
+Pokud asynchronní metoda nepotřebuje vracet hodnotu, vraťte `Task` typ místo `void`.
 
 Tento příklad je z `FixItQueueManager` třídy:
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample15.cs)]
 
-Měli byste použít `async void` pouze pro obslužné rutiny události nejvyšší úrovně. Pokud definujete metodu jako `async void`, nelze volající **await** metodu nebo zachytit žádné výjimky, metoda vyvolá. Další informace najdete v tématu [osvědčené postupy v Asynchronous Programming](https://msdn.microsoft.com/magazine/jj991977.aspx).
+`async void` byste měli použít pouze pro obslužné rutiny událostí nejvyšší úrovně. Pokud definujete metodu jako `async void`, volající nemůže **očekávat** metodu nebo zachytit jakékoli výjimky, které metoda vyvolá. Další informace najdete v tématu [osvědčené postupy při asynchronním programování](https://msdn.microsoft.com/magazine/jj991977.aspx).
 
-### <a name="use-a-cancellation-token-to-break-from-worker-role-loop"></a>Použít token zrušení pro zrušení volání ze smyčky role pracovního procesu
+### <a name="use-a-cancellation-token-to-break-from-worker-role-loop"></a>Přerušení od smyčky role pracovního procesu pomocí tokenu zrušení
 
-Obvykle **spustit** nekonečná smyčka obsahuje metodu role pracovního procesu. Při zastavení role pracovního procesu [RoleEntryPoint.OnStop](https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx) metoda je volána. By pomocí této metody můžete zrušit práce, která se provádí uvnitř **spustit** metoda a ukončení bez výpadku. V opačném případě může být proces ukončen provádí operaci.
+Metoda **Run** v roli pracovního procesu obvykle obsahuje nekonečnou smyčku. Při zastavování role pracovního procesu je volána metoda [RoleEntryPoint. stop](https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx) . Tuto metodu byste měli použít, chcete-li zrušit práci prováděnou uvnitř metody **Run** a řádně skončit. V opačném případě se může proces ukončit uprostřed operace.
 
-### <a name="opt-out-of-automatic-mime-sniffing-procedure"></a>Vyjádřit výslovný nesouhlas MIME pro analýzu sítě automatický
+### <a name="opt-out-of-automatic-mime-sniffing-procedure"></a>Odsouhlasit automatický postup sledování MIME
 
-V některých případech se aplikace Internet Explorer hlásí typu MIME liší od typu určeného webového serveru. Například pokud aplikace Internet Explorer najde HTML obsahu v souboru dodávají s odpovědi hlavičku HTTP Content-Type: text/plain, Internet Explorer určuje, že obsah má být vykreslen jako kódu HTML. Bohužel tento "MIME-pro analýzu sítě" může také vést k problémům zabezpečení pro servery, které hostují nedůvěryhodný obsah. K boji proti tomuto problému, Internet Explorer 8 provedl řadu změn do kódu stanovení typ MIME a umožňuje vývojářům aplikací [vyjádřit výslovný nesouhlas MIME pro analýzu sítě](https://blogs.msdn.com/b/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx). Následující kód byl přidán do *Web.config* souboru.
+V některých případech Internet Explorer hlásí typ MIME odlišný od typu určeného webovým serverem. Pokud například Internet Explorer najde obsah ve formátu HTML v souboru dodaném pomocí Content-Type hlavičky HTTP odpovědi: text/prostý, aplikace Internet Explorer určí, že by měl být obsah vykreslen jako HTML. Bohužel to může vést k problémům zabezpečení pro servery hostující nedůvěryhodný obsah. Internet Explorer 8 pro boj proti tomuto problému provedl řadu změn kódu pro určení typu MIME a umožňuje vývojářům aplikací [Odhlásit se pomocí sledování MIME](https://blogs.msdn.com/b/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx). Do souboru *Web. config* byl přidán následující kód.
 
 [!code-xml[Main](the-fix-it-sample-application/samples/sample16.xml?highlight=2-7)]
 
-### <a name="enable-bundling-and-minification"></a>Povolit sdružování a minifikace
+### <a name="enable-bundling-and-minification"></a>Povolení sdružování a minifikace
 
-Když Visual Studio vytvoří nový webový projekt, není ve výchozím nastavení povoleno sdružování a minifikace souborů JavaScriptu. Přidali jsme psát kód v BundleConfig.cs:
+Když Visual Studio vytvoří nový webový projekt, sdružování a minifikace souborů JavaScriptu není ve výchozím nastavení povolené. Do BundleConfig.cs jsme přidali řádek kódu:
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample17.cs?highlight=9)]
 
-### <a name="set-an-expiration-time-out-for-authentication-cookies"></a>Nastavení vypršení časového limitu pro soubory cookie pro ověřování
+### <a name="set-an-expiration-time-out-for-authentication-cookies"></a>Nastavení časového limitu vypršení platnosti pro soubory cookie ověřování
 
-Ve výchozím nastavení soubory cookie pro ověřování vyprší za dva týdny. Kratší doba je bezpečnější. Můžete změnit toto nastavení v *StartupAuth.cs*:
+Ve výchozím nastavení vyprší platnost souborů cookie ověřování za dva týdny. Kratší doba je bezpečnější. Toto nastavení můžete změnit v *StartupAuth.cs*:
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample18.cs?highlight=4-5)]
 
 <a id="run-in-vs"></a>
-## <a name="how-to-run-the-app-from-visual-studio-on-your-local-computer"></a>Jak spustit aplikaci v sadě Visual Studio v místním počítači
+## <a name="how-to-run-the-app-from-visual-studio-on-your-local-computer"></a>Jak spustit aplikaci ze sady Visual Studio na místním počítači
 
-Existují dva způsoby, jak spouštět aplikace Fix It:
+Existují dva způsoby, jak spustit aplikaci pro opravu IT:
 
-- Spusťte základní aplikaci, která zapisuje přímo do SQL database nové úkoly.
-- Spuštění aplikace pomocí fronty a back-end službu k vytvoření úlohy. Model fronty je popsáno v kapitole [vzor založený na frontě pracovní](queue-centric-work-pattern.md).
+- Spusťte základní aplikaci, která zapisuje nové úkoly přímo do databáze SQL.
+- Spusťte aplikaci pomocí fronty a služby back-end pro vytváření úloh. Vzor fronty je popsaný v kapitole [vzor práce orientované na fronty](queue-centric-work-pattern.md).
 
 <a id="runbase"></a>
-### <a name="run-the-base-application"></a>Spustit základní aplikace
+### <a name="run-the-base-application"></a>Spuštění základní aplikace
 
 1. Nainstalujte [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017).
-2. Nainstalujte [Azure SDK pro .NET pro Visual Studio](https://azure.microsoft.com/downloads/).
-3. Stáhněte si soubor .zip z [galerie kódů MSDN](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4).
-4. V Průzkumníku souborů klikněte pravým tlačítkem na soubor .zip a klikněte na tlačítko Vlastnosti a pak v okně Vlastnosti klikněte na odblokovat.
-5. Rozbalte tento soubor.
-6. Poklikejte na soubor .sln a spusťte sadu Visual Studio.
-7. Z **nástroje** nabídky, klepněte na **Správce balíčků NuGet**, pak **konzoly Správce balíčků**.
-8. V balíčku správce konzoly (konzolu PMC), kliknutím na tlačítko Obnovit.
-9. Ukončení sady Visual Studio.
-10. Spustit [emulátoru úložiště Azure](/azure/storage/common/storage-use-emulator).
-11. Restartujte sadu Visual Studio, otevřete soubor řešení uzavřeny v předchozím kroku.
-12. Ujistěte se, že projekt automatickou je nastaven jako spouštěný projekt a pak stiskněte CTRL + F5 ke spuštění projektu.
+2. Nainstalujte [sadu Azure SDK pro .NET pro Visual Studio](https://azure.microsoft.com/downloads/).
+3. Stáhněte soubor. zip z [Galerie kódu na webu MSDN](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4).
+4. V Průzkumníku souborů klikněte pravým tlačítkem na soubor. zip a klikněte na vlastnosti a pak v okno Vlastnosti klikněte na odblokovat.
+5. Rozbalte soubor.
+6. Dvojím kliknutím na soubor. sln spustíte Visual Studio.
+7. V nabídce **nástroje** klikněte na **Správce balíčků NuGet**a pak na **Konzola správce balíčků**.
+8. V konzole správce balíčků (PMC) klikněte na obnovit.
+9. Ukončete aplikaci Visual Studio.
+10. Spusťte [emulátor úložiště Azure](/azure/storage/common/storage-use-emulator).
+11. Restartujte Visual Studio a otevřete soubor řešení, který jste uzavřeli v předchozím kroku.
+12. Zajistěte, aby byl projekt FixIt nastaven jako spouštěný projekt, a potom stisknutím kombinace kláves CTRL + F5 spusťte projekt.
 
 <a id="queueslocal"></a>
 ### <a name="run-the-application-with-queue-processing"></a>Spuštění aplikace se zpracováním fronty
 
-1. Postupujte podle pokynů pro [spustit základní aplikace](#runbase)a pak zavřete prohlížeč a zavřete sadu Visual Studio.
-2. Spusťte Visual Studio s oprávněními správce. (Budete používat emulátor výpočtů v Azure, a, která vyžaduje oprávnění správce.)
-3. V aplikaci *Web.config* soubor *MyFixIt* project (webový projekt), změňte hodnotu vlastnosti `appSettings/UseQueues` "true":
+1. Postupujte podle pokynů pro [spuštění základní aplikace](#runbase)a pak zavřete prohlížeč a zavřete Visual Studio.
+2. Spusťte aplikaci Visual Studio s oprávněními správce. (Budete používat emulátor služby Azure COMPUTE, který vyžaduje oprávnění správce.)
+3. V souboru *Web. config* aplikace v projektu *MyFixIt* (webový projekt) změňte hodnotu `appSettings/UseQueues` na "true":
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample19.cmd?highlight=3)]
-4. Pokud [emulátoru úložiště Azure](https://msdn.microsoft.com/library/windowsazure/hh403989.aspx) není stále spuštěna, spusťte ji znovu.
-5. Spusťte automatickou webový projekt a projekt MyFixItCloudService současně.
+4. Pokud [emulátor úložiště Azure](https://msdn.microsoft.com/library/windowsazure/hh403989.aspx) stále není spuštěný, spusťte ho znovu.
+5. Spusťte webový projekt FixIt a projekt MyFixItCloudService současně.
 
     Pomocí sady Visual Studio:
 
-   1. Stisknutím klávesy **F5** spustit automatickou projekt.
-   2. V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt MyFixItCloudService a potom klikněte na tlačítko **ladění** > **spustit novou instanci**.
+   1. Stisknutím klávesy **F5** spusťte projekt fixit.
+   2. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt MyFixItCloudService a potom klikněte na položku **ladit** > **spustit novou instanci**.
 
-    Pomocí Visual Studio 2013 Express pro Web:
+    Použití Visual Studio 2013 Express pro web:
 
-   3. V Průzkumníku řešení klikněte pravým tlačítkem myši na automatickou řešení a vyberte **vlastnosti**.
+   3. V Průzkumník řešení klikněte pravým tlačítkem na řešení FixIt a vyberte **vlastnosti**.
    4. Vyberte **více projektů po spuštění**.
-   5. V **akce** vyberte rozevírací seznam v části MyFixIt a MyFixItCloudService, **Start**.
-   6. Klikněte na **OK**.
-   7. Stisknutím klávesy **F5** ke spuštění obou projektů.
+   5. V rozevíracím seznamu **Akce** pod položkou MyFixIt a MyFixItCloudService vyberte **Spustit**.
+   6. Klikněte na tlačítko **OK**.
+   7. Stiskněte klávesu **F5** pro spuštění obou projektů.
 
-      Při spuštění projektu MyFixItCloudService Visual Studio spustí emulátoru Azure compute. V závislosti na konfiguraci brány firewall můžete povolit emulátor přes bránu firewall.
+      Když spustíte projekt MyFixItCloudService, Visual Studio spustí emulátor služby COMPUTE pro Azure. V závislosti na konfiguraci brány firewall možná budete muset zapnout emulátor přes bránu firewall.
 
 <a id="deploybase"></a>
-## <a name="how-to-deploy-the-base-app-to-azure-app-service-web-apps-by-using-the-windows-powershell-scripts"></a>Jak nasadit základní aplikaci do Azure App Service Web Apps pomocí skriptů Windows Powershellu
+## <a name="how-to-deploy-the-base-app-to-azure-app-service-web-apps-by-using-the-windows-powershell-scripts"></a>Postup nasazení základní aplikace pro Azure App Service Web Apps pomocí skriptů prostředí Windows PowerShell
 
-Pro ilustraci [automatizovat všechno](automate-everything.md) se vzor, aplikace Fix It dodává s skripty, které nastavení prostředí v Azure a nasazení projektu do nového prostředí. Následující pokyny vysvětlují, jak pomocí skriptů.
+K ilustraci modelu [Automatizace všeho](automate-everything.md) se poskytuje oprava IT aplikace pomocí skriptů, které nastaví prostředí v Azure a nasadí projekt do nového prostředí. Následující pokyny vysvětlují, jak používat skripty.
 
-Pokud chcete spustit v Azure bez použití fronty a provedené změny místní spuštění s frontami, nezapomeňte že nastavit hodnotu nastavení aplikace UseQueues zpět na hodnotu false, než budete pokračovat v následujících pokynech.
+Pokud chcete provozovat v Azure bez použití front a jste udělali změny, které se mají spouštět místně s frontami, před pokračováním v následujících pokynech nastavte hodnotu UseQueues appSetting zpět na false.
 
-Tyto pokyny předpokládají jste si stáhli a spustit řešení vyřešit místně, a že máte Azure účtu nebo máte předplatné Azure, které máte oprávnění ke správě.
+Tyto pokyny předpokládají, že jste už stáhli a spustili řešení opravit IT místně a že máte účet Azure, nebo máte předplatné Azure, které máte autorizované na správu.
 
-1. Nainstalujte **prostředí Azure PowerShell** konzoly. Pokyny najdete v tématu [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1).
+1. Nainstalujte konzolu **Azure PowerShell** . Pokyny najdete v tématu [instalace a konfigurace Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1).
 
-    Tato vlastní konzola je nakonfigurováno pro práci s vaším předplatným Azure. Modul Azure je nainstalovaný v *Program Files* adresáře a je automaticky importován při každé použití konzoly Azure Powershellu.
+    Tato přizpůsobená konzola je nakonfigurovaná tak, aby fungovala s předplatným Azure. Modul Azure se nainstaluje v adresáři *Program Files* a automaticky se naimportuje při každém použití konzoly Azure PowerShell.
 
-    Pokud chcete raději pracovat v různých hostitelského programu, jako je Windows PowerShell ISE, nezapomeňte použít [Import-Module](https://go.microsoft.com/fwlink/?LinkID=141553) rutiny pro import modulu Azure nebo pomocí příkazu v modulu Azure můžete aktivovat automatické importování modulu.
-2. Otevřete prostředí Azure PowerShell s **spustit jako správce** možnost.
-3. Spustit [Set-ExecutionPolicy](https://go.microsoft.com/fwlink/p/?linkid=293941) rutiny nastavte zásady spouštění prostředí Azure PowerShell `RemoteSigned`. Zadejte **Y** (pro Ano) k dokončení změny zásad.
+    Pokud dáváte přednost práci v jiném hostitelském programu, například Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell, nezapomeňte pomocí rutiny [Import-Module](https://go.microsoft.com/fwlink/?LinkID=141553) naimportovat modul Azure nebo pomocí příkazu v modulu Azure aktivovat automatický import modulu.
+2. Spusťte Azure PowerShell s možností **Spustit jako správce** .
+3. Spuštěním rutiny [Set-ExecutionPolicy](https://go.microsoft.com/fwlink/p/?linkid=293941) nastavte zásady spouštění Azure PowerShell na `RemoteSigned`. Zadejte **Y** (pro Ano), aby se změna zásad dokončila.
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample20.cmd)]
 
-    Toto nastavení umožňuje spustit místní skripty, které nejsou digitálně podepsané. (Můžete také nastavit zásady spouštění `Unrestricted`, což by eliminuje nutnost krok odblokovat později, ale z bezpečnostních důvodů to nedoporučujeme.)
-4. Spustit `Add-AzureAccount` rutina pro nastavení prostředí PowerShell pomocí přihlašovacích údajů pro váš účet.
+    Toto nastavení umožňuje spustit místní skripty, které nejsou digitálně podepsané. (Můžete také nastavit zásady spouštění na `Unrestricted`, což eliminuje nutnost zrušit krok odblokování později, ale z bezpečnostních důvodů to nedoporučujeme.)
+4. Spuštěním rutiny `Add-AzureAccount` nastavte PowerShell s přihlašovacími údaji pro váš účet.
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample21.cmd)]
 
-    Tyto přihlašovací údaje vyprší po určitou dobu a budete muset znovu spustit `Add-AzureAccount` rutiny. Tato elektronická kniha se zápisem, časový limit před vypršením platnosti přihlašovacích údajů je 12 hodin.
-5. Pokud máte více předplatných, pomocí rutiny Select-AzureSubscription určete předplatné, které chcete vytvořit testovací prostředí v.
-6. Importovat certifikát správy pro stejné předplatné Azure s použitím `Get-AzurePublishSettingsFile` a `Import-AzurePublishSettingsFile` rutiny. První z těchto rutin stáhne soubor certifikátu, a v druhý zadejte umístění souborů aby bylo možné importovat. > [!IMPORTANT]
-   > Zachovat stažený soubor do bezpečného umístění nebo ho odstranit až budete hotovi s ním, protože obsahuje certifikát, který slouží ke správě služeb Azure.
+    Platnost těchto přihlašovacích údajů vyprší po uplynutí určité doby a je nutné znovu spustit rutinu `Add-AzureAccount`. Jak je tato elektronická kniha zapisována, časový limit před vypršením platnosti přihlašovacích údajů je 12 hodin.
+5. Pokud máte více předplatných, pomocí rutiny Select-AzureSubscription určete předplatné, ve kterém chcete vytvořit testovací prostředí.
+6. Importujte certifikát pro správu pro stejné předplatné Azure pomocí rutin `Get-AzurePublishSettingsFile` a `Import-AzurePublishSettingsFile`. První z těchto rutin stáhne soubor certifikátu a v druhém případě určí umístění tohoto souboru, aby jej bylo možné importovat. > [!IMPORTANT]
+   > Uložte stažený soubor v bezpečném umístění nebo ho odstraňte, až budete s ním hotový, protože obsahuje certifikát, který se dá použít ke správě služeb Azure.
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample22.cmd)]
 
-    Tento certifikát se používá pro volání rozhraní REST API, které zjistí vývojového počítače IP adresu nastavit pravidlo brány firewall na serveru SQL Database.
-7. Spustit [nastavení umístění](https://go.microsoft.com/fwlink/p/?linkid=293912) rutiny (aliasy jsou `cd`, `chdir`, a `sl`) přejděte do adresáře, který obsahuje skripty. (Nacházejí v *automatizace* složku ve složce řešení opravte ji.) Pozastavena cesty v uvozovkách, pokud se některé názvy adresářů obsahovat mezery. Například, přejděte `c:\Sample Apps\FixIt\Automation` adresáře můžete například zadat následující příkaz:
+    Certifikát se používá pro volání REST API, které detekuje IP adresu vývojového počítače, aby bylo možné nastavit pravidlo brány firewall na serveru SQL Database.
+7. Spuštěním rutiny [set-Location](https://go.microsoft.com/fwlink/p/?linkid=293912) (aliasy jsou `cd`, `chdir`a `sl`) přejděte do adresáře, který obsahuje skripty. (Nacházejí se ve složce *Automation* ve složce řešení pro opravu IT.) Pokud název adresáře obsahuje mezery, vložte cestu do uvozovek. Pokud například chcete přejít do adresáře `c:\Sample Apps\FixIt\Automation`, můžete zadat následující příkaz:
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample23.cmd)]
-8. Chcete-li povolit Windows Powershellu spusťte tyto skripty, použijte [odblokovat soubor](https://go.microsoft.com/fwlink/p/?linkid=294021) rutiny. (Tyto skripty jsou blokovány, protože byly staženy z Internetu.)
+8. Pokud chcete, aby Windows PowerShell mohl spouštět tyto skripty, použijte rutinu [odblokování souboru](https://go.microsoft.com/fwlink/p/?linkid=294021) . (Skripty jsou blokované, protože byly staženy z Internetu.)
 
     > [!WARNING]
-    > Zabezpečení – dřív, než spustíte `Unblock-File` na skript nebo spustitelný soubor, otevřete soubor v poznámkovém bloku, zkontrolujte příkazy a ověřte, že neobsahuje žádný škodlivý kód.
+    > Zabezpečení – před spuštěním `Unblock-File` na jakémkoli skriptu nebo spustitelném souboru otevřete soubor v programu Poznámkový blok, Projděte příkazy a ověřte, zda neobsahují škodlivý kód.
 
-    Například následující příkaz spustí `Unblock-File` rutiny v všechny skripty v aktuálním adresáři.
+    Například následující příkaz spustí rutinu `Unblock-File` na všech skriptech v aktuálním adresáři.
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample24.cmd)]
-9. Vytvoření webové aplikace pro základní (žádné fronty zpracování) opravit aplikaci spuštěním skriptu pro vytváření prostředí.
+9. Chcete-li vytvořit webovou aplikaci pro základní (bez zpracování fronty), spusťte skript pro vytvoření prostředí.
 
-    Požadované `Name` parametr určuje název databáze a slouží také pro účet úložiště, které skript vytvoří. Název musí být globálně jedinečný v rámci domény azurewebsites.net. Pokud zadáte název, který není jedinečný, jako je automatickou nebo testovací (nebo i jako v příkladu fixitdemo) `New-AzureWebsite` rutina selže s interní chybou, která se ohlásila konflikt. Skript převede název malými písmeny – pro dosažení souladu s požadavky na název pro webové aplikace, účty úložiště a databáze.
+    Požadovaný parametr `Name` Určuje název databáze a používá se také pro účet úložiště, který skript vytvoří. Název musí být globálně jedinečný v rámci domény azurewebsites.net. Pokud zadáte název, který není jedinečný, například fixit nebo test (nebo dokonce jako v příkladu fixitdemo), rutina `New-AzureWebsite` se nezdařila s vnitřní chybou, která hlásí konflikt. Skript převede název na všechna malá písmena, aby splňoval požadavky na název pro webové aplikace, účty úložiště a databáze.
 
-    Požadované `SqlDatabasePassword` parametr určuje heslo pro účet správce, která bude vytvořena pro službu SQL Database. Nezahrnují speciální znaky XML v hesle (&amp; &lt; &gt; ;). Jedná se omezení tak, jak tyto skripty byly napsány, ne o omezení Azure.
+    Požadovaný parametr `SqlDatabasePassword` Určuje heslo pro účet správce, který se vytvoří pro SQL Database. V hesle Nepoužívejte speciální znaky XML (&amp; &lt; &gt;;). Toto je omezení způsobu, jakým byly skripty zapsány, nikoli omezení Azure.
 
-    Například pokud chcete vytvořit webovou aplikaci s názvem "fixitdemo" a použijte heslo správce systému SQL Server "Passw0rd1", můžete například zadat následující příkaz:
+    Například pokud chcete vytvořit webovou aplikaci s názvem "fixitdemo" a použít SQL Server heslo správce "Passw0rd1", můžete zadat následující příkaz:
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample25.cmd)]
 
-    Název musí být jedinečný v doméně azurewebsites.net, a heslo musí splňovat požadavky na SQL Database pro složitost hesla. (V příkladu Passw0rd1 splňuje požadavky.)
+    Název musí být v doméně azurewebsites.net jedinečný a heslo musí splňovat SQL Database požadavky na složitost hesla. (Vzorový Passw0rd1 splňuje požadavky.)
 
-    Všimněte si, že příkaz začíná řetězcem ". \". Aby se zabránilo škodlivým spouštění skriptů, vyžaduje prostředí Windows PowerShell zadejte plně kvalifikovanou cestu k souboru skriptu při spuštění skriptu. Označuje aktuální adresář můžete použít tečku (".\") nebo zadejte plně kvalifikovanou cestu, například:
+    Všimněte si, že příkaz začíná na.\". Aby se zabránilo škodlivému spouštění skriptů, Windows PowerShell vyžaduje, abyste při spuštění skriptu zadali úplnou cestu k souboru skriptu. Pomocí tečky můžete označit aktuální adresář (".\") nebo zadejte plně kvalifikovanou cestu, například:
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample26.cmd)]
 
-    Další informace o tomto skriptu, použijte `Get-Help` rutiny.
+    Další informace o skriptu získáte pomocí rutiny `Get-Help`.
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample27.cmd)]
 
-    Můžete použít `Detailed`, `Full`, `Parameters`, a `Examples` parametry rutiny Get-Help pro filtrování nápovědy, která je vrácena.
+    Pomocí parametrů `Detailed`, `Full`, `Parameters`a `Examples` rutiny Get-Help můžete vyfiltrovat vrácenou nápovědu.
 
-    Pokud skript selže nebo generuje chyby, jako například "New-AzureWebsite: Nejprve volat Set-AzureSubscription a Select-AzureSubscription"nemusí dokončení konfigurace Azure Powershellu.
+    Pokud se skript nepovede nebo dojde k chybě, například "New-AzureWebsite: Call set-AzureSubscription a SELECT-AzureSubscription First", možná jste nedokončili konfiguraci Azure PowerShell.
 
-    Po dokončení skriptu, můžete použít portál pro správu Azure a zobrazit prostředky, které byly vytvořeny, jak je znázorněno [automatizovat všechno](automate-everything.md) kapitoly.
-10. K nasazení projektu automatickou do nového prostředí Azure, použijte *AzureWebsite.ps1* skriptu. Příklad:
+    Po dokončení skriptu můžete pomocí Portál pro správu Azure zobrazit prostředky, které byly vytvořeny, jak je znázorněno v části [automatizovat vše](automate-everything.md) .
+10. K nasazení projektu FixIt do nového prostředí Azure použijte skript *AzureWebsite. ps1* . Příklad:
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample28.cmd)]
 
-    Po dokončení nasazení se otevře v prohlížeči s Fix It běžící v Azure.
+    Po dokončení nasazení se otevře prohlížeč s opravou, která běží v Azure.
 
 <a id="troubleshooting"></a>
 ## <a name="troubleshooting-the-windows-powershell-scripts"></a>Řešení potíží se skripty prostředí Windows PowerShell
 
-Nejběžnějších chyb zjištěných při spouštění těchto skriptů jsou souvisejících s oprávněními. Ujistěte se, že `Add-AzureAccount` a `Import-AzurePublishSettingsFile` proběhly úspěšně a že jste použili pro stejné předplatné Azure. I když `Add-AzureAccount` byla úspěšná možná budete muset spustit znovu. Oprávnění přidal(a) `Add-AzureAccount` vyprší za 12 hodin.
+Nejběžnější chyby zjištěné při spuštění těchto skriptů souvisejí s oprávněními. Ujistěte se, že `Add-AzureAccount` a `Import-AzurePublishSettingsFile` byly úspěšné a že jste je použili pro stejné předplatné Azure. I v případě, že `Add-AzureAccount` bylo úspěšné, může být nutné ji znovu spustit. Oprávnění přidaná `Add-AzureAccount` vyprší za 12 hodin.
 
 ### <a name="object-reference-not-set-to-an-instance-of-an-object"></a>Odkaz na objekt není nastaven na instanci objektu.
 
-Pokud skript vrátí chyby, jako například "Není odkaz objektu nastaven na instanci objektu," to znamená, že prostředí Windows PowerShell nelze najít objekt k procesu (Toto je výjimka nulového odkazu), spusťte `Add-AzureAccount` rutiny a opakujte akci skriptu.
+Pokud skript vrátí chyby, například "odkaz na objekt není nastaven na instanci objektu", což znamená, že Windows PowerShell nemůže najít objekt, který se má zpracovat (Jedná se o výjimku s nulovým odkazem), spusťte rutinu `Add-AzureAccount` a zkuste skript znovu.
 
 [!code-console[Main](the-fix-it-sample-application/samples/sample29.cmd)]
 
-### <a name="internalerror-the-server-encountered-an-internal-error"></a>Vnitřní chyba: Na serveru došlo k vnitřní chybě.
+### <a name="internalerror-the-server-encountered-an-internal-error"></a>InternalError: na serveru došlo k vnitřní chybě.
 
-`New-AzureWebsite` Rutina vrací vnitřní chybu, pokud název není v doméně azurewebsites.net jedinečný. Chcete-li vyřešit chybu, použít jinou hodnotu pro název, který se nachází v parametru Name *New-AzureWebsiteEnv.ps1*.
+Rutina `New-AzureWebsite` vrátí vnitřní chybu, pokud název není jedinečný v doméně azurewebsites.net. Chcete-li vyřešit tuto chybu, použijte jinou hodnotu pro název, který je v parametru název *New-AzureWebsiteEnv. ps1*.
 
 [!code-console[Main](the-fix-it-sample-application/samples/sample30.cmd)]
 
-### <a name="restarting-the-script"></a>Restartovat skript
+### <a name="restarting-the-script"></a>Restartování skriptu
 
-Pokud je potřeba restartovat *New-AzureWebsiteEnv.ps1* skript vzhledem k tomu, že došlo k selhání předtím, než ho vytisknout zprávu "Mít skript hotový", můžete chtít odstranit prostředky, které skript vytvořený dříve, než se zastavila. Například pokud skript už vytvořený ContosoFixItDemo webovou aplikaci a znovu spusťte skript se stejným názvem, skript selže, protože název se používá.
+Pokud potřebujete skript *New-AzureWebsiteEnv. ps1* restartovat, protože se nezdařil před tím, než se vytiskla zpráva "skript je dokončen", možná budete chtít odstranit prostředky, které skript vytvořil před jeho zastavením. Pokud například skript již vytvořil webovou aplikaci ContosoFixItDemo a znovu spustíte skript se stejným názvem, skript se nezdaří, protože název se používá.
 
-K určení, které prostředky skript vytvořený dříve, než ji zastavit, použijte následující rutiny:
+Chcete-li zjistit, které prostředky skript vytvořil před jeho zastavením, použijte následující rutiny:
 
 - `Get-AzureWebsite`
 - `Get-AzureSqlDatabaseServer`
-- `Get-AzureSqlDatabase`: Ke spuštění této rutiny, předat název databázového serveru do `Get-AzureSqlDatabase`:   `Get-AzureSqlDatabaseServer | Get-AzureSqlDatabase.`
+- `Get-AzureSqlDatabase`: Chcete-li spustit tuto rutinu, přesměrujte název databázového serveru na `Get-AzureSqlDatabase`: `Get-AzureSqlDatabaseServer | Get-AzureSqlDatabase.`
 
-Pokud chcete odstranit tyto prostředky, použijte následující příkazy. Všimněte si, že při odstranění databázového serveru, je automaticky odstraňovat databáze přidružené k serveru.
+K odstranění těchto prostředků použijte následující příkazy. Pamatujte na to, že při odstranění databázového serveru automaticky odstraníte databáze přidružené k tomuto serveru.
 
 - `Get-AzureWebsite -Name <WebsiteName> | Remove-AzureWebsite`
 - `Get-AzureSqlDatabase -Name <DatabaseName> -ServerName <DatabaseServerName> | Remove-SqlAzureDatabase`
 - `Get-AzureSqlDatabaseServer | Remove-AzureSqlDatabaseServer`
 
 <a id="deployqueues"></a>
-## <a name="how-to-deploy-the-app-with-queue-processing-to-azure-app-service-web-apps-and-an-azure-cloud-service"></a>Jak nasadit aplikaci s frontou zpracování pro Azure App Service Web Apps a Azure Cloud Service
+## <a name="how-to-deploy-the-app-with-queue-processing-to-azure-app-service-web-apps-and-an-azure-cloud-service"></a>Nasazení aplikace se zpracováním fronty pro Azure App Service Web Apps a cloudovou službu Azure
 
-Pokud chcete povolit front, proveďte následující změnu v souboru MyFixIt\Web.config. V části `appSettings`, změňte hodnotu vlastnosti `UseQueues` "true":
+Pokud chcete povolit fronty, proveďte v souboru MyFixIt\Web.config následující změny. V části `appSettings`změňte hodnotu `UseQueues` na "true":
 
 [!code-xml[Main](the-fix-it-sample-application/samples/sample31.xml)]
 
-Pak nasadíte aplikaci MVC do webové aplikace ve službě Azure App Service, jak je popsáno [starší](#deploybase).
+Pak nasaďte aplikaci MVC do webové aplikace v Azure App Service, jak je popsáno [výše](#deploybase).
 
-Dále vytvořte novou službu Azure cloud. Skripty, které jsou součástí aplikace Fix It nevytvářejí ani nasadit cloudovou službu, tak k tomu musíte pomocí webu Azure portal. Na portálu klikněte na tlačítko **nový** -- **Compute** – **Cloudovou službu** -- **rychle vytvořit**a potom zadejte adresu URL. a umístěním datového centra. Pomocí stejných datacentrech, kde jste nasadili webovou aplikaci.
+Pak vytvořte novou cloudovou službu Azure. Skripty, které jsou součástí aplikace Fix it, nevytvářejí ani nesazují cloudovou službu, takže je pro ně nutné použít Azure Portal. Na portálu klikněte na **nový** -- **COMPUTE** – **cloudová služba** -- **rychlé vytvoření**a pak zadejte adresu URL a umístění datového centra. Použijte stejné datové centrum, kde jste nasadili webovou aplikaci.
 
 ![](the-fix-it-sample-application/_static/image1.png)
 
-Než bude možné nasadit cloudovou službu, je potřeba aktualizovat některé konfigurační soubory.
+Než budete moct nasadit cloudovou službu, musíte aktualizovat některé konfigurační soubory.
 
-V MyFixIt.WorkerRole\app.config v části `connectionStrings`, nahraďte hodnotu `appdb` připojovací řetězec skutečným připojovacím řetězcem pro službu SQL Database. Získání připojovacího řetězce z portálu. Na portálu klikněte na tlačítko **databází SQL** - **appdb** - **zobrazení SQL databázové připojovací řetězce pro ADO .net, ODBC, JDBC a PHP**. Zkopírujte připojovací řetězec ADO.NET a vložte tuto hodnotu do souboru app.config. Nahraďte "{vaše\_heslo\_tady}" se heslo k databázi. (Za předpokladu, že jste použili skripty k nasazení aplikace MVC, jste zadali heslo databáze v `SqlDatabasePassword` parametr skriptu.)
+V MyFixIt. WorkerRole\app.config v části `connectionStrings`nahraďte hodnotu připojovacího řetězce `appdb` skutečným připojovacím řetězcem pro SQL Database. Připojovací řetězec můžete získat z portálu. Na portálu klikněte na **databáze SQL** - **appdb** - **zobrazení SQL Database připojovacích řetězců pro ADO .NET, ODBC, php a JDBC**. Zkopírujte připojovací řetězec ADO.NET a vložte hodnotu do souboru App. config. Nahraďte heslo "{Your\_Password\_sem}" heslem databáze. (Za předpokladu, že jste použili skripty pro nasazení aplikace MVC, zadali jste heslo databáze do parametru skriptu `SqlDatabasePassword`.)
 
-Výsledek by měl vypadat nějak takto:
+Výsledek by měl vypadat takto:
 
 [!code-xml[Main](the-fix-it-sample-application/samples/sample32.xml)]
 
-Ve stejném souboru MyFixIt.WorkerRole\app.config pod `appSettings`, nahradit dva zástupné hodnoty pro účet úložiště Azure.
+Ve stejném souboru MyFixIt. WorkerRole\app.config v části `appSettings`nahraďte dvě zástupné hodnoty pro účet služby Azure Storage.
 
 [!code-xml[Main](the-fix-it-sample-application/samples/sample33.xml?highlight=2-3)]
 
-Získání přístupového klíče z portálu. Zobrazit [Správa účtů úložiště](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+Přístupovou klávesu můžete získat z portálu. Viz [jak spravovat účty úložiště](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
-V MyFixItCloudService\ServiceConfiguration.Cloud.cscfg nahraďte stejné hodnoty dva zástupné symboly pro účet úložiště Azure.
+V MyFixItCloudService\ServiceConfiguration.Cloud.cscfg nahraďte stejné dvě hodnoty zástupných symbolů pro účet služby Azure Storage.
 
 [!code-xml[Main](the-fix-it-sample-application/samples/sample34.xml?highlight=3)]
 
-Nyní jste připraveni nasadit cloudovou službu. Prozkoumat řešení, klikněte pravým tlačítkem na projekt MyFixItCloudService a vyberte **publikovat**. Další informace najdete v tématu "[nasazení aplikace do Azure](https://www.windowsazure.com/develop/net/tutorials/multi-tier-web-site/2-download-and-run/#deployAz)", což je v části 2 [v tomto kurzu](https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36).
+Teď jste připraveni nasadit cloudovou službu. V prozkoumávání řešení klikněte pravým tlačítkem myši na projekt MyFixItCloudService a vyberte **publikovat**. Další informace najdete v tématu[nasazení aplikace do Azure](https://www.windowsazure.com/develop/net/tutorials/multi-tier-web-site/2-download-and-run/#deployAz), které je v části 2 [tohoto kurzu](https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36).
 
 > [!div class="step-by-step"]
 > [Předchozí](more-patterns-and-guidance.md)

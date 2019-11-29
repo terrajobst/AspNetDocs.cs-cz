@@ -1,273 +1,273 @@
 ---
 uid: web-forms/overview/data-access/introduction/master-pages-and-site-navigation-vb
-title: Stránky předlohy a navigace na webu (VB) | Dokumentace Microsoftu
+title: Stránky předlohy a navigace na webu (VB) | Microsoft Docs
 author: rick-anderson
-description: Jeden běžné charakteristiky uživatelsky přívětivé webů je, ke kterým mají konzistentní vzhledem k aplikacím, webu stránku rozložení a navigace schéma. V tomto kurzu snaží y...
+description: Jednou z běžných vlastností webů, které jsou uživatelsky přívětivé, je to, že mají konzistentní rozložení stránky a navigační schéma pro nejrůznější weby. V tomto kurzu se podíváme na to, jak y...
 ms.author: riande
 ms.date: 03/31/2010
 ms.assetid: 022801d8-a327-4d0c-8780-6094c9cee00d
 msc.legacyurl: /web-forms/overview/data-access/introduction/master-pages-and-site-navigation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4d12efbda00e75dad55cffc45955fb8b4c75dc26
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 4a2b5ba8c1781f1194f951a44661a8f7dd095f41
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130697"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74578886"
 ---
 # <a name="master-pages-and-site-navigation-vb"></a>Stránky předlohy a navigace na webu (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/5/d/7/5d7571fc-d0b7-4798-ad4a-c976c02363ce/ASPNET_Data_Tutorial_3_VB.exe) nebo [stahovat PDF](master-pages-and-site-navigation-vb/_static/datatutorial03vb1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/5/d/7/5d7571fc-d0b7-4798-ad4a-c976c02363ce/ASPNET_Data_Tutorial_3_VB.exe) nebo [Stáhnout PDF](master-pages-and-site-navigation-vb/_static/datatutorial03vb1.pdf)
 
-> Jeden běžné charakteristiky uživatelsky přívětivé webů je, ke kterým mají konzistentní vzhledem k aplikacím, webu stránku rozložení a navigace schéma. V tomto kurzu se prohledá vytváření konzistentní vzhled a chování na všech stránkách, které je možné snadno aktualizovat.
+> Jednou z běžných vlastností webů, které jsou uživatelsky přívětivé, je to, že mají konzistentní rozložení stránky a navigační schéma pro nejrůznější weby. V tomto kurzu se naučíte, jak vytvořit konzistentní vzhled a chování napříč všemi stránkami, které se dají snadno aktualizovat.
 
 ## <a name="introduction"></a>Úvod
 
-Jeden běžné charakteristiky uživatelsky přívětivé webů je, ke kterým mají konzistentní vzhledem k aplikacím, webu stránku rozložení a navigace schéma. Technologie ASP.NET 2.0 přináší dvě nové funkce, které výrazně usnadňují provádění oba webu stránku rozložení a navigace schéma: stránky předlohy a navigace na webu. Stránky předlohy umožňují vývojářům vytvářet šablony webu s určený upravitelnou oblastí. Pak lze použít tuto šablonu na stránky technologie ASP.NET v lokalitě. Tyto stránky ASP.NET potřebujete pouze poskytování obsahu pro stránku předlohy určené upravitelné oblasti na všech stránkách ASP.NET, které používají na hlavní stránce je stejný jako všechny ostatní značky na stránce předlohy. Tento model umožňuje vývojářům definovat a centralizovat rozložení stránky webu, a tím usnadníte tak jeho vytvoření konzistentního vzhledu a funkce na všech stránkách, které je možné snadno aktualizovat.
+Jednou z běžných vlastností webů, které jsou uživatelsky přívětivé, je to, že mají konzistentní rozložení stránky a navigační schéma pro nejrůznější weby. ASP.NET 2,0 zavádí dvě nové funkce, které výrazně zjednodušují implementaci rozložení stránky a navigačního schématu v rámci webu: stránky předlohy a navigace na webu. Stránky předlohy umožňují vývojářům vytvořit šablonu na úrovni webu s vybranými upravitelnými oblastmi. Tato šablona se pak dá použít na stránky ASP.NET v lokalitě. Takové stránky ASP.NET vyžadují pouze obsah pro zadané upravitelné oblasti stránky předlohy. všechny ostatní značky na stránce předlohy jsou stejné ve všech ASP.NET stránkách, které používají stránku předlohy. Tento model umožňuje vývojářům definovat a centralizovat rozložení stránky pro celou lokalitu, což usnadňuje vytváření konzistentního vzhledu a chování napříč všemi stránkami, které lze snadno aktualizovat.
 
-[Navigace systému lokality](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx) poskytuje mechanismus pro stránku vývojářům definovat Mapa webu i rozhraní API pro lokalitu, která je namapována, aby se dalo dotazovat prostřednictvím kódu programu. Nové ovládací prvky webové navigace, který v nabídce, prvek TreeView a ovládací prvky SiteMapPath usnadňují vykreslování nebo její část mapy webu v běžných navigační prvek uživatelského rozhraní. Budeme používat výchozího webu navigace zprostředkovatele, to znamená, že naše Mapa webu budou určené v souboru ve formátu XML.
+[Navigační systém lokality](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx) poskytuje mechanismus pro vývojáře stránky, který definuje mapu webu, a rozhraní API pro tuto mapu webu, které se má programově dotazovat. Nové navigační webové ovládací prvky, které jsou v nabídce, ovládacím prvku TreeView a SiteMapPath, usnadňují vykreslení všech nebo částí mapy webu v rámci společného prvku uživatelského rozhraní navigace. Budeme používat výchozího poskytovatele navigace na webu, což znamená, že naše mapa webu bude definovaná v souboru ve formátu XML.
 
-Ilustraci těchto konceptů a náš web kurzy dala lépe využít, věnujte této lekci definování rozložení stránky webu, implementace mapy webu a přidání navigační uživatelské rozhraní. Na konci tohoto kurzu máme uhlazené webu návrhu pro vytváření Náš kurz webových stránek.
+K ilustraci těchto konceptů a k lepšímu využití webu kurzů doporučujeme tuto lekci, která definuje rozložení stránky na úrovni webu, implementaci mapy webu a přidání uživatelského rozhraní pro navigaci. Na konci tohoto kurzu budeme mít k dispozici dokonalý návrh webu pro vytváření našich webových stránek kurzu.
 
-[![Konečný výsledek tohoto kurzu](master-pages-and-site-navigation-vb/_static/image2.png)](master-pages-and-site-navigation-vb/_static/image1.png)
+[![konečný výsledek tohoto kurzu](master-pages-and-site-navigation-vb/_static/image2.png)](master-pages-and-site-navigation-vb/_static/image1.png)
 
-**Obrázek 1**: Výsledek v tomto kurzu End ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image3.png))
+**Obrázek 1**: konečný výsledek tohoto kurzu ([kliknutím zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image3.png))
 
-## <a name="step-1-creating-the-master-page"></a>Krok 1: Vytvoření stránky předlohy
+## <a name="step-1-creating-the-master-page"></a>Krok 1: vytvoření hlavní stránky
 
-Prvním krokem je vytvoření hlavní stránky webu. V tuto chvíli našeho webu se skládá pouze zadané datové sady (`Northwind.xsd`v `App_Code` složky), BLL třídy (`ProductsBLL.vb`, `CategoriesBLL.vb`, a tak dále všechny in `App_Code` složky), databáze (`NORTHWND.MDF`v `App_Data` složka), konfigurační soubor (`Web.config`) a soubor šablony stylů CSS (`Styles.css`). Můžu vyčistil tyto stránky a soubory demonstrace pomocí vrstvy DAL a BLL z první dva kurzy od jsme přezkoumání těchto příkladů podrobněji v budoucích kurzech.
+Prvním krokem je vytvoření stránky předlohy pro daný web. Hned teď náš web obsahuje jenom typovou datovou sadu (`Northwind.xsd`ve složce `App_Code`) třídy knihoven BLL (`ProductsBLL.vb`, `CategoriesBLL.vb`a tak dále, všechny ve složce `App_Code`), databázi (`NORTHWND.MDF`, ve složce `App_Data`), konfigurační soubor (`Web.config`) a soubor šablony stylů CSS (`Styles.css`). Tyto stránky a soubory, které demonstrují použití DAL a knihoven BLL z prvních dvou kurzů, se vyčistí, protože tyto příklady budeme v budoucích kurzech podrobněji prošetřit.
 
 ![Soubory v našem projektu](master-pages-and-site-navigation-vb/_static/image4.png)
 
-**Obrázek 2**: Soubory v našem projektu
+**Obrázek 2**: soubory v našem projektu
 
-Chcete-li vytvořit stránku předlohy, klikněte pravým tlačítkem na název projektu v Průzkumníku řešení a zvolte Přidat novou položku. Potom ze seznamu šablon vyberte typ stránky předlohy a pojmenujte ho `Site.master`.
+Chcete-li vytvořit hlavní stránku, klikněte pravým tlačítkem myši na název projektu v Průzkumník řešení a vyberte možnost Přidat novou položku. Pak v seznamu šablon vyberte typ hlavní stránky a pojmenujte ho `Site.master`.
 
-[![Přidejte novou stránku předlohy k webu](master-pages-and-site-navigation-vb/_static/image6.png)](master-pages-and-site-navigation-vb/_static/image5.png)
+[![přidání nové stránky předlohy na web](master-pages-and-site-navigation-vb/_static/image6.png)](master-pages-and-site-navigation-vb/_static/image5.png)
 
-**Obrázek 3**: Přidejte novou stránku předlohy k webu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image7.png))
+**Obrázek 3**: Přidání nové stránky předlohy na web ([kliknutím zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image7.png))
 
-Definování rozložení stránky webu tady na hlavní stránce. Můžete použít zobrazení návrhu a přidat libovolné rozložení webové ovládací prvky nebo potřebujete, nebo můžete ručně přidat značky můžete rozšířit ručně v zobrazení zdroje. Mé stránce předlohy používám [šablony stylů CSS](http://www.w3schools.com/css/default.asp) pro umístění a styly CSS nastavení definované v externím souboru `Style.css`. Zatímco nelze zjistit z kódu je uvedeno níže, se definují pravidla šablon stylů CSS tak, aby navigaci `<div>`jeho obsah je absolutně umístěné tak, aby se zobrazí na levé straně a má pevnou šířku 200 pixelů.
+Na stránce předlohy definujte rozložení stránky na úrovni webu. Můžete použít zobrazení Návrh a přidat libovolné rozložení nebo webové ovládací prvky, které potřebujete, nebo můžete ručně přidat značky v zobrazení zdroje. Na stránce předlohy používáme [kaskádové šablony stylů](http://www.w3schools.com/css/default.asp) pro umísťování a styly s nastaveními CSS definovanými v externím souboru `Style.css`. I když nemůžete říct od značky níže, jsou definována pravidla šablony stylů CSS tak, aby byl obsah navigace `<div>`zcela umístěný tak, aby se zobrazil vlevo a měla pevnou šířku 200 pixelů.
 
-Site.master
+Lokalita. Master
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample1.aspx)]
 
-Hlavní stránka definuje statickou stránku rozložení a oblasti, které lze upravovat pomocí stránek ASP.NET, které používají stránky předlohy. Tyto obsahu upravitelné oblasti jsou označeny ovládací prvek ContentPlaceHolder, který lze zobrazit v rámci obsahu `<div>`. Naší hlavní stránka má jeden prvek ContentPlaceHolder (`MainContent`), ale hlavní stránka může obsahovat několik prvků ContentPlaceHolder.
+Stránka předlohy definuje rozložení statické stránky i oblasti, které lze upravit pomocí stránek ASP.NET, které používají stránku předlohy. Tyto upravitelné oblasti obsahu jsou označeny ovládacím prvkem ContentPlaceHolder, který lze zobrazit v rámci `<div>`obsahu. Naše stránka předlohy má jeden prvek ContentPlaceHolder (`MainContent`), ale stránka předlohy může mít více prvků ContentPlaceHolder.
 
-Se značkami výše ukazuje přepnutí na zobrazení návrhu rozložení stránky předlohy. Všechny stránky technologie ASP.NET, které pomocí této hlavní stránky bude mít toto jednotné rozložení s možností určit značky pro `MainContent` oblasti.
+Pomocí značky uvedeného výše se přepíná na zobrazení Návrh zobrazuje rozložení stránky předlohy. Všechny stránky ASP.NET, které používají tuto stránku předlohy, budou mít jednotné rozložení s možností zadat značku `MainContent` oblasti.
 
-[![Stránky předlohy se stránkou, při zobrazení v okně návrhu](master-pages-and-site-navigation-vb/_static/image9.png)](master-pages-and-site-navigation-vb/_static/image8.png)
+[![stránku předlohy při prohlížení v návrhovém zobrazení](master-pages-and-site-navigation-vb/_static/image9.png)](master-pages-and-site-navigation-vb/_static/image8.png)
 
-**Obrázek 4**: Stránky předlohy se stránkou, při prohlížení prostřednictvím the návrhové zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image10.png))
+**Obrázek 4**: stránka předloha při zobrazení v návrhovém zobrazení ([kliknutím zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image10.png))
 
-## <a name="step-2-adding-a-homepage-to-the-website"></a>Krok 2: Přidání domovské stránce na webu
+## <a name="step-2-adding-a-homepage-to-the-website"></a>Krok 2: Přidání domovské stránky na web
 
-S hlavní stránkou definované jsme připraveni pro přidání stránek technologie ASP.NET pro web. Začněme přidáním `Default.aspx`, domovská stránka našeho webu. Klikněte pravým tlačítkem na název projektu v Průzkumníku řešení a zvolte Přidat novou položku. Vyberte si možnost webový formulář ze seznamu šablon a název souboru `Default.aspx`. Kromě toho zaškrtněte políčko "Vybrat hlavní stránku".
+Po definování stránky předlohy jsme připraveni přidat stránky ASP.NET pro web. Pojďme začít přidáním `Default.aspx`, domovské stránky našeho webu. V Průzkumník řešení klikněte pravým tlačítkem myši na název projektu a vyberte možnost Přidat novou položku. V seznamu šablon vyberte možnost webový formulář a pojmenujte soubor `Default.aspx`. Také zaškrtněte políčko vybrat hlavní stránku.
 
-[![Přidat nový webový formulář, kontrolu vyberte zaškrtávací políčko hlavní stránky](master-pages-and-site-navigation-vb/_static/image12.png)](master-pages-and-site-navigation-vb/_static/image11.png)
+[![přidání nového webového formuláře zaškrtnutím políčka Vybrat stránku předlohy.](master-pages-and-site-navigation-vb/_static/image12.png)](master-pages-and-site-navigation-vb/_static/image11.png)
 
-**Obrázek 5**: Přidat nový webový formulář, kontrolu vyberte zaškrtávací políčko hlavní stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image13.png))
+**Obrázek 5**: Přidání nového webového formuláře zaškrtnutím políčka vybrat hlavní stránku ([kliknutím zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image13.png))
 
-Po kliknutí na tlačítko OK, jsme se dotaz, rozhodnout, jaké stránky předlohy, používejte tuto novou stránku ASP.NET. I když můžete mít více stránek předloh ve vašem projektu, budeme mít pouze jeden.
+Po kliknutí na tlačítko OK se zobrazí výzva k výběru stránky předlohy, kterou by tato nová stránka ASP.NET měla použít. I když můžete mít v projektu více stránek předlohy, máme jenom jednu.
 
-[![Zvolte na stránce předlohy, kterou by měl použít tuto stránku ASP.NET](master-pages-and-site-navigation-vb/_static/image15.png)](master-pages-and-site-navigation-vb/_static/image14.png)
+[![vyberte stránku předlohy, kterou by měla tato stránka ASP.NET použít.](master-pages-and-site-navigation-vb/_static/image15.png)](master-pages-and-site-navigation-vb/_static/image14.png)
 
-**Obrázek 6**: Zvolte na stránce předlohy použijte by měl stránky technologie ASP.NET ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image16.png))
+**Obrázek 6**: vyberte stránku předlohy, kterou by měla stránka ASP.NET použít ([kliknutím zobrazíte obrázek v plné velikosti).](master-pages-and-site-navigation-vb/_static/image16.png)
 
-Po výběru stránky předlohy, bude obsahovat nové stránky technologie ASP.NET následující kód:
+Po výběru stránky předlohy budou nové stránky ASP.NET obsahovat následující značky:
 
-Default.aspx
+Default. aspx
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample2.aspx)]
 
-V `@Page` směrnice je odkaz na stránku předlohy soubor používá (`MasterPageFile="~/Site.master"`), a kódu stránky technologie ASP.NET obsahuje ovládací prvek obsahu pro všechny ovládací prvky ContentPlaceHolder definované na stránce předlohy, pomocí ovládacího prvku `ContentPlaceHolderID` mapování obsahu konkrétní ContentPlaceHolder pod kontrolou. Ovládací prvek obsahu je třeba umístit kód chcete zobrazit v odpovídajícího prvku ContentPlaceHolder. Nastavte `@Page` direktivy `Title` atribut na domovskou stránku a přidejte nějaký uvítacímu obsah do ovládacího prvku obsahu:
+V direktivě `@Page` existuje odkaz na použitý soubor hlavní stránky (`MasterPageFile="~/Site.master"`) a značka stránky ASP.NET obsahuje ovládací prvek obsahu pro každé ovládací prvky ContentPlaceHolder definované na stránce předlohy s `ContentPlaceHolderID` ovládacího prvku mapování obsahu ovládacího prvku na konkrétní prvek ContentPlaceHolder. Ovládací prvek Content (obsah) je místo, kam umístíte značku, kterou chcete zobrazit v odpovídajícím prvku ContentPlaceHolder. Nastavte atribut `Title` direktivy `@Page` na hodnotu domů a přidejte k ovládacímu prvku obsahu nějaký uvítací obsah:
 
-Default.aspx
+Default. aspx
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample3.aspx)]
 
-`Title` Atribut `@Page` – direktiva umožňuje nastavit nadpis stránky ze stránky ASP.NET, i když `<title>` na hlavní stránce je definován prvek. Můžete také nastavíme názvu prostřednictvím kódu programu, použití `Page.Title`. Všimněte si také, že na hlavní stránce odkazy na šablony stylů (například `Style.css`) se automaticky aktualizují tak, aby fungovaly v jakékoli stránky technologie ASP.NET, bez ohledu na to, jaké adresář je stránka technologie ASP.NET v vzhledem k hlavní stránce.
+Atribut `Title` v direktivě `@Page` nám umožňuje nastavit nadpis stránky ze stránky ASP.NET, i když je element `<title>` definovaný na stránce předlohy. Název můžeme také programově nastavit pomocí `Page.Title`. Všimněte si také, že odkazy na šablony stylů (například `Style.css`) se automaticky aktualizují, aby fungovaly na libovolné stránce ASP.NET bez ohledu na to, jaký adresář má stránka ASP.NET ve vztahu k hlavní stránce.
 
-Přepnout do zobrazení návrhu, že můžeme vidět, jak bude vypadat naši stránku v prohlížeči. Všimněte si, že v návrhu zobrazení pro stránku ASP.NET, že se upravovat pouze obsahu upravitelné oblasti značky bez ContentPlaceHolder definovány na hlavní stránce šedě.
+Přepínáním na zobrazení Návrh uvidíme, jak bude stránka vypadat v prohlížeči. Všimněte si, že v zobrazení Návrh pro stránku ASP.NET, na kterou lze upravovat pouze upravitelné oblasti obsahu, se značkou, která je definována na stránce předlohy, je zobrazena šedě.
 
-[![Zobrazí upravitelné a neupravitelné oblasti návrhové zobrazení pro stránku ASP.NET](master-pages-and-site-navigation-vb/_static/image18.png)](master-pages-and-site-navigation-vb/_static/image17.png)
+[![zobrazení Návrh stránky ASP.NET zobrazuje jak upravitelné, tak i neupravitelné oblasti](master-pages-and-site-navigation-vb/_static/image18.png)](master-pages-and-site-navigation-vb/_static/image17.png)
 
-**Obrázek 7**: Zobrazení návrhu pro technologie ASP.NET stránku zobrazuje i upravit a Non-upravit oblasti ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image19.png))
+**Obrázek 7**: zobrazení návrh stránky ASP.NET zobrazuje jak upravitelné, tak i neupravitelné oblasti ([kliknutím zobrazíte obrázek v plné velikosti).](master-pages-and-site-navigation-vb/_static/image19.png)
 
-Když `Default.aspx` navštívené stránky v prohlížeči, modul ASP.NET automaticky sloučí na stránce obsahu stránky předlohy a ASP. NET uživatele obsahu a vykreslí obsah sloučené do konečné kódu HTML, která bude zaslána požadujícího prohlížeče. Při aktualizaci obsahu stránky předlohy, budou mít všechny stránky technologie ASP.NET, které používají tuto stránku předlohy jejich obsah remerged pomocí nové stránky předlohy, obsahu, které se jsou požadovány. Stručně řečeno, hlavní stránky model umožňuje na jedné stránce rozložení šabloně definovaný (hlavní stránky), změny se projeví okamžitě celého webu.
+Když prohlížeč `Default.aspx` stránku navštíví, modul ASP.NET automaticky sloučí obsah stránky předlohy a ASP. Obsah netto a vykreslí sloučený obsah do finálního HTML, který se pošle do prohlížeče požadujícího. Při aktualizaci obsahu stránky předlohy budou všechny stránky ASP.NET, které používají tuto stránku předlohy, znovu sloučeny s novým obsahem stránky předlohy při dalším vyžádání. V krátkém případě model stránky předlohy umožňuje definovat jednu šablonu rozložení stránky (hlavní stránku), jejíž změny se projeví okamžitě napříč celou lokalitou.
 
-## <a name="adding-additional-aspnet-pages-to-the-website"></a>Přidání stránky další technologie ASP.NET na web
+## <a name="adding-additional-aspnet-pages-to-the-website"></a>Přidání dalších stránek ASP.NET na web
 
-Věnujte chvíli přidat další zástupné procedury stránky technologie ASP.NET na web, který bude nakonec obsahovat různé ukázky generování sestav. Bude existovat více než 35 ukázky celkem, tak místo všech stránek se zakázaným inzerováním umožňuje vytvoření pouze prvních vytvořit. Bude také se stát, že mnoho kategorií ukázky, přidejte si ukázky lepší kontrolou složky pro kategorie. Teď přidejte následující tři složky:
+Pojďme se na web pokusit přidat další zástupné procedury stránky ASP.NET, která bude nakonec uchovávat různé Ukázky sestav. Bude se jednat o více než 35 ukázek, takže místo vytváření všech stránek se zástupnými procedurami teď stačí vytvořit několik prvních. Vzhledem k tomu, že bude i mnoho kategorií ukázek, pro lepší správu ukázek přidejte složku pro kategorie. Nyní přidejte následující tři složky:
 
 - `BasicReporting`
 - `Filtering`
 - `CustomFormatting`
 
-Nakonec přidejte nové soubory, jak je znázorněno v Průzkumníku řešení na obrázku 8. Při přidávání každého souboru, nezapomeňte zaškrtnout políčko "Vybrat hlavní stránku".
+Nakonec přidejte nové soubory, jak je znázorněno na obrázku 8 v Průzkumník řešení. Při přidávání jednotlivých souborů nezapomeňte zaškrtnout políčko vybrat hlavní stránku.
 
-![Přidejte následující soubory](master-pages-and-site-navigation-vb/_static/image20.png)
+![Přidejte následující soubory.](master-pages-and-site-navigation-vb/_static/image20.png)
 
-**Obrázek 8**: Přidejte následující soubory
+**Obrázek 8**: přidání následujících souborů
 
-## <a name="step-2-creating-a-site-map"></a>Krok 2: Vytváření mapy webu
+## <a name="step-2-creating-a-site-map"></a>Krok 2: vytvoření mapy webu
 
-Jeden z problémů, správu webu se skládá z více než několik stránek poskytuje jednoduchý způsob, jak návštěvníci procházení webu. Než začneme musí být definován v lokalitě navigační strukturu. Tato struktura v dalším kroku musí přeložit na prvky navigaci uživatelského rozhraní, jako jsou nabídky nebo s popisem cesty. Nakonec tento celý proces je potřeba udržuje a aktualizuje při přidání nové stránky v lokalitě a odebrat existující aplikace. Před ASP.NET 2.0 byly vývojáři na své vlastní pro vytvoření webu navigační strukturu, údržbu a překládá na prvky navigaci uživatelského rozhraní. S prostředím ASP.NET 2.0 ale vývojáři můžou využívat velmi flexibilní vytvořené v systému lokality navigace.
+Jedním z výzev ke správě webu složeného z více než několik stránek je poskytnutí jednoduchého způsobu, jak návštěvníci procházet lokalitou. Aby bylo možné začít, musí být definována navigační struktura lokality. Dále musí být tato struktura přeložena do prvků uživatelského rozhraní naviguje, jako jsou nabídky nebo popisy cesty. A konečně, tento celý proces musí být udržován a aktualizován, protože nové stránky jsou přidány do lokality a stávající odebrané. Před ASP.NET 2,0 byly vývojáři vlastní pro vytváření navigačních struktur webu, jejich údržbu a jejich překlad na prvky uživatelského rozhraní naviguje. S ASP.NET 2,0 ale vývojáři můžou využít velmi flexibilní integrovaný systém navigace v lokalitě.
 
-Systém navigace na webu technologie ASP.NET 2.0 poskytuje prostředky pro vývojáře k definování mapy webu a k těmto informacím přistupovat prostřednictvím programových rozhraní API. Technologie ASP.NET se dodává s zprostředkovatele mapy webu, který očekává, že data mapy webu, který bude uložen do souboru XML ve formátu určitým způsobem. Ale vzhledem k tomu, že systém navigace na webu je postavená na [modelu poskytovatele](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx) je možné rozšířit na alternativní způsoby podporu pro serializaci informace mapy webu. Jeff Prosise článku [The SQL lokality mapy zprostředkovatele je jsme bylo čekání pro](https://msdn.microsoft.com/msdnmag/issues/06/02/WickedCode/default.aspx) ukazuje, jak vytvořit zprostředkovatele mapy webu, který ukládá mapy webu v databázi serveru SQL Server; Další možností je vytvořit [na základě zprostředkovatele mapy webu strukturu systémů souborů](http://aspnet.4guysfromrolla.com/articles/020106-1.aspx).
+Navigační systém lokality ASP.NET 2,0 poskytuje vývojářům způsob, jak definovat mapu lokality a k nim pak přistupovat prostřednictvím programového rozhraní API. ASP.NET je dodáván se zprostředkovatelem mapy webu, který očekává, že data mapy webu budou uložena v souboru XML naformátovaném určitým způsobem. Ale vzhledem k tomu, že je navigační systém lokality založený na [modelu poskytovatele](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx) , může být prodloužen na podporu alternativních způsobů serializace informací o mapě webu. Jan Prosise, [poskytovatel mapy webu SQL, kterého jste čekali](https://msdn.microsoft.com/msdnmag/issues/06/02/WickedCode/default.aspx) , ukazuje, jak vytvořit poskytovatele mapy webu, který ukládá mapu lokality do databáze SQL Server; Další možností je vytvořit [poskytovatele mapy webu na základě struktury systému souborů](http://aspnet.4guysfromrolla.com/articles/020106-1.aspx).
 
-V tomto kurzu ale použijeme výchozího zprostředkovatele mapy webu, která je dodávána s prostředím ASP.NET 2.0. K vytvoření mapy webu, jednoduše klikněte pravým tlačítkem na název projektu v Průzkumníku řešení zvolte Přidat novou položku a zvolte možnost mapy webu. Nechte název tak jako `Web.sitemap` a klikněte na tlačítko Přidat.
+Pro tento kurz ale budeme používat výchozího poskytovatele mapy webu, který je dodáván s ASP.NET 2,0. Chcete-li vytvořit mapu webu, stačí kliknout pravým tlačítkem myši na název projektu v Průzkumník řešení, zvolit Přidat novou položku a zvolit možnost mapa webu. Název ponechte `Web.sitemap` a klikněte na tlačítko Přidat.
 
-[![Přidejte do projektu mapy webu](master-pages-and-site-navigation-vb/_static/image22.png)](master-pages-and-site-navigation-vb/_static/image21.png)
+[![přidat mapu webu do projektu](master-pages-and-site-navigation-vb/_static/image22.png)](master-pages-and-site-navigation-vb/_static/image21.png)
 
-**Obrázek 9**: Přidání mapy webu do vašeho projektu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image23.png))
+**Obrázek 9**: Přidání mapy webu do projektu ([kliknutím zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image23.png))
 
-Soubor mapy webu je soubor XML. Všimněte si, že Visual Studio poskytuje IntelliSense pro strukturu mapy webu. Soubor mapy webu musí mít `<siteMap>` jako jeho kořenový uzel, který musí obsahovat přesně jeden uzel `<siteMapNode>` podřízený element. Nejdříve `<siteMapNode>` element může obsahovat libovolný počet potomka `<siteMapNode>` elementy.
+Soubor mapy webu je soubor XML. Všimněte si, že Visual Studio poskytuje IntelliSense pro strukturu mapy webu. Soubor mapy webu musí mít uzel `<siteMap>` jako svůj kořenový uzel, který musí obsahovat přesně jeden `<siteMapNode>` podřízený element. Tento první `<siteMapNode>` prvek může obsahovat libovolný počet podřízených `<siteMapNode>` prvků.
 
-Definujte Mapa webu tak, aby napodoboval strukturu systému souborů. To znamená, přidejte `<siteMapNode>` – element pro všechny tři složky a podřízených `<siteMapNode>` elementy pro jednotlivé stránky technologie ASP.NET v těchto složek, například takto:
+Definujte mapu webu pro napodobení struktury systému souborů. To znamená, že přidáte `<siteMapNode>` element pro každou ze tří složek a podřízené `<siteMapNode>` prvky pro každou ASP.NET stránku v těchto složkách, například:
 
-Web.sitemap
+Web. sitemap
 
 [!code-xml[Main](master-pages-and-site-navigation-vb/samples/sample4.xml)]
 
-Mapa webu definuje webu navigační strukturu, která je hierarchie, která popisuje různé části webu. Každý `<siteMapNode>` prvek `Web.sitemap` představuje oddíl v navigační struktuře lokality.
+Mapa webu definuje navigační strukturu webu, což je hierarchie, která popisuje různé části webu. Každý prvek `<siteMapNode>` v `Web.sitemap` představuje oddíl v navigační struktuře webu.
 
-[![Mapa webu představuje hierarchickou strukturu navigační](master-pages-and-site-navigation-vb/_static/image25.png)](master-pages-and-site-navigation-vb/_static/image24.png)
+[![mapa webu představuje hierarchickou navigační strukturu.](master-pages-and-site-navigation-vb/_static/image25.png)](master-pages-and-site-navigation-vb/_static/image24.png)
 
-**Obrázek 10**: Mapa webu představuje hierarchickou strukturu navigační ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image26.png))
+**Obrázek 10**: Mapa webu představuje hierarchickou navigační strukturu ([kliknutím zobrazíte obrázek v plné velikosti).](master-pages-and-site-navigation-vb/_static/image26.png)
 
-Technologie ASP.NET poskytuje strukturu mapy webu prostřednictvím rozhraní .NET Framework [Třída SiteMap](https://msdn.microsoft.com/library/system.web.sitemap.aspx). Tato třída obsahuje `CurrentNode` vlastnost, která vrátí informace o části návštěvy aktuálně; `RootNode` vlastnost vrátí kořen mapy webu (v našem mapy webu Home). Jak `CurrentNode` a `RootNode` návratové vlastnosti [SiteMapNode](https://msdn.microsoft.com/library/system.web.sitemapnode.aspx) instancemi, jejichž vlastnosti jako `ParentNode`, `ChildNodes`, `NextSibling`, `PreviousSibling`, a tak dále, která umožňují mapy webu hierarchie na vás.
+ASP.NET zpřístupňuje strukturu mapy webu prostřednictvím [třídy SiteMap](https://msdn.microsoft.com/library/system.web.sitemap.aspx).NET Framework. Tato třída má vlastnost `CurrentNode`, která vrací informace o oddílu, na který uživatel aktuálně navštěvuje; vlastnost `RootNode` vrátí kořen mapy webu (Domovská stránka, v mapě webu). Vlastnosti `CurrentNode` i `RootNode` vrací instance [SiteMapNode](https://msdn.microsoft.com/library/system.web.sitemapnode.aspx) , které mají vlastnosti jako `ParentNode`, `ChildNodes`, `NextSibling`, `PreviousSibling`a tak dále, které umožňují vás provedl hierarchie lokality.
 
-## <a name="step-3-displaying-a-menu-based-on-the-site-map"></a>Krok 3: Zobrazení nabídky na základě mapy webu
+## <a name="step-3-displaying-a-menu-based-on-the-site-map"></a>Krok 3: zobrazení nabídky na základě mapy webu
 
-Přístup k datům v technologii ASP.NET 2.0 lze provést prostřednictvím kódu programu, jako jsou v technologii ASP.NET 1.x, nebo pomocí deklarace, prostřednictvím nového [ovládací prvky zdroje dat](https://msdn.microsoft.com/library/ms227679.aspx). Existuje několik předdefinovaných ovládací prvky zdroje dat jako je například ovládacím prvkem SqlDataSource pro přístup k datům relační databáze, ovládací prvek ObjectDataSource, pro přístup k datům z třídy a další. Můžete dokonce vytvořit svoje vlastní [ovládací prvky zdroje dat vlastní](https://msdn.microsoft.com/asp.net/reference/data/default.aspx?pull=/library/dnvs05/html/DataSourceCon1.asp).
+Přístup k datům v ASP.NET 2,0 lze provést programově, například v ASP.NET 1. x nebo deklarativně prostřednictvím nových [ovládacích prvků zdroje dat](https://msdn.microsoft.com/library/ms227679.aspx). Existuje několik vestavěných ovládacích prvků zdroje dat, jako je například ovládací prvek SqlDataSource, pro přístup k datům relační databáze, ovládací prvek ObjectDataSource, pro přístup k datům z tříd a dalších. Můžete dokonce vytvořit vlastní [ovládací prvky zdroje dat](https://msdn.microsoft.com/asp.net/reference/data/default.aspx?pull=/library/dnvs05/html/DataSourceCon1.asp).
 
-Ovládací prvky zdroje dat slouží jako proxy mezi vaší stránky technologie ASP.NET a příslušná data. Aby bylo možné zobrazit ovládací prvek zdroje dat načtená data, jsme budete obvykle přidejte další ovládací prvek webové stránky a svázat ovládací prvek zdroje dat. K vytvoření vazby ovládacího prvku webové k ovládacímu prvku zdroje dat, stačí nastavit ovládací prvek webového `DataSourceID` k hodnotě ovládacího prvku zdroje dat `ID` vlastnost.
+Ovládací prvky zdroje dat slouží jako proxy mezi stránkou ASP.NET a podkladovými daty. Aby bylo možné zobrazit načtená data ovládacího prvku zdroje dat, obvykle přidáme na stránku další webový ovládací prvek a navážeme ho k ovládacímu prvku zdroje dat. Chcete-li vytvořit vazby webového ovládacího prvku k ovládacímu prvku zdroje dat, jednoduše nastavte vlastnost `DataSourceID` webového ovládacího prvku na hodnotu vlastnosti `ID` ovládacího prvku zdroje dat.
 
-Na podporu při práci s daty mapy webu technologie ASP.NET obsahuje ovládací prvek SiteMapDataSource, který umožňuje vytvoření vazby ovládacího prvku webové proti mapy webu našeho webu. Dvou ovládacích prvků TreeView a nabídky se běžně používají k zajištění navigační uživatelské rozhraní. Svázat data mapy webu na jednu z těchto dvou ovládacích prvků, jednoduše přidat SiteMapDataSource na stránku spolu s ovládací prvek TreeView nebo nabídky ovládací prvek, jehož `DataSourceID` je nastavena odpovídajícím způsobem. Ovládací prvek nabídky můžeme přidat například na hlavní stránku pomocí následující kód:
+Aby bylo možné pomoci při práci s daty mapy webu, zahrnuje ASP.NET ovládací prvek SiteMapDataSource, který nám umožňuje navazovat webové ovládací prvky na mapě webu našeho webu. Dva webové ovládací prvky: strom a nabídka se běžně používají k poskytnutí uživatelského rozhraní navigace. Chcete-li vytvořit datovou mapu webu k jednomu z těchto dvou ovládacích prvků, stačí přidat prvek SiteMapDataSource na stránku spolu s ovládacím prvkem TreeView nebo menu, jehož vlastnost `DataSourceID` je nastavena odpovídajícím způsobem. Například můžeme přidat ovládací prvek nabídky na stránku předlohy pomocí následujícího kódu:
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample5.aspx)]
 
-Pro jemnější stupeň kontroly nad emitovaný kód HTML, jsme lze svázat ovládací prvek SiteMapDataSource ovládacím prvku opakovače takto:
+Pro jemnější úroveň kontroly nad vygenerovaným kódem HTML můžeme ovládací prvek SiteMapDataSource navazovat na ovládací prvek Repeater, například:
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample6.aspx)]
 
-Ovládací prvek SiteMapDataSource vrátí úroveň hierarchie jeden mapy webu současně, počínaje kořenový uzel mapy webu (domů, v našem mapy webu), klikněte na další úroveň (základní tvorbou sestav, filtrování sestavy a přizpůsobit formátování) a tak dále. Při vytváření vazby SiteMapDataSource na Repeateru, zobrazí první úroveň vrátí a vytvoří `ItemTemplate` pro každou `SiteMapNode` instance v této první úroveň. Pro přístup k určité vlastnosti `SiteMapNode`, můžeme použít `Eval(propertyName)`, což je, jak každý získáme `SiteMapNode`společnosti `Url` a `Title` vlastnosti ovládacího prvku hypertextový odkaz.
+Ovládací prvek SiteMapDataSource vrátí hierarchii mapy webu po jedné úrovni, počínaje uzlem mapy kořenové lokality (Domovská stránka, na naší mapě webu), pak na další úroveň (základní generování sestav, filtrování sestav a přizpůsobení formátování) atd. Při vázání prvku SiteMapDataSource na Repeater vytvoří výčet první vrácené úrovně a vytvoří instanci `ItemTemplate` pro každou instanci `SiteMapNode` v této první úrovni. Aby bylo možné získat přístup k určité vlastnosti `SiteMapNode`, můžeme použít `Eval(propertyName)`, což je způsob, jak `SiteMapNode`získáme vlastnosti `Url` a `Title` pro ovládací prvek hypertextového odkazu.
 
-Výše uvedený příklad Repeater bude vykreslen:
+Výše uvedený příklad opakovače vykreslí následující značky:
 
 [!code-html[Main](master-pages-and-site-navigation-vb/samples/sample7.html)]
 
-Tyto uzly mapy webu (základní tvorbou sestav, filtrování sestavy a přizpůsobit formátování) tvoří *druhý* úrovně vykreslované, ne v prvním mapy webu. Je to proto, SiteMapDataSource `ShowStartingNode` je nastavena na hodnotu False, způsobí SiteMapDataSource obejít kořenový uzel mapy webu a místo toho začít tak, že vrací druhou úroveň v hierarchii mapy webu.
+Tyto uzly mapy webu (základní sestavy, filtrování sestav a vlastní formátování) obsahují *druhou* úroveň vykreslování mapy webu, nikoli první. Důvodem je, že vlastnost `ShowStartingNode` prvku SiteMapDataSource je nastavena na hodnotu false, což způsobuje, že SiteMapDataSource obchází uzel mapy kořenové lokality a místo toho začíná vrácením druhé úrovně v hierarchii mapy webu.
 
-K zobrazení podřízených základní tvorbou sestav, filtrování sestav, a přizpůsobit formátování `SiteMapNode` s, přidáme jiný Repeater na počáteční Repeater `ItemTemplate`. Tento druhý Repeater bude vázán k `SiteMapNode` instance `ChildNodes` vlastnosti, například takto:
+Pokud chcete zobrazit podřízené objekty pro základní vytváření sestav, filtrovat sestavy a přizpůsobené formátování `SiteMapNode` s, můžeme do `ItemTemplate`počátečního opakovače přidat dalšího opakovače. Toto druhé opakování bude vázáno na vlastnost `ChildNodes` instance `SiteMapNode`, například takto:
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample8.aspx)]
 
-Tyto dvě opakovače za následek následující značky (některé značek se odebrala pro zkrácení):
+Výsledkem těchto dvou Repeat je následující kód (některé značky byly odebrány pro zkrácení):
 
 [!code-html[Main](master-pages-and-site-navigation-vb/samples/sample9.html)]
 
-Pomocí šablon stylů CSS styly zvolené z [Rachel Andrew](http://www.rachelandrew.co.uk/)uživatele rezervuje [The Anthology šablon stylů CSS: 101 důležité tipy, triky, &amp; změní](https://www.amazon.com/gp/product/0957921888/qid=1137565739/sr=8-1/ref=pd_bbs_1/103-0562306-3386214?n=507846&amp;s=books&amp;v=glance), `<ul>` a `<li>` prvky jsou navržen tak, aby kód vytvoří následující výstup visual:
+Používání stylů CSS, které jste vybrali v knize [Rachel Andrew](http://www.rachelandrew.co.uk/) [css Anthology: 101 základních tipů, triky &amp; hackatony](https://www.amazon.com/gp/product/0957921888/qid=1137565739/sr=8-1/ref=pd_bbs_1/103-0562306-3386214?n=507846&amp;s=books&amp;v=glance), jsou styly `<ul>` a `<li>`, tak aby kód vytvořil následující vizuální výstup:
 
-![Zobrazí se nabídka skládá ze dvou opakovače a některé šablony stylů CSS](master-pages-and-site-navigation-vb/_static/image27.png)
+![Nabídka složená ze dvou Repeat a některých šablon stylů CSS](master-pages-and-site-navigation-vb/_static/image27.png)
 
-**Obrázek 11**: Zobrazí se nabídka skládá ze dvou opakovače a některé šablony stylů CSS
+**Obrázek 11**: nabídka složená ze dvou Repeat a některých šablon stylů CSS
 
-Tato nabídka je na hlavní stránce a vázaný k Mapa webu, který je definován v `Web.sitemap`, to znamená, že všechny změny do mapy webu se okamžitě projeví na všech stránek, které používají `Site.master` stránky předlohy.
+Tato nabídka je na stránce Předloha a je svázána s mapou webu definovanou v `Web.sitemap`, což znamená, že všechny změny mapy lokality se projeví přímo na všech stránkách, které používají stránku předlohy `Site.master`.
 
-## <a name="disabling-viewstate"></a>Zakazuje stav zobrazení
+## <a name="disabling-viewstate"></a>Zakázání vlastnosti ViewState
 
-Všechny ovládací prvky technologie ASP.NET můžete volitelně uchovávat jejich stav [zobrazit stav](https://msdn.microsoft.com/msdnmag/issues/03/02/CuttingEdge/), který serializuje jako skryté pole formuláře v zobrazený HTML. Stav zobrazení používá ovládací prvky pamatovat jejich programově změnit stav postbacků, například že data svázaná s ovládacím prvkem webových dat. Při zobrazení stavu umožňuje informace, které se uloží, postbacků, jeho hodnota se zvyšuje velikost značky, které se musí odeslat na klienta a může vést k jejímu narůstání závažné stránky, pokud nebude pečlivě monitorovat. Webové ovládací prvky dat zejména GridView jsou zvláště notorious pro přidání desítky navíc kilobajtů značek na stránku. Takové zvýšení může být nepatrné pro uživatele širokopásmového připojení nebo intranetu, zobrazení stavu do odezvy pro telefonického uživatele můžete přidat několik sekund.
+Všechny ovládací prvky ASP.NET mohou volitelně uchovávat jejich stav do [stavu zobrazení](https://msdn.microsoft.com/msdnmag/issues/03/02/CuttingEdge/), který je serializován jako skryté pole formuláře ve vykresleném HTML. Ovládací prvky používají zobrazení stav, aby si zapamatovali jejich programově změněné stavy napříč zpětnými vazbami, jako jsou například data vázaná k datovému ovládacímu prvku webového ovládacího prvku. Přestože stav zobrazení povoluje, aby informace byly zapamatovatelné napříč zpětnými odesláními, zvyšuje velikost značek, které musí být odeslány klientovi a můžou vést k závažným dispozici determinističtějšíům stránek, pokud není úzce monitorováno. Data webové ovládací prvky, zejména ovládací prvek GridView, jsou zejména USTR pro přidání desítek dalších kilobajtů kódu na stránku. I když takový nárůst může být zanedbatelný pro uživatele se širokopásmovým přístupem nebo intranetem, může stav zobrazení prodloužit dobu odezvy pro uživatele telefonického připojení.
 
-Chcete-li zobrazit dopadu zobrazit stav, navštivte stránku v prohlížeči a zobrazte zdroj zaslaná z webové stránky (v Internet Exploreru přejděte do zobrazení nabídky a zvolte možnost zdroje). Můžete také zapnout [trasování stránek](https://msdn.microsoft.com/library/sfbfw58f.aspx) zobrazíte zobrazit stav přidělení používaný jednotlivými ovládacích prvků na stránce. Informace o stavu zobrazení je serializován ve skryté pole formuláře s názvem `__VIEWSTATE`, který je umístěn v `<div>` ihned za úvodní prvek `<form>` značky. Stav zobrazení je trvalý pouze když je webový formulář používá; Pokud vaše stránka technologie ASP.NET není `<form runat="server">` v jeho deklarativní syntaxe, nebude existovat `__VIEWSTATE` skrytého pole formuláře vykreslované značky.
+Chcete-li zobrazit dopad stavu zobrazení, přejděte na stránku v prohlížeči a potom zobrazte zdroj odeslaný webovou stránkou (v Internet Exploreru přejděte do nabídky Zobrazit a zvolte možnost zdroj). Můžete také zapnout [trasování stránky](https://msdn.microsoft.com/library/sfbfw58f.aspx) a zobrazit tak přidělení stavu zobrazení používaného jednotlivými ovládacími prvky na stránce. Informace o stavu zobrazení jsou serializovány ve skrytém poli formuláře s názvem `__VIEWSTATE`, umístěné v `<div>` elementu hned za otevírací `<form>` značku. Stav zobrazení je trvalý pouze v případě, že je použit webový formulář; Pokud stránka ASP.NET neobsahuje `<form runat="server">` ve své deklarativní syntaxi, nebude ve vykresleném kódu `__VIEWSTATE` skryté pole formuláře.
 
-`__VIEWSTATE` Pole formuláře, které jsou generované na hlavní stránce přidá přibližně 1 800 bajtů do generovaného kódu stránky. Tato další vyhledávání je třeba primárně na ovládacím prvku opakovače jako obsah ovládacího prvku SiteMapDataSource jsou zachované v zobrazení stavu. Při další 1 800 bajtů nemusí vypadat podobně jako v podstatě zažijte to nadšení, při použití GridView s mnoha záznamy a pole, můžete zobrazit stav snadno bobtnat faktorem 10 nebo více.
+Pole formuláře `__VIEWSTATE` vygenerované stránkou předlohy přidá zhruba 1 800 bajtů do vygenerovaného kódu stránky. Tato dodatečná dispozici determinističtější je způsobena hlavně ovládacím prvkem Repeater, protože obsah ovládacího prvku SiteMapDataSource je trvalý pro zobrazení stavu. I když se navíc 1 800 bajtů nemusí zdát, že při použití prvku GridView s mnoha poli a záznamy se může stát, že se stav zobrazení snadno Swell faktorem 10 nebo více.
 
-Stav zobrazení je zakázat na úrovni stránky nebo ovládacího prvku tak, že nastavíte `EnableViewState` vlastnost `False`, a tím snížit velikost vykreslované značky. Od stavu zobrazení dat webové ovládací prvek zachovává data vázaná na data webový ovládací prvek postbacků při zakázání stavu zobrazení dat ovládacího prvku webového data musí být vázán na každého zpětného odeslání. Ve verzi ASP.NET 1.x tuto odpovědnost klesl se na ramena vývojář; s prostředím ASP.NET 2.0 ale webových ovládacích prvcích dat se znovu připojit k jejich ovládací prvek zdroje dat při každém postbacku v případě potřeby.
+Stav zobrazení lze zakázat na úrovni stránky nebo ovládacího prvku nastavením vlastnosti `EnableViewState` na `False`, čímž se zmenší velikost vykresleného kódu. Vzhledem k tomu, že stav zobrazení webového ovládacího prvku data přechovává data vázaná na webový ovládací prvek dat napříč zpětnými vazbami, při zakázání stavu zobrazení webového ovládacího prvku data musí být data svázána s každým a každým zpětným voláním. V ASP.NET verze 1. x Tato zodpovědnost se snížila na plece vývojáře stránky; pomocí ASP.NET 2,0 však webové ovládací prvky pro data budou v případě potřeby znovu navazovat vazby na jejich ovládací prvek zdroje dat.
 
-Ke snížení stav zobrazení stránky umožňuje nastavit ovládacím prvku opakovače `EnableViewState` vlastnost `False`. To můžete udělat v okně Vlastnosti v Návrháři nebo deklarativně v zobrazení zdroje. Po provedení této změny by měl vypadat Repeater deklarativní:
+Chcete-li snížit stav zobrazení stránky, nastavte vlastnost `EnableViewState` ovládacího prvku Repeater na hodnotu `False`. To lze provést prostřednictvím okno Vlastnosti v Návrháři nebo deklarativně v zobrazení zdroje. Po provedení této změny by deklarativní označení Repeater mělo vypadat takto:
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample10.aspx)]
 
-Po této změně stránky pro vykreslení zobrazení, že má k pouhé zmenšit velikost stavu 52 bajtů, 97 % úspory v zobrazení stav velikost! V kurzech v celé této sérii budete Zakážeme stav zobrazení dat webové ovládací prvky ve výchozím nastavení za účelem snížení velikosti vykreslované značky. Ve většině z příkladů `EnableViewState` vlastnost bude nastavena na `False` a to všechno bez pozornost. Pouze čas zobrazení probereme stavu je ve scénářích, kde musí být povolená v pořadí dat webové řídit jeho očekávaný nakonfigurovánu.
+Po této změně se velikost stavového zobrazení stránky zmenší na pouhých 52 bajtů, což je 97% úspory ve velikosti zobrazení. V kurzech v celé této sérii zakážeme stav zobrazení webových ovládacích prvků dat ve výchozím nastavení, aby se snížila velikost vykresleného kódu. Ve většině příkladů se vlastnost `EnableViewState` nastaví na `False` a hotovo, takže bez zmínky. Jediný časový stav zobrazení bude popsán v tématu scénáře, kde musí být povoleno, aby webové ovládací prvky dat poskytovaly očekávané funkce.
 
 ## <a name="step-4-adding-breadcrumb-navigation"></a>Krok 4: Přidání navigace s popisem cesty
 
-K dokončení stránky předlohy, přidáme prvek uživatelského rozhraní navigace s popisem cesty na každou stránku. Tento navigační prvek určuje rychle zobrazuje uživatele své aktuální pozici v rámci hierarchie lokality. Přidání navigace s popisem cesty v technologii ASP.NET 2.0 je stejně jednoduché přidat ovládací prvky SiteMapPath ovládacího prvku na stránku. je potřeba žádný kód.
+Chcete-li dokončit stránku předlohy, přidejte na každou stránku element uživatelského rozhraní navigace s popisem cesty. Navigace s popisem cesty rychle zobrazuje uživatele aktuální pozice v rámci hierarchie lokality. Přidání cesty k navigaci v ASP.NET 2,0 je snadné přidat na stránku ovládací prvek SiteMapPath; není potřeba žádný kód.
 
-Pro náš web, přidejte tento ovládací prvek záhlaví `<div>`:
+Pro náš web přidejte tento ovládací prvek do záhlaví `<div>`:
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample11.aspx)]
 
-Tento navigační prvek určuje ukazuje aktuální stránku návštěvníků uživatele v hierarchii mapy webu a v dané lokalitě uzel mapy "předchůdce," úplně až po kořen (v našem mapy webu Home).
+Popis cesty znázorňuje aktuální stránku, na kterou se uživatel navštíví v hierarchii mapy webu, a také "předchůdce uzlu mapy lokality", a to až do kořene (domů) v mapě webu.
 
-![Zobrazí tento navigační prvek určuje aktuální stránku a namapujte jeho předchůdců v lokalitě hierarchie](master-pages-and-site-navigation-vb/_static/image28.png)
+![Navigace s popisem cesty zobrazuje aktuální stránku a její předchůdce v hierarchii mapy webu.](master-pages-and-site-navigation-vb/_static/image28.png)
 
-**Obrázek 12**: Zobrazí tento navigační prvek určuje aktuální stránku a namapujte jeho předchůdců v lokalitě hierarchie
+**Obrázek 12**: navigace s popisem cesty zobrazuje aktuální stránku a její předchůdce v hierarchii mapy webu.
 
-## <a name="step-5-adding-the-default-page-for-each-section"></a>Krok 5: Přidání výchozí stránky pro každý oddíl
+## <a name="step-5-adding-the-default-page-for-each-section"></a>Krok 5: přidání výchozí stránky pro každý oddíl
 
-Kurzy v našem webu jsou rozdělené do různých kategorií základní tvorbou sestav, filtrování, vlastní formátování, se složkou pro každou kategorii a odpovídající kurzy jako stránky technologie ASP.NET v rámci dané složky a tak dále. Kromě toho obsahuje každou složku `Default.aspx` stránky. Pro tuto výchozí stránku můžeme zobrazit všechny kurzy pro aktuální oddíl. To znamená pro `Default.aspx` v `BasicReporting` složky měli jsme odkazy na `SimpleDisplay.aspx`, `DeclarativeParams.aspx`, a `ProgrammaticParams.aspx`. Tady, znovu, můžete použít `SiteMap` třídy a data webový ovládací prvek pro zobrazení těchto informací na základě mapy webu definované v `Web.sitemap`.
+Kurzy na naší webu jsou rozdělené do různých kategorií základní vytváření sestav, filtrování, vlastní formátování atd. pomocí složky pro každou kategorii a odpovídajících kurzů jako ASP.NET stránky v této složce. Kromě toho každá složka obsahuje `Default.aspx` stránku. Pro tuto výchozí stránku zobrazíme všechny kurzy pro aktuální oddíl. To znamená, že pro `Default.aspx` ve složce `BasicReporting` máme odkazy na `SimpleDisplay.aspx`, `DeclarativeParams.aspx`a `ProgrammaticParams.aspx`. Zde je opět možné použít třídu `SiteMap` a datově datovou stránku k zobrazení těchto informací na základě mapy webu definované v `Web.sitemap`.
 
-Umožňuje zobrazit neuspořádaný seznam pomocí Repeateru znovu, tentokrát ale jsme vám zobrazit nadpis a popis v kurzech. Protože značek a kódu k dosažení tohoto musí zopakovat pro každý `Default.aspx` stránky, budeme zapouzdření tuto logiku uživatelského rozhraní [uživatelský ovládací prvek](https://msdn.microsoft.com/library/y6wb1a0e.aspx). Vytvořte složku na webu volá `UserControls` a přidejte do nové položky typu webový uživatelský ovládací prvek s názvem `SectionLevelTutorialListing.ascx`a přidejte následující kód:
+Pojďme znovu zobrazit neuspořádaný seznam s opakováním, ale tentokrát zobrazíme nadpis a popis kurzů. Vzhledem k tomu, že značky a kód, které mají být provedeny, bude nutné opakovat pro každou stránku `Default.aspx`, můžeme tuto logiku uživatelského rozhraní zapouzdřit do [uživatelského ovládacího prvku](https://msdn.microsoft.com/library/y6wb1a0e.aspx). Vytvořte složku na webu s názvem `UserControls` a přidejte do ní novou položku typu Webový uživatelský ovládací prvek s názvem `SectionLevelTutorialListing.ascx`a přidejte následující kód:
 
-[![Přidat nový uživatelský ovládací prvek webu do složky UserControls](master-pages-and-site-navigation-vb/_static/image30.png)](master-pages-and-site-navigation-vb/_static/image29.png)
+[![přidat nový webový uživatelský ovládací prvek do složky UserControls](master-pages-and-site-navigation-vb/_static/image30.png)](master-pages-and-site-navigation-vb/_static/image29.png)
 
-**Obrázek 13**: Přidat nový ovládací prvek uživatelské Web k `UserControls` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image31.png))
+**Obrázek 13**: Přidání nového webového uživatelského ovládacího prvku do složky `UserControls` ([kliknutím zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image31.png))
 
-SectionLevelTutorialListing.ascx
+SectionLevelTutorialListing. ascx
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample12.aspx)]
 
-SectionLevelTutorialListing.ascx.vb
+SectionLevelTutorialListing. ascx. vb
 
 [!code-vb[Main](master-pages-and-site-navigation-vb/samples/sample13.vb)]
 
-V předchozím příkladu Repeater jsme vázán `SiteMap` data Opakovači deklarativně; `SectionLevelTutorialListing` uživatelského ovládacího prvku, ale provádí se prostřednictvím kódu programu. V `Page_Load` obslužná rutina události, a zkontrolujte, že tato stránka s URL mapuje na uzel na mapě webu se provede kontrola. Pokud použijete tento uživatelský ovládací prvek na stránce, který nemá odpovídající `<siteMapNode>` položky `SiteMap.CurrentNode` vrátí `Nothing` a žádná data bude vázán k opakovače. Za předpokladu, že máme `CurrentNode`, můžeme vytvořit vazbu jeho `ChildNodes` kolekce opakovače. Vzhledem k tomu, že naše mapy webu je nastavený tak, aby `Default.aspx` stránka v každé části je nadřazený uzel všechny kurzy v této části, tento kód zobrazí odkazy a popisy všech kurzů v části, jak je znázorněno v níže uvedeném snímku obrazovky.
+V předchozím příkladu opakovače jsme data `SiteMap` do tohoto opakovače deklarativně naváže. Uživatelský ovládací prvek `SectionLevelTutorialListing` ale to provede programově. V obslužné rutině události `Page_Load` je provedena kontrola, která zajistí, že se tato stránka s adresou URL mapuje na uzel v mapě webu. Pokud se tento uživatelský ovládací prvek používá na stránce, která nemá odpovídající položku `<siteMapNode>`, `SiteMap.CurrentNode` vrátí `Nothing` a nebudou vázána žádná data na Repeater. Za předpokladu, že máme `CurrentNode`, navážeme svoji `ChildNodes` kolekci na Repeater. Vzhledem k tomu, že je naše mapa webu nastavená tak, aby byla stránka `Default.aspx` v každé části nadřazeným uzlem všech kurzů v rámci této části, bude tento kód zobrazovat odkazy a popisy všech kurzů v sekcích, jak je znázorněno na následujícím snímku obrazovky.
 
-Po vytvoření tohoto Repeater, otevřete `Default.aspx` stránky ve všech složek, přejděte do zobrazení návrhu a jednoduše přetáhněte uživatelského ovládacího prvku na návrhovou plochu v Průzkumníkovi řešení ve kterém chcete kurz seznamu se zobrazí.
+Po vytvoření tohoto opakovače otevřete `Default.aspx` stránky v každé složce, přejdete do zobrazení Návrh a jednoduše přetáhněte uživatelský ovládací prvek z Průzkumník řešení na návrhovou plochu, kde se má seznam kurzů zobrazit.
 
-[![Má uživatelský ovládací prvek byl přidán na stránku Default.aspx](master-pages-and-site-navigation-vb/_static/image33.png)](master-pages-and-site-navigation-vb/_static/image32.png)
+[![uživatelský ovládací prvek byl přidán do default. aspx.](master-pages-and-site-navigation-vb/_static/image33.png)](master-pages-and-site-navigation-vb/_static/image32.png)
 
-**Obrázek 14**: Má uživatelský ovládací prvek byl přidán do `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image34.png))
+**Obrázek 14**: uživatelský ovládací prvek byl přidán do `Default.aspx` ([kliknutím zobrazíte obrázek v plné velikosti).](master-pages-and-site-navigation-vb/_static/image34.png)
 
-[![Jsou uvedeny základní kurzy vytváření sestav](master-pages-and-site-navigation-vb/_static/image36.png)](master-pages-and-site-navigation-vb/_static/image35.png)
+[![jsou uvedeny základní kurzy vytváření sestav.](master-pages-and-site-navigation-vb/_static/image36.png)](master-pages-and-site-navigation-vb/_static/image35.png)
 
-**Obrázek 15**: Jsou uvedeny základní kurzy vytváření sestav ([kliknutím ji zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image37.png))
+**Obrázek 15**: uvádíme základní kurzy vytváření sestav ([kliknutím zobrazíte obrázek v plné velikosti).](master-pages-and-site-navigation-vb/_static/image37.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Mapa webu, který je definován a kompletní stránky předlohy teď máme konzistentní stránku rozložení a navigace schéma pro naše kurzy související s daty. Bez ohledu na to, kolik stránek se nám přidat na náš web aktualizace stránky webu informace navigace rozložení nebo webu je rychlý a jednoduchý proces z důvodu tyto informace se centralizované. Konkrétně informace o rozložení stránky je definován na hlavní stránce `Site.master` a lokality si namapují `Web.sitemap`. Neměli musíme napsat *jakékoli* kódu k dosažení tohoto mechanismu rozložení a navigace stránky webu a budeme uchovávat úplné WYSIWYG podpora návrháře v sadě Visual Studio.
+Po definování mapy webu a dokončení stránky předlohy teď máme konzistentní rozložení stránky a navigační schéma pro naše kurzy související s daty. Bez ohledu na to, kolik stránek do naší lokality přidáváme, aktualizujeme rozložení stránky nebo informace navigace na webu je rychlý a jednoduchý proces, protože tyto informace jsou centralizované. Konkrétně jsou informace o rozložení stránky definovány na stránce předlohy `Site.master` a mapě webu v `Web.sitemap`. Nemuseli jsme psát *žádný* kód pro dosažení tohoto rozložení stránky a navigační mechanismus pro celou lokalitu a zachováváme kompletní podporu návrháře WYSIWYG v aplikaci Visual Studio.
 
-Po dokončení vrstvy přístupu k datům a vrstvu obchodní logiky a potíže konzistentní stránku rozložení a navigace na webu definované, jsme připraveni začít s průzkumem běžných vzorů pro vytváření sestav. V následujících třech kurzech podíváme na základní úlohy vytváření sestav zobrazení dat načtených z knihoven BLL v ovládacích prvcích ovládacího prvku GridView, DetailsView a FormView.
+Po dokončení vrstvy přístupu k datům a vrstvy obchodní logiky a vytvoření konzistentního rozložení stránky a definování navigace na webu jsme připraveni začít zkoumat běžné vzory generování sestav. V následujících třech kurzech se podíváme na základní úlohy vytváření sestav zobrazující data získaná z knihoven BLL v ovládacích prvcích GridView, DetailsView a FormView.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
-- [Přehled ASP.NET hlavní stránky](https://msdn.microsoft.com/library/wtxbf3hh.aspx)
-- [Stránky předlohy v technologii ASP.NET 2.0](http://odetocode.com/Articles/419.aspx)
-- [Šablony ASP.NET 2.0 návrhu](https://msdn.microsoft.com/asp.net/reference/design/templates/default.aspx)
-- [Přehled navigace webu ASP.NET](https://msdn.microsoft.com/library/e468hxky.aspx)
-- [Zkoumání ASP.NET 2.0 je navigace na webu](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx)
-- [Funkce navigace 2.0 webu technologie ASP.NET](https://weblogs.asp.net/scottgu/archive/2005/11/20/431019.aspx)
-- [Principy stav zobrazení ASP.NET](https://msdn.microsoft.com/library/default.asp?url=/library/dnaspp/html/viewstate.asp)
-- [Postupy: Povolení trasování pro stránku ASP.NET](https://msdn.microsoft.com/library/94c55d08%28VS.80%29.aspx)
+- [ASP.NET hlavní stránky – přehled](https://msdn.microsoft.com/library/wtxbf3hh.aspx)
+- [Stránky předlohy v ASP.NET 2,0](http://odetocode.com/Articles/419.aspx)
+- [Šablony návrhu ASP.NET 2,0](https://msdn.microsoft.com/asp.net/reference/design/templates/default.aspx)
+- [Přehled navigace na webu ASP.NET](https://msdn.microsoft.com/library/e468hxky.aspx)
+- [Prověřování navigace na webu ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx)
+- [Navigační funkce lokality ASP.NET 2,0](https://weblogs.asp.net/scottgu/archive/2005/11/20/431019.aspx)
+- [Principy stavu zobrazení ASP.NET](https://msdn.microsoft.com/library/default.asp?url=/library/dnaspp/html/viewstate.asp)
+- [Postupy: povolení trasování pro stránku ASP.NET](https://msdn.microsoft.com/library/94c55d08%28VS.80%29.aspx)
 - [Uživatelské ovládací prvky ASP.NET](https://msdn.microsoft.com/library/y6wb1a0e.aspx)
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí revidující pro účely tohoto kurzu byly Liz Shulok, Dennis Patterson a Hilton Giesenow. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontroloři vedoucích k tomuto kurzu byli Liz Shulok, Dennis Patterson a Hilton Giesenow. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](creating-a-business-logic-layer-vb.md)

@@ -1,184 +1,184 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-cs
-title: Dva DropDownList (C#) filtrování záznamů Master/Detail | Dokumentace Microsoftu
+title: Filtrování hlavního/podrobného filtru se dvěma DropDownListC#() | Microsoft Docs
 author: rick-anderson
-description: Tento kurz rozšiřuje vztah záznamů master/detail přidat třetí vrstvou, pomocí dvou ovládacích prvků DropDownList a vyberte požadovaný nadřazený a dvě úrovně nadřazený recor...
+description: Tento kurz rozbalí vztah hlavní/podrobnosti a přidá třetí vrstvu pomocí dvou ovládacích prvků DropDownList pro výběr požadované nadřazené položky a Recor...
 ms.author: riande
 ms.date: 03/31/2010
 ms.assetid: ac4b0d77-4816-4ded-afd0-88dab667aedd
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 58ffa99cbe72b2789b8741a8c2378760c2f2c19c
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: e24b7f91d34fbce1676f7f28ebb7d23903157f7f
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134065"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74626180"
 ---
 # <a name="masterdetail-filtering-with-two-dropdownlists-c"></a>Filtrování hlavních záznamů / podrobností dvou ovládacích prvků DropDownList (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/6/3/463cf87c-4724-4cbc-b7b5-3f866f43ba50/ASPNET_Data_Tutorial_8_CS.exe) nebo [stahovat PDF](master-detail-filtering-with-two-dropdownlists-cs/_static/datatutorial08cs1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/4/6/3/463cf87c-4724-4cbc-b7b5-3f866f43ba50/ASPNET_Data_Tutorial_8_CS.exe) nebo [Stáhnout PDF](master-detail-filtering-with-two-dropdownlists-cs/_static/datatutorial08cs1.pdf)
 
-> Tento kurz rozšiřuje vztah záznamů master/detail přidat třetí vrstvou, pomocí dvou ovládacích prvků DropDownList a vyberte požadované záznamy nadřazený a dvě úrovně nadřazený.
+> Tento kurz rozšiřuje hlavní a podrobný vztah a přidá třetí vrstvu pomocí dvou ovládacích prvků DropDownList k výběru požadovaných nadřazených záznamů a.
 
 ## <a name="introduction"></a>Úvod
 
-V [předchozí kurz o službě](master-detail-filtering-with-a-dropdownlist-cs.md) jsme se zaměřili na způsob zobrazení jednoduché hlavních/podrobných sestavy pomocí jednoho DropDownList vyplní kategorií a GridView zobrazující těchto produktů, které patří do vybrané kategorie. Tento model sestavy dobře funguje při zobrazení záznamů, které mají vztah jeden mnoho a je možné snadno rozšířit pro scénáře, které zahrnují více vztahů jednoho k několika. Systém pro zadávání objednávek byste mít například tabulky, které odpovídají zákazníky, objednávky a položky řádku pořadí. Si daný zákazník může mít více příkazy se jednotlivé objednávky, který se skládá z více položek. Tato data lze zobrazit uživateli pomocí dvou DropDownLists a GridView. První DropDownList by mohlo mít položku seznamu pro každého zákazníka v databázi s druhým jeden z obsah se objednávek podle vybraného zákazníka. GridView by zobrazila seznam položky řádku z vybrané objednávky.
+V [předchozím kurzu](master-detail-filtering-with-a-dropdownlist-cs.md) jsme prozkoumali, jak zobrazit jednoduchou sestavu hlavní/podrobnosti pomocí jednoho prvku DropDownList naplněný pomocí kategorií a prvku GridView zobrazujícího tyto produkty, které patří do vybrané kategorie. Tento model sestavy funguje dobře při zobrazení záznamů, které mají relaci 1:1, a lze ji snadno rozšířit tak, aby fungovala v případě scénářů, které zahrnují více vztahů 1: n. Například systém záznamu objednávky by měl mít tabulky, které odpovídají zákazníkům, objednávkám a položkám řádků objednávky. Daný zákazník může mít více objednávek s jednotlivými objednávkami, které se skládají z několika položek. Taková data mohou být prezentována uživateli se dvěma DropDownList a GridView. První ovládací prvek DropDownList by měl položku seznamu pro každého zákazníka v databázi s obsahem druhé položky, který se nachází v objednávkách vybraných zákazníkem. Prvek GridView bude vypisovat položky řádku z vybraného pořadí.
 
-Když databázi Northwind zahrnout informace o canonical podrobnosti zákazníka objednávky v jeho `Customers`, `Orders`, a `Order Details` tabulek, tyto tabulky nejsou zachyceny v naší architektury. Nicméně jsme můžete stále ukazují pomocí dvou DropDownLists závislé. První DropDownList zobrazí seznam kategorií a druhá produkty, které patří do vybrané kategorie. DetailsView se potom zobrazí seznam podrobnosti vybraného produktu.
+I když databáze Northwind obsahuje informace o podrobnostech o zákaznících/objednávkách nebo objednávkách v tabulkách `Customers`, `Orders`a `Order Details`, nejsou tyto tabulky zachyceny v naší architektuře. Přesto můžeme i nadále ilustrovat použití dvou závislých ovládacích prvků DropDownList. První DropDownList zobrazí seznam kategorií a druhých produktů, které patří do vybrané kategorie. Prvek DetailsView pak zobrazí podrobnosti o vybraném produktu.
 
-## <a name="step-1-creating-and-populating-the-categories-dropdownlist"></a>Krok 1: Vytváří se a naplňuje DropDownList kategorie
+## <a name="step-1-creating-and-populating-the-categories-dropdownlist"></a>Krok 1: vytvoření a naplnění kategorie DropDownList
 
-Naším prvním cílem je přidání DropDownList, který obsahuje seznam kategorií. Tyto kroky se podrobně v předchozím kurzu, ale jsou tady shrnuté pro úplnost.
+Naším prvním cílem je přidat DropDownList, který obsahuje seznam kategorií. Tyto kroky byly podrobně prověřeny v předchozím kurzu, ale jsou zde shrnuty pro úplnost.
 
-Otevřít `MasterDetailsDetails.aspx` stránku `Filtering` DropDownList přidat na stránku nastavení složky, jeho `ID` vlastnost `Categories`a pak klikněte na odkaz Konfigurovat zdroj dat v jeho inteligentních značek. Z Průvodce konfigurací zdroje dat vyberte a přidejte nový zdroj dat.
+Otevřete stránku `MasterDetailsDetails.aspx` ve složce `Filtering`, přidejte na ni objekt DropDownList, nastavte jeho vlastnost `ID` na `Categories`a potom klikněte na odkaz konfigurace zdroje dat v jeho inteligentní značce. V Průvodci konfigurací zdroje dat vyberte možnost Přidat nový zdroj dat.
 
-[![Přidat nový zdroj dat pro DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image2.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image1.png)
+[![přidat nový zdroj dat pro DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image2.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image1.png)
 
-**Obrázek 1**: Přidat nový zdroj dat pro DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image3.png))
+**Obrázek 1**: Přidání nového zdroje dat pro DropDownList ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image3.png))
 
-Nový zdroj dat přirozeně, třeba prvku ObjectDataSource. Pojmenujte tento nový prvek ObjectDataSource `CategoriesDataSource` a jeho vyvolání `CategoriesBLL` objektu `GetCategories()` metody.
+Nový zdroj dat by měl být přirozeně prvkem ObjectDataSource. Pojmenujte tuto novou `CategoriesDataSource` ObjectDataSource a vyvolejte metodu `GetCategories()` `CategoriesBLL` objektu.
 
-[![Zvolte možnost použití třídy CategoriesBLL](master-detail-filtering-with-two-dropdownlists-cs/_static/image5.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image4.png)
+[![zvolit použití třídy CategoriesBLL](master-detail-filtering-with-two-dropdownlists-cs/_static/image5.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image4.png)
 
-**Obrázek 2**: Zvolte pro použití `CategoriesBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image6.png))
+**Obrázek 2**: vyberte, pokud chcete použít třídu `CategoriesBLL` ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-filtering-with-two-dropdownlists-cs/_static/image6.png)
 
-[![Konfigurace ObjectDataSource GetCategories() metody](master-detail-filtering-with-two-dropdownlists-cs/_static/image8.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image7.png)
+[![nakonfigurovat prvek ObjectDataSource pro použití metody GetCategories ()](master-detail-filtering-with-two-dropdownlists-cs/_static/image8.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image7.png)
 
-**Obrázek 3**: Konfigurace ObjectDataSource k použití `GetCategories()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image9.png))
+**Obrázek 3**: Konfigurace prvku ObjectDataSource pro použití metody `GetCategories()` ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image9.png))
 
-Po dokončení konfigurace ObjectDataSource stále potřebujeme k určení, které pole zdroje dat má být zobrazen v `Categories` DropDownList a který by měl být nakonfigurovaný jako hodnotu pro položku seznamu. Nastavte `CategoryName` pole jako zobrazení a `CategoryID` jako hodnotu pro každou položku seznamu.
+Po nakonfigurování prvku ObjectDataSource je stále potřeba určit, které pole zdroje dat by se mělo zobrazit v `Categories` DropDownList a které z nich má být nakonfigurováno jako hodnota pro položku seznamu. Nastavte pole `CategoryName` jako hodnotu zobrazení a `CategoryID` jako hodnotu pro každou položku seznamu.
 
-[![Mít zobrazení DropDownList CategoryName pole a CategoryID použijte jako hodnotu](master-detail-filtering-with-two-dropdownlists-cs/_static/image11.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image10.png)
+[![mají DropDownList zobrazit pole CategoryName a jako hodnotu použít CategoryID.](master-detail-filtering-with-two-dropdownlists-cs/_static/image11.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image10.png)
 
-**Obrázek 4**: Zobrazit DropDownList `CategoryName` pole a použití `CategoryID` jako hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image12.png))
+**Obrázek 4**: zobrazení pole `CategoryName` a použití `CategoryID` jako hodnoty ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image12.png)).
 
-V tuto chvíli máme ovládací prvek DropDownList (`Categories`), který je naplněný záznamy ze `Categories` tabulky. Když se uživatel rozhodne novou kategorii z DropDownList jsme vhodné zpětného odeslání dojde k aktualizaci produktu DropDownList, který chceme vytvořit v kroku 2. Proto zkontrolujte možnost povolit vlastnost AutoPostBack z `categories` společnosti DropDownList inteligentních značek.
+V tuto chvíli máme ovládací prvek DropDownList (`Categories`), který je naplněný záznamy z tabulky `Categories`. Když uživatel zvolí z DropDownList novou kategorii, chceme, aby se provedl postback, aby se aktualizovala vlastnost DropDownList produktu, kterou vytvoříme v kroku 2. Proto zaškrtněte možnost Povolit AutoPostBack z inteligentní značky `categories` DropDownList.
 
-[![Povolit vlastnost AutoPostBack pro kategorie DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image14.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image13.png)
+[![povolit AutoPostBack pro kategorie DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image14.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image13.png)
 
-**Obrázek 5**: Povolit vlastnost AutoPostBack pro `Categories` DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image15.png))
+**Obrázek 5**: povolení automatického zpětného odeslání pro `Categories` DropDownList ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image15.png))
 
-## <a name="step-2-displaying-the-selected-categorys-products-in-a-second-dropdownlist"></a>Krok 2: Zobrazení vybrané kategorie produktů v druhé DropDownList
+## <a name="step-2-displaying-the-selected-categorys-products-in-a-second-dropdownlist"></a>Krok 2: zobrazení produktů vybrané kategorie v druhém DropDownList
 
-S `Categories` DropDownList dokončeno, naším dalším krokem je zobrazíte DropDownList produktů, které patří do vybrané kategorie. K tomu přidat na stránku s názvem jiné DropDownList `ProductsByCategory`. Stejně jako u `Categories` DropDownList, vytvořte nový prvek ObjectDataSource pro `ProductsByCategory` DropDownList s názvem `ProductsByCategoryDataSource`.
+Po dokončení `Categories` DropDownList je dalším krokem zobrazení DropDownList produktů patřících do vybrané kategorie. Chcete-li to provést, přidejte do stránky s názvem `ProductsByCategory`další DropDownList. Stejně jako u `Categories` DropDownList vytvořte nový prvek ObjectDataSource pro `ProductsByCategory` DropDownList s názvem `ProductsByCategoryDataSource`.
 
-[![Přidat nový zdroj dat pro ProductsByCategory DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image17.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image16.png)
+[![přidat nový zdroj dat pro ProductsByCategory DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image17.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image16.png)
 
-**Obrázek 6**: Přidat nový zdroj dat pro `ProductsByCategory` DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image18.png))
+**Obrázek 6**: Přidání nového zdroje dat pro `ProductsByCategory` DropDownList ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image18.png))
 
-[![Vytvoření nového prvku ObjectDataSource s názvem ProductsByCategoryDataSource](master-detail-filtering-with-two-dropdownlists-cs/_static/image20.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image19.png)
+[![vytvořit nový prvek ObjectDataSource s názvem ProductsByCategoryDataSource](master-detail-filtering-with-two-dropdownlists-cs/_static/image20.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image19.png)
 
-**Obrázek 7**: Vytvoření nového prvku ObjectDataSource s názvem `ProductsByCategoryDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image21.png))
+**Obrázek 7**: vytvoření nového prvku ObjectDataSource s názvem `ProductsByCategoryDataSource` ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image21.png))
 
-Protože `ProductsByCategory` DropDownList musí zobrazit pouze tyto produkty, které patří do vybrané kategorie mají ObjectDataSource vyvolat `GetProductsByCategoryID(categoryID)` metody z `ProductsBLL` objektu.
+Vzhledem k tomu, že `ProductsByCategory` DropDownList potřebuje zobrazit pouze takové produkty patřící do vybrané kategorie, musí prvek ObjectDataSource vyvolat metodu `GetProductsByCategoryID(categoryID)` z objektu `ProductsBLL`.
 
-[![Zvolte možnost použití třídy ProductsBLL](master-detail-filtering-with-two-dropdownlists-cs/_static/image23.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image22.png)
+[![zvolit použití třídy ProductsBLL](master-detail-filtering-with-two-dropdownlists-cs/_static/image23.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image22.png)
 
-**Obrázek 8**: Zvolte pro použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image24.png))
+**Obrázek 8**: Volba použití třídy `ProductsBLL` ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image24.png))
 
-[![Konfigurace ObjectDataSource GetProductsByCategoryID(categoryID) metody](master-detail-filtering-with-two-dropdownlists-cs/_static/image26.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image25.png)
+[![nakonfigurovat prvek ObjectDataSource na použití metody GetProductsByCategoryID (KódKategorie)](master-detail-filtering-with-two-dropdownlists-cs/_static/image26.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image25.png)
 
-**Obrázek 9**: Konfigurace ObjectDataSource k použití `GetProductsByCategoryID(categoryID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image27.png))
+**Obrázek 9**: Konfigurace prvku ObjectDataSource pro použití metody `GetProductsByCategoryID(categoryID)` ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image27.png))
 
-V posledním kroku průvodce musíme určit hodnotu *`categoryID`* parametru. Přiřaďte tento parametr na vybranou položku z `Categories` DropDownList.
+V posledním kroku průvodce musíme zadat hodnotu parametru *`categoryID`* . Přiřaďte tento parametr vybrané položce z `Categories` DropDownList.
 
-[![Hodnota parametru categoryID načítat DropDownList kategorie](master-detail-filtering-with-two-dropdownlists-cs/_static/image29.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image28.png)
+[![načíst hodnotu parametru KódKategorie z kategorií DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image29.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image28.png)
 
-**Obrázek 10**: O přijetí změn *`categoryID`* hodnota parametru `Categories` DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image30.png))
+**Obrázek 10**: vyžádání hodnoty parametru *`categoryID`* z `Categories` DropDownList ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image30.png))
 
-Ovládacím prvkem ObjectDataSource nakonfigurované už jen zbývá k určení, jaké pole zdroje dat slouží k zobrazení a hodnotu položek DropDownList. Zobrazení `ProductName` pole a použít `ProductID` pole jako hodnotu.
+Po nakonfigurovaném prvku ObjectDataSource je vše ponecháno pro určení, která pole zdroje dat jsou použita pro zobrazení a hodnotu položek ovládacího prvku DropDownList. Zobrazte pole `ProductName` a jako hodnotu použijte pole `ProductID`.
 
-[![Zadejte pole zdroje dat použít pro Text položky DropDownList ListItems' a hodnota vlastnosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image32.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image31.png)
+[![zadejte pole zdroje dat, která se použijí pro vlastnosti text a hodnota ovládacího prvku ListItems.](master-detail-filtering-with-two-dropdownlists-cs/_static/image32.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image31.png)
 
-**Obrázek 11**: Zadejte pole zdroj dat použít pro DropDownList `ListItem` s " `Text` a `Value` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image33.png))
+**Obrázek 11**: Určete pole zdroje dat, která se používají pro vlastnosti `ListItem` s a `Value` ovládacího prvku pro `Text` ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image33.png)).
 
-Ovládacím prvkem ObjectDataSource a `ProductsByCategory` DropDownList nakonfigurované naší stránce se zobrazí dvě DropDownLists: první zobrazí seznam všech kategorií během druhého, zobrazí se seznam těchto produktů, které patří do vybrané kategorie. Když uživatel vybere z první DropDownList novou kategorii, bude následovat zpětné volání a druhý DropDownList bude odrážejí, zobrazuje tyto produkty, které patří do nově vybranou kategorii. Obrázky 12 a 13 zobrazit `MasterDetailsDetails.aspx` v akci při prohlížení prostřednictvím prohlížeče.
+Pomocí ovládacího prvku ObjectDataSource a `ProductsByCategory` DropDownList nakonfigurovaného na naší stránce se zobrazí dvě DropDownList: první zobrazí seznam všech kategorií, zatímco druhá bude obsahovat tyto produkty patřící do vybrané kategorie. Když uživatel vybere novou kategorii z prvního DropDownList, postback se následovat a druhý objekt DropDownList se znovu sváže a zobrazí se tyto produkty, které patří do nově vybrané kategorie. Obrázky 12 a 13 ukazují `MasterDetailsDetails.aspx` v akci při prohlížení v prohlížeči.
 
-[![Při první návštěvě stránky, je vybrané kategorie Nápoje](master-detail-filtering-with-two-dropdownlists-cs/_static/image35.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image34.png)
+[![při první návštěvě stránky se vybere kategorie nápoje.](master-detail-filtering-with-two-dropdownlists-cs/_static/image35.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image34.png)
 
-**Obrázek 12**: Při první návštěvě stránky, je vybrané kategorie nápoje ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image36.png))
+**Obrázek 12**: když poprvé navštívíte stránku, vybere se kategorie nápoje ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-filtering-with-two-dropdownlists-cs/_static/image36.png)
 
-[![Výběr obsahuje jinou kategorii zobrazí nové kategorie produktů](master-detail-filtering-with-two-dropdownlists-cs/_static/image38.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image37.png)
+[![výběru jiné kategorie zobrazí produkty nové kategorie.](master-detail-filtering-with-two-dropdownlists-cs/_static/image38.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image37.png)
 
-**Obrázek 13**: Výběr různé kategorie zobrazuje nové kategorie produktů ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image39.png))
+**Obrázek 13**: volba jiné kategorie zobrazuje produkty nové kategorie ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-filtering-with-two-dropdownlists-cs/_static/image39.png)
 
-Aktuálně `productsByCategory` DropDownList, když se změní, nemá *není* vyvolávají zpětné odeslání. Nicméně se chceme zpětného odeslání dojde k po přidáme prvku DetailsView. Chcete-li zobrazit podrobnosti o vybrané produktu (krok 3). Proto, zaškrtněte políčko Povolit vlastnost AutoPostBack z `productsByCategory` společnosti DropDownList inteligentních značek.
+V současné době `productsByCategory` DropDownList při změně *nezpůsobí* postback. Budeme ale chtít, aby po přidání ovládacího prvku DetailsView k zobrazení podrobností vybraného produktu (krok 3) bylo provedeno zpětné odeslání. Proto zaškrtněte políčko Povolit automatické odeslání z inteligentní značky `productsByCategory` DropDownList.
 
-[![Povolit vlastnost AutoPostBack funkci pro productsByCategory DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image41.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image40.png)
+[![povolit funkci automatického odeslání pro productsByCategory DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image41.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image40.png)
 
-**Obrázek 14**: Povolit vlastnost AutoPostBack funkci pro `productsByCategory` DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image42.png))
+**Obrázek 14**: povolení funkce AutoPostBack pro `productsByCategory` DropDownList ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image42.png))
 
-## <a name="step-3-using-a-detailsview-to-display-details-for-the-selected-product"></a>Krok 3: Chcete-li zobrazit podrobnosti pro vybraný produkt pomocí DetailsView
+## <a name="step-3-using-a-detailsview-to-display-details-for-the-selected-product"></a>Krok 3: použití ovládacího prvku DetailsView k zobrazení podrobností pro vybraný produkt
 
-Posledním krokem je chcete zobrazit podrobnosti pro vybraný produkt v DetailsView. Chcete-li DetailsView dosáhnout, přidat na stránku, nastavte jeho `ID` vlastnost `ProductDetails`a vytvoří se pro ni nového prvku ObjectDataSource. Konfigurace tohoto prvku ObjectDataSource přebírat jeho data ze `ProductsBLL` třídy `GetProductByProductID(productID)` metodu pomocí vybrané hodnotě objektu `ProductsByCategory` DropDownList pro hodnotu vlastnosti *`productID`* parametru.
+Posledním krokem je zobrazit podrobnosti o vybraném produktu v ovládacím prvku DetailsView. Chcete-li to provést, přidejte prvek DetailsView na stránku, nastavte jeho vlastnost `ID` na `ProductDetails`a vytvořte pro něj nový prvek ObjectDataSource. Nakonfigurujte tento prvek ObjectDataSource tak, aby načetl data z metody `GetProductByProductID(productID)` `ProductsBLL` třídy pomocí vybrané hodnoty `ProductsByCategory` DropDownList pro hodnotu parametru *`productID`* .
 
-[![Zvolte možnost použití třídy ProductsBLL](master-detail-filtering-with-two-dropdownlists-cs/_static/image44.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image43.png)
+[![zvolit použití třídy ProductsBLL](master-detail-filtering-with-two-dropdownlists-cs/_static/image44.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image43.png)
 
-**Obrázek 15**: Zvolte pro použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image45.png))
+**Obrázek 15**: vyberte, pokud chcete použít třídu `ProductsBLL` ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-filtering-with-two-dropdownlists-cs/_static/image45.png)
 
-[![Konfigurace ObjectDataSource GetProductByProductID(productID) metody](master-detail-filtering-with-two-dropdownlists-cs/_static/image47.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image46.png)
+[![nakonfigurovat prvek ObjectDataSource na použití metody GetProductByProductID (productID)](master-detail-filtering-with-two-dropdownlists-cs/_static/image47.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image46.png)
 
-**Obrázek 16**: Konfigurace ObjectDataSource k použití `GetProductByProductID(productID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image48.png))
+**Obrázek 16**: Konfigurace prvku ObjectDataSource pro použití metody `GetProductByProductID(productID)` ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image48.png))
 
-[![Hodnota parametru productID načítat ProductsByCategory DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image50.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image49.png)
+[![načíst hodnotu parametru productID z ProductsByCategory DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image50.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image49.png)
 
-**Obrázek 17**: O přijetí změn *`productID`* hodnota parametru `ProductsByCategory` DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image51.png))
+**Obrázek 17**: vyžádání hodnoty parametru *`productID`* z `ProductsByCategory` DropDownList ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image51.png))
 
-Můžete zobrazit všechna dostupná pole v ovládacím prvku DetailsView. Jste se rozhodli odebrat `ProductID`, `SupplierID`, a `CategoryID` polí a pořadí změníte a ve formátu zbývající pole. Kromě toho vymaže na ovládacím prvku DetailsView `Height` a `Width` vlastnosti, povolení prvku DetailsView rozbalte šířce potřebné k nejlepšího zobrazení jeho data, namísto nutnosti omezené na zadané velikosti. Úplný kód se zobrazí níže:
+Můžete zvolit zobrazení libovolného z dostupných polí v ovládacím prvku DetailsView. Rozhodli jste se odebrat pole `ProductID`, `SupplierID`a `CategoryID` a změnit jejich pořadí a formátování zbývajících polí. Kromě toho jsem vymazal vlastnosti `Height` a `Width` ovládacího prvku DetailsView, což umožňuje, aby se ovládací prvek DetailsView rozšířil na šířku potřebnou k tomu, aby se co nejlépe zobrazovala data, místo omezení na zadanou velikost. Zobrazí se úplné označení níže:
 
 [!code-aspx[Main](master-detail-filtering-with-two-dropdownlists-cs/samples/sample1.aspx)]
 
-Za chvíli si vyzkoušet `MasterDetailsDetails.aspx` stránku v prohlížeči. Na první pohled může zdát, že vše funguje podle potřeby, ale je nějaký drobný problém. Pokud zvolíte novou kategorii `ProductsByCategory` DropDownList je aktualizováno, aby zahrnovalo tyto produkty pro vybrané kategorie, ale `ProductDetails` DetailsView nadále zobrazit předchozí informace o produktu. Ovládacím prvku DetailsView aktualizuje, když zvolíte jiný produkt pro vybranou kategorii. Kromě toho pokud dostatečně důkladně otestujte budete zjistíte, že pokud se rozhodnete průběžně nové kategorie (jako je například výběr nápoje z `Categories` DropDownList produkty koření, a potom Confections) každý výběr kategorie způsobí, že `ProductDetails`DetailsView aktualizovat.
+Chvíli si vyzkoušíte `MasterDetailsDetails.aspx` stránku v prohlížeči. Na první pohled se může zdát, že vše funguje podle potřeby, ale je to drobný problém. Když zvolíte novou kategorii, `ProductsByCategory` DropDownList se aktualizuje tak, aby obsahovala tyto produkty pro vybranou kategorii, ale v `ProductDetails` DetailsView pokračovala možnost Zobrazit předchozí informace o produktu. Prvek DetailsView je aktualizován při výběru jiného produktu pro vybranou kategorii. Pokud se navíc důkladně otestujete, zjistíte, že pokud průběžně vyberete nové kategorie (například zvolíte nápoje z `Categories` DropDownList, potom se Confections) každý další výběr kategorie způsobí, že se `ProductDetails` prvek DetailsView aktualizuje.
 
-Abyste tento problém konkretizovat, Podívejme se na konkrétní příklad. Při první návštěvě stránky vybrané kategorie Nápoje a související produkty jsou načteny v `ProductsByCategory` DropDownList. Chai je vybraný produkt a jeho podrobnosti jsou zobrazeny v `ProductDetails` DetailsView, jak ukazuje obrázek 18.
+Abychom vám pomohli tento problém konkretizovat, Podívejme se na konkrétní příklad. Při první návštěvě stránky vyberte kategorii nápoje a související produkty se načtou v `ProductsByCategory` DropDownList. Možnost Chai je vybraný produkt a jeho podrobnosti se zobrazí v prvku `ProductDetails` DetailsView, jak je znázorněno na obrázku 18.
 
-[![Podrobnosti o vybrané produktu jsou zobrazeny v DetailsView](master-detail-filtering-with-two-dropdownlists-cs/_static/image53.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image52.png)
+[![podrobnosti vybraného produktu se zobrazí v ovládacím prvku DetailsView.](master-detail-filtering-with-two-dropdownlists-cs/_static/image53.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image52.png)
 
-**Obrázek 18**: Podrobnosti o vybrané produktu jsou zobrazeny v DetailsView ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image54.png))
+**Obrázek 18**: informace o vybraném produktu se zobrazí v prvku DetailsView ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image54.png)).
 
-Pokud změníte výběr kategorie z nápoje produkty koření, dojde k zpětné volání a `ProductsByCategory` DropDownList se podle nich aktualizuje, ale ovládacím prvku DetailsView stále zobrazuje podrobnosti pro Chai.
+Změníte-li výběr kategorie z nápojů na koření, dojde k postbacku a odpovídajícím způsobem `ProductsByCategory` DropDownList. ovládací prvek DetailsView stále zobrazuje podrobnosti o Chai.
 
-[![Podrobnosti o dříve vybrané produktu jsou pořád zobrazuje](master-detail-filtering-with-two-dropdownlists-cs/_static/image56.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image55.png)
+[![se stále zobrazují podrobnosti o dříve vybraném produktu.](master-detail-filtering-with-two-dropdownlists-cs/_static/image56.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image55.png)
 
-**Obrázek 19**: Podrobnosti o dříve vybrané produktu jsou pořád zobrazuje ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image57.png))
+**Obrázek 19**: stále se zobrazují podrobnosti o dříve vybraném produktu ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-filtering-with-two-dropdownlists-cs/_static/image57.png)
 
-Výběr nového produktu v seznamu aktualizuje ovládacím prvku DetailsView podle očekávání. Pokud vyberete novou kategorii po změně produktu, nebude aktualizovat znovu ovládacím prvku DetailsView. Pokud místo výběru nového produktu vyberete novou kategorii, by aktualizovat ovládacím prvku DetailsView. V celém světě k čemu tady?
+Výběr nového produktu ze seznamu aktualizuje prvek DetailsView podle očekávání. Pokud po změně produktu vyberete novou kategorii, prvek DetailsView se znovu neaktualizuje. Pokud se ale místo výběru nového produktu, který jste vybrali v nové kategorii, aktualizuje prvek DetailsView. Co na světě prochází?
 
-Problém je časování životního cyklu stránky. Na stránce je vždy, když požadovaného že pokračuje několika kroky jako jeho vykreslování. V jednom z těchto kroků ObjectDataSource řídí zkontrolujte, zda má některý jejich `SelectParameters` změní hodnoty. Pokud tedy ovládací prvek webových dat vázány na ObjectDataSource ví, že je nutné aktualizovat zobrazení. Například když novou kategorii je vybrali, `ProductsByCategoryDataSource` ObjectDataSource zjistí, že došlo ke změně jeho hodnoty parametrů a `ProductsByCategory` DropDownList znovu připojí, získávání produkty pro vybrané kategorie.
+Jedná se o problém s časováním v životním cyklu stránky. Pokaždé, když je vyžádána stránka, pokračuje pomocí několika kroků v průběhu jejího vykreslování. V jednom z těchto kroků ovládací prvky ObjectDataSource kontrolují, aby se zobrazily, zda se změnily některé `SelectParameters` hodnoty. Pokud ano, webové ovládací prvky dat svázané s ovládacím prvkem ObjectDataSource ví, že je potřeba aktualizovat svůj displej. Například když je vybrána nová kategorie, `ProductsByCategoryDataSource` prvek ObjectDataSource zjistí, že došlo ke změně hodnot parametrů, a `ProductsByCategory` DropDownList se znovu sváže a získá produkty pro vybranou kategorii.
 
-Problém, který nastane v takové situaci je, že dojde k časovému životního cyklu stránky, která ObjectDataSources vyhledat změněné parametry *před* obnovení vazeb přidružená data webové ovládací prvky. Proto se při výběru nové kategorie `ProductsByCategoryDataSource` ObjectDataSource zjistí změnu v hodnotě její parametr. Prvek ObjectDataSource používá `ProductDetails` DetailsView, ale nebude mějte na paměti tyto změny protože `ProductsByCategory` DropDownList ještě musíme být znovu připojeno. Dále v životní cyklus `ProductsByCategory` DropDownList znovu připojí k jeho ObjectDataSource uchopíte jeho produkty pro nově vybranou kategorii. Zatímco `ProductsByCategory` DropDownList hodnota změnila, `ProductDetails` ObjectDataSource ovládacího prvku DetailsView již provedla kontrola hodnoty jeho parametrů; proto ovládacím prvku DetailsView zobrazí jeho předchozí výsledky. Tato interakce je znázorněno na obrázku 20.
+Problém, který vzniká v této situaci, je, že bod v životním cyklu stránky, ke kterému se kontroluje změny, nastávají *před změnou* vazby přidružených webových ovládacích prvků dat. Proto při výběru nové kategorie `ProductsByCategoryDataSource` prvek ObjectDataSource zjistí změnu hodnoty jeho parametru. Prvek ObjectDataSource, který je použit ovládacím prvkem `ProductDetails` DetailsView, však tyto změny neprojeví, protože je ještě převázána `ProductsByCategory` DropDownList. Později v životním cyklu se `ProductsByCategory` DropDownList znovu váže ke svému prvku ObjectDataSource a přebírá produkty pro nově vybranou kategorii. I když se změní hodnota `ProductsByCategory` DropDownList, prvek ObjectDataSource prvku `ProductDetails` DetailsView již dokončil kontrolu hodnoty parametru; Proto DetailsView zobrazí předchozí výsledky. Tato interakce je znázorněna na obrázku 20.
 
-[![Po prvku ProductDetails DetailsView ObjectDataSource kontroluje změny při změně hodnoty ProductsByCategory DropDownList](master-detail-filtering-with-two-dropdownlists-cs/_static/image59.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image58.png)
+[![změny hodnoty DropDownList ovládacího prvku ProductsByCategory poté, co ovládací prvek ObjectDataSource prvku ProductDetails DetailsView vrátí změny](master-detail-filtering-with-two-dropdownlists-cs/_static/image59.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image58.png)
 
-**Obrázek 20**: `ProductsByCategory` DropDownList hodnotu změny po `ProductDetails` ovládacího prvku DetailsView ObjectDataSource kontroluje změny při ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image60.png))
+**Obrázek 20**: hodnota `ProductsByCategory` DropDownList se mění po kontrole změn v ovládacím prvku `ProductDetails` DetailsView ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-filtering-with-two-dropdownlists-cs/_static/image60.png)
 
-Quota.MD potřebujeme explicitně znovu připojit `ProductDetails` DetailsView po `ProductsByCategory` DropDownList byla svázána. Jsme toho dosáhli voláním `ProductDetails` ovládacího prvku DetailsView `DataBind()` metoda při `ProductsByCategory` společnosti DropDownList `DataBound` dojde k aktivaci události. Přidejte následující kód obslužné rutiny událostí, který `MasterDetailsDetails.aspx` třídy modelu code-behind stránky (odkazovat "[programové nastavení hodnot parametru ObjectDataSource](../basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-cs.md)" informace o tom, jak přidat obslužnou rutinu události):
+Chcete-li tento problém napravit, je nutné explicitně znovu svázat prvek `ProductDetails` DetailsView poté, co byla vytvořena vazba `ProductsByCategory` DropDownList. To můžeme provést voláním metody `DataBind()` `ProductDetails` DetailsView, když se aktivuje událost `DataBound` `ProductsByCategory` DropDownList. Přidejte následující kód obslužné rutiny události do třídy kódu na pozadí `MasterDetailsDetails.aspx` stránky (viz téma "[programové nastavení hodnot parametru ObjectDataSource](../basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-cs.md)" pro diskuzi o tom, jak přidat obslužnou rutinu události):
 
 [!code-csharp[Main](master-detail-filtering-with-two-dropdownlists-cs/samples/sample2.cs)]
 
-Po tomto explicitní volání konstruktoru `ProductDetails` ovládacího prvku DetailsView `DataBind()` metoda byla přidána, tento kurz pracuje podle očekávání. Obrázek 21 stručný přehled, jak toto nastavení změnit napravit naše starší problémy.
+Po přidání tohoto explicitního volání metody `DataBind()` prvku `ProductDetails` DetailsView se v kurzu pracuje podle očekávání. Obrázek 21 ukazuje, jak tato změna prostala vyřešená předchozí problém.
 
-[![Prvek ProductDetails DetailsView je dojde k aktivaci události explicitně aktualizují při the ProductsByCategory DropDownList vaší datové vazby](master-detail-filtering-with-two-dropdownlists-cs/_static/image62.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image61.png)
+[![prvku DetailsView ProductDetails se explicitně aktualizuje, když se aktivuje událost DataBound ovládacího prvku ProductsByCategory.](master-detail-filtering-with-two-dropdownlists-cs/_static/image62.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image61.png)
 
-**Obrázek 21**: `ProductDetails` DetailsView je explicitně aktualizují při `ProductsByCategory` společnosti DropDownList `DataBound` dojde k aktivaci události ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image63.png))
+**Obrázek 21**: `ProductDetails` DetailsView se explicitně aktualizuje, když se aktivuje událost `DataBound` `ProductsByCategory` DropDownList ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-cs/_static/image63.png)).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-DropDownList slouží jako element ideální uživatelské rozhraní pro sestavy záznamů master/detail níž se nachází vztah jeden mnoho mezi záznamy a podrobností. V předchozím kurzu jsme viděli, jak použít jeden DropDownList k filtrování produktů zobrazí vybranou kategorii. V tomto kurzu jsme nahradit GridView produkty ovládacím prvkem DropDownList a DetailsView slouží k zobrazení podrobností vybranému produktu. Principy probírané v tomto kurzu je možné snadno rozšířit na datové modely zahrnující více vztahů jednoho k několika, jako je například zákazníky, objednávky a pořadí položek. Obecně platí můžete vždy přidat DropDownList u každé z "jedna" entit u vztahů jednoho k několika.
+DropDownList slouží jako ideální prvek uživatelského rozhraní pro sestavy hlavních a podrobností, kde existuje vztah 1:1 mezi hlavními a podrobnými záznamy. V předchozím kurzu jsme viděli, jak použít jeden objekt DropDownList k filtrování produktů zobrazených ve vybrané kategorii. V tomto kurzu jsme nahradili prvku GridView v produktech pomocí ovládacího prvku DropDownList a použili prvek DetailsView k zobrazení podrobností o vybraném produktu. Koncepty popsané v tomto kurzu lze snadno rozšířit na datové modely zahrnující více relací 1:1, jako jsou například zákazníci, objednávky a položky objednávek. Obecně platí, že vždy můžete přidat DropDownList pro každou entitu "jedna" v relaci 1: n.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Hilton Giesenow. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontrolor pro tento kurz byl Hilton Giesenow. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](master-detail-filtering-with-a-dropdownlist-cs.md)
-> [další](master-detail-filtering-across-two-pages-cs.md)
+> [Další](master-detail-filtering-across-two-pages-cs.md)

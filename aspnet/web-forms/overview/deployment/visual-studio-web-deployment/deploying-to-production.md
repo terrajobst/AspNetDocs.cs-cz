@@ -1,298 +1,298 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
-title: 'Nasazení webu ASP.NET pomocí sady Visual Studio: Nasazení do produkčního prostředí | Dokumentace Microsoftu'
+title: 'ASP.NET nasazení webu pomocí sady Visual Studio: nasazení do produkčního prostředí | Microsoft Docs'
 author: tdykstra
-description: V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, podle usin...
+description: V této sérii kurzů se dozvíte, jak nasadit (publikovat) webovou aplikaci ASP.NET, která bude Azure App Service Web Apps nebo poskytovateli hostingu třetí strany, pomocí usin...
 ms.author: riande
 ms.date: 02/15/2013
 ms.assetid: 416438a1-3b2f-4d27-bf53-6b76223c33bf
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: b9c4a4d035c78b4f4c53942219ccfa3048c7a82b
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: ddc3d15f0436c4c3a24491cf0377111768da67df
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133809"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74617646"
 ---
-# <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Nasazení do produkčního prostředí
+# <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>ASP.NET nasazení webu pomocí sady Visual Studio: nasazení do produkčního prostředí
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-[Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
+[Stáhnout počáteční projekt](https://go.microsoft.com/fwlink/p/?LinkId=282627)
 
-> V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, s použitím sady Visual Studio 2012 nebo Visual Studio 2010. Informace o této sérii, naleznete v tématu [z prvního kurzu této série](introduction.md).
+> V této sérii kurzů se dozvíte, jak nasadit (publikovat) webovou aplikaci ASP.NET, která umožňuje Azure App Service Web Apps nebo poskytovateli hostingu třetí strany, pomocí sady Visual Studio 2012 nebo Visual Studio 2010. Informace o řadě najdete v [prvním kurzu v řadě](introduction.md).
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu nastavte si účet Microsoft Azure, vytvořte přípravného a produkčního prostředí a nasazení webové aplikace ASP.NET v přípravném a produkčním prostředí pomocí sady Visual Studio jedním kliknutím publikování funkce.
+V tomto kurzu nastavíte Microsoft Azure účet, vytvoříte pracovní a produkční prostředí a nasadíte webovou aplikaci v ASP.NET do pracovního a produkčního prostředí pomocí funkce publikování jedním kliknutím sady Visual Studio.
 
-Pokud dáváte přednost, můžete nasadit do poskytovatele hostitelských služeb třetích stran. Většinu postupů popsaných v tomto kurzu jsou stejné pro poskytovatele hostingu nebo pro Azure, s tím rozdílem, že každý poskytovatel má své vlastní uživatelské rozhraní pro správu účtu a webové stránky. Můžete najít v poskytovateli hostingu [Galerie zprostředkovatelů](https://www.microsoft.com/web/hosting) na webu Microsoft.com.
+Pokud chcete, můžete nasadit poskytovatele hostingu třetí strany. Většina postupů popsaných v tomto kurzu je stejná pro poskytovatele hostingu nebo pro Azure, s tím rozdílem, že každý zprostředkovatel má vlastní uživatelské rozhraní pro účet a správu webu. Poskytovatele hostingu můžete najít v [galerii poskytovatelů](https://www.microsoft.com/web/hosting) na webu Microsoft.com.
 
-Připomenutí: Pokud se zobrazí chybová zpráva nebo něco nefunguje tak, jak absolvovat kurz, nezapomeňte se podívat na stránce o řešení problémů v této sérii kurzů.
+Připomenutí: Pokud se zobrazí chybová zpráva nebo něco nefunguje při procházení kurzu, nezapomeňte na stránce věnované řešení potíží v této sérii kurzů.
 
 ## <a name="get-a-microsoft-azure-account"></a>Získat účet Microsoft Azure
 
-Pokud ještě nemáte účet Azure, můžete během několika minut vytvořit Bezplatný zkušební účet. Podrobnosti najdete v tématu [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/free/?WT.mc_id=A443DD604).
+Pokud ještě nemáte účet Azure, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [bezplatná zkušební verze Azure](https://azure.microsoft.com/free/?WT.mc_id=A443DD604).
 
-## <a name="create-a-staging-environment"></a>Vytvořit testovací prostředí
-
-> [!NOTE]
-> Protože v tomto kurzu byla zapsána, Azure App Service přidali novou funkci k automatizaci mnoha procesy pro vytvoření přípravného a produkčního prostředí. Zobrazit [nastavení přípravných prostředí pro web apps ve službě Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-staged-publishing/).
-
-Jak je vysvětleno v [nasadit testovací prostředí, najdete v kurzu](deploying-to-iis.md), nejvíce spolehlivé testovací prostředí je webová stránka na poskytovatele hostingu, který má stejně jako webové pracoviště. V mnoha poskytovatelé hostingu byste museli zvážit výhody tohoto proti významné další poplatky, ale v Azure můžete vytvořit další bezplatná webová aplikace jako pracovní aplikace. Budete potřebovat databázi a další výdaje za, která přes výdaje provozní databáze bude mít buď žádný nebo minimální. V Azure platíte velikost úložiště databáze, které používáte, a nikoli pro každou databázi, a bude minimální velikost dalšího úložiště, které budete používat v testovacím prostředí.
-
-Jak je vysvětleno v [nasadit do testovacího prostředí kurzu](deploying-to-iis.md), do pracovního a produkčního prostředí se chystáte nasadit do jedné databáze dvě databáze. Pokud byste chtěli je oddělit, proces by stejné s tím rozdílem, že vytvoříte další databáze pro jednotlivá prostředí a vyberete řetězec správné cíl pro každou databázi, když vytvoříte profil publikování.
-
-V této části kurzu vytvoříte webovou aplikaci a databázi pro testovací prostředí, a budete nasazení do přípravného prostředí a testování existuje ještě před vytvořením a nasazením do produkčního prostředí.
+## <a name="create-a-staging-environment"></a>Vytvoření přípravného prostředí
 
 > [!NOTE]
-> Následující kroky ukazují, jak vytvořit webovou aplikaci ve službě Azure App Service pomocí portálu pro správu Azure. V nejnovější verzi sady Azure SDK můžete také provést bez opuštění sady Visual Studio pomocí Průzkumníka serveru. V sadě Visual Studio 2013 můžete také vytvořit webovou aplikaci přímo z dialogového okna pro publikování. Další informace najdete v tématu [vytvoření webové aplikace ASP.NET ve službě Azure App Service.](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)
+> Od napsání tohoto kurzu Azure App Service přidat novou funkci pro automatizaci mnoha procesů pro vytváření pracovních a produkčních prostředí. Viz [Nastavení přípravného prostředí pro webové aplikace v Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-staged-publishing/).
 
-1. V [portálu pro správu Azure](https://manage.windowsazure.com/), klikněte na tlačítko **Websites**a potom klikněte na tlačítko **nový**.
-2. Klikněte na tlačítko **webu**a potom klikněte na tlačítko **vytvořit vlastní**.
+Jak je vysvětleno v [kurzu nasazení do testovacího prostředí](deploying-to-iis.md), nejspolehlivější testovací prostředí je web na poskytovateli hostingu, který je stejně jako produkční Web. U mnoha poskytovatelů hostingu byste si museli zvážit výhody těchto výhod s významnými dodatečnými náklady, ale v Azure můžete vytvořit další bezplatnou webovou aplikaci jako svou pracovní aplikaci. Potřebujete také databázi a další výdaje za to, že náklady na provozní databázi budou být buď žádné, nebo minimální. V Azure platíte za velikost databázového úložiště, které místo pro každou databázi použijete, a množství dalšího úložiště, které budete používat v pracovním prostoru, bude minimální.
 
-    **Nový - vytvořit vlastní web** otevře se průvodce. **Vytvořit vlastní** Průvodce vám umožní vytvořit webovou stránku a databází ve stejnou dobu.
-3. V **vytvořit web** kroku v průvodci zadat řetězec **adresy URL** pole použít jako jedinečná adresa URL pro vaši aplikaci prvku přípravného prostředí. Zadejte například ContosoUniversity-staging123 (včetně náhodných čísel na konci pro zajištění jeho jedinečnosti v případě, že se používá ContosoUniversity pracovní).
+Jak je vysvětleno v [kurzu nasazení do testovacího prostředí](deploying-to-iis.md), v části fázování a výroba budete nasazovat své dvě databáze do jedné databáze. Pokud jste si chtěli ponechat oddělení oddělené, proces bude stejný s tím rozdílem, že byste pro každé prostředí vytvořili další databázi a při vytváření profilu publikování vyberete správný cílový řetězec pro každou databázi.
 
-    Úplná adresa URL bude obsahovat co zadáte tady a příponu, která se zobrazí vedle textového pole.
-4. V **oblasti** rozevírací seznam, vyberte oblast, která je nejblíže k vám.
+V této části kurzu vytvoříte webovou aplikaci a databázi pro použití v přípravném prostředí a před vytvořením a nasazením do provozního prostředí nasadíte do přípravy a otestování.
 
-    Toto nastavení určuje datové centrum, kterého webová aplikace se spustí v.
-5. V **databáze** rozevíracím seznamu klikněte na položku **vytvořit novou databázi SQL**.
-6. V **název připojovacího řetězce DB** okně ponechte výchozí hodnotu *objekt DefaultConnection*.
-7. Klikněte na šipku, která ukazuje vpravo v dolní části seznamu.
+> [!NOTE]
+> Následující kroky ukazují, jak vytvořit webovou aplikaci v Azure App Service pomocí portálu pro správu Azure. V nejnovější verzi sady Azure SDK můžete to provést také bez nutnosti opustit sadu Visual Studio pomocí Průzkumník serveru. V Visual Studio 2013 můžete také vytvořit webovou aplikaci přímo z dialogového okna publikovat. Další informace najdete v tématu [Vytvoření webové aplikace v ASP.NET v Azure App Service.](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)
 
-    Je vidět na následujícím obrázku **vytvořit web** dialogové okno s ukázkové hodnoty v ní. Adresa URL a oblasti, kterou jste zadali, se liší.
+1. V [portál pro správu Azure](https://manage.windowsazure.com/)klikněte na **weby**a pak klikněte na **Nový**.
+2. Klikněte na **Web**a potom na **vlastní vytvořit**.
 
-    ![Vytvoření webu krok](deploying-to-production/_static/image1.png)
+    **Nový web – otevře se Průvodce vytvořením vlastního webu** . **Vlastní Průvodce vytvořením** umožňuje vytvořit web a databázi ve stejnou dobu.
+3. V kroku průvodce **vytvořit web** zadejte do pole **Adresa URL** řetězec, který chcete použít jako jedinečnou adresu URL přípravného prostředí vaší aplikace. Například zadejte ContosoUniversity-staging123 (včetně náhodných čísel na konci, aby byl jedinečný v případě, že je provedena ContosoUniversity – fázování).
 
-    Průvodce přejde **nastavení databáze** kroku.
-8. V **název** zadejte *ContosoUniversity* plus náhodné číslo pro zajištění jeho jedinečnosti, například *ContosoUniversity123*.
-9. V **Server** vyberte **nový Server služby SQL Database**.
+    Úplná adresa URL bude obsahovat informace o tom, co zadáte, a příponu, která se zobrazí vedle textového pole.
+4. V rozevíracím seznamu **oblast** vyberte oblast, která je pro vás nejblíže.
+
+    Toto nastavení určuje, v jakém datovém centru bude webová aplikace běžet.
+5. V rozevíracím seznamu **databáze** vyberte **vytvořit novou databázi SQL**.
+6. V poli **název připojovacího řetězce databáze** ponechte výchozí hodnotu *DefaultConnection*.
+7. Klikněte na šipku, která odkazuje na pravou stranu v poli.
+
+    Následující ilustrace znázorňuje dialog **vytvořit web** s ukázkovými hodnotami v něm. Adresa URL a oblast, které jste zadali, se liší.
+
+    ![Vytvořit krok webu](deploying-to-production/_static/image1.png)
+
+    Průvodce přejde na krok **zadat nastavení databáze** .
+8. Do pole **název** zadejte *ContosoUniversity* a náhodné číslo, které má být jedinečné, například *ContosoUniversity123*.
+9. V poli **Server** vyberte **Nový SQL Database Server**.
 10. Zadejte jméno správce a heslo.
 
-    Tak nezadáváte existující jméno a heslo. Zadáváte nový název a heslo, které teď definujete pro pozdější použití při přístupu k databázi.
-11. V **oblasti** vyberte stejnou oblast, kterou jste zvolili pro webovou aplikaci.
+    Sem nezadáváte existující jméno a heslo. Zadáváte nové jméno a heslo, které teď definujete pro pozdější použití při přístupu k databázi.
+11. V poli **oblast** vyberte stejnou oblast, kterou jste zvolili pro webovou aplikaci.
 
-    Aby webový server a databázový server ve stejné oblasti poskytuje nejlepší výkon a minimalizuje náklady.
-12. Kliknutím na značku zaškrtnutí v dolní části políčka potvrďte, že budete hotovi.
+    Zachování webového serveru a databázového serveru ve stejné oblasti vám dává nejlepší výkon a minimalizuje náklady.
+12. Kliknutím na značku zaškrtnutí v dolní části pole označíte, že jste hotovi.
 
-    Je vidět na následujícím obrázku **nastavení databáze** dialogové okno s ukázkové hodnoty v ní. Hodnoty, které jste zadali, se může lišit.
+    Následující ilustrace znázorňuje dialog **zadat nastavení databáze** s ukázkovými hodnotami v něm. Hodnoty, které jste zadali, se můžou lišit.
 
-    ![Krok nastavení databáze webu nový - vytvořit pomocí Průvodce databáze](deploying-to-production/_static/image2.png)
+    ![Krok nastavení databáze nového webu – Průvodce vytvořením databáze](deploying-to-production/_static/image2.png)
 
-    Na portálu pro správu vrátí na stránku pro Websites a **stav** sloupci se zobrazuje, že probíhá vytváření webové aplikace. Po chvíli (obvykle během méně než minutu) **stav** sloupci se zobrazuje, že webová aplikace byla úspěšně vytvořena. Na navigačním panelu na levé straně, počet webových aplikací, které máte ve vašem účtu se zobrazí vedle **Websites** ikonu a počet databází, které se zobrazí vedle **databází SQL** ikonu.
+    Portál pro správu se vrátí na stránku websites a ve sloupci **stav** se zobrazí, že se webová aplikace vytváří. Po delší dobu (obvykle méně než minutu) se ve sloupci **stav** zobrazí, že se webová aplikace úspěšně vytvořila. V navigačním panelu vlevo se počet webových aplikací, které máte ve vašem účtu, zobrazuje vedle ikony **websites** a počet databází se zobrazí vedle ikony **databáze SQL** .
 
-    ![Weby stránce portálu pro správu, vytvořit webovou stránku](deploying-to-production/_static/image3.png)
+    ![Stránka webů Portál pro správu, vytvořený web](deploying-to-production/_static/image3.png)
 
-    Název vaší webové aplikace se bude lišit od aplikace příklad na obrázku.
+    Název vaší webové aplikace se bude lišit od ukázkové aplikace na obrázku.
 
-## <a name="deploy-the-application-to-staging"></a>Nasaďte aplikaci do přípravného prostředí
+## <a name="deploy-the-application-to-staging"></a>Nasazení aplikace do přípravy
 
-Teď, když jste vytvořili webovou aplikaci a databázi pro testovací prostředí, můžete nasadit projekt na ni.
+Teď, když jste vytvořili webovou aplikaci a databázi pro testovací prostředí, můžete do ní nasadit projekt.
 
 > [!NOTE]
-> Tyto pokyny ukazují, jak vytvořit profil publikování stažením *.publishsettings* soubor, který funguje nejen pro Azure, ale také pro externí poskytovatele hostingu. Nejnovější sadu Azure SDK můžete také připojit přímo k Azure ze sady Visual Studio a zvolte ze seznamu webových aplikací, které máte ve svém účtu Azure. V sadě Visual Studio 2013, můžete přihlásit k Azure z **publikování webu** dialogové okno nebo **Průzkumníka serveru** okna. Další informace najdete v tématu [vytvoření webové aplikace ASP.NET ve službě Azure App Service](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
+> Tyto pokyny ukazují, jak vytvořit profil publikování stažením souboru *. publishsettings* , který funguje nejen pro Azure, ale také pro poskytovatele hostingu třetích stran. Nejnovější sada Azure SDK také umožňuje přímo se připojit k Azure ze sady Visual Studio a vybírat ze seznamu webových aplikací, které máte ve vašem účtu Azure. V Visual Studio 2013 se můžete přihlásit k Azure z dialogového okna **publikování na webu** nebo z okna **Průzkumník serveru** . Další informace najdete v tématu [Vytvoření webové aplikace v ASP.NET v Azure App Service](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
 
-### <a name="download-the-publishsettings-file"></a>Stáhněte si soubor .publishsettings
+### <a name="download-the-publishsettings-file"></a>Stažení souboru. publishsettings
 
 1. Klikněte na název webové aplikace, kterou jste právě vytvořili.
 
-    ![Klikněte na lokalitu, přejděte na řídicí panel](deploying-to-production/_static/image4.png)
-2. V části **rychlý přehled** v **řídicí panel** klikněte na tlačítko **stáhnout profil publikování**.
+    ![Kliknutím na lokalitu přejdete na řídicí panel.](deploying-to-production/_static/image4.png)
+2. V části **rychlý přehled** na kartě **řídicí panel** klikněte na **Stáhnout profil publikování**.
 
-    ![Profil publikování odkaz ke stažení](deploying-to-production/_static/image5.png)
+    ![Stáhnout odkaz na profil publikování](deploying-to-production/_static/image5.png)
 
-    Tento krok stáhne soubor, který obsahuje všechna nastavení, které potřebujete k nasazení aplikace do webové aplikace. Tento soubor budete importovat do sady Visual Studio, takže není nutné tyto informace zadat ručně.
-3. Uložit *.publishsettings* souboru ve složce, která se dá dostat z Visual Studio.
+    Tento krok stáhne soubor, který obsahuje všechna nastavení, která potřebujete k nasazení aplikace do vaší webové aplikace. Tento soubor naimportujete do sady Visual Studio, takže tyto informace nebudete muset zadávat ručně.
+3. Uložte soubor *. publishsettings* do složky, ke které máte přístup ze sady Visual Studio.
 
-    ![ukládání souboru .publishsettings](deploying-to-production/_static/image6.png)
+    ![ukládání souboru. publishsettings](deploying-to-production/_static/image6.png)
 
     > [!WARNING]
-    > Zabezpečení – *.publishsettings* soubor obsahuje vaše přihlašovací údaje (nekódovaný), které se používají ke správě vašich předplatných a služeb Azure. Osvědčené postupy zabezpečení pro tento soubor je dočasně ukládat mimo vašeho adresáře zdrojových souborů (například ve složce Libraries\Documents) a odstraňte ji. Po dokončení importu. Uživatel se zlými úmysly, který získá přístup k *.publishsettings* soubor můžete upravit, vytvářet a odstraňovat služeb Azure.
+    > Zabezpečení – soubor *. publishsettings* obsahuje vaše přihlašovací údaje (nekódované), které se používají ke správě předplatných a služeb Azure. Osvědčeným postupem zabezpečení pro tento soubor je uložit ho dočasně mimo vaše zdrojové adresáře (například ve složce Libraries\Documents) a po dokončení importu ho odstranit. Uživatel se zlými úmysly, který získá přístup k souboru *. publishsettings* , může upravit, vytvořit a odstranit vaše služby Azure.
 
-### <a name="create-a-publish-profile"></a>Vytvořte profil publikování
+### <a name="create-a-publish-profile"></a>Vytvořit profil publikování
 
-1. Ve Visual Studiu klikněte pravým tlačítkem na projekt ContosoUniversity v **Průzkumníka řešení** a vyberte **publikovat** v místní nabídce.
+1. V aplikaci Visual Studio klikněte pravým tlačítkem na projekt ContosoUniversity v **Průzkumník řešení** a v místní nabídce vyberte **publikovat** .
 
-    **Publikování webu** otevře se průvodce.
-2. Klikněte na tlačítko **profilu** kartu.
-3. Klikněte na **Import**.
-4. Přejděte *.publishsettings* soubor jste předtím stáhli a potom klikněte na **otevřít**.
+    Otevře se průvodce **publikováním webu** .
+2. Klikněte na kartu **profil** .
+3. Klikněte na **importovat**.
+4. Přejděte do souboru *. publishsettings* , který jste stáhli dříve, a pak klikněte na **otevřít**.
 
-    ![Dialogové okno importu nastavení publikování](deploying-to-production/_static/image7.png)
-5. V **připojení** klikněte na tlačítko **ověřit připojení** abyste měli jistotu, že jsou správné nastavení.
+    ![Dialogové okno Importovat nastavení publikování](deploying-to-production/_static/image7.png)
+5. Na kartě **připojení** klikněte na **ověřit připojení** a ujistěte se, že jsou nastavení správná.
 
-    Při připojení je potvrzená, se vedle položky zobrazí zelená značka zaškrtnutí **ověřit připojení** tlačítko.
+    Po ověření připojení se zobrazí zelená značka zaškrtnutí vedle tlačítka **ověřit připojení** .
 
-    Pro některé poskytovatelům hostingu, po kliknutí na **ověřit připojení**, můžete se setkat **Chyba certifikátu** dialogové okno. Pokud tak učiníte, ověřte, že je název serveru, co očekáváte. Pokud je název serveru správný, vyberte **uložení tohoto certifikátu na budoucí relace sady Visual Studio** a klikněte na tlačítko **přijmout**. (Tato chyba znamená, že poskytovatel hostingu rozhodl vyhnout prostředky na nákup certifikátu SSL pro adresu URL, kterou nasazujete. Pokud chcete navázat zabezpečené připojení pomocí platného certifikátu, kontaktujte poskytovatele hostingových služeb.)
-6. Klikněte na **Další**.
+    U některých poskytovatelů hostingu se po kliknutí na **ověřit připojení**může zobrazit dialogové okno s **chybou certifikátu** . Pokud tak učiníte, ověřte, že název serveru je očekávaný. Pokud je název serveru správný, vyberte **Uložit tento certifikát pro budoucí relace sady Visual Studio** a klikněte na **přijmout**. (Tato chyba znamená, že se poskytovatel hostingu rozhodl vyhnout se nákladům na nákup certifikátu SSL pro adresu URL, na kterou nasazujete. Pokud dáváte přednost navázání zabezpečeného připojení pomocí platného certifikátu, obraťte se na svého poskytovatele hostingu.)
+6. Klikněte na tlačítko **Další**.
 
-    ![Ikona úspěšné připojení a tlačítko Další na kartě připojení Průvodce](deploying-to-production/_static/image8.png)
-7. V **nastavení** kartu, rozbalte **možností publikování souboru**a pak vyberte **vyloučit soubory z aplikace\_složka dat**.
+    ![ikona úspěšného připojení a tlačítko Další na kartě připojení](deploying-to-production/_static/image8.png)
+7. Na kartě **Nastavení** rozbalte **možnost publikování souboru**a pak vyberte **vyloučit soubory ze složky\_dat aplikace**.
 
-    Informace o dalších možností v části **možností publikování souboru**, najdete v článku [nasazení do služby IIS](deploying-to-iis.md) kurzu. Snímek obrazovky tohoto ukazuje výsledek tohoto kroku a následující kroky konfigurace databáze je na konci kroky konfigurace databáze.
-8. V části **objekt DefaultConnection** v **databází** nakonfigurujte nasazení databáze pro databázi členství.
-9. 1. Vyberte **aktualizace databáze**.
+    Informace o dalších možnostech v části **Možnosti publikování souborů**najdete v kurzu [nasazení do služby IIS](deploying-to-iis.md) . Snímek obrazovky, který ukazuje výsledek tohoto kroku, a následující kroky konfigurace databáze jsou na konci kroků konfigurace databáze.
+8. V části **DefaultConnection** v části **databáze** nakonfigurujte nasazení databáze pro databázi členství.
+9. 1. Vyberte **aktualizovat databázi**.
 
-        **Vzdálený připojovací řetězec** pole pod **objekt DefaultConnection** vyplněné se připojovací řetězec ze souboru .publishsettings. Připojovací řetězec obsahuje přihlašovací údaje SQL serveru, které jsou uložené ve formátu prostého textu v *.pubxml* souboru. Pokud nechcete uložit je trvale existuje, můžete je odebrat z profilu publikování po nasazení databáze a uložit je do Azure. Další informace najdete v tématu [tom, jak zabezpečit vaši databázi technologie ASP.NET připojovací řetězce při nasazování do Azure ze zdroje](http://www.hanselman.com/blog/HowToKeepYourASPNETDatabaseConnectionStringsSecureWhenDeployingToAzureFromSource.aspx) na blogu Scott Hanselman.
-      2. Klikněte na tlačítko **konfigurovat aktualizace databáze**.
-      3. V **konfigurace aktualizací databáze** dialogové okno, klikněte na tlačítko **přidat skript SQL**.
-      4. V **přidat skript SQL** , přejděte na *aspnet-data-prod.sql* skript, který jste předtím uložili ve složce řešení a potom klikněte na tlačítko **otevřít**.
-      5. Zavřít **konfigurace aktualizací databáze** dialogové okno.
-10. V části **SchoolContext** v **databází** vyberte **spustit migrace Code First (spuštěno při spuštění aplikace)**.
+        Pole **řetězce vzdáleného připojení** přímo pod **DefaultConnection** se vyplní připojovacím řetězcem ze souboru. publishsettings. Připojovací řetězec obsahuje SQL Server přihlašovací údaje, které jsou uloženy v prostém textu v souboru *. pubxml* . Pokud nechcete, aby byly trvale uloženy, můžete je odebrat z profilu publikování po nasazení databáze a jejich uložení v Azure. Další informace najdete v tématu [jak zajistit zabezpečení připojovacích řetězců ASP.NET Database při nasazení do Azure ze zdroje](http://www.hanselman.com/blog/HowToKeepYourASPNETDatabaseConnectionStringsSecureWhenDeployingToAzureFromSource.aspx) na blogu Scott Hanselman.
+      2. Klikněte na **Konfigurovat aktualizace databáze**.
+      3. V dialogovém okně **Konfigurovat aktualizace databáze** klikněte na **Přidat skript SQL**.
+      4. V poli **Přidat skript SQL** přejděte na skript *ASPNET-data-prod. SQL* , který jste předtím uložili ve složce řešení, a pak klikněte na **otevřít**.
+      5. Zavřete dialogové okno **Konfigurovat aktualizace databáze** .
+10. V části **SchoolContext** v části **databáze** vyberte **Spustit migrace Code First (spouští se při spuštění aplikace)** .
 
-    Visual Studio zobrazí **spustit migrace Code First** místo **aktualizace databáze** pro `DbContext` třídy. Pokud chcete použít poskytovatele dbDacFx místo migrace nasazení databáze, ke kterým přístup pomocí `DbContext` najdete v tématu [jak nasadit bez migrace Code First databázi?](https://msdn.microsoft.com/library/ee942158.aspx#deploy_code_first_without_migrations) v nejčastějších Dotazech nasazení webové aplikace Visual Studio a ASP.NET na webu MSDN.
+    Visual Studio zobrazí příkaz **Execute migrace Code First** namísto **aktualizační databáze** pro `DbContext` třídy. Pokud chcete poskytovatele dbDacFx použít místo migrace k nasazení databáze, ke které máte přístup pomocí třídy `DbContext`, přečtěte si téma [návody nasazení Code First databáze bez migrace?](https://msdn.microsoft.com/library/ee942158.aspx#deploy_code_first_without_migrations) v tématu Nejčastější dotazy k nasazení webu pro Visual Studio a ASP.NET na webu MSDN.
 
-    **Nastavení** kartu teď vypadá jako v následujícím příkladu:
+    Karta **Nastavení** teď vypadá jako v následujícím příkladu:
 
     ![Karta nastavení pro přípravu](deploying-to-production/_static/image9.png)
-11. Proveďte následující kroky pro uložení profilu a přejmenujte ho na *pracovní*:
+11. Chcete-li uložit profil a přejmenovat ho do *pracovního*postupu, proveďte následující kroky:
 
-    1. Klikněte na tlačítko **profilu** kartu a potom klikněte na tlačítko **spravovat profily**.
-    2. Import vytvořit dvě nové profily, jeden pro FTP a jeden pro nasazení webu. Nakonfigurovaný profil nasazení webu: přejmenování tohoto profilu *pracovní*.
+    1. Klikněte na kartu **profil** a potom klikněte na možnost **Spravovat profily**.
+    2. Import vytvořil dva nové profily, jeden pro FTP a druhý pro Nasazení webu. Nakonfigurovali jste profil Nasazení webu: Přejmenujte tento profil na *fázování*.
 
-        ![Přejmenovat profil do přípravného prostředí](deploying-to-production/_static/image10.png)
-    3. Zavřít **Upravit profily publikování webových** dialogové okno.
-    4. Zavřít **publikování webu** průvodce.
+        ![Přejmenovat profil na pracovní](deploying-to-production/_static/image10.png)
+    3. Zavřete dialogové okno **Upravit profily publikování webu** .
+    4. Zavřete průvodce **publikováním webu** .
 
-### <a name="configure-a-publish-profile-transform-for-the-environment-indicator"></a>Konfigurace transformace profil publikování pro ukazatel prostředí
+### <a name="configure-a-publish-profile-transform-for-the-environment-indicator"></a>Konfigurace transformace profilu publikování pro indikátor prostředí
 
 > [!NOTE]
-> Tato část ukazuje, jak zřídit transformaci Web.config pro ukazatel prostředí. Vzhledem k tomu, se indikátor nachází ve `<appSettings>` element, můžete mít Další alternativou k určení transformace při nasazování do služby Azure App Service. Další informace najdete v tématu [nastavení zadáte Web.config v Azure](web-config-transformations.md#watransforms).
+> V této části se dozvíte, jak nastavit transformaci Web. config pro indikátor prostředí. Vzhledem k tomu, že indikátor je v prvku `<appSettings>`, máte další alternativu pro zadání transformace při nasazení do Azure App Service. Další informace najdete v tématu [Určení nastavení souboru Web. config v Azure](web-config-transformations.md#watransforms).
 
-1. V **Průzkumníka řešení**, rozbalte **vlastnosti**a potom rozbalte **PublishProfiles**.
-2. Klikněte pravým tlačítkem na *Staging.pubxml*a potom klikněte na tlačítko **přidat konfigurační transformace**.
+1. V **Průzkumník řešení**rozbalte položku **vlastnosti**a potom rozbalte **PublishProfiles**.
+2. Klikněte pravým tlačítkem na *fázování. pubxml*a pak klikněte na **přidat konfigurační transformaci**.
 
-    ![Přidat konfigurační transformaci pro přípravu](deploying-to-production/_static/image11.png)
+    ![Přidat transformaci konfigurace pro přípravu](deploying-to-production/_static/image11.png)
 
-    Visual Studio vytvoří *Web.Staging.config* transformační soubor a otevře jej.
-3. V *Web.Staging.config* transformovat soubor, vložte následující kód bezprostředně po otevření `configuration` značky.
+    Visual Studio vytvoří transformační soubor *Web. staging. config* a otevře ho.
+3. V transformačním souboru *Web. staging. config* vložte následující kód hned za úvodní značku `configuration`.
 
     [!code-xml[Main](deploying-to-production/samples/sample1.xml)]
 
-    Když použijete pracovní profil publikování, nastaví Tato transformace na indikátor prostředí a "Produkční". V nasazené webové aplikace neuvidíte žádné přípony, jako je například "(vývoj)" nebo "(testovací)" po nadpis H1 "University společnosti Contoso".
-4. Klikněte pravým tlačítkem myši *Web.Staging.config* souboru a klikněte na tlačítko **transformace ve verzi Preview** abyste měli jistotu, že transformace kódování vytvoří očekávané změny.
+    Když použijete přípravný profil publikování, tato transformace nastaví indikátor prostředí na "prod". V nasazené webové aplikaci se po nadpisu "contoso University" H1 nezobrazí žádná přípona, například "(dev)" nebo "(test)".
+4. Klikněte pravým tlačítkem myši na soubor *Web. staging. config* a klikněte na **Náhled transformovat** , aby se zajistilo, že transformace, kterou jste zakódujete, vytvoří očekávané změny.
 
-    **Náhled souboru Web.config** okno zobrazuje výsledek použití i *Web.Release.config* transformuje a *Web.Staging.config* transformace.
+    V okně **Náhled Web. config** se zobrazí výsledek použití transformací *Web. Release. config* a transformací *Web. staging. config* .
 
-### <a name="prevent-public-use-of-the-test-app"></a>Zabránit veřejně přístupný test aplikace
+### <a name="prevent-public-use-of-the-test-app"></a>Zabránit veřejnému použití testovací aplikace
 
-Což je důležité pro pracovní aplikace je, že je na Internetu, ale nechcete, aby veřejně ji používat. Chcete-li minimalizovat pravděpodobnost, že lidé najít, který se použije, můžete použít jeden nebo více z následujících metod:
+Důležitým aspektem pro pracovní aplikaci je to, že bude živý na internetu, ale nechcete, aby ji veřejnost používala. K minimalizaci pravděpodobnosti, že ji lidé uvidí a používají, můžete použít jednu nebo více z následujících metod:
 
-- Nastavte pravidla brány firewall, která umožňují přístup k pracovní aplikace jenom z IP adresy, které můžete použít k testování přípravy.
-- Použijte obfuskovaný adresu URL, která by jinak nebylo možné uhodnout.
-- Vytvoření *robots.txt* souboru k zajištění, že nesmí být z vyhledávací weby procházení k němu testovací aplikace a sestava odkazy ve výsledcích hledání.
+- Nastavte pravidla brány firewall, která umožňují přístup k pracovní aplikaci jenom z IP adres, které používáte k testování přípravy.
+- Použijte zašifrované URL, které by nebylo možné odhadnout.
+- Vytvořte soubor *robots. txt* , abyste zajistili, že vyhledávací weby nebudou procházet testovací aplikaci a na ni budou odkazy ve výsledcích hledání.
 
-První z těchto metod je nejúčinnější, ale není součástí v tomto kurzu, protože by vyžadovalo, můžete nasadit do cloudové služby Azure, namísto služby Azure App Service. Další informace o službách Cloud Services a omezení IP adres v Azure najdete v tématu [možnosti hostování výpočtů poskytované platformou Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me) a [bloku konkrétní IP adresy v přístupu k webové roli](https://msdn.microsoft.com/library/windowsazure/jj154098.aspx). Pokud provádíte nasazení do poskytovatele hostitelských služeb třetích stran, obraťte se na poskytovatele a zjistěte, jak implementovat omezení IP adres.
+První z těchto metod je nejúčinnější, ale není pokrytá v tomto kurzu, protože by to vyžadovalo nasazení do cloudové služby Azure místo Azure App Service. Další informace o Cloud Services a omezeních IP adres v Azure najdete v tématu [možnosti hostování služby COMPUTE poskytované Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me) a [zablokování konkrétních IP adres pro přístup k webové roli](https://msdn.microsoft.com/library/windowsazure/jj154098.aspx). Pokud nasazujete pro poskytovatele hostingu třetí strany, obraťte se na poskytovatele, kde zjistíte, jak implementovat omezení IP adres.
 
-V tomto kurzu vytvoříte *robots.txt* souboru.
+V tomto kurzu vytvoříte soubor *robots. txt* .
 
-1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na tlačítko **přidat novou položku**.
-2. Vytvořte nový **textový soubor** s názvem *robots.txt*a vložte následující text:
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na **Přidat novou položku**.
+2. Vytvořte nový **textový soubor** s názvem *robots. txt*a vložte do něj následující text:
 
     [!code-console[Main](deploying-to-production/samples/sample2.cmd)]
 
-    `User-agent` Řádek říká vyhledávací weby, které v souboru pravidla se vztahují na všechny vyhledávací modul web prohledávací moduly (roboty), a `Disallow` řádek určuje, že by bylo žádné stránky na webu.
+    `User-agent` řádek oznamuje vyhledávacím modulům, že se pravidla v souboru vztahují na všechny webové prohledávací moduly (roboty) a `Disallow` řádek určuje, že by neměly být procházeny žádné stránky na webu.
 
-    Chcete vyhledávací weby snadněji katalogu produkční aplikace, takže je třeba vyloučit tento soubor z produkčního nasazení. Provedete to, že nakonfigurujete nastavení v produkční profil publikování po jeho vytvoření.
+    Chcete, aby vyhledávací weby mohly zařadit do katalogu produkční aplikace, takže je potřeba tento soubor vyloučit z produkčního nasazení. Uděláte to tak, že nakonfigurujete nastavení v produkčním publikačním profilu při jeho vytváření.
 
-### <a name="deploy-to-staging"></a>Nasazení do přípravného prostředí
+### <a name="deploy-to-staging"></a>Nasadit do přípravy
 
-1. Otevřít **Publikovat Web** Průvodce pravým tlačítkem myši projekt Contoso University a kliknutím na **publikovat**.
-2. Ujistěte se, že **pracovní** vybraný profil.
-3. Klikněte na tlačítko **publikovat**.
+1. Otevřete Průvodce **publikováním webu** tak, že kliknete pravým tlačítkem na projekt contoso University a kliknete na **publikovat**.
+2. Ujistěte se, že je vybraný **pracovní** profil.
+3. Klikněte na **publikovat**.
 
-    **Výstup** okno zobrazuje, jaké akce nasazení byly provedeny a oznámí úspěšné dokončení nasazení. K adrese URL nasazené webové aplikace se automaticky otevře výchozí prohlížeč.
+    Okno **výstup** zobrazuje, jaké akce nasazení byly provedeny, a oznamuje úspěšné dokončení nasazení. Výchozí prohlížeč se automaticky otevře na adresu URL nasazené webové aplikace.
 
-## <a name="test-in-the-staging-environment"></a>Testování v testovacím prostředí
+## <a name="test-in-the-staging-environment"></a>Testování v přípravném prostředí
 
-Všimněte si, že chybí ukazatel prostředí (neexistuje žádný "()" nebo "(vývoj)" po nadpis H1, který ukazuje, že *Web.config* transformace pro ukazatel prostředí bylo úspěšné.
+Všimněte si, že indikátor prostředí chybí (není k dispozici "(test)" nebo "(dev)" za nadpisem H1, který ukazuje, že transformace *Web. config* pro indikátor prostředí byla úspěšná.
 
-![Domovská stránka pracovní](deploying-to-production/_static/image12.png)
+![Příprava domovské stránky](deploying-to-production/_static/image12.png)
 
-Spustit **studenty** stránku a ověřte, zda má nasazené databáze se žádní studenti.
+Spusťte stránku **Students** a ověřte, zda nasazená databáze nemá žádné studenty.
 
-Spustit **Instruktoři** stránku a ověřte, že Code First naplnila databázi s instruktorem dat:
+Spuštěním stránky **instruktory** ověřte, zda Code First dosazení databáze s daty instruktory:
 
-Vyberte **přidat studenty** z **studenty** přidat student nabídky a pak zobrazit nového objektu student do **studenty** stránku a ověřte, že můžete úspěšně zapisovat do databáze .
+Vyberte **Přidat studenty** z nabídky **Students** , přidejte studenta a potom zobrazte nového studenta na stránce **Students** , abyste ověřili, že můžete úspěšně zapisovat do databáze.
 
-Z **kurzy** klikněte na **aktualizace kredity**. **Aktualizace kredity** stránka vyžaduje oprávnění správce, proto **přihlásit** zobrazí se stránka. Zadejte přihlašovací údaje účtu správce, které jste vytvořili dříve ("admin" a "prodpwd"). **Aktualizace kredity** se zobrazí stránka, která ověřuje, že účet správce, který jste vytvořili v předchozím kurzu byla správně nasazena do testovacího prostředí.
+Na stránce **kurzy** klikněte na **aktualizovat kredity**. Stránka **aktualizovat kredity** vyžaduje oprávnění správce, aby se zobrazila stránka pro **přihlášení** . Zadejte přihlašovací údaje účtu správce, které jste vytvořili dříve ("admin" a "prodpwd"). Zobrazí se stránka **aktualizace kredity** , která ověřuje, že účet správce, který jste vytvořili v předchozím kurzu, byl správně nasazen do testovacího prostředí.
 
-Neplatná adresa URL způsobí chybu, že ELMAH sledovat a následně požadovat zprávy o chybách ELMAH žádosti. Pokud provádíte nasazení do poskytovatele hostitelských služeb třetích stran, pravděpodobně zjistíte, že sestava je prázdná ze stejného důvodu, který byl prázdný v předchozím kurzu. Budete muset použít nástroje pro správu účtu poskytovatele hostingu nakonfigurovat oprávnění složky umožňující ELMAH zapisovat do složky protokolů.
+Požádejte o neplatnou adresu URL, aby došlo k chybě, kterou bude knihovny ELMAH sledovat, a pak požádejte o zprávu o chybě knihovny ELMAH. Pokud nasazujete pro poskytovatele hostingu třetí strany, pravděpodobně zjistíte, že sestava je prázdná ze stejného důvodu, že byla v předchozím kurzu prázdná. Abyste mohli knihovny ELMAH zapisovat do složky protokolu, budete muset pomocí nástrojů pro správu účtu poskytovatele hostingu nakonfigurovat oprávnění ke složkám.
 
-Vytvořená aplikace je nyní spuštěna v cloudu ve webové aplikaci, která je stejně jako bude používat pro produkční prostředí. Vzhledem k tomu, že všechno funguje správně, je dalším krokem je nasazení do produkčního prostředí.
+Aplikace, kterou jste vytvořili, je teď spuštěná v cloudu ve webové aplikaci, která je stejně jako to, co budete používat pro produkční prostředí. Vzhledem k tomu, že vše funguje správně, je dalším krokem nasazení do produkčního prostředí.
 
 ## <a name="deploy-to-production"></a>Nasazení do produkčního prostředí
 
-Proces pro vytvoření webové aplikace v produkčním prostředí a nasazení do produkčního prostředí je stejná jako pracovní, s tím rozdílem, že je třeba vyloučit *robots.txt* z nasazení. K tomu budete upravovat soubor profilu publikování.
+Proces vytvoření provozní webové aplikace a nasazení do produkčního prostředí je stejný jako pro přípravu, s tím rozdílem, že je potřeba z nasazení vyloučit soubor *robots. txt* . Uděláte to tak, že upravíte soubor profilu publikování.
 
-### <a name="create-the-production-environment-and-the-production-publish-profile"></a>Vytvoření produkčního prostředí a produkční profil publikování
+### <a name="create-the-production-environment-and-the-production-publish-profile"></a>Vytvoření produkčního prostředí a produkčního profilu pro publikování
 
-1. Vytvoření produkční webové aplikace a databáze v Azure, stejným způsobem, který jste použili pro přípravu.
+1. Vytvořte provozní webovou aplikaci a databázi v Azure stejným způsobem, jaký jste použili pro přípravu.
 
-    Při vytváření databáze, můžete chtít umístit na stejný server, který jste vytvořili dříve nebo vytvořit nový server.
-2. Stáhněte si *.publishsettings* souboru.
-3. Vytvořte profil publikování pomocí importu produkční *.publishsettings* souboru stejného postupu, který jste použili pro přípravu.
+    Když vytváříte databázi, můžete ji umístit na stejný server, který jste vytvořili dříve, nebo vytvořit nový server.
+2. Stáhněte soubor *. publishsettings* .
+3. Vytvořte profil publikování importem souboru produkčního *. publishsettings* , a to za stejným postupem, který jste použili pro přípravu.
 
-    Nezapomeňte nakonfigurovat skript nasazení dat. pod **objekt DefaultConnection** v **databází** část **nastavení** kartu.
-4. Přejmenovat profil publikování *produkční*.
-5. Konfigurace transformace profil publikování pro ukazatel prostředí, stejným způsobem, který jste použili pro pracovní...
+    Nezapomeňte konfigurovat skript nasazení dat v části **DefaultConnection** v části **databáze** na kartě **Nastavení** .
+4. Přejmenujte profil publikování na *produkční*prostředí.
+5. Nakonfigurujte transformaci profilu publikování pro indikátor prostředí za stejným postupem, který jste použili pro přípravu.
 
-### <a name="edit-the-pubxml-file-to-exclude-robotstxt"></a>Upravte soubor .pubxml vyloučit robots.txt
+### <a name="edit-the-pubxml-file-to-exclude-robotstxt"></a>Upravit soubor. pubxml pro vyloučení souboru robots. txt
 
-Soubory jsou pojmenovány profil publikování &lt;profilename&gt;*.pubxml* a jsou umístěny v *PublishProfiles* složky. *PublishProfiles* složky *vlastnosti* složky ve webové aplikaci C# v části projekt *Můj projekt* složky v projektu VB webové aplikace nebo v rámci *Aplikace\_Data* složky v projektu webové aplikace. Každý *.pubxml* soubor obsahuje nastavení, které se vztahují na jeden profil publikování. Hodnoty, které zadáte v Průvodci Publikovat Web se ukládají v těchto souborech a můžete je vytvořit nebo změnit nastavení, které nejsou k dispozici v Uživatelském rozhraní aplikace Visual Studio upravit.
+Soubory profilu publikování jsou pojmenovány &lt;pronázev&gt; *. pubxml* a nacházejí se ve složce *PublishProfiles* . Složka *PublishProfiles* je ve složce *Properties (vlastnosti* ) projektu C# webové aplikace ve složce *můj projekt* v projektu webové aplikace VB nebo ve složce *aplikace\_data* v projektu webové aplikace. Každý soubor *. pubxml* obsahuje nastavení, která se vztahují na jeden profil publikování. Hodnoty, které zadáte v průvodci publikovat web, jsou uloženy v těchto souborech a lze je upravit pro vytvoření nebo změnu nastavení, která nejsou k dispozici v uživatelském rozhraní sady Visual Studio.
 
-Ve výchozím nastavení *.pubxml* soubory jsou zahrnuty v projektu, když vytvoříte profil publikování, ale můžete je vyloučit z projektu a je stále používají Visual Studio. Visual Studio vyhledá *PublishProfiles* složku pro *.pubxml* soubory, bez ohledu na to, zda jsou zahrnuty v projektu.
+Ve výchozím nastavení jsou soubory *. pubxml* zahrnuty do projektu při vytváření profilu publikování, ale můžete je vyloučit z projektu a Visual Studio je stále bude používat. Visual Studio hledá soubory *. pubxml* ve složce *PublishProfiles* bez ohledu na to, jestli jsou zahrnuté v projektu.
 
-Pro každou *.pubxml* soubor existuje *. pubxml.user* souboru. *. Pubxml.user* soubor obsahuje šifrované heslo, pokud jste vybrali **uložit heslo** možnost a ve výchozím nastavení je vyloučený z projektu.
+Pro každý soubor *. pubxml* je soubor *. pubxml. User* . Pokud jste vybrali možnost **Uložit heslo** a ve výchozím nastavení je vyloučený z projektu, soubor *. pubxml. User* obsahuje šifrované heslo.
 
-A *.pubxml* soubor obsahuje nastavení, které se týkají konkrétní Publikovat profil. Pokud chcete nakonfigurovat nastavení, které se vztahují na všechny profily, můžete vytvořit *. wpp.targets* souboru. Importuje tyto soubory do procesu sestavení *.csproj* nebo *.vbproj* souboru projektu, takže většinu nastavení, které můžete nakonfigurovat v souboru projektu se dá nakonfigurovat v těchto souborů. Další informace o *.pubxml* soubory a *. wpp.targets* soubory, naleznete v tématu [jak: Upravit nastavení nasazení v publikování souborů profilu (.pubxml) a. wpp.targets souboru v sadě Visual Studio webové projekty](https://msdn.microsoft.com/library/ff398069.aspx).
+Soubor *. pubxml* obsahuje nastavení, která se týkají konkrétního publikačního profilu. Pokud chcete konfigurovat nastavení, která se vztahují na všechny profily, můžete vytvořit soubor *. WPP. targets* . Proces sestavení importuje tyto soubory do souboru projektu *. csproj* nebo *. vbproj* , takže většinu nastavení, které lze konfigurovat v souboru projektu, lze nakonfigurovat v těchto souborech. Další informace o souborech *. pubxml* a *. WPP. targets* naleznete v tématu [How to: Edit settings Deployment in Publish profiles (. pubxml) files and the. WPP. targets in Visual Studio Web Projects](https://msdn.microsoft.com/library/ff398069.aspx).
 
-1. V **Průzkumníka řešení**, rozbalte **vlastnosti** a rozbalte **PublishProfiles**.
-2. Klikněte pravým tlačítkem na *Production.pubxml* a klikněte na tlačítko **otevřít**.
+1. V **Průzkumník řešení**rozbalte **vlastnosti** a rozbalte **PublishProfiles**.
+2. Klikněte pravým tlačítkem na *produkční. pubxml* a klikněte na **otevřít**.
 
-    ![Otevřete soubor .pubxml](deploying-to-production/_static/image13.png)
-3. Klikněte pravým tlačítkem na *Production.pubxml* a klikněte na tlačítko **otevřít**.
-4. Přidejte následující řádky bezprostředně před uzavírací `PropertyGroup` element:
+    ![Otevřete soubor. pubxml](deploying-to-production/_static/image13.png)
+3. Klikněte pravým tlačítkem na *produkční. pubxml* a klikněte na **otevřít**.
+4. Přidejte následující řádky těsně před uzavírací `PropertyGroup` element:
 
     [!code-xml[Main](deploying-to-production/samples/sample3.xml)]
 
-    Soubor .pubxml teď vypadá jako v následujícím příkladu:
+    Soubor. pubxml se teď zdá jako v následujícím příkladu:
 
     [!code-xml[Main](deploying-to-production/samples/sample4.xml?highlight=18-20)]
 
-    Další informace o tom, jak vyloučit soubory a složky, najdete v části [můžu vyloučit určité soubory nebo složky z nasazení?](https://msdn.microsoft.com/library/ee942158.aspx#can_i_exclude_specific_files_or_folders_from_deployment) v **webové nasazení – nejčastější dotazy pro Visual Studio a ASP.NET** na webové stránce MSDN.
+    Další informace o tom, jak vyloučit soubory a složky, najdete v tématu Jak [mohu vyloučit konkrétní soubory nebo složky z nasazení?](https://msdn.microsoft.com/library/ee942158.aspx#can_i_exclude_specific_files_or_folders_from_deployment) v tématu **Nejčastější dotazy k nasazení webu pro Visual Studio a ASP.NET** na webu MSDN.
 
 ### <a name="deploy-to-production"></a>Nasazení do produkčního prostředí
 
-1. Otevřít **Publikovat Web** Průvodce Ujistěte se, že **produkční** profil publikování je vybrána a potom klikněte na tlačítko **spustit Náhled** na **Preview**kartu a ověřte, že *robots.txt* soubor nebude zkopírován do produkční aplikace.
+1. Otevřete Průvodce **publikováním webu** se ujistěte, že **je vybraný profil publikování na** webu, a pak klikněte na **Spustit náhled** na kartě **Náhled** a ověřte, jestli se soubor *robots. txt* nezkopíruje do produkční aplikace.
 
-    ![Náhled souborů, které mají být publikovány do produkčního prostředí](deploying-to-production/_static/image14.png)
+    ![Náhled souborů, které se mají publikovat do produkčního prostředí](deploying-to-production/_static/image14.png)
 
-    Projděte si seznam souborů, které budou zkopírovány. Uvidíte, že všechny *.cs* souborů, včetně *. aspx.cs*, *. aspx.designer.cs*, *Master.cs*, a  *Master.Designer.cs* soubory jsou vynechány. Veškerý tento kód byl zkompilován do *ContosoUniversity.dll* a *ContosoUniversity.pdb* soubory, které najdete v *bin* složky. Protože pouze *.dll* , je potřeba spustit aplikaci a nastavili, že by měly být nasazeny pouze soubory potřebné ke spuštění aplikace, ne *.cs* soubory byly zkopírovány do cíle prostředí. *Obj* složky a *ContosoUniversity.csproj* a *. csproj.user* soubory jsou vynechány ze stejného důvodu.
+    Zkontrolujte seznam souborů, které se zkopírují. Uvidíte, že všechny soubory *. cs* , včetně souborů *. aspx.cs*, *. aspx.Designer.cs*, *Master.cs*a *Master.Designer.cs* , jsou vynechány. Veškerý tento kód byl zkompilován do souborů *ContosoUniversity. dll* a *ContosoUniversity. pdb* , které najdete ve složce *bin* . Vzhledem k tomu, že je ke spuštění aplikace nutná pouze *Knihovna DLL* , a zadali jste dříve, že by měly být nasazeny pouze soubory potřebné ke spuštění aplikace, nebyly do cílového prostředí zkopírovány žádné soubory *. cs* . Složka *obj* a soubory *ContosoUniversity. csproj* a *. csproj. User* jsou vynechány ze stejného důvodu.
 
-    Klikněte na tlačítko **publikovat** k nasazení do produkčního prostředí.
-2. Testování v produkčním prostředí, stejným způsobem, který jste použili pro přípravu.
+    Kliknutím na **publikovat** nasadíte do produkčního prostředí.
+2. Otestujte v produkčním prostředí podle stejného postupu, který jste použili pro přípravu.
 
-    Všechno, co je stejný jako pracovní, s výjimkou adresy URL a absenci *robots.txt* souboru.
+    Vše je stejné jako u přípravy s výjimkou adresy URL a chybějícího souboru *robots. txt* .
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Budete mít teď úspěšně nasadila a otestovala vaší webové aplikace a je k dispozici veřejně přes Internet.
+Teď jste úspěšně nasadili a otestovali webovou aplikaci, která je veřejně dostupná přes Internet.
 
-![Domovská stránka výroby](deploying-to-production/_static/image15.png)
+![Výroba domovské stránky](deploying-to-production/_static/image15.png)
 
-V dalším kurzu budete moct aktualizovat kód aplikace a nasadit změny do prostředí test, přípravném nebo produkčním prostředí.
+V dalším kurzu aktualizujete kód aplikace a nasadíte změnu do testovacích, pracovních a produkčních prostředí.
 
 > [!NOTE]
-> Když vaše aplikace je používána v produkčním prostředí by měla implementace plánu obnovení. To znamená je by měly být pravidelně zálohování databází z produkční aplikace do zabezpečeného úložiště a by měl udržování několika generací tyto zálohy. Při aktualizaci databáze, měli byste zajistit záložní kopie z bezprostředně před provedením změny. Potom Pokud došlo k chybě a není objevit až po jeho nasazení do produkčního prostředí, stále budete moci obnovit databázi do stavu, ve kterém byl předtím, než začal být poškozen. Další informace najdete v tématu [Azure SQL Database zálohování a obnovení](https://msdn.microsoft.com/library/windowsazure/jj650016.aspx).
+> I když se vaše aplikace používá v produkčním prostředí, měli byste implementovat plán obnovení. To znamená, že byste měli pravidelně zálohovat vaše databáze z produkční aplikace do zabezpečeného úložiště a měli byste uchovávat několik generací takových záloh. Při aktualizaci databáze byste měli vytvořit záložní kopii hned před změnou. Pak pokud uděláte chybu a nezjistíte ji, dokud ji nenainstalujete do produkčního prostředí, budete moct databázi obnovit do stavu, ve kterém byla, než se nastala poškozená. Další informace najdete v tématu [Azure SQL Database zálohování a obnovení](https://msdn.microsoft.com/library/windowsazure/jj650016.aspx).
 > 
 > 
 > [!NOTE]
-> V tomto kurzu systému SQL Server je edici, která nasazujete do Azure SQL Database. Během procesu nasazení se podobně jako jiné edice systému SQL Server, skutečné produkční aplikace můžou vyžadovat zvláštní kód pro Azure SQL Database v některých scénářích. Další informace najdete v tématu [pracovat se službou Azure SQL Database](../../../../whitepapers/aspnet-data-access-content-map.md#ssdb) a [výběru mezi SQL serverem a Azure SQL Database](../../../../whitepapers/aspnet-data-access-content-map.md#ssdbchoosing).
+> V tomto kurzu SQL Server edice, do které nasazujete, Azure SQL Database. I když je proces nasazení podobný jiným verzím SQL Server, skutečná produkční aplikace může vyžadovat speciální kód pro Azure SQL Database v některých scénářích. Další informace najdete v tématu [práce s Azure SQL Database](../../../../whitepapers/aspnet-data-access-content-map.md#ssdb) a [Výběr mezi SQL Server a Azure SQL Database](../../../../whitepapers/aspnet-data-access-content-map.md#ssdbchoosing).
 > 
 > [!div class="step-by-step"]
 > [Předchozí](setting-folder-permissions.md)
-> [další](deploying-a-code-update.md)
+> [Další](deploying-a-code-update.md)

@@ -1,43 +1,43 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
-title: (Vytváření skutečných cloudových aplikací s Azure) strategie dělení dat | Dokumentace Microsoftu
+title: Strategie dělení dat (vytváření skutečných cloudových aplikací s Azure) | Microsoft Docs
 author: MikeWasson
-description: Vytváření reálného světa cloudových aplikací s Azure e kniha je založená na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které se dají mu...
+description: Vytváření reálných cloudových aplikací pomocí Azure je založené na prezentaci vyvinuté Scottem Guthrie. Vysvětluje 13 vzorů a postupů, které mohou...
 ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: 513837a7-cfea-4568-a4e9-1f5901245d24
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
 msc.type: authoredcontent
-ms.openlocfilehash: 3aecd64bc59ffa961aa97dd30b037f9aeb2acdd8
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 2f79b1f459aff3e81dab7ea7eb4ebf3f71084463
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65118899"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74585807"
 ---
-# <a name="data-partitioning-strategies-building-real-world-cloud-apps-with-azure"></a>(Vytváření skutečných cloudových aplikací s Azure) strategie dělení dat
+# <a name="data-partitioning-strategies-building-real-world-cloud-apps-with-azure"></a>Strategie dělení dat (vytváření skutečných cloudových aplikací s Azure)
 
-podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Petr Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
 
-[Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
+[Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
-> **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o této sérii, naleznete v tématu [první kapitoly](introduction.md).
+> **Vytváření reálných cloudových aplikací pomocí Azure** je založené na prezentaci vyvinuté Scottem Guthrie. Vysvětluje 13 vzorů a postupů, které vám pomůžou úspěšně vyvíjet webové aplikace pro Cloud. Informace o řadě najdete v [první kapitole](introduction.md).
 
-Dříve jsme viděli, jak je snadné škálování webové vrstvy cloudové aplikace, přidáváním a odebíráním webových serverů. Ale pokud jsou všechny vyskytuje stejného úložiště dat, kritickým bodem aplikace přesune z front-endu do back endu a datovou vrstvou je nejtěžší možností škálování. V této kapitole podíváme jak můžete provést datovou vrstvu, škálovatelné dělení dat do více relačních databází, nebo kombinací relační databáze úložiště u jiných možností úložiště dat.
+Dříve jsme viděli, jak snadné je škálovat webovou vrstvu cloudové aplikace tím, že přidáte a odeberete webové servery. Pokud ale všechny mají stejné úložiště dat, vaše kritická místa vaší aplikace se pohybují od front-endu po back-endu a Datová vrstva je nejzávažnější pro škálování. V této kapitole se podíváme na to, jak můžete vytvořit škálovatelnou datovou vrstvu pomocí dělení dat do několika relačních databází nebo kombinací relačního úložiště databáze s dalšími možnostmi úložiště dat.
 
-Nastavení schéma rozdělení oddílů je vhodné si přední ze stejného důvodu již bylo zmíněno dříve Hotovo: je velmi obtížné, chcete-li změnit vaší strategie úložiště dat po aplikaci v produkčním prostředí. "Twitter chvíli" když vaše aplikace dojde k chybě nebo ocitne mimo provoz delší dobu, během reorganizovat data a kód přístupu k datům vaší aplikace můžete vyhnout názor pevné ještě před zahájením různé přístupy.
+Nastavení schématu dělení se nejlépe dokončí na stejný důvod zmíněný výše: je velmi obtížné změnit strategii úložiště dat, když je aplikace v produkčním prostředí. Pokud si myslíte, že zadáte nadzávažnější informace o různých přístupech, můžete se vyhnout tomu, že při selhání aplikace nebo při změně uspořádání dat aplikace a kódu přístupu k datům dojde k delší době.
 
-## <a name="the-three-vs-of-data-storage"></a>Tři Vs úložiště dat
+## <a name="the-three-vs-of-data-storage"></a>Tři datové úložiště v vs.
 
-Aby bylo možné určit, jestli potřebujete strategie dělení a jaké by měly být, vezměte v úvahu tři otázky týkající se vašich dat:
+Abyste zjistili, jestli potřebujete strategii dělení a co by měla být, zvažte tři otázky týkající se vašich dat:
 
-- Takže v konečném důsledku svazek – kolik dat budete ukládat? Několik gigabajtů? Několik stovek GB? Terabajtů? Petabajty?
-- Rychlost – co je rychlost, jakou se zvýší vaše data? Je interní aplikace, které se generuje velké množství dat? Externí aplikaci, která zákazníkům se nahrávání, obrázky a videa do?
-- Uložení různých – jaký typ dat se vám? Relační, obrázky, páry klíč hodnota, sociální grafy?
+- Volume – kolik dat budete nakonec ukládat? Pár gigabajtů? Pár stovek gigabajtů? Terabajtů? Petabajty?
+- Rychlost – jakou rychlost budou vaše data růst? Je to interní aplikace, která negeneruje hodně dat? Externí aplikace, do které budou zákazníci nahrávat obrázky a videa?
+- Různé – jaký typ dat budete ukládat? Relační, image, páry klíč-hodnota, sociální grafy?
 
-Pokud se domníváte, že budete mít spoustu objem, rychlost nebo celé řady, budete muset pečlivě zvažte, jaký druh schéma rozdělení oddílů nejlépe umožní vaší aplikace určené ke škálování efektivně a účinně jak roste a zajistit není narazíte na případné kritické body.
+Pokud si myslíte, že budete mít spoustu objemů, rychlostí nebo rozmanitosti, musíte pečlivě zvážit, jaký druh schématu dělení bude nejlépe umožňovat efektivní a efektivní škálování vaší aplikace, a zajistit, aby nedošlo k žádným kritickým bodům.
 
-V podstatě existují tři přístupy k vytváření oddílů:
+Vytváření oddílů má v podstatě tři přístupy:
 
 - Vertikální dělení
 - Horizontální dělení
@@ -45,70 +45,70 @@ V podstatě existují tři přístupy k vytváření oddílů:
 
 ## <a name="vertical-partitioning"></a>Vertikální dělení
 
-Svislé rozporcování je jako rozdělení tabulku podle sloupce: jednu sadu sloupců přejde do jednoho úložiště dat, a jinou sadu sloupců přejde do jiné datové úložiště.
+Svislá část je podobná rozdělení tabulky po sloupcích: jedna sada sloupců přejde do jednoho úložiště dat a další sada sloupců přejde do jiného úložiště dat.
 
-Předpokládejme například, že Moje aplikace ukládá data o uživatelích, včetně imagí:
+Předpokládejme například, že moje aplikace ukládá data o lidech, včetně obrázků:
 
 ![Tabulka dat](data-partitioning-strategies/_static/image1.png)
 
-Když představují tato data jako tabulku a podívejte se na různé typy dat, zobrazí se mají tři sloupce na levé straně řetězcová data, která můžete efektivně ukládat relační databázi, dva sloupce na pravé straně jsou v podstatě bajtová pole c pár z obrazových souborů. Je možné úložiště bitové kopie souboru data do relační databáze a velké množství lidí to, protože nebudete chtít uložit data do systému souborů. Nemusí mít systém souborů umožňující ukládání požadované objemy dat nebo nebudete chtít spravovat samostatnou zálohování a obnovení systému. Tento přístup funguje dobře u místních databází a pro malé množství dat v cloudových databázích. V místním prostředí může být jednodušší stačí nechat DBA postará o všechno.
+Když tato data reprezentujete jako tabulku a můžete se podívat na různé odrůdy dat, vidíte, že tři sloupce na levé straně obsahují řetězcová data, která je možné efektivně ukládat relační databází, zatímco dva sloupce na pravé straně mají v podstatě Bajtová pole, která c teré z obrazových souborů. Je možné uložit data souboru bitové kopie v relační databázi a spousta lidí, protože nechtějí ukládat data do systému souborů. Nemusí mít systém souborů schopný ukládat požadované objemy dat nebo nemusí spravovat samostatný systém zálohování a obnovení. Tento přístup funguje dobře pro místní databáze a pro malé objemy dat v cloudových databázích. V místním prostředí může být snazší, aby se usnadnilo, aby se zjednodušilo všechno, co je potřeba.
 
-Ale v databázi cloud storage je poměrně nákladné a velký počet imagí dokonce vytvářet velikosti databáze nad rámec, za které se mohou pracovat efektivně rozšiřovat. Řešení těchto problémů tím dělení dat svisle, což znamená, že vyberete nejvhodnější úložiště dat pro každý sloupec v tabulce dat. Co může být nejvhodnější pro účely tohoto příkladu je umístění řetězcová data do relační databáze a obrázků v úložišti objektů Blob.
+Ale v cloudové databázi je úložiště poměrně nákladné a velký objem imagí může způsobit, že velikost databáze přesáhne limity, při kterých může fungovat efektivně. Tyto problémy můžete vyřešit vertikálním rozdělením dat, což znamená, že pro každý sloupec v tabulce dat vyberete nejvhodnější úložiště dat. To, co by mohlo být pro tento příklad fungovat nejlépe, je vložení řetězcových dat do relační databáze a imagí v úložišti objektů BLOB.
 
-![Vertikálně dělené tabulky dat](data-partitioning-strategies/_static/image2.png)
+![Tabulka dat svisle rozdělená na oddíly](data-partitioning-strategies/_static/image2.png)
 
-Ukládání imagí v úložišti objektů Blob místo databáze je praktičtější v cloudu než v místním prostředí, protože není nutné se starat o nastavování souborové servery a Správa zálohování a obnovení dat uložených mimo relační databáze: všechny který se udělá za vás automaticky pomocí služby Blob storage.
+Ukládání imagí v BLOB Storage místo databáze je v cloudu více praktické, než v místním prostředí, protože se nemusíte starat o nastavení souborových serverů nebo správu zálohování a obnovení dat uložených mimo relační databázi: vše Tím se automaticky zpracuje služba BLOB Storage.
 
-Jedná se o dělení postup implementovali jsme v aplikace Fix It, a podíváme se na kód pro, který v [kapitoly úložiště objektů Blob](unstructured-blob-storage.md). Bez této schéma vytváření oddílů a za předpokladu, že průměrná image množství 3 MB aplikace Fix It by pouze moci ukládat asi 40 000 úloh před tím databáze maximální velikosti 150 GB. Po odebrání Image, můžete ukládat databázi 10 třikrát tolik úloh; můžete přejít mnohem déle dříve, než máte přemýšlet o implementaci vodorovné schéma vytváření oddílů. A jako škálování aplikace, vaše výdaje růst pomaleji, protože hromadné požadavky na ukládání se přicházející do velmi cenově dostupné úložiště objektů Blob.
+Toto je přístup k dělení, který jsme implementovali v aplikaci pro opravu IT, a podíváme se na kód, který najdete v [kapitole BLOB Storage](unstructured-blob-storage.md). Bez tohoto schématu dělení a za předpokladu, že průměrná velikost Image je 3 MB, bude aplikace Fix it moct Uložit asi 40 000 úloh jenom předtím, než zasáhne maximální velikost databáze 150 gigabajtů. Po odebrání imagí může databáze aplikace uložit 10 časů jako mnoho úkolů. než se budete muset zamyslet na implementaci horizontálního schématu dělení, můžete to trvat mnohem déle. A když se aplikace škáluje, vaše náklady se budou považovat pomaleji, protože hromadné požadavky na úložiště se blíží velmi levnému úložišti objektů BLOB.
 
-## <a name="horizontal-partitioning-sharding"></a>Horizontální dělení (sharding)
+## <a name="horizontal-partitioning-sharding"></a>Horizontální dělení (horizontálního dělení)
 
-Vodorovné rozporcování je jako rozdělení tabulky po řádcích: jednu sadu řádků přejde do jednoho úložiště dat, a jinou sadu řádků přejde do jiné datové úložiště.
+Vodorovná část je podobná rozdělení tabulky podle řádků: jedna sada řádků přejde do jednoho úložiště dat a další sada řádků přejde do jiného úložiště dat.
 
-S ohledem stejnou sadu dat, Další možností je ukládat různé rozsahy názvů zákazníků v různých databázích.
+Vzhledem k tomu, že stejná sada dat je, Další možností je uložit různé rozsahy názvů zákazníků do různých databází.
 
-![Horizontálně dělené do oddílů tabulky dat](data-partitioning-strategies/_static/image3.png)
+![Tabulka dat horizontálně rozdělená](data-partitioning-strategies/_static/image3.png)
 
-Chcete buďte velmi opatrní vaše schéma horizontálního dělení, abyste měli jistotu, že data jsou distribuovaná rovnoměrně předejdete tak aktivní body. Tento jednoduchý příklad použití první písmeno příjmení nesplňuje tento požadavek, protože poslední s názvy začínajícími některých běžných písmena mají velký počet uživatelů. Omezení velikosti tabulky by přístupů dříve, než byste očekávali, protože některé databáze by být velmi rozsáhlé, zatímco většina by zůstala malé.
+Pokud chcete zajistit, aby se data rovnoměrně rozhorizontálního dělenía, aby se předešlo značným skvrnám, měli byste být velmi opatrní. Tento jednoduchý příklad s použitím prvního písmene posledního názvu nesplňuje tento požadavek, protože příjmení, která začínají některými běžnými písmeny, má několik lidí. Měli byste využít omezení velikosti tabulky starší, než byste očekávali, protože některé databáze by byly velmi velké, zatímco většina by zůstala malá.
 
-Dolů na straně horizontální dělení je, že může být obtížně provádět dotazy napříč všechna data. V tomto příkladu dotaz musel čerpat až 26 různými databázemi. Chcete-li získat všechna data ukládaná aplikaci.
+Vedlejší stranou horizontálního dělení na oddíly je, že může být obtížné provádět dotazy napříč všemi daty. V tomto příkladu by se dotaz musel nakreslit od až 26 různých databází, aby se získala všechna data, která aplikace ukládá.
 
 ## <a name="hybrid-partitioning"></a>Hybridní dělení
 
-Můžete kombinovat vertikálním a horizontálním dělení. V příkladu s daty můžete například uložit obrázky v úložišti objektů Blob a horizontálně dělit data řetězec.
+Můžete zkombinovat vertikální a horizontální dělení. V ukázkových datech například můžete ukládat obrázky do úložiště objektů BLOB a horizontálně rozdělit data řetězců.
 
-![Tabulka hybridní data rozdělit na oddíly](data-partitioning-strategies/_static/image4.png)
+![Hybridní oddíly v tabulce dat](data-partitioning-strategies/_static/image4.png)
 
 ## <a name="partitioning-a-production-application"></a>Dělení produkční aplikace
 
-Obecně je snadno zjistit, jak by fungovalo schéma rozdělení oddílů, ale jakékoli schéma dělení zvyšuje složitost kódu a přináší mnoho nových komplikace, které budete muset řešit. Pokud přesouváte obrázky do úložiště objektů blob, co můžete dělat při služba storage je mimo provoz? Jak zpracujete zabezpečení objektů blob Co se stane, když databáze a blob storage se rozsynchronizovat? Pokud jste horizontálního dělení, jak bude zpracovávat dotazování napříč všechny databáze?
+V konceptuální části je snadné zjistit, jak funguje schéma dělení, ale jakékoli schéma dělení zvyšuje složitost kódu a zavádí mnoho nových komplikací, které je třeba řešit. Pokud přesouváte image do úložiště objektů blob, co uděláte při nečinnosti služby úložiště? Jak zvládnout zabezpečení objektů BLOB? Co se stane, když se databáze a úložiště objektů BLOB vystanou nesynchronizovanými? Pokud jste horizontálního dělení, jak budete zpracovávat dotazy napříč všemi databázemi?
 
-Komplikace jsou spravovatelné tak dlouho, dokud máte v plánu pro ně před přechodem do produkčního prostředí. Mnoho uživatelů, kteří neprovedli, které chcete měli později. V průměru náš tým zákazníka poradní tým (CAT) získá panicked telefonní hovory o jednou za měsíc od zákazníků, jejichž aplikace je možné tak Opravdu velký a nedělalo toto plánování. A říká něco jako: "Help! Můžu dát všechno v jednom datovém úložišti, a během 45 dnů si vyberu vyčerpala volné místo na to!" A pokud máte velké množství obchodní logiky, které jsou součástí jak získat přístup k úložišti dat a máte zákazníky, kteří používají vaši aplikaci, neexistuje žádná vhodná doba za den během migrace. Nakonec jsme projít herculean úsilí, abychom oddílu odběratele svá data v reálném čase s žádné výpadkům. Je Úžasná a velmi scary a nemít něco chcete být součástí pokud ho se můžete vyhnout! Uvažujete o to ještě před zahájením a integraci do vaší aplikace vám usnadní život mnohem Pokud aplikace poroste později.
+Komplikace je možné spravovat tak dlouho, dokud je naplánujete před přechodem do produkčního prostředí. Spousta lidí, kteří si ji neudělali později. V průměru náš tým pro poradenské zákazníky (CAT) panicked telefonní hovory o jednou měsíčně od zákazníků, jejichž aplikace se ve skutečnosti vybírají a nevedly k tomuto plánování. A říkají něco jako: "Help! Všechno je v jednom úložišti dat a během 45 dnů se na něj nespouští místo. " A pokud máte spoustu obchodní logiky, kterou máte k dispozici v tom, jak přistupujete k úložišti dat a máte zákazníky, kteří používají vaši aplikaci, nemusíte v průběhu migrace přejít na denní dobu. Provedeme vás herculean úsilím, abychom zákazníkům usnadnili rozdělení jejich dat bez výpadku. Je velmi zajímavá a velmi scaryá a nejedná se o něco, co byste chtěli mít v situaci, kdy se můžete vyhnout! Zamyslete se nad tím a integrací IT do vaší aplikace, takže když se aplikace později rozroste, pomůže vám to být mnohem jednodušší.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Efektivní schéma rozdělení oddílů můžete povolit škálování na petabajty dat v cloudu bez kritické body cloudové aplikace. A není nutné ještě před zahájením pro masivní počítače nebo rozsáhlou infrastrukturu platit podle využití může aplikaci spustili v místním datacentru. V cloudu můžete inkrementálně přidávat kapacity ji budete potřebovat a budete platit pouze pro tak, jak používáte když ji použijete.
+Efektivní schéma dělení umožňuje, aby se vaše cloudová aplikace mohla škálovat tak, aby petabajty data v cloudu bez kritických míst. A nemusíte platit předem pro obrovské počítače nebo rozsáhlou infrastrukturu, protože byste aplikaci spustili v místním datovém centru. V cloudu můžete postupně přidávat kapacitu, jak ji budete potřebovat, a platíte jenom za to, jak budete používat.
 
-V [další kapitolu](unstructured-blob-storage.md) uvidíme, jak aplikace Fix It implementuje vertikální dělení ukládáním imagí ve službě Blob storage.
+V [Další části](unstructured-blob-storage.md) se dozvíte, jak aplikace pro opravu IT implementuje vertikální dělení tím, že ukládá obrázky do úložiště objektů BLOB.
 
 ## <a name="resources"></a>Prostředky
 
-Další informace o strategie dělení najdete v následující prostředky.
+Další informace o strategiích dělení naleznete v následujících zdrojích informací.
 
-Dokumentace ke službě:
+Nápovědě
 
-- [Osvědčené postupy pro navrhování rozsáhlých služeb v systému Windows Azure Cloud Services](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx). Dokument White paper Mark Simms a Michael Thomassy.
-- [Microsoft Patterns and Practices - způsoby návrhu v cloudu](https://msdn.microsoft.com/library/dn568099.aspx). Zobrazit Data pokyny k dělení, model horizontálního dělení.
+- [Osvědčené postupy pro návrh rozsáhlých služeb na platformě Windows Azure Cloud Services](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx). Dokument White Paper, který označuje Simms a Michael Thomassy.
+- [Vzory a postupy Microsoft – vzory návrhu pro Cloud](https://msdn.microsoft.com/library/dn568099.aspx) Viz pokyny k dělení dat, horizontálního dělení vzor.
 
 Videa:
 
-- [Bezporuchový: Vytváření škálovatelných, odolných cloudových služeb](https://channel9.msdn.com/Series/FailSafe). Ulrich Homann, Marc Mercuri a Mark Simms devět částí série. Nabídne základními koncepty a Principy architektury tak vysoce dostupné a zajímavé příběhy z prostředí Microsoft zákazníka poradní tým (CAT) se skutečným zákazníkům. Viz dělení diskuze v epizodě 7.
-- [Vytváření velké objemy: Získané od zákazníků Windows Azure – část I](https://channel9.msdn.com/Events/Build/2012/3-029). Mark Simms schémata dělení, strategií horizontálního dělení, tento článek popisuje způsob implementace horizontálního dělení a federace databáze SQL, od 19:49. Podobně jako řady bezporuchový ale přejde do další postupy podrobnosti.
+- [Failsafe: vytváření škálovatelných, odolných Cloud Services](https://channel9.msdn.com/Series/FailSafe). Devět částí podle Ulrich Homann, matolin Mercuri a označit Simms. Prezentuje základní koncepty a principy architektury v rámci velmi přístupného a zajímavého způsobu, který vychází ze zkušeností zákazníků Microsoftu pro poradenské zákazníky (CAT) se skutečnými zákazníky. Viz diskuzi o dělení ve epizodě 7.
+- [Sestavování velkých: lekcí získaných od zákazníků Windows Azure – část I](https://channel9.msdn.com/Events/Build/2012/3-029). Označení Simms popisuje schémata dělení, strategie horizontálního dělení, způsob implementace horizontálního dělení a SQL Databasech federace od 19:49. Podobně jako u řady Failsafe, ale odkazuje na další podrobnosti.
 
-Ukázkový kód:
+Vzorový kód:
 
-- [Cloud Service Fundamentals v Windows Azure](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Ukázková aplikace, která zahrnuje horizontálně dělené databáze. Popis schéma horizontálního dělení implementovat, najdete v části [DAL – horizontální dělení RDBMS](https://blogs.msdn.com/b/windowsazure/archive/2013/09/05/dal-sharding-of-rdbms.aspx) na blogu Windows Azure.
+- [Základy cloudových služeb v systému Windows Azure](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Ukázková aplikace, která obsahuje databázi horizontálně dělené Popis implementovaného schématu horizontálního dělení najdete v tématu [dal – horizontálního dělení of RDBMS](https://blogs.msdn.com/b/windowsazure/archive/2013/09/05/dal-sharding-of-rdbms.aspx) na blogu Windows Azure.
 
 > [!div class="step-by-step"]
 > [Předchozí](data-storage-options.md)
-> [další](unstructured-blob-storage.md)
+> [Další](unstructured-blob-storage.md)

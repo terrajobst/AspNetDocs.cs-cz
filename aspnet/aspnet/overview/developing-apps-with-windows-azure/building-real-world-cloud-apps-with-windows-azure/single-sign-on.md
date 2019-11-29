@@ -1,88 +1,88 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/single-sign-on
-title: Jednotné přihlašování (vytváření skutečných cloudových aplikací s Azure) | Dokumentace Microsoftu
+title: Jednotné přihlašování (vytváření skutečných cloudových aplikací s Azure) | Microsoft Docs
 author: MikeWasson
-description: Vytváření reálného světa cloudových aplikací s Azure e kniha je založená na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které se dají mu...
+description: Vytváření reálných cloudových aplikací pomocí Azure je založené na prezentaci vyvinuté Scottem Guthrie. Vysvětluje 13 vzorů a postupů, které mohou...
 ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: 7d82d5e9-0619-4f22-9e03-32a6d52940a5
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/single-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: 8f6c23eb71ea323b6ab06943097f927f717a8099
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 7e32f444dc38132296cffd45ac658f5abf51f314
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65118749"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74585283"
 ---
 # <a name="single-sign-on-building-real-world-cloud-apps-with-azure"></a>Jednotné přihlašování (vytváření skutečných cloudových aplikací s Azure)
 
-podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Petr Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
 
-[Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
+[Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
-> **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o e kniha najdete v tématu [první kapitoly](introduction.md).
+> **Vytváření reálných cloudových aplikací pomocí Azure** je založené na prezentaci vyvinuté Scottem Guthrie. Vysvětluje 13 vzorů a postupů, které vám pomůžou úspěšně vyvíjet webové aplikace pro Cloud. Informace o elektronické příručce najdete v [první kapitole](introduction.md).
 
-Existuje mnoho problémů se zabezpečením zamyslet, když vytváříte cloudové aplikace, ale pro tuto sérii zaměříme na jenom jednom: jednotné přihlašování. Otázky, na kterou lidé často ptají, je následující: "Jsem jsem primárně vytváření aplikací pro zaměstnance společnosti; jak hostování těchto aplikací v cloudu a stále povolit je, aby používaly stejný model zabezpečení, který svých zaměstnanců znají a používat v místním prostředí, když běží aplikace, které jsou hostované za firewallem?" Jeden ze způsobů, jak můžeme povolit tento scénář se nazývá Azure Active Directory (Azure AD). Azure AD umožňuje zpřístupnit enterprise-obchodní (LOB) aplikacím přes Internet a umožňuje zpřístupnit tyto aplikace a obchodními partnery.
+Při vývoji cloudové aplikace je potřeba vzít v úvahu mnoho problémů se zabezpečením, ale pro tuto řadu se zaměříme jenom na jedno: jednotné přihlašování. Lidé se často dotazují: "Já jsem sestavovat aplikace pro zaměstnance mojí společnosti; Jak můžu hostovat tyto aplikace v cloudu a pořád jim povolit, aby používali stejný model zabezpečení, který mají zaměstnanci vědět a používají v místním prostředí, když běží aplikace, které jsou hostované v bráně firewall? " Jedním z způsobů, jak tento scénář povolit, se říká Azure Active Directory (Azure AD). Azure AD umožňuje zpřístupnit podnikovým podnikovým aplikacím přístup přes Internet a umožňuje zpřístupnit tyto aplikace i obchodním partnerům.
 
-## <a name="introduction-to-azure-ad"></a>Úvod do služby Azure AD
+## <a name="introduction-to-azure-ad"></a>Seznámení s Azure AD
 
-[Azure AD](https://docs.microsoft.com/azure/active-directory/) poskytuje [služby Active Directory](https://msdn.microsoft.com/library/windows/desktop/aa746492.aspx) v cloudu. Klíčové funkce patří:
+[Azure AD](https://docs.microsoft.com/azure/active-directory/) poskytuje [službu Active Directory](https://msdn.microsoft.com/library/windows/desktop/aa746492.aspx) v cloudu. Mezi klíčové funkce patří následující:
 
-- Integruje místní služby Active Directory.
+- Integruje se s místní službou Active Directory.
 - Umožňuje jednotné přihlašování s vašimi aplikacemi.
-- Podporuje otevřených standardů, jako [SAML](http://en.wikipedia.org/wiki/SAML_2.0), [WS-Fed](http://en.wikipedia.org/wiki/WS-Federation), a [OAuth 2.0](http://oauth.net/2/).
-- Podporuje organizace [rozhraní REST API služby Graph](https://msdn.microsoft.com/library/hh974476.aspx).
+- Podporuje otevřené standardy, jako je [SAML](http://en.wikipedia.org/wiki/SAML_2.0), [WS-dokrmený](http://en.wikipedia.org/wiki/WS-Federation)a [OAuth 2,0](http://oauth.net/2/).
+- Podporuje REST API podnikového [grafu](https://msdn.microsoft.com/library/hh974476.aspx).
 
-Předpokládejme, že máte v místním prostředí systému Windows Server Active Directory, který používáte, abyste mohli zaměstnancům zajistit Přihlaste se k intranetu aplikace:
+Předpokládejme, že máte místní prostředí Windows serveru Active Directory, které se používá k tomu, aby se zaměstnanci mohli přihlašovat k intranetovým aplikacím:
 
 ![](single-sign-on/_static/image1.png)
 
-Co Azure AD díky tomu můžete je vytvořit adresář v cloudu. Je to bezplatná funkce a umožňují snadné nastavení.
+To, co Azure AD umožňuje, je vytvořit adresář v cloudu. Je to bezplatná funkce a snadno se nastavuje.
 
-Může být zcela nezávislý na vaše místní službu Active Directory. můžete vložit kdokoli má v sobě a jejich ověření v aplikacích Internet.
+Může být zcela nezávislá na vaší místní službě Active Directory. můžete do něj umístit libovolného někoho a ověřit je v internetových aplikacích.
 
-![Windows Azure Active Directory](single-sign-on/_static/image2.png)
+![Microsoft Azure Active Directory](single-sign-on/_static/image2.png)
 
-Nebo ji integrovat s místní AD.
+Nebo ho můžete integrovat s místní službou AD.
 
-![AD a WAAD integrace](single-sign-on/_static/image3.png)
+![Integrace AD a WAAD](single-sign-on/_static/image3.png)
 
-Nyní všichni zaměstnanci, kteří můžou ověřovat místní objekt moci ověřovat také přes Internet – aniž by bylo nutné otevírat brány firewall nebo nasazovat nové servery ve vašem datovém centru. Můžete dál využívat všechny stávajícího prostředí Active Directory, které znáte a používáte poskytnout vaše interní aplikace jednotného přihlašování na funkce.
+Všichni zaměstnanci, kteří se můžou místně ověřovat v místním prostředí, se teď můžou ověřit přes Internet – bez nutnosti otevírat bránu firewall nebo nasazovat nové servery v datovém centru. Můžete dál využívat všechny existující prostředí Active Directory, které znáte a dnes používáte, a poskytnout tak interním aplikacím možnost jednotného přihlašování.
 
-Po provedení tohoto připojení mezi službami AD a Azure AD, můžete také povolit webových aplikací a mobilních zařízení k ověření vaši zaměstnanci v cloudu a můžete povolit aplikacím třetích stran, jako je Office 365 a SalesForce.com, Google apps, tak, aby přijímal vaší přihlašovací údaje zaměstnanců. Pokud používáte Office 365, máte již nastavíte s Azure AD vzhledem k tomu Office 365 používá Azure AD pro ověřování a autorizaci.
+Jakmile provedete toto propojení mezi službami AD a Azure AD, můžete také povolit vašim webovým aplikacím a mobilním zařízením ověřování zaměstnanců v cloudu a povolit aplikace třetích stran, jako je například Office 365, SalesForce.com nebo Google, přijmout vaše přihlašovací údaje zaměstnanců. Pokud používáte Office 365, už jste si nastavili Azure AD, protože Office 365 používá k ověřování a autorizaci službu Azure AD.
 
-![3. stran aplikace](single-sign-on/_static/image4.png)
+![aplikace třetích stran](single-sign-on/_static/image4.png)
 
-Výhodou tohoto přístupu je, že vaše organizace přidá nebo odstraní uživatele, nebo uživatel změní heslo, použijte stejný postup, který už dnes používáte v místním prostředí. Všechny z místní AD změny automaticky rozšíří na cloudovém prostředí.
+Krásy tohoto přístupu je to, že kdykoli vaše organizace přidá nebo odstraní uživatele nebo když uživatel změní heslo, použijete stejný proces, který dnes využijete v místním prostředí. Všechny změny vaší místní služby Active Directory se automaticky rozšíří do cloudového prostředí.
 
-Pokud vaše společnost používá nebo přesunutí do Office 365, dobrou zprávou je, že bude nutné nastavit automaticky protože Office 365 používá Azure AD pro ověřování Azure AD. Abyste mohli snadno použít ve své vlastní aplikace stejným ověřování, které používá Office 365.
+Pokud vaše společnost používá nebo přesouvá sadu Office 365, dobrá zpráva je, že budete mít službu Azure AD nastavenou automaticky, protože sada Office 365 pro ověřování používá službu Azure AD. Takže můžete snadno použít ve svých aplikacích stejné ověřování, které používá sada Office 365.
 
-## <a name="set-up-an-azure-ad-tenant"></a>Nastavení tenanta služby Azure AD
+## <a name="set-up-an-azure-ad-tenant"></a>Nastavení tenanta Azure AD
 
-adresář Azure AD se volá s Azure AD [tenanta](https://technet.microsoft.com/library/jj573650.aspx), a nastavení klienta je poměrně snadné. Vám ukážeme, jak se provádí v portálu pro správu Azure k objasnění konceptů, ale samozřejmě jako dalších funkcí portálu můžete provést také ho pomocí skriptu nebo rozhraní API pro správu.
+adresář služby Azure AD se nazývá [tenant](https://technet.microsoft.com/library/jj573650.aspx)Azure AD a nastavení tenanta je poměrně snadné. Ukážeme vám, jak se to provede v Azure Portál pro správu, aby bylo možné ilustrovat koncepty, ale samozřejmě jako jiné funkce portálu to můžete udělat také pomocí skriptu nebo rozhraní API pro správu.
 
-V portálu pro správu klikněte na kartu služby Active Directory.
+Na portálu pro správu klikněte na kartu Active Directory.
 
-![WAAD portálu](single-sign-on/_static/image5.png)
+![WAAD na portálu](single-sign-on/_static/image5.png)
 
-Máte jednoho tenanta Azure AD automaticky ke svému účtu Azure a můžete kliknout **přidat** tlačítko v dolní části stránky a vytvořte další adresáře souborů. Jednu pro testovací prostředí a druhý pro produkční prostředí, může být například vhodné. Pečlivě zvážit, co zadáte název nového adresáře. Pokud pak použijete název znovu jednoho z uživatelů, použijte název vašeho adresáře, který může být matoucí.
+Pro svůj účet Azure máte automaticky jednoho tenanta Azure AD a můžete kliknout na tlačítko **Přidat** v dolní části stránky a vytvořit další adresáře. Můžete chtít jeden pro testovací prostředí a jeden pro produkční prostředí, například. Zamyslete se nad tím, co pojmenujte nový adresář. Pokud pro tento adresář použijete své jméno a potom pro jednoho z nich použijete své jméno, může to být matoucí.
 
 ![Přidat adresář](single-sign-on/_static/image6.png)
 
-Portál obsahuje plnou podporu pro vytváření, odstraňování a správu uživatelů v rámci tohoto prostředí. Například, chcete-li přidat uživatele přejít na **uživatelé** kartě a klikněte na tlačítko **přidat uživatele** tlačítko.
+Portál má úplnou podporu pro vytváření, odstraňování a správu uživatelů v rámci tohoto prostředí. Pokud například chcete přidat uživatele, přejděte na kartu **Uživatelé** a klikněte na tlačítko **Přidat uživatele** .
 
 ![Tlačítko Přidat uživatele](single-sign-on/_static/image7.png)
 
-![Přidat dialog uživatele](single-sign-on/_static/image8.png)
+![Přidat uživatelský dialog](single-sign-on/_static/image8.png)
 
-Můžete vytvořit nového uživatele, který se nachází pouze v tomto adresáři, nebo můžete zaregistrovat Account Microsoft jako uživatel v tomto adresáři, nebo register nebo uživatele z jiného adresáře služby Azure AD jako uživatel v tomto adresáři. (V adresáři skutečné, výchozí domény by ContosoTest.onmicrosoft.com. Můžete také použít doménu podle vlastního výběru, třeba contoso.com.)
+Můžete vytvořit nového uživatele, který existuje pouze v tomto adresáři, nebo můžete zaregistrovat účet Microsoft jako uživatele v tomto adresáři nebo zaregistrovat nebo uživatele z jiného adresáře služby Azure AD jako uživatel v tomto adresáři. (Ve skutečném adresáři by se ContosoTest.onmicrosoft.com výchozí doména. Můžete také použít doménu podle vlastního výběru, například contoso.com.)
 
 ![Uživatelské typy](single-sign-on/_static/image9.png)
 
-![Přidat dialog uživatele](single-sign-on/_static/image10.png)
+![Přidat uživatelský dialog](single-sign-on/_static/image10.png)
 
-Přiřadit uživatele k roli.
+Uživatele můžete přiřadit k roli.
 
 ![Profil uživatele](single-sign-on/_static/image11.png)
 
@@ -90,105 +90,105 @@ A účet se vytvoří s dočasným heslem.
 
 ![Dočasné heslo](single-sign-on/_static/image12.png)
 
-Uživatele vytvoříte tímto způsobem můžete okamžitě Přihlaste se k vaší webové aplikace s využitím tento adresář v cloudu.
+Uživatelé, které vytváříte tímto způsobem, se můžou ke svým webovým aplikacím přihlašovat hned pomocí tohoto adresáře cloudu.
 
-Co se skvěle hodí pro podnikové jednotné přihlašování, ale je **integrace adresáře** kartu:
+To je skvělé pro podnikové jednotné přihlašování, ale je to karta **integrace adresáře** :
 
 ![Karta integrace adresáře](single-sign-on/_static/image13.png)
 
-Pokud povolíte integrace adresáře a [stáhněte si nástroj](https://social.technet.microsoft.com/wiki/contents/articles/19098.howto-install-the-windows-azure-active-directory-sync-tool-now-with-pictures.aspx), můžete synchronizovat tento adresář v cloudu s vaší stávající místní služby Active Directory, který již používáte ve vaší organizaci. Potom všechny uživatele uložené v adresáři se zobrazí tento adresář v cloudu. Cloudové aplikace může ověřit nyní všechny zaměstnance pomocí existujících přihlašovacích údajů služby Active Directory. A všechno, co to je bezplatné – nástroj pro synchronizaci i samotné služby Azure AD.
+Pokud povolíte integraci adresáře a [stáhnete nástroj](https://social.technet.microsoft.com/wiki/contents/articles/19098.howto-install-the-windows-azure-active-directory-sync-tool-now-with-pictures.aspx), můžete tento cloudový adresář synchronizovat se stávající místní službou Active Directory, kterou už ve vaší organizaci používáte. Pak se v tomto cloudovém adresáři zobrazí všichni uživatelé, kteří jsou v adresáři. Vaše cloudové aplikace teď můžou ověřit všechny vaše zaměstnance pomocí svých stávajících přihlašovacích údajů služby Active Directory. A všechno je zdarma – jak synchronizační nástroj, tak i služba Azure AD.
 
-Tento nástroj je průvodce, který se snadno používá, jak je vidět z těchto obrazovek. Ty nejsou úplné pokyny uvedené jenom jako příklad zobrazuje základní proces. Podrobnější postupy-k-it, najdete na odkazech v [prostředky](#resources) části na konci kapitoly.
+Tento nástroj je průvodcem, který se snadno používá, jak můžete vidět z těchto snímků obrazovky. Tyto pokyny nejsou kompletní, jenom příklad, který vám ukáže základní proces. Podrobnější informace o tom, jak to udělat, najdete v odkazech v části [Resources (prostředky](#resources) ) na konci kapitoly.
 
-![Průvodce konfigurací nástroje synchronizace WAAD](single-sign-on/_static/image14.png)
+![Průvodce konfigurací nástroje pro synchronizaci WAAD](single-sign-on/_static/image14.png)
 
-Klikněte na tlačítko **Další**a pak zadejte svoje přihlašovací údaje Azure Active Directory.
+Klikněte na **Další**a potom zadejte přihlašovací údaje Azure Active Directory.
 
-![Průvodce konfigurací nástroje synchronizace WAAD](single-sign-on/_static/image15.png)
+![Průvodce konfigurací nástroje pro synchronizaci WAAD](single-sign-on/_static/image15.png)
 
-Klikněte na tlačítko **Další**a poté zadejte místní přihlašovací údaje služby AD.
+Klikněte na **Další**a potom zadejte svoje místní přihlašovací údaje služby AD.
 
-![Průvodce konfigurací nástroje synchronizace WAAD](single-sign-on/_static/image16.png)
+![Průvodce konfigurací nástroje pro synchronizaci WAAD](single-sign-on/_static/image16.png)
 
-Klikněte na tlačítko **Další**a pak poznáte, zda chcete ukládat hodnoty hash hesla služby AD v cloudu.
+Klikněte na **Další**a pak určete, jestli chcete v cloudu ukládat hodnoty hash hesel služby AD.
 
-![Průvodce konfigurací nástroje synchronizace WAAD](single-sign-on/_static/image17.png)
+![Průvodce konfigurací nástroje pro synchronizaci WAAD](single-sign-on/_static/image17.png)
 
-Hodnota hash hesla, které lze uložit do cloudu tvoří otisk; skutečná hesla se nikdy neukládají v Azure AD. Pokud se rozhodnete pro ukládání hodnoty hash v cloudu, budete muset použít [Active Directory Federation Services](https://technet.microsoft.com/library/hh831502.aspx) (služby AD FS). Existují také [dalších faktorů, které je třeba zvážit při výběru, jestli se mají použít služby AD FS](https://technet.microsoft.com/library/jj573653.aspx). Možnost služby AD FS vyžaduje několik dalších kroků konfigurace.
+Hodnota hash hesla, kterou můžete uložit v cloudu, je jednosměrná hodnota hash. Skutečná hesla se nikdy neukládají v Azure AD. Pokud se rozhodnete ukládat hodnoty hash v cloudu, budete muset použít [Active Directory Federation Services (AD FS)](https://technet.microsoft.com/library/hh831502.aspx) (ADFS). K dispozici jsou také [Další faktory, které byste měli vzít v úvahu při rozhodování, zda používat službu AD FS](https://technet.microsoft.com/library/jj573653.aspx). Možnost ADFS vyžaduje několik dalších kroků konfigurace.
 
-Pokud se rozhodnete ukládat hodnoty hash v cloudu, budete mít a spustí nástroj pro synchronizaci adresářů, po kliknutí na **Další**.
+Pokud se rozhodnete ukládat hodnoty hash do cloudu, jste hotovi a nástroj po kliknutí na **Další**spustí synchronizaci adresářů.
 
-![Průvodce konfigurací nástroje synchronizace WAAD](single-sign-on/_static/image18.png)
+![Průvodce konfigurací nástroje pro synchronizaci WAAD](single-sign-on/_static/image18.png)
 
-A za pár minut budete mít.
+A za pár minut jste hotovi.
 
-![Průvodce konfigurací nástroje synchronizace WAAD](single-sign-on/_static/image19.png)
+![Průvodce konfigurací nástroje pro synchronizaci WAAD](single-sign-on/_static/image19.png)
 
-Stačí ji spustit na jednom řadiči domény v organizaci na Windows serveru 2003 nebo vyšší. A není potřeba restartovat. Když to uděláte, všichni uživatelé jsou v cloudu a můžete provést jednotné přihlašování z jakéhokoli webových nebo mobilních aplikací pomocí SAML a OAuth, WS-Fed.
+Stačí ho spustit na jednom řadiči domény v organizaci ve Windows 2003 nebo novějším. A není nutné restartovat počítač. Až to budete mít, všichni uživatelé budou v cloudu a můžete provádět jednotné přihlašování z libovolné webové nebo mobilní aplikace, pomocí SAML, OAuth nebo WS-dodávání.
 
-Někdy jsme získat požádáni o zabezpečené jde – Microsoft používá ho pro své vlastní citlivá firemní data? A odpověď zní: Ano, co děláme. Například, pokud přejdete na interní web Microsoft SharePoint na [ https://microsoft.sharepoint.com/ ](https://microsoft.sharepoint.com/), výzva k přihlášení.
+V některých případech se dozvíte, jak se to dělá, protože ho Microsoft používá pro vlastní citlivá firemní data? A odpověď je Ano. Například pokud přejdete na interní web Microsoft SharePointu na adrese [https://microsoft.sharepoint.com/](https://microsoft.sharepoint.com/), zobrazí se výzva k přihlášení.
 
 ![Přihlášení k Office 365](single-sign-on/_static/image20.png)
 
-Microsoft má povolenou služby AD FS, takže když zadáte ID Microsoftu, získat přesměruje na přihlašovací stránku služby AD FS.
+Společnost Microsoft povolila službu AD FS, takže když zadáte ID Microsoftu, budete přesměrováni na přihlašovací stránku služby AD FS.
 
-![Přihlášení služby AD FS](single-sign-on/_static/image21.png)
+![Přihlášení k ADFS](single-sign-on/_static/image21.png)
 
-A jakmile zadáte přihlašovací údaje uložené v interní účet Microsoft AD, máte přístup k této interní aplikace.
+A když zadáte přihlašovací údaje uložené v interním účtu Microsoft AD, budete mít přístup k této interní aplikaci.
 
-![MS Sharepointového webu](single-sign-on/_static/image22.png)
+![Web služby SharePoint společnosti Microsoft](single-sign-on/_static/image22.png)
 
-Používáme přihlášení serveru služby AD hlavně, protože již bylo předtím, než jsou dostupné služby Azure AD, ale proces přihlášení prochází adresář Azure AD v cloudu nastavenou službu AD FS. Jsme naše důležité dokumenty, správy zdrojového kódu, souborů správy výkonu, prodejní sestavy a informace, v cloudu a pomocí tohoto přesně stejné řešení je zabezpečit.
+K dispozici je server pro přihlášení k reklamě, protože už jsme nastavili službu AD FS dřív, než se služba Azure AD stala dostupná, ale proces přihlášení projde adresářem služby Azure AD v cloudu. Naše důležité dokumenty, Správa zdrojového kódu, soubory pro správu výkonu, prodejní sestavy a další jsou v cloudu a používají toto přesné řešení k zabezpečení.
 
-## <a name="create-an-aspnet-app-that-uses-azure-ad-for-single-sign-on"></a>Vytvoření aplikace ASP.NET využívající Azure AD pro jednotné přihlašování
+## <a name="create-an-aspnet-app-that-uses-azure-ad-for-single-sign-on"></a>Vytvoření aplikace ASP.NET, která používá Azure AD pro jednotné přihlašování
 
-Visual Studio umožňuje skutečně snadno vytvořit aplikaci, která používá Azure AD pro jednotné přihlašování, jak je vidět z několika snímky obrazovky.
+Visual Studio umožňuje opravdu snadno vytvořit aplikaci, která používá Azure AD pro jednotné přihlašování, jak vidíte z několika snímků obrazovky.
 
-Když vytvoříte novou aplikaci ASP.NET, MVC nebo webového formuláře, je výchozí metodu ověřování ASP.NET Identity. Chcete-li změnit, která do služby Azure AD, kliknete **změnit ověřování** tlačítko.
+Při vytváření nové aplikace ASP.NET, MVC nebo webových formulářů, je výchozí metoda ověřování ASP.NET Identity. Pokud ho chcete změnit na Azure AD, klikněte na tlačítko **změnit ověřování** .
 
 ![Změnit ověřování](single-sign-on/_static/image23.png)
 
-Vyberte účty organizace, zadejte název domény a pak vyberte Single Sign On.
+Vyberte účty organizace, zadejte název domény a pak vyberte jednotné přihlašování.
 
-![Konfigurace dialog ověřování.](single-sign-on/_static/image24.png)
+![Dialogové okno Konfigurace ověřování](single-sign-on/_static/image24.png)
 
-Můžete také poskytnout aplikaci pro čtení nebo pro čtení a zápis oprávnění pro adresář data. Pokud to uděláte, můžete použít [REST API služby Azure Graph](https://msdn.microsoft.com/library/windowsazure/hh974476.aspx) k vyhledání uživatelů telefonní číslo, zjistěte, pokud jsou v kanceláři, po poslední přihlášení na atd.
+Můžete taky udělit oprávnění ke čtení nebo čtení a zápisu pro data adresáře aplikace. Pokud to uděláte, může k vyhledání telefonního čísla uživatele použít [REST API Azure Graph](https://msdn.microsoft.com/library/windowsazure/hh974476.aspx) , zjistit, jestli jsou v kanceláři, kdy se naposledy přihlásili atd.
 
-To je všechno, co musíte udělat – Visual Studio výzvu pro přihlašovací údaje pro správce pro vašeho tenanta Azure AD a pak nastaví váš projekt a tenanta Azure AD pro novou aplikaci.
+To je všechno, co musíte udělat – Visual Studio si vyžádá pověření pro správce vašeho tenanta Azure AD a potom nakonfiguruje projekt i tenanta Azure AD pro novou aplikaci.
 
-Při spuštění projektu se zobrazí přihlašovací stránku a můžete se přihlásit pomocí přihlašovacích údajů uživatele v adresáři služby Azure AD.
+Při spuštění projektu se zobrazí přihlašovací stránka a můžete se přihlásit pomocí přihlašovacích údajů uživatele v adresáři služby Azure AD.
 
-![Přihlašovací účet organizace](single-sign-on/_static/image25.png)
+![Přihlášení k účtu org](single-sign-on/_static/image25.png)
 
 ![Přihlášen](single-sign-on/_static/image26.png)
 
-Když nasadíte aplikaci do Azure, je vybrat vše, co musíte udělat **povolit ověřování organizace** zaškrtněte políčko, a ještě jednou všechny konfigurace za vás postará o Visual Studio.
+Když nasadíte aplikaci do Azure, stačí, když zaškrtnete políčko **Povolit ověřování organizace** , a jakmile se Visual Studio bude starat o veškerou konfiguraci za vás.
 
 ![Publikování webu](single-sign-on/_static/image27.png)
 
-Tyto snímky obrazovky pocházejí z úplný podrobný kurz, který ukazuje, jak vytvořit aplikaci, která používá ověřování Azure AD: [Vývoj aplikací ASP.NET pomocí Azure Active Directory](../../../../identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory.md).
+Tyto snímky obrazovky pocházejí z kompletního podrobného kurzu, který ukazuje, jak vytvořit aplikaci, která používá ověřování Azure AD: [vývoj aplikací ASP.NET pomocí Azure Active Directory](../../../../identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory.md).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-V této kapitole jste viděli, že Azure Active Directory, Visual Studio a technologie ASP.NET, umožňují snadno nastavit jednotné přihlašování v aplikacích Internet pro uživatelé ve vaší organizaci. Vaši uživatelé můžou přihlásit v aplikacích Internet pomocí stejných přihlašovacích údajů, které používají k přihlášení pomocí služby Active Directory v interní síti.
+V této kapitole jste viděli, že Azure Active Directory, Visual Studio a ASP.NET usnadňují nastavení jednotného přihlašování v internetových aplikacích pro uživatele vaší organizace. Uživatelé se můžou k internetovým aplikacím přihlašovat pomocí stejných přihlašovacích údajů, které používají k přihlášení pomocí služby Active Directory ve vaší interní síti.
 
-[Další kapitolu](data-storage-options.md) zkoumá možnosti úložiště dat, která je k dispozici pro cloudové aplikace.
+[Další kapitola](data-storage-options.md) si vyhledá možnosti úložiště dat dostupné pro cloudovou aplikaci.
 
 <a id="resources"></a>
 ## <a name="resources"></a>Prostředky
 
-Další informace naleznete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
-- [Dokumentace ke službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Stránka portálu dokumentace ke službě Azure AD na webu windowsazure.com. Podrobné pokyny krok za krokem, najdete v článku **vývoj** oddílu.
-- [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/). Stránka portálu dokumentaci ke službě Multi-Factor authentication v Azure.
-- [Možnosti ověřování účtu organizace](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#orgauthoptions). Vysvětlení možností ověřování Azure AD v dialogovém okně Nový projekt sady Visual Studio 2013.
-- [Microsoft Patterns and Practices - federované Identity vzor](https://msdn.microsoft.com/library/dn589790.aspx).
-- [Postupy: Instalace nástroje Azure Active Directory Sync](https://social.technet.microsoft.com/wiki/contents/articles/19098.howto-install-the-windows-azure-active-directory-sync-tool-now-with-pictures.aspx).
-- [Active Directory Federation Services 2.0 mapa obsahu](https://social.technet.microsoft.com/wiki/contents/articles/2735.ad-fs-2-0-content-map.aspx). Obsahuje odkazy na dokumentaci ke službě AD FS 2.0.
-- [Ověřování založené na rolích a na základě seznamu ACL v aplikaci Windows Azure AD](https://code.msdn.microsoft.com/Role-Based-and-ACL-Based-86ad71a1). Ukázkové aplikace.
-- [Blog o Azure Active Directory Graph API](https://blogs.msdn.com/b/aadgraphteam/).
-- [Řízení přístupu v modelu BYOD a integrace adresáře v hybridní infrastrukturu identit](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/PCIT-B213#fbid=). Odborný Ed 2014 relace videa podle Gayana Bagdasaryan.
+- [Azure Active Directory dokumentaci](https://docs.microsoft.com/azure/active-directory/). Stránka portálu pro dokumentaci k Azure AD na webu windowsazure.com. Podrobné kurzy najdete v části **vývoj** .
+- [Multi-Factor Authentication Azure](https://docs.microsoft.com/azure/multi-factor-authentication/). Stránka portálu pro dokumentaci k Multi-Factor Authentication v Azure.
+- [Možnosti ověřování účtu organizace](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#orgauthoptions) Vysvětlení možností ověřování Azure AD v dialogovém okně Visual Studio 2013 nový projekt.
+- [Vzory a postupy Microsoft – model federované identity](https://msdn.microsoft.com/library/dn589790.aspx).
+- [Postupy: Nainstalujte nástroj Azure Active Directory Sync](https://social.technet.microsoft.com/wiki/contents/articles/19098.howto-install-the-windows-azure-active-directory-sync-tool-now-with-pictures.aspx).
+- [Mapa obsahu Active Directory Federation Services (AD FS) 2,0](https://social.technet.microsoft.com/wiki/contents/articles/2735.ad-fs-2-0-content-map.aspx) Odkazy na dokumentaci ke službě ADFS 2,0.
+- [Ověřování na základě rolí a ACL v aplikaci Windows Azure AD](https://code.msdn.microsoft.com/Role-Based-and-ACL-Based-86ad71a1). Ukázková aplikace
+- [Azure Active Directory Graph API Blog](https://blogs.msdn.com/b/aadgraphteam/).
+- [Access Control v integraci BYOD a adresáře v hybridní infrastruktuře identit](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/PCIT-B213#fbid=). Video o relaci Tech Ed 2014 od Gayana Bagdasaryan.
 
 > [!div class="step-by-step"]
 > [Předchozí](web-development-best-practices.md)
-> [další](data-storage-options.md)
+> [Další](data-storage-options.md)

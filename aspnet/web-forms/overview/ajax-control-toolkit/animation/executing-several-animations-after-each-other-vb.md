@@ -1,64 +1,64 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-after-each-other-vb
-title: Postupné provedení několika animací (VB) | Dokumentace Microsoftu
+title: Provádění několika animací po sobě (VB) | Microsoft Docs
 author: wenz
-description: Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Umožňuje spustit severa...
+description: Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Umožňuje spustit sever...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 21ece509-79cc-4d9d-892d-7b6e9c4d3502
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-after-each-other-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0e0c9aa2c9ce8b55824c24ef43881e35a0788d28
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 5034fe905299d4559b713dd841cb166886179c39
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108346"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74606864"
 ---
 # <a name="executing-several-animations-after-each-other-vb"></a>Postupné provedení několika animací (VB)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation3.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation3VB.pdf)
+[Stažení kódu](https://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation3.vb.zip) nebo [stažení PDF](https://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation3VB.pdf)
 
-> Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Umožňuje spuštění několika animací jednu po druhé.
+> Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Umožňuje spustit několik animací za sebou.
 
 ## <a name="overview"></a>Přehled
 
-Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Umožňuje spuštění několika animací jednu po druhé.
+Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Umožňuje spustit několik animací za sebou.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Za prvé, zahrnout `ScriptManager` na stránce; potom technologie ASP.NET AJAX je načíst knihovnu, což umožňuje použití Control Toolkit:
+Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 
 [!code-aspx[Main](executing-several-animations-after-each-other-vb/samples/sample1.aspx)]
 
-Animace se použijí pro panel text, který vypadá takto:
+Animace se použije na panel textu, který vypadá takto:
 
 [!code-aspx[Main](executing-several-animations-after-each-other-vb/samples/sample2.aspx)]
 
-V přidružené třídy šablony stylů CSS pro panel definovat barvu pozadí nice a také nastavit Pevná šířka panelu:
+V přidružené třídě CSS pro panel definujte Skvělé barvy pozadí a také nastavte pevnou šířku panelu:
 
 [!code-css[Main](executing-several-animations-after-each-other-vb/samples/sample3.css)]
 
-Pak přidejte `AnimationExtender` na stránku, poskytování `ID`, `TargetControlID` atribut a povinný údaj `runat="server":`
+Pak přidejte `AnimationExtender` na stránku a poskytněte `ID`, atribut `TargetControlID` a povinný `runat="server":`
 
 [!code-aspx[Main](executing-several-animations-after-each-other-vb/samples/sample4.aspx)]
 
-V rámci `<Animations>` uzlu, použijte `<OnLoad>` ke spuštění animací, jakmile úplným načtením stránky. Obecně platí `<OnLoad>` přijímá pouze jeden animace. Animace framework umožňuje připojit k několika animací do jednoho pomocí `<Sequence>` elementu. Všechny animace v rámci `<Sequence>` jsou spuštěný jeden po druhém. Tady je možné značky `AnimationExtender` ovládací prvek, nejprve Příprava panelu širší a zmenšení výšku:
+V uzlu `<Animations>` pomocí `<OnLoad>` spustit animace, jakmile se stránka kompletně načetla. Obecně `<OnLoad>` akceptuje pouze jednu animaci. Rozhraní animace umožňuje připojit několik animací k jednomu pomocí elementu `<Sequence>`. Všechny animace v rámci `<Sequence>` jsou spouštěny jednou po druhém. Zde je možné označení pro ovládací prvek `AnimationExtender`, nejprve panel Rozšiřte a poté zmenšete jeho výšku:
 
 [!code-aspx[Main](executing-several-animations-after-each-other-vb/samples/sample5.aspx)]
 
-Při spuštění tohoto skriptu panelu první získá širší a potom menší.
+Když spustíte tento skript, panel se nejprve rozšíří a pak zmenší.
 
-[![Nejprve je vyšší šířku](executing-several-animations-after-each-other-vb/_static/image2.png)](executing-several-animations-after-each-other-vb/_static/image1.png)
+[![první šířka se zvyšuje.](executing-several-animations-after-each-other-vb/_static/image2.png)](executing-several-animations-after-each-other-vb/_static/image1.png)
 
-Nejprve je vyšší šířku ([kliknutím ji zobrazíte obrázek v plné velikosti](executing-several-animations-after-each-other-vb/_static/image3.png))
+Nejprve se zvětší Šířka ([kliknutím zobrazíte obrázek v plné velikosti).](executing-several-animations-after-each-other-vb/_static/image3.png)
 
-[![Pak je snížení výšky](executing-several-animations-after-each-other-vb/_static/image5.png)](executing-several-animations-after-each-other-vb/_static/image4.png)
+[![pak se výška zmenší.](executing-several-animations-after-each-other-vb/_static/image5.png)](executing-several-animations-after-each-other-vb/_static/image4.png)
 
-Pak se sníží výška ([kliknutím ji zobrazíte obrázek v plné velikosti](executing-several-animations-after-each-other-vb/_static/image6.png))
+Pak se výška zmenší ([kliknutím zobrazíte obrázek v plné velikosti).](executing-several-animations-after-each-other-vb/_static/image6.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](executing-several-animations-at-the-same-time-vb.md)
-> [další](animation-depending-on-a-condition-vb.md)
+> [Další](animation-depending-on-a-condition-vb.md)

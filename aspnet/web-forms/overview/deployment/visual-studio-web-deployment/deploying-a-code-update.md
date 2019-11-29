@@ -1,208 +1,208 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update
-title: 'Nasazení webu ASP.NET pomocí sady Visual Studio: Nasazení aktualizace kódu | Dokumentace Microsoftu'
+title: 'Nasazení webu ASP.NET pomocí sady Visual Studio: nasazení aktualizace kódu | Microsoft Docs'
 author: tdykstra
-description: V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, podle usin...
+description: V této sérii kurzů se dozvíte, jak nasadit (publikovat) webovou aplikaci ASP.NET, která bude Azure App Service Web Apps nebo poskytovateli hostingu třetí strany, pomocí usin...
 ms.author: riande
 ms.date: 02/15/2013
 ms.assetid: c76dbc35-a914-4ee3-919c-4f4d1fa05104
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update
 msc.type: authoredcontent
-ms.openlocfilehash: 36d1575808925de38b909d6816e46bb6cb69cf72
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 3881833bfe2a50a38a357614f92f434a04a8ab08
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134256"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74626783"
 ---
-# <a name="aspnet-web-deployment-using-visual-studio-deploying-a-code-update"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Nasazení aktualizace kódu
+# <a name="aspnet-web-deployment-using-visual-studio-deploying-a-code-update"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: nasazení aktualizace kódu
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-[Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
+[Stáhnout počáteční projekt](https://go.microsoft.com/fwlink/p/?LinkId=282627)
 
-> V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, s použitím sady Visual Studio 2012 nebo Visual Studio 2010. Informace o této sérii, naleznete v tématu [z prvního kurzu této série](introduction.md).
+> V této sérii kurzů se dozvíte, jak nasadit (publikovat) webovou aplikaci ASP.NET, která umožňuje Azure App Service Web Apps nebo poskytovateli hostingu třetí strany, pomocí sady Visual Studio 2012 nebo Visual Studio 2010. Informace o řadě najdete v [prvním kurzu v řadě](introduction.md).
 
 ## <a name="overview"></a>Přehled
 
-Po počátečním nasazení pokračuje v práci údržbu a vývoj webu, a před dlouho budete chtít nasazení aktualizace. Tento kurz vás provede procesem nasazení aktualizace kódu aplikace. Aktualizaci, implementaci a nasazení v tomto kurzu nezahrnuje Změna databáze; uvidíte, co se liší o nasazení změn databází v dalším kurzu.
+Po počátečním nasazení bude vaše práce s údržbou a vývojem webu pokračovat a ještě dlouho budete chtít nasadit aktualizaci. Tento kurz vás provede procesem nasazení aktualizace kódu vaší aplikace. Aktualizace, kterou implementujete a nasadíte v tomto kurzu, nezahrnuje změnu databáze. v dalším kurzu se dozvíte, jaké jsou různé informace o nasazení změny databáze.
 
-Připomenutí: Pokud se zobrazí chybová zpráva nebo něco nefunguje tak, jak absolvovat kurz, nezapomeňte se podívat [stránka o řešení problémů](troubleshooting.md).
+Připomenutí: Pokud se zobrazí chybová zpráva nebo něco nefunguje při procházení tohoto kurzu, zkontrolujte [stránku řešení potíží](troubleshooting.md).
 
-## <a name="make-a-code-change"></a>Změně kódu
+## <a name="make-a-code-change"></a>Provedení změny kódu
 
-Jako jednoduchý příklad příkazu update pro vaši aplikaci, přidáte k **Instruktoři** stránce Seznam kurzy vedené vybrané instruktorem.
+Jako jednoduchý příklad aktualizace aplikace přidáváte na stránku **instruktoři** seznam kurzů, které probral vybraný instruktor.
 
-Při spuštění **Instruktoři** stránky, můžete si všimnout, že jsou **vyberte** odkazy v mřížce, ale jejich nic nedělají než zkontrolujte šedá zapnout pozadí řádku.
+Pokud spouštíte stránku **instruktory** , všimnete si, že v mřížce jsou **vybrané** odkazy, ale nedělají nic jiného, než když se pozadí řádku změní na šedé.
 
-![Instruktoři stránky s výběrem](deploying-a-code-update/_static/image1.png)
+![Stránka instruktoři s výběrem](deploying-a-code-update/_static/image1.png)
 
-Teď přidejte kód, který spouští, když **vyberte** dojde ke kliknutí na odkaz a zobrazí seznam kurzy vedené vybrané instruktorem.
+Nyní přidáte kód, který se spustí, když se klikne na odkaz **Select** , a zobrazí se seznam kurzů, které prochází vybraným instruktorem.
 
-1. V *Instructors.aspx*, přidejte následující kód bezprostředně po **ErrorMessageLabel** `Label` ovládacího prvku:
+1. V *instruktors. aspx*přidejte následující kód hned za ovládací prvek **ErrorMessageLabel** `Label`:
 
     [!code-aspx[Main](deploying-a-code-update/samples/sample1.aspx)]
-2. Spustit na stránku a vybrat instruktorem. Zobrazí seznam kurzy vedené této instruktorem.
+2. Spusťte stránku a vyberte instruktor. Zobrazí se seznam výukových kurzů, které tento instruktor projedná.
 
-    ![Stránka Instruktoři s výukové kurzy](deploying-a-code-update/_static/image2.png)
+    ![Stránka instruktorů s výukou kurzů](deploying-a-code-update/_static/image2.png)
 3. Zavřete prohlížeč.
 
 ## <a name="deploy-the-code-update-to-the-test-environment"></a>Nasazení aktualizace kódu do testovacího prostředí
 
-Než použijete profil publikování pro nasazení do testu, přípravném nebo produkčním prostředí budete muset změnit možnosti publikování databáze. Už nemusíte spouštět skripty nasazení udělení a dat pro databázi členství.
+Než budete moct použít svoje profily publikování k nasazení na testování, přípravu a produkční prostředí, musíte změnit možnosti publikování databáze. Už nemusíte spouštět skripty pro udělení a nasazování dat pro databázi členství.
 
-1. Otevřít **Publikovat Web** Průvodce pravým tlačítkem myši projekt ContosoUniversity a kliknutím na **publikovat**.
-2. Klikněte na tlačítko **testovací** profil v **profilu** rozevíracího seznamu.
-3. Klikněte na tlačítko **nastavení** kartu.
-4. V části **objekt DefaultConnection** v **databází** části, zrušte **aktualizace databáze** zaškrtávací políčko.
-5. Klikněte na tlačítko **profilu** kartu a potom klikněte na tlačítko **pracovní** profil v **profilu** rozevíracího seznamu.
-6. Pokud se výzva, pokud chcete uložit změny provedené **testovací** profilu, klikněte na tlačítko **Ano**.
-7. Stejnou změnu proveďte v pracovní profil.
-8. Opakujte postup provést stejnou změnu v produkčním prostředí profilu.
-9. Zavřít **publikování webu** průvodce.
+1. Otevřete Průvodce **publikováním webu** kliknutím pravým tlačítkem myši na projekt ContosoUniversity a kliknutím na **publikovat**.
+2. V rozevíracím seznamu **profil** klikněte na profil **testu** .
+3. Klikněte na kartu **Nastavení** .
+4. V části **DefaultConnection** v části **databáze** zrušte zaškrtnutí políčka **aktualizovat databázi** .
+5. Klikněte na kartu **profil** a potom v rozevíracím seznamu **profil** klikněte na **pracovní** profil.
+6. Když se zobrazí dotaz, zda chcete uložit změny provedené v profilu **testu** , klikněte na tlačítko **Ano**.
+7. Udělejte stejnou změnu v pracovním profilu.
+8. Zopakováním tohoto postupu provedete stejnou změnu v produkčním profilu.
+9. Zavřete průvodce **publikováním webu** .
 
-Nasazení do testovacího prostředí je teď znovu publikovat jednoduché spuštění jedním kliknutím. Chcete-li tento proces urychlit, můžete použít **publikování webu jedním kliknutím** nástrojů.
+Nasazení do testovacího prostředí je teď jednoduchou záležitostí opětovného spuštění publikování jedním kliknutím. Chcete-li tento proces urychlit, můžete použít panel nástrojů pro **publikování webu jedním kliknutím** .
 
-1. V **zobrazení** nabídce zvolte **panely nástrojů** a pak vyberte **publikování webu jedním kliknutím**.
+1. V nabídce **zobrazení** zvolte **panely nástrojů** a pak vyberte **možnost publikovat na webu jedním kliknutím**.
 
     ![Selecting_One_Click_Publish_toolbar](deploying-a-code-update/_static/image3.png)
-2. V **Průzkumníka řešení**, vyberte projekt ContosoUniversity.
-3. **publikování webu jedním kliknutím** nástrojů, zvolte **testovací** profil publikování a pak klikněte na tlačítko **Publikovat Web** (na ikonu šipky směřující vlevo a vpravo).
+2. V **Průzkumník řešení**vyberte projekt ContosoUniversity.
+3. panel nástrojů pro **publikování webu jedním kliknutím** vyberte profil publikování **testu** a pak klikněte na **Publikovat web** (ikona se šipkami ukazující vlevo a vpravo).
 
     ![Web_One_Click_Publish_toolbar](deploying-a-code-update/_static/image4.png)
-4. Visual Studio nasadí aktualizované aplikace a prohlížeč se automaticky otevře na domovskou stránku.
-5. Spustit školitelů stránky a vyberte k ověření, že se aktualizace úspěšně nasadilo instruktorem.
+4. Visual Studio nasadí aktualizovanou aplikaci a prohlížeč se automaticky otevře na domovské stránce.
+5. Spusťte stránku instruktoři a vyberte instruktora, abyste ověřili, že byla aktualizace úspěšně nasazena.
 
-Běžným způsobem provést také regresního testování (to znamená, že test zbytku lokality, abyste měli jistotu, že tato nová změna neměli přerušit všechny existující funkce). Ale pro účely tohoto kurzu budete tento krok přeskočit a přejít k nasazení aktualizací do pracovního a produkčního prostředí.
+Obvykle byste také provedli regresní testování (to znamená otestovat zbytek lokality, abyste se ujistili, že nová změna nepřerušila všechny stávající funkce). Pro tento kurz ale tento krok přeskočíte a pokračujte v nasazení aktualizace do pracovních a produkčních prostředí.
 
-Při opětovném nasazování, Web Deploy automaticky určuje, které soubory se změnily a kopíruje jen změněné soubory na server. Ve výchozím nastavení nasazení webu používá data poslední změny na soubory k určení, které se nezměnila. Některé systémy správy zdrojového kódu změňte soubor data i při Neměňte obsah souboru. V takovém případě můžete chtít nakonfigurovat nasazení webu použití souboru kontrolní součty k určení, které soubory se změnily. Další informace najdete v tématu [Proč všechny soubory získat znovu nasadil Ačkoli jsem je nezměnili?](https://msdn.microsoft.com/library/ee942158.aspx#use_checksum) v nejčastější dotazy k nasazení technologie ASP.NET.
+Když znovu nasadíte, Nasazení webu automaticky určí, které soubory se změnily, a na server se zkopírují jenom změněné soubory. Ve výchozím nastavení Nasazení webu používá datum poslední změny souborů k určení, které z nich se změnily. Některé systémy správy zdrojového kódu mění data souborů i v případě, že neměníte obsah souboru. V takovém případě můžete chtít nakonfigurovat Nasazení webu, aby používaly kontrolní součty souborů k určení, které soubory se změnily. Další informace najdete v tématu [Proč se všechny moje soubory znovu nasazují, i když jsem nezměnili?](https://msdn.microsoft.com/library/ee942158.aspx#use_checksum) v nejčastějších dotazech k nasazení ASP.NET.
 
-## <a name="take-the-application-offline-during-deployment"></a>Nastavit aplikaci offline během nasazení
+## <a name="take-the-application-offline-during-deployment"></a>Při nasazení převést aplikaci do offline režimu
 
-Změna, kterou nasazujete nyní je jednoduchou změnu na jednu stránku. Ale někdy nasadit větší změny, nebo nasadit změny kódu a databáze a lokality se může chovat chybně Pokud uživatel požádá o stránku předtím, než se nasazení dokončí. Chcete-li uživatelům zabránit v přístupu na web, zatímco probíhá nasazení, můžete použít *aplikace\_offline.htm* souboru. Zadaný soubor s názvem *aplikace\_offline.htm* v kořenové složce vaší aplikace, služba IIS automaticky zobrazí tento soubor namísto spuštění vaší aplikace. Tak, aby se zabránilo přístupu během nasazování, kam si ukládáte *aplikace\_offline.htm* v kořenové složce spustit proces nasazení a pak odeberte *aplikace\_offline.htm* po úspěšné nasazení.
+Změna, kterou právě nasazujete, je jednoduchá změna na jednu stránku. Někdy ale nasadíte větší změny nebo nasadíte změny kódu i databáze a lokalita se může chovat nesprávně, pokud uživatel požádá o stránku před dokončením nasazení. Pokud chcete zabránit uživatelům v přístupu k webu, když probíhá nasazení, můžete použít *aplikaci\_offline souboru. htm* . Když umístíte soubor s názvem *app\_v režimu offline. htm* do kořenové složky vaší aplikace, služba IIS automaticky zobrazí tento soubor místo spuštění aplikace. Pokud tedy chcete během nasazení zabránit přístupu, vložte *aplikaci\_do režimu offline. htm* v kořenové složce, spusťte proces nasazení a po úspěšném nasazení odeberte *aplikaci\_offline. htm* .
 
-Můžete nakonfigurovat nasazení webu automatické přepnutí výchozí *aplikace\_offline.htm* souboru na serveru při spuštění nasazení a jeho odebrání po dokončení. Provedete to, že všechny budete muset provést je, přidejte následující element XML do souboru profilu (.pubxml) publikování:
+Nasazení webu můžete nakonfigurovat tak, aby při zahájení nasazování automaticky umístila výchozí *aplikaci\_offline soubor. htm* na server, a po dokončení ho odebere. Chcete-li provést vše, co musíte udělat, přidejte do souboru publikačního profilu (. pubxml) následující element XML:
 
 [!code-xml[Main](deploying-a-code-update/samples/sample2.xml)]
 
-Pro účely tohoto kurzu uvidíte, jak vytvořit a používat vlastní *aplikace\_offline.htm* souboru.
+V tomto kurzu se dozvíte, jak vytvořit a použít vlastní *aplikaci\_offline souboru. htm* .
 
-Pomocí *aplikace\_offline.htm* na pracovním webu není povinné, protože nemáte uživatele, kteří používají na pracovním webu. Ale je vhodné testovat vše, co tak, jak máte v plánu nasazení v produkčním prostředí pomocí přípravy.
+Použití *aplikace\_offline. htm* v pracovní lokalitě není vyžadováno, protože nemáte přístup k pracovnímu webu. Je ale vhodné použít fázování k otestování všech způsobů, jak plánujete nasazení v produkčním prostředí.
 
-### <a name="create-appofflinehtm"></a>Vytvoření aplikace\_offline.htm
+### <a name="create-app_offlinehtm"></a>Vytvoření aplikace\_offline. htm
 
-1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na řešení a klikněte na tlačítko **přidat**a potom klikněte na tlačítko **nová položka**.
-2. Vytvoření **stránku HTML** s názvem *aplikace\_offline.htm* (odstranit poslední "l" v *.html* rozšíření, které sada Visual Studio vytvoří ve výchozím nastavení).
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na řešení, klikněte na tlačítko **Přidat**a poté klikněte na položku **Nová položka**.
+2. Vytvořte **stránku HTML** s názvem *App\_offline. htm* (odstraňte poslední "l" v rozšíření *. html* , které Visual Studio vytvoří ve výchozím nastavení).
 3. Nahraďte kód šablony následujícím kódem:
 
     [!code-html[Main](deploying-a-code-update/samples/sample3.html)]
 4. Soubor uložte a zavřete.
 
-### <a name="copy-appofflinehtm-to-the-root-folder-of-the-web-site"></a>Kopírování aplikací\_offline.htm do kořenové složky webu
+### <a name="copy-app_offlinehtm-to-the-root-folder-of-the-web-site"></a>Zkopírujte aplikaci\_offline. htm do kořenové složky webu.
 
-Můžete použít jakýkoli nástroj FTP pro kopírování souborů do webové stránky. [Filezilly](http://filezilla-project.org/) je oblíbený nástroj FTP a zobrazí se v snímky obrazovky.
+K kopírování souborů na web můžete použít libovolný nástroj FTP. [FileZilly](http://filezilla-project.org/) je oblíbený nástroj FTP, který se zobrazuje ve snímkůch obrazovky.
 
-Pokud chcete použít nástroj FTP, potřebujete tři věci: adresa URL protokolu FTP, uživatelské jméno a heslo.
+Chcete-li použít nástroj FTP, budete potřebovat tři věci: adresu URL serveru FTP, uživatelské jméno a heslo.
 
-Adresa URL se zobrazí na stránce řídicího panelu na webu portálu pro správu Azure a uživatelské jméno a heslo pro FTP najdete v *.publishsettings* soubor, který jste předtím stáhli. Následující kroky ukazují, jak získat tyto hodnoty.
+Adresa URL se zobrazí na stránce řídicí panel webu v Azure Portál pro správu a uživatelské jméno a heslo pro FTP najdete v souboru *. publishsettings* , který jste si stáhli dříve. Následující kroky ukazují, jak tyto hodnoty získat.
 
-1. Na portálu Azure Management Portal, klikněte na tlačítko **weby** kartu a potom klikněte na pracovním webu.
-2. Na **řídicí panel** stránky, posuňte se dolů najít název hostitele FTP v **rychlý přehled** oddílu.
+1. V Portál pro správu Azure klikněte na kartu **webové servery** a potom klikněte na pracovní web.
+2. Na stránce **řídicí panel** přejděte dolů a vyhledejte název hostitele FTP v části **rychlý přehled** .
 
     ![Název hostitele FTP](deploying-a-code-update/_static/image5.png)
-3. Otevřete v přípravném *.publishsettings* soubor v poznámkovém bloku nebo jiného textového editoru.
-4. Najít `publishProfile` – element pro profil FTP.
-5. Kopírovat `userName` a `userPWD` hodnoty.
+3. V programu Poznámkový blok nebo jiném textovém editoru otevřete soubor staging *. publishsettings* .
+4. Vyhledejte prvek `publishProfile` pro profil FTP.
+5. Zkopírujte hodnoty `userName` a `userPWD`.
 
-    ![Přihlašovací údaje serveru FTP](deploying-a-code-update/_static/image6.png)
-6. Otevřete nástroj FTP a přihlaste se k adrese URL protokolu FTP.
-7. Kopírování *aplikace\_offline.htm* složce řešení a */site/wwwroot* složky na pracovním webu.
+    ![Přihlašovací údaje FTP](deploying-a-code-update/_static/image6.png)
+6. Otevřete nástroj FTP a přihlaste se k adrese URL serveru FTP.
+7. Zkopírujte *aplikaci\_offline. htm* ze složky řešení do složky */site/wwwroot* v přípravném webu.
 
-    ![Zkopírujte app_offline](deploying-a-code-update/_static/image7.png)
-8. Přejděte na adresu URL přípravného lokalitě. Uvidíte, že *aplikace\_offline.htm* stránky se nyní zobrazí místo domovské stránky.
+    ![Kopírovat app_offline](deploying-a-code-update/_static/image7.png)
+8. Přejděte na adresu URL vašeho pracovního webu. Uvidíte, že se teď místo domovské stránky zobrazuje stránka *aplikace\_offline. htm* .
 
-    ![App_offline.htm v okně prohlížeče](deploying-a-code-update/_static/image8.png)
+    ![app_offline. htm v okně prohlížeče](deploying-a-code-update/_static/image8.png)
 
-Nyní jste připraveni k nasazení do přípravného prostředí.
+Nyní jste připraveni na nasazení do přípravy.
 
 ## <a name="deploy-the-code-update-to-staging-and-production"></a>Nasazení aktualizace kódu do pracovního a produkčního prostředí
 
-1. V **publikování webu jedním kliknutím** nástrojů, zvolte **pracovní** profil publikování a pak klikněte na tlačítko **Publikovat Web**.
+1. Na panelu nástrojů **publikování webu jedním kliknutím** vyberte profil pro **přípravu** a pak klikněte na **Publikovat web**.
 
-    Visual Studio nasadí aktualizované aplikace a otevře prohlížeč na domovské stránce webu. *Aplikace\_offline.htm* soubor se zobrazí. Předtím, než můžete otestovat a ověřit úspěšné nasazení, je nutné odebrat *aplikace\_offline.htm* souboru.
-2. Vraťte se do vašeho nástroje pro FTP a odstranit **aplikace\_offline.htm** z přípravného lokalitě.
-3. V prohlížeči otevřete stránku Instruktoři na pracovním webu a vyberte instruktorem k ověření, že se aktualizace úspěšně nasadilo.
-4. Postupujte stejným způsobem pro produkční prostředí, jako jste to udělali přípravy.
+    Visual Studio nasadí aktualizovanou aplikaci a otevře prohlížeč na domovské stránce webu. Zobrazí se soubor *\_offline. htm aplikace* . Než budete moct otestovat ověření úspěšného nasazení, musíte *aplikaci odebrat\_offline souboru. htm* .
+2. Vraťte se do nástroje FTP a odstraňte **aplikaci\_offline. htm** z přípravného webu.
+3. V prohlížeči otevřete stránku instruktoři v přípravném webu a vyberte instruktora, abyste ověřili, že byla aktualizace úspěšně nasazena.
+4. Pro produkční prostředí použijte stejný postup jako při přípravě.
 
 <a id="specificfiles"></a>
 
-## <a name="reviewing-changes-and-deploying-specific-files"></a>Zkontrolujte změny a nasaďte konkrétní soubory
+## <a name="reviewing-changes-and-deploying-specific-files"></a>Kontrola změn a nasazení určitých souborů
 
-Visual Studio 2012 také poskytuje schopnost nasadit jednotlivé soubory. Pro vybraný soubor můžete zobrazit rozdíly mezi místní verzi a verzi nasazené, nasaďte soubor do cílového prostředí nebo zkopírujte soubor do místní projekt v cílovém prostředí. V této části kurzu naleznete v tématu Jak používat tyto funkce.
+Visual Studio 2012 také umožňuje nasazovat jednotlivé soubory. Pro vybraný soubor můžete zobrazit rozdíly mezi místní a nasazenou verzí, nasadit soubor do cílového prostředí nebo zkopírovat soubor z cílového prostředí do místního projektu. V této části kurzu zjistíte, jak tyto funkce používat.
 
-### <a name="make-a-change-to-deploy"></a>Proveďte změnu nasazení
+### <a name="make-a-change-to-deploy"></a>Provedení změny nasazení
 
-1. Otevřít *Content/Site.css*a najít bloku `body` značky.
-2. Změňte hodnotu `background-color` z `#fff` k `darkblue`.
+1. Otevřete *Content/Web. CSS*a najděte blok značky `body`.
+2. Změňte hodnotu `background-color` z `#fff` na `darkblue`.
 
     [!code-css[Main](deploying-a-code-update/samples/sample4.css?highlight=2)]
 
-### <a name="view-the-change-in-the-publish-preview-window"></a>Zobrazení změn v okně Náhled publikování
+### <a name="view-the-change-in-the-publish-preview-window"></a>Zobrazení změny v okně Publikovat náhled
 
-Při použití **Publikovat Web** Průvodce Publikujte projekt, naleznete v tématu co se změny chystáte publikovat dvojitým kliknutím na soubor v **ve verzi Preview** okna.
+Když použijete průvodce **Publikovat web** k publikování projektu, můžete zjistit, jaké změny budou publikovány Poklikáním na soubor v okně **náhledu** .
 
-1. Klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na tlačítko **publikovat**.
-2. Z **profilu** rozevíracího seznamu, vyberte **Test** profil publikování.
-3. Klikněte na tlačítko **ve verzi Preview**a potom klikněte na tlačítko **spustit Náhled**.
-4. V **ve verzi Preview** podokně dvakrát klikněte na panel **Site.css**.
+1. Klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na **publikovat**.
+2. V rozevíracím seznamu **profil** vyberte profil publikování **testu** .
+3. Klikněte na **Náhled**a pak na **Spustit náhled**.
+4. V podokně **náhledu** poklikejte na **site. CSS**.
 
-    ![Dvakrát klikněte na panel Site.css](deploying-a-code-update/_static/image9.png)
+    ![Poklikejte na web. CSS.](deploying-a-code-update/_static/image9.png)
 
-    **Náhled změn** dialogové okno zobrazí náhled změn, které se nasadí.
+    V dialogovém okně **Náhled změn** se zobrazí náhled změn, které budou nasazeny.
 
-    ![Změny ve verzi Preview Site.css](deploying-a-code-update/_static/image10.png)
+    ![Zobrazit náhled změn v site. CSS](deploying-a-code-update/_static/image10.png)
 
-    Pokud dvakrát kliknete *Web.config* soubor, **náhled změn** dialogové okno demonstruje účinek sestavení transformace konfigurace a publikování profilu transformace. V tomto okamžiku jste neudělali cokoli, co způsobilo *Web.config* soubor na serveru, chcete-li změnit, takže byste měli vidět žádné změny. Ale **náhled změn** okno nesprávně ukazuje dvě změny. Zdá se, odeberou se dva prvky XML. Tyto prvky jsou přidány pomocí procesu publikování vyberete **spustit migrace Code First při spuštění aplikace** Code First třídy kontextu. Předtím, než se proces publikování přidá tyto prvky, takže to vypadá, že budou odebrány, i když se neodeberou, provádí se porovnání. Tato chyba bude opraven v budoucí verzi.
+    Pokud dvakrát kliknete na soubor *Web. config* , zobrazí dialogové okno **Náhled změn** efekt transformací konfigurace sestavení a publikování profilů. V tomto okamžiku jste neudělali nic, co by mohlo způsobit změnu souboru *Web. config* na serveru, takže očekáváte, že se nezobrazí žádné změny. Okno **Náhled změn** ale nesprávně zobrazuje dvě změny. Vypadá to, že se odeberou dva prvky XML. Tyto prvky jsou přidány procesem publikování, když vyberete možnost **spustit migrace Code First při spuštění aplikace** pro třídu kontextu Code First. Porovnání je provedeno před tím, než proces publikování přidá tyto prvky, takže vypadá, že jsou odebírány, i když nebudou odebrány. Tato chyba bude opravena v budoucí verzi.
 5. Klikněte na **Zavřít**.
-6. Klikněte na tlačítko **publikovat**.
-7. Když prohlížeč otevře domovskou stránku Test webu, stiskněte CTRL + F5 způsobit pevné aktualizace Chcete-li zobrazit účinky změn šablon stylů CSS.
+6. Klikněte na **publikovat**.
+7. Po otevření prohlížeče na domovské stránce testovacího webu stiskněte klávesy CTRL + F5, čímž se zobrazí efekt změny šablony stylů CSS.
 
-    ![Účinky změn šablon stylů CSS](deploying-a-code-update/_static/image11.png)
+    ![Účinek změny šablony stylů CSS](deploying-a-code-update/_static/image11.png)
 8. Zavřete prohlížeč.
 
-### <a name="publish-specific-files-from-solution-explorer"></a>Publikovat konkrétní soubory z Průzkumníka řešení
+### <a name="publish-specific-files-from-solution-explorer"></a>Publikovat konkrétní soubory z Průzkumník řešení
 
-Předpokládejme, že nemáte jako modré pozadí a chcete se vrátit na původní barvu. V této části budete obnovit původní nastavení a publikujte přímo z konkrétního souboru **Průzkumníka řešení**.
+Předpokládejme, že se vám nelíbí modré pozadí a chcete se vrátit k původní barvě. V této části obnovíte původní nastavení publikováním konkrétního souboru přímo z **Průzkumník řešení**.
 
-1. Otevřít *Content/Site.css* a obnovení `background-color` nastavení `#fff`.
-2. V **Průzkumníka řešení**, klikněte pravým tlačítkem myši *Content/Site.css* souboru.
+1. Otevřete *Content/Web. CSS* a obnovte nastavení `background-color` pro `#fff`.
+2. V **Průzkumník řešení**klikněte pravým tlačítkem myši na soubor *Content/Web. CSS* .
 
-    V místní nabídce ukazuje že tři možnosti publikování.
+    Místní nabídka obsahuje tři možnosti publikování.
 
-    ![Publikování možnosti z Průzkumníka řešení](deploying-a-code-update/_static/image12.png)
-3. Klikněte na tlačítko **ve verzi Preview se změní na Site.css**.
+    ![Publikování možností z Průzkumník řešení](deploying-a-code-update/_static/image12.png)
+3. Klikněte na **Náhled změn v site. CSS**.
 
-    Otevře se okno zobrazit rozdíly mezi místního souboru a verze se v cílovém prostředí.
+    Otevře se okno, ve kterém se zobrazí rozdíly mezi místním souborem a jeho verzí v cílovém prostředí.
 
-    ![Diff-Content/Site.css](deploying-a-code-update/_static/image13.png)
-4. V **Průzkumníka řešení**, klikněte pravým tlačítkem na **Site.css** znovu a klikněte na tlačítko **publikovat Site.css**.
+    ![Diff-Content/Web. CSS](deploying-a-code-update/_static/image13.png)
+4. V **Průzkumník řešení**klikněte znovu pravým tlačítkem na **site. CSS** a pak klikněte na **Publikovat web. CSS**.
 
-    **Aktivita publikování webu** okno zobrazuje, že soubor byl publikován.
+    V okně **aktivity publikování na webu** se zobrazí, že soubor byl publikován.
 
-    ![Okno aktivity publikovat web](deploying-a-code-update/_static/image14.png)
-5. Otevřete prohlížeč `http://localhost/contosouniversity` adresy URL a poté stiskněte klávesu CTRL + F5 a způsobit, že pevně aktualizaci, aby se projevily šablony CSS změnit.
+    ![Okno aktivity publikování na webu](deploying-a-code-update/_static/image14.png)
+5. Otevřete prohlížeč na adrese URL `http://localhost/contosouniversity` a potom stisknutím kombinace kláves CTRL + F5 zobrazte efekt změny šablony stylů CSS.
 
-    ![Domovská stránka s normální šablony stylů CSS](deploying-a-code-update/_static/image15.png)
+    ![Domovská stránka s normální šablonou stylů CSS](deploying-a-code-update/_static/image15.png)
 6. Zavřete prohlížeč.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Nyní jste viděli několik způsobů, jak nasadit aktualizace aplikace, který nezahrnuje Změna databáze a už víte, jak zobrazit náhled změn můžete ověřit, že toho, co se aktualizovalo čekáte. Stránka Instruktoři má nyní **výukové kurzy** oddílu.
+Nyní jste viděli několik způsobů, jak nasadit aktualizaci aplikace, která nezahrnuje změnu databáze a jste viděli, jak zobrazit náhled změn, abyste ověřili, jestli se má aktualizovat, a to, co očekáváte. Stránka instruktoři má teď oddíl **výukových kurzů** .
 
-![Stránka Instruktoři s výukové kurzy](deploying-a-code-update/_static/image16.png)
+![Stránka instruktorů s výukou kurzů](deploying-a-code-update/_static/image16.png)
 
-V dalším kurzu se dozvíte, jak nasadit databázi změnu: do databáze a na stránce Instruktoři přidáte pole Datum narození.
+V dalším kurzu se dozvíte, jak nasadit změnu databáze: přidáte pole DatumNarození do databáze a na stránku instruktoři.
 
 > [!div class="step-by-step"]
 > [Předchozí](deploying-to-production.md)
-> [další](deploying-a-database-update.md)
+> [Další](deploying-a-database-update.md)

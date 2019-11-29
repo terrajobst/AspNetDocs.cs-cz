@@ -1,167 +1,167 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-vb
-title: Zobrazení tabulky databázových dat (VB) | Dokumentace Microsoftu
+title: Zobrazení tabulky databázových dat (VB) | Microsoft Docs
 author: microsoft
-description: V tomto kurzu se můžu ukazují dvě metody zobrazení sady záznamů v databázi. Můžu zobrazit dvě metody formátování sadu záznamů databáze v HTML ta...
+description: V tomto kurzu si ukážeme dvě metody zobrazení sady záznamů databáze. Zobrazuje se dvě metody formátování sady záznamů databáze v HTML...
 ms.author: riande
 ms.date: 10/07/2008
 ms.assetid: 5bb4587f-5bcd-44f5-b368-3c1709162b35
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9bb26e4364d1e32a428b34bd03918303206d21c9
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: f2e2489ac8455913f55c746dbe05b9fe8272285b
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65122418"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74590756"
 ---
 # <a name="displaying-a-table-of-database-data-vb"></a>Zobrazení tabulky databázových dat (VB)
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-[Stáhnout PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_11_VB.pdf)
+[Stáhnout PDF](https://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_11_VB.pdf)
 
-> V tomto kurzu se můžu ukazují dvě metody zobrazení sady záznamů v databázi. Můžu zobrazit dvě metody formátování sadu záznamů databáze v tabulku HTML. Nejprve mohu zobrazit, jak lze formátovat záznamů databáze přímo v rámci zobrazení. V dalším kroku můžu ukazují, jak můžete využít výhod částečných zobrazení při formátování záznamy v databázi.
+> V tomto kurzu si ukážeme dvě metody zobrazení sady záznamů databáze. Zobrazuje se dvě metody formátování sady záznamů databáze v tabulce HTML. Nejprve ukazuje, jak lze naformátovat záznamy databáze přímo v rámci zobrazení. Dále ukážeme, jak můžete při formátování záznamů databáze využít výhod částečných.
 
-Cílem tohoto kurzu je vysvětlují, jak můžete zobrazit tabulku HTML databázových dat v aplikaci ASP.NET MVC. Nejprve se dozvíte, jak použít nástroje pro generování uživatelského rozhraní zahrnuté v sadě Visual Studio ke generování zobrazení, které se automaticky zobrazí sadu záznamů. V dalším kroku se dozvíte, jak použít částečné jako šablonu při formátování záznamy v databázi.
+Cílem tohoto kurzu je vysvětlit, jak můžete zobrazit tabulku dat databáze HTML v aplikaci ASP.NET MVC. Nejprve se naučíte, jak pomocí nástrojů pro generování uživatelského rozhraní, které jsou součástí sady Visual Studio, vygenerovat zobrazení, které automaticky zobrazí sadu záznamů. V dalším kroku se dozvíte, jak při formátování záznamů databáze použít částečnou jako šablonu.
 
 ## <a name="create-the-model-classes"></a>Vytvoření tříd modelu
 
-Budeme zobrazit sadu záznamů v tabulce databáze filmů. V tabulce databáze filmů obsahuje následující sloupce:
+Chystáme se zobrazit sadu záznamů z tabulky databáze filmů. Tabulka video s filmy obsahuje následující sloupce:
 
 <a id="0.4_table01"></a>
 
-| **Název sloupce** | **Datový typ** | **Povolit hodnoty Null** |
+| **Název sloupce** | **Datový typ** | **Povoluje hodnoty null.** |
 | --- | --- | --- |
-| ID | Int | False |
-| Název | Nvarchar(200) | False |
-| Ředitel | NVarchar(50) | False |
-| DateReleased | DateTime | False |
+| Id | Hmot | Nepravda |
+| Název | Nvarchar (200) | Nepravda |
+| Adresářů | NVarchar (50) | Nepravda |
+| DateReleased | Datum a čas | Nepravda |
 
-Aby mohl představovat filmy tabulky v naší aplikaci ASP.NET MVC, musíme vytvořit třídu modelu. V tomto kurzu vytvoříme pomocí Microsoft Entity Framework našich tříd modelu.
+Aby bylo možné znázornit tabulku filmů v naší aplikaci ASP.NET MVC, musíme vytvořit třídu modelu. V tomto kurzu používáme Microsoft Entity Framework k vytváření tříd modelů.
 
 > [!NOTE] 
 > 
-> V tomto kurzu používáme Microsoft Entity Framework. Je důležité pochopit, že můžete použít celou řadu různých technologií pro interakci s databází z aplikace ASP.NET MVC včetně technologie LINQ to SQL nebo NHibernate, ADO.NET.
+> V tomto kurzu používáme Microsoft Entity Framework. Je ale důležité si uvědomit, že k interakci s databází z aplikace ASP.NET MVC, včetně LINQ to SQL, NHibernate nebo ADO.NET, můžete použít celou řadu různých technologií.
 
-Použijte následující postup spuštění Průvodce datovým modelem Entity:
+Pomocí těchto kroků spusťte Průvodce model EDM (Entity Data Model):
 
-1. Klikněte pravým tlačítkem na složku modely v okně Průzkumník řešení a vyberte možnost nabídky **přidat, nová položka**.
-2. Vyberte **Data** kategorie a vyberte **datový Model Entity ADO.NET** šablony.
-3. Zadejte název datového modelu *MoviesDBModel.edmx* a klikněte na tlačítko **přidat** tlačítko.
+1. V okně Průzkumník řešení klikněte pravým tlačítkem na složku modely a vyberte možnost nabídky **Přidat, nová položka**.
+2. Vyberte kategorii **dat** a vyberte šablonu **model EDM (Entity Data Model) ADO.NET** .
+3. Udělte datovému modelu název *MoviesDBModel. edmx* a klikněte na tlačítko **Přidat** .
 
-Po kliknutí na tlačítko Přidat, zobrazí se Průvodce datovým modelem Entity (viz obrázek 1). Postupujte podle následujících kroků dokončete průvodce:
+Po kliknutí na tlačítko Přidat se zobrazí průvodce model EDM (Entity Data Model) (viz obrázek 1). Pomocí těchto kroků dokončete Průvodce:
 
-1. V **výběr obsahu modelu** kroku, vyberte **Generovat z databáze** možnost.
-2. V **vyberte datové připojení** kroku, použijte *MoviesDB.mdf* datové připojení a názvu *MoviesDBEntities* pro nastavení připojení. Klikněte na tlačítko **Další** tlačítko.
-3. V **zvolte vaše databázové objekty** krok, rozbalte uzel tabulky, vyberte v tabulce videa. Zadejte obor názvů *modely* a klikněte na tlačítko **Dokončit** tlačítko.
+1. V kroku **zvolit obsah modelu** vyberte možnost **Generovat z databáze** .
+2. V kroku **Vybrat datové připojení** použijte datové připojení *MoviesDB. mdf* a název *MoviesDBEntities* pro nastavení připojení. Klikněte na tlačítko **Další** .
+3. V kroku **Zvolte databázové objekty** rozbalte uzel tabulky a vyberte tabulku filmy. Zadejte *modely* názvů a klikněte na tlačítko **Dokončit** .
 
-[![Vytvoření LINQ na třídy SQL](displaying-a-table-of-database-data-vb/_static/image1.jpg)](displaying-a-table-of-database-data-vb/_static/image1.png)
+[![vytváření tříd LINQ to SQL](displaying-a-table-of-database-data-vb/_static/image1.jpg)](displaying-a-table-of-database-data-vb/_static/image1.png)
 
-**Obrázek 01**: Vytvoření LINQ na třídy SQL ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image2.png))
+**Obrázek 01**: vytváření tříd LINQ to SQL ([kliknutím zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image2.png))
 
-Po dokončení Průvodce datovým modelem Entity, otevře se Návrhář Entity Data Model. Návrhář zobrazeno filmy entity (viz obrázek 2).
+Po dokončení průvodce model EDM (Entity Data Model) se otevře Návrhář model EDM (Entity Data Model). Návrhář by měl zobrazit entitu filmy (viz obrázek 2).
 
-[![Entity Data Model Designer](displaying-a-table-of-database-data-vb/_static/image2.jpg)](displaying-a-table-of-database-data-vb/_static/image3.png)
+[![návrháře model EDM (Entity Data Model)](displaying-a-table-of-database-data-vb/_static/image2.jpg)](displaying-a-table-of-database-data-vb/_static/image3.png)
 
-**Obrázek 02**: Entity Data Model Designer ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image4.png))
+**Obrázek 02**: Návrhář model EDM (Entity Data Model) ([kliknutím zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image4.png))
 
-Potřebujeme, aby jednu změnu, abychom mohli pokračovat. Průvodce Entity Data vygeneruje třídu modelu s názvem *filmy* , který představuje tabulku databáze filmů. Vzhledem k tomu použijeme filmy třídy představující konkrétní videa, potřeba změnit název třídy, která má být *film* místo *filmy* (singulární spíše než množné číslo).
+Než budeme pokračovat, musíme udělat jednu změnu. Průvodce data entity vygeneruje třídu modelu s názvem *filmy* , která představuje tabulku databáze filmů. Vzhledem k tomu, že použijeme třídu filmů k reprezentování konkrétního filmu, musíme upravit název třídy tak, aby se místo *filmů* použil *film* (číslo v čísle místo plural).
 
-Dvakrát klikněte na název třídy na návrhové ploše a změňte název třídy z videa na video. Po provedení této změny, klikněte na tlačítko **Uložit** tlačítko (ikona disketu) ke generování třídy Video.
+Dvakrát klikněte na název třídy na návrhové ploše a změňte název třídy z filmů na film. Po provedení této změny klikněte na tlačítko **Uložit** (ikona disketové jednotky) a vygenerujte třídu video.
 
-## <a name="create-the-movies-controller"></a>Vytvoří kontroler filmy
+## <a name="create-the-movies-controller"></a>Vytvoření kontroleru filmů
 
-Teď, když jsme způsob, jak reprezentaci našich záznamů databáze, můžeme vytvořit kontroler, který vrátí kolekce filmů. V okně Průzkumník řešení Visual Studio klikněte pravým tlačítkem na složku řadiče a vyberte možnost nabídky **přidat, řadič** (viz obrázek 3).
+Teď, když máme způsob reprezentace našich záznamů v databázi, můžeme vytvořit kontroler, který vrátí kolekci filmů. V okně Visual Studio Průzkumník řešení klikněte pravým tlačítkem myši na složku Controllers a vyberte možnost nabídky **Přidat, kontroler** (viz obrázek 3).
 
-[![Přidání Kontroleru nabídky](displaying-a-table-of-database-data-vb/_static/image3.jpg)](displaying-a-table-of-database-data-vb/_static/image5.png)
+[![nabídky přidat řadič](displaying-a-table-of-database-data-vb/_static/image3.jpg)](displaying-a-table-of-database-data-vb/_static/image5.png)
 
-**Obrázek 03**: V nabídce Přidat kontroler ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image6.png))
+**Obrázek 03**: nabídka přidat řadič ([kliknutím zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image6.png))
 
-Když **přidat kontroler** se zobrazí dialogové okno, zadejte název řadiče MovieController (viz obrázek 4). Klikněte na tlačítko **přidat** tlačítko pro přidání nového řadiče.
+Po zobrazení dialogového okna **Přidat řadič** zadejte název kontroleru MovieController (viz obrázek 4). Kliknutím na tlačítko **Přidat** přidejte nový kontroler.
 
-[![Dialogové okno Přidat kontroler](displaying-a-table-of-database-data-vb/_static/image4.jpg)](displaying-a-table-of-database-data-vb/_static/image7.png)
+[![dialogového okna přidat řadič](displaying-a-table-of-database-data-vb/_static/image4.jpg)](displaying-a-table-of-database-data-vb/_static/image7.png)
 
-**Obrázek 04**: Dialogové okno Přidat kontroler ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image8.png))
+**Obrázek 04**: dialogové okno Přidat řadič ([kliknutím zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image8.png))
 
-Musíme akce Index() vystavené film řadič tak, aby vracel sadu záznamů databáze změnit. Upravte kontrolér tak, aby vypadal jako řadič v informacích 1.
+Musíme Upravit akci index () zpřístupněnou pro kontroler filmů, aby vracela sadu záznamů databáze. Upravte kontroler tak, aby vypadal jako kontroler v seznamu 1.
 
 **Výpis 1 – Controllers\MovieController.vb**
 
 [!code-vb[Main](displaying-a-table-of-database-data-vb/samples/sample1.vb)]
 
-Ve výpisu 1 je třída MoviesDBEntities používá k reprezentování MoviesDB databáze. Výraz *entity. MovieSet.ToList()* vrací sadu všech filmy z databázové tabulky videa.
+V seznamu 1 třída MoviesDBEntities slouží k reprezentaci databáze MoviesDB. Entity výrazu *. MovieSet. ToList – ()* vrátí sadu všech filmů z tabulky databáze filmů.
 
 ## <a name="create-the-view"></a>Vytvoření zobrazení
 
-Nejjednodušší způsob, jak zobrazit sadu záznamů databáze v tabulce HTML je využívat generování uživatelského rozhraní poskytovaný sadou Visual Studio.
+Nejjednodušší způsob, jak zobrazit sadu databázových záznamů v tabulce HTML, je využít výhody generování uživatelského rozhraní, které poskytuje Visual Studio.
 
-Sestavení aplikace tak, že vyberete možnost nabídky **vytvořit, sestavit řešení**. Je nutné vytvořit aplikaci před otevřením **přidat zobrazení** nebude v dialogovém okně zobrazí dialogové okno nebo datových tříd.
+Sestavte aplikaci výběrem možnosti nabídky **sestavení, řešení sestavení**. Před otevřením dialogového okna **Přidat zobrazení** nebo z vašich datových tříd se v dialogovém okně nezobrazují vaše aplikace.
 
-Klikněte pravým tlačítkem na akce Index() a vyberte možnost nabídky **přidat zobrazení** (viz obrázek 5).
+Klikněte pravým tlačítkem myši na akci index () a vyberte možnost nabídky **Přidat zobrazení** (viz obrázek 5).
 
-[![Přidání zobrazení](displaying-a-table-of-database-data-vb/_static/image5.jpg)](displaying-a-table-of-database-data-vb/_static/image9.png)
+[![přidání zobrazení](displaying-a-table-of-database-data-vb/_static/image5.jpg)](displaying-a-table-of-database-data-vb/_static/image9.png)
 
-**Obrázek 05**: Přidání zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image10.png))
+**Obrázek 05**: Přidání zobrazení ([kliknutím zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image10.png))
 
-V **přidat zobrazení** dialogového okna, zaškrtněte políčko s popiskem **vytvoření zobrazení se silnými typy**. Vyberte třídu film, jako **zobrazení dat třídy**. Vyberte *seznamu* jako **zobrazit obsah** (viz obrázek 6). Výběr tyto možnosti budou generovat zobrazení silného typu, který zobrazí seznam filmy.
+V dialogovém okně **Přidat zobrazení** zaškrtněte políčko **vytvořit zobrazení silného typu**. Jako **třídu zobrazení dat**vyberte třídu filmů. Vyberte možnost *seznam* jako **obsah zobrazení** (viz obrázek 6). Výběrem těchto možností se vytvoří zobrazení se silným typem, které zobrazí seznam filmů.
 
-[![Dialogové okno Přidat zobrazení](displaying-a-table-of-database-data-vb/_static/image6.jpg)](displaying-a-table-of-database-data-vb/_static/image11.png)
+[![dialogového okna Přidat zobrazení](displaying-a-table-of-database-data-vb/_static/image6.jpg)](displaying-a-table-of-database-data-vb/_static/image11.png)
 
-**Obrázek 06**: Dialogové okno Přidat zobrazení ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image12.png))
+**Obrázek 6**: dialogové okno Přidat zobrazení ([kliknutím zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image12.png))
 
-Po klepnutí **přidat** automaticky generováno tlačítko, zobrazení, ve výpisu 2. Toto zobrazení obsahuje kód potřebný k iteraci v rámci kolekce filmů a zobrazit vlastnosti videa.
+Po kliknutí na tlačítko **Přidat** se zobrazení v seznamu 2 vygeneruje automaticky. Toto zobrazení obsahuje kód potřebný k iterování v kolekci filmů a zobrazení všech vlastností filmu.
 
-**Listing 2 – Views\Movie\Index.aspx**
+**Výpis 2 – Views\Movie\Index.aspx**
 
 [!code-aspx[Main](displaying-a-table-of-database-data-vb/samples/sample2.aspx)]
 
-Aplikaci můžete spustit tak, že vyberete možnost nabídky **ladit, spustit ladění** (nebo stisknutí klávesy F5). Spuštění aplikace se spustí aplikace Internet Explorer. Když přejdete na adresu URL /Movie uvidíte stránku na obrázku 7.
+Aplikaci můžete spustit výběrem možnosti nabídky **ladění, spustit ladění** (nebo stisknutím klávesy F5). Spuštění aplikace spustí aplikaci Internet Explorer. Pokud přejdete na adresu URL/Movie, uvidíte stránku na obrázku 7.
 
-[![Tabulku filmy](displaying-a-table-of-database-data-vb/_static/image7.jpg)](displaying-a-table-of-database-data-vb/_static/image13.png)
+[![tabulce filmů](displaying-a-table-of-database-data-vb/_static/image7.jpg)](displaying-a-table-of-database-data-vb/_static/image13.png)
 
-**Obrázek 07**: Tabulku filmy ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image14.png))
+**Obrázek 07**: tabulka filmů ([kliknutím zobrazíte obrázek v plné velikosti](displaying-a-table-of-database-data-vb/_static/image14.png))
 
-Pokud se vám nic o vzhledu mřížky databázových záznamů na obrázku 7 můžete jednoduše upravit zobrazení indexu. Například můžete změnit *DateReleased* záhlaví *datum vydání* úpravou zobrazení indexu.
+Pokud se vám nezobrazují žádné informace o vzhledu mřížky záznamů databáze na obrázku 7, můžete jednoduše upravit zobrazení indexu. Můžete například změnit hlavičku *DateReleased* na *Datum vydání* úpravou zobrazení index.
 
-## <a name="create-a-template-with-a-partial"></a>Vytvoření šablony s částečné
+## <a name="create-a-template-with-a-partial"></a>Vytvoření šablony s částečnou
 
-Při zobrazení získá příliš složitý, je vhodné spustit rozdělení do částečné zobrazení. Pomocí částečných zobrazení usnadňuje zobrazení pochopit a udržovat. Vytvoříme částečné, můžeme použít jako šablonu k formátování jednotlivých záznamů databáze filmů.
+Pokud se zobrazení příliš komplikované, je vhodné začít přerušit zobrazení na částečný. Použití částečně usnadňuje pochopení a udržování vašich zobrazení. Vytvoříme částečně, kterou můžeme použít jako šablonu k formátování každého záznamu filmové databáze.
 
-Postupujte podle těchto kroků můžete vytvořit části:
+Pomocí těchto kroků můžete vytvořit částečnou:
 
-1. Klikněte pravým tlačítkem na složku Views\Movie a vyberte možnost nabídky **přidat zobrazení**.
-2. Zaškrtněte políčko s popiskem *vytvořit částečné zobrazení (prvků.ascx)*.
+1. Klikněte pravým tlačítkem na složku Views\Movie a vyberte možnost nabídky **Přidat zobrazení**.
+2. Zaškrtněte políčko s názvem *vytvořit částečné zobrazení (. ascx)* .
 3. Pojmenujte částečnou *MovieTemplate*.
-4. Zaškrtněte políčko s popiskem **vytvoření zobrazení se silnými typy**.
-5. Vyberte video jako *zobrazení dat třídy*.
-6. Vyberte prázdný jako *zobrazit obsah*.
-7. Klikněte na tlačítko **přidat** tlačítko pro přidání částečné do projektu.
+4. Zaškrtněte políčko s názvem **vytvořit zobrazení silného typu**.
+5. Jako *třídu zobrazení dat*vyberte video.
+6. Jako *zobrazení obsahu*vyberte prázdné.
+7. Kliknutím na tlačítko **Přidat** přidáte do projektu částečnou možnost.
 
-Po dokončení těchto kroků upravte MovieTemplate částečné vypadat výpis 3.
+Po dokončení těchto kroků upravte MovieTemplate částečně tak, aby vypadaly jako v seznamu 3.
 
 **Výpis 3 – Views\Movie\MovieTemplate.ascx**
 
 [!code-aspx[Main](displaying-a-table-of-database-data-vb/samples/sample3.aspx)]
 
-Částečné v 3 výpis obsahuje šablony pro jeden řádek záznamů.
+Částečně v seznamu 3 obsahuje šablonu pro jeden řádek záznamů.
 
-Upravené zobrazení indexu v informacích 4 používá MovieTemplate částečné.
+Změněné zobrazení indexu v seznamu 4 používá částečnou MovieTemplate.
 
-**Část 4 – Views\Movie\Index.aspx**
+**Výpis 4 – Views\Movie\Index.aspx**
 
 [!code-aspx[Main](displaying-a-table-of-database-data-vb/samples/sample4.aspx)]
 
-Zobrazení v informacích 4 obsahuje pro každou smyčku, která iteruje přes všechny videa. Pro každý film částečné MovieTemplate slouží k formátování videa. MovieTemplate generován voláním metody helper RenderPartial().
+Zobrazení v seznamu 4 obsahuje odpověď pro každou smyčku, která projde všemi filmy. Pro každý film se k naformátování videa používá částečná MovieTemplate. MovieTemplate je vykreslen voláním pomocné metody RenderPartial ().
 
-Upravené Index zobrazení vykreslí velmi stejné tabulky HTML záznamů databáze. Ale zobrazení je výrazně zjednodušené.
+Změněné zobrazení indexu vykreslí velmi stejnou tabulku HTML záznamů databáze. Zobrazení se ale významně zjednodušilo.
 
-Metoda RenderPartial() je jiná než většina jiných metod helper, protože nevrací řetězec. Proto musí volat metoda RenderPartial() použití &lt;Html.RenderPartial() %&gt; místo &lt;% = Html.RenderPartial() %&gt;.
+Metoda RenderPartial () je odlišná od většiny ostatních pomocných metod, protože nevrací řetězec. Proto je nutné volat metodu RenderPartial () pomocí &lt;% HTML. RenderPartial ()%&gt; namísto &lt;% = HTML. RenderPartial ()%&gt;.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Cílem tohoto kurzu bylo vysvětlují, jak můžete zobrazit sadu záznamů databáze v tabulku HTML. Nejdřív jste zjistili, jak vrátit sadu záznamů databáze z akce kontroleru s využitím rozhraní Entity Framework společnosti Microsoft. Dále jste zjistili, jak používat generování uživatelského rozhraní sady Visual Studio vygenerovat zobrazení, která zobrazuje kolekce položek automaticky. Nakonec jste zjistili, jak zjednodušit využití výhod částečné zobrazení. Naučili jste se použít částečné jako šablonu tak, aby každý záznam v databázi lze formátovat.
+Cílem tohoto kurzu bylo vysvětlit, jak můžete zobrazit sadu záznamů databáze v tabulce HTML. Nejdřív jste zjistili, jak vrátit sadu záznamů databáze z akce kontroleru tím, že využijete výhod Entity Framework Microsoftu. Dále jste zjistili, jak používat generování uživatelského rozhraní sady Visual Studio k vygenerování zobrazení, které automaticky zobrazuje kolekci položek. Nakonec jste zjistili, jak zjednodušit zobrazení využitím částečného. Zjistili jste, jak použít částečný jako šablonu, abyste mohli naformátovat každý záznam v databázi.
 
 > [!div class="step-by-step"]
 > [Předchozí](creating-model-classes-with-linq-to-sql-vb.md)
-> [další](performing-simple-validation-vb.md)
+> [Další](performing-simple-validation-vb.md)

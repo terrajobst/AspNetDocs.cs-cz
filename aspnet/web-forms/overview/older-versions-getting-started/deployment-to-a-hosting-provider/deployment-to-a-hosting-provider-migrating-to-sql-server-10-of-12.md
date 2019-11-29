@@ -1,449 +1,449 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12
-title: 'Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Migrace na SQL Server – 10 12 | Dokumentace Microsoftu'
+title: 'Nasazení webové aplikace v ASP.NET pomocí SQL Server Compact sady Visual Studio nebo Visual Web Developer: migrace na SQL Server-10 z 12 | Microsoft Docs'
 author: tdykstra
-description: Tato série kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET, která obsahuje databázi systému SQL Server Compact pomocí Visual samostatného projektu webové aplikace...
+description: V této sérii kurzů se dozvíte, jak nasadit (publikovat) projekt webové aplikace ASP.NET, který obsahuje databázi SQL Server Compact pomocí sady Visual Stu...
 ms.author: riande
 ms.date: 11/17/2011
 ms.assetid: a89d6f32-b71b-4036-8ff7-5f8ac2a6eca8
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: cc4db5b1fcedca675a18f1b78e28f65e51b6cf09
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: c5281a42596d95e725b32e652c75785abe0fd64e
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132758"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74640587"
 ---
-# <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-migrating-to-sql-server---10-of-12"></a>Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Migrace na SQL Server – 10 12
+# <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-migrating-to-sql-server---10-of-12"></a>Nasazení webové aplikace v ASP.NET pomocí SQL Server Compact sady Visual Studio nebo Visual Web Developer: migrace na SQL Server-10 z 12
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-[Stáhnout počáteční projekt](http://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
+[Stáhnout počáteční projekt](https://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
 
-> Tato série kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace, která obsahuje databázi systému SQL Server Compact pomocí sady Visual Studio 2012 RC nebo Visual Studio Express 2012 RC pro Web. Můžete také použít Visual Studio 2010 při instalaci aktualizace Publikovat Web. Úvod do řady, naleznete v tématu [z prvního kurzu této série](deployment-to-a-hosting-provider-introduction-1-of-12.md).
+> V této sérii kurzů se dozvíte, jak nasadit (publikovat) projekt webové aplikace ASP.NET, který obsahuje databázi SQL Server Compact pomocí sady Visual Studio 2012 RC nebo Visual Studio Express 2012 RC pro web. Můžete také použít Visual Studio 2010, pokud nainstalujete aktualizaci publikování na webu. Úvod k řadě najdete v [prvním kurzu v řadě](deployment-to-a-hosting-provider-introduction-1-of-12.md).
 > 
-> Kurz ukazuje nasazení funkce zavedená po verzi RC sady Visual Studio 2012, ukazuje, jak nasadit edicích systému SQL Server než SQL Server Compact a ukazuje, jak nasadit do Azure App Service Web Apps, najdete v tématu [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md).
+> Kurz, který ukazuje funkce nasazení představené po vydání RC sady Visual Studio 2012, ukazuje, jak nasadit SQL Server edice jiné než SQL Server Compact a ukazuje, jak nasadit na Azure App Service Web Apps, v tématu [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md).
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu se dozvíte, jak provést migraci ze systému SQL Server Compact do systému SQL Server. Jedním z důvodů, že kdy je vhodné, který je využít výhod funkcí systému SQL Server, které SQL Server Compact není podporován, jako je například uložených procedur, aktivačních událostí, zobrazení nebo replikace. Další informace o rozdílech mezi SQL Server Compact a SQL Server, najdete v článku [nasazení systému SQL Server Compact](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md) kurzu.
+V tomto kurzu se dozvíte, jak migrovat z SQL Server Compact na SQL Server. Jedním z důvodů, které byste mohli chtít udělat, je využití funkcí SQL Server, které SQL Server Compact nepodporuje, jako jsou uložené procedury, triggery, zobrazení nebo replikace. Další informace o rozdílech mezi SQL Server Compact a SQL Server najdete v kurzu [nasazení SQL Server Compact](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md) .
 
-### <a name="sql-server-express-versus-full-sql-server-for-development"></a>SQL Server Express a plnou instalaci systému SQL Server pro vývoj
+### <a name="sql-server-express-versus-full-sql-server-for-development"></a>SQL Server Express versus úplný SQL Server pro vývoj
 
-Jakmile jste se rozhodli upgrade na SQL Server, můžete chtít použít SQL Server nebo SQL Server Express ve vašich vývojových a testovacích prostředích. Kromě rozdíly v podpora nástroje a funkce databázového stroje existují rozdíly v implementacích zprostředkovatele SQL Server Compact a jiné verze systému SQL Server. Tyto rozdíly může způsobit, že stejný kód ke generování odlišné výsledky. Proto pokud se rozhodnete zachovat SQL Server Compact jako vývoj databáze, měli byste důkladně otestovat svůj web v systému SQL Server nebo SQL Server Express v testovacím prostředí před každé nasazení do produkčního prostředí.
+Až se rozhodnete upgradovat na SQL Server, můžete ve svém vývojovém a testovacím prostředí používat SQL Server nebo SQL Server Express. Kromě rozdílů v podpoře nástrojů a funkcích databázového stroje existují rozdíly mezi implementacemi poskytovatele mezi SQL Server Compact a dalšími verzemi SQL Server. Tyto rozdíly mohou způsobit, že stejný kód generuje různé výsledky. Proto pokud se rozhodnete zachovat SQL Server Compact jako vývojovou databázi, měli byste web důkladně otestovat v SQL Server nebo SQL Server Express v testovacím prostředí před každým nasazením do produkčního prostředí.
 
-Na rozdíl od systému SQL Server Compact SQL Server Express je v podstatě stejný databázový stroj a používá stejný zprostředkovatel .NET jako plnou instalaci systému SQL Server. Při testování pomocí serveru SQL Server Express, máte jistotu, že z vrátí stejné výsledky, jak se s SQL serverem. Většina nástrojů stejné databáze můžete použít s SQL Server Express, který vám pomůže s SQL serverem (významné výjimky se [SQL Server Profiler](https://msdn.microsoft.com/library/ms181091.aspx)), a podporuje další funkce systému SQL Server jako uložené procedury, triggery, a zobrazení a replikace. (Budete obvykle muset použít plnou instalaci systému SQL Server v provozním webu, ale. SQL Server Express můžete spustit ve sdíleném hostování prostředí, ale nebyl navržen, pro který, a mnoho poskytovatelů hostingu je nepodporují.)
+Na rozdíl od SQL Server Compact SQL Server Express je v podstatě stejný databázový stroj a používá stejného poskytovatele .NET jako úplný SQL Server. Při testování pomocí SQL Server Express si můžete být jistí, že budete mít stejné výsledky jako v SQL Server. Většinu stejných databázových nástrojů můžete používat s SQL Server Express, které můžete použít s SQL Server (významnou výjimkou [SQL Server Profiler](https://msdn.microsoft.com/library/ms181091.aspx)), a podporuje další funkce SQL Server, jako jsou uložené procedury, zobrazení, aktivační události a replikace. (Na produkčním webu ale obvykle musíte použít úplnou SQL Server. SQL Server Express lze spustit ve sdíleném hostitelském prostředí, ale není pro něj navrženo a mnoho poskytovatelů hostingu je nepodporuje.)
 
-Pokud používáte sadu Visual Studio 2012, obvykle zvolíte SQL Server Express LocalDB pro vaše vývojové prostředí vzhledem k tomu, který je, co se instaluje standardně pomocí sady Visual Studio. Ale LocalDB nefunguje ve službě IIS, tak pro testovací prostředí, budete muset použít SQL Server nebo SQL Server Express.
+Pokud používáte Visual Studio 2012, obvykle pro vývojové prostředí zvolíte SQL Server Express LocalDB, protože to je to, co je ve výchozím nastavení nainstalováno v aplikaci Visual Studio. LocalDB ale ve službě IIS nefunguje, takže pro vaše testovací prostředí musíte použít buď SQL Server, nebo SQL Server Express.
 
-### <a name="combining-databases-versus-keeping-them-separate"></a>Kombinování databáze a zachování jejich samostatným dokumentem
+### <a name="combining-databases-versus-keeping-them-separate"></a>Kombinování databází a jejich oddělené zachování
 
-Aplikace Contoso University má dvě databáze systému SQL Server Compact: databáze členství (*aspnet.sdf*) a aplikační databáze (*School.sdf*). Při migraci, můžete migrovat tyto databáze k dvě samostatné databáze a izolované databáze. Můžete kombinovat předpřipravených databáze spojení mezi vaší aplikační databáze a databáze členství. Váš plán hostování může také zadejte důvod k jejich zkombinování. Například poskytovatele hostitelských služeb můžou účtovat další možnosti pro více databází nebo nemusí povolit i více než jednu databázi. To je v případě, Cytanium Lite hostitelský účet, který se používá pro účely tohoto kurzu, který umožňuje pouze jednu databázi SQL serveru.
+Aplikace Contoso University má dvě databáze SQL Server Compact: databáze členství (*ASPNET. sdf*) a aplikační databáze (*School. sdf*). Při migraci můžete tyto databáze migrovat do dvou samostatných databází nebo do jediné databáze. Možná je budete chtít kombinovat, aby bylo možné mezi databází aplikace a databází členství usnadnit spojení s databázemi. Váš plán hostování může také poskytnout důvod, jak je kombinovat. Poskytovatel hostingu může například účtovat více databází více nebo nemusí dokonce umožňovat více než jednu databázi. V tomto případě se jedná o hostitelský účet Cytanium Lite, který se používá pro tento kurz, který umožňuje pouze jednu databázi SQL Server.
 
-V tomto kurzu provedeme migraci vašeho dvě databáze tímto způsobem:
+V tomto kurzu migrujete své dvě databáze tímto způsobem:
 
-- Migrace na dvě databáze LocalDB ve vývojovém prostředí.
-- Migrace na dvě databáze systému SQL Server Express v testovacím prostředí.
-- Migrace do jedné kombinované úplné databáze serveru SQL Server v provozním prostředí.
+- Migrujte na dvě databáze LocalDB ve vývojovém prostředí.
+- Migrujte do dvou SQL Server Express databází v testovacím prostředí.
+- Migrujte do jedné kombinované úplné SQL Server databáze v produkčním prostředí.
 
-Připomenutí: Pokud se zobrazí chybová zpráva nebo něco nefunguje tak, jak absolvovat kurz, nezapomeňte se podívat [stránka o řešení problémů](deployment-to-a-hosting-provider-creating-and-installing-deployment-packages-12-of-12.md).
+Připomenutí: Pokud se zobrazí chybová zpráva nebo něco nefunguje při procházení tohoto kurzu, zkontrolujte [stránku řešení potíží](deployment-to-a-hosting-provider-creating-and-installing-deployment-packages-12-of-12.md).
 
-## <a name="installing-sql-server-express"></a>Installing SQL Server Express
+## <a name="installing-sql-server-express"></a>Instalace SQL Server Express
 
-SQL Server Express se automaticky nainstaluje ve výchozím nastavení se sadou Visual Studio 2010, ale ve výchozím nastavení není nainstalována pomocí sady Visual Studio 2012. Pokud chcete nainstalovat SQL Server 2012 Express, klikněte na následující odkaz
+Ve výchozím nastavení je SQL Server Express automaticky nainstalován v aplikaci Visual Studio 2010, ale ve výchozím nastavení není nainstalována společně se sadou Visual Studio 2012. Pokud chcete nainstalovat SQL Server 2012 Express, klikněte na následující odkaz.
 
 - [SQL Server Express 2012](https://www.microsoft.com/download/details.aspx?id=29062)
 
-Zvolte *ENU/x64/SQLEXPR\_x64\_ENU.exe* nebo *ENU/x86/SQLEXPR\_x86\_ENU.exe*a v Průvodci instalací přijmete výchozí hodnoty nastavení. Další informace o možnostech instalace najdete v tématu [instalace systému SQL Server 2012 pomocí Průvodce instalací (nastavení)](https://msdn.microsoft.com/library/ms143219.aspx).
+Vyberte možnost *CSY/x64/SQLEXPR\_x64\_CSY. exe* nebo *CSY/x86/SQLEXPR\_x86\_CSY. exe*a v Průvodci instalací přijměte výchozí nastavení. Další informace o možnostech instalace najdete v tématu [instalace SQL Server 2012 v Průvodci instalací (nastavení)](https://msdn.microsoft.com/library/ms143219.aspx).
 
-## <a name="creating-sql-server-express-databases-for-the-test-environment"></a>Vytvoření databáze systému SQL Server Express pro testovací prostředí
+## <a name="creating-sql-server-express-databases-for-the-test-environment"></a>Vytváření databází SQL Server Express pro testovací prostředí
 
-Dalším krokem je vytvoření členství technologie ASP.NET a databáze školy.
+Dalším krokem je vytvoření databáze členství v ASP.NET a školních databází.
 
-Z **zobrazení** nabídky vyberte možnost **Průzkumníka serveru** (**Průzkumník databáze** v aplikaci Visual Web Developer) a potom klikněte pravým tlačítkem na **datová připojení**a vyberte **vytvořit novou databázi SQL serveru**.
+V nabídce **zobrazení** vyberte **Průzkumník serveru** (**Průzkumník databáze** ve Visual Web Developer) a pak klikněte pravým tlačítkem na **datová připojení** a vyberte **vytvořit novou databázi SQL Server**.
 
 ![Selecting_Create_New_SQL_Server_Database](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image1.png)
 
-V **vytvořit novou databázi SQL serveru** dialogového okna zadejte ". \SQLExpress" v **název serveru** pole a "aspnet testování" v **nového názvu databázového** pole a potom klikněte na **OK**.
+V dialogovém okně **vytvořit novou databázi SQL Server** do pole **název serveru** zadejte ".\SQLEXPRESS" a do pole název **nového databáze** zadejte "ASPNET-test" a pak klikněte na **OK**.
 
 ![Create_New_SQL_Server_Database_aspnet](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image2.png)
 
-Postupujte stejným způsobem vytvoření nové databáze SQL serveru Express školy s názvem "Školní Test".
+Použijte stejný postup k vytvoření nové databáze SQL Server Express School s názvem "School-test".
 
-(Přidáváte "Test" tyto názvy databází vzhledem k tomu budete později vytvořit další instance jednotlivých databází pro vývojové prostředí a musíte být schopni odlišení dvě sady databází.)
+(K těmto názvům databází připojujete "test", protože později vytvoříte další instanci každé databáze pro vývojové prostředí a potřebujete být schopni odlišit tyto dvě sady databází.)
 
-**Průzkumník serveru** teď zobrazují dvě nové databáze.
+**Průzkumník serveru** nyní zobrazuje dvě nové databáze.
 
 ![New_databases_in_Server_Explorer](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image3.png)
 
-## <a name="creating-a-grant-script-for-the-new-databases"></a>Vytvoření nové databáze skriptu udělení
+## <a name="creating-a-grant-script-for-the-new-databases"></a>Vytvoření skriptu pro udělení pro nové databáze
 
-Při spuštění aplikace ve službě IIS na vašem vývojovém počítači aplikace přistupuje k databázi s použitím přihlašovacích údajů výchozí fond aplikací. Ale ve výchozím nastavení, identita fondu aplikací nemá oprávnění k otevření databáze. Proto budete muset spustit skript k udělení oprávnění. V této části vytvoříte skript, že je potřeba spustit později, abyste měli jistotu, že aplikace bude moci otevřít databáze při spuštění ve službě IIS.
+Když aplikace běží ve službě IIS na vývojovém počítači, aplikace přistupuje k databázi pomocí výchozích přihlašovacích údajů fondu aplikací. Ve výchozím nastavení ale identita fondu aplikací nemá oprávnění k otevření databází. Proto je nutné spustit skript pro udělení tohoto oprávnění. V této části vytvoříte skript, který později spustíte, abyste se ujistili, že aplikace může otevírat databáze při spuštění ve službě IIS.
 
-V rámci řešení *SolutionFiles* složky, které jste vytvořili [nasazení do produkčního prostředí](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md) kurzu, vytvořte nový soubor SQL *Grant.sql*. Zkopírujte následující příkazy SQL do souboru a pak uložte a zavřete soubor:
+Ve složce *SolutionFiles* řešení, kterou jste vytvořili v kurzu [nasazení do provozního prostředí](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md) , vytvořte nový soubor SQL s názvem *grant. SQL*. Zkopírujte následující příkazy SQL do souboru a pak soubor uložte a zavřete:
 
 [!code-sql[Main](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/samples/sample1.sql)]
 
 > [!NOTE]
-> Tento skript je navržen pro práci s SQL Server 2008 a nastavení služby IIS ve Windows 7, jako jsou uvedeny v tomto kurzu. Pokud používáte jinou verzi systému SQL Server nebo Windows, nebo pokud jste nastavili IIS počítače odlišně, může být vyžadováno změny tohoto skriptu. Další informace o skripty systému SQL Server najdete v tématu [SQL Server Books Online](https://go.microsoft.com/fwlink/?LinkId=132511).
+> Tento skript je navržený tak, aby fungoval s SQL Server 2008 a s nastavením služby IIS v systému Windows 7, jak jsou uvedeny v tomto kurzu. Pokud používáte jinou verzi SQL Server nebo Windows nebo pokud jste v počítači nastavili službu IIS odlišně, může se stát, že se budou vyžadovat změny v tomto skriptu. Další informace o SQL Server skriptů naleznete v tématu [SQL Server Books Online](https://go.microsoft.com/fwlink/?LinkId=132511).
 
 > [!NOTE] 
 > 
-> **Poznámka k zabezpečení** tento skript vám db\_oprávnění vlastníka na uživatele, který přistupuje k databázi v době běhu, což je budete mít v provozním prostředí. V některých případech můžete chtít určit jako uživatel, který má celé databáze schéma aktualizovat oprávnění pouze pro nasazení a zadejte jiný uživatel, který má oprávnění pouze ke čtení a zápisu dat běhu. Další informace najdete v tématu **kontroly automatické změn souboru Web.config pro migrace Code First** v [nasazení do služby IIS jako testovacího prostředí](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md).
+> **Poznámka k zabezpečení** Tento skript uděluje uživateli oprávnění\_oprávnění vlastníka, který přistupuje k databázi v době běhu, což je to, co budete mít v produkčním prostředí. V některých případech můžete chtít zadat uživatele, který má úplná oprávnění aktualizace schématu databáze jenom pro nasazení, a určit dobu běhu jiného uživatele, který má oprávnění jenom pro čtení a zápis dat. Další informace najdete v tématu **Kontrola automatických změn souboru Web. config pro migrace Code First** při [nasazení do služby IIS jako testovací prostředí](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md).
 
 ## <a name="configuring-database-deployment-for-the-test-environment"></a>Konfigurace nasazení databáze pro testovací prostředí
 
-Visual Studio v dalším kroku nakonfigurujete tak, že provedete následující úlohy pro každou databázi:
+Dále nakonfigurujete aplikaci Visual Studio tak, aby provede následující úlohy pro každou databázi:
 
-- Generovat skript SQL, který vytvoří strukturu zdrojové databáze (tabulky, sloupce, omezení, atd.) v cílové databázi.
-- Generovat skript SQL, který vkládá data zdrojové databáze do tabulek v cílové databázi.
-- Spusťte vygenerované skripty a udělení skript, který jste vytvořili v cílové databázi.
+- Vygenerujte skript SQL, který vytvoří strukturu zdrojové databáze (tabulky, sloupce, omezení atd.) v cílové databázi.
+- Vygenerujte skript SQL, který vloží data zdrojové databáze do tabulek v cílové databázi.
+- V cílové databázi spusťte vygenerované skripty a vytvořený skript pro udělení.
 
-Otevřít **vlastnosti projektu** okna a vyberte **balení/publikování kódu SQL** kartu.
+Otevřete okno **Vlastnosti projektu** a vyberte kartu **balíček/publikovat SQL** .
 
-Ujistěte se, že **aktivní (verze)** nebo **vydání** výběru v **konfigurace** rozevíracího seznamu.
+Ujistěte se, že je v rozevíracím seznamu **Konfigurace** vybraná možnost **aktivní (vydaná verze)** nebo **vydaná verze** .
 
-Klikněte na tlačítko **povolit tuto stránku**.
+Klikněte na **Povolit tuto stránku**.
 
 ![Package_Publish_SQL_tab_Enable_This_page](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image4.png)
 
-**Balení/publikování kódu SQL** karta je zakázaná obvykle, protože určuje způsob starší verze nasazení. Pro většinu scénářů, měli byste nakonfigurovat nasazení databáze v **publikování webu** průvodce. Migrace ze systému SQL Server Compact do systému SQL Server nebo SQL Server Express je zvláštní případ, pro kterou tato metoda je dobrou volbou.
+Karta **Balení/publikování kódu SQL** je obvykle zakázaná, protože specifikuje starší metodu nasazení. Ve většině scénářů byste měli nakonfigurovat nasazení databáze v průvodci **publikování webu** . Migrace z SQL Server Compact na SQL Server nebo SQL Server Express je zvláštní případ, pro který je tato metoda dobrá volbou.
 
-Klikněte na tlačítko **importovat ze souboru Web.config**.
+Klikněte na **Importovat ze souboru Web. config**.
 
-![Selecting_Import_from_Web.config](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image5.png)
+![Selecting_Import_from_Web. config](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image5.png)
 
-Visual Studio hledá připojovací řetězce v *Web.config* souboru, vyhledá jeden pro databáze členství a jeden pro databáze školy a přidá řádek odpovídající každé připojovací řetězec **položky databáze**  tabulky. Připojovací řetězce, které nalezne jsou pro existující databáze systému SQL Server Compact a další krok budete moct nakonfigurovat jak a kde k nasazení těchto databází.
+Visual Studio hledá připojovací řetězce v souboru *Web. config* , najde jednu pro databázi členství a jednu pro databázi školy a přidá do tabulky **databázových záznamů** řádek odpovídající každému připojovacímu řetězci. Připojovací řetězce, které najde, jsou pro existující databáze SQL Server Compact a vaším dalším krokem bude nakonfigurovat, jak a kde tyto databáze nasadit.
 
-Zadejte nastavení nasazení databáze **podrobnosti o databázové položce** níže v části **položky databáze** tabulky. Nastavení uvedená v **podrobnosti o databázové položce** podle toho, co řádek v části se týkají **položky databáze** vybrané tabulky, jak je znázorněno na následujícím obrázku.
+Nastavení nasazení databáze zadáte v části **Podrobnosti o položce databáze** pod tabulkou **položky databáze** . Nastavení zobrazená v části **Podrobnosti o položce databáze** se vztahuje na každý řádek v tabulce **databázové položky** , jak je znázorněno na následujícím obrázku.
 
 ![Database_Entry_Details_section_of_Package_Publish_SQL_tab](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image6.png)
 
 ### <a name="configuring-deployment-settings-for-the-membership-database"></a>Konfigurace nastavení nasazení pro databázi členství
 
-Vyberte **objekt DefaultConnection nasazení** řádku v **položky databáze** tabulky, aby bylo možné konfigurovat nastavení, které platí pro databáze členství.
+V tabulce **položky databáze** vyberte řádek **DefaultConnection-Deployment** , abyste mohli konfigurovat nastavení, která se vztahují na databázi členství.
 
-V **připojovací řetězec pro cílovou databázi**, zadejte připojovací řetězec, který odkazuje na novou databázi serveru SQL Server Express členství. Můžete získat připojovací řetězec budete potřebovat z **Průzkumníka serveru**. V **Průzkumníka serveru**, rozbalte **datová připojení** a vyberte **aspnetTest** databáze, pak z **vlastnosti** okno Kopírovat **Připojovací řetězec** hodnotu.
+Do pole **připojovací řetězec pro cílovou databázi**zadejte připojovací řetězec, který odkazuje na novou SQL Server Express databázi členství. Připojovací řetězec, který potřebujete, můžete získat z **Průzkumník serveru**. V **Průzkumník serveru**rozbalte položku **datová připojení** a vyberte databázi **AspnetTest** a potom v okně **vlastnosti** Zkopírujte hodnotu **připojovacího řetězce** .
 
 ![aspnet_connection_string_in_Server_Explorer](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image7.png)
 
-Stejný připojovací řetězec je reprodukován zde:
+Do této části se vytvoří stejný připojovací řetězec:
 
 [!code-console[Main](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/samples/sample2.cmd)]
 
-Zkopírujte a vložte tento připojovací řetězec do **připojovací řetězec pro cílovou databázi** v **balení/publikování kódu SQL** kartu.
+Tento připojovací řetězec zkopírujte a vložte do **připojovacího řetězce pro cílovou databázi** na kartě **Package/Publish SQL** .
 
-Ujistěte se, že **o přijetí změn dat a/nebo schéma z existující databáze** zaškrtnuto. Je to, co způsobí, že skripty SQL pro automaticky generované a spustit v cílové databázi.
+Ujistěte se, že je vybraná možnost **načíst data nebo schéma z existující databáze** . To způsobuje, že se skripty SQL automaticky vygenerovaly a spustí v cílové databázi.
 
-**Připojovací řetězec pro zdrojovou databázi** extrakci hodnot z *Web.config* souboru a odkazuje na databázi systému SQL Server Compact vývoje. Toto je zdrojové databáze, který se použije ke generování skriptů, které se spustí později v cílové databázi. Protože ale chcete nasazovat produkční verzi databáze, změňte "aspnet Dev.sdf" na "aspnet Prod.sdf".
+**Připojovací řetězec pro hodnotu zdrojové databáze** je extrahován ze souboru *Web. config* a odkazuje na databázi vývoje SQL Server Compact. Jedná se o zdrojovou databázi, která se použije ke generování skriptů, které se spustí později v cílové databázi. Vzhledem k tomu, že chcete nasadit produkční verzi databáze, změňte "aspnet-Dev. sdf" na "aspnet-Prod. sdf".
 
-Změna **databáze možnosti skriptování** z **pouze schéma** k **schéma a data**, protože ale chcete si zkopírujte svá data (uživatelské účty a role) a také struktura databáze.
+Změna **možností skriptování databáze** z **schématu pouze** na **schéma a data**, protože chcete kopírovat data (uživatelské účty a role) i strukturu databáze.
 
-Konfigurace nasazení tak, aby spouštění skriptů udělení, které jste vytvořili dříve, budete muset přidat je do **databázové skripty** oddílu. Klikněte na tlačítko **přidat skript**a **přidat skripty SQL** dialogové okno, přejděte do složky, kam jste uložili skriptu udělení (je to složka, která obsahuje váš soubor řešení). Vyberte soubor s názvem *Grant.sql*a klikněte na tlačítko **otevřít**.
+Pokud chcete nakonfigurovat nasazení tak, aby se spouštěly skripty pro udělení, které jste vytvořili dříve, musíte je přidat do oddílu **databázové skripty** . Klikněte na **Přidat skript**a v dialogovém okně **přidat skripty SQL** přejděte do složky, kam jste uložili skript pro udělení oprávnění (Jedná se o složku, která obsahuje soubor řešení). Vyberte soubor s názvem *grant. SQL*a klikněte na tlačítko **otevřít**.
 
 [![Select_File_dialog_box_grant_script](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image9.png)](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image8.png)
 
-Nastavení **objekt DefaultConnection nasazení** řádku v **položky databáze** teď měl vypadat jako na následujícím obrázku:
+Nastavení řádku **DefaultConnection-Deployment** v **položkách databáze** teď vypadá jako na následujícím obrázku:
 
 ![Database_Entry_Details_for_DefaultConnection_Test](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image10.png)
 
-### <a name="configuring-deployment-settings-for-the-school-database"></a>Konfigurace nastavení nasazení pro databáze školy
+### <a name="configuring-deployment-settings-for-the-school-database"></a>Konfigurace nastavení nasazení pro školní databázi
 
-V dalším kroku vyberte **SchoolContext nasazení** řádku v **položky databáze** tabulky, aby bylo možné konfigurovat nastavení nasazení pro databázi School.
+V dalším kroku vyberte řádek **SchoolContext-Deployment** v tabulce **položky databáze** , aby se nakonfigurovali nastavení nasazení pro školní databázi.
 
-Můžete použít stejnou metodu, kterou jste předtím použili ke získání připojovacího řetězce pro novou databázi serveru SQL Server Express. Zkopírujte tento připojovací řetězec do **připojovací řetězec pro cílovou databázi** v **balení/publikování kódu SQL** kartu.
+K získání připojovacího řetězce pro novou SQL Server Express databázi můžete použít stejnou metodu, kterou jste použili dříve. Zkopírujte tento připojovací řetězec do **připojovacího řetězce pro cílovou databázi** na kartě **Package/Publish SQL** .
 
 [!code-console[Main](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/samples/sample3.cmd)]
 
-Ujistěte se, že **o přijetí změn dat a/nebo schéma z existující databáze** zaškrtnuto.
+Ujistěte se, že je vybraná možnost **načíst data nebo schéma z existující databáze** .
 
-**Připojovací řetězec pro zdrojovou databázi** extrakci hodnot z *Web.config* souboru a odkazuje na databázi systému SQL Server Compact vývoje. Změňte "School Dev.sdf" na "Školní-Prod.sdf" nasazení produkční verzi databáze. (Nikdy nevytvářejí School Prod.sdf souboru v aplikaci\_složku Data, takže budete zkopírovat daný soubor z testovacího prostředí do aplikace\_složku Data ve složce projektu ContosoUniversity později.)
+**Připojovací řetězec pro hodnotu zdrojové databáze** je extrahován ze souboru *Web. config* a odkazuje na databázi vývoje SQL Server Compact. Pokud chcete nasadit produkční verzi databáze, změňte "School-Dev. sdf" na "School-Prod. sdf". (Soubor School-Prod. SDF se ve složce App\_data nikdy nevytvořil, takže tento soubor zkopírujete z testovacího prostředí do složky aplikace\_data ve složce projektu ContosoUniversity později.)
 
-Změna **databáze možnosti skriptování** k **schéma a data**.
+Změna **možností skriptování databáze** na **schéma a data**
 
-Můžete také spustit skript, který chcete udělit pro čtení a zápis oprávnění pro tuto databázi k identitě fondu aplikací, proto přidat *Grant.sql* soubor skriptu, který jste použili pro databáze členství.
+Chcete také spustit skript, který uděluje oprávnění ke čtení a zápisu této databáze k identitě fondu aplikací, proto přidejte soubor skriptu *grant. SQL* jako u databáze členství.
 
-Až budete mít, nastavení **SchoolContext nasazení** řádku v **položky databáze** vypadat jako na následujícím obrázku:
+Až skončíte, nastavení řádku **SchoolContext-Deployment** v **položkách databáze** budou vypadat jako na následujícím obrázku:
 
 ![Database_Entry_Details_for_SchoolContext_Test](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image11.png)
 
-Uložit změny **balení/publikování kódu SQL** kartu.
+Uložte změny na kartě **Package/PUBLISH SQL** .
 
-Kopírování *školní-Prod.sdf* souboru z *c:\inetpub\wwwroot\ContosoUniversity\App\_Data* složku *aplikace\_Data* složky v ContosoUniversity projektu.
+Zkopírujte soubor *School-prod. sdf* z složky *c:\inetpub\wwwroot\ContosoUniversity\App\_dat* do složky *App\_data* v projektu ContosoUniversity.
 
-### <a name="specifying-transacted-mode-for-the-grant-script"></a>Určení transakčního režimu pro udělení skriptu
+### <a name="specifying-transacted-mode-for-the-grant-script"></a>Určení transakčního režimu pro skript udělení
 
-Proces nasazení generuje skripty, které se nasadit schéma databáze a data. Ve výchozím nastavení spusťte tyto skripty v transakci. Vlastní skripty (např. skripty grant) ve výchozím nastavení však nelze spustit v transakci. Pokud se proces nasazení používá režimy transakce, může se zobrazit vypršení časového limitu při spuštění skriptů při nasazení. V této části upravte soubor projektu konfigurujete vlastní skripty pro spuštění v rámci transakce.
+Proces nasazení generuje skripty, které nasazují schéma databáze a data. Ve výchozím nastavení se tyto skripty spouštějí v transakci. Vlastní skripty (jako skripty pro udělení) ale ve výchozím nastavení neběží v transakci. Pokud proces nasazení smíchá režimy transakce, může při spuštění skriptu při nasazení dojít k chybě časového limitu. V této části upravíte soubor projektu, aby bylo možné nakonfigurovat vlastní skripty pro spuštění v transakci.
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem myši **ContosoUniversity** projektu a vyberte **uvolnit projekt**.
+V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **ContosoUniversity** a vyberte **Uvolnit projekt**.
 
 ![Unload_Project_in_Solution_Explorer](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image12.png)
 
-Klikněte pravým tlačítkem na projekt a vyberte **upravit ContosoUniversity.csproj**.
+Pak znovu klikněte pravým tlačítkem na projekt a vyberte **Upravit ContosoUniversity. csproj**.
 
 ![Edit_Project_in_Solution_Explorer](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image13.png)
 
-Editor sady Visual Studio zobrazí obsah XML souboru projektu. Všimněte si, že existuje několik `PropertyGroup` elementy. (Na obrázku, obsah `PropertyGroup` prvky byly vynechány.)
+Editor sady Visual Studio zobrazuje obsah XML souboru projektu. Všimněte si, že existuje několik prvků `PropertyGroup`. (V imagi byl obsah prvků `PropertyGroup` vynechán.)
 
 ![Okno editoru souboru projektu](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image15.png)
 
-První z nich, který nemá žádné `Condition` atribut, je pro konfiguraci nastavení, která platí bez ohledu na to sestavení. Jeden `PropertyGroup` element platí pouze pro konfiguraci sestavení ladění (Poznámka: `Condition` atribut), jeden platí pouze pro konfigurace sestavení pro vydání a jeden platí pouze pro konfiguraci testovacího sestavení. V rámci `PropertyGroup` – element pro konfigurace sestavení pro vydání, zobrazí se vám `PublishDatabaseSettings` element, který obsahuje nastavení, které jste zadali na **balení/publikování kódu SQL** kartu. Je `Object` element, který odpovídá každému udělení skriptů, které jste zadali (Všimněte si, že dva výskyty "Grant.sql"). Ve výchozím nastavení `Transacted` atribut `Source` – element pro každý skript udělení je `False`.
+První z nich, který nemá atribut `Condition`, je pro nastavení, která platí bez ohledu na konfiguraci sestavení. Jeden `PropertyGroup` element se vztahuje pouze na konfiguraci sestavení ladění (Všimněte si, že atribut `Condition`), jedna se vztahuje pouze na konfiguraci sestavení pro vydání a jedna se vztahuje pouze na konfiguraci sestavení testu. V elementu `PropertyGroup` pro konfiguraci sestavení pro vydání se zobrazí `PublishDatabaseSettings` prvek, který obsahuje nastavení, která jste zadali na kartě **Package/PUBLISH SQL** karta. Existuje `Object` element, který odpovídá jednotlivým zadaným skriptům udělení (Všimněte si dvou instancí "Grant. SQL"). Ve výchozím nastavení je `Transacted` atribut `Source` elementu pro každý skript pro udělení `False`.
 
 ![Transacted_false](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image16.png)
 
-Změňte hodnotu `Transacted` atribut `Source` elementu `True`.
+Změňte hodnotu atributu `Transacted` elementu `Source` na `True`.
 
 ![Transacted_true](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image17.png)
 
-Uložte a zavřete soubor projektu, klikněte pravým tlačítkem na projekt v **Průzkumníka řešení** a vyberte **znovu načíst projekt**.
+Uložte a zavřete soubor projektu a pak klikněte pravým tlačítkem na projekt v **Průzkumník řešení** a vyberte **znovu načíst projekt**.
 
 ![Reload_project](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image18.png)
 
-## <a name="setting-up-webconfig-transformations-for-the-connection-strings"></a>Nastavení transformace Web.Config pro připojovací řetězce
+## <a name="setting-up-webconfig-transformations-for-the-connection-strings"></a>Nastavení transformací Web. config pro připojovací řetězce
 
-Řetězce připojení pro nový systém SQL Express databáze, které jste zadali na **balení/publikování kódu SQL** kartu pomocí nasazení webu slouží pouze k aktualizaci v cílové databázi během nasazení. Stále nutné nastavit *Web.config* transformace tak, aby připojení řetězce v nasazených *Web.config* souboru, přejděte na nové databáze systému SQL Server Express. (Při použití **balení/publikování kódu SQL** kartu, nelze nakonfigurovat připojovací řetězce v profilu publikování.)
+Připojovací řetězce pro nové databáze SQL Express, které jste zadali na kartě **Balení/publikování kódu SQL** , jsou používány nasazení webu pouze pro aktualizaci cílové databáze během nasazení. Je stále nutné nastavit transformace *souboru Web. config* tak, aby připojovací řetězce v nasazeném souboru *Web. config* odkazovaly na nové databáze SQL Server Express. (Při použití karty **balíček/publikovat SQL** nemůžete konfigurovat připojovací řetězce v profilu publikování.)
 
-Otevřít *Web.Test.config* a nahraďte `connectionStrings` element s `connectionStrings` element v následujícím příkladu. (Ujistěte se, že zkopírujete elementu connectionStrings není okolním kódem, který je znázorněna zde k zajištění kontextu.)
+Otevřete *Web. test. config* a v následujícím příkladu nahraďte element `connectionStrings` prvkem `connectionStrings`. (Nezapomeňte zkopírovat pouze Element connectionStrings, nikoli okolní kód, který je zde zobrazen, aby poskytoval kontext.)
 
 [!code-xml[Main](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/samples/sample4.xml?highlight=2-11)]
 
-Tento kód způsobí, že `connectionString` a `providerName` atributy každého `add` elementu, které mají být nahrazeny v nasazených *Web.config* souboru. Tyto řetězce připojení nejsou stejné jako ty, které jste zadali **balení/publikování kódu SQL** kartu. Nastavení "MultipleActiveResultSets = True" je přidaný do jejich, protože je to požadováno rozhraní Entity Framework a Universal Providers.
+Tento kód způsobí, že atributy `connectionString` a `providerName` každého elementu `add` budou nahrazeny v nasazeném souboru *Web. config* . Tyto připojovací řetězce nejsou totožné s těmi, které jste zadali na kartě **Package/PUBLISH SQL** karta. Nastavení "MultipleActiveResultSets = True" bylo přidáno do těchto, protože je vyžadováno pro Entity Framework a univerzálním poskytovatelům.
 
-## <a name="installing-sql-server-compact"></a>Instalace serveru SQL Server Compact
+## <a name="installing-sql-server-compact"></a>Instalace SQL Server Compact
 
-Balíček SqlServerCompact NuGet obsahuje databázi systému SQL Server Compact modul sestavení pro aplikaci Contoso University. Ale nyní není aplikace, ale nasazení webu, který musí být schopni číst databáze systému SQL Server Compact, chcete-li vytvořit skripty pro spuštění v databázích systému SQL Server. Chcete-li nasazení webu ke čtení databází systému SQL Server Compact, nainstalujte SQL Server Compact na vývojovém počítači pomocí následujícího odkazu: [Microsoft SQL Server Compact 4.0](https://www.microsoft.com/downloads/details.aspx?FamilyID=15F7C9B3-A150-4AD2-823E-E4E0DCF85DF6).
+Balíček NuGet SqlServerCompact SQL Server Compact poskytuje sestavení databázového stroje pro aplikaci Contoso University. Nyní ale nejedná se o aplikaci, ale Nasazení webu, která musí být schopna číst databáze SQL Server Compact, aby bylo možné vytvářet skripty pro spuštění v databázích SQL Server. Pokud chcete povolit Nasazení webu čtení SQL Server Compact databází, nainstalujte SQL Server Compact na vývojovém počítači pomocí následujícího odkazu: [Microsoft SQL Server Compact 4,0](https://www.microsoft.com/downloads/details.aspx?FamilyID=15F7C9B3-A150-4AD2-823E-E4E0DCF85DF6).
 
 ## <a name="deploying-to-the-test-environment"></a>Nasazení do testovacího prostředí
 
-Chcete-li publikovat do testovacího prostředí, budete muset vytvořit profil publikování, který je nakonfigurován pro použití **balení/publikování kódu SQL** kartu pro databázi místo nastavení databáze publikování profilu publikování.
+Aby bylo možné publikovat do testovacího prostředí, je nutné vytvořit profil publikování, který je nakonfigurován tak, aby používal kartu **Package/PUBLISH SQL** pro publikování databáze místo nastavení databáze profilu publikování.
 
-Nejprve odstraňte existující profil testu.
+Nejprve odstraňte existující testovací profil.
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na tlačítko **publikovat**.
+V **Průzkumník řešení**klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na **publikovat**.
 
-Vyberte **profilu** kartu.
+Vyberte kartu **profil** .
 
-Klikněte na tlačítko **spravovat profily**.
+Klikněte na **Spravovat profily**.
 
-Vyberte **testovací**, klikněte na tlačítko **odebrat**a potom klikněte na tlačítko **Zavřít**.
+Vyberte **test**, klikněte na **Odebrat**a pak klikněte na **Zavřít**.
 
-Zavřít **publikování webu** průvodce a uložte tuto změnu.
+Zavřete průvodce **publikováním webu** a uložte tuto změnu.
 
-Dále vytvořte nový profil testu a použít k publikování projektu.
+Potom vytvořte nový profil testu a použijte ho k publikování projektu.
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na tlačítko **publikovat**.
+V **Průzkumník řešení**klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na **publikovat**.
 
-Vyberte **profilu** kartu.
+Vyberte kartu **profil** .
 
-Vyberte **&lt;nové... &gt;** z rozevíracího seznamu a zadejte "Test" jako název profilu.
+V rozevíracím seznamu vyberte **&lt;nový...&gt;** a jako název profilu zadejte "test".
 
-V **adresa URL služby** zadejte *localhost*.
+Do pole **Adresa URL služby** zadejte *localhost*.
 
-V **web/aplikace** zadejte *výchozí webový server/ContosoUniversity*.
+Do pole **Web/aplikace** zadejte *Default Web site/ContosoUniversity*.
 
-V **cílovou adresu URL** zadejte `http://localhost/ContosoUniversity/`.
+Do pole **cílová adresa URL** zadejte `http://localhost/ContosoUniversity/`.
 
-Klikněte na **Další**.
+Klikněte na tlačítko **Další**.
 
-**Nastavení** kartu upozorní, který **balení/publikování kódu SQL** karta není nakonfigurovaná, a dává příležitost k jejich přepsání kliknutím na Povolit nová vylepšení publikování databáze. Pro toto nasazení nechcete přepsat **balení/publikování kódu SQL** kartě nastavení, takže stačí kliknout na **Další**.
+Karta **Nastavení** vás upozorní na to, že byla nakonfigurovaná karta **balíček/publikování SQL** , a získáte možnost je přepsat kliknutím na Povolit nová vylepšení publikování databáze. Pro toto nasazení nechcete přepsat nastavení karty pro **Balení/publikování SQL** , takže stačí kliknout na **Další**.
 
 ![Publish_Web_wizard_Settings_tab_Migrate](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image19.png)
 
-Zprávu na **ve verzi Preview** kartu znamená, že **nejsou vybrány žádné databáze k publikování**, ale to pouze znamená, že publikování databáze není nakonfigurované v profilu publikování.
+Zpráva na kartě **Preview** označuje, že **nejsou vybrány žádné databáze pro publikování**, ale to znamená, že publikování databáze není konfigurováno v profilu publikování.
 
-Klikněte na tlačítko **publikovat**.
+Klikněte na **publikovat**.
 
 ![Publish_Web_wizard_Preview_tab_Migrate](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image20.png)
 
-Visual Studio nasadí aplikaci a otevře prohlížeč na domovské stránce webu v testovacím prostředí. Spustíte školitelů stránku, abyste viděli, zobrazuje stejná data, která jste viděli již dříve. Spustit **přidat studenty** stránce, přidání nového studenta a potom zobrazit nového objektu student do **studenty** stránky. Ověří, že budete aktualizovat databázi. Vyberte **aktualizace kredity** stránka (bude potřeba přihlásit) Chcete-li ověřit, že byla nasazena databáze členství a je k ní máte přístup.
+Visual Studio nasadí aplikaci a otevře prohlížeč na domovské stránce webu v testovacím prostředí. Spuštěním stránky instruktory zjistíte, že se zobrazí stejná data, která jste viděli dříve. Spusťte stránku **Přidat studenty** , přidejte nového studenta a pak na stránce **Students** Zobrazte nového studenta. Tím ověříte, že můžete databázi aktualizovat. Vyberte stránku **aktualizovat kredity** (budete se muset přihlásit) a ověřte, jestli je databáze členství nasazená a máte k ní přístup.
 
-## <a name="creating-a-sql-server-database-for-the-production-environment"></a>Vytvoření databáze SQL serveru pro produkční prostředí
+## <a name="creating-a-sql-server-database-for-the-production-environment"></a>Vytvoření databáze SQL Server pro produkční prostředí
 
-Teď, když jste nasadili do testovacího prostředí, budete připraveni k nasazení do produkčního prostředí. Začnete, jako jste to udělali pro testovací prostředí, tak, že vytvoříte databázi nasadit. Jak si Vzpomínáte přehled, Cytanium Lite plán hostování pouze umožňuje izolované databáze SQL serveru, tak nastavíte pouze jedna databáze není dvě. Veškerá data z členství a školy SQL Server Compact databází a tabulek se nasadí do jedné databáze SQL serveru v produkčním prostředí.
+Teď, když jste nasadili do testovacího prostředí, jste připraveni nastavit nasazení do produkčního prostředí. V rámci testovacího prostředí začínáte tím, že vytvoříte databázi, do které se nasadíte. Při odvolání z přehledu je plán hostování Cytanium Lite možné pouze pro jednu databázi SQL Server, takže nastavíte pouze jednu databázi, ne dvě. Všechny tabulky a data z členství a školních SQL Server Compact databází budou nasazeny do jedné databáze SQL Server v produkčním prostředí.
 
-Přejděte do ovládacích panelů Cytanium na [ http://panel.cytanium.com ](http://panel.cytanium.com). Podržte ukazatel myši nad **databází** a potom klikněte na tlačítko **systému SQL Server 2008**.
+V [http://panel.cytanium.com](http://panel.cytanium.com)na ovládacím panelu Cytanium. Podržte myš nad **databázemi** a pak klikněte **SQL Server 2008**.
 
 [![Selecting_Databases_in_Control_Panel](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image22.png)](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image21.png)
 
-V **systému SQL Server 2008** klikněte na **Create Database**.
+Na stránce **SQL Server 2008** klikněte na **vytvořit databázi**.
 
 [![Selecting_Create_Database](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image24.png)](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image23.png)
 
-Pojmenujte databázi "Školy" a klikněte na tlačítko **Uložit**. (Na stránce automaticky přidá předponu "contosou", takže efektivní název bude "contosouSchool".)
+Pojmenujte databázi "School" a klikněte na **Uložit**. (Stránka automaticky přidá předponu "contoso", takže platný název bude "contosouSchool".)
 
 [![Naming_the_database](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image26.png)](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image25.png)
 
-Klikněte na stejné stránce **Create User**. Na servery společnosti Cytanium, spíše než použití integrovaného zabezpečení Windows, takže identita fondu aplikací, otevřete databázi vytvoříte uživatele, který má oprávnění k otevření vaší databáze. Přidejte přihlašovací údaje uživatele na připojovací řetězce, které najdete v provozní *Web.config* souboru. V tomto kroku vytvoříte tyto přihlašovací údaje.
+Na stejné stránce klikněte na **vytvořit uživatele**. Na serverech Cytanium se místo použití integrovaného zabezpečení systému Windows a umožnění, aby identita fondu aplikací otevřela vaši databázi, vytvoříte uživatele, který má oprávnění k otevření vaší databáze. Přidáte přihlašovací údaje uživatele do připojovacích řetězců, které se nacházejí v produkčním souboru *Web. config* . V tomto kroku vytvoříte tyto přihlašovací údaje.
 
 [![Creating_a_database_user](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image28.png)](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image27.png)
 
-Vyplňte požadovaná pole v **vlastnosti uživatele SQL** stránky:
+Vyplňte požadovaná pole na stránce **vlastností uživatele SQL** :
 
 - Jako název zadejte "ContosoUniversityUser".
 - Zadejte heslo.
-- Vyberte **contosouSchool** jako výchozí databáze.
-- Vyberte **contosouSchool** zaškrtávací políčko.
+- Jako výchozí databázi vyberte **contosouSchool** .
+- Zaškrtněte políčko **contosouSchool** .
 
 [![SQL_User_Properties_page](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image30.png)](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image29.png)
 
 ## <a name="configuring-database-deployment-for-the-production-environment"></a>Konfigurace nasazení databáze pro produkční prostředí
 
-Nyní jste připraveni nastavit nastavení nasazení databáze **balení/publikování kódu SQL** kartě, jako jste to udělali dříve pro testovací prostředí.
+Teď jste připraveni nastavit nastavení nasazení databáze na kartě **Package/PUBLISH SQL** , stejně jako jste to předtím pro testovací prostředí.
 
-Otevřít **vlastnosti projektu** okna, vyberte **balení/publikování kódu SQL** kartu a ujistěte se, že **aktivní (verze)** nebo **vydání** je vybrané v **konfigurace** rozevíracího seznamu.
+Otevřete okno **Vlastnosti projektu** , vyberte kartu **Balení/publikování kódu SQL** a ujistěte se, že je v rozevíracím seznamu **Konfigurace** vybrána možnost **aktivní (verze)** nebo **vydaná verze** .
 
-Při konfiguraci nastavení nasazení pro každou databázi, je klíčovým rozdílem mezi udělat pro produkční a testovací prostředí v konfiguraci připojovací řetězce. Pro testovací prostředí jste zadali jiné cílové databázové připojovací řetězce, ale pro produkční prostředí cílový připojovací řetězec bude mít stejná pro databázi i databázi. Je to proto, že obě databáze jsou nasazení do jedné databáze v produkčním prostředí.
+Když nakonfigurujete nastavení nasazení pro každou databázi, je důležité rozdíl mezi tím, co v produkčním prostředí a testovacím prostředím provádíte při konfiguraci připojovacích řetězců. V testovacím prostředí jste zadali jiné připojovací řetězce cílové databáze, ale v produkčním prostředí bude cílový připojovací řetězec pro obě databáze stejný. Důvodem je to, že nasazujete obě databáze do jedné databáze v produkčním prostředí.
 
 ### <a name="configuring-deployment-settings-for-the-membership-database"></a>Konfigurace nastavení nasazení pro databázi členství
 
-Pokud chcete nakonfigurovat nastavení vztahující se k databázi členství, vyberte **objekt DefaultConnection nasazení** řádku v **položky databáze** tabulky.
+Chcete-li konfigurovat nastavení, která se vztahují na databázi členství, vyberte řádek **DefaultConnection-Deployment** v tabulce **položky databáze** .
 
-V **připojovací řetězec pro cílovou databázi**, zadejte připojovací řetězec, který odkazuje na novou produkční databázi SQL serveru, který jste právě vytvořili. Získání připojovacího řetězce z Uvítacího e-mailu. Příslušné části e-mailu obsahuje následující připojovací řetězec vzorku:
+Do pole **připojovací řetězec pro cílovou databázi**zadejte připojovací řetězec, který odkazuje na novou produkční SQL Server databázi, kterou jste právě vytvořili. Připojovací řetězec můžete získat z uvítacího e-mailu. Relevantní část e-mailu obsahuje následující vzorový připojovací řetězec:
 
 [!code-console[Main](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/samples/sample5.cmd)]
 
-Po nahradíte tří proměnných, potřebujete připojovací řetězec vypadá jako v tomto příkladu:
+Po nahrazení tří proměnných bude připojovací řetězec, který potřebujete, vypadat jako v tomto příkladu:
 
 [!code-console[Main](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/samples/sample6.cmd)]
 
-Zkopírujte a vložte tento připojovací řetězec do **připojovací řetězec pro cílovou databázi** v **balení/publikování kódu SQL** kartu.
+Tento připojovací řetězec zkopírujte a vložte do **připojovacího řetězce pro cílovou databázi** na kartě **Package/Publish SQL** .
 
-Ujistěte se, že **o přijetí změn dat a/nebo schéma z existující databáze** stále vybraná a že **databáze možnosti skriptování** je stále **schéma a Data**.
+Ujistěte se, že je stále vybraná možnost **načíst data a schéma z existující databáze** a že **možnosti skriptování databáze** jsou stále **schémat a data**.
 
-V **databázové skripty** pole, zrušte zaškrtnutí políčka vedle Grant.sql skriptu.
+V poli **databázové skripty** zrušte zaškrtnutí políčka vedle skriptu grant. SQL.
 
 ![Disable_Grant_script](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image31.png)
 
-### <a name="configuring-deployment-settings-for-the-school-database"></a>Konfigurace nastavení nasazení pro databáze školy
+### <a name="configuring-deployment-settings-for-the-school-database"></a>Konfigurace nastavení nasazení pro školní databázi
 
-V dalším kroku vyberte **SchoolContext nasazení** řádku v **položky databáze** tabulky, aby bylo možné konfigurovat nastavení databáze školy.
+V dalším kroku vyberte řádek **SchoolContext-Deployment** v tabulce **položky databáze** , aby se nakonfigurovali nastavení školní databáze.
 
-Zkopírujte stejný připojovací řetězec do **připojovací řetězec pro cílovou databázi** , který jste zkopírovali do pole pro databáze členství.
+Zkopírujte stejný připojovací řetězec do **připojovacího řetězce pro cílovou databázi** , kterou jste zkopírovali do tohoto pole pro databázi členství.
 
-Ujistěte se, že **o přijetí změn dat a/nebo schéma z existující databáze** stále vybraná a že **databáze možnosti skriptování** je stále **schéma a Data**.
+Ujistěte se, že je stále vybraná možnost **načíst data a schéma z existující databáze** a že **možnosti skriptování databáze** jsou stále **schémat a data**.
 
-V **databázové skripty** pole, zrušte zaškrtnutí políčka vedle Grant.sql skriptu.
+V poli **databázové skripty** zrušte zaškrtnutí políčka vedle skriptu grant. SQL.
 
-Uložit změny **balení/publikování kódu SQL** kartu.
+Uložte změny na kartě **Package/PUBLISH SQL** .
 
-## <a name="setting-up-webconfig-transforms-for-the-connection-strings-to-production-databases"></a>Nastavení Web.Config transformuje pro připojovací řetězce provozních databází
+## <a name="setting-up-webconfig-transforms-for-the-connection-strings-to-production-databases"></a>Nastavení transformací Web. config pro připojovací řetězce na provozní databáze
 
-V dalším kroku nastavíte *Web.config* transformace tak, aby připojení řetězce v nasazených *Web.config* souboru tak, aby odkazoval na nové produkční databázi. Připojovací řetězec, který jste zadali na **balení/publikování kódu SQL** karta pro nasazení webu použít je stejná jako ta, aplikace musí používat, s výjimkou přidání `MultipleResultSets` možnost.
+Dále nastavíte transformace *Web. config* tak, aby připojovací řetězce v nasazeném souboru *Web. config* odkazovaly na novou provozní databázi. Připojovací řetězec, který jste zadali na kartě **Balení/publikování SQL** pro nasazení webu, který se má použít, je stejný jako aplikace, kterou je třeba použít, s výjimkou přidání možnosti `MultipleResultSets`.
 
-Otevřít *Web.Production.config* a nahraďte `connectionStrings` element s `connectionStrings` element, který bude vypadat jako v následujícím příkladu. (Pouze zkopírovat `connectionStrings` elementu, nikoli okolního značky, které jsou k dispozici k zobrazení kontextu.)
+Otevřete *Web. produkční. config* a nahraďte `connectionStrings` element prvkem `connectionStrings`, který vypadá podobně jako v následujícím příkladu. (Zkopírujte pouze element `connectionStrings`, nikoli okolní značky, které jsou k dispozici pro zobrazení kontextu.)
 
 [!code-xml[Main](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/samples/sample7.xml?highlight=2-11)]
 
-V některých případech uvidíte Rady, že musíte vždy šifrují připojovací řetězce v *Web.config* souboru. To může být vhodné, pokud se nasazení pro servery v síti vaší společnosti. Při nasazování na sdíleném hostování prostředí, ale důvěřujete bezpečnostní postupy poskytovatele hostingu a není nutné nebo praktické šifrování připojovací řetězce.
+Někdy vidíte Rady, které vám pomohou při každém zašifrování připojovacích řetězců v souboru *Web. config* . To může být vhodné, pokud nasazujete na servery ve vaší vlastní podnikové síti. Pokud nasazujete do sdíleného hostitelského prostředí, ale důvěřujete bezpečnostním postupům poskytovatele hostingu a není nutné nebo praktické šifrovat připojovací řetězce.
 
 ## <a name="deploying-to-the-production-environment"></a>Nasazení do produkčního prostředí
 
-Nyní jste připraveni nasadit do produkčního prostředí. Nástroj nasazení webu bude číst databázím SQL Server Compact do projektu *aplikace\_Data* složky a znovu vytvořit všechny jejich tabulek a dat v produkční databázi SQL serveru. Chcete-li publikovat pomocí **balení/publikování webu** nastavení karet, je nutné vytvořit nový profil publikování pro produkční prostředí.
+Teď jste připraveni na nasazení do produkčního prostředí. Nasazení webu načte databáze SQL Server Compact ve složce *aplikace projektu\_data* a znovu vytvoří všechny své tabulky a data v provozní SQL Server databázi. Aby bylo možné publikovat pomocí nastavení karty **balíček/publikovat web** , je nutné vytvořit nový profil publikování pro produkční prostředí.
 
-Nejprve odstraňte existující profil produkčního prostředí, jako se to dělá testovacího profilu.
+Nejdřív odstraňte existující provozní profil, protože jste předtím profil testu.
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na tlačítko **publikovat**.
+V **Průzkumník řešení**klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na **publikovat**.
 
-Vyberte **profilu** kartu.
+Vyberte kartu **profil** .
 
-Klikněte na tlačítko **spravovat profily**.
+Klikněte na **Spravovat profily**.
 
-Vyberte **produkční**, klikněte na tlačítko **odebrat**a potom klikněte na tlačítko **Zavřít**.
+Vyberte možnost **Výroba**, klikněte na tlačítko **Odebrat**a pak klikněte na tlačítko **Zavřít**.
 
-Zavřít **publikování webu** průvodce a uložte tuto změnu.
+Zavřete průvodce **publikováním webu** a uložte tuto změnu.
 
-Dále vytvořte nový profil produkčního prostředí a použít k publikování projektu.
+Potom vytvořte nový provozní profil a použijte ho k publikování projektu.
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na tlačítko **publikovat**.
+V **Průzkumník řešení**klikněte pravým tlačítkem na projekt ContosoUniversity a klikněte na **publikovat**.
 
-Vyberte **profilu** kartu.
+Vyberte kartu **profil** .
 
-Klikněte na tlačítko **Import**a vyberte soubor .publishsettings, který jste předtím stáhli.
+Klikněte na **importovat**a vyberte soubor. publishsettings, který jste předtím stáhli.
 
-Na **připojení** kartu, změnit **cílovou adresu URL** správné dočasné adresy URL, které se v tomto příkladu je http://contosouniversity.com.vserver01.cytanium.com.
+Na kartě **připojení** změňte **cílovou adresu URL** na správnou dočasnou adresu URL, která je v tomto příkladu http://contosouniversity.com.vserver01.cytanium.com.
 
-Přejmenujte profil do produkčního prostředí. (Vyberte **profilu** kartě a klikněte na tlačítko **spravovat profily** k tomu).
+Přejmenujte profil na produkční prostředí. (Vyberte kartu **profil** a klikněte na **Spravovat profily** k tomu).
 
-Zavřít **publikování webu** průvodce uložte provedené změny.
+Zavřete průvodce **publikováním webu** a uložte provedené změny.
 
-V reálné aplikaci, ve kterém se aktualizuje databázi v produkčním prostředí provedli byste další dva kroky nyní před publikováním:
+V reálné aplikaci, ve které se databáze aktualizovala v produkčním prostředí, byste teď měli před publikováním udělat ještě dva další kroky:
 
-1. Nahrát *aplikace\_offline.htm*, jak je znázorněno [nasazení do produkčního prostředí](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md) kurzu.
-2. Použití **Správce souborů** funkce ovládacího panelu Cytanium zkopírovat *aspnet Prod.sdf* a *školní-Prod.sdf* soubory z pracoviště *Aplikace\_Data* složky ContosoUniversity projektu. Tím se zajistí, že data, které nasazení provádíte do nové databáze systému SQL Server zahrnuje nejnovější aktualizace od produkčního webu.
+1. Nahrajte *aplikaci\_offline. htm*, jak je znázorněno v kurzu [nasazení do provozního prostředí](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md) .
+2. Pomocí funkce **Správce souborů** v Ovládacích panelech Cytanium zkopírujte soubory *ASPNET-prod. sdf* a *School-prod. sdf* z produkčního webu do složky *dat aplikace\_* projektu ContosoUniversity. Tím se zajistí, že data, která nasazujete do nové databáze SQL Server, obsahují nejnovější aktualizace provedené vaším provozním webem.
 
-V **publikování webu jedním kliknutím** nástrojů, ujistěte se, že **produkční** profilu je vybrána a potom klikněte na **publikovat**.
+Na panelu nástrojů **publikování webu jedním kliknutím** ověřte, že je vybraný **produkční** profil, a pak klikněte na **publikovat**.
 
-Pokud jste nahráli <em>aplikace\_offline.htm</em> před publikováním, je nutné použít <strong>Správce souborů</strong> nástroj v Ovládacích panelech Cytanium odstranit <em>aplikace\_offline.</em> htm před testováním. Můžete najednou odstranit také <em>SDF</em> souborů z doručené pošty <em>aplikace\_Data</em> složky.
+Pokud jste před publikováním nahráli <em>aplikaci\_offline. htm</em> , je nutné použít nástroj <strong>Správce souborů</strong> v ovládacím panelu Cytanium k odstranění <em>aplikace\_offline.</em> htm před testováním. Zároveň můžete odstranit soubory <em>. sdf</em> ze složky <em>App\_data</em> .
 
-Můžete teď otevřete prohlížeč a přejděte na adresu URL na veřejném webu k otestování aplikace stejným způsobem, které jste provedli po nasazení do testovacího prostředí.
+Nyní můžete otevřít prohlížeč a přejít na adresu URL vašeho veřejného webu a otestovat aplikaci stejným způsobem jako po nasazení do testovacího prostředí.
 
-## <a name="switching-to-sql-server-express-localdb-in-development"></a>Přepnutí na SQL Server Express LocalDB ve vývoji
+## <a name="switching-to-sql-server-express-localdb-in-development"></a>Přechod na SQL Server Express LocalDB ve vývoji
 
-Jak bylo vysvětleno v přehledu, je obecně nejvhodnější použít stejný databázový stroj při vývoji, který používáte v provozním i testovacím prostředí. (Mějte na paměti, že výhoda používání SQL Server Express ve vývoji je, že databáze bude fungovat stejně v vývoj, testování a produkční prostředí.) V této části budete nastavení projektu ContosoUniversity používat SQL Server Express LocalDB při spuštění aplikace ze sady Visual Studio.
+Jak bylo vysvětleno v přehledu, je obecně vhodné použít stejný databázový stroj ve vývoji, který používáte v testování a produkčním prostředí. (Mějte na paměti, že výhodou použití SQL Server Express ve vývoji je to, že databáze bude fungovat stejně ve vývojovém, testovacím a produkčním prostředí.) V této části nastavíte projekt ContosoUniversity tak, aby používal SQL Server Express LocalDB při spuštění aplikace ze sady Visual Studio.
 
-Nejjednodušší způsob, jak tuto migraci provést je nechat Code First a systém členství vytvářet i nové vývoje databáze za vás. Pomocí této metody migrace vyžaduje tři kroky:
+Nejjednodušší způsob, jak provést tuto migraci, je umožnit Code First a systém členství pro vás vytvoří nové vývojové databáze. Použití této metody k migraci vyžaduje tři kroky:
 
-1. Změňte připojovací řetězce k určení nové databáze SQL Express LocalDB.
-2. Spusťte nástroj Správa webu vytvořit uživatel s oprávněním správce. Tím se vytvoří databáze členství.
-3. Pomocí migrace Code First aktualizace databáze příkazu k vytvoření a přidání dat do databáze aplikace.
+1. Změnou připojovacích řetězců určete nové databáze SQL Express LocalDB.
+2. Spusťte nástroj pro správu webu a vytvořte uživatele s oprávněními správce. Tím se vytvoří databáze členství.
+3. K vytvoření a implementaci databáze aplikace použijte příkaz Migrace Code First Update-Database.
 
-### <a name="updating-connection-strings-in-the-webconfig-file"></a>Aktualizují se připojovací řetězce v souboru Web.config
+### <a name="updating-connection-strings-in-the-webconfig-file"></a>Aktualizace připojovacích řetězců v souboru Web. config
 
-Otevřít *Web.config* soubor a nahradit `connectionStrings` element následujícím kódem:
+Otevřete soubor *Web. config* a nahraďte `connectionStrings` element následujícím kódem:
 
 [!code-xml[Main](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/samples/sample8.xml)]
 
-### <a name="creating-the-membership-database"></a>Vytváří se databáze členství
+### <a name="creating-the-membership-database"></a>Vytváření databáze členství
 
-V **Průzkumníka řešení**, vyberte projekt ContosoUniversity a potom klikněte na tlačítko **konfigurace ASP.NET** v **projektu** nabídky.
+V **Průzkumník řešení**vyberte projekt ContosoUniversity a potom v nabídce **projekt** klikněte na **Konfigurace ASP.NET** .
 
-Vyberte kartu zabezpečení.
+Vyberte kartu Zabezpečení.
 
-Klikněte na tlačítko **vytvořit nebo spravovat role**a pak vytvořte **správce** role.
+Klikněte na **vytvořit nebo spravovat role**a pak vytvořte roli **správce** .
 
 Vraťte se na kartu zabezpečení.
 
-Klikněte na tlačítko **vytvořit uživatele**a pak vyberte **správce** zaškrtněte políčko a vytvoří uživatele správce.
+Klikněte na **vytvořit uživatele**a potom zaškrtněte políčko **správce** a vytvořte uživatele s názvem admin.
 
-Zavřít **nástroje pro správu webu**.
+Zavřete **Nástroj pro správu**webu.
 
-### <a name="creating-the-school-database"></a>Vytvoření databáze školy
+### <a name="creating-the-school-database"></a>Vytvoření školní databáze
 
 Otevřete okno konzoly Správce balíčků.
 
-V **výchozí projekt** rozevíracího seznamu vyberte ContosoUniversity.DAL projektu.
+V rozevíracím seznamu **výchozí projekt** vyberte projekt CONTOSOUNIVERSITY. dal.
 
 Zadejte následující příkaz:
 
 [!code-powershell[Main](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/samples/sample9.ps1)]
 
-Migrace Code First platí počáteční migrace, který vytvoří databázi a poté použije migrace AddBirthDate potom spustí metodu počáteční hodnoty.
+Migrace Code First aplikuje počáteční migraci, která vytvoří databázi, a pak použije migraci AddBirthDate, potom spustí metodu osazení.
 
-Spuštění tohoto webu stisknutím klávesy F5 ovládacího prvku. Stejně jako u testovacím a produkčním prostředí, spusťte **přidat studenty** stránce, přidání nového studenta a potom zobrazit nového objektu student do **studenty** stránky. Ověří, že byl vytvořen a inicializován databáze školy a přečtení a oprávnění k zápisu do něj.
+Spusťte web stisknutím CTRL + F5. Stejně jako u testovacích a produkčních prostředí můžete spustit stránku **Přidat studenty** , přidat nového studenta a pak zobrazit nového studenta na stránce **Students** . Tím se ověří, že se vytvořila a inicializuje školní databáze a že k ní máte přístup pro čtení a zápis.
 
-Vyberte **aktualizace kredity** stránky a přihlaste se k ověření, že byla nasazena databáze členství a, abyste měli přístup k němu. Pokud migrujete není uživatelské účty, vytvořit účet správce a pak vyberte **aktualizace kredity** stránku a zkontrolujte, jestli funguje.
+Vyberte stránku **aktualizovat kredity** a přihlaste se, abyste ověřili, jestli je databáze členství nasazená a jestli k ní máte přístup. Pokud jste nemigrovali své uživatelské účty, vytvořte účet správce a pak vyberte stránku **aktualizovat kredity** , abyste ověřili, že funguje.
 
-## <a name="cleaning-up-sql-server-compact-files"></a>Čištění SQL Server Compact souborů
+## <a name="cleaning-up-sql-server-compact-files"></a>Čištění SQL Server Compactch souborů
 
-Už nepotřebujete, soubory a balíčky NuGet, které byly obsaženy pro podporu systému SQL Server Compact. Chcete-li (Tento krok není povinný), můžete smazat nepotřebné soubory a odkazy.
+Už nepotřebujete soubory a balíčky NuGet, které byly zahrnuté pro podporu SQL Server Compact. Pokud chcete (Tento krok není nutný), můžete vyčistit nepotřebné soubory a odkazy.
 
-V **Průzkumníku řešení**, odstranit *SDF* souborů z doručené pošty *aplikace\_Data* složky a *amd64* a *x86* složky *bin* složky.
+V **Průzkumník řešení**odstraňte soubory *. sdf* ze složky *App\_data* a ze složky z *přihrádky* *amd64* a *x86* .
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem na řešení (nikoli do jednoho z projektů) a potom klikněte na tlačítko **spravovat balíčky NuGet pro řešení**.
+V **Průzkumník řešení**klikněte pravým tlačítkem na řešení (ne na jeden z projektů) a pak klikněte na **Spravovat balíčky NuGet pro řešení**.
 
-V levém podokně **spravovat balíčky NuGet** dialogu **nainstalované balíčky**.
+V levém podokně dialogového okna **Spravovat balíčky NuGet** vyberte **nainstalované balíčky**.
 
-Vyberte **EntityFramework.SqlServerCompact** balíček a klikněte na tlačítko **spravovat**.
+Vyberte balíček **EntityFramework. SqlServerCompact** a klikněte na **Spravovat**.
 
-V **vyberte projekty** dialogové okno, jsou vybrány obou projektů. Pro odinstalaci balíčku v projektu, zrušte zaškrtnutí obou políček a pak klikněte na **OK**.
+V dialogovém okně **Vybrat projekty** jsou vybrány oba projekty. Chcete-li balíček odinstalovat v obou projektech, zrušte zaškrtnutí políček a pak klikněte na tlačítko **OK**.
 
-V dialogovém okně s dotazem, jestli chcete také odinstalovat závislé balíčky, klikněte na tlačítko Ne. Jednou z nich je balíčku Entity Framework, které chcete zachovat.
+V dialogovém okně s dotazem, zda chcete odinstalovat závislé balíčky, klikněte na tlačítko Ne. Jedním z nich je balíček Entity Framework, který je třeba zachovat.
 
-Postupujte stejným způsobem odinstalovat **SqlServerCompact** balíčku. (Balíčky musí být v tomto pořadí odinstalovat, protože **EntityFramework.SqlServerCompact** balíček závisí **SqlServerCompact** balíčku.)
+K odinstalaci balíčku **SqlServerCompact** použijte stejný postup. (Balíčky musí být v tomto pořadí odinstalovány, protože balíček **EntityFramework. SqlServerCompact** závisí na balíčku **SqlServerCompact** .)
 
-Teď úspěšně jste migrovali na SQL Server Express a plnou instalaci systému SQL Server. V dalším kurzu provede další změna databáze a ukážeme, jak nasazení změn databází při použití testovacích a provozních databází systému SQL Server Express a plnou instalaci systému SQL Server.
+Úspěšně jste migrovali SQL Server Express a plný SQL Server. V dalším kurzu provedete změnu další databáze a uvidíte, jak nasadit změny databáze, když testovací a provozní databáze používají SQL Server Express a úplné SQL Server.
 
 > [!div class="step-by-step"]
 > [Předchozí](deployment-to-a-hosting-provider-deploying-a-database-update-9-of-12.md)
-> [další](deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12.md)
+> [Další](deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12.md)

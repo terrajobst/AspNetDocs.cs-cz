@@ -1,79 +1,79 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-vb
-title: Přidání animace k ovládacímu prvku (VB) | Dokumentace Microsoftu
+title: Přidání animace do ovládacího prvku (VB) | Microsoft Docs
 author: wenz
-description: Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Tento kurz ukazuje, jak...
+description: Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. V tomto kurzu se dozvíte, jak...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: c120187e-963e-4439-bb85-32771bc7f1f4
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: edc80db42c7b1adf25214e1d6ae6d8a938a4be12
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: efaee9c1665d795dc1a889b9ac9f25dd1c08f4e2
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130768"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74607148"
 ---
 # <a name="adding-animation-to-a-control-vb"></a>Přidání animace k ovládacímu prvku (VB)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation1.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation1VB.pdf)
+[Stažení kódu](https://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation1.vb.zip) nebo [stažení PDF](https://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation1VB.pdf)
 
-> Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Tento kurz ukazuje, jak nastavit tyto animace.
+> Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. V tomto kurzu se dozvíte, jak nastavit takovou animaci.
 
 ## <a name="overview"></a>Přehled
 
-Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Tento kurz ukazuje, jak nastavit tyto animace.
+Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. V tomto kurzu se dozvíte, jak nastavit takovou animaci.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Prvním krokem je jako obvykle zahrnují `ScriptManager` na stránce tak, aby je načtena knihovna ASP.NET AJAX a Control Toolkit je možné:
+Prvním krokem je obvykle zahrnutí `ScriptManager` do stránky, aby byla načtena knihovna ASP.NET AJAX a bylo možné použít ovládací sadu Toolkit:
 
 [!code-aspx[Main](adding-animation-to-a-control-vb/samples/sample1.aspx)]
 
-Animace v tomto scénáři se použijí pro panel text, který vypadá takto:
+Animace v tomto scénáři se použije na panel textu, který vypadá nějak takto:
 
 [!code-aspx[Main](adding-animation-to-a-control-vb/samples/sample2.aspx)]
 
-Přidružené třídy šablony stylů CSS pro panel definuje barvu pozadí a šířku:
+Přidružená Třída CSS pro panel definuje barvu pozadí a šířku:
 
 [!code-css[Main](adding-animation-to-a-control-vb/samples/sample3.css)]
 
-Dále až, potřebujeme `AnimationExtender`. Po zadání `ID` a obvyklého `runat="server"`, `TargetControlID` atribut musí být nastaven na ovládací prvek pro animaci v našem případě panelu:
+V dalším kroku potřebujeme `AnimationExtender`. Po poskytnutí `ID` a obvyklých `runat="server"`musí být atribut `TargetControlID` nastaven na řízení pro animaci v našem případě, panel:
 
 [!code-aspx[Main](adding-animation-to-a-control-vb/samples/sample4.aspx)]
 
-Celý animace použije deklarativně pomocí syntaxe jazyka XML, bohužel momentálně nejsou plně podporovány v sadě Visual Studio IntelliSense. Kořenový uzel je `<Animations>;` v rámci tohoto uzlu, jsou povoleny několik událostí, které určují, kdy animace přezkumném místě:
+Celá animace se aplikuje deklarativně pomocí syntaxe XML, ale v současné době není plně podporovaná IntelliSense sady Visual Studio. Kořenový uzel je `<Animations>;` v rámci tohoto uzlu, jsou povoleny různé události, které určují, kdy se mají tyto animace (y) použít:
 
 - `OnClick` (kliknutí myší)
-- `OnHoverOut` (když ukazatel myši opustí ovládací prvek)
-- `OnHoverOver` (po umístění ukazatele myši nad ovládací prvek, zastavuje `OnHoverOut` animace)
-- `OnLoad` (Pokud na stránce se načetl)
-- `OnMouseOut` (když ukazatel myši opustí ovládací prvek)
-- `OnMouseOver` (po umístění ukazatele myši nad ovládací prvek, ne zastavení `OnMouseOut` animace)
+- `OnHoverOut` (když myš opustí ovládací prvek)
+- `OnHoverOver` (když ukazatel myši setrvá na ovládacím prvku, zastaví se animace `OnHoverOut`).
+- `OnLoad` (při načtení stránky)
+- `OnMouseOut` (když myš opustí ovládací prvek)
+- `OnMouseOver` (když ukazatel myši setrvá na ovládacím prvku, nezastaví se `OnMouseOut` animace).
 
-Rozhraní framework obsahuje sadu animace, každý z nich představované vlastní – element XML. Tady je výběr:
+Rozhraní obsahuje sadu animací, každý z nich reprezentované vlastním prvkem XML. Tady je výběr:
 
-- `<Color>` (a změníte barvu)
-- `<FadeIn>` (pozvolného)
-- `<FadeOut>` (mizení)
-- `<Property>` (při změně hodnoty vlastnosti ovládacího prvku)
-- `<Pulse>` (pulsating)
+- `<Color>` (změna barvy)
+- `<FadeIn>` (stromeček)
+- `<FadeOut>` (stromeček)
+- `<Property>` (Změna vlastnosti ovládacího prvku)
+- `<Pulse>` (PULSATING)
 - `<Resize>` (Změna velikosti)
-- `<Scale>` (proporcionálně změnou velikosti)
+- `<Scale>` (proporcionálně se mění velikost)
 
-V tomto příkladu se zesvětlit panelu. Animace přijmou půl sekundy (`Duration` atribut), zobrazení 24 snímků (kroky animace) za sekundu (`Fps` atributu). Tady je kompletní kód pro `AnimationExtender` ovládacího prvku:
+V tomto příkladu je panel vymizet. Animace musí trvat 1,5 sekund (`Duration` atribut), přičemž se zobrazí 24 snímků (kroky animace) za sekundu (atribut`Fps`). Zde je kompletní označení pro ovládací prvek `AnimationExtender`:
 
 [!code-aspx[Main](adding-animation-to-a-control-vb/samples/sample5.aspx)]
 
-Při spuštění tohoto skriptu na panelu se zobrazí a setmívá v jedné a půl sekundy.
+Když spustíte tento skript, panel se zobrazí a zmizí v jednom a půl sekundách.
 
-[![Je mizení panelu](adding-animation-to-a-control-vb/_static/image2.png)](adding-animation-to-a-control-vb/_static/image1.png)
+[![panelu se dozvíte](adding-animation-to-a-control-vb/_static/image2.png)](adding-animation-to-a-control-vb/_static/image1.png)
 
-Na panelu je mizení ([kliknutím ji zobrazíte obrázek v plné velikosti](adding-animation-to-a-control-vb/_static/image3.png))
+Panel se zobrazuje na více instancí ([kliknutím zobrazíte obrázek v plné velikosti).](adding-animation-to-a-control-vb/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](dynamically-controlling-updatepanel-animations-cs.md)
-> [další](executing-several-animations-at-the-same-time-vb.md)
+> [Další](executing-several-animations-at-the-same-time-vb.md)

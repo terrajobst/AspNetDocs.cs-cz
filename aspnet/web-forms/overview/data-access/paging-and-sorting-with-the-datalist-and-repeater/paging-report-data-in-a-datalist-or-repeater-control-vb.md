@@ -1,40 +1,40 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-vb
-title: Stránkování dat sestavy DataList nebo Repeater (VB) | Dokumentace Microsoftu
+title: Stránkování dat sestavy v ovládacím prvku DataList nebo Repeater (VB) | Microsoft Docs
 author: rick-anderson
-description: Při DataList ani Repeater nabídka Automatické stránkovací nebo řazení podpory tento kurz ukazuje, jak přidat podporu stránkování v prvku DataList nebo Repeater...
+description: I když prvek DataList ani Repeater nenabízí podporu automatického stránkování nebo řazení, v tomto kurzu se dozvíte, jak přidat podporu stránkování do prvku DataList nebo Repeater,...
 ms.author: riande
 ms.date: 11/13/2006
 ms.assetid: bbd6b7f7-b98a-48b4-93f3-341d6a4f53c0
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f51c720290e59e0f79d105bc9412c19db1870278
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 5c65ca1f263e41748d99323dbdf1c28fdd077246
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133964"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74570346"
 ---
 # <a name="paging-report-data-in-a-datalist-or-repeater-control-vb"></a>Stránkování dat sestavy ovládacími prvky DataList nebo Repeater (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_44_VB.exe) nebo [stahovat PDF](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/datatutorial44vb1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_44_VB.exe) nebo [Stáhnout PDF](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/datatutorial44vb1.pdf)
 
-> Zatímco DataList ani Repeater nabídka Automatické stránkování a řazení podpory, tento kurz ukazuje, jak přidat podporu stránkování v prvku DataList nebo Repeater, což umožňuje mnohem flexibilnější stránkování a data zobrazení rozhraní.
+> I když prvek DataList ani Repeater nenabízí automatickou podporu stránkování nebo řazení, tento kurz ukazuje, jak přidat podporu stránkování do prvku DataList nebo Repeater, což umožňuje mnohem flexibilnější rozhraní pro zobrazení stránkování a dat.
 
 ## <a name="introduction"></a>Úvod
 
-Stránkování a řazení jsou dvě velmi běžné funkce při zobrazení dat v aplikaci online. Například při vyhledávání pro knihy technologie ASP.NET v online knihkupectví, může být stovky těchto knihy, ale v sestavě Výpis výsledky hledání jsou uvedeny pouze deset shody na stránku. Navíc můžete výsledky seřadit podle názvu, ceny, počet stránek, jméno autora a tak dále. Jak jsme probírali v [stránkování a řazení dat sestavy](../paging-and-sorting/paging-and-sorting-report-data-vb.md) kurz, ovládací prvky GridView, DetailsView a FormView všechny poskytují integrovanou podporu stránkování, který se dá nastavit na značek zaškrtávací políčko. Řazení podpora zahrnuje také prvku GridView.
+Stránkování a řazení jsou dvě velmi běžné funkce při zobrazování dat v online aplikaci. Například při hledání ASP.NET knih v online knihkupectví mohou existovat stovky takových knih, ale v sestavě se seznamem výsledků hledání se zobrazí pouze deset shod na jednu stránku. Kromě toho je možné výsledky seřadit podle názvu, ceny, počtu stránek, jména autora atd. Jak jsme probrali v kurzu [stránkování a řazení dat sestavy](../paging-and-sorting/paging-and-sorting-report-data-vb.md) , ovládací prvky GridView, DetailsView a FormView poskytují integrovanou podporu stránkování, kterou lze povolit při zaškrtnutí políčka. Prvek GridView také zahrnuje podporu řazení.
 
-Bohužel v prvku DataList ani Repeater nabízet automatické stránkování nebo řazení podpory. V tomto kurzu prozkoumáme, jak přidat podporu stránkování v prvku DataList nebo Repeater. Jsme musí ručně vytvořit stránkovací rozhraní, zobrazí odpovídající stránku záznamy a mějte na paměti se navštívené postbacků stránky. Když to trvá, než více času a kódu než pomocí ovládacího prvku GridView, DetailsView nebo FormView, ovládacích prvků DataList a Repeater povolit pro mnohem flexibilnější stránkování a data zobrazení rozhraní.
+Prvek DataList ani Repeater však nenabízí podporu automatického stránkování ani řazení. V tomto kurzu podíváme se, jak přidat podporu stránkování do prvku DataList nebo Repeater. Je nutné ručně vytvořit rozhraní stránkování, zobrazit příslušnou stránku záznamů a zapamatovat si stránku navštívené napříč zpětnými voláními. I když to trvá více času a kódu než u prvku GridView, DetailsView nebo FormView, prvky DataList a Repeater umožňují mnohem pružnější rozhraní pro zobrazení stránkování a dat.
 
 > [!NOTE]
-> Tento kurz se zaměřuje výhradně na stránkování. V dalším kurzu jsme vám zapnout pozornost na přidání možnosti řazení.
+> Tento kurz se zaměřuje výhradně na stránkování. V dalším kurzu budeme věnovat pozornost přidávání možností řazení.
 
-## <a name="step-1-adding-the-paging-and-sorting-tutorial-web-pages"></a>Krok 1: Přidání stránkování a řazení kurz webových stránek
+## <a name="step-1-adding-the-paging-and-sorting-tutorial-web-pages"></a>Krok 1: Přidání webových stránek kurzu stránkování a seřazení
 
-Než začneme v tomto kurzu, umožní s nejdřív využít pro přidání stránek ASP.NET, budeme potřebovat pro tento kurz a další příkaz. Začněte tím, že vytvoříte novou složku v projektu s názvem `PagingSortingDataListRepeater`. Dále přidejte následující pět stránek ASP.NET do této složky s všechny z nich nakonfigurovat tak, aby na hlavní stránce `Site.master`:
+Před zahájením tohoto kurzu si nejdřív počkejte, než se přidá stránky ASP.NET, které budeme potřebovat pro tento kurz a druhý. Začněte vytvořením nové složky v projektu s názvem `PagingSortingDataListRepeater`. V dalším kroku přidejte do této složky následující pět ASP.NET stránek a všechny je nakonfigurované tak, aby používaly stránku předlohy `Site.master`:
 
 - `Default.aspx`
 - `Paging.aspx`
@@ -42,207 +42,207 @@ Než začneme v tomto kurzu, umožní s nejdřív využít pro přidání strán
 - `SortingWithDefaultPaging.aspx`
 - `SortingWithCustomPaging.aspx`
 
-![Vytvořte složku PagingSortingDataListRepeater a přidávání stránek kurz ASP.NET](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image1.png)
+![Vytvořte složku PagingSortingDataListRepeater a přidejte stránky ASP.NET kurzu.](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image1.png)
 
-**Obrázek 1**: Vytvoření `PagingSortingDataListRepeater` složky a přidávání stránek kurz ASP.NET
+**Obrázek 1**: vytvoření složky pro `PagingSortingDataListRepeater` a přidání ASP.NETových stránek kurzu
 
-Dále otevřete `Default.aspx` stránku a přetáhněte ji `SectionLevelTutorialListing.ascx` uživatelského ovládacího prvku od `UserControls` složky na návrhovou plochu. Tento uživatelský ovládací prvek, který jsme vytvořili v [stránky předlohy a navigace na webu](../introduction/master-pages-and-site-navigation-vb.md) kurzu mapy webu a zobrazí výčet tyto kurzy v aktuálním oddílu v seznamu s odrážkami.
+Potom otevřete stránku `Default.aspx` a přetáhněte uživatelský ovládací prvek `SectionLevelTutorialListing.ascx` ze složky `UserControls` na návrhovou plochu. Tento uživatelský ovládací prvek, který jsme vytvořili v kurzu [hlavní stránky a navigace na webu](../introduction/master-pages-and-site-navigation-vb.md) , vytvoří výčet mapy lokality a v aktuálním oddílu zobrazí v seznamu s odrážkami kurzy.
 
-[![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image3.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image2.png)
+[![přidat uživatelský ovládací prvek SectionLevelTutorialListing. ascx do default. aspx](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image3.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image2.png)
 
-**Obrázek 2**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image4.png))
+**Obrázek 2**: Přidání uživatelského ovládacího prvku `SectionLevelTutorialListing.ascx` do `Default.aspx` ([kliknutím zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image4.png))
 
-Abyste měli zobrazení stránkování a řazení kurzů, které jsme vám vytvoření seznamu s odrážkami, potřebujeme přidat je do mapy webu. Otevřít `Web.sitemap` soubor a přidejte následující kód za úpravy a odstranění se značkami uzel mapy webu DataList:
+Aby se v seznamu s odrážkami zobrazovaly kurzy stránkování a řazení, vytvoříme, že je musíme přidat k mapě webu. Otevřete soubor `Web.sitemap` a přidejte následující kód po úpravách a odstraňování pomocí značek uzlu mapy webu DataList:
 
 [!code-xml[Main](paging-report-data-in-a-datalist-or-repeater-control-vb/samples/sample1.xml)]
 
-![Aktualizace mapy webu zahrnout nové stránky ASP.NET](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image5.png)
+![Aktualizovat mapu webu tak, aby obsahovala nové stránky ASP.NET](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image5.png)
 
-**Obrázek 3**: Aktualizace mapy webu zahrnout nové stránky ASP.NET
+**Obrázek 3**: aktualizace mapy webu tak, aby obsahovala nové stránky ASP.NET
 
-## <a name="a-review-of-paging"></a>Přehled stránkování
+## <a name="a-review-of-paging"></a>Kontrola stránkování
 
-V předchozích kurzech jsme viděli, jak stránkovat data v ovládacích prvcích ovládacího prvku GridView, DetailsView a FormView. Tyto tři ovládací prvky nabízejí jednoduchý formulář stránkování volá *výchozího stránkování* , který může být implementována pouze kontrola možnost Povolit stránkování v inteligentní značky ovládacího prvku s. Pomocí výchozího stránkování, pokaždé, když je požadováno stránku dat, buď na první stránce navštivte nebo když uživatel přejde na jinou stránku dat prvku GridView, DetailsView, nebo ovládacího prvku FormView znovu požadavků *všechny* dat z Prvek ObjectDataSource. To pak výstřižky si konkrétní sadu záznamů zobrazíte daného indexu požadovanou stránku a počet záznamů zobrazených na stránce. Jsme probírali výchozího stránkování podrobně [stránkování a řazení dat sestavy](../paging-and-sorting/paging-and-sorting-report-data-vb.md) kurzu.
+V předchozích kurzech jsme viděli, jak procházet data v ovládacích prvcích GridView, DetailsView a FormView. Tyto tři ovládací prvky nabízejí jednoduchou formu stránkování s názvem *výchozí stránkování* , které lze implementovat pouhým zaškrtnutím možnosti Povolit stránkování v inteligentní značce ovládacího prvku. Při výchozím stránkování se při každém vyžádání stránky dat buď na první stránce navštíví, nebo když uživatel přejde na jinou stránku dat, ovládací prvek GridView, DetailsView nebo FormView znovu vyžádá *všechna* data z prvku ObjectDataSource. Pak vystřihá konkrétní sadu záznamů, které se zobrazí podle požadovaného indexu stránky a počtu záznamů, které se mají zobrazit na stránce. Podrobněji jsme probrali výchozí stránkování v kurzu [stránkování a řazení dat sestavy](../paging-and-sorting/paging-and-sorting-report-data-vb.md) .
 
-Protože výchozí stránkování znovu vyžádá všechny záznamy pro každou stránku, není praktické při procházení dostatečně velké objemy dat po stránkách. Představte si například stránkování až 50 000 záznamů s velikostí stránky 10. Pokaždé, když uživatel přesune na novou stránku, všechny 50 000 záznamů musí načíst z databáze, i když se zobrazí pouze deset z nich.
+Vzhledem k tomu, že výchozí stránkování znovu vyžádá všechny záznamy pro každou stránku, není praktické při stránkování po dostatečně velkých objemech dat. Představte si třeba stránkování prostřednictvím 50 000 záznamů s velikostí stránky 10. Pokaždé, když se uživatel přesune na novou stránku, musí se z databáze načíst všechny záznamy 50 000, i když se zobrazí jenom deset z nich.
 
-*Vlastní stránkování* řeší nedostatečnému výkonu výchozí stránkování podle uchopíte jeho pouze přesné podmnožinu záznamů se zobrazí na požadovanou stránku. Při implementaci vlastní stránkování, jsme musíte napsat dotaz SQL, který efektivně vrátí pouze správnou sadu záznamů. Jsme viděli, jak vytvořit dotaz, pomocí SQL Server 2005 s novou [ `ROW_NUMBER()` – klíčové slovo](http://www.4guysfromrolla.com/webtech/010406-1.shtml) zpátky [efektivně stránkování prostřednictvím velkých objemů dat](../paging-and-sorting/efficiently-paging-through-large-amounts-of-data-vb.md) kurzu.
+*Vlastní stránkování* řeší problémy s výkonem výchozích stránkování tím, že z požadované stránky zobrazí jenom přesnou podmnožinu záznamů. Při implementaci vlastního stránkování je nutné zapsat dotaz SQL, který bude efektivně vracet pouze správnou sadu záznamů. Zjistili jsme, jak tento dotaz vytvořit pomocí SQL Server 2005 s novými [`ROW_NUMBER()` klíčovým slovem](http://www.4guysfromrolla.com/webtech/010406-1.shtml) pro [efektivní stránkování prostřednictvím velkých objemů dat](../paging-and-sorting/efficiently-paging-through-large-amounts-of-data-vb.md) .
 
-K implementaci stránkování na výchozím nastavení v ovládacích prvcích DataList nebo Repeater, můžeme použít [ `PagedDataSource` třídy](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.aspx) jako obálka kolem `ProductsDataTable` jehož obsah je stránkování. `PagedDataSource` Třída nemá `DataSource` vlastnost, která lze přiřadit libovolný vyčíslitelný objekt a [ `PageSize` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.pagesize.aspx) a [ `CurrentPageIndex` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.currentpageindex.aspx) vlastnosti, které označují, kolik záznamů se má Zobrazit na stránce a aktuální index stránky. Po nastavení těchto vlastností mají `PagedDataSource` může sloužit jako zdroj dat jakýchkoli dat webový ovládací prvek. `PagedDataSource`, Při výčtu, bude pouze vrátit na příslušnou podmnožinu záznamů jeho vnitřní `DataSource` na základě `PageSize` a `CurrentPageIndex` vlastnosti. Obrázek 4 znázorňuje funkce `PagedDataSource` třídy.
+Chcete-li implementovat výchozí stránkování v ovládacím prvku DataList nebo Repeater, můžeme použít [třídu`PagedDataSource`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.aspx) jako obálku kolem `ProductsDataTable`, jejichž obsah je právě stránkovaný. Třída `PagedDataSource` má vlastnost `DataSource`, kterou lze přiřadit k jakémukoli vyčíslitelnému objektu a [`PageSize`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.pagesize.aspx) a [`CurrentPageIndex`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.currentpageindex.aspx) vlastností, které určují, kolik záznamů má být zobrazeno na stránce a v indexu aktuální stránky. Po nastavení těchto vlastností lze `PagedDataSource` použít jako zdroj dat libovolného webového ovládacího prvku dat. `PagedDataSource`při výčtu vrátí pouze příslušnou podmnožinu záznamů své vnitřní `DataSource` na základě vlastností `PageSize` a `CurrentPageIndex`. Obrázek 4 znázorňuje funkčnost `PagedDataSource` třídy.
 
-![PagedDataSource zabalí vyčíslitelný objekt s rozhraním stránkované](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image6.png)
+![PagedDataSource zalomí Vyčíslitelného objektu pomocí stránkovaného rozhraní.](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image6.png)
 
-**Obrázek 4**: `PagedDataSource` Zabalí vyčíslitelný objekt s rozhraním stránkované
+**Obrázek 4**: `PagedDataSource` zabalí vyčíslitelné objekt s použitím stránkovaného rozhraní.
 
-`PagedDataSource` Objekt může být vytvořené a nakonfigurovaná přímo z vrstvy obchodní logiky a vázán na ovládacích prvcích DataList nebo Repeater prostřednictvím ObjectDataSource, nebo může být a nakonfigurovaná přímo v třídě modelu code-behind stránky s ASP.NET. Pokud použijete druhý přístup jsme musí nepoužít ObjectDataSource a místo toho svázat stránkovaná data DataList nebo Repeater prostřednictvím kódu programu.
+Objekt `PagedDataSource` lze vytvořit a nakonfigurovat přímo z vrstvy obchodní logiky a vázat na prvek DataList nebo Repeater prostřednictvím prvku ObjectDataSource, nebo jej lze vytvořit a nakonfigurovat přímo ve třídě ASP.NET stránky s kódem na pozadí. Je-li použit druhý přístup, je nutné použít prvek ObjectDataSource a místo toho navazovat stránkovaná data na prvky DataList nebo Repeater programově.
 
-`PagedDataSource` Objekt má také vlastnosti, které chcete podporovat vlastní stránkování. Jsme ale obejít, použití `PagedDataSource` pro vlastní stránkování, protože už máme BLL metody `ProductsBLL` třídu navrženou pro vlastní stránkování, který vrátí přesné záznamy, které chcete zobrazit.
+Objekt `PagedDataSource` obsahuje také vlastnosti pro podporu vlastního stránkování. Můžeme však obejít použití `PagedDataSource` pro vlastní stránkování, protože již máme metody knihoven BLL ve třídě `ProductsBLL` navržené pro vlastní stránkování, které vrací přesné záznamy k zobrazení.
 
-V tomto kurzu se podíváme implementace výchozího stránkování tak, že přidáte novou metodu pro v a v prvku DataList `ProductsBLL` třídu, která vrátí správně nakonfigurované `PagedDataSource` objektu. V dalším kurzu se podíváme, jak používat vlastní stránkování.
+V tomto kurzu se podíváme na implementaci výchozího stránkování v prvku DataList přidáním nové metody do třídy `ProductsBLL`, která vrací vhodně nakonfigurovaný `PagedDataSource` objekt. V dalším kurzu uvidíme, jak používat vlastní stránkování.
 
-## <a name="step-2-adding-a-default-paging-method-in-the-business-logic-layer"></a>Krok 2: Přidání vrstvy obchodní logiky výchozí metoda stránkování
+## <a name="step-2-adding-a-default-paging-method-in-the-business-logic-layer"></a>Krok 2: přidání výchozí metody stránkování do vrstvy obchodní logiky
 
-`ProductsBLL` Třídy aktuálně má metodu pro vrácení všechny informace o produktu `GetProducts()` a jeden pro vracející podmnožinu produktů na počáteční index konkrétní `GetProductsPaged(startRowIndex, maximumRows)`. Pomocí výchozího stránkování prvku GridView, DetailsView a FormView řídí veškeré možnosti použití `GetProducts()` metodu pro načtení všech produktů, ale pak použít `PagedDataSource` interně k zobrazení pouze správné podmnožinu záznamů. Tuto funkci s ovládacími prvky DataList a Repeater replikovat, můžeme vytvořit novou metodu v BLL, která napodobuje toto chování.
+Třída `ProductsBLL` v současnosti obsahuje metodu pro vrácení všech informací o produktu `GetProducts()` a jednu pro vrácení konkrétní podmnožiny produktů v počátečním indexu `GetProductsPaged(startRowIndex, maximumRows)`. S výchozím stránkováním ovládací prvky GridView, DetailsView a FormView používají metodu `GetProducts()` k načtení všech produktů, ale pak používají `PagedDataSource` interně k zobrazení pouze správné podmnožiny záznamů. Chcete-li replikovat tuto funkci s ovládacími prvky DataList a Repeater, můžeme v knihoven BLL vytvořit novou metodu, která napodobuje toto chování.
 
-Přidejte metodu k `ProductsBLL` třídu s názvem `GetProductsAsPagedDataSource` , který přebírá dva vstupní parametry celé číslo:
+Přidejte metodu do třídy `ProductsBLL` s názvem `GetProductsAsPagedDataSource`, která přijímá dva vstupní parametry typu Integer:
 
-- `pageIndex` index stránky zobrazíte indexované od nuly, a
-- `pageSize` počet záznamů zobrazených na stránce.
+- `pageIndex` index zobrazované stránky, indexované na nulu a
+- `pageSize` počet záznamů, které se mají zobrazit na stránce.
 
-`GetProductsAsPagedDataSource` Spustí načtením *všechny* záznamy z `GetProducts()`. Pak vytvoří `PagedDataSource` objekt nastavení jeho `CurrentPageIndex` a `PageSize` vlastnosti a hodnoty předané-in `pageIndex` a `pageSize` parametry. Metoda dojde k závěru vrácením nakonfigurovaný `PagedDataSource`:
+`GetProductsAsPagedDataSource` spustí načtením *všech* záznamů z `GetProducts()`. Potom vytvoří objekt `PagedDataSource`, nastaví jeho `CurrentPageIndex` a `PageSize` vlastnosti na hodnoty předaných `pageIndex` a `pageSize` parametrů. Metoda se dokončí vrácením tohoto nakonfigurovaného `PagedDataSource`:
 
 [!code-vb[Main](paging-report-data-in-a-datalist-or-repeater-control-vb/samples/sample2.vb)]
 
-## <a name="step-3-displaying-product-information-in-a-datalist-using-default-paging"></a>Krok 3: Zobrazení informací o produktu v DataList pomocí výchozího stránkování
+## <a name="step-3-displaying-product-information-in-a-datalist-using-default-paging"></a>Krok 3: zobrazení informací o produktu v prvku DataList pomocí výchozí stránkování
 
-S `GetProductsAsPagedDataSource` metoda přidána do `ProductsBLL` třídy, můžete teď vytvoříme DataList nebo Repeater, která poskytuje výchozí stránkování. Začněte otevřením `Paging.aspx` stránku `PagingSortingDataListRepeater` složky a a v prvku DataList přetáhněte z panelu nástrojů do Návrháře nastavení DataList s `ID` vlastnost `ProductsDefaultPaging`. V prvku DataList s inteligentním, vytvoření nového prvku ObjectDataSource s názvem `ProductsDefaultPagingDataSource` a nakonfigurujte ho tak, aby ho načte data s využitím `GetProductsAsPagedDataSource` metody.
+Pomocí metody `GetProductsAsPagedDataSource` přidané do `ProductsBLL` třídy teď můžeme vytvořit prvek DataList nebo Repeater, který poskytuje výchozí stránkování. Začněte otevřením stránky `Paging.aspx` ve složce `PagingSortingDataListRepeater` a přetažením prvku DataList z panelu nástrojů do návrháře, nastavením vlastnosti `ID` prvku DataList na `ProductsDefaultPaging`. Z inteligentní značky DataList a vytvořte nový prvek ObjectDataSource s názvem `ProductsDefaultPagingDataSource` a nakonfigurujte jej tak, aby načítat data pomocí metody `GetProductsAsPagedDataSource`.
 
-[![Vytvoření ObjectDataSource a nakonfigurujte ho na použití GetProductsAsPagedDataSource () – metoda](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image8.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image7.png)
+[![vytvořit prvek ObjectDataSource a nakonfigurovat jej pro použití metody GetProductsAsPagedDataSource ()](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image8.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image7.png)
 
-**Obrázek 5**: Prvku ObjectDataSource vytvořit a nakonfigurovat jej pro použití `GetProductsAsPagedDataSource` `()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image9.png))
+**Obrázek 5**: Vytvoření prvku ObjectDataSource a jeho konfigurace pro použití metody `GetProductsAsPagedDataSource` `()` ([kliknutím zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image9.png))
 
-Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
+Nastavte rozevírací seznamy na kartách aktualizace, vložení a odstranění na (žádné).
 
-[![Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit karty na (žádný)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image11.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image10.png)
+[![nastavení rozevíracích seznamů na kartách aktualizace, vložení a odstranění na (žádné)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image11.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image10.png)
 
-**Obrázek 6**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit karty na (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image12.png))
+**Obrázek 6**: nastavení rozevíracích seznamů na kartách aktualizace, vložení a odstranění na (žádné) ([kliknutím zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image12.png))
 
-Vzhledem k tomu, `GetProductsAsPagedDataSource` metoda očekává dva vstupní parametry, Průvodce nám vyzve k zadání zdrojové hodnoty těchto parametrů.
+Vzhledem k tomu, že metoda `GetProductsAsPagedDataSource` očekává dva vstupní parametry, Průvodce vás vyzve ke zdroji těchto hodnot parametrů.
 
-Index stránky a hodnoty velikosti stránky musí být zapamatovaných postbacků. Mohou být uloženy v zobrazení stavu, trvale uložena do řetězec dotazu, uložené v proměnné relace nebo uloží, pomocí některé jiné techniky. Pro účely tohoto kurzu používáme řetězce dotazu, který nabízí výhodu v podobě povolení konkrétní stránce dat do záložek.
+Hodnoty indexu stránky a velikosti stránky musí být zapamatovatelné napříč zpětnými odesláními. Mohou být uloženy ve stavu zobrazení, uloženy do řetězce dotazu QueryString, uloženy v proměnných relace nebo zachovány pomocí nějaké jiné techniky. Pro účely tohoto kurzu použijeme dotaz QueryString, který má výhodu povolit záložku konkrétní stránky dat.
 
-Zejména použijte řetězec dotazu pole pageIndex a pageSize pro `pageIndex` a `pageSize` parametry, respektive (viz obrázek 7). Za chvíli nastavit výchozí hodnoty pro tyto parametry řetězce dotazu hodnoty nebudou k dispozici, když uživatel navštíví nejprve tuto stránku. Pro `pageIndex`, nastavit výchozí hodnotu 0 (ve kterém se zobrazí první stránka dat) a `pageSize` s výchozí hodnotu 4.
+Konkrétně použijte pole QueryString pageIndex a pageSize pro parametry `pageIndex` a `pageSize` v uvedeném pořadí (viz obrázek 7). Chvíli počkejte, než nastavíte výchozí hodnoty pro tyto parametry, protože hodnoty QueryString nebudou k dispozici, když uživatel poprvé navštíví tuto stránku. Pro `pageIndex`nastavte výchozí hodnotu na 0 (která bude zobrazovat první stránku dat) a výchozí hodnotu `pageSize` s na 4.
 
-[![Použijte řetězec dotazu jako zdroj pro parametry pageIndex a pageSize](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image14.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image13.png)
+[![použít řetězec QueryString jako zdroj pro parametry pageIndex a pageSize](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image14.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image13.png)
 
-**Obrázek 7**: Použít jako zdroj pro řetězec dotazu `pageIndex` a `pageSize` parametry ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image15.png))
+**Obrázek 7**: použijte řetězec QueryString jako zdroj pro parametry `pageIndex` a `pageSize` ([kliknutím zobrazíte obrázek v plné velikosti).](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image15.png)
 
-Po dokončení konfigurace ObjectDataSource, sada Visual Studio automaticky vytvoří `ItemTemplate` pro prvku DataList. Přizpůsobit `ItemTemplate` tak, aby se zobrazí jenom produkt s názvem, kategorie a dodavateli. Také nastavit DataList s `RepeatColumns` vlastnost na 2, jeho `Width` na 100 % a jeho `ItemStyle` s `Width` na 50 %. Tato nastavení šířky bude poskytovat stejné mezery pro dva sloupce.
+Po nakonfigurování prvku ObjectDataSource aplikace Visual Studio automaticky vytvoří `ItemTemplate` pro prvek DataList. Přizpůsobte `ItemTemplate` tak, aby se zobrazil jenom název produktu, kategorie a dodavatel. Nastavte také vlastnost `RepeatColumns` prvku DataList na hodnotu 2, její `Width` na 100% a její `ItemStyle` s `Width` na 50%. Tato nastavení šířky budou pro tyto dva sloupce obsahovat stejné mezery.
 
-Po provedení těchto změn, značky s ovládacích prvků DataList a ObjectDataSource by měl vypadat nějak takto:
+Po provedení těchto změn by značka DataList a ObjectDataSource s vypadala podobně jako v následujícím příkladu:
 
 [!code-aspx[Main](paging-report-data-in-a-datalist-or-repeater-control-vb/samples/sample3.aspx)]
 
 > [!NOTE]
-> Protože jsme nejsou provádění žádné aktualizace nebo odstranění funkce v tomto kurzu, můžete kdykoli deaktivovat stav zobrazení v prvku DataList s ke zmenšení velikosti vykreslené stránky.
+> Vzhledem k tomu, že v tomto kurzu neprovádíme žádné funkce Update nebo DELETE, můžete zakázat stav zobrazení DataList s, aby se snížila velikost vykreslené stránky.
 
-Při počáteční ani návštěvě této stránky v prohlížeči `pageIndex` ani `pageSize` parametry řetězce dotazu jsou k dispozici. Proto jsou použity výchozí hodnoty 0 a 4. Jak ukazuje obrázek 8, výsledkem v prvku DataList, který se zobrazí první čtyři produkty.
+Při počáteční návštěvě této stránky v prohlížeči nejsou k dispozici parametry `pageIndex` ani `pageSize` QueryString. Proto se použijí výchozí hodnoty 0 a 4. Jak ukazuje obrázek 8, výsledkem je prvek DataList, který zobrazuje první čtyři produkty.
 
-[![První čtyři produkty jsou uvedené.](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image17.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image16.png)
+[Zobrazí se ![prvních čtyř produktů.](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image17.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image16.png)
 
-**Obrázek 8**: První čtyři produktů se nachází ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image18.png))
+**Obrázek 8**: Seznam prvních čtyř produktů ([kliknutím zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image18.png))
 
-Bez rozhraní stránkování, tam s aktuálně není jednoduché znamená, že uživatel přejít na druhé stránce data. Vytvoříme rozhraní stránkování v kroku 4. Prozatím se však stránkování pouze dosáhnete přímo zadáním kritérií stránkování v řetězec dotazu. Například chcete-li zobrazit na druhé stránce, změnit adresu URL do adresního řádku prohlížeče s z `Paging.aspx` k `Paging.aspx?pageIndex=2` a stiskněte Enter. To způsobí, že data, který se má zobrazit na druhé stránce (viz obrázek 9).
+Bez rozhraní stránkování teď neexistuje žádný jednoduchý způsob, jak uživatel přejít na druhou stránku dat. V kroku 4 vytvoříme rozhraní stránkování. V současné době může být stránkování provedeno pouze přímým určením kritérií stránkování v řetězci dotazu. Chcete-li například zobrazit druhou stránku, změňte adresu URL v adresním řádku prohlížeče z `Paging.aspx` na `Paging.aspx?pageIndex=2` a stiskněte klávesu ENTER. To způsobí zobrazení druhé stránky dat (viz obrázek 9).
 
-[![Zobrazí se druhé Data stránky](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image20.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image19.png)
+[![se zobrazí druhá stránka dat](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image20.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image19.png)
 
-**Obrázek 9**: Druhá stránka Data se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image21.png))
+**Obrázek 9**: zobrazí se druhá stránka dat ([kliknutím zobrazíte obrázek v plné velikosti).](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image21.png)
 
-## <a name="step-4-creating-the-paging-interface"></a>Krok 4: Vytváří se rozhraní stránkování
+## <a name="step-4-creating-the-paging-interface"></a>Krok 4: vytvoření rozhraní stránkování
 
-Existuje široká škála různých stránkovací rozhraní, které je možné implementovat. Ovládací prvky GridView DetailsView a FormView poskytují čtyři různá rozhraní zvolit si takový:
+Existuje řada různých rozhraní stránkování, která lze implementovat. Ovládací prvky GridView, DetailsView a FormView poskytují čtyři různá rozhraní pro výběr mezi:
 
-- **Další, předchozí** mohou uživatelé přesouvat jednu stránku najednou, buď další nebo předchozí obrazovku.
-- **Další, předchozí; First, Last** vedle tlačítka Další a předchozí toto rozhraní obsahuje jméno a příjmení tlačítka pro přechod na úplně první nebo poslední stránku.
-- **Číselné** obsahuje číslo stránky stránkovací rozhraní, která uživatelům umožňuje rychle přejít na konkrétní stránce.
-- **Číselné literály, nejprve poslední** kromě čísla číselné stránek obsahuje tlačítka pro přechod na úplně první nebo poslední stránku.
+- **Dále můžou předchozí** uživatelé přesunout jednu stránku současně na další nebo předchozí.
+- **Další, předchozí, první, poslední,** kromě tlačítek Další a předchozí, toto rozhraní zahrnuje první a poslední tlačítko pro přechod na velmi první nebo velmi poslední stránku.
+- **Číselný** seznam čísel stránek ve stránkovacím rozhraní, které uživateli umožňuje rychle přejít na konkrétní stránku.
+- **Číselná, první, poslední,** kromě čísel číselných stránek obsahuje tlačítka pro přechod na velmi první nebo velmi poslední stránku.
 
-Pro prvky DataList a Repeater máme odpovědnost za rozhodování o stránkovací rozhraní a jeho implementace. To zahrnuje vytváření potřebných kontrol webové stránky a zobrazení požadovaná stránka při kliknutí na konkrétní rozhraní tlačítka stránkování. Kromě toho některé ovládací prvky rozhraní stránkování muset zakázat. Při procházení první stránky dat s využitím další, předchozí, nejprve poslední rozhraní, první a předchozí tlačítka by zakázána.
+Pro prvky DataList a Repeater zodpovídáme za rozhodování o stránkování rozhraní a jeho implementaci. To zahrnuje vytvoření potřebných webových ovládacích prvků na stránce a zobrazení požadované stránky při kliknutí na tlačítko rozhraní stránkování. Kromě toho může být potřeba zakázat některé ovládací prvky rozhraní stránkování. Například při zobrazení první stránky dat pomocí následujícího, předchozího, prvního rozhraní bude zakázáno první i předchozí tlačítko.
 
-Pro účely tohoto kurzu, umožňují s použití na další, předchozí, nejprve poslední rozhraní. Přidejte čtyři ovládací prvky tlačítka webové stránky a nastavte jejich `ID` s `FirstPage`, `PrevPage`, `NextPage`, a `LastPage`. Nastavte `Text` vlastností &lt; &lt; nejprve &lt; předchozí, další &gt;a poslední &gt; &gt; .
+Pro tento kurz použijte k použití následujícího, předchozího, prvního, posledního rozhraní. Přidejte na stránku čtyři webové ovládací prvky tlačítka a nastavte jejich `ID` s na `FirstPage`, `PrevPage`, `NextPage`a `LastPage`. Nastavte vlastnosti `Text` na nejdříve &lt;&lt; první, &lt; předchozí, další &gt;a poslední &gt;&gt;.
 
 [!code-aspx[Main](paging-report-data-in-a-datalist-or-repeater-control-vb/samples/sample4.aspx)]
 
-Dále vytvořte `Click` obslužnou rutinu události pro každý z těchto tlačítek. Za chvíli přidáme kód, který zobrazíte požadovanou stránku.
+Dále vytvořte obslužnou rutinu události `Click` pro každé z těchto tlačítek. Za chvíli přidáme kód potřebný k zobrazení požadované stránky.
 
-## <a name="remembering-the-total-number-of-records-being-paged-through"></a>Zapamatování celkový počet záznamů stránkování prostřednictvím
+## <a name="remembering-the-total-number-of-records-being-paged-through"></a>Pamatuje si celkový počet záznamů, které se Stránkují.
 
-Bez ohledu na vybrané rozhraní stránkování musíme compute a celkový počet záznamů stránkování prostřednictvím mějte na paměti. Celkový počet řádků (ve spojení s velikost stránky) určuje, kolik celkem stránek dat jsou stránkování, který určuje, co ovládací prvky rozhraní stránkování se přidají nebo jsou povoleny. V další, předchozí, první poslední rozhraní, které vytváříme, počet stránek slouží dvěma způsoby:
+Bez ohledu na zvolené rozhraní stránkování musíme vypočítat a zapamatovat si celkový počet záznamů, které jsou stránkou. Celkový počet řádků (ve spojení s velikostí stránky) určuje, kolik z celkových stránek dat je zpracováváno stránkou, což určuje, které ovládací prvky rozhraní pro stránkování jsou přidány nebo jsou povoleny. V dalším, předchozím, prvním, posledním rozhraní, které sestavíme, se počet stránek používá dvěma způsoby:
 
-- Chcete-li zjistit, jestli jsme se v takovém případě zobrazuje poslední stránky, tlačítka Další a poslední jsou zakázané.
-- Pokud uživatel klepne na poslední tlačítko musíme whisk je na poslední stránce, jejíž index je jeden menší než stránce počítat.
+- Chcete-li zjistit, zda se zobrazuje poslední stránka, v takovém případě je tlačítko Další a poslední vypnuté.
+- Pokud uživatel klikne na poslední tlačítko, potřebujeme ho zawhisky na poslední stránku, jejíž index je menší než počet stránek.
 
-Počet stránek se vypočte jako celkový počet řádků horní mez děleného velikostí stránky. Například, pokud jsme se procházení 79 záznamy s čtyři záznamy na stránce, pak počet stránek je 20 (horní mez 79 / 4). Pokud používáme rozhraní číselné stránkování, tyto informace nám informuje o tom, kolik číselné stránky tlačítka zobrazíte; Pokud naše stránkovací rozhraní obsahuje další nebo poslední tlačítka, počet stránek slouží k určení toho, kdy chcete zakázat tlačítko Další nebo poslední.
+Počet stránek se počítá jako strop celkového počtu řádků dělený velikostí stránky. Pokud například máme stránkování přes 79 záznamů se čtyřmi záznamy na stránku, bude počet stránek 20 (horní mez 79/4). Pokud používáme rozhraní číselného stránkování, tyto informace informují o tom, kolik tlačítek číselné stránky se má zobrazit. Pokud má naše rozhraní stránkování další nebo poslední tlačítka, počet stránek se používá k určení, kdy se má zakázat tlačítko Další nebo poslední.
 
-Pokud rozhraní stránkování obsahuje poslední tlačítko, je nutné, že celkový počet záznamů stránkování prostřednictvím zapamatuje postbacků tak, aby po kliknutí na tlačítku poslední můžeme určit poslední index stránky. K provedení této, vytvořit `TotalRowCount` vlastnost ve třídě použití modelu code-behind stránky s ASP.NET, která udržuje jeho hodnotu na zobrazení stavu:
+Pokud stránkovací rozhraní obsahuje tlačítko poslední, je nezbytné, aby celkový počet záznamů, které jsou na straně sebe, byly předávány napříč zpětnými odesláními, aby při kliknutí na poslední tlačítko bylo možné určit poslední index stránky. Pokud to chcete usnadnit, vytvořte vlastnost `TotalRowCount` ve třídě ASP.NET stránky s kódem na pozadí, která ukládá jeho hodnotu do stavu zobrazení:
 
 [!code-vb[Main](paging-report-data-in-a-datalist-or-repeater-control-vb/samples/sample5.vb)]
 
-Kromě `TotalRowCount`trvat několik minut vytvořit vlastnosti jen pro čtení úrovně stránky snadného přístupu k indexu stránky, velikost stránky a počet stran:
+Kromě `TotalRowCount`můžete vytvořit vlastnosti na úrovni stránky jen pro čtení a získat tak snadný přístup k indexu stránky, velikosti stránky a počtu stránek:
 
 [!code-vb[Main](paging-report-data-in-a-datalist-or-repeater-control-vb/samples/sample6.vb)]
 
-## <a name="determining-the-total-number-of-records-being-paged-through"></a>Určení celkový počet záznamů stránkování prostřednictvím
+## <a name="determining-the-total-number-of-records-being-paged-through"></a>Určení celkového počtu záznamů, které se Stránkují
 
-`PagedDataSource` Objekt se vrátil ze ObjectDataSource s `Select()` metoda má v něm *všechny* záznamů produktu, i když pouze jejich podmnožinu se zobrazí v ovládacím prvku DataList. `PagedDataSource` s [ `Count` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.count.aspx) vrátí počet položek, které se zobrazí v ovládacím prvku DataList; [ `DataSourceCount` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.datasourcecount.aspx) vrátí celkový počet položek v rámci `PagedDataSource`. Proto potřebujeme přiřadit stránky s ASP.NET `TotalRowCount` vlastnost hodnotu z `PagedDataSource` s `DataSourceCount` vlastnost.
+Objekt `PagedDataSource` vrácený z metody ObjectDataSource `Select()` v rámci něj obsahuje *všechny* záznamy produktů, a to i v případě, že je v prvku DataList zobrazena pouze jeho podmnožina. Vlastnost `PagedDataSource` s [`Count`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.count.aspx) vrací pouze počet položek, které budou zobrazeny v prvku DataList; [vlastnost`DataSourceCount`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.datasourcecount.aspx) vrátí celkový počet položek v rámci `PagedDataSource`. Proto je potřeba přiřadit vlastnost ASP.NET Page s `TotalRowCount` hodnotu vlastnosti `DataSourceCount` `PagedDataSource` s.
 
-Chcete-li to provést, vytvořte obslužnou rutinu události pro prvek ObjectDataSource s `Selected` událostí. V `Selected` obslužná rutina události máme přístup k prvku ObjectDataSource s vrácenou hodnotu `Select()` metoda v tomto případě `PagedDataSource`.
+K tomu je potřeba vytvořit obslužnou rutinu události pro `Selected` události ObjectDataSource s. V `Selected` obslužná rutina události máme přístup k návratové hodnotě metody ObjectDataSource s `Select()` v tomto případě `PagedDataSource`.
 
 [!code-vb[Main](paging-report-data-in-a-datalist-or-repeater-control-vb/samples/sample7.vb)]
 
-## <a name="displaying-the-requested-page-of-data"></a>Požadovanou stránku dat zobrazení
+## <a name="displaying-the-requested-page-of-data"></a>Zobrazení požadované stránky dat
 
-Po kliknutí na jedno z tlačítek v rozhraní stránkování, musíme požadovanou stránku dat zobrazení. Protože jsou zadány parametry stránkování prostřednictvím řetězce dotazu, požadovaná stránka za využívání dat zobrazíte `Response.Redirect(url)` chcete, aby uživatel s prohlížeči znovu požádat o `Paging.aspx` stránky s příslušnými parametry stránkování. Například pro zobrazení dat na druhé stránce jsme by má uživatel přesměrovat `Paging.aspx?pageIndex=1`.
+Když uživatel klikne na jedno z tlačítek ve stránkovacím rozhraní, musíme zobrazit požadovanou stránku dat. Vzhledem k tomu, že parametry stránkování jsou zadány pomocí řetězce dotazu QueryString, aby se zobrazila požadovaná stránka dat `Response.Redirect(url)`, aby prohlížeč uživatelů znovu požadoval stránku `Paging.aspx` s příslušnými parametry stránkování. Pokud například chcete zobrazit druhou stránku dat, přesměrujte uživatele na `Paging.aspx?pageIndex=1`.
 
-K provedení této, vytvořit `RedirectUser(sendUserToPageIndex)` metodu, která přesměruje uživatele na `Paging.aspx?pageIndex=sendUserToPageIndex`. Potom tuto metodu volat z čtyři tlačítka `Click` obslužných rutin událostí. V `FirstPage` `Click` obslužná rutina události, volání `RedirectUser(0)`, aby jim odeslala na první stránku; v `PrevPage` `Click` obslužná rutina události, použijte `PageIndex - 1` jako index stránky; a tak dále.
+Chcete-li to usnadnit, vytvořte `RedirectUser(sendUserToPageIndex)` metodu, která přesměruje uživatele na `Paging.aspx?pageIndex=sendUserToPageIndex`. Pak zavolejte tuto metodu ze čtyř tlačítek `Click` obslužných rutin událostí. V obslužné rutině události `FirstPage` `Click` zavolejte `RedirectUser(0)`, aby se odesílaly na první stránku; v obslužné rutině události `Click` `PrevPage` použijte `PageIndex - 1` jako index stránky; a tak dále.
 
 [!code-vb[Main](paging-report-data-in-a-datalist-or-repeater-control-vb/samples/sample8.vb)]
 
-S `Click` dokončení obslužné rutiny událostí, záznamy DataList s možností stránkování prostřednictvím pomocí tlačítek. Za chvíli to vyzkoušet!
+S kompletními obslužnými rutinami události `Click` se záznamy DataList s dají stránkovat kliknutím na tlačítka. Vyzkoušejte si to prosím chvilku!
 
-## <a name="disabling-paging-interface-controls"></a>Zakázání stránkování ovládací prvky rozhraní
+## <a name="disabling-paging-interface-controls"></a>Zakázání ovládacích prvků rozhraní stránkování
 
-V současné době jsou povoleny všechny čtyři tlačítka bez ohledu na stránku zobrazení. Ale chcete zakázat tlačítka první a předchozí při zobrazování první stránka dat a tlačítka Další a poslední při poslední stránkou. `PagedDataSource` Vrácený ObjectDataSource s `Select()` metoda má vlastnosti [ `IsFirstPage` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.isfirstpage.aspx) a [ `IsLastPage` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.islastpage.aspx) , prozkoumáme můžete určit, pokud jsme prohlížíte první nebo poslední stránku data.
+V současné době jsou všechna čtyři tlačítka povolena bez ohledu na zobrazovanou stránku. Chceme však zakázat první a předchozí tlačítka při zobrazení první stránky dat a tlačítka Další a poslední při zobrazení poslední stránky. Objekt `PagedDataSource` vrácený metodou ObjectDataSource `Select()` obsahuje vlastnosti [`IsFirstPage`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.isfirstpage.aspx) a [`IsLastPage`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.islastpage.aspx) , které můžeme prostudovat, abyste zjistili, zda zobrazujeme první nebo poslední stránku dat.
 
-Přidejte následující prvek ObjectDataSource s `Selected` obslužné rutiny události:
+Do obslužné rutiny události `Selected` ObjectDataSource s přidejte následující:
 
 [!code-vb[Main](paging-report-data-in-a-datalist-or-repeater-control-vb/samples/sample9.vb)]
 
-Uveďte první a předchozí tlačítka se deaktivuje, při procházení první stránky, tlačítka Další a poslední bude zakázáno, při zobrazení na poslední stránce.
+V takovém případě budou při prohlížení první stránky vypnutá tlačítka první a předchozí, zatímco tlačítko Další a poslední bude při zobrazení poslední stránky zakázané.
 
-Umožňují s dokončení rozhraní stránkování podle informací pro uživatele co jsou stránce re aktuálně zobrazenou a celkový počet stránek existovat. Přidání ovládacího prvku popisek na stránku a nastavit jeho `ID` vlastnost `CurrentPageNumber`. Nastavte jeho `Text` vlastnost v prvku ObjectDataSource s vybrané obslužná rutina události takové, že zahrnuje aktuální stránky zobrazení (`PageIndex + 1`) a celkový počet stránek (`PageCount`).
+Přizpůsobte rozhraní stránkování tím, že Informujte uživatele o tom, jakou stránku nyní právě prohlížíte, a kolik jich má celkový počet stránek. Přidejte ovládací prvek web popisku na stránku a nastavte jeho vlastnost `ID` na hodnotu `CurrentPageNumber`. Nastavte jeho vlastnost `Text` v obslužné rutině ovládacího prvku ObjectDataSource s, tak, aby obsahovalo aktuální prohlíženou stránku (`PageIndex + 1`) a celkový počet stránek (`PageCount`).
 
 [!code-vb[Main](paging-report-data-in-a-datalist-or-repeater-control-vb/samples/sample10.vb)]
 
-Obrázek 10 ukazuje `Paging.aspx` když první uživatel. Řetězec dotazu je prázdný, prvku DataList výchozím nastavení zobrazí první čtyři produkty; První a předchozí tlačítka jsou zakázané. Kliknutím na další zobrazí další čtyři záznamy (viz obrázek 11); První a předchozí tlačítka jsou nyní k dispozici.
+Obrázek 10 ukazuje `Paging.aspx` při prvním navštívení. Vzhledem k tomu, že je dotaz QueryString prázdný, zobrazí se ve výchozím nastavení DataList prvních čtyř produktů; tlačítka první a předchozí jsou zakázaná. Kliknutím na další zobrazíte další čtyři záznamy (viz obrázek 11); tlačítka první a předchozí jsou nyní povolena.
 
-[![Zobrazí se první Data stránky](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image23.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image22.png)
+[![zobrazení první stránky dat](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image23.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image22.png)
 
-**Obrázek 10**: Zobrazí se první stránka Data ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image24.png))
+**Obrázek 10**: zobrazí se první stránka dat ([kliknutím zobrazíte obrázek v plné velikosti).](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image24.png)
 
-[![Zobrazí se druhé Data stránky](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image26.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image25.png)
+[![se zobrazí druhá stránka dat](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image26.png)](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image25.png)
 
-**Obrázek 11**: Druhá stránka Data se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image27.png))
+**Obrázek 11**: zobrazí se druhá stránka dat ([kliknutím zobrazíte obrázek v plné velikosti).](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image27.png)
 
 > [!NOTE]
-> Rozhraní stránkování dá dál vylepšit tím, že uživatel k určení, kolik stránek zobrazíte na stránce. Například může být DropDownList přidán výpis možnosti velikost stránky jako je 5, 10, 25, 50 a všechny. Při výběru velikosti stránky, bude uživatel muset jeho přesměrování zpátky na `Paging.aspx?pageIndex=0&pageSize=selectedPageSize`. Opuštění implementace toto vylepšení jako cvičení pro čtečku.
+> Stránkovací rozhraní lze dále rozšířit tím, že uživateli umožníte určit, kolik stránek se má zobrazit na stránce. Můžete například přidat DropDownList možnosti pro výpis velikosti stránky, jako je 5, 10, 25, 50 a vše. Po výběru velikosti stránky musí být uživatel přesměrován zpět na `Paging.aspx?pageIndex=0&pageSize=selectedPageSize`. Odejdu z tohoto vylepšení jako cvičení pro čtenáře.
 
-## <a name="using-custom-paging"></a>Používá vlastní stránkování
+## <a name="using-custom-paging"></a>Použití vlastního stránkování
 
-Na stránkách DataList prostřednictvím její data způsobem neefektivní výchozí stránkování. Při procházení dostatečně velké objemy dat, je nutné použít vlastní stránkování. I když podrobnosti implementace poněkud lišit, jsou Principy implementace vlastní stránkování v a v prvku DataList stejná jako u výchozího stránkování. Pomocí vlastní stránkování, `ProductBLL` třída s `GetProductsPaged` – metoda (místo `GetProductsAsPagedDataSource`). Jak je popsáno v [efektivně stránkování prostřednictvím velkých objemů dat](../paging-and-sorting/efficiently-paging-through-large-amounts-of-data-vb.md) kurzu `GetProductsPaged` musí být předán počáteční řádek indexu a maximální počet vrácených řádků. Tyto parametry se dají udržovat pomocí řetězce dotazu stejně jako `pageIndex` a `pageSize` parametrů použitých ve výchozích stránkování.
+Stránky DataList prostřednictvím svých dat s využitím neefektivních výchozích technik stránkování. Když je stránkování po dostatečně velkých objemech dat, je nezbytné, aby se použilo vlastní stránkování. I když se podrobnosti implementace mírně liší, koncepce za implementací vlastního stránkování v prvku DataList jsou stejné jako výchozí stránkování. Pomocí vlastního stránkování použijte metodu `ProductBLL` třídy s `GetProductsPaged` (místo `GetProductsAsPagedDataSource`). Jak je popsáno v kurzu [efektivní stránkování prostřednictvím velkých objemů dat](../paging-and-sorting/efficiently-paging-through-large-amounts-of-data-vb.md) , `GetProductsPaged` musí být předán index počátečního řádku a maximální počet řádků, které se mají vrátit. Tyto parametry lze uchovávat pomocí řetězce dotazu, stejně jako `pageIndex` a parametry `pageSize` používané ve výchozím stránkování.
 
-Od existovat s žádné `PagedDataSource` s vlastní stránkování, musí použít alternativní postupy k určení celkový počet záznamů stránkování prostřednictvím a zda jsme opětovné zobrazení na první nebo poslední stránku data. `TotalNumberOfProducts()` Metoda ve `ProductsBLL` třídy vrátí celkový počet stránkování prostřednictvím produktů. Pokud chcete zjistit, pokud je první stránka data zobrazení, zkontrolujte start index řádku Pokud je nula, pak zobrazení první stránka. Pokud start index řádku a maximální počet vrácených řádků je větší než nebo rovna hodnotě celkový počet záznamů stránkování prostřednictvím je poslední stránky zobrazení.
+Vzhledem k tomu, že neexistují `PagedDataSource` s vlastním stránkováním, je potřeba použít alternativní techniky k určení celkového počtu záznamů, které jsou stránkovaná, a to, jestli se má znovu zobrazit první nebo poslední stránka dat. Metoda `TotalNumberOfProducts()` ve třídě `ProductsBLL` vrátí celkový počet produktů, které jsou stránkou. Chcete-li zjistit, zda je zobrazena první stránka dat, Projděte si index počátečního řádku, pokud je nula, a pak se zobrazí první stránka. Poslední stránka je zobrazena, pokud je index počátečního řádku plus maximální počet vrácených řádků větší nebo roven celkovému počtu záznamů, které jsou stránkou.
 
-Ukážeme si některé implementace vlastní stránkování podrobněji v dalším kurzu.
+V dalším kurzu budeme prozkoumat implementaci vlastního stránkování podrobněji.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Zatímco DataList ani Repeater vzdálený nabízí podporu stránkování v prvku GridView, DetailsView, nalezen a FormView řídí, tyto funkce přidané s minimálním úsilím. Nejjednodušší způsob, jak implementovat výchozí stránkování je zabalit celou sadu produkty v rámci `PagedDataSource` a pak vytvoříte vazbu `PagedDataSource` DataList nebo Repeater. V tomto kurzu jsme přidali `GetProductsAsPagedDataSource` metodu `ProductsBLL` třídy se vraťte `PagedDataSource`. `ProductsBLL` Třída již obsahuje metody, potřebné pro vlastní stránkování `GetProductsPaged` a `TotalNumberOfProducts`.
+I když prvek DataList ani Repeater nenabízí podporu stránkování, která se nachází v ovládacích prvcích GridView, DetailsView a FormView, může být tato funkce přičtena s minimálním úsilím. Nejjednodušší způsob, jak implementovat výchozí stránkování, je zabalit celou sadu produktů v rámci `PagedDataSource` a potom navazovat `PagedDataSource` na DataList nebo Repeater. V tomto kurzu jsme přidali metodu `GetProductsAsPagedDataSource` do `ProductsBLL` třídy, která vrátí `PagedDataSource`. Třída `ProductsBLL` již obsahuje metody potřebné pro vlastní stránkování `GetProductsPaged` a `TotalNumberOfProducts`.
 
-Spolu s načítání buď přesnou sadu záznamů, které má být zobrazen pro vlastní stránkování, nebo všechny záznamy v `PagedDataSource` výchozí stránkování, musíme také ručně přidejte stránkovací rozhraní. Pro účely tohoto kurzu jsme vytvořili další, předchozí, nejprve poslední rozhraní s čtyři tlačítka webové ovládací prvky. Kromě toho byl přidán ovládací prvek popisku zobrazuje aktuální číslo stránky a celkový počet stránek.
+Při načítání přesné sady záznamů, které se mají zobrazit pro vlastní stránkování nebo pro všechny záznamy v `PagedDataSource` pro výchozí stránkování, je také potřeba ručně přidat rozhraní stránkování. Pro tento kurz jsme vytvořili další, předchozí, první a poslední rozhraní se čtyřmi webovými ovládacími prvky tlačítka. Také ovládací prvek popisek zobrazující číslo aktuální stránky a celkový počet stránek byl přidán.
 
-V dalším kurzu uvidíme, jak přidat podporu řazení ovládacích prvků DataList a Repeater. Také uvidíme vytvoření ovládacích prvků DataList, který může být stránkovaného fondu a seřazené (s příklady použití výchozí a vlastní stránkování).
+V dalším kurzu uvidíte, jak přidat podporu řazení do prvku DataList a Repeater. Také se dozvíte, jak vytvořit prvek DataList, který může být stránkovaný i seřazený (s příklady pomocí výchozího a vlastního stránkování).
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí revidující pro účely tohoto kurzu byly Liz Shulok, Ken Pespisa a Bernadette Leigh. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontroloři vedoucích k tomuto kurzu byli Liz Shulok, Ken Pespisa a Bernadette Leigh. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](sorting-data-in-a-datalist-or-repeater-control-cs.md)
-> [další](sorting-data-in-a-datalist-or-repeater-control-vb.md)
+> [Další](sorting-data-in-a-datalist-or-repeater-control-vb.md)

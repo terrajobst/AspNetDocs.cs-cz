@@ -1,60 +1,60 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs
-title: Zpracování postbacků extenderu Popupcontrol bez ovládacího prvku UpdatePanel (C#) ovládacího | Dokumentace Microsoftu
+title: Zpracování zpětného volání z překryvného ovládacího prvku bez prvkuC#UpdatePanel () | Microsoft Docs
 author: wenz
-description: Zařízení extender PopupControl v sadou nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevíraného okna, když se aktivuje jiný ovládací prvek. Zpětné volání při výskytu v su...
+description: PopupControl Extender v sadě nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevírané okno v případě, že je aktivován jakýkoli jiný ovládací prvek. Když dojde k postbacku v Su...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 25444121-5a72-4dac-8e50-ad2b7ac667af
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 05a365e26a1d66c7d4034dbbec2d7f158e0b4164
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 9c4c59bb9dbd3e2ba2b3b81ecf76271f21673bce
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132501"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74598738"
 ---
 # <a name="handling-postbacks-from-a-popup-control-without-an-updatepanel-c"></a>Zpracování postbacků ovládacího prvku PopupControl bez ovládacího prvku UpdatePanel (C#)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/PopupControl3.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/popupcontrol3CS.pdf)
+[Stažení kódu](https://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/PopupControl3.cs.zip) nebo [stažení PDF](https://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/popupcontrol3CS.pdf)
 
-> Zařízení extender PopupControl v sadou nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevíraného okna, když se aktivuje jiný ovládací prvek. Když zpětného odeslání dojde k takové panelu a na stránce se několika panely je obtížné určit, se kliklo panelu.
+> PopupControl Extender v sadě nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevírané okno v případě, že je aktivován jakýkoli jiný ovládací prvek. Pokud dojde k postbacku na takovém panelu a na stránce je několik panelů, je obtížné určit, na který panel byl kliknuto.
 
 ## <a name="overview"></a>Přehled
 
-Zařízení extender PopupControl v sadou nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevíraného okna, když se aktivuje jiný ovládací prvek. Když zpětného odeslání dojde k takové panelu a na stránce se několika panely je obtížné určit, se kliklo panelu.
+PopupControl Extender v sadě nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevírané okno v případě, že je aktivován jakýkoli jiný ovládací prvek. Pokud dojde k postbacku na takovém panelu a na stránce je několik panelů, je obtížné určit, na který panel byl kliknuto.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Při použití `PopupControl` s zpětné volání, ale bez nutnosti `UpdatePanel` na stránce Control Toolkit nenabízí způsob, jak určit, který klient prvek spustil automaticky otevírané okno, které pak způsobil zpětné volání. Ale triku poskytuje řešení pro tento scénář.
+Při použití `PopupControl` s zpětným voláním, ale bez `UpdatePanel` na stránce, sada nástrojů Control Toolkit nenabízí způsob, jak určit, který prvek klienta aktivoval automaticky otevírané okno, které způsobilo zpětné odeslání. Malý štych ale poskytuje alternativní řešení pro tento scénář.
 
-Za prvé, tady je základní nastavení: dvě textová pole, které obě aktivovat stejné místní nabídky kalendář. Dvě `PopupControlExtenders` textová pole a automaticky otevírané okno pohromadě.
+První ze všech, zde je základní nastavení: dvě textová pole, která obě spustí stejnou místní nabídku, kalendář. Dva `PopupControlExtenders` přenášet textová pole a automaticky otevíraná okna.
 
 [!code-aspx[Main](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/samples/sample1.aspx)]
 
-Základní myšlenka spočívá v přidání skrytého pole v &lt; `form` &gt; element, který obsahuje textové pole, které spustí automaticky otevírané okno:
+Základní nápad je přidat skryté pole formuláře do &lt;`form`&gt; elementu, který obsahuje textové pole, ve kterém se spustila automaticky otevíraná okna:
 
 [!code-aspx[Main](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/samples/sample2.aspx)]
 
-Při načtení stránky kódu jazyka JavaScript přidá obslužnou rutinu události do obou polí: Pokaždé, když uživatel klikne na textové pole, jeho název je zapsán do skryté pole formuláře:
+Při načtení stránky kód JavaScriptu přidá obslužnou rutinu události do obou textových polí: vždy, když uživatel klikne na textové pole, jeho název se zapíše do skrytého pole formuláře:
 
 [!code-html[Main](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/samples/sample3.html)]
 
-V kódu na straně serveru musí přečíst hodnotu skrytého pole. Protože jsou triviální k manipulaci s skrytých polí ve formuláři, vyžaduje se seznamu povolených IP adres přístup k ověření skryté hodnoty. Jakmile byl identifikován správný textového pole, se do něj zapíše datum z kalendáře.
+V kódu na straně serveru musí být hodnota skrytého pole přečtena. Vzhledem k tomu, že skrytá pole formuláře jsou triviální pro manipulaci, je požadován přístup povolený k ověření skryté hodnoty. Po identifikaci správného textového pole se do něj zapíše datum z kalendáře.
 
 [!code-aspx[Main](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/samples/sample4.aspx)]
 
-[![Když uživatel klikne do textového pole, zobrazí se v kalendáři](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image2.png)](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image1.png)
+[![kalendáři se zobrazí, když uživatel klikne do textového pole.](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image2.png)](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image1.png)
 
-Když uživatel klikne do textového pole, zobrazí se v kalendáři ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image3.png))
+Kalendář se zobrazí, když uživatel klikne do textového pole ([kliknutím zobrazíte obrázek v plné velikosti).](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image3.png)
 
-[![Kliknutím na datum umístí ho do textového pole](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image5.png)](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image4.png)
+[![kliknutí na datum vloží do textového pole.](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image5.png)](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image4.png)
 
-Kliknutím na datum umístí ho do textového pole ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image6.png))
+Kliknutím na datum se vloží do textového pole ([kliknutím zobrazíte obrázek v plné velikosti).](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image6.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
-> [další](using-multiple-popup-controls-vb.md)
+> [Další](using-multiple-popup-controls-vb.md)

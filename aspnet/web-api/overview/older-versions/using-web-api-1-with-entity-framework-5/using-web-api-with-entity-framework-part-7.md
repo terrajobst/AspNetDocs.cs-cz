@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-7
-title: 'Část 7: Vytvoření hlavní stránky | Dokumentace Microsoftu'
+title: '7\. část: vytvoření hlavní stránky | Microsoft Docs'
 author: MikeWasson
 description: ''
 ms.author: riande
@@ -8,95 +8,95 @@ ms.date: 07/04/2012
 ms.assetid: eb32a17b-626c-4373-9a7d-3387992f3c04
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: aaffcecccd138d30355ac0e7ce6c86a67246cc08
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: fe4074c701159a137be3644d65ca844f160c2399
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108928"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74599990"
 ---
-# <a name="part-7-creating-the-main-page"></a>Část 7: Vytvoření hlavní stránky
+# <a name="part-7-creating-the-main-page"></a>7\. část: vytvoření hlavní stránky
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-[Stáhnout dokončený projekt](http://code.msdn.microsoft.com/ASP-NET-Web-API-with-afa30545)
+[Stáhnout dokončený projekt](https://code.msdn.microsoft.com/ASP-NET-Web-API-with-afa30545)
 
 ## <a name="creating-the-main-page"></a>Vytvoření hlavní stránky
 
-V této části vytvoříte stránky hlavní aplikace. Tato stránka bude složitější než na stránce správy, takže jsme budete postupovat v několika krocích. Na cestě zobrazí se vám některé pokročilé techniky knihovnou Knockout.js. Tady je základní rozložení stránky:
+V této části vytvoříte hlavní stránku aplikace. Tato stránka bude složitější než stránka pro správu, takže se k ní přiblížíme několika kroky. V takovém případě uvidíte několik pokročilejších technik vyseknutí. js. Toto je základní rozložení stránky:
 
 ![](using-web-api-with-entity-framework-part-7/_static/image1.png)
 
-- "Produkty" obsahuje celou řadu produktů.
-- "Košíku" obsahuje celou řadu produktů s množství. Kliknutím na tlačítko "Přidat do košíku" aktualizujete košíku.
+- "Products" uchovává pole produktů.
+- "Košík" obsahuje pole produktů s množstvím. Kliknutím na Přidat do košíku aktualizujete košík.
 - "Orders" obsahuje pole ID objednávek.
-- "Details" obsahuje detaily objednávky, což je pole položky (produkty s množství)
+- "Details" obsahuje podrobnosti objednávky, což je pole položek (produkty s množstvím).
 
-Začneme tak, že definujete některé základní rozložení ve formátu HTML, bez vytváření datových vazeb nebo skriptu. Otevřete soubor Views/Home/Index.cshtml a veškerý obsah nahraďte následujícím kódem:
+Začneme definováním základního rozložení ve formátu HTML bez vazby dat nebo skriptu. Otevřete soubor views/Home/index. cshtml a nahraďte celý obsah následujícím způsobem:
 
 [!code-html[Main](using-web-api-with-entity-framework-part-7/samples/sample1.html)]
 
-V dalším kroku přidejte oddíl skripty a vytvořte prázdný model zobrazení:
+Dále přidejte oddíl skripty a vytvořte prázdný model zobrazení:
 
 [!code-cshtml[Main](using-web-api-with-entity-framework-part-7/samples/sample2.cshtml)]
 
-Podle návrhu šrafují dříve, náš model zobrazení musí pozorovatelné objekty pro produkty, košík, objednávek a podrobnosti. Přidejte následující proměnné tak, `AppViewModel` objektu:
+V závislosti na návrhu, který jsme si vyznamenali dříve, náš model zobrazení potřebuje observables pro produkty, košík, objednávky a podrobnosti. Do objektu `AppViewModel` přidejte následující proměnné:
 
 [!code-javascript[Main](using-web-api-with-entity-framework-part-7/samples/sample3.js)]
 
-Uživatele můžete přidat položky ze seznamu produktů do košíku a odebrání položek z košíku. K zapouzdření tyto funkce, vytvoříme jiné třídy zobrazení modelu, který představuje produkt. Přidejte následující kód, který `AppViewModel`:
+Uživatelé mohou přidat položky ze seznamu produktů do košíku a odebrat položky z košíku. Pokud chcete tyto funkce zapouzdřit, vytvoříme další třídu zobrazení-model reprezentující produkt. Přidejte následující kód pro `AppViewModel`:
 
 [!code-javascript[Main](using-web-api-with-entity-framework-part-7/samples/sample4.js?highlight=4)]
 
-`ProductViewModel` Třída obsahuje dvě funkce, které se používají k přesunu produktu do a z košíku: `addItemToCart` přidá jednu jednotku produktu do nákupního košíku, a `removeAllFromCart` odebere všechny množství produktu.
+Třída `ProductViewModel` obsahuje dvě funkce, které se používají k přesunu produktu do a ze vozíku: `addItemToCart` na vozík přidá jednu jednotku produktu a `removeAllFromCart` odstraní všechna množství produktu.
 
-Uživatele můžete vybrat existující pořadí a získat podrobnosti objednávky. Zapouzdříme tuto funkci do jiného zobrazení modelu:
+Uživatelé můžou vybrat existující objednávku a získat podrobnosti o objednávce. Tuto funkci zapouzdří do jiného zobrazení – model:
 
 [!code-javascript[Main](using-web-api-with-entity-framework-part-7/samples/sample5.js?highlight=4)]
 
-`OrderDetailsViewModel` Je inicializován s objednávkou, a načte podrobnosti objednávky odesláním požadavku AJAX na server.
+`OrderDetailsViewModel` je inicializována s objednávkou a načítá podrobnosti o objednávce odesláním požadavku AJAX na server.
 
-Všimněte si také, `total` vlastnost `OrderDetailsViewModel`. Tato vlastnost je zvláštní druh pozorovat volána [vypočítané pozorovat](http://knockoutjs.com/documentation/computedObservables.html). Jak již název napovídá, počítaný pozorovat vám umožní vytvořit datovou vazbu s vypočtenou hodnotou&#8212;v tomto případě celkové náklady na pořadí.
+Všimněte si také, že vlastnost `total` v `OrderDetailsViewModel`. Tato vlastnost je speciální druh, který je k pozorovateli, který se používá jako [vypočítaná](http://knockoutjs.com/documentation/computedObservables.html). Jak název implikuje, vypočítaná pozorovatel umožňuje vytvořit datovou vazby k vypočítané hodnotě&#8212;v tomto případě celková cena za objednávku.
 
-V dalším kroku přidejte tyto funkce k `AppViewModel`:
+Pak přidejte tyto funkce do `AppViewModel`:
 
-- `resetCart` Odebere všechny položky z košíku.
-- `getDetails` načte podrobnosti objednávky (vynucením nového `OrderDetailsViewModel` na `details` seznamu).
-- `createOrder` Vytvoří novou objednávku a vyprázdní košíku.
+- `resetCart` odebere všechny položky z košíku.
+- `getDetails` Získá podrobnosti o objednávce (vložením nového `OrderDetailsViewModel` do seznamu `details`).
+- `createOrder` vytvoří nové pořadí a vyprázdní košík.
 
 [!code-javascript[Main](using-web-api-with-entity-framework-part-7/samples/sample6.js?highlight=4)]
 
-Nakonec inicializujte model zobrazení tím, že odesílání požadavků AJAX pro produktů a objednávek:
+Nakonec inicializujte model zobrazení tak, že provedete požadavky AJAX na produkty a objednávky:
 
 [!code-javascript[Main](using-web-api-with-entity-framework-part-7/samples/sample7.js)]
 
-Tak dobře, to je spousta kódu, ale sestavili jsme ji si krok za krokem, takže snad návrhu je jasné. Teď můžeme přidat některé knihovnou Knockout.js vazby v kódu HTML.
+OK, to je velké množství kódu, ale sestavili jsme ho krok za krokem, takže snad návrh je jasný. Nyní můžeme do kódu HTML přidat několik vazeb vyseknutí. js.
 
-**Produkty**
+**Produktech**
 
 Tady jsou vazby pro seznam produktů:
 
 [!code-html[Main](using-web-api-with-entity-framework-part-7/samples/sample8.html)]
 
-To Iteruje přes pole produkty a zobrazí název a ceny. Tlačítko "Přidat do pořadí" je viditelná pouze v případě, že uživatel je přihlášen.
+Tato iterace přechází přes pole Products a zobrazí název a cenu. Tlačítko Přidat do objednávky je viditelné pouze v případě, že je uživatel přihlášen.
 
-Volání tlačítko "Přidat do pořadí" `addItemToCart` na `ProductViewModel` instance pro produkt. Tento příklad ukazuje užitečnou funkci z rozhraní Knockout.js: Pokud model zobrazení obsahuje jiné Zobrazit modely, můžete použít vazby vnitřní modelu. V tomto příkladu vazby v rámci `foreach` se použijí u všech `ProductViewModel` instancí. Tento přístup je mnohem přehlednější, než všechny funkce vložení do jednoho modelu zobrazení.
+Tlačítko "Přidat k objednávce" volá `addItemToCart` instance `ProductViewModel` pro daný produkt. Tím se ukazuje dobrá funkce vyseknutí. js: když model zobrazení obsahuje další modely zobrazení, můžete vazby použít na vnitřní model. V tomto příkladu jsou vazby v rámci `foreach` aplikovány na každou z `ProductViewModel` instancí. Tento přístup je mnohem čistší než všechny funkce do jediného modelu zobrazení.
 
-**Košíku**
+**Nákupního**
 
-Tady jsou vazby pro košíku:
+Tady jsou vazby pro košík:
 
 [!code-html[Main](using-web-api-with-entity-framework-part-7/samples/sample9.html)]
 
-To Iteruje přes pole košíku a zobrazí název, cena a množství. Všimněte si, že odkaz "Odebrat" a "Vytvoření objednávky" tlačítko jsou vázány na model zobrazení funkce.
+Tato iterace prochází přes pole vozíku a zobrazuje název, cenu a množství. Všimněte si, že odkaz odebrat a tlačítko vytvořit objednávku jsou svázané s funkcemi zobrazení modelu.
 
-**Objednávky**
+**Fakt**
 
-Tady jsou vazby u seznamu objednávek:
+Tady jsou vazby pro seznam objednávky:
 
 [!code-html[Main](using-web-api-with-entity-framework-part-7/samples/sample10.html)]
 
-To Iteruje přes objednávky a zobrazuje ID objednávky. Událost kliknutím na odkaz je vázána `getDetails` funkce.
+Tato iterace projde objednávkami a zobrazí ID objednávky. Událost Click na odkazu je svázána s funkcí `getDetails`.
 
 **Podrobnosti objednávky**
 
@@ -104,16 +104,16 @@ Tady jsou vazby pro podrobnosti objednávky:
 
 [!code-html[Main](using-web-api-with-entity-framework-part-7/samples/sample11.html)]
 
-To iteruje položky v pořadí a zobrazí produktu, cena a množství. Okolní div je viditelná pouze v případě, že pole Podrobnosti obsahuje jednu nebo více položek.
+Tím se prochází nad položkami v objednávce a zobrazuje produkt, cenu a množství. Okolní div je viditelné pouze v případě, že pole podrobností obsahuje jednu nebo více položek.
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto kurzu jste vytvořili aplikaci, která používá Entity Framework pro komunikaci s databází a ASP.NET Web API a poskytuje veřejná rozhraní na datové vrstvě. ASP.NET MVC 4 používáme k vykreslení stránky HTML a knihovnou Knockout.js plus jQuery zajistit dynamické interakce bez opětovné načtení stránky.
+V tomto kurzu jste vytvořili aplikaci, která používá Entity Framework ke komunikaci s databází a webové rozhraní API ASP.NET k zajištění rozhraní, které se nachází na datové vrstvě jako veřejné. ASP.NET MVC 4 používáme k vykreslování stránek HTML a vyseknutí. js plus jQuery k poskytnutí dynamické interakce bez nutnosti opětovného načtení stránky.
 
 Další zdroje informací:
 
-- [Mapa obsahu přístupu k datům v technologii ASP.NET](https://msdn.microsoft.com/library/6759sth4.aspx)
-- [Středisko pro vývojáře Entity Framework](https://msdn.microsoft.com/data/ef)
+- [Mapa obsahu ASP.NET Data Access](https://msdn.microsoft.com/library/6759sth4.aspx)
+- [Centrum pro vývojáře Entity Framework](https://msdn.microsoft.com/data/ef)
 
 > [!div class="step-by-step"]
 > [Předchozí](using-web-api-with-entity-framework-part-6.md)

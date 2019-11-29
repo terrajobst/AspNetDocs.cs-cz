@@ -1,231 +1,231 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb
-title: Interakce se stránkou obsahu ze stránky předlohy (VB) | Dokumentace Microsoftu
+title: Interakce stránky obsahu se stránkou předlohy (VB) | Microsoft Docs
 author: rick-anderson
-description: Zkoumá, jak volat metody, nastavte vlastnosti atd stránky obsahu z kódu na stránce předlohy.
+description: Prověřuje způsob volání metod, nastavení vlastností atd. stránky obsahu z kódu na stránce předlohy.
 ms.author: riande
 ms.date: 07/11/2008
 ms.assetid: a6e2e1a0-c925-43e9-b711-1f178fdd72d7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2b3cc02a170deabdd6248bacc9dab8a17b04e2b5
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 5367ad1b7f2fa11c635ad95754c9bcc1edcb6c1d
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134122"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74615630"
 ---
 # <a name="interacting-with-the-content-page-from-the-master-page-vb"></a>Interakce stránky předlohy se stránkou obsahu (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/1/8/4/184e24fa-fcc8-47fa-ac99-4b6a52d41e97/ASPNET_MasterPages_Tutorial_07_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/e/b/4/eb4abb10-c416-4ba4-9899-32577715b1bd/ASPNET_MasterPages_Tutorial_07_VB.pdf)
+[Stažení kódu](https://download.microsoft.com/download/1/8/4/184e24fa-fcc8-47fa-ac99-4b6a52d41e97/ASPNET_MasterPages_Tutorial_07_VB.zip) nebo [stažení PDF](https://download.microsoft.com/download/e/b/4/eb4abb10-c416-4ba4-9899-32577715b1bd/ASPNET_MasterPages_Tutorial_07_VB.pdf)
 
-> Zkoumá, jak volat metody, nastavte vlastnosti atd stránky obsahu z kódu na stránce předlohy.
+> Prověřuje způsob volání metod, nastavení vlastností atd. stránky obsahu z kódu na stránce předlohy.
 
 ## <a name="introduction"></a>Úvod
 
-V předchozím kurzu prověřit, jak programově interagovat s jeho hlavní stránky obsahu stránky. Vzpomínáte, že jsme aktualizovali, hlavní stránky, aby zahrnovala ovládacím prvku GridView, uvedený pět naposledy přidat produkty. Potom jsme vytvořili obsahu stránky, ze kterého může uživatel přidat nový produkt. Při přidání nového produktu, stránky obsahu potřeba dát pokyn stránka předlohy a aktualizovat jeho GridView tak, aby měl by obsahovat produktu právě přidali. Tato funkce byla lze provést přidáním veřejnou metodu na stránce předlohy, aktualizují data svázaná s prvku GridView, a pak volání této metody ze stránky obsahu.
+Předchozí kurz zkoumal, jak stránka obsahu programově spolupracuje se stránkou předlohy. Odvoláme, že jsme stránku předlohy aktualizovali tak, aby zahrnovala ovládací prvek GridView, který uvádí pět naposledy přidaných produktů. Pak jsme vytvořili stránku obsahu, ze které může uživatel přidat nový produkt. Po přidání nového produktu je nutné stránku obsahu, která je potřebná k tomu, aby stránka předlohy aktualizovala prvek GridView tak, aby obsahovala právě přidaný produkt. Tato funkce byla dosažena přidáním veřejné metody do stránky předlohy, která obnovila data vázaná na prvek GridView a následně vyvolá tuto metodu ze stránky obsahu.
 
-Nejběžnější forma interakce stránky předlohy a obsahu pochází ze stránky obsahu. Nicméně je možné stránky předlohy k rouse aktuální stránku obsahu akce na základě a tato funkce může být potřeba, když hlavní stránka obsahuje prvky uživatelského rozhraní, které umožňují uživatelům měnit data, která se zobrazuje taky na stránce obsahu. Zvažte možnost obsahu stránky, ovládací prvek zobrazí informace o produktech v GridView a stránku předlohy, která obsahuje tlačítko ovládací prvek, který, při kliknutí na, zdvojnásobí ceny pro všechny produkty. Podobně jako v příkladu v předchozím kurzu prvku GridView. je potřeba aktualizovat po cena dvojité kliknutí na tlačítko tak, aby zobrazil nové ceny, ale v tomto scénáři je stránky předlohy, kterou je potřeba rouse akce na stránce obsahu.
+Nejběžnější forma interakce obsahu a stránky předlohy pochází ze stránky obsahu. Je však možné, že stránka předlohy Rouse aktuální stránku obsahu na akci a tato funkce může být nutná, pokud stránka předlohy obsahuje prvky uživatelského rozhraní, které umožňují uživatelům upravovat data, která jsou také zobrazena na stránce obsahu. Zvažte stránku obsahu, která zobrazuje informace o produktech v ovládacím prvku GridView, a na stránce předlohy, která obsahuje ovládací prvek tlačítko, který po kliknutí zdvojnásobí ceny všech produktů. Podobně jako v předchozím kurzu je nutné prvek GridView aktualizovat po kliknutí na tlačítko dvojitá cena, aby se zobrazily nové ceny, ale v tomto scénáři je to hlavní stránka, která potřebuje, aby Rouse stránku obsahu na akci.
 
-Tento kurz popisuje, jak jste na stránce předlohy volání funkce je definována v obsahu stránky.
+V tomto kurzu se seznámíte s tím, jak má hlavní stránka vyvolat funkce definované na stránce obsahu.
 
-### <a name="instigating-programmatic-interaction-via-an-event-and-event-handlers"></a>Pokus programové interakce prostřednictvím události a obslužné rutiny událostí
+### <a name="instigating-programmatic-interaction-via-an-event-and-event-handlers"></a>Návod k programové interakci prostřednictvím obslužných rutin událostí a událostí
 
-Volání funkce stránky obsahu ze stránky předlohy je náročnější než naopak. Protože obsah stránky má jednu stránku předlohy, pokus programové interakce stránky obsahu víme veřejné metody a vlastnosti jsou naše službám. Stránky předlohy, však může mít mnoho různých obsahu stránek, každý s vlastní sadu vlastností a metod. Jak pak můžete jsme psát kód, na stránce předlohy k provedení nějaké akce v jeho obsahu stránky při nevíme, jaké stránky obsahu, který bude vyvolán do běhu?
+Vyvolání funkcí stránky obsahu ze stránky předlohy je náročnější než jiné. Vzhledem k tomu, že stránka obsahu má jedinou hlavní stránku, při vysvětlení programové interakce ze stránky obsahu víme, které veřejné metody a vlastnosti jsou v naší likvidaci. Stránka předlohy ale může mít mnoho různých stránek obsahu, z nichž každá má vlastní sadu vlastností a metod. Jak a potom můžeme napsat kód na stránce předlohy, aby se na stránce obsahu prováděla nějaká akce, když nevíte, jaká stránka obsahu bude vyvolána až do doby běhu?
 
-Vezměte v úvahu ovládací prvek technologie ASP.NET, jako je například ovládací prvek tlačítko. Ovládací prvek tlačítko se může objevit v libovolném počtu stránek ASP.NET a je třeba mechanismus, podle kterého ho může upozornit na stránce, že bylo stisknuto. Využívá se při něm *události*. Zejména ovládacího prvku tlačítko vyvolá jeho `Click` událostí při kliknutí; stránka ASP.NET, která obsahuje tlačítko můžete volitelně reakce na oznámení prostřednictvím *obslužná rutina události*.
+Vezměte v úvahu webový ovládací prvek ASP.NET, jako je například ovládací prvek tlačítko. Ovládací prvek tlačítko se může zobrazit na jakémkoli počtu stránek ASP.NET a potřebuje mechanismus, pomocí kterého může upozorňovat na stránku, na kterou byl kliknuto. To se provádí pomocí *událostí*. Konkrétně ovládací prvek tlačítko při kliknutí vyvolá událost `Click`; Stránka ASP.NET, která obsahuje tlačítko, může volitelně reagovat na toto oznámení prostřednictvím *obslužné rutiny události*.
 
-Tento stejný vzor je možné mít funkce triggeru stránky předlohy v jeho obsahu stránky:
+Stejný vzor se dá použít k tomu, aby se na stránkách obsahu spouštěla funkce triggeru hlavní stránky:
 
-1. Přidejte událost do stránky předlohy.
-2. Vyvolejte událost pokaždé, když se na hlavní stránce potřebuje ke komunikaci s jeho obsahu stránky. Například pokud stránky předlohy musí upozornění jeho obsahu stránky, že uživatel má dvojitá ceny, jeho událost by být vyvolány okamžitě po ceny být dvojitá.
-3. Vytvořte obslužnou rutinu události v obsahu stránek, které musíte provést určitou akci.
+1. Přidejte událost do hlavní stránky.
+2. Vyvolejte událost vždy, když stránka předlohy potřebuje komunikovat se stránkou obsahu. Například pokud hlavní stránka potřebuje upozornit na stránku obsahu, kterou uživatel zdvojnásobí ceny, událost se vyvolá ihned po zdvojnásobení cen.
+3. V těchto stránkách obsahu, které potřebují provést určitou akci, vytvořte obslužnou rutinu události.
 
-Tato zbývající část tohoto kurzu implementuje uvedené v úvodu; stránky obsahu, který zobrazuje seznam produktů, které v databázi a stránku předlohy, která obsahuje tlačítko, konkrétně, řízení na dvojnásobek ceny.
+Tento zbytek kurzu implementuje příklad, jak je uvedeno v úvodu; konkrétně stránka obsahu obsahující seznam produktů v databázi a stránku předlohy, která obsahuje ovládací prvek tlačítko pro dvojnásobek cen.
 
-## <a name="step-1-displaying-products-in-a-content-page"></a>Krok 1: Zobrazení produkty v obsahu stránky
+## <a name="step-1-displaying-products-in-a-content-page"></a>Krok 1: zobrazení produktů na stránce obsahu
 
-Naše první je k vytvoření obsahu stránky, která zobrazuje seznam produktů z databáze Northwind. (Databázi Northwind k projektu jsme přidali v předchozím kurzu [ *interakce stránky obsahu se stránkou předlohy*](interacting-with-the-master-page-from-the-content-page-vb.md).) Začněte tím, že přidání nové stránky ASP.NET do `~/Admin` složku s názvem `Products.aspx`a vytvořte mu vazbu k `Site.master` stránky předlohy. Obrázek 1 ukazuje Průzkumník řešení po přidání této stránce na webu.
+Naším prvním pořadím podnikání je vytvoření stránky obsahu, která obsahuje seznam produktů z databáze Northwind. (Do projektu jsme přidali databázi Northwind v předchozím kurzu, která [*spolupracuje se stránkou předlohy ze stránky obsahu*](interacting-with-the-master-page-from-the-content-page-vb.md).) Začněte přidáním nové stránky ASP.NET do složky `~/Admin` s názvem `Products.aspx`a ujistěte se, že jste ji navázali na `Site.master` hlavní stránku. Obrázek 1 ukazuje Průzkumník řešení po přidání této stránky na web.
 
-[![Přidejte novou stránku ASP.NET ke složce Admin](interacting-with-the-content-page-from-the-master-page-vb/_static/image2.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image1.png)
+[![přidat novou stránku ASP.NET do složky pro správu](interacting-with-the-content-page-from-the-master-page-vb/_static/image2.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image1.png)
 
-**Obrázek 01**: Přidejte novou stránku ASP.NET `Admin` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image3.png))
+**Obrázek 01**: Přidání nové stránky ASP.NET do složky `Admin` ([kliknutím zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image3.png))
 
-Připomínáme, že [ *zadáním názvu, metaznaček a ostatní hlaviček HTML na stránce předlohy* ](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb.md) kurzu jsme vytvořili vlastní stránku základní třídu s názvem `BasePage` název stránky, který generuje, pokud není Nastavte explicitně. Přejděte `Products.aspx` kódu stránky třídy a nechat ji odvodit z `BasePage` (místo z `System.Web.UI.Page`).
+[*V kurzu zadání názvu, meta značek a dalších hlaviček HTML v kurzu pro hlavní stránku*](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb.md) se dá vytvořit vlastní třída základní stránky s názvem `BasePage`, která vygeneruje nadpis stránky, pokud není explicitně nastavený. Přejít na třídu kódu na pozadí `Products.aspx` stránky a nechat ji odvozovat z `BasePage` (místo z `System.Web.UI.Page`).
 
-Nakonec aktualizujte `Web.sitemap` soubor zahrnout položku pro tento účel. Přidejte následující kód pod `<siteMapNode>` pro obsah, který se interakce stránky předlohy lekce:
+Nakonec aktualizujte soubor `Web.sitemap` tak, aby obsahoval položku pro tuto lekci. Přidejte následující kód pod `<siteMapNode>` v lekci interakce obsahu s stránkou předlohy:
 
 [!code-xml[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample1.xml)]
 
-Přidání tohoto `<siteMapNode>` element se projeví v lekcí seznamu (viz obrázek 5).
+Přidání tohoto `<siteMapNode>` elementu se projeví v seznamu lekcí (viz obrázek 5).
 
-Vraťte se na `Products.aspx`. V ovládacím prvku obsahu pro `MainContent`, přidejte ovládací prvek GridView a pojmenujte ho `ProductsGrid`. Svázání prvku GridView. nový ovládací prvek SqlDataSource s názvem `ProductsDataSource`.
+Vraťte se na `Products.aspx`. V ovládacím prvku obsah pro `MainContent`přidejte ovládací prvek GridView a pojmenujte ho `ProductsGrid`. Vytvořte vazby prvku GridView k novému ovládacímu prvku SqlDataSource s názvem `ProductsDataSource`.
 
-[![Nový ovládací prvek SqlDataSource svázání prvku GridView.](interacting-with-the-content-page-from-the-master-page-vb/_static/image5.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image4.png)
+[![svázání prvku GridView s novým ovládacím prvkem SqlDataSource](interacting-with-the-content-page-from-the-master-page-vb/_static/image5.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image4.png)
 
-**Obrázek 02**: Nový ovládací prvek SqlDataSource svázání prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image6.png))
+**Obrázek 02**: Svázání prvku GridView s novým ovládacím prvkem SqlDataSource ([kliknutím zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image6.png))
 
-Nakonfigurujte průvodce tak, aby používal databázi Northwind. Pokud jste pracovali kroky v předchozím kurzu, pak byste už měli mít připojovací řetězec s názvem `NorthwindConnectionString` v `Web.config`. Z rozevíracího seznamu zvolte tento připojovací řetězec, jak je znázorněno na obrázku 3.
+Nakonfigurujte Průvodce tak, aby používal databázi Northwind. Pokud jste v předchozím kurzu pracovali, měli byste už mít připojovací řetězec s názvem `NorthwindConnectionString` v `Web.config`. V rozevíracím seznamu vyberte tento připojovací řetězec, jak je znázorněno na obrázku 3.
 
-[![Konfigurace ve třídě SqlDataSource používat databázi Northwind](interacting-with-the-content-page-from-the-master-page-vb/_static/image8.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image7.png)
+[![konfigurace SqlDataSource pro použití databáze Northwind](interacting-with-the-content-page-from-the-master-page-vb/_static/image8.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image7.png)
 
-**Obrázek 03**: Konfigurace ve třídě SqlDataSource k použití databáze Northwind ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image9.png))
+**Obrázek 03**: Konfigurace SqlDataSource pro použití databáze Northwind ([kliknutím zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image9.png))
 
-Dále určete ovládací prvek zdroje dat `SELECT` příkaz tabulky produktů výběrem z rozevíracího seznamu a vrací `ProductName` a `UnitPrice` sloupce (viz obrázek 4). Klikněte na tlačítko Další a pak dokončete průvodce Konfigurace zdroje dat dokončit.
+Dále zadejte příkaz `SELECT` ovládacího prvku zdroje dat výběrem tabulky Products z rozevíracího seznamu a vrácení `UnitPrice` sloupců `ProductName` a (viz obrázek 4). Klikněte na další a pak na Dokončit a dokončete Průvodce konfigurací zdroje dat.
 
-[![Vrátí pole ProductName a UnitPrice z tabulky produktů](interacting-with-the-content-page-from-the-master-page-vb/_static/image11.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image10.png)
+[![vrátit pole NázevVýrobku a JednotkováCena z tabulky Products](interacting-with-the-content-page-from-the-master-page-vb/_static/image11.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image10.png)
 
-**Obrázek 04**: Vrátit `ProductName` a `UnitPrice` pole z `Products` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image12.png))
+**Obrázek 04**: vrácení polí `ProductName` a `UnitPrice` z tabulky `Products` ([kliknutím zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image12.png))
 
-A je to! Visual Studio po dokončení průvodce přidá do ovládacího prvku GridView zrcadlící dvě pole vrácené ovládacím prvkem SqlDataSource dvě BoundFields. Následující značky prvku GridView a SqlDataSource řízení. Obrázek 5 ukazuje výsledky při prohlížení prostřednictvím prohlížeče.
+A je to! Po dokončení Průvodce přidá aplikace Visual Studio do prvku GridView dva BoundFieldsy, které zrcadlí dvě pole vrácená ovládacím prvkem SqlDataSource. Následuje označení ovládacích prvků GridView a SqlDataSource. Obrázek 5 zobrazuje výsledky při prohlížení v prohlížeči.
 
 [!code-aspx[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample2.aspx)]
 
-[![Každý produkt a cena je uveden v prvku GridView.](interacting-with-the-content-page-from-the-master-page-vb/_static/image14.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image13.png)
+[![každý produkt a jeho cena je uvedena v prvku GridView.](interacting-with-the-content-page-from-the-master-page-vb/_static/image14.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image13.png)
 
-**Obrázek 05**: Každý produkt a cena je uveden v prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image15.png))
+**Obrázek 05**: v prvku GridView je uveden každý produkt a jeho cena ([kliknutím zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image15.png)).
 
 > [!NOTE]
-> Nebojte se vyčistit vzhled prvku GridView. Některé návrhy zahrnovat formátování zobrazená hodnota UnitPrice jako měnu a použití písma a barvy pozadí ke zlepšení vzhledu mřížky. Další informace o zobrazení a formátování dat v technologii ASP.NET, najdete v mé [práce s Data sérii](../../data-access/index.md).
+> Klidně můžete vyčistit vzhled prvku GridView. Mezi návrhy patří formátování zobrazené hodnoty UnitPrice jako měny a použití barev a písem pozadí ke zlepšení vzhledu mřížky. Další informace o zobrazení a formátování dat v ASP.NET najdete v tématu [Working with data tutorial Series](../../data-access/index.md).
 
-## <a name="step-2-adding-a-double-prices-button-to-the-master-page"></a>Krok 2: Přidání tlačítka Double ceny na stránku předlohy
+## <a name="step-2-adding-a-double-prices-button-to-the-master-page"></a>Krok 2: Přidání tlačítka pro dvojitou cenu do stránky předlohy
 
-Naše dalším krokem je přidání ovládacího prvku tlačítko webového k hlavní stránky, která po kliknutí na bude double price všechny produkty v databázi. Otevřít `Site.master` stránku předlohy a přetáhněte z panelu nástrojů na Návrhář, uvedení ho pod tlačítko `RecentProductsDataSource` SqlDataSource řízení jsme přidali v předchozím kurzu. Tlačítka nastavte `ID` vlastnost `DoublePrice` a jeho `Text` vlastnost "Double ceny produktů".
+Naším dalším úkolem je přidat webový ovládací prvek tlačítko do hlavní stránky, který při kliknutí na něj pozastaví cenu všech produktů v databázi. Otevřete stránku předlohy `Site.master` a přetáhněte tlačítko ze sady nástrojů do návrháře a umístěte ho pod ovládací prvek `RecentProductsDataSource` SqlDataSource, který jsme přidali v předchozím kurzu. Nastavte vlastnost `ID` tlačítka na `DoublePrice` a jeho vlastnost `Text` na hodnotu "dvojité ceny produktů".
 
-Dále přidejte ovládacím prvkem SqlDataSource na hlavní stránku pojmenování `DoublePricesDataSource`. Tato SqlDataSource se použije ke spuštění `UPDATE` příkaz na dvojnásobek všechny ceny. Konkrétně, musíme nastavit jeho `ConnectionString` a `UpdateCommand` vlastnosti na příslušný připojovací řetězec a `UPDATE` příkazu. Pak potřebujeme k volání tohoto ovládacího prvku SqlDataSource `Update` metoda při `DoublePrice` po kliknutí na tlačítko. Chcete-li nastavit `ConnectionString` a `UpdateCommand` vlastnosti, vyberte ovládacím prvkem SqlDataSource a potom přejděte do okna Vlastnosti. `ConnectionString` Seznamů vlastností těchto připojovací řetězce, které už jsou uložené ve `Web.config` v rozevíracím seznamu, zvolte `NorthwindConnectionString` možnosti, jak je znázorněno na obrázku 6.
+Dále přidejte ovládací prvek SqlDataSource do stránky předlohy a pojmenujte jej `DoublePricesDataSource`. Tato třída SqlDataSource se použije ke spuštění příkazu `UPDATE` ke zdvojnásobení všech cen. Konkrétně je potřeba nastavit jeho `ConnectionString` a `UpdateCommand` vlastnosti na příslušný připojovací řetězec a příkaz `UPDATE`. Pak musíme při kliknutí na tlačítko `DoublePrice` zavolat tuto metodu `Update` ovládacího prvku SqlDataSource. Chcete-li nastavit vlastnosti `ConnectionString` a `UpdateCommand`, vyberte ovládací prvek SqlDataSource a pak přejít na okno Vlastnosti. Vlastnost `ConnectionString` uvádí seznam připojovacích řetězců, které jsou již uloženy v `Web.config` v rozevíracím seznamu. Vyberte možnost `NorthwindConnectionString`, jak je znázorněno na obrázku 6.
 
-[![Konfigurace ve třídě SqlDataSource používat NorthwindConnectionString](interacting-with-the-content-page-from-the-master-page-vb/_static/image17.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image16.png)
+[![nakonfigurovat SqlDataSource pro použití NorthwindConnectionString](interacting-with-the-content-page-from-the-master-page-vb/_static/image17.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image16.png)
 
-**Obrázek 06**: Konfigurace ve třídě SqlDataSource k použití `NorthwindConnectionString` ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image18.png))
+**Obrázek 6**: Konfigurace SqlDataSource pro použití `NorthwindConnectionString` ([kliknutím zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image18.png))
 
-Chcete-li nastavit `UpdateCommand` vlastnost, vyhledejte možnost UpdateQuery v okně Vlastnosti. Tato vlastnost, pokud je vybráno, zobrazí tlačítko se třemi tečkami; Kliknutím na toto tlačítko zobrazit dialogové okno Editor příkazů a parametrů je znázorněno na obrázku 7. Zadejte následující příkaz `UPDATE` příkaz do textového pole v dialogovém okně:
+Chcete-li nastavit vlastnost `UpdateCommand`, vyhledejte v okno Vlastnosti možnost UpdateQuery. Tato vlastnost, pokud je vybrána, zobrazí tlačítko se třemi tečkami. Kliknutím na toto tlačítko zobrazíte dialogové okno Editor příkazů a parametrů zobrazené na obrázku 7. Do textového pole dialogového okna zadejte následující příkaz `UPDATE`:
 
 [!code-sql[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample3.sql)]
 
-Tento příkaz při spuštění bude dvakrát `UnitPrice` hodnotu pro každý záznam v `Products` tabulky.
+Při spuštění tohoto příkazu se hodnota `UnitPrice` pro každý záznam v tabulce `Products` zdvojnásobí.
 
-[![Nastavte vlastnost UpdateCommand SqlDataSource.](interacting-with-the-content-page-from-the-master-page-vb/_static/image20.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image19.png)
+[![nastavit vlastnost UpdateCommand třídy SqlDataSource](interacting-with-the-content-page-from-the-master-page-vb/_static/image20.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image19.png)
 
-**Obrázek 07**: Nastavte na SqlDataSource `UpdateCommand` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image21.png))
+**Obrázek 07**: nastavení vlastnosti `UpdateCommand` třídy SqlDataSource ([kliknutím zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image21.png))
 
-Po nastavení těchto vlastností, vaše tlačítko a SqlDataSource ovládacích prvků deklarativní by měl vypadat nějak takto:
+Po nastavení těchto vlastností by vaše tlačítko a deklarativní označení ovládacího prvku SqlDataSource měly vypadat podobně jako následující:
 
 [!code-aspx[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample4.aspx)]
 
-Už jen zbývá volat jeho `Update` metoda při `DoublePrice` po kliknutí na tlačítko. Vytvoření `Click` obslužné rutiny události pro `DoublePrice` tlačítko a přidejte následující kód:
+Vše, co zůstává, je zavolat metodu `Update` při kliknutí na tlačítko `DoublePrice`. Vytvořte obslužnou rutinu události `Click` pro tlačítko `DoublePrice` a přidejte následující kód:
 
 [!code-vb[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample5.vb)]
 
-Pokud chcete vyzkoušet tuto funkci, přejděte `~/Admin/Products.aspx` stránku jsme vytvořili v kroku 1 a klikněte na tlačítko "Double ceny produktů". Kliknutím na tlačítko vyvolá zpětné volání a spustí `DoublePrice` tlačítka `Click` obslužná rutina události, možnost zdvojnásobení ceny pro všechny produkty. Na stránce se pak znovu vykreslí a je kód vrátí a znovu zobrazí v prohlížeči. Na stránce obsahu prvku GridView však vypíše stejné ceny před "Cen Double produktu" došlo ke kliknutí na tlačítko. Je to proto, že data původně načten v prvku GridView měl stavu uložená v zobrazení stavu, takže není zatížit na zpětná volání, pokud nedostanete. Pokud navštívíte na jinou stránku a pak se vraťte k `~/Admin/Products.aspx` stránky uvidíte aktualizované ceny.
+Pokud chcete tuto funkci otestovat, navštivte stránku `~/Admin/Products.aspx`, kterou jsme vytvořili v kroku 1, a klikněte na tlačítko "ceny za dvojité produkty". Kliknutím na tlačítko dojde k postbacku a spustí se obslužná rutina události `Click` `DoublePrice`ho tlačítka, přičemž se zdvojnásobí ceny všech produktů. Stránka se pak znovu vykreslí a v prohlížeči se vrátí a znovu zobrazí kód. Prvek GridView na stránce obsahu však obsahuje stejné ceny jako před tím, než bylo kliknuto na tlačítko "ceny za dvojité produkty". Důvodem je skutečnost, že data zpočátku načtená v prvku GridView měla svůj stav uložený ve stavu zobrazení, takže se při postbackech znovu nenačte, pokud nevydá pokyn jinak. Pokud navštívíte jinou stránku a vrátíte se na stránku `~/Admin/Products.aspx` uvidíte aktualizované ceny.
 
-## <a name="step-3-raising-an-event-when-the-prices-are-doubled"></a>Krok 3: Vyvolání události při the ceny jsou zdvojnásobí.
+## <a name="step-3-raising-an-event-when-the-prices-are-doubled"></a>Krok 3: vyvolání události při zdvojnásobení cen
 
-Protože v prvku GridView `~/Admin/Products.aspx` stránky neprojeví okamžitě zdvojnásobení cena, uživatel může understandably myslíte, že jejich není klepněte na tlačítko "Double cen produktu" nebo že nefungovalo. Možná snaží kliknutím na tlačítko několik dalších krát, znovu a znovu zdvojnásobení ceny. Chcete-li vyřešit to budeme muset mít mřížky v obsahu zobrazení stránky nové ceny ihned poté, co se zdvojnásobí.
+Vzhledem k tomu, že prvek GridView na stránce `~/Admin/Products.aspx` přímo neodráží zdvojnásobení ceny, může uživatel pochopit, že nekliká na tlačítko "dvojité ceny za produkt" nebo že nepracoval. Můžou zkusit kliknout několikrát na tlačítko a znovu zdvojnásobit ceny a znovu. Aby bylo možné tuto situaci opravit, potřebujeme, aby se na stránce obsah zobrazovaly nové ceny ihned po jejich zdvojnásobení.
 
-Jak je popsáno dříve v tomto kurzu, potřebujeme k vyvolání události na hlavní stránce pokaždé, když uživatel klikne `DoublePrice` tlačítko. Událost je způsob pro jednu třídu (vydavatel události), jak upozornit jiné sady jiné třídy (odběratelů událostí), které něco zajímavého došlo k chybě. V tomto příkladu je na hlavní stránce zdroj události; ty obsahu stránky, které při záleží `DoublePrice` po kliknutí na tlačítko jsou odběratele.
+Jak je popsáno výše v tomto kurzu, musíme vyvolat událost na hlavní stránce vždy, když uživatel klikne na tlačítko `DoublePrice`. Událost je způsob, jak jednu třídu (vydavatel události) upozornit na jinou sadu dalších tříd (předplatitele událostí), ke které došlo něco zajímavého. V tomto příkladu je hlavní stránkou Vydavatel události; Tyto stránky obsahu, které vás zajímají při kliknutí na tlačítko `DoublePrice`, jsou předplatitelé.
 
-Třída přihlásí se k odběru události tak, že vytvoříte *obslužná rutina události*, což je metoda, který se spouští v reakci na vyvolanou událost. Vydavatel definuje události, která vyvolává definováním *delegát události*. Delegát události Určuje, jaké vstupní parametry obslužné rutiny události musí přijmout. V rozhraní .NET Framework – delegáti událostí vracet žádnou hodnotu a přijímají dva vstupní parametry:
+Třída se přihlašuje k odběru události vytvořením *obslužné rutiny události*, což je metoda, která je spuštěna v reakci na vyvolanou událost. Vydavatel definuje události, které vyvolává, definováním *delegáta události*. Delegát události Určuje, jaké vstupní parametry musí obslužná rutina události přijmout. V .NET Framework delegáti událostí nevrací žádnou hodnotu a nepřijímají dva vstupní parametry:
 
-- `Object`, Který identifikuje zdroj události a
-- Třídy odvozené od `System.EventArgs`
+- `Object`, který identifikuje zdroj události a
+- Třída odvozená z `System.EventArgs`
 
-Druhý parametr předaný obslužné rutiny události může obsahovat další informace o události. Zatímco základní `EventArgs` třídy nepředává podél veškeré informace, rozhraní .NET Framework obsahuje několik tříd, které rozšiřují `EventArgs` a zahrnovat další vlastnosti. Například `CommandEventArgs` instance předána obslužné rutiny událostí, které odpovídají `Command` události a obsahuje dvě vlastnosti, informační: `CommandArgument` a `CommandName`.
+Druhý parametr předaný obslužné rutině události může obsahovat další informace o události. I když základní `EventArgs` třída neprojde žádné informace, .NET Framework obsahuje několik tříd, které přesahují `EventArgs` a zahrnují další vlastnosti. Například instance `CommandEventArgs` je předána obslužným rutinám událostí, které reagují na událost `Command` a obsahuje dvě informativní vlastnosti: `CommandArgument` a `CommandName`.
 
 > [!NOTE]
-> Další informace o vytváření vyvolávání a zpracování událostí, naleznete v tématu [události a delegáti](https://msdn.microsoft.com/library/17sde2xt.aspx) a [– delegáti událostí v jednoduché anglické](http://www.codeproject.com/KB/cs/eventdelegates.aspx).
+> Další informace o vytváření, vyvolávání a zpracování událostí naleznete v tématu [události a Delegáti](https://msdn.microsoft.com/library/17sde2xt.aspx) a [Delegáti událostí v jednoduché angličtině](http://www.codeproject.com/KB/cs/eventdelegates.aspx).
 
-Chcete-li definovat událost, použijte následující syntaxi:
+K definování události použijte následující syntaxi:
 
 [!code-vb[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample6.vb)]
 
-Vzhledem k tomu, že musíme upozornit stránky obsahu, že uživatel klikl `DoublePrice` tlačítko a není potřeba předávají jakýchkoli dalších informací, můžeme použít delegát události `EventHandler`, která definuje obslužnou rutinu události, která přijímá jako jeho sekunda Parametr objektu typu `System.EventArgs`. Vytvořit událost na stránce předlohy, přidejte následující řádek kódu do třídy modelu code-behind na hlavní stránce:
+Vzhledem k tomu, že potřebujeme upozornit stránku obsahu pouze v případě, že uživatel klikl na tlačítko `DoublePrice` a nemusíte předat žádné další Další informace, můžeme použít `EventHandler`delegáta události, který definuje obslužnou rutinu události, která přijímá jako druhý parametr objekt typu `System.EventArgs`. Chcete-li vytvořit událost na stránce předlohy, přidejte následující řádek kódu do třídy kódu na pozadí hlavní stránky:
 
 [!code-vb[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample7.vb)]
 
-Výše uvedený kód přidá veřejná událost na hlavní stránku s názvem `PricesDoubled`. Nyní potřebujeme vyvolat tuto událost po ceny být dvojitá. Pro vyvolání události použijte následující syntaxi:
+Výše uvedený kód přidá veřejnou událost do hlavní stránky s názvem `PricesDoubled`. Tuto událost teď musíte vyvolat po zdvojnásobení cen. Chcete-li vyvolat událost, použijte následující syntaxi:
 
 [!code-vb[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample8.vb)]
 
-Kde *odesílatele* a *eventArgs* jsou hodnoty, které chcete předat do obslužné rutiny události odběratele.
+Kde *sender* a *EventArgs* jsou hodnoty, které chcete předat obslužné rutině události odběratele.
 
-Aktualizace `DoublePrice` `Click` obslužné rutiny události s následujícím kódem:
+Aktualizujte obslužnou rutinu události `DoublePrice` `Click` s následujícím kódem:
 
 [!code-vb[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample9.vb)]
 
-Stejně jako předtím `Click` obslužné rutiny události spustí zavoláním `DoublePricesDataSource` SqlDataSource ovládacího prvku `Update` metoda na dvojnásobek ceny pro všechny produkty. Následující, že jsou dva přidání obslužné rutiny události. Nejprve je potřeba `RecentProducts` aktualizaci dat prvku GridView. Tento prvek GridView byl přidán do stránky předlohy v předchozím kurzu a zobrazí pěti nejvíce nedávno přidaných produktech. Potřebujeme aktualizovat tuto mřížku tak, aby se zobrazuje jenom dvojitá ceny za těchto pět produktů. Pod `PricesDoubled` událost se vyvolá. Odkaz na samotné stránky předlohy (`Me`) se odešle do obslužné rutiny události jako zdroj události a prázdnou `EventArgs` objektu se odešle jako argumenty události.
+Stejně jako dříve se obslužná rutina události `Click` spustí voláním metody `Update` `DoublePricesDataSource` ovládacího prvku SqlDataSource pro dvojnásobek cen všech produktů. Následuje dva dodatky k obslužné rutině události. Nejprve se aktualizují data ovládacího prvku GridView `RecentProducts`. Tento prvek GridView byl přidán na stránku předlohy v předchozím kurzu a zobrazí pět naposledy přidaných produktů. Musíme tuto mřížku aktualizovat tak, aby se pro tyto pět produktů zobrazovaly přesně dvojnásobné ceny. Po tomto případě je vyvolána událost `PricesDoubled`. Odkaz na samotný hlavní stránku (`Me`) je odeslán obslužné rutině události jako zdroj události a prázdný objekt `EventArgs` je odeslán jako argumenty události.
 
-## <a name="step-4-handling-the-event-in-the-content-page"></a>Krok 4: Zpracování událostí v obsahu stránky
+## <a name="step-4-handling-the-event-in-the-content-page"></a>Krok 4: zpracování události na stránce obsahu
 
-V tuto chvíli na hlavní stránce vyvolá jeho `PricesDoubled` událost pokaždé, když `DoublePrice` dojde ke kliknutí na ovládací prvek tlačítko. Ale to je jen půlka zocelenou – musíme zpracování událostí v odběrateli. To zahrnuje dva kroky: vytváření obslužné rutiny události a přidání události její kód tak, aby při událost je vyvolána obslužná rutina události je proveden.
+V tomto okamžiku stránka předlohy vyvolá událost `PricesDoubled` vždy, když se klikne na ovládací prvek tlačítko `DoublePrice`. Toto je ale jenom polovina výročí a pořád potřebujeme tuto událost v předplatiteli zpracovat. To zahrnuje dva kroky: vytvoření obslužné rutiny události a přidání kódu pro kabeláž události, aby při vyvolání události byla provedena obslužná rutina události.
 
-Začněte vytvořením obslužné rutiny události s názvem `Master_PricesDoubled`. Z důvodu jak jsme definovali `PricesDoubled` událostí na hlavní stránce dva vstupní parametry obslužné rutiny události musí být typy `Object` a `EventArgs`v uvedeném pořadí. Ve volání obslužné rutiny události `ProductsGrid` prvku GridView `DataBind` metoda znovu připojit data do mřížky.
+Začněte vytvořením obslužné rutiny události s názvem `Master_PricesDoubled`. Vzhledem k tomu, jak jsme definovali událost `PricesDoubled` na stránce předlohy, dva vstupní parametry obslužné rutiny události musí být typu `Object` a `EventArgs`, v uvedeném pořadí. V obslužné rutině události zavolejte metodu `DataBind` prvku `ProductsGrid` GridView, aby se data znovu navázala na mřížku.
 
 [!code-vb[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample10.vb)]
 
-Hotový kód pro obslužnou rutinu události, ale ještě jsme do svážete stránky předlohy `PricesDoubled` událost pro tuto obslužnou rutinu události. Odběrateli vedení vodiče událost na obslužnou rutinu události prostřednictvím následující syntaxi:
+Kód pro obslužnou rutinu události je dokončen, ale přesto jsme pro tuto obslužnou rutinu události nasdíleli událost `PricesDoubled` hlavní stránky. Předplatitel naplňuje událost obslužné rutině události prostřednictvím následující syntaxe:
 
 [!code-vb[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample11.vb)]
 
-*Vydavatel* je odkaz na objekt, který nabízí události *eventName*, a *methodName* je název obslužné rutiny události definované v odběrateli.
+*Vydavatel* je odkaz na objekt, který nabízí událost *EventName*a *methodName* je název obslužné rutiny události definované v odběrateli.
 
-Tento kód její události musí být provedeny na první návštěvě stránky a následné zpětného odeslání a se budou objevovat v určitém bodě životního cyklu stránky, která předchází při události mohou být vyvolány. Vhodná doba přidejte událost její kód je ve fázi PreInit dojde k velmi brzy v životní cyklus stránky.
+Tento kód kabeláže události musí být proveden na první návštěvě stránky a následném postbacku a měl by nastat v bodě v životním cyklu stránky, který předchází době, kdy může být událost vyvolána. Vhodný čas pro přidání kódu pro zapojení do událostí je ve fázi předinicializace, která se v životním cyklu stránky velmi brzy vyskytuje.
 
-Otevřít `~/Admin/Products.aspx` a vytvořit `Page_PreInit` obslužné rutiny události:
+Otevřete `~/Admin/Products.aspx` a vytvořte obslužnou rutinu události `Page_PreInit`:
 
 [!code-vb[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample12.vb)]
 
-Aby bylo možné dokončit tento kód její potřebujeme programový odkaz na hlavní stránku ze stránky obsahu. Jak je uvedeno v předchozím kurzu, existují dva způsoby, jak to udělat:
+Aby bylo možné tento kód kabeláže dokončit, potřebujeme pro stránku předlohy ze stránky obsahu programový odkaz. Jak je uvedeno v předchozím kurzu, existují dva způsoby:
 
-- Pomocí přetypování volného typu `Page.Master` vlastnost typ příslušné stránky předlohy, nebo
-- Přidáním `@MasterType` direktivu `.aspx` stránky a pak pomocí silných `Master` vlastnost.
+- Přetypováním vlastnosti `Page.Master` volného typu na příslušný typ stránky předlohy nebo
+- Přidáním direktivy `@MasterType` na stránce `.aspx` a poté pomocí vlastnosti `Master` silného typu.
 
-Použijeme druhý přístup. Přidejte následující `@MasterType` direktiv k hornímu okraji deklarativním označení stránky:
+Pojďme použít druhý přístup. Do horní části deklarativního značení stránky přidejte následující direktivu `@MasterType`:
 
 [!code-aspx[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample13.aspx)]
 
-Přidejte následující kód její události v `Page_PreInit` obslužné rutiny události:
+Poté do obslužné rutiny události `Page_PreInit` přidejte následující kód pro zapojení událostí:
 
 [!code-vb[Main](interacting-with-the-content-page-from-the-master-page-vb/samples/sample14.vb)]
 
-S tímto kódem na místě GridView na stránce obsahu aktualizují pokaždé, když `DoublePrice` po kliknutí na tlačítko.
+Když je tento kód na místě, prvek GridView na stránce obsahu se při každém kliknutí na tlačítko `DoublePrice` aktualizuje.
 
-Toto chování ilustrují obrázky 8 a 9. Obrázek 8 ukazuje na stránku, když první uživatel. Všimněte si, že cena hodnoty v obou `RecentProducts` ovládacího prvku GridView (v levém sloupci předlohové stránky) a `ProductsGrid` ovládacího prvku GridView (na stránce obsahu). Obrázek 9 ukazuje stejné obrazovce ihned po `DoublePrice` kliknutí na tlačítko. Jak je vidět nové ceny se okamžitě projeví v obou prvků GridViews.
+Obrázky 8 a 9 ilustrují toto chování. Obrázek 8 ukazuje stránku při prvním navštívení. Všimněte si, že cenové hodnoty v `RecentProducts` GridView (v levém sloupci stránky předlohy) a `ProductsGrid` GridView (na stránce obsahu). Obrázek 9 ukazuje stejnou obrazovku hned po kliknutí na tlačítko `DoublePrice`. Jak vidíte, nové ceny se okamžitě odrážejí v obou GridViews.
 
-[![Počáteční cena hodnoty](interacting-with-the-content-page-from-the-master-page-vb/_static/image23.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image22.png)
+[![počátečních hodnot ceny](interacting-with-the-content-page-from-the-master-page-vb/_static/image23.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image22.png)
 
-**Obrázek 08**: Počáteční cena hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image24.png))
+**Obrázek 08**: počáteční cenové hodnoty ([kliknutím zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image24.png))
 
-[![Ceny Just-Doubled jsou zobrazeny v prvků GridViews](interacting-with-the-content-page-from-the-master-page-vb/_static/image26.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image25.png)
+[![se v prvku GridViewy zobrazí právě dvojité ceny](interacting-with-the-content-page-from-the-master-page-vb/_static/image26.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image25.png)
 
-**Obrázek 09**: Ceny Just-Doubled jsou zobrazeny v prvků GridViews ([kliknutím ji zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image27.png))
+**Obrázek 09**: právě dvojnásobné ceny jsou zobrazeny v prvku GridView ([kliknutím zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image27.png)).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-V ideálním případě stránky předlohy a její obsah stránky jsou plně oddělené od sebe a vyžadovat žádná úroveň interakce. Ale pokud máte stránky předlohy nebo obsahu stránky, která zobrazuje data, která lze změnit na hlavní stránku nebo stránky obsahu, pak budete muset mít hlavní stránky upozornění stránka obsahu (nebo naopak) při změně dat tak, že je možné aktualizovat zobrazení. V předchozím kurzu jsme viděli, jak programově interagovat s jeho hlavní stránky; obsahu stránky v tomto kurzu jsme se podívali na postupy mají stránky předlohy initiate interakce.
+V ideálním případě jsou hlavní stránka a její stránky obsahu zcela oddělené od sebe a nevyžadují žádnou úroveň interakce. Pokud však máte stránku předlohy nebo stránku obsahu, která zobrazuje data, která lze upravovat ze stránky předlohy nebo obsahu stránky, může být nutné, aby stránka předlohy při změně dat zobrazila výstrahu stránky obsahu (nebo naopak), aby bylo možné zobrazení aktualizovat. V předchozím kurzu jsme viděli, jak stránku obsahu programově interagovat s hlavní stránkou. v tomto kurzu jsme se podívali na to, jak má hlavní stránka zahájit interakci.
 
-Zatímco programové interakce mezi stránky předlohy a obsahu můžou pocházet z obsahu nebo stránky předlohy, interakce používaným závisí na vzniku. Rozdíly jsou vzhledem k tomu, že stránku obsahu má jednu stránku předlohy, ale na hlavní stránce může být mnoho různých obsahu stránek. Namísto nutnosti pracovat přímo se stránkou obsahu stránky předlohy, lepším řešením je, aby na hlavní stránce vyvolat událost, která signalizuje, že některé akce proběhla. Tyto stránky obsahu, které vám jde o akci, můžete vytvořit obslužné rutiny událostí.
+Zatímco programové interakce mezi obsahem a stránkou předlohy může pocházet z obsahu nebo stránky předlohy, použitý vzor interakce závisí na původu. Rozdíly jsou způsobeny skutečností, že stránka obsahu má jedinou hlavní stránku, ale stránka předlohy může mít mnoho různých stránek obsahu. Místo toho, aby stránka předlohy přímo spolupracovala se stránkou obsahu, je lepší přístup k tomu, aby hlavní stránka vyvolala událost k signalizaci, že došlo k nějaké akci. Tyto stránky obsahu, které se týkají akce, mohou vytvářet obslužné rutiny událostí.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ### <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
-- [Přístup k a aktualizace dat v ASP.NET](http://aspnet.4guysfromrolla.com/articles/011106-1.aspx)
-- [Události a delegáti](https://msdn.microsoft.com/library/17sde2xt.aspx)
-- [Předávání informací mezi obsah a stránkami předloh](http://aspnet.4guysfromrolla.com/articles/013107-1.aspx)
-- [Práce s daty v kurzy k ASP.NET](../../data-access/index.md)
+- [Přístup k datům v ASP.NET a jejich aktualizace](http://aspnet.4guysfromrolla.com/articles/011106-1.aspx)
+- [Události a Delegáti](https://msdn.microsoft.com/library/17sde2xt.aspx)
+- [Předávání informací mezi obsahem a stránkami předlohy](http://aspnet.4guysfromrolla.com/articles/013107-1.aspx)
+- [Práce s daty v kurzech ASP.NET](../../data-access/index.md)
 
 ### <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor více ASP/ASP.NET knih a Zakladatel 4GuysFromRolla.com pracuje s Microsoft webových technologií od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami technologie ASP.NET 3.5 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Scott může být dostupný na adrese [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím na svém blogu [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor několika stránek ASP/ASP. NET Books a zakladatel of 4GuysFromRolla.com, pracoval s webovými technologiemi microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 3,5 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Scott se dá kontaktovat [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu na [http://ScottOnWriting.NET](http://scottonwriting.net/).
 
-### <a name="special-thanks-to"></a>Speciální k
+### <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Suchi Banerjee. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Vedoucí recenzent pro tento kurz byl takový Banerjee. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](interacting-with-the-master-page-from-the-content-page-vb.md)
-> [další](master-pages-and-asp-net-ajax-vb.md)
+> [Další](master-pages-and-asp-net-ajax-vb.md)

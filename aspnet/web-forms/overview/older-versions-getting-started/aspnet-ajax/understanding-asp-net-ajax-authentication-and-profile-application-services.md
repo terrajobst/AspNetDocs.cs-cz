@@ -1,329 +1,329 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-authentication-and-profile-application-services
-title: Principy ověřování pomocí technologie ASP.NET AJAX a profil aplikačních služeb | Dokumentace Microsoftu
+title: Principy ověřování a Aplikační služby profilu ASP.NET AJAX | Microsoft Docs
 author: scottcate
-description: Ověřovací služby umožňuje uživatelům zadat přihlašovací údaje, aby se zobrazí soubor cookie ověřování a se službou brány, aby umožňovala vlastní uživatelské...
+description: Ověřovací služba umožňuje uživatelům poskytnout přihlašovací údaje, aby mohli získat ověřovací soubor cookie a že služba brány povoluje vlastního uživatele...
 ms.author: riande
 ms.date: 03/14/2008
 ms.assetid: 6ab4efb6-aab6-45ac-ad2c-bdec5848ef9e
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-authentication-and-profile-application-services
 msc.type: authoredcontent
-ms.openlocfilehash: 1087d9120411e51fd61d073169a88cac6cdaf15b
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: cab9acb1ffd75cca87f6c575a6abdd000235828e
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65109494"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74635680"
 ---
 # <a name="understanding-aspnet-ajax-authentication-and-profile-application-services"></a>Principy služeb ověřování a používání profilu technologie ASP.NET AJAX
 
-podle [– Scott Cate](https://github.com/scottcate)
+[Scott Cate](https://github.com/scottcate)
 
-[Stáhnout PDF](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial03_MSAjax_ASP.NET_Services_cs.pdf)
+[Stáhnout PDF](https://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial03_MSAjax_ASP.NET_Services_cs.pdf)
 
-> Služba ověřování umožňuje uživatelům zadat přihlašovací údaje, aby se zobrazí soubor cookie ověřování a se službou brány, aby umožňovala vlastní uživatelské profily poskytuje pomocí technologie ASP.NET. Používání služby ověřování ASP.NET AJAX je kompatibilní s standardní ověřování pomocí formulářů ASP.NET, takže aplikace právě používá ověřování pomocí formulářů (například pomocí přihlášení na ovládací prvek) nebude nebudou fungovat, upgradujte k ověřovací službě AJAX.
+> Ověřovací služba umožňuje uživatelům poskytnout přihlašovací údaje, aby mohli získat ověřovací soubor cookie, a je služba brány, která umožňuje vlastní profily uživatelů, které poskytuje ASP.NET. Použití ověřovací služby ASP.NET AJAX je kompatibilní s ověřováním Standard ASP.NET Forms, takže aplikace, které aktuálně používají ověřování pomocí formulářů (například s ovládacím prvkem přihlášení), nebudou při upgradu na ověřovací službu AJAX přerušeny.
 
 ## <a name="introduction"></a>Úvod
 
-Jako součást rozhraní .NET Framework 3.5 poskytuje Microsoft s proměnlivou velikostí prostředí upgradem; Nejenže je k dispozici nové vývojové prostředí, ale nové funkce Language-Integrated Query (LINQ) a další vylepšení jazyka zobrazování poruch se. Kromě toho některé známé funkce další sady nástrojů, zejména rozšíření ASP.NET AJAX, se nebudou zahrnuty jako první třídy členy knihovny tříd rozhraní .NET Framework Base. Tato rozšíření povolit spoustu nových funkcí vzhled plně funkčního klienta, včetně částečného zobrazení stránek, bez nutnosti úplná aktualizace stránky, možnost přístupu k webovým službám prostřednictvím klientského skriptu (včetně ASP.NET, rozhraní API pro profilaci) a rozsáhlé rozhraní API na straně klienta navržené pro zrcadlení mnoho systémů ovládací prvek v sadě serverový ovládací prvek technologie ASP.NET.
+V rámci .NET Framework 3,5 Společnost Microsoft přináší upgrade prostředí s proměnlivým rozšířením. k dispozici je pouze nové vývojové prostředí, ale jsou k dispozici nové funkce LINQ (Language-Integrated Query) a další jazykové vylepšení. Kromě toho jsou zahrnuty některé známé funkce jiných sad nástrojů, zejména rozšíření ASP.NET AJAX, jako členy první třídy .NET Framework základní knihovny tříd. Tato rozšíření umožňují mnoho nových bohatých funkcí klienta, včetně částečného vykreslování stránek bez nutnosti úplné aktualizace stránky, možnosti přístupu k webovým službám prostřednictvím klientského skriptu (včetně rozhraní API pro profilaci ASP.NET) a rozsáhlého rozhraní API na straně klienta. Navrženo pro zrcadlení mnoha řídicích schémat, které jsou vidět v ASP.NET sadě ovládacích prvků na straně serveru.
 
-Tento dokument White Paper zkoumá implementaci a použití profilace ASP.NET a ověřování založené na formulářích služby jako jsou vystavené AJAX rozšíření společnosti Microsoft ASP.NET AJAX ExtensionsThe usnadňují ověřování pomocí formulářů neuvěřitelně podpory, jako je (stejně jako Profilace služeb) je přístupný prostřednictvím skriptu proxy serveru webové služby. Rozšíření AJAX také podporují vlastní ověřování prostřednictvím AuthenticationServiceManager třídy.
+Tento dokument White Paper prohlíží implementaci a používání služby ASP.NET profilování a ověřování pomocí formulářů, protože jsou zpřístupněny rozšířeními AJAX ExtensionsThe AJAX, což usnadňuje podporu ověřování Microsoft ASP.NET pomocí formulářů, jako je (a také Služba profilace) je vystavena prostřednictvím skriptu proxy webové služby. Rozšíření AJAX podporují také vlastní ověřování prostřednictvím třídy AuthenticationServiceManager.
 
-Tento dokument White Paper vychází z verze beta verzi 2 sady Visual Studio 2008 a rozhraní .NET Framework 3.5. Tento dokument White Paper také předpokládá, že můžete pracovat s Visual Studio 2008 Beta 2, nikoli Visual Web Developer Express a poskytne návody podle uživatelského rozhraní sady Visual Studio. Šablony projektů, které jsou k dispozici v aplikaci Visual Web Developer Express může využívat několik ukázek kódu.
+Tento dokument White Paper vychází z verze beta 2 sady Visual Studio 2008 a .NET Framework 3,5. Tento dokument White Paper také předpokládá, že budete pracovat se sadou Visual Studio 2008 Beta 2, ne Visual Web Developer Express a bude poskytovat návody podle uživatelského rozhraní sady Visual Studio. Některé ukázky kódu mohou využívat šablony projektu nedostupné v aplikaci Visual Web Developer Express.
 
 ## <a name="profiles-and-authentication"></a>*Profily a ověřování*
 
-Profily společnosti Microsoft ASP.NET a ověřovacích služeb jsou k dispozici v systému ověřování formulářů ASP.NET a jsou standardní součástí technologie ASP.NET. Rozšíření ASP.NET AJAX poskytují přístup skript do těchto služeb prostřednictvím skriptu proxy, přes jednoduchá model v rámci oboru názvů Sys.Services klientské knihovny AJAX.
+Microsoft ASP.NET profilů a ověřovacích služeb poskytuje systém ověřování ASP.NET Forms a jsou standardními komponentami ASP.NET. Rozšíření ASP.NET AJAX poskytují přístup k těmto službám prostřednictvím skriptů prostřednictvím proxy serverů prostřednictvím poměrně jasného modelu pod oborem názvů Sys. Services klientské knihovny AJAX.
 
-Služba ověřování umožňuje uživatelům zadat přihlašovací údaje, aby se zobrazí soubor cookie ověřování a se službou brány, aby umožňovala vlastní uživatelské profily poskytuje pomocí technologie ASP.NET. Používání služby ověřování ASP.NET AJAX je kompatibilní s standardní ověřování pomocí formulářů ASP.NET, takže aplikace právě používá ověřování pomocí formulářů (například pomocí přihlášení na ovládací prvek) nebude nebudou fungovat, upgradujte k ověřovací službě AJAX.
+Ověřovací služba umožňuje uživatelům poskytnout přihlašovací údaje, aby mohli získat ověřovací soubor cookie, a je služba brány, která umožňuje vlastní profily uživatelů, které poskytuje ASP.NET. Použití ověřovací služby ASP.NET AJAX je kompatibilní s ověřováním Standard ASP.NET Forms, takže aplikace, které aktuálně používají ověřování pomocí formulářů (například s ovládacím prvkem přihlášení), nebudou při upgradu na ověřovací službu AJAX přerušeny.
 
-Služba profilu umožňuje automatické integrace a ukládání dat uživatelů na základě členství jako poskytovaný službou ověřování. Uložená data je uvedené v souboru web.config a různých profilování poskytovatelů služeb postupovat při správě dat. Stejně jako u ověřovací službu, je kompatibilní se standardní profilovou službou ASP.NET AJAX profilovou službou, aby stránky aktuálně využívá funkce profilu ASP.NET služby by neměl nebudou fungovat, díky podpoře jazyka AJAX.
+Profilová služba umožňuje automatickou integraci a ukládání uživatelských dat na základě členství poskytované ověřovací službou. Uložená data jsou určena souborem Web. config a různí poskytovatelé služby profilování zpracovává správu dat. Stejně jako u ověřovací služby je služba profilů AJAX kompatibilní se standardní profilovou službou ASP.NET, takže stránky aktuálně obsahující funkce služby profilů ASP.NET by se neměly rušit, protože podporují podporu AJAX.
 
-Začleňte do aplikace ověřování pomocí technologie ASP.NET a vlastních služeb profilace je mimo rozsah tohoto dokumentu. Další informace o tématu naleznete v knihovně MSDN odkazovat článku Správa uživatelů pomocí členství v [ https://msdn.microsoft.com/library/tw292whz.aspx ](https://msdn.microsoft.com/library/tw292whz.aspx). Technologie ASP.NET obsahuje také nástroj, který automaticky nastavit členství s SQL serverem, který je výchozím zprostředkovatelem služby ověřování pro členství technologie ASP.NET. Další informace najdete v článku nástroj pro registraci serveru SQL technologie ASP.NET (Aspnet\_regsql.exe) na [ https://msdn.microsoft.com/library/ms229862(vs.80).aspx ](https://msdn.microsoft.com/library/ms229862(vs.80).aspx).
+Začlenění ASP.NET ověřování a profilování samotných služeb do aplikace je mimo rámec tohoto dokumentu White Paper. Další informace o tomto tématu najdete v článku referenční materiály knihovny MSDN Správa uživatelů pomocí členství na [https://msdn.microsoft.com/library/tw292whz.aspx](https://msdn.microsoft.com/library/tw292whz.aspx). ASP.NET také obsahuje nástroj pro automatické nastavení členství pomocí SQL Server, který je výchozím poskytovatelem ověřovací služby pro členství v ASP.NET. Další informace naleznete v článku Nástroj ASP.NET SQL Server Registration Tool (ASPNET\_regsql. exe) na [https://msdn.microsoft.com/library/ms229862(vs.80).aspx](https://msdn.microsoft.com/library/ms229862(vs.80).aspx).
 
-## <a name="using-the-aspnet-ajax-authentication-service"></a>*Pomocí služby ověřování ASP.NET AJAX*
+## <a name="using-the-aspnet-ajax-authentication-service"></a>*Použití ověřovací služby ASP.NET AJAX*
 
-ASP.NET AJAX ověřovací služby musí být povoleno v souboru web.config:
+V souboru Web. config musí být povolená ověřovací služba ASP.NET AJAX:
 
 [!code-xml[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample1.xml)]
 
-Ověřovací službu vyžaduje ověřování pomocí formulářů ASP.NET aby byla povolena a vyžaduje soubory cookie, aby byla povolená na klientském prohlížeči (skriptu nelze povolit bez souborů cookie relace od relací bez souborů cookie vyžadují parametrů adresy URL).
+Ověřovací služba vyžaduje, aby bylo povoleno ověřování pomocí formulářů ASP.NET a aby bylo možné povolit soubory cookie v klientském prohlížeči (skript nemůže povolit relaci bez souborů cookie, protože relace bez souborů cookie vyžadují parametry adresy URL).
 
-Jakmile služba AJAX ověřování je povolena a konfigurována, klientského skriptu můžete okamžitě využít Sys.Services.AuthenticationService objektu. Především klientského skriptu chtít využívat výhod `login` metoda a `isLoggedIn` vlastnost. Existuje několik vlastností k poskytnutí výchozí hodnoty pro metodu přihlášení, která může přijmout velký počet parametrů.
+Jakmile je povolená a nakonfigurovaná ověřovací služba AJAX, může klientský skript ihned využít výhod objektu Sys. Services. AuthenticationService. Primárně klientský skript bude chtít využít výhod `login` metody a `isLoggedIn`. Existuje několik vlastností, které poskytují výchozí hodnoty pro metodu přihlašování, která může přijímat velký počet parametrů.
 
-*Sys.Services.AuthenticationService členy*
+*Členové sys. Services. AuthenticationService*
 
-*způsob přihlášení:*
+*Metoda přihlašování:*
 
-Metoda login() zahájí požadavek na ověření přihlašovacích údajů uživatele. Tato metoda je asynchronní a nedochází k blokování spuštění.
+Metoda Login () zahájí požadavek na ověření přihlašovacích údajů uživatele. Tato metoda je asynchronní a neblokuje provádění.
 
-*Parametry:*
+*Ukazatelů*
 
-| **Název parametru** | **Význam** |
+| **Název parametru** | **Smyslu** |
 | --- | --- |
-| userName | Povinný parametr. Uživatelské jméno k ověření. |
-| password | Volitelný (výchozí hodnota je null). Heslo uživatele. |
-| isPersistent | Nepovinné (výchozí hodnota je false). Soubor cookie pro ověřování uživatele určuje, zda byste neměli zachovat napříč relacemi. Pokud má hodnotu false, bude se uživatel odhlásit při zavření prohlížeče nebo vypršení platnosti relace. |
-| redirectUrl | Volitelný (výchozí hodnota je null). Adresa URL pro přesměrování prohlížeče po úspěšném ověření. Pokud tento parametr hodnotu null nebo prázdný řetězec, dojde k žádné přesměrování. |
-| customInfo | Volitelný (výchozí hodnota je null). Tento parametr se aktuálně nepoužívá a je vyhrazen pro budoucí použití. |
-| loginCompletedCallback | Volitelný (výchozí hodnota je null). Funkce, která má být volána při přihlášení bylo úspěšně dokončeno. -Li zadána, tento parametr přepisuje vlastnost defaultLoginCompleted. |
-| failedCallback | Volitelný (výchozí hodnota je null). Funkce, která má být volána při přihlášení se nezdařilo. Je-li zadána, přepíše tento parametr vlastnosti defaultFailedCallback. |
-| userContext | Volitelný (výchozí hodnota je null). Vlastní uživatelská data kontextu, který by měly být předány funkcím zpětného volání. |
+| Jmen | Požadováno. Uživatelské jméno, které se má ověřit |
+| heslo | Volitelné (výchozí hodnota je null). Heslo uživatele. |
+| Trvalé | Volitelné (výchozí hodnota je false). Určuje, zda má být soubor cookie ověřování uživatele uchován v rámci relací. Pokud je hodnota false, uživatel se odhlásí při zavření prohlížeče nebo vypršení platnosti relace. |
+| redirectUrl | Volitelné (výchozí hodnota je null). Adresa URL pro přesměrování prohlížeče po úspěšném ověření. Pokud má tento parametr hodnotu null nebo prázdný řetězec, nedojde k žádnému přesměrování. |
+| customInfo | Volitelné (výchozí hodnota je null). Tento parametr se aktuálně nepoužívá a je vyhrazený pro budoucí použití. |
+| loginCompletedCallback | Volitelné (výchozí hodnota je null). Funkce, která se má zavolat po úspěšném dokončení přihlášení Je-li tento parametr zadán, přepíše vlastnost defaultLoginCompleted. |
+| failedCallback | Volitelné (výchozí hodnota je null). Funkce, která má být volána, když Přihlášení selhalo. Je-li tento parametr zadán, přepíše vlastnost defaultFailedCallback. |
+| userContext | Volitelné (výchozí hodnota je null). Vlastní uživatelská kontextová data, která by měla být předána funkcím zpětného volání. |
 
 *Návratová hodnota:*
 
-Tato funkce neobsahuje návratovou hodnotu. Počet chování jsou však zahrnuty po dokončení volání této funkce:
+Tato funkce nezahrnuje návratovou hodnotu. Po dokončení volání této funkce je však k dispozici několik chování:
 
-- Aktuální stránka bude buď aktualizovat nebo změnit, pokud `redirectUrl` parametr měl hodnotu null ani prázdný řetězec.
-- Nicméně, pokud parametr byl null nebo prázdný řetězec, `loginCompletedCallback` parametr, nebo `defaultLoginCompletedCallback` názvem vlastnosti.
-- Pokud selže volání webové služby, `failedCallback` parametr `defaultFailedCallback` názvem vlastnosti.
+- Aktuální stránka se buď aktualizuje, nebo se změní, pokud parametr `redirectUrl` nevrátil hodnotu null, ani prázdný řetězec.
+- Pokud však parametr měl hodnotu null nebo prázdný řetězec, je volána parametr `loginCompletedCallback` nebo vlastnost `defaultLoginCompletedCallback`.
+- Pokud volání webové služby dojde k chybě, je volána parametr `failedCallback` vlastnosti `defaultFailedCallback`.
 
 *Metoda odhlášení:*
 
-Metoda logout() odstraní soubor cookie přihlašovací údaje a odhlásí aktuálního uživatele z webové aplikace.
+Metoda logout () odstraní soubor cookie s přihlašovacími údaji a odhlásí aktuálního uživatele z webové aplikace.
 
-*Parametry:*
+*Ukazatelů*
 
-| **Název parametru** | **Význam** |
+| **Název parametru** | **Smyslu** |
 | --- | --- |
-| redirectUrl | Volitelný (výchozí hodnota je null). Adresa URL pro přesměrování prohlížeče po úspěšném ověření. Pokud tento parametr hodnotu null nebo prázdný řetězec, dojde k žádné přesměrování. |
-| logoutCompletedCallback | Volitelný (výchozí hodnota je null). Funkce, která má být volána při odhlášení bylo úspěšně dokončeno. -Li zadána, tento parametr přepisuje vlastnost defaultLogoutCompleted. |
-| failedCallback | Volitelný (výchozí hodnota je null). Funkce, která má být volána při přihlášení se nezdařilo. Je-li zadána, přepíše tento parametr vlastnosti defaultFailedCallback. |
-| userContext | Volitelný (výchozí hodnota je null). Vlastní uživatelská data kontextu, který by měly být předány funkcím zpětného volání. |
+| redirectUrl | Volitelné (výchozí hodnota je null). Adresa URL pro přesměrování prohlížeče po úspěšném ověření. Pokud má tento parametr hodnotu null nebo prázdný řetězec, nedojde k žádnému přesměrování. |
+| logoutCompletedCallback | Volitelné (výchozí hodnota je null). Funkce, která má být volána po úspěšném dokončení odhlášení. Je-li tento parametr zadán, přepíše vlastnost defaultLogoutCompleted. |
+| failedCallback | Volitelné (výchozí hodnota je null). Funkce, která má být volána, když Přihlášení selhalo. Je-li tento parametr zadán, přepíše vlastnost defaultFailedCallback. |
+| userContext | Volitelné (výchozí hodnota je null). Vlastní uživatelská kontextová data, která by měla být předána funkcím zpětného volání. |
 
 *Návratová hodnota:*
 
-Tato funkce neobsahuje návratovou hodnotu. Počet chování jsou však zahrnuty po dokončení volání této funkce:
+Tato funkce nezahrnuje návratovou hodnotu. Po dokončení volání této funkce je však k dispozici několik chování:
 
-- Aktuální stránka bude buď aktualizovat nebo změnit, pokud `redirectUrl` parametr měl hodnotu null ani prázdný řetězec.
-- Nicméně, pokud parametr byl null nebo prázdný řetězec, `logoutCompletedCallback` parametr, nebo `defaultLogoutCompletedCallback` názvem vlastnosti.
-- Pokud selže volání webové služby, `failedCallback` parametr `defaultFailedCallback` názvem vlastnosti.
+- Aktuální stránka se buď aktualizuje, nebo se změní, pokud parametr `redirectUrl` nevrátil hodnotu null, ani prázdný řetězec.
+- Pokud však parametr měl hodnotu null nebo prázdný řetězec, je volána parametr `logoutCompletedCallback` nebo vlastnost `defaultLogoutCompletedCallback`.
+- Pokud volání webové služby dojde k chybě, je volána parametr `failedCallback` vlastnosti `defaultFailedCallback`.
 
-*Vlastnosti defaultFailedCallback (get, set):*
+*defaultFailedCallback – vlastnost (Get, set):*
 
-Tato vlastnost určuje funkci, která by měla být volána, pokud dojde k selhání ke komunikaci s webovou službou. Obdrželi delegáta (nebo odkazů na funkce).
+Tato vlastnost určuje funkci, která by měla být volána, pokud dojde k selhání komunikace s webovou službou. Měl by získat delegáta (nebo odkaz na funkci).
 
-Referenční dokumentace funkcí této vlastnosti by měl mít následující podpis:
+Odkaz na funkci určený touto vlastností by měl mít následující signaturu:
 
 [!code-javascript[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample2.js)]
 
-*Parametry:*
+*Ukazatelů*
 
-| **Název parametru** | **Význam** |
+| **Název parametru** | **Smyslu** |
 | --- | --- |
-| error | Určuje informace o této chybě. |
-| userContext | Určuje informace o kontextu uživatele, pokud byla volána funkce přihlášení nebo odhlášení. |
-| methodName | Název volání metody. |
+| chyba | Určuje informace o chybě. |
+| userContext | Určuje informace o kontextu uživatele zadané při volání funkce přihlášení nebo odhlášení. |
+| MethodName | Název volající metody. |
 
-*Vlastnost defaultLoginCompletedCallback (get, set):*
+*vlastnost defaultLoginCompletedCallback (Get, set):*
 
-Tato vlastnost určuje funkci, která by měla být volána po dokončení přihlášení volání webové služby. Obdrželi delegáta (nebo odkazů na funkce).
+Tato vlastnost určuje funkci, která by měla být volána, když bylo volání přihlašovací webové služby dokončeno. Měl by získat delegáta (nebo odkaz na funkci).
 
-Referenční dokumentace funkcí této vlastnosti by měl mít následující podpis:
+Odkaz na funkci určený touto vlastností by měl mít následující signaturu:
 
 [!code-javascript[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample3.js)]
 
-*Parametry:*
+*Ukazatelů*
 
-| **Název parametru** | **Význam** |
+| **Název parametru** | **Smyslu** |
 | --- | --- |
-| validCredentials | Určuje, zda uživatel zadal pověření. `true` Pokud uživatel úspěšně přihlášen; v opačném případě `false`. |
-| userContext | Určuje informace o kontextu uživatele, pokud byla volána funkce login. |
-| methodName | Název volání metody. |
+| validCredentials | Určuje, jestli uživatel zadal platné přihlašovací údaje. `true`, pokud se uživatel úspěšně přihlásil. jinak `false`. |
+| userContext | Určuje informace o kontextu uživatele zadané při volání funkce Login. |
+| MethodName | Název volající metody. |
 
-*vlastnost defaultLogoutCompletedCallback (get, set):*
+*vlastnost defaultLogoutCompletedCallback (Get, set):*
 
-Tato vlastnost určuje funkci, která by měla být volána po dokončení odhlášení volání webové služby. Obdrželi delegáta (nebo odkazů na funkce).
+Tato vlastnost určuje funkci, která by měla být volána, když bylo dokončeno volání odhlašovací webové služby. Měl by získat delegáta (nebo odkaz na funkci).
 
-Referenční dokumentace funkcí této vlastnosti by měl mít následující podpis:
+Odkaz na funkci určený touto vlastností by měl mít následující signaturu:
 
 [!code-javascript[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample4.js)]
 
-*Parametry:*
+*Ukazatelů*
 
-| **Název parametru** | **Význam** |
+| **Název parametru** | **Smyslu** |
 | --- | --- |
-| výsledek | Tento parametr bude vždy `null`; je vyhrazená pro budoucí použití. |
-| userContext | Určuje informace o kontextu uživatele, pokud byla volána funkce login. |
-| methodName | Název volání metody. |
+| vyústit | Tento parametr bude vždy `null`; je vyhrazený pro budoucí použití. |
+| userContext | Určuje informace o kontextu uživatele zadané při volání funkce Login. |
+| MethodName | Název volající metody. |
 
-*Vlastnost isLoggedIn (get):*
+*vlastnost isLoggedIn (Get):*
 
-Tato vlastnost získá aktuální stav ověření daného uživatele. během požadavku na stránku nastavení v objektu ScriptManager.
+Tato vlastnost získá aktuální stav ověřování uživatele. je nastavena objektem ScriptManager během žádosti stránky.
 
-Tato vlastnost vrátí `true` Pokud uživatel je aktuálně přihlášený v; jinak vrátí hodnotu, vrátí `false`.
+Tato vlastnost vrátí `true`, pokud je uživatel aktuálně přihlášený. v opačném případě vrátí `false`.
 
-*Vlastnost Path (get, set):*
+*cesta – vlastnost (Get, set):*
 
-Tato vlastnost určuje programově umístění ověřování webové služby. Je možné přepsat výchozí zprostředkovatel ověřování, jakož i jeden nastavit deklarací v cestě vlastnosti ovládacího prvku ScriptManager AuthenticationService podřízený uzel (Další informace najdete v vlastního zprostředkovatele ověřování služby téma níže).
+Tato vlastnost programově určuje umístění webové služby ověřování. Dá se použít k přepsání výchozího zprostředkovatele ověřování a zároveň jedné sady, která je deklarativně ve vlastnosti cesta podřízeného uzlu AuthenticationService ovládacího prvku ScriptManager (Další informace najdete v tématu použití vlastního zprostředkovatele ověřovací služby). níže v tématu).
 
-Všimněte si, že umístění výchozí ověřovací službě nezmění. ASP.NET AJAX však umožňuje určit umístění webovou službu, která poskytuje rozhraní třídy jako proxy služby ověřování ASP.NET AJAX.
+Všimněte si, že umístění výchozí ověřovací služby se nemění. ASP.NET AJAX však umožňuje zadat umístění webové služby, která poskytuje stejné rozhraní třídy jako proxy ověřovací služby ASP.NET AJAX.
 
-Všimněte si také, že by neměla tato vlastnost nastavená na hodnotu, která přesměruje požadavek skriptu z aktuální lokality. Vzhledem k tomu, že aktuální aplikace nebude přijímat přihlašovací údaje pro ověřování, je zbytečné. také AJAX podkladových technologie neúčtuje žádosti více webů a může vygenerovat výjimku zabezpečení do prohlížeče klienta.
+Všimněte si také, že tato vlastnost by neměla být nastavena na hodnotu, která přesměruje požadavek skriptu mimo aktuální web. Vzhledem k tomu, že aktuální aplikace by neobdržela přihlašovací údaje pro ověření, by byla nepoužitelná; také technologie AJAX, která je základem AJAX, by neměla vystavovat požadavky mezi weby a může vygenerovat výjimku zabezpečení v klientském prohlížeči.
 
-Tato vlastnost je `String` objekt představující cestu k webové službě ověřování.
+Tato vlastnost je objekt `String` reprezentující cestu k ověřovací webové službě.
 
-*Vlastnost časového limitu (get, set):*
+*Timeout – vlastnost (Get, set):*
 
-Tato vlastnost určuje dobu čekání pro ověřovací službu před za předpokladu, že žádost o přihlášení se nezdařilo. Pokud vyprší časový limit při čekání na dokončení volání, zavolá se zpětné volání požadavek se nezdařil a volání se nikdy nedokončí.
+Tato vlastnost určuje dobu, po kterou se má čekat na ověřovací službu před tím, než se žádost o přihlášení nezdařila. Pokud časový limit vyprší během čekání na dokončení volání, bude voláno zpětné volání s neúspěšným požadavkem a volání nebude dokončeno.
 
-Tato vlastnost je `Number` objekt představující počet milisekund čekání na výsledky z ověřovací služby.
+Tato vlastnost je objekt `Number`, který představuje počet milisekund, po které se má čekat na výsledky od ověřovací služby.
 
-*Ukázka kódu: Přihlášení k ověřovací službě*
+*Ukázka kódu: přihlášení k ověřovací službě*
 
-Následující kód je příklad stránky technologie ASP.NET pomocí volání metody přihlášení a odhlášení třídy AuthenticationService jednoduchý skript.
+Následující kód je příklad stránky ASP.NET s jednoduchým voláním skriptu pro metody Login a Logout třídy AuthenticationService.
 
 [!code-aspx[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample5.aspx)]
 
-## <a name="accessing-aspnet-profiling-data-via-ajax"></a>Přístup k datům prostřednictvím jazyka AJAX profilování technologie ASP.NET
+## <a name="accessing-aspnet-profiling-data-via-ajax"></a>Přístup k datům profilování ASP.NET prostřednictvím AJAX
 
-Profilování služby technologie ASP.NET je přístupný také prostřednictvím rozšíření ASP.NET AJAX. Od služby profilace ASP.NET poskytuje propracované a detailní API, kterým se mají ukládat a načítat data uživatele, může se jednat o nástroj vynikající produktivity.
+Služba profilace ASP.NET je také zpřístupněna prostřednictvím rozšíření AJAX ASP.NET. Vzhledem k tomu, že služba profilace ASP.NET poskytuje bohatě podrobnější rozhraní API, pomocí kterého se ukládají a načítají data uživatelů, může to být vynikající nástroj pro zvýšení produktivity.
 
-Služba profilu musí být povoleno v souboru web.config; není ve výchozím nastavení. Uděláte to tak, aby `profileService` podřízený element má povolenou = true zadané v souboru web.config a zda jste zadali vlastnosti, které může číst nebo zapsat takto:
+Služba profilů musí být povolená v souboru Web. config; není ve výchozím nastavení. Chcete-li to provést, zajistěte, aby byl podřízený element `profileService` v souboru Web. config povolen = true a zda jste určili, které vlastnosti mohou být čteny nebo zapsány následujícím způsobem:
 
 [!code-xml[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample6.xml)]
 
-Služba profilu musí být taky nakonfigurovaný. Přestože konfigurace služby profilace je mimo rozsah tento dokument White Paper, je vhodné si uvědomit, že skupiny definované v nastavení profilu konfigurace budou dostupné jako dílčí vlastnosti názvu skupiny. Například v následující části profilu zadali:
+Je taky potřeba nakonfigurovat profilovou službu. I když konfigurace služby profilování je mimo rozsah tohoto dokumentu White Paper, je vhodné si uvědomit, že skupiny definované v nastavení konfigurace profilu budou přístupné jako dílčí vlastnosti názvu skupiny. Například při zadání následující části profilu:
 
 [!code-xml[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample7.xml)]
 
-Klientský skript bude mít přístup k názvu, Address.Line1, Address.Line2, Address.City, Address.State, Address.Zip a BackgroundColor jako vlastnosti pole vlastnosti třídy ProfileService.
+Klientský skript by měl mít přístup k názvu, Address. řádek1, Address. řádek2, Address. City, Address. State, Address. zip a BackgroundColor jako k vlastnostem pole vlastnosti třídy ProfileService.
 
-Po nakonfigurování služby profilace AJAX bude okamžitě k dispozici na stránkách; načíst jednou před použitím však bude mít.
+Po nakonfigurování služby profilace AJAX bude okamžitě k dispozici na stránkách. před použitím ale bude nutné ho načíst.
 
-*Sys.Services.ProfileService členy*
+*Členové sys. Services. ProfileService*
 
-*Vlastnosti pole:*
+*pole vlastností:*
 
-Pole vlastností uvádí všechna data nakonfigurovaný profil jako podřízené vlastnosti, které lze odkazovat pomocí názvu operátoru tečka konvence. Vlastnosti, které jsou podřízené skupiny vlastností se označují jako GroupName.PropertyName. V profilu příklad konfigurace uvedené výše Chcete-li získat informace o stavu uživatele, můžete použít následující identifikátor:
+Pole vlastnosti zpřístupňuje všechna nakonfigurovaná data profilu jako podřízené vlastnosti, na které může odkazovat konvence tečka-operátor-Name. Vlastnosti, které jsou podřízenými položkami skupin vlastností, jsou označovány jako název_skupiny. PropertyName. Pokud chcete získat stav uživatele, můžete v ukázkové konfiguraci profilu uvedeného výše použít následující identifikátor:
 
 [!code-csharp[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample8.cs)]
 
 *Metoda load:*
 
-Načte všechny vlastnosti nebo vybraný seznam ze serveru.
+Načte vybraný seznam nebo všechny vlastnosti ze serveru.
 
-*Parametry:*
+*Ukazatelů*
 
-| **Název parametru** | **Význam** |
+| **Název parametru** | **Smyslu** |
 | --- | --- |
-| propertyNames | Volitelný (výchozí hodnota je null). Vlastnosti, které mají být načteny ze serveru. |
-| loadCompletedCallback | Volitelný (výchozí hodnota je null). Funkce, která má být volána po dokončení načítání. |
-| failedCallback | Volitelný (výchozí hodnota je null). Funkci zavolat, když dojde k chybě. |
-| userContext | Volitelný (výchozí hodnota je null). Informace o kontextu má být předán funkci zpětného volání. |
+| propertyNames | Volitelné (výchozí hodnota je null). Vlastnosti, které mají být načteny ze serveru. |
+| loadCompletedCallback | Volitelné (výchozí hodnota je null). Funkce, která se má volat po dokončení načítání |
+| failedCallback | Volitelné (výchozí hodnota je null). Funkce, která se má volat, pokud dojde k chybě |
+| userContext | Volitelné (výchozí hodnota je null). Kontextové informace, které mají být předány funkci zpětného volání. |
 
-Funkce zatížení nemá návratovou hodnotu. Pokud volání bylo úspěšně dokončeno, bude volat buď `loadCompletedCallback` parametr nebo `defaultLoadCompletedCallback` vlastnost. Pokud volání se nezdařilo, nebo vypršel její časový limit, buď `failedCallback` parametr nebo `defaultFailedCallback` vlastností bude volána.
+Funkce Load neobsahuje návratovou hodnotu. Pokud bylo volání úspěšně dokončeno, bude volána buď parametr `loadCompletedCallback`, nebo vlastnost `defaultLoadCompletedCallback`. Pokud se volání nezdařilo nebo vypršel časový limit, bude volána buď parametr `failedCallback`, nebo vlastnost `defaultFailedCallback`.
 
-Pokud `propertyNames` parametr nezadáte, všechny vlastnosti nakonfigurovaná pro čtení se načítají ze serveru.
+Pokud není zadán parametr `propertyNames`, jsou ze serveru načteny všechny vlastnosti nakonfigurované pro čtení.
 
-*Save – metoda:*
+*Uložit metodu:*
 
-Metody save() uloží zadanou vlastnost seznamu (nebo všechny vlastnosti) do profilu technologie ASP.NET.
+Metoda Save () uloží zadaný seznam vlastností (nebo všechny vlastnosti) do profilu ASP.NET uživatele.
 
-*Parametry:*
+*Ukazatelů*
 
-| **Název parametru** | **Význam** |
+| **Název parametru** | **Smyslu** |
 | --- | --- |
-| propertyNames | Volitelný (výchozí hodnota je null). Vlastnosti, které mají být uloženy na serveru. |
-| saveCompletedCallback | Volitelný (výchozí hodnota je null). Funkce, která má být volána při ukládání bylo dokončeno. |
-| failedCallback | Volitelný (výchozí hodnota je null). Funkci zavolat, když dojde k chybě. |
-| userContext | Volitelný (výchozí hodnota je null). Informace o kontextu má být předán funkci zpětného volání. |
+| propertyNames | Volitelné (výchozí hodnota je null). Vlastnosti, které mají být uloženy na server. |
+| saveCompletedCallback | Volitelné (výchozí hodnota je null). Funkce, která se má volat po dokončení ukládání. |
+| failedCallback | Volitelné (výchozí hodnota je null). Funkce, která se má volat, pokud dojde k chybě |
+| userContext | Volitelné (výchozí hodnota je null). Kontextové informace, které mají být předány funkci zpětného volání. |
 
-Uložení funkce nemá návratovou hodnotu. Pokud volání dokončí úspěšně, bude volat buď `saveCompletedCallback` parametr nebo `defaultSaveCompletedCallback` vlastnost. Pokud volání se nezdařilo, nebo vypršel její časový limit, buď `failedCallback` nebo `defaultFailedCallback` vlastností bude volána.
+Funkce Save neobsahuje návratovou hodnotu. Pokud se volání úspěšně dokončí, bude volat buď parametr `saveCompletedCallback`, nebo vlastnost `defaultSaveCompletedCallback`. Pokud se volání nezdařilo nebo vypršel časový limit, bude volána buď vlastnost `failedCallback`, nebo `defaultFailedCallback`.
 
-Pokud `propertyNames` parametr má hodnotu null, všechny vlastnosti profilu se odešlou na server a server se rozhodnout, vlastnosti, které mohou být uloženy a které nemohou.
+Pokud má parametr `propertyNames` hodnotu null, všechny vlastnosti profilu budou odeslány na server a server se rozhodne, které vlastnosti mohou být uloženy a které nemohou.
 
-*Vlastnosti defaultFailedCallback (get, set):*
+*defaultFailedCallback – vlastnost (Get, set):*
 
-Tato vlastnost určuje funkci, která by měla být volána, pokud dojde k selhání ke komunikaci s webovou službou. Obdrželi delegáta (nebo odkazů na funkce).
+Tato vlastnost určuje funkci, která by měla být volána, pokud dojde k selhání komunikace s webovou službou. Měl by získat delegáta (nebo odkaz na funkci).
 
-Referenční dokumentace funkcí této vlastnosti by měl mít následující podpis:
+Odkaz na funkci určený touto vlastností by měl mít následující signaturu:
 
 [!code-javascript[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample9.js)]
 
-*Parametry:*
+*Ukazatelů*
 
-| **Název parametru** | **Význam** |
+| **Název parametru** | **Smyslu** |
 | --- | --- |
-| Chyba | Určuje informace o této chybě. |
-| userContext | Určuje informace o kontextu uživatele zadané při zatížení nebo uložit funkce byla volána. |
-| methodName | Název volání metody. |
+| Chyba | Určuje informace o chybě. |
+| userContext | Určuje informace o kontextu uživatele zadané při volání funkce Load nebo Save. |
+| MethodName | Název volající metody. |
 
-*Vlastnost defaultSaveCompleted (get, set):*
+*vlastnost defaultSaveCompleted (Get, set):*
 
-Tato vlastnost určuje funkci, která by měla být volána při dokončení uložení data profilu uživatele. Obdrželi delegáta (nebo odkazů na funkce).
+Tato vlastnost určuje funkci, která by měla být volána po dokončení ukládání dat profilu uživatele. Měl by získat delegáta (nebo odkaz na funkci).
 
-Referenční dokumentace funkcí této vlastnosti by měl mít následující podpis:
+Odkaz na funkci určený touto vlastností by měl mít následující signaturu:
 
 [!code-javascript[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample10.js)]
 
-*Parametry:*
+*Ukazatelů*
 
-| **Název parametru** | **Význam** |
+| **Název parametru** | **Smyslu** |
 | --- | --- |
-| numPropsSaved | Určuje počet vlastností, které byly uloženy. |
-| userContext | Určuje informace o kontextu uživatele zadané při zatížení nebo uložit funkce byla volána. |
-| methodName | Název volání metody. |
+| numPropsSaved | Určuje počet uložených vlastností. |
+| userContext | Určuje informace o kontextu uživatele zadané při volání funkce Load nebo Save. |
+| MethodName | Název volající metody. |
 
-*Vlastnost defaultLoadCompleted (get, set):*
+*vlastnost defaultLoadCompleted (Get, set):*
 
-Tato vlastnost určuje funkci, která by měla být volána po dokončení načítání dat profilu uživatele. Obdrželi delegáta (nebo odkazů na funkce).
+Tato vlastnost určuje funkci, která by měla být volána po dokončení načítání dat profilu uživatele. Měl by získat delegáta (nebo odkaz na funkci).
 
-Referenční dokumentace funkcí této vlastnosti by měl mít následující podpis:
+Odkaz na funkci určený touto vlastností by měl mít následující signaturu:
 
 [!code-javascript[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample11.js)]
 
-*Parametry:*
+*Ukazatelů*
 
-| **Název parametru** | **Význam** |
+| **Název parametru** | **Smyslu** |
 | --- | --- |
-| numPropsLoaded | Určuje počet vlastností načíst. |
-| userContext | Určuje informace o kontextu uživatele zadané při zatížení nebo uložit funkce byla volána. |
-| methodName | Název volání metody. |
+| numPropsLoaded | Určuje počet načtených vlastností. |
+| userContext | Určuje informace o kontextu uživatele zadané při volání funkce Load nebo Save. |
+| MethodName | Název volající metody. |
 
-*Vlastnost Path (get, set):*
+*cesta – vlastnost (Get, set):*
 
-Tato vlastnost určuje programově umístění profilu webové služby. Je možné přepsat výchozí zprostředkovatel profilu služby, stejně jako jeden nastavit deklarací v cestě vlastnosti ovládacího prvku ScriptManager ProfileService podřízený uzel.
+Tato vlastnost programově určuje umístění webové služby Profile. Dá se použít k přepsání výchozího poskytovatele služby profilů i jedné sady deklarativně ve vlastnosti cesta podřízeného uzlu ProfileService ovládacího prvku ScriptManager.
 
-Všimněte si, že se nezmění umístění výchozí službě profilů. ASP.NET AJAX však umožňuje určit umístění webovou službu, která poskytuje rozhraní třídy jako proxy služby ověřování ASP.NET AJAX.
+Všimněte si, že umístění výchozí profilové služby se nemění. ASP.NET AJAX však umožňuje zadat umístění webové služby, která poskytuje stejné rozhraní třídy jako proxy ověřovací služby ASP.NET AJAX.
 
-Všimněte si také, že by neměla tato vlastnost nastavená na hodnotu, která přesměruje požadavek skriptu z aktuální lokality. AJAX podkladových technologie neúčtuje žádosti více webů a může vygenerovat výjimku zabezpečení do prohlížeče klienta.
+Všimněte si také, že tato vlastnost by neměla být nastavena na hodnotu, která přesměruje požadavek skriptu mimo aktuální web. Technologie AJAX, která je základem AJAX, by neměla vystavovat požadavky mezi weby a může vygenerovat výjimku zabezpečení v prohlížeči klienta.
 
-Tato vlastnost je `String` objekt představující cestu k webové službě profilů.
+Tato vlastnost je objekt `String`, který představuje cestu k webové službě profilu.
 
-*Vlastnost časového limitu (get, set):*
+*Timeout – vlastnost (Get, set):*
 
-Tato vlastnost určuje dobu čekání pro službu profilů před za předpokladu, že načtení nebo uložení žádosti se nezdařilo. Pokud vyprší časový limit při čekání na dokončení volání, zavolá se zpětné volání požadavek se nezdařil a volání se nikdy nedokončí.
+Tato vlastnost určuje dobu, po kterou se má na službu profilů čekat, než se nezdařila žádost o načtení nebo uložení. Pokud časový limit vyprší během čekání na dokončení volání, bude voláno zpětné volání s neúspěšným požadavkem a volání nebude dokončeno.
 
-Tato vlastnost je `Number` objekt představující počet milisekund čekání na výsledky z profilu služby.
+Tato vlastnost je objekt `Number`, který představuje počet milisekund, po které se má čekat na výsledky z profilové služby.
 
-*Ukázka kódu: Načítají se data profilu v načítání stránky.*
+*Ukázka kódu: načtení dat profilu při načtení stránky*
 
-Následující kód zkontroluje, jestli je uživatel ověřený a pokud ano, načte barvu pozadí upřednostňované uživatele jako stránky.
+Následující kód zkontroluje, jestli je uživatel ověřený, a pokud ano, načte jako stránku upřednostňovanou barvu pozadí uživatele.
 
 [!code-javascript[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample12.js)]
 
-## <a name="using-a-custom-authentication-service-provider"></a>*Pomocí poskytovatele služeb vlastní ověřování*
+## <a name="using-a-custom-authentication-service-provider"></a>*Použití vlastního zprostředkovatele ověřovací služby*
 
-Rozšíření ASP.NET AJAX umožňují vytvářet poskytovatele ověřování vlastní skript zveřejněním funkcí prostřednictvím vlastní webové služby. Pokud chcete použít, vaše webová služba musí vystavit dvě metody, `Login` a `Logout`; a tyto metody musí být zadaný pomocí stejné podpisy metod jako webovou službu ASP.NET AJAX ověřování výchozí.
+Rozšíření ASP.NET AJAX umožňují vytvořit vlastního poskytovatele ověřovací služby pro skripty vyvoláním funkce prostřednictvím vlastní webové služby. Aby bylo možné použít, Webová služba musí vystavit dvě metody `Login` a `Logout`; a tyto metody musí být zadány se stejnými signaturami metody jako výchozí webová služba ověřování ASP.NET AJAX.
 
-Jakmile vytvoříte vlastní webovou službu, je potřeba zadat cestu k němu, buď pomocí deklarace na stránce programově v kódu nebo prostřednictvím klientského skriptu.
+Po vytvoření vlastní webové služby budete muset na stránce zadat cestu, a to buď deklarativně na stránce, programově v kódu, nebo prostřednictvím skriptu klienta.
 
-*Chcete-li nastavit cestu deklarativně:*
+*Postup při deklarativním nastavení cesty:*
 
-Pro nastavení cesty k deklarativně, patří podřízené AuthenticationService objektu ScriptManager na stránce ASP.NET:
+Chcete-li nastavit cestu deklarativně, zahrňte do stránky ASP.NET podřízenou položku AuthenticationService objektu ScriptManager:
 
 [!code-aspx[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample13.aspx)]
 
-*K nastavení cesty v kódu:*
+*Nastavení cesty v kódu:*
 
-Pro nastavení cesty k prostřednictvím kódu programu, zadejte cestu prostřednictvím instance Správce skriptu:
+Pokud chcete cestu nastavit programově, zadejte cestu přes instanci správce skriptů:
 
 [!code-csharp[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample14.cs)]
 
-*Chcete-li nastavit cestu ve skriptu:*
+*Postup při nastavení cesty ve skriptu:*
 
-Programové nastavení cesty ve skriptu, využívat `path` vlastnost AuthenticationService třídy:
+Chcete-li nastavit cestu programově ve skriptu, využijte vlastnost `path` třídy AuthenticationService:
 
 [!code-javascript[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample15.js)]
 
@@ -331,16 +331,16 @@ Programové nastavení cesty ve skriptu, využívat `path` vlastnost Authenticat
 
 [!code-aspx[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample16.aspx)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Služby technologie ASP.NET – konkrétně služby profilace, členství a ověřování – jsou snadno přístupné pro jazyk JavaScript na klientském prohlížeči. To umožňuje vývojářům integrovat svůj kód na straně klienta pomocí mechanismu ověřování bez problémů, bez v závislosti na ovládací prvky, jako jsou komponenty UpdatePanel provedete rutinní. Data profilu se dá chránit z klienta, využívající webové nastavení konfigurace. nejsou k dispozici ve výchozím nastavení data a vývojáři musí přihlásit k vlastnosti profilu.
+ASP.NET Services – konkrétně profilování, členství a ověřovací služby – jsou snadno zpřístupněny JavaScriptu v klientském prohlížeči. To umožňuje vývojářům integrovat kód na straně klienta s mechanismem ověřování bez problémů, aniž by v závislosti na ovládacích prvcích, jako je například UpdatePanel, procházeli těžkou zdvihání. Data profilu je možné chránit i z klienta, a to díky využití nastavení konfigurace webu. ve výchozím nastavení nejsou k dispozici žádná data a vývojáři musí souhlasit s vlastnostmi profilu.
 
-Kromě toho vytvořením implementací zjednodušené webové služby s podpisy metod ekvivalentní, mohou vývojáři vytvářet poskytovatelé vlastní skript pro tyto vnitřní služby ASP.NET. Podpora pro tyto techniky zjednodušuje vývoj aplikacemi rich client, poskytuje vývojářům s širokou škálou zajištění flexibility umožňující splnit určité požadavky.
+Díky vytváření zjednodušených implementací webových služeb s ekvivalentními signaturami metod můžou vývojáři vytvářet vlastní poskytovatele skriptů pro tyto vnitřní služby ASP.NET Services. Podpora těchto technik zjednodušuje vývoj bohatých klientských aplikací a současně poskytuje vývojářům širokou škálu flexibility, které splňují konkrétní potřeby.
 
-## <a name="bio"></a>*Bio*
+## <a name="bio"></a>*Dostupnost*
 
-Scott Cate má práce s Microsoft webových technologiích od roku 1997 a je prezident myKB.com ([www.myKB.com](http://www.myKB.com)) kde mu se specializuje na technologie ASP.NET psaní aplikací, zaměřuje na znalostní báze softwarová řešení založených na. Scott můžete kontaktovat prostřednictvím e-mailové adrese [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) nebo na svém blogu [ScottCate.com](http://ScottCate.com)
+Scott Cate spolupracuje s webovými technologiemi Microsoftu od 1997 a je prezidentem myKB.com ([www.myKB.com](http://www.myKB.com)), kde se specializuje při psaní aplikací založených na ASP.NET zaměřené na softwarová řešení ve znalostní bázi Knowledge Base. Scott se dá kontaktovat e-mailem na [scott.cate@myKB.com](mailto:scott.cate@myKB.com) nebo jeho blogu na [ScottCate.com](http://ScottCate.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](understanding-asp-net-ajax-updatepanel-triggers.md)
-> [další](understanding-asp-net-ajax-localization.md)
+> [Další](understanding-asp-net-ajax-localization.md)

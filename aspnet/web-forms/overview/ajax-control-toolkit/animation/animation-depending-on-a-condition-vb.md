@@ -1,60 +1,60 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-vb
-title: Animace závislá na podmínce (VB) | Dokumentace Microsoftu
+title: Animace v závislosti na podmínce (VB) | Microsoft Docs
 author: wenz
-description: Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Určuje, zda je animace...
+description: Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Zda je animace...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 1b87d8d6-b3f7-4126-b51c-d41442fbf947
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cfac2d5ac7ea652648db3c11a8357d95c8f78ffe
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 583ebdbf109beb74b9a425020477183067bbb79a
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132251"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74607024"
 ---
 # <a name="animation-depending-on-a-condition-vb"></a>Animace závislá na podmínce (VB)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation4.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation4VB.pdf)
+[Stažení kódu](https://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation4.vb.zip) nebo [stažení PDF](https://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation4VB.pdf)
 
-> Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Určuje, zda je animaci spustit nebo ne může také záviset na podmínky v podobě kódu jazyka JavaScript.
+> Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Zda je animace spuštěna, nebo ne, může také záviset na stavu ve formě některého kódu JavaScriptu.
 
 ## <a name="overview"></a>Přehled
 
-Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Určuje, zda je animaci spustit nebo ne může také záviset na podmínky v podobě kódu jazyka JavaScript.
+Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Zda je animace spuštěna, nebo ne, může také záviset na stavu ve formě některého kódu JavaScriptu.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Za prvé, zahrnout `ScriptManager` na stránce; potom technologie ASP.NET AJAX je načíst knihovnu, což umožňuje použití Control Toolkit:
+Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 
 [!code-aspx[Main](animation-depending-on-a-condition-vb/samples/sample1.aspx)]
 
-Animace se použijí pro panel text, který vypadá takto:
+Animace se použije na panel textu, který vypadá takto:
 
 [!code-aspx[Main](animation-depending-on-a-condition-vb/samples/sample2.aspx)]
 
-V přidružené třídy šablony stylů CSS pro panel definovat barvu pozadí nice a také nastavit Pevná šířka panelu:
+V přidružené třídě CSS pro panel definujte Skvělé barvy pozadí a také nastavte pevnou šířku panelu:
 
 [!code-css[Main](animation-depending-on-a-condition-vb/samples/sample3.css)]
 
-Pak přidejte `AnimationExtender` na stránku, poskytování `ID`, `TargetControlID` atribut a povinný údaj `runat="server":`
+Pak přidejte `AnimationExtender` na stránku a poskytněte `ID`, atribut `TargetControlID` a povinný `runat="server":`
 
 [!code-aspx[Main](animation-depending-on-a-condition-vb/samples/sample4.aspx)]
 
-V rámci `<Animations>` uzlu, použijte `<OnLoad>` ke spuštění animací, jakmile úplným načtením stránky. Místo jednoho regulární animací `<Condition>` element vstupu do play. Kód jazyka JavaScript ve formě hodnoty `ConditionScript` atribut je proveden za běhu. Pokud je vyhodnocen jako true, animace provádí, v opačném případě ne. Následující kód obsahuje dvě animace, každý z nich prováděný 50 % případů na náhodné. Protože může existovat jenom jeden animace v rámci `<OnLoad>`, dva `<Condition>` animace se propojují s použitím `<Sequence>` element:
+V uzlu `<Animations>` pomocí `<OnLoad>` spustit animace, jakmile se stránka kompletně načetla. Místo jedné z běžných animací se `<Condition>` element přesune do hry. Kód jazyka JavaScript poskytnutý jako hodnota atributu `ConditionScript` se spustí za běhu. Pokud se vyhodnotí jako true, spustí se animace, jinak ne. Následující kód poskytuje dvě animace, každý z nich je spuštěn v 50% případů po náhodném provedení. Vzhledem k tomu, že v `<OnLoad>`může existovat pouze jedna animace, jsou tyto dvě `<Condition>` animace spojeny společně pomocí elementu `<Sequence>`:
 
 [!code-aspx[Main](animation-depending-on-a-condition-vb/samples/sample5.aspx)]
 
-Všimněte si, že menší než znaménko (`<`) v `ConditionScript` atribut musí být uvozený uvozovacím znakem (). Při spuštění tohoto skriptu, buď žádná spuštění animace, nebo jeden z nich nemá, nebo obě.
+Všimněte si, že znaménko menší než (`<`) v atributu `ConditionScript` musí mít řídicí znak (). Spouštíte-li tento skript, buď žádná animace neběží, nebo jeden z těchto dvou testů nebo obojí.
 
-[![Je panelu mizení bez změny velikosti, takže druhého spuštění animace, první z nich nebyl](animation-depending-on-a-condition-vb/_static/image2.png)](animation-depending-on-a-condition-vb/_static/image1.png)
+[![je panel bez změny velikosti, takže se druhá animace spustí, první z nich se nezměnila.](animation-depending-on-a-condition-vb/_static/image2.png)](animation-depending-on-a-condition-vb/_static/image1.png)
 
-Je panelu mizení bez změny velikosti, takže druhého spuštění animace, první z nich nebyl ([kliknutím ji zobrazíte obrázek v plné velikosti](animation-depending-on-a-condition-vb/_static/image3.png))
+Panel se vypustil bez změny velikosti, takže se druhá animace spustí poprvé ([kliknutím zobrazíte obrázek v plné velikosti).](animation-depending-on-a-condition-vb/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](executing-several-animations-after-each-other-vb.md)
-> [další](picking-one-animation-out-of-a-list-vb.md)
+> [Další](picking-one-animation-out-of-a-list-vb.md)

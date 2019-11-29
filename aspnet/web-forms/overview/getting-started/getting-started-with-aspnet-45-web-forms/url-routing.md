@@ -1,153 +1,153 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing
-title: Směrování adres URL | Dokumentace Microsoftu
+title: Směrování adres URL | Microsoft Docs
 author: Erikre
-description: V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 pro jsme...
+description: V této sérii kurzů se seznámíte se základy vytváření aplikací webových formulářů ASP.NET pomocí ASP.NET 4,5 a Microsoft Visual Studio Express 2013 pro My...
 ms.author: riande
 ms.date: 09/08/2014
 ms.assetid: 4f4bf092-c400-471f-a876-78fda0417890
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing
 msc.type: authoredcontent
-ms.openlocfilehash: f8a374be79a41b34dc8f17fa8d44c6e0680984d7
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 66b727b69ca4f9a3d35b67f492f9a554146e09ef
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108604"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74590712"
 ---
 # <a name="url-routing"></a>Směrování adresy URL
 
-by [Erik Reitan](https://github.com/Erikre)
+od [Erik Reitan](https://github.com/Erikre)
 
-[Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
+[Stáhnout vzorový projekt Wingtip Toys (C#)](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [Stáhnout elektronickou knihu (PDF)](https://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
-> V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 for Web. Visual Studio 2013 [projektu se zdrojovým kódem jazyka C#](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) je k dispozici v této sérii kurzů.
+> V této sérii kurzů se naučíte základy vytváření webových formulářů ASP.NET pomocí ASP.NET 4,5 a Microsoft Visual Studio Express 2013 pro web. K dispozici je Visual Studio 2013 [projekt se C# zdrojovým kódem](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) , který se doprovází v této sérii kurzů.
 
-V tomto kurzu budete upravovat ukázkové aplikace Wingtip Toys pro podporu směrování adres URL. Směrování umožňuje webové aplikace pomocí adresy URL, které jsou popisný usnadňuje mějte na paměti a lépe podporuje vyhledávací weby. V tomto kurzu vychází z předchozí kurz o službě "Členství a správa" a je součástí série kurzů na adresář Wingtip Toys.
+V tomto kurzu upravíte ukázkovou aplikaci Wingtip Toys, která bude podporovat směrování adres URL. Směrování umožňuje, aby webová aplikace používala adresy URL, které jsou uživatelsky přívětivější a lépe zapamatovatelné a lépe podporované vyhledávacími moduly. Tento kurz sestaví z předchozího kurzu "členství a správy" a je součástí série kurzů Wingtip Toys.
 
-## <a name="what-youll-learn"></a>Co se dozvíte:
+## <a name="what-youll-learn"></a>Co se naučíte:
 
-- Postup při registraci trasy pro aplikace webových formulářů ASP.NET.
+- Jak registrovat trasy pro aplikaci webových formulářů ASP.NET
 - Postup přidání tras na webovou stránku.
-- Jak vybrat data z databáze pro podporu trasy.
+- Jak vybrat data z databáze pro podporu tras.
 
-## <a name="aspnet-routing-overview"></a>Přehled směrování ASP.NET
+## <a name="aspnet-routing-overview"></a>ASP.NET směrování – přehled
 
-Směrování adres URL umožňuje nakonfigurovat aplikaci tak, aby přijímal žádosti adresy URL, které nelze namapovat na fyzické soubory. Adresa URL požadavku je jednoduše adresu URL, které uživatel zadá do svého prohlížeče najděte požadovanou stránku na webu. Používáte směrování k definování adresy URL, která jsou sémanticky srozumitelné pro uživatele a, které mohou pomoci s optimalizací vyhledávače (SEO).
+Směrování adres URL umožňuje nakonfigurovat aplikaci, aby přijímala adresy URL požadavků, které nejsou namapované na fyzické soubory. Adresa URL požadavku je jednoduše adresa URL, kterou uživatel zadá do prohlížeče, aby našli stránku na vašem webu. Směrování můžete použít k definování adres URL, které jsou sémanticky smysluplné pro uživatele a které můžou pomáhat s optimalizací vyhledávání na modulech (SEO).
 
-Ve výchozím nastavení, zahrnuje šablony webových formulářů [přátelské adresy URL technologie ASP.NET](http://www.nuget.org/packages/Microsoft.AspNet.FriendlyUrls/). Velkou část základního Směrování práce se dají implementovat pomocí *přátelské adresy URL*. V tomto kurzu upravenými možnostmi směrování přidáte.
+Ve výchozím nastavení zahrnuje šablona webových formulářů [ASP.NET popisné adresy URL](http://www.nuget.org/packages/Microsoft.AspNet.FriendlyUrls/). Většina základních pracovních postupů se implementuje pomocí *popisných adres URL*. V tomto kurzu ale přidáte přizpůsobené možnosti směrování.
 
-Než začnete s přizpůsobováním směrování adres URL, ukázkové aplikace Wingtip Toys můžete propojit s produktem pomocí následující adresy URL:
+Před přizpůsobením směrování adres URL může ukázková aplikace Wingtip Toys odkazovat na produkt pomocí následující adresy URL:
 
 `https://localhost:44300/ProductDetails.aspx?productID=2`
 
-Přizpůsobením směrování adres URL ukázkové aplikace Wingtip Toys odkaz na stejný produkt pomocí snadněji číst adresy URL:
+Pomocí přizpůsobení směrování adres URL se ukázková aplikace Wingtip Toys připojí ke stejnému produktu pomocí snazší čtení adresy URL:
 
 `https://localhost:44300/Product/Convertible%20Car`
 
-### <a name="routes"></a>Trasy
+### <a name="routes"></a>Tras
 
-Cesta je vzor adresy URL, který je namapovaný na obslužnou rutinu. Obslužná rutina může být fyzický soubor, třeba soubor .aspx v aplikaci webových formulářů. Obslužná rutina může být také třída, která zpracuje požadavek. Definovat trasu, vytvoření instance třídy směrování tak, že zadáte vzor adresy URL, obslužné rutiny a volitelně název pro tuto trasu.
+Trasa je vzor URL, který je namapován na obslužnou rutinu. Obslužná rutina může být fyzický soubor, jako je například soubor. aspx v aplikaci webových formulářů. Obslužná rutina může být také třída, která zpracovává požadavek. Chcete-li definovat trasu, vytvořte instanci třídy směrování zadáním vzoru adresy URL, obslužné rutiny a volitelně názvu trasy.
 
-Přidat trasu k aplikaci tak, že přidáte `Route` objekt statické `Routes` vlastnost `RouteTable` třídy. Vlastnost trasy je `RouteCollection` objekt, který uchovává všechny trasy pro aplikaci.
+Přidáte trasu do aplikace přidáním objektu `Route` do vlastnosti static `Routes` třídy `RouteTable`. Vlastnost Routes je objekt `RouteCollection`, který ukládá všechny trasy pro aplikaci.
 
 ### <a name="url-patterns"></a>Vzory adres URL
 
-Vzor adresy URL může obsahovat literály a zástupné symboly proměnných (označované jako parametry adresy URL). Literály a zástupné symboly jsou umístěny v segmentů adresy URL, které jsou oddělené lomítkem (`/`) znaků.
+Vzor adresy URL může obsahovat literálové hodnoty a zástupné symboly proměnných (označované jako parametry adresy URL). Literály a zástupné symboly jsou umístěny v segmentech adresy URL, které jsou odděleny znakem lomítka (`/`).
 
-Po provedení požadavku na webovou aplikaci, adresa URL je analyzován do segmentů a zástupné symboly a hodnoty proměnných jsou k dispozici pro obslužnou rutinu požadavků. Tento proces je podobný způsob, jak je analyzovat a předat obslužné rutiny žádosti o data v řetězci dotazu. V obou případech se informace o proměnných do adresy URL a předané do rutiny v podobě dvojic klíč / hodnota. Pro řetězce dotazu klíče a hodnoty jsou v adrese URL. Pro trasy klíče jsou zástupné názvy definovanou ve vzoru adresy URL a jsou pouze hodnoty v adrese URL.
+Když se vytvoří požadavek na webovou aplikaci, adresa URL se analyzuje na segmenty a zástupné symboly a hodnoty proměnných jsou k dispozici pro obslužnou rutinu žádosti. Tento proces je podobný způsobu, jakým jsou data v řetězci dotazu analyzována a předána obslužné rutině žádosti. V obou případech jsou informace o proměnných zahrnuty v adrese URL a předány obslužné rutině ve formě párů klíč-hodnota. Pro řetězce dotazu jsou klíče i hodnoty v adrese URL. Pro trasy jsou klíče zástupné názvy definované ve vzoru adresy URL a v adrese URL jsou pouze hodnoty.
 
-Ve vzoru adresy URL můžete definovat zástupné symboly uzavřením do složených závorek ( `{` a `}` ). Můžete definovat více než jeden zástupný symbol v segmentu, ale zástupné symboly musí být odděleny literálovou hodnotou. Například `{language}-{country}/{action}` je vzor platnou trasu. Nicméně `{language}{country}/{action}` není platný vzor, protože není žádná hodnota literálu nebo oddělovač mezi zástupné symboly. Proto směrování nemůže určit, kde k oddělení hodnotu pro zástupný symbol jazyka z hodnoty pro zástupný text země.
+Ve vzoru adresy URL definujete zástupné symboly jejich uzavřením do složených závorek (`{` a `}`). V segmentu lze definovat více než jeden zástupný symbol, ale zástupné symboly musí být odděleny hodnotou literálu. Například `{language}-{country}/{action}` je platným modelem trasy. `{language}{country}/{action}` však není platným vzorem, protože mezi zástupnými symboly není hodnota literálu nebo oddělovač. Směrování proto nemůže určit, kde se má oddělit hodnota pro zástupný symbol jazyka od hodnoty pro zástupný text země.
 
-### <a name="mapping-and-registering-routes"></a>Mapování a registrace trasy
+### <a name="mapping-and-registering-routes"></a>Mapování a registrace tras
 
-Předtím, než mohou zahrnovat trasy na stránky ukázkové aplikace Wingtip Toys, je nutné zaregistrovat trasy při spuštění aplikace. K registraci trasy, upravíte `Application_Start` obslužné rutiny události.
+Než budete moci přidat trasy na stránky ukázkové aplikace Wingtip Toys, je nutné při spuštění aplikace zaregistrovat trasy. Chcete-li zaregistrovat trasy, upravte obslužnou rutinu události `Application_Start`.
 
-1. V **Průzkumníka řešení**sady Visual Studio, najít a otevřít *Global.asax.cs* souboru.
-2. Přidejte kód zvýrazněné žlutou barvou na *Global.asax.cs* to následujícím způsobem:   
+1. V **Průzkumník řešení**sady Visual Studio vyhledejte a otevřete soubor *Global.asax.cs* .
+2. Kód zvýrazněný žlutě přidejte do souboru *Global.asax.cs* následujícím způsobem:   
 
     [!code-csharp[Main](url-routing/samples/sample1.cs?highlight=30-31,34-46)]
 
-Wingtip Toys ukázkové aplikace spustí, zavolá `Application_Start` obslužné rutiny události. Na konci této obslužné rutiny události `RegisterCustomRoutes` metoda je volána. `RegisterCustomRoutes` Metoda přidá každý postup voláním `MapPageRoute` metodu `RouteCollection` objektu. Trasy jsou definovány pomocí názvu trasy, adresa URL trasy a fyzickou adresu URL.
+Po spuštění ukázkové aplikace Wingtip Toys zavolá obslužnou rutinu události `Application_Start`. Na konci této obslužné rutiny události je volána metoda `RegisterCustomRoutes`. Metoda `RegisterCustomRoutes` přidává každou trasu voláním metody `MapPageRoute` objektu `RouteCollection`. Trasy se definují pomocí názvu trasy, adresy URL trasy a fyzické adresy URL.
 
-První parametr ("`ProductsByCategoryRoute`") je název trasy. Používá se k volání trasy, pokud je to potřeba. Druhý parametr ("`Category/{categoryName}`") definuje popisný nahrazení adresu URL, která může být dynamické na základě kódu. Když plníte ovládací prvek dat s odkazy, které jsou generovány na základě dat použijete tuto trasu. Trasa se zobrazí takto:
+První parametr ("`ProductsByCategoryRoute`") je název trasy. Používá se k volání trasy, pokud je potřeba. Druhý parametr ("`Category/{categoryName}`") definuje přívětivou nahrazující adresu URL, která může být dynamická na základě kódu. Tuto trasu použijete při naplňování ovládacího prvku dat pomocí odkazů, které jsou generovány na základě dat. Trasa se zobrazí takto:
 
 [!code-csharp[Main](url-routing/samples/sample2.cs)]
 
-Druhý parametr trasy, která zahrnuje dynamické hodnoty zadané ve složených závorkách (`{ }`). V takovém případě `categoryName` je proměnná, která se použije k určení správné cestu směrování.
+Druhý parametr trasy obsahuje dynamickou hodnotu určenou složenými závorkami (`{ }`). V tomto případě je `categoryName` proměnná, která bude sloužit k určení správné cesty směrování.
 
 > [!NOTE] 
 > 
 > **Optional**
 > 
-> Vám může být jednodušší ke správě vašeho kódu tak, `RegisterCustomRoutes` metodu pro samostatné třídy. V *logiky* složku, vytvořte samostatné `RouteActions` třídy. Přesunout výše `RegisterCustomRoutes` metodu z *Global.asax.cs* souboru do nové `RoutesActions` třídy. Použití `RoleActions` třídy a `createAdmin` jako příklad toho, jak volat metodu `RegisterCustomRoutes` metodu z *Global.asax.cs* souboru.
+> Je možné, že je snazší spravovat kód přesunutím metody `RegisterCustomRoutes` do samostatné třídy. Ve složce *Logic* Vytvořte samostatnou třídu `RouteActions`. Přesuňte výše uvedenou metodu `RegisterCustomRoutes` ze souboru *Global.asax.cs* do nové třídy `RoutesActions`. Použijte třídu `RoleActions` a metodu `createAdmin` jako příklad, jak volat metodu `RegisterCustomRoutes` ze souboru *Global.asax.cs* .
 
-Také jste si všimli `RegisterRoutes` pomocí volání metody `RouteConfig` objekt na začátku `Application_Start` obslužné rutiny události. Při volání k implementaci výchozí směrování. Byl zahrnutý jako výchozí kód, když vytvoříte aplikaci pomocí šablony webových formulářů v sadě Visual Studio.
+Můžete také zaznamenat `RegisterRoutes` volání metody pomocí objektu `RouteConfig` na začátku `Application_Start` obslužné rutiny události. Toto volání provede implementaci výchozího směrování. Byla vložena jako výchozí kód při vytváření aplikace pomocí šablony webových formulářů sady Visual Studio.
 
-## <a name="retrieving-and-using-route-data"></a>Načítání a používá Data trasy
+## <a name="retrieving-and-using-route-data"></a>Načítání a používání dat směrování
 
-Jak je uvedeno výše, lze definovat trasy. Kód, který jste přidali do `Application_Start` obslužné rutině událostí ve *Global.asax.cs* trasy definovatelné načtení souboru.
+Jak je uvedeno výše, trasy lze definovat. Kód, který jste přidali do obslužné rutiny události `Application_Start` v souboru *Global.asax.cs* , načte definovatelné trasy.
 
-### <a name="setting-routes"></a>Nastavení trasy
+### <a name="setting-routes"></a>Nastavení tras
 
-Trasy vyžadují, abyste přidejte další kód. V tomto kurzu použijete vazby modelu pro načtení `RouteValueDictionary` objekt, který se používá při generování tras pomocí dat z ovládacího prvku. `RouteValueDictionary` Objekt bude obsahovat seznam názvů produktů, které patří do určité kategorie produktů. Odkaz se vytvoří pro každý produkt na základě dat a směrování.
+Trasy vyžadují, abyste přidali další kód. V tomto kurzu použijete vazbu modelu k načtení objektu `RouteValueDictionary`, který se používá při generování tras pomocí dat z ovládacího prvku data. Objekt `RouteValueDictionary` bude obsahovat seznam názvů produktů, které patří do konkrétní kategorie produktů. Pro každý produkt se vytvoří odkaz na základě dat a tras.
 
 #### <a name="enable-routes-for-categories-and-products"></a>Povolit trasy pro kategorie a produkty
 
-Dále budete aktualizovat aplikaci, aby používala `ProductsByCategoryRoute` určit správné trasy, která má zahrnout pro každý odkaz kategorie produktu. Také aktualizujeme *ProductList.aspx* stránky, aby zahrnovala směrované odkaz pro jednotlivé produkty. Odkazy se zobrazí, jako kdyby byly před změnou, ale odkazy budou nyní využívat směrování adres URL.
+V dalším kroku aktualizujete aplikaci tak, aby používala `ProductsByCategoryRoute` k určení správné trasy, která se má zahrnout pro jednotlivé odkazy na kategorie produktů. Také aktualizujete stránku *ProductList. aspx* tak, aby obsahovala směrovaný odkaz na každý produkt. Odkazy se zobrazí, protože byly před změnou, ale odkazy teď budou používat směrování adres URL.
 
-1. V **Průzkumníka řešení**, otevřete *Site.Master* stránky, pokud ještě není otevřený.
-2. Aktualizace **ListView** ovládací prvek s názvem "`categoryList`" změnami zvýrazněné žlutou barvou, takže značky se zobrazí takto:   
+1. V **Průzkumník řešení**otevřete stránku *Web. Master* , pokud ještě není otevřená.
+2. Aktualizujte ovládací prvek **ListView** s názvem "`categoryList`" se změnami zvýrazněnými žlutě, takže se kód zobrazí takto:   
 
     [!code-aspx[Main](url-routing/samples/sample3.aspx?highlight=7-9)]
-3. V **Průzkumníka řešení**, otevřete *ProductList.aspx* stránky.
-4. Aktualizace `ItemTemplate` elementu *ProductList.aspx* stránce s aktualizacemi zvýrazněné žlutou barvou, značky se zobrazí takto:   
+3. V **Průzkumník řešení**otevřete stránku *ProductList. aspx* .
+4. Aktualizujte `ItemTemplate` element stránky *ProductList. aspx* s aktualizacemi zvýrazněnými žlutě, takže se kód zobrazí takto:   
 
     [!code-aspx[Main](url-routing/samples/sample4.aspx?highlight=6-9,14-16)]
-5. Otevřete kódu z *ProductList.aspx.cs* a přidat následující obor názvů v zvýrazněné žlutou barvou:  
+5. Otevřete kód na pozadí *ProductList.aspx.cs* a přidejte následující obor názvů zvýrazněný žlutě:  
 
     [!code-csharp[Main](url-routing/samples/sample5.cs?highlight=9)]
-6. Nahradit `GetProducts` metoda modelu code-behind (*ProductList.aspx.cs*) následujícím kódem:   
+6. Metodu `GetProducts` kódu na pozadí (*ProductList.aspx.cs*) nahraďte následujícím kódem:   
 
     [!code-csharp[Main](url-routing/samples/sample6.cs)]
 
-#### <a name="add-code-for-product-details"></a>Přidejte kód pro podrobnosti o produktu
+#### <a name="add-code-for-product-details"></a>Přidat kód pro podrobnosti o produktu
 
-Nyní, aktualizace modelu code-behind (*ProductDetails.aspx.cs*) pro *ProductDetails.aspx* stránku data trasy. Všimněte si, že nový `GetProduct` metoda přijímá také hodnotu řetězce dotazu pro případ, kde má uživatel vytvořili záložku na odkaz, který používá starší nepřátelských, nesměrovaný adresu URL.
+Nyní aktualizujte kód na pozadí (*ProductDetails.aspx.cs*) pro stránku *ProductDetails. aspx* , aby používala data směrování. Všimněte si, že nová metoda `GetProduct` přijímá také hodnotu řetězce dotazu pro případ, kde má uživatel odkaz, který používá starší nesměrované, nesměrované adresy URL.
 
-1. Nahradit `GetProduct` metoda modelu code-behind (*ProductDetails.aspx.cs*) následujícím kódem:   
+1. Metodu `GetProduct` kódu na pozadí (*ProductDetails.aspx.cs*) nahraďte následujícím kódem:   
 
     [!code-csharp[Main](url-routing/samples/sample7.cs)]
 
 ## <a name="running-the-application"></a>Spuštění aplikace
 
-Můžete spustit nyní aplikaci zobrazíte aktualizace tras.
+Nyní můžete spustit aplikaci a zobrazit aktualizované trasy.
 
-1. Stisknutím klávesy **F5** ke spuštění ukázkové aplikace Wingtip Toys.  
- V prohlížeči se otevře a zobrazí *Default.aspx* stránky.
-2. Klikněte na tlačítko **produkty** odkazu v horní části stránky.  
- Všechny produkty jsou zobrazeny v *ProductList.aspx* stránky. Následující adresu URL (vaše číslo portu) se zobrazí v prohlížeči:  
+1. Stisknutím klávesy **F5** spusťte ukázkovou aplikaci Wingtip Toys.  
+ Prohlížeč otevře a zobrazí stránku *Default. aspx* .
+2. V horní části stránky klikněte na odkaz **produkty** .  
+ Všechny produkty se zobrazí na stránce *ProductList. aspx* . Pro prohlížeč se zobrazí následující adresa URL (s použitím vašeho čísla portu):  
     `https://localhost:44300/ProductList`
-3. Klikněte **auta** kategorie propojení v horní části stránky.  
- Jenom auta se zobrazují na *ProductList.aspx* stránky. Následující adresu URL (vaše číslo portu) se zobrazí v prohlížeči:  
+3. V dalším kroku klikněte na odkaz kategorie **automobilů** v horní části stránky.  
+ Na stránce *ProductList. aspx* se zobrazí pouze automobily. Pro prohlížeč se zobrazí následující adresa URL (s použitím vašeho čísla portu):  
     `https://localhost:44300/Category/Cars`
-4. Klikněte na odkaz obsahující název prvního auta najdete na stránce ("**převoditelné Car**") Chcete-li zobrazit podrobnosti o produktu.  
- Následující adresu URL (vaše číslo portu) se zobrazí v prohlížeči:  
+4. Kliknutím na odkaz, který obsahuje název první auta uvedené na stránce ("**převoditelná auto**") se zobrazí podrobnosti o produktu.  
+ Pro prohlížeč se zobrazí následující adresa URL (s použitím vašeho čísla portu):  
     `https://localhost:44300/Product/Convertible%20Car`
-5. Pak zadejte následující nesměrovaný adresu URL (vaše číslo portu) do prohlížeče:  
+5. V dalším kroku zadejte následující nesměrované adresy URL (pomocí čísla portu) do prohlížeče:  
     `https://localhost:44300/ProductDetails.aspx?productID=2`  
- Kód stále rozpozná adresu URL, která obsahuje řetězec dotazu pro případ, ve kterém má odkaz záložek.
+ Kód stále rozpoznává adresu URL, která obsahuje řetězec dotazu, pro případ, kdy má uživatel odkaz na záložku.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-V tomto kurzu jste přidali trasy pro kategorie a produkty. Jste se naučili, jak je možné integrovat trasy s ovládacími prvky dat, které používají vazby modelu. V dalším kurzu budete implementovat zpracování globální chyb.
+V tomto kurzu jste přidali trasy pro kategorie a produkty. Zjistili jste, jak lze směrovat trasy k datovým ovládacím prvkům, které používají vazbu modelu. V dalším kurzu budete implementovat globální zpracování chyb.
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-[ASP.NET přátelské adresy URL](http://www.nuget.org/packages/Microsoft.AspNet.FriendlyUrls/)  
-[Nasaďte aplikaci zabezpečení rozhraní ASP.NET Web Forms s nástroji Membership, OAuth a SQL Database do služby Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)  
+[Popisné adresy URL ASP.NET](http://www.nuget.org/packages/Microsoft.AspNet.FriendlyUrls/)  
+[Nasazení zabezpečené aplikace webových formulářů ASP.NET pomocí členství, protokolu OAuth a SQL Database pro Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)  
 [Microsoft Azure – bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/)
 
 > [!div class="step-by-step"]
 > [Předchozí](membership-and-administration.md)
-> [další](aspnet-error-handling.md)
+> [Další](aspnet-error-handling.md)

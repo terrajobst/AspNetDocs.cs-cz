@@ -1,107 +1,107 @@
 ---
 uid: web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
-title: Povolení operací CRUD v ASP.NET Web API 1 – ASP.NET 4.x
+title: Povolení operací CRUD ve webovém rozhraní API ASP.NET 1 – ASP.NET 4. x
 author: MikeWasson
-description: Kurz ukazuje, jak podporovat operace CRUD v rámci protokolu HTTP služby pomocí rozhraní ASP.NET Web API pro ASP.NET 4.x.
+description: V tomto kurzu se dozvíte, jak podporovat operace CRUD ve službě HTTP pomocí webového rozhraní API ASP.NET pro ASP.NET 4. x.
 ms.author: riande
 ms.date: 01/28/2012
 ms.custom: seoapril2019
 ms.assetid: c125ca47-606a-4d6f-a1fc-1fc62928af93
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
-ms.openlocfilehash: 3c2a41482b7f9b60a8864b853df23ab5991b6da7
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: a096fd1c54df33b40115907a5c2517b2e3fec5b8
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108732"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74600341"
 ---
-# <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>Povolení operací CRUD v ASP.NET Web API 1
+# <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>Povolení operací CRUD ve webovém rozhraní API ASP.NET 1
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-[Stáhnout dokončený projekt](http://code.msdn.microsoft.com/ASP-NET-Web-API-Tutorial-c4761894)
+[Stáhnout dokončený projekt](https://code.msdn.microsoft.com/ASP-NET-Web-API-Tutorial-c4761894)
 
-> Tento kurz ukazuje, jak podporovat operace CRUD v rámci protokolu HTTP služby pomocí rozhraní ASP.NET Web API pro ASP.NET 4.x.
+> V tomto kurzu se dozvíte, jak podporovat operace CRUD ve službě HTTP pomocí webového rozhraní API ASP.NET pro ASP.NET 4. x.
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 > 
 > 
 > - Visual Studio 2012
-> - Webové rozhraní API 1 (také funguje s webovým rozhraním API 2)
+> - Webové rozhraní API 1 (funguje taky s webovým rozhraním API 2)
 
-Zastupuje CRUD &quot;vytvoření, čtení, aktualizace a odstraňování,&quot; jsou čtyři základní databázových operací. Mnoho služeb HTTP taky model operace CRUD prostřednictvím REST nebo jako REST API.
+CRUD představuje &quot;vytváření, čtení, aktualizace a odstraňování&quot; což jsou čtyři základní databázové operace. Mnohé služby HTTP také modelují operace CRUD prostřednictvím rozhraní API REST nebo REST.
 
-V tomto kurzu vytvoříte velmi jednoduché webové rozhraní API ke správě seznamu produktů. Každý produkt bude obsahovat název, cena a kategorie (například &quot;toys&quot; nebo &quot;hardwaru&quot;), plus ID produktu.
+V tomto kurzu vytvoříte velmi jednoduché webové rozhraní API pro správu seznamu produktů. Každý produkt bude obsahovat název, cenu a kategorii (například &quot;Toys&quot; nebo &quot;hardware&quot;) a ID produktu.
 
-Produkty rozhraní API bude vystavovat následující metody.
+Rozhraní API pro produkty zpřístupňuje následující metody.
 
 | Akce | Metoda HTTP | Relativní identifikátor URI |
 | --- | --- | --- |
-| Získání seznamu všech produktů | GET | / api/produkty |
-| Získání produktu podle ID | GET | / webové rozhraníAPI/produkty/*id* |
-| Získání produktu podle kategorie | GET | /api/products?category=*category* |
-| Vytvořit nový produkt | POST | / api/produkty |
-| Aktualizace produktu | PUT | / webové rozhraníAPI/produkty/*id* |
-| Odstranit produkt | DELETE | / webové rozhraníAPI/produkty/*id* |
+| Získat seznam všech produktů | GET | /api/products |
+| Získat produkt podle ID | GET | *ID* /API/Products/ |
+| Získat produkt podle kategorie | GET | /API/Products? kategorie =*kategorie* |
+| Vytvořit nový produkt | POST | /api/products |
+| Aktualizace produktu | PŘEVÉST | *ID* /API/Products/ |
+| Odstranění produktu | DELETE | *ID* /API/Products/ |
 
-Všimněte si, že některé identifikátory URI obsahovat číslo product ID v cestě. Pokud chcete získat produktů, jehož ID je 28, klient odešle požadavek GET `http://hostname/api/products/28`.
+Všimněte si, že některé identifikátory URI zahrnují ID produktu v cestě. Pokud například chcete získat produkt, jehož ID je 28, klient odešle požadavek GET na `http://hostname/api/products/28`.
 
 ### <a name="resources"></a>Prostředky
 
-Produkty API definuje identifikátory URI pro dva typy prostředků:
+Rozhraní API pro produkty definuje identifikátory URI pro dva typy prostředků:
 
-| Resource | Identifikátor URI |
+| Prostředek | URI |
 | --- | --- |
-| Seznam všech produktů. | / api/produkty |
-| Jednotlivé produkty. | / webové rozhraníAPI/produkty/*id* |
+| Seznam všech produktů. | /api/products |
+| Jednotlivý produkt. | *ID* /API/Products/ |
 
 ### <a name="methods"></a>Metody
 
-Čtyři hlavní metody HTTP (GET, PUT, POST a DELETE) lze mapovat na operace CRUD následujícím způsobem:
+Čtyři hlavní metody HTTP (GET, PUT, POST a DELETE) lze namapovat na operace CRUD následujícím způsobem:
 
-- GET načte reprezentaci prostředku na zadaný identifikátor URI. GET by měl mít žádné vedlejší účinky na serveru.
-- PUT aktualizuje prostředek na zadaný identifikátor URI. PUT také umožňuje vytvořit nový prostředek na zadaný identifikátor URI, pokud server umožňuje klientům k určení nové identifikátory URI. Pro účely tohoto kurzu nebude podporovat rozhraní API pro vytváření PUT.
-- POST vytvoří nový prostředek. Server přiřadí identifikátor URI pro nový objekt a vrátí tento identifikátor URI jako část zprávy s odpovědí.
-- Odstranit Odstraní prostředek na zadaný identifikátor URI.
+- GET načte reprezentace prostředku na zadaném identifikátoru URI. GET by neměl mít na serveru žádné vedlejší účinky.
+- VLOŽÍ aktualizace prostředku se zadaným identifikátorem URI. Příkaz PUT lze použít také k vytvoření nového prostředku v zadaném identifikátoru URI, pokud server umožňuje klientům zadat nové identifikátory URI. V tomto kurzu rozhraní API nebude podporovat vytváření prostřednictvím PUT.
+- POST vytvoří nový prostředek. Server přiřadí identifikátor URI pro nový objekt a vrátí tento identifikátor URI jako součást zprávy s odpovědí.
+- ODSTRANĚNÍ odstraní prostředek se zadaným identifikátorem URI.
 
-Poznámka: Metoda PUT nahradí entitu celého produktu. To znamená Klient by měl odeslat úplnou reprezentaci aktualizace produktu. Pokud chcete zajistit podporu částečné aktualizace, je upřednostňovanou metodu PATCH. Tento kurz neimplementuje opravy.
+Poznámka: metoda PUT nahrazuje celou entitu produktu. To znamená, že klient očekává odeslání úplné reprezentace aktualizovaného produktu. Pokud chcete podporovat částečné aktualizace, je vhodnější metoda opravy. Tento kurz neimplementuje opravu.
 
-## <a name="create-a-new-web-api-project"></a>Vytvořte nový projekt webového rozhraní API
+## <a name="create-a-new-web-api-project"></a>Vytvoření nového projektu webového rozhraní API
 
-Začněte tím, že spustíte Visual Studio a vyberte **nový projekt** z **Start** stránky. Nebo z **souboru** nabídce vyberte možnost **nový** a potom **projektu**.
+Začněte spuštěním sady Visual Studio a na **úvodní** stránce vyberte **Nový projekt** . Nebo v nabídce **soubor** vyberte **Nový** a pak **projekt**.
 
-V **šablony** vyberte **nainstalované šablony** a rozbalte **Visual C#** uzlu. V části **Visual C#** vyberte **webové**. V seznamu šablon projektu vyberte **webové aplikace ASP.NET MVC 4**. Pojmenujte projekt &quot;ProductStore&quot; a klikněte na tlačítko **OK**.
+V podokně **šablony** vyberte **Nainstalované šablony** a rozbalte uzel  **C# vizuál** . V **části C#vizuál** vyberte **Web**. V seznamu šablon projektu vyberte **ASP.NET webová aplikace MVC 4**. Pojmenujte projekt &quot;ProductStore&quot; a klikněte na tlačítko **OK**.
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image1.png)
 
-V **nového projektu ASP.NET MVC 4** dialogového okna, vyberte **webového rozhraní API** a klikněte na tlačítko **OK**.
+V dialogovém okně **Nový projekt ASP.NET MVC 4** vyberte **webové rozhraní API** a klikněte na **OK**.
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image2.png)
 
 ## <a name="adding-a-model"></a>Přidání modelu
 
-A *modelu* je objekt, který představuje data ve vaší aplikaci. V rozhraní ASP.NET Web API objektů se silným typem CLR slouží jako modelů a jejich bude automaticky serializovat do XML nebo JSON pro klienta.
+*Model* je objekt, který představuje data v aplikaci. Ve webovém rozhraní API ASP.NET můžete jako modely použít objekty CLR silného typu a automaticky je serializovat do XML nebo JSON pro klienta.
 
-Pro rozhraní API ProductStore naše data se skládá z produktů, takže vytvoříme novou třídu s názvem `Product`.
+Pro rozhraní ProductStore API se naše data skládají z produktů, takže vytvoříme novou třídu s názvem `Product`.
 
-Pokud již není Průzkumník řešení viditelný, klikněte na tlačítko **zobrazení** nabídky a vybereme **Průzkumníka řešení**. V Průzkumníku řešení klikněte pravým tlačítkem myši **modely** složky. V místní nabídce vyberte **přidat**a pak vyberte **třídy**. Název třídy &quot;produktu&quot;.
+Pokud Průzkumník řešení ještě není vidět, klikněte na nabídku **zobrazení** a vyberte možnost **Průzkumník řešení**. V Průzkumník řešení klikněte pravým tlačítkem na složku **modely** . V místní nabídce vyberte **Přidat**a pak vyberte **Třída**. Pojmenujte třídu &quot;&quot;produktu.
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image3.png)
 
-Přidejte následující vlastnosti pro `Product` třídy.
+Do třídy `Product` přidejte následující vlastnosti.
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample1.cs)]
 
 ## <a name="adding-a-repository"></a>Přidání úložiště
 
-Potřebujeme k uložení kolekce produktů. Je vhodné oddělit kolekce z naší implementaci služby. Tímto způsobem můžeme změnit záložní úložiště bez přepsání třídu služby. Tento typ návrhu se nazývá *úložiště* vzor. Začněte tím, že definování obecné rozhraní pro úložiště.
+Musíme Uložit kolekci produktů. Je vhodné oddělit kolekci od implementace naší služby. Tímto způsobem můžeme změnit záložní úložiště bez přepsání třídy služby. Tento typ návrhu se nazývá vzor *úložiště* . Začněte definováním obecného rozhraní pro úložiště.
 
-V Průzkumníku řešení klikněte pravým tlačítkem myši **modely** složky. Vyberte **přidat**a pak vyberte **nová položka**.
+V Průzkumník řešení klikněte pravým tlačítkem na složku **modely** . Vyberte **Přidat**a pak vyberte **Nová položka**.
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image4.png)
 
-V **šablony** vyberte **nainstalované šablony** a rozbalte uzel jazyka C#. V jazyce C# vyberte **kód**. Vyberte v seznamu šablon kódu **rozhraní**. Název rozhraní &quot;IProductRepository&quot;.
+V podokně **šablony** vyberte **Nainstalované šablony** a rozbalte C# uzel. V C#části vyberte **kód**. V seznamu šablon kódu vyberte **rozhraní**. Název rozhraní &quot;IProductRepository&quot;.
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image5.png)
 
@@ -109,112 +109,112 @@ Přidejte následující implementaci:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample2.cs)]
 
-Nyní přidejte další třídu ke složce modelů s názvem &quot;ProductRepository.&quot; Tato třída implementuje `IProductRepository` rozhraní. Přidejte následující implementaci:
+Nyní do složky modely přidejte další třídu s názvem &quot;ProductRepository.&quot; Tato třída bude implementovat rozhraní `IProductRepository`. Přidejte následující implementaci:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample3.cs)]
 
-Úložiště zajišťuje seznamu místní paměti. Tento kurz je v pořádku, ale v reálné aplikaci bude ukládat data externě, buď databázi nebo v cloudovém úložišti. Vzor úložiště vám usnadní změňte implementaci později.
+Úložiště uchovává seznam v místní paměti. V tomto kurzu je to v pořádku, ale v reálné aplikaci byste data ukládali externě, buď do databáze, nebo do cloudového úložiště. Vzor úložiště vám usnadní pozdější změnu implementace.
 
-## <a name="adding-a-web-api-controller"></a>Přidání Kontroleru webového rozhraní API
+## <a name="adding-a-web-api-controller"></a>Přidání kontroleru webového rozhraní API
 
-Pokud jste už pracovali s ASP.NET MVC, pak jste již obeznámeni s řadiči. V rozhraní ASP.NET Web API *řadič* je třída, která zpracovává požadavky HTTP od klienta. Průvodce novým projektem vytvoří dva řadiče za vás při vytváření projektu. Neuvidíte, rozbalte složku řadiče v Průzkumníku řešení.
+Pokud jste pracovali s ASP.NET MVC, už jste obeznámeni s řadiči. Ve webovém rozhraní API ASP.NET je *kontroler* třída, která zpracovává požadavky HTTP od klienta. Průvodce vytvořením nového projektu při vytváření projektu vytvořil dva řadiče. Pokud je chcete zobrazit, rozbalte složku řadiče v Průzkumník řešení.
 
-- HomeController je tradiční kontroler ASP.NET MVC. Zodpovídá za poskytování stránky HTML pro web a přímo nesouvisí s naší webové rozhraní API.
-- Kontroleru ValuesController se příklad řadiče WebAPI.
+- HomeController je tradiční kontroler ASP.NET MVC. Zodpovídá za obsluhu stránek HTML webu a přímo se nevztahuje k našemu webovému rozhraní API.
+- ValuesController je ukázkový kontroler WebAPI.
 
-Pokračujte a odstranit kontroleru ValuesController, tak, že kliknete pravým tlačítkem soubor v Průzkumníku řešení a vyberete **odstranit.** Nyní přidejte nový kontroler, následujícím způsobem:
+Pokračujte a odstraňte ValuesController tak, že kliknete pravým tlačítkem na soubor v Průzkumník řešení a vyberete **Odstranit.** Nyní přidejte nový kontroler, a to takto:
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem na složku řadiče. Vyberte **přidat** a pak vyberte **řadič**.
+V **Průzkumník řešení**klikněte pravým tlačítkem myši na složku Controllers. Vyberte **Přidat** a pak vybrat **kontroler**.
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image6.png)
 
-V **přidat kontroler** průvodce, názvu kontroleru &quot;ProductsController&quot;. V **šablony** rozevíracího seznamu vyberte **prázdný kontroler API**. Pak klikněte na tlačítko **přidat**.
+V průvodci **přidáním kontroleru** pojmenujte kontrolér &quot;ProductsController&quot;. V rozevíracím seznamu **Šablona** vyberte **prázdný kontroler rozhraní API**. Pak klikněte na **Přidat**.
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image7.png)
 
 > [!NOTE]
-> Není nutné převést vaše řadiče do složky s názvem řadiče. Název složky není důležité. je jednoduše pohodlný způsob, jak uspořádat zdrojové soubory.
+> Ovladače není nutné vkládat do složky s názvem Controllers. Název složky není důležitý. je to jednoduše pohodlný způsob, jak uspořádat zdrojové soubory.
 
-**Přidat kontroler** průvodce vytvořit soubor s názvem ProductsController.cs ve složce řadiče. Pokud tento soubor ještě není otevřený, klikněte dvakrát na soubor otevřete. Přidejte následující **pomocí** – příkaz:
+Průvodce **přidáním kontroleru** vytvoří ve složce Controllers soubor s názvem ProductsController.cs. Pokud tento soubor ještě není otevřený, otevřete ho tak, že na něj dvakrát kliknete. Přidejte následující příkaz **using** :
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample4.cs)]
 
-Přidat pole, která obsahuje **IProductRepository** instance.
+Přidejte pole, které obsahuje instanci **IProductRepository** .
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample5.cs)]
 
 > [!NOTE]
-> Volání `new ProductRepository()` v řadiči není optimální, protože propojuje kontroleru pro konkrétní implementaci `IProductRepository`. Lepším řešením, naleznete v tématu [použitím překladač závislostí webové rozhraní API](../advanced/dependency-injection.md).
+> Volání `new ProductRepository()` v kontroleru není nejlepším návrhem, protože tento kontroler přiřazuje konkrétní implementaci `IProductRepository`. Lepší přístup najdete v tématu [použití překladače závislostí webového rozhraní API](../advanced/dependency-injection.md).
 
 ## <a name="getting-a-resource"></a>Získání prostředku
 
-Rozhraní API ProductStore bude vystavovat několik &quot;čtení&quot; akce jako metody GET protokolu HTTP. Každá akce, které budou odpovídat na metodu v `ProductsController` třídy.
+Rozhraní ProductStore API zveřejňuje několik &quot;číst&quot; akcí jako metody GET protokolu HTTP. Každá akce bude odpovídat metodě ve třídě `ProductsController`.
 
 | Akce | Metoda HTTP | Relativní identifikátor URI |
 | --- | --- | --- |
-| Získání seznamu všech produktů | GET | / api/produkty |
-| Získání produktu podle ID | GET | / webové rozhraníAPI/produkty/*id* |
-| Získání produktu podle kategorie | GET | /api/products?category=*category* |
+| Získat seznam všech produktů | GET | /api/products |
+| Získat produkt podle ID | GET | *ID* /API/Products/ |
+| Získat produkt podle kategorie | GET | /API/Products? kategorie =*kategorie* |
 
-Pokud chcete získat seznam všech produktů, přidejte tuto metodu za účelem `ProductsController` třídy:
+Chcete-li získat seznam všech produktů, přidejte tuto metodu do třídy `ProductsController`:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample6.cs)]
 
-Název metody, který začíná &quot;získat&quot;, takže podle konvence je namapován na požadavky GET. Navíc vzhledem k tomu, že metoda nemá žádné parametry, mapuje se na identifikátor URI, který neobsahuje *&quot;id&quot;* segment v cestě.
+Název metody začíná na &quot;získat&quot;, tak podle konvence, kterou mapuje na požadavky GET. Vzhledem k tomu, že metoda nemá žádné parametry, je namapována na identifikátor URI, který neobsahuje *&quot;id&quot;* segmentu v cestě.
 
-Chcete-li získat produktů podle ID, přidejte tuto metodu za účelem `ProductsController` třídy:
+Chcete-li získat produkt podle ID, přidejte tuto metodu do třídy `ProductsController`:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample7.cs)]
 
-Tento název metody také začíná &quot;získat&quot;, ale metoda nemá parametr pojmenovaný *id*. Tento parametr je namapována na &quot;id&quot; segment cesty identifikátoru URI. ID rozhraní ASP.NET Web API automaticky převede na správného datového typu (**int**) pro parametr.
+Tento název metody také začíná &quot;získat&quot;, ale metoda má parametr s názvem *ID*. Tento parametr je namapován na &quot;ID&quot; segmentu cesty identifikátoru URI. Rozhraní Web API pro ASP.NET automaticky převede ID na správný datový typ (**int**) pro parametr.
 
-Metoda GetProduct vyvolá výjimku typu **HttpResponseException** Pokud *id* není platný. Tato výjimka bude fungovat v rámci rozhraní chybu 404 (Nenalezeno).
+Metoda getproduct vyvolá výjimku typu **HttpResponseException** , pokud *ID* je neplatné. Tato výjimka bude přeložena rozhraním do chyby 404 (Nenalezeno).
 
-Nakonec přidejte metodu k vyhledat produkty podle kategorie:
+Nakonec přidejte metodu pro vyhledání produktů podle kategorie:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample8.cs)]
 
-Pokud identifikátor URI požadavku obsahuje řetězce dotazu, se pokusí odpovídat parametrům dotazu k parametrům metody kontroleru webového rozhraní API. Proto se identifikátor URI ve tvaru "rozhraní api a produktů? kategorie =*kategorie*" se namapuje do této metody.
+Pokud má identifikátor URI žádosti řetězec dotazu, webové rozhraní API se pokusí porovnat parametry dotazu s parametry v metodě kontroleru. Proto se identifikátor URI ve formátu "API/Products? kategorie =*Category*" namapuje na tuto metodu.
 
 ## <a name="creating-a-resource"></a>Vytvoření prostředku
 
-V dalším kroku přidáme metodu `ProductsController` třídy za účelem vytvoření nového produktu. Tady je jednoduchý implementace metody:
+Dále přidáme metodu do třídy `ProductsController` pro vytvoření nového produktu. Tady je jednoduchá implementace metody:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample9.cs)]
 
-Mějte na paměti o této metodě dvě věci:
+Všimněte si, že tato metoda má dvě věci:
 
-- Název metody, který začíná &quot;příspěvek... &quot;. Pokud chcete vytvořit nový produkt, klient odešle požadavek HTTP POST.
-- Tato metoda přebírá parametr typu produktu. V rozhraní Web API parametry s komplexní typy jsou v daném kontextu deserializovat tělo požadavku. Proto Očekáváme, že klientovi umožní odeslat serializovaná reprezentace objektu produktu ve formátu XML nebo JSON.
+- Název metody začíná &quot;post...&quot;. Pokud chcete vytvořit nový produkt, klient odešle požadavek HTTP POST.
+- Metoda přijímá parametr typu produkt. V rozhraní Web API jsou parametry se složitými typy deserializovány z textu žádosti. Očekáváme proto, že klient pošle serializovanou reprezentaci objektu produktu ve formátu XML nebo JSON.
 
-Tato implementace bude fungovat, ale není úplně kompletní. V ideálním případě by rádi bychom odpověď HTTP, patří:
+Tato implementace bude fungovat, ale není poměrně kompletní. V ideálním případě chceme, aby odpověď protokolu HTTP zahrnovala tyto věci:
 
-- **Kód odpovědi:** Ve výchozím nastavení rozhraní webového rozhraní API nastaví stavový kód odpovědi 200 (OK). Ale podle protokolu HTTP/1.1, když požadavek POST má za následek vytvoření prostředku, server by měl odpovídat se stavem 201 (vytvořeno).
-- **Umístění:** Když na serveru se vytvoří prostředek, měl by obsahovat identifikátor URI nového prostředku v hlavičce umístění odpovědi.
+- **Kód odpovědi:** Ve výchozím nastavení rozhraní Web API nastaví stavový kód odpovědi na 200 (OK). Pokud je v závislosti na protokolu HTTP/1.1 výsledkem žádosti POST vytvoření prostředku, server by měl odpovědět na stav 201 (vytvořeno).
+- **Umístění:** Když server vytvoří prostředek, měl by obsahovat identifikátor URI nového prostředku v hlavičce umístění odpovědi.
 
-Rozhraní ASP.NET Web API usnadňuje zpracování zprávy s odpovědí HTTP. Tady je lepší implementace:
+Webové rozhraní API pro ASP.NET usnadňuje zpracování zprávy s odpovědí HTTP. Tady je vylepšená implementace:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample10.cs)]
 
-Všimněte si, že je návratový typ metody teď **objekt HttpResponseMessage**. Vrácením **objekt HttpResponseMessage** místo produktu, jsme můžete řídit podrobnosti zprávy s odpovědí HTTP, včetně stavový kód a hlavičku Location.
+Všimněte si, že návratový typ metody je nyní **HttpResponseMessage**. Vrácením **HttpResponseMessage** namísto produktu můžeme řídit podrobnosti zprávy s odpovědí HTTP, včetně stavového kódu a hlavičky umístění.
 
-**CreateResponse** metoda vytvoří **objekt HttpResponseMessage** a automaticky zapisuje do těla serializovaná reprezentace objektu Product fo zprávy s odpovědí.
+Metoda **CreateResponse** vytvoří **HttpResponseMessage** a automaticky zapíše serializovanou reprezentaci objektu produktu do těla zprávy odpovědi.
 
 > [!NOTE]
-> V tomto příkladu neověřuje, `Product`. Informace o ověření modelu naleznete v tématu [ověření modelu v rozhraní ASP.NET Web API](../formats-and-model-binding/model-validation-in-aspnet-web-api.md).
+> Tento příklad neověřuje `Product`. Informace o ověřování modelu najdete v tématu [ověřování modelu v ASP.NET webovém rozhraní API](../formats-and-model-binding/model-validation-in-aspnet-web-api.md).
 
-## <a name="updating-a-resource"></a>Aktualizuje se prostředek
+## <a name="updating-a-resource"></a>Aktualizace prostředku
 
-Aktualizace produktu pomocí PUT je jednoduchý:
+Aktualizace produktu pomocí PUT je jednoduchá:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample11.cs)]
 
-Název metody, který začíná &quot;vložit... &quot;, takže webového rozhraní API patřil k žádosti PUT. Tato metoda přebírá dva parametry, ID produktu a aktualizace produktu. *Id* parametr je převzata z cesty identifikátoru URI a *produktu* parametru se v daném kontextu deserializovat tělo požadavku. Ve výchozím nastavení použije rozhraní ASP.NET Web API jednoduché typy parametrů z trasy a komplexní typy z textu požadavku.
+Název metody začíná na &quot;PUT...&quot;, takže webové rozhraní API odpovídá na vložení požadavků. Metoda přijímá dva parametry, ID produktu a aktualizovaný produkt. Parametr *ID* je pořízen z cesty identifikátoru URI a parametr *produktu* je deserializovaný z textu žádosti. Ve výchozím nastavení přebírá rozhraní Web API ASP.NET jednoduché typy parametrů z trasy a komplexní typy z textu žádosti.
 
 ## <a name="deleting-a-resource"></a>Odstranění prostředku
 
-Chcete-li odstranit prostředek, definujte "Odstranit..." Metoda.
+Chcete-li odstranit prostředek, definujte "Delete..." Metoda.
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample12.cs)]
 
-Pokud je žádost o odstranění úspěšné, může vrátit stav 200 (OK) s – obsah entity, která popisuje stav; Stav 202 (přijato), pokud se odstranění je stále čeká na; stav nebo 204 (žádný obsah) se žádný obsah entity. V takovém případě `DeleteProduct` metoda má `void` návratový typ, takže rozhraní ASP.NET Web API automaticky to převede do stavu kód 204 (žádný obsah).
+Pokud je žádost o odstranění úspěšná, může vrátit stav 200 (OK) s tělem entity, které popisuje stav. stav 202 (přijato), pokud odstranění stále čeká na vyřízení; nebo stav 204 (žádný obsah) bez těla entity V takovém případě má `DeleteProduct` metoda `void` návratový typ, takže webové rozhraní API ASP.NET automaticky přeloží tento kód stavu 204 (žádný obsah).

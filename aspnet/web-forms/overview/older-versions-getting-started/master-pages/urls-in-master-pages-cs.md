@@ -1,170 +1,170 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-cs
-title: Adresy URL stránek předloh (C#) | Dokumentace Microsoftu
+title: Adresy URL na stránkách předlohyC#() | Microsoft Docs
 author: rick-anderson
-description: Řeší, jak můžete přerušit adresy URL na hlavní stránce kvůli soubor předlohové stránky se v jiném adresáři relativní než stránku obsahu. Prohledá probíhá přenesení změn...
+description: Řeší způsob, jakým se mohou adresy URL na stránce předlohy přerušit, protože soubor hlavní stránky je v jiném relativním adresáři než stránka obsahu. Vyhledává se při přenesení...
 ms.author: riande
 ms.date: 06/10/2008
 ms.assetid: 48b58a18-5ea4-468c-b326-f35331b3e1e9
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2679429a6c32e53705905cc234ec92314c7de124
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 2551a5361256234883bb37e46e794037284445a4
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132044"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74640972"
 ---
 # <a name="urls-in-master-pages-c"></a>Adresy URL stránek předloh (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/e/e/f/eef369f5-743a-4a52-908f-b6532c4ce0a4/ASPNET_MasterPages_Tutorial_04_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/8/f/6/8f6349e4-6554-405a-bcd7-9b094ba5089a/ASPNET_MasterPages_Tutorial_04_CS.pdf)
+[Stažení kódu](https://download.microsoft.com/download/e/e/f/eef369f5-743a-4a52-908f-b6532c4ce0a4/ASPNET_MasterPages_Tutorial_04_CS.zip) nebo [stažení PDF](https://download.microsoft.com/download/8/f/6/8f6349e4-6554-405a-bcd7-9b094ba5089a/ASPNET_MasterPages_Tutorial_04_CS.pdf)
 
-> Řeší, jak můžete přerušit adresy URL na hlavní stránce kvůli soubor předlohové stránky se v jiném adresáři relativní než stránku obsahu. Prohledá probíhá přenesení změn adres URL prostřednictvím ~ v deklarativní syntaxi a použití ResolveUrl a ResolveClientUrl prostřednictvím kódu programu. (Se také podívat na
+> Řeší způsob, jakým se mohou adresy URL na stránce předlohy přerušit, protože soubor hlavní stránky je v jiném relativním adresáři než stránka obsahu. Podívá se na adresy URL prostřednictvím ~ v deklarativní syntaxi a pomocí kódu programu ResolveUrl a ResolveClientUrl. (Podívejte se také na
 
 ## <a name="introduction"></a>Úvod
 
-Ve všech příkladech jsme viděli, jaký že se stránky předlohy a obsahu byly umístěny ve stejné složce (do kořenové složky webu). Ale neexistuje žádný důvod, proč se stránky předlohy a obsahu musí být ve stejné složce. Určitě můžete vytvářet stránky obsahu v podsložkách. Podobně můžete vytvořit `~/MasterPages/` složku, kam umístíte hlavní stránky.
+Ve všech příkladech, které jsme doposud viděli, se hlavní stránka a stránky obsahu nacházely ve stejné složce (kořenová složka webu). Neexistuje proto žádný důvod, proč se hlavní a stránky obsahu musí nacházet ve stejné složce. Můžete vytvářet stránky obsahu v podsložkách. Podobně můžete vytvořit složku `~/MasterPages/`, do které umístíte stránky předlohy vaší lokality.
 
-Jedním potenciálním problémem s umístěním stránky předlohy a obsahu v různých složkách zahrnuje nefunkční adresy URL. Pokud hlavní stránka obsahuje relativní adresy URL v hypertextových odkazů, obrázků nebo jiných prvků, bude odkaz na neplatný pro stránky obsahu, které se nacházejí v jiné složce. V tomto kurzu jsme zkontrolujte příčiny tohoto problému, jakož i řešení.
+Jedním z možných problémů s umístěním hlavní stránky a stránkami obsahu v různých složkách jsou poškozené adresy URL. Pokud stránka předlohy obsahuje relativní adresy URL v hypertextových odkazech, obrázcích nebo jiných prvcích, odkaz nebude platný pro stránky obsahu, které se nacházejí v jiné složce. V tomto kurzu se podíváme na zdroj těchto potíží i na alternativní řešení.
 
-## <a name="the-problem-with-relative-urls"></a>Problém s relativní adresy URL
+## <a name="the-problem-with-relative-urls"></a>Problém s relativními adresami URL
 
-Na adresu URL na webovou stránku se říká, že *relativní adresa URL* při umístění prostředku odkazovala na relativní k umístění webové stránky ve struktuře složek na webu. Libovolnou adresu URL, který nezačíná řetězcem počáteční lomítko (`/`) nebo protokol (například `http://`) je relativní vzhledem k tomu, že je přeložen v prohlížeči na základě umístění webové stránky, který obsahuje adresu URL.
+Adresa URL na webové stránce je označována jako *relativní adresa URL* , pokud umístění prostředku, na který odkazuje, je relativní vzhledem k umístění webové stránky ve struktuře složek webu. Všechny adresy URL, které nezačínají předním lomítkem (`/`) nebo protokol (například `http://`), jsou relativní vzhledem k tomu, že prohlížeč je vyhodnocený v závislosti na umístění webové stránky, která obsahuje adresu URL.
 
-Například, má náš web `~/Images/` složky se souborem jedné image `PoweredByASPNET.gif`. Soubor předlohové stránky daného `Site.master` má `<img>` prvek `footerContent` oblasti následujícím kódem:
+Náš web má například složku `~/Images/` s jedním souborem obrázku, `PoweredByASPNET.gif`. Soubor stránky předlohy `Site.master` obsahuje `<img>` prvek v `footerContent` oblasti s následujícím kódem:
 
 [!code-html[Main](urls-in-master-pages-cs/samples/sample1.html)]
 
-`src` Hodnotu v atributu `<img>` prvek je relativní adresa URL, protože nezačíná řetězcem `/` nebo `http://`. Stručně řečeno `src` hodnota atributu sděluje prohlížeči, aby podívejte se `Images` podsložku pro soubor s názvem `PoweredByASPNET.gif`.
+Hodnota atributu `src` v prvku `<img>` je relativní adresa URL, protože nezačíná `/` ani `http://`. V krátkém případě hodnota atributu `src` instruuje prohlížeč, aby hledal v podsložce `Images` pro soubor s názvem `PoweredByASPNET.gif`.
 
-Při návštěvě stránky obsahu, výše uvedené značky se pošle přímo v prohlížeči. Za chvíli navštivte `About.aspx` a zobrazit zdrojový kód HTML, který je odesláno prohlížeči. Zjistíte, že přesně stejné značky na stránce předlohy byl odeslán do prohlížeče.
+Při návštěvě stránky obsahu se výše uvedený kód pošle přímo do prohlížeče. Chvíli počkejte, než se navštíví `About.aspx` a zobrazte zdroj HTML odeslaný do prohlížeče. Zjistíte, že do prohlížeče byl odeslán přesně stejný kód na stránce předlohy.
 
 [!code-html[Main](urls-in-master-pages-cs/samples/sample2.html)]
 
-Pokud stránka obsahu je v kořenové složce (jako je `About.aspx`) všechno funguje podle očekávání, protože je `Images` podsložka relativně ke kořenové složce. Ale co rozdělit Pokud stránka obsahu je v jiné složce než stránky předlohy. Pro znázornění, vytvořte podsložku s názvem `Admin`. V dalším kroku přidat stránku obsahu s názvem `Default.aspx` k `Admin` složky, nezapomeňte vytvořit vazbu na novou stránku `Site.master` stránky předlohy.
+Pokud je stránka obsahu v kořenové složce (jak je `About.aspx`), vše funguje podle očekávání, protože složka `Images` relativní ke kořenové složce. Pokud se ale stránka obsahu nachází v jiné složce než stránka předlohy, budou se tyto věci dělit. K tomu je potřeba vytvořit podsložku s názvem `Admin`. Dále přidejte stránku obsahu s názvem `Default.aspx` do složky `Admin` a ujistěte se, že novou stránku navážete na `Site.master` hlavní stránku.
 
 > [!NOTE]
-> V [ *zadáním názvu, metaznaček a ostatní hlaviček HTML na stránce předlohy* ](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md) kurzu jsme vytvořili vlastní stránku základní třídu s názvem `BasePage` , který automaticky nastavit nadpis obsahu stránky (pokud ho nebyla přiřazena explicitně). Nezapomeňte mají třídy modelu code-behind nově vytvořený stránky odvozen od `BasePage` tak, aby ji můžete využít tuto funkci.
+> V kurzu [*zadání názvu, meta značek a dalších záhlaví HTML v kurzu hlavní stránky*](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md) jsme vytvořili vlastní třídu základní stránky s názvem `BasePage`, která automaticky nastaví název stránky obsahu (pokud nebyl explicitně přiřazený). Nezapomeňte, že nově vytvořená třída kódu na pozadí je odvozená od `BasePage`, aby mohla využívat tuto funkci.
 
-Po vytvoření tohoto obsahu stránky, by měl vypadat podobně jako na obrázku 1 Průzkumníku řešení.
+Po vytvoření této stránky obsahu by váš Průzkumník řešení měl vypadat podobně jako obrázek 1.
 
-![Nová složka a stránky ASP.NET se přidaly do projektu](urls-in-master-pages-cs/_static/image1.png)
+![Do projektu se přidala nová složka a stránka ASP.NET.](urls-in-master-pages-cs/_static/image1.png)
 
-**Obrázek 01**: Nová složka a stránky ASP.NET se přidaly do projektu
+**Obrázek 01**: do projektu se přidala nová složka a stránka ASP.NET.
 
-Dále, aktualizujte `Web.sitemap` soubor obsahuje nové `<siteMapNode>` zadání v této lekci. Následující kód XML ukazuje kompletní `Web.sitemap` kód, který teď zahrnuje přidání třetí `<siteMapNode>` elementu.
+Dále aktualizujte soubor `Web.sitemap` tak, aby zahrnoval novou položku `<siteMapNode>` pro tuto lekci. Následující kód XML ukazuje kompletní kód `Web.sitemap`, který nyní obsahuje přidání třetího `<siteMapNode>` elementu.
 
 [!code-xml[Main](urls-in-master-pages-cs/samples/sample3.xml)]
 
-Nově vytvořený `Default.aspx` stránka by měla obsahovat čtyři ovládací prvky obsahu odpovídající čtyři prvků ContentPlaceHolder v `Site.master`. Přidejte nějaký text pro ovládací prvek obsahu odkazující `MainContent` ContentPlaceHolder a pak na stránce prostřednictvím prohlížeče. Jak je vidět na obrázku 2, nejde najít v prohlížeči `PoweredByASPNET.gif` soubor bitové kopie. K čemu tady?
+Nově vytvořená `Default.aspx` stránka by měla obsahovat čtyři ovládací prvky obsahu odpovídající čtyřm ovládacím prvkům ContentPlaceHolders v `Site.master`. Přidejte nějaký text k ovládacímu prvku obsahu odkazujícímu na `MainContent` ContentPlaceHolder a potom navštivte stránku pomocí prohlížeče. Jak ukazuje obrázek 2, prohlížeč nemůže najít soubor bitové kopie `PoweredByASPNET.gif`. Co se sem zaměří?
 
-`~/Admin/Default.aspx` Stránky obsahu se odešle stejný kód HTML `footerContent` oblasti jako byla `About.aspx` stránky:
+Stránka `~/Admin/Default.aspx` obsahu je pro `footerContent` oblast odeslána stejným HTML jako stránka `About.aspx`:
 
 [!code-html[Main](urls-in-master-pages-cs/samples/sample4.html)]
 
-Protože `<img>` elementu `src` atribut je relativní adresa URL, v prohlížeči se pokusí vyhledat `Images` složce relativní k umístění složky webové stránky. Jinými slovy, v prohlížeči hledá soubor bitové kopie `Admin/Images/PoweredByASPNET.gif`.
+Vzhledem k tomu, že atribut `src` elementu `<img>` je relativní adresa URL, prohlížeč se pokusí vyhledat složku `Images` relativní vzhledem k umístění složky webové stránky. Jinými slovy, prohlížeč hledá soubor bitové kopie `Admin/Images/PoweredByASPNET.gif`.
 
-[![Soubor bitové kopie PoweredByASPNET.gif nebyl nalezen.](urls-in-master-pages-cs/_static/image3.png)](urls-in-master-pages-cs/_static/image2.png)
+[![soubor obrázku PoweredByASPNET. gif nejde najít.](urls-in-master-pages-cs/_static/image3.png)](urls-in-master-pages-cs/_static/image2.png)
 
-**Obrázek 02**: `PoweredByASPNET.gif` Image soubor nebyl nalezen ([kliknutím ji zobrazíte obrázek v plné velikosti](urls-in-master-pages-cs/_static/image4.png))
+**Obrázek 02**: Nepodařilo se najít soubor bitové kopie `PoweredByASPNET.gif` ([kliknutím zobrazíte obrázek v plné velikosti](urls-in-master-pages-cs/_static/image4.png)).
 
-### <a name="replacing-relative-urls-with-absolute-urls"></a>Nahraďte absolutní adresy URL relativní adresy URL
+### <a name="replacing-relative-urls-with-absolute-urls"></a>Nahrazení relativních adres URL absolutními adresami URL
 
-Je opakem relativní adresu URL *absolutní adresa URL*, což je jedna začínající lomítkem (`/`) nebo protokol, jako `http://`. Protože absolutní adresa URL určuje umístění prostředku ze známých pevnému bodu, je stejné absolutní adresa URL platná v jakékoli webové stránky, bez ohledu na umístění webové stránky ve struktuře složek na webu.
+Opakem relativní adresy URL je *absolutní adresa URL*, která začíná lomítkem (`/`) nebo protokolem jako `http://`. Vzhledem k tomu, že absolutní adresa URL určuje umístění prostředku ze známého pevného bodu, je stejná absolutní adresa URL platná na libovolné webové stránce, bez ohledu na umístění webové stránky ve struktuře složek webu.
 
-Chcete-li napravit porušení obrázku je znázorněno na obrázku 2, musíme aktualizovat `<img>` elementu `src` atribut tak, aby používal místo relativní absolutní adresu URL. Chcete-li určit správnou absolutní adresu URL, navštíví některý z webové stránky na webu a zkontrolujte do adresního řádku. Jak ukazuje do adresního řádku na obrázku 2 je plně kvalifikovanou cestu k webové aplikaci `http://localhost:3908/ASPNET_MasterPages_Tutorial_04_CS/`. Proto jsme aktualizovat `<img>` elementu `src` atribut některou z následujících dvou absolutní adresy URL:
+Pro nápravu poškozeného obrázku, který je znázorněn na obrázku 2, je nutné aktualizovat atribut `src` elementu `<img>` tak, aby místo relativního typu použil absolutní adresu URL. Chcete-li určit správnou absolutní adresu URL, navštivte jednu z webových stránek na webu a zkontrolujte adresní řádek. Jak ukazuje adresní řádek na obrázku 2, plně kvalifikovaná cesta k webové aplikaci je `http://localhost:3908/ASPNET_MasterPages_Tutorial_04_CS/`. Proto můžeme aktualizovat atribut `src` elementu `<img>` na jednu z následujících dvou absolutních adres URL:
 
 - `/ASPNET_MasterPages_Tutorial_04_CS/Images/PoweredByASPNET.gif`
 - `http://localhost:3908/ASPNET_MasterPages_Tutorial_04_CS/Images/PoweredByASPNET.gif`
 
-Za chvíli se aktualizovat `<img>` elementu `src` atributu na absolutní adresu URL pomocí jedné z formuláře uvedené nahoře a přejděte `~/Admin/Default.aspx` stránky prostřednictvím prohlížeče. Tentokrát se správně najít a zobrazit v prohlížeči `PoweredByASPNET.gif` soubor bitové kopie (viz obrázek 3).
+Chvíli počkejte, než se aktualizuje atribut `<img>` elementu `src` na absolutní adresu URL pomocí jedné z výše uvedených formulářů a pak na stránce `~/Admin/Default.aspx` prostřednictvím prohlížeče. Tentokrát prohlížeč správně najde a zobrazí soubor obrázku `PoweredByASPNET.gif` (viz obrázek 3).
 
-[![Obrázek PoweredByASPNET.gif se nyní zobrazí](urls-in-master-pages-cs/_static/image6.png)](urls-in-master-pages-cs/_static/image5.png)
+[![se teď zobrazí obrázek PoweredByASPNET. gif.](urls-in-master-pages-cs/_static/image6.png)](urls-in-master-pages-cs/_static/image5.png)
 
-**Obrázek 03**: `PoweredByASPNET.gif` Bitová kopie je nyní zobrazen ([kliknutím ji zobrazíte obrázek v plné velikosti](urls-in-master-pages-cs/_static/image7.png))
+**Obrázek 03**: zobrazí se nyní `PoweredByASPNET.gif` obrázek ([kliknutím zobrazíte obrázek v plné velikosti](urls-in-master-pages-cs/_static/image7.png)).
 
-Při pevném psaní kódu v absolutní adresa URL funguje pevně se spojuje kódu HTML k serveru na webu a umístění složky, které mohou změnit. Použití absolutní adresu URL ve formátu `http://localhost:3908/...` je křehká protože předchozí číslo portu `localhost` automaticky vybraný při každém spuštění sady Visual Studio integrované technologie ASP.NET vývojového webového serveru. Podobně platí `http://localhost` část je platný pouze při testování místně. Jakmile se kód nasazuje na produkční server, základ adresy URL změní na něco jiného, jako je třeba `http://www.yourserver.com`. Absolutní adresa URL ve formě `/ASPNET_MasterPages_Tutorial_04_CS/...` také vykazuje stejné brittleness, protože často cesta k této aplikaci liší mezi vývojovou a provozní servery.
+I když pevné kódování na absolutní adrese URL funguje, pevně Couples svůj kód HTML na server a umístění složky webu, které se může změnit. Použití absolutní adresy URL formuláře `http://localhost:3908/...` je poměrně křehký, protože číslo portu předcházející `localhost` je vybráno automaticky pokaždé, když se spustí vývojový webový server sady Visual Studio. Podobně platí, že část `http://localhost` je platná pouze při testování místně. Po nasazení kódu na provozní server se základ adresy URL změní na něco jiného, jako `http://www.yourserver.com`. Absolutní adresa URL ve formuláři `/ASPNET_MasterPages_Tutorial_04_CS/...` také trpí stejným brittleness, protože často tato cesta k této aplikaci se mezi vývojovými a provozními servery liší.
 
-Dobrou zprávou je, že technologie ASP.NET nabízí metody pro generování platnou relativní adresu URL za běhu.
+Dobrá zpráva je, že ASP.NET nabízí metodu pro generování platné relativní adresy URL za běhu.
 
-## <a name="usingandresolveclienturl"></a>Pomocí`~`a`ResolveClientUrl`
+## <a name="usingandresolveclienturl"></a>Používání`~`a`ResolveClientUrl`
 
-Spíše než intenzivně kódu absolutní adresu URL, ASP.NET stránky vývojářům umožňuje použít tilda (`~`) k označení kořenovém adresáři webové aplikace. Například dříve v tomto kurzu, můžu použít zápis `~/Admin/Default.aspx` v text, který má odkazovat `Default.aspx` stránku `Admin` složky. `~` Znamená, že `Admin` složka je podsložkou kořenový adresář webové aplikace.
+Místo pevného kódu absolutní adresa URL umožňuje vývojářům stránky použít vlnovku (`~`) k označení kořenového adresáře webové aplikace. Například dříve v tomto kurzu jsem v textu použili notaci `~/Admin/Default.aspx`, který odkazuje na stránku `Default.aspx` ve složce `Admin`. `~` označuje, že složka `Admin` je podsložkou kořenového adresáře webové aplikace.
 
-`Control` Třídy [ `ResolveClientUrl` metoda](https://msdn.microsoft.com/library/system.web.ui.control.resolveclienturl.aspx) přebírá adresu URL a změní na relativní adresu URL vhodné pro webové stránky, na kterém se ovládací prvek nachází. Například volání `ResolveClientUrl("~/Images/PoweredByASPNET.gif")` z `About.aspx` vrátí `Images/PoweredByASPNET.gif`. Volání z `~/Admin/Default.aspx`, ale vrátí `../Images/PoweredByASPNET.gif`.
+[Metoda`ResolveClientUrl`](https://msdn.microsoft.com/library/system.web.ui.control.resolveclienturl.aspx) třídy `Control` přebírá adresu URL a upravuje ji na relativní adresu URL, která je vhodná pro webovou stránku, na které se ovládací prvek nachází. Například volání `ResolveClientUrl("~/Images/PoweredByASPNET.gif")` z `About.aspx` vrátí `Images/PoweredByASPNET.gif`. Voláním z `~/Admin/Default.aspx`však vrátí `../Images/PoweredByASPNET.gif`.
 
 > [!NOTE]
-> Protože všechny serverové ovládací prvky technologie ASP.NET jsou odvozeny z `Control` třídu, všechny ovládací prvky serveru mají přístup k `ResolveClientUrl` metody. Dokonce i pomocí `Page` třída odvozena z `Control` třídy, což znamená, že můžete použít tuto metodu přímo ze stránky technologie ASP.NET použití modelu code-behind tříd.
+> Vzhledem k tomu, že všechny ovládací prvky serveru ASP.NET jsou odvozeny od třídy `Control`, všechny serverové ovládací prvky mají přístup k metodě `ResolveClientUrl`. I třída `Page` je odvozena od `Control` třídy, což znamená, že tuto metodu lze použít přímo ze tříd kódu na pozadí ASP.NET stránek.
 
-### <a name="usingin-the-declarative-markup"></a>Pomocí`~`v deklarativním označení
+### <a name="usingin-the-declarative-markup"></a>Použití`~`v deklarativní značce
 
-Vlastnosti související s adresou URL zahrnují několik ovládacích prvků technologie ASP.NET: má ovládací prvek hypertextového odkazu `NavigateUrl` vlastnost; Image má ovládací prvek `ImageUrl` vlastnost; a tak dále. Při vykreslování, předejte tyto ovládací prvky jejich hodnoty vlastností související s adresou URL, které `ResolveClientUrl`. V důsledku toho pokud tyto vlastnosti obsahovat `~` k označení kořenovém adresáři webové aplikace, adresa URL bude upraveno pro platnou relativní adresou URL.
+Některé webové ovládací prvky ASP.NET obsahují vlastnosti související s adresou URL: ovládací prvek hypertextový odkaz má vlastnost `NavigateUrl`; ovládací prvek obrázek má vlastnost `ImageUrl`; a tak dále. Při vykreslení tyto ovládací prvky předají hodnoty vlastností související s adresou URL do `ResolveClientUrl`. V důsledku toho, pokud tyto vlastnosti obsahují `~` k určení kořenového adresáře webové aplikace, adresa URL bude změněna na platnou relativní adresu URL.
 
-Mějte na paměti, který převádí pouze serverových ovládacích prvků ASP.NET `~` v jejich vlastnosti související s adresou URL. Pokud `~` se zobrazí v statický kód HTML, jako například `<img src="~/Images/PoweredByASPNET.gif" />`, odešle modul ASP.NET `~` spolu se zbývajícími obsah HTML v prohlížeči. Prohlížeč předpokládá, že `~` je součástí adresy URL. Například, pokud prohlížeč obdrží značky `<img src="~/Images/PoweredByASPNET.gif" />` předpokládá, že je podsložku s názvem `~` podsložku `Images` , která obsahuje soubor bitové kopie `PoweredByASPNET.gif`.
+Mějte na paměti, že `~` transformují pouze ovládací prvky serveru ASP.NET ve vlastnostech souvisejících s adresou URL. Pokud se `~` objeví ve statickém kódu HTML, jako je například `<img src="~/Images/PoweredByASPNET.gif" />`, modul ASP.NET odesílá `~` do prohlížeče spolu se zbytkem obsahu HTML. Prohlížeč předpokládá, že `~` je součástí adresy URL. Například pokud prohlížeč obdrží značku, `<img src="~/Images/PoweredByASPNET.gif" />` předpokládá, že existuje podsložka s názvem `~` s podsložkou `Images` obsahující soubor bitové kopie `PoweredByASPNET.gif`.
 
-K vyřešení značky obrázku v `Site.master`, nahraďte existující `<img>` element s ovládacím prvkem obrázku v prostředí ASP.NET. Nastavení ovládacího prvku obrázek webové `ID` k `PoweredByImage`, jeho `ImageUrl` vlastnost `~/Images/PoweredByASPNET.gif`a jeho `AlternateText` vlastnost "Používá technologii ASP.NET!"
+Chcete-li opravit označení obrázku v `Site.master`, nahraďte existující prvek `<img>` webovým ovládacím prvkem ASP.NET Image. Nastavte `ID` webového ovládacího prvku obrázek na `PoweredByImage`, jeho vlastnost `ImageUrl` na `~/Images/PoweredByASPNET.gif`a jeho vlastnost `AlternateText` na "Power by ASP.NET!".
 
 [!code-aspx[Main](urls-in-master-pages-cs/samples/sample5.aspx)]
 
-Po provedení této změny na stránce předlohy, opakování `~/Admin/Default.aspx` stránku znovu nezobrazovat. Tentokrát `PoweredByASPNET.gif` soubor obrázku se zobrazí na stránce (viz obrázek 3). Když je ovládací prvek webu Image vygenerování používá `ResolveClientUrl` metoda vyřešit jeho `ImageUrl` hodnotu vlastnosti. V `~/Admin/Default.aspx` `ImageUrl` se převede na příslušnou relativní adresu URL jako následující fragment zobrazí zdroj HTML:
+Po provedení této změny na stránce předlohy znovu přejděte na stránku `~/Admin/Default.aspx`. Tentokrát se `PoweredByASPNET.gif` obrázkový soubor na stránce zobrazuje (viz obrázek 3). Při vykreslení webového ovládacího prvku obrázek používá metodu `ResolveClientUrl` k překladu hodnoty vlastnosti `ImageUrl`. V `~/Admin/Default.aspx` `ImageUrl` převede na odpovídající relativní adresu URL, jak ukazuje následující fragment kódu HTML:
 
 [!code-html[Main](urls-in-master-pages-cs/samples/sample6.html)]
 
 > [!NOTE]
-> Kromě se používají ve vlastnosti ovládacích prvků webové adresy URL, `~` lze také při volání `Response.Redirect` a `Server.MapPath` metody, mimo jiné. Navíc `ResolveClientUrl` metody mohou být vyvolány přímo z technologie ASP.NET nebo deklarativním označení stránky předlohy, v případě potřeby; viz [Fritzovi průsvitek](https://www.pluralsight.com/blogs/fritz/)na blogu [použití `ResolveClientUrl` ve značkách](https://www.pluralsight.com/blogs/fritz/archive/2006/02/06/18596.aspx).
+> Kromě toho, že se používá ve vlastnostech webového ovládacího prvku založeném na adrese URL, lze `~` použít také při volání metod `Response.Redirect` a `Server.MapPath`, a to mimo jiné. Kromě toho může být metoda `ResolveClientUrl` vyvolána přímo z deklarativní značky ASP.NET nebo hlavní stránky, pokud je to potřeba; viz položka blogu [Fritz](https://www.pluralsight.com/blogs/fritz/), která [používá `ResolveClientUrl` v kódu](https://www.pluralsight.com/blogs/fritz/archive/2006/02/06/18596.aspx).
 
-## <a name="fixing-the-master-pages-remaining-relative-urls"></a>Oprava zbývající relativní adresy URL stránky předlohy
+## <a name="fixing-the-master-pages-remaining-relative-urls"></a>Oprava zbývajících relativních adres URL stránky předlohy
 
-Kromě `<img>` prvek `footerContent` , že jsme odstranili, hlavní stránky obsahuje jeden další relativní adresu URL, která vyžaduje pozornost. `topContent` Zahrnuje odkaz "Hlavní stránky kurzy," která odkazuje na oblast `Default.aspx`.
+Kromě prvku `<img>` v `footerContent`, kterou jsme právě opravili, stránka předlohy obsahuje ještě jednu relativní adresu URL, která vyžaduje naši pozornost. Oblast `topContent` obsahuje odkazy "kurzy stránek předlohy", které odkazují na `Default.aspx`.
 
 [!code-html[Main](urls-in-master-pages-cs/samples/sample7.html)]
 
-Protože tato adresa URL je relativní, uživateli se odešle `Default.aspx` stránku ve složce stránky obsahu se navštívit. Mít tento odkaz, vždy přejděte na `Default.aspx` v kořenové složce budeme muset nahradit `<a>` tak, že můžeme použít ovládací prvek elementu s webovým hypertextový odkaz `~` zápis.
+Vzhledem k tomu, že je tato adresa URL relativní, odešle uživatel stránku `Default.aspx` ve složce stránky obsahu, na které se Návštěvníci nacházejí. Chcete-li, aby tento odkaz vždy odkazoval na `Default.aspx` v kořenové složce, musíme nahradit prvek `<a>` webovým ovládacím prvkem hypertextový odkaz, aby bylo možné použít zápis `~`.
 
-Odeberte `<a>` značka elementu a místo něj přidat ovládací prvek hypertextového odkazu. Nastavte na hypertextový odkaz `ID` k `lnkHome`, jeho `NavigateUrl` vlastnost `~/Default.aspx`a jeho `Text` vlastnost "Hlavní stránky kurzy."
+Odeberte kód prvku `<a>` a přidejte ovládací prvek hypertextový odkaz na místo. Nastavte `ID` hypertextového odkazu na `lnkHome`, jeho vlastnost `NavigateUrl` na `~/Default.aspx`a vlastnost `Text` na "kurzy stránek předlohy".
 
 [!code-aspx[Main](urls-in-master-pages-cs/samples/sample8.aspx)]
 
-A to je vše! V tomto okamžiku všech adres URL v naší hlavní stránky jsou závislosti správně při zobrazení obsahu stránka bez ohledu na to, jaké složky stránky předlohy a obsahu stránky jsou umístěné v.
+A je to! V tomto okamžiku jsou všechny adresy URL na naší hlavní stránce správně založené na tom, kde jsou vykresleny pomocí stránky obsahu bez ohledu na to, ve kterých složkách se stránka předlohy a stránka obsahu nacházejí.
 
-### <a name="automatic-url-resolution-in-theheadsection"></a>URL adresy automatických řešení v`<head>`oddílu
+### <a name="automatic-url-resolution-in-theheadsection"></a>Automatické rozlišení adresy URL v části`<head>`
 
-V [ *vytváření webu rozložení pomocí stránek předlohy* ](creating-a-site-wide-layout-using-master-pages-cs.md) kurzu jsme přidali `<link>` k `Styles.css` soubor `<head>` oblasti:
+V kurzu [*vytváření rozložení na úrovni webu pomocí stránek*](creating-a-site-wide-layout-using-master-pages-cs.md) jsme do `Styles.css` souboru v `<head>` oblasti přidali `<link>`:
 
 [!code-aspx[Main](urls-in-master-pages-cs/samples/sample9.aspx)]
 
-Zatímco `<link>` elementu `href` atribut je relativní, je automaticky převedena na správnou cestu v době běhu. Jak jsme probírali v [ *zadáním názvu, metaznaček a ostatní hlaviček HTML na stránce předlohy* ](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md) kurzu `<head>` oblasti je ve skutečnosti ovládací prvek na straně serveru, který umožňuje změnit obsah vnitřní ovládacích prvků při vykreslení.
+I když je atribut `href` elementu `<link>` relativní, je automaticky převeden na odpovídající cestu za běhu. Jak jsme probrali v kurzu [*zadání nadpisu, meta značek a dalších hlaviček HTML v kurzu hlavní stránky*](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md) , je `<head>` oblast ve skutečnosti ovládací prvek na straně serveru, který umožňuje upravovat obsah svých vnitřních ovládacích prvků při jejich vykreslování.
 
-Chcete-li to ověřit, opakování `~/Admin/Default.aspx` stránky a zobrazit zdrojový kód HTML, který je odesláno prohlížeči. Jak ukazuje následující fragment `<link>` elementu `href` atribut byl automaticky změněn na odpovídající relativní adresu URL, `../Styles.css`.
+Pokud to chcete ověřit, přejděte na stránku `~/Admin/Default.aspx` a zobrazte zdroj HTML odeslaný do prohlížeče. Jak ukazuje následující fragment kódu, `href` atribut `<link>` elementu byl automaticky upraven na odpovídající relativní adresu URL `../Styles.css`.
 
 [!code-html[Main](urls-in-master-pages-cs/samples/sample10.html)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Hlavní stránky velmi často obsahují odkazy, obrázky a další externí prostředky, které musí být zadán prostřednictvím adresy URL. Stránky předlohy a obsahu stránek nemusí existovat ve stejné složce, proto je důležité zdržet relativní adresy URL. I když je možné použít pevně zakódované absolutní adresy URL, to tedy úzce páry v odstupu absolutní adresu URL na webovou aplikaci. Pokud se absolutní adresa URL změní – jak často se při přesunutí nebo nasazení webové aplikace – budete mít Nezapomeňte přejít zpět a aktualizovat absolutní adresy URL.
+Stránky předlohy velmi často obsahují odkazy, obrázky a další externí prostředky, které je třeba zadat pomocí adresy URL. Vzhledem k tomu, že stránka předloh a stránky obsahu nemusí existovat ve stejné složce, je důležité se zdržet používání relativních adres URL. I když je možné použít pevně kódované absolutní adresy URL, tak, aby se tak těsně Couples absolutní adresa URL webové aplikace. Pokud se absolutní adresa URL mění – stejně jako při přesunu nebo nasazení webové aplikace, nezapomeňte se vrátit zpět a aktualizovat absolutní adresy URL.
 
-Ideální přístupem je použití tilda (`~`) k označení kořenový adresář aplikace. Ovládací prvky technologie ASP.NET, obsahující vlastnosti související s adresou URL, které mapují `~` do kořenového adresáře aplikace za běhu. Interně, použijte ovládací prvky webového `Control` třídy `ResolveClientUrl` metoda ke generování platnou relativní adresou URL. Tato metoda je veřejná a dostupná z každé serverový ovládací prvek (včetně `Page` třídy), takže můžete prostřednictvím kódu programu z vašeho použití modelu code-behind třídy, v případě potřeby.
+Ideálním přístupem je použití vlnovku (`~`) k označení kořene aplikace. ASP.NET webové ovládací prvky, které obsahují vlastnosti související s adresou URL, mapují `~` do kořenového adresáře aplikace za běhu. Interně webové ovládací prvky používají metodu `ResolveClientUrl` třídy `Control` k vygenerování platného relativního URL. Tato metoda je veřejná a dostupná z každého serverového ovládacího prvku (včetně třídy `Page`), takže ji můžete použít programově z vašich tříd kódu na pozadí, pokud je to potřeba.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ### <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
 - [Stránky předlohy v ASP.NET](http://www.odetocode.com/Articles/419.aspx)
-- [Adresa URL probíhá přenesení změn do hlavní stránky](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/masterpages/default.aspx#urls)
-- [Pomocí `ResolveClientUrl` v kódu](https://www.pluralsight.com/blogs/fritz/archive/2006/02/06/18596.aspx)
+- [Adresa URL pro přenesení na hlavní stránku](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/masterpages/default.aspx#urls)
+- [Použití `ResolveClientUrl` ve značkách](https://www.pluralsight.com/blogs/fritz/archive/2006/02/06/18596.aspx)
 
 ### <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor více ASP/ASP.NET knih a Zakladatel 4GuysFromRolla.com pracuje s Microsoft webových technologií od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami technologie ASP.NET 3.5 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott může být dostupný na adrese [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím na svém blogu [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor několika stránek ASP/ASP. NET Books a zakladatel of 4GuysFromRolla.com, pracoval s webovými technologiemi microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 3,5 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott se dá kontaktovat [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu na [http://ScottOnWriting.NET](http://scottonwriting.net/).
 
-### <a name="special-thanks-to"></a>Speciální k
+### <a name="special-thanks-to"></a>Zvláštní díky
 
-Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
+Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com).
 
 > [!div class="step-by-step"]
 > [Předchozí](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)
-> [další](control-id-naming-in-content-pages-cs.md)
+> [Další](control-id-naming-in-content-pages-cs.md)

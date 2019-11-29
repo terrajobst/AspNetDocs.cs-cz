@@ -1,194 +1,194 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
-title: Začínáme s ASP.NET 4.7 webové formuláře a sady Visual Studio 2017 | Dokumentace Microsoftu
+title: Začínáme s webovými formuláři ASP.NET 4,7 a sadou Visual Studio 2017 | Microsoft Docs
 author: Erikre
-description: Tato série podrobných kurzů se seznámíte se základy vytváření webových formulářů ASP.NET aplikace pomocí ASP.NET 4.7 a Microsoft Visual Studio
+description: Tato série podrobných kurzů vás seznámí se základy vytváření aplikací webových formulářů ASP.NET pomocí ASP.NET 4,7 a Microsoft Visual Studio
 ms.author: riande
 ms.date: 01/09/2019
 ms.assetid: 9b96eaa1-8ef0-4338-a2e8-e0f970bfaf68
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: ad491193c0d669464721d82f86a78b79f45b93aa
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 52d5eb7abe4520ebdf6667d299d055fc7619a635
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131361"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74615457"
 ---
-# <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2017"></a>Začínáme s webovými formuláři ASP.NET 4.5 a Visual Studio 2017
+# <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2017"></a>Začínáme s webovými formuláři ASP.NET 4,5 a sadou Visual Studio 2017
 
-[Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
+[Stáhnout vzorový projekt Wingtip Toys (C#)](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [Stáhnout elektronickou knihu (PDF)](https://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
-V této sérii kurzů se dozvíte, jak vytvářet aplikace webových formulářů ASP.NET s ASP.NET 4.5 a Microsoft Visual Studio 2017. 
+V této sérii kurzů se dozvíte, jak vytvořit aplikaci webových formulářů v ASP.NET pomocí ASP.NET 4,5 a Microsoft Visual Studio 2017. 
 
 ## <a name="introduction"></a>Úvod
 
-V této sérii kurzů vás provede procesem vytvoření aplikace webových formulářů ASP.NET pomocí sady Visual Studio 2017 a technologii ASP.NET 4.5. Vytvoříte aplikaci s názvem **Wingtip Toys** – zjednodušené webu prezentace prodej zboží online. Během řady jsou zvýrazněny nových funkcí technologie ASP.NET 4.5.
+Tato série kurzů vás provede vytvořením aplikace webových formulářů ASP.NET pomocí sady Visual Studio 2017 a ASP.NET 4,5. Vytvoříte aplikaci s názvem **Wingtip Toys** – zjednodušená webová stránka prezentace prodej položek online. Během série se zvýrazní nové funkce ASP.NET 4,5.
 
 ### <a name="target-audience"></a>Cílová skupina
 
-Vývojáři nové webové formuláře ASP.NET jsou cílovou skupinou pro tuto řadu kurzů.
+Pro tuto řadu kurzů jsou noví vývojáři pro ASP.NET webové formuláře cílovou skupinou.
 
-Měli byste určitá znalost v následujících oblastech:
+Měli byste mít několik znalostí v následujících oblastech:
 
 - Objektově orientované programování (OOP) a jazyky
-- Vývoj pro web (HTML, CSS a JavaScript)
+- Vývoj pro web (HTML, CSS, JavaScript)
 - Relační databáze
-- N-vrstvou architekturu
+- N-vrstvá architektura
 
-Pokud chcete zkontrolovat tyto oblasti, vezměte v úvahu zkoumání následujícím obsahem:
+Pokud si chcete projít tyto oblasti, vezměte v úvahu následující obsah:
 
-- [Začínáme s Visual C#](https://msdn.microsoft.com/library/a72418yk.aspx)
-- [Web Development](https://msdn.microsoft.com/beginner/bb308760.aspx), [HTML, CSS, JavaScript, SQL, PHP, JQuery](http://w3schools.com/)
+- [Začínáme pomocí vizuáluC#](https://msdn.microsoft.com/library/a72418yk.aspx)
+- [Vývoj pro web](https://msdn.microsoft.com/beginner/bb308760.aspx), [HTML, CSS, JavaScript, SQL, php, jQuery](http://w3schools.com/)
 - [Relační databáze](http://en.wikipedia.org/wiki/Relational_database)
-- [Vícevrstvé architektury](http://en.wikipedia.org/wiki/Multitier_architecture)
+- [Vícevrstvá architektura](http://en.wikipedia.org/wiki/Multitier_architecture)
 
-### <a name="application-features"></a>Funkce aplikací
+### <a name="application-features"></a>Funkce aplikace
 
-Webový formulář ASP.NET funkce uvedené v této sérii:
+Mezi funkce webového formuláře ASP.NET prezentované v tomto seriálu patří:
 
-- Projekt webové aplikace (ne webový projekt)
-- webové formuláře
+- Projekt webové aplikace (ne web projektu)
+- Webové formuláře
 - Stránky předlohy, konfigurace
-- Bootstrap
-- Entity Framework Code nejprve LocalDB
+- Spouštěcí rutina
+- Entity Framework Code First, LocalDB
 - Žádost o ověření
-- Ovládací prvky dat silného typu
-- Vazby modelu
+- Datové ovládací prvky silného typu
+- Vazba modelu
 - Datové poznámky
-- Zprostředkovatele hodnot
-- Protokol SSL a protokolem OAuth
+- Zprostředkovatelé hodnot
+- SSL a OAuth
 - ASP.NET Identity, konfigurace a autorizace
-- Nerušivý ověření
+- Nenáročná ověření
 - Směrování
 - Zpracování chyb v ASP.NET
 
-### <a name="application-scenarios-and-tasks"></a>Scénáře aplikací a úloh
+### <a name="application-scenarios-and-tasks"></a>Scénáře a úlohy aplikací
 
-Série kurzů úlohy patří:
+Úkoly řady kurzů zahrnují:
 
-- Vytváření, revizí a spuštění nového projektu
+- Vytvoření, kontrola a spuštění nového projektu
 - Vytvoření struktury databáze
-- Inicializace a synchronizace replik indexů databáze
-- Přizpůsobení uživatelského rozhraní se styly, grafikou a na stránku předlohy
-- Přidání stránky a navigace
-- Zobrazení Podrobnosti o nabídce a data produktu.
+- Inicializace a osazení databáze
+- Přizpůsobení uživatelského rozhraní pomocí stylů, grafiky a stránky předlohy
+- Přidávání stránek a navigace
+- Zobrazení podrobností nabídky a dat produktu
 - Vytvoření nákupního košíku
-- Podpora přidání SSL a protokolem OAuth
-- Přidání způsob platby
-- Včetně role správce a uživatele k aplikaci
-- Omezení přístupu ke konkrétní stránky a složka
-- Po nahrání souboru do webové aplikace
-- Implementace ověření vstupu
-- Registrace trasy pro webovou aplikaci
+- Přidání podpory SSL a OAuth
+- Přidání způsobu platby
+- Zahrnutí role správce a uživatele do aplikace
+- Omezení přístupu ke konkrétním stránkám a složce
+- Nahrání souboru do webové aplikace
+- Implementace ověřování vstupu
+- Registrace tras pro webovou aplikaci
 - Implementace zpracování chyb a protokolování chyb
 
 ## <a name="overview"></a>Přehled
 
-V této sérii kurzů je určené pro někdo zkušenosti s koncepty programování, ale nové webových formulářů ASP.NET. Pokud jste již obeznámeni s webovými formuláři ASP.NET, tuto řadu stále můžete informace o nových funkcích technologie ASP.NET 4.5. Čtenáři neznáte programování konceptů a webových formulářů ASP.NET, naleznete v části Další kurzy webových formulářů, které jsou součástí [Začínáme](../../../index.md) části na webu technologie ASP.NET.
+Tato série kurzů je určená pro někoho, kdo se seznámí s koncepty programování, ale novinkou pro ASP.NET webové formuláře. Pokud jste již obeznámeni s webovými formuláři ASP.NET, může vám tato řada stále pomáhat s novými funkcemi ASP.NET 4,5. Pro čtenáře, kteří nejsou obeznámeni s koncepty programování a ASP.NET webovými formuláři, si přečtěte další kurzy webových formulářů, které jsou k dispozici v části [Začínáme](../../../index.md) na webu ASP.NET.
 
-ASP.NET 4.5 uvedené v této sérii kurzů zahrnuje následující funkce:
+ASP.NET 4,5 poskytnutý v této sérii kurzů obsahuje následující funkce:
 
-- Jednoduché uživatelské rozhraní pro vytváření projektů, které nabízí [podporu pro mnoho platforem ASP.NET](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#add) (webové formuláře, MVC a webového rozhraní API).
-- [Bootstrap](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap), rozložení, motivy a responzivní design framework.
-- [ASP.NET Identity](../../../../identity/index.md), nový systém členství technologie ASP.NET, který funguje stejně ve všech platforem ASP.NET a funguje s webhosting softwaru než služby IIS.
+- Jednoduché uživatelské rozhraní pro vytváření projektů, které nabízí [podporu pro řadu ASP.NETch platforem](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#add) (webové formuláře, MVC a webové rozhraní API).
+- [Zavedení](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap), rozložení, vytváření a reakce rozhraní návrhu.
+- [ASP.NET identity](../../../../identity/index.md)nový systém členství v ASP.NET, který funguje stejně ve všech ASP.NET architekturách a pracuje s jiným softwarem pro hostování webů, než je služba IIS.
 - [Entity Framework 6](https://msdn.microsoft.com/data/ef.aspx)
 
-  Aktualizace Entity Framework umožňuje:
-  - Načítání a manipulaci s daty jako silně typované objekty
+  Aktualizace Entity Framework, která vám umožní:
+  - Načtení a manipulace s daty jako objekty silného typu
   - Asynchronní přístup k datům
-  - Zpracování přechodné chyby připojení
-  - Příkazy SQL
+  - Zpracování přechodných chyb připojení
+  - Log SQL – příkazy
 
-Úplný seznam funkcí technologie ASP.NET 4.5 naleznete v tématu [ASP.NET and Web Tools pro Visual Studio 2013 – poznámky k](../../../../visual-studio/overview/2013/release-notes.md).
+Úplný seznam funkcí ASP.NET 4,5 najdete v tématu [ASP.NET and Web Tools pro Visual Studio 2013 poznámky k verzi](../../../../visual-studio/overview/2013/release-notes.md).
 
-### <a name="the-wingtip-toys-sample-application"></a>Ukázkové aplikace Wingtip Toys
+### <a name="the-wingtip-toys-sample-application"></a>Ukázková aplikace Wingtip Toys
 
-Na následujících snímcích obrazovky jsou z aplikace webových formulářů ASP.NET, který vytvoříte v této sérii kurzů. Při spuštění aplikace v sadě Visual Studio se zobrazí následující webové domovské stránky.
+Následující snímky obrazovky jsou z aplikace webových formulářů ASP.NET, kterou vytvoříte v této sérii kurzů. Při spuštění aplikace v aplikaci Visual Studio se zobrazí následující Domovská stránka webu.
 
-![Vzorkový – výchozí stránku](introduction-and-overview/_static/image1.png)
+![Wingtip Toys – výchozí stránka](introduction-and-overview/_static/image1.png)
 
-Můžete zaregistrovat jako nový uživatel nebo Přihlaste se jako stávajícího uživatele. Horní navigační obsahuje odkazy na kategorie produktů a jejich produktů z databáze.
+Můžete se zaregistrovat jako nový uživatel nebo se přihlásit jako stávající uživatel. Horní navigace obsahuje odkazy na kategorie produktů a jejich produkty z databáze.
 
-Pokud vyberete **produkty**, se zobrazí všechny produkty k dispozici. 
+Pokud vyberete možnost **produkty**, zobrazí se všechny dostupné produkty. 
 
-![Vzorkový - produkty](introduction-and-overview/_static/image2.png)
+![Společnost Wingtip Toys – produkty](introduction-and-overview/_static/image2.png)
 
 Pokud vyberete určitý produkt, zobrazí se podrobnosti o produktu.
 
-![Vzorkový – podrobnosti o produktu](introduction-and-overview/_static/image3.png)
+![Společnost Wingtip Toys – podrobnosti o produktu](introduction-and-overview/_static/image3.png)
 
-Jako uživatel můžete registrovat a přihlaste se pomocí funkce výchozí šablony webových formulářů. V tomto kurzu vysvětluje, jak se přihlásit pomocí existujícího účtu Gmail. Kromě toho můžete přihlásit jako správce přidávat a odebírat produkty z databáze.
+Jako uživatel můžete registrovat a přihlašovat se pomocí výchozích funkcí šablon webových formulářů. Tento kurz taky vysvětluje, jak se přihlašovat pomocí existujícího účtu Gmail. Kromě toho se můžete přihlásit jako správce a přidat nebo odebrat produkty z databáze.
 
-![Přihlaste se na adresář Wingtip Toys-](introduction-and-overview/_static/image4.png)
+![Wingtip Toys – přihlášení](introduction-and-overview/_static/image4.png)
 
-Jakmile jste přihlášení jako uživatel, můžete přidat produkty do nákupního košíku a ověření přes PayPal. Ukázková aplikace je navržen pro práci v sandboxu pro vývojáře společnosti PayPal. Žádná skutečná peněžní transakce probíhá.
+Jakmile se přihlásíte jako uživatel, můžete přidat produkty do nákupního košíku a zaregistrovat se pomocí služby PayPal. Ukázková aplikace je navržená tak, aby fungovala v izolovaném prostoru pro vývojáře ve službě PayPal. Žádná skutečná peněžní transakce se neuskuteční.
 
-![Vzorkový – nákupní košík](introduction-and-overview/_static/image5.png)
+![Wingtip Toys – nákupní košík](introduction-and-overview/_static/image5.png)
 
-PayPal potvrdí účtu, pořadí a platební informace.
+PayPal potvrdí informace o vašem účtu, objednávce a platbě.
 
-![Vzorkový - PayPal](introduction-and-overview/_static/image6.png)
+![Wingtip Toys – PayPal](introduction-and-overview/_static/image6.png)
 
-Po návratu z PayPal, můžete zkontrolovat a dokončete vaši objednávku.
+Po návratu ze služby PayPal můžete zkontrolovat a dokončit vaši objednávku.
 
-![Vzorkový – pořadí revize](introduction-and-overview/_static/image7.png)
+![Wingtip Toys – revize objednávky](introduction-and-overview/_static/image7.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že je v počítači nainstalován následující software:
+Než začnete, ujistěte se, že je v počítači nainstalovaný následující software:
 
 - [Microsoft Visual Studio 2017 nebo Microsoft Visual Studio Community 2017](https://visualstudio.microsoft.com/downloads/).
 
-Rozhraní .NET Framework se instaluje automaticky.
+.NET Framework se nainstaluje automaticky.
 
-V této sérii kurzů používá Microsoft Visual Studio Community 2017. Můžete použít buď nebo Microsoft Visual Studio 2017 k dokončení této sérii kurzů.
+Tato série kurzů používá Microsoft Visual Studio Community 2017. K dokončení této série kurzů můžete použít buď to, nebo Microsoft Visual Studio 2017.
 
-Mějte na paměti následující skutečnosti související sady Visual Studio:
+Všimněte si následujících informací o aplikaci Visual Studio:
 
-* Microsoft Visual Studio 2017 a Microsoft Visual Studio Community 2017 jsou označovány jako *sady Visual Studio* v celé této sérii kurzů.
+* Microsoft Visual Studio 2017 a Microsoft Visual Studio Community 2017 se v této sérii kurzů označují jako *Visual Studio* .
 
-* Visual Studio 2017 se nainstaluje vedle všechny starší verze už nainstalovaná. Servery, které jsou vytvořeny v dřívějších verzích lze otevřít v sadě Visual Studio 2017 a pokračujte otevřením v předchozích verzích.
+* Visual Studio 2017 je nainstalováno vedle všech starších verzí, které jsou již nainstalovány. Weby vytvořené v dřívějších verzích lze otevřít v aplikaci Visual Studio 2017 a nadále otevírat v předchozích verzích.
 
-* Při prvním spuštění sady Visual Studio, se předpokládá, že jste vybrali *vývoj pro Web* nastavení. Další informace najdete v tématu [jak: Vyberte nastavení prostředí vývoje webu](https://msdn.microsoft.com/library/ff521558.aspx).
+* Při prvním spuštění sady Visual Studio se předpokládá, že jste vybrali nastavení *vývoje webu* . Další informace najdete v tématu [Postupy: výběr nastavení prostředí pro vývoj webu](https://msdn.microsoft.com/library/ff521558.aspx).
 
-Po instalaci požadavků, jste připraveni začít vytvářet webový projekt v této sérii kurzů.
+Po instalaci požadovaných součástí jste připraveni začít vytvářet webový projekt prezentovaný v této sérii kurzů.
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
- Úplnou vzorovou aplikaci na kdykoli můžete stáhnout z webu MSDN ukázky:
+ Dokončenou ukázkovou aplikaci si můžete kdykoli stáhnout z webu ukázek na webu MSDN:
 
-[Začínáme s webovými formuláři ASP.NET 4.5 a Visual Studio 2013 – na adresář Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) 
+[Začínáme s webovými formuláři ASP.NET 4,5 a Visual Studio 2013-Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) 
 
- Tento soubor má následující položky:
+ Tento soubor ke stažení obsahuje následující položky:
 
-- Ukázková aplikace v *Northwind* složky.
-- Prostředky použité k vytvoření ukázkové aplikace v *Northwind prostředky* složky *Northwind* složky.
+- Ukázková aplikace ve složce *WingtipToys*
+- Prostředky použité k vytvoření ukázkové aplikace ve složce *WingtipToys-assets* ve složce *WingtipToys*
 
-Stažení *ZIP* souboru. Pokud chcete zobrazit dokončené projekt, který vytvoří v této sérii kurzů, vyhledejte a vyberte *C#* složky v souboru ZIP. Uložit C# složku ke složce můžete použít pro práci s projekty aplikace Visual Studio. Ve výchozím nastavení je složka projektů sady Visual Studio 2017:
+Soubor ke stažení je soubor *. zip* . Pokud chcete zobrazit dokončený projekt, který tato série kurzů vytvoří, najděte a *C#* vyberte složku v souboru. zip. Uložte C# složku do složky, kterou používáte pro práci s projekty aplikace Visual Studio. Ve výchozím nastavení je složka projektů sady Visual Studio 2017:
 
-<strong>C:\Users&#92;</strong><strong><em>&lt;uživatelské jméno&gt;</em></strong><strong>\source\repos</strong>
+<strong>C:\Users&#92;</strong>  <strong><em>&lt;username&gt;</em></strong> <strong>\source\repos</strong>
 
-Přejmenovat ***jazyka C#*** složku ***Northwind***.
+Přejmenujte ***C#*** složku na ***WingtipToys***.
 
 > [!NOTE]
-> Pokud už máte složku s názvem *Northwind* ve vaší složce projekty dočasně Přejmenujte tuto složku před přejmenováním *jazyka C#* složku *Northwind*.
+> Pokud ve složce Projects již máte složku s názvem *WingtipToys* , před přejmenováním *C#* složky na *WingtipToys*tuto existující složku dočasně přejmenujte.
 
-Chcete-li spustit dokončený projekt, otevřete *Northwind* složky a dvojím kliknutím *WingtipToys.sln* souboru. Visual Studio 2017 otevřete projekt. Pak klikněte pravým tlačítkem *Default.aspx* ve **Průzkumníka řešení** a vyberte **zobrazit v prohlížeči**.
+Chcete-li spustit dokončený projekt, otevřete složku *WingtipToys* a dvakrát klikněte na soubor *WingtipToys. sln* . Visual Studio 2017 otevře projekt. Potom klikněte pravým tlačítkem myši na soubor *Default. aspx* v **Průzkumník řešení** a vyberte možnost **Zobrazit v prohlížeči**.
 
-## <a name="take-a-aspnet-web-forms-quiz-to-review-content"></a>Kontrola obsahu kvízu webových formulářů ASP.NET
+## <a name="take-a-aspnet-web-forms-quiz-to-review-content"></a>Vytvoření kvízu webových formulářů ASP.NET pro kontrolu obsahu
 
-Po dokončení série kurzů, kvízu Otestujte svoje znalosti a posílit klíčových konceptů. Každý dotaz poskytuje vysvětlení a odkazy na další pokyny.
+Po dokončení série kurzů si požádejte kvíz o testování znalostí a posílení klíčových konceptů. Každá otázka obsahuje vysvětlení a odkazy na další doprovodné materiály.
 
-* [Webové formuláře ASP.NET kvíz](https://blogs.msdn.microsoft.com/erikreitan/2016/01/08/asp-net-web-forms-quiz/) 
+* [Kvíz webových formulářů ASP.NET](https://blogs.msdn.microsoft.com/erikreitan/2016/01/08/asp-net-web-forms-quiz/) 
 
-## <a name="tutorial-support-and-comments"></a>Kurz podpory a komentáře
+## <a name="tutorial-support-and-comments"></a>Kurzová podpora a komentáře
 
-Pro otázky a připomínky, použijte oddíl Q a A součástí [Začínáme se službou webových formulářů ASP.NET 4.5 a Visual Studio 2013 – Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) stránka s ukázkou.
+V případě otázek a komentářů použijte část Q a část, která je součástí [Začínáme s webovými formuláři ASP.NET 4,5 a Visual Studio 2013-Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) s ukázkovou stránkou.
 
-Si mohou komentáře k této sérii kurzů. Když se aktualizuje v této sérii kurzů, každý úsilí vezměte v úvahu opravy nebo návrhy na vylepšení.
+Komentáře k této sérii kurzů jsou Vítá vás. Po aktualizaci této série kurzů se provede každé úsilí, aby se zohlednily opravy nebo návrhy na vylepšení.
 
-Pokud dojde k chybě, může být matoucí, odpovídající chybové zprávy s dobrým vysvětlení o tom, jak ho opravit. Potřebujete pomoc, můžete zkontrolovat [fóra ASP.NET](https://forums.asp.net/). Jiné vhodným zdrojem je v části Q a A [Začínáme se službou webových formulářů ASP.NET 4.5 a Visual Studio 2013 – Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) stránka s ukázkou. 
+Pokud dojde k chybě, mohou být příslušné chybové zprávy matoucí, a to bez vhodného vysvětlení, jak je opravit. Nápovědu můžete vyhledat ve [fórech ASP.NET](https://forums.asp.net/). Dalším dobrým zdrojem je oddíl Q a a ve [Začínáme s webovými formuláři ASP.NET 4,5 a na ukázkové stránce Visual Studio 2013-Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#). 
 
 > [!div class="step-by-step"]
 > [Next](create-the-project.md)

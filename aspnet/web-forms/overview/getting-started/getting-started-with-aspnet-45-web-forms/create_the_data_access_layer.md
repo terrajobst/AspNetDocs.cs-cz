@@ -1,37 +1,37 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create_the_data_access_layer
-title: Vytvoření vrstvy přístupu k datům | Dokumentace Microsoftu
+title: Vytvoření vrstvy přístupu k datům | Microsoft Docs
 author: Erikre
-description: V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 pro jsme...
+description: V této sérii kurzů se seznámíte se základy vytváření aplikací webových formulářů ASP.NET pomocí ASP.NET 4,5 a Microsoft Visual Studio Express 2013 pro My...
 ms.author: riande
 ms.date: 09/08/2014
 ms.assetid: 0bbf7a6e-d7eb-4091-91e4-fff892777f32
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create_the_data_access_layer
 msc.type: authoredcontent
-ms.openlocfilehash: 61a9dae22efed9cb7e8957a8c131396cbdeea3c9
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 0fcf050474a57be9ed53ec0783a6d6b7dde2bf4c
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131355"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74575754"
 ---
 # <a name="create-the-data-access-layer"></a>Vytvoření vrstvy přístupu k datům
 
-by [Erik Reitan](https://github.com/Erikre)
+od [Erik Reitan](https://github.com/Erikre)
 
-[Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
+[Stáhnout vzorový projekt Wingtip Toys (C#)](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [Stáhnout elektronickou knihu (PDF)](https://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
-> V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 for Web. Visual Studio 2013 [projektu se zdrojovým kódem jazyka C#](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) je k dispozici v této sérii kurzů.
+> V této sérii kurzů se naučíte základy vytváření webových formulářů ASP.NET pomocí ASP.NET 4,5 a Microsoft Visual Studio Express 2013 pro web. K dispozici je Visual Studio 2013 [projekt se C# zdrojovým kódem](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) , který se doprovází v této sérii kurzů.
 
-Tento kurz popisuje, jak vytvořit, přístup a zkontrolujte data v databázi pomocí webových formulářů ASP.NET a Entity Framework Code First. V tomto kurzu vychází z předchozí kurz o službě "Vytvořit projekt" a je součástí série kurzů Wingtip Slonovi Store. Po dokončení tohoto kurzu, který bude jste vytvořili skupinu tříd přístup k datům, které jsou v *modely* složky projektu.
+V tomto kurzu se dozvíte, jak vytvořit, získat přístup a zkontrolovat data z databáze pomocí webových formulářů ASP.NET a Code First Entity Framework. Tento kurz sestaví v předchozím kurzu "vytvořit projekt" a je součástí série kurzů pro společnost Wingtip Toys. Po dokončení tohoto kurzu budete mít vytvořenou skupinu tříd pro přístup k datům, které jsou ve složce *modely* projektu.
 
-## <a name="what-youll-learn"></a>Co se dozvíte:
+## <a name="what-youll-learn"></a>Co se naučíte:
 
-- Postup vytvoření datové modely.
-- Jak k inicializaci a přidání dat do databáze.
-- Jak aktualizovat a nakonfigurovat aplikaci, aby podporovala databáze.
+- Jak vytvořit datové modely.
+- Jak inicializovat a ohlašovat databázi.
+- Jak aktualizovat a nakonfigurovat aplikaci, aby podporovala databázi.
 
-### <a name="these-are-the-features-introduced-in-the-tutorial"></a>Toto jsou vlastnosti představené v tomto kurzu:
+### <a name="these-are-the-features-introduced-in-the-tutorial"></a>Tyto funkce jsou představené v tomto kurzu:
 
 - Entity Framework Code First
 - LocalDB
@@ -39,148 +39,148 @@ Tento kurz popisuje, jak vytvořit, přístup a zkontrolujte data v databázi po
 
 ## <a name="creating-the-data-models"></a>Vytváření datových modelů
 
-[Entity Framework](https://msdn.microsoft.com/data/aa937723) je objektově relační mapování (ORM) rozhraní. To vám umožní pracovat s relačními daty, jako objekty, což eliminuje většinu kódu přístup k datům, která obvykle byste museli napsat. Používá nástroj Entity Framework, můžete zadávat dotazy pomocí [LINQ](https://msdn.microsoft.com/library/bb397926.aspx), načítání a manipulaci s daty jako objektů se silným typem. LINQ poskytuje vzory pro dotazování a aktualizace dat. Používá nástroj Entity Framework umožňuje zaměřit se na vytváření zbývající části aplikace, místo zaměření na data základy přístup. Dále v této sérii vám ukážeme, jak používat data k naplnění dotazy navigace a produktu.
+[Entity Framework](https://msdn.microsoft.com/data/aa937723) je rozhraní pro mapování relačních objektů (ORM). Umožňuje pracovat s relačními daty jako objekty a eliminovat většinu kódu přístupu k datům, který byste obvykle museli psát. Pomocí Entity Framework můžete vydávat dotazy pomocí [LINQ](https://msdn.microsoft.com/library/bb397926.aspx), načítat a manipulovat s daty jako objekty silného typu. LINQ poskytuje vzory pro dotazování a aktualizaci dat. Použití Entity Framework vám umožní soustředit se na vytvoření zbytku aplikace a nemusíte se zaměřit na základy přístupu k datům. Později v této sérii kurzů vám ukážeme, jak používat data k naplnění navigace a dotazů na produkt.
 
-Entity Framework podporuje vývoj paradigma volá *Code First*. Kód nejprve umožňuje definovat pomocí třídy. Třída je konstrukce, která umožňuje vytvořit vlastní typy prostřednictvím seskupování proměnné jiné typy, metody a události. Můžete mapování tříd k existující databázi nebo použít ke generování databáze. V tomto kurzu vytvoříte datových modelů napsáním tříd datových modelů. Potom dáme vám Entity Framework vytvořit databázi v reálném čase z těchto nových tříd.
+Entity Framework podporuje vývojové paradigma nazvané *Code First*. Code First umožňuje definovat datové modely pomocí tříd. Třída je konstrukce, která umožňuje vytvořit vlastní typy seskupením proměnných jiných typů, metod a událostí. Můžete mapovat třídy na existující databázi nebo je použít k vygenerování databáze. V tomto kurzu vytvoříte datové modely pomocí zápisu tříd datového modelu. Pak z těchto nových tříd umožníte Entity Framework vytvořit databázi průběžně.
 
-Začnete vytvořením tříd entit, které definují datových modelů pro aplikaci webových formulářů. Pak vytvoříte kontextu třídu, která spravuje tříd entit a poskytuje přístup k datům v databázi. Vytvoříte také inicializátor třídy, který budete používat k naplnění databáze.
+Začnete vytvořením tříd entit, které definují datové modely pro aplikaci webových formulářů. Pak vytvoříte kontextovou třídu, která bude spravovat třídy entit a poskytuje přístup k datům databáze. Vytvoří se také Třída inicializátoru, kterou použijete k naplnění databáze.
 
 ### <a name="entity-framework-and-references"></a>Entity Framework a odkazy
 
-Ve výchozím nastavení, Entity Framework je součástí vytvoříte nový **webová aplikace ASP.NET** pomocí **webových formulářů** šablony. Entity Framework můžete nainstalovaná, odinstaluje a aktualizovat jako balíček NuGet.
+Ve výchozím nastavení je Entity Framework k dispozici při vytváření nové **webové aplikace ASP.NET** pomocí šablony **webových formulářů** . Entity Framework může být nainstalováno, odinstalováno a aktualizováno jako balíček NuGet.
 
-Tento balíček NuGet. obsahuje následující **runtime** sestavení v rámci svého projektu:
+Tento balíček NuGet obsahuje následující sestavení **modulu runtime** v rámci projektu:
 
-- EntityFramework.dll – všechny běžné runtime kód používá Entity Framework
-- EntityFramework.SqlServer.dll – Microsoft SQL Server zprostředkovatele pro Entity Framework
+- EntityFramework. dll – všechen Společný běhový kód používaný Entity Framework
+- EntityFramework. SqlServer. dll – poskytovatel Microsoft SQL Server pro Entity Framework
 
-### <a name="entity-classes"></a>Tříd entit
+### <a name="entity-classes"></a>Třídy entit
 
-Třídy vytvoříte pro definování schématu dat se nazývají tříd entit. Pokud jste nový návrh databáze, představit jako definice tabulky databáze tříd entit. Každou vlastnost v třídě určuje sloupec v tabulce databáze. Tyto třídy poskytují jednoduchý, objektově relační rozhraní mezi kódem objektově orientované a struktura tabulky relační databáze.
+Třídy, které vytvoříte pro definování schématu dat, se nazývají třídy entit. Pokud s návrhem databází začínáte, můžete třídy entit představit jako definice tabulek v databázi. Každá vlastnost ve třídě Určuje sloupec v tabulce databáze. Tyto třídy poskytují odlehčené objektově-relační rozhraní mezi objektově orientovaným kódem a strukturou relační tabulky databáze.
 
-V tomto kurzu budete Začněte přidáním jednoduché entity třídy představující schémata pro produkty a kategorie. Třída produkty budou obsahovat definice pro každý produkt. Název každého člena třídy produkt bude `ProductID`, `ProductName`, `Description`, `ImagePath`, `UnitPrice`, `CategoryID`, a `Category`. Kategorie třídy bude obsahovat definice pro každou kategorii, který produkt může patřit do, jako jsou auta, loď nebo roviny. Název každého člena třídy kategorie bude `CategoryID`, `CategoryName`, `Description`, a `Products`. Každý produkt bude patřit do jedné kategorie. Tyto entity třídy se přidá k existujícím projektu *modely* složky.
+V tomto kurzu začnete přidáním jednoduchých tříd entit, které představují schémata pro produkty a kategorie. Třída Products bude obsahovat definice pro každý produkt. Název každého člena třídy produktu bude `ProductID`, `ProductName`, `Description`, `ImagePath`, `UnitPrice`, `CategoryID`a `Category`. Třída Category bude obsahovat definice pro každou kategorii, do které může produkt patřit, jako je auto, člun nebo rovina. Název každého člena třídy Category bude `CategoryID`, `CategoryName`, `Description`a `Products`. Každý produkt bude patřit do jedné z kategorií. Tyto třídy entit budou přidány do existující složky *modelů* projektu.
 
-1. V **Průzkumníku řešení**, klikněte pravým tlačítkem myši *modely* složku a pak vyberte **přidat**  - &gt; **nová položka**. 
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na složku *modely* a pak vyberte **Přidat** -&gt; **Nová položka**. 
 
-    ![Vytvoření vrstvy přístupu k datům – nové položky nabídky](create_the_data_access_layer/_static/image1.png)
+    ![Vytvoření nabídky Data Access Layer-New Item](create_the_data_access_layer/_static/image1.png)
 
-   **Přidat novou položku** se zobrazí dialogové okno.
-2. V části **Visual C#** z **nainstalováno** podokna na levé straně vyberte **kód**. 
+   Zobrazí se dialogové okno **Přidat novou položku** .
+2. V **části C# vizuál** z **nainstalovaného** podokna na levé straně vyberte **kód**. 
 
-    ![Vytvoření vrstvy přístupu k datům – nové položky nabídky](create_the_data_access_layer/_static/image2.png)
-3. Vyberte **třídy** z podokna uprostřed a názvem Tato nová třída *Product.cs*.
-4. Klikněte na **Přidat**.  
-   Nový soubor třídy se zobrazí v editoru.
-5. Nahraďte kód následujícím kódem:   
+    ![Vytvoření nabídky Data Access Layer-New Item](create_the_data_access_layer/_static/image2.png)
+3. V prostředním podokně vyberte **Třída** a pojmenujte tuto novou třídu *Product.cs*.
+4. Klikněte na tlačítko **Přidat**.  
+   V editoru se zobrazí nový soubor třídy.
+5. Nahraďte výchozí kód následujícím kódem:   
 
     [!code-csharp[Main](create_the_data_access_layer/samples/sample1.cs)]
-6. Vytvořit jiné třídy opakováním kroků 1 až 4, ale pojmenujte novou třídu *Category.cs* a nahraďte kód následujícím kódem:  
+6. Vytvořte další třídu opakováním kroků 1 až 4, ale pojmenujte novou třídu *Category.cs* a nahraďte výchozí kód následujícím kódem:  
 
     [!code-csharp[Main](create_the_data_access_layer/samples/sample2.cs)]
 
-Jak už jsme zmínili, `Category` třídy představuje typ produktu, které aplikace je navržen tak, aby je prodal (například <a id="a"> </a> &quot;auta&quot;, &quot;lodě&quot;, &quot;Rockets&quot;, a tak dále) a `Product` třída představuje jednotlivé produkty (toys) v databázi. Každá instance `Product` objektu, budou odpovídat na řádek v tabulce relačních databází a každá vlastnost třídy produkt bude mapovat na sloupec v tabulce relační databáze. Později v tomto kurzu zkontrolujete produktu data obsažená v databázi.
+Jak už jsme uvedli, třída `Category` představuje typ produktu, který je navržený pro prodej (například <a id="a"></a>&quot;auta&quot;, &quot;čluny&quot;, &quot;Rockets&quot;atd.), a třída `Product` představuje jednotlivé produkty (hračky) v databázi. Každá instance `Product` objektu bude odpovídat řádku v relační tabulce databáze a každá vlastnost třídy produkt bude namapována na sloupec v tabulce relační databáze. Později v tomto kurzu zkontrolujete data produktu obsažená v databázi.
 
 ### <a name="data-annotations"></a>Datové poznámky
 
-Mohli jste si všimnout, že některé členy třídy mají atributy zadání podrobností o členu, například `[ScaffoldColumn(false)]`. Jedná se o *anotacemi dat*. Atributy datového poznámky můžete popisují, jak ověření vstupu uživatele pro tento člen, můžete určit formátování a určete, jak je modelovaná při vytvoření databáze.
+Možná jste si všimli, že někteří členové tříd mají atributy, které určují podrobnosti o členu, například `[ScaffoldColumn(false)]`. Jedná se o *datové poznámky*. Atributy poznámky k datům mohou popsány, jak ověřit vstup uživatele pro daného člena, zadat jeho formátování a určit, jak se má modelovat při vytvoření databáze.
 
 ### <a name="context-class"></a>Context – třída
 
-Pokud chcete začít používat tříd pro přístup k datům, musí definovat třídu kontextu. Jak už bylo zmíněno dříve, třídy kontextu spravuje tříd entit (například `Product` třídy a `Category` třídy) a poskytuje přístup k datům v databázi.
+Chcete-li začít používat třídy pro přístup k datům, je nutné definovat třídu kontextu. Jak bylo zmíněno dříve, Třída Context spravuje třídy entit (například třídu `Product` a třídu `Category`) a poskytuje přístup k datům databáze.
 
-Tento postup přidá nové třídy C# kontext k *modely* složky.
+Tento postup přidá novou C# kontextovou třídu do složky *modely* .
 
-1. Klikněte pravým tlačítkem myši *modely* složku a pak vyberte **přidat**  - &gt; **nová položka**.   
-   **Přidat novou položku** se zobrazí dialogové okno.
-2. Vyberte **třídy** v prostředním podokně, pojmenujte ho *ProductContext.cs* a klikněte na tlačítko **přidat**.
-3. Nahraďte výchozí kód obsažený ve třídě s následujícím kódem:   
+1. Klikněte pravým tlačítkem na složku *modely* a pak vyberte **Přidat** -&gt; **Nová položka**.   
+   Zobrazí se dialogové okno **Přidat novou položku** .
+2. V prostředním podokně vyberte **Třída** , pojmenujte ji *ProductContext.cs* a klikněte na **Přidat**.
+3. Nahraďte výchozí kód obsažený ve třídě následujícím kódem:   
 
     [!code-csharp[Main](create_the_data_access_layer/samples/sample3.cs)]
 
-Tento kód přidá `System.Data.Entity` obor názvů, abyste měli přístup ke všem funkcím základní Entity Framework, která zahrnuje možnost dotazu, vložit, aktualizovat a odstraňovat data ve spolupráci s objektů se silným typem.
+Tento kód přidá obor názvů `System.Data.Entity`, abyste měli přístup ke všem základním funkcím Entity Framework, které zahrnují možnost dotazování, vkládání, aktualizaci a odstraňování dat pomocí objektů se silnými typy.
 
-`ProductContext` Třída reprezentuje kontext databáze produktu Entity Framework, která zpracovává načítání, ukládání a aktualizaci `Product` třídy instancí v databázi. `ProductContext` Třída odvozena z `DbContext` základní třída poskytované rozhraním Entity Framework.
+Třída `ProductContext` představuje kontext databáze Entity Framework produktu, který zpracovává načítání, ukládání a aktualizaci instancí tříd `Product` v databázi. Třída `ProductContext` je odvozena od `DbContext` základní třídy poskytované Entity Framework.
 
-### <a name="initializer-class"></a>Inicializátor třídy
+### <a name="initializer-class"></a>Inicializátor – třída
 
-Je potřeba spustit některé vlastní logiku inicializace databáze první čas, který se používá kontextu. To vám umožní počáteční data mají být přidány do databáze, tak, aby si můžete okamžitě prohlédnout produktů a kategorie.
+Při prvním použití kontextu bude nutné spustit určitou vlastní logiku pro inicializaci databáze. Tím umožníte přidání počátečních dat do databáze, abyste mohli hned Zobrazit produkty a kategorie.
 
-Tento postup přidá nové třídy C# inicializátor pro *modely* složky.
+Tento postup přidá do složky C# *modely* novou třídu inicializátoru.
 
-1. Vytvořte další `Class` v *modely* složku a pojmenujte ho *ProductDatabaseInitializer.cs*.
-2. Nahraďte výchozí kód obsažený ve třídě s následujícím kódem:   
+1. Vytvořte další `Class` ve složce *modely* a pojmenujte ji *ProductDatabaseInitializer.cs*.
+2. Nahraďte výchozí kód obsažený ve třídě následujícím kódem:   
 
     [!code-csharp[Main](create_the_data_access_layer/samples/sample4.cs)]
 
-Jak je vidět ve výše uvedeném kódu, když je vytvořen a inicializován, databáze `Seed` vlastnost je přepsat a nastavit. Když `Seed` je hodnota nastavena, hodnoty z kategorie a produkty, které se používají k naplnění databáze. Pokud se pokusíte k aktualizaci dat počáteční hodnoty tak, že upravíte výše uvedený kód po vytvoření databáze, neuvidíte žádné aktualizace při spuštění webové aplikace. Důvodem je to výše uvedený kód používá provádění `DropCreateDatabaseIfModelChanges` třídy rozpoznat, pokud model (schéma) byl změněn před obnovením dat počáteční hodnoty. Pokud jsou provedeny žádné změny `Category` a `Product` tříd entit, databáze nebude opakování inicializace odběrů pomocí dat počáteční hodnoty.
+Jak vidíte z výše uvedeného kódu, při vytvoření a inicializaci databáze je vlastnost `Seed` přepsána a nastavena. Při nastavení vlastnosti `Seed` se k naplnění databáze použijí hodnoty z kategorií a produktů. Pokud se pokusíte aktualizovat počáteční data úpravou výše uvedeného kódu po vytvoření databáze, při spuštění webové aplikace se nezobrazí žádné aktualizace. Důvodem je, že výše uvedený kód používá implementaci třídy `DropCreateDatabaseIfModelChanges` k rozpoznání, zda byl model (schéma) změněn před resetováním počátečních dat. Pokud nejsou provedeny žádné změny `Category` a `Product` třídy entit, databáze nebude znovu inicializována daty počáteční hodnoty.
 
 > [!NOTE] 
 > 
-> Pokud byste chtěli databáze, kterou chcete znovu vytvořit pokaždé, když byla aplikace spuštěná, můžete použít `DropCreateDatabaseAlways` místo na třídě `DropCreateDatabaseIfModelChanges` třídy. Ale pro tuto řadu kurzů použít `DropCreateDatabaseIfModelChanges` třídy.
+> Pokud jste chtěli, aby se databáze znovu nevytvořila při každém spuštění aplikace, můžete místo `DropCreateDatabaseIfModelChanges` třídy použít třídu `DropCreateDatabaseAlways`. Pro tuto řadu kurzů ale použijte třídu `DropCreateDatabaseIfModelChanges`.
 
-V tuto chvíli v tomto kurzu budete mít *modely* složky čtyři nové třídy a jednu výchozí třídu:
+V tomto okamžiku v tomto kurzu budete mít složku *modelů* se čtyřmi novými třídami a jednu výchozí třídou:
 
-![Vytvoření vrstvy přístupu k datům – složku modely](create_the_data_access_layer/_static/image3.png)
+![Vytvoření složky modelů pro přístup k datům](create_the_data_access_layer/_static/image3.png)
 
 ### <a name="configuring-the-application-to-use-the-data-model"></a>Konfigurace aplikace pro použití datového modelu
 
-Teď, když jste vytvořili třídy, které představují data, musíte nakonfigurovat aplikaci pro použití třídy. V *Global.asax* souboru, přidejte kód, který inicializuje model. V *Web.config* přidat informace, které se říká aplikace co databázi, kterou budete používat k ukládání dat, která je reprezentována nové třídy datového souboru. *Global.asax* soubor lze použít ke zpracování událostí aplikace nebo metody. *Web.config* souboru umožňuje řídit konfiguraci webové aplikace ASP.NET.
+Nyní, když jste vytvořili třídy, které reprezentují data, je nutné nakonfigurovat aplikaci tak, aby používala třídy. V souboru *Global. asax* přidáte kód, který inicializuje model. V souboru *Web. config* přidáte informace, které aplikaci sdělují, jakou databázi budete používat k ukládání dat reprezentovaných novými datovými třídami. Soubor *Global. asax* lze použít ke zpracování událostí nebo metod aplikace. Soubor *Web. config* umožňuje řídit konfiguraci webové aplikace v ASP.NET.
 
-#### <a name="updating-the-globalasax-file"></a>Aktualizuje se soubor Global.asax
+#### <a name="updating-the-globalasax-file"></a>Aktualizace souboru Global. asax
 
-Inicializovat datové modely při spuštění aplikace, budete aktualizovat `Application_Start` obslužné rutiny v *Global.asax.cs* souboru.
+Chcete-li inicializovat datové modely při spuštění aplikace, aktualizujte obslužnou rutinu `Application_Start` v souboru *Global.asax.cs* .
 
 > [!NOTE] 
 > 
-> V Průzkumníku řešení, můžete vybrat, zda *Global.asax* souboru nebo *Global.asax.cs* soubor pro úpravu *Global.asax.cs* souboru.
+> V Průzkumník řešení můžete pro úpravu souboru *Global.asax.cs* vybrat soubor *Global. asax* nebo soubor *Global.asax.cs* .
 
-1. Přidejte následující kód zvýrazněné žlutou barvou na `Application_Start` metodu *Global.asax.cs* souboru.   
+1. Přidejte následující kód zvýrazněný žlutě do metody `Application_Start` v souboru *Global.asax.cs* .   
 
     [!code-csharp[Main](create_the_data_access_layer/samples/sample5.cs?highlight=9-10,22-23)]
 
 > [!NOTE] 
 > 
-> Váš prohlížeč musí podporovat HTML5, chcete-li zobrazit kód zvýrazněn žlutě při prohlížení v této sérii kurzů v prohlížeči.
+> Aby mohl váš prohlížeč zobrazit kód zvýrazněný žlutě při zobrazení této série kurzů v prohlížeči, musí podporovat HTML5.
 
-Jak je znázorněno výše uvedený kód při spuštění aplikace, aplikace určuje, že je přístupná inicializátoru, který se spustí při prvním spuštění data. Dva další obory názvů jsou nutné pro přístup k `Database` objektu a `ProductDatabaseInitializer` objektu.
+Jak je znázorněno ve výše uvedeném kódu, aplikace při spuštění aplikace určuje inicializátor, který se spustí při prvním otevření dat. Pro přístup k objektu `Database` a objektu `ProductDatabaseInitializer` jsou vyžadovány dva další obory názvů.
 
- Úprava souboru Web.Config. 
+ Úprava souboru Web. config 
 
-Ačkoli Entity Framework Code First databáze za vás ve výchozím umístění při vygeneruje počáteční data se načtou databáze, přidání své vlastní informace o připojení k vaší aplikaci nabízí kontrolu nad umístění databáze. Zadejte toto připojení k databázi pomocí připojovacího řetězce v aplikačním *Web.config* souboru v kořenovém adresáři projektu. Když přidáte nový připojovací řetězec, můžete nastavit umístění databáze (*wingtiptoys.mdf*) má být sestaven v adresáři aplikace data (*aplikace\_Data*), místo jeho výchozí umístění. Tato změna vám umožní vyhledat a zkontrolujte soubor databáze dále v tomto kurzu.
+I když Entity Framework Code First vygeneruje databázi pro vás ve výchozím umístění v případě, že je databáze naplněná daty o základech, přidání vlastních informací o připojení do vaší aplikace vám umožní řídit umístění databáze. Toto připojení k databázi zadáte pomocí připojovacího řetězce v souboru *Web. config* aplikace v kořenovém adresáři projektu. Přidáním nového připojovacího řetězce můžete směrovat umístění databáze (*wingtiptoys. mdf*), aby byla sestavena v datovém adresáři aplikace (*data aplikace\_* ), nikoli ve výchozím umístění. Tato změna vám umožní vyhledat a prozkoumat databázový soubor později v tomto kurzu.
 
-1. V **Průzkumníka řešení**, najít a otevřít *Web.config* souboru.
-2. Přidat připojovací řetězec, který je zvýrazněn žlutě, aby `<connectionStrings>` část *Web.config* to následujícím způsobem:  
+1. V **Průzkumník řešení**vyhledejte a otevřete soubor *Web. config* .
+2. Přidejte připojovací řetězec zvýrazněný žlutě do části `<connectionStrings>` souboru *Web. config* následujícím způsobem:  
 
     [!code-xml[Main](create_the_data_access_layer/samples/sample6.xml?highlight=4-7)]
 
-Při prvním spuštění aplikace, sestaví databáze v umístění zadaném připojovacím řetězcem. Ale před spuštěním aplikace, můžeme ji nejdřív sestavit.
+Při prvním spuštění aplikace bude databáze sestavena v umístění určeném připojovacím řetězcem. Ale před spuštěním aplikace si ji nejdřív sestavíme.
 
 ## <a name="building-the-application"></a>Sestavení aplikace
 
-Pokud chcete mít jistotu, že všechny třídy a změny do vaší webové aplikace fungovat, měli byste vytvořit aplikaci.
+Chcete-li zajistit, aby všechny třídy a změny fungovaly v rámci vaší webové aplikace, měli byste sestavit aplikaci.
 
-1. Z **ladění** nabídce vyberte možnost **sestavení Northwind**.  
- **Výstup** se zobrazí okno, a pokud všechny se podařilo, zobrazí se *úspěšné* zprávy.  
+1. V nabídce **ladění** vyberte **sestavení WingtipToys**.  
+ Zobrazí se okno **výstup** a pokud se všechno objevilo správně, zobrazí se zpráva o *úspěšném* dokončení.  
 
-    ![Vytvoření vrstvy přístupu k datům – výstupní Windows](create_the_data_access_layer/_static/image4.png)
+    ![Vytvoření výstupních oken vrstvy přístupu k datům](create_the_data_access_layer/_static/image4.png)
 
-Pokud narazíte na chybu, zkontrolujte znovu proveďte následující kroky. Informace v **výstup** okno označí soubor, který problém, kde v souboru je požadována změna. Tyto informace vám umožní určit, jaká část výše uvedené kroky potřeba zkontrolovali a opravili ve vašem projektu.
+Pokud narazíte na chybu, znovu proveďte kontrolu výše uvedených kroků. Informace v okně **výstup** označují, který soubor má problém a kde je požadováno změny v souboru. Tyto informace vám umožní určit, jakou část výše uvedených kroků je potřeba zkontrolovat a opravit v projektu.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-V tomto kurzu této série budete mít vytvoření datového modelu, jakož i, přidat kód, který se použije k inicializaci a přidání dat do databáze. Také jste nakonfigurovali aplikaci, aby používala datové modely při spuštění aplikace.
+V tomto kurzu řady, kterou jste vytvořili datový model, a také přidejte kód, který bude použit k inicializaci a osazení databáze. Aplikaci jste také nakonfigurovali tak, aby používala datové modely při spuštění aplikace.
 
-V dalším kurzu budete aktualizaci uživatelského rozhraní, přidání navigace a načtení dat z databáze. Výsledkem bude databáze se automaticky vytvoří podle tříd entit, které jste vytvořili v tomto kurzu.
+V dalším kurzu aktualizujete uživatelské rozhraní, přidáte navigaci a načtete data z databáze. Výsledkem bude, že se databáze automaticky vytvoří na základě tříd entit, které jste vytvořili v tomto kurzu.
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 [Přehled Entity Framework](https://msdn.microsoft.com/library/bb399567.aspx)   
-[Průvodce pro začátečníky ADO.NET Entity Framework](https://msdn.microsoft.com/data/ee712907)   
-[První vývoj pomocí rozhraní Entity Framework Code](http://www.msteched.com/2010/Europe/DEV212) (video)   
-[Kód první vztahy Fluent API](https://msdn.microsoft.com/data/hh134698)   
-[Kód první datové poznámky](https://msdn.microsoft.com/data/gg193958)  
-[Vylepšení produktivity pro Entity Framework](https://blogs.msdn.com/b/efdesign/archive/2010/06/21/productivity-improvements-for-the-entity-framework.aspx?wa=wsignin1.0)
+[Příručka pro začátečníky k ADO.NET Entity Framework](https://msdn.microsoft.com/data/ee712907)   
+[Code First vývoj s](http://www.msteched.com/2010/Europe/DEV212) využitím Entity Framework (video)   
+[Code First vztahů – rozhraní API Fluent](https://msdn.microsoft.com/data/hh134698)   
+[Code First datové poznámky](https://msdn.microsoft.com/data/gg193958)  
+[Vylepšení produktivity Entity Framework](https://blogs.msdn.com/b/efdesign/archive/2010/06/21/productivity-improvements-for-the-entity-framework.aspx?wa=wsignin1.0)
 
 > [!div class="step-by-step"]
 > [Předchozí](create-the-project.md)
-> [další](ui_and_navigation.md)
+> [Další](ui_and_navigation.md)

@@ -1,478 +1,478 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/storing-additional-user-information-cs
-title: Ukládání dalších informací o uživatelích (C#) | Dokumentace Microsoftu
+title: Ukládají se další informace oC#uživateli () | Microsoft Docs
 author: rick-anderson
-description: V tomto kurzu jsme tuto otázku odpovědět sestavením aplikace vyloženě návštěv. Přitom se podíváme na různé možnosti pro modeli...
+description: V tomto kurzu odpovíme na tuto otázku vytvořením velmi základní aplikace v knize webkniha. V takovém případě se podíváme na různé možnosti modelu...
 ms.author: riande
 ms.date: 01/18/2008
 ms.assetid: 1642132a-1ca5-4872-983f-ab59fc8865d3
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/storing-additional-user-information-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fce3bd00716d992dd9faf70dfd46c2e845faef14
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 24b96e86bc93e03d2639b73e35ed1fd1271bac5a
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133053"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74641458"
 ---
 # <a name="storing-additional-user-information-c"></a>Ukládání dalších informací o uživatelích (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/ASPNET_Security_Tutorial_08_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/aspnet_tutorial08_ExtraUserInfo_cs.pdf)
+[Stažení kódu](https://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/ASPNET_Security_Tutorial_08_CS.zip) nebo [stažení PDF](https://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/aspnet_tutorial08_ExtraUserInfo_cs.pdf)
 
-> V tomto kurzu jsme tuto otázku odpovědět sestavením aplikace vyloženě návštěv. Současně jsme se podívá na různé možnosti pro modelování informace o uživateli v databázi a poté zjistit, jak tato data přidružit uživatelské účty vytvořené v rámci rozhraní členství.
+> V tomto kurzu odpovíme na tuto otázku vytvořením velmi základní aplikace v knize webkniha. V takovém případě se podíváme na různé možnosti pro modelování informací o uživatelích v databázi a potom se dozvíte, jak tyto údaje přidružit k uživatelským účtům vytvořeným pomocí architektury členství.
 
 ## <a name="introduction"></a>Úvod
 
-ASP. . NET framework členství nabízí flexibilní rozhraní pro správu uživatelů. Toto rozhraní API členství zahrnuje metody ověřují se přihlašovací údaje, načítání informací o aktuálně přihlášeného uživatele, vytvoření nového uživatelského účtu a odstranění uživatelského účtu, mimo jiné. Každý uživatelský účet v rámci členství obsahuje pouze vlastnosti, které jsou nutné pro ověření pověření a provádění úlohy související s účtem základní uživatele. To svědčí metody a vlastnosti [ `MembershipUser` třída](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx), který modeluje uživatelský účet v rámci členství. Tato třída obsahuje vlastnosti, jako je [ `UserName` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.username.aspx), [ `Email` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.email.aspx), a [ `IsLockedOut` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.islockedout.aspx), a metody, jako jsou [ `GetPassword` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.getpassword.aspx) a [ `UnlockUser` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.unlockuser.aspx).
+Formátu. Rámec členství netto nabízí flexibilní rozhraní pro správu uživatelů. Rozhraní API pro členství zahrnuje metody pro ověřování přihlašovacích údajů, načítání informací o aktuálně přihlášeném uživateli, vytváření nového uživatelského účtu a odstranění uživatelského účtu mimo jiné. Každý uživatelský účet v rozhraní členství obsahuje jenom vlastnosti potřebné k ověřování přihlašovacích údajů a provádění základních úloh souvisejících s uživatelským účtem. Toto je legitimace metodami a vlastnostmi [třídy`MembershipUser`](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx), která modeluje uživatelský účet v rozhraní členství. Tato třída má vlastnosti, jako [`UserName`](https://msdn.microsoft.com/library/system.web.security.membershipuser.username.aspx), [`Email`](https://msdn.microsoft.com/library/system.web.security.membershipuser.email.aspx)a [`IsLockedOut`](https://msdn.microsoft.com/library/system.web.security.membershipuser.islockedout.aspx), a metody jako [`GetPassword`](https://msdn.microsoft.com/library/system.web.security.membershipuser.getpassword.aspx) a [`UnlockUser`](https://msdn.microsoft.com/library/system.web.security.membershipuser.unlockuser.aspx).
 
-Aplikace často, třeba k ukládání dalších informací o uživatelích nejsou zahrnuty v rámci členství. Online prodejce může být například nutné chcete, aby každý uživatel uložit své přenosů a fakturační adresu, platební údaje, předvolby doručování a kontaktní telefonní číslo. Kromě toho jednotlivé objednávky v systému je přidružený určitého uživatelského účtu.
+Často, aplikace musí ukládat Další informace o uživateli, které nejsou zahrnuty v rámci členství v rozhraní. Maloobchodní prodejce může například potřebovat umožnit každému uživateli ukládat své dodací a fakturační adresy, platební údaje, předvolby pro doručování a kontaktní telefonní číslo. Kromě toho je každá objednávka v systému přidružena k určitému uživatelskému účtu.
 
-`MembershipUser` Třídy nezahrnuje vlastnosti, jako je `PhoneNumber` nebo `DeliveryPreferences` nebo `PastOrders`. Jak jsme sledovat uživatelské informace potřebné pro aplikace a jeho integrovat členství v rámci? V tomto kurzu jsme tuto otázku odpovědět sestavením aplikace vyloženě návštěv. Současně jsme se podívá na různé možnosti pro modelování informace o uživateli v databázi a poté zjistit, jak tato data přidružit uživatelské účty vytvořené v rámci rozhraní členství. Pusťme se do práce!
+Třída `MembershipUser` nezahrnuje vlastnosti, jako je `PhoneNumber` nebo `DeliveryPreferences` nebo `PastOrders`. Jak sleduji informace o uživateli, které aplikace potřebuje, a je třeba ji integrovat s rozhraním členství? V tomto kurzu odpovíme na tuto otázku vytvořením velmi základní aplikace v knize webkniha. V takovém případě se podíváme na různé možnosti pro modelování informací o uživatelích v databázi a potom se dozvíte, jak tyto údaje přidružit k uživatelským účtům vytvořeným pomocí architektury členství. Pojďme začít!
 
-## <a name="step-1-creating-the-guestbook-applications-data-model"></a>Krok 1: Vytvoření datového modelu aplikace návštěv
+## <a name="step-1-creating-the-guestbook-applications-data-model"></a>Krok 1: vytvoření datového modelu aplikace pro knihu návštěv
 
-Existuje řada různých technik, které mohou být použity k zaznamenání informací o uživateli v databázi a přidružit ho k uživatelské účty vytvořené v rámci rozhraní členství. Aby bylo možné tyto postupy ukazují, budeme muset rozšířit kurz webové aplikace tak, že zachytí nějaký druh uživatelská data. (V současné době aplikace datový model obsahuje pouze aplikaci služby tabulky vyžadované `SqlMembershipProvider`.)
+Existují různé techniky, které je možné využít k zaznamenání informací o uživatelích do databáze a jejich přidružení k uživatelským účtům vytvořeným v rámci rozhraní členství. Abychom tyto techniky předvedli, musíme rozšířit výuku webové aplikace tak, aby zachytával data související s uživatelem. (V současné době datový model aplikace obsahuje pouze tabulky aplikačních služeb, které vyžaduje `SqlMembershipProvider`.)
 
-Vytvoříme aplikaci velmi jednoduché návštěv, ve kterém můžete ověřeného uživatele napište komentář. Kromě ukládání návštěv komentáře, můžeme povolit každému uživateli ukládat své domácí města, domovskou stránku a podpisu. Pokud je zadán, uživatele domácí města, domovskou stránku a podpis se zobrazí v každá zpráva, že není dostupný v knize návštěv.
+Pojďme vytvořit velmi jednoduchou aplikaci v knize pro knihu, kde může ověřený uživatel opustit komentář. Kromě ukládání komentářů na kniha návštěv Umožníme každému uživateli ukládat jeho domovskou města, domovskou stránku a podpis. V případě potřeby se Domovská stránka, Domovská stránka a podpis uživatele zobrazí na každé zprávě, kterou opustí kniha návštěv.
 
-### <a name="adding-theguestbookcommentstable"></a>Přidávání`GuestbookComments`tabulky
+### <a name="adding-theguestbookcommentstable"></a>Přidání tabulky`GuestbookComments`
 
-Aby bylo možné zachytit návštěv komentáře, musíme vytvořit tabulku databáze s názvem `GuestbookComments` , který má sloupce jako `CommentId`, `Subject`, `Body`, a `CommentDate`. Je také potřeba mít každý záznam `GuestbookComments` uživatele, který zanechal komentář odkaz na tabulku.
+Abychom mohli zachytit komentáře knihy návštěv, musíme vytvořit databázovou tabulku s názvem `GuestbookComments`, která obsahuje sloupce jako `CommentId`, `Subject`, `Body`a `CommentDate`. Také je nutné, aby každý záznam v tabulce `GuestbookComments` odkazoval na uživatele, který komentář opustil.
 
-Chcete-li přidat tuto tabulku do databáze, přejít na Průzkumník databáze v sadě Visual Studio a k podrobnostem `SecurityTutorials` databáze. Klikněte pravým tlačítkem na složku tabulky a zvolte Přidat novou tabulku. Tím se zobrazí rozhraní, která umožňuje definovat sloupců nové tabulky.
+Chcete-li přidat tuto tabulku do naší databáze, přejděte do Průzkumníka databáze v aplikaci Visual Studio a přejděte k podrobnostem o `SecurityTutorials` databázi. Klikněte pravým tlačítkem na složku tabulky a vyberte možnost Přidat novou tabulku. Tím se zobrazí rozhraní, které nám umožňuje definovat sloupce pro novou tabulku.
 
-[![Přidá novou tabulku SecurityTutorials databáze](storing-additional-user-information-cs/_static/image2.png)](storing-additional-user-information-cs/_static/image1.png)
+[![přidat novou tabulku do databáze SecurityTutorials](storing-additional-user-information-cs/_static/image2.png)](storing-additional-user-information-cs/_static/image1.png)
 
-**Obrázek 1**: Přidat novou tabulku `SecurityTutorials` databáze ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image3.png))
+**Obrázek 1**: Přidání nové tabulky do databáze `SecurityTutorials` ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image3.png))
 
-Dále definujte `GuestbookComments`na sloupce. Začněte přidáním sloupec s názvem `CommentId` typu `uniqueidentifier`. V tomto sloupci se jednoznačně identifikovat každou komentář v knize návštěv, tak zakažte `NULL` s a označte ji jako primární klíč v tabulce. Místo zadání hodnoty pro `CommentId` pole v každém `INSERT`, jsme můžete určit, že nový `uniqueidentifier` hodnoty by měly být automaticky generovány pro toto pole na `INSERT` nastavením výchozí hodnotu sloupce na `NEWID()`. Po přidání tohoto prvního pole, jeho označení jako primární klíč a nastavení jeho výchozí hodnotu, vaše obrazovka by měla vypadat podobně jako obrazovky je vidět na obrázku 2.
+Dále definujte sloupce `GuestbookComments`. Začněte přidáním sloupce s názvem `CommentId` typu `uniqueidentifier`. V tomto sloupci se jednoznačně identifikují jednotlivé komentáře v knize webkniha, takže zakažte `NULL` s a označte ji jako primární klíč tabulky. Místo zadání hodnoty `CommentId` pole u každého `INSERT`můžeme určit, že se má pro toto `INSERT` pole automaticky vygenerovat nová hodnota `uniqueidentifier`, která nastaví výchozí hodnotu sloupce na `NEWID()`. Po přidání prvního pole, jeho označení jako primárního klíče a nastavení jeho výchozí hodnoty by měla obrazovka vypadat podobně jako snímek obrazovky, který je znázorněný na obrázku 2.
 
-[![Přidejte primární sloupec s názvem CommentId](storing-additional-user-information-cs/_static/image5.png)](storing-additional-user-information-cs/_static/image4.png)
+[![přidat primární sloupec s názvem CommentId](storing-additional-user-information-cs/_static/image5.png)](storing-additional-user-information-cs/_static/image4.png)
 
-**Obrázek 2**: Přidejte primární sloupec s názvem `CommentId` ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image6.png))
+**Obrázek 2**: přidejte primární sloupec s názvem `CommentId` ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image6.png)).
 
-Dále přidejte sloupec s názvem `Subject` typu `nvarchar(50)` a sloupec s názvem `Body` typu `nvarchar(MAX)`, zákaz `NULL` s v obou sloupců. Pod přidat sloupec s názvem `CommentDate` typu `datetime`. Zakázat `NULL` s a nastavte `CommentDate` výchozí hodnotu ve sloupci `getdate()`.
+Dále přidejte sloupec s názvem `Subject` typu `nvarchar(50)` a sloupec s názvem `Body` typu `nvarchar(MAX)`, v obou sloupcích zakážete `NULL` s. Po přidání sloupce s názvem `CommentDate` typu `datetime`. Zakažte `NULL` s a nastavte výchozí hodnotu `CommentDate` sloupce na `getdate()`.
 
-Už jen zbývá přidat sloupec, který přidruží účet uživatele každý návštěv komentář. Jednou z možností je přidat sloupec s názvem `UserName` typu `nvarchar(256)`. Toto je vhodnou volbou při používání poskytovatele členství jiné než `SqlMembershipProvider`. Ale při použití `SqlMembershipProvider`, jak se v této řadě kurzů `UserName` sloupec v `aspnet_Users` tabulky nemusí být jedinečný. `aspnet_Users` Primárního klíče tabulky je `UserId` a je typu `uniqueidentifier`. Proto `GuestbookComments` tabulce musí sloupec s názvem `UserId` typu `uniqueidentifier` (Probíhá zakazování `NULL` hodnoty). Pokračujte a přidat tento sloupec.
+To vše zůstává, pokud chcete přidat sloupec, který přidruží uživatelský účet ke každému komentáři knihy. Jednou z možností je přidání sloupce s názvem `UserName` typu `nvarchar(256)`. To je vhodná volba při použití poskytovatele členství jiného než `SqlMembershipProvider`. Ale při použití `SqlMembershipProvider`, jak je v této sérii kurzů, sloupec `UserName` v tabulce `aspnet_Users` není zaručený jako jedinečný. Primární klíč `aspnet_Users` tabulky je `UserId` a je typu `uniqueidentifier`. Proto tabulka `GuestbookComments` potřebuje sloupec s názvem `UserId` typu `uniqueidentifier` (nepovoluje hodnoty `NULL`). Pokračujte a přidejte tento sloupec.
 
 > [!NOTE]
-> Jak jsme probírali v [ *vytvoření schématu členství v SQL serveru* ](creating-the-membership-schema-in-sql-server-cs.md) výukový program, členství v rámci je navržená k umožnění více webových aplikací s různým uživatelským účtům sdílet stejné úložiště uživatelů. Dělá to tak, že dělení uživatelské účty do různých aplikací. A při každé uživatelské jméno se musí být jedinečný v rámci aplikace, lze použít stejné uživatelské jméno v různých aplikací pomocí stejné úložiště uživatele. Je složeného `UNIQUE` omezením v atributu `aspnet_Users` tabulky na `UserName` a `ApplicationId` pole, nikoli však na jenom `UserName` pole. V důsledku toho je možné, aspnet\_tabulky uživatelé mít dva (nebo více) záznamů se stejným `UserName` hodnotu. Existuje, ale `UNIQUE` omezení `aspnet_Users` tabulky `UserId` pole (protože představuje primární klíč). A `UNIQUE` omezení je důležité, protože bez něho jsme nejde vytvořit omezení cizího klíče mezi `GuestbookComments` a `aspnet_Users` tabulky.
+> Jak je popsáno v tématu [*vytváření schématu členství v SQL Server*](creating-the-membership-schema-in-sql-server-cs.md) kurzu, je rozhraní členství navrženo tak, aby umožňovalo více webových aplikací s různými uživatelskými účty sdílet stejné úložiště uživatelů. Provádí rozdělení uživatelských účtů do různých aplikací. I když je každé uživatelské jméno zaručené jako jedinečné v rámci aplikace, může být stejné uživatelské jméno použito v různých aplikacích, které používají stejné uživatelské úložiště. V tabulce `aspnet_Users` v polích `UserName` a `ApplicationId` existuje omezení složené `UNIQUE`, ale ne jednu v poli `UserName`. V důsledku toho může tabulka ASPNET\_Users obsahovat dva (nebo více) záznamy se stejnou `UserName` hodnotou. V poli `UserId` tabulky `aspnet_Users` však existuje omezení `UNIQUE` (protože se jedná o primární klíč). Omezení `UNIQUE` je důležité, protože bez něj nemůžeme navázat omezení cizího klíče mezi tabulkami `GuestbookComments` a `aspnet_Users`.
 
-Po přidání `UserId` sloupce, uložte kliknutím na ikonu Uložit na panelu nástrojů v tabulce. Pojmenujte novou tabulku `GuestbookComments`.
+Po přidání sloupce `UserId` tabulku uložte kliknutím na ikonu Uložit na panelu nástrojů. Pojmenujte novou `GuestbookComments`tabulky.
 
-Máme jeden problém poslední věnovat se `GuestbookComments` tabulky: potřebujeme vytvořit [omezení cizího klíče](https://msdn.microsoft.com/library/ms175464.aspx) mezi `GuestbookComments.UserId` sloupce a `aspnet_Users.UserId` sloupce. K dosažení tohoto cíle, klikněte na ikonu vztah v panelu nástrojů můžete spustit dialogové okno vztahy cizího klíče. (Alternativně můžete spustit toto dialogové okno tak, že přejdete do nabídky Návrháře tabulky a zvolíte relace.)
+Máme poslední problém s účastí s `GuestbookComments` tabulkou: Musíme vytvořit [omezení cizího klíče](https://msdn.microsoft.com/library/ms175464.aspx) mezi sloupci `GuestbookComments.UserId` a sloupcem `aspnet_Users.UserId`. Chcete-li to dosáhnout, klikněte na ikonu vztahu na panelu nástrojů a spusťte dialogové okno relace cizího klíče. (Případně můžete toto dialogové okno spustit tak, že přejdete do nabídky Návrháře tabulky a zvolíte možnost relace.)
 
-Klikněte na tlačítko Přidat v levém dolním rohu dialogu vztahy cizího klíče. Tím se přidá nová omezení cizího klíče, i když ještě nutné definovat tabulek, které se účastní v relaci.
+Klikněte na tlačítko Přidat v levém dolním rohu dialogového okna relace cizího klíče. Tím se přidá nové omezení cizího klíče, i když stále potřebujeme definovat tabulky, které se účastní vztahu.
 
-[![Ke správě omezení cizího klíče tabulky pomocí dialogového okna cizího klíče](storing-additional-user-information-cs/_static/image8.png)](storing-additional-user-information-cs/_static/image7.png)
+[![pomocí dialogového okna relace cizího klíče spravovat omezení cizího klíče tabulky](storing-additional-user-information-cs/_static/image8.png)](storing-additional-user-information-cs/_static/image7.png)
 
-**Obrázek 3**: Umožňuje spravovat omezení cizího klíče v tabulce cizího klíče relace dialogových oken ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image9.png))
+**Obrázek 3**: pomocí dialogového okna relace cizího klíče můžete spravovat omezení cizího klíče tabulky ([kliknutím zobrazíte obrázek v plné velikosti).](storing-additional-user-information-cs/_static/image9.png)
 
-Klikněte na ikonu tří teček v řádku "Tabulky a sloupce specifikace" na pravé straně. Tím se spustí dialogovém okně tabulky a sloupce, ze kterého lze zadat primární klíč tabulky a sloupce a sloupce cizího klíče z `GuestbookComments` tabulky. Zejména `aspnet_Users` a `UserId` jako primární klíč tabulky a sloupce, a `UserId` z `GuestbookComments` tabulce jako sloupec cizího klíče (viz obrázek 4). Po definování primární a cizí klíče tabulky a sloupce, klikněte na tlačítko OK se vraťte do dialogového okna vztahy cizího klíče.
+V dalším kroku klikněte na ikonu elipsy v řádku specifikace tabulky a sloupců vpravo. Tím se spustí dialogové okno tabulky a sloupce, ve kterém můžeme zadat primární klíč tabulka a sloupec a sloupec cizího klíče z tabulky `GuestbookComments`. Konkrétně vyberte `aspnet_Users` a `UserId` jako tabulku a sloupec primárního klíče a `UserId` z tabulky `GuestbookComments` jako sloupec cizího klíče (viz obrázek 4). Po definování tabulek a sloupců primárního a cizího klíče klikněte na tlačítko OK, čímž se vrátíte do dialogového okna relace cizího klíče.
 
-[![Vytvoření cizího klíče omezení mezi aspnet_Users a GuesbookComments tabulek](storing-additional-user-information-cs/_static/image11.png)](storing-additional-user-information-cs/_static/image10.png)
+[![stanovit omezení cizího klíče mezi tabulkami aspnet_Users a GuesbookComments](storing-additional-user-information-cs/_static/image11.png)](storing-additional-user-information-cs/_static/image10.png)
 
-**Obrázek 4**: Zavést cizího klíče omezení `aspnet_Users` a `GuesbookComments` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image12.png))
+**Obrázek 4**: stanovení omezení cizího klíče mezi tabulkami `aspnet_Users` a `GuesbookComments` ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image12.png))
 
-V tomto okamžiku se vytvořilo omezení cizího klíče. Přítomnost tohoto omezení zajišťuje [relační integrity](http://en.wikipedia.org/wiki/Referential_integrity) mezi dvěma tabulkami ve zaručující, že nikdy bude návštěv položka odkazuje na neexistující uživatelský účet. Ve výchozím omezení cizího klíče zakážete nadřazený záznam odstranit, pokud existují odpovídající podřízené záznamy. To znamená pokud uživatel provede jednu nebo více poznámek návštěv a pak jsme pokus o odstranění tohoto uživatelského účtu, odstranění se nezdaří, pokud jsou jako první smazány jeho návštěv komentáře.
+V tomto okamžiku bylo vytvořeno omezení cizího klíče. Přítomnost tohoto omezení zajišťuje [relační integritu](http://en.wikipedia.org/wiki/Referential_integrity) mezi dvěma tabulkami tím, že garantuje, že nikdy nebudete položkou knihy typu kniha, která odkazuje na neexistující uživatelský účet. Ve výchozím nastavení omezení cizího klíče zakáže nadřazený záznam, který se má odstranit, pokud existují odpovídající podřízené záznamy. To znamená, že pokud uživatel vytvoří jeden nebo více komentářů v knize webkniha a pokusí se tento uživatelský účet odstranit, odstranění se nepovede, pokud se nejprve neodstraní komentáře knihy návštěv.
 
-Automaticky odstranit související podřízené záznamy při odstranění záznamu nadřazené lze nastavit omezení cizího klíče. Omezení cizího klíče jsme jinými slovy, můžete nastavit tak, aby uživatele návštěv položky se automaticky odstraní při odstranění svůj uživatelský účet. K tomu, rozbalte v části "INSERT a UPDATE specifikace" a "Odstranit pravidlo" vlastnost nastavit na sebe.
+Omezení cizího klíče lze nakonfigurovat tak, aby při odstranění nadřazeného záznamu automaticky odstranila přidružené podřízené záznamy. Jinými slovy můžeme nastavit toto omezení cizího klíče tak, aby se položky knihy návštěv uživatele automaticky odstranily, když se odstraní jeho uživatelský účet. To provedete tak, že rozbalíte část "vložení a aktualizace specifikací" a nastavíte vlastnost "Odstranit pravidlo" na hodnotu Cascade.
 
-[![Konfigurace omezení cizího klíče k kaskádové odstranění](storing-additional-user-information-cs/_static/image14.png)](storing-additional-user-information-cs/_static/image13.png)
+[![nakonfigurovat omezení cizího klíče pro kaskádová odstranění](storing-additional-user-information-cs/_static/image14.png)](storing-additional-user-information-cs/_static/image13.png)
 
-**Obrázek 5**: Nakonfigurujte omezení pro cizí klíč k kaskádová ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image15.png))
+**Obrázek 5**: Konfigurace omezení cizího klíče pro kaskádová odstranění ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image15.png))
 
-Uložit omezení cizího klíče, klikněte na tlačítko Zavřít ukončíte mimo vztahy cizího klíče. Pak klikněte na ikonu Uložit na panelu nástrojů uložte tabulku a tento vztah.
+Chcete-li uložit omezení cizího klíče, klikněte na tlačítko Zavřít, čímž ukončíte relace cizího klíče. Pak klikněte na ikonu Uložit na panelu nástrojů a uložte tabulku a tuto relaci.
 
-### <a name="storing-the-users-home-town-homepage-and-signature"></a>Ukládání Domovská, domovskou stránku a podpis uživatele
+### <a name="storing-the-users-home-town-homepage-and-signature"></a>Ukládání domovské města, domovské stránky a podpisu uživatele
 
-`GuestbookComments` Tabulka ukazuje, jak ukládat informace, které sdílí vztah jeden mnoho s uživatelskými účty. Protože každý uživatelský účet může mít libovolný počet komentářů, tento vztah je modelovaná vytvořením tabulky pro uložení sadu komentáře, která zahrnuje sloupce, odkazuje zpět všechny komentáře s určitým uživatelem. Při použití `SqlMembershipProvider`, tento odkaz se nejlépe naváže vytvořením sloupec s názvem `UserId` typu `uniqueidentifier` a omezení cizího klíče mezi tento sloupec a `aspnet_Users.UserId`.
+Tabulka `GuestbookComments` ukazuje, jak ukládat informace, které sdílí relaci 1:1 s uživatelskými účty. Vzhledem k tomu, že každý uživatelský účet může mít libovolný počet přidružených komentářů, je tento vztah modelován vytvořením tabulky, která bude obsahovat sadu komentářů, která obsahuje sloupec, který odkazuje na konkrétního uživatele na jednotlivé komentáře. Při použití `SqlMembershipProvider`je tento odkaz nejlépe vytvořen vytvořením sloupce s názvem `UserId` typu `uniqueidentifier` a omezením cizího klíče mezi tímto sloupcem a `aspnet_Users.UserId`.
 
-Nyní potřebujeme přidružit každý uživatelský účet pro ukládání domácí města, domovskou stránku a podpis, který se zobrazí v jeho návštěv komentáře uživatele tři sloupce. Existuje řada způsobů, jak to provést:
+Teď je potřeba přidružit tři sloupce každému uživatelskému účtu, aby se uložila Domovská města, Domovská stránka a podpis uživatele, který se zobrazí v jeho komentářích knihy. Existuje mnoho různých způsobů, jak to provést:
 
-- <strong>Přidat nové sloupce</strong><strong>`aspnet_Users`</strong><strong>nebo</strong><strong>`aspnet_Membership`</strong><strong>tabulky.</strong> Můžu by doporučujeme tento přístup, protože upravuje schéma používané `SqlMembershipProvider`. Toto rozhodnutí může vrátit haunt můžete snížit cestách. Například v co když, budoucí verze technologie ASP.NET používá jiný `SqlMembershipProvider` schématu. Microsoft může obsahovat nástroj pro migraci ASP.NET 2.0 `SqlMembershipProvider` dat na nové schéma, ale pokud jste upravili technologii ASP.NET 2.0 `SqlMembershipProvider` schématu, takový převod nemusí být možné.
+- <strong>Přidejte nové sloupce do</strong> tabulek<strong>`aspnet_Users`</strong> <strong>nebo</strong> <strong>`aspnet_Membership`</strong> <strong>.</strong> Tento přístup nedoporučujeme, protože mění schéma používané `SqlMembershipProvider`. Toto rozhodnutí se může vrátit k Haunt, že jste na cestách. Například co když budoucí verze ASP.NET používá jiné schéma `SqlMembershipProvider`. Společnost Microsoft může zahrnovat Nástroj pro migraci dat ASP.NET 2,0 `SqlMembershipProvider` do nového schématu, ale pokud jste změnili schéma ASP.NET 2,0 `SqlMembershipProvider`, takové konverzi nemusí být možné.
 
-- **Použití prostředí ASP. Profil rozhraní NET definuje vlastnost profilu pro domácí města, domovskou stránku a podpis.** Technologie ASP.NET obsahuje profil architektura, která je navržená k ukládání další uživatelská data. Jako jsou členství v rámci profilu framework propojitelnosti podle modelu poskytovatele. Rozhraní .NET Framework se dodává se `SqlProfileProvider` sthat ukládá data profilu v databázi serveru SQL Server. Ve skutečnosti naše databáze již obsahuje tabulky používané `SqlProfileProvider` (`aspnet_Profile`), jak byl přidán, když jsme přidali, aplikační služby zpět <a id="_msoanchor_2"> </a> [ *vytvoření schématu členství v SQL Server* ](creating-the-membership-schema-in-sql-server-cs.md) kurzu.   
-  Hlavní výhodou služby rozhraní framework profilu je, že umožňuje vývojářům definovat vlastnosti profilu v `Web.config` – musí být napsaný pro serializaci dat profilu do a z základnímu úložišti dat. žádný kód. Stručně řečeno je neuvěřitelně jednoduché definují sadu vlastností profilu a pracovat s nimi v kódu. Ale profil systému opustí mnoho dalších požadovaných, pokud jde o do správy verzí, takže pokud máte aplikaci, kde očekáváte, že nové vlastnosti specifické pro uživatele přidat na pozdější dobu, nebo existující aplikace do odebrat nebo změnit, a pak nemusí být v rámci profilu  nejlepší možností. Kromě toho `SqlProfileProvider` ukládá vlastnosti profilu, které vysoce Nenormalizovaná způsobem, takže další možné ke spouštění dotazů přímo na data profilu (třeba na, kolik uživatelů domácí města v New Yorku).   
-  Další informace o rozhraní profilu najdete v části "Další čtení" na konci tohoto kurzu.
+- **Použijte ASP. Rozhraní Profile sítě, které definuje vlastnost profilu domovské města, domovské stránky a podpisu.** ASP.NET zahrnuje profilový rámec, který je určen k ukládání dalších dat specifických pro uživatele. Podobně jako rozhraní pro členství je profil architektury sestaven základem modelem poskytovatele. .NET Framework se dodává s `SqlProfileProvider` sthat ukládá data profilu do databáze SQL Server. Ve skutečnosti má naše databáze již tabulku, kterou používá `SqlProfileProvider` (`aspnet_Profile`), jak byla přidána, když jsme přidali aplikační služby zpátky v <a id="_msoanchor_2"> </a>kurzu [*vytváření schématu členství v SQL Server*](creating-the-membership-schema-in-sql-server-cs.md) .   
+  Hlavní výhodou architektury Profile je, že vývojářům umožňuje definovat vlastnosti profilu v `Web.config` – není nutné zapisovat kód pro serializaci dat profilu do a ze základního úložiště dat. V krátkém případě je neuvěřitelně snadné definovat sadu vlastností profilu a pracovat s nimi v kódu. Systém profilů však opouští hodně, který je potřeba, když se dostane do správy verzí, takže pokud máte aplikaci, kde očekáváte, že nové vlastnosti specifické pro uživatele chcete přidat později, nebo existující, které mají být odebrány nebo změněny, pak rozhraní Profile nemusí být  nejlepší možnost. Kromě toho `SqlProfileProvider` ukládá vlastnosti profilu vysoce denormalizovaný způsob, takže je možné spustit dotazy přímo proti datům profilu (například kolik uživatelů má bydliště v New York).   
+  Další informace o rozhraní Profile najdete v části "Další informace" na konci tohoto kurzu.
 
-- <strong>Tyto tři sloupce přidat do nové tabulky v databázi a vytvořit vztah 1: 1 mezi tuto tabulku a</strong><strong>`aspnet_Users`</strong><strong>.</strong> Tento přístup vyžaduje trochu více práce než s použitím rozhraní framework profilu, ale nabízí maximální flexibilitu v tom, jak jsou modelovány vlastnosti další uživatele v databázi. Tato možnost, které používáme v tomto kurzu se.
+- <strong>Přidejte tyto tři sloupce do nové tabulky v databázi a vytvořte relaci 1:1 mezi touto tabulkou a</strong> <strong>`aspnet_Users`</strong> <strong>.</strong> Tento přístup zahrnuje trochu větší práci než s profilovou architekturou, ale nabízí maximální flexibilitu při modelování dalších vlastností uživatele v databázi. Toto je možnost, kterou použijeme v tomto kurzu.
 
-Vytvoříme nové tabulky nazvané `UserProfiles` uložte domácí města, domovskou stránku a podpis pro každého uživatele. Klikněte pravým tlačítkem na složku tabulky v okně Průzkumník databáze a zvolte možnost vytvořit novou tabulku. Pojmenujte první sloupec `UserId` a nastavte její typ `uniqueidentifier`. Zakázat `NULL` hodnoty a označit jako primární klíč sloupec. V dalším kroku přidejte sloupce s názvem: `HomeTown` typu `nvarchar(50)`; `HomepageUrl` typu `nvarchar(100)`; a podpis typu `nvarchar(500)`. Každá z těchto tří sloupců může přijmout `NULL` hodnotu.
+Vytvoříme novou tabulku s názvem `UserProfiles` pro uložení domovské města, domovské stránky a podpisu pro každého uživatele. Klikněte pravým tlačítkem na složku Tables (tabulky) v okně Průzkumník databáze a vyberte možnost vytvořit novou tabulku. Název prvního sloupce `UserId` a nastavte jeho typ na `uniqueidentifier`. Zakáže `NULL` hodnoty a označí sloupec jako primární klíč. Dále přidejte sloupce s názvem: `HomeTown` typu `nvarchar(50)`; `HomepageUrl` typu `nvarchar(100)`; a podpis typu `nvarchar(500)`. Každý z těchto tří sloupců může přijmout `NULL`ou hodnotu.
 
-[![Vytvoření tabulky UserProfiles](storing-additional-user-information-cs/_static/image17.png)](storing-additional-user-information-cs/_static/image16.png)
+[![vytvoření tabulky UserProfiles](storing-additional-user-information-cs/_static/image17.png)](storing-additional-user-information-cs/_static/image16.png)
 
-**Obrázek 6**: Vytvořte `UserProfiles` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image18.png))
+**Obrázek 6**: vytvoření tabulky `UserProfiles` ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image18.png))
 
-Uložte tabulku a pojmenujte ho `UserProfiles`. A konečně navázat omezení cizího klíče mezi `UserProfiles` tabulky `UserId` pole a `aspnet_Users.UserId` pole. Jako jsme to udělali s omezení cizího klíče mezi `GuestbookComments` a `aspnet_Users` tabulkám, toto omezení kaskádovitě přenést na odstranění. Protože `UserId` pole v `UserProfiles` je primární klíče, tím se zajistí, že bude existovat více než jeden záznam v `UserProfiles` tabulky pro každý uživatelský účet. Tento typ relace se označuje jako 1: 1.
+Uložte tabulku a pojmenujte ji `UserProfiles`. Nakonec vytvořte omezení cizího klíče mezi `UserId` poli `UserProfiles` tabulky a polem `aspnet_Users.UserId`. Vzhledem k tomu, že jsme použili omezení cizího klíče mezi tabulkami `GuestbookComments` a `aspnet_Users`, tato omezení se kaskádově odstraní. Vzhledem k tomu, že pole `UserId` v `UserProfiles` je primární klíč, zajistí to, aby v tabulce `UserProfiles` pro každý uživatelský účet nebude více než jeden záznam. Tento typ relace se označuje jako 1:1.
 
-Po vytvoření datového modelu, jsme ho můžete používat. V krocích 2 a 3 se podíváme na jak zobrazit a upravit domovského města, domovskou stránku a podpis informace aktuálně přihlášeného uživatele. V kroku 4 vytvoříme rozhraní pro ověření uživatelé posílat nové komentáře návštěv a zobrazení ty stávající.
+Teď, když máme datový model vytvořený, jsme připravení ho použít. V krocích 2 a 3 se podíváme na to, jak aktuálně přihlášený uživatel může zobrazit a upravit informace o domovské městě, domovské stránce a podpisu. V kroku 4 vytvoříme rozhraní pro ověřené uživatele, na které se budou posílat nové komentáře do knihy návštěv a zobrazovat stávající.
 
-## <a name="step-2-displaying-the-users-home-town-homepage-and-signature"></a>Krok 2: Zobrazení Domovská, domovskou stránku a podpis uživatele
+## <a name="step-2-displaying-the-users-home-town-homepage-and-signature"></a>Krok 2: zobrazení domovské města, domovské stránky a podpisu uživatele
 
-Existuje řada různých způsobů, jak povolit aktuálně přihlášenému uživateli zobrazit a upravit jeho domovského města, domovskou stránku a podpis informace. Můžeme ručně vytvořit uživatelské rozhraní pomocí textového pole a ovládací prvky popisku nebo jsme použít jeden z dat webové ovládací prvky, jako je například ovládací prvek DetailsView. K provedení databáze `SELECT` a `UPDATE` příkazy nám napsat ADO.NET kód ve třídě použití modelu code-behind naši stránku, nebo můžete také využívat deklarativní přístup s ovládacím prvkem SqlDataSource. V ideálním případě by naší aplikace obsahoval vrstvené architekturu, která jsme může buď vyvolat prostřednictvím kódu programu z třídy modelu code-behind na stránce nebo deklarativně pomocí ovládacího prvku ObjectDataSource.
+Existuje řada způsobů, jak umožňuje aktuálně přihlášenému uživateli zobrazit a upravit informace o domovské městě, domovské stránce a podpisu. Mohli jsme ručně vytvořit uživatelské rozhraní s ovládacími prvky TextBox a Label nebo můžeme použít jeden z webových ovládacích prvků dat, jako je ovládací prvek DetailsView. Chcete-li provést `SELECT` databáze a `UPDATE` příkazy můžeme zapsat ADO.NET kód do třídy kódu na pozadí naší stránky nebo nebo případně použít deklarativní přístup se třídou SqlDataSource. V ideálním případě by naše aplikace obsahovala vrstvenou architekturu, kterou můžeme buď vyvolat programově z třídy kódu na pozadí stránky, nebo deklarativně prostřednictvím ovládacího prvku ObjectDataSource.
 
-Protože v této sérii kurzů se zaměřuje na ověřování pomocí formulářů, autorizace, uživatelských účtů a rolí, nesmí být vyčerpávající diskusi o tyto možnosti přístupu k datům různých nebo proč vrstvené architektury je upřednostňované nad provádění příkazů SQL přímo na stránce ASP.NET. Teď předvedu provede pomocí prvku DetailsView a SqlDataSource – možnost nejrychlejší a nejjednodušší – ale uvedenou koncepci lze použít jistě alternativní webové ovládací prvky a datová logikou přístupu. Další informace o práci s daty v ASP.NET, najdete v mé *[pracovat s daty v ASP.NET 2.0](../../data-access/index.md)* série kurzů.
+Vzhledem k tomu, že se řada kurzů zaměřuje na ověřování pomocí formulářů, autorizaci, uživatelské účty a role, nebudete mít důkladnou diskuzi o těchto různých možnostech přístupu k datům nebo proč se Vrstvená architektura upřednostňuje při přímém provádění příkazů SQL. ze stránky ASP.NET. Projdeme pomocí ovládacího prvku DetailsView a SqlDataSource – nejrychlejší a nejjednodušší možnost – ale v konceptech, které jsou popsány, je možné použít pro alternativní webové ovládací prvky a logiku přístupu k datům. Další informace o práci s daty v ASP.NET najdete v tématu věnovaném *[práci s daty v](../../data-access/index.md)* řadě kurzů pro ASP.NET 2,0.
 
-Otevřít `AdditionalUserInfo.aspx` stránku `Membership` složky a přidejte ovládací prvek DetailsView na stránku nastavení jeho `ID` vlastnost `UserProfile` a vymazání jeho `Width` a `Height` vlastnosti. Rozbalte ovládacím prvku DetailsView inteligentních značek a zvolte a vytvořte jeho vazbu nový ovládací prvek zdroje dat. Tím spustíte Průvodce konfigurací zdroje dat (viz obrázek 7). Prvním krokem žádostí o zadání typu zdrojového data. Protože jsme se chystáte připojit přímo `SecurityTutorials` databáze, zvolte ikonu databáze zadání `ID` jako `UserProfileDataSource`.
+Otevřete stránku `AdditionalUserInfo.aspx` ve složce `Membership` a přidejte na ni ovládací prvek DetailsView, nastavte jeho vlastnost `ID` na `UserProfile` a vymažte jeho `Width` a `Height` vlastnosti. Rozbalte inteligentní značku ovládacího prvku DetailsView a vyberte možnost svázání s novým ovládacím prvkem zdroje dat. Spustí se Průvodce konfigurací zdroje dat (viz obrázek 7). V prvním kroku se zobrazí výzva k zadání typu zdroje dat. Vzhledem k tomu, že se připojujete přímo k databázi `SecurityTutorials`, vyberte ikonu databáze a zadejte `ID` jako `UserProfileDataSource`.
 
-[![Přidat nový ovládací prvek SqlDataSource s názvem UserProfileDataSource](storing-additional-user-information-cs/_static/image20.png)](storing-additional-user-information-cs/_static/image19.png)
+[![přidat nový ovládací prvek SqlDataSource s názvem UserProfileDataSource](storing-additional-user-information-cs/_static/image20.png)](storing-additional-user-information-cs/_static/image19.png)
 
-**Obrázek 7**: Přidat nový ovládací prvek SqlDataSource název `UserProfileDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image21.png))
+**Obrázek 7**: přidejte nový ovládací prvek SqlDataSource s názvem `UserProfileDataSource` ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image21.png)).
 
-Na další obrazovce zobrazí výzvu pro databáze, kterou chcete použít. Už jsme definovali připojovacího řetězce v `Web.config` pro `SecurityTutorials` databáze. Tento název připojovacího řetězce – `SecurityTutorialsConnectionString` – by měla být v rozevíracím seznamu. Vyberte tuto možnost a klikněte na tlačítko Další.
+Na další obrazovce se zobrazí výzva, aby se databáze používala. V `Web.config` pro databázi `SecurityTutorials` už jsme definovali připojovací řetězec. Tento název připojovacího řetězce – `SecurityTutorialsConnectionString` – by měl být v rozevíracím seznamu. Vyberte tuto možnost a klikněte na další.
 
-[![Z rozevíracího seznamu zvolte SecurityTutorialsConnectionString](storing-additional-user-information-cs/_static/image23.png)](storing-additional-user-information-cs/_static/image22.png)
+[![v rozevíracím seznamu zvolit SecurityTutorialsConnectionString](storing-additional-user-information-cs/_static/image23.png)](storing-additional-user-information-cs/_static/image22.png)
 
-**Obrázek 8**: Zvolte `SecurityTutorialsConnectionString` z rozevíracího seznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image24.png))
+**Obrázek 8**: v rozevíracím seznamu vyberte možnost `SecurityTutorialsConnectionString` ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image24.png)).
 
-Na následující obrazovce se zobrazí výzva k určení tabulky a sloupce do dotazu. Zvolte `UserProfiles` tabulky z rozevíracího seznamu a zkontrolovat všechny sloupce.
+Na další obrazovce se zobrazí výzva k zadání tabulky a sloupců, které se mají dotazovat. V rozevíracím seznamu vyberte tabulku `UserProfiles` a ověřte všechny sloupce.
 
-[![Převést zpět všechny sloupce z tabulky UserProfiles](storing-additional-user-information-cs/_static/image26.png)](storing-additional-user-information-cs/_static/image25.png)
+[![vrátit všechny sloupce z tabulky UserProfiles](storing-additional-user-information-cs/_static/image26.png)](storing-additional-user-information-cs/_static/image25.png)
 
-**Obrázek 9**: Převést zpět všechny sloupce `UserProfiles` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image27.png))
+**Obrázek 9**: Převeďte zpátky všechny sloupce z `UserProfiles` tabulky ([kliknutím zobrazíte obrázek v plné velikosti).](storing-additional-user-information-cs/_static/image27.png)
 
-Aktuální dotaz vrátí obrázek 9 *všechny* záznamů v `UserProfiles`, ale nás zajímá jenom v záznamu aktuálně přihlášeného uživatele. Chcete-li přidat `WHERE` klauzule, klikněte na tlačítko `WHERE` tlačítko Přidat zobrazíte `WHERE` klauzule dialogové okno (viz obrázek 10). Tady můžete vybrat sloupec, který se filtrovat, operátor a zdroj daného parametru filtru. Vyberte `UserId` jako sloupce a "=" jako operátor.
+Aktuální dotaz na obrázku 9 vrátí *všechny* záznamy v `UserProfiles`, ale zajímá se jenom na záznam aktuálně přihlášeného uživatele. Chcete-li přidat klauzuli `WHERE`, klikněte na tlačítko `WHERE` a zobrazte dialogové okno Přidat `WHERE` klauzuli (viz obrázek 10). Tady můžete vybrat sloupec, který se má filtrovat, operátor a zdroj parametru filtru. Vyberte `UserId` jako sloupec a "=" jako operátor.
 
-Bohužel neexistuje žádný zdroj integrované parametr vrátit aktuálně přihlášeného uživatele `UserId` hodnotu. Budeme muset zkopírovat tuto hodnotu prostřednictvím kódu programu. Proto nastavte zdroj rozevíracího seznamu na "Žádný" klikněte na tlačítko Přidat parametr přidat a klikněte na tlačítko OK.
+Bohužel není k dispozici žádný vestavěný zdroj parametrů, který by měl vracet `UserId` hodnotu aktuálně přihlášeného uživatele. Tuto hodnotu bude nutné připravujeme programově. Proto nastavte rozevírací seznam zdroj na hodnotu žádné, klikněte na tlačítko Přidat a přidejte parametr a pak klikněte na tlačítko OK.
 
-[![Přidání parametru filtr na sloupec UserId](storing-additional-user-information-cs/_static/image29.png)](storing-additional-user-information-cs/_static/image28.png)
+[![přidat parametr filtru do sloupce UserId](storing-additional-user-information-cs/_static/image29.png)](storing-additional-user-information-cs/_static/image28.png)
 
-**Obrázek 10**: Přidání parametru filtru na `UserId` sloupec ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image30.png))
+**Obrázek 10**: přidejte parametr filtru do sloupce `UserId` ([kliknutím zobrazíte obrázek v plné velikosti).](storing-additional-user-information-cs/_static/image30.png)
 
-Po kliknutí na tlačítko OK se vrátíte na obrazovku, je znázorněno na obrázku 9. Tentokrát ale bude příkaz jazyka SQL v dolní části obrazovky by měl obsahovat `WHERE` klauzuli. Klikněte na tlačítko Další přejděte obrazovku "Testovat dotaz". Tady můžete spustit dotaz a zobrazit výsledky. Kliknutím na Dokončit dokončíte průvodce.
+Po kliknutí na tlačítko OK se vrátíte na obrazovku zobrazenou na obrázku 9. Tentokrát ale dotaz SQL v dolní části obrazovky by měl obsahovat klauzuli `WHERE`. Kliknutím na tlačítko Další přejdete na obrazovku test Query. Tady můžete spustit dotaz a zobrazit výsledky. Kliknutím na Dokončit dokončete průvodce.
 
-Po dokončení Průvodce konfigurací zdroje dat, vytvoří Visual Studio SqlDataSource ovládacího prvku v závislosti na nastaveních určených v průvodci. Kromě toho ručně přidá BoundFields na ovládacím prvku DetailsView. pro každý sloupec vrácené ovládacím prvkem SqlDataSource `SelectCommand`. Není nutné zobrazíte `UserId` pole v ovládacím prvku DetailsView, protože uživatel není potřeba znát tuto hodnotu. Můžete odebrat toto pole přímo v ovládacím prvku DetailsView deklarativní nebo kliknutím na tlačítko "Upravit pole" propojení z jeho inteligentních značek.
+Po dokončení Průvodce konfigurací zdroje dat vytvoří Visual Studio ovládací prvek SqlDataSource na základě nastavení určeného v průvodci. Kromě toho ručně přidá BoundFields do ovládacího prvku DetailsView pro každý sloupec vrácený `SelectCommand`SqlDataSource. V ovládacím prvku DetailsView není nutné zobrazovat `UserId` pole, protože tento uživatel nemusí znát tuto hodnotu. Toto pole můžete odebrat přímo z deklarativního kódu ovládacího prvku DetailsView nebo kliknutím na odkaz upravit pole z jeho inteligentní značky.
 
-Na stránce deklarativní v tuto chvíli by měl vypadat nějak takto:
+V tomto okamžiku by deklarativní označení stránky mělo vypadat podobně jako v následujícím příkladu:
 
 [!code-aspx[Main](storing-additional-user-information-cs/samples/sample1.aspx)]
 
-Budeme potřebovat programově nastavit ovládacím prvkem SqlDataSource `UserId` parametr pro aktuálně přihlášeného uživatele `UserId` předtím, než je vybraná data. Toho můžete docílit tak, že vytvoříte obslužnou rutinu události pro ovládacím prvkem SqlDataSource `Selecting` událostí a přidáním následujícího kódu existuje:
+Musíme programově nastavit parametr `UserId` ovládacího prvku SqlDataSource na aktuálně přihlášeného uživatele `UserId` předtím, než se data vyberou. To lze provést vytvořením obslužné rutiny události pro událost `Selecting` SqlDataSource a přidáním následujícího kódu:
 
 [!code-csharp[Main](storing-additional-user-information-cs/samples/sample2.cs)]
 
-Výše uvedený kód spustí získat odkaz na aktuálně přihlášeného uživatele voláním `Membership` třídy `GetUser` metody. Tím se vrátí `MembershipUser` objekt, jehož `ProviderUserKey` obsahuje vlastnost `UserId`. `UserId` Hodnota je poté přiřazen ve třídě SqlDataSource `@UserId` parametru.
+Výše uvedený kód začíná získáním odkazu na aktuálně přihlášeného uživatele voláním metody `GetUser` `Membership` třídy. Tím se vrátí objekt `MembershipUser`, jehož vlastnost `ProviderUserKey` obsahuje `UserId`. Hodnota `UserId` se pak přiřadí k parametru `@UserId` SqlDataSource.
 
 > [!NOTE]
-> `Membership.GetUser()` Metoda vrátí informace o aktuálně přihlášeného uživatele. Pokud anonymního uživatele je na stránce, vrátí hodnotu `null`. V takovém případě se to bude mít `NullReferenceException` na následující řádek kódu při pokusu o čtení `ProviderUserKey` vlastnost. Samozřejmě, nemáme se starat o `Membership.GetUser()` vrácení `null` hodnota v `AdditionalUserInfo.aspx` stránce, protože jsme nakonfigurovali autorizace adres URL v předchozím kurzu tak, aby jenom ověření uživatelé můžou přistupovat k prostředkům ASP.NET v této složce. Pokud potřebujete přístup k informacím o aktuálně přihlášeného uživatele na stránce, kde je povolen anonymní přístup, ujistěte se, že zkontroluje, jestli non -`null MembershipUser` objekt je vrácen z `GetUser()` metody před odkazování na její vlastnosti.
+> Metoda `Membership.GetUser()` vrací informace o aktuálně přihlášeném uživateli. Pokud se stránka navštíví anonymní uživatel, vrátí se hodnota `null`. V takovém případě to bude mít za následek `NullReferenceException` v následujícím řádku kódu při pokusu o čtení vlastnosti `ProviderUserKey`. Samozřejmě se nemusíte starat o `Membership.GetUser()` vrácení `null` hodnoty na stránce `AdditionalUserInfo.aspx`, protože jsme v předchozím kurzu nakonfigurovali autorizaci adres URL, aby k prostředkům ASP.NET v této složce byla přístupná jenom ověření uživatelé. Pokud potřebujete získat přístup k informacím o aktuálně přihlášeném uživateli na stránce, kde je povolen anonymní přístup, ujistěte se, že je před odkazování na jeho vlastnosti vrácen objekt bez`null MembershipUser` z metody `GetUser()`.
 
-Pokud navštívíte `AdditionalUserInfo.aspx` stránky prostřednictvím prohlížeče se zobrazí prázdnou stránku, protože musíme ještě přidat všechny řádky `UserProfiles` tabulky. V kroku 6 se podíváme na tom, jak přizpůsobit ovládacím prvku CreateUserWizard automaticky přidáte nový řádek `UserProfiles` tabulky, když se vytvoří nový uživatelský účet. Prozatím se však budeme muset ručně vytvořit záznam v tabulce.
+Pokud navštívíte stránku `AdditionalUserInfo.aspx` v prohlížeči, zobrazí se prázdná stránka, protože jsme ještě do tabulky `UserProfiles` přidali všechny řádky. V kroku 6 se podíváme na postup přizpůsobení ovládacího prvku ovládacím CreateUserWizard, který automaticky přidá nový řádek do tabulky `UserProfiles`, když se vytvoří nový uživatelský účet. Teď ale budete muset ručně vytvořit záznam v tabulce.
 
-Přejděte do Průzkumníku databází v sadě Visual Studio a rozbalte složku tabulky. Klikněte pravým tlačítkem na `aspnet_Users` tabulky a zvolte "Zobrazit Data tabulky" Pokud chcete zobrazit záznamy v tabulce; stejnou věc udělat `UserProfiles` tabulky. Obrázek 11 zobrazí tyto výsledky při svisle vedle sebe. V databázi nejsou aktuálně `aspnet_Users` záznamy pro Bruce Fred a Tito, ale žádné záznamy v `UserProfiles` tabulky.
+Přejděte do Průzkumníka databáze v aplikaci Visual Studio a rozbalte složku tabulky. Klikněte pravým tlačítkem na tabulku `aspnet_Users` a vyberte možnost zobrazit data tabulky. zobrazí se záznamy v tabulce. proveďte stejnou věc pro `UserProfiles` tabulku. Obrázek 11 zobrazuje tyto výsledky, pokud jsou rozloženy svisle. V mojí databázi se aktuálně `aspnet_Users` záznamy pro Bruce, Fred a tito, ale v tabulce `UserProfiles` nejsou žádné záznamy.
 
-[![Zobrazí se obsah aspnet_Users a UserProfiles tabulek](storing-additional-user-information-cs/_static/image32.png)](storing-additional-user-information-cs/_static/image31.png)
+[![obsah tabulek aspnet_Users a UserProfile se zobrazí](storing-additional-user-information-cs/_static/image32.png)](storing-additional-user-information-cs/_static/image31.png)
 
-**Obrázek 11**: Obsah `aspnet_Users` a `UserProfiles` tabulky se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image33.png))
+**Obrázek 11**: zobrazí se obsah tabulek `aspnet_Users` a `UserProfiles` ([kliknutím zobrazíte obrázek v plné velikosti).](storing-additional-user-information-cs/_static/image33.png)
 
-Přidání nového záznamu `UserProfiles` tabulky ručním zadáním hodnoty pro `HomeTown`, `HomepageUrl`, a `Signature` pole. Nejjednodušší způsob, jak získat platný `UserId` hodnotu v novém `UserProfiles` záznamu je výběr `UserId` pole z určitého uživatelského účtu v `aspnet_Users` tabulky a zkopírujte a vložte ho do `UserId` pole `UserProfiles`. Obrázek 12 se zobrazí `UserProfiles` tabulky po přidání nového záznamu pro Bruce.
+Do tabulky `UserProfiles` přidejte nový záznam ručním zadáním hodnot pro pole `HomeTown`, `HomepageUrl`a `Signature`. Nejjednodušší způsob, jak získat platnou hodnotu `UserId` v novém `UserProfiles`m záznamu, je vybrat pole `UserId` z konkrétního uživatelského účtu v tabulce `aspnet_Users` a pak ho zkopírovat a vložit do pole `UserId` v `UserProfiles`. Obrázek 12 zobrazuje tabulku `UserProfiles` po přidání nového záznamu pro Bruce.
 
-[![Záznam byl přidán do UserProfiles pro Bruce](storing-additional-user-information-cs/_static/image35.png)](storing-additional-user-information-cs/_static/image34.png)
+[![záznam se přidal do profilů uživatelů pro Bruce.](storing-additional-user-information-cs/_static/image35.png)](storing-additional-user-information-cs/_static/image34.png)
 
-**Obrázek 12**: Záznam byl přidán do `UserProfiles` pro Bruce ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image36.png))
+**Obrázek 12**: Přidání záznamu do `UserProfiles` pro Bruce ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image36.png))
 
-Vraťte se `AdditionalUserInfo.aspx` stránky, přihlášení jako Bruce. Jak ukazuje obrázek 13, se zobrazují Bruce jeho nastavení.
+Vraťte se na stránku `AdditionalUserInfo.aspx`, která se přihlásila jako Bruce. Jak ukazuje obrázek 13, zobrazí se nastavení Bruce.
 
-[![Aktuálně návštěvě uživatele se zobrazí jeho nastavení](storing-additional-user-information-cs/_static/image38.png)](storing-additional-user-information-cs/_static/image37.png)
+[![se aktuálně hostující uživatel zobrazuje jeho nastavení.](storing-additional-user-information-cs/_static/image38.png)](storing-additional-user-information-cs/_static/image37.png)
 
-**Obrázek 13**: Aktuálně návštěvě uživatele se zobrazí jeho nastavení ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image39.png))
+**Obrázek 13**: aktuálně navštívený uživatel zobrazuje jeho nastavení ([kliknutím zobrazíte obrázek v plné velikosti).](storing-additional-user-information-cs/_static/image39.png)
 
 > [!NOTE]
-> Přejít dopředu a ručně přidávat záznamy `UserProfiles` tabulky pro každého uživatele se členstvím. V kroku 6 se podíváme na tom, jak přizpůsobit ovládacím prvku CreateUserWizard automaticky přidáte nový řádek `UserProfiles` tabulky, když se vytvoří nový uživatelský účet.
+> Pokračujte a ručně přidejte záznamy v tabulce `UserProfiles` pro každého uživatele, který je členem skupiny. V kroku 6 se podíváme na postup přizpůsobení ovládacího prvku ovládacím CreateUserWizard, který automaticky přidá nový řádek do tabulky `UserProfiles`, když se vytvoří nový uživatelský účet.
 
-## <a name="step-3-allowing-the-user-to-edit-his-home-town-homepage-and-signature"></a>Krok 3: Které uživateli umožňují upravit jeho Domovská stránka městě, domovskou stránku a podpis
+## <a name="step-3-allowing-the-user-to-edit-his-home-town-homepage-and-signature"></a>Krok 3: povolení úprav domovské města, domovské stránky a podpisu uživatelem
 
-V tomto okamžiku můžete zobrazit aktuálně přihlášeného uživatele jejich domovské města, domovskou stránku a podpis nastavení, ale ještě je nemohou upravovat. Umožňuje aktualizovat ovládacím prvku DetailsView tak, aby data lze upravovat.
+V tomto okamžiku si aktuálně přihlášený uživatel může zobrazit jeho domovskou města, domovskou stránku a nastavení podpisu, ale nemůže je ještě upravovat. Pojďme aktualizovat ovládací prvek DetailsView tak, aby bylo možné upravovat data.
 
-První věc musíme udělat, je přidat `UpdateCommand` pro ovládacím prvkem SqlDataSource zadání `UPDATE` příkazu ke spuštění a jeho odpovídající parametry. Vyberte ve třídě SqlDataSource a v okně Vlastnosti klikněte na symbol tří teček vedle vlastnosti UpdateQuery zobrazíte dialogové okno Editor příkazů a parametrů. Zadejte následující `UPDATE` příkaz do textového pole:
+První věc, kterou je potřeba udělat, je přidání `UpdateCommand` pro SqlDataSource, určení příkazu `UPDATE`, který se má provést, a jeho odpovídajících parametrů. Vyberte SqlDataSource a z okno Vlastnosti klikněte na tři tečky vedle vlastnosti UpdateQuery a zobrazte tak dialogové okno Editor příkazů a parametrů. Do textového pole zadejte následující příkaz `UPDATE`:
 
 [!code-sql[Main](storing-additional-user-information-cs/samples/sample3.sql)]
 
-Klikněte na tlačítko "Aktualizovat parametry", který vytvoří parametr v ovládacím prvkem SqlDataSource `UpdateParameters` kolekce pro každý z parametrů v `UPDATE` příkazu. Ponechte na žádný zdroj pro všechny sady parametrů a klikněte na tlačítko OK se vyplňte dialogové okno.
+Potom klikněte na tlačítko Aktualizovat parametry, čímž se vytvoří parametr v kolekci `UpdateParameters` ovládacího prvku SqlDataSource pro každý z parametrů v příkazu `UPDATE`. Ponechte zdroj všech parametrů nastaven na None a kliknutím na tlačítko OK dialogové okno dokončete.
 
-[![Zadejte vlastnost UpdateCommand ve třídě SqlDataSource a UpdateParameters](storing-additional-user-information-cs/_static/image41.png)](storing-additional-user-information-cs/_static/image40.png)
+[![zadat událost UpdateCommand a UpdateParameters objektu SqlDataSource](storing-additional-user-information-cs/_static/image41.png)](storing-additional-user-information-cs/_static/image40.png)
 
-**Obrázek 14**: Zadejte ve třídě SqlDataSource `UpdateCommand` a `UpdateParameters` ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image42.png))
+**Obrázek 14**: určení `UpdateCommand` a `UpdateParameters` ve třídě SqlDataSource ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image42.png))
 
-Z důvodu dodatky jsme provedli SqlDataSource ovládacího prvku DetailsView ovládací prvek nyní podporuje úpravy. V ovládacím prvku DetailsView inteligentních značek zaškrtněte políčko "Povolit úpravy". Tento postup přidá ovládacího prvku CommandField `Fields` kolekce s jeho `ShowEditButton` nastavenou na hodnotu True. Tím zkopírujete tlačítko pro úpravy v ovládacím prvku DetailsView je zobrazen v režimu jen pro čtení a aktualizace a tlačítka Storno při zobrazení v režimu úprav. Místo by uživatel musel kliknout na upravit, ale můžeme nechat vykreslování prvku DetailsView. ve stavu "vždy upravitelné" tak, že nastavíte ovládacím prvku DetailsView [ `DefaultMode` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.defaultmode.aspx) k `Edit`.
+V důsledku přídavků ovládacího prvku SqlDataSource může ovládací prvek DetailsView nyní podporovat úpravy. Z inteligentní značky DetailsView zaškrtněte políčko Povolit úpravy. Tím přidáte CommandField do kolekce `Fields` ovládacího prvku s vlastností `ShowEditButton` nastavenou na hodnotu true. Tím se vykreslí tlačítko pro úpravy, když je ovládací prvek DetailsView zobrazen v režimu jen pro čtení a tlačítka aktualizovat a zrušit při zobrazení v režimu úprav. Místo toho, aby uživatel musel kliknout na upravit, můžeme mít k dispozici vykreslování prvku DetailsView ve stavu "vždycky upravovat" nastavením [vlastnosti`DefaultMode`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.defaultmode.aspx) ovládacího prvku DetailsView na hodnotu `Edit`.
 
-S těmito změnami prvku DetailsView deklarativní by měl vypadat nějak takto:
+S těmito změnami by deklarativní označení ovládacího prvku DetailsView mělo vypadat podobně jako následující:
 
 [!code-aspx[Main](storing-additional-user-information-cs/samples/sample4.aspx)]
 
-Poznámka: Přidání CommandField a `DefaultMode` vlastnost.
+Všimněte si přidání CommandField a vlastnosti `DefaultMode`.
 
-Pokračujte a otestovat tuto stránku prostřednictvím prohlížeče. Při návštěvě jako uživatel, který nemá odpovídající záznam v `UserProfiles`, nastavení uživatele se zobrazí v upravitelné rozhraní.
+Pokračujte a otestujte tuto stránku prostřednictvím prohlížeče. Při návštěvě uživatele, který má odpovídající záznam v `UserProfiles`, se nastavení uživatele zobrazí ve upravitelném rozhraní.
 
-[![Vykreslí upravitelné rozhraní ovládacím prvku DetailsView.](storing-additional-user-information-cs/_static/image44.png)](storing-additional-user-information-cs/_static/image43.png)
+[![ovládacího prvku DetailsView vykreslí upravitelné rozhraní.](storing-additional-user-information-cs/_static/image44.png)](storing-additional-user-information-cs/_static/image43.png)
 
-**Obrázek 15**: Vykreslí upravitelné rozhraní ovládacím prvku DetailsView ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image45.png))
+**Obrázek 15**: ovládací prvek DetailsView vykresluje upravitelné rozhraní ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image45.png)).
 
-Zkuste změna hodnoty a kliknutím na tlačítko Aktualizovat. Zdá se, jak je, že se nic nestalo. Je zpětné volání a hodnoty se uloží do databáze, ale neexistuje žádný vizuální zpětnou vazbu, ke které došlo uložit.
+Zkuste změnit hodnoty a klikněte na tlačítko Aktualizovat. Vypadá to, že se nic nestane. Existuje postback a hodnoty jsou uloženy do databáze, ale není k dispozici žádný vizuální názor na to, že došlo k uložení.
 
-Chcete-li to napravit, vraťte se do sady Visual Studio a přidejte ovládací prvek popisek nad ovládacím prvku DetailsView. Nastavte jeho `ID` k `SettingsUpdatedMessage`, jeho `Text` vlastnost "vaše nastavení bylo aktualizováno," a jeho `Visible` a `EnableViewState` vlastností `false`.
+Chcete-li tento problém napravit, vraťte se do sady Visual Studio a přidejte ovládací prvek Popisek nad ovládací prvek DetailsView. Nastavte jeho `ID` na `SettingsUpdatedMessage`, vlastnost `Text` na "nastavení bylo aktualizováno" a jeho `Visible` a `EnableViewState` vlastnosti `false`.
 
 [!code-aspx[Main](storing-additional-user-information-cs/samples/sample5.aspx)]
 
-Potřebujeme zobrazíte `SettingsUpdatedMessage` popisek pokaždé, když se aktualizuje ovládacím prvku DetailsView. K tomu vytvořit obslužnou rutinu události pro ovládacím prvku DetailsView `ItemUpdated` událostí a přidejte následující kód:
+Je potřeba zobrazit popisek `SettingsUpdatedMessage` pokaždé, když se prvek DetailsView aktualizuje. K tomuto účelu vytvořte obslužnou rutinu události pro událost `ItemUpdated` ovládacího prvku DetailsView a přidejte následující kód:
 
 [!code-csharp[Main](storing-additional-user-information-cs/samples/sample6.cs)]
 
-Vraťte se `AdditionalUserInfo.aspx` stránce prostřednictvím prohlížeče a aktualizovat data. Tentokrát, zobrazí se užitečné stavovou zprávu.
+Vraťte se na stránku `AdditionalUserInfo.aspx` v prohlížeči a aktualizujte data. Tentokrát se zobrazí užitečná zpráva o stavu.
 
-[![Krátký zpráva se zobrazí při nastavení jsou aktualizovány](storing-additional-user-information-cs/_static/image47.png)](storing-additional-user-information-cs/_static/image46.png)
+[Při aktualizaci nastavení se zobrazí ![krátká zpráva.](storing-additional-user-information-cs/_static/image47.png)](storing-additional-user-information-cs/_static/image46.png)
 
-**Obrázek 16**: Při aktualizaci nastavení, zobrazí se zprávy zadejte krátký ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image48.png))
+**Obrázek 16**: při aktualizaci nastavení se zobrazí krátká zpráva ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image48.png)).
 
 > [!NOTE]
-> Ovládacím prvku DetailsView uživatele úpravy ponechá rozhraní být požadovaného mnoho dalších. Používá standardní velikosti textová pole, ale podpis pole by měl pravděpodobně být ve víceřádkovém textovém poli. RegularExpressionValidator by měla sloužit k zajištění, že adresa URL domovské stránky, je-li zadán, začne řetězcem "http://" nebo "https://". Kromě toho od ovládacím prvku DetailsView. ovládací prvek má jeho `DefaultMode` nastavenou na `Edit`, tlačítko Storno nedělá. Ji by měl buď odebrat nebo po kliknutí na přesměruje uživatele na jinou stránku (například `~/Default.aspx`). Tato vylepšení opuštění jako cvičení pro čtečku.
+> Rozhraní pro úpravy ovládacího prvku DetailsView opouští hodně, které je potřeba. Používá textová pole se standardní velikostí, ale pole Signature by pravděpodobně mělo být víceřádkové textové pole. RegularExpressionValidator by měla být použita k zajištění, že adresa URL domovské stránky, pokud je zadána, začíná na "http://" nebo "https://". Kromě toho, vzhledem k tomu, že ovládací prvek DetailsView má svou vlastnost `DefaultMode` nastavenou na `Edit`, tlačítko zrušit neprovede žádnou akci. Měla by být odebrána nebo, pokud se klikne na tlačítko, přesměruje uživatele na jinou stránku (například `~/Default.aspx`). Tato vylepšení zanecháváme jako cvičení pro čtenáře.
 
-### <a name="adding-a-link-to-theadditionaluserinfoaspxpage-in-the-master-page"></a>Přidání odkazu`AdditionalUserInfo.aspx`stránky na stránce předlohy
+### <a name="adding-a-link-to-theadditionaluserinfoaspxpage-in-the-master-page"></a>Přidání odkazu na stránku`AdditionalUserInfo.aspx`na stránce předlohy
 
-V současné době webu neposkytuje žádné odkazy na `AdditionalUserInfo.aspx` stránky. Jediný způsob, jak k němu přistoupit je zadejte adresu URL stránky přímo do panelu Adresa prohlížeče. Přidáme odkaz na tuto stránku `Site.master` stránky předlohy.
+V současné době web neposkytuje žádné odkazy na `AdditionalUserInfo.aspx` stránku. Jediným způsobem, jak ho dosáhnout, je zadat adresu URL stránky přímo do panelu Adresa v prohlížeči. Pojďme na stránku předlohy `Site.master` přidat odkaz na tuto stránku.
 
-Připomínáme, že hlavní stránka obsahuje ovládacího prvku LoginView Web v jeho `LoginContent` ContentPlaceHolder zobrazující různých značek pro návštěvníky ověřený a anonymní. Aktualizovat ovládacího prvku LoginView `LoggedInTemplate` zahrnout odkaz `AdditionalUserInfo.aspx` stránky. Po provedení těchto změn LoginView deklarativní ovládacího prvku by měl vypadat nějak takto:
+Odvolání, že stránka předlohy obsahuje web ovládacího prvku LoginView ve svém `LoginContent` ContentPlaceHolder, který zobrazuje jiný kód pro ověřené a anonymní návštěvníky. Aktualizuje `LoggedInTemplate` ovládacího prvku LoginView tak, aby zahrnoval odkaz na stránku `AdditionalUserInfo.aspx`. Po provedení těchto změn by deklarativní označení ovládacího prvku LoginView mělo vypadat podobně jako následující:
 
 [!code-aspx[Main](storing-additional-user-information-cs/samples/sample7.aspx)]
 
-Poznámka: přidání `lnkUpdateSettings` ovládacího prvku hypertextový odkaz `LoggedInTemplate`. S tímto odkazem na místě ověřeným uživatelům rychle přejít na stránku lze zobrazit a upravit domovského města, domovskou stránku a podpis nastavení.
+Všimněte si, že přidání ovládacího prvku hypertextový odkaz `lnkUpdateSettings` do `LoggedInTemplate`. Pomocí tohoto odkazu můžou ověření uživatelé rychle přejít na stránku a zobrazit a upravit jejich domovskou města, domovskou stránku a nastavení podpisu.
 
-## <a name="step-4-adding-new-guestbook-comments"></a>Krok 4: Přidání nového komentáře návštěv
+## <a name="step-4-adding-new-guestbook-comments"></a>Krok 4: přidání nových komentářů k knize návštěv
 
-`Guestbook.aspx` Je stránka, kde můžete ověřeným uživatelům zobrazit návštěv a napište komentář. Začněme s vytvářením rozhraní pro přidání nového komentáře návštěv.
+Stránka `Guestbook.aspx` je místo, kde mohou uživatelé zobrazit knihu pro vkládání a nechat si komentovat. Začněte vytvořením rozhraní pro přidání nových komentářů do knihy návštěv.
 
-Otevřít `Guestbook.aspx` stránce v sadě Visual Studio a vytvořit uživatelské rozhraní, který se skládá ze dvou ovládacích prvků textového pole, jeden pro nový komentář předmětu a jeden pro jeho tělo. Nastavení prvního textového pole ovládacího prvku `ID` vlastnost `Subject` a jeho `Columns` vlastnost 40; nastavit druhé `ID` k `Body`, jeho `TextMode` k `MultiLine`a jeho `Width` a `Rows` Vlastnosti "95 %", 8, v uvedeném pořadí. K dokončení uživatelského rozhraní, přidejte ovládací prvek tlačítko Web s názvem `PostCommentButton` a nastavte jeho `Text` vlastnost "Napsat svůj komentář".
+Otevřete stránku `Guestbook.aspx` v aplikaci Visual Studio a sestavte uživatelské rozhraní sestávající ze dvou ovládacích prvků TextBox, jednu pro předmět nového komentáře a jeden pro jeho tělo. Nastavte vlastnost `ID` prvního textového ovládacího prvku na hodnotu `Subject` a jeho vlastnost `Columns` na 40; nastavte druhý `ID` na `Body`, jeho `TextMode` na `MultiLine`a vlastnosti `Width` a `Rows` na hodnotu "95%" a 8 v uvedeném pořadí. Chcete-li dokončit uživatelské rozhraní, přidejte webový ovládací prvek tlačítko s názvem `PostCommentButton` a nastavte jeho vlastnost `Text` na "zveřejnit váš komentář".
 
-Protože každý návštěv komentář vyžaduje předmět a text, přidáte RequiredFieldValidator pro každou z textových polí. Nastavte `ValidationGroup` vlastnosti těchto ovládacích prvků na "EnterComment"; nastavte `PostCommentButton` ovládacího prvku `ValidationGroup` vlastnost "EnterComment". Další informace o ASP. Ovládací prvky ověřování NET společnosti, prohlédněte si [ověřování formuláře v technologii ASP.NET](http://www.4guysfromrolla.com/webtech/090200-1.shtml), [rozbor validačních ovládacích prvků v technologii ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/112305-1.aspx)a [kurzu ovládací prvky serveru ověřování](http://www.w3schools.com/aspnet/aspnet_refvalidationcontrols.asp) na [W3Schools](http://www.w3schools.com/).
+Vzhledem k tomu, že každý komentář k knize webkniha vyžaduje předmět a tělo, přidejte do každého textového pole RequiredFieldValidator. Nastavte vlastnost `ValidationGroup` těchto ovládacích prvků na "EnterComment"; Podobně nastavte vlastnost `ValidationGroup` ovládacího prvku `PostCommentButton` na hodnotu "EnterComment". Další informace o ASP. Ovládací prvky ověřování netto, Prohlédněte si [ověřování formuláře v ASP.NET](http://www.4guysfromrolla.com/webtech/090200-1.shtml), ve [kterém se neprotínají ovládací prvky ověřování v ASP.NET 2,0](http://aspnet.4guysfromrolla.com/articles/112305-1.aspx), a v [kurzu ověřování serveru kontrolujeme](http://www.w3schools.com/aspnet/aspnet_refvalidationcontrols.asp) [W3Schools](http://www.w3schools.com/).
 
-Po vytvoření uživatelského rozhraní na stránce deklarativní by měl vypadat přibližně takto:
+Po vytvoření uživatelského rozhraní by deklarativní označení stránky mělo vypadat přibližně takto:
 
 [!code-aspx[Main](storing-additional-user-information-cs/samples/sample8.aspx)]
 
-Dokončení uživatelského rozhraní, naše dalším krokem je vložení nového záznamu do `GuestbookComments` tabulky, když `PostCommentButton` dojde ke kliknutí na. To lze provést různými způsoby: jsme napsali kód, ADO.NET na tlačítku `Click` obslužné rutiny události; jsme můžete přidat ovládací prvek SqlDataSource na stránku, konfigurovat jeho `InsertCommand`a poté zavolejte jeho `Insert` metody z `Click` událostí Obslužná rutina; nebo může vytváříme střední vrstvy, která je zodpovědná za vkládání nových komentářů návštěv a vyvolání této funkce `Click` obslužné rutiny události. Protože jsme se podívali na použití SqlDataSource v kroku 3, použijeme kódu ADO.NET tady.
+V případě, že je uživatelské rozhraní dokončeno, náš další úkol slouží k vložení nového záznamu do tabulky `GuestbookComments` při kliknutí na `PostCommentButton`. To lze provést několika způsoby: kód ADO.NET můžeme zapsat do obslužné rutiny události `Click` tlačítka; na stránku můžeme přidat ovládací prvek SqlDataSource, nakonfigurovat jeho `InsertCommand`a potom volat jeho `Insert` metodu z obslužné rutiny události `Click`; nebo můžeme vytvořit střední vrstvu, která byla zodpovědná za vkládání nových komentářů do knihy návštěv, a vyvolat tuto funkci z obslužné rutiny `Click` události. Vzhledem k tomu, že jsme se podívali na použití SqlDataSource v kroku 3, pojďme použít kód ADO.NET.
 
 > [!NOTE]
-> Třídy rozhraní ADO.NET pro programově přístup k datům z databáze Microsoft SQL serveru se nacházejí v `System.Data.SqlClient` oboru názvů. Budete muset tento obor názvů naimportujte třída použití modelu code-behind na stránce (například `using System.Data.SqlClient;`).
+> Třídy ADO.NET používané pro programový přístup k datům z databáze Microsoft SQL Server se nacházejí v oboru názvů `System.Data.SqlClient`. Tento obor názvů možná budete muset importovat do třídy kódu na pozadí vaší stránky (tj. `using System.Data.SqlClient;`).
 
-Vytvořte obslužnou rutinu události pro `PostCommentButton`společnosti `Click` událostí a přidejte následující kód:
+Vytvořte obslužnou rutinu události pro událost `Click` `PostCommentButton`a přidejte následující kód:
 
 [!code-csharp[Main](storing-additional-user-information-cs/samples/sample9.cs)]
 
-`Click` Spustí obslužnou rutinu události tak, že zkontrolujete, že uživatelský data nejsou platná. Pokud není, obslužná rutina události ukončí před vložení záznamu. Za předpokladu, že platnost zadaných dat aktuálně přihlášeného uživatele `UserId` hodnota je načtena a uložena v `currentUserId` místní proměnné. Tato hodnota je potřeba, proto jsme musí zadat `UserId` hodnotu, pokud vložení záznamu do `GuestbookComments`.
+Obslužná rutina události `Click` se spustí kontrolou, jestli jsou data dodaná uživatelem platná. Pokud ne, před vložením záznamu se ukončí obslužná rutina události. Za předpokladu, že dodaná data jsou platná, je načtena hodnota `UserId` aktuálně přihlášeného uživatele a uložena v `currentUserId` místní proměnné. Tato hodnota je potřebná, protože při vkládání záznamu do `GuestbookComments`je nutné zadat `UserId`ou hodnotu.
 
-Pod připojovacího řetězce pro `SecurityTutorials` databáze je načten z `Web.config` a `INSERT` zadaný příkaz jazyka SQL. A `SqlConnection` objekt je pak vytvořit a otevřít. Další, `SqlCommand` objekt je vytvořen a hodnoty pro parametry používané `INSERT` dotazu jsou přiřazeny. `INSERT` Poté je proveden příkaz a připojení ukončeno. Na konci obslužná rutina události `Subject` a `Body` textová pole `Text` vlastnosti jsou odstraněné tak, aby uživatele hodnoty se zachová pro zpětné volání.
+V tomto případě je připojovací řetězec pro databázi `SecurityTutorials` načten z `Web.config` a je zadán příkaz `INSERT` SQL. Pak se vytvoří a otevře objekt `SqlConnection`. Dále je vytvořen objekt `SqlCommand` a jsou přiřazeny hodnoty parametrů použitých v dotazu `INSERT`. Pak se provede příkaz `INSERT` a připojení se zavřelo. Na konci obslužné rutiny události jsou `Subject` a `Body` TextBoxs `Text` vlastnosti vymazané, aby se hodnoty uživatele nezachovaly v rámci zpětného odeslání.
 
-Pokračujte a otestovat na této stránce v prohlížeči. Vzhledem k tomu, že se tato stránka `Membership` složky není přístupná pro anonymní návštěvníky. Proto je potřeba nejdřív přihlásit (Pokud nemáte). Zadejte hodnotu do `Subject` a `Body` textová pole a klikněte na tlačítko `PostCommentButton` tlačítko. To způsobí, že nový záznam přidat do `GuestbookComments`. Na zpětné volání předmět a text, který jste zadali vymažou z textových polí.
+Pokračujte a otestujte tuto stránku v prohlížeči. Vzhledem k tomu, že tato stránka je v `Membership` složce, není přístupná pro anonymní návštěvníky. Proto se musíte nejdřív přihlásit (Pokud jste to ještě neučinili). Zadejte hodnotu do pole `Subject` a `Body` textová pole a klikněte na tlačítko `PostCommentButton`. Tím dojde k přidání nového záznamu do `GuestbookComments`. Při zpětném volání se předmět a text, který jste zadali, vymaže z textových polí.
 
-Po kliknutí `PostCommentButton` tlačítko zde není žádný vizuální zpětnou vazbu, který byl komentář přidán do návštěv. Stále potřebujeme aktualizovat tuto stránku a zobrazovat existující návštěv komentáře, které budeme provádět v kroku 5. Jakmile jsme to udělat, jen přidat komentář se zobrazí v seznamu komentářů, zajištění adekvátní vizuální zpětnou vazbu. Teď, potvrďte, že byla uložena komentář návštěv prozkoumáním obsah `GuestbookComments` tabulky.
+Po kliknutí na tlačítko `PostCommentButton` neexistuje žádná vizuální zpětná vazba, kterou komentář přidal do knihy návštěv. Tuto stránku pořád potřebujeme aktualizovat, aby se zobrazily existující komentáře knihy, které provedeme v kroku 5. Jakmile to dovedeme, zobrazí se v seznamu komentářů jenom přidaný komentář, který poskytuje odpovídající vizuální zpětnou vazbu. Prozkoumáním obsahu `GuestbookComments` tabulky teď potvrďte, že se Váš komentář k knize návštěv uložil.
 
-Obrázek 17 zobrazí obsah `GuestbookComments` tabulky po zbývá dvě komentáře.
+Obrázek 17 zobrazuje obsah `GuestbookComments` tabulky po tom, co byly dva komentáře ponechány.
 
-[![Zobrazí se návštěv komentáře v tabulce GuestbookComments](storing-additional-user-information-cs/_static/image50.png)](storing-additional-user-information-cs/_static/image49.png)
+[![můžete zobrazit komentáře knihy návštěv v tabulce GuestbookComments](storing-additional-user-information-cs/_static/image50.png)](storing-additional-user-information-cs/_static/image49.png)
 
-**Obrázek 17**: Zobrazí se návštěv komentáře v `GuestbookComments` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image51.png))
-
-> [!NOTE]
-> Pokud se uživatel pokusí vložit návštěv komentář, který obsahuje potenciálně nebezpečné – například kód HTML – ASP.NET vyvolá `HttpRequestValidationException`. Další informace o této výjimky, proč je vyvolána, a jak povolit uživatelům odesílat potenciálně nebezpečné hodnoty, najdete [dokument White Paper žádost o ověření](../../../../whitepapers/request-validation.md).
-
-## <a name="step-5-listing-the-existing-guestbook-comments"></a>Krok 5: Výpis existující komentáře návštěv
-
-Kromě zanechání komentáře, může uživatel navštívit `Guestbook.aspx` stránka také měl zobrazit existující komentáře návštěv. Chcete-li to provést, přidejte ovládací prvek ListView s názvem `CommentList` do dolní části stránky.
+**Obrázek 17**: komentáře knihy návštěv můžete zobrazit v tabulce `GuestbookComments` ([kliknutím zobrazíte obrázek v plné velikosti).](storing-additional-user-information-cs/_static/image51.png)
 
 > [!NOTE]
-> Ovládací prvek ListView je nová technologie ASP.NET, verze 3.5. Je určená k zobrazení seznamu položek ve vysoce přizpůsobitelné a flexibilní rozložení, ale stále nabízet integrované úprava, vkládání, odstraňování, stránkování a řazení funkce, jako jsou prvku GridView. Pokud používáte technologii ASP.NET 2.0, musíte místo toho pomocí ovládacího prvku DataList nebo Repeater. Další informace o použití ListView, naleznete v tématu [Scott Guthrie](https://weblogs.asp.net/scottgu/)na blogu, [asp: ListView ovládací prvek](https://weblogs.asp.net/scottgu/archive/2007/08/10/the-asp-listview-control-part-1-building-a-product-listing-page-with-clean-css-ui.aspx)a my článku [zobrazení dat pomocí ovládacího prvku ListView](http://aspnet.4guysfromrolla.com/articles/122607-1.aspx).
+> Pokud se uživatel pokusí vložit komentář knihy pro zápis, který obsahuje potenciálně nebezpečné označení, jako je například HTML – ASP.NET, vyvolá `HttpRequestValidationException`. Chcete-li získat další informace o této výjimce, proč je vyvolána a jak povolit uživatelům odesílat potenciálně nebezpečné hodnoty, přečtěte si dokument [White Paper s ověřením žádosti](../../../../whitepapers/request-validation.md).
 
-Otevřít inteligentní značky prvku ListView a z rozevíracího seznamu zvolit zdroj dat vazbu ovládacího prvku na nový zdroj dat. Jak jsme viděli v kroku 2, tím spustíte Průvodce konfigurací zdroje dat. Vyberte ikonu databáze, název výsledný SqlDataSource `CommentsDataSource`a klikněte na tlačítko OK. V dalším kroku vyberte `SecurityTutorialsConnectionString` připojovací řetězec z rozevíracího seznamu a klikněte na tlačítko Další.
+## <a name="step-5-listing-the-existing-guestbook-comments"></a>Krok 5: výpis stávajících komentářů knihy návštěv
 
-V tomto okamžiku v kroku 2 jsme zadali data dotazu podle výběru `UserProfiles` tabulky z rozevíracího seznamu a vyberte sloupce, které chcete vrátit (vrátit zpět k obrázek 9). Tentokrát, ale chceme vytvořit příkaz SQL, který si vyžádá zpět nejen záznamy ze `GuestbookComments`, ale také komentátor domácí města, domovskou stránku, podpisu a uživatelské jméno. Proto vyberte přepínač "Zadejte vlastní příkaz SQL nebo uloženou proceduru" a klikněte na tlačítko Další.
+Kromě předchodu komentářů by uživatel, který navštívil stránku `Guestbook.aspx`, měl také schopnost zobrazit existující komentáře v rámci knihy. K tomuto účelu přidejte ovládací prvek ListView s názvem `CommentList` do dolní části stránky.
 
-Tím se otevře na obrazovce "Definovat vlastní příkazy nebo uložené procedury". Kliknutím na tlačítko Tvůrce dotazů graficky sestavení dotazu. Tvůrce dotazů spustí s výzvou k určení, které chceme dotaz z tabulky. Vyberte `GuestbookComments`, `UserProfiles`, a `aspnet_Users` tabulky a klikněte na tlačítko OK. Tím přidáte všechny tři tabulky na návrhovou plochu. Protože existují omezení cizího klíče mezi `GuestbookComments`, `UserProfiles`, a `aspnet_Users` tabulky, Tvůrce dotazů automaticky `JOIN` s těchto tabulek.
+> [!NOTE]
+> Ovládací prvek ListView je pro ASP.NET verze 3,5 nový. Je navržena tak, aby zobrazovala seznam položek v rámci velmi přizpůsobitelného a flexibilního rozložení, stále nabízí integrované úpravy, vkládání, odstraňování, stránkování a řazení funkcí jako GridView. Pokud používáte ASP.NET 2,0, bude místo toho nutné použít ovládací prvek DataList nebo Repeater. Další informace o použití ListView najdete v tématu o blogu [Guthrie](https://weblogs.asp.net/scottgu/), [na ovládacím prvku ASP: ListView](https://weblogs.asp.net/scottgu/archive/2007/08/10/the-asp-listview-control-part-1-building-a-product-listing-page-with-clean-css-ui.aspx)a v článku o [zobrazení dat pomocí ovládacího prvku ListView](http://aspnet.4guysfromrolla.com/articles/122607-1.aspx).
 
-Už jen zbývá určit sloupce, které chcete vrátit. Z `GuestbookComments` tabulce vyberte `Subject`, `Body`, a `CommentDate` sloupce; vrátit `HomeTown`, `HomepageUrl`, a `Signature` sloupce z `UserProfiles` tabulky; a vrátit `UserName` z `aspnet_Users`. Přidejte také "`ORDER BY CommentDate DESC`" na konci `SELECT` dotaz tak, aby nejnovější příspěvky jsou vrácena jako první. Po provedení tento výběr, vypadat podobně jako na snímek v 18 obrázek obrazovky rozhraní Tvůrce dotazů.
+Otevřete inteligentní značku ListView a v rozevíracím seznamu zvolit zdroj dat navažte ovládací prvek k novému zdroji dat. Jak jsme viděli v kroku 2, spustí se Průvodce konfigurací zdroje dat. Vyberte ikonu databáze, pojmenujte výsledné `CommentsDataSource`SqlDataSource a klikněte na OK. Potom v rozevíracím seznamu vyberte připojovací řetězec `SecurityTutorialsConnectionString` a klikněte na další.
 
-[![Constructed dotaz spojí GuestbookComments, UserProfiles a aspnet_Users tabulky](storing-additional-user-information-cs/_static/image53.png)](storing-additional-user-information-cs/_static/image52.png)
+V tomto okamžiku v kroku 2 jsme určili data k dotazování tak, že v rozevíracím seznamu vybereme tabulku `UserProfiles` a vyberete sloupce, které se mají vrátit (vrátí se zpět na obrázek 9). Tentokrát ale chceme vytvořit příkaz SQL, který vrátí nejen záznamy z `GuestbookComments`, ale také domovské město, domovskou stránku, signaturu a uživatelské jméno pro komentář. Proto vyberte přepínač "zadat vlastní příkaz SQL nebo uloženou proceduru" a klikněte na tlačítko Další.
 
-**Obrázek 18**: Dotaz vytvořený `JOIN` s `GuestbookComments`, `UserProfiles`, a `aspnet_Users` tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image54.png))
+Tím se zobrazí obrazovka "definovat vlastní příkazy nebo uložené procedury". Kliknutím na tlačítko Tvůrce dotazů graf sestavíte. Tvůrce dotazů začne tím, že se nám zobrazí dotaz na zadání tabulek, ze kterých chceme dotazovat. Vyberte tabulky `GuestbookComments`, `UserProfiles`a `aspnet_Users` a klikněte na tlačítko OK. Tato akce přidá všechny tři tabulky na návrhovou plochu. Vzhledem k tomu, že existují omezení cizího klíče mezi tabulkami `GuestbookComments`, `UserProfiles`a `aspnet_Users`, Tvůrce dotazů tyto tabulky automaticky `JOIN` s.
 
-Kliknutím na OK zavřete okno editoru dotazů a návrat na obrazovku "Definovat vlastní příkazy nebo uložené procedury". Klikněte na tlačítko vedle záloh na obrazovku "Testovat dotaz", kde můžete zobrazit výsledky dotazu po kliknutí na tlačítko Testovat dotaz. Jakmile budete připraveni, klikněte na tlačítko Dokončit dokončete průvodce pro zdroj dat nakonfigurovat.
+Vše, co zbývá, je určit sloupce, které se mají vrátit. V `GuestbookComments` tabulce vyberte sloupce `Subject`, `Body`a `CommentDate`; Vrátí sloupce `HomeTown`, `HomepageUrl`a `Signature` z tabulky `UserProfiles`; a vrátí `UserName` z `aspnet_Users`. Přidejte také "`ORDER BY CommentDate DESC`" na konec `SELECT` dotazu, aby poslední příspěvky byly vráceny jako první. Po provedení těchto výběrů by rozhraní Tvůrce dotazů mělo vypadat podobně jako snímek obrazovky na obrázku 18.
 
-Když jsme dokončili Průvodce konfigurace zdroje dat v kroku 2, přiřazeném ovládacím prvku DetailsView `Fields` kolekce bylo aktualizováno, aby zahrnovalo Vlastnost BoundField pro každý sloupec vrácený `SelectCommand`. ListView, ale zůstávají beze změn; stále potřebujeme definovat jeho rozložení. Rozložení ListView lze sestavit ručně prostřednictvím jeho deklarativním označení nebo z možnosti "ListView konfigurace" v jeho inteligentních značek. Můžu obvykle raději ručně definování značky, ale pomocí libovolné metody je nejvíce přirozené pro vás.
+[![vytvořený dotaz spojí tabulky GuestbookComments, UserProfile a aspnet_Users.](storing-additional-user-information-cs/_static/image53.png)](storing-additional-user-information-cs/_static/image52.png)
 
-Můžu skončila pomocí následujících `LayoutTemplate`, `ItemTemplate`, a `ItemSeparatorTemplate` pro ovládací prvek ListView:
+**Obrázek 18**: vytvořený dotaz `JOIN` s tabulkami `GuestbookComments`, `UserProfiles`a `aspnet_Users` ([kliknutím zobrazíte obrázek v plné velikosti).](storing-additional-user-information-cs/_static/image54.png)
+
+Kliknutím na tlačítko OK zavřete okno Tvůrce dotazů a vraťte se na obrazovku "definovat vlastní příkazy nebo uložené procedury". Kliknutím na tlačítko Další přejdete na obrazovku test Query, kde můžete zobrazit výsledky dotazu kliknutím na tlačítko Test dotazu. Až budete připraveni, dokončete Průvodce konfigurací zdroje dat kliknutím na Dokončit.
+
+Po dokončení Průvodce konfigurací zdroje dat v kroku 2 byla aktualizace přidruženého ovládacího prvku DetailsView `Fields` aktualizována tak, aby zahrnovala vlastnost BoundField pro každý sloupec vrácený `SelectCommand`. Vlastnost ListView však zůstává beze změny; pořád musíme definovat rozložení. Rozložení objektu ListView lze vytvořit ručně prostřednictvím jeho deklarativního označení nebo z možnosti konfigurovat ListView v jeho inteligentní značce. Obvykle dávají přednost definici značky ručně, ale použijte jakoukoli metodu, která je pro vás nejpřirozenější.
+
+Při použití následujících `LayoutTemplate`, `ItemTemplate`a `ItemSeparatorTemplate` pro ovládací prvek ListView:
 
 [!code-aspx[Main](storing-additional-user-information-cs/samples/sample10.aspx)]
 
-`LayoutTemplate` Definuje kód, protože ho vygeneroval ovládacího prvku, zatímco `ItemTemplate` vykreslí každé položky vrácené ovládacím prvkem SqlDataSource. `ItemTemplate`Výsledný kód je umístěn v `LayoutTemplate`společnosti `itemPlaceholder` ovládacího prvku. Kromě `itemPlaceholder`, `LayoutTemplate` obsahuje ovládací prvek DataPager, který omezuje ListView zobrazuje jenom 10 návštěv komentáře na jedné stránce (výchozí) a vykreslí je stránkovací rozhraní.
+`LayoutTemplate` definuje označení vygenerované ovládacím prvkem, zatímco `ItemTemplate` vykreslí každou položku vrácenou funkcí SqlDataSource. Výsledný kód `ItemTemplate`je umístěn v ovládacím prvku `itemPlaceholder` `LayoutTemplate`. Kromě `itemPlaceholder`obsahuje `LayoutTemplate` ovládací prvek DataPager, který omezí zobrazení ListView na stránku a zobrazí na stránce pouze 10 komentářů knihy návštěv (výchozí) a vykresluje stránkovací rozhraní.
 
-Moje `ItemTemplate` zobrazí subjekt každý návštěv komentář `<h4>` element s text nacházející se pod předmět. Mějte na paměti, že syntaxe pro zobrazení textu trvá dat vrácených `Eval("Body")` příkaz vázání dat, převede ho na řetězec a nahradí konců řádků s `<br />` elementu. Chcete-li zobrazit konce řádků zadaný při odesílání komentáře, protože prázdné znaky je ignorován v HTML je potřeba tento převod. Podpis uživatele se zobrazí pod text kurzívou, za nímž následuje uživatele domácí města, odkaz na jeho domovské stránky, datum a čas, který byl proveden komentář a uživatelské jméno osoby, který zanechal komentář.
+Můj `ItemTemplate` zobrazuje každý předmět komentáře knihy návštěv v `<h4>` elementu s textem, který se nachází pod předmětem předmětu. Všimněte si, že syntaxe použitá pro zobrazení těla přebírá data vrácená příkazem `Eval("Body")` DataBinding, převede ji na řetězec a nahradí zalomení řádků pomocí `<br />` elementu. Tento převod je nutný k zobrazení konců řádků zadaných při odeslání komentáře, protože HTML ignoruje prázdné znaky. Podpis uživatele se pod textem zobrazuje kurzívou, za nímž následuje hlavní město uživatele, odkaz na jeho domovskou stránku, datum a čas podání komentáře a uživatelské jméno osoby, která tento komentář opustila.
 
-Pokud chcete zobrazit stránku prostřednictvím prohlížeče chvíli trvat. Měli byste vidět poznámky, které jste přidali do návštěv v kroku 5, tady zobrazí.
+Chvíli si zobrazte stránku v prohlížeči. V kroku 5 se tady zobrazí komentáře, které jste přidali do knihy návštěv.
 
-[![Guestbook.aspx pak zobrazí návštěv komentáře](storing-additional-user-information-cs/_static/image56.png)](storing-additional-user-information-cs/_static/image55.png)
+[![kniha návštěv. aspx nyní zobrazuje komentáře knihy pro knihu návštěv.](storing-additional-user-information-cs/_static/image56.png)](storing-additional-user-information-cs/_static/image55.png)
 
-**Obrázek 19**: `Guestbook.aspx` Se teď zobrazují poznámky návštěv ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image57.png))
+**Obrázek 19**: `Guestbook.aspx` nyní zobrazuje komentáře knihy návštěv ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image57.png))
 
-Zkuste přidat nový komentář návštěv. Po kliknutí `PostCommentButton` tlačítko stránce odešle zpět a přidá komentář do databáze, ale ovládací prvek ListView se aktualizuje a zobrazí nový komentář. To je možné vyřešit buď:
+Zkuste přidat nový komentář do knihy návštěv. Po kliknutí na tlačítko `PostCommentButton` se stránka publikuje zpátky a do databáze se přidá komentář, ale ovládací prvek ListView se neaktualizuje, aby se zobrazil nový komentář. To může opravit buď:
 
-- Aktualizuje `PostCommentButton` tlačítka `Click` obslužná rutina události tak, že vyvolá ovládacího prvku ListView `DataBind()` metoda po vložení nového komentáře do databáze, nebo
-- Nastavení ovládacího prvku ListView `EnableViewState` vlastnost `false`. Tento přístup funguje, protože tím, že zakážete stav zobrazení ovládacího prvku, třeba rebind na podkladová data při každém postbacku.
+- Aktualizace obslužné rutiny události `Click` `PostCommentButton`ho tlačítka tak, aby po vložení nového komentáře do databáze volala metodu `DataBind()` ovládacího prvku ListView
+- Nastavení vlastnosti `EnableViewState` ovládacího prvku ListView na hodnotu `false`. Tento přístup funguje, protože zakázáním stavu zobrazení ovládacího prvku musí znovu navazovat vazby na podkladová data při každém postbacku.
 
-Ke stažení z tohoto kurzu na webu kurz ukazuje obě tyto metody. Ovládací prvek ListView `EnableViewState` vlastnost `false` a je k dispozici v kódu potřeby prostřednictvím kódu programu znovu připojit data, která mají ListView `Click` obslužná rutina události, ale je zakomentovaný.
+Tento kurz ukazuje na webu kurz ke stažení z tohoto kurzu. Vlastnost `EnableViewState` ovládacího prvku ListView `false` a kód potřebný k programovému navázání vazby dat k objektu ListView je k dispozici v obslužné rutině události `Click`, ale je označen jako komentář.
 
 > [!NOTE]
-> Aktuálně `AdditionalUserInfo.aspx` stránky umožňuje uživateli zobrazit a upravit domovského města, domovskou stránku a podpis nastavení. Může být dobré si aktualizovat `AdditionalUserInfo.aspx` zobrazíte přihlášeného uživatele návštěv komentáře. To znamená, kromě přezkoumání a úprava její informace, může uživatel navštívit `AdditionalUserInfo.aspx` stránku, abyste viděli, jaké návštěv komentáře, které se provádí v minulosti. Můžu ponechte toto cvičení pro dotčené čtečku.
+> V současné době stránka `AdditionalUserInfo.aspx` umožňuje uživateli zobrazit a upravit nastavení domovské města, domovské stránky a podpisu. Může být vhodné aktualizovat `AdditionalUserInfo.aspx`, aby se zobrazily komentáře knihy návštěv přihlášeného uživatele. To znamená, že kromě přezkoumání a úprav svých informací může uživatel navštívit stránku `AdditionalUserInfo.aspx`, kde zjistí, jaké komentáře v knize návštěv udělaly v minulosti. Ponechám se to jako cvičení pro zúčastněný čtenář.
 
-## <a name="step-6-customizing-the-createuserwizard-control-to-include-an-interface-for-the-home-town-homepage-and-signature"></a>Krok 6: Přizpůsobení ovládacího prvku CreateUserWizard zahrnout rozhraní pro Domovská, domovskou stránku a podpis
+## <a name="step-6-customizing-the-createuserwizard-control-to-include-an-interface-for-the-home-town-homepage-and-signature"></a>Krok 6: přizpůsobení ovládacího prvku ovládacím CreateUserWizard tak, aby zahrnoval rozhraní pro domovskou města, domovskou stránku a podpis
 
-`SELECT` Dotazu použitého `Guestbook.aspx` stránce používá `INNER JOIN` kombinování souvisejících záznamů mimo `GuestbookComments`, `UserProfiles`, a `aspnet_Users` tabulky. Pokud uživatel, který nemá žádný záznam v `UserProfiles` bude návštěv připomínky, komentáře se nezobrazí ListView, protože `INNER JOIN` vrátí jenom `GuestbookComments` záznamů, pokud jsou k dispozici odpovídající záznamy v `UserProfiles` a `aspnet_Users`. A jak jsme viděli v kroku 3, pokud uživatel nemá záznamu `UserProfiles` si nemůžete zobrazit nebo upravit jeho nastavení v `AdditionalUserInfo.aspx` stránky.
+`SELECT` dotaz použitý stránkou `Guestbook.aspx` používá `INNER JOIN` k kombinování souvisejících záznamů mezi tabulkami `GuestbookComments`, `UserProfiles`a `aspnet_Users`. Pokud uživatel, který nemá žádný záznam v `UserProfiles`, vytvoří komentář k knize webkniha, komentář se nezobrazí v zobrazení ListView, protože `INNER JOIN` vrací `GuestbookComments` záznamy pouze v případě, že jsou v `UserProfiles` a `aspnet_Users`odpovídající záznamy. A jak jsme viděli v kroku 3, pokud uživatel nemá záznam ve `UserProfiles` nemůže zobrazit nebo upravit jeho nastavení na stránce `AdditionalUserInfo.aspx`.
 
-Needless znamená kvůli náš návrh rozhodnutí je důležité, aby měly všechny uživatelské účty v systému členství odpovídající záznam v `UserProfiles` tabulky. Rádi bychom je pro odpovídající záznam přidat do `UserProfiles` vždy, když se vytvoří nový členský účet uživatele prostřednictvím CreateUserWizard.
+V důsledku našich rozhodnutí o návrhu nemusíte říct, že každý uživatelský účet v systému členství má odpovídající záznam v `UserProfiles` tabulce. Co chceme, aby se přidaný záznam přidal do `UserProfiles` pokaždé, když se v ovládacím CreateUserWizard vytvoří nový uživatelský účet členství.
 
-Jak je popsáno v [ *vytváření uživatelských účtů* ](creating-user-accounts-cs.md) kurz, po vytvoření nového uživatelského účtu členství v ovládacím prvku CreateUserWizard vyvolá jeho [ `CreatedUser` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx). Abychom mohli vytvořit obslužnou rutinu události pro tuto událost, získejte ID uživatele pro uživatele nově vytvořené a vložte záznam do `UserProfiles` tabulky s použitím výchozích hodnot pro `HomeTown`, `HomepageUrl`, a `Signature` sloupce. A co víc je možné zobrazit výzvu uživateli pro tyto hodnoty úpravou ovládacího prvku CreateUserWizard rozhraní zahrnout další textová pole.
+Jak je popsáno v kurzu [*vytváření uživatelských účtů*](creating-user-accounts-cs.md) , poté, co je vytvořen nový uživatelský účet členství, vyvolá ovládací prvek ovládacím createuserwizard [událost`CreatedUser`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx). Pro tuto událost můžeme vytvořit obslužnou rutinu události, získat ID uživatele pro právě vytvořeného uživatele a potom do tabulky `UserProfiles` vložit záznam s výchozími hodnotami pro sloupce `HomeTown`, `HomepageUrl`a `Signature`. A co víc, je možné vyzvat uživatele k zadání těchto hodnot přizpůsobením rozhraní ovládacího prvku ovládacím CreateUserWizard, aby zahrnoval další textová pole.
 
-Nejprve se podíváme na to, jak přidat nový řádek `UserProfiles` tabulku v `CreatedUser` obslužné rutiny události s výchozími hodnotami. Pod uvidíme, jak přizpůsobit aplikaci prvku CreateUserWizard uživatelské rozhraní pro zahrnutí polí další formuláře ke shromažďování domácí města, domovskou stránku a podpis nového uživatele.
+Nejprve se podíváme na postup přidání nového řádku do tabulky `UserProfiles` v obslužné rutině události `CreatedUser` s výchozími hodnotami. V tomto článku se dozvíte, jak přizpůsobit uživatelské rozhraní ovládacího prvku ovládacím CreateUserWizard, aby zahrnovala další pole formuláře pro shromáždění domovské města, domovské stránky a podpisu nového uživatele.
 
-### <a name="adding-a-default-row-touserprofiles"></a>Přidání výchozí řádek`UserProfiles`
+### <a name="adding-a-default-row-touserprofiles"></a>Přidání výchozího řádku do`UserProfiles`
 
-V [ *vytváření uživatelských účtů* ](creating-user-accounts-cs.md) kurzu jsme přidali ovládacím prvku CreateUserWizard k `CreatingUserAccounts.aspx` stránku `Membership` složky. Abyste měli CreateUserWizard ovládacího prvku, přidejte záznam do `UserProfiles` tabulky při vytváření uživatelských účtů, musíme aktualizovat funkce ovládacího prvku CreateUserWizard. Místo provedení těchto změn na `CreatingUserAccounts.aspx` stránce, můžeme místo toho přidejte nového ovládacího prvku CreateUserWizard k `EnhancedCreateUserWizard.aspx` stránce a provést změny pro účely tohoto kurzu existuje.
+V kurzu [*vytváření uživatelských účtů*](creating-user-accounts-cs.md) jsme na stránku `CreatingUserAccounts.aspx` ve složce `Membership` přidali ovládací prvek ovládacím CreateUserWizard. Aby měl ovládací prvek ovládacím CreateUserWizard přidat záznam `UserProfiles` tabulky při vytváření uživatelského účtu, musíme aktualizovat funkce ovládacího prvku ovládacím CreateUserWizard. Místo toho, aby se tyto změny na stránce `CreatingUserAccounts.aspx`, místo toho přidejte na stránku `EnhancedCreateUserWizard.aspx` nový ovládací prvek ovládacím CreateUserWizard a proveďte úpravy pro tento kurz.
 
-Otevřít `EnhancedCreateUserWizard.aspx` stránce v sadě Visual Studio a přetáhněte z panelu nástrojů na stránku ovládacím prvku CreateUserWizard. Nastavení ovládacího prvku CreateUserWizard `ID` vlastnost `NewUserWizard`. Jak jsme probírali v <a id="_msoanchor_5"> </a> [ *vytváření uživatelských účtů* ](creating-user-accounts-cs.md) kurz, CreateUserWizard výchozí uživatelské rozhraní výzvy návštěvníka potřebné informace. Jakmile tyto informace není zadaný, ovládací prvek interně vytvoří nový uživatelský účet v rámci členství bez nám museli psát jediný řádek kódu.
+Otevřete stránku `EnhancedCreateUserWizard.aspx` v sadě Visual Studio a přetáhněte ovládací prvek ovládacím CreateUserWizard z panelu nástrojů na stránku. Nastavte vlastnost `ID` ovládacího prvku ovládacím CreateUserWizard na hodnotu `NewUserWizard`. Jak jsme probrali <a id="_msoanchor_5"> </a>v kurzu [*vytváření uživatelských účtů*](creating-user-accounts-cs.md) , výchozí uživatelské rozhraní ovládacím CreateUserWizard vyzve návštěvníka k zadání potřebných informací. Po zadání těchto informací ovládací prvek interně vytvoří nový uživatelský účet v rozhraní členství, a to vše bez nutnosti napsat jediný řádek kódu.
 
-Počet událostí ovládacím prvku CreateUserWizard vyvolá během jejího pracovního postupu. Poté, co návštěvník poskytuje informace o požadavku a formulář odešle, ovládacím prvku CreateUserWizard zpočátku aktivuje její [ `CreatingUser` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.creatinguser.aspx). Pokud dojde k potížím během procesu vytvoření [ `CreateUserError` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createusererror.aspx) se aktivuje; ale, pokud je uživatel vytvořen úspěšně, pak bude [ `CreatedUser` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx) je vyvolána. V <a id="_msoanchor_6"> </a> [ *vytváření uživatelských účtů* ](creating-user-accounts-cs.md) kurzu jsme vytvořili obslužnou rutinu události pro `CreatingUser` události a ujistěte se, že zadané uživatelské jméno neobsahuje počáteční nebo koncové mezery. proto, že uživatelské jméno se neobjevil kdekoli v hesle.
+Ovládací prvek ovládacím CreateUserWizard vyvolává během svého pracovního postupu několik událostí. Jakmile návštěvník zadá informace o požadavku a odešle formulář, zpočátku ovládací prvek ovládacím CreateUserWizard aktivuje jeho [událost`CreatingUser`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.creatinguser.aspx). Pokud během procesu vytváření dojde k problému, je vyvolána [událost`CreateUserError`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createusererror.aspx) ; Pokud je však uživatel úspěšně vytvořen, je vyvolána [událost`CreatedUser`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx) . <a id="_msoanchor_6"> </a>V kurzu [*vytváření uživatelských účtů*](creating-user-accounts-cs.md) jsme pro událost `CreatingUser` vytvořili obslužnou rutinu události, která zajistí, že zadané uživatelské jméno neobsahuje žádné mezery na začátku nebo na konci a že se uživatelské jméno neobjevilo kdekoli v hesle.
 
-Chcete-li přidat řádek v `UserProfiles` tabulky pro nově vytvořené uživatelem, potřebujeme vytvořit obslužnou rutinu události pro `CreatedUser` událostí. Časem `CreatedUser` událost se aktivuje, uživatelský účet už byl vytvořen v rámci členství, umožňuje nám k načtení hodnoty ID uživatele účtu.
+Aby bylo možné přidat řádek v tabulce `UserProfiles` pro právě vytvořeného uživatele, musíme pro událost `CreatedUser` vytvořit obslužnou rutinu události. V době, kdy se událost `CreatedUser` vyvolala, byl uživatelský účet již vytvořen v rámci rozhraní pro členství a umožňuje nám načíst hodnotu UserId účtu.
 
-Vytvořte obslužnou rutinu události pro `NewUserWizard`společnosti `CreatedUser` událostí a přidejte následující kód:
+Vytvořte obslužnou rutinu události pro událost `CreatedUser` `NewUserWizard`a přidejte následující kód:
 
 [!code-csharp[Main](storing-additional-user-information-cs/samples/sample11.cs)]
 
-Výše uvedené kód bytostí načtením UserId právě přidaný uživatelský účet. To lze provést pomocí `Membership.GetUser(username)` metoda vrací informace o konkrétní uživatele a poté použijete `ProviderUserKey` vlastnost pro načtení jejich ID uživatele. Uživatelské jméno zadané uživatelem v ovládacím prvku CreateUserWizard je k dispozici prostřednictvím jeho [ `UserName` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.username.aspx).
+Výše uvedený kód se načte načtením ID uživatele, který je právě přidaným uživatelským účtem. K tomu je potřeba pomocí metody `Membership.GetUser(username)` vracet informace o konkrétním uživateli a pak pomocí vlastnosti `ProviderUserKey` načíst své ID uživatele. Uživatelské jméno zadané uživatelem v ovládacím prvku ovládacím CreateUserWizard je k dispozici prostřednictvím [vlastnosti`UserName`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.username.aspx).
 
-V dalším kroku se načte připojovací řetězec z `Web.config` a `INSERT` zadaný příkaz. ADO.NET objekty jsou vytvořeny a příkaz provést. Kód přiřadí [ `DBNull` ](https://msdn.microsoft.com/library/system.dbnull.aspx) instance na `@HomeTown`, `@HomepageUrl`, a `@Signature` parametry, které má za následek vložení databáze `NULL` hodnoty `HomeTown`, `HomepageUrl`, a `Signature` pole.
+Dále je připojovací řetězec načten z `Web.config` a je zadán příkaz `INSERT`. Jsou vytvořeny instance potřebných objektů ADO.NET a příkaz byl proveden. Kód přiřadí instanci [`DBNull`](https://msdn.microsoft.com/library/system.dbnull.aspx) do parametrů `@HomeTown`, `@HomepageUrl`a `@Signature`, což má za následek vložení hodnot `NULL` databáze pro pole `HomeTown`, `HomepageUrl`a `Signature`.
 
-Přejděte `EnhancedCreateUserWizard.aspx` stránce prostřednictvím prohlížeče a vytvořit nový uživatelský účet. Až to uděláte, vraťte se do sady Visual Studio a zkontrolovat obsah `aspnet_Users` a `UserProfiles` tabulky (jak jsme to udělali v obrázek 12). Měli byste vidět nový uživatelský účet v `aspnet_Users` a odpovídající `UserProfiles` řádek (s `NULL` hodnoty `HomeTown`, `HomepageUrl`, a `Signature`).
+Navštivte stránku `EnhancedCreateUserWizard.aspx` v prohlížeči a vytvořte nový uživatelský účet. Až to uděláte, vraťte se do sady Visual Studio a Projděte si obsah `aspnet_Users` a `UserProfiles` tabulek (jako jsme to dělali na obrázku 12). Měl by se zobrazit nový uživatelský účet v `aspnet_Users` a odpovídající `UserProfiles` řádek (s `NULL`mi hodnotami pro `HomeTown`, `HomepageUrl`a `Signature`).
 
-[![Byly přidány nového uživatelského účtu a UserProfiles záznamu](storing-additional-user-information-cs/_static/image59.png)](storing-additional-user-information-cs/_static/image58.png)
+[![přidání nového uživatelského účtu a záznamu UserProfile](storing-additional-user-information-cs/_static/image59.png)](storing-additional-user-information-cs/_static/image58.png)
 
-**Obrázek 20**: Nový uživatelský účet a `UserProfiles` přidali záznam ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image60.png))
+**Obrázek 20**: Přidal se nový uživatelský účet a záznam `UserProfiles` ([kliknutím zobrazíte obrázek v plné velikosti).](storing-additional-user-information-cs/_static/image60.png)
 
-Poté, co má návštěvníka zadaná jeho nové informace o účtu a kliknutí na tlačítko "Create User", je vytvořen uživatelský účet a řádek přidán do `UserProfiles` tabulky. Pak zobrazí CreateUserWizard jeho `CompleteWizardStep`, který se zobrazí zpráva o úspěchu a tlačítko pro pokračování. Kliknutím na tlačítko Pokračovat vyvolá zpětné volání, ale nebyla provedena žádná akce, byste museli opustit uživatel zablokován na `EnhancedCreateUserWizard.aspx` stránky.
+Poté, co návštěvník zadal nové informace o účtu a kliknul na tlačítko vytvořit uživatele, je vytvořen uživatelský účet a do tabulky `UserProfiles` přidán řádek. Ovládacím CreateUserWizard pak zobrazí jeho `CompleteWizardStep`, který zobrazí zprávu o úspěchu a tlačítko pokračovat. Kliknutí na tlačítko pokračovat způsobí postback, ale není provedena žádná akce. uživatel zablokoval na stránce `EnhancedCreateUserWizard.aspx`.
 
-Lze zadat adresu URL pro uživatele poslat na po kliknutí na tlačítko Pokračovat pomocí ovládacího prvku CreateUserWizard na [ `ContinueDestinationPageUrl` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx). Nastavte `ContinueDestinationPageUrl` vlastnost "~ / Membership/AdditionalUserInfo.aspx". Tato akce trvá nového uživatele, aby `AdditionalUserInfo.aspx`, kde můžete zobrazit a aktualizovat svoje nastavení.
+Můžeme zadat adresu URL, na kterou se uživateli pošle, když se klikne na tlačítko pokračovat prostřednictvím [vlastnosti`ContinueDestinationPageUrl`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)ovládacího prvku ovládacím CreateUserWizard. Vlastnost `ContinueDestinationPageUrl` nastavte na ~/Membership/AdditionalUserInfo.aspx. Tím se nový uživatel bude `AdditionalUserInfo.aspx`, kde může zobrazit a aktualizovat jeho nastavení.
 
-### <a name="customizing-the-createuserwizards-interface-to-prompt-for-the-new-users-home-town-homepage-and-signature"></a>Přizpůsobení rozhraní CreateUserWizard výzvu k Domovská, domovskou stránku a podpis nového uživatele
+### <a name="customizing-the-createuserwizards-interface-to-prompt-for-the-new-users-home-town-homepage-and-signature"></a>Přizpůsobení rozhraní ovládacím CreateUserWizard, aby se zobrazila výzva k zadání domovské města, domovské stránky a podpisu nového uživatele
 
-Pro scénáře vytvoření jednoduchého účtu kde potřebujete shromažďovat pouze základní informace o uživatelském účtu jako uživatelské jméno, heslo a e-mailu stačí výchozí rozhraní prvku CreateUserWizard. Ale co když jsme chtěli výzvu musí návštěvníka zadejte svůj domácí města, domovskou stránku a podpis při vytváření svého účtu? Je možné přizpůsobit prvku CreateUserWizard rozhraní ke sběru dalších informací při registraci, a tyto informace slouží v `CreatedUser` obslužnou rutinu události pro vkládání dalších záznamů do databáze.
+Výchozí rozhraní ovládacího prvku ovládacím CreateUserWizard je dostačující pro scénáře vytváření jednoduchých účtů, kde se shromažďují jenom informace o hlavním uživatelském účtu, jako je uživatelské jméno, heslo a e-mail. Ale co kdybyste chtěli požádat návštěvníka o zadání domovské města, domovské stránky a podpisu při vytváření svého účtu? Je možné přizpůsobit rozhraní ovládacího prvku ovládacím CreateUserWizard a shromažďovat další informace při registraci. Tyto informace mohou být použity v obslužné rutině události `CreatedUser` pro vložení dalších záznamů do podkladové databáze.
 
-Ovládacím prvku CreateUserWizard rozšiřuje ovládací prvek ASP.NET průvodce, který je ovládací prvek, který umožňuje vývojářům definovat řadu seřazený `WizardSteps`. Průvodce ovládací prvek vykreslí aktivního kroku a poskytuje rozhraní navigace, které umožňuje přesunout tyto kroky musí návštěvníka. Ovládací prvek Průvodce je ideální pro rozdělení dlouhé úkolů v několika krocích. Další informace o ovládacím prvku průvodce najdete v tématu [vytvoření uživatelského rozhraní pro krok za krokem s ovládacím prvkem ASP.NET 2.0 průvodce](http://aspnet.4guysfromrolla.com/articles/061406-1.aspx).
+Ovládací prvek ovládacím CreateUserWizard rozšiřuje ovládací prvek Průvodce ASP.NET, což je ovládací prvek, který umožňuje vývojářům stránky definovat řadu seřazených `WizardSteps`. Ovládací prvek Průvodce vykresluje aktivní krok a poskytuje navigační rozhraní, které návštěvníkovi umožňuje procházet tyto kroky. Ovládací prvek Průvodce je ideální pro rozdělení dlouhého úkolu na několik krátkých kroků. Další informace o ovládacím prvku Průvodce najdete v tématu [vytvoření podrobného uživatelského rozhraní pomocí ovládacího prvku průvodce ASP.NET 2,0](http://aspnet.4guysfromrolla.com/articles/061406-1.aspx).
 
-Výchozí značky prvku CreateUserWizard definuje dva `WizardSteps`: `CreateUserWizardStep` a `CompleteWizardStep`.
+Výchozí označení ovládacího prvku ovládacím CreateUserWizard definuje dvě `WizardSteps`: `CreateUserWizardStep` a `CompleteWizardStep`.
 
 [!code-aspx[Main](storing-additional-user-information-cs/samples/sample12.aspx)]
 
-První `WizardStep`, `CreateUserWizardStep`, vykreslí rozhraní, které vyzve k zadání uživatelského jména, hesla, e-mailu a tak dále. Po návštěvníka poskytne tyto údaje a klikne na tlačítko "Create User", které se zobrazí `CompleteWizardStep`, která zobrazuje zprávy o úspěchu a tlačítko Pokračovat.
+První `WizardStep`, `CreateUserWizardStep`, vykreslí rozhraní, které vyzve k zadání uživatelského jména, hesla, e-mailu a tak dále. Jakmile návštěvník doplní tyto informace a klikne na možnost "vytvořit uživatele", zobrazí se `CompleteWizardStep`, která zobrazuje zprávu o úspěchu a tlačítko pokračovat.
 
-Přizpůsobení ovládacího prvku CreateUserWizard rozhraní pro zahrnutí polí další formuláře, můžeme:
+Chcete-li přizpůsobit rozhraní ovládacího prvku ovládacím CreateUserWizard tak, aby zahrnovalo další pole formuláře, můžeme:
 
-- <strong>Vytvořit jednu nebo více nových</strong><strong>`WizardStep`</strong><strong>s tak, aby obsahovala další prvky uživatelského rozhraní</strong>. Chcete-li přidat nový `WizardStep` chcete CreateUserWizard, klikněte na tlačítko "Přidat nebo odebrat `WizardSteps`" odkaz z jeho inteligentních značek ke spuštění `WizardStep` Editor kolekce. Odtud můžete přidat, odebrat nebo změnit pořadí kroků v průvodci. Jedná se o postup, který budeme používat pro účely tohoto kurzu.
+- <strong>Vytvořte jeden nebo více nových</strong> <strong>`WizardStep`</strong> <strong>s, aby obsahovaly další prvky uživatelského rozhraní</strong>. Chcete-li přidat novou `WizardStep` do ovládacím CreateUserWizard, klikněte na odkaz Přidat nebo odebrat `WizardSteps`z inteligentní značky a spusťte Editor kolekce `WizardStep`. Odtud můžete přidat, odebrat nebo změnit pořadí kroků v průvodci. Toto je přístup, který budeme používat pro tento kurz.
 
-- <strong>Převést</strong><strong>`CreateUserWizardStep`</strong><strong>do upravitelné</strong><strong>`WizardStep`</strong><strong>.</strong> Tím se nahradí `CreateUserWizardStep` s ekvivalentní `WizardStep` jehož značky definují uživatelské rozhraní, která odpovídá `CreateUserWizardStep`"s. Převedením `CreateUserWizardStep` do `WizardStep` jsme přemístění ovládací prvky nebo přidat další prvky uživatelského rozhraní k tomuto kroku. Chcete-li převést `CreateUserWizardStep` nebo `CompleteWizardStep` do upravovat `WizardStep`, klikněte "uživatele vytvořit vlastní krok" nebo "Upravit krok dokončení" propojit inteligentní značky ovládacího prvku.
+- <strong>Převést</strong> <strong>`CreateUserWizardStep`</strong> <strong>na upravitelnou</strong> <strong>`WizardStep`</strong> <strong>.</strong> Tím se `CreateUserWizardStep` nahradí ekvivalentní `WizardStep`, jehož značka definuje uživatelské rozhraní odpovídající `CreateUserWizardStep`. Převodem `CreateUserWizardStep` do `WizardStep` můžeme přemístit ovládací prvky nebo přidat další prvky uživatelského rozhraní do tohoto kroku. Chcete-li převést `CreateUserWizardStep` nebo `CompleteWizardStep` na upravitelnou `WizardStep`, klikněte na odkaz "přizpůsobit krok vytvoření uživatele" nebo "přizpůsobit úplný krok" z inteligentní značky ovládacího prvku.
 
-- **Použijte kombinaci výše uvedených dvou možností.**
+- **Použijte několik kombinací výše uvedených dvou možností.**
 
-Jeden důležité brát v úvahu je, že ovládacím prvku CreateUserWizard spustí jeho procesu vytvoření účtu uživatele při kliknutí na tlačítko "Create User" v rámci jeho `CreateUserWizardStep`. Nebude vadit, když existují další `WizardStep` s po `CreateUserWizardStep` nebo ne.
+Je důležité mít na paměti, že při kliknutí na tlačítko vytvořit uživatele z jeho `CreateUserWizardStep`spustí ovládací prvek ovládacím CreateUserWizard svůj proces vytváření uživatelského účtu. Nezáleží na tom, jestli existují další `WizardStep` s po `CreateUserWizardStep` nebo ne.
 
-Při přidávání vlastní `WizardStep` do ovládacího prvku CreateUserWizard ke shromažďování vstupu pro další uživatele, vlastní `WizardStep` lze umístit před nebo po `CreateUserWizardStep`. Pokud byla zaslána před `CreateUserWizardStep` potom jsou shromažďovány další uživatelský vstup z vlastního `WizardStep` je k dispozici pro `CreatedUser` obslužné rutiny události. Ale pokud vlastní `WizardStep` , přichází po `CreateUserWizardStep` potom podle času vlastní `WizardStep` se zobrazí nový uživatelský účet má již vytvořené a `CreatedUser` již byla aktivována událost.
+Když přidáte vlastní `WizardStep` k ovládacímu prvku ovládacím CreateUserWizard ke shromáždění dalšího vstupu uživatele, můžete vlastní `WizardStep` umístit před nebo po `CreateUserWizardStep`. Pokud se nachází před `CreateUserWizardStep` pak bude pro obslužnou rutinu události `CreatedUser` k dispozici další uživatelský vstup shromážděný z vlastního `WizardStep`. Pokud však vlastní `WizardStep` přijde po `CreateUserWizardStep` potom podle času, kdy se vlastní `WizardStep` zobrazí, nový uživatelský účet už je vytvořený a událost `CreatedUser` už se aktivovala.
 
-Obrázek 21 ukazuje pracovní postup při přidaného `WizardStep` předchází `CreateUserWizardStep`. Protože byla shromážděna dalších informací o uživatelích čas `CreatedUser` událost je aktivována, všechny musíme udělat, je aktualizace `CreatedUser` obslužná rutina události načtení tyto vstupy a pro použití `INSERT` hodnoty parametru příkazu (spíše než `DBNull.Value`).
+Obrázek 21 ukazuje pracovní postup, když přidaný `WizardStep` předchází `CreateUserWizardStep`. Vzhledem k tomu, že dodatečné informace o uživateli byly shromážděny časem `CreatedUser` události, je nutné provést aktualizaci `CreatedUser` obslužné rutiny událostí pro načtení těchto vstupů a použít je pro hodnoty parametrů příkazu `INSERT` (místo `DBNull.Value`).
 
-[![Pracovní postup CreateUserWizard, když Třída CreateUserWizardStep předchází další prvek WizardStep](storing-additional-user-information-cs/_static/image62.png)](storing-additional-user-information-cs/_static/image61.png)
+[![pracovní postup ovládacím CreateUserWizard, když další prvek WizardStep předchází vlastnost CreateUserWizardStep](storing-additional-user-information-cs/_static/image62.png)](storing-additional-user-information-cs/_static/image61.png)
 
-**Obrázek 21**: CreateUserWizard pracovního postupu při další `WizardStep` Precedes `CreateUserWizardStep` ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image63.png))
+**Obrázek 21**: ovládacím CreateUserWizard pracovní postup, když předchází `CreateUserWizardStep` `WizardStep` ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image63.png))
 
-Pokud vlastní `WizardStep` nachází *po* `CreateUserWizardStep`, ale proces vytváření účtu uživatele dojde k předtím, než uživatel má využili příležitost dobře se zadejte svůj domácí města, domovská stránka nebo podpis. V takovém případě musí být vložena do databáze po vytvoření uživatelského účtu, jak ukazuje obrázek 22 tyto další informace.
+Pokud je vlastní `WizardStep` umístěn *po* `CreateUserWizardStep`, je však proces vytvoření uživatelského účtu proveden předtím, než uživatel měl možnost zadat jeho domovskou města, domovskou stránku nebo podpis. V takovém případě musí být tyto další informace po vytvoření uživatelského účtu vloženy do databáze, jak je znázorněno na obrázku 22.
 
-[![Při další prvek WizardStep, přichází po třídu CreateUserWizardStep CreateUserWizard pracovního postupu](storing-additional-user-information-cs/_static/image65.png)](storing-additional-user-information-cs/_static/image64.png)
+[![pracovní postup ovládacím CreateUserWizard, když se další prvek WizardStep nachází po hodnotě CreateUserWizardStep](storing-additional-user-information-cs/_static/image65.png)](storing-additional-user-information-cs/_static/image64.png)
 
-**Obrázek 22**: CreateUserWizard pracovního postupu při další `WizardStep` dodává po `CreateUserWizardStep` ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image66.png))
+**Obrázek 22**: pracovní postup ovládacím CreateUserWizard, když se za `CreateUserWizardStep` dostane další `WizardStep` ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image66.png))
 
-Pracovní postup znázorňuje obrázek 22 čeká k vložení záznamu do `UserProfiles` tabulky až po dokončení kroku 2. Pokud návštěvníka zavře svém webovém prohlížeči po kroku 1, ale spojili jsme se bude mít stav, kdy byl uživatelský účet vytvořen, ale žádný záznam se přidal do `UserProfiles`. Jeden alternativním řešením je záznam obsahuje `NULL` nebo výchozí hodnoty, které jsou vloženy do `UserProfiles` v `CreatedUser` obslužné rutiny události (která se vyvolá po kroku 1) a aktualizujete tento záznam po dokončení kroku 2. To zajistí, že `UserProfiles` pro uživatelský účet se přidá záznam, i když uživatel ukončí uprostřed proces registrace prostřednictvím.
+Pracovní postup uvedený na obrázku 22 čeká na vložení záznamu do `UserProfiles` tabulky až do dokončení kroku 2. Pokud návštěvník ukončí svůj prohlížeč po kroku 1, bude však dosaženo stavu, ve kterém byl vytvořen uživatelský účet, ale do `UserProfiles`nebyl přidán žádný záznam. Jedním alternativním řešením je mít záznam s `NULL` nebo výchozími hodnotami, které jsou vložené do `UserProfiles` v obslužné rutině události `CreatedUser` (která se aktivuje po kroku 1), a po dokončení kroku 2 Tento záznam aktualizovat. Tím se zajistí, že se pro uživatelský účet přidá záznam `UserProfiles`, i když uživatel ukončí proces registrace v rámci.
 
-Pro účely tohoto kurzu vytvoříme novou `WizardStep` , která nastane po `CreateUserWizardStep` ale předtím, než `CompleteWizardStep`. První get WizardStep v umístění a nakonfigurovaný a potom nám budete Podívejme se na kód.
+V tomto kurzu vytvoříme nový `WizardStep`, ke kterému dochází po `CreateUserWizardStep`, ale před `CompleteWizardStep`. Pojďme nejdřív načíst prvek WizardStep na místě a nakonfigurovat a potom se podíváme na kód.
 
-V prvku CreateUserWizard inteligentní značky, vyberte "Přidat nebo odebrat `WizardStep` s", která se vyvolá `WizardStep` dialogové okno Editor kolekcí. Přidat nový `WizardStep`a nastavte jeho `ID` k `UserSettings`, jeho `Title` na "Nastavení" a jeho `StepType` k `Step`. Umístěte ho tak, že jde o po `CreateUserWizardStep` ("zaregistrujte vašeho nového účtu služby") a před `CompleteWizardStep` ("dokončených"), jak ukazuje obrázek 23.
+Z inteligentní značky ovládacího prvku ovládacím CreateUserWizard vyberte možnost Přidat nebo odebrat `WizardStep` s, která zobrazí dialogové okno Editor kolekce `WizardStep`. Přidejte novou `WizardStep`, nastavte její `ID` na `UserSettings`, její `Title` na nastavení a `StepType` na `Step`. Pak ji umístěte do umístění po `CreateUserWizardStep` ("Zaregistrujte se k novému účtu") a před `CompleteWizardStep` ("dokončeno"), jak je znázorněno na obrázku 23.
 
-[![Přidejte nový prvek WizardStep ovládacího prvku CreateUserWizard](storing-additional-user-information-cs/_static/image68.png)](storing-additional-user-information-cs/_static/image67.png)
+[![přidání nového prvku WizardStep k ovládacímu prvku ovládacím CreateUserWizard](storing-additional-user-information-cs/_static/image68.png)](storing-additional-user-information-cs/_static/image67.png)
 
-**Obrázek 23**: Přidat nové `WizardStep` do ovládacího prvku CreateUserWizard ([kliknutím ji zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image69.png))
+**Obrázek 23**: přidání nového `WizardStep` k ovládacímu prvku ovládacím CreateUserWizard ([kliknutím zobrazíte obrázek v plné velikosti](storing-additional-user-information-cs/_static/image69.png))
 
-Kliknutím na OK zavřete `WizardStep` dialogové okno Editor kolekcí. Nové `WizardStep` svědčí prvku CreateUserWizard aktualizované deklarativní:
+Kliknutím na tlačítko OK zavřete dialogové okno Editor kolekce `WizardStep`. Nový `WizardStep` je legitimace prostřednictvím aktualizovaného deklarativního kódu ovládacího prvku ovládacím CreateUserWizard:
 
 [!code-aspx[Main](storing-additional-user-information-cs/samples/sample13.aspx)]
 
-Všimněte si, nové `<asp:WizardStep>` elementu. Potřebujeme přidat uživatelské rozhraní pro shromažďování domácí města, domovskou stránku a podpis zde nového uživatele. Tento obsah můžete zadat v deklarativní syntaxe nebo prostřednictvím návrháře. Použití návrháře, vyberte z rozevíracího seznamu v inteligentních značek k přejděte ke kroku v Návrháři krok "Nastavení".
+Všimněte si nového prvku `<asp:WizardStep>`. Je potřeba přidat uživatelské rozhraní pro shromáždění domovské města, domovské stránky a podpisu nového uživatele. Tento obsah můžete zadat v deklarativní syntaxi nebo prostřednictvím návrháře. Chcete-li použít návrháře, vyberte v rozevíracím seznamu v inteligentní značce krok "nastavení" a zobrazte tak krok v návrháři.
 
 > [!NOTE]
-> Výběr krok prostřednictvím inteligentních značek rozevíracího seznamu aktualizuje prvku CreateUserWizard [ `ActiveStepIndex` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.activestepindex.aspx), která určuje index počáteční krok. Proto pokud tohoto rozevíracího seznamu můžete upravit krok "Nastavení" v návrháři, nezapomeňte nastavit zpět na "Přihlašování až pro svůj nový účet" tak, aby tento krok se zobrazí, když uživatelé navštíví nejprve `EnhancedCreateUserWizard.aspx` stránky.
+> Výběr kroku prostřednictvím rozevíracího seznamu inteligentních značek aktualizuje [vlastnost`ActiveStepIndex`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.activestepindex.aspx)ovládacího prvku ovládacím CreateUserWizard, která určuje index počátečního kroku. Proto pokud použijete tento rozevírací seznam pro úpravu kroku nastavení v návrháři, nezapomeňte ho nastavit zpátky na možnost zaregistrovat se k novému účtu, aby se tento krok zobrazil, když uživatelé poprvé navštíví stránku `EnhancedCreateUserWizard.aspx`.
 
-Vytvoření uživatelského rozhraní v rámci kroku "Nastavení", který obsahuje tři ovládací prvky textového pole s názvem `HomeTown`, `HomepageUrl`, a `Signature`. Po vytváření toto rozhraní, CreateUserWizard deklarativní by měl vypadat nějak takto:
+Vytvořte uživatelské rozhraní v rámci kroku "nastavení", které obsahuje tři ovládací prvky TextBox s názvem `HomeTown`, `HomepageUrl`a `Signature`. Po sestavení tohoto rozhraní by deklarativní označení ovládacím CreateUserWizard mělo vypadat podobně jako následující:
 
 [!code-aspx[Main](storing-additional-user-information-cs/samples/sample14.aspx)]
 
-Pokračujte a tuto stránku prostřednictvím prohlížeče a vytvořit nový uživatelský účet, zadávání hodnot pro domácí města, domovskou stránku a podpisu. Po dokončení `CreateUserWizardStep` uživatelský účet je vytvořen v rámci členství a `CreatedUser` spustí obslužnou rutinu události, které přidá nový řádek do `UserProfiles`, ale s databází `NULL` hodnota `HomeTown`, `HomepageUrl`, a `Signature`. Hodnoty zadané pro domácí města, domovskou stránku a podpis se nikdy nepoužívá. Net výsledkem je nový uživatelský účet se `UserProfiles` záznam, jehož `HomeTown`, `HomepageUrl`, a `Signature` pole ještě nutné zadat.
+Pokračujte a navštivte tuto stránku v prohlížeči a vytvořte nový uživatelský účet, který určí hodnoty pro domovskou města, domovskou stránku a podpis. Po dokončení `CreateUserWizardStep` se uživatelský účet vytvoří v rámci architektury členství a spustí se `CreatedUser` obslužná rutina události, která přidá nový řádek do `UserProfiles`, ale s `NULL`ovou hodnotou databáze `HomeTown`, `HomepageUrl`a `Signature`. Hodnoty zadané pro domovskou města, domovskou stránku a podpis se nikdy nepoužijí. Čistým výsledkem je nový uživatelský účet s `UserProfiles` záznamem, jehož pole `HomeTown`, `HomepageUrl`a `Signature` je ještě nutné zadat.
 
-Potřebujeme ke spuštění kódu po kroku "Nastavení", který má domácí města, honepage a podpis hodnoty zadané uživatelem a aktualizuje odpovídající `UserProfiles` záznamu. Pokaždé, když uživatel přesune mezi kroky v Průvodci ovládacích prvků, průvodce [ `ActiveStepChanged` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.wizard.activestepchanged.aspx) aktivována. Můžeme vytvořit obslužnou rutinu události pro tuto událost a aktualizace `UserProfiles` tabulky po dokončení kroku "Nastavení".
+Musíme spustit kód za krokem "nastavení", který převezme hodnoty domovské města, honepage a signatury zadané uživatelem a aktualizuje příslušný záznam `UserProfiles`. Pokaždé, když uživatel přejde mezi kroky v ovládacím prvku průvodce, aktivuje se [událost`ActiveStepChanged`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.wizard.activestepchanged.aspx) průvodce. Pro tuto událost můžeme vytvořit obslužnou rutinu události a aktualizovat tabulku `UserProfiles`, když se krok vaše nastavení dokončil.
 
-Přidat obslužnou rutinu události pro CreateUserWizard `ActiveStepChanged` událostí a přidejte následující kód:
+Přidejte obslužnou rutinu události pro událost `ActiveStepChanged` ovládacím CreateUserWizard a přidejte následující kód:
 
 [!code-csharp[Main](storing-additional-user-information-cs/samples/sample15.cs)]
 
-Výše uvedený kód se spustí na zjištění, zda právě jsme dosáhli krok "Dokončit". Vzhledem k tomu, že v kroku "Dokončit" se nachází hned za krok "Nastavení", pak dosáhne návštěvníka "Dokončených" krok, to znamená, že uživatel právě dokončili krok "Nastavení".
+Výše uvedený kód začíná určením, zda jsme právě dosáhli kroku "dokončení". Vzhledem k tomu, že krok dokončení nastane hned za krokem "nastavení", pak když návštěvník dostane krok "dokončeno", který znamená, že právě dokončil krok "nastavení".
 
-V takovém případě budeme potřebovat programově odkazovat na ovládací prvky textového pole v rámci `UserSettings WizardStep`. To lze provést pomocí `FindControl` metoda programově odkazující `UserSettings WizardStep`a pak odkazovat textových polí v rámci `WizardStep`. Když neodkazujete textových polí jsme připraveni spustit `UPDATE` příkazu. `UPDATE` Příkaz má stejný počet parametrů jako `INSERT` příkaz v `CreatedUser` obslužná rutina události, ale zde použijeme domácí města, domovskou stránku a podpis hodnoty poskytnuté uživatelem.
+V takovém případě potřebujeme programově odkazovat na ovládací prvky TextBox v rámci `UserSettings WizardStep`. K tomu je potřeba použít metodu `FindControl` pro programové odkazování na `UserSettings WizardStep`a pak znovu odkazovat na textová pole z `WizardStep`. Po odkazování na textová pole jsme připraveni spustit příkaz `UPDATE`. Příkaz `UPDATE` má stejný počet parametrů jako příkaz `INSERT` v obslužné rutině události `CreatedUser`, ale zde používáme hodnoty domovské města, domovské stránky a podpisu poskytnuté uživatelem.
 
-Pomocí této obslužné rutiny události na místě, přejděte `EnhancedCreateUserWizard.aspx` stránce prostřednictvím prohlížeče a vytvořit nový uživatelský účet zadávání hodnot pro domácí města, domovskou stránku a podpisu. Po vytvoření nového účtu měli byste být přesměrovaní na `AdditionalUserInfo.aspx` stránku, kde právě zadali domácí města, domovskou stránku a podpis se zobrazují informace.
+Pomocí této obslužné rutiny události můžete navštívit stránku `EnhancedCreateUserWizard.aspx` v prohlížeči a vytvořit nový uživatelský účet, který určí hodnoty domovské města, domovské stránky a podpisu. Po vytvoření nového účtu byste měli být přesměrováni na stránku `AdditionalUserInfo.aspx`, kde se zobrazují informace domovské města, domovské stránky a podpisu.
 
 > [!NOTE]
-> Náš web aktuálně obsahuje dvě stránky, ze kterých návštěvník můžete vytvořit nový účet: `CreatingUserAccounts.aspx` a `EnhancedCreateUserWizard.aspx`. Přejděte na přihlašovací stránce a mapy webu na webu `CreatingUserAccounts.aspx` stránky, ale `CreatingUserAccounts.aspx` stránky není vyzve uživatele k domácí města, domovskou stránku a podpis informace a nedojde k přidání odpovídající řádek `UserProfiles`. Proto, aktualizujte `CreatingUserAccounts.aspx` stránce tak, aby tato funkce nabízí nebo aktualizujte stránku mapy webu a přihlaste se k odkazování `EnhancedCreateUserWizard.aspx` místo `CreatingUserAccounts.aspx`. Pokud se rozhodnete druhou možnost, nezapomeňte aktualizovat `Membership` složky `Web.config` tak, aby umožňoval anonymním uživatelům přístup k souboru `EnhancedCreateUserWizard.aspx` stránky.
+> Náš web má v současné době dvě stránky, ze kterých může návštěvník vytvořit nový účet: `CreatingUserAccounts.aspx` a `EnhancedCreateUserWizard.aspx`. Stránka Mapa webu a přihlašovací stránka webu odkazuje na stránku `CreatingUserAccounts.aspx`, ale stránka `CreatingUserAccounts.aspx` nevyzve uživatele k zadání domovské města, domovské stránky a informací o podpisu a nepřidá odpovídající řádek do `UserProfiles`. Proto buď aktualizujte `CreatingUserAccounts.aspx` stránku tak, že nabídne tuto funkci, nebo aktualizujte stránku mapa a přihlašovací stránka, aby odkazovala `EnhancedCreateUserWizard.aspx` namísto `CreatingUserAccounts.aspx`. Pokud zvolíte druhou možnost, nezapomeňte aktualizovat soubor `Web.config` `Membership` složky tak, aby umožňoval anonymním uživatelům přístup na stránku `EnhancedCreateUserWizard.aspx`.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-V tomto kurzu jsme se podívali na techniky pro modelování dat, která souvisí s účty uživatelů v rámci členství. Konkrétně jsme se podívali na modelování entity, které sdílejí vztah jeden mnoho se uživatelské účty, jakož i data, která sdílí vztah 1: 1. Kromě toho jsme viděli, jak to související informace může zobrazit, Vložit a aktualizovány, některé příklady použití ovládacím prvkem SqlDataSource a ostatní pomocí kódu ADO.NET.
+V tomto kurzu jsme se prohlédli na postupy modelování dat, která se týkají uživatelských účtů v rámci rozhraní členství. Konkrétně jsme se podívali na modelování entit, které sdílí relaci 1:1 s uživatelskými účty a data, která sdílí relaci 1:1. Kromě toho jsme viděli, jak se tyto související informace můžou zobrazovat, vkládat a aktualizovat s některými příklady použití ovládacího prvku SqlDataSource a dalších uživatelů pomocí kódu ADO.NET.
 
-V tomto kurzu dokončíte naše pohled na uživatelské účty. Spouští se k dalšímu kurzu Změníme naši pozornost k rolím. Příštích několika kurzy se podíváme na rozhraní role zjistit, jak vytvořit nové role přiřazení rolí uživatelům, jak určit, ke kterým rolím uživatel patří do a jak se autorizace na základě rolí.
+V tomto kurzu se dokončí náš pohled na uživatelské účty. Počínaje dalším kurzem zapnete naši pozornost s rolemi. V dalších několika kurzech se podíváme na rámec rolí, informace o tom, jak vytvořit nové role, jak přiřadit role uživatelům, jak určit, k jakým rolím uživatel patří, a jak použít autorizaci založenou na rolích.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ### <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
-- [Přístup k a aktualizace dat v technologii ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/011106-1.aspx)
-- [Ovládací prvek ASP.NET 2.0 Průvodce](https://weblogs.asp.net/scottgu/archive/2006/02/21/438732.aspx)
-- [Vytvoření pomocí ovládacího prvku ASP.NET 2.0 průvodce krok za krokem uživatelského rozhraní](http://aspnet.4guysfromrolla.com/articles/061406-1.aspx)
-- [Vytváří se vlastní zdroj dat řídicí parametry](http://aspnet.4guysfromrolla.com/articles/110106-1.aspx)
-- [Přizpůsobení ovládacího prvku CreateUserWizard](http://aspnet.4guysfromrolla.com/articles/070506-1.aspx)
-- [Ovládací prvek DetailsView šablon rychlý start](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/data/detailsview.aspx)
+- [Přístup k datům v ASP.NET 2,0 a jejich aktualizace](http://aspnet.4guysfromrolla.com/articles/011106-1.aspx)
+- [Ovládací prvek Průvodce ASP.NET 2,0](https://weblogs.asp.net/scottgu/archive/2006/02/21/438732.aspx)
+- [Vytvoření podrobného uživatelského rozhraní pomocí ovládacího prvku Průvodce ASP.NET 2,0](http://aspnet.4guysfromrolla.com/articles/061406-1.aspx)
+- [Vytváření vlastních parametrů ovládacího prvku DataSource](http://aspnet.4guysfromrolla.com/articles/110106-1.aspx)
+- [Přizpůsobení ovládacího prvku ovládacím CreateUserWizard](http://aspnet.4guysfromrolla.com/articles/070506-1.aspx)
+- [Rychlé starty ovládacího prvku DetailsView](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/data/detailsview.aspx)
 - [Zobrazení dat pomocí ovládacího prvku ListView](http://aspnet.4guysfromrolla.com/articles/122607-1.aspx)
-- [Rozbor validačních ovládacích prvků v technologii ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/112305-1.aspx)
-- [Úpravy vložení a odstranění dat](../../data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs.md)
-- [Ověření formuláře v ASP.NET](http://www.4guysfromrolla.com/webtech/090200-1.shtml)
-- [Shromažďování informací o registraci vlastního uživatele](https://weblogs.asp.net/scottgu/archive/2006/07/05/Tip_2F00_Trick_3A00_-Gathering-Custom-User-Registration-Information.aspx)
-- [Profily v technologii ASP.NET 2.0](http://www.odetocode.com/Articles/440.aspx)
-- [Asp: ListView ovládacího prvku](https://weblogs.asp.net/scottgu/archive/2007/08/10/the-asp-listview-control-part-1-building-a-product-listing-page-with-clean-css-ui.aspx)
-- [Rychlý start profily uživatelů](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/profile/default.aspx)
+- [RozASP.NET ovládacích prvků ověřování v 2,0](http://aspnet.4guysfromrolla.com/articles/112305-1.aspx)
+- [Úpravy vkládání a odstraňování dat](../../data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs.md)
+- [Ověřování formuláře v ASP.NET](http://www.4guysfromrolla.com/webtech/090200-1.shtml)
+- [Shromažďování uživatelských informací o registraci uživatele](https://weblogs.asp.net/scottgu/archive/2006/07/05/Tip_2F00_Trick_3A00_-Gathering-Custom-User-Registration-Information.aspx)
+- [Profily v ASP.NET 2,0](http://www.odetocode.com/Articles/440.aspx)
+- [Ovládací prvek ASP: ListView](https://weblogs.asp.net/scottgu/archive/2007/08/10/the-asp-listview-control-part-1-building-a-product-listing-page-with-clean-css-ui.aspx)
+- [Rychlé zprovoznění profilů uživatelů](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/profile/default.aspx)
 
 ### <a name="about-the-author"></a>O autorovi
 
-Scott Meisnerová, Autor více ASP/ASP.NET knih a zakladatelem 4GuysFromRolla.com, má pracovali Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy  *[Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott může být dostupný na adrese [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) nebo prostřednictvím na svém blogu [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
+Scott Mitchell, autor několika stránek ASP/ASP. NET Books a zakladatel of 4GuysFromRolla.com, pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je *[Sams naučit se ASP.NET 2,0 za 24 hodin](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)* . Scott se dá kontaktovat [mitchell@4guysfromrolla.com](mailto:mitchell@4guysfromrolla.com) nebo prostřednictvím svého blogu na [http://ScottOnWriting.NET](http://scottonwriting.net/).
 
-### <a name="special-thanks-to"></a>Speciální k...
+### <a name="special-thanks-to"></a>Zvláštní díky...
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com).
 
 > [!div class="step-by-step"]
 > [Předchozí](user-based-authorization-cs.md)
-> [další](creating-the-membership-schema-in-sql-server-vb.md)
+> [Další](creating-the-membership-schema-in-sql-server-vb.md)

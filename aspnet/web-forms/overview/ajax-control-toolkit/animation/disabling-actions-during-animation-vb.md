@@ -1,62 +1,62 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/disabling-actions-during-animation-vb
-title: Zakázání akcí během animace (VB) | Dokumentace Microsoftu
+title: Zakázání akcí během animace (VB) | Microsoft Docs
 author: wenz
-description: Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Podporuje také akce...
+description: Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Také podporuje akci...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: a86c0276-6481-46ee-8b4f-8c2009399ee9
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/disabling-actions-during-animation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fcfa03998778888f2e64a8079d3119ce86de7fc3
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 4924d4f70099255b930d53f6a72e810be7a47485
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108828"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74606811"
 ---
 # <a name="disabling-actions-during-animation-vb"></a>Zakázání akcí během animace (VB)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation7.vb.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation7VB.pdf)
+[Stažení kódu](https://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation7.vb.zip) nebo [stažení PDF](https://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation7VB.pdf)
 
-> Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Podporuje také akce, jako je kliknutí myší. Ale při kliknutí myší spuštění animace, je třeba zakázat kliknutí myší během animace.
+> Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Podporuje také akce, jako je kliknutí myší. Pokud se ale po kliknutí myší spustí animace, je žádoucí zakázat kliknutí myší během animace.
 
 ## <a name="overview"></a>Přehled
 
-Animace ovládacího prvku ASP.NET AJAX Control Toolkit je právě ovládacího prvku, ale celé rozhraní pro přidání animace k ovládacímu prvku. Podporuje také akce, jako je kliknutí myší. Ale při kliknutí myší spuštění animace, je třeba zakázat kliknutí myší během animace.
+Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Podporuje také akce, jako je kliknutí myší. Pokud se ale po kliknutí myší spustí animace, je žádoucí zakázat kliknutí myší během animace.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Za prvé, zahrnout `ScriptManager` na stránce; potom technologie ASP.NET AJAX je načíst knihovnu, což umožňuje použití Control Toolkit:
+Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 
 [!code-aspx[Main](disabling-actions-during-animation-vb/samples/sample1.aspx)]
 
-Uplatní se animace k tlačítku HTML tímto způsobem:
+Animace se použije na tlačítko HTML jako toto:
 
 [!code-aspx[Main](disabling-actions-during-animation-vb/samples/sample2.aspx)]
 
-Mějte na paměti, že ovládací prvek je použít místo webový ovládací prvek, protože jsme nechcete, aby na tlačítko Vytvořit zpětné volání; právě zahájí animací na straně klienta pro nás.
+Všimněte si, že se místo webového ovládacího prvku používá ovládací prvek HTML, protože nechcete, aby tlačítko vytvořilo postback. Stačí spustit animaci na straně klienta pro nás.
 
-Pak přidejte `AnimationExtender` na stránku, poskytování `ID`, `TargetControlID` atribut a povinný údaj `runat="server"`:
+Pak přidejte `AnimationExtender` na stránku a zadejte `ID`, atribut `TargetControlID` a povinný `runat="server"`:
 
 [!code-aspx[Main](disabling-actions-during-animation-vb/samples/sample3.aspx)]
 
-V rámci `<Animations>` uzlu `<OnClick>` je správný prvek a zpracování kliknutí myší. Však může být stisknuto během animace, stejně. `<EnableAction>` Element zařídit, který. Nastavení `Enabled="false"` zakáže tlačítko jako součást animace. Protože používáme několika jednotlivých animací (zakázání tlačítka a skutečné animací), `<Parallel>` je vyžadován prvek připevněte jedné animace dohromady do jedné. Tady je kompletní kód pro `AnimationExtender`:
+V uzlu `<Animations>` je `<OnClick>` pravého prvku pro zpracování kliknutí myší. Tlačítko však může být kliknuto i během animace. Element `<EnableAction>` se může postarat. Nastavení `Enabled="false"` zakáže tlačítko v rámci animace. Vzhledem k tomu, že používáme několik jednotlivých animací (zakážete tlačítko a skutečné animace), `<Parallel>` element je nutný k vzájemnému připevnění jednotlivých animací. Toto je kompletní označení pro `AnimationExtender`:
 
 [!code-aspx[Main](disabling-actions-during-animation-vb/samples/sample4.aspx)]
 
-Také je možné znovu povolit tlačítko po animaci pomocí následujícího elementu XML na konci seznamu:
+Je také možné znovu povolit tlačítko po animaci, a to pomocí následujícího elementu XML na konci seznamu:
 
 [!code-xml[Main](disabling-actions-during-animation-vb/samples/sample5.xml)]
 
-Ale v daném scénáři to může být zbytečné od tlačítko setmívá a není viditelný na konci animace.
+V daném scénáři to však nebude k dispozici, protože tlačítko zmizí a na konci animace není vidět.
 
-[![Poté, co běží animaci je tlačítko neaktivní.](disabling-actions-during-animation-vb/_static/image2.png)](disabling-actions-during-animation-vb/_static/image1.png)
+[![tlačítko je po spuštění animace zakázané.](disabling-actions-during-animation-vb/_static/image2.png)](disabling-actions-during-animation-vb/_static/image1.png)
 
-Je tlačítko neaktivní co nejdříve po spuštění animace ([kliknutím ji zobrazíte obrázek v plné velikosti](disabling-actions-during-animation-vb/_static/image3.png))
+Tlačítko je zakázáno, jakmile se spustí animace ([kliknutím zobrazíte obrázek v plné velikosti).](disabling-actions-during-animation-vb/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](animating-in-response-to-user-interaction-vb.md)
-> [další](triggering-an-animation-in-another-control-vb.md)
+> [Další](triggering-an-animation-in-another-control-vb.md)

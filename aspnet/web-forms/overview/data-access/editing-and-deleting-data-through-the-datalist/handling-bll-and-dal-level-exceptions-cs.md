@@ -1,138 +1,138 @@
 ---
 uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/handling-bll-and-dal-level-exceptions-cs
-title: Zpracování výjimek na úrovni knihoven BLL a DAL (C#) | Dokumentace Microsoftu
+title: Zpracování výjimekC#úrovně knihoven BLL-a dal | Microsoft Docs
 author: rick-anderson
-description: V tomto kurzu se podíváme tactfully zpracování výjimky vyvolána během pracovního postupu aktualizace upravitelné DataList.
+description: V tomto kurzu se dozvíte, jak tactfully zpracovávat výjimky vyvolané při aktualizaci pracovního postupu upravitelného prvku DataList.
 ms.author: riande
 ms.date: 10/30/2006
 ms.assetid: f8fd58e2-f932-4f08-ab3d-fbf8ff3295d2
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/handling-bll-and-dal-level-exceptions-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3edd37259a3624757dd5bc69ffba7159c9b85ad1
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 35ff60be6ed67ea8d1bf226ae70f590100597757
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113734"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74634142"
 ---
 # <a name="handling-bll--and-dal-level-exceptions-c"></a>Zpracování výjimek na úrovni knihoven BLL a DAL (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_38_CS.exe) nebo [stahovat PDF](handling-bll-and-dal-level-exceptions-cs/_static/datatutorial38cs1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_38_CS.exe) nebo [Stáhnout PDF](handling-bll-and-dal-level-exceptions-cs/_static/datatutorial38cs1.pdf)
 
-> V tomto kurzu se podíváme tactfully zpracování výjimky vyvolána během pracovního postupu aktualizace upravitelné DataList.
+> V tomto kurzu se dozvíte, jak tactfully zpracovávat výjimky vyvolané při aktualizaci pracovního postupu upravitelného prvku DataList.
 
 ## <a name="introduction"></a>Úvod
 
-V [Přehled úprav a odstraňování dat v ovládacím prvku DataList](an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md) kurzu jsme vytvořili DataList, která nabízejí jednoduché úpravy a odstranění funkce. Zatímco plně funkční, bylo téměř uživatelsky přívětivé jako všechny chyby, ke které došlo během úpravy nebo odstranění proces vedl k neošetřené výjimce. Například vynechání produkt s názvem nebo při úpravách produktu, zadáním hodnoty cena velmi cenově!, dojde k výjimce. Vzhledem k tomu, že tato výjimka není zachycena v kódu, bubliny až modul runtime ASP.NET, která zobrazí podrobnosti o výjimce s na webové stránce.
+V [přehledu úprav a odstranění dat v kurzu DataList](an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md) jsme vytvořili prvek DataList, který nabízí jednoduché možnosti úprav a odstranění. Přestože je plně funkční, bylo špatně uživatelsky přívětivé, protože jakákoli chyba, ke které došlo během procesu úprav nebo odstranění, způsobila neošetřenou výjimku. Pokud například vynecháte název produktu nebo, když upravujete produkt, zadáte cenovou hodnotu velmi dostupnou!, vyvolá výjimku. Vzhledem k tomu, že tato výjimka není zachycena v kódu, je podrobná až do modulu runtime ASP.NET, který pak na webové stránce zobrazí výjimky s podrobnostmi.
 
-Jak jsme viděli v [zpracování knihoven BLL a výjimek úrovni DAL na stránce ASP.NET](../editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md) kurz, pokud je vyvolána výjimka z hlubin obchodní logikou nebo vrstvy přístupu k datům, podrobnosti výjimky jsou vráceny do ObjectDataSource a potom do prvku GridView. Jsme viděli, jak tyto výjimky elegantně zpracovat tak, že vytvoříte `Updated` nebo `RowUpdated` obslužné rutiny událostí pro prvek ObjectDataSource nebo prvku GridView, kontrola výjimku a pak označující, že výjimka byla zpracována.
+Jak jsme viděli při [zpracování výjimek knihoven BLL a dal v kurzu stránky ASP.NET](../editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md) , pokud je výjimka vyvolána z hloubky obchodní logiky nebo vrstvy přístupu k datům, vrátí se podrobnosti o výjimce do prvku ObjectDataSource a následně do prvku GridView. Zjistili jsme, jak tyto výjimky řádně zpracovat vytvořením `Updated` nebo `RowUpdated` obslužných rutin událostí pro ObjectDataSource nebo GridView, kontrolou výjimky a následnou indikací, že byla výjimka zpracována.
 
-Naše kurzy DataList ale nepoužíváte ObjectDataSource pro aktualizace a odstranění dat. Místo toho spolupracujeme přímo proti BLL. Aby bylo možné zjišťování výjimek pocházejících z knihoven BLL a DAL, musíme implementovat kódu v rámci kódu naši stránku ASP.NET pro zpracování výjimek. V tomto kurzu uvidíme více tactfully zpracování výjimky vyvolána během upravitelné DataList s aktualizace pracovního postupu.
+Naše kurzy DataList ale nepoužívají prvek ObjectDataSource k aktualizaci a odstraňování dat. Místo toho pracujeme přímo na knihoven BLL. Aby bylo možné detekovat výjimky pocházející z knihoven BLL nebo DAL, musíme implementovat kód pro zpracování výjimek v rámci kódu na pozadí naší stránky ASP.NET. V tomto kurzu se dozvíte, jak více tactfully zpracovávat výjimky vyvolané během upravitelného pracovního postupu pro prvek DataList s aktualizací.
 
 > [!NOTE]
-> V *přehled o úpravy a odstraňování dat v ovládacím prvku DataList* pomocí ObjectDataSource pro aktualizaci zahrnuty některé techniky kurzu jsme probírali různých postupů pro úpravy a odstraňování dat v ovládacím prvku DataList a Odstraňuje se. Pokud tyto postupy, můžete zpracovávat výjimky z knihoven BLL a DAL pomocí prvku ObjectDataSource s `Updated` nebo `Deleted` obslužných rutin událostí.
+> V tématu *Přehled úprav a odstranění dat v kurzu DataList* jsme provedli různé techniky pro úpravy a odstraňování dat z prvku DataList, některé techniky, které jsou součástí prvků ObjectDataSource pro aktualizaci a odstranění. Použijete-li tyto techniky, můžete zpracovat výjimky z knihoven BLL nebo DAL prostřednictvím obslužných rutin události ObjectDataSource `Updated` nebo `Deleted`.
 
-## <a name="step-1-creating-an-editable-datalist"></a>Krok 1: Vytváření upravitelné DataList
+## <a name="step-1-creating-an-editable-datalist"></a>Krok 1: vytvoření upravitelného prvku DataList
 
-Předtím, než jsme starat o zpracování výjimek, ke kterým dochází při aktualizaci pracovního postupu, umožní s nejprve vytvořit upravitelné DataList. Otevřít `ErrorHandling.aspx` stránku `EditDeleteDataList` složky, přidat a v prvku DataList do návrháře, nastavte jeho `ID` vlastnost `Products`, a přidejte nový prvek ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource používat `ProductsBLL` třída s `GetProducts()` zaznamenává metodu pro výběr; nastavte rozevírací seznamy v INSERT, UPDATE a odstranit karty na (žádný).
+Předtím, než se obáváme o zpracování výjimek, ke kterým dojde během aktualizačního pracovního postupu, si nejdřív vytvořte upravitelný prvek DataList. Otevřete stránku `ErrorHandling.aspx` ve složce `EditDeleteDataList`, přidejte prvek DataList do návrháře, nastavte jeho vlastnost `ID` na `Products`a přidejte nový prvek ObjectDataSource s názvem `ProductsDataSource`. Nakonfigurujte prvek ObjectDataSource tak, aby pro výběr záznamů používal metodu `ProductsBLL` třídy s `GetProducts()`. v rozevíracích seznamech na kartách vložení, aktualizace a odstranění nastavte (žádné).
 
-[![Vrátí informace o produktu pomocí GetProducts() – metoda](handling-bll-and-dal-level-exceptions-cs/_static/image2.png)](handling-bll-and-dal-level-exceptions-cs/_static/image1.png)
+[![vrátit informace o produktu pomocí metody GetProducts ()](handling-bll-and-dal-level-exceptions-cs/_static/image2.png)](handling-bll-and-dal-level-exceptions-cs/_static/image1.png)
 
-**Obrázek 1**: Vrátí informací pomocí produktu `GetProducts()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-cs/_static/image3.png))
+**Obrázek 1**: vraťte informace o produktu pomocí metody `GetProducts()` ([kliknutím zobrazíte obrázek v plné velikosti).](handling-bll-and-dal-level-exceptions-cs/_static/image3.png)
 
-Po dokončení Průvodce prvek ObjectDataSource, vytvoří Visual Studio automaticky `ItemTemplate` pro prvku DataList. Nahraďte ho názvem `ItemTemplate` , který se zobrazí každý produkt s názvem a ceny a obsahuje tlačítko pro úpravy. Dále vytvořte `EditItemTemplate` s ovládacím prvkem webového textové pole pro název a ceny a aktualizace a zrušit. Nakonec nastavte DataList s `RepeatColumns` vlastnost na 2.
+Po dokončení průvodce ObjectDataSource bude Visual Studio automaticky vytvářet `ItemTemplate` pro prvek DataList. Tuto položku nahraďte `ItemTemplate`, která zobrazuje každý název a cenu produktu a obsahuje tlačítko pro úpravy. Dále vytvořte `EditItemTemplate` s webovým ovládacím prvkem TextBox pro název a cenu a tlačítka aktualizovat a Storno. Nakonec nastavte vlastnost DataList s `RepeatColumns` na 2.
 
-Po provedení těchto změn kódu s deklarativní stránky s by měl vypadat nějak takto. Překontrolujte, ujistěte se, že úprav, zrušení, a aktualizace tlačítka mají jejich `CommandName` vlastnosti nastavení upravit, zrušit a aktualizovat v uvedeném pořadí.
+Po těchto změnách by deklarativní označení stránky mělo vypadat podobně jako následující. Dvojím zkontrolováním, že tlačítka pro úpravy, zrušení a aktualizaci mají své `CommandName` vlastnosti nastavené na upravit, zrušit a aktualizovat, v uvedeném pořadí.
 
 [!code-aspx[Main](handling-bll-and-dal-level-exceptions-cs/samples/sample1.aspx)]
 
 > [!NOTE]
-> Pro účely tohoto kurzu prvku DataList musí být povolen stav zobrazení s.
+> Pro tento kurz musí být povolený stav zobrazení DataList s.
 
-Za chvíli zobrazíte náš postup přes prohlížeč (viz obrázek 2).
+Počkejte, než se vám zobrazí náš průběh v prohlížeči (viz obrázek 2).
 
-[![Každý produkt obsahuje tlačítko pro úpravy](handling-bll-and-dal-level-exceptions-cs/_static/image5.png)](handling-bll-and-dal-level-exceptions-cs/_static/image4.png)
+[![každý produkt zahrnuje tlačítko pro úpravy.](handling-bll-and-dal-level-exceptions-cs/_static/image5.png)](handling-bll-and-dal-level-exceptions-cs/_static/image4.png)
 
-**Obrázek 2**: Každý produkt obsahuje tlačítko Upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-cs/_static/image6.png))
+**Obrázek 2**: každý produkt obsahuje tlačítko pro úpravy ([kliknutím zobrazíte obrázek v plné velikosti).](handling-bll-and-dal-level-exceptions-cs/_static/image6.png)
 
-V současné době na tlačítko Upravit pouze vyvolá zpětné volání je t kódu ještě používání produktu snazší upravovat. Aby se povolily úpravy, potřebujeme vytvořit obslužné rutiny událostí pro DataList s `EditCommand`, `CancelCommand`, a `UpdateCommand` události. `EditCommand` a `CancelCommand` události jednoduše aktualizovat DataList s `EditItemIndex` vlastnost a obnovení vazby dat k ovládacím prvku DataList:
+V současné době tlačítko pro úpravy způsobuje pouze postback, který mu ještě neumožňuje upravovat produkt. Pro umožnění úprav musíme pro události `EditCommand`, `CancelCommand`a `UpdateCommand` prvku DataList vytvořit obslužné rutiny událostí. Události `EditCommand` a `CancelCommand` jednoduše aktualizují vlastnost DataList s `EditItemIndex` a znovu sváže data s DataList:
 
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-cs/samples/sample2.cs)]
 
-`UpdateCommand` Obslužná rutina události se tak zapojí o něco víc. Je potřeba si přečíst také upravených produktu s `ProductID` z `DataKeys` spolu s produkt s názvem a cenu z textových polí v kolekci `EditItemTemplate`a následně zavolat `ProductsBLL` třída s `UpdateProduct` metoda před vrácením prvku DataList do předem úprav stavu.
+Obslužná rutina události `UpdateCommand` je trochu větší. Musí číst v upraveném `ProductID` produktů z kolekce `DataKeys` spolu s názvem produktu a cenou z textových polí v `EditItemTemplate`, a potom před vrácením prvku DataList do jeho stavu před tím, než bude prvek DataList vracet, zavolat `UpdateProduct` metody třídy `ProductsBLL`.
 
-Prozatím použijte umožňují s právě přesně stejný kód z `UpdateCommand` obslužné rutině událostí ve *Přehled úprav a odstraňování dat v ovládacím prvku DataList* kurzu. Přidáme kód pro pohodlné zpracování výjimek v kroku 2.
+Prozatím použijte pouze stejný kód z obslužné rutiny události `UpdateCommand` v *přehledu úprav a odstranění dat v kurzu DataList* . Přidáme kód pro řádný zpracování výjimek v kroku 2.
 
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-cs/samples/sample3.cs)]
 
-I v případě neplatné zadání, což může být ve formě nesprávně formátovaná Jednotková cena, hodnotu neplatná jednotka cena takto: $5.00 nebo vynechání s název produktu, který bude vyvolána výjimka. Vzhledem k tomu, `UpdateCommand` obslužná rutina události neobsahuje žádné kód v tomto okamžiku zpracování výjimek, výjimky je předána do modulu runtime ASP.NET, ve kterém se zobrazí koncovému uživateli (viz obrázek 3).
+V případě neplatného vstupu, který může mít formu nesprávně formátované jednotkové ceny, neplatnou hodnotu jednotkové ceny jako-$5,00 nebo vynechání názvu produktu, bude vyvolána výjimka. Vzhledem k tomu, že obslužná rutina události `UpdateCommand` v tomto okamžiku neobsahuje žádný kód pro zpracování výjimek, výjimka bude obsahovat až ASP.NET modul runtime, kde se zobrazí koncovému uživateli (viz obrázek 3).
 
-![Když dojde k neošetřené výjimce koncovému uživateli se zobrazí chybová stránka](handling-bll-and-dal-level-exceptions-cs/_static/image7.png)
+![Když dojde k neošetřené výjimce, koncový uživatel uvidí chybovou stránku.](handling-bll-and-dal-level-exceptions-cs/_static/image7.png)
 
-**Obrázek 3**: Když dojde k neošetřené výjimce koncovému uživateli se zobrazí chybová stránka
+**Obrázek 3**: když dojde k neošetřené výjimce, koncový uživatel uvidí chybovou stránku.
 
-## <a name="step-2-gracefully-handling-exceptions-in-the-updatecommand-event-handler"></a>Krok 2: Řádně zpracování výjimek v obslužné rutině události UpdateCommand
+## <a name="step-2-gracefully-handling-exceptions-in-the-updatecommand-event-handler"></a>Krok 2: řádné zpracování výjimek v obslužné rutině události UpdateCommand
 
-Během aktualizace pracovního postupu, může dojít k výjimkám v `UpdateCommand` obslužná rutina události, BLL nebo vrstvy DAL. Například, pokud uživatel zadá cenu příliš drahé, `Decimal.Parse` příkaz v `UpdateCommand` vyvolá obslužnou rutinu události `FormatException` výjimky. Pokud uživatel vynechá s názvem produktu nebo cena má zápornou hodnotu, bude DAL vyvolat výjimku.
+Během pracovního postupu aktualizace mohou být výjimky v obslužné rutině události `UpdateCommand`, knihoven BLL nebo DAL. Například pokud uživatel zadá cenu, která je příliš náročná, příkaz `Decimal.Parse` v obslužné rutině události `UpdateCommand` vyvolá výjimku `FormatException`. Pokud uživatel vynechá název produktu nebo pokud má cena zápornou hodnotu, dojde k výjimce DAL.
 
-Když dojde k výjimce, chceme zobrazit informativní zprávy v rámci samotné stránky. Přidat popisek webový ovládací prvek na stránce, jehož `ID` je nastavena na `ExceptionDetails`. Konfigurace zobrazovaný v červené, velmi velká, písmo tučné písmo a kurzíva přiřazením text popisku s jeho `CssClass` vlastnost `Warning` třídu šablony stylů CSS, která je definována v `Styles.css` souboru.
+Pokud dojde k výjimce, chceme zobrazit informativní zprávu v rámci samotné stránky. Přidejte ovládací prvek web popisku na stránku, jejíž `ID` je nastavená na `ExceptionDetails`. Nakonfigurujte text popisku, který se má zobrazit v červeném, tučném písmu a kurzívě, přiřazením jeho vlastnosti `CssClass` do `Warning` třídy šablony stylů CSS, která je definována v souboru `Styles.css`.
 
-Když dojde k chybě, chceme jenom popisek, který se zobrazí pouze jednou. To znamená by měl popisek s upozornění na následné postbacky zmizet. Můžete to udělat buď vymazání si popisek s `Text` vlastnost nebo nastavení jeho `Visible` vlastnost `False` v `Page_Load` obslužné rutiny události (jako jsme to udělali v [zpracování knihoven BLL a DAL úrovni výjimky v ASP Stránku technologie .NET](../editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md) kurzu) nebo zakázáním podpory popisek s zobrazení stavu. Umožní s použít druhou možnost.
+Když dojde k chybě, chceme, aby se popisek zobrazil jenom jednou. To znamená, že při následném postbacku by se měla zpráva s upozorněním na návěští zobrazovat. To se dá udělat tak, že buď vymažete vlastnost `Text` popisku, nebo nastavení jeho vlastnosti `Visible` na `False` v obslužné rutině události `Page_Load` (jak jsme byli zpátky v kurzu [zpracování knihoven BLL a dal výjimky na stránce ASP.NET](../editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md) ), nebo zakázáním podpory stavu zobrazení popisku. Umožňuje použít druhou možnost.
 
 [!code-aspx[Main](handling-bll-and-dal-level-exceptions-cs/samples/sample4.aspx)]
 
-Když je vyvolána výjimka, přiřadíme podrobnosti výjimka, která má `ExceptionDetails` ovládacímu prvku s popisek `Text` vlastnost. Protože svůj stav zobrazení je zakázané v následných zpětného odeslání `Text` vlastnost s programové změny budou ztraceny, návrat k výchozí text (prázdný řetězec), a tím skrytí upozornění.
+Když je vyvolána výjimka, přiřadíme podrobnosti o výjimce `ExceptionDetails` vlastnosti ovládacího prvku popisek s `Text`. Vzhledem k tomu, že je stav zobrazení zakázán, při následném postbacku budou ztraceny programové změny vlastností `Text`, vrátí se zpět k výchozímu textu (prázdný řetězec), čímž se skryje zpráva upozornění.
 
-Pokud chcete zjistit, kdy bylo vyvoláno chybu mohla zobrazit na stránce užitečné zprávu, potřebujeme přidat `Try ... Catch` bloku `UpdateCommand` obslužné rutiny události. `Try` Část obsahuje kód, který může způsobit výjimku, zatímco `Catch` blok obsahuje kód, který se spustí i v případě výjimku. Podívejte se [Základy zpracování výjimek](https://msdn.microsoft.com/library/2w8f0bss.aspx) tématu v dokumentaci k rozhraní .NET Framework pro další informace o `Try ... Catch` bloku.
+Abychom určili, kdy došlo k chybě, aby se zobrazila užitečná zpráva na stránce, musíme do obslužné rutiny události `UpdateCommand` přidat `Try ... Catch` blok. `Try` část obsahuje kód, který může vést k výjimce, zatímco blok `Catch` obsahuje kód, který je spuštěn na tvář výjimky. Další informace o bloku `Try ... Catch` najdete v části [Základy zpracování výjimek](https://msdn.microsoft.com/library/2w8f0bss.aspx) v dokumentaci .NET Framework.
 
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-cs/samples/sample5.cs)]
 
-Při vyvolání výjimky libovolného typu kódu v rámci `Try` bloku `Catch` kód bloku s začne provádění. Typ výjimky, která je vyvolána `DbException`, `NoNullAllowedException`, `ArgumentException`a tak dále, co přesně, závisí na prvním místě srážejí chybu. Pokud se tam s problém na úrovni databáze `DbException` bude vyvolána výjimka. Pokud je zadána neplatná hodnota pro `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`, nebo `ReorderLevel` pole, `ArgumentException` bude vyvolána výjimka, protože jsme přidali kód pro ověření tyto hodnoty polí v `ProductsDataTable` třídy (najdete v článku [ Vytvoření vrstvy obchodní logiky](../introduction/creating-a-business-logic-layer-cs.md) kurzu).
+Pokud je vyvolána výjimka jakéhokoliv typu v rámci bloku `Try`, zahájí se spuštění kódu `Catch` bloku s. Typ výjimky, která je vyvolána `DbException`, `NoNullAllowedException`, `ArgumentException`a tak dále závisí na tom, co přesně vyvolalo chybu na prvním místě. Pokud dojde k problému na úrovni databáze, bude vyvolána `DbException`. Pokud je zadána neplatná hodnota pro pole `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`nebo `ReorderLevel`, bude vyvolána `ArgumentException`, jak jsme přidali kód pro ověření těchto hodnot polí ve třídě `ProductsDataTable` (viz kurz [Vytvoření vrstvy obchodní logiky](../introduction/creating-a-business-logic-layer-cs.md) ).
 
-Můžeme poskytnout užitečné vysvětlení pro koncového uživatele tak, že zvolíte text zprávy pro typ zachycena výjimka. Následující kód, který byl použit ve formě skoro stejné zpátky [zpracování knihoven BLL a výjimek úrovni DAL na stránce ASP.NET](../editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md) kurz obsahuje tato úroveň podrobností:
+Na základě textu zprávy o typu zachycené výjimky můžeme pro koncového uživatele poskytnout užitečnější vysvětlení. Následující kód, který byl použit v téměř totožném tvaru zpět při [zpracování výjimek knihoven BLL a dal v kurzu stránky ASP.NET](../editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md) , poskytuje tuto úroveň podrobností:
 
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-cs/samples/sample6.cs)]
 
-K dokončení tohoto kurzu, jednoduše zavolejte `DisplayExceptionDetails` metodu z `Catch` bloku předávajícího zachycené `Exception` instance (`ex`).
+Chcete-li dokončit tento kurz, jednoduše zavolejte metodu `DisplayExceptionDetails` z bloku `Catch`, který je předaný v zachycené instanci `Exception` (`ex`).
 
-S `Try ... Catch` blokovat na místě, uživatelům se zobrazí chybovou zprávu dál jako hodnoty 4 a 5 zobrazit. Všimněte si, že i v případě výjimky prvku DataList zůstane v režimu úprav. Je to proto, jakmile dojde k výjimce, toku řízení okamžitě přesměrován `Catch` bloku, bez použití kódu, který vrátí do stavu před úpravy prvku DataList.
+U `Try ... Catch`ho blokování se uživatelům zobrazí více informativní chybová zpráva, jak je znázorněno na obrázcích 4 a 5. Všimněte si, že v tváři výjimky zůstane prvek DataList v režimu úprav. Důvodem je, že jakmile dojde k výjimce, tok řízení je okamžitě přesměrován na blok `Catch` a obejít kód, který prvek DataList vrátí do svého stavu před úpravou.
 
-[![Pokud uživatel vynechá povinné pole, zobrazí se chybová zpráva](handling-bll-and-dal-level-exceptions-cs/_static/image9.png)](handling-bll-and-dal-level-exceptions-cs/_static/image8.png)
+[![se zobrazí chybová zpráva, pokud uživatel vynechá požadované pole](handling-bll-and-dal-level-exceptions-cs/_static/image9.png)](handling-bll-and-dal-level-exceptions-cs/_static/image8.png)
 
-**Obrázek 4**: Pokud uživatel vynechá povinné pole, zobrazí se chybová zpráva ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-cs/_static/image10.png))
+**Obrázek 4**: Pokud uživatel vynechá požadované pole ([kliknutím zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-cs/_static/image10.png)), zobrazí se chybová zpráva.
 
-[![Chybová zpráva se zobrazí při zadání záporné cena](handling-bll-and-dal-level-exceptions-cs/_static/image12.png)](handling-bll-and-dal-level-exceptions-cs/_static/image11.png)
+[Při zadání záporné ceny ![zobrazit chybovou zprávu](handling-bll-and-dal-level-exceptions-cs/_static/image12.png)](handling-bll-and-dal-level-exceptions-cs/_static/image11.png)
 
-**Obrázek 5**: Chybová zpráva se zobrazí při zadání záporné cena ([kliknutím ji zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-cs/_static/image13.png))
+**Obrázek 5**: při zadání záporné ceny se zobrazí chybová zpráva ([kliknutím zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-cs/_static/image13.png)).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-GridView a ObjectDataSource poskytují po úrovně obslužné rutiny, které obsahují informace o žádné výjimky, které byly vyvolány během pracovního postupu aktualizace a odstranění, jakož i vlastnosti, které lze nastavit k označení, zda byla výjimka zpracovat. Tyto funkce, ale nejsou k dispozici při práci s prvku DataList a použití BLL přímo. Místo toho jsme zodpovídají za implementaci zpracování výjimek.
+GridView a ObjectDataSource poskytují obslužné rutiny události na úrovni, které obsahují informace o všech výjimkách, které byly vyvolány během procesu aktualizace a odstranění, a také vlastnosti, které lze nastavit tak, aby označovaly, zda byla výjimka zpracována. Tyto funkce jsou však nedostupné při práci s DataList a přímé použití knihoven BLL. Místo toho zodpovídáme za implementaci zpracování výjimek.
 
-V tomto kurzu jsme viděli, jak přidat zpracování výjimek pro upravitelné DataList s aktualizace pracovního postupu tak, že přidáte `Try ... Catch` bloku `UpdateCommand` obslužné rutiny události. Pokud se během aktualizace pracovního postupu, je vyvolána výjimka `Catch` spustí kód bloku s, užitečné informace v zobrazení `ExceptionDetails` popisek.
+V tomto kurzu jsme viděli, jak přidat zpracování výjimek do upravitelného pracovního postupu DataList s, přidáváním `Try ... Catch` bloku do obslužné rutiny události `UpdateCommand`. Pokud je vyvolána výjimka během pracovního postupu aktualizace, spustí se kód `Catch` bloku s a zobrazí se užitečné informace v popisku `ExceptionDetails`.
 
-V tomto okamžiku prvku DataList nevyvine žádnou akci zabránit výjimky, pokud chcete zabránit vzniku na prvním místě. I když víme, že negativní cena způsobí výjimku, budeme ještě přidané žádné funkce k proaktivnímu zabránit uživateli v zadávání těchto neplatný vstup. V následujícím kurzem uvidíme, jak snížit výjimky způsobené Neplatný uživatelský vstup ve přidání validačních ovládacích prvků v `EditItemTemplate`.
+V tomto okamžiku DataList neprovede žádné úsilí, aby nedocházelo k výjimkám na prvním místě. I když ví, že záporná cena bude mít za následek výjimku, zatím jsme nepřidali žádné funkce pro proaktivní zabránění uživatelům v zadávání takového neplatného vstupu. V našem dalším kurzu se dozvíte, jak přispět k omezení výjimek způsobených neplatným uživatelským vstupem přidáním ovládacích prvků ověřování v `EditItemTemplate`.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
 - [Pokyny k návrhu pro výjimky](https://msdn.microsoft.com/library/ms298399.aspx)
-- [Chyba protokolovací moduly a obslužné rutiny (ELMAH)](http://workspaces.gotdotnet.com/elmah) (knihovny open source pro protokolování chyb)
-- [Enterprise Library pro .NET Framework 2.0](https://www.microsoft.com/downloads/details.aspx?familyid=5A14E870-406B-4F2A-B723-97BA84AE80B5&amp;displaylang=en) (včetně bloku výjimky správy aplikace)
+- [Protokolování chyb modulů a obslužných rutin (knihovny elmah)](http://workspaces.gotdotnet.com/elmah) (Open source knihovna pro chyby protokolování)
+- [Podniková knihovna pro .NET Framework 2,0](https://www.microsoft.com/downloads/details.aspx?familyid=5A14E870-406B-4F2A-B723-97BA84AE80B5&amp;displaylang=en) (zahrnuje blok aplikace pro správu výjimek)
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Ken Pespisa. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontrolor pro tento kurz byl Ken Pespisa. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](performing-batch-updates-cs.md)
-> [další](adding-validation-controls-to-the-datalist-s-editing-interface-cs.md)
+> [Další](adding-validation-controls-to-the-datalist-s-editing-interface-cs.md)

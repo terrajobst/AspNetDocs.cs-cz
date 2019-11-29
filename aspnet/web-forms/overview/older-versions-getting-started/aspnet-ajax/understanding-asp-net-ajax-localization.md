@@ -1,151 +1,151 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-localization
-title: Principy lokalizace technologie ASP.NET AJAX | Dokumentace Microsoftu
+title: Porozumění lokalizaci ASP.NET AJAX | Microsoft Docs
 author: scottcate
-description: Lokalizace je proces návrhu a integrace podporu pro konkrétní jazyk a jazykovou verzi do aplikace nebo součásti aplikace. Povinná kontrola úrovně důvěryhodnosti...
+description: Lokalizace je proces navrhování a integrace podpory pro určitý jazyk a jazykovou verzi do aplikace nebo součásti aplikace. Mikrofon...
 ms.author: riande
 ms.date: 03/14/2008
 ms.assetid: c1a35f18-bab9-41f7-8497-15530c37a09d
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-localization
 msc.type: authoredcontent
-ms.openlocfilehash: ef4ee57496337fb13b4d1c09c058e89e04eb3138
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 003e7939accd7a68dab97441b3d999bca835b85a
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65114590"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74600879"
 ---
 # <a name="understanding-aspnet-ajax-localization"></a>Principy lokalizace pomocí technologie ASP.NET AJAX
 
-podle [– Scott Cate](https://github.com/scottcate)
+[Scott Cate](https://github.com/scottcate)
 
-[Stáhnout PDF](http://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial04_Localization_cs.pdf)
+[Stáhnout PDF](https://download.microsoft.com/download/C/1/9/C19A3451-1D14-477C-B703-54EF22E197EE/AJAX_tutorial04_Localization_cs.pdf)
 
-> Lokalizace je proces návrhu a integrace podporu pro konkrétní jazyk a jazykovou verzi do aplikace nebo součásti aplikace. Platformě Microsoft ASP.NET poskytuje rozsáhlou podporu pro lokalizaci pro standardní aplikace ASP.NET integrací standardní .NET – model lokalizace; Microsoft AJAX Framework využívat integrované modelu mají podporovat nejrůznější scénáře, ve kterých lze provést lokalizace.
+> Lokalizace je proces navrhování a integrace podpory pro určitý jazyk a jazykovou verzi do aplikace nebo součásti aplikace. Platforma Microsoft ASP.NET poskytuje rozsáhlou podporu pro lokalizaci standardních aplikací ASP.NET integrací standardního modelu lokalizace rozhraní .NET. Rozhraní Microsoft AJAX používá integrovaný model pro podporu různých scénářů, ve kterých lze provádět lokalizaci.
 
 ## <a name="introduction"></a>Úvod
 
-Technologie ASP.NET společnosti Microsoft přináší objektově orientované a založený na událostech programovací model a sjednotí s výhodami zkompilovaný kód. Svůj model zpracování na straně serveru má však několik nevýhody vyplývajících z technologie, z nichž mnohá vyřešíte tak, že nové funkce zahrnuté v oboru názvů System.Web.Extensions, který zapouzdřuje službě Microsoft AJAX v rozhraní .NET Framework 3.5. Tato rozšíření umožňují mnoho plně funkčního klienta s funkcí dříve k dispozici jako součást rozšíření AJAX technologie ASP.NET 2.0, ale teď součástí základní knihovny tříd rozhraní Framework. Ovládací prvky a funkce v tomto oboru názvů zahrnout částečného zobrazení stránek, bez nutnosti úplná aktualizace stránky, možnost přístupu k webovým službám prostřednictvím klientského skriptu (včetně ASP.NET, rozhraní API pro profilaci), a rozsáhlé API na straně klienta navržené pro mnoho zrcadlení schémata ovládací prvek v sadě serverový ovládací prvek technologie ASP.NET.
+Technologie Microsoftu pro ASP.NET přináší objektově orientovaný a řízený programovací model a podílí se na nich s výhodami zkompilovaného kódu. Model zpracování na straně serveru má však několik nevýhod, které je součástí technologie, mnohé z nich mohou být řešeny novými funkcemi obsaženými v oboru názvů System. Web. Extensions, který zapouzdřuje služby Microsoft AJAX v .NET Framework 3,5. Tato rozšíření umožňují mnoho bohatých funkcí klienta, které byly dříve k dispozici jako součást rozšíření AJAX ASP.NET 2,0, ale nyní jsou součástí základní knihovny tříd rozhraní. Ovládací prvky a funkce v tomto oboru názvů zahrnují částečné vykreslování stránek bez nutnosti úplného obnovení stránky, možnost přístupu k webovým službám prostřednictvím klientského skriptu (včetně rozhraní API pro profilaci ASP.NET) a rozsáhlé rozhraní API na straně klienta navržené k zrcadlení mnoha z řídicí Schémata zobrazená v sadě ovládacích prvků na straně serveru ASP.NET.
 
-Tento dokument White Paper zkoumá součástí Microsoft AJAX Framework a Microsoft AJAX Library skriptu, v rámci obchodní potřebě pro podporu lokalizace a kontrola již integrovaná podpora lokalizace ve webovém lokalizace funkce aplikace poskytované rozhraní .NET Framework. Knihovně Microsoft AJAX skript využívá formátu souboru .resx již používá aplikace .NET, který poskytuje integrovaná podpora integrovaného vývojového prostředí a typ ke sdílení prostředků.
+Tento dokument white paper zkoumá funkce lokalizace přítomné v knihovně Microsoft AJAX Framework a Microsoft AJAX Script Library v kontextu potřeby pro podporu lokalizace a kontrolu již integrované podpory pro lokalizaci na webu. aplikace poskytované .NET Framework. Knihovna skriptů Microsoft AJAX používá formát souboru. resx, který již používá aplikace .NET, což poskytuje integrovanou podporu IDE a typ prostředku, který lze sdílet.
 
-Tento dokument White Paper je založen na verzi beta verzi 2 sady Microsoft Visual Studio 2008. Tento dokument White Paper také předpokládá, že můžete pracovat s Visual Studio 2008, nikoli Visual Web Developer Express a poskytne návody podle uživatelského rozhraní sady Visual Studio. Šablony projektů, které mohou být k dispozici v aplikaci Visual Web Developer Express bude využívat několik ukázek kódu.
+Tento dokument White Paper vychází z verze beta 2 Microsoft Visual Studio 2008. Tento dokument White Paper také předpokládá, že budete pracovat se sadou Visual Studio 2008, nikoli s nástrojem Visual Web Developer Express a bude poskytovat návody podle uživatelského rozhraní sady Visual Studio. Některé ukázky kódu budou používat šablony projektů, které nemusí být k dispozici v aplikaci Visual Web Developer Express.
 
-## <a name="the-need-for-localization"></a>*Třeba pro lokalizaci*
+## <a name="the-need-for-localization"></a>*Nutnost lokalizace*
 
-Zejména pro vývojářům aplikací pro podniky a vývojáře komponent přestal stále nezbytné schopnost vytvářet nástroje, které mohou být zohledňovat rozdíly mezi jazykové verze a jazyky. Navrhování součásti s možností pro přizpůsobení na národní prostředí klienta zvyšuje produktivitu vývojářů a snižuje množství práce potřebné pro přizpůsobení součásti fungovat globálně.
+Zejména pro vývojáře v podnikových aplikacích a vývojářích komponent se možnost vytvářet nástroje, které mohou být vědomy rozdílů mezi kulturami a jazyky, se stále stále potřebují. Návrh komponent s možností přizpůsobení národním prostředí klienta zvyšuje produktivitu vývojářů a snižuje množství práce potřebné k globálnímu fungování součásti.
 
-Lokalizace je proces návrhu a integrace podporu pro konkrétní jazyk a jazykovou verzi do aplikace nebo součásti aplikace. Platformě Microsoft ASP.NET poskytuje rozsáhlou podporu pro lokalizaci pro standardní aplikace ASP.NET integrací standardní .NET – model lokalizace; Microsoft AJAX Framework využívat integrované modelu mají podporovat nejrůznější scénáře, ve kterých lze provést lokalizace. S Microsoft AJAX Framework může být skripty lokalizována nasazované do satelitních sestavení, nebo s využitím strukturu systému statický soubor.
+Lokalizace je proces navrhování a integrace podpory pro určitý jazyk a jazykovou verzi do aplikace nebo součásti aplikace. Platforma Microsoft ASP.NET poskytuje rozsáhlou podporu pro lokalizaci standardních aplikací ASP.NET integrací standardního modelu lokalizace rozhraní .NET. Rozhraní Microsoft AJAX používá integrovaný model pro podporu různých scénářů, ve kterých lze provádět lokalizaci. Pomocí rozhraní Microsoft AJAX Framework mohou být skripty buď lokalizovány, nasazeny do satelitních sestavení, nebo pomocí struktury statického systému souborů.
 
-## <a name="embedding-scripts-with-satellite-assemblies"></a>*Vkládání skripty s satelitní sestavení*
+## <a name="embedding-scripts-with-satellite-assemblies"></a>*Vkládání skriptů pomocí satelitních sestavení*
 
-Konzistentní s standardní strategií lokalizace rozhraní .NET Framework, prostředky mohou být součástí satelitních sestavení. Satelitní sestavení poskytuje několik výhod přes tradiční prostředků zařazení do binárních souborů – je možné aktualizovat jakékoli dané lokalizace bez aktualizace větší obrázek, je možné nasadit další lokalizace jednoduše tak, že instalace do satelitních sestavení složky projektu a satelitní sestavení je možné nasadit bez způsobení opakované načtení projektu hlavní sestavení. Zejména v projektech ASP.NET to je užitečné, protože může výrazně snížit množství systémové prostředky využívané třídou přírůstkové aktualizace a minimálně naruší produkční účely v webu.
+V souladu se standardní .NET Framework strategii lokalizace můžou být prostředky zahrnuté v satelitních sestaveních. Satelitní sestavení poskytují několik výhod oproti tradičnímu zahrnutí prostředků v binárních souborech – každou danou lokalizaci je možné aktualizovat bez aktualizace větší image, další lokalizace je možné nasadit jednoduše instalací satelitních sestavení do složku projektu a satelitní sestavení lze nasadit bez způsob opětovného načtení sestavení hlavního projektu. Zejména v projektech ASP.NET to je užitečné, protože může významně snížit množství systémových prostředků používaných přírůstkovou aktualizací a s minimálním dopadem na využívání webů v produkčním prostředí.
 
-Skripty jsou vloženy do sestavení uvedete v spravovaný .resx (nebo zkompilovány .resources) soubory, které jsou zahrnuty do sestavení v době kompilace. Svoje prostředky jsou pak dostupné aplikace skriptu prostřednictvím AJAX runtime generovaný kód, prostřednictvím atributy úrovně sestavení
+Skripty jsou vloženy do sestavení jejich zahrnutím do spravovaných souborů. resx (nebo kompilovaných. Resources), které jsou zahrnuty do sestavení v době kompilace. Jejich prostředky jsou následně zpřístupněny pro aplikaci skriptu prostřednictvím kódu generovaného modulem runtime jazyka AJAX prostřednictvím atributů na úrovni sestavení.
 
-*Zásady vytváření názvů pro vložené soubory skriptů*
+*Zásady vytváření názvů pro vložené soubory skriptu*
 
-Správa skriptů Microsoft AJAX Framework podporuje širokou škálu možností pro použití při nasazení a testování skriptů a pokyny jsou k dispozici pro usnadnění těchto možností.
+Správa skriptu Microsoft AJAX Framework podporuje různé možnosti pro použití při nasazení a testování skriptů a poskytuje pokyny pro usnadnění těchto možností.
 
-*K usnadnění ladění:*
+*Pro usnadnění ladění:*
 
-Skripty vydání (produkční) by neměla zahrnovat `.debug` kvalifikátoru v názvu souboru. Skripty navržené pro ladění by měl obsahovat `.debug` v názvu souboru.
+Skripty vydané verze (produkční) by neměly zahrnovat kvalifikátor `.debug` v názvu souboru. Skripty navržené pro ladění by měly zahrnovat `.debug` do souboru filename.
 
 *Pro usnadnění lokalizace:*
 
-Neutrální jazykové verze skriptů by neměl obsahovat žádné identifikátor jazykové verze názvu souboru. Pro skripty, které obsahují lokalizované prostředky musí být zadán kód jazyka ISO v názvu souboru. Například `es-CO` zkratka pro španělštinu, Kolumbie.
+Skripty neutrální jazykové verze by neměly obsahovat žádný identifikátor jazykové verze v názvu souboru. Pro skripty obsahující lokalizované prostředky by měl být v názvu souboru uveden kód jazyka ISO. Například `es-CO` představuje španělštinu, Kolumbie.
 
-Následující tabulka shrnuje s příklady konvence pojmenování souborů:
+Následující tabulka shrnuje konvence pojmenovávání souborů s příklady:
 
 | Název souboru | Význam |
 | --- | --- |
-| Script.js | Skript nezávislá na jazykové verzi, vydání verze. |
-| Script.debug.js | Ladicí verze skriptu nezávislá na jazykové verzi. |
-| Script.en-US.js | Vydání verze Angličtina, USA skriptu. |
-| Script.debug.es-CO.js | Ladicí verze španělské, Kolumbie skriptu. |
+| Script. js | Skript pro vydanou verzi, který je neutrální pro jazykovou verzi. |
+| Script. Debug. js | Skript pro ladění verze, který je neutrální pro jazykovou verzi. |
+| Script. en-US. js | Verze pro verzi English, USA skript. |
+| Script.debug.es-CO. js | Skript debug-Version španělsky, Kolumbie. |
 
-## <a name="walkthrough-create-an-localized-embedded-script"></a>Návod: Vytvoření lokalizovaných, vložený skript
+## <a name="walkthrough-create-an-localized-embedded-script"></a>Návod: vytvoření lokalizovaného vloženého skriptu
 
-*Poznámka: Tento postup vyžaduje použití sady Visual Studio 2008, jak Visual Web Developer Express nezahrnuje šablona projektu pro projekty knihovny tříd.*
+*Poznámka: Tento návod vyžaduje použití sady Visual Studio 2008 jako Visual Web Developer Express nezahrnuje šablonu projektu pro projekty knihovny tříd.*
 
-1. Vytvořte nový projekt webu pomocí technologie ASP.NET AJAX rozšíření integrována. Vytvořte nový projekt, projekt knihovny tříd v rámci řešení volá LocalizingResources.
-2. Přidáte soubor Jscript s názvem VerifyDeletion.js LocalizingResources projektu, stejně jako soubory prostředků RESX názvem DeletionResources.resx a DeletionResources.es.resx. První bude obsahovat neutrální jazykové verze prostředků; Ten bude obsahovat Španělština – jazykové prostředky.
-3. Přidejte následující kód do VerifyDeletion.js:
+1. Vytvoří nový projekt webu s integrovanými rozšířeními ASP.NET AJAX. Vytvořte další projekt, projekt knihovny tříd v rámci řešení s názvem LocalizingResources.
+2. Přidejte soubor JScript s názvem VerifyDeletion. js do projektu LocalizingResources a také soubory prostředků. resx s názvem DeletionResources. resx a DeletionResources. ES. resx. Předchozí bude obsahovat prostředky neutrální jazykové verze; Ta bude obsahovat prostředky španělského jazyka.
+3. Do VerifyDeletion. js přidejte následující kód:
 
 [!code-javascript[Main](understanding-asp-net-ajax-localization/samples/sample1.js)]
 
-Pro ty obeznámeni se syntaxí využívající regulární výrazy jazyka JavaScript, text v rámci jednoho lomítka (v předchozím příkladu je příkladem /FILENAME/) označuje RegExp – objekt. Knihovna MSDN obsahuje rozsáhlou reference na JavaScript a prostředky na nativních objektů jazyka JavaScript najdete online.
+Pro ty, které nejsou obeznámené s syntaxí regulárního výrazu jazyka JavaScript, text v rámci jednoduchých lomítek (v předchozím příkladu/FILENAME/je příklad) označuje objekt RegExp. Knihovna MSDN obsahuje rozsáhlý odkaz na jazyk JavaScript a prostředky na nativních objektech JavaScriptu lze najít online.
 
-1. Přidejte následující řetězce prostředků DeletionResources.resx: 
+1. Do DeletionResources. resx přidejte následující řetězce prostředků: 
 
-    **VerifyDelete**: Opravdu že chcete odstranit název souboru?
+    **VerifyDelete**: jste si jisti, že chcete odstranit název souboru?
 
-    **Odstranit**: Název souboru byl odstraněn.
+    **Odstraněno**: název souboru byl odstraněn.
 
-1. Přidejte následující řetězce prostředků DeletionResources.es.resx: 
+1. Do DeletionResources. ES. resx přidejte následující řetězce prostředků: 
 
-    **VerifyDelete**: EST seguro hledně desee quitar FILENAME?
+    **VerifyDelete**: Est Seguro DESEE quitar filename?
 
-    **Odstranit**: Název souboru se ha quitado.
-2. Přidejte následující řádky kódu do souboru AssemblyInfo:
+    **Odstraněno**: filename se ha quitado.
+2. Do souboru AssemblyInfo přidejte následující řádky kódu:
 
 [!code-csharp[Main](understanding-asp-net-ajax-localization/samples/sample2.cs)]
 
-1. Přidáte odkazy na System.Web a System.Web.Extensions LocalizingResources projektu.
-2. Přidáte odkaz na projekt LocalizingResources z projektu webové stránky.
-3. V default.aspx v projektu webu aktualizujte ovládacího prvku ScriptManager následující další značky:
+1. Přidejte do projektu LocalizingResources odkazy na System. Web a System. Web. Extensions.
+2. Přidejte odkaz na projekt LocalizingResources z projektu webu.
+3. V části default. aspx v projektu webu aktualizujte ovládací prvek ScriptManager následujícím dodatečným označením:
 
 [!code-aspx[Main](understanding-asp-net-ajax-localization/samples/sample3.aspx)]
 
-1. V default.aspx kdekoli na stránce patří tento kód:
+1. Ve službě default. aspx kdekoli na stránce vložte tento kód:
 
 [!code-aspx[Main](understanding-asp-net-ajax-localization/samples/sample4.aspx)]
 
-1. Stiskněte klávesu F5. Pokud se zobrazí výzva, povolte ladění. Když je stránka načtená, stiskněte klávesu Delete. Všimněte si, výzva se zobrazí v angličtině (Pokud je váš počítač nastavený preferovat Španělština – jazykové prostředky ve výchozím nastavení) pro potvrzení.
-2. Zavřete okno prohlížeče a vraťte se na default.aspx. V @Page záhlaví směrnice, automaticky nahradit Culture a UICulture s es-ES. Stisknutím klávesy F5 spusťte webovou aplikaci v prohlížeči znovu. Tentokrát, mějte na paměti, že budete vyzváni k odstranění souboru ve španělštině:
+1. Stiskněte klávesu F5. Pokud se zobrazí výzva, povolte ladění. Po načtení stránky stiskněte tlačítko Odstranit. Všimněte si, že se zobrazí výzva k zadání angličtiny (Pokud Váš počítač není ve výchozím nastavení preferovaný pro prostředky španělštiny) pro potvrzení.
+2. Zavřete okno prohlížeče a vraťte se na Default. aspx. V direktivě @Page Header nahraďte auto pro Culture a UICulture pomocí ES-ES. Opětovným stisknutím klávesy F5 znovu spusťte webovou aplikaci v prohlížeči. Tentokrát si všimněte, že se zobrazí výzva k odstranění souboru v španělštině:
 
 [![](understanding-asp-net-ajax-localization/_static/image2.png)](understanding-asp-net-ajax-localization/_static/image1.png)
 
-([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-localization/_static/image3.png))
+([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-localization/_static/image3.png))
 
 [![](understanding-asp-net-ajax-localization/_static/image5.png)](understanding-asp-net-ajax-localization/_static/image4.png)
 
-([Kliknutím ji zobrazíte obrázek v plné velikosti](understanding-asp-net-ajax-localization/_static/image6.png))
+([Kliknutím zobrazíte obrázek v plné velikosti.](understanding-asp-net-ajax-localization/_static/image6.png))
 
-Všimněte si, že existuje několik variant v tomto návodu. Například skripty nelze zaregistrovat pomocí ovládacího prvku ScriptManager prostřednictvím kódu programu během načítání stránky.
+Všimněte si, že existuje několik variant tohoto Názorného postupu. Například skripty mohou být registrovány s ovládacím prvkem ScriptManager programově během načítání stránky.
 
-## <a name="including-a-static-script-file-structure"></a>*Včetně struktura souborů statického skriptu*
+## <a name="including-a-static-script-file-structure"></a>*Zahrnutí struktury souborů statického skriptu*
 
-Při používání statické soubory skriptů pro nasazení, ztratí se některé z výhod používání vlastní schéma lokalizace .NET. Je primárně zobrazen přijít o automatické typu generované včetně souborů skriptu prostředků; ve výše uvedeného návodu například prostředky byly vystavené automaticky generovaný typ, který volá zprávy z ovládacího prvku ScriptManager.
+Při použití statických souborů skriptu pro nasazení přijdete o některé výhody použití schématu lokalizace rozhraní .NET. Primárně se zobrazuje, že ztratíte automatický typ vygenerovaný ze zahrnutí souborů prostředků skriptu; v předchozím návodu byl například prostředek vystavený automaticky generovaným typem s názvem zpráva z ovládacího prvku ScriptManager.
 
-Existují však některé výhody struktury statického skriptu. Aktualizací je možné provést bez opětovné kompilace a opětovné nasazení satelitní sestavení a použití statické struktury je možné provést pro přepsání vložený skript pro integraci dílčí část funkce, která nemůže dodána s komponentou.
+Existují však některé výhody použití struktury statických souborů skriptu. Aktualizace lze provádět bez nutnosti opětovné kompilace a opětovného nasazení satelitních sestavení a použití statické struktury souborů lze také použít k přepsání vloženého skriptu pro integraci menšího množství funkcí, které nemusí být dodávány s komponentou.
 
-Společnost Microsoft doporučuje, jak se vyhnout problém ovládacího prvku verze pomocí automatického generování skriptu zdroje během kompilace projektu. Při údržbě základní kód skriptu v rozsáhlé, může být stále obtížnější zajistit, že změny kódu se projeví v každé lokalizované skriptu. Jako alternativu můžete jednoduše spravovat jeden skript logiky a několik skriptů lokalizace slučování souborů při sestavování projektu.
+Společnost Microsoft doporučuje zabránit problémům s řízením verzí tím, že během kompilace projektu automaticky generuje vaše prostředky skriptu. Když zachováváte rozsáhlý základ kódu skriptu, může být stále obtížné zajistit, aby se změny kódu projevily v každém lokalizovaném skriptu. Jako alternativu můžete jednoduše zachovat jeden skript logiky a více lokalizačních skriptů a sloučit soubory při sestavování projektu.
 
-Protože nejsou k dispozici prostředky deklarativně zahrnout, statické soubory by měly být skriptu odkazovat buď přidáním `<asp:ScriptElement>` prvky jako podřízený objekt `<Scripts>` značky ovládacího prvku ScriptManager nebo prostřednictvím kódu programu přidáním `ScriptReference` objekty Chcete `Scripts` vlastnost `ScriptManager` ovládacího prvku na stránku za běhu.
+Vzhledem k tomu, že nejsou k dispozici prostředky pro deklarativní zahrnutí, by měly být statické soubory skriptu odkazovány buď přidáním `<asp:ScriptElement>` prvků jako podřízených `<Scripts>` značky ovládacího prvku ScriptManager, nebo přidáním `ScriptReference` objektů do vlastnosti `Scripts` ovládacího prvku `ScriptManager` na stránce za běhu.
 
-## <a name="the-scriptmanager-and-its-role-in-localization"></a>*Prvek ScriptManager a jejich rolí v lokalizace*
+## <a name="the-scriptmanager-and-its-role-in-localization"></a>*ScriptManager a jeho role v lokalizaci*
 
-Prvek ScriptManager umožňuje různé automatické chování v případě lokalizovaných aplikací:
+ScriptManager umožňuje několik automatických chování lokalizovaných aplikací:
 
-- Automaticky vyhledá soubory skriptu na základě nastavení a konvence pojmenování; pro instanci načte povolené ladění skriptů v režimu ladění a načte lokalizované skripty na základě výběru rozhraní prohlížeče uživatele.
-- Umožňuje definici jazykové verze, včetně vlastních jazykových verzí.
-- Komprese souborů skriptu umožňuje pomocí protokolu HTTP.
-- Ukládá do mezipaměti skripty efektivně spravovat mnoho požadavků.
-- Přidá úroveň dereference na skripty přesměrováním prostřednictvím šifrované adresy URL.
+- Automaticky vyhledává soubory skriptu na základě nastavení a konvencí pojmenování. například načte skripty s podporou ladění v režimu ladění a načte lokalizované skripty na základě výběru uživatelského rozhraní v prohlížeči.
+- Umožňuje definici kultur, včetně vlastních jazykových verzí.
+- Umožňuje kompresi souborů skriptu přes protokol HTTP.
+- Ukládá do mezipaměti skripty pro efektivní správu mnoha požadavků.
+- Přidá vrstvu dereference do skriptů jejich provedením pomocí šifrované adresy URL.
 
-Odkazy na skript je přidat do ovládacího prvku ScriptManager buď programově, nebo pomocí deklarativní. Deklarativní je zvláště užitečná při práci se skripty vložená v sestavení než webový projekt, jako název souboru, který pravděpodobně nezmění jako revize se nasdílejí.
+Odkazy na skripty mohou být přidány do ovládacího prvku ScriptManager buď prostřednictvím kódu programu, nebo deklarativním označením. Deklarativní označení je zvláště užitečné, pokud pracujete se skripty vloženými v jiných sestaveních než na samotném projektu webu, protože název skriptu se nejspíš nemění, protože revize se provedou.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Růstem webové aplikace oslovit větší cílové skupiny, nemusí být schopný připojit širší komunity a kultury stane core obchodního modelu; e-commerce webové aplikace musí být schopny vypořádat se cizích měn, systémy správy obsahu musí být schopen nejen obsah, ale také jejich navigace pomocné parametry a pole formuláře v jiných jazycích a společnosti potřebovat vědět, že se tyto potřeby přístupné.
+Protože webové aplikace se dosahují větší cílové skupiny, je potřeba mít přístup k širším kulturám a komunitám, které se stávají jádrem obchodního modelu. webové aplikace elektronického obchodování musí být schopné řešit cizí měny, systémy správy obsahu musí být schopné nejen prezentovat svůj obsah, ale také jejich doporučení k navigaci a pole formuláře v jiných jazycích a společnosti musí znát, že tato nutnost je snadno.
 
-Rozhraní .NET Framework podporuje vnitřně bohaté lokalizace architektura využívající satelitní sestavení a souborů XML prostředky (RESX) zobrazíte jednotným způsobem k vyhledání prostředků řetězců a obrázků. Rozšíření ASP.NET AJAX, včetně Microsoft AJAX Framework a Microsoft AJAX Library skriptu, podporují tento programovací model do kódu na straně klienta, povolení vyhledávání snadno prostředků řetězce. Satelitní sestavení podporují automatické zahrnutí skript prostředků (soubory skutečné js) prostřednictvím ScriptResource.axd tak dlouho, dokud názvy souborů, postupujte podle dané schéma pojmenování. Díky této podpoře rozšíření ASP.NET AJAX zjednodušit lokalizace skripty a globalizace aplikace.
+.NET Framework vnitřně podporuje bohatou architekturu lokalizace, pomocí satelitních sestavení a souborů prostředků XML (. resx) k dispozici jednotného způsobu vyhledávání řetězců prostředků a obrázků. Rozšíření ASP.NET AJAX, včetně knihovny Microsoft AJAX Framework a Microsoft AJAX Script Library, poskytují podporu pro tento programovací model v kódu na straně klienta a umožňují snadné vyhledávání řetězců prostředků. Satelitní sestavení podporují automatické zahrnutí prostředků skriptů (skutečné soubory. js) prostřednictvím ScriptResource. axd, pokud názvy souborů následují po daném schématu pojmenování. Díky této podpoře ASP.NET rozšíření AJAX zjednodušují lokalizaci skriptů a globalizace aplikací.
 
-## <a name="bio"></a>*Bio*
+## <a name="bio"></a>*Dostupnost*
 
-Scott Cate má práce s Microsoft webových technologiích od roku 1997 a je prezident myKB.com ([www.myKB.com](http://www.myKB.com)) kde mu se specializuje na technologie ASP.NET psaní aplikací, zaměřuje na znalostní báze softwarová řešení založených na. Scott můžete kontaktovat prostřednictvím e-mailové adrese [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) nebo na svém blogu [ScottCate.com](http://ScottCate.com)
+Scott Cate spolupracuje s webovými technologiemi Microsoftu od 1997 a je prezidentem myKB.com ([www.myKB.com](http://www.myKB.com)), kde se specializuje při psaní aplikací založených na ASP.NET zaměřené na softwarová řešení ve znalostní bázi Knowledge Base. Scott se dá kontaktovat e-mailem na [scott.cate@myKB.com](mailto:scott.cate@myKB.com) nebo jeho blogu na [ScottCate.com](http://ScottCate.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](understanding-asp-net-ajax-authentication-and-profile-application-services.md)
-> [další](understanding-asp-net-ajax-web-services.md)
+> [Další](understanding-asp-net-ajax-web-services.md)

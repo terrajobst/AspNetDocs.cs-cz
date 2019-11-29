@@ -1,288 +1,288 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
-title: Uživatelské rozhraní a navigace | Dokumentace Microsoftu
+title: Uživatelské rozhraní a navigace | Microsoft Docs
 author: Erikre
-description: V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 pro jsme...
+description: V této sérii kurzů se seznámíte se základy vytváření aplikací webových formulářů ASP.NET pomocí ASP.NET 4,5 a Microsoft Visual Studio Express 2013 pro My...
 ms.author: riande
 ms.date: 09/08/2014
 ms.assetid: 5c76891d-e515-4885-b576-76bd2c494efe
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
 msc.type: authoredcontent
-ms.openlocfilehash: 06816f3555a806d41caf562b910a4ec4427b13bd
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: ac1dcaf1ba911fdcaeb3845c6836ec771733d93e
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134224"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74636817"
 ---
 # <a name="ui-and-navigation"></a>Uživatelské rozhraní a navigace
 
-by [Erik Reitan](https://github.com/Erikre)
+od [Erik Reitan](https://github.com/Erikre)
 
-[Stáhněte si ukázkový projekt Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [stáhnout elektronickou knihu (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
+[Stáhnout vzorový projekt Wingtip Toys (C#)](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) nebo [Stáhnout elektronickou knihu (PDF)](https://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
-> V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET pomocí technologie ASP.NET 4.5 a službu Microsoft Visual Studio Express 2013 for Web. Visual Studio 2013 [projektu se zdrojovým kódem jazyka C#](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) je k dispozici v této sérii kurzů.
+> V této sérii kurzů se naučíte základy vytváření webových formulářů ASP.NET pomocí ASP.NET 4,5 a Microsoft Visual Studio Express 2013 pro web. K dispozici je Visual Studio 2013 [projekt se C# zdrojovým kódem](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) , který se doprovází v této sérii kurzů.
 
-V tomto kurzu se upraví uživatelského rozhraní z výchozí webové aplikace k podpoře funkce úložiště front-aplikace Wingtip Toys. Také budete přidávat jednoduché a data svázaná navigace. V tomto kurzu vychází z předchozí kurz o službě "Vytvoření the vrstvy přístupu k datům" a je součástí série kurzů na adresář Wingtip Toys.
+V tomto kurzu upravíte uživatelské rozhraní výchozí webové aplikace tak, aby podporovalo funkce aplikace Wingtip Toys Store typu přední. Přidáte také jednoduchou navigaci a datovou vazbu. Tento kurz sestaví na předchozím kurzu Vytvoření vrstvy přístupu k datům a je součástí série kurzů Wingtip Toys.
 
-## <a name="what-youll-learn"></a>Co se dozvíte:
+## <a name="what-youll-learn"></a>Co se naučíte:
 
-- Postup změny uživatelského rozhraní pro podporu funkcí úložiště front-aplikace Wingtip Toys.
-- Jak nakonfigurovat HTML5 elementu zahrnout navigace po stránkách.
-- Jak vytvořit ovládací prvek s daty pro navigaci k datům konkrétního produktu.
-- Postup zobrazení dat z databáze vytvořené pomocí platformy Entity Framework Code First.
+- Postup změny uživatelského rozhraní pro podporu funkcí aplikace Wingtip Toys Store front.
+- Jak nakonfigurovat element HTML5 pro zahrnutí navigace na stránce
+- Jak vytvořit ovládací prvek řízený daty pro přechod na konkrétní data produktu.
+- Jak zobrazit data z databáze vytvořené pomocí Entity Framework Code First
 
-Webové formuláře ASP.NET umožňují vytvářet dynamický obsah pro vaši webovou aplikaci. Způsobem, který je podobný jako statická stránka HTML Web (stránka, která nezahrnuje zpracování na serveru) se vytvoří každou webovou stránku ASP.NET, ale dodatečné prvky, které technologie ASP.NET rozezná a spravuje pro generují kód HTML při spuštění stránky obsahuje webovou stránku ASP.NET.
+Webové formuláře ASP.NET umožňují vytvářet dynamický obsah pro webovou aplikaci. Každá webová stránka ASP.NET je vytvořena způsobem podobným webové stránce ve statickém formátu HTML (stránka, která nezahrnuje zpracování na základě serveru), ale ASP.NET webová stránka obsahuje navíc prvky, které ASP.NET rozpozná a zpracuje při spuštění stránky kód HTML.
 
-S jako statická stránka HTML (*.htm* nebo *.html* souboru), server splňuje `Web` žádosti o čtení souboru a odešlete ho jako-je v prohlížeči. Naopak když uživatel požádá o webovou stránku ASP.NET (*.aspx* souboru), stránka běží jako aplikace na webovém serveru. Je spuštěn na stránce, může provádět všechny úlohy, které vyžaduje web, včetně výpočet hodnot, čtení nebo zápis informací o databázi nebo volání jiných programů. Na stránce jako výstup, dynamicky vytváří značky (například elementy ve formátu HTML) a odešle tento dynamického výstupu do prohlížeče.
+Se statickou stránkou HTML (soubor *. htm* nebo *. html* ) Server splní požadavek `Web` tím, že ho přečte a pošle ho do prohlížeče. Naproti tomu, když někdo požaduje webovou stránku ASP.NET (soubor *. aspx* ), stránka se spustí jako program na webovém serveru. Když je stránka spuštěna, může provádět libovolný úkol, který vyžaduje váš web, včetně výpočtu hodnot, čtení nebo zápisu informací o databázi nebo volání jiných programů. Jako výstup stránky dynamicky vytvoří značky (například prvky v HTML) a pošle Tento dynamický výstup do prohlížeče.
 
-## <a name="modifying-the-ui"></a>Úprava uživatelského rozhraní
+## <a name="modifying-the-ui"></a>Změna uživatelského rozhraní
 
-Změnou budete pokračovat v této sérii kurzů *Default.aspx* stránky. Upraví uživatelského rozhraní, které je již vytvořeno pomocí výchozí šablony použité k vytvoření aplikace. Typ změny, které budete používat jsou běžně při vytváření všech aplikací webových formulářů. Můžete udělat tak, že změna názvu, nahraďte část obsahu a odebírá nepotřebné výchozí obsah.
+V této sérii kurzů budete pokračovat úpravou stránky *Default. aspx* . Změníte uživatelské rozhraní, které je již vytvořeno pomocí výchozí šablony použité k vytvoření aplikace. Typ úprav, které provedete, je typický při vytváření libovolné aplikace webového formuláře. Provedete to tak, že změníte název, nahradíte nějaký obsah a odeberete nepotřebný výchozí obsah.
 
-1. Otevřete nebo přejděte *Default.aspx* stránky.
-2. Pokud se zobrazí v **návrhu** zobrazit, přepněte na **zdroj** zobrazení.
-3. V horní části stránky `@Page` direktiv, změnit `Title` atribut "Vítejte," jak je znázorněno zvýrazněné žlutou barvou níže. 
+1. Otevřete nebo přejděte na stránku *Default. aspx* .
+2. Pokud se stránka zobrazí v **návrhovém** zobrazení, přepněte do zobrazení **zdroje** .
+3. V horní části stránky v direktivě `@Page` změňte atribut `Title` na "Vítejte", jak je znázorněno na žlutém obrázku níže. 
 
     [!code-aspx[Main](ui_and_navigation/samples/sample1.aspx?highlight=1)]
-4. Také na *Default.aspx* stránka, nahraďte všechna výchozí obsahu součástí `<asp:Content>` označit tak, aby se zobrazí jako značky níže. 
+4. Také na stránce *Default. aspx* nahraďte veškerý výchozí obsah obsažený ve značce `<asp:Content>` tak, aby se označení zobrazovalo jako níže. 
 
     [!code-aspx[Main](ui_and_navigation/samples/sample2.aspx)]
-5. Uložit *Default.aspx* stránky tak, že vyberete **uložit Default.aspx** z **souboru** nabídky.
+5. Uložte stránku *Default. aspx* výběrem možnosti **Uložit soubor default. aspx** z nabídky **soubor** .
 
-   Výsledná *Default.aspx* stránka bude vypadat následovně: 
+   Výsledná stránka *Default. aspx* se zobrazí takto: 
 
 [!code-aspx[Main](ui_and_navigation/samples/sample3.aspx)]
 
-V tomto příkladu jste nastavili `Title` atribut `@Page` směrnice. Když se objeví HTML v prohlížeči do kódu serveru `<%: Page.Title %>` přeloží na obsah součástí `Title` atribut.
+V příkladu jste nastavili atribut `Title` direktivy `@Page`. Když se v prohlížeči zobrazí kód HTML, `<%: Page.Title %>` kód serveru, který se přeloží na obsah obsažený v atributu `Title`.
 
-Příklad stránky obsahuje základní prvky, které tvoří webovou stránku ASP.NET. Na stránce obsahuje statický text může mít na stránce HTML, spolu s prvky, které jsou specifické pro technologii ASP.NET. Součástí obsahu *Default.aspx* stránky, bude se integrovat s obsahem stránky předlohy, která budou vysvětlena dále v tomto kurzu.
+Stránka příklad obsahuje základní prvky, které tvoří webovou stránku ASP.NET. Stránka obsahuje statický text, který může být na stránce HTML, spolu s prvky, které jsou specifické pro ASP.NET. Obsah obsažený ve stránce *Default. aspx* bude integrován s obsahem stránky předlohy, který bude vysvětlen dále v tomto kurzu.
 
-### <a name="page-directive"></a>@Page – Direktiva
+### <a name="page-directive"></a>@Page direktiva
 
-Webové formuláře ASP.NET obvykle obsahovat direktivy, které vám umožňují určit informace stránky vlastností a konfigurace pro stránku. Direktivy jsou použitý technologií ASP.NET jako pokyny, jak proces na stránce, ale nejsou vykreslit jako součást značky, které je odesláno prohlížeči.
+Webové formuláře ASP.NET obvykle obsahují direktivy, které umožňují zadat vlastnosti stránky a informace o konfiguraci stránky. Direktivy jsou používány ASP.NET jako pokyny pro zpracování stránky, ale nejsou vykresleny jako součást kódu, který je odeslán do prohlížeče.
 
-Nejčastěji používané direktiva je `@Page` směrnice, které vám umožní určit mnoho možností konfigurace pro stránku, včetně následujících:
+Nejběžněji použitou direktivou je direktiva `@Page`, která umožňuje určit mnoho možností konfigurace pro stránku, včetně následujících:
 
-1. Server programovací jazyk pro kód ve stránce, jako je C#.
-2. Určuje, zda stránka je stránka s serverový kód přímo na stránce, kterému se říká stránku jedním souborem, nebo zda je stránka s kódem v samostatné třídě souboru, který se nazývá použití modelu code-behind stránka.
-3. Určuje, zda stránka má související stránky předlohy a proto by měl být považován za stránku obsahu.
+1. Programovací jazyk serveru pro kód na stránce, například C#.
+2. Určuje, zda je stránka stránkou s kódem serveru přímo na stránce, která se nazývá stránka s jedním souborem nebo zda se jedná o stránku s kódem v samostatném souboru třídy, který se nazývá stránka s kódem na pozadí.
+3. Určuje, zda má stránka přidruženou stránku předlohy, a měla by proto být považována za stránku obsahu.
 4. Možnosti ladění a trasování.
 
-Pokud není zadána `@Page` direktiv na stránce nebo pokud direktivu neobsahuje konkrétní nastavení, nastavení se budou dědit z *Web.config* konfiguračního souboru nebo z *Machine.config* konfigurační soubor. *Machine.config* soubor poskytuje další konfiguraci nastavení pro všechny aplikace spuštěné na počítači.
+Pokud do stránky nezahrnete direktivu `@Page`, nebo pokud direktiva neobsahuje konkrétní nastavení, bude nastavení děděno z konfiguračního souboru *Web. config* nebo z konfiguračního souboru *Machine. config* . Soubor *Machine. config* poskytuje další nastavení konfigurace pro všechny aplikace spuštěné v počítači.
 
 > [!NOTE] 
 > 
-> *Machine.config* také obsahuje podrobné informace o nastavení všechny možné konfigurace.
+> Soubor *Machine. config* také poskytuje podrobné informace o všech možných nastaveních konfigurace.
 
 ### <a name="web-server-controls"></a>Ovládací prvky webového serveru
 
-Ve většině aplikací webových formulářů ASP.NET přidejte ovládací prvky, které uživateli umožňují interakci s stránky, například tlačítka, textová pole, seznamy a tak dále. Tyto ovládací prvky webového serveru jsou podobné tlačítka HTML a vstupních prvků. Nicméně se zpracovávají na serveru, abyste mohli používat kódu serveru můžete nastavit jejich vlastnosti. Tyto ovládací prvky také vyvolávají události, které dokáže zpracovat v serverovém kódu.
+Ve většině aplikací webových formulářů ASP.NET přidáte ovládací prvky, které uživateli umožňují pracovat se stránkou, jako jsou tlačítka, textová pole, seznamy a tak dále. Tyto ovládací prvky webového serveru jsou podobné tlačítkům HTML a vstupním elementům. Jsou však zpracovávány na serveru, což umožňuje použít serverový kód k nastavení jejich vlastností. Tyto ovládací prvky také vyvolávají události, které lze zpracovat v kódu serveru.
 
-Serverové ovládací prvky pomocí speciální syntaxe, která rozpozná technologie ASP.NET při spuštění stránky. Název značky pro ovládací prvky ASP.NET serveru začíná `asp:` předponu. To umožňuje technologii ASP.NET nerozpozná a nenahraje a zpracování těchto ovládacích prvků serveru. Předpona, která může lišit, pokud ovládací prvek není součástí rozhraní .NET Framework. Kromě `asp:` předponu, serverové ovládací prvky ASP.NET také zahrnout `runat="server"` atribut a `ID` , že vám pomůže odkazovat na ovládací prvek v serverovém kódu.
+Serverové ovládací prvky používají speciální syntaxi, kterou ASP.NET rozpoznává při spuštění stránky. Název značky pro ovládací prvky serveru ASP.NET začíná předponou `asp:`. To umožňuje ASP.NET rozpoznávat a zpracovávat tyto serverové ovládací prvky. Pokud ovládací prvek není součástí .NET Framework, může být tato předpona odlišná. Kromě předpony `asp:` zahrnuje i ovládací prvky serveru ASP.NET také atribut `runat="server"` a `ID`, které lze použít pro odkazování ovládacího prvku v kódu serveru.
 
-Při spuštění stránky technologie ASP.NET identifikuje serverové ovládací prvky a spouští kód, který je spojen s těmito ovládacími prvky. Mnoho ovládacích prvků vykreslovat kód HTML nebo jiné značky do stránky, jakmile se zobrazí v prohlížeči.
+Při spuštění stránky ASP.NET identifikuje ovládací prvky serveru a spustí kód, který je spojen s těmito ovládacími prvky. Mnoho ovládacích prvků vykresluje kód HTML nebo jiný kód na stránku, když je zobrazen v prohlížeči.
 
-### <a name="server-code"></a>Kód serveru
+### <a name="server-code"></a>Serverový kód
 
-Většina aplikací webových formulářů ASP.NET zahrnuje kód, který běží na serveru při zpracování stránky. Jak je uvedeno výše, serverový kód slouží k provádění různých věcí, například přidání dat do ovládacího prvku ListView. Technologie ASP.NET podporuje řadu jazyků pro spouštění na serveru, včetně C#, Visual Basic, J# a dalších.
+Většina webových formulářů ASP.NET zahrnuje kód, který běží na serveru při zpracování stránky. Jak je uvedeno výše, kód serveru lze použít k provedení celé řady věcí, jako je například přidání dat do ovládacího prvku ListView. ASP.NET podporuje mnoho jazyků pro spuštění na serveru, včetně C#Visual Basic, J# a dalších.
 
-Technologie ASP.NET podporuje dva modely pro psaní kódu serveru pro webové stránky. V modelu s jedním souborem kódu stránky je v prvku skriptu zahrnujícím počáteční značka `runat="server"` atribut. Alternativně můžete vytvořit kód pro stránku v samostatném souboru třídy, což se označuje jako model použití modelu code-behind. V takovém případě stránky webových formulářů ASP.NET obecně neobsahuje žádný kód serveru. Místo toho `@Page` – direktiva obsahuje informace, které odkazuje *.aspx* stránku s jeho souboru přidruženého kódu na pozadí.
+ASP.NET podporuje dva modely pro psaní kódu serveru pro webovou stránku. V modelu jediného souboru je kód stránky v prvku skriptu, kde otevírací značka obsahuje atribut `runat="server"`. Alternativně můžete vytvořit kód pro stránku v samostatném souboru třídy, který je označován jako model kódu na pozadí. V takovém případě webové formuláře ASP.NET většinou neobsahuje serverový kód. Místo toho direktiva `@Page` obsahuje informace, které propojí stránku *aspx* s přidruženým souborem kódu na pozadí.
 
-`CodeBehind` Obsažené v atributu `@Page` direktiva Určuje název souboru samostatné třídy a `Inherits` atribut určuje název třídy v souboru kódu na pozadí, která odpovídá na stránku.
+Atribut `CodeBehind` obsažený v direktivě `@Page` Určuje název samostatného souboru třídy a atribut `Inherits` Určuje název třídy v souboru kódu na pozadí, který odpovídá stránce.
 
 ### <a name="updating-the-master-page"></a>Aktualizace stránky předlohy
 
-Stránky předlohy webových formulářů ASP.NET, umožňují vytvoření konzistentního rozložení pro stránky v aplikaci. Jedna stránka předlohy definuje vzhled a chování a standardní chování, které chcete použít pro všechny stránky (nebo skupinu stránek) ve vaší aplikaci. Potom můžete vytvořit jednotlivé stránky obsahu, které obsahují obsah, který chcete zobrazit, jak je vysvětleno výše. Při vyžádání obsahu stránky, budou ASP.NET sloučí s hlavní stránkou vytvořit výstup, který kombinuje rozložení stránky předlohy s obsahem ze stránky obsahu.
+Ve webových formulářích ASP.NET vám stránky předloh umožňují vytvořit konzistentní rozložení stránek ve vaší aplikaci. Jedna hlavní stránka definuje vzhled a chování a standardní chování, které chcete mít u všech stránek (nebo skupiny stránek) ve vaší aplikaci. Pak můžete vytvořit jednotlivé stránky obsahu obsahující obsah, který chcete zobrazit, jak je vysvětleno výše. Když si uživatel vyžádá stránky obsahu, ASP.NET je sloučí se stránkou předlohy, aby vytvořil výstup, který kombinuje rozložení stránky předlohy s obsahem ze stránky obsahu.
 
-Nový web potřebuje jeden logo, které se zobrazí na každé stránce. Pokud chcete přidat toto logo, můžete upravit HTML na stránce předlohy.
+Nový web potřebuje jedno logo, které se má zobrazit na každé stránce. Chcete-li přidat toto logo, můžete upravit kód HTML na stránce předlohy.
 
-1. V **Průzkumníka řešení**, najít a otevřít **Site.Master** stránky.
-2. Pokud je stránka ve **návrhu** zobrazit, přepněte na **zdroj** zobrazení.
-3. Aktualizovat hlavní stránku **úpravy nebo přidání** zvýrazněné žlutou barvou značky: 
+1. V **Průzkumník řešení**vyhledejte a otevřete stránku **Web. Master** .
+2. Pokud je stránka v zobrazení **Návrh** , přepněte do zobrazení **zdroje** .
+3. Aktualizace stránky předlohy **úpravou nebo přidáním** zvýrazněné značky žlutě: 
 
     [!code-aspx[Main](ui_and_navigation/samples/sample4.aspx?highlight=9,49,76-81,87)]
 
-Tento kód HTML zobrazí image s názvem *logo.jpg* z *Imagí* složce webové aplikace, které přidáte později. Pokud v prohlížeči se zobrazí stránka, která používá stránku předlohy, zobrazí se loga. Pokud uživatel klikne na logo, uživatel přejde zpět *Default.aspx* stránky. Značka HTML anchor `<a>` obaluje ovládací prvek image serveru a umožňuje obrázek, který se má zahrnutý jako součást odkazu. `href` Atributů pro značku ukotvení Určuje kořenový "`~/`" webu jako umístění propojení. Ve výchozím nastavení *Default.aspx* stránky se zobrazí, když uživatel přejde na kořen webu. **Image** `<asp:Image>` serverový ovládací prvek obsahuje další vlastnosti, jako například `BorderStyle`, vykreslí jako HTML při zobrazení v prohlížeči.
+Tento HTML zobrazí obrázek s názvem *logo. jpg* ze složky *Image* webové aplikace, kterou přidáte později. Pokud se v prohlížeči zobrazí stránka, která používá stránku předlohy, bude zobrazeno logo. Pokud uživatel klikne na logo, uživatel přejde zpět na stránku *Default. aspx* . Značka ukotvení HTML `<a>` zabalí ovládací prvek serveru imagí a umožňuje, aby byl obrázek zahrnutý jako součást odkazu. Atribut `href` pro značku kotvy Určuje kořenový adresář "`~/`" webu jako umístění odkazu. Ve výchozím nastavení se stránka *Default. aspx* zobrazuje, když uživatel přejde do kořenového adresáře webu. **Image** `<asp:Image>` serverový ovládací prvek obsahuje vlastnosti, jako je například `BorderStyle`, které se při zobrazení v prohlížeči VYKRESLUJÍ jako HTML.
 
 ### <a name="master-pages"></a>Stránky předlohy
 
-Hlavní stránka je soubor s příponu .master (například *Site.Master*) pomocí předdefinovaných rozložení, který může obsahovat statický text, HTML elementů a ovládacích prvků serveru. Hlavní stránka je označena speciální `@Master` směrnice, který nahrazuje `@Page` direktiva, která se používá pro běžné *.aspx* stránky.
+Hlavní stránka je soubor ASP.NET s příponou. Master (například *site. Master*) s předdefinovaným rozložením, které může zahrnovat statický text, prvky HTML a serverové ovládací prvky. Hlavní stránka je identifikována speciální direktivou `@Master`, která nahrazuje direktivu `@Page`, která se používá pro obyčejné stránky *aspx* .
 
-Kromě `@Master` direktiv, stránky předlohy také obsahuje všechny nejvyšší úrovně elementy HTML stránky, jako například `html`, `head`, a `form`. Například na hlavní stránce jste přidali výše, použijete HTML `table` rozložení, `img` – element pro logo společnosti, statický text a serverových ovládacích prvků pro zpracování běžných členství pro svůj web. Veškeré kódování HTML a všechny prvky technologie ASP.NET můžete použít jako součást stránky předlohy.
+Kromě direktivy `@Master` obsahuje stránka předlohy také všechny prvky HTML nejvyšší úrovně stránky, jako je například `html`, `head`a `form`. Například na stránce předlohy, kterou jste přidali výše, použijete `table` HTML pro rozložení, `img` prvek pro logo společnosti, statický text a serverové ovládací prvky pro zpracování společného členství pro vaši lokalitu. V rámci stránky předlohy můžete použít libovolný kód HTML a všechny ASP.NET prvky.
 
-Kromě statický text a ovládací prvky, které se zobrazí na všech stránkách stránky předlohy také zahrnuje jednu nebo více **ContentPlaceHolder** ovládacích prvků. Tyto ovládací prvky zástupný symbol definovat oblastech, kde se objeví replaceable obsah. Zase replaceable obsah je definována v obsahu stránky, jako například *Default.aspx*, použije **obsah** serverový ovládací prvek.
+Kromě statického textu a ovládacích prvků, které se zobrazí na všech stránkách, obsahuje stránka předlohy také jeden nebo více ovládacích prvků **ContentPlaceHolder** . Tyto zástupné ovládací prvky definují oblasti, kde se zobrazí nahraditelný obsah. Nahraditelný obsah je naopak definovaný na stránkách obsahu, jako je například *Default. aspx*, pomocí ovládacího prvku **Content** Server.
 
-#### <a name="adding-image-files"></a>Přidání souborů obrázků
+#### <a name="adding-image-files"></a>Přidávání souborů obrázků
 
-Obrázek loga, která je popsána výše, spolu s všechny obrázků produktů, musíte přidat do webové aplikace tak, že je můžete vidět, když je projekt zobrazen v prohlížeči.
+Obrázek loga, který je odkazován výše, spolu se všemi obrázky produktu, je nutné přidat do webové aplikace, aby bylo možné je zobrazit při zobrazení projektu v prohlížeči.
 
-#### <a name="download-from-msdn-samples-site"></a>Stáhněte z webu MSDN ukázky:
+#### <a name="download-from-msdn-samples-site"></a>Stáhnout z webu ukázek MSDN:
 
-[Začínáme s webovými formuláři ASP.NET 4.5 a Visual Studio 2013 – na adresář Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#)
+[Začínáme s webovými formuláři ASP.NET 4,5 a Visual Studio 2013-Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#)
 
-Soubor ke stažení obsahuje prostředky v *Northwind prostředky* složku, která se použijí k vytvoření ukázkové aplikace.
+Ke stažení patří prostředky ve složce *WingtipToys-assets* , které se používají k vytvoření ukázkové aplikace.
 
-1. Pokud jste tak již neučinili, stáhněte si komprimovaný ukázkové soubory pomocí na výše uvedeném odkazu z webu MSDN ukázky.
-2. Po stažení otevřete soubor .zip a zkopírujte obsah do místní složky na svém počítači.
-3. Vyhledání a otevření *Northwind prostředky* složky.
-4. Přetahováním myší, zkopírujte *katalogu* složku z vaší místní složky do kořenového adresáře projektu webové aplikace v **Průzkumníka řešení** sady Visual Studio. 
+1. Pokud jste to ještě neudělali, Stáhněte si komprimované ukázkové soubory pomocí odkazu výše na webu MSDN Samples.
+2. Po stažení otevřete soubor. zip a zkopírujte obsah do místní složky na vašem počítači.
+3. Vyhledejte a otevřete složku *WingtipToys-assets* .
+4. Přetahováním můžete zkopírovat složku *katalogu* z místní složky do kořenového adresáře projektu webové aplikace v **Průzkumník řešení** sady Visual Studio. 
 
-    ![Uživatelské rozhraní a navigace – kopírování souborů](ui_and_navigation/_static/image1.png)
-5. Dále vytvořte novou složku s názvem *image* kliknutím pravým tlačítkem myši **Northwind** projekt **Průzkumníka řešení** a vyberete **přidat**  - &gt; **Novou složku**.
-6. Kopírování *logo.jpg* soubor *Northwind prostředky* složky v **Průzkumníka souborů** k *Imagí* složce webové aplikace projekt **Průzkumníka řešení** sady Visual Studio.
-7. Klikněte na tlačítko **zobrazit všechny soubory** možnosti v horní části **Průzkumníka řešení** k aktualizaci seznamu souborů, pokud se nové soubory.  
+    ![Uživatelské rozhraní a soubory pro navigaci – kopírování](ui_and_navigation/_static/image1.png)
+5. V dalším kroku vytvořte novou složku s názvem *Image* kliknutím pravým tlačítkem na projekt **WingtipToys** v **Průzkumník řešení** a výběrem **Přidat** -&gt; **novou složku**.
+6. Zkopírujte soubor *logo. jpg* ze složky *WingtipToys-assets* v **Průzkumníkovi souborů** do složky *Image* projektu webové aplikace v **Průzkumník řešení** sady Visual Studio.
+7. Klikněte na možnost **Zobrazit všechny soubory** v horní části **Průzkumník řešení** a aktualizujte seznam souborů, Pokud nevidíte nové soubory.  
   
-    **Průzkumník řešení** teď zobrazuje aktualizovaný projekt soubory. 
+    **Průzkumník řešení** nyní zobrazuje aktualizované soubory projektu. 
 
     ![Uživatelské rozhraní a navigace – Průzkumník řešení](ui_and_navigation/_static/image2.png)
 
-### <a name="adding-pages"></a>Přidání stránek
+### <a name="adding-pages"></a>Přidávání stránek
 
-Před přidáním navigace k webové aplikaci, budete nejprve přidat dvě nové stránky, které budete přejděte do. Později v této řadě kurzů budete zobrazovat produktů a podrobnosti o produktu na tyto nové stránky.
+Před přidáním navigace do webové aplikace nejprve přidáte dvě nové stránky, na které budete přecházet. Později v této sérii kurzů zobrazíte informace o produktech a produktech na těchto nových stránkách.
 
-1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na **Northwind**, klikněte na tlačítko **přidat**a potom klikněte na tlačítko **nová položka**.   
- **Přidat novou položku** se zobrazí dialogové okno.
-2. Vyberte **Visual C#**  - &gt; **webové** šablony skupiny na levé straně. Vyberte **webové formuláře se stránkou předlohy** uprostřed seznamu a pojmenujte ho *ProductList.aspx*. 
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na **WingtipToys**, klikněte na **Přidat**a pak klikněte na **Nová položka**.   
+ Zobrazí se dialogové okno **Přidat novou položku** .
+2. Na levé straně vyberte skupinu **Visual C#**  -&gt; **Web** Templates. Pak v prostředním seznamu vyberte možnost **webový formulář s hlavní stránkou** a pojmenujte ji *ProductList. aspx*. 
 
-    ![Uživatelské rozhraní a navigace – přidání nové položky dialogového okna](ui_and_navigation/_static/image3.png)
-3. Vyberte **Site.Master** připojení na nově vytvořený na hlavní stránce *.aspx* stránky. 
+    ![Uživatelské rozhraní a navigace – dialogové okno Přidat novou položku](ui_and_navigation/_static/image3.png)
+3. Vyberte **site. Master** a připojte stránku předlohy k nově vytvořené stránce *aspx* . 
 
-    ![Uživatelské rozhraní a navigace - vybrat hlavní stránku](ui_and_navigation/_static/image4.png)
-4. Přidání další stránky s názvem *ProductDetails.aspx* následujícím postupem stejné.
+    ![Uživatelské rozhraní a navigace – výběr stránky předlohy](ui_and_navigation/_static/image4.png)
+4. Pomocí následujících stejných kroků přidejte další stránku s názvem *ProductDetails. aspx* .
 
-### <a name="updating-bootstrap"></a>Aktualizuje se Bootstrap
+### <a name="updating-bootstrap"></a>Probíhá aktualizace Bootstrap.
 
-Použijte šablony projektů Visual Studio 2013 [Bootstrap](http://getbootstrap.com/), rozložení a motivy rozhraní vytvořené Twitter. K zajištění přizpůsobivý návrh, což znamená, že rozložení můžete dynamicky přizpůsobit velikosti okna jiný prohlížeč používá Bootstrap CSS3. Funkce motivů Bootstrap můžete také snadno provést změnu v aplikačním vzhled a chování. Výchozí šablony webové aplikace ASP.NET v sadě Visual Studio 2013 obsahuje Bootstrap jako balíček NuGet.
+Šablony projektu Visual Studio 2013 používají [bootstrap](http://getbootstrap.com/), rozložení a rozhraní pro vytváření na Twitteru. Bootstrap používá CSS3 k tomu, aby poskytovala reagující návrh, což znamená, že rozložení se můžou dynamicky přizpůsobovat různým velikostem oken prohlížeče. Můžete také použít funkci zaváděcí rutiny Bootstrap, která umožňuje snadno změnit vzhled a chování aplikace. Ve výchozím nastavení Šablona webové aplikace ASP.NET v Visual Studio 2013 zahrnuje Bootstrap jako balíček NuGet.
 
-V tomto kurzu se změní vzhled a chování aplikace Wingtip Toys nahrazením soubory CSS Bootstrapu.
+V tomto kurzu změníte vzhled a chování aplikace Wingtip Toys tím, že nahradíte spouštěcí soubory CSS.
 
-1. V **Průzkumníka řešení**, otevřete *obsahu* složky.
-2. Klikněte pravým tlačítkem myši *bootstrap.css* souboru a přejmenujte ho na *bootstrap original.css*.
-3. Přejmenovat *bootstrap.min.css* k *bootstrap original.min.css*.
-4. V **Průzkumníka řešení**, klikněte pravým tlačítkem myši *obsahu* a pak zvolte položku **otevřít složku v Průzkumníku souborů**.  
-   Zobrazí se v Průzkumníku souborů. Do tohoto umístění se uloží stažené bootstrap soubory šablon stylů CSS.
-5. V prohlížeči přejděte na [ https://bootswatch.com/3/ ](https://bootswatch.com/3/).
-6. Přejděte okno prohlížeče, dokud se nezobrazí Cerulean motiv. 
+1. V **Průzkumník řešení**otevřete složku *obsahu* .
+2. Klikněte pravým tlačítkem na soubor *bootstrap. CSS* a přejmenujte ho na *bootstrap-Original. CSS*.
+3. Přejmenujte *bootstrap. min. CSS* na *bootstrap-Original. min. CSS*.
+4. V **Průzkumník řešení**klikněte pravým tlačítkem myši na složku *obsahu* a vyberte možnost **Otevřít složku v Průzkumníku souborů**.  
+   Zobrazí se Průzkumník souborů. Do tohoto umístění uložíte stažené soubory ve spouštěcí šabloně CSS.
+5. V prohlížeči přejdete na [https://bootswatch.com/3/](https://bootswatch.com/3/).
+6. Posuňte okno prohlížeče, dokud se nezobrazí motiv Cerulean. 
 
-    ![Uživatelské rozhraní a navigace - Cerulean motiv](ui_and_navigation/_static/image5.png)
-7. Stáhněte si oba *bootstrap.css* souboru a *bootstrap.min.css* do souboru *obsahu* složky. Použijte cestu ke složce, která se zobrazí v obsahu **Průzkumníka souborů** okno, které jste dříve otevřeli.
-8. V **sady Visual Studio** v horní části **Průzkumníka řešení**, vyberte **zobrazit všechny soubory** možnosti se zobrazí nové soubory ve složce obsahu. 
+    ![Uživatelské rozhraní a navigace – motiv Cerulean](ui_and_navigation/_static/image5.png)
+7. Stáhněte soubor *bootstrap. CSS* a soubor *bootstrap. min. CSS* do složky *obsahu* . Použijte cestu ke složce obsahu, která se zobrazí v okně **Průzkumníka souborů** , které jste předtím otevřeli.
+8. V **aplikaci Visual Studio** v horní části **Průzkumník řešení**vyberte možnost **Zobrazit všechny soubory** , chcete-li zobrazit nové soubory ve složce obsahu. 
 
     ![Uživatelské rozhraní a navigace – Průzkumník řešení](ui_and_navigation/_static/image6.png)
 
-   Zobrazí se dva nové soubory šablon stylů CSS v **obsahu** složka, ale Všimněte si, že na ikonu vedle názvu každého souboru je zobrazena šedě. To znamená, že soubor ještě nejsou přidané do projektu.
-9. Klikněte pravým tlačítkem myši *bootstrap.css* a *bootstrap.min.css* souborů a vyberte **zahrnout do projektu**.   
-   Když spustíte aplikaci Wingtip Toys později v tomto kurzu, zobrazí se nové uživatelské rozhraní.
+   Ve složce **obsahu** se zobrazí dva nové soubory CSS, ale Všimněte si, že ikona vedle názvu souboru je šedá. To znamená, že soubor ještě nebyl do projektu přidán.
+9. Klikněte pravým tlačítkem na soubory *bootstrap. CSS* a *bootstrap. min. CSS* a vyberte možnost **zahrnout do projektu**.   
+   Při spuštění aplikace Wingtip Toys dále v tomto kurzu se zobrazí nové uživatelské rozhraní.
 
 > [!NOTE] 
 > 
-> Používá šablony webové aplikace ASP.NET *Bundle.config* souboru v kořenovém adresáři projektu pro uložení této cesty souborů CSS Bootstrapu.
+> Šablona webové aplikace ASP.NET používá soubor *. config* v kořenovém adresáři projektu pro uložení cesty spouštěcích souborů CSS.
 
-### <a name="modifying-the-default-navigation"></a>Změna výchozí navigace
+### <a name="modifying-the-default-navigation"></a>Úprava výchozí navigace
 
-Výchozí navigaci na každé stránce v aplikaci můžete upravit změnou prvek seznamu Neseřazený navigace, který je v *Site.Master* stránky.
+Výchozí navigaci pro každou stránku aplikace lze upravit změnou neuspořádaného prvku seznamu navigace, který je na stránce *site. Master* .
 
-1. V **Průzkumníka řešení**, najděte a otevřete *Site.Master* stránky.
-2. Přidejte další navigační odkaz zvýrazněné žlutou barvou na Neseřazený seznam je uvedeno níže:   
+1. V **Průzkumník řešení**vyhledejte a otevřete stránku *Web. Master* .
+2. Přidejte další navigační odkaz zvýrazněný žlutě do seznamu, který se zobrazuje níže:   
 
     [!code-html[Main](ui_and_navigation/samples/sample5.html?highlight=5)]
 
-Jak je vidět ve výše uvedené ve formátu HTML můžete upravit každé položky na řádku `<li>` obsahující značku ukotvení `<a>` s odkazem `href` atribut. Každý `href` odkazuje na stránku ve webové aplikaci. V prohlížeči, když uživatel klikne na jednu z těchto odkazů (například **produkty**), bude přejděte na stránku obsažené v `href` (například **ProductList.aspx**). Na konci tohoto kurzu budete spouštět aplikace.
+Jak vidíte ve výše uvedeném jazyce HTML, upravili jste všechny položky řádku `<li>` obsahující značku kotv `<a>` s atributem Link `href`. Každý `href` odkazuje na stránku ve webové aplikaci. Pokud uživatel klikne na jeden z těchto odkazů (například **Products**), v prohlížeči přejde na stránku, která je obsažena v `href` (například **ProductList. aspx**). Aplikaci spustíte na konci tohoto kurzu.
 
 > [!NOTE] 
 > 
-> Tilda (`~`) znak se používá k určení, která `href` cesta začíná v kořenovém adresáři projektu.
+> Znak tildy (`~`) slouží k určení, že cesta `href` začíná v kořenu projektu.
 
-### <a name="adding-a-data-control-to-display-navigation-data"></a>Přidání ovládacího prvku dat k zobrazení dat navigace
+### <a name="adding-a-data-control-to-display-navigation-data"></a>Přidání ovládacího prvku data pro zobrazení navigačních dat
 
-V dalším kroku přidáte ovládací prvek pro zobrazení všech kategorií z databáze. Každá kategorie bude fungovat jako odkaz *ProductList.aspx* stránky. Když uživatel klikne na odkaz kategorii v prohlížeči, budou přejděte na stránku produktů a zobrazit pouze produkty, které jsou spojené s vybranou kategorii.
+V dalším kroku přidáte ovládací prvek pro zobrazení všech kategorií z databáze. Každá kategorie bude fungovat jako odkaz na stránku *ProductList. aspx* . Když uživatel klikne na odkaz kategorie v prohlížeči, přejde na stránku Products a zobrazí pouze produkty přidružené k vybrané kategorii.
 
-Budete používat **ListView** ovládací prvek pro zobrazení všech kategorií obsaženým v databázi. Chcete-li přidat **ListView** ovládacího prvku k hlavní stránce:
+Použijete ovládací prvek **ListView** k zobrazení všech kategorií obsažených v databázi. Přidání ovládacího prvku **ListView** na stránku předlohy:
 
-1. V *Site.Master* stránce, přidejte následující zvýrazněný `<div>` element **po** `<div>` element obsahující `id="TitleContent"` , který jste přidali dříve:  
+1. Na stránce *site. Master* přidejte následující zvýrazněný `<div>` prvek **za** element `<div>` obsahující `id="TitleContent"`, který jste přidali dříve:  
 
     [!code-aspx[Main](ui_and_navigation/samples/sample6.aspx?highlight=7-21)]
 
-Tento kód zobrazí všechny kategorie z databáze. **ListView** ovládací prvek zobrazí názvy jednotlivých kategorií jako text odkazu a zahrnuje odkaz *ProductList.aspx* stránky obsahující hodnotu řetězce dotazu `ID` kategorie. Nastavením `ItemType` vlastnost **ListView** řídit vazbový výraz `Item` je k dispozici v rámci `ItemTemplate` uzlu a ovládací prvek stane silného typu. Můžete vybrat podrobnosti `Item` pomocí technologie IntelliSense, jako je například určení `CategoryName`. Tento kód se nachází v kontejneru `<%#: %>` , který označuje vazbový výraz. Přidáním (:) na konec objektu `<%#` předponu, výsledek výrazu datové vazby je kódovaný jazykem HTML. Pokud je výsledek kódovaný jazykem HTML, vaše aplikace je líp chráněný proti webů vkládání (mezi weby XSS) a HTML útoky prostřednictvím injektáže skriptu.
+V tomto kódu se zobrazí všechny kategorie z databáze. Ovládací prvek **ListView** zobrazí název každé kategorie jako text odkazu a obsahuje odkaz na stránku *ProductList. aspx* s hodnotou dotazovacího řetězce, která obsahuje `ID` kategorie. Nastavením vlastnosti `ItemType` v ovládacím prvku **ListView** je výraz datové vazby `Item` dostupný v rámci uzlu `ItemTemplate` a ovládací prvek se bude silně nacházet. Můžete vybrat Podrobnosti objektu `Item` pomocí technologie IntelliSense, například zadání `CategoryName`. Tento kód je obsažen uvnitř kontejneru `<%#: %>`, který označuje výraz datové vazby. Přidáním (:) na konec předpony `<%#` je výsledkem výrazu datové vazby kódování HTML. V případě, že je výsledkem kódování HTML, je vaše aplikace lépe chráněná proti útokům prostřednictvím injektáže XSS (mezi weby) a útoky prostřednictvím injektáže HTML.
 
 > [!NOTE] 
 > 
-> **Tip**
+> **Popisek**
 > 
-> Když přidáte tak, že zadáte během vývoje kódu, můžete byste si být jisti, že platným členem objektu je najít, protože se silnými typy, ovládací prvky dat zobrazit dostupné členy podle technologie IntelliSense. Technologie IntelliSense nabízí možnosti odpovídající kontext kódu při psaní kódu, jako jsou vlastnosti, metody a objekty.
+> Když přidáte kód zadáním během vývoje, můžete si být jisti, že je nalezen platný člen objektu, protože datové ovládací prvky silného typu zobrazují dostupné členy založené na technologii IntelliSense. Technologie IntelliSense nabízí při psaní kódu vhodné možnosti kódu, jako jsou vlastnosti, metody a objekty.
 
-V dalším kroku budete implementovat `GetCategories` metoda načíst data.
+V dalším kroku implementujete metodu `GetCategories` pro načtení dat.
 
-### <a name="linking-the-data-control-to-the-database"></a>Propojení ovládacího prvku dat do databáze
+### <a name="linking-the-data-control-to-the-database"></a>Propojení ovládacího prvku dat s databází
 
-Předtím, než můžou zobrazovat data v ovládacím prvku dat, budete muset propojit ovládací prvek dat do databáze. Chcete-li na odkaz, můžete upravit kód za *Site.Master.cs* souboru.
+Předtím, než budete moci zobrazit data v ovládacím prvku dat, je třeba propojit ovládací prvek data s databází. Chcete-li vytvořit odkaz, můžete upravit kód za souborem *site.Master.cs* .
 
-1. V **Průzkumníku řešení**, klikněte pravým tlačítkem myši *Site.Master* stránce a potom klikněte na tlačítko **zobrazit kód**. *Site.Master.cs* soubor je otevřen v editoru.
-2. Poblíž začátku *Site.Master.cs* přidejte dva další obory názvů tak, aby zahrnuté obory názvů vypadat následovně:  
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na stránku *Web. Master* a pak klikněte na **Zobrazit kód**. Soubor *site.Master.cs* se otevře v editoru.
+2. Poblíž začátku souboru *site.Master.cs* přidejte dva další obory názvů tak, aby všechny zahrnuté obory názvů vypadaly takto:  
 
     [!code-csharp[Main](ui_and_navigation/samples/sample7.cs?highlight=8-9)]
-3. Přidat zvýrazněnou `GetCategories` za `Page_Load` obslužná rutina události následujícím způsobem:  
+3. Přidejte zvýrazněnou `GetCategories` metodu za obslužnou rutinu události `Page_Load` následujícím způsobem:  
 
     [!code-csharp[Main](ui_and_navigation/samples/sample8.cs?highlight=6-11)]
 
-Výše uvedený kód je spuštěn při načtení každou stránku, která používá hlavní stránku v prohlížeči. `ListView` Ovládací prvek (s názvem "categoryList"), který jste přidali dříve v tomto kurzu používá vazbu modelu vyberte data. Ve značkách `ListView` ovládacího prvku můžete nastavit u tohoto prvku `SelectMethod` vlastnost `GetCategories` metody uvedené výše. `ListView` Řídit volání `GetCategories` metoda v příslušnou dobu života stránky cyklu a automaticky vytvoří vazbu vrácená data. Naučíte se další informace o vázání dat v dalším kurzu.
+Výše uvedený kód se spustí, když se v prohlížeči načte jakákoli stránka, která používá stránku předlohy. Ovládací prvek `ListView` (nazvaný "categoryList"), který jste přidali dříve v tomto kurzu, používá k výběru dat vazbu modelu. V označení ovládacího prvku `ListView` nastavte vlastnost `SelectMethod` ovládacího prvku na metodu `GetCategories` uvedenou výše. Ovládací prvek `ListView` volá během životního cyklu stránky příslušnou metodu `GetCategories` a automaticky vytvoří vazby vrácených dat. V dalším kurzu se dozvíte víc o vazbách dat.
 
 ### <a name="running-the-application-and-creating-the-database"></a>Spuštění aplikace a vytvoření databáze
 
-Dříve v této sérii kurzů jste vytvořili třídu inicializátorů (s názvem "ProductDatabaseInitializer") a zadat tuto třídu v *global.asax.cs* souboru. Entity Framework, databázi vygeneruje, když aplikace je poprvé spustit, protože `Application_Start` metoda součástí *global.asax.cs* soubor bude volat třída inicializátoru. Inicializátor třídy použije tříd modelu (`Category` a `Product`), že jste přidali dříve v této sérii kurzů k vytvoření databáze.
+Dříve v této sérii kurzů jste vytvořili třídu inicializátoru (s názvem "ProductDatabaseInitializer") a tuto třídu zadali v souboru *Global.asax.cs* . Entity Framework vygeneruje databázi při prvním spuštění aplikace, protože metoda `Application_Start` obsažená v souboru *Global.asax.cs* bude volat třídu inicializátoru. Třída inicializátoru použije třídy modelu (`Category` a `Product`), které jste přidali dříve v této sérii kurzů, k vytvoření databáze.
 
-1. V **Průzkumníka řešení**, klikněte pravým tlačítkem myši *Default.aspx* stránku a vybrat **nastavit jako úvodní stránku**.
-2. Ve Visual Studiu stisknutím klávesy **F5**.   
- Bude trvat nějakou dobu nastavit všechno během této při prvním spuštění.   
-    ![Uživatelské rozhraní a navigace – Windows prohlížeče](ui_and_navigation/_static/image7.png)  
- Při spuštění aplikace, aplikace bude zkompilována a databáze s názvem *wingtiptoys.mdf* budou vytvořeny v *aplikace\_Data* složky. V prohlížeči se zobrazí kategorie navigační nabídky. Tato nabídka se vygeneroval načtením kategorií z databáze. V dalším kurzu budete implementovat navigaci.
-3. Ukončením prohlížeče zastavte spuštěnou aplikaci.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na stránku *Default. aspx* a vyberte **nastavit jako úvodní stránku**.
+2. V aplikaci Visual Studio stiskněte klávesu **F5**.   
+ Nastavení všeho v průběhu tohoto prvního spuštění bude trvat trochu dlouho.   
+    ![uživatelského rozhraní a navigace – okna prohlížeče](ui_and_navigation/_static/image7.png)  
+ Když aplikaci spustíte, aplikace se zkompiluje a databáze s názvem *wingtiptoys. mdf* se vytvoří ve složce *App\_data* . V prohlížeči se zobrazí nabídka navigace v kategorii. Tato nabídka byla vygenerována načtením kategorií z databáze. V dalším kurzu budete implementovat navigaci.
+3. Zavřete prohlížeč a zastavte běžící aplikaci.
 
 ### <a name="reviewing-the-database"></a>Kontrola databáze
 
-Otevřít *Web.config* soubor a podívejte se na část řetězce připojení. Vidíte, že `AttachDbFilename` hodnotu v připojovacím řetězci odkazuje `DataDirectory` pro projekt webové aplikace. Hodnota `|DataDirectory|` je rezervovanou hodnotu, která představuje *aplikace\_Data* složky v projektu. Tato složka je, kde se nachází databáze, který byl vytvořen z tříd entit.
+Otevřete soubor *Web. config* a podívejte se do části připojovací řetězec. Můžete vidět, že hodnota `AttachDbFilename` v připojovacím řetězci odkazuje na `DataDirectory` pro projekt webové aplikace. Hodnota `|DataDirectory|` je rezervovaná hodnota, která představuje *datovou složku\_aplikace* v projektu. V této složce se nachází databáze vytvořená z vašich tříd entit.
 
 [!code-xml[Main](ui_and_navigation/samples/sample9.xml)]
 
 > [!NOTE] 
 > 
-> Pokud *aplikace\_Data* složka není viditelný, nebo pokud tato složka je prázdný, vyberte **aktualizovat** ikonu a pak **zobrazit všechny soubory** ikonu v horní části **Průzkumníka řešení** okna. Rozbalení šířku **Průzkumníka řešení** windows může být nutné zobrazení všech dostupných ikon.
+> Pokud složka *\_data* není viditelná nebo pokud je složka prázdná, vyberte ikonu **aktualizovat** a potom v horní části okna **Průzkumník řešení** ikona **Zobrazit všechny soubory** . Aby se zobrazily všechny dostupné ikony, může být potřeba zvětšit šířku **Průzkumník řešení** oken.
 
-Teď si můžete prohlédnout data obsažená v *wingtiptoys.mdf* databázový soubor s použitím **Průzkumníka serveru** okna.
+Nyní můžete zkontrolovat data obsažená v souboru databáze *wingtiptoys. mdf* pomocí okna **Průzkumník serveru** .
 
-1. Rozbalte *aplikace\_Data* složky. Pokud *aplikace\_Data* složka není viditelný, najdete v poznámce výše.
-2. Pokud *wingtiptoys.mdf* databázový soubor není viditelný, vyberte **aktualizovat** ikonu a pak **zobrazit všechny soubory** ikonu v horní části **Průzkumníka řešení**  okna.
-3. Klikněte pravým tlačítkem myši *wingtiptoys.mdf* databázový soubor a vyberte **otevřít**.  
-    **Průzkumník serveru** se zobrazí. 
+1. Rozbalte složku *Data\_aplikace* . Pokud není složka *aplikace\_data* viditelná, přečtěte si poznámku výše.
+2. Pokud není soubor databáze *wingtiptoys. mdf* viditelný, vyberte ikonu **aktualizace** a potom v horní části okna **Průzkumník řešení** ikona **Zobrazit všechny soubory** .
+3. Klikněte pravým tlačítkem myši na soubor databáze *wingtiptoys. mdf* a vyberte **otevřít**.  
+    Zobrazí se **Průzkumník serveru** . 
 
     ![Uživatelské rozhraní a navigace – Průzkumník serveru](ui_and_navigation/_static/image8.png)
-4. Rozbalte *tabulky* složky.
-5. Klikněte pravým tlačítkem myši **produkty**tabulce a vybrat **zobrazit Data tabulky**.  
- **Produkty** tabulky se zobrazí. 
+4. Rozbalte složku *tabulky* .
+5. Klikněte pravým tlačítkem myši na tabulku **Products**a vyberte možnost **Zobrazit data tabulky**.  
+ Zobrazí se tabulka **Products (produkty** ). 
 
-    ![Uživatelské rozhraní a navigace – tabulka produktů](ui_and_navigation/_static/image9.png)
-6. Toto zobrazení umožňuje zobrazit a upravovat data v **produkty** tabulky ručně.
-7. Zavřít **produkty** okno tabulky.
-8. V **Průzkumníka serveru**, klikněte pravým tlačítkem myši **produkty** tabulku znovu a vyberte **Otevřít definici tabulky**.  
- Návrh dat pro **produkty** tabulky se zobrazí. 
+    ![UI a navigace – tabulka produktů](ui_and_navigation/_static/image9.png)
+6. Toto zobrazení vám umožní zobrazit a upravit data v tabulce **produkty** ručně.
+7. Zavřete okno Tabulka **produktů** .
+8. V **Průzkumník serveru**klikněte znovu pravým tlačítkem myši na tabulku **Products** a vyberte možnost **Otevřít definici tabulky**.  
+ Zobrazí se návrh dat pro tabulku **Products** . 
 
-    ![Uživatelské rozhraní a navigace – návrh produkty](ui_and_navigation/_static/image10.png)
-9. V **T-SQL** kartě, zobrazí se příkaz SQL DDL, která byla použita k vytvoření této tabulky. Můžete také použít uživatelské rozhraní v **návrhu** kartu k úpravě schématu.
-10. V **Průzkumníka serveru**, klikněte pravým tlačítkem na **Northwind** databáze a vyberte **ukončení připojení**.   
- Odpojení databáze ze sady Visual Studio, schéma databáze bude moci změnit později v této řadě kurzů.
-11. Vraťte se na **Průzkumníka řešení**tak, že vyberete **Průzkumníka řešení** karta v dolní části **Průzkumníka serveru** okna.
+    ![Uživatelské rozhraní a navigace – návrh produktů](ui_and_navigation/_static/image10.png)
+9. Na kartě **T-SQL** se zobrazí příkaz SQL DDL, který se použil k vytvoření tabulky. Můžete také použít uživatelské rozhraní na kartě **Návrh** k úpravě schématu.
+10. V **Průzkumník serveru**klikněte pravým tlačítkem na **WingtipToys** Database a vyberte **Zavřít připojení**.   
+ Odpojením databáze od sady Visual Studio bude schéma databáze možné upravit později v této sérii kurzů.
+11. Vraťte se na **Průzkumník řešení**tak, že v dolní části okna **Průzkumník serveru** vyberete kartu **Průzkumník řešení** .
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-V tomto kurzu této série jste přidali nějaké základní uživatelské rozhraní, grafiky, stránky a navigace. Kromě toho jste spustili webové aplikace, který vytvoří databázi z datových tříd, které jste přidali v předchozím kurzu. Můžete také zobrazit obsah *produkty* tabulky databáze zobrazením databázi přímo. V dalším kurzu budete zobrazovat data položky a informace z databáze.
+V tomto kurzu série jste přidali některé základní uživatelské rozhraní, grafiky, stránky a navigaci. Kromě toho jste spustili webovou aplikaci, která vytvořila databázi z datových tříd, které jste přidali v předchozím kurzu. Obsah tabulky *Products* si také můžete zobrazit přímo v databázi. V dalším kurzu zobrazíte datové položky a podrobnosti z databáze.
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 [Úvod do programování webových stránek ASP.NET](https://msdn.microsoft.com/library/ms178125.aspx)   
-[Přehled ovládacích prvků webového serveru technologie ASP.NET](https://msdn.microsoft.com/library/zsyt68f1.aspx)   
+  [Přehled ovládacích prvků webového serveru ASP.NET](https://msdn.microsoft.com/library/zsyt68f1.aspx)  
 [Kurz šablon stylů CSS](http://www.w3schools.com/css/default.asp)
 
 > [!div class="step-by-step"]
 > [Předchozí](create_the_data_access_layer.md)
-> [další](display_data_items_and_details.md)
+> [Další](display_data_items_and_details.md)

@@ -1,105 +1,105 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files
-title: 'Nasazení webu ASP.NET pomocí sady Visual Studio: Nasazení dalších souborů | Dokumentace Microsoftu'
+title: 'Nasazení webu ASP.NET pomocí sady Visual Studio: nasazování dalších souborů | Microsoft Docs'
 author: tdykstra
-description: V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, podle usin...
+description: V této sérii kurzů se dozvíte, jak nasadit (publikovat) webovou aplikaci ASP.NET, která bude Azure App Service Web Apps nebo poskytovateli hostingu třetí strany, pomocí usin...
 ms.author: riande
 ms.date: 03/23/2015
 ms.assetid: 1cd91055-84bc-42c6-9d80-646f41429d4d
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files
 msc.type: authoredcontent
-ms.openlocfilehash: 03afcf91b79bc7d7d294eae3dc43a8f780d94e20
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: eaa3141c22980f0c816e2f33b5597ac9fe69c23c
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131908"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74594897"
 ---
-# <a name="aspnet-web-deployment-using-visual-studio-deploying-extra-files"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Nasazení dalších souborů
+# <a name="aspnet-web-deployment-using-visual-studio-deploying-extra-files"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: nasazení dalších souborů
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-[Stáhnout počáteční projekt](http://go.microsoft.com/fwlink/p/?LinkId=282627)
+[Stáhnout počáteční projekt](https://go.microsoft.com/fwlink/p/?LinkId=282627)
 
-> V této sérii kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace do Azure App Service Web Apps nebo k poskytovateli hostingu třetích stran, s použitím sady Visual Studio 2012 nebo Visual Studio 2010. Informace o této sérii, naleznete v tématu [z prvního kurzu této série](introduction.md).
+> V této sérii kurzů se dozvíte, jak nasadit (publikovat) webovou aplikaci ASP.NET, která umožňuje Azure App Service Web Apps nebo poskytovateli hostingu třetí strany, pomocí sady Visual Studio 2012 nebo Visual Studio 2010. Informace o řadě najdete v [prvním kurzu v řadě](introduction.md).
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz ukazuje, jak rozšíření aplikace Visual Studio publikování webu kanálu provést dodatečnou úlohu během nasazení. Úloha je kopírování dalších souborů, které nejsou ve složce projektu na cílový webový server.
+V tomto kurzu se dozvíte, jak roztáhnout kanál publikování webu sady Visual Studio, aby během nasazení procházel další úkol. Úkolem je zkopírovat další soubory, které nejsou ve složce projektu, na cílový web.
 
-Pro účely tohoto kurzu budete zkopírovat jeden další soubor: *robots.txt*. Chcete nasadit tento soubor do přípravy, ale ne do produkčního prostředí. V [nasazení do produkčního prostředí](deploying-to-production.md) výukový program, tento soubor do projektu přidat a nakonfigurovat provozní Publikovat profil chcete vyloučit. V tomto kurzu uvidíte alternativní metoda pro zpracování této situaci, která bude užitečná pro všechny soubory, které chcete nasadit, ale nechcete zahrnout do projektu.
+V tomto kurzu zkopírujete jeden soubor navíc: *robots. txt*. Tento soubor chcete nasadit do přípravy, ale ne do produkčního prostředí. V kurzu [nasazení do produkčního](deploying-to-production.md) prostředí jste do projektu přidali tento soubor a nakonfigurovali do něj profil publikování v produkčním prostředí, abyste ho vyloučili. V tomto kurzu se zobrazí alternativní metoda pro zpracování této situace. ta, která bude užitečná pro všechny soubory, které chcete nasadit, ale nechcete je zahrnout do projektu.
 
-## <a name="move-the-robotstxt-file"></a>Přesunout soubor robots.txt
+## <a name="move-the-robotstxt-file"></a>Přesunout soubor robots. txt
 
-Příprava pro jiný způsob zpracování *robots.txt*v této části kurzu přesunout soubor do složky, která není zahrnutá v projektu a odstraníte *robots.txt* z testovacího prostředí. Je nutné odstranit soubor z pracovní, aby mohli ověřit, že vaši novou metodu nasazení souboru na tomto prostředí pracuje správně.
+K přípravě na jinou metodu zpracování souboru *robots. txt*v této části kurzu přesunete soubor do složky, která není obsažena v projektu, a odstraníte soubor *robots. txt* z přípravného prostředí. Je nutné odstranit soubor z přípravy, abyste si ověřili, že vaše nová metoda nasazení souboru do tohoto prostředí funguje správně.
 
-1. V **Průzkumníka řešení**, klikněte pravým tlačítkem myši *robots.txt* souboru a klikněte na tlačítko **vyjmout z projektu**.
-2. Pomocí Průzkumníka souborů Windows, vytvořte novou složku ve složce řešení a pojmenujte ho *ExtraFiles*.
-3. Přesunout *robots.txt* soubor *ContosoUniversity* složky projektu *ExtraFiles* složky.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na soubor *robots. txt* a klikněte na **vyloučit z projektu**.
+2. Pomocí Průzkumníka souborů Windows vytvořte ve složce řešení novou složku a pojmenujte ji *ExtraFiles*.
+3. Přesuňte soubor *robots. txt* ze složky projektu *ContosoUniversity* do složky *ExtraFiles* .
 
-    ![ExtraFiles složky](deploying-extra-files/_static/image1.png)
-4. Pomocí nástrojů FTP, odstranit *robots.txt* soubor z pracovní webu.
+    ![ExtraFiles složka](deploying-extra-files/_static/image1.png)
+4. Pomocí nástroje FTP odstraňte soubor *robots. txt* z přípravného webu.
 
-    Jako alternativu můžete zvolit **odebrat další soubory v cílovém umístění** pod **možností publikování souboru** na **nastavení** kartu pracovní profil publikování, a znovu publikujte do přípravného prostředí.
+    Alternativně můžete vybrat **odebrat další soubory v umístění** v části **Možnosti publikování souboru** na kartě **Nastavení** v profilu publikování a znovu publikovat do přípravy.
 
 ## <a name="update-the-publish-profile-file"></a>Aktualizace souboru profilu publikování
 
-Potřebujete jenom *robots.txt* v přípravě, takže pracovní pouze profil publikování, budete muset aktualizovat, aby ho nasadit.
+Soubor *robots. txt* potřebujete jenom v přípravě, takže jenom profil publikování, který je potřeba aktualizovat, aby ho bylo možné nasadit, je pracovní.
 
-1. V sadě Visual Studio, otevřete *Staging.pubxml*.
-2. Na konci souboru, před uzavírací značku `</Project>` značky, přidejte následující kód:
+1. V aplikaci Visual Studio otevřete *přípravný. pubxml*.
+2. Na konci souboru před uzavírací `</Project>`ovou značkou přidejte následující kód:
 
     [!code-xml[Main](deploying-extra-files/samples/sample1.xml)]
 
-    Tento kód vytvoří novou *cílové* , která bude shromažďovat další soubory k nasazení. Cíl se skládá z jednoho nebo více úkolů, které se spustí nástroj MSBuild na základě podmínek, které zadáte.
+    Tento kód vytvoří nový *cíl* , který bude shromažďovat další soubory, které mají být nasazeny. Cíl se skládá z jedné nebo více úloh, které spustí nástroj MSBuild na základě podmínek, které zadáte.
 
-    `Include` Atribut určuje, že složka, ve kterém chcete najít soubory je *ExtraFiles*, který je umístěn na stejné úrovni jako složky projektu. Nástroj MSBuild bude shromažďovat všechny soubory z této složky a rekurzivně z podsložky (double hvězdička určuje rekurzivní podsložek). S tímto kódem můžete umístit více souborů a soubory v podsložkách uvnitř *ExtraFiles* složka a všechny se nasadí.
+    Atribut `Include` určuje, že složka, ve které se mají najít soubory, je *ExtraFiles*, která je umístěná na stejné úrovni jako složka projektu. Nástroj MSBuild bude shromažďovat všechny soubory z této složky a rekurzivně z jakékoli podsložky (dvojitá hvězdička určuje rekurzivní podsložky). Pomocí tohoto kódu můžete umístit více souborů a souborů do podsložek do složky *ExtraFiles* a všechny budou nasazeny.
 
-    `DestinationRelativePath` Element určuje, že složek a souborů, mají být zkopírovány do kořenové složky, cílové webové stránky, ve stejné struktuře souborů a složek, protože se nenachází v *ExtraFiles* složky. Pokud chcete zkopírovat *ExtraFiles* samotnou složku, `DestinationRelativePath` hodnota bude *ExtraFiles\%(RecursiveDir)%(Filename)%(Extension)*.
-3. Na konci souboru, před uzavírací značku `</Project>` značky, přidejte následující kód, který určuje, kdy se má spustit nový cíl.
+    Element `DestinationRelativePath` určuje, že složky a soubory by měly být zkopírovány do kořenové složky cílového webu, ve stejném souboru a struktuře složek, které jsou umístěny ve složce *ExtraFiles* . Pokud jste chtěli zkopírovat samotnou složku *ExtraFiles* , hodnota `DestinationRelativePath` by byla *\%ExtraFiles (RecursiveDir)% (filename)% (přípona)* .
+3. Na konci souboru před uzavírací `</Project>`ovou značkou přidejte následující kód, který určuje, kdy se má spustit nový cíl.
 
     [!code-xml[Main](deploying-extra-files/samples/sample2.xml)]
 
-    Tento kód způsobí, že nový `CustomCollectFiles` cíl, který se spustí pokaždé, když je proveden cíl, který zkopíruje soubory do cílové složky. Je samostatný cílový pro publikování a vytvoření balíčku nasazení a nový cíl se vloží v obou cíle v případě, že jste se rozhodli nasadit s použitím balíčku pro nasazení namísto publikování.
+    Tento kód způsobí, že se nový `CustomCollectFiles` cíl spustí vždy, když se spustí cíl, který kopíruje soubory do cílové složky. Při vytváření balíčku pro publikování a nasazení došlo k samostatnému cíli a nový cíl se vloží do obou cílů pro případ, že se rozhodnete nasadit pomocí balíčku pro nasazení místo publikování.
 
-    *.Pubxml* soubor bude vypadat jako v následujícím příkladu:
+    Soubor *. pubxml* se teď zdá jako v následujícím příkladu:
 
     [!code-xml[Main](deploying-extra-files/samples/sample3.xml?highlight=53-71)]
-4. Uložte a zavřete *Staging.pubxml* souboru.
+4. Uložte a zavřete soubor *staging. pubxml* .
 
-## <a name="publish-to-staging"></a>Publikovat do přípravného prostředí
+## <a name="publish-to-staging"></a>Publikovat do přípravy
 
-Jedním kliknutím pomocí publikování nebo příkazového řádku, publikování aplikace prostřednictvím pracovního profilu.
+Pomocí publikování jedním kliknutím nebo příkazového řádku publikujte aplikaci pomocí pracovního profilu.
 
-Pokud používáte jedním kliknutím publikovat, můžete ověřit v **ve verzi Preview** okno, které *robots.txt* budou zkopírovány. Jinak používat nástroj FTP a ověřte, že *robots.txt* soubor nachází v kořenové složce webu po nasazení.
+Pokud používáte publikování jedním kliknutím, můžete ověřit v okně **náhledu** , které budou zkopírovány *robot. txt* . V opačném případě pomocí nástroje FTP ověřte, zda je soubor *robots. txt* v kořenové složce webu po nasazení.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Dokončení tohoto postupu Tato série kurzů o nasazení webové aplikace ASP.NET do poskytovatele hostitelských služeb třetích stran. Další informace o některém z témat uvedených v následujících kurzech najdete v článku [mapa obsahu nasazení ASP.NET](https://go.microsoft.com/fwlink/p/?LinkId=282413).
+Tím se dokončí Tato série kurzů pro nasazení webové aplikace v ASP.NET k poskytovateli hostingu třetí strany. Další informace o všech tématech popsaných v těchto kurzech najdete v tématu [Mapa obsahu nasazení ASP.NET](https://go.microsoft.com/fwlink/p/?LinkId=282413).
 
 ## <a name="more-information"></a>Další informace
 
-Pokud víte, jak pracovat s MSBuild – soubory, můžete automatizovat spoustu dalších úkolů nasazení napsáním kódu v *.pubxml* soubory (pro profil konkrétní úkoly) nebo projektu *. wpp.targets* souboru (pro úkoly, které platí pro všechny profily). Další informace o *.pubxml* a *. wpp.targets* soubory, naleznete v tématu [jak: Upravit nastavení nasazení v publikování souborů profilu (.pubxml) a. wpp.targets souboru v sadě Visual Studio webové projekty](https://msdn.microsoft.com/library/ff398069). Základní informace o MSBuild kód, naleznete v tématu **anatomie soubor projektu** v [nasazení v podniku: Vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md). Zjistěte, jak pracovat se soubory MSBuild k provádění úloh pro vlastní scénáře, najdete v této příručce: [V modulu Microsoft buildu: Pomocí nástroje MSBuild a Team Foundation Build](http://msbuildbook.com) Sayed Ibraham Hashimi a William Bartholomew.
+Pokud víte, jak pracovat se soubory MSBuild, můžete automatizovat mnoho dalších úloh nasazení pomocí psaní kódu v souborech *. pubxml* (pro úlohy specifické pro profilování) nebo souboru Project *. WPP. targets* (pro úlohy, které platí pro všechny profily). Další informace o souborech *. pubxml* a *. WPP. targets* naleznete v tématu [How to: Edit settings Deployment in Publish profiles (. pubxml) files and the. WPP. targets in Visual Studio Web Projects](https://msdn.microsoft.com/library/ff398069). Základní informace o nástroji MSBuild Code najdete v části **anatomie souboru projektu** v [podnikovém nasazení série: principy souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md). Informace o tom, jak pracovat se soubory MSBuild pro provádění úloh pro vlastní scénáře, naleznete v této knize: [uvnitř Microsoft Build Engine: použití nástroje MSBuild a Team Foundation Build](http://msbuildbook.com) pomocí Sayed Ibraham Hashimi a William Bartholomew.
 
-## <a name="acknowledgements"></a>Potvrzení
+## <a name="acknowledgements"></a>Poděkování
 
-Chci vám chceme poděkovat následující uživatelů, kteří provedli významné příspěvky k obsahu v této sérii kurzů:
+Chci nás zasílat na následující lidi, kteří významně přispěli k obsahu této série kurzů:
 
 - [Alberto Poblacion, MVP &amp; MCT, Španělsko](https://mvp.microsoft.com/mvp/Alberto%20Poblacion%20Bolano-36772)
-- Jarod Ferguson, vývoj pro platformu dat MVP, Spojené státy
-- Nepříznivých Mittal, Microsoft
-- [Jon Galloway](https://weblogs.asp.net/jgalloway) (twitter: [ @jongalloway ](http://twitter.com/jongalloway))
+- Jarod Ferguson, MVP pro vývoj datových platforem, USA
+- Harsh Mittal, Microsoft
+- [Jan Galloway](https://weblogs.asp.net/jgalloway) (twitter: [@jongalloway](http://twitter.com/jongalloway))
 - [Kristina Olson, Microsoft](https://blogs.iis.net/krolson/default.aspx)
 - [Mike Pope, Microsoft](http://www.mikepope.com/blog/DisplayBlog.aspx)
 - Mohit Srivastava, Microsoft
 - [Raffaele Rialdi, Itálie](http://www.iamraf.net/)
 - [Rick Anderson, Microsoft](https://blogs.msdn.com/b/rickandy/)
-- [SAYED Hashimi, Microsoft](http://sedodream.com/default.aspx)(twitter: [ @sayedihashimi ](http://twitter.com/sayedihashimi))
-- [Scott Hanselman](http://www.hanselman.com/blog/) (twitter: [ @shanselman ](http://twitter.com/shanselman))
-- [Scott Hunter, Microsoft](https://blogs.msdn.com/b/scothu/) (twitter: [ @coolcsh ](http://twitter.com/coolcsh))
-- [Srđan Božović, Serbia](http://msforge.net/blogs/zmajcek/)
-- [Vishal Joshi, Microsoft](http://vishaljoshi.blogspot.com/) (twitter: [ @vishalrjoshi ](http://twitter.com/vishalrjoshi))
+- [Sayed Hashimi, Microsoft](http://sedodream.com/default.aspx)(twitter: [@sayedihashimi](http://twitter.com/sayedihashimi))
+- [Scott Hanselman](http://www.hanselman.com/blog/) (twitter: [@shanselman](http://twitter.com/shanselman))
+- [Scott Hunterem, Microsoft](https://blogs.msdn.com/b/scothu/) (twitter: [@coolcsh](http://twitter.com/coolcsh))
+- [Srđan Božović, Srbsko](http://msforge.net/blogs/zmajcek/)
+- [Vishal Joshi, Microsoft](http://vishaljoshi.blogspot.com/) (twitter: [@vishalrjoshi](http://twitter.com/vishalrjoshi))
 
 > [!div class="step-by-step"]
 > [Předchozí](command-line-deployment.md)
-> [další](troubleshooting.md)
+> [Další](troubleshooting.md)

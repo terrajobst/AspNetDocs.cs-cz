@@ -1,51 +1,51 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/creating-user-accounts-cs
-title: Vytváření uživatelských účtů (C#) | Dokumentace Microsoftu
+title: Vytváření uživatelských účtů (C#) | Microsoft Docs
 author: rick-anderson
-description: V tomto kurzu se podíváme na používání rozhraní členství (prostřednictvím SqlMembershipProvider) k vytvoření nové uživatelské účty. Uvidíme, jak vytvořit nový nám...
+description: V tomto kurzu se podíváme na použití rozhraní členství (přes SqlMembershipProvider) k vytvoření nových uživatelských účtů. Uvidíme, jak vytvořit nové...
 ms.author: riande
 ms.date: 01/18/2008
 ms.assetid: f175278c-6079-4d91-b9b4-2493ed43d9ec
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-user-accounts-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 162461a05e0c19f1c89f48e3caf0f21b1634b4cf
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 955592320e7d36c7ae3b9c03a361bee2183f1776
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131286"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74625485"
 ---
 # <a name="creating-user-accounts-c"></a>Vytváření uživatelských účtů (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/ASPNET_Security_Tutorial_05_CS.zip) nebo [stahovat PDF](http://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/aspnet_tutorial05_CreatingUsers_cs.pdf)
+[Stažení kódu](https://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/ASPNET_Security_Tutorial_05_CS.zip) nebo [stažení PDF](https://download.microsoft.com/download/3/f/5/3f5a8605-c526-4b34-b3fd-a34167117633/aspnet_tutorial05_CreatingUsers_cs.pdf)
 
-> V tomto kurzu se podíváme na používání rozhraní členství (prostřednictvím SqlMembershipProvider) k vytvoření nové uživatelské účty. Uvidíme, jak vytvořit nové uživatele prostřednictvím kódu programu a prostřednictvím ASP. NET pro integrované prvku CreateUserWizard.
+> V tomto kurzu se podíváme na použití rozhraní členství (přes SqlMembershipProvider) k vytvoření nových uživatelských účtů. Uvidíme, jak vytvořit nové uživatele programově a prostřednictvím ASP. Zabudovaný ovládacím CreateUserWizard ovládací prvek sítě.
 
 ## <a name="introduction"></a>Úvod
 
-V <a id="_msoanchor_1"> </a> [předchozím kurzu](creating-the-membership-schema-in-sql-server-cs.md) schématu aplikací služby jsme nainstalovali v databázi, která přidá tabulek, zobrazení a uložené procedury, které jsou vyžadované `SqlMembershipProvider` a `SqlRoleProvider`. To vytvoří infrastrukturu, kterou potřebujeme pro zbytek této série kurzů. V tomto kurzu se podíváme na používání rozhraní členství (prostřednictvím `SqlMembershipProvider`) k vytvoření nové uživatelské účty. Uvidíme, jak vytvořit nové uživatele prostřednictvím kódu programu a prostřednictvím ASP. NET pro integrované prvku CreateUserWizard.
+<a id="_msoanchor_1"> </a>V [předchozím kurzu](creating-the-membership-schema-in-sql-server-cs.md) jsme nainstalovali schéma služby Application Services do databáze, která přidala tabulky, zobrazení a uložené procedury vyžadované `SqlMembershipProvider` a `SqlRoleProvider`. Tím se vytvoří infrastruktura, kterou budeme potřebovat pro zbývající kurzy v této sérii. V tomto kurzu se podíváme na použití rozhraní členství (prostřednictvím `SqlMembershipProvider`) k vytvoření nových uživatelských účtů. Uvidíme, jak vytvořit nové uživatele programově a prostřednictvím ASP. Zabudovaný ovládacím CreateUserWizard ovládací prvek sítě.
 
-Kromě učit, jak vytvořit nové uživatelské účty, jsme také muset aktualizovat ukázkovému webu jsme v prvním vytvoření *<a id="_msoanchor_2"> </a> [Přehled ověřování založené na formulářích](../introduction/an-overview-of-forms-authentication-cs.md)* kurz a potom v rozšířené  *<a id="https://www.asp.net/learn/security/tutorial-03-cs.aspx"> </a> konfigurace ověřování formulářů a témata pokročilé* kurzu. Naše ukázkové webové aplikace má přihlašovací stránku, která ověřuje přihlašovacích údajů uživatelů, kteří páry pevně zakódované uživatelské jméno a heslo. Kromě toho `Global.asax` zahrnuje kód, který vytvoří vlastní `IPrincipal` a `IIdentity` objekty ověřených uživatelů. Budeme aktualizovat přihlašovací stránku k ověření přihlašovacích údajů uživatelů rámec členství a odeberte vlastní logiku zabezpečení a identity.
+Kromě toho, jak se naučíte vytvářet nové uživatelské účty, budeme také muset aktualizovat ukázkový web, který jsme vytvořili poprvé v  *<a id="_msoanchor_2">[ ](../introduction/an-overview-of-forms-authentication-cs.md)</a>kurzu Přehled ověřování prostřednictvím formulářů* , a pak ho rozšířit v kurzu  *<a id="https://www.asp.net/learn/security/tutorial-03-cs.aspx"></a> konfigurace ověřování formulářů a Pokročilá témata* . Naše Ukázková webová aplikace má přihlašovací stránku, která ověřuje přihlašovací údaje uživatelů proti pevně zakódované dvojici uživatelského jména a hesla. Kromě toho `Global.asax` obsahuje kód, který vytváří vlastní `IPrincipal` a objekty `IIdentity` pro ověřené uživatele. Aktualizujeme přihlašovací stránku, aby ověřovala přihlašovací údaje uživatelů vůči rozhraní členství a odebrala vlastní objekt zabezpečení a logiku identity.
 
-Pusťme se do práce!
+Pojďme začít!
 
-## <a name="the-forms-authentication-and-membership-checklist"></a>Kontrolní seznam členství a ověřování pomocí formulářů
+## <a name="the-forms-authentication-and-membership-checklist"></a>Ověřování formulářů a kontrolní seznam členství
 
-Předtím, než jsme začít pracovat s použitím rozhraní framework členství, věnujte chvíli důležité kroky, které jsme udělali k dosažení tohoto bodu. Pokud používáte rozhraní framework členství s `SqlMembershipProvider` v případě ověřování pomocí formulářů v následující kroky je nutné provést ještě před jejich implementací funkce členství ve webové aplikaci:
+Než začneme s rozhraním pro členství začít pracovat, Podívejme se, abychom si prohlédli důležité kroky, které jsme provedli pro dosažení tohoto bodu. Při použití architektury členství v `SqlMembershipProvider` ve scénáři ověřování založeném na formulářích, je nutné provést následující kroky před implementací funkce členství ve webové aplikaci:
 
-1. **Povolte ověřování pomocí formulářů.** Jak jsme probírali v  *<a id="_msoanchor_4"> </a> [Přehled ověřování založené na formulářích](../introduction/an-overview-of-forms-authentication-cs.md)*, ověřování pomocí formulářů je povoleno úpravou `Web.config` a nastavení `<authentication>` prvku `mode` atribut `Forms`. S povolené ověřování pomocí formulářů, je vyhledán jednotlivých příchozích požadavků *forms lístek ověřování*, který, pokud jsou k dispozici, identifikuje žadatel.
-2. **Přidáte schéma aplikace služby k příslušné databázi.** Při použití `SqlMembershipProvider` potřebujeme k instalaci služby schématu aplikace k databázi. Toto schéma je obvykle přidány do stejné databáze, která obsahuje datový model aplikace. *<a id="_msoanchor_5"> </a> [Vytvoření schématu členství v SQL serveru](creating-the-membership-schema-in-sql-server-cs.md)* prohlédli jste si kurz pomocí `aspnet_regsql.exe` nástroj k provedení této.
-3. **Nastavení webové aplikace tak, aby odkazovaly databázi z kroku 2.** *Vytvoření schématu členství v SQL serveru* kurz vám ukázal, dva způsoby, jak nakonfigurovat webovou aplikaci tak, aby `SqlMembershipProvider` byste použili databáze vybrali v kroku 2: úpravou `LocalSqlServer` název připojovacího řetězce; nebo přidáním nového registrovaného zprostředkovatele do seznamu zprostředkovatelů členství rozhraní framework a přizpůsobení tohoto nového poskytovatele. použijte databázi z kroku 2.
+1. **Povolte ověřování pomocí formulářů.** Jak jsme probrali v  *<a id="_msoanchor_4">[ ](../introduction/an-overview-of-forms-authentication-cs.md)</a>přehledu ověřování pomocí formulářů*, ověřování pomocí formulářů je povolené úpravou `Web.config` a nastavením atributu `mode` elementu `<authentication>` na `Forms`. Když je povoleno ověřování pomocí formulářů, je každý příchozí požadavek prověřen pro *lístek ověřování pomocí formulářů*, který Pokud je přítomen, identifikuje žadatele.
+2. **Přidejte schéma služby Application Services do příslušné databáze.** Při použití `SqlMembershipProvider` potřebujeme nainstalovat schéma služby Application Services do databáze. Toto schéma je obvykle přidáno do stejné databáze, která obsahuje datový model aplikace. *Vytvoření schématu členství v SQL Server kurzu, které jste prohlédli pomocí nástroje `aspnet_regsql.exe` k tomuto účelu. <a id="_msoanchor_5">[ ](creating-the-membership-schema-in-sql-server-cs.md)</a>*
+3. **Upravte nastavení webové aplikace tak, aby odkazovalo na databázi z kroku 2.** *Vytvoření schématu členství v SQL Server* kurzu ukázalo dva způsoby, jak nakonfigurovat webovou aplikaci tak, aby `SqlMembershipProvider` používala databázi vybranou v kroku 2: úpravou `LocalSqlServer` název připojovacího řetězce; nebo přidáním nového registrovaného poskytovatele do seznamu zprostředkovatelů rozhraní pro členství a přizpůsobením tohoto nového poskytovatele pro použití databáze z kroku 2.
 
-Při vytváření webové aplikace, které používá `SqlMembershipProvider` a ověřování pomocí formulářů, budete muset provést tyto tři kroky před použitím `Membership` třídy nebo ovládací prvky ASP.NET – webové přihlášení. Protože jsme už provedli tyto kroky v předchozích kurzech, budeme připravení začít používat rozhraní členství!
+Při sestavování webové aplikace, která používá ověřování pomocí `SqlMembershipProvider` a formulářů, je nutné provést tyto tři kroky předtím, než použijete třídu `Membership` nebo webové ovládací prvky přihlášení ASP.NET. Vzhledem k tomu, že jsme už provedli tyto kroky v předchozích kurzech, jsme připraveni začít používat rámec členství.
 
-## <a name="step-1-adding-new-aspnet-pages"></a>Krok 1: Přidání nové stránky ASP.NET
+## <a name="step-1-adding-new-aspnet-pages"></a>Krok 1: přidání nových stránek ASP.NET
 
-V tomto kurzu a další tři jsme se zkoumání různých funkcí souvisejících s členství a možnosti. Potřebujeme sérii stránek ASP.NET k implementaci témata prozkoumat v rámci těchto kurzů. Pojďme vytvořit tyto stránky a pak soubor mapy webu `(Web.sitemap)`.
+V tomto kurzu a dalších třech prozkoumáme různé funkce a možnosti související s členstvím. K implementaci témat prověřených v rámci těchto kurzů budeme potřebovat řadu ASP.NET stránek. Pojďme vytvořit tyto stránky a potom soubor mapy webu `(Web.sitemap)`.
 
-Začněte tím, že vytvoříte novou složku v projektu s názvem `Membership`. V dalším kroku přidejte pět nových stránek technologie ASP.NET na `Membership` složky propojení s každou stránku `Site.master` stránky předlohy. Název stránky:
+Začněte vytvořením nové složky v projektu s názvem `Membership`. Dále přidejte pět nových ASP.NET stránek do složky `Membership` a propojíte jednotlivé stránky pomocí `Site.master` stránky předlohy. Pojmenujte stránky:
 
 - `CreatingUserAccounts.aspx`
 - `UserBasedAuthorization.aspx`
@@ -53,295 +53,295 @@ Začněte tím, že vytvoříte novou složku v projektu s názvem `Membership`.
 - `AdditionalUserInfo.aspx`
 - `Guestbook.aspx`
 
-Průzkumník řešení vašeho projektu v tomto okamžiku by měl vypadat podobně jako obrazovky je vidět na obrázku 1.
+V tomto okamžiku by Průzkumník řešení projektu vypadala podobně jako snímek obrazovky, který ukazuje obrázek 1.
 
-[![Pět nových stránek byly přidány do složky členství](creating-user-accounts-cs/_static/image2.png)](creating-user-accounts-cs/_static/image1.png)
+[do složky členství bylo přidáno ![pět nových stránek.](creating-user-accounts-cs/_static/image2.png)](creating-user-accounts-cs/_static/image1.png)
 
-**Obrázek 1**: Pět nových stránek byly přidány do `Membership` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image3.png))
+**Obrázek 1**: do složky `Membership` bylo přidáno pět nových stránek ([kliknutím zobrazíte obrázek v plné velikosti).](creating-user-accounts-cs/_static/image3.png)
 
-Jednotlivé stránky, v tomto okamžiku má dva ovládací prvky obsahu, jeden pro každou z prvků ContentPlaceHolder na hlavní stránce: `MainContent` a `LoginContent`.
+Každá stránka by měla v tomto okamžiku obsahovat dva ovládací prvky obsahu, jednu pro každý prvek prvků hlavní stránky: `MainContent` a `LoginContent`.
 
 [!code-aspx[Main](creating-user-accounts-cs/samples/sample1.aspx)]
 
-Vzpomeňte si, že `LoginContent` ContentPlaceHolder jeho výchozí značky zobrazí odkaz na přihlášení nebo odhlášení uživatele na webu, v závislosti na tom, jestli je uživatel ověřený. Přítomnost `Content2` ovládací prvek obsahu, ale přepíše výchozí značky stránky předlohy. Jak jsme probírali v *<a id="_msoanchor_6"> </a> [Přehled ověřování založené na formulářích](../introduction/an-overview-of-forms-authentication-cs.md)* kurz, to je užitečné v stránky, kde jsme nechcete zobrazit související s přihlášením možnosti v levém sloupci.
+Odvolat, že výchozí kód `LoginContent` ContentPlaceHolder zobrazuje odkaz na přihlášení nebo odhlášení od webu v závislosti na tom, jestli je uživatel ověřený. Přítomnost ovládacího prvku `Content2` obsahu však přepisuje výchozí značku stránky předlohy. Jak jsme probrali v  *<a id="_msoanchor_6">[ ](../introduction/an-overview-of-forms-authentication-cs.md)</a>kurzu Přehled ověřování* založeného na formulářích, to je užitečné na stránkách, kde nechcete zobrazovat možnosti související s přihlášením v levém sloupci.
 
-U těchto pět stránek, ale má být zobrazena na hlavní stránce výchozí kód pro `LoginContent` ContentPlaceHolder. Proto odebrat deklarativní `Content2` ovládacího prvku obsahu. Až to uděláte, každý z pěti stránku značek by měl obsahovat pouze jeden ovládací prvek obsahu.
+Pro tyto pět stran ale chceme pro `LoginContent` ContentPlaceHolder zobrazit výchozí označení stránky předlohy. Proto odeberte deklarativní označení pro ovládací prvek obsahu `Content2`. Po tom by každý z pěti značek stránky měl obsahovat pouze jeden ovládací prvek obsahu.
 
-## <a name="step-2-creating-the-site-map"></a>Krok 2: Vytváření mapy webu
+## <a name="step-2-creating-the-site-map"></a>Krok 2: vytvoření mapy webu
 
-Vše kromě nejvíce triviální weby muset implementovat nějakou formu navigační uživatelské rozhraní. Navigační uživatelské rozhraní může být jednoduchý seznam odkazů na různé části webu. Tyto odkazy můžete také může být uspořádány do nabídky nebo stromová zobrazení. Jako vývojáři stránek vytvoření navigační uživatelské rozhraní je pouze polovinu scénáře. Potřebujeme také některé znamená definovat strukturu logické lokality udržitelného a aktualizovatelné způsobem. Nové stránky se přidání nebo odebrání existujících stránek, chceme, abyste mohli aktualizovat jednozdrojového – Mapa webu – a mají tyto změny projeví v navigační uživatelské rozhraní v lokalitě.
+Všechny kromě triviálních webů potřebují implementovat nějaký formulář pro navigační uživatelské rozhraní. Navigační uživatelské rozhraní může být jednoduchý seznam odkazů na různé části webu. Alternativně mohou být tyto odkazy uspořádány do nabídek nebo zobrazení stromové struktury. Jako vývojáři stránky tvoří navigační uživatelské rozhraní pouze polovinu tohoto článku. Pro definování logických struktur webu potřebujeme taky nějaký způsob, který lze udržovat udržovatelně a aktualizovatelný způsobem. Když se přidají nové stránky nebo odeberou stávající stránky, chceme mít schopnost aktualizovat jeden zdroj – mapu webu a tyto změny se projeví v navigačním uživatelském rozhraní lokality.
 
-Tyto dvě úlohy – definování mapy webu a implementaci navigační uživatelského rozhraní na základě mapy webu – jsou snadné díky rozhraní Mapa webu a ovládací prvky navigace Web přidat v technologii ASP.NET verze 2.0. Rozhraní Mapa webu umožňuje vývojářům definovat Mapa webu a pak k němu přistupovat prostřednictvím programových rozhraní API ( [ `SiteMap` třídy](https://msdn.microsoft.com/library/system.web.sitemap.aspx)). Zahrnují integrované webové navigační ovládací prvky [Menu – ovládací prvek](https://msdn.microsoft.com/library/bz09dy46.aspx), [ovládací prvek TreeView](https://msdn.microsoft.com/library/3eafky27.aspx)a [ovládací prvek SiteMapPath](https://msdn.microsoft.com/library/3eafky27.aspx).
+Tyto dvě úlohy – definice mapy lokality a implementace navigačního uživatelského rozhraní založeného na mapě webu – je snadné dosáhnout v důsledku rozhraní mapy webu a webových ovládacích prvků navigace přidaných v ASP.NET verze 2,0. Rozhraní mapy webu umožňuje vývojářům definovat mapu webu a následně k nim přistupovat prostřednictvím programového rozhraní API ( [`SiteMap` třídy](https://msdn.microsoft.com/library/system.web.sitemap.aspx)). Vestavěné navigační webové ovládací prvky obsahují [ovládací prvek nabídky](https://msdn.microsoft.com/library/bz09dy46.aspx), [ovládací prvek TreeView](https://msdn.microsoft.com/library/3eafky27.aspx)a [ovládací prvek SiteMapPath](https://msdn.microsoft.com/library/3eafky27.aspx).
 
-Jako jsou členství a rolí rozhraní framework mapy webu propojitelnosti [modelu poskytovatele](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx). Úlohy třídy zprostředkovatele mapy webu je k vytvoření struktury v paměti používané `SiteMap` třídy z do trvalého úložiště dat, jako je například soubor XML nebo databázové tabulce. Rozhraní .NET Framework se dodává s výchozí zprostředkovatele mapy webu, který čte data mapy webu ze souboru XML ([`XmlSiteMapProvider`](https://msdn.microsoft.com/library/system.web.xmlsitemapprovider.aspx)), a to je poskytovatel použijeme v tomto kurzu. Některé alternativní implementace zprostředkovatele mapy webu naleznete v části Další čtení na konci tohoto kurzu.
+Podobně jako v případě členství a rolí jsou rozhraní mapy webu sestavena základem [modelem poskytovatele](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx). Úkolem třídy poskytovatele mapy webu je vygenerovat strukturu v paměti, kterou používá `SiteMap` třídy z trvalého úložiště dat, jako je například soubor XML nebo databázová tabulka. .NET Framework se dodává s výchozím poskytovatelem mapy webu, který čte data mapy webu ze souboru XML ([`XmlSiteMapProvider`](https://msdn.microsoft.com/library/system.web.xmlsitemapprovider.aspx)) a toto je zprostředkovatel, který v tomto kurzu použijeme. U některých alternativních implementací poskytovatele mapy webu najdete další části věnované čtení na konci tohoto kurzu.
 
-Výchozího zprostředkovatele mapy webu očekává, že správně ve formátu XML soubor s názvem `Web.sitemap` existovat kořenový adresář. Protože používáme tento výchozího zprostředkovatele, musíme přidat tento soubor a definovat strukturu mapy webu ve správném formátu XML. Chcete-li přidat soubor, klikněte pravým tlačítkem na název projektu v Průzkumníku řešení a zvolte Přidat novou položku. V dialogovém okně vyjádřit souhlas se službou přidat soubor mapy webu s názvem typu `Web.sitemap`.
+Výchozí zprostředkovatel mapy webu očekává v kořenovém adresáři správně formátovaný soubor XML s názvem `Web.sitemap`. Vzhledem k tomu, že používáme tohoto výchozího zprostředkovatele, musíme tento soubor přidat a definovat strukturu mapy webu v příslušném formátu XML. Chcete-li přidat soubor, klikněte pravým tlačítkem myši na název projektu v Průzkumník řešení a vyberte možnost Přidat novou položku. Z dialogového okna se můžete rozhodnout přidat soubor typu mapa webu s názvem `Web.sitemap`.
 
-[![Přidejte soubor s názvem Web.sitemap do kořenového adresáře projektu](creating-user-accounts-cs/_static/image5.png)](creating-user-accounts-cs/_static/image4.png)
+[![přidat soubor s názvem Web. sitemap do kořenového adresáře projektu](creating-user-accounts-cs/_static/image5.png)](creating-user-accounts-cs/_static/image4.png)
 
-**Obrázek 2**: Přidat soubor s názvem `Web.sitemap` do kořenového adresáře projektu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image6.png))
+**Obrázek 2**: přidejte soubor s názvem `Web.sitemap` do kořenového adresáře projektu ([kliknutím zobrazíte obrázek v plné velikosti).](creating-user-accounts-cs/_static/image6.png)
 
-Soubor mapy webu XML definuje strukturu webu jako hierarchie. Tento hierarchický vztah je modelovaná v souboru XML pomocí původ z `<siteMapNode>` elementy. `Web.sitemap` Musí začínat `<siteMap>` nadřazeného uzlu, který obsahuje přesně jednu `<siteMapNode>` podřízené. Tomto nejvyšší úrovně `<siteMapNode>` element reprezentuje kořen hierarchie a může mít libovolný počet podřízených uzlů. Každý `<siteMapNode>` musí obsahovat element `title` atribut a může volitelně zahrnovat `url` a `description` atributy, mimo jiné; každý neprázdný `url` atribut musí být jedinečný.
+Soubor mapování webu XML definuje strukturu webu jako hierarchii. Tento hierarchický vztah je modelován v souboru XML pomocí původ prvků `<siteMapNode>`. `Web.sitemap` musí začínat `<siteMap>` nadřazeným uzlem, který má přesně jednu `<siteMapNode>` podřízenou položku. Tento element `<siteMapNode>` nejvyšší úrovně představuje kořen hierarchie a může mít libovolný počet podřízených uzlů. Každý prvek `<siteMapNode>` musí zahrnovat atribut `title` a může volitelně zahrnovat atributy `url` a `description`, a to mimo jiné. Každý neprázdný `url` atribut musí být jedinečný.
 
-Zadejte následující kód XML do `Web.sitemap` souboru:
+Do souboru `Web.sitemap` zadejte následující kód XML:
 
 [!code-xml[Main](creating-user-accounts-cs/samples/sample2.xml)]
 
-Výše uvedené značky mapy webu definuje hierarchii je znázorněno na obrázku 3.
+Výše uvedené označení mapy webu definuje hierarchii zobrazenou na obrázku 3.
 
-[![Mapa webu představuje hierarchickou strukturu navigační](creating-user-accounts-cs/_static/image8.png)](creating-user-accounts-cs/_static/image7.png)
+[![mapa webu představuje hierarchickou navigační strukturu.](creating-user-accounts-cs/_static/image8.png)](creating-user-accounts-cs/_static/image7.png)
 
-**Obrázek 3**: Mapa webu představuje hierarchickou strukturu navigační ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image9.png))
+**Obrázek 3**: Mapa webu představuje hierarchickou navigační strukturu ([kliknutím zobrazíte obrázek v plné velikosti).](creating-user-accounts-cs/_static/image9.png)
 
-## <a name="step-3-updating-the-master-page-to-include-a-navigational-user-interface"></a>Krok 3: Aktualizace stránky předlohy, aby zahrnovala navigační uživatelské rozhraní
+## <a name="step-3-updating-the-master-page-to-include-a-navigational-user-interface"></a>Krok 3: aktualizace stránky předlohy tak, aby zahrnovala navigační uživatelské rozhraní
 
-Technologie ASP.NET obsahuje řadu související navigačního webové ovládací prvky k návrhu uživatelského rozhraní. Patří mezi ně v nabídce, prvek TreeView a ovládací prvky SiteMapPath. Ovládací prvky nabídky a TreeView struktury mapy webu v nabídky nebo stromu, vykreslit, že ovládací prvky SiteMapPath zobrazí s popisem cesty, který zobrazuje aktuální uzel přístupu a jeho nadřazenými prvky. Data mapy webu může být vázaný na jiná data webové ovládací prvky pomocí SiteMapDataSource a je možné programově přistupovat přes `SiteMap` třídy.
+ASP.NET zahrnuje řadu webových ovládacích prvků souvisejících s navigací pro návrh uživatelského rozhraní. Mezi ně patří nabídka, TreeView a ovládací prvky SiteMapPath. Ovládací prvky menu a TreeView vykreslují strukturu mapy webu v nabídce nebo stromu, v uvedeném pořadí, zatímco SiteMapPath zobrazí popis cesty, který ukazuje navštívený aktuální uzel i jeho předchůdce. Data mapy webu mohou být svázána s jinými datovými ovládacími prvky dat pomocí ovládacího prvku SiteMapDataSource a lze k němu přistupovat programově prostřednictvím třídy `SiteMap`.
 
-Důkladné diskuzi o rozhraní Mapa webu a ovládací prvky navigace je nad rámec této sérii kurzů, spíše než ztrácet čas vytváření vlastní navigační uživatelské rozhraní teď místo toho si půjčte použitému v mé *[ Práce s daty v technologii ASP.NET 2.0](../../data-access/index.md)* série kurzů, které používá ovládacím prvkem Repeater k zobrazení seznamu s odrážkami hloubkové dvou navigačních odkazů, jak je znázorněno na obrázku 4.
+Vzhledem k tomu, že důkladná diskuze nad rámec architektury mapy webu a navigační ovládací prvky přesahují rozsah této série kurzů, nemusíte místo útraty vytvořit vlastní navigační rozhraní pro navigaci, které se používá v *[rámci práce s daty v řadě kurzů ASP.NET 2,0](../../data-access/index.md)* , která používá ovládací prvek Repeater k zobrazení seznamu odkazů s odrážkami, jak je znázorněno na obrázku 4.
 
-### <a name="adding-a-two-level-list-of-links-in-the-left-column"></a>Přidání Dvouúrovňová seznam odkazů v levém sloupci
+### <a name="adding-a-two-level-list-of-links-in-the-left-column"></a>Přidání seznamu odkazů ze dvou úrovní do levého sloupce
 
-Pokud chcete vytvořit toto rozhraní, přidejte následující deklarativní k `Site.master` hlavní stránky v levém sloupci kde text "TODO: Nabídka se tady..." momentálně nachází.
+Chcete-li vytvořit toto rozhraní, přidejte následující deklarativní označení do levého sloupce `Site.master` hlavní stránky, kde text "TODO: menu" bude jít... " v současné době se nachází.
 
 [!code-aspx[Main](creating-user-accounts-cs/samples/sample3.aspx)]
 
-Výše uvedené značka vytvoří vazbu ovládacího prvku opakovače s názvem `menu` SiteMapDataSource, který vrací definované v hierarchii mapy webu `Web.sitemap`. Od verze ovládacího prvku SiteMapDataSource [ `ShowStartingNode` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sitemapdatasource.showstartingnode.aspx) nastaven na hodnotu NEPRAVDA, spustí vrácení mapy webu hierarchii, počínaje následovníky uzel "Home". Opakovači zobrazuje každou z těchto uzlů (aktuálně jenom "členství") v `<li>` elementu. Jiný, vnitřní Repeater pak zobrazí podřízené objekty aktuálního uzlu ve vnořených neuspořádaný seznam.
+Výše uvedený kód váže ovládací prvek Repeater s názvem `menu` k prvku SiteMapDataSource, který vrací hierarchii mapy webu definovanou v `Web.sitemap`. Vzhledem k tomu, že [vlastnost`ShowStartingNode`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sitemapdatasource.showstartingnode.aspx) ovládacího prvku SiteMapDataSource je nastavená na hodnotu false, začne vracet hierarchii mapy lokality počínaje podřízenými uzly domovského uzlu. Repeater zobrazí každý z těchto uzlů (v současné době pouze "členství") v elementu `<li>`. Další vnitřní opakovač pak zobrazí podřízené objekty aktuálního uzlu ve vnořeném neuspořádaném seznamu.
 
-Obrázek 4 ukazuje výše uvedené značky vykresleného výstupu se strukturou mapy webu, který jsme vytvořili v kroku 2. Opakovači vykreslí značky vanilla neuspořádaný seznam pravidla šablony kaskádových definované v `Styles.css` zodpovídají za vkusnou rozložení. Podrobnější popis toho, jak funguje výše uvedené značky, najdete [stránky předlohy a navigace na webu](https://asp.net/learn/data-access/tutorial-03-cs.aspx) kurzu.
+Obrázek 4 znázorňuje Vykreslený výstup výše uvedeného kódu se strukturou mapy webu, kterou jsme vytvořili v kroku 2. Repeater vykresluje Vanilla neuspořádaný seznam značek. pro rozložení aesthetically-přitažlivé jsou odpovědni pravidla šablony kaskádových stylů definovaná v `Styles.css`. Podrobnější popis toho, jak výše uvedený kód funguje, najdete v kurzu [hlavní stránky a navigace na webu](https://asp.net/learn/data-access/tutorial-03-cs.aspx) .
 
-[![Navigační uživatelské rozhraní je vykreslen pomocí vnořené neuspořádaný seznam](creating-user-accounts-cs/_static/image11.png)](creating-user-accounts-cs/_static/image10.png)
+[![se navigační uživatelské rozhraní vykresluje pomocí vnořených neuspořádaných seznamů.](creating-user-accounts-cs/_static/image11.png)](creating-user-accounts-cs/_static/image10.png)
 
-**Obrázek 4**: Navigační uživatelské rozhraní je vykreslen pomocí vnořené neuspořádaný seznam ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image12.png))
+**Obrázek 4**: navigační uživatelské rozhraní se vykresluje pomocí vnořených neuspořádaných seznamů ([kliknutím zobrazíte obrázek v plné velikosti).](creating-user-accounts-cs/_static/image12.png)
 
-### <a name="adding-breadcrumb-navigation"></a>Přidání navigace s popisem cesty
+### <a name="adding-breadcrumb-navigation"></a>Přidávání navigace s popisem cesty
 
-Kromě seznam odkazů v levém sloupci, můžeme mít také každý zobrazení stránky [navigace s popisem cesty](http://en.wikipedia.org/wiki/Breadcrumb_%28navigation%29). Zobrazení cesty je prvek navigační uživatelského rozhraní, které rychle uživatelům své aktuální pozici v rámci hierarchie lokality. Ovládací prvek SiteMapPath framework mapy webu používá k určení aktuální stránky umístění v mapě webu a pak zobrazí s popisem cesty, na základě těchto informací.
+Kromě seznamu odkazů v levém sloupci máme také každou stránku, kde se zobrazí [Popis cesty](http://en.wikipedia.org/wiki/Breadcrumb_%28navigation%29). Navigace s popisem cesty je navigační prvek uživatelského rozhraní, který rychle zobrazuje uživatele na aktuální pozici v rámci hierarchie lokality. Ovládací prvek SiteMapPath používá rozhraní mapy webu k určení umístění aktuální stránky v mapě webu a následně zobrazí popis cesty na základě těchto informací.
 
-Konkrétně, přidat `<span>` element na stránce předlohy záhlaví `<div>` prvek a nastavte nový `<span>` elementu `class` atribut "s popisem cesty". ( `Styles.css` Třída obsahuje pravidla pro třídu "s popisem cesty".) V dalším kroku přidejte SiteMapPath na tomto nový `<span>` elementu.
+Konkrétně přidejte `<span>` element do záhlaví `<div>` prvku hlavní stránky a nastavte nový atribut `class` elementu `<span>` na možnost "navigace". (Třída `Styles.css` obsahuje pravidlo pro třídu "s popisem".) Dále do tohoto nového prvku `<span>` přidejte SiteMapPath.
 
 [!code-aspx[Main](creating-user-accounts-cs/samples/sample4.aspx)]
 
-Obrázek 5 ukazuje výstup ovládací prvky SiteMapPath při návštěvě `~/Membership/CreatingUserAccounts.aspx`.
+Obrázek 5 ukazuje výstup SiteMapPath při návštěvě `~/Membership/CreatingUserAccounts.aspx`.
 
-[![Zobrazí tento navigační prvek určuje aktuální stránku a namapujte jeho předchůdců v lokalitě](creating-user-accounts-cs/_static/image14.png)](creating-user-accounts-cs/_static/image13.png)
+[![zobrazení navigace zobrazuje aktuální stránku a její předchůdce v mapě webu](creating-user-accounts-cs/_static/image14.png)](creating-user-accounts-cs/_static/image13.png)
 
-**Obrázek 5**: Tento navigační prvek určuje zobrazí aktuální stránce a jeho nadřazenými prvky do mapy webu ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image15.png))
+**Obrázek 5**: navigace s popisem cesty zobrazuje aktuální stránku a její předchůdce v mapě webu ([kliknutím zobrazíte obrázek v plné velikosti).](creating-user-accounts-cs/_static/image15.png)
 
-## <a name="step-4-removing-the-custom-principal-and-identity-logic"></a>Krok 4: Odebrání vlastní hlavní a logiku Identity
+## <a name="step-4-removing-the-custom-principal-and-identity-logic"></a>Krok 4: Odebrání vlastního objektu zabezpečení a logiky identity
 
-V *<a id="_msoanchor_7"> </a> [konfigurace ověřování formulářů a témata pokročilé](../introduction/forms-authentication-configuration-and-advanced-topics-cs.md)* kurzu jsme viděli, jak přidružit vlastní objekty zabezpečení a identity ověřeného uživatele. Můžeme to provést tak, že vytvoříte obslužné rutiny události v `Global.asax` pro aplikace `PostAuthenticateRequest` událost, která se vyvolá po `FormsAuthenticationModule` ověření uživatele. V této obslužné rutiny události jsme nahradit `GenericPrincipal` a `FormsIdentity` objekty přidá `FormsAuthenticationModule` s `CustomPrincipal` a `CustomIdentity` objekty jsme vytvořili v tomto kurzu.
+V kurzu *Konfigurace ověřování a Pokročilá témata jsme zjistili, jak přidružit k ověřenému uživateli vlastní objekty zabezpečení a identity. <a id="_msoanchor_7">[ ](../introduction/forms-authentication-configuration-and-advanced-topics-cs.md)</a>* Provedli jsme to vytvořením obslužné rutiny události v `Global.asax` pro událost `PostAuthenticateRequest` aplikace, která se aktivuje po ověření uživatele `FormsAuthenticationModule`. V této obslužné rutině události nahradili `GenericPrincipal` a objekty `FormsIdentity` přidané `FormsAuthenticationModule` s objekty `CustomPrincipal` a `CustomIdentity`, které jsme vytvořili v tomto kurzu.
 
-Vlastní objekty zabezpečení a identita jsou užitečné v některých scénářích, ve většině případů `GenericPrincipal` a `FormsIdentity` objekty jsou dostačující. V důsledku toho myslím, že bylo by vhodné si vrátit k výchozímu chování. Odebráním nebo okomentováním odpovídajícího provedení této změny `PostAuthenticateRequest` obslužná rutina události nebo odstraněním `Global.asax` kompletně soubor.
+Zatímco vlastní objekty zabezpečení a identity jsou užitečné v některých scénářích, ve většině případů jsou objekty `GenericPrincipal` a `FormsIdentity` dostatečné. V důsledku toho se domníváme, že by bylo vhodné se vrátit k výchozímu chování. Tuto změnu udělejte buď odebráním nebo zadáním komentáře obslužné rutiny události `PostAuthenticateRequest`, nebo odstraněním `Global.asax` souboru zcela.
 
 ## <a name="step-5-programmatically-creating-a-new-user"></a>Krok 5: Programové vytvoření nového uživatele
 
-Chcete-li vytvořit nový uživatelský účet pomocí rozhraní framework členství `Membership` třídy [ `CreateUser` metoda](https://msdn.microsoft.com/library/system.web.security.membership.createuser.aspx). Tato metoda má vstupní parametry pro uživatelské jméno, heslo a další související s uživateli pole. Na volání, deleguje vytvoření nového uživatelského účtu nakonfigurovaného zprostředkovatele členství a potom se vrátí [ `MembershipUser` objekt](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx) představující nově vytvořené uživatelský účet.
+Chcete-li vytvořit nový uživatelský účet prostřednictvím rozhraní členství, použijte [metodu`CreateUser`](https://msdn.microsoft.com/library/system.web.security.membership.createuser.aspx)třídy `Membership`. Tato metoda má vstupní parametry pro uživatelské jméno, heslo a další pole související s uživatelem. Při vyvolání IT deleguje vytvoření nového uživatelského účtu nakonfigurovanému zprostředkovateli členství a vrátí [objekt`MembershipUser`](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx) reprezentující právě vytvořený uživatelský účet.
 
-`CreateUser` Metoda má čtyři přetížení, každé přijímající různý počet vstupních parametrů:
+Metoda `CreateUser` má čtyři přetížení, přičemž každý z nich přijímá jiný počet vstupních parametrů:
 
 - [`CreateUser(username, password)`](https://msdn.microsoft.com/library/d8t4h2es.aspx)
 - [`CreateUser(username, password, email)`](https://msdn.microsoft.com/library/t8yy6w3h.aspx)
 - [`CreateUser(username, password, email, passwordQuestion, passwordAnswer, isApproved, MembershipCreateStatus)`](https://msdn.microsoft.com/library/82xx2e62.aspx)
 - [`CreateUser(username, password, email, passwordQuestion, passwordAnswer, isApproved, providerUserKey, MembershipCreateStatus)`](https://msdn.microsoft.com/library/ms152012.aspx)
 
-Tyto čtyři přetížení se liší v množství informací, které se shromažďují. První přetížení, například vyžaduje jenom uživatelské jméno a heslo pro nový uživatelský účet, zatímco druhá také vyžaduje e-mailovou adresu uživatele.
+Tato čtyři přetížení se liší od množství shromažďovaných informací. První přetížení například vyžaduje pouze uživatelské jméno a heslo pro nový uživatelský účet, zatímco druhý z nich také vyžaduje e-mailovou adresu uživatele.
 
-Tato přetížení neexistuje, protože informace potřebné k vytvoření nového uživatelského účtu závisí na nastavení konfigurace zprostředkovatele členství. V *<a id="_msoanchor_8"> </a> [vytvoření schématu členství v SQL serveru](creating-the-membership-schema-in-sql-server-cs.md)* kurzu jsme se zaměřili na zadání nastavení konfigurace pro zprostředkovatele členství v `Web.config`. Tabulka 2 zahrnuté úplný seznam nastavení konfigurace.
+Tato přetížení existují, protože informace potřebné k vytvoření nového uživatelského účtu závisí na nastavení konfigurace poskytovatele členství. V kurzu  *<a id="_msoanchor_8">[ ](creating-the-membership-schema-in-sql-server-cs.md)</a>vytváření schématu členství v SQL Server* jsme prozkoumali určení nastavení konfigurace zprostředkovatele členství v `Web.config`. Tabulka 2 obsahuje úplný seznam nastavení konfigurace.
 
-Jeden takový členství zprostředkovatele nastavení konfigurace, který má vliv na co `CreateUser` lze přetížení je `requiresQuestionAndAnswer` nastavení. Pokud `requiresQuestionAndAnswer` je nastavena na `true` (výchozí), pak při vytváření nového uživatelského účtu jsme musíte zadat bezpečnostní otázky a odpovědi. Tyto informace se později používá, pokud uživatel musí resetovat nebo změnit své heslo. Konkrétně v tu chvíli jsou zobrazená na bezpečnostní otázku a musí uvést správnou odpověď, aby bylo možné resetovat nebo změnit své heslo. V důsledku toho pokud `requiresQuestionAndAnswer` je nastavena na `true` pak buď první dvě volání `CreateUser` přetížení má za následek výjimku, protože chybí zabezpečovací otázka a odpověď. Vzhledem k tomu, že naše aplikace je nakonfigurován tak, aby vyžadovala zabezpečovací otázka a odpověď, budeme muset použít jeden z druhé dvě přetížení při vytváření uživatele prostřednictvím kódu programu.
+Toto nastavení konfigurace zprostředkovatele členství, které ovlivňuje `CreateUser` přetížení, je možné použít jako `requiresQuestionAndAnswer` nastavení. Pokud je `requiresQuestionAndAnswer` nastavená na `true` (výchozí nastavení), pak při vytváření nového uživatelského účtu musíte zadat bezpečnostní otázku a odpověď. Tyto informace se později použijí, pokud uživatel potřebuje resetovat nebo změnit heslo. Konkrétně v takovém případě se zobrazí bezpečnostní otázka a musí zadat správnou odpověď, aby bylo možné resetovat nebo změnit heslo. V důsledku toho, pokud je `requiresQuestionAndAnswer` nastavena na `true` pak volání jednoho z prvních dvou `CreateUser` přetížení má za následek výjimku, protože bezpečnostní otázka a odpověď chybí. Vzhledem k tomu, že je naše aplikace momentálně nakonfigurovaná tak, aby vyžadovala bezpečnostní otázku a odpověď, budeme při vytváření uživatelského kódu programově potřebovat jedno z těchto dvou přetížení.
 
-Pro ilustraci použití `CreateUser` metoda, Pojďme vytvořit uživatelské rozhraní, ve kterém jsme výzva k zadání jména, hesla, e-mailu a odpověď na předdefinované bezpečnostní otázky. Otevřít `CreatingUserAccounts.aspx` stránku `Membership` složky a přidejte následující ovládací prvky webového obsahu ovládacího prvku:
+K ilustraci pomocí `CreateUser` metody vytvoříme uživatelské rozhraní, ve kterém se uživateli zobrazí výzva k zadání jména, hesla, e-mailu a odpovědi na předem definovanou bezpečnostní otázku. Ve složce `Membership` otevřete stránku `CreatingUserAccounts.aspx` a přidejte do ovládacího prvku obsahu následující webové ovládací prvky:
 
 - Textové pole s názvem `Username`
-- Textové pole s názvem `Password`, jejichž `TextMode` je nastavena na `Password`
+- Textové pole s názvem `Password`, jehož vlastnost `TextMode` je nastavena na `Password`
 - Textové pole s názvem `Email`
-- Popisek s názvem `SecurityQuestion` s jeho `Text` vlastnost odstraněné
+- Popisek s názvem `SecurityQuestion` s jeho vlastností `Text` se vymazal.
 - Textové pole s názvem `SecurityAnswer`
-- Tlačítko s názvem `CreateAccountButton` jejichž Text je nastavena na "Vytvořit uživatelský účet"
-- Ovládací prvek popisek s názvem `CreateAccountResults` s jeho `Text` vlastnost odstraněné
+- Tlačítko s názvem `CreateAccountButton`, jehož vlastnost text je nastavena na možnost vytvořit uživatelský účet.
+- Ovládací prvek popisek s názvem `CreateAccountResults` s jeho vlastností `Text` vymazal.
 
-V tomto okamžiku vaše obrazovka by měla vypadat podobně jako obrazovky je vidět na obrázku 6.
+V tuto chvíli by vaše obrazovka měla vypadat podobně jako snímek obrazovky, který je znázorněn na obrázku 6.
 
-[![Přidat různé ovládací prvky webové stránky CreatingUserAccounts.aspx](creating-user-accounts-cs/_static/image17.png)](creating-user-accounts-cs/_static/image16.png)
+[![přidat různé webové ovládací prvky na stránku CreatingUserAccounts. aspx](creating-user-accounts-cs/_static/image17.png)](creating-user-accounts-cs/_static/image16.png)
 
-**Obrázek 6**: Přidat různé webové ovládací prvky `CreatingUserAccounts.aspx` stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image18.png))
+**Obrázek 6**: Přidání různých webových ovládacích prvků na stránku `CreatingUserAccounts.aspx` ([kliknutím zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image18.png))
 
-`SecurityQuestion` Popisek a `SecurityAnswer` textové pole se mají zobrazit předdefinované bezpečnostní otázky a odpovědi uživatele shromažďování. Všimněte si, zabezpečovací otázka a odpověď jsou uložená na základě uživatele podle uživatelského tak je možné, aby každý uživatel mohl definovat vlastní bezpečnostní otázku. Ale pro účely tohoto příkladu můžu rozhodli použít univerzální bezpečnostní otázky, konkrétně: "Jak se vaše oblíbené barva?"
+Popisek `SecurityQuestion` a textové pole `SecurityAnswer` mají za cíl zobrazit předem definovanou bezpečnostní otázku a shromažďovat odpověď uživatele. Všimněte si, že bezpečnostní otázka a odpověď jsou uloženy na základě uživatele, takže je možné umožnit každému uživateli definovat vlastní bezpečnostní otázku. V tomto příkladu se ale rozhodl použít univerzální bezpečnostní otázku, konkrétně: "Co je vaše oblíbená barva?"
 
-K implementaci této předdefinované bezpečnostní otázku, přidejte konstanty do třídy použití modelu code-behind na stránce s názvem `passwordQuestion`, její přiřazení na bezpečnostní otázku. Potom v `Page_Load` obslužná rutina události, přiřaďte tuto konstanta, která se `SecurityQuestion` popisku `Text` vlastnost:
+Chcete-li implementovat tuto předem definovanou bezpečnostní otázku, přidejte konstantu do třídy kódu na pozadí stránky s názvem `passwordQuestion`a přiřaďte jí bezpečnostní otázku. Potom v obslužné rutině události `Page_Load` přiřaďte tuto konstantu k vlastnosti `Text` popisku `SecurityQuestion`:
 
 [!code-csharp[Main](creating-user-accounts-cs/samples/sample5.cs)]
 
-Dále vytvořte obslužnou rutinu události pro `CreateAccountButton`společnosti `Click` událostí a přidejte následující kód:
+Dále vytvořte obslužnou rutinu události pro událost `Click` `CreateAccountButton`a přidejte následující kód:
 
 [!code-csharp[Main](creating-user-accounts-cs/samples/sample6.cs)]
 
-`Click` Spustí obslužnou rutinu události tak, že definujete proměnnou s názvem `createStatus` typu [ `MembershipCreateStatus` ](https://msdn.microsoft.com/library/system.web.security.membershipcreatestatus.aspx). `MembershipCreateStatus` je výčet, který označuje stav `CreateUser` operace. Například, pokud uživatelský účet je vytvořen úspěšně, výsledná `MembershipCreateStatus` instance bude nastavena na hodnotu `Success`; na druhé straně, pokud se operace nezdaří, protože už existuje uživatel se stejným uživatelským jménem, bude nastavena na hodnotu `DuplicateUserName`. V `CreateUser` přetížení používáme, potřebujeme k předání `MembershipCreateStatus` instance do metody jako `out` parametru. Tento parametr je nastaven na odpovídající hodnotu v rámci `CreateUser` metoda a můžete zkontrolovat její hodnota po volání metody k určení, zda uživatelský účet byl úspěšně vytvořen.
+Obslužná rutina události `Click` začíná definováním proměnné pojmenované `createStatus` typu [`MembershipCreateStatus`](https://msdn.microsoft.com/library/system.web.security.membershipcreatestatus.aspx). `MembershipCreateStatus` je výčet, který označuje stav operace `CreateUser`. Pokud se například uživatelský účet úspěšně vytvoří, výsledná instance `MembershipCreateStatus` se nastaví na hodnotu `Success`; na druhé straně, pokud se operace nezdaří, protože již existuje uživatel se stejným uživatelským jménem, bude nastaven na hodnotu `DuplicateUserName`. V `CreateUser` přetížení potřebujeme předat instanci `MembershipCreateStatus` do metody jako parametr `out`. Tento parametr je nastaven na odpovídající hodnotu v rámci metody `CreateUser` a můžeme zjistit jeho hodnotu po volání metody, abyste zjistili, zda byl uživatelský účet úspěšně vytvořen.
 
-Po volání `CreateUser`a předejte `createStatus`, `switch` prohlášení se používá k výstupu odpovídající zprávu v závislosti na hodnotě přiřazené `createStatus`. Obrázky 7 zobrazuje výstup, když nového uživatele byla úspěšně vytvořena. Obrázky 8 a 9 popisují výstup, pokud nevytvoříte uživatelský účet. Na obrázku 8 návštěvníka zadali heslo pět nedoručených zpráv, který nesplňuje požadavky na sílu hesla států v nastavení konfigurace zprostředkovatele členství. Na obrázku 9 se pokouší návštěvníka vytvořte účet uživatele s existující uživatelské jméno (tu vytvořili na obrázku 7).
+Po volání `CreateUser`, který se předává do `createStatus`, se pro výstup příslušné zprávy v závislosti na hodnotě přiřazené k `createStatus`používá příkaz `switch`. Obrázky 7 ukazují výstup nově úspěšně vytvořeného uživatele. Na obrázcích 8 a 9 se zobrazí výstup, když se uživatelský účet nevytvoří. Na obrázku 8 návštěvník zadal heslo s pěti písmeny, které nesplňuje požadavky na sílu hesla napsané v nastavení konfigurace poskytovatele členství. Na obrázku 9 se návštěvník pokouší vytvořit uživatelský účet s existujícím uživatelským jménem (ten vytvořený na obrázku 7).
 
-[![Nový uživatelský účet je úspěšně vytvořen](creating-user-accounts-cs/_static/image20.png)](creating-user-accounts-cs/_static/image19.png)
+[![se úspěšně vytvořil nový uživatelský účet.](creating-user-accounts-cs/_static/image20.png)](creating-user-accounts-cs/_static/image19.png)
 
-**Obrázek 7**: Nový uživatelský účet se úspěšně vytvořila ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image21.png))
+**Obrázek 7**: byl úspěšně vytvořen nový uživatelský účet ([kliknutím zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image21.png)).
 
-[![Uživatelský účet nebyl vytvořen, protože zadané heslo je moc slabé](creating-user-accounts-cs/_static/image23.png)](creating-user-accounts-cs/_static/image22.png)
+[![uživatelský účet není vytvořen, protože zadané heslo je příliš slabé.](creating-user-accounts-cs/_static/image23.png)](creating-user-accounts-cs/_static/image22.png)
 
-**Obrázek 8**: Uživatelský účet nebyl vytvořen, protože zadané heslo je moc slabé ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image24.png))
+**Obrázek 8**: uživatelský účet není vytvořen, protože zadané heslo je příliš slabé ([kliknutím zobrazíte obrázek v plné velikosti).](creating-user-accounts-cs/_static/image24.png)
 
-[![Uživatelský účet je, že není vytvořena protože uživatelské jméno je již používáno](creating-user-accounts-cs/_static/image26.png)](creating-user-accounts-cs/_static/image25.png)
+[![uživatelský účet není vytvořen, protože uživatelské jméno je již používáno.](creating-user-accounts-cs/_static/image26.png)](creating-user-accounts-cs/_static/image25.png)
 
-**Obrázek 9**: Není vytvořen protože uživatelské jméno je již používán je uživatelský účet ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image27.png))
-
-> [!NOTE]
-> Asi vás zajímá jak určit úspěch nebo neúspěch při jedním z prvních dvou `CreateUser` přetížení metody, ani o které má parametr typu `MembershipCreateStatus`. Vyvolat tyto první dvě přetížení [ `MembershipCreateUserException` výjimka](https://msdn.microsoft.com/library/system.web.security.membershipcreateuserexception.aspx) i v případě selhání, což zahrnuje [ `StatusCode` vlastnost](https://msdn.microsoft.com/library/system.web.security.membershipcreateuserexception.statuscode.aspx) typu `MembershipCreateStatus`.
-
-Po vytvoření jen několik uživatelských účtů, ověřte, že účty byly vytvořeny ve výpisu obsahu `aspnet_Users` a `aspnet_Membership` tabulky v `SecurityTutorials.mdf` databáze. Jak je vidět na obrázku 10, po přidání dva uživatele prostřednictvím `CreatingUserAccounts.aspx` stránky: Tito a Bruce.
-
-[![Existují dva uživatele v Store členství uživatele: Tito a Bruce](creating-user-accounts-cs/_static/image29.png)](creating-user-accounts-cs/_static/image28.png)
-
-**Obrázek 10**: Existují dva uživatele v Store členství uživatele: Tito a Bruce ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image30.png))
-
-Zatímco úložiště uživatele členství teď obsahuje informace o účtu Bruce a Tito společnosti, musíme ještě implementovat funkci, která umožňuje Bruce nebo Tito pro přihlášení k webu. V současné době `Login.aspx` ověřuje pověření uživatele s pevně zakódované sada párů uživatelského jména a hesla – dělá *není* ověření zadané přihlašovací údaje rámec členství. Pro nyní zobrazuje nové uživatelské účty v `aspnet_Users` a `aspnet_Membership` tabulky budou mít k stačit. V dalším kurzu  *<a id="_msoanchor_9"> </a> [ověření uživatele přihlašovací údaje proti the členství uživatele Store](validating-user-credentials-against-the-membership-user-store-cs.md)*, aktualizujeme na přihlašovací stránku k ověření proti úložišti členství.
+**Obrázek 9**: uživatelský účet není vytvořen, protože uživatelské jméno je již používáno ([kliknutím zobrazíte obrázek v plné velikosti).](creating-user-accounts-cs/_static/image27.png)
 
 > [!NOTE]
-> Pokud nevidíte všechny uživatele ve vaší `SecurityTutorials.mdf` databáze, může to být způsobené vaše webová aplikace používá výchozí zprostředkovatel členství `AspNetSqlMembershipProvider`, který používá `ASPNETDB.mdf` databáze jako své úložiště uživatele. Pokud chcete zjistit, zda se jedná o problém, klikněte na tlačítko Aktualizovat v Průzkumníku řešení. Pokud databázi s názvem `ASPNETDB.mdf` byl přidán do `App_Data` složky, to je problém. Vraťte se do kroku 4 *<a id="_msoanchor_10"> </a> [vytvoření schématu členství v SQL serveru](creating-the-membership-schema-in-sql-server-cs.md)* kurz pokyny o tom, jak správně nakonfigurovat zprostředkovatele členství.
+> Může se zajímat, jak určit úspěch nebo neúspěch při použití jednoho z prvních dvou přetížení metod `CreateUser`, ani z toho, který má parametr typu `MembershipCreateStatus`. Tyto první dvě přetížení vyvolávají [výjimku`MembershipCreateUserException`](https://msdn.microsoft.com/library/system.web.security.membershipcreateuserexception.aspx) v tváři selhání, která zahrnuje [vlastnost`StatusCode`](https://msdn.microsoft.com/library/system.web.security.membershipcreateuserexception.statuscode.aspx) typu `MembershipCreateStatus`.
 
-Ve většině vytvoření uživatelského účtu scénáře, návštěvníka prezentována některých rozhraní a zadejte své uživatelské jméno, heslo, e-mail a další důležité informace v tomto okamžiku se vytvoří nový účet. V tomto kroku jsme zvažovali vytváření takových rozhraní ručně a pak viděli, jak používat `Membership.CreateUser` na vstupy uživatele na základě metod programově přidat nový uživatelský účet. Náš kód, ale právě vytvořili nový uživatelský účet. Nebyla provedena jakékoli následné akce, jako jsou přihlášení uživatele k webu pomocí nově vytvořené uživatelského účtu nebo odeslání potvrzovací e-mail uživateli. Tyto další kroky by vyžadoval další kód na tlačítku `Click` obslužné rutiny události.
+Po vytvoření několika uživatelských účtů ověřte, že byly vytvořeny účty pomocí výpisu obsahu `aspnet_Users` a `aspnet_Membership` tabulek v databázi `SecurityTutorials.mdf`. Jak ukazuje obrázek 10, Přidali jsme dva uživatele prostřednictvím stránky `CreatingUserAccounts.aspx`: tito a Bruce.
 
-Technologie ASP.NET se dodává s ovládacím prvku CreateUserWizard, která je navržena pro zpracování procesu vytvoření účtu uživatele od vykreslení uživatelské rozhraní pro vytváření nových uživatelských účtů, k vytvoření účtu v rámci členství a provádění po účtu vytvoření úlohy, jako je odesílání e-mail s potvrzením a přihlašování nově vytvořené uživatelské Web. Použití ovládacího prvku CreateUserWizard je stejně jednoduché jako ovládacím prvku CreateUserWizard přetažením z panelu nástrojů na stránku a pak nastavit několik vlastností. Ve většině případů nemusíte napsat jediný řádek kódu. Budeme se věnovat podrobně v kroku 6 tohoto nifty ovládacího prvku.
+[![v úložišti uživatelů členství jsou dva uživatelé: tito a Bruce](creating-user-accounts-cs/_static/image29.png)](creating-user-accounts-cs/_static/image28.png)
 
-Pokud nové uživatelské účty jsou vytvořeny pouze prostřednictvím běžné webové stránce vytvořit účet, je pravděpodobné, že někdy musíte napsat kód, který se používá `CreateUser` metody jako ovládacím prvku CreateUserWizard pravděpodobně vyhoví vašim potřebám. Ale `CreateUser` metoda je užitečné ve scénářích tam, kde potřebujete vysoce přizpůsobené uživatelské prostředí vytvořit účet, nebo když potřebujete k vytváření nových uživatelských účtů pomocí alternativních rozhraní prostřednictvím kódu programu. Například může mít stránku, která umožňuje uživatelům odeslat soubor XML, který obsahuje informace o uživateli z některé aplikace. Na stránce může analyzuje obsah v nahraném souboru XML souboru a vytvořit nový účet pro každého uživatele reprezentován v souboru XML pomocí volání `CreateUser` metody.
+**Obrázek 10**: v úložišti uživatelů členství jsou dva uživatelé: tito a Bruce ([kliknutím zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image30.png)).
 
-## <a name="step-6-creating-a-new-user-with-the-createuserwizard-control"></a>Krok 6: Vytvoření nového uživatele s ovládacím prvku CreateUserWizard
-
-Technologie ASP.NET se dodává s celou řadou přihlášení webové ovládací prvky. Tyto ovládací prvky podpory v mnoha běžných uživatelů související s účtem a přihlášením scénářů. [Prvku CreateUserWizard](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/createuserwizard.aspx) jeden takový ovládací prvek, který je navržený pro uživatelské rozhraní pro přidávání nového uživatelského účtu rozhraní Framework členství.
-
-Stejně jako mnoho dalších ovládacích prvků webového související s přihlášením je možné CreateUserWizard aniž byste museli napsat jediný řádek kódu. Intuitivně poskytuje uživatelské rozhraní založené na zprostředkovateli členství nastavení konfigurace a interně volá `Membership` třídy `CreateUser` metoda poté, co uživatel zadá potřebné informace a klikne na tlačítko "Create User". Je mimořádně přizpůsobitelné ovládacím prvku CreateUserWizard. Existují celou řadu událostí, které se aktivují v různých fázích procesu vytvoření účtu. Obslužné rutiny událostí, můžeme vytvořit podle potřeby vložení vlastní logiky do pracovní postup vytvoření účtu. Kromě toho je velmi flexibilní vzhled prvku CreateUserWizard. Existuje mnoho vlastností, které definují vzhled rozhraní. výchozí hodnota v případě potřeby ovládací prvek lze převést na šablonu nebo lze přidat další uživatele registrace "takto".
-
-Začněme podívat na výchozí rozhraní a chování ovládacího prvku CreateUserWizard. Potom podíváme, jak přizpůsobit vzhled přes vlastnosti a události ovládacího prvku.
-
-### <a name="examining-the-createuserwizards-default-interface-and-behavior"></a>Zkoumání výchozí rozhraní a chování CreateUserWizard.
-
-Zpět `CreatingUserAccounts.aspx` stránku `Membership` složku, přepněte do režimu návrhu nebo rozdělit a pak přidejte do horní části stránky ovládacím prvku CreateUserWizard. Části ovládacích prvků panelu nástrojů přihlášení je zaznamenaná ovládacím prvku CreateUserWizard. Po přidání ovládacího prvku, nastavte jeho `ID` vlastnost `RegisterUser`. Jak v 11 obrázek ukazuje snímek obrazovky, CreateUserWizard vykreslí rozhraní s textová pole pro nového uživatele uživatelské jméno, heslo, e-mailovou adresu a bezpečnostní otázku a odpověď.
-
-[![Vykreslení ovládacího prvku CreateUserWizard obecný vytváření uživatelského rozhraní](creating-user-accounts-cs/_static/image32.png)](creating-user-accounts-cs/_static/image31.png)
-
-**Obrázek 11**: Vykreslí ovládacím prvku CreateUserWizard obecný vytvořit uživatelské rozhraní ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image33.png))
-
-Věnujte chvíli porovnat výchozí uživatelské rozhraní generovaných ovládacím prvku CreateUserWizard rozhraní, které jsme vytvořili v kroku 5. Pokud začínáte ovládacím prvku CreateUserWizard umožňuje návštěvníka zadat bezpečnostní otázku a odpověď, vzhledem k tomu použít naše rozhraní ručně vytvořené předdefinované bezpečnostní otázky. Rozhraní ovládacího prvku CreateUserWizard také validačních ovládacích prvků, že jsme museli ještě implementace ověření na naše rozhraní pole formuláře. A interface ovládacího prvku CreateUserWizard obsahuje textové pole "Potvrdit heslo" (spolu s CompareValidator zajistíte, že text zadaný "Password" a "Password porovnání" textová pole jsou si rovny).
-
-Co je zajímavé je, že ovládacím prvku CreateUserWizard consults nastavení konfigurace zprostředkovatele členství, při generování uživatelského rozhraní. Například textová pole pro otázky a odpovědi zabezpečení se zobrazí jenom v případě `requiresQuestionAndAnswer` je nastavena na hodnotu True. Obdobně CreateUserWizard automaticky přidá ovládací prvek RegularExpressionValidator zajistíte, že jsou splněné požadavky na sílu hesla a nastaví její `ErrorMessage` a `ValidationExpression` na základě vlastnosti `minRequiredPasswordLength`, `minRequiredNonalphanumericCharacters`a `passwordStrengthRegularExpression` nastavení konfigurace.
-
-Ovládacím prvku CreateUserWizard jak již název napovídá, je odvozen z [ovládacího prvku průvodce](https://msdn.microsoft.com/library/s2etd1ek.aspx). Ovládací prvky průvodce jsou určená k poskytnutí rozhraní pro dokončení vícekrokových úkolů. Průvodce ovládací prvek může mít libovolný počet `WizardSteps`, z nichž každý je šablona definující kód HTML a webové ovládací prvky pro daný krok. Průvodce ovládací prvek zpočátku zobrazí první `WizardStep`, spolu s navigační ovládací prvky, které umožňují uživateli, pokračujte k dalšímu z jednoho kroku nebo se vrátit k předchozí kroky.
-
-Jak ukazuje obrázek 11 deklarativní prvku CreateUserWizard výchozí rozhraní zahrnuje dva `WizardSteps:`
-
-- [`CreateUserWizardStep`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizardstep.aspx) – vykreslí rozhraní ke shromažďování informací pro vytvoření nového uživatelského účtu. Tento krok je znázorněno na obrázku 11 je.
-- [`CompleteWizardStep`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.completewizardstep.aspx) – vykreslí zprávu s oznámením, že účet úspěšně vytvořil.
-
-Vzhled a chování CreateUserWizard je možné upravit buď tyto kroky převedením na šablony, nebo tak, že přidáte vlastní `WizardSteps`. Se podíváme na přidání `WizardStep` rozhraní registrace v *ukládání Další informace o uživateli* kurzu.
-
-Podívejme se na ovládacím prvku CreateUserWizard v akci. Přejděte `CreatingUserAccounts.aspx` stránky prostřednictvím prohlížeče. Začněte tím, že zadáte nějaké neplatné hodnoty CreateUserWizard rozhraní. Zkuste zadat heslo, které neodpovídají požadavků na sílu hesla nebo výstupu "uživatelské jméno" textové pole prázdné. CreateUserWizard se zobrazí příslušná chybová zpráva. Obrázek 12 se zobrazí výstup při pokusu o vytvoření uživatele s nedostatečně silné heslo.
-
-[![CreateUserWizard automaticky vloží validačních ovládacích prvků](creating-user-accounts-cs/_static/image35.png)](creating-user-accounts-cs/_static/image34.png)
-
-**Obrázek 12**: CreateUserWizard automaticky vloží ovládací prvky ověřování ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image36.png))
-
-Dále zadejte odpovídající hodnoty do CreateUserWizard a klikněte na tlačítko "Create User". Za předpokladu, že nebyla zadána požadovaná pole a síly hesla stačí, CreateUserWizard vytvořit nový uživatelský účet, prostřednictvím členství v rámci, který se pak zobrazí `CompleteWizardStep`v rozhraní (viz obrázek 13). Na pozadí CreateUserWizard volá `Membership.CreateUser` metody, stejně jako jsme to udělali v kroku 5.
-
-[![Nový uživatelský účet byl úspěšně vytvořen](creating-user-accounts-cs/_static/image38.png)](creating-user-accounts-cs/_static/image37.png)
-
-**Obrázek 13**: Nový uživatelský účet byl úspěšně vytvořen ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image39.png))
+I když úložiště uživatele členství teď obsahuje informace o účtu Bruce a tito, zatím jsme implementovali funkce, které umožní přihlašovat se k webu Bruce nebo tito. V současné době `Login.aspx` ověřuje přihlašovací údaje uživatele proti pevně zakódované sadě párů uživatelských jmen a hesel – *neověřuje zadané* přihlašovací údaje v rámci rozhraní členství. Nyní se zobrazí nové uživatelské účty v `aspnet_Users` a `aspnet_Membership` tabulky budou stačit. V dalším kurzu  *<a id="_msoanchor_9">[ ](validating-user-credentials-against-the-membership-user-store-cs.md)</a>ověříte přihlašovací údaje uživatele proti uživatelskému úložišti členství*, aktualizujeme přihlašovací stránku, aby se ověřilo v úložišti členství.
 
 > [!NOTE]
-> Jak ukazuje obrázek 13, `CompleteWizardStep`od rozhraní obsahuje tlačítko pro pokračování. Ale v tuto chvíli kliknete právě provádí zpětné volání návštěvníka opuštění na stejné stránce. V části "Přizpůsobení vzhledu a chování prostřednictvím její vlastnosti CreateUserWizard" se podíváme na tom, jak může mít toto tlačítko Odeslat musí návštěvníka `Default.aspx` (nebo některé jiné stránky).
+> Pokud nevidíte žádné uživatele v databázi `SecurityTutorials.mdf`, může to být tím, že vaše webová aplikace používá výchozího poskytovatele členství, `AspNetSqlMembershipProvider`, který jako své uživatelské úložiště používá databázi `ASPNETDB.mdf`. Chcete-li zjistit, zda se jedná o problém, klikněte na tlačítko Aktualizovat v Průzkumník řešení. Pokud byla do složky `App_Data` přidána databáze s názvem `ASPNETDB.mdf`, jedná se o problém. Vraťte se ke kroku 4  *<a id="_msoanchor_10">[ ](creating-the-membership-schema-in-sql-server-cs.md)</a>v tématu vytvoření schématu členství v SQL Server* kurzu, kde najdete pokyny, jak správně nakonfigurovat poskytovatele členství.
 
-Po vytvoření nového uživatelského účtu, vraťte se do sady Visual Studio a zkoumat `aspnet_Users` a `aspnet_Membership` tabulky, jak jsme to udělali na obrázku 10 ověření, že účet byl úspěšně vytvořen.
+Ve většině scénářů vytváření uživatelských účtů se návštěvník zobrazuje s nějakým rozhraním, které umožňuje zadat své uživatelské jméno, heslo, e-mail a další důležité informace. tím se vytvoří nový účet. V tomto kroku jsme se prohlédli vytvořením takového rozhraní a pak viděli, jak pomocí metody `Membership.CreateUser` programově přidat nový uživatelský účet na základě vstupů uživatele. Náš kód ale právě vytvořil nový uživatelský účet. Neprováděly se žádné následné akce, třeba přihlášení uživatele k webu v rámci právě vytvořeného uživatelského účtu nebo odeslání e-mailu s potvrzením uživateli. Tyto další kroky by vyžadovaly další kód v obslužné rutině události `Click` tlačítka.
 
-### <a name="customizing-the-createuserwizards-behavior-and-appearance-through-its-properties"></a>Přizpůsobení chování a vzhledu prostřednictvím její vlastnosti CreateUserWizard.
+ASP.NET se dodává s ovládacím prvkem ovládacím CreateUserWizard, který je navržený tak, aby zpracovával proces vytváření uživatelských účtů, vygenerování uživatelského rozhraní pro vytváření nových uživatelských účtů, vytvoření účtu v rámci členství v architektuře a provádění post-Account. úlohy vytváření, jako je například odeslání potvrzovacího e-mailu a přihlášení právě vytvořeného uživatele do lokality. Použití ovládacího prvku ovládacím CreateUserWizard je jednoduché jako přetahování ovládacího prvku ovládacím CreateUserWizard ze sady nástrojů na stránku a nastavení několika vlastností. Ve většině případů nemusíte psát jediný řádek kódu. Tento ovládací prvek Nifty si podrobněji prozkoumáme v kroku 6.
 
-Řadu způsobů, prostřednictvím vlastnosti, je možné přizpůsobit CreateUserWizard `WizardSteps`a obslužné rutiny událostí. V této části se podíváme na tom, jak přizpůsobit vzhled ovládacího prvku prostřednictvím její vlastnosti; Další části se probírají rozšíření chování ovládacího prvku do obslužné rutiny událostí.
+Pokud jsou nové uživatelské účty vytvořeny pouze pomocí typické webové stránky pro vytvoření účtu, je pravděpodobné, že někdy budete muset napsat kód, který používá metodu `CreateUser`, protože ovládací prvek ovládacím CreateUserWizard pravděpodobně bude vyhovovat vašim potřebám. Nicméně metoda `CreateUser` je užitečná ve scénářích, kdy potřebujete vysoce přizpůsobené uživatelské prostředí pro vytváření účtů nebo když potřebujete programově vytvořit nové uživatelské účty pomocí alternativního rozhraní. Můžete mít například stránku, která umožňuje uživateli odeslat soubor XML, který obsahuje informace o uživateli z jiné aplikace. Stránka může analyzovat obsah nahraného souboru XML a vytvořit nový účet pro každého uživatele reprezentovaného v XML voláním metody `CreateUser`.
 
-Téměř všechny textu zobrazeného v prvku CreateUserWizard výchozí uživatelské rozhraní je možné přizpůsobit pomocí jeho adresy vlastnosti. Například "Uživatelské jméno", "Password", "Potvrdit heslo", "E-mailu", "Bezpečnostní otázku" a "Zabezpečovací odpověď" popisků nalevo od textových polí můžete přizpůsobit [ `UserNameLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.usernamelabeltext.aspx), [ `PasswordLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.passwordlabeltext.aspx), [ `ConfirmPasswordLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.confirmpasswordlabeltext.aspx), [ `EmailLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.emaillabeltext.aspx), [ `QuestionLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.questionlabeltext.aspx), a [ `AnswerLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.answerlabeltext.aspx)vlastnosti, v uvedeném pořadí. Podobně, jsou vlastnosti pro určení text pro tlačítko "Create User" a "Continue" v `CreateUserWizardStep` a `CompleteWizardStep`, stejně jako by tato tlačítka jsou vykresleny jako tlačítka, LinkButtons nebo ImageButtons.
+## <a name="step-6-creating-a-new-user-with-the-createuserwizard-control"></a>Krok 6: vytvoření nového uživatele pomocí ovládacího prvku ovládacím CreateUserWizard
 
-Barvy, ohraničení, písem a další vizuální prvky se dají konfigurovat přes celou řadu vlastnosti stylu. Samotném ovládacím prvku CreateUserWizard má běžné webové ovládací prvek vlastnosti style – `BackColor`, `BorderStyle`, `CssClass`, `Font`, a tak dále – a existuje mnoho vlastností stylu pro definování vzhledu pro konkrétní části Rozhraní prvku CreateUserWizard. [ `TextBoxStyle` Vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.textboxstyle.aspx), například definuje styly pro textových polí v `CreateUserWizardStep`, při [ `TitleTextStyle` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.titletextstyle.aspx) definuje styl pro nadpis ("zaregistrovat pro vaše nové Účet").
+ASP.NET se dodává s řadou přihlašovacích webových ovládacích prvků. Tyto ovládací prvky pomáhají v mnoha běžných scénářích souvisejících s uživatelským účtem a přihlašovacími údaji. [Ovládací prvek ovládacím CreateUserWizard](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/createuserwizard.aspx) je jedním z těchto ovládacích prvků, který je navržen pro zobrazení uživatelského rozhraní pro přidání nového uživatelského účtu do architektury členství.
 
-Kromě vlastnosti související s vzhled jsou k dispozici řada vlastností, které ovlivňují chování ovládacího prvku CreateUserWizard. [ `DisplayCancelButton` Vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.wizard.displaycancelbutton.aspx), pokud nastavena na hodnotu True, zobrazí tlačítko Storno vedle tlačítko "Create User" (výchozí hodnota je False). Pokud chcete zobrazovat tlačítko Storno, nezapomeňte také nastavit [ `CancelDestinationPageUrl` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx), která určuje stránky je uživatel přesměrován po kliknutí na tlačítko Storno. Jak je uvedeno v předchozí části, tlačítka pro pokračování v `CompleteWizardStep`od rozhraní vyvolá zpětné volání, ale ponechá návštěvníka na stejné stránce. K odeslání návštěvníka jinou stránku po kliknutí na tlačítko pokračovat, jednoduše zadejte adresu URL v [ `ContinueDestinationPageUrl` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx).
+Stejně jako mnoho dalších webových ovládacích prvků souvisejících s přihlášením, lze ovládacím CreateUserWizard použít bez nutnosti psát jediný řádek kódu. Intuitivní poskytuje uživatelské rozhraní na základě nastavení konfigurace poskytovatele členství a interně volá metodu `CreateUser` `Membership` třídy poté, co uživatel zadá potřebné informace a klikne na tlačítko vytvořit uživatele. Ovládací prvek ovládacím CreateUserWizard je velice přizpůsobitelný. V různých fázích procesu vytváření účtů je hostitel událostí, které se aktivují. V případě potřeby můžeme vytvářet obslužné rutiny událostí pro vložení vlastní logiky do pracovního postupu vytváření účtů. Kromě toho je vzhled ovládacím CreateUserWizard velmi flexibilní. Existuje mnoho vlastností, které definují vzhled výchozího rozhraní. v případě potřeby je možné ovládací prvek převést na šablonu nebo na další registraci uživatele "kroky".
 
-Aktualizaci Pojďme `RegisterUser` prvku CreateUserWizard zobrazeno tlačítko Storno a posílat musí návštěvníka `Default.aspx` při klepnutí na tlačítko Zrušit nebo pokračovat. Chcete-li to provést, nastavte `DisplayCancelButton` vlastnost na hodnotu True a obě `CancelDestinationPageUrl` a `ContinueDestinationPageUrl` vlastnosti "~ / Default.aspx". Obrázek 14 zobrazí aktualizovaný CreateUserWizard při prohlížení prostřednictvím prohlížeče.
+Pojďme se podívat na použití výchozího rozhraní a chování ovládacího prvku ovládacím CreateUserWizard. Podíváme se na to, jak přizpůsobit vzhled prostřednictvím vlastností a událostí ovládacího prvku.
 
-[![Třídu CreateUserWizardStep obsahuje tlačítko Storno](creating-user-accounts-cs/_static/image41.png)](creating-user-accounts-cs/_static/image40.png)
+### <a name="examining-the-createuserwizards-default-interface-and-behavior"></a>Prověřování výchozího rozhraní a chování ovládacím CreateUserWizard
 
-**Obrázek 14**: `CreateUserWizardStep` Obsahuje tlačítko Storno ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image42.png))
+Vraťte se na stránku `CreatingUserAccounts.aspx` ve složce `Membership`, přepněte do režimu návrhu nebo rozdělení a pak přidejte ovládací prvek ovládacím CreateUserWizard do horní části stránky. Ovládací prvek ovládacím CreateUserWizard je uložen v části ovládací prvky přihlášení sady nástrojů. Po přidání ovládacího prvku nastavte jeho vlastnost `ID` na hodnotu `RegisterUser`. Vzhledem k zobrazení snímku obrazovky na obrázku 11 ovládacím CreateUserWizard vykreslí rozhraní s textovým polem pro uživatelské jméno, heslo, e-mailovou adresu a otázku a odpověď zabezpečení nového uživatele.
 
-Návštěvník zadá uživatelské jméno, heslo, e-mailovou adresu a bezpečnostní otázku a odpověď a klikne na tlačítko "Create User", je vytvořen nový uživatelský účet a je zaznamenána návštěvníka nově vytvořený uživateli. Za předpokladu, že uživatel na stránce je vytvoření nového účtu sami, to je pravděpodobně požadované chování. Můžete ale přidat nové uživatelské účty do skupiny správců. Přitom by být vytvořený uživatelský účet, ale správce zůstane přihlášený jako správce (a ne jako nově vytvořeného účtu). Toto chování lze změnit prostřednictvím logickou hodnotu [ `LoginCreatedUser` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.logincreateduser.aspx).
+[![ovládacího prvku ovládacím CreateUserWizard vykreslí obecné uživatelské rozhraní pro vytvoření.](creating-user-accounts-cs/_static/image32.png)](creating-user-accounts-cs/_static/image31.png)
 
-Uživatelské účty v rámci členství obsahují schválené příznak; Uživatelé, kteří nejsou schválení se nemůže přihlásit na web. Ve výchozím nastavení nově vytvořeného účtu je označen jako schválenou, které uživateli umožňují okamžitě přihlásit webu. Je však možné, mají nové uživatelské účty, které jsou označené jako neschválené. Můžete chtít správce ručně schvalovat noví uživatelé předtím, než můžete protokolovat v; nebo možná budete chtít ověřte, zda je e-mailovou adresu zadali při registraci platná před umožňující přihlášení uživatele. Všechno, co může být případ, může mít nově vytvořený uživatelský účet, který je označené jako neschválené nastavením prvku CreateUserWizard [ `DisableCreatedUser` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.disablecreateduser.aspx) na hodnotu True (výchozí hodnota je False).
+**Obrázek 11**: ovládací prvek ovládacím CreateUserWizard vykreslí obecné vytvoření uživatelského rozhraní ([kliknutím zobrazíte obrázek v plné velikosti).](creating-user-accounts-cs/_static/image33.png)
 
-Zahrnout další vlastnosti poznámky týkající se chování `AutoGeneratePassword` a `MailDefinition`. Pokud [ `AutoGeneratePassword` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.autogeneratepassword.aspx) nastavena na hodnotu True, `CreateUserWizardStep` nezobrazuje textová pole "Password" a "Potvrdit heslo"; místo toho je heslo nově vytvořeného uživatele automaticky generovány pomocí `Membership` třídy [ `GeneratePassword` metoda](https://msdn.microsoft.com/library/system.web.security.membership.generatepassword.aspx). `GeneratePassword` Metoda vytvoří heslo zadané délky a s dostatečný počet jiných než alfanumerických znaků pro splnění požadavků na sílu hesla nakonfigurované.
+Pojďme chvíli porovnávat výchozí uživatelské rozhraní generované ovládacím prvkem ovládacím CreateUserWizard s rozhraním, které jsme vytvořili v kroku 5. Pro Starter umožňuje ovládacímu prvku ovládacím CreateUserWizard návštěvník zadat bezpečnostní otázku a odpověď, zatímco naše ručně vytvořené rozhraní používalo předem definovanou bezpečnostní otázku. Rozhraní ovládacího prvku ovládacím CreateUserWizard obsahuje také ověřovací ovládací prvky, zatímco jsme ještě v našem rozhraních pole formuláře implementovali ověřování. A rozhraní ovládacího prvku ovládacím CreateUserWizard obsahuje textové pole Potvrdit heslo (spolu s CompareValidator, aby se zajistilo, že se text zadal jako textové pole "heslo" a "porovnat heslo").
 
-[ `MailDefinition` Vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.maildefinition.aspx) je užitečné, pokud chcete odesílat e-mailu a e-mailovou adresu zadali během procesu vytvoření účtu. `MailDefinition` Vlastnost obsahuje řadu objektu třídy subproperties pro definování informací o konstruovaný e-mailové zprávy. Tyto objektu třídy subproperties zahrnují možnosti jako `Subject`, `Priority`, `IsBodyHtml`, `From`, `CC`, a `BodyFileName`. [ `BodyFileName` Vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.maildefinition.bodyfilename.aspx) odkazuje na text nebo HTML soubor, který obsahuje tělo e-mailové zprávy. Tělo podporuje dvě předdefinované zástupné symboly: `<%UserName%>` a `<%Password%>`. Tyto zástupné symboly, pokud jsou k dispozici v `BodyFileName` souboru, nahradí se nově vytvořené uživatelské jméno a heslo.
+Zajímavou je, že ovládací prvek ovládacím CreateUserWizard při vykreslování svého uživatelského rozhraní konzultuje nastavení konfigurace poskytovatele členství. Například pokud je `requiresQuestionAndAnswer` nastavena na hodnotu true, budou se zobrazovat pouze textová pole otázka zabezpečení a odpověď. Podobně ovládacím CreateUserWizard automaticky přidá ovládací prvek RegularExpressionValidator, aby se zajistilo splnění požadavků na sílu hesla, a nastaví jeho `ErrorMessage` a `ValidationExpression` vlastností na základě nastavení konfigurace `minRequiredPasswordLength`, `minRequiredNonalphanumericCharacters`a `passwordStrengthRegularExpression`.
+
+Ovládací prvek ovládacím CreateUserWizard, jak má název, je odvozen od [ovládacího prvku Průvodce](https://msdn.microsoft.com/library/s2etd1ek.aspx). Ovládací prvky průvodce jsou navržené tak, aby poskytovaly rozhraní pro provádění úloh s více kroky. Ovládací prvek Průvodce může mít libovolný počet `WizardSteps`, z nichž každá představuje šablonu, která definuje HTML a webové ovládací prvky pro daný krok. V ovládacím prvku průvodce se zpočátku zobrazí první `WizardStep`společně s ovládacími prvky navigace, které uživateli umožňují pokračovat z jednoho kroku na další, nebo pro návrat k předchozím krokům.
+
+Jak ukazuje deklarativní označení na obrázku 11, výchozí rozhraní ovládacího prvku ovládacím CreateUserWizard zahrnuje dva `WizardSteps:`
+
+- [`CreateUserWizardStep`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizardstep.aspx) – vykreslí rozhraní, aby se shromáždily informace pro vytvoření nového uživatelského účtu. Toto je krok znázorněný na obrázku 11.
+- [`CompleteWizardStep`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.completewizardstep.aspx) – vykreslí zprávu oznamující, že účet byl úspěšně vytvořen.
+
+Vzhled a chování ovládacím CreateUserWizard můžete upravit tak, že některý z těchto kroků převedete na šablony nebo přidáte vlastní `WizardSteps`. Podíváme se na přidání `WizardStep` do registračního rozhraní v kurzu *ukládání dalších informací o uživateli* .
+
+Pojďme se podívat na ovládací prvek ovládacím CreateUserWizard v akci. Navštivte stránku `CreatingUserAccounts.aspx` v prohlížeči. Začněte zadáním některých neplatných hodnot do rozhraní ovládacím CreateUserWizard. Zkuste zadat heslo, které není v souladu s požadavky na sílu hesla, nebo nechte textové pole "uživatelské jméno" prázdné. V ovládacím CreateUserWizard se zobrazí příslušná chybová zpráva. Obrázek 12 ukazuje výstup při pokusu o vytvoření uživatele s nedostatečným silným heslem.
+
+[![ovládacím CreateUserWizard automaticky vloží ovládací prvky ověřování.](creating-user-accounts-cs/_static/image35.png)](creating-user-accounts-cs/_static/image34.png)
+
+**Obrázek 12**: ovládacím CreateUserWizard automaticky vloží ovládací prvky ověřování ([kliknutím zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image36.png)).
+
+V dalším kroku zadejte do ovládacím CreateUserWizard příslušné hodnoty a klikněte na tlačítko vytvořit uživatele. Za předpokladu, že jsou povinná pole Zadaná a síla hesla postačuje, vytvoří ovládacím CreateUserWizard nový uživatelský účet prostřednictvím architektury členství a pak zobrazí rozhraní `CompleteWizardStep`(viz obrázek 13). Na pozadí ovládacím CreateUserWizard volá metodu `Membership.CreateUser` stejným způsobem jako v kroku 5.
+
+[![byl úspěšně vytvořen nový uživatelský účet.](creating-user-accounts-cs/_static/image38.png)](creating-user-accounts-cs/_static/image37.png)
+
+**Obrázek 13**: byl vytvořen nový uživatelský účet ([kliknutím zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image39.png)).
 
 > [!NOTE]
-> `CreateUserWizard` Ovládacího prvku `MailDefinition` vlastnost určuje pouze podrobnosti o e-mailovou zprávu, která se odešle, když je vytvořen nový účet. Nezahrnuje všechny podrobnosti o jak skutečně přijde e-mailové zprávy (to znamená, určuje, zda se používá SMTP serveru nebo doručení pošty adresář, informace o ověřování a tak dále). Tyto podrobnosti nízké úrovně, musíte je definovat v `<system.net>` tématu `Web.config`. Další informace o těchto nastaveních konfigurace a odesílání e-mailu z technologie ASP.NET 2.0 obecně najdete [nejčastější dotazy na SystemNetMail.com](http://www.systemnetmail.com/) a Moje článku [odesílání e-mailu v ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx).
+> Jak ukazuje obrázek 13, rozhraní `CompleteWizardStep`obsahuje tlačítko pro pokračování. V tomto okamžiku, kdy na ni klikneme pouze k provedení postbacku, ale návštěvník na stejné stránce zůstane. V části Přizpůsobení vzhledu a chování ovládacím CreateUserWizard prostřednictvím jeho vlastností se podíváme na to, jak toto tlačítko umožňuje odeslat návštěvníka do `Default.aspx` (nebo na jinou stránku).
 
-### <a name="extending-the-createuserwizards-behavior-using-event-handlers"></a>Rozšíření chování CreateUserWizard pomocí obslužných rutin událostí
+Po vytvoření nového uživatelského účtu se vraťte do sady Visual Studio a Projděte si tabulky `aspnet_Users` a `aspnet_Membership`, jako jsme na obrázku 10, abyste ověřili, že byl účet úspěšně vytvořen.
 
-Počet událostí ovládacím prvku CreateUserWizard vyvolá během jejího pracovního postupu. Například po návštěvník zadá své uživatelské jméno, heslo a další důležité informace a klikne na tlačítko "Create User", ovládacím prvku CreateUserWizard vyvolá jeho [ `CreatingUser` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.creatinguser.aspx). Pokud dojde k potížím během procesu vytvoření [ `CreateUserError` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createusererror.aspx) se aktivuje; ale, pokud je uživatel vytvořen úspěšně, pak bude [ `CreatedUser` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx) je vyvolána. Existují další události ovládacího prvku CreateUserWizard, které získáte, ale toto jsou tři ty největší poskytnuty.
+### <a name="customizing-the-createuserwizards-behavior-and-appearance-through-its-properties"></a>Přizpůsobení chování a vzhledu ovládacím CreateUserWizard prostřednictvím vlastností
 
-V některých scénářích možná chcete využijte CreateUserWizard pracovního postupu, které můžeme udělat tak, že vytvoříte obslužnou rutinu události pro příslušnou událost. Pro ilustraci to můžeme vylepšit `RegisterUser` prvku CreateUserWizard zahrnout některé vlastní ověřovací na uživatelské jméno a heslo. Konkrétně můžeme vylepšit naše CreateUserWizard tak, aby uživatelská jména nesmí obsahovat počáteční ani koncové mezery a uživatelské jméno se nemůže objevit kdekoli v hesle. Stručně řečeno chceme zabránit ve vytváření jméno jako je "Scott", nebo s kombinaci uživatelského jména a hesla jako "Scott" a "Scott.1234".
+Ovládacím CreateUserWizard lze přizpůsobit různými způsoby, prostřednictvím vlastností, `WizardSteps`a obslužných rutin událostí. V této části se podíváme na to, jak přizpůsobit vzhled ovládacího prvku prostřednictvím jeho vlastností. v další části se podíváme na rozšíření chování ovládacího prvku prostřednictvím obslužných rutin událostí.
 
-K tomu vytvoříme obslužná rutina události `CreatingUser` události k provádění naše další ověřovací kontroly. Pokud zadaná data nejsou platná potřebujeme zrušit v procesu vytváření. Musíme také přidat ovládací prvek popisek Web na stránku a zobrazí se zpráva s vysvětlením, že uživatelské jméno nebo heslo je neplatné. Začněte přidáním ovládacího prvku popisku pod ovládacím prvku CreateUserWizard nastavení jeho `ID` vlastnost `InvalidUserNameOrPasswordMessage` a jeho `ForeColor` vlastnost `Red`. Vymazání jeho `Text` vlastnost a nastavte jeho `EnableViewState` a `Visible` vlastnosti na hodnotu False.
+Prakticky všechen text zobrazený ve výchozím uživatelském rozhraní ovládacího prvku ovládacím CreateUserWizard se dá přizpůsobit pomocí jeho spoustu vlastností. Například popisky "uživatelské jméno", "heslo", "potvrzení hesla", "E-mail", "bezpečnostní otázka" a "odpověď zabezpečení" mohou být upraveny pomocí [`UserNameLabelText`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.usernamelabeltext.aspx), [`PasswordLabelText`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.passwordlabeltext.aspx), [`ConfirmPasswordLabelText`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.confirmpasswordlabeltext.aspx), [`EmailLabelText`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.emaillabeltext.aspx), [`QuestionLabelText`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.questionlabeltext.aspx)a [`AnswerLabelText`ch](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.answerlabeltext.aspx) vlastností v uvedeném pořadí. Podobně existují vlastnosti pro určení textu pro tlačítka "vytvořit uživatele" a "pokračovat" v `CreateUserWizardStep` a `CompleteWizardStep`a také v případě, že jsou tato tlačítka vykreslena jako tlačítka, LinkButtons nebo ImageButtons.
+
+Barvy, ohraničení, písma a další vizuální prvky lze konfigurovat prostřednictvím hostitele vlastností stylu. Vlastní ovládací prvek ovládacím CreateUserWizard má společné vlastnosti stylu webového ovládacího prvku – `BackColor`, `BorderStyle`, `CssClass`, `Font`a tak dále – a existuje mnoho vlastností stylu pro definování vzhledu pro konkrétní oddíly rozhraní ovládacím CreateUserWizard. [Vlastnost`TextBoxStyle`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.textboxstyle.aspx)například definuje styly pro textová pole v `CreateUserWizardStep`, zatímco [vlastnost`TitleTextStyle`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.titletextstyle.aspx) definuje styl nadpisu ("Registrace nového účtu").
+
+Kromě vlastností souvisejících s vzhledy existuje mnoho vlastností, které mají vliv na chování ovládacího prvku ovládacím CreateUserWizard. [Vlastnost`DisplayCancelButton`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.wizard.displaycancelbutton.aspx), pokud je nastavena na hodnotu true, zobrazuje tlačítko Storno vedle tlačítka "vytvořit uživatele" (výchozí hodnota je false). Pokud zobrazíte tlačítko zrušit, nezapomeňte také nastavit [vlastnost`CancelDestinationPageUrl`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx), která určuje stránku, na kterou se uživatel pošle po kliknutí na zrušit. Jak je uvedeno v předchozí části, tlačítko pokračovat v rozhraní `CompleteWizardStep`způsobí postback, ale návštěvníka zůstane na stejné stránce. Chcete-li poslat návštěvníka na jinou stránku po kliknutí na tlačítko pokračovat, stačí zadat adresu URL ve [vlastnosti`ContinueDestinationPageUrl`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx).
+
+Pojďme aktualizovat ovládací prvek `RegisterUser` ovládacím CreateUserWizard a zobrazit tak tlačítko Storno a odeslat návštěvníka do `Default.aspx` při kliknutí na tlačítka pro zrušení nebo pokračování. Chcete-li to provést, nastavte vlastnost `DisplayCancelButton` na hodnotu true a vlastnosti `CancelDestinationPageUrl` a `ContinueDestinationPageUrl` na ~/Default.aspx. Obrázek 14 zobrazuje aktualizovaný ovládacím CreateUserWizard při prohlížení v prohlížeči.
+
+[![vlastnost CreateUserWizardStep obsahuje tlačítko Storno.](creating-user-accounts-cs/_static/image41.png)](creating-user-accounts-cs/_static/image40.png)
+
+**Obrázek 14**: `CreateUserWizardStep` obsahuje tlačítko Storno ([kliknutím zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image42.png)).
+
+Když návštěvník zadá uživatelské jméno, heslo, e-mailovou adresu a bezpečnostní otázku a odpověď a klikne na tlačítko vytvořit uživatele, vytvoří se nový uživatelský účet a návštěvník se přihlásí jako nově vytvořený uživatel. Za předpokladu, že osoba, která navštíví stránku, vytváří nový účet pro sebe sama, bude to zřejmě požadovaným chováním. Můžete ale chtít správcům dovolit přidávat nové uživatelské účty. V takovém případě se vytvoří uživatelský účet, ale správce zůstane přihlášený jako správce (a ne jako nově vytvořený účet). Toto chování lze upravit pomocí [vlastnosti Boolean`LoginCreatedUser`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.logincreateduser.aspx).
+
+Uživatelské účty v rámci systému členství obsahují příznak schválené; neschválení uživatelé se nemohou přihlásit k webu. Ve výchozím nastavení je nově vytvořený účet označený jako schválený a umožňuje uživateli, aby se k webu přihlásil hned. Je ale možné, že budou nové uživatelské účty označené jako neschválené. Možná budete chtít, aby správce ručně schválil nové uživatele předtím, než se může přihlásit. nebo možná budete chtít ověřit, jestli je e-mailová adresa zadaná v zápisu platná, než uživatel povolí přihlášení. Bez ohledu na to, že je to možné, můžete mít nově vytvořený uživatelský účet označený jako Neschválený nastavením [vlastnosti`DisableCreatedUser`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.disablecreateduser.aspx) ovládacího prvku ovládacím CreateUserWizard na hodnotu true (výchozí hodnota je false).
+
+K dalším vlastnostem souvisejícím s chováním patří `AutoGeneratePassword` a `MailDefinition`. Pokud je [vlastnost`AutoGeneratePassword`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.autogeneratepassword.aspx) nastavena na hodnotu true, v `CreateUserWizardStep` se nezobrazují textová pole Password a Confirm password; místo toho je automaticky vygenerováno heslo nově vytvořeného uživatele pomocí [metody`GeneratePassword`](https://msdn.microsoft.com/library/system.web.security.membership.generatepassword.aspx)`Membership` třídy. Metoda `GeneratePassword` sestaví heslo zadané délky a s dostatečným počtem nealfanumerických znaků pro splnění nakonfigurovaných požadavků na sílu hesla.
+
+[Vlastnost`MailDefinition`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.maildefinition.aspx) je užitečná, pokud chcete odeslat e-mail na e-mailovou adresu zadanou během procesu vytváření účtu. Vlastnost `MailDefinition` zahrnuje řadu podvlastností pro definování informací o vytvořené e-mailové zprávě. Mezi tyto podvlastnosti patří možnosti jako `Subject`, `Priority`, `IsBodyHtml`, `From`, `CC`a `BodyFileName`. [Vlastnost`BodyFileName`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.maildefinition.bodyfilename.aspx) odkazuje na text nebo soubor HTML, který obsahuje tělo e-mailové zprávy. Tělo podporuje dvě předem definované zástupné symboly: `<%UserName%>` a `<%Password%>`. Tyto zástupné symboly, pokud jsou k dispozici v souboru `BodyFileName`, budou nahrazeny jménem a heslem právě vytvořeného uživatele.
+
+> [!NOTE]
+> Vlastnost `MailDefinition` ovládacího prvku obsahuje pouze podrobnosti o e-mailové zprávě, která je odeslána při vytvoření nového účtu. `CreateUserWizard` Neobsahuje žádné podrobnosti o tom, jak je e-mailová zpráva odeslána (tj. zda se používá server SMTP nebo odesílající poštovní schránka, všechny informace o ověřování atd.). Tyto podrobnosti nízké úrovně musí být definovány v části `<system.net>` v `Web.config`. Další informace o těchto nastaveních konfigurace a o posílání e-mailů ze ASP.NET 2,0 najdete v tématu [Nejčastější dotazy na adrese SystemNetMail.com](http://www.systemnetmail.com/) a v článku o [posílání e-mailů v ASP.NET 2,0](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx).
+
+### <a name="extending-the-createuserwizards-behavior-using-event-handlers"></a>Rozšíření chování ovládacím CreateUserWizard pomocí obslužných rutin událostí
+
+Ovládací prvek ovládacím CreateUserWizard vyvolává během svého pracovního postupu několik událostí. Například když návštěvník zadá své uživatelské jméno, heslo a další relevantní informace a klikne na tlačítko vytvořit uživatele, vyvolá ovládací prvek ovládacím CreateUserWizard [událost`CreatingUser`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.creatinguser.aspx). Pokud během procesu vytváření dojde k problému, je vyvolána [událost`CreateUserError`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createusererror.aspx) ; Pokud je však uživatel úspěšně vytvořen, je vyvolána [událost`CreatedUser`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx) . K dispozici jsou další události ovládacího prvku ovládacím CreateUserWizard, které jsou vyvolány, ale jedná se o tři nejvíc německých.
+
+V některých scénářích můžeme chtít klepnout do pracovního postupu ovládacím CreateUserWizard, který můžeme udělat vytvořením obslužné rutiny události pro příslušnou událost. Pro ilustraci si Vylepšete `RegisterUser` ovládací prvek ovládacím CreateUserWizard, aby zahrnoval nějaké vlastní ověření uživatelského jména a hesla. Konkrétně Vylepšete naše ovládacím CreateUserWizard, aby uživatelská jména neobsahovala mezery na začátku nebo na konci a uživatelské jméno se nemůže objevit kdekoli v hesle. V krátkém případě chceme uživatelům zabránit v vytváření uživatelského jména, jako je "Scott", nebo mít kombinaci uživatelského jména a hesla jako "Scott" a "Scott. 1234".
+
+K tomuto účelu vytvoříme obslužnou rutinu události pro událost `CreatingUser`, která provede dodatečné ověřovací kontroly. Pokud nejsou zadaná data platná, musíme proces vytváření zrušit. Pro zobrazení zprávy s vysvětlením, že uživatelské jméno nebo heslo je neplatné, musíme také na stránku přidat webový ovládací prvek popisek. Začněte přidáním ovládacího prvku popisek pod ovládacím prvkem ovládacím CreateUserWizard, nastavením jeho vlastnosti `ID` na `InvalidUserNameOrPasswordMessage` a jeho vlastnost `ForeColor` na `Red`. Vymažte vlastnost `Text` a nastavte její `EnableViewState` a `Visible` vlastnosti na false.
 
 [!code-aspx[Main](creating-user-accounts-cs/samples/sample7.aspx)]
 
-Dále vytvořte obslužnou rutinu události pro ovládací prvek CreateUserWizard `CreatingUser` událostí. Vytvořte obslužnou rutinu události, vyberte ovládací prvek v návrháři a potom v okně Vlastnosti. Odtud klikněte na na ikonu blesku a potom dvakrát klikněte na příslušnou událost k vytvoření obslužné rutiny události.
+Dále vytvořte obslužnou rutinu události pro událost `CreatingUser` ovládacího prvku ovládacím CreateUserWizard. Chcete-li vytvořit obslužnou rutinu události, vyberte ovládací prvek v návrháři a pak přejít na okno Vlastnosti. Odtud klikněte na ikonu blesku a potom dvakrát klikněte na příslušnou událost a vytvořte obslužnou rutinu události.
 
-Přidejte následující kód, který `CreatingUser` obslužné rutiny události:
+Do obslužné rutiny události `CreatingUser` přidejte následující kód:
 
 [!code-csharp[Main](creating-user-accounts-cs/samples/sample8.cs)]
 
-Všimněte si, že uživatelské jméno a heslo, které zadáte v ovládacím prvku CreateUserWizard jsou k dispozici prostřednictvím jeho [ `UserName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.username.aspx) a [ `Password` vlastnosti](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.password.aspx)v uvedeném pořadí. Používáme tyto vlastnosti ve výše uvedené obslužné rutiny události k určení, zda zadané uživatelské jméno obsahuje počáteční ani koncové mezery a určuje, zda uživatelské jméno nachází v rámci heslo. Pokud je splněna některá z těchto podmínek, zobrazí se chybová zpráva v `InvalidUserNameOrPasswordMessage` popisek a obslužná rutina události `e.Cancel` je nastavena na `true`. Pokud `e.Cancel` je nastavena na `true`, CreateUserWizard zkratům jejího pracovního postupu, efektivně rušení procesu vytvoření účtu uživatele.
+Všimněte si, že uživatelské jméno a heslo zadané do ovládacího prvku ovládacím CreateUserWizard jsou k dispozici prostřednictvím vlastností [`UserName`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.username.aspx) a [`Password`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.password.aspx)v uvedeném pořadí. Tyto vlastnosti používáme ve výše uvedené obslužné rutině události k určení, jestli zadané uživatelské jméno obsahuje mezery na začátku nebo na konci a zda se uživatelské jméno nachází v hesle. Pokud je splněna jedna z těchto podmínek, zobrazí se chybová zpráva v popisku `InvalidUserNameOrPasswordMessage` a vlastnost `e.Cancel` obslužné rutiny události je nastavena na `true`. Pokud je `e.Cancel` nastavená na `true`, ovládacím CreateUserWizard krátkodobé okruhy svého pracovního postupu, což efektivně zruší proces vytváření uživatelských účtů.
 
-Snímek obrazovky znázorňuje obrázek 15 `CreatingUserAccounts.aspx` když uživatel zadá uživatelské jméno s úvodní mezery.
+Obrázek 15 znázorňuje snímek obrazovky `CreatingUserAccounts.aspx`, když uživatel zadá uživatelské jméno s úvodními mezerami.
 
-[![Uživatelská jména u úvodní a koncové mezery nejsou povolené.](creating-user-accounts-cs/_static/image44.png)](creating-user-accounts-cs/_static/image43.png)
+[![uživatelská jména s počátečními nebo koncovými mezerami nejsou povolené.](creating-user-accounts-cs/_static/image44.png)](creating-user-accounts-cs/_static/image43.png)
 
-**Obrázek 15**: Nejsou povolené. uživatelská jména u úvodní a koncové mezery ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-user-accounts-cs/_static/image45.png))
+**Obrázek 15**: uživatelská jména s úvodními nebo koncovými mezerami nejsou povolena ([kliknutím zobrazíte obrázek v plné velikosti).](creating-user-accounts-cs/_static/image45.png)
 
 > [!NOTE]
-> Vidíte příklad použití ovládacího prvku CreateUserWizard `CreatedUser` událost v *<a id="_msoanchor_11"> </a> [ukládání Další informace o uživateli](storing-additional-user-information-cs.md)* kurzu.
+> V kurzu  *<a id="_msoanchor_11">[ ](storing-additional-user-information-cs.md)</a>ukládání dalších informací o uživatelích* se zobrazí příklad použití události `CreatedUser` ovládacího prvku ovládacím CreateUserWizard.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-`Membership` Třídy `CreateUser` metoda vytvoří nový uživatelský účet v rámci členství. Dělá to tak delegování volání do nakonfigurovaného zprostředkovatele členství. V případě třídy `SqlMembershipProvider`, `CreateUser` metoda přidá záznam `aspnet_Users` a `aspnet_Membership` databázových tabulek.
+Metoda `CreateUser` třídy `Membership` vytvoří nový uživatelský účet v rámci rozhraní členství. Provede tak delegováním volání nakonfigurovanému zprostředkovateli členství. V případě `SqlMembershipProvider`přidá metoda `CreateUser` záznam do tabulek databáze `aspnet_Users` a `aspnet_Membership`.
 
-Zatímco nové uživatelské účty mohou být vytvořeny prostřednictvím kódu programu (jak jsme viděli v kroku 5), je jednodušší a rychlejší přístup pomocí ovládacího prvku CreateUserWizard. Tento ovládací prvek vykreslí vícekrokového uživatelského rozhraní pro shromažďování informací o uživateli a vytvoření nového uživatele v rámci členství. Na pozadí tohoto ovládacího prvku používá stejná `Membership.CreateUser` způsob, jak prozkoumat v kroku 5, ale ovládací prvek uživatelského rozhraní validačních ovládacích prvků, vytvoří a reaguje na chyby při vytváření účtu uživatele bez nutnosti psát ikonu kódu.
+Zatímco nové uživatelské účty je možné vytvářet programově (jak jsme viděli v kroku 5), je rychlejší a jednodušší přístup k použití ovládacího prvku ovládacím CreateUserWizard. Tento ovládací prvek vykreslí uživatelské rozhraní s více kroky pro shromažďování uživatelských informací a vytvoření nového uživatele v rámci systému členství. Pod sebou tento ovládací prvek používá stejnou metodu `Membership.CreateUser`, jak je vyhodnoceno v kroku 5, ale ovládací prvek vytvoří uživatelské rozhraní, ovládací prvky ověřování a reaguje na chyby při vytváření uživatelského účtu, aniž by musel psát Lick kódu.
 
-V tuto chvíli máme funkci v místo, kde můžete vytvářet nové uživatelské účty. Ale na přihlašovací stránku stále ověřování proti těchto pevně zakódované přihlašovací údaje, zadaný v druhé části kurzu. V <a id="_msoanchor_12"> </a> [další kurz](validating-user-credentials-against-the-membership-user-store-cs.md) aktualizujeme `Login.aspx` k ověření uživatele je zadaná pověření rámec členství.
+V tuto chvíli máme funkci pro vytváření nových uživatelských účtů. Přihlašovací stránka se ale pořád ověřuje na základě pevně zakódovaných přihlašovacích údajů, které jsme zadali zpátky v druhém kurzu. <a id="_msoanchor_12"> </a>V [dalším kurzu](validating-user-credentials-against-the-membership-user-store-cs.md) aktualizujeme `Login.aspx`, aby se ověřilo zadání přihlašovacích údajů uživatele k rozhraní členství.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ### <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
-- [`CreateUser` Technická dokumentace](https://msdn.microsoft.com/library/system.web.security.membershipprovider.createuser.aspx)
-- [Přehled ovládacího prvku CreateUserWizard](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/createuserwizard.aspx)
-- [Vytvoření zprostředkovatele mapy webu systém založen souboru](http://aspnet.4guysfromrolla.com/articles/020106-1.aspx)
-- [Vytvoření pomocí ovládacího prvku ASP.NET 2.0 průvodce krok za krokem uživatelského rozhraní](http://aspnet.4guysfromrolla.com/articles/061406-1.aspx)
-- [Zkoumání ASP.NET 2.0 je navigace na webu](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx)
+- [`CreateUser` technickou dokumentaci](https://msdn.microsoft.com/library/system.web.security.membershipprovider.createuser.aspx)
+- [Přehled ovládacího prvku ovládacím CreateUserWizard](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/createuserwizard.aspx)
+- [Vytvoření poskytovatele mapy webu založeného na systému souborů](http://aspnet.4guysfromrolla.com/articles/020106-1.aspx)
+- [Vytvoření podrobného uživatelského rozhraní pomocí ovládacího prvku Průvodce ASP.NET 2,0](http://aspnet.4guysfromrolla.com/articles/061406-1.aspx)
+- [Prověřování navigace na webu ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx)
 - [Stránky předlohy a navigace na webu](https://asp.net/learn/data-access/tutorial-03-vb.aspx)
-- [Zprostředkovatele mapy webu SQL jste čekali](https://msdn.microsoft.com/msdnmag/issues/06/02/WickedCode/default.aspx)
+- [Poskytovatel mapy webu SQL, na který jste čekali](https://msdn.microsoft.com/msdnmag/issues/06/02/WickedCode/default.aspx)
 
 ### <a name="about-the-author"></a>O autorovi
 
-Scott Meisnerová, Autor více ASP/ASP.NET knih a zakladatelem 4GuysFromRolla.com, má pracovali Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy  *[Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott může být dostupný na adrese [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) nebo prostřednictvím na svém blogu [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
+Scott Mitchell, autor několika stránek ASP/ASP. NET Books a zakladatel of 4GuysFromRolla.com, pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je *[Sams naučit se ASP.NET 2,0 za 24 hodin](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)* . Scott se dá kontaktovat [mitchell@4guysfromrolla.com](mailto:mitchell@4guysfromrolla.com) nebo prostřednictvím svého blogu na [http://ScottOnWriting.NET](http://scottonwriting.net/).
 
-### <a name="special-thanks-to"></a>Speciální k...
+### <a name="special-thanks-to"></a>Zvláštní díky...
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Teresy Murphy. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontrolor pro tento kurz byl Teresa Murphy. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com).
 
 > [!div class="step-by-step"]
 > [Předchozí](creating-the-membership-schema-in-sql-server-cs.md)
-> [další](validating-user-credentials-against-the-membership-user-store-cs.md)
+> [Další](validating-user-credentials-against-the-membership-user-store-cs.md)

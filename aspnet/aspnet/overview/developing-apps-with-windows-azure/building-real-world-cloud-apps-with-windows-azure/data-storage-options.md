@@ -1,302 +1,302 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
-title: Možnosti úložiště dat (vytváření skutečných cloudových aplikací s Azure) | Dokumentace Microsoftu
+title: Možnosti úložiště dat (vytváření skutečných cloudových aplikací s Azure) | Microsoft Docs
 author: MikeWasson
-description: Vytváření reálného světa cloudových aplikací s Azure e kniha je založená na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které se dají mu...
+description: Vytváření reálných cloudových aplikací pomocí Azure je založené na prezentaci vyvinuté Scottem Guthrie. Vysvětluje 13 vzorů a postupů, které mohou...
 ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: e51fcecb-cb33-4f9e-8428-6d2b3d0fe1bf
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
 msc.type: authoredcontent
-ms.openlocfilehash: 8656f4a4211c2e97d71d76dd2f799412539896ca
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: f97d973d87db895441f813376d757a8a2e94b255
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65118847"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74585933"
 ---
 # <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a>Možnosti úložiště dat (vytváření skutečných cloudových aplikací s Azure)
 
-podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Petr Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
 
-[Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
+[Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
-> **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o e kniha najdete v tématu [první kapitoly](introduction.md).
+> **Vytváření reálných cloudových aplikací pomocí Azure** je založené na prezentaci vyvinuté Scottem Guthrie. Vysvětluje 13 vzorů a postupů, které vám pomůžou úspěšně vyvíjet webové aplikace pro Cloud. Informace o elektronické příručce najdete v [první kapitole](introduction.md).
 
-Většina lidí se používají k relačním databázím a mají tendenci přehlédnout jiných možností úložiště dat při jejich návrhu cloudové aplikace. Výsledkem může být neoptimální výkon, vysokou výdaje a nebo ještě hůř, protože [NoSQL](http://en.wikipedia.org/wiki/NoSQL) některé úlohy může zpracovávat efektivněji než relační databáze (nerelační) databáze. Když zákazníci nás požádat o pomoc s řešením problému úložiště důležitých dat, je to často protože mají relační databáze, kde některé z možností NoSQL by fungovat lépe. V takových situacích zákazník bylo lepší vzorec, pokud se má implementovat řešení NoSQL před nasazením aplikace do produkčního prostředí.
+Většina lidí se používá u relačních databází a při návrhu cloudové aplikace se při navrhování cloudových aplikací zapřehlédnout další možnosti ukládání dat. Výsledkem může být optimální výkon, vysoké výdaje nebo horší, protože [NoSQL](http://en.wikipedia.org/wiki/NoSQL) (nerelační) databáze může zpracovávat některé úlohy efektivněji než relační databáze. Když si zákazníci vyžádají pomoc s řešením kritického problému s datovým úložištěm, je často to proto, že mají relační databázi, kde by jedna z možností NoSQL fungovala lépe. V těchto situacích by byl zákazník lépe vypnutý, pokud předtím implementoval řešení NoSQL před nasazením aplikace do produkčního prostředí.
 
-Na druhé straně bylo by také chybu, aby předpokládal, že databázi NoSQL můžete provést všechno dobře nebo dostatečně dobře. Neexistuje žádné jeden data správy ideální pro všechny úlohy úložiště dat; řešení pro správu různých datových jsou optimalizovány pro různé úlohy. Většina skutečných cloudových aplikací mají různé požadavky na úložiště dat a často obsluhuje nejvhodnější kombinace více řešení datového úložiště.
+Na druhé straně by také došlo k chybě, která předpokládá, že databáze NoSQL může dělat všechno dobře nebo dostatečně dobře. Pro všechny úlohy úložiště dat neexistuje žádná jediná vhodná volba pro správu dat. různá řešení pro správu dat jsou optimalizovaná pro různé úlohy. Většina reálných cloudových aplikací má nejrůznější požadavky na úložiště dat a často se hodí pro kombinaci více řešení pro ukládání dat.
 
-Účelem této kapitole je získali širší představu řada možností úložišť dat, která je k dispozici cloudové aplikace a některé základní informace o tom, jak vybrat ty, které vyhovují vašemu scénáři. Je vhodné vědět o dostupných možnostech a uvažovat o jejich silné a slabé stránky před při vývoji aplikace. Změna možnosti ukládání dat v produkční aplikaci může být velmi obtížné, jako byste měli změnit leteckého motoru během letu plochy.
+Účelem této kapitoly je poskytnout vám širší smysl možností úložiště dat dostupných pro cloudovou aplikaci a některé základní pokyny k výběru těch, které vyhovují vašemu scénáři. Je vhodné si uvědomit, jaké možnosti máte k dispozici, a zamyslete se nad jejich sílami a slabinami před vývojem aplikace. Změna možností úložiště dat v produkční aplikaci může být extrémně obtížná, třeba když chcete změnit stroj Jet, zatímco je rovina v letadle.
 
-## <a name="data-storage-options-on-azure"></a>Možnosti ukládání dat v Azure
+## <a name="data-storage-options-on-azure"></a>Možnosti úložiště dat v Azure
 
-Díky cloudu je poměrně snadné ho použít celou řadu relačních a datových úložišť typu NoSQL. Tady jsou některé platformy úložiště dat, které můžete použít v Azure.
+Cloud umožňuje poměrně snadné použití nejrůznějších relačních a NoSQL úložišť dat. Tady jsou některé platformy pro úložiště dat, které můžete použít v Azure.
 
 ![](data-storage-options/_static/image1.png)
 
 V tabulce jsou uvedeny čtyři typy databází NoSQL:
 
-- [Klíč/hodnota databází](https://msdn.microsoft.com/library/dn313285.aspx#sec7) uložení objektu jedné serializované pro každou hodnotu klíče. Jsou vhodné pro ukládání velkých objemů dat, ve kterém chcete přijímat jednu položku pro danou hodnotu klíče a nemáte k dispozici pro dotazy podle jiné vlastnosti položky.
+- [Databáze klíč/hodnota](https://msdn.microsoft.com/library/dn313285.aspx#sec7) ukládají jeden serializovaný objekt pro každou hodnotu klíče. Jsou vhodné pro ukládání velkých objemů dat, kde chcete získat jednu položku pro danou hodnotu klíče, a nemusíte se dotazovat na základě jiných vlastností položky.
 
-    [Azure Blob storage](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/) je databáze klíč/hodnota, která funguje jako úložiště souborů v cloudu pomocí hodnoty klíče, které odpovídají názvy souborů a složek. Načtení souboru tak, že jeho složku a název souboru, ne tak, že hodnoty v obsahu souboru.
+    [Úložiště objektů BLOB v Azure](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/) je databáze klíč/hodnota, která funguje jako úložiště souborů v cloudu s klíčovými hodnotami, které odpovídají názvům složek a souborů. Načtete soubor podle jeho složky a názvu souboru, ne tak, že vyhledáte hodnoty v obsahu souboru.
 
-    [Azure Table storage](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-tables/) je také databázi klíč/hodnota. Každá hodnota se nazývá *entity* (podobně jako na řádek určený klíč oddílu a klíč řádku) a obsahuje více *vlastnosti* (podobně jako sloupce, ale ne všechny entity v tabulce muset sdílet stejný sloupce). Při dotazování u sloupce mimo klíč je velmi neefektivní a mělo by se vyhnout. Například může ukládat data uživatelského profilu, s jedním oddílem ukládání informací o jenom jednoho konkrétního uživatele. V samostatné vlastnosti jedné entitě nebo v samostatné entity do stejného oddílu, může uchovávat data, například uživatelské jméno, hodnoty hash hesla, datum narození a tak dále. Ale není vhodné k vyhledání všech uživatelů s zadaný rozsah data narození a nelze spustit dotaz spojení mezi vaší tabulce profilů a jinou tabulku. Table storage je škálovat a jsou míň nákladné než relační databáze, ale neumožňuje složitých dotazů nebo spojení.
-- [Documentdatabases](https://msdn.microsoft.com/library/dn313285.aspx#sec8) databáze klíč/hodnota, ve kterých jsou hodnoty *dokumenty*. "Dokument" zde není použit v tom smyslu dokument aplikace Word nebo Excel, ale znamená, že kolekce pojmenovaných polí a hodnoty, každá z nich může být podřízená dokumentu. Například v tabulce historie pořadí může mít dokument pořadí pořadové číslo, datum objednávky a polí zákazníka. a pole Zákazník může mít název a adresu pole. Databáze kóduje pole data ve formátu, jako jsou XML, YAML, JSON nebo BSON; nebo může použít jako prostý text. Jednu funkci, která nastavuje dokumentové databáze kromě databází klíč/hodnota je schopnost dotazovat na neklíčovým pole a definovat sekundárních indexů, aby dotazování efektivnější. Díky schopnosti je vhodnější pro aplikace, které potřebují k načtení dat na základě kritérií složitější než hodnota klíč dokumentu databáze dokumentů zajistit. Například v databázi dokumentů historie prodejní objednávky může dotaz na různá pole, jako je například ID produktu, ID zákazníka, jméno zákazníka a tak dále. [MongoDB](http://www.mongodb.org/) je databáze dokumentů.
-- [Databáze rodin sloupců](https://msdn.microsoft.com/library/dn313285.aspx#sec9) klíč/hodnota jsou úložiště dat, která vám umožní a struktura ukládání dat do kolekcí související sloupce s názvy rodin sloupců. Například sčítání databáze může mít jednu skupinu sloupců pro jméno osoby (první, střední, poslední), jedna skupina pro adresu osoby a jednu skupinu pro informace o profilu osoby (DOB, pohlaví, atd.). Databázi můžete pak ukládat každá rodina sloupců v samostatném oddílu při zachování všech dat pro jednu osobu, která související se stejným klíčem. Bez nutnosti přečíst všechny informace název a adresu a pak můžete přečíst všechny informace o profilu. [Cassandra](http://cassandra.apache.org/) je Oblíbené databáze rodin sloupců.
-- [Databáze grafu](https://msdn.microsoft.com/library/dn313285.aspx#sec10) ukládat informace jako kolekce objekty a vztahy. Účelem databáze grafu je umožnit aplikaci efektivní provádění dotazů, které procházejí sítí objekty a vztahy mezi nimi. Například objekty mohou být zaměstnanci v databázi lidských zdrojů, a může být vhodné pro usnadnění dotazů jako například "najít všechny zaměstnance, kteří pracují přímo nebo nepřímo pro Scott." [Neo4j](http://www.neo4j.org/) je Oblíbené grafová databáze.
+    [Azure Table Storage](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-tables/) je také databáze klíč/hodnota. Každá hodnota se nazývá *entita* (podobná řádku, identifikovaná klíčem oddílu a klíčem řádku) a obsahuje více *vlastností* (podobně jako sloupce, ale ne všechny entity v tabulce musí sdílet stejné sloupce). Dotazování na jiné sloupce než klíč je mimořádně neefektivní a mělo by se jim vyhnout. Můžete například ukládat data profilu uživatele s jedním oddílem, který ukládá informace o jednom uživateli. Můžete ukládat data, jako je uživatelské jméno, hodnota hash hesla, datum narození a tak dále, v samostatných vlastnostech jedné entity nebo v samostatných entitách ve stejném oddílu. Ale nechcete se dotazovat na všechny uživatele s daným rozsahem dat narození a nemůžete spustit dotaz join mezi vaší tabulkou profilu a jinou tabulkou. Úložiště tabulek je škálovatelné a méně nákladné než relační databáze, ale neumožňuje složité dotazy nebo spojení.
+- [Documentdatabases](https://msdn.microsoft.com/library/dn313285.aspx#sec8) jsou databáze klíč/hodnota, ve kterých jsou tyto hodnoty *dokumenty*. "Dokument" se tady nepoužívá v smyslech dokumentu Wordu nebo Excelu, ale označuje kolekci pojmenovaných polí a hodnot, z nichž může být podřízený dokument. Například v tabulce historie objednávky může mít dokument objednávky číslo objednávky, datum objednávky a pole zákazníka. pole Customer (zákazník) může obsahovat pole jméno a adresa. Databáze kóduje data polí ve formátu, jako je například XML, YAML, JSON nebo BSON; nebo může použít prostý text. Jedna funkce, která nastavuje databáze dokumentů od databází typu klíč/hodnota, je možnost dotazování na neklíčová pole a definování sekundárních indexů, aby bylo možné dotazování zefektivnit. Díky tomu je databáze dokumentu vhodnější pro aplikace, které potřebují načítat data na základě kritérií složitějších, než je hodnota klíče dokumentu. Například v databázi dokumentů historie prodejní objednávky byste se mohli dotazovat na různá pole, jako je ID produktu, ID zákazníka, jméno zákazníka a tak dále. [MongoDB](http://www.mongodb.org/) je oblíbená databáze dokumentů.
+- [Databáze rodiny sloupců](https://msdn.microsoft.com/library/dn313285.aspx#sec9) jsou úložiště dat klíč/hodnota, která umožňují strukturovat úložiště dat v kolekcích souvisejících sloupců nazývaných rodin sloupců. Například databáze sčítání může mít jednu skupinu sloupců pro jméno osoby (první, střední, poslední), jednu skupinu pro adresu osoby a jednu skupinu pro informace o profilu osoby (DOB, pohlaví atd.). Databáze pak může ukládat jednotlivé rodiny sloupců do samostatného oddílu a přitom uchovávat všechna data pro jednu osobu, která souvisí se stejným klíčem. Pak si můžete přečíst všechny informace o profilu, aniž byste museli číst všechny informace o jménech a adresách. [Cassandra](http://cassandra.apache.org/) je oblíbená databáze rodiny sloupců.
+- [Databáze grafů](https://msdn.microsoft.com/library/dn313285.aspx#sec10) ukládají informace jako kolekci objektů a relací. Účelem databáze grafu je umožnit aplikaci efektivně provádět dotazy, které procházejí sítí objektů a vztahy mezi nimi. Objekty mohou být například zaměstnanci v databázi lidských zdrojů a je možné, že budete chtít usnadnit dotazy, jako je "hledání všech zaměstnanců, kteří přímo nebo nepřímo pracují pro Scott". [Neo4j](http://www.neo4j.org/) je oblíbená databáze grafu.
 
-Porovnání s relačními databázemi, možnosti NoSQL nabízí mnohem větší škálovatelnosti a nákladové efektivity pro ukládání a analýze nestrukturovaných dat. Výměnou za to je, že není poskytuje bohaté queryability a robustní datové integritní schopnosti relačních databází. NoSQL funguje dobře pro data protokolu služby IIS, včetně vysoké objemy bez nutnosti pro připojení k dotazy. NoSQL nebude tak dobře fungovat pro bankovní transakce, který vyžaduje integritu dat absolutní a zahrnuje mnoho vztahy k jiným datům souvisejícím s účtem.
+V porovnání s relačními databázemi nabízejí možnosti NoSQL mnohem větší škálovatelnost a cenovou efektivitu pro ukládání a analýzu nestrukturovaných dat. Kompromisem je, že neposkytují bohatou možnost dotazování a robustní integritu dat relačních databází. NoSQL bude dobře fungovat pro data protokolu služby IIS, což zahrnuje velký objem, který není potřeba pro spojování dotazů. NoSQL nebude fungovat dobře pro bankovní transakce, což vyžaduje absolutní integritu dat a zahrnuje mnoho vztahů k ostatním datům souvisejícím s účtem.
 
-K dispozici je také novější kategorie platformy databáze názvem [NewSQL](http://en.wikipedia.org/wiki/NewSQL) , který kombinuje škálovatelnost databáze NoSQL s queryability a transakční integrity relační databáze. NewSQL databáze jsou navržené pro distribuované ukládání a zpracování dotazů, což je často obtížné implementovat v databázích "OldSQL". [NuoDB](http://www.nuodb.com/) je příkladem NewSQL databázi, která je možné v Azure.
+K dispozici je také novější kategorie databázové platformy s názvem [NewSQL](http://en.wikipedia.org/wiki/NewSQL) , která kombinuje škálovatelnost databáze NoSQL s možností dotazování a transakční integrity relační databáze. Databáze NewSQL jsou navržené pro distribuované úložiště a zpracování dotazů, což je často těžké implementovat v databázích "OldSQL". [NuoDB](http://www.nuodb.com/) je příklad databáze NewSQL, kterou je možné použít v Azure.
 
 <a id="hadoop"></a>
 ## <a name="hadoop-and-mapreduce"></a>Hadoop a MapReduce
 
-Velké objemy dat, který můžete uložit do databáze NoSQL, může být obtížné analyzovat efektivně včas. Provedete to, které můžete použít architekturu jako třeba [Hadoop](http://hadoop.apache.org/) která implementuje [MapReduce](http://en.wikipedia.org/wiki/MapReduce) funkce. V podstatě MapReduce proces nemá je následující:
+Velké objemy dat, které můžete ukládat v databázích NoSQL, může být obtížné včas analyzovat. K tomu můžete použít rozhraní, jako je [Hadoop](http://hadoop.apache.org/) , které implementuje [MapReduce](http://en.wikipedia.org/wiki/MapReduce) funkce. V podstatě to znamená, že proces MapReduce je následující:
 
-- Limit množství dat, kterou je potřeba zpracovat tak, že vyberete mimo data ukládat jenom data, která skutečně potřebujete analyzovat. Je třeba znát strukturu vaší uživatelské základně podle roku narození, takže vybrat pouze narození let mimo vaše úložiště dat profilu uživatele.
-- Rozdělit data do částí a odesílat do jiných počítačů pro zpracování. Počítači A vypočítá počet lidí s daty 1950 1959, počítač B nepodporuje 1960 1969, atd. Tato skupina počítačů se nazývá *Hadoop cluster*.
-- Vložte výsledky jednotlivých částí zpět společně po dokončení zpracování na části. Teď máte seznam kolik lidí pro každý rok narození poměrně krátké a úloh výpočtu procenta v tomto seznamu celkové se dají spravovat.
+- Omezte velikost dat, která je třeba zpracovat, výběrem z úložiště dat pouze data, která skutečně potřebujete k analýze. Například chcete znát strukturu vaší uživatele v roce narození, takže v úložišti dat profilu uživatele vyberete jenom narozeniny roky.
+- Rozdělte data do částí a odešlete je do různých počítačů ke zpracování. Počítač A vypočítá počet osob s 1950-1959 daty, počítač B 1960-1969 atd. Tato skupina počítačů se nazývá *cluster Hadoop*.
+- Výsledky každé části proveďte společně po zpracování částí. Teď máte poměrně krátký seznam toho, kolik lidí pro každý rok narození a úlohu výpočtu procent v tomto souhrnném seznamu můžete spravovat.
 
-V Azure [HDInsight](https://azure.microsoft.com/services/hdinsight/) umožňuje zpracovávat, analyzovat a získání nových poznatků z velkých objemů dat s využitím výkonu hadoopu. Například může použít k analýze protokolů webového serveru:
+V Azure umožňuje [HDInsight](https://azure.microsoft.com/services/hdinsight/) zpracovávat, analyzovat a získávat nové poznatky z velkých objemů dat pomocí výkonného systému Hadoop. Můžete ho například použít k analýze protokolů webového serveru:
 
-- Povolení protokolování webového serveru do vašeho účtu úložiště. Tím se nastaví Azure pro zápis protokolů do služby Blob Service pro každý požadavek HTTP do vaší aplikace. Služba objektů Blob je v podstatě Cloudová úložiště souborů a hezky integruje s HDInsight.
+- Povolte protokolování webového serveru do svého účtu úložiště. Tím se nastaví Azure pro zápis protokolů do služby BLOB Service pro všechny požadavky HTTP do vaší aplikace. Služba BLOB je v podstatě cloudové úložiště souborů a integruje se s HDInsight.
 
-    ![Protokoly do úložiště objektů Blob](data-storage-options/_static/image2.png)
-- Protože aplikace získá provoz, protokolů webového serveru IIS se zapisují do úložiště objektů Blob.
+    ![Protokoly, které se mají Blob Storage](data-storage-options/_static/image2.png)
+- Jak aplikace získá přenos, protokoly IIS webového serveru se zapisují do úložiště objektů BLOB.
 
     ![Protokoly webového serveru](data-storage-options/_static/image3.png)
-- Na portálu klikněte na tlačítko **nový** - **datové služby** - **HDInsight** - **rychlé vytvoření**, a zadejte název clusteru HDInsight, velikost clusteru (počet datových uzlů clusteru HDInsight) a uživatelské jméno a heslo pro HDInsight cluster.
+- Na portálu klikněte na **nový** - **Data Services** - **HDInsight** - **rychle vytvořit**a zadejte název clusteru HDInsight, velikost clusteru (počet datových uzlů clusteru HDInsight) a uživatelské jméno a heslo pro cluster HDInsight.
 
     ![HDInsight](data-storage-options/_static/image4.png)
 
-Nyní můžete nastavit úlohy mapreduce je možné k analýze protokolů a získejte odpovědi na otázky jako:
+Teď můžete nastavit úlohy MapReduce k analýze protokolů a získat odpovědi na otázky, jako jsou:
 
-- Kterou denní dobu Moje aplikace získáte nejvyšší či nejnižší provoz?
-- Jaké zemích se Moje provoz přicházející z?
-- Co je průměrná okolí příjem Moje provoz pochází z oblasti. (Není veřejné datové sady, které vám detekovaná sousední výnosy podle IP adresy a shodovat s proti IP adresu v protokolů webového serveru.)
-- Jak detekovaná sousední příjem korelovat na konkrétní stránky nebo produkty v lokalitě?
+- Jakou dobu má moje aplikace největší nebo nejnižší přenos?
+- Do kterých zemí přichází můj provoz?
+- Jaký je průměrný okolní příjem oblastí, ze kterých pochází provoz. (K dispozici je veřejná datová sada, která vám poskytne okolní příjem podle IP adresy a můžete ji porovnat s IP adresou v protokolech webového serveru.)
+- Jak Vzpadá na okolní příjem z různých stránek nebo produktů v lokalitě?
 
-Můžete pak použít odpovědi na otázky, jako jsou tyto cílové reklamy podle pravděpodobnosti, které by zákazník zájem nebo pravděpodobnost, že si konkrétního produktu.
+Pak můžete použít odpovědi na otázky, jako jsou tyto, na cílové inzeráty na základě pravděpodobnosti, že zákazník zajímá nebo chce koupit určitý produkt.
 
-Jak je vysvětleno v [automatizovat všechno kapitoly](automate-everything.md), je možné automatizovat většinu funkcí, které můžete udělat na portálu a který obsahuje nastavení a spouštění analytických úloh pro HDInsight. Typické HDInsight skript může obsahovat následující kroky:
+Jak je vysvětleno v [kapitole automatizace všeho](automate-everything.md), většina funkcí, které můžete provádět na portálu, může být automatizovaná a zahrnuje nastavení a provádění úloh analýzy HDInsight. Typický skript HDInsight může obsahovat následující kroky:
 
-- Zřídit HDInsight cluster a připojit ho k účtu úložiště pro vstup úložiště objektů Blob.
-- Spustitelné soubory úlohy MapReduce (soubory .jar nebo .exe) nahrajte do clusteru HDInsight.
-- Odeslání MapReduce, který uloží výstupní data do úložiště objektů Blob.
-- Počkejte na dokončení úlohy.
-- Odstranění clusteru HDInsight.
-- Přístup k výstupu z úložiště objektů Blob.
+- Zřídí cluster HDInsight a propojí ho s vaším účtem úložiště pro vstup do úložiště objektů BLOB.
+- Nahrajte do clusteru HDInsight spustitelné soubory úlohy MapReduce (soubory. jar nebo. exe).
+- Odešlete MapReduce, který ukládá výstupní data do úložiště objektů BLOB.
+- Počkejte, než se úloha dokončí.
+- Odstraňte cluster HDInsight.
+- Přístup k výstupu z úložiště objektů BLOB
 
-Spuštěním skriptu, který to vše dělá minimalizovat množství času, který je zřízení clusteru HDInsight, což minimalizuje náklady.
+Spuštěním skriptu, který to dělá, minimalizujete dobu, po kterou se cluster HDInsight zřídí, což minimalizuje vaše náklady.
 
 <a id="paasiaas"></a>
-## <a name="platform-as-a-service-paas-versus-infrastructure-as-a-service-iaas"></a>Platforma jako služba (PaaS) a infrastruktura jako služba (IaaS)
+## <a name="platform-as-a-service-paas-versus-infrastructure-as-a-service-iaas"></a>Platforma jako služba (PaaS) versus infrastruktura jako služba (IaaS)
 
-Možnosti úložiště dat výše uvedených zahrnují Platform-as-a-Service (PaaS) a řešení Infrastructure-as--Service (IaaS). PaaS znamená, že budeme ji spravovat infrastrukturu hardware a software a stačí použít službu. SQL Database je funkce Azure PaaS. Požádat o databáze, a na pozadí Azure nastaví a konfiguruje virtuální počítače a nastaví databází na ně. Nemají přímý přístup k virtuálním počítačům a nemusíte spravovat. IaaS znamená, že nastavení, konfigurace a správa virtuálních počítačů, které běží v naší infrastruktuře Datacenter a vložíte cokoliv, co chcete s nimi. Poskytujeme galerii předem nakonfigurovaných imagí virtuálních počítačů pro společné konfigurace virtuálního počítače. Můžete například nainstalovat předem nakonfigurovaných imagí virtuálních počítačů pro Windows Server 2008, Windows Server 2012, BizTalk Server, Oracle WebLogic Server, Oracle Database, atd.
+Níže uvedené možnosti úložiště dat zahrnují řešení typu platforma jako služba (PaaS) a IaaS (Infrastructure-as-a-Service). PaaS znamená, že spravujete hardwarovou a softwarovou infrastrukturu a právě ji využíváte. SQL Database je funkce PaaS v Azure. Vyžádáte si databáze a na pozadí Azure nastavíme a nakonfigurujeme virtuální počítače a nastavíte na nich databáze. Nemáte přímý přístup k virtuálním počítačům a nemusíte je spravovat. IaaS znamená, že nastavíte, nakonfigurujete a spravujete virtuální počítače, které běží v naší infrastruktuře datacenter, a na ně zadáte cokoli, co potřebujete. Poskytujeme galerii předem nakonfigurovaných imagí virtuálních počítačů pro běžné konfigurace virtuálních počítačů. Můžete například nainstalovat předem nakonfigurované image virtuálních počítačů pro Windows Server 2008, Windows Server 2012, BizTalk Server, Oracle WebLogic Server, Oracle Database atd.
 
-Data řešení PaaS, které Azure nabízí, patří:
+PaaS data Solutions, která nabízí Azure, zahrnují:
 
-- Azure SQL Database (dřív označovanou jako SQL Azure). Cloudová relační databáze založená na SQL serveru.
-- Azure Table storage. Klíč/hodnota, databáze NoSQL.
-- Azure Blob storage. Úložiště souborů v cloudu.
+- Azure SQL Database (dříve označované jako SQL Azure). Cloudová relační databáze založená na SQL Server.
+- Úložiště tabulek Azure. Databáze NoSQL klíč/hodnota.
+- Úložiště objektů BLOB v Azure Úložiště souborů v cloudu.
 
-Pro IaaS můžete spustit všechno, co můžete načíst do virtuálního počítače, například:
+V případě IaaS můžete spustit cokoli, co můžete načíst do virtuálního počítače, například:
 
-- Relačními databázemi jako SQL Server, Oracle, MySQL, SQL Compact, SQLite nebo Postgres.
-- Například protokolem Memcache, Redis, Cassandra a Riak úložiště dat klíč/hodnota.
-- Sloupec data ukládá jako je například HBase.
-- Databáze dokumentů, jako je například CouchDB, MongoDB a RavenDB.
-- Databáze grafů, jako je například Neo4j.
+- Relační databáze, například SQL Server, Oracle, MySQL, SQL Compact, SQLite nebo Postgres.
+- Úložiště dat klíč/hodnota, jako jsou memcached, Redis, Cassandra a Riak.
+- Sloupce úložišť dat, jako jsou například HBA.
+- Dokumenty, jako jsou MongoDB, RavenDB a CouchDB.
+- Databáze grafů, jako je Neo4j.
 
-![Možnosti ukládání dat v Azure](data-storage-options/_static/image5.png)
+![Možnosti úložiště dat v Azure](data-storage-options/_static/image5.png)
 
-Možnost IaaS poskytuje téměř neomezená data na možnosti úložiště a mnoho z nich jsou obzvláště snadno používá, protože můžete vytvořit pomocí předem nakonfigurovaných imagí virtuálních počítačů. Například v portálu pro správu přejděte na **virtuálních počítačů**, klikněte na tlačítko **image** kartu a klikněte na tlačítko **procházet VM Depot**.
+Možnost IaaS poskytuje skoro neomezené možnosti ukládání dat a mnoho z nich je zvlášť snadné, protože můžete vytvářet virtuální počítače pomocí předem nakonfigurovaných imagí. Například na portálu pro správu přejděte na **Virtual Machines**, klikněte na kartu **bitové kopie** a klikněte na **Procházet virtuální počítač**.
 
-![Procházet VM Depot](data-storage-options/_static/image6.png)
+![Procházet skladiště VM](data-storage-options/_static/image6.png)
 
-Zobrazí seznam [stovky předkonfigurovaných imagí virtuálních počítačů](http://www.hanselman.com/blog/Over400VirtualMachineImagesOfOpenSourceSoftwareStacksInTheVMDepotAzureGallery.aspx), a můžete vytvořit virtuální počítač z bitové kopie, která má systém správy databáze a předinstalovaným, například MongoDB, Neo4J, Redis, Cassandra nebo CouchDB:
+Pak se zobrazí seznam [stovek předkonfigurovaných imagí virtuálních počítačů](http://www.hanselman.com/blog/Over400VirtualMachineImagesOfOpenSourceSoftwareStacksInTheVMDepotAzureGallery.aspx)a můžete vytvořit virtuální počítač z image, která má předinstalovaného systému správy databáze, jako je například MongoDB, Neo4J, Redis, Cassandra nebo CouchDB:
 
-![MongoDB v úložišti VM Depot po](data-storage-options/_static/image7.png)
+![MongoDB ve skladu VM](data-storage-options/_static/image7.png)
 
-S Azure můžete použít stejně snadno jako možné možnosti ukládání dat v IaaS, ale nabídek PaaS mají celou řadu výhod, které je nákladově efektivní a praktické pro řadu scénářů:
+Azure poskytuje IaaS možnosti úložiště dat co nejjednodušší, ale nabídky PaaS mají spoustu výhod, díky kterým jsou cenově výhodné a praktické pro mnoho scénářů:
 
-- Není nutné vytvářet virtuální počítače, jenom pomocí portálu nebo skript nastavení datového úložiště. Pokud chcete úložiště dat 200 terabajt, jen klikněte na tlačítko nebo spouští příkazy a během několika sekund je připraven k použití.
-- Nemusíte spravovat ani aktualizovat virtuální počítače použité službou. Společnost Microsoft, který pro vás automaticky.-není nutné se starat o nastavení infrastruktury pro škálování a vysoké dostupnosti; Microsoft všechno, zpracuje za vás.
-- Není potřeba koupit licence; licenční poplatky jsou zahrnuté v poplatků za služby.
-- Platíte jenom za využité.
+- Nemusíte vytvářet virtuální počítače. k nastavení úložiště dat stačí použít portál nebo skript. Pokud chcete úložiště dat 200 terabajtů, stačí kliknout na tlačítko nebo spustit příkaz a v sekundách je připraveno k použití.
+- Nemusíte spravovat ani opravovat virtuální počítače používané službou. Microsoft to dělá automaticky. – nemusíte si dělat starosti s nastavením infrastruktury pro škálování nebo vysokou dostupnost; Microsoft to všechno zpracuje za vás.
+- Nemusíte kupovat licence. licenční poplatky jsou zahrnuté do poplatků za službu.
+- Platíte jenom za to, co využijete.
 
-Možnosti úložiště dat PaaS v Azure zahrnují nabídek jiných poskytovatelů. Například můžete použít [doplňku MongoLab](https://azure.microsoft.com/documentation/articles/store-mongolab-web-sites-dotnet-store-data-mongodb/) z Azure Store ke zřízení databáze MongoDB jako služba.
+PaaS možnosti úložiště dat v Azure zahrnují nabídky poskytovatelů třetích stran. Můžete například vybrat [doplněk MongoLabu](https://azure.microsoft.com/documentation/articles/store-mongolab-web-sites-dotnet-store-data-mongodb/) z Azure Store a zřídit databázi MongoDB jako službu.
 
-## <a name="choosing-a-data-storage-option"></a>Pokud vyberete možnost úložiště dat
+## <a name="choosing-a-data-storage-option"></a>Výběr možnosti úložiště dat
 
-Žádné jedním z přístupů je nejvhodnější pro všechny scénáře. Pokud kdokoli říká, že tato technologie je odpověď, je první věc, kterou požádat "Jaký je dotaz?", protože různá řešení, které jsou optimalizovány pro různé věci. Jednoznačného výhod relačního modelu; To je důvod, proč se stále týká tak dlouho. Existuje ale také dolů strany do SQL, které lze řešit pomocí řešení NoSQL.
+Žádný z přístupů není pro všechny scénáře správný. Pokud každý z nich uvádí, že je tato technologie odpověď, první věc, kterou je třeba zeptat, je "Co je otázka?", protože různá řešení jsou optimalizovaná pro různé věci. Relační model má určité výhody; To je důvod, proč je to pro dlouhou dobu. Existují však také mimo jiné na SQL, které lze řešit pomocí řešení NoSQL.
 
-Často co vidíme výborně fungují je složení přístup, pokud používáte SQL a NoSQL v jediném řešení. I když lidé Řekněme, že se už středu NoSQL, pokud můžete přejít k podrobnostem co dělají je často hledání, používá několik různých rozhraní NoSQL: používá [CouchDB](http://wiki.apache.org/couchdb/Introduction), a [Redis](http://redis.io/)a [ Riak](http://basho.com/riak/) pro různé věci. Dokonce i Facebooku, který značně používá NoSQL, používá různá rozhraní NoSQL pro různé části služby. Možnost kombinovat a párovat přístupy úložiště dat je jednou z věcí, které je dobré o cloudu, protože je snadné použití řešení pro více dat a jejich integrace v jediné aplikaci.
+Často, co vidíte, je nejlepší způsob, jak se v jednom řešení používají SQL a NoSQL. I když uživatelé říkají, že jsou přechodu NoSQL, pokud si provedete další informace o tom, co dělají, často zjistíte, že používají několik různých NoSQL platforem: používají [CouchDB](http://wiki.apache.org/couchdb/Introduction)a [Redis](http://redis.io/)a [Riak](http://basho.com/riak/) pro různé věci. Dokonce i Facebook, který používá NoSQL, používá pro různé části služby jiné architektury NoSQL. Jednou z věcí, které jsou v cloudu Skvělé, je flexibilní flexibilita a přístup k nim, protože je snadné použít více datových řešení a integrovat je do jediné aplikace.
 
-Tady je pár otázek zamyslet, když se výběr přístupu:
+Tady jsou některé otázky, které je potřeba vzít v úvahu při výběru přístupu:
 
-| Sémantické dat | -Co je základní úložiště a data přístupu k datům sémantického (jsou můžete ukládání relačních i nestrukturovanými daty)? Nejlépe nestrukturovaných dat, jako je například mediální soubory v úložišti objektů blob; kolekce související data, jako jsou produkty, inventáře, Dodavatelé, objednávek zákazníků, atd., nejlépe do relační databáze. |
+| Sémantika dat | – Jaká je základní sémantika úložiště dat a přístupu k datům (ukládáte relační nebo nestrukturovaná data)? Nestrukturovaná data, jako jsou mediální soubory, se nejlépe hodí pro úložiště objektů BLOB; kolekce souvisejících dat, jako jsou produkty, inventáře, dodavatelé, zákaznické objednávky atd., se nejlépe hodí v relační databázi. |
 | --- | --- |
-| Podpora dotazů | – Jak snadné je dotazy na data? -Co typů otázek mohou být efektivně dotaz? Úložiště dat klíč/hodnota jsou velmi vhodné v získání jednoho řádku zadaný s hodnotou klíče, ale ne tak dobré pro složité dotazy. Pro úložiště dat profilu v uživatele ve kterém se vždy zobrazuje data pro jeden konkrétní uživatel úložiště dvojic klíč/hodnota data může fungovat. pro katalog produktů, ve které chcete získat různé seskupení na základě různých atributů produktu může být vhodnější relační databáze. Databáze NoSQL můžete efektivně ukládat velké objemy dat, ale budete muset struktury databáze po tom, jak aplikace dotazuje data a díky obtížnější provádět dotazy ad hoc. S relační databázi můžete vytvořit téměř jakýkoli druh dotazu. |
-| Funkční projekce | -Může otázky, agregace, atd., být provedeno na straně serveru? Pokud mám vyberte počet spuštění (\*) z tabulky v SQL, bude velmi efektivně udělal všechnu práci na serveru a vrátí číslo hledám. Pokud chci, aby stejný výpočet z úložiště dat typu NoSQL, která nepodporuje agregace, to je neefektivní "bez vazby dotazu" a pravděpodobně vyprší časový limit. I v případě, že dotaz bude úspěšné, budu muset načíst všechna data ze serveru do klienta a počet řádků na straně klienta. – Jaké jazyky nebo typy výrazů můžete použít? Relační databáze I pomocí SQL. Některé databáze NoSQL jako je Azure Table storage, můžu používat [OData](http://www.odata.org/), a vše můžu udělat, je filtrovat na primární klíč a získejte projekce (vybrat podmnožinu pole k dispozici). |
-| Snadná škálovatelnost | – Jak často a množství budou data muset škálovat? -Je platforma nativně implementuje horizontální navýšení kapacity? – Jak snadné je přidání nebo odebrání kapacity (velikosti a propustnosti)? Relační databáze a tabulky nejsou rozděleny do oddílů automaticky tak, aby byly škálovatelné, takže jsou složité jejich rozšiřování nad rámec určitá omezení. Ze své podstaty oddílů datových úložišť typu NoSQL, jako je Azure Table storage, všechno, co a skoro neomezený přidání oddílů. Table Storage je možné snadno škálovat až 200 TB, ale maximální velikosti databáze pro službu Azure SQL Database je 500 GB. Dělení do více databází můžete škálovat relační data, ale nastavení aplikace pro podporu tohoto modelu zahrnuje spoustu práce programování. |
-| Instrumentace a možností správy | – Jak snadné je platforma pro instrumentaci, monitorovat a spravovat? Budete muset Udržujte si přehled o stavu a výkonu úložiště dat, proto je potřeba vědět před jeho zahájením jaké metriky na platformě poskytuje zdarma, a co musíte vypracovat sami. |
-| Operace | – Jak snadné je platforma pro nasazení a spuštění v Azure? PaaS? IaaS? Linux? Table Storage a SQL Database se snadno nastavit v Azure. Platformy, které nejsou integrovanými řešeními Azure PaaS vyžadovat další úsilí. |
-| Podpora rozhraní API | -Je k dispozici rozhraní API, která usnadňuje práci s platformou? Pro službu Azure Table Service je sada SDK pomocí rozhraní API .NET, která podporuje asynchronní programovací model rozhraní .NET 4.5. Pokud píšete aplikaci .NET, budete moci mnohem snadněji psaní a testování kódu pro službu Azure Table Service ve srovnání s jinou klíč/hodnota sloupce datové úložiště platformě, která nemá žádné rozhraní API nebo některou méně komplexní. |
-| Transakční konzistence integrity a data | -Je důležité, že platformu podporu transakcí kvůli zaručení konzistence dat? Pro udržování přehledu o hromadné e-mailů, výkon a náklady na úložiště málo dat může být mnohem důležitější než Automatická podpora funkce pro transakce nebo referenční integritu v datové platformy, aby službu Azure Table Service dobrou volbou. Pro sledování bankovním účtu vyrovnává nebo nákupních objednávek platformu relační databáze, která poskytuje silné záruky transakční by bylo vhodnější použít. |
-| Kontinuita podnikových procesů | – Jak snadné je zálohování, obnovení a zotavení po havárii? Dříve či později bude získat poškozený provozních dat a budete potřebovat funkci zpět. Relační databáze často mají další funkce jemně odstupňovaná restore, například možnost obnovit do bodu v čase. Vysvětlení, jaké funkce obnovení jsou u různých platforem, které zvažujete dostupné je důležitým faktorem, který vezměte v úvahu. |
-| Náklady | – Pokud data úlohy může podporovat více než jedné platformě, jejich porovnání nákladů? Například pokud používáte ASP.NET Identity, můžete ukládat data uživatelského profilu ve službě Azure Table Service nebo Azure SQL Database. Pokud nepotřebujete široké možnosti dotazování zařízení služby SQL Database, můžete se rozhodnout Azure Tables zčásti vzhledem k tomu, že to stojí většina pro danou velikost úložiště. |
+| Podpora dotazů | – Jak snadné je dotazování dat? – Jaké typy otázek se dají efektivně zeptat? Úložiště dat klíč/hodnota jsou velmi dobrá při získávání hodnoty klíče na jeden řádek, ale ne tak dobré pro složité dotazy. Pro úložiště dat profilu uživatele, kde vždycky získáváte data pro jednoho konkrétního uživatele, by úložiště dat klíč/hodnota mohlo dobře fungovat; v případě katalogu produktů, kde chcete získat různá seskupení na základě různých atributů produktu, může relační databáze lépe fungovat. Databáze NoSQL můžou efektivně ukládat velké objemy dat, ale je nutné strukturu databáze strukturovat, jak se aplikace dotazuje na data, a díky tomu je to obtížnější provádět ad hoc dotazy. V případě relační databáze můžete sestavit skoro jakýkoli typ dotazu. |
+| Funkční projekce | – Možné dotazy, agregace atd., spustit na straně serveru? Když z tabulky v SQL Spouštím\*COUNT (), bude velmi efektivně provádět veškerou práci na serveru a vracet číslo, které hledáte. Pokud chci stejný výpočet z úložiště dat NoSQL, které nepodporuje agregaci, jedná se o neefektivní dotaz bez vazby a pravděpodobně vyprší časový limit. I v případě, že je dotaz úspěšný, je nutné načíst všechna data ze serveru do klienta a spočítat řádky v klientovi. – Jaké jazyky nebo typy výrazů lze použít? Pomocí relační databáze můžu použít SQL. S některými NoSQL databázemi, jako je Azure Table Storage, používám [OData](http://www.odata.org/)a všechno, co můžu udělat, je vyfiltrovat primární klíč a získat projekce (vyberte podmnožinu dostupných polí). |
+| Snadná škálovatelnost | – Jak často a kolik bude nutné data škálovat? – Platforma nativně implementuje horizontální navýšení kapacity? – Jak snadné je přidat nebo odebrat kapacitu (velikost a propustnost)? Relační databáze a tabulky nejsou automaticky rozděleny, aby byly škálovatelné, takže je obtížné škálovat nad rámec určitých omezení. NoSQL úložiště dat, jako je Azure Table Storage, vše vše do celého oddílu a pro přidávání oddílů téměř není nijak omezené. Můžete snadno škálovat Table Storage až 200 terabajtů, ale maximální velikost databáze pro Azure SQL Database je 500 gigabajtů. Relační data můžete škálovat jejich rozdělením do více databází, ale nastavením aplikace pro podporu tohoto modelu zahrnuje spoustu programovací práce. |
+| Instrumentace a možnosti správy | – Jak snadné je platforma pro instrumentaci, monitorování a správu? Budete si muset informovat o stavu a výkonu úložiště dat, abyste měli jistotu, co vám vám poskytne metrika, kterou vám platforma poskytuje zdarma, a co je potřeba vyvíjet sami. |
+| Operace | – Jak snadné je platforma pro nasazení a spouštění v Azure? PaaS? IaaS? Linux? Table Storage a SQL Database se snadno nastavují v Azure. Platformy, které nejsou integrovanými řešeními Azure PaaS, vyžadují více úsilí. |
+| Podpora rozhraní API | – Je dostupné rozhraní API, které usnadňuje práci s platformou? Pro službu Azure Table je k dispozici sada SDK s rozhraním .NET API, které podporuje asynchronní programovací model .NET 4,5. Pokud píšete aplikaci .NET, bude mnohem snazší psát a testovat kód pro službu Azure Table ve srovnání s jinou platformou úložiště dat ve sloupci klíč/hodnota, která nemá žádné rozhraní API nebo méně komplexní. |
+| Integrita transakcí a konzistence dat | – Je důležité, aby platforma podporovala transakce, aby se zajistila konzistence dat? Pro udržení přehledu o odeslaných hromadných e-mailech může být výkon a náklady na úložiště dat důležitější než Automatická podpora pro transakce nebo referenční integrita v datové platformě, což znamená, že služba Azure Table je vhodnou volbou. Pro sledování zůstatků bankovních účtů nebo nákupních objednávek může být lepší volbou platforma relačních databází, která poskytuje silné transakční záruky. |
+| Provozní kontinuita | – Jak snadné je zálohování, obnovování a zotavení po havárii? Dřív nebo novější produkční data budou poškozená a budete potřebovat funkci vrátit zpátky. Relační databáze často obsahují přesnější možnosti obnovení, jako je například možnost obnovení k určitému bodu v čase. Porozumění funkcím obnovení, které jsou k dispozici na každé platformě, kterou zvažujete, je důležitým faktorem, který je třeba zvážit. |
+| Náklady | – Pokud více než jedna platforma může podporovat datovou úlohu, jak se porovnávají s náklady? Pokud například použijete ASP.NET Identity, můžete ukládat data profilu uživatele ve službě Azure Table Service nebo v Azure SQL Database. Pokud nepotřebujete zařízení s bohatou dotazováním SQL Database, můžete zvolit tabulky Azure v části, protože za dané množství úložiště stojí mnohem méně. |
 
-Co obecně se doporučuje znát odpovědi na otázky v každé z těchto kategorií zvolte řešení úložiště dat.
+Obecně doporučujeme znát odpověď na otázky v každé z těchto kategorií ještě předtím, než zvolíte řešení úložiště dat.
 
-Kromě toho vaše zatížení může mít specifické požadavky, které mohou některé platformy podporují lépe než jiné. Příklad:
+Kromě toho vaše zatížení může mít specifické požadavky, které mohou některé platformy podporovat lépe než jiné. Příklad:
 
-- Vaše aplikace vyžadovat auditu možnosti?
-- Jaké jsou požadavky na vaše data životnost – nevyžadují automatické možnosti archivace nebo mazání?
-- Máte požadavky na zabezpečení specializované? Například data obsahují osobní údaje (identifikovatelné osobní údaje), ale budete muset být schopni Ujistěte se, že identifikovatelné osobní údaje je vyloučený z výsledků dotazu.
-- Pokud máte nějaká data, která nemůže být uložena v cloudu pro regulační nebo technologické důvodů může být nutné Cloudová datová platforma úložiště, která usnadňuje integrování místního úložiště.
+- Vyžaduje vaše aplikace možnosti auditu?
+- Jaké jsou vaše požadavky na data longevity – vyžadujete automatické archivování nebo vyprazdňování funkcí?
+- Máte specializované požadavky na zabezpečení? Data například zahrnují PII (identifikovatelné osobní údaje), ale musíte být schopni zajistit, aby PII bylo vyloučeno z výsledků dotazu.
+- Pokud máte nějaká data, která nejdou Uložit do cloudu, pokud jde o regulativní nebo technologický důvod, možná budete potřebovat cloudovou platformu pro úložiště dat, která usnadňuje integraci s místním úložištěm.
 
-## <a name="demo--using-sql-database-in-azure"></a>Ukázka – využívající službu SQL Database v Azure
+## <a name="demo--using-sql-database-in-azure"></a>Ukázka – používání SQL Database v Azure
 
-Aplikace Fix It používá relační databázi k ukládání úkolů. Skript prostředí Windows PowerShell vytváření prostředí je znázorněno [kapitoly automatizovat všechno, co](automate-everything.md) vytvoří dvě instance SQL Database. V portálu můžete zobrazit kliknutím **databází SQL** kartu.
+Aplikace opravit IT používá k ukládání úkolů relační databázi. Skript prostředí Windows PowerShell pro vytvoření prostředí zobrazený v [části automatizovat vše](automate-everything.md) vytvoří dvě instance SQL Database. Můžete je zobrazit na portálu kliknutím na kartu **databáze SQL** .
 
 ![Databáze SQL na portálu](data-storage-options/_static/image8.png)
 
-Je také snadné vytváření databáze pomocí portálu.
+Je také snadné vytvořit databáze pomocí portálu.
 
-Klikněte na tlačítko **nový – Data Services –** -- **SQL Database** -- **rychlé vytvoření**, zadejte název databáze, zvolte server, který už máte ve svém účtu nebo vytvořte novou a klikněte na tlačítko **vytvořit databázi SQL**.
+Klikněte na **Nový--Data Services** -- **SQL Database** -- **rychle vytvořit**, zadejte název databáze, vyberte server, který už máte ve svém účtu, nebo vytvořte nový a klikněte na **vytvořit SQL Database**.
 
-![Nová databáze SQL](data-storage-options/_static/image9.png)
+![Nový SQL Database](data-storage-options/_static/image9.png)
 
-Počkejte několik sekund, a mít databázi v Azure, které jsou připravené k použití.
+Počkejte několik sekund a máte k dispozici databázi v Azure, kterou můžete použít.
 
-![Vytvoření nové databáze SQL](data-storage-options/_static/image10.png)
+![Vytvořil se nový SQL Database.](data-storage-options/_static/image10.png)
 
-Tak, že Azure v několika sekund, co může trvat denně nebo týdně nebo i delší dobu provádět v místním prostředí. A vzhledem k tomu, že databáze můžete stejně snadno vytvořit automaticky ve skriptu nebo pomocí rozhraní API pro správu, můžete dynamicky horizontálně navýšit tím, že rozprostírá vaše data napříč několika databázemi, tak dlouho, dokud aplikace naprogramování za to.
+Takže Azure provede během několika sekund, které vám může trvat jeden den nebo týden nebo déle v místním prostředí. A vzhledem k tomu, že můžete stejně snadno vytvářet databáze automaticky ve skriptu nebo pomocí rozhraní API pro správu, můžete dynamicky škálovat rozšířením dat napříč více databázemi, pokud je vaše aplikace pro tuto aplikaci naprogramovaná.
 
-Toto je příkladem našeho modelu platforma jako služba. Není nutné ke správě serverů, Uděláme to. Nemusíte se obávat o zálohování, Uděláme to. Běží v prostředí s vysokou dostupností – data v databázi se replikují napříč tři servery automaticky. Pokud počítač přestane být funkční, můžeme automaticky převzetí služeb při selhání a přijít o žádná data. Server je pravidelně opravit, nemusíte zabývat.
+Toto je příklad našeho modelu platformy jako služby. Nemusíte spravovat servery, my to máme. Nemusíte se starat o zálohování, my to máme. Je spuštěná ve vysoké dostupnosti – data v databázi se replikují na tři servery automaticky. Pokud počítač zemře, automaticky převezme služby při selhání a ztratíte žádná data. Server je pravidelně opravený, nemusíte se o to starat.
 
-Klikněte na tlačítko a získat přesné připojovací řetězec, potřebujete a můžete hned začít používat nové databáze.
+Klikněte na tlačítko a získáte přesný připojovací řetězec, který potřebujete, a můžete hned začít používat novou databázi.
 
 ![Připojovací řetězce](data-storage-options/_static/image11.png)
 
-Řídicí panel zobrazuje historii připojení a velikost úložiště využitá.
+Řídicí panel zobrazuje historii připojení a velikost využitého úložiště.
 
 ![Řídicí panel SQL Database](data-storage-options/_static/image12.png)
 
-Můžete spravovat databází na portálu nebo pomocí nástrojů SQL Server je už znáte, včetně SQL Server Management Studio (SSMS) a nástroje sady Visual Studio, SQL Server Object Explorer (SSOX) a Průzkumník serveru.
+Databáze můžete spravovat na portálu nebo pomocí SQL Serverch nástrojů, které už znáte, včetně SQL Server Management Studio (SSMS) a sady Visual Studio Tools Průzkumník objektů systému SQL Server (SSOX) a Průzkumník serveru.
 
 ![SSOX](data-storage-options/_static/image13.png)
 
-Další skvělé na tom je cenový model. Vývoj můžete začít s bezplatné 20 MB databázi a produkční databáze začíná přibližně 5 USD za měsíc. Platíte objem dat, které ukládáte ve skutečnosti v databázi není maximální kapacity. Není nutné si koupit licenci.
+Dalším dobrým aspektem je cenový model. Můžete začít vývoj s využitím bezplatné databáze 20 MB a provozní databáze začíná přibližně $5 měsíčně. Platíte jenom za objem dat, která ve skutečnosti ukládáte v databázi, a ne na maximální kapacitu. Nemusíte kupovat licenci.
 
-SQL Database je jednoduché škálování. Pro aplikace Fix It databáze, kterou jsme vytvořili v našich automatizační skript omezené na 1 GB. Pokud chcete škálovat až 150 GB, můžete pouze na portál a změnit toto nastavení nebo spusťte příkaz REST API, a během několika sekund máte 150 GB databáze, kterou můžete nasadit do data.
+SQL Database se snadno škáluje. V případě aplikace opravit IT je databáze vytvořená v našem skriptu pro automatizaci omezené na 1 4gigový. Pokud ho chcete škálovat až na 150 4gigový, můžete jednoduše přejít na portál a změnit toto nastavení, nebo spustit příkaz REST API a v sekundách máte databázi 150 4gigový, do které můžete nasadit data.
 
-![Edice SQL Database a velikosti](data-storage-options/_static/image14.png)
+![SQL Database edice a velikosti](data-storage-options/_static/image14.png)
 
-To je síla cloudu a zprovozněte infrastrukturu, snadno a rychle začít používat okamžitě.
+To je síla cloudu, která umožňuje rychle a snadno a okamžitě začít používat infrastrukturu.
 
-Aplikace Fix It používá dvě databáze SQL, jeden pro členství (ověřování a autorizace) a jeden pro data, a to je všechno, co musíte udělat, abyste ho zajišťovat a škálovat ho. Jste viděli již dříve jak zřídit databáze prostřednictvím skriptů prostředí Windows PowerShell, a teď jste viděli jsme také, jak snadné je udělat na portálu.
+Aplikace pro opravu IT používá dvě databáze SQL, jednu pro členství (ověřování a autorizaci) a jednu pro data a je to vše, co musíte udělat, abyste ji zřídili a mohli škálovat. Dříve jste viděli, jak zřídit databáze prostřednictvím skriptů prostředí Windows PowerShell, a teď jste viděli, jak snadné je na portálu.
 
-## <a name="entity-framework-versus-direct-database-access-using-adonet"></a>Srovnání s přímým přístupem k databázi pomocí ADO.NET Entity Framework
+## <a name="entity-framework-versus-direct-database-access-using-adonet"></a>Entity Framework versus přímý přístup k databázi pomocí ADO.NET
 
-Aplikace Fix It nemá přístup k těmto databázím s použitím Entity Framework, Microsoft doporučuje ORM (objektově relační Mapovač) pro aplikace .NET. ORM je skvělý nástroj, který usnadňuje produktivitu vývojářů, ale produktivita spočívá za cenu snížení výkonu v některých scénářích. Ve skutečných cloudových aplikací nebudou provádět výběr mezi využitím EF, nebo přímo pomocí technologie ADO.NET – použijete obě. Ve většině případů při psaní kódu, který spolupracuje s databází, získání maximální výkon není důležité, a můžete využít výhod zjednodušené kódování a testování, získáte s rozhraním Entity Framework. V situacích, kde EF režie způsobí nepřijatelné výkonu můžete napsat a spouštění vlastních dotazů pomocí technologie ADO.NET, ideálně pomocí volání uložené procedury.
+Oprava aplikace IT přistupuje k těmto databázím pomocí Entity Framework, doporučeného ORM od Microsoftu (Object-relační Mapovač) pro aplikace .NET. ORM je skvělý nástroj, který usnadňuje produktivitu vývojářů, ale produktivita v některých případech přináší náklady na snížený výkon. V reálné cloudové aplikaci nebudete volit mezi použitím EF nebo přímo pomocí ADO.NET – budete používat obojí. Ve většině případů při psaní kódu, který pracuje s databází, je získání maximálního výkonu nekritické a můžete využít výhod zjednodušeného kódování a testování, které získáte s Entity Framework. V situacích, kdy režie EF by způsobila nepřijatelný výkon, můžete napsat a spustit vlastní dotazy pomocí ADO.NET, a to v ideálním případě voláním uložených procedur.
 
-Libovolné metody, které používáte pro přístup k databázi, kterou chcete minimalizovat "upovídanost" co největší míře. Jinými slovy Pokud se zobrazí všechna data, které potřebujete v jedné větší výsledek dotazu nastavte místo jen pár nebo stovky menších, který je obvykle vhodnější. Například pokud potřebujete seznam studentů a kurzy, které se registrují, je obvykle vhodnější zobrazíte všechna data v dotazu jedno spojení místo získávání studenty v jednom dotazu a provádění samostatné dotazy pro každý student kurzy.
+Bez ohledu na to, jakou metodu používáte pro přístup k databázi, chcete co nejvíc minimalizovat "upovídanost". Jinými slovy, pokud můžete získat všechna data, která potřebujete v jedné sadě výsledků dotazu, a ne desítky nebo stovky menších, což je obvykle vhodnější. Pokud potřebujete například vypsat studenty a kurzy, které jsou zaregistrované v, je obvykle lepší získat všechna data v jednom dotazu join, ale Nezískávat studenty v jednom dotazu a provádět samostatné dotazy pro kurzy každého studenta.
 
-## <a name="sql-databases-and-the-entity-framework-in-the-fix-it-app"></a>Databáze SQL a Entity Framework v aplikaci Fix It
+## <a name="sql-databases-and-the-entity-framework-in-the-fix-it-app"></a>Databáze SQL a Entity Framework v aplikaci Fix it
 
-V aplikaci Fix It `FixItContext` třída, která je odvozena z rozhraní Entity Framework `DbContext` třídy, určuje databázi a určuje tabulek v databázi. Kontext určuje sadu entit (tabulka) pro úlohy, a kód předá v kontextu název připojovacího řetězce. Tento název se odkazuje na připojovací řetězec, který je definován v souboru Web.config.
+V aplikaci opravit IT třídu `FixItContext`, která je odvozena z třídy Entity Framework `DbContext`, identifikuje databázi a určuje tabulky v databázi. Kontext určuje sadu entit (tabulka) pro úkoly a kód předá do kontextu název připojovacího řetězce. Tento název odkazuje na připojovací řetězec, který je definován v souboru Web. config.
 
 [!code-csharp[Main](data-storage-options/samples/sample1.cs?highlight=4,8)]
 
-Připojovací řetězec *Web.config* soubor má název appdb (zde odkazující na databázi místního vývojového):
+Připojovací řetězec v souboru *Web. config* má název AppDB (odkazuje na místní vývojovou databázi):
 
 [!code-xml[Main](data-storage-options/samples/sample2.xml?highlight=3)]
 
-Vytvoří rozhraní Entity Framework *FixItTasks* tabulky na základě vlastností součástí `FixItTask` třída entity. Toto je jednoduchá třída POCO (Plain staré objektu CLR), což znamená, že nelze dědit z nebo mít všechny závislosti na rozhraní Entity Framework. Ale Entity Framework ví, jak vytvořit na jejím základě tabulku a provádění operací CRUD (vytváření čtení aktualizace odstraňování) s ním.
+Entity Framework vytvoří tabulku *FixItTasks* na základě vlastností obsažených ve třídě `FixItTask` entity. Toto je jednoduchý objekt třídy POCO (prostý starý objekt CLR), což znamená, že nedědí z nebo nemá žádné závislosti na Entity Framework. Ale Entity Framework ví, jak na základě IT vytvořit tabulku a jak s ní provést operace CRUD (vytvořit-čtení-aktualizace-odstranění).
 
 [!code-csharp[Main](data-storage-options/samples/sample3.cs)]
 
-![FixItTasks tabulky](data-storage-options/_static/image15.png)
+![Tabulka FixItTasks](data-storage-options/_static/image15.png)
 
-Tato aplikace Fix It obsahuje rozhraní úložiště, které používá pro práci s úložištěm dat. operace CRUD.
+Oprava IT aplikace zahrnuje rozhraní úložiště, které používá pro operace CRUD při práci s úložištěm dat.
 
 [!code-csharp[Main](data-storage-options/samples/sample4.cs)]
 
-Všimněte si, že metody úložiště všechny asynchronní, tak všechny přístup k datům lze provést zcela asynchronním způsobem.
+Všimněte si, že metody úložiště jsou všechny asynchronní, takže veškerý přístup k datům je možné provést kompletně asynchronním způsobem.
 
-Volání implementace úložiště Entity Framework asynchronní metody pro práci s daty, včetně LINQ dotazy stejně jako u vložení, aktualizace a odstranění operace. Tady je příklad kódu pro vyhledání úkolů Fix It.
+Implementace úložiště volá Entity Framework asynchronní metody pro práci s daty, včetně dotazů LINQ a operací vložení, aktualizace a odstranění. Zde je příklad kódu pro vyhledání úlohy opravy IT.
 
 [!code-csharp[Main](data-storage-options/samples/sample5.cs)]
 
-Můžete si všimnout, je také některé načasování a protokolování kód chyby, podíváme, který později v [monitorování a Telemetrie kapitoly](monitoring-and-telemetry.md).
+Všimněte si, že tady je také nějaký kód pro načasování a protokolování chyb. podíváme se na to později v [části monitorování a telemetrie](monitoring-and-telemetry.md).
 
 <a id="sqliaas"></a>
-## <a name="choosing-sql-database-paas-versus-sql-server-in-a-vm-iaas-in-azure"></a>Výběr databáze SQL (PaaS) versus SQL Server na virtuálním počítači (IaaS) v Azure
+## <a name="choosing-sql-database-paas-versus-sql-server-in-a-vm-iaas-in-azure"></a>Volba SQL Database (PaaS) oproti SQL Server ve virtuálním počítači (IaaS) v Azure
 
-O vhodnou položku o SQL serveru a Azure SQL Database je stejné programovací model core u obou z nich. Většina stejné dovednosti, které můžete použít v obou prostředích. Dokonce můžete použít databázi serveru SQL Server ve vývoji a instance SQL Database v cloudu, což je nastavení aplikace Fix It.
+Skvělé SQL Server a Azure SQL Database je, že základní programovací model pro oba z nich je identický. V obou prostředích můžete použít většinu stejných dovedností. Můžete dokonce použít SQL Server databázi ve vývoji a instanci SQL Database v cloudu, což je způsob, jakým se nastavuje aplikace pro opravu IT.
 
-Alternativně můžete spustit stejný Server SQL v cloudu spouštět místně pomocí instalace na virtuální počítače IaaS. U některých starších aplikací s SQL serverem na virtuálním počítači může být lepší řešení. Protože databáze serveru SQL Server běží na vyhrazených virtuálních počítačů, má k dispozici více prostředků, než databázi SQL Database, která běží na sdílený server. To znamená do databáze SQL serveru může být větší a i nadále provádět. Obecně platí Čím menší velikost databáze a velikost tabulky, tím lépe případ použití funguje pro SQL Database (PaaS).
+Alternativně můžete spustit stejný SQL Server v cloudu, který spouštíte místně, a to tak, že ho nainstalujete na virtuální počítače s IaaS. U některých starších aplikací může být pro spuštění SQL Server ve virtuálním počítači lepší řešení. Vzhledem k tomu, že se databáze SQL Server spouští na vyhrazeném virtuálním počítači, má k ní k dispozici více prostředků než databáze SQL Database, která běží na sdíleném serveru. To znamená, že databáze SQL Server může být větší a stále dobře fungovat. Obecně platí, že menší velikost databáze a velikost tabulky, což je lepší případ použití pro SQL Database (PaaS).
 
-Tady jsou některé pokyny o tom, jak zvolit mezi těmito dvěma modely.
+Tady je několik pokynů pro výběr mezi těmito dvěma modely.
 
-| Azure SQL Database (PaaS) | SQL Server na virtuálním počítači (IaaS) |
+| Azure SQL Database (PaaS) | SQL Server ve virtuálním počítači (IaaS) |
 | --- | --- |
-| **Profesionálové** – není nutné vytvořit nebo spravovat virtuální počítače, aktualizace nebo opravy operačního systému nebo SQL; Azure, které udělá za vás. -Integrovanou vysokou dostupnost, se smlouvou SLA na úrovni databáze. -Nízké celkové náklady na vlastnictví (TCO), protože platíte jenom za využité (vyžaduje žádné licence). -Vhodný pro zpracování velkého množství menších databází (&lt;= 500 GB). -Snadno dynamicky se vytvářejí nové databázích tak, aby horizontální navýšení kapacity. | ***Profesionálové*** – funkce kompatibilní s místním SQL serveru. -Může implementovat systém SQL Server [vysokou dostupností AlwaysOn](https://www.microsoft.com/sqlserver/solutions-technologies/mission-critical-operations/high-availability.aspx) ve více než 2 virtuální počítače s SLA na úrovni virtuálního počítače. -Máte plnou kontrolu nad způsobu správy SQL. -Můžete znovu použít licence SQL už vlastníte, nebo můžete platit podle počtu hodin pro jeden. -Vhodná pro menší počet zpracování, ale větší (1 TB +) databáze. |
-| **Nevýhody** – některé funkce mezery ve srovnání s místním SQL serveru (nedostatku [integrace modulu CLR](https://technet.microsoft.com/library/ms131102.aspx), [TDE](https://technet.microsoft.com/library/bb934049.aspx), [podpory komprese](https://technet.microsoft.com/library/cc280449.aspx), [systému SQL Server Služby Reporting Services](https://technet.microsoft.com/library/ms159106.aspx)atd)-limitu velikosti 500 GB. | ***Nevýhody*** – aktualizace nebo opravy (operační systém a SQL) jsou vaší odpovědností – vytváření a správu databází jsou vaší odpovědností - Disk IOPS (vstupně výstupní operace za sekundu) omezené na přibližně 8000 (prostřednictvím 16 datových jednotek). |
+| **Specialisté** – nemusíte vytvářet ani spravovat virtuální počítače, aktualizace nebo opravy operačního systému ani SQL; Azure to udělá za vás. – Integrovaná vysoká dostupnost s smlouvou SLA na úrovni databáze. – Nízké celkové náklady na vlastnictví, protože platíte jenom za to, co používáte (není nutná žádná licence). – Dobré pro zpracování velkých čísel menších databází (&lt;= 500 GB). – Snadno se dá dynamicky vytvářet nové databáze a povolit horizontální navýšení kapacity. | ***Specialisté*** – funkce kompatibilní s místními SQL Server. – Dá se implementovat SQL Server [vysoké dostupnosti přes AlwaysOn](https://www.microsoft.com/sqlserver/solutions-technologies/mission-critical-operations/high-availability.aspx) ve dvou a virtuálních počítačích s SLA na úrovni virtuálních počítačů. – Máte plnou kontrolu nad tím, jak se SQL spravuje. – Může znovu použít licence SQL, které už vlastníte, nebo platíte za jednu hodinu. -Dobrý pro zpracování méně než větších databází (1 TB +). |
+| **Nevýhody** – některé funkce v porovnání s místními SQL Server (nedostatek [integrace CLR](https://technet.microsoft.com/library/ms131102.aspx), [TDE](https://technet.microsoft.com/library/bb934049.aspx), [kompresní podpora](https://technet.microsoft.com/library/cc280449.aspx), [SQL Server Reporting Services](https://technet.microsoft.com/library/ms159106.aspx)atd.) – omezení velikosti databáze 500 GB. | ***Nevýhody*** – aktualizace a opravy (operační systém a SQL) jsou vaší zodpovědností – vytváření a Správa databáze jsou vaší zodpovědností – diskové vstupně-výstupní operace (vstupně-výstupní operace za sekundu) omezené na přibližně 8000 (přes 16 datových jednotek). |
 
-Pokud chcete použít systém SQL Server na virtuálním počítači, můžete použít svoji vlastní licenci systému SQL Server nebo můžete platit jednu po hodinách. Na portálu nebo přes rozhraní REST API můžete například vytvořit nový virtuální počítač pomocí image SQL serveru.
+Pokud chcete použít SQL Server na virtuálním počítači, můžete použít vlastní licenci SQL Server nebo ji můžete platit za jednu hodinu. Například na portálu nebo prostřednictvím REST API můžete vytvořit nový virtuální počítač pomocí SQL Server Image.
 
-![Vytvoření virtuálního počítače s SQL serverem](data-storage-options/_static/image16.png)
+![Vytvoření virtuálního počítače s SQL Server](data-storage-options/_static/image16.png)
 
-![Seznam imagí virtuálního počítače s SQL serverem](data-storage-options/_static/image17.png)
+![Seznam imagí SQL Server VM](data-storage-options/_static/image17.png)
 
-Při vytváření virtuálního počítače s bitovou kopii systému SQL Server, jsme poměrné míra náklady na licence systému SQL Server po hodinách na základě vašeho využití virtuálního počítače. Pokud už máte projekt, který bude jenom zobrazovat běžel několik měsíců, je levnější platit podle počtu hodin. Pokud se domníváte, že váš projekt bude poslední roky, je levnější koupit licenci způsob, jakým obvyklým způsobem.
+Když vytvoříte virtuální počítač s bitovou kopií SQL Server, průběžně vám náklady na SQL Server licence budou za hodinu na základě vašeho využití virtuálního počítače. Pokud máte projekt, který se bude spouštět jenom po několik měsíců, je levnější uhradit hodinu. Pokud si myslíte, že váš projekt bude trvat až let, je levnější koupit si licenci obvyklým způsobem.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Cloud computingu díky praktické kombinovat a porovnání dat úložiště přístupy k nejlépe vyhovuje potřebám vaší aplikace. Pokud už vytváříte nové aplikace, pečlivě zvážit otázky zde uvedeny, aby bylo možné vybrat přístupů, které budou fungovat dobře, když se vaše aplikace poroste. [Další kapitolu](data-partitioning-strategies.md) popisují některé strategie dělení, které vám umožní kombinovat několik přístupů datového úložiště.
+Cloud Computing usnadňuje kombinaci a porovnávání přístupů do úložiště dat, aby nejlépe vyhovoval potřebám vaší aplikace. Pokud vytváříte novou aplikaci, pečlivě si promyslete otázky, které jsou tady uvedené, aby bylo možné vybrat přístupy, které budou fungovat i v případě, že vaše aplikace roste. V [Další části](data-partitioning-strategies.md) se vysvětlují některé strategie dělení, které můžete použít ke kombinování více přístupů k úložišti dat.
 
 ## <a name="resources"></a>Prostředky
 
-Další informace najdete v následujících materiálech.
+Další informace najdete v následujících materiálech.
 
-Volba databázové platformě:
+Výběr databázové platformy:
 
-- [Přístup k datům pro vysoce škálovatelné řešení: Pomocí SQL, NoSQL a Polyglotické trvalosti](https://aka.ms/dag-doc). E-kniha od Microsoft Patterns and Practices, která přejdou do hloubky do různých typů dat ukládá k dispozici pro cloudové aplikace.
-- [Microsoft Vzory a postupy – doprovodné materiály k Azure](https://msdn.microsoft.com/library/ff898430.aspx). Najdete v úvodu ke konzistenci dat, replikace dat a pokyny k synchronizaci, model tabulky indexů, modelu Materializovaného zobrazení.
-- [ZÁKLADNÍ: Alternativa odpovídající zásadám Acid](http://queue.acm.org/detail.cfm?id=1394128). Článek o kompromisy mezi konzistencí data a škálovatelnost.
-- [Sedm databází v sedmi týdnech: Příručka k moderní databází a přesun NoSQL](https://www.amazon.com/Seven-Databases-Weeks-Modern-Movement/dp/1934356921). Kniha od Eric Redmond a Jim R. Wilson. Důrazně doporučujeme zavedení sami oblasti datové platformy úložiště, které jsou dnes k dispozici.
+- [Přístup k datům pro vysoce škálovatelná řešení: používání SQL, NoSQL a trvalosti Polyglot](https://aka.ms/dag-doc). Elektronická kniha podle vzorů a postupů od Microsoftu, které jsou podrobně v různých druzích úložišť dat pro cloudové aplikace.
+- [Vzory a postupy Microsoftu – doprovodné materiály pro Azure](https://msdn.microsoft.com/library/ff898430.aspx) Podívejte se na Úvod do konzistence dat, pokyny pro replikaci a synchronizaci dat, model tabulky s Materializací, model materializované zobrazení.
+- [Základní: kyselá alternativa](http://queue.acm.org/detail.cfm?id=1394128). Článek o kompromisech mezi konzistencí a škálovatelností dat
+- [Sedm databází za sedm týdnů: Průvodce moderními databázemi a pohyb NoSQL](https://www.amazon.com/Seven-Databases-Weeks-Modern-Movement/dp/1934356921). Book by Eric Redmond a jim R. Wilson. Důrazně doporučujeme, abyste se seznámili s rozsahem dostupných platforem úložiště dat, které jsou dnes k dispozici.
 
-Volba mezi SQL serverem a SQL Database:
+Výběr mezi SQL Server a SQL Database:
 
-- [Premium ve verzi Preview pro SQL Database pokyny](https://msdn.microsoft.com/library/windowsazure/dn369873.aspx). Úvod do SQL Database úrovně Premium a pokyny, kdy zvolit přes edice SQL Database Web a Business.
-- [Pokyny a omezení (Azure SQL Database)](https://msdn.microsoft.com/library/windowsazure/ff394102.aspx). Stránka portálu, který obsahuje odkazy na dokumentaci k omezení služby SQL Database, včetně ten, který se zaměřuje na funkce produktu SQL Server databáze SQL nepodporuje.
-- [SQL Server na virtuálních počítačích Azure](https://msdn.microsoft.com/library/windowsazure/jj823132.aspx). Stránka portálu, který obsahuje odkazy na dokumentaci k systému SQL Server běžící v Azure.
-- [Scott Guthrie vysvětluje databáze SQL v Azure](https://azure.microsoft.com/documentation/videos/sql-in-azure-scottgu/). úvodní video 6 minut do služby SQL Database, Autor: Scott Guthrie
-- [Modely aplikací a vývojové strategie pro SQL Server na virtuálních počítačích Azure](https://msdn.microsoft.com/library/windowsazure/dn574746.aspx).
+- [Premium Preview pro SQL Database doprovodné](https://msdn.microsoft.com/library/windowsazure/dn369873.aspx)materiály. Úvod do SQL Database úrovně Premium a pokyny k tomu, kdy si je můžete vybrat přes SQL Database web a obchodní edice.
+- [Pokyny a omezení (Azure SQL Database)](https://msdn.microsoft.com/library/windowsazure/ff394102.aspx). Stránka portálu, která odkazuje na dokumentaci týkající se omezení SQL Database, včetně těch, které se zaměřují na SQL Server funkce, které SQL Database nepodporují.
+- [SQL Server ve službě Azure Virtual Machines](https://msdn.microsoft.com/library/windowsazure/jj823132.aspx). Stránka portálu, která odkazuje na dokumentaci týkající se spuštění SQL Server v Azure.
+- [Scott Guthrie vysvětluje databáze SQL v Azure](https://azure.microsoft.com/documentation/videos/sql-in-azure-scottgu/). 6\. Úvod k videu SQL Database Scottem Guthrie.
+- [Modely aplikací a vývojové strategie pro SQL Server v Azure Virtual Machines](https://msdn.microsoft.com/library/windowsazure/dn574746.aspx).
 
-Použití rozhraní Entity Framework a SQL Database ve webové aplikace v ASP.NET
+Používání Entity Framework a SQL Database ve webové aplikaci v ASP.NET
 
-- [Začínáme s EF 6 pomocí MVC 5](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Devět částí série, která vás provede postupem vytvoření aplikace MVC, která používá EF a nasadí databáze do Azure a SQL Database.
-- [Nasazení webu ASP.NET pomocí sady Visual Studio](../../../../web-forms/overview/deployment/visual-studio-web-deployment/introduction.md). Část 12 kurzů, které obsahuje podrobnosti o tom, jak nasadit databázi s využitím platforem EF Code First.
-- [Nasaďte zabezpečené aplikace ASP.NET MVC 5 s Membership, OAuth a SQL Database na Azure web](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/). Podrobný kurz, který vás provede vytvořením webové aplikace, která používá ověřování, uloží aplikaci tabulek v databázi členství, upraví schéma databáze a nasadí aplikaci do Azure.
-- [Mapa obsahu přístupu k datům v technologii ASP.NET](https://go.microsoft.com/fwlink/p/?LinkId=282414). Obsahuje odkazy na prostředky pro práci s EF a SQL Database.
+- [Začínáme s EF 6 pomocí MVC 5](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Devět kurzů, které vás provedou vytvořením aplikace MVC, která používá EF, a nasadí databázi do Azure a SQL Database.
+- [ASP.NET nasazení webu pomocí sady Visual Studio](../../../../web-forms/overview/deployment/visual-studio-web-deployment/introduction.md). 12. série kurzů, které se podrobněji týkají nasazení databáze pomocí Code First EF.
+- [Nasaďte zabezpečenou aplikaci ASP.NET MVC 5 s členstvím, protokolem OAuth a SQL Database na web Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/). Podrobný kurz, který vás provede vytvořením webové aplikace, která používá ověřování, ukládá tabulky aplikací v databázi členství, mění schéma databáze a nasadí aplikaci do Azure.
+- [Mapa obsahu ASP.NET Data Access](https://go.microsoft.com/fwlink/p/?LinkId=282414). Odkazuje na prostředky pro práci s EF a SQL Database.
 
-Pomocí databáze MongoDB v Azure:
+Používání MongoDB v Azure:
 
-- [MongoLab – MongoDB v Azure](http://msopentech.com/opentech-projects/mongolab-mongodb-on-windows-azure/). Stránka portálu pro dokumentaci o spuštění MongoDB v Azure.
-- [Webový server, který se připojuje k MongoDB na virtuálním počítači v Azure vytvořit](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-store-data-mongodb-vm/). Podrobný kurz, který ukazuje, jak používat databázi MongoDB ve webové aplikaci ASP.NET.
+- [MongoLabu-MongoDB v Azure](http://msopentech.com/opentech-projects/mongolab-mongodb-on-windows-azure/). Stránka portálu pro dokumentaci ke spuštění MongoDB v Azure
+- [Vytvořte web Azure, který se připojí k MongoDB běžícímu na virtuálním počítači v Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-store-data-mongodb-vm/). Podrobný kurz, ve kterém se dozvíte, jak používat databázi MongoDB ve webové aplikaci v ASP.NET.
 
 HDInsight (Hadoop v Azure):
 
-- [HDInsight](https://azure.microsoft.com/documentation/services/hdinsight/). HDInsight dokumentaci na portálu [Azure](https://azure.microsoft.com/) webu.
-- [Hadoop a HDInsight: Velké objemy dat v Azure](https://msdn.microsoft.com/magazine/dn385705.aspx). Zpravodaj MSDN Magazine článku Bruno Terkaly a Richard Villalobos, úvod Hadoop v Azure.
-- [Microsoft Vzory a postupy – doprovodné materiály k Azure](https://msdn.microsoft.com/library/dn568099.aspx). Viz MapReduce vzor.
+- [HDInsight](https://azure.microsoft.com/documentation/services/hdinsight/). Dokumentace k portálu HDInsight na webu [Azure](https://azure.microsoft.com/) .
+- [Hadoop a HDInsight: velké objemy dat v Azure](https://msdn.microsoft.com/magazine/dn385705.aspx). Článek na webu MSDN Magazine od Bruno Terkaly a Ricardo Villalobos a Představujeme Hadoop v Azure.
+- [Vzory a postupy Microsoftu – doprovodné materiály pro Azure](https://msdn.microsoft.com/library/dn568099.aspx) Viz MapReduce vzor.
 
 > [!div class="step-by-step"]
 > [Předchozí](single-sign-on.md)
-> [další](data-partitioning-strategies.md)
+> [Další](data-partitioning-strategies.md)

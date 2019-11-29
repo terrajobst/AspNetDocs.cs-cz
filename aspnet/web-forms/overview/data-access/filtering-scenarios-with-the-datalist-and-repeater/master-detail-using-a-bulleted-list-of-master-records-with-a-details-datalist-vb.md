@@ -1,258 +1,258 @@
 ---
 uid: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb
-title: Master/Detail s seznam hlavních záznamů s odrážkami podrobnostmi v prvku DataList (VB) | Dokumentace Microsoftu
+title: Hlavní a podrobnosti pomocí seznamu hlavních záznamů s odrážkami s podrobnostmi DataList (VB) | Microsoft Docs
 author: rick-anderson
-description: V tomto kurzu jsme budete komprimovat dvoustránkový záznamů master/detail sestavu předchozí kurz o službě do jediné stránce zobrazující seznam s odrážkami názvů kategorií v t...
+description: V tomto kurzu zkomprimujete sestavu se dvěma stránkami a podrobnostmi pro předchozí kurz na jednu stránku, kde se zobrazí seznam názvů kategorií na t...
 ms.author: riande
 ms.date: 10/17/2006
 ms.assetid: ee20742f-6fb7-49a0-a009-058fe363aacb
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0f7f42545d2492c7330da57f7e767199f50b659e
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 81d72c666925e89729464e7ea696bde8d323e277
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108441"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74641715"
 ---
 # <a name="masterdetail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb"></a>Zobrazení hlavních záznamů / podrobností v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_35_VB.exe) nebo [stahovat PDF](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/datatutorial35vb1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_35_VB.exe) nebo [Stáhnout PDF](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/datatutorial35vb1.pdf)
 
-> V tomto kurzu jsme budete komprimovat dvoustránkový záznamů master/detail sestavu předchozí kurz o službě na jednu stránku, na levé straně obrazovky a vybrané kategorie produktů na pravé straně obrazovky zobrazující seznam s odrážkami názvy kategorií.
+> V tomto kurzu zkomprimujete sestavu se dvěma stránkami a podrobnostmi o předchozím kurzu na jednu stránku, kde se zobrazí seznam názvů kategorií na levé straně obrazovky a produkty vybrané kategorie na pravé straně obrazovky.
 
 ## <a name="introduction"></a>Úvod
 
-V [předchozím kurzu](master-detail-filtering-acess-two-pages-datalist-vb.md) jsme se podívali na tom, jak oddělit sestavy záznamů master/detail na dvou stránkách. Na stránce předlohy jsme použili ovládacím prvkem Repeater k vykreslení seznam s odrážkami kategorií. Každý název kategorie byl hypertextový odkaz, že po kliknutí na by take uživatele na stránku podrobností, kde a dva sloupce v prvku DataList jsme si ukázali, tyto produkty patří do vybrané kategorie.
+V [předchozím kurzu](master-detail-filtering-acess-two-pages-datalist-vb.md) jsme se vyhledali tak, jak oddělit hlavní a podrobné sestavy na dvou stránkách. Na stránce předlohy jsme použili ovládací prvek Repeater k vykreslení seznamu kategorií s odrážkami. Název každé kategorie byl hypertextový odkaz, který při kliknutí na ni převezme uživatele na stránku podrobností, kde se ve dvou sloupcích DataList ukázaly tyto produkty patřící do vybrané kategorie.
 
-V tomto kurzu jsme budete komprimovat kurzu dvě stránky do jediné stránce zobrazující seznam s odrážkami názvy kategorií s názvy jednotlivých kategorií se vykresluje jako odkazem (LinkButton) na levé straně obrazovky. Klikněte na název kategorie LinkButtons indukuje zpětné volání a sváže s produkty s vybranou kategorii a dva sloupce v prvku DataList na pravé straně obrazovky. Kromě zobrazení každou kategorii s názvem, Repeater na levé straně se zobrazí, kolik existuje celkový počet produktů pro danou kategorii (viz obrázek 1).
+V tomto kurzu zkomprimujeme dvoustranný kurz na jednu stránku a zobrazí se seznam názvů kategorií na levé straně obrazovky s odrážkami s každým názvem kategorie vykresleným jako LinkButton. Kliknutí na jednu z kategorií název LinkButtons vyvolává zpětné odeslání a váže vybrané produkty kategorie s na dva sloupce DataList na pravé straně obrazovky. Kromě zobrazení jednotlivých kategorií s názvem opakuje na levé straně počet produktů, které jsou pro danou kategorii k dispozici (viz obrázek 1).
 
-[![Kategorie s názvem a celkový počet produktů, které se zobrazí na levé straně](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image2.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image1.png)
+[![kategorie s název a celkový počet produktů se zobrazí vlevo.](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image2.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image1.png)
 
-**Obrázek 1**: Kategorie s názvem a celkový počet produktů, které se zobrazí na levé straně ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image3.png))
+**Obrázek 1**: na levé straně se zobrazí název kategorie a celkový počet produktů ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image3.png)
 
-## <a name="step-1-displaying-a-repeater-in-the-left-portion-of-the-screen"></a>Krok 1: Zobrazení Repeateru v levé části obrazovky
+## <a name="step-1-displaying-a-repeater-in-the-left-portion-of-the-screen"></a>Krok 1: zobrazení opakovače v levé části obrazovky
 
-Pro účely tohoto kurzu potřebujeme mít seznamu s odrážkami kategorií se zobrazí nalevo od produktů s vybranou kategorii. Obsah na webové stránce může být umístěné pomocí standardní značky HTML pro elementy odstavce, pevné mezery `<table>` s a tak dále, nebo prostřednictvím techniky kaskádových stylů (CSS). Všechny naše kurzy doposud použili šablony stylů CSS techniky pro umístění. Když jsme vytvořili navigační uživatelské rozhraní v naší hlavní stránky v [stránky předlohy a navigace na webu](../introduction/master-pages-and-site-navigation-vb.md) kurzu jsme použili *absolutní pozici*, určující přesný pixel posunutí pro navigaci seznam a hlavním obsahem. Případně, šablon stylů CSS je možné umístit jeden element doprava nebo doleva jiného prostřednictvím *s plovoucí desetinnou čárkou*. Máme seznamu s odrážkami kategorií podle plovoucí Repeater nalevo od prvku DataList se zobrazí nalevo od produktů s vybranou kategorii.
+Pro účely tohoto kurzu musíme zobrazit seznam kategorií s odrážkami vlevo od vybraných produktů kategorií. Obsah webové stránky lze umístit pomocí standardních značek odstavců HTML, nekoncových mezer, `<table>` s a tak dále, nebo prostřednictvím kaskádových stylů CSS. Všechny naše kurzy doposud používaly techniky CSS k umístění. Při sestavování uživatelského rozhraní navigace na naší stránce předlohy na [stránkách předlohy a](../introduction/master-pages-and-site-navigation-vb.md) v kurzu navigace na webu jsme použili *absolutní umístění*, které indikuje přesný Posun pixelů pro navigační seznam a hlavní obsah. Alternativně lze šablonu stylů CSS použít k umístění jednoho prvku vpravo nebo vlevo od druhého až po *plovoucí*. Seznam kategorií s odrážkami se zobrazuje vlevo od vybraných produktů kategorie s použitím plovoucího opakovače vlevo od prvku DataList.
 
-Otevřít `CategoriesAndProducts.aspx` stránku ze `DataListRepeaterFiltering` složky a přidat na stránku Repeateru a a v prvku DataList. Nastavit opakovače s `ID` k `Categories` a ovládacích prvků DataList s k `CategoryProducts`. Přejděte do zobrazení zdroje a umístit ovládací prvky Repeater a ovládacích prvků DataList v rámci své vlastní `<div>` elementy. To znamená, uzavřete Repeater v rámci `<div>` elementu první a pak DataList ve vlastním `<div>` elementu přímo po opakovače. Váš kód v tomto okamžiku by měl vypadat nějak takto:
+Otevřete stránku `CategoriesAndProducts.aspx` ze složky `DataListRepeaterFiltering` a přidejte ji do stránky Repeater a DataList. Nastavte `ID` opakování na `Categories` a DataList s na `CategoryProducts`. Přejít do zobrazení zdroje a umístit ovládací prvky Repeater a DataList do jejich vlastních prvků `<div>`. To znamená, že se nejdříve vloží Repeat do prvku `<div>` a poté prvek DataList ve svém vlastním prvku `<div>` přímo za Repeat. Vaše značka v tomto okamžiku by měla vypadat nějak takto:
 
 [!code-aspx[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample1.aspx)]
 
-Uvolnění Repeater nalevo od prvku DataList, musíme použít `float` atribut stylu CSS, například takto:
+Pro obtékání opakovače vlevo od prvku DataList je nutné použít atribut `float` stylu CSS, například:
 
 [!code-html[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample2.html)]
 
-`float: left;` Čísel s plovoucí čárkou první `<div>` element doleva je druhý řádek. `width` a `padding-right` nastavení označují první `<div>` s `width` a kolik odsazení se přidá mezi `<div>` elementu s obsahem a jeho pravého okraje. Další informace o plovoucí elementy v jazyce CSS podívejte [Floatutorial](http://css.maxdesign.com.au/floatutorial/).
+`float: left;` obtéká první prvek `<div>` nalevo od druhého prvku. Nastavení `width` a `padding-right` označují první `<div>` `width` a velikost odsazení mezi `<div>`m obsahem prvku a jeho pravým okrajem. Další informace o plovoucích prvcích v šablonách stylů CSS najdete v [Floatutorial](http://css.maxdesign.com.au/floatutorial/).
 
-Místo určení stylu nastavení přímo prostřednictvím první `<p>` element s `style` atribut, ať s místo toho vytvořte novou třídu šablony stylů CSS v `Styles.css` s názvem `FloatLeft`:
+Namísto určení nastavení stylu přímo pomocí prvního `<p>` atributu `style` elementu, nechte místo toho vytvořit novou třídu CSS v `Styles.css` s názvem `FloatLeft`:
 
 [!code-css[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample3.css)]
 
-Pak nahradíme můžete `<div>` s `<div class="FloatLeft">`.
+Pak můžeme `<div>` nahradit `<div class="FloatLeft">`.
 
-Po přidání třídu šablony stylů CSS a nakonfigurování značky `CategoriesAndProducts.aspx` stránky, přejděte do návrháře. Měli byste vidět opakovače s plovoucí čárkou nalevo od prvku DataList (i když pravé teď oba právě objeví jako šedý polí od jsme ve ještě ke konfiguraci jejich zdroje dat nebo šablony).
+Po přidání třídy šablony stylů CSS a konfiguraci značek na stránce `CategoriesAndProducts.aspx` přejdete do návrháře. Měl by se vidět, že se má na začátku v prvku DataList zobrazit obdélník, který se zobrazí vlevo (i když se teď právě zobrazují jako šedá pole, protože jsme ještě předtím nakonfigurovali své zdroje dat nebo šablony).
 
-[![Opakovače je ponechán v neurčitém stavu nalevo od prvku DataList](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image5.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image4.png)
+[![, že se opakuje vlevo od prvku DataList](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image5.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image4.png)
 
-**Obrázek 2**: Opakovače je ponechán v neurčitém stavu nalevo od prvku DataList ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image6.png))
+**Obrázek 2**: Repeater se odpluje nalevo od prvku DataList ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image6.png)
 
-## <a name="step-2-determining-the-number-of-products-for-each-category"></a>Krok 2: Určení počtu produktů pro každou kategorii
+## <a name="step-2-determining-the-number-of-products-for-each-category"></a>Krok 2: určení počtu produktů pro jednotlivé kategorie
 
-S Repeater a ovládacích prvků DataList s okolní kompletní kód můžeme znovu připravený k vytvoření vazby data v kategoriích Opakovači řízení. Ale jak seznam s odrážkami kategorií obrázek 1 ukazuje, kromě každé kategorie s názvem musíme také zobrazí počet produktů, které jsou spojené s kategorií. K těmto informacím přistupovat můžeme buď:
+S úplným označením Repeat a DataList s doplňováním kódu jsme znovu připraveni vytvořit vazby dat kategorie k ovládacímu prvku Repeater. Seznam kategorií s odrážkami na obrázku 1 ale navíc také potřebuje zobrazit počet produktů přidružených k této kategorii. Pro přístup k těmto informacím můžeme buď:
 
-- **Určete tyto informace z třídy modelu code-behind s stránky technologie ASP.NET.** Daný konkrétní *`categoryID`* můžeme určit počet související produkty voláním `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metody. Tato metoda vrátí hodnotu `ProductsDataTable` jehož `Count` vlastnost určuje, kolik `ProductsRow` s existuje, což je počet produktů pro zadaný rozbočovač *`categoryID`*. Vytvoříme `ItemDataBound` obslužné rutiny události pro Repeater, která pro každou kategorii vázán na Repeater, volá `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metoda a zahrnuje její vlastnosti count ve výstupu.
-- **Aktualizace `CategoriesDataTable` v datové sadě zadán zahrnout `NumberOfProducts` sloupce.** Můžete pak aktualizujte `GetCategories()` metoda ve `CategoriesDataTable` zahrnout tyto informace nebo, nebo můžete parametr `GetCategories()` jako-se a vytvořte nový `CategoriesDataTable` metodu s názvem `GetCategoriesAndNumberOfProducts()`.
+- **Určete tyto informace ze třídy ASP.NET stránky s kódem na pozadí.** S ohledem na konkrétní *`categoryID`* můžeme určit počet přidružených produktů voláním metody `ProductsBLL` třídy s `GetProductsByCategoryID(categoryID)`. Tato metoda vrátí objekt `ProductsDataTable`, jehož vlastnost `Count` určuje, kolik `ProductsRow` existuje, což je počet produktů pro zadanou *`categoryID`* . Můžeme vytvořit obslužnou rutinu události `ItemDataBound` pro Repeater, která pro každou kategorii, která je svázána s argumentem Repeater, volá metodu `ProductsBLL` třídy s `GetProductsByCategoryID(categoryID)` a obsahuje její počet ve výstupu.
+- **Aktualizujte `CategoriesDataTable` v zadané datové sadě tak, aby zahrnovaly sloupec `NumberOfProducts`.** Pak můžeme aktualizovat metodu `GetCategories()` v `CategoriesDataTable` tak, aby obsahovala tyto informace, nebo můžete také opustit `GetCategories()` jako a vytvořit novou `CategoriesDataTable` metodu nazvanou `GetCategoriesAndNumberOfProducts()`.
 
-Umožní s prozkoumat obě z následujících postupů. Prvním přístupem je snazší implementovat, protože jsme zadávat t je potřeba aktualizovat vrstvy přístupu k datům; to ale vyžaduje další komunikaci s databází. Volání `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metodu `ItemDataBound` obslužná rutina události přidá volání rozhraní navíc databáze pro každou kategorii, zobrazí v Opakovači. Při této technice je *N* + 1 databáze volání, kde *N* je počet kategorií, které jsou zobrazeny v Opakovači. S druhým přístupem, je vrácen počet produktů s informace o jednotlivých kategorií z `CategoriesBLL` třída s `GetCategories()` (nebo `GetCategoriesAndNumberOfProducts()`) metody, což by vedlo k jenom jednu cestu k databázi.
+Pojďme prozkoumat oba tyto postupy. Prvním přístupem je jednodušší implementovat, protože nepotřebujeme aktualizovat vrstvu přístupu k datům. ale vyžaduje více komunikace s databází. Volání metody `ProductsBLL` třídy s `GetProductsByCategoryID(categoryID)` v obslužné rutině události `ItemDataBound` přidá další volání databáze pro každou kategorii zobrazenou v OPAKOVAČI. V této technice je k dispozici volání databáze *n* + 1, kde *n* je počet kategorií zobrazených v poli Repeater. Při druhém přístupu se počet produktů vrátí s informacemi o jednotlivých kategoriích z metody `CategoriesBLL` třídy s `GetCategories()` (nebo `GetCategoriesAndNumberOfProducts()`), a výsledkem je pouze jedna cesta k databázi.
 
 ## <a name="determining-the-number-of-products-in-the-itemdatabound-event-handler"></a>Určení počtu produktů v obslužné rutině události ItemDataBound
 
-Určení počtu produktů pro každou kategorii v opakovače s `ItemDataBound` obslužná rutina události nevyžaduje žádné změny k naší stávající vrstvy přístupu k datům. Všechny změny lze provést přímo v rámci `CategoriesAndProducts.aspx` stránky. Začněte přidáním nového prvku ObjectDataSource s názvem `CategoriesDataSource` prostřednictvím inteligentních značek opakovače s. V dalším kroku nakonfigurujte `CategoriesDataSource` prvek ObjectDataSource, takže se načte data z `CategoriesBLL` třída s `GetCategories()` metody.
+Určení počtu produktů pro každou kategorii v `ItemDataBound` obslužná rutina události Repeater, nevyžaduje žádné úpravy existující vrstvy přístupu k datům. Všechny úpravy lze provádět přímo na stránce `CategoriesAndProducts.aspx`. Začněte přidáním nového prvku ObjectDataSource s názvem `CategoriesDataSource` prostřednictvím inteligentní značky Repeater. Dále nakonfigurujte `CategoriesDataSource` ObjectDataSource tak, aby bylo načteno jeho data z metody `GetCategories()` `CategoriesBLL` třídy s.
 
-[![Konfigurace ObjectDataSource pomocí třídy CategoriesBLL s GetCategories() – metoda](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image8.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image7.png)
+[![nakonfigurovat prvek ObjectDataSource tak, aby používal metodu CategoriesBLL třídy s GetCategories ()](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image8.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image7.png)
 
-**Obrázek 3**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třída s `GetCategories()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image9.png))
+**Obrázek 3**: Konfigurace prvku ObjectDataSource pro použití `GetCategories()` metody `CategoriesBLL` třídy s ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image9.png))
 
-Každá položka v `Categories` Repeater musí být možné kliknout a po kliknutí na způsobit, že `CategoryProducts` DataList pro zobrazení těchto produktů pro vybranou kategorii. Toho můžete docílit tak, že každá kategorie hypertextový odkaz, propojení zpět na tuto stránku stejné (`CategoriesAndProducts.aspx`), ale předejte `CategoryID` pomocí řetězce dotazu, stejně jako jsme viděli v předchozím kurzu. Výhodou tohoto přístupu je, že stránka se zobrazenou zprávou určité kategorie s produkty můžete záložek a indexovat pomocí vyhledávacího webu.
+V případě, že je třeba kliknout na každou položku v `Categories` Repeat, je nutné kliknout na možnost a při kliknutí na `CategoryProducts` DataList zobrazit tyto produkty pro vybranou kategorii. To se dá udělat tak, že každý z kategorií vytvoří hypertextový odkaz, propojí zpátky na stejnou stránku (`CategoriesAndProducts.aspx`), ale předává `CategoryID` přes QueryString, podobně jako jsme viděli v předchozím kurzu. Výhodou tohoto přístupu je, že stránka, která zobrazuje konkrétní kategorie produktů, může být záložkou a indexována vyhledávacím modulem.
 
-Můžete také můžeme provádět jednotlivých kategorií odkazem (LinkButton), který je použitý přístup pro účely tohoto kurzu použijeme. Na prvek LinkButton se vykreslí v prohlížeči uživatele s jako hypertextový odkaz, ale po kliknutí na indukuje zpětné volání; na zpětné volání DataList s ObjectDataSource musí aktualizovat na zobrazení těchto produktů, které patří do vybrané kategorie. V tomto kurzu pomocí hypertextový odkaz vhodnější než při použití odkazem (LinkButton); Nicméně mohou existovat další scénáře, kde je výhodnější používat odkazem (LinkButton). Při přístupu hypertextový odkaz by byla ideální pro účely tohoto příkladu, umožní prozkoumat místo toho použití na prvek LinkButton s. Jak uvidíme, pomocí odkazem (LinkButton) zavádí některé běžné problémy, které by jinak vznikají s hypertextovým odkazem. Proto používat odkazem (LinkButton) v tomto kurzu se zvýrazněte tyto výzvy a poskytnout řešení pro tyto scénáře, kde budeme chtít použít odkazem (LinkButton) namísto hypertextový odkaz.
+Případně můžeme vytvořit každou kategorii a LinkButton, což je přístup, který budeme používat pro tento kurz. LinkButton vykreslí v prohlížeči uživatele jako hypertextový odkaz, ale při kliknutí vyvolá zpětné odeslání. Při zpětném volání se musí prvek DataList s ObjectDataSource aktualizovat, aby se zobrazily tyto produkty patřící do vybrané kategorie. Pro tento kurz, použití hypertextového odkazu, je vhodnější než použití LinkButton; v některých případech ale může být použití možnosti LinkButton výhodnější. I když by byl přístup k hypertextovým odkazům ideální pro tento příklad, místo toho se dá prozkoumat pomocí odkazu LinkButton. Jak vidíte, použití odkazu na čísle zavádí některé výzvy, které by jinak nevznikly hypertextovým odkazem. Proto použití položky LinkButton v tomto kurzu zvýrazní tyto výzvy a pomůže vám nabídnout řešení pro tyto scénáře, kde můžeme místo hypertextového odkazu použít LinkButton.
 
 > [!NOTE]
-> Doporučujeme opakování v tomto kurzu pomocí ovládacího prvku hypertextový odkaz nebo `<a>` elementu namísto odkazem (LinkButton).
+> Doporučujeme, abyste tento kurz opakovali pomocí ovládacího prvku hypertextový odkaz nebo elementu `<a>` místo prvku LinkButton.
 
-Následující kód ukazuje Opakovači a ObjectDataSource deklarativní syntaxe. Všimněte si, že šablony opakovače s vykreslení seznam s odrážkami s každou položku jako odkazem (LinkButton):
+Následující kód ukazuje deklarativní syntaxi pro Repeater a ObjectDataSource. Všimněte si, že šablony Repeater vykreslují seznam s odrážkami s každou položkou jako LinkButton:
 
 [!code-aspx[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample4.aspx)]
 
 > [!NOTE]
-> Pro účely tohoto kurzu musíte mít Opakovači svůj stav zobrazení povolený (Všimněte si, vynechání `EnableViewState="False"` z deklarativní syntaxe opakovače s). V kroku 3 jsme budete vytvářet obslužné rutiny události pro opakovače s `ItemCommand` událostí, ve kterém budeme aktualizovat DataList s ObjectDataSource s `SelectParameters` kolekce. Opakovače s `ItemCommand`, ale nebude aktivují, když se stav zobrazení je zakázán. Naleznete v tématu [těžkou otázku A otázky ASP.NET](http://scottonwriting.net/sowblog/posts/1263.aspx) a [svoje řešení](http://scottonwriting.net/sowBlog/posts/1268.aspx) Další informace o důvod, proč musí být pro opakovače s povolen stav zobrazení `ItemCommand` události, která se aktivuje.
+> Pro účely tohoto kurzu musí mít Repeater povolený stav zobrazení (Všimněte si opomenutí `EnableViewState="False"` z deklarativní syntaxe s opakováním). V kroku 3 vytvoříme obslužnou rutinu události pro událost Repeater `ItemCommand`, ve které budeme aktualizovat kolekci `SelectParameters` DataList s ObjectDataSource s. `ItemCommand`Repeat se ale neaktivuje, pokud je stav zobrazení zakázaný. Podívejte [se na stumper otázky ASP.NET](http://scottonwriting.net/sowblog/posts/1263.aspx) a [její řešení](http://scottonwriting.net/sowBlog/posts/1268.aspx) , kde najdete další informace o tom, proč je potřeba povolit stav zobrazení `ItemCommand` události Repeater.
 
-Na prvek LinkButton s `ID` hodnotou vlastnosti `ViewCategory` nemá jeho `Text` sadu vlastností. Právě jsme měli chtěli zobrazovat název kategorie, jsme by jste nastavili vlastnost Text deklarativně pomocí syntaxe vázání dat, například takto:
+LinkButton s hodnotou vlastnosti `ID` `ViewCategory` nemá nastavenou vlastnost `Text`. Pokud jsme chtěli zobrazit název kategorie, nastavili jsme vlastnost text deklarativně prostřednictvím syntaxe datových vazeb, například takto:
 
 [!code-aspx[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample5.aspx)]
 
-Však chceme zobrazit kategorii s názvem *a* počet produktů, které patří do této kategorie spadají. Tyto informace můžete získat z opakovače s `ItemDataBound` obslužná rutina události tím, že zavoláte na `ProductBLL` třída s `GetCategoriesByProductID(categoryID)` metoda a určení, kolik záznamů se vrátí ve výsledné `ProductsDataTable`, jako je následující kód ukazuje:
+Chceme ale zobrazit *Jak název kategorie s, tak počet* produktů, které patří do této kategorie. Tyto informace lze načíst z obslužné rutiny události Repeater `ItemDataBound` tím, že zavoláte metodu `GetCategoriesByProductID(categoryID)` `ProductBLL` třídy s a určíte, kolik záznamů je vráceno ve výsledném `ProductsDataTable`, jak ukazuje následující kód:
 
 [!code-vb[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample6.vb)]
 
-Začínáme tím, že zajišťuje, že jsme k práci s datovou položku (jeden jehož `ItemType` je `Item` nebo `AlternatingItem`) a pak odkazovat `CategoriesRow` instanci, která se právě byla svázána se aktuální `RepeaterItem`. Dále jsme určit počet produktů pro tuto kategorii tak, že vytvoříte instanci `ProductsBLL` třídy volání jeho `GetCategoriesByProductID(categoryID)` metoda a určení počtu vrácených pomocí záznamů `Count` vlastnost. Nakonec `ViewCategory` odkazem (LinkButton) ve vlastnosti ItemTemplate, je odkazy a jeho `Text` je nastavena na *CategoryName* (*NumberOfProductsInCategory*), kde  *NumberOfProductsInCategory* formátovaný jako číslo s nulovou desetinných míst.
+Začneme tím, že zajistíme, že budeme znovu pracovat s datovou položkou (jejíž `ItemType` je `Item` nebo `AlternatingItem`), a pak odkazuje na `CategoriesRow` instanci, která je právě svázaná s aktuálním `RepeaterItem`. Dále určíme počet produktů pro tuto kategorii vytvořením instance třídy `ProductsBLL`, voláním její metody `GetCategoriesByProductID(categoryID)` a určením počtu vrácených záznamů pomocí vlastnosti `Count`. Nakonec `ViewCategory` LinkButton v šabloně ItemTemplate odkazuje na odkaz a jeho vlastnost `Text` je nastavena na *CategoryName* (*NumberOfProductsInCategory*), kde *NumberOfProductsInCategory* je formátováno jako číslo s nulovými desetinnými místy.
 
 > [!NOTE]
-> Alternativně může přidali jsme *formátování funkce* do třídy použití modelu code-behind stránky s ASP.NET, která přijímá kategorie s `CategoryName` a `CategoryID` hodnoty a vrátí `CategoryName` spojeny počtem produkty v kategorii (počítáno od volání `GetCategoriesByProductID(categoryID)` metoda). Výsledky formátování funkce může být deklarativně přiřazen s odkazem (LinkButton) nahrazuje potřebu vlastnost Text `ItemDataBound` obslužné rutiny události. Odkazovat [použití vlastností TemplateField v ovládacím prvku GridView](../custom-formatting/using-templatefields-in-the-gridview-control-vb.md) nebo [formátování ovládacích prvků DataList a Repeater na základě na Data](../displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-vb.md) kurzy pro další informace o použití funkce formátování.
+> Alternativně jsme mohli přidat *funkci formátování* do třídy ASP.NET stránky s kódem na pozadí, která přijímá kategorie s `CategoryName` a `CategoryID` hodnoty a vrátí `CategoryName` zřetězené s počtem produktů v kategorii (podle určení voláním metody `GetCategoriesByProductID(categoryID)`). Výsledky takové funkce formátování mohou být deklarativně přiřazeny vlastnosti text LinkButton s, což nahrazuje nutnost obslužné rutiny události `ItemDataBound`. Další informace o používání funkcí formátování naleznete [v tématu použití templatefields v ovládacím prvku GridView](../custom-formatting/using-templatefields-in-the-gridview-control-vb.md) nebo [formátování prvku DataList a Repeater na základě kurzů dat](../displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-vb.md) .
 
-Po přidání této obslužné rutiny události, věnujte chvíli testovací stránka prostřednictvím prohlížeče. Všimněte si, jak je každá kategorie uvedené v seznamu s odrážkami, zobrazuje kategorii s názvem a počet produktů, které jsou spojené s kategorií (viz obrázek 4).
+Po přidání této obslužné rutiny události chvíli počkejte, než se stránka otestuje v prohlížeči. Všimněte si, že je každá kategorie uvedená v seznamu s odrážkami, zobrazuje název kategorie a počet produktů přidružených k této kategorii (viz obrázek 4).
 
-[![Zobrazené každou kategorii s názvem a počet produktů](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image11.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image10.png)
+[![se zobrazí všechny kategorie s názvem a počet produktů.](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image11.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image10.png)
 
-**Obrázek 4**: Každá kategorie s názvem a produktů číslo se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image12.png))
+**Obrázek 4**: zobrazí se všechny kategorie s názvem a počet produktů ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image12.png)).
 
-## <a name="updating-thecategoriesdatatableandcategoriestableadapterto-include-the-number-of-products-for-each-category"></a>Aktualizuje`CategoriesDataTable`a`CategoriesTableAdapter`zahrnout počet produktů pro každou kategorii
+## <a name="updating-thecategoriesdatatableandcategoriestableadapterto-include-the-number-of-products-for-each-category"></a>Aktualizace`CategoriesDataTable`a`CategoriesTableAdapter`, aby obsahovaly počet produktů pro každou kategorii
 
-Místo určení počtu produktů pro každou kategorii, protože s vázán na Repeater, můžeme zjednodušit tento proces úpravou `CategoriesDataTable` a `CategoriesTableAdapter` v vrstvy přístupu k datům nativně obsahovala tuto informaci. K dosažení tohoto cíle, jsme musíte přidat nový sloupec, `CategoriesDataTable` pro uchování počtu související produkty. Chcete-li přidat nový sloupec do DataTable určitého, otevřete datovou sadu typu (`App_Code\DAL\Northwind.xsd`), klikněte pravým tlačítkem na objekt DataTable upravit a zvolte Přidat / sloupec. Přidat nový sloupec, `CategoriesDataTable` (viz obrázek 5).
+Místo určení počtu produktů pro každou kategorii v rámci vazby na Repeater můžete tento proces zjednodušit úpravou `CategoriesDataTable` a `CategoriesTableAdapter` ve vrstvě přístupu k datům tak, aby tyto informace byly nativně zahrnuty. Abychom to dosáhli, je nutné přidat nový sloupec, který `CategoriesDataTable` k uložení počtu přidružených produktů. Chcete-li přidat nový sloupec do objektu DataTable, otevřete typovou datovou sadu (`App_Code\DAL\Northwind.xsd`), klikněte pravým tlačítkem myši na objekt DataTable, který chcete upravit, a vyberte možnost Přidat/sloupec. Přidat nový sloupec do `CategoriesDataTable` (viz obrázek 5).
 
-[![Přidat nový sloupec CategoriesDataSource](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image14.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image13.png)
+[![přidat nový sloupec do CategoriesDataSource](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image14.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image13.png)
 
-**Obrázek 5**: Přidat nový sloupec, `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image15.png))
+**Obrázek 5**: Přidání nového sloupce do `CategoriesDataSource` ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image15.png))
 
-Tato možnost přidá nový sloupec s názvem `Column1`, které můžete změnit tak, že jednoduše zadáte jiný název. Přejmenujte tento nový sloupec na `NumberOfProducts`. V dalším kroku potřeba nakonfigurovat tento sloupec s vlastností. Klikněte na nový sloupec a přejděte do okna Vlastnosti. Změna sloupce s `DataType` vlastnost z `System.String` k `System.Int32` a nastavit `ReadOnly` vlastnost `True`, jak je znázorněno na obrázku 6.
+Tím se přidá nový sloupec s názvem `Column1`, který můžete změnit pouhým zadáním jiného názvu. Přejmenujte tento nový sloupec na `NumberOfProducts`. Dále je potřeba nakonfigurovat tyto vlastnosti sloupce. Klikněte na nový sloupec a přejděte na okno Vlastnosti. Změňte vlastnost `DataType` sloupců z `System.String` na `System.Int32` a nastavte vlastnost `ReadOnly` na `True`, jak je znázorněno na obrázku 6.
 
-![Nastavte datový typ a vlastnosti jen pro čtení nového sloupce](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image16.png)
+![Nastavte vlastnosti DataType a ReadOnly nového sloupce.](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image16.png)
 
-**Obrázek 6**: Nastavte `DataType` a `ReadOnly` vlastnosti nového sloupce
+**Obrázek 6**: nastavení vlastností `DataType` a `ReadOnly` nového sloupce
 
-Zatímco `CategoriesDataTable` má teď `NumberOfProducts` sloupec, jeho hodnota není nastavená žádné odpovídající s dotazů TableAdapter. Abychom mohli aktualizovat `GetCategories()` metoda tyto informace mají vracet pokud chceme, aby tyto údaje o vrátila pokaždé, když se načte informace o kategoriích. Pokud, ale musíme vzít číslo související produkty pro kategorie ve výjimečných případech (například jako jen pro účely tohoto kurzu), pak můžete necháme `GetCategories()` jako-je a vytvoření nové metody, která vrací tyto informace. Umožňují s použít tento druhý přístup vytváří novou metodu s názvem `GetCategoriesAndNumberOfProducts()`.
+I když `CategoriesDataTable` nyní má sloupec `NumberOfProducts`, není jeho hodnota nastavena žádným z odpovídajících dotazů TableAdapter s. Metodu `GetCategories()` můžeme aktualizovat, aby vracela tyto informace, pokud chceme tyto informace vracet při každém načtení informací o kategoriích. Pokud ale potřebujeme jen přidružit počet přidružených produktů pro kategorie ve vzácných instancích (například jenom v tomto kurzu), můžeme ponechat `GetCategories()` tak, jak jsou, a vytvořit novou metodu, která vrátí tyto informace. Pojďme použít tento druhý přístup a vytvořit novou metodu s názvem `GetCategoriesAndNumberOfProducts()`.
 
-Přidat toto nové `GetCategoriesAndNumberOfProducts()` metoda, klikněte pravým tlačítkem na `CategoriesTableAdapter` a zvolit nový dotaz. To přináší nahoru TableAdapter dotazovat Průvodce konfigurací, které jsme ve použít mnohokrát v předchozích kurzech. Pro tuto metodu spusťte Průvodce označující, že dotaz používá ad-hoc příkazu SQL, který vrací řádky.
+Chcete-li přidat tuto novou metodu `GetCategoriesAndNumberOfProducts()`, klikněte pravým tlačítkem myši na `CategoriesTableAdapter` a vyberte možnost Nový dotaz. Tím se zobrazí Průvodce konfigurací dotazu TableAdapter, který jsme v předchozích kurzech používali mnohokrát. V případě této metody spusťte Průvodce tak, že je uvedeno, že dotaz používá příkaz SQL ad hoc, který vrací řádky.
 
-[![Vytvořit metodu, pomocí příkazu SQL Ad-Hoc](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image18.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image17.png)
+[![vytvořit metodu pomocí ad-hoc příkazu SQL](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image18.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image17.png)
 
-**Obrázek 7**: Vytvořte metodu pomocí příkazu SQL Ad-Hoc ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image19.png))
+**Obrázek 7**: vytvoření metody pomocí ad-hoc příkazu SQL ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image19.png))
 
-[![Příkaz jazyka SQL, vrátí řádky](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image21.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image20.png)
+[![příkaz jazyka SQL vrátí řádky](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image21.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image20.png)
 
-**Obrázek 8**: Vrátí řádky SQL – příkaz ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image22.png))
+**Obrázek 8**: příkaz jazyka SQL vrací řádky ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image22.png))
 
-Na další obrazovce průvodce vyzve k nám na dotaz, který chcete použít. Vrátit s každou kategorii `CategoryID`, `CategoryName`, a `Description` pole, spolu s počtem produkty související s kategorií, použijte následující `SELECT` – příkaz:
+Další obrazovka průvodce vás vyzve, aby se dotaz použil. Pokud chcete vrátit jednotlivé kategorie `CategoryID`, `CategoryName`a `Description`, spolu s počtem produktů přidružených k této kategorii, použijte následující příkaz `SELECT`:
 
 [!code-sql[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample7.sql)]
 
-[![Zadejte dotaz k použití](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image24.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image23.png)
+[![zadejte dotaz, který se má použít.](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image24.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image23.png)
 
-**Obrázek 9**: Zadejte dotaz, který použít ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image25.png))
+**Obrázek 9**: určení dotazu, který se má použít ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image25.png))
 
-Všimněte si, že poddotazu, která vypočítá počet produktů, které jsou spojené s kategorií s aliasem jako `NumberOfProducts`. Tuto pojmenování shodu způsobí, že hodnoty vrácené tomto poddotazu přidruženo `CategoriesDataTable` s `NumberOfProducts` sloupce.
+Všimněte si, že poddotaz, který vypočítá počet produktů přidružených k této kategorii, má alias `NumberOfProducts`. Tato shoda názvů způsobí, že hodnota vrácená tímto poddotazem bude přidružena k sloupci `CategoriesDataTable` s `NumberOfProducts`.
 
-Po zadání tohoto dotazu je posledním krokem je vybrat název pro novou metodu. Použití `FillWithNumberOfProducts` a `GetCategoriesAndNumberOfProducts` zaplní, datové tabulky a vrátit objekt DataTable vzory, v uvedeném pořadí.
+Po zadání tohoto dotazu je posledním krokem výběr názvu nové metody. Pro naplnění objektu DataTable použijte `FillWithNumberOfProducts` a `GetCategoriesAndNumberOfProducts` a vraťte se ke vzorům DataTable.
 
-[![Název nové FillWithNumberOfProducts metody s TableAdapter a GetCategoriesAndNumberOfProducts](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image27.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image26.png)
+[![název nové metody FillWithNumberOfProducts a GetCategoriesAndNumberOfProducts pro TableAdapter s](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image27.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image26.png)
 
-**Obrázek 10**: Pojmenujte nový TableAdapter s metod `FillWithNumberOfProducts` a `GetCategoriesAndNumberOfProducts` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image28.png))
+**Obrázek 10**: pojmenujte nové metody TableAdapter s `FillWithNumberOfProducts` a `GetCategoriesAndNumberOfProducts` ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image28.png)
 
-V tomto okamžiku vrstvy přístupu k datům rozšířilo a zahrnuje počet produktů podle kategorie. Protože všechny naše prezentační vrstva směruje všechna volání DAL prostřednictvím samostatných vrstvy obchodní logiky je potřeba přidat odpovídající `GetCategoriesAndNumberOfProducts` metodu `CategoriesBLL` třídy:
+V tomto okamžiku byla vrstva přístupu k datům rozšířena tak, aby obsahovala počet produktů na kategorii. Vzhledem k tomu, že všechny naše prezentační vrstvy směrují všechna volání na DAL prostřednictvím samostatné vrstvy obchodní logiky, musíme do `CategoriesBLL` třídy přidat odpovídající metodu `GetCategoriesAndNumberOfProducts`:
 
 [!code-vb[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample8.vb)]
 
-DAL a BLL kompletní, můžeme znovu jste připravení začít tato data k vytvoření vazby `Categories` Repeater v `CategoriesAndProducts.aspx`! Pokud jste již prvku ObjectDataSource vytvořeny již pro Repeater z určení číslo produkty v `ItemDataBound` části obslužná rutina události, odstraňte tento prvek ObjectDataSource a odeberete opakovače s `DataSourceID` vlastnost nastavení; také unwire Opakovače s `ItemDataBound` událost z obslužné rutiny události tak, že odeberete `Handles Categories.OnItemDataBound` syntaxe v třídě modelu code-behind technologie ASP.NET.
+Po dokončení a knihoven BLLi jsme připraveni tato data navážet do `Categories`ového opakovače v `CategoriesAndProducts.aspx`! Pokud jste již vytvořili prvek ObjectDataSource pro příkaz Repeater z části určení počtu produktů v sekci obslužné rutiny události `ItemDataBound`, odstraňte tento prvek ObjectDataSource a odeberte nastavení vlastnosti Repeater s `DataSourceID`; také odvedení události Repeater `ItemDataBound` z obslužné rutiny události odebráním syntaxe `Handles Categories.OnItemDataBound` ve třídě kódu na pozadí ASP.NET.
 
-Repeater zpět do původního stavu, přidejte nový prvek ObjectDataSource s názvem `CategoriesDataSource` prostřednictvím inteligentních značek opakovače s. Konfigurace ObjectDataSource používat `CategoriesBLL` třídy, ale namísto toho, aby ji použít `GetCategories()` metodu, mají se používat `GetCategoriesAndNumberOfProducts()` místo toho (viz obrázek 11).
+Pomocí návratového znaku zpět v původním stavu přidejte nový prvek ObjectDataSource s názvem `CategoriesDataSource` prostřednictvím inteligentní značky Repeater. Nakonfigurujte prvek ObjectDataSource tak, aby používal třídu `CategoriesBLL`, ale místo toho, aby používal metodu `GetCategories()`, mělo by místo toho použít `GetCategoriesAndNumberOfProducts()` (viz obrázek 11).
 
-[![Konfigurace ObjectDataSource GetCategoriesAndNumberOfProducts metody](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image30.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image29.png)
+[![nakonfigurovat prvek ObjectDataSource na použití metody GetCategoriesAndNumberOfProducts](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image30.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image29.png)
 
-**Obrázek 11**: Konfigurace ObjectDataSource k použití `GetCategoriesAndNumberOfProducts` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image31.png))
+**Obrázek 11**: Konfigurace prvku ObjectDataSource pro použití metody `GetCategoriesAndNumberOfProducts` ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image31.png))
 
-Dále, aktualizujte `ItemTemplate` tak, aby s odkazem (LinkButton) `Text` vlastnost přiřazena deklarativně pomocí syntaxe pro vázání dat a zahrnuje i `CategoryName` a `NumberOfProducts` datová pole. Kompletní deklarativní opakovače a `CategoriesDataSource` ObjectDataSource následující:
+Dále aktualizujte `ItemTemplate` tak, aby vlastnost LinkButton s `Text` byla deklarativně přiřazena pomocí syntaxe DataBinding a obsahovala datová pole `CategoryName` a `NumberOfProducts`. Dokončení deklarativních značek pro Repeater a `CategoriesDataSource` ObjectDataSource následuje:
 
 [!code-aspx[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample9.aspx)]
 
-Výstup vykreslen metodou aktualizace DAL zahrnout `NumberOfProducts` sloupec je stejné jako při použití `ItemDataBound` přístup obslužné rutiny události (odkazuje zpět na obrázku 4 zobrazíte na obrazovce snímek Repeater zobrazují názvy kategorií a počet produktů).
+Výstup vykreslený aktualizací hodnoty DAL za účelem zahrnutí sloupce `NumberOfProducts` je stejný jako při použití přístupu k obslužné rutině události `ItemDataBound` (vraťte se zpátky na obrázek 4, kde se zobrazí snímek obrazovky s názvem kategorie a počet produktů).
 
-## <a name="step-3-displaying-the-selected-category-s-products"></a>Krok 3: Zobrazení produkty s vybranou kategorii.
+## <a name="step-3-displaying-the-selected-category-s-products"></a>Krok 3: zobrazení vybraných produktů kategorií s
 
-V tuto chvíli máme `Categories` Repeater zobrazení seznamu kategorií spolu s počtem produkty v jednotlivých kategoriích. Opakovače odkazem (LinkButton) používá pro každou kategorii, že po kliknutí na způsobí zpětné volání, ve kterém bodu budeme potřebovat zobrazit tyto produkty pro vybrané kategorie v `CategoryProducts` DataList.
+V tomto okamžiku má `Categories` Repeater zobrazení seznamu kategorií spolu s počtem produktů v jednotlivých kategoriích. Repeater používá LinkButton pro každou kategorii, která při kliknutí způsobí postback, ve kterém je potřeba zobrazit tyto produkty pro vybranou kategorii v `CategoryProducts` DataList.
 
-Jedinou nevýhodu směřující nám je jak DataList zobrazí jenom produkty pro vybrané kategorie. V [Master/Detail pomocí volitelných GridView hlavní podrobnosti DetailsView](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md) kurzu jsme viděli, jak sestavit jejíž řádky GridView může vybrat, s vybraný řádek s podrobně popisuje zobrazovaná v prvku DetailsView na stejné stránce. GridView s ObjectDataSource vrátí informace o všech produktů pomocí `ProductsBLL` s `GetProducts()` metoda při prvek DetailsView s ObjectDataSource načíst informace o používání produktu `GetProductsByProductID(productID)` metody. *`productID`* Hodnota parametru poskytla pomocí deklarace přidružení s hodnotou GridView s `SelectedValue` vlastnost. Bohužel nemá opakovače `SelectedValue` vlastnost a nemůže sloužit jako zdroj parametru.
+Jedna z nich čelí, jak má prvek DataList zobrazit pouze ty produkty pro vybranou kategorii. V seznamu [a podrobnostech pomocí selektivního hlavního prvku GridView s kurzem podrobností DetailsView](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md) jsme viděli, jak vytvořit prvek GridView, jehož řádky by se daly vybrat, s vybranými podrobnostmi o řádcích zobrazenými v ovládacím prvku DetailsView na stejné stránce. Prvek GridView s ObjectDataSource vrátil informace o všech produktech pomocí metody `GetProducts()` `ProductsBLL` s, zatímco ovládací prvek DetailsView s ObjectDataSource načetl informace o vybraném produktu pomocí metody `GetProductsByProductID(productID)`. Hodnota parametru *`productID`* byla k dispozici deklarativně tak, že ji přidružíte k hodnotě vlastnosti GridView s `SelectedValue`. Tento příkaz bohužel nemá vlastnost `SelectedValue` a nemůže sloužit jako zdroj parametru.
 
 > [!NOTE]
-> Toto je jeden z těchto problémů, které se zobrazí při použití na prvek LinkButton v Repeateru. Měli jsme použili hypertextový odkaz a zajistěte tak předání `CategoryID` prostřednictvím řetězec dotazu namísto toho jsme použít toto pole řetězce dotazu jako zdroj pro hodnotu parametru s.
+> Toto je jeden z těchto výzev, které se zobrazí při použití prvku LinkButton v rámci Repeater. Použili jsme hypertextový odkaz k předání `CategoryID` prostřednictvím řetězce dotazu, můžeme použít toto pole QueryString jako zdroj hodnoty parametru s.
 
-Předtím, než jsme starat o nedostatku `SelectedValue` vlastnost Repeater, ale nechat s nejdřív svázat ObjectDataSource prvku DataList a určit jeho `ItemTemplate`.
+Předtím, než se obáváme o nedostatku `SelectedValue` vlastnosti pro Repeater, ale můžeme nejdřív navazovat vazby prvku DataList na prvek ObjectDataSource a zadat jeho `ItemTemplate`.
 
-Z inteligentních značek v prvku DataList s optimalizované pro přidání nového prvku ObjectDataSource s názvem `CategoryProductsDataSource` a nakonfigurujte ho na použití `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metody. Protože DataList v tomto kurzu nabízí rozhraní jen pro čtení, můžete v INSERT, UPDATE, nastavte rozevírací seznamy a odstranit karty na (žádný).
+Z inteligentní značky DataList s Přihlaste se k přidání nového prvku ObjectDataSource s názvem `CategoryProductsDataSource` a nakonfigurujte ho tak, aby používal metodu `GetProductsByCategoryID(categoryID)` `ProductsBLL` třídy s. Vzhledem k tomu, že DataList v tomto kurzu nabízí rozhraní jen pro čtení, můžete nastavit rozevírací seznamy na kartách vložení, aktualizace a odstranění na (žádné).
 
-[![Konfigurace ObjectDataSource ProductsBLL třídy s GetProductsByCategoryID(categoryID) metody](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image33.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image32.png)
+[![nakonfigurovat prvek ObjectDataSource tak, aby používal metodu ProductsBLL třídy s GetProductsByCategoryID (KódKategorie)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image33.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image32.png)
 
-**Obrázek 12**: Konfigurace ObjectDataSource použití `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image34.png))
+**Obrázek 12**: Konfigurace prvku ObjectDataSource pro použití `ProductsBLL` třídy s `GetProductsByCategoryID(categoryID)` metoda ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image34.png))
 
-Protože `GetProductsByCategoryID(categoryID)` metoda očekává, že vstupní parametr (*`categoryID`*), průvodce Konfigurovat zdroj dat umožňuje zadat zdroj s parametrem. Měl kategorie uvedené v GridView nebo a v prvku DataList, d nastavíme parametr zdroj rozevíracího seznamu na ovládací prvek a ControlID k `ID` dat webový ovládací prvek. Ale od chybí opakovače `SelectedValue` vlastnost nelze použít jako zdroj parametru. Pokud zaškrtnete, zjistíte, že ControlID – rozevírací seznam obsahuje pouze jeden ovládací prvek `ID``CategoryProducts`, `ID` z prvku DataList.
+Vzhledem k tomu, že metoda `GetProductsByCategoryID(categoryID)` očekává vstupní parametr ( *`categoryID`* ), Průvodce konfigurací zdroje dat nám umožňuje zadat parametr s parametrem source. Měly by se tyto kategorie vypisovat v prvku GridView nebo v prvku DataList, ale v rozevíracím seznamu zdroj parametrů se nastaví ovládací prvek a vlastnosti ControlID na `ID` webového ovládacího prvku data. Vzhledem k tomu, že u Repeater chybí vlastnost `SelectedValue`, nemůže být použit jako zdroj parametru. Pokud zkontrolujete, zjistíte, že rozevírací seznam ControlID obsahuje pouze jeden ovládací prvek `ID``CategoryProducts`, `ID` prvku DataList.
 
-Nyní nastavena na hodnotu None rozevíracího seznamu zdroje parametru. Budeme mít programově přiřazení tohoto parametru na hodnotu při kategorii, kterou dojde ke kliknutí na prvek LinkButton v Opakovači.
+Prozatím nastavte rozevírací seznam zdroj parametrů na žádný. Pokud kliknete na položku LinkButton v poli Repeater, ukončíme programově přiřazení této hodnoty parametru.
 
-[![Proveďte není zadán parametr zdroj pro ID kategorie parametr](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image36.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image35.png)
+[![nespecifikovat zdroj parametru pro parametr KódKategorie](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image36.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image35.png)
 
-**Obrázek 13**: Proveďte není zadán parametr zdroje *`categoryID`* parametr ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image37.png))
+**Obrázek 13**: nezadávejte zdrojový parametr pro parametr *`categoryID`* ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image37.png)).
 
-Po dokončení Průvodce nakonfigurovat zdroj dat, sada Visual Studio automaticky vygeneruje DataList s `ItemTemplate`. Nahradit toto výchozí nastavení `ItemTemplate` pomocí šablony jsme použili v předchozím kurzu; také nastavit DataList s `RepeatColumns` vlastnost na 2. Po provedení těchto změn deklarativní třídy DataList a její přidružené ObjectDataSource by měl vypadat nějak takto:
+Po dokončení Průvodce konfigurací zdroje dat aplikace Visual Studio automaticky vygeneruje `ItemTemplate`DataList s. Nahraďte tento výchozí `ItemTemplate` šablonou, kterou jsme použili v předchozím kurzu. také nastavte vlastnost `RepeatColumns` DataList na 2. Po provedení těchto změn by deklarativní označení pro prvek DataList a jeho přidružené prvky ObjectDataSource mělo vypadat takto:
 
 [!code-aspx[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample10.aspx)]
 
-V současné době `CategoryProductsDataSource` ObjectDataSource s *`categoryID`* parametr nikdy nastaven, aby žádné produkty se zobrazí při zobrazení stránky. Co musíme udělat je mít tento parametr hodnotu nastavit na základě `CategoryID` kliknutí na kategorie v Opakovači. Zavádí se dva problémy: nejprve, jak můžeme zjistit při odkazem (LinkButton) v opakovače s `ItemTemplate` kliknutí; a druhý, jak můžeme určit `CategoryID` odpovídající kategorie, jehož odkazem (LinkButton) došlo ke kliknutí na?
+V současné době není parametr `CategoryProductsDataSource` ObjectDataSource s *`categoryID`* nikdy nastaven, takže při zobrazení stránky se nezobrazí žádné produkty. To, co musíme udělat, je tato hodnota parametru nastavená na základě `CategoryID` kategorie kliknutí v poli Repeater. Tím se dokončí dvě výzvy: nejdřív určíme, kdy se na LinkButton `ItemTemplate` kliklo. a za druhé, jak můžeme určit `CategoryID` odpovídající kategorie, jejíž LinkButton byl kliknuto?
 
-Má odkazem (LinkButton), jako jsou ovládací prvky tlačítka a ImageButton `Click` událostí a [ `Command` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.command.aspx). `Click` Událostí umožňuje jednoduše mějte na paměti, že se kliklo odkazem (LinkButton). V některých případech však kromě poznamenat, že se kliklo na prvek LinkButton musíme také předat určité další informace do obslužné rutiny události. Pokud se jedná o případ, s odkazem (LinkButton) [ `CommandName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandname.aspx) a [ `CommandArgument` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandargument.aspx) vlastnosti je možné přiřadit tyto dodatečné informace. Pak při kliknutí na prvek LinkButton jeho `Command` dojde k aktivaci události (místo jeho `Click` událostí) a obslužná rutina události je předána hodnoty `CommandName` a `CommandArgument` vlastnosti.
+Prvek LinkButton, jako je tlačítko a ovládací prvky obrázkové, má událost `Click` a [událost`Command`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.command.aspx). Událost `Click` je navržena tak, aby jednoduše poznamenala, že jste klikli na LinkButton. Někdy ale kromě toho, že jste klikli na položku LinkButton, ale také potřebujete předat nějaké další informace obslužné rutině události. Pokud se jedná o tento případ, vlastnosti LinkButton [`CommandName`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandname.aspx) a [`CommandArgument`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandargument.aspx) lze přiřadit k této dodatečné informaci. Pak při kliknutí na LinkButton se událost `Command` aktivuje (namísto události `Click`) a obslužná rutina události je předána hodnotami vlastností `CommandName` a `CommandArgument`.
 
-Když `Command` událost je vyvolána v rámci šablony v Opakovači opakovače s [ `ItemCommand` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeater.itemcommand.aspx) aktivuje se a je předán `CommandName` a `CommandArgument` hodnoty na kliknutí na prvek LinkButton (nebo tlačítko nebo ImageButton). Proto pokud chcete zjistit, kdy se kategorie odkazem (LinkButton) v Opakovači kliklo, musíme udělat následující:
+Když je událost `Command` vyvolána v rámci šablony v Repeater, [událost repeater`ItemCommand`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeater.itemcommand.aspx) se aktivuje a předává se `CommandName` a `CommandArgument` hodnoty kliknutí na položku LinkButton (nebo tlačítko nebo obrázkové). Proto je potřeba provést následující akce, aby bylo možné určit, kdy došlo ke kliknutí na položku LinkButton kategorie v OPAKOVAČI:
 
-1. Nastavit `CommandName` vlastnost odkazem (LinkButton) v opakovače s `ItemTemplate` na některá z hodnot (I ve použít ListProducts). Když tuto `CommandName` hodnoty s odkazem (LinkButton) `Command` událost aktivuje se při kliknutí na prvek LinkButton.
-2. Nastavení s odkazem (LinkButton) `CommandArgument` vlastnost na hodnotu s aktuální položkou `CategoryID`.
-3. Vytvořte obslužnou rutinu události pro opakovače s `ItemCommand` událostí. V případě nastavena obslužná rutina, `CategoryProductsDataSource` ObjectDataSource s `CategoryID` parametr na hodnotu předaný `CommandArgument`.
+1. Nastavte vlastnost `CommandName` prvku LinkButton v poli Repeater s `ItemTemplate` na určitou hodnotu (používá se ListProducts). Nastavením této `CommandName` hodnoty je při kliknutí na LinkButton aktivována událost `Command` LinkButton s.
+2. Nastavte vlastnost LinkButton s `CommandArgument` na hodnotu `CategoryID`aktuální položky.
+3. Vytvořte obslužnou rutinu události pro událost `ItemCommand` opakování. V obslužné rutině události nastavte `CategoryProductsDataSource` ObjectDataSource s `CategoryID` parametr na hodnotu `CommandArgument`předaného.
 
-Následující `ItemTemplate` značky kategorií Repeater implementuje kroky 1 a 2. Poznámka: Jak `CommandArgument` hodnota přiřazena datová položka s `CategoryID` pomocí syntaxe datové vazby:
+Následující `ItemTemplate` značky pro Repeater kategorií implementuje kroky 1 a 2. Všimněte si, jak je přiřazena hodnota `CommandArgument` datové položce s `CategoryID` pomocí syntaxe DataBinding:
 
 [!code-aspx[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample11.aspx)]
 
-Pokaždé, když se vytváří `ItemCommand` obslužná rutina události je vhodné vždy nejprve zkontrolujte příchozí `CommandName` hodnotu, protože *žádné* `Command` události vyvolané *žádné* tlačítko, odkazem (LinkButton), nebo Způsobí, že ImageButton v Opakovači `ItemCommand` události, která se aktivuje. Zatímco aktuálně pouze máme jeden takový odkazem (LinkButton), v budoucnu nám (nebo jiným vývojářem na náš tým) může přidat další tlačítka webové ovládací prvky do opakovače, po kliknutí na vyvolá stejné `ItemCommand` obslužné rutiny události. Proto se s nejlepší vždy ujistěte se, že zkontrolujete `CommandName` vlastnost a pouze pokračujte programovou logiku, pokud to odpovídá hodnotě očekávané.
+Pokaždé, když se vytvoří obslužná rutina události `ItemCommand`, je obezřetná vždy, když chcete, aby se automaticky zkontrolovala hodnota příchozí `CommandName`, protože *jakákoli* `Command` událost vyvolaná *jakýmkoli* tlačítkem, LinkButton nebo obrázkové v rámci Repeater způsobí, že se událost `ItemCommand` aktivuje. V současné době máme jenom jednu takovou položku LinkButton. v budoucnu bychom (nebo jiný vývojář v našem týmu) mohli přidat další webové ovládací prvky tlačítek do tohoto opakovače, který po kliknutí vyvolá stejnou `ItemCommand` obslužnou rutinu události. Proto se nejlépe ujistěte, že jste zkontrolovali vlastnost `CommandName` a chcete pokračovat v programové logice, pokud se shoduje s očekávanou hodnotou.
 
-Až se ujistíte, předaný `CommandName` hodnota se rovná ListProducts, obslužná rutina události poté přiřadí `CategoryProductsDataSource` ObjectDataSource s `CategoryID` parametr na hodnotu předaným `CommandArgument`. Tato změna do prvku ObjectDataSource s `SelectParameters` automaticky způsobí, že DataList samotné znovu připojit ke zdroji dat, obsahující produkty pro nově vybranou kategorii.
+Po zajistěte, aby se předaná hodnota `CommandName` rovna ListProducts, obslužná rutina události poté přiřadí parametr `CategoryProductsDataSource` ObjectDataSource s `CategoryID` k hodnotě předaného `CommandArgument`. Tato změna `SelectParameters` ObjectDataSource a automaticky způsobí, že prvek DataList se znovu sváže se zdrojem dat a zobrazí produkty pro nově vybranou kategorii.
 
 [!code-vb[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample12.vb)]
 
-S těmito přídavky v našem kurzu byla dokončena. Za chvíli otestování v prohlížeči. Obrázek 14 při první návštěvě stránky se zobrazí na obrazovce. Protože kategorie je ještě nutné vybrat, zobrazí se žádné produkty. Kliknutím na kategorii, jako je například produktu, se zobrazí tyto produkty v kategorii produktu v zobrazení dvou sloupců (viz obrázek 15).
+S těmito dodatky jsme náš kurz dokončili. Vyzkoušejte si chvilku, abyste ho otestovali v prohlížeči. Obrázek 14 zobrazuje obrazovku při první návštěvě stránky. Vzhledem k tomu, že se kategorie ještě vybrala, nezobrazí se žádné produkty. Kliknutím na kategorii, jako je například výroba, se zobrazí tyto produkty v kategorii produkt v zobrazení se dvěma sloupci (viz obrázek 15).
 
-[![Žádné produkty, které jsou zobrazeny při první návštěvě stránky](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image39.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image38.png)
+[Při první návštěvě stránky se nezobrazují ![žádné produkty.](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image39.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image38.png)
 
-**Obrázek 14**: Žádné produkty, které jsou zobrazeny při první návštěvě stránky ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image40.png))
+**Obrázek 14**: při první návštěvě stránky nejsou zobrazeny žádné produkty ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image40.png)).
 
-[![Kliknutím na seznamy kategorie produktů odpovídající produkty vpravo](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image42.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image41.png)
+[![kliknutí na kategorii výroba zobrazí seznam vyhovujících produktů napravo.](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image42.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image41.png)
 
-**Obrázek 15**: Kliknutím na kategorii produktu seznamy produktů, na odpovídající vpravo ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image43.png))
+**Obrázek 15**: kliknutím na kategorii výroba zobrazíte seznam vyhovujících produktů vpravo ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image43.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Jak jsme viděli v tomto kurzu a ta předchozí, záznamů master/detail sestavy mohou být umístěny na dvou stránkách nebo konsolidovat v jeden. Na jednu stránku zobrazení hlavních/podrobných sestav, však zavádí některé běžné problémy, o tom, co nejlépe rozložení hlavní a zaznamenává informace na stránce. V *Master/Detail pomocí volitelných GridView hlavní podrobnosti DetailsView* kurzu jsme měli podrobnosti záznamy zobrazovat nad hlavní záznamy; v tomto kurzu mívali jsme techniky šablon stylů CSS float hlavní záznamy na nalevo od podrobnosti.
+Jak jsme viděli v tomto kurzu a předchozí sestavy hlavní/podrobnosti je možné rozložit na dvě stránky nebo konsolidovat na jednu z nich. Zobrazení sestavy hlavní/podrobnosti na jedné stránce ale zavádí některé problémy s tím, jak nejlépe rozložení hlavního a podrobného záznamu na stránce. V seznamu *a podrobnostech pomocí selektivního hlavního prvku GridView s podrobným* kurzem k podrobnostem se zobrazí záznamy podrobností nad hlavními záznamy; v tomto kurzu jsme pomocí techniků CSS nastavili hlavní záznamy na levou stranu podrobností.
 
-Spolu s zobrazení hlavních/podrobných sestav, jsme také příležitost prozkoumat, jak načíst počet produktů, které jsou spojené s každou kategorii také, jak k provádění logiku na straně serveru, když odkazem (LinkButton) (nebo tlačítko nebo ImageButton) dojde ke kliknutí na zevnitř Opakovače.
+Společně s zobrazením sestav hlavních a podrobností jsme také pomohli prozkoumat, jak načíst počet produktů přidružených ke každé kategorii a jak provádět logiku na straně serveru při kliknutí na LinkButton (nebo tlačítko nebo obrázkové) v rámci Repeater.
 
-V tomto kurzu dokončíte naše zkoumání záznamů master/detail sestavy ovládacími prvky DataList a Repeater. Naše další sérii kurzů popisuje postup přidání, úpravy a odstranění funkce pro ovládací prvek DataList.
+V tomto kurzu se dokončí naše zkoumání sestav hlavní/podrobnosti s prvky DataList a Repeater. Naše další sada kurzů vám ukáže, jak přidat do ovládacího prvku DataList možnosti úprav a odstranění.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
-- [Floatutorial](http://css.maxdesign.com.au/floatutorial/) kurz týkající se plovoucí prvky šablon stylů CSS pomocí šablon stylů CSS
-- [Umístění šablon stylů CSS](http://www.brainjar.com/css/positioning/) Další informace o umístění prvků pomocí šablon stylů CSS
-- [Vytváření si obsahu HTML](http://www.w3schools.com/html/html_layout.asp) pomocí `<table>` s a dalších prvků HTML pro umístění
+- [Floatutorial](http://css.maxdesign.com.au/floatutorial/) kurz pro plovoucí prvky CSS pomocí šablon stylů CSS
+- [Šablony stylů CSS](http://www.brainjar.com/css/positioning/) – Další informace o umísťování elementů pomocí šablon stylů CSS
+- [Rozložení obsahu pomocí jazyka HTML](http://www.w3schools.com/html/html_layout.asp) pomocí `<table>` s a dalších prvků HTML pro umístění
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Zack Jones. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontrolor potenciálních zákazníků pro tento kurz byl Zack Novotný. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](master-detail-filtering-acess-two-pages-datalist-vb.md)

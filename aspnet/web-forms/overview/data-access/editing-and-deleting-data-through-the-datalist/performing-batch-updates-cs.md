@@ -1,150 +1,150 @@
 ---
 uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs
-title: Provádění dávkových aktualizací (C#) | Dokumentace Microsoftu
+title: Provádění dávkových aktualizacíC#() | Microsoft Docs
 author: rick-anderson
-description: Zjistěte, jak vytvořit plně neupravovatelné kde jsou všechny položky v prvku DataList režim úprav a jehož hodnoty mohou být uloženy po kliknutí na tlačítko Aktualizovat vše na...
+description: Naučte se, jak vytvořit plně upravitelný prvek DataList, kde jsou všechny jeho položky v režimu úprav a jejichž hodnoty se dají uložit kliknutím na tlačítko Aktualizovat vše na...
 ms.author: riande
 ms.date: 10/30/2006
 ms.assetid: 57743ca7-5695-4e07-aed1-44b297f245a9
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 01234dfab50cf608c934cb72ed06d0ad0ee58438
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: cde12a4d24555216adc49dd02818901278932eaa
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133628"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74631631"
 ---
 # <a name="performing-batch-updates-c"></a>Provádění dávkových aktualizací (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_37_CS.exe) nebo [stahovat PDF](performing-batch-updates-cs/_static/datatutorial37cs1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_37_CS.exe) nebo [Stáhnout PDF](performing-batch-updates-cs/_static/datatutorial37cs1.pdf)
 
-> Zjistěte, jak vytvořit plně neupravovatelné kde jsou všechny položky v prvku DataList režim úprav a jehož hodnoty můžete uložit kliknutím na "Aktualizovat vše" tlačítko na stránce.
+> Naučte se, jak vytvořit plně upravitelný prvek DataList, kde jsou všechny jeho položky v režimu úprav a jejichž hodnoty se dají uložit kliknutím na tlačítko Aktualizovat vše na stránce.
 
 ## <a name="introduction"></a>Úvod
 
-V [předchozím kurzu](an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md) jsme se zaměřili na tom, jak vytvořit ovládacích prvků DataList na úrovni položek. Jako zahrnuté standardní upravitelné prvku GridView, každou položku v ovládacím prvku DataList tlačítko úpravy, které, při kliknutí na, s žádným položky upravovat. Zatímco tato položka úrovně úpravy funguje dobře pro data, která je jenom čas od času aktualizován, vyžaduje určité scénáře použití uživateli upravovat mnoho záznamů. Pokud uživatel je potřeba upravit desítky záznamy a bude muset kliknout na upravit, proveďte své změny a klikněte na tlačítko Aktualizovat pro každou z nich, může omezovat velikost kliknutím na její produktivitu. V takových situacích je lepší volbou poskytnout plně upravitelné DataList jednoho, kde *všechny* jeho položek jsou v režimu úprav a jehož hodnoty můžete upravit kliknutím na tlačítko Aktualizovat vše na stránce (viz obrázek 1).
+V [předchozím kurzu](an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md) jsme prozkoumali, jak vytvořit prvek DataList na úrovni položky. Podobně jako u standardních upravitelných prvků GridView, každá položka v prvku DataList zahrnovala tlačítko pro úpravy, které po kliknutí umožní upravit položku. I když tato úprava na úrovni položek funguje dobře pro data, která se aktualizují pouze občas, některé scénáře použití vyžadují, aby uživatel upravoval mnoho záznamů. Pokud uživatel potřebuje upravit desítky záznamů a je nucen kliknout na upravit, provést změny a kliknout na tlačítko Aktualizovat pro každé z nich, může se po kliknutí na tuto produktivitu považovat za překážku. V takových situacích lepší možností je poskytnout plně upravitelný prvek DataList *, který je* v režimu úprav a jehož hodnoty lze upravit kliknutím na tlačítko Aktualizovat vše na stránce (viz obrázek 1).
 
-[![Každá položka v plně upravit DataList je možné upravit.](performing-batch-updates-cs/_static/image2.png)](performing-batch-updates-cs/_static/image1.png)
+[![každou položku v plně upravitelném prvku DataList je možné upravit.](performing-batch-updates-cs/_static/image2.png)](performing-batch-updates-cs/_static/image1.png)
 
-**Obrázek 1**: Je možné upravit každé položky v plně upravit DataList ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-cs/_static/image3.png))
+**Obrázek 1**: každou položku v plně upravitelném prvku DataList je možné upravit ([kliknutím zobrazíte obrázek v plné velikosti).](performing-batch-updates-cs/_static/image3.png)
 
-V tomto kurzu prozkoumáme jak povolit uživatelům aktualizovat informace o adrese dodavatelé pomocí plně upravitelné DataList.
+V tomto kurzu podíváme se, jak uživatelům umožnit aktualizovat informace o adresách dodavatelů pomocí plně upravitelného prvku DataList.
 
-## <a name="step-1-create-the-editable-user-interface-in-the-datalist-s-itemtemplate"></a>Krok 1: Vytvoření upravovat uživatelské rozhraní ve vlastnosti ItemTemplate s
+## <a name="step-1-create-the-editable-user-interface-in-the-datalist-s-itemtemplate"></a>Krok 1: vytvoření upravitelného uživatelského rozhraní v DataList s ItemTemplate
 
-V předchozím kurzu, kde jsme vytváření upravitelné DataList standard, na úrovni položek, použili jsme dvě šablony:
+V předchozím kurzu, kde vytvoříme standardní a upravitelný prvek DataList na úrovni položky, jsme použili dvě šablony:
 
-- `ItemTemplate` obsahovala jen pro čtení uživatelského rozhraní (popisek webové ovládací prvky pro zobrazení jednotlivých produktů s názvem a cena).
-- `EditItemTemplate` obsažené uživatelského rozhraní režimu úprav (dva textové pole webové ovládací prvky).
+- `ItemTemplate` obsahuje uživatelské rozhraní jen pro čtení (webové ovládací prvky Label pro zobrazení jednotlivých názvů a cen produktů).
+- `EditItemTemplate` obsahuje uživatelské rozhraní režimu úprav (dva webové ovládací prvky TextBox).
 
-DataList s `EditItemIndex` vlastnost určuje, co `DataListItem` (pokud existuje) je vykreslen pomocí `EditItemTemplate`. Konkrétně se `DataListItem` jehož `ItemIndex` hodnota odpovídá prvku DataList s `EditItemIndex` vlastnost je vykreslen pomocí `EditItemTemplate`. Tento model funguje dobře, pokud lze upravovat pouze jedna položka v čase, ale spadající do určité od sebe při vytváření plně upravitelné DataList.
+Vlastnost DataList s `EditItemIndex` určuje, co `DataListItem` (pokud existuje) je vykresleno pomocí `EditItemTemplate`. Konkrétně `DataListItem`, jehož `ItemIndex` hodnota odpovídá vlastnosti `EditItemIndex` prvku DataList s, je vykreslen pomocí `EditItemTemplate`. Tento model funguje dobře, když se dá upravovat jenom jedna položka, ale při vytváření plně upravitelného prvku DataList dojde k rozběhu.
 
-Pro plně upravitelné DataList chceme *všechny* z `DataListItem` s vykreslit pomocí rozhraní upravovat. K definování rozhraní upravovat v je nejjednodušší způsob, jak to provést `ItemTemplate`. Upravitelné rozhraní pro úpravu informace o adrese dodavatelů, obsahuje název dodavatele jako text a potom textová pole pro adresu, Město a zemi hodnoty.
+Pro plně upravitelný prvek DataList chceme, aby *všechny* `DataListItem` s byly vykresleny pomocí upravitelného rozhraní. Nejjednodušší způsob, jak to provést, je definovat upravitelné rozhraní v `ItemTemplate`. Pro úpravu informací o adrese dodavatele obsahuje upravitelné rozhraní název dodavatele jako text a potom textová pole pro hodnoty adresa, město a země.
 
-Začněte otevřením `BatchUpdate.aspx` stránce, přidejte ovládací prvek DataList a nastavte jeho `ID` vlastnost `Suppliers`. Z inteligentních značek v prvku DataList s optimalizované pro přidání nového ovládacího prvku ObjectDataSource s názvem `SuppliersDataSource`.
+Začněte tím, že otevřete stránku `BatchUpdate.aspx`, přidáte ovládací prvek DataList a nastavíte jeho vlastnost `ID` na `Suppliers`. Z inteligentní značky DataList s Přihlaste se k přidání nového ovládacího prvku ObjectDataSource s názvem `SuppliersDataSource`.
 
-[![Vytvoření nového prvku ObjectDataSource s názvem SuppliersDataSource](performing-batch-updates-cs/_static/image5.png)](performing-batch-updates-cs/_static/image4.png)
+[![vytvořit nový prvek ObjectDataSource s názvem SuppliersDataSource](performing-batch-updates-cs/_static/image5.png)](performing-batch-updates-cs/_static/image4.png)
 
-**Obrázek 2**: Vytvoření nového prvku ObjectDataSource s názvem `SuppliersDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-cs/_static/image6.png))
+**Obrázek 2**: vytvoření nového prvku ObjectDataSource s názvem `SuppliersDataSource` ([kliknutím zobrazíte obrázek v plné velikosti](performing-batch-updates-cs/_static/image6.png))
 
-Konfigurace ObjectDataSource k načtení dat pomocí `SuppliersBLL` třída s `GetSuppliers()` – metoda (viz obrázek 3). Stejně jako v předchozím kurzu, nikoli aktualizují se informace o dodavateli prostřednictvím ObjectDataSource, budete spolupracujeme přímo se vrstvy obchodní logiky. Proto nastavte rozevírací seznam na (žádný) na kartě aktualizace (viz obrázek 4).
+Nakonfigurujte prvek ObjectDataSource tak, aby načetl data pomocí metody `SuppliersBLL` třídy s `GetSuppliers()` (viz obrázek 3). Stejně jako v předchozím kurzu, namísto aktualizace informací o dodavatelích prostřednictvím ObjectDataSource, budeme pracovat přímo s vrstvou obchodní logiky. Proto na kartě aktualizace nastavte rozevírací seznam na (žádné) (viz obrázek 4).
 
-[![Načíst informace o dodavateli pomocí GetSuppliers() – metoda](performing-batch-updates-cs/_static/image8.png)](performing-batch-updates-cs/_static/image7.png)
+[![načíst informace o dodavateli pomocí metody getsuppliers ()](performing-batch-updates-cs/_static/image8.png)](performing-batch-updates-cs/_static/image7.png)
 
-**Obrázek 3**: Načtení informací pomocí dodavatele `GetSuppliers()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-cs/_static/image9.png))
+**Obrázek 3**: načtení informací o dodavateli pomocí metody `GetSuppliers()` ([kliknutím zobrazíte obrázek v plné velikosti](performing-batch-updates-cs/_static/image9.png))
 
-[![Nastavte rozevírací seznam na (žádný) na kartě aktualizace](performing-batch-updates-cs/_static/image11.png)](performing-batch-updates-cs/_static/image10.png)
+[![nastavte rozevírací seznam na (žádné) na kartě aktualizace.](performing-batch-updates-cs/_static/image11.png)](performing-batch-updates-cs/_static/image10.png)
 
-**Obrázek 4**: Nastavte rozevírací seznam na (žádný) na kartě aktualizace ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-cs/_static/image12.png))
+**Obrázek 4**: Nastavení rozevíracího seznamu na (žádné) na kartě aktualizace ([kliknutím zobrazíte obrázek v plné velikosti](performing-batch-updates-cs/_static/image12.png))
 
-Po dokončení průvodce se sada Visual Studio automaticky generuje DataList s `ItemTemplate` pro každé datové pole vrácené zdroje dat v ovládacím prvku popisek webového zobrazení. Potřebujeme upravit tuto šablonu tak, aby místo toho poskytuje rozhraní pro úpravy. `ItemTemplate` Lze přizpůsobit pomocí návrháře pomocí možnosti Upravit šablony v prvku DataList s inteligentním nebo přímo prostřednictvím deklarativní syntaxe.
+Po dokončení Průvodce aplikace Visual Studio automaticky vygeneruje `ItemTemplate` DataList s pro zobrazení každého datového pole vráceného zdrojem dat ve webovém ovládacím prvku popisek. Musíme tuto šablonu upravit, aby místo toho poskytovala rozhraní pro úpravy. `ItemTemplate` lze přizpůsobit pomocí návrháře pomocí možnosti Upravit šablony z inteligentní značky DataList s nebo přímo prostřednictvím deklarativní syntaxe.
 
-Využijte k vytvoření úpravy rozhraní, která zobrazuje název s dodavatelem jako text, ale zahrnuje textová pole pro dodavatele adresa, Město a zemi hodnoty. Po provedení těchto změn, vaše stránka s deklarativní syntaxe by měl vypadat nějak takto:
+Počkejte, než se vytvoří rozhraní pro úpravy, které zobrazí název dodavatele jako text, ale obsahuje textová pole pro hodnoty dodavatel s adresami, města a země. Po provedení těchto změn by deklarativní syntaxe stránky s vypadala podobně jako v následujícím příkladu:
 
 [!code-aspx[Main](performing-batch-updates-cs/samples/sample1.aspx)]
 
 > [!NOTE]
-> Jako v předchozím kurzu DataList v tomto kurzu musíte mít svůj stav zobrazení povolený.
+> Podobně jako v předchozím kurzu musí mít DataList v tomto kurzu povolený stav zobrazení.
 
-V `ItemTemplate` můžu m pomocí dvou nových tříd šablon stylů CSS `SupplierPropertyLabel` a `SupplierPropertyValue`, které byly přidány do `Styles.css` třídy a nakonfigurovat tak, aby používat stejné nastavení jako styl `ProductPropertyLabel` a `ProductPropertyValue` tříd CSS.
+Ve `ItemTemplate` I m používá dvě nové třídy CSS, `SupplierPropertyLabel` a `SupplierPropertyValue`, které byly přidány do třídy `Styles.css` a nakonfigurovány tak, aby používaly stejné nastavení stylu jako `ProductPropertyLabel` a `ProductPropertyValue` třídy CSS.
 
 [!code-css[Main](performing-batch-updates-cs/samples/sample2.css)]
 
-Po provedení těchto změn, navštivte tuto stránku prostřednictvím prohlížeče. Jak je vidět na obrázku 5, každé položky v prvku DataList zobrazí název dodavatele jako text a používá textových polí k zobrazení adresu, Město a zemi.
+Po provedení těchto změn navštivte tuto stránku v prohlížeči. Jak je znázorněno na obrázku 5, každá položka DataList zobrazuje název dodavatele jako text a používá textová pole k zobrazení adresy, města a země.
 
-[![Každý poskytovatel v ovládacím prvku DataList není upravit](performing-batch-updates-cs/_static/image14.png)](performing-batch-updates-cs/_static/image13.png)
+[![každý dodavatel v prvku DataList je upravitelný](performing-batch-updates-cs/_static/image14.png)](performing-batch-updates-cs/_static/image13.png)
 
-**Obrázek 5**: Každý poskytovatel v ovládacím prvku DataList je upravit ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-cs/_static/image15.png))
+**Obrázek 5**: každý dodavatel v prvku DataList je upravitelný ([kliknutím zobrazíte obrázek v plné velikosti).](performing-batch-updates-cs/_static/image15.png)
 
-## <a name="step-2-adding-an-update-all-button"></a>Krok 2: Přidání aktualizace všechna tlačítka
+## <a name="step-2-adding-an-update-all-button"></a>Krok 2: Přidání tlačítka Aktualizovat vše
 
-Zatímco každého dodavatele na obrázku 5 má jeho adresu, Město a zemi polí zobrazených v testovém poli, aktuálně není žádné tlačítko Aktualizovat. Místo na tlačítko Aktualizovat jednu položku s plně upravitelné DataLists je obvykle na jediné tlačítko Aktualizovat vše na stránce, která aktualizuje po klepnutí na *všechny* záznamy v ovládacím prvku DataList. Pro účely tohoto kurzu nechte s přidejte dvě aktualizace všechna tlačítka - jeden v horní části stránky a druhý v dolní části (i když se klepnutím na tlačítko buď tlačítko bude mít stejný účinek).
+Každý dodavatel na obrázku 5 má pole adresa, město a země zobrazená v textovém poli. momentálně není k dispozici žádné tlačítko Aktualizovat. Místo toho, aby bylo tlačítko aktualizace na položku s plně upravitelnými datalisty, obvykle je na stránce k dispozici jediné tlačítko Aktualizovat vše, které po kliknutí aktualizuje *všechny* záznamy v prvku DataList. Pro účely tohoto kurzu přidejte dvě možnost aktualizovat všechna tlačítka – jednu v horní části stránky a jednu v dolní části (i když kliknete na tlačítko buď bude mít stejný účinek).
 
-Začněte tím, že přidání ovládacího prvku tlačítko webové nad ovládacích prvků DataList a nastavte jeho `ID` vlastnost `UpdateAll1`. V dalším kroku přidejte druhý ovládací prvek tlačítko webového pod ovládacím prvku DataList nastavení jeho `ID` k `UpdateAll2`. Nastavte `Text` vlastnosti pro dvě tlačítka Aktualizovat vše. A konečně, vytváření obslužných rutin událostí pro obě tlačítka `Click` události. Namísto duplikování logika aktualizace v každé z obslužné rutiny událostí, umožňují s Refaktorovat tuto logiku pro třetí metoda `UpdateAllSupplierAddresses`, s jednoduše vyvolání této třetí metody obslužné rutiny událostí.
+Začněte přidáním webového ovládacího prvku tlačítko nad prvkem DataList a nastavením jeho vlastnosti `ID` na `UpdateAll1`. Dále přidejte ovládací prvek pro druhé tlačítko pod prvkem DataList a nastavte jeho `ID` na `UpdateAll2`. Nastavte vlastnosti `Text` u dvou tlačítek na hodnotu Aktualizovat vše. Nakonec vytvořte obslužné rutiny událostí pro obě tlačítka `Click` události. Namísto duplikování logiky aktualizace v každé obslužné rutině události je možné, že s logikou pro třetí metodu, `UpdateAllSupplierAddresses`, mají obslužné rutiny události jednoduše vyvolání této třetí metody.
 
 [!code-csharp[Main](performing-batch-updates-cs/samples/sample3.cs)]
 
-Obrázek 6 zobrazuje stránku po přidání tlačítka Aktualizovat vše.
+Obrázek 6 znázorňuje stránku po přidání všech tlačítek aktualizovat.
 
-[![Dvě tlačítka všechny aktualizace byly přidány na stránku](performing-batch-updates-cs/_static/image17.png)](performing-batch-updates-cs/_static/image16.png)
+[na stránku se přidala dvě tlačítka aktualizace pro všechna ![.](performing-batch-updates-cs/_static/image17.png)](performing-batch-updates-cs/_static/image16.png)
 
-**Obrázek 6**: Dvě tlačítka všechny aktualizace byly přidány na stránku ([kliknutím ji zobrazíte obrázek v plné velikosti](performing-batch-updates-cs/_static/image18.png))
+**Obrázek 6**: na stránku bylo přidáno dvě aktualizace všech tlačítek ([kliknutím zobrazíte obrázek v plné velikosti](performing-batch-updates-cs/_static/image18.png)).
 
-## <a name="step-3-updating-all-of-the-suppliers-address-information"></a>Krok 3: Aktualizuje všechny informace o adrese dodavatelů
+## <a name="step-3-updating-all-of-the-suppliers-address-information"></a>Krok 3: aktualizace všech informací o adrese dodavatele
 
-Se všemi položkami s DataList zobrazení úprav rozhraní a uveďte aktualizovat všechna tlačítka všechno, zůstane píše kód a proveďte aktualizaci služby batch. Konkrétně jsme muset projít DataList s položky a volání `SuppliersBLL` třída s `UpdateSupplierAddress` metodu pro každý z nich.
+Se všemi položkami DataList a zobrazujícími rozhraní pro úpravy a přidáním všech tlačítek Aktualizovat vše zůstane zápis kódu pro provedení aktualizace dávky. Konkrétně musíme projít položky DataList s a volat metodu `SuppliersBLL` třídy s `UpdateSupplierAddress` pro každé z nich.
 
-Kolekce `DataListItem` instance tuto strukturu prvku DataList je přístupná prostřednictvím DataList s [ `Items` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.items.aspx). S odkazem na `DataListItem`, jsme stáhněte si odpovídající `SupplierID` z `DataKeys` kolekce a programově odkaz webové TextBox – ovládací prvky v rámci `ItemTemplate` jak ukazuje následující kód:
+Kolekce instancí `DataListItem`, ke kterým je strukturu k prvku DataList, je k dispozici prostřednictvím vlastnosti DataList s [`Items`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.items.aspx). S odkazem na `DataListItem`můžeme přesměrovat odpovídající `SupplierID` z kolekce `DataKeys` a programově odkazovat na webové ovládací prvky TextBox v rámci `ItemTemplate`, jak ukazuje následující kód:
 
 [!code-csharp[Main](performing-batch-updates-cs/samples/sample4.cs)]
 
-Po kliknutí na jednu z tlačítka Aktualizovat vše `UpdateAllSupplierAddresses` metoda iteraci v každém `DataListItem` v `Suppliers` ovládacích prvků DataList a volání `SuppliersBLL` třída s `UpdateSupplierAddress` metodu odpovídající hodnoty. Zadat hodnotu pro adresu, město nebo země předává je hodnota `Nothing` k `UpdateSupplierAddress` (místo prázdný řetězec), povede k databázi `NULL` pro základní záznam s pole.
+Když uživatel klikne na jedno z tlačítek Aktualizovat vše, metoda `UpdateAllSupplierAddresses` projde každým `DataListItem` v `Suppliers` DataList a zavolá metodu `UpdateSupplierAddress` třídy `SuppliersBLL`, která předává příslušné hodnoty. Nevložená hodnota pro předávání adresa, město nebo země je hodnota `Nothing` pro `UpdateSupplierAddress` (místo prázdného řetězce), která má za následek `NULL` databáze pro podkladová pole záznamů.
 
 > [!NOTE]
-> Jako rozšíření můžete přidat stav popisek webový ovládací prvek na stránce, která poskytuje některé potvrzovací zpráva po provedení aktualizace služby batch.
+> Jako vylepšení můžete chtít přidat webový ovládací prvek popisek stavu na stránku, která poskytuje zprávu s potvrzením po provedení aktualizace dávky.
 
-## <a name="updating-only-those-addresses-that-have-been-modified"></a>Aktualizuje se jenom adresy, které byly změněny
+## <a name="updating-only-those-addresses-that-have-been-modified"></a>Aktualizace pouze těch adres, které byly změněny
 
-Algoritmus aktualizace služby batch použít pro tento kurz volání `UpdateSupplierAddress` metodu *každý* dodavatele v ovládacím prvku DataList, bez ohledu na to, zda se informace o adrese změnil. Při takové nevidomí aktualizace nejsou obvykle problému s výkonem, se může vést k nadbytečný záznamy Pokud re auditování změny do tabulky databáze. Například, pokud používáte aktivační události pro záznam všech `UPDATE` s `Suppliers` tabulky do auditování tabulky pokaždé, když uživatel klikne na tlačítko Aktualizovat vše pro každého dodavatele se vytvoří nový záznam auditu v systému, bez ohledu na to, jestli uživatel způsobil změny.
+Algoritmus dávkové aktualizace použitý pro tento kurz volá metodu `UpdateSupplierAddress` pro *každého* dodavatele v prvku DataList, a to bez ohledu na to, jestli se změnily informace o adrese. I když tyto nevidomé aktualizace většinou nedochází k problémům s výkonem, můžou vést k nadbytečným záznamům, pokud převedete změny auditování v tabulce databáze. Pokud například použijete triggery k zaznamenání všech `UPDATE` s do tabulky `Suppliers` do tabulky auditování, pokaždé, když uživatel klikne na tlačítko Aktualizovat vše, vytvoří se nový záznam auditu pro každého dodavatele v systému bez ohledu na to, jestli uživatel provedl nějaké změny.
 
-Objekt DataTable ADO.NET a DataAdapter třídy jsou navrženy pro podporu dávkové aktualizace kde výsledky pouze změny, odstraněných a nové záznamy v komunikaci se žádné databáze. Má každý řádek v DataTable [ `RowState` vlastnost](https://msdn.microsoft.com/library/system.data.datarow.rowstate.aspx) , která označuje, zda řádek byl přidán do objektu DataTable z něj, upravit, odstranit nebo zůstane beze změny. Pokud původně naplnění DataTable všechny řádky jsou označeny beze změny. Změna hodnoty sloupce s řádků označí řádku, jako upravit.
+Třídy DataTable a DataAdapter ADO.NET jsou navržené tak, aby podporovaly dávkové aktualizace, kde pouze změny, odstranění a nové záznamy mají za následek jakoukoli databázovou komunikaci. Každý řádek v objektu DataTable má [vlastnost`RowState`](https://msdn.microsoft.com/library/system.data.datarow.rowstate.aspx) , která označuje, zda byl řádek přidán do objektu DataTable, odstraněn z něj, změněn nebo zůstane beze změny. Při počátečním naplnění objektu DataTable budou všechny řádky označeny beze změny. Když změníte hodnotu některého sloupce řádek s, řádek se označí jako změněný.
 
-V `SuppliersBLL` aktualizujeme informace o adrese zadaný dodavatele s načtením první záznam jednoho dodavatele do třídy `SuppliersDataTable` a pak nastavte `Address`, `City`, a `Country` hodnoty ve sloupcích pomocí následujícího kódu:
+Ve třídě `SuppliersBLL` aktualizujeme zadané informace o dodavatelích na základě prvního čtení záznamu jednoho dodavatele do `SuppliersDataTable` a pak nastavíte hodnoty sloupce `Address`, `City`a `Country` pomocí následujícího kódu:
 
 [!code-csharp[Main](performing-batch-updates-cs/samples/sample5.cs)]
 
-Tento kód naively přiřadí předaným adresu, Město a zemi hodnoty `SuppliersRow` v `SuppliersDataTable` bez ohledu na to, zda byly změněny hodnoty. Tyto úpravy způsobit, že `SuppliersRow` s `RowState` vlastnost má být označena jako upravená. Při vrstvy přístupu k datům s `Update` metoda je volána, zjistí, že `SupplierRow` byla změněna a proto pošle `UPDATE` příkaz do databáze.
+Tento kód naively přiřadí hodnoty předané adresy, města a země `SuppliersRow` v `SuppliersDataTable` bez ohledu na to, jestli se hodnoty změnily. Tyto úpravy způsobí, že vlastnost `SuppliersRow` s `RowState` bude označena jako upravená. Když je zavolána metoda přístup k datům `Update` vrstvě, zjistí, že `SupplierRow` byla upravena a proto pošle příkaz `UPDATE` do databáze.
 
-Představte si však, že jsme přidali kód pro tuto metodu za účelem pouze přiřadit předaným adresu, Město a zemi hodnoty, pokud se liší od `SuppliersRow` s existující hodnoty. V případě, kde stejný jako stávající data jsou adresu, Město a zemi, nebudou provedeny žádné změny a `SupplierRow` s `RowState` nebude změněno vlevo označené jako. Net výsledkem je, že když s vrstvou DAL `Update` metoda je volána, bez volání databáze bude proveden, protože `SuppliersRow` nebyl změněn.
+Představme si ale, že jsme do této metody přidali kód pro přiřazení hodnot předaných adres, měst a zemí, pokud se liší od stávajících hodnot `SuppliersRow` s. V případě, že adresa, město a země jsou stejné jako stávající data, nebudou provedeny žádné změny a `RowState` `SupplierRow` s zůstane označena jako nezměněná. Výsledkem netto je, že při volání metody DAL s `Update` se neprovede žádné volání databáze, protože `SuppliersRow` nebyla upravena.
 
-Chcete-li tato změna uplatní, nahraďte příkazy, které slepě přiřadit předaným adresu, Město a zemi hodnoty s následujícím kódem:
+Chcete-li tuto změnu přijmout, nahraďte příkazy, které neumožňují geograficky přiřadit hodnoty předané adresy, města a země následujícímu kódu:
 
 [!code-csharp[Main](performing-batch-updates-cs/samples/sample6.cs)]
 
-To přidá kód, s vrstvou DAL `Update` metoda odešle `UPDATE` příkaz k databázi pro jen takové záznamy, jejichž adresa související hodnoty se změnily.
+S tímto přidaným kódem pošle metoda `Update` DAL do databáze příkaz `UPDATE` pro všechny záznamy, jejichž hodnoty související s adresou se změnily.
 
-Také jsme může sledovat, jestli existují rozdíly mezi pole předaným adresy a dat z databáze a, pokud nejsou žádné, jednoduše obejít volání s vrstvou DAL `Update` metody. Tento přístup dobře fungují v případě níž pomocí databáze přímá metoda, protože t DB přímé metody není předaný `SuppliersRow` instance, jejíž `RowState` můžete být zkontrolována k určení, jestli je skutečně potřeba volání databáze.
+Alternativně můžeme sledovat, zda existují nějaké rozdíly mezi předanými poli adres a databázovými daty, a pokud žádný není, jednoduše obejít volání metody DAL s `Update`. Tento přístup funguje i v případě, že znovu použijete metodu Direct DB, protože metoda DB Direct t předala `SuppliersRow` instanci, jejíž `RowState` může být zaškrtnuto, aby bylo možné určit, zda je volání databáze skutečně požadováno.
 
 > [!NOTE]
-> Pokaždé, když `UpdateSupplierAddress` vyvolání metody, je provedeno volání databáze k načtení informací o aktualizovaný záznam. Potom, pokud existují změny v datech, další k databázi je provedeno volání aktualizovat řádek tabulky. Tento pracovní postup může optimalizovat tak, že vytvoříte `UpdateSupplierAddress` přetížení metody, která přijímá `EmployeesDataTable` instanci, která má *všechny* změn z `BatchUpdate.aspx` stránky. Poté může nastavit jedno volání databáze a mějte všechny záznamy z `Suppliers` tabulky. Dvě sady výsledků může potom vytvořit výčet a nelze ji aktualizovat jen takové záznamy, kde mají změny došlo k chybě.
+> Pokaždé, když je vyvolána metoda `UpdateSupplierAddress`, se do databáze přivede volání, aby se načetly informace o aktualizovaném záznamu. Pokud jsou v datech nějaké změny, provedou se další volání databáze, aby se aktualizoval řádek tabulky. Tento pracovní postup může být optimalizován vytvořením přetížení metody `UpdateSupplierAddress`, které přijímá instanci `EmployeesDataTable`, která obsahuje *všechny* změny ze stránky `BatchUpdate.aspx`. Potom může provést jedno volání databáze a získat všechny záznamy z `Suppliers` tabulky. Tyto dvě sady výsledků by se pak mohly zobrazit a jenom záznamy, ve kterých došlo ke změnám, se daly aktualizovat.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-V tomto kurzu jsme viděli, jak vytvořit plně upravitelné DataList, která uživatelům umožňuje rychle změnit informace o adrese pro více dodavatelů. Začali jsme definováním rozhraní úpravy textového pole webový ovládací prvek pro dodavatele adresa, Město a zemi hodnoty v ovládacím prvku DataList s `ItemTemplate`. Dále jsme přidali aktualizace všechna tlačítka nahoru a dolů prvku DataList. Poté, co uživatel má své změny a kliknutí na jednu z tlačítka Aktualizovat vše `DataListItem` výčtu s a volání `SuppliersBLL` třída s `UpdateSupplierAddress` metoda provádí.
+V tomto kurzu jsme viděli, jak vytvořit plně upravitelný prvek DataList, který uživateli umožňuje rychle upravit informace o adrese pro více dodavatelů. Začali jsme definováním rozhraní pro úpravy webovým ovládacím prvkem TextBox pro hodnoty adresa dodavatele, města a země v `ItemTemplate`DataList. Dále jsme přidali všechna tlačítka nad a pod rámec DataList. Poté, co uživatel provedl změny a klikli na jedno z tlačítek Aktualizovat vše, jsou `DataListItem`y výčty a je provedeno volání metody `SuppliersBLL` třídy s `UpdateSupplierAddress`.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí revidující pro účely tohoto kurzu byly Zack Jones a Ken Pespisa. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontroloři vedoucích k tomuto kurzu byli Zack Novotný a Ken Pespisa. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md)
-> [další](handling-bll-and-dal-level-exceptions-cs.md)
+> [Další](handling-bll-and-dal-level-exceptions-cs.md)

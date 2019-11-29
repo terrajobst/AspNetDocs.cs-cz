@@ -1,240 +1,240 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/batch-inserting-cs
-title: Dávkové vkládání (C#) | Dokumentace Microsoftu
+title: Dávkové vkládání (C#) | Microsoft Docs
 author: rick-anderson
-description: Zjistěte, jak vložit více záznamů databáze v rámci jedné operace. Ve vrstvě uživatelského rozhraní rozšíříme prvku GridView, aby uživatel mohl zadat více n...
+description: Naučte se, jak vložit více záznamů databáze v rámci jedné operace. Ve vrstvě uživatelského rozhraní rozšiřujeme prvek GridView tak, aby umožňoval uživateli zadat více n...
 ms.author: riande
 ms.date: 06/26/2007
 ms.assetid: cf025e08-48fc-4385-b176-8610aa7b5565
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-inserting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4588502622a3e48013e3e714e82929294b1833fc
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 5dc4d0b6ac9bf3aa2baa54fe9f5d4149494e47d2
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65116916"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74584765"
 ---
 # <a name="batch-inserting-c"></a>Dávkové vkládání (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_66_CS.zip) nebo [stahovat PDF](batch-inserting-cs/_static/datatutorial66cs1.pdf)
+[Stažení kódu](https://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_66_CS.zip) nebo [stažení PDF](batch-inserting-cs/_static/datatutorial66cs1.pdf)
 
-> Zjistěte, jak vložit více záznamů databáze v rámci jedné operace. Ve vrstvě uživatelského rozhraní rozšíříme prvku GridView, aby uživatel mohl zadat několik nových záznamů. V datové vrstvě přístupu jsme zabalit několik operací vložení v rámci transakce zajistit, že všechny vložení úspěch, nebo všechny vložené položky jsou vráceny zpět.
+> Naučte se, jak vložit více záznamů databáze v rámci jedné operace. Ve vrstvě uživatelského rozhraní rozšiřujeme prvek GridView tak, aby umožňoval uživateli zadat více nových záznamů. Ve vrstvě přístupu k datům rozbalíme operace více operací vložení v rámci transakce, aby se zajistilo, že všechna vložení budou úspěšná, nebo se všechna vložení vrátí zpět.
 
 ## <a name="introduction"></a>Úvod
 
-V [dávkové aktualizace](batch-updating-cs.md) kurzu jsme se podívali na přizpůsobení ovládacího prvku GridView. Chcete-li k dispozici rozhraní, ve kterém byly upravitelné více záznamů. Uživatel na stránce může provést řadu změn a potom kliknutím jediné tlačítko proveďte aktualizace služby batch. Pro situace, kdy uživatelé běžně aktualizovat mnoha záznamů najednou, můžete uložit toto rozhraní aplikací kliknutí a přepnutí kontextu myš a klávesnici ve srovnání s výchozí za řádek editačních funkcí, které byly nejprve prozkoumali zpět v [ Přehled vložení, aktualizace a odstranění dat](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs.md) kurzu.
+V kurzu [dávkové aktualizace](batch-updating-cs.md) jsme se podívali na přizpůsobení ovládacího prvku GridView, který prezentuje rozhraní, kde se dá upravovat víc záznamů. Uživatel, který navštívil stránku, může provést řadu změn a pak jediným kliknutím na tlačítko provést dávkovou aktualizaci. V situacích, kdy uživatelé běžně aktualizují mnoho záznamů v jednom z nich, může toto rozhraní ukládat dlouhé kliknutí a přepínání mezi jednotlivými jednotlivými řádky, když jsou v porovnání s výchozími funkcemi pro úpravu řádků, které se poprvé prozkoumaly v kurzu [Přehled vložení, aktualizace a odstranění dat](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs.md) .
 
-Tento koncept je použít také při přidání záznamů. Představte si, že tady společnosti Northwind Traders běžně státem dodávek od dodavatelů, které obsahují několik produktů pro určitou kategorii. Jako příklad může státem dodávky šesti různých čaj a kávy produktů z Tokio Traders. Pokud uživatel zadá šest produkty jedním současně prostřednictvím ovládacího prvku DetailsView, budou muset řadu stejné hodnoty znovu a znovu zvolte: bude nutné vybrat stejné kategorie (nápoje) stejného dodavatele (Tokio Traders), stejná hodnota (ukončena False) a stejné jednotky na hodnotu pořadí (0). Tato položka opakující se data pouze není časově náročné, ale je náchylná k chybám.
+Tento koncept se dá použít i při přidávání záznamů. Představte si, že v článku Northwind Traders jsme běžně dostávali dodávky od dodavatelů, kteří pro konkrétní kategorii obsahují řadu produktů. Příkladem může být doručení šesti různých produktů čaje a kávy od hospodářských obchodníků z Brna. Pokud uživatel zadá šest produktů po jednom prostřednictvím ovládacího prvku DetailsView, bude muset zvolit mnoho stejných hodnot znovu a znovu: bude muset zvolit stejnou kategorii (nápoje), stejného dodavatele (Brno obchodníci), stejnou Nepokračující hodnotu ( False) a stejné jednotky v hodnotě pořadí (0). Tato opakující se položka dat je časově náročná, ale je náchylná k chybám.
 
-S trochou pracovní vytvoříme dávkové vložení rozhraní, které umožňuje uživateli zvolit dodavatele a kategorie jednou, zadejte řadu názvů produktů a jednotkové ceny a potom klikněte na tlačítko pro přidání nové produkty k databázi (viz obrázek 1). Po přidání každého produktu, jeho `ProductName` a `UnitPrice` datová pole jsou přiřazeny hodnoty zadané v textových polí, zatímco jeho `CategoryID` a `SupplierID` hodnoty jsou přiřazeny hodnoty z DropDownLists na začátek fo formuláře. `Discontinued` a `UnitsOnOrder` hodnoty jsou nastaveny na pevně definovaných hodnot z `false` a 0, v uvedeném pořadí.
+S malým množstvím práce můžeme vytvořit dávkové vkládání rozhraní, které umožňuje uživateli zvolit dodavatel a kategorii jednou, zadat řady názvů produktů a jednotkové ceny a potom kliknutím na tlačítko Přidat nové produkty do databáze (viz obrázek 1). Při přidání každého produktu se jeho `ProductName` a datová pole `UnitPrice` přiřazují hodnoty zadané v textových polích, zatímco `CategoryID` a `SupplierID` hodnoty jsou přiřazeny hodnoty z ovládacích prvků DropDownList v horní části formuláře. Hodnoty `Discontinued` a `UnitsOnOrder` jsou nastaveny na pevně zakódované hodnoty `false` a 0 v uvedeném pořadí.
 
-[![Vložení rozhraní služby Batch](batch-inserting-cs/_static/image2.png)](batch-inserting-cs/_static/image1.png)
+[![rozhraní Batch pro vložení](batch-inserting-cs/_static/image2.png)](batch-inserting-cs/_static/image1.png)
 
-**Obrázek 1**: Rozhraní dávkové vkládání ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image3.png))
+**Obrázek 1**: dávkové vkládání rozhraní ([kliknutím zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image3.png))
 
-V tomto kurzu vytvoříme stránku, která implementuje dávkové vložení rozhraní zobrazené na obrázku 1. Jako předchozí dva kurzy, jsme se zalomí vložení v rámci oboru transakce zajistit atomicitu. Začínáme s let!
+V tomto kurzu vytvoříme stránku, která implementuje rozhraní Batch pro vložení zobrazené na obrázku 1. Stejně jako v předchozích dvou kurzech zabalíme vložení do rozsahu transakce, aby se zajistila nedělitelnost. Pojďme začít!
 
-## <a name="step-1-creating-the-display-interface"></a>Krok 1: Vytvoření rozhraní pro zobrazení
+## <a name="step-1-creating-the-display-interface"></a>Krok 1: vytvoření rozhraní pro zobrazení
 
-V tomto kurzu budou obsahovat jednu stránku, která je rozdělena do dvou oblastí: zobrazení oblasti a vkládání oblasti. Rozhraní zobrazení, které vytvoříme v tomto kroku, zobrazí produkty v GridView a obsahuje tlačítko s názvem procesu dodávky produktu. Když dojde ke kliknutí na toto tlačítko, rozhraní zobrazení se nahradí vkládání rozhraní, která je znázorněna na obrázku 1. Vrátí zobrazení rozhraní po přidání produktů z dodávky nebo kliknutím na tlačítka Storno. Vložení rozhraní vytvoříme v kroku 2.
+Tento kurz se skládá z jedné stránky, která je rozdělená do dvou oblastí: oblast zobrazení a oblast vložení. Rozhraní zobrazení, které v tomto kroku vytvoříte, zobrazuje produkty v prvku GridView a obsahuje tlačítko s názvem dodávka produktu. Po kliknutí na toto tlačítko je rozhraní zobrazení nahrazeno rozhraním pro vložení, které je zobrazeno na obrázku 1. Rozhraní zobrazení se vrátí po kliknutí na tlačítka Přidat produkty z odeslání nebo zrušit. Rozhraní pro vložení vytvoříme v kroku 2.
 
-Při vytvoření stránky, která má dvě rozhraní, najednou je viditelná pouze jeden z nich, každé rozhraní obvykle nachází v rámci [ovládací prvek panelu webu](http://www.w3schools.com/aspnet/control_panel.asp), který slouží jako kontejner pro ostatní ovládací prvky. Naši stránku proto bude mít dva ovládací prvky panelu jeden pro každé rozhraní.
+Při vytváření stránky, která má dvě rozhraní, pouze jedna, která je viditelná současně, každé rozhraní je obvykle umístěno v rámci [webového ovládacího prvku panelu](http://www.w3schools.com/aspnet/control_panel.asp), který slouží jako kontejner pro jiné ovládací prvky. Proto má naše stránka dva ovládací prvky panelu pro každé rozhraní.
 
-Začněte otevřením `BatchInsert.aspx` stránku `BatchData` složky a Panel přetáhněte z panelu nástrojů do návrháře (viz obrázek 2). Nastavení panelu s `ID` vlastnost `DisplayInterface`. Při přidání panelu do návrháře jeho `Height` a `Width` vlastnosti nastavené na 50px a 125px, v uvedeném pořadí. Vymazání hodnoty těchto vlastností v okně Vlastnosti.
+Začněte otevřením stránky `BatchInsert.aspx` ve složce `BatchData` a přetažením panelu z panelu nástrojů do návrháře (viz obrázek 2). Nastavte vlastnost panel s `ID` na `DisplayInterface`. Když přidáte panel do návrháře, jeho `Height` a vlastnosti `Width` jsou nastaveny na 50px a 125px, v uvedeném pořadí. Vymažte z okno Vlastnosti tyto hodnoty vlastností.
 
-[![Přetáhněte z panelu nástrojů na Návrhář panelu](batch-inserting-cs/_static/image5.png)](batch-inserting-cs/_static/image4.png)
+[![přetáhněte panel z panelu nástrojů na Návrhář.](batch-inserting-cs/_static/image5.png)](batch-inserting-cs/_static/image4.png)
 
-**Obrázek 2**: Přetáhněte z panelu nástrojů na Návrhář panelu ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image6.png))
+**Obrázek 2**: přetáhněte panel z panelu nástrojů do návrháře ([kliknutím zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image6.png)).
 
-V dalším kroku přetáhněte ovládací prvek tlačítko a GridView do panelu. Tlačítka s nastavte `ID` vlastnost `ProcessShipment` a jeho `Text` vlastnost procesu dodávky produktu. Nastavit prvek GridView s `ID` vlastnost `ProductsGrid` a z inteligentních značek, jeho vazbu na nového prvku ObjectDataSource s názvem `ProductsDataSource`. Konfigurace ObjectDataSource přebírat jeho data ze `ProductsBLL` třída s `GetProducts` metody. Od tohoto ovládacího prvku GridView slouží pouze k zobrazení dat, nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný). Klikněte na tlačítko Dokončit dokončete průvodce pro zdroj dat nakonfigurovat.
+Potom přetáhněte tlačítko a ovládací prvek GridView do panelu. Nastavte vlastnost `ID` tlačítko na `ProcessShipment` a jeho vlastnost `Text` na zpracovávání dodávky produktu. Nastavte vlastnost `ID` ovládacího prvku GridView na `ProductsGrid` a ze své inteligentní značky ji navažte na nový prvek ObjectDataSource s názvem `ProductsDataSource`. Nakonfigurujte prvek ObjectDataSource tak, aby vyčetl data z `ProductsBLL` třídy s `GetProducts` metody. Vzhledem k tomu, že se tento prvek GridView používá jenom k zobrazení dat, nastavte rozevírací seznamy na kartách aktualizace, vložení a odstranění na (žádné). Kliknutím na Dokončit dokončete Průvodce konfigurací zdroje dat.
 
-[![Zobrazení dat vrácených z metody GetProducts ProductsBLL třída s](batch-inserting-cs/_static/image8.png)](batch-inserting-cs/_static/image7.png)
+[![zobrazení dat vrácených z metody ProductsBLL třídy s GetProducts](batch-inserting-cs/_static/image8.png)](batch-inserting-cs/_static/image7.png)
 
-**Obrázek 3**: Zobrazit Data vrácená z `ProductsBLL` třída s `GetProducts` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image9.png))
+**Obrázek 3**: zobrazení dat vrácených z `GetProducts` metody `ProductsBLL` třídy s ([kliknutím zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image9.png))
 
-[![Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný)](batch-inserting-cs/_static/image11.png)](batch-inserting-cs/_static/image10.png)
+[![nastavení rozevíracích seznamů na kartách aktualizace, vložení a odstranění na (žádné)](batch-inserting-cs/_static/image11.png)](batch-inserting-cs/_static/image10.png)
 
-**Obrázek 4**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit záložky (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image12.png))
+**Obrázek 4**: nastavení rozevíracích seznamů na kartách aktualizace, vložení a odstranění na (žádné) ([kliknutím zobrazíte obrázek v plné velikosti).](batch-inserting-cs/_static/image12.png)
 
-Po dokončení Průvodce prvek ObjectDataSource, Visual Studio přidá BoundFields a třídě CheckBoxField pro datová pole produktu. Odeberte všechny kromě na `ProductName`, `CategoryName`, `SupplierName`, `UnitPrice`, a `Discontinued` pole. Nebojte se provádět jakákoli aesthetic vlastní nastavení. Jsem se rozhodla pro formátování `UnitPrice` pole jako hodnotu měny a pořadí změníte pole a přejmenovat několik polí `HeaderText` hodnoty. Také nakonfigurujte stránkování a řazení podporu zaškrtnutím políčka Povolit stránkování a Povolit řazení v prvku GridView s inteligentním prvku GridView.
+Po dokončení průvodce ObjectDataSource bude Visual Studio přidávat BoundFields a třídě CheckBoxField podporována pro pole dat produktu. Odeberte všechna pole s výjimkou `ProductName`, `CategoryName`, `SupplierName`, `UnitPrice`a `Discontinued`. Nebojte se dělat všechna estetická přizpůsobení. Rozhodli jste se formátovat pole `UnitPrice` jako hodnotu měny, změnit pořadí polí a přejmenovat několik polí `HeaderText` hodnot. Také nakonfigurujete prvek GridView tak, aby zahrnoval podporu stránkování a řazení, zaškrtnutím políčka Povolit stránkování a Povolit řazení v inteligentní značce GridView s.
 
-Po přidání ovládacích prvků panelu, tlačítko, ovládacího prvku GridView a ObjectDataSource a přizpůsobení polí s ovládacího prvku GridView, stránka s deklarativní by měl vypadat nějak takto:
+Po přidání ovládacího prvku panel, tlačítko, GridView a ObjectDataSource a přizpůsobení polí prvku GridView, by vaše deklarativní označení stránky mělo vypadat podobně jako následující:
 
 [!code-aspx[Main](batch-inserting-cs/samples/sample1.aspx)]
 
-Všimněte si, že se zobrazí v rámci otevírací a zavírací značky pro tlačítka a GridView `<asp:Panel>` značky. Protože jsou tyto ovládací prvky v rámci `DisplayInterface` panelu jsme je můžete skrýt Panel s nastavením jednoduše `Visible` vlastnost `false`. Krok 3 zkoumá programově změnit panelu s `Visible` v odezvě na tlačítku kliknutím zobrazíte jedno rozhraní při skrytí druhé.
+Všimněte si, že značky pro tlačítko a GridView se zobrazí v rámci značek pro otevírání a zavírání `<asp:Panel>`. Vzhledem k tomu, že se tyto ovládací prvky nacházejí v `DisplayInterface`m panelu, můžeme je skrýt jednoduše nastavením vlastnosti panel s `Visible` na `false`. Krok 3: při překrytí vlastnosti panel s `Visible` v reakci na tlačítko můžete zobrazit jedno rozhraní a zároveň ho skrýt.
 
-Chcete-li zobrazit náš postup prostřednictvím prohlížeče chvíli trvat. Jak je vidět na obrázku 5, měli byste vidět tlačítko procesu dodávky produktu nad prvku GridView, která zobrazuje seznam produktů deset najednou.
+Chvilku si můžete prohlédnout v prohlížeči. Jak ukazuje obrázek 5, měli byste vidět tlačítko zpracovat produktovou dodávku nad prvek GridView, ve kterém jsou uvedené produkty deset v čase.
 
-[![Seznamy produktů, na prvku GridView a nabízí řazení a stránkování](batch-inserting-cs/_static/image14.png)](batch-inserting-cs/_static/image13.png)
+[![ovládacího prvku GridView zobrazí seznam produktů a nabízí možnosti řazení a stránkování.](batch-inserting-cs/_static/image14.png)](batch-inserting-cs/_static/image13.png)
 
-**Obrázek 5**: Produkty a nabízí řazení a stránkování možnosti jsou uvedeny prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image15.png))
+**Obrázek 5**: prvek GridView obsahuje seznam produktů a nabízí možnosti řazení a stránkování ([kliknutím zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image15.png)).
 
-## <a name="step-2-creating-the-inserting-interface"></a>Krok 2: Vytvoření rozhraní pro vložení
+## <a name="step-2-creating-the-inserting-interface"></a>Krok 2: vytvoření rozhraní pro vložení
 
-Zobrazení v rozhraní dokončení, můžeme znovu připravený k vytvoření vkládání rozhraní. Pro účely tohoto kurzu nechte s vytvořit vkládání rozhraní, které zobrazí výzvu pro hodnotu jednoho dodavatele a kategorie a pak umožní uživateli zadat až pět názvy produktů a hodnoty cena jednotky. S tímto rozhraním může uživatel přidat jedné do pěti nových produktů, které sdílejí stejné kategorie a dodavatele, ale mají jedinečné produkty, názvy a ceny.
+Po dokončení rozhraní zobrazení jsme připraveni vytvořit rozhraní pro vložení. V tomto kurzu vytvoříme rozhraní pro vložení, které vyzve k zadání jedné hodnoty dodavatele a kategorie a potom umožní uživateli zadat až pět názvů produktů a hodnot jednotkových cen. Pomocí tohoto rozhraní může uživatel přidat jeden až pět nových produktů, které sdílejí stejnou kategorii a dodavatele, ale mají jedinečné názvy produktů a ceny.
 
-Začněte tím, že Panel přetažením z panelu nástrojů na Návrhář, že ho umístíte pod existující `DisplayInterface` panelu. Nastavte `ID` nově přidána vlastnost tohoto panelu `InsertingInterface` a nastavte jeho `Visible` vlastnost `false`. Přidáme kód, který nastaví `InsertingInterface` Panel s `Visible` vlastnost `true` v kroku 3. Také smažte na panelu s `Height` a `Width` hodnot vlastností.
+Začněte přetažením panelu z panelu nástrojů do návrháře a jeho umístěním pod existující `DisplayInterface` panel. Nastavte vlastnost `ID` tohoto nově přidaného panelu na `InsertingInterface` a nastavte jeho vlastnost `Visible` na `false`. Přidáme kód, který nastaví vlastnost `InsertingInterface` panel s `Visible` na `true` v kroku 3. Také vymažte `Height` panelů a `Width` hodnoty vlastností.
 
-V dalším kroku se musíme vytvořit vkládání rozhraní, které se zobrazilo zpět na obrázku 1. Toto rozhraní je možné vytvářet přes různé techniky HTML, ale budeme používat poměrně jednoduché jeden: čtyři sloupce, řádku sedm tabulek.
+Dál je potřeba vytvořit rozhraní pro vložení, které bylo na obrázku 1 zobrazeno zpátky. Toto rozhraní je možné vytvořit pomocí nejrůznějších technik jazyka HTML, ale budeme používat poměrně jednoduchý řádek: tabulka se čtyřmi řádky se čtyřmi sloupci.
 
 > [!NOTE]
-> Při zadávání kódu pro kód HTML `<table>` prvky, chci raději použít zobrazení zdroje. Visual Studio mají nástroje pro přidání `<table>` prvky pomocí návrháře návrháře zdá se, že všechny příliš chce vložit nevyžádaný pro `style` nastavení do kódu. Jakmile vytvořil(a) jsem `<table>` kód, lze obvykle vrátit do návrháře přidat ovládací prvky, Web a nastavte jejich vlastnosti. Při vytváření tabulky s předem určené sloupce a řádky dávám přednost používání statických HTML místo [tabulky webový ovládací prvek](https://msdn.microsoft.com/library/system.web.ui.webcontrols.table.aspx) vzhledem k tomu, že všechny webové ovládací prvky umístěné v rámci ovládacího prvku Web tabulky lze přistupovat pouze pomocí `FindControl("controlID")` vzor. , Ale používám ovládacích prvků tabulka pro dynamicky velikost tabulky (balíčky, jejichž řádky nebo sloupce jsou založené na některé databáze nebo uživatelem zadaných kritérií), od Webová tabulka ovládací prvek lze zkonstruovat prostřednictvím kódu programu.
+> Při zadávání značek pro prvky HTML `<table>` raději použít zobrazení zdroje. I když má aplikace Visual Studio nástroje pro přidání `<table>` prvků prostřednictvím návrháře, zdá se, že se Návrhář jeví jako příliš ochotno vložit nepožádat o `style` nastavení do značky. Po vytvoření značky `<table>` se obvykle vrátíte do návrháře a přidáte webové ovládací prvky a nastavíte jejich vlastnosti. Při vytváření tabulek s předem určenými sloupci a řádky, které dáváte přednost použití statického HTML místo [webového ovládacího prvku tabulka](https://msdn.microsoft.com/library/system.web.ui.webcontrols.table.aspx) , protože jakékoli webové ovládací prvky umístěné v rámci webového ovládacího prvku tabulka lze použít pouze pomocí `FindControl("controlID")`ho vzoru. K tomu ale použijte webové ovládací prvky tabulky pro dynamicky se velikost tabulek (ty, jejichž řádky nebo sloupce jsou založené na některých kritériích pro databázi nebo uživatele), protože ovládací prvek web Table lze sestavit programově.
 
-Zadejte následující kód v rámci `<asp:Panel>` značky `InsertingInterface` panelu:
+Do `<asp:Panel>` značek `InsertingInterface` panelu zadejte následující kód:
 
 [!code-html[Main](batch-inserting-cs/samples/sample2.html)]
 
-To `<table>` značek nezahrnuje žádné webové ovládací prvky, ale ty přidáme okamžik. Všimněte si, že každá `<tr>` prvek obsahuje konkrétní nastavení třídy šablony stylů CSS: `BatchInsertHeaderRow` pro řádek záhlaví, kam se obrátit dodavatele a kategorie DropDownLists; `BatchInsertFooterRow` pro zápatí řádku, kde přidat produkty z tlačítka zrušit a dodávky půjdou; a každou druhou `BatchInsertRow` a `BatchInsertAlternatingRow` hodnoty řádků, které budou obsahovat produktu a jednotky cena TextBox – ovládací prvky. Můžu ve vytvořené odpovídající tříd CSS ve `Styles.css` soubor poskytnout vkládání rozhraní podobné GridView a DetailsView vzhled ovládací prvky, jsme ve používají v těchto kurzech. Níže se zobrazují tyto třídy šablony stylů CSS.
+Toto `<table>` označení zatím neobsahuje žádné webové ovládací prvky, přidáme je za chvíli. Všimněte si, že každý prvek `<tr>` obsahuje konkrétní nastavení třídy CSS: `BatchInsertHeaderRow` pro řádek záhlaví, kde se dostanou DropDownList dodavatele a kategorie. `BatchInsertFooterRow` pro řádek zápatí, ve kterém budou tlačítka Přidat produkty z expedice a Storno přecházet. a střídavě `BatchInsertRow` a `BatchInsertAlternatingRow` hodnoty pro řádky, které budou obsahovat ovládací prvky TextBox pro produkt a jednotkové ceny. V souboru `Styles.css` jsem vytvořil odpovídající třídy šablony stylů CSS, aby rozhraní pro vložení mělo vzhled podobné ovládacím prvkům GridView a DetailsView, které jsme použili v těchto kurzech. Níže jsou uvedeny tyto třídy CSS.
 
 [!code-css[Main](batch-inserting-cs/samples/sample3.css)]
 
-Tento kód zadali vrátí do zobrazení návrhu. To `<table>` by se zobrazit jako čtyři sloupce, řádku sedm tabulky v návrháři, jak znázorňuje obrázek 6.
+Po zadání tohoto kódu se vraťte do zobrazení Návrh. Tato `<table>` by se měla v Návrháři zobrazovat jako tabulka se čtyřmi sloupci a sedmi řádky, jak ukazuje obrázek 6.
 
-[![Vložení rozhraní se skládá čtyři sloupce, sedm řádek tabulky](batch-inserting-cs/_static/image17.png)](batch-inserting-cs/_static/image16.png)
+[![rozhraní pro vložení se skládá ze čtyř sloupců tabulky se sedmi řádky](batch-inserting-cs/_static/image17.png)](batch-inserting-cs/_static/image16.png)
 
-**Obrázek 6**: Vložení rozhraní se skládá čtyři sloupce, sedm řádek tabulky ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image18.png))
+**Obrázek 6**: rozhraní pro vložení se skládá ze čtyř sloupců tabulky se sedmi řádky ([kliknutím zobrazíte obrázek v plné velikosti).](batch-inserting-cs/_static/image18.png)
 
-Můžeme znovu teď jste připravení přidat ovládací prvky webového rozhraní vkládání. Dvě DropDownLists přetáhněte z panelu nástrojů do příslušné buněk v tabulce, jeden pro dodavatele a jeden pro kategorii.
+Nově jsme teď připraveni přidat webové ovládací prvky do rozhraní pro vložení. Přetáhněte ze sady nástrojů dvě DropDownListy do příslušných buněk v tabulce jedna pro dodavatele a jednu pro kategorii.
 
-Nastavte DropDownList s od dodavatele `ID` vlastnost `Suppliers` a jeho vazbu na nového prvku ObjectDataSource s názvem `SuppliersDataSource`. Konfigurace nového prvku ObjectDataSource načíst data z `SuppliersBLL` třída s `GetSuppliers` metoda a nastavte aktualizace kartu s rozevíracím seznamu na (žádný). Kliknutím na Dokončit dokončíte průvodce.
+Nastavte vlastnost `ID` DropDownList pro dodavatele na `Suppliers` a navažte ji na nový prvek ObjectDataSource s názvem `SuppliersDataSource`. Nakonfigurujte nový prvek ObjectDataSource tak, aby načetl jeho data z `SuppliersBLL` třídy s `GetSuppliers` a nastavte rozevírací seznam s kartami aktualizace na hodnotu (žádné). Kliknutím na Dokončit dokončete průvodce.
 
-[![Konfigurace ObjectDataSource metody GetSuppliers SuppliersBLL třída s](batch-inserting-cs/_static/image20.png)](batch-inserting-cs/_static/image19.png)
+[![nakonfigurovat prvek ObjectDataSource tak, aby používal metodu SuppliersBLL třídy s getdodavatelé](batch-inserting-cs/_static/image20.png)](batch-inserting-cs/_static/image19.png)
 
-**Obrázek 7**: Konfigurace ObjectDataSource k použití `SuppliersBLL` třída s `GetSuppliers` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image21.png))
+**Obrázek 7**: Konfigurace prvku ObjectDataSource pro použití `GetSuppliers` metody `SuppliersBLL` třídy s ([kliknutím zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image21.png))
 
-Máte `Suppliers` DropDownList zobrazení `CompanyName` pole data a použít `SupplierID` datové pole jako jeho `ListItem` s hodnotami.
+Musí `Suppliers` DropDownList zobrazit `CompanyName` datová pole a jako hodnoty `ListItem` s používat pole `SupplierID` data.
 
-[![Zobrazení pole CompanyName Data a použít KódDodavatele jako hodnotu](batch-inserting-cs/_static/image23.png)](batch-inserting-cs/_static/image22.png)
+[![zobrazení datového pole CompanyName a jako hodnotu použít ČísloDodavatele.](batch-inserting-cs/_static/image23.png)](batch-inserting-cs/_static/image22.png)
 
-**Obrázek 8**: Zobrazení `CompanyName` pole dat a použití `SupplierID` jako hodnotu ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image24.png))
+**Obrázek 8**: zobrazení datového pole `CompanyName` a použití `SupplierID` jako hodnoty ([kliknutím zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image24.png))
 
-Název druhé DropDownList `Categories` a jeho vazbu na nového prvku ObjectDataSource s názvem `CategoriesDataSource`. Konfigurace `CategoriesDataSource` ObjectDataSource používat `CategoriesBLL` třída s `GetCategories` metoda; nastavte rozevírací seznam uvádí UPDATE a DELETE karty na (žádný) a klikněte na Dokončit kroky průvodce dokončete. Nakonec jste DropDownList zobrazení `CategoryName` pole data a použít `CategoryID` jako hodnotu.
+Pojmenujte druhý `Categories` DropDownList a navažte jej na nový prvek ObjectDataSource s názvem `CategoriesDataSource`. Nakonfigurujte `CategoriesDataSource` ObjectDataSource tak, aby používala metodu `CategoriesBLL` třídy s `GetCategories`; nastavte rozevírací seznamy na kartách aktualizovat a odstranit na (žádné) a kliknutím na Dokončit dokončete průvodce. Nakonec má DropDownList zobrazit `CategoryName` data pole a jako hodnotu použít `CategoryID`.
 
-Po přidání těchto dvou DropDownLists a vázán na správně nakonfigurovaných ObjectDataSources, vaše obrazovka by měla vypadat podobně jako na obrázku 9.
+Po přidání těchto dvou ovládacích prvků DropDownList a jejich svázání s vhodně nakonfigurovanými ObjectDataSources by měla obrazovka vypadat podobně jako obrázek 9.
 
-[![Nyní obsahuje řádek záhlaví dodavatelů a DropDownLists kategorie](batch-inserting-cs/_static/image26.png)](batch-inserting-cs/_static/image25.png)
+[![řádek hlavičky teď obsahuje DropDownList a kategorie DropDownList.](batch-inserting-cs/_static/image26.png)](batch-inserting-cs/_static/image25.png)
 
-**Obrázek 9**: Záhlaví řádku nyní obsahuje `Suppliers` a `Categories` DropDownLists ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image27.png))
+**Obrázek 9**: řádek záhlaví obsahuje nyní `Suppliers` a `Categories` DropDownList ([kliknutím zobrazíte obrázek v plné velikosti).](batch-inserting-cs/_static/image27.png)
 
-Nyní potřebujeme vytvořit textová pole pro sběr název a ceny pro každý nový produkt. Přetáhněte ovládací prvek textového pole z panelu nástrojů na Návrhář pro každý z pěti produktu název a cena řádky. Nastavte `ID` vlastnosti textových polí do `ProductName1`, `UnitPrice1`, `ProductName2`, `UnitPrice2`, `ProductName3`, `UnitPrice3`, a tak dále.
+Teď je potřeba vytvořit textová pole, abyste mohli shromažďovat název a cenu každého nového produktu. Přetáhněte ovládací prvek TextBox ze sady nástrojů do návrháře pro každý z pěti názvů produktů a cenových řádků. Nastavte vlastnosti `ID` textových polí na `ProductName1`, `UnitPrice1`, `ProductName2`, `UnitPrice2`, `ProductName3`, `UnitPrice3`atd.
 
-Přidat CompareValidator po každém z nich jednotkové ceny textová pole, nastavení `ControlToValidate` vlastnosti na příslušné `ID`. Také nastavit `Operator` vlastnost `GreaterThanEqual`, `ValueToCompare` na hodnotu 0, a `Type` k `Currency`. Tato nastavení dáte pokyn, aby CompareValidator tak, aby byl ceny, je-li zadán, platný měny hodnotu, která je větší než nebo rovna hodnotě nula. Nastavte `Text` vlastnost \*, a `ErrorMessage` ceny musí být větší než nebo rovna hodnotě nula. Kromě toho prosím vynechte jakýchkoli symbolů měny.
+Přidejte CompareValidator za každé textové pole s jednotkovými cenami a nastavte vlastnost `ControlToValidate` na odpovídající `ID`. Nastavte také vlastnost `Operator` na `GreaterThanEqual`, `ValueToCompare` na 0 a `Type` na `Currency`. Tato nastavení instruují CompareValidator, aby zajistila, že cena, je-li zadána, je platná hodnota měny, která je větší nebo rovna nule. Nastavte vlastnost `Text` na \*a `ErrorMessage` na cenu musí být větší nebo rovna nule. Vynechejte také žádné symboly měny.
 
 > [!NOTE]
-> Vložení rozhraní neobsahuje žádné ovládací prvky RequiredFieldValidator, i když `ProductName` pole `Products` databázové tabulky neumožňuje `NULL` hodnoty. Je to proto, že chcete uživatelům povolit, zadejte až o pěti produktech. Například pokud uživatel poskytnout product name a Jednotková cena pro první tři řádky, prázdné poslední dva řádky d právě přidáme tři nové produkty do systému. Protože `ProductName` je vyžadováno, ale budeme muset kontrola prostřednictvím kódu programu, ujistěte se, že pokud jednotková cena je zadán, je k dispozici odpovídající hodnota názvu produktu. Tato kontrola v kroku 4 jsme budete řešit.
+> Rozhraní pro vložení neobsahuje žádné ovládací prvky RequiredFieldValidator, i když pole `ProductName` v databázové tabulce `Products` nepovoluje hodnoty `NULL`. Důvodem je to, že chceme, aby uživatel mohl zadat až pět produktů. Pokud by například uživatel pro první tři řádky poskytoval název produktu a jednotkovou cenu, ponechají si poslední dva řádky, ale do systému přidá tři nové produkty. Vzhledem k tomu, že je potřeba `ProductName`, budeme muset programově zkontrolovat, jestli je k dispozici odpovídající hodnota názvu produktu, aby bylo zajištěno, že bude zadána Jednotková cena. Tuto kontrolu provedeme v kroku 4.
 
-Při ověřování vstupu uživatele s CompareValidator sestavy neplatná data, pokud hodnota obsahuje symbol měny. Přidáte $ před každou je cena ze jednotku textových polí, která bude sloužit jako vizuální upozornění, která informuje uživatele, aby vynechat symbol měny, při zadávání cena.
+Při ověřování vstupu uživatele, CompareValidator hlásí neplatná data, pokud hodnota obsahuje symbol měny. Přidejte $ před každé textové pole s jednotkovými cenami, které slouží jako vizuální upozornění, které uživateli dává pokyn, aby při zadávání ceny vynechal symbol měny.
 
-A konečně, přidejte ovládací prvek souhrnu ověření v rámci `InsertingInterface` panelu nastavení jeho `ShowMessageBox` vlastnost `true` a jeho `ShowSummary` vlastnost `false`. S tímto nastavením Pokud uživatel zadá hodnotu cena neplatná jednotka, hvězdička se zobrazí vedle problematický ovládací prvky textového pole a souhrnu ověření, zobrazí se pole messagebox na straně klienta, který zobrazuje chybovou zprávu, kterou jsme dříve zadaný.
+Nakonec přidejte ovládací prvek ovládací souhrnu ověření do panelu `InsertingInterface`, nastavení jeho vlastnosti `ShowMessageBox` na `true` a jeho vlastnost `ShowSummary` na `false`. Pokud uživatel zadá neplatnou hodnotu jednotkové ceny, zobrazí se u těchto nastavení hvězdička vedle problematických ovládacích prvků TextBox a ovládací souhrnu ověření zobrazí objekt MessageBox na straně klienta, který zobrazuje chybovou zprávu, kterou jsme zadali dříve.
 
-V tomto okamžiku vaše obrazovka by měla vypadat podobně jako na obrázku 10.
+V tomto okamžiku by měla obrazovka vypadat podobně jako obrázek 10.
 
-[![Vložení rozhraní nyní zahrnuje textová pole pro produkty názvy a ceny](batch-inserting-cs/_static/image29.png)](batch-inserting-cs/_static/image28.png)
+[![rozhraní pro vložení teď obsahuje textová pole pro názvy produktů a jejich ceny.](batch-inserting-cs/_static/image29.png)](batch-inserting-cs/_static/image28.png)
 
-**Obrázek 10**: Vložení rozhraní nyní zahrnuje textových polí pro názvy produktů a ceny ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image30.png))
+**Obrázek 10**: rozhraní pro vložení obsahuje textové pole pro názvy produktů a jejich ceny ([kliknutím zobrazíte obrázek v plné velikosti).](batch-inserting-cs/_static/image30.png)
 
-Dále musíme přidání produktů přidat z tlačítka dodávky a Storno do řádku zápatí. Přetáhněte dva ovládací prvky tlačítek z panelu nástrojů do v zápatí je uvedené rozhraní vkládání nastavení tlačítek `ID` vlastností `AddProducts` a `CancelButton` a `Text` vlastnosti, které chcete přidat produkty z dodávky a zrušit, v uvedeném pořadí. Navíc nastavte `CancelButton` ovládacího prvku s `CausesValidation` vlastnost `false`.
+Dál je potřeba přidat do řádku zápatí tlačítko Přidat produkty z expedice a zrušit. Přetáhněte ze sady nástrojů dva ovládací prvky tlačítka do zápatí rozhraní pro vložení, nastavením tlačítek `ID` vlastností `AddProducts` a `CancelButton` a `Text` vlastností přidejte produkty z expedice a zrušit v uvedeném pořadí. Kromě toho nastavte vlastnost `CancelButton` ovládací prvek s `CausesValidation` na `false`.
 
-Nakonec musíme přidat ovládací prvek popisek Web, který se zobrazí stavové zprávy pro tato dvě rozhraní. Například když uživatel úspěšně přidá nové dodávky produktů, chceme pro návrat do zobrazení rozhraní a zobrazí se potvrzovací zpráva. Pokud však uživatel zadá cena nového produktu, ale ponechá vypnout název produktu, potřebujeme pro zobrazení zprávy upozornění od `ProductName` pole je povinné. Protože potřebujeme tato zpráva má být zobrazen pro obě rozhraní, umístěte ho v horní části stránky mimo panelů.
+Nakonec musíme přidat webový ovládací prvek popisku, který zobrazí stavové zprávy pro dvě rozhraní. Například když uživatel úspěšně přidá novou zásilku produktů, chceme se vrátit na zobrazovací rozhraní a zobrazit potvrzovací zprávu. Pokud ale uživatel zadá cenu za nový produkt, ale ponechá název produktu, musíme zobrazit upozornění, protože pole `ProductName` je povinné. Vzhledem k tomu, že potřebujeme, aby se tato zpráva zobrazovala pro obě rozhraní, umístěte ji v horní části stránky mimo panely.
 
-Přetáhněte popisek webový ovládací prvek z panelu nástrojů do horní části stránky v návrháři. Nastavte `ID` vlastnost `StatusLabel`, zrušte zaškrtnutí políčka navýšení kapacity `Text` vlastnost a nastavte `Visible` a `EnableViewState` vlastností `false`. Jak jsme viděli v předchozích kurzech, nastavení `EnableViewState` vlastnost `false` umožňuje programově změnit hodnoty vlastností Popisek s a potom kliknul automaticky vrátit se k jejich výchozí hodnoty na následné zpětného odeslání. To zjednodušuje kód k zobrazení stavové zprávy v reakci na některé akce uživatele, která zmizí při následné postbacku. Nastavte `StatusLabel` ovládacího prvku s `CssClass` definována vlastnost na upozornění, což je název třídy šablony stylů CSS v `Styles.css` , který zobrazí text velké, kurzíva, tučné písmo, červenou písmem.
+Přetáhněte ovládací prvek web Label ze sady nástrojů na začátek stránky v návrháři. Nastavte vlastnost `ID` na `StatusLabel`, vymažte vlastnost `Text` a nastavte vlastnosti `Visible` a `EnableViewState` na `false`. Jak jsme viděli v předchozích kurzech, nastavením vlastnosti `EnableViewState` na `false` umožníme programově změnit hodnoty vlastnosti Label a tak, aby se automaticky vrátily zpět na výchozí hodnoty při následném odeslání. Tím se zjednoduší kód pro zobrazení stavové zprávy v reakci na určitou akci uživatele, která zmizí při následném zpětném odeslání. Nakonec nastavte vlastnost `StatusLabel` Control s `CssClass` na Warning, což je název třídy CSS definované v `Styles.css`, která zobrazuje text ve velkém, kurzívě, tučně červené písmo.
 
-Obrázku 11 můžete vidět Návrhář Visual Studio po popisek byl přidán a nakonfigurován.
+Obrázek 11 znázorňuje Návrháře sady Visual Studio po přidání a konfiguraci popisku.
 
-[![Umístit ovládací prvek StatusLabel nad dva ovládací prvky Panel](batch-inserting-cs/_static/image32.png)](batch-inserting-cs/_static/image31.png)
+[![umístit ovládací prvek StatusLabel nad dva ovládací prvky panelu](batch-inserting-cs/_static/image32.png)](batch-inserting-cs/_static/image31.png)
 
-**Obrázek 11**: Místo `StatusLabel` ovládací prvek výše dva ovládací prvky panelu ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image33.png))
+**Obrázek 11**: ovládací prvek `StatusLabel` nad dvěma ovládacími prvky panelu ([kliknutím zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image33.png)).
 
-## <a name="step-3-switching-between-the-display-and-inserting-interfaces"></a>Krok 3: Přepínání mezi režimy zobrazení a vložení rozhraní
+## <a name="step-3-switching-between-the-display-and-inserting-interfaces"></a>Krok 3: přepínání mezi rozhraními Display a vložení
 
-V tuto chvíli jsme pro náš zobrazení a vložení rozhraní, ale můžeme znovu ještě zbývá dvě úlohy dokončení značky:
+V tuto chvíli jsme dokončili značky pro naše rozhraní zobrazení a vkládání, ale pořád zbývá dvě úlohy:
 
-- Přepínání mezi režimy zobrazení a vložení rozhraní
+- Přepínání mezi rozhraními Display a vložení
 - Přidání produktů v dodávce do databáze
 
-V současné době je viditelné rozhraní zobrazení ale vkládání rozhraní. Důvodem je, že `DisplayInterface` Panel s `Visible` je nastavena na `true` (výchozí hodnota), zatímco `InsertingInterface` Panel s `Visible` je nastavena na `false`. Chcete-li přepnout mezi dvě rozhraní, potřebujeme jen přepnout každý ovládací prvek s `Visible` hodnotu vlastnosti.
+V současné době je rozhraní zobrazení viditelné, ale rozhraní pro vložení je skryté. Důvodem je, že vlastnost `DisplayInterface` panel s `Visible` je nastavena na hodnotu `true` (výchozí hodnota), zatímco vlastnost `InsertingInterface` panel s `Visible` je nastavena na hodnotu `false`. Pro přepínání mezi oběma rozhraními stačí jednoduše přepnout jednotlivé ovládací prvky s `Visible` hodnotou vlastnosti.
 
-Chcete přesunout z rozhraní zobrazení pro vkládání rozhraní při kliknutí na tlačítko procesu dodávky produktu. Proto vytvořit obslužnou rutinu události pro toto tlačítko s `Click` událost, která obsahuje následující kód:
+Po kliknutí na tlačítko pro expedici procesu produktu se chceme přesunout z rozhraní pro zobrazení na rozhraní pro vložení. Proto vytvořte obslužnou rutinu události pro toto tlačítko s `Click` událost, která obsahuje následující kód:
 
 [!code-csharp[Main](batch-inserting-cs/samples/sample4.cs)]
 
-Tento kód jednoduše skryje `DisplayInterface` panelu a zobrazí `InsertingInterface` panelu.
+Tento kód jednoduše skryje panel `DisplayInterface` a zobrazí `InsertingInterface` panel.
 
-Dále vytvořte obslužné rutiny událostí pro přidání produkty z ovládacích prvků v rozhraní vkládání dodávky a tlačítko Storno. Některé z těchto tlačítek se při kliknutí na, je potřeba vrátit se k zobrazení rozhraní. Vytvoření `Click` obslužné rutiny událostí pro obě tlačítko – ovládací prvky tak, aby volání `ReturnToDisplayInterface`, metoda přidáme okamžik. Kromě skrytí `InsertingInterface` panely a zobrazení `DisplayInterface` panelu `ReturnToDisplayInterface` metoda musí vracet webové ovládací prvky do předem úprav stavu. To zahrnuje nastavení DropDownLists `SelectedIndex` vlastnosti a 0 zrušením navýšení kapacity `Text` vlastností ovládacích prvků textového pole.
+Dále vytvořte obslužné rutiny události pro ovládací prvky přidat produkty z expedice a zrušit v rozhraní pro vložení. Po kliknutí na některé z těchto tlačítek se musíme vrátit zpátky na zobrazovací rozhraní. Vytvořte obslužné rutiny událostí `Click` pro obě ovládací prvky tlačítko tak, aby volaly `ReturnToDisplayInterface`, metoda, kterou přidáme za chvíli. Kromě skrytí `InsertingInterface`ho panelu a zobrazení `DisplayInterface`ho panelu musí metoda `ReturnToDisplayInterface` vracet webové ovládací prvky do stavu před úpravou. To zahrnuje nastavení vlastností DropDownList `SelectedIndex` na hodnotu 0 a vymazávání vlastností `Text` ovládacích prvků TextBox.
 
 > [!NOTE]
-> Zvažte, co může dojít, pokud jsme nevrátila ovládacích prvků do předem úprav stavu před vrácením rozhraní zobrazení. Uživatel může klikněte na tlačítko procesu dodávky produktu, zadejte tyto produkty z dodávky a pak klikněte na tlačítko Přidat produkty z dodávky. To by přidejte produkty a vrátí uživatele k zobrazení rozhraní. V tomto okamžiku uživatel může chtít přidat jiné dodávky. Po kliknutí na tlačítko procesu dodávky produktu, které budou vráceny vkládání rozhraní, ale DropDownList výběry a textové pole hodnot by stále se vyplní jejich předchozí hodnoty.
+> Zvažte, co se může stát, když jsme ovládací prvky před návratem do rozhraní zobrazení nevrátili do stavu před úpravou. Uživatel může kliknout na tlačítko Zpracovat dodávku produktu, zadat produkty z dodávky a pak kliknout na Přidat produkty z dodávky. To by mohlo přidat produkty a vrátit uživatele do rozhraní zobrazení. V tomto okamžiku může uživatel chtít přidat další dodávku. Po kliknutí na tlačítko Zpracovat dodávku produktu by se vrátila do rozhraní pro vložení, ale výběry DropDownList a hodnoty TextBox by se měly pořád naplnit jejich předchozími hodnotami.
 
 [!code-csharp[Main](batch-inserting-cs/samples/sample5.cs)]
 
-Obě `Click` obslužné rutiny událostí jednoduše zavoláte `ReturnToDisplayInterface` metoda, i když se vrátíme k produktům přidat z dodávky `Click` obslužné rutiny události v kroku 4 a přidat kód pro uložení produktů. `ReturnToDisplayInterface` Spustí vrácením `Suppliers` a `Categories` DropDownLists jejich první možnosti. Dvě konstanty `firstControlID` a `lastControlID` označit počáteční a koncové hodnoty ovládacího prvku indexu v názvu produktu název a jednotku cena textová pole v vkládání rozhraní a používají se v hranice `for` smyčku, která nastaví `Text`vlastností ovládacích prvků TextBox zpět na prázdný řetězec. Nakonec panelů `Visible` vlastnosti resetují tak, aby vkládání rozhraní a zobrazení rozhraní zobrazeny.
+Oba obslužné rutiny událostí `Click` jednoduše volají metodu `ReturnToDisplayInterface`, ale v kroku 4 se vrátíme k obslužné rutině události přidat produkty z dodávky `Click` a přidáte kód pro uložení produktů. `ReturnToDisplayInterface` spustí vrácením `Suppliers` a `Categories` DropDownList na první možnosti. Tyto dvě konstanty `firstControlID` a `lastControlID` označují počáteční a koncové hodnoty indexu ovládacího prvku používané při pojmenování názvu produktu a textových polí s cenami v rozhraní vkládání a používají se v hranicích `for` smyčky, která nastavuje `Text` vlastnosti ovládacího prvku TextBox zpět na prázdný řetězec. Nakonec se panely `Visible` vlastnosti resetují, aby bylo vkládání rozhraní skryté a zobrazené rozhraní zobrazení.
 
-Využijte k otestování této stránky v prohlížeči. Při první návštěvě stránky byste měli vidět zobrazení rozhraní, jak je znázorněno na obrázku 5. Klikněte na tlačítko procesu dodávky produktu. Na stránce se odeslat zpět a měli byste vidět vkládání rozhraní jak ukazuje obrázek 12. Klepnutím na tlačítko buď přidejte produkty z dodávky, nebo zrušte tlačítka, vrátíte se na rozhraní zobrazení.
+Chvíli počkejte, než otestujete tuto stránku v prohlížeči. Při první návštěvě stránky by se mělo zobrazit rozhraní pro zobrazení zobrazené na obrázku 5. Klikněte na tlačítko Zpracovat dodávku produktu. Stránka se odešle zpět a mělo by se teď zobrazit rozhraní pro vložení, jak je znázorněno na obrázku 12. Kliknutím na tlačítko Přidat produkty z expedice nebo zrušit se vrátíte k rozhraní zobrazení.
 
 > [!NOTE]
-> Při zobrazování vkládání rozhraní, využijte k otestování CompareValidators na je cena ze jednotku textových polí. Zobrazí se pole messagebox na straně klienta upozornění, když kliknete na Přidat produkty z dodávky tlačítko s neplatnou měny nebo ceny s hodnotu menší než nula.
+> Při prohlížení rozhraní pro vkládání si chvíli počkejte, než CompareValidators otestujete v textových polích s cenami za jednotku. Když kliknete na tlačítko Přidat produkty z dodávky s neplatnými hodnotami měny nebo ceny s hodnotou menší než nula, mělo by se zobrazit upozornění na straně klienta.
 
-[![Vložení rozhraní se zobrazí po kliknutí na tlačítko dodávky produktu procesu](batch-inserting-cs/_static/image35.png)](batch-inserting-cs/_static/image34.png)
+[Po kliknutí na tlačítko Zpracovat dodávku produktu se zobrazí ![rozhraní pro vložení.](batch-inserting-cs/_static/image35.png)](batch-inserting-cs/_static/image34.png)
 
-**Obrázek 12**: Vložení rozhraní se zobrazí po kliknutí na tlačítko dodávky produktu procesu ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image36.png))
+**Obrázek 12**: rozhraní pro vložení se zobrazí po kliknutí na tlačítko Zpracovat dodávku produktu ([kliknutím zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image36.png)).
 
 ## <a name="step-4-adding-the-products"></a>Krok 4: Přidání produktů
 
-Vše, který zůstane pro tento kurz, je uložit do databáze v produktech přidat produkty z dodávky tlačítko s `Click` obslužné rutiny události. Toho můžete docílit tak, že vytvoříte `ProductsDataTable` a přidání `ProductsRow` instance pro každý ze zadaných názvů produktů. Jednou tyto `ProductsRow` s byly přidány, budeme volání `ProductsBLL` třída s `UpdateWithTransaction` metoda předává `ProductsDataTable`. Vzpomeňte si, že `UpdateWithTransaction` metodu, která byla vytvořena v [zabalení úprav databáze do transakce](wrapping-database-modifications-within-a-transaction-cs.md) výukový program, předá `ProductsDataTable` k `ProductsTableAdapter` s `UpdateWithTransaction` metoda. Odtud, je spustit transakci ADO.NET a problémy TableAdapter `INSERT` příkaz k databázi pro každou přidali `ProductsRow` v objektu DataTable. Za předpokladu, že všechny produkty jsou přidány bez chyb, že transakce se potvrzeny, jinak je vrácena zpět.
+Vše, co pro tento kurz zbývá, je uložit produkty do databáze v okně Přidat produkty z tlačítka pro expedici s `Click` obslužné rutiny události. To lze provést vytvořením `ProductsDataTable` a přidáním instance `ProductsRow` pro každý zadaný název produktu. Po přidání těchto `ProductsRow` se provede volání metody `ProductsBLL` třídy s `UpdateWithTransaction` předání do `ProductsDataTable`. Odvolat, že metoda `UpdateWithTransaction`, která byla vytvořena zpátky v [rámci kurzu transakce](wrapping-database-modifications-within-a-transaction-cs.md) , předává `ProductsDataTable` do `ProductsTableAdapter` `UpdateWithTransaction` metoda. Odtud se spustí transakce ADO.NET a TableAdapter vydá příkaz `INSERT` do databáze pro každý přidaný `ProductsRow` v objektu DataTable. Za předpokladu, že jsou všechny produkty přidány bez chyby, transakce je potvrzena, jinak se vrátí zpět.
 
-Kód pro přidání produkty z dodávky tlačítko s `Click` obslužné rutiny události musí také provést trochu kontroly chyb. Vzhledem k tomu, že neexistují žádné RequiredFieldValidators používaných pro vkládání rozhraní, může uživatel zadat při vynechání názvu cenu pro produkt. Protože název produktu s je povinný, pokud takovou podmínku, kterou se musíme upozornit uživatele a ne pokračujte vložení informací. Kompletní `Click` následuje kód obslužné rutiny události:
+Kód pro obslužnou rutinu tlačítka pro přidání produktů z `Click` pro příjem také musí provést kontrolu chyb. Vzhledem k tomu, že v rozhraní pro vkládání nejsou použité žádné RequiredFieldValidators, může uživatel zadat cenu za produkt a zároveň ho vynechat. Vzhledem k tomu, že je název produktu povinný, pokud taková podmínka odloží, musíme uživateli upozornit a nepokračovat v vkládání. Úplný kód obslužné rutiny události `Click` následuje:
 
 [!code-csharp[Main](batch-inserting-cs/samples/sample6.cs)]
 
-Obslužná rutina události začíná tím, že zajišťuje, `Page.IsValid` vlastnost vrací hodnotu `true`. Vrátí-li `false`a pak to znamená, že jeden nebo více CompareValidators nahlašujete neplatná data; v takovém případě tudy pokusit vložit zadané produkty nebo jsme nakonec se dostanete k výjimce při pokusu o přiřazení je cena ze jednotku zadanou uživatelem hodnota, která se `ProductsRow` s `UnitPrice` vlastnost.
+Obslužná rutina události začíná tím, že zajistí, že vlastnost `Page.IsValid` vrátí hodnotu `true`. Pokud vrátí `false`, znamená to, že jeden nebo více CompareValidators vydává neplatné údaje. v takovém případě se nechcete pokusit vložit zadané produkty. při pokusu o přiřazení hodnoty jednotkové ceny zadané uživatelem do vlastnosti `ProductsRow` s `UnitPrice` se ale ukončí výjimka.
 
-Další, nové `ProductsDataTable` je vytvořena instance (`products`). A `for` smyčce se používá k iteraci v rámci produktu název a Jednotková cena textových polí a `Text` do místní proměnné jsou načteny vlastnosti `productName` a `unitPrice`. Pokud uživatel zadal hodnotu pro je cena ze jednotku, ale nikoli pro odpovídající název produktu, `StatusLabel` zobrazí zprávu, pokud zadáte ceny jednotka, kterou jste také musí obsahovat název produktu a obslužná rutina události je byl ukončen.
+V dalším kroku se vytvoří nová instance `ProductsDataTable` (`products`). Smyčka `for` slouží k iterování v názvu produktu a textových polích s cenami za jednotku a vlastnosti `Text` jsou čteny do místních proměnných `productName` a `unitPrice`. Pokud uživatel zadal hodnotu pro jednotkovou cenu, ale ne pro odpovídající název produktu, `StatusLabel` zobrazí zprávu, pokud zadáte jednotkovou cenu, musíte také uvést název produktu a obslužné rutiny události se ukončí.
 
-Pokud byl poskytnut název produktu, nový `ProductsRow` instance je vytvořena pomocí `ProductsDataTable` s `NewProductsRow` metoda. Tato nová `ProductsRow` instance s `ProductName` je nastavena na aktuální produkt textového pole při s názvem `SupplierID` a `CategoryID` vlastností jsou přiřazeny k `SelectedValue` vlastnosti DropDownLists v záhlaví vložení rozhraní s. Pokud uživatel zadal hodnotu pro produkt s cenu, se přiřadí `ProductsRow` instance s `UnitPrice` vlastnosti; v opačném případě je vlastnost nepřiřazené, vlevo, která bude mít za následek `NULL` hodnotu pro `UnitPrice` v databázi. Nakonec `Discontinued` a `UnitsOnOrder` vlastností jsou přiřazeny k pevně definovaných hodnot `false` a 0, v uvedeném pořadí.
+Pokud byl zadán název produktu, vytvoří se nová instance `ProductsRow` pomocí metody `ProductsDataTable` s `NewProductsRow`. Tato nová vlastnost `ProductsRow` instance `ProductName` je nastavena na textové pole s aktuálním názvem produktu, zatímco vlastnosti `SupplierID` a `CategoryID` jsou přiřazeny k `SelectedValue` vlastnostem ovládacích prvků DropDownList v hlavičce vložení rozhraní s. Pokud uživatel zadal hodnotu ceny produktu, je přiřazen k vlastnosti `ProductsRow` instance s `UnitPrice`; v opačném případě zůstane vlastnost ponecháno Nepřiřazeno. výsledkem bude `NULL` hodnota `UnitPrice` v databázi. Nakonec jsou vlastnosti `Discontinued` a `UnitsOnOrder` přiřazeny pevně zakódované hodnoty `false` a 0 v uvedeném pořadí.
 
-Jakmile se přiřadily vlastnosti `ProductsRow` instance je přidána do `ProductsDataTable`.
+Až se vlastnosti přiřadí do instance `ProductsRow`, přidají se do `ProductsDataTable`.
 
-Po dokončení `for` smyčky, zkontrolujeme, jestli byly přidány žádné produkty. Uživatel může jste klikli koneckonců, přidejte produkty z dodávky před zadáním cen ani názvů produktů. Pokud je aspoň jeden produkt v `ProductsDataTable`, `ProductsBLL` třída s `UpdateWithTransaction` metoda je volána. V dalším kroku znovu data na připojeno `ProductsGrid` GridView tak, aby nově přidaných produktech se zobrazí v zobrazení rozhraní. `StatusLabel` Se aktualizuje a zobrazí se potvrzovací zpráva a `ReturnToDisplayInterface` je vyvolána, skrytí vkládání rozhraní a zobrazuje rozhraní zobrazení.
+Po dokončení smyčky `for` zkontrolujeme, jestli se nějaké produkty přidaly. Uživatel může po všech případech kliknout na položku Přidat produkty z dodávky a teprve potom zadat názvy produktů nebo ceny. Pokud je v `ProductsDataTable`alespoň jeden produkt, je volána metoda `ProductsBLL` třídy `UpdateWithTransaction`. Dále jsou data znovu svázána s `ProductsGrid` GridView, takže nově přidané produkty se zobrazí v rozhraní zobrazení. `StatusLabel` se aktualizuje, aby se zobrazila potvrzovací zpráva a vyvolalo se `ReturnToDisplayInterface`, aby se přestalo rozhraní pro vkládání a zobrazení rozhraní.
 
-Pokud byly zadány žádné produkty, vkládání rozhraní zůstane zobrazená ale zprávy, které byly přidány žádné produkty. Zadejte názvy produktů a jednotkové ceny v textových polí se zobrazí.
+Pokud nebyly zadány žádné produkty, rozhraní pro vložení zůstane zobrazeno, ale zpráva nebyla přidána žádná zboží. Zadejte prosím názvy produktů a jednotkové ceny v textových polích, které se zobrazí.
 
-Obrázek s 13, 14 a 15 zobrazit vkládání a zobrazí rozhraní v akci. Obrázek 13 uživatel zadal hodnotu cena jednotky bez odpovídající název produktu. Obrázek 14 ukazuje rozhraní zobrazované za tři nové produkty byly přidány úspěšně, 15 obrázek se zobrazí dvě nově přidaných produktech v prvku GridView (třetí disk se na předchozí stránce).
+Obrázek s 13, 14 a 15 zobrazuje rozhraní pro vkládání a zobrazování v akci. Na obrázku 13 zadal uživatel hodnotu jednotkové ceny bez odpovídajícího názvu produktu. Obrázek 14 ukazuje rozhraní zobrazení po úspěšném přidání tří nových produktů, zatímco obrázek 15 ukazuje dva z nově přidaných produktů v prvku GridView (třetí z nich je na předchozí stránce).
 
-[![Název produktu je nutné při zadávání cena za jednotku](batch-inserting-cs/_static/image38.png)](batch-inserting-cs/_static/image37.png)
+[Při zadání jednotkové ceny se ![vyžaduje název produktu.](batch-inserting-cs/_static/image38.png)](batch-inserting-cs/_static/image37.png)
 
-**Obrázek 13**: Název produktu je nutné při zadávání cena za jednotku ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image39.png))
+**Obrázek 13**: při zadávání ceny za jednotku se vyžaduje název produktu ([kliknutím zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image39.png)).
 
-[![Tři nové Veggies byly přidány pro dodavatele Mayumi s](batch-inserting-cs/_static/image41.png)](batch-inserting-cs/_static/image40.png)
+[pro dodavatele Mayumi se přidal tento ![tři nové veggies.](batch-inserting-cs/_static/image41.png)](batch-inserting-cs/_static/image40.png)
 
-**Obrázek 14**: Tři nové Veggies byly přidány pro dodavatele Mayumi s ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image42.png))
+**Obrázek 14**: Přidali jsme tři nové veggies pro dodavatele Mayumi s ([kliknutím zobrazíte obrázek v plné velikosti).](batch-inserting-cs/_static/image42.png)
 
-[![Nové produkty nachází v poslední stránky prvku GridView.](batch-inserting-cs/_static/image44.png)](batch-inserting-cs/_static/image43.png)
+[![nové produkty najdete na poslední stránce prvku GridView.](batch-inserting-cs/_static/image44.png)](batch-inserting-cs/_static/image43.png)
 
-**Obrázek 15**: Nové produktům najdete na poslední stránce prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image45.png))
+**Obrázek 15**: nové produkty lze najít na poslední stránce prvku GridView ([kliknutím zobrazíte obrázek v plné velikosti](batch-inserting-cs/_static/image45.png)).
 
 > [!NOTE]
-> Dávkové vkládání logikou používanou v tomto kurzu zabalí vložení informací v rámci oboru transakce. Chcete-li to ověřit, záměrně zavést chybě na úrovni databáze. Třeba místo toho novou `ProductsRow` instance s `CategoryID` k vybrané hodnotě v `Categories` DropDownList, přiřadit ho na hodnotu, jako jsou `i * 5`. Tady `i` je smyčka indexeru a má hodnoty od 1 do 5. Při přidání dvou nebo více produktů ve službě batch vložit první produkt bude mít tudíž platný `CategoryID` bude mít hodnotu (5), ale následné produkty `CategoryID` hodnoty, které se neshodují s až `CategoryID` hodnoty v `Categories` tabulky. Výsledkem je, že při první `INSERT` proběhne úspěšně, dojde k selhání dalších ty s narušení omezení pro cizí klíč. Protože dávkové vložení je Atomický, první `INSERT` bude vrácena zpět, vrácení databáze do stavu před vložením proces služby batch začalo.
+> Dávková vložení logiky použité v tomto kurzu zabalí vložení do oboru transakce. Pokud to chcete ověřit, záměrně zavádí chybu na úrovni databáze. Například namísto přiřazení nové vlastnosti `ProductsRow` instance s `CategoryID` k vybrané hodnotě v `Categories` DropDownList, přiřaďte ji k hodnotě, jako je `i * 5`. Tady `i` je indexer smyčky a má hodnoty od 1 do 5. Proto při přidávání dvou nebo více produktů do dávky vloží první produkt platnou hodnotu `CategoryID` (5), ale další produkty budou mít `CategoryID` hodnoty, které neodpovídají hodnotám `CategoryID` v tabulce `Categories`. Čistým účinkem je to, že zatímco první `INSERT` bude úspěšná, dojde při selhání k porušení omezení cizího klíče. Vzhledem k tomu, že dávková operace INSERT je atomická, první `INSERT` se vrátí zpět a vrátí databázi do stavu před zahájením procesu dávkového vkládání.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Přes to a předchozích dvou kurzů jsme vytvořili rozhraní, které umožňují aktualizaci, odstranění, a vložení dávky dat, z nichž všechny používají podpora transakcí, přidali jsme do vrstvy přístupu k datům v [zabalení úprav databáze v rámci transakce](wrapping-database-modifications-within-a-transaction-cs.md) kurzu. Pro určité scénáře, těchto uživatelských rozhraní dávkové zpracování výrazně zlepšit efektivitu koncový uživatel řezem dolů na počet kliknutí, zpětná volání a přepnutí kontextu myš a klávesnici, současně zachovává integrity podkladová data.
+V tomto a předchozích dvou kurzech jsme vytvořili rozhraní, která umožňují aktualizovat, odstraňovat a vkládat dávky dat, a to vše, co používalo podporu transakcí, kterou jsme přidali do vrstvy přístupu k datům v [rámci](wrapping-database-modifications-within-a-transaction-cs.md) kurzových úprav v transakci. V některých scénářích Tato uživatelská rozhraní dávkového zpracování významně zlepšují efektivitu koncových uživatelů tím, že rozchází na počet kliknutí, postbacků a přepínačů kontextu klávesnice na myš a zároveň zachovává integritu podkladových dat.
 
-V tomto kurzu dokončíte naše jak se pracuje s daty uspořádanými do dávek. Další sadu kurzy vám umožní prozkoumat různé pokročilé scénáře vrstvy přístupu k datům, včetně použití uložených procedur v metodách s TableAdapter, konfigurace nastavení připojení a příkaz úrovně vrstvy DAL, šifrování připojovacích řetězců a dalších!
+V tomto kurzu se dokončí náš pohled na práci s daty v dávce. V další sadě kurzů se seznámíte s řadou pokročilých scénářů vrstev přístupu k datům, včetně použití uložených procedur v metodách TableAdapter s, konfigurace nastavení na úrovni připojení a příkazů v DAL, šifrování připojovacích řetězců a dalších akcí.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí revidující pro účely tohoto kurzu byly Hilton Giesenow a S ren Jakub Lauritsen. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontroloři vedoucích k tomuto kurzu byli Hilton Giesenow a S Ren Jacob Lauritsen. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](batch-deleting-cs.md)
-> [další](wrapping-database-modifications-within-a-transaction-vb.md)
+> [Další](wrapping-database-modifications-within-a-transaction-vb.md)

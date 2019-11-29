@@ -1,115 +1,115 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/working-with-entity-relations
-title: Podpora relací prvků v OData v3 s webovým rozhraním API 2 | Dokumentace Microsoftu
+title: Podpora vztahů mezi entitami v OData V3 s webovým rozhraním API 2 | Microsoft Docs
 author: MikeWasson
-description: 'Většina datových sad definovat vztahy mezi entitami: Zákazníci mají objednávky; knihy jste autoři; produkty mají dodavatelů. Použití protokolu OData, klienti se můžete dostat přes...'
+description: 'Většina datových sad definuje vztahy mezi entitami: zákazníci mají objednávky. knihy mají autory. produkty mají dodavatele. Pomocí OData můžou klienti přejít přes...'
 ms.author: riande
 ms.date: 02/26/2014
 ms.assetid: 1e4c2eb4-b6cf-42ff-8a65-4d71ddca0394
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/working-with-entity-relations
 msc.type: authoredcontent
-ms.openlocfilehash: dc80a984911a7f000edc7974992a1ed936ebb348
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 726a7d51123805e05f6831ef9cd7eaa84b6c44bd
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131474"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74600316"
 ---
-# <a name="supporting-entity-relations-in-odata-v3-with-web-api-2"></a>Podpora relací prvků v OData v3 s webovým rozhraním API 2
+# <a name="supporting-entity-relations-in-odata-v3-with-web-api-2"></a>Podpora vztahů mezi entitami v OData V3 pomocí webového rozhraní API 2
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-[Stáhnout dokončený projekt](http://code.msdn.microsoft.com/ASPNET-Web-API-OData-cecdb524)
+[Stáhnout dokončený projekt](https://code.msdn.microsoft.com/ASPNET-Web-API-OData-cecdb524)
 
-> Většina datových sad definovat vztahy mezi entitami: Zákazníci mají objednávky; knihy jste autoři; produkty mají dodavatelů. Použití protokolu OData, klienti můžete přejít přes relací prvků. Zadaný produkt, můžete najít dodavatele. Můžete také vytvořit nebo odebrat relace. Například můžete nastavit od dodavatele, produktu.
+> Většina datových sad definuje vztahy mezi entitami: zákazníci mají objednávky. knihy mají autory. produkty mají dodavatele. Pomocí OData můžou klienti přejít na vztahy mezi entitami. Pro daný produkt můžete najít dodavatele. Můžete také vytvořit nebo odebrat relace. Můžete například nastavit dodavatele produktu.
 > 
-> Tento kurz ukazuje, jak podporují tyto operace v rozhraní ASP.NET Web API. Tento kurz vychází z kurzu [vytváření koncového bodu OData v3 s webovým rozhraním API 2](creating-an-odata-endpoint.md).
+> V tomto kurzu se dozvíte, jak tyto operace podporovat v ASP.NET webovém rozhraní API. Kurz sestaví na kurzu [Vytvoření koncového bodu OData V3 pomocí webového rozhraní API 2](creating-an-odata-endpoint.md).
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 > 
 > 
 > - Webové rozhraní API 2
 > - OData verze 3
 > - Entity Framework 6
 
-## <a name="add-a-supplier-entity"></a>Přidání Entity dodavatele
+## <a name="add-a-supplier-entity"></a>Přidat entitu dodavatele
 
-Nejdřív potřebujeme přidat nový typ entity pro naše datového kanálu OData. Přidáme `Supplier` třídy.
+Nejdřív musíme do našeho informačního kanálu OData přidat nový typ entity. Přidáme třídu `Supplier`.
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample1.cs)]
 
-Tato třída používá řetězce pro klíč entity. V praxi, který může být méně běžné než pomocí klíče celé číslo. Ale je vhodné zobrazuje, jak OData zpracovává jiné typy klíčů kromě celých čísel.
+Tato třída používá řetězec pro klíč entity. V praxi může být méně častější než použití celočíselného klíče. Je ale vhodné vidět, jak OData zpracovává jiné typy klíčů Kromě celých čísel.
 
-V dalším kroku vytvoříme vztah tak, že přidáte `Supplier` vlastnost `Product` třídy:
+V dalším kroku vytvoříme relaci přidáním vlastnosti `Supplier` do `Product` třídy:
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample2.cs)]
 
-Přidat nový **DbSet** k `ProductServiceContext` třídy, aby obsahovala Entity Frameworku `Supplier` tabulky v databázi.
+Přidejte novou **negenerickými** do třídy `ProductServiceContext`, aby Entity Framework v databázi zahrnovala tabulku `Supplier`.
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample3.cs?highlight=9)]
 
-V WebApiConfig.cs přidejte do modelu EDM entity "Dodavatelé":
+Do WebApiConfig.cs přidejte do modelu EDM entitu "dodavatelé":
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample4.cs?highlight=4)]
 
 ## <a name="navigation-properties"></a>Navigační vlastnosti
 
-Pokud chcete získat od dodavatele pro produkt, klient odešle požadavek GET:
+Pokud chcete získat dodavatele pro určitý produkt, klient odešle požadavek GET:
 
 [!code-console[Main](working-with-entity-relations/samples/sample5.cmd)]
 
-Tady "Poskytovatel" je vlastnost navigace `Product` typu. V takovém případě `Supplier` odkazuje na jednu položku, ale navigační vlastnost také může vrátit kolekci (vztah jednoho k několika nebo many-to-many).
+Zde je pro typ `Product` navigační vlastnost "dodavatel". V tomto případě `Supplier` odkazuje na jednu položku, ale navigační vlastnost může také vracet kolekci (vztah 1: n nebo m:n).
 
-Chcete-li tuto žádost o podporu, přidejte následující metodu do `ProductsController` třídy:
+Pro podporu tohoto požadavku přidejte následující metodu do třídy `ProductsController`:
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample6.cs)]
 
-*Klíč* parametr je klíč produktu. Metoda vrátí související entity&#8212;v tomto případě `Supplier` instance. Název metody i název parametru jsou důležité. Obecně platí Pokud navigační vlastnost s názvem "X", musíte přidat metodu s názvem "Metody GetX". Metoda přijme parametr s názvem "*klíč*", shoduje s datovým typem nadřazené položky klíče.
+Parametr *Key* je klíč produktu. Metoda vrátí související entitu&#8212;v tomto případě instance `Supplier`. Název metody a název parametru jsou důležité. Obecně platí, že pokud je navigační vlastnost pojmenována "X", je nutné přidat metodu s názvem "GetX". Metoda musí přijmout parametr s názvem "*Key*", který odpovídá datovému typu nadřazeného klíče.
 
-Je také důležité zahrnout **[FromOdataUri]** atribut *klíč* parametru. Tento atribut oznamuje webového rozhraní API pro použití pravidel syntaxe OData při analýze klíč z identifikátoru URI požadavku.
+Je také důležité zahrnout do parametru *Key* atribut **[FromOdataUri]** . Tento atribut oznamuje webovému rozhraní API použití pravidel syntaxe OData při analýze klíče z identifikátoru URI požadavku.
 
-## <a name="creating-and-deleting-links"></a>Vytváření a odstraňování propojení
+## <a name="creating-and-deleting-links"></a>Vytváření a odstraňování odkazů
 
-OData podporuje vytváření nebo odebírání vztahy mezi dvěma entitami. V terminologii OData je vztah "propojení". Každý odkaz má identifikátor URI s formulářem *entity*/$links /*entity*. Odkaz z produktu dodavateli například vypadá takto:
+OData podporuje vytváření nebo odebírání vztahů mezi dvěma entitami. V terminologii OData je vztah "odkaz". Každý odkaz má identifikátor URI s formulářem *entity*/$Links/*entity*. Například odkaz z produktu na dodavatel vypadá takto:
 
 [!code-console[Main](working-with-entity-relations/samples/sample7.cmd)]
 
-Pokud chcete vytvořit nový odkaz, klient odešle požadavek POST na identifikátor URI odkazu. Tělo žádosti je identifikátor URI cílové entity. Například předpokládejme, že je poskytovatel s klíčem "CTSO". Pro vytvoření odkazu z "Produktu1" k "Supplier('CTSO')", klient odešle požadavek vypadat asi takto:
+Chcete-li vytvořit nový odkaz, klient odešle požadavek POST do identifikátoru URI odkazu. Tělo požadavku je identifikátor URI cílové entity. Předpokládejme například, že je k dispozici dodavatel s klíčem "CTSO". Pokud chcete vytvořit odkaz z "Product (1)" na "dodavatel (' CTSO ')", klient odešle požadavek podobný následujícímu:
 
 [!code-console[Main](working-with-entity-relations/samples/sample8.cmd)]
 
-Pokud chcete odstranit odkaz, klient odešle požadavek DELETE na identifikátor URI odkazu.
+Chcete-li odstranit odkaz, klient pošle požadavek na odstranění identifikátoru URI odkazu.
 
 **Vytváření odkazů**
 
-Pokud chcete povolit klienta k vytvoření odkazů produktu dodavatele, přidejte následující kód, který `ProductsController` třídy:
+Chcete-li povolit klientovi vytváření odkazů na dodavatele produktů, přidejte následující kód do třídy `ProductsController`:
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample9.cs)]
 
 Tato metoda přijímá tři parametry:
 
-- *Klíč*: Klíčem k nadřazená entita (produkt)
-- *navigationProperty*: Název navigační vlastnosti. V tomto příkladu je platné pouze navigační vlastnost "Poskytovatel".
-- *odkaz*: Identifikátor URI protokolu OData související entity. Tato hodnota je převzata z textu požadavku. Například může být identifikátor URI odkazu "`http://localhost/odata/Suppliers('CTSO')`, což znamená dodavatele s ID ="CTSO".
+- *klíč*: klíč k nadřazené entitě (produkt)
+- *navigationProperty*: název vlastnosti navigace. V tomto příkladu je jedinou platnou navigační vlastností "dodavatel".
+- *odkaz*: identifikátor URI OData související entity. Tato hodnota je pořízena z textu žádosti. Identifikátor URI odkazu může být například "`http://localhost/odata/Suppliers('CTSO')`, což znamená dodavatel s ID =" CTSO ".
 
-Metoda používá odkaz k vyhledání od dodavatele. Pokud je nalezen odpovídající dodavatele, metoda nastaví `Product.Supplier` vlastnost a uloží výsledek do databáze.
+Metoda používá odkaz k vyhledání dodavatele. Pokud je nalezen shodný dodavatel, metoda nastaví vlastnost `Product.Supplier` a uloží výsledek do databáze.
 
-Identifikátor URI odkazu je analýza nejtěžší část. V podstatě budete muset simulovat výsledek odeslat požadavek GET na tento identifikátor URI. Následující Pomocná metoda ukazuje, jak to provést. Metoda vyvolá proces směrování rozhraní Web API a získá zpět **objekt ODataPath** instanci, která představuje cestu k analyzovanou klauzuli OData. Odkaz na identifikátor URI by měla být jedna z segmenty klíč entity. (Pokud ne, klient zaslal chybný identifikátor URI.)
+Závažná součást analyzuje identifikátor URI odkazu. V podstatě potřebujete simulovat výsledek odeslání žádosti o získání na tento identifikátor URI. Následující pomocná metoda ukazuje, jak to provést. Metoda vyvolá proces směrování webového rozhraní API a vrátí zpět instanci **ODataPath** , která představuje analyzovanou cestu OData. U identifikátoru URI odkazu by měl být jeden z segmentů klíč entity. (Pokud ne, klient odeslal chybný identifikátor URI.)
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample10.cs)]
 
-**Odstranění propojení**
+**Odstraňování odkazů**
 
-Pokud chcete odstranit odkaz, přidejte následující kód, který `ProductsController` třídy:
+Chcete-li odstranit odkaz, přidejte následující kód do třídy `ProductsController`:
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample11.cs)]
 
-V tomto příkladu je navigační vlastnost jednoho `Supplier` entity. Pokud je navigační vlastnost kolekce, identifikátor URI pro odstranění odkazu musí obsahovat klíč související entity. Příklad:
+V tomto příkladu je navigační vlastnost jedinou entitou `Supplier`. Pokud je navigační vlastnost kolekce, identifikátor URI pro odstranění odkazu musí obsahovat klíč pro související entitu. Příklad:
 
 [!code-console[Main](working-with-entity-relations/samples/sample12.cmd)]
 
-Tento požadavek zruší zákazníka 1 pořadí 1. V tomto případě metodu DeleteLink mít následující podpis:
+Tato žádost odebere objednávku 1 od zákazníka 1. V takovém případě bude mít metoda DeleteLink fungují následující signaturu:
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample13.cs)]
 
-*RelatedKey* parametr poskytuje klíč pro související entity. Ano v vaše `DeleteLink` metoda vyhledávací primární entity podle *klíč* parametr, Najít související entity podle *relatedKey* parametr a potom odeberte přidružení. V závislosti na datovém modelu, může být nutné implementovat obě verze `DeleteLink`. Správná verze podle identifikátoru URI požadavku bude volat webové rozhraní API.
+Parametr *relatedKey* poskytuje klíč pro související entitu. Takže v metodě `DeleteLink` vyhledejte primární entitu pomocí parametru *Key* , vyhledejte související entitu pomocí parametru *relatedKey* a pak odeberte přidružení. V závislosti na datovém modelu možná budete muset implementovat obě verze `DeleteLink`. Webové rozhraní API bude volat správnou verzi na základě identifikátoru URI požadavku.

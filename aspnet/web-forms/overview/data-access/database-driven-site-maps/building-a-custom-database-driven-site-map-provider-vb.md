@@ -1,313 +1,313 @@
 ---
 uid: web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-vb
-title: Vytváření vlastního databázově řízeného zprostředkovatele mapy webu (VB) | Dokumentace Microsoftu
+title: Vytvoření vlastního zprostředkovatele mapy webu založeného na databázi (VB) | Microsoft Docs
 author: rick-anderson
-description: Výchozího zprostředkovatele mapy webu v technologii ASP.NET 2.0 načte data ze statického souboru XML. Je vhodné pro mnoho malé a střední okno velikosti zprostředkovatele založený na formátu XML...
+description: Výchozí poskytovatel mapy webu v ASP.NET 2,0 načte jeho data ze statického souboru XML. I když je zprostředkovatel založený na jazyce XML vhodný pro mnoho malých a středně sizch...
 ms.author: riande
 ms.date: 06/26/2007
 ms.assetid: f904cd2c-a408-4484-9324-8b8d7fe33893
 msc.legacyurl: /web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0883750f00c81b831b2c178d187b6ba518607152
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 78051696bd75e1d574f55b1c5d5891fe67c3030d
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65109070"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74630064"
 ---
 # <a name="building-a-custom-database-driven-site-map-provider-vb"></a>Vytvoření vlastního databázově řízeného zprostředkovatele mapy webu (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_62_VB.zip) nebo [stahovat PDF](building-a-custom-database-driven-site-map-provider-vb/_static/datatutorial62vb1.pdf)
+[Stažení kódu](https://download.microsoft.com/download/3/9/f/39f92b37-e92e-4ab3-909e-b4ef23d01aa3/ASPNET_Data_Tutorial_62_VB.zip) nebo [stažení PDF](building-a-custom-database-driven-site-map-provider-vb/_static/datatutorial62vb1.pdf)
 
-> Výchozího zprostředkovatele mapy webu v technologii ASP.NET 2.0 načte data ze statického souboru XML. Zatímco zprostředkovatele založený na formátu XML je vhodný pro mnoho malé a středně velké webové stránky, větší webových aplikací vyžaduje více dynamická Mapa webu. V tomto kurzu vytvoříme vlastního zprostředkovatele mapy webu, který načte data z vrstvy obchodní logiky, která načte data z databáze.
+> Výchozí poskytovatel mapy webu v ASP.NET 2,0 načte jeho data ze statického souboru XML. I když je zprostředkovatel založený na jazyce XML vhodný pro velký počet malých a středně velkých webů, vyžadují větší webové aplikace dynamičtější mapy webu. V tomto kurzu vytvoříme vlastního poskytovatele mapy webu, který načte svá data z vrstvy obchodní logiky, která zase načte data z databáze.
 
 ## <a name="introduction"></a>Úvod
 
-ASP.NET 2.0 s funkce mapy webu umožňuje vývojářům definovat mapy webu webové aplikace s některé trvalou média, jako například v souboru XML. Po definování data mapy webu je přístupná prostřednictvím kódu programu přes [ `SiteMap` třídy](https://msdn.microsoft.com/library/system.web.sitemap.aspx) v [ `System.Web` obor názvů](https://msdn.microsoft.com/library/system.web.aspx) nebo prostřednictvím různých navigace webové ovládací prvky, například Ovládací prvky SiteMapPath, nabídky a prvku TreeView. Mapa systém lokality používá [modelu poskytovatele](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx) tak, aby implementace serializace jiné lokalitě mapy se dají vytvářet a zapojí se do webové aplikace. Výchozího zprostředkovatele mapy webu, která je dodávána s prostředím ASP.NET 2.0 nevyřeší struktury mapy webu v souboru XML. Zpátky [stránky předlohy a navigace na webu](../introduction/master-pages-and-site-navigation-vb.md) kurzu jsme vytvořili soubor s názvem `Web.sitemap` , která obsahovala tuto strukturu a se aktualizuje její XML s každé nové části kurzu.
+Funkce mapa webu ASP.NET 2,0 s umožňuje vývojářům stránky definovat mapu webu webové aplikace v některém trvalém médiu, například v souboru XML. Po definování můžete k datům map lokality přistupovat programově prostřednictvím [třídy`SiteMap`](https://msdn.microsoft.com/library/system.web.sitemap.aspx) v [oboru názvů`System.Web`](https://msdn.microsoft.com/library/system.web.aspx) nebo prostřednictvím různých webových ovládacích prvků navigace, jako jsou ovládací prvky SiteMapPath, menu a TreeView. Mapový systém lokality používá [model poskytovatele](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx) , aby bylo možné vytvořit různé implementace serializace mapy webu a připojit je do webové aplikace. Výchozí poskytovatel mapy webu, který je dodáván s ASP.NET 2,0, se zachovává se strukturou mapy webu v souboru XML. Zpět na [stránkách předlohy a](../introduction/master-pages-and-site-navigation-vb.md) v kurzu navigace na webu jsme vytvořili soubor s názvem `Web.sitemap`, který obsahuje tuto strukturu a aktualizovali XML pomocí každého nového kurzu.
 
-Zprostředkovatele mapy webu založený na formátu XML výchozí dobře fungují v případě strukturu s mapy webu je poměrně statická, například pro tyto kurzy. V mnoha případech ale více dynamická Mapa webu je potřeba. Vezměte v úvahu mapy webu je znázorněno na obrázku 1, kde každé kategorie a produkt zobrazí jako oddíly ve struktuře s webu. Pomocí této mapy webu navštívit webovou stránku odpovídající kořenový uzel může být seznam všech kategorií, že určité kategorie s webové stránce by zobrazila seznam této kategorie s produkty a zobrazení webové stránky s konkrétním produktu by zobrazil produktu s podrobnosti.
+Výchozí zprostředkovatel mapy webu založený na jazyce XML funguje dobře, pokud je struktura mapy webu poměrně statická, například pro tyto kurzy. V mnoha scénářích se však vyžaduje více map dynamického webu. Vezměte v úvahu mapu webu znázorněnou na obrázku 1, kde se každá kategorie a produkt zobrazuje jako oddíly ve struktuře webu. Pomocí této mapy webu mohou webové stránky, které odpovídají kořenovému uzlu, obsahovat seznam všech kategorií, zatímco při návštěvě konkrétní kategorie webové stránky by se zobrazily tyto kategorie produktů a zobrazení konkrétní webové stránky s informacemi o produktu.
 
-[![Kategorie a produkty strukturu mapu s struktury webu](building-a-custom-database-driven-site-map-provider-vb/_static/image1.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image1.png)
+[![kategorií a produktů strukturu struktury map webu](building-a-custom-database-driven-site-map-provider-vb/_static/image1.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image1.png)
 
-**Obrázek 1**: Kategorie a strukturu produktů mapy webu s strukturu ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image2.png))
+**Obrázek 1**: kategorie a produkty strukturu struktury map webu ([kliknutím zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image2.png)).
 
-I když tato struktura podle kategorie a produktů může být pevně zakódovaný do `Web.sitemap` souboru, soubor bude potřeba aktualizovat pokaždé, když kategorie nebo produkt byl přidat, odebrat nebo přejmenovat. V důsledku toho mapy Údržba webového serveru by se dá výrazně zjednodušit. Pokud své struktury byla získána z databáze, nebo v ideálním případě z vrstvy obchodní logiky architektury s aplikací. Tímto způsobem, jak byly přidány produktů a kategorie, přejmenována nebo odstraněna, mapy webu bude automaticky aktualizovat tak, aby odrážela tyto změny.
+Zatímco tato struktura na základě kategorie a produktu by mohla být pevně zakódovaná do `Web.sitemap` souboru, je třeba aktualizovat soubor pokaždé, když byla kategorie nebo produkt přidaný, odebraný nebo přejmenovaný. V důsledku toho bude údržba mapy webu výrazně zjednodušená, pokud byla jeho struktura načtena z databáze nebo, v ideálním případě z vrstvy obchodní logiky architektury aplikace. Tímto způsobem byly přidány, přejmenovány nebo smazány produkty a kategorie, mapa webu se automaticky aktualizuje, aby odrážela tyto změny.
 
-Protože serializace mapování lokality s ASP.NET 2.0 je vytvořeným na základě podle modelu poskytovatele, můžeme vytvořit vlastní vlastního zprostředkovatele mapy webu, který získá data z nebo alternativní datové úložiště, jako jsou databáze nebo architekturu. V tomto kurzu vytvoříme vlastní poskytovatele, který načte data z BLL. Začínáme s let!
+Vzhledem k tomu, že serializace mapy lokality ASP.NET 2,0 s je sestavena základem modelem poskytovatele, můžeme vytvořit vlastního poskytovatele mapy webu, který získává data z alternativního úložiště dat, například databáze nebo architektury. V tomto kurzu vytvoříme vlastního poskytovatele, který načte data z knihoven BLL. Pojďme začít!
 
 > [!NOTE]
-> Vlastního zprostředkovatele mapy webu v tomto kurzu vytvořili je těsně spjat s aplikace s architekturou a datový model. Jeff Prosise s [ukládání mapy webu v systému SQL Server](https://msdn.microsoft.com/msdnmag/issues/05/06/WickedCode/) a [zprostředkovatele mapy webu SQL jste již bylo čekání](https://msdn.microsoft.com/msdnmag/issues/06/02/wickedcode/default.aspx) články prozkoumat zobecněný přístup k ukládání dat mapy webu v systému SQL Server.
+> Vlastní poskytovatel mapy webu vytvořený v tomto kurzu je pevně spojený s architekturou aplikace a datovým modelem. Jan Prosise s [uložením map webů v SQL Server](https://msdn.microsoft.com/msdnmag/issues/05/06/WickedCode/) a [poskytovatele mapy webu SQL, kterého jste čekali na články,](https://msdn.microsoft.com/msdnmag/issues/06/02/wickedcode/default.aspx) prozkoumali zobecněný přístup k ukládání dat map webu v SQL Server.
 
-## <a name="step-1-creating-the-custom-site-map-provider-web-pages"></a>Krok 1: Vytvoření vlastní stránky mapy poskytovatele webových stránek
+## <a name="step-1-creating-the-custom-site-map-provider-web-pages"></a>Krok 1: vytvoření vlastních webových stránek poskytovatele mapy webu
 
-Než začneme vytvořením vlastního zprostředkovatele mapy webu, umožní s nejprve přidat stránek ASP.NET, kterou potřebujeme pro účely tohoto kurzu. Začněte přidáním novou složku s názvem `SiteMapProvider`. Dále přidejte následující stránky ASP.NET do této složky, nezapomeňte přiřadit každou stránku s `Site.master` hlavní stránky:
+Než začneme s vytvářením vlastního poskytovatele mapy webu, můžeme nejdřív přidat stránky ASP.NET, které budeme potřebovat pro tento kurz. Začněte přidáním nové složky s názvem `SiteMapProvider`. Dále přidejte následující stránky ASP.NET do této složky a nezapomeňte přidružit jednotlivé stránky k `Site.master` hlavní stránce:
 
 - `Default.aspx`
 - `ProductsByCategory.aspx`
 - `ProductDetails.aspx`
 
-Také přidat `CustomProviders` podsložku `App_Code` složky.
+Přidejte také podsložku `CustomProviders` do složky `App_Code`.
 
-![Přidání stránky technologie ASP.NET pro kurzy související zprostředkovatele mapy webu](building-a-custom-database-driven-site-map-provider-vb/_static/image2.gif)
+![Přidání stránek ASP.NET pro kurzy související se zprostředkovatelem mapy webu](building-a-custom-database-driven-site-map-provider-vb/_static/image2.gif)
 
-**Obrázek 2**: Přidání stránky technologie ASP.NET pro kurzy související zprostředkovatele mapy webu
+**Obrázek 2**: přidání stránek ASP.NET pro kurzy související se zprostředkovatelem mapy webu
 
-Vzhledem k tomu, že existuje pouze jeden kurz v této části, budeme zadávat nepotřebujete `Default.aspx` seznam v části s kurzech. Místo toho `Default.aspx` kategorií se zobrazí v ovládacím prvku GridView. To jsme budete řešit v kroku 2.
+Vzhledem k tomu, že je k dispozici pouze jeden kurz pro tuto část, nepotřebujeme `Default.aspx` k vypsání kurzů oddílu s. Místo toho `Default.aspx` zobrazí kategorie v ovládacím prvku GridView. Budeme to řešit v kroku 2.
 
-Dále, aktualizujte `Web.sitemap` zahrnout odkaz na `Default.aspx` stránky. Konkrétně, přidejte následující kód za ukládání do mezipaměti `<siteMapNode>`:
+Dále aktualizujte `Web.sitemap` tak, aby obsahovaly odkaz na stránku `Default.aspx`. Konkrétně přidejte následující kód po `<siteMapNode>`ukládání do mezipaměti:
 
 [!code-xml[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample1.xml)]
 
-Po aktualizaci `Web.sitemap`, věnujte chvíli zobrazit kurzy web prostřednictvím prohlížeče. V nabídce na levé straně nyní obsahuje položku pro tento kurz zprostředkovatele mapy jediný server.
+Po aktualizaci `Web.sitemap`chvíli počkejte, než se zobrazí web kurzy prostřednictvím prohlížeče. Nabídka na levé straně teď obsahuje položku pro jediný kurz pro poskytovatele mapy webu.
 
-![Mapa webu nyní obsahuje záznam pro tento kurz zprostředkovatele mapy webu](building-a-custom-database-driven-site-map-provider-vb/_static/image3.gif)
+![Mapa webu teď obsahuje položku kurzu pro poskytovatele mapy webu.](building-a-custom-database-driven-site-map-provider-vb/_static/image3.gif)
 
-**Obrázek 3**: Mapa webu nyní obsahuje záznam pro tento kurz zprostředkovatele mapy webu
+**Obrázek 3**: Mapa webu teď obsahuje položku kurzu pro poskytovatele mapy webu.
 
-Tento kurz s hlavní fokus je pro ilustraci vlastního zprostředkovatele mapy webu vytváření a konfigurace webové aplikace k používání tohoto zprostředkovatele. Zejména vytvoříme poskytovatele, který vrátí mapy webu, který obsahuje kořenový uzel společně s uzlem pro každou kategorii a produkt, jak je znázorněno na obrázku 1. Obecně platí může každý uzel v mapě webu zadejte adresu URL. Pro naše Mapa webu, bude mít adresu URL uzlu s kořenové `~/SiteMapProvider/Default.aspx`, který zobrazí seznam všech kategorií v databázi. Každý uzel kategorie v mapě webu bude mít adresu URL, která odkazuje na `~/SiteMapProvider/ProductsByCategory.aspx?CategoryID=categoryID`, který se zobrazí všechny produkty v zadaném *categoryID*. A konečně, bude každý uzel mapy webu produktu přejděte na `~/SiteMapProvider/ProductDetails.aspx?ProductID=productID`, který se zobrazí podrobnosti o konkrétním produktu s.
+V tomto kurzu s hlavním fokusem je znázornění vytvoření vlastního poskytovatele mapy webu a konfigurace webové aplikace pro použití tohoto poskytovatele. Konkrétně sestavíme poskytovatele, který vrátí mapu webu, která obsahuje kořenový uzel společně s uzlem pro každou kategorii a produkt, jak je znázorněno na obrázku 1. Obecně platí, že každý uzel v mapě webu může určovat adresu URL. Pro naši mapu webu bude `~/SiteMapProvider/Default.aspx`adresa URL kořenového uzlu, která bude obsahovat seznam všech kategorií v databázi. U každého uzlu kategorie v mapě webu bude uvedena adresa URL, která odkazuje na `~/SiteMapProvider/ProductsByCategory.aspx?CategoryID=categoryID`. zobrazí se seznam všech produktů v zadaném *poli ČísloKategorie*. Nakonec bude každý uzel mapa webu produktu ukazovat na `~/SiteMapProvider/ProductDetails.aspx?ProductID=productID`, ve kterém se zobrazí konkrétní podrobnosti o produktu.
 
-Chcete-li spustit potřebujeme vytvořit `Default.aspx`, `ProductsByCategory.aspx`, a `ProductDetails.aspx` stránky. Tyto stránky se provádí v kroku 2, 3 a 4, v uvedeném pořadí. Protože těžiště tohoto kurzu je na poskytovatelé map webu, a od poslední kurzy pokryli vytváření sestav se tyto druhy vícestránkového záznamů master/detail jsme se hurry prostřednictvím kroky 2 až 4. Pokud potřebujete občerstvit o vytváření záznamů master/detail sestav, které přesahují délku jedné stránky, vraťte se do [filtrování záznamů Master/Detail napříč dvěma stránkami](../masterdetail/master-detail-filtering-across-two-pages-vb.md) kurzu.
+Abychom mohli začít, musíme vytvořit `Default.aspx`, `ProductsByCategory.aspx`a `ProductDetails.aspx` stránky. Tyto stránky jsou dokončeny v krocích 2, 3 a 4 v uvedeném pořadí. Vzhledem k tomu, že je tah tohoto kurzu na poskytovatelích mapy webu a vzhledem k tomu, že minulé kurzy pokryly vytváření těchto seřazení vícestránkových sestav s více stránkami a podrobnostmi, budeme Pospěšte si prostřednictvím kroků 2 až 4. Pokud potřebujete aktualizační program pro vytváření sestav hlavní/podrobnosti, které jsou rozloženy na více stránkách, přečtěte si kurz pro [filtrování hlavní/podrobnosti na dvou stránkách](../masterdetail/master-detail-filtering-across-two-pages-vb.md) .
 
-## <a name="step-2-displaying-a-list-of-categories"></a>Krok 2: Zobrazení seznamu kategorií
+## <a name="step-2-displaying-a-list-of-categories"></a>Krok 2: zobrazení seznamu kategorií
 
-Otevřít `Default.aspx` stránku `SiteMapProvider` složky a GridView přetáhněte z panelu nástrojů do Návrháře nastavení jeho `ID` k `Categories`. Z inteligentních značek GridView s vázat na nového prvku ObjectDataSource s názvem `CategoriesDataSource` a nakonfigurujte ho tak, aby jej obnoví svoje data pomocí `CategoriesBLL` třída s `GetCategories` metody. Od tohoto ovládacího prvku GridView stačí zobrazí kategorie a neposkytuje funkce pro úpravu dat, nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
+Otevřete stránku `Default.aspx` ve složce `SiteMapProvider` a přetáhněte prvek GridView z panelu nástrojů do návrháře a nastavte jeho `ID` na `Categories`. Z inteligentní značky GridView s, navažte ji na nový prvek ObjectDataSource s názvem `CategoriesDataSource` a nakonfigurujte ho tak, aby se jeho data navázala pomocí metody `GetCategories` `CategoriesBLL` třídy s. Vzhledem k tomu, že tento prvek GridView pouze zobrazí kategorie a neposkytuje možnosti změny dat, nastavte rozevírací seznamy na kartách aktualizace, vložení a odstranění na hodnotu (žádné).
 
-[![Konfigurace ObjectDataSource vrátit kategorií pomocí GetCategories – metoda](building-a-custom-database-driven-site-map-provider-vb/_static/image4.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image3.png)
+[![nakonfigurovat prvek ObjectDataSource tak, aby vracel kategorie pomocí metody GetCategories](building-a-custom-database-driven-site-map-provider-vb/_static/image4.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image3.png)
 
-**Obrázek 4**: Konfigurace ObjectDataSource vrátit pomocí kategorií `GetCategories` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image4.png))
+**Obrázek 4**: Konfigurace prvku ObjectDataSource tak, aby vracela kategorie pomocí metody `GetCategories` ([kliknutím zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image4.png))
 
-[![Nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný)](building-a-custom-database-driven-site-map-provider-vb/_static/image5.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image5.png)
+[![nastavení rozevíracích seznamů na kartách aktualizace, vložení a odstranění na (žádné)](building-a-custom-database-driven-site-map-provider-vb/_static/image5.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image5.png)
 
-**Obrázek 5**: Nastavte rozevírací seznam obsahuje v UPDATE, INSERT a odstranit záložky (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image6.png))
+**Obrázek 5**: nastavení rozevíracích seznamů na kartách aktualizace, vložení a odstranění na (žádné) ([kliknutím zobrazíte obrázek v plné velikosti).](building-a-custom-database-driven-site-map-provider-vb/_static/image6.png)
 
-Po dokončení Průvodce nakonfigurovat zdroj dat, sada Visual Studio přidá vlastnost BoundField pro `CategoryID`, `CategoryName`, `Description`, `NumberOfProducts`, a `BrochurePath`. Upravte prvku GridView, tak, aby obsahoval pouze `CategoryName` a `Description` BoundFields a aktualizovat `CategoryName` Vlastnost BoundField s `HeaderText` vlastnosti do kategorií.
+Po dokončení Průvodce konfigurací zdroje dat přidá Visual Studio vlastnost BoundField pro `CategoryID`, `CategoryName`, `Description`, `NumberOfProducts`a `BrochurePath`. Upravte prvek GridView tak, že obsahuje pouze `CategoryName` a `Description` BoundFields a aktualizujte vlastnost `HeaderText` `CategoryName` vlastnost BoundField s na kategorii.
 
-V dalším kroku přidejte HyperLinkField a umístěte ho tak, že s pole nejvíce vlevo. Nastavte `DataNavigateUrlFields` vlastnost `CategoryID` a `DataNavigateUrlFormatString` vlastnost `~/SiteMapProvider/ProductsByCategory.aspx?CategoryID={0}`. Nastavte `Text` vlastnost zobrazit produkty.
+Dále přidejte HyperLinkField a umístěte ji tak, aby byla v poli nejvíce vlevo. Vlastnost `DataNavigateUrlFields` nastavte na `CategoryID` a vlastnost `DataNavigateUrlFormatString` na `~/SiteMapProvider/ProductsByCategory.aspx?CategoryID={0}`. Pro zobrazení produktů nastavte vlastnost `Text`.
 
-![Přidat HyperLinkField do kategorií GridView](building-a-custom-database-driven-site-map-provider-vb/_static/image6.gif)
+![Přidání HyperLinkField do kategorií GridView](building-a-custom-database-driven-site-map-provider-vb/_static/image6.gif)
 
-**Obrázek 6**: Přidat HyperLinkField k `Categories` GridView
+**Obrázek 6**: Přidání prvku HyperLinkField do prvku GridView `Categories`
 
-Po vytvoření ObjectDataSource a přizpůsobení polí s ovládacího prvku GridView, dva ovládací prvky deklarativní bude vypadat nějak takto:
+Po vytvoření prvku ObjectDataSource a přizpůsobení polí GridViewu budou tyto dva ovládací prvky deklarativním označením vypadat takto:
 
 [!code-aspx[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample2.aspx)]
 
-Obrázek 7 znázorňuje `Default.aspx` při prohlížení prostřednictvím prohlížeče. Kliknutím na kategorii s zobrazit produkty odkaz vás nasměruje na `ProductsByCategory.aspx?CategoryID=categoryID`, který vytvoříme v kroku 3.
+Obrázek 7 zobrazuje `Default.aspx` při prohlížení v prohlížeči. Kliknutím na odkaz Zobrazit produkty ve kategoriích přejdete na `ProductsByCategory.aspx?CategoryID=categoryID`, které budeme sestavit v kroku 3.
 
-[![Každá kategorie je uvedený spolu s odkazem produkty zobrazení](building-a-custom-database-driven-site-map-provider-vb/_static/image7.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image7.png)
+[![je každá kategorie uvedená spolu s odkazem Zobrazit produkty.](building-a-custom-database-driven-site-map-provider-vb/_static/image7.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image7.png)
 
-**Obrázek 7**: Každá kategorie je uvedený spolu s odkazem Zobrazit produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image8.png))
+**Obrázek 7**: Každá kategorie je uvedena spolu s odkazem Zobrazit produkty ([kliknutím zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image8.png)).
 
-## <a name="step-3-listing-the-selected-category-s-products"></a>Krok 3: Výpis produktů s vybranou kategorii.
+## <a name="step-3-listing-the-selected-category-s-products"></a>Krok 3: výpis vybraných produktů kategorie s
 
-Otevřít `ProductsByCategory.aspx` stránce a přidejte prvku GridView, jeho pojmenování `ProductsByCategory`. Z inteligentních značek, svázání prvku GridView nového prvku ObjectDataSource s názvem `ProductsByCategoryDataSource`. Konfigurace ObjectDataSource používat `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metoda a nastavte rozevíracího seznamu jsou uvedeny na (žádný) na kartách UPDATE, INSERT a DELETE.
+Otevřete stránku `ProductsByCategory.aspx` a přidejte prvek GridView a pojmenujte ho `ProductsByCategory`. Z jeho inteligentní značky svažte prvek GridView s novým prvkem ObjectDataSource s názvem `ProductsByCategoryDataSource`. Nastavte prvek ObjectDataSource na použití `GetProductsByCategoryID(categoryID)` metody `ProductsBLL` třídy s a nastavte rozevírací seznamy na (žádné) na kartách aktualizace, vložení a odstranění.
 
-[![Pomocí této metody s GetProductsByCategoryID(categoryID) ProductsBLL třídy](building-a-custom-database-driven-site-map-provider-vb/_static/image8.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image9.png)
+[![použít metodu ProductsBLL třídy s GetProductsByCategoryID (KódKategorie)](building-a-custom-database-driven-site-map-provider-vb/_static/image8.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image9.png)
 
-**Obrázek 8**: Použití `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image10.png))
+**Obrázek 8**: použijte metodu `GetProductsByCategoryID(categoryID)` `ProductsBLL` třídy s ([kliknutím zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image10.png)).
 
-V posledním kroku v průvodci Konfigurace zdroje dat zobrazí výzvu k zadání parametrů zdroj pro *categoryID*. Protože tyto informace se předává pole řetězce dotazu `CategoryID`vyberte řetězce dotazu z rozevíracího seznamu a zadejte ID kategorie v textovém poli vlastnost QueryStringField, jak je znázorněno na obrázku 9. Kliknutím na Dokončit dokončíte průvodce.
+Poslední krok v Průvodci konfigurací zdroje dat vyzve k zadání zdroje parametru pro *KódKategorie*. Vzhledem k tomu, že tyto informace jsou předány pomocí pole QueryString `CategoryID`, v rozevíracím seznamu vyberte hodnotu QueryString a do textového pole vlastnost QueryStringField zadejte KódKategorie, jak je znázorněno na obrázku 9. Kliknutím na Dokončit dokončete průvodce.
 
-[![Použijte pole řetězce dotazu ID kategorie pro ID kategorie parametr](building-a-custom-database-driven-site-map-provider-vb/_static/image9.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image11.png)
+[![použít pole QueryString dotazu KódKategorie pro parametr KódKategorie](building-a-custom-database-driven-site-map-provider-vb/_static/image9.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image11.png)
 
-**Obrázek 9**: Použití `CategoryID` pro pole řetězce dotazu *categoryID* parametr ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image12.png))
+**Obrázek 9**: použijte pole `CategoryID` QueryString pro parametr *CategoryID* ([kliknutím zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image12.png)).
 
-Po dokončení průvodce, Visual Studio přidá odpovídající BoundFields a třídě CheckBoxField do prvku GridView pro datová pole produktu. Odeberte všechny kromě na `ProductName`, `UnitPrice`, a `SupplierName` BoundFields. Přizpůsobit tyto tři BoundFields `HeaderText` vlastností ke čtení produktu, ceny a dodavatele, v uvedeném pořadí. Formát `UnitPrice` Vlastnost BoundField jako měnu.
+Po dokončení Průvodce přidá Visual Studio odpovídající BoundFields a třídě CheckBoxField podporována do prvku GridView pro pole dat produktu. Odeberte všechny kromě `ProductName`, `UnitPrice`a `SupplierName` BoundFields. Přizpůsobte tyto tři BoundFields `HeaderText` vlastností, abyste si mohli přečíst produkt, cenu a dodavatele v uvedeném pořadí. Naformátujte `UnitPrice` vlastnost BoundField jako měnu.
 
-V dalším kroku přidejte HyperLinkField a přesunout na pozici nejvíce vlevo. Nastavte jeho `Text` vlastnosti chcete zobrazit podrobnosti, jeho `DataNavigateUrlFields` vlastnost `ProductID`a jeho `DataNavigateUrlFormatString` vlastnost `~/SiteMapProvider/ProductDetails.aspx?ProductID={0}`.
+Dále přidejte HyperLinkField a přesuňte ji do nejvyšší pozice. Vlastnost `Text` nastavte na hodnotu Zobrazit podrobnosti, její vlastnost `DataNavigateUrlFields` na `ProductID`a její vlastnost `DataNavigateUrlFormatString` na `~/SiteMapProvider/ProductDetails.aspx?ProductID={0}`.
 
-![Přidat podrobnosti HyperLinkField zobrazení, který odkazuje na ProductDetails.aspx](building-a-custom-database-driven-site-map-provider-vb/_static/image10.gif)
+![Přidejte podrobnosti zobrazení HyperLinkField, které odkazuje na ProductDetails. aspx.](building-a-custom-database-driven-site-map-provider-vb/_static/image10.gif)
 
-**Obrázek 10**: Přidat podrobnosti HyperLinkField zobrazení, která odkazuje na `ProductDetails.aspx`
+**Obrázek 10**: Přidání podrobností zobrazení HyperLinkField, které odkazuje na `ProductDetails.aspx`
 
-Po provedení tyto úpravy, ovládacími prvky GridView a prvku ObjectDataSource s deklarativní by měl vypadat takto:
+Po provedení těchto úprav by deklarativní označení GridView a ObjectDataSource s mělo vypadat takto:
 
 [!code-aspx[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample3.aspx)]
 
-Vraťte se do zobrazení `Default.aspx` prostřednictvím prohlížeče a klikněte na Zobrazit produkty odkaz nápoje. Tím přejdete na `ProductsByCategory.aspx?CategoryID=1`, zobrazení názvy, ceny a dodavatelů, produkty, které patří do kategorie Nápoje databáze Northwind (viz obrázek 11). Nebojte se dál vylepšit tuto stránku a obsahovat odkaz pro návrat na stránku výpis kategorie uživatelů (`Default.aspx`) a ovládacího prvku DetailsView nebo FormView zobrazující vybranou kategorii s název a popis.
+Vraťte se do zobrazení `Default.aspx` přes prohlížeč a klikněte na odkaz Zobrazit produkty pro nápoje. Tím přejdete na `ProductsByCategory.aspx?CategoryID=1`a zobrazí se názvy, ceny a dodavatelé produktů v databázi Northwind, které patří do kategorie nápoje (viz obrázek 11). Tuto stránku můžete dál vylepšit tak, aby obsahovala odkaz pro vracení uživatelů na stránku seznamu kategorií (`Default.aspx`) a ovládací prvek DetailsView nebo FormView, který zobrazuje název a Popis kategorie s názvem.
 
-[![Jsou zobrazeny názvy nápoje, ceny a dodavatelů](building-a-custom-database-driven-site-map-provider-vb/_static/image11.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image13.png)
+[![se zobrazí názvy nápojů, ceny a dodavatelé.](building-a-custom-database-driven-site-map-provider-vb/_static/image11.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image13.png)
 
-**Obrázek 11**: Jsou zobrazeny názvy nápoje, ceny a dodavatelů ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image14.png))
+**Obrázek 11**: zobrazí se názvy nápojů, ceny a dodavatelé ([kliknutím zobrazíte obrázek v plné velikosti).](building-a-custom-database-driven-site-map-provider-vb/_static/image14.png)
 
-## <a name="step-4-showing-a-product-s-details"></a>Krok 4: Zobrazuje podrobnosti o produktu s
+## <a name="step-4-showing-a-product-s-details"></a>Krok 4: zobrazení podrobností o produktu
 
-Na poslední stránce `ProductDetails.aspx`, se zobrazí podrobnosti vybrané produkty. Otevřít `ProductDetails.aspx` a DetailsView přetáhněte z panelu nástrojů do návrháře. Nastavit prvek DetailsView s `ID` vlastnost `ProductInfo` a vymažte její `Height` a `Width` hodnot vlastností. Z inteligentních značek, svázat s ovládacím prvku DetailsView nového prvku ObjectDataSource s názvem `ProductDataSource`, konfigurace ObjectDataSource přebírat jeho data ze `ProductsBLL` třída s `GetProductByProductID(productID)` metody. Stejně jako u předchozí webových stránek vytvořených v krocích 2 a 3, nastavte rozevírací seznamy v UPDATE, INSERT a odstranit karty na (žádný).
+Poslední stránka, `ProductDetails.aspx`, zobrazí vybrané podrobnosti o produktech. Otevřete `ProductDetails.aspx` a přetáhněte prvek DetailsView z panelu nástrojů na Návrhář. Nastavte vlastnost `ID` ovládacího prvku DetailsView na `ProductInfo` a vymažte hodnoty vlastností `Height` a `Width`. Z jeho inteligentní značky navažte prvek DetailsView na nový prvek ObjectDataSource s názvem `ProductDataSource`a nakonfigurujte prvek ObjectDataSource, aby vyčetl data z metody `GetProductByProductID(productID)` `ProductsBLL` třídy s. Stejně jako u předchozích webových stránek vytvořených v krocích 2 a 3 nastavte rozevírací seznamy na kartách aktualizace, vložení a odstranění na (žádné).
 
-[![Konfigurace ObjectDataSource GetProductByProductID(productID) metody](building-a-custom-database-driven-site-map-provider-vb/_static/image12.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image15.png)
+[![nakonfigurovat prvek ObjectDataSource na použití metody GetProductByProductID (productID)](building-a-custom-database-driven-site-map-provider-vb/_static/image12.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image15.png)
 
-**Obrázek 12**: Konfigurace ObjectDataSource k použití `GetProductByProductID(productID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image16.png))
+**Obrázek 12**: Konfigurace prvku ObjectDataSource pro použití metody `GetProductByProductID(productID)` ([kliknutím zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image16.png))
 
-Poslední krok v průvodci Konfigurace zdroje dat zobrazí výzvu k zadání zdroj *productID* parametru. Protože tato data prochází pole řetězce dotazu `ProductID`, nastavte rozevírací seznam na řetězce dotazu a vlastnost QueryStringField textového pole na ProductID. Nakonec kliknutím na tlačítko Dokončit dokončete průvodce.
+Poslední krok průvodce konfigurací zdroje dat vyzve k zadání zdroje parametru *ProductID* . Vzhledem k tomu, že tato data přicházejí pomocí pole QueryString `ProductID`, nastavte rozevírací seznam na QueryString a textové pole vlastnost QueryStringField na ProductID. Nakonec kliknutím na tlačítko Dokončit průvodce dokončete.
 
-[![Konfigurace productID parametr načítat jeho hodnotu z pole řetězce dotazu ProductID](building-a-custom-database-driven-site-map-provider-vb/_static/image13.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image17.png)
+[![nakonfigurovat parametr productID, aby vyčetl svou hodnotu z pole ProductID QueryString.](building-a-custom-database-driven-site-map-provider-vb/_static/image13.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image17.png)
 
-**Obrázek 13**: Konfigurace *productID* o přijetí změn svou hodnotu z parametru `ProductID` pole řetězce dotazu ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image18.png))
+**Obrázek 13**: Konfigurace parametru *ProductID* , který načte svou hodnotu z pole `ProductID` QueryString ([kliknutím zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image18.png))
 
-Po dokončení Průvodce nakonfigurovat zdroj dat, vytvoří Visual Studio odpovídající BoundFields a třídě CheckBoxField v ovládacím prvku DetailsView pro datová pole produktu. Odeberte `ProductID`, `SupplierID`, a `CategoryID` BoundFields a nakonfigurujte zbývající pole podle svých potřeb. Po několika aesthetic konfigurace my DetailsView a prvku ObjectDataSource s deklarativní vypadal následující:
+Po dokončení Průvodce konfigurací zdroje dat vytvoří Visual Studio odpovídající BoundFields a třídě CheckBoxField podporována v ovládacím prvku pro pole dat produktu. Odeberte `ProductID`, `SupplierID`a `CategoryID` BoundFields a nakonfigurujte zbývající pole podle potřeby. Po několiki estetických konfigurací je můj ovládací prvek DetailsView a ObjectDataSource s podobným kódem jako následující:
 
 [!code-aspx[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample4.aspx)]
 
-Chcete-li otestovat tuto stránku, vraťte se na `Default.aspx` a klikněte na Zobrazit produkty pro kategorie Nápoje. V seznamu nápoje produktů, klikněte na odkaz zobrazit podrobnosti pro Chai čaje. Tím přejdete na `ProductDetails.aspx?ProductID=1`, zobrazí s Chai čaje podrobnosti (viz obrázek 14).
+Tuto stránku otestujete tak, že se vrátíte do `Default.aspx` a kliknete na Zobrazit produkty pro kategorii nápoje. Ze seznamu nápojových produktů klikněte na odkaz Zobrazit podrobnosti pro Chai čaj. Tím přejdete na `ProductDetails.aspx?ProductID=1`, které zobrazí podrobnosti Chai čaj s (viz obrázek 14).
 
-[![Zobrazí se Chai čaje s dodavatel, kategorie, ceny a dalších informací](building-a-custom-database-driven-site-map-provider-vb/_static/image14.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image19.png)
+[Zobrazí se ![Chai čaj s dodavatel, kategorie, cena a další informace.](building-a-custom-database-driven-site-map-provider-vb/_static/image14.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image19.png)
 
-**Obrázek 14**: Chai čaje s dodavatel, kategorie, ceny a další informace se zobrazí ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image20.png))
+**Obrázek 14**: zobrazí se hodnota Chai čaj s, kategorie, ceny a další informace ([kliknutím zobrazíte obrázek v plné velikosti).](building-a-custom-database-driven-site-map-provider-vb/_static/image20.png)
 
-## <a name="step-5-understanding-the-inner-workings-of-a-site-map-provider"></a>Krok 5: Principy vnitřní fungování zprostředkovatele mapy webu
+## <a name="step-5-understanding-the-inner-workings-of-a-site-map-provider"></a>Krok 5: princip interních pracovních kroků poskytovatele mapy webu
 
-Mapa webu reprezentované v paměti webového serveru s jako kolekci `SiteMapNode` instancí, které tvoří hierarchii. Musí být přesně jeden kořenový, všechny uzly nekořenovými musí obsahovat přesně jeden nadřazený uzel a všechny uzly mohou mít libovolný počet podřízené položky. Každý `SiteMapNode` objekt představuje oddíl ve struktuře webu s; tyto části běžně mít odpovídající webové stránky. V důsledku toho [ `SiteMapNode` třídy](https://msdn.microsoft.com/library/system.web.sitemapnode.aspx) má vlastnosti, jako je `Title`, `Url`, a `Description`, které poskytují informace o části `SiteMapNode` představuje. K dispozici je také `Key` vlastnost, která jednoznačně identifikuje každý `SiteMapNode` v hierarchii, jakož i vlastnosti, které používá k navázání této hierarchie `ChildNodes`, `ParentNode`, `NextSibling`, `PreviousSibling`a tak dále.
+Mapa webu je reprezentovaná v paměti webového serveru jako kolekce instancí `SiteMapNode`, které tvoří hierarchii. Musí existovat přesně jeden kořen, všechny nekořenové uzly musí mít přesně jeden nadřazený uzel a všechny uzly mohou mít libovolný počet podřízených objektů. Každý objekt `SiteMapNode` představuje oddíl ve struktuře webu. Tyto oddíly často obsahují odpovídající webovou stránku. V důsledku toho má [třída`SiteMapNode`](https://msdn.microsoft.com/library/system.web.sitemapnode.aspx) vlastnosti jako `Title`, `Url`a `Description`, které poskytují informace pro oddíl, který `SiteMapNode` představuje. K dispozici je také vlastnost `Key`, která jednoznačně identifikuje každý `SiteMapNode` v hierarchii a také vlastnosti používané k vytvoření této hierarchie `ChildNodes`, `ParentNode`, `NextSibling`, `PreviousSibling`a tak dále.
 
-Obrázek 15 znázorňuje strukturu obecný web mapování z obrázku 1, ale s šrafují podrobně jemnější podrobnosti implementace.
+Obrázek 15 ukazuje obecnou strukturu mapy webu z obrázku 1, ale podrobné informace o implementaci jsou vysvětlené podrobněji.
 
-[![Každý SiteMapNode má vlastnosti jako název, adresu Url, klíč a tak dále](building-a-custom-database-driven-site-map-provider-vb/_static/image16.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image15.gif)
+[![každý oddíl SiteMapNode má vlastnosti, jako je název, adresa URL, klíč a tak dále.](building-a-custom-database-driven-site-map-provider-vb/_static/image16.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image15.gif)
 
-**Obrázek 15**: Každý `SiteMapNode` má vlastnosti jako `Title`, `Url`, `Key`, a tak dále ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image17.gif))
+**Obrázek 15**: každá `SiteMapNode` má vlastnosti jako `Title`, `Url`, `Key`a tak dále ([kliknutím zobrazíte obrázek v plné velikosti).](building-a-custom-database-driven-site-map-provider-vb/_static/image17.gif)
 
-Mapa webu je přístupný prostřednictvím [ `SiteMap` třídy](https://msdn.microsoft.com/library/system.web.sitemap.aspx) v [ `System.Web` obor názvů](https://msdn.microsoft.com/library/system.web.aspx). Tato třída s `RootNode` vlastnost vrací mapy s kořenového webu `SiteMapNode` instance; `CurrentNode` vrátí `SiteMapNode` jehož `Url` vlastnost odpovídá adrese URL aktuálně požadovanou stránku. Tato třída se používá interně ve webové ovládací prvky pro navigaci s ASP.NET 2.0.
+Mapa webu je přístupná prostřednictvím [třídy`SiteMap`](https://msdn.microsoft.com/library/system.web.sitemap.aspx) v [oboru názvů`System.Web`](https://msdn.microsoft.com/library/system.web.aspx). Tato vlastnost `RootNode` třídy vrací instanci kořenového `SiteMapNode` mapy webu. `CurrentNode` vrátí `SiteMapNode`, jehož vlastnost `Url` odpovídá adrese URL aktuálně požadované stránky. Tato třída se používá interně pro navigační webové ovládací prvky ASP.NET 2,0 s.
 
-Když `SiteMap` vlastnosti třídy s přistupuje, se musí serializovat strukturu mapy webu z některých trvalou média do paměti. Ale logiky serializace mapy webu není pevný zakódovaný do `SiteMap` třídy. Místo toho v době běhu `SiteMap` určuje třídy, které mapy webu *poskytovatele* pro serializaci. Ve výchozím nastavení [ `XmlSiteMapProvider` třída](https://msdn.microsoft.com/library/system.web.xmlsitemapprovider.aspx) se používá, která čte mapu s struktury webu ze souboru XML správně naformátovaná. Však stačí nepatrné práce, můžeme vytvořit vlastní vlastního zprostředkovatele mapy webu.
+Pokud jsou k dispozici vlastnosti `SiteMap` třídy, musí serializovat strukturu mapy webu z nějakého trvalého média do paměti. Logika serializace mapy webu však není pevně zakódována do `SiteMap` třídy. Místo toho je za běhu `SiteMap` třída určit, který *poskytovatel* mapy webu se má použít pro serializaci. Ve výchozím nastavení se používá [třída`XmlSiteMapProvider`](https://msdn.microsoft.com/library/system.web.xmlsitemapprovider.aspx) , která čte strukturu map webu ze správně formátovaného souboru XML. Nicméně s trochou práce můžeme vytvořit vlastního poskytovatele mapy webu.
 
-Všichni poskytovatelé map webu musí být odvozen od [ `SiteMapProvider` třída](https://msdn.microsoft.com/library/system.web.sitemapprovider.aspx), což zahrnuje základní metody a vlastnosti potřebné pro server mapování poskytovatele, ale vynechá řadu podrobnosti implementace. Druhá třída [ `StaticSiteMapProvider` ](https://msdn.microsoft.com/library/system.web.staticsitemapprovider.aspx), rozšiřuje `SiteMapProvider` třída a obsahuje více robustní provádění požadovaných funkcí. Interně `StaticSiteMapProvider` ukládá `SiteMapNode` instance serveru namapovat ve `Hashtable` a poskytuje metody, jako jsou `AddNode(child, parent)`, `RemoveNode(siteMapNode),` a `Clear()` , přidávat a odebírat `SiteMapNode` s vnitřní `Hashtable`. `XmlSiteMapProvider` je odvozen z `StaticSiteMapProvider`.
+Všichni poskytovatelé map webu musí být odvozeni od [`SiteMapProvider` třídy](https://msdn.microsoft.com/library/system.web.sitemapprovider.aspx), která zahrnuje základní metody a vlastnosti potřebné pro poskytovatele mapy webu, ale vynechává mnoho podrobností implementace. Druhá třída, [`StaticSiteMapProvider`](https://msdn.microsoft.com/library/system.web.staticsitemapprovider.aspx), rozšiřuje třídu `SiteMapProvider` a obsahuje robustnější implementaci potřebných funkcí. Interně `StaticSiteMapProvider` ukládá `SiteMapNode` instance mapy webu do `Hashtable` a poskytuje metody jako `AddNode(child, parent)`, `RemoveNode(siteMapNode),` a `Clear()`, které přidávají a odstraňují `SiteMapNode` s interní `Hashtable`. `XmlSiteMapProvider` je odvozen z `StaticSiteMapProvider`.
 
-Při vytváření vlastního zprostředkovatele mapy webu, který rozšiřuje `StaticSiteMapProvider`, existují dvě abstraktní metody, které se musí přepsat: [ `BuildSiteMap` ](https://msdn.microsoft.com/library/system.web.staticsitemapprovider.buildsitemap.aspx) a [ `GetRootNodeCore` ](https://msdn.microsoft.com/library/system.web.sitemapprovider.getrootnodecore.aspx). `BuildSiteMap`, jak již název napovídá, zodpovídá za načítání strukturu mapy webu z trvalého úložiště a vytvářet v paměti. `GetRootNodeCore` Vrátí kořenový uzel mapy webu.
+Při vytváření vlastního poskytovatele mapy webu, který rozšiřuje `StaticSiteMapProvider`, existují dvě abstraktní metody, které musí být přepsány: [`BuildSiteMap`](https://msdn.microsoft.com/library/system.web.staticsitemapprovider.buildsitemap.aspx) a [`GetRootNodeCore`](https://msdn.microsoft.com/library/system.web.sitemapprovider.getrootnodecore.aspx). `BuildSiteMap`, jak název naznačuje, zodpovídá za načtení struktury mapy webu z trvalého úložiště a jeho sestavení v paměti. `GetRootNodeCore` vrátí kořenový uzel na mapě webu.
 
-Před webové aplikace můžete použít zprostředkovatele mapy webu, který musí být zaregistrovaný v konfiguraci aplikace s. Ve výchozím nastavení `XmlSiteMapProvider` třída je registrována pomocí názvu `AspNetXmlSiteMapProvider`. Registrace zprostředkovatele mapy další lokality, přidejte následující kód k `Web.config`:
+Než může webová aplikace použít poskytovatele mapy webu, musí být zaregistrovaná v konfiguraci aplikace. Ve výchozím nastavení je třída `XmlSiteMapProvider` registrována pomocí `AspNetXmlSiteMapProvider`názvu. Chcete-li zaregistrovat další poskytovatele map webu, přidejte následující kód pro `Web.config`:
 
 [!code-xml[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample5.xml)]
 
-*Název* hodnotu přiřadí popisný název zprostředkovatele při *typ* Určuje typ plně kvalifikovaný název zprostředkovatele mapy webu. Ukážeme si některé konkrétní hodnoty *název* a *typ* hodnoty v kroku 7, po jsme vytvořili ve naše vlastního zprostředkovatele mapy webu.
+Hodnota *Name* přiřadí poskytovateli popisný název, zatímco *typ* Určuje plně kvalifikovaný název typu poskytovatele mapy webu. Po vytvoření našeho vlastního poskytovatele mapy webu prozkoumáme konkrétní hodnoty *názvu* a hodnot *typu* v kroku 7.
 
-Třída zprostředkovatele mapy webu je vytvořena instance při prvním je přistupovat z `SiteMap` třídy a zůstanou v paměti dobu životnosti webové aplikace. Vzhledem k tomu, že existuje pouze jedna instance zprostředkovatele mapy webu, které mohou být vyvolány z více, návštěvníkům webu souběžných, je nutné, aby se metody zprostředkovatele s *bezpečné pro vlákna*.
+Je vytvořena instance třídy poskytovatele mapy webu při prvním přístupu z třídy `SiteMap` a zůstane v paměti po dobu životnosti webové aplikace. Vzhledem k tomu, že existuje pouze jedna instance poskytovatele mapy webu, kterou lze vyvolat od více souběžných návštěvníků webu, je nezbytné, aby metody poskytovatele s byly bezpečné pro přístup z více *vláken*.
 
-Pro výkon a škálovatelnost je důležité, že jsme mezipaměti webu v paměti s zmapování struktury a vraťte to do mezipaměti, struktura, místo opětovného vytvoření pokaždé, když `BuildSiteMap` vyvolání metody. `BuildSiteMap` může být volána několikrát za požadavek na stránku na uživatele, v závislosti na navigační ovládací prvky používané na stránce a hloubka strukturu mapy webu. V případě, pokud jsme Neukládat do mezipaměti struktury mapy webu v `BuildSiteMap` pokaždé, když je vyvolána jsme nutné znovu načíst informace o produktu a kategorie z architektury (což by vytvořilo dotaz do databáze). Jak jsme probírali v předchozích kurzech ukládání do mezipaměti, můžete data uložená v mezipaměti stala zastaralými. Z toho důvodu, můžeme použít buď čas - nebo expiries založené na závislost mezipaměti SQL.
+V zájmu výkonu a škálovatelnosti je důležité, abyste do mezipaměti naukládali strukturu mapy lokality v paměti a místo opakovaného vytváření nevytvořili tuto strukturu uloženou v mezipaměti, a to i při každém vyvolání metody `BuildSiteMap`. v závislosti na tom, jaké navigační ovládací prvky se používají na stránce a hloubku struktury mapy webu, může být `BuildSiteMap` pro požadavek na stránku vyvoláno několikrát. Pokud v žádném případě neukládáme do mezipaměti strukturu mapy webu v `BuildSiteMap` pak pokaždé, když se vyvolá, potřebujeme znovu načíst informace o produktech a kategoriích z architektury (což by způsobilo dotaz na databázi). Jak jsme probrali v předchozích kurzech pro ukládání do mezipaměti, můžou být data v mezipaměti zastaralá. V takovém případě můžeme použít buď vypršení platnosti, nebo vypršení platnosti SQL cache založené na závislostech.
 
 > [!NOTE]
-> Volitelně může přepsat zprostředkovatele mapy webu [ `Initialize` metoda](https://msdn.microsoft.com/library/system.web.sitemapprovider.initialize.aspx). `Initialize` je voláno, když při prvním vytvoření instance zprostředkovatele mapy webu a je předán všemi vlastními atributy přiřazené k poskytovateli v `Web.config` v `<add>` prvky jako: `<add name="name" type="type" customAttribute="value" />`. To je užitečné, pokud chcete povolit vývojářům určit různé lokality mapy týkající se poskytovatele nastavení bez nutnosti upravovat kód s zprostředkovatele. Pokud jsme byly čtení dat kategorie a produktů pravděpodobně přímo z databáze nikoli prostřednictvím architektury, jsme d třeba chcete, aby vývojář stránky zadejte připojovací řetězec databáze prostřednictvím `Web.config` místo použití pevně zakódované Hodnota v kódu s zprostředkovatele. Vlastního zprostředkovatele mapy webu vytvoříme v kroku 6 nepřepisuje to `Initialize` metody. Příklad použití `Initialize` metodu, najdete [Jeff Prosise](http://www.wintellect.com/Weblogs/CategoryView,category,Jeff%20Prosise.aspx) s [ukládání mapy webu v systému SQL Server](https://msdn.microsoft.com/msdnmag/issues/05/06/WickedCode/) článku.
+> Poskytovatel mapy webu může volitelně přepsat [metodu`Initialize`](https://msdn.microsoft.com/library/system.web.sitemapprovider.initialize.aspx). `Initialize` se vyvolá při prvním vytvoření instance poskytovatele mapy webu a předává se všem vlastním atributům přiřazeným poskytovateli v `Web.config` v elementu `<add>`, jako je: `<add name="name" type="type" customAttribute="value" />`. To je užitečné, pokud chcete, aby vývojář stránky mohl určit různá nastavení týkající se poskytovatele mapy webu bez nutnosti upravovat kód poskytovatele s. Například pokud jsme načetli data kategorií a produktů přímo z databáze na rozdíl od architektury, je vhodné, aby vývojář stránky místo použití pevně kódované hodnoty v kódu poskytovatele umožnil určit připojovací řetězec databáze prostřednictvím `Web.config`. Vlastní poskytovatel mapy webu, který sestavíme v kroku 6, nepřepisuje tuto metodu `Initialize`. Příklad použití metody `Initialize` najdete v článku [Jan Prosise](http://www.wintellect.com/Weblogs/CategoryView,category,Jeff%20Prosise.aspx) s [uložením map webu v SQL Server](https://msdn.microsoft.com/msdnmag/issues/05/06/WickedCode/) článku.
 
-## <a name="step-6-creating-the-custom-site-map-provider"></a>Krok 6: Vytváří se vlastního zprostředkovatele mapy webu
+## <a name="step-6-creating-the-custom-site-map-provider"></a>Krok 6: Vytvoření vlastního poskytovatele mapy webu
 
-Chcete-li vytvořit vlastního zprostředkovatele mapy webu, který vytváří Mapa webu z kategorie a produkty v databázi Northwind, musíme vytvořit třídu, která rozšiřuje `StaticSiteMapProvider`. V kroku 1 se zobrazuje výzva k přidání `CustomProviders` složky `App_Code` složka – přidejte novou třídu do této složky s názvem `NorthwindSiteMapProvider`. Přidejte následující kód, který `NorthwindSiteMapProvider` třídy:
+Abychom vytvořili vlastního poskytovatele mapy webu, který vytvoří mapu webu z kategorií a produktů v databázi Northwind, musíme vytvořit třídu, která rozšiřuje `StaticSiteMapProvider`. V kroku 1 jste požádali o přidání složky `CustomProviders` do složky `App_Code` – přidejte novou třídu do této složky s názvem `NorthwindSiteMapProvider`. Do `NorthwindSiteMapProvider` třídy přidejte následující kód:
 
 [!code-vb[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample6.vb)]
 
-Umožní s začínat zkoumání této třídy s `BuildSiteMap` metodu, která začíná [ `lock` příkaz](https://msdn.microsoft.com/library/c5kehkcz.aspx). `lock` Příkaz povoluje jenom jedno vlákno najednou zadat, a tím serializace přístup k jeho kódu a zabraňuje krokování na prstech s sebou dvou souběžných vláken.
+Pojďme začít prozkoumávat tuto metodu `BuildSiteMap` třídy, která začíná [příkazem`lock`](https://msdn.microsoft.com/library/c5kehkcz.aspx). Příkaz `lock` umožňuje zadat pouze jedno vlákno v čase, a tím i serializaci přístupu ke svému kódu a zabránění dvěma souběžným vláknům z krokování na jednom dalším nohou.
 
-Úrovni třídy `SiteMapNode` proměnnou `root` se používá k ukládání do mezipaměti strukturu mapy webu. Když poprvé nebo poprvé po podkladová data byla změněna, mapy webu `root` bude `Nothing` a částka se vypočte strukturu mapy webu. Kořenový uzel mapy s lokalitě přiřazen `root` během procesu vytváření se nazývá procesu tak, aby příště tuto metodu, `root` nebudou `Nothing`. V důsledku toho tak dlouho, dokud `root` není `Nothing` strukturu mapy webu bude vrácen volajícímu bez nutnosti znovu ho vytvořte.
+`root` `SiteMapNode` proměnné na úrovni třídy slouží k ukládání struktury mapy webu do mezipaměti. Když je mapa webu vytvořena poprvé nebo poprvé po změně podkladových dat, `root` bude `Nothing` a bude vytvořena struktura mapy webu. Kořenový uzel map webu s je přiřazen `root` během procesu vytváření, takže při příštím volání této metody `root` nebude `Nothing`. Proto pokud `root` není `Nothing` struktura mapy webu se vrátí volajícímu, aniž by ji museli znovu vytvořit.
 
-Pokud je kořenový `Nothing`, strukturu mapy webu je vytvořený z informací o produktu a kategorie. Mapa webu je sestaven tak, že vytvoříte `SiteMapNode` instancí a pak tvoří hierarchii pomocí volání `StaticSiteMapProvider` třída s `AddNode` metoda. `AddNode` provádí se účetnictví ukládání různé `SiteMapNode` instance `Hashtable`. Než začneme, vytváření hierarchie, začneme voláním `Clear` metodu, která vymaže prvky z vnitřní `Hashtable`. Dále `ProductsBLL` třída s `GetProducts` metoda a výsledné `ProductsDataTable` jsou uloženy v místní proměnné.
+Pokud je kořen `Nothing`, vytvoří se struktura mapy webu z informací o produktu a kategorii. Mapa webu je sestavena vytvořením instancí `SiteMapNode` a následným vytvořením hierarchie prostřednictvím volání metody `AddNode` `StaticSiteMapProvider` třídy s. `AddNode` provádí interní účetnictví a ukládá instance `SiteMapNode` roztříděné do `Hashtable`. Předtím, než začneme sestavovat hierarchii, začneme voláním metody `Clear`, která vymaže prvky z interního `Hashtable`. Dále je metoda `ProductsBLL` třídy s `GetProducts` a výsledná `ProductsDataTable` uložená v místních proměnných.
 
-Konstrukce mapy s lokality začne vytvořením kořenový uzel a ji přiřadíte `root`. Přetížení [ `SiteMapNode` konstruktor s](https://msdn.microsoft.com/library/system.web.sitemapnode.sitemapnode.aspx) používá zde a v rámci tohoto `BuildSiteMap` se předá tyto informace:
+Konstrukce mapy webu začíná vytvořením kořenového uzlu a jeho přiřazením `root`. Přetížení [konstruktoru`SiteMapNode` s](https://msdn.microsoft.com/library/system.web.sitemapnode.sitemapnode.aspx) , který se tady používá, a v rámci této `BuildSiteMap` se předaly tyto informace:
 
 - Odkaz na zprostředkovatele mapy webu (`Me`).
-- `SiteMapNode` s `Key`. Tato oprávnění vyžadují hodnota musí být jedinečná pro každou `SiteMapNode`.
-- `SiteMapNode` s `Url`. `Url` je volitelný, ale pokud je zadán, každý `SiteMapNode` s `Url` hodnota musí být jedinečný.
-- `SiteMapNode` s `Title`, což je povinné.
+- `Key``SiteMapNode` s. Požadovaná hodnota musí být pro každý `SiteMapNode`jedinečná.
+- `Url``SiteMapNode` s. `Url` je volitelné, ale pokud je k dispozici, musí být každá hodnota `Url` `SiteMapNode` s jedinečná.
+- `Title`, který je třeba zadat `SiteMapNode` s.
 
-`AddNode(root)` Přidá volání metody `SiteMapNode` `root` do mapy webu jako kořen. Dále, každý `ProductRow` v `ProductsDataTable` výčtu. Pokud už existuje `SiteMapNode` pro aktuální kategorii produktu s se odkazuje. V opačném případě nový `SiteMapNode` pro kategorii je vytvořen a přidán jako podřízený objekt `SiteMapNode``root` prostřednictvím `AddNode(categoryNode, root)` volání metody. Po odpovídající kategorii `SiteMapNode` uzlu byl nalezen nebo vytvořen, `SiteMapNode` je vytvořen pro aktuální produkt a přidán jako podřízený objekt kategorie `SiteMapNode` prostřednictvím `AddNode(productNode, categoryNode)`. Všimněte si, že kategorie `SiteMapNode` s `Url` hodnota vlastnosti je `~/SiteMapProvider/ProductsByCategory.aspx?CategoryID=categoryID` while produktu `SiteMapNode` s `Url` je vlastnosti přiřazen `~/SiteMapNode/ProductDetails.aspx?ProductID=productID`.
-
-> [!NOTE]
-> Tyto produkty, které mají databáze `NULL` hodnotu pro jejich `CategoryID` jsou seskupené podle kategorie `SiteMapNode` jehož `Title` nastavenou na None a jehož `Url` je nastavena na prázdný řetězec. Jsem se rozhodla nastavit `Url` na prázdný řetězec, protože `ProductBLL` třída s `GetProductsByCategory(categoryID)` schopnost vrátit pouze tyto produkty se v tuto chvíli nemá metodu `NULL` `CategoryID` hodnotu. Navíc já bych chtěl předvést způsob vykreslení ovládací prvky navigace `SiteMapNode` , který nemá hodnotu pro jeho `Url` vlastnost. Neváhejte se v tomto kurzu rozšířit tak, aby žádný `SiteMapNode` s `Url` vlastnost odkazuje na `ProductsByCategory.aspx`, ještě zobrazí jenom produkty s `NULL` `CategoryID` hodnoty.
-
-Po vytváření mapy webu, je libovolný objekt přidán do mezipaměti dat na závislost mezipaměti SQL `Categories` a `Products` tabulky prostřednictvím `AggregateCacheDependency` objektu. Prozkoumali jsme použití závislostí mezipaměti SQL v předchozím kurzu *použití závislostí mezipaměti SQL*. Vlastního zprostředkovatele mapy webu, ale používá přetížení mezipaměť dat s `Insert` metody, který jsme ve ještě chcete prozkoumat. Toto přetížení jako jeho poslední vstupní parametr přijímá delegát, který se volá, když se odebere objekt z mezipaměti. Konkrétně jsme předat v novém [ `CacheItemRemovedCallback` delegovat](https://msdn.microsoft.com/library/system.web.caching.cacheitemremovedcallback.aspx) , která odkazuje na `OnSiteMapChanged` definována metoda další dolů v `NorthwindSiteMapProvider` třídy.
+Volání metody `AddNode(root)` přidá `SiteMapNode` `root` na mapu webu jako kořen. V dalším kroku se zobrazí výčet všech `ProductRow` ve `ProductsDataTable`. Pokud již existuje `SiteMapNode` pro aktuální kategorii produktů, odkaz na ni. V opačném případě je nová `SiteMapNode` pro kategorii vytvořena a přidána jako podřízená `SiteMapNode``root` prostřednictvím volání metody `AddNode(categoryNode, root)`. Po nalezení nebo vytvoření odpovídající kategorie `SiteMapNode` uzel se vytvoří `SiteMapNode` pro aktuální produkt a přidá se jako podřízený prvek kategorie `SiteMapNode` prostřednictvím `AddNode(productNode, categoryNode)`. Všimněte si, že hodnota vlastnosti `SiteMapNode` kategorie `Url` je `~/SiteMapProvider/ProductsByCategory.aspx?CategoryID=categoryID`, zatímco vlastnost `SiteMapNode` s produktem `Url` má přiřazen `~/SiteMapNode/ProductDetails.aspx?ProductID=productID`.
 
 > [!NOTE]
-> Reprezentace v paměti mapy webu se uloží do mezipaměti prostřednictvím proměnné úrovni třídy `root`. Vzhledem k tomu, že existuje pouze jedna instance třídy zprostředkovatele mapy vlastní stránky a od této instance je sdílena mezi všemi vlákny ve webové aplikaci, tato proměnná třídy slouží jako mezipaměť. `BuildSiteMap` Metoda také používá mezipaměť dat, ale pouze jako prostředky, na které přijde upozornění, když data v podkladové databázi `Categories` nebo `Products` tabulky změn. Mějte na paměti, že hodnota do datové mezipaměti je jenom aktuálním datem a časem. Je aktuální data mapy *není* umístit do datové mezipaměti.
+> Tyto produkty, které mají hodnotu `NULL` databáze pro jejich `CategoryID` jsou seskupeny do kategorie `SiteMapNode` jejichž vlastnost `Title` je nastavena na hodnotu None a jejíž vlastnost `Url` je nastavena na prázdný řetězec. Rozhodli jste se nastavit `Url` na prázdný řetězec, protože metoda `ProductBLL` třídy `GetProductsByCategory(categoryID)` v tuto chvíli neobsahuje schopnost vracet jenom tyto produkty s hodnotou `NULL` `CategoryID`. Také jsem chtěl předvést, jak navigační ovládací prvky vykreslují `SiteMapNode`, který postrádá hodnotu pro jeho vlastnost `Url`. Doporučujem, abyste tento kurz rozšířili tak, aby se vlastnost None `SiteMapNode` s `Url` na `ProductsByCategory.aspx`, ale zobrazila se jenom produkty s hodnotami `NULL` `CategoryID`.
 
-`BuildSiteMap` Dokončení metody tak, že vrací kořenový uzel mapy webu.
+Po sestavení mapy webu je do mezipaměti dat přidán libovolný objekt pomocí závislosti mezipaměti SQL na `Categories` a `Products` tabulek prostřednictvím objektu `AggregateCacheDependency`. Prozkoumali jsme pomocí závislostí mezipaměti SQL v předchozím kurzu *pomocí závislostí mezipaměti SQL*. Vlastní poskytovatel mapy webu však používá přetížení metody datové mezipaměti s `Insert`, kterou jsme ještě prozkoumali. Toto přetížení přijímá jako konečný vstupní parametr delegáta, který je volán při odebrání objektu z mezipaměti. Konkrétně Předáte novému [delegátu`CacheItemRemovedCallback`](https://msdn.microsoft.com/library/system.web.caching.cacheitemremovedcallback.aspx) , který odkazuje na metodu `OnSiteMapChanged` definovanou níže ve třídě `NorthwindSiteMapProvider`.
 
-Ostatní metody jsou poměrně jednoduché. `GetRootNodeCore` je zodpovědná za navrácení kořenového uzlu. Protože `BuildSiteMap` vrátí kořen, `GetRootNodeCore` jednoduše vrací `BuildSiteMap` s návratovou hodnotu. `OnSiteMapChanged` Metody nastaví `root` zpět `Nothing` při odebrání položky mezipaměti. Se nastaví zpátky kořenem `Nothing`, při příštím `BuildSiteMap` je vyvolána, strukturu mapy webu bude znovu vytvořen. A konečně `CachedDate` vlastnost vrací hodnoty data a času, které jsou uložené v mezipaměti dat, pokud taková hodnota neexistuje. Tato vlastnost slouží vývojář stránky k určení, kdy byl naposledy do mezipaměti data mapy webu.
+> [!NOTE]
+> Reprezentace mapy webu v paměti je uložená v mezipaměti prostřednictvím proměnné na úrovni třídy `root`. Vzhledem k tomu, že existuje pouze jedna instance třídy vlastního zprostředkovatele mapy webu a protože tato instance je sdílena mezi všemi vlákny webové aplikace, tato proměnná třídy slouží jako mezipaměť. Metoda `BuildSiteMap` také používá datovou mezipaměť, ale pouze jako způsob, jak dostávat oznámení, když se změní podkladová data databáze v tabulkách `Categories` nebo `Products`. Všimněte si, že hodnota vložená do mezipaměti dat je pouze aktuální datum a čas. Skutečná data mapy webu *nejsou* vložena do mezipaměti dat.
 
-## <a name="step-7-registering-thenorthwindsitemapprovider"></a>Krok 7: Registrace`NorthwindSiteMapProvider`
+Metoda `BuildSiteMap` se dokončí vrácením kořenového uzlu mapy webu.
 
-V pořadí pro naši webovou aplikaci používat `NorthwindSiteMapProvider` zprostředkovatele mapy webu vytvořené v kroku 6, musíme ho zaregistrovat `<siteMap>` část `Web.config`. Konkrétně, přidejte následující kód v rámci `<system.web>` prvek `Web.config`:
+Zbývající metody jsou poměrně jasné. `GetRootNodeCore` zodpovídá za vrácení kořenového uzlu. Vzhledem k tomu, že `BuildSiteMap` vrací kořen, `GetRootNodeCore` jednoduše vrátí návratovou hodnotu `BuildSiteMap` s. Metoda `OnSiteMapChanged` nastaví `root` zpět na `Nothing` při odebrání položky mezipaměti. Když se kořenová sada vrátí zpátky na `Nothing`, při příštím `BuildSiteMap` se znovu vytvoří struktura mapy webu. Nakonec vlastnost `CachedDate` vrátí hodnotu data a času uloženou v mezipaměti dat, pokud taková hodnota existuje. Tuto vlastnost může vývojář stránky použít k určení, kdy byla data mapy webu naposledy uložena do mezipaměti.
+
+## <a name="step-7-registering-thenorthwindsitemapprovider"></a>Krok 7: registrace`NorthwindSiteMapProvider`
+
+Aby naše webová aplikace používala poskytovatele `NorthwindSiteMapProvider` lokality vytvořeného v kroku 6, musíme ho zaregistrovat v `<siteMap>` části `Web.config`. Konkrétně přidejte následující značku do prvku `<system.web>` v `Web.config`:
 
 [!code-xml[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample7.xml)]
 
-Tento kód provede dvě věci: nejprve znamená, že integrované `AspNetXmlSiteMapProvider` je zprostředkovatele mapy webu výchozí; za druhé, zaregistruje vlastního zprostředkovatele mapy webu vytvořené v kroku 6 s lidských – popisný název Northwind.
+Tento kód obsahuje dvě věci: nejdřív indikuje, že je předdefinovaná `AspNetXmlSiteMapProvider` výchozím poskytovatelem mapy webu. za druhé zaregistruje vlastního poskytovatele mapy webu vytvořeného v kroku 6 s popisným názvem Northwind.
 
 > [!NOTE]
-> Pro zprostředkovatele mapy webu v aplikaci s `App_Code` složky, hodnota `type` atribut je jednoduše název třídy. Můžete také vlastního zprostředkovatele mapy webu by byla vytvořena v samostatném projektu knihovny tříd zkompilovaného sestavení umístí do webové aplikace s `/Bin` adresáře. V takovém případě `type` by byla hodnota atributu *Namespace*. *ClassName*, *AssemblyName* .
+> Pro poskytovatele mapy webu nacházející se ve složce `App_Code` aplikací je hodnota atributu `type` jednoduše název třídy. Alternativně může být vlastní poskytovatel mapy webu vytvořen v samostatném projektu knihovny tříd se sestavením, které je umístěno v adresáři `/Bin` webové aplikace. V takovém případě by hodnota atributu `type` mohla být *obor názvů*. *ClassName*, *AssemblyName* .
 
-Po aktualizaci `Web.config`, věnujte chvíli zobrazení všech stránek z kurzů v prohlížeči. Mějte na paměti, že rozhraní navigace na levé straně stále zobrazuje v částech a kurzy definované v `Web.sitemap`. Důvodem je, že ponechali jsme `AspNetXmlSiteMapProvider` jako výchozího zprostředkovatele. Chcete-li vytvořit prvek navigace uživatelského rozhraní, který používá `NorthwindSiteMapProvider`, budeme muset explicitně zadat, že má být použita zprostředkovatele mapy webu Northwind. Uvidíme, jak to provést v kroku 8.
+Po aktualizaci `Web.config`chvíli počkejte, než se zobrazí všechny stránky z kurzů v prohlížeči. Všimněte si, že navigační rozhraní na levé straně stále zobrazuje oddíly a kurzy definované v `Web.sitemap`. Důvodem je to, že `AspNetXmlSiteMapProvider` jako výchozí poskytovatel jsme opustili. Aby bylo možné vytvořit prvek uživatelského rozhraní navigace, který používá `NorthwindSiteMapProvider`, je nutné explicitně určit, že má být použit poskytovatel mapy webu Northwind. V kroku 8 si ukážeme, jak to provést.
 
-## <a name="step-8-displaying-site-map-information-using-the-custom-site-map-provider"></a>Krok 8: Zobrazení informací o lokalitě mapy pomocí vlastního zprostředkovatele mapy webu
+## <a name="step-8-displaying-site-map-information-using-the-custom-site-map-provider"></a>Krok 8: zobrazení informací o mapě webu pomocí vlastního poskytovatele mapy webu
 
-Vlastní web zprostředkovatele mapy vytvořené a registrované v `Web.config`, můžeme znovu připravení přidat ovládací prvky pro navigaci na `Default.aspx`, `ProductsByCategory.aspx`, a `ProductDetails.aspx` stránky v `SiteMapProvider` složky. Začněte otevřením `Default.aspx` stránku a přetáhněte ji `SiteMapPath` z panelu nástrojů do návrháře. Ovládací prvky SiteMapPath ovládací prvek se nachází v části navigace na panelu nástrojů.
+Pomocí vlastního poskytovatele mapy webu vytvořeného a registrovaného v `Web.config`jsme připraveni přidat navigační ovládací prvky do `Default.aspx`, `ProductsByCategory.aspx`a `ProductDetails.aspx` stránek do složky `SiteMapProvider`. Začněte otevřením stránky `Default.aspx` a přetažením `SiteMapPath` z panelu nástrojů do návrháře. Ovládací prvek SiteMapPath je umístěn v navigační oblasti sady nástrojů.
 
-[![Přidat ovládací prvky SiteMapPath Default.aspx](building-a-custom-database-driven-site-map-provider-vb/_static/image19.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image18.gif)
+[![přidat SiteMapPath do default. aspx](building-a-custom-database-driven-site-map-provider-vb/_static/image19.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image18.gif)
 
-**Obrázek 16**: Přidat SiteMapPath k `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image20.gif))
+**Obrázek 16**: Přidání akce SiteMapPath do `Default.aspx` ([kliknutím zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image20.gif))
 
-Ovládací prvky SiteMapPath ovládací prvek zobrazuje navigace s popisem cesty, určující umístění s aktuální stránky v rámci mapy webu. Přidali jsme do horní části stránky předlohy ovládací prvky SiteMapPath zpátky *stránky předlohy a navigace na webu* kurzu.
+Ovládací prvek SiteMapPath zobrazí popis cesty, který označuje aktuální umístění stránky v mapě webu. Do horní části stránky předlohy jsme přidali zpět na *stránkách předlohy a* v kurzu navigace na webu.
 
-Za chvíli zobrazení této stránky prostřednictvím prohlížeče. Ovládací prvky SiteMapPath přidá obrázek 16 používá zprostředkovatele mapy webu výchozí načítání jeho dat ze `Web.sitemap`. Proto tento navigační prvek určuje ukazuje Domů &gt; přizpůsobení mapy webu, stejně jako s popisem cesty v pravém horním rohu.
+Chvíli počkejte, než tuto stránku zobrazíte v prohlížeči. Hodnota SiteMapPath přidaná na obrázku 16 používá výchozího poskytovatele mapy webu, který získává data z `Web.sitemap`. Popis cesty proto zobrazuje domovskou &gt; přizpůsobení mapy webu, stejně jako navigace v pravém horním rohu.
 
-[![Tento navigační prvek určuje používá výchozí zprostředkovatele mapy webu](building-a-custom-database-driven-site-map-provider-vb/_static/image22.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image21.gif)
+[![popis cesty používá výchozího poskytovatele mapy webu](building-a-custom-database-driven-site-map-provider-vb/_static/image22.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image21.gif)
 
-**Obrázek 17**: Tento navigační prvek určuje používá výchozí zprostředkovatele mapy webu ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image23.gif))
+**Obrázek 17**: navigace s popisem cesty používá výchozího poskytovatele mapy webu ([kliknutím zobrazíte obrázek v plné velikosti).](building-a-custom-database-driven-site-map-provider-vb/_static/image23.gif)
 
-Pokud chcete, aby SiteMapPath přidá obrázek 16 použijte zprostředkovatele mapy vlastního webu, který jsme vytvořili v kroku 6, nastavte jeho [ `SiteMapProvider` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sitemappath.sitemapprovider.aspx) Northwind, název jsme přiřazena k `NorthwindSiteMapProvider` v `Web.config`. Bohužel návrháře i nadále používat výchozí zprostředkovatele mapy webu, ale pokud najdete na stránce prostřednictvím prohlížeče po provedení této změny vlastnosti uvidíte, že tento navigační prvek určuje teď používá vlastního zprostředkovatele mapy webu.
+Chcete-li přidat SiteMapPath na obrázku 16 použijte vlastního poskytovatele mapy webu, který jsme vytvořili v kroku 6, nastavte jeho [vlastnost`SiteMapProvider`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sitemappath.sitemapprovider.aspx) na Northwind, název, který jsme přiřadili `NorthwindSiteMapProvider` v `Web.config`. Návrhář bohužel nadále používá výchozího poskytovatele mapy webu, ale pokud po provedení této změny této vlastnosti navštívíte stránku pomocí prohlížeče, uvidíte, že popis cesty teď používá vlastního poskytovatele mapy webu.
 
-[![Tento navigační prvek určuje teď používá NorthwindSiteMapProvider zprostředkovatele mapy vlastní web](building-a-custom-database-driven-site-map-provider-vb/_static/image25.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image24.gif)
+[![popis cesty teď používá vlastního poskytovatele mapy webu NorthwindSiteMapProvider](building-a-custom-database-driven-site-map-provider-vb/_static/image25.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image24.gif)
 
-**Obrázek 18**: Tento navigační prvek určuje teď používá vlastní zprostředkovatele mapy webu `NorthwindSiteMapProvider` ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image26.gif))
+**Obrázek 18**: navigace s popisem cesty nyní používá vlastního poskytovatele mapy webu `NorthwindSiteMapProvider` ([kliknutím zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image26.gif))
 
-Ovládací prvky SiteMapPath ovládací prvek zobrazuje více funkcí uživatelského rozhraní v `ProductsByCategory.aspx` a `ProductDetails.aspx` stránky. Přidání ovládací prvky SiteMapPath na tyto stránky nastavení `SiteMapProvider` vlastnost v obou, a Northwind. Z `Default.aspx` klikněte na odkaz zobrazit produkty nápoje a potom na odkaz zobrazit podrobnosti pro Chai čaje. Jak ukazuje obrázek 19, zahrnuje tento navigační prvek určuje aktuální části mapy webu (Chai čaje) a jeho nadřazenými prvky: A všechny kategorie Nápoje.
+Ovládací prvek SiteMapPath zobrazuje více funkčních uživatelských rozhraní na `ProductsByCategory.aspx` a `ProductDetails.aspx` stránkách. Přidejte na tyto stránky SiteMapPath a nastavte vlastnost `SiteMapProvider` v obou na Northwind. Z `Default.aspx` klikněte na odkaz Zobrazit produkty pro nápoje a pak na odkaz Zobrazit podrobnosti pro pole Chai čaj. Jak ukazuje obrázek 19, popis cesty obsahuje oddíl aktuální mapy webu (Chai čaj) a jeho předchůdce: nápoje a všechny kategorie.
 
-[![Tento navigační prvek určuje teď používá NorthwindSiteMapProvider zprostředkovatele mapy vlastní web](building-a-custom-database-driven-site-map-provider-vb/_static/image27.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image21.png)
+[![popis cesty teď používá vlastního poskytovatele mapy webu NorthwindSiteMapProvider](building-a-custom-database-driven-site-map-provider-vb/_static/image27.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image21.png)
 
-**Obrázek 19**: Tento navigační prvek určuje teď používá vlastní zprostředkovatele mapy webu `NorthwindSiteMapProvider` ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image22.png))
+**Obrázek 19**: navigace s popisem cesty nyní používá vlastního poskytovatele mapy webu `NorthwindSiteMapProvider` ([kliknutím zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image22.png))
 
-Další prvky uživatelského rozhraní navigace je možné kromě SiteMapPath, jako je například ovládací prvky nabídky a prvku TreeView. `Default.aspx`, `ProductsByCategory.aspx`, A `ProductDetails.aspx` stránky soubor ke stažení pro účely tohoto kurzu, například všechny obsahují ovládací prvky nabídky (viz obrázek 20). Naleznete v tématu [zkoumání ASP.NET 2.0 s funkcemi navigace na webu](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx) a [ovládací prvky navigace pomocí lokality](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/navigation/sitenavcontrols.aspx) část [ASP.NET 2.0 šablon rychlý Start](https://quickstarts.asp.net/QuickStartv20/aspnet/) podrobnější rozbor ovládací prvky pro navigaci a systému lokality mapy v technologii ASP.NET 2.0.
+Jiné prvky uživatelského rozhraní navigace lze použít kromě prvku SiteMapPath, jako je například nabídka a ovládací prvky TreeView. Stránky `Default.aspx`, `ProductsByCategory.aspx`a `ProductDetails.aspx` ve stažení pro tento kurz, například všechny ovládací prvky nabídky zahrnutí (viz obrázek 20). Podrobnější pohled na navigační ovládací prvky a systém mapy webu v ASP.NET 2,0 najdete v tématu [prozkoumání funkcí navigace na webu ASP.NET 2,0 s](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx) a v části [použití ovládacích prvků navigace na webu](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/navigation/sitenavcontrols.aspx) v [rychlém startu ASP.NET 2,0](https://quickstarts.asp.net/QuickStartv20/aspnet/) .
 
-[![Menu – ovládací prvek obsahuje seznam všech kategorií a produkty](building-a-custom-database-driven-site-map-provider-vb/_static/image29.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image28.gif)
+[![ovládacího prvku nabídky obsahuje všechny kategorie a produkty.](building-a-custom-database-driven-site-map-provider-vb/_static/image29.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image28.gif)
 
-**Obrázek 20**: Nabídce ovládací prvek obsahuje seznam každý kategorií a produktů ([kliknutím ji zobrazíte obrázek v plné velikosti](building-a-custom-database-driven-site-map-provider-vb/_static/image30.gif))
+**Obrázek 20**: ovládací prvek nabídky obsahuje seznam všech kategorií a produktů ([kliknutím zobrazíte obrázek v plné velikosti).](building-a-custom-database-driven-site-map-provider-vb/_static/image30.gif)
 
-Jak už bylo zmíněno dříve v tomto kurzu, strukturu mapy webu je přístupná prostřednictvím kódu programu přes `SiteMap` třídy. Následující kód vrátí kořen `SiteMapNode` výchozího zprostředkovatele:
+Jak bylo zmíněno dříve v tomto kurzu, struktura mapy webu je k dispozici programově prostřednictvím `SiteMap` třídy. Následující kód vrátí kořenové `SiteMapNode` výchozího zprostředkovatele:
 
 [!code-vb[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample8.vb)]
 
-Vzhledem k tomu, `AspNetXmlSiteMapProvider` je výchozím zprostředkovatelem pro naši aplikaci výše uvedený kód vracel kořenový uzel definovaný ve `Web.sitemap`. Chcete-li odkazovat na zprostředkovatele mapy webu jiné než výchozí, použijte `SiteMap` třída s [ `Providers` vlastnost](https://msdn.microsoft.com/library/system.web.sitemap.providers.aspx) takto:
+Vzhledem k tomu, že `AspNetXmlSiteMapProvider` je výchozím poskytovatelem pro naši aplikaci, výše uvedený kód vrátí kořenový uzel definovaný v `Web.sitemap`. Chcete-li odkazovat na jiného poskytovatele mapy webu než na výchozí, použijte vlastnost `SiteMap` třídy s [`Providers`](https://msdn.microsoft.com/library/system.web.sitemap.providers.aspx) , například takto:
 
 [!code-vb[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample9.vb)]
 
-Kde *název* je název zprostředkovatele mapy webu vlastní (pro naši webovou aplikaci Northwind).
+Kde *Name* je název vlastního zprostředkovatele mapy webu (Northwind, pro naši webovou aplikaci).
 
-Chcete-li přístup ke členu specifické pro zprostředkovatele mapy webu, použijte `SiteMap.Providers["name"]` načtení instance zprostředkovatele a pak ji přetypujte na typ odpovídající. Například, chcete-li zobrazit `NorthwindSiteMapProvider` s `CachedDate` vlastnosti stránky technologie ASP.NET, použijte následující kód:
+Chcete-li získat přístup ke členu, který je specifický pro poskytovatele mapy webu, použijte `SiteMap.Providers["name"]` k načtení instance poskytovatele a jejich přetypování na příslušný typ. Chcete-li například zobrazit vlastnost `NorthwindSiteMapProvider` s `CachedDate` na stránce ASP.NET, použijte následující kód:
 
 [!code-vb[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample10.vb)]
 
 > [!NOTE]
-> Ujistěte se, k otestování funkce závislosti mezipaměti SQL. Po najdete `Default.aspx`, `ProductsByCategory.aspx`, a `ProductDetails.aspx` stránky, přejděte do jednoho z kurzů v úpravy, vložení a odstranění oddílu a upravit název, kategorie nebo produktu. Pak se vraťte do jedné stránky `SiteMapProvider` složky. Za předpokladu, že uplynul dostatek času pro dotazovací mechanismus poznamenat změn do databáze, by měl být Mapa webu aktualizuje a zobrazí nový produkt nebo název kategorie.
+> Ujistěte se, že testujete funkci závislosti mezipaměti SQL. Po návštěvě `Default.aspx`, `ProductsByCategory.aspx`a `ProductDetails.aspx` stránky, jděte do jednoho z kurzů v části úpravy, vložení a odstranění a upravte název kategorie nebo produktu. Pak se vraťte na jednu ze stránek ve složce `SiteMapProvider`. Za předpokladu, že se pro mechanismus cyklického dotazování předává dostatek času na změnu podkladové databáze, měla by být mapa lokality aktualizována, aby se zobrazil nový název produktu nebo kategorie.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-ASP.NET 2.0 obsahuje prvky mapy webu s `SiteMap` třídy, určuje řadu integrovaných navigační Web a výchozího zprostředkovatele mapy webu, který očekává, že informace mapy webu trvale uložena do souboru XML. Chcete-li použít informace o lokalitě mapování z jiného zdroje, jako z databáze, architektura s aplikací nebo vzdálené webové služby je nutné vytvořit vlastního zprostředkovatele mapy webu. To zahrnuje vytvoření třídy, která je odvozena přímo nebo nepřímo ze `SiteMapProvider` třídy.
+Funkce mapy webu ASP.NET 2,0 s obsahuje třídu `SiteMap`, řadu integrovaných webových ovládacích prvků a výchozího poskytovatele mapy webu, který očekává, že informace o mapě webu jsou trvale uložené v souboru XML. Aby bylo možné používat informace o mapě webu z nějakého jiného zdroje, například z databáze, architektury aplikace nebo vzdálené webové služby, musíme vytvořit vlastního poskytovatele mapy webu. To zahrnuje vytvoření třídy, která je přímo nebo nepřímo odvozena z třídy `SiteMapProvider`.
 
-V tomto kurzu jsme viděli, jak vytvořit vlastního zprostředkovatele mapy webu, který mapy webu na základě produktů a kategorii informací vyřazeny z architektury aplikace. Náš poskytovatel rozšířené `StaticSiteMapProvider` třídy a zavedením vytváření `BuildSiteMap` metodu, která načte data, mapování hierarchie lokality který je v mezipaměti výsledný struktury v proměnnou na úrovni. Pomocí funkce zpětného volání jsme použili závislosti mezipaměti SQL zneplatnění mezipaměti strukturu, kdy základní `Categories` nebo `Products` byla změněna data.
+V tomto kurzu jsme zjistili, jak vytvořit vlastního poskytovatele mapy webu, který bude na základě mapy webu na informace o produktu a kategorii odvrácených z architektury aplikace. Náš poskytovatel rozšířil třídu `StaticSiteMapProvider` a vznikla tak vytvoření metody `BuildSiteMap`, která načetla data, vytvořila hierarchii mapy webu a ukládá do mezipaměti výslednou strukturu v proměnné na úrovni třídy. Použili jsme závislost mezipaměti SQL s funkcí zpětného volání k zrušení platnosti struktury uložené v mezipaměti, když se upraví základní `Categories` nebo data `Products`.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
-- [Ukládání mapy webu v systému SQL Server](https://msdn.microsoft.com/msdnmag/issues/05/06/WickedCode/) a [zprostředkovatele mapy webu SQL jste již bylo čekání](https://msdn.microsoft.com/msdnmag/issues/06/02/wickedcode/default.aspx)
-- [Model poskytovatele s najdete v technologii ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx)
+- [Uložení map webů v SQL Server](https://msdn.microsoft.com/msdnmag/issues/05/06/WickedCode/) a [poskytovatele mapy webu SQL, kterého jste čekali na](https://msdn.microsoft.com/msdnmag/issues/06/02/wickedcode/default.aspx)
+- [Podívejte se na model poskytovatele ASP.NET 2,0 s.](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx)
 - [Sada nástrojů pro poskytovatele](https://msdn.microsoft.com/asp.net/aa336558.aspx)
-- [Zkoumání ASP.NET 2.0 s funkcemi navigace na webu](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx)
+- [Zkoumání funkcí navigace na webu ASP.NET 2,0 s](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx)
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí revidující pro účely tohoto kurzu byly Dave Gardner, Zack Jones, Teresy Murphy a Bernadette Leigh. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Recenzenti potenciálních zákazníků pro tento kurz byly Dave Gardner, Zack Novák, Teresa Murphy a Bernadette Leigh. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](building-a-custom-database-driven-site-map-provider-cs.md)

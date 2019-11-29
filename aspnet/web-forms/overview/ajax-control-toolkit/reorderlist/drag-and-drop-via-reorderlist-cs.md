@@ -1,86 +1,86 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs
-title: Přetáhnout myší reorderlist (C#) | Dokumentace Microsoftu
+title: Přetahování přes ReorderList (C#) | Microsoft Docs
 author: wenz
-description: Ovládacím prvkem ReorderList ovládacího prvku AJAX Control Toolkit poskytuje seznam, který může být přeuspořádány uživatelem pomocí přetažení. Aktuální pořadí položek v seznamu se...
+description: Ovládací prvek ReorderList v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení. Aktuální pořadí seznamu bude...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 6350ee8e-11d6-4aff-b51c-942878014835
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8adeceba0d43d6baf1af944a910750ca0682b097
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 2fc6d55a290cbb58bea36d8145d814e337bbd931
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65124935"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74611468"
 ---
 # <a name="drag-and-drop-via-reorderlist-c"></a>Přetažení ovládacím prvkem ReorderList (C#)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/ReorderList5.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/reorderlist5CS.pdf)
+[Stažení kódu](https://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/ReorderList5.cs.zip) nebo [stažení PDF](https://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/reorderlist5CS.pdf)
 
-> Ovládacím prvkem ReorderList ovládacího prvku AJAX Control Toolkit poskytuje seznam, který může být přeuspořádány uživatelem pomocí přetažení. Aktuální pořadí položek v seznamu se na serveru zachován.
+> Ovládací prvek ReorderList v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení. Aktuální pořadí seznamu musí být na serveru trvalé.
 
 ## <a name="overview"></a>Přehled
 
-`ReorderList` Ovládacího prvku AJAX Control Toolkit poskytuje seznam, který může být přeuspořádány uživatelem pomocí přetažení. Aktuální pořadí položek v seznamu se na serveru zachován.
+Ovládací prvek `ReorderList` v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení. Aktuální pořadí seznamu musí být na serveru trvalé.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-`ReorderList` Ovládací prvek podporuje vazby dat z databáze do seznamu. Nejlepší na tom také podporuje zápis změn pracovního element seznamu zpět do úložiště dat.
+Ovládací prvek `ReorderList` podporuje vazby dat z databáze na seznam. Nejlepší z nich také podporuje zápis změn v pořadí elementu seznamu zpátky do úložiště dat.
 
-Tato ukázka používá jako úložiště dat Microsoft SQL Server 2005 Express Edition. Databáze je součástí instalace sady Visual Studio, včetně express edition volitelné (a free). Je také dostupné jako samostatný soubor ke stažení v rámci [ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064). V tomto příkladu předpokládáme, že název instance systému SQL Server 2005 Express Edition `SQLEXPRESS` a je umístěn ve stejném počítači jako webový server; to je taky výchozí nastavení. Pokud vaše nastavení se liší, je nutné upravit informace o připojení pro databázi.
+V této ukázce se jako úložiště dat používá edice Microsoft SQL Server 2005 Express. Databáze je volitelná (a bezplatná) součást instalace sady Visual Studio, včetně verze Express Edition. Je také k dispozici jako samostatné stažení v rámci [https://go.microsoft.com/fwlink/?LinkId=64064](https://go.microsoft.com/fwlink/?LinkId=64064). V této ukázce předpokládáme, že instance SQL Server 2005 Express Edition se nazývá `SQLEXPRESS` a nachází se na stejném počítači jako webový server. Toto je také výchozí nastavení. Pokud se instalace liší, je nutné upravit informace o připojení pro databázi.
 
-Nejjednodušší způsob, jak nastavení databáze je použít Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp; DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en) ). Připojení k serveru, dvakrát klikněte na `Databases` a vytvořit novou databázi (klikněte pravým tlačítkem a zvolte `New Database`) volá `Tutorials`.
+Nejjednodušší způsob, jak nastavit databázi, je použít Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;D isplaylang = EN](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en) ). Připojte se k serveru, dvakrát klikněte na `Databases` a vytvořte novou databázi (klikněte pravým tlačítkem myši a vyberte `New Database`) s názvem `Tutorials`.
 
-V této databázi, vytvořte novou tabulku s názvem `AJAX` s těmito čtyřmi sloupci:
+V této databázi vytvořte novou tabulku s názvem `AJAX` s následujícími čtyřmi sloupci:
 
-- `id` (primární klíč, celé číslo, identitu, not NULL)
-- `char` (char(1), NULL)
-- `description` (varchar(50), NULL)
-- `position` (int, NULL).
+- `id` (primární klíč, celé číslo, identita, NOT NULL)
+- `char` (char (1); NULL)
+- `description` (varchar (50); NULL)
+- `position` (int, NULL)
 
-[![Rozložení tabulky AJAX](drag-and-drop-via-reorderlist-cs/_static/image2.png)](drag-and-drop-via-reorderlist-cs/_static/image1.png)
+[![rozložení tabulky jazyka AJAX](drag-and-drop-via-reorderlist-cs/_static/image2.png)](drag-and-drop-via-reorderlist-cs/_static/image1.png)
 
-Rozložení tabulky AJAX ([kliknutím ji zobrazíte obrázek v plné velikosti](drag-and-drop-via-reorderlist-cs/_static/image3.png))
+Rozložení tabulky jazyka AJAX ([kliknutím zobrazíte obrázek v plné velikosti](drag-and-drop-via-reorderlist-cs/_static/image3.png))
 
-V dalším kroku vyplnění tabulky pomocí několika hodnot. Všimněte si, že `position` sloupec obsahuje pořadí řazení elementů.
+V dalším kroku vyplňte tabulku několika hodnotami. Všimněte si, že `position` sloupec obsahuje pořadí řazení prvků.
 
-[![Počáteční data v tabulce AJAX](drag-and-drop-via-reorderlist-cs/_static/image5.png)](drag-and-drop-via-reorderlist-cs/_static/image4.png)
+[![počátečních dat v tabulce AJAX](drag-and-drop-via-reorderlist-cs/_static/image5.png)](drag-and-drop-via-reorderlist-cs/_static/image4.png)
 
-Počáteční data v tabulce AJAX ([kliknutím ji zobrazíte obrázek v plné velikosti](drag-and-drop-via-reorderlist-cs/_static/image6.png))
+Počáteční data v tabulce AJAX ([kliknutím zobrazíte obrázek v plné velikosti](drag-and-drop-via-reorderlist-cs/_static/image6.png))
 
-Další krok se vyžaduje k vygenerování `SqlDataSource` řízení ke komunikaci s novou databázi a její tabulky. Zdroj dat musí podporovat `SELECT` a `UPDATE` příkazy jazyka SQL. Pokud později změníte pořadí prvků seznamu, `ReorderList` ovládací prvek automaticky odešle dvě hodnoty ke zdroji dat `Update` příkaz: novou pozici a ID elementu. Proto se zdroj dat, musí `<UpdateParameters>` části tyto dvě hodnoty:
+Další krok vyžaduje vygenerování `SqlDataSource` ovládacího prvku pro komunikaci s novou databází a její tabulkou. Zdroj dat musí podporovat příkazy SQL `SELECT` a `UPDATE`. Když je pořadí prvků seznamu později změněno, ovládací prvek `ReorderList` automaticky odesílá dvě hodnoty do příkazu `Update` zdroje dat: novou pozici a ID prvku. Proto zdroj dat potřebuje část `<UpdateParameters>` pro tyto dvě hodnoty:
 
 [!code-aspx[Main](drag-and-drop-via-reorderlist-cs/samples/sample1.aspx)]
 
-`ReorderList` Ovládací prvek je potřeba nastavit následující atributy:
+`ReorderList` ovládací prvek musí nastavit následující atributy:
 
-- `AllowReorder`: Určuje, zda může přeskupení položek seznamu
+- `AllowReorder`: zda lze změnit uspořádání položek seznamu
 - `DataSourceID`: ID zdroje dat
-- `DataKeyField`: Název sloupec primárního klíče ve zdroji dat.
-- `SortOrderField`: Zdrojový sloupec data, která poskytuje pořadí řazení položek seznamu
+- `DataKeyField`: název sloupce primárního klíče ve zdroji dat
+- `SortOrderField`: sloupec zdroj dat, který poskytuje pořadí řazení pro položky seznamu
 
-V `<DragHandleTemplate>` a `<ItemTemplate>` oddíly, rozložení seznamu možné podrobně nastavit. Datová vazba je také možné pomocí `Eval()` způsob, jak je vidět tady:
+V sekcích `<DragHandleTemplate>` a `<ItemTemplate>` lze rozložení seznamu vyladit. Vázání dat je také možné pomocí metody `Eval()`, jak je vidět tady:
 
 [!code-aspx[Main](drag-and-drop-via-reorderlist-cs/samples/sample2.aspx)]
 
-Následující šablony stylů CSS stylu informace (odkazované v `<DragHandleTemplate>` část `ReorderList` ovládací prvek) zajišťuje, že když najede myší úchyt pro přetažení změní umístění ukazatele myši odpovídajícím způsobem:
+Následující informace stylu CSS (odkazováno v sekci `<DragHandleTemplate>` ovládacího prvku `ReorderList`) zajistí, že se ukazatel myši při umístění ukazatele myši na úchyt změní správně:
 
 [!code-css[Main](drag-and-drop-via-reorderlist-cs/samples/sample3.css)]
 
-A konečně `ScriptManager` inicializuje ovládací prvek ASP.NET AJAX stránky:
+Nakonec ovládací prvek `ScriptManager` inicializuje ASP.NET AJAX pro stránku:
 
 [!code-aspx[Main](drag-and-drop-via-reorderlist-cs/samples/sample4.aspx)]
 
-Spuštění tohoto příkladu v prohlížeči a trochu Změna uspořádání položek seznamu. Potom načtěte tuto stránku a podívejte se na databázi. Upravený pozice pravděpodobně nebyla zachována a odrážejí hodnoty v `position` sloupec v databázi a že všechno bez jakékoli kódu pouze s použitím značek.
+Spusťte tento příklad v prohlížeči a přeuspořádejte položky seznamu na bitovou kopii. Pak znovu načtěte stránku a nebo se podívejte na databázi. Změněné pozice byly zachovány a jsou také vyjádřeny hodnotami ve sloupci `position` v databázi a všechny bez kódu, a to pouze pomocí značek.
 
-[![Data v databázi se změní podle nového pořadí položek seznamu](drag-and-drop-via-reorderlist-cs/_static/image8.png)](drag-and-drop-via-reorderlist-cs/_static/image7.png)
+[![se data v databázi mění podle pořadí nové položky seznamu](drag-and-drop-via-reorderlist-cs/_static/image8.png)](drag-and-drop-via-reorderlist-cs/_static/image7.png)
 
-Položku dat v databázi se změní podle nového seznamu pořadí ([kliknutím ji zobrazíte obrázek v plné velikosti](drag-and-drop-via-reorderlist-cs/_static/image9.png))
+Data v databázi se mění podle pořadí nové položky seznamu ([kliknutím zobrazíte obrázek v plné velikosti).](drag-and-drop-via-reorderlist-cs/_static/image9.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](using-postbacks-with-reorderlist-cs.md)
-> [další](using-postbacks-with-reorderlist-vb.md)
+> [Další](using-postbacks-with-reorderlist-vb.md)

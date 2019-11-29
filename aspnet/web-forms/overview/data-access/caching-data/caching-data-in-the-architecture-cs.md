@@ -1,180 +1,180 @@
 ---
 uid: web-forms/overview/data-access/caching-data/caching-data-in-the-architecture-cs
-title: Ukládání do mezipaměti dat v architektuře (C#) | Dokumentace Microsoftu
+title: Ukládání dat do mezipaměti v architektuřeC#() | Microsoft Docs
 author: rick-anderson
-description: V předchozím kurzu jsme zjistili, jak používat ukládání do mezipaměti v prezentační vrstvě. V tomto kurzu jsme zjistěte, jak využít výhod našich vrstvami architectu...
+description: V předchozím kurzu jsme zjistili, jak používat ukládání do mezipaměti v prezentační vrstvě. V tomto kurzu se naučíme, jak využít naši vrstvený architekt...
 ms.author: riande
 ms.date: 05/30/2007
 ms.assetid: d29a7c41-0628-4a23-9dfc-bfea9c6c1054
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-in-the-architecture-cs
 msc.type: authoredcontent
-ms.openlocfilehash: af4936802a97d0ff0e679e701308e24708b15d90
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 192cadb8e2f862ac2a97a36b375e247b281ece93
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65115025"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74600819"
 ---
 # <a name="caching-data-in-the-architecture-c"></a>Ukládání dat do mezipaměti v architektuře (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_59_CS.exe) nebo [stahovat PDF](caching-data-in-the-architecture-cs/_static/datatutorial59cs1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_59_CS.exe) nebo [Stáhnout PDF](caching-data-in-the-architecture-cs/_static/datatutorial59cs1.pdf)
 
-> V předchozím kurzu jsme zjistili, jak používat ukládání do mezipaměti v prezentační vrstvě. V tomto kurzu jsme zjistěte, jak využít výhod naší vrstvené architektury dat do mezipaměti na vrstvy obchodní logiky. Provedeme to rozšířením architektury zahrnout vrstvu ukládání do mezipaměti.
+> V předchozím kurzu jsme zjistili, jak používat ukládání do mezipaměti v prezentační vrstvě. V tomto kurzu se naučíme, jak využít naši vrstvenou architekturu pro ukládání dat do mezipaměti v rámci vrstvy obchodní logiky. To provedeme rozšířením architektury, aby zahrnovala vrstvu ukládání do mezipaměti.
 
 ## <a name="introduction"></a>Úvod
 
-Jak jsme viděli v předchozím kurzu, ukládání do mezipaměti dat prvku ObjectDataSource s je stejně jednoduché jako si několik vlastností. Bohužel ObjectDataSource platí, ukládání do mezipaměti na prezentační vrstvu, která úzce spáruje zásad ukládání do mezipaměti na stránce ASP.NET. Jedním z důvodů pro vytváření vrstvené architektury je umožnit takové spojky je přerušeno. Vrstvy obchodní logiky, například odděluje obchodní logiku ze stránek ASP.NET, zatímco vrstva přístupu k datům odděluje obě části Podrobnosti o přístupu dat. Díky tomuto oddělení podrobnosti o přístupu obchodní logiku a data totiž upřednostňované, v části systému umožňuje lépe čitelný, snadněji spravovatelné a flexibilnější, chcete-li změnit. Také umožňuje znalosti domény a rozdělení práce, vývojář, pracující na t kódu prezentační vrstva musí být obeznámeni s podrobnostmi o databázi s aby bylo možné její práci. Zásady ukládání do mezipaměti od prezentační vrstvy oddělení nabízí podobné výhody.
+Jak jsme viděli v předchozím kurzu, ukládání dat v prvku ObjectDataSource s do mezipaměti je tak jednoduché jako nastavení několika vlastností. Prvek ObjectDataSource bohužel aplikuje ukládání do mezipaměti do prezentační vrstvy, která úzce Couples zásady ukládání do mezipaměti pomocí stránky ASP.NET. Jedním z důvodů, proč vytvořit vrstvenou architekturu, je to, aby bylo možné tyto vazby přerušit. Vrstva obchodní logiky například odděluje obchodní logiku ze stránek ASP.NET, zatímco vrstva přístupu k datům odděluje údaje o přístupu k datům. Toto odpojujení obchodní logiky a podrobností přístupu k datům je preferované, protože díky tomu je systém čitelnější, udržovatelnější a flexibilnější, aby se změnila. Umožňuje taky znalosti v doméně a rozdělení práce, které vývojář pracuje na prezentační vrstvě. nemusíte být obeznámeni s podrobnostmi o databázi, aby bylo možné svoji úlohu provést. Oddělení zásad ukládání do mezipaměti z prezentační vrstvy nabízí podobné výhody.
 
-V tomto kurzu jsme se rozšířit Naše architektura zahrnout *vrstev ukládání do mezipaměti* (nebo CL zkráceně), který využívá naše zásady ukládání do mezipaměti. Bude obsahovat vrstev ukládání do mezipaměti `ProductsCL` třída, která poskytuje přístup k informacím o produktu pomocí metody, jako je `GetProducts()`, `GetProductsByCategoryID(categoryID)`a tak dále, že při vyvolání, bude první pokus o načtení dat z mezipaměti. Pokud do mezipaměti je prázdný, tyto metody vyvolá odpovídající `ProductsBLL` metoda ve BLL, který by pak získat data z vrstvy DAL. `ProductsCL` Metody mezipaměti dat načtených z BLL před jeho vrácením.
+V tomto kurzu rozsadíme naši architekturu tak, aby zahrnovala *vrstvu ukládání do mezipaměti* (nebo CL pro krátké), která využívá naše zásady pro ukládání do mezipaměti. Vrstva ukládání do mezipaměti bude zahrnovat `ProductsCL` třídu, která poskytuje přístup k informacím o produktech pomocí metod jako `GetProducts()`, `GetProductsByCategoryID(categoryID)`a tak dále, které při vyvolání se nejprve pokusí načíst data z mezipaměti. Pokud je mezipaměť prázdná, tyto metody vyvolá příslušnou metodu `ProductsBLL` v knihoven BLL, která by pak získala data z DAL. Metody `ProductsCL` mezipaměť dat načtených z knihoven BLL před jejich vrácením.
 
-Jak ukazuje obrázek 1, je umístěn CL mezi prezentační a obchodní logiky vrstvy.
+Jak ukazuje obrázek 1, CL se nachází mezi vrstvami prezentace a obchodní logiky.
 
-![Další vrstva v architektuře náš je vrstev ukládání do mezipaměti (CL)](caching-data-in-the-architecture-cs/_static/image1.png)
+![Vrstva ukládání do mezipaměti (CL) je další vrstva v naší architektuře.](caching-data-in-the-architecture-cs/_static/image1.png)
 
-**Obrázek 1**: Další vrstva v architektuře náš je vrstev ukládání do mezipaměti (CL)
+**Obrázek 1**: vrstva ukládání do mezipaměti (CL) je další vrstva v naší architektuře.
 
-## <a name="step-1-creating-the-caching-layer-classes"></a>Krok 1: Vytvoření třídy vrstev ukládání do mezipaměti
+## <a name="step-1-creating-the-caching-layer-classes"></a>Krok 1: vytvoření tříd vrstev pro ukládání do mezipaměti
 
-V tomto kurzu vytvoříme velmi jednoduchý CL s jednu třídu `ProductsCL` , který má pouze několik metod. Vytváření vrstvu dokončeno ukládání do mezipaměti pro celou aplikaci by vyžadovaly vytvoření `CategoriesCL`, `EmployeesCL`, a `SuppliersCL` třídy a nabízí metody v těchto tříd vrstev ukládání do mezipaměti pro každou metodu dat přístup nebo změna v BLL. Stejně jako u knihoven BLL a DAL, by měla být v ideálním případě implementována vrstev ukládání do mezipaměti jako samostatný projekt knihovny tříd; ale jsme provede jako třída v `App_Code` složky.
+V tomto kurzu vytvoříme velmi jednoduchý CL s jednou třídou `ProductsCL`, která má jenom několik metody. Sestavení kompletní vrstvy ukládání do mezipaměti pro celou aplikaci bude vyžadovat vytváření tříd `CategoriesCL`, `EmployeesCL`a `SuppliersCL` a poskytnutí metody v těchto třídách vrstev pro ukládání do mezipaměti pro jednotlivé metody přístupu k datům nebo úprav v knihoven BLL. Stejně jako u knihoven BLL a DAL by vrstva ukládání do mezipaměti měla být ideálním způsobem implementována jako samostatný projekt knihovny tříd; budeme ho ale implementovat jako třídu ve složce `App_Code`.
 
-Na další samostatné čistě CL třídy z třídy DAL a BLL umožňují s vytvořit novou podsložku v `App_Code` složky. Klikněte pravým tlačítkem na `App_Code` složku v Průzkumníku řešení zvolte novou složku a pojmenujte novou složku `CL`. Po vytvoření této složky, přidejte do ní novou třídu s názvem `ProductsCL.cs`.
+Chcete-li efektivněji oddělit třídy CL z tříd DAL a knihoven BLL, nechte vytvořit novou podsložku ve složce `App_Code`. Pravým tlačítkem myši klikněte na složku `App_Code` v Průzkumník řešení, vyberte možnost Nová složka a pojmenujte novou složku `CL`. Po vytvoření této složky do ní přidejte novou třídu s názvem `ProductsCL.cs`.
 
-![Přidat novou složku s názvem CL a třídu s názvem ProductsCL.cs](caching-data-in-the-architecture-cs/_static/image2.png)
+![Přidejte novou složku s názvem CL a třídu s názvem ProductsCL.cs.](caching-data-in-the-architecture-cs/_static/image2.png)
 
-**Obrázek 2**: Přidat novou složku s názvem `CL` a třídu s názvem `ProductsCL.cs`
+**Obrázek 2**: přidejte novou složku s názvem `CL` a třídu s názvem `ProductsCL.cs`
 
-`ProductsCL` Třída by měla obsahovat stejnou sadu dat přístup a úpravy metod, jak se nachází ve své třídě odpovídající vrstvy obchodní logiky (`ProductsBLL`). Místo vytváření všechny tyto metody umožňují s pouze sestavení používá několik tady získat představu pro tyto vzory se dají CL. Zejména, přidáme `GetProducts()` a `GetProductsByCategoryID(categoryID)` metody v kroku 3 a `UpdateProduct` přetížení v kroku 4. Můžete přidat zbývající `ProductsCL` metody a `CategoriesCL`, `EmployeesCL`, a `SuppliersCL` třídy ve volném čase.
+Třída `ProductsCL` by měla obsahovat stejnou sadu metod přístupu k datům a úprav, jak se nachází v odpovídající třídě vrstvy obchodní logiky (`ProductsBLL`). Místo vytváření všech těchto metod teď stačí sestavit pár, abyste se mohli cítit vzory, které používá CL. Konkrétně přidáte do kroku 3 metody `GetProducts()` a `GetProductsByCategoryID(categoryID)` a `UpdateProduct` přetížení v kroku 4. Zbývající metody `ProductsCL` a třídy `CategoriesCL`, `EmployeesCL`a `SuppliersCL` můžete přidat do svého volného místa.
 
-## <a name="step-2-reading-and-writing-to-the-data-cache"></a>Krok 2: Čtení a zápis do mezipaměti dat
+## <a name="step-2-reading-and-writing-to-the-data-cache"></a>Krok 2: čtení a zápis do mezipaměti dat
 
-ObjectDataSource ukládání do mezipaměti funkce prozkoumali v předchozím kurzu interně používá k ukládání dat načtených z BLL datové mezipaměti technologie ASP.NET. Mezipaměť dat je také možné programově přistupovat z třídy modelu code-behind stránky technologie ASP.NET nebo ze tříd v architektuře s webovou aplikací. Ke čtení a zápis do mezipaměti dat z modelu code-behind třídy s stránky technologie ASP.NET, používají následující vzor:
+Funkce ukládání ObjectDataSource do mezipaměti v předchozím kurzu interně používá mezipaměť dat ASP.NET k ukládání dat načtených z knihoven BLL. Mezipaměť dat je také k dispozici programově ze tříd ASP.NET stránky kódu na pozadí nebo z tříd v architektuře webové aplikace s. Pro čtení a zápis do mezipaměti dat ze třídy ASP.NET stránky s kódem na pozadí použijte následující vzor:
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample1.cs)]
 
-[ `Cache` Třídy](https://msdn.microsoft.com/library/system.web.caching.cache.aspx) s [ `Insert` metoda](https://msdn.microsoft.com/library/system.web.caching.cache.insert.aspx) má několik přetížení. `Cache["key"] = value` a `Cache.Insert(key, value)` je synonymní a jak přidat položku do mezipaměti pomocí zadaného klíče bez definované vypršení platnosti. Obvykle chcete zadat vypršení platnosti při přidání položky do mezipaměti, buď jako závislosti nebo vypršení platnosti časovou synchronizací. Pomocí jednoho z jiných `Insert` přetížení metody s k poskytnutí informací podle závislostí nebo času vypršení platnosti.
+Metoda [`Cache` třídy](https://msdn.microsoft.com/library/system.web.caching.cache.aspx) s [`Insert`](https://msdn.microsoft.com/library/system.web.caching.cache.insert.aspx) má mnoho přetížení. `Cache["key"] = value` a `Cache.Insert(key, value)` jsou synonyma a obě do mezipaměti přidají položku pomocí zadaného klíče bez definovaného vypršení platnosti. Obvykle chceme zadat vypršení platnosti při přidávání položky do mezipaměti, buď jako závislosti, vypršení časového limitu nebo obojího. K poskytnutí informací o vypršení platnosti závislosti nebo času použijte jedno z dalších přetížení `Insert` metody.
 
-Ukládání do mezipaměti vrstvu, kterou metod s muset nejdřív zkontrolujte, zda je požadovaná data v mezipaměti a pokud ano, vrátí ho odtud. Pokud není požadovaná data v mezipaměti, odpovídající metodu BLL musí vyvolat. Vrácená hodnota by měla uložit do mezipaměti a vráceny, jak ukazuje následující sekvenční diagram.
+Metody vrstev pro ukládání do mezipaměti musí nejdřív ověřit, jestli jsou požadovaná data v mezipaměti, a pokud ano, vrátí se z ní. Pokud požadovaná data nejsou v mezipaměti, musí být vyvolána odpovídající metoda knihoven BLL. Návratová hodnota by měla být uložená v mezipaměti a pak se vrátila, jak ukazuje následující sekvenční diagram.
 
-![Metody s vrstev ukládání do mezipaměti vrátit Data z mezipaměti, pokud je k dispozici s](caching-data-in-the-architecture-cs/_static/image3.png)
+![Metody ukládání vrstvy do mezipaměti vrací data z mezipaměti, pokud je k dispozici.](caching-data-in-the-architecture-cs/_static/image3.png)
 
-**Obrázek 3**: Metody s vrstev ukládání do mezipaměti vrátit Data z mezipaměti, pokud je k dispozici s
+**Obrázek 3**: metody vrstvy ukládání do mezipaměti vrací data z mezipaměti, pokud jsou k dispozici.
 
-Posloupnost znázorněno na obrázku 3 je provést v CL třídy pomocí následujícího vzorce:
+Pořadí znázorněné na obrázku 3 je provedeno v třídách CL pomocí následujícího vzoru:
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample2.cs)]
 
-Tady *typ* je typ dat uložené v mezipaměti `Northwind.ProductsDataTable`, například *klíč* je klíč, který jednoznačně identifikuje položku mezipaměti. Pokud položka se zadaným *klíč* není v mezipaměti, pak *instance* bude `null` a data budou načteny z příslušné metody knihoven BLL a přidají se do mezipaměti. Době `return instance` dosažení *instance* obsahuje odkaz na data, buď z mezipaměti nebo získaných z BLL.
+Tady je *typ* dat ukládaných do mezipaměti `Northwind.ProductsDataTable`, například když *klíč* je klíč, který jedinečně identifikuje položku mezipaměti. Pokud položka se zadaným *klíčem* není v mezipaměti, pak se *instance* `null` a data se načtou z příslušné metody knihoven BLL a přidají se do mezipaměti. Při dosažení `return instance` *instance* obsahuje odkaz na data, buď z mezipaměti, nebo z knihoven BLL.
 
-Ujistěte se, že výše uvedené model použijte při přístupu k datům z mezipaměti. Následující vzor, který vypadá na první pohled ekvivalentní, obsahuje malý rozdíl, který představuje časování. Ke konfliktům časování je obtížné ladit, protože samotné odhalit nedojde a je obtížné reprodukovat.
+Při přístupu k datům z mezipaměti nezapomeňte použít výše uvedený vzor. Následující vzor, který je na první pohled, vypadá jako ekvivalent, obsahuje drobný rozdíl, který představuje podmínku časování. Konflikty časování je obtížné ladit, protože se odhalují zřídka a je obtížné je reprodukována.
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample3.cs)]
 
-Rozdíl v této druhé nesprávný kód fragmentu kódu je, že místo uložení odkazu na položku z mezipaměti v místní proměnné, datové mezipaměti přistupuje přímo v podmíněném příkazu *a* v `return`. Představte si, že po dosažení tohoto kódu `Cache["key"]` jinou hodnotu než`null`, ale předtím, než `return` je dosažen příkaz, vyloučí systému *klíč* z mezipaměti. V tomto případě výjimečných kód vrátí `null` hodnotu namísto očekávaného typu objektu.
+Rozdíl v této druhé, nesprávný fragment kódu je místo uložení odkazu na položku v mezipaměti v místní proměnné, k datové mezipaměti se dostanete přímo v podmíněném příkazu *a* v `return`. Představte si, že po dosažení tohoto kódu je `Cache["key"]` ne`null`, ale před dosažením příkazu `return` systém vyloučí *klíč* z mezipaměti. V tomto vzácném případě kód vrátí `null` hodnotu, nikoli objekt očekávaného typu.
 
 > [!NOTE]
-> Mezipaměť dat je bezpečná pro vlákno, takže nejsou potřeba t synchronizaci přístupu vláken pro jednoduché operace čtení nebo zápisu. Ale pokud potřebujete provést více operací s daty v mezipaměti, která musí být Atomický, zodpovídáte za implementaci zámek nebo jiný mechanismus zajistit bezpečný přístup z více vláken. Zobrazit [synchronizaci přístupu k mezipaměti ASP.NET](http://www.ddj.com/184406369) Další informace.
+> Mezipaměť dat je bezpečná pro přístup z více vláken, takže nemusíte synchronizovat přístup k vláknům pro jednoduché čtení nebo zápisy. Pokud ale potřebujete provést více operací s daty v mezipaměti, které je potřeba atomicky, zodpovídáte za implementaci zámku nebo nějakého jiného mechanismu, abyste zajistili bezpečnost vlákna. Další informace najdete v tématu [synchronizace přístupu ke službě ASP.NET Cache](http://www.ddj.com/184406369) .
 
-Položky můžete programově vyřazen z mezipaměti data s využitím [ `Remove` metoda](https://msdn.microsoft.com/library/system.web.caching.cache.remove.aspx) takto:
+Položka může být programově vyřazena z mezipaměti dat pomocí [metody`Remove`](https://msdn.microsoft.com/library/system.web.caching.cache.remove.aspx) , například takto:
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample4.cs)]
 
-## <a name="step-3-returning-product-information-from-theproductsclclass"></a>Krok 3: Vrací informace o produktu z`ProductsCL`třídy
+## <a name="step-3-returning-product-information-from-theproductsclclass"></a>Krok 3: vrácení informací o produktu z`ProductsCL`třídy
 
-Pro tento kurz umožní s implementovat dvě metody pro vracení informací o produktu ze `ProductsCL` třídy: `GetProducts()` a `GetProductsByCategoryID(categoryID)`. Jak je `ProductsBL` třídy v vrstvy obchodní logiky `GetProducts()` metodu CL vrátí informace o všech produktů, jako `Northwind.ProductsDataTable` objektu, při `GetProductsByCategoryID(categoryID)` vrátí všechny produkty v zadané kategorii.
+Pro tento kurz umožňuje implementovat dvě metody pro vracení informací o produktu z `ProductsCL` třídy: `GetProducts()` a `GetProductsByCategoryID(categoryID)`. Podobně jako u `ProductsBL` třídy v vrstvě obchodní logiky metoda `GetProducts()` v CL vrátí informace o všech produktech jako objekt `Northwind.ProductsDataTable`, zatímco `GetProductsByCategoryID(categoryID)` vrátí všechny produkty ze zadané kategorie.
 
-Následující kód ukazuje část metody v `ProductsCL` třídy:
+Následující kód ukazuje část metod v `ProductsCL` třídy:
 
 [!code-vb[Main](caching-data-in-the-architecture-cs/samples/sample5.vb)]
 
-Nejprve, Všimněte si, `DataObject` a `DataObjectMethodAttribute` atributy použité na třídy a metody. Tyto atributy poskytují informace k Průvodci s prvek ObjectDataSource, označující, co třídy a metody by se zobrazit v Průvodci s kroky. Protože CL třídy a metody bude přistupovat prvku ObjectDataSource v prezentační vrstvě, po přidání těchto atributů a zlepšit tak prostředí v době návrhu. Vraťte se do [vytvoření vrstvy obchodní logiky](../introduction/creating-a-business-logic-layer-cs.md) kurz pro důkladnější popis těchto atributů a jejich vliv.
+Nejprve si poznamenejte atributy `DataObject` a `DataObjectMethodAttribute` použité pro třídu a metody. Tyto atributy poskytují informace průvodci ObjectDataSource s, který označuje, jaké třídy a metody by se měly zobrazit v krocích průvodce s. Vzhledem k tomu, že třídy CL a metody budou k dispozici z prvku ObjectDataSource v prezentační vrstvě, byly přidány tyto atributy pro zlepšení prostředí v době návrhu. Přečtěte si kurz [Vytvoření vrstvy obchodní logiky](../introduction/creating-a-business-logic-layer-cs.md) a podrobnější popis těchto atributů a jejich efektů.
 
-V `GetProducts()` a `GetProductsByCategoryID(categoryID)` metody, že data vrácená z `GetCacheItem(key)` metoda je přiřazena k místní proměnné. `GetCacheItem(key)` Metodu, která prozkoumáme krátce, vrátí určité položky z mezipaměti stanoveného *klíč*. Pokud žádná taková data nenajde v mezipaměti, je načten z odpovídající `ProductsBLL` metoda třídy a pak přidá do mezipaměti pomocí `AddCacheItem(key, value)` metody.
+V metodách `GetProducts()` a `GetProductsByCategoryID(categoryID)` je data vrácená z metody `GetCacheItem(key)` přiřazena místní proměnné. Metoda `GetCacheItem(key)`, kterou prověříme krátce, vrátí konkrétní položku z mezipaměti na základě zadaného *klíče*. Pokud nejsou taková data v mezipaměti nalezena, jsou načtena z odpovídající metody třídy `ProductsBLL` a poté přidány do mezipaměti pomocí metody `AddCacheItem(key, value)`.
 
-`GetCacheItem(key)` a `AddCacheItem(key, value)` metody rozhraní se mezipaměť dat, čtení a zápis hodnot, v uvedeném pořadí. `GetCacheItem(key)` Metoda je jednodušší z nich. Jednoduše vrací hodnotu z mezipaměti třídy pomocí předaným *klíč*:
+Rozhraní metody `GetCacheItem(key)` a `AddCacheItem(key, value)` s mezipamětí dat, čtení a zápis hodnot v uvedeném pořadí. Metoda `GetCacheItem(key)` je jednodušší z těchto dvou. Jednoduše vrátí hodnotu z třídy Cache pomocí *klíče*předaného:
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample6.cs)]
 
-`GetCacheItem(key)` nepoužívá *klíč* hodnota zadána, ale místo toho volání `GetCacheKey(key)` metoda, která vrátí *klíč* předponou ProductsCache-. `MasterCacheKeyArray`, Který obsahuje řetězec ProductsCache, také používá `AddCacheItem(key, value)` způsob, jak uvidíme okamžik.
+`GetCacheItem(key)` nepoužívá hodnotu *klíče* jako dodané, ale místo toho volá metodu `GetCacheKey(key)`, která vrací *klíč* , který je v ProductsCache-. `MasterCacheKeyArray`, která obsahuje řetězec ProductsCache, je také používána metodou `AddCacheItem(key, value)`, jak uvidíme za chvíli.
 
-Z třídy modelu code-behind stránky s ASP.NET, mezipaměť dat lze přistupovat pomocí `Page` třída s [ `Cache` vlastnost](https://msdn.microsoft.com/library/system.web.ui.page.cache.aspx)a umožňuje syntaxí `Cache["key"] = value`, jak je popsáno v kroku 2. Ze třídy v rámci architektury mezipaměti dat lze přistupovat pomocí buď `HttpRuntime.Cache` nebo `HttpContext.Current.Cache`. [Petr Johnsonem](https://weblogs.asp.net/pjohnson/default.aspx)na blogu [HttpRuntime.Cache vs. HttpContext.Current.Cache](https://weblogs.asp.net/pjohnson/httpruntime-cache-vs-httpcontext-current-cache) poznámky výhod snížený výkon při použití `HttpRuntime` místo `HttpContext.Current`; v důsledku toho `ProductsCL` používá `HttpRuntime`.
+Z třídy ASP.NET s kódem na pozadí lze mezipaměť dat použít pomocí vlastnosti `Page` třídy s [`Cache`](https://msdn.microsoft.com/library/system.web.ui.page.cache.aspx)a umožňuje syntaxi jako `Cache["key"] = value`, jak je popsáno v kroku 2. Z třídy v rámci architektury je k datové mezipaměti možné přistupovat buď pomocí `HttpRuntime.Cache`, nebo `HttpContext.Current.Cache`. Seznámení s modulem pro zápis na blogu [Johnsonem](https://weblogs.asp.net/pjohnson/default.aspx) [. cache vs. HttpContext. Current. cache](https://weblogs.asp.net/pjohnson/httpruntime-cache-vs-httpcontext-current-cache) poznámky k mírnému využití výkonu při použití `HttpRuntime` místo `HttpContext.Current`; v důsledku toho `ProductsCL` používá `HttpRuntime`.
 
 > [!NOTE]
-> Pokud vaše architektura je implementováno pomocí projekty knihovny tříd, budete muset přidat odkaz na `System.Web` sestavení, aby bylo možné používat [HttpRuntime](https://msdn.microsoft.com/library/system.web.httpruntime.aspx) a [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.aspx) třídy.
+> Pokud je vaše architektura implementována pomocí projektů knihovny tříd, budete muset přidat odkaz na sestavení `System.Web`, aby bylo možné použít třídy [httpRuntime](https://msdn.microsoft.com/library/system.web.httpruntime.aspx) a [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.aspx) .
 
-Pokud položka není nalezena v mezipaměti, `ProductsCL` metody třídy s získat data z knihoven BLL a přidejte ji do mezipaměti pomocí `AddCacheItem(key, value)` metoda. Chcete-li přidat *hodnotu* do mezipaměti můžeme použít následující kód, který používá 60 druhé čas vypršení:
+Pokud se položka v mezipaměti nenajde, metody `ProductsCL` třídy s získají data z knihoven BLL a do mezipaměti přidáte pomocí metody `AddCacheItem(key, value)`. K přidání *hodnoty* do mezipaměti můžeme použít následující kód, který používá vypršení druhé doby 60:
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample7.cs)]
 
-`DateTime.Now.AddSeconds(CacheDuration)` Určuje podle času vypršení platnosti budoucí dobu 60 sekund [ `System.Web.Caching.Cache.NoSlidingExpiration` ](https://msdn.microsoft.com/library/system.web.caching.cache.noslidingexpiration(vs.80).aspx) označuje tom, že s žádné klouzavé vypršení platnosti. Když je tento `Insert` přetížení metody obsahuje vstupní parametry pro obě absolutní a klouzavé vypršení platnosti, můžete pouze zadat jeden z nich. Pokud se pokusíte k určení absolutní čas a časové období `Insert` vyvolá metoda výjimku `ArgumentException` výjimky.
+`DateTime.Now.AddSeconds(CacheDuration)` určuje časový limit vypršení platnosti 60 sekund v budoucnosti, zatímco [`System.Web.Caching.Cache.NoSlidingExpiration`](https://msdn.microsoft.com/library/system.web.caching.cache.noslidingexpiration(vs.80).aspx) označuje, že neexistují žádné klouzavé vypršení platnosti. I když toto přetížení `Insert` metody obsahuje vstupní parametry pro absolutní i klouzavé vypršení platnosti, můžete zadat pouze jednu z těchto dvou. Pokud se pokusíte zadat absolutní a časový rozsah, metoda `Insert` vyvolá výjimku `ArgumentException`.
 
 > [!NOTE]
-> Tato implementace `AddCacheItem(key, value)` metoda aktuálně má některé nedostatky. Vytvoříme řešení a vyřešit tyto problémy v kroku 4.
+> Tato implementace metody `AddCacheItem(key, value)` v současnosti obsahuje nějaké nedostatky. Tyto problémy budeme řešit a překonat v kroku 4.
 
-## <a name="step-4-invalidating-the-cache-when-the-data-is-modified-through-the-architecture"></a>Krok 4: Zrušení platnosti při the Data v mezipaměti je upravovat prostřednictvím the architektury
+## <a name="step-4-invalidating-the-cache-when-the-data-is-modified-through-the-architecture"></a>Krok 4: zrušení platnosti mezipaměti při změně dat pomocí architektury
 
-Spolu s metod načítání dat je potřeba poskytovat stejné metody, jako BLL pro vkládání, aktualizaci a odstraňování dat vrstev ukládání do mezipaměti. Metody CL data s úpravy neprovádějte žádné změny data uložená v mezipaměti, ale místo toho volat metodu BLL s odpovídající data změny a pak zneplatnění mezipaměti. Jak jsme viděli v předchozím kurzu, to je stejné chování, která se použije prvku ObjectDataSource při jeho ukládání do mezipaměti funkce jsou povolené a jeho `Insert`, `Update`, nebo `Delete` jsou metody vyvolány.
+Spolu s metodami načítání dat musí vrstva ukládání do mezipaměti poskytovat stejné metody jako knihoven BLL pro vkládání, aktualizaci a odstraňování dat. Metody změny dat CL. nemění data uložená v mezipaměti, ale místo toho volají knihoven BLL s odpovídající metodou změny dat a pak neověřuje mezipaměť. Jak jsme viděli v předchozím kurzu, jedná se o stejné chování, které prvek ObjectDataSource použije, když jsou povolené jeho funkce ukládání do mezipaměti a jsou vyvolány `Insert`, `Update`nebo `Delete` metody.
 
-Následující `UpdateProduct` přetížení, ukazuje, jak implementovat metody změny dat CL:
+Následující přetížení `UpdateProduct` ukazuje, jak implementovat metody změny dat v CL:
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample8.cs)]
 
-Úprava dat odpovídající metoda vrstvy obchodní logiky je vyvolán, ale před vrácením odpovědi musíme zneplatnění mezipaměti. Bohužel zrušení platnosti mezipaměti není jednoznačné protože `ProductsCL` třída s `GetProducts()` a `GetProductsByCategoryID(categoryID)` metody každé přidání položek do mezipaměti s různými klíči a `GetProductsByCategoryID(categoryID)` metoda přidá položku různé mezipaměti pro každý jedinečný *categoryID*.
+Je vyvolána vhodná metoda vrstvy pro úpravu dat, ale předtím, než se vrátí jeho odpověď, musíme tuto mezipaměť znehodnotit. Neověřování mezipaměti bohužel není jednoduché, protože `ProductsCL` třídy s `GetProducts()` a `GetProductsByCategoryID(categoryID)` metody každý přidávají položky do mezipaměti s různými klíči a metoda `GetProductsByCategoryID(categoryID)` pro každou jedinečnou hodnotu *KódKategorie*přidá jinou položku mezipaměti.
 
-Při zrušení platnosti mezipaměti, budeme muset odebrat *všechny* položek, které byly přidány pomocí `ProductsCL` třídy. Toho můžete docílit tím, že přidružíte *závislosti mezipaměti* s každou položku Přidat do mezipaměti `AddCacheItem(key, value)` metoda. Obecně platí závislost mezipaměti může být jiná položka v mezipaměti, souboru v systému souborů nebo data z databáze Microsoft SQL Server. Když závislost změní nebo je odebrat z mezipaměti, položky v mezipaměti je spojený se automaticky vyřadí z mezipaměti. Pro účely tohoto kurzu chceme vytvořit další položky v mezipaměti, která slouží jako závislost mezipaměti pro všechny položky přidané prostřednictvím `ProductsCL` třídy. Tímto způsobem všechny tyto položky lze odebrat z mezipaměti jednoduše odebráním závislosti mezipaměti.
+Při devalidaci mezipaměti musíme odebrat *všechny* položky, které mohou být přidány třídou `ProductsCL`. To lze provést přidružením *závislosti mezipaměti* ke každé položce přidané do mezipaměti v metodě `AddCacheItem(key, value)`. V zásadě může být závislost mezipaměti jinou položkou v mezipaměti, souborem v systému souborů nebo daty z databáze Microsoft SQL Server. Když se závislost změní nebo odebere z mezipaměti, položky mezipaměti, ke kterým je přidružená, se automaticky vyloučí z mezipaměti. Pro tento kurz chceme v mezipaměti vytvořit další položku, která slouží jako závislost mezipaměti pro všechny položky přidané prostřednictvím třídy `ProductsCL`. Tímto způsobem lze z mezipaměti odebrat všechny tyto položky pouhým odebráním závislosti mezipaměti.
 
-Umožněte s aktualizace `AddCacheItem(key, value)` tak, aby každá položka přidána do mezipaměti prostřednictvím této metody není přidružená metoda závislost jedné mezipaměti:
+Aktualizujte metodu `AddCacheItem(key, value)` tak, aby se všechny položky přidané do mezipaměti prostřednictvím této metody přidružil k závislosti jedné mezipaměti:
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample9.cs)]
 
-`MasterCacheKeyArray` je pole řetězců obsahující jednu hodnotu, ProductsCache. Položka mezipaměti je nejprve přidány do mezipaměti a přiřazené aktuálnímu datu a času. Pokud položka mezipaměti už existuje, se aktualizuje. V dalším kroku se vytvoří závislost mezipaměti. [ `CacheDependency` Třídy](https://msdn.microsoft.com/library/system.web.caching.cachedependency(VS.80).aspx) konstruktor s má několik přetížení, ale použitému v tady očekává, že dvě `string` pole vstupy. První z nich určuje sadu souborů pro použití jako závislosti. Protože jsme zadávat t chcete použít libovolné souborové závislosti, hodnota `null` se používá pro první vstupní parametr. Druhé vstupní parametr určuje sadu mezipaměti klíče, které slouží jako závislosti. Tady můžeme určit jednu závislost, `MasterCacheKeyArray`. `CacheDependency` Je pak předán `Insert` metody.
+`MasterCacheKeyArray` je pole řetězců, které obsahuje jednu hodnotu ProductsCache. Nejprve se položka mezipaměti přidá do mezipaměti a přiřadí se aktuální datum a čas. Pokud položka mezipaměti již existuje, je aktualizována. V dalším kroku se vytvoří závislost mezipaměti. Konstruktor [`CacheDependency` třídy](https://msdn.microsoft.com/library/system.web.caching.cachedependency(VS.80).aspx) s má několik přetížení, ale ta, která se používá tady, očekává dva vstupy `string` pole. První z nich určuje sadu souborů, které mají být použity jako závislosti. Vzhledem k tomu, že nechceme použít žádné závislosti založené na souborech, je pro první vstupní parametr použita hodnota `null`. Druhý vstupní parametr určuje sadu klíčů mezipaměti, které se mají použít jako závislosti. Tady určíme naši jedinou závislost `MasterCacheKeyArray`. `CacheDependency` pak předává do metody `Insert`.
 
-Pomocí této změny `AddCacheItem(key, value)`, invaliding mezipaměť je stejně jednoduché jako odebráním závislosti.
+S touto úpravou `AddCacheItem(key, value)`je zrušení platnosti mezipaměti stejně jednoduché jako odebrání závislosti.
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample10.cs)]
 
-## <a name="step-5-calling-the-caching-layer-from-the-presentation-layer"></a>Krok 5: Volání ukládání do mezipaměti vrstvy od prezentační vrstvy
+## <a name="step-5-calling-the-caching-layer-from-the-presentation-layer"></a>Krok 5: volání vrstvy ukládání do mezipaměti z prezentační vrstvy
 
-Ukládání do mezipaměti vrstvu s třídy a metody je možné pracovat s daty pomocí technik jsme ve prozkoumat v rámci těchto kurzů. Pro ilustraci, práci s daty v mezipaměti, uložte změny do souboru `ProductsCL` třídy a pak otevřete `FromTheArchitecture.aspx` stránku `Caching` složky a přidejte prvku GridView. Vytvořte nový prvek ObjectDataSource z GridView s inteligentních značek. V prvním kroku průvodce s byste měli vidět `ProductsCL` třídy jako jednu z možností z rozevíracího seznamu.
+Třídy a metody pro ukládání do mezipaměti lze použít pro práci s daty pomocí technik, které jsme prozkoumali v těchto kurzech. Chcete-li znázornit práci s daty uloženými v mezipaměti, uložte změny do třídy `ProductsCL` a poté otevřete stránku `FromTheArchitecture.aspx` ve složce `Caching` a přidejte prvek GridView. Z inteligentní značky GridView s vytvořte nový prvek ObjectDataSource. V prvním kroku průvodce s byste měli vidět třídu `ProductsCL` jako jednu z možností z rozevíracího seznamu.
 
-[![Třída ProductsCL je zahrnuta v rozevíracím seznamu obchodní objekt](caching-data-in-the-architecture-cs/_static/image5.png)](caching-data-in-the-architecture-cs/_static/image4.png)
+[![třída ProductsCL je obsažena v rozevíracím seznamu obchodních objektů.](caching-data-in-the-architecture-cs/_static/image5.png)](caching-data-in-the-architecture-cs/_static/image4.png)
 
-**Obrázek 4**: `ProductsCL` Třída je zahrnuta v rozevíracím seznamu obchodní objekt ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-in-the-architecture-cs/_static/image6.png))
+**Obrázek 4**: třída `ProductsCL` je obsažena v rozevíracím seznamu obchodních objektů ([kliknutím zobrazíte obrázek v plné velikosti](caching-data-in-the-architecture-cs/_static/image6.png)).
 
-Po výběru `ProductsCL`, klikněte na tlačítko Další. Rozevírací seznam v kartě vyberte má dvě položky - `GetProducts()` a `GetProductsByCategoryID(categoryID)` a kartu aktualizace má jediný `UpdateProduct` přetížení. Zvolte `GetProducts()` metodu z vyberte kartu a `UpdateProducts` metoda kartu aktualizace a klikněte na Dokončit.
+Po výběru `ProductsCL`klikněte na další. Rozevírací seznam na kartě vybrat má dvě položky – `GetProducts()` a `GetProductsByCategoryID(categoryID)` a karta aktualizace má jediné `UpdateProduct` přetížení. Vyberte metodu `GetProducts()` z karty vybrat a `UpdateProducts` metodou na kartě aktualizace a klikněte na Dokončit.
 
-[![Metody třídy ProductsCL s jsou uvedeny v rozevírací seznamy](caching-data-in-the-architecture-cs/_static/image8.png)](caching-data-in-the-architecture-cs/_static/image7.png)
+[![metody třídy s ProductsCL jsou uvedené v rozevíracích seznamech.](caching-data-in-the-architecture-cs/_static/image8.png)](caching-data-in-the-architecture-cs/_static/image7.png)
 
-**Obrázek 5**: `ProductsCL` Metody třídy s jsou uvedeny v rozevírací seznamy ([kliknutím ji zobrazíte obrázek v plné velikosti](caching-data-in-the-architecture-cs/_static/image9.png))
+**Obrázek 5**: metody třídy `ProductsCL` jsou uvedeny v rozevíracích seznamech ([kliknutím zobrazíte obrázek v plné velikosti](caching-data-in-the-architecture-cs/_static/image9.png)).
 
-Po dokončení průvodce, Visual Studio nastaví ObjectDataSource s `OldValuesParameterFormatString` vlastnost `original_{0}` a přidejte do příslušných polí do prvku GridView. Změnit `OldValuesParameterFormatString` vlastnost zpět na výchozí hodnotu, `{0}`a konfigurace ovládacího prvku GridView pro podporu stránkování, řazení a úpravy. Vzhledem k tomu, `UploadProducts` přetížení používané CL přijímá pouze upravených produkt s názvem a ceny, omezit prvku GridView tak, aby se jenom tato pole upravovat.
+Po dokončení průvodce nastaví Visual Studio vlastnost ObjectDataSource `OldValuesParameterFormatString` na `original_{0}` a přidá příslušná pole do prvku GridView. Změňte vlastnost `OldValuesParameterFormatString` zpět na její výchozí hodnotu, `{0}`a nakonfigurujte prvek GridView tak, aby podporoval stránkování, řazení a úpravy. Vzhledem k tomu, že přetížení `UploadProducts` používané v CL přijme pouze upravený název produktu a cenu, omezí prvek GridView tak, aby byla pouze tato pole upravitelná.
 
-V předchozím kurzu jsme definovali GridView pro zahrnutí polí pro `ProductName`, `CategoryName`, a `UnitPrice` pole. Nebojte se replikace tohoto formátování a struktura, v takovém případě vašeho ovládacího prvku GridView a prvku ObjectDataSource s deklarativní značek by měl vypadat nějak takto:
+V předchozím kurzu jsme definovali prvek GridView, který bude obsahovat pole pro pole `ProductName`, `CategoryName`a `UnitPrice`. Chcete-li replikovat toto formátování a strukturu, v takovém případě by deklarativní označení prvku GridView a ObjectDataSource s mělo vypadat podobně jako v následujícím příkladu:
 
 [!code-aspx[Main](caching-data-in-the-architecture-cs/samples/sample11.aspx)]
 
-V tuto chvíli máme stránku, která používá vrstev ukládání do mezipaměti. Pokud chcete zobrazit mezipaměti v akci, nastavte zarážky v `ProductsCL` třída s `GetProducts()` a `UpdateProduct` metody. Na stránce v prohlížeči a krokovat kód při řazení a stránkování, chcete-li zobrazit data získaná z mezipaměti. Potom aktualizovat záznam a Všimněte si, že platnost mezipaměti a v důsledku toho jsou načteny z BLL při dat je znovu připojeno k prvku GridView.
+V tuto chvíli máme stránku, která používá vrstvu ukládání do mezipaměti. Chcete-li zobrazit mezipaměť v akci, nastavte zarážky v `ProductsCL` třídy s `GetProducts()` a metody `UpdateProduct`. Přejděte na stránku v prohlížeči a procházejte kódem při řazení a stránkování, aby se zobrazila data získaná z mezipaměti. Pak aktualizujte záznam a Všimněte si, že mezipaměť je neověřená a v důsledku toho se načte z knihoven BLL při převázání dat na prvek GridView.
 
 > [!NOTE]
-> Ukládání do mezipaměti vrstvy k dispozici v souboru pro stažení doprovodném Tento článek není úplný. Obsahuje pouze jednu třídu, `ProductsCL`, která jenom sportovní několik metod. Kromě toho používá jenom jednu stránku ASP.NET CL (`~/Caching/FromTheArchitecture.aspx`) všechny ostatní stále odkazují BLL přímo. Pokud máte v úmyslu používat CL ve vaší aplikaci, všechna volání od prezentační vrstvy by měl přejděte do CL, která by vyžadovala třídy s CL a metody, na něž se tyto třídy a metody v BLL aktuálně používá prezentační vrstvy.
+> Vrstva ukládání do mezipaměti uvedená v tomto článku ke stažení, která je přiložena k tomuto článku, není dokončena. Obsahuje pouze jednu třídu, `ProductsCL`, která pouze sport několik metody. Kromě toho pouze jedna stránka ASP.NET používá CL (`~/Caching/FromTheArchitecture.aspx`) všichni ostatní, stále na knihoven BLL odkazují přímo. Pokud plánujete použití CL ve vaší aplikaci, všechna volání z prezentační vrstvy by měla přejít na CL, což by vyžadovalo, aby se třídy CL a metody pokryly s těmito třídami a metodami v knihoven BLL aktuálně používané prezentační vrstvou.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Při ukládání do mezipaměti je možné použít na prezentační vrstvu s ASP.NET 2.0 s SqlDataSource a ovládací prvky prvku ObjectDataSource, by v ideálním případě ukládání do mezipaměti odpovědnosti delegovat na samostatné vrstva v architektuře. V tomto kurzu jsme vytvořili vrstvu ukládání do mezipaměti, který se nachází mezi prezentační vrstva a vrstva obchodní logiky. Vrstev ukládání do mezipaměti je potřeba zadat stejnou sadu tříd a metod, které existují v knihoven BLL a jsou volány od prezentační vrstvy.
+I když lze ukládání do mezipaměti použít v prezentační vrstvě pomocí ovládacích prvků ASP.NET 2,0 s SqlDataSource a ObjectDataSource, v ideálním případě by se odpovědnosti do mezipaměti přenesly na samostatnou vrstvu v architektuře. V tomto kurzu jsme vytvořili vrstvu ukládání do mezipaměti, která se nachází mezi prezentační vrstvou a vrstvou obchodní logiky. Vrstva ukládání do mezipaměti musí poskytovat stejnou sadu tříd a metod, které existují v knihoven BLL a jsou volány z prezentační vrstvy.
 
-Došlo k ukládání do mezipaměti vrstvy příklady, Prozkoumali jsme v této a v předchozích kurzech *reaktivní načítání*. S načítáním reaktivní, načtení dat do mezipaměti pouze v případě provedení požadavku na data a tato data z mezipaměti chybí. Data mohou být také *proaktivně načíst* do mezipaměti, technika, která načte data do mezipaměti předtím, než je skutečně potřeba. V dalším kurzu uvidíme příklad proaktivní načítání, když se podíváme na tom, jak ukládat do mezipaměti při spuštění aplikace statickými hodnotami.
+Příklady vrstev do mezipaměti, které jsme prozkoumali a v předchozích kurzech se projeví *reaktivní načítání*. Při reaktivním načítání se data načtou do mezipaměti jenom v případě, že se vytvoří požadavek na data a v mezipaměti chybí data. Data je také možné *aktivně načíst* do mezipaměti, což je technika, která načte data do mezipaměti, než je skutečně potřeba. V dalším kurzu uvidíme příklad proaktivní načítání, když se podíváme na to, jak ukládat statické hodnoty do mezipaměti při spuštění aplikace.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Teresy Murph. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontrolor pro tento kurz byl Teresa Murph. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](caching-data-with-the-objectdatasource-cs.md)
-> [další](caching-data-at-application-startup-cs.md)
+> [Další](caching-data-at-application-startup-cs.md)

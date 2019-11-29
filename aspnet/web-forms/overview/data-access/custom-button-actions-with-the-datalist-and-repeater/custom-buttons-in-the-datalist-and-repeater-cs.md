@@ -1,148 +1,148 @@
 ---
 uid: web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-cs
-title: Vlastní tlačítka v ovládacích prvcích DataList a Repeater (C#) | Dokumentace Microsoftu
+title: Vlastní tlačítka v prvku DataList a Repeater (C#) | Microsoft Docs
 author: rick-anderson
-description: V tomto kurzu vytvoříme rozhraní, které používá Repeateru seznam kategorií v systému s každou kategorii poskytuje možnost zobrazit jeho associ...
+description: V tomto kurzu sestavíme rozhraní, které pomocí opakovače vypíše kategorie v systému, a každou kategorii, která vám poskytne tlačítko pro zobrazení jeho přidružení...
 ms.author: riande
 ms.date: 11/13/2006
 ms.assetid: 1f42e332-78dc-438b-9e35-0c97aa0ad929
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ad3af89c34df4a71b6e658ba205aa4f645b4dedd
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: e8cb1054068327c25e057b6df1cc7506feec8d37
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134026"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74601819"
 ---
 # <a name="custom-buttons-in-the-datalist-and-repeater-c"></a>Vlastní tlačítka v ovládacích prvcích DataList a Repeater (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_46_CS.exe) nebo [stahovat PDF](custom-buttons-in-the-datalist-and-repeater-cs/_static/datatutorial46cs1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_46_CS.exe) nebo [Stáhnout PDF](custom-buttons-in-the-datalist-and-repeater-cs/_static/datatutorial46cs1.pdf)
 
-> V tomto kurzu vytvoříme rozhraní, které používá Repeateru seznam kategorií v systému s každou kategorii poskytuje možnost zobrazit jeho související produkty pomocí ovládacího prvku BulletedList.
+> V tomto kurzu sestavíme rozhraní, které pomocí opakovače vypíše kategorie v systému, a každou kategorii, která vám poskytne tlačítko pro zobrazení přidružených produktů pomocí ovládacího prvku BulletedList.
 
 ## <a name="introduction"></a>Úvod
 
-V průběhu posledních sedmnáct ovládacích prvků DataList a Repeater kurzy jsme ve vytvořené příklady jen pro čtení a úpravy i odstranění příklady. Pro usnadnění úpravy a odstranění možnosti a v prvku DataList, jsme přidali tlačítka na ovládacím prvku DataList s `ItemTemplate` , po kliknutí na způsobila zpětné volání a vyvolala událost DataList, odpovídající tlačítko s `CommandName` vlastnost. Například tlačítko pro přidání `ItemTemplate` s `CommandName` hodnota vlastnosti úpravy prvku DataList s způsobí, že `EditCommand` která se aktivuje při zpětné volání; s `CommandName` odstranit vyvolá `DeleteCommand`.
+V posledních sedmnáctch kurzech DataList a Repeater jsme vytvořili příklady jen pro čtení i příklady úprav a mazání. Pro usnadnění úprav a odstranění schopností v rámci prvku DataList jsme přidali tlačítka do prvku DataList s `ItemTemplate`, že při kliknutí způsobil postback a vyvolal událost DataList odpovídající vlastnosti Button s `CommandName`. Například přidání tlačítka do `ItemTemplate` s hodnotou `CommandName` vlastnosti Edit způsobí, že se `EditCommand` prvku DataList s aktivuje při postbacku; jeden s `CommandName` odstranit vyvolá `DeleteCommand`.
 
-Kromě toho pro úpravy a odstraňování tlačítek, ovládacích prvků DataList a Repeater může také zahrnovat tlačítka, LinkButtons nebo ImageButtons, po kliknutí na provést nějakou vlastní logiku na straně serveru. V tomto kurzu vytvoříme rozhraní, které používá Repeateru seznam kategorií v systému. Pro každou kategorii, bude obsahovat Opakovači tlačítka zobrazíte kategorie produktů s přidružené použití ovládacího prvku BulletedList (viz obrázek 1).
+Kromě tlačítek upravit a odstranit mohou ovládací prvky DataList a Repeater také zahrnovat tlačítka, LinkButtons nebo ImageButtons, které při kliknutí vykonává vlastní logiku na straně serveru. V tomto kurzu sestavíme rozhraní, které používá Repeater k vypsání kategorií v systému. U každé kategorie bude opakovat zahrnutí tlačítka pro zobrazení přidružených produktů kategorie s použitím ovládacího prvku BulletedList (viz obrázek 1).
 
-[![Kliknutím na Zobrazit produkty odkaz zobrazí kategorie s produkty v seznamu s odrážkami](custom-buttons-in-the-datalist-and-repeater-cs/_static/image2.png)](custom-buttons-in-the-datalist-and-repeater-cs/_static/image1.png)
+[![kliknutí na odkaz Zobrazit produkty zobrazí v seznamu s odrážkami produkty kategorie s.](custom-buttons-in-the-datalist-and-repeater-cs/_static/image2.png)](custom-buttons-in-the-datalist-and-repeater-cs/_static/image1.png)
 
-**Obrázek 1**: Kliknutím na odkaz zobrazení zobrazit produkty kategorie s produkty v seznamu s odrážkami ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-cs/_static/image3.png))
+**Obrázek 1**: kliknutím na odkaz Zobrazit produkty zobrazíte v seznamu s odrážkami produkty kategorie s s odrážkami ([kliknutím zobrazíte obrázek v plné velikosti).](custom-buttons-in-the-datalist-and-repeater-cs/_static/image3.png)
 
-## <a name="step-1-adding-the-custom-button-tutorial-web-pages"></a>Krok 1: Přidání vlastního tlačítka kurz webových stránek
+## <a name="step-1-adding-the-custom-button-tutorial-web-pages"></a>Krok 1: Přidání webových stránek kurzu pro vlastní tlačítko
 
-Předtím, než se podíváme, jak přidat vlastní tlačítko, umožní s nejdřív využít k vytvoření stránky technologie ASP.NET v našem projektu webu, který budeme potřebovat pro účely tohoto kurzu. Začněte přidáním novou složku s názvem `CustomButtonsDataListRepeater`. Dále přidejte následující dvě stránky ASP.NET do této složky, nezapomeňte přiřadit každou stránku s `Site.master` hlavní stránky:
+Předtím, než se podíváme na postup, jak přidat vlastní tlačítko, si nejdřív chvíli počkejte, než se vytvoří stránky ASP.NET v našem projektu webu, který budeme potřebovat pro tento kurz. Začněte přidáním nové složky s názvem `CustomButtonsDataListRepeater`. Dále přidejte do této složky následující dvě ASP.NET stránky a nezapomeňte přidružit jednotlivé stránky k hlavní stránce `Site.master`:
 
 - `Default.aspx`
 - `CustomButtons.aspx`
 
-![Přidání stránky technologie ASP.NET pro vlastní tlačítka související kurzy](custom-buttons-in-the-datalist-and-repeater-cs/_static/image4.png)
+![Přidejte stránky ASP.NET pro vlastní kurzy související s tlačítky.](custom-buttons-in-the-datalist-and-repeater-cs/_static/image4.png)
 
-**Obrázek 2**: Přidání stránky technologie ASP.NET pro vlastní tlačítka související kurzy
+**Obrázek 2**: přidejte stránky ASP.NET pro vlastní kurzy související s tlačítky.
 
-V jiných složkách, jako jsou `Default.aspx` v `CustomButtonsDataListRepeater` složky zobrazí seznam kurzů v příslušném oddílu. Vzpomeňte si, že `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek tuto funkci poskytuje. Přidejte tento uživatelský ovládací prvek `Default.aspx` přetažením v Průzkumníku řešení na stránku s návrhové zobrazení.
+Podobně jako v ostatních složkách `Default.aspx` ve složce `CustomButtonsDataListRepeater` vypíše kurzy v části. Zajistěte, aby tato funkce poskytovala `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek. Přidejte tento uživatelský ovládací prvek do `Default.aspx` přetažením z Průzkumník řešení na zobrazení Návrh stránky.
 
-[![Přidat na stránku Default.aspx SectionLevelTutorialListing.ascx uživatelského ovládacího prvku](custom-buttons-in-the-datalist-and-repeater-cs/_static/image6.png)](custom-buttons-in-the-datalist-and-repeater-cs/_static/image5.png)
+[![přidat uživatelský ovládací prvek SectionLevelTutorialListing. ascx do default. aspx](custom-buttons-in-the-datalist-and-repeater-cs/_static/image6.png)](custom-buttons-in-the-datalist-and-repeater-cs/_static/image5.png)
 
-**Obrázek 3**: Přidat `SectionLevelTutorialListing.ascx` uživatelský ovládací prvek `Default.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-cs/_static/image7.png))
+**Obrázek 3**: Přidání uživatelského ovládacího prvku `SectionLevelTutorialListing.ascx` do `Default.aspx` ([kliknutím zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-cs/_static/image7.png))
 
-A konečně, přidejte na stránkách jako položky `Web.sitemap` souboru. Konkrétně, přidejte následující kód za stránkování a řazení ovládacími prvky DataList a Repeater `<siteMapNode>`:
+Nakonec přidejte stránky jako položky do souboru `Web.sitemap`. Konkrétně přidejte následující značky po stránkování a řazení pomocí prvku DataList a Repeater `<siteMapNode>`:
 
 [!code-xml[Main](custom-buttons-in-the-datalist-and-repeater-cs/samples/sample1.xml)]
 
-Po aktualizaci `Web.sitemap`, věnujte chvíli zobrazit kurzy web prostřednictvím prohlížeče. V nabídce na levé straně teď obsahuje položky pro úpravy, vložení a odstranění kurzy.
+Po aktualizaci `Web.sitemap`chvíli počkejte, než se zobrazí web kurzy prostřednictvím prohlížeče. Nabídka na levé straně teď obsahuje položky pro kurzy pro úpravy, vkládání a odstraňování.
 
-![Mapa webu nyní obsahuje položku pro tento kurz vlastních tlačítek](custom-buttons-in-the-datalist-and-repeater-cs/_static/image8.png)
+![Mapa webu teď obsahuje položku pro úvodní kurz pro vlastní tlačítka.](custom-buttons-in-the-datalist-and-repeater-cs/_static/image8.png)
 
-**Obrázek 4**: Mapa webu nyní obsahuje položku pro tento kurz vlastních tlačítek
+**Obrázek 4**: Mapa webu teď obsahuje položku kurzu pro vlastní tlačítka.
 
 ## <a name="step-2-adding-the-list-of-categories"></a>Krok 2: Přidání seznamu kategorií
 
-Pro účely tohoto kurzu potřebujeme vytvořit Repeateru, který obsahuje seznam všech kategorií spolu zobrazit produkty odkazem (LinkButton), po kliknutí na zobrazí kategorie související s produkty v seznamu s odrážkami. Umožní s nejprve vytvořit jednoduché Repeateru, který obsahuje seznam kategorií v systému. Začněte otevřením `CustomButtons.aspx` stránku `CustomButtonsDataListRepeater` složky. Přetáhněte Repeateru z panelu nástrojů do návrháře a nastavte jeho `ID` vlastnost `Categories`. Dále vytvořte nový ovládací prvek zdroje dat z inteligentních značek s opakovače. Konkrétně vytvořte nový ovládací prvek ObjectDataSource s názvem `CategoriesDataSource` , který vybere data z `CategoriesBLL` třída s `GetCategories()` metody.
+Pro tento kurz musíme vytvořit Repeater, který obsahuje seznam všech kategorií společně s možnostmi Zobrazit produkty LinkButton, které po kliknutí zobrazí přidružené produkty kategorie s s odrážkami. Nejdříve vytvoříme jednoduchý opakovač, který obsahuje seznam kategorií v systému. Začněte tím, že otevřete stránku `CustomButtons.aspx` ve složce `CustomButtonsDataListRepeater`. Přetáhněte Repeater z panelu nástrojů do návrháře a nastavte jeho vlastnost `ID` na hodnotu `Categories`. Dále vytvořte nový ovládací prvek zdroje dat z inteligentní značky s opakováním. Konkrétně vytvořte nový ovládací prvek ObjectDataSource s názvem `CategoriesDataSource`, který vybere jeho data z metody `GetCategories()` `CategoriesBLL` třídy s.
 
-[![Konfigurace ObjectDataSource GetCategories() metody s CategoriesBLL třídy](custom-buttons-in-the-datalist-and-repeater-cs/_static/image10.png)](custom-buttons-in-the-datalist-and-repeater-cs/_static/image9.png)
+[![nakonfigurovat prvek ObjectDataSource tak, aby používal metodu CategoriesBLL třídy s GetCategories ()](custom-buttons-in-the-datalist-and-repeater-cs/_static/image10.png)](custom-buttons-in-the-datalist-and-repeater-cs/_static/image9.png)
 
-**Obrázek 5**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třída s `GetCategories()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-cs/_static/image11.png))
+**Obrázek 5**: Konfigurace prvku ObjectDataSource pro použití `GetCategories()` metody `CategoriesBLL` třídy s ([kliknutím zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-cs/_static/image11.png))
 
-Na rozdíl od ovládacího prvku DataList, pro kterou Visual Studio vytvoří výchozí `ItemTemplate` založené na zdroji dat, opakovače s šablony musí definovat manuálně. Kromě toho musí vytvořit a upravit pomocí deklarace šablony opakovače s (to znamená, s neexistuje žádné úpravy šablony možnost opakovače s inteligentním).
+Na rozdíl od ovládacího prvku DataList, pro který Visual Studio vytvoří výchozí `ItemTemplate` založenou na zdroji dat, je nutné ručně definovat šablony opakování. Kromě toho musí být šablony Repeat vytvořeny a upravovány deklarativně (tj. neexistují žádné možnosti úprav šablon v rámci inteligentní značky Repeater).
 
-Klikněte na kartě Zdroj v levém dolním rohu a přidat `ItemTemplate` , který zobrazuje kategorii s názvem v `<h3>` elementu a jeho popis v odstavci označit; patří `SeparatorTemplate` , který zobrazí vodorovná čára (`<hr />`) mezi jednotlivými kategorie. Přidejte také odkazem (LinkButton) s jeho `Text` nastavenou na Zobrazit produkty. Po dokončení těchto kroků, by vaše stránka s deklarativní vypadat nějak takto:
+V levém dolním rohu klikněte na kartu zdroj a přidejte `ItemTemplate`, která zobrazuje název kategorie v elementu `<h3>` a jeho popis v označení odstavce. Zahrňte `SeparatorTemplate`, který zobrazuje horizontální pravidlo (`<hr />`) mezi jednotlivými kategoriemi. Přidejte také LinkButton s vlastností `Text` nastavenou na Zobrazit produkty. Po dokončení těchto kroků by deklarativní označení stránky mělo vypadat takto:
 
 [!code-aspx[Main](custom-buttons-in-the-datalist-and-repeater-cs/samples/sample2.aspx)]
 
-Obrázek 6 ukazuje na stránku při zobrazit pomocí prohlížeče. Každý název a popis kategorie je uvedena. Tlačítko Zobrazit produkty, po kliknutí na vyvolá zpětné volání, ale zatím neprovádí žádnou akci.
+Obrázek 6 zobrazuje stránku při prohlížení v prohlížeči. V seznamu jsou uvedeny všechny názvy a popisy kategorií. Tlačítko Zobrazit produkty po kliknutí způsobí postback, ale ještě neprovádí žádnou akci.
 
-[![Každá kategorie s název a popis se zobrazí, spolu zobrazit produkty odkazem (LinkButton)](custom-buttons-in-the-datalist-and-repeater-cs/_static/image13.png)](custom-buttons-in-the-datalist-and-repeater-cs/_static/image12.png)
+[![se zobrazí všechny kategorie s názvem a popis, společně s názvem Zobrazit produkty LinkButton.](custom-buttons-in-the-datalist-and-repeater-cs/_static/image13.png)](custom-buttons-in-the-datalist-and-repeater-cs/_static/image12.png)
 
-**Obrázek 6**: Každá kategorie s název a popis se zobrazí, spolu zobrazit produkty odkazem (LinkButton) ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-cs/_static/image14.png))
+**Obrázek 6**: zobrazuje se každá kategorie s názvem a popisem spolu s pořadovým číslem "show Products" ([kliknutím zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-cs/_static/image14.png)).
 
-## <a name="step-3-executing-server-side-logic-when-the-show-products-linkbutton-is-clicked"></a>Krok 3: Po kliknutí na provádění na straně serveru logiku při the zobrazit produkty odkazem (LinkButton)
+## <a name="step-3-executing-server-side-logic-when-the-show-products-linkbutton-is-clicked"></a>Krok 3: provedení logiky na straně serveru při kliknutí na položku Zobrazit produkty na LinkButton
 
-Kdykoli je kliknutí na tlačítko, odkazem (LinkButton) nebo ImageButton v rámci šablony v prvku DataList nebo Repeater, dojde k postbacku a s DataList nebo Repeater `ItemCommand` dojde k aktivaci události. Kromě `ItemCommand` událostí ovládacích prvků DataList ovládacího prvku může také vyvolat jiný, konkrétnější událost, pokud tlačítko s `CommandName` je nastavena na jednu z vyhrazené řetězce (odstranit, upravit, zrušení, aktualizace nebo vyberte), ale `ItemCommand` jeudálost*vždy* aktivována.
+Kdykoli se klikne na tlačítko, LinkButton nebo obrázkové v rámci šablony v prvku DataList nebo Repeater, dojde k postbacku a událost DataList nebo Repeat `ItemCommand`. Kromě události `ItemCommand` může ovládací prvek DataList také vyvolat další, konkrétnější událost, pokud je vlastnost tlačítka s `CommandName` nastavena na jeden z rezervovaných řetězců (odstranit, upravit, zrušit, aktualizovat nebo vybrat), ale událost `ItemCommand` je *vždy* aktivována.
 
-Po kliknutí na tlačítko v rámci prvku DataList nebo Repeater často potřebujeme (například předání došlo ke kliknutí na tlačítko, které (v případě, že může existovat více tlačítek v ovládacím prvku, jako jsou obě úpravy a tlačítko Odstranit) a případně určité další informace primární hodnota klíče položky došlo ke kliknutí na tlačítko, jejichž). Tlačítko, odkazem (LinkButton) a ImageButton poskytují dvě vlastnosti, jejichž hodnoty jsou předány `ItemCommand` obslužné rutiny události:
+Když se na tlačítko klikne v rámci prvku DataList nebo Repeater, často musíme přesměrovat, na které tlačítko bylo kliknuto (v případě, že v ovládacím prvku může být více tlačítek, jako je tlačítko Upravit a odstranit), a případně některé další informace (například hodnota primárního klíče položky, jejíž tlačítko bylo kliknuto. Tlačítko, LinkButton a obrázkové poskytují dvě vlastnosti, jejichž hodnoty jsou předány do obslužné rutiny události `ItemCommand`:
 
-- `CommandName` řetězec se obvykle používá k identifikaci každé tlačítko v šabloně
-- `CommandArgument` běžně používá pro uchování hodnoty některé pole data, jako je například hodnota primárního klíče
+- `CommandName` řetězec, který se obvykle používá k identifikaci každého tlačítka v šabloně
+- `CommandArgument` běžně používá k uchování hodnoty některých datových polí, například hodnoty primárního klíče.
 
-V tomto příkladu nastavte s odkazem (LinkButton) `CommandName` vlastnost ShowProducts a vazby aktuální záznam s hodnotu primárního klíče `CategoryID` k `CommandArgument` vlastnost pomocí syntaxe databinding `CategoryArgument='<%# Eval("CategoryID") %>'`. Po zadání těchto dvou vlastností, deklarativní syntaxe s odkazem (LinkButton) by měl vypadat nějak takto:
+V tomto příkladu nastavte vlastnost `CommandName` LinkButton s na ShowProducts a vytvořte vazbu hodnoty primárního klíče v záznamu s `CategoryID` na vlastnost `CommandArgument` pomocí `CategoryArgument='<%# Eval("CategoryID") %>'`syntaxe datové vazby. Po zadání těchto dvou vlastností by deklarativní syntaxe LinkButton s měla vypadat takto:
 
 [!code-aspx[Main](custom-buttons-in-the-datalist-and-repeater-cs/samples/sample3.aspx)]
 
-Při klepnutí na tlačítko, dojde k postbacku a s DataList nebo Repeater `ItemCommand` dojde k aktivaci události. Obslužná rutina události je předána na tlačítko s `CommandName` a `CommandArgument` hodnoty.
+Po kliknutí na tlačítko dojde k postbacku a událost DataList nebo Repeater `ItemCommand` je aktivována. Obslužné rutině události jsou předány tlačítko s `CommandName` a `CommandArgument` hodnoty.
 
-Vytvořte obslužnou rutinu události pro opakovače s `ItemCommand` událostí a Všimněte si druhý parametr předaný do obslužné rutiny události (s názvem `e`). Tento druhý parametr je typu [ `RepeaterCommandEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeatercommandeventargs.aspx) a obsahuje následující čtyři vlastnosti:
+Vytvořte obslužnou rutinu události pro událost Repeater s `ItemCommand` a poznamenejte si druhý parametr předaný do obslužné rutiny události (s názvem `e`). Tento druhý parametr je typu [`RepeaterCommandEventArgs`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeatercommandeventargs.aspx) a má následující čtyři vlastnosti:
 
-- `CommandArgument` Hodnota na kliknutí na tlačítko s `CommandArgument` vlastnost
-- `CommandName` Hodnota tlačítka s `CommandName` vlastnost
-- `CommandSource` odkaz na ovládací prvek tlačítko, které bylo kliknuto
-- `Item` odkaz na [ `RepeaterItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem.aspx) , který obsahuje tlačítka, které bylo kliknuto; každý záznam vázán na Opakovači označované jako `RepeaterItem`
+- `CommandArgument` hodnotu vlastnosti klikli na tlačítko s `CommandArgument`
+- `CommandName` hodnotu vlastnosti tlačítko s `CommandName`
+- `CommandSource` odkaz na ovládací prvek tlačítko, na který se kliklo
+- `Item` odkaz na [`RepeaterItem`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem.aspx) obsahující tlačítko, které bylo kliknuto; Každý záznam vázaný k tomuto OPAKOVAČI se projevuje jako `RepeaterItem`.
 
-Od verze s vybranou kategorii `CategoryID` předaný prostřednictvím `CommandArgument` vlastnost, abychom se mohli sadu produktů, které jsou spojené s vybranou kategorii v `ItemCommand` obslužné rutiny události. Tyto produkty můžete pak měla být vázána k ovládacímu prvku BulletedList v `ItemTemplate` (které jsme ve ještě chcete-li přidat). Všechny, které zůstanou potom je přidat BulletedList, odkažte v `ItemCommand` obslužná rutina události a vytvořit vazbu k ní sadu produktů pro vybranou kategorii, která nám budete řešit v kroku 4.
+Vzhledem k tomu, že se vybrané kategorie `CategoryID` předávají prostřednictvím vlastnosti `CommandArgument`, můžeme získat sadu produktů přidružených k vybrané kategorii v obslužné rutině události `ItemCommand`. Tyto produkty pak mohou být vázány na ovládací prvek BulletedList v `ItemTemplate` (který jsme ještě přidali). To vše zůstává a pak je přidání BulletedList, odkazování v obslužné rutině události `ItemCommand` a vytvoření vazby na skupinu produktů pro vybranou kategorii, kterou provedeme v kroku 4.
 
 > [!NOTE]
-> DataList s `ItemCommand` obslužná rutina události je předán objekt typu [ `DataListCommandEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistcommandeventargs.aspx), který nabízí čtyři stejné vlastnosti jako `RepeaterCommandEventArgs` třídy.
+> Obslužná rutina události `ItemCommand` DataList s je předána objektu typu [`DataListCommandEventArgs`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistcommandeventargs.aspx), který nabízí stejné čtyři vlastnosti jako třída `RepeaterCommandEventArgs`.
 
-## <a name="step-4-displaying-the-selected-category-s-products-in-a-bulleted-list"></a>Krok 4: Zobrazení vybrané kategorie s produkty v seznamu s odrážkami
+## <a name="step-4-displaying-the-selected-category-s-products-in-a-bulleted-list"></a>Krok 4: zobrazení vybraných produktů kategorií s v seznamu s odrážkami
 
-Vybrané kategorie s produkty můžete zobrazit v rámci opakovače s `ItemTemplate` používat libovolný počet ovládacích prvků. Jsme může přidat že další vnořené Repeater, a v prvku DataList, DropDownList, ovládacího prvku GridView a tak dále. Protože chceme zobrazit produkty jako seznam s odrážkami, ale použijeme ovládacího prvku BulletedList. Vrácení `CustomButtons.aspx` stránky s deklarativní, přidání ovládacího prvku BulletedList `ItemTemplate` po LinkButton zobrazit produkty. Nastavení BulletedLists s `ID` k `ProductsInCategory`. BulletedList zobrazuje hodnotu zadané přes pole data `DataTextField` vlastnost, protože tento ovládací prvek bude mít informace o produktu navázané, nastavte `DataTextField` vlastnost `ProductName`.
+Vybrané produkty kategorie s se dají zobrazit v rámci `ItemTemplate` Repeater s použitím libovolného počtu ovládacích prvků. Mohli bychom přidat další vnořený Repeater, prvek DataList, DropDownList, prvek GridView a tak dále. Vzhledem k tomu, že chceme Zobrazit produkty jako seznam s odrážkami, použijeme ovládací prvek BulletedList. Návrat k deklarativnímu označení stránky `CustomButtons.aspx` přidejte ovládací prvek BulletedList do `ItemTemplate` za Zobrazit produkty LinkButton. Nastavte `ID` BulletedLists s `ProductsInCategory`. BulletedList zobrazí hodnotu datového pole zadaného prostřednictvím vlastnosti `DataTextField`; vzhledem k tomu, že tento ovládací prvek bude mít na něj vázané informace, nastavte vlastnost `DataTextField` na hodnotu `ProductName`.
 
 [!code-aspx[Main](custom-buttons-in-the-datalist-and-repeater-cs/samples/sample4.aspx)]
 
-V `ItemCommand` obslužná rutina události, odkazují na tento ovládací prvek pomocí `e.Item.FindControl("ProductsInCategory")` a jeho vazbu na sadu produktů, které jsou spojené s vybranou kategorii.
+V obslužné rutině události `ItemCommand` odkazujte na tento ovládací prvek pomocí `e.Item.FindControl("ProductsInCategory")` a vytvořte jeho vazby se sadou produktů přidružených k vybrané kategorii.
 
 [!code-csharp[Main](custom-buttons-in-the-datalist-and-repeater-cs/samples/sample5.cs)]
 
-Před provedením jakékoli akce v `ItemCommand` obslužná rutina události, je vhodné nejdřív zkontrolujte hodnotu příchozí zprávy s `CommandName`. Protože `ItemCommand` obslužná rutina události je vyvoláno, když *jakékoli* po kliknutí na tlačítko, pokud existuje více tlačítek v použití šablon `CommandName` hodnotu jak ověřit, jaké akce se má provést. Kontroluje `CommandName` tady je moot, protože máme pouze jedno tlačítko, ale je dobré se formulář. Dále `CategoryID` vybrané kategorie je načten z `CommandArgument` vlastnost. V šabloně ovládacího prvku BulletedList pak odkazovat a svázaná s výsledky `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metody.
+Před provedením jakékoli akce v obslužné rutině `ItemCommand` události je vhodné nejprve ověřit hodnotu příchozí `CommandName`. Vzhledem k tomu, že se obslužná rutina události `ItemCommand` aktivuje při kliknutí na tlačítko *, pokud je* v šabloně více tlačítek, použijte hodnotu `CommandName` a nerozlišuje, jakou akci chcete provést. Kontroluje se `CommandName` tady je moot, protože máme jenom jedno tlačítko, ale je dobrým zvykem formuláře. V dalším kroku se `CategoryID` z vybrané kategorie načte z vlastnosti `CommandArgument`. Pak se na ovládací prvek BulletedList v šabloně odkazuje a naváže na výsledky `ProductsBLL` třídy s `GetProductsByCategoryID(categoryID)` metody.
 
-V předchozích kurzech, které používají tlačítka v rámci prvku DataList, jako například [přehled o úpravy a odstraňování dat v ovládacím prvku DataList](../editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md), můžeme určit hodnotu primárního klíče daná položka prostřednictvím `DataKeys` kolekce. Přestože tento přístup funguje dobře v prvku DataList, nemá opakovače `DataKeys` vlastnost. Místo toho alternativním přístupem musíte použít pro poskytnutí hodnotu primárního klíče, jako například prostřednictvím tlačítka s `CommandArgument` vlastnost nebo skrytý ovládací prvek popisek Web v rámci šablony přiřadí hodnotu primárního klíče a čtení jeho hodnoty v `ItemCommand`pomocí obslužné rutiny události `e.Item.FindControl("LabelID")`.
+V předchozích kurzech, které používaly tlačítka v rámci prvku DataList, jako je například [Přehled úprav a odstranění dat v prvku DataList](../editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md), jsme určili hodnotu primárního klíče dané položky prostřednictvím kolekce `DataKeys`. I když tento přístup dobře funguje s ovládacím prvekem DataList, nemá tento ovládací prvek vlastnost `DataKeys`. Místo toho je nutné použít alternativní přístup pro zadání hodnoty primárního klíče, jako je například prostřednictvím vlastnosti `CommandArgument` tlačítka nebo přiřazením hodnoty primárního klíče k ovládacímu prvku skrytého popisku v rámci šablony a načtením jeho hodnoty zpět v obslužné rutině události `ItemCommand` pomocí `e.Item.FindControl("LabelID")`.
 
-Po dokončení `ItemCommand` obslužná rutina události, využít k otestování této stránky v prohlížeči. Jak je vidět na obrázku 7, kliknutím na Zobrazit produkty odkaz vyvolá zpětné volání a zobrazí produkty pro vybranou kategorii v BulletedList. Kromě toho mějte na paměti, zůstane tato informace o produktu, i v případě, že kliknutím na odkazy zobrazit produkty jiných kategorií.
+Po dokončení obslužné rutiny události `ItemCommand` chvíli počkejte, než otestujete tuto stránku v prohlížeči. Jak ukazuje obrázek 7, po kliknutí na odkaz Zobrazit produkty dojde k zpětnému odeslání a zobrazení produktů pro vybranou kategorii ve skupině BulletedList. Kromě toho si všimněte, že tyto informace o produktu zůstanou i v případě, že se kliknou na jiné kategorie s odkazy na produkty.
 
 > [!NOTE]
-> Pokud chcete změnit chování této sestavy tak, aby pouze jednu kategorii s produkty jsou uvedené v čase, stačí nastavit ovládacího prvku BulletedList s `EnableViewState` vlastnost `False`.
+> Chcete-li upravit chování této sestavy, je-li v seznamu uveden pouze jeden produkt kategorie s, jednoduše nastavte vlastnost `EnableViewState` ovládacího prvku BulletedList na hodnotu `False`.
 
-[![BulletedList slouží k zobrazení vybrané kategorie produktů](custom-buttons-in-the-datalist-and-repeater-cs/_static/image16.png)](custom-buttons-in-the-datalist-and-repeater-cs/_static/image15.png)
+[![se pro zobrazení produktů vybrané kategorie používá ovládací objekt BulletedList](custom-buttons-in-the-datalist-and-repeater-cs/_static/image16.png)](custom-buttons-in-the-datalist-and-repeater-cs/_static/image15.png)
 
-**Obrázek 7**: BulletedList slouží k zobrazení vybrané kategorie produktů ([kliknutím ji zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-cs/_static/image17.png))
+**Obrázek 7**: pomocí ovládacího panelu se zobrazí produkty vybrané kategorie ([kliknutím zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-cs/_static/image17.png)).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Ovládací prvky DataList a Repeater může obsahovat libovolný počet tlačítek, LinkButtons nebo ImageButtons v rámci jejich šablon. Tlačítka, po kliknutí na vyvolávají zpětné odeslání a zvýšit `ItemCommand` událostí. Chcete-li přidružit vlastní akce na straně serveru probíhá kliknutí na tlačítko, vytvořit obslužnou rutinu události pro `ItemCommand` událostí. V této obslužné rutiny události nejdřív zkontrolujte, příchozí `CommandName` hodnotu, která určí, které tlačítko došlo ke kliknutí na. Další informace můžete volitelně zadat pomocí tlačítka s `CommandArgument` vlastnost.
+Ovládací prvky DataList a Repeater mohou v rámci svých šablon obsahovat libovolný počet tlačítek, LinkButtons nebo ImageButtons. Taková tlačítka, když kliknete, způsobí postback a vyvolávají událost `ItemCommand`. Chcete-li přidružit vlastní akci na straně serveru k tlačítku, které je kliknuto, vytvořte obslužnou rutinu události pro událost `ItemCommand`. V této obslužné rutině události nejprve zkontrolujte hodnotu příchozí `CommandName` a určete, na které tlačítko bylo kliknuto. Další informace lze volitelně zadat prostřednictvím vlastnosti `CommandArgument` s tlačítkem.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Dennis Patterson. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontrolor pro tento kurz byl Dennis Patterson. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Next](custom-buttons-in-the-datalist-and-repeater-vb.md)

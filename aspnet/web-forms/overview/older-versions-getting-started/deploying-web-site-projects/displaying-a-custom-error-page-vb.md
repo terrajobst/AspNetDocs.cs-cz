@@ -1,169 +1,169 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-vb
-title: Zobrazení vlastní chybové stránky (VB) | Dokumentace Microsoftu
+title: Zobrazení vlastní chybové stránky (VB) | Microsoft Docs
 author: rick-anderson
-description: Co uživateli zobrazí když dojde k chybě za běhu ve webové aplikaci ASP.NET? Odpověď závisí na tom, na webu &lt;customErrors&gt; konfigurace...
+description: Co uživatel uvidí, když dojde k běhové chybě ve webové aplikaci v ASP.NET? Odpověď závisí na způsobu, jakým web &lt;customErrors&gt; konfiguraci....
 ms.author: riande
 ms.date: 06/09/2009
 ms.assetid: 14873c5d-81a9-455b-bd71-30fb555583e7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 961959300f5481a297ed8a9a17131c076d1dfd69
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 33367d5e3c4b5c8fa039ee20704054ba508e717a
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65116708"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74615028"
 ---
 # <a name="displaying-a-custom-error-page-vb"></a>Zobrazení vlastní chybové stránky (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/1/0/C/10CC829F-A808-4302-97D3-59989B8F9C01/ASPNET_Hosting_Tutorial_11_VB.zip) nebo [stahovat PDF](http://download.microsoft.com/download/5/C/5/5C57DB8C-5DEA-4B3A-92CA-4405544D313B/aspnet_tutorial11_CustomErrors_vb.pdf)
+[Stažení kódu](https://download.microsoft.com/download/1/0/C/10CC829F-A808-4302-97D3-59989B8F9C01/ASPNET_Hosting_Tutorial_11_VB.zip) nebo [stažení PDF](https://download.microsoft.com/download/5/C/5/5C57DB8C-5DEA-4B3A-92CA-4405544D313B/aspnet_tutorial11_CustomErrors_vb.pdf)
 
-> Co uživateli zobrazí když dojde k chybě za běhu ve webové aplikaci ASP.NET? Odpověď závisí na tom, na webu &lt;customErrors&gt; konfigurace. Ve výchozím nastavení uživatelům se zobrazí mít za následek nápadně žlutý obrazovky proclaiming, že došlo k chybě za běhu. Tento kurz ukazuje, jak upravit tato nastavení pro-vkusnou zobrazení vlastní chybové stránky, která odpovídá vaší lokality vzhled a chování.
+> Co uživatel uvidí, když dojde k běhové chybě ve webové aplikaci v ASP.NET? Odpověď závisí na způsobu, jakým web &lt;customErrors&gt; konfiguraci. Ve výchozím nastavení se uživatelům zobrazí nemonitorované žluté zobrazení, že došlo k chybě za běhu. V tomto kurzu se dozvíte, jak přizpůsobit tato nastavení, aby se zobrazila vlastní chybová stránka aesthetically-přitažlivé, která odpovídá vzhledu a chování vašeho webu.
 
 ## <a name="introduction"></a>Úvod
 
-V ideálním by žádné chyby za běhu. Programátoři byste psát kód s nary chybu a ověřování robustního uživatelského vstupu a externí zdroje, jako jsou databázové servery a servery e-mailu by nikdy přejdou do režimu offline. Samozřejmě ve skutečnosti jsou nevyhnutelné chyby. Třídy v rozhraní .NET Framework signalizujete chybu vyvoláním výjimky. Například volání objekt SqlConnection metodu Open objektu naváže připojení k databázi pomocí připojovacího řetězce. Ale pokud databáze je mimo provoz nebo pokud jsou neplatné přihlašovací údaje v připojovacím řetězci pak otevřít vyvolá metoda výjimku `SqlException`. Výjimky mohou být zpracovány použití `Try/Catch/Finally` bloky. Pokud kódu v rámci `Try` bloku vyvolá výjimku, ovládací prvek bude převeden do bloku catch odpovídající, kde může vývojář pokusí o zotavení z chyby. Pokud neexistuje žádný odpovídající blok catch, nebo pokud není kód, který vyvolal výjimku v bloku try, výjimka percolates zásobníkem volání z search `Try/Catch/Finally` bloky.
+V ideálním světě by nedocházelo k žádným chybám za běhu. Programátoři by napsali kód s Nary chybou a robustním ověřováním vstupu uživatele a externí prostředky, jako jsou databázové servery a e-mailové servery, nikdy nepřešly do offline režimu. V průběhu realit je samozřejmě nevyhnutelné chyby. Třídy v .NET Framework signalizují chybu vyvoláním výjimky. Například volání metody Open objektu SqlConnection naváže připojení k databázi určené připojovacím řetězcem. Pokud je však databáze mimo provoz nebo pokud jsou přihlašovací údaje v připojovacím řetězci neplatné, vyvolá metoda Open `SqlException`. Výjimky lze zpracovat pomocí `Try/Catch/Finally`ch bloků. Pokud kód v rámci `Try` bloku vyvolá výjimku, řízení se převede na příslušný blok catch, kde se vývojář může pokusit o zotavení z chyby. Pokud není k dispozici odpovídající blok catch nebo pokud kód, který vyvolal výjimku, není v bloku try, výjimka percolates zásobník volání při hledání `Try/Catch/Finally`ch bloků.
 
-Pokud výjimka bubliny úplně až modul runtime ASP.NET bez zpracování, [ `HttpApplication` třídy](https://msdn.microsoft.com/library/system.web.httpapplication.aspx)společnosti [ `Error` události](https://msdn.microsoft.com/library/system.web.httpapplication.error.aspx) se vyvolá a nakonfigurovanou *chybovou stránku*  se zobrazí. Ve výchozím nastavení, rozhraní ASP.NET zobrazí chybovou stránku, která se affectionately označuje jako [žlutý obrazovky smrti](http://en.wikipedia.org/wiki/Yellow_Screen_of_Death#Yellow) (YSOD). Existují dvě verze YSOD: ukazuje podrobnosti o výjimce, trasování zásobníku a další informace užitečné při ladění aplikace vývojáře (naleznete v tématu **obrázek 1**); druhá jednoduše uvádí, že došlo k chybě za běhu (viz  **Obrázek 2**).
+Pokud se výjimka objeví v bublinách až po ASP.NET modulu runtime bez zpracování, je vyvolána [událost`Error`](https://msdn.microsoft.com/library/system.web.httpapplication.error.aspx) [třídy`HttpApplication`](https://msdn.microsoft.com/library/system.web.httpapplication.aspx)a zobrazí se nakonfigurovaná *chybová stránka* . Ve výchozím nastavení ASP.NET zobrazí chybovou stránku, na kterou se affectionately říká [žlutá obrazovka smrti](http://en.wikipedia.org/wiki/Yellow_Screen_of_Death#Yellow) (YSOD). Existují dvě verze YSOD: jedna zobrazuje podrobnosti výjimky, trasování zásobníku a další informace, které jsou užitečné pro vývojáře s laděním aplikace (viz **Obrázek 1**); Druhá hodnota se jednoduše uvádí, že došlo k chybě za běhu (viz **Obrázek 2**).
 
-Podrobnosti o výjimce YSOD je velmi užitečné pro vývojáře ladění aplikace, ale zobrazují YSOD koncovým uživatelům tacky a neprofesionálně. Koncoví uživatelé měli místo toho přesměrováni na chybovou stránku, která udržuje webu vzhled a chování s přívětivější prose popisující situace. Dobrou zprávou je, že je poměrně snadné vytváření vlastní chybové stránky. Tento kurz pracuje s podívat, ASP. NET pro různé chybové stránky. Následně ukazuje, jak nakonfigurovat webovou aplikaci k zobrazení vlastní chybové stránky i v případě chyby uživatele.
+Podrobnosti o výjimce YSOD je poměrně užitečná pro vývojáře, kteří aplikaci ladí, ale zobrazuje YSOD pro koncové uživatele je směrové a neprofesionální. Místo toho je potřeba, aby se koncoví uživatelé převzali na chybovou stránku, která udržuje vzhled webu a má pocit, že se s tím postará prose popis situace. Dobrá zpráva je, že vytvoření takové vlastní chybové stránky je poměrně snadné. Tento kurz začíná pohledem na ASP. Různé chybové stránky sítě. Pak ukazuje, jak nakonfigurovat webovou aplikaci tak, aby zobrazovala uživatele vlastní chybovou stránku na tváři chyby.
 
-### <a name="examining-the-three-types-of-error-pages"></a>Zkoumání tři typy chybové stránky
+### <a name="examining-the-three-types-of-error-pages"></a>Prozkoumání tří typů chybových stránek
 
-Zobrazí se při dojde k neošetřené výjimce v aplikaci ASP.NET, jeden ze tří typů chybové stránky:
+Pokud dojde k neošetřené výjimce v aplikaci ASP.NET, zobrazí se jeden ze tří typů chybových stránek:
 
-- Chybová stránka výjimka podrobnosti žlutý obrazovka smrti,
-- Modul Runtime chybě žlutý obrazovka smrti chybovou stránku, nebo
-- Vlastní chybové stránky
+- Podrobnosti výjimky žlutá obrazovka na chybové stránce smrti,
+- Chyba za běhu žlutá obrazovka chybové stránky smrti nebo
+- Vlastní chybová stránka
 
-Chyba vývojářům stránky jsou největší zkušenosti se YSOD podrobnosti o výjimce. Ve výchozím nastavení tato stránka se zobrazí uživatelům, kteří navštěvují místně a proto je stránka, která se zobrazí, když dojde k chybě při testování webu ve vývojovém prostředí. Jak již název napovídá, YSOD podrobnosti o výjimce poskytuje podrobnosti o výjimce - typ, zprávy a trasování zásobníku. A co víc Pokud byla výjimka vyvolána kódem ve třídě použití modelu code-behind stránky ASP.NET a aplikace je nakonfigurovaná pro ladění pak YSOD podrobnosti o výjimce se také zobrazí tento řádek kódu (a zadání několika řádků kódu výše a pod ním).
+Stránka s chybou, kterou vývojáři znají, je YSOD podrobnosti o výjimce. Ve výchozím nastavení se tato stránka zobrazuje uživatelům, kteří jsou místně navštíveni, a proto je stránka, která se zobrazí, když při testování webu ve vývojovém prostředí dojde k chybě. Jak je uvedeno, informace o výjimce YSOD poskytuje podrobnosti o výjimce – typ, zprávu a trasování zásobníku. Co více, pokud byla výjimka vyvolána kódem na pozadí vaší stránky ASP.NET a pokud je aplikace nakonfigurována pro ladění, pak podrobnosti o výjimce YSOD také zobrazí tento řádek kódu (a několik řádků kódu nad a pod ním).
 
-**Obrázek 1** zobrazuje stránku YSOD podrobnosti o výjimce. Poznamenejte si adresu URL v prohlížeči adresu: `http://localhost:62275/Genre.aspx?ID=foo`. Vzpomeňte si, že `Genre.aspx` stránce uvedeny recenzí v konkrétní žánr. Vyžaduje, aby `GenreId` hodnotu ( `uniqueidentifier`) se má předat řetězec dotazu, je třeba na příslušnou adresu URL, chcete-li zobrazit fiction revize `Genre.aspx?ID=7683ab5d-4589-4f03-a139-1c26044d0146`. Pokud non -`uniqueidentifier` hodnota předaná v pomocí řetězce dotazu (jako je "foo") je vyvolána výjimka.
+**Obrázek 1** znázorňuje stránku podrobností o výjimce YSOD. Poznamenejte si adresu URL v okně Adresa prohlížeče: `http://localhost:62275/Genre.aspx?ID=foo`. Odvolat, že stránka `Genre.aspx` obsahuje seznam revizí knihy v konkrétním žánru. Vyžaduje, aby se hodnota `GenreId` (`uniqueidentifier`) předala prostřednictvím řetězce dotazu. například příslušná adresa URL pro zobrazení souborů fiktivní je `Genre.aspx?ID=7683ab5d-4589-4f03-a139-1c26044d0146`. Pokud je hodnota bez`uniqueidentifier` předána prostřednictvím řetězce dotazu (například "foo"), je vyvolána výjimka.
 
 > [!NOTE]
-> Chcete-li reprodukovat tuto chybu v ukázkové webové aplikace k dispozici ke stažení můžete buď návštěvu `Genre.aspx?ID=foo` přímo nebo kliknutím na odkaz "Generovat za běhu chyba" v `Default.aspx`.
+> Chcete-li regenerovat tuto chybu v ukázkové webové aplikaci, která je k dispozici ke stažení, můžete buď navštívit `Genre.aspx?ID=foo` přímo, nebo kliknout na odkaz "generovat chybu za běhu" v `Default.aspx`.
 
-Poznamenejte si informace o výjimce v **obrázek 1**. Zpráva o výjimce, "převod se nezdařil při převodu ze znakového řetězce na typ uniqueidentifier" se nachází v horní části stránky. Typ výjimky, `System.Data.SqlClient.SqlException`, je uvedený také. Je také trasování zásobníku.
+Všimněte si informací o výjimce prezentovaných na **obrázku 1**. Zpráva o výjimce, "převod se nezdařil při převodu ze znakového řetězce na typ uniqueidentifier" je přítomen v horní části stránky. Typ výjimky, `System.Data.SqlClient.SqlException`, je uveden také. K dispozici je také trasování zásobníku.
 
 [![](displaying-a-custom-error-page-vb/_static/image2.png)](displaying-a-custom-error-page-vb/_static/image1.png)
 
-**Obrázek 1**: Podrobnosti o výjimce YSOD obsahuje informace o výjimce  
- ([Kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-custom-error-page-vb/_static/image3.png))
+**Obrázek 1**: YSOD podrobnosti o výjimce obsahuje informace o výjimce.  
+ ([Kliknutím zobrazíte obrázek v plné velikosti.](displaying-a-custom-error-page-vb/_static/image3.png))
 
-Jiný typ YSOD je YSOD chyba modulu Runtime a je zobrazena ve **obrázek 2**. Chyba YSOD Runtime informuje návštěvník, který došlo k chybě za běhu, ale neobsahuje žádné informace o výjimce, která byla vyvolána. (To však, poskytují pokyny o tom, chcete-li zobrazit podrobnosti o chybě úpravou `Web.config` soubor, který je součástí kvůli tomu takové YSOD, neprofesionálně.)
+Druhý typ YSOD je Běhová chyba YSOD a je zobrazen na **obrázku 2**. Běhová chyba YSOD informuje návštěvníka, že došlo k chybě za běhu, ale nezahrnuje žádné informace o výjimce, která byla vyvolána. (Nicméně obsahuje pokyny k tomu, jak zobrazit podrobnosti o chybě úpravou souboru `Web.config`, který je součástí toho, co vypadá jako YSOD.)
 
-Ve výchozím nastavení, YSOD chyba modulu Runtime se zobrazí uživatelům, kteří navštíví vzdáleně (prostřednictvím http://www.yoursite.com), jak dokazuje adresu URL v adresním řádku prohlížeče v **obrázek 2**: `http://httpruntime.web703.discountasp.net/Genre.aspx?ID=foo`. Existují dva různé obrazovky YSOD vývojáři jsou zajímat, podrobnosti o chybě, protože tyto informace by neměl být zobrazeno na živý web jako může odhalit potenciální ohrožení zabezpečení a dalších citlivých údajů všem uživatelům, kteří navštíví váš lokalita.
+Ve výchozím nastavení se chyba modulu runtime YSOD zobrazuje uživatelům, kteří se vzdáleně navštěvují (prostřednictvím http://www.yoursite.com), jak je uvedeno v adrese URL na adresním řádku prohlížeče na **obrázku 2**: `http://httpruntime.web703.discountasp.net/Genre.aspx?ID=foo`. K dispozici jsou dvě různé obrazovky YSOD, protože vývojáři mají zájem o informace o chybě, ale tyto informace by se neměly zobrazovat na živém webu, protože mohou odhalit potenciální slabá místa zabezpečení nebo jiné citlivé informace pro kohokoli, kdo navštíví vaše webovém.
 
 > [!NOTE]
-> Pokud sledujete a používáte DiscountASP.NET jako webového hostitele, můžete si všimnout, že chyba YSOD Runtime nezobrazí při návštěvě živého webu. Je to proto DiscountASP.NET má své servery ve výchozím nastavení nakonfigurované zobrazíte YSOD podrobnosti o výjimce. Dobrou zprávou je, že toto výchozí chování můžete přepsat tak, že přidáte `<customErrors>` části vašeho `Web.config` souboru. V části "Konfigurace které stránky se zobrazí chyba" prověří `<customErrors>` části podrobně.
+> Pokud používáte a používáte jako webového hostitele DiscountASP.NET, můžete si všimnout, že při návštěvě živého webu se nezobrazuje YSOD chyba modulu runtime. Důvodem je to, že DiscountASP.NET má své servery konfigurované tak, aby ve výchozím nastavení zobrazovaly podrobnosti o výjimce YSOD. Dobrá zpráva je, že toto výchozí chování můžete přepsat přidáním oddílu `<customErrors>` do souboru `Web.config`. V části konfigurace, která chybová stránka se zobrazuje, se podrobně prověřuje část `<customErrors>`.
 
 [![](displaying-a-custom-error-page-vb/_static/image5.png)](displaying-a-custom-error-page-vb/_static/image4.png)
 
-**Obrázek 2**: Chyba za běhu YSOD nezahrnuje žádné podrobnosti o chybě  
- ([Kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-custom-error-page-vb/_static/image6.png))
+**Obrázek 2**: Běhová chyba YSOD neobsahuje žádné podrobnosti o chybě.  
+ ([Kliknutím zobrazíte obrázek v plné velikosti.](displaying-a-custom-error-page-vb/_static/image6.png))
 
-Typ třetí chybové stránky je vlastní chybovou stránku, která je webová stránka, kterou vytvoříte. Výhodou vlastní chybové stránky je, že máte plnou kontrolu nad informace, které se zobrazí uživateli spolu s vzhled a chování stránky; Vlastní chybové stránky můžete použít stejnou stránku předlohy a styly jako vaše stránky. V části "Použití vlastní chybovou stránku" vás provede vytvořením vlastní chybovou stránku a nastavit ho na zobrazení v případě neošetřené výjimce. **Obrázek 3** nabízí stručný ve špičce, tento vlastní chybové stránky. Jak je vidět, vzhled a chování chybové stránky je mnohem více profesionálního než buď žlutý obrazovky smrti, znázorňuje obrázek 1 a 2.
+Třetí typ chybové stránky je vlastní chybová stránka, která je webovou stránkou, kterou vytvoříte. Výhodou vlastní chybové stránky je, že máte plnou kontrolu nad informacemi, které se zobrazí uživateli, spolu s jeho vzhledem a chováním stránky. vlastní chybová stránka může používat stejnou stránku předlohy a styly jako vaše jiné stránky. Část "použití vlastní chybové stránky" vás provede vytvořením vlastní chybové stránky a její konfigurací, aby se zobrazila v případě neošetřené výjimky. **Obrázek 3** nabízí špičku vás zajímá této vlastní chybové stránky. Jak vidíte, vzhled a chování chybové stránky je mnohem lepší než na žlutých obrazovkách smrti uvedených na obrázcích 1 a 2.
 
 [![](displaying-a-custom-error-page-vb/_static/image8.png)](displaying-a-custom-error-page-vb/_static/image7.png)
 
-**Obrázek 3**: Vlastní chybové stránky nabízí lépe přizpůsobené vzhled a chování  
- ([Kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-custom-error-page-vb/_static/image9.png))
+**Obrázek 3**: vlastní chybová stránka nabízí lépe přizpůsobený vzhled a chování.  
+ ([Kliknutím zobrazíte obrázek v plné velikosti.](displaying-a-custom-error-page-vb/_static/image9.png))
 
-Věnujte chvíli kontrole adresního řádku prohlížeče v **obrázek 3**. Všimněte si, že do adresního řádku zobrazí adresu URL vlastní chybové stránky (`/ErrorPages/Oops.aspx`). Na obrázcích 1 a 2 žlutý obrazovky smrti se zobrazí na stejné stránce, která chyba pochází z (`Genre.aspx`). Vlastní chybové stránky se předá adresu URL stránky, kde došlo k chybě prostřednictvím `aspxerrorpath` parametr řetězce dotazu.
+Chvíli počkejte, než zkontrolujete adresní řádek prohlížeče na **obrázku 3**. Všimněte si, že se v adresním řádku zobrazuje adresa URL vlastní chybové stránky (`/ErrorPages/Oops.aspx`). Na obrázcích 1 a 2 se žluté obrazovky smrti zobrazují na stejné stránce, ze které chyba vznikla (`Genre.aspx`). Vlastní chybová stránka je předána adresa URL stránky, kde došlo k chybě prostřednictvím parametru `aspxerrorpath` QueryString.
 
-## <a name="configuring-which-error-page-is-displayed"></a>Zobrazí se konfigurace, které chybovou stránku
+## <a name="configuring-which-error-page-is-displayed"></a>Konfigurace zobrazené chybové stránky
 
-Který tři možné chybové stránky se zobrazí jsou založené na dvou proměnných:
+To, jaké tři chybové stránky se zobrazí, je založené na dvou proměnných:
 
-- Informace o konfiguraci `<customErrors>` části, a
-- Určuje, zda je uživatel následujícím webu, místně nebo vzdáleně.
+- Informace o konfiguraci v části `<customErrors>` a
+- Zda uživatel navštíví web místně nebo vzdáleně.
 
-[ `<customErrors>` Části](https://msdn.microsoft.com/library/h0hfz6fc.aspx) v `Web.config` má dva atributy, které ovlivňují, jaká chybová stránka je zobrazena: `defaultRedirect` a `mode`. `defaultRedirect` Atribut je volitelný. Pokud zadaná, určuje adresu URL vlastní chybové stránky a označuje, že má vlastní chybovou stránku zobrazit místo YSOD chyba modulu Runtime. `mode` Atribut je vyžadován a přijímá jednu ze tří hodnot: `On`, `Off`, nebo `RemoteOnly`. Tyto hodnoty mají následující chování:
+[Oddíl`<customErrors>`](https://msdn.microsoft.com/library/h0hfz6fc.aspx) v `Web.config` má dva atributy, které mají vliv na zobrazenou chybovou stránku: `defaultRedirect` a `mode`. Atribut `defaultRedirect` je nepovinný. Pokud je tato stránka k dispozici, určuje adresu URL vlastní chybové stránky a označuje, že by se měla zobrazit vlastní chybová stránka namísto běhové chyby YSOD. Atribut `mode` je povinný a přijímá jednu ze tří hodnot: `On`, `Off`nebo `RemoteOnly`. Tyto hodnoty mají následující chování:
 
-- `On` – Označuje, že vlastní chybové stránky nebo YSOD chyba modulu Runtime se zobrazí všechny návštěvníci, bez ohledu na to, zda jsou místní nebo vzdálené.
-- `Off` -Určuje, zda je zobrazen YSOD podrobnosti o výjimce pro všechny návštěvníky, bez ohledu na to, zda jsou místní nebo vzdálené.
-- `RemoteOnly` – Označuje, že vlastní chybové stránky nebo YSOD chyba modulu Runtime se zobrazí vzdálené návštěvníci, zatímco YSOD podrobnosti výjimek se zobrazí místní návštěvníků.
+- `On` – označuje, že vlastní chybová stránka nebo chyba modulu runtime YSOD se zobrazí všem návštěvníkům bez ohledu na to, jestli jsou místní nebo vzdálené.
+- `Off` – určuje, že se zobrazí podrobnosti o výjimce YSOD všem návštěvníkům bez ohledu na to, jestli jsou místní nebo vzdálené.
+- `RemoteOnly` – označuje, že vlastní chybová stránka nebo chyba modulu runtime YSOD se zobrazí vzdáleným návštěvníkům, zatímco podrobnosti o výjimce YSOD jsou zobrazeny místním návštěvníkům.
 
-Pokud neurčíte jinak, ASP.NET funguje jakoby měl nastavte atribut mode `RemoteOnly` a nebyl zadán `defaultRedirect` hodnotu. Jinými slovy výchozí chování je, že YSOD podrobnosti o výjimce se zobrazí místní návštěvníků při YSOD chyba modulu Runtime se zobrazí návštěvníkům vzdálené. Toto výchozí chování můžete přepsat tak, že přidáte `<customErrors>` části do vaší webové aplikace `Web.config file.`
+Pokud neurčíte jinak, ASP.NET funguje jako v případě, že jste nastavili atribut Mode na hodnotu `RemoteOnly` a nezadali jste `defaultRedirect` hodnotu. Jinými slovy, výchozím chováním je, že podrobnosti o výjimce YSOD se zobrazují místním návštěvníkům, zatímco Běhová chyba YSOD se zobrazuje vzdáleným návštěvníkům. Toto výchozí chování můžete přepsat přidáním oddílu `<customErrors>` do `Web.config file.` vaší webové aplikace.
 
 ## <a name="using-a-custom-error-page"></a>Použití vlastní chybové stránky
 
-Každá webová aplikace, musí mít vlastní chybové stránky. Poskytuje více profesionálně vypadajících alternativu YSOD chyba modulu Runtime, je snadné vytváření a konfigurace aplikace pro použití se vlastní chybová stránka jenom chvíli trvá. Prvním krokem je vytvoření vlastní chybovou stránku. Byly přidány nové složky do recenzí aplikaci s názvem `ErrorPages` a přidán do, s názvem novou stránku ASP.NET `Oops.aspx`. Jste na stránce použít stejnou stránku předlohy jako zbytek stránky na webu tak, aby automaticky dědí stejné vzhledu a chování.
+Každá webová aplikace by měla mít vlastní chybovou stránku. Nabízí pokročilejší alternativu k chybě za běhu YSOD, je snadné vytvořit a nakonfigurovat aplikaci, aby používala vlastní chybovou stránku, trvá jenom několik minut. Prvním krokem je vytvoření vlastní chybové stránky. Do knihy se přidala nová složka s názvem `ErrorPages` a přidala se k ní nová stránka ASP.NET s názvem `Oops.aspx`. Nechte stránku používat stejnou stránku předlohy jako zbytek stránek na webu tak, aby automaticky dědila stejný vzhled a chování.
 
 [![](displaying-a-custom-error-page-vb/_static/image11.png)](displaying-a-custom-error-page-vb/_static/image10.png)
 
-**Obrázek 4**: Vytvořit vlastní chybové stránky
+**Obrázek 4**: Vytvoření vlastní chybové stránky
 
-V dalším kroku Věnujte několik minut, vytváření obsahu pro chybovou stránku. Vytvořili jste velmi jednoduchá vlastní chybovou stránku s zpráva oznamující, že došlo k neočekávané chybě a odkaz zpět na domovskou stránku webu.
+Dále Věnujte několik minut vytváření obsahu pro chybovou stránku. Vytvořili jsem jednoduchou vlastní chybovou stránku se zprávou oznamující, že došlo k neočekávané chybě a odkaz zpátky na domovskou stránku webu.
 
 [![](displaying-a-custom-error-page-vb/_static/image13.png)](displaying-a-custom-error-page-vb/_static/image12.png)
 
-**Obrázek 5**: Navrhněte vlastní chybovou stránku  
- ([Kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-custom-error-page-vb/_static/image14.png))
+**Obrázek 5**: návrh vlastní chybové stránky  
+ ([Kliknutím zobrazíte obrázek v plné velikosti.](displaying-a-custom-error-page-vb/_static/image14.png))
 
-S chybovou stránku dokončit nakonfigurujte webovou aplikaci používat vlastní chybovou stránku namísto YSOD chyba modulu Runtime. To lze provést zadáním adresy URL v chybové stránky `<customErrors>` oddílu `defaultRedirect` atribut. Přidejte následující kód do vaší aplikace `Web.config` souboru:
+Po dokončení chybové stránky nakonfigurujte webovou aplikaci tak, aby používala vlastní chybovou stránku místo chyby modulu runtime YSOD. To lze provést zadáním adresy URL chybové stránky v atributu `defaultRedirect` oddílu `<customErrors>`. Do souboru `Web.config` vaší aplikace přidejte následující kód:
 
 [!code-xml[Main](displaying-a-custom-error-page-vb/samples/sample1.xml)]
 
-Výše uvedené značky konfiguruje aplikaci, aby uživatelům, kteří navštíví místně, při použití vlastní chybovou stránku Oops.aspx pro tyto uživatele vzdáleně na Zobrazit YSOD podrobnosti o výjimce. Tento údaj zobrazíte v akci, nasazení webu do produkčního prostředí a pak na stránce Genre.aspx na živém webu s hodnotou neplatný řetězec dotazu. Zobrazí se vlastní chybové stránky (vrátit zpět k **obrázek 3**).
+Výše uvedený kód nakonfiguruje aplikaci tak, aby zobrazovala podrobnosti o výjimce YSOD uživatelům, kteří se lokálně navštěvují, a při použití vlastní chybové stránky se na vzdálené návštěvě těchto uživatelů bohužel nezobrazuje. aspx. Pokud to chcete vidět v akci, nasaďte svůj web do provozního prostředí a pak na živém webu navštivte stránku Žánr. aspx s neplatnou hodnotou QueryString. Měla by se zobrazit vlastní chybová stránka (odkaz zpět na **Obrázek 3**).
 
-Pokud chcete ověřit, že se vlastní chybová stránka se zobrazí pouze na vzdálené uživatele, najdete `Genre.aspx` stránka s neplatný řetězec dotazu z vývojového prostředí. Stále byste měli vidět podrobnosti YSOD výjimky (vrátit zpět k **obrázek 1**). `RemoteOnly` Nastavení zajistí, že uživatelům, kteří navštíví web na produkční prostředí uvidí vlastní chybovou stránku, když vývojáři pracující místně nadále zobrazovat podrobnosti o výjimce.
+Chcete-li ověřit, zda se vlastní chybová stránka zobrazuje pouze vzdáleným uživatelům, navštivte stránku `Genre.aspx` s neplatným řetězcem QueryString z vývojového prostředí. Stále byste měli vidět podrobnosti o výjimce YSOD (zpět na **Obrázek 1**). Nastavení `RemoteOnly` zajišťuje, že uživatelé, kteří navštíví web v produkčním prostředí, uvidí vlastní chybovou stránku, zatímco vývojáři pracují místně i nadále, aby viděli podrobnosti o výjimce.
 
-## <a name="notifying-developers-and-logging-error-details"></a>Upozornění vývojáři a protokolování podrobností o chybách
+## <a name="notifying-developers-and-logging-error-details"></a>Oznamování vývojářů a protokolování podrobností o chybách
 
-Chyby, ke kterým dochází ve vývojovém prostředí byly způsobeny developer pracoval na svém počítači. Marcela se zobrazí informace o této výjimky v YSOD podrobnosti o výjimce a ví, jaké kroky, které byl výkon, když došlo k chybě. Ale při výskytu chyby v produkčním prostředí, vývojář nemá žádné informace, že pokud koncový uživatel na web trvá určitou dobu ohlaste chybu došlo k chybě. A i v případě, že uživatel dostane mimo jeho způsob, jak výstrahy vývojový tým, ke které došlo k chybě bez znalosti typ výjimky, zprávu a trasování zásobníku, může být obtížné diagnostikovat příčinu chyby, natož jeho řešení.
+Chyby, ke kterým došlo ve vývojovém prostředí, byly způsobeny vývojářem v jeho počítači. Zobrazuje informace o výjimce v YSOD Details výjimky a ví, jaké kroky prováděly při výskytu chyby. Pokud ale dojde k chybě v produkčním prostředí, vývojář nemá žádné informace o tom, že došlo k chybě, pokud koncový uživatel, který navštívil web, nezíská čas k nahlášení chyby. A dokonce i v případě, že se uživatel dostane k upozornění vývojového týmu, že došlo k chybě, bez znalosti typu výjimky, zprávy a trasování zásobníku může být obtížné diagnostikovat příčinu chyby, ať už ji opravit.
 
-Z těchto důvodů je prvořadá, že všechny chyby v provozním prostředí přihlášený a některé trvalého úložiště (například databáze), který se zobrazí výstraha vývojáři této chyby. Vlastní chybová stránka může jevit jako vhodné místo pro tento protokolování a oznámení. Vlastní chybové stránky bohužel nemá přístup k podrobnosti o chybě a proto jej nelze použít pro přihlášení tyto informace. Dobrou zprávou je, že existuje mnoho způsobů, jak zachytit podrobnosti o chybě a k protokolování je a prozkoumat Toto téma podrobněji v následujících třech kurzech.
+Z těchto důvodů je nejdůležitější, že všechny chyby v produkčním prostředí jsou protokolovány do některého trvalého úložiště (například databáze) a že se vývojářům zobrazí upozornění na tuto chybu. Vlastní chybová stránka může vypadat jako vhodné místo pro toto protokolování a oznámení. Vlastní chybová stránka bohužel nemá přístup k podrobnostem o chybě, a proto ji nelze použít k zaznamenání těchto informací. Dobrá zpráva je, že existuje několik způsobů, jak zachytit podrobnosti o chybě a přihlásit se k nim, a další tři kurzy si podrobněji Prozkoumejte toto téma.
 
-## <a name="using-different-custom-error-pages-for-different-http-error-statuses"></a>Použití různých vlastní chybové stránky pro stavy různých chyb HTTP
+## <a name="using-different-custom-error-pages-for-different-http-error-statuses"></a>Používání různých vlastních chybových stránek pro různé stavy chyb protokolu HTTP
 
-Když výjimka je vyvolána stránky ASP.NET a není zpracována, výjimka percolates až runtime ASP.NET, která zobrazuje nakonfigurované chybovou stránku. Pokud žádost o vstupu do modulu ASP.NET, ale z nějakého důvodu nejde zpracovat – možná požadovaný soubor není nalezen nebo si přečtěte zakázali oprávnění k souboru - pak vydá modul ASP.NET `HttpException`. Tato výjimka, jako jsou výjimky vyvolané z stránek ASP.NET, bubliny až do modulu runtime, způsobí odpovídající chybovou stránku, který se má zobrazit.
+Pokud je výjimka vyvolána stránkou ASP.NET a není zpracována, výjimka percolates až do běhového prostředí ASP.NET, které zobrazuje konfigurovanou chybovou stránku. Pokud přijde požadavek do modulu ASP.NET, ale nedá se z nějakého důvodu zpracovat, možná se nenašlo požadovaný soubor nebo pro něj jsou zakázaná oprávnění ke čtení, modul ASP.NET vyvolá `HttpException`. Tato výjimka, jako jsou výjimky vyvolané z ASP.NET stránek, bubliny až do modulu runtime, což způsobí zobrazení příslušné chybové stránky.
 
-Co to znamená, že pro webovou aplikaci v produkčním prostředí je, že pokud uživatel požádá o stránku, která není nenajde, zobrazí se vlastní chybová stránka. **Obrázek 6** ukazuje takových příkladů. Protože se jedná o požadavek na neexistující stránku (`NoSuchPage.aspx`), `HttpException` je vyvolána a zobrazí se vlastní chybové stránky (Poznámka: odkaz na `NoSuchPage.aspx` v `aspxerrorpath` parametr řetězce dotazu).
+To znamená, že pokud uživatel požádá o nenalezenou stránku, zobrazí se jim vlastní chybová stránka, která je pro webovou aplikaci v provozu. **Obrázek 6** znázorňuje příklad. Vzhledem k tomu, že žádost je určena pro neexistující stránku (`NoSuchPage.aspx`), je vyvolána `HttpException` a zobrazí se vlastní chybová stránka (Poznamenejte si odkaz na `NoSuchPage.aspx` v parametru `aspxerrorpath` QueryString).
 
-[![](displaying-a-custom-error-page-vb/_static/image16.png)](displaying-a-custom-error-page-vb/_static/image15.png)**Obrázek 6**: Modul Runtime ASP.NET zobrazí nakonfigurované chybovou stránku v reakci na neplatný požadavek  
- ([Kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-custom-error-page-vb/_static/image17.png)) 
+[![](displaying-a-custom-error-page-vb/_static/image16.png)](displaying-a-custom-error-page-vb/_static/image15.png) **Obrázek 6**: modul runtime ASP.NET zobrazí nakonfigurovanou chybovou stránku v reakci na neplatnou žádost.  
+ ([Kliknutím zobrazíte obrázek v plné velikosti.](displaying-a-custom-error-page-vb/_static/image17.png)) 
 
-Ve výchozím nastavení všechny typy chyb způsobit stejné vlastní chybovou stránku, který se má zobrazit. Můžete však zadat jiné vlastní chybové stránky pro konkrétní HTTP stavový kód pomocí `<error>` podřízené prvky v rámci `<customErrors>` oddílu. Například pokud chcete mít různé chybové stránky zobrazí v případě stránka nebyla nalezena chyba, která má stavový kód HTTP 404, aktualizujte `<customErrors>` části zahrnout následující kód:
+Ve výchozím nastavení všechny typy chyb způsobují zobrazení stejné vlastní chybové stránky. Můžete ale zadat jinou vlastní chybovou stránku pro určitý stavový kód HTTP pomocí `<error>` podřízených elementů v části `<customErrors>`. Například pokud chcete, aby se v případě chyby stránky, která nebyla nalezena, zobrazila jiná chybová stránka, která má stavový kód HTTP 404, aktualizujte část `<customErrors>` tak, aby obsahovala následující značky:
 
 [!code-xml[Main](displaying-a-custom-error-page-vb/samples/sample2.xml)]
 
-Díky této změně na místě pokaždé, když se uživatel navštívit vzdáleně požádá o prostředek technologie ASP.NET, která neexistuje, že budete přesměrováni na `404.aspx` vlastní chybovou stránku místo `Oops.aspx`. Jako **obrázek 7** znázorňuje, `404.aspx` stránka může obsahovat zprávu konkrétnější než obecné vlastní chybovou stránku.
+Když se tato změna uskuteční, pokaždé, když uživatel, který se vzdáleně navštíví, vyžádá prostředek ASP.NET, který neexistuje, přesměruje se na `404.aspx` vlastní chybovou stránku místo `Oops.aspx`. Jak ukazuje **Obrázek 7** , `404.aspx` stránka může obsahovat konkrétnější zprávu, než je obecná vlastní chybová stránka.
 
 > [!NOTE]
-> Podívejte se na [404 chybové stránky, další jednou](http://www.smashingmagazine.com/2009/01/29/404-error-pages-one-more-time/) pokyny k vytváření efektivní 404 chybové stránky.
+> Další informace najdete na [stránce s chybovými stránkami 404, kde najdete](http://www.smashingmagazine.com/2009/01/29/404-error-pages-one-more-time/) pokyny k vytváření efektivních chybových stránek 404.
 
-[![](displaying-a-custom-error-page-vb/_static/image19.png)](displaying-a-custom-error-page-vb/_static/image18.png)**Obrázek 7**: Vlastní 404 chybovou stránku zobrazí zprávu cílenější než `Oops.aspx`  
- ([Kliknutím ji zobrazíte obrázek v plné velikosti](displaying-a-custom-error-page-vb/_static/image20.png)) 
+[![](displaying-a-custom-error-page-vb/_static/image19.png)](displaying-a-custom-error-page-vb/_static/image18.png) **Obrázek 7**: vlastní chybová stránka 404 zobrazuje více cílené zprávy, než `Oops.aspx`  
+ ([Kliknutím zobrazíte obrázek v plné velikosti.](displaying-a-custom-error-page-vb/_static/image20.png)) 
 
-Protože víte, že `404.aspx` stránky se dosáhne, pouze když uživatel odešle požadavek pro stránku, který nebyl nalezen, můžete vylepšit tento vlastní chybové stránky zahrnují funkce, které pomůžou uživatele vyřešit tento konkrétní typ chyby. Například můžete vytvořit tabulku databáze, která mapuje známé špatné adresy URL do správné adresy URL a pak je mít `404.aspx` vlastní chybovou stránku spuštění dotazu na tabulky a navrhnout stránek, které uživatel může být pokouší o spojení.
+Vzhledem k tomu, že se stránka `404.aspx` dosáhne pouze v případě, že uživatel vytvoří požadavek na stránku, která nebyla nalezena, můžete tuto vlastní chybovou stránku rozšířit tak, aby zahrnovala funkce, aby uživatel mohl vyřešit tento konkrétní typ chyby. Můžete například sestavit databázovou tabulku, která mapuje známé chybné adresy URL na dobré adresy URL, a potom nechat stránku `404.aspx` vlastní chybovou stránku spustit dotaz na tuto tabulku a navrhnout stránky, na které se uživatel může pokusit připojit.
 
 > [!NOTE]
-> Vlastní chybové stránky se zobrazí pouze po odeslání žádosti na prostředek zpracovává modul ASP.NET. Jak jsme probírali v [základní rozdíly mezi IIS a serveru ASP.NET Development Server](core-differences-between-iis-and-the-asp-net-development-server-vb.md) výukový program, webový server může zpracovat určité požadavky samotné. Ve výchozím nastavení webové služby IIS serveru procesy požadavky pro statický obsah – třeba obrázky nebo soubory HTML bez vyvolání modul ASP.NET. V důsledku toho pokud uživatel požaduje soubor obrázku neexistující dostanou zpět služby IIS výchozí chyby 404, nikoli ASP. NET společnosti nakonfigurovat chybovou stránku.
+> Vlastní chybová stránka se zobrazí pouze v případě, že je proveden požadavek na prostředek zpracovávaný modulem ASP.NET. Jak jsme probrali v [základních rozdílech mezi službou IIS a vývojovým serverem ASP.NET](core-differences-between-iis-and-the-asp-net-development-server-vb.md) , může webový server zpracovávat určité požadavky samostatně. Webový server služby IIS ve výchozím nastavení zpracovává požadavky na statický obsah, jako jsou obrázky a soubory HTML bez vyvolání modulu ASP.NET. V důsledku toho, pokud si uživatel požádá o neexistující soubor bitové kopie, vrátí zpět výchozí 404 chybovou zprávu služby IIS, a ne ASP. Chybná stránka konfigurace sítě
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Když dojde k neošetřené výjimce v aplikaci ASP.NET, uživateli se zobrazí jeden ze tří chybové stránky: výjimka podrobnosti žlutý obrazovky z smrti; Chyba za běhu žlutý obrazovky smrti. nebo vlastní chybové stránky. Na stránce chyby, které se zobrazí, závisí na vaší aplikace `<customErrors>` konfigurace a zda je uživatel hostujících místně nebo vzdáleně. Výchozí chování je zobrazit YSOD podrobnosti o výjimce pro místní návštěvníky a YSOD chyba modulu Runtime na vzdálené návštěvníků.
+Pokud dojde k neošetřené výjimce v aplikaci ASP.NET, zobrazí se na uživateli jedna ze tří chybových stránek: informace o výjimce žlutá obrazovka smrti; Chyba za běhu žlutá obrazovka smrti; nebo vlastní chybovou stránku. Tato chybová stránka se zobrazí v závislosti na konfiguraci `<customErrors>` aplikace a na tom, jestli se uživatel místně nebo vzdáleně navštíví. Výchozím chováním je zobrazit podrobnosti o výjimce YSOD místním návštěvníkům a běhové chybě YSOD pro vzdálené návštěvníky.
 
-Zatímco YSOD chyba modulu Runtime skryje chyby potenciálně citlivé informace zadané uživatelem následujícím webu, přeruší z vašeho webu vzhled a chování a zpřístupňuje buggy vaší aplikace. Lepším řešením je použití vlastní chybovou stránku, která zahrnuje vytváření a návrhu vlastní chybové stránky a zadání jeho adresu URL `<customErrors>` oddílu `defaultRedirect` atribut. Může probíhat dokonce na více vlastní chybové stránky pro různé stavy chyby protokolu HTTP.
+I když Běhová chyba YSOD skrývá potenciálně citlivé informace o chybách uživatele, který navštívil web, přeruší se vzhled a chování vaší lokality a aplikace bude ladit. Lepším řešením je použití vlastní chybové stránky, která zahrnuje vytvoření a návrh vlastní chybové stránky a určení její adresy URL v atributu `defaultRedirect` oddílu `<customErrors>`. Můžete mít i několik vlastních chybových stránek pro různé stavy chyb protokolu HTTP.
 
-Vlastní chybové stránky je prvním krokem při chybu komplexní strategie pro web v produkčním prostředí pro zpracování. Pro vývojáře chyby výstrahy a protokolování její podrobnosti jsou také důležité kroky. Následující tři kurzy prozkoumat techniky pro oznámení o chybě a protokolování.
+Vlastní chybová stránka je prvním krokem v komplexní strategii zpracování chyb pro web v produkčním prostředí. Důležité kroky jsou také upozorňující vývojáře na chybu a protokolování jeho podrobností. V následujících třech kurzech se seznámíte s postupy pro oznamování chyb a protokolování.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
-- [Chybové stránky, ještě jednou](http://www.smashingmagazine.com/2009/01/29/404-error-pages-one-more-time/)
+- [Chybové stránky, ještě jeden další čas](http://www.smashingmagazine.com/2009/01/29/404-error-pages-one-more-time/)
 - [Pokyny k návrhu pro výjimky](https://msdn.microsoft.com/library/ms229014.aspx)
 - [Uživatelsky přívětivé chybové stránky](http://aspnet.4guysfromrolla.com/articles/090606-1.aspx)
-- [Zpracování a vyvolání výjimek](https://msdn.microsoft.com/library/5b2yeyab.aspx)
-- [Správně pomocí vlastní chybové stránky technologie ASP.NET](http://professionalaspnet.com/archive/2007/09/30/Properly-Using-Custom-Error-Pages-in-ASP.NET.aspx)
+- [Zpracování a vyvolávání výjimek](https://msdn.microsoft.com/library/5b2yeyab.aspx)
+- [Správné používání vlastní chybové stránky v ASP.NET](http://professionalaspnet.com/archive/2007/09/30/Properly-Using-Custom-Error-Pages-in-ASP.NET.aspx)
 
 > [!div class="step-by-step"]
 > [Předchozí](strategies-for-database-development-and-deployment-vb.md)
-> [další](processing-unhandled-exceptions-vb.md)
+> [Další](processing-unhandled-exceptions-vb.md)

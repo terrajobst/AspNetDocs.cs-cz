@@ -1,68 +1,68 @@
 ---
 uid: mvc/mvc3
-title: ASP.NET MVC 3 | Dokumentace Microsoftu
+title: ASP.NET MVC 3
 author: rick-anderson
-description: (zahrnuje dubna 2011 Tools pro sadu Vs11) ASP.NET MVC 3 je rozhraní pro vytváření aplikací škálovatelná webů založené na standardech pomocí zavedených návrhový vzor...
+description: (zahrnuje aktualizace nástrojů z dubna 2011) ASP.NET MVC 3 je architektura pro vytváření škálovatelných webových aplikací založených na standardech pomocí dobře zavedeného vzoru návrhu...
 ms.author: riande
 ms.date: 10/05/2010
 ms.assetid: dddc8812-a0bc-49f9-aafb-caf2064c2b8c
 msc.legacyurl: /mvc/mvc3
 msc.type: content
-ms.openlocfilehash: 0ff5e6244cb4c6ea15297272af85d91d469da6d0
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 421a06c89d4dbcb05d4080033813cc6558b7c698
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65121344"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74586753"
 ---
 # <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 
-> *(zahrnuje dubna 2011 Tools pro sadu Vs11)*
+> *(zahrnuje aktualizace nástrojů z dubna 2011)*
 > 
-> ASP.NET MVC 3 je architektura určená k vytváření aplikací škálovatelná webů založené na standardech pomocí zavedených návrhových postupů a sílu technologie ASP.NET a .NET Framework.
+> ASP.NET MVC 3 je architektura pro vytváření škálovatelných webových aplikací založených na standardech pomocí dobře zavedených vzorů návrhu a síly ASP.NET a .NET Framework.
 > 
-> Instaluje se vedle sebe s ASP.NET MVC 2, abyste mohli začít používat ještě dnes!
+> Instaluje se vedle sebe s ASP.NET MVC 2, takže ji můžete začít používat ještě dnes!
 > 
-> Stáhněte si [zde instalačního programu](https://go.microsoft.com/fwlink/?LinkID=208140)
+> Stáhněte si [instalační program sem](https://go.microsoft.com/fwlink/?LinkID=208140)
 
 ## <a name="top-features"></a>Hlavní funkce
 
-- Integrovaný systém generování uživatelského rozhraní rozšiřitelných prostřednictvím balíčku NuGet
-- HTML 5 povolených projektu šablony
-- Výrazové zobrazení včetně nový zobrazovací modul Razor
-- Výkonné hooks pomocí vkládání závislostí a globální filtry akce
-- Podpora bohaté JavaScriptu s nerušivý JavaScript a jQuery ověření, JSON vazby
-- *Čtení seznamu úplné funkce [níže](#overview)*
+- Integrovaný systém generování uživatelského rozhraní rozšiřitelný přes NuGet
+- Šablony projektů s podporou formátu HTML 5
+- Přehledná zobrazení včetně nového modulu zobrazení Razor
+- Výkonné háky se vkládáním závislostí a globálními filtry akcí
+- Bohatá podpora JavaScriptu s nenápadem jazyka JavaScript, ověřování jQuery a vazeb JSON
+- *Přečtěte si seznam úplných funkcí [níže](#overview) .*
 
-## <a name="top-links"></a>Prvních propojení
+## <a name="top-links"></a>Hlavní odkazy
 
-Co je nového v architektuře ASP.NET MVC 3
+Co je nového v ASP.NET MVC 3
 
-- Phil Haack: [ASP.NET MVC 3 všeobecně dostupné](http://haacked.com/archive/2011/01/13/aspnetmvc3-released.aspx)
-- Scott Hanselman: [ASP.NET MVC3 WebMatrix, NuGet, služba IIS Express a Orchard vydání – Microsoft ledna webové vydání v kontextu](http://www.hanselman.com/blog/ASPNETMVC3WebMatrixNuGetIISExpressAndOrchardReleasedTheMicrosoftJanuaryWebReleaseInContext.aspx)
-- Scott Guthrie: [Oznamujeme vydání verze technologie ASP.NET MVC 3, služby IIS Express, SQL CE 4, Web Farm Framework, Orchard, služba WebMatrix](https://weblogs.asp.net/scottgu/archive/2011/01/13/announcing-release-of-asp-net-mvc-3-iis-express-sql-ce-4-web-farm-framework-orchard-webmatrix.aspx)
-- [Poznámky k verzi pro architekturu ASP.NET MVC 3](../whitepapers/mvc3-release-notes.md)
+- Filip Haack: [vydaná ASP.NET MVC 3](http://haacked.com/archive/2011/01/13/aspnetmvc3-released.aspx)
+- Scott Hanselman: [ASP.NET MvC3, WebMatrix, NuGet, IIS Express a ovocné vydání – Webová verze od Microsoftu v kontextu](http://www.hanselman.com/blog/ASPNETMVC3WebMatrixNuGetIISExpressAndOrchardReleasedTheMicrosoftJanuaryWebReleaseInContext.aspx)
+- Scott Guthrie: [oznamuje vydání sady ASP.NET MVC 3, IIS Express, SQL CE 4, web farme Framework, sadu, WebMatrix](https://weblogs.asp.net/scottgu/archive/2011/01/13/announcing-release-of-asp-net-mvc-3-iis-express-sql-ce-4-web-farm-framework-orchard-webmatrix.aspx)
+- [Poznámky k verzi pro ASP.NET MVC 3](../whitepapers/mvc3-release-notes.md)
 
-Instalace a Nápověda
+Instalace a pomáhat
 
-- Instalovat pomocí ASP.NET MVC 3 [instalačního programu webové platformy (doporučeno)](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MVC3)
-- Instalovat pomocí ASP.NET MVC 3 [spustitelného souboru instalačního programu](https://go.microsoft.com/fwlink/?LinkID=208140)
-- Nainstalujte [ASP.NET MVC 3 pro sadu Visual Studio 11 Developer Preview](https://go.microsoft.com/fwlink/?LinkID=208140)
-- Přečtěte si [Úvod do ASP.NET MVC 3 kurz](overview/older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md)
-- Získejte pomoc a diskutovat o architektuře ASP.NET MVC 3 v [fóra](https://forums.asp.net/1146.aspx)
+- Instalace ASP.NET MVC 3 pomocí [instalačního programu webové platformy (doporučeno)](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MVC3)
+- Instalace ASP.NET MVC 3 pomocí [spustitelného souboru instalačního programu](https://go.microsoft.com/fwlink/?LinkID=208140)
+- Instalace [ASP.NET MVC 3 pro Visual Studio 11 Developer Preview](https://go.microsoft.com/fwlink/?LinkID=208140)
+- Přečtěte si [kurz Úvod do ASP.NET MVC 3](overview/older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md)
+- Získat nápovědu a diskutovat ASP.NET MVC 3 ve [fórech](https://forums.asp.net/1146.aspx)
 
 <a id="overview"></a>
-## <a name="aspnet-mvc-3-overview"></a>ASP.NET MVC 3 – přehled
+## <a name="aspnet-mvc-3-overview"></a>ASP.NET MVC 3 – Přehled
 
-ASP.NET MVC 3 je založena na ASP.NET MVC 1 a 2, přidání skvělých funkcí, zjednoduší kódování a povolit podrobnější rozšiřitelnosti. Toto téma obsahuje přehled o řadu nových funkcí, které jsou součástí této verze, uspořádané do následujících částí:
+ASP.NET MVC 3 staví na ASP.NET MVC 1 a 2 a přidává skvělé funkce, které zjednodušují váš kód a umožňují hlubší rozšiřitelnost. V tomto tématu najdete přehled mnoha nových funkcí, které jsou součástí této verze, a jsou uspořádány do následujících částí:
 
 - [Rozšiřitelné generování uživatelského rozhraní s integrací MvcScaffold](#BM_MvcScaffolding)
-- [HTML 5 povolených projektu šablony](#BM_HTML5)
-- [Zobrazovací modul Razor](#BM_TheRazorViewEngine)
+- [Šablony projektů s podporou formátu HTML 5](#BM_HTML5)
+- [Modul zobrazení Razor](#BM_TheRazorViewEngine)
 - [Podpora pro více modulů zobrazení](#BM_Support_for_Multiple_View_Engines)
-- [Vylepšení kontroleru](#BM_Controller_Improvements)
-- [JavaScript a Ajax](#BM_JavaScript_and_Ajax_Improvements)
-- [Vylepšení ověření modelu](#BM_Model_Validation_Improvements)
+- [Vylepšení kontroléru](#BM_Controller_Improvements)
+- [JavaScript a AJAX](#BM_JavaScript_and_Ajax_Improvements)
+- [Vylepšení ověřování modelu](#BM_Model_Validation_Improvements)
 - [Vylepšení vkládání závislostí](#BM_Dependency_Injection_Improvements)
 - [Další nové funkce](#BM_Other_New_Features)
 
@@ -70,134 +70,134 @@ ASP.NET MVC 3 je založena na ASP.NET MVC 1 a 2, přidání skvělých funkcí, 
 
 ## <a name="extensible-scaffolding-with-mvcscaffold-integration"></a>Rozšiřitelné generování uživatelského rozhraní s integrací MvcScaffold
 
-Nový systém generování uživatelského rozhraní je snazší sbírání a začít používat produktivní, pokud jste úplně nový rozhraní framework a automatizaci běžných úkolů vývoje, pokud máte zkušenosti a už víte, co děláte.
+Nový systém vytváření uživatelského rozhraní usnadňuje výběr a zahájení používání produktu, pokud jste zcela nové rozhraní a automatizaci běžných úloh vývoje, pokud máte zkušenosti a už víte, co děláte.
 
-To je podporované systémem NuGet nové *generování uživatelského rozhraní* balíček s názvem **MvcScaffolding**. Pojem "Generování uživatelského rozhraní" se používá mnoho technologie softwarově "rychle generování základní přehled vašeho softwaru, který můžete následně upravit a přizpůsobit". Balíček pro generování uživatelského rozhraní, který vytváříme pro architekturu ASP.NET MVC je velmi výhodné v několika situacích:
+To je podporováno novým balíčkem pro *generování uživatelského rozhraní* NuGet s názvem **MvcScaffolding**. Pojem "generování uživatelského rozhraní používá mnoho softwarových technologií, což znamená" rychlé generování základního přehledu o softwaru, který pak můžete upravit a přizpůsobit. " Balíček pro generování uživatelského rozhraní, který vytváříme pro ASP.NET MVC, je výrazně přínosný v několika scénářích:
 
-- **Pokud jste získat ASP.NET MVC poprvé**, protože poskytuje rychlý způsob, jak získat některé užitečné pracovní kód, který potom můžete upravit a přizpůsobit podle svých potřeb. Není nutné z poškození prohlížení prázdnou stránku a máte představu, kde začít!
-- **Pokud dobře znáte ASP.NET MVC a se teď s touto některé nové technologie doplněk** jako je objektově relační Mapovač, modul zobrazení, knihovnu testování, protože tvůrce těmito technologiemi, může také balíček generování uživatelského rozhraní pro ně vytvořili apod.
-- **Pokud svou práci zahrnuje opakované vytvoření podobné třídy nebo soubory s nějakým**, protože můžete vytvořit vlastní podpůrné, jejichž výstupem testovací zařízení, skriptů nasazení nebo cokoli, co jiného potřebujete. Každý člen vašeho týmu můžete použít vlastní podpůrné, příliš.
+- **Pokud se naučíte ASP.NET MVC poprvé**, protože vám poskytne rychlý způsob, jak získat nějaký užitečný, funkční kód, který pak můžete upravit a přizpůsobit podle svých potřeb. Ušetří vám trauma, že se díváte na prázdnou stránku a nemá žádný nápad na to, kde začít!
+- **Pokud znáte ASP.NET MVC dobře a teď prozkoumáte novou technologii doplňku** , jako je například objektově-relační Mapovač, modul zobrazení, knihovnu testování atd., protože Tvůrce této technologie také mohl vytvořit pro něj balíček pro generování uživatelského rozhraní.
+- **Pokud vaše práce zahrnuje opakované vytváření podobných tříd nebo souborů nějakého řazení**, protože můžete vytvořit vlastní generátory výstupu výstupních přípravek, skripty pro nasazení nebo cokoli jiného, co potřebujete. Všichni členové týmu mohou používat i vlastní lešení.
 
 Mezi další funkce v MvcScaffolding patří:
 
-- Podpora pro projekty C# a VB
-- Podpora pro moduly zobrazení Razor a ASPX
-- Podporuje generování uživatelského rozhraní do oblastí, ASP.NET MVC a používání vlastních zobrazení rozložení/hlavních serverů
-- Výstup můžete snadno přizpůsobit úpravou šablony T4
-- Můžete přidat zcela novými podpůrné pomocí vlastní logiky prostředí PowerShell a vlastní šablony T4. Tyto (a libovolný vlastní parametr udělili jste jim) automaticky zobrazí v seznamu doplňování tabulátorů konzoly.
-- Balíčky NuGet, který obsahuje další podpůrné pro různé technologie, získáte (například že už testování konceptu jednu pro funkci LINQ to SQL) a zkombinujte je dohromady
+- Podpora projektů C# a projektů VB
+- Podpora pro zobrazovací moduly Razor a ASPX
+- Podporuje generování uživatelského rozhraní do oblastí MVC ASP.NET a použití vlastních rozložení/hlavních zobrazení.
+- Výstup můžete snadno přizpůsobit úpravou šablon T4.
+- Pomocí vlastní logiky PowerShellu a vlastních šablon T4 můžete přidat zcela nové uživatelské rozhraní. Tyto (a všechny vlastní parametry, které jste jim dali), se automaticky zobrazí v seznamu pro doplňování na kartě konzoly.
+- Balíčky NuGet, které obsahují další generátory, můžete získat pro různé technologie (například pro LINQ to SQL nyní existuje zkušební verze jednoho) a vzájemně je kombinovat a porovnávat s nimi.
 
-ASP.NET MVC 3 nástroje Update obsahuje skvělou podporu sady Visual Studio pro tento systém generování uživatelského rozhraní, jako například:
+Aktualizace nástrojů ASP.NET MVC 3 obsahuje skvělou podporu sady Visual Studio pro tento systém generování uživatelského rozhraní, jako je například:
 
-- Přidáte že kontroler dialogu teď podporuje úplné automatické generování uživatelského rozhraní vytvoření, čtení, aktualizace a odstraňování akce kontroleru a odpovídající zobrazení. Ve výchozím nastavení to vygeneruje uživatelské, rozhraní kód přístupu k datům pomocí EF Code First.
-- Přidat Dialog kontroler podporuje *rozšiřitelný nástroj scaffold* prostřednictvím balíčku NuGet balíčky, jako *MvcScaffolding*. Díky tomu zapojení vlastní nástroj scaffold do dialogové okno, které by bylo možné vytvořit scaffold pro dalších technologií přístupu k datům, jako je například NHibernate nebo dokonce JET s ODBCDirect, pokud jste tak sklon!
+- Dialog Přidat řadič teď podporuje úplné automatické generování uživatelského rozhraní pro vytváření, čtení, aktualizaci a odstraňování akcí kontroleru a odpovídajících zobrazení. Ve výchozím nastavení tato rozhraní pro přístup k datům pomocí kódu EF Code First.
+- Dialog Přidat řadič podporuje *rozšiřitelné generování uživatelského rozhraní* prostřednictvím balíčků NuGet, jako je *MvcScaffolding*. To umožňuje zapojení do vlastního uživatelského rozhraní do dialogového okna, které vám umožní vytvářet pro ostatní technologie pro přístup k datům, jako je NHibernate nebo i JET, ODBCDirect v případě, že jste to zaznamenali.
 
-Další informace o generování uživatelského rozhraní v architektuře ASP.NET MVC 3 naleznete na následujících odkazech:
+Další informace o generování uživatelského rozhraní v ASP.NET MVC 3 najdete v následujících zdrojích informací:
 
-- Steve Sanderson účtování řady, včetně: 
+- Steveský seriál Sanderson, včetně: 
 
-    1. [Představení: Generování uživatelského rozhraní ASP.NET MVC 3 projektu s balíčkem MvcScaffolding](http://blog.stevensanderson.com/2011/01/13/scaffold-your-aspnet-mvc-3-project-with-the-mvcscaffolding-package/)
-    2. [Standardní využití: Typické případy použití a možnosti](http://blog.stevensanderson.com/2011/01/13/mvcscaffolding-standard-usage/)
-    3. [Vztah jeden mnoho](http://blog.stevensanderson.com/2011/01/28/mvcscaffolding-one-to-many-relationships/)
+    1. [Úvod: generování uživatelského rozhraní projektu MVC 3 v ASP.NET pomocí balíčku MvcScaffolding](http://blog.stevensanderson.com/2011/01/13/scaffold-your-aspnet-mvc-3-project-with-the-mvcscaffolding-package/)
+    2. [Standardní použití: typické případy použití a možnosti](http://blog.stevensanderson.com/2011/01/13/mvcscaffolding-standard-usage/)
+    3. [Relace 1: n](http://blog.stevensanderson.com/2011/01/28/mvcscaffolding-one-to-many-relationships/)
     4. [Akce generování uživatelského rozhraní a testy jednotek](http://blog.stevensanderson.com/2011/03/28/scaffolding-actions-and-unit-tests-with-mvcscaffolding/)
-    5. [Přepsání šablony T4](http://blog.stevensanderson.com/2011/04/06/mvcscaffolding-overriding-the-t4-templates/)
-    6. [Tento příspěvek: Vytváření vlastních podpůrné](http://blog.stevensanderson.com/2011/04/07/mvcscaffolding-creating-custom-scaffolders/)
-- Scott Hanselman příspěvek z jeho relace primárního řadiče domény 2010 [vytváření Blog s Microsoftem "Nepojmenované balíček z webových láskou"](http://www.hanselman.com/blog/PDC10BuildingABlogWithMicrosoftUnnamedPackageOfWebLove.aspx)
-- [Zpráva k vydání verze MVC 3](../whitepapers/mvc3-release-notes.md)
+    5. [Přepsání šablon T4](http://blog.stevensanderson.com/2011/04/06/mvcscaffolding-overriding-the-t4-templates/)
+    6. [Tento příspěvek: vytváření vlastních lešení](http://blog.stevensanderson.com/2011/04/07/mvcscaffolding-creating-custom-scaffolders/)
+- Příspěvek Scott Hanselman ze své relace PDC 2010 [Vytvoření blogu s pojmenovaným balíčkem webové](http://www.hanselman.com/blog/PDC10BuildingABlogWithMicrosoftUnnamedPackageOfWebLove.aspx) aplikace
+- [Poznámky k verzi MVC 3](../whitepapers/mvc3-release-notes.md)
 
 <a id="BM_HTML5"></a>
 
-## <a name="html-5-project-templates"></a>Šablony projektů 5 HTML
+## <a name="html-5-project-templates"></a>Šablony projektů HTML 5
 
-Dialogové okno Nový projekt obsahuje zaškrtávací políčko Povolit HTML 5, verzích šablon projektů. Tyto šablony využívají 1.7 Modernizr pro poskytnutí podpory kompatibility pro HTML 5 a šablon stylů CSS 3 v prohlížečích nižší úrovně.
+Dialogové okno Nový projekt obsahuje zaškrtávací políčko Povolit verze HTML 5 šablon projektů. Tyto šablony využívají modernizr 1,7 k zajištění podpory kompatibility HTML 5 a CSS 3 v prohlížečích nižší úrovně.
 
 <a id="BM_TheRazorViewEngine"></a>
 
-## <a name="the-razor-view-engine"></a>Zobrazovací modul Razor
+## <a name="the-razor-view-engine"></a>Modul zobrazení Razor
 
-ASP.NET MVC 3 přináší nový zobrazovací modul s názvem Razor, která nabízí následující výhody:
+ASP.NET MVC 3 přináší nový zobrazovací modul s názvem Razor, který nabízí následující výhody:
 
-- Syntaxe Razor je a výstižně, které vyžadují minimální počet úhozy na klávesnici.
-- Razor se snadno učí, v části aplikace je založena na existující jazyky, jako je C# a Visual Basic.
-- Visual Studio obsahuje barevné zvýrazňování technologie IntelliSense a kód pro syntaxi Razor.
-- Jednotky testování bez nutnosti spuštění aplikace nebo spustit webový server může být zobrazení syntaxe Razor.
+- Syntaxe Razor je čistý a stručný a vyžaduje minimální počet klávesových úhozů.
+- Razor se snadno učí, protože je založena na stávajících jazycích, jako C# je a Visual Basic.
+- Visual Studio zahrnuje technologii IntelliSense a barvu kódu pro syntaxe Razor.
+- Zobrazení Razor lze testovat jednotkou bez nutnosti spustit aplikaci nebo spustit webový server.
 
-Některé nové funkce Razor, patří:
+Mezi nové funkce Razor patří následující:
 
-- `@model` Syntaxe pro určení typu předávaný do zobrazení.
-- `@* *@` syntaxe komentáře.
-- Možnost určit výchozí hodnoty (jako například `layoutpage`) jednou pro celou lokalitu.
-- `Html.Raw` Metodu pro zobrazení textu bez kódování HTML ho.
-- Podpora pro sdílení kódu mezi více zobrazení (*\_viewstart.cshtml* nebo  *\_viewstart.vbhtml* soubory).
+- `@model` syntaxe pro určení typu, který se předává do zobrazení.
+- syntaxe komentáře `@* *@`.
+- Možnost zadat výchozí hodnoty (například `layoutpage`) jednou pro celou lokalitu.
+- Metoda `Html.Raw` pro zobrazení textu bez kódování HTML
+- Podpora pro sdílení kódu mezi více zobrazeními ( *\_souborů viewstart. cshtml* nebo *\_viewstart. vbhtml* ).
 
-Razor také zahrnuje nové pomocné rutiny HTML, jako je následující:
+Razor obsahuje také nové pomocníky HTML, například následující:
 
-- `Chart`. Vykreslí grafu, nabízí stejné funkce jako ovládací prvek grafu v technologii ASP.NET 4.
-- `WebGrid`. Vykreslí mřížky dat, s funkcí stránkování a řazení.
-- `Crypto`. Používá k vytvoření správně algoritmy hash řetězce Salt a mají hodnotu hash hesla.
+- `Chart`. Vykreslí graf a nabídne stejné funkce jako ovládací prvek grafu v ASP.NET 4.
+- `WebGrid`. Vykreslí datovou mřížku a doplní funkce stránkování a řazení.
+- `Crypto`. Používá algoritmy hash k vytváření správně nasolených a zatřiďovacích hesel.
 - `WebImage`. Vykreslí obrázek.
-- `WebMail`. Odešle e-mailovou zprávu.
+- `WebMail`. Pošle e-mailovou zprávu.
 
-Další informace o syntaxi Razor naleznete na následujících odkazech:
+Další informace o Razor najdete v následujících zdrojích informací:
 
-- [Blogový příspěvek Scotta guthrieho, ve kterém Představujeme Razor](https://weblogs.asp.net/scottgu/archive/2010/07/02/introducing-razor.aspx)
-- [Scott Guthrie blogový příspěvek představení @model – klíčové slovo](https://weblogs.asp.net/scottgu/archive/2010/10/19/asp-net-mvc-3-new-model-directive-support-in-razor.aspx)
-- [Scott Guthrie blogový příspěvek představení rozložení Razor](https://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx)
-- [Syntaxe Razor rozhraní API rychlé odkazy](../web-pages/overview/api-reference/asp-net-web-pages-api-reference.md)
-- [Zpráva k vydání verze MVC 3](../whitepapers/mvc3-release-notes.md)
+- [Příspěvek na blogu Scottu Guthrie, představení Razor](https://weblogs.asp.net/scottgu/archive/2010/07/02/introducing-razor.aspx)
+- [Blogový příspěvek Scott Guthrie, který zavádí klíčové slovo @model](https://weblogs.asp.net/scottgu/archive/2010/10/19/asp-net-mvc-3-new-model-directive-support-in-razor.aspx)
+- [Příspěvek na blogu pro Scott Guthrie představení Razor Layouts](https://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx)
+- [Stručný přehled rozhraní API Razor](../web-pages/overview/api-reference/asp-net-web-pages-api-reference.md)
+- [Poznámky k verzi MVC 3](../whitepapers/mvc3-release-notes.md)
 
 <a id="BM_Support_for_Multiple_View_Engines"></a>
 
 ## <a name="support-for-multiple-view-engines"></a>Podpora pro více modulů zobrazení
 
-**Přidat zobrazení** dialogové okno v architektuře ASP.NET MVC 3 umožňuje výběr zobrazovací modul, kterou chcete pracovat, a **nový projekt** dialogové okno umožňuje zadat výchozí zobrazovací modul pro projekt. Můžete použít modul zobrazení webových formulářů (ASPX), Razor nebo zobrazení open source modul, jako [Spark](http://sparkviewengine.com/), [NHaml](https://code.google.com/p/nhaml/), nebo [NDjango](http://ndjango.org/).
+Dialogové okno **Přidat zobrazení** v ASP.NET MVC 3 vám umožňuje vybrat modul zobrazení, se kterým chcete pracovat, a dialogové okno **Nový projekt** vám umožní určit výchozí modul zobrazení pro projekt. Můžete zvolit modul webové formuláře zobrazení (ASPX), Razor nebo open source zobrazení, jako je [Spark](http://sparkviewengine.com/), [NHaml](https://code.google.com/p/nhaml/)nebo [NDjango](http://ndjango.org/).
 
 <a id="BM_Controller_Improvements"></a>
 
-## <a name="controller-improvements"></a>Vylepšení kontroleru
+## <a name="controller-improvements"></a>Vylepšení kontroléru
 
-### <a name="global-action-filters"></a>Globální filtry akce
+### <a name="global-action-filters"></a>Filtry globálních akcí
 
-Někdy budete chtít provádět logiku před spuštěním metody akce nebo po spuštění metody akce. Z toho důvodu k dispozici ASP.NET MVC 2 filtrů akce. Filtry akce jsou vlastní atributy, které poskytují deklarativní způsob chování předběžnou akce a akce po přidání do metody akce kontroleru konkrétní. Nicméně v některých případech můžete chtít určit akce před nebo po akci chování, které platí pro všechny metody akce. MVC 3 umožňuje určit jejich přidáním do globální filtry `GlobalFilters` kolekce. Další informace o globální filtry akce najdete v následujících zdrojích:
+Někdy je vhodné provést logiku buď před spuštěním metody akce, nebo po spuštění metody akce. Pro podporu tohoto ASP.NET MVC 2 poskytla filtry akcí. Filtry akcí jsou vlastní atributy, které poskytují deklarativní způsob pro přidání chování před akcí a po akci na konkrétní metody akce kontroleru. V některých případech však můžete chtít určit chování před akcemi nebo po akci, které se vztahuje na všechny metody akcí. MVC 3 vám umožňuje zadat globální filtry jejich přidáním do kolekce `GlobalFilters`. Další informace o globálních filtrech akcí najdete v následujících zdrojích informací:
 
-- [Blog Scotta Guthrieho na MVC 3 ve verzi Preview](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx)
-- [Filtrování v architektuře ASP.NET MVC](https://msdn.microsoft.com/library/gg416513(VS.98).aspx)
+- [Blog Scottu Guthrie na MVC 3 Preview](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx)
+- [Filtrování v ASP.NET MVC](https://msdn.microsoft.com/library/gg416513(VS.98).aspx)
 
-### <a name="new-viewbag-property"></a>Nové vlastnosti "Objekt ViewBag"
+### <a name="new-viewbag-property"></a>Nová vlastnost "ViewBag"
 
-Podpora řadiče MVC 2 `ViewData` vlastnost, která umožňuje předat data do zobrazení šablony pomocí rozhraní API slovník s pozdní vazbou. MVC 3, můžete použít také poněkud jednodušší syntaxe `ViewBag` vlastnost k provedení ke stejnému účelu. Například místo zápisu `ViewData["Message"]="text"`, můžete napsat `ViewBag.Message="text"`. Není nutné definovat všechny třídy silného typu určený `ViewBag` vlastnost. Protože se dynamické vlastnosti, můžete místo toho stačí získat nebo nastavit vlastnosti a vyřeší je dynamicky za běhu. Interně `ViewBag` vlastnosti se ukládají jako dvojice název/hodnota v `ViewData` slovníku. (Poznámka: ve většině verzí předběžné verze MVC 3 `ViewBag` označovala jako vlastnost `ViewModel` vlastnosti.)
+Řadiče MVC 2 podporují vlastnost `ViewData`, která umožňuje předat data do šablony zobrazení pomocí rozhraní API slovníku s pozdní vazbou. V MVC 3 můžete k dosažení stejného účelu použít také poněkud jednodušší syntaxi s vlastností `ViewBag`. Například namísto psaní `ViewData["Message"]="text"`můžete napsat `ViewBag.Message="text"`. Nemusíte definovat žádné třídy silného typu pro použití vlastnosti `ViewBag`. Vzhledem k tomu, že se jedná o dynamickou vlastnost, můžete místo toho získat nebo nastavit vlastnosti a dynamicky je vyřešit v době běhu. Interně se `ViewBag` vlastnosti ukládají jako páry název/hodnota ve slovníku `ViewData`. (Poznámka: ve většině předběžných verzí sady MVC 3 byla vlastnost `ViewBag` pojmenována jako vlastnost `ViewModel`.)
 
 ### <a name="new-actionresult-types"></a>Nové typy "ActionResult"
 
-Následující `ActionResult` typů a odpovídající pomocné metody jsou nové nebo vylepšené v MVC 3:
+Následující typy `ActionResult` a odpovídající pomocné metody jsou v MVC 3 nové nebo rozšířené:
 
-- [HttpNotFoundResult](https://msdn.microsoft.com/library/system.web.mvc.httpnotfoundresult(v=vs.98).aspx). Vrátí stavový kód 404 HTTP klientovi.
-- [RedirectResult](https://msdn.microsoft.com/library/system.web.mvc.redirectresult(v=VS.98).aspx). Vrátí dočasné přesměrování (kód stavu HTTP 302) nebo trvalé přesměrování (kód stavu protokolu HTTP 301), v závislosti na parametr logické hodnoty. Ve spojení s touto změnou [řadič](https://msdn.microsoft.com/library/system.web.mvc.controller(v=VS.98).aspx) třídy teď má tři metody pro trvalé přesměrování: `RedirectPermanent`, `RedirectToRoutePermanent`, a `RedirectToActionPermanent`. Tyto metody vrací instanci `RedirectResult` s `Permanent` nastavenou na `true`.
-- [HttpStatusCodeResult](https://msdn.microsoft.com/library/system.web.mvc.httpstatuscoderesult(v=VS.98).aspx). Vrátí stavový kód HTTP zadané uživatelem.
+- [HttpNotFoundResult](https://msdn.microsoft.com/library/system.web.mvc.httpnotfoundresult(v=vs.98).aspx). Vrátí klientovi stavový kód HTTP 404.
+- [RedirectResult](https://msdn.microsoft.com/library/system.web.mvc.redirectresult(v=VS.98).aspx). Vrátí dočasné přesměrování (Stavový kód HTTP 302) nebo trvalé přesměrování (Stavový kód HTTP 301) v závislosti na logickém parametru. Ve spojení s touto změnou má třída [Controller](https://msdn.microsoft.com/library/system.web.mvc.controller(v=VS.98).aspx) nyní tři metody pro provádění trvalých přesměrování: `RedirectPermanent`, `RedirectToRoutePermanent`a `RedirectToActionPermanent`. Tyto metody vracejí instanci `RedirectResult` s vlastností `Permanent` nastavenou na `true`.
+- [HttpStatusCodeResult](https://msdn.microsoft.com/library/system.web.mvc.httpstatuscoderesult(v=VS.98).aspx). Vrátí stavový kód HTTP zadaný uživatelem.
 
 <a id="BM_JavaScript_and_Ajax_Improvements"></a>
 
-## <a name="javascript-and-ajax-improvements"></a>JavaScript a Ajax vylepšení
+## <a name="javascript-and-ajax-improvements"></a>Vylepšení jazyka JavaScript a AJAX
 
-Ve výchozím nastavení používají metodiky nerušivý JavaScript Ajax a ověření pomocné rutiny v MVC 3. Nerušivý JavaScript se vyhnete vkládá vložený kód JavaScript do kódu HTML. To usnadňuje kódu HTML menších a méně zaplněnou a usnadňuje vyměnit nebo přizpůsobit knihoven jazyka JavaScript. Také použití pomocné rutiny ověření v MVC 3 `jQueryValidate` modulu plug-in ve výchozím nastavení. Pokud chcete chování MVC 2, můžete zakázat pomocí nerušivého jazyka JavaScript *web.config* souboru nastavení. Další informace o vylepšení JavaScript a Ajax naleznete na následujících odkazech:
+Ve výchozím nastavení se pomocníkům AJAX a ověřování v MVC 3 používají nenápadný přístup k JavaScriptu. Nenápadní JavaScript zabraňuje vložení vloženého JavaScriptu do HTML. Díky tomu je váš kód HTML menší a méně zbytečný a zjednoduší se tak vyměňované nebo přizpůsobení knihoven JavaScriptu. Ověřovací pomocníky v MVC 3 používají ve výchozím nastavení také modul plug-in `jQueryValidate`. Pokud chcete chování MVC 2, můžete zakázat nenápadný JavaScript pomocí nastavení souboru *Web. config* . Další informace o vylepšeních JavaScriptu a AJAX najdete v následujících zdrojích informací:
 
-- [Základní informace o nerušivý JavaScript na wikipedii webu](http://en.wikipedia.org/wiki/Unobtrusive_JavaScript)
-- [Příspěvek Nerušivý JavaScript Brada Wilsona.](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-ajax.html)
-- [Příspěvek ověření Nerušivého jazyka JavaScript Brada Wilsona.](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html)
-- [Vytvoření aplikace MVC 3 s Razor a Nerušivý JavaScript](overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript.md) (kurz na webu technologie ASP.NET)
-- [Zpráva k vydání verze MVC 3](../whitepapers/mvc3-release-notes.md)
+- [Základní Úvod k nenápadu JavaScriptu na webu Wikipedii](http://en.wikipedia.org/wiki/Unobtrusive_JavaScript)
+- [Brad Wilson nenápadový příspěvek JavaScriptu](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-ajax.html)
+- [Brad Wilson zveřejní příspěvek na ověřování JavaScriptu.](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html)
+- [Vytvoření aplikace MVC 3 se syntaxí Razor a nenápadem JavaScriptu](overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript.md) (kurz na webu ASP.NET)
+- [Poznámky k verzi MVC 3](../whitepapers/mvc3-release-notes.md)
 
-### <a name="client-side-validation-enabled-by-default"></a>Ve výchozím nastavení povolené ověřování na straně klienta
+### <a name="client-side-validation-enabled-by-default"></a>Ověřování na straně klienta je ve výchozím nastavení povoleno.
 
-V dřívějších verzích MVC, je třeba explicitně volat `Html.EnableClientValidation` metoda ze zobrazení, pokud chcete povolit ověřování na straně klienta. MVC 3. to se už nevyžaduje vzhledem k tomu, že ve výchozím nastavení je povoleno ověřování na straně klienta. (Tuto funkci můžete vypnout pomocí nastavení v *web.config* souboru.)
+V dřívějších verzích MVC je nutné explicitně volat `Html.EnableClientValidation` metodu ze zobrazení, aby bylo možné povolit ověřování na straně klienta. V MVC 3 to již není nutné, protože ověřování na straně klienta je ve výchozím nastavení povoleno. (Toto můžete zakázat pomocí nastavení v souboru *Web. config* .)
 
-Aby ověřování na straně klienta pro práci budete muset stále odkaz odpovídající jQuery a knihovny jQuery ověřování ve vaší lokalitě. Můžete hostovat na vlastním serveru těchto knihoven nebo odkazovat z síť pro doručování obsahu (CDN) jako CDN od společnosti Microsoft nebo Google.
+Aby ověřování na straně klienta fungovalo, stále musíte odkazovat na příslušné knihovny pro ověřování jQuery a jQuery ve vaší lokalitě. Tyto knihovny můžete hostovat na svém vlastním serveru nebo je odkazovat ze sítě Content Delivery Network (CDN), jako je sítě CDN od Microsoftu nebo Google.
 
-### <a name="remote-validator"></a>Program pro vzdálené ověření
+### <a name="remote-validator"></a>Vzdálený validátor
 
-ASP.NET MVC 3 podporuje nový [RemoteAttribute](https://msdn.microsoft.com/library/system.web.mvc.remoteattribute(v=VS.98).aspx) třídu, která umožňuje využít výhod jQuery ověření plug v je podpora vzdáleného validátoru. To umožňuje knihovny ověřování na straně klienta automaticky volání vlastní metody, které definujete, aby bylo možné provést logiku ověřování, které lze provést pouze na serveru na straně serveru.
+ASP.NET MVC 3 podporuje novou třídu [RemoteAttribute](https://msdn.microsoft.com/library/system.web.mvc.remoteattribute(v=VS.98).aspx) , která umožňuje využít podporu vzdáleného validátoru pro ověření jQuery v modulu plug-in. To umožňuje knihovně ověřování na straně klienta automaticky volat vlastní metodu, která je definována na serveru, aby bylo možné provést ověřovací logiku, která může být provedena pouze na straně serveru.
 
-V následujícím příkladu `Remote` atribut určuje, že ověřování na straně klienta bude volat akci s názvem `UserNameAvailable` na `UsersController` třídy s cílem ověřit `UserName` pole.
+V následujícím příkladu atribut `Remote` určuje, že ověřování klienta volá akci nazvanou `UserNameAvailable` ve třídě `UsersController`, aby bylo možné ověřit pole `UserName`.
 
 [!code-csharp[Main](mvc3/samples/sample1.cs)]
 
@@ -205,54 +205,54 @@ Následující příklad ukazuje odpovídající kontroler.
 
 [!code-csharp[Main](mvc3/samples/sample2.cs)]
 
-Další informace o tom, jak používat `Remote` atributu naleznete v tématu [jak: Implementace vzdáleného ověřování v architektuře ASP.NET MVC](https://msdn.microsoft.com/library/gg508808(VS.98).aspx) v knihovně MSDN.
+Další informace o použití atributu `Remote` naleznete v tématu [How to: Implement Remote ověřování in ASP.NET MVC](https://msdn.microsoft.com/library/gg508808(VS.98).aspx) v knihovně MSDN.
 
 ### <a name="json-binding-support"></a>Podpora vazeb JSON
 
-ASP.NET MVC 3 zahrnuje integrovanou podporu vazby JSON, který povoluje metody akce přijímat data zakódovaná ve formátu JSON a navázání ho k parametrům metody akce. Tato možnost je užitečná ve scénářích zahrnující klienta šablony a datové vazby. (Klientských šablon umožňují formátování a zobrazit jednotlivé datové položky nebo množinou datových položek pomocí šablony, které jsou spouštěny na straně klienta.) MVC 3 vám umožní snadno připojit šablony klienta pomocí metody akce na serveru, které odesílat a přijímat JSON data. Další informace o podpoře vazby JSON, najdete v článku **jazyka JavaScript a AJAX vylepšení** část [blogový příspěvek Scotta Guthrieho na MVC 3 ve verzi Preview](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx).
+ASP.NET MVC 3 obsahuje integrovanou podporu vazeb JSON, která umožňuje metodám akcí přijímat data s kódováním JSON a model – svázat je s parametry Action-Method. Tato funkce je užitečná ve scénářích, které zahrnují šablony klientů a datové vazby. (Šablony klientů umožňují formátovat a zobrazovat jednu datovou položku nebo sadu datových položek pomocí šablon, které se spouštějí na klientovi.) MVC 3 vám umožňuje snadno propojit šablony klientů s metodami akce na serveru, který odesílá a přijímá data JSON. Další informace o podpoře vazeb JSON najdete v části **vylepšení pro JavaScript a AJAX** v [příspěvku na blogu pro Scott GUTHRIE ve verzi MVC 3](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx).
 
 <a id="BM_Model_Validation_Improvements"></a>
 
-## <a name="model-validation-improvements"></a>Vylepšení ověření modelu
+## <a name="model-validation-improvements"></a>Vylepšení ověřování modelu
 
-### <a name="dataannotations-metadata-attributes"></a>Atributy metadat na "DataAnnotations"
+### <a name="dataannotations-metadata-attributes"></a>Atributy metadat "DataAnnotations"
 
-Podporuje ASP.NET MVC 3 `DataAnnotations` metadat jako atributy `DisplayAttribute`.
+ASP.NET MVC 3 podporuje `DataAnnotations` atributy metadat, jako je například `DisplayAttribute`.
 
 ### <a name="validationattribute-class"></a>Třída "ValidationAttribute"
 
-`ValidationAttribute` Byla vylepšena z třídy v rozhraní .NET Framework 4 pro podporu nového `IsValid` přetížení, která poskytuje další informace o aktuální kontext ověřování, jako je například objekt, který se ověřuje. To umožňuje bohatší scénáře, ve kterém můžete ověřit aktuální hodnotu podle jiné vlastnosti modelu. Například nové `CompareAttribute` atribut umožňuje porovnat hodnoty dvě vlastnosti modelu. V následujícím příkladu `ComparePassword` vlastnost musí odpovídat `Password` pole, aby byla platná.
+`ValidationAttribute` třída byla vylepšena v .NET Framework 4 pro podporu nového přetížení `IsValid`, která poskytuje další informace o aktuálním kontextu ověřování, jako je například ověřování objektu. To umožňuje bohatší scénáře, kde můžete ověřit aktuální hodnotu na základě jiné vlastnosti modelu. Například nový atribut `CompareAttribute` umožňuje porovnat hodnoty dvou vlastností modelu. V následujícím příkladu musí vlastnost `ComparePassword` odpovídat poli `Password`, aby byla platná.
 
 [!code-csharp[Main](mvc3/samples/sample3.cs)]
 
-### <a name="validation-interfaces"></a>Ověřování rozhraní
+### <a name="validation-interfaces"></a>Ověřovací rozhraní
 
-[IValidatableObject](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.ivalidatableobject.aspx) rozhraní umožňuje provádět ověření na úrovni modelu a umožňuje pro ověřování chybové zprávy, které jsou specifické pro stav celkové modelu, nebo mezi dvě vlastnosti v rámci modelu . MVC 3 teď načte chyby `IValidatableObject` rozhraní vazby modelu a automaticky příznaky nebo vybraná vystoupení vliv na pole v rámci zobrazení pomocí integrovaných pomocných rutin HTML formulář.
+Rozhraní [IValidatableObject](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.ivalidatableobject.aspx) umožňuje provádět ověřování na úrovni modelu a umožňuje poskytovat chybové zprávy ověřování, které jsou specifické pro stav celkového modelu, nebo mezi dvěma vlastnostmi v rámci modelu. MVC 3 nyní načítá chyby z rozhraní `IValidatableObject` při vytváření vazby modelu a automaticky označí nebo zvýrazňuje ovlivněná pole v rámci zobrazení pomocí vestavěných pomocníků formulářů HTML.
 
-[IClientValidatable](https://msdn.microsoft.com/library/system.web.mvc.iclientvalidatable(v=VS.98).aspx) umožňuje rozhraní ASP.NET MVC za běhu zjistit, zda validátor podporu pro ověřování na straně klienta. Toto rozhraní byly navržené tak, aby ji bylo možné integrovat s celou řadu architektur ověření.
+Rozhraní [IClientValidatable](https://msdn.microsoft.com/library/system.web.mvc.iclientvalidatable(v=VS.98).aspx) umožňuje ASP.NET MVC zjišťovat v době běhu, zda má validátor podporu pro ověření klienta. Toto rozhraní bylo navrženo tak, aby bylo možné je integrovat s celou řadou ověřovacích architektur.
 
-Další informace o ověření rozhraní najdete v článku **vylepšení ověření modelu** část [blogový příspěvek Scotta Guthrieho na MVC 3 ve verzi Preview](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx). (Mějte však na paměti, že odkaz na "IValidateObject" v blogu by měl být "IValidatableObject".)
+Další informace o ověřovacích rozhraních naleznete v části **vylepšení ověřování modelů** v [příspěvku na blogu pro Scott GUTHRIE ve verzi MVC 3](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx). (Upozorňujeme však, že odkaz na "IValidateObject" v blogu by měl být "IValidatableObject".)
 
 <a id="BM_Dependency_Injection_Improvements"></a>
 
 ## <a name="dependency-injection-improvements"></a>Vylepšení vkládání závislostí
 
-ASP.NET MVC 3 poskytuje lepší podporu pro použití Dependency Injection (DI) a pro integraci s kontejnery injektáž závislostí nebo IOC (Inversion of Control). Byla přidána podpora pro DI v následujících oblastech:
+ASP.NET MVC 3 poskytuje lepší podporu pro použití injektáže závislosti (DI) a pro integraci s vkládáním závislostí nebo kontejnery inverze Control (IOC). Byla přidána podpora pro DI v následujících oblastech:
 
-- Řadiče (registrace a vkládá objekty Factory, vkládání řadiče).
-- Zobrazení (registrace a vkládá moduly zobrazení, vkládání závislostí do zobrazení stránky).
-- Filtry akcí (vyhledávání a vkládání filtry).
-- Vazače modelů (registrace a vkládání).
-- Zprostředkovatele ověření modelu (registrace a vkládání).
-- Zprostředkovatele metadat modelu (registrace a vkládání).
-- Zprostředkovatele hodnot (registrace a vkládání).
+- Řadiče (registrace a vkládání továrnování kontrolérů, vložení řadičů).
+- Zobrazení (registrování a vkládání modulů zobrazení, vkládání závislostí do stránek zobrazení).
+- Filtry akcí (hledání a vložení filtrů).
+- Pořadače modelů (registrace a vkládání).
+- Poskytovatelé ověřování modelu (registrace a vkládání).
+- Poskytovatelé metadat modelů (registrace a vkládání).
+- Zprostředkovatelé hodnot (registrace a vkládání).
 
-MVC 3 podporuje [Lokátor společných služeb](https://github.com/unitycontainer/commonservicelocator) knihovny a všech DI kontejner, který podporuje tuto knihovnu `IServiceLocator` rozhraní. Také podporuje nový `IDependencyResolver` rozhraní, které zjednodušuje integraci DI architektury.
+MVC 3 podporuje [společnou knihovnu lokátorů služeb](https://github.com/unitycontainer/commonservicelocator) a jakýkoliv kontejner di, který podporuje `IServiceLocator` rozhraní této knihovny. Podporuje také nové rozhraní `IDependencyResolver`, které usnadňuje integraci DI Frameworku.
 
-Další informace o DI v MVC 3 naleznete na následujících odkazech:
+Další informace o DI v MVC 3 najdete v následujících zdrojích informací:
 
-- [Brad Wilson řadě blogových příspěvků na umístění služby](http://bradwilson.typepad.com/blog/2010/07/service-location-pt1-introduction.html)
-- [Zpráva k vydání verze MVC 3](../whitepapers/mvc3-release-notes.md)
+- [Řada příspěvků na blogu brada Wilson na místě služby](http://bradwilson.typepad.com/blog/2010/07/service-location-pt1-introduction.html)
+- [Poznámky k verzi MVC 3](../whitepapers/mvc3-release-notes.md)
 
 <a id="BM_Other_New_Features"></a>
 
@@ -260,55 +260,55 @@ Další informace o DI v MVC 3 naleznete na následujících odkazech:
 
 ### <a name="nuget-integration"></a>Integrace NuGet
 
-ASP.NET MVC 3 automaticky nainstaluje a povolí NuGet při jeho instalaci. Správce balíčků NuGet je Správce balíčků bezplatná open source, který umožňuje snadno najít, nainstalovat a používat knihovny .NET a nástroje ve vašich projektech. Funguje to všechny typy projektů Visual Studio (včetně webových formulářů ASP.NET a ASP.NET MVC).
+ASP.NET MVC 3 automaticky instaluje a povoluje NuGet v rámci své instalace. NuGet je bezplatný Open Source správce balíčků usnadňující hledání, instalaci a používání knihoven a nástrojů .NET v projektech. Funguje se všemi typy projektů aplikace Visual Studio (včetně webových formulářů ASP.NET a ASP.NET MVC).
 
-NuGet umožňuje vývojářům, kteří udržují opensourcové projekty (například projekty, jako jsou Moq, NHibernate, Ninject, StructureMap, NUnit, Windsor, RhinoMocks a Elmah) balení své knihovny a jejich registrace v online galerie. Pak je snadné pro vývojáře na platformě .NET, kteří chtějí používat jednu z těchto knihoven najít balíček a nainstalovat v projektech, které pracují.
+NuGet umožňuje vývojářům, kteří udržují open source projekty (například projekty, jako je MOQ, NHibernate, Ninject, StructureMap, NUnit, Windsor, RhinoMocks a knihovny elmah), zabalit své knihovny a zaregistrovat je v online galerii. Pro vývojáře v rozhraní .NET je pak snadné použít jednu z těchto knihoven k vyhledání balíčku a jeho instalaci v projektech, na kterých pracují.
 
-S ASP.NET 3 nástroje Update zahrnují šablony projektů jazyka JavaScript knihovny předinstalované balíčky NuGet, tak, aby byly aktualizovat prostřednictvím balíčku NuGet. Entity Framework Code First také předem nainstalovaný jako balíček NuGet.
+V případě aktualizace nástrojů ASP.NET 3 obsahují šablony projektů knihovny JavaScriptu s předem nainstalovanými balíčky NuGet, takže je lze aktualizovat prostřednictvím NuGet. Entity Framework Code First jsou také předem nainstalovány jako balíček NuGet.
 
-Další informace o systému NuGet najdete v tématu [dokumentace pro NuGet](https://docs.microsoft.com/nuget/).
+Další informace o NuGet najdete v [dokumentaci k NuGet](https://docs.microsoft.com/nuget/).
 
-### <a name="partial-page-output-caching"></a>Stránky ukládání výstupu do mezipaměti
+### <a name="partial-page-output-caching"></a>Ukládání výstupu do mezipaměti částečné stránky
 
-ASP.NET MVC se podporuje ukládání výstupu do mezipaměti odpovědi na celou stránku od verze 1. MVC 3 také podporuje výstup stránky ukládání do mezipaměti, což vám umožní snadno mezipaměti oblastí nebo fragmenty odpovědi. Další informace o ukládání do mezipaměti najdete v tématu **částečná stránka ukládání výstupu do mezipaměti** část [blogový příspěvek Scotta Guthrieho na MVC 3 verze Release candidate](https://weblogs.asp.net/scottgu/archive/2010/11/09/announcing-the-asp-net-mvc-3-release-candidate.aspx) a **podřízené akce ukládání výstupu do mezipaměti** část [zpráva k vydání verze MVC 3](../whitepapers/mvc3-release-notes.md).
+ASP.NET MVC podporuje ukládání výstupu do mezipaměti pro odpovědi na celé stránky od verze 1. MVC 3 také podporuje ukládání výstupů na částečných stránkách, což umožňuje snadno ukládat oblasti nebo fragmenty odpovědi. Další informace o ukládání do mezipaměti najdete v části **ukládání do mezipaměti částečného výstupu stránky** [v příspěvku na blogu GUTHRIE na webu MVC 3 Release Candidate](https://weblogs.asp.net/scottgu/archive/2010/11/09/announcing-the-asp-net-mvc-3-release-candidate.aspx) a v části **ukládání výstupu do mezipaměti podřízené akce** v [poznámkách k verzi MVC 3](../whitepapers/mvc3-release-notes.md).
 
-### <a name="granular-control-over-request-validation"></a>Detailní kontrola žádosti o ověření
+### <a name="granular-control-over-request-validation"></a>Detailní kontrola nad žádostí o ověření
 
-ASP.NET MVC je ověření integrované žádosti, která automaticky chrání před útoky prostřednictvím injektáže XSS a HTML. Ale někdy chcete explicitně zakázat žádost o ověření, třeba když chcete umožnit uživatelům odeslat HTML obsahu (například článků blogu nebo obsah CMS). Teď můžete přidávat [AllowHtml](https://msdn.microsoft.com/library/system.web.mvc.allowhtmlattribute(v=VS.98).aspx) atribut k modelům nebo Zobrazit modely zakážete ověření požadavku na jednotlivých vlastností během vazby modelu. Další informace o ověření požadavku najdete v článku na následujících odkazech:
+ASP.NET MVC obsahuje integrované ověřování žádostí, které automaticky pomáhá chránit před útoky XSS a HTML injektáže. Někdy však budete chtít explicitně zakázat ověření žádosti, například pokud chcete uživatelům umožnit publikování obsahu HTML (například v položkách blogu nebo obsahu CMS). Nyní můžete přidat atribut [AllowHtml](https://msdn.microsoft.com/library/system.web.mvc.allowhtmlattribute(v=VS.98).aspx) do modelů nebo zobrazit modely a zakázat ověřování žádostí na základě jednotlivých vlastností při vytváření vazby modelu. Další informace o ověření žádosti najdete v následujících zdrojích informací:
 
-- **Nerušivý JavaScript a ověření** tématu [blogový příspěvek Scotta Guthrieho na MVC 3 verze Release candidate](https://weblogs.asp.net/scottgu/archive/2010/11/09/announcing-the-asp-net-mvc-3-release-candidate.aspx).
-- [Zpráva k vydání verze MVC 3](../whitepapers/mvc3-release-notes.md)
+- Část " **nenápadný JavaScript a ověření** " v [příspěvku na blogu GUTHRIE na portálu MVC 3 Release Candidate](https://weblogs.asp.net/scottgu/archive/2010/11/09/announcing-the-asp-net-mvc-3-release-candidate.aspx).
+- [Poznámky k verzi MVC 3](../whitepapers/mvc3-release-notes.md)
 
-### <a name="extensible-new-project-dialog-box"></a>Rozšiřitelné "nový projekt" dialogové okno
+### <a name="extensible-new-project-dialog-box"></a>Dialogové okno rozšiřitelný nový projekt
 
-V architektuře ASP.NET MVC 3 můžete přidat šablony projektů, moduly zobrazení a projekt rozhraní pro testování částí **nový projekt** dialogové okno.
+V ASP.NET MVC 3 můžete přidat šablony projektů, Zobrazit moduly a projekty pro testování částí do dialogového okna **Nový projekt** .
 
-### <a name="template-scaffolding-improvements"></a>Vylepšení šablony generování uživatelského rozhraní
+### <a name="template-scaffolding-improvements"></a>Vylepšení generování šablon
 
-Šablony pro generování uživatelského rozhraní ASP.NET MVC 3 dělat lepší práci identifikující vlastnosti primárního klíče na modely a zpracování je odpovídajícím způsobem než v dřívějších verzích MVC. (Například šablony generování uživatelského rozhraní nyní Ujistěte se, že se primární klíč automaticky jako pole upravitelné formuláře.)
+ASP.NET MVC 3 – šablony pro generování uživatelského rozhraní poskytují lepší úlohu pro identifikaci vlastností primárního klíče v modelech a jejich zpracování odpovídajícím způsobem, než v dřívějších verzích MVC. (Například šablony generování uživatelského rozhraní se nyní ujistěte, že primární klíč není vytvořen jako pole formuláře s možností úprav.)
 
-Ve výchozím nastavení, vytvořit a upravit scaffold teď používají `Html.EditorFor` pomocné místo `Html.TextBoxFor` pomocné rutiny. To zlepšuje podporu pro metadata o modelu ve formě dat anotace atributy, kdy **přidat zobrazení** dialogové okno generuje zobrazení.
+Ve výchozím nastavení se pomocí rutiny pro vytváření a úpravy teď místo pomocníka `Html.TextBoxFor` používá pomocná rutina `Html.EditorFor`. Tato funkce vylepšuje podporu metadat v modelu ve formě atributů anotace dat, když dialogové okno **Přidat zobrazení** vygeneruje zobrazení.
 
-### <a name="new-overloads-for-htmllabelfor-and-htmllabelformodel"></a>Nová přetížení pro "Html.LabelFor" a "Html.LabelForModel"
+### <a name="new-overloads-for-htmllabelfor-and-htmllabelformodel"></a>Nová přetížení pro "HTML. LabelFor" a "HTML. LabelForModel"
 
-Byly přidány nové přetížení metody `LabelFor` a `LabelForModel` pomocné metody. Nová přetížení umožňují určit nebo přepsat text popisku.
+Byla přidána nová přetížení metod pro `LabelFor` a pomocné metody `LabelForModel`. Nová přetížení umožňují zadat nebo přepsat text popisku.
 
-### <a name="sessionless-controller-support"></a>Podpora nerelační Kontroleru
+### <a name="sessionless-controller-support"></a>Podpora řadiče s nerelačními relacemi
 
-V architektuře ASP.NET MVC 3 můžete určit, zda chcete, aby třída kontroleru používání stavu relace a pokud ano, zda relace stav by měl být čtení a zápis nebo jen pro čtení. Další informace o podpoře nerelační kontroleru, naleznete v tématu [zpráva k vydání verze MVC 3](../whitepapers/mvc3-release-notes.md).
+V ASP.NET MVC 3 můžete určit, zda chcete, aby třída Controller používala stav relace, a pokud ano, zda má být stav relace určen jen pro čtení/zápis nebo jen pro čtení. Další informace o podpoře řadičů bez relací najdete v [poznámkách k verzi MVC 3](../whitepapers/mvc3-release-notes.md).
 
 ### <a name="new-additionalmetadataattribute-class"></a>Nová třída "AdditionalMetadataAttribute"
 
-Můžete použít [AdditionalMetadata](https://msdn.microsoft.com/library/system.web.mvc.additionalmetadataattribute(v=VS.98).aspx) atribut naplnit `ModelMetadata.AdditionalValues` slovník pro vlastnosti modelu. Například pokud model zobrazení obsahuje vlastnost, která má být zobrazena pouze pro správce, musíte označit tuto vlastnost jak je znázorněno v následujícím příkladu:
+Atribut [AdditionalMetadata](https://msdn.microsoft.com/library/system.web.mvc.additionalmetadataattribute(v=VS.98).aspx) můžete použít k naplnění `ModelMetadata.AdditionalValues` slovníku pro vlastnost modelu. Například pokud má model zobrazení vlastnost, která by měla být zobrazena pouze pro správce, můžete tuto vlastnost opatřit poznámkami, jak je znázorněno v následujícím příkladu:
 
 [!code-csharp[Main](mvc3/samples/sample4.cs)]
 
-Tato metadata je k dispozici žádné šablony zobrazení nebo editoru při vykreslení zobrazení modelu produktu. Je jenom na vás interpretovat informace metadat.
+Tato metadata jsou zpřístupněna všem zobrazením nebo šablonám editoru při vykreslování modelu zobrazení produktu. Informace o metadatech můžete interpretovat.
 
 ### <a name="accountcontroller-improvements"></a>Vylepšení AccountController
 
-AccountController v šabloně projektu Internet je výrazně Vylepšená.
+AccountController v šabloně internetového projektu byl výrazně vylepšen.
 
-### <a name="new-intranet-project-template"></a>Nová šablona projektu intranetu
+### <a name="new-intranet-project-template"></a>Nová šablona intranetového projektu
 
-Nový intranetový projekt šablona je zahrnuta který umožňuje ověřování Windows a odebere AccountController.
+K dispozici je nová šablona intranetového projektu, která umožňuje ověřování systému Windows a odebírá AccountController.

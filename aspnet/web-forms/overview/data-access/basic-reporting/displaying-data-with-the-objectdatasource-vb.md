@@ -1,230 +1,230 @@
 ---
 uid: web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-vb
-title: Zobrazení dat ovládacím prvkem ObjectDataSource (VB) | Dokumentace Microsoftu
+title: Zobrazení dat v prvku ObjectDataSource (VB) | Microsoft Docs
 author: rick-anderson
-description: Tento kurz se zabývá ovládacího prvku ObjectDataSource pomocí tohoto ovládacího prvku lze svázat data načtená z knihoven BLL vytvořili v předchozím kurzu bez havi...
+description: Tento kurz se zabývá ovládacím prvkem ObjectDataSource pomocí tohoto ovládacího prvku můžete navazovat data získaná z knihoven BLL vytvořených v předchozím kurzu bez Havi...
 ms.author: riande
 ms.date: 03/31/2010
 ms.assetid: d62c3a63-0940-4019-874e-4a4047df0c1c
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0f3d5b207144c5fb0e3f0b959bff9a28b69cc35e
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 754188352cbfb08e610027f5b7890a32bd88ae26
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65109590"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74608979"
 ---
 # <a name="displaying-data-with-the-objectdatasource-vb"></a>Zobrazení dat ovládacím prvkem ObjectDataSource (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/5/d/7/5d7571fc-d0b7-4798-ad4a-c976c02363ce/ASPNET_Data_Tutorial_4_VB.exe) nebo [stahovat PDF](displaying-data-with-the-objectdatasource-vb/_static/datatutorial04vb1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/5/d/7/5d7571fc-d0b7-4798-ad4a-c976c02363ce/ASPNET_Data_Tutorial_4_VB.exe) nebo [Stáhnout PDF](displaying-data-with-the-objectdatasource-vb/_static/datatutorial04vb1.pdf)
 
-> Tento kurz se zabývá ovládacího prvku ObjectDataSource pomocí tohoto ovládacího prvku lze svázat data načtená z knihoven BLL vytvořili v předchozím kurzu bez nutnosti psaní jediného řádku kódu!
+> Tento kurz se zabývá ovládacím prvkem ObjectDataSource pomocí tohoto ovládacího prvku můžete navazovat data získaná z knihoven BLL vytvořených v předchozím kurzu, aniž byste museli psát řádek kódu.
 
 ## <a name="introduction"></a>Úvod
 
-S naší aplikace architektury a webu rozložení stránky dokončeno jsme připraveni začít prozkoumávat tom, jak provádět řadu běžných úloh a generování sestav – související s daty. V předchozích kurzech jste zaznamenali jak prostřednictvím kódu programu vytvořit vazbu dat z knihoven BLL a DAL k datům webový ovládací prvek na stránce ASP.NET. Tato syntaxe přiřazování dat webový ovládací prvek `DataSource` vlastnost k datům zobrazení a následným voláním ovládacího prvku `DataBind()` metoda byla používaným v aplikacích ASP.NET 1.x a můžete i nadále používat ve svých aplikacích 2.0. ASP.NET 2.0 nové ovládací prvky zdroje dat ale nabízí deklarativní způsob, jak pracovat s daty. Pomocí těchto ovládacích prvků lze svázat data načtená z knihoven BLL vytvořili v předchozím kurzu bez nutnosti psaní jediného řádku kódu.
+Po dokončení naší architektury aplikace a rozložení stránky webu jsme připraveni začít zkoumat, jak provádět různé běžné úlohy související s daty a vytvářením sestav. V předchozích kurzech jsme viděli, jak programově navazovat data z DAL a knihoven BLL na datovou webovou stránku na ASP.NET stránce. Tato syntaxe přiřazuje vlastnost `DataSource` webového ovládacího prvku data k zobrazení dat, která se zobrazí, a poté volání metody `DataBind()` ovládacího prvku byla vzorem použitým v aplikacích v ASP.NET 1. x a lze nadále používat v aplikacích 2,0. Nové ovládací prvky zdroje dat ASP.NET 2.0 však nabízejí deklarativní způsob, jak pracovat s daty. Pomocí těchto ovládacích prvků můžete navazovat data získaná z knihoven BLL vytvořených v předchozím kurzu, aniž byste museli psát řádek kódu.
 
-ASP.NET 2.0 se dodává s pěti ovládací prvky předdefinované datové zdroje [SqlDataSource](https://msdn.microsoft.com/library/dz12d98w%28vs.80%29.aspx), [prvku AccessDataSource](https://msdn.microsoft.com/library/8e5545e1.aspx), [ObjectDataSource](https://msdn.microsoft.com/library/9a4kyhcx.aspx), [XmlDataSource](https://msdn.microsoft.com/library/e8d8587a%28en-US,VS.80%29.aspx), a [SiteMapDataSource](https://msdn.microsoft.com/library/5ex9t96x%28en-US,VS.80%29.aspx) i když můžete vytvořit vlastní [ovládací prvky zdroje dat vlastní](https://msdn.microsoft.com/library/default.asp?url=/library/dnvs05/html/DataSourceCon1.asp), v případě potřeby. Protože jsme vyvinuli architekturu pro naše aplikace, budeme používat prvku ObjectDataSource proti našich knihoven BLL tříd.
+ASP.NET 2,0 dodává s pěti vestavěnými ovládacími prvky zdroje dat [SqlDataSource](https://msdn.microsoft.com/library/dz12d98w%28vs.80%29.aspx), [AccessDataSource](https://msdn.microsoft.com/library/8e5545e1.aspx), [ObjectDataSource](https://msdn.microsoft.com/library/9a4kyhcx.aspx), [XmlDataSource](https://msdn.microsoft.com/library/e8d8587a%28en-US,VS.80%29.aspx)a [SiteMapDataSource](https://msdn.microsoft.com/library/5ex9t96x%28en-US,VS.80%29.aspx) , i když v případě potřeby můžete vytvořit vlastní [ovládací prvky zdroje dat](https://msdn.microsoft.com/library/default.asp?url=/library/dnvs05/html/DataSourceCon1.asp). Vzhledem k tomu, že jsme vyvinuli architekturu pro naši aplikaci kurzu, budeme používat prvek ObjectDataSource pro naše třídy knihoven BLL.
 
-![Technologie ASP.NET 2.0 obsahuje pět ovládací prvky předdefinované datové zdroje](displaying-data-with-the-objectdatasource-vb/_static/image1.png)
+![ASP.NET 2,0 zahrnuje pět vestavěných ovládacích prvků zdroje dat.](displaying-data-with-the-objectdatasource-vb/_static/image1.png)
 
-**Obrázek 1**: Technologie ASP.NET 2.0 obsahuje pět ovládací prvky předdefinované datové zdroje
+**Obrázek 1**: ASP.NET 2,0 zahrnuje pět vestavěných ovládacích prvků zdroje dat.
 
-Prvku ObjectDataSource slouží jako proxy server pro práci s některý jiný objekt. Ke konfiguraci ObjectDataSource jsme tuto verzi uveďte základní objekt a jak se jeho metody mapují na ObjectDataSource `Select`, `Insert`, `Update`, a `Delete` metody. Jakmile byl zadán tento základní objekt a jeho metody namapované na ObjectDataSource, jsme vazbu pak lze vytvořit prvku ObjectDataSource dat webový ovládací prvek. Technologie ASP.NET se dodává s mnoha dat webové ovládací prvky, včetně ovládacího prvku GridView, DetailsView, RadioButtonList a DropDownList, mimo jiné. Během životního cyklu stránky dat webový ovládací prvek může vyžadovat pro přístup k datům je vázán na, který bude provádět vyvoláním jeho ObjectDataSource `Select` metoda; Pokud data webový ovládací prvek podporuje, vkládání, aktualizaci, nebo odstraníte, volání se dají vytvořit na jeho ObjectDataSource `Insert`, `Update`, nebo `Delete` metody. Tato volání směrují ObjectDataSource na příslušné základní objekt metody pak, jak ukazuje následující diagram.
+Prvek ObjectDataSource slouží jako proxy server pro práci s nějakým jiným objektem. Pro konfiguraci prvku ObjectDataSource určíme tento základní objekt a způsob, jakým jsou metody mapovány na `Select`, `Insert`, `Update`a `Delete` metody ObjectDataSource prvku ObjectDataSource. Po zadání tohoto podkladového objektu a jeho metod, které jsou namapované na prvek ObjectDataSource, můžeme následně vytvořit vazby prvku ObjectDataSource k datovému ovládacímu prvku Web. ASP.NET se dodává s mnoha webovými ovládacími prvky dat, včetně prvku GridView, DetailsView, RadioButtonList a DropDownList, mimo jiné. Během životního cyklu stránky může webový ovládací prvek data potřebovat přístup k datům, ke kterým je svázán, který bude plnit vyvoláním metody `Select` prvku ObjectDataSource. Pokud webový ovládací prvek data podporuje vložení, aktualizaci nebo odstranění, mohou být volání v rámci `Insert`, `Update`nebo `Delete` metod prvku ObjectDataSource. Tato volání jsou poté směrována v prvku ObjectDataSource do příslušných metod podkladového objektu, jak ukazuje následující diagram.
 
-[![Prvek ObjectDataSource slouží jako proxy server](displaying-data-with-the-objectdatasource-vb/_static/image3.png)](displaying-data-with-the-objectdatasource-vb/_static/image2.png)
+[![prvek ObjectDataSource slouží jako proxy](displaying-data-with-the-objectdatasource-vb/_static/image3.png)](displaying-data-with-the-objectdatasource-vb/_static/image2.png)
 
-**Obrázek 2**: Prvek ObjectDataSource slouží jako proxy server ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image4.png))
+**Obrázek 2**: prvek ObjectDataSource slouží jako proxy ([kliknutím zobrazíte obrázek v plné velikosti).](displaying-data-with-the-objectdatasource-vb/_static/image4.png)
 
-Když prvku ObjectDataSource můžete použít k vyvolání metody pro vkládání, aktualizaci nebo odstraňování dat, právě zaměřme se na vrácení dat; Další kurzy prozkoumá pomocí prvku ObjectDataSource a data webové ovládací prvky, které upravují data.
+I když prvek ObjectDataSource lze použít k vyvolání metod pro vložení, aktualizaci nebo odstranění dat, můžeme se zaměřit jenom na vracení dat; v budoucích kurzech se naučíte používat ovládací prvky ObjectDataSource a data web, které upravují data.
 
 ## <a name="step-1-adding-and-configuring-the-objectdatasource-control"></a>Krok 1: Přidání a konfigurace ovládacího prvku ObjectDataSource
 
-Začněte otevřením `SimpleDisplay.aspx` stránku `BasicReporting` složku, přepněte do zobrazení návrhu a pak přetáhněte ovládací prvek ObjectDataSource z panelu nástrojů na plochu návrhu na stránce. Prvku ObjectDataSource se zobrazuje jako šedé pole na návrhové ploše, protože nevytváří žádné značky ho jednoduše přistupuje k datům pomocí volání metody ze zadaného objektu. Data vrácená prvku ObjectDataSource lze zobrazit data webový ovládací prvek, jako je například ovládacího prvku GridView, DetailsView, FormView a tak dále.
+Začněte tím, že otevřete stránku `SimpleDisplay.aspx` ve složce `BasicReporting`, přepnete do zobrazení Návrh a pak přetáhnete ovládací prvek ObjectDataSource ze sady nástrojů na návrhovou plochu stránky. Prvek ObjectDataSource se zobrazí jako šedé pole na návrhové ploše, protože nevytváří žádné značky; jednoduše přistupuje k datům vyvoláním metody ze zadaného objektu. Data vrácená prvkem ObjectDataSource lze zobrazit pomocí webového ovládacího prvku dat, například GridView, DetailsView, FormView a tak dále.
 
 > [!NOTE]
-> Alternativně můžete nejdřív přidat data webový ovládací prvek na stránce a pak zvolte z inteligentních značek, &lt;nový zdroj dat&gt; možnost z rozevíracího seznamu.
+> Alternativně můžete přidat webové ovládací prvek data na stránku a poté z jeho inteligentní značky zvolit&gt; možnost &lt;nový zdroj dat v rozevíracím seznamu.
 
-Určit základní objekt a jak se tento objekt metody mapují na ObjectDataSource ObjectDataSource, klikněte na odkaz Konfigurovat zdroj dat z ObjectDataSource inteligentních značek.
+Chcete-li určit podkladový objekt prvku ObjectDataSource a způsob mapování metod tohoto objektu na prvek ObjectDataSource, klikněte na odkaz konfigurace zdroje dat z inteligentní značky ObjectDataSource.
 
-[![Klikněte konfigurovat propojení na zdroj dat z inteligentních značek](displaying-data-with-the-objectdatasource-vb/_static/image6.png)](displaying-data-with-the-objectdatasource-vb/_static/image5.png)
+[![klikněte na odkaz konfigurace zdroje dat z inteligentní značky.](displaying-data-with-the-objectdatasource-vb/_static/image6.png)](displaying-data-with-the-objectdatasource-vb/_static/image5.png)
 
-**Obrázek 3**: Klikněte konfigurovat propojení na zdroj dat z inteligentních značek ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image7.png))
+**Obrázek 3**: klikněte na odkaz konfigurace zdroje dat z inteligentní značky ([kliknutím zobrazíte obrázek v plné velikosti).](displaying-data-with-the-objectdatasource-vb/_static/image7.png)
 
-Tím se zobrazí v Průvodci zdroje dat konfigurace. Nejprve jsme musíte zadat objekt, který je prvku ObjectDataSource pro práci s. Pokud je zaškrtnuto políčko "Zobrazit pouze datové součásti", rozevíracího seznamu na této obrazovce vypíše pouze ty objekty, které byly vybaveny `DataObject` atribut. Náš seznam aktuálně obsahuje objekty TableAdapter v datové sadě zadán a BLL třídy, které jsme vytvořili v předchozím kurzu. Pokud jste zapomněli přidat `DataObject` atributů na třídy vrstvy obchodní logiky ji neuvidíte v tomto seznamu. V takovém případě zrušit zaškrtnutí políčka "Zobrazit pouze datové součásti" k zobrazení všech objektů, které by měl obsahovat BLL třídy (společně s další třídy v zadané datové sady DataTables, DataRows a tak dále).
+Tím se zobrazí Průvodce konfigurací zdroje dat. Nejdříve je nutné zadat objekt, se kterým má prvek ObjectDataSource pracovat. Pokud je zaškrtnuto políčko Zobrazit pouze datové součásti, rozevírací seznam na této obrazovce obsahuje pouze objekty, které byly upraveny pomocí atributu `DataObject`. V současné době seznam obsahuje objekty TableAdapter do typové datové sady a třídy knihoven BLL, které jsme vytvořili v předchozím kurzu. Pokud jste zapomněli přidat atribut `DataObject` do tříd vrstvy obchodní logiky, neuvidíte je v tomto seznamu. V takovém případě zrušte zaškrtnutí políčka Zobrazit pouze datové součásti, aby se zobrazily všechny objekty, které by měly zahrnovat třídy knihoven BLL (spolu s jinými třídami v typové datové sadě, které tvoří DataTables, DataRows atd.).
 
-V této první obrazovky zvolte `ProductsBLL` třídy z rozevíracího seznamu a klikněte na tlačítko Další.
+Z první obrazovky vyberte v rozevíracím seznamu třídu `ProductsBLL` a klikněte na další.
 
-[![Zadejte objekt, který chcete použít s ovládacím prvkem ObjectDataSource](displaying-data-with-the-objectdatasource-vb/_static/image9.png)](displaying-data-with-the-objectdatasource-vb/_static/image8.png)
+[![určení objektu, který se má použít s ovládacím prvkem ObjectDataSource](displaying-data-with-the-objectdatasource-vb/_static/image9.png)](displaying-data-with-the-objectdatasource-vb/_static/image8.png)
 
-**Obrázek 4**: Zadejte objekt, který chcete použít s ovládacím prvkem ObjectDataSource ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image10.png))
+**Obrázek 4**: určení objektu, který se má použít s ovládacím prvkem ObjectDataSource ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image10.png))
 
-V průvodci na další obrazovce vás vyzve k výběru jakou metodu ObjectDataSource by měla vyvolat. Rozevírací seznam uvádí tyto metody, které nevracejí data v objektu vybrali na předchozí obrazovku. Tady vidíte `GetProductByProductID`, `GetProducts`, `GetProductsByCategoryID`, a `GetProductsBySupplierID`. Vyberte `GetProducts` metodu z rozevíracího seznamu a klikněte na tlačítko Dokončit (Pokud jste přidali `DataObjectMethodAttribute` k `ProductBLL`pro metody, jak je znázorněno v předchozím kurzu, tato možnost bude vybrána ve výchozím nastavení).
+Na další obrazovce průvodce se zobrazí výzva, abyste vybrali metodu, kterou má prvek ObjectDataSource vyvolat. Rozevírací seznam obsahuje metody, které vracejí data v objektu vybraném z předchozí obrazovky. Tady vidíte `GetProductByProductID`, `GetProducts`, `GetProductsByCategoryID`a `GetProductsBySupplierID`. V rozevíracím seznamu vyberte metodu `GetProducts` a klikněte na Dokončit (Pokud jste `DataObjectMethodAttribute` přidali do metod `ProductBLL`, jak je znázorněno v předchozím kurzu, tato možnost bude ve výchozím nastavení vybraná.
 
-[![Zvolit metodu pro vrácená Data z vyberte kartu](displaying-data-with-the-objectdatasource-vb/_static/image12.png)](displaying-data-with-the-objectdatasource-vb/_static/image11.png)
+[![zvolte metodu vrácení dat z karty vybrat.](displaying-data-with-the-objectdatasource-vb/_static/image12.png)](displaying-data-with-the-objectdatasource-vb/_static/image11.png)
 
-**Obrázek 5**: Zvolit metodu pro vložení dat z karty vyberte ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image13.png))
+**Obrázek 5**: zvolte metodu vrácení dat z karty vybrat ([kliknutím zobrazíte obrázek v plné velikosti).](displaying-data-with-the-objectdatasource-vb/_static/image13.png)
 
 ## <a name="configure-the-objectdatasource-manually"></a>Ruční konfigurace prvku ObjectDataSource
 
-Průvodce konfigurací zdroje dat prvku ObjectDataSource nabízí rychlý způsob, jak zadat objekt, který používá a přidružení, jaké metody objektu jsou vyvolány. Můžete ale nakonfigurovat ObjectDataSource prostřednictvím její vlastnosti pomocí okna vlastnosti nebo přímo v deklarativním označení. Stačí nastavit `TypeName` vlastnost typ základního objektu, kterou chcete použít a `SelectMethod` na metodu, která má být vyvolán při načítání dat.
+Průvodce konfigurací zdroje dat prvku ObjectDataSource nabízí rychlý způsob určení objektu, který používá, a k přidružení toho, jaké metody objektu jsou vyvolány. Prvek ObjectDataSource lze však nakonfigurovat prostřednictvím jeho vlastností, a to buď pomocí okno Vlastnosti, nebo přímo v deklarativní značce. Jednoduše nastavte vlastnost `TypeName` na typ podkladového objektu, který má být použit, a `SelectMethod` na metodu, která má být vyvolána při načítání dat.
 
 [!code-aspx[Main](displaying-data-with-the-objectdatasource-vb/samples/sample1.aspx)]
 
-I v případě, že chcete průvodce Konfigurace zdroje dat, které mohou nastat situace, kdy je potřeba ručně nakonfigurovat prvek ObjectDataSource, jako průvodce jsou uvedeny pouze třídy vytvořené pro vývojáře. Pokud chcete vytvořit vazbu ObjectDataSource na třídu v rozhraní .NET Framework, jako [třída členství](https://msdn.microsoft.com/library/system.web.security.membership.aspx), přístup k informacím o účtu uživatele, nebo [třída Directory](https://msdn.microsoft.com/library/system.io.directory.aspx) pro práci s informace o systému souborů bude nutné ručně nastavit vlastnosti ObjectDataSource.
+I v případě, že dáváte přednost průvodci konfigurací zdroje dat, může nastat situace, kdy potřebujete manuálně nakonfigurovat prvek ObjectDataSource, protože Průvodce uvádí pouze třídy vytvořené vývojářem. Pokud chcete prvek ObjectDataSource navážete na třídu v .NET Framework, jako je například [Třída členství](https://msdn.microsoft.com/library/system.web.security.membership.aspx), získat přístup k informacím o uživatelském účtu nebo [třídu adresáře](https://msdn.microsoft.com/library/system.io.directory.aspx) pro práci s informacemi o systému souborů, budete muset ručně nastavit vlastnosti prvku ObjectDataSource.
 
-## <a name="step-2-adding-a-data-web-control-and-binding-it-to-the-objectdatasource"></a>Krok 2: Přidání ovládacího prvku webových dat a vytvoříte jejich vazbu na ObjectDataSource
+## <a name="step-2-adding-a-data-web-control-and-binding-it-to-the-objectdatasource"></a>Krok 2: Přidání webového ovládacího prvku data a jeho svázání s prvkem ObjectDataSource
 
-Když prvku ObjectDataSource byl přidán na stránku a nakonfigurované, jsme připraveni přidat data ovládací prvky webové stránky k zobrazení dat vrácených ObjectDataSource `Select` metody. Žádná data webový ovládací prvek může být vázaný na ObjectDataSource; Podívejme se na zobrazení prvku ObjectDataSource dat v prvku GridView, DetailsView a FormView.
+Po přidání prvku ObjectDataSource na stránku a nakonfigurování je připraveno Přidat datovou webovou ovládací prvky na stránku, aby se zobrazila data vrácená metodou `Select` prvku ObjectDataSource. Jakýkoli ovládací prvek data web může být svázán s prvkem ObjectDataSource; Podívejme se, jak zobrazit data ovládacího prvku ObjectDataSource v prvku GridView, DetailsView a FormView.
 
-## <a name="binding-a-gridview-to-the-objectdatasource"></a>Vazba na ObjectDataSource GridView
+## <a name="binding-a-gridview-to-the-objectdatasource"></a>Vazba prvku GridView na prvek ObjectDataSource
 
-Přidání ovládacího prvku GridView ze sady nástrojů `SimpleDisplay.aspx`na návrhové ploše. V prvku GridView inteligentních značek Zvolte ovládací prvek ObjectDataSource, kterou jsme přidali v kroku 1. Tím se automaticky vytvoří vlastnost BoundField v prvku GridView. pro každou vlastnost data vrácená ObjectDataSource `Select` – metoda (konkrétně vlastnosti určené DataTable produkty).
+Přidejte ovládací prvek GridView z panelu nástrojů na návrhovou plochu `SimpleDisplay.aspx`. Z inteligentní značky GridView vyberte ovládací prvek ObjectDataSource, který jsme přidali v kroku 1. Tím se automaticky vytvoří vlastnost BoundField v prvku GridView pro každou vlastnost vrácenou daty z metody `Select` prvku ObjectDataSource (konkrétně do vlastností definovaných v objektu DataTable Products).
 
-[![GridView byl přidán na stránku a vázaný k ObjectDataSource](displaying-data-with-the-objectdatasource-vb/_static/image15.png)](displaying-data-with-the-objectdatasource-vb/_static/image14.png)
+[![ovládací prvek GridView byl přidán na stránku a svázán s prvkem ObjectDataSource](displaying-data-with-the-objectdatasource-vb/_static/image15.png)](displaying-data-with-the-objectdatasource-vb/_static/image14.png)
 
-**Obrázek 6**: Prvku GridView byl přidán do stránky a mez ObjectDataSource ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image16.png))
+**Obrázek 6**: ovládací prvek GridView byl přidán na stránku a svázán s prvkem ObjectDataSource ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image16.png)).
 
-Pak můžete přizpůsobit, uspořádání nebo odebrání prvku GridView BoundFields klepnutím na možnost Upravit sloupce z inteligentních značek.
+Pak můžete přizpůsobit, změnit uspořádání nebo odebrat BoundFields prvku GridView kliknutím na možnost Upravit sloupce z inteligentní značky.
 
-[![Správa prvku GridView BoundFields přes dialogové okno Upravit sloupce](displaying-data-with-the-objectdatasource-vb/_static/image18.png)](displaying-data-with-the-objectdatasource-vb/_static/image17.png)
+[![spravovat BoundFields ovládacího prvku GridView přes dialogové okno Upravit sloupce](displaying-data-with-the-objectdatasource-vb/_static/image18.png)](displaying-data-with-the-objectdatasource-vb/_static/image17.png)
 
-**Obrázek 7**: Dialogové okno Spravovat prvku GridView BoundFields prostřednictvím upravit sloupce ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image19.png))
+**Obrázek 7**: Správa BoundFields prvku GridView pomocí dialogového okna Upravit sloupce ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image19.png))
 
-Využít k úpravě BoundFields prvku GridView, odebrání `ProductID`, `SupplierID`, `CategoryID`, `QuantityPerUnit`, `UnitsInStock`, `UnitsOnOrder`, a `ReorderLevel` BoundFields. Jednoduše vyberte ze seznamu v levém dolním Vlastnost BoundField a klikněte na tlačítko Odstranit (červené X) je odebrat. V dalším kroku změnit uspořádání BoundFields tak, aby `CategoryName` a `SupplierName` BoundFields předcházet `UnitPrice` Vlastnost BoundField výběrem těchto BoundFields a kliknutím na šipku nahoru. Nastavte `HeaderText` vlastnosti zbývající BoundFields k `Products`, `Category`, `Supplier`, a `Price`v uvedeném pořadí. Dále `Price` Vlastnost BoundField formátované jako měnu nastavení vlastnost BoundField `HtmlEncode` vlastnost na hodnotu False a jeho `DataFormatString` vlastnost `{0:c}`. Nakonec zarovnat vodorovně `Price` napravo a `Discontinued` zaškrtávacího políčka v centru prostřednictvím `ItemStyle` / `HorizontalAlign` vlastnost.
+Chvíli počkejte, než se upraví BoundFields prvku GridView, odebrání `ProductID`, `SupplierID`, `CategoryID`, `QuantityPerUnit`, `UnitsInStock`, `UnitsOnOrder`a `ReorderLevel` BoundFields. Jednoduše vyberte vlastnost BoundField ze seznamu vlevo dole a kliknutím na tlačítko Odstranit (červené X) je odeberte. Dále znovu uspořádejte BoundFields, aby `CategoryName` a `SupplierName` BoundFields před `UnitPrice` vlastnost BoundField, a to tak, že je vyberete a kliknete na šipku nahoru. Nastavte vlastnosti `HeaderText` zbývajícího BoundFields na `Products`, `Category`, `Supplier`a `Price`v uvedeném pořadí. V dalším kroku nastavte `Price` vlastnost BoundField naformátované jako měnu nastavením vlastnosti `HtmlEncode` vlastnosti vlastnost BoundField na false a vlastnost `DataFormatString` na `{0:c}`. Nakonec vodorovně zarovnejte `Price` napravo a `Discontinued` zaškrtávací políčko v centru prostřednictvím vlastnosti `ItemStyle`/`HorizontalAlign`.
 
 [!code-aspx[Main](displaying-data-with-the-objectdatasource-vb/samples/sample2.aspx)]
 
-[![Přizpůsobené BoundFields prvku GridView.](displaying-data-with-the-objectdatasource-vb/_static/image21.png)](displaying-data-with-the-objectdatasource-vb/_static/image20.png)
+[![přizpůsobení BoundFields prvku GridView.](displaying-data-with-the-objectdatasource-vb/_static/image21.png)](displaying-data-with-the-objectdatasource-vb/_static/image20.png)
 
-**Obrázek 8**: Byl přizpůsoben prvku GridView BoundFields ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image22.png))
+**Obrázek 8**: vlastní BoundFields ovládacího prvku GridView ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image22.png))
 
-## <a name="using-themes-for-a-consistent-look"></a>Použití motivů pro konzistentního vzhledu
+## <a name="using-themes-for-a-consistent-look"></a>Použití motivů pro konzistentní vzhled
 
-Tyto kurzy snažit odebrat jakékoli nastavení řízení úrovně stylu, namísto použití šablony stylů CSS definované v souboru externích kdykoli je to možné. `Styles.css` Soubor obsahuje `DataWebControlStyle`, `HeaderStyle`, `RowStyle`, a `AlternatingRowStyle` třídy CSS, které by měla sloužit k určovat vzhled data webových ovládacích prvků používaná v těchto kurzech. K tomu může nastavíme prvku GridView `CssClass` vlastnost `DataWebControlStyle`a jeho `HeaderStyle`, `RowStyle`, a `AlternatingRowStyle` vlastností `CssClass` vlastnosti odpovídajícím způsobem.
+Tyto kurzy se snaží odebrat jakákoli nastavení stylu na úrovni ovládacího prvku namísto použití kaskádových šablon stylů definovaných v externím souboru, kdykoli je to možné. `Styles.css` soubor obsahuje třídy `DataWebControlStyle`, `HeaderStyle`, `RowStyle`a `AlternatingRowStyle`, které by měly být použity k diktování vzhledu webových ovládacích prvků dat používaných v těchto kurzech. K tomu můžeme nastavit vlastnost `CssClass` prvku GridView na `DataWebControlStyle`a příslušné vlastnosti `HeaderStyle`, `RowStyle`a `AlternatingRowStyle` `CssClass` odpovídajícím způsobem.
 
-Pokud tyto nastavíme `CssClass` ovládací prvek přidán do našich kurzů webu vlastnosti na ovládací prvek webového by musíme nezapomeňte explicitně nastavit hodnoty těchto vlastností pro každou jednotlivou data. Můžete definovat výchozí vlastnosti související s CSS prvku GridView, DetailsView, je přístup založený na snadněji zpracovatelné a FormView řídí motiv. Motiv je kolekce nastavení vlastností ovládacího prvku úrovni, obrázky a třídy CSS, které lze použít u stránek přes síť, kterou chcete vynutit běžné vzhled a chování.
+Pokud tyto `CssClass` vlastnosti nastavíme na webovém ovládacím prvku, musíme si pamatovat explicitně tyto hodnoty vlastností pro každý a každý webový ovládací prvek dat přidaný do našich kurzů. Lépe spravovatelnější přístup je definování výchozích vlastností souvisejících s CSS pro ovládací prvky GridView, DetailsView a FormView pomocí motivu. Motiv je kolekce nastavení vlastností na úrovni ovládacího prvku, obrázků a tříd šablon stylů CSS, které lze použít na stránky v rámci lokality, aby se vynutil běžný vzhled a chování.
 
-Naše motiv nezahrnuje všechny obrázky nebo soubory šablon stylů CSS (necháme šablony stylů `Styles.css` jako – je definován v kořenové složce webové aplikace), ale bude obsahovat dva skinů v šablonách. Vzhled je soubor, který definuje výchozí vlastnosti pro webový ovládací prvek. Konkrétně jsme budete mít soubor skinu pro ovládací prvky GridView a DetailsView určující výchozí `CssClass`-souvisejících vlastností.
+Náš motiv nebude obsahovat žádné obrázky ani soubory CSS (šablonu stylů ponecháme `Styles.css`, jak je definováno v kořenové složce webové aplikace), ale bude obsahovat dvě vzhledy. Skin je soubor, který definuje výchozí vlastnosti pro webový ovládací prvek. Konkrétně budeme mít soubor skinu pro ovládací prvky GridView a DetailsView, které označují výchozí vlastnosti `CssClass`.
 
-Začněte tím, že přidáte nový soubor vzhledu do projektu s názvem `GridView.skin` pravým tlačítkem myši na název projektu v Průzkumníku řešení a zvolením přidat novou položku.
+Začněte přidáním nového souboru skinu do projektu s názvem `GridView.skin` tak, že kliknete pravým tlačítkem myši na název projektu v Průzkumník řešení a zvolíte přidat novou položku.
 
-[![Přidat soubor vzhledu GridView.skin](displaying-data-with-the-objectdatasource-vb/_static/image24.png)](displaying-data-with-the-objectdatasource-vb/_static/image23.png)
+[![přidat soubor skinu s názvem GridView. Skin](displaying-data-with-the-objectdatasource-vb/_static/image24.png)](displaying-data-with-the-objectdatasource-vb/_static/image23.png)
 
-**Obrázek 9**: Přidat soubor vzhledu s názvem `GridView.skin` ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image25.png))
+**Obrázek 9**: přidejte soubor skinu s názvem `GridView.skin` ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image25.png)).
 
-Souborech skinů potřeba umístit do motiv, který se nachází v `App_Themes` složky. Vzhledem k tomu, že zatím nemáme takovou složku, Visual Studio nabídne prosím nějaké nám při přidávání naši první vzhledu. Klikněte na tlačítko Ano. Pokud chcete vytvořit `App_Theme` složky a umístí nové `GridView.skin` soubor existuje.
+Soubory skinu je nutné umístit do motivu, který je umístěn ve složce `App_Themes`. Vzhledem k tomu, že tuto složku ještě nemáte, Visual Studio vám při přidávání našeho prvního vzhledu nabídne vytvoření pro nás. Klikněte na Ano, pokud chcete vytvořit složku `App_Theme` a umístit do ní nový soubor `GridView.skin`.
 
-[![Nechte Visual Studio vytvořte složku App_Theme](displaying-data-with-the-objectdatasource-vb/_static/image27.png)](displaying-data-with-the-objectdatasource-vb/_static/image26.png)
+[![nechat aplikaci Visual Studio vytvořit složku App_Theme](displaying-data-with-the-objectdatasource-vb/_static/image27.png)](displaying-data-with-the-objectdatasource-vb/_static/image26.png)
 
-**Obrázek 10**: Umožní Visual Studio vytvořit `App_Theme` složky ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image28.png))
+**Obrázek 10**: Umožněte aplikaci Visual Studio vytvořit složku `App_Theme` ([kliknutím zobrazíte obrázek v plné velikosti).](displaying-data-with-the-objectdatasource-vb/_static/image28.png)
 
-Tím se vytvoří nový motiv v `App_Themes` složku s názvem GridView s soubor vzhledu `GridView.skin`.
+Tím se vytvoří nový motiv ve složce `App_Themes` s názvem GridView se souborem Skin `GridView.skin`.
 
-![Motiv GridView má byl přidán do složky App_Theme](displaying-data-with-the-objectdatasource-vb/_static/image29.png)
+![Motiv GridView byl přidán do složky App_Theme](displaying-data-with-the-objectdatasource-vb/_static/image29.png)
 
-**Obrázek 11**: Motiv GridView má byla přidána do `App_Theme` složky
+**Obrázek 11**: motiv GridView byl přidán do složky `App_Theme`
 
-Přejmenování ovládacího prvku GridView motiv DataWebControls (klikněte pravým tlačítkem na složku GridView v `App_Theme` složky a zvolte Přejmenovat). Pak zadejte následující kód do `GridView.skin` souboru:
+Přejmenujte motiv GridView na DataWebControls (klikněte pravým tlačítkem myši na složku GridView ve složce `App_Theme` a vyberte příkaz Přejmenovat). Dále do souboru `GridView.skin` zadejte následující kód:
 
 [!code-aspx[Main](displaying-data-with-the-objectdatasource-vb/samples/sample3.aspx)]
 
-Definuje výchozí vlastnosti `CssClass`-souvisejících vlastností pro libovolný prvek GridView na libovolné stránce, která používá DataWebControls motiv. Přidejme prvku DetailsView data webový ovládací prvek, který budeme za chvíli používat jiný vzhled. Přidat nový vzhled DataWebControls motiv s názvem `DetailsView.skin` a přidejte následující kód:
+To definuje výchozí vlastnosti pro vlastnosti související s `CssClass`pro libovolný prvek GridView na libovolné stránce, která používá motiv DataWebControls. Pojďme přidat další vzhled ovládacího prvku DetailsView, datově datovou datovou datovou aplikaci, kterou využijeme krátce. Přidejte nový skin do motivu DataWebControls s názvem `DetailsView.skin` a přidejte následující kód:
 
 [!code-aspx[Main](displaying-data-with-the-objectdatasource-vb/samples/sample4.aspx)]
 
-Naše motivu definován je posledním krokem je použít motiv na stránku ASP.NET. Motiv lze použít na základě stránku po stránce nebo pro všechny stránky webu. Pro všechny stránky webu s použitím tento motiv. Chcete-li to provést, přidejte následující kód k `Web.config`společnosti `<system.web>` části:
+Po definování našeho motivu je posledním krokem použití motivu na naší stránce ASP.NET. Motiv lze použít pro stránku na stránce nebo pro všechny stránky na webu. Pojďme použít tento motiv pro všechny stránky na webu. Chcete-li to provést, přidejte následující kód do `<system.web>` oddílu `Web.config`:
 
 [!code-xml[Main](displaying-data-with-the-objectdatasource-vb/samples/sample5.xml)]
 
-A je to! `styleSheetTheme` Nastavení znamená, že by byly zadány v motivu vlastnosti *není* přepsat vlastnosti zadaný na úrovni ovládacího prvku. Chcete-li určit, že by měl trumfové barvy motivu nastavení nastavení, použijte `theme` atribut místo `styleSheetTheme`; bohužel motiv nastavení se nezobrazí v zobrazení pro Visual Studio Design. Odkazovat na [motivů ASP.NET a přehled vzhledy](https://msdn.microsoft.com/library/ykzx33wh.aspx) a [motivů pomocí stylů na straně serveru](https://quickstarts.asp.net/quickstartv20/aspnet/doc/themes/stylesheettheme.aspx) Další informace o používání motivů a vzhledy; naleznete v tématu [How To: Použití motivů ASP.NET](https://msdn.microsoft.com/library/0yy5hxdk%28VS.80%29.aspx) Další informace o konfiguraci stránku pro použití motivu.
+A je to! Nastavení `styleSheetTheme` určuje, že vlastnosti zadané v motivu by *neměly přepsat vlastnosti* zadané na úrovni ovládacího prvku. Chcete-li určit, že nastavení motivu má mít nastavení ovládacího prvku trumf, použijte atribut `theme` místo `styleSheetTheme`; nastavení motivu se bohužel nezobrazí v zobrazení Návrh sady Visual Studio. Další informace o motivech a skinech najdete v tématu [Přehled motivů a vzhledů ASP.NET](https://msdn.microsoft.com/library/ykzx33wh.aspx) a [stylů na straně serveru pomocí motivů](https://quickstarts.asp.net/quickstartv20/aspnet/doc/themes/stylesheettheme.aspx) . Další informace o konfiguraci stránky pro použití motivu naleznete v tématu [How to: apply ASP.NET Themes](https://msdn.microsoft.com/library/0yy5hxdk%28VS.80%29.aspx) .
 
-[![Název produktu, kategorie, Dodavatel, ceny a ukončená informace se zobrazí prvku GridView.](displaying-data-with-the-objectdatasource-vb/_static/image31.png)](displaying-data-with-the-objectdatasource-vb/_static/image30.png)
+[![se v prvku GridView zobrazuje informace o názvu, kategorii, dodavateli, cenách a vyřazených informacích produktu.](displaying-data-with-the-objectdatasource-vb/_static/image31.png)](displaying-data-with-the-objectdatasource-vb/_static/image30.png)
 
-**Obrázek 12**: GridView zobrazí název produktu, kategorie, Dodavatel, ceny a vyřazuje informace ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image32.png))
+**Obrázek 12**: v prvku GridView se zobrazí informace o názvu, kategorii, dodavateli, cenách a vyřazených informacích produktu ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image32.png)).
 
-## <a name="displaying-one-record-at-a-time-in-the-detailsview"></a>Zobrazení jednoho záznamu v daný okamžik v ovládacím prvku DetailsView.
+## <a name="displaying-one-record-at-a-time-in-the-detailsview"></a>Zobrazení jednoho záznamu v daném okamžiku v ovládacím prvku DetailsView
 
-GridView zobrazí jeden řádek pro každý záznam vrácený ovládací prvek zdroje dat, ke kterému je vázán. Existují však situace, kdy může být vhodné zobrazí jediný záznam nebo jenom jeden záznam v čase. [Prvku DetailsView](https://msdn.microsoft.com/library/s3w1w7t4.aspx) nabízí tyto funkce vykreslení jako HTML `<table>` se dvěma sloupci a jeden řádek pro každý sloupec nebo vlastnost svázána s ovládacím prvkem. Ovládacím prvku DetailsView si můžete představit jako prvek GridView s jednoho záznamu otočenou o 90 stupňů.
+Prvek GridView zobrazí jeden řádek pro každý záznam vrácený ovládacím prvkem zdroje dat, na který je svázán. Existují však situace, kdy můžeme chtít najednou zobrazit jediný záznam nebo pouze jeden záznam. [Ovládací prvek DetailsView](https://msdn.microsoft.com/library/s3w1w7t4.aspx) nabízí tuto funkci, vykreslení jako `<table>` HTML se dvěma sloupci a jeden řádek pro každý sloupec nebo vlastnost, která je svázána s ovládacím prvkem. Prvek DetailsView lze představit jako prvek GridView s jediným záznamem otočeným 90 stupňů.
 
-Začněte přidáním ovládacího prvku DetailsView *nad* GridView v `SimpleDisplay.aspx`. V dalším kroku vázat na stejný ovládací prvek ObjectDataSource jako prvku GridView. Například s použitím prvku GridView, vlastnost BoundField se přidají do ovládacího prvku DetailsView pro každou vlastnost v objektu vrácený ObjectDataSource `Select` metody. Jediným rozdílem je, že ovládacím prvku DetailsView BoundFields jsou rozloženy vodorovně namísto svisle.
+Začněte přidáním ovládacího prvku DetailsView *nad* prvek GridView v `SimpleDisplay.aspx`. Potom ji navažte ke stejnému ovládacímu prvku ObjectDataSource jako prvku GridView. Podobně jako u prvku GridView, se vlastnost BoundField přidá do ovládacího prvku DetailsView pro každou vlastnost objektu vrácenou metodou `Select` prvku ObjectDataSource. Jediným rozdílem je, že BoundFields ovládacího prvku DetailsView jsou rozloženy vodorovně, nikoli vertikálně.
 
-[![Přidat na stránku DetailsView a připnout ho ke ObjectDataSource](displaying-data-with-the-objectdatasource-vb/_static/image34.png)](displaying-data-with-the-objectdatasource-vb/_static/image33.png)
+[![přidat prvek DetailsView na stránku a vytvořit jeho svázání s prvkem ObjectDataSource](displaying-data-with-the-objectdatasource-vb/_static/image34.png)](displaying-data-with-the-objectdatasource-vb/_static/image33.png)
 
-**Obrázek 13**: Přidat na stránku DetailsView a připnout ho ke ObjectDataSource ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image35.png))
+**Obrázek 13**: Přidání prvku DetailsView na stránku a jeho svázání s ovládacím prvkem ObjectDataSource ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image35.png))
 
-Jako prvku GridView může být k poskytování více přizpůsobit zobrazení dat vrácených ObjectDataSource tweaked BoundFields ovládacím prvku DetailsView. Obrázek 14 ukazuje ovládacím prvku DetailsView. po jeho BoundFields a `CssClass` vlastnosti nastavené provést její vzhled podobně jako v příkladu ovládacího prvku GridView.
+Podobně jako v prvku GridView, lze BoundFields ovládacího prvku pro přizpůsobení pro poskytnutí lépe přizpůsobeného zobrazení dat vrácených prvkem ObjectDataSource. Obrázek 14 ukazuje prvek DetailsView po jeho BoundFields a `CssClass` vlastnosti byly nakonfigurovány tak, aby jeho vzhled byl podobný příkladu prvku GridView.
 
-[![Zobrazuje jeden záznam, ovládacím prvku DetailsView.](displaying-data-with-the-objectdatasource-vb/_static/image37.png)](displaying-data-with-the-objectdatasource-vb/_static/image36.png)
+[![ovládacího prvku DetailsView zobrazí jeden záznam.](displaying-data-with-the-objectdatasource-vb/_static/image37.png)](displaying-data-with-the-objectdatasource-vb/_static/image36.png)
 
-**Obrázek 14**: Zobrazuje jeden záznam ovládacím prvku DetailsView ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image38.png))
+**Obrázek 14**: prvek DetailsView zobrazuje jeden záznam ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image38.png)).
 
-Všimněte si, že ovládacím prvku DetailsView zobrazí pouze první záznam vrácených zdrojem dat. Aby uživatel mohl procházet všechny záznamy, postupně, můžeme musíte povolit stránkování prvku DetailsView. Uděláte to tak, vraťte se do sady Visual Studio a zaškrtněte políčko Povolit stránkování v ovládacím prvku DetailsView inteligentních značek.
+Všimněte si, že ovládací prvek DetailsView zobrazí pouze první záznam vrácený jeho zdrojem dat. Chcete-li umožnit uživateli procházet všechny záznamy po jednom, je nutné povolit stránkování ovládacího prvku DetailsView. Provedete to tak, že se vrátíte do sady Visual Studio a zaškrtněte políčko Povolit stránkování v inteligentní značce ovládacího prvku DetailsView.
 
-[![Povolit stránkování v ovládacím prvku DetailsView.](displaying-data-with-the-objectdatasource-vb/_static/image40.png)](displaying-data-with-the-objectdatasource-vb/_static/image39.png)
+[![povolit stránkování v ovládacím prvku DetailsView](displaying-data-with-the-objectdatasource-vb/_static/image40.png)](displaying-data-with-the-objectdatasource-vb/_static/image39.png)
 
-**Obrázek 15**: Povolit stránkování v ovládacím prvku DetailsView ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image41.png))
+**Obrázek 15**: povolení stránkování v ovládacím prvku DetailsView ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image41.png))
 
-[![S povoleno stránkování, ovládacím prvku DetailsView. umožňuje uživateli zobrazit všechny produkty](displaying-data-with-the-objectdatasource-vb/_static/image43.png)](displaying-data-with-the-objectdatasource-vb/_static/image42.png)
+[![s povoleným stránkováním umožňuje ovládací prvek DetailsView uživateli zobrazit libovolný z produktů.](displaying-data-with-the-objectdatasource-vb/_static/image43.png)](displaying-data-with-the-objectdatasource-vb/_static/image42.png)
 
-**Obrázek 16**: Ovládacím prvku DetailsView s stránkování povoleno, umožňuje uživateli umožní zobrazit všechny produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image44.png))
+**Obrázek 16**: s povoleným stránkováním umožňuje DetailsView uživateli zobrazit libovolný z produktů ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image44.png)).
 
-Budeme se jimi více o stránkování v budoucích kurzech.
+V budoucích kurzech budeme mluvit o stránkování.
 
-## <a name="a-more-flexible-layout-for-showing-one-record-at-a-time"></a>Flexibilnější rozložení pro zobrazení jeden záznam v čase
+## <a name="a-more-flexible-layout-for-showing-one-record-at-a-time"></a>Flexibilnější rozložení pro zobrazování jednoho záznamu v daném čase
 
-Je hodně strnulý způsob, jakým zobrazuje jednotlivých záznamů vrácených z ObjectDataSource ovládacím prvku DetailsView. Flexibilnější zobrazení dat může být vhodné. Například místo zobrazení název produktu, kategorie, Dodavatel, ceny a ukončená informace na samostatném řádku, může chceme zobrazit název produktu a ceny v `<h4>` záhlaví s informacemi kategorie a dodavatele, povolí pod názvem a ceny v menší velikost písma. A nezapomeňte jsme nemusí zobrazit názvy vlastností (produktu, kategorie a tak dále) vedle hodnoty.
+Prvek DetailsView je poměrně tuhý v tom, jak zobrazuje každý záznam vrácený z prvku ObjectDataSource. Můžeme chtít pružně zobrazit data. Například namísto zobrazení názvu produktu, kategorie, dodavatele, ceny a vyřazených informací, které jsou na samostatném řádku, můžeme v nadpisu `<h4>` zobrazit název produktu a cenu, přičemž informace o kategorii a dodavateli zobrazené pod názvem a cenou se zobrazí v menší velikosti písma. A za hodnoty nemůžeme zobrazit názvy vlastností (produkt, kategorie atd.).
 
-[Ovládacího prvku FormView](https://msdn.microsoft.com/library/fyf1dk77.aspx) poskytuje tuto úroveň přizpůsobení. Místo použití pole (jako jsou ovládacími prvky GridView a DetailsView provádět), třídě FormView používá šablony, které umožňují kombinaci webové ovládací prvky, statický kód HTML a [databinding syntaxe](http://www.15seconds.com/issue/040630.htm). Pokud jste obeznámeni s ovládacím prvkem Repeater z ASP.NET 1.x, si můžete představit FormView jako Repeater pro zobrazení jeden záznam.
+[Ovládací prvek FormView](https://msdn.microsoft.com/library/fyf1dk77.aspx) poskytuje tuto úroveň přizpůsobení. Namísto použití polí (jako například GridView a DetailsView), třída FormView používá šablony, které umožňují kombinovat webové ovládací prvky, statické HTML a [syntaxi datové vazby](http://www.15seconds.com/issue/040630.htm). Pokud jste obeznámeni s ovládacím prvkem Repeater z ASP.NET 1. x, můžete si ho představit jako Repeater pro zobrazení jednoho záznamu.
 
-Přidání ovládacího prvku FormView `SimpleDisplay.aspx` stránky návrhovou plochu. Otevření FormView zobrazí jako blok šedé nás informuje, že potřebujeme pro poskytování alespoň ovládacího prvku `ItemTemplate`.
+Přidejte ovládací prvek FormView na návrhovou plochu stránky `SimpleDisplay.aspx`. Zpočátku se FormView zobrazí jako šedý blok, který informuje o tom, že je potřeba poskytnout minimálně `ItemTemplate`ovládacího prvku.
 
-[![Šablona ItemTemplate obsahovat musí FormView](displaying-data-with-the-objectdatasource-vb/_static/image46.png)](displaying-data-with-the-objectdatasource-vb/_static/image45.png)
+[![třída FormView musí zahrnovat ItemTemplate.](displaying-data-with-the-objectdatasource-vb/_static/image46.png)](displaying-data-with-the-objectdatasource-vb/_static/image45.png)
 
-**Obrázek 17**: Třídy FormView musí obsahovat `ItemTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image47.png))
+**Obrázek 17**: třída FormView musí zahrnovat `ItemTemplate` ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image47.png)).
 
-FormView mohl vytvořit vazbu přímo k ovládacímu prvku zdroje dat pomocí ovládacího prvku FormView inteligentní značky, který se vytvoří výchozí `ItemTemplate` automaticky (spolu s `EditItemTemplate` a `InsertItemTemplate`, pokud ovládací prvek ObjectDataSource `InsertMethod` a `UpdateMethod` jsou nastaveny vlastnosti). Ale pro účely tohoto příkladu můžeme data svázat FormView a zadejte jeho `ItemTemplate` ručně. Začněte tím, že nastavení ovládacího prvku FormView `DataSourceID` vlastnost `ID` ovládacího prvku ObjectDataSource `ObjectDataSource1`. Dále vytvořte `ItemTemplate` tak, aby zobrazil název produktu a cena v `<h4>` elementu a názvy kategorií a shipper pod, který v menší velikost písma.
+FormView lze navazovat přímo na ovládací prvek zdroje dat prostřednictvím inteligentní značky FormView, která vytvoří výchozí `ItemTemplate` automaticky (společně s `EditItemTemplate` a `InsertItemTemplate`, pokud jsou nastaveny vlastnosti `InsertMethod` a `UpdateMethod` ovládacího prvku ObjectDataSource). V tomto příkladu je však možné navazovat data na FormView a zadat její `ItemTemplate` ručně. Začněte nastavením vlastnosti `DataSourceID` třídy FormView na `ID` ovládacího prvku ObjectDataSource `ObjectDataSource1`. V dalším kroku vytvořte `ItemTemplate` tak, aby se v prvku `<h4>` zobrazil název a cena produktu, přičemž kategorie a jména přepravců jsou pod tím, že mají menší velikost písma.
 
 [!code-aspx[Main](displaying-data-with-the-objectdatasource-vb/samples/sample6.aspx)]
 
-[![Zobrazí se první produktu (Chai) ve formátu vlastní](displaying-data-with-the-objectdatasource-vb/_static/image49.png)](displaying-data-with-the-objectdatasource-vb/_static/image48.png)
+[![se první produkt (Chai) zobrazuje ve vlastním formátu.](displaying-data-with-the-objectdatasource-vb/_static/image49.png)](displaying-data-with-the-objectdatasource-vb/_static/image48.png)
 
-**Obrázek 18**: První produktu (Chai) se zobrazí ve formátu vlastní ([kliknutím ji zobrazíte obrázek v plné velikosti](displaying-data-with-the-objectdatasource-vb/_static/image50.png))
+**Obrázek 18**: první produkt (Chai) se zobrazí ve vlastním formátu ([kliknutím zobrazíte obrázek v plné velikosti).](displaying-data-with-the-objectdatasource-vb/_static/image50.png)
 
-`<%# Eval(propertyName) %>` Je syntaxe datové vazby. `Eval` Metoda vrátí hodnotu zadané vlastnosti pro aktuální objekt svázaný s ovládacím prvku FormView. Podívejte se na článek Alex Homer [zjednodušené a rozšířené vazby syntaxe dat v technologii ASP.NET 2.0](http://www.15seconds.com/issue/040630.htm) Další informace o výhodami a nevýhodami datové vazby.
+`<%# Eval(propertyName) %>` je syntaxe datové vazby. Metoda `Eval` vrací hodnotu zadané vlastnosti pro aktuální objekt svázaný s ovládacím prvkem FormView. Další informace o objektech a vydaných datových [vazbách najdete v článku zjednodušená syntaxe Alex Homer a Rozšířená syntaxe datových vazeb v ASP.NET 2,0](http://www.15seconds.com/issue/040630.htm) .
 
-Jako ovládacím prvku DetailsView FormView zobrazuje pouze první záznam vrácená ObjectDataSource. Můžete povolit stránkování ve třídě FormView umožňující návštěvníci, chcete-li si produkty jeden po druhém.
+Podobně jako prvek DetailsView, třída FormView zobrazuje pouze první záznam vrácený z prvku ObjectDataSource. Můžete povolit stránkování ve třídě FormView a umožnit tak návštěvníkům postupně procházet produkty.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Přístup k a zobrazení dat z vrstvy obchodní logiky můžete udělat bez nutnosti psaní jediného řádku kódu díky ovládacího prvku ObjectDataSource ASP.NET 2.0. Prvku ObjectDataSource vyvolá zadanou metodu třídy a vrátí výsledky. Tyto výsledky lze zobrazit v datech webový ovládací prvek, který je vázán na ObjectDataSource. V tomto kurzu jsme se podívali na vazby ovládacích prvků ovládacího prvku GridView, DetailsView a FormView ObjectDataSource.
+Přístup a zobrazování dat z vrstvy obchodní logiky lze provést bez nutnosti psát řádek kódu, a to díky ovládacímu prvku ObjectDataSource ASP.NET 2.0. Prvek ObjectDataSource vyvolá specifikovanou metodu třídy a vrátí výsledky. Tyto výsledky lze zobrazit ve webovém ovládacím prvku dat, který je svázán s prvkem ObjectDataSource. V tomto kurzu jsme se vyhledali vazbou ovládacích prvků GridView, DetailsView a FormView na ObjectDataSource.
 
-Zatím jsme viděli pouze postupy použití ovládacího prvku ObjectDataSource volání metody bez parametrů, ale co když chcete vyvolat metodu, která očekává, že vstupní parametry, jako `ProductBLL` třídy `GetProductsByCategoryID(categoryID)`? Aby bylo možné volat metodu, která očekává, že jeden nebo více parametrů musí nakonfigurujeme ObjectDataSource zadání hodnot těchto parametrů. Uvidíme, jak toho dosáhnout v našich [další kurz](declarative-parameters-vb.md).
+Zatím jsme viděli jenom, jak použít prvek ObjectDataSource k vyvolání metody bez parametrů, ale co když chceme vyvolat metodu, která očekává vstupní parametry, jako je `GetProductsByCategoryID(categoryID)``ProductBLL` třídy? Chcete-li volat metodu, která očekává jeden nebo více parametrů, je nutné nakonfigurovat prvek ObjectDataSource pro určení hodnot těchto parametrů. V našem [dalším kurzu](declarative-parameters-vb.md)zjistíme, jak to provést.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
 - [Vytvořit vlastní ovládací prvky zdroje dat](https://msdn.microsoft.com/library/ms364049.aspx)
-- [Příklady GridView pro technologii ASP.NET 2.0](https://msdn.microsoft.com/library/aa479339.aspx)
-- [Zjednodušená a rozšířené datové vazby syntaxe v technologii ASP.NET 2.0](http://www.15seconds.com/issue/040630.htm)
-- [Motivy v technologii ASP.NET 2.0](http://www.odetocode.com/Articles/423.aspx)
-- [Motivů pomocí stylů na straně serveru](https://quickstarts.asp.net/quickstartv20/aspnet/doc/themes/stylesheettheme.aspx)
-- [Postupy: Použití motivů ASP.NET prostřednictvím kódu programu](https://msdn.microsoft.com/library/tx35bd89.aspx)
+- [Příklady GridView pro ASP.NET 2,0](https://msdn.microsoft.com/library/aa479339.aspx)
+- [Zjednodušená a Rozšířená syntaxe datových vazeb v ASP.NET 2,0](http://www.15seconds.com/issue/040630.htm)
+- [Motivy v ASP.NET 2,0](http://www.odetocode.com/Articles/423.aspx)
+- [Styly na straně serveru pomocí motivů](https://quickstarts.asp.net/quickstartv20/aspnet/doc/themes/stylesheettheme.aspx)
+- [Postupy: používání motivů ASP.NET programově](https://msdn.microsoft.com/library/tx35bd89.aspx)
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Hilton Giesenow. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontrolor pro tento kurz byl Hilton Giesenow. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](programmatically-setting-the-objectdatasource-s-parameter-values-cs.md)
-> [další](declarative-parameters-vb.md)
+> [Další](declarative-parameters-vb.md)

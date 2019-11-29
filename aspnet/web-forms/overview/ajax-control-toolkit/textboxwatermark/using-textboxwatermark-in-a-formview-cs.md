@@ -1,55 +1,55 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-in-a-formview-cs
-title: Použití ovládacího prvku TextBoxWatermark v prvku FormView (C#) | Dokumentace Microsoftu
+title: Použití ovládacího prvku textboxwatermark ve třídě FormView (C#) | Microsoft Docs
 author: wenz
-description: Ovládacího prvku TextBoxWatermark v sadou nástrojů AJAX Control Toolkit rozšiřuje textové pole tak, aby text se zobrazí v poli. Když uživatel klikne do pole, to jsem...
+description: Ovládací prvek ovládacího prvku textboxwatermark v sadě nástrojů AJAX Control Toolkit rozšiřuje textové pole tak, aby byl v poli zobrazen text. Když uživatel klikne do pole, i...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: e6ee90bf-32a5-4987-a384-15cc7dd30c8a
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-in-a-formview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 80d5dcec7f211f92cd9fbf2386bb7219d13ffe19
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 13ac0da5ca53756aa7c660cdc47c96f0c865b006
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65124596"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74611324"
 ---
 # <a name="using-textboxwatermark-in-a-formview-c"></a>Použití ovládacího prvku TextBoxWatermark v ovládacím prvku FormView (C#)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/TextBoxWatermark1.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/textboxwatermark1CS.pdf)
+[Stažení kódu](https://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/TextBoxWatermark1.cs.zip) nebo [stažení PDF](https://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/textboxwatermark1CS.pdf)
 
-> Ovládacího prvku TextBoxWatermark v sadou nástrojů AJAX Control Toolkit rozšiřuje textové pole tak, aby text se zobrazí v poli. Když uživatel klikne do pole, je prázdný. Pokud uživatel ponechá pole bez nutnosti zadávat text, zobrazí se předem vyplněných text. To je možné v ovládacím prvku FormView.
+> Ovládací prvek ovládacího prvku textboxwatermark v sadě nástrojů AJAX Control Toolkit rozšiřuje textové pole tak, aby byl v poli zobrazen text. Když uživatel klikne na pole, bude vyprázdněn. Pokud uživatel opustí pole bez zadání textu, předem vyplněný text se zobrazí znovu. To je možné také v rámci ovládacího prvku FormView.
 
 ## <a name="overview"></a>Přehled
 
-`TextBoxWatermark` Ovládacího prvku AJAX Control Toolkit rozšiřuje textové pole tak, aby text se zobrazí v poli. Když uživatel klikne do pole, je prázdný. Pokud uživatel ponechá pole bez nutnosti zadávat text, zobrazí se předem vyplněných text. To je také možné v rámci `FormView` ovládacího prvku.
+Ovládací prvek `TextBoxWatermark` v sadě nástrojů AJAX Control Toolkit rozšiřuje textové pole tak, aby byl v poli zobrazen text. Když uživatel klikne na pole, bude vyprázdněn. Pokud uživatel opustí pole bez zadání textu, předem vyplněný text se zobrazí znovu. To je možné také v rámci ovládacího prvku `FormView`.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Za prvé zdroj dat je povinný. Tato ukázka používá databázi AdventureWorks a Microsoft SQL Server 2005 Express Edition. Databáze je volitelná součást instalace sady Visual Studio (včetně express edition) a jsou také dostupné jako samostatný soubor ke stažení v rámci [ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064). Databáze AdventureWorks je součástí sad SQL Server 2005 ukázky a Sample Databases (stáhnout na [ https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp; DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;DisplayLang=en)). Nejjednodušší způsob, jak nastavit databázi je použít Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp; DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en)) a připojit `AdventureWorks.mdf` databázový soubor.
+Nejdříve je vyžadován zdroj dat. V této ukázce se používá databáze AdventureWorks a edice Microsoft SQL Server 2005 Express. Databáze je volitelnou součástí instalace sady Visual Studio (včetně Express Edition) a je k dispozici také jako samostatné stažení v rámci [https://go.microsoft.com/fwlink/?LinkId=64064](https://go.microsoft.com/fwlink/?LinkId=64064). Databáze AdventureWorks je součástí ukázek SQL Server 2005 a ukázkových databází (Stáhnout v [https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;D isplaylang = EN](https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;DisplayLang=en)). Nejjednodušší způsob, jak nastavit databázi, je použít Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;D isplaylang = EN](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en)) a připojit soubor databáze `AdventureWorks.mdf`.
 
-V tomto příkladu předpokládáme, že název instance systému SQL Server 2005 Express Edition `SQLEXPRESS` a je umístěn ve stejném počítači jako webový server; to je taky výchozí nastavení. Pokud vaše nastavení se liší, je nutné upravit informace o připojení pro databázi.
+V této ukázce předpokládáme, že instance SQL Server 2005 Express Edition se nazývá `SQLEXPRESS` a nachází se na stejném počítači jako webový server. Toto je také výchozí nastavení. Pokud se instalace liší, je nutné upravit informace o připojení pro databázi.
 
-K aktivaci funkce technologie ASP.NET AJAX a Control Toolkit `ScriptManager` ovládací prvek je třeba umístit kdekoli na stránce (ale v rámci `<form>` element):
+Aby bylo možné aktivovat funkce ASP.NET AJAX a Control Toolkit, musí být ovládací prvek `ScriptManager` umístěn kdekoli na stránce (ale v elementu `<form>`):
 
 [!code-aspx[Main](using-textboxwatermark-in-a-formview-cs/samples/sample1.aspx)]
 
-Pak na stránku, která podporuje přidání zdroje dat `DELETE`, `INSERT` a `UPDATE` příkazů jazyka SQL. Pokud používáte Pomocníka s nastavením Visual Studio k vytvoření zdroje dat, mějte na paměti, že chyby v aktuální verzi předponu názvu tabulky (`Vendor`) s `Purchasing`. Následující kód ukazuje správná syntaxe:
+Pak přidejte zdroj dat na stránku, která podporuje `DELETE`příkazy SQL `INSERT` a `UPDATE`. Pokud k vytvoření zdroje dat používáte pomocníka sady Visual Studio, pamatujte, že chyba v aktuální verzi neprefixuje název tabulky (`Vendor`) s `Purchasing`. Následující kód ukazuje správnou syntaxi:
 
 [!code-aspx[Main](using-textboxwatermark-in-a-formview-cs/samples/sample2.aspx)]
 
-Pamatovat název (`ID`) zdroje dat, protože se používá v `DataSourceID` vlastnost `FormView` ovládacího prvku. `<InsertItemTemplate>` Část `FormView` obsahuje textové pole, která se rozšíří podle `TextBoxWatermarkExtender` ovládacího prvku. Ujistěte se, že zařízení extender nachází v rámci šablony a mimo ni.
+Zapamatujte si název (`ID`) zdroje dat, protože bude použit ve vlastnosti `DataSourceID` ovládacího prvku `FormView`. Oddíl `<InsertItemTemplate>` `FormView` obsahuje textové pole, které je rozšířeno pomocí ovládacího prvku `TextBoxWatermarkExtender`. Ujistěte se, že se zařízení rozšiřuje v rámci šablony a není mimo něj.
 
 [!code-aspx[Main](using-textboxwatermark-in-a-formview-cs/samples/sample3.aspx)]
 
-Nyní když uživatel změní do režimu vložit `FormView` řídit, textové pole pro nové dodavatele se předem k `TextBoxWatermarkExtender` ovládacího prvku. Klikněte do textového pole umožňuje text přednastavené zmizí.
+Když se teď uživatel změní do režimu vkládání ovládacího prvku `FormView`, textové pole pro nového dodavatele se předem naplní s ohledem na ovládací prvek `TextBoxWatermarkExtender`. V textovém poli klikněte do textového pole. zmizí text výplně.
 
-[![Meze v poli pochází ze zařízení extender](using-textboxwatermark-in-a-formview-cs/_static/image2.png)](using-textboxwatermark-in-a-formview-cs/_static/image1.png)
+[![meze v poli pocházejících z rozšířeného objektu.](using-textboxwatermark-in-a-formview-cs/_static/image2.png)](using-textboxwatermark-in-a-formview-cs/_static/image1.png)
 
-Meze v poli pochází ze zařízení extender ([kliknutím ji zobrazíte obrázek v plné velikosti](using-textboxwatermark-in-a-formview-cs/_static/image3.png))
+Meze v poli pochází z pole Extender ([kliknutím zobrazíte obrázek v plné velikosti).](using-textboxwatermark-in-a-formview-cs/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Next](using-textboxwatermark-with-validation-controls-cs.md)

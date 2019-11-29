@@ -1,336 +1,336 @@
 ---
 uid: web-forms/overview/older-versions-security/roles/assigning-roles-to-users-vb
-title: Přiřazení rolí uživatelům (VB) | Dokumentace Microsoftu
+title: Přiřazování rolí uživatelům (VB) | Microsoft Docs
 author: rick-anderson
-description: V tomto kurzu vytvoříme dvě stránky technologie ASP.NET pro pomoc se správou, které uživatelé patří do rolích. Zařízení, abyste zjistili, co bude obsahovat na první stránku...
+description: V tomto kurzu sestavíme dvě ASP.NET stránky, které vám pomůžou se správou toho, co uživatelé patří do rolí. První stránka bude obsahovat možnosti, které vám umožní zjistit, co...
 ms.author: riande
 ms.date: 03/24/2008
 ms.assetid: fd208ee9-69cc-4467-9783-b4e039bdd1d3
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/assigning-roles-to-users-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9efe20a1e8a5982d7494914a0ed865db0ab0f52e
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: b53df4494eb0faef7c5e4547c2bf95e5fb071298
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130198"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74577861"
 ---
 # <a name="assigning-roles-to-users-vb"></a>Přiřazení rolí uživatelům (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/6/0/3/6032582f-360d-4739-b935-38721fdb86ea/VB.10.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/0/3/6032582f-360d-4739-b935-38721fdb86ea/aspnet_tutorial10_AssigningRoles_vb.pdf)
+[Stažení kódu](https://download.microsoft.com/download/6/0/3/6032582f-360d-4739-b935-38721fdb86ea/VB.10.zip) nebo [stažení PDF](https://download.microsoft.com/download/6/0/3/6032582f-360d-4739-b935-38721fdb86ea/aspnet_tutorial10_AssigningRoles_vb.pdf)
 
-> V tomto kurzu vytvoříme dvě stránky technologie ASP.NET pro pomoc se správou, které uživatelé patří do rolích. První stránka bude obsahovat zařízení, pokud chcete zobrazit, co uživatelé patří do dané role, ke kterým rolím konkrétní uživatel patří do a možnost přiřazení nebo odebrání určitého uživatele z určité role. Na druhé stránce jsme se rozšířit ovládacím prvku CreateUserWizard tak, že obsahují krok k určení, jaké role nově vytvořený uživatel patří. To je užitečné v situacích, kde je možné vytvořit nové uživatelské účty správce.
+> V tomto kurzu sestavíme dvě ASP.NET stránky, které vám pomůžou se správou toho, co uživatelé patří do rolí. Na první stránce se budou zobrazovat informace o tom, co uživatelé patří k dané roli, k jakým rolím patří určitý uživatel a možnost přiřadit nebo odebrat konkrétního uživatele z konkrétní role. Na druhé stránce rozsadíme ovládací prvek ovládacím CreateUserWizard tak, aby obsahoval krok pro určení rolí, do kterých patří nově vytvořený uživatel. To je užitečné ve scénářích, kdy správce může vytvořit nové uživatelské účty.
 
 ## <a name="introduction"></a>Úvod
 
-<a id="_msoanchor_1"> </a> [Předchozí kurz o službě](creating-and-managing-roles-vb.md) prozkoumat rozhraní role a `SqlRoleProvider`; jsme viděli, jak používat `Roles` třída pro vytvoření, získání a odstranění rolí. Vedle vytváření a odstraňování role, potřebujeme mít možnost přiřazení nebo odebrání uživatele z role. Bohužel ASP.NET nedodává s webové ovládací prvky pro správu, které uživatelé patří do rolích. Místo toho jsme musíte vytvořit vlastní stránky technologie ASP.NET k spravují tyto asociace. Dobrou zprávou je, že přidání a odebrání uživatelů k rolím je poměrně snadné. `Roles` Třída obsahuje několik metod pro přidání jednoho nebo více uživatelů do jedné nebo více rolí.
+V <a id="_msoanchor_1"> </a> [předchozím kurzu](creating-and-managing-roles-vb.md) byly zkontrolovány architektury rolí a `SqlRoleProvider`; zjistili jsme, jak použít třídu `Roles` k vytváření, načítání a odstraňování rolí. Kromě vytváření a odstraňování rolí musíme být schopni přiřadit nebo odebrat uživatele z role. ASP.NET bohužel nedodává žádné webové ovládací prvky pro správu toho, co uživatelé patří do rolí. Místo toho je nutné vytvořit vlastní ASP.NET stránky pro správu těchto přidružení. Dobrá zpráva je, že přidávání a odebírání uživatelů do rolí je poměrně snadné. Třída `Roles` obsahuje řadu metod pro přidání jednoho nebo více uživatelů k jedné nebo více rolím.
 
-V tomto kurzu vytvoříme dvě stránky technologie ASP.NET pro pomoc se správou, které uživatelé patří do rolích. První stránka bude obsahovat zařízení, pokud chcete zobrazit, co uživatelé patří do dané role, ke kterým rolím konkrétní uživatel patří do a možnost přiřazení nebo odebrání určitého uživatele z určité role. Na druhé stránce jsme se rozšířit ovládacím prvku CreateUserWizard tak, že obsahují krok k určení, jaké role nově vytvořený uživatel patří. To je užitečné v situacích, kde je možné vytvořit nové uživatelské účty správce.
+V tomto kurzu sestavíme dvě ASP.NET stránky, které vám pomůžou se správou toho, co uživatelé patří do rolí. Na první stránce se budou zobrazovat informace o tom, co uživatelé patří k dané roli, k jakým rolím patří určitý uživatel a možnost přiřadit nebo odebrat konkrétního uživatele z konkrétní role. Na druhé stránce rozsadíme ovládací prvek ovládacím CreateUserWizard tak, aby obsahoval krok pro určení rolí, do kterých patří nově vytvořený uživatel. To je užitečné ve scénářích, kdy správce může vytvořit nové uživatelské účty.
 
-Pusťme se do práce!
+Pojďme začít!
 
-## <a name="listing-what-users-belong-to-what-roles"></a>Výpis uživatelé patří do jaké role
+## <a name="listing-what-users-belong-to-what-roles"></a>Výpis toho, co uživatelé patří k rolím
 
-První pro účely tohoto kurzu je vytvořit webovou stránku, ze kterého můžete uživatele přiřadit k rolím. Předtím, než jsme si problém s přiřazení uživatelů k rolím, Pojďme nejprve soustředit se na tom, jak zjistit, co uživatelé patří do rolích. Existují dva způsoby, jak zobrazit tyto informace: "role" nebo ""uživatel. Jsme by mohlo znamenat musí návštěvníka vyberte roli a pak je zobrazit všichni uživatelé, které patří k roli ("podle role" zobrazení) nebo jsme může vyzvat návštěvníka vyberte uživatele a pak je zobrazit role přiřazené k tomuto uživateli ("uživatelem" zobrazení).
+Prvním pořadím podnikání pro účely tohoto kurzu je vytvoření webové stránky, ze které lze přiřadit uživatele k rolím. Předtím, než se budeme věnovat dodržovali s přiřazením uživatelů k rolím, se nejprve zaměřujeme na to, jak určit, co uživatelé patří k rolím. Existují dva způsoby, jak zobrazit tyto informace: "podle role" nebo "podle uživatele". Mohli bychom návštěvníkům dovolit vybrat roli a pak jim zobrazit všechny uživatele, kteří patří do této role (zobrazení "podle role"), nebo se může vyzvat návštěvníka k výběru uživatele a pak jim zobrazit role přiřazené tomuto uživateli (zobrazení "podle uživatele").
 
-Zobrazení "podle role" je užitečné v případech kdy chce vědět, sady, které uživatelům patřícím do určité role; návštěvníka zobrazení "uživatelem" je ideální pro návštěvníka potřebuje vědět, zejména uživatelské role. Dopřejeme si naši stránku zahrnují jak "role" a "user" rozhraní.
+Zobrazení "podle rolí" je užitečné v případech, kdy návštěvník chce znát skupinu uživatelů, kteří patří do určité role; zobrazení "podle uživatele" je ideální, když návštěvník potřebuje znát role určitého uživatele. Máme naši stránku, jak na to role, tak i na základě uživatelského rozhraní.
 
-Začneme s vytvářením rozhraní "uživatelem". Toto rozhraní se skládají z rozevíracího seznamu a seznam zaškrtávacích políček. Rozevíracím seznamu naplní skupinu uživatelů v systému. Zaškrtávací políčka vyčíslí role. Kliknutím na uživatele z rozevíracího seznamu zkontroluje těchto rolí, které uživatel patří. Osoba, na stránce následně zaškrtněte nebo zrušte zaškrtnutí políček pro přidání nebo odebrání vybraného uživatele z odpovídající role.
+Začneme tím, že se vytvoří rozhraní "podle uživatele". Toto rozhraní se bude skládat z rozevíracího seznamu a seznamu zaškrtávacích políček. Rozevírací seznam se naplní sadou uživatelů v systému. zaškrtávací políčka budou vytvářet výčet rolí. Výběrem uživatele v rozevíracím seznamu se budou tyto role, ke kterým uživatel patří, kontrolovat. Osoba, která navštíví stránku, pak může zaškrtnout nebo zrušit zaškrtnutí políček a přidat nebo odebrat vybraného uživatele z odpovídajících rolí.
 
 > [!NOTE]
-> Pomocí rozevíracího seznamu pro seznam uživatelských účtů není ideální volbou pro websites tam, kde může být stovky uživatelských účtů. Rozevírací seznam je navržena k umožnění uživateli vybrat jednu z položek v poměrně krátké seznam možností. To rychle nepraktický roste počet položek seznamu. Pokud sestavujete web, který bude mít potenciálně velkého počtu uživatelských účtů, můžete zvážit použití alternativní uživatelským rozhraním, jako je stránkované GridView nebo filterable rozhraní, které jsou uvedeny vyzve návštěvníka zvolit písmenem a pak pouze zobrazí uživatelé, jejichž uživatelské jméno začíná vybrané písmeno.
+> Použití rozevíracího seznamu pro výpis uživatelských účtů není ideální volbou pro weby, kde můžou existovat stovky uživatelských účtů. Rozevírací seznam je navržený tak, aby uživateli umožnil vybrat jednu položku z relativně krátkého seznamu možností. Rychle se nepraktický, jak se rozroste počet položek seznamu. Pokud vytváříte web, který bude mít potenciálně velký počet uživatelských účtů, můžete zvážit použití alternativního uživatelského rozhraní, například stránkového prvku GridView nebo filtrovacího rozhraní, které seznam vyzve návštěvníka k výběru písmena a pak pouze Zobrazuje uživatele, jejichž uživatelské jméno začíná zvoleným písmenem.
 
-## <a name="step-1-building-the-by-user-user-interface"></a>Krok 1: Vytvoření uživatelského rozhraní "Uživatelem"
+## <a name="step-1-building-the-by-user-user-interface"></a>Krok 1: vytvoření uživatelského rozhraní "podle uživatele"
 
-Otevřít `UsersAndRoles.aspx` stránky. V horní části stránky, přidejte ovládací prvek popisek Web s názvem `ActionStatus` a vymažte její `Text` vlastnost. Tento popisek použije k poskytnutí zpětné vazby na akce prováděné, zobrazování zpráv, jako jsou, "Tito uživatele byl přidán do Administrators role" nebo "Jisun uživatele byl odebrán z role správců." Pokud chcete tyto zprávy odlišit, nastavte jeho `CssClass` vlastnost "Důležitá".
+Otevřete stránku `UsersAndRoles.aspx`. V horní části stránky přidejte webový ovládací prvek popisek s názvem `ActionStatus` a vymažte jeho vlastnost `Text`. Tento popisek použijeme k poskytnutí zpětné vazby k provedeným akcím, zobrazování zpráv, jako je například "uživatel tito byl přidán do role správců" nebo "uživatel Jisun byl odebrán z role Vedoucís". Aby se tyto zprávy daly vyřídit, nastavte vlastnost `CssClass` popisku na "důležité".
 
 [!code-aspx[Main](assigning-roles-to-users-vb/samples/sample1.aspx)]
 
-Dále přidejte následující definice třídy šablony stylů CSS do `Styles.css` šablony stylů:
+Dále přidejte následující definici třídy CSS do `Styles.css` šablony stylů:
 
 [!code-css[Main](assigning-roles-to-users-vb/samples/sample2.css)]
 
-Tato definice šablony stylů CSS dostane pokyn, aby zobrazení pomocí velké, červenou písma popisku. Obrázek 1 ukazuje tento efekt prostřednictvím návrháře Visual Studio.
+Tato definice CSS dává pokyn prohlížeči k zobrazení popisku s použitím velkého červeného písma. Obrázek 1 ukazuje tento efekt prostřednictvím návrháře sady Visual Studio.
 
-[![Vlastnosti popisku CssClass výsledkem písmo velké, Red](assigning-roles-to-users-vb/_static/image2.png)](assigning-roles-to-users-vb/_static/image1.png)
+[![vlastnost CssClass popisku má za následek velké červené písmo.](assigning-roles-to-users-vb/_static/image2.png)](assigning-roles-to-users-vb/_static/image1.png)
 
-**Obrázek 1**: Jmenovky `CssClass` vlastnost za následek velký, písmo Red ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image3.png))
+**Obrázek 1**: vlastnost `CssClass` popisku má za následek velké červené písmo ([kliknutím zobrazíte obrázek v plné velikosti).](assigning-roles-to-users-vb/_static/image3.png)
 
-Dále přidejte DropDownList na stránku, nastavte jeho `ID` vlastnost `UserList`a nastavte jeho `AutoPostBack` vlastnost na hodnotu True. Použijeme tuto DropDownList seznam všech uživatelů v systému. Tato DropDownList bude vázán k kolekce objektů MembershipUser. Protože chceme, aby DropDownList zobrazit Vlastnost UserName objekt MembershipUser (a použít ji jako hodnotu položky seznamu), nastavte DropDownList `DataTextField` a `DataValueField` vlastnosti "UserName".
+V dalším kroku přidejte na stránku objekt DropDownList, nastavte jeho vlastnost `ID` na `UserList`a nastavte jeho vlastnost `AutoPostBack` na hodnotu true. Tuto sadu DropDownList použijeme k vypsání všech uživatelů v systému. Tato DropDownList bude svázána s kolekcí objektů MembershipUser. Vzhledem k tomu, že chceme, aby vlastnost DropDownList zobrazovala vlastnost UserName objektu MembershipUser (a použila ji jako hodnotu položky seznamu), nastavte vlastnosti ovládacího prvku DropDownList `DataTextField` a `DataValueField` na "UserName".
 
-Pod DropDownList, přidejte opakovače s názvem `UsersRoleList`. Tato Repeater zobrazí seznam všech rolí v systému jako řadu objektů zaškrtávací políčka. Definování Repeateru `ItemTemplate` pomocí následující kód:
+Pod ovládacím prvkem DropDownList přidejte Repeater s názvem `UsersRoleList`. Tento Repeater zobrazí seznam všech rolí v systému jako řadu zaškrtávacích políček. Pomocí následujících deklarativních značek definujte `ItemTemplate` opakovače:
 
 [!code-aspx[Main](assigning-roles-to-users-vb/samples/sample3.aspx)]
 
-`ItemTemplate` Kód obsahuje jeden ovládací prvek zaškrtávací políčko Web s názvem `RoleCheckBox`. Na zaškrtávací políčko `AutoPostBack` je nastavena na hodnotu True a `Text` vlastnost je vázána na `Container.DataItem`. Z důvodu syntaxe vázání dat je jednoduše `Container.DataItem` totiž rozhraní role vrátí seznam názvů rolí jako pole řetězců, a je toto pole řetězců, které jsme se vazba na opakovače. Důkladné popis Proč tato syntaxe je použita k zobrazení obsahu pole svázána s ovládacím prvkem webových dat je nad rámec tohoto kurzu. Další informace o této věci, předložit [skalární pole vazby na ovládací prvek webových dat](http://aspnet.4guysfromrolla.com/articles/082504-1.aspx).
+Kód `ItemTemplate` obsahuje ovládací prvek webového ovládacího prvku CheckBox s názvem `RoleCheckBox`. Vlastnost `AutoPostBack` zaškrtávacího políčka je nastavena na hodnotu true a vlastnost `Text` je svázána s `Container.DataItem`. Důvodem je, že syntaxe datové vazby je jednoduše `Container.DataItem` je, že rozhraní Framework vrátí seznam názvů rolí jako pole řetězců a toto pole řetězců, které budeme svázat s Repeat. Podrobný popis, proč se tato syntaxe používá k zobrazení obsahu pole vázaného k datovému ovládacímu prvku webového ovládacího prvku, je nad rámec tohoto kurzu. Další informace o této problematice naleznete v tématu [vazba skalárního pole na datově datovou webovou ovládací prvek](http://aspnet.4guysfromrolla.com/articles/082504-1.aspx).
 
-V tomto okamžiku "uživatelem" rozhraní v deklarativní by měl vypadat nějak takto:
+V tomto okamžiku by deklarativní označení "podle uživatele" mělo vypadat podobně jako následující:
 
 [!code-aspx[Main](assigning-roles-to-users-vb/samples/sample4.aspx)]
 
-Nyní jsme připraveni napsat kód k vytvoření vazby sadu uživatelských účtů do DropDownList a sadu rolí pro opakovače. V třídě modelu code-behind na stránce, přidejte metodu s názvem `BindUsersToUserList` a druhou s názvem `BindRolesList`, pomocí následujícího kódu:
+Nyní jsme připraveni zapsat kód pro svázání sady uživatelských účtů s ovládacím prvkem DropDownList a sadou rolí pro Repeater. Do třídy kódu na pozadí stránky přidejte metodu s názvem `BindUsersToUserList` a jinou pojmenovanou `BindRolesList`pomocí následujícího kódu:
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample5.vb)]
 
-`BindUsersToUserList` Metoda načte všechny uživatelské účty v systému prostřednictvím [ `Membership.GetAllUsers` metoda](https://msdn.microsoft.com/library/dy8swhya.aspx). Tím se vrátí [ `MembershipUserCollection` objekt](https://msdn.microsoft.com/library/system.web.security.membershipusercollection.aspx), což je kolekce [ `MembershipUser` instance](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx). Tato kolekce je pak vázán `UserList` DropDownList. `MembershipUser` Instance tuto strukturu kolekce obsahují celou řadu vlastností, jako je `UserName`, `Email`, `CreationDate`, a `IsOnline`. Aby bylo možné dáte pokyn, aby DropDownList k zobrazení hodnoty `UserName` vlastnost, ujistěte se, že `UserList` společnosti DropDownList `DataTextField` a `DataValueField` byly nastaveny vlastnosti "UserName".
+Metoda `BindUsersToUserList` načte všechny uživatelské účty v systému prostřednictvím [metody`Membership.GetAllUsers`](https://msdn.microsoft.com/library/dy8swhya.aspx). Tím se vrátí [objekt`MembershipUserCollection`](https://msdn.microsoft.com/library/system.web.security.membershipusercollection.aspx), což je kolekce [instancí`MembershipUser`](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx). Tato kolekce je pak svázána s `UserList` DropDownList. Instance `MembershipUser`, které strukturu kolekci obsahují různé vlastnosti, například `UserName`, `Email`, `CreationDate`a `IsOnline`. Aby vlastnost DropDownList mohla zobrazit hodnotu vlastnosti `UserName`, zajistěte, aby byly vlastnosti `DataTextField` a `DataValueField` `UserList` DropDownList nastavené na UserName.
 
 > [!NOTE]
-> `Membership.GetAllUsers` Metoda má dvě přetížení: jednu, která nepřijímá žádné vstupní parametry a vrátí všechny uživatele a jednu, která přijímá celočíselné hodnoty pro index stránky a velikost stránky a vrátí pouze zadaný dílčí sadu uživatelů. Když existuje velké množství uživatelské účty se zobrazí v prvku stránkované uživatelského rozhraní, druhé přetížení lze efektivněji procházení uživatele vzhledem k tomu, že vrátí jenom přesné podmnožině uživatelské účty a ne všechny z nich.
+> Metoda `Membership.GetAllUsers` má dvě přetížení: jednu, která nepřijímá žádné vstupní parametry, vrátí všechny uživatele a jednu, která má celočíselné hodnoty pro index stránky a velikost stránky, a vrátí pouze zadanou podmnožinu uživatelů. V případě, že je v prvku uživatelského rozhraní stránkovaného prvku zobrazeno velké množství uživatelských účtů, lze druhé přetížení použít k efektivnějšímu stránkování uživatelů, protože vrátí pouze přesné podmnožiny uživatelských účtů, nikoli všechny.
 
-`BindRolesToList` Metoda začíná voláním `Roles` třídy [ `GetAllRoles` metoda](https://msdn.microsoft.com/library/system.web.security.roles.getallroles.aspx), která vrací pole řetězců obsahující role v systému. Tato pole řetězců je pak vázán na opakovače.
+Metoda `BindRolesToList` začíná voláním [metody`GetAllRoles`](https://msdn.microsoft.com/library/system.web.security.roles.getallroles.aspx)`Roles` třídy, která vrací pole řetězců obsahující role v systému. Toto pole řetězců je pak svázáno s argumentem Repeater.
 
-Nakonec musíme tyto dvě metody volat při prvním načtení stránky. Přidejte následující kód, který `Page_Load` obslužné rutiny události:
+Nakonec musíme při prvním načtení stránky zavolat tyto dvě metody. Do obslužné rutiny události `Page_Load` přidejte následující kód:
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample6.vb)]
 
-S tímto kódem na místě věnujte chvíli najdete na stránce prostřednictvím prohlížeče; vaše obrazovka by měla vypadat podobně jako na obrázku 2. Všechny uživatelské účty, naplní se v rozevíracím seznamu a pod, každá role se zobrazí jako zaškrtávací políčko. Protože jsme nastavili `AutoPostBack` vlastnosti DropDownList a vlastnost CheckBoxes na hodnotu True, změna vybraného uživatele nebo kontrola nebo zrušíte zaškrtnutí role vyvolá zpětné volání. Neprovede se žádná akce, ale protože musíme ještě napište kód pro zpracování těchto akcí. Jsme budete řešit tyto úlohy v následujících dvou částech.
+V případě tohoto kódu si chvíli počkejte, než se stránka navštíví přes prohlížeč. vaše obrazovka by měla vypadat podobně jako na obrázku 2. V rozevíracím seznamu se naplní všechny uživatelské účty a pod ní se zobrazí Každá role jako zaškrtávací políčko. Vzhledem k tomu, že jsme nastavili `AutoPostBack` vlastnosti ovládacího prvku DropDownList a zaškrtávací políčka na hodnotu true, změna vybraného uživatele nebo zaškrtnutí nebo zrušení kontroly role způsobí postback. Neprovádí se ale žádná akce, protože ještě máme psát kód pro zpracování těchto akcí. Tyto úlohy budeme řešit v následujících dvou částech.
 
-[![Na stránce zobrazí uživatelé a role](assigning-roles-to-users-vb/_static/image5.png)](assigning-roles-to-users-vb/_static/image4.png)
+[![stránce se zobrazí uživatelé a role.](assigning-roles-to-users-vb/_static/image5.png)](assigning-roles-to-users-vb/_static/image4.png)
 
-**Obrázek 2**: Na stránce zobrazí uživatelé a role ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image6.png))
+**Obrázek 2**: stránka zobrazuje uživatele a role ([kliknutím zobrazíte obrázek v plné velikosti).](assigning-roles-to-users-vb/_static/image6.png)
 
-### <a name="checking-the-roles-the-selected-user-belongs-to"></a>Kontrola role vybraného uživatele patří do
+### <a name="checking-the-roles-the-selected-user-belongs-to"></a>Kontrola rolí, do kterých vybraný uživatel patří
 
-Při prvním načtení stránky nebo pokaždé, když návštěvníka nový uživatel vybere z rozevíracího seznamu, musíme aktualizovat `UsersRoleList`společnosti zaškrtávací políčka tak, aby dané role zaškrtávací políčko zaškrtnuto, pouze v případě, že vybraný uživatel patří do této role. K tomu vytvořit metodu s názvem `CheckRolesForSelectedUser` následujícím kódem:
+Při prvním načtení stránky nebo pokaždé, když návštěvník vybere nového uživatele v rozevíracím seznamu, musíme aktualizovat zaškrtávací políčka `UsersRoleList`tak, aby se dané zaškrtávací políčko role kontrolovalo pouze v případě, že vybraný uživatel patří do této role. K tomu je potřeba vytvořit metodu s názvem `CheckRolesForSelectedUser` s následujícím kódem:
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample7.vb)]
 
-Výše uvedený kód spustí tak, že určíte, který je vybraný uživatel. Pak používá třídu role [ `GetRolesForUser(userName)` metoda](https://msdn.microsoft.com/library/system.web.security.roles.getrolesforuser.aspx) vrátit zadaného uživatele sadu rolí jako pole řetězců. Dále jsou uvedené položky Opakovači a každá položka `RoleCheckBox` zaškrtávacího políčka se odkazuje prostřednictvím kódu programu. Zaškrtávací políčko je zaškrtnuto, pouze v případě, že je součástí role odpovídá `selectedUsersRoles` pole řetězců.
+Výše uvedený kód začíná určením, kdo má vybraný uživatel. Pak pomocí [metody`GetRolesForUser(userName)`](https://msdn.microsoft.com/library/system.web.security.roles.getrolesforuser.aspx) třídy role vrátí sadu rolí zadaného uživatele jako pole řetězců. V dalším kroku jsou vyhodnoceny položky Repeater a na `RoleCheckBox` je programově odkazováno zaškrtávací políčko pro každou položku. Zaškrtávací políčko je zaškrtnuto pouze v případě, že je role, ke které odpovídá, obsažena v poli `selectedUsersRoles` řetězců.
 
 > [!NOTE]
-> `Linq.Enumerable.Contains(Of String)(...)` Syntaxe nebude kompilovat, pokud používáte technologii ASP.NET verze 2.0. `Contains(Of String)` Metoda je součástí [LINQ knihovny](http://en.wikipedia.org/wiki/Language_Integrated_Query), což je nová technologie ASP.NET 3.5. Pokud stále používáte technologii ASP.NET verze 2.0, použijte [ `Array.IndexOf(Of String)` metoda](https://msdn.microsoft.com/library/eha9t187.aspx) místo.
+> Pokud používáte ASP.NET verze 2,0, nebude zkompilována syntaxe `Linq.Enumerable.Contains(Of String)(...)`. Metoda `Contains(Of String)` je součástí [knihovny LINQ](http://en.wikipedia.org/wiki/Language_Integrated_Query), která je v ASP.NET 3,5 novinkou. Pokud stále používáte verzi ASP.NET 2,0, použijte místo toho [metodu`Array.IndexOf(Of String)`](https://msdn.microsoft.com/library/eha9t187.aspx) .
 
-`CheckRolesForSelectedUser` Metoda musí být volána ve dvou případech: při prvním načtení stránky a pokaždé, když `UserList` změně vybraného indexu DropDownList společnosti. Proto volání této metody z `Page_Load` obslužné rutiny události (po volání `BindUsersToUserList` a `BindRolesToList`). Také, vytvořit obslužnou rutinu události pro DropDownList `SelectedIndexChanged` událostí a volání této metody z něj.
+Metoda `CheckRolesForSelectedUser` musí být volána ve dvou případech: při prvním načtení stránky a pokaždé, když se změní vybraný index `UserList` DropDownList. Proto volejte tuto metodu z obslužné rutiny události `Page_Load` (po volání `BindUsersToUserList` a `BindRolesToList`). Také vytvořte obslužnou rutinu události pro událost `SelectedIndexChanged` ovládacího prvku DropDownList a zavolejte tuto metodu odtud.
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample8.vb)]
 
-S tímto kódem na místě můžete otestovat stránky v prohlížeči. Nicméně od verze `UsersAndRoles.aspx` stránky v tuto chvíli nemá schopnost přiřazení uživatelů k rolím, uživatelé nemají role. Vytvoříme rozhraní pro přiřazování uživatelů do rolí ve chvíli, abyste mohli Moje slovo, které tento kód funguje a ověřit, že je spuštění provedeno později, nebo můžete ručně přidat uživatele k rolím vložením záznamů do `aspnet_UsersInRoles` tabulky účely otestování tohoto functi Nyní onality.
+S tímto kódem můžete stránku otestovat přes prohlížeč. Vzhledem k tomu, že na stránce `UsersAndRoles.aspx` aktuálně chybí možnost přiřadit uživatele k rolím, žádní uživatelé nemají role. Vytvoříme rozhraní pro přiřazení uživatelů k rolím v okamžiku, takže můžete vzít slovo, že tento kód funguje, a ověřit, že je to později, nebo můžete ručně přidat uživatele k rolím tak, že do tabulky `aspnet_UsersInRoles` vložíte záznamy, abyste mohli tuto funkci nyní otestovat.
 
-### <a name="assigning-and-removing-users-from-roles"></a>Přiřazení a odebrání uživatele z role
+### <a name="assigning-and-removing-users-from-roles"></a>Přiřazení a odebrání uživatelů z rolí
 
-Když návštěvníka kontroluje nebo zruší tohoto systému zaškrtnutí zaškrtávacího políčka v `UsersRoleList` Repeater potřebujeme přidat nebo odebrat vybraného uživatele z odpovídající roli. Na zaškrtávací políčko `AutoPostBack` je aktuálně nastavena na hodnotu True, což způsobí, že postback kdykoli v Opakovači zaškrtávací políčko je zaškrtnuté nebo nezaškrtnuté. Stručně řečeno, potřebujeme vytvořit obslužnou rutinu události pro na zaškrtávací políčko `CheckChanged` událostí. Protože zaškrtávacího políčka v ovládacím prvku Repeater, budeme potřebovat ručně přidat obslužnou rutinu události zajistí funkčnost systému. Začněte přidáním obslužné rutiny události k použití modelu code-behind třídu jako `Protected` metody takto:
+Když návštěvník zkontroluje nebo vrátí zaškrtávací políčko v `UsersRoleList` Repeater, musíme přidat nebo odebrat vybraného uživatele z odpovídající role. Vlastnost `AutoPostBack` CheckBox je aktuálně nastavená na hodnotu true, což způsobí, že se v případě, že je zaškrtnuto nebo není zaškrtnuté zaškrtávací políčko v rámci tohoto opakovače. V krátkém případě musíme pro událost `CheckChanged` CheckBox vytvořit obslužnou rutinu události. Vzhledem k tomu, že je zaškrtávací políčko v ovládacím prvku Repeater, musíme přidat ruční vložení obslužné rutiny události. Začněte přidáním obslužné rutiny události do třídy kódu na pozadí jako metody `Protected`, například takto:
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample9.vb)]
 
-Vrátíme psát kód pro tuto obslužnou rutinu události za chvíli. Nejdřív ukončeme vložení zpracování událostí. Od zaškrtávacího políčka v rámci prvku Repeater `ItemTemplate`, přidejte `OnCheckedChanged="RoleCheckBox_CheckChanged"`. Vedení této syntaxe vodiče `RoleCheckBox_CheckChanged` obslužnou rutinu události `RoleCheckBox`společnosti `CheckedChanged` událostí.
+Za chvíli se vrátíme k zápisu kódu pro tuto obslužnou rutinu události. Nejdřív ale Pojďme dokončit práci s zpracováním událostí. Z zaškrtávacího políčka `ItemTemplate`v rámci tohoto opakovače přidejte `OnCheckedChanged="RoleCheckBox_CheckChanged"`. Tato syntaxe spoludrátuje obslužnou rutinu události `RoleCheckBox_CheckChanged` `RoleCheckBox`události `CheckedChanged`.
 
 [!code-aspx[Main](assigning-roles-to-users-vb/samples/sample10.aspx)]
 
-Naše poslední úloha je k dokončení `RoleCheckBox_CheckChanged` obslužné rutiny události. Musíme začít pomocí odkazu na ovládací prvek CheckBox, která vyvolala událost, protože tato instance zaškrtávací políčko nám řekne, jakou roli bylo zaškrtnuté nebo nezaškrtnuté prostřednictvím jeho `Text` a `Checked` vlastnosti. Na základě těchto informací spolu s uživatelské jméno vybraného uživatele jsme přidat nebo odebrat uživatele z role prostřednictvím `Roles` třídy [ `AddUserToRole` ](https://msdn.microsoft.com/library/system.web.security.roles.addusertorole.aspx) nebo [ `RemoveUserFromRole` metoda](https://msdn.microsoft.com/library/system.web.security.roles.removeuserfromrole.aspx).
+Náš konečný úkol je dokončit obslužnou rutinu události `RoleCheckBox_CheckChanged`. Musíme začít odkazem na ovládací prvek CheckBox, který událost vyvolal, protože tato instance CheckBox oznamuje, jaká role byla zaškrtnutoa nebo nezkontrolována prostřednictvím jejího `Text` a `Checked` vlastností. Pomocí těchto informací spolu s uživatelským jménem vybraného uživatele přidáme nebo odeberete uživatele z role prostřednictvím metody [`AddUserToRole`](https://msdn.microsoft.com/library/system.web.security.roles.addusertorole.aspx) nebo [`RemoveUserFromRole`](https://msdn.microsoft.com/library/system.web.security.roles.removeuserfromrole.aspx)třídy `Roles`.
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample11.vb)]
 
-Výše uvedený kód spustí programově odkazováním na zaškrtávací políčko, která vyvolala událost, která je k dispozici prostřednictvím `sender` vstupního parametru. Pokud je zaškrtnuté políčko, vybraný uživatel přidán do zadané roli, jinak se odeberou z role. V obou případech `ActionStatus` popisek zobrazí zprávu sumarizace akce teď udělali.
+Výše uvedený kód začíná programově odkazující na zaškrtávací políčko, které vyvolalo událost, která je k dispozici prostřednictvím vstupního parametru `sender`. Pokud je zaškrtnuté políčko, vybraný uživatel se přidá do zadané role, jinak se z role odeberou. V obou případech `ActionStatus` popisek zobrazí zprávu, která shrnuje právě prováděnou akci.
 
-Za chvíli otestovat na této stránce prostřednictvím prohlížeče. Vyberte uživatele Tito a pak přidejte Tito do role správců a správců.
+Vyzkoušejte si chvilku, abyste tuto stránku otestovali přes prohlížeč. Vyberte tito uživatele a pak přidejte tito do rolí Administrators a Administrators.
 
-[![Byla přidána tito správci a správci rolí](assigning-roles-to-users-vb/_static/image8.png)](assigning-roles-to-users-vb/_static/image7.png)
+[k rolím správců a vedoucích se přidala ![tito.](assigning-roles-to-users-vb/_static/image8.png)](assigning-roles-to-users-vb/_static/image7.png)
 
-**Obrázek 3**: Byla přidána tito správci a správci rolí ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image9.png))
+**Obrázek 3**: tito bylo přidáno do rolí Správci a vedoucí ([kliknutím zobrazíte obrázek v plné velikosti).](assigning-roles-to-users-vb/_static/image9.png)
 
-V dalším kroku vyberte uživatele Bruce z rozevíracího seznamu. Je zpětné volání a zaškrtávací políčka Repeateru jsou aktualizovány pomocí `CheckRolesForSelectedUser`. Protože Bruce zatím nepatří k žádné roli, nekontrolované dvě zaškrtávací políčka. V dalším kroku přidejte Bruce k roli správců.
+V dalším kroku vyberte v rozevíracím seznamu možnost uživatel Bruce. Je k dispozici postback a zaškrtávací políčka pro opakování jsou aktualizována prostřednictvím `CheckRolesForSelectedUser`. Vzhledem k tomu, že Bruce ještě nepatří do žádné role, nejsou tato dvě zaškrtávací políčka zaškrtnutá. V dalším kroku přidejte Bruce do role Nadřízenýs.
 
-[![Bruce byl přidán do Role správců](assigning-roles-to-users-vb/_static/image11.png)](assigning-roles-to-users-vb/_static/image10.png)
+[do role Nadřízený byl přidán ![Bruce](assigning-roles-to-users-vb/_static/image11.png)](assigning-roles-to-users-vb/_static/image10.png)
 
-**Obrázek 4**: Bruce byl přidán do Role správců ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image12.png))
+**Obrázek 4**: Bruce bylo přidáno do role Nadřízený ([kliknutím zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image12.png)).
 
-Provést ještě další ověření funkce `CheckRolesForSelectedUser` metoda, vyberte uživatele, než jsou Tito a Bruce. Všimněte si, jak jsou automaticky není zaškrtnuto zaškrtávací políčka, které označuje, že nepatří k žádné roli. Vraťte se do Tito. Zaškrtávací políčka správců a správců by měly být porovnány.
+Chcete-li dále ověřit funkčnost metody `CheckRolesForSelectedUser`, vyberte uživatele, který není tito nebo Bruce. Všimněte si, že zaškrtávací políčka jsou automaticky nezaškrtnutá a zjišťují, že nepatří do žádné role. Vraťte se na tito. Měla by být zaškrtnutá políčka správci i vedoucí.
 
-## <a name="step-2-building-the-by-roles-user-interface"></a>Krok 2: Vytvoření uživatelského rozhraní "Rolemi"
+## <a name="step-2-building-the-by-roles-user-interface"></a>Krok 2: sestavování uživatelského rozhraní "podle rolí"
 
-V tuto chvíli jsme dokončili rozhraní "uživateli" a můžete začít řeší rozhraní "rolemi". Rozhraní "rolemi" vyzve uživatele k roli vyberte z rozevíracího seznamu a potom zobrazí sadu uživatelů, které patří do této role v GridView.
+V tuto chvíli jsme dokončili rozhraní "podle uživatelů" a připraveni začít řešit rozhraní "podle rolí". Rozhraní "podle rolí" vyzve uživatele k výběru role z rozevíracího seznamu a poté zobrazí skupinu uživatelů, kteří patří do této role v prvku GridView.
 
-Přidejte další ovládací prvek DropDownList k `UsersAndRoles.aspx page`. Umístit tohohle pod ovládacím prvku opakovače, pojmenujte ho `RoleList`a nastavte jeho `AutoPostBack` vlastnost na hodnotu True. Pod, přidejte prvku GridView a pojmenujte ho `RolesUserList`. Tento prvek GridView zobrazí seznam uživatelů, které patří k vybrané roli. Nastavte prvku GridView `AutoGenerateColumns` vlastnost na hodnotu False, přidejte do mřížky TemplateField `Columns` kolekce a nastavte jeho `HeaderText` vlastnost "Uživatelům". Definovat TemplateField `ItemTemplate` tak, aby zobrazil hodnotu výraz datové vazby `Container.DataItem` v `Text` vlastnost popisek s názvem `UserNameLabel`.
+Přidejte do `UsersAndRoles.aspx page`další ovládací prvek DropDownList. Umístěte ho pod ovládací prvek Repeater, pojmenujte ho `RoleList`a nastavte jeho vlastnost `AutoPostBack` na hodnotu true. Pod tím přidejte prvek GridView a pojmenujte jej `RolesUserList`. Tento prvek GridView zobrazí seznam uživatelů, kteří patří do vybrané role. Nastavte vlastnost `AutoGenerateColumns` prvku GridView na hodnotu false, do kolekce `Columns` mřížky přidejte TemplateField a nastavte její vlastnost `HeaderText` na "uživatelé". Definujte `ItemTemplate` TemplateField, aby se zobrazila hodnota výrazu DataBinding `Container.DataItem` ve vlastnosti `Text` popisku s názvem `UserNameLabel`.
 
-Po přidání a konfigurace prvku GridView, "podle role" rozhraní v deklarativní by měl vypadat nějak takto:
+Po přidání a konfiguraci prvku GridView by deklarativní označení "podle role" mělo vypadat podobně jako následující:
 
 [!code-aspx[Main](assigning-roles-to-users-vb/samples/sample12.aspx)]
 
-Potřebujeme k naplnění `RoleList` DropDownList s sadu rolí v systému. Pokud chcete dosáhnout, aktualizujte `BindRolesToList` metodu tak, aby se vytvoří vazbu pole řetězce vrácené `Roles.GetAllRoles` metodu `RolesList` DropDownList (stejně jako `UsersRoleList` Repeater).
+Musíme `RoleList` DropDownList naplnit sadou rolí v systému. Chcete-li toho dosáhnout, aktualizujte metodu `BindRolesToList` tak, že je svázáno pole řetězců vrácené metodou `Roles.GetAllRoles` do `RolesList` DropDownList (a také `UsersRoleList` Repeater).
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample13.vb)]
 
-Poslední dva řádky v `BindRolesToList` metoda byly přidány do sadu rolí pro vytvoření vazby `RoleList` ovládací prvek DropDownList. Obrázek 5 ukazuje konečný výsledek při prohlížení prostřednictvím prohlížeče – v rozevíracím seznamu vyplní rolí v systému.
+Poslední dva řádky v metodě `BindRolesToList` byly přidány pro svázání sady rolí k ovládacímu prvku `RoleList` DropDownList. Obrázek 5 zobrazuje konečný výsledek při zobrazení v prohlížeči – rozevírací seznam vyplněný rolemi systému.
 
-[![Role se zobrazí v RoleList DropDownList](assigning-roles-to-users-vb/_static/image14.png)](assigning-roles-to-users-vb/_static/image13.png)
+[![rolí se zobrazují v RoleList DropDownList](assigning-roles-to-users-vb/_static/image14.png)](assigning-roles-to-users-vb/_static/image13.png)
 
-**Obrázek 5**: Role se zobrazí v `RoleList` DropDownList ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image15.png))
+**Obrázek 5**: role se zobrazují v `RoleList` DropDownList ([kliknutím zobrazíte obrázek v plné velikosti).](assigning-roles-to-users-vb/_static/image15.png)
 
-### <a name="displaying-the-users-that-belong-to-the-selected-role"></a>Zobrazení, které patří k vybrané roli uživatele
+### <a name="displaying-the-users-that-belong-to-the-selected-role"></a>Zobrazují se uživatelé, kteří patří do vybrané role.
 
-Při prvním načtení stránky, nebo když vyberete novou roli ze `RoleList` DropDownList, potřebujeme k zobrazení seznamu, které uživatelům patřícím do této role v prvku GridView. Vytvořit metodu s názvem `DisplayUsersBelongingToRole` pomocí následujícího kódu:
+Při prvním načtení stránky nebo při výběru nové role z `RoleList` DropDownList musíme zobrazit seznam uživatelů, kteří patří do této role v prvku GridView. Pomocí následujícího kódu vytvořte metodu s názvem `DisplayUsersBelongingToRole`:
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample14.vb)]
 
-Tato metoda začíná tím, že získáme vybranou roli z `RoleList` DropDownList. Poté použije [ `Roles.GetUsersInRole(roleName)` metoda](https://msdn.microsoft.com/library/system.web.security.roles.getusersinrole.aspx) k načtení pole řetězců uživatelská jména uživatelů, které patří do této role. Toto pole je pak vázán `RolesUserList` ovládacího prvku GridView.
+Tato metoda začíná získáním vybrané role z `RoleList` DropDownList. Poté pomocí [metody`Roles.GetUsersInRole(roleName)`](https://msdn.microsoft.com/library/system.web.security.roles.getusersinrole.aspx) načte pole řetězců uživatelských jmen uživatelů, kteří patří do této role. Toto pole je pak svázáno s `RolesUserList` GridView.
 
-Tato metoda musí být volána ve dvou případech: při počátečním načtení stránky a při vybranou roli v `RoleList` DropDownList změny. Proto se aktualizace `Page_Load` obslužná rutina události tak, aby byla tato metoda vyvolána po volání `CheckRolesForSelectedUser`. Dále vytvořte obslužnou rutinu události pro `RoleList`společnosti `SelectedIndexChanged` události a tuto metodu volat z něj, příliš.
+Tato metoda musí být volána za dvou okolností: při počátečním načtení stránky a při změně vybrané role v `RoleList` DropDownList. Proto aktualizujte obslužnou rutinu události `Page_Load` tak, aby se tato metoda vyvolala po volání `CheckRolesForSelectedUser`. Dále vytvořte obslužnou rutinu události pro událost `SelectedIndexChanged` `RoleList`a zavolejte tuto metodu i tam.
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample15.vb)]
 
-S tímto kódem na místě `RolesUserList` GridView zobrazeno uživatelům, kteří patří do vybrané roli. Jak je vidět na obrázku 6, se skládá z dva členy role správců: Bruce a Tito.
+Když je tento kód na místě, `RolesUserList` GridView by měl zobrazit uživatele, kteří patří do vybrané role. Jak ukazuje obrázek 6, role správce se skládá ze dvou členů: Bruce a tito.
 
-[![Uvádí uživatele, kteří patří do vybrané Role prvku GridView.](assigning-roles-to-users-vb/_static/image17.png)](assigning-roles-to-users-vb/_static/image16.png)
+[![v prvku GridView zobrazí seznam uživatelů, kteří patří do vybrané role.](assigning-roles-to-users-vb/_static/image17.png)](assigning-roles-to-users-vb/_static/image16.png)
 
-**Obrázek 6**: Prvku GridView uvádí ty uživatelů, patří do vybrané Role ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image18.png))
+**Obrázek 6**: v ovládacím prvku GridView zobrazí seznam uživatelů, kteří patří do vybrané role ([kliknutím zobrazíte obrázek v plné velikosti).](assigning-roles-to-users-vb/_static/image18.png)
 
-### <a name="removing-users-from-the-selected-role"></a>Odstraňují se uživatelé z vybrané Role.
+### <a name="removing-users-from-the-selected-role"></a>Odebírají se uživatelé z vybrané role.
 
-Můžeme rozšířit `RolesUserList` GridView tak, že obsahují sloupec "Remove" tlačítka. Kliknutím na tlačítko "Odebrat" pro konkrétního uživatele, budou odebrány z této role.
+Pojďme rozšířit `RolesUserList` GridView tak, aby obsahovala sloupec tlačítek Remove (odebrat). Kliknutím na tlačítko odebrat pro určitého uživatele je z této role odeberete.
 
-Začněte přidáním pole tlačítko Odstranit do prvku GridView. Ujistěte se, toto pole se zobrazí jako archivované nejvíce vlevo a změnit jeho `DeleteText` vlastnost "Odebrat" z "Odstranit" (výchozí).
+Začněte přidáním pole tlačítko pro odstranění do prvku GridView. Zajistěte, aby se toto pole zobrazovalo jako levé a aby se změnila jeho vlastnost `DeleteText`a z "odstranit" (výchozí) na "Remove".
 
-[![Přidat](assigning-roles-to-users-vb/_static/image20.png)](assigning-roles-to-users-vb/_static/image19.png)
+[![přidat](assigning-roles-to-users-vb/_static/image20.png)](assigning-roles-to-users-vb/_static/image19.png)
 
-**Obrázek 7**: Přidání tlačítka "Odebrat" do prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image21.png))
+**Obrázek 7**: Přidání tlačítka "odebrat" do prvku GridView ([kliknutím zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image21.png))
 
-Po kliknutí na tlačítko "Remove" vyplývá zpětné volání a prvku GridView `RowDeleting` událost se vyvolá. Potřebujeme vytvořit obslužnou rutinu události pro tuto událost a napsat kód, který odebere uživatele z vybrané role. Vytvořte obslužnou rutinu události a pak přidejte následující kód:
+Po kliknutí na tlačítko "odebrat" v důsledku postbacku dojde k vyvolání události `RowDeleting` ovládacího prvku GridView. Pro tuto událost musíme vytvořit obslužnou rutinu události a napsat kód, který odebere uživatele z vybrané role. Vytvořte obslužnou rutinu události a přidejte následující kód:
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample16.vb)]
 
-Kód spustí tak, že určíte název vybrané role. Následně prostřednictvím kódu programu odkazy `UserNameLabel` ovládacího prvku z řádku došlo ke kliknutí na tlačítko jehož "Odebrat" aby bylo možné zjistit uživatelské jméno uživatele k odebrání. Uživatel pak odebrána z role prostřednictvím volání `Roles.RemoveUserFromRole` metody. `RolesUserList` GridView se potom aktualizují a zobrazí se zpráva prostřednictvím `ActionStatus` ovládacímu prvku popisek.
+Kód začíná určením zvoleného názvu role. Potom programově odkazuje na ovládací prvek `UserNameLabel` z řádku, u kterého bylo tlačítko "odebrat" kliknuto, aby bylo možné určit uživatelské jméno uživatele, který má být odebrán. Uživatel je pak odebrán z role prostřednictvím volání metody `Roles.RemoveUserFromRole`. `RolesUserList` prvek GridView se pak aktualizuje a zobrazí se zpráva prostřednictvím ovládacího prvku popisek `ActionStatus`.
 
 > [!NOTE]
-> Pomocí tlačítka "Odebrat" nevyžaduje, aby jakýkoli druh potvrzení od uživatele před odebráním uživatele z role. Můžu pozvat k přidání určitou úroveň potvrzení uživatelem. Jedním z nejjednodušších způsobů k potvrzení akce je prostřednictvím dialogového okna potvrdit na straně klienta. Další informace o této techniky najdete v tématu [přidání Client-Side potvrzení při odstraňování](https://asp.net/learn/data-access/tutorial-42-vb.aspx).
+> Tlačítko Odebrat nevyžaduje před odebráním uživatele z této role žádné potvrzení od uživatele. Beru na schůzku, abyste přidali určitou úroveň potvrzení uživatele. Jedním z nejjednodušších způsobů, jak potvrdit akci, je použít dialogové okno pro potvrzení na straně klienta. Další informace o tomto postupu najdete v tématu [Přidání potvrzení na straně klienta při odstraňování](https://asp.net/learn/data-access/tutorial-42-vb.aspx).
 
-Obrázek 8 ukazuje na stránku, jakmile uživatel Tito byl odebrán ze skupiny správců.
+Obrázek 8 ukazuje stránku po odebrání uživatele tito ze skupiny vedoucích.
 
-[![Jenže Tito už není nadřízeným](assigning-roles-to-users-vb/_static/image23.png)](assigning-roles-to-users-vb/_static/image22.png)
+[![Alas, tito už není správce.](assigning-roles-to-users-vb/_static/image23.png)](assigning-roles-to-users-vb/_static/image22.png)
 
-**Obrázek 8**: Jenže Tito už není nadřízeným ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image24.png))
+**Obrázek 8**: Alas, tito již není správce ([kliknutím zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image24.png)).
 
-### <a name="adding-new-users-to-the-selected-role"></a>Přidání nových uživatelů do vybrané Role.
+### <a name="adding-new-users-to-the-selected-role"></a>Přidávání nových uživatelů do vybrané role
 
-Spolu se odstraňují se uživatelé z vybrané role, návštěvníky na tuto stránku by měla být schopni přidat uživatele k vybrané roli. Nejlepší rozhraní pro přidání uživatele k vybrané roli závisí na počet uživatelských účtů, které plánujete mít. Pokud váš web bude obsahovat pár desítek uživatelské účty nebo méně, můžete zde použít DropDownList. Můžou existovat tisíce uživatelské účty, byste zahrnují uživatelské rozhraní, která umožňuje návštěvníka na stránce pomocí účtů, vyhledání konkrétního účtu, nebo uživatelské účty v jiných nějak filtrovat.
+Společně s odebráním uživatelů z vybrané role by měl být návštěvník této stránky také schopný přidat uživatele do vybrané role. Nejlepší rozhraní pro přidání uživatele k vybrané roli závisí na počtu uživatelských účtů, které očekáváte. Pokud bude váš web obsahovat jenom pár desítek uživatelských účtů nebo méně, můžete tady použít DropDownList. Pokud se může jednat o tisíce uživatelských účtů, měli byste zahrnout uživatelské rozhraní, které návštěvníkovi umožní stránkovat prostřednictvím účtů, vyhledat konkrétní účet nebo filtrovat uživatelské účty jiným způsobem.
 
-Pro tuto stránku použijeme velmi jednoduché rozhraní, která funguje bez ohledu na počet uživatelských účtů v systému. Konkrétně budeme používat textové pole, zobrazení výzvy zadejte uživatelské jméno uživatele, kterého chce přidat do vybrané role musí návštěvníka. Pokud neexistuje žádný uživatel s tímto názvem, nebo pokud uživatel je již členem role, zobrazíme vám zpráva v `ActionStatus` popisek. Ale pokud uživatel existuje a není členem role, přidáme je do role a aktualizaci mřížky.
+Pro tuto stránku můžeme použít velmi jednoduché rozhraní, které funguje bez ohledu na počet uživatelských účtů v systému. Konkrétně použijeme textové pole, které vyzve návštěvníka k zadání uživatelského jména uživatele, který chce přidat do vybrané role. Pokud už žádný uživatel s tímto názvem neexistuje nebo pokud je uživatel členem této role, zobrazí se ve `ActionStatus` popisku zpráva. Pokud ale uživatel existuje a není členem této role, přidáme je do role a aktualizujeme mřížku.
 
-Přidání textového pole a tlačítko pod prvku GridView. Nastavit textové pole `ID` k `UserNameToAddToRole` a tlačítka nastavte `ID` a `Text` vlastností `AddUserToRoleButton` a "Přidání uživatele do Role", v uvedeném pořadí.
+Přidejte textové pole a tlačítko pod prvek GridView. Nastavte `ID` textového pole na `UserNameToAddToRole` a nastavte vlastnosti `ID` a `Text` vlastností na `AddUserToRoleButton` a přidat uživatele do role (v uvedeném pořadí).
 
 [!code-aspx[Main](assigning-roles-to-users-vb/samples/sample17.aspx)]
 
-Dále vytvořte `Click` obslužné rutiny události pro `AddUserToRoleButton` a přidejte následující kód:
+Dále vytvořte obslužnou rutinu události `Click` pro `AddUserToRoleButton` a přidejte následující kód:
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample18.vb)]
 
-Většina kódu v `Click` obslužná rutina události provádí různé ověřovací kontroly. Zajišťuje, že zadaný návštěvník s uživatelským jménem v `UserNameToAddToRole` textového pole, který uživatel v systému existuje a že již nepatří do vybrané roli. Pokud některý z těchto kontrol selže, zobrazí se odpovídající zprávu v `ActionStatus` a obslužná rutina události je byl ukončen. Pokud všechny kontroly úspěšně prošel zpracováním, uživatel je přidán k roli prostřednictvím `Roles.AddUserToRole` metody. Pod textovým polem pro `Text` vlastnost je odstraněné, aktualizaci prvku GridView a `ActionStatus` popisek zobrazí zprávu s upozorněním, že zadaný uživatel se úspěšně přidal do vybranou roli.
+Většina kódu v obslužné rutině události `Click` provádí různé kontroly ověřování. Zajišťuje, že návštěvník zadal uživatelské jméno v `UserNameToAddToRole`m textovém poli, že uživatel existuje v systému a že ještě nepatří do vybrané role. Pokud některá z těchto kontrol neproběhne úspěšně, zobrazí se v `ActionStatus` příslušná zpráva a obslužná rutina události se ukončí. Pokud všechny kontroly projde, uživatel se do role přidá prostřednictvím metody `Roles.AddUserToRole`. Za tímto účelem je vlastnost `Text` textového pole vymazána, prvek GridView se aktualizuje a `ActionStatus` popisek zobrazí zprávu oznamující, že zadaný uživatel byl úspěšně přidán do vybrané role.
 
 > [!NOTE]
-> Pokud chcete mít jistotu, že zadaný uživatel již nepatří do vybrané role, používáme [ `Roles.IsUserInRole(userName, roleName)` metoda](https://msdn.microsoft.com/library/system.web.security.roles.isuserinrole.aspx), která vrací logickou hodnotu označující, zda *uživatelské jméno* je členem skupiny *roleName*. Použijeme tuto metodu znovu v <a id="_msoanchor_2"> </a> [další kurz](role-based-authorization-vb.md) když se podíváme na ověřování na základě rolí.
+> Pro zajištění, že zadaný uživatel ještě nepatří do vybrané role, používáme [metodu`Roles.IsUserInRole(userName, roleName)`](https://msdn.microsoft.com/library/system.web.security.roles.isuserinrole.aspx), která vrací logickou hodnotu, která označuje, jestli je *uživatelské jméno* členem *roleName*. Tuto metodu použijeme znovu v <a id="_msoanchor_2"> </a> [dalším kurzu](role-based-authorization-vb.md) , když se podíváme na autorizaci založenou na rolích.
 
-Na stránce prostřednictvím prohlížeče a vyberte roli správců z `RoleList` DropDownList. Zkuste zadat neplatné uživatelské jméno – měla zobrazit zpráva s vysvětlením, že uživatel neexistuje v systému.
+Navštivte stránku pomocí prohlížeče a vyberte roli vedoucí z `RoleList` DropDownList. Zkuste zadat neplatné uživatelské jméno – zobrazí se zpráva s vysvětlením, že uživatel v systému neexistuje.
 
-[![Nelze přidat neexistující uživatele k roli](assigning-roles-to-users-vb/_static/image26.png)](assigning-roles-to-users-vb/_static/image25.png)
+[![nemůžete do role přidat neexistujícího uživatele](assigning-roles-to-users-vb/_static/image26.png)](assigning-roles-to-users-vb/_static/image25.png)
 
-**Obrázek 9**: Nelze přidat neexistující uživatele k roli ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image27.png))
+**Obrázek 9**: do role nemůžete přidat neexistujícího uživatele ([kliknutím zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image27.png)).
 
-Nyní přidejte platného uživatele. Pokračujte a znovu přidejte Tito do role správců.
+Teď zkuste přidat platného uživatele. Pokračujte a znovu přidejte tito do role vedoucí.
 
-[![Tito je opět Supervisor!](assigning-roles-to-users-vb/_static/image29.png)](assigning-roles-to-users-vb/_static/image28.png)
+[![tito je znovu vedoucí!](assigning-roles-to-users-vb/_static/image29.png)](assigning-roles-to-users-vb/_static/image28.png)
 
-**Obrázek 10**: Tito je opět Supervisor!  ([Kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image30.png))
+**Obrázek 10**: tito je potom znovu vedoucí!  ([Kliknutím zobrazíte obrázek v plné velikosti.](assigning-roles-to-users-vb/_static/image30.png))
 
-## <a name="step-3-cross-updating-the-by-user-and-by-role-interfaces"></a>Krok 3: Aktualizuje se mezi "User" a "Role" rozhraní
+## <a name="step-3-cross-updating-the-by-user-and-by-role-interfaces"></a>Krok 3: Křížová aktualizace rozhraní "podle uživatele" a "podle role"
 
-`UsersAndRoles.aspx` Stránka nabízí dvě odlišné rozhraní pro správu uživatelů a rolí. V současné době tato dvě rozhraní fungují nezávisle na mezi sebou, takže je možné, že změny provedené v jednom rozhraní okamžitě neprojeví v jiném. Představte si například, že vybere návštěvníka na stránce role správců z `RoleList` DropDownList, které jsou uvedeny Bruce a Tito jako členy. V dalším kroku návštěvníka vybere Tito z `UserList` DropDownList, které slouží k ověření správců a správců zaškrtávací políčka v `UsersRoleList` opakovače. Pokud návštěvníka pak zruší tohoto systému zaškrtnutí roli vedoucí z opakovače, Tito je odebrán z role správců, ale tato změna se neprojeví v rozhraní "podle role". Prvku GridView, bude mít Tito jako členem role správců.
+Stránka `UsersAndRoles.aspx` nabízí dvě odlišná rozhraní pro správu uživatelů a rolí. V současné době tato dvě rozhraní pracují nezávisle na sobě, takže je možné, že se změny provedené v jednom rozhraní neprojeví okamžitě. Představte si například, že návštěvník na stránku vybere roli Nadřízenýs z `RoleList` DropDownList, která jako své členy vypíše seznam Bruce a tito. V dalším kroku návštěvník vybere tito z `UserList` DropDownList, který kontroluje zaškrtnutí políček správci a vedoucí v `UsersRoleList`m OPAKOVAČI. Pokud návštěvník pak zrušit kontrolu role správce od tohoto opakovače, tito se odebere z role Nadřízený, ale tato úprava se neprojeví v rozhraní "by role". Prvek GridView bude stále zobrazovat tito jako člen role Nadřízenýs.
 
-Chcete-li vyřešit to potřebujeme k aktualizaci prvku GridView. pokaždé, když se role je zaškrtnuté nebo nezaškrtnuté z `UsersRoleList` opakovače. Podobně musíme aktualizovat Opakovači pokaždé, když se uživatel se přidaly nebo odebraly roli z rozhraní "podle role".
+Chcete-li tento problém vyřešit, je nutné aktualizovat prvek GridView vždy, když je role zaškrtnuta nebo není zkontrolována z `UsersRoleList`ho opakovače. Podobně je potřeba aktualizovat Repeater vždy, když se uživatel odebere nebo přidá do role z rozhraní "podle role".
 
-Repeater v rozhraní "uživatelem" se aktualizují pomocí volání `CheckRolesForSelectedUser` metody. Rozhraní "podle role", lze upravit v `RolesUserList` prvku GridView `RowDeleting` obslužné rutiny události a `AddUserToRoleButton` tlačítka `Click` obslužné rutiny události. Proto potřebujeme k volání `CheckRolesForSelectedUser` metodu z každé z těchto metod.
+Opakovač v rozhraní "by uživatel" se aktualizuje voláním metody `CheckRolesForSelectedUser`. Rozhraní "by role" lze upravit v obslužné rutině události `RowDeleting` prvku GridView `RolesUserList` a obslužné rutiny události `Click` tlačítka `AddUserToRoleButton`. Proto je nutné volat metodu `CheckRolesForSelectedUser` od každé z těchto metod.
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample19.vb)]
 
-Podobně se aktualizují GridView v rozhraní "podle role" voláním `DisplayUsersBelongingToRole` metoda a interface "uživatelem" je upravena `RoleCheckBox_CheckChanged` obslužné rutiny události. Proto potřebujeme k volání `DisplayUsersBelongingToRole` metodu z této obslužné rutiny události.
+Podobně se ovládací prvek GridView v rozhraní "by role" aktualizuje voláním metody `DisplayUsersBelongingToRole` a rozhraní "podle uživatele" je změněno prostřednictvím obslužné rutiny události `RoleCheckBox_CheckChanged`. Proto je nutné volat metodu `DisplayUsersBelongingToRole` z této obslužné rutiny události.
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample20.vb)]
 
-S těmito změnami drobné úpravy v kódu "user" a "role" rozhraní nyní správně mezi update. Chcete-li to ověřit, najdete na stránce prostřednictvím prohlížeče a vyberte Tito a správců z `UserList` a `RoleList` DropDownLists, v uvedeném pořadí. Všimněte si, že jako zrušte zaškrtnutí políčka role správců pro Tito z Repeater v rozhraní "uživatelem" Tito se automaticky odebere z prvku GridView v rozhraní "podle role". Přidání Tito zpět do role správců z rozhraní "podle role" automaticky znovu ověří nadřízeným zaškrtávacího políčka v rozhraní "uživatelem".
+U těchto vedlejších změn kódu jsou nyní správně vzájemně aktualizovány rozhraní "podle uživatele" a "podle rolí". Pokud to chcete ověřit, přejděte na stránku pomocí prohlížeče a vyberte tito a vedoucí z `UserList` a `RoleList` DropDownLists (v uvedeném pořadí). Všimněte si, že když zrušíte kontrolu role dohlížitelé pro tito z opakovače v rozhraní "by uživatel", tito se automaticky odebere z prvku GridView v rozhraní "by role". Přidání tito zpět do role dohlížitelé z rozhraní "by role" automaticky znovu kontroluje zaškrtnutí políčka vedoucí v rozhraní "podle uživatele".
 
-## <a name="step-4-customizing-the-createuserwizard-to-include-a-specify-roles-step"></a>Krok 4: Přizpůsobení CreateUserWizard zahrnout krok "Zadejte role"
+## <a name="step-4-customizing-the-createuserwizard-to-include-a-specify-roles-step"></a>Krok 4: přizpůsobení ovládacím CreateUserWizard tak, aby zahrnovalo krok "zadání rolí"
 
-V <a id="_msoanchor_3"> </a> [ *vytváření uživatelských účtů* ](../membership/creating-user-accounts-vb.md) kurzu jsme viděli, jak pomocí ovládacího prvku CreateUserWizard webové zajištění rozhraní pro vytvoření nového uživatelského účtu. Ovládacím prvku CreateUserWizard je možné v jednom ze dvou způsobů:
+<a id="_msoanchor_3"> </a>V kurzu [*vytváření uživatelských účtů*](../membership/creating-user-accounts-vb.md) jsme zjistili, jak pomocí webového ovládacího prvku ovládacím CreateUserWizard poskytnout rozhraní pro vytvoření nového uživatelského účtu. Ovládací prvek ovládacím CreateUserWizard lze použít jedním ze dvou způsobů:
 
 - Jako prostředek pro návštěvníky vytvořit vlastní uživatelský účet na webu a
-- Jako prostředek pro správce vytvořit nové účty
+- Jako prostředek pro správce vytváření nových účtů
 
-V prvním případě použití návštěvník na web a vyplní CreateUserWizard, jejich údaje zadat-li se zaregistrovat na webu. V druhém případě správce vytvoří nový účet jiné osoby.
+V prvním případu použití návštěvník dostane na web a vyplní ovládacím CreateUserWizard a zadá své informace, aby se mohl zaregistrovat na webu. Ve druhém případě správce vytvoří nový účet pro jinou osobu.
 
-Když účet se vytváří microsoftem nebo správcem pro jinou osobu, může být užitečné, aby správce mohl zadat nový uživatelský účet patří ke kterým rolím. V <a id="_msoanchor_4"> </a> [ *ukládání* *Další informace o uživateli* ](../membership/storing-additional-user-information-vb.md) kurzu jsme viděli, jak přizpůsobit: můžete přidat další CreateUserWizard `WizardSteps`. Podívejme se na tom, jak přidat další krok CreateUserWizard zadejte nové uživatelské role.
+Když je účet vytvořen správcem nějaké jiné osoby, může být užitečné, aby správce mohl určit, k jakým rolím nový uživatelský účet patří. <a id="_msoanchor_4"> </a>V kurzu [ *ukládání* *dalších informací o uživatelích* ](../membership/storing-additional-user-information-vb.md) jsme viděli, jak přizpůsobit ovládacím CreateUserWizard přidáním dalších `WizardSteps`. Pojďme se podívat na to, jak do ovládacím CreateUserWizard přidat další krok, abyste mohli zadat role nového uživatele.
 
-Otevřít `CreateUserWizardWithRoles.aspx` stránce a přidání ovládacího prvku CreateUserWizard s názvem `RegisterUserWithRoles`. Nastavit u tohoto prvku `ContinueDestinationPageUrl` vlastnost "~ / Default.aspx". Protože zde spočívá, že správce budete používat tohoto ovládacího prvku CreateUserWizard k vytvoření nové uživatelské účty, nastavit u tohoto prvku `LoginCreatedUser` vlastnost na hodnotu False. To `LoginCreatedUser` vlastnost určuje, zda návštěvníka automaticky přihlášeni jako uživatel nově vytvořené a výchozí hodnota je True. Jsme to nastavili na hodnotu False vzhledem k tomu, když správce vytvoří nový účet my chceme zajistit mu přihlášení jako sám.
+Otevřete stránku `CreateUserWizardWithRoles.aspx` a přidejte ovládací prvek ovládacím CreateUserWizard s názvem `RegisterUserWithRoles`. Nastavte vlastnost `ContinueDestinationPageUrl` ovládacího prvku na ~/Default.aspx. Vzhledem k tomu, že tady je, že správce bude používat tento ovládací prvek ovládacím CreateUserWizard k vytváření nových uživatelských účtů, nastavte vlastnost `LoginCreatedUser` ovládacího prvku na hodnotu false. Tato vlastnost `LoginCreatedUser` určuje, zda je návštěvník automaticky přihlášen jako právě vytvořený uživatel a má výchozí hodnotu true. Nastavíme ji na false, protože když správce vytvoří nový účet, chceme ho nechat přihlášený jako sám.
 
-V dalším kroku vyberte "Přidat nebo odebrat `WizardSteps`..." z inteligentních značek CreateUserWizard a přidejte nový `WizardStep`a nastavte jeho `ID` k `SpecifyRolesStep`. Přesunout `SpecifyRolesStep WizardStep` tak, že jde o za krok "Sign k svůj nový účet", ale před krokem "Dokončených". Nastavte `WizardStep`společnosti `Title` vlastnost rolím"zadejte", jeho `StepType` vlastnost `Step`a jeho `AllowReturn` vlastnost na hodnotu False.
+V dalším kroku vyberte Přidat nebo odebrat `WizardSteps`... možnost z inteligentní značky ovládacím CreateUserWizard a přidejte novou `WizardStep`a nastavte její `ID` na `SpecifyRolesStep`. Přesuňte `SpecifyRolesStep WizardStep` tak, aby se nastavila po kroku registrace nového účtu, ale před krokem dokončení. Nastavte vlastnost `Title` `WizardStep`na zadat role, vlastnost `StepType` na `Step`a vlastnost `AllowReturn` na hodnotu false.
 
-[![Přidat](assigning-roles-to-users-vb/_static/image32.png)](assigning-roles-to-users-vb/_static/image31.png)
+[![přidat](assigning-roles-to-users-vb/_static/image32.png)](assigning-roles-to-users-vb/_static/image31.png)
 
-**Obrázek 11**: Přidání "Zadejte rolí" `WizardStep` k CreateUserWizard ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image33.png))
+**Obrázek 11**: přidejte `WizardStep` "zadat role" do ovládacím CreateUserWizard ([kliknutím zobrazíte obrázek v plné velikosti).](assigning-roles-to-users-vb/_static/image33.png)
 
-Po této změně vašeho CreateUserWizard deklarativní by měl vypadat nějak takto:
+Po této změně by deklarativní označení ovládacím CreateUserWizard mělo vypadat takto:
 
 [!code-aspx[Main](assigning-roles-to-users-vb/samples/sample21.aspx)]
 
-V části "Určení role" `WizardStep`, přidejte CheckBoxList s názvem `RoleList.` tento CheckBoxList zobrazí seznam dostupných rolí, umožňuje uživateli na stránce zkontrolujte, jaké role nově vytvořený uživatel patří.
+V `WizardStep`zadejte role, přidejte CheckBoxList s názvem `RoleList.` Tato funkce CheckBoxList zobrazí seznam dostupných rolí a umožní osobě navštěvovat tuto stránku, aby zkontrolovala, k jakým rolím patří nově vytvořený uživatel.
 
-S dvě úlohy kódování ponechali jsme: nejprve musí naplníme `RoleList` CheckBoxList s rolemi v systému; za druhé, musíme přidat vytvořeného uživatele do vybrané role, když uživatel přesune z kroku "Zadejte role" krok "Dokončit". Můžeme provést první úkol v `Page_Load` obslužné rutiny události. Následující kód programově odkazy `RoleList` zaškrtávací políčko na první přejděte na stránku a sváže s rolí v systému k němu.
+Jsme opustili dvě úlohy kódování: Nejdřív je potřeba naplnit `RoleList` CheckBoxList pomocí rolí v systému. za druhé, musíme přidat vytvořeného uživatele k vybraným rolím, když se uživatel přesune z kroku "zadat role" do kroku "dokončeno". V obslužné rutině události `Page_Load` můžeme provést první úlohu. Následující kód programově odkazuje na zaškrtávací políčko `RoleList` na první návštěvě stránky a vytvoří z něj role v systému.
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample22.vb)]
 
-Ve výše uvedeném kódu by měla vypadat povědomě. V <a id="_msoanchor_5"> </a> [ *ukládání* *Další informace o uživateli* ](../membership/storing-additional-user-information-vb.md) kurzu jsme použili dva `FindControl` příkazy k odkazování webový ovládací prvek z v rámci vlastní `WizardStep`. A kód, který se váže CheckBoxList role byla získána z dříve v tomto kurzu.
+Výše uvedený kód by měl vypadat dobře. <a id="_msoanchor_5"> </a>V kurzu [ *ukládání* *dalších informací o uživateli* ](../membership/storing-additional-user-information-vb.md) jsme použili dva příkazy `FindControl` pro odkazování na webový ovládací prvek z vlastního `WizardStep`. A kód, který váže role k CheckBoxList, byl získán z výše v tomto kurzu.
 
-Aby bylo možné provést druhou úlohou programování potřebujeme vědět při dokončení kroku "Zadejte rolí". Vzpomínáte, který má CreateUserWizard `ActiveStepChanged` událost, která se spustí pokaždé, když návštěvníka přejde od jednoho kroku do druhého. Tady můžete určíme, pokud uživatel dosáhl krok "Dokončit". Pokud ano, potřebujeme přidat uživatele do vybraných rolí.
+Aby bylo možné provést druhý programovací úkol, musíme po dokončení kroku "zadání rolí" informovat. Odvolání, že ovládacím CreateUserWizard má událost `ActiveStepChanged`, která se aktivuje při každém přechodu návštěvníka z jednoho kroku na druhý. Tady můžeme určit, jestli uživatel dosáhl kroku "dokončení"; Pokud ano, musíme přidat uživatele k vybraným rolím.
 
-Vytvořte obslužnou rutinu události pro `ActiveStepChanged` událostí a přidejte následující kód:
+Vytvořte obslužnou rutinu události pro událost `ActiveStepChanged` a přidejte následující kód:
 
 [!code-vb[Main](assigning-roles-to-users-vb/samples/sample23.vb)]
 
-Pokud uživatel právě dosáhl krok "Dokončeno", obslužná rutina události vytvoří výčet položky `RoleList` CheckBoxList a nově vytvořené uživatelem je přiřazen k vybrané role.
+Pokud uživatel právě dosáhl kroku "dokončeno", obslužná rutina události zobrazí výčet položek `RoleList` CheckBoxList a právě vytvořeného uživatele je přiřazeno k vybraným rolím.
 
-Navštivte tuto stránku prostřednictvím prohlížeče. Prvním krokem při CreateUserWizard je standardní krok "Sign k svůj nový účet", který zobrazí výzvu k zadání nové uživatelské jméno, heslo, e-mailu a další informace o klíči. Zadejte informace k vytvoření nového uživatele s názvem Wanda.
+Navštivte tuto stránku v prohlížeči. Prvním krokem v ovládacím CreateUserWizard je standardní krok zaregistrovat se k novému účtu, který vyzývá k zadání uživatelského jména, hesla, e-mailu a dalších klíčových informací nového uživatele. Zadejte informace pro vytvoření nového uživatele s názvem Wanda.
 
-[![Vytvoření nového uživatele s názvem Wanda](assigning-roles-to-users-vb/_static/image35.png)](assigning-roles-to-users-vb/_static/image34.png)
+[![vytvořit nového uživatele s názvem Wanda](assigning-roles-to-users-vb/_static/image35.png)](assigning-roles-to-users-vb/_static/image34.png)
 
-**Obrázek 12**: Vytvořit nový účet uživatele s názvem Wanda ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image36.png))
+**Obrázek 12**: vytvoření nového uživatele s názvem Wanda ([kliknutím zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image36.png))
 
-Klikněte na tlačítko "Create User". CreateUserWizard interně volá `Membership.CreateUser` metoda vytvoření nového uživatelského účtu a pak pokračuje k dalšímu kroku, "Zadejte role." Tady jsou uvedené role systému. Zaškrtněte políčko nadřízeným a klikněte na tlačítko Další.
+Klikněte na tlačítko vytvořit uživatele. Ovládacím CreateUserWizard interně volá metodu `Membership.CreateUser`, vytváří nový uživatelský účet a následně postupuje k dalšímu kroku, "zadání rolí". Tady jsou uvedené systémové role. Zaškrtněte políčko vedoucí a klikněte na další.
 
-[![Ujistěte se, Wanda členem Role správců](assigning-roles-to-users-vb/_static/image38.png)](assigning-roles-to-users-vb/_static/image37.png)
+[![Wanda členství v roli správce](assigning-roles-to-users-vb/_static/image38.png)](assigning-roles-to-users-vb/_static/image37.png)
 
-**Obrázek 13**: Ujistěte se, Wanda členem Role správců ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image39.png))
+**Obrázek 13**: vytvoření Wanda člena role Nadřízený ([kliknutím zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image39.png))
 
-Kliknutím na další způsobí, že zpětné volání a aktualizace `ActiveStep` na krok "Dokončit". V `ActiveStepChanged` obslužná rutina události, nedávno vytvořen uživatelský účet je přiřazen k roli správců. Chcete-li to ověřit, vraťte se na `UsersAndRoles.aspx` stránku a vybrat správců z `RoleList` DropDownList. Jak ukazuje obrázek 14 správců jsou nyní tvořené tři uživatele: Bruce, Tito a Wanda.
+Kliknutím na tlačítko Další dojde k postbacku a aktualizace `ActiveStep` na "dokončený" krok. V obslužné rutině události `ActiveStepChanged` je nedávno vytvořený uživatelský účet přiřazen k roli Nadřízenýs. Pokud to chcete ověřit, vraťte se na stránku `UsersAndRoles.aspx` a vyberte Správce z `RoleList` DropDownList. Jak ukazuje obrázek 14, dohlížitelé se teď skládají ze tří uživatelů: Bruce, tito a Wanda.
 
-[![Bruce, Tito a Wanda jsou všech správců](assigning-roles-to-users-vb/_static/image41.png)](assigning-roles-to-users-vb/_static/image40.png)
+[Všechny správce ![Bruce, tito a Wanda](assigning-roles-to-users-vb/_static/image41.png)](assigning-roles-to-users-vb/_static/image40.png)
 
-**Obrázek 14**: Bruce, Tito a Wanda jsou všechny správců ([kliknutím ji zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image42.png))
+**Obrázek 14**: Bruce, tito a Wanda jsou všichni vedoucí ([kliknutím zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image42.png)).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Architektura rolí nabízí metody pro načtení informací o rolích a metody pro určení, které uživatelé patří do zadané role konkrétního uživatele. Kromě toho existuje několik metod pro přidání a odebrání jednoho nebo více uživatelů k jedné nebo více rolím. V tomto kurzu jsme se zaměřili na právě dvě z těchto metod: `AddUserToRole` a `RemoveUserFromRole`. Existují další varianty navržené a přidávání více uživatelů do jedné role přiřadit víc rolí na jednoho uživatele.
+Rozhraní role nabízí metody pro načítání informací o rolích a metodách konkrétního uživatele k určení toho, co uživatelé patří do zadané role. Kromě toho existuje několik způsobů, jak přidat a odebrat jednoho nebo více uživatelů k jedné nebo více rolím. V tomto kurzu se zaměřujeme jenom na dvě z těchto metod: `AddUserToRole` a `RemoveUserFromRole`. Existují další varianty navržené pro přidání více uživatelů k jedné roli a přiřazení více rolí jednomu uživateli.
 
-Tento kurz obsahuje taky podívat na rozšíření ovládacím prvku CreateUserWizard zahrnout `WizardStep` k určení nově vytvořené uživatelské role. Takové krok může pomoct zjednodušit proces vytváření uživatelských účtů pro nové uživatele správce.
+Tento kurz také obsahuje přehled o rozšíření ovládacího prvku ovládacím CreateUserWizard, který obsahuje `WizardStep` k určení rolí nově vytvořeného uživatele. Tento krok může správcům přispět k zjednodušení procesu vytváření uživatelských účtů pro nové uživatele.
 
-V tuto chvíli jsme viděli jak vytvářet a odstraňovat role a jak přidávat a odebírat uživatele z role. Ale musíme ještě podívejte se na použití ověřování na základě rolí. V <a id="_msoanchor_6"> </a> [následující kurz](role-based-authorization-vb.md) se podíváme na definování autorizačních pravidel adres URL na základě rolí role a jak omezit tak jeho funkčnost úrovni stránky založené na rolích aktuálně přihlášeného uživatele.
+V tuto chvíli jsme viděli, jak vytvořit a odstranit role a jak přidávat a odebírat uživatele z rolí. Ale zatím jsme se vyhledali při použití autorizace na základě rolí. <a id="_msoanchor_6"> </a>V [následujícím kurzu](role-based-authorization-vb.md) se podíváme na definování autorizačních pravidel URL pro role na základě rolí a také omezení funkcí na úrovni stránek na základě rolí aktuálně přihlášeného uživatele.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ### <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
-- [Přehled nástroje pro správu webu technologie ASP.NET](https://msdn.microsoft.com/library/ms228053.aspx)
-- [Zkoumání ASP. Členství, role a profilu sítě.](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx)
-- [Vlastní nástroj pro správu webu se zajištěním provozu](http://aspnet.4guysfromrolla.com/articles/052307-1.aspx)
+- [Přehled nástroje pro správu webu ASP.NET](https://msdn.microsoft.com/library/ms228053.aspx)
+- [Prozkoumává se ASP. Členství v síti, role a profil](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx)
+- [Postup při zavedení vlastního nástroje pro správu webu](http://aspnet.4guysfromrolla.com/articles/052307-1.aspx)
 
 ### <a name="about-the-author"></a>O autorovi
 
-Scott Meisnerová, Autor více ASP/ASP.NET knih a zakladatelem 4GuysFromRolla.com, má pracovali Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy  *[Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott může být dostupný na adrese [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) nebo prostřednictvím na svém blogu [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
+Scott Mitchell, autor několika stránek ASP/ASP. NET Books a zakladatel of 4GuysFromRolla.com, pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je *[Sams naučit se ASP.NET 2,0 za 24 hodin](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)* . Scott se dá kontaktovat [mitchell@4guysfromrolla.com](mailto:mitchell@4guysfromrolla.com) nebo prostřednictvím svého blogu na [http://ScottOnWriting.NET](http://scottonwriting.net/).
 
-### <a name="special-thanks-to"></a>Speciální k...
+### <a name="special-thanks-to"></a>Zvláštní díky...
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Teresy Murphy. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontrolor pro tento kurz byl Teresa Murphy. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](creating-and-managing-roles-vb.md)
-> [další](role-based-authorization-vb.md)
+> [Další](role-based-authorization-vb.md)

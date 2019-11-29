@@ -1,149 +1,149 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage
-title: Nestrukturované úložiště objektů Blob (vytváření skutečných cloudových aplikací s Azure) | Dokumentace Microsoftu
+title: Nestrukturované Blob Storage (vytváření skutečných cloudových aplikací s Azure) | Microsoft Docs
 author: MikeWasson
-description: Vytváření reálného světa cloudových aplikací s Azure e kniha je založená na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které se dají mu...
+description: Vytváření reálných cloudových aplikací pomocí Azure je založené na prezentaci vyvinuté Scottem Guthrie. Vysvětluje 13 vzorů a postupů, které mohou...
 ms.author: riande
 ms.date: 03/30/2015
 ms.assetid: 9f05ccb1-2004-4661-ad8b-c370e6c09c8e
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage
 msc.type: authoredcontent
-ms.openlocfilehash: 8148891f68ac8417400859540516e44be007dab7
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 2afd4b5cf640eb97080de7e5280409f5e5347731
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65118313"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74583624"
 ---
-# <a name="unstructured-blob-storage-building-real-world-cloud-apps-with-azure"></a>Nestrukturované úložiště objektů Blob (vytváření skutečných cloudových aplikací s Azure)
+# <a name="unstructured-blob-storage-building-real-world-cloud-apps-with-azure"></a>Nestrukturované Blob Storage (vytváření skutečných cloudových aplikací s Azure)
 
-podle [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Petr Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
 
-[Stažení opravit projektu](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stáhnout elektronickou knihu](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
+[Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
-> **Vytváření reálného světa cloudových aplikací s Azure** e knihy je založena na prezentaci vypracovanou organizací cccppf Scott Guthrie. Vysvětluje 13 vzory a postupy, které vám pomůžou být úspěšný vývoj webových aplikací v cloudu. Informace o e kniha najdete v tématu [první kapitoly](introduction.md).
+> **Vytváření reálných cloudových aplikací pomocí Azure** je založené na prezentaci vyvinuté Scottem Guthrie. Vysvětluje 13 vzorů a postupů, které vám pomůžou úspěšně vyvíjet webové aplikace pro Cloud. Informace o elektronické příručce najdete v [první kapitole](introduction.md).
 
-V předchozích kapitol jsme zvažovali schémata dělení a vysvětlení způsobu, jakým aplikace Fix It ukládá obrázky ve službě Azure Storage Blob a další data úlohy ve službě Azure SQL Database. V této kapitole jsme podrobněji služby Blob service a ukazují, jak je implementován v projektu kódu Fix It.
+V předchozí kapitole jsme se podívali na oddíly schémat a vysvětlete, jak aplikace opravit IT ukládá obrázky do služby Azure Storage Blob a další data úloh v Azure SQL Database. V této kapitole se podrobněji seznámíme s Blob service a ukážeme, jak se implementuje v kódu projektu opravit IT.
 
-## <a name="what-is-blob-storage"></a>Co je služba Blob storage?
+## <a name="what-is-blob-storage"></a>Co je BLOB Storage?
 
-Služba Azure Storage Blob poskytuje způsob, jak ukládat soubory v cloudu. Blob service má několik výhod oproti ukládání souborů v systému souborů místní sítě:
+Služba Azure Storage Blob poskytuje způsob, jak ukládat soubory v cloudu. Blob service má řadu výhod pro ukládání souborů do místního síťového systému souborů:
 
-- Je vysoce škálovatelná. Jeden účet úložiště můžete ukládat [stovky terabajtů](https://msdn.microsoft.com/library/windowsazure/dn249410.aspx), a může mít více účtů úložiště. Některé z největších zákazníkům Azure ukládat stovky petabajtů. Aplikace Microsoft SkyDrive využívá úložiště objektů blob.
-- Je trvalý. Každý soubor, které ukládáte ve službě Blob service je automaticky zálohována.
-- Poskytuje vysokou dostupnost. [Smlouva SLA pro Storage](https://go.microsoft.com/fwlink/p/?linkid=159705&amp;clcid=0x409) příslibů 99,99 % minimálně 99,9 % dostupnost, v závislosti na zvolené možnosti redundance geograficky zvolíte.
-- Je součástí Azure, což znamená, že právě ukládání a načítání souborů, platíte pouze za skutečný objem úložiště, které používáte, platforma jako služba (PaaS) a Azure automaticky zajistí nastavovat a spravovat všechny virtuální počítače a požadované pro diskové jednotky Služba.
-- Blob service můžete přistupovat pomocí rozhraní REST API nebo pomocí rozhraní API pro programovací jazyk. Sady SDK jsou dostupné pro .NET, Java, Ruby a dalších.
-- Při ukládání souboru ve službě Blob service můžete snadno si je veřejně dostupný přes Internet.
-- Můžete zabezpečit soubory v objektu Blob service, můžete k přístup jenom Autorizovaní uživatelé, nebo můžete poskytnout dočasný přístup tokeny, které zpřístupní jejich někdo pouze pro omezenou dobu.
+- Je vysoce škálovatelná. Jeden účet úložiště může ukládat [stovky terabajtů](https://msdn.microsoft.com/library/windowsazure/dn249410.aspx)a můžete mít víc účtů úložiště. Některé z největších zákazníků Azure ukládají stovky petabajty. Microsoft SkyDrive využívá úložiště objektů BLOB.
+- Je trvalý. Každý soubor, který ukládáte do Blob service, se automaticky zálohuje.
+- Poskytuje vysokou dostupnost. [Smlouva SLA pro úložiště](https://go.microsoft.com/fwlink/p/?linkid=159705&amp;clcid=0x409) příslibů 99,9% nebo 99,99% doba provozu v závislosti na tom, jakou možnost geografického redundance zvolíte.
+- Azure je funkce typu platforma jako služba (PaaS), což znamená, že jenom ukládáte a načítáte soubory a platíte jenom za skutečně využité úložiště a Azure automaticky postará o nastavení a správu všech virtuálních počítačů a diskových jednotek vyžadovaných pro službám.
+- K Blob service můžete přistupovat pomocí REST API nebo pomocí rozhraní API programovacího jazyka. Sady SDK jsou dostupné pro .NET, Java, Ruby a další.
+- Když soubor uložíte v Blob service, můžete ho snadno zpřístupnit prostřednictvím Internetu.
+- Soubory můžete zabezpečit v Blob service tak, aby k nim měli přístup jenom autorizovaní uživatelé, nebo můžete poskytnout dočasné přístupové tokeny, které je zpřístupní někomu jenom po omezenou dobu.
 
-Kdykoli už vytváříte aplikace pro Azure a chcete se ukládá velké množství dat, která v místním prostředí přejde v souborech – jako jsou obrázky, videa, soubory PDF, tabulky a podobně – zvažte službu Blob service.
+Kdykoli vytváříte aplikaci pro Azure a chcete ukládat spoustu dat, která by v místním prostředí vypadala v souborech, jako jsou obrázky, videa, soubory PDF, tabulky atd. – zvažte Blob service.
 
-## <a name="creating-a-storage-account"></a>Vytváří se účet úložiště
+## <a name="creating-a-storage-account"></a>Vytváří se účet úložiště.
 
-Začínáme se službou Blob service můžete vytvořit účet úložiště v Azure. Na portálu klikněte na tlačítko **nový** -- **datové služby** -- **úložiště** -- **rychlé vytvoření**, a potom zadejte adresu URL a umístěním datového centra. Umístěním datového centra by měl být stejný jako webové aplikace.
+Pokud chcete začít s Blob service vytvoříte účet úložiště v Azure. Na portálu klikněte na **nový** -- **Data Services** -- **úložiště** -- **rychlé vytvoření**a pak zadejte adresu URL a umístění datového centra. Umístění datového centra by mělo být stejné jako u vaší webové aplikace.
 
-![Vytvořit úložiště acct](unstructured-blob-storage/_static/image1.png)
+![Vytvořit ACCT úložiště](unstructured-blob-storage/_static/image1.png)
 
-Vyberte primární oblasti, ve které chcete obsah uložit, a pokud se rozhodnete [geografickou replikaci](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx#_Geo_Redundant_Storage) možnost, Azure vytvoří repliky svých dat v různých datových center v jiné oblasti země. Například pokud se rozhodnete datové centrum západ USA, při ukládání souboru, který přejde na datové centrum západ USA, ale na pozadí Azure také zkopíruje jej do jednoho z jiných datových centrech USA. V případě havárie v jedné oblasti země vaše data jsou stále bezpečné.
+Vyberete primární oblast, do které chcete obsah uložit, a pokud zvolíte možnost [geografické replikace](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx#_Geo_Redundant_Storage) , Azure vytvoří repliky všech vašich dat v jiném datovém centru v jiné oblasti země. Pokud například zvolíte datové centrum Western US, uložíte soubor, který se nachází v datovém centru Western US, ale v Azure na pozadí se také zkopíruje do jednoho z dalších datových center USA. Pokud dojde k havárii v jedné oblasti země, vaše data budou pořád bezpečná.
 
-Azure nebudou data replikovat napříč několika geograficky politické hranice: Pokud je vaše primární umístění v USA, vaše soubory jsou pouze replikovat do jiné oblasti v USA, Pokud je vaše primární umístění Austrálie, soubory se replikují jenom do jiného datového centra v Austrálii.
+Azure neprovede replikaci dat mezi geograficky politickými hranicemi: Pokud je vaše primární umístění v USA, replikují se soubory jenom do jiné oblasti v USA. Pokud je vaše primární umístění Austrálie, soubory se replikují jenom do jiného datového centra v Austrálii.
 
-Samozřejmě můžete také vytvoříte účet úložiště spuštěním příkazů ze skriptu, jak jsme viděli dříve. Tady je příkaz prostředí Windows PowerShell k vytvoření účtu úložiště:
+Účet úložiště samozřejmě můžete vytvořit také spuštěním příkazů ze skriptu, jak jsme viděli dříve. Účet úložiště vytvoříte pomocí příkazu Windows PowerShellu:
 
 [!code-powershell[Main](unstructured-blob-storage/samples/sample1.ps1)]
 
-Jakmile budete mít účet úložiště, můžete okamžitě začít ukládání souborů ve službě Blob service.
+Jakmile budete mít účet úložiště, můžete ihned začít ukládat soubory do Blob service.
 
-## <a name="using-blob-storage-in-the-fix-it-app"></a>Používání úložiště objektů Blob v aplikace Fix It
+## <a name="using-blob-storage-in-the-fix-it-app"></a>Použití úložiště objektů BLOB v aplikaci opravit IT
 
-Aplikace Fix It umožňuje nahrát fotografie.
+Aplikace opravit IT umožňuje nahrávat fotky.
 
-![Vytvořte úlohu Fix It](unstructured-blob-storage/_static/image2.png)
+![Vytvořit úlohu opravy IT](unstructured-blob-storage/_static/image2.png)
 
-Po kliknutí na **vytvořit automatickou**, aplikace nahraje zadaný soubor s obrázkem a ukládá ho do služby Blob service.
+Když kliknete na **vytvořit fixit**, aplikace nahraje zadaný soubor obrázku a uloží ho do BLOB Service.
 
-### <a name="set-up-the-blob-container"></a>Nastavení kontejneru objektů Blob
+### <a name="set-up-the-blob-container"></a>Nastavení kontejneru objektů BLOB
 
-Za účelem uložení souboru ve službě Blob service je nutné *kontejneru* a uložit v. Kontejner objektů Blob služby odpovídá složku systému souborů. Skriptů pro vytvoření prostředí, které jsme se zaměřili [automatizovat všechno kapitoly](automate-everything.md) vytvořit účet úložiště, ale nechcete vytvářet kontejner. Takže účel `CreateAndConfigure` metodu `PhotoService` třídy, je vytvořit kontejner, pokud ještě neexistuje. Tato metoda je volána z `Application_Start` metoda *Global.asax*.
+Aby bylo možné uložit soubor do Blob service budete potřebovat *kontejner* , ve kterém ho uložíte. Kontejner Blob service odpovídá složce systému souborů. Skripty pro vytvoření prostředí, které jsme prozkoumali v [kapitole automatizace všeho](automate-everything.md) , vytvoří účet úložiště, ale nevytvoří kontejner. Proto je účel metody `CreateAndConfigure` třídy `PhotoService` vytvořit kontejner, pokud ještě neexistuje. Tato metoda je volána z metody `Application_Start` v *Global. asax*.
 
 [!code-csharp[Main](unstructured-blob-storage/samples/sample2.cs)]
 
-Klíč název a přístup k účtu úložiště se ukládají v `appSettings` kolekce *Web.config* souborů a kódu v `StorageUtils.StorageAccount` metoda používá k sestavení připojovací řetězec a připojení těchto hodnot:
+Název účtu úložiště a přístupový klíč jsou uložené v kolekci `appSettings` souboru *Web. config* a kód v metodě `StorageUtils.StorageAccount` tyto hodnoty používá k sestavení připojovacího řetězce a navázání připojení:
 
 [!code-csharp[Main](unstructured-blob-storage/samples/sample3.cs)]
 
-`CreateAndConfigureAsync` Metoda pak vytvoří objekt, který představuje službu Blob service a objekt, který představuje kontejner (složka) s názvem "Image" ve službě Blob service:
+Metoda `CreateAndConfigureAsync` poté vytvoří objekt, který představuje Blob service a objekt, který představuje kontejner (složka) s názvem "image" v Blob service:
 
 [!code-csharp[Main](unstructured-blob-storage/samples/sample4.cs)]
 
-Pokud kontejner s názvem "Image" ještě neexistuje – které budou platit při prvním spuštění aplikace proti nový účet úložiště – kód vytvoří kontejner a nastaví oprávnění, zveřejněte ji. (Ve výchozím nastavení, nové kontejnery objektů blob jsou privátní a jsou přístupné pouze uživatelům, kteří mají oprávnění pro přístup k účtu úložiště.)
+Pokud kontejner s názvem "images" ještě neexistuje – což bude pravda při prvním spuštění aplikace proti novému účtu úložiště – kód vytvoří kontejner a nastaví oprávnění k jeho veřejnému zpřístupnění. (Ve výchozím nastavení jsou nové kontejnery objektů BLOB privátní a jsou přístupné jenom uživatelům, kteří mají oprávnění pro přístup k vašemu účtu úložiště.)
 
 [!code-csharp[Main](unstructured-blob-storage/samples/sample5.cs)]
 
-### <a name="store-the-uploaded-photo-in-blob-storage"></a>Store nahrané fotky v úložišti objektů Blob
+### <a name="store-the-uploaded-photo-in-blob-storage"></a>Uložení nahrané fotky do úložiště objektů BLOB
 
-K nahrání a uložte soubor obrázku, tato aplikace používá `IPhotoService` rozhraní a implementaci rozhraní v `PhotoService` třídy. *PhotoService.cs* soubor obsahuje všechny kódu v Fix It aplikaci, která komunikuje se službou Blob service.
+Pro nahrání a uložení souboru obrázku aplikace používá rozhraní `IPhotoService` a implementaci rozhraní ve třídě `PhotoService`. Soubor *PhotoService.cs* obsahuje veškerý kód v aplikaci pro opravu IT, který komunikuje s BLOB Service.
 
-Následující metoda kontroleru MVC se volá, když uživatel klikne **vytvořit automatickou**. V tomto kódu `photoService` odkazuje na instanci `PhotoService` třídy, a `fixittask` odkazuje na instanci `FixItTask` třídu entity, která ukládá data pro nový úkol.
+Následující metoda kontroleru MVC se volá, když uživatel klikne na **vytvořit fixit**. V tomto kódu `photoService` odkazuje na instanci `PhotoService` třídy a `fixittask` odkazuje na instanci třídy `FixItTask` entity, která ukládá data pro nový úkol.
 
 [!code-csharp[Main](unstructured-blob-storage/samples/sample6.cs?highlight=8)]
 
-`UploadPhotoAsync` Metodu `PhotoService` třídy ukládá uloženého souboru ve službě Blob service a vrátí adresu URL, která odkazuje na nový objekt blob.
+Metoda `UploadPhotoAsync` ve třídě `PhotoService` ukládá nahraný soubor do Blob service a vrátí adresu URL, která odkazuje na nový objekt BLOB.
 
 [!code-csharp[Main](unstructured-blob-storage/samples/sample7.cs)]
 
-Stejně jako `CreateAndConfigure` metoda, kód se připojí k účtu úložiště a vytvoří objekt, který představuje kontejner objektů blob "Image", s výjimkou zde předpokládá kontejner již existuje.
+Stejně jako v metodě `CreateAndConfigure` se kód připojí k účtu úložiště a vytvoří objekt, který představuje kontejner objektů blob "image", s výjimkou případů, kdy tento kontejner předpokládá, že kontejner již existuje.
 
-Potom vytvoří jedinečný identifikátor pro image chystáte odeslat, zřetězením novou hodnotu GUID s příponou souboru:
+Pak vytvoří jedinečný identifikátor obrázku, který se má nahrát, zřetězením nové hodnoty GUID s příponou souboru:
 
 [!code-csharp[Main](unstructured-blob-storage/samples/sample8.cs)]
 
-Potom kód používá objekt kontejneru objektů blob a nový jedinečný identifikátor pro vytvoření objektu blob, nastaví atribut k tomuto objektu označující druh souboru je a potom použije objekt blob pro uložení souboru v úložišti objektů blob.
+Kód pak pomocí objektu kontejneru objektů BLOB a nového jedinečného identifikátoru vytvoří objekt blob, nastaví u tohoto objektu atribut, který označuje, jaký typ souboru je, a pak pomocí objektu BLOB uloží soubor do úložiště objektů BLOB.
 
 [!code-csharp[Main](unstructured-blob-storage/samples/sample9.cs)]
 
-Nakonec získá adresu URL, která odkazuje na objekt blob. Tato adresa URL se uloží v databázi a je možné na webových stránkách Fix It k zobrazení této odeslané image.
+Nakonec získá adresu URL, která odkazuje na objekt BLOB. Tato adresa URL bude uložena v databázi a lze ji použít na webových stránkách opravit k zobrazení nahrané bitové kopie.
 
 [!code-csharp[Main](unstructured-blob-storage/samples/sample10.cs)]
 
-Tato adresa URL je uloženo v databázi jako jeden ze sloupců tabulky FixItTask.
+Tato adresa URL je uložená v databázi jako jeden ze sloupců tabulky FixItTask.
 
 [!code-csharp[Main](unstructured-blob-storage/samples/sample11.cs?highlight=10)]
 
-Pouze adresu URL v databázi a obrázků v úložišti objektů Blob aplikace Fix It udržuje databázi malé, škálovatelné a cenově dostupné, zatímco Image se ukládají, pokud úložiště je levná a schopnou zvládat terabajtů nebo petabajtů. Jeden účet úložiště můžete ukládat stovky terabajtů Fix It fotografie a platíte jenom za využité. Abyste mohli začít malé platební 9 centů pro první GB a přidat další Image pro pennies každý další GB.
+V případě, že je v databázi jenom adresa URL a obrázky v úložišti objektů blob, oprava IT aplikace udržuje databázi malou, škálovatelnou a nenákladnou, zatímco image jsou uložené tam, kde je úložiště levné a dokáže zpracovávat terabajty nebo petabajty. Jeden účet úložiště může ukládat stovky terabajtů opravných fotek a platíte jenom za to, co využijete. Takže můžete začít s malým placením za 9 centů za první gigabajt a přidat další obrázky pro Pennies za další gigabajt.
 
-### <a name="display-the-uploaded-file"></a>Zobrazit nahraného souboru
+### <a name="display-the-uploaded-file"></a>Zobrazit nahraný soubor
 
-Aplikace Fix It zobrazí soubor nahraný obrázek při zobrazení podrobností úlohy.
+Aplikace opravit IT zobrazuje nahraný soubor obrázku při zobrazení podrobností pro úlohu.
 
-![Opravte podrobnosti úlohy s fotografií](unstructured-blob-storage/_static/image3.png)
+![Oprava podrobností úkolu IT pomocí fotky](unstructured-blob-storage/_static/image3.png)
 
-A zobrazte obrázek, všechna zobrazení MVC musí provést je zahrnout `PhotoUrl` hodnotu ve formátu HTML odesláno prohlížeči. Webový server a databázi nepoužívají cykly a zobrazte obrázek, pouze obsluhují až několik bajtů na adresu URL obrázku. V následujícím kódu Razor `Model` odkazuje na instanci `FixItTask` třída entity.
+Chcete-li zobrazit obrázek, je nutné, aby zobrazení všech zobrazení MVC zahrnovalo hodnotu `PhotoUrl` do HTML odesílané do prohlížeče. Webový server a databáze nepoužívají cykly k zobrazení obrázku, zachovává pouze několik bajtů s adresou URL obrázku. V následujícím kódu Razor `Model` odkazuje na instanci třídy `FixItTask` entity.
 
 [!code-cshtml[Main](unstructured-blob-storage/samples/sample12.cshtml?highlight=11)]
 
-Když se podíváte na kód HTML stránky, která se zobrazí, se zobrazí adresa URL odkazuje přímo na image v úložišti objektů blob, podobný následujícímu:
+Pokud se podíváte na HTML stránku, která se zobrazí, zobrazí se adresa URL ukazující přímo na obrázek v úložišti objektů blob, což je něco podobného:
 
 [!code-cshtml[Main](unstructured-blob-storage/samples/sample13.cshtml?highlight=11)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Už víte, jak aplikace Fix It ukládá obrázky do služby Blob service a pouze adresy URL obrázků ve službě SQL database. Použití služby Blob service uchovává SQL database mnohem menší, než ho jinak by umožňuje škálování až na téměř neomezené množství úloh a lze provést, aniž byste museli psát hodně kódu.
+Viděli jste, jak aplikace Fix it ukládá obrázky do Blob service a jenom image URL v databázi SQL. Použití Blob service udržuje databázi SQL mnohem menší, než v opačném případě, umožňuje horizontální navýšení kapacity až na téměř neomezený počet úkolů a dá se provést bez napsání velkého množství kódu.
 
-Stovky terabajtů může mít v účtu úložiště a náklady na úložiště jsou mnohem levnější než úložiště databáze SQL, počínaje přibližně 3 několik centů za GB měsíčně plus transakce malý poplatek. A pamatujte, že nejsou platit pro maximální kapacitu, ale pouze pro částku, kterou ve skutečnosti uložit, aby vaše aplikace je připravená pro škálování, ale nejsou platíte za všechno, dodatečnou kapacitu.
+V účtu úložiště můžete mít stovky terabajtů a náklady na úložiště jsou mnohem levnější než SQL Database úložiště, od 1 do 3 centů za gigabajt za měsíc a za malý poplatek za transakci. A pamatujte na to, že neplatíte za maximální kapacitu, ale jenom za skutečně uloženou částku, takže vaše aplikace je připravená na škálování, ale neplatíte za veškerou dodatečnou kapacitu.
 
-V [další kapitolu](design-to-survive-failures.md) budeme mluvit o důležitosti vytváření cloudové aplikace zvládne elegantně zpracovat selhání.
+V [Další části](design-to-survive-failures.md) se seznámíte s důležitostí, jak zajistit, aby cloudová aplikace mohla řádně zpracovat selhání.
 
 ## <a name="resources"></a>Prostředky
 
-Další informace naleznete na následujících odkazech:
+Další informace najdete v následujících zdrojích informací:
 
-- [Úvod do Azure BLOB Storage](https://www.simple-talk.com/cloud/cloud-data/an-introduction-to-windows-azure-blob-storage-/). Blog o Mike dřeva.
-- [Použití služby Azure Blob Storage v rozhraní .NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs). Oficiální dokumentaci na webu MicrosoftAzure.com. Stručný úvod do objektu blob úložiště, za nímž následuje příklady kódu znázorňující způsob připojení k úložišti objektů blob, vytvoření kontejnerů, nahrávání a stahování objektů BLOB a tak dál.
-- [Bezporuchový: Vytváření škálovatelných, odolných cloudových služeb](https://channel9.msdn.com/Series/FailSafe). Série videí devět částí Ulrich Homann, Marc Mercuri a Mark Simms. Nabídne základními koncepty a Principy architektury tak vysoce dostupné a zajímavé příběhy z prostředí Microsoft zákazníka poradní tým (CAT) se skutečným zákazníkům. Informace o službě Azure Storage a objekty BLOB naleznete v tématu epizodě 5 počínaje 35:13.
-- [Microsoft Vzory a postupy – doprovodné materiály k Azure](https://msdn.microsoft.com/library/dn568099.aspx). Model osobního klíče najdete v tématu.
+- [Úvod do úložiště objektů BLOB v Azure](https://www.simple-talk.com/cloud/cloud-data/an-introduction-to-windows-azure-blob-storage-/) Blog o Jan dřevo.
+- [Jak používat službu Azure Blob Storage v rozhraní .NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs). Oficiální dokumentace na webu MicrosoftAzure.com. Stručný úvod do služby Blob Storage následovaný příklady kódu, které ukazují, jak se připojit k úložišti objektů blob, vytvářet kontejnery, nahrávat a stahovat objekty blob atd.
+- [Failsafe: vytváření škálovatelných, odolných Cloud Services](https://channel9.msdn.com/Series/FailSafe). Devět datových řad podle Ulrich Homann, matolin Mercuri a Simms. Prezentuje základní koncepty a principy architektury v rámci velmi přístupného a zajímavého způsobu, který vychází ze zkušeností zákazníků Microsoftu pro poradenské zákazníky (CAT) se skutečnými zákazníky. Diskuzi o službě Azure Storage a objektech blob najdete v části epizody 5 od 35:13.
+- [Vzory a postupy Microsoftu – doprovodné materiály pro Azure](https://msdn.microsoft.com/library/dn568099.aspx) Viz osobního Key Pattern.
 
 > [!div class="step-by-step"]
 > [Předchozí](data-partitioning-strategies.md)
-> [další](design-to-survive-failures.md)
+> [Další](design-to-survive-failures.md)

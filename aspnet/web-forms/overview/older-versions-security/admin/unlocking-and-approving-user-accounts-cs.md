@@ -1,197 +1,197 @@
 ---
 uid: web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs
-title: Odemykání a schvalování uživatelských účtů (C#) | Dokumentace Microsoftu
+title: Odemykání a schvalování uživatelských účtů (C#) | Microsoft Docs
 author: rick-anderson
-description: Tento kurz ukazuje, jak vytvořit webovou stránku pro správce ke správě uzamčen a schválení stavy uživatelů. Také jsme uvidí schválení nového uživatele o...
+description: V tomto kurzu se dozvíte, jak vytvořit webovou stránku pro správce ke správě stavů uzamčených a schválených uživatelů. Také se dozvíte, jak schvalovat nové uživatele o...
 ms.author: riande
 ms.date: 04/01/2008
 ms.assetid: 5346aab1-9974-489f-a065-ae3883b8a350
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b27be9dff132989a37eca7d5ef3af7b0e1aaeb74
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: c19f7dfac0ddd12c2b4f3388a71a8ca0f71cbb18
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131307"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74580214"
 ---
 # <a name="unlocking-and-approving-user-accounts-c"></a>Odemykání a schvalování uživatelských účtů (C#)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si kód](http://download.microsoft.com/download/6/0/e/60e1bd94-e5f9-4d5a-a079-f23c98f4f67d/CS.14.zip) nebo [stahovat PDF](http://download.microsoft.com/download/6/0/e/60e1bd94-e5f9-4d5a-a079-f23c98f4f67d/aspnet_tutorial14_UnlockAndApprove_cs.pdf)
+[Stažení kódu](https://download.microsoft.com/download/6/0/e/60e1bd94-e5f9-4d5a-a079-f23c98f4f67d/CS.14.zip) nebo [stažení PDF](https://download.microsoft.com/download/6/0/e/60e1bd94-e5f9-4d5a-a079-f23c98f4f67d/aspnet_tutorial14_UnlockAndApprove_cs.pdf)
 
-> Tento kurz ukazuje, jak vytvořit webovou stránku pro správce ke správě uzamčen a schválení stavy uživatelů. Také jsme uvidí schválení nových uživatelů až po ověření e-mailová adresa.
+> V tomto kurzu se dozvíte, jak vytvořit webovou stránku pro správce ke správě stavů uzamčených a schválených uživatelů. Také se dozvíte, jak schvalovat nové uživatele až po ověření své e-mailové adresy.
 
 ## <a name="introduction"></a>Úvod
 
-Společně se uživatelské jméno, heslo a e-mailu, každý uživatelský účet má dvě pole Stav, určující, zda uživatel může přihlásit k webu: uzamčen a schválena. Uživatel je automaticky uzamčen-li poskytují neplatné přihlašovací údaje do zadaného počtu opakování v zadaném počtu minut (výchozí nastavení uzamčení uživatele po 5 neplatných pokusů o přihlášení během 10 minut). Schválené stav je užitečné v situacích, kde musí probíhají některé akce, bude moci přihlásit k webu nového uživatele. Uživatel například může být nutné nejprve ověření e-mailová adresa nebo schválení správcem, teprve pak ji bude moci přihlásit.
+Spolu s uživatelským jménem, heslem a e-mailem mají každý uživatelský účet dvě pole stavu, která určují, jestli se uživatel může přihlásit k webu: uzamčený a schválený. Uživatel se automaticky uzamkne, pokud zadá neplatné přihlašovací údaje během zadaného počtu minut (výchozí nastavení zamkne uživatele po 5 neplatných pokusů o přihlášení během 10 minut). Schválený stav je užitečný ve scénářích, kdy se musí některá akce stát, než se nový uživatel bude moci přihlásit k webu. Uživatel například může potřebovat nejdřív ověřit e-mailovou adresu nebo ho před přihlášením schválit správce.
 
-Protože uzamčeném mimo nebo neověřený uživatel nemůže přihlásit, je pouze přirozeného k zajímat, jak můžete tyto stavy resetování. ASP.NET neobsahuje žádné předdefinované funkce nebo uzamčen webové ovládací prvky pro správu uživatelů a v části schválené stavy, protože tato rozhodnutí musí zpracovat na základě serveru lokality. Některé servery může automaticky schválit všechny nové uživatelské účty (výchozí chování). Ostatní uživatelé měli správce schválit nové účty nebo není schválit uživatelé navštíví odkaz odesílat e-mailovou adresu, když se zaregistrovali k dispozici. Podobně některé weby může uzamčení uživatelů, dokud správce resetuje jejich stav, zatímco jiné weby odeslat e-mailu neuzamčení uživateli pomocí adresy URL, které může navštěvovat odemknout svůj účet.
+Vzhledem k tomu, že se uzamčený nebo neschválený uživatel nemůže přihlásit, je přirozený jenom to, jak se tyto stavy dají resetovat. ASP.NET neobsahuje žádné integrované funkce ani webové ovládací prvky pro správu stavů uzamčených a schválených uživatelů v části, protože tato rozhodnutí je potřeba zpracovat na základě lokality. Některé lokality mohou automaticky schvalovat všechny nové uživatelské účty (výchozí chování). Jiní správci mají schvalovat nové účty nebo neschvalovat uživatele, dokud nenavštíví odkaz odeslaný na e-mailovou adresu, kterou jste zadali při registraci. Podobně některé weby můžou uživatele uzamknout, až správce resetuje stav, zatímco ostatní weby odešlou e-mailem uzamčenému uživateli e-mail s adresou URL, kterou můžou navštívit k odemknutí svého účtu.
 
-Tento kurz ukazuje, jak vytvořit webovou stránku pro správce ke správě uzamčen a schválení stavy uživatelů. Také jsme uvidí schválení nových uživatelů až po ověření e-mailová adresa.
+V tomto kurzu se dozvíte, jak vytvořit webovou stránku pro správce ke správě stavů uzamčených a schválených uživatelů. Také se dozvíte, jak schvalovat nové uživatele až po ověření své e-mailové adresy.
 
-## <a name="step-1-managing-users-locked-out-and-approved-statuses"></a>Krok 1: Správa uživatelů uzamčen a schválení stavy
+## <a name="step-1-managing-users-locked-out-and-approved-statuses"></a>Krok 1: Správa stavů uzamčených a schválených uživatelů
 
-V <a id="Tutorial12"> </a> [ *vytvoření rozhraní pro výběr jednoho uživatelského účtu z mnoha* ](building-an-interface-to-select-one-user-account-from-many-cs.md) kurzu jsme vytvořit stránku, která uvedené všechny uživatelské účty ve stránkovaném, filtrování ovládacího prvku GridView. Mřížka obsahuje každé uživatelské jméno a e-mailu, jejich schválené a neuzamčení stavy, určuje, zda jsou aktuálně online a informací o tom, že uživatel. Ke správě uživatelů schválena a stavy uzamčen, může Usnadňujeme tuto mřížku upravovat. Chcete-li změnit stav uživatele, schválené, by správce nejdřív vyhledejte uživatelský účet a pak upravte odpovídající řádek prvku GridView, kontrola nebo zrušení zaškrtnutí políčka schválené. Alternativně může spravujeme schválené a neuzamčení stavy prostřednictvím samostatné stránky technologie ASP.NET.
+<a id="Tutorial12"> </a>V [*sestavování rozhraní pro výběr jednoho uživatelského účtu z mnoha*](building-an-interface-to-select-one-user-account-from-many-cs.md) kurzů jsme sestavili stránku, která uvádí jednotlivé uživatelské účty na stránkovaném a filtrovaném prvku GridView. V mřížce jsou uvedena jména a e-maily jednotlivých uživatelů, jejich schválené a uzamčené stavy, ať už jsou online, a jakékoli komentáře k uživateli. Pokud chcete spravovat stavy schválené a uzamčené pro uživatele, můžeme tuto mřížku upravit. Chcete-li změnit stav schváleného uživatele, správce nejprve vyhledá uživatelský účet a pak upraví odpovídající řádek prvku GridView zaškrtnutím nebo zrušením zaškrtnutí políčka schváleno. Případně můžeme spravovat stavy schválené a uzamčené prostřednictvím samostatné stránky ASP.NET.
 
-Pro účely tohoto kurzu použijeme dvě stránky ASP.NET: `ManageUsers.aspx` a `UserInformation.aspx`. Zde spočívá v tom, `ManageUsers.aspx` seznam uživatelských účtů v systému, zatímco `UserInformation.aspx` umožňuje správcům spravovat schválené a neuzamčení stavy pro konkrétního uživatele. Naše první je k posílení GridView v `ManageUsers.aspx` zahrnout HyperLinkField, která vykresluje jako sloupec odkazů. Chceme, aby každý odkaz tak, aby odkazoval na `UserInformation.aspx?user=UserName`, kde *uživatelské jméno* je jméno uživatele, kterého chcete upravit.
+V tomto kurzu budeme používat dvě stránky ASP.NET: `ManageUsers.aspx` a `UserInformation.aspx`. Tady je postup, když `ManageUsers.aspx` zobrazuje seznam uživatelských účtů v systému, zatímco `UserInformation.aspx` umožňuje správci spravovat stav schválené a uzamčené pro konkrétního uživatele. Naším prvním pořadím podnikání je rozšíření prvku GridView v `ManageUsers.aspx` tak, aby zahrnovalo HyperLinkField, které se vykresluje jako sloupec odkazů. Chceme, aby každý odkaz odkazoval na `UserInformation.aspx?user=UserName`, kde *username* je jméno uživatele, který chcete upravit.
 
 > [!NOTE]
-> Pokud jste stáhli kód <a id="Tutorial13"> </a> [ *obnovení a změna hesel* ](recovering-and-changing-passwords-cs.md) kurz, mohli jste si všimnout, který `ManageUsers.aspx` stránka již obsahuje sadu " Správa"odkazů a `UserInformation.aspx` stránka poskytuje rozhraní pro změnu hesla vybraného uživatele. Můžu se rozhodli replikace, které tuto funkci v kódu přidružená v tomto kurzu, protože to šlo obcházení členství rozhraní API a provoz přímo s databází SQL serveru ke změně hesla uživatele. Tento kurz pracuje úplně od začátku s `UserInformation.aspx` stránky.
+> Pokud jste si stáhli kód pro <a id="Tutorial13"> </a>kurz [*obnovování a změny hesel*](recovering-and-changing-passwords-cs.md) , možná jste si všimli, že `ManageUsers.aspx` stránka už obsahuje sadu odkazů "spravovat" a stránka `UserInformation.aspx` poskytuje rozhraní pro změnu hesla vybraného uživatele. Rozhodli jste se Nereplikovat tuto funkci v kódu přidruženém k tomuto kurzu, protože fungovalo obcházením rozhraní API pro členství a provozování přímo s databází SQL Server pro změnu hesla uživatele. V tomto kurzu začnete od začátku na stránce `UserInformation.aspx`.
 
-### <a name="adding-manage-links-to-theuseraccountsgridview"></a>Přidání "Manage" odkazy na`UserAccounts`GridView
+### <a name="adding-manage-links-to-theuseraccountsgridview"></a>Přidání odkazů "spravovat" do`UserAccounts`GridView
 
-Otevřít `ManageUsers.aspx` stránky a přidat HyperLinkField k `UserAccounts` ovládacího prvku GridView. Nastavte HyperLinkField `Text` vlastnost "Manage" a jeho `DataNavigateUrlFields` a `DataNavigateUrlFormatString` vlastností `UserName` a "UserInformation.aspx?user={0}" v uvedeném pořadí. Tato nastavení konfigurují HyperLinkField tak, aby všechny hypertextové odkazy zobrazí text "Manage", ale každý odkaz předává do příslušné *uživatelské jméno* hodnotu na řetězec dotazu.
+Otevřete stránku `ManageUsers.aspx` a přidejte HyperLinkField do `UserAccounts` GridView. Nastavte vlastnost `Text` HyperLinkField na "spravovat" a její `DataNavigateUrlFields` a `DataNavigateUrlFormatString` vlastnosti na `UserName` a "UserInformation. aspx? User ={0}" (v uvedeném pořadí). Tato nastavení konfigurují HyperLinkField tak, aby všechny hypertextové odkazy zobrazovaly text "spravovat", ale každý odkaz předává do řetězce QueryString hodnotu odpovídající *uživatelskému jménu* .
 
-Po přidání HyperLinkField do prvku GridView, věnujte chvíli zobrazíte `ManageUsers.aspx` stránky prostřednictvím prohlížeče. Obrázek 1 ukazuje, každý řádek prvku GridView teď obsahuje odkaz "Manage". Odkazuje na odkaz "Manage" Bruce `UserInformation.aspx?user=Bruce`, že odkaz "Manage" Dave odkazuje na `UserInformation.aspx?user=Dave`.
+Po přidání HyperLinkField do prvku GridView chvíli počkejte, než se zobrazí stránka `ManageUsers.aspx` v prohlížeči. Jak ukazuje obrázek 1, každý řádek prvku GridView nyní obsahuje odkaz "spravovat". Odkaz "spravovat" pro Bruce odkazuje na `UserInformation.aspx?user=Bruce`, zatímco odkaz "Správa" pro Dave odkazuje na `UserInformation.aspx?user=Dave`.
 
-[![Přidá HyperLinkField](unlocking-and-approving-user-accounts-cs/_static/image2.png)](unlocking-and-approving-user-accounts-cs/_static/image1.png)
+[![HyperLinkField přidá](unlocking-and-approving-user-accounts-cs/_static/image2.png)](unlocking-and-approving-user-accounts-cs/_static/image1.png)
 
-**Obrázek 1**: HyperLinkField přidá odkaz "Manage" pro každý uživatelský účet ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image3.png))
+**Obrázek 1**: HyperLinkField přidá do každého uživatelského účtu odkaz "spravovat" ([kliknutím zobrazíte obrázek v plné velikosti).](unlocking-and-approving-user-accounts-cs/_static/image3.png)
 
-Budeme vytvářet uživatelské rozhraní a kód pro `UserInformation.aspx` stránce v okamžiku, ale první Pojďme build2014 o tom, jak programově změnit uživatel uzamčen a schválení stavy. [ `MembershipUser` Třídy](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx) má [ `IsLockedOut` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.islockedout.aspx) a [ `IsApproved` vlastnosti](https://msdn.microsoft.com/library/system.web.security.membershipuser.isapproved.aspx). `IsLockedOut` Vlastnost je jen pro čtení. Neexistuje žádný mechanismus k programově uzamčení uživatele. Chcete-li odemčení uživatele, použijte `MembershipUser` třídy [ `UnlockUser` metoda](https://msdn.microsoft.com/library/system.web.security.membershipuser.unlockuser.aspx). `IsApproved` Vlastnost je čtení a zápisu. K ukládání veškerých změn této vlastnosti, musíme volání `Membership` třídy [ `UpdateUser` metoda](https://msdn.microsoft.com/library/system.web.security.membership.updateuser.aspx)a předejte upravené `MembershipUser` objektu.
+V průběhu chvilky vytvoříme uživatelské rozhraní a kód pro `UserInformation.aspx` stránku, ale nejdřív si nechte mluvit o tom, jak programově změnit stav uzamčeného a schváleného uživatele. [Třída`MembershipUser`](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx) má vlastnosti [`IsLockedOut`](https://msdn.microsoft.com/library/system.web.security.membershipuser.islockedout.aspx) a [`IsApproved`](https://msdn.microsoft.com/library/system.web.security.membershipuser.isapproved.aspx). Vlastnost `IsLockedOut` je určena jen pro čtení. Neexistuje žádný mechanismus pro programové uzamykání uživatele. Chcete-li odemknout uživatele, použijte [metodu`UnlockUser`](https://msdn.microsoft.com/library/system.web.security.membershipuser.unlockuser.aspx)třídy `MembershipUser`. Vlastnost `IsApproved` je čitelná a zapisovatelná. Chcete-li uložit všechny změny této vlastnosti, musíme volat [metodu`UpdateUser`](https://msdn.microsoft.com/library/system.web.security.membership.updateuser.aspx)třídy `Membership`, předejte upravený `MembershipUser` objekt.
 
-Vzhledem k tomu, `IsApproved` vlastnost slouží ke čtení a zápis, ovládací prvek CheckBox je pravděpodobně nejlepší prvku uživatelského rozhraní pro konfiguraci této vlastnosti. Ale nebude fungovat zaškrtávací políčko `IsLockedOut` vlastnost vzhledem k tomu, že si uživatel nemůže uzamknout správce, které může odemknout jenom uživatel. Vhodné uživatelské prostředí pro `IsLockedOut` vlastnost je tlačítko, po kliknutí na odemkne uživatelský účet. Toto tlačítko musí být povolené, pouze pokud je uživatel uzamčen.
+Vzhledem k tomu, že vlastnost `IsApproved` je čitelná a zapisovatelná, ovládací prvek CheckBox je pravděpodobně nejlepším prvkem uživatelského rozhraní pro konfiguraci této vlastnosti. Nicméně zaškrtávací políčko nebude pro vlastnost `IsLockedOut` fungovat, protože správce nemůže uživatele uzamknout, může odemknout pouze uživatele. Vhodným uživatelským rozhraním pro vlastnost `IsLockedOut` je tlačítko, které po kliknutí na něj odemkne uživatelský účet. Toto tlačítko by mělo být povoleno pouze v případě, že je uživatel uzamčen.
 
-### <a name="creating-theuserinformationaspxpage"></a>Vytváří`UserInformation.aspx`stránky
+### <a name="creating-theuserinformationaspxpage"></a>Vytvoření stránky`UserInformation.aspx`
 
-Teď máme připraven k implementaci uživatelského rozhraní v `UserInformation.aspx`. Otevřete tuto stránku a přidejte následující webové ovládací prvky:
+Nyní je připraven k implementaci uživatelského rozhraní v `UserInformation.aspx`. Otevřete tuto stránku a přidejte následující webové ovládací prvky:
 
-- Hypertextový odkaz ovládací prvek, který, při kliknutí vrátí správce, aby `ManageUsers.aspx` stránky.
-- Popisek webový ovládací prvek pro zobrazení vybrané uživatelské jméno. Nastavit tento popisek `ID` k `UserNameLabel` a vymažte její `Text` vlastnost.
-- Ovládací prvek zaškrtávací políčko s názvem `IsApproved`. Nastavte jeho `AutoPostBack` vlastnost `true`.
-- Ovládací prvek popisek a pro zobrazování uživatel je uzamčen datum. Pojmenujte tento popisek `LastLockedOutDateLabel` a vymažte její `Text` vlastnost.
-- Tlačítko pro odemknutí uživatele. Pojmenujte toto tlačítko `UnlockUserButton` a nastavte jeho `Text` vlastnost "Odemčení uživatele".
-- Ovládací prvek popisku pro zobrazení stavových zpráv, jako například "schválený stav uživatele byl aktualizován." Tento ovládací prvek pojmenujte `StatusMessage`, zrušte zaškrtnutí políčka si jeho `Text` vlastnost a nastavte jeho `CssClass` vlastnost `Important`. ( `Important` Třídu šablony stylů CSS je definována v `Styles.css` soubor šablony stylů; zobrazuje odpovídající text velký červený písmem.)
+- Ovládací prvek hypertextový odkaz, který po kliknutí vrátí správce na stránku `ManageUsers.aspx`.
+- Webový ovládací prvek popisku pro zobrazení jména vybraného uživatele. Nastavte `ID` tohoto popisku na `UserNameLabel` a vymažte jeho vlastnost `Text`.
+- Ovládací prvek CheckBox s názvem `IsApproved`. Vlastnost `AutoPostBack` nastavte na `true`.
+- Ovládací prvek popisku pro zobrazení posledního uzamčeného data uživatele Pojmenujte tento popisek `LastLockedOutDateLabel` a vymažte jeho vlastnost `Text`.
+- Tlačítko pro odemknutí uživatele Pojmenujte toto tlačítko `UnlockUserButton` a nastavte jeho vlastnost `Text` na "odemknout uživatele".
+- Ovládací prvek popisek pro zobrazení stavových zpráv, například "stav schválení uživatele" byl aktualizován. " Pojmenujte tento ovládací prvek `StatusMessage`, vymažte jeho vlastnost `Text` a nastavte jeho vlastnost `CssClass` na `Important`. (`Important` Třída CSS je definována v souboru šablony stylů `Styles.css`; zobrazuje odpovídající text ve velkém červeném písmu.)
 
-Po přidání těchto ovládacích prvků, by měl vypadat podobně jako na obrázku 2 snímek obrazovky zobrazení návrhu v sadě Visual Studio.
+Po přidání těchto ovládacích prvků by zobrazení Návrh v aplikaci Visual Studio mělo vypadat podobně jako snímek obrazovky na obrázku 2.
 
-[![Vytvoření uživatelského rozhraní pro UserInformation.aspx](unlocking-and-approving-user-accounts-cs/_static/image5.png)](unlocking-and-approving-user-accounts-cs/_static/image4.png)
+[![vytvořit uživatelské rozhraní pro UserInformation. aspx](unlocking-and-approving-user-accounts-cs/_static/image5.png)](unlocking-and-approving-user-accounts-cs/_static/image4.png)
 
-**Obrázek 2**: Vytvoření uživatelského rozhraní pro `UserInformation.aspx` ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image6.png))
+**Obrázek 2**: vytvoření uživatelského rozhraní pro `UserInformation.aspx` ([kliknutím zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image6.png))
 
-Dokončení uživatelského rozhraní, naše dalším úkolem je nastavena `IsApproved` zaškrtávací políčko a další ovládací prvky založené na vybrané uživatelské informace. Vytvořte obslužnou rutinu události pro danou stránku `Load` událostí a přidejte následující kód:
+Po dokončení uživatelského rozhraní je naším dalším úkolem nastavení zaškrtávacího políčka `IsApproved` a dalších ovládacích prvků na základě informací vybraného uživatele. Vytvořte obslužnou rutinu události pro událost `Load` stránky a přidejte následující kód:
 
 [!code-csharp[Main](unlocking-and-approving-user-accounts-cs/samples/sample1.cs)]
 
-Výše uvedený kód začne tím, že zajišťuje, že se jedná o první návštěvě stránky a následný postback. Pak přečte uživatelské jméno předané prostřednictvím `user` pole řetězce dotazu a načte informace o účtu uživatele prostřednictvím `Membership.GetUser(username)` metody. Pokud žádné uživatelské jméno není zadaná pomocí řetězec dotazu, nebo pokud se zadaný uživatel se nenašel, správce budou odeslána zpět do `ManageUsers.aspx` stránky.
+Výše uvedený kód začíná tím, že zajistí, že se jedná o první návštěvu stránky, nikoli následné zpětné odeslání. Pak přečte uživatelské jméno předané v poli `user` QueryString a načte informace o tomto uživatelském účtu pomocí metody `Membership.GetUser(username)`. Pokud nebylo zadáno uživatelské jméno prostřednictvím řetězce dotazu nebo pokud nebylo nalezeno konkrétního uživatele, správce se pošle zpátky na stránku `ManageUsers.aspx`.
 
-`MembershipUser` Objektu `UserName` se následně zobrazí hodnota `UserNameLabel` a `IsApproved` je zaškrtnuté políčko na základě `IsApproved` hodnotu vlastnosti.
+Hodnota `UserName` objektu `MembershipUser` se pak zobrazí v `UserNameLabel` a zaškrtávací políčko `IsApproved` se kontroluje na základě hodnoty vlastnosti `IsApproved`.
 
-`MembershipUser` Objektu [ `LastLockoutDate` vlastnost](https://msdn.microsoft.com/library/system.web.security.membershipuser.lastlockoutdate.aspx) vrátí `DateTime` hodnotu, která udává, kdy byl naposledy uživatel uzamčen. Pokud uživatel nikdy byl uzamčen, vrácená hodnota závisí na zprostředkovatele členství. Když je vytvořen nový účet, `SqlMembershipProvider` nastaví `aspnet_Membership` tabulky `LastLockoutDate` pole `1754-01-01 12:00:00 AM`. Výše uvedený kód zobrazí prázdný řetězec v `LastLockoutDateLabel` Pokud `LastLockoutDate` vlastnost předchází roku 2000; v opačném případě část data `LastLockoutDate` vlastnost je zobrazený v popisku. `UnlockUserButton'` s `Enabled` vlastnost je nastavena podle uživatele uzamčen stavu, což znamená, že toto tlačítko bude povolit, pouze pokud je uživatel uzamčen.
+[Vlastnost`LastLockoutDate`](https://msdn.microsoft.com/library/system.web.security.membershipuser.lastlockoutdate.aspx) objektu `MembershipUser` vrací hodnotu `DateTime`, která indikuje, kdy byl uživatel naposledy uzamčen. Pokud uživatel nikdy neuzamkl, vrácená hodnota závisí na zprostředkovateli členství. Při vytvoření nového účtu `SqlMembershipProvider` nastaví `LastLockoutDate` pole `aspnet_Membership` tabulky na `1754-01-01 12:00:00 AM`. Výše uvedený kód zobrazuje prázdný řetězec v `LastLockoutDateLabel`, pokud se vlastnost `LastLockoutDate` vyskytne před rokem 2000; v opačném případě se v popisku zobrazí část data vlastnosti `LastLockoutDate`. Vlastnost `UnlockUserButton'` s `Enabled` je nastavena na stav uzamčeno uživatele, což znamená, že toto tlačítko bude povoleno pouze v případě, že je uživatel uzamčen.
 
-Za chvíli testování `UserInformation.aspx` stránky prostřednictvím prohlížeče. Samozřejmě, musíte spustit na `ManageUsers.aspx` a vyberte uživatelský účet pro správu. Při dosažení `UserInformation.aspx`, Všimněte si, že `IsApproved` zaškrtávací políčko je zaškrtnuto, pouze je-li uživatel schválen. Pokud někdy byl uzamčen uživatel, zobrazí se jejich poslední datum uzamčení. Tlačítka pro odemknutí uživatele je povoleno pouze v případě, že uživatel je aktuálně uzamčen. Zaškrtnutím nebo zrušením zaškrtnutí `IsApproved` zaškrtávací políčko nebo kliknutím na tlačítko odemčení uživatele vyvolá zpětné volání, ale žádné změny provedené uživatelský účet vzhledem k tomu, že jsme dosud k vytvoření obslužné rutiny události pro tyto události.
+Vyzkoušení stránky `UserInformation.aspx` pomocí prohlížeče chvíli počkejte. Samozřejmě budete muset začít `ManageUsers.aspx` a vybrat uživatelský účet, který chcete spravovat. Po přijetí na `UserInformation.aspx`si všimněte, že zaškrtávací políčko `IsApproved` je zaškrtnuto pouze v případě, že je uživatel schválen. Pokud uživatel byl někdy uzamčený, zobrazí se jeho poslední datum uzamčení. Tlačítko Odemknout uživatele je povoleno pouze v případě, že je uživatel aktuálně uzamčen. Zaškrtnutím nebo zrušením zaškrtnutí políčka `IsApproved` nebo kliknutím na tlačítko Odemknout uživatele dojde k postbacku, ale v uživatelském účtu se neprovádí žádné úpravy, protože ještě jsme pro tyto události vytvořili obslužné rutiny událostí.
 
-Vraťte se do sady Visual Studio a vytvořte obslužné rutiny událostí pro `IsApproved` zaškrtávací políčko pro `CheckedChanged` událostí a `UnlockUser` tlačítka `Click` událostí. V `CheckedChanged` obslužná rutina události, nastavit uživatele `IsApproved` vlastnost `Checked` vlastnost na zaškrtávací políčko a potom uložte změny prostřednictvím volání `Membership.UpdateUser`. V `Click` obslužná rutina události, jednoduše volání `MembershipUser` objektu `UnlockUser` metody. V obou obslužné rutiny událostí, zobrazení vhodný zprávy v `StatusMessage` popisek.
+Vraťte se do sady Visual Studio a vytvořte obslužné rutiny událostí pro událost `CheckedChanged` `IsApproved` zaškrtávací políčko a událost `Click` tlačítka `UnlockUser`. V obslužné rutině události `CheckedChanged` nastavte vlastnost `IsApproved` uživatele na vlastnost `Checked` zaškrtávacího políčka a poté změny uložte prostřednictvím volání `Membership.UpdateUser`. V obslužné rutině události `Click` jednoduše zavolejte metodu `UnlockUser` `MembershipUser` objektu. V obou obslužných rutinách události se zobrazí vhodná zpráva v popisku `StatusMessage`.
 
 [!code-csharp[Main](unlocking-and-approving-user-accounts-cs/samples/sample2.cs)]
 
-### <a name="testing-theuserinformationaspxpage"></a>Testování`UserInformation.aspx`stránky
+### <a name="testing-theuserinformationaspxpage"></a>Testování stránky`UserInformation.aspx`
 
-Pomocí těchto obslužných rutin událostí v místě, otevírat stránku a neschválených uživatele. Obrázek 3 ukazuje, měli byste vidět stručný zpráva na stránce, což indikuje, že uživatele `IsApproved` úspěšně změněna vlastnost.
+Pomocí těchto obslužných rutin událostí znovu přejděte na stránku a neschváleného uživatele. Jak ukazuje obrázek 3, na stránce by se měla zobrazit Stručná zpráva oznamující, že se vlastnost `IsApproved` uživatele úspěšně změnila.
 
-[![Chris byl Neschváleno](unlocking-and-approving-user-accounts-cs/_static/image8.png)](unlocking-and-approving-user-accounts-cs/_static/image7.png)
+[![pracovník Novotný byl neschválen](unlocking-and-approving-user-accounts-cs/_static/image8.png)](unlocking-and-approving-user-accounts-cs/_static/image7.png)
 
-**Obrázek 3**: Chris byl Neschváleno ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image9.png))
+**Obrázek 3**: pracovník Novotný byl neschválen ([kliknutím zobrazíte obrázek v plné velikosti).](unlocking-and-approving-user-accounts-cs/_static/image9.png)
 
-V dalším kroku odhlášení a zkuste se přihlásit jako uživatel, jehož účet byl právě neschválených. Vzhledem k tomu, že uživatel není schválený, nemůžou přihlásit. Ve výchozím nastavení ovládací prvek Login zobrazí stejnou zprávu, pokud uživatel nemůže přihlásit, bez ohledu na důvod. Ale <a id="Tutorial6"> </a> [ *ověření uživatele přihlašovací údaje proti the členství uživatele Store* ](../membership/validating-user-credentials-against-the-membership-user-store-cs.md) kurzu jsme se podívali na rozšíření ovládacího prvku pro přihlášení k zobrazení více odpovídající zprávu. Jak je vidět na obrázku 4, Chris se zobrazí se zpráva s vysvětlením, že mu nemůžou přihlásit, protože jeho účet ještě není schválený.
+Potom odhlaste se a zkuste se přihlásit jako uživatel, jehož účet jste právě neschválili. Vzhledem k tomu, že uživatel není schválený, nemůže se přihlásit. Ve výchozím nastavení zobrazí ovládací prvek přihlášení stejnou zprávu, pokud se uživatel nemůže přihlásit, bez ohledu na důvod. Ale při <a id="Tutorial6"> </a> [*ověřování přihlašovacích údajů uživatele proti uživatelskému obchodu s uživatelským jménem*](../membership/validating-user-credentials-against-the-membership-user-store-cs.md) jsme prohlédli rozšíření přihlašovacího ovládacího prvku, aby se zobrazila vhodnější zpráva. Obrázek 4 znázorňuje, že se na pracovníkovi zobrazuje zpráva, že se nemůže přihlásit, protože jeho účet ještě není schválený.
 
-[![Chris nelze protože jeho účet pro přihlášení je Neschváleno](unlocking-and-approving-user-accounts-cs/_static/image11.png)](unlocking-and-approving-user-accounts-cs/_static/image10.png)
+[![Chris se nemůže přihlásit, protože jeho účet není schválený.](unlocking-and-approving-user-accounts-cs/_static/image11.png)](unlocking-and-approving-user-accounts-cs/_static/image10.png)
 
-**Obrázek 4**: Chris nelze protože jeho účet pro přihlášení je Neschváleno ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image12.png))
+**Obrázek 4**: Chris se nemůže přihlásit, protože jeho účet není schválený ([kliknutím zobrazíte obrázek v plné velikosti).](unlocking-and-approving-user-accounts-cs/_static/image12.png)
 
-Otestovat funkci neuzamčení, pokuste se přihlásit jako uživatel s schválené, ale použít nesprávné heslo. Opakujte tento postup potřebný počet vícekrát, účet uživatele byl uzamčen. Ovládací prvek Login byl také aktualizuje a zobrazí vlastní zprávu při pokusu o přihlášení z neuzamčení účtu. Víte, že účet byl uzamčen po spuštění zobrazuje na přihlašovací stránku následující zpráva: "Váš účet byl uzamčen kvůli moc velký počet neplatných pokusů o přihlášení. Obraťte se prosím na správce, aby váš účet byl odemčen."
+Chcete-li otestovat funkci uzamčení, zkuste se přihlásit jako schválený uživatel, ale použijte nesprávné heslo. Opakujte tento postup a počkejte, než se účet uživatele zamkne. Přihlašovací ovládací prvek byl aktualizován také, aby při pokusu o přihlášení z uzamčeného účtu zobrazoval vlastní zprávu. Víte, že účet byl uzamčen po zahájení zobrazení následující zprávy na přihlašovací stránce: "váš účet byl uzamčen z důvodu příliš velkého počtu neplatných pokusů o přihlášení". Kontaktujte prosím správce, aby váš účet byl odemčený. "
 
-Vraťte se `ManageUsers.aspx` stránky a klikněte na odkaz Správa neuzamčení uživatele. Jak je vidět na obrázku 5, měli byste vidět hodnotu `LastLockedOutDateLabel` tlačítka odemčení uživatele by měla být povolená. Klikněte na tlačítko odemčení uživatele k odemknutí uživatelského účtu. Jakmile jste odemkli uživatele, budou moct znovu přihlásit.
+Vraťte se na stránku `ManageUsers.aspx` a klikněte na odkaz Správa pro uzamčeného uživatele. Na obrázku 5 vidíte, že by se měla zobrazit hodnota na stránce `LastLockedOutDateLabel` tlačítko Odemknout uživatele by mělo být povolené. Kliknutím na tlačítko Odemknout uživatele odemkněte uživatelský účet. Po odemčení uživatele se budou moct znovu přihlásit.
 
-[![Dave byl uzamčen přístup do systému](unlocking-and-approving-user-accounts-cs/_static/image14.png)](unlocking-and-approving-user-accounts-cs/_static/image13.png)
+[![Dave byl uzamčený ze systému](unlocking-and-approving-user-accounts-cs/_static/image14.png)](unlocking-and-approving-user-accounts-cs/_static/image13.png)
 
-**Obrázek 5**: Dave má byl uzamčen navýšení kapacity systému ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image15.png))
+**Obrázek 5**: Dave byl uzamčen ze systému ([kliknutím zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image15.png)).
 
-## <a name="step-2-specifying-new-users-approved-status"></a>Krok 2: Zadání nového uživatele schváleno stav
+## <a name="step-2-specifying-new-users-approved-status"></a>Krok 2: určení stavu schválení nových uživatelů
 
-Schválené stav je užitečné v situacích, kde má určitou akci, která se má provést předtím, než se nový uživatel moci přihlásit a získat přístup k funkcím specifické pro uživatele webu. Například možná používáte privátní web, kde jsou všechny stránky, s výjimkou na stránkách přihlášení a registraci přístupné pouze ověřeným uživatelům. Ale co se stane, když cizím dosáhne svůj web, najde na přihlašovací stránku a vytvoří účet? K tomu nedocházelo můžete přesunout na přihlašovací stránce `Administration` složky a vyžadovat, že správce ručně vytvořit jednotlivé účty. Alternativně může povolit všem uživatelům k registraci, ale zakázat přístup k webům, dokud správce schválí uživatelský účet.
+Schválený stav je užitečný ve scénářích, kdy chcete provést určitou akci předtím, než se nový uživatel bude moci přihlásit a získat přístup k funkcím, které jsou specifické pro uživatele. Například může být spuštěn soukromý web, kde jsou všechny stránky kromě přihlašovacích a registračních stránek přístupné pouze ověřeným uživatelům. Ale co se stane, když cizí web dosáhne vaší webové stránky, najde registrační stránku a vytvoří účet? Aby k tomu nedocházelo, můžete přesunout přihlašovací stránku do složky `Administration` a vyžadovat, aby si správce ručně vytvořil každý účet. Případně můžete všem uživatelům povolit registraci, ale zakázat přístup k webu, dokud správce neschválí uživatelský účet.
 
-Ve výchozím nastavení schválí ovládacím prvku CreateUserWizard nových účtů. Můžete nakonfigurovat toto chování pomocí ovládacího prvku [ `DisableCreatedUser` vlastnost](https://msdn.microsoft.com/en-gb/library/system.web.ui.webcontrols.createuserwizard.disablecreateduser.aspx). Tuto vlastnost nastavte na `true` není schválení nových uživatelských účtů.
-
-> [!NOTE]
-> Ve výchozím nastavení protokoluje prvku CreateUserWizard automaticky na nový uživatelský účet. Toto chování závisí ovládací prvek [ `LoginCreatedUser` vlastnost](https://msdn.microsoft.com/en-gb/library/system.web.ui.webcontrols.createuserwizard.logincreateduser.aspx). Protože neschválených uživatelé se nemůžou přihlásit k webu, když `DisableCreatedUser` je `true` nový uživatelský účet není přihlášen na web, bez ohledu na hodnotu `LoginCreatedUser` vlastnost.
-
-Při vytváření nových uživatelských účtů prostřednictvím prostřednictvím kódu programu `Membership.CreateUser` metodu pro vytvoření neschválených uživatelský účet pomocí jednoho z přetížení, které přijímají nového uživatele `IsApproved` hodnota vlastnosti jako vstupní parametr.
-
-## <a name="step-3-approving-users-by-verifying-their-email-address"></a>Krok 3: Schválení uživatelé pomocí ověření e-mailová adresa
-
-Počet webů, které podporují uživatelské účty nejsou schválit noví uživatelé ověřují e-mailovou adresu, které jsou zadané při registraci. Tento proces ověření se běžně používá k zamezit robotů, spammery a dalších ne'er-do-wells vyžaduje jedinečný, ověřený e-mailovou adresu a přidá další krok v procesu registrace. V tomto modelu nový uživatel zaregistruje do jejich odesláním e-mailovou zprávu, která obsahuje odkaz na ověřovací stránku. Návštěvou odkaz má uživatel prověřené dostali e-mail, a proto, že e-mailová adresa zadaná je platný. Na stránce ověřování zodpovídá za schválení uživatele. Může k tomu dojít automaticky, a tím schválení všichni uživatelé, kteří dosáhne této stránky, nebo až poté, co uživatel zadá některé další informace, jako například [test CAPTCHA](http://en.wikipedia.org/wiki/Captcha).
-
-Pro tento pracovní postup, musíme nejprve aktualizovat na stránku pro vytvoření účtu tak, aby noví uživatelé si neschválených. Otevřít `EnhancedCreateUserWizard.aspx` stránku `Membership` složky a sady ovládacím prvku CreateUserWizard `DisableCreatedUser` vlastnost `true`.
-
-V dalším kroku budeme muset nakonfigurovat ovládacím prvku CreateUserWizard k odesílání e-mailu novému uživateli s pokyny k ověření svého účtu. Konkrétně jsme bude obsahovat odkaz v e-mailu na `Verification.aspx` stránky (která jsme dosud k vytvoření) a předejte nový uživatel `UserId` prostřednictvím řetězec dotazu. `Verification.aspx` Stránky se vyhledávání identifikátoru objektu pomocí zadaného uživatele a označte je schválený.
-
-### <a name="sending-a-verification-email-to-new-users"></a>Odesílání ověřovací E-mail pro nové uživatele
-
-K odesílání e-mailu z ovládacího prvku CreateUserWizard, konfigurovat jeho `MailDefinition` vlastnost odpovídajícím způsobem. Jak je popsáno v <a id="Tutorial13"> </a> [předchozí kurz o službě](recovering-and-changing-passwords-cs.md), zahrnují ovládací prvky ChangePassword a PasswordRecovery [ `MailDefinition` vlastnost](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.maildefinition.aspx) to funguje stejným způsobem jako CreateUserWizard ovládacího prvku.
+Ve výchozím nastavení schválí ovládací prvek ovládacím CreateUserWizard nové účty. Toto chování můžete nakonfigurovat pomocí [vlastnosti`DisableCreatedUser`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.disablecreateduser.aspx)ovládacího prvku. Nastavte tuto vlastnost na `true`, aby neschvalovala nové uživatelské účty.
 
 > [!NOTE]
-> Použít `MailDefinition` vlastnost musíte zadat e-mailu doručování možnosti `Web.config`. Další informace najdete v [odesílání e-mailu v ASP.NET](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx).
+> Ve výchozím nastavení se ovládací prvek ovládacím CreateUserWizard automaticky přihlásí k novému uživatelskému účtu. Toto chování je řízeno [vlastností`LoginCreatedUser`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.logincreateduser.aspx)ovládacího prvku. Vzhledem k tomu, že neschválení uživatelé se nemohou přihlásit k webu, když `DisableCreatedUser` `true` nový uživatelský účet není přihlášen k webu, bez ohledu na hodnotu vlastnosti `LoginCreatedUser`.
 
-Začněte tím, že vytvoříte novou šablonu e-mailu s názvem `CreateUserWizard.txt` v `EmailTemplates` složky. Pro šablonu používáte následující text:
+Pokud vytváříte nové uživatelské účty prostřednictvím metody `Membership.CreateUser` a chcete vytvořit neschválený uživatelský účet, použijte jedno z přetížení, které přijímají hodnotu vlastnosti `IsApproved` nového uživatele jako vstupní parametr.
+
+## <a name="step-3-approving-users-by-verifying-their-email-address"></a>Krok 3: schválení uživatelů ověřením jejich e-mailové adresy
+
+Mnoho webů, které podporují uživatelské účty, neschvaluje nové uživatele, dokud neověří e-mailovou adresu, kterou zadal při registraci. Tento proces ověření se běžně používá k vzdorujeí robotyí, odesilatelům nevyžádané pošty a dalších ne'er-jamk, protože vyžaduje jedinečnou, ověřenou e-mailovou adresu a v procesu registrace přidá další krok. Když se v tomto modelu přihlásí nový uživatel, pošle se vám e-mailová zpráva s odkazem na ověřovací stránku. Tím, že uživatel prochází odkazem, který zjistil, že e-mail přijal a proto, že zadaná e-mailová adresa je platná. Stránka pro ověření zodpovídá za schválení uživatele. K tomu může dojít automaticky, což schválí všechny uživatele, kteří dosáhnou této stránky, nebo jenom po tom, co uživatel zadá nějaké další informace, jako je třeba [CAPTCHA](http://en.wikipedia.org/wiki/Captcha).
+
+Abychom tento pracovní postup přizpůsobili, musíme nejdřív aktualizovat stránku pro vytvoření účtu, aby noví uživatelé neschválili. Otevřete stránku `EnhancedCreateUserWizard.aspx` ve složce `Membership` a nastavte vlastnost `DisableCreatedUser` ovládacího prvku ovládacím CreateUserWizard na `true`.
+
+Dále je potřeba nakonfigurovat ovládací prvek ovládacím CreateUserWizard, aby odesílal novému uživateli e-mail s pokyny, jak ověřit jejich účet. Konkrétně budeme do e-mailu začlenit odkaz na stránku `Verification.aspx` (kterou jsme ještě vytvořili) a předáním `UserId` nového uživatele pomocí řetězce dotazu QueryString. Stránka `Verification.aspx` vyhledá zadaného uživatele a označí je jako schválená.
+
+### <a name="sending-a-verification-email-to-new-users"></a>Posílání ověřovacího e-mailu novým uživatelům
+
+K odeslání e-mailu z ovládacího prvku ovládacím CreateUserWizard nakonfigurujte jeho vlastnost `MailDefinition` odpovídajícím způsobem. Jak je popsáno v <a id="Tutorial13"> </a> [předchozím kurzu](recovering-and-changing-passwords-cs.md), ovládací prvky ChangePassword a PasswordRecovery obsahují [vlastnost`MailDefinition`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.maildefinition.aspx) , která funguje stejným způsobem jako ovládací prvek ovládacím CreateUserWizard.
+
+> [!NOTE]
+> Chcete-li použít vlastnost `MailDefinition`, je třeba zadat možnosti doručování pošty v `Web.config`. Další informace najdete [v tématu posílání e-mailů v ASP.NET](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx).
+
+Začněte vytvořením nové e-mailové šablony s názvem `CreateUserWizard.txt` ve složce `EmailTemplates`. Pro šablonu použijte následující text:
 
 [!code-aspx[Main](unlocking-and-approving-user-accounts-cs/samples/sample3.aspx)]
 
-Nastavte `MailDefinition'` s `BodyFileName` vlastnost "~ / EmailTemplates/CreateUserWizard.txt" a jeho `Subject` vlastnost "Vítejte Můj web! Aktivujte svůj účet."
+Nastavte vlastnost `MailDefinition'` s `BodyFileName` na ~/EmailTemplates/CreateUserWizard.txt a jeho vlastnost `Subject` na Vítejte na mém webu! Aktivujte prosím svůj účet.
 
-Všimněte si, že `CreateUserWizard.txt` obsahuje e-mailovou šablonu `<%VerificationUrl%>` zástupný symbol. Tady adresu URL `Verification.aspx` stránky budou umístěny. CreateUserWizard automaticky nahradí `<%UserName%>` a `<%Password%>` zástupné symboly pomocí nového účtu uživatelské jméno a heslo, ale neexistuje žádný předdefinovaný `<%VerificationUrl%>` zástupný symbol. Musíme ručně nahraďte adresu URL odpovídající ověření.
+Všimněte si, že `CreateUserWizard.txt` e-mailová šablona obsahuje zástupný text `<%VerificationUrl%>`. Tady se umístí adresa URL stránky `Verification.aspx`. Ovládacím CreateUserWizard automaticky nahradí `<%UserName%>` a `<%Password%>` zástupné symboly pomocí uživatelského jména a hesla nového účtu, ale není k dispozici žádný vestavěný zástupný symbol `<%VerificationUrl%>`. Je potřeba ji ručně nahradit odpovídající ověřovací adresou URL.
 
-K tomu, vytvořit obslužnou rutinu události pro CreateUserWizard [ `SendingMail` události](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.sendingmail.aspx) a přidejte následující kód:
+K tomuto účelu vytvořte obslužnou rutinu události pro [událost`SendingMail`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.sendingmail.aspx) ovládacím CreateUserWizard a přidejte následující kód:
 
 [!code-csharp[Main](unlocking-and-approving-user-accounts-cs/samples/sample4.cs)]
 
-`SendingMail` Událost se aktivuje po `CreatedUser` událostí, což znamená, že podle času výše obslužná rutina události spustí nový uživatel již byl vytvořen účet. Jsme dostanete nový uživatel `UserId` pomocí volání `Membership.GetUser` metodu `UserName` vstoupila v ovládacím prvku CreateUserWizard. Dále je vytvořen ověření adresy URL. Příkaz `Request.Url.GetLeftPart(UriPartial.Authority)` vrátí `http://yourserver.com` část adresy URL; `Request.ApplicationPath` vrátí cestu, kde je integrován aplikace. Ověřovací adresa URL je pak definován jako `Verification.aspx?ID=userId`. Tyto dva řetězce jsou poté spojeny tvoří úplnou adresu URL. A konečně, e-mailu zprávu (`e.Message.Body`) má všechny výskyty `<%VerificationUrl%>` nahrazena úplnou adresu URL.
+Událost `SendingMail` aktivuje se po `CreatedUser` události, což znamená, že v době, kdy výše uvedená obslužná rutina události spustí, byl nový uživatelský účet již vytvořen. K hodnotě `UserId` nového uživatele se dostanete tak, že zavoláte metodu `Membership.GetUser` a předáte do ovládacího prvku ovládacím CreateUserWizard, který předává `UserName`. V dalším kroku se vytvoří adresa URL pro ověření. Příkaz `Request.Url.GetLeftPart(UriPartial.Authority)` vrátí část `http://yourserver.com` adresy URL; `Request.ApplicationPath` vrátí cestu, kde je aplikace rootovaná. Adresa URL pro ověření se pak definuje jako `Verification.aspx?ID=userId`. Tyto dva řetězce se pak zřetězí tak, aby tvořily úplnou adresu URL. Text e-mailové zprávy (`e.Message.Body`) obsahuje také všechny výskyty `<%VerificationUrl%>` nahrazené úplnou adresou URL.
 
-Výsledkem je, že noví uživatelé si neschválených, což znamená, že nemůže přihlásit na web. Kromě toho automaticky odešlou se e-mailu s odkazem na adresu URL ověřování (viz obrázek 6).
+Čistý efekt znamená, že noví uživatelé jsou neschváleni, což znamená, že se nemohou přihlásit k webu. Kromě toho se automaticky odesílají e-maily s odkazem na adresu URL pro ověření (viz obrázek 6).
 
-[![Nový uživatel dostane E-mail s odkazem na adresu URL pro ověření](unlocking-and-approving-user-accounts-cs/_static/image17.png)](unlocking-and-approving-user-accounts-cs/_static/image16.png)
+[![nový uživatel obdrží E-mail s odkazem na adresu URL pro ověření.](unlocking-and-approving-user-accounts-cs/_static/image17.png)](unlocking-and-approving-user-accounts-cs/_static/image16.png)
 
-**Obrázek 6**: Nový uživatel dostane E-mail s odkazem na adresu URL pro ověření ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image18.png))
+**Obrázek 6**: nový uživatel obdrží E-mail s odkazem na adresu URL pro ověření ([kliknutím zobrazíte obrázek v plné velikosti).](unlocking-and-approving-user-accounts-cs/_static/image18.png)
 
 > [!NOTE]
-> Krok CreateUserWizard výchozí prvku CreateUserWizard zobrazí zprávu informující uživatele jejich účet se vytvořil a zobrazí tlačítko Pokračovat. Po kliknutí na tento uživatel přejde na adresu URL zadanou v ovládacího prvku `ContinueDestinationPageUrl` vlastnost. CreateUserWizard v `EnhancedCreateUserWizard.aspx` konfigurované k odesílání nových uživatelů `~/Membership/AdditionalUserInfo.aspx`, která vyzve uživatele k jejich rodiště, adresa URL domovské stránky a podpis. Protože tyto informace lze přidat pouze v případě přihlášených uživatelů, má smysl aktualizovat tuto vlastnost na odeslání uživatele zpět na domovskou stránku webu (`~/Default.aspx`). Kromě toho `EnhancedCreateUserWizard.aspx` stránky nebo kroku CreateUserWizard by měl rozšířit uživatel informován, že byl odeslán ověřovací e-mail a jejich účtu nebude neaktivuje, dokud, postupujte podle pokynů v tomto e-mailu. Tyto úpravy opuštění jako cvičení pro čtečku.
+> Výchozí krok ovládacím CreateUserWizard ovládacího prvku ovládacím CreateUserWizard zobrazí zprávu informující o tom, že byl vytvořen účet uživatele, a zobrazí tlačítko pro pokračování. Kliknutím převezme uživatel adresu URL určenou vlastností `ContinueDestinationPageUrl` ovládacího prvku. Ovládacím CreateUserWizard v `EnhancedCreateUserWizard.aspx` je nakonfigurován tak, aby odesílala nové uživatele do `~/Membership/AdditionalUserInfo.aspx`, která uživatele vyzve k zadání svého rodištěu, adresy URL domovské stránky a podpisu. Vzhledem k tomu, že tyto informace mohou být přidány pouze přihlášeným uživatelům, má smysl tuto vlastnost aktualizovat, aby bylo možné odesílat uživatele zpět na domovskou stránku webu (`~/Default.aspx`). Kromě toho by měla být stránka `EnhancedCreateUserWizard.aspx` nebo krok ovládacím CreateUserWizard rozšířena tak, aby informovala uživatele o tom, že byl odeslán ověřovací e-mail, a jejich účet nebude aktivován, dokud nepostupuje podle pokynů v tomto e-mailu. Tyto úpravy opouštíme jako cvičení pro čtenáře.
 
-### <a name="creating-the-verification-page"></a>Vytvoření stránky ověření
+### <a name="creating-the-verification-page"></a>Vytvoření ověřovací stránky
 
-Naše posledním úkolem je vytvořit `Verification.aspx` stránky. Přidat tuto stránku do kořenové složky, přidružíte ho `Site.master` stránky předlohy. Jak jsme provedli s největším počtem předchozí stránky obsahu přidat k webu, odebrat ovládací prvek obsahu, který odkazuje `LoginContent` ContentPlaceHolder tak, aby stránka obsahu používá stránku předlohy výchozí obsahu.
+Náš konečný úkol je vytvořit stránku `Verification.aspx`. Přidejte tuto stránku do kořenové složky a přiřadíte ji k `Site.master` hlavní stránku. Vzhledem k tomu, že jsme provedli většinu předchozích stránek obsahu přidaných do webu, odeberte ovládací prvek obsahu, který odkazuje na `LoginContent` ContentPlaceHolder, aby stránka obsahu používala výchozí obsah stránky předlohy.
 
-Přidání ovládacího prvku popisku Web `Verification.aspx` nastavte jeho `ID` k `StatusMessage` a vymažte její vlastnost textu. Dále vytvořte `Page_Load` obslužné rutiny události a přidejte následující kód:
+Přidejte ovládací prvek web Label na stránku `Verification.aspx`, nastavte jeho `ID` na `StatusMessage` a vymažte jeho vlastnost text. Dále vytvořte obslužnou rutinu události `Page_Load` a přidejte následující kód:
 
 [!code-csharp[Main](unlocking-and-approving-user-accounts-cs/samples/sample5.cs)]
 
-Hromadné výše uvedený kód ověří, zda `UserId` prostřednictvím zadaný řetězec dotazu existuje, že se jedná o platný `Guid` hodnota a zda odkazuje na existující uživatelský účet. Pokud všechny tyto kontroly úspěšně prošel zpracováním, uživatelský účet je schválen; v opačném případě se zobrazí vhodný stavová zpráva.
+Hromadný z výše uvedeného kódu ověřuje, že `UserId` dodaný pomocí řetězce dotazu existuje, že se jedná o platnou `Guid` hodnotu a že odkazuje na existující uživatelský účet. Pokud všechny tyto kontroly proběhnou, je uživatelský účet schválen. v opačném případě se zobrazí vhodná stavová zpráva.
 
-Obrázek 7 znázorňuje `Verification.aspx` stránce, když uživatel prostřednictvím prohlížeče.
+Obrázek 7 ukazuje stránku `Verification.aspx`, když se navštíví přes prohlížeč.
 
-[![Nový uživatelský účet se teď schvalují](unlocking-and-approving-user-accounts-cs/_static/image20.png)](unlocking-and-approving-user-accounts-cs/_static/image19.png)
+[![účet nového uživatele je teď schválený.](unlocking-and-approving-user-accounts-cs/_static/image20.png)](unlocking-and-approving-user-accounts-cs/_static/image19.png)
 
-**Obrázek 7**: Nový uživatelský účet se teď schvalují ([kliknutím ji zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image21.png))
+**Obrázek 7**: účet nového uživatele je teď schválený ([kliknutím zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image21.png)).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Všechny uživatelské účty členství mít dva stavy, které určují, jestli uživatel může přihlásit k webu: `IsLockedOut` a `IsApproved`. Obě tyto vlastnosti musí být `true` pro uživatele k přihlášení.
+Všechny uživatelské účty členů mají dva stavy, které určují, jestli se uživatel může přihlásit k webu: `IsLockedOut` a `IsApproved`. Obě tyto vlastnosti musí být `true`, aby se uživatel mohl přihlásit.
 
-Uživatel je uzamčen stav se používá jako bezpečnostní opatření k snížit pravděpodobnost, že se hacker rozdělení do lokality prostřednictvím metod útoku hrubou silou. Konkrétně uživatel je uzamčen-li počet neplatných pokusů o přihlášení v rámci určité období. Tyto hranice se dají konfigurovat pomocí nastavení zprostředkovatele členství v `Web.config`.
+Stav uzamčeného uživatele se používá jako bezpečnostní opatření ke snížení pravděpodobnosti narušení hackerů v lokalitě prostřednictvím metod hrubou silou. Konkrétně je uživatel uzamčen, pokud v určitém časovém období dojde k určitému počtu neplatných pokusů o přihlášení. Tyto hranice lze konfigurovat prostřednictvím nastavení zprostředkovatele členství v `Web.config`.
 
-Schválené stavu se běžně používá jako způsob zakázat noví uživatelé přihlásit, dokud se některá z akcí vypršel. Třeba web vyžaduje, že nové účty nejdříve schválit správce nebo jako jsme viděli v kroku 3 pomocí ověření e-mailová adresa.
+Schválený stav se běžně používá jako prostředek k zakázání přihlášení nových uživatelů, dokud některá akce neuplyne. Lokalita možná vyžaduje, aby nové účty nejdřív schválil správce nebo, jak jsme viděli v kroku 3 ověřením jejich e-mailové adresy.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ### <a name="about-the-author"></a>O autorovi
 
-Scott Meisnerová, Autor více ASP/ASP.NET knih a zakladatelem 4GuysFromRolla.com, má pracovali Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy  *[Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott může být dostupný na adrese [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) nebo prostřednictvím na svém blogu [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
+Scott Mitchell, autor několika stránek ASP/ASP. NET Books a zakladatel of 4GuysFromRolla.com, pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je *[Sams naučit se ASP.NET 2,0 za 24 hodin](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)* . Scott se dá kontaktovat [mitchell@4guysfromrolla.com](mailto:mitchell@4guysfromrolla.com) nebo prostřednictvím svého blogu na [http://ScottOnWriting.NET](http://scottonwriting.net/).
 
-### <a name="special-thanks-to"></a>Speciální k...
+### <a name="special-thanks-to"></a>Zvláštní díky...
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](recovering-and-changing-passwords-cs.md)
-> [další](building-an-interface-to-select-one-user-account-from-many-vb.md)
+> [Další](building-an-interface-to-select-one-user-account-from-many-vb.md)

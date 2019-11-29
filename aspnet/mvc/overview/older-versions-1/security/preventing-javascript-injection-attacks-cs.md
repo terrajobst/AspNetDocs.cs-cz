@@ -1,116 +1,116 @@
 ---
 uid: mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs
-title: Prevence útoků založených na Injektáži JavaScriptu (C#) | Dokumentace Microsoftu
+title: Zabránění útokům prostřednictvím injektážeC#JavaScriptu () | Microsoft Docs
 author: StephenWalther
-description: Zabránit útoky prostřednictvím injektáže jazyka JavaScript a skriptování napříč weby útoky na vás. V tomto kurzu Stephen Walther vysvětluje, jak můžete snadno de...
+description: Zabraňte útokům prostřednictvím injektáže JavaScriptu a útokům na skriptování mezi weby. V tomto kurzu Stephen Walther vysvětluje, jak můžete snadno de...
 ms.author: riande
 ms.date: 08/19/2008
 ms.assetid: d0136da6-81a4-4815-b002-baa84744c09e
 msc.legacyurl: /mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e7294be63ac06dbf548df9d99c07503d4bfff55f
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: fb00ee8a7e3d678e824052060eb5d9fd5d4b6a42
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65125488"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74594878"
 ---
 # <a name="preventing-javascript-injection-attacks-c"></a>Prevence útoků založených na injektáži JavaScriptu (C#)
 
-podle [Stephen Walther](https://github.com/StephenWalther)
+od [Stephen Walther](https://github.com/StephenWalther)
 
-[Stáhnout PDF](http://download.microsoft.com/download/8/4/8/84843d8d-1575-426c-bcb5-9d0c42e51416/ASPNET_MVC_Tutorial_06_CS.pdf)
+[Stáhnout PDF](https://download.microsoft.com/download/8/4/8/84843d8d-1575-426c-bcb5-9d0c42e51416/ASPNET_MVC_Tutorial_06_CS.pdf)
 
-> Zabránit útoky prostřednictvím injektáže jazyka JavaScript a skriptování napříč weby útoky na vás. V tomto kurzu Stephen Walther vysvětluje, jak můžete snadno, aby zhatila tyto typy útoků pomocí kódování obsahu v jazyce HTML.
+> Zabraňte útokům prostřednictvím injektáže JavaScriptu a útokům na skriptování mezi weby. V tomto kurzu Stephen Walther vysvětluje, jak můžete tyto typy útoků snadno přesazovat pomocí kódování HTML vašeho obsahu.
 
-Cílem tohoto kurzu je vysvětlují, jak můžete zabránit útoků založených na injektáži JavaScriptu v aplikacích ASP.NET MVC. Tento kurz popisuje dvou přístupů týkající se ochrana vašeho webu vůči útoku prostřednictvím injektáže skriptu JavaScript. Zjistíte, jak zabránit útoků založených na injektáži JavaScriptu pomocí kódování data, která můžete zobrazit. Také se dozvíte, jak zabránit útoků založených na injektáži JavaScriptu kódování, který můžete přijímat data.
+Cílem tohoto kurzu je vysvětlit, jak můžete zabránit útokům prostřednictvím injektáže JavaScriptu v aplikacích ASP.NET MVC. Tento kurz popisuje dva přístupy k obraně webu proti útoku prostřednictvím injektáže JavaScriptu. Naučíte se, jak zabránit útokům prostřednictvím injektáže JavaScriptu pomocí kódování zobrazených dat. Naučíte se také, jak zabránit útokům prostřednictvím injektáže JavaScriptu při kódování dat, která přijímáte.
 
-## <a name="what-is-a-javascript-injection-attack"></a>Co je útok prostřednictvím injektáže JavaScript?
+## <a name="what-is-a-javascript-injection-attack"></a>Co je útok injektáže JavaScriptu?
 
-Pokaždé, když se přijímají vstup uživatele a opětovnému zobrazení uživatelského vstupu, otevřete webovou stránku pro útoků založených na injektáži JavaScriptu. Podívejme se na konkrétní aplikaci, která je otevřená pro útoků založených na injektáži JavaScriptu.
+Pokaždé, když přijmete vstup uživatele a znovu zobrazíte uživatelský vstup, otevřete web pro útoky prostřednictvím injektáže JavaScriptu. Pojďme se podívat na konkrétní aplikaci, která je otevřená pro útoky prostřednictvím injektáže JavaScriptu.
 
-Představte si, že vytvoříte web zpětné vazby zákazníka (viz obrázek 1). Zákazníky můžete přejděte na webovou stránku a zadejte zpětnou vazbu o svých zkušenostech s použitím vašich produktů. Když zákazník odešle jejich zpětné vazby, se zobrazí na stránce zpětnou vazbu znovu zpětnou vazbu.
+Představte si, že jste vytvořili web zpětné vazby od zákazníka (viz obrázek 1). Zákazníci si můžou web navštívit a zadat svůj názor na své zkušenosti s používáním vašich produktů. Když zákazník odešle zpětnou vazbu, zpětná vazba se znovu zobrazí na stránce zpětná vazba.
 
-[![Web zpětné vazby zákazníka](preventing-javascript-injection-attacks-cs/_static/image2.png)](preventing-javascript-injection-attacks-cs/_static/image1.png)
+[![web Feedback pro zákazníky](preventing-javascript-injection-attacks-cs/_static/image2.png)](preventing-javascript-injection-attacks-cs/_static/image1.png)
 
-**Obrázek 01**: Web zpětné vazby zákazníka ([kliknutím ji zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image3.png))
+**Obrázek 01**: web zpětné vazby od zákazníků ([kliknutím zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image3.png))
 
-Web zpětné vazby zákazníka používá `controller` v informacích 1. To `controller` obsahuje dvě akce s názvem `Index()` a `Create()`.
+Web zpětné vazby od zákazníka používá `controller` v seznamu 1. Tato `controller` obsahuje dvě akce s názvem `Index()` a `Create()`.
 
 **Výpis 1 – `HomeController.cs`**
 
 [!code-csharp[Main](preventing-javascript-injection-attacks-cs/samples/sample1.cs)]
 
-`Index()` Metoda zobrazí `Index` zobrazení. Tato metoda projde všechny předchozí od zákazníků `Index` zobrazení při získání zpětné vazby z databáze (pomocí LINQ to SQL dotazu).
+Metoda `Index()` zobrazí `Index` zobrazení. Tato metoda předá všechna předchozí zpětnou vazbu od zákazníků k zobrazení `Index` načtením zpětné vazby z databáze (pomocí dotazu LINQ to SQL).
 
-`Create()` Metoda vytvoří novou položku zpětné vazby a přidá do databáze. Zpráva, kterou zákazník zadá ve formuláři je předán `Create()` metoda v parametru zprávy. Vytvoření položky zpětné vazby a položku zpětné vazby je přiřazena zpráva `Message` vlastnost. Položku zpětné vazby je odeslán do databáze s `DataContext.SubmitChanges()` volání metody. Nakonec návštěvníka přesměrován zpět `Index` zobrazení, kde se zobrazí všechny zpětnou vazbu.
+Metoda `Create()` vytvoří novou položku zpětné vazby a přidá ji do databáze. Zpráva, kterou zákazník zadá do formuláře, je předána metodě `Create()` v parametru zprávy. Vytvoří se položka zpětné vazby a tato zpráva se přiřadí vlastnosti `Message` položky zpětné vazby. Položka zpětné vazby je odeslána do databáze pomocí volání metody `DataContext.SubmitChanges()`. Nakonec se návštěvník přesměruje zpátky na `Index` zobrazení, kde se zobrazuje veškerá zpětná vazba.
 
-`Index` Je zobrazení obsažené v informacích 2.
+Zobrazení `Index` je obsaženo v seznamu 2.
 
 **Výpis 2 – `Index.aspx`**
 
 [!code-aspx[Main](preventing-javascript-injection-attacks-cs/samples/sample2.aspx)]
 
-`Index` Zobrazení má dvě části. V horní části obsahuje formulář zpětné vazby skutečných zákazníků. V dolní části obsahuje For … Každou smyčku, která prochází všechny předchozí položky zpětné vazby zákazníků a zobrazí vlastnosti EntryDate a zpráv pro každou položku zpětné vazby.
+Zobrazení `Index` obsahuje dva oddíly. Horní část obsahuje vlastní formulář zpětné vazby zákazníků. Dolní část obsahuje pro.. Každé smyčka, která prochází všemi předchozími položkami zpětné vazby od zákazníků a zobrazuje vlastnosti EntryDate a Message pro každou položku zpětné vazby.
 
-Web zpětné vazby zákazníka je jednoduchý Web. Bohužel je otevřená pro útoků založených na injektáži JavaScriptu na webu.
+Web zpětné vazby od zákazníka je jednoduchý Web. Web je bohužel otevřený pro útoky prostřednictvím injektáže JavaScriptu.
 
-Představte si, zadejte následující text do formuláře zpětné vazby zákazníka:
+Představte si, že do formuláře zpětné vazby zákazníka zadáte následující text:
 
 [!code-html[Main](preventing-javascript-injection-attacks-cs/samples/sample3.html)]
 
-Tento text představuje skript jazyka JavaScript, která zobrazuje do pole zpráva s výstrahou. Jakmile někdo odešle tento skript do zpětné vazby formuláře, zpráva <em>poč!</em> se zobrazí pokaždé, když se každý uživatel navštíví web zpětné vazby zákazníka v budoucnu (viz obrázek 2).
+Tento text představuje skript JavaScriptu, který zobrazí okno upozorňující na zprávu. Jakmile někdo tento skript odešle do formuláře zpětné vazby, zpráva <em>Boo!</em> zobrazí se vždy, když kdokoli navštíví web zpětné vazby od zákazníka v budoucnosti (viz obrázek 2).
 
-[![Vkládání jazyka JavaScript](preventing-javascript-injection-attacks-cs/_static/image5.png)](preventing-javascript-injection-attacks-cs/_static/image4.png)
+[![vkládání JavaScriptu](preventing-javascript-injection-attacks-cs/_static/image5.png)](preventing-javascript-injection-attacks-cs/_static/image4.png)
 
-**Obrázek 02**: Vkládání jazyka JavaScript ([kliknutím ji zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image6.png))
+**Obrázek 02**: vkládání JavaScriptu ([kliknutím zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image6.png))
 
-Vaše první odezvy do útoků založených na injektáži JavaScriptu teď může být apathy. Si možná myslíte, že jsou útoků založených na injektáži JavaScriptu jednoduše typem *pouze poškození vzhledu* útoku. Může domnívat, že nikdo dělat vše, co skutečně evil provedením útoku prostřednictvím injektáže skriptu JavaScript.
+Nyní může být vaše počáteční odpověď na útoky prostřednictvím injektáže JavaScriptu apathy. Možná si myslíte, že útoky prostřednictvím injektáže JavaScriptu jsou jednoduše typu útoku na odstranění *obličeje* . Možná si myslíte, že nikdo nemůže dělat cokoli, co Evil, tím, že potvrdil útok prostřednictvím injektáže JavaScriptu.
 
-Bohužel se hacker můžete provést některé skutečně, ve skutečnosti evil věci vložením jazyka JavaScript do webu. Útok prostřednictvím injektáže JavaScript můžete použít k provedení útoku skriptování mezi weby (XSS). V s útoky skriptování napříč weby ukrást důvěrných informací uživatelů a odešle informace na jiný web.
+Hacker ale může provádět nějaké skutečně evilé věci vložením JavaScriptu do webu. Můžete použít útok prostřednictvím injektáže JavaScriptu k provádění útoku skriptování mezi weby (XSS). Při útoku na skriptování mezi weby ukrástte důvěrné informace o uživateli a odešlete informace na jiný web.
 
-Například můžete použít se hacker útok prostřednictvím injektáže JavaScript ke krádeži hodnoty soubory cookie v prohlížeči od jiných uživatelů. Pokud citlivým informacím--třeba hesla, čísla platebních karet nebo čísla sociálního pojištění – je uložený v prohlížeči soubory cookie, pak se hacker slouží ke krádeži tyto informace útok prostřednictvím injektáže skriptu JavaScript. Nebo, pokud uživatel zadá citlivých informací obsažených na stránce, který má pomocí jazyka JavaScript útoku, ohrožený hacker do vzít data formuláře a jeho odeslání na jiný web pomocí vloženého JavaScript pole formuláře.
+Hacker může například pomocí útoku na vložení JavaScriptu ukrást hodnoty souborů cookie prohlížeče od jiných uživatelů. Pokud se citlivé informace, jako jsou hesla, čísla kreditních karet nebo čísla sociálního pojištění, ukládají do souborů cookie prohlížeče, pak hacker může k odcizení těchto informací použít útok prostřednictvím injektáže JavaScriptu. Nebo, pokud uživatel zadá citlivé informace v poli formuláře obsaženém na stránce, která byla ohrožena útokem prostřednictvím JavaScriptu, může počítačový podvodník použít vložený JavaScript k přemístění dat formuláře a odeslat ho na jiný web.
 
-*Buďte prosím děsili toho*. Vážně trvat útoků založených na injektáži JavaScriptu a chránit důvěrné informace uživatele. V následujících dvou částech se podíváme na dvě techniky, které vám pomůže chránit vaše aplikace ASP.NET MVC z útoků založených na injektáži JavaScriptu.
+*Děsili se prosím*. Využijte útoky prostřednictvím injektáže JavaScriptu a ochraňte důvěrné informace uživatele. V následujících dvou částech probereme dvě techniky, pomocí kterých můžete chránit aplikace ASP.NET MVC před útoky prostřednictvím injektáže JavaScriptu.
 
-## <a name="approach-1-html-encode-in-the-view"></a>Způsob #1: V zobrazení použije kódování HTML.
+## <a name="approach-1-html-encode-in-the-view"></a>Přístup #1: kódování HTML v zobrazení
 
-Jednou z snadný způsob prevence útoků založených na injektáži JavaScriptu je HTML kódování jakékoli údaje zadávané uživateli webu při opětovné zobrazení dat v zobrazení. Aktualizovaný `Index` zobrazení v informacích 3 následuje tento přístup.
+Jedním z jednoduchých způsobů, jak zabránit útokům prostřednictvím injektáže JavaScriptu, je kódování HTML, které zakóduje data zadaná uživateli webu při zobrazení dat v zobrazení. Tento postup obsahuje aktualizované zobrazení `Index` v seznamu 3.
 
-**Výpis 3 – `Index.aspx` (kódovaný jazykem HTML)**
+**Výpis 3 – `Index.aspx` (kódovaný v HTML)**
 
 [!code-aspx[Main](preventing-javascript-injection-attacks-cs/samples/sample4.aspx)]
 
-Všimněte si, že hodnota `feedback.Message` je HTML kódováním než hodnota se zobrazí s následujícím kódem:
+Všimněte si, že hodnota `feedback.Message` je kódována HTML před zobrazením hodnoty s následujícím kódem:
 
 [!code-aspx[Main](preventing-javascript-injection-attacks-cs/samples/sample5.aspx)]
 
-Jaké jsou mean do formátu HTML zakódujte řetězec? Při HTML kódování řetězce, nebezpečné znaky, jako `<` a `>` nahrazují HTML odkazy na entity, jako `&lt;` a `&gt;`. Takže když řetězec `<script>alert("Boo!")</script>` je ve formátu HTML s kódováním získá k převést `&lt;script&gt;alert(&quot;Boo!&quot;)&lt;/script&gt;`. Kódovaný řetězec se již provádí jako skriptu JavaScript při prohlížečem interpretovány. Místo toho můžete získat neškodné stránku na obrázku 3.
+Co to znamená pro kódování řetězce ve formátu HTML? Při kódování řetězce ve formátu HTML jsou nebezpečné znaky, jako například `<` a `>` nahrazeny odkazy na entity HTML, jako je například `&lt;` a `&gt;`. Takže pokud je řetězec `<script>alert("Boo!")</script>` kódovaný v jazyce HTML, bude převeden na `&lt;script&gt;alert(&quot;Boo!&quot;)&lt;/script&gt;`. Kódovaný řetězec již není spouštěn jako JavaScriptový skript, který je interpretován prohlížečem. Místo toho se stránka s neškodou zobrazí na obrázku 3.
 
-[![Nepotlačí útoku jazyka JavaScript](preventing-javascript-injection-attacks-cs/_static/image8.png)](preventing-javascript-injection-attacks-cs/_static/image7.png)
+[![napadený JavaScriptový útok](preventing-javascript-injection-attacks-cs/_static/image8.png)](preventing-javascript-injection-attacks-cs/_static/image7.png)
 
-**Obrázek 03**: Potlačována útoku jazyka JavaScript ([kliknutím ji zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image9.png))
+**Obrázek 03**: napadený JavaScriptový útok ([kliknutím zobrazíte obrázek v plné velikosti](preventing-javascript-injection-attacks-cs/_static/image9.png))
 
-Všimněte si, že v `Index` zobrazit výpis 3 pouze hodnotu `feedback.Message` je zakódován. Hodnota `feedback.EntryDate` není kódován. Potřebujete jenom zakódovat data zadaná uživatelem. Protože hodnota EntryDate byl vygenerován v kontroleru, není nutné do formátu HTML kódujete tuto hodnotu.
+Všimněte si, že v zobrazení `Index` v seznamu 3 je zakódována pouze hodnota `feedback.Message`. Hodnota `feedback.EntryDate` není kódovaná. Stačí pouze kódovat data zadaná uživatelem. Vzhledem k tomu, že hodnota EntryDate byla v kontroleru vygenerována, nemusíte tuto hodnotu kódovat HTML.
 
-## <a name="approach-2-html-encode-in-the-controller"></a>Způsob #2: V Kontroleru použije kódování HTML.
+## <a name="approach-2-html-encode-in-the-controller"></a>Přístup #2: kódování HTML v kontroleru
 
-Namísto HTML kódování dat při zobrazení dat v zobrazení, ve formátu HTML můžete kódovat data pouze před odesláním dat do databáze. Tento druhý postup je provedena v případě třídy `controller` v informacích 4.
+Namísto dat kódování HTML při zobrazení dat v zobrazení můžete data kódovat přímo před odesláním dat do databáze. Tento druhý přístup se vezme v případě `controller` v seznamu 4.
 
-**Část 4 – `HomeController.cs` (kódovaný jazykem HTML)**
+**Výpis 4 – `HomeController.cs` (kódovaný v HTML)**
 
 [!code-csharp[Main](preventing-javascript-injection-attacks-cs/samples/sample6.cs)]
 
-Všimněte si, že hodnota zprávy je kódovaný jako předtím, než hodnota se odesílá do databáze v rámci HTML `Create()` akce. Pokud zpráva se zobrazí znovu v zobrazení, je zpráva kódovaný jazykem HTML a jakékoli JavaScript vložený ve zprávě není spuštěn.
+Všimněte si, že hodnota zprávy je kódována HTML před odesláním hodnoty do databáze v rámci akce `Create()`. Když je zpráva v zobrazení znovu zobrazená, zpráva je zakódovaná HTML a veškerý JavaScript vložený ve zprávě se neprovede.
 
-Obvykle by měl upřednostnit prvního přístupu přes tento druhý postup popsané v tomto kurzu. Problém s tímto přístupem druhý je, že skončíte s kódováním HTML daty v databázi. Jinými slovy vaše data databáze je změněných zábavných vypadající znaky.
+Obvykle byste měli upřednostňovat první přístup popsaný v tomto kurzu přes tento druhý přístup. Problém s tímto druhým přístupem je, že ve vaší databázi skončí data kódovaná pomocí HTML. Jinými slovy, data databáze jsou změněných s Funny znaky.
 
-Proč je to chybný? Pokud byste někdy potřebovali pro zobrazení dat databáze něco jiného než na webové stránce, bude mít problémy. Například můžete zobrazit už snadno data v aplikaci Windows Forms.
+Proč je to chybné? Pokud někdy potřebujete zobrazit databázová data v jiné než webové stránce, budete mít problémy. Například již nelze snadno zobrazit data v aplikaci model Windows Forms.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Účelem tohoto kurzu bylo vystrašení vás o potenciálních zákazníků útok prostřednictvím injektáže jazyka JavaScript. Popsané v tomto kurzu dvě metody pro tyto aplikace ASP.NET MVC proti útoků založených na injektáži JavaScriptu: buď ve formátu HTML můžete kódovat uživatel odeslal data v zobrazení nebo je můžete HTML kódování uživatel odeslal data v kontroleru.
+Účelem tohoto kurzu bylo scarei potenciálního útoku na injektáže JavaScriptu. Tento kurz popisuje dva způsoby, jak chránit vaše aplikace ASP.NET MVC proti útokům prostřednictvím injektáže JavaScriptu: buď můžete HTML zakódovat data odeslaná v zobrazení, nebo můžete HTML kódovat data odeslaná uživatelem v řadiči.
 
 > [!div class="step-by-step"]
 > [Předchozí](authenticating-users-with-windows-authentication-cs.md)
-> [další](authenticating-users-with-forms-authentication-vb.md)
+> [Další](authenticating-users-with-forms-authentication-vb.md)

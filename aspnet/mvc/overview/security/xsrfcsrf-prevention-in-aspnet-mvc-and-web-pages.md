@@ -8,12 +8,12 @@ ms.date: 03/14/2013
 ms.assetid: aadc5fa4-8215-4fc7-afd5-bcd2ef879728
 msc.legacyurl: /mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 6fcfcda5b95e5844f7d357ac0cbb6d1fd2e215ac
-ms.sourcegitcommit: 84b1681d4e6253e30468c8df8a09fe03beea9309
+ms.openlocfilehash: fb7e76101cbe6a874ddf5b3429ca2dc6d474334b
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73445766"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74595761"
 ---
 # <a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>Prevence XSRF/CSRF v ASP.NET MVC a na webových stránkách
 
@@ -128,7 +128,7 @@ Ověřování založené na deklaracích na druhé straně nemusí nutně vyžad
 
 Mnohé z nasazení, které používají ověřování založené na deklaracích, používá službu [Azure Access Control Service](https://msdn.microsoft.com/library/windowsazure/gg429786.aspx) (ACS), zejména. Služba ACS umožňuje vývojářům nakonfigurovat jednotlivé *zprostředkovatele identity* (například ADFS, poskytovatele účtu Microsoft, poskytovatele OpenID, jako je Yahoo! atd.), a poskytovatele identity vrátí *identifikátory názvů*. Tyto identifikátory názvů můžou obsahovat osobní údaje (PII), jako je e-mailová adresa, nebo by se daly jednat o anonymní osobní identifikátor (PPID). Řazená kolekce členů (poskytovatel identity, identifikátor názvu) dostatečně slouží jako vhodný sledovací token pro konkrétního uživatele při procházení lokality, takže modul runtime webového zásobníku ASP.NET může použít řazenou kolekci členů místo uživatelského jména při generování a ověřují se tokeny pole anti-XSRF. Konkrétní identifikátory URI pro poskytovatele identity a identifikátor názvu jsou:
 
-- `http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider`
+- `https://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider`
 - `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier`
 
 (Další informace najdete na této [stránce s dokumentem ACS](https://msdn.microsoft.com/library/windowsazure/gg185971.aspx) .)

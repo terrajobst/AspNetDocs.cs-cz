@@ -1,232 +1,232 @@
 ---
 uid: web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-vb
-title: Vložení nového záznamu ze zápatí prvku GridView (VB) | Dokumentace Microsoftu
+title: Vložení nového záznamu ze zápatí prvku GridView (VB) | Microsoft Docs
 author: rick-anderson
-description: Zatímco ovládacím prvku GridView neposkytuje integrovanou podporu pro vložení nového záznamu dat, v tomto kurzu ukazuje, jak rozšířit GridView zahrnout...
+description: I když ovládací prvek GridView neposkytuje integrovanou podporu pro vkládání nového záznamu dat, v tomto kurzu se dozvíte, jak rozšířit prvek GridView tak, aby zahrnoval...
 ms.author: riande
 ms.date: 03/06/2007
 ms.assetid: 528acc48-f20c-4b4e-aa16-4cc02f068ebb
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 962d1ff53b87577dd8f232f1bcb8fd01198a5a6d
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 67ef370a90bc843f5c2da80bb43c8ef8de216b51
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108644"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74631944"
 ---
 # <a name="inserting-a-new-record-from-the-gridviews-footer-vb"></a>Vložení nového záznamu ze zápatí prvku GridView (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_53_VB.exe) nebo [stahovat PDF](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/datatutorial53vb1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_53_VB.exe) nebo [Stáhnout PDF](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/datatutorial53vb1.pdf)
 
-> Zatímco ovládacím prvku GridView neposkytuje integrovanou podporu pro vložení nového záznamu dat, tento kurz ukazuje postupy k posílení GridView zahrnout vkládání rozhraní.
+> I když ovládací prvek GridView neposkytuje integrovanou podporu pro vkládání nového záznamu dat, v tomto kurzu se dozvíte, jak rozšířit prvek GridView tak, aby zahrnoval rozhraní pro vložení.
 
 ## <a name="introduction"></a>Úvod
 
-Jak je popsáno v [přehled o vložení, aktualizace a odstranění dat](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb.md) výukový program, prvky GridView, DetailsView a FormView webové obsahují předdefinované datové úpravy funkce. Při použití s ovládací prvky zdroje dat deklarativní, tyto tři ovládací prvky webové lze rychle a snadno nastavit pro změny dat – a v situacích, aniž byste museli napsat jediný řádek kódu. Bohužel pouze ovládací prvky prvku DetailsView a FormView poskytují integrovanou vložení, úpravy a odstranění funkce. GridView nabízí úpravy a odstranění podpory. S trochou Pravoúhlá jeho jsme ale rozšířit GridView zahrnout vkládání rozhraní.
+Jak je popsáno v tématu [Přehled vložení, aktualizace a odstranění dat](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb.md) , jednotlivé webové ovládací prvky GridView, DetailsView a FormView obsahují integrované možnosti změny dat. Při použití s deklarativními ovládacími prvky zdroje dat lze tyto tři webové ovládací prvky rychle a snadno nakonfigurovat pro úpravu dat a ve scénářích, aniž byste museli psát jediný řádek kódu. Bohužel pouze ovládací prvky DetailsView a FormView poskytují integrované možnosti vkládání, úprav a odstraňování. Prvek GridView nabízí pouze úpravu a odstraňování podpory. Nicméně s malým pravoúhlým odmašťování můžeme ovládací prvek GridView rozšířit tak, aby zahrnoval rozhraní pro vložení.
 
-Při přidávání možnosti vložení do prvku GridView, máme odpovědnost za rozhodování o tom, jak nové záznamy se přidají, vytváření rozhraní vkládání a psát kód k vložení nového záznamu. V tomto kurzu se podíváme na přidávání rozhraní vkládání do zápatí prvku GridView s řádků (viz obrázek 1). Buňka zápatí pro každý sloupec obsahuje příslušná data uživatele rozhraní prvek kolekce (textové pole pro název produktu s, DropDownList pro dodavatele a tak dále). Potřebujeme sloupec pro sčítání tlačítko, které při kliknutí na vyvolávají zpětné odeslání a vložit nový záznam do `Products` pomocí hodnoty poskytnuté na řádku zápatí tabulky.
+Při přidávání možností vkládání do prvku GridView zodpovídáme za rozhodování o tom, jak se přidávají nové záznamy, vytvoří se rozhraní pro vložení a napíše se kód pro vložení nového záznamu. V tomto kurzu se podíváme na přidání rozhraní pro vložení do řádku zápatí GridView s (viz obrázek 1). Buňka zápatí pro každý sloupec obsahuje příslušný prvek uživatelského rozhraní pro shromažďování dat (textové pole pro název produktu, DropDownList pro dodavatele atd.). Pro tlačítko Přidat potřebujeme také sloupec, který po kliknutí způsobí zpětné odeslání a vložení nového záznamu do tabulky `Products` pomocí hodnot zadaných v řádku zápatí.
 
-[![Řádek zápatí poskytuje rozhraní pro přidání nové produkty](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image1.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image1.png)
+[![řádku zápatí poskytuje rozhraní pro přidávání nových produktů.](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image1.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image1.png)
 
-**Obrázek 1**: Řádek zápatí poskytuje rozhraní pro přidání nové produkty ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image2.png))
+**Obrázek 1**: řádek zápatí poskytuje rozhraní pro přidání nových produktů ([kliknutím zobrazíte obrázek v plné velikosti).](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image2.png)
 
-## <a name="step-1-displaying-product-information-in-a-gridview"></a>Krok 1: Zobrazení informací o produktu v GridView
+## <a name="step-1-displaying-product-information-in-a-gridview"></a>Krok 1: zobrazení informací o produktu v prvku GridView
 
-Předtím, než jsme si problém s vytvářením rozhraní vkládání v zápatí prvku GridView s, umožnit s první zaměřit se na přidání GridView na stránku, která zobrazuje seznam produktů, které v databázi. Začněte otevřením `InsertThroughFooter.aspx` stránku `EnhancedGridView` složky a GridView přetáhněte z panelu nástrojů do Návrháře nastavení GridView s `ID` vlastnost `Products`. Pak pomocí inteligentních značek s GridView a vytvořte jeho vazbu nového prvku ObjectDataSource s názvem `ProductsDataSource`.
+Předtím, než se budeme věnovat dodržovali vytváření rozhraní pro vložení do zápatí GridView s, se nejprve nezapomeňte zaměřit na přidání prvku GridView na stránku, která obsahuje seznam produktů v databázi. Začněte otevřením stránky `InsertThroughFooter.aspx` ve složce `EnhancedGridView` a přetažením prvku GridView z panelu nástrojů do návrháře, nastavením vlastnosti `ID` prvku GridView s `Products`. Dále použijte inteligentní značku GridView s pro svázání s novým prvkem ObjectDataSource s názvem `ProductsDataSource`.
 
-[![Vytvoření nového prvku ObjectDataSource s názvem ProductsDataSource](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image2.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image3.png)
+[![vytvořit nový prvek ObjectDataSource s názvem ProductsDataSource](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image2.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image3.png)
 
-**Obrázek 2**: Vytvoření nového prvku ObjectDataSource s názvem `ProductsDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image4.png))
+**Obrázek 2**: vytvoření nového prvku ObjectDataSource s názvem `ProductsDataSource` ([kliknutím zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image4.png))
 
-Konfigurace ObjectDataSource používat `ProductsBLL` třída s `GetProducts()` metodu pro načtení informací o produktu. Pro účely tohoto kurzu umožňují soustředit s výhradně na přidání vkládání funkcí a bez starostí o úpravy a odstranění. Proto se ujistěte, že rozevíracího seznamu na kartě Vložení je nastavena na `AddProduct()` a že rozevírací seznamy na kartách UPDATE a DELETE jsou nastavena na (žádný).
+Nakonfigurujte prvek ObjectDataSource pro použití metody `GetProducts()` `ProductsBLL` třídy s k načtení informací o produktu. V tomto kurzu se zaměřujeme výhradně na přidávání možností vkládání a nedělejte si starosti s úpravami a odstraňováním. Proto se ujistěte, že rozevírací seznam na kartě Vložení je nastaven na `AddProduct()` a že rozevírací seznamy na kartách aktualizovat a odstranit jsou nastaveny na hodnotu (žádné).
 
-[![Map – metoda AddProduct metodě Insert() s prvku ObjectDataSource](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image3.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image5.png)
+[![namapovat metodu AddProduct na metodu ObjectDataSource s Insert ()](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image3.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image5.png)
 
-**Obrázek 3**: Mapování `AddProduct` metody prvku ObjectDataSource s `Insert()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image6.png))
+**Obrázek 3**: namapujte metodu `AddProduct` na metodu `Insert()` ObjectDataSource s ([kliknutím zobrazíte obrázek v plné velikosti).](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image6.png)
 
-[![Nastavte rozevírací seznamy aktualizace a odstranění karty na (žádný)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image4.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image7.png)
+[![nastavení rozevíracích seznamů aktualizovat a odstranit na (žádné)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image4.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image7.png)
 
-**Obrázek 4**: Nastavte aktualizace a odstranění karty rozevírací seznamy na (žádný) ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image8.png))
+**Obrázek 4**: nastavení rozevíracích seznamů aktualizovat a odstranit na (žádné) ([kliknutím zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image8.png))
 
-Po dokončení Průvodce nakonfigurovat zdroj dat s prvek ObjectDataSource, Visual Studio automaticky přidá pole do prvku GridView. pro každou z odpovídajících datových polí. Prozatím ponechejte všechna pole, které jsou přidány pomocí sady Visual Studio. Později v tomto kurzu jsme sem vrátíme a odebrat některá pole, jehož hodnoty nejsou t musí být zadána při přidání nového záznamu.
+Po dokončení Průvodce přidáním zdroje dat v prvku ObjectDataSource pro sadu Visual Studio automaticky přidá pole do prvku GridView pro každé z odpovídajících datových polí. Prozatím ponechte všechna pole přidaná v aplikaci Visual Studio. Později v tomto kurzu se vrátíme a odebereme některá pole, jejichž hodnoty není potřeba zadat při přidávání nového záznamu.
 
-Vzhledem k tomu, že blíží 80 produktů v databázi, uživatel bude muset posuňte se úplně dolů webové stránky, chcete-li přidat nový záznam. Proto umožní s povolit stránkování provést vložení rozhraní viditelné a přístupné. Zapnutí stránkování, stačí zaškrtněte políčko Povolit stránkování v prvku GridView s inteligentním.
+Vzhledem k tomu, že databáze obsahuje blízko až 80 produktů, bude nutné, aby se uživatel přesunul do dolní části webové stránky, aby bylo možné přidat nový záznam. Proto umožníme stránkování, aby bylo vkládání rozhraní lépe viditelné a dostupné. Chcete-li zapnout stránkování, stačí zaškrtnout políčko Povolit stránkování z inteligentní značky GridView.
 
-V tomto okamžiku ovládacími prvky GridView a prvku ObjectDataSource s deklarativní by měl vypadat nějak takto:
+V tomto okamžiku by deklarativní označení GridView a ObjectDataSource s měly vypadat podobně jako následující:
 
 [!code-aspx[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample1.aspx)]
 
-[![Všechna datová pole produktu se zobrazí v GridView stránkovaného fondu](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image5.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image9.png)
+[![všechna pole dat produktu se zobrazují ve stránkovém prvku GridView.](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image5.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image9.png)
 
-**Obrázek 5**: Všechna datová pole produktu se zobrazí v GridView stránkovaného fondu ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image10.png))
+**Obrázek 5**: všechna pole dat produktu se zobrazují v stránkovaném prvku GridView ([kliknutím zobrazíte obrázek v plné velikosti).](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image10.png)
 
 ## <a name="step-2-adding-a-footer-row"></a>Krok 2: Přidání řádku zápatí
 
-Spolu s jeho záhlaví a řádky dat prvku GridView obsahuje řádek zápatí. Řádky záhlaví a zápatí se zobrazují v závislosti na hodnoty GridView s [ `ShowHeader` ](https://msdn.microsoft.com/en-gb/library/system.web.ui.webcontrols.gridview.showheader.aspx) a [ `ShowFooter` ](https://msdn.microsoft.com/en-gb/library/system.web.ui.webcontrols.gridview.showfooter.aspx) vlastnosti. Chcete-li zobrazit zápatí řádek, jednoduše nastavte `ShowFooter` vlastnost `True`. Jak znázorňuje obrázek 6 nastavení `ShowFooter` vlastnost `True` přidá zápatí řádek do mřížky.
+Spolu s jeho řádky záhlaví a dat obsahuje prvek GridView řádek zápatí. Řádky záhlaví a zápatí se zobrazí v závislosti na hodnotách [`ShowHeader`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.showheader.aspx) a [`ShowFooter`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.showfooter.aspx) vlastností prvku GridView. Chcete-li zobrazit řádek zápatí, jednoduše nastavte vlastnost `ShowFooter` na hodnotu `True`. Jak ukazuje obrázek 6, nastavení vlastnosti `ShowFooter` na `True` přidá do mřížky řádek zápatí.
 
-[![Zobrazit řádek zápatí, nastavte ShowFooter na hodnotu True](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image6.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image11.png)
+[![pro zobrazení řádku zápatí nastavte ShowFooter na hodnotu true.](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image6.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image11.png)
 
-**Obrázek 6**: Chcete-li zobrazit řádek zápatí, nastavte `ShowFooter` k `True` ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image12.png))
+**Obrázek 6**: Chcete-li zobrazit řádek zápatí, nastavte `ShowFooter` na `True` ([kliknutím zobrazíte obrázek v plné velikosti).](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image12.png)
 
-Všimněte si, že řádek zápatí má barvu pozadí tmavě červenou. Je to z důvodu motiv DataWebControls jsme vytvořili a použijí pro všechny stránky zpátky [zobrazení dat se prvku ObjectDataSource](../basic-reporting/displaying-data-with-the-objectdatasource-vb.md) kurzu. Konkrétně `GridView.skin` soubor nastaví `FooterStyle` vlastnost, takový, který se používá `FooterStyle` třídu šablony stylů CSS. `FooterStyle` Třída je definována v `Styles.css` následujícím způsobem:
+Všimněte si, že řádek zápatí má tmavě červenou barvu pozadí. Důvodem je motiv DataWebControls, který jsme vytvořili a použili na všechny stránky zpátky v kurzu [zobrazení dat s](../basic-reporting/displaying-data-with-the-objectdatasource-vb.md) využitím prvku ObjectDataSource. Konkrétně soubor `GridView.skin` konfiguruje vlastnost `FooterStyle`, která používá třídu `FooterStyle` šablony stylů CSS. Třída `FooterStyle` je definována v `Styles.css` následujícím způsobem:
 
 [!code-css[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample2.css)]
 
 > [!NOTE]
-> Jsme ve Prozkoumali jste ji pomocí řádku prvku GridView s zápatí v předchozích kurzech. V případě potřeby odkazovat zpět [zobrazuje souhrnné informace v zápatí prvku GridView](../custom-formatting/displaying-summary-information-in-the-gridview-s-footer-vb.md) kurzu aktualizačního programu.
+> V předchozích kurzech jsme prozkoumali pomocí řádku zápatí GridView. V případě potřeby se vraťte k [zobrazení souhrnných informací v](../custom-formatting/displaying-summary-information-in-the-gridview-s-footer-vb.md) kurzu pro aktualizační program v části zápatí prvku GridView.
 
-Po nastavení `ShowFooter` vlastnost `True`, věnujte chvíli výstup zobrazit v prohlížeči. Aktuálně t zápatí řádek kódu obsahovat text ani webové ovládací prvky. V kroku 3 upravíme zápatí pro každé pole ovládacího prvku GridView tak, že obsahují odpovídající vložení rozhraní.
+Po nastavení vlastnosti `ShowFooter` na `True`chvíli počkejte, než se výstup zobrazí v prohlížeči. V současné době se v řádku zápatí neobsahují žádné textové ani webové ovládací prvky. V kroku 3 Upravme zápatí pro každé pole GridView tak, aby obsahovalo příslušné rozhraní pro vložení.
 
-[![Řádek prázdný zápatí se zobrazí nad the stránkovací rozhraní ovládacích prvků](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image7.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image13.png)
+[![prázdného řádku zápatí se zobrazí nad ovládacími prvky rozhraní stránkování.](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image7.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image13.png)
 
-**Obrázek 7**: Řádek prázdný zápatí se zobrazí nad the stránkovací rozhraní ovládacích prvků ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image14.png))
+**Obrázek 7**: prázdný řádek zápatí se zobrazí nad ovládacími prvky rozhraní stránkování ([kliknutím zobrazíte obrázek v plné velikosti).](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image14.png)
 
-## <a name="step-3-customizing-the-footer-row"></a>Krok 3: Přizpůsobení řádků zápatí
+## <a name="step-3-customizing-the-footer-row"></a>Krok 3: přizpůsobení řádku zápatí
 
-Zpátky [použití vlastností TemplateField v ovládacím prvku GridView](../custom-formatting/using-templatefields-in-the-gridview-control-vb.md) kurzu jsme viděli, jak výrazně přizpůsobit zobrazení konkrétní sloupce GridView použití vlastností TemplateField (na rozdíl od BoundFields nebo CheckBoxFields); v [ Přizpůsobení rozhraní pro úpravu dat](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb.md) jsme se podívali na použití vlastností TemplateField k přizpůsobení úpravy rozhraní v GridView. Vzpomínáte, že TemplateField tvoří několik šablon, která definuje kombinací kódu, webové ovládací prvky a syntaxe vázání dat použité pro určité typy řádků. `ItemTemplate`, Například určuje šablona použitá pro řádky jen pro čtení, zatímco `EditItemTemplate` definuje šablonu upravit řádek.
+Zpět v kurzu [použití templatefields v kurzu ovládacího prvku GridView](../custom-formatting/using-templatefields-in-the-gridview-control-vb.md) jsme viděli, jak významně přizpůsobit zobrazení konkrétního sloupce GridView pomocí templatefields (na rozdíl od BoundFields nebo CheckBoxFields); v [části přizpůsobení rozhraní pro úpravu dat](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb.md) jsme se vyhledali pomocí vlastností templatefields k přizpůsobení rozhraní pro úpravy v prvku GridView. Odvolání, že TemplateField se skládá z několika šablon, které definují kombinaci značek, webových ovládacích prvků a syntaxe datových vazeb použitých pro určité typy řádků. `ItemTemplate`například určuje šablonu použitou pro řádky jen pro čtení, zatímco `EditItemTemplate` definuje šablonu pro upravitelný řádek.
 
-Spolu s `ItemTemplate` a `EditItemTemplate`, pole TemplateField zahrnuje také `FooterTemplate` určující obsah pro řádek zápatí. Proto můžeme přidat ovládací prvky webového potřebné pro každé pole s vkládání rozhraní portálu `FooterTemplate`. Pokud chcete začít, převeďte na vlastností TemplateField všechna pole v prvku GridView. To můžete provést klepnutím na odkaz Upravit sloupce v prvku GridView s inteligentní značky, vyberte každé pole v levém dolním rohu a kliknutím na odkaz TemplateField převést toto pole.
+Společně s `ItemTemplate` a `EditItemTemplate`pole TemplateField také obsahuje `FooterTemplate`, které určuje obsah pro řádek zápatí. Proto můžeme přidat webové ovládací prvky, které jsou potřeba pro každé pole vkládání rozhraní do `FooterTemplate`. Chcete-li začít, převeďte všechna pole v prvku GridView na TemplateFields. To lze provést kliknutím na odkaz Upravit sloupce v inteligentní značce GridView s, výběrem každého pole v levém dolním rohu a kliknutím na tlačítko převést toto pole na odkaz TemplateField.
 
-![Převést každé pole TemplateField](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image8.gif)
+![Převést každé pole na TemplateField](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image8.gif)
 
-**Obrázek 8**: Převést každé pole TemplateField
+**Obrázek 8**: převod každého pole na TemplateField
 
-Kliknutím na převést toto pole na pole TemplateField změní aktuální typ pole do ekvivalentní TemplateField. Například každá vlastnost BoundField nahrazuje TemplateField s `ItemTemplate` , který obsahuje popisek, který se zobrazí odpovídající pole data a `EditItemTemplate` , který zobrazí pole data do textového pole. `ProductName` Vlastnost BoundField byla převedena na následující TemplateField značky:
+Kliknutím na tlačítko převést toto pole na TemplateField dojde k zapínání aktuálního typu pole do ekvivalentní hodnoty TemplateField. Například každá vlastnost BoundField je nahrazena vlastností TemplateField s `ItemTemplate`, která obsahuje popisek, který zobrazuje příslušné datové pole a `EditItemTemplate`, které zobrazuje datové pole v textovém poli. `ProductName` vlastnost BoundField byl převeden na následující značky TemplateField:
 
 [!code-aspx[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample3.aspx)]
 
-Podobně `Discontinued` třídě CheckBoxField byl převeden na pole TemplateField jehož `ItemTemplate` a `EditItemTemplate` obsahovat ovládací prvek zaškrtávací políčko Web (s `ItemTemplate` s zaškrtávací políčko zakázán). Jen pro čtení `ProductID` Vlastnost BoundField byl převeden na pole TemplateField pomocí ovládacího prvku popisku v obou `ItemTemplate` a `EditItemTemplate`. Stručně řečeno převod existující GridView pole na pole TemplateField je rychlý a snadný způsob, jak přepnout na lépe přizpůsobitelnou TemplateField bez ztráty stávajících pole s funkcí.
+Podobně `Discontinued` třídě CheckBoxField podporována byl převeden na TemplateField, jehož `ItemTemplate` a `EditItemTemplate` obsahují webový ovládací prvek CheckBox (s políčkem `ItemTemplate` s zakázáním). Vlastnost BoundField `ProductID` jen pro čtení bylo převedeno na TemplateField s ovládacím prvkem popisek v `ItemTemplate` a `EditItemTemplate`. V krátkém případě převod existujícího pole GridView na TemplateField je rychlý a snadný způsob, jak přepnout na více přizpůsobitelného TemplateField, aniž by došlo ke ztrátě všech existujících funkcí polí.
 
-Od prvku GridView jsme k práci s kódu t podpora úpravy, můžete bez obav odstranit `EditItemTemplate` z každé TemplateField byste museli opustit jenom `ItemTemplate`. Po této, vaše GridView s deklarativní by měl vypadat nějak takto:
+Vzhledem k tomu, že komponenta GridView, kterou jsme provedli, jsme si nemuseli upravovat podporu, nebojte se `EditItemTemplate` z každého pole TemplateField a opouštíte jenom `ItemTemplate`. Po provedení tohoto postupu by deklarativní označení GridView s mělo vypadat takto:
 
 [!code-aspx[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample4.aspx)]
 
-Teď, když každé pole ovládacího prvku GridView byl převeden na pole TemplateField, abychom mohli zadat odpovídající rozhraní vkládání do každého pole s `FooterTemplate`. Některá pole nebude mít vkládání rozhraní (`ProductID`, například); jiné se liší ve webových ovládacích prvcích používá ke shromažďování nové informace o produktu s.
+Teď, když se každé pole GridView převede na TemplateField, můžeme do každého pole s `FooterTemplate`zadat příslušné rozhraní pro vložení. Některá pole nebudou mít rozhraní pro vložení (`ProductID`, například). ostatní se budou lišit ve webových ovládacích prvcích používaných ke shromažďování nových informací o produktech.
 
-K vytvoření úpravy rozhraní, zvolte odkaz Upravit šablony z inteligentních značek s ovládacího prvku GridView. Potom z rozevíracího seznamu vyberte odpovídající pole s `FooterTemplate` a přetáhněte příslušný ovládací prvek z panelu nástrojů do návrháře.
+Chcete-li vytvořit rozhraní pro úpravy, vyberte odkaz Upravit šablony z inteligentní značky GridView. Pak v rozevíracím seznamu vyberte odpovídající pole `FooterTemplate` a přetáhněte příslušný ovládací prvek z panelu nástrojů do návrháře.
 
-[![Přidejte příslušné vkládání rozhraní pro každé pole s FooterTemplate](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image9.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image15.png)
+[![do každého pole s šablona FooterTemplate přidejte příslušné rozhraní pro vložení.](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image9.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image15.png)
 
-**Obrázek 9**: Přidejte příslušné rozhraní vkládání každého pole s `FooterTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image16.png))
+**Obrázek 9**: Přidejte příslušné rozhraní pro vložení do každého pole s `FooterTemplate` ([kliknutím zobrazíte obrázek v plné velikosti).](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image16.png)
 
-Následující seznam s odrážkami vytváří výčet polí ovládacího prvku GridView, určení vkládání rozhraní pro přidání:
+Následující seznam s odrážkami vypíše pole GridView a určí rozhraní pro vložení, které se má přidat:
 
-- `ProductID` Žádné.
-- `ProductName` přidejte textové pole a nastavte jeho `ID` k `NewProductName`. Přidání ovládacího prvku RequiredFieldValidator také zajistit, aby uživatel zadal hodnotu pro nový název produktu s.
-- `SupplierID` Žádné.
-- `CategoryID` Žádné.
-- `QuantityPerUnit` Přidání textového pole, nastavení jeho `ID` k `NewQuantityPerUnit`.
-- `UnitPrice` přidat textové pole s názvem `NewUnitPrice` a CompareValidator, který zajišťuje zadaná hodnota je hodnota měny větší než nebo rovna hodnotě nula.
-- `UnitsInStock` použijte textové pole jejichž `ID` je nastavena na `NewUnitsInStock`. Zahrnout CompareValidator, který zajišťuje, že zadaná hodnota je celočíselná hodnota větší než nebo rovna hodnotě nula.
-- `UnitsOnOrder` použijte textové pole jejichž `ID` je nastavena na `NewUnitsOnOrder`. Zahrnout CompareValidator, který zajišťuje, že zadaná hodnota je celočíselná hodnota větší než nebo rovna hodnotě nula.
-- `ReorderLevel` použijte textové pole jejichž `ID` je nastavena na `NewReorderLevel`. Zahrnout CompareValidator, který zajišťuje, že zadaná hodnota je celočíselná hodnota větší než nebo rovna hodnotě nula.
-- `Discontinued` Přidání zaškrtávacího políčka, nastavením jeho `ID` k `NewDiscontinued`.
-- `CategoryName` Přidejte DropDownList a nastavte jeho `ID` k `NewCategoryID`. Vázat na nového prvku ObjectDataSource s názvem `CategoriesDataSource` a nakonfigurujte ho na použití `CategoriesBLL` třída s `GetCategories()` metody. Mít DropDownList s `ListItem` s zobrazení `CategoryName` dat pole, pomocí `CategoryID` datové pole jako jejich hodnoty.
-- `SupplierName` Přidejte DropDownList a nastavte jeho `ID` k `NewSupplierID`. Vázat na nového prvku ObjectDataSource s názvem `SuppliersDataSource` a nakonfigurujte ho na použití `SuppliersBLL` třída s `GetSuppliers()` metody. Mít DropDownList s `ListItem` s zobrazení `CompanyName` dat pole, pomocí `SupplierID` datové pole jako jejich hodnoty.
+- `ProductID` žádné.
+- `ProductName` přidejte textové pole a nastavte jeho `ID` na `NewProductName`. Přidejte ovládací prvek RequiredFieldValidator a zajistěte, aby uživatel zadal hodnotu pro nový název produktu.
+- `SupplierID` žádné.
+- `CategoryID` žádné.
+- `QuantityPerUnit` přidejte textové pole a nastavte jeho `ID` na `NewQuantityPerUnit`.
+- `UnitPrice` přidat textové pole s názvem `NewUnitPrice` a CompareValidator, které zajistí, že zadaná hodnota je hodnota měny větší nebo rovna nule.
+- `UnitsInStock` použít textové pole, jehož `ID` je nastavené na `NewUnitsInStock`. Zahrňte CompareValidator, který zajistí, že zadaná hodnota je celočíselná hodnota větší nebo rovna nule.
+- `UnitsOnOrder` použít textové pole, jehož `ID` je nastavené na `NewUnitsOnOrder`. Zahrňte CompareValidator, který zajistí, že zadaná hodnota je celočíselná hodnota větší nebo rovna nule.
+- `ReorderLevel` použít textové pole, jehož `ID` je nastavené na `NewReorderLevel`. Zahrňte CompareValidator, který zajistí, že zadaná hodnota je celočíselná hodnota větší nebo rovna nule.
+- `Discontinued` přidejte zaškrtávací políčko a nastavte jeho `ID` na `NewDiscontinued`.
+- `CategoryName` přidejte objekt DropDownList a nastavte jeho `ID` na `NewCategoryID`. Navažte ji na nový prvek ObjectDataSource s názvem `CategoriesDataSource` a nakonfigurujte ho tak, aby používal metodu `GetCategories()` `CategoriesBLL` třídy s. Mít `ListItem` DropDownList s, zobrazí `CategoryName` data pole, a to jako jejich hodnoty pomocí pole `CategoryID` data.
+- `SupplierName` přidejte objekt DropDownList a nastavte jeho `ID` na `NewSupplierID`. Navažte ji na nový prvek ObjectDataSource s názvem `SuppliersDataSource` a nakonfigurujte ho tak, aby používal metodu `GetSuppliers()` `SuppliersBLL` třídy s. Mít `ListItem` DropDownList s, zobrazí `CompanyName` data pole, a to jako jejich hodnoty pomocí pole `SupplierID` data.
 
-Pro každou z validačních ovládacích prvků, smažte `ForeColor` vlastnost tak, aby `FooterStyle` šablon stylů CSS třídy s bílou barvou popředí použije se místo výchozího červené. Použít také `ErrorMessage` podrobný popis, ale nastavenou `Text` vlastnost na hvězdičku. Chcete-li zabránit způsobí vkládání rozhraní zabalit do dvou řádků textu ovládacího prvku s ověření, nastavte `FooterStyle` s `Wrap` vlastnost na hodnotu false pro každou `FooterTemplate` , které ovládací prvek ověření použít. Nakonec přidejte ovládací prvek souhrnu ověření pod GridView a nastavte jeho `ShowMessageBox` vlastnost `True` a jeho `ShowSummary` vlastnost `False`.
+Pro každé ovládací prvky ověřování zrušte zaškrtnutí vlastnosti `ForeColor` tak, aby se místo výchozí červené hodnoty popředí `FooterStyle` třídy CSS Class s používala bílá barva popředí. Pro podrobný popis také použijte vlastnost `ErrorMessage`, ale nastavte vlastnost `Text` na hvězdičku. Chcete-li zabránit tomu, aby text ovládacího prvku ověřování způsobil přebalení rozhraní vložení na dva řádky, nastavte vlastnost `FooterStyle` s `Wrap` na hodnotu false pro každý `FooterTemplate` s, který používá ovládací prvek ověřování. Nakonec přidejte ovládací prvek ovládací souhrnu ověření pod prvek GridView a nastavte jeho vlastnost `ShowMessageBox` na `True` a jeho vlastnost `ShowSummary` na `False`.
 
-Při přidání nového produktu, potřebujeme pro poskytování `CategoryID` a `SupplierID`. Tyto informace jsou zachyceny pomocí DropDownLists v buňkách zápatí pro `CategoryName` a `SupplierName` pole. Můžu se rozhodli používat tato pole, nikoli `CategoryID` a `SupplierID` vlastností TemplateField v mřížce s řádky dat, uživatel je pravděpodobně více zajímá, zobrazovat název kategorie a dodavatele, nikoli jejich hodnoty ID. Protože `CategoryID` a `SupplierID` hodnoty jsou teď zachytí ve `CategoryName` a `SupplierName` pole s vkládáním rozhraní, můžeme odebrat `CategoryID` a `SupplierID` vlastností TemplateField v prvku GridView.
+Když přidáváte nový produkt, musíme zadat `CategoryID` a `SupplierID`. Tyto informace jsou zachyceny prostřednictvím ovládacích prvků DropDownList v buňkách zápatí pro pole `CategoryName` a `SupplierName`. Rozhodli jste se použít tato pole na rozdíl od `CategoryID` a `SupplierID` TemplateFields, protože v řádcích s daty gridu se uživatel pravděpodobně lépe zajímá, aby zobrazil názvy kategorií a dodavatelů, nikoli jejich hodnoty ID. Vzhledem k tomu, že hodnoty `CategoryID` a `SupplierID` jsou nyní zaznamenávány do `CategoryName` a `SupplierName` pole pro vkládání rozhraní, můžeme odebrat `CategoryID` a `SupplierID` TemplateFields z prvku GridView.
 
-Podobně `ProductID` se nepoužívá při přidání nového produktu, proto `ProductID` TemplateField můžete také odebrat. Ale nechat s ponechte `ProductID` pole v mřížce. Kromě textových polí, DropDownLists, zaškrtávací políčka a validačních ovládacích prvků, které tvoří rozhraní vložení, budeme také potřebovat Add tlačítko, které, po kliknutí na provádí logiku pro přidání nového produktu do databáze. V kroku 4 budete zahrnujeme tlačítko Přidat ve vkládání uživatelského rozhraní `ProductID` TemplateField s `FooterTemplate`.
+Obdobně se `ProductID` nepoužívá při přidávání nového produktu, takže je možné také odebrat `ProductID` TemplateField. Ale nechte pole `ProductID` v mřížce. Kromě textových polí, DropDownList, zaškrtávacích políček a ověřovacích ovládacích prvků, které tvoří rozhraní pro vložení, budete potřebovat také tlačítko Přidat, které po kliknutí provede logiku pro přidání nového produktu do databáze. V kroku 4 přidáme tlačítko Přidat do rozhraní pro vložení v `ProductID` TemplateField s `FooterTemplate`.
 
-Můžete zlepšit vzhled různá pole ovládacího prvku GridView. Například můžete chtít formátovat `UnitPrice` hodnoty jako měnu s Zarovnat doprava `UnitsInStock`, `UnitsOnOrder`, a `ReorderLevel` pole a aktualizace `HeaderText` hodnoty vlastností TemplateField.
+Nebojte se zlepšit vzhled různých polí GridView. Například můžete chtít naformátovat `UnitPrice` hodnoty jako měnu, Zarovnat pole `UnitsInStock`, `UnitsOnOrder`a `ReorderLevel` a aktualizovat `HeaderText` hodnoty pro pole TemplateField.
 
-Po vytvoření slew vložení rozhraní `FooterTemplate` s, odebrání `SupplierID`, a `CategoryID` vlastností TemplateField a vylepšování estetiku stopy prostřednictvím formátování a upravení vlastností TemplateField vaše GridView s deklarativní značka by měla vypadat nějak takto:
+Po vytvoření slew pro vkládání rozhraní v `FooterTemplate` s, odebrání `SupplierID`a `CategoryID` TemplateFields a zlepšení estetickosti mřížky prostřednictvím formátování a zarovnání TemplateFields by vaše deklarativní značky GridViewu měly vypadat podobně jako následující:
 
 [!code-aspx[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample5.aspx)]
 
-Při prohlížení prostřednictvím prohlížeče, řádek zápatí prvku GridView s teď zahrnuje dokončené vložení rozhraní (viz obrázek 10). Vkládání kódu t rozhraní v tomto okamžiku obsahovat prostředky pro uživatele znamená, že she s zadání dat pro nový produkt a chce vložit nový záznam do databáze. Kromě toho jsme ve ještě k vyřešení, jak se data zadaná v zápatí přeloží do nového záznamu v `Products` databáze. V kroku 4 podíváme na zahrnutí tlačítko Přidat k vložení rozhraní a jak spustit kód na odeslat zpět při jeho s kliknutí. Krok 5 ukazuje, jak vložit nový záznam pomocí dat z zápatí.
+Při prohlížení v prohlížeči teď řádek zápatí prvku GridView. obsahuje dokončené rozhraní vložení (viz obrázek 10). V tomto okamžiku vložení rozhraní nezahrnuje prostředek pro uživatele, který indikuje, že zadal data pro nový produkt a chce do databáze vložit nový záznam. I když jsme ještě zjistili, jak se data zadaná do zápatí budou překládat do nového záznamu v databázi `Products`. V kroku 4 se podíváme na to, jak zahrnout tlačítko Přidat do rozhraní pro vkládání a jak spustit kód při zpětném volání, když se na něj klikne. Krok 5 ukazuje, jak vložit nový záznam pomocí dat z zápatí.
 
-[![Zápatí prvku GridView poskytuje rozhraní pro přidání nového záznamu](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image10.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image17.png)
+[![zápatí prvku GridView poskytuje rozhraní pro přidání nového záznamu.](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image10.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image17.png)
 
-**Obrázek 10**: Zápatí prvku GridView poskytuje rozhraní pro přidání nového záznamu ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image18.png))
+**Obrázek 10**: zápatí prvku GridView poskytuje rozhraní pro přidání nového záznamu ([kliknutím zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image18.png)).
 
-## <a name="step-4-including-an-add-button-in-the-inserting-interface"></a>Krok 4: Vložení rozhraní včetně tlačítko Přidat
+## <a name="step-4-including-an-add-button-in-the-inserting-interface"></a>Krok 4: zahrnutí tlačítka Přidat do rozhraní pro vložení
 
-Potřebujeme zahrnout tlačítko Přidat někde v rozhraní vkládání od s řádek zápatí vkládání rozhraní aktuálně nemá znamená, že pro uživatele k označení, že nebude dokončena zadáním nové informace o produktu s. To můžete umístit do jednoho ze stávající `FooterTemplate` s nebo můžeme přidat nový sloupec do mřížky pro tento účel. Pro účely tohoto kurzu vám umožňují s umístit v tlačítko Přidat `ProductID` TemplateField s `FooterTemplate`.
+Do rozhraní pro vkládání musíme vložit tlačítko Přidat, protože rozhraní pro vložení řádku zápatí v tuto chvíli neobsahuje prostředky pro uživatele, aby označovali, že dokončili zadávání informací o novém produktu. To může být umístěno v jednom z existujících `FooterTemplate` s nebo do mřížky pro tento účel přidat nový sloupec. Pro tento kurz přidejte tlačítko Přidat do `ProductID` TemplateField `FooterTemplate`.
 
-Z návrháře, klikněte na odkaz Upravit šablony v prvku GridView s inteligentním a klikněte na tlačítko `ProductID` pole s `FooterTemplate` z rozevíracího seznamu. Přidejte tlačítko webový ovládací prvek (nebo odkazem (LinkButton) nebo ImageButton, pokud dáváte přednost) do šablony, nastavením jeho ID na `AddProduct`, jeho `CommandName` pro vkládání a jeho `Text` vlastnost přidat, jak je znázorněno na obrázku 11.
+V návrháři klikněte na odkaz Upravit šablony v inteligentní značce GridView s a pak v rozevíracím seznamu zvolte `ProductID` pole s `FooterTemplate`. Přidejte webový ovládací prvek tlačítko (nebo objekt LinkButton nebo obrázkové, pokud dáváte přednost) k šabloně, nastavení jeho ID na hodnotu `AddProduct`, jeho `CommandName` pro vložení a jeho vlastnost `Text` k přidání, jak je znázorněno na obrázku 11.
 
-[![Umístit na tlačítko Přidat šablona FooterTemplate s ProductID TemplateField](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image11.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image19.png)
+[![umístit tlačítko Přidat do pole ProductID TemplateField s šablona FooterTemplate](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image11.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image19.png)
 
-**Obrázek 11**: Umístit přidat tlačítko v `ProductID` TemplateField s `FooterTemplate` ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image20.png))
+**Obrázek 11**: Vložte tlačítko přidat do `ProductID` TemplateField s `FooterTemplate` ([kliknutím zobrazíte obrázek v plné velikosti).](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image20.png)
 
-Jakmile jste již zahrnut na tlačítko Přidat, otestujte si stránku v prohlížeči. Všimněte si, že když kliknete na tlačítko Přidat se neplatná data v rozhraní vložení, zpětné volání je krátké circuited a prvek znamená neplatná data (viz obrázek 12). S odpovídající data zadaná kliknutím na tlačítko Přidat vyvolá zpětné volání. Žádný záznam se přidá do databáze, ale. Budeme muset psát hodně kódu aktuálně provádějí insert.
+Až budete mít tlačítko Přidat, otestujte stránku v prohlížeči. Všimněte si, že když kliknete na tlačítko Přidat s neplatnými daty v rozhraní pro vložení, zpětné volání je krátké a ovládací prvek ovládací souhrnu ověření indikuje neplatná data (viz obrázek 12). Po zadání příslušných dat se kliknutím na tlačítko Přidat vyvolá postback. Do databáze se ale nepřidá žádný záznam. Abychom mohli vkládat, budete muset napsat bitovou kopii kódu.
 
-[![Přidejte tlačítko s zpětné volání je krátký Circuited Pokud rozhraní vložení obsahuje neplatná Data](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image12.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image21.png)
+[![tlačítko Přidat s zpětným voláním je krátké, pokud v rozhraní pro vkládání nejsou platná data.](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image12.gif)](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image21.png)
 
-**Obrázek 12**: S přidat tlačítko zpětné volání je krátký Circuited Pokud neplatná Data v rozhraní vložení ([kliknutím ji zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image22.png))
+**Obrázek 12**: v případě, že je v rozhraní pro vkládání neplatné nějaké údaje ([kliknutím zobrazíte obrázek v plné velikosti](inserting-a-new-record-from-the-gridview-s-footer-vb/_static/image22.png)), je tlačítko Přidat a zpět v případě neplatných.
 
 > [!NOTE]
-> Ovládací prvky ověřování v rozhraní vkládání nebyly přiřazeny do ověření skupiny. To funguje správně, pokud je vložení rozhraní pouze sadu validačních ovládacích prvků na stránce. Pokud jsou však další validačních ovládacích prvků na stránce (například validačních ovládacích prvků mřížka s úpravy rozhraní), validačních ovládacích prvků v vkládání rozhraní a přidejte tlačítko s `ValidationGroup` vlastnosti by měla být přiřazena stejná hodnota tak, aby Tyto ovládací prvky přidružte konkrétní skupiny. Zobrazit [rozbor validačních ovládacích prvků v technologii ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/112305-1.aspx) Další informace o dělení validačních ovládacích prvků a tlačítka na stránce do ověření skupiny.
+> Ovládací prvky ověřování v rozhraní vložení nebyly přiřazeny ke skupině ověření. To funguje, pokud je rozhraní pro vkládání jedinou sadou ověřovacích ovládacích prvků na stránce. Pokud jsou však na stránce k dispozici další ovládací prvky ověřování (například ovládací prvky ověřování v rozhraní pro úpravy gridu), měla by být ovládacím prvkům pro vložení rozhraní a tlačítku Přidat `ValidationGroup` vlastností přiřazena stejná hodnota, aby bylo možné tyto ovládací prvky přidružit ke konkrétní skupině ověření. Další informace o dělení ověřovacích ovládacích prvků a tlačítek na stránce do ověřovacích skupin naleznete v tématu [deprotínající ovládací prvky ověřování v ASP.NET 2,0](http://aspnet.4guysfromrolla.com/articles/112305-1.aspx) .
 
-## <a name="step-5-inserting-a-new-record-into-theproductstable"></a>Krok 5: Vložení nového záznamu do`Products`tabulky
+## <a name="step-5-inserting-a-new-record-into-theproductstable"></a>Krok 5: vložení nového záznamu do`Products`tabulky
 
-Při použití integrovaných funkcí pro úpravy prvku GridView, prvku GridView automaticky zpracovává všechny pracovní potřebný k provedení aktualizace. Konkrétně se při kliknutí na tlačítko Aktualizovat zkopíruje hodnoty zadané rozhraní pro úpravy pro parametry v prvku ObjectDataSource s `UpdateParameters` kolekce a zejména kopance vypnout aktualizace vyvoláním ObjectDataSource s `Update()` metody. Protože prvku GridView neposkytuje tyto integrované funkce pro vkládání, musíme implementovat kód, který volá ObjectDataSource s `Insert()` metoda a zkopíruje hodnoty ze vkládání rozhraní do prvku ObjectDataSource s `InsertParameters` kolekce .
+Při použití vestavěných funkcí úprav ovládacího prvku GridView, prvek GridView automaticky zpracuje veškerou práci potřebnou k aktualizaci. Zejména při kliknutí na tlačítko Aktualizovat kopíruje hodnoty zadané z rozhraní pro úpravy do parametrů v kolekci ObjectDataSource `UpdateParameters` Collection a zahájí aktualizaci vyvoláním metody ObjectDataSource s `Update()`. Vzhledem k tomu, že prvek GridView neposkytuje integrovanou funkcionalitu pro vkládání, je nutné implementovat kód, který volá metodu ObjectDataSource s `Insert()` a kopíruje hodnoty z rozhraní pro vložení do kolekce ObjectDataSource s `InsertParameters`.
 
-Tuto logiku vložení by měla být provedeny po kliknutí na tlačítko Přidat. Jak je popsáno v [přidání a reakce na tlačítka v GridView](../custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-vb.md) kurzu kdykoli tlačítko, odkazem (LinkButton) nebo ImageButton v GridView kliknutí na prvek GridView s `RowCommand` událost je aktivována při zpětném odeslání. Tato událost aktivuje se, zda tlačítko, odkazem (LinkButton) nebo ImageButton byla explicitně přidána jako je například přidat tlačítko v řádku zápatí, nebo pokud byl automaticky přidán v prvku GridView (jako je například LinkButtons v horní části každého sloupce, pokud je vybrána možnost Povolit řazení, nebo LinkButtons v rozhraní stránkování, pokud je vybrána povolit stránkování).
+Tato logika vložení by měla být provedena po kliknutí na tlačítko Přidat. Jak je popsáno v kurzu [přidávání a reagování na tlačítka v](../custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-vb.md) prvku GridView, je kliknutí na tlačítko, LinkButton nebo obrázkové v prvku GridView, událost GridView `RowCommand`, která se aktivuje při zpětném volání. Tato událost aktivuje, zda bylo tlačítko, LinkButton nebo obrázkové přidáno explicitně, například tlačítko Přidat v řádku zápatí, nebo zda bylo automaticky přidáno prvek GridView (například LinkButtons v horní části každého sloupce, pokud je vybrána možnost Povolit řazení), nebo LinkButtons v rozhraní stránkování, pokud je vybráno možnost Povolit stránkování).
 
-Proto musíme reagovat na kliknutí na tlačítko Přidat uživatele, vytvořit obslužnou rutinu události pro prvek GridView s `RowCommand` událostí. Vzhledem k tomu, že tato událost se aktivuje vždy, když *žádné* je kliknutí na tlačítko, odkazem (LinkButton) nebo ImageButton v prvku GridView, je důležité, že jsme pouze pokračujte vkládání logic-li s `CommandName` vlastnost předán do mapy obslužné rutiny událostí `CommandName` hodnotu na tlačítko Přidat (Vložit). Kromě toho jsme také pokračujte, pouze pokud validačních ovládacích prvků sestav platná data. K tomuto účelu vytvořte obslužnou rutinu události pro `RowCommand` události s následujícím kódem:
+Proto pokud chcete reagovat na uživatele kliknutím na tlačítko Přidat, musíme vytvořit obslužnou rutinu události pro `RowCommand` událost GridView. Vzhledem k tomu, že se tato událost aktivuje *vždy, když se* klikne na tlačítko, LinkButton nebo obrázkové v prvku GridView, je důležité, abyste pokračovali pouze s logikou vložení, pokud vlastnost `CommandName` předaná do obslužné rutiny události mapuje na `CommandName` hodnotu tlačítka Přidat (vložit). Kromě toho by měl být také pokračovat pouze v případě, že ovládací prvky ověřování vykazují platná data. Chcete-li to přizpůsobit, vytvořte obslužnou rutinu události pro událost `RowCommand` s následujícím kódem:
 
 [!code-vb[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample6.vb)]
 
 > [!NOTE]
-> Asi vás zajímá proč obslužná rutina události bothers kontrolu `Page.IsValid` vlastnost. Po všech zpětné volání potlačeny nebudou-li neplatná data v rozhraní vložení? Tento předpoklad je správná, tak dlouho, dokud uživatel nezakázala JavaScript nebo má provést kroky pro obejití logiky ověřování na straně klienta. Stručně řečeno jeden se nikdy spoléhají výhradně na ověřování na straně klienta; na straně serveru kontrolu platnosti vždy je třeba provést před zahájením práce s daty.
+> Může dojít k zajímání, proč obslužná rutina události kontroluje vlastnost `Page.IsValid`. Po všech nebudete moct postback potlačit, pokud v rozhraní pro vkládání nejsou k dispozici neplatná data? Tento předpoklad je správný, dokud uživatel nezakázal JavaScript nebo neučinil kroky pro obcházení logiky ověřování na straně klienta. V krátkém případě by se jedna neměla spoléhat výhradně na ověřování na straně klienta; před prací s daty by měla být vždy provedena kontrolu platnosti na straně serveru.
 
-V kroku 1 jsme vytvořili `ProductsDataSource` ObjectDataSource tak, aby jeho `Insert()` metoda je namapována na `ProductsBLL` třída s `AddProduct` metoda. K vložení nového záznamu do `Products` tabulky, můžete jednoduše vyvolat ObjectDataSource s `Insert()` metody:
+V kroku 1 jsme vytvořili `ProductsDataSource` ObjectDataSource tak, že jeho `Insert()` metoda je namapována na `AddProduct` metodu `ProductsBLL` třídy s. Pro vložení nového záznamu do tabulky `Products` můžeme jednoduše vyvolat metodu `Insert()` ObjectDataSource s:
 
 [!code-vb[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample7.vb)]
 
-Teď, když `Insert()` zavolání metody, vše, co už jen zbývá ke kopírování hodnoty z rozhraní vkládání do parametry předány `ProductsBLL` třída s `AddProduct` metody. Jak jsme viděli v [zkoumání události spojené s vložení, aktualizace a odstranění](../editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-vb.md) výukový program, můžete to provést prostřednictvím prvku ObjectDataSource s `Inserting` událostí. V `Inserting` budeme potřebovat programově odkazovat na ovládací prvky z událostí `Products` zápatí prvku GridView s řádek a přiřadit jejich hodnot tak `e.InputParameters` kolekce. Pokud uživatel vynechá hodnota jako například opuštění `ReorderLevel` textové pole prázdné, musíme určit, že by měla být hodnota vložena do databáze `NULL`. Vzhledem k tomu, `AddProducts` metoda přijímá typy připouštějící hodnotu Null pro pole v databázi s povolenou hodnotou Null, jednoduše použijte nulovatelný typ a nastavte jej na hodnotu `Nothing` v případě, kdy je vynechán uživatelský vstup.
+Nyní, když byla vyvolána metoda `Insert()`, vše zůstává ke zkopírování hodnot z rozhraní pro vložení do parametrů předaných metodě `AddProduct` `ProductsBLL` třídy s. Jak jsme se vrátili při [zkoumání událostí spojených s kurzem vložení, aktualizace a odstranění](../editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-vb.md) , můžete to provést prostřednictvím události ObjectDataSource `Inserting`. V `Inserting` události potřebujeme programově odkazovat na ovládací prvky z řádku zápatí `Products` GridView s a přiřadit jejich hodnoty do kolekce `e.InputParameters`. Pokud uživatel vynechá hodnotu, třeba když necháte pole `ReorderLevel` prázdné pole, je nutné zadat, aby byla hodnota vložená do databáze `NULL`. Vzhledem k tomu, že metoda `AddProducts` akceptuje typy s možnou hodnotou null pro pole databáze s možnou hodnotou null, stačí použít typ s možnou hodnotou null a nastavit jeho hodnotu na `Nothing` v případě vynechání vstupu uživatele.
 
 [!code-vb[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample8.vb)]
 
-S `Inserting` obslužná rutina události dokončení nové záznamy lze přidat do `Products` databázové tabulky prostřednictvím řádku s zápatí prvku GridView. Pokračujte a pokuste se přidat několik nových produktů.
+Když je obslužná rutina události `Inserting` dokončená, dají se do tabulky databáze `Products` přidat nové záznamy přes řádek zápatí GridView. Pokračujte a zkuste přidat několik nových produktů.
 
-## <a name="enhancing-and-customizing-the-add-operation"></a>Rozšíření a přizpůsobení operace přidání
+## <a name="enhancing-and-customizing-the-add-operation"></a>Vylepšení a přizpůsobení operace přidání
 
-V současné době kliknutím na tlačítko Přidat přidá nový záznam do tabulky databáze ale neposkytuje jakýkoli druh vizuální zpětnou vazbu, že záznam úspěšně přidala. V ideálním případě by popisek webové ovládací prvek nebo na straně klienta upozornění pole by uživatele informuje, že jejich vložení byla dokončena úspěšně. Můžu ponechte toto cvičení pro čtečku.
+V současné době kliknutím na tlačítko Přidat přidáte nový záznam do tabulky databáze, ale neposkytnete žádný druh vizuální zpětné vazby, který záznam úspěšně přidal. V ideálním případě by okno popisek webového ovládacího prvku nebo upozornění na straně klienta informovalo uživatele o tom, že jejich vložení bylo úspěšné. Tuto funkci mám jako cvičení pro čtenáře.
 
-Prvku GridView, použitá v tomto kurzu se nevztahují žádné řazení na uvedené produkty ani neumožňuje řadit data koncovému uživateli. Záznamy jsou uspořádány v důsledku toho se nacházejí v databázi tak, že jejich primárního klíče. Vzhledem k tomu, že má každý nový záznam `ProductID` hodnotu větší než poslední z nich, pokaždé, když se přidá nový produkt ho je skládaný konec mřížky. Proto můžete chtít automaticky uživatele poslat na poslední stránky prvku GridView. Po přidání nového záznamu. Toho můžete docílit tak, že přidáte následující řádek kódu po volání `ProductsDataSource.Insert()` v `RowCommand` obslužné rutiny události k označení, že uživatel musí k odeslání na poslední stránku po vazbě dat na prvku GridView:
+Prvek GridView použitý v tomto kurzu nepoužívá pro uvedené produkty žádné pořadí řazení, ani neumožňuje koncovému uživateli data seřadit. V důsledku toho jsou záznamy seřazeny tak, jak jsou v databázi, podle jejich primárního pole klíče. Vzhledem k tomu, že každý nový záznam má `ProductID` hodnotu větší než poslední, pokaždé, když se přidá nový produkt, se směruje na konec mřížky. Proto může být vhodné po přidání nového záznamu automaticky odeslat uživatele na poslední stránku prvku GridView. To lze provést přidáním následujícího řádku kódu po volání `ProductsDataSource.Insert()` v obslužné rutině události `RowCommand` pro indikaci, že uživatel musí být odeslán na poslední stránku po vytvoření vazby dat na prvek GridView:
 
 [!code-vb[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample9.vb)]
 
-`SendUserToLastPage` je přiřazen proměnné typu Boolean úrovni stránky, které je zpočátku hodnotu `False`. V prvku GridView s `DataBound` obslužná rutina události, pokud `SendUserToLastPage` má hodnotu false, `PageIndex` vlastností se aktualizuje na uživatele poslat na poslední stránce.
+`SendUserToLastPage` je logická proměnná na úrovni stránky, která má zpočátku přiřazenou hodnotu `False`. V obslužné rutině `DataBound` ovládacího prvku GridView, pokud je `SendUserToLastPage` false, je vlastnost `PageIndex` aktualizována tak, aby odesílala uživatele na poslední stránku.
 
 [!code-vb[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample10.vb)]
 
-Důvod `PageIndex` je nastavena `DataBound` obslužné rutiny události (nikoli `RowCommand` obslužná rutina události) totiž při `RowCommand` obslužná rutina události je vyvoláno jsme ještě chcete-li přidat nový záznam, který chcete uložit `Products` databázové tabulky. Proto v `RowCommand` obslužná rutina události poslední index stránky (`PageCount - 1`) představuje poslední index stránky *před* nového produktu se přidala. Pro většinu produktů, které přidávají poslední index stránky je stejná po přidání nového produktu. Ale když přidaný produkt výsledkem nového poslední stránka indexu, pokud nesprávně aktualizujeme `PageIndex` v `RowCommand` obslužná rutina události pak jsme přejdou na druhý na poslední stránku (poslední index stránky před přidáním nového produktu) na rozdíl od nové poslední stránky i Ndex. Protože `DataBound` obslužná rutina události aktivuje se po nového produktu se přidala a data znovu připojeno k mřížce, tak, že nastavíte `PageIndex` existuje vlastnost víme jsme opětovné získání správné poslední index stránky.
+Důvod, proč je nastavena vlastnost `PageIndex` v obslužné rutině události `DataBound` (na rozdíl od obslužné rutiny události `RowCommand`) je, že když obslužná rutina události `RowCommand` aktivuje, je to proto, že jsme ještě do tabulky `Products`ch databází přidali nový záznam. Proto v obslužné rutině události `RowCommand` poslední index stránky (`PageCount - 1`) představuje poslední index stránky *před* přidáním nového produktu. Pro většinu přidávaných produktů je poslední index stránky stejný po přidání nového produktu. Pokud ale přidaný produkt vede k novému indexu poslední stránky, pokud jsme `PageIndex` v obslužné rutině události `RowCommand` nesprávně aktualizovali pak budeme považovat za druhý na poslední stránku (poslední index stránky před přidáním nového produktu), a to na rozdíl od nového indexu poslední stránky. Vzhledem k tomu, že se obslužná rutina události `DataBound` aktivuje poté, co se přidá nový produkt a data se předají do mřížky, nastavím vlastnost `PageIndex`, že máme znovu napravo správné indexu poslední stránky.
 
-Prvku GridView, použitá v tomto kurzu je nakonec úplně široký kvůli počet polí, které musí být shromažďovány pro přidání nového produktu. Z důvodu šířku může být DetailsView svislé rozložení s upřednostňované. GridView s celkovou šířku může být snížena shromažďování méně vstupů. Možná jsme zadávat t potřebu shromažďovat `UnitsOnOrder`, `UnitsInStock`, a `ReorderLevel` polí při přidání nového produktu, v takovém případě tato pole nebylo možné odebrat z prvku GridView.
+Nakonec je ovládací prvek GridView použitý v tomto kurzu poměrně velký v důsledku počtu polí, která musí být shromažďována pro přidání nového produktu. Vzhledem k této šířce může být upřednostňováno svislé rozložení ovládacího prvku DetailsView s. Celkovou šířku prvku GridView s lze snížit shromažďováním menšího počtu vstupů. Možná nepotřebujeme při přidávání nového produktu shromažďovat pole `UnitsOnOrder`, `UnitsInStock`a `ReorderLevel`. v takovém případě je možné tato pole odebrat z prvku GridView.
 
-Chcete-li upravit data shromážděná, můžeme použít jednu ze dvou následujících metod:
+Pro úpravu shromažďovaných dat můžeme použít jeden ze dvou přístupů:
 
-- Pokračovat v používání `AddProduct` metodu, která očekává, že hodnoty `UnitsOnOrder`, `UnitsInStock`, a `ReorderLevel` pole. V `Inserting` obslužná rutina události, poskytnout pevně zakódované, výchozí hodnoty pro tyto vstupy, které byly odebrány z rozhraní vkládání.
-- Vytvořit nové přetížení `AddProduct` metodu `ProductsBLL` třídu, která nepřijímá žádné vstupy pro `UnitsOnOrder`, `UnitsInStock`, a `ReorderLevel` pole. Na stránce technologie ASP.NET nakonfigurujte ObjectDataSource používat toto nové přetížení.
+- Pokračujte v použití metody `AddProduct`, která očekává hodnoty pro pole `UnitsOnOrder`, `UnitsInStock`a `ReorderLevel`. V obslužné rutině události `Inserting` poskytují pevně zakódované výchozí hodnoty, které se použijí pro tyto vstupy, které byly odebrány z rozhraní pro vložení.
+- Vytvořte nové přetížení metody `AddProduct` ve třídě `ProductsBLL`, která nepřijímá vstupy pro pole `UnitsOnOrder`, `UnitsInStock`a `ReorderLevel`. Pak na stránce ASP.NET nakonfigurujte prvek ObjectDataSource tak, aby používal toto nové přetížení.
 
-Jednu z možností bude fungovat stejně jako dobře. V minulosti kurzy jsme použili druhou možnost vytváření více přetížení pro `ProductsBLL` třída s `UpdateProduct` metody.
+Obě možnosti budou fungovat i stejně. V minulých kurzech jsme použili druhou možnost a vytvořením několika přetížení pro metodu `ProductsBLL` třídy s `UpdateProduct`.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Integrované funkce vkládání v prvku DetailsView a FormView chybí prvku GridView, ale u hodně úsilí vkládání rozhraní jde přidat do řádku zápatí. Chcete-li zobrazit zápatí řádek GridView jednoduše nastavte jeho `ShowFooter` vlastnost `True`. Řádek obsahu zápatí může přizpůsobit pro každé pole převádí pole na pole TemplateField a přidání vkládání do rozhraní `FooterTemplate`. Jak jsme viděli v tomto kurzu `FooterTemplate` může obsahovat tlačítka, textová pole, DropDownLists, zaškrtávací políčka, ovládací prvky zdroje dat k naplnění datově řízených webových ovládacích prvcích (například DropDownLists) a validačních ovládacích prvků. Spolu s ovládací prvky pro shromažďování vstupu uživatele s je potřeba přidat tlačítko, odkazem (LinkButton) nebo ImageButton.
+V prvku GridView chybí vestavěné možnosti vkládání nalezené v ovládacím prvku DetailsView a FormView, ale s mikroúsilím je možné přidat rozhraní vložení do řádku zápatí. Chcete-li zobrazit řádek zápatí v prvku GridView, stačí nastavit jeho vlastnost `ShowFooter` na hodnotu `True`. Obsah řádku zápatí lze přizpůsobit pro každé pole tak, že převede pole na TemplateField a přidáte rozhraní pro vložení do `FooterTemplate`. Jak jsme viděli v tomto kurzu, `FooterTemplate` mohou obsahovat tlačítka, textová pole, DropDownList, zaškrtávací políčka a ovládací prvky zdroje dat pro vyplnění datových ovládacích prvků řízených daty (například DropDownList) a ověřovací ovládací prvky. Společně s ovládacími prvky pro shromažďování vstupu uživatele, je třeba přidat tlačítko Přidat, LinkButton nebo obrázkové.
 
-Když tlačítko Přidat kliknutí na prvek ObjectDataSource s `Insert()` vyvolána metoda vkládání workflow spusťte. ObjectDataSource bude poté zavolejte metodu nakonfigurované vložit ( `ProductsBLL` třída s `AddProduct` metoda v tomto kurzu). Jsme musíte zkopírovat hodnoty z ovládacího prvku GridView s vkládání rozhraní ObjectDataSource s `InsertParameters` kolekce před volaná metoda vložit. Můžete to udělat prostřednictvím kódu programu odkazující na vkládání ovládacích prvků webového rozhraní v prvku ObjectDataSource s `Inserting` obslužné rutiny události.
+Po kliknutí na tlačítko Přidat je vyvolána metoda ObjectDataSource s `Insert()` k zahájení vkládání pracovního postupu. Prvek ObjectDataSource pak zavolá nakonfigurovanou metodu Insert (metoda `ProductsBLL` třídy s `AddProduct` v tomto kurzu). Před vyvoláním metody Insert je nutné zkopírovat hodnoty z rozhraní GridView s `InsertParameters` do kolekce ObjectDataSource s. To lze provést programově odkazování na webové ovládací prvky rozhraní v prvku ObjectDataSource s `Inserting` obslužné rutiny události.
 
-V tomto kurzu dokončíte naše pohled na vylepšení vzhledu ovládacího prvku GridView s techniky. Jak pracovat s binární data, jako jsou obrázky, soubory PDF, dokumentů aplikace Word a tak dále a data webové ovládací prvky v souvislosti se další sérii kurzů.
+V tomto kurzu se dokončí náš pohled na techniky pro vylepšení vzhledu prvků GridView. Další sada kurzů bude kontrolovat, jak pracovat s binárními daty, jako jsou obrázky, soubory PDF, dokumenty aplikace Word atd. a webové ovládací prvky dat.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Bernadette Leigh. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontrolor pro tento kurz byl Bernadette Leigh. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](adding-a-gridview-column-of-checkboxes-vb.md)

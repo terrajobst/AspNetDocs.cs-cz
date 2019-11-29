@@ -8,12 +8,12 @@ ms.date: 10/06/2010
 ms.assetid: f44c166e-7e91-48a0-a6f8-d9285f3594e5
 msc.legacyurl: /whitepapers/mvc3-release-notes
 msc.type: content
-ms.openlocfilehash: 46d051a5eba6501cf36910b7674ce6400597de8a
-ms.sourcegitcommit: 295cf898a4c87e264b0c35c7254b0fa4169f2278
+ms.openlocfilehash: 504202068f5db4f8614bba02e8066ffecfd15b48
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74057019"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74619241"
 ---
 # <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 
@@ -298,7 +298,7 @@ Vzhledem k tomu, že jQuery obsahuje číslo verze v názvu souboru, aktualizace
 - V některých případech může instalace selhat s chybovou zprávou "instalace se nezdařila s kódem chyby (0x80070643)". Informace o tom, jak tento problém obejít, najdete v [článku 2531566 znalostní báze](https://support.microsoft.com/kb/2531566).
 - Generování uživatelského rozhraní pro přidání kontroleru neposkytuje entity pro generování uživatelského rozhraní, které využívají podporu dědičnosti entit v rámci Entity Framework. Například vzhledem k tomu, že pro třídu základní *osoby* , která je zděděna třídou *studenta* , vytvoří generátor třídy *student* generovaný kód, který není zkompilován.
 - Vytvoření nového projektu ASP.NET MVC 3 ve složce řešení způsobí chybu *NullReferenceException* . Alternativním řešením je vytvořit projekt ASP.NET MVC 3 v kořenovém adresáři řešení a pak ho přesunout do složky řešení.
-- IntelliSense pro syntaxe Razor nefunguje, když je nainstalováno reostřejšíer. Pokud máte k dispozici reostřejšíer a chcete využít podporu technologie IntelliSense pro Razor v ASP.NET MVC 3, přečtěte si článek o tom, jak se mají v blogu hadi Hariri vykonat [a](http://blogs.jetbrains.com/dotnet/2010/11/razor-intellisense-and-resharper/) v současné době využít možnosti jejich použití dohromady.
+- IntelliSense pro syntaxe Razor nefunguje, když je nainstalováno reostřejšíer. Pokud máte k dispozici reostřejšíer a chcete využít podporu technologie IntelliSense pro Razor v ASP.NET MVC 3, přečtěte si článek o tom, jak se mají v blogu hadi Hariri vykonat [a](https://blogs.jetbrains.com/dotnet/2010/11/razor-intellisense-and-resharper/) v současné době využít možnosti jejich použití dohromady.
 - Během instalace se v dialogovém okně přijetí smlouvy EULA zobrazí licenční podmínky v okně, které je menší než určené.
 - Při úpravách zobrazení Razor (. cshtml nebo. *soubor vbhtml* ), zobrazení. ASP.NET MVC 3 nezahrnuje žádné fragmenty kódu pro zobrazení Razor.. aspxselecting fragment kódu pro ASP.NET MVC zobrazí fragmenty kódu pro
 - Pokud nainstalujete ASP.NET MVC 3 pro Visual Web Developer Express na počítač, na kterém není nainstalovaná aplikace Visual Studio, a později nainstalujete Visual Studio, musíte znovu nainstalovat ASP.NET MVC 3. Visual Studio a Visual Web Developer Express sdílí komponenty, které jsou upgradovány instalačním programem ASP.NET MVC 3. Stejný problém se týká, pokud nainstalujete ASP.NET MVC 3 pro Visual Studio na počítači, který nemá Visual Web Developer Express, a pak později nainstalujete Visual Web Developer Express.
@@ -347,7 +347,7 @@ Přejmenování souboru Razor pomocí Průzkumník řešení, když je soubor ot
 - Instalační program ASP.NET MVC 3 umožňuje nainstalovat pouze počáteční verzi Správce balíčků NuGet. Po instalaci počáteční verze je možné NuGet nainstalovat a aktualizovat pomocí Správce rozšíření sady Visual Studio. Pokud už máte nainstalovaný NuGet, Projděte si galerii rozšíření sady Visual Studio a aktualizujte na nejnovější verzi NuGetu.
 - Vytvoření nového projektu ASP.NET MVC 3 ve složce řešení způsobí chybu *NullReferenceException* . Alternativním řešením je vytvořit projekt ASP.NET MVC 3 v kořenovém adresáři řešení a pak ho přesunout do složky řešení.
 - Dokončení instalačního programu může trvat mnohem déle než předchozí verze ASP.NET MVC. Důvodem je to, že aktualizuje součásti sady Visual Studio 2010.
-- IntelliSense pro syntaxe Razor nefunguje, když je nainstalováno reostřejšíer. Pokud máte k dispozici reostřejšíer a chcete využít podporu technologie IntelliSense pro Razor v ASP.NET MVC 3, přečtěte si článek o tom, jak se mají v blogu hadi Hariri vykonat [a](http://blogs.jetbrains.com/dotnet/2010/11/razor-intellisense-and-resharper/) v současné době využít možnosti jejich použití dohromady.
+- IntelliSense pro syntaxe Razor nefunguje, když je nainstalováno reostřejšíer. Pokud máte k dispozici reostřejšíer a chcete využít podporu technologie IntelliSense pro Razor v ASP.NET MVC 3, přečtěte si článek o tom, jak se mají v blogu hadi Hariri vykonat [a](https://blogs.jetbrains.com/dotnet/2010/11/razor-intellisense-and-resharper/) v současné době využít možnosti jejich použití dohromady.
 - Zobrazení CCSHTML a VBHTML vytvořená ve verzi beta sady ASP.NET MVC 3 nemají správnou sadu akcí sestavení s výsledkem, že tyto typy zobrazení jsou při publikování projektu vynechány. Hodnota akce sestavení pro tyto soubory by měla být nastavena na "content". ASP.NET MVC 3 RTM opravuje tento problém pro nové soubory, ale neopraví nastavení existujících souborů pro projekt vytvořený pomocí předprodejních verzí.
 - ![](mvc3-release-notes/_static/image3.png)
 - Během instalace se v dialogovém okně přijetí smlouvy EULA zobrazí licenční podmínky v okně, které je menší než určené.
@@ -470,7 +470,7 @@ V dřívějších verzích byly explicitní hodnoty, které byly předány metod
 - Instalační program ASP.NET MVC 3 umožňuje nainstalovat pouze počáteční verzi Správce balíčků NuGet. Po instalaci počáteční verze je možné NuGet nainstalovat a aktualizovat pomocí Správce rozšíření sady Visual Studio. Pokud už máte nainstalovaný NuGet, Projděte si galerii rozšíření sady Visual Studio a aktualizujte na nejnovější verzi NuGetu.
 - Vytvoření nového projektu ASP.NET MVC 3 ve složce řešení způsobí chybu *NullReferenceException* . Alternativním řešením je vytvořit projekt ASP.NET MVC 3 v kořenovém adresáři řešení a pak ho přesunout do složky řešení.
 - Dokončení instalačního programu může trvat mnohem déle než předchozí verze ASP.NET MVC. Důvodem je to, že aktualizuje součásti sady Visual Studio 2010.
-- IntelliSense pro syntaxe Razor nefunguje, když je nainstalováno reostřejšíer. Pokud máte k dispozici reostřejšíer a chcete využít podporu technologie IntelliSense Razor v ASP.NET MVC 3 RC2, přečtěte si článek o tom, jak se budou tyto možnosti používat v dnešní době [, na blogu](http://blogs.jetbrains.com/dotnet/2010/11/razor-intellisense-and-resharper/) hadi Hariri.
+- IntelliSense pro syntaxe Razor nefunguje, když je nainstalováno reostřejšíer. Pokud máte k dispozici reostřejšíer a chcete využít podporu technologie IntelliSense Razor v ASP.NET MVC 3 RC2, přečtěte si článek o tom, jak se budou tyto možnosti používat v dnešní době [, na blogu](https://blogs.jetbrains.com/dotnet/2010/11/razor-intellisense-and-resharper/) hadi Hariri.
 - Zobrazení CSHTML a VBHTML vytvořená ve verzi beta sady ASP.NET MVC 3 nemají správnou sadu akcí sestavení s výsledkem, že tyto typy zobrazení jsou při publikování projektu vynechány. Hodnota *Akce sestavení* pro tyto soubory by měla být nastavena na obsah. ASP.NET MVC 3 RC2 opravuje tento problém pro nové soubory, ale neopraví nastavení existujících souborů pro projekt vytvořený pomocí beta verze.![](mvc3-release-notes/_static/image4.png)
 - Během instalace se v dialogovém okně přijetí smlouvy EULA zobrazí licenční podmínky v okně, které je menší než určené.
 - Při úpravách zobrazení Razor (soubor. cshtml) nebude k dispozici položka nabídky přejít na řadič v aplikaci Visual Studio a neexistují žádné fragmenty kódu.
@@ -613,7 +613,7 @@ Případně pro vypnutí žádosti o ověření pro každou vlastnost modelu pou
 - Instalační program může trvat mnohem déle než předchozí verze ASP.NET MVC, protože aktualizuje součásti sady Visual Studio 2010.
 - Přidání generování uživatelského rozhraní zobrazení při výběru vlastností astrongly typů zobrazení typu, které jsou jen pro zápis. Tyto by se měly vždycky ignorovat pomocí generování uživatelského rozhraní. Dialog Přidat zobrazení také při generování zobrazení upravit nebo vytvořit vytvoří vlastnosti jen pro čtení. Vlastnosti jen pro čtení by měly být pro zobrazení zobrazení a seznamu pouze vygenerované jako generátory.
 - Ladění nefunguje, když je nainstalovaná ASP.NET MVC 3 společně s asynchronní CTP. ASP.NET MVC 3 nelze nainstalovat souběžně s asynchronní CTP. Odinstalujte asynchronní CTP za účelem opravy ladění. Další podrobnosti najdete v [tomto blogovém příspěvku](http://drew-prog.blogspot.com/2010/11/how-to-uninstall-microsoft-aspnet-mvc-3.html) o odinstalaci všech částí ASP.NET MVC 3 RC.
-- Technologie IntelliSense pro Razor nefunguje, když je nainstalováno reostřejšíer. Pokud máte reostřejšíer nainstalovaný a chcete využít podporu technologie IntelliSense Razor v ASP.NET MVC 3 RC, přečtěte si [Tento Blogový příspěvek](http://blogs.jetbrains.com/dotnet/2010/11/razor-intellisense-and-resharper/) z JetBrains, který pojednává o způsobech jejich používání společně.
+- Technologie IntelliSense pro Razor nefunguje, když je nainstalováno reostřejšíer. Pokud máte reostřejšíer nainstalovaný a chcete využít podporu technologie IntelliSense Razor v ASP.NET MVC 3 RC, přečtěte si [Tento Blogový příspěvek](https://blogs.jetbrains.com/dotnet/2010/11/razor-intellisense-and-resharper/) z JetBrains, který pojednává o způsobech jejich používání společně.
 - Zobrazení CSHTML a VBHTML vytvořená pomocí beta verze ASP.NET MVC 3 nemají správnou akci sestavení, která je vynechává z publikování. *Akce sestavení* pro tyto soubory by měla být nastavená na "obsah". ASP.NET MVC 3 RC opravuje tento problém pro nové soubory, ale neopraví nastavení existujících souborů pro projekt vytvořený pomocí beta verze.
 - Instalační program může trvat mnohem déle než předchozí verze ASP.NET MVC, protože aktualizuje součásti sady Visual Studio 2010.
 - Přidání generování uživatelského rozhraní pro zobrazení při výběru možnosti upravit pouze generátory zobrazení silného typu. Podobně jsou vlastnosti jen pro zápis vygenerované pro zobrazení "zobrazení".
@@ -849,7 +849,7 @@ Při úpravách zobrazení Razor (soubor cshtml) <a id="0.1__Toc224729061"></a> 
 
 Při použití syntaxe @model pro určení silně typovaného zobrazení CSHTML nejsou rozpoznány jazykové zkratky pro typy. Například @model int nebude fungovat, ale @model Int32 bude fungovat. Alternativním řešením pro tuto chybu je použití skutečného názvu typu při zadání typu modelu.
 
-Při použití syntaxe @model k určení silně typovaného zobrazení CSHTML (nebo @ModelType určení zobrazení typu VBHTML se silným typem) nejsou podporované typy s možnou hodnotou null a deklarace polí. Například @model int? není podporováno. Místo toho použijte `@model Nullable<Int32>`. Syntaxe @model řetězec [] není také podporována; místo toho použijte `@model IList<string>`.
+Při použití syntaxe @model k určení silně typovaného zobrazení CSHTML (nebo @ModelType určení zobrazení typu VBHTML se silným typem) nejsou podporované typy s možnou hodnotou null a deklarace polí. Například @model int? není podporováno. Použijte místo toho `@model Nullable<Int32>`. Syntaxe @model řetězec [] není také podporována; místo toho použijte `@model IList<string>`.
 
 Při upgradu projektu ASP.NET MVC 2 na ASP.NET MVC 3 nezapomeňte přidat následující do oddílu appSettings souboru Web. config:
 
@@ -861,6 +861,6 @@ Došlo k známému problému, který způsobí, že ověřování pomocí formul
 
 ## <a id="0.1__Toc274034231"></a>Právní omezení
 
-© 2011 Microsoft Corporation. Všechna práva vyhrazena. Tento dokument se poskytuje "tak, jak je". Informace a názory vyjádřené v tomto dokumentu, včetně adres URL a dalších odkazů na internetové weby, se mohou změnit bez předchozího upozornění. Riziko jejího používání nesete vy.
+© 2011 Microsoft Corporation. Všechna práva vyhrazena. Tento dokument se poskytuje "tak, jak je". Informace a názory vyjádřené v tomto dokumentu, včetně adres URL a dalších odkazů na internetové weby, se mohou bez předchozího oznámení změnit. Berete na sebe rizika spojená s jeho používáním.
 
 Tento dokument vám neposkytuje žádná zákonná práva k žádnému duševnímu vlastnictví v jakémkoli produktu společnosti Microsoft. Tento dokument můžete kopírovat a používat pro vaše interní referenční účely.

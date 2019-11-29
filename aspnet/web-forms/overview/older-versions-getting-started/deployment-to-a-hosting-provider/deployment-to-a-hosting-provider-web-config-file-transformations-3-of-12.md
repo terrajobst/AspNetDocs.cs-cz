@@ -1,148 +1,148 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12
-title: 'Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Transformace souboru Web.Config - 3 12 | Dokumentace Microsoftu'
+title: 'Nasazení webové aplikace SQL Server Compact v ASP.NET s využitím sady Visual Studio nebo Visual Web Developer: transformace souboru Web. config-3 z 12 | Microsoft Docs'
 author: tdykstra
-description: Tato série kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET, která obsahuje databázi systému SQL Server Compact pomocí Visual samostatného projektu webové aplikace...
+description: V této sérii kurzů se dozvíte, jak nasadit (publikovat) projekt webové aplikace ASP.NET, který obsahuje databázi SQL Server Compact pomocí sady Visual Stu...
 ms.author: riande
 ms.date: 11/17/2011
 ms.assetid: 2b0df3d9-450b-4ea6-b315-4c9650722cad
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: ed442e2bd3140264facc7644d89589dbbe8840e7
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: fe71e6cfb0f4c5f1d99b326e9d90edb6c8c5feee
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65119373"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74600536"
 ---
-# <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-webconfig-file-transformations---3-of-12"></a>Nasazení webové aplikace ASP.NET s SQL serverem Compact pomocí sady Visual Studio nebo Visual Web Developer: Transformace souboru Web.Config - 3 12
+# <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-webconfig-file-transformations---3-of-12"></a>Nasazení webové aplikace SQL Server Compact v ASP.NET s využitím sady Visual Studio nebo Visual Web Developer: transformace souboru Web. config-3 z 12
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-[Stáhnout počáteční projekt](http://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
+[Stáhnout počáteční projekt](https://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
 
-> Tato série kurzů se dozvíte, jak nasadit (publikovat) technologie ASP.NET webové aplikace, která obsahuje databázi systému SQL Server Compact pomocí sady Visual Studio 2012 RC nebo Visual Studio Express 2012 RC pro Web. Můžete také použít Visual Studio 2010 při instalaci aktualizace Publikovat Web. Úvod do řady, naleznete v tématu [z prvního kurzu této série](deployment-to-a-hosting-provider-introduction-1-of-12.md).
+> V této sérii kurzů se dozvíte, jak nasadit (publikovat) projekt webové aplikace ASP.NET, který obsahuje databázi SQL Server Compact pomocí sady Visual Studio 2012 RC nebo Visual Studio Express 2012 RC pro web. Můžete také použít Visual Studio 2010, pokud nainstalujete aktualizaci publikování na webu. Úvod k řadě najdete v [prvním kurzu v řadě](deployment-to-a-hosting-provider-introduction-1-of-12.md).
 > 
-> Kurz ukazuje nasazení funkce zavedená po verzi RC sady Visual Studio 2012, ukazuje, jak nasadit edicích systému SQL Server než SQL Server Compact a ukazuje, jak nasadit do Azure App Service Web Apps, najdete v tématu [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md).
+> Kurz, který ukazuje funkce nasazení představené po vydání RC sady Visual Studio 2012, ukazuje, jak nasadit SQL Server edice jiné než SQL Server Compact a ukazuje, jak nasadit na Azure App Service Web Apps, v tématu [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md).
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu se dozvíte, jak automatizovat proces změny *Web.config* souboru, když ji nasadíte do jiné cílové prostředí. Většina aplikací má nastavení *Web.config* soubor, který musí být odlišné, když je aplikace nasazená. Automatizace procesu provedení těchto změn je udržuje od nutnosti je ručně pokaždé, když nasadíte, které by být zdlouhavé a náchylné k chybám.
+V tomto kurzu se dozvíte, jak automatizovat proces změny souboru *Web. config* při jeho nasazení do různých cílových prostředí. Většina aplikací má nastavení v souboru *Web. config* , které se musí při nasazení aplikace lišit. Automatizace procesu provádění těchto změn vám zajistí, že byste je museli provádět ručně při každém nasazení, což by bylo zdlouhavé a náchylné k chybám.
 
-Připomenutí: Pokud se zobrazí chybová zpráva nebo něco nefunguje tak, jak absolvovat kurz, nezapomeňte se podívat [stránka o řešení problémů](deployment-to-a-hosting-provider-creating-and-installing-deployment-packages-12-of-12.md).
+Připomenutí: Pokud se zobrazí chybová zpráva nebo něco nefunguje při procházení tohoto kurzu, zkontrolujte [stránku řešení potíží](deployment-to-a-hosting-provider-creating-and-installing-deployment-packages-12-of-12.md).
 
-## <a name="webconfig-transformations-versus-web-deploy-parameters"></a>Transformace souboru Web.config a webové nasazení parametry
+## <a name="webconfig-transformations-versus-web-deploy-parameters"></a>Transformace Web. config oproti Nasazení webum parametrům
 
-Existují dva způsoby, jak automatizovat proces změny *Web.config* soubor nastavení: [Transformace Web.config](https://msdn.microsoft.com/library/dd465326.aspx) a [Webdeploy parametry](https://msdn.microsoft.com/library/ff398068.aspx). A *Web.config* transformační soubor obsahuje kód XML, který určuje, jak změnit *Web.config* souboru po jeho nasazení. Můžete zadat jiné změny pro konkrétní konfiguraci sestavení a pro konkrétní profily publikování. Výchozí konfigurace sestavení jsou ladění a vydání a můžete vytvořit vlastní konfigurace sestavení. Profil publikování se obvykle odpovídá cílové prostředí. (Se dozvíte více o publikační profily v [nasazení do služby IIS jako testovacího prostředí](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md) kurz.)
+Existují dva způsoby automatizace procesu změny nastavení souboru *Web. config* : [transformace Web. config](https://msdn.microsoft.com/library/dd465326.aspx) a [parametry nasazení webu](https://msdn.microsoft.com/library/ff398068.aspx). Transformační soubor *Web. config* obsahuje kód XML, který určuje, jak se má při nasazení změnit soubor *Web. config* . Můžete určit různé změny pro konkrétní konfigurace sestavení a pro konkrétní publikační profily. Výchozí konfigurace sestavení jsou ladění a vydání a můžete vytvořit vlastní konfigurace sestavení. Profil publikování obvykle odpovídá cílovému prostředí. (Další informace o profilech publikování najdete v kurzu [nasazení do služby IIS jako testovací prostředí](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md) .)
 
-Parametry pro nasazení webu je možné určit různé druhy nastavení, která se musí nakonfigurovat během nasazení, včetně nastavení, které se nacházejí v *Web.config* soubory. Pokud se použije k určení *Web.config* změny souborů, jsou mnohem složitější a nastavit parametry nástroj nasazení webu, ale jsou užitečné, pokud si nejste jisti hodnota k nastavení, dokud nasadíte. Například v podnikovém prostředí, může vytvořit *balíček pro nasazení* dát lidem v oddělení IT k instalaci v produkčním prostředí a musí být možné zadávat připojovací řetězce a hesla, které nechcete tuto osobu vědět.
+Parametry Nasazení webu lze použít k určení mnoha různých druhů nastavení, které je třeba konfigurovat během nasazování, včetně nastavení, která jsou nalezena v souborech *Web. config* . Při použití k zadání změn souboru *Web. config* nasazení webu parametry jsou složitější, aby je bylo možné nastavit, ale jsou užitečné, pokud neznáte hodnotu, která má být nastavena, dokud nebudete nasazovat. Například v podnikovém prostředí můžete vytvořit *balíček pro nasazení* a dát mu osobu v oddělení IT, aby se nainstalovala v produkčním prostředí, a tato osoba musí být schopná zadat připojovací řetězce nebo hesla, které neznáte.
 
-Pro scénáře, který tento kurz se zabývá, víte, vše, co musíme udělat, aby *Web.config* souboru, takže není potřeba používat parametry nasazení webu. Některé transformace, která se liší v závislosti na konfiguraci sestavení používá, a některé, které se liší v závislosti na profil publikování použitý budete konfigurovat.
+Scénář, na který se tento kurz zabývá, najdete v části všechno, co se má udělat v souboru *Web. config* , takže nemusíte používat parametry nasazení webu. Nakonfigurujete některé transformace, které se liší v závislosti na použité konfiguraci sestavení a některé, které se liší v závislosti na použitém profilu publikování.
 
-## <a name="creating-transformation-files-for-publish-profiles"></a>Vytváření souborů transformace pro profily publikování
+## <a name="creating-transformation-files-for-publish-profiles"></a>Vytváření transformačních souborů pro profily publikování
 
-V **Průzkumníku řešení**, rozbalte *Web.config* zobrazíte *Web.Debug.config* a *Web.Release.config* soubory transformace Vytvoří se standardně pro dvě výchozí konfigurace sestavení.
+V **Průzkumník řešení**rozbalte *Web. config* a zobrazte transformační soubory *Web. Debug. config* a *Web. Release. config* , které jsou vytvořeny ve výchozím nastavení pro dvě výchozí konfigurace sestavení.
 
-![Web.config_transform_files](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image1.png)
+![Web. config_transform_files](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image1.png)
 
-Můžete vytvořit soubory transformace pro vlastní konfigurace sestavení tak, že kliknete pravým tlačítkem soubor Web.config a zvolíte **přidat konfigurační transformaci** v místní nabídce, ale pro účely tohoto kurzu není nutné to udělat.
+Transformační soubory pro vlastní konfigurace sestavení můžete vytvořit tak, že kliknete pravým tlačítkem na soubor Web. config a zvolíte přidat transformované **transformace** z kontextové nabídky, ale pro tento kurz to nemusíte dělat.
 
-Potřebujete dva další soubory transformace pro konfiguraci změny, které se vztahují na cíl nasazení, nikoli na konfiguraci sestavení. Typickým příkladem tento typ nastavení je koncový bod WCF, které se liší pro testovací a produkční. V dalších kurzech vytvoříte publikační profily s názvem testovacím i produkčním prostředí, takže je třeba *Web.Test.config* souboru a *Web.Production.config* souboru.
+Pro konfiguraci změn, které se vztahují k cílovému umístění nasazení, a nikoli ke konfiguraci sestavení, potřebujete dva další transformační soubory. Typický příklad tohoto druhu nastavení je koncový bod WCF, který se liší pro testování a produkci. V novějších kurzech vytvoříte profily publikování s názvem test a produkční, takže budete potřebovat soubor *Web. test. config* a soubor *Web. produkční. config* .
 
-Transformační soubory, které jsou svázány se publikační profily musí být vytvořeny ručně. V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt ContosoUniversity a vyberte **otevřít složku v Průzkumníku Windows**.
+Transformační soubory, které jsou svázané s publikačními profily, je nutné vytvořit ručně. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt ContosoUniversity a vyberte **Otevřít složku v Průzkumníku Windows**.
 
 ![Open_folder_in_Windows_Explorer](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image2.png)
 
-V **Windows Explorer**, vyberte *Web.Release.config* soubor, zkopírujte soubor a vložte dvě kopie. Přejmenovat tyto kopie *Web.Production.config* a *Web.Test.config*, pak zavřete **Windows Explorer**.
+V **Průzkumníku Windows**vyberte soubor *Web. Release. config* , zkopírujte soubor a pak vložte dvě kopie. Přejmenujte tyto kopie *Web. produkční. config* a *Web. test. config*a pak zavřete **Průzkumníka Windows**.
 
-V **Průzkumníka řešení**, klikněte na tlačítko **aktualizovat** zobrazíte nové soubory.
+V **Průzkumník řešení**kliknutím na **aktualizovat** zobrazíte nové soubory.
 
-Vyberte nové soubory, klikněte pravým tlačítkem a pak klikněte na tlačítko **zahrnout do projektu** v místní nabídce.
+Vyberte nové soubory, klikněte pravým tlačítkem myši a potom v místní nabídce klikněte na možnost **zahrnout do projektu** .
 
-![Včetně testovací a produkční konfigurační soubory v projektu](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image3.png)
+![Zahrnutí testovacích a produkčních konfiguračních souborů do projektu](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image3.png)
 
-Pokud chcete zakázat tyto soubory nasazení, vyberte je v **Průzkumníka řešení**a pak v **vlastnosti** okno Změnit **akce sestavení** vlastnost z **Obsahu** k **žádný**. (Soubory transformace, které jsou založené na konfiguraci sestavení automaticky bránit v nasazení.)
+Chcete-li zabránit nasazení těchto souborů, vyberte je v **Průzkumník řešení**a potom v okně **vlastnosti** změňte vlastnost **Akce sestavení** z **obsahu** na **hodnotu žádné**. (Transformační soubory, které jsou založeny na konfiguracích sestavení, jsou automaticky znemožněny nasazením.)
 
-Nyní jste připraveni k zadání *Web.config* transformace do *Web.config* soubory transformace.
+Nyní jste připraveni zadat transformace *Web. config* do transformačních souborů *Web. config* .
 
-## <a name="limiting-error-log-access-to-administrators"></a>Omezení přístupu k protokolu chyb pro správce
+## <a name="limiting-error-log-access-to-administrators"></a>Omezení přístupu k protokolu chyb správcům
 
-Pokud dojde k chybě, když je aplikace spuštěna, aplikace zobrazí obecná chybová stránka místo generována chybová stránka a používá [balíček NuGet knihovny Elmah](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx) chyby protokolování a vytváření sestav. `customErrors` Prvek *Web.config* soubor Určuje chybové stránky:
+Pokud při spuštění aplikace dojde k chybě, aplikace zobrazí obecnou chybovou stránku namísto chybové stránky generované systémem a používá [knihovny elmah balíček NuGet](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx) pro protokolování chyb a vytváření sestav. Element `customErrors` v souboru *Web. config* určuje chybovou stránku:
 
 [!code-xml[Main](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/samples/sample1.xml)]
 
-Pokud chcete zobrazit chybovou stránku, dočasně změnit `mode` atribut `customErrors` element z "RemoteOnly" na "Na" a spuštění aplikace ze sady Visual Studio. Způsobit chybu, můžete si vyžádat neplatnou adresu URL, jako například *Studentsxxx.aspx*. Místo chybová stránka služby IIS vygeneruje "stránka nebyla nalezena", zobrazí *GenericErrorPage.aspx* stránky.
+Chcete-li zobrazit chybovou stránku, dočasně změňte atribut `mode` elementu `customErrors` z "RemoteOnly" na "on" a spusťte aplikaci ze sady Visual Studio. Způsobí chybu zadáním neplatné adresy URL, například *Studentsxxx. aspx*. Namísto chybové stránky nenalezené stránky, která je generována službou IIS, se zobrazí stránka *GenericErrorPage. aspx* .
 
 [![Error_page](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image5.png)](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image4.png)
 
-Chcete-li naleznete v protokolu chyb, všechno v adrese URL nahradit za číslo portu se *elmah.axd* (například v na snímku obrazovky `http://localhost:51130/elmah.axd`) a stiskněte klávesu Enter:
+Chcete-li zobrazit protokol chyb, nahraďte vše v adrese URL za číslem portu pomocí *knihovny elmah. axd* (pro příklad na snímku obrazovky `http://localhost:51130/elmah.axd`) a stiskněte klávesu ENTER:
 
 [![Elmah_log_page](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image7.png)](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image6.png)
 
-Nezapomeňte nastavit `customErrors` element zpátky do režimu "RemoteOnly" až budete hotovi.
+Po dokončení nezapomeňte nastavit `customErrors` element zpět na režim "RemoteOnly".
 
-Na počítači pro vývoj je vhodné povolit bezplatný přístup na chybovou stránku protokolu, ale v produkčním prostředí, která bude představovat bezpečnostní riziko. Pro produkční lokality můžete přidat autorizační pravidlo, která omezuje přístup protokolu chyba jen správcům nakonfigurováním transformace *Web.Production.config* souboru.
+Na vašem vývojovém počítači je vhodné zajistit bezplatný přístup ke stránce protokolu chyb, ale v produkčním prostředí by se mohlo jednat o bezpečnostní riziko. V produkčním webu můžete přidat autorizační pravidlo, které omezuje přístup k protokolu chyb jenom správcům, a to tak, že v souboru *Web. produkční. config* nakonfigurujete transformaci.
 
-Otevřít *Web.Production.config* a přidat nový `location` ihned za úvodní prvek `configuration` označit, jak je znázorněno zde. (Ujistěte se, že můžete přidat pouze `location` elementu a není okolního značek, která je znázorněna zde jenom k poskytnutí některých kontextu.)
+Otevřete *Web. produkční. config* a přidejte nový prvek `location` hned za otevírací značku `configuration`, jak je znázorněno zde. (Ujistěte se, že přidáte pouze prvek `location` a nikoli okolní kód, který je zde zobrazen pouze k poskytnutí nějakého kontextu.)
 
 [!code-xml[Main](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/samples/sample2.xml?highlight=2-9)]
 
-`Transform` Hodnotu atributu "Vložit" způsobí, že to `location` element na stejné úrovni jako přidat do jakékoli existující `location` prvků v *Web.config* souboru. (Již existuje jedna `location` prvek, který určuje autorizační pravidla pro **aktualizace kredity** stránky.) Při testování v produkčním po nasazení budete testovat ověřte, že toto autorizační pravidlo platí.
+Hodnota atributu `Transform` příkazu INSERT způsobí, že tento prvek `location` přidat jako položku na stejné úrovni do všech existujících `location` prvků v souboru *Web. config* . (Již existuje jeden `location` element, který určuje autorizační pravidla pro stránku **aktualizace kreditů** .) Při testování produkčního webu po nasazení otestujete test a ověřte, zda je toto autorizační pravidlo platné.
 
-Není nutné k omezení přístupu protokolu chyby v testovacím prostředí, takže není nutné přidat tento kód *Web.Test.config* souboru.
+V testovacím prostředí není nutné omezit přístup k protokolu chyb, takže nemusíte přidávat tento kód do souboru *Web. test. config* .
 
 > [!NOTE] 
 > 
-> **Poznámka k zabezpečení** nikdy zobrazit podrobnosti o chybě veřejně v produkční aplikace, nebo ukládání těchto informací na veřejném místě. Útočníci slouží ke zjišťování ohrožení zabezpečení v lokalitě informace o chybě. Pokud používáte ELMAH ve své aplikaci, je potřeba prozkoumat způsoby, ve kterém by šlo ELMAH minimalizovat rizika zabezpečení. Doporučená konfigurace by neměly být zahrnuté v ELMAH příkladu v tomto kurzu. To je příklad, který jste vybrali, aby bylo možné ukazují, jak zpracovat složku, musí být schopen vytvořit soubory v aplikaci.
+> **Poznámka k zabezpečení** Nikdy nezobrazuje podrobnosti o chybě pro veřejnost v produkční aplikaci nebo tyto informace ukládejte ve veřejném umístění. Útočníci můžou pomocí informací o chybách zjišťovat ohrožení zabezpečení v lokalitě. Pokud ve své vlastní aplikaci používáte knihovny ELMAH, nezapomeňte prozkoumat způsoby, kterými se knihovny ELMAH dá nakonfigurovat tak, aby se minimalizovala rizika zabezpečení. KNIHOVNY ELMAH příklad v tomto kurzu by se neměl považovat za doporučenou konfiguraci. Je to příklad, který jste zvolili pro ilustraci, jak zpracovat složku, ve které musí být aplikace schopná vytvářet soubory.
 
-## <a name="setting-an-environment-indicator"></a>Nastavení prostředí indikátor
+## <a name="setting-an-environment-indicator"></a>Nastavení indikátoru prostředí
 
-Běžný scénář, kdy je, aby *Web.config* soubor nastavení, která musí být v každém prostředí, který nasadíte do jiné. Například aplikace, která volá službu WCF může potřebovat jiný koncový bod v testovacím a produkčním prostředí. Aplikace Contoso University zahrnuje také nastavení tohoto druhu. Toto nastavení řídí viditelné ukazatele na stránkách webu, který říká prostředí, ve kterém pracujete, jako je například vývojové, testovací nebo produkční prostředí. Hodnota nastavení určuje, zda se aplikace připojí "(vývoj)" nebo "(testovací)" na hlavní nadpis *Site.Master* hlavní stránky:
+Běžným scénářem je nastavení souboru *Web. config* , které musí být v každém prostředí, které nasazujete na, odlišné. Například aplikace, která volá službu WCF, může v testovacích a produkčních prostředích potřebovat jiný koncový bod. Aplikace Contoso University obsahuje také nastavení tohoto druhu. Toto nastavení řídí viditelný indikátor na stránkách webu, které vám sdělí, ve kterém prostředí se nacházíte, jako je vývoj, testování nebo produkce. Hodnota nastavení určuje, zda bude aplikace připojovat "(dev)" nebo "(test)" do hlavního nadpisu na stránce hlavního *serveru.* Master:
 
 [![Environment_indicator](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image9.png)](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image8.png)
 
-Indikátor prostředí je vynecháno, pokud je aplikace spuštěna v produkčním prostředí.
+Indikátor prostředí se vynechá, když aplikace běží v produkčním prostředí.
 
-Webové stránky společnosti Contoso University přečíst hodnotu, která je nastavena v `appSettings` v *Web.config* souboru, aby bylo možné určit, jaké prostředí je aplikace spuštěna v:
+Webové stránky společnosti Contoso University čtou hodnotu, která je nastavena v `appSettings` v souboru *Web. config* , aby bylo možné určit prostředí, ve kterém je aplikace spuštěná:
 
 [!code-xml[Main](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/samples/sample3.xml)]
 
-Hodnota musí být "Test" v testovacím prostředí a "Produkční" v provozním prostředí.
+Hodnota by měla být "test" v testovacím prostředí a "prod" v produkčním prostředí.
 
-Otevřít *Web.Production.config* a přidat `appSettings` element bezprostředně před otevírací značce `location` elementu, které jste přidali dříve:
+Otevřete *Web. produkční. config* a přidejte `appSettings` prvek těsně před počáteční značku `location` elementu, který jste přidali dříve:
 
 [!code-xml[Main](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/samples/sample4.xml)]
 
-`xdt:Transform` Hodnotu "SetAttributes" označuje, že účel této transformace je chcete-li změnit hodnoty atributů z existujícího prvku v atributu *Web.config* souboru. `xdt:Locator` Atribut hodnotu "Match(key)" označuje, že elementu, který chcete upravit, jehož `key` atribut shody `key` tady zadán atribut. Jenom ostatní atribut `add` element je `value`, a to je, co se změnilo v nasazených *Web.config* souboru. Tento kód způsobí, že `value` atribut `Environment` `appSettings` element být nastavena na "Produkční" *Web.config* soubor, který se nasadí do produkčního prostředí.
+Hodnota atributu `xdt:Transform` "Setattributess" značí, že účelem této transformace je změnit hodnoty atributu stávajícího prvku v souboru *Web. config* . Hodnota atributu `xdt:Locator` Match (Key) označuje, že prvek, který má být změněn, je ten, jehož atribut `key` odpovídá atributu `key`, který je zde uveden. Jediný atribut prvku `add` je `value`a to je to, co se v nasazeném souboru *Web. config* změní. Tento kód způsobí, že atribut `value` elementu `Environment` `appSettings` má být v souboru *Web. config* , který je nasazen do produkčního prostředí, nastaven na "prod".
 
-Dále použijte stejnou změnu pro *Web.Test.config* souboru, s výjimkou sadu `value` na "Test" místo "Produkční". Jakmile budete hotovi, `appSettings` tématu *Web.Test.config* bude vypadat jako v následujícím příkladu:
+Dále použijte stejnou změnu v souboru *Web. test. config* , kromě nastavení `value` na "test" místo "prod". Po dokončení bude oddíl `appSettings` v *souboru Web. test. config* vypadat jako v následujícím příkladu:
 
 [!code-xml[Main](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/samples/sample5.xml)]
 
-## <a name="disabling-debug-mode"></a>Zakázat režim ladění
+## <a name="disabling-debug-mode"></a>Zakazování režimu ladění
 
-Pro sestavení pro vydání nechcete, aby povoleno ladění bez ohledu na prostředí, ve kterém nasazujete. Ve výchozím nastavení *Web.Release.config* transformační soubor se automaticky vytvoří s kódem, který odebere `debug` atribut z `compilation` element:
+Pro sestavení pro vydání nechcete povolit ladění bez ohledu na to, které prostředí nasazujete do nástroje. Ve výchozím nastavení se transformační soubor *Web. Release. config* automaticky vytvoří s kódem, který odebere atribut `debug` z `compilation` elementu:
 
 [!code-xml[Main](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/samples/sample6.xml)]
 
-`Transform` Atribut způsobí, že `debug` atribut vynechat z nasazených *Web.config* souboru pokaždé, když nasadíte sestavení pro vydání.
+Atribut `Transform` způsobí, že atribut `debug` bude vynechán z nasazeného souboru *Web. config* při každém nasazení sestavení pro vydání.
 
-Tento stejný transformace je v provozním i testovacím prostředí soubory transformace vzhledem k tomu, že jste vytvořili zkopírováním verze souboru transformace. Nepotřebujete ho existuje duplicitní soubory s každou z těchto proto si otevřete, odeberte **kompilace** prvek a soubor uložte a zavřete každou.
+Tato stejná transformace je v souborových transformačních a produkčních převodech, protože jste je vytvořili zkopírováním transformačního souboru verze. Nebudete je muset duplikovat, proto otevřete každý z těchto souborů, odeberte **kompilační** prvek a uložte a zavřete jednotlivé soubory.
 
 ## <a name="setting-connection-strings"></a>Nastavení připojovacích řetězců
 
-Ve většině případů nepotřebujete nastavit připojovací řetězec transformací, protože připojovací řetězce můžete zadat v profilu publikování. Ale dojde k výjimce při nasazení databáze SQL Server Compact a použití migrace Entity Framework Code First aktualizace databáze na cílovém serveru. V tomto scénáři budete muset zadat další připojovací řetězec, který se použije pro aktualizaci schématu databáze na serveru. Chcete-li nastavit tuto transformaci, přidejte **&lt;connectionStrings&gt;** ihned za úvodní prvek **&lt;konfigurace&gt;** značky v obou *Web.Test.config* a *Web.Production.config* transformační soubory:
+Ve většině případů není nutné nastavovat transformace připojovacích řetězců, protože v profilu publikování můžete zadat připojovací řetězce. Ale při nasazování databáze SQL Server Compact existuje výjimka a používáte Migrace Entity Framework Code First k aktualizaci databáze na cílovém serveru. V tomto scénáři je nutné zadat další připojovací řetězec, který bude použit na serveru pro aktualizaci schématu databáze. Chcete-li nastavit tuto transformaci, přidejte **&gt;elementu&lt;connectionStrings** hned po úvodní značce **&gt;&lt;konfigurace** v souboru *Web. test. config* a v transformačních souborech *Web. produkční. config* :
 
 [!code-xml[Main](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/samples/sample7.xml)]
 
-`Transform` Atribut určuje, že tento připojovací řetězec se přidají do *connectionStrings* element v nasazených *Web.config* souboru. (Procesu publikování tento další připojovací řetězec automaticky vytvoří za vás, pokud neexistuje, ale ve výchozím nastavení **providerName** získá atribut nastaven na `System.Data.SqlClient`, což nefunguje pro SQL Server Compact. Ručním přidáním připojovací řetězec, můžete zabránit proces nasazení vytváření element připojovacího řetězce s názvem chybě zprostředkovatele.)
+Atribut `Transform` určuje, zda bude tento připojovací řetězec přidán do elementu *connectionStrings* v nasazeném souboru *Web. config* . (Proces publikování automaticky vytvoří tento další připojovací řetězec, pokud neexistuje, ale ve výchozím nastavení je atribut **ProviderName** nastaven na `System.Data.SqlClient`, který nefunguje pro SQL Server Compact. Přidáním připojovacího řetězce ručně zachováte proces nasazení z vytváření elementu připojovacího řetězce s nesprávným názvem poskytovatele.)
 
-Nyní všechny zadáte *Web.config* transformace, které potřebujete pro nasazení aplikace Contoso University k testování a produkce. V následujícím kurzu se bude starat o úlohy nastavení nasazení, které vyžadují nastavení vlastností projektu.
+Nyní jste zadali všechny transformace *Web. config* , které potřebujete pro nasazení aplikace Contoso University na testování a produkci. V následujícím kurzu se postará o úlohy nastavení nasazení, které vyžadují nastavení vlastností projektu.
 
 ## <a name="more-information"></a>Další informace
 
-Další informace o tématech, které jsou popsané v tomto kurzu, najdete v článku scénář transformace souboru Web.config v [mapa obsahu nasazení ASP.NET](https://msdn.microsoft.com/library/bb386521.aspx).
+Další informace o tématech popsaných v tomto kurzu najdete v tématu scénář transformace Web. config v [mapě obsahu nasazení ASP.NET](https://msdn.microsoft.com/library/bb386521.aspx).
 
 > [!div class="step-by-step"]
 > [Předchozí](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)
-> [další](deployment-to-a-hosting-provider-configuring-project-properties-4-of-12.md)
+> [Další](deployment-to-a-hosting-provider-configuring-project-properties-4-of-12.md)

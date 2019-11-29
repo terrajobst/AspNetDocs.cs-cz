@@ -1,143 +1,143 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb
-title: Master/Detail s volitelnou GridView hlavní podrobnosti DetailView (VB) | Dokumentace Microsoftu
+title: Hlavní a podrobnosti pomocí selektivního hlavního prvku GridView s podrobnostmi prvku detailview (VB) | Microsoft Docs
 author: rick-anderson
-description: V tomto kurzu budou mít ovládacího prvku GridView, jejíž řádky patří název a ceny jednotlivých produktů spolu s tlačítko pro výběr. Vyberte tlačítko pro particu...
+description: V tomto kurzu bude mít prvek GridView, jehož řádky obsahují název a cenu každého produktu spolu s tlačítkem vybrat. Klikněte na tlačítko vybrat pro particu...
 ms.author: riande
 ms.date: 03/31/2010
 ms.assetid: 1d1a7c93-971d-4690-9c5e-dac0e5014a09
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4f97508aabe64d83a29ae50134d608f64c9cf72e
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: a953c00acc4c37fd563321477b6b21689d6e686c
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131434"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74576441"
 ---
 # <a name="masterdetail-using-a-selectable-master-gridview-with-a-details-detailview-vb"></a>Zobrazení hlavních záznamů / podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/5/d/7/5d7571fc-d0b7-4798-ad4a-c976c02363ce/ASPNET_Data_Tutorial_10_VB.exe) nebo [stahovat PDF](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/datatutorial10vb1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/5/d/7/5d7571fc-d0b7-4798-ad4a-c976c02363ce/ASPNET_Data_Tutorial_10_VB.exe) nebo [Stáhnout PDF](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/datatutorial10vb1.pdf)
 
-> V tomto kurzu budou mít ovládacího prvku GridView, jejíž řádky patří název a ceny jednotlivých produktů spolu s tlačítko pro výběr. Kliknutím na tlačítko pro výběr u konkrétního produktu způsobí, že jeho všechny podrobnosti, který se má zobrazit v ovládacím prvku DetailsView na stejné stránce.
+> V tomto kurzu bude mít prvek GridView, jehož řádky obsahují název a cenu každého produktu spolu s tlačítkem vybrat. Kliknutí na tlačítko pro výběr konkrétního produktu způsobí, že se jeho úplné podrobnosti zobrazí v ovládacím prvku DetailsView na stejné stránce.
 
 ## <a name="introduction"></a>Úvod
 
-V [předchozí kurz o službě](master-detail-filtering-across-two-pages-vb.md) jsme viděli, jak vytvořit pomocí dvou webových stránek sestavy záznamů master/detail: "hlavní" webové stránky, ze kterého jsme zobrazí seznam suppliers; a webová stránka "details", uvedené produkty poskytnuté vybrané Dodavatel. Tento formát dvě stránky sestavy můžete vyjádřit na jednu stránku. V tomto kurzu budou mít ovládacího prvku GridView, jejíž řádky patří název a ceny jednotlivých produktů spolu s tlačítko pro výběr. Kliknutím na tlačítko pro výběr u konkrétního produktu způsobí, že jeho všechny podrobnosti, který se má zobrazit v ovládacím prvku DetailsView na stejné stránce.
+V [předchozím kurzu](master-detail-filtering-across-two-pages-vb.md) jsme viděli, jak vytvořit sestavu hlavní a podrobnosti pomocí dvou webových stránek: "hlavní" Webová stránka, ze které jsme zobrazili seznam dodavatelů. a na webové stránce Podrobnosti, která je uvedená v seznamu produktů poskytovaných vybraným dodavatelem. Tento formát sestavy stránky může být zúžený na jednu stránku. V tomto kurzu bude mít prvek GridView, jehož řádky obsahují název a cenu každého produktu spolu s tlačítkem vybrat. Kliknutí na tlačítko pro výběr konkrétního produktu způsobí, že se jeho úplné podrobnosti zobrazí v ovládacím prvku DetailsView na stejné stránce.
 
-[![Kliknutím na tlačítko pro výběr zobrazí podrobnosti o produktu](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image2.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image1.png)
+[![kliknutí na tlačítko vybrat zobrazí podrobnosti o produktu.](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image2.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image1.png)
 
-**Obrázek 1**: Kliknutím na tlačítko pro výběr zobrazí podrobnosti o produktu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image3.png))
+**Obrázek 1**: kliknutím na tlačítko vybrat zobrazíte podrobnosti o produktu ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image3.png)
 
-## <a name="step-1-creating-a-selectable-gridview"></a>Krok 1: Vytváření volitelných GridView
+## <a name="step-1-creating-a-selectable-gridview"></a>Krok 1: vytvoření selektivního prvku GridView
 
-Vzpomínáte, že dvě stránky hlavního/podrobného hlásit, že každý hlavní záznam obsahuje hypertextový odkaz, který po kliknutí na odesílat uživatele stránce s podrobnostmi o předání kliknutí na řádek `SupplierID` hodnotu v řetězec dotazu. Na každý řádek prvku GridView, použití HyperLinkField byl přidán na hypertextový odkaz. Pro jednu stránku hlavních/podrobných sestav, potřebujeme tlačítko pro každý prvek GridView řádek, který po kliknutí na zobrazuje podrobnosti. Dá se ovládací prvek GridView zahrnout vyberte tlačítko pro každý řádek, který vyvolá zpětné volání a označí tento řádek prvku GridView [SelectedRow](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedrow.aspx).
+Nahlaste se v sestavě Master/Detail na dvou stránkách, kterou každý hlavní záznam obsahuje, a když se na něj klikne, pošle se uživateli na stránku podrobností, která přesměruje na hodnotu `SupplierID` řádku v řetězci dotazu. Takový hypertextový odkaz byl přidán do každého řádku GridView pomocí HyperLinkField. V případě sestavy hlavní stránka/podrobnosti pro jednu stránku budeme potřebovat tlačítko pro každý řádek GridView, který po kliknutí zobrazí podrobnosti. Ovládací prvek GridView lze nakonfigurovat tak, aby zahrnoval tlačítko pro výběr pro každý řádek, který způsobí postback, a označí tento řádek jako [SelectedRow](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedrow.aspx)prvku GridView.
 
-Začněte přidáním ovládacího prvku GridView k `DetailsBySelecting.aspx` stránku `Filtering` složku, nastavení jeho `ID` vlastnost `ProductsGrid`. V dalším kroku přidejte nový prvek ObjectDataSource s názvem `AllProductsDataSource` , která vyvolává `ProductsBLL` třídy `GetProducts()` metody.
+Začněte přidáním ovládacího prvku GridView na stránku `DetailsBySelecting.aspx` ve složce `Filtering` a nastavte jeho vlastnost `ID` na `ProductsGrid`. Dále přidejte nový prvek ObjectDataSource pojmenovaný `AllProductsDataSource`, který vyvolá metodu `GetProducts()` `ProductsBLL` třídy.
 
-[![Vytvoření s názvem AllProductsDataSource ObjectDataSource](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image5.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image4.png)
+[![vytvořit prvek ObjectDataSource s názvem AllProductsDataSource](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image5.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image4.png)
 
-**Obrázek 2**: Vytvoření s názvem prvku ObjectDataSource `AllProductsDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image6.png))
+**Obrázek 2**: Vytvoření prvku ObjectDataSource s názvem `AllProductsDataSource` ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image6.png))
 
-[![Použití třídy ProductsBLL](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image8.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image7.png)
+[![použít třídu ProductsBLL](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image8.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image7.png)
 
-**Obrázek 3**: Použití `ProductsBLL` třídy ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image9.png))
+**Obrázek 3**: použijte třídu `ProductsBLL` ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image9.png)).
 
-[![Prvek ObjectDataSource, která se má vyvolat metodu GetProducts() konfigurace](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image11.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image10.png)
+[![nakonfigurovat prvek ObjectDataSource pro vyvolání metody GetProducts ()](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image11.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image10.png)
 
-**Obrázek 4**: Konfigurace ObjectDataSource metodě Invoke `GetProducts()` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image12.png))
+**Obrázek 4**: Konfigurace prvku ObjectDataSource pro vyvolání metody `GetProducts()` ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image12.png))
 
-Upravit pole prvku GridView odebírá se všechno kromě na `ProductName` a `UnitPrice` BoundFields. Navíc libovolně přizpůsobit tyto BoundFields podle potřeby, například formátování `UnitPrice` Vlastnost BoundField jako měnu a změna `HeaderText` vlastnosti BoundFields. Tyto kroky můžete udělat graficky, kliknutím na odkaz Upravit sloupce v prvku GridView inteligentních značek nebo ruční konfigurací deklarativní syntaxe.
+Upravte pole prvku GridView odebráním všech prvků kromě `ProductName` a `UnitPrice` BoundFields. Také si klidně Přizpůsobte tyto BoundFields podle potřeby, jako je například formátování `UnitPrice` vlastnost BoundField jako měny a změna vlastností `HeaderText` BoundFields. Tyto kroky lze provést graficky kliknutím na odkaz Upravit sloupce z inteligentní značky prvku GridView nebo ruční konfigurací deklarativní syntaxe.
 
-[![Odeberte všechny kromě ProductName a UnitPrice BoundFields](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image14.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image13.png)
+[![odebrat všechny kromě BoundFields NázevVýrobku a UnitPrice](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image14.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image13.png)
 
-**Obrázek 5**: Odeberte všechny ale `ProductName` a `UnitPrice` BoundFields ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image15.png))
+**Obrázek 5**: Odeberte všechny kromě `ProductName` a `UnitPrice` BoundFields ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image15.png)).
 
-Je konečný kód pro prvku GridView:
+Konečné označení prvku GridView je:
 
 [!code-aspx[Main](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/samples/sample1.aspx)]
 
-V dalším kroku potřebujeme k označení prvku GridView jako volitelný, který přidá tlačítko pro výběr na každý řádek. K tomu stačí zaškrtněte políčko Povolit výběr v prvku GridView inteligentních značek.
+Dále je nutné označit prvek GridView jako volitelný, čímž přidáte tlačítko pro výběr na každý řádek. K tomuto účelu stačí zaškrtnout políčko Povolit výběr v inteligentní značce prvku GridView.
 
-[![Zkontrolujte vybrat řádky GridView.](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image17.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image16.png)
+[![nastavit, že se mají vybrat řádky prvku GridView](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image17.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image16.png)
 
-**Obrázek 6**: Ujistěte se, lze vybrat řádky prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image18.png))
+**Obrázek 6**: umožňuje vybrat řádky prvku GridView ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image18.png)).
 
-Možnost povolení výběru kontroly přidá CommandField k `ProductsGrid` prvek GridView s jeho `ShowSelectButton` nastavenou na hodnotu True. V důsledku vyberte tlačítko pro každý řádek prvku GridView, jak znázorňuje obrázek 6. Ve výchozím nastavení, vyberte tlačítka jsou vykresleny jako LinkButtons, ale můžete použít tlačítka nebo ImageButtons místo prostřednictvím CommandField `ButtonType` vlastnost.
+Zaškrtnutím možnosti povolit výběr přidáte CommandField do prvku GridView `ProductsGrid` s vlastností `ShowSelectButton` nastavenou na hodnotu true. Výsledkem je tlačítko výběru pro každý řádek prvku GridView, jak ukazuje obrázek 6. Ve výchozím nastavení jsou tlačítka pro výběr vykreslena jako LinkButtons, ale místo toho můžete použít tlačítka nebo ImageButtons prostřednictvím vlastnosti `ButtonType` CommandField.
 
 [!code-aspx[Main](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/samples/sample2.aspx)]
 
-Po kliknutí na tlačítko pro výběr řádku prvku GridView vyplývá zpětné volání a prvku GridView `SelectedRow` vlastnost aktualizovat. Kromě `SelectedRow` poskytuje vlastnosti prvku GridView [SelectedIndex](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedindex%28VS.80%29.aspx), [SelectedValue](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedvalue%28VS.80%29.aspx), a [SelectedDataKey](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selecteddatakey%28VS.80%29.aspx) vlastnosti. `SelectedIndex` Vlastnost vrátí index vybraného řádku vzhledem k tomu `SelectedValue` a `SelectedDataKey` vlastnosti návratové hodnoty na základě prvku GridView [vlastnost DataKeyNames](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.datakeynames%28VS.80%29.aspx).
+Když je kliknutí na tlačítko výběru řádku GridView (odeslání) kliknuto a vlastnost `SelectedRow` prvku GridView je aktualizována. Kromě vlastnosti `SelectedRow` poskytuje prvek GridView vlastnosti [SelectedIndex](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedindex%28VS.80%29.aspx), [SelectedValue](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedvalue%28VS.80%29.aspx)a [SelectedDataKey](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selecteddatakey%28VS.80%29.aspx) . Vlastnost `SelectedIndex` vrací index vybraného řádku, zatímco vlastnosti `SelectedValue` a `SelectedDataKey` vrací hodnoty založené na [vlastnosti DataKeyNames](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.datakeynames%28VS.80%29.aspx)prvku GridView.
 
-`DataKeyNames` Vlastnost se používá k přidružit jeden nebo více dat, pole hodnoty jednotlivých řádků a se běžně používá k atributu jedinečné identifikační informace z podkladových dat a jednotlivých řádků ovládacího prvku GridView. `SelectedValue` Vlastnost vrací hodnotu prvního `DataKeyNames` datové pole pro vybraný řádek where jako `SelectedDataKey` vlastnost vrací vybraný řádek `DataKey` objektu, který obsahuje všechny hodnoty pro pole klíče pro zadaná data Tento řádek.
+Vlastnost `DataKeyNames` slouží k asociaci jedné nebo více hodnot datových polí s každým řádkem a často se používá k atributu jedinečně identifikující informace z podkladových dat s každým řádkem GridView. Vlastnost `SelectedValue` vrací hodnotu prvního `DataKeyNames` datového pole pro vybraný řádek, kde hodnota vlastnosti `SelectedDataKey` vrátí objekt `DataKey` vybraného řádku, který obsahuje všechny hodnoty pro zadaná klíčová pole dat pro daný řádek.
 
-`DataKeyNames` Je automaticky nastavena na pole data Jednoznačná identifikace Pokud svážete zdrojem dat prvku GridView, DetailsView nebo třídy FormView pomocí návrháře. Zatímco tato vlastnost byla nastavena pro nás automaticky v předchozích kurzech, příklady by fungovat bez `DataKeyNames` zadanou vlastnost. Ale pro volitelný prvek GridView v tomto kurzu, stejně jako pro budoucí kurzů, ve kterých jsme budete mít zkoumání vložení, aktualizace nebo odstranění `DataKeyNames` vlastnost musí být nastavena správně. Ujistěte se, že prvku GridView za chvíli `DataKeyNames` je nastavena na `ProductID`.
+Vlastnost `DataKeyNames` je automaticky nastavena na jednoznačně identifikující datová pole, když svážete zdroj dat s GridView, DetailsView nebo FormView prostřednictvím návrháře. I když se tato vlastnost automaticky nastavila pro nás v předchozích kurzech, vypracovaly příklady bez zadané vlastnosti `DataKeyNames`. Pro sadu GridView v tomto kurzu a také pro budoucí kurzy, ve kterých budeme zkoumat vkládání, aktualizaci a odstraňování, musí být správně nastavena vlastnost `DataKeyNames`. Chvíli zajistěte, aby vlastnost `DataKeyNames` prvku GridView byla nastavena na hodnotu `ProductID`.
 
-Podívejme se na náš postup doposud prostřednictvím prohlížeče. Všimněte si, že prvku GridView se zobrazuje název a cena za všechny tyto produkty spolu s LinkButton se vybrat. Kliknutím na tlačítko pro výběr vyvolá zpětné volání. V kroku 2 uvidíme, jak vám má DetailsView reakce na tento postback tím, že zobrazuje podrobnosti o vybraných produktů.
+Pojďme si projít náš pokrok v prohlížeči. Všimněte si, že v prvku GridView je uveden název a cena všech produktů společně s přepínačem select LinkButton. Kliknutím na tlačítko Vybrat dojde k zpětnému odeslání. V kroku 2 se dozvíte, jak mít prvek DetailsView reagovat na tento postback zobrazením podrobností pro vybraný produkt.
 
-[![Každý řádek produkt obsahuje vyberte odkazem (LinkButton)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image20.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image19.png)
+[![každý produktový řádek obsahuje příkaz SELECT LinkButton](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image20.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image19.png)
 
-**Obrázek 7**: Každý řádek produkt obsahuje LinkButton se vyberte ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image21.png))
+**Obrázek 7**: každý produktový řádek obsahuje příkaz SELECT LinkButton ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image21.png)
 
-## <a name="highlighting-the-selected-row"></a>Zvýraznění vybraných řádků
+## <a name="highlighting-the-selected-row"></a>Zvýraznění vybraného řádku
 
-`ProductsGrid` Má prvek GridView `SelectedRowStyle` vlastnost, která umožňuje určovat vizuální styl pro vybraný řádek. Správně použít tím lze vylepšit uživatelské prostředí tím, že další jasně zobrazuje aktuálně není vybrán který řádek prvku GridView. Pro účely tohoto kurzu můžeme mít vybraný řádek se zvýrazní se žlutým pozadím.
+`ProductsGrid` GridView má vlastnost `SelectedRowStyle`, která se dá použít k diktování vizuálního stylu pro vybraný řádek. Používá se správně, což může zlepšit uživatelské prostředí pomocí přehlednějšího zobrazení, který řádek prvku GridView je aktuálně vybrán. Pro tento kurz nechte vybraný řádek zvýrazněný žlutým pozadím.
 
-Stejně jako u našich kurzů pro starší, Pojďme snažit udržovat aesthetic související nastavení definované jako třídy šablony stylů CSS. Proto, vytvořte novou třídu šablony stylů CSS v `Styles.css` s názvem `SelectedRowStyle`.
+Stejně jako u našich předchozích kurzů se snažíme, aby se nastavení související s estetickým způsobem definovala jako třídy CSS. Proto vytvořte novou třídu CSS v `Styles.css` s názvem `SelectedRowStyle`.
 
 [!code-css[Main](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/samples/sample3.css)]
 
-Chcete-li použít tuto třídu šablony stylů CSS `SelectedRowStyle` vlastnost *všechny* úpravy prvků GridViews v našem kurzu `GridView.skin` vzhledu v `DataWebControls` motiv, který patří `SelectedRowStyle` nastavení, jak je znázorněno níže:
+Chcete-li tuto třídu šablony stylů CSS použít pro vlastnost `SelectedRowStyle` *všech* prvků GridView v naší sérii kurzů, upravte `GridView.skin` Skin v motivu `DataWebControls` tak, aby zahrnoval `SelectedRowStyle` nastavení, jak je znázorněno níže:
 
 [!code-aspx[Main](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/samples/sample4.aspx)]
 
-Uveďte vybraný řádek prvku GridView teď zvýrazní se žlutým pozadím.
+S tímto sčítáním je teď vybraný řádek GridView zvýrazněný žlutou barvou pozadí.
 
-[![Přizpůsobení vzhledu vybraný řádek pomocí vlastnosti SelectedRowStyle prvku GridView.](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image23.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image22.png)
+[![přizpůsobit vzhled vybraného řádku pomocí vlastnosti SelectedRowStyle prvku GridView.](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image23.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image22.png)
 
-**Obrázek 8**: Přizpůsobení pomocí vzhled vybraný řádek prvku GridView `SelectedRowStyle` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image24.png))
+**Obrázek 8**: přizpůsobení vzhledu vybraného řádku pomocí vlastnosti `SelectedRowStyle` prvku GridView ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image24.png))
 
-## <a name="step-2-displaying-the-selected-products-details-in-a-detailsview"></a>Krok 2: Zobrazení podrobností o vybraný produkt v DetailsView
+## <a name="step-2-displaying-the-selected-products-details-in-a-detailsview"></a>Krok 2: zobrazení podrobností vybraného produktu v ovládacím prvku DetailsView
 
-S `ProductsGrid` dokončení ovládacího prvku GridView, vše, co už jen zbývá pro přidání prvku DetailsView, který se zobrazí informace o konkrétní vybranému produktu. Přidání ovládacího prvku DetailsView nad prvku GridView a vytvoření nového prvku ObjectDataSource s názvem `ProductDetailsDataSource`. Protože chceme, aby tento prvku DetailsView. Chcete-li zobrazit konkrétní informace o vybraný produkt, nakonfigurujte `ProductDetailsDataSource` používat `ProductsBLL` třídy `GetProductByProductID(productID)` metoda.
+Když je dokončeno `ProductsGrid` GridView, vše zůstává pro přidání prvku DetailsView, který zobrazuje informace o vybraném produktu. Do prvku GridView přidejte ovládací prvek DetailsView a vytvořte nový prvek ObjectDataSource s názvem `ProductDetailsDataSource`. Vzhledem k tomu, že chceme, aby tento prvek DetailsView zobrazoval konkrétní informace o vybraném produktu, nakonfigurujte `ProductDetailsDataSource` pro použití `GetProductByProductID(productID)` metody `ProductsBLL` třídy.
 
-[![Volání metody třídy ProductsBLL GetProductByProductID(productID)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image26.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image25.png)
+[![vyvolat metodu GetProductByProductID (productID) třídy ProductsBLL](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image26.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image25.png)
 
-**Obrázek 9**: Vyvolat `ProductsBLL` třídy `GetProductByProductID(productID)` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image27.png))
+**Obrázek 9**: vyvolání metody `GetProductByProductID(productID)` `ProductsBLL` třídy ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image27.png))
 
-Máte *`productID`* hodnoty získané z ovládacího prvku GridView `SelectedValue` vlastnost. Jak jsme probírali dříve, prvku GridView `SelectedValue` vlastnost vrací hodnotu pro vybraný řádek klíče první data. Proto je nutné, který prvku GridView `DataKeyNames` je nastavena na `ProductID`tak, aby vybraný řádek `ProductID` je vrácena hodnota `SelectedValue`.
+Hodnota parametru *`productID`* získaná z vlastnosti `SelectedValue` ovládacího prvku GridView. Jak bylo popsáno dříve, vlastnost `SelectedValue` prvku GridView vrátí první hodnotu datového klíče pro vybraný řádek. Proto je nutné, aby vlastnost `DataKeyNames` prvku GridView byla nastavena na hodnotu `ProductID`, aby byla hodnota `ProductID` vybraného řádku vrácena `SelectedValue`.
 
-[![Nastavte parametr productID k vlastnosti SelectedValue prvku GridView](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image29.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image28.png)
+[![nastavte parametr productID na vlastnost SelectedValue prvku GridView.](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image29.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image28.png)
 
-**Obrázek 10**: Nastavte *`productID`* parametr prvku GridView `SelectedValue` vlastnosti ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image30.png))
+**Obrázek 10**: nastavte parametr *`productID`* na vlastnost prvku GridView `SelectedValue` ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image30.png)
 
-Jednou `productDetailsDataSource` ObjectDataSource byla správně nakonfigurovaná a vázán na ovládacím prvku DetailsView, tento kurz je dokončeno! Při první návštěvě stránky není vybrán žádný řádek, takže v prvku GridView `SelectedValue` vrátí vlastnost `Nothing`. Vzhledem k tomu, že nejsou žádné produkty s `NULL` `ProductID` hodnotu, jsou vráceny žádné záznamy `GetProductByProductID(productID)` metodu, což znamená, že se nezobrazí ovládacím prvku DetailsView (viz obrázek 11). Po kliknutí na tlačítko pro výběr řádku prvku GridView, vyplývá zpětné volání a aktualizují ovládacím prvku DetailsView. V tuto chvíli prvku GridView `SelectedValue` vrátí vlastnost `ProductID` vybraného řádku `GetProductByProductID(productID)` metoda vrátí hodnotu `ProductsDataTable` s informacemi o tento konkrétní produkt a ovládacím prvku DetailsView. obsahuje tyto podrobnosti (viz obrázek 12).
+Po správném nakonfigurování ovládacího prvku `productDetailsDataSource` ObjectDataSource a jeho svázání s ovládacím prvkem DetailsView je tento kurz dokončený. Při prvním navštívení stránky není vybrán žádný řádek, takže vlastnost `SelectedValue` prvku GridView vrátí `Nothing`. Vzhledem k tomu, že neexistují žádné produkty s hodnotou `NULL` `ProductID`, nejsou vráceny žádné záznamy pomocí metody `GetProductByProductID(productID)`, což znamená, že prvek DetailsView není zobrazen (viz obrázek 11). Po kliknutí na tlačítko pro výběr řádku prvku GridView dojde k postbacku a ovládací prvek DetailsView se aktualizuje. Tentokrát `SelectedValue` vlastnost prvku GridView vrátí `ProductID` vybraného řádku, vrátí metoda `GetProductByProductID(productID)` `ProductsDataTable` informace o tomto konkrétním produktu a prvek DetailsView zobrazí tyto podrobnosti (viz obrázek 12).
 
-[![Když se objeví první navštívili, pouze prvku GridView.](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image32.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image31.png)
+[![při prvním navštívení se zobrazí pouze prvek GridView.](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image32.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image31.png)
 
-**Obrázek 11**: Když uživatel poprvé, zobrazí se pouze prvku GridView ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image33.png))
+**Obrázek 11**: při prvním navštívení se zobrazí pouze prvek GridView ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image33.png)
 
-[![Při výběru řádku, se zobrazí podrobnosti o produktu](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image35.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image34.png)
+[![při výběru řádku se zobrazí podrobnosti o produktu.](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image35.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image34.png)
 
-**Obrázek 12**: Při výběru řádku, se zobrazí podrobnosti produktu ([kliknutím ji zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image36.png))
+**Obrázek 12**: po výběru řádku se zobrazí podrobnosti o produktu ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image36.png)).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-V této a předchozích tří kurzů zaznamenali jsme řadu technik pro zobrazení záznamů master/detail sestav. V tomto kurzu, který jsme se zaměřili na použití volitelných GridView budou umístěné hlavní záznamy a DetailsView zobrazíte podrobnosti o vybrané hlavního záznamu na stejné stránce. V předchozích kurzech jsme se podívali na tom, jak zobrazit hlavních/podrobných sestav pomocí DropDownLists a zobrazení předlohy záznamy v jedné webové stránky a podrobných záznamů na jiném.
+V tomto a předchozích třech kurzech jsme viděli řadu postupů pro zobrazení hlavních a podrobných sestav. V tomto kurzu jsme prozkoumali použití selektivního prvku GridView pro vytvoření hlavních záznamů a prvku DetailsView k zobrazení podrobností o vybraném hlavním záznamu na stejné stránce. V předchozích kurzech jsme se podívali na postup zobrazení sestav hlavních a podrobností pomocí ovládacích prvků DropDownList a zobrazení hlavních záznamů na jedné webové stránce a podrobností záznamů na jiném.
 
-V tomto kurzu končí naše zkoumání záznamů master/detail sestavy. Spouští se k dalšímu kurzu jsme zobrazí za přibližně naše průzkum vlastní formátování pomocí ovládacího prvku GridView, DetailsView a FormView. Uvidíme, jak přizpůsobit vzhled tyto ovládací prvky založené na data vázaná k nim, jak slouží ke shrnutí dat v zápatí prvku GridView a tom, jak pomocí šablon můžete získat vyšší stupeň kontroly nad rozložení.
+V tomto kurzu se uzavírá naše zkoumání hlavních a podrobných sestav. Počínaje dalším kurzem zahájíme náš průzkum přizpůsobeného formátování pomocí prvku GridView, DetailsView a FormView. Ukážeme, jak přizpůsobit vzhled těchto ovládacích prvků na základě dat, která jsou s nimi svázána, jak shrnout data v zápatí prvku GridView a jak použít šablony k získání větší úrovně kontroly nad rozložením.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí kontrolor pro účely tohoto kurzu byla Hilton Giesenow. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontrolor pro tento kurz byl Hilton Giesenow. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](master-detail-filtering-across-two-pages-vb.md)

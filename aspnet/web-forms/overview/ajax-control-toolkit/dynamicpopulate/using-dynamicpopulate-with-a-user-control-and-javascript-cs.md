@@ -1,74 +1,74 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-cs
-title: Použití ovládacího prvku DynamicPopulate s uživatelského ovládacího prvku a JavaScriptem (C#) | Dokumentace Microsoftu
+title: Použití ovládacího prvku DynamicPopulate s uživatelským ovládacím prvkem a JavaScriptem (C#) | Microsoft Docs
 author: wenz
-description: ASP.NET AJAX Control Toolkit ovládacího prvku DynamicPopulate volání webové služby (nebo metodu stránky) a vyplní výsledné hodnoty do cílového ovládacího prvku na t...
+description: Ovládací prvek ovládacího prvku DynamicPopulate v ASP.NET AJAX Control Toolkit volá webovou službu (nebo metodu stránky) a vyplní výslednou hodnotu do cílového ovládacího prvku na t...
 ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 38ac8250-8854-444c-b9ab-8998faa41c5a
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 387cad748428249273cf9708b794dd8864cf982f
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: a0e6d04a5f62ab558aceb8302d94d3bf2dc8a39f
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65125053"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74599161"
 ---
 # <a name="using-dynamicpopulate-with-a-user-control-and-javascript-c"></a>Použití ovládacího prvku DynamicPopulate s uživatelským ovládacím prvkem a JavaScriptem (C#)
 
-by [Christian Wenz](https://github.com/wenz)
+od [Christian Wenz](https://github.com/wenz)
 
-[Stáhněte si kód](http://download.microsoft.com/download/d/8/f/d8f2f6f9-1b7c-46ad-9252-e1fc81bdea3e/dynamicpopulate2.cs.zip) nebo [stahovat PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/dynamicpopulate2CS.pdf)
+[Stažení kódu](https://download.microsoft.com/download/d/8/f/d8f2f6f9-1b7c-46ad-9252-e1fc81bdea3e/dynamicpopulate2.cs.zip) nebo [stažení PDF](https://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/dynamicpopulate2CS.pdf)
 
-> DynamicPopulate ovládacího prvku ASP.NET AJAX Control Toolkit volání webové služby (nebo metodu stránky) a zkopíruje výslednou hodnotu na cílový ovládací prvek na stránce bez aktualizace stránky. Je také možné aktivovat naplnění psát vlastní kód JavaScript na straně klienta. Zvláštní pozornost má ale mají být provedeny, když zařízení extender se nachází v uživatelském ovládacím prvku.
+> Ovládací prvek ovládacího prvku DynamicPopulate v ASP.NET AJAX Control Toolkit volá webovou službu (nebo metodu stránky) a vyplní výslednou hodnotu do cílového ovládacího prvku na stránce bez obnovení stránky. Je také možné aktivovat plnění pomocí vlastního kódu JavaScriptu na straně klienta. Zvláštní péči je však nutné vzít v případě, že se v uživatelském ovládacím prvku nachází zařízení.
 
 ## <a name="overview"></a>Přehled
 
-`DynamicPopulate` Ovládacího prvku ASP.NET AJAX Control Toolkit volání webové služby (nebo metodu stránky) a zkopíruje výslednou hodnotu na cílový ovládací prvek na stránce bez aktualizace stránky. Je také možné aktivovat naplnění psát vlastní kód JavaScript na straně klienta. Zvláštní pozornost má ale mají být provedeny, když zařízení extender se nachází v uživatelském ovládacím prvku.
+Ovládací prvek `DynamicPopulate` v ASP.NET AJAX Control Toolkit volá webovou službu (nebo metodu stránky) a vyplní výslednou hodnotu do cílového ovládacího prvku na stránce bez obnovení stránky. Je také možné aktivovat plnění pomocí vlastního kódu JavaScriptu na straně klienta. Zvláštní péči je však nutné vzít v případě, že se v uživatelském ovládacím prvku nachází zařízení.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Uvedené
 
-Za prvé, třeba webové služby ASP.NET, která implementuje metodu, které jsou volány `DynamicPopulateExtender` ovládacího prvku. Webová služba implementuje metodu `getDate()` , která očekává jeden argument typu řetězec, volá `contextKey`, protože `DynamicPopulate` ovládací prvek odešle jednu část informací o kontextu se každé volání webové služby. Zde je kód (soubor `DynamicPopulate.cs.asmx`) načte aktuální datum v jednom ze tří formátů:
+Nejprve potřebujete webovou službu ASP.NET, která implementuje metodu volanou ovládacím prvkem `DynamicPopulateExtender`. Webová služba implementuje metodu `getDate()`, která očekává jeden argument typu String, nazvaný `contextKey`, protože ovládací prvek `DynamicPopulate` odesílá jednu část informací o kontextu s každým voláním webové služby. Zde je kód (soubor `DynamicPopulate.cs.asmx`), který načte aktuální datum v jednom ze tří formátů:
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-cs/samples/sample1.aspx)]
 
-V dalším kroku vytvoření nového uživatelského ovládacího prvku (`.ascx` souboru), označen následující deklarace v jeho první řádek:
+V dalším kroku vytvořte nový uživatelský ovládací prvek (`.ascx` soubor) označený následující deklarací v prvním řádku:
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-cs/samples/sample2.aspx)]
 
-A &lt; `label` &gt; element se použije k zobrazení dat pocházejících ze serveru.
+&lt;`label`&gt; prvek bude použit k zobrazení dat přicházejících ze serveru.
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-cs/samples/sample3.aspx)]
 
-V souboru uživatelského ovládacího prvku, jsme také pomocí přepínačů tři, každý z nich představuje jednu ze tří možných datum formátů podporovaných webovou službu. Když uživatel klikne na jednom z přepínačů, prohlížeč provede kód jazyka JavaScript, který vypadá takto:
+V souboru uživatelského ovládacího prvku budeme používat tři přepínače, přičemž každý z nich představuje jeden ze tří možných formátů data, které webová služba podporuje. Když uživatel klikne na jeden z přepínačů, prohlížeč spustí kód JavaScriptu, který vypadá takto:
 
 [!code-powershell[Main](using-dynamicpopulate-with-a-user-control-and-javascript-cs/samples/sample4.ps1)]
 
-Tento kód přistupuje k `DynamicPopulateExtender` (Nedělejte si starosti o neobvyklé ID ale to se budeme dále) a aktivuje dynamické naplnění daty. V rámci aktuální přepínač `this.value` odkazuje na jeho hodnotu, která je `format1`, `format2` nebo `format3` přesně co metodu webové očekává.
+Tento kód přistupuje k `DynamicPopulateExtender` (nedělejte si starosti s neobvyklým ID, bude popsaný později) a aktivuje dynamické naplnění dat. V kontextu aktuálního přepínače `this.value` odkazuje na jeho hodnotu, která je `format1`, `format2` nebo `format3` přesně to, co Webová metoda očekává.
 
-Jediné, co chybí v prvku uživatel zatím je `DynamicPopulateExtender` ovládací prvek, který odkazuje přepínačů k webové službě.
+V uživatelském ovládacím prvku již chybí jediná věc `DynamicPopulateExtender` ovládací prvek, který propojuje přepínače s webovou službou.
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-cs/samples/sample5.aspx)]
 
-Může znovu nezapomeňte strangeová ID používané v ovládacím prvku: `mcd1$myDate` místo `myDate`. Dříve, kód jazyka JavaScript používaný `mcd1_dpe1` přístup `DynamicPopulateExtender` místo `dpe1`. Tato strategie vytváření názvů je zvláštní požadavek při použití `DynamicPopulateExtender` v rámci uživatelského ovládacího prvku. Kromě toho budete muset vložit uživatelského ovládacího prvku určitým způsobem, aby to fungovalo. Vytvoření nové stránky technologie ASP.NET a zaregistrujte předponu značky uživatelského ovládacího prvku, který jste právě implementovali:
+Znovu si můžete všimnout nezvyklého ID použitého v ovládacím prvku: `mcd1$myDate` místo `myDate`. Dříve se kód jazyka JavaScript použil `mcd1_dpe1` pro přístup k `DynamicPopulateExtender` namísto `dpe1`. Tato strategie pojmenovávání je zvláštní požadavek při použití `DynamicPopulateExtender` v rámci uživatelského ovládacího prvku. Kromě toho je nutné vložit uživatelský ovládací prvek tak, aby všechno fungoval. Vytvořte novou stránku ASP.NET a zaregistrujte předponu značky pro uživatelský ovládací prvek, který jste právě implementovali:
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-cs/samples/sample6.aspx)]
 
-Pak musíte uvést technologie ASP.NET AJAX `ScriptManager` ovládací prvek na nové stránce:
+Potom do nové stránky přidejte ovládací prvek ASP.NET AJAX `ScriptManager`:
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-cs/samples/sample7.aspx)]
 
-Nakonec přidejte uživatelský ovládací prvek na stránce. Budete muset nastavit jeho `ID` atribut (a `runat="server"`, samozřejmě), ale budete muset nastavit na konkrétní název: `mcd1` vzhledem k tomu, že toto je předpona používaná pro přístup k ní pomocí jazyka JavaScript v rámci uživatelského ovládacího prvku.
+Nakonec přidejte uživatelský ovládací prvek na stránku. Je nutné nastavit jeho atribut `ID` (a `runat="server"`, samozřejmě), ale musíte ho také nastavit na konkrétní název: `mcd1`, protože se jedná o předponu použitou v uživatelském ovládacím prvku pro přístup pomocí JavaScriptu.
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-cs/samples/sample8.aspx)]
 
-A to je všechno! Na stránce se chová podle očekávání: Uživatel klikne na jednom z přepínačů, ovládací prvek v sadě nástrojů volat webovou službu a zobrazí aktuální datum v požadovaném formátu.
+A je to! Stránka se chová podle očekávání: uživatel klikne na jeden z přepínačů, ovládací prvek v sadě nástrojů volá webovou službu a zobrazí aktuální datum v požadovaném formátu.
 
-[![Přepínací tlačítka jsou umístěny do uživatelského ovládacího prvku](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image2.png)](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image1.png)
+[![, že se přepínače nacházejí v uživatelském ovládacím prvku](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image2.png)](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image1.png)
 
-Přepínací tlačítka jsou umístěny do uživatelského ovládacího prvku ([kliknutím ji zobrazíte obrázek v plné velikosti](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image3.png))
+Přepínače se nacházejí v uživatelském ovládacím prvku ([kliknutím zobrazíte obrázek v plné velikosti).](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image3.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](dynamically-populating-a-control-using-javascript-code-cs.md)
-> [další](dynamically-populating-a-control-vb.md)
+> [Další](dynamically-populating-a-control-vb.md)

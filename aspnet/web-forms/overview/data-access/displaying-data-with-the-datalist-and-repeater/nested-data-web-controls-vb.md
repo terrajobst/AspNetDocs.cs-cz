@@ -1,165 +1,165 @@
 ---
 uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-vb
-title: Vnořené dat webové ovládací prvky (VB) | Dokumentace Microsoftu
+title: Webové ovládací prvky vnořených dat (VB) | Microsoft Docs
 author: rick-anderson
-description: V tomto kurzu se podíváme na tom, jak používat Repeateru vnořit do jiného opakovače. V příkladech se ukazují, jak naplnit obě d vnitřní Repeater...
+description: V tomto kurzu se naučíme, jak použít opakování vnořené uvnitř jiného opakovače. V příkladech je znázorněno, jak naplnit vnitřní opakovač d...
 ms.author: riande
 ms.date: 09/13/2006
 ms.assetid: 8b7fcf7b-722b-498d-a4e4-7c93701e0c95
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b4eb90aec60767e80e90f4cb315440da27e208db
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: c3c62ce4293498d3b325031ac9817f8935b183b2
+ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108331"
+ms.lasthandoff: 11/28/2019
+ms.locfileid: "74629635"
 ---
 # <a name="nested-data-web-controls-vb"></a>Webové ovládací prvky vnořených dat (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Stáhněte si ukázkovou aplikaci](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_32_VB.exe) nebo [stahovat PDF](nested-data-web-controls-vb/_static/datatutorial32vb1.pdf)
+[Stáhnout ukázkovou aplikaci](https://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_32_VB.exe) nebo [Stáhnout PDF](nested-data-web-controls-vb/_static/datatutorial32vb1.pdf)
 
-> V tomto kurzu se podíváme na tom, jak používat Repeateru vnořit do jiného opakovače. V příkladech se ukazují, jak naplnit vnitřní Repeater deklarativně i prostřednictvím kódu programu.
+> V tomto kurzu se naučíme, jak použít opakování vnořené uvnitř jiného opakovače. V příkladech je znázorněno, jak naplnit vnitřní opakovač deklarativně i programově.
 
 ## <a name="introduction"></a>Úvod
 
-Kromě statický kód HTML a datové vazby syntaxe šablony mohou také obsahovat webové ovládací prvky a uživatelských ovládacích prvků. Tyto ovládací prvky webového může mít své vlastnosti přiřazena pomocí syntaxe deklarativní, vázání dat, nebo je možné programově přistupovat v obslužné rutině události na straně serveru.
+Kromě statických syntaxí HTML a vázání dat mohou šablony také obsahovat webové ovládací prvky a uživatelské ovládací prvky. Tyto webové ovládací prvky mohou mít své vlastnosti přiřazené prostřednictvím deklarativní, datové vazby nebo mohou být k dispozici programově v rámci příslušných obslužných rutin událostí na straně serveru.
 
-S využitím vkládání ovládacích prvků v rámci šablony služby, je možné přizpůsobit vzhled vzhled a kvalitní ovládání a vylepšené při. Například v [použití vlastností TemplateField v ovládacím prvku GridView](../custom-formatting/using-templatefields-in-the-gridview-control-vb.md) kurzu jsme viděli, jak přizpůsobit zobrazení GridView s přidáním ovládacího prvku kalendáře v TemplateField zobrazíte zaměstnanec s přijetím datum; ve [přidání Validačních ovládacích prvků pro úpravy a vložení rozhraní](../editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md) a [přizpůsobení rozhraní pro úpravu dat](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb.md) kurzy, jsme viděli přizpůsobení, úpravy a vložení rozhraní tak, že přidáte ověření ovládací prvky, textových polí, DropDownLists a jiných ovládacích prvků.
+Vložením ovládacích prvků v rámci šablony je možné přizpůsobit a zlepšit vzhled a činnost koncového uživatele na portálu. Například v tématu [použití templatefields v kurzu ovládacího prvku GridView](../custom-formatting/using-templatefields-in-the-gridview-control-vb.md) jsme viděli, jak přizpůsobit zobrazení prvku GridView s přidáním ovládacího prvku kalendáře ve třídě TemplateField k zobrazení data nástupu zaměstnance; v [přidávání ovládacích prvků ověřování do rozhraní pro úpravy a vkládání](../editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md) a [přizpůsobení](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb.md) kurzů pro rozhraní úprav dat jsme viděli, jak přizpůsobit rozhraní pro úpravy a vkládání přidáním ovládacích prvků ověřování, textových polí, DropDownList a dalších webových ovládacích prvků.
 
-Šablony mohou obsahovat také další data webové ovládací prvky. To znamená můžeme nechat prvku DataList, který obsahuje jiné prvku DataList (nebo Repeater nebo GridView nebo prvku DetailsView a tak dále) v rámci jeho šablony. Výzvy se toto rozhraní je svázán příslušná data na vnitřní data webový ovládací prvek. Nejsou k dispozici od deklarativních možností, která pomocí prvku ObjectDataSource do programové těch několik různých přístupů.
+Šablony mohou obsahovat také další webové ovládací prvky dat. To znamená, že v rámci svých šablon můžeme mít prvek DataList, který obsahuje další prvky DataList (nebo Repeater, GridView, DetailsView atd.). Výzva s takovým rozhraním je svázána s odpovídajícími daty webového ovládacího prvku pro vnitřní data. K dispozici je několik různých přístupů, od deklarativních možností použití prvku ObjectDataSource až po programové aplikace.
 
-V tomto kurzu se podíváme na tom, jak používat Repeateru vnořit do jiného opakovače. Vnější Repeater bude obsahovat položku pro každou kategorii v databázi, kategorie s název a popis zobrazení. Každá položka kategorie s vnitřní Repeater se zobrazí informace pro jednotlivé produkty, které patří do této kategorie (viz obrázek 1) v seznamu s odrážkami. Našich příkladů se ukazují, jak naplnit vnitřní Repeater deklarativně i prostřednictvím kódu programu.
+V tomto kurzu se naučíme, jak použít opakování vnořené uvnitř jiného opakovače. Vnější opakovač bude obsahovat položku pro každou kategorii v databázi a zobrazí název kategorie s popisem. U každé položky kategorie s vnitřním opakovačem se zobrazí informace pro každý produkt patřící do této kategorie (viz obrázek 1) v seznamu s odrážkami. Naše příklady ilustrují způsob naplnění vnitřního opakovače deklarativně i programově.
 
-[![Každou kategorii, společně s jeho produkty jsou uvedené.](nested-data-web-controls-vb/_static/image2.png)](nested-data-web-controls-vb/_static/image1.png)
+[![jednotlivé kategorie spolu s jejími produkty, jsou uvedeny](nested-data-web-controls-vb/_static/image2.png)](nested-data-web-controls-vb/_static/image1.png)
 
-**Obrázek 1**: Každou kategorii, společně s jeho produkty jsou uvedené ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-data-web-controls-vb/_static/image3.png))
+**Obrázek 1**: v seznamu jsou uvedeny všechny kategorie spolu s jeho produkty ([kliknutím zobrazíte obrázek v plné velikosti](nested-data-web-controls-vb/_static/image3.png)).
 
-## <a name="step-1-creating-the-category-listing"></a>Krok 1: Vytvoření seznamu Kategorie
+## <a name="step-1-creating-the-category-listing"></a>Krok 1: vytvoření seznamu kategorií
 
-Při vytváření stránky, která používá vnořené webových ovládacích prvcích dat, mi užitečné návrhu, vytváření a testování ovládacího prvku webové nejkrajnější dat nejprve bez i byste se museli starat o vnitřní vnořené ovládací prvek. Proto umožní s začněte tím, že provede kroky potřebnými k přidání Repeateru na stránce, která se zobrazuje název a popis pro každou kategorii.
+Při vytváření stránky, která používá webové ovládací prvky vnořených dat, je vhodné nejprve navrhnout, vytvořit a otestovat webový ovládací prvek nejvzdálenějšího data, aniž by se musely obávat vnitřní vnořené ovládací prvky. Proto začněte Projděte kroky potřebnými k přidání opakovače na stránku, která obsahuje seznam názvů a popisů pro každou kategorii.
 
-Začněte otevřením `NestedControls.aspx` stránku `DataListRepeaterBasics` složky a přidat na stránku nastavení ovládacím prvkem Repeater jeho `ID` vlastnost `CategoryList`. Z opakovače s inteligentním, můžete vytvořit nového prvku ObjectDataSource s názvem `CategoriesDataSource`.
+Začněte tím, že otevřete stránku `NestedControls.aspx` ve složce `DataListRepeaterBasics` a na stránku přidáte ovládací prvek Repeater a nastavíte jeho vlastnost `ID` na `CategoryList`. Z inteligentní značky Repeater vyberte, chcete-li vytvořit nový prvek ObjectDataSource s názvem `CategoriesDataSource`.
 
-[![Název nové CategoriesDataSource prvku ObjectDataSource](nested-data-web-controls-vb/_static/image5.png)](nested-data-web-controls-vb/_static/image4.png)
+[![název nového prvku ObjectDataSource CategoriesDataSource](nested-data-web-controls-vb/_static/image5.png)](nested-data-web-controls-vb/_static/image4.png)
 
-**Obrázek 2**: Název nového prvku ObjectDataSource `CategoriesDataSource` ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-data-web-controls-vb/_static/image6.png))
+**Obrázek 2**: pojmenování nové `CategoriesDataSource` ObjectDataSource ([kliknutím zobrazíte obrázek v plné velikosti](nested-data-web-controls-vb/_static/image6.png))
 
-Nakonfigurujte prvku ObjectDataSource tak, aby načítá data z `CategoriesBLL` třída s `GetCategories` metody.
+Nastavte prvek ObjectDataSource tak, aby přečetl svá data z `CategoriesBLL` třídy s `GetCategories` metody.
 
-[![Konfigurace ObjectDataSource metody GetCategories CategoriesBLL třída s](nested-data-web-controls-vb/_static/image8.png)](nested-data-web-controls-vb/_static/image7.png)
+[![nakonfigurovat prvek ObjectDataSource na použití metody CategoriesBLL třídy s GetCategories](nested-data-web-controls-vb/_static/image8.png)](nested-data-web-controls-vb/_static/image7.png)
 
-**Obrázek 3**: Konfigurace ObjectDataSource k použití `CategoriesBLL` třída s `GetCategories` – metoda ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-data-web-controls-vb/_static/image9.png))
+**Obrázek 3**: Konfigurace prvku ObjectDataSource pro použití `GetCategories` metody `CategoriesBLL` třídy s ([kliknutím zobrazíte obrázek v plné velikosti](nested-data-web-controls-vb/_static/image9.png))
 
-Zadat šablonu opakovače s obsahu musíme přejít do zobrazení zdroje a deklarativní syntaxe lze zadat ručně. Přidat `ItemTemplate` , který zobrazuje kategorii s názvem v `<h4>` elementu a popis kategorie s v element odstavce (`<p>`). Kromě toho vám umožňují s oddělte každou kategorii vodorovná čára (`<hr>`). Po provedení těchto změn vaše stránka by měla obsahovat deklarativní syntaxe pro prvek Repeater a prvek ObjectDataSource, který je podobný následujícímu:
+Chcete-li určit obsah šablony opakování s, musíme přejít do zobrazení zdroje a ručně zadat deklarativní syntaxi. Přidejte `ItemTemplate`, který zobrazuje název kategorie v elementu `<h4>` a Popis kategorie s v prvku odstavce (`<p>`). Jednotlivé kategorie se navíc oddělují vodorovným pravidlem (`<hr>`). Po provedení těchto změn by měla stránka obsahovat deklarativní syntaxi pro Repeater a prvek ObjectDataSource, který je podobný následujícímu:
 
 [!code-aspx[Main](nested-data-web-controls-vb/samples/sample1.aspx)]
 
-Obrázek 4 ukazuje náš postup při prohlížení prostřednictvím prohlížeče.
+Obrázek 4 ukazuje náš průběh při prohlížení v prohlížeči.
 
-[![Každá kategorie s název a popis je uveden, oddělené vodorovná čára](nested-data-web-controls-vb/_static/image11.png)](nested-data-web-controls-vb/_static/image10.png)
+[![se v seznamu zobrazí všechny kategorie s názvem a popis, oddělené vodorovným pravidlem.](nested-data-web-controls-vb/_static/image11.png)](nested-data-web-controls-vb/_static/image10.png)
 
-**Obrázek 4**: Každá kategorie s název a popis je uveden, oddělené vodorovná čára ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-data-web-controls-vb/_static/image12.png))
+**Obrázek 4**: seznam všech kategorií s názvem a popisem jsou uvedeny a odděleny vodorovným pravidlem ([kliknutím zobrazíte obrázek v plné velikosti).](nested-data-web-controls-vb/_static/image12.png)
 
-## <a name="step-2-adding-the-nested-product-repeater"></a>Krok 2: Přidání Repeater vnořené produktu
+## <a name="step-2-adding-the-nested-product-repeater"></a>Krok 2: Přidání vnořeného opakovače produktu
 
-Kategorii úplný výpis naše dalším krokem je přidání Repeater na `CategoryList` s `ItemTemplate` , která zobrazí informace o těchto produktů, které patří do příslušné kategorie. Existuje mnoho způsobů, načteme data pro tento vnitřní Repeater, z nichž dva se podíváme za chvíli. Teď umožňují s stačí vytvořit Repeater produkty v rámci `CategoryList` opakovače s `ItemTemplate`. Konkrétně umožní s Repeater zobrazení každý produkt v seznamu s odrážkami s každým položky seznamu včetně produkt s názvem a cenu produktů.
+Po dokončení seznamu kategorií je dalším úkolem přidání opakovače do `ItemTemplate` `CategoryList` s, které zobrazí informace o těchto produktech patřící do příslušné kategorie. K dispozici je několik způsobů, jak získat data pro tento vnitřní opakovač, z nichž dvakrát prozkoumáme. Prozatím teď stačí vytvořit produkty v rámci `ItemTemplate``CategoryList` Repeater. V případě, že má produkt opakovat, musí mít každý produkt v seznamu s odrážkami všechny položky seznamu, včetně názvu a ceny produktu.
 
-Chcete-li vytvořit tento Repeater budeme muset ručně zadat vnitřní opakovače s deklarativní syntaxe a do šablony `CategoryList` s `ItemTemplate`. Přidejte následující kód v rámci `CategoryList` opakovače s `ItemTemplate`:
+Aby bylo možné vytvořit tohoto opakovače, musíme do `ItemTemplate``CategoryList` s zadat deklarativní syntax a šablony s vnitřním opakováním. Do `ItemTemplate``CategoryList` Repeater přidejte následující kód:
 
 [!code-aspx[Main](nested-data-web-controls-vb/samples/sample2.aspx)]
 
-## <a name="step-3-binding-the-category-specific-products-to-the-productsbycategorylist-repeater"></a>Krok 3: Vazba na ProductsByCategoryList Repeater produkty podle kategorií
+## <a name="step-3-binding-the-category-specific-products-to-the-productsbycategorylist-repeater"></a>Krok 3: vytvoření vazby produktů specifických pro kategorii k ProductsByCategoryList Repeater
 
-Pokud jste v tomto okamžiku naleznete na stránce prostřednictvím prohlížeče, obrazovce budou vypadat stejně jako obrázek 4 protože jsme ve ještě pro všechna data svázat opakovače. Existuje několik způsobů, že jsme vzít záznamy produkt a svázat ho s Opakovači některé efektivnější než jiné. Hlavní těžkostí zpátky prochází vhodné produkty pro zadané kategorie.
+Pokud v tomto okamžiku navštívíte stránku v prohlížeči, vaše obrazovka bude vypadat stejně jako na obrázku 4, protože jsme zatím navázali všechna data na Repeater. K dispozici je několik způsobů, jak můžeme přizpůsobovat příslušné záznamy produktů a navazovat je na Repeater, což je ještě efektivnější než jiné. Hlavní výzva se tady dostává zpátky o příslušné produkty zadané kategorie.
 
-Data k vytvoření vazby na vnitřní ovládací prvek Repeater buď přístupné deklarativně, prostřednictvím ObjectDataSource v `CategoryList` opakovače s `ItemTemplate`, nebo prostřednictvím kódu programu, ze stránky ASP.NET stránky s kódem na pozadí. Podobně, tato data mohou být vázány na vnitřní Repeater buď deklarativně - prostřednictvím vnitřní opakovače s `DataSourceID` vlastnost nebo prostřednictvím datové vazby deklarativní syntaxe, nebo prostřednictvím kódu programu pomocí odkazu na vnitřní Repeater v `CategoryList` opakovače s `ItemDataBound` obslužná rutina události, programové nastavení jeho `DataSource` vlastnosti a volání jeho `DataBind()` metoda. Umožní s prozkoumejte každou z těchto přístupů.
+Data, která lze navazovat na vnitřní ovládací prvek Repeater, lze buď přistupovat deklarativně, prostřednictvím prvku ObjectDataSource v `ItemTemplate``CategoryList` Repeater s, nebo programově ze stránky s kódem na pozadí stránky ASP.NET. Podobně tato data mohou být svázána s vnitřním opakovačem buď deklarativně prostřednictvím vlastnosti vnitřní Repeater s `DataSourceID`, nebo prostřednictvím deklarativní syntaxe datových vazeb nebo programově odkazováním na vnitřní opakovač v obslužné rutině události `CategoryList` opakovače s `ItemDataBound`, programově nastavením jeho vlastnosti `DataSource` a voláním metody `DataBind()`. Pojďme si prozkoumat každý z těchto přístupů.
 
-## <a name="accessing-the-data-declaratively-with-an-objectdatasource-control-and-theitemdataboundevent-handler"></a>Přístup k datům pomocí deklarace s ovládacím prvkem ObjectDataSource a`ItemDataBound`obslužné rutiny události
+## <a name="accessing-the-data-declaratively-with-an-objectdatasource-control-and-theitemdataboundevent-handler"></a>Deklarativní přístup k datům pomocí ovládacího prvku ObjectDataSource a obslužné rutiny události`ItemDataBound`
 
-Protože jsme použít ve ObjectDataSource výrazně v celé této sérii kurzů se nejvíce přirozenou volbou pro přístup k datům pro tento příklad je se toho držet ovládacím prvkem ObjectDataSource. `ProductsBLL` Třída nemá `GetProductsByCategoryID(categoryID)` metodu, která vrací informace o těchto produktů, které patří do zadané *`categoryID`*. Proto jsme můžete přidat prvku ObjectDataSource k `CategoryList` opakovače s `ItemTemplate` a nakonfigurujte ho pro přístup k jeho datům z této metody třídy s.
+Vzhledem k tomu, že jsme v rámci této série kurzů rozsáhle používali ObjectDataSource, je pro přístup k datům v tomto příkladu nejpřirozenější výběr prvku ObjectDataSource. Třída `ProductsBLL` má `GetProductsByCategoryID(categoryID)` metodu, která vrací informace o těchto produktech, které patří do zadaného *`categoryID`* . Proto můžeme přidat prvek ObjectDataSource do `CategoryList` Repeater `ItemTemplate` a nakonfigurovat ho tak, aby měl přístup k datům z této metody třídy s.
 
-Bohužel jeho šablonám se dá upravit v okně návrhu, je potřeba ručně přidat deklarativní syntaxe pro tento ovládací prvek ObjectDataSource povolit t kódu opakovače. Následující syntaxe zobrazuje `CategoryList` opakovače s `ItemTemplate` po přidání tohoto nového prvku ObjectDataSource (`ProductsByCategoryDataSource`):
+Omlouváme se, ale neumožňuje, aby se šablony upravovaly prostřednictvím zobrazení Návrh, takže musíme přidat deklarativní syntaxi pro tento ovládací prvek ObjectDataSource ručně. Následující syntaxe zobrazuje `CategoryList` Repeater `ItemTemplate` po přidání tohoto nového prvku ObjectDataSource (`ProductsByCategoryDataSource`):
 
 [!code-aspx[Main](nested-data-web-controls-vb/samples/sample3.aspx)]
 
-Při použití prvku ObjectDataSource přístup musíme nastavit `ProductsByCategoryList` opakovače s `DataSourceID` vlastnost `ID` z ObjectDataSource (`ProductsByCategoryDataSource`). Také, Všimněte si, že má naše ObjectDataSource `<asp:Parameter>` prvek, který určuje *`categoryID`* hodnotu, která se předají do `GetProductsByCategoryID(categoryID)` metoda. Ale jak jsme tuto hodnotu zadat? V ideálním případě d budeme moct stačí nastavit `DefaultValue` vlastnost `<asp:Parameter>` element pomocí syntaxe pro vázání dat, například:
+Při použití přístupu ObjectDataSource potřebujeme nastavit vlastnost `ProductsByCategoryList` Repeater s `DataSourceID` na `ID` prvku ObjectDataSource (`ProductsByCategoryDataSource`). Všimněte si také, že náš prvek ObjectDataSource má `<asp:Parameter>` element, který určuje hodnotu *`categoryID`* , která bude předána metodě `GetProductsByCategoryID(categoryID)`. Ale jak tuto hodnotu specifikovat? V ideálním případě je možné pouze nastavit vlastnost `DefaultValue` elementu `<asp:Parameter>` pomocí syntaxe DataBinding, například takto:
 
 [!code-aspx[Main](nested-data-web-controls-vb/samples/sample4.aspx)]
 
-Bohužel syntaxe vázání dat je platná pouze v ovládacích prvcích, které mají `DataBinding` událostí. `Parameter` Třída nemá takových, a proto výše uvedené syntaxi je neplatný a výsledkem bude chyba za běhu.
+Syntaxe datové vazby bohužel je platná pouze v ovládacích prvcích, které mají událost `DataBinding`. Třída `Parameter` postrádá takovou událost, a proto je výše uvedená syntaxe neplatná a výsledkem bude chyba za běhu.
 
-Nastavení této hodnoty, musíme vytvořit obslužná rutina události `CategoryList` opakovače s `ItemDataBound` událostí. Vzpomeňte si, že `ItemDataBound` události spustí jednou pro každou položku vázán na opakovače. Proto se pokaždé, když tato událost aktivuje pro vnější Repeater My je můžeme přiřadit aktuální `CategoryID` hodnota, která se `ProductsByCategoryDataSource` ObjectDataSource s `CategoryID` parametru.
+Pro nastavení této hodnoty musíme vytvořit obslužnou rutinu události pro událost `ItemDataBound` `CategoryList` Repeater. Odvolání, že se událost `ItemDataBound` aktivuje jednou pro každou položku, která je vázaná na Repeater. Proto každé události, která je aktivována pro vnějšího opakovače, můžeme přiřadit aktuální `CategoryID` hodnotu k parametru `ProductsByCategoryDataSource` ObjectDataSource s `CategoryID`.
 
-Vytvořte obslužnou rutinu události pro `CategoryList` opakovače s `ItemDataBound` události s následujícím kódem:
+Vytvořte obslužnou rutinu události pro událost `ItemDataBound` `CategoryList` Repeater s následujícím kódem:
 
 [!code-vb[Main](nested-data-web-controls-vb/samples/sample5.vb)]
 
-Tato obslužná rutina události začíná tím, že zajišťuje, že jsme k práci s datovým položky místo položky záhlaví, zápatí nebo oddělovač. V dalším kroku budeme odkazovat na skutečné `CategoriesRow` instanci, která se právě byla svázána se aktuální `RepeaterItem`. Nakonec jsme odkazovat na prvek ObjectDataSource v `ItemTemplate` a přiřaďte jeho `CategoryID` pro parametr `CategoryID` aktuálního `RepeaterItem`.
+Tato obslužná rutina události se spustí tím, že zajistí, že budeme znovu pracovat s datovou položkou, a ne s hlavičkou, zápatím nebo položkou oddělovače. Dále odkazujeme na skutečnou instanci `CategoriesRow`, která se právě váže na aktuální `RepeaterItem`. Nakonec odkazujeme na prvek ObjectDataSource v `ItemTemplate` a přiřadíte jeho hodnotu parametru `CategoryID` do `CategoryID` aktuální `RepeaterItem`.
 
-Pomocí této obslužné rutiny události `ProductsByCategoryList` Repeater v každém `RepeaterItem` je vázán na tyto produkty v `RepeaterItem` s kategorií. Obrázek 5 ukazuje snímek obrazovky výsledný výstup.
+V rámci této obslužné rutiny události je `ProductsByCategoryList` opakování v každém `RepeaterItem` vázáno na tyto produkty v kategorii `RepeaterItem` s. Obrázek 5 znázorňuje snímek obrazovky s výsledným výstupem.
 
-[![Vnější Repeater uvádí každou kategorii; Vnitřní jeden seznam produktů pro tuto kategorii](nested-data-web-controls-vb/_static/image14.png)](nested-data-web-controls-vb/_static/image13.png)
+[![vnějšího opakovače seznam všech kategorií; Vnitřní seznam obsahuje produkty pro danou kategorii.](nested-data-web-controls-vb/_static/image14.png)](nested-data-web-controls-vb/_static/image13.png)
 
-**Obrázek 5**: Vnější Repeater uvádí každou kategorii; Jeden seznamy vnitřní produkty dané kategorie ([kliknutím ji zobrazíte obrázek v plné velikosti](nested-data-web-controls-vb/_static/image15.png))
+**Obrázek 5**: vnější opakovač obsahuje všechny kategorie; Vnitřní seznam produktů pro danou kategorii ([kliknutím zobrazíte obrázek v plné velikosti](nested-data-web-controls-vb/_static/image15.png))
 
-## <a name="accessing-the-products-by-category-data-programmatically"></a>Přístup k produktů podle kategorie dat prostřednictvím kódu programu
+## <a name="accessing-the-products-by-category-data-programmatically"></a>Programový přístup k produktům podle dat kategorie
 
-Namísto použití ObjectDataSource načíst produkty pro aktuální kategorii, můžeme vytvořit metodu v třídě použití modelu code-behind stránky s naší technologie ASP.NET (nebo `App_Code` složky nebo v samostatném projektu knihovny tříd), která vrací příslušné sady produkty, když předaný `CategoryID`. Představte si, že jsme měli metody ve třídě použití modelu code-behind stránky s naší technologie ASP.NET a, že se s názvem `GetProductsInCategory(categoryID)`. Pomocí této metody na místě jsme může svázat s produkty pro aktuální kategorii vnitřní Repeater pomocí deklarativní syntaxe:
+Namísto použití prvku ObjectDataSource k načtení produktů pro aktuální kategorii můžeme vytvořit metodu v naší třídě ASP.NET stránky s kódem na pozadí (nebo ve složce `App_Code` nebo v samostatném projektu knihovny tříd), která vrací příslušnou sadu produktů při předání v `CategoryID`. Představte si, že tato metoda byla v naší třídě ASP.NET stránky s kódem na pozadí a že byla pojmenována `GetProductsInCategory(categoryID)`. V rámci této metody jsme mohli navazovat produkty pro aktuální kategorii na vnitřní opakovač pomocí následující deklarativní syntaxe:
 
 [!code-aspx[Main](nested-data-web-controls-vb/samples/sample6.aspx)]
 
-Opakovače s `DataSource` vlastnost používá syntaxi datové vazby k označení, že svá data pochází z `GetProductsInCategory(categoryID)` metody. Protože `Eval("CategoryID")` vrátí hodnotu typu `Object`, jsme objekt přetypujte na `Integer` před předáním do `GetProductsInCategory(categoryID)` metoda. Všimněte si, že `CategoryID` používaná tady prostřednictvím vázání dat je syntaxe `CategoryID` v *vnější* Repeater (`CategoryList`), že s vázána na záznamy ve `Categories` tabulky. Proto víme, že `CategoryID` nemůže být databáze `NULL` hodnotu, což je důvod, proč jsme slepě přetypovat `Eval` metody bez kontroly, jestli můžeme znovu řešení `DBNull`.
+Vlastnost Repeater s `DataSource` používá syntaxi DataBinding k označení, že data pocházejí z metody `GetProductsInCategory(categoryID)`. Vzhledem k tomu, že `Eval("CategoryID")` vrátí hodnotu typu `Object`, přetypování objektu na `Integer` před předáním do metody `GetProductsInCategory(categoryID)`. Všimněte si, že `CategoryID`, ke kterému se přistupoval prostřednictvím syntaxe datové vazby, je `CategoryID` *vnějšího* opakovače (`CategoryList`), který je svázán s záznamy v tabulce `Categories`. Proto víme, že `CategoryID` nemůže být `NULL` hodnota databáze, což je důvod, proč můžeme metodu `Eval` bez kontroly vrátit, aniž byste museli provádět kontrolu `DBNull`.
 
-S tímto přístupem, je nutné vytvořit `GetProductsInCategory(categoryID)` metoda a jeho načtení příslušné sady produktů vzhledem zadané *`categoryID`*. Můžeme to udělat tak, že jednoduše vrací `ProductsDataTable` vrácených `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metody. Umožní s vytvořit `GetProductsInCategory(categoryID)` metody ve třídě použití modelu code-behind pro naše `NestedControls.aspx` stránky. Proveďte pomocí následujícího kódu:
+V rámci tohoto přístupu potřebujeme vytvořit metodu `GetProductsInCategory(categoryID)` a nechat si načíst příslušnou sadu produktů, které mají poskytnutou *`categoryID`* . Můžeme to provést pouhým vrácením `ProductsDataTable` vráceného metodou `ProductsBLL` třídy s `GetProductsByCategoryID(categoryID)`. Pro naši `NestedControls.aspx` stránku vytvoříme metodu `GetProductsInCategory(categoryID)` v třídě Code-na pozadí. Použijte následující kód:
 
 [!code-vb[Main](nested-data-web-controls-vb/samples/sample7.vb)]
 
-Tato metoda jednoduše vytvoří instanci `ProductsBLL` metodu a vrátí výsledky `GetProductsByCategoryID(categoryID)` metoda. Všimněte si, že metoda musí být označen `Public` nebo `Protected`; Pokud metoda je označena jako `Private`, nebude dostupný z deklarativním označení stránky s ASP.NET.
+Tato metoda jednoduše vytvoří instanci metody `ProductsBLL` a vrátí výsledky metody `GetProductsByCategoryID(categoryID)`. Všimněte si, že metoda musí být označena `Public` nebo `Protected`; Pokud je metoda označená jako `Private`, nebude přístupná z deklarativních značek stránky ASP.NET.
 
-Po provedení těchto změn pro použití této nové techniky, věnujte chvíli zobrazení stránky prostřednictvím prohlížeče. Výstup by měl být stejný jako výstup, při použití ObjectDataSource a `ItemDataBound` přístup obslužné rutiny události (vrátit zpět na obrázku 5 zobrazíte snímku obrazovky).
+Po provedení těchto změn pro použití této nové techniky si chvíli počkejte, než se stránka zobrazí v prohlížeči. Výstup by měl být stejný jako výstup při použití přístupu k obslužné rutině události ObjectDataSource a `ItemDataBound` (Chcete-li zobrazit snímek obrazovky, přejděte zpět na obrázek 5).
 
 > [!NOTE]
-> To může jevit jako práce pro práci, chcete-li vytvořit `GetProductsInCategory(categoryID)` metody ve třídě použití modelu code-behind stránky s ASP.NET. Koneckonců, tato metoda jednoduše vytvoří instanci `ProductsBLL` třídy a vrátí výsledky z jeho `GetProductsByCategoryID(categoryID)` metoda. Případně proč bezpečná není právě tuto metodu volat přímo z Syntaxe datové vazby v popisu vnitřní Opakovači jako: `DataSource='<%# ProductsBLL.GetProductsByCategoryID(CType(Eval("CategoryID"), Integer)) %>'`? I když tato syntaxe nebude fungovat s naší aktuální implementace `ProductsBLL` třídy (od `GetProductsByCategoryID(categoryID)` metoda je metoda instance), můžete změnit tak, `ProductsBLL` chcete zahrnout statický `GetProductsByCategoryID(categoryID)` metoda nebo mají třídy zahrnují statickou `Instance()` metoda vrátí novou instanci třídy `ProductsBLL` třídy.
+> Může se zdát, že busywork vytvořit metodu `GetProductsInCategory(categoryID)` ve třídě ASP.NET stránky s kódem na pozadí. Po tom Tato metoda jednoduše vytvoří instanci třídy `ProductsBLL` a vrátí výsledky její `GetProductsByCategoryID(categoryID)` metody. Proč nestačí volat tuto metodu přímo z syntaxe datové vazby v interním Opakovaču, například: `DataSource='<%# ProductsBLL.GetProductsByCategoryID(CType(Eval("CategoryID"), Integer)) %>'`? I když tato syntaxe nebude fungovat s naší aktuální implementací třídy `ProductsBLL` (vzhledem k tomu, že metoda `GetProductsByCategoryID(categoryID)` je metoda instance), můžete upravit `ProductsBLL`, aby zahrnovaly statickou `GetProductsByCategoryID(categoryID)` metodu nebo aby třída zahrnovala statickou `Instance()` metodu pro návrat nové instance třídy `ProductsBLL`.
 
-Zatímco tyto změny by eliminuje nutnost `GetProductsInCategory(categoryID)` metoda v třídě modelu code-behind stránky s ASP.NET, metoda třídy modelu code-behind nám poskytuje větší flexibilitu v práci s daty, načíst, protože za chvíli uvidíme.
+I když by tyto úpravy vyloučily nutnost `GetProductsInCategory(categoryID)` metoda ve třídě ASP.NET Page s kódem na pozadí, metoda třídy kódu na pozadí poskytuje větší flexibilitu při práci s načtenými daty, jak uvidíme krátce.
 
-## <a name="retrieving-all-of-the-product-information-at-once"></a>Načíst všechny informace o produktu najednou
+## <a name="retrieving-all-of-the-product-information-at-once"></a>Načítání všech informací o produktu najednou
 
-Dvě techniky zkontrolují jsme ve prověřit, získejte tyto produkty pro aktuální kategorii tím, že zavoláte na `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` – metoda (prvního postupu nebyla tak prostřednictvím ObjectDataSource, druhé až `GetProductsInCategory(categoryID)` metoda ve použití modelu Code-behind třídy). Pokaždé, když tato metoda vyvolána, vrstvy obchodní logiky volání do vrstvy přístupu k datům, který dotazuje databázi s příkazem SQL, který vrátí řádky z `Products` tabulky, jejichž `CategoryID` pole odpovídá zadaných vstupních parametrů.
+Dva zkontrolují postupy, které jsme prozkoumali, převedli jsme tyto produkty pro aktuální kategorii tím, že provedeme volání metody `ProductsBLL` třídy s `GetProductsByCategoryID(categoryID)` (první přístup byl tak, že by byl druhý prostřednictvím metody `GetProductsInCategory(categoryID)` v třídě Code-na pozadí). Pokaždé, když je tato metoda vyvolána, vrstva obchodní logiky zavolá do vrstvy přístupu k datům, která dotazuje databázi pomocí příkazu jazyka SQL, který vrací řádky z `Products` tabulky, jejichž `CategoryID` pole odpovídá zadanému vstupnímu parametru.
 
-Zadaný *N* kategorií v systému tohoto přístupu propojí *N* + 1 volání jednoho databázového dotazu databáze zobrazíte všechny kategorie a potom *N* volání k získání produktů specifické pro každou kategorii. Nemůžeme však načíst všechna potřebná data v jednom volání volání pouze dvě databáze a mějte všechny kategorie a druhou pro získání všech produktů. Jakmile budeme mít všechny produkty, můžeme filtrovat tyto produkty tedy pouze produkty odpovídající aktuální `CategoryID` jsou vázány na tuto kategorii s vnitřní opakovače.
+V rámci těchto *N* kategorií v systému tento přístup sítě *n* + 1 volá do databáze databázový dotaz, aby získal všechny kategorie a potom *N* volání pro získání produktů specifických pro jednotlivé kategorie. Můžeme ale načíst všechna potřebná data v jediné dvou databázích voláním jednoho volání, abyste získali všechny kategorie a další pro získání všech produktů. Jakmile máme všechny produkty, můžeme tyto produkty filtrovat, aby byly na tuto kategorii s vnitřním opakovačem vázány jenom produkty odpovídající aktuálnímu `CategoryID`.
 
-Tuto funkci zajistí potřebujeme jen drobné změny provést `GetProductsInCategory(categoryID)` metody ve třídě použití modelu code-behind stránky s naší technologie ASP.NET. Místo slepě vrací výsledky `ProductsBLL` třída s `GetProductsByCategoryID(categoryID)` metoda, můžeme místo toho nejdřív Přejít *všechny* produktů (pokud jsou nebyly již použity) a vrátíte se pouze filtrované zobrazení produkty podle předaným `CategoryID`.
+Abychom tuto funkci mohli poskytnout, musíme v naší třídě ASP.NET stránky s kódem na pozadí udělat mírněu úpravu metody `GetProductsInCategory(categoryID)`. Místo toho, abyste nemuseli vracet výsledky `ProductsBLL` třídy s `GetProductsByCategoryID(categoryID)`, můžeme místo toho nejdřív přistupovat ke *všem* produktům (Pokud k nim ještě nedošlo) a pak vracet jenom filtrované zobrazení produktů na základě předaných `CategoryID`.
 
 [!code-vb[Main](nested-data-web-controls-vb/samples/sample8.vb)]
 
-Poznámka: Přidání proměnné úrovni stránky `allProducts`. To obsahuje informace o všech produktů a naplní při prvním `GetProductsInCategory(categoryID)` vyvolání metody. Až se ujistíte, `allProducts` objekt byly vytvořeny a naplněny, metoda výsledky filtruje na objekt DataTable s tak, aby pouze řádky, jejichž `CategoryID` odpovídá zadanému `CategoryID` jsou k dispozici. Tento přístup snižuje počet, kolikrát databázi přistupuje z *N* + 1 až dvě.
+Všimněte si přidání proměnné na úrovni stránky `allProducts`. Tím se uchovávají informace o všech produktech a vyplní se při prvním vyvolání metody `GetProductsInCategory(categoryID)`. Po zajistěte, aby byl objekt `allProducts` vytvořen a naplněn, metoda vyfiltruje výsledky DataTable, aby byly přístupné pouze ty řádky, jejichž `CategoryID` odpovídá zadanému `CategoryID`. Tento přístup snižuje počet přístupů k databázi z *N* + 1 dolů na dvě.
 
-Toto vylepšení nezavádí vykreslované značky na stránce změny ani nemá přenést zpět méně záznamů než jiný přístup. Jednoduše snižuje počet volání do databáze.
+Toto vylepšení nezavádí žádné změny vykresleného kódu stránky ani nevrací méně záznamů než druhý přístup. Jednoduše snižuje počet volání databáze.
 
 > [!NOTE]
-> Jeden intuitivně může důvod, snížení počtu databáze by assuredly poskytnout zvýšení výkonu. To však nemusí být případ. Pokud máte velké množství produktů, jehož `CategoryID` je `NULL`, příklad poté volání `GetProducts` metoda vrátí počet produktů, které nejsou nikdy zobrazeny. Kromě toho vrácení všech produktů, které mohou být plýtvání Pokud níž zobrazují se jenom podmnožinu kategorií, které může být v případě, Pokud implementujete stránkování.
+> Jedním z nich může být intuitivní důvod, který snižuje počet přístupů k databázím, což zvyšuje výkon. To ale nemusí být případ. Pokud máte velký počet produktů, jejichž `CategoryID` je `NULL`například, pak volání metody `GetProducts` vrátí počet produktů, které nejsou nikdy zobrazeny. Kromě toho může být vrácení všech produktů wasteful, pokud znovu zobrazíte pouze podmnožinu kategorií, což může být případ, pokud jste implementovali stránkování.
 
-Jako vždy, když jde o analýzy výkonu dvě techniky, pouze surefire opatření je řízené testy přizpůsobená pro vaši aplikaci s běžné scénáře.
+Stejně jako vždy, když přichází k analýze výkonu dvou technik, je jedinou surefireou mírou spuštění řízených testů přizpůsobených pro běžné scénáře v případě použití aplikace.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-V tomto kurzu jsme viděli, jak vnořit jeden datový webový ovládací prvek v rámci druhého, konkrétně zkoumání jak vnější Repeater položku pro každou kategorii zobrazení se vnitřní Repeater výpis produktů pro každou kategorii v seznamu s odrážkami. Hlavní těžkostí při vytváření vnořených uživatelské rozhraní spočívá v přístupu k a správná data vytvoření vazby na ovládací prvek webového vnitřní data. Existuje řada různých technik k dispozici, z nichž dva jsme se zaměřili na v tomto kurzu. První přístup prověřit, používá prvku ObjectDataSource v datech vnější ovládací prvek webu s `ItemTemplate` , která byla vázaná na ovládací prvek webového vnitřních dat prostřednictvím jeho `DataSourceID` vlastnost. Druhý způsob spočívá používaná data prostřednictvím metody ve třídě s použití modelu code-behind stránky technologie ASP.NET. Tato metoda může být potom vázaný na data vnitřní ovládací prvek webu s `DataSource` vlastnosti prostřednictvím syntaxe datové vazby.
+V tomto kurzu jsme viděli, jak v rámci sebe vnořovat webové ovládací prvky pro data, konkrétně si prozkoumáte, jak má vnější opakovač Zobrazit položku pro každou kategorii s vnitřním opakovačem, který obsahuje seznam produktů pro každou kategorii v seznamu s odrážkami. Hlavní výzva při sestavování vnořeného uživatelského rozhraní je v přístupu a vázání správných dat k webovému ovládacímu prvku pro vnitřní data. K dispozici je celá řada techniků, z nichž dva jsme prozkoumali v tomto kurzu. První metoda zkoumala použití prvku ObjectDataSource v ovládacím prvku webového ovládacího prvku s vnějším daty `ItemTemplate`, který byl svázán s ovládacím prvkem pro vnitřní data prostřednictvím jeho vlastnosti `DataSourceID`. Druhá technika získala data prostřednictvím metody ve třídě ASP.NET stránky s kódem na pozadí. Tato metoda může být svázána s vlastností webového ovládacího prvku s vnitřním daty `DataSource` prostřednictvím syntaxe datové vazby.
 
-I když vnořené uživatelské rozhraní vyšetřovány v tomto kurzu použít Repeateru vnořené Repeateru, těchto postupů je možné rozšířit na jiných webových ovládacích prvcích dat. Můžete vnořovat v rámci GridView nebo GridView v rámci a v prvku DataList Repeater a tak dále.
+Přestože vložené uživatelské rozhraní v tomto kurzu použilo pro opakování vnořený argument, lze tyto techniky rozšířit na jiné webové ovládací prvky dat. Můžete vnořit Repeater do prvku GridView nebo GridView v rámci prvku DataList a tak dále.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ## <a name="about-the-author"></a>O autorovi
 
-[Scott Meisnerová](http://www.4guysfromrolla.com/ScottMitchell.shtml), Autor sedm ASP/ASP.NET knih a Zakladatel [4GuysFromRolla.com](http://www.4guysfromrolla.com), má práce s Microsoft webových technologiích od roku 1998. Scott funguje jako nezávislý konzultant, trainer a zapisovače. Jeho nejnovější knihy [ *Edice nakladatelství Sams naučit sami ASP.NET 2.0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Může být dosáhl v [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím jeho blogu, který lze nalézt v [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), autor 7 ASP/ASP. NET Books a zakladatel of [4GuysFromRolla.com](http://www.4guysfromrolla.com), pracoval s webovými technologiemi Microsoftu od 1998. Scott funguje jako nezávislý konzultant, Trainer a zapisovač. Nejnovější kniha je [*Sams naučit se ASP.NET 2,0 za 24 hodin*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Dá se získat na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) nebo prostřednictvím svého blogu, který najdete na adrese [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Speciální k
+## <a name="special-thanks-to"></a>Zvláštní díky
 
-V této sérii kurzů byl recenzován uživatelem mnoho užitečných revidující. Vedoucí revidující pro účely tohoto kurzu byly Zack Jones a Liz Shulok. Zajímat téma Moje nadcházejících článcích MSDN? Pokud ano, vyřaďte mě řádek na [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+Tato řada kurzů byla přezkoumána mnoha užitečnými kontrolory. Kontroloři vedoucích k tomuto kurzu byli Zack Novotný a Liz Shulok. Uvažujete o přezkoumání mých nadcházejících článků na webu MSDN? Pokud ano, vyřaďte mi řádek na [mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Předchozí](showing-multiple-records-per-row-with-the-datalist-control-vb.md)
