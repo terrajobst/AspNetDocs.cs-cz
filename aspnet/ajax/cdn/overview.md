@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/overview
-title: Síť pro doručování obsahu Microsoft Ajax | Dokumentace Microsoftu
+title: Content Delivery Network Microsoft AJAX | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -8,161 +8,161 @@ ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: c153dd56fea6f19a818f8785691b022c90391b71
-ms.sourcegitcommit: a256895f6160acc28d75424b8ab5d03b4e74412e
+ms.openlocfilehash: 51cb8d672139aaebd77bcdbe80bb579d4b3776aa
+ms.sourcegitcommit: 969e7db924ebad3cc0f0cb0d65d148e8b9221b9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471400"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899575"
 ---
 # <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax Content Delivery Network
 
 > [!WARNING]
-> Aplikace v produkčním prostředí, neměla by mít pevné závislosti prostředků CDN. Aplikace by měl test pro CDN asset odkazovat a záložní asset používat, pokud síť CDN není k dispozici.
+> Provozní aplikace by neměly mít u prostředků CDN nevratnou závislost. Aplikace by měly být testovány na prostředek CDN, na který se odkazuje, a použít záložní prostředek, pokud CDN není k dispozici.
 >
-> Microsoft Ajax CDN neuzavírá žádná smlouva SLA nenabízející používání Azure CDN.
+> Rozhraní Microsoft Ajax CDN nemá žádnou smlouvu SLA nad rámec použití Azure CDN.
 >
-> Použití [tento problém Githubu](https://github.com/aspnet/AspNetDocs/issues/116) k hlášení problémů s Microsoft Ajax CDN.
+> [Tento problém GitHubu](https://github.com/aspnet/AspNetDocs/issues/116) použijte k nahlášení problémů se službou Microsoft Ajax CDN.
 
 ## <a name="table-of-contents"></a>Obsah
 
-**[Přejmenovat ajax.aspnetcdn.com adresu AJAX.microsoft.com](#ajaxmicrosoftcom_renamed_to_ajaxaspnetcdncom_18)**  
-**[Visual Studio .vsdoc Support](#Visual_Studio_vsdoc_Support_19)**  
-**[Pomocí prvku ASP.NET Ajax z CDN](#Using_ASPNET_Ajax_from_the_CDN_20)**  
-**[Pomocí jQuery z CDN](#Using_jQuery_from_the_CDN_21)**  
-**[Pomocí jQuery UI z CDN](#Using_jQuery_UI_from_the_CDN_22)**  
-**[Soubory třetích stran v síti CDN](#Third-Party_Files_on_the_CDN_23)**  
+**[ajax.microsoft.com přejmenováno na ajax.aspnetcdn.com](#ajaxmicrosoftcom_renamed_to_ajaxaspnetcdncom_18)**  
+**[Podpora sady Visual Studio. vsdoc](#Visual_Studio_vsdoc_Support_19)**  
+**[Použití ASP.NET AJAX z CDN](#Using_ASPNET_Ajax_from_the_CDN_20)**  
+**[Použití jQuery z CDN](#Using_jQuery_from_the_CDN_21)**  
+**[Použití uživatelského rozhraní jQuery z CDN](#Using_jQuery_UI_from_the_CDN_22)**  
+**[Soubory třetích stran na CDN](#Third-Party_Files_on_the_CDN_23)**  
   
- [jQuery verze v síti CDN](#jQuery_Releases_on_the_CDN_0)  
- [jQuery verze migrace v síti CDN](#jQuery_Migrate_Releases_on_the_CDN_1)  
- [jQuery verze uživatelského rozhraní v síti CDN](#jQuery_UI_Releases_on_the_CDN_2)  
- [jQuery verze ověření v síti CDN](#jQuery_Validation_Releases_on_the_CDN_3)  
- [jQuery Mobile verze v síti CDN](#jQuery_Mobile_Releases_on_the_CDN_4)  
- [jQuery šablony vydané verze v síti CDN](#jQuery_Templates_Releases_on_the_CDN_5)  
- [jQuery cyklu vydání v síti CDN](#jQuery_Cycle_Releases_on_the_CDN_6)  
- [jQuery DataTables vydané verze v síti CDN](#jQuery_DataTables_Releases_on_the_CDN_7)  
- [Verze Modernizr v síti CDN](#Modernizr_Releases_on_the_CDN_8)  
- [Verze JSHint v síti CDN](#JSHint_Releases_on_the_CDN_10)  
- [Verze knockout v síti CDN](#Knockout_Releases_on_the_CDN_11)  
- [Globalizace vydané verze v síti CDN](#Globalize_Releases_on_the_CDN_12)  
- [Reakce vydané verze v síti CDN](#Respond_Releases_on_the_CDN_13)  
- [Spuštění vydané verze v síti CDN](#Bootstrap_Releases_on_the_CDN_14)  
- [Spuštění TouchCarousel vydané verze v síti CDN](#BootstrapTouchCarousel_Releases_on_the_CDN_18)  
- [Verze hammer.js v síti CDN](#Hammerjs_Releases_on_the_CDN_19)  
- [Webové formuláře ASP.NET a Ajax vydané verze v síti CDN](#ASPNET_Web_Forms_and_Ajax_Releases_on_the_CDN_15)  
- [Verze technologie ASP.NET MVC v síti CDN](#ASPNET_MVC_Releases_on_the_CDN_16)  
- [Verze funkce SignalR technologie ASP.NET ve službě CDN](#ASPNET_SignalR_Releases_on_the_CDN_17)
+ [Verze jQuery na CDN](#jQuery_Releases_on_the_CDN_0)  
+ [jQuery migrace verzí na CDN](#jQuery_Migrate_Releases_on_the_CDN_1)  
+ [Vydání uživatelského rozhraní jQuery v CDN](#jQuery_UI_Releases_on_the_CDN_2)  
+ [Vydání ověření jQuery na CDN](#jQuery_Validation_Releases_on_the_CDN_3)  
+ [jQuery Mobile releases na CDN](#jQuery_Mobile_Releases_on_the_CDN_4)  
+ [Vydání šablon jQuery v CDN](#jQuery_Templates_Releases_on_the_CDN_5)  
+ [Vydávání cyklů jQuery v CDN](#jQuery_Cycle_Releases_on_the_CDN_6)  
+ [vydávané datatabulka jQuery v CDN](#jQuery_DataTables_Releases_on_the_CDN_7)  
+ [Modernizr vydaných verzí v CDN](#Modernizr_Releases_on_the_CDN_8)  
+ [JSHint vydaných verzí v CDN](#JSHint_Releases_on_the_CDN_10)  
+ [Vyseknutí verzí v CDN](#Knockout_Releases_on_the_CDN_11)  
+ [Globalizace verzí v CDN](#Globalize_Releases_on_the_CDN_12)  
+ [Odpověď verze v CDN](#Respond_Releases_on_the_CDN_13)  
+ [Bootstrap vydaných verzí na CDN](#Bootstrap_Releases_on_the_CDN_14)  
+ [Zavedení TouchCarousel vydání na CDN](#BootstrapTouchCarousel_Releases_on_the_CDN_18)  
+ [Vydání nástroje kladiv. js v síti CDN](#Hammerjs_Releases_on_the_CDN_19)  
+ [ASP.NET webové formuláře a verze AJAX v CDN](#ASPNET_Web_Forms_and_Ajax_Releases_on_the_CDN_15)  
+ [Verze ASP.NET MVC na CDN](#ASPNET_MVC_Releases_on_the_CDN_16)  
+ [ASP.NET signalizace v CDN](#ASPNET_SignalR_Releases_on_the_CDN_17)
 
-Microsoft Ajax Content Delivery Network (CDN) hostuje knihovny JavaScript oblíbených třetích stran, jako je jQuery a umožňuje snadno přidat je do vašich webových aplikací. Například můžete začít používat jQuery, která je hostována na této sítě CDN. jednoduše tak, že přidáte &lt;skript&gt; značky na stránku, která odkazuje na ajax.aspnetcdn.com.
+Technologie Microsoft Ajax Content Delivery Network (CDN) hostuje oblíbené knihovny JavaScript třetích stran, jako je jQuery, a umožňuje je snadno přidat do svých webových aplikací. Můžete například začít používat jQuery, který je hostován v tomto CDN jednoduše přidáním &lt;skriptu&gt; značku na stránku, která odkazuje na ajax.aspnetcdn.com.
 
-Díky využití CDN může výrazně zlepšit výkon aplikací Ajax. Obsah z CDN jsou ukládány do mezipaměti na serverech umístěných po celém světě. Kromě toho umožňuje CDN prohlížečům soubory jazyka JavaScript v mezipaměti třetích stran pro weby, které se nacházejí v různých doménách.
+Díky využití sítě CDN můžete významně zlepšit výkon aplikací AJAX. Obsah sítě CDN je uložený v mezipaměti na serverech umístěných po celém světě. CDN kromě toho umožňuje prohlížečům znovu použít soubory JavaScriptu třetích stran v mezipaměti pro weby, které se nacházejí v různých doménách.
 
-V případě, že budete muset poskytnout webové stránky s použitím Secure Sockets Layer, podporuje CDN SSL (HTTPS).
+CDN podporuje protokol SSL (HTTPS) pro případ, že potřebujete poskytovat webovou stránku pomocí SSL (Secure Sockets Layer).
 
-CDN hostitelem následující skript knihovny třetích stran, které byly odeslány a mají licenci, vlastníky těchto knihoven:
+CDN hostuje následující knihovny skriptů třetích stran, které jste nahráli, a uděluje jim oprávnění vlastníci těchto knihoven:
 
 - jQuery (www.jquery.com)
-- jQuery UI (www.jqueryui.com)
+- uživatelské rozhraní jQuery (www.jqueryui.com)
 - jQuery Mobile (www.jquerymobile.com)
-- jQuery ověření (www.jquery.com)
-- jQuery cyklu (www.malsup.com/jquery/cycle/)
-- jQuery DataTables (http://datatables.net/)
+- Ověření jQuery (www.jquery.com)
+- Cyklus jQuery (www.malsup.com/jquery/cycle/)
+- DataTables jQuery (http://datatables.net/)
 
-Microsoft Ajax CDN také zahrnuje následující knihovny, které byly odeslány společnosti Microsoft:
+Microsoft Ajax CDN také obsahuje následující knihovny, které byly nahrány Microsoftem:
 
 - ASP.NET Ajax
-- Soubory jazyka JavaScript technologie ASP.NET MVC
-- Soubory ASP.NET SignalR JavaScript
+- Soubory JavaScriptu ASP.NET MVC
+- Soubory JavaScriptu pro signál ASP.NET
 
-Společnost Microsoft nečiní nárok na vlastnictví všechny knihovny třetích stran, které jsou hostované na této sítě CDN. O autorských právech vlastníky knihoven licencují tyto knihovny pro vás. Veškerá práva, která bude pravděpodobně nutné stáhnout a použít tyto knihovny jsou udělena pouze podle vlastníků o autorských právech. Protože se nejedná knihoven Microsoftu, společnost Microsoft poskytuje žádné záruky ani licence práv duševního vlastnictví (včetně implicitní patentová práva) pro knihovny třetích stran, který je hostitelem této sítě CDN.
+Microsoft nenárokuje vlastnictví žádné knihovny třetích stran hostované v této síti CDN. Vlastníci těchto knihoven mají licenci na tyto knihovny. Všechna práva, která může být nutné stáhnout a používat tyto knihovny, jsou udělována výhradně příslušnými vlastníky autorských práv. Vzhledem k tomu, že se nejedná o knihovny Microsoftu, společnost Microsoft neposkytuje žádné záruky ani licence k duševnímu vlastnictví (včetně žádného mlčky odvozeného patentového práva) pro knihovny třetích stran hostované v této síti CDN.
 
-Pokud chcete předložit knihovny jazyka JavaScript a knihovny je součástí hlavní knihovny jazyka JavaScript (jak je uvedeno na http://trends.builtwith.com) nebo rozšíření/modulů plug-in pro tyto knihovny, které mají (a) Oblíbené; nebo (b) užitečné při použití technologie ASP.NET a obraťte se prosím na AjaxCDNSubmission@Microsoft.com.
+Pokud chcete odeslat knihovnu JavaScriptu a vaše knihovna je jedním z hlavních knihoven JavaScriptu (jak je uvedeno v http://trends.builtwith.com) nebo rozšíření/modulů plug-in pro tyto knihovny, které jsou (a) oblíbené; nebo (b) užitečné pro použití v ASP.NET, kontaktujte prosím AjaxCDNSubmission@Microsoft.com.
 
 <a id="ajaxmicrosoftcom_renamed_to_ajaxaspnetcdncom_18"></a>
 
-## <a name="ajaxmicrosoftcom-renamed-to-ajaxaspnetcdncom"></a>Přejmenovat ajax.aspnetcdn.com adresu AJAX.microsoft.com
+## <a name="ajaxmicrosoftcom-renamed-to-ajaxaspnetcdncom"></a>ajax.microsoft.com přejmenováno na ajax.aspnetcdn.com
 
-Síť CDN lze použít název domény webu microsoft.com a byla změněna na název domény aspnetcdn.com použijte. Tato změna byla provedena ke zvýšení výkonu, protože při odkazování doménu microsoft.com prohlížeči by se odesílat žádné soubory cookie z této domény sítí s každou žádostí. Přejmenováním na název domény než microsoft.com je možné zvýšit výkon podle největší 25 %. Poznamenejte si adresu ajax.microsoft.com budou i nadále fungovat, ale doporučuje se ajax.aspnetcdn.com.
+CDN, který používal název domény microsoft.com, byl změněn tak, aby používal název domény aspnetcdn.com. Tato změna byla provedena kvůli zvýšení výkonu, protože když se prohlížeč odkazuje na doménu microsoft.com, poslal by všechny soubory cookie z této domény v rámci jednotlivých požadavků. Přejmenováním na jiný název domény, než je microsoft.com výkon, se dá zvýšit o až 25%. Poznámka ajax.microsoft.com bude i nadále fungovat, ale doporučuje se ajax.aspnetcdn.com.
 
 - Starý formát: https://ajax.microsoft.com/ajax/jQuery/jquery-1.8.0.js
 - Nový formát: https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js
 
 <a id="Visual_Studio_vsdoc_Support_19"></a>
 
-## <a name="visual-studio-vsdoc-support"></a>Podpora .vsdoc sady Visual Studio
+## <a name="visual-studio-vsdoc-support"></a>Podpora sady Visual Studio. vsdoc
 
-Použití souborů .vsdoc správně za použití Visual Studia 2008 potřebujete, abyste měli jistotu, že máte aktualizaci VS 2008 SP1 nainstalovány a oprava hotfix pro vsdoc soubory. Můžete získat z tohoto umístění:
+Chcete-li v sadě Visual Studio 2008 správně používat soubory. vsdoc, musíte se ujistit, že je nainstalována sada VS 2008 SP1 a zda je nainstalována oprava hotfix pro soubory vsdoc. Můžete je získat tady:
 
-- [Stáhněte si Visual Studio 2008 SP1](https://www.microsoft.com/downloads/en/details.aspx?FamilyId=FBEE1648-7106-44A7-9649-6D9F6D58056E&amp;displaylang=en "Stáhnout Visual Studio 2008 SP1")
-- [Stažení opravy hotfix .vsdoc pro Visual Studio 2008 SP1](https://code.msdn.microsoft.com/KB958502/Release/ProjectReleases.aspx?ReleaseId=1736 "stažení opravy hotfix .vsdoc pro Visual Studio 2008 SP1")
+- [Stažení sady Visual Studio 2008 SP1](https://www.microsoft.com/downloads/en/details.aspx?FamilyId=FBEE1648-7106-44A7-9649-6D9F6D58056E&amp;displaylang=en "Stažení sady Visual Studio 2008 SP1")
+- [Stažení. vsdoc hotfix pro Visual Studio 2008 SP1](https://code.msdn.microsoft.com/KB958502/Release/ProjectReleases.aspx?ReleaseId=1736 "Stažení. vsdoc hotfix pro Visual Studio 2008 SP1")
 
-Visual Studio 2010 podporuje .vsdoc soubory bez jakékoli další opravy.
+Visual Studio 2010 podporuje soubory. vsdoc bez dalších oprav.
 
 <a id="Using_ASPNET_Ajax_from_the_CDN_20"></a>
 
-## <a name="using-aspnet-ajax-from-the-cdn"></a>Pomocí prvku ASP.NET Ajax z CDN
+## <a name="using-aspnet-ajax-from-the-cdn"></a>Použití ASP.NET AJAX z CDN
 
-Při použití technologie ASP.NET 4, můžete přesměrovat všechny požadavky technologie ASP.NET framework skriptů do CDN. Načítání skriptů z CDN místo místní webový server může výrazně zlepšit výkon veřejné weby technologie ASP.NET.
+Při použití ASP.NET 4 můžete přesměrovat všechny požadavky na skripty ASP.NET Framework do sítě CDN. Načtení skriptů z CDN místo místního webového serveru může podstatně zlepšit výkon veřejných websites ASP.NET.
 
-Použijte vlastnost ScriptManager EnableCDN přesměrovat požadavky ASP.NET framework skript do Microsoft Ajax CDN:
+Pomocí vlastnosti EnableCDN ScriptManager přesměrujte všechny požadavky skriptu ASP.NET Framework na Microsoft Ajax CDN:
 
 [!code-aspx[Main](overview/samples/sample1.aspx)]
 
 <a id="Using_jQuery_from_the_CDN_21"></a>
 
-## <a name="using-jquery-from-the-cdn"></a>Pomocí jQuery z CDN
+## <a name="using-jquery-from-the-cdn"></a>Použití jQuery z CDN
 
-Můžete použít skripty jQuery hostované ve službě CDN ve vaší webové aplikaci tak, že přidáte následující element script na stránku:
+Můžete použít skripty jQuery hostované v CDN ve vaší webové aplikaci přidáním následujícího elementu skriptu na stránku:
 
 [!code-html[Main](overview/samples/sample2.html)]
 
-CDN také obsahuje minifikovaný verzi jQuery skript, který můžete získat pomocí následujícího elementu:
+CDN obsahuje také verzi minifikovaného skriptu jQuery, kterou můžete použít v následujícím elementu:
 
 [!code-html[Main](overview/samples/sample3.html)]
 
-Pokud chcete povolit stránku pro použití náhradní lokality pro načítání jQuery z místní cesty na svůj vlastní web, pokud síť CDN se stane nedostupný, přidejte následující prvek ihned po element odkazující na CDN:
+Chcete-li, aby vaše stránka mohla být načítána z místní cesty na vašem vlastním webu v případě, že CDN není k dispozici, přidejte následující element hned za element odkazující na síť CDN:
 
 [!code-html[Main](overview/samples/sample4.html)]
 
-Následující stránka s ukázkou používá k zobrazení obsahu elementu div při kliknutí na tlačítko CDN verzi knihovny jQuery (pomocí nouzového řešení ověření pomocí místní kopie).
+Následující vzorová stránka používá verzi CDN knihovny jQuery (s Fallback pro místní kopírování) k zobrazení obsahu prvku div při kliknutí na tlačítko.
 
 [!code-html[Main](overview/samples/sample5.html)]
 
-Můžete získat další informace o jQuery a stáhněte si místní kopii jQuery návštěvou [jQuery](http://jquery.com/) webu.
+Další informace o jQuery a stažení místní kopie jQuery získáte návštěvou webu [jQuery](http://jquery.com/) .
 
 <a id="Using_jQuery_UI_from_the_CDN_22"></a>
 
-## <a name="using-jquery-ui-from-the-cdn"></a>Pomocí jQuery UI z CDN
+## <a name="using-jquery-ui-from-the-cdn"></a>Použití uživatelského rozhraní jQuery z CDN
 
-CDN také hostitelem knihovna uživatelského rozhraní jQuery. Knihovna uživatelského rozhraní jQuery obsahuje bohatou sadu pomůcek a efekty, které můžete použít ve svých aplikacích technologie ASP.NET. Například na následující stránce ukazuje, jak je možné používat jQuery UI Datepicker v kontextu aplikace webových formulářů ASP.NET zobrazíte rozevírací kalendář:
+CDN je také hostitelem knihovny uživatelského rozhraní jQuery. Knihovna uživatelského rozhraní jQuery obsahuje bohatou sadu widgetů a efektů, které můžete použít ve svých aplikacích ASP.NET. Například následující stránka ukazuje, jak lze použít uživatelské rozhraní jQuery DatePicker v kontextu aplikace webových formulářů ASP.NET pro zobrazení místního kalendáře:
 
 [!code-aspx[Main](overview/samples/sample6.aspx)]
 
-Když přesunete fokus do textového pole pomocí klávesnice, zobrazí se kalendáře:
+Když přesunete fokus na textové pole pomocí klávesnice, zobrazí se kalendář:
 
-![Překryvný kalendář s prvkem Datepicker vytvořili](overview/_static/image1.png)
+![Automaticky otevíraná okna vytvořená pomocí DatePicker](overview/_static/image1.png)
 
-Všimněte si, že musí obsahovat tři soubory z CDN ve výše uvedeném kódu:
+Všimněte si, že do výše uvedeného kódu musíte zahrnout tři soubory ze sítě CDN:
 
-- Knihovna jQuery &mdash; knihovna uživatelského rozhraní jQuery závisí na knihovny jQuery. Knihovna jQuery musíte přidat na stránku předtím, než přidáte knihovna uživatelského rozhraní jQuery.
-- Knihovna uživatelského rozhraní jQuery &mdash; knihovna uživatelského rozhraní jQuery obsahuje všechny účinky uživatelské rozhraní jQuery a widgetů, například ovládací prvek Datepicker widgetu použity na stránce výše.
-- Motiv uživatelského rozhraní jQuery &mdash; uživatelské rozhraní jQuery podporuje různé motivy. Výše uvedené stránka obsahuje odkaz na soubor šablony stylů CSS pro import motivu Redmondu.
+- Knihovna jQuery &mdash; knihovně uživatelského rozhraní jQuery závisí na knihovně jQuery. Knihovnu jQuery je nutné přidat na stránku před přidáním knihovny uživatelského rozhraní jQuery.
+- Knihovna uživatelského rozhraní jQuery &mdash; knihovna rozhraní jQuery obsahuje všechny efekty a pomůcky uživatelského rozhraní jQuery, jako je widget DatePicker použitý na stránce výše.
+- Motiv uživatelského rozhraní jQuery &mdash; uživatelské rozhraní jQuery podporuje různé motivy. Výše uvedená stránka obsahuje odkaz na soubor CSS pro import motivu Redmond.
 
-Všechny motivy uživatelské rozhraní jQuery standardní jsou hostované v síti CDN. [Tuto stránku](jquery-ui/cdnjqueryui1910.md "uživatelské rozhraní jQuery 1.8.10 ve službě Microsoft Ajax CDN") Chcete-li zobrazit miniatury pro každý motiv.
+Všechny standardní motivy uživatelského rozhraní jQuery jsou hostovány v CDN. Na [této stránce](jquery-ui/cdnjqueryui1910.md "jDotaz na uživatelské rozhraní 1.8.10 ve službě Microsoft Ajax CDN) můžete zobrazit miniatury pro každý motiv.
 
-Další informace o knihovně uživatelské rozhraní jQuery, navštivte oficiální [webu uživatelské rozhraní jQuery](http://jQueryUI.com "webu uživatelské rozhraní jQuery").
+Další informace o knihovně uživatelského rozhraní jQuery najdete na oficiálním [webu s uživatelským rozhraním jQuery](http://jQueryUI.com "Web uživatelského rozhraní jQuery").
 
 <a id="Third-Party_Files_on_the_CDN_23"></a>
 
-## <a name="third-party-files-on-the-cdn"></a>Soubory třetích stran v síti CDN
+## <a name="third-party-files-on-the-cdn"></a>Soubory třetích stran na CDN
 
-CDN je hostitelem některé z Oblíbené knihovny jazyka JavaScript třetích stran. Společnost Microsoft nečiní nárok na vlastnictví všechny knihovny třetích stran, které jsou hostované na této sítě CDN. O autorských právech vlastníky knihoven licencují tyto knihovny pro vás. Veškerá práva, která bude pravděpodobně nutné stáhnout a použít tyto knihovny jsou udělena pouze podle vlastníků o autorských právech. Protože se nejedná knihoven Microsoftu, společnost Microsoft poskytuje žádné záruky ani licence práv duševního vlastnictví (včetně implicitní patentová práva) pro knihovny třetích stran, který je hostitelem této sítě CDN.
+CDN hostuje některé z nejoblíbenějších knihoven JavaScript třetích stran. Microsoft nenárokuje vlastnictví žádné knihovny třetích stran hostované v této síti CDN. Vlastníci těchto knihoven mají licenci na tyto knihovny. Všechna práva, která může být nutné stáhnout a používat tyto knihovny, jsou udělována výhradně příslušnými vlastníky autorských práv. Vzhledem k tomu, že se nejedná o knihovny Microsoftu, společnost Microsoft neposkytuje žádné záruky ani licence k duševnímu vlastnictví (včetně žádného mlčky odvozeného patentového práva) pro knihovny třetích stran hostované v této síti CDN.
 
 <a id="jQuery_Releases_on_the_CDN_0"></a>
 
-### <a name="jquery-releases-on-the-cdn"></a>jQuery verze v síti CDN
+### <a name="jquery-releases-on-the-cdn"></a>Verze jQuery na CDN
 
-Tyto verze jQuery jsou hostované v síti CDN:
+Následující verze jQuery jsou hostovány v CDN:
 
 #### <a name="jquery-version-341"></a>jQuery verze 3.4.1
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js
@@ -232,13 +232,13 @@ Tyto verze jQuery jsou hostované v síti CDN:
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.slim.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.slim.min.map
 
-#### <a name="jquery-version-224"></a>jQuery verze 2.2.4
+#### <a name="jquery-version-224"></a>jQuery – verze 2.2.4
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.map
 
-#### <a name="jquery-version-223"></a>jQuery version 2.2.3
+#### <a name="jquery-version-223"></a>jQuery – verze 2.2.3
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.js
@@ -262,7 +262,7 @@ Tyto verze jQuery jsou hostované v síti CDN:
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.map
 
-#### <a name="jquery-version-214"></a>jQuery verzi 2.1.4
+#### <a name="jquery-version-214"></a>jQuery verze 2.1.4
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js
@@ -285,28 +285,28 @@ Tyto verze jQuery jsou hostované v síti CDN:
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.map
 
-#### <a name="jquery-version-210"></a>verze 2.1.0 jQuery
+#### <a name="jquery-version-210"></a>jQuery verze 2.1.0
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0-vsdoc.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.min.map
 
-#### <a name="jquery-version-203"></a>jQuery version 2.0.3
+#### <a name="jquery-version-203"></a>jQuery verze 2.0.3
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3-vsdoc.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.map
 
-#### <a name="jquery-version-202"></a>jQuery verze bodu 2.0.2
+#### <a name="jquery-version-202"></a>jQuery verze 2.0.2
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2-vsdoc.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2.min.map
 
-#### <a name="jquery-version-201"></a>verze jQuery 2.0.1
+#### <a name="jquery-version-201"></a>jQuery verze 2.0.1
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1.min.js
@@ -338,72 +338,72 @@ Tyto verze jQuery jsou hostované v síti CDN:
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.map
 
-#### <a name="jquery-version-1121"></a>verze jQuery 1.12.1
+#### <a name="jquery-version-1121"></a>jQuery verze 1.12.1
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.min.map
 
-#### <a name="jquery-version-1120"></a>verze jQuery 1.12.0
+#### <a name="jquery-version-1120"></a>jQuery verze 1.12.0
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.map
 
-#### <a name="jquery-version-1113"></a>verze jQuery 1.11.3
+#### <a name="jquery-version-1113"></a>jQuery verze 1.11.3
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.map
 
-#### <a name="jquery-version-1112"></a>verze jQuery 1.11.2
+#### <a name="jquery-version-1112"></a>jQuery verze 1.11.2
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.map
 
-#### <a name="jquery-version-1111"></a>verze jQuery 1.11.1
+#### <a name="jquery-version-1111"></a>jQuery verze 1.11.1
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.map
 
-#### <a name="jquery-version-1110"></a>verze jQuery 1.11.0
+#### <a name="jquery-version-1110"></a>jQuery verze 1.11.0
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0-vsdoc.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.min.map
 
-#### <a name="jquery-version-1102"></a>verze jQuery 1.10.2
+#### <a name="jquery-version-1102"></a>jQuery verze 1.10.2
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2-vsdoc.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.map
 
-#### <a name="jquery-version-1101"></a>verze jQuery 1.10.1
+#### <a name="jquery-version-1101"></a>jQuery verze 1.10.1
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1-vsdoc.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.map
 
-#### <a name="jquery-version-1100"></a>verze jQuery 1.10.0
+#### <a name="jquery-version-1100"></a>jQuery verze 1.10.0
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0-vsdoc.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.map
 
-#### <a name="jquery-version-191"></a>verze jQuery 1.9.1
+#### <a name="jquery-version-191"></a>jQuery verze 1.9.1
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1-vsdoc.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.map
 
-#### <a name="jquery-version-190"></a>verze jQuery 1.9.0
+#### <a name="jquery-version-190"></a>jQuery verze 1.9.0
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js
@@ -439,13 +439,13 @@ Tyto verze jQuery jsou hostované v síti CDN:
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js
 
-#### <a name="jquery-version-171"></a>jQuery verzi 1.7.1
+#### <a name="jquery-version-171"></a>jQuery verze 1.7.1
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1-vsdoc.js
 
-#### <a name="jquery-version-17"></a>jQuery verze 1.7
+#### <a name="jquery-version-17"></a>jQuery verze 1,7
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js
@@ -463,7 +463,7 @@ Tyto verze jQuery jsou hostované v síti CDN:
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.3.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.3-vsdoc.js
 
-#### <a name="jquery-version-162"></a>jQuery verze 1.6.2.
+#### <a name="jquery-version-162"></a>jQuery verze 1.6.2
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js
@@ -475,13 +475,13 @@ Tyto verze jQuery jsou hostované v síti CDN:
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1-vsdoc.js
 
-#### <a name="jquery-version-16"></a>jQuery verze 1.6
+#### <a name="jquery-version-16"></a>jQuery verze 1,6
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6-vsdoc.js
 
-#### <a name="jquery-version-152"></a>jQuery verze 1.5.2
+#### <a name="jquery-version-152"></a>jQuery verze 2.5.1
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2.min.js
@@ -493,7 +493,7 @@ Tyto verze jQuery jsou hostované v síti CDN:
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1-vsdoc.js
 
-#### <a name="jquery-version-15"></a>verze jQuery 1.5
+#### <a name="jquery-version-15"></a>jQuery verze 1,5
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js
@@ -511,7 +511,7 @@ Tyto verze jQuery jsou hostované v síti CDN:
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.3.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.3-vsdoc.js
 
-#### <a name="jquery-version-142"></a>verze 1.4.2 jQuery
+#### <a name="jquery-version-142"></a>jQuery verze 1.4.2
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.min.js
@@ -523,7 +523,7 @@ Tyto verze jQuery jsou hostované v síti CDN:
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.1-vsdoc.js
 
-#### <a name="jquery-version-14"></a>jQuery verze 1.4
+#### <a name="jquery-version-14"></a>jQuery verze 1,4
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.min.js
@@ -537,26 +537,26 @@ Tyto verze jQuery jsou hostované v síti CDN:
 
 <a id="jQuery_Migrate_Releases_on_the_CDN_1"></a>
 
-### <a name="jquery-migrate-releases-on-the-cdn"></a>jQuery verze migrace v síti CDN
+### <a name="jquery-migrate-releases-on-the-cdn"></a>jQuery migrace verzí na CDN
 
-Tyto verze jQuery migrací jsou hostované v síti CDN:
+Následující vydání nástroje jQuery migrace jsou hostována v síti CDN:
 
 #### <a name="jquery-migrate-version-300"></a>jQuery migrace verze 3.0.0
 
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-3.0.0.js
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-3.0.0.min.js
 
-#### <a name="jquery-migrate-version-121"></a>Migrace verze 1.2.1 jQuery
+#### <a name="jquery-migrate-version-121"></a>jQuery migrace verze 1.2.1
 
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.js
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.min.js
 
-Migrace verzi 1.2.0 jQuery
+jQuery migrace verze 1.2.0
 
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.0.js
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.0.min.js
 
-#### <a name="jquery-migrate-version-111"></a>Migrace verze 1.1.1 jQuery
+#### <a name="jquery-migrate-version-111"></a>jQuery migrace verze 1.1.1
 
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.1.js
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.1.min.js
@@ -573,77 +573,77 @@ Migrace verzi 1.2.0 jQuery
 
 <a id="jQuery_UI_Releases_on_the_CDN_2"></a>
 
-### <a name="jquery-ui-releases-on-the-cdn"></a>jQuery verze uživatelského rozhraní v síti CDN
+### <a name="jquery-ui-releases-on-the-cdn"></a>Vydání uživatelského rozhraní jQuery v CDN
 
-Tyto verze knihovny uživatelského rozhraní jQuery jsou hostované na této sítě CDN. Klikněte na každý odkaz zobrazíte skutečný seznam souborů.
+Následující verze knihovny uživatelského rozhraní jQuery jsou hostovány v této síti CDN. Kliknutím na každý odkaz zobrazíte aktuální seznam souborů.
 
-- [uživatelské rozhraní jQuery 1.12.1](jquery-ui/cdnjqueryui1121.md "uživatelské rozhraní jQuery 1.12.1 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.12.0](jquery-ui/cdnjqueryui1120.md "uživatelské rozhraní jQuery 1.12.0 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.11.4](jquery-ui/cdnjqueryui1114.md "uživatelské rozhraní jQuery 1.11.4 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.11.3](jquery-ui/cdnjqueryui1113.md "uživatelské rozhraní jQuery 1.11.3 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.11.2](jquery-ui/cdnjqueryui1112.md "uživatelské rozhraní jQuery 1.11.2 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.11.1](jquery-ui/cdnjqueryui1111.md "uživatelské rozhraní jQuery 1.11.1 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.11.0](jquery-ui/cdnjqueryui1110.md "uživatelské rozhraní jQuery 1.11.0 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.10.4](jquery-ui/cdnjqueryui1104.md "uživatelské rozhraní jQuery 1.10.4 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.10.3](jquery-ui/cdnjqueryui1103.md "uživatelské rozhraní jQuery 1.10.3 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.10.2](jquery-ui/cdnjqueryui1102.md "uživatelské rozhraní jQuery 1.10.2 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.10.1](jquery-ui/cdnjqueryui1101.md "uživatelské rozhraní jQuery 1.10.1 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.10.0](jquery-ui/cdnjqueryui1100.md "uživatelské rozhraní jQuery 1.10.0 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.9.2](jquery-ui/cdnjqueryui192.md "uživatelské rozhraní jQuery 1.9.2 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.9.1](jquery-ui/cdnjqueryui191.md "uživatelské rozhraní jQuery 1.9.1 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.9.0](jquery-ui/cdnjqueryui190.md "uživatelské rozhraní jQuery 1.9.0 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.24](jquery-ui/cdnjqueryui1824.md "uživatelské rozhraní jQuery 1.8.24 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.23](jquery-ui/cdnjqueryui1823.md "uživatelské rozhraní jQuery 1.8.23 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.22](jquery-ui/cdnjqueryui1822.md "uživatelské rozhraní jQuery 1.8.22 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.21](jquery-ui/cdnjqueryui1821.md "uživatelské rozhraní jQuery 1.8.21 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.20](jquery-ui/cdnjqueryui1820.md "uživatelské rozhraní jQuery 1.8.20 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.19](jquery-ui/cdnjqueryui1819.md "uživatelské rozhraní jQuery 1.8.19 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.18](jquery-ui/cdnjqueryui1818.md "uživatelské rozhraní jQuery 1.8.18 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.17](jquery-ui/cdnjqueryui1817.md "uživatelské rozhraní jQuery 1.8.17 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.16](jquery-ui/cdnjqueryui1816.md "uživatelské rozhraní jQuery 1.8.16 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.15](jquery-ui/cdnjqueryui1815.md "uživatelské rozhraní jQuery 1.8.15 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.14](jquery-ui/cdnjqueryui1814.md "uživatelské rozhraní jQuery 1.8.14 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.13](jquery-ui/cdnjqueryui1813.md "uživatelské rozhraní jQuery 1.8.13 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.12](jquery-ui/cdnjqueryui1812.md "uživatelské rozhraní jQuery 1.8.12 ve službě Microsoft Ajax CDN")
-- [jQuery UI 1.8.11](jquery-ui/cdnjqueryui1811.md "jQuery UI 1.8.11 on the Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.10](jquery-ui/cdnjqueryui1910.md "uživatelské rozhraní jQuery 1.8.10 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.9](jquery-ui/cdnjqueryui189.md "uživatelské rozhraní jQuery 1.8.9 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.8](jquery-ui/cdnjqueryui188.md "uživatelské rozhraní jQuery 1.8.8 ve službě Microsoft Ajax CDN")
-- [uživatelské rozhraní jQuery 1.8.7](jquery-ui/cdnjqueryui187.md "uživatelské rozhraní jQuery 1.8.7 ve službě Microsoft Ajax CDN")
-- [jQuery UI 1.8.6](jquery-ui/cdnjqueryui186.md "jQuery UI 1.8.6 ve službě Microsoft Ajax CDN")
-- [jQuery UI 1.8.5](jquery-ui/cdnjqueryui185.md "jQuery UI 1.8.5")
+- [1.12.1 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1121.md "Uživatelské rozhraní jQuery 1.12.1 ve službě Microsoft Ajax CDN")
+- [1.12.0 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1120.md "Uživatelské rozhraní jQuery 1.12.0 ve službě Microsoft Ajax CDN")
+- [1.11.4 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1114.md "Uživatelské rozhraní jQuery 1.11.4 ve službě Microsoft Ajax CDN")
+- [1.11.3 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1113.md "Uživatelské rozhraní jQuery 1.11.3 ve službě Microsoft Ajax CDN")
+- [1.11.2 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1112.md "Uživatelské rozhraní jQuery 1.11.2 ve službě Microsoft Ajax CDN")
+- [1.11.1 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1111.md "Uživatelské rozhraní jQuery 1.11.1 ve službě Microsoft Ajax CDN")
+- [1.11.0 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1110.md "Uživatelské rozhraní jQuery 1.11.0 ve službě Microsoft Ajax CDN")
+- [1.10.4 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1104.md "Uživatelské rozhraní jQuery 1.10.4 ve službě Microsoft Ajax CDN")
+- [1.10.3 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1103.md "Uživatelské rozhraní jQuery 1.10.3 ve službě Microsoft Ajax CDN")
+- [1.10.2 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1102.md "Uživatelské rozhraní jQuery 1.10.2 ve službě Microsoft Ajax CDN")
+- [1.10.1 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1101.md "Uživatelské rozhraní jQuery 1.10.1 ve službě Microsoft Ajax CDN")
+- [1.10.0 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1100.md "Uživatelské rozhraní jQuery 1.10.0 ve službě Microsoft Ajax CDN")
+- [1.9.2 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui192.md "Uživatelské rozhraní jQuery 1.9.2 ve službě Microsoft Ajax CDN")
+- [1.9.1 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui191.md "Uživatelské rozhraní jQuery 1.9.1 ve službě Microsoft Ajax CDN")
+- [1.9.0 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui190.md "Uživatelské rozhraní jQuery 1.9.0 ve službě Microsoft Ajax CDN")
+- [1.8.24 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1824.md "Uživatelské rozhraní jQuery 1.8.24 ve službě Microsoft Ajax CDN")
+- [1.8.23 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1823.md "Uživatelské rozhraní jQuery 1.8.23 ve službě Microsoft Ajax CDN")
+- [1.8.22 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1822.md "Uživatelské rozhraní jQuery 1.8.22 ve službě Microsoft Ajax CDN")
+- [1.8.21 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1821.md "Uživatelské rozhraní jQuery 1.8.21 ve službě Microsoft Ajax CDN")
+- [1.8.20 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1820.md "Uživatelské rozhraní jQuery 1.8.20 ve službě Microsoft Ajax CDN")
+- [1.8.19 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1819.md "Uživatelské rozhraní jQuery 1.8.19 ve službě Microsoft Ajax CDN")
+- [1.8.18 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1818.md "Uživatelské rozhraní jQuery 1.8.18 ve službě Microsoft Ajax CDN")
+- [1.8.17 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1817.md "Uživatelské rozhraní jQuery 1.8.17 ve službě Microsoft Ajax CDN")
+- [1.8.16 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1816.md "Uživatelské rozhraní jQuery 1.8.16 ve službě Microsoft Ajax CDN")
+- [1.8.15 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1815.md "Uživatelské rozhraní jQuery 1.8.15 ve službě Microsoft Ajax CDN")
+- [1.8.14 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1814.md "Uživatelské rozhraní jQuery 1.8.14 ve službě Microsoft Ajax CDN")
+- [1.8.13 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1813.md "Uživatelské rozhraní jQuery 1.8.13 ve službě Microsoft Ajax CDN")
+- [1.8.12 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1812.md "Uživatelské rozhraní jQuery 1.8.12 ve službě Microsoft Ajax CDN")
+- [1.8.11 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1811.md "Uživatelské rozhraní jQuery 1.8.11 ve službě Microsoft Ajax CDN")
+- [1.8.10 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui1910.md "Uživatelské rozhraní jQuery 1.8.10 ve službě Microsoft Ajax CDN")
+- [1.8.9 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui189.md "Uživatelské rozhraní jQuery 1.8.9 ve službě Microsoft Ajax CDN")
+- [1.8.8 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui188.md "Uživatelské rozhraní jQuery 1.8.8 ve službě Microsoft Ajax CDN")
+- [1.8.7 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui187.md "Uživatelské rozhraní jQuery 1.8.7 ve službě Microsoft Ajax CDN")
+- [1.8.6 uživatelského rozhraní jQuery](jquery-ui/cdnjqueryui186.md "Uživatelské rozhraní jQuery 1.8.6 ve službě Microsoft Ajax CDN")
+- [Uživatelské rozhraní jQuery 1.8.5](jquery-ui/cdnjqueryui185.md "Uživatelské rozhraní jQuery 1.8.5")
 
 <a id="jQuery_Validation_Releases_on_the_CDN_3"></a>
 
-### <a name="jquery-validation-releases-on-the-cdn"></a>jQuery verze ověření v síti CDN
+### <a name="jquery-validation-releases-on-the-cdn"></a>Vydání ověření jQuery na CDN
 
-Tyto verze knihovny jQuery ověření jsou hostované na této sítě CDN. Klikněte na každý odkaz zobrazíte skutečný seznam souborů.
+Následující verze knihovny ověření jQuery jsou hostovány v této síti CDN. Kliknutím na každý odkaz zobrazíte aktuální seznam souborů.
 
-- [jQuery Validate 1.19.1](jquery-validate/cdnjqueryvalidate1191.md "jQuery Validation 1.19.1")
-- [jQuery ověřit 1.19.0](jquery-validate/cdnjqueryvalidate1190.md "jQuery ověření 1.19.0")
-- [jQuery ověřit 1.17.0](jquery-validate/cdnjqueryvalidate1170.md "jQuery ověření 1.17.0")
-- [jQuery ověřit 1.16.0](jquery-validate/cdnjqueryvalidate1160.md "jQuery ověření 1.16.0")
-- [jQuery Validate 1.15.1](jquery-validate/cdnjqueryvalidate1151.md "jQuery Validation 1.15.1")
-- [jQuery ověřit 1.15.0](jquery-validate/cdnjqueryvalidate1150.md "jQuery ověření 1.15.0")
-- [jQuery Validate 1.14.0](jquery-validate/cdnjqueryvalidate1140.md "jQuery Validation 1.14.0")
-- [jQuery Validate 1.13.1](jquery-validate/cdnjqueryvalidate1131.md "jQuery Validation 1.13.1")
-- [jQuery Validate 1.13.0](jquery-validate/cdnjqueryvalidate1130.md "jQuery Validation 1.13.0")
-- [jQuery Validate 1.12.0](jquery-validate/cdnjqueryvalidate1120.md "jQuery Validation 1.12.0")
-- [jQuery Validate 1.11.1](jquery-validate/cdnjqueryvalidate1111.md "jQuery Validation 1.11.1")
-- [jQuery 1.11.0 ověřit](jquery-validate/cdnjqueryvalidate111.md "jQuery 1.11.0 ověření")
-- [jQuery 1.10.0 ověřit](jquery-validate/cdnjqueryvalidate110.md "jQuery 1.10.0 ověření")
-- [jQuery Validate 1.9](jquery-validate/cdnjqueryvalidate19.md "jquery.validate version 1.9")
+- [jQuery ověřit 1.19.1](jquery-validate/cdnjqueryvalidate1191.md "1\.19.1 ověření jQuery")
+- [jQuery ověřit 1.19.0](jquery-validate/cdnjqueryvalidate1190.md "1\.19.0 ověření jQuery")
+- [jQuery ověřit 1.17.0](jquery-validate/cdnjqueryvalidate1170.md "1\.17.0 ověření jQuery")
+- [jQuery ověřit 1.16.0](jquery-validate/cdnjqueryvalidate1160.md "jQuery Validation 1.16.0")
+- [jQuery ověřit 1.15.1](jquery-validate/cdnjqueryvalidate1151.md "jQuery Validation 1.15.1")
+- [jQuery ověřit 1.15.0](jquery-validate/cdnjqueryvalidate1150.md "jQuery Validation 1.15.0")
+- [jQuery ověřit 1.14.0](jquery-validate/cdnjqueryvalidate1140.md "jQuery Validation 1.14.0")
+- [jQuery ověřit 1.13.1](jquery-validate/cdnjqueryvalidate1131.md "jQuery Validation 1.13.1")
+- [jQuery ověřit 1.13.0](jquery-validate/cdnjqueryvalidate1130.md "jQuery Validation 1.13.0")
+- [jQuery ověřit 1.12.0](jquery-validate/cdnjqueryvalidate1120.md "jQuery Validation 1.12.0")
+- [jQuery ověřit 1.11.1](jquery-validate/cdnjqueryvalidate1111.md "jQuery Validation 1.11.1")
+- [jQuery ověřit 1.11.0](jquery-validate/cdnjqueryvalidate111.md "jQuery Validation 1.11.0")
+- [jQuery ověřit 1.10.0](jquery-validate/cdnjqueryvalidate110.md "jQuery Validation 1.10.0")
+- [jQuery Validate 1,9](jquery-validate/cdnjqueryvalidate19.md "jquery.validate verze 1.9")
 - [jQuery ověřit 1.8.1](jquery-validate/cdnjqueryvalidate181.md "jquery.validate verze 1.8.1")
-- [jQuery Validate 1.8](jquery-validate/cdnjqueryvalidate18.md "jquery.validate version 1.8")
-- [jQuery Validate 1.7](jquery-validate/cdnjqueryvalidate17.md "jquery.validate version 1.7")
+- [jQuery Validate 1,8](jquery-validate/cdnjqueryvalidate18.md "jquery.validate verze 1.8")
+- [jQuery Validate 1,7](jquery-validate/cdnjqueryvalidate17.md "jquery.validate verze 1.7")
 - [jQuery Validate 1.6](jquery-validate/cdnjqueryvalidate16.md "jQuery Validate 1.6")
 - [jQuery Validate 1.5.5](jquery-validate/cdnjqueryvalidate155.md "jQuery Validate 1.5.5")
 
 <a id="jQuery_Mobile_Releases_on_the_CDN_4"></a>
 
-### <a name="jquery-mobile-releases-on-the-cdn"></a>jQuery Mobile verze v síti CDN
+### <a name="jquery-mobile-releases-on-the-cdn"></a>jQuery Mobile releases na CDN
 
-Tyto verze knihovny jQuery Mobile jsou hostované na této sítě CDN. Klikněte na každý odkaz zobrazíte skutečný seznam souborů.
+Následující verze knihovny jQuery Mobile Library jsou hostovány v této síti CDN. Kliknutím na každý odkaz zobrazíte aktuální seznam souborů.
 
 - [jQuery Mobile 1.4.5](jquery-mobile/cdnjquerymobile145.md "jQuery Mobile 1.4.5 ve službě Microsoft Ajax CDN")
 - [jQuery Mobile 1.4.2](jquery-mobile/cdnjquerymobile142.md "jQuery Mobile 1.4.2 ve službě Microsoft Ajax CDN")
@@ -653,29 +653,29 @@ Tyto verze knihovny jQuery Mobile jsou hostované na této sítě CDN. Klikněte
 - [jQuery Mobile 1.3.1](jquery-mobile/cdnjquerymobile131.md "jQuery Mobile 1.3.1 ve službě Microsoft Ajax CDN")
 - [jQuery Mobile 1.3.0](jquery-mobile/cdnjquerymobile130.md "jQuery Mobile 1.3.0 ve službě Microsoft Ajax CDN")
 - [jQuery Mobile 1.2.0](jquery-mobile/cdnjquerymobile120.md "jQuery Mobile 1.2.0 ve službě Microsoft Ajax CDN")
-- [jQuery Mobile 1.1.2](jquery-mobile/cdnjquerymobile112.md "jQuery Mobile 1.1.2 on the Microsoft Ajax CDN")
+- [jQuery Mobile 1.1.2](jquery-mobile/cdnjquerymobile112.md "jQuery Mobile 1.1.2 ve službě Microsoft Ajax CDN")
 - [jQuery Mobile 1.1.1](jquery-mobile/cdnjquerymobile111.md "jQuery Mobile 1.1.1 ve službě Microsoft Ajax CDN")
 - [jQuery Mobile 1.1.0](jquery-mobile/cdnjquerymobile110.md "jQuery Mobile 1.1.0 ve službě Microsoft Ajax CDN")
 - [jQuery Mobile 1.1.0 RC 2](jquery-mobile/cdnjquerymobile110rc2.md "jQuery Mobile 1.1.0 RC2 ve službě Microsoft Ajax CDN")
 - [jQuery Mobile 1.0.1](jquery-mobile/cdnjquerymobile101.md "jQuery Mobile 1.0.1 ve službě Microsoft Ajax CDN")
-- [jQuery Mobile 1.0](jquery-mobile/cdnjquerymobile10.md "jQuery Mobile 1.0 ve službě Microsoft Ajax CDN")
-- [jQuery Mobile 1.0 RC 2](jquery-mobile/cdnjquerymobile10rc2.md "jQuery Mobile 1.0 RC2 on the Microsoft Ajax CDN")
-- [jQuery Mobile 1.0 RC 1](jquery-mobile/cdnjquerymobile10rc1.md "jQuery Mobile 1.0 RC1 on the Microsoft Ajax CDN")
-- [jQuery Mobile 1.0 beta 3](jquery-mobile/cdnjquerymobile10b3.md "jQuery Mobile 1.0 Beta 3 ve službě Microsoft Ajax CDN")
+- [jQuery Mobile 1,0](jquery-mobile/cdnjquerymobile10.md "jQuery Mobile 1.0 ve službě Microsoft Ajax CDN")
+- [jQuery Mobile 1,0 RC 2](jquery-mobile/cdnjquerymobile10rc2.md "jQuery Mobile 1.0 RC2 ve službě Microsoft Ajax CDN")
+- [jQuery Mobile 1,0 RC 1](jquery-mobile/cdnjquerymobile10rc1.md "jQuery Mobile 1.0 RC1 ve službě Microsoft Ajax CDN")
+- [jQuery Mobile 1,0 Beta 3](jquery-mobile/cdnjquerymobile10b3.md "jQuery Mobile 1.0 Beta 3 ve službě Microsoft Ajax CDN")
 
 <a id="jQuery_Templates_Releases_on_the_CDN_5"></a>
 
-### <a name="jquery-templates-releases-on-the-cdn"></a>jQuery šablony vydané verze v síti CDN
+### <a name="jquery-templates-releases-on-the-cdn"></a>Vydání šablon jQuery v CDN
 
-Tyto verze modulu plug-in jQuery šablony jsou hostovány na této sítě CDN. Klikněte na každý odkaz zobrazíte skutečný seznam souborů.
+Následující verze modulu plug-in šablony jQuery jsou hostovány v této síti CDN. Kliknutím na každý odkaz zobrazíte aktuální seznam souborů.
 
-- [jQuery šablony Beta 1](jquery-templates/cdnjquerytemplatesbeta1.md "jQuery šablony Beta 1")
+- [Šablony jQuery verze Beta 1](jquery-templates/cdnjquerytemplatesbeta1.md "jQuery Templates Beta 1")
 
 <a id="jQuery_Cycle_Releases_on_the_CDN_6"></a>
 
-### <a name="jquery-cycle-releases-on-the-cdn"></a>jQuery cyklu vydání v síti CDN
+### <a name="jquery-cycle-releases-on-the-cdn"></a>Vydávání cyklů jQuery v CDN
 
-Tyto verze modulu plug-in jQuery cyklu jsou hostované na této sítě CDN. Klikněte na každý odkaz zobrazíte skutečný seznam souborů.
+Následující verze modulu plug-in cyklus jQuery jsou hostovány v této síti CDN. Kliknutím na každý odkaz zobrazíte aktuální seznam souborů.
 
 - [jQuery Cycle 2.99](jquery-cycle/cdnjquerycycle299.md "jQuery Cycle 2.99")
 - [jQuery Cycle 2.94](jquery-cycle/cdnjquerycycle294.md "jQuery Cycle 2.94")
@@ -683,9 +683,9 @@ Tyto verze modulu plug-in jQuery cyklu jsou hostované na této sítě CDN. Klik
 
 <a id="jQuery_DataTables_Releases_on_the_CDN_7"></a>
 
-### <a name="jquery-datatables-releases-on-the-cdn"></a>jQuery DataTables vydané verze v síti CDN
+### <a name="jquery-datatables-releases-on-the-cdn"></a>vydávané datatabulka jQuery v CDN
 
-Tyto verze modulu plug-in jQuery DataTables jsou hostované na této sítě CDN. Klikněte na každý odkaz zobrazíte skutečný seznam souborů.
+Následující verze modulu plug-in pro DataTables jQuery jsou hostovány v této síti CDN. Kliknutím na každý odkaz zobrazíte aktuální seznam souborů.
 
 - [jQuery DataTables 1.10.5](jquery-datatables/cdnjquerydatatables105.md "jQuery DataTables 1.10.5")
 - [jQuery DataTables 1.10.4](jquery-datatables/cdnjquerydatatables104.md "jQuery DataTables 1.10.4")
@@ -698,9 +698,9 @@ Tyto verze modulu plug-in jQuery DataTables jsou hostované na této sítě CDN.
 
 <a id="Modernizr_Releases_on_the_CDN_8"></a>
 
-### <a name="modernizr-releases-on-the-cdn"></a>Verze Modernizr v síti CDN
+### <a name="modernizr-releases-on-the-cdn"></a>Modernizr vydaných verzí v CDN
 
-Toto vydání [Modernizr](http://www.modernizr.com "Modernizr") jsou hostované v síti CDN:
+Následující verze [modernizr](http://www.modernizr.com "Modernizr") jsou hostované na CDN:
 
 - https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-3.5.0.js
 - https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js
@@ -712,17 +712,17 @@ Toto vydání [Modernizr](http://www.modernizr.com "Modernizr") jsou hostované 
 
 <a id="JSHint_Releases_on_the_CDN_10"></a>
 
-### <a name="jshint-releases-on-the-cdn"></a>Verze JSHint v síti CDN
+### <a name="jshint-releases-on-the-cdn"></a>JSHint vydaných verzí v CDN
 
-Toto vydání [JSHint](http://www.jshint.com "JSHint") jsou hostované v síti CDN:
+Následující verze [JSHint](http://www.jshint.com "JSHint") jsou hostované na CDN:
 
 - https://ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js
 
 <a id="Knockout_Releases_on_the_CDN_11"></a>
 
-### <a name="knockout-releases-on-the-cdn"></a>Verze knockout v síti CDN
+### <a name="knockout-releases-on-the-cdn"></a>Vyseknutí verzí v CDN
 
-Toto vydání [Knockout](http://www.knockoutjs.com "Knockout") jsou hostované v síti CDN:
+Následující vydané verze [vyseknutí](http://www.knockoutjs.com "Tomuto") jsou hostovány v CDN:
 
 - https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js
 - https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.debug.js
@@ -747,9 +747,9 @@ Toto vydání [Knockout](http://www.knockoutjs.com "Knockout") jsou hostované v
 
 <a id="Globalize_Releases_on_the_CDN_12"></a>
 
-### <a name="globalize-releases-on-the-cdn"></a>Globalizace vydané verze v síti CDN
+### <a name="globalize-releases-on-the-cdn"></a>Globalizace verzí v CDN
 
-Toto vydání [Globalize](https://github.com/jquery/globalize "Globalize") jsou hostované v síti CDN:
+Následující vydání [globalizace](https://github.com/jquery/globalize "Globalizace") jsou hostovány v CDN:
 
 #### <a name="globalize-version-100"></a>Globalizace verze 1.0.0
 
@@ -771,50 +771,65 @@ Toto vydání [Globalize](https://github.com/jquery/globalize "Globalize") jsou 
     - všechny jazykové verze
 - https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.culture.{culture-code}.js
 
-    - Nahraďte požadovanou jazykovou verzi kódu "{jazyková verze code}", například Microsoft globalize.culture.en GB.js== souborů v síti CDN == tyto knihovny nahraný společností Microsoft.
+    - Nahraďte "{Code-Code}" požadovaným kódem jazykové verze, například globalizace. Culture. en-GB. js = = soubory Microsoftu na CDN = = tyto knihovny byly nahrány společností Microsoft.
 
 <a id="Respond_Releases_on_the_CDN_13"></a>
 
-### <a name="respond-releases-on-the-cdn"></a>Reakce vydané verze v síti CDN
+### <a name="respond-releases-on-the-cdn"></a>Odpověď verze v CDN
 
-Toto vydání [reagovat](https://github.com/scottjehl/Respond "reagovat") jsou hostované v síti CDN:
+V CDN jsou hostované následující verze [odpovědi](https://github.com/scottjehl/Respond "Odpovědět") :
 
-#### <a name="respond-version-142"></a>Verze 1.4.2 reagovat
+#### <a name="respond-version-142"></a>Odpověď verze 1.4.2
 
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.min.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.matchmedia.addListener.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.matchmedia.addListener.min.js
 
-#### <a name="respond-version-141"></a>Verze 1.4.1 reagovat
+#### <a name="respond-version-141"></a>Odpověď verze 1.4.1
 
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.min.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.matchmedia.addListener.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.matchmedia.addListener.min.js
 
-#### <a name="respond-version-140"></a>Verze 1.4.0 reagovat
+#### <a name="respond-version-140"></a>Odpověď verze 1.4.0
 
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.min.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.matchmedia.addListener.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.matchmedia.addListener.min.js
 
-#### <a name="respond-version-130"></a>Verze 1.3.0 reagovat
+#### <a name="respond-version-130"></a>Odpověď verze 1.3.0
 
 - https://ajax.aspnetcdn.com/ajax/respond/1.3.0/respond.js
 
-#### <a name="respond-version-120"></a>Verzi 1.2.0 reagovat
+#### <a name="respond-version-120"></a>Odpověď verze 1.2.0
 
 - https://ajax.aspnetcdn.com/ajax/respond/1.2.0/respond.js
 
 <a id="Bootstrap_Releases_on_the_CDN_14"></a>
 
-### <a name="bootstrap-releases-on-the-cdn"></a>Spuštění vydané verze v síti CDN
+### <a name="bootstrap-releases-on-the-cdn"></a>Bootstrap vydaných verzí na CDN
 
-Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") bootstrap jsou hostované v síti CDN:
+Následující verze [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") Bootstrap se hostují v CDN:
 
-#### <a name="bootstrap-version-431"></a>Spustit verzi 4.3.1
+#### <a name="bootstrap-version-441"></a>Bootstrap verze 4.4.1
+
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/bootstrap.bundle.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/css/bootstrap-grid.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/css/bootstrap-grid.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/css/bootstrap-grid.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/css/bootstrap-reboot.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/css/bootstrap-reboot.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/css/bootstrap-reboot.css.map
+
+#### <a name="bootstrap-version-431"></a>Bootstrap verze 4.3.1
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/bootstrap.min.js
@@ -829,7 +844,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/css/bootstrap-reboot.min.css
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/css/bootstrap-reboot.css.map
 
-#### <a name="bootstrap-version-421"></a>Zavedení verze 4.2.1
+#### <a name="bootstrap-version-421"></a>Bootstrap verze 4.2.1
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/bootstrap.min.js
@@ -844,7 +859,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/css/bootstrap-reboot.min.css
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/css/bootstrap-reboot.css.map
 
-#### <a name="bootstrap-version-411"></a>Verze 4.1.1 Bootstrap
+#### <a name="bootstrap-version-411"></a>Bootstrap verze 4.1.1
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/bootstrap.min.js
@@ -859,7 +874,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap-reboot.min.css
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap-reboot.css.map
 
-#### <a name="bootstrap-version-400"></a>Zavedení verze 4.0.0
+#### <a name="bootstrap-version-400"></a>Bootstrap verze 4.0.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.min.js
@@ -874,7 +889,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap-reboot.min.css
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap-reboot.css.map
 
-#### <a name="bootstrap-version-341"></a>Verze 3.4.1 Bootstrap
+#### <a name="bootstrap-version-341"></a>Bootstrap verze 3.4.1
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.4.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.4.1/bootstrap.min.js
@@ -890,7 +905,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.4.1/fonts/glyphicons-halflings-regular.woff
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.4.1/fonts/glyphicons-halflings-regular.woff2
 
-#### <a name="bootstrap-version-340"></a>Verze 3.4.0 Bootstrap
+#### <a name="bootstrap-version-340"></a>Bootstrap verze 3.4.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.4.0/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.4.0/bootstrap.min.js
@@ -906,7 +921,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.woff
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.woff2
 
-#### <a name="bootstrap-version-337"></a>Verze 3.3.7 Bootstrap
+#### <a name="bootstrap-version-337"></a>Bootstrap verze 3.3.7
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js
@@ -922,7 +937,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff2
 
-#### <a name="bootstrap-version-336"></a>Verze 3.3.6 Bootstrap
+#### <a name="bootstrap-version-336"></a>Bootstrap verze 3.3.6
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js
@@ -938,7 +953,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff2
 
-#### <a name="bootstrap-version-335"></a>Verze 3.3.5 Bootstrap
+#### <a name="bootstrap-version-335"></a>Bootstrap verze 3.3.5
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js
@@ -954,7 +969,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff2
 
-#### <a name="bootstrap-version-334"></a>Verze 3.3.4 Bootstrap
+#### <a name="bootstrap-version-334"></a>Bootstrap verze 3.3.4
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/bootstrap.min.js
@@ -970,7 +985,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.woff
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.woff2
 
-#### <a name="bootstrap-version-332"></a>Verze 3.3.2 Bootstrap
+#### <a name="bootstrap-version-332"></a>Bootstrap verze 3.3.2
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js
@@ -986,7 +1001,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.woff
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.woff2
 
-#### <a name="bootstrap-version-331"></a>Verze 3.3.1 Bootstrap
+#### <a name="bootstrap-version-331"></a>Bootstrap verze 3.3.1
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/bootstrap.min.js
@@ -1001,7 +1016,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-330"></a>Verze 3.3.0 Bootstrap
+#### <a name="bootstrap-version-330"></a>Bootstrap verze 3.3.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/bootstrap.min.js
@@ -1016,7 +1031,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-320"></a>Verze 3.2.0 Bootstrap
+#### <a name="bootstrap-version-320"></a>Bootstrap verze 3.2.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.min.js
@@ -1031,7 +1046,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-311"></a>Verze 3.1.1 Bootstrap
+#### <a name="bootstrap-version-311"></a>Bootstrap verze 3.1.1
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/bootstrap.min.js
@@ -1046,7 +1061,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-310"></a>Verze 3.1.0 Bootstrap
+#### <a name="bootstrap-version-310"></a>Bootstrap verze 3.1.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/bootstrap.min.js
@@ -1061,7 +1076,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-303"></a>Verze 3.0.3 Bootstrap
+#### <a name="bootstrap-version-303"></a>Bootstrap verze 3.0.3
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/bootstrap.min.js
@@ -1074,7 +1089,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-302"></a>Verze 3.0.2 Bootstrap
+#### <a name="bootstrap-version-302"></a>Bootstrap verze 3.0.2
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/bootstrap.min.js
@@ -1087,7 +1102,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-301"></a>Verze 3.0.1 Bootstrap
+#### <a name="bootstrap-version-301"></a>Bootstrap verze 3.0.1
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/bootstrap.min.js
@@ -1100,7 +1115,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-300"></a>Zavedení verze 3.0.0
+#### <a name="bootstrap-version-300"></a>Bootstrap verze 3.0.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.min.js
@@ -1113,7 +1128,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-232"></a>Verze 2.3.2 Bootstrap
+#### <a name="bootstrap-version-232"></a>Bootstrap verze 2.3.2
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/bootstrap.min.js
@@ -1124,7 +1139,7 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/img/glyphicons-halflings.png
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/img/glyphicons-halflings-white.png
 
-#### <a name="bootstrap-version-231"></a>Zavedení verze 2.3.1
+#### <a name="bootstrap-version-231"></a>Bootstrap verze 2.3.1
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/bootstrap.min.js
@@ -1137,20 +1152,20 @@ Toto vydání [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") boo
 
 <a id="BootstrapTouchCarousel_Releases_on_the_CDN_18"></a>
 
-### <a name="bootstrap-touchcarousel-releases-on-the-cdn"></a>Spuštění TouchCarousel vydané verze v síti CDN
+### <a name="bootstrap-touchcarousel-releases-on-the-cdn"></a>Zavedení TouchCarousel vydání na CDN
 
-Toto vydání [https://github.com/ixisio/bootstrap-touch-carousel](https://github.com/ixisio/bootstrap-touch-carousel "https://github.com/ixisio/bootstrap-touch-carousel") Bootstrap TouchCarousel verzích jsou hostované v síti CDN:
+Následující verze [https://github.com/ixisio/bootstrap-touch-carousel](https://github.com/ixisio/bootstrap-touch-carousel "https://github.com/ixisio/bootstrap-touch-carousel") Bootstrap TouchCarousel vydání jsou hostované na CDN:
 
-#### <a name="bootstrap-touchcarousel-version-080"></a>Zavedení TouchCarousel verze 0.8.0
+#### <a name="bootstrap-touchcarousel-version-080"></a>Bootstrap TouchCarousel verze 0.8.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/css/bootstrap-touch-carousel.css
 - https://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/js/bootstrap-touch-carousel.js
 
 <a id="Hammerjs_Releases_on_the_CDN_19"></a>
 
-### <a name="hammerjs-releases-on-the-cdn"></a>Verze hammer.js v síti CDN
+### <a name="hammerjs-releases-on-the-cdn"></a>Vydání nástroje kladiv. js v síti CDN
 
-Toto vydání [http://hammerjs.github.io/](http://hammerjs.github.io/ "http://hammerjs.github.io/") Hammer.js verzích jsou hostované v síti CDN:
+Následující verze [http://hammerjs.github.io/](http://hammerjs.github.io/ "http://hammerjs.github.io/") vydání kladiv. js jsou hostovány v CDN:
 
 #### <a name="hammerjs-version-204"></a>Hammer.js version 2.0.4
 
@@ -1160,19 +1175,19 @@ Toto vydání [http://hammerjs.github.io/](http://hammerjs.github.io/ "http://ha
 
 <a id="ASPNET_Web_Forms_and_Ajax_Releases_on_the_CDN_15"></a>
 
-### <a name="aspnet-web-forms-and-ajax-releases-on-the-cdn"></a>Webové formuláře ASP.NET a Ajax vydané verze v síti CDN
+### <a name="aspnet-web-forms-and-ajax-releases-on-the-cdn"></a>ASP.NET webové formuláře a verze AJAX v CDN
 
-Tyto verze knihovny ASP.NET Ajax jsou hostované v síti CDN. Klikněte na každý odkaz zobrazíte skutečný seznam souborů.
+Následující verze knihovny ASP.NET AJAX jsou hostovány v CDN. Kliknutím na každý odkaz zobrazíte aktuální seznam souborů.
 
-- [Verze technologie ASP.NET webové formuláře a Ajax 4.5.2](cdnajax452.md "webových formulářů ASP.NET a Ajax 4.5.2")
-- [Verze technologie ASP.NET webové formuláře a Ajax 4](cdnajax4.md "webových formulářů ASP.NET a Ajax 4")
-- [ASP.NET Ajax verze 3.5](cdnajax35.md "Ajax technologie ASP.NET 3.5")
+- [ASP.NET webové formuláře a AJAX verze 4.5.2](cdnajax452.md "Webové formuláře ASP.NET a Ajax 4.5.2")
+- [ASP.NET webové formuláře a AJAX verze 4](cdnajax4.md "Webové formuláře ASP.NET a Ajax 4")
+- [ASP.NET AJAX verze 3,5](cdnajax35.md "ASP.NET Ajax 3.5")
 
 <a id="ASPNET_MVC_Releases_on_the_CDN_16"></a>
 
-### <a name="aspnet-mvc-releases-on-the-cdn"></a>Verze technologie ASP.NET MVC v síti CDN
+### <a name="aspnet-mvc-releases-on-the-cdn"></a>Verze ASP.NET MVC na CDN
 
-Následující soubory jazyka JavaScript technologie ASP.NET MVC jsou hostované na této sítě CDN:
+Následující soubory JavaScriptu ASP.NET MVC jsou hostovány v této síti CDN:
 
 #### <a name="aspnet-mvc-523"></a>ASP.NET MVC 5.2.3
 
@@ -1212,80 +1227,80 @@ Následující soubory jazyka JavaScript technologie ASP.NET MVC jsou hostované
 - https://ajax.aspnetcdn.com/ajax/mvc/2.0/MicrosoftMvcAjax.js
 - https://ajax.aspnetcdn.com/ajax/mvc/2.0/MicrosoftMvcAjax.debug.js
 
-#### <a name="aspnet-mvc-10"></a>ASP.NET MVC 1.0
+#### <a name="aspnet-mvc-10"></a>ASP.NET MVC 1,0
 
 - https://ajax.aspnetcdn.com/ajax/mvc/1.0/MicrosoftMvcAjax.js
 - https://ajax.aspnetcdn.com/ajax/mvc/1.0/MicrosoftMvcAjax.debug.js
 
 <a id="ASPNET_SignalR_Releases_on_the_CDN_17"></a>
 
-### <a name="aspnet-signalr-releases-on-the-cdn"></a>Verze funkce SignalR technologie ASP.NET ve službě CDN
+### <a name="aspnet-signalr-releases-on-the-cdn"></a>ASP.NET signalizace v CDN
 
-Následující soubory ASP.NET SignalR JavaScript jsou hostované na této sítě CDN:
+Následující soubory JavaScriptu pro ASP.NET signalizaci jsou hostovány v této síti CDN:
 
-#### <a name="aspnet-signalr-222"></a>Funkce SignalR technologie ASP.NET 2.2.2
+#### <a name="aspnet-signalr-222"></a>Signál ASP.NET 2.2.2
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.js
 
-#### <a name="aspnet-signalr-221"></a>Funkce SignalR technologie ASP.NET 2.2.1
+#### <a name="aspnet-signalr-221"></a>Signál ASP.NET 2.2.1
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.js
 
-#### <a name="aspnet-signalr-220"></a>Funkce SignalR technologie ASP.NET 2.2.0
+#### <a name="aspnet-signalr-220"></a>2\.2.0 signálu ASP.NET
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.js
 
-#### <a name="aspnet-signalr-210"></a>Funkce SignalR technologie ASP.NET 2.1.0
+#### <a name="aspnet-signalr-210"></a>2\.1.0 signálu ASP.NET
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.1.0.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.1.0.js
 
-#### <a name="aspnet-signalr-203"></a>Funkce SignalR technologie ASP.NET 2.0.3
+#### <a name="aspnet-signalr-203"></a>2\.0.3 signálu ASP.NET
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.3.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.3.js
 
-#### <a name="aspnet-signalr-202"></a>Funkce SignalR technologie ASP.NET bodu 2.0.2
+#### <a name="aspnet-signalr-202"></a>2\.0.2 signálu ASP.NET
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.2.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.2.js
 
-#### <a name="aspnet-signalr-201"></a>Funkce SignalR technologie ASP.NET 2.0.1
+#### <a name="aspnet-signalr-201"></a>Signál ASP.NET 2.0.1
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.1.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.1.js
 
-#### <a name="aspnet-signalr-200"></a>Funkce SignalR technologie ASP.NET 2.0.0
+#### <a name="aspnet-signalr-200"></a>2\.0.0 signálu ASP.NET
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.0.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.0.js
 
-#### <a name="aspnet-signalr-113"></a>Funkce SignalR technologie ASP.NET 1.1.3
+#### <a name="aspnet-signalr-113"></a>Signál ASP.NET 1.1.3
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.3.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.3.js
 
-#### <a name="aspnet-signalr-112"></a>Funkce SignalR technologie ASP.NET 1.1.2
+#### <a name="aspnet-signalr-112"></a>ASP.NETový signál 1.1.2
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.2.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.2.js
 
-#### <a name="aspnet-signalr-111"></a>Funkce SignalR technologie ASP.NET 1.1.1
+#### <a name="aspnet-signalr-111"></a>Signál ASP.NET 1.1.1
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.1.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.1.js
 
-#### <a name="aspnet-signalr-110"></a>Funkce SignalR technologie ASP.NET 1.1.0
+#### <a name="aspnet-signalr-110"></a>1\.1.0 signálu ASP.NET
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.0.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.0.js
 
-#### <a name="aspnet-signalr-101"></a>Funkce SignalR technologie ASP.NET 1.0.1
+#### <a name="aspnet-signalr-101"></a>1\.0.1 signálu ASP.NET
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.0.1.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.0.1.js
 
-Informace o podmínkách použití CDN najdete v tématu [Microsoft Ajax CDN Terms of Use](https://www.asp.net/terms-of-use "Microsoft Ajax CDN Terms of Use").
+Informace o podmínek použití pro CDN najdete v tématu věnovaném [podmínkám použití Microsoft Ajax CDN](https://www.asp.net/terms-of-use "Používání podmínek použití Microsoft Ajax CDN").
