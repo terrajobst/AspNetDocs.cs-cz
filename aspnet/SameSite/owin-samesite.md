@@ -5,12 +5,12 @@ description: Práce s SameSite soubory cookie a otevřeným webovým rozhraním 
 ms.author: riande
 ms.date: 12/6/2019
 uid: owin-samesite
-ms.openlocfilehash: fc64315e8c3614e460c9a8d551bcb0848b3fe8f9
-ms.sourcegitcommit: 516a168548252ff0eaae2c02ec4bd9ffcfa8375e
+ms.openlocfilehash: ac5ae24eeb9e8e1cc6296667a4bebef72c3eb62c
+ms.sourcegitcommit: 7b1e1784213dd4c301635f9e181764f3e2f94162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951894"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74993073"
 ---
 # <a name="samesite-cookies-and-the-open-web-interface-for-net-owin"></a>SameSite soubory cookie a otevřené webové rozhraní pro .NET (OWIN)
 
@@ -39,7 +39,7 @@ Verzi tohoto článku pro ASP.NET 4. x najdete v tématu <xref:samesite/system-w
 
 `SystemWebCookieManager` závisí na rozhraních API .NET 4.7.2 `System.Web` pro povolení `SameSite` podpory a opravách, které mění chování.
 
-Důvody pro použití `SystemWebCookieManager` jsou popsaných v [potížích s integrací souborů cookie Owin a System. Web Response](https://github.com/aspnet/AspNetKatana/wiki/System.Web-response-cookie-integration-issues). `SystemWebCookieManager` se doporučuje při spuštění v `System.Web`. 
+Důvody pro použití `SystemWebCookieManager` jsou popsaných v [potížích s integrací souborů cookie Owin a System. Web Response](https://github.com/aspnet/AspNetKatana/wiki/System.Web-response-cookie-integration-issues). `SystemWebCookieManager` se doporučuje při spuštění v `System.Web`.
 
 Následující sady kódů `SameSite` `Lax`:
 
@@ -74,9 +74,7 @@ Koncept 2019 specifikace `SameSite`:
 * Určuje, že soubory cookie se ve výchozím nastavení považují za `SameSite=Lax`.
 * Určuje soubory cookie, které explicitně vyhodnotí `SameSite=None`, aby bylo možné povolit doručování mezi weby, musí být označeno jako `Secure`. `None` je nová položka k odhlášení.
 * Ve výchozím nastavení je naplánovaná podpora [Chrome](https://chromestatus.com/feature/5088147346030592) v [únoru 2020](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html). Prohlížeče začaly při přesunu do tohoto standardu v 2019.
-* Jsou podporovány opravami vydanými v následujících KBch:
-  * [Článek znalostní báze 4531182](https://support.microsoft.com/help/4531182/kb4531182)
-  * [Článek znalostní báze 4524421](https://support.microsoft.com/help/4524421/kb4524421)
+* Je podporován opravami vydanými podle pokynů v článcích znalostní báze. Další informace najdete v tématu <xref:samesite/kbs-samesite>.
 
 <a name="sob"></a>
 

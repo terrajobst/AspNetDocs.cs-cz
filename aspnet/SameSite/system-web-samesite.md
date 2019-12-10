@@ -5,12 +5,12 @@ description: Naučte se používat k SameSite souborů cookie v ASP.NET.
 ms.author: riande
 ms.date: 12/03/2019
 uid: samesite/system-web-samesite
-ms.openlocfilehash: 40e5c13b6834912c13b41cbfad7da8cd84ca6c8b
-ms.sourcegitcommit: 969e7db924ebad3cc0f0cb0d65d148e8b9221b9a
+ms.openlocfilehash: 47a3d7576edb0e818c39b32fbbcb98475248e18e
+ms.sourcegitcommit: 7b1e1784213dd4c301635f9e181764f3e2f94162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74902022"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74993064"
 ---
 # <a name="work-with-samesite-cookies-in-aspnet"></a>Práce s SameSite soubory cookie v ASP.NET
 
@@ -35,10 +35,7 @@ Viz [vlastnost HttpCookie. SameSite.](/dotnet/api/system.web.httpcookie.samesite
 
 Podpora SameSite byla poprvé implementována v .NET 4.7.2 s využitím [konceptu standard 2016](https://tools.ietf.org/html/draft-west-first-party-cookies-07#section-4.1).
 
-19. listopadu 2019 aktualizace pro Windows aktualizované .NET 4.7.2 + od standardu 2016 až do standardu 2019. Další aktualizace jsou k disdobu pro jiné verze systému Windows. Další informace najdete v následujících KBch:
-
-* [Článek znalostní báze 4531182](https://support.microsoft.com/help/4531182/kb4531182)
-* [Článek znalostní báze 4524421](https://support.microsoft.com/help/4524421/kb4524421)
+19. listopadu 2019 aktualizace pro Windows aktualizované .NET 4.7.2 + od standardu 2016 až do standardu 2019. Další aktualizace jsou k disdobu pro jiné verze systému Windows. Další informace najdete v tématu <xref:samesite/kbs-samesite>.
 
  Koncept 2019 specifikace SameSite:
 
