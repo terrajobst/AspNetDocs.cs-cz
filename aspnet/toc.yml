@@ -3768,6 +3768,8 @@
   items:
     - name: Dokumenty white paper
       href: whitepapers/overview.md
+    - name: ASP.NET SameSite
+      href: SameSite/system-web-samesite.md
     - name: ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu
       href: whitepapers/aspnet4/index.md
       items:
