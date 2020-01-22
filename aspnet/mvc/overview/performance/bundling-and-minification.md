@@ -1,245 +1,245 @@
 ---
 uid: mvc/overview/performance/bundling-and-minification
-title: Sdružování a Minifikace | Dokumentace Microsoftu
+title: Sdružování a minifikace | Microsoft Docs
 author: Rick-Anderson
-description: Sdružování a minifikace jsou dva postupy můžete použít v technologii ASP.NET 4.5 na zvýšení zatížení doba požadavku. Sdružování a minifikace zlepšuje reducin doba načítání...
+description: Sdružování a minifikace jsou dva postupy, které můžete použít v ASP.NET 4,5 ke zlepšení doby načítání požadavků. Sdružování a minifikace vylepšuje dobu načítání prostřednictvím reducin...
 ms.author: riande
 ms.date: 08/23/2012
 ms.assetid: 5894dc13-5d45-4dad-8096-136499120f1d
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: 79d6b38c6464a749db9cd6d35e1f277b0adf2a02
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 239980d747c6e0d6be1e9b4fe0371e276e37cf21
+ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65129425"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76519281"
 ---
-# <a name="bundling-and-minification"></a>Vytváření sady a minifikace
+# <a name="bundling-and-minification"></a>Sdružování a minifikace
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
-> Sdružování a minifikace jsou dva postupy můžete použít v technologii ASP.NET 4.5 na zvýšení zatížení doba požadavku. Sdružování a minifikace zlepšuje dobu načítání snížením počtu požadavků na serveru a snížením velikosti požadovaných prostředků (například šablon stylů CSS a JavaScript.)
+> Sdružování a minifikace jsou dva postupy, které můžete použít v ASP.NET 4,5 ke zlepšení doby načítání požadavků. Sdružování a minifikace vylepšuje dobu načítání tím, že snižuje počet požadavků na server a snižuje velikost požadovaných prostředků (například CSS a JavaScript).
 
-Většina aktuální hlavní prohlížeče omezit počet [současných připojení](http://www.browserscope.org/?category=network) za každý název hostitele na šest. To znamená, že při zpracování šest požadavků, další požadavky na prostředky v hostiteli se zařadí do fronty v prohlížeči. Na následujícím obrázku zobrazuje karty sítě nástroje pro vývojáře IE F12 časování pro prostředky vyžadované o zobrazení a ukázkové aplikace.
+Většina aktuálních hlavních prohlížečů omezuje počet [souběžných připojení](http://www.browserscope.org/?category=network) na každý název hostitele na šest. To znamená, že až se šest požadavků zpracovává, v prohlížeči se zařadí další požadavky na prostředky na hostitele. Na následujícím obrázku se na kartách sítě IE F12 Developer Tools zobrazuje časování prostředků vyžadovaných zobrazením ukázkové aplikace.
 
 ![B/M](bundling-and-minification/_static/image1.png)
 
-Šedé pruhy ukazují čas, kdy žádosti zařazené do fronty v prohlížeči čekání na limitu šest připojení. Žlutý pruh je požadavek doba do prvního bajtu, tedy čas potřebný k odeslání požadavku a příjem první odpovědi ze serveru. Modré pruhy ukazují čas potřebný k přijetí dat odpovědi ze serveru. Poklikáním na prostředek k získání podrobných informací o časování. Například následující obrázek ukazuje podrobnosti časování pro načtení */Scripts/MyScripts/JavaScript6.js* souboru.
+Šedé pruhy zobrazují čas, který prohlížeč vyřadí do fronty čekáním na šest limitů připojení. Žlutým pruhem je požadavek na první bajt, tedy čas potřebný k odeslání požadavku a přijetí první odpovědi ze serveru. Modré pruhy znázorňují čas potřebný k přijetí dat odpovědi ze serveru. Poklikáním na prostředek můžete získat podrobné informace o časování. Například následující obrázek ukazuje podrobnosti časování pro načtení souboru */Scripts/MyScripts/JavaScript6.js* .
 
 ![](bundling-and-minification/_static/image2.png)
 
-Předchozí obrázek ukazuje **Start** události, které poskytuje čas požadavku byl zařazen do fronty z důvodu prohlížeči omezit počet souběžných připojení. V takovém případě požadavku byl zařazen do fronty pro 46 milisekund čekání na další požadavek dokončit.
+Předchozí obrázek znázorňuje **počáteční** událost, která udává čas, kdy se požadavek zařadil do fronty, protože prohlížeč omezuje počet současných připojení. V takovém případě se žádost zařadila do fronty po 46 milisekund čekání na dokončení jiné žádosti.
 
 ## <a name="bundling"></a>Sdružování
 
-Sdružování je nová funkce v technologii ASP.NET 4.5, který umožňuje snadno kombinovat nebo sady více souborů do jediného souboru. Můžete vytvořit šablony stylů CSS, JavaScript a další svazky. Menší počet souborů znamená, že menší počet požadavků HTTP a která vylepší zatížení první stránky.
+Sdružování je nová funkce v ASP.NET 4,5, která usnadňuje kombinování nebo rozčlenění více souborů do jednoho souboru. Můžete vytvářet šablony stylů CSS, JavaScript a další sady. Méně souborů znamená méně požadavků HTTP a může zlepšit výkon při prvním načtení stránky.
 
-Následující obrázek ukazuje zobrazení časování o zobrazení uvedeno dříve, ale tentokrát s sdružování a minifikace povolena.
+Následující obrázek znázorňuje stejné zobrazení časování zobrazení o aplikaci, které se zobrazilo dříve, ale tentokrát s povoleným sdružováním a minifikace.
 
 ![](bundling-and-minification/_static/image3.png)
 
-## <a name="minification"></a>Připravenost k minifikaci
+## <a name="minification"></a>Minifikace
 
-Připravenost k minifikaci provede celou řadu různých kód optimalizace pro skripty a css, jako je například odebráním nepotřebných prázdné znaky a komentářů a zkrácení názvy proměnných jeden znak. Vezměte v úvahu následující funkce jazyka JavaScript.
+Minifikace provádí různé optimalizace kódu pro skripty nebo šablony stylů CSS, jako je například odebrání nepotřebných prázdných znaků a komentářů a zkrácení názvů proměnných na jeden znak. Vezměte v úvahu následující funkce JavaScriptu.
 
 [!code-javascript[Main](bundling-and-minification/samples/sample1.js)]
 
-Po připravenost k minifikaci je omezit funkce takto:
+Po minifikace je funkce snížena na následující:
 
 [!code-javascript[Main](bundling-and-minification/samples/sample2.js)]
 
-Kromě odebrání komentáře a zbytečné mezery, tyto parametry a názvy proměnných byly přejmenovány (zkrátila) následujícím způsobem:
+Kromě odebrání komentářů a nepotřebných prázdných znaků byly následující parametry a názvy proměnných přejmenovány (zkráceny) následujícím způsobem:
 
-| **Původní** | **Přejmenovat** |
+| **Původně** | **Jmenovanou** |
 | --- | --- |
 | imageTagAndImageID | n |
 | imageContext | t |
-| imageElement | Mohu |
+| imageElement | i |
 
-## <a name="impact-of-bundling-and-minification"></a>Dopad sdružování a Minifikace
+## <a name="impact-of-bundling-and-minification"></a>Dopad sdružování a minifikace
 
-V následující tabulce jsou uvedeny několik důležitých rozdílů mezi jednotlivě výpis všech prostředků a pomocí sdružování a minifikace (B/M) v ukázkové aplikaci.
+V následující tabulce je uvedeno několik důležitých rozdílů mezi seznamem všech prostředků jednotlivě a pomocí sdružování a minifikace (B/M) v ukázkovém programu.
 
-|  | **Pomocí B/M** | **Bez B/M** | **Změna** |
+|  | **Použití B/M** | **Bez B/M** | **Mění** |
 | --- | --- | --- | --- |
 | **Požadavky na soubory** | 9 | 34 | 256% |
-| **Odeslání KB** | 3.26 | 11.92 | 266% |
-| **Přijata KB** | 388.51 | 530 | 36% |
+| **Odesláno KB** | 3.26 | 11.92 | 266% |
+| **Přijato KB** | 388.51 | 530 | 36 % |
 | **Čas načtení** | 510 MS | 780 MS | 53% |
 
-Odeslané bajty došlo k výraznému snížení s sdružování prohlížeče jsou poměrně podrobné s hlavičky protokolu HTTP, které se vztahují na požadavky. Přijaté bajty snížení není velké protože největší soubory (*skripty\\jquery-ui-1.8.11.min.js* a *skripty\\jquery 1.7.1.min.js*) jsou již minifikovaný . Poznámka: Časování na ukázkový program používá [Fiddler](http://www.fiddler2.com/fiddler2/) nástroj pro simulaci pomalou síť. (Z Fiddler **pravidla** nabídce vyberte možnost **výkonu** pak **simulovat rychlostí**.)
+Odeslané bajty měly výrazné snížení se sdružováním, protože prohlížeče jsou poměrně podrobné s použitím hlaviček protokolu HTTP, které se vztahují na požadavky. Snížení počtu přijatých bajtů není tak velké, protože největší soubory (*skripty\\jQuery-UI-1.8.11. min. js* a *skripty\\jQuery 1.7.1. min. js*) již minifikovaného. Poznámka: časování ukázkového programu používalo nástroj [Fiddler](http://www.fiddler2.com/fiddler2/) k simulaci pomalé sítě. (V nabídce **pravidla** Fiddler vyberte možnost **výkon** a nastavte **simulaci rychlosti modemu**.)
 
-## <a name="debugging-bundled-and-minified-javascript"></a>Ladění spojeny a Minifikovaný jazyka JavaScript
+## <a name="debugging-bundled-and-minified-javascript"></a>Ladění a minifikovaného JavaScriptu pro balíčky
 
-Snadno ladit JavaScript ve vývojovém prostředí (kde [prvek compilation](https://msdn.microsoft.com/library/s10awwz0.aspx) v *Web.config* souboru má nastavenou `debug="true"` ) vzhledem k tomu, že nejsou spojeny soubory jazyka JavaScript nebo minifikovaný. Můžete také ladit sestavení pro vydání, pokud soubory jazyka JavaScript jsou spojeny a minifikovaný. Ladění pomocí vývojářských nástrojů F12 aplikace Internet Explorer, funkce JavaScriptu zahrnuté minifikovaný sady prostředků používá následující postup:
+Je snadné ladit JavaScript ve vývojovém prostředí (kde je [element Compilation](https://msdn.microsoft.com/library/s10awwz0.aspx) v souboru *Web. config* nastaven na `debug="true"`), protože soubory JavaScriptu nejsou v balíčku nebo minifikovaného. Můžete také ladit sestavení pro vydání, kde jsou soubory JavaScriptu seskupené a minifikovaného. Pomocí vývojářských nástrojů IE F12 můžete ladit funkci JavaScriptu, která je součástí minifikovaného sady, pomocí následujícího postupu:
 
-1. Vyberte **skript** kartu a potom vyberte **spustit ladění** tlačítko.
-2. Vyberte sadu obsahující funkce JavaScriptu, který chcete ladit pomocí tlačítka pro prostředky.  
+1. Vyberte kartu **skript** a potom vyberte tlačítko **Spustit ladění** .
+2. Vyberte sadu prostředků obsahující funkci JavaScriptu, kterou chcete ladit, pomocí tlačítka assety.  
     ![](bundling-and-minification/_static/image4.png)
-3. Formátování minifikovaný jazyka JavaScript tak, že vyberete **tlačítko konfigurace** ![](bundling-and-minification/_static/image5.png)a pak vyberete **formát JavaScript**.
-4. V **skript vyhledávání** vstupní pole, vyberte název funkce, který chcete ladit. Na následujícím obrázku **AddAltToImg** jste zadali v **skript vyhledávání** vstupního pole.  
+3. Minifikovaného JavaScript naformátujte tak, že vyberete **tlačítko konfigurace** ![](bundling-and-minification/_static/image5.png)a pak vyberete **formát JavaScript**.
+4. Ve vstupním poli **vyhledávacího skriptu** vyberte název funkce, kterou chcete ladit. Na následujícím obrázku byl do vstupního pole **vyhledávacího skriptu** zadán **AddAltToImg** .  
     ![](bundling-and-minification/_static/image6.png)
 
-Další informace o ladění pomocí nástroje pro vývojáře F12, najdete v článku na webu MSDN [pomocí vývojářských nástrojů F12 k ladění chyby JavaScriptu](https://msdn.microsoft.com/library/ie/gg699336(v=vs.85).aspx).
+Další informace o ladění pomocí vývojářských nástrojů F12 najdete v článku na webu MSDN, který [používá vývojářské nástroje F12 k ladění chyb JavaScriptu](https://msdn.microsoft.com/library/ie/gg699336(v=vs.85).aspx).
 
-## <a name="controlling-bundling-and-minification"></a>Řídící sdružování a Minifikace
+## <a name="controlling-bundling-and-minification"></a>Řízení sdružování a minifikace
 
-Sdružování a minifikace povolit nebo zakázat tak, že nastavíte hodnotu atributu ladění v [prvek compilation](https://msdn.microsoft.com/library/s10awwz0.aspx) v *Web.config* souboru. V následujícím souboru XML `debug` je nastavena na hodnotu true, tak sdružování a minifikace je zakázaná.
+Sdružování a minifikace jsou povoleny nebo zakázány nastavením hodnoty atributu Debug v [elementu compilation](https://msdn.microsoft.com/library/s10awwz0.aspx) v souboru *Web. config* . V následujícím kódu XML je `debug` nastavené na hodnotu true, takže sdružování a minifikace jsou zakázané.
 
 [!code-xml[Main](bundling-and-minification/samples/sample3.xml?highlight=2)]
 
-Chcete-li povolit sdružování a minifikace, nastavte `debug` hodnotu "false". Můžete přepsat *Web.config* nastavení `EnableOptimizations` vlastnost `BundleTable` třídy. Následující kód umožňuje sdružování a minifikace a přepíše jakékoli nastavení v *Web.config* souboru.
+Pokud chcete povolit sdružování a minifikace, nastavte hodnotu `debug` na false (NEPRAVDA). Nastavení *Web. config* můžete přepsat vlastností `EnableOptimizations` třídy `BundleTable`. Následující kód umožňuje sdružování a minifikace a Přepisuje jakékoli nastavení v souboru *Web. config* .
 
 [!code-csharp[Main](bundling-and-minification/samples/sample4.cs?highlight=7)]
 
 > [!NOTE]
-> Není-li `EnableOptimizations` je `true` nebo atribut v ladění [prvek compilation](https://msdn.microsoft.com/library/s10awwz0.aspx) v *Web.config* soubor je nastavený na `false`, soubory nebudou spojeny ani minifikovaný. Kromě toho se nepoužije .min verzi souborů, úplné ladicí verze bude vybrána. `EnableOptimizations` přepíše atribut v ladění [prvek compilation](https://msdn.microsoft.com/library/s10awwz0.aspx) v *Web.config* souboru
+> Pokud `EnableOptimizations` není `true` nebo atribut debug v [prvku Compilation](https://msdn.microsoft.com/library/s10awwz0.aspx) v souboru *Web. config* je nastaven na `false`, soubory nebudou seskupeny ani minifikovaného. Kromě toho se nepoužijí soubory. min, přičemž budou vybrány úplné verze ladění. `EnableOptimizations` Přepisuje atribut debug v [elementu compilation](https://msdn.microsoft.com/library/s10awwz0.aspx) v souboru *Web. config.*
 
-## <a name="using-bundling-and-minification-with-aspnet-web-forms-and-web-pages"></a>Pomocí sdružování a Minifikace s webovými formuláři ASP.NET a webových stránek
+## <a name="using-bundling-and-minification-with-aspnet-web-forms-and-web-pages"></a>Použití sdružování a minifikace s webovými formuláři ASP.NET a webovými stránkami
 
-- Pro webové stránky, naleznete v příspěvku blogu [přidání optimalizaci webů pro webové stránky webu](https://blogs.msdn.com/b/rickandy/archive/2012/08/15/adding-web-optimization-to-a-web-pages-site.aspx).
-- Webové formuláře, naleznete v příspěvku blogu [přidání sdružování a Minifikace do webových formulářů](https://blogs.msdn.com/b/rickandy/archive/2012/08/14/adding-bundling-and-minification-to-web-forms.aspx).
+- Informace o webových stránkách naleznete v položce blogu [Přidání webové optimalizace na web webové stránky](https://docs.microsoft.com/archive/blogs/rickandy/adding-web-optimization-to-a-web-pages-site).
+- Webové formuláře najdete v tématu [Přidání zařazení a minifikace do webových formulářů](https://docs.microsoft.com/archive/blogs/rickandy/adding-bundling-and-minification-to-web-forms)na blogu.
 
-## <a name="using-bundling-and-minification-with-aspnet-mvc"></a>Pomocí sdružování a Minifikace s architekturou ASP.NET MVC
+## <a name="using-bundling-and-minification-with-aspnet-mvc"></a>Použití sdružování a minifikace s ASP.NET MVC
 
-V této části vytvoříme ASP.NET MVC projekt tak, aby zkontrolovat sdružování a minifikace. Nejprve vytvořte nový projekt ASP.NET MVC internet s názvem **MvcBM** beze změny některý z výchozí hodnoty.
+V této části vytvoříme projekt ASP.NET MVC, který bude kontrolovat sdružování a minifikace. Nejprve vytvořte nový internetový projekt ASP.NET MVC s názvem **MvcBM** , aniž by došlo ke změně výchozího nastavení.
 
-Otevřít *aplikace\\\_Start\\BundleConfig.cs* souboru a zkoumat `RegisterBundles` metodu, která se používá k vytváření, registrace a konfigurace sady. Následující kód ukazuje část `RegisterBundles` metody.
+Otevřete *aplikaci\\\_spusťte soubor\\BundleConfig.cs* a Projděte si `RegisterBundles` metodu, která se používá k vytváření, registraci a konfiguraci sad. Následující kód ukazuje část metody `RegisterBundles`.
 
 [!code-csharp[Main](bundling-and-minification/samples/sample5.cs)]
 
-Předchozí kód vytvoří novou sadu JavaScript s názvem *~/bundles/jquery* , který obsahuje všechny příslušné (, které je ladění nebo ale ne minifikovaný. *vsdoc*) soubory *skripty* složku, která odpovídá řetězci zástupný znak "~/Scripts/jquery-{version} .js". Pro technologii ASP.NET MVC 4, to znamená, že s konfiguraci ladění, soubor *jquery 1.7.1.js* se přidají do sady. V konfiguraci vydané verze *jquery 1.7.1.min.js* budou přidány. Vytváření prostředků framework následuje několik běžné konvence jako například:
+Předchozí kód vytvoří novou sadu JavaScriptu s názvem *~/Bundles/jQuery* , která obsahuje všechny příslušné (tj. Debug nebo minifikovaného, ale ne. *vsdoc*) soubory ve složce *Scripts* , které odpovídají řetězci zástupné karty "~/Scripts/jQuery-{Version}.js". Pro ASP.NET MVC 4 to znamená s konfigurací ladění, soubor *jQuery 1.7.1. js* se přidá do sady prostředků. V konfiguraci vydané verze se přidá *jQuery 1.7.1. min. js* . Rozhraní sdružování se skládá z několika běžných konvencí, jako například:
 
-- Výběr souboru ".min" pro uvolnění při *FileX.min.js* a *FileX.js* existovat.
-- Výběr verze bez ".min" pro ladění.
-- Ignoruje se "-vsdoc" soubory (například *jquery. 1.7.1 vsdoc.js*), které jsou používány pouze technologie IntelliSense.
+- Výběr souboru ". min" pro vydání, pokud existují *FileX. min. js* a *FileX. js* .
+- Výběr verze, která není ". min" pro ladění.
+- Ignorují se soubory "-vsdoc" (například *jQuery 1.7.1-vsdoc. js*), které jsou používány pouze pomocí technologie IntelliSense.
 
-`{version}` Zástupný znak porovnání uvedené výše se používá pro automatické vytvoření svazku jQuery s příslušnou verzi jQuery ve vaší *skripty* složky. V tomto příkladu pomocí zástupný znak poskytuje následující výhody:
+`{version}` zástupné znaky, které jsou uvedené výše, slouží k automatickému vytvoření sady jQuery s příslušnou verzí jQuery ve složce *Scripts* . V tomto příkladu použití zástupné karty přináší následující výhody:
 
-- Umožňuje aktualizovat na novější verzi jQuery beze změny předchozí kód sady nebo jQuery odkazů v zobrazení stránek pomocí balíčku NuGet.
-- Automaticky vybere na plnou verzi pro konfiguraci ladění a verze ".min" pro verzi sestavení.
+- Umožňuje použít NuGet pro aktualizaci na novější verzi jQuery beze změny předcházejícího kódu služby sdružování nebo odkazů jQuery na stránkách zobrazení.
+- Automaticky vybere úplnou verzi pro konfigurace ladění a verzi ". min" pro sestavení vydaných verzí.
 
 ## <a name="using-a-cdn"></a>Používání sítě CDN
 
- Následující kód nahradí sady místní jQuery sada jQuery CDN.
+ Následující kód nahrazuje místní sadu jQuery pomocí sady CDN jQuery.
 
 [!code-csharp[Main](bundling-and-minification/samples/sample6.cs)]
 
-Zatímco ve verzi režimu a ladicí verzi jQuery se načtou místně v režimu ladění, bude ve výše uvedeném kódu, požadovaných jQuery z CDN. Při používání sítě CDN, měli byste mít záložní mechanismus v případě selhání CDN požadavku. Následující kód fragment od konce souboru, který ukazuje soubor rozložení přidána do žádosti o jQuery by měla selhání CDN.
+Ve výše uvedeném kódu bude z CDN v režimu vydání požadován příkaz jQuery a ladicí verze jQuery bude v režimu ladění načtena místně. Při používání sítě CDN byste měli mít záložní mechanismus pro případ, že žádost CDN není úspěšná. Následující fragment kódu z konce souboru rozložení zobrazuje skript přidaný do požadavku jQuery, aby síť CDN nebyla úspěšná.
 
 [!code-cshtml[Main](bundling-and-minification/samples/sample7.cshtml?highlight=5-13)]
 
-## <a name="creating-a-bundle"></a>Vytvoření svazku
+## <a name="creating-a-bundle"></a>Vytvoření sady prostředků
 
-[Sady](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) třídy `Include` metoda přijímá pole řetězců, kde je každý řetězec virtuální cesty k prostředku. Následující kód z `RegisterBundles` metodu *aplikace\\\_Start\\BundleConfig.cs* soubor ukazuje, jak více souborů jsou přidány k sadě:
+Třída [sady prostředků](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) `Include` metoda přebírá pole řetězců, kde každý řetězec je virtuální cesta k prostředku. Následující kód z metody `RegisterBundles` v *App\\\_Start\\BundleConfig.cs* ukazuje, jakým způsobem se do sady přidaly různé soubory:
 
 [!code-csharp[Main](bundling-and-minification/samples/sample8.cs)]
 
-[Sady](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) třídy `IncludeDirectory` zadaná metoda přidat všechny soubory v adresáři (a volitelně všech podadresářích), které odpovídají vzoru hledání. [Sady](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) třídy `IncludeDirectory` rozhraní API je uveden níže:
+K přidání všech souborů v adresáři (a volitelně všech podadresářích), které odpovídají vzoru hledání, je k dispozici `IncludeDirectory` třídy [sady prostředků](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) . `IncludeDirectory` rozhraní API třídy [sady prostředků](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) se zobrazuje níže:
 
 [!code-csharp[Main](bundling-and-minification/samples/sample9.cs)]
 
-Sady jsou odkazovány v zobrazení pomocí metody vykreslení (`Styles.Render` pro šablony stylů CSS a `Scripts.Render` pro jazyk JavaScript). Následující kód z *zobrazení\\Shared\\\_Layout.cshtml* soubor ukazuje, jak odkazovat na výchozí zobrazení projektu ASP.NET internet sady šablon stylů CSS a JavaScriptu.
+Na sady jsou odkazovány v zobrazeních pomocí metody Render (`Styles.Render` pro CSS a `Scripts.Render` pro JavaScript). Následující kód z *zobrazení\\sdílené\\\_layout. cshtml* ukazuje, jak výchozí ASP.NET zobrazení internetového projektu odkazuje na sady CSS a JavaScript.
 
 [!code-cshtml[Main](bundling-and-minification/samples/sample10.cshtml?highlight=5-6,11)]
 
-Všimněte si, že metody vykreslení přijímá pole řetězců, takže můžete přidat víc sad na jednom řádku kódu. Obecně můžete použít metody vykreslení, které vytvářejí nezbytné HTML tak, aby odkazovaly asset. Můžete použít `Url` metoda ke generování adresy URL k prostředku bez potřeby tak, aby odkazovaly asset značky. Předpokládejme, že jste chtěli použít nové HTML5 [asynchronní](http://www.whatwg.org/specs/web-apps/current-work/#attr-script-async) atribut. Následující kód ukazuje, jak odkazovat pomocí modernizr `Url` metody.
+Všimněte si, že metody vykreslování přebírají pole řetězců, takže můžete přidat více sad v jednom řádku kódu. Obecně budete chtít použít metody vykreslení, které vytvoří nezbytný kód HTML pro odkaz na prostředek. Můžete použít metodu `Url` pro vygenerování adresy URL assetu bez označení potřebného k odkazování na prostředek. Předpokládejme, že jste chtěli použít nový [asynchronní](http://www.whatwg.org/specs/web-apps/current-work/#attr-script-async) atribut HTML5. Následující kód ukazuje, jak odkazovat na modernizr pomocí metody `Url`.
 
 [!code-cshtml[Main](bundling-and-minification/samples/sample11.cshtml?highlight=11)]
 
-## <a name="using-the--wildcard-character-to-select-files"></a>Použití "\*" zástupný znak a vyberte soubory
+## <a name="using-the--wildcard-character-to-select-files"></a>Použití zástupného znaku "\*" pro výběr souborů
 
-Virtuální cesta zadaná v `Include` metoda a hledání vzorku v `IncludeDirectory` metoda může přijmout jednu "\*" zástupný znak jako předponu nebo příponu je třeba v posledním segmentu cesty. Hledaný řetězec se nerozlišují malá a velká písmena. `IncludeDirectory` Metoda má povolenou možnost hledání podadresářů.
+Virtuální cesta zadaná v metodě `Include` a ve vzorci hledání v metodě `IncludeDirectory` může přijmout jeden zástupný znak "\*" jako předponu nebo příponu do posledního segmentu cesty. V řetězci hledání se nerozlišují malá a velká písmena. Metoda `IncludeDirectory` má možnost Hledat podadresáře.
 
-Vezměte v úvahu projekt s následující soubory jazyka JavaScript:
+Vezměte v úvahu projekt s následujícími soubory JavaScriptu:
 
 - *Scripts\\Common\\AddAltToImg.js*
 - *Scripts\\Common\\ToggleDiv.js*
 - *Scripts\\Common\\ToggleImg.js*
-- *Scripts\\Common\\Sub1\\ToggleLinks.js*
+- *Skripty\\Common\\sub1\\ToggleLinks. js*
 
-![dir imag](bundling-and-minification/_static/image7.png)
+![DIR imag](bundling-and-minification/_static/image7.png)
 
-Soubory přidané do sady pomocí zástupného znaku, jak je znázorněno v následující tabulce:
+Následující tabulka ukazuje soubory přidané do sady prostředků pomocí zástupného znaku, jak je znázorněno níže:
 
-| **Volání** | **Soubory přidané nebo výjimce** |
+| **Volání** | **Přidané soubory nebo vyvolání výjimky** |
 | --- | --- |
-| Zahrnout ("~/Scripts/Common/\*.js") | *AddAltToImg.js*, *ToggleDiv.js*, *ToggleImg.js* |
-| Zahrnout ("~/Scripts/Common/T\*.js") | Neplatný vzor došlo k výjimce. Zástupný znak je povolena pouze u předpony nebo přípony. |
-| Zahrnout ("~/Scripts/Common/\*og.\*") | Neplatný vzor došlo k výjimce. Je povolený jenom jeden zástupný znak. |
-| Zahrnout ("~/Scripts/Common/T\*") | *ToggleDiv.js*, *ToggleImg.js* |
-| Zahrnout ("~/Scripts/Common/\*") | Neplatný vzor došlo k výjimce. Čistě zástupný segment není platný. |
-| IncludeDirectory ("~/Scripts/Common", "T\*") | *ToggleDiv.js*, *ToggleImg.js* |
-| IncludeDirectory ("~/Scripts/Common", "T\*", true) | *ToggleDiv.js*, *ToggleImg.js*, *ToggleLinks.js* |
+| Include ("~/Scripts/Common/\*. js") | *AddAltToImg.js*, *ToggleDiv.js*, *ToggleImg.js* |
+| Include ("~/Scripts/Common/T\*. js") | Neplatná výjimka vzoru. Zástupný znak je povolen pouze pro předponu nebo příponu. |
+| Include ("~/Scripts/Common/\*og.\*") | Neplatná výjimka vzoru. Je povolen pouze jeden zástupný znak. |
+| Include ("~/Scripts/Common/T\*") | *ToggleDiv.js*, *ToggleImg.js* |
+| Include ("~/Scripts/Common/\*") | Neplatná výjimka vzoru. Čistý zástupný segment není platný. |
+| IncludeDirectory ("~/Scripts/Common"; "T\*") | *ToggleDiv.js*, *ToggleImg.js* |
+| IncludeDirectory ("~/Scripts/Common"; "T\*"; true) | *ToggleDiv.js*, *ToggleImg.js*, *ToggleLinks.js* |
 
-Každý soubor explicitně přidáte k sadě je obecně upřednostňované přes zástupnými znaky načítání souborů z následujících důvodů:
+Explicitní přidání každého souboru do sady se obvykle upřednostňuje pro načítání souborů se zástupnými znaky z následujících důvodů:
 
-- Přidávání skriptů pomocí zástupných znaků výchozí hodnoty na načítání v abecedním pořadí, což je obvykle nechcete. Soubory šablon stylů CSS a JavaScript je často potřeba přidat v určitém pořadí (neabecední). Toto riziko lze snížit tak, že přidáte vlastní [IBundleOrderer](https://msdn.microsoft.com/library/system.web.optimization.ibundleorderer(VS.110).aspx) implementaci, ale explicitně přidat každého souboru je menší náchylné k chybám. Například můžete přidat nové prostředky do složky v budoucnu může být potřeba upravit vaše [IBundleOrderer](https://msdn.microsoft.com/library/system.web.optimization.ibundleorderer(VS.110).aspx) implementace.
-- Zobrazit konkrétní soubory přidané do adresáře pomocí zástupný znak načítání mohou být součástí všech zobrazení odkazující na tuto sadu. Je-li zobrazit konkrétní skript se přidá k sadě, se může zobrazit chyba jazyka JavaScript na jiné zobrazení, které odkazují na sadu.
-- Soubory CSS, které importují ostatní soubory za následek importované soubory načíst dvakrát. Například následující kód vytvoří sada prostředků s největším počtem souborů CSS motiv uživatelského rozhraní jQuery načíst dvakrát. 
+- Přidávání skriptů podle zástupných znaků, aby je bylo možné načíst v abecedním pořadí, což obvykle není to, co chcete. Soubory CSS a JavaScript často musí být přidány do konkrétní (neabecední) objednávky. Toto riziko můžete zmírnit přidáním vlastní implementace [IBundleOrderer](https://msdn.microsoft.com/library/system.web.optimization.ibundleorderer(VS.110).aspx) , ale explicitní přidání každého souboru je méně náchylné k chybám. Například můžete do složky v budoucnu přidat nové prostředky, které mohou vyžadovat úpravu [IBundleOrderer](https://msdn.microsoft.com/library/system.web.optimization.ibundleorderer(VS.110).aspx) implementace.
+- Zobrazení konkrétních souborů přidaných do adresáře pomocí zástupných znaků můžete zahrnout do všech zobrazení odkazujících na daný svazek. Pokud je do sady prostředků přidán konkrétní skript, může se v jiných zobrazeních, která odkazují na daný svazek, zobrazit chyba JavaScriptu.
+- Soubory CSS, které importují jiné soubory, mají za následek dvojí načtení importovaných souborů. Například následující kód vytvoří sadu prostředků s největším počtem souborů CSS motivu uživatelského rozhraní jQuery, které jsou načteny dvakrát. 
 
     [!code-csharp[Main](bundling-and-minification/samples/sample12.cs)]
 
-  Selektor zástupný znak "\*.css" přináší do každého souboru CSS ve složce, včetně *obsahu\\motivy\\základní\\jquery.ui.all.css* souboru. *Jquery.ui.all.css* soubor importuje další soubory šablon stylů CSS.
+  Selektor zástupných znaků "\*. css" přiřadí všechny soubory CSS ve složce, včetně *obsahu\\themes\\base\\jQuery. UI. All. CSS* . Soubor *jQuery. UI. All. CSS* importuje další soubory CSS.
 
-## <a name="bundle-caching"></a>Bundle Caching
+## <a name="bundle-caching"></a>Ukládání sady prostředků do mezipaměti
 
-Sady nastavit hlavičku protokolu HTTP vyprší platnost jeden rok od při vytvoření sady. Když přejdete na stránku předchozího prohlíženého ukazuje Fiddleru IE neprovede Podmíněný požadavek pro sadu, to znamená, nejsou žádné požadavky metody GET protokolu HTTP z Internet Exploreru pro sady a žádné odpovědi HTTP 304 ze serveru. Můžete vynutit IE provést podmíněný požadavek pro každou sadu pomocí klávesy F5 (což v odpovědi HTTP 304 pro každou sadu). Úplná aktualizace můžete vynutit pomocí ^ F5 (výsledkem odpověď HTTP 200 pro každé sady prostředků.)
+Sady svazků nastavují hlavičku Expires protokolu HTTP jeden rok od okamžiku vytvoření sady. Pokud přejdete na dříve zobrazenou stránku, Fiddler ukazuje, že IE nevytváří podmíněný požadavek na sadu, tedy neexistují žádné požadavky HTTP GET z IE na sady a žádné odpovědi HTTP 304 ze serveru. Můžete vynutit, aby aplikace IE nastala podmíněný požadavek pro jednotlivé sady pomocí klávesy F5 (výsledkem je odpověď HTTP 304 pro jednotlivé sady). Úplnou aktualizaci můžete vynutit pomocí ^ F5 (výsledkem bude odpověď HTTP 200 pro jednotlivé sady.)
 
-Na následujícím obrázku **ukládání do mezipaměti** kartu podokna Fiddleru odpovědi:
+Na následujícím obrázku je vidět karta **ukládání do mezipaměti** v podokně odpověď Fiddler:
 
-![ukládání do mezipaměti image fiddleru](bundling-and-minification/_static/image8.png)
+![Obrázek ukládání do mezipaměti Fiddler](bundling-and-minification/_static/image8.png)
 
-Žádost   
+Požadavek   
 `http://localhost/MvcBM_time/bundles/AllMyScripts?v=r0sLDicvP58AIXN_mc3QdyVvVj5euZNzdsa2N1PKvb81`  
- je pro sadu **AllMyScripts** a obsahuje pár řetězec dotazu **v = r0sLDicvP58AIXN\\\_mc3QdyVvVj5euZNzdsa2N1PKvb81**. Řetězec dotazu **v** má hodnotu token, který je jedinečný identifikátor sloužící k ukládání do mezipaměti. Tak dlouho, dokud nedojde ke změně sady, bude vyžadovat aplikace ASP.NET **AllMyScripts** sady prostředků pomocí tohoto tokenu. Pokud změn v souboru v sadě, optimalizační rozhraní technologie ASP.NET se vygenerovat nový token, zajištění, že požadavky na prohlížeč pro sadu získá nejnovější sady.
+ je pro sadu prostředků **AllMyScripts** a obsahuje dvojici řetězců dotazu **v = R0sLDicvP58AIXN\\\_mc3QdyVvVj5euZNzdsa2N1PKvb81**. Řetězec dotazu **v** má token hodnoty, který je jedinečný identifikátor používaný pro ukládání do mezipaměti. Pokud se svazek nemění, aplikace ASP.NET požádá o sadu prostředků **AllMyScripts** pomocí tohoto tokenu. Pokud se kterýkoli soubor ve svazku změní, rozhraní optimalizace ASP.NET vygeneruje nový token, který zaručuje, že požadavky prohlížeče na tento svazek získají nejnovější sadu.
 
-Je-li spustit nástroje pro vývojáře IE9 F12 a přejděte na stránku dříve načtená, IE nesprávně ukazuje podmíněné požadavků GET na každá sada a server vrací HTTP 304. Si můžete přečíst, proč IE9 má potíže s zjištění, zda Podmíněný požadavek byl proveden v příspěvku na blogu [použití sítě CDN a Expires ke zlepšení výkonu webu](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx).
+Pokud spustíte vývojářské nástroje IE9 F12 a přejdete na dříve načtenou stránku, IE nesprávně zobrazuje podmíněné požadavky GET na jednotlivé sady a server, který vrací HTTP 304. Můžete si přečíst, proč má IE9 problémy s určením, jestli se podmíněný požadavek provedl v položce blogu [pomocí sítě CDN a vyprší za účelem vylepšení výkonu webu](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx).
 
-## <a name="less-coffeescript-scss-sass-bundling"></a>CoffeeScript, SCSS, Sass, méně sdružování.
+## <a name="less-coffeescript-scss-sass-bundling"></a>LESS, CoffeeScript, SCSS, Sass sdružování.
 
-Sdružování a minifikace framework poskytuje mechanismus pro zpracování zprostředkující jazyků, jako [SCSS](http://sass-lang.com/), [Sass](http://sass-lang.com/), [méně](http://www.dotlesscss.org/) nebo [Coffeescript ](http://coffeescript.org/)a použití transformací, jako je připravenost k minifikaci výslednou sadu. Chcete-li například přidat [.less](http://www.dotlesscss.org/) soubory do projektu MVC 4:
+Rozhraní sdružování a minifikace poskytuje mechanismus pro zpracování zprostředkujících jazyků, jako je [scss](http://sass-lang.com/), [Sass](http://sass-lang.com/), [menší](http://www.dotlesscss.org/) nebo [Coffeescript](http://coffeescript.org/), a použití transformací, jako je minifikace, do výsledné sady. Například pro přidání souborů [. less](http://www.dotlesscss.org/) do projektu MVC 4:
 
-1. Vytvořte složku pro méně obsah. V následujícím příkladu *obsahu\\MyLess* složky.
-2. Přidat [.less](http://www.dotlesscss.org/) balíček NuGet **bez tečky** do projektu.  
-    ![Instalace bez tečky NuGet](bundling-and-minification/_static/image9.png)
-3. Přidat třídu, která implementuje [IBundleTransform](https://msdn.microsoft.com/library/system.web.optimization.ibundletransform(VS.110).aspx) rozhraní. Pro transformace .less přidejte následující kód do vašeho projektu.
+1. Vytvořte složku pro méně obsahu. Následující příklad používá složku *Content\\MyLess* .
+2. Přidejte do projektu [necelou](http://www.dotlesscss.org/) plochu **balíčku NuGet** .  
+    ![instalace nech NuGet](bundling-and-minification/_static/image9.png)
+3. Přidejte třídu, která implementuje rozhraní [IBundleTransform](https://msdn.microsoft.com/library/system.web.optimization.ibundletransform(VS.110).aspx) . Pro transformaci. less přidejte do projektu následující kód.
 
     [!code-csharp[Main](bundling-and-minification/samples/sample13.cs)]
-4. Vytvořit sadu s méně soubory `LessTransform` a [CssMinify](https://msdn.microsoft.com/library/system.web.optimization.cssminify(VS.110).aspx) transformace. Přidejte následující kód, který `RegisterBundles` metoda ve *aplikace\\_spustit\\BundleConfig.cs* souboru.
+4. Pomocí `LessTransform` a transformace [CssMinify](https://msdn.microsoft.com/library/system.web.optimization.cssminify(VS.110).aspx) vytvořte sadu méně souborů. Do metody `RegisterBundles` v souboru *App\\_Start\\souboru BundleConfig.cs* přidejte následující kód.
 
     [!code-csharp[Main](bundling-and-minification/samples/sample14.cs)]
-5. Přidejte následující kód všech zobrazení, která odkazuje na menší sadu.
+5. Přidejte následující kód do všech zobrazení, která odkazují na méně sady.
 
     [!code-cshtml[Main](bundling-and-minification/samples/sample15.cshtml)]
 
-## <a name="bundle-considerations"></a>Důležité informace o sadě
+## <a name="bundle-considerations"></a>Požadavky sady prostředků
 
-Dobré konvence při vytváření sady se zahrnou "svázat" jako předponu v název sady prostředků. To zabrání možný výskyt [směrování konflikt](https://forums.asp.net/post/5012037.aspx).
+Dobrým postupem při vytváření svazků je zahrnutí "sady" jako předpony do názvu sady prostředků. Tím se zabrání možnému [konfliktu směrování](https://forums.asp.net/post/5012037.aspx).
 
-Jakmile upgradujete jeden soubor v sadě, se vygeneruje nový token pro parametr řetězce dotazu sady a úplné sady musí být staženy automaticky při příštím klient požádá o stránku obsahující sadu. V tradičních kódu, kde je každý prostředek uvedeni jednotlivě byste stáhli pouze změněný soubor. Prostředky, které se často mění, nemusí být vhodnými kandidáty pro sdružování.
+Po aktualizaci jednoho souboru v sadě se pro parametr řetězce dotazu sady prostředků vygeneruje nový token a při příštím požadavku na stránku obsahující sadu se musí stáhnout úplná sada prostředků. V tradičním označení, kde je každý Asset uveden samostatně, bude stažen pouze změněný soubor. Prostředky, které se často mění, nemusí být vhodnými kandidáty pro sdružování.
 
-Sdružování a minifikace především zvýšení první čas načítání stránky požadavku. Jakmile požádal webovou stránku v prohlížeči ukládá do mezipaměti prostředky (jazyka JavaScript, CSS a obrázků) tak, aby sdružování a minifikace neposkytne žádné zvýšení výkonu při požadavku na stejnou stránku nebo stránky na stejném webu, požadování stejné prostředky. Pokud nenastavíte vyprší platnost záhlaví správně na vaše prostředky a nepoužíváte sdružování a minifikace, heuristiky aktuálnosti prohlížeče označí prostředky zastaralé po několika dnech a prohlížeč bude vyžadovat ověření žádosti pro každý prostředek. V takovém případě sdružování a minifikace poskytnout zvýšení výkonu od prvního požadavku na stránce. Další podrobnosti najdete v blogu [použití sítě CDN a Expires ke zlepšení výkonu webu](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx).
+Seřízení a minifikace primárně zlepšují dobu načtení první stránky. Po vyžádání webové stránky prohlížeč ukládá do mezipaměti prostředky (JavaScript, CSS a image), takže sdružování a minifikace nebude poskytovat žádné zvýšení výkonu při požadavku na stejnou stránku nebo stránky na stejném webu, který požaduje stejné prostředky. Pokud ve svých prostředcích nenastavíte hlavičku Expires správně a nepoužijete sdružování a minifikace, heuristika aktuálnosti prohlížečů označí prostředky jako zastaralé po několika dnech a prohlížeč bude pro každý Asset vyžadovat požadavek na ověření. V tomto případě sdružování a minifikace poskytují zvýšení výkonu po žádosti o první stránku. Podrobnosti najdete v blogu [použití sítě CDN a vyprší pro zlepšení výkonu](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx)webu.
 
-Omezení prohlížeče šest souběžných připojení za každý název hostitele lze zmírnit použitím [CDN](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx). Protože CDN bude mít jiný název hostitele než hostingové lokalitu, nebude asset požadavky z CDN započítávat šest limitu souběžných připojení do hostitelského prostředí. Sítě CDN můžete také zadat běžné ukládání do mezipaměti balíčku a hraničními zařízeními výhody ukládání do mezipaměti.
+Omezení prohlížeče šesti současných připojení na každý název hostitele je možné zmírnit pomocí sítě [CDN](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx). Vzhledem k tomu, že CDN bude mít jiný název hostitele než váš hostující web, požadavky na prostředky z CDN se nebudou počítat s omezením šesti současných připojení k vašemu hostitelskému prostředí. CDN může také poskytovat společné ukládání balíčků do mezipaměti a výhody ukládání do mezipaměti.
 
-Sady by měly být rozdělené podle stránky, které potřebujete. Například výchozí šablony ASP.NET MVC pro aplikaci internet vytvoří svazek sad ověřování jQuery odděleně od jQuery. Protože výchozí zobrazení vytvořené žádný vstup a neprovede odeslání hodnoty, jejich nezahrnují sady ověřování.
+Balíčky by měly být rozdělené podle stránek, které je potřebují. Například výchozí šablona ASP.NET MVC pro internetovou aplikaci vytvoří sadu prostředků jQuery oddělenou od jQuery. Vzhledem k tomu, že výchozí zobrazení nejsou k dispozici a neúčtují hodnoty, neobsahují sadu ověření.
 
-`System.Web.Optimization` Obor názvů je implementována v *System.Web.Optimization.dll*. Využívá knihovna WebGrease (*WebGrease.dll*) pro možnosti připravenost k minifikaci, který pak používá *Antlr3.Runtime.dll*.
+Obor názvů `System.Web.Optimization` je implementován v *knihovně System. Web. Optimization. dll*. Využívá knihovnu webodmašťování (*webodmašťování. dll*) pro funkce minifikace, které zase používá *Antlr3. Runtime. dll*.
 
-*Používám Twitteru rychlé příspěvky a sdílet odkazy. Tento popisovač Twitteru je*: [@RickAndMSFT](http://twitter.com/RickAndMSFT)
+*Používám Twitter k vytváření rychlých příspěvků a sdílení odkazů. Moje obslužná rutina Twitteru je*: [@RickAndMSFT](http://twitter.com/RickAndMSFT)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - Video:[sdružování a optimalizace](https://channel9.msdn.com/Events/aspConf/aspConf/Bundling-and-Optimizing) podle [Howard Dierking](https://twitter.com/#!/howard_dierking)
-- [Přidání optimalizaci webů do webových stránek webu](https://blogs.msdn.com/b/rickandy/archive/2012/08/15/adding-web-optimization-to-a-web-pages-site.aspx).
-- [Přidání sdružování a Minifikace do webových formulářů](https://blogs.msdn.com/b/rickandy/archive/2012/08/14/adding-bundling-and-minification-to-web-forms.aspx).
-- [Výkon důsledky sdružování a Minifikace na procházení webu](https://blogs.msdn.com/b/henrikn/archive/2012/06/17/performance-implications-of-bundling-and-minification-on-http.aspx) podle [společnost Nielsen Petr F](http://en.wikipedia.org/wiki/Henrik_Frystyk_Nielsen) [@frystyk](https://twitter.com/frystyk)
-- [Použití sítě CDN a zajistí vypršení platnosti ke zlepšení výkonu webu](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx) od Ricka Andersona [@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
-- [Minimalizovat požadavku (doby odezvy)](https://developers.google.com/speed/docs/best-practices/rtt)
+- [Přidání webové optimalizace do webu webových stránek](https://blogs.msdn.com/b/rickandy/archive/2012/08/15/adding-web-optimization-to-a-web-pages-site.aspx).
+- [Přidání sdružování a minifikace do webových formulářů](https://blogs.msdn.com/b/rickandy/archive/2012/08/14/adding-bundling-and-minification-to-web-forms.aspx).
+- [Dopad na výkon sdružování a minifikace na procházení webu pomocí aplikace](https://blogs.msdn.com/b/henrikn/archive/2012/06/17/performance-implications-of-bundling-and-minification-on-http.aspx) [petr F Nielsen](http://en.wikipedia.org/wiki/Henrik_Frystyk_Nielsen) [@frystyk](https://twitter.com/frystyk)
+- [Použití sítě CDN a vyprší za účelem vylepšení výkonu](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx) webu Rick Anderson [@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
+- [Minimalizovat čas RTT (doba odezvy)](https://developers.google.com/speed/docs/best-practices/rtt)
 
-## <a name="contributors"></a>Contributors
+## <a name="contributors"></a>Spoluautoři
 
 - Hao Kung
 - [Howard Dierking](https://twitter.com/#!/howard_dierking)

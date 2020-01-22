@@ -3,14 +3,14 @@ title: Práce s SameSite soubory cookie v ASP.NET
 author: rick-anderson
 description: Naučte se používat k SameSite souborů cookie v ASP.NET.
 ms.author: riande
-ms.date: 12/03/2019
+ms.date: 1/22/2019
 uid: samesite/system-web-samesite
-ms.openlocfilehash: 47a3d7576edb0e818c39b32fbbcb98475248e18e
-ms.sourcegitcommit: 7b1e1784213dd4c301635f9e181764f3e2f94162
+ms.openlocfilehash: d2160bd9aeb93398b49b3a0e5e7a8a4404a5bc63
+ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74993064"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76519190"
 ---
 # <a name="work-with-samesite-cookies-in-aspnet"></a>Práce s SameSite soubory cookie v ASP.NET
 
@@ -25,7 +25,7 @@ SameSite je koncept [organizace IETF](https://ietf.org/about/) navržený tak, a
 
 Parametr `None` způsobuje problémy s kompatibilitou s klienty, kteří implementovali předchozí [koncept standard 2016](https://tools.ietf.org/html/draft-west-first-party-cookies-07) (například iOS 12). Viz [Podpora starších prohlížečů](#sob) v tomto dokumentu.
 
-Každá součást ASP.NET Core, která generuje soubory cookie, musí rozhodnout, zda je SameSite vhodná.
+Každá komponenta ASP.NET, která generuje soubory cookie, musí rozhodnout, zda je SameSite vhodná.
 
 ## <a name="api-usage-with-samesite"></a>Použití rozhraní API s SameSite
 
@@ -44,6 +44,10 @@ Podpora SameSite byla poprvé implementována v .NET 4.7.2 s využitím [koncept
 * Určuje soubory cookie, které explicitně vyhodnotí `SameSite=None`, aby bylo možné povolit doručování mezi weby, musí být označeno jako `Secure`. `None` je nová položka k odhlášení.
 * Je podporován opravami vydanými podle výše uvedených v článku znalostní báze.
 * Ve výchozím nastavení je naplánovaná podpora [Chrome](https://chromestatus.com/feature/5088147346030592) v [únoru 2020](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html). Prohlížeče začaly při přesunu do tohoto standardu v 2019.
+
+### <a name="azure-app-servicesamesite-cookie-handling"></a>Azure App Service – zpracování souborů cookie SameSite
+
+Další informace najdete v tématu [Azure App Service – zpracování souborů cookie SameSite a .NET Framework opravy 4.7.2](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/) .
 
 <a name="sob"></a>
 

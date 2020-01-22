@@ -8,20 +8,20 @@ ms.date: 03/26/2015
 ms.assetid: d4911cb3-1afb-4805-b860-10818c4b1280
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: 07f5b290b73f75000e6f29fe09e4dc25e144452f
-ms.sourcegitcommit: 969e7db924ebad3cc0f0cb0d65d148e8b9221b9a
+ms.openlocfilehash: 6169c972ad0f4ee2079d3638c54a5accc4b8b3de
+ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899700"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76519346"
 ---
 # <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>Vytvoření zabezpečené webové aplikace ASP.NET MVC 5 s přihlášením, potvrzením e-mailu a resetováním hesla (C#)
 
-Od [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 5 s potvrzením e-mailu a resetováním hesla pomocí systému členství v ASP.NET Identity.
 
-Aktualizovanou verzi tohoto kurzu, který používá .NET Core, najdete v tématu [potvrzení účtu a obnovení hesla v ASP.NET Core [/ASPNET/Core/Security/Authentication/accconfirm).
+Aktualizovanou verzi tohoto kurzu, který používá .NET Core, najdete [v tématu potvrzení účtu a obnovení hesla v ASP.NET Core](/aspnet/core/security/authentication/accconfirm).
 
 <a id="createMvc"></a>
 ## <a name="create-an-aspnet-mvc-app"></a>Vytvoření aplikace ASP.NET MVC

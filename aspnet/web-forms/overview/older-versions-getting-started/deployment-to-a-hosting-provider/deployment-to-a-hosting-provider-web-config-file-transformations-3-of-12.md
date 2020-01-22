@@ -8,12 +8,12 @@ ms.date: 11/17/2011
 ms.assetid: 2b0df3d9-450b-4ea6-b315-4c9650722cad
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: fe71e6cfb0f4c5f1d99b326e9d90edb6c8c5feee
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 9e7902bcf8a16c154aee1a982824bfaedeea7d9d
+ms.sourcegitcommit: 7b1e1784213dd4c301635f9e181764f3e2f94162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600536"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309233"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-webconfig-file-transformations---3-of-12"></a>Nasazení webové aplikace SQL Server Compact v ASP.NET s využitím sady Visual Studio nebo Visual Web Developer: transformace souboru Web. config-3 z 12
 
@@ -43,7 +43,7 @@ Scénář, na který se tento kurz zabývá, najdete v části všechno, co se m
 
 V **Průzkumník řešení**rozbalte *Web. config* a zobrazte transformační soubory *Web. Debug. config* a *Web. Release. config* , které jsou vytvořeny ve výchozím nastavení pro dvě výchozí konfigurace sestavení.
 
-![Web. config_transform_files](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image1.png)
+![Web.config_transform_files](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/_static/image1.png)
 
 Transformační soubory pro vlastní konfigurace sestavení můžete vytvořit tak, že kliknete pravým tlačítkem na soubor Web. config a zvolíte přidat transformované **transformace** z kontextové nabídky, ale pro tento kurz to nemusíte dělat.
 

@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: e42c8388-04ed-4341-9fdb-41b1b4c06320
 msc.legacyurl: /web-api/overview/formats-and-model-binding/parameter-binding-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 5386532ab581e023d93d16a5d4107e07f40b986f
-ms.sourcegitcommit: 4b324a11131e38f920126066b94ff478aa9927f8
+ms.openlocfilehash: 032368f94ce32cf6231458649e8fdd42bee685e9
+ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985824"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76519255"
 ---
 # <a name="parameter-binding-in-aspnet-web-api"></a>Vazba parametrů ve webovém rozhraní API ASP.NET
 
@@ -26,7 +26,7 @@ Tento článek popisuje, jak rozhraní Web API váže parametry a jak můžete p
 
 Ve výchozím nastavení používá webové rozhraní API následující pravidla pro svázání parametrů:
 
-- Pokud je parametr "jednoduchý" typ, webové rozhraní API se pokusí získat hodnotu z identifikátoru URI. Mezi jednoduché typy patří [primitivní typy](https://msdn.microsoft.com/library/system.type.isprimitive.aspx) rozhraní .NET (**int**, **bool**, **Double**a tak dále), plus **TimeSpan**, **DateTime**, **GUID**, **Decimal**a **String**a *navíc* libovolný typ s typem. převaděč, který může být převeden z řetězce. (Další informace o převaděčích typů později.)
+- Pokud je parametr "jednoduchý" typ, webové rozhraní API se pokusí získat hodnotu z identifikátoru URI. Mezi jednoduché typy patří [primitivní typy](https://msdn.microsoft.com/library/system.type.isprimitive.aspx) rozhraní .NET (**int**, **bool**, **Double**a tak dále), plus **TimeSpan**, **DateTime**, **GUID**, **Decimal**a **String**a *navíc* libovolný typ s konvertorem typu, který může být převeden z řetězce. (Další informace o převaděčích typů později.)
 - Pro komplexní typy se webové rozhraní API pokusí přečíst hodnotu z těla zprávy pomocí [formátovacího modulu typu média](media-formatters.md).
 
 Příkladem je příklad typické metody řadiče webového rozhraní API:
@@ -41,7 +41,7 @@ Ve zbývající části tohoto článku si ukážeme, jak můžete přizpůsobit
 
 ## <a name="using-fromuri"></a>Použití [FromUri]
 
-Chcete-li vynutit, aby webové rozhraní API četlo komplexní typ z identifikátoru URI, přidejte do parametru atribut **[FromUri]** . Následující příklad definuje `GeoPoint` typ spolu s metodou kontroleru, která `GeoPoint` získá z identifikátoru URI.
+Chcete-li vynutit, aby webové rozhraní API četlo komplexní typ z identifikátoru URI, přidejte do parametru atribut **[FromUri]** . Následující příklad definuje typ `GeoPoint` společně s metodou kontroléru, která získá `GeoPoint` z identifikátoru URI.
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample2.cs)]
 
@@ -59,7 +59,7 @@ V tomto příkladu webové rozhraní API použije ke čtení hodnoty *názvu* z 
 
 [!code-console[Main](parameter-binding-in-aspnet-web-api/samples/sample4.cmd)]
 
-Když parametr obsahuje [FromBody], webové rozhraní API použije hlavičku Content-Type k výběru formátovacího modulu. V tomto příkladu je typem &quot;obsahu Application/JSON&quot; a tělo požadavku je nezpracovaný řetězec JSON (ne objekt JSON).
+Když parametr obsahuje [FromBody], webové rozhraní API použije hlavičku Content-Type k výběru formátovacího modulu. V tomto příkladu je typ obsahu &quot;Application/JSON&quot; a tělo požadavku je nezpracovaný řetězec JSON (ne objekt JSON).
 
 Čtení z textu zprávy může mít maximálně jeden parametr. Takže to nebude fungovat:
 
@@ -71,11 +71,11 @@ Důvodem pro toto pravidlo je, že text požadavku může být uložený v nebuf
 
 Webové rozhraní API můžete považovat za jednoduchý typ (takže se webové rozhraní API pokusí vytvořit vazby z identifikátoru URI) vytvořením **třídy TypeConverter** a zadáním převodu řetězce.
 
-Následující kód ukazuje `GeoPoint` třídu reprezentující zeměpisný bod a **třídu TypeConverter** , která je převedena z řetězců na `GeoPoint` instance. Třída je upravena pomocí atributu **[TypeConverter]** pro určení převaděče typu. `GeoPoint` (Tento příklad byl nechte inspirovat na blogovém příspěvku Jan Stallion, [jak vytvořit vazby k vlastním objektům v podpisech akcí v MVC/WebApi](https://blogs.msdn.com/b/jmstall/archive/2012/04/20/how-to-bind-to-custom-objects-in-action-signatures-in-mvc-webapi.aspx).)
+Následující kód ukazuje `GeoPoint` třídu reprezentující zeměpisný bod a **třídu TypeConverter** , která je převedena z řetězců na `GeoPoint` instance. Třída `GeoPoint` je upravena pomocí atributu **[TypeConverter]** pro určení konvertoru typu. (Tento příklad byl nechte inspirovat na blogovém příspěvku Jan Stallion, [jak vytvořit vazby k vlastním objektům v podpisech akcí v MVC/WebApi](https://blogs.msdn.com/b/jmstall/archive/2012/04/20/how-to-bind-to-custom-objects-in-action-signatures-in-mvc-webapi.aspx).)
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample6.cs)]
 
-Teď bude webové rozhraní API `GeoPoint` považovat za jednoduchý typ, což znamená, že se `GeoPoint` pokusí vytvořit vazby parametrů z identifikátoru URI. Do parametru není nutné zahrnout **[FromUri]** .
+Nyní bude webové rozhraní API zacházet `GeoPoint` jako jednoduchý typ, což znamená, že se pokusí navazovat `GeoPoint` parametry z identifikátoru URI. Do parametru není nutné zahrnout **[FromUri]** .
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample7.cs)]
 
@@ -100,14 +100,14 @@ Pořadač modelů získá nezpracované vstupní hodnoty od *poskytovatele hodno
 - Zprostředkovatel hodnoty převezme požadavek HTTP a naplní slovník párů klíč-hodnota.
 - Pořadač modelů používá tento slovník k naplnění modelu.
 
-Výchozí zprostředkovatel hodnoty ve webovém rozhraní API získává hodnoty z dat směrování a řetězce dotazu. Například pokud je `http://localhost/api/values/1?location=48,-122`identifikátor URI, zprostředkovatel hodnoty vytvoří následující páry klíč-hodnota:
+Výchozí zprostředkovatel hodnoty ve webovém rozhraní API získává hodnoty z dat směrování a řetězce dotazu. Například pokud je identifikátor URI `http://localhost/api/values/1?location=48,-122`, zprostředkovatel hodnoty vytvoří následující páry klíč-hodnota:
 
 - id = &quot;1&quot;
-- umístění = &quot;48 122&quot;
+- Location = &quot;48 122&quot;
 
 (Předpokládáme výchozí šablonu směrování, která je &quot;API/{Controller}/{ID}&quot;.)
 
-Název parametru, který se má vytvořit, je uložený ve vlastnosti **ModelBindingContext. model** . Pořadač modelů vyhledá klíč s touto hodnotou ve slovníku. Pokud hodnota existuje a může být převedena `GeoPoint`na, pořadač modelů přiřadí vázanou hodnotu vlastnosti **ModelBindingContext. model** .
+Název parametru, který se má vytvořit, je uložený ve vlastnosti **ModelBindingContext. model** . Pořadač modelů vyhledá klíč s touto hodnotou ve slovníku. Pokud hodnota existuje a je možné ji převést na `GeoPoint`, pořadač modelů přiřadí vázanou hodnotu k vlastnosti **ModelBindingContext. model** .
 
 Všimněte si, že pořadač modelů není omezený na jednoduchý převod typu. V tomto příkladu pořadač modelů nejprve vyhledá tabulku známých umístění a pokud se to nepovede, používá převod typu.
 
@@ -159,11 +159,11 @@ Pořadače modelů jsou konkrétní instancí obecnější mechanismu. Pokud se 
 
 **HttpParameterBinding** zodpovídá za vazbu parametru na hodnotu. V případě **[ModelBinder]** vrátí atribut implementaci **HttpParameterBinding** , která používá **IModelBinder** k provedení skutečné vazby. Můžete také implementovat vlastní **HttpParameterBinding**.
 
-Předpokládejme například, že chcete v žádosti získat značky ETag `if-match` a `if-none-match` Headers. Začneme definováním třídy, která bude představovat značky ETag.
+Předpokládejme například, že chcete získat značky ETag z `if-match` a `if-none-match` hlavičky v požadavku. Začneme definováním třídy, která bude představovat značky ETag.
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample19.cs)]
 
-Také definujeme výčet, který označuje, jestli se má z `if-match` hlavičky `if-none-match` nebo hlavičky získat ETag.
+Také definujeme výčet, který označuje, jestli se má získat ETag z hlavičky `if-match` nebo z hlavičky `if-none-match`.
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample20.cs)]
 
@@ -176,15 +176,15 @@ Metoda **ExecuteBindingAsync** provede vazbu. V rámci této metody přidejte ho
 > [!NOTE]
 > Pokud vaše metoda **ExecuteBindingAsync** přečte tělo zprávy s požadavkem, přepište vlastnost **WillReadBody** na hodnotu true. Text požadavku může být datový proud bez vyrovnávací paměti, který se dá číst jenom jednou, takže webové rozhraní API vynutilo pravidlo, které může přečíst tělo zprávy na maximálně jedné vazbě.
 
-Chcete-li použít vlastní **HttpParameterBinding**, můžete definovat atribut, který je odvozen z **ParameterBindingAttribute**. V `ETagParameterBinding`případě definujeme dva atributy, jeden pro `if-match` záhlaví a jeden pro `if-none-match` záhlaví. Obě jsou odvozeny od abstraktní základní třídy.
+Chcete-li použít vlastní **HttpParameterBinding**, můžete definovat atribut, který je odvozen z **ParameterBindingAttribute**. Pro `ETagParameterBinding`definujeme dva atributy, jednu pro `if-match` záhlaví a jednu pro `if-none-match` hlaviček. Obě jsou odvozeny od abstraktní základní třídy.
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample22.cs)]
 
-Zde je metoda kontroleru, která používá `[IfNoneMatch]` atribut.
+Zde je metoda kontroleru, která používá atribut `[IfNoneMatch]`.
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample23.cs)]
 
-Kromě **ParameterBindingAttribute**existuje další zavěšení pro přidání vlastní **HttpParameterBinding**. V objektu **HttpConfiguration** je vlastnost **ParameterBindingRules** kolekcí anonymních funkcí typu (**HttpParameterDescriptor**  - &gt; **HttpParameterBinding**). Například můžete přidat pravidlo, které obsahuje `ETagParameterBinding` libovolný parametr ETag metody Get s: `if-none-match`
+Kromě **ParameterBindingAttribute**existuje další zavěšení pro přidání vlastní **HttpParameterBinding**. V objektu **HttpConfiguration** je vlastnost **ParameterBindingRules** kolekcí anonymních funkcí typu (**HttpParameterDescriptor** -&gt; **HttpParameterBinding**). Například můžete přidat pravidlo, které jakýkoli parametr ETag v metodě GET používá `ETagParameterBinding` s `if-none-match`:
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample24.cs)]
 
@@ -203,9 +203,9 @@ Celý proces vázání parametrů je řízen službou, kterou může připojit *
 
 Pokud jste chtěli, můžete nahradit celou službu **IActionValueBinder** vlastní implementací.
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-[Ukázka vazby vlastního parametru](http://aspnet.codeplex.com/sourcecontrol/latest#Samples/WebApi/CustomParameterBinding/ReadMe.txt)
+[Ukázka vazby vlastního parametru](http://github.com/aspnet/samples/tree/master/samples/aspnet/WebApi/CustomParameterBinding)
 
 Jan kout zapsal dobrý seriál blogových příspěvků o vazbě parametru webového rozhraní API:
 

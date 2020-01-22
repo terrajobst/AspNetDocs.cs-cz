@@ -1,63 +1,63 @@
 ---
 uid: identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
-title: Účet potvrzení & obnovení hesla – ASP.NET Identity (C#) – ASP.NET 4.x
+title: Potvrzení účtu & obnovení hesla-ASP.NET Identity (C#)-ASP.NET 4. x
 author: HaoK
-description: Před tímto kurzem, které by se měla Dokončit nejdříve vytvořte zabezpečenou webovou aplikaci ASP.NET MVC 5 s přihlášením, resetovat heslo a potvrzení e-mailu. V tomto kurzu...
+description: Před provedením tohoto kurzu byste měli nejdřív dokončit vytvoření zabezpečené webové aplikace ASP.NET MVC 5 s přihlášením, potvrzením e-mailu a resetováním hesla. Tento kurz...
 ms.author: riande
 ms.date: 01/23/2019
 ms.assetid: 8d54180d-f826-4df7-b503-7debf5ed9fb3
 ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: ded3a9d931cc4cd4b99c1cb5012469fe66209f76
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 4b2c88280df39aa81d60f9508910e8fe5d6db6b8
+ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65118029"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76519112"
 ---
-# <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>Účet potvrzení a heslo pro obnovení s ASP.NET Identity (C#)
+# <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>Potvrzení účtu a obnovení hesla pomocí ASP.NET Identity (C#)
 
-> Před zahájením tohoto kurzu byste měli nejprve dokončit [vytvořit zabezpečenou webovou aplikaci ASP.NET MVC 5 s přihlášením, resetovat heslo a potvrzení e-mailu](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md). Tento kurz obsahuje další podrobnosti a obsahuje pokyny k nastavení e-mailu pro místní účet potvrzení a umožnit uživatelům resetovat zapomenuté heslo v ASP.NET Identity.
+> Před provedením tohoto kurzu byste měli nejdřív dokončit [Vytvoření zabezpečené webové aplikace ASP.NET MVC 5 s přihlášením, potvrzením e-mailu a resetováním hesla](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md). Tento kurz obsahuje další podrobnosti a ukáže vám, jak nastavit e-mail pro potvrzení místního účtu a umožní uživatelům resetovat zapomenuté heslo v ASP.NET Identity.
 
-Místní uživatelský účet vyžaduje, aby uživatel muset vytvořit heslo pro účet a toto heslo (zabezpečené) uložená ve webové aplikaci. ASP.NET Identity podporuje také účtů na sociálních sítích, které nevyžadují uživateli vytvořit heslo aplikace. [Účtů na sociálních sítích](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) třetích stran (jako jsou Google, Twitter, Facebook nebo Microsoft) použít k ověřování uživatelů. Toto téma obsahuje následující:
+Místní uživatelský účet vyžaduje, aby uživatel vytvořil heslo pro účet a toto heslo bylo uloženo (bezpečně) ve webové aplikaci. ASP.NET Identity také podporuje účty sociálních sítí, které nevyžadují, aby uživatel pro aplikaci vytvořil heslo. [Účty sociálních sítí](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) používají k ověřování uživatelů třetí stranu (například Google, Twitter, Facebook nebo Microsoft). Toto téma obsahuje následující témata:
 
-- [Vytvoření aplikace ASP.NET MVC](#createMvc) a seznamte se s funkcemi ASP.NET Identity.
-- [Ukázka Identity sestavení](#build)
-- [Nastavení e-mailové potvrzení](#email)
+- [Vytvořte aplikaci ASP.NET MVC](#createMvc) a prozkoumejte funkce ASP.NET identity.
+- [Sestavení ukázky identity](#build)
+- [Nastavení potvrzení e-mailu](#email)
 
-Novým uživatelům registrovat jejich e-mailový alias, který vytvoří místní účet.
+Noví uživatelé registrují svůj e-mailový alias, který vytvoří místní účet.
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image1.png)
 
-Vyberete tlačítko Registrovat odešle e-mail s potvrzením obsahující ověřovací token do svých e-mailovou adresu.
+Po výběru tlačítka zaregistrovat se na svou e-mailovou adresu pošle potvrzovací e-mail s ověřovacím tokenem.
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image2.png)
 
-Uživateli se odešle e-mailu s potvrzovacím tokenem pro svůj účet.
+Uživateli se pošle e-mail s potvrzovacím tokenem pro svůj účet.
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image3.png)
 
-Výběrem odkazu potvrdí účet.
+Po výběru tohoto odkazu se účet potvrdí.
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image4.png)
 
 <a id="passwordReset"></a>
 
-## <a name="password-recoveryreset"></a>Obnovení/obnovení hesla
+## <a name="password-recoveryreset"></a>Obnovení a resetování hesla
 
-Místní uživatelé zapomenou své heslo může mít token zabezpečení odeslaných e-mailový účet, což jim umožňuje resetovat jejich hesla.  
+Místní uživatelé, kteří si zapomene heslo, můžou mít token zabezpečení odeslaný na svůj e-mailový účet, který jim umožňuje resetovat heslo.  
   
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image5.png)  
   
-Uživatel bude brzy dostanete e-mail s odkazem, což jim umožní obnovit své heslo.  
+Uživatel brzy získá e-mail s odkazem, který jim umožňuje resetovat heslo.  
   
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image6.png)  
-Vyberete odkaz přejdou na stránku pro resetování.  
+Výběr odkazu se převezme na stránku resetovat.  
   
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image7.png)  
   
-Výběr **resetování** bude tlačítko potvrďte heslo se resetovalo.  
+Kliknutím na tlačítko **obnovit** potvrďte, že se heslo resetoval.  
   
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image8.png)
 
@@ -65,169 +65,169 @@ Výběr **resetování** bude tlačítko potvrďte heslo se resetovalo.
 
 ## <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace ASP.NET
 
-Začněte tím, že instalaci a používání [Visual Studio 2017](https://visualstudio.microsoft.com/).
+Začněte instalací a spuštěním sady [Visual Studio 2017](https://visualstudio.microsoft.com/).
 
-1. Vytvoření nového projektu ASP.NET Web a vyberte šablonu MVC. Webové formuláře ASP.NET Identity, také podporují tak může podle podobných kroků ve webové aplikaci formulářů.
-2. Změnit ověření **jednotlivé uživatelské účty**.
-3. Spusťte aplikaci, vyberte **zaregistrovat** propojit a zaregistrovat uživatele. V tomto okamžiku je pouze ověření na e-mailu [[EmailAddress]](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx) atribut.
-4. V Průzkumníku serveru přejděte do **Data Connections\DefaultConnection\Tables\AspNetUsers**klikněte pravým tlačítkem a vyberte **Otevřít definici tabulky**.
+1. Vytvořte nový webový projekt v ASP.NET a vyberte šablonu MVC. Webové formuláře také podporují ASP.NET Identity, takže můžete postupovat podle podobných kroků v aplikaci webových formulářů.
+2. Změňte ověřování na **jednotlivé uživatelské účty**.
+3. Spusťte aplikaci, vyberte odkaz **zaregistrovat** a zaregistrujte uživatele. V tomto okamžiku je jediným ověřením e-mailu atribut [[EmailAddress]](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx) .
+4. V Průzkumník serveru přejděte na **Connections\DefaultConnection\Tables\AspNetUsers dat**, klikněte pravým tlačítkem myši a vyberte **Otevřít definici tabulky**.
 
-    Na následujícím obrázku `AspNetUsers` schématu:
+    Následující obrázek ukazuje `AspNetUsers` schéma:
 
     ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image9.png)
-5. Klikněte pravým tlačítkem na **AspNetUsers** tabulce a vybrat **zobrazit Data tabulky**.  
+5. Klikněte pravým tlačítkem myši na tabulku **AspNetUsers** a vyberte možnost **Zobrazit data tabulky**.  
   
     ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image10.png)  
   
-   V tomto okamžiku není potvrzena e-mailu.
+   V tomto okamžiku nebyl e-mail potvrzen.
 
-Výchozí úložiště dat pro ASP.NET Identity je Entity Framework, ale můžete je nakonfigurovat pomocí jiných úložišť dat a přidat další pole. Zobrazit [další prostředky](#addRes) oddílu na konci tohoto kurzu.
+Výchozí úložiště dat pro ASP.NET Identity je Entity Framework, ale můžete ho nakonfigurovat tak, aby používalo jiné úložiště dat, a přidat další pole. Další informace najdete v části [Další materiály](#addRes) na konci tohoto kurzu.
 
-[Třídy pro spuštění OWIN](../../../aspnet/overview/owin-and-katana/owin-startup-class-detection.md) ( *Startup.cs* ) se volá, když aplikace se spustí a vyvolá `ConfigureAuth` metoda *aplikace\_Start\Startup.Auth.cs*, který nakonfiguruje kanál OWIN a inicializuje ASP.NET Identity. Zkontrolujte `ConfigureAuth` metody. Každý `CreatePerOwinContext` volání zaregistruje zpětné volání (uložené v `OwinContext`), která bude volána jednou za žádost o vytvoření instance zadaného typu. Můžete nastavit zarážky v konstruktoru a `Create` metoda každého typu (`ApplicationDbContext, ApplicationUserManager`) a ověřit, se nazývají s každým požadavkem. Na instanci `ApplicationDbContext` a `ApplicationUserManager` je uložen v kontextu OWIN, který se dá dostat v celé aplikaci. ASP.NET Identity zavěšení do kanálu OWIN prostřednictvím middlewaru souboru cookie. Další informace najdete v tématu [za správu životního cyklu požadavku pro třídu objektu UserManager. v ASP.NET Identity](https://blogs.msdn.com/b/webdev/archive/2014/02/12/per-request-lifetime-management-for-usermanager-class-in-asp-net-identity.aspx).
+[Třída Owin Startup](../../../aspnet/overview/owin-and-katana/owin-startup-class-detection.md) ( *Startup.cs* ) se volá při spuštění aplikace a vyvolá metodu `ConfigureAuth` v *App\_START\STARTUP.auth.cs*, která konfiguruje kanál Owin a inicializuje ASP.NET identity. Zkontrolujte `ConfigureAuth` metody. Každé volání `CreatePerOwinContext` zaregistruje zpětné volání (uložené v `OwinContext`), které se bude volat jednou za požadavek na vytvoření instance zadaného typu. Můžete nastavit bod přerušení v konstruktoru a metodu `Create` každého typu (`ApplicationDbContext, ApplicationUserManager`) a ověřit, že jsou volány na každém požadavku. Instance `ApplicationDbContext` a `ApplicationUserManager` je uložena v kontextu OWIN, který lze použít v celé aplikaci. ASP.NET Identity do kanálu OWIN prostřednictvím middleware souboru cookie. Další informace najdete v tématu [Správa životního cyklu požadavků pro třídu UserManager v ASP.NET identity](https://blogs.msdn.com/b/webdev/archive/2014/02/12/per-request-lifetime-management-for-usermanager-class-in-asp-net-identity.aspx).
 
-Pokud změníte profil zabezpečení, je generována a uložené v nové razítko zabezpečení `SecurityStamp` pole *AspNetUsers* tabulky. Všimněte si, `SecurityStamp` pole se liší od soubor cookie zabezpečení. Soubor cookie zabezpečení není uložený v `AspNetUsers` tabulky (nebo kdekoli jinde v Identity DB). Token souboru cookie zabezpečení je podepsaný držitelem, pomocí [DPAPI](https://msdn.microsoft.com/library/system.security.cryptography.protecteddata.aspx) a je vytvořen s `UserId, SecurityStamp` a informace doby vypršení platnosti.
+Když změníte profil zabezpečení, vygeneruje se nové bezpečnostní razítko, které se uloží do pole `SecurityStamp` tabulky *AspNetUsers* . Poznámka: pole `SecurityStamp` se liší od souboru cookie zabezpečení. Soubor cookie zabezpečení není uložený v `AspNetUsers` tabulce (nebo nikde jinde v databázi identity). Token cookie zabezpečení je podepsaný svým držitelem pomocí [DPAPI](https://msdn.microsoft.com/library/system.security.cryptography.protecteddata.aspx) a vytvoří se s informacemi o `UserId, SecurityStamp` a času vypršení platnosti.
 
-Middlewaru souboru cookie. zkontroluje soubor cookie s každým požadavkem. `SecurityStampValidator` Metodu `Startup` třídy volání databáze a zkontroluje razítko zabezpečení pravidelně uvedené s `validateInterval`. Tato situace nastane pouze každých 30 minut (v našem příkladu) nezměníte svůj profil zabezpečení. Chcete-li minimalizovat cest k databázi bylo zvoleno intervalu 30 minut. V tématu Moje [kurz dvojúrovňové ověřování](index.md) další podrobnosti.
+Middleware souboru cookie kontroluje soubory cookie u jednotlivých požadavků. Metoda `SecurityStampValidator` ve třídě `Startup` narazí na databázi a pravidelně kontroluje razítko zabezpečení, jak je uvedeno v `validateInterval`. K této situaci dochází pouze každých 30 minut (v naší ukázce), pokud neměníte profil zabezpečení. Interval 30 minut byl zvolen pro minimalizaci cest k databázi. Další podrobnosti najdete v tomto [kurzu pro dvoustupňové ověřování](index.md) .
 
-Za komentáře v kódu `UseCookieAuthentication` metoda podporuje ověřování souborů cookie. `SecurityStamp` Pole a přidružený kód poskytuje další vrstvu zabezpečení, které vaše aplikace, pokud změníte svoje heslo, budete přihlášeni mimo prohlížeč, který jste přihlášení. `SecurityStampValidator.OnValidateIdentity` Metoda umožní aplikaci ověřit token zabezpečení při přihlášení uživatele, který se používá, když změníte heslo nebo pomocí externího přihlášení. To je potřeba zajistit, že nejsou zneplatněny žádné tokeny (soubory cookie), vygenerované pomocí starého hesla. Ukázkový projekt změníte, které uživatelské heslo pak nový token je generován pro uživatele, nejsou zneplatněny žádné předchozí tokeny a `SecurityStamp` pole se aktualizuje.
+Pro komentáře v kódu `UseCookieAuthentication` metoda podporuje ověřování souborem cookie. Pole `SecurityStamp` a související kód poskytují do aplikace další vrstvu zabezpečení, při změně hesla se odhlásíte z prohlížeče, ve kterém jste se přihlásili. Metoda `SecurityStampValidator.OnValidateIdentity` umožňuje aplikaci ověřit token zabezpečení při přihlášení uživatele, který se používá při změně hesla nebo použití externího přihlášení. To je nutné k tomu, aby bylo zajištěno, že všechny tokeny (soubory cookie) vygenerované se starým heslem jsou neověřené. Pokud v ukázkovém projektu změníte heslo uživatele, bude pro uživatele vygenerován nový token, všechny předchozí tokeny jsou neověřeny a pole `SecurityStamp` bude aktualizováno.
 
-Systém identit lze nakonfigurovat aplikaci tak když se změní na profil zabezpečení uživatelů (například když uživatel změní své heslo nebo změny přidružené přihlášení (například Facebook, Google, účet Microsoft, atd.), je uživatel přihlášen mimo všechny instance prohlížeče. Například následujícím obrázku je [jednotné odhlášení ukázka](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/SingleSignOutSample/readme.txt) aplikaci, která umožňuje uživateli Odhlásit všechny instance prohlížeče (v tomto případě IE, Firefox a Chrome) tak, že vyberete jedno tlačítko. Ukázku můžete také umožňuje pouze odhlaste se z instance určitého webového prohlížeče.
+Systém identit vám umožní nakonfigurovat aplikaci, takže když se změní profil zabezpečení uživatelů (například když uživatel změní heslo nebo se změní přidružené přihlašovací údaje (například z Facebooku, Google, účet Microsoft atd.), uživatel se odhlásí ze všech. instance prohlížeče. Následující obrázek ukazuje například [ukázkovou aplikaci jednotného přihlašování](https://github.com/aspnet/samples/tree/master/samples/aspnet/Identity/SingleSignOutSample) , která umožňuje uživateli odhlásit se ze všech instancí prohlížeče (v tomto případě IE, Firefox a Chrome) tím, že vybere jedno tlačítko. Alternativně vám ukázka umožňuje odhlásit se z konkrétní instance prohlížeče.
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image11.png)
 
-[Jednotné odhlášení ukázka](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/SingleSignOutSample/readme.txt) aplikace ukazuje, jak ASP.NET Identity umožňuje znovu vygenerovat token zabezpečení. To je potřeba zajistit, že nejsou zneplatněny žádné tokeny (soubory cookie), vygenerované pomocí starého hesla. Tato funkce poskytuje vyšší úroveň zabezpečení, které vaše aplikace; Pokud změníte svoje heslo, které se odhlásíte kde přihlášení do této aplikace.
+[Ukázková aplikace jednotného přihlašování](https://github.com/aspnet/samples/tree/master/samples/aspnet/Identity/SingleSignOutSample) ukazuje, jak ASP.NET identity umožňuje znovu vygenerovat token zabezpečení. To je nutné k tomu, aby bylo zajištěno, že všechny tokeny (soubory cookie) vygenerované se starým heslem jsou neověřené. Tato funkce poskytuje další vrstvu zabezpečení pro vaši aplikaci. Když změníte heslo, budete odhlášeni, kam jste se přihlásili k této aplikaci.
 
-*Aplikace\_Start\IdentityConfig.cs* soubor obsahuje `ApplicationUserManager`, `EmailService` a `SmsService` třídy. `EmailService` a `SmsService` třídy každý implementují `IIdentityMessageService` rozhraní, takže budete mít v každé třídě konfigurace e-mailu a SMS běžné metody. Tento kurz vysvětluje pouze přidání e-mailové oznámení prostřednictvím [SendGrid](http://sendgrid.com/), můžete poslat e-mailu pomocí protokolu SMTP a další mechanismy.
+Soubor *App\_Start\IdentityConfig.cs* obsahuje třídy `ApplicationUserManager`, `EmailService` a `SmsService`. Třídy `EmailService` a `SmsService` implementují rozhraní `IIdentityMessageService`, takže máte v každé třídě k dispozici společné metody konfigurace e-mailu a SMS. I když tento kurz ukazuje, jak přidat e-mailové oznámení prostřednictvím [SendGrid](http://sendgrid.com/), můžete posílat e-maily pomocí protokolu SMTP a dalších mechanismů.
 
-`Startup` Třída také obsahuje kotle talíře přidání přihlašování přes sociální sítě (Facebook, Twitter, atd.), najdete v mé kurzu [aplikaci MVC 5 s nástroji služby Facebook, Twitter, LinkedIn a Google OAuth2 přihlašování](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) pro další informace.
+Třída `Startup` také obsahuje kotlovou desku pro přidání sociálních přihlášení (Facebook, Twitter atd.). Další informace najdete v tématu můj kurz [MVC 5 s aplikací Facebook, Twitter, LinkedIn a Google OAuth2](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) .
 
-Zkontrolujte `ApplicationUserManager` třídu, která obsahuje informace o identitě uživatelů a konfiguruje následující funkce:
+Projděte si třídu `ApplicationUserManager`, která obsahuje informace o identitě uživatelů, a nakonfiguruje následující funkce:
 
 - Požadavky na sílu hesla.
-- Uživatel uzamčení (pokusy a čas).
-- Dvoufaktorové ověřování (2FA). Můžu v další kurz zabývat 2FA a SMS.
-- Zapojování e-mailu a služby SMS. (I zabývat SMS v jiném kurzu).
+- Uzamčení uživatele (počet pokusů a čas).
+- Dvojúrovňové ověřování (2FA). Projdeme 2FA a SMS v jiném kurzu.
+- Zapojení e-mailu a služeb SMS. (SMS se zobrazí v jiném kurzu).
 
-`ApplicationUserManager` Třídy je odvozen z obecného `UserManager<ApplicationUser>` třídy. `ApplicationUser` je odvozen od [IdentityUser](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework.identityuser.aspx). `IdentityUser` je odvozen od obecného `IdentityUser` třídy:
+Třída `ApplicationUserManager` je odvozena z obecné `UserManager<ApplicationUser>` třídy. `ApplicationUser` jsou odvozeny z [IdentityUser](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework.identityuser.aspx). `IdentityUser` je odvozen z obecné `IdentityUser` třídy:
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample1.cs)]
 
-Výše uvedené vlastnosti shodovat s vlastností v `AspNetUsers` tabulky uvedené výše.
+Výše uvedené vlastnosti se shodují s vlastnostmi v tabulce `AspNetUsers`, která je uvedená výše.
 
-Obecné argumenty na `IUser` umožňují odvození třídy pomocí různých typů pro primární klíč. Zobrazit [ChangePK](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/ChangePK/readme.txt) vzorku, který ukazuje, jak změnit primární klíč z řetězce na int nebo identifikátor GUID.
+Obecné argumenty na `IUser` umožňují odvození třídy pomocí různých typů pro primární klíč. Podívejte se na ukázku [ChangePK](https://github.com/aspnet/samples/tree/master/samples/aspnet/Identity/ChangePK) , která ukazuje, jak změnit primární klíč z řetězce na int nebo GUID.
 
 ### <a name="applicationuser"></a>ApplicationUser
 
-`ApplicationUser` (`public class ApplicationUserManager : UserManager<ApplicationUser>`) je definován v *Models\IdentityModels.cs* jako:
+`ApplicationUser` (`public class ApplicationUserManager : UserManager<ApplicationUser>`) je definována v *Models\IdentityModels.cs* jako:
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample2.cs?highlight=8-9)]
 
-Výše uvedený zvýrazněný kód generuje [ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx). ASP.NET Identity a ověřování souborů Cookie OWIN jsou založené na deklaracích, proto rozhraní framework vyžaduje aplikaci, která vygeneruje `ClaimsIdentity` pro daného uživatele. `ClaimsIdentity` obsahuje informace o všech deklarací identity pro uživatele, jako je například uživatelské jméno, věk a ke kterým rolím uživatel patří. Můžete také přidat další deklarace identity pro uživatele v této fázi.
+Zvýrazněný kód výše generuje [hodnota ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx). Ověřování souborů cookie ASP.NET Identity a OWIN jsou založené na deklaracích, proto rozhraní vyžaduje, aby aplikace vygenerovala `ClaimsIdentity` pro uživatele. `ClaimsIdentity` obsahuje informace o všech deklaracích uživatele, jako je jméno uživatele, věk a jaké role uživatel patří. V této fázi můžete také přidat další deklarace identity pro uživatele.
 
-OWIN `AuthenticationManager.SignIn` metoda předá `ClaimsIdentity` a přihlásí uživatel:
+Metoda OWIN `AuthenticationManager.SignIn` projde do `ClaimsIdentity` a přihlásí uživatele:
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample3.cs?highlight=4-6)]
 
-[Aplikace MVC 5 s Facebook, Twitter, LinkedIn a Google OAuth2 přihlašování](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) ukazuje, jak můžete přidat další vlastnosti `ApplicationUser` třídy.
+[Aplikace MVC 5 s přihlašováním na Facebooku, Twitter, LinkedIn a Google OAuth2](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) ukazuje, jak můžete přidat další vlastnosti do třídy `ApplicationUser`.
 
 ## <a name="email-confirmation"></a>Potvrzení e-mailu
 
-Je vhodné pro potvrzení e-mailu novému uživateli zaregistrovat k ověření, nejsou zosobnění někdo jiný (to znamená, že se ještě nezaregistrovali někoho jiného e-mailu). Předpokládejme, že jste měli diskusní fórum, chcete zabránit `"bob@example.com"` registroval jako `"joe@contoso.com"`. Bez potvrzení e-mailu `"joe@contoso.com"` může získat nežádoucí e-mailu vaší aplikace. Předpokládejme, že Bob omylem zaregistrovaný jako `"bib@example.com"` a kdyby si všimli, že nebudou moci používat obnovit heslo, protože aplikace nemá správnou e-mailovou. Potvrzení e-mailu zajišťuje pouze omezenou ochranu před roboty a neposkytuje ochranu z určené spammery, mají mnoho pracovní e-mailu aliasů můžete použít k registraci. V následující ukázce uživatel nebude moct změnit svoje heslo, dokud svůj účet potvrzený (podle jejich výběr potvrzovacího odkazu byla přijata na e-mailový účet, která jsou zaregistrována.) Tento pracovní postup můžete použít k ostatním scénářům, třeba odeslání odkazu k potvrzení a k resetování hesla na nové účty vytvořené správcem odesílání e-mailu uživatele při změnily jejich profil a tak dále. Obvykle chcete novým uživatelům zabránit v účtování žádná data k webu předtím, než byly potvrzeny e-mailem, textovou zprávu SMS nebo jiný mechanismus. <a id="build"></a>
+Je vhodné potvrdit e-mailem novou registraci uživatele s cílem ověřit, že nezosobňuje někoho jiného (tj. není zaregistrován v e-mailu někoho jiného). Předpokládejme, že máte diskuzní fórum, chcete zabránit `"bob@example.com"` registraci jako `"joe@contoso.com"`. Bez potvrzení e-mailu `"joe@contoso.com"` možné z vaší aplikace získat nechtěný e-mail. Předpokládejme, že se Bob omylem zaregistrovali jako `"bib@example.com"` a jste si ho všimli, takže by nebylo možné použít obnovení hesla, protože aplikace nemá správný e-mail. Potvrzení e-mailu poskytuje jenom omezené zabezpečení z roboty a neposkytuje ochranu proti stanoveným odesilatelům nevyžádané pošty. má spoustu pracovních e-mailových aliasů, které můžou použít k registraci. V níže uvedené ukázce nebude uživatel moci změnit heslo, dokud nebude potvrzen jejich účet (při výběru potvrzovacího odkazu přijatého na e-mailovém účtu, ve kterém se zaregistrovali). Tento pracovní postup můžete použít i na jiné scénáře, například odeslat odkaz pro potvrzení a resetování hesla u nových účtů vytvořených správcem a odeslání uživatele e-mailem, když změnil svůj profil a tak dále. Obecně je vhodné zabránit novým uživatelům v posílání dat na web před potvrzením e-mailu, textové zprávy SMS nebo jiného mechanismu. <a id="build"></a>
 
-## <a name="build-a-more-complete-sample"></a>Ucelenější ukázku sestavení
+## <a name="build-a-more-complete-sample"></a>Sestavení ucelenější ukázky
 
-V této části použijete ke stažení ucelenější ukázku, kterou pak ve spolupráci s NuGet.
+V této části použijete NuGet ke stažení ucelené ukázky, se kterou budeme pracovat.
 
-1. Vytvořte nový ***prázdný*** webový projekt ASP.NET.
-2. V konzole Správce balíčků zadejte následující příkazy: 
+1. Vytvořte nový ***prázdný*** webový projekt v ASP.NET.
+2. V konzole správce balíčků zadejte následující příkazy: 
 
     [!code-console[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample4.cmd)]
 
-   V tomto kurzu použijeme [SendGrid](http://sendgrid.com/) k odesílání e-mailu. `Identity.Samples` Balíček nainstaluje budeme pracovat s kódem.
-3. Nastavte [projektu pro použití protokolu SSL](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md).
-4. Otestujte vytvoření místního účtu spuštěním aplikace, vyberete **zaregistrovat** propojit a účtování registračním formuláři.
-5. Vyberte odkaz e-mailu ukázku, což simuluje e-mailové potvrzení.
-6. Odebrat je ukázka e-mailu odkaz potvrzovací kód z ukázkového ( `ViewBag.Link` kód v účet kontroleru. Zobrazit `DisplayEmail` a `ForgotPasswordConfirmation` metody akce a zobrazeními razor).
+   V tomto kurzu použijeme [SendGrid](http://sendgrid.com/) k odeslání e-mailu. Balíček `Identity.Samples` nainstaluje kód, se kterým budeme pracovat.
+3. Nastavte [projekt na použití SSL](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md).
+4. Otestujte vytváření místních účtů spuštěním aplikace, výběrem odkazu **registrace** a odesláním registračního formuláře.
+5. Vyberte ukázkový emailový odkaz, který simuluje e-mailové potvrzení.
+6. Z ukázky odeberte potvrzovací kód e-mailového odkazu (kód `ViewBag.Link` v řadiči účtů. Podívejte se na metody akcí `DisplayEmail` a `ForgotPasswordConfirmation` a zobrazení Razor).
 
 > [!WARNING]
-> Pokud změníte některá nastavení zabezpečení v této ukázce, výroby aplikací bude chtít projít auditu zabezpečení, která explicitně volá provedené změny.
+> Pokud změníte kterékoli nastavení zabezpečení v této ukázce, budou se v aplikacích výroby muset projít auditem zabezpečení, který explicitně volá provedené změny.
 
-## <a name="examine-the-code-in-appstartidentityconfigcs"></a>Zkoumání kódu v aplikaci\_Start\IdentityConfig.cs
+## <a name="examine-the-code-in-app_startidentityconfigcs"></a>Projděte si kód v App\_Start\IdentityConfig.cs
 
-Vzorek ukazuje, jak vytvořit účet a přidejte ji tak *správce* role. E-mailu v ukázce by měl nahraďte e-mailu, který budete používat pro účet správce. Nejjednodušší způsob teď chcete vytvořit účet správce, je prostřednictvím kódu programu v `Seed` metody. Věříme, že budete mít v budoucnu nástroj, který vám umožní vytvořit a správy uživatelů a rolí. Vzorový kód vám umožní vytvořit a spravovat uživatele a role, ale nejprve musíte mít účet správce ke spuštění role a stránky pro správu uživatelů. V této ukázce se vytvoří účet správce při nasadí databáze.
+Ukázka ukazuje, jak vytvořit účet a přidat ho do role *správce* . E-mail v ukázce byste měli nahradit e-mailem, který budete používat pro účet správce. Nejjednodušší způsob, jak teď vytvořit účet správce, je programově v metodě `Seed`. Doufáme, že budete mít nástroj v budoucnu, který vám umožní vytvářet a spravovat uživatele a role. Vzorový kód vám umožní vytvářet a spravovat uživatele a role, ale musíte nejdřív mít účet správce, aby bylo možné spouštět role a stránky pro správu uživatelů. V této ukázce se při osazení databáze vytvoří účet správce.
 
-Změnit heslo a změňte název na účet, kam budete dostávat e-mailová oznámení.
+Změňte heslo a změňte název na účet, na který můžete dostávat e-mailová oznámení.
 
 > [!WARNING]
-> Zabezpečení – nikdy ukládání citlivých dat ve zdrojovém kódu.
+> Zabezpečení – nikdy neukládejte citlivá data ve zdrojovém kódu.
 
-Jak už bylo zmíněno dříve, `app.CreatePerOwinContext` volání ve třídě spuštění přidá zpětná volání, aby `Create` metoda aplikace databáze obsahu, správce a role správce tříd uživatelů. Volání kanálu OWIN `Create` metodu na tyto třídy pro každý požadavek a uložený kontext pro každou třídu. Kontroler účtů zveřejňuje správce uživatele z kontextu protokolu HTTP (který obsahuje kontext OWIN):
+Jak bylo zmíněno dříve, `app.CreatePerOwinContext` volání ve spouštěcí třídě přidává zpětná volání do metody `Create` třídy App DB Content, User Manager a správce rolí. Kanál OWIN volá metodu `Create` na těchto třídách pro každý požadavek a ukládá kontext pro každou třídu. Řadič účtu zpřístupňuje Správce uživatelů z kontextu HTTP (který obsahuje kontext OWIN):
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample5.cs)]
 
-Když se uživatel zaregistruje místní účet, `HTTP Post Register` volání metody:
+Když uživatel zaregistruje místní účet, zavolá se `HTTP Post Register` metoda:
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample6.cs)]
 
-Výše uvedený kód používá model dat k vytvoření nového uživatelského účtu pomocí e-mailu a heslo, které zadáte. Pokud e-mailový alias je v úložišti dat, vytvoření účtu se nepovedlo a znovu se zobrazí formulář. `GenerateEmailConfirmationTokenAsync` Metoda vytvoří zabezpečené potvrzovací token a uloží jej v úložišti dat ASP.NET Identity. [Url.Action](https://msdn.microsoft.com/library/dd505232(v=vs.118).aspx) metoda vytvoří odkaz, který obsahuje `UserId` a potvrzovací token. Tento odkaz se pak pošle e-mailem uživateli, může uživatel vybrat na odkaz v jejich e-mailová aplikace potvrďte svůj účet.
+Výše uvedený kód používá modelová data k vytvoření nového uživatelského účtu pomocí zadaného e-mailu a hesla. Pokud je e-mailový alias v úložišti dat, vytvoření účtu se nezdařilo a formulář se zobrazí znovu. Metoda `GenerateEmailConfirmationTokenAsync` vytvoří zabezpečený potvrzovací token a uloží ho do úložiště dat ASP.NET Identity. Metoda [URL. Action](https://msdn.microsoft.com/library/dd505232(v=vs.118).aspx) vytvoří odkaz obsahující `UserId` a potvrzovací token. Tento odkaz se pak odešle e-mailem uživateli, uživatel může vybrat odkaz v e-mailové aplikaci a potvrdit jeho účet.
 
 <a id="email"></a>
 
-## <a name="set-up-email-confirmation"></a>Nastavení e-mailové potvrzení
+## <a name="set-up-email-confirmation"></a>Nastavení potvrzení e-mailu
 
-Přejděte [Azure SendGrid registrační stránku](https://azure.microsoft.com/gallery/store/sendgrid/sendgrid-azure/) a bezplatná registrace účtu. Přidejte kód, podobně jako následující příkaz pro konfiguraci služby SendGrid:
+Přejdete na [stránku registrace Azure SendGrid](https://azure.microsoft.com/gallery/store/sendgrid/sendgrid-azure/) a zaregistrujete si bezplatný účet. Pro konfiguraci SendGrid přidejte kód podobný následujícímu:
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample7.cs?highlight=5)]
 
 > [!NOTE]
-> E-mailoví klienti často přijímají pouze textové zprávy (žádné HTML). Byste měli poskytnout zprávu v text nebo HTML. V příkladu SendGrid výše, používá se k tomu `myMessage.Text` a `myMessage.Html` výše uvedeném kódu.
+> E-mailové klienty často akceptují jenom textové zprávy (žádný HTML). Tuto zprávu byste měli zadat v textu a ve formátu HTML. V ukázce SendGrid se to provádí pomocí `myMessage.Text` a `myMessage.Html`ho kódu uvedeného výše.
 
-Následující kód ukazuje, jak odeslat e-mailům prostřednictvím [MailMessage](https://msdn.microsoft.com/library/system.net.mail.mailmessage.aspx) třídy where `message.Body` vrátí pouze na odkaz.
+Následující kód ukazuje, jak odeslat e-mail pomocí třídy [MailMessage](https://msdn.microsoft.com/library/system.net.mail.mailmessage.aspx) , kde `message.Body` vrátí pouze odkaz.
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample8.cs)]
 
 > [!WARNING]
-> Zabezpečení – nikdy ukládání citlivých dat ve zdrojovém kódu. Účet a přihlašovací údaje jsou uložené v nastavení appSetting. V Azure, můžete bezpečně uložit tyto hodnoty na **[konfigurovat](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** karta na portálu Azure portal. Zobrazit [osvědčené postupy pro nasazení hesel a dalších citlivých dat do ASP.NET a Azure](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
+> Zabezpečení – nikdy neukládejte citlivá data ve zdrojovém kódu. Účet a přihlašovací údaje jsou uložené v appSetting. V Azure můžete tyto hodnoty bezpečně uložit na kartě **[Konfigurace](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** v Azure Portal. Podívejte [se na osvědčené postupy pro nasazení hesel a dalších citlivých dat do ASP.NET a Azure](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
 
-Zadání přihlašovacích údajů Sendgridu, spusťte aplikaci, se registrují v e-mailový alias vyberete potvrdit odkaz v e-mailu. Chcete zjistit, jak to můžete udělat pomocí vaší [Outlook.com](http://outlook.com) e-mailový účet, najdete v článku Jan Atten [ C# konfigurace SMTP pro hostitel SMTP Outlook.Com](http://typecastexception.com/post/2013/12/20/C-SMTP-Configuration-for-OutlookCom-SMTP-Host.aspx) a jeho[ASP.NET Identity 2.0: Nastavení ověření účtu a povolení dvoufaktorového](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx) příspěvky.
+Zadejte svoje přihlašovací údaje pro SendGrid, spusťte aplikaci, zaregistrujte si e-mailový alias. můžete vybrat odkaz potvrdit v e-mailu. Pokud se chcete podívat, jak to provést pomocí e-mailového účtu [Outlook.com](http://outlook.com) , přečtěte si téma [ C# konfigurace protokolu SMTP pro Outlook.com hostitele SMTP](http://typecastexception.com/post/2013/12/20/C-SMTP-Configuration-for-OutlookCom-SMTP-Host.aspx) a jeho[ASP.NET identity 2,0: nastavení ověření účtu a příspěvků se dvěma faktory autorizace](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx) .
 
-Když uživatel vybere **zaregistrovat** tlačítko na jejich e-mailovou adresu přijde potvrzovací e-mail obsahující ověřovací token.
+Jakmile uživatel vybere tlačítko **zaregistrovat** , pošle se na svou e-mailovou adresu potvrzovací e-mail obsahující ověřovací token.
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image12.png)
 
-Uživateli se odešle e-mailu s potvrzovacím tokenem pro svůj účet.
+Uživateli se pošle e-mail s potvrzovacím tokenem pro svůj účet.
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image13.png)
 
-## <a name="examine-the-code"></a>Prozkoumejte kód
+## <a name="examine-the-code"></a>Kontrola kódu
 
-Následující kód ukazuje `POST ForgotPassword` metody.
+Následující kód ukazuje metodu `POST ForgotPassword`.
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample9.cs)]
 
-Metoda se bez upozornění selže, pokud nebyl potvrzen e-mail uživatele. Pokud chyba byla publikována pro neplatná e-mailovou adresu, uživateli se zlými úmysly může pomocí těchto informací najít platné ID (e-mailu aliasy) vůči útokům.
+Metoda se nezdařila v tichém režimu, pokud nebyl potvrzen e-mail uživatele. Pokud byla chyba publikována pro neplatnou e-mailovou adresu, mohou uživatelé se zlými úmysly pomocí těchto informací najít platné ID uživatele (e-mailové aliasy),
 
-Následující kód ukazuje `ConfirmEmail` metoda ve kontroler účtů, která je volána, když uživatel vybere potvrzovacího odkazu v e-mailu k nim:
+Následující kód ukazuje metodu `ConfirmEmail` v řadiči účtu, který se volá, když uživatel vybere odkaz na potvrzení v e-mailu, který jim byl odeslán:
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample10.cs)]
 
-Jakmile se použil token zapomenutého hesla, je neplatná. Následující změny kódu v `Create` – metoda (v *aplikace\_Start\IdentityConfig.cs* souboru) nastaví tokeny vyprší za 3 hodiny.
+Po použití zapomenutého tokenu hesla se zruší jeho platnost. Následující změna kódu v metodě `Create` (v souboru *App\_Start\IdentityConfig.cs* ) nastaví vypršení platnosti tokenů za 3 hodiny.
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample11.cs?highlight=6-8)]
 
-Pomocí výše uvedený kód zapomenutého hesla a tokenů potvrzení e-mailu vyprší za 3 hodiny. Výchozí hodnota `TokenLifespan` je za jeden den.
+S výše uvedeným kódem vyprší platnost zapomenutého hesla a potvrzovacích tokenů pro e-mail za 3 hodiny. Výchozí `TokenLifespan` je jeden den.
 
 Následující kód ukazuje metodu potvrzení e-mailu:
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample12.cs)]
 
- Aby vaše aplikace lépe zabezpečit, podporuje ASP.NET Identity Dvojúrovňového ověřování (2FA). Zobrazit [identitu ASP.NET 2.0: Nastavení ověření účtu a povolení dvoufaktorového](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx) podle Atten Jan. I když uzamčení účtu lze nastavit na selhání pokusů o přihlášení hesel, tento přístup umožňuje vaše přihlašovací údaje náchylné k [DOS](http://en.wikipedia.org/wiki/Denial-of-service_attack) uzamčení. Doporučujeme že použít uzamčení účtu jenom pomocí 2FA.  
+ Aby byla aplikace bezpečnější, ASP.NET Identity podporuje dvojúrovňové ověřování (2FA). Viz [ASP.NET Identity 2,0: nastavení ověřování účtu a dvojúrovňové autorizace](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx) pomocí Jan atten. I když můžete nastavit uzamčení účtu při neúspěchu při pokusu o přihlášení k přihlašovacím údajům, bude se vaše přihlášení nahlížet na uzamčení [systému DOS](http://en.wikipedia.org/wiki/Denial-of-service_attack) . Uzamčení účtu doporučujeme používat jenom s 2FA.  
 <a id="addRes"></a>
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Přehled poskytovatelů vlastního úložiště pro ASP.NET Identity](../extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md)
-- [Aplikace MVC 5 s Facebook, Twitter, LinkedIn a Google OAuth2 přihlašování](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) také ukazuje, jak přidat informace o profilu do tabulky uživatelů.
-- [ASP.NET MVC a Identity 2.0: Základy práce s](http://typecastexception.com/post/2014/04/20/ASPNET-MVC-and-Identity-20-Understanding-the-Basics.aspx) podle Atten Jan.
+- [Aplikace MVC 5 s přihlašováním na Facebooku, Twitter, LinkedIn a Google OAuth2](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) také ukazuje, jak přidat informace o profilu do tabulky uživatelů.
+- [ASP.NET MVC a identita 2,0: Seznámení se základy](http://typecastexception.com/post/2014/04/20/ASPNET-MVC-and-Identity-20-Understanding-the-Basics.aspx) pomocí Jan atten.
 - [Úvod do ASP.NET Identity](../getting-started/introduction-to-aspnet-identity.md)
-- [Oznamujeme vydání verze RTM technologie ASP.NET identity 2.0.0](https://blogs.msdn.com/b/webdev/archive/2014/03/20/test-announcing-rtm-of-asp-net-identity-2-0-0.aspx) napsal Pranav Rastogi.
+- [Oznamujeme RTM ASP.NET identity 2.0.0](https://blogs.msdn.com/b/webdev/archive/2014/03/20/test-announcing-rtm-of-asp-net-identity-2-0-0.aspx) podle Pranav Rastogi předvádí.

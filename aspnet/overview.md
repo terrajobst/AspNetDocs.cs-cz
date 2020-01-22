@@ -8,12 +8,12 @@ ms.author: riande
 ms.date: 08/10/2019
 msc.legacyurl: ''
 msc.type: content
-ms.openlocfilehash: 9a6d08849f09c9d7a779df64f70e8770d2af3c87
-ms.sourcegitcommit: b67ffd5b2c5cff01ec4c8eb12a21f693f2e11887
+ms.openlocfilehash: aa4f627bca99f0a7ffbbb53ea45ebdcf0850fd89
+ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69995290"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76519359"
 ---
 # <a name="aspnet-overview"></a>Přehled ASP.NET
 
@@ -23,23 +23,23 @@ ASP.NET je bezplatná webová platforma pro vytváření skvělých webů a webo
 
 ## <a name="get-started"></a>Začínáme
 
-Nainstalujte si [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community Edition, bezplatné integrované vývojové prostředí (IDE) pro ASP.NET ve Windows.
+Nainstalujte si [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2019) Community Edition, bezplatné integrované vývojové prostředí (IDE) pro ASP.NET ve Windows.
 
 ## <a name="websites-and-web-applications"></a>Weby a webové aplikace
 
- ASP.NET nabízí tři architektury pro vytváření webových aplikací: Webové formuláře, ASP.NET MVC a webové stránky ASP.NET. Všechny tři architektury jsou stabilní a vyspělé a můžete vytvořit skvělé webové aplikace pomocí kterékoli z nich. Bez ohledu na to, jakou architekturu zvolíte, získáte všechny výhody a funkce ASP.NET všude.
+ ASP.NET nabízí tři architektury pro vytváření webových aplikací: webové formuláře, ASP.NET MVC a webové stránky ASP.NET. Všechny tři architektury jsou stabilní a vyspělé a můžete vytvořit skvělé webové aplikace pomocí kterékoli z nich. Bez ohledu na to, jakou architekturu zvolíte, získáte všechny výhody a funkce ASP.NET všude.
 
 Každé rozhraní cílí na jiný styl vývoje. Ten, který zvolíte, závisí na kombinaci vašich programovacích prostředků (znalosti, dovednosti a vývojové prostředí), typu aplikace, kterou vytváříte, a přístupu pro vývoj, se kterým jste spokojeni.
 
 Níže je uveden přehled každé z architektur a několik nápadů, jak mezi nimi vybírat. Pokud dáváte přednost předvedení videa, přečtěte si téma [vytváření webů pomocí ASP.NET](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/Making-Websites-with-ASPNET) a [co jsou webové nástroje?](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/what-is-web-tools)
 
-|   | Pokud máte zkušenosti s | Styl vývoje | Posudk |
+|   | Pokud máte zkušenosti s | Styl vývoje | Zkušenosti |
 |-----------|----------------------|-----------------------------------------------------|----------------|
-| webové formuláře | Formuláře Win, WPF, .NET | Rychlý vývoj s využitím bohatých knihoven ovládacích prvků, které zapouzdřují značky HTML | Střední úroveň, pokročilá RAD |
+| Webové formuláře | Formuláře Win, WPF, .NET | Rychlý vývoj s využitím bohatých knihoven ovládacích prvků, které zapouzdřují značky HTML | Střední úroveň, pokročilá RAD |
 | MVC       | Ruby na železnici, .NET  | Úplná kontrola značek HTML, kódu a značek oddělených a snadné zápisu testů. Nejlepší volba pro mobilní a jednostránkové aplikace (SPA). | Střední úroveň, rozšířené |
 | Webové stránky  | Klasický ASP, PHP     | HTML značky a váš kód společně ve stejném souboru | Novinka, střední úroveň |
 
-### <a name="web-forms"></a>webové formuláře
+### <a name="web-forms"></a>Webové formuláře
 
 Pomocí webových formulářů ASP.NET můžete vytvářet dynamické weby pomocí známého modelu založeného na událostech a přetahování. Návrhová plocha a stovky ovládacích prvků a komponent vám umožní rychle vytvořit sofistikované a výkonné weby na základě uživatelského rozhraní s přístupem k datům.
 
@@ -47,11 +47,11 @@ Pomocí webových formulářů ASP.NET můžete vytvářet dynamické weby pomoc
 
 ### <a name="mvc"></a>MVC
 
-ASP.NET MVC poskytuje výkonný a vzorový způsob vytváření dynamických webů, který umožňuje čistě rozdělit se o obavy a poskytuje plnou kontrolu nad značkou pro užívejte a agilní vývoj. ASP.NET MVC zahrnuje řadu funkcí, které umožňují rychlý vývoj s použitím TDD pro vytváření sofistikovaných aplikací využívajících nejnovější webové standardy.
+ASP.NET MVC poskytuje výkonný, na vzorech založený způsob tvorby dynamických webů, který dovoluje zřetelně oddělit jednotlivé oblasti a dává vám plnou kontrolu nad značkami, což usnadňuje vývoj a zvyšuje jeho flexibilitu. ASP.NET MVC zahrnuje řadu funkcí, které umožňují rychlý vývoj s použitím TDD pro vytváření sofistikovaných aplikací využívajících nejnovější webové standardy.
 
 [Další informace o MVC](mvc/index.md)
 
-### <a name="aspnet-web-pages"></a>ASP.NET – webové stránky
+### <a name="aspnet-web-pages"></a>ASP.NET Web Pages
 
 ASP.NET webové stránky a syntaxe Razor poskytují rychlý a snadný způsob, jak kombinovat serverový kód s HTML a vytvořit tak dynamický webový obsah. Připojte se k databázím, přidejte video, připojte se k webům sociální sítě a zahrňte spoustu dalších funkcí, které vám pomůžou vytvořit krásné weby, které odpovídají nejnovějším webovým standardům.
 
@@ -65,7 +65,7 @@ Kromě toho tři architektury nejsou zcela nezávislé a výběr jedné z nich n
 
 ## <a name="web-apis"></a>Webová rozhraní API
 
-Webové rozhraní API ASP.NET je rozhraní, které usnadňuje sestavování služeb HTTP, které dosáhnou široké škály klientů, včetně prohlížečů a mobilních zařízení. Webové rozhraní API ASP.NET je ideální platformou pro sestavování aplikací RESTful na .NET Framework.
+Rozhraní ASP.NET Web API usnadňuje sestavování služeb HTTP, které jsou poskytovány širokému spektru klientů, včetně prohlížečů a mobilních zařízení. Rozhraní ASP.NET Web API představuje ideální platformu pro sestavování aplikací RESTful v rozhraní .NET Framework.
 
 [Další informace o webovém rozhraní API](web-api/index.md)
 
@@ -83,7 +83,7 @@ ASP.NET Signal je nová knihovna pro vývojáře v ASP.NET, která usnadňuje v�
 
 ASP.NET může využívat nativní mobilní aplikace s back-end webovým rozhraním API a mobilními weby s odezvou na vývojové architektury, jako je třeba spuštění Twitteru. Pokud vytváříte nativní mobilní aplikaci, je snadné vytvořit webové rozhraní API na bázi JSON pro zpracování přístupu k datům, ověřování a nabízených oznámení pro vaši aplikaci. Pokud vytváříte reagující mobilní web, můžete použít libovolný nebo otevřený systém mřížky, který dáváte přednost, nebo můžete vybrat výkonný mobilní systém jako jQuery Mobile nebo Sencha a skvělé mobilní aplikace s PhoneGap.
 
-[Další informace o mobilní aplikaci a vývoji webu](mobile/index.md)
+[Další informace o mobilní aplikaci a vývoji webu](mobile/overview.md)
 
 <!-- Put first under mobile TOC:  Watch video (11 minutes) https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-and-mobile -->
 

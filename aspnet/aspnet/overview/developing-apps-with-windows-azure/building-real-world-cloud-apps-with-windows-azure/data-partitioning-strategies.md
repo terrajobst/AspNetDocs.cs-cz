@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: 513837a7-cfea-4568-a4e9-1f5901245d24
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
 msc.type: authoredcontent
-ms.openlocfilehash: 2f79b1f459aff3e81dab7ea7eb4ebf3f71084463
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: b8c901ec30b6d37237f80100a2978350ac389b7a
+ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74585807"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76519164"
 ---
 # <a name="data-partitioning-strategies-building-real-world-cloud-apps-with-azure"></a>Strategie dělení dat (vytváření skutečných cloudových aplikací s Azure)
 
@@ -51,7 +51,7 @@ Předpokládejme například, že moje aplikace ukládá data o lidech, včetně
 
 ![Tabulka dat](data-partitioning-strategies/_static/image1.png)
 
-Když tato data reprezentujete jako tabulku a můžete se podívat na různé odrůdy dat, vidíte, že tři sloupce na levé straně obsahují řetězcová data, která je možné efektivně ukládat relační databází, zatímco dva sloupce na pravé straně mají v podstatě Bajtová pole, která c teré z obrazových souborů. Je možné uložit data souboru bitové kopie v relační databázi a spousta lidí, protože nechtějí ukládat data do systému souborů. Nemusí mít systém souborů schopný ukládat požadované objemy dat nebo nemusí spravovat samostatný systém zálohování a obnovení. Tento přístup funguje dobře pro místní databáze a pro malé objemy dat v cloudových databázích. V místním prostředí může být snazší, aby se usnadnilo, aby se zjednodušilo všechno, co je potřeba.
+Když tato data reprezentujete jako tabulku a můžete se podívat na různé odrůdy dat, vidíte, že tři sloupce na levé straně obsahují řetězcová data, která je možné efektivně ukládat relační databází, zatímco dva sloupce na pravé straně mají v podstatě Bajtová pole, která c teré z obrazových souborů. Je možné ukládat data souborů obrázků do relační databáze a mnoho lidí to udělat, protože nechtějí ukládat data do systému souborů. Nemusí mít systém souborů schopný ukládat požadované objemy dat nebo nemusí spravovat samostatný systém zálohování a obnovení. Tento přístup funguje dobře pro místní databáze a pro malé objemy dat v cloudových databázích. V místním prostředí může být snazší, aby se usnadnilo, aby se zjednodušilo všechno, co je potřeba.
 
 Ale v cloudové databázi je úložiště poměrně nákladné a velký objem imagí může způsobit, že velikost databáze přesáhne limity, při kterých může fungovat efektivně. Tyto problémy můžete vyřešit vertikálním rozdělením dat, což znamená, že pro každý sloupec v tabulce dat vyberete nejvhodnější úložiště dat. To, co by mohlo být pro tento příklad fungovat nejlépe, je vložení řetězcových dat do relační databáze a imagí v úložišti objektů BLOB.
 
@@ -61,7 +61,7 @@ Ukládání imagí v BLOB Storage místo databáze je v cloudu více praktické,
 
 Toto je přístup k dělení, který jsme implementovali v aplikaci pro opravu IT, a podíváme se na kód, který najdete v [kapitole BLOB Storage](unstructured-blob-storage.md). Bez tohoto schématu dělení a za předpokladu, že průměrná velikost Image je 3 MB, bude aplikace Fix it moct Uložit asi 40 000 úloh jenom předtím, než zasáhne maximální velikost databáze 150 gigabajtů. Po odebrání imagí může databáze aplikace uložit 10 časů jako mnoho úkolů. než se budete muset zamyslet na implementaci horizontálního schématu dělení, můžete to trvat mnohem déle. A když se aplikace škáluje, vaše náklady se budou považovat pomaleji, protože hromadné požadavky na úložiště se blíží velmi levnému úložišti objektů BLOB.
 
-## <a name="horizontal-partitioning-sharding"></a>Horizontální dělení (horizontálního dělení)
+## <a name="horizontal-partitioning-sharding"></a>Horizontální dělení (sharding)
 
 Vodorovná část je podobná rozdělení tabulky podle řádků: jedna sada řádků přejde do jednoho úložiště dat a další sada řádků přejde do jiného úložiště dat.
 
@@ -95,7 +95,7 @@ V [Další části](unstructured-blob-storage.md) se dozvíte, jak aplikace pro 
 
 Další informace o strategiích dělení naleznete v následujících zdrojích informací.
 
-Nápovědě
+Dokumentace:
 
 - [Osvědčené postupy pro návrh rozsáhlých služeb na platformě Windows Azure Cloud Services](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx). Dokument White Paper, který označuje Simms a Michael Thomassy.
 - [Vzory a postupy Microsoft – vzory návrhu pro Cloud](https://msdn.microsoft.com/library/dn568099.aspx) Viz pokyny k dělení dat, horizontálního dělení vzor.

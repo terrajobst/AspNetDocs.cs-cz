@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 0fab5e35-8c1f-43d4-8635-b8aba8766a71
 msc.legacyurl: /signalr/overview/getting-started/introduction-to-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 11b494b4839c646b018098c76a8a9ae0a2169757
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 8dbc31a5c8d59fa55dc5b513c1a51d24d18a685f
+ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600494"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76519398"
 ---
 # <a name="introduction-to-signalr"></a>Úvod ke knihovně SignalR
 
@@ -39,11 +39,19 @@ Signalizace poskytuje jednoduché rozhraní API pro vytváření vzdálených pr
 
 ![Vyvolání metod pomocí signalizace](introduction-to-signalr/_static/image1.png)
 
-Signaler zpracovává správu připojení automaticky a umožňuje vysílat zprávy všem připojeným klientům současně, jako je chatovací místnost. Můžete také odesílat zprávy konkrétním klientům. Připojení mezi klientem a serverem je trvalé, na rozdíl od klasického připojení HTTP, které je pro každou komunikaci znovu navázáno.
+Služba SignalR automaticky řeší správu připojení a dovoluje vám vysílat zprávy pro všechny připojené klienty najednou, jako v chatovací místnosti. Můžete také odesílat zprávy konkrétním klientům. Připojení mezi klientem a serverem je trvalé, na rozdíl od klasického připojení HTTP, které se při každé komunikaci obnovuje.
 
 Signalizace podporuje funkci nabízeného oznámení "serveru, při které kód serveru může volat klientský kód v prohlížeči pomocí vzdáleného volání procedur (RPC), nikoli model požadavků, který je v současnosti společný na webu.
 
-Aplikace Signal se můžou škálovat na tisíce klientů pomocí Service Bus, SQL Server nebo [Redis](http://redis.io).
+Aplikace pro signalizaci se můžou škálovat na tisíce klientů pomocí integrovaných a poskytovatelů škálování na více instancí třetích stran.
+
+Mezi předdefinované zprostředkovatele patří:
+* [Service Bus](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.ServiceBus3)
+* [SQL Server](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.SqlServer)
+* [Redis](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Redis)
+
+Mezi poskytovatelé třetích stran patří:
+* [NCache](https://www.alachisoft.com/ncache/asp-net-core-signalr.html).
 
 Signalizace je open source, který je přístupný prostřednictvím [GitHubu](https://github.com/signalr).
 

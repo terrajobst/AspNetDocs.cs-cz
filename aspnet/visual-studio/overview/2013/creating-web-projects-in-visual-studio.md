@@ -1,424 +1,424 @@
 ---
 uid: visual-studio/overview/2013/creating-web-projects-in-visual-studio
-title: Vytváření projektů v prostředí ASP.NET v sadě Visual Studio 2013 | Dokumentace Microsoftu
+title: Vytváření ASP.NET webových projektů v Visual Studio 2013 | Microsoft Docs
 author: tdykstra
-description: Toto téma popisuje možnosti pro vytváření webových projektů ASP.NET v sadě Visual Studio 2013 s aktualizací 3 zde jsou některé nové funkce pro jazyk c vývoj pro web...
+description: Toto téma vysvětluje možnosti pro vytváření ASP.NET webových projektů v Visual Studio 2013 s aktualizací Update 3 zde jsou některé nové funkce pro vývoj webů c...
 ms.author: riande
 ms.date: 12/01/2014
 ms.assetid: 61941e64-0c0d-4996-9270-cb8ccfd0cabc
 msc.legacyurl: /visual-studio/overview/2013/creating-web-projects-in-visual-studio
 msc.type: authoredcontent
-ms.openlocfilehash: 3a446be8e2dff2ac66e2432c51b2d9f43bcb817d
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: fbb4cd7afa2506879d47bce980bf0164aad40c2c
+ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113173"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76519268"
 ---
 # <a name="creating-aspnet-web-projects-in-visual-studio-2013"></a>Vytváření webových projektů ASP.NET v sadě Visual Studio 2013
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-> Toto téma popisuje možnosti pro vytváření webových projektů ASP.NET v sadě Visual Studio 2013 s aktualizací Update 3
+> Toto téma vysvětluje možnosti pro vytváření webových projektů v ASP.NET v Visual Studio 2013 s aktualizací Update 3.
 > 
-> Tady jsou některé z nových funkcí pro vývoj webů porovnání s předchozími verzemi sady Visual Studio:
+> Zde jsou některé nové funkce pro vývoj webu v porovnání s předchozími verzemi sady Visual Studio:
 > 
-> - Jednoduché uživatelské rozhraní pro vytváření projektů nabídku [podporu pro více platforem ASP.NET](#add) (webové formuláře, MVC a webového rozhraní API).
-> - [ASP.NET Identity](#indauth), nový systém členství technologie ASP.NET, který funguje stejně ve všech platforem ASP.NET a funguje s webhosting softwaru než služby IIS.
-> - Použití [Bootstrap](#bootstrap) poskytnout interaktivní možnosti návrhu a motivů.
-> - Nové funkce pro webové formuláře, kterého chcete nabízet pouze pro architekturu MVC, jako například [vytváření automatických testů projektu](#testproj) a [šablony webu intranetu](#winauth).
+> - Jednoduché uživatelské rozhraní pro vytváření projektů, které nabízí [podporu pro víc ASP.NETch platforem](#add) (webové formuláře, MVC a webové rozhraní API).
+> - [ASP.NET identity](#indauth)nový systém členství v ASP.NET, který funguje stejně ve všech ASP.NET architekturách a pracuje s jiným softwarem pro hostování webů, než je služba IIS.
+> - Použití funkce [bootstrap](#bootstrap) k zajištění reakce na návrh a možnosti.
+> - Nové funkce pro webové formuláře, které slouží k nabídnutí pouze pro MVC, jako je například [Automatické vytváření projektů testů](#testproj) a [Šablona intranetového webu](#winauth).
 > 
-> Informace o tom, jak vytvořit webové projekty pro Azure Cloud Services nebo Azure Mobile Services, najdete v části [Začínáme s Azure Cloud Services a ASP.NET](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-get-started/) a [vytvoření Žebříčkové aplikace pomocí .NET v Azure Mobile Services Back-endu](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/).
+> Informace o tom, jak vytvořit webové projekty pro Azure Cloud Services nebo Azure Mobile Services, najdete v tématu Začínáme [s azure Cloud Services a ASP.NET](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-get-started/) a [Vytvoření aplikace tabulek výsledků pomocí back-endu .net pro Azure Mobile Services](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/).
 
 <a id="prerequisites"></a>
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek se týká [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566) s [s aktualizací Update 3](https://go.microsoft.com/fwlink/?linkid=397827&amp;clcid=0x409) nainstalované.
+Tento článek se týká [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566) s nainstalovanou [aktualizací Update 3](https://go.microsoft.com/fwlink/?linkid=397827&amp;clcid=0x409) .
 
 <a id="wap"></a>
-## <a name="web-application-projects-versus-web-site-projects"></a>Projekty webových aplikací a webové projekty
+## <a name="web-application-projects-versus-web-site-projects"></a>Projekty webové aplikace versus webové projekty
 
-ASP.NET vám dává na výběr mezi těmito dvěma typy webových projektů: *webových projektů aplikace* a *webových projektů*. Doporučujeme, abyste projekty webových aplikací pro vývoj nových projektů, a tento článek se týká pouze projektů webových aplikací. Další informace najdete v tématu [Web Application Projects versus webových projektů v sadě Visual Studio](https://msdn.microsoft.com/library/dd547590(v=vs.120).aspx) na webu MSDN.
+ASP.NET nabízí možnost volby mezi dvěma druhy webových projektů: *projekty webové aplikace* a *projekty*webu. Doporučujeme projekty webové aplikace pro nový vývoj a tento článek se vztahuje pouze na projekty webové aplikace. Další informace naleznete v tématu [projekty webové aplikace versus webové projekty v aplikaci Visual Studio](https://msdn.microsoft.com/library/dd547590(v=vs.120).aspx) na webu MSDN.
 
 <a id="overview"></a>
 ## <a name="overview-of-web-application-project-creation"></a>Přehled vytvoření projektu webové aplikace
 
-Následující kroky ukazují, jak na vytvoření webového projektu:
+Následující kroky ukazují, jak vytvořit webový projekt:
 
-1. Klikněte na tlačítko **nový projekt** v **spustit** stránky nebo **souboru** nabídky.
-2. V **nový projekt** dialogového okna, klikněte na tlačítko **webové** v levém podokně a **webová aplikace ASP.NET** v prostředním podokně.
+1. Na **úvodní** stránce nebo v nabídce **soubor** klikněte na **Nový projekt** .
+2. V dialogovém okně **Nový projekt** klikněte v levém podokně na **Web** a **ASP.NET webová aplikace** v prostředním podokně.
 
     ![Dialogové okno nového projektu](creating-web-projects-in-visual-studio/_static/image1.png)
 
-    Můžete použít **cloudu** v levém podokně vytvoření [cloudové služby Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy), [Azure Mobile Service](https://msdn.microsoft.com/library/windows/apps/dn629482.aspx), nebo [Azure WebJob](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-webjobs). Toto téma nepopisuje tyto šablony.
-3. V pravém podokně klikněte **přidat službu Application Insights do projektu** zaškrtávací políčko, pokud chcete stav a sledování využití pro vaši aplikaci. Další informace najdete v tématu [monitorování výkonu webových aplikací](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/).
-4. Zadejte projekt **název**, **umístění**a další možnosti a pak klikněte na tlačítko **OK**.
+    V levém podokně můžete vybrat **Cloud** a vytvořit [cloudovou službu Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy), [mobilní službu Azure](https://msdn.microsoft.com/library/windows/apps/dn629482.aspx)nebo [webovou úlohu Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-webjobs). Toto téma se nevztahuje na tyto šablony.
+3. V pravém podokně zaškrtněte políčko **přidat Application Insights do projektu** , pokud chcete pro svou aplikaci sledovat stav a využití. Další informace najdete v tématu [monitorování výkonu ve webových aplikacích](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/).
+4. Zadejte **název**projektu, **umístění**a další možnosti a pak klikněte na **OK**.
 
-    **Nový projekt ASP.NET** se zobrazí dialogové okno.
+    Zobrazí se dialogové okno **Nový projekt ASP.NET** .
 
     ![Dialogové okno nového projektu](creating-web-projects-in-visual-studio/_static/image2.png)
 5. Klikněte na šablonu.
 
-    ![Vybrat šablonu](creating-web-projects-in-visual-studio/_static/image3.png)
-6. Pokud chcete přidat podporu pro další architektury, které nejsou zahrnuty v šabloně, klikněte na příslušné políčko. (Z příkladu, můžete přidat MVC nebo webové rozhraní API na projekt webových formulářů.)
+    ![Vyberte šablonu](creating-web-projects-in-visual-studio/_static/image3.png)
+6. Pokud chcete přidat podporu pro další architektury, které nejsou součástí šablony, zaškrtněte příslušné políčko. (V zobrazeném příkladu můžete přidat MVC nebo webové rozhraní API do projektu webových formulářů.)
 
     ![Přidat rozhraní](creating-web-projects-in-visual-studio/_static/image4.png)
-7. <a id="testproj"></a>Pokud chcete přidat projekt testování částí, klikněte na tlačítko **přidání jednotkových testů**.
+7. <a id="testproj"></a>Chcete-li přidat projekt testování částí, klikněte na možnost **Přidat testy jednotek**.
 
     ![Přidat testy jednotek](creating-web-projects-in-visual-studio/_static/image5.png)
-8. Pokud chcete metodu ověřování jiný než Šablona nabízí ve výchozím nastavení, klikněte na tlačítko **změna ověřování**.
+8. Pokud chcete jinou metodu ověřování, než jakou šablona ve výchozím nastavení poskytuje, klikněte na **změnit ověřování**.
 
-    ![Konfigurace ověřování tlačítko](creating-web-projects-in-visual-studio/_static/image6.png)
+    ![Tlačítko konfigurovat ověřování](creating-web-projects-in-visual-studio/_static/image6.png)
 
-    ![Konfigurace dialog ověřování.](creating-web-projects-in-visual-studio/_static/image7.png)
+    ![Dialogové okno Konfigurace ověřování](creating-web-projects-in-visual-studio/_static/image7.png)
 
 <a id="azurenewproj"></a>
 ### <a name="create-a-web-app-or-virtual-machine-in-azure"></a>Vytvoření webové aplikace nebo virtuálního počítače v Azure
 
-Visual Studio obsahuje funkce, které usnadňují práci se službami Azure pro hostování webových aplikací. Například všechny z následujících akcí můžete provést přímo z integrovaného vývojového prostředí sady Visual Studio:
+Visual Studio obsahuje funkce, které usnadňují práci se službami Azure pro hostování webových aplikací. V integrovaném vývojovém prostředí sady Visual Studio můžete například provést všechna následující práva:
 
-- Vytvoření a Správa webové aplikace nebo virtuální počítače, které vaší aplikaci zpřístupnit přes Internet.
-- Zobrazit protokoly, které vytvořila aplikace při jejím spuštění v cloudu.
-- Vzdálené spouštění v režimu ladění při spuštění aplikace v cloudu.
+- Vytvářejte a spravujte webové aplikace nebo virtuální počítače, které zpřístupňují vaši aplikaci přes Internet.
+- Zobrazit protokoly vytvořené aplikací při spuštění v cloudu.
+- Spouštějte v režimu ladění vzdáleně při spuštění aplikace v cloudu.
 - Umožňuje zobrazit a spravovat další služby Azure, jako jsou databáze SQL.
 
-Je možné [vytvořit účet Azure](https://www.windowsazure.com/pricing/free-trial/) zdarma, který obsahuje základní služby, jako jsou například webové aplikace, a pokud jste předplatitelem MSDN můžete [aktivovat výhody](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/) , který získáte měsíční kredit na další Azure služby. 
+Můžete [vytvořit účet Azure](https://www.windowsazure.com/pricing/free-trial/) , který zahrnuje základní služby, jako jsou třeba webové aplikace, a pokud jste předplatitelem MSDN, můžete [aktivovat výhody](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/) , které vám poskytnou měsíční kredit na další služby Azure. 
 
-Ve výchozím nastavení **nový projekt ASP.NET** dialogové okno umožňuje vytvářet webové aplikace nebo virtuálního počítače pro nového webového projektu. Pokud nechcete vytvořit novou webovou aplikaci nebo virtuální počítač, zrušte zaškrtnutí políčka **hostovat v cloudu** zaškrtávací políčko.
+Ve výchozím nastavení se v dialogovém okně **Nový projekt ASP.NET** umožňuje vytvořit webovou aplikaci nebo virtuální počítač pro nový webový projekt. Pokud nechcete vytvořit novou webovou aplikaci nebo virtuální počítač, zrušte zaškrtnutí políčka **hostitel v cloudu** .
 
-![Vytvořit vzdálené prostředky](creating-web-projects-in-visual-studio/_static/image8.png)
+![Vytvoření vzdálených prostředků](creating-web-projects-in-visual-studio/_static/image8.png)
 
-Titulek zaškrtávací políčko může být **hostovat v cloudu** nebo **vytvořit vzdálené prostředky**, a v obou případech efekt je stejný. Pokud necháte políčko zaškrtnuté, Visual Studio vytvoří webovou aplikaci ve službě Azure App Service ve výchozím nastavení. Pole rozevíracího seznamu můžete změnit tak, aby **virtuálního počítače** Pokud dáváte přednost. Pokud jste ještě nejste přihlášení do Azure, se zobrazí výzva k zadání přihlašovacích údajů Azure. Po přihlášení, dialogové okno umožňuje konfigurovat prostředky, které pro váš projekt vytvoří Visual Studio. Následující obrázek ukazuje dialogové okno pro webové aplikace; Pokud budete chtít vytvořit virtuální počítač se zobrazí různé možnosti.
+Popisek zaškrtávacího políčka může být **hostitel v cloudu** nebo **vytvářet vzdálené prostředky**a v obou případech je efekt stejný. Pokud ponecháte zaškrtnuté políčko, Visual Studio ve výchozím nastavení vytvoří webovou aplikaci ve Azure App Service. Pokud chcete, můžete to změnit na **virtuální počítač** pomocí rozevíracího seznamu. Pokud ještě nejste přihlášení k Azure, budete vyzváni k zadání přihlašovacích údajů Azure. Po přihlášení vám dialogové okno umožní nakonfigurovat prostředky, které Visual Studio vytvoří pro váš projekt. Následující ilustrace znázorňuje dialog webové aplikace. Pokud se rozhodnete vytvořit virtuální počítač, zobrazí se různé možnosti.
 
 ![Konfigurace nastavení aplikace Azure](creating-web-projects-in-visual-studio/_static/image9.png)
 
-Další informace o tom, jak používat tento proces pro vytváření prostředků Azure najdete v tématu [Začínáme s Azure a ASP.NET](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet) a [vytvoření virtuálního počítače pro webovou stránku pomocí sady Visual Studio](https://azure.microsoft.com/documentation/articles/virtual-machines-dotnet-create-visual-studio-powershell/).
+Další informace o tom, jak tento postup použít při vytváření prostředků Azure, najdete v tématech [Začínáme s Azure a ASP.NET](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet) a [Vytvoření virtuálního počítače pro web pomocí sady Visual Studio](https://azure.microsoft.com/documentation/articles/virtual-machines-dotnet-create-visual-studio-powershell/).
 
-Zbývající část tohoto článku poskytuje další informace o dostupných šablon a jejich možnosti. Tento článek také zavádí Bootstrap, rozložení a motivy framework používá v šablonách.
+Zbývající část tohoto článku poskytuje další informace o dostupných šablonách a jejich možnostech. Článek také zavádí Bootstrap, rozložení a rozhraní pro použití v šablonách.
 
 <a id="vs2013"></a>
-## <a name="visual-studio-2013-web-project-templates"></a>Šablony webových projektů Visual Studio 2013
+## <a name="visual-studio-2013-web-project-templates"></a>Šablony Visual Studio 2013 webového projektu
 
-Visual Studio používá šablony k vytváření webových projektů. Šablona projektu můžete vytvořit soubory a složky v novém projektu, instalace balíčků NuGet a ukázkový kód stanovit základní funkční aplikaci. Šablony implementovat nejnovější webové standardy a jsou určeny k předvedení osvědčené postupy, jak používat technologie ASP.NET, stejně jako vám přechod začít na vytváření vlastních aplikací.
+Visual Studio používá šablony pro vytváření webových projektů. Šablona projektu může vytvořit soubory a složky v novém projektu, nainstalovat balíčky NuGet a poskytnout vzorový kód pro základní funkční aplikaci. Šablony implementují nejnovější webové standardy a jsou určené k předvedení osvědčených postupů pro používání technologií ASP.NET a také vám poskytnou odkaz na začátek vytváření vlastní aplikace.
 
-Visual Studio 2013 nabízí následující možnosti pro šablony webových projektů pro projekty, které cílí na rozhraní .NET 4.5 nebo novější verze rozhraní .NET Framework:
+Visual Studio 2013 poskytuje následující možnosti pro šablony webového projektu pro projekty, které cílí na .NET 4,5 nebo novější verze rozhraní .NET Framework:
 
 - [Prázdná šablona](#empty)
-- [Šablony webových formulářů](#wf)
+- [Šablona webových formulářů](#wf)
 - [Šablona MVC](#mvc)
 - [Šablona webového rozhraní API](#webapi)
-- [Šablona pro jednu stránku aplikace](#spa)
-- [Šablony Azure Mobile Service](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)
+- [Jedna stránka – šablona aplikace](#spa)
+- [Šablona mobilní služby Azure](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)
 - [Šablony sady Visual Studio 2012](#vs2012)
 
-Můžete také nainstalovat rozšíření sady Visual Studio, které poskytuje [šabloně pro síť Facebook](#facebook).
+Můžete také nainstalovat rozšíření sady Visual Studio, které poskytuje [šablonu Facebooku](#facebook).
 
-Informace o tom, jak vytvářet projekty, které jsou cíleny na rozhraní .NET 4, najdete v části [šablony sady Visual Studio 2012](#vs2012) dále v tomto tématu.
+Informace o vytváření projektů cílených na rozhraní .NET 4 naleznete v tématu [šablony sady Visual Studio 2012](#vs2012) dále v tomto tématu.
 
-Informace o vytváření aplikací ASP.NET pro mobilní klienty najdete v tématu [mobilní podpora v technologii ASP.NET](../../../mobile/index.md).
+Informace o tom, jak vytvářet ASP.NET aplikace pro mobilní klienty, najdete [v tématu mobilní podpora v ASP.NET](../../../mobile/overview.md).
 
 <a id="empty"></a>
 ### <a name="empty-template"></a>Prázdná šablona
 
-Prázdná šablona nabízí úplné minimální složky a soubory pro webové aplikace ASP.NET, jako je například soubor projektu (*.csproj* nebo. *vbproj*) a *Web.config* souboru. Můžete přidat podporu pro webové formuláře, MVC a/nebo webové rozhraní API pomocí zaškrtávacích políček v rámci **přidat složky a základní odkazy pro:** popisek.
+Prázdná šablona poskytuje minimální složky a soubory pro webovou aplikaci ASP.NET, jako je soubor projektu ( *. csproj* nebo. *vbproj*) a soubor *Web. config* . Podporu webových formulářů, MVC a/nebo webového rozhraní API můžete přidat pomocí zaškrtávacích políček v části **Přidat složky a základní odkazy pro:** Label.
 
-Pro prázdnou šablonu nejsou dostupné žádné možnosti ověřování. Funkce ověřování je implementována v ukázkové aplikace a prázdnou šablonu nevytvoří ukázkovou aplikaci.
+Pro prázdnou šablonu nejsou k dispozici žádné možnosti ověřování. Funkce ověřování je implementována v ukázkových aplikacích a prázdná šablona nevytváří ukázkovou aplikaci.
 
 <a id="wf"></a>
-### <a name="web-forms-template"></a>Šablony webových formulářů
+### <a name="web-forms-template"></a>Šablona webových formulářů
 
-Webové formuláře, který framework poskytuje následující funkce, které vám umožní rychle vytvářet weby, které jsou bohaté v uživatelském rozhraní a data přístup k funkcím:
+Rozhraní Web Forms Framework nabízí následující funkce, které vám umožní rychle vytvářet weby, které jsou bohatě v uživatelském rozhraní a funkcích pro přístup k datům:
 
-- WYSIWYG návrháře v sadě Visual Studio.
-- Serverové ovládací prvky, které vykreslení HTML a, které můžete přizpůsobit tak, že nastavíte vlastnosti a styly.
-- Bohaté sortiment ovládací prvky pro přístup k datům a data zobrazení.
-- Model událostí, který zpřístupňuje události, ke kterým můžete programovat podobně, jako by programu klientská aplikace, jako je například WPF.
-- Automatické zachování stavu (data) mezi požadavky HTTP.
+- Návrhář WYSIWYG v aplikaci Visual Studio.
+- Serverové ovládací prvky, které vykreslují HTML a které lze přizpůsobit nastavením vlastností a stylů.
+- Bohatě se seznam ovládacích prvků pro přístup k datům a zobrazení dat.
+- Model událostí, který zpřístupňuje události, které lze programovat jako program aplikace klienta, jako je například WPF.
+- Automatické uchovávání stavů (dat) mezi požadavky HTTP.
 
-Vytvoření aplikace webových formulářů obecně vyžaduje méně programátorského úsilí než vytvoření stejnou aplikaci pomocí rozhraní ASP.NET MVC. Webové formuláře je však není jen pro rychlý vývoj aplikací. Existuje mnoho složitých obchodních aplikací a architektur postavené na webových formulářů.
+Obecně platí, že vytvoření aplikace webových formulářů vyžaduje méně programovací úsilí než vytváření stejné aplikace pomocí architektury ASP.NET MVC. Webové formuláře ale nestačí jenom pro rychlý vývoj aplikací. K dispozici je celá řada složitých komerčních aplikací a platforem postavených nad webovými formuláři.
 
-Protože stránky s webovými formuláři a ovládacích prvků na stránce automaticky velkou část značky, které je odesláno prohlížeči, není nutné druh velice přesně kontrolovat, HTML, který nabízí technologie ASP.NET MVC. Deklarativní model pro konfiguraci stránek a ovládacích prvků minimalizuje množství kódu, máte k zápisu, ale některé chování kódu HTML a HTTP skryje. Například není vždy možné určit, jaký kód přesně může vygenerovat ovládacím prvkem.
+Vzhledem k tomu, že stránka webového formuláře a ovládací prvky na stránce automaticky generují většinu značek, které se odesílají do prohlížeče, nebudete mít k dispozici detailní kontrolu nad kódem HTML, který ASP.NET MVC nabízí. Deklarativní model pro konfiguraci stránek a ovládacích prvků minimalizuje množství kódu, který musíte napsat, ale skrývá některé chování HTML a HTTP. Například není vždy možné přesně určit, jaký kód může být generován ovládacím prvkem.
 
-Rozhraní webových formulářů nemá řešení snadno ASP.NET MVC na základě vzorů vývojové postupy, jako [vývoj řízený testováním](http://en.wikipedia.org/wiki/Test-driven_development), [oddělení oblastí zájmu](http://en.wikipedia.org/wiki/Separation_of_concerns), [vzájemný ovládací prvek](http://en.wikipedia.org/wiki/Inversion_of_control), a [injektáž závislostí](http://en.wikipedia.org/wiki/Dependency_injection). Pokud chcete napsat kód dostaneme tímto způsobem, je to možné není právě automatické, protože je v rozhraní ASP.NET MVC. [ASP.NET Web Forms MVP](http://webformsmvp.com/) projektu se zobrazí, která usnadňuje oddělení připomínky a testovatelnosti při zachování rychlý vývoj, který webových formulářů byla vytvořena k zajištění přístupu. Microsoft SharePoint je postavená na webových formulářů MVP.
+Rozhraní Web Forms se samoně neposkytuje jako ASP.NET MVC na vzory vývoje založené na vzorech, jako je [Vývoj řízený testy](http://en.wikipedia.org/wiki/Test-driven_development), [oddělení obav](http://en.wikipedia.org/wiki/Separation_of_concerns), [inverze řízení](http://en.wikipedia.org/wiki/Inversion_of_control)a [vkládání závislostí](http://en.wikipedia.org/wiki/Dependency_injection). Pokud chcete napsat kód, který je tímto způsobem vytvořen, můžete; Nejedná se pouze o automatické, protože je v rozhraní ASP.NET MVC. Projekt [MVP pro webové formuláře ASP.NET](http://webformsmvp.com/) znázorňuje přístup, který usnadňuje oddělení obav a možností testování a zároveň udržuje rychlý vývoj, který webové formuláře vytvořily. Služba Microsoft SharePoint je postavená na MVP pro webové formuláře.
 
-Šablony webových formulářů vytvoří ukázkovou aplikaci webových formulářů, který používá [Bootstrap](#bootstrap) a zajistit tak interaktivní funkce návrhu a motivů. Následující obrázek ukazuje na domovské stránce.
+Šablona webových formulářů vytvoří ukázkovou aplikaci webových formulářů, která pomocí [bootstrap](#bootstrap) zajišťuje reakce na návrh a funkce. Na následujícím obrázku je znázorněna Domovská stránka.
 
-![Domovská stránka šablony aplikace webových formulářů](creating-web-projects-in-visual-studio/_static/image10.png)
+![Domovská stránka webové formuláře aplikace](creating-web-projects-in-visual-studio/_static/image10.png)
 
-Další informace o webových formulářích najdete v tématu [webových formulářů ASP.NET](https://asp.net/web-forms). Informace o šabloně webových formulářů udělá za vás, najdete v tématu [sestavení základní aplikace webových formulářů pomocí sady Visual Studio 2013](https://blogs.msdn.com/b/webdev/archive/2013/12/19/building-a-basic-web-forms-application-using-visual-studio-2013.aspx).
+Další informace o webových formulářích naleznete v tématu [ASP.NET Web Forms](https://asp.net/web-forms). Informace o tom, co šablona webových formulářů pro vás dělá, najdete v tématu [Vytvoření základní aplikace webového formuláře pomocí Visual Studio 2013](https://blogs.msdn.com/b/webdev/archive/2013/12/19/building-a-basic-web-forms-application-using-visual-studio-2013.aspx).
 
 <a id="mvc"></a>
 ### <a name="mvc-template"></a>Šablona MVC
 
-ASP.NET MVC je navržená pro usnadnění postupů vývoje na základě vzorů, jako [vývoj řízený testováním](http://en.wikipedia.org/wiki/Test-driven_development), [oddělení oblastí zájmu](http://en.wikipedia.org/wiki/Separation_of_concerns), [inverzi ovládacího prvku](http://en.wikipedia.org/wiki/Inversion_of_control), a [injektáž závislostí](http://en.wikipedia.org/wiki/Dependency_injection). Toto rozhraní umožňuje oddělení vrstvy obchodní logiky webové aplikace z jeho prezentační vrstvy. Rozdělením architektury do modelů (M), zobrazení (V) a kontrolerů (C), ASP.NET MVC lze usnadňují Správa složitých aplikací ve větších aplikací.
+Služba ASP.NET MVC byla navržena tak, aby usnadnila vývojové postupy založené na vzorech, jako je [Vývoj řízený testy](http://en.wikipedia.org/wiki/Test-driven_development), [oddělení obav](http://en.wikipedia.org/wiki/Separation_of_concerns), [inverze řízení](http://en.wikipedia.org/wiki/Inversion_of_control)a [vkládání závislostí](http://en.wikipedia.org/wiki/Dependency_injection). Rozhraní podporuje oddělení vrstvy obchodní logiky webové aplikace od své prezentační vrstvy. Díky rozdělení aplikace do modelů (M), zobrazení (V) a řadičů (C) může ASP.NET MVC usnadnit správu složitosti ve větších aplikacích.
 
-ASP.NET MVC můžete pracovat přímo se HTML a protokol HTTP, než ve webových formulářů. Například webové formuláře může automaticky zachování stavu mezi požadavky HTTP, ale budete muset kód, který explicitně v aplikaci MVC. Výhod modelu MVC je, abyste provedli úplnou kontrolu nad přesně co aplikace dělá a jak se chová v prostředí webové umožňuje. Nevýhodou je, že budete muset napsat další kód.
+S ASP.NET MVC pracujete přímo s HTML a HTTP než ve webových formulářích. Například webové formuláře mohou automaticky zachovávat stav mezi požadavky HTTP, ale je nutné kód, který je explicitně v MVC. Výhodou modelu MVC je to, že umožňuje převzít úplnou kontrolu nad přesně tím, co vaše aplikace dělá a jak se chová ve webovém prostředí. Nevýhodou je, že musíte napsat více kódu.
 
-MVC je navržená pro rozšiřitelnost, možnost přizpůsobení rozhraní pro jejich potřeby aplikace, že vývojáři power. Kromě toho je k dispozici pod licenci OSI zdrojové stránky ASP.NET MVC.
+Služba MVC byla navržena tak, aby byla rozšiřitelná a poskytovala vývojářům možnost přizpůsobit si rámec pro potřeby svých aplikací. Kromě toho je zdrojový kód ASP.NET MVC k dispozici v rámci licence OSI.
 
-Šablona MVC vytvoří ukázkovou aplikaci MVC 5 využívající [Bootstrap](#bootstrap) a zajistit tak interaktivní funkce návrhu a motivů. Následující obrázek ukazuje na domovské stránce.
+Šablona MVC vytvoří ukázkovou aplikaci MVC 5, která pomocí [bootstrap](#bootstrap) zajišťuje reakce na návrh a funkce. Na následujícím obrázku je znázorněna Domovská stránka.
 
 ![Ukázková aplikace MVC](creating-web-projects-in-visual-studio/_static/image11.png)
 
-Další informace o MVC najdete v tématu [ASP.NET MVC](https://asp.net/mvc). Informace o tom, jak vybrat šablonu MVC 4, najdete v části [šablony sady Visual Studio 2012](#vs2012) dále v tomto článku.
+Další informace o MVC najdete v tématu [ASP.NET MVC](https://asp.net/mvc). Informace o tom, jak vybrat šablonu MVC 4, najdete v tématu [šablony sady Visual Studio 2012](#vs2012) dále v tomto článku.
 
 <a id="webapi"></a>
 ### <a name="web-api-template"></a>Šablona webového rozhraní API
 
-Šablona webového rozhraní API vytvoří ukázkové webové služby založené na webové rozhraní API, včetně stránek nápovědy rozhraní API založené na MVC.
+Šablona webového rozhraní API vytvoří ukázkovou webovou službu založenou na webovém rozhraní API, včetně stránek s nápovědě k rozhraní API založených na MVC.
 
-ASP.NET Web API je architektura, která usnadňuje sestavování služeb HTTP, které jsou poskytovány širokému spektru klientů, včetně prohlížečů a mobilních zařízení. ASP.NET Web API je ideální platformu pro vytváření služby RESTful v rozhraní .NET Framework.
+Rozhraní ASP.NET Web API usnadňuje sestavování služeb HTTP, které jsou poskytovány širokému spektru klientů, včetně prohlížečů a mobilních zařízení. Webové rozhraní API ASP.NET je ideální platformou pro vytváření služeb RESTful na .NET Framework.
 
-Šablona webového rozhraní API vytvoří ukázkové webové služby. Ukázkové stránky nápovědy na následujících obrázcích.
+Šablona webového rozhraní API vytvoří ukázkovou webovou službu. Na následujících obrázcích je znázorněno, jak zobrazit stránky s ukázkou.
 
-![Stránka nápovědy webové rozhraní API](creating-web-projects-in-visual-studio/_static/image12.png)
+![Stránka s webovou pomocí rozhraní API](creating-web-projects-in-visual-studio/_static/image12.png)
 
-![Stránka nápovědy webové rozhraní API pro získání rozhraní API](creating-web-projects-in-visual-studio/_static/image13.png)
+![Stránka Nápověda k webovému rozhraní API pro rozhraní GET API](creating-web-projects-in-visual-studio/_static/image13.png)
 
-Další informace o rozhraní Web API najdete v tématu [rozhraní ASP.NET Web API](https://asp.net/web-api).
+Další informace o webovém rozhraní API najdete v tématu [webové rozhraní](https://asp.net/web-api)api pro ASP.NET.
 
 <a id="spa"></a>
 ### <a name="single-page-application-template"></a>Šablona jednostránkové aplikace
 
-Šablona jedné stránky aplikace (SPA) vytvoří ukázkovou aplikaci, která používá jazyk JavaScript, HTML 5, a [KnockoutJS](http://knockoutjs.com/) na klientovi a webového rozhraní API ASP.NET na serveru.
+Šablona jednostránkové aplikace (SPA) vytvoří ukázkovou aplikaci, která používá JavaScript, HTML 5 a [KnockoutJS](http://knockoutjs.com/) na straně klienta a webové rozhraní API na serveru ASP.NET.
 
-Pouze ověřování možnost SPA šablony je [jednotlivé uživatelské účty](#indauth).
+Jedinou možností ověřování pro šablonu SPA jsou [jednotlivé uživatelské účty](#indauth).
 
-Následující obrázek znázorňuje ukázkové aplikace, který vytváří šablon SPA počáteční stav.
+Následující ilustrace znázorňuje počáteční stav ukázkové aplikace, kterou vytváří šablona SPA.
 
 ![Ukázková aplikace SPA](creating-web-projects-in-visual-studio/_static/image14.png)
 
-Informace o tom, jak vytvořit aplikaci pomocí šablony jednostránková aplikace najdete v tématu [webového rozhraní API – externí ověřovací služby](../../../web-api/overview/security/external-authentication-services.md).
+Informace o tom, jak vytvořit aplikaci pomocí šablony SPA, najdete v tématu [webové rozhraní API – externí ověřování služby](../../../web-api/overview/security/external-authentication-services.md).
 
-Další informace o jednostránkové aplikace ASP.NET a další šablony jednostránková aplikace, které používají rozhraní JavaScript než KnockoutJS naleznete na následujících odkazech:
+Další informace o aplikacích ASP.NET Single Page a o dalších šablonách SPA, které používají rozhraní JavaScript jiné než KnockoutJS, najdete v následujících zdrojích informací:
 
-- [ASP.NET jedné stránce aplikace](../../../single-page-application/index.md).
-- [Princip funkce zabezpečení v šabloně SPA for VS2013 RC](https://blogs.msdn.com/b/webdev/archive/2013/09/20/understanding-security-features-in-spa-template.aspx)
-- [Jednostránková aplikace: Vytváření moderních, interaktivních webových aplikací pomocí ASP.NET](https://msdn.microsoft.com/magazine/dn463786.aspx)
+- [ASP.NET aplikace s jednou stránkou](../../../single-page-application/index.md)
+- [Principy funkcí zabezpečení v šabloně SPA pro VS2013 RC](https://blogs.msdn.com/b/webdev/archive/2013/09/20/understanding-security-features-in-spa-template.aspx)
+- [Jednostránkové aplikace: Sestavujte moderní, reagující Web Apps s ASP.NET](https://msdn.microsoft.com/magazine/dn463786.aspx)
 
 <a id="facebook"></a>
-### <a name="facebook-template"></a>Šablona pro síť Facebook
+### <a name="facebook-template"></a>Šablona Facebooku
 
-Můžete nainstalovat [rozšíření sady Visual Studio, který je k dispozici šablona Facebook](https://go.microsoft.com/fwlink/?LinkID=509965&amp;clcid=0x409). Tato šablona vytvoří ukázkovou aplikaci, která slouží ke spouštění uvnitř webovou stránku Facebooku. Je založený na rozhraní ASP.NET MVC a používá webového rozhraní API pro funkci aktualizace v reálném čase.
+Můžete nainstalovat rozšíření sady [Visual Studio, které poskytuje šablonu Facebooku](https://go.microsoft.com/fwlink/?LinkID=509965&amp;clcid=0x409). Tato šablona vytvoří ukázkovou aplikaci, která je navržena pro běh na webu Facebook. Vychází z ASP.NET MVC a využívá webové rozhraní API pro funkce aktualizace v reálném čase.
 
-Žádné možnosti ověřování jsou dostupné pro šabloně pro síť Facebook, protože aplikace Facebook spuštění v rámci sítě Facebook a Spolehněte se na ověření na Facebooku.
+Pro šablonu Facebooku nejsou k dispozici žádné možnosti ověřování, protože aplikace na Facebooku běží na webu Facebook a spoléhají na ověřování Facebooku.
 
-Další informace o aplikacích technologie ASP.NET Facebook, naleznete v tématu [aktualizuje se rozhraní API Facebooku MVC](https://blogs.msdn.com/b/webdev/archive/2014/06/10/updating-the-mvc-facebook-api.aspx).
+Další informace o aplikacích ASP.NET Facebook najdete v tématu [aktualizace rozhraní API Facebooku pro MVC](https://blogs.msdn.com/b/webdev/archive/2014/06/10/updating-the-mvc-facebook-api.aspx).
 
 <a id="vs2012"></a>
 ### <a name="visual-studio-2012-templates"></a>Šablony sady Visual Studio 2012
 
-Dialogové okno Vytvoření projektu webové aplikace Visual Studio 2013 neposkytuje přístup k některé šablony, které byly k dispozici v sadě Visual Studio 2012. Pokud chcete použít jednu z těchto šablon, můžete kliknout na uzel sady Visual Studio 2012 v levém podokně dialogového okna Nový projekt sady Visual Studio.
+Dialog pro vytvoření webového projektu Visual Studio 2013 neposkytuje přístup k některým šablonám, které byly k dispozici v aplikaci Visual Studio 2012. Pokud chcete použít jednu z těchto šablon, můžete kliknout na uzel sady Visual Studio 2012 v levém podokně dialogového okna Nový projekt aplikace Visual Studio.
 
 ![Šablony sady Visual Studio 2012](creating-web-projects-in-visual-studio/_static/image15.png)
 
-**Visual Studio 2012** uzel umožní vybrat následující webové šablony, které nemáte přístup k v seznamu výchozích šablon pro Visual Studio 2013:
+Uzel sady **Visual Studio 2012** umožňuje vybrat následující webové šablony, ke kterým nemáte přístup, ve výchozím seznamu šablon pro Visual Studio 2013:
 
-- Webové aplikace ASP.NET MVC 4
+- Webová aplikace ASP.NET MVC 4
 - Webová aplikace ASP.NET s dynamickými datovými entitami
-- ASP.NET AJAX Server Control
+- Serverový ovládací prvek ASP.NET AJAX
 - ASP.NET AJAX Server Control Extender
 - Serverový ovládací prvek ASP.NET
 
 <a id="bootstrap"></a>
-## <a name="bootstrap-in-the-visual-studio-2013-web-project-templates"></a>Spuštění v šablony webových projektů Visual Studio 2013
+## <a name="bootstrap-in-the-visual-studio-2013-web-project-templates"></a>Zavedení v šablonách webového projektu Visual Studio 2013
 
-Použijte šablony projektů Visual Studio 2013 [Bootstrap](http://getbootstrap.com/), rozložení a motivy rozhraní vytvořené Twitter. K zajištění přizpůsobivý návrh, což znamená, že rozložení můžete dynamicky přizpůsobit velikosti okna jiný prohlížeč používá Bootstrap CSS3. V okně prohlížeče široké například na domovské stránce vytvořený pomocí šablony webových formulářů vypadá jako na následujícím obrázku:
+Šablony projektu Visual Studio 2013 používají [bootstrap](http://getbootstrap.com/), rozložení a rozhraní pro vytváření na Twitteru. Bootstrap používá CSS3 k tomu, aby poskytovala reagující návrh, což znamená, že rozložení se můžou dynamicky přizpůsobovat různým velikostem oken prohlížeče. Například v pravém okně prohlížeče je Domovská stránka vytvořená šablonou webových formulářů vypadat jako na následujícím obrázku:
 
-![Domovská stránka šablony aplikace webových formulářů](creating-web-projects-in-visual-studio/_static/image16.png)
+![Domovská stránka webové formuláře aplikace](creating-web-projects-in-visual-studio/_static/image16.png)
 
-Aby se okno užší a vodorovně uspořádanými sloupce přesunout do svislém uspořádání:
+Udělejte zúžení okna a vodorovně uspořádané sloupce se přesunou do vertikálního uspořádání:
 
-![Uspořádání Bootstrap svislý sloupec](creating-web-projects-in-visual-studio/_static/image17.png)
+![Spouštěcí uspořádání vertikálních sloupců](creating-web-projects-in-visual-studio/_static/image17.png)
 
-Zúžení okna trošku lépe a horizontální horní nabídce se změní ikona, která můžete kliknout a rozšířit svisle orientovaný nabídky:
+Zúžení okna o něco dalšího a vodorovná horní nabídka se změní na ikonu, kterou můžete kliknutím rozbalit do vertikálně orientované nabídky:
 
-![Ikony Bootstrap nabídky](creating-web-projects-in-visual-studio/_static/image18.png)
+![Ikona nabídky Bootstrap](creating-web-projects-in-visual-studio/_static/image18.png)
 
-![Spuštění svislé nabídky](creating-web-projects-in-visual-studio/_static/image19.png)
+![Počáteční nabídka spustit svisle](creating-web-projects-in-visual-studio/_static/image19.png)
 
-Funkce motivů Bootstrap můžete také snadno provést změnu v aplikačním vzhled a chování. Například můžete provést následující kroky, chcete-li změnit motiv.
+Můžete také použít funkci zaváděcí rutiny Bootstrap, která umožňuje snadno změnit vzhled a chování aplikace. Můžete například změnit motiv tak, že provedete následující kroky.
 
-1. V prohlížeči přejděte na [ http://Bootswatch.com ](http://Bootswatch.com), zvolte jen motiv a potom klikněte na tlačítko **Stáhnout**. (Tato akce stáhne *bootstrap.min.css* ve výchozím nastavení; Pokud chcete prozkoumat kód šablony stylů CSS, získejte *bootstrap.css* namísto minifikovaný verze.)
-2. Zkopírujte obsah stažený soubor šablony stylů CSS.
-3. V sadě Visual Studio vytvořte nový **stylů** soubor s názvem *bootstrap-theme.css* v *obsahu* složky a vložit stažené šablony stylů CSS kódu do něj.
-4. Otevřít *aplikace\_Start/Bundle.config* a změňte *bootstrap.css* k *bootstrap-theme.css*.
+1. V prohlížeči přejděte na [http://Bootswatch.com](http://Bootswatch.com), zvolte motiv a pak klikněte na **Stáhnout**. (Ve výchozím nastavení se ke stažení načítá *. min. CSS.* Pokud si chcete prohlédnout kód CSS, Získejte místo verze minifikovaného *bootstrap. CSS* .)
+2. Zkopírujte obsah staženého souboru CSS.
+3. V aplikaci Visual Studio vytvořte nový soubor **šablony stylů** s názvem *bootstrap-Theme. CSS* ve složce *obsahu* a vložte do něj stažený kód CSS.
+4. Otevřete *App\_Start/komplet. config* a změňte *bootstrap. CSS* na *bootstrap-Theme. CSS*.
 
-Spusťte projekt znovu a má nový vzhled aplikace. Následující obrázek znázorňuje vliv Amelia motivu:
+Spusťte projekt znovu a aplikace má nový vzhled. Následující obrázek ukazuje efekt motivu Amelia:
 
-![Spuštění Amelia motiv](creating-web-projects-in-visual-studio/_static/image20.png)
+![Spouštěcí motiv Amelia](creating-web-projects-in-visual-studio/_static/image20.png)
 
-Mnoho Bootstrap motivy jsou k dispozici, verze free a premium. Bootstrap také nabízí širokou škálu součásti uživatelského rozhraní, jako například [rozevírací seznamy](http://twitter.github.io/bootstrap/components.html#dropdowns), [tlačítko skupiny](http://twitter.github.io/bootstrap/components.html#buttonGroups), a [ikony](http://twitter.github.io/bootstrap/base-css.html#images). Další informace o spuštění najdete v tématu [Bootstrap lokality](http://twitter.github.io/bootstrap/).
+K dispozici je spousta spouštěcích motivů, verze Free i Premium. Bootstrap také nabízí širokou škálu součástí uživatelského rozhraní, jako jsou [rozevírací nabídky](http://twitter.github.io/bootstrap/components.html#dropdowns), [skupiny tlačítek](http://twitter.github.io/bootstrap/components.html#buttonGroups)a [ikony](http://twitter.github.io/bootstrap/base-css.html#images). Další informace o Bootstrap najdete v části [bootstrap webu](http://twitter.github.io/bootstrap/).
 
-Pokud použijete Návrhář webových formulářů v sadě Visual Studio, mějte na paměti, že návrhář nepodporuje CSS3, takže ho přesně nezobrazí všechny účinky Bootstrap motivy nebo změny responzivního rozložení. Stránky webových formulářů však bude zobrazovat správně při zobrazení v prohlížeči.
+Použijete-li návrháře webových formulářů v aplikaci Visual Studio, Všimněte si, že Návrhář nepodporuje CSS3, takže nezobrazuje přesně všechny účinky spouštěcích motivů nebo reagující změny v rozložení. Stránky webových formulářů se ale při prohlížení v prohlížeči zobrazí správně.
 
 <a id="add"></a>
 ## <a name="adding-support-for-additional-frameworks"></a>Přidání podpory pro další architektury
 
-Když vyberete šablonu, zaškrtněte políčko pro architekturu používá šablonu vybere automaticky. Například, pokud jste vybrali **webových formulářů** šablony, **webových formulářů** zaškrtávací políčko zaškrtnuto a nejde ji zrušit.
+Když vyberete šablonu, bude automaticky vybráno zaškrtávací políčko pro rozhraní používané šablonou. Pokud například vyberete šablonu **webových formulářů** , je zaškrtnuté políčko **webové formuláře** a nemůžete ho vymazat.
 
-![Vybrat šablonu](creating-web-projects-in-visual-studio/_static/image21.png)
+![Vyberte šablonu](creating-web-projects-in-visual-studio/_static/image21.png)
 
 ![Přidat rozhraní](creating-web-projects-in-visual-studio/_static/image22.png)
 
-Můžete vybrat zaškrtávací políčko pro systém, který není zahrnutý v šabloně, chcete-li přidat podporu pro dané rozhraní při vytvoření projektu. Například chcete povolit používání webových formulářů *.aspx* stránky při vámi zvolená šablona MVC, vyberte **webových formulářů** zaškrtávací políčko. Nebo pokud chcete povolit MVC při použití šablony webových formulářů, klikněte na tlačítko **MVC** zaškrtávací políčko. Přidání rozhraní umožňuje podporu návrhu, jakož i za běhu. Například pokud přidáte podpora MVC pro projekt webových formulářů, bude možné scaffold kontrolerů a zobrazení.
+Můžete zaškrtnout políčko pro rozhraní, které není součástí šablony, aby bylo možné přidat podporu pro tuto architekturu při vytvoření projektu. Chcete-li například povolit použití stránek Web Forms *. aspx* po výběru šablony MVC, zaškrtněte políčko **webové formuláře** . Nebo pokud chcete povolit MVC při použití šablony webových formulářů, klikněte na zaškrtávací políčko **MVC** . Přidání rozhraní umožňuje povolit i dobu návrhu a podporu za běhu. Například pokud přidáte podporu MVC do projektu webových formulářů, budete moci zobrazit řadiče a zobrazení uživatelského rozhraní.
 
-Pokud můžete kombinovat webové formuláře a MVC v projektu a povolit [přátelské adresy URL](http://www.hanselman.com/blog/IntroducingASPNETFriendlyUrlsCleanerURLsEasierRoutingAndMobileViewsForASPNETWebForms.aspx) ve webových formulářích, může existovat neočekávané směrování potíží, kdy jedna adresa URL má několik možných cílů. Tras, které jsou definovány nejprve bude mít přednost. Například, pokud máte `Home` kontroleru a *Home.aspx* stránky, `http://contoso.com/home` adresy URL budou moct *Home.aspx* při volání `EnableFriendlyUrls` metoda před voláním `MapRoute`metoda *RouteConfig.cs*, nebo stejná adresa URL přejde do výchozího zobrazení pro vaše `Home` řadič při volání `MapRoute` před `EnableFriendlyUrls`.
+Pokud kombinujete webové formuláře a MVC v projektu a povolíte [popisné adresy URL](http://www.hanselman.com/blog/IntroducingASPNETFriendlyUrlsCleanerURLsEasierRoutingAndMobileViewsForASPNETWebForms.aspx) webových formulářů, může dojít k neočekávaným potížím s směrováním, kde jedna adresa URL má více možných cílů. Trasy, které jsou definovány jako první, budou mít přednost. Například pokud máte řadič `Home` a stránku *Home. aspx* , bude adresa URL `http://contoso.com/home` přejít na *Home. aspx* při volání metody `EnableFriendlyUrls` před voláním metody `MapRoute` v *RouteConfig.cs*, nebo stejná adresa URL přejde do výchozího zobrazení pro váš řadič `Home`, pokud voláte `MapRoute` před `EnableFriendlyUrls`.
 
-Přidání rozhraní nepřidá žádné ukázkové aplikace funkce. Například pokud chcete přidat webové formuláře podporu při vámi zvolená šablona MVC, ne *Default.aspx* se vytvoří soubor domovské stránky. Jsou přidány pouze složky, soubory a odkazy, které jsou potřeba pro podporu rozhraní. Z tohoto důvodu přidání architektury nezmění možnosti ověřování, které jsou implementovány pomocí kódu v ukázkových aplikací vytvořili pomocí šablon. Například pokud vyberete prázdnou šablonu a přidejte webové formuláře nebo MVC podporovat, **konfigurace ověřování** tlačítko bude stále zakázán.
+Přidáním rozhraní se nepřidá žádná ukázková funkce aplikace. Pokud například přidáte podporu webových formulářů v případě, že jste vybrali šablonu MVC, není vytvořen žádný soubor *Default. aspx* domovské stránky. Přidávají se pouze složky, soubory a odkazy, které jsou vyžadovány pro podporu rozhraní. Z tohoto důvodu přidávání rozhraní nemění možnosti ověřování, které jsou implementovány kódem v ukázkových aplikacích vytvořených šablonami. Pokud například vyberete prázdnou šablonu a přidáte webové formuláře nebo podporu MVC, bude tlačítko **Konfigurovat ověřování** stále zakázáno.
 
-Následující části popisují stručně efekt každé zaškrtávací políčko.
+Následující části popisují stručný vliv každého zaškrtávacího políčka.
 
-### <a name="add-web-forms-support"></a>Přidání podpory webového formuláře
+### <a name="add-web-forms-support"></a>Přidat podporu webových formulářů
 
-Vytvoří prázdný *aplikace\_Data* a *modely* složky a *Global.asax* souboru. Tyto jsou už vytvořené všechny šablony jiné než prázdné šablony, tak výběrem zaškrtávacího políčka webových formulářů díky žádné rozdíly pro další šablony.
+Vytvoří prázdnou *aplikaci\_* složky s daty a *modely* a soubor *Global. asax* . Tyto položky jsou již vytvořeny všemi šablonami, které jsou jiné než prázdná šablona, takže zaškrtnutí políčka webové formuláře nevede k žádným rozdílům pro jiné šablony.
 
-Šablony webových formulářů povolí přátelské adresy URL ve výchozím nastavení, ale když přidáte podporu webových formulářů s ostatními šablonami zaškrtnutím políčka webových formulářů, které přátelské adresy URL nejsou povolené automaticky.
+Šablona webových formulářů umožňuje ve výchozím nastavení zadat popisné adresy URL, ale když přidáte podporu webových formulářů do jiných šablon, zaškrtněte políčko webové formuláře popisné adresy URL nejsou automaticky povoleny.
 
-### <a name="add-mvc-support"></a>Přidání podpory MVC
+### <a name="add-mvc-support"></a>Přidat podporu MVC
 
-Nainstaluje balíčky NuGet webové stránky, MVC a Razor, vytvoří prázdný *aplikace\_Data*, *řadiče*, *modely*, a *zobrazení*složek, vytvoří *aplikace\_Start* složka s *RouteConfig.cs* souboru a vytvoří *Global.asax* souboru.
+Nainstaluje balíčky NuGet, Razor a webpages, vytvoří prázdnou *aplikaci\_data*, *řadiče*, *modely*a složky *zobrazení* , vytvoří *aplikaci\_spouštěcí* složku se souborem *RouteConfig.cs* a vytvoří soubor *Global. asax* .
 
-### <a name="add-web-api-support"></a>Přidání podpory webového rozhraní API
+### <a name="add-web-api-support"></a>Přidat podporu webového rozhraní API
 
-Nainstaluje WebApi a Newtonsoft.Json NuGet, vytvoří prázdný *aplikace\_Data*, *řadiče*, a *modely* složek, vytvoří  *Aplikace\_Start* složka s *WebApiConfig.cs* souboru a vytvoří *Global.asax* souboru.
+Nainstaluje balíčky NuGet WebApi a Newtonsoft. JSON, vytvoří prázdnou *aplikaci\_data*, *řadiče*a složky *modelů* , vytvoří *aplikaci\_spouštěcí* složku se souborem *WebApiConfig.cs* a vytvoří soubor *Global. asax* .
 
 <a id="auth"></a>
 ## <a name="authentication-methods"></a>Metody ověřování
 
-Visual Studio 2013 nabízí několik možností ověřování šablony webové formuláře, MVC a webového rozhraní API:
+Visual Studio 2013 nabízí několik možností ověřování pro webové formuláře, MVC a šablony webového rozhraní API:
 
 - [Bez ověřování](#noauth)
-- [Individuální uživatelské účty](#indauth) (ASP.NET Identity, dřív označované jako členství technologie ASP.NET)
-- [Účty organizací](#orgauth) (Windows Server Active Directory nebo Azure Active Directory)
-- [Ověřování Windows](#winauth) (intranetu)
+- [Jednotlivé uživatelské účty](#indauth) (ASP.NET identity dřív označované jako členství v ASP.NET)
+- [Účty organizace](#orgauth) (Windows Server Active Directory nebo Azure Active Directory)
+- [Ověřování systému Windows](#winauth) (intranet)
 
-![Konfigurace dialog ověřování.](creating-web-projects-in-visual-studio/_static/image23.png)
+![Dialogové okno Konfigurace ověřování](creating-web-projects-in-visual-studio/_static/image23.png)
 
 <a id="noauth"></a>
 
 ### <a name="no-authentication"></a>Bez ověřování
 
-Pokud vyberete **bez ověřování**, ukázkové aplikace bude obsahovat žádné webové stránky pro přihlášení, žádné uživatelské rozhraní určující, který je přihlášen, žádné tříd entit databáze členství a žádný připojovací řetězec pro databázi členství.
+Pokud nevyberete **žádné ověření**, ukázková aplikace nebude obsahovat žádné webové stránky pro přihlášení, žádné uživatelské rozhraní, které indikuje, kdo není přihlášen, žádné třídy entit pro databázi členství a žádný připojovací řetězec pro databázi členství.
 
 <a id="indauth"></a>
-### <a name="individual-user-accounts"></a>Individuální uživatelské účty
+### <a name="individual-user-accounts"></a>Jednotlivé uživatelské účty
 
-Pokud vyberete **jednotlivé uživatelské účty**, ukázkovou aplikaci nakonfigurujete pro použití technologie ASP.NET Identity (dříve označované jako členství technologie ASP.NET) k ověřování uživatelů. ASP.NET Identity umožňuje uživateli zaregistrovat účet, tak, že vytvoříte uživatelské jméno a heslo na webu nebo když se přihlásíte pomocí poskytovatelé služeb sociálních sítí, jako je Facebook, Google, Account Microsoft nebo Twitter. Výchozí úložiště dat pro profily uživatelů v ASP.NET Identity je databáze SQL Server LocalDB, který můžete nasadit do systému SQL Server nebo Azure SQL Database pro produkční lokality.
+Když vyberete **jednotlivé uživatelské účty**, ukázková aplikace se nakonfiguruje tak, aby používala ASP.NET identity (dřív označovaná jako členství v ASP.NET) pro ověřování uživatelů. ASP.NET Identity umožňuje uživateli zaregistrovat účet, a to vytvořením uživatelského jména a hesla na webu nebo přihlášením pomocí poskytovatelů sociálních sítí, jako je Facebook, Google, účet Microsoft nebo Twitter. Výchozím úložištěm dat pro profily uživatelů v ASP.NET Identity je databáze SQL Server LocalDB, kterou můžete nasadit do SQL Server nebo Azure SQL Database pro produkční lokalitu.
 
-V sadě Visual Studio 2013 tyto funkce jsou stejné jako v sadě Visual Studio 2012, ale přepsali jsme základní kód pro systém členství technologie ASP.NET. Výhody nových základu kódu, patří:
+V Visual Studio 2013 tyto funkce jsou stejné jako v aplikaci Visual Studio 2012, ale podkladový kód pro systém členství v ASP.NET byl přepsán. Mezi výhody nového základu kódu patří následující:
 
-- Nový systém členství je založen na [OWIN](http://owin.org/) místo modulu ověřování formulářů ASP.NET. To znamená, že můžete použít stejný mechanismus ověřování, ať už používáte webové formuláře nebo MVC ve službě IIS, nebo jste samoobslužné hostování webového rozhraní API nebo SignalR.
-- Nová databáze členství se spravuje pomocí platformy Entity Framework Code First a všechny tabulky jsou reprezentovány tříd entit, které můžete upravit. To znamená, že můžete snadno přizpůsobit schéma databáze a souvisejícím profilu webovém uživatelském rozhraní podle svých potřeb a snadno můžete nasadit aktualizace pomocí migrace Code First.
+- Nový systém členství je založený na [Owin](http://owin.org/) namísto modulu ověřování ASP.NET Forms. To znamená, že můžete použít stejný ověřovací mechanismus bez ohledu na to, jestli používáte webové formuláře nebo MVC ve službě IIS, nebo jste samoobslužně hostující webové rozhraní API nebo signál.
+- Nová databáze členství je spravována pomocí Entity Framework Code First a všechny tabulky jsou reprezentovány třídami entit, které lze upravit. To znamená, že můžete snadno přizpůsobit schéma databáze a webové uživatelské rozhraní související s profilem tak, aby vyhovovalo vašim potřebám, a můžete snadno nasadit své aktualizace pomocí Migrace Code First.
 
-Nový systém členství je automaticky implementována v nové šablony a může být implementováno ručně v jakémkoli projektu, který cílí na rozhraní .NET 4.5 nebo novější.
+Nový systém členství je implementován automaticky v nových šablonách a může být implementován ručně v jakémkoli projektu, který cílí na rozhraní .NET 4,5 nebo novější.
 
-ASP.NET Identity je dobrou volbou, pokud vytváříte web na Internetu, který je zaměřen především na externí zákazníky. Pokud vaše organizace používá Active Directory nebo Office 365 a chcete vytvořit projekt, který umožňuje single-sign-on pro zaměstnance a obchodními partnery **účty organizace** možnost může být lepší volbou.
+ASP.NET Identity je dobrá volba, pokud vytváříte internetový web, který je převážně pro externí zákazníky. Pokud vaše organizace používá službu Active Directory nebo Office 365 a chcete vytvořit projekt, který umožňuje jednotné přihlašování pro zaměstnance a obchodní partnery, může být vhodnější volbou možnosti **účty organizace** .
 
-Další informace o možnosti jednotlivých uživatelských účtů naleznete na následujících odkazech:
+Další informace o možnostech jednotlivých uživatelských účtů najdete v následujících zdrojích informací:
 
-- [www.asp.net/identity](../../../identity/index.md). Dokumentaci k ASP.NET Identity na webové stránce ASP.NET.
-- [Vytvoření aplikace ASP.NET MVC 5 pomocí Facebooku a Google OAuth2 nebo OpenID Sign-on](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md). Také ukazuje, jak přizpůsobit data uživatelského profilu.
+- [www.asp.net/identity](../../../identity/index.md). Dokumentace k ASP.NET Identity na webu ASP.NET.
+- [Vytvořte aplikaci ASP.NET MVC 5 s aplikacemi Facebook a Google OAuth2 a OpenID Signing](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md). Také ukazuje, jak přizpůsobit data profilu uživatele.
 - [Webové rozhraní API – externí ověřovací služby](../../../web-api/overview/security/external-authentication-services.md)
-- [Přidávání externích přihlášení do aplikace ASP.NET v sadě Visual Studio 2013](https://blogs.msdn.com/b/webdev/archive/2013/06/27/adding-external-logins-to-your-asp-net-application-in-visual-studio-2013.aspx)
+- [Přidání externích přihlášení do aplikace ASP.NET v Visual Studio 2013](https://blogs.msdn.com/b/webdev/archive/2013/06/27/adding-external-logins-to-your-asp-net-application-in-visual-studio-2013.aspx)
 
 <a id="orgauth"></a>
-### <a name="organizational-accounts"></a>Účty organizací
+### <a name="organizational-accounts"></a>Účty organizace
 
-Pokud vyberete **účty organizace**, se nakonfigurují ukázkovou aplikaci pro ověřování na základě uživatelských účtů ve službě Azure Active Directory (Azure AD, která zahrnuje Office 365) pomocí technologie Windows Identity Foundation (WIF) nebo Windows Server Active Directory. Další informace najdete v tématu [možnosti ověřování účtu organizace](#orgauthoptions) dále v tomto tématu.
+Pokud vyberete **účty organizace**, ukázková aplikace se nakonfiguruje tak, aby používala Windows Identity Foundation (WIF) k ověřování na základě uživatelských účtů ve službě Azure Active Directory (Azure AD, která zahrnuje Office 365) nebo Windows Server Active Directory. Další informace najdete v části [Možnosti ověřování účtu organizace](#orgauthoptions) dále v tomto tématu.
 
 <a id="winauth"></a>
-### <a name="windows-authentication"></a>Ověřování systému Windows
+### <a name="windows-authentication"></a>Ověřování Windows
 
-Pokud vyberete **ověřování Windows**, se nakonfigurují ukázkovou aplikaci pro účely ověření modulu ověřování Windows služby IIS. Aplikace se zobrazí doména a uživatelské ID služby Active directory nebo účet místního počítače, který se přihlásí do Windows, ale nebude obsahovat registrace uživatele nebo přihlášení uživatelského rozhraní. Tato možnost je určená pro intranetové weby.
+Pokud vyberete **ověřování systému Windows**, bude ukázková aplikace nakonfigurována tak, aby pro ověřování používala modul IIS ověřování systému Windows. Aplikace zobrazí doménu a ID uživatele účtu služby Active Directory nebo místního počítače, který je přihlášený k systému Windows, ale nezahrnuje registraci uživatele nebo uživatelské rozhraní pro přihlášení. Tato možnost je určená pro intranetové weby.
 
-Alternativně můžete vytvořit v síti intranet, která používá ověřování AD výběrem [On-Premises možnosti v části účty organizace](#orgauthonprem). Možnost On-Premises používá technologie Windows Identity Foundation (WIF) namísto modul ověřování Windows. Pokud chcete nastavit možnost On-Premises jsou nezbytné některé další kroky, ale technologie WIF umožňuje funkce, které nejsou k dispozici modul ověřování Windows. Například pomocí technologie WIF lze nakonfigurovat přístup k aplikacím ve službě Active Directory a dotazování dat adresáře.
+Případně můžete vytvořit intranetový web, který používá ověřování AD, a to tak, že v [části účty organizace vyberete možnost](#orgauthonprem)místní. Místní možnost používá Windows Identity Foundation (WIF) místo modulu ověřování systému Windows. Aby bylo možné nastavit místní možnost, je nutné provést některé další kroky, ale WIF umožňuje funkce, které nejsou k dispozici v modulu ověřování systému Windows. Pomocí WIF můžete například nakonfigurovat přístup k aplikacím ve službě Active Directory a data adresáře dotazů.
 
 <a id="orgauthoptions"></a>
 ## <a name="organizational-account-authentication-options"></a>Možnosti ověřování účtu organizace
 
-**Konfigurace ověřování** dialogové okno nabízí několik možností pro Azure Active Directory (Azure AD, která zahrnuje Office 365) nebo ověřování pomocí účtu systému Windows Server Active Directory (AD):
+V dialogovém okně **Konfigurace ověřování** získáte několik možností Azure Active Directory (Azure AD, které zahrnují Office 365) nebo ověřování účtu služby Active Directory (AD) Windows serveru.
 
-- [Cloud – jedna organizace](#orgauthsingle) (Azure AD nebo AD pomocí integrace adresáře s Azure AD)
-- [Cloud – víc organizací](#orgauthmulti) (Azure AD nebo AD pomocí integrace adresáře s Azure AD)
-- [On-Premises](#orgauthonprem) (AD)
+- [Cloudová organizace](#orgauthsingle) (Azure AD nebo AD s použitím integrace adresáře s Azure AD)
+- [Cloud – víc organizací](#orgauthmulti) (Azure AD nebo AD pomocí integrace adresářů s Azure AD)
+- [Místní](#orgauthonprem) (AD)
 
-Pokud chcete zkusit jednu z možností Azure AD, ale ještě nemáte účet [kliknutím sem si zaregistrovat účet služby Azure AD](https://go.microsoft.com/fwlink/?LinkId=309942).
+Pokud si chcete vyzkoušet jednu z možností Azure AD, ale ještě nemáte účet, [klikněte sem, abyste se mohli zaregistrovat k účtu Azure AD](https://go.microsoft.com/fwlink/?LinkId=309942).
 
 > [!NOTE]
-> Pokud vyberete jednu z možností Azure AD, váš projekt vyžaduje databázi a budete muset přihlásit k účtu globálního správce pro vašeho tenanta Azure AD. Zadejte uživatelské jméno a heslo pro účet organizace (třeba admin@contoso.onmicrosoft.com), který má oprávnění správce pro vašeho tenanta Azure AD.
+> Pokud zvolíte jednu z možností Azure AD, projekt vyžaduje databázi a musíte se přihlásit ke globálnímu účtu správce pro vašeho tenanta Azure AD. Zadejte jméno a heslo pro účet organizace (například admin@contoso.onmicrosoft.com), který má oprávnění správce pro vašeho tenanta Azure AD.
 > 
-> **Nezadávejte přihlašovací údaje pro účet Microsoft (třeba contoso@hotmail.com) v poli přihlašovacího dialogového okna.**
+> **Nezadávejte přihlašovací údaje pro účet Microsoft (například contoso@hotmail.com) v dialogovém okně přihlášení.**
 
 <a id="orgauthsingle"></a>
-### <a name="cloud---single-organization-authentication"></a>Cloud – jedna organizace ověřování
+### <a name="cloud---single-organization-authentication"></a>Ověřování v cloudu s jednou organizací
 
-![Jedna organizace ověřování](creating-web-projects-in-visual-studio/_static/image24.png)
+![Ověřování jedné organizace](creating-web-projects-in-visual-studio/_static/image24.png)
 
-Tuto možnost zvolte, pokud chcete povolit ověřování pro uživatelské účty, které jsou definovány v jedné službě Azure AD [tenanta](https://technet.microsoft.com/library/jj573650.aspx). Například web je contoso.com to bude k dispozici zaměstnancům společnosti Contoso, kteří jsou v tenantovi contoso.onmicrosoft.com Nebudete mít ke konfiguraci Azure AD umožňuje uživatelům z jiných tenantů pro přístup k aplikaci.
+Tuto možnost vyberte, pokud chcete povolit ověřování u uživatelských účtů, které jsou definované v jednom [tenantovi](https://technet.microsoft.com/library/jj573650.aspx)služby Azure AD. Například lokalita je contoso.com a bude zpřístupněna zaměstnancům společnosti Contoso, kteří jsou v tenantovi contoso.onmicrosoft.com. Nebudete moct nakonfigurovat službu Azure AD, aby uživatelům z jiných tenantů povolil přístup k aplikaci.
 
 #### <a name="domain"></a>Doména
 
-Zadejte doménu služby Azure AD, kterou chcete nastavit aplikaci, například: `contoso.onmicrosoft.com`. Pokud máte [vlastní doménu](http://www.cloudidentity.com/blog/2013/04/14/adding-a-custom-domain-to-your-windows-azure-ad/), jako například `contoso.com` místo `contoso.onmicrosoft.com`, který Tady můžete zadat.
+Zadejte doménu služby Azure AD, ve které chcete nastavit aplikaci, například: `contoso.onmicrosoft.com`. Pokud máte [vlastní doménu](http://www.cloudidentity.com/blog/2013/04/14/adding-a-custom-domain-to-your-windows-azure-ad/), například `contoso.com` místo `contoso.onmicrosoft.com`, můžete sem zadat.
 
 #### <a name="access-level"></a>Úroveň přístupu
 
-Pokud aplikace potřebuje k dotazování nebo aktualizovat informace o adresáři pomocí rozhraní Graph API, zvolte **jednotného přihlašování, čtení dat adresáře** nebo **jednotného přihlašování, čtení a zápis dat adresáře**. Jinak klikněte na tlačítko **Single Sign-On**. Další informace najdete v tématu [úrovně přístupu aplikace](https://msdn.microsoft.com/library/windowsazure/b08d91fa-6a64-4deb-92f4-f5857add9ed8#BKMK_AccessLevels) a [pomocí rozhraní Graph API k dotazování služby Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151791.aspx).
+Pokud aplikace potřebuje dotazovat nebo aktualizovat informace v adresáři pomocí Graph API, vyberte možnost **jednotné přihlašování, čtení dat adresáře** nebo **jednotné přihlašování, čtení a zápis dat adresáře**. V opačném případě vyberte **jednotné přihlašování**. Další informace najdete v tématu [úrovně přístupu k aplikacím](https://msdn.microsoft.com/library/windowsazure/b08d91fa-6a64-4deb-92f4-f5857add9ed8#BKMK_AccessLevels) a [použití Graph API k dotazování služby Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151791.aspx).
 
 #### <a name="application-id-uri"></a>Identifikátor URI ID aplikace
 
-Ve výchozím nastavení šablona vytvoří identifikátor ID URI aplikace můžete připojením názvu projektu k doméně Azure AD. Například, pokud je název projektu `Example` a doména je `contoso.onmicrosoft.com`, stane se identifikátor URI ID aplikace `https://contoso.onmicrosoft.com/Example`. Pokud chcete ručně zadejte identifikátor URI ID aplikace, rozbalte **další možnosti** a do textového pole zadejte identifikátor URI ID aplikace. Aplikace musí začínat identifikátor ID URI `https://`.
+Ve výchozím nastavení šablona vytvoří identifikátor URI ID aplikace za vás připojením názvu projektu k doméně služby Azure AD. Například pokud je název projektu `Example` a doména je `contoso.onmicrosoft.com`, identifikátor URI ID aplikace se bude `https://contoso.onmicrosoft.com/Example`. Pokud chcete identifikátor URI ID aplikace zadat ručně, rozbalte část **Další možnosti** a zadejte identifikátor URI ID aplikace do textového pole. Identifikátor URI ID aplikace musí začínat `https://`.
 
-Ve výchozím nastavení Pokud aplikace, která je již zřízeno ve službě Azure AD má aplikace stejný identifikátor ID URI jako ten, který používá Visual Studio pro projekt, projekt připojí existující aplikace, nikoliv zřizování nového. Pokud chcete novou aplikaci, které se mají zřídit v takovém, zrušte zaškrtnutí políčka **přepsat položku aplikace, pokud se stejným ID už existuje** zaškrtávací políčko.
+Ve výchozím nastavení platí, že pokud aplikace, která je již zřízená ve službě Azure AD, má stejný identifikátor URI ID aplikace jako ten, který aplikace Visual Studio používá pro projekt, projekt bude připojen k existující aplikaci místo zřízení nového. Pokud chcete v takovém případě zřídit novou aplikaci, zrušte zaškrtnutí políčka **Přepsat položku aplikace, pokud už jedna se STEJNÝM ID existuje** .
 
-Pokud **přepsat** zrušení zaškrtnutí políčka a sada Visual Studio najde existující aplikace s stejný identifikátor URI ID aplikace, vytvoří nový identifikátor URI podle pořadového čísla na identifikátor URI, který se má použít. Předpokládejme například, že je název projektu `Example`, ponechte prázdné textové pole, odstraníte **přepsat** zaškrtávací políčko a tenanta Azure AD již byla aplikace s identifikátorem URI `https://contoso.onmicrosoft.com/Example`. V takovém případě se zřídí novou aplikaci s aplikací, jako je identifikátor ID URI `https://contoso.onmicrosoft.com/Example_20130619330903`.
+Pokud není zaškrtnuté políčko **přepsat** , a Visual Studio najde existující aplikaci se stejným identifikátorem URI ID aplikace, vytvoří nový identifikátor URI připojením čísla k identifikátoru URI, který se bude používat. Předpokládejme například, že název projektu je `Example`, necháte textové pole prázdné, zrušíte zaškrtnutí políčka **přepsat** a tenant služby Azure AD již obsahuje aplikaci s identifikátorem URI `https://contoso.onmicrosoft.com/Example`. V takovém případě bude nová aplikace zřízena s identifikátorem URI ID aplikace, jako `https://contoso.onmicrosoft.com/Example_20130619330903`.
 
-#### <a name="provisioning-the-application-in-azure-ad"></a>Vytváření aplikace ve službě Azure AD
+#### <a name="provisioning-the-application-in-azure-ad"></a>Zřizování aplikace v Azure AD
 
-Aby bylo možné zřídit aplikaci ve službě Azure AD nebo připojit projekt k existující aplikaci, Visual Studio potřebuje přihlašovací údaje globálního správce pro doménu. Po kliknutí na **OK** v **konfigurace ověřování** dialogové okno, budete vyzváni k zadání uživatelského jména a hesla globálního správce pro doménu, které jste zadali. Později, po kliknutí na **vytvořit projekt** v **nový projekt ASP.NET** dialogovém okně Visual Studio zřídí aplikaci ve službě Azure AD. Všimněte si, že jako součást tohoto procesu Visual Studio vloží hodnoty tajných kódů klienta v souboru Web.config, který vyprší jeden rok po jeho vytvoření.
+Aby bylo možné zřídit aplikaci ve službě Azure AD nebo připojit projekt k existující aplikaci, aplikace Visual Studio potřebuje přihlašovací údaje globálního správce domény. Po kliknutí na tlačítko **OK** v dialogovém okně **Konfigurace ověřování** se zobrazí výzva k zadání uživatelského jména a hesla globálního správce pro doménu, kterou jste zadali. Později když v dialogovém okně **Nový projekt ASP.NET** kliknete na **vytvořit projekt** , Visual Studio zřídí aplikaci ve službě Azure AD. Všimněte si, že v rámci tohoto procesu Visual Studio vloží hodnoty tajného klíče klienta do souboru Web. config, který po vytvoření vyprší jeden rok.
 
-Informace o tom, jak vytvářet aplikace, které používají **Cloud – jedna organizace** ověřování, najdete v následujících zdrojích informací:
+Informace o tom, jak vytvářet aplikace, které používají ověřování pomocí **cloudu** , najdete v následujících zdrojích informací:
 
-- [Azure Authentication](../2012/windows-azure-authentication.md)
+- [Ověřování Azure](../2012/windows-azure-authentication.md)
 - [Přidání přihlašování do webové aplikace pomocí Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151790.aspx)
 - [Vývoj aplikací ASP.NET s použitím Azure Active Directory](../../../identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory.md)
-- [Zabezpečení rozhraní ASP.NET Web API s využitím Azure AD a komponenty Microsoft OWIN](https://msdn.microsoft.com/magazine/dn463788.aspx)
+- [Zabezpečení webového rozhraní API ASP.NET pomocí komponent Azure AD a Microsoft OWIN](https://msdn.microsoft.com/magazine/dn463788.aspx)
 
-V kurzech zatím se neaktualizovaly pro sadu Visual Studio 2013; v sadě Visual Studio 2013 je automatické některé z jaké kurzy směrovat na provést ručně.
+Kurzy ještě nejsou aktualizované pro Visual Studio 2013. Některé z těchto kurzů, které přímo provedete, jsou v Visual Studio 2013 automatizované.
 
 <a id="orgauthmulti"></a>
-### <a name="cloud---multi-organization-authentication"></a>Cloud – více ověřování organizace
+### <a name="cloud---multi-organization-authentication"></a>Cloud – ověřování více organizací
 
-![Více ověřování organizace](creating-web-projects-in-visual-studio/_static/image25.png)
+![Ověřování více organizací](creating-web-projects-in-visual-studio/_static/image25.png)
 
-Tuto možnost zvolte, pokud chcete povolit ověřování pro uživatelské účty, které jsou definovány v několik služeb Azure AD [tenantů](https://technet.microsoft.com/library/jj573650.aspx). Například web je contoso.com a ho bude k dispozici zaměstnanci společnosti Contoso, kteří jsou v tenantovi contoso.onmicrosoft.com a zaměstnanci společnosti Fabrikam, kteří jsou v tenantovi fabrikam.onmicrosoft.com.
+Tuto možnost vyberte, pokud chcete povolit ověřování u uživatelských účtů, které jsou definované ve více [klientech](https://technet.microsoft.com/library/jj573650.aspx)Azure AD. Například lokalita je contoso.com a bude zpřístupněna zaměstnancům společnosti Contoso, kteří jsou v tenantovi contoso.onmicrosoft.com, a zaměstnanci společnosti Fabrikam, kteří jsou v tenantovi fabrikam.onmicrosoft.com.
 
-Nastavení, která jste zadali a zřizování krok aplikace jsou podobné [jednu organizaci ověřování](#orgauthsingle).
+Nastavení, která zadáte, a krok zřizování aplikací jsou podobné [ověřování jedné organizace](#orgauthsingle).
 
-Informace o tom, jak vytvářet aplikace, které používají **Cloud – víc organizací** ověřování, najdete v následujících zdrojích informací:
+Informace o tom, jak vytvářet aplikace, které používají ověřování pomocí **cloudu pro více organizací** , najdete v následujících zdrojích informací:
 
-- [Snadná integrace webové aplikace pomocí Azure Active Directory, ASP.NET &amp; sady Visual Studio](https://blogs.msdn.com/b/active_directory_team_blog/archive/2013/06/26/improved-windows-azure-active-directory-integration-with-asp-net-amp-visual-studio.aspx) na blogu týmu Active Directory.
-- [Vývoj webových aplikací s více Tenanty s Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151789.aspx) kurzu. Tento kurz se ještě neaktualizoval pro Visual Studio 2013 v sadě Visual Studio 2013 je automatické některé co tento kurz vás směruje k provést ručně.
-- [Budete muset zaregistrovat pomocí vlastních více organizací ASP.NET aplikací předtím, než se můžete přihlásit](http://www.cloudidentity.com/blog/2013/10/26/you-have-to-sign-up-with-your-own-multiple-organizations-asp-net-app-before-you-can-sign-in/). Blog autorem je Vittorio Bertocci, který vysvětluje, jak řešit běžné potíže lidé dojde při vytvoření projektu, který používá organizace služby Multi-Factor authentication.
+- [Snadná integrace webových aplikací s Azure Active Directory ASP.NET &amp; sady Visual Studio](https://blogs.msdn.com/b/active_directory_team_blog/archive/2013/06/26/improved-windows-azure-active-directory-integration-with-asp-net-amp-visual-studio.aspx) na blogu týmu Active Directory.
+- [Vývoj webových aplikací s více klienty pomocí kurzu Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151789.aspx) . Tento kurz se ještě neaktualizoval pro Visual Studio 2013. Některé z toho, co je kurz, který vás provede ručně, je automatizovaně v Visual Studio 2013.
+- Abyste se [mohli přihlásit, musíte se zaregistrovat pomocí své aplikace ASP.NET pro více organizací](http://www.cloudidentity.com/blog/2013/10/26/you-have-to-sign-up-with-your-own-multiple-organizations-asp-net-app-before-you-can-sign-in/). Blog Vittorio Bertocci, který vysvětluje, jak vyřešit běžné problémy, ke kterým dochází při vytváření projektu, který používá ověřování s více organizacemi.
 
 <a id="orgauthonprem"></a>
-### <a name="on-premises-organizational-authentication"></a>On-Premises ověřování organizace
+### <a name="on-premises-organizational-authentication"></a>Místní ověřování organizace
 
 ![Místní ověřování organizace](creating-web-projects-in-visual-studio/_static/image26.png)
 
-Tuto možnost zvolte, pokud chcete povolit ověřování pro uživatelské účty, které jsou definovány v systému Windows Server Active Directory (AD), a nechcete používat Azure AD. Tato možnost slouží k vytvoření intranetový server nebo web na Internetu. Pro web na Internetu poskytují přístup ke službě AD pomocí Active Directory Federation Services (ADFS). Další informace najdete v tématu [pomocí On-Premises organizační ověřování možnost (služby AD FS) pomocí technologie ASP.NET v sadě Visual Studio 2013](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/).
+Tuto možnost vyberte, pokud chcete povolit ověřování u uživatelských účtů, které jsou definované ve službě Active Directory (AD) Windows serveru, a nechcete používat Azure AD. Tuto možnost můžete použít k vytvoření intranetového webu nebo webu na internetu. Pro internetový web použijte službu Active Directory Federation Services (AD FS) (ADFS) k poskytnutí přístupu ke službě AD. Další informace najdete v tématu [použití možnosti místní ověřování organizace (ADFS) s ASP.NET v Visual Studio 2013](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/).
 
-Pro intranetový server, jako alternativu můžete zvolit [ověřování Windows](#winauth) místo tuto možnost. Pro možnost ověřování Windows není nutné zadat adresu URL dokumentu metadat. Ale ověřování Windows není nabízejí tyto možnosti pro řízení přístupu aplikace ve službě Active Directory nebo k datům adresáře v dotazu.
+Pro intranetový web můžete jako alternativu zvolit [ověřování systému Windows](#winauth) namísto této možnosti. Pro možnost ověřování systému Windows nemusíte zadávat adresu URL dokumentu metadat. Ověřování systému Windows ale neposkytuje možnost řídit přístup k aplikacím ve službě Active Directory nebo dotazovat se na data adresáře.
 
 #### <a name="on-premises-authority"></a>Místní autorita
 
-Zadejte adresu URL, která odkazuje na metadata dokumentů. Dokument metadat obsahuje souřadnice autority. Aplikace bude Tyhle souřadnice používat k řízení toku webové přihlášení.
+Zadejte adresu URL, která odkazuje na dokument metadat. Dokument metadat obsahuje souřadnice autority. Aplikace bude tyto souřadnice používat k řízení toku webového přihlášení.
 
 #### <a name="application-id-uri"></a>Identifikátor URI ID aplikace
 
-Zadejte jedinečný identifikátor URI, AD můžete identifikovat tuto aplikaci, nebo nechte prázdné, aby Visual Studio, vytvořte si ho.
+Zadejte jedinečný identifikátor URI, který může služba AD použít k identifikaci této aplikace, nebo necháte prázdné, aby ji Visual Studio vytvořila.
 
 <a id="nextsteps"></a>
 ## <a name="next-steps"></a>Další kroky
 
-Tento dokument poskytuje základní pomoc pro vytvoření nového webového projektu ASP.NET v sadě Visual Studio 2013. Další informace o používání sady Visual Studio pro vývoj webů, najdete v části [ https://www.asp.net/visual-studio/ ](../../index.md).
+Tento dokument obsahuje základní nápovědu pro vytvoření nového webového projektu v ASP.NET v Visual Studio 2013. Další informace o použití sady Visual Studio pro vývoj webu najdete v tématu [https://www.asp.net/visual-studio/](../../index.md).

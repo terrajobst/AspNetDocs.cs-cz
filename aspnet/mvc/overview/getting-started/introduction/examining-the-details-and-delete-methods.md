@@ -1,6 +1,6 @@
 ---
 uid: mvc/overview/getting-started/introduction/examining-the-details-and-delete-methods
-title: Zkoumání podrobností a metod Delete | Dokumentace Microsoftu
+title: Prozkoumání metod Details a DELETE | Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: riande
@@ -8,62 +8,62 @@ ms.date: 03/26/2015
 ms.assetid: f1d2a916-626c-4a54-8df4-77e6b9fff355
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: e14df35818ac996186e22b72bc57bd5aada2afec
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 4ec8d239377d37d7e27fa23c0b1caef7420046ae
+ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59408469"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76519008"
 ---
 # <a name="examining-the-details-and-delete-methods"></a>Zkoumání metod Details a Delete
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
-[!INCLUDE [Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](index.md)]
 
-V této části kurzu se podíváme souvislosti automaticky generované `Details` a `Delete` metody.
+V této části kurzu prohlížíte automaticky vygenerované `Details` a `Delete` metody.
 
 ## <a name="examining-the-details-and-delete-methods"></a>Zkoumání metod Details a Delete
 
-Otevřít `Movie` kontroleru a prozkoumejte `Details` metoda.
+Otevřete kontroler `Movie` a prověřte metodu `Details`.
 
 ![](examining-the-details-and-delete-methods/_static/image1.png)
 
 [!code-csharp[Main](examining-the-details-and-delete-methods/samples/sample1.cs)]
 
-Modul generování uživatelského rozhraní MVC, který vytvořili této metodě akce přidá komentář zobrazující požadavku HTTP, který vyvolá metodu. V tomto případě je `GET` požadavek s tři segmenty adres URL, `Movies` řadič, `Details` metoda a `ID` hodnotu.
+Modul generování uživatelského rozhraní MVC, který vytvořil tuto metodu Action, přidá komentář ukazující požadavek HTTP, který vyvolá metodu. V tomto případě se jedná o `GET` požadavek se třemi segmenty adresy URL, řadičem `Movies`, `Details` metodou a `ID` hodnotou.
 
-Kód nejprve umožňuje snadno vyhledat data s využitím `Find` metody. Důležitou funkci zabezpečení integrované do metody je, že kód ověří, zda `Find` metoda našla filmu předtím, než kód se pokusí provádět s ním. Například se hacker by mohla zanést chyby do lokality tak, že změníte adresu URL vytvořené odkazy z `http://localhost:xxxx/Movies/Details/1` na něco jako `http://localhost:xxxx/Movies/Details/12345` (nebo jinou hodnotu, která nepředstavuje skutečný film). Pokud jste nekontrolovaly null film, výsledkem by bylo null filmu chybě databáze.
+Code First usnadňuje hledání dat pomocí metody `Find`. Důležitou funkcí zabezpečení, která je integrována do metody, je, že kód ověřuje, že metoda `Find` našla film předtím, než se kód pokusí s ním něco udělat. Hacker by například mohl do lokality způsobit chyby tím, že změní adresu URL vytvořenou odkazy z `http://localhost:xxxx/Movies/Details/1` na něco jako `http://localhost:xxxx/Movies/Details/12345` (nebo některá jiná hodnota, která nepředstavuje skutečný film). Pokud jste nezkontrolovali film s hodnotou null, výsledkem prázdného filmu je chyba databáze.
 
-Zkontrolujte `Delete` a `DeleteConfirmed` metody.
+Projděte si metody `Delete` a `DeleteConfirmed`.
 
 [!code-csharp[Main](examining-the-details-and-delete-methods/samples/sample2.cs?highlight=17)]
 
-Všimněte si, že HTTP GET `Delete` metody nedojde k odstranění zadaného film, vracel zobrazení videa, kde můžete odeslat (`HttpPost`) odstranění. Operace delete v reakci na příkaz GET požádat o (nebo k tomuto účelu, provádění operace úpravy, vytváření operace nebo jiné operace, která se mění data) otevře bezpečnostní riziko. Další informace o tom, najdete v blogu Stephen Walther [46 Tip # aplikace ASP.NET MVC – nepoužívejte odstranit odkazy, protože uživatel vytvořit bezpečnostní díry](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx).
+Všimněte si, že metoda HTTP GET `Delete` neodstraní zadaný film, vrátí zobrazení videa, kde můžete odeslat (`HttpPost`) odstranění. Provádění operace odstranění v reakci na požadavek GET (nebo pro tuto skutečnost, provádění operace Edit, operace vytvoření nebo jakékoli jiné operace, která mění data) otevře bezpečnostní riziko. Další informace najdete v tématu Stephen položky blogu Walther pro [ASP.NET #46 MVC – nepoužívejte odstranění odkazů, protože vytvářejí bezpečnostní otvory](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx).
 
-`HttpPost` Pojmenovanou metodu, která odstraní data `DeleteConfirmed` poskytnout metodu HTTP POST jedinečný podpis nebo název. Níže jsou zobrazena podpisy dvou metod:
+Metoda `HttpPost`, která odstraňuje data, má název `DeleteConfirmed`, který metodě HTTP POST udělí jedinečný podpis nebo název. Níže jsou uvedené signatury dvou metod:
 
 [!code-csharp[Main](examining-the-details-and-delete-methods/samples/sample3.cs)]
 
-Modul CLR (CLR) vyžaduje přetížené metody mají jedinečný podpis (stejný název metody, ale jiný seznam parametrů). Tady však dvou metod Delete – jeden u metody GET - a jeden pro metodu POST, že mají stejný podpis parametru. (I potřebují tak, aby přijímal celá čísla jako parametr.)
+Modul CLR (Common Language Runtime) vyžaduje, aby přetížené metody měly jedinečný podpis parametru (stejný název metody, ale jiný seznam parametrů). Tady ale budete potřebovat dvě metody odstranění – jednu pro GET a jednu pro POST--oba mají stejný podpis parametru. (Obě musí přijmout jedno celé číslo jako parametr.)
 
-Řazení, to zjistit, můžete provést několik věcí. Jeden je poskytnout metody různými názvy. Je to, co mechanismu generování uživatelského rozhraní nebyl v předchozím příkladu. Ale zavádí malé problému: ASP.NET mapuje segmentů adresy URL na metody akce podle názvu, a Pokud přejmenujete metodu, obvykle směrování nebude moci najít tuto metodu. Řešení se zobrazí v příkladu, který je přidat `ActionName("Delete")` atribut `DeleteConfirmed` metoda. Efektivně provede mapování pro směrování systém tak, aby adresa URL, která zahrnuje */Delete/* příspěvek požadavku najdete `DeleteConfirmed` metody.
+Pokud je chcete seřadit, můžete provést několik věcí. Jedním z nich je poskytnout metody různé názvy. To je to, co byl mechanismus generování uživatelského rozhraní použit v předchozím příkladu. To však přináší malý problém: ASP.NET mapuje segmenty adresy URL na metody akcí podle názvu a Pokud přejmenujete metodu, směrování normálně nedokáže tuto metodu najít. Řešení je to, co vidíte v příkladu, což je přidání atributu `ActionName("Delete")` do metody `DeleteConfirmed`. To efektivně provádí mapování pro systém směrování tak, aby adresa URL, která obsahuje */Delete/* pro požadavek post, mohla najít metodu `DeleteConfirmed`.
 
-Dalším běžným způsobem vyhnout potížím s metodami, které mají stejné názvy a podpisy se uměle změna podpisu metody POST, která zahrnují Nepoužitý parametr. Někteří vývojáři přidat například typ parametru `FormCollection` , který je předán metodě příspěvku a poté jednoduše nepoužívejte parametr:
+Dalším běžným způsobem, jak se vyhnout problému s metodami, které mají stejný název a signatury, je umělá změna signatury metody POST tak, aby zahrnovala nepoužitý parametr. Například někteří vývojáři přidávají typ parametru `FormCollection`, který je předán metodě POST, a pak jednoduše nepoužívejte parametr:
 
 [!code-csharp[Main](examining-the-details-and-delete-methods/samples/sample4.cs)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Přehled
 
-Teď máte dokončené aplikace ASP.NET MVC, která ukládá data v databázi místní databáze. Můžete vytvořit, číst, aktualizovat, odstranit a hledat videa.
+Teď máte úplnou aplikaci ASP.NET MVC, která ukládá data do místní databáze DB. Můžete vytvářet, číst, aktualizovat, odstraňovat a hledat filmy.
 
 ![](examining-the-details-and-delete-methods/_static/image2.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Dalším krokem po vytvořené a testování webové aplikace je zpřístupnit ostatním uživatelům přes Internet. K tomuto účelu, budete muset nasadit na web poskytovatele hostitelských služeb. Společnost Microsoft nabízí bezplatné webových hostitelských služeb pro až 10 webových serverů ve [Bezplatný zkušební účet Azure](https://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A443DD604). Můžu navrhnout další využijte tento kurz [Nasaďte aplikaci zabezpečení rozhraní ASP.NET MVC s nástroji Membership, OAuth a SQL Database do Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Vynikající kurz je středně Petr Dykstra [vytváření datového modelu Entity Framework pro aplikaci ASP.NET MVC](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). [Stackoverflow](http://stackoverflow.com/help) a [fóra ASP.NET MVC](https://forums.asp.net/1146.aspx) jsou skvělý umístí klást otázky. Postupujte podle [mě](https://twitter.com/RickAndMSFT) na twitteru, můžete získat aktualizace na můj poslední kurzy.
+Po sestavení a otestování webové aplikace je dalším krokem zpřístupnění ostatním uživatelům, kteří budou moci používat Internet. Chcete-li to provést, je nutné jej nasadit do poskytovatele hostování webu. Microsoft nabízí bezplatné webové hostování až pro 10 webů v [bezplatném zkušebním účtu Azure](https://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A443DD604). Doporučujeme, abyste v dalším kurzu [nasadili zabezpečenou aplikaci ASP.NET MVC s členstvím, protokolem OAuth a SQL Database do Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Vynikající kurz má na úrovni Dykstra [vytvořit datový Model Entity Framework pro aplikaci ASP.NET MVC](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). [StackOverflow](http://stackoverflow.com/help) a [fóra ASP.NET MVC](https://forums.asp.net/1146.aspx) jsou skvělými místy pro dotazování na otázky. Sledujte [mě](https://twitter.com/RickAndMSFT) na Twitteru, abyste mohli získat aktualizace na mých nejnovějších kurzech.
 
-Zpětná vazba je Vítejte.
+Váš názor je Vítejte.
 
 – [Rick Anderson](https://blogs.msdn.com/rickAndy) twitter: [@RickAndMSFT](https://twitter.com/RickAndMSFT)  
 – [Scott Hanselman](http://www.hanselman.com/blog/) twitter: [@shanselman](https://twitter.com/shanselman)

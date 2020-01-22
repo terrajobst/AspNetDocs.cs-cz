@@ -1,6 +1,6 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-a-model
-title: Přidání modelu | Dokumentace Microsoftu
+title: Přidání modelu | Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: riande
@@ -8,59 +8,59 @@ ms.date: 05/28/2015
 ms.assetid: 276552b5-f349-4fcf-8f40-6d042f7aa88e
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: 0221539f5e468faacf3e38374452c0cc2a7d31d3
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 0d926c7a8bd99c56820208921c10e609da56d236
+ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398745"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76519034"
 ---
 # <a name="adding-a-model"></a>Přidání modelu
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
-[!INCLUDE [Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](index.md)]
 
-V této části přidáte některé třídy pro správu filmy v databázi. Tyto třídy bude &quot;modelu&quot; součástí aplikace ASP.NET MVC.
+V této části přidáte některé třídy pro správu filmů v databázi. Tyto třídy budou &quot;model&quot; součást aplikace ASP.NET MVC.
 
-Budete používat technologii .NET Framework přístup k datům označované jako [Entity Framework](https://docs.microsoft.com/ef/) definovat a využívat tyto třídy modelu. Entity Framework (často označované jako EF) podporuje vývoj paradigma volá *Code First*. Kód nejprve umožňuje vytvořit objekty modelu napsáním jednoduché třídy. (Jedná se také označuje jako POCO třídy, z &quot;prostý staré objekty CLR.&quot;) Potom můžete mít databázi vytvořené v reálném čase ze třídy, která umožňuje pracovní postupy s velmi čistá a rychlý vývoj. Pokud je nutné nejprve vytvořit databázi, můžete stále postupovat podle tohoto kurzu se dozvíte o vývoj aplikací MVC a EF. Potom postupujte podle vlastní Fizmakens [ASP.NET generování uživatelského rozhraní](xref:visual-studio/overview/2013/aspnet-scaffolding-overview) kurzu, které zahrnuje i první postup databáze.
+K definování a práci s těmito třídami modelů použijete .NET Framework technologie pro přístup k datům, která je známá jako [Entity Framework](https://docs.microsoft.com/ef/) . Entity Framework (často označované jako EF) podporují vývojové paradigma nazvané *Code First*. Code First umožňuje vytvářet objekty modelu zápisem jednoduchých tříd. (Tyto třídy jsou také známé jako třídy POCO, od &quot;objektů CLR, které jsou prosté staré.&quot;) Databázi pak můžete z vašich tříd vytvořit průběžně, což umožňuje velmi čistý a rychlý vývojový pracovní postup. Pokud je nutné nejprve vytvořit databázi, můžete postupovat podle tohoto kurzu, kde se dozvíte o vývoji aplikací MVC a EF. Pak můžete postupovat podle vlastního kurzu Fizmakens [ASP.NET pro generování uživatelského rozhraní](xref:visual-studio/overview/2013/aspnet-scaffolding-overview) , který se zabývá prvním přístupem k databázi.
 
-## <a name="adding-model-classes"></a>Přidání třídy modelu
+## <a name="adding-model-classes"></a>Přidávání tříd modelu
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem myši *modely* složky, vyberte **přidat**a pak vyberte **třídy**.
+V **Průzkumník řešení**klikněte pravým tlačítkem na složku *modely* , vyberte **Přidat**a pak vyberte **Třída**.
 
 ![](adding-a-model/_static/image1.png)
 
-Zadejte *třídy* název &quot;filmu&quot;.
+Zadejte název *třídy* &quot;filmový&quot;.
 
-Následujících pět vlastnosti, které chcete přidat `Movie` třídy:
+Do `Movie` třídy přidejte následující pět vlastností:
 
 [!code-csharp[Main](adding-a-model/samples/sample1.cs)]
 
-Použijeme `Movie` pro reprezentaci filmy v databázi. Každá instance `Movie` objektu bude odpovídat řádek do tabulky databáze a každou vlastnost `Movie` třídy bude mapovat na sloupec v tabulce.
+K reprezentaci filmů v databázi použijeme třídu `Movie`. Každá instance `Movie` objektu bude odpovídat řádku v tabulce databáze a každá vlastnost `Movie` třídy bude namapována na sloupec v tabulce.
 
-Poznámka: Chcete-li použít System.Data.Entity a související třídy, je potřeba nainstalovat [balíček NuGet Entity Framework](https://www.nuget.org/packages/EntityFramework/). Pomocí následujícího odkazu pro další pokyny.
+Poznámka: aby bylo možné použít System. data. entity a související třídu, je nutné nainstalovat [balíček Entity Framework NuGet](https://www.nuget.org/packages/EntityFramework/). Další pokyny získáte pomocí odkazu.
 
-Ve stejném souboru přidejte následující `MovieDBContext` třídy:
+Do stejného souboru přidejte následující třídu `MovieDBContext`:
 
 [!code-csharp[Main](adding-a-model/samples/sample2.cs?highlight=2,15-18)]
 
-`MovieDBContext` Třída reprezentuje kontext databáze filmů Entity Framework, která zpracovává načítání, ukládání a aktualizaci `Movie` třídy instancí v databázi. `MovieDBContext` Je odvozen od `DbContext` základní třída poskytované rozhraním Entity Framework.
+Třída `MovieDBContext` představuje kontext Entity Framework filmového databáze, který zpracovává načítání, ukládání a aktualizaci instancí tříd `Movie` v databázi. `MovieDBContext` je odvozen ze `DbContext` základní třídy poskytované Entity Framework.
 
-Pokud chcete mít možnost odkazovat `DbContext` a `DbSet`, budete muset přidat následující `using` příkazu v horní části souboru:
+Aby bylo možné odkazovat `DbContext` a `DbSet`, je nutné do horní části souboru přidat následující příkaz `using`:
 
 [!code-csharp[Main](adding-a-model/samples/sample3.cs)]
 
-Můžete to provést tak, že ručně přidáte na pomocí příkazu, nebo můžete najeďte myší červené podtržení čáry, klikněte na tlačítko `Show potential fixes` a klikněte na tlačítko `using System.Data.Entity;`
+To můžete provést ručním přidáním příkazu Using, nebo můžete ukazatel myši umístit na červené vlnovky, kliknout na `Show potential fixes` a kliknout na `using System.Data.Entity;`
 
 ![](adding-a-model/_static/image2.png)
 
-Poznámka: Několik nevyužité `using` příkazy byly odebrány. Visual Studio zobrazí šedě nepoužité závislé součásti. Můžete odebrat nepoužité závislé součásti podržením ukazatele nad šedé závislosti, klikněte na tlačítko `Show potential fixes` a klikněte na tlačítko **odebrat nepoužité řetězce.**
+Poznámka: odebrali jsme několik nepoužitých `using` příkazů. Visual Studio zobrazí nepoužívané závislosti jako šedé. Nepoužívané závislosti můžete odebrat tak, že najedete myší na šedé závislosti, kliknete `Show potential fixes` a kliknete na **Odebrat nepoužité direktivy using.**
 
 ![](adding-a-model/_static/image3.png)
 
-Nakonec jsme přidali modelu (M v MVC). V další části budete pracovat s připojovací řetězec databáze.
+Nakonec jsme přidali model (M v MVC). V další části budete pracovat s připojovacím řetězcem databáze.
 
 > [!div class="step-by-step"]
 > [Předchozí](adding-a-view.md)
-> [další](creating-a-connection-string.md)
+> [Další](creating-a-connection-string.md)
