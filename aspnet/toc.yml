@@ -3338,11 +3338,10 @@
             - name: SignalR a webové sokety
               href: signalr/videos/getting-started/signalr-and-web-sockets.md
 - name: Mobilní zařízení
-  href: mobile/index.md
   items:
-    - name: Mobilní zařízení
+    - name: Přehled
       href: mobile/overview.md
-    - name: Zařízení testovaná na mobilní ovládací prvky ASP.NET
+    - name: Zařízení testovaná s ovládacími prvky
       href: mobile/tested-devices.md
     - name: Simulace oblíbených mobilních zařízení pro testování
       href: mobile/device-simulators.md
