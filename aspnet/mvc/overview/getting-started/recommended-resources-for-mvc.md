@@ -8,16 +8,16 @@ ms.date: 04/10/2014
 ms.assetid: 7958d725-e958-4566-a85b-535eeb985f94
 msc.legacyurl: /mvc/overview/getting-started/recommended-resources-for-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 98089df48550216b50330d9b354168f570d857cd
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: daccaedae0b0e60f5086f270f214f87da564a85d
+ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74583192"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77074927"
 ---
 # <a name="mvc-recommended-resources"></a>MVC – doporučené prostředky
 
-Od [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Toto téma obsahuje odkazy na materiály k dokumentaci týkající se ASP.NET MVC 5. Pokud znáte skvělý Blogový příspěvek, [StackOverflow](http://stackoverflow.com/) vlákno nebo jakýkoli jiný odkaz, který by byl užitečný, pošlete [mi](mailto:aspnetue@microsoft.com?subject=Great ASP.NET MVC link) e-mail s odkazem. Zde uvedené odkazy jsou pravidelně aktualizovány. Můžete najít starší (ale v mnoha případech stále relevantní) odkazy na ASP.NET MVC na [mapě obsahu MSDN](https://msdn.microsoft.com/library/gg416514(v=vs.108).aspx).
 >
@@ -80,7 +80,7 @@ Od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 <a id="security"></a>
 
-## <a name="security"></a>Zabezpečení –
+## <a name="security"></a>Zabezpečení
 
 - [Vytvoření aplikace ASP.NET MVC 5 s přihlašováním na Facebooku a Google OAuth2](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)
 - [Co nedělat v ASP.NET a jak to udělat správně](../../../aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead.md)
@@ -203,7 +203,7 @@ Od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 <a id="jQueryAjaxJSON"></a>
 
-## <a name="jquery-ajax-json-javascript"></a>jQuery, AJAX, JSON, JavaScript
+## <a name="jquery-ajax-json-javascript"></a>jQuery, Ajax, JSON, JavaScript
 
 - [Vytvoření JavascriptResult pro ASP.NET MVC](http://tostring.it/2014/01/14/create-a-javascriptresult-for-asp-net-mvc/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+override%2Ftostring%2Fit+%28override.tostring.it%29)
 - [Předávání dat na straně serveru .NET do JavaScriptu](http://blog.mariusschulz.com/2014/02/05/passing-net-server-side-data-to-javascript) pomocí Marius Schulz
@@ -274,7 +274,7 @@ Od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 <a id="mobile"></a>
 
-## <a name="mobile"></a>Mobilní technologie
+## <a name="mobile"></a>Mobilní
 
 - [Kurz k ASP.NET MVC 4 pro mobilní zařízení](../older-versions/aspnet-mvc-4-mobile-features.md)
 - [Obrazový Sestavování uživatelsky přívětivých webů pomocí MVC 4](https://www.bitcast.io/v/building-mobile-friendly-websites-with-mvc-4)
@@ -291,7 +291,7 @@ Od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 <a id="spa"></a>
 
-## <a name="single-page-application-spa"></a>Jednostránkové aplikace (SPA)
+## <a name="single-page-application-spa"></a>Jednostránková aplikace (SPA)
 
 - [Úvod do vývojářů .NET pro jednostránkové aplikace](https://msdn.microsoft.com/magazine/dn605877.aspx) Časopis MSDN Magazine
 - [Jednostránkové aplikace s AngularJS a ASP.NET MVC 4](http://tarkus.me/post/32121691785/angularjs-with-asp-net-mvc-4)
@@ -315,7 +315,7 @@ Od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 - [Vytváření aplikací testovatelné jednotek v ASP.NET MVC – kurz začátečníka](http://www.codeproject.com/Articles/579035/Creating-Unit-Testable-Applications-in-ASP-NET-MVC)
 - [Injektáže závislosti řadiče ASP.NET MVC pro začátečníky](http://www.codeproject.com/Articles/560798/ASP-NET-MVC-controller-dependency-injection-for-be)
 - [Zápis testů jednotek pro metodu akce ASP.NET MVC, která zpracovává požadavky AJAX a normální požadavek](https://weblogs.asp.net/shijuvarghese/archive/2012/12/09/writing-unit-tests-for-an-asp-net-mvc-action-method-that-handles-ajax-request-and-normal-request.aspx)
-- [Dub: Využijte dynamickou představu a bezproblémový vývoj na ASP.NET MVC](http://amirrajan.github.com/Oak/)
+- [Dub: Využijte dynamickou představu a bezproblémový vývoj na ASP.NET MVC](https://amirrajan.github.com/Oak/)
 - [Vývoj aplikace ASP.NET MVC 4 pro TDD pomocí xUnit a MOQ](http://www.dotnetcurry.com/ShowArticle.aspx?ID=836)
 - [Testování zobrazení ASP.NET MVC z nového projektu na server sestavení](https://channel9.msdn.com/Events/aspConf/aspConf/Testing-ASP-NET-MVC-Views-from-New-Project-to-the-Build-Server) (video)
 - [Rychlé zprovoznění: Vývoj řízený testem](https://channel9.msdn.com/Events/aspConf/aspConf/Quick-Start-Test-Driven-Development)(video)
@@ -327,7 +327,7 @@ Od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 <a id="best"></a>
 
-## <a name="best-practices"></a>Doporučené postupy
+## <a name="best-practices"></a>Osvědčené postupy
 
 - [Co nedělat v ASP.NET a jak to udělat správně](../../../aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead.md)
 - [Kontrolní seznam pro webový vývojář](http://webdevchecklist.com/aspnet)

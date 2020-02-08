@@ -1,168 +1,168 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy
-title: Převedení webových aplikací Offline s webovým nasazení | Dokumentace Microsoftu
+title: Přepnutí webových aplikací do režimu offline pomocí Nasazení webu | Microsoft Docs
 author: jrjlee
-description: Toto téma popisuje, jak provést webové aplikace v režimu offline po dobu trvání automatického nasazení pomocí Web pro internetové informační služby (IIS)...
+description: Toto téma popisuje, jak převést webovou aplikaci do režimu offline po dobu trvání automatizovaného nasazení pomocí webové depl služby Internetová informační služba (IIS)...
 ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 3e9f6e7d-8967-4586-94d5-d3a122f12529
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy
 msc.type: authoredcontent
-ms.openlocfilehash: ba54454bcb6f5e4ceb269b128a6b72a4b75f64be
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: ba60664a0c3daa0650cd7e7cfc4ab9da08df3440
+ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131401"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77075135"
 ---
 # <a name="taking-web-applications-offline-with-web-deploy"></a>Převedení webových aplikací offline nástrojem pro nasazení webu
 
-podle [Jason Lee](https://github.com/jrjlee)
+od [Jason Novák](https://github.com/jrjlee)
 
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
-> Toto téma popisuje, jak provést webové aplikace v režimu offline po dobu trvání automatického nasazení pomocí Internetové informační služby (IIS) nástroj pro nasazení webu (nasazení webu). Uživatelé, kteří přejděte do webové aplikace se přesměrují do *aplikace\_offline.htm* souborů až do dokončení nasazení.
+> Toto téma popisuje, jak převést webovou aplikaci do režimu offline po dobu trvání automatizovaného nasazení pomocí nástroje pro nasazení webu služby Internetová informační služba (IIS) (Nasazení webu). Uživatelé, kteří přešli do webové aplikace, budou přesměrováni do *aplikace\_offline souboru. htm* až do dokončení nasazení.
 
-Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
+Toto téma je součástí série kurzů založených na požadavcích podnikového nasazení fiktivní společnosti s názvem Fabrikam, Inc. Tato série kurzů používá ukázkové řešení&#x2014;, pomocí kterého [řešení](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;správce kontaktů představuje webovou aplikaci s realistickou úrovní složitosti, včetně aplikace ASP.NET MVC 3, služby Windows Communication Foundation (WCF) a databázového projektu.
 
-Metody nasazení v srdci těchto kurzů je založen na rozdělení přístupu soubor projektu je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve které je řízena procesem sestavení dva soubory projektu&#x2014;jeden obsahující pokyny, které platí pro všechny cílové prostředí a jeden obsahuje nastavení pro konkrétní prostředí sestavení a nasazení pro sestavení. V okamžiku sestavení souboru projektu specifických pro prostředí se sloučí do souboru projektu bez ohledu na prostředí a vytvoří kompletní sadu pokynů sestavení.
+Metoda nasazení na srdce těchto kurzů je založena na způsobu rozdělení souborů projektu popsaných v tématu [Principy souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve kterém je proces sestavení řízen dvěma soubory&#x2014;projektu jeden, který obsahuje pokyny pro sestavení, které platí pro každé cílové prostředí, a jedno obsahující nastavení sestavení a nasazení specifické pro konkrétní prostředí. V době sestavení je soubor projektu specifický pro prostředí sloučen do souboru projektu prostředí – nezávislá a vytvoří kompletní sadu instrukcí pro sestavení.
 
-## <a name="task-overview"></a>Přehled úloh
+## <a name="task-overview"></a>Přehled úlohy
 
-V možných scénářů budete chtít webovou aplikaci převést do režimu offline, když provedete změny související součásti, jako jsou databáze nebo webové služby. Obvykle ve službě IIS a ASP.NET, můžete dosáhnout tak, že soubor s názvem *aplikace\_offline.htm* v kořenové složce webu či webové aplikace služby IIS. *Aplikace\_offline.htm* soubor je standardní soubor HTML a bude obvykle obsahovat jednoduché zprávu vyzývající uživatele, že lokalita je dočasně nedostupný kvůli údržbě. Zatímco *aplikace\_offline.htm* soubor v kořenové složce webu existuje, služba IIS automaticky přesměrovat všechny žádosti do souboru. Po dokončení provádění aktualizací, odeberete *aplikace\_offline.htm* Souborová služba a Web obnoví obsluhovat požadavky jako obvykle.
+V mnoha scénářích budete chtít při provádění změn v souvisejících součástech, jako jsou databáze nebo webové služby, převést webovou aplikaci do offline režimu. Ve službě IIS a ASP.NET to můžete dosáhnout umístěním souboru s názvem *App\_offline. htm* do kořenové složky webu služby IIS nebo webové aplikace. *Aplikace\_offline souboru. htm* je standardní soubor HTML a obvykle obsahuje jednoduchou zprávu, která dává uživateli, že lokalita je dočasně nedostupná z důvodu údržby. I když *aplikace\_offline souboru. htm* existuje v kořenové složce webu, služba IIS automaticky přesměruje všechny požadavky na daný soubor. Až dokončíte aktualizace, odeberte *aplikaci\_offline souboru. htm* a web bude pokračovat v obsluze požadavků obvyklým způsobem.
 
-Když použijete nasazení webu k provedení jednoho kroku nebo automatizovaných nasazení do cílového prostředí, můžete chtít začlenit přidávání a odebírání *aplikace\_offline.htm* souboru do procesu nasazení. Chcete-li to provést, budete potřebovat k dokončení těchto úloh:
+Když použijete Nasazení webu k provádění automatizovaných nebo jednoduchých nasazení do cílového prostředí, možná budete chtít přidat a odebrat *aplikaci\_offline souboru. htm* do procesu nasazení. K tomu je potřeba provést tyto úlohy vysoké úrovně:
 
-- V souboru projektu Microsoft Build Engine (MSBuild), který používáte k řízení procesu nasazení, vytvořte cíl nástroje MSBuild, který kopíruje *aplikace\_offline.htm* souboru na cílovém serveru před všechny úlohy nasazení začnete.
-- Přidat jiný cíl nástroje MSBuild, který odebere *aplikace\_offline.htm* souboru z cílového serveru, až se dokončí všechny úlohy nasazení.
-- Vytvořte v projektu webové aplikace *. wpp.targets* soubor, který zajistí, že *aplikace\_offline.htm* přidá soubor do balíčku pro nasazení při nasazení webu je vyvolána.
+- V souboru projektu Microsoft Build Engine (MSBuild), který používáte k řízení procesu nasazení, vytvořte cíl nástroje MSBuild, který zkopíruje *aplikaci\_offline soubor. htm* na cílový server před zahájením všech úloh nasazení.
+- Přidejte další cíl nástroje MSBuild, který odebere *aplikaci\_offline souboru. htm* z cílového serveru po dokončení všech úloh nasazení.
+- V projektu webové aplikace vytvořte soubor *. WPP. targets* , který zajistí, že je do balíčku pro nasazení přidána *aplikace\_offline soubor. htm* při vyvolání nasazení webu.
 
-Toto téma se ukazují, jak provést tyto postupy. Úlohy a názorné postupy v tomto tématu se předpokládá, že jste již vytvořili řešení, které obsahuje alespoň jeden projekt webové aplikace a použít vlastní soubor k řízení procesu nasazení, jak je popsáno v [nasazení webu v Enterprise](../web-deployment-in-the-enterprise/web-deployment-in-the-enterprise.md). Alternativně můžete použít [Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md) ukázkové řešení postupovat podle příkladů v tomto tématu.
+V tomto tématu se dozvíte, jak provádět tyto postupy. V úlohách a návodech v tomto tématu se předpokládá, že jste již vytvořili řešení, které obsahuje alespoň jeden projekt webové aplikace a že k řízení procesu nasazení použijete vlastní soubor projektu, jak je popsáno v tématu [nasazení webu v podniku](../web-deployment-in-the-enterprise/web-deployment-in-the-enterprise.md). Alternativně můžete použít ukázkové řešení [Contact Manageru](../web-deployment-in-the-enterprise/the-contact-manager-solution.md) a postupovat podle příkladů v tématu.
 
-## <a name="adding-an-appoffline-file-to-a-web-application-project"></a>Přidávání aplikací\_Offline souboru do projektu webové aplikace
+## <a name="adding-an-app_offline-file-to-a-web-application-project"></a>Přidání aplikace\_offline souboru do projektu webové aplikace
 
-Je první úkol, které potřebujete k dokončení přidání *aplikace\_offline* soubor do projektu webové aplikace:
+První úkol, který je třeba dokončit, je přidání *aplikace\_offline* souboru do projektu webové aplikace:
 
-- Zabránit souboru zasahovala do procesu vývoje (nechcete, aby vaše aplikace bude trvale offline), měli byste zavolat to něco jiného než *aplikace\_offline.htm*. Můžete například pojmenovat soubor *aplikace\_offline template.htm*.
-- Chcete-li zabránit nasazuje jako soubor-je, měli byste nastavit akci sestavení na **žádný**.
+- Chcete-li zabránit tomu, aby soubor v konfliktu s procesem vývoje (nechcete, aby byla vaše aplikace trvale offline), měli byste ji zavolat na jinou hodnotu než *aplikace\_offline. htm*. Souborovou aplikaci můžete například pojmenovat *\_offline-Template. htm*.
+- Chcete-li zabránit nasazení souboru tak, jak je, měli byste nastavit akci sestavení na **žádné**.
 
 **Přidání aplikace\_offline souboru do projektu webové aplikace**
 
-1. Otevřete řešení v sadě Visual Studio 2010.
-2. V **Průzkumníka řešení** okna, klikněte pravým tlačítkem na projekt webové aplikace, přejděte na **přidat**a potom klikněte na tlačítko **nová položka**.
-3. V **přidat novou položku** dialogu **stránku HTML**.
-4. V **název** zadejte **aplikace\_offline template.htm**a potom klikněte na tlačítko **přidat**.
+1. Otevřete řešení v aplikaci Visual Studio 2010.
+2. V okně **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt webové aplikace, přejděte na **Přidat**a klikněte na **Nová položka**.
+3. V dialogovém okně **Přidat novou položku** vyberte možnost **Stránka HTML**.
+4. Do pole **název** zadejte **App\_offline-Template. htm**a pak klikněte na **Přidat**.
 
     ![](taking-web-applications-offline-with-web-deploy/_static/image1.png)
-5. Přidat některé jednoduchého kódu HTML k informování uživatelů o tom, že aplikace je k dispozici a pak soubor uložte. Neobsahují žádné značky na straně serveru (například všechny značky, které mají předponu "asp:"). 
+5. Přidejte jednoduchý kód HTML, který informuje uživatele o tom, že aplikace není k dispozici, a pak soubor uložte. Nezahrnujte žádné značky na straně serveru (například všechny značky, které jsou s předponou "ASP:"). 
 
     ![](taking-web-applications-offline-with-web-deploy/_static/image2.png)
-6. V **Průzkumníka řešení** okna, klikněte pravým tlačítkem na nový soubor a potom klikněte na tlačítko **vlastnosti**.
-7. V **vlastnosti** okno v **akce sestavení** řádek, vyberte **žádný**.
+6. V okně **Průzkumník řešení** klikněte pravým tlačítkem myši na nový soubor a potom klikněte na příkaz **vlastnosti**.
+7. V okně **vlastnosti** vyberte na řádku **Akce sestavení** možnost **žádný**.
 
     ![](taking-web-applications-offline-with-web-deploy/_static/image3.png)
 
-## <a name="deploying-and-deleting-an-appoffline-file"></a>Nasazení a odstraňuje se aplikace\_Offline souboru
+## <a name="deploying-and-deleting-an-app_offline-file"></a>Nasazení a odstranění aplikace\_offline souboru
 
-Dalším krokem je úprava logiky nasazení odebrat po uplynutí a zkopírujte soubor do cílového serveru na začátku procesu nasazení.
+Dalším krokem je úprava logiky nasazení a zkopírování souboru na cílový server na začátku procesu nasazení a jeho odebrání na konci.
 
 > [!NOTE]
-> V dalším postupu se předpokládá, že používáte vlastní soubor projektu MSBuild řídit proces nasazení, jak je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md). Pokud nasazujete přímo z Visual Studio, budete muset použít jiný přístup. SAYED Ibrahim Hashimi popisuje jeden takový přístup v [jak využít vaše aplikace v režimu Offline během publikování na webu](http://sedodream.com/2012/01/08/HowToTakeYourWebAppOfflineDuringPublishing.aspx).
+> Další postup předpokládá, že používáte vlastní soubor projektu MSBuild k řízení procesu nasazení, jak je popsáno v tématu [Principy souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md). Pokud nasazujete přímo ze sady Visual Studio, budete muset použít jiný přístup. Sayed Ibrahim Hashimi popisuje jeden takový postup, [jak během publikování převést vaši webovou aplikaci do offline režimu](http://sedodream.com/2012/01/08/HowToTakeYourWebAppOfflineDuringPublishing.aspx).
 
-K nasazení *aplikace\_offline* soubor na cílový web služby IIS, je potřeba vyvolat pomocí MSDeploy.exe [Webdeploy **contentPath** poskytovatele](https://technet.microsoft.com/library/dd569034(WS.10).aspx). **ContentPath** zprostředkovatel podporuje fyzický adresář cesty a cesty k webu nebo aplikaci služby IIS, díky tomu je ideální volbou pro synchronizaci souborů mezi složky projektu sady Visual Studio a webové aplikace služby IIS. K nasazení souboru, MSDeploy příkazu by měl vypadat přibližně takto:
+Chcete-li nasadit *aplikaci\_offline* souboru na cílový web služby IIS, je nutné vyvolat soubor MSDeploy. exe pomocí [zprostředkovatele nasazení webu **contentPath** ](https://technet.microsoft.com/library/dd569034(WS.10).aspx). Zprostředkovatel **contentPath** podporuje cesty k fyzickým adresářům i webové aplikace IIS nebo cesty k aplikacím, což usnadňuje volbu synchronizace souborů mezi složkou projektu sady Visual Studio a webovou aplikací služby IIS. Chcete-li nasadit soubor, váš příkaz MSDeploy by měl vypadat takto:
 
 [!code-console[Main](taking-web-applications-offline-with-web-deploy/samples/sample1.cmd)]
 
-Odeberte soubor z cílové lokality na konci procesu nasazení, MSDeploy příkazu by měl vypadat přibližně takto:
+Chcete-li odebrat soubor z cílové lokality na konci procesu nasazení, příkaz MSDeploy by měl vypadat takto:
 
 [!code-console[Main](taking-web-applications-offline-with-web-deploy/samples/sample2.cmd)]
 
-K automatizaci těchto příkazů jako součást procesu sestavení a nasazení, musíte integrovat do vlastního souboru projektu MSBuild. Následující postup popisuje, jak to provést.
+Chcete-li tyto příkazy automatizovat jako součást procesu sestavení a nasazení, je třeba je integrovat do vlastního souboru projektu MSBuild. Další postup popisuje, jak to provést.
 
-**K nasazení a odstranění aplikace\_offline souboru**
+**Nasazení a odstranění aplikace\_offline souboru**
 
-1. V sadě Visual Studio 2010 otevřete soubor projektu MSBuild, který řídí proces nasazení. V [Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md) ukázkové řešení, je to *Publish.proj* souboru.
-2. V kořenovém adresáři **projektu** elementu, vytvořte nový **PropertyGroup** – element pro uložení proměnné pro *aplikace\_offline* nasazení:
+1. V aplikaci Visual Studio 2010 otevřete soubor projektu MSBuild, který řídí proces nasazení. V ukázkovém řešení [Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md) se jedná o soubor *Publish. proj* .
+2. V kořenovém elementu **projektu** vytvořte nový prvek **Property** pro ukládání proměnných *aplikace\_offline* nasazení:
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample3.xml)]
-3. **SourceRoot** vlastnost je definována jinde v *Publish.proj* souboru. Určuje umístění kořenové složky pro zdrojový obsah vzhledem k aktuální cesta&#x2014;jinými slovy, relativní k umístění *Publish.proj* souboru.
-4. **ContentPath** poskytovatele nebude přijímat relativní cesty k souboru, takže je potřeba získat absolutní cestu ke zdrojovému souboru, než bude možné nasadit. Můžete použít [converttoabsolutepath –](https://msdn.microsoft.com/library/bb882668.aspx) úlohy provedete to tak.
-5. Přidat nový **cílové** element s názvem **GetAppOfflineAbsolutePath**. Uvnitř tohoto cíle, použijte **converttoabsolutepath –** úlohu k získání absolutní cesta k *aplikace\_offline šablony* souboru ve složce vašeho projektu.
+3. Vlastnost **SourceRoot** je definována jinde v souboru *Publish. proj* . Označuje umístění kořenové složky pro zdrojový obsah vzhledem k aktuální cestě&#x2014;jinými slovy vzhledem k umístění souboru *Publish. proj* .
+4. Zprostředkovatel služby **contentPath** nebude akceptovat relativní cesty k souborům, takže před jeho nasazením musíte získat absolutní cestu ke zdrojovému souboru. K tomu můžete použít úlohu [ConvertToAbsolutePath –](https://msdn.microsoft.com/library/bb882668.aspx) .
+5. Přidejte nový **cílový** element s názvem **GetAppOfflineAbsolutePath**. V rámci tohoto cíle použijte úlohu **ConvertToAbsolutePath –** k získání absolutní cesty k *aplikaci\_offline souboru šablony* do složky projektu.
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample4.xml)]
-6. Relativní cesta k přebírá tento cíl *aplikace\_offline šablony* souboru ve složce vašeho projektu a uloží jej do nové vlastnosti jako absolutní cestu k souboru. **BeforeTargets** Určuje atribut, který má tento cíl, předtím než **DeployAppOffline** cíl, který vytvoříte v dalším kroku.
-7. Přidat nový cíl s názvem **DeployAppOffline**. Uvnitř tohoto cíle vyvolat příkaz MSDeploy.exe, která nasadí vaši *aplikace\_offline* soubor na cílový webový server.
+6. Tento cíl vezme relativní cestu k *aplikaci\_offline souboru šablony* ve složce projektu a uloží ji do nové vlastnosti jako absolutní cestu k souboru. Atribut **BeforeTargets** určuje, že chcete, aby se tento cíl spustil před cílem **DeployAppOffline** , který vytvoříte v dalším kroku.
+7. Přidejte nový cíl s názvem **DeployAppOffline**. V rámci tohoto cíle volejte příkaz MSDeploy. exe, který nasadí vaši *aplikaci\_offline* souboru na cílový webový server.
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample5.xml)]
-8. V tomto příkladu **ContactManagerIisPath** vlastnost je definována jinde v souboru projektu. Toto je jednoduše IIS cestu k aplikaci, ve formuláři *[název webu služby IIS] / [název aplikace]*. Včetně podmínku v cílovém umožňuje uživatelům přepínat *aplikace\_offline* nasazení nebo vypnout změnou hodnoty vlastnosti nebo poskytnutí parametr příkazového řádku.
-9. Přidat nový cíl s názvem **DeleteAppOffline**. Uvnitř tohoto cíle vyvolat příkaz MSDeploy.exe, která odebere vaše *aplikace\_offline* soubor z webového serveru cílový.
+8. V tomto příkladu je vlastnost **ContactManagerIisPath** definovaná jinde v souboru projektu. Toto je jednoduše cesta k aplikaci služby IIS ve formátu *[název webu IIS]/[název aplikace]* . Zahrnutí podmínky v cíli umožňuje uživatelům přepínání *aplikace\_offline* nasazení, a to změnou hodnoty vlastnosti nebo zadáním parametru příkazového řádku.
+9. Přidejte nový cíl s názvem **DeleteAppOffline**. V rámci tohoto cíle volejte příkaz MSDeploy. exe, který odebere vaši *aplikaci\_offline* souboru z cílového webového serveru.
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample6.xml)]
-10. Posledním úkolem je vyvolat tyto nové cíle na odpovídající body při spuštění souboru projektu. To lze provést různými způsoby. Například v *Publish.proj* souboru **FullPublishDependsOn** vlastnost určuje seznam cílů, které musí být provedeny v pořadí, kdy **FullPublish** výchozí cíl je vyvolána.
-11. Upravte soubor projektu MSBuild k vyvolání **DeployAppOffline** a **DeleteAppOffline** cíle ve vhodných míst v procesu publikování.
+10. Konečným úkolem je vyvolat tyto nové cíle v příslušných bodech během provádění souboru projektu. Můžete to udělat různými způsoby. Například v souboru *Publish. proj* vlastnost **FullPublishDependsOn** určuje seznam cílů, které musí být spuštěny v pořadí, kdy je vyvolán výchozí cíl **FullPublish** .
+11. Upravte soubor projektu MSBuild tak, aby vyvolal cíle **DeployAppOffline** a **DeleteAppOffline** ve vhodných bodech v procesu publikování.
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample7.xml)]
 
-Když spustíte svůj vlastní soubor projektu MSBuild, *aplikace\_offline* se soubor nasadí na server hned po úspěšném sestavení. Potom se odstraní ze serveru po dokončení všech úloh nasazení.
+Když spustíte vlastní soubor projektu MSBuild, *aplikace\_offline* soubor se nasadí na server hned po úspěšném sestavení. Po dokončení všech úloh nasazení se pak odstraní ze serveru.
 
-## <a name="adding-an-appoffline-file-to-deployment-packages"></a>Přidávání aplikací\_Offline souboru do balíčků pro nasazení
+## <a name="adding-an-app_offline-file-to-deployment-packages"></a>Přidání aplikace\_offline souboru do balíčků pro nasazení
 
-V závislosti na tom, jak nakonfigurovat nasazení, všechny existující obsah v cílovém umístění služby IIS webová aplikace&#x2014;jako *aplikace\_offline.htm* souboru&#x2014;mohou být automaticky odstraněny při nasazování web balíček do cíle. Chcete-li zajistit *aplikace\_offline.htm* soubor zůstává na místě po dobu trvání nasazení, je nutné zahrnout soubor v rámci samotné balíčku pro nasazení webu také k nasazení souboru přímo na začátku proces nasazení.
+V závislosti na tom, jak nakonfigurujete nasazení, se&#x2014;&#x2014;může při nasazení webového balíčku do cíle automaticky odstranit veškerý existující obsah v cílové webové aplikaci IIS, jako je například *aplikace\_offline. htm* . Aby bylo zajištěno, že *aplikace\_offline souboru. htm* zůstane v platnosti po dobu trvání nasazení, je třeba zahrnout soubor do samotného balíčku pro nasazení webu společně s nasazením souboru přímo na začátku procesu nasazení.
 
-- Pokud jste postupovali podle předchozích úlohách v tomto tématu, budete mít přidaný *aplikace\_offline.htm* soubor do projektu webové aplikace v rámci jiný název souboru (jsme použili *aplikace\_ offline template.htm*) a budete mít nastavte akci sestavení na **žádný**. Tyto změny jsou nutné zabránit souboru z zasahovala vývoj a ladění. V důsledku toho je třeba přizpůsobit proces balení a zkontrolujte, že *aplikace\_offline.htm* soubor je součástí balíčku pro nasazení webu.
+- Pokud jste postupovali s předchozími úkoly v tomto tématu, přihlásili jste se do projektu webové aplikace *\_v režimu offline. htm aplikace* v jiném názvu souboru (používáme *App\_offline-Template. htm*) a nastavíte akci sestavení na **žádná**. Tyto změny jsou nezbytné, aby se zabránilo souboru v konfliktu s vývojem a laděním. V důsledku toho je nutné přizpůsobit proces balení, aby bylo zajištěno, že *aplikace\_offline souboru. htm* je součástí balíčku pro nasazení webu.
 
-Web pro publikování kanálu (WPP) používá seznam položek s názvem **FilesForPackagingFromProject** k vytvoření seznamu souborů, které mají být zahrnuty do balíčku pro nasazení webu. Obsah webových balíčků můžete přizpůsobit tak, že přidáte vlastní položky do tohoto seznamu. K tomu, které potřebujete k dokončení těchto kroků:
+Kanál pro publikování na webu (WPP) používá seznam položek s názvem **FilesForPackagingFromProject** k vytvoření seznamu souborů, které by měly být zahrnuty do balíčku pro nasazení webu. Obsah svých webových balíčků můžete přizpůsobit přidáním vlastních položek do tohoto seznamu. K tomu je potřeba provést tyto kroky vysoké úrovně:
 
-1. Vytvoření vlastního projektu soubor s názvem *[název projektu].wpp.targets* ve stejné složce jako soubor projektu.
+1. Vytvořte vlastní soubor projektu nazvaný *[název projektu]. WPP. targets* ve stejné složce jako soubor projektu.
 
     > [!NOTE]
-    > *. Wpp.targets* souboru musí být ve stejné složce jako soubor projektu webové aplikace&#x2014;například *ContactManager.Mvc.csproj*&#x2014;, nikoli ve stejné složce jako vlastní soubory projektu, které můžete použít k řízení procesu sestavení a nasazení.
-2. V *. wpp.targets* soubor, vytvořte nový cíl nástroje MSBuild, který se spustí *před* **CopyAllFilesToSingleFolderForPackage** cíl. Toto je cílová WPP, který vytváří seznam skutečností, které chcete zahrnout do balíčku.
-3. Vytvořte v nový cíl **ItemGroup** element.
-4. V **ItemGroup** element, přidejte **FilesForPackagingFromProject** položku a zadat *aplikace\_offline.htm* souboru.
+    > Soubor *. WPP. targets* musí být ve stejné složce jako soubor&#x2014;projektu webové aplikace, například *ContactManager. Mvc. csproj*&#x2014;, nikoli ve stejné složce jako jakékoli vlastní soubory projektu, které slouží k řízení procesu sestavení a nasazení.
+2. V souboru *. WPP. targets* vytvořte nový cíl nástroje MSBuild, který se spustí *před* cílem **CopyAllFilesToSingleFolderForPackage** . Toto je cíl WPP, který vytváří seznam věcí, které se mají zahrnout do balíčku.
+3. V novém cíli vytvořte element **Item** .
+4. V prvku skupiny **položek** přidejte položku **FilesForPackagingFromProject** a určete *aplikaci\_offline. htm* .
 
-*. Wpp.targets* soubor by měl vypadat takto:
+Soubor *. WPP. targets* by měl vypadat takto:
 
 [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample8.xml)]
 
-Toto jsou klíčové body Poznámka: v tomto příkladu:
+Toto jsou klíčové body poznámky v tomto příkladu:
 
-- **BeforeTargets** atribut vloží tento cíl do WPP tak, že určíte, který by měl být spuštěn bezprostředně před **CopyAllFilesToSingleFolderForPackage** cíl.
-- **FilesForPackagingFromProject** položky používá **DestinationRelativePath** hodnota metadat se přejmenovat soubor z *aplikace\_offline template.htm* k *aplikace\_offline.htm* je přidat do seznamu.
+- Atribut **BeforeTargets** vloží tento cíl do WPP tím, že určí, že by měl být proveden těsně před cílem **CopyAllFilesToSingleFolderForPackage** .
+- Položka **FilesForPackagingFromProject** používá hodnotu metadat **DestinationRelativePath** k přejmenování souboru z *aplikace\_offline-template. htm* na *aplikaci\_offline. htm* při přidání do seznamu.
 
-Následující postup ukazuje, jak přidat *. wpp.targets* soubor do projektu webové aplikace.
+Následující postup ukazuje, jak přidat tento soubor *. WPP. targets* do projektu webové aplikace.
 
-**Chcete-li přidat. wpp.targets soubor balíčku pro nasazení webu**
+**Přidání souboru. WPP. targets do balíčku pro nasazení webu**
 
-1. Otevřete řešení v sadě Visual Studio 2010.
-2. V **Průzkumníka řešení** okna, klikněte pravým tlačítkem na uzel projektu webové aplikace (například **ContactManager.Mvc**), přejděte na **přidat**a potom klikněte na tlačítko **Nová položka**.
-3. V **přidat novou položku** dialogové okno, vyberte **soubor XML** šablony.
-4. V **název** zadejte *[název projektu]* **.wpp.targets** (například **ContactManager.Mvc.wpp.targets**) a potom klikněte na tlačítko **přidat**.
+1. Otevřete řešení v aplikaci Visual Studio 2010.
+2. V okně **Průzkumník řešení** klikněte pravým tlačítkem myši na uzel projektu webové aplikace (například **ContactManager. Mvc**), přejděte na **Přidat**a klikněte na **Nová položka**.
+3. V dialogovém okně **Přidat novou položku** vyberte šablonu **souboru XML** .
+4. Do pole **název** zadejte *[název projektu] * * *. WPP. targets** (například **ContactManager. Mvc. WPP. targets**) a pak klikněte na **Přidat**.
 
     ![](taking-web-applications-offline-with-web-deploy/_static/image4.png)
 
     > [!NOTE]
-    > Pokud chcete přidat novou položku do kořenového uzlu projektu, soubor se vytvoří ve stejné složce jako soubor projektu. Můžete to ověřit tak, že otevřete složku v Průzkumníku Windows.
-5. V souboru přidejte značky MSBuild je popsáno výše.
+    > Pokud přidáte novou položku do kořenového uzlu projektu, je soubor vytvořen ve stejné složce jako soubor projektu. To můžete ověřit tak, že otevřete složku v Průzkumníku Windows.
+5. Do souboru přidejte kód MSBuild popsaný výše.
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample9.xml)]
-6. Uložte a zavřete *[název projektu].wpp.targets* souboru.
+6. Uložte a zavřete soubor *[název projektu]. WPP. targets* .
 
-Při příštím build a balíček projektu webové aplikace, WPP automaticky zjistí, *. wpp.targets* souboru. *Aplikace\_offline template.htm* soubor bude obsahovat výsledný balíčku pro nasazení webu jako *aplikace\_offline.htm*.
+Při příštím sestavení a zabalení projektu webové aplikace bude modul WPP automaticky detekovat soubor *. WPP. targets* . Soubor *app\_offline-Template. htm* bude součástí výsledného balíčku pro nasazení webu jako *aplikace\_offline. htm*.
 
 > [!NOTE]
-> Pokud se nasazení nezdaří, *aplikace\_offline.htm* soubor zůstane na místě a vaše aplikace bude i nadále v režimu offline. Obvykle se jedná o požadované chování. Aby vaše aplikace zpět do online režimu, můžete odstranit *aplikace\_offline.htm* soubor z webového serveru. Případně, pokud opravíte jakékoli chyby a spuštění úspěšné nasazení *aplikace\_offline.htm* soubor bude odstraněn.
+> Pokud se nasazení nezdaří, *aplikace\_offline souboru. htm* zůstane na svém místě a vaše aplikace zůstane offline. To je obvykle požadované chování. Pokud chcete aplikaci převést zpět do režimu online, můžete *aplikaci odstranit\_offline souboru. htm* z webového serveru. Případně, pokud opravíte nějaké chyby a spustíte úspěšné nasazení, bude odebrána *aplikace\_offline souboru. htm* .
 
 ## <a name="conclusion"></a>Závěr
 
-Toto téma popisuje postupy v této webové aplikace v režimu offline po dobu trvání nasazení, publikování *aplikace\_offline.htm* soubor na cílový server na začátku procesu nasazení a odebere ji na Konec. Také popisuje způsoby patří *aplikace\_offline.htm* souborů v balíčku pro nasazení webu.
+Toto téma popisuje, jak převést webovou aplikaci do režimu offline po dobu trvání nasazení, publikováním *aplikace\_souboru offline. htm* na cílovém serveru na začátku procesu nasazení a jeho odebráním na konci. Popisuje také způsob zahrnutí *aplikace\_offline souboru. htm* do balíčku pro nasazení webu.
 
 ## <a name="further-reading"></a>Další čtení
 
-Další informace o vytváření balíčků a proces nasazení, najdete v části [sestavení a balení projektů webových aplikací](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md), [konfigurace parametrů nasazení webového balíčku](../web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment.md), a [ Nasazení webových balíčků](../web-deployment-in-the-enterprise/deploying-web-packages.md).
+Další informace o procesu balení a nasazení najdete v tématu [sestavování a balení projektů webových aplikací](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md), [Konfigurace parametrů pro nasazení webového balíčku](../web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment.md)a [nasazení webových balíčků](../web-deployment-in-the-enterprise/deploying-web-packages.md).
 
-Pokud publikujete, aby vaše webové aplikace přímo ze sady Visual Studio, místo použití přístupu pro soubor vlastní projekt MSBuild je popsáno v těchto kurzech, budete muset použít trochu jiný přístup k převést aplikaci do offline režimu během publikování proces. Další informace najdete v tématu [o provedení offline vaší webové aplikace během publikování](https://go.microsoft.com/?linkid=9805135) (příspěvek na blogu).
+Pokud publikujete své webové aplikace přímo ze sady Visual Studio a nepoužijete vlastní přístup k souboru projektu MSBuild popsaný v těchto kurzech, budete muset při publikování převést aplikaci do offline režimu. přihlášení.
 
 > [!div class="step-by-step"]
 > [Předchozí](excluding-files-and-folders-from-deployment.md)
-> [další](running-windows-powershell-scripts-from-msbuild-project-files.md)
+> [Další](running-windows-powershell-scripts-from-msbuild-project-files.md)

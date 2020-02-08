@@ -1,134 +1,134 @@
 ---
 uid: single-page-application/overview/templates/backbonejs-template
-title: Šablona Backbone | Dokumentace Microsoftu
+title: Šablona páteře | Microsoft Docs
 author: madskristensen
-description: Šablona Backbone.js SPA
+description: Šablona hesla pro páteřní šablonu. js
 ms.author: riande
 ms.date: 04/04/2013
 ms.assetid: 00aca413-f067-4108-9bd1-cf21e64a2646
 msc.legacyurl: /single-page-application/overview/templates/backbonejs-template
 msc.type: authoredcontent
-ms.openlocfilehash: e5c98b7a9678f8251eccce05344c2014a769fc3b
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 7297db7d5b35a53b40f9d9162960e529a167bd12
+ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113352"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77074888"
 ---
 # <a name="backbone-template"></a>Šablona Backbone
 
-podle [Autor: Mads Kristensen](https://github.com/madskristensen)
+od [Madse Kristensena](https://github.com/madskristensen)
 
-> Šablona Backbone SPA zapsal Kazi Manzur Rashid
+> Šablona páteřního hesla byla zapsaná pomocí Kazi Manzur Rashid
 > 
-> [Stáhněte si šablonu Backbone.js SPA](https://go.microsoft.com/fwlink/?LinkId=293631)
+> [Stažení šablony páteřní soubor. js SPA](https://go.microsoft.com/fwlink/?LinkId=293631)
 
-Šablona Backbone.js SPA je navržena tak, jak začít rychle vytvářet interaktivní webové klientské aplikace s využitím [Backbone.js.](http://backbonejs.org/)
+Šablona s páteřním heslem. js je navržená tak, aby vám mohla rychle začít vytvářet interaktivní webové aplikace na straně klienta pomocí [páteřního. js.](http://backbonejs.org/)
 
-Šablona nabízí počáteční skeleton pro vývoj aplikací Backbone.js v architektuře ASP.NET MVC. Ihned poskytuje funkce základní uživatel přihlášení, včetně resetování hesla registrace, přihlášení, uživatele a potvrzení uživatele s základní e-mailové šablony.
+Šablona poskytuje počáteční kostru pro vývoj aplikace v páteřním formátu. js v ASP.NET MVC. Mimo pole poskytuje základní funkce pro přihlášení uživatelů, včetně registrace uživatelů, přihlášení, resetování hesla a potvrzení uživatele se základními e-mailovými šablonami.
 
 Požadavky:
 
-- [Aktualizace technologie ASP.NET and Web Tools 2012.2](https://go.microsoft.com/fwlink/?LinkId=282650)
+- [Aktualizace ASP.NET and Web Tools 2012,2](https://go.microsoft.com/fwlink/?LinkId=282650)
 
-## <a name="create-a-backbone-template-project"></a>Vytvoření projektu páteřní šablony
+## <a name="create-a-backbone-template-project"></a>Vytvoření projektu s páteřní šablonou
 
-Stáhněte a nainstalujte šablony kliknutím na tlačítko Stáhnout výše. Šablona je zabalena jako soubor rozšíření aplikace Visual Studio (VSIX). Můžete potřebovat restartovat Visual Studio.
+Stáhněte a nainstalujte šablonu kliknutím na tlačítko Stáhnout výše. Šablona je zabalená jako soubor rozšíření sady Visual Studio (VSIX). Možná budete muset restartovat Visual Studio.
 
-V **šablony** vyberte **nainstalované šablony** a rozbalte **Visual C#** uzlu. V části **Visual C#** vyberte **webové**. V seznamu šablon projektu vyberte **webové aplikace ASP.NET MVC 4**. Pojmenujte projekt a klikněte na tlačítko **OK**.
+V podokně **šablony** vyberte **Nainstalované šablony** a rozbalte uzel  **C# vizuál** . V **části C#vizuál** vyberte **Web**. V seznamu šablon projektu vyberte **ASP.NET webová aplikace MVC 4**. Pojmenujte projekt a klikněte na tlačítko **OK**.
 
 ![](backbonejs-template/_static/image1.png)
 
-V **nový projekt** průvodce, vyberte projekt SPA Backbone.js.
+V průvodci **vytvořením nového projektu** vyberte projekt páteřní. js Spa.
 
 ![](backbonejs-template/_static/image2.png)
 
-Stisknutím kláves Ctrl-F5 sestavte a spusťte aplikaci bez ladění nebo stisknutím klávesy F5 spusťte ladění.
+Stisknutím kombinace kláves CTRL + F5 sestavíte a spustíte aplikaci bez ladění, nebo stiskněte klávesu F5 ke spuštění s laděním.
 
 ![](backbonejs-template/_static/image3.png)
 
-Kliknutím na "Můj účet" zobrazí přihlašovací stránku:
+Kliknutím na můj účet se zobrazí přihlašovací stránka:
 
 ![](backbonejs-template/_static/image4.png)
 
-## <a name="walkthrough-client-code"></a>Návod: Klientský kód
+## <a name="walkthrough-client-code"></a>Návod: klientský kód
 
-Pojďme začíná na straně klienta. Klientské aplikace skripty jsou umístěny ve složce ~/Scripts/application. Aplikace je napsána v [TypeScript](http://www.typescriptlang.org/) (soubory .ts) které jsou kompilovány do jazyka JavaScript (.js soubory).
+Pojďme začít na straně klienta. Skripty klientské aplikace jsou umístěné ve složce ~/Scripts/Application. Aplikace je zapsána v [TypeScript](http://www.typescriptlang.org/) (soubory. TS), které jsou zkompilovány do jazyka JavaScript (soubory. js).
 
 **Aplikace**
 
-`Application` je definováno v application.ts. Tento objekt inicializuje aplikaci a funguje jako kořenový obor názvů. Udržuje informace o konfiguraci a stavu, který je sdílen mezi aplikace, jako například, jestli je uživatel přihlášený.
+`Application` je definována v Application. TS. Tento objekt Inicializuje aplikaci a funguje jako kořenový obor názvů. Udržuje informace o konfiguraci a stavu, které jsou sdíleny napříč aplikací, například zda je uživatel přihlášený.
 
-`application.start` Metoda vytvoří modální zobrazení a připojí obslužné rutiny událostí pro události na úrovni aplikace, jako je například přihlášení uživatele. Dále vytvoří výchozí směrovač a zkontroluje, zda je zadán libovolnou adresu URL na straně klienta. Pokud ne, přesměruje na výchozí adresu url (#! /).
+Metoda `application.start` vytváří modální zobrazení a připojuje obslužné rutiny událostí pro události na úrovni aplikace, jako je například přihlášení uživatele. V dalším kroku vytvoří výchozí směrovač a zkontroluje, jestli je zadaná adresa URL na straně klienta. V takovém případě přesměruje na výchozí adresu URL (#!/).
 
 **Události**
 
-Události jsou důležité vždy při vývoji volně vázanými komponentami. Aplikace často provádět více operací v reakci na akce uživatele. Páteřní poskytuje integrované události s komponentami, jako je Model, kolekci a zobrazení. Místo vytváření mezi závislosti mezi komponentami, šablony používá model "pub/sub": `events` Objekt definovaný v events.ts, funguje jako Centrum událostí pro publikování a přihlášení k odběru událostí aplikace. `events` Objekt je typu singleton. Následující kód ukazuje, jak přihlásit odběr události a poté spuštění události:
+Při vývoji volně vázaných komponent jsou vždy důležité události. Aplikace často provádějí více operací v reakci na akci uživatele. Páteřní síť poskytuje integrované události s komponentami, jako je model, kolekce a zobrazení. Namísto vytváření vzájemných závislostí mezi těmito součástmi používá šablona "" pub/sub "model: objekt `events` definovaný v události. TS funguje jako centrum událostí pro publikování a přihlášení k odběru událostí aplikace. Objekt `events` je typu singleton. Následující kód ukazuje, jak se přihlásit k odběru události a poté aktivovat událost:
 
 [!code-csharp[Main](backbonejs-template/samples/sample1.cs)]
 
-**Router**
+**Směrovací**
 
-Směrovač v Backbone.js, poskytuje metody pro směrování stránky na straně klienta a připojte je ke akcích a událostech. Šablona definuje jeden směrovač v router.ts. Směrovač activable zobrazení vytvoří a udržuje stav při přepnutí zobrazení. (Activable zobrazení jsou popsané v další části). Na začátku projektu má dvě fiktivní zobrazení domácích a o. Má také NotFound zobrazení, které se zobrazí, pokud je trasa není znám.
+V páteřním. js směrovač poskytuje metody pro směrování stránek na straně klienta a jejich propojení s akcemi a událostmi. Šablona definuje jeden směrovač ve směrovači. TS. Směrovač vytvoří zobrazení activable a udržuje stav při přepínání zobrazení. (Zobrazení Activable jsou popsaná v následující části.) Zpočátku má projekt dvě zástupné zobrazení, domovskou stránku a o produktu. Má také zobrazení NotFound, které se zobrazí, pokud trasa není známá.
 
 **Zobrazení**
 
-Zobrazení jsou definovány v ~/Scripts/application a zobrazení. Existují dva druhy, activable zobrazení a zobrazení modálního dialogového okna. Activable zobrazení jsou vyvolány směrovačem. Když activable zobrazení se zobrazí, všech ostatních zobrazeních activable neaktivní. Vytvořit activable zobrazení, rozšíření zobrazení s `Activable` objektu:
+Zobrazení jsou definována v ~/scripts/Application/views. Existují dva druhy zobrazení, activable zobrazení a modální zobrazení dialogových oken. Zobrazení Activable je vyvoláno směrovačem. Když se zobrazí zobrazení activable, všechna ostatní zobrazení activable se stanou neaktivní. Chcete-li vytvořit zobrazení activable, rozšíříte zobrazení pomocí objektu `Activable`:
 
 [!code-javascript[Main](backbonejs-template/samples/sample2.js)]
 
-Rozšíření s `Activable` přidá dva nové metody pro zobrazení, `activate` a `deactivate`. Směrovač voláním metod aktivace a deactive zobrazení.
+Rozšíření pomocí `Activable` přidá do zobrazení dvě nové metody `activate` a `deactivate`. Směrovač volá tyto metody pro aktivaci a deaktivaci zobrazení.
 
-Modální zobrazení jsou implementovány jako [architekturu Twitter Bootstrap](http://twitter.github.com/bootstrap/) modální dialogová okna. `Membership` a `Profile` zobrazení jsou modální zobrazení. Zobrazení modelu, jde vyvolat události žádné aplikace. Například v `Navigation` zobrazení, kliknutím na odkaz "Můj účet" obsahuje buď `Membership` zobrazení nebo `Profile` zobrazení, v závislosti na tom, jestli je uživatel přihlášen. `Navigation` Bude k obrazci, klikněte na tlačítko obslužné rutiny událostí pro všechny podřízené prvky, které mají `data-command` atribut. Tady je značka jazyka HTML:
+Modální zobrazení jsou implementována jako modální dialogová okna pro spuštění z [Twitteru](https://twitter.github.com/bootstrap/) . Zobrazení `Membership` a `Profile` jsou modální zobrazení. Zobrazení modelu mohou být vyvolána všemi událostmi aplikace. Například v zobrazení `Navigation` kliknutím na odkaz Můj účet zobrazíte `Membership` zobrazení nebo zobrazení `Profile`, podle toho, jestli je uživatel přihlášený. `Navigation` připojí obslužné rutiny události Click k jakýmkoli podřízeným elementům, které mají atribut `data-command`. Zde je kód HTML:
 
 [!code-html[Main](backbonejs-template/samples/sample3.html)]
 
-Zde je kód v navigation.ts k připojení události:
+Zde je kód v navigaci. TS, aby se události připojily:
 
 [!code-csharp[Main](backbonejs-template/samples/sample4.cs)]
 
-**Modely**
+**Vzor**
 
-Tyto modely jsou definovány v ~/Scripts/application/modely. Všechny modely mají tři základní akce: výchozí atributy, ověřovací pravidla a koncový bod na straně serveru. Tady je typickým příkladem:
+Modely jsou definované v ~/scripts/Application/Models. Všechny modely mají tři základní věci: výchozí atributy, ověřovací pravidla a koncový bod na straně serveru. Tady je typický příklad:
 
 [!code-javascript[Main](backbonejs-template/samples/sample5.js)]
 
 **Moduly plug-in**
 
-Složka ~/Scripts/application/lib obsahuje několik modulů plug-in jQuery po ruce. Definuje form.ts souboru modulu plug-in pro práci s daty formuláře. Často je potřeba serializovat nebo deserializovat data formuláře a zobrazit všechny chyby ověření modelu. Modul plug-in form.ts, jako má metody `serializeFields`, `deserializeFields`, a `showFieldErrors`. Následující příklad ukazuje, jak k serializaci formuláře k modelu.
+Složka ~/Scripts/Application/lib obsahuje několik užitečných modulů plug-in jQuery. Soubor Form. TS definuje modul plug-in pro práci s daty formuláře. Často potřebujete serializovat nebo deserializovat data formuláře a zobrazit všechny chyby ověřování modelu. Modul plug-in formuláře. TS obsahuje metody, jako jsou `serializeFields`, `deserializeFields`a `showFieldErrors`. Následující příklad ukazuje, jak serializovat formulář do modelu.
 
 [!code-javascript[Main](backbonejs-template/samples/sample6.js)]
 
-Modul plug-in flashbar.ts poskytuje různé typy zpráv se zpětnou vazbou pro uživatele. Metody jsou `$.showSuccessbar`, `$.showErrorbar` a `$.showInfobar`. Na pozadí používá architekturu Twitter Bootstrap výstrahy zobrazíte hezky animovaných zprávy.
+Modul plug-in flashbar. TS poskytuje uživatelům různé druhy zpráv zpětné vazby. Metody jsou `$.showSuccessbar`, `$.showErrorbar` a `$.showInfobar`. Na pozadí používá upozornění zaváděcího nástroje Twitter k zobrazení úhledných animovaných zpráv.
 
-Modul plug-in confirm.ts nahradí prohlížeče dialogové okno, potvrzení, i když se rozhraní API se poněkud liší:
+Modul plug-in potvrdit. TS nahrazuje dialogové okno pro potvrzení prohlížeče, i když se rozhraní API trochu liší:
 
 [!code-javascript[Main](backbonejs-template/samples/sample7.js)]
 
-## <a name="walkthrough-server-code"></a>Návod: Kód serveru
+## <a name="walkthrough-server-code"></a>Návod: serverový kód
 
-Nyní Pojďme se podívat na straně serveru.
+Teď se podíváme na stranu serveru.
 
 **Kontrolery**
 
-V jednostránkové aplikaci hraje na server pouze malé roli v uživatelském rozhraní. Obvykle serveru vykreslí stránku pro počáteční a pak odesílá i přijímá JSON data.
+V aplikaci s jedinou stránkou přehrává Server v uživatelském rozhraní pouze malou roli. Server obvykle vykreslí počáteční stránku a potom odesílá a přijímá data JSON.
 
-Šablona má dva řadiče MVC: `HomeController` vykreslí stránku pro počáteční, a `SupportsController` se používá k potvrzení nové uživatelské účty a resetování hesel. Všechny řadiče v šabloně jsou řadiče rozhraní ASP.NET Web API, které odesílat a přijímat JSON data. Ve výchozím nastavení, pomocí nové řadiče `WebSecurity` pro provádění úlohy související s uživatelem. Však mají také volitelné konstruktory, které umožňují předat delegáty pro tyto úlohy. Tím je testování jednodušší a umožňuje nahradit `WebSecurity` s něco jiného, pomocí kontejner IoC. Tady je příklad:
+Šablona má dva řadiče MVC: `HomeController` vykreslí úvodní stránku a `SupportsController` slouží k potvrzení nových uživatelských účtů a resetování hesel. Všechny ostatní řadiče v šabloně jsou ASP.NET webovými řadiči rozhraní API, které odesílají a přijímají data JSON. Ve výchozím nastavení používají řadiče novou třídu `WebSecurity` k provádění úloh souvisejících s uživatelem. Mají však také volitelné konstruktory, které umožňují předat delegáty pro tyto úlohy. To usnadňuje testování a umožňuje nahradit `WebSecurity` jiným způsobem pomocí kontejneru IoC. Zde naleznete příklad:
 
 [!code-csharp[Main](backbonejs-template/samples/sample8.cs)]
 
 ## <a name="views"></a>Zobrazení
 
-Zobrazení jsou navrženy jako modulární: Každý oddíl na stránce má svůj vlastní vyhrazený zobrazení. V případě jednostránkové aplikace je běžné zahrnují zobrazení, které nemají žádné odpovídající kontroler. Zobrazení může obsahovat voláním `@Html.Partial('myView')`, ale to získá únavné. Abychom to usnadnili, Šablona definuje Pomocná metoda `IncludeClientViews`, který vykreslí všechna zobrazení v zadané složce:
+Zobrazení jsou navržena jako modulární: každá část stránky má vlastní vyhrazené zobrazení. V aplikaci s jednou stránkou je běžné zahrnout zobrazení, která nemají odpovídající kontroler. Zobrazení můžete zahrnout voláním `@Html.Partial('myView')`, ale to je zdlouhavé. Aby to bylo snazší, Šablona definuje pomocnou metodu `IncludeClientViews`, která vykresluje všechna zobrazení v zadané složce:
 
 [!code-cshtml[Main](backbonejs-template/samples/sample9.cshtml)]
 
-Pokud není zadán název složky, je výchozí název složky "ClientViews". Pokud klienta zobrazí také používá částečná zobrazení, název částečného zobrazení se znakem podtržítka (například `_SignUp`). `IncludeClientViews` Metoda vylučuje všechna zobrazení, jejichž název začíná podtržítkem. Chcete-li zahrnout do zobrazení klienta částečné zobrazení, zavolejte `Html.ClientView('SignUp')` místo `Html.Partial('_SignUp')`.
+Pokud není zadán název složky, výchozí název složky je "ClientViews". Pokud vaše zobrazení klienta používá také částečná zobrazení, pojmenujte částečné zobrazení pomocí znaku podtržítka (například `_SignUp`). Metoda `IncludeClientViews` vyloučí všechna zobrazení, jejichž název začíná podtržítkem. Chcete-li zahrnout částečné zobrazení v zobrazení klienta, zavolejte `Html.ClientView('SignUp')` místo `Html.Partial('_SignUp')`.
 
-**Odesílání e-mailu**
+**Odesílání e-mailů**
 
-K odesílání e-mailová šablona používá [poštovní](http://aboutcode.net/postal). Nicméně je abstrahovaný poštovní od zbývající části kódu pomocí `IMailer` rozhraní, takže můžete snadno nahradit ho záznamem jinou implementaci. E-mailové šablony jsou umístěny ve složce zobrazení/e-mailů. E-mailová adresa odesílatele je zadán v souboru web.config v `sender.email` klíč **appSettings** oddílu. I když `debug="true"` v souboru web.config, aplikace nevyžaduje, aby uživatel e-mailové potvrzení pro urychlení vývoje.
+K odeslání e-mailu šablona používá [poštovní směrovací číslo](http://aboutcode.net/postal). Poštovní směrovací číslo je však abstraktní ze zbytku kódu s rozhraním `IMailer`, takže jej lze snadno nahradit jinou implementací. Šablony e-mailu se nacházejí ve složce views/Emails. E-mailová adresa odesílatele je zadána v souboru Web. config v `sender.email` klíč oddílu **appSettings** . Kromě toho, když `debug="true"` v souboru Web. config, aplikace nevyžaduje při urychlení vývoje e-mailové potvrzení uživatele.
 
 ## <a name="github"></a>GitHub
 
-Můžete také najít šablonu Backbone.js SPA na [Githubu](https://github.com/kazimanzurrashid/AspNetMvcBackboneJsSpa).
+Můžete také najít šablonu páteřní. js SPA na [GitHubu](https://github.com/kazimanzurrashid/AspNetMvcBackboneJsSpa).

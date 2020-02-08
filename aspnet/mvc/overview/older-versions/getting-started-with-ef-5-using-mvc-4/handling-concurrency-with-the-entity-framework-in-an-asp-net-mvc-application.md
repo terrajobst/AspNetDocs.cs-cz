@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: b83f47c4-8521-4d0a-8644-e8f77e39733e
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 0383974baa16bb0d5fc588f9303290bdb0fd979c
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 9800a313879477f36a730e6a70c79bc06d403ae3
+ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74595349"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77074946"
 ---
 # <a name="handling-concurrency-with-the-entity-framework-in-an-aspnet-mvc-application-7-of-10"></a>Zpracování souběžnosti s Entity Framework v aplikaci ASP.NET MVC (7 z 10)
 
@@ -53,7 +53,7 @@ Až Jan klikne na **Uložit**, spustí Jana stejnou stránku a změní pole **po
 
 ![Changing_English_dept_start_date_to_1999](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
 
-Jan klikne na **Uložit** jako první a uvidí jeho změnu, když se prohlížeč vrátí na stránku indexu, a potom Jana klikne na **Uložit**. Co se stane dál, určíte tak, jak můžete zpracovávat konflikty souběžnosti. Mezi tyto možnosti patří:
+Jan klikne na **Uložit** jako první a uvidí jeho změnu, když se prohlížeč vrátí na stránku indexu, a potom Jana klikne na **Uložit**. Co bude dál se určuje podle způsobu zpracování konfliktů souběžnosti. Mezi tyto možnosti patří:
 
 - Můžete sledovat, kterou vlastnost uživatel změnil, a aktualizovat pouze odpovídající sloupce v databázi. V ukázkovém scénáři by se neztratila žádná data, protože dva uživatelé aktualizovali různé vlastnosti. Když někdo příště prochází v anglickém oddělení, uvidí změny Jan i Jana – počáteční datum 8/8/2013 a rozpočet s nulovými dolary.
 
@@ -85,6 +85,8 @@ Do *Models\Department.cs*přidejte vlastnost sledování s názvem `RowVersion`:
 Atribut [timestamp](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) určuje, že tento sloupec bude obsažen v klauzuli `Where` `Update` a `Delete` příkazy odeslané do databáze. Atribut se nazývá [časové razítko](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) , protože předchozí verze SQL Server používaly datový typ [časové razítko](https://msdn.microsoft.com/library/ms182776(v=SQL.90).aspx) SQL předtím, než ho nahradí SQL [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) . Typ .NET pro `rowversion` je bajtové pole. Pokud dáváte přednost použití rozhraní Fluent API, můžete použít metodu [IsConcurrencyToken](https://msdn.microsoft.com/library/gg679501(v=VS.103).aspx) k určení vlastnosti sledování, jak je znázorněno v následujícím příkladu:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.cs)]
+
+Podívejte se na problém GitHubu [nahradit IsConcurrencyToken podle IsRowVersion](https://github.com/aspnet/AspNetDocs/issues/302).
 
 Přidáním vlastnosti, kterou jste změnili databázový model, takže je nutné provést další migraci. V konzole správce balíčků (PMC) zadejte následující příkazy:
 
@@ -188,7 +190,7 @@ Změnili jste také název metody akce z `DeleteConfirmed` na `Delete`. Generova
 
 Pokud je zachycena chyba souběžnosti, kód znovu zobrazí stránku pro potvrzení odstranění a poskytne příznak označující, že by měla zobrazit chybovou zprávu o souběžnosti.
 
-V *Views\Department\Delete.cshtml*nahraďte generovaný kód následujícím kódem, který provede některé změny formátování, a přidá pole chybové zprávy. Změny jsou zvýrazněny.
+V *Views\Department\Delete.cshtml*nahraďte generovaný kód následujícím kódem, který provede některé změny formátování, a přidá pole chybové zprávy. Změny jsou zvýrazněné.
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample16.cshtml?highlight=9,37,40,45-46)]
 
@@ -224,7 +226,7 @@ Zobrazí se chybová zpráva o souběžnosti a hodnoty oddělení se aktualizuj�
 
 Pokud znovu kliknete na tlačítko **Odstranit** , budete přesměrováni na stránku index, která ukazuje, že oddělení bylo odstraněno.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Tím se dokončí Úvod ke zpracování konfliktů souběžnosti. Informace o dalších způsobech zpracování různých scénářů souběžnosti naleznete v tématu [optimistické vzorce souběžnosti](https://blogs.msdn.com/b/adonet/archive/2011/02/03/using-dbcontext-in-ef-feature-ctp5-part-9-optimistic-concurrency-patterns.aspx) a [práce s hodnotami vlastností](https://blogs.msdn.com/b/adonet/archive/2011/01/30/using-dbcontext-in-ef-feature-ctp5-part-5-working-with-property-values.aspx) na blogu týmu Entity Framework. V dalším kurzu se dozvíte, jak implementovat dědičnost tabulek na hierarchii pro `Instructor` a `Student` entity.
 

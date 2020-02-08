@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: e42c8388-04ed-4341-9fdb-41b1b4c06320
 msc.legacyurl: /web-api/overview/formats-and-model-binding/parameter-binding-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 032368f94ce32cf6231458649e8fdd42bee685e9
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.openlocfilehash: 464cb9b45dc0b62c4da38b7cf612934808854d32
+ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519255"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77074901"
 ---
 # <a name="parameter-binding-in-aspnet-web-api"></a>Vazba parametrů ve webovém rozhraní API ASP.NET
 
@@ -45,7 +45,7 @@ Chcete-li vynutit, aby webové rozhraní API četlo komplexní typ z identifiká
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample2.cs)]
 
-Klient může do řetězce dotazu umístit hodnoty zeměpisné šířky a délky a webové rozhraní API je bude používat k sestavení `GeoPoint`. Příklad:
+Klient může do řetězce dotazu umístit hodnoty zeměpisné šířky a délky a webové rozhraní API je bude používat k sestavení `GeoPoint`. Například:
 
 `http://localhost/api/values/?Latitude=47.678558&Longitude=-122.130989`
 
@@ -102,7 +102,7 @@ Pořadač modelů získá nezpracované vstupní hodnoty od *poskytovatele hodno
 
 Výchozí zprostředkovatel hodnoty ve webovém rozhraní API získává hodnoty z dat směrování a řetězce dotazu. Například pokud je identifikátor URI `http://localhost/api/values/1?location=48,-122`, zprostředkovatel hodnoty vytvoří následující páry klíč-hodnota:
 
-- id = &quot;1&quot;
+- ID = &quot;1&quot;
 - Location = &quot;48 122&quot;
 
 (Předpokládáme výchozí šablonu směrování, která je &quot;API/{Controller}/{ID}&quot;.)
@@ -203,9 +203,9 @@ Celý proces vázání parametrů je řízen službou, kterou může připojit *
 
 Pokud jste chtěli, můžete nahradit celou službu **IActionValueBinder** vlastní implementací.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
-[Ukázka vazby vlastního parametru](http://github.com/aspnet/samples/tree/master/samples/aspnet/WebApi/CustomParameterBinding)
+[Ukázka vazby vlastního parametru](https://github.com/aspnet/samples/tree/master/samples/aspnet/WebApi/CustomParameterBinding)
 
 Jan kout zapsal dobrý seriál blogových příspěvků o vazbě parametru webového rozhraní API:
 

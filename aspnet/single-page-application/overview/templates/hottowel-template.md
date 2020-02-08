@@ -1,159 +1,159 @@
 ---
 uid: single-page-application/overview/templates/hottowel-template
-title: Šablona Hot Towel | Dokumentace Microsoftu
+title: Hot navrhování ručníků Template | Microsoft Docs
 author: madskristensen
-description: HotTowel šablony
+description: Šablona HotTowel
 ms.author: riande
 ms.date: 02/09/2013
 ms.assetid: 75af2e17-6ed3-4d24-8ea1-bc340027c318
 msc.legacyurl: /single-page-application/overview/templates/hottowel-template
 msc.type: authoredcontent
-ms.openlocfilehash: f3457840d1597d06c1a1b1ec2a865dd70726446c
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: eeab69e75546791978bb09d7823d95caf9dca1a0
+ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113334"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77075057"
 ---
 # <a name="hot-towel-template"></a>Šablona Hot Towel
 
-podle [Autor: Mads Kristensen](https://github.com/madskristensen)
+od [Madse Kristensena](https://github.com/madskristensen)
 
-> John Papa zapisuje horké šablonu ručníků MVC
+> Hot navrhování ručníků se šablona MVC zapisuje Jan Papa
 > 
-> Vyberte, kterou verzi ke stažení:
+> Vyberte verzi, kterou chcete stáhnout:
 > 
-> [Šablona Hot Towel MVC pro sadu Visual Studio 2012](https://visualstudiogallery.msdn.microsoft.com/1f68fbe8-b4e9-4968-9fd3-ddc7cbc52dca)
+> [Šablona MVC Hot navrhování ručníků pro Visual Studio 2012](https://visualstudiogallery.msdn.microsoft.com/1f68fbe8-b4e9-4968-9fd3-ddc7cbc52dca)
 > 
-> [Šablona Hot Towel MVC pro Visual Studio 2013](https://visualstudiogallery.msdn.microsoft.com/1eb8780d-d522-4dcf-bf56-56f0eab305c2)
+> [Šablona MVC Hot navrhování ručníků pro Visual Studio 2013](https://visualstudiogallery.msdn.microsoft.com/1eb8780d-d522-4dcf-bf56-56f0eab305c2)
 > 
 > 
-> Hot Towel: Vzhledem k tomu, že nechcete přejděte do aplikace SPA bez jediného!
+> Hot navrhování ručníků: vzhledem k tomu, že nechcete, aby bylo možné přejít na zabezpečené ověřování pro hesla bez použití!
 
-Chcete sestavit SPA, ale nelze rozhodnout, kde začít? Použít Hot Towel a během několika sekund budete mít SPA a všechny nástroje, které potřebujete k vytváření na ní!
+Chcete sestavit SPA, ale nemůžete se rozhodnout, kde začít? Používejte horké navrhování ručníků a v sekundách budete mít zabezpečené a všechny nástroje, které potřebujete k sestavení na počítači!.
 
-Hot Towel vytvoří skvělý výchozí bod pro vytváření jedné stránce aplikace (SPA) pomocí technologie ASP.NET. Okamžité vám nabízí modulární struktura kódu, navigace zobrazení, vytváření datových vazeb, správu velké množství dat a používání stylů pro jednoduché, ale elegantní. Hot Towel nabízí vše, co potřebujete k vytváření jednostránková aplikace, abyste se mohli soustředit na svou aplikaci, nikoli zajistí funkčnost systému.
+Hot navrhování ručníků vytvoří skvělý výchozí bod pro vytváření jednostránkové aplikace (SPA) s ASP.NET. V tomto poli poskytuje modulární strukturu pro váš kód, zobrazení navigace, datovou vazbu, bohatou správu dat a jednoduché, ale elegantní styly. Hot navrhování ručníků poskytuje vše, co potřebujete k vytvoření zabezpečeného hesla, takže se můžete soustředit na svou aplikaci, ne na instalace.
 
-> Další informace o vytváření SPA z [John Papa videa, kurzy a kurzů Pluralsight](http://johnpapa.net/spa?vsix).
+> Přečtěte si další informace o vytváření zabezpečeného hesla z [Jan Papa videa, výukových kurzů a Pluralsight kurzů](http://johnpapa.net/spa?vsix).
 
-## <a name="application-structure"></a>Struktury aplikace
+## <a name="application-structure"></a>Struktura aplikace
 
-Hot Towel SPA obsahuje složku aplikace, který obsahuje soubory jazyka JavaScript a HTML, které definují aplikaci.
+Hot navrhování ručníků SPA poskytuje složku aplikace, která obsahuje JavaScript a soubory HTML, které definují vaši aplikaci.
 
 Ve složce aplikace:
 
-- Durandal
-- služby
-- modely viewmodels
-- zobrazení
+- durandal
+- services
+- viewmodels
+- views
 
-Složky aplikace obsahuje kolekci modulů. Tyto moduly zapouzdřují funkce a deklaraci závislosti na dalších modulech. Zobrazení složky obsahuje kód HTML pro vaši aplikaci a modely viewmodels složka obsahuje prezentaci logiku pro zobrazení (běžný vzor MVVM). Složka služby je ideální pro bydlení žádné společné služby, které vaše aplikace může potřebovat například načítání dat protokolu HTTP nebo místní úložiště interakce. Je běžné, že více modely viewmodels opětovné použití kódu z modulů služby.
+Složka aplikace obsahuje kolekci modulů. Tyto moduly zapouzdřují funkce a deklaruje závislosti na dalších modulech. Složka zobrazení obsahuje HTML pro vaši aplikaci a složka ViewModels obsahuje logiku prezentace pro zobrazení (společný vzor MVVM). Složka služby je ideální pro uchovávání všech běžných služeb, které vaše aplikace může potřebovat, jako je například načtení dat HTTP nebo interakce místního úložiště. Je běžné, že více ViewModels opakovaně používá kód z modulů služby.
 
-## <a name="aspnet-mvc-server-side-application-structure"></a>Struktury aplikace na straně serveru ASP.NET MVC
+## <a name="aspnet-mvc-server-side-application-structure"></a>Struktura aplikace na straně serveru ASP.NET MVC
 
-Hot Towel staví na zkušenosti a výkonné strukturu ASP.NET MVC.
+Horká navrhování ručníků se staví na známé a výkonné struktuře ASP.NET MVC.
 
-- Aplikace\_Start
+- Začátek aplikace\_
 - Obsah
 - Kontrolery
 - Modely
 - Scripts
 - Zobrazení
 
-## <a name="featured-libraries"></a>Vybrané knihovny
+## <a name="featured-libraries"></a>Doporučené knihovny
 
 - ASP.NET MVC
-- Rozhraní API pro ASP.NET Web
-- Optimalizace prostředí ASP.NET – sdružování a minifikace
-- [Breeze.js](http://Breezejs.com) -velké množství dat správy
-- [Durandal.js](http://Durandaljs.com) – procházení a zobrazení sestavení
-- [Rozhraní Knockout.js](http://Knockoutjs.com) – datové vazby
-- [Require.js](http://requirejs.org) -modularitu AMD a optimalizace
-- [Toastr.js](http://jpapa.me/c7toastr) – místní zprávy
-- [Twitter Bootstrap](http://twitter.github.com/bootstrap/) – robustní stylu CSS
+- Webové rozhraní API ASP.NET
+- ASP.NET Web Optimization – sdružování a minifikace
+- [Breeze. js](http://Breezejs.com) – Správa dat ve bohatě
+- [Durandal. js](http://Durandaljs.com) – navigace a zobrazení – kompozice
+- [Vyseknutí. js](http://Knockoutjs.com) – datové vazby
+- [Vyžadování modularity. js](http://requirejs.org) s využitím AMD a optimalizace
+- [Informační zpráva. js](http://jpapa.me/c7toastr) – překryvné zprávy
+- Spuštění [Twitteru](https://twitter.github.com/bootstrap/) – robustní styly CSS
 
-## <a name="installing-via-the-visual-studio-2012-hot-towel-spa-template"></a>Instalace přes SPA šablona Hot Towel Visual Studio 2012
+## <a name="installing-via-the-visual-studio-2012-hot-towel-spa-template"></a>Instalace prostřednictvím šablony zabezpečeného hesla sady Visual Studio 2012 Hot navrhování ručníků
 
-Hot Towel je možné nainstalovat jako šablony sady Visual Studio 2012. Stačí kliknout na `File`  |  `New Project` a zvolte `ASP.NET MVC 4 Web Application`. Vyberte "Hot Towel jednostránkové aplikace" šablony a spusťte!
+Hot navrhování ručníků se dá nainstalovat jako šablona sady Visual Studio 2012. Stačí kliknout na `File` | `New Project` a zvolit `ASP.NET MVC 4 Web Application`. Pak vyberte šablonu Hot navrhování ručníků Page a spusťte ji!
 
-## <a name="installing-via-the-nuget-package"></a>Instalace prostřednictvím balíčku NuGet.
+## <a name="installing-via-the-nuget-package"></a>Instalace prostřednictvím balíčku NuGet
 
-Hot Towel je také balíček NuGet, která rozšiřuje stávající prázdný projekt ASP.NET MVC. Stačí nainstalovat pomocí nástroje Nuget a spusťte!
+Hot navrhování ručníků je také balíček NuGet, který rozšiřuje existující prázdný projekt ASP.NET MVC. Stačí jenom nainstalovat pomocí NuGet a pak spustit.
 
 [!code-powershell[Main](hottowel-template/samples/sample1.ps1)]
 
-## <a name="how-do-i-build-on-hot-towel"></a>Jak vytvořit na Hot Towel
+## <a name="how-do-i-build-on-hot-towel"></a>Jak na Hot navrhování ručníků vytvořit?
 
-Začněte jednoduše přidávat kód!
+Stačí začít přidávat kód!
 
-1. Přidejte vlastní kód na straně serveru, pokud možno Entity Framework a WebAPI (což ve skutečnosti lesku pomocí Breeze.js)
-2. Přidat zobrazení `App/views` složky
-3. Přidat modely viewmodels k `App/viewmodels` složky
-4. Přidání kódu HTML a Knockout datové vazby k novým zobrazením
-5. Aktualizace tras navigace v `shell.js`
+1. Přidejte vlastní kód na straně serveru, nejlépe Entity Framework a WebAPI (což skutečně září Breeze. js).
+2. Přidat zobrazení do složky `App/views`
+3. Přidat ViewModels do složky `App/viewmodels`
+4. Přidání datových vazeb HTML a vykrojení do nových zobrazení
+5. Aktualizovat navigační trasy v `shell.js`
 
-## <a name="walkthrough-of-the-htmljavascript"></a>Návod, HTML/JavaScript
+## <a name="walkthrough-of-the-htmljavascript"></a>Návod pro HTML/JavaScript
 
 ### <a name="viewshottowelindexcshtml"></a>Views/HotTowel/index.cshtml
 
-index.cshtml je výchozí trasy a zobrazení pro aplikaci MVC. Obsahuje všechny značky meta pro standardní, odkazy šablon stylů css a JavaScript odkazy, které očekáváte. Text obsahuje jediný `<div>` což je, kde veškerý obsah (zobrazení) budou umístěné při jsou požadovány. `@Scripts.Render` Používá ke spuštění úvodní bod pro kód aplikace, která je obsažena v Require.js `main.js` souboru. Úvodní obrazovka dostane ukazují, jak vytvořit úvodní obrazovky při načtení aplikace.
+index. cshtml je počáteční trasa a zobrazení pro aplikaci MVC. Obsahuje všechny standardní metaznačky, odkazy CSS a reference JavaScriptu, které byste očekávali. Tělo obsahuje jednu `<div>`, kde se při vyžádání umístí veškerý obsah (vaše zobrazení). `@Scripts.Render` používá pro spuštění úvodního bodu pro kód aplikace, který je obsažen v souboru `main.js`, požadavek. js. K dispozici je úvodní obrazovka, která ukazuje, jak během načítání aplikace vytvořit úvodní obrazovku.
 
 [!code-cshtml[Main](hottowel-template/samples/sample2.cshtml)]
 
 ### <a name="appmainjs"></a>App/main.js
 
-`main.js` Soubor obsahuje kód, který se spustí poté, co vaše aplikace je načtena. Je to, kde chcete definovat navigace trasy, nastavte vaše spuštění zobrazení a provést libovolné instalační/spuštění například Příprava dat vaší aplikace.
+`main.js` soubor obsahuje kód, který se spustí hned po načtení vaší aplikace. Tady je místo, kde chcete definovat vaše navigační trasy, nastavit zobrazení pro spuštění a provádět libovolné instalační a zaváděcí operace, jako je například vytváření dat aplikace.
 
-`main.js` Soubor definuje několik modulů durandal ke spuštění aplikace spustit. Příkaz definovat pomáhá vyřešit závislosti modulů, aby byly k dispozici pro funkci. Nejdříve jsou povoleny zprávy ladění, které odesílat zprávy o událostech, že aplikace provádí v okně konzoly. Kód app.start říká rozhraní framework durandal ke spuštění aplikace. Konvence jsou nastavené tak, aby durandal pozná, všechna zobrazení a modely viewmodels jsou obsaženy ve stejné složce s názvem. Nakonec `app.setRoot` Marku zatížení `shell` pomocí předdefinované šablony `entrance` animace.
+`main.js` soubor definuje několik modulů durandal, které pomůžou aplikaci začít spouštět. Příkaz define pomáhá vyhodnotit závislosti modulů, aby byly k dispozici pro funkci. Nejprve jsou povoleny ladicí zprávy, které odesílají zprávy o událostech, které aplikace provádí v okně konzoly. Aplikace. Start Code instruuje durandal Framework pro spuštění aplikace. Konvence jsou nastaveny tak, aby durandal ví, že všechna zobrazení a ViewModels jsou obsaženy ve stejných pojmenovaných složkách v uvedeném pořadí. Nakonec `app.setRoot` načte `shell` pomocí předdefinované animace `entrance`.
 
 [!code-javascript[Main](hottowel-template/samples/sample3.js)]
 
 ## <a name="views"></a>Zobrazení
 
-Zobrazení jsou součástí `App/views` složky.
+Zobrazení se nacházejí ve složce `App/views`.
 
 ### <a name="shellhtml"></a>shell.html
 
-`shell.html` Obsahuje hlavní rozložení pro kódu HTML. Všechny ostatní zobrazení se skládá někde v části vašeho `shell` zobrazení. Poskytuje Hot Towel `shell` tři tyto oblasti: zápatí, záhlaví a oblast obsahu. Každá z těchto oblastí je načtena s tvoří jiných zobrazení při požadavku na obsah.
+`shell.html` obsahuje rozložení předlohy pro váš kód HTML. Všechna ostatní zobrazení se budou skládat někam do zobrazení `shell`. Hot navrhování ručníků poskytuje `shell` se třemi takovými oblastmi: záhlaví, oblast obsahu a zápatí. Každá z těchto oblastí je načtena s obsahem, který je v případě potřeby v jiných zobrazeních.
 
-`compose` Vazby pro záhlaví a zápatí nich není pevně nastavená v Hot Towel přejděte `nav` a `footer` zobrazení, v uvedeném pořadí. Vytvořit vazbu pro oddíl `#content` je vázán na `router` modulu aktivní položky. Jinými slovy po kliknutí na navigační odkaz je odpovídající zobrazení je načten v této oblasti.
+Vazby `compose` pro záhlaví a zápatí jsou pevně kódované v Hot navrhování ručníků, aby odkazovaly na zobrazení `nav` a `footer`, v uvedeném pořadí. Vazba pro psaní oddílu `#content` je vázána na aktivní položku modulu `router`. Jinými slovy, když kliknete na navigační odkaz, v této oblasti se načte odpovídající zobrazení.
 
 [!code-html[Main](hottowel-template/samples/sample4.html)]
 
 ### <a name="navhtml"></a>nav.html
 
-`nav.html` Obsahuje odkazy pro tato jednostránková aplikace. To je, kde struktura nabídky je možné použít, třeba. Často je jím data vázaná (pomocí Knockout) k `router` modul zobrazení navigace, kterou jste definovali v `shell.js`. Knockout vyhledá data-bind atributy a aby vazba `shell` viewmodel, aby se zobrazovaly trasy navigace a chcete-li zobrazit ukazatel průběhu (pomocí architekturu Twitter Bootstrap) Pokud `router` modul provádí navigaci z jednoho zobrazení do jiného (viz `router.isNavigating`).
+`nav.html` obsahuje navigační odkazy pro SPA. Zde lze umístit strukturu nabídky, například. Často se jedná o datovou vazbu (pomocí vykrojení) do modulu `router` pro zobrazení navigace, kterou jste definovali v `shell.js`. Vyseknutí vyhledá atributy vazby dat a váže je na `shell` ViewModel, aby zobrazila navigační trasy a zobrazila ProgressBar (pomocí služby Twitter Bootstrap), pokud je modul `router` uprostřed přechodu z jednoho zobrazení na jiný (viz `router.isNavigating`).
 
 [!code-html[Main](hottowel-template/samples/sample5.html)]
 
-### <a name="homehtml-and-detailshtml"></a>Home.HTML a details.html
+### <a name="homehtml-and-detailshtml"></a>Home. html a details. html
 
-Tato zobrazení obsahují kód jazyka HTML pro vlastní zobrazení. Když `home` odkaz v `nav` dojde ke kliknutí na nabídky zobrazení, `home` zobrazení se umístí do oblasti obsahu `shell` zobrazení. Tato zobrazení můžete rozšířit nebo nahradit vlastní zobrazení.
+Tato zobrazení obsahují HTML pro vlastní zobrazení. Pokud se klikne na odkaz `home` v nabídce zobrazení `nav`, bude zobrazení `home` umístěno v oblasti obsahu `shell` zobrazení. Tato zobrazení lze rozšířit nebo nahradit vlastními zobrazeními.
 
 ### <a name="footerhtml"></a>footer.html
 
-`footer.html` Obsahuje kód HTML, který se zobrazí v zápatí, v dolní části `shell` zobrazení.
+`footer.html` obsahuje kód HTML, který se zobrazí v zápatí, v dolní části `shell` zobrazení.
 
-## <a name="viewmodels"></a>Modely ViewModels
+## <a name="viewmodels"></a>ViewModels
 
-Modely ViewModel se nacházejí v `App/viewmodels` složky.
+ViewModels se nachází ve složce `App/viewmodels`.
 
 ### <a name="shelljs"></a>shell.js
 
-`shell` Viewmodel obsahuje vlastnosti a funkce, které jsou vázány `shell` zobrazení. Často je jím nalezených vazby navigační nabídce (viz `router.mapNav` logiky).
+`shell` ViewModel obsahuje vlastnosti a funkce, které jsou vázány na zobrazení `shell`. Často je to místo, kde se nacházejí navigační vazby nabídky (viz logika `router.mapNav`).
 
 [!code-javascript[Main](hottowel-template/samples/sample6.js)]
 
-### <a name="homejs-and-detailsjs"></a>Home.js a details.js
+### <a name="homejs-and-detailsjs"></a>Home. js a details. js
 
-Tyto modely viewmodels obsahovat vlastností a funkcí, které jsou vázány `home` zobrazení. také obsahuje prezentaci logiku pro zobrazení a je skutečným pojidlem mezi daty a zobrazení.
+Tyto ViewModels obsahují vlastnosti a funkce, které jsou vázány na zobrazení `home`. obsahuje také logiku prezentace pro zobrazení a je připevněn mezi daty a zobrazením.
 
 [!code-javascript[Main](hottowel-template/samples/sample7.js)]
 
 ## <a name="services"></a>Služby
 
-Služby se nacházejí ve složce aplikace nebo služeb Team Foundation. V ideálním případě můžete umístit vaše budoucí služby jako službě dataservice modul, který je zodpovědný za načtení a publikování vzdálených dat.
+Služby se nacházejí ve složce App/Services. V ideálním případě by bylo možné umístit budoucí služby, jako je například modul DataService, který je zodpovědný za získání a odeslání vzdálených dat.
 
 ### <a name="loggerjs"></a>logger.js
 
-Poskytuje Hot Towel `logger` modulu ve složce služby. `logger` Modul je ideální pro protokolování zpráv do konzoly a pro uživatele v místní informační zprávy.
+Hot navrhování ručníků poskytuje modul `logger` ve složce služby. Modul `logger` je ideální pro protokolování zpráv do konzoly a uživatele v překryvném okně informační zprávy.

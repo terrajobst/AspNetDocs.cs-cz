@@ -8,12 +8,12 @@ ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: 51cb8d672139aaebd77bcdbe80bb579d4b3776aa
-ms.sourcegitcommit: 969e7db924ebad3cc0f0cb0d65d148e8b9221b9a
+ms.openlocfilehash: 228194a7b35e116cabae6d819e7a3a8060a3ef6a
+ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899575"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77074914"
 ---
 # <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax Content Delivery Network
 
@@ -64,7 +64,7 @@ CDN hostuje následující knihovny skriptů třetích stran, které jste nahrá
 - jQuery (www.jquery.com)
 - uživatelské rozhraní jQuery (www.jqueryui.com)
 - jQuery Mobile (www.jquerymobile.com)
-- Ověření jQuery (www.jquery.com)
+- Ověření jQuery (https://jqueryvalidation.org/)
 - Cyklus jQuery (www.malsup.com/jquery/cycle/)
 - DataTables jQuery (http://datatables.net/)
 
@@ -148,7 +148,7 @@ Všimněte si, že do výše uvedeného kódu musíte zahrnout tři soubory ze s
 - Knihovna uživatelského rozhraní jQuery &mdash; knihovna rozhraní jQuery obsahuje všechny efekty a pomůcky uživatelského rozhraní jQuery, jako je widget DatePicker použitý na stránce výše.
 - Motiv uživatelského rozhraní jQuery &mdash; uživatelské rozhraní jQuery podporuje různé motivy. Výše uvedená stránka obsahuje odkaz na soubor CSS pro import motivu Redmond.
 
-Všechny standardní motivy uživatelského rozhraní jQuery jsou hostovány v CDN. Na [této stránce](jquery-ui/cdnjqueryui1910.md "jDotaz na uživatelské rozhraní 1.8.10 ve službě Microsoft Ajax CDN) můžete zobrazit miniatury pro každý motiv.
+Všechny standardní motivy uživatelského rozhraní jQuery jsou hostovány v CDN. Na [této stránce](jquery-ui/cdnjqueryui1910.md "Uživatelské rozhraní jQuery 1.8.10 ve službě Microsoft Ajax CDN") můžete zobrazit miniatury pro každý motiv.
 
 Další informace o knihovně uživatelského rozhraní jQuery najdete na oficiálním [webu s uživatelským rozhraním jQuery](http://jQueryUI.com "Web uživatelského rozhraní jQuery").
 
@@ -617,7 +617,7 @@ Následující verze knihovny uživatelského rozhraní jQuery jsou hostovány v
 
 ### <a name="jquery-validation-releases-on-the-cdn"></a>Vydání ověření jQuery na CDN
 
-Následující verze knihovny ověření jQuery jsou hostovány v této síti CDN. Kliknutím na každý odkaz zobrazíte aktuální seznam souborů.
+Následující verze modulu plug-in pro [ověření jQuery](https://jqueryvalidation.org/ "Modul plug-in jQuery ověřování") jsou hostovány v této síti CDN. Kliknutím na každý odkaz zobrazíte aktuální seznam souborů.
 
 - [jQuery ověřit 1.19.1](jquery-validate/cdnjqueryvalidate1191.md "1\.19.1 ověření jQuery")
 - [jQuery ověřit 1.19.0](jquery-validate/cdnjqueryvalidate1190.md "1\.19.0 ověření jQuery")
@@ -777,7 +777,7 @@ Následující vydání [globalizace](https://github.com/jquery/globalize "Globa
 
 ### <a name="respond-releases-on-the-cdn"></a>Odpověď verze v CDN
 
-V CDN jsou hostované následující verze [odpovědi](https://github.com/scottjehl/Respond "Odpovědět") :
+V CDN jsou hostované následující verze [odpovědi](https://github.com/scottjehl/Respond "Reakce") :
 
 #### <a name="respond-version-142"></a>Odpověď verze 1.4.2
 

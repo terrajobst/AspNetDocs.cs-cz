@@ -6,22 +6,22 @@ description: Úvod do webhooků ASP.NET
 ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: 5e2843f0-f499-448f-a712-33d4e9858321
-ms.openlocfilehash: aa65a20e1af16d58533e37fafc77ac246e0fe327
-ms.sourcegitcommit: b95316530fa51087d6c400ff91814fe37e73f7e8
+ms.openlocfilehash: 1e21c92e950893c0ff87c63f03f4710a158441fd
+ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70000734"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77075083"
 ---
 # <a name="aspnet-webhooks-overview"></a>Přehled webhooků ASP.NET
 
 Webhooky je zjednodušený vzor HTTP, který poskytuje jednoduchý model Pub/sub pro zapojení do společné webové rozhraní API a služeb SaaS. Když dojde k události ve službě, pošle se oznámení ve formě požadavku HTTP POST registrovaným předplatitelům. Požadavek POST obsahuje informace o události, která umožňuje příjemci reagovat odpovídajícím způsobem.
 
-Z důvodu jejich jednoduchosti jsou Webhooky již zveřejněny velkým počtem služeb, včetně Dropboxu [](http://dropbox.com/), [GitHubu](http://www.github.com/), [Bitbucket](https://bitbucket.org/), [MailChimp](http://www.mailchimp.com/), [PayPal](http://www.paypal.com/), [časové rezervy](http://www.slack.com), prokládaných, [Trello](http://www.trello.com/)a mnoha. [](http://www.stripe.com) aktuálnější. Webhook může například značit, že se soubor změnil v Dropboxu nebo [](http://dropbox.com/)že se změnila Změna kódu na GitHubu, nebo když se v rámci služby [PayPal](http://www.paypal.com/)iniciovala platba nebo byla vytvořena karta v [Trello](http://www.trello.com/). Možnosti jsou nekonečné.
+Z důvodu jejich jednoduchosti jsou Webhooky již zveřejněny velkým počtem služeb, včetně [Dropboxu](http://dropbox.com/), [GitHubu](https://www.github.com/), [Bitbucket](https://bitbucket.org/), [MailChimp](http://www.mailchimp.com/), [PayPal](http://www.paypal.com/), [časové rezervy](http://www.slack.com), [prokládaných](http://www.stripe.com), [Trello](http://www.trello.com/)a mnoha dalších. Webhook může například značit, že se soubor změnil v [Dropboxu](http://dropbox.com/)nebo že se změnila Změna kódu na GitHubu, nebo když se v rámci služby [PayPal](http://www.paypal.com/)iniciovala platba nebo byla vytvořena karta v [Trello](http://www.trello.com/). Možnosti jsou nekonečné.
 
 Microsoft ASP.NET webhookům usnadňuje posílání i příjem webhooků jako součást vaší aplikace ASP.NET:
 
-* Na straně příjmu poskytuje společný model pro příjem a zpracování webhooků z libovolného počtu zprostředkovatelů webhooků. Vychází ze seznamu s podporou Dropboxu, [](http://dropbox.com/)GitHubu [](http://www.github.com/), [Bitbucket](https://bitbucket.org/), [MailChimp](http://www.mailchimp.com/), [PayPal](http://www.paypal.com/), [Pusher](http://www.pusher.com), [Salesforce](http://www.salesforce.com), [časové rezervy](http://www.slack.com), [Stripe](http://www.stripe.com), [Trello](http://www.trello.com/),[WordPress](http://www.wordpress.com) a [Zendesk](https://www.zendesk.com/) , ale můžete snadno přidat podporu.
+* Na straně příjmu poskytuje společný model pro příjem a zpracování webhooků z libovolného počtu zprostředkovatelů webhooků. Je součástí boxu podpora [Dropboxu](http://dropbox.com/), [GitHubu](https://www.github.com/), [Bitbucket](https://bitbucket.org/), [MailChimp](http://www.mailchimp.com/), [PayPal](http://www.paypal.com/), [Pusher](http://www.pusher.com), [Salesforce](http://www.salesforce.com), [Časová rezerva](http://www.slack.com), [Stripe](http://www.stripe.com), [Trello](http://www.trello.com/),[WordPress](http://www.wordpress.com) a [Zendesk](https://www.zendesk.com/) , ale můžete snadno přidat podporu pro další.
 
 * Na straně odeslání poskytuje podporu pro správu a ukládání předplatných a také pro odesílání oznámení o událostech do správné sady předplatitelů. To vám umožní definovat vlastní sadu událostí, které se předplatitelům můžou přihlásit k odběru a upozorňovat na ně, když k nim dojde.
 
@@ -33,7 +33,7 @@ Cílení kódu ASP.NET webové rozhraní API 2 a ASP.NET MVC 5 a je k dispozici 
 
 Webhooky je vzor, který znamená, že se liší v tom, jak se používá ze služby k provozu, ale základní nápad je stejný. Webhooky si můžete představit jako jednoduchý model Pub/sub, kde se uživatel může přihlásit k odběru událostí jinde. Oznámení událostí se šíří jako požadavky HTTP POST obsahující informace o samotné události.
 
-Požadavek HTTP POST obvykle obsahuje objekt JSON nebo data formuláře HTML určená odesílatelem Webhooku, včetně informací o události, která způsobuje, že se Webhook spustí. Například text požadavku POST Webhooku z GitHubu [](http://www.github.com/) vypadá jako v důsledku otevření nového problému v konkrétním úložišti:
+Požadavek HTTP POST obvykle obsahuje objekt JSON nebo data formuláře HTML určená odesílatelem Webhooku, včetně informací o události, která způsobuje, že se Webhook spustí. Například text požadavku POST Webhooku z [GitHubu](https://www.github.com/) vypadá jako v důsledku otevření nového problému v konkrétním úložišti:
 
 ```json
 {
@@ -61,7 +61,7 @@ Požadavek HTTP POST obvykle obsahuje objekt JSON nebo data formuláře HTML ur�
 }
 ```
 
-Chcete-li zajistit, aby Webhook byl skutečně od zamýšleného odesílatele, je žádost POST zabezpečena způsobem a poté ověřena příjemcem. Například Webhooky [GitHubu](https://developer.github.com/webhooks/) zahrnují hlavičku HTTP *X-hub-Signature* s hodnotou hash textu žádosti, která je kontrolována implementací příjemce, takže se o ně nemusíte starat.
+Chcete-li zajistit, aby Webhook byl skutečně od zamýšleného odesílatele, je žádost POST zabezpečena způsobem a poté ověřena příjemcem. Například [Webhooky GitHubu](https://developer.github.com/webhooks/) zahrnují hlavičku HTTP *X-hub-Signature* s hodnotou hash textu žádosti, která je kontrolována implementací příjemce, takže se o ně nemusíte starat.
 
 Tok Webhooku se obecně podobá tomuto:
 

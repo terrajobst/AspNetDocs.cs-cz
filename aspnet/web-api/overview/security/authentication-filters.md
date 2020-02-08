@@ -8,12 +8,12 @@ ms.date: 09/25/2014
 ms.assetid: b9882e53-b3ca-4def-89b0-322846973ccb
 msc.legacyurl: /web-api/overview/security/authentication-filters
 msc.type: authoredcontent
-ms.openlocfilehash: b6815baf05303d5f47a14ee5fe0fdfc2836c1868
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.openlocfilehash: 2ef9e62a6c634237e920b6d7aba2127b835f959d
+ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519372"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77075070"
 ---
 # <a name="authentication-filters-in-aspnet-web-api-2"></a>Filtry ověřování v ASP.NET webovém rozhraní API 2
 
@@ -23,7 +23,7 @@ o [Jan Wasson](https://github.com/MikeWasson)
 
 Filtry ověřování umožňují nastavit schéma ověřování pro jednotlivé řadiče nebo akce. V takovém případě vaše aplikace může podporovat různé mechanismy ověřování pro různé prostředky HTTP.
 
-V tomto článku se zobrazí kód ze vzorového [ověřování Basic](http://github.com/aspnet/samples/tree/master/samples/aspnet/WebApi/BasicAuthentication) na [https://github.com/aspnet/samples](https://github.com/aspnet/samples). Ukázka zobrazuje filtr ověřování, který implementuje schéma ověření přístupu Basic protokolu HTTP (RFC 2617). Filtr je implementován ve třídě s názvem `IdentityBasicAuthenticationAttribute`. Nezobrazuje se v ukázce celý kód, jenom části, které ukazují, jak napsat filtr ověřování.
+V tomto článku se zobrazí kód ze vzorového [ověřování Basic](https://github.com/aspnet/samples/tree/master/samples/aspnet/WebApi/BasicAuthentication) na [https://github.com/aspnet/samples](https://github.com/aspnet/samples). Ukázka zobrazuje filtr ověřování, který implementuje schéma ověření přístupu Basic protokolu HTTP (RFC 2617). Filtr je implementován ve třídě s názvem `IdentityBasicAuthenticationAttribute`. Nezobrazuje se v ukázce celý kód, jenom části, které ukazují, jak napsat filtr ověřování.
 
 ## <a name="setting-an-authentication-filter"></a>Nastavení filtru ověřování
 
@@ -108,7 +108,7 @@ Tady je obecná osnova pro implementaci **AuthenticateAsync**.
 5. Pokud jsou přihlašovací údaje chybné, vraťte 401 nastavením `context.ErrorResult`.
 6. Pokud jsou přihlašovací údaje platné, vytvořte **IPrincipal** a nastavte `context.Principal`.
 
-Následující kód ukazuje metodu **AuthenticateAsync** ze vzorového [ověřování Basic](http://github.com/aspnet/samples/tree/master/samples/aspnet/WebApi/BasicAuthentication) . Komentáře označují jednotlivé kroky. Kód ukazuje několik typů chyb: autorizační hlavička bez přihlašovacích údajů, poškozené přihlašovací údaje a chybné uživatelské jméno nebo heslo.
+Následující kód ukazuje metodu **AuthenticateAsync** ze vzorového [ověřování Basic](https://github.com/aspnet/samples/tree/master/samples/aspnet/WebApi/BasicAuthentication) . Komentáře označují jednotlivé kroky. Kód ukazuje několik typů chyb: autorizační hlavička bez přihlašovacích údajů, poškozené přihlašovací údaje a chybné uživatelské jméno nebo heslo.
 
 [!code-csharp[Main](authentication-filters/samples/sample5.cs)]
 
@@ -135,7 +135,7 @@ Je důležité pochopit, že **ChallengeAsync** se volá *před* vytvořením od
 Vyvolám původní **IHttpActionResult** *vnitřní výsledek*a nový **IHttpActionResult** *vnějšího výsledku*. Vnější výsledek musí splňovat následující:
 
 1. Vyvolat vnitřní výsledek pro vytvoření odpovědi HTTP.
-2. Podívejte se, jaká bude odpověď.
+2. Projděte si odpověď.
 3. V případě potřeby přidejte do odpovědi výzvu pro ověřování.
 
 Následující příklad je pořízen ze vzorového ověřování Basic. Definuje **IHttpActionResult** pro vnější výsledek.
@@ -162,6 +162,6 @@ Pokud chcete zakázat ověřování na úrovni hostitele uvnitř kanálu webové
 
 [!code-csharp[Main](authentication-filters/samples/sample10.cs)]
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 [Filtry zabezpečení webového rozhraní API ASP.NET](https://msdn.microsoft.com/magazine/dn781361.aspx) (MSDN Magazine)
