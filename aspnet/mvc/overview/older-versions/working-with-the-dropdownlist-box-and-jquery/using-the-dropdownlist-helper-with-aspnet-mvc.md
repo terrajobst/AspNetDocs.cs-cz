@@ -1,6 +1,6 @@
 ---
 uid: mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
-title: Použití pomocné rutiny DropDownList s ASP.NET MVC | Dokumentace Microsoftu
+title: Použití pomocné rutiny DropDownList s ASP.NET MVC | Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: riande
@@ -8,211 +8,211 @@ ms.date: 01/12/2012
 ms.assetid: 53767e05-c8ab-42e1-a94b-22d906195200
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 2a4d991205351531129480bee221651021483967
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 0ded9fea8a77824645e87c37cdb3376e618a2f25
+ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396249"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77075122"
 ---
 # <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>Použití pomocné rutiny DropDownList s ASP.NET MVC
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
-V tomto kurzu se seznámíte se základy práce se [DropDownList](https://msdn.microsoft.com/library/dd492948.aspx) pomocné rutiny a [ListBox](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.listbox.aspx) pomocné rutiny v aplikaci MVC rozhraní ASP.NET Web. Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze sady Microsoft Visual Studio chcete postupovat podle tohoto kurzu můžete použít. Než začnete, ujistěte se, že jste nainstalovali požadavky uvedené níže. Kliknutím na následující odkaz můžete nainstalovat všechny z nich: [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Alternativně můžete nainstalovat jednotlivě požadavky pomocí následujících odkazů:
+V tomto kurzu se seznámíte se základy práce s pomocníkem [DropDownList](https://msdn.microsoft.com/library/dd492948.aspx) a doplňkem [ListBox](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.listbox.aspx) ve webové aplikaci ASP.NET MVC. Pomocí sady Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze Microsoft Visual Studio, můžete postupovat podle tohoto kurzu. Než začnete, ujistěte se, že jste nainstalovali požadavky uvedené níže. Všechny z nich můžete nainstalovat kliknutím na následující odkaz: instalace [webové platformy](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Případně můžete požadavky jednotlivě nainstalovat pomocí následujících odkazů:
 
-- [Visual Studio Web Developer Express SP1 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack) <a id="post"></a>
-- [ASP.NET MVC 3 Tools Update](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
-- [SQL Server Compact 4.0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(podpora modulu runtime a nástroje)
+- [Požadavky sady Visual Studio Web Developer Express SP1](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack) <a id="post"></a>
+- [Aktualizace nástrojů MVC 3 pro ASP.NET](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
+- [SQL Server Compact 4,0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(podpora modulu runtime + nástroje)
 
-Pokud používáte Visual Studio 2010 namísto Visual Web Developer 2010, nainstalujte příslušné požadované součásti po kliknutí na následující odkaz: [Visual Studio 2010 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack). V tomto kurzu se předpokládá dokončení [Úvod do ASP.NET MVC](../getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) kurzu nebo[ASP.NET MVC Music Store](../mvc-music-store/mvc-music-store-part-1.md) kurzu nebo jste obeznámeni s vývoj pro ASP.NET MVC. Tento kurz pracuje s upravenou projekt z [ASP.NET MVC Music Store](../mvc-music-store/mvc-music-store-part-1.md) kurzu. Můžete si stáhnout počáteční projekt s následujícím odkazem [stáhnout verzi C#](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15829).
+Pokud používáte sadu Visual Studio 2010 místo sady Visual Web Developer 2010, nainstalujte požadavky kliknutím na následující odkaz: sady [Visual studio 2010 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack). V tomto kurzu se předpokládá, že jste dokončili kurz [Úvod do ASP.NET MVC](../getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo kurz pro[hudební úložiště ASP.NET MVC](../mvc-music-store/mvc-music-store-part-1.md) nebo jste obeznámeni s vývojem ASP.NET MVC. Tento kurz začíná upraveným projektem z kurzu [ASP.NET MVC pro hudební úložiště](../mvc-music-store/mvc-music-store-part-1.md) . Spouštěcí projekt si můžete stáhnout pomocí následujícího odkazu [Stáhnout C# verzi](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15829).
 
-Projekt aplikace Visual Web Developer se dokončení kurzu zdrojový kód C# je k dispozici v tomto tématu. [Stáhněte si](https://code.msdn.microsoft.com/Using-the-DropDownList-67f9367d).
+Projekt Visual Web Developer se zdrojovým kódem dokončeného kurzu C# je k dispozici pro toto téma. [Stáhnout](https://code.msdn.microsoft.com/Using-the-DropDownList-67f9367d).
 
-### <a name="what-youll-build"></a>Co budete vytvářet
+### <a name="what-youll-build"></a>Co sestavíte
 
-Vytvoříte metody akce a zobrazení, které používají [DropDownList](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.dropdownlist.aspx) pomocné rutiny k výběru kategorie. Budete taky používat **jQuery** Přidat dialog kategorie vložit, který slouží k tomu je potřeba novou kategorii (jako je genre nebo interpreta). Níže je snímek obrazovky zobrazení vytvořit odkazy na přidání nového žánr a přidejte novou interpreta.
+Vytvoříte metody akcí a zobrazení, která používají pomocníka [DropDownList](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.dropdownlist.aspx) k výběru kategorie. K přidání dialogového okna Vložit kategorii, který se dá použít, když je potřeba nová kategorie (třeba Žánr nebo umělec), můžete také použít **jQuery** . Níže je snímek obrazovky pro zobrazení pro vytváření, ve kterém se zobrazují odkazy na přidání nového žánru a přidání nového interpreta.
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image1.png)
 
-### <a name="skills-youll-learn"></a>Dovednosti, které se dozvíte
+### <a name="skills-youll-learn"></a>Dovednosti, se kterými se naučíte
 
-Zde je, co se dozvíte:
+Tady je seznam toho, co se naučíte:
 
-- Jak používat [DropDownList](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.dropdownlist.aspx) pomocná rutina pro výběr data v kategoriích.
-- Postup přidání **jQuery** dialogové okno pro přidání nové kategorie.
+- Jak použít pomocníka [DropDownList](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.dropdownlist.aspx) k výběru dat kategorie.
+- Postup přidání nového kategorie do dialogového okna **jQuery**
 
 ### <a name="getting-started"></a>Začínáme
 
-Začněte tím, že stahování počáteční projekt s následujícím odkazem [Stáhnout](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15829). V Průzkumníku Windows, klikněte pravým tlačítkem na *DDL\_Starter.zip* a vyberte možnost Vlastnosti. V **DDL\_Starter.zip vlastnosti** dialogové okno, vyberte zrušit blokování.
+Začněte stažením počátečního projektu pomocí následujícího odkazu [Stáhnout](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15829). V Průzkumníku Windows klikněte pravým tlačítkem na soubor *DDL\_Starter. zip* a vyberte vlastnosti. V dialogovém okně **vlastnosti\_Starter. zip pro DDL** vyberte odblokovat.
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image2.png)
 
-Klikněte pravým tlačítkem myši DDL\_Starter.zip soubor a vyberte **Extrahovat vše** dekomprimovat soubor. Otevřít *StartMusicStore.sln* soubor s aplikaci Visual Web Developer 2010 Express ("Visual Web Developer" nebo "VWD" zkráceně) nebo Visual Studio 2010.
+Klikněte pravým tlačítkem na soubor DDL\_Starter. zip a vyberte rozbalit **vše pro rozbalení** souboru. Otevřete soubor *StartMusicStore. sln* pomocí aplikace Visual web Developer 2010 Express ("Visual Web Developer" nebo "souboru vwd" pro Short) nebo Visual Studio 2010.
 
-Stisknutím kláves CTRL + F5 spusťte aplikaci a klikněte na tlačítko **Test** odkaz.
+Stisknutím kombinace kláves CTRL + F5 spusťte aplikaci a klikněte na odkaz **test** .
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image3.png)
 
-Vyberte **vyberte kategorii Movie (jednoduchý)** odkaz. Zobrazí se seznamu vyberte typ video s komedie vybrané hodnoty.
+Vyberte odkaz **Vybrat kategorii videa (jednoduché)** . Zobrazí se seznam typ filmu, který je vybrán, přičemž komedie vybraná hodnota.
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image4.png)
 
-Klikněte pravým tlačítkem v prohlížeči a vyberte zobrazení zdroje. Kód HTML stránky se zobrazí. Následující kód ukazuje kód HTML pro select element.
+Klikněte pravým tlačítkem na prohlížeč a vyberte Zobrazit zdroj. Zobrazí se HTML pro stránku. Následující kód ukazuje HTML pro element SELECT.
 
 [!code-html[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample1.html)]
 
-Uvidíte, že má každá položka v seznamu vyberte hodnotu (0 pro akci, 1 pro Drama, komedie 2 a 3 pro Sci-fi) a zobrazovaný název (akce, Drama, komedie a Sci-fi). Výše uvedený kód je standard HTML pro vybraného seznamu.
+Vidíte, že každá položka v seznamu Select má hodnotu (0 pro akci, 1 pro drama, 2 pro komedie a 3 pro vědu fiktivní) a zobrazované jméno (akce, drama, komedie a vědecký fiktivní). Výše uvedený kód je standardní HTML pro výběrový seznam.
 
-Změňte seznamu příkazu select na Drama a klikněte **odeslat** tlačítko. Adresa URL v prohlížeči je `http://localhost:2468/Home/CategoryChosen?MovieType=1` a na stránce se zobrazí **vyberete: 1**.
+Změňte seznam Select na drama a stiskněte tlačítko **Odeslat** . Adresa URL v prohlížeči je `http://localhost:2468/Home/CategoryChosen?MovieType=1` a zobrazí se stránka **, kterou jste vybrali: 1**.
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image5.png)
 
-Otevřít *Controllers\HomeController.cs* souboru a zkoumat `SelectCategory` metody.
+Otevřete soubor *souboru controllers\homecontroller.cs* a prověřte metodu `SelectCategory`.
 
 [!code-csharp[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample2.cs)]
 
-[DropDownList](https://msdn.microsoft.com/library/dd492738.aspx) vyžaduje pomocné rutiny použitý k vytvoření seznamu výběru HTML **IEnumerable&lt;SelectListItem &gt;** , explicitně nebo implicitně. To znamená, můžete předat **IEnumerable&lt;SelectListItem &gt;**  explicitně na [DropDownList](https://msdn.microsoft.com/library/dd492738.aspx) pomocné rutiny nebo můžete přidat **IEnumerable&lt; SelectListItem &gt;**  k [objekt ViewBag](https://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx) použití stejného názvu **SelectListItem** jako vlastnost modelu. Při předávání v **SelectListItem** implicitně a explicitně je popsané v další části kurzu. Výše uvedený kód ukazuje nejjednodušší možný způsob, jak vytvořit **IEnumerable&lt;SelectListItem &gt;**  a jeho naplnění text a hodnoty. Poznámka: `Comedy` [SelectListItem](https://msdn.microsoft.com/library/system.web.mvc.selectlistitem.aspx) má [vybrané](https://msdn.microsoft.com/library/system.web.mvc.selectlistitem.selected.aspx) vlastnost nastavena na hodnotu **true;** to způsobí, že vykreslený vyberte seznam, aby zobrazoval **komedie** jako vybranou položku v seznamu.
+Pomocný objekt [DropDownList](https://msdn.microsoft.com/library/dd492738.aspx) použitý k vytvoření seznamu SELECT jazyka HTML vyžaduje rozhraní **IEnumerable&lt;SelectListItem &gt;** , buď explicitně, nebo implicitně. To znamená, že můžete předat rozhraní **ienumerable&lt;SelectListItem &gt;** explicitně do pomocníka [DropDownList](https://msdn.microsoft.com/library/dd492738.aspx) nebo můžete přidat **&gt;IEnumerable&lt;SelectListItem** do [ViewBag](https://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx) pomocí stejného názvu jako vlastnost modelu **SelectListItem** . Implicitně se předává do **SelectListItem** a výslovně se zabývá v další části tohoto kurzu. Výše uvedený kód ukazuje nejjednodušší možný způsob, jak vytvořit rozhraní **IEnumerable&lt;SelectListItem &gt;** a naplnit ho textem a hodnotami. Všimněte si, že `Comedy`[SelectListItem](https://msdn.microsoft.com/library/system.web.mvc.selectlistitem.aspx) má [vybranou](https://msdn.microsoft.com/library/system.web.mvc.selectlistitem.selected.aspx) vlastnost nastavenou na **hodnotu true** . tím dojde k tomu, že vykreslený seznam výběru zobrazí **komedie** jako vybranou položku v seznamu.
 
-**IEnumerable&lt;SelectListItem &gt;**  vytvořené výše se přidá do [objekt ViewBag](https://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx) s názvem MovieType. To je, jak můžeme předávat **IEnumerable&lt;SelectListItem &gt;**  implicitně položky [DropDownList](https://msdn.microsoft.com/library/dd492738.aspx) pomocné rutiny, které je uvedeno níže.
+**&gt;typu IEnumerable&lt;SelectListItem** , který jste vytvořili výše, se přidá do [ViewBag](https://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx) s názvem MovieType. To je způsob, jak předat rozhraní **IEnumerable&lt;SelectListItem &gt;** implicitně na pomocníka [DropDownList](https://msdn.microsoft.com/library/dd492738.aspx) , jak je uvedeno níže.
 
-Otevřít *Views\Home\SelectCategory.cshtml* souboru a prozkoumání značky.
+Otevřete soubor *Views\Home\SelectCategory.cshtml* a Projděte si označení.
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample3.cshtml)]
 
-Na třetím řádku nastavíme na zobrazení/Shared rozložení/\_jednoduché\_Layout.cshtml, což je zjednodušenou verzi souboru standardní rozložení. Této funkce můžete zachovat zobrazení jsme vykreslení HTML jednoduché.
+Na třetím řádku nastavíme rozložení na zobrazení/Shared/\_Simple\_layout. cshtml, což je zjednodušená verze standardního souboru rozložení. Provedeme to tak, aby byl kód HTML snadno zobrazený a vykreslený.
 
-V této ukázce jsme nejsou změnu stavu aplikace, takže jsme se odeslat data s využitím **HTTP GET**, nikoli **HTTP POST**. V části W3C [rychlé kontrolní seznam pro výběr HTTP GET nebo POST](http://www.w3.org/2001/tag/doc/whenToUseGet.html#checklist). Protože jsme se mění aplikace a publikování formuláře, používáme [Html.BeginForm](https://msdn.microsoft.com/library/dd460344.aspx) přetížení, která umožňuje zadat metodu akce, kontroleru a formulář – metoda (**HTTP POST** nebo **HTTP GET**). Obvykle obsahují zobrazení [Html.BeginForm](https://msdn.microsoft.com/library/dd505244.aspx) přetížení, které nepřijímá žádné parametry. Žádná verze parametr, výchozí hodnota je odesílání dat formuláře POST verzi stejnou metodu akce a kontroler.
+V této ukázce neměníme stav aplikace, takže pošleme data pomocí **HTTP GET**, ne **http post**. [Výběr HTTP GET nebo post najdete v části rychlý kontrolní seznam pro](http://www.w3.org/2001/tag/doc/whenToUseGet.html#checklist)konsorcium W3C. Vzhledem k tomu, že aplikaci neměníme a publikujete formulář, používáme přetížení [HTML. BeginForm](https://msdn.microsoft.com/library/dd460344.aspx) , které nám umožňuje zadat metodu akce, řadič a formu (**http post** nebo **HTTP GET**). Typicky zobrazení obsahují přetížení [HTML. BeginForm](https://msdn.microsoft.com/library/dd505244.aspx) , které nepřijímá žádné parametry. Žádná verze parametru nepoužívá výchozí hodnotu pro publikování dat formuláře do verze příspěvku stejné metody akce a kontroleru.
 
 Následující řádek
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample4.cshtml)]
 
-předává řetězcový argument pro **DropDownList** pomocné rutiny. Tento řetězec "MovieType" v našem příkladu provede dvě věci:
+předá do pomocné rutiny **DropDownList** argument řetězce. Tento řetězec "MovieType" v našem příkladu provádí dvě věci:
 
-- Poskytuje klíč pro **DropDownList** pomocná rutina pro vyhledání **IEnumerable&lt;SelectListItem &gt;**  v **objekt ViewBag**.
-- To je vázán na data MovieType element formuláře. Pokud je metoda odeslat **HTTP GET**, `MovieType` bude řetězec dotazu. Pokud je metoda odeslat **HTTP POST**, `MovieType` bude přidána v textu zprávy. Následující obrázek ukazuje řetězec dotazu s hodnotou 1.
+- Poskytuje klíč pro pomocníka **DropDownList** k vyhledání **IEnumerable&lt;SelectListItem &gt;** v **ViewBag**.
+- Je vázán na data s prvkem formuláře MovieType. Pokud je metoda odeslání **HTTP GET**, `MovieType` bude řetězec dotazu. Pokud je metoda odeslání **http post**, `MovieType` se přidá do textu zprávy. Následující obrázek znázorňuje řetězec dotazu s hodnotou 1.
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image6.png)
 
-Následující kód ukazuje `CategoryChosen` metoda byla odeslána formuláře.
+Následující kód ukazuje metodu `CategoryChosen`, do které byl formulář odeslán.
 
 [!code-csharp[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample5.cs)]
 
-Přejděte zpět na stránku test a vyberte **HTML SelectList** odkaz. HTML stránka vykresluje select element podobný jednoduchá zkušební stránku ASP.NET MVC. Klikněte pravým tlačítkem myši okno prohlížeče a vyberte **zobrazit zdroj**. Kód HTML pro seznamu příkazu select je v podstatě totožné. Zkušební kód HTML stránky, funguje jako metody akce ASP.NET MVC a zobrazení, které jsme testovali dříve.
+Přejděte zpět na stránku test a vyberte odkaz **HTML SelectList** . Stránka HTML vykresluje element SELECT podobný ASP.NET stránce testu jednoduché sady MVC. Klikněte pravým tlačítkem na okno prohlížeče a vyberte **Zobrazit zdroj**. Označení HTML pro seznam Select je v podstatě identické. Testování stránky HTML funguje jako metoda akce ASP.NET MVC a zobrazení, které jsme dříve otestovali.
 
-### <a name="improving-the-movie-select-list-with-enums"></a>Vylepšení seznamu vyberte video s výčty
+### <a name="improving-the-movie-select-list-with-enums"></a>Zlepšení seznamu pro výběr videa s výčty
 
-Pokud kategorie ve vaší aplikaci jsou pevně a nezmění, můžete využít výhod výčty, aby váš kód robustnější a jednodušší pro rozšíření. Když přidáte novou kategorii, správnou kategorii hodnota je generována. Kopírování a vkládání chyb se vyhnete, když přidat novou kategorii, ale nezapomeňte aktualizovat hodnotu kategorie.
+Pokud jsou kategorie ve vaší aplikaci pevně dané a nemění se, můžete využít výčty, aby byl váš kód robustnější a jednodušší ho lépe roztáhnout. Když přidáte novou kategorii, vygeneruje se správná hodnota kategorie. Vyloučí chyby kopírování a vkládání při přidání nové kategorie, ale nezapomeňte aktualizovat hodnotu kategorie.
 
-Otevřít *Controllers\HomeController.cs* soubor a zkontrolujte následující kód:
+Otevřete soubor *souboru controllers\homecontroller.cs* a Projděte si následující kód:
 
 [!code-csharp[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample6.cs)]
 
-[Výčtu](https://msdn.microsoft.com/library/sbbt4032(VS.80).aspx) `eMovieCategories` zachycuje film čtyři typy. `SetViewBagMovieType` Metoda vytvoří **IEnumerable&lt;SelectListItem &gt;**  z `eMovieCategories` **výčtu**a nastaví `Selected` vlastnost z `selectedMovie` parametru. `SelectCategoryEnum` Metodu akce pomocí stejného zobrazení jako `SelectCategory` metody akce.
+[Výčet](https://msdn.microsoft.com/library/sbbt4032(VS.80).aspx) `eMovieCategories` zachycuje čtyři typy filmů. Metoda `SetViewBagMovieType` vytvoří rozhraní **IEnumerable&lt;SelectListItem &gt;** z **výčtu**`eMovieCategories`a nastaví vlastnost `Selected` z parametru `selectedMovie`. Metoda `SelectCategoryEnum` akce používá stejné zobrazení jako metoda `SelectCategory` akce.
 
-Přejděte na stránku Test a klikněte na `Select Movie Category (Enum)` odkaz. Tentokrát místo hodnotu (číslo) se zobrazí, řetězec představující výčet se zobrazí.
+Přejděte na stránku test a klikněte na odkaz `Select Movie Category (Enum)`. Tentokrát místo hodnoty (číslo), který představuje výčet, se zobrazí řetězec představující výčet.
 
 ### <a name="posting-enum-values"></a>Účtování hodnot výčtu
 
-Formuláře HTML se obvykle používají k odesílání dat na serveru. Následující kód ukazuje `HTTP GET` a `HTTP POST` verze `SelectCategoryEnumPost` metody.
+Formuláře HTML se obvykle používají k odesílání dat na server. Následující kód ukazuje `HTTP GET` a `HTTP POST` verze metody `SelectCategoryEnumPost`.
 
 [!code-csharp[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample7.cs)]
 
-Předáním `eMovieCategories` výčet `POST` metody jsme extrahovat hodnotu výčtu a řetězec výčtu. Spusťte ukázku a přejděte na stránku testu. Klikněte na `Select Movie Category(Enum Post)` odkaz. Vyberte typ filmů a pak klikněte na tlačítko Odeslat. Zobrazení se zobrazí hodnota a název filmu typu.
+Předáním `eMovieCategories` výčtu do metody `POST` můžeme extrahovat jak hodnotu výčtu, tak i řetězec Enum. Spusťte ukázku a přejděte na stránku test. Klikněte na odkaz `Select Movie Category(Enum Post)`. Vyberte typ filmu a potom stiskněte tlačítko Odeslat. Zobrazení zobrazuje jak hodnotu, tak název typu videa.
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image7.png)
 
-### <a name="creating-a-multiple-section-select-element"></a>Vytvoření více vybrat Element části
+### <a name="creating-a-multiple-section-select-element"></a>Vytvoření více oddílů výběr elementu
 
-[ListBox](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.listbox.aspx) pomocné rutiny HTML, vykreslení HTML `<select>` křížkem `multiple` atribut, který umožňuje uživatelům provést více výběrů. Přejděte na odkaz Test a pak vyberte **více vyberte zemi** odkaz. Vygenerované uživatelské rozhraní vám umožní vybrat více zemí. Na následujícím obrázku jsou vybrané Kanada a Azure China.
+Pomocník [HTML v seznamu vykresluje](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.listbox.aspx) prvek HTML `<select>` s atributem `multiple`, který umožňuje uživatelům provádět více výběrů. Přejděte na odkaz test a pak vyberte odkaz **vybrat zemi** . Vykreslené uživatelské rozhraní umožňuje vybrat více zemí. Na obrázku níže je vybrána možnost Kanada a Čína.
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image8.png)
 
 ### <a name="examining-the-multiselectcountry-code"></a>Zkoumání kódu MultiSelectCountry
 
-Zkontrolujte následující kód z *Controllers\HomeController.cs* souboru.
+Projděte si následující kód ze souboru *souboru controllers\homecontroller.cs* .
 
 [!code-csharp[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample8.cs)]
 
-`GetCountries` Metoda vytvoří seznam zemí a předává jej do `MultiSelectList` konstruktoru. `MultiSelectList` Přetížení konstruktoru používané `GetCountries` výše uvedené metody přebírá čtyři parametry:
+Metoda `GetCountries` vytvoří seznam zemí a pak ji předává konstruktoru `MultiSelectList`. Přetížení konstruktoru `MultiSelectList` použité v metodě `GetCountries` výše přijímá čtyři parametry:
 
 [!code-csharp[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample9.cs)]
 
-1. *položky*: [IEnumerable](https://msdn.microsoft.com/library/system.collections.ienumerable.aspx) obsahující položky v seznamu. V příkladu výše, seznam zemí.
-2. *dataValueField*: Název vlastnosti v **IEnumerable** seznam, který obsahuje hodnotu. V příkladu výše `ID` vlastnost.
-3. *dataTextField*: Název vlastnosti v **IEnumerable** seznam, který obsahuje informace k zobrazení. V příkladu výše `name` vlastnost.
-4. *selectedValues*: Seznam vybraných hodnot.
+1. *Items*: rozhraní [IEnumerable](https://msdn.microsoft.com/library/system.collections.ienumerable.aspx) obsahující položky v seznamu. V předchozím příkladu se seznam zemí.
+2. *dataValueField*: název vlastnosti v seznamu **IEnumerable** , který obsahuje hodnotu. V předchozím příkladu je vlastnost `ID`.
+3. *dataTextField*: název vlastnosti v seznamu **IEnumerable** obsahující informace, které se mají zobrazit. V předchozím příkladu je vlastnost `name`.
+4. *selectedValues*: seznam vybraných hodnot.
 
-V příkladu výše `MultiSelectCountry` metoda předává `null` hodnotu pro vybrané země, tak žádné země jsou vybrány, pokud se zobrazuje uživatelské rozhraní. Následující kód ukazuje kód Razor použitý k vykreslení `MultiSelectCountry` zobrazení.
+V předchozím příkladu metoda `MultiSelectCountry` předává `null` hodnotu pro vybrané země, takže při zobrazení uživatelského rozhraní nejsou vybrány žádné země. Následující kód ukazuje značku Razor použitou k vykreslení zobrazení `MultiSelectCountry`.
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample10.cshtml)]
 
-Pomocné rutiny HTML [ListBox](https://msdn.microsoft.com/library/dd470200.aspx) metoda využité nad provést dva parametry, název vlastnosti, která má vazbu modelu a [MultiSelectList](https://msdn.microsoft.com/library/system.web.mvc.multiselectlist.aspx) obsahující vyberte možnosti a hodnoty. `ViewBag.YouSelected` Výše uvedený kód slouží k zobrazení hodnot země vybrané při odeslání formuláře. Prozkoumejte přetížení HTTP POST `MultiSelectCountry` metody.
+Výše použitá metoda [seznamu](https://msdn.microsoft.com/library/dd470200.aspx) POMOCNÍKa HTML přebírá dva parametry, název vlastnosti pro svázání modelů a [MultiSelectList](https://msdn.microsoft.com/library/system.web.mvc.multiselectlist.aspx) obsahující možnosti a hodnoty pro výběr. Výše uvedený kód `ViewBag.YouSelected` slouží k zobrazení hodnot zemí, které jste vybrali při odeslání formuláře. Projděte si přetížení HTTP POST metody `MultiSelectCountry`.
 
 [!code-csharp[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample11.cs)]
 
-`ViewBag.YouSelected` Dynamické vlastnosti obsahuje vybraných zemích, získat pro `Countries` položka v kolekci formuláře. V této verzi je předán metodě GetCountries seznam vybraných zemích, takže když `MultiSelectCountry` zobrazení, vybraných zemích, které jsou vybrány v uživatelském rozhraní.
+`ViewBag.YouSelected` dynamická vlastnost obsahuje vybrané země, které byly získány pro položku `Countries` v kolekci Form. V této verzi se metoda getzemích předává do seznamu vybraných zemí, takže když se zobrazí `MultiSelectCountry` zobrazení, vybrané země se vyberou v uživatelském rozhraní.
 
-### <a name="making-a-select-element-friendly-with-the-harvest-chosen-jquery-plugin"></a>Provádění vybrat Element popisný pomocí modulu plug-in jQuery Harvestu zvolené
+### <a name="making-a-select-element-friendly-with-the-harvest-chosen-jquery-plugin"></a>Vytvoření prvku výběru, který je popisný pro vybraný modul plug-in jQuery v rámci sklizně
 
-Sklizeň [zvolené](http://harvesthq.github.com/chosen/) modulu plug-in jQuery lze přidat do HTML &lt;vyberte&gt; – element pro vytvoření uživatele popisný uživatelského rozhraní. Následující obrázky ukazují sklizeň [zvolené](http://harvesthq.github.com/chosen/) modulu plug-in jQuery s `MultiSelectCountry` zobrazení.
+[Vybraný](https://harvesthq.github.com/chosen/) modul plug-in jQuery pro sklizeň se dá přidat do HTML &lt;vyberte&gt; element a vytvořte uživatelsky přívětivé uživatelské rozhraní. Následující obrázky znázorňují [vybraný](https://harvesthq.github.com/chosen/) modul plug-in jQuery pomocí zobrazení `MultiSelectCountry`.
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image9.png)
 
-V níže, dvě image **Kanada** zaškrtnuto.
+Na dvou obrázcích níže je vybrána možnost **Kanada** .
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image10.png)
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image11.png)
 
-Na obrázku výše je vybrán Kanada a obsahuje **x** můžete kliknout na odebrat výběr. Následující obrázek ukazuje Kanada, Číny, a Japonsko vybrali.
+Na obrázku výše je vybrána možnost Kanada a obsahuje znak **x** . Kliknutím můžete výběr odebrat. Následující obrázek ukazuje, že je vybraná možnost Kanada, Čína a Japonsko.
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image12.png)
 
-### <a name="hooking-up-the-harvest-chosen-jquery-plugin"></a>Zapojování Harvestu zvolené jQuery modulu plug-in
+### <a name="hooking-up-the-harvest-chosen-jquery-plugin"></a>Zapojování vybraného modulu plug-in jQuery vybrané sklizně
 
-V následující části se usnadňuje její sledování, pokud máte nějaké zkušenosti s jQuery. Pokud jste jQuery před nikdy nepoužívali, můžete zkusit najít v některém z následujících kurzů jQuery.
+V následující části je snazší postupovat, pokud máte zkušenosti s jQuery. Pokud jste ještě nikdy nepoužili jQuery, možná budete chtít vyzkoušet některý z následujících kurzů jQuery.
 
-- [Jak funguje jQuery](http://docs.jquery.com/Tutorials:How_jQuery_Works) podle [Resig Jan](http://ejohn.org/)
-- [Začínáme s jQuery](http://docs.jquery.com/Tutorials:Getting_Started_with_jQuery) podle [Jörn Zaefferer](http://bassistance.de/)
-- [Live příklady jQuery](http://codylindley.com/blogstuff/js/jquery/#) podle [zhruba Lindley](http://codylindley.com/)
+- [Jak funguje jQuery](http://docs.jquery.com/Tutorials:How_jQuery_Works) pomocí [Jan Resig](http://ejohn.org/)
+- [Začínáme pomocí jQuery](http://docs.jquery.com/Tutorials:Getting_Started_with_jQuery) pomocí [Jörn Zaefferer](http://bassistance.de/)
+- [Živé příklady jQuery](http://codylindley.com/blogstuff/js/jquery/#) podle [Cody Lindley](http://codylindley.com/)
 
-Zvolený modul plug-in je součástí starter a dokončené ukázkové projekty, které nejsou poskytnuty v tomto kurzu. Pro účely tohoto kurzu je pouze potřeba použít k připojení do uživatelského rozhraní jQuery. Použití modulu plug-in jQuery Harvestu zvolené v projektu aplikace ASP.NET MVC, musíte mít:
+Vybraný modul plug-in je zahrnutý v ukázkových projektech a dokončených vzorových projektech, které doprovázejí tento kurz. Pro tento kurz budete muset použít jQuery jenom k jeho zapojení do uživatelského rozhraní. Pokud chcete použít vybraný modul plug-in jQuery v ASP.NET MVC, musíte:
 
-1. Stáhněte si modul plug-in zvolené z [githubu](https://github.com/harvesthq/chosen/). Tento krok se provede za vás.
-2. Přidáte vybranou složku do projektu ASP.NET MVC. Přidáte prostředky z zvolený modul plug-in, které jste si stáhli v předchozím kroku, a na vybranou složku. Tento krok se provede za vás.
-3. Připojení zvolený modul plug-in, který **DropDownList** nebo **ListBox** pomocné rutiny HTML.
+1. Stáhněte si zvolený modul plug-in z [GitHubu](https://github.com/harvesthq/chosen/). Tento krok se vám udělal za vás.
+2. Přidejte zvolenou složku do projektu ASP.NET MVC. Přidejte prostředky z vybraného modulu plug-in, který jste stáhli v předchozím kroku, do zvolené složky. Tento krok se vám udělal za vás.
+3. Zapojte zvolený modul plug-in k Pomocníkovi HTML **DropDownList** nebo **ListBox** .
 
-### <a name="hooking-up-the-chosen-plugin-to-the-multiselectcountry-view"></a>Zapojování zvolený modul plug-in MultiSelectCountry zobrazení.
+### <a name="hooking-up-the-chosen-plugin-to-the-multiselectcountry-view"></a>Zapojování zvoleného modulu plug-in do zobrazení MultiSelectCountry
 
-Otevřít *Views\Home\MultiSelectCountry.cshtml* a přidejte `htmlAttributes` parametr `Html.ListBox`. Parametr přidáte obsahuje název třídy pro výběr seznamu (`@class = "chzn-select"`). Dokončený kód je zobrazena níže:
+Otevřete soubor *Views\Home\MultiSelectCountry.cshtml* a přidejte do `Html.ListBox`parametr `htmlAttributes`. Parametr, který přidáte, bude obsahovat název třídy pro seznam Select (`@class = "chzn-select"`). Dokončený kód je zobrazen níže:
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample12.cshtml)]
 
-Ve výše uvedeném kódu, přidáváme atributu HTML a hodnota atributu `class = "chzn-select"`. \@ Znak předchozí třídy nemá nic společného s zobrazovací modul Razor. `class` je [– klíčové slovo jazyka C#](https://msdn.microsoft.com/library/x53a06bb.aspx). Klíčová slova jazyka C# nelze použít jako identifikátory, pokud ovšem neobsahují \@ jako předponu. V příkladu výše `@class` je platný identifikátor, ale **třídy** není, protože **třídy** je klíčové slovo.
+Do výše uvedeného kódu přidáváme atribut HTML a hodnotu atributu `class = "chzn-select"`. \@ znak předchozí třídy nemá žádnou akci s modulem zobrazení Razor. `class` je [ C# klíčové slovo](https://msdn.microsoft.com/library/x53a06bb.aspx). C#Klíčová slova nelze použít jako identifikátory, pokud neobsahují \@ jako předponu. V předchozím příkladu je `@class` platný identifikátor, ale **Třída** není, protože **Třída** je klíčové slovo.
 
-Přidat odkazy *Chosen/chosen.jquery.js* a *Chosen/chosen.css* soubory. *Chosen/chosen.jquery.js* a implementuje funkčně modulu plug-in zvolená. *Chosen/chosen.css* soubor obsahuje stylu. Přidat tyto odkazy do dolní části *Views\Home\MultiSelectCountry.cshtml* souboru. Následující kód ukazuje, jak odkazovat na modul plug-in zvolená.
+Přidejte odkazy na *zvolený/zvolený jQuery. jQuery. js* a *zvolené nebo zvolené soubory. CSS* . *Zvolený/zvolený jQuery. jQuery. js* a implementuje funkci pro zvolený modul plug-in. *Zvolený nebo zvolený soubor. CSS* poskytuje styly. Přidejte tyto odkazy na konec souboru *Views\Home\MultiSelectCountry.cshtml* . Následující kód ukazuje, jak odkazovat na vybraný modul plug-in.
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample13.cshtml)]
 
-Aktivace modulu plug-in zvolené pomocí názvu třídy používané **Html.ListBox** kódu. V předchozím příkladu je název třídy `chzn-select`. Přidejte následující řádek do dolní části *Views\Home\MultiSelectCountry.cshtml* zobrazení souboru. Tento řádek aktivuje zvolený modul plug-in.
+Aktivujte zvolený modul plug-in pomocí názvu třídy používaného v kódu **HTML. ListBox** . V předchozím příkladu je název třídy `chzn-select`. Přidejte následující řádek do dolní části souboru zobrazení *Views\Home\MultiSelectCountry.cshtml* . Tento řádek aktivuje vybraný modul plug-in.
 
 [!code-html[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample14.html)]
 
-Následující řádek je syntaxe pro volání funkce připravené jQuery, který vybere modelu DOM element s názvem třídy `chzn-select`.
+Následující řádek je syntaxe, která volá funkci jQuery připravenou, která vybere prvek DOM s názvem třídy `chzn-select`.
 
 [!code-powershell[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample15.ps1)]
 
-Zabalená pak nastavte vrácené z volání nahoře použije vybranou metodu (`.chosen();`), který zavěšení do vybraného modulu plug-in.
+Zabalená sada vrácená výše uvedeným voláním pak použije zvolenou metodu (`.chosen();`), která zavolá vybraný modul plug-in.
 
-Následující kód ukazuje dokončenou *Views\Home\MultiSelectCountry.cshtml* zobrazení souboru.
+Následující kód ukazuje dokončený soubor zobrazení *Views\Home\MultiSelectCountry.cshtml* .
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample16.cshtml)]
 
-Spusťte aplikaci a přejděte `MultiSelectCountry` zobrazení. Vyzkoušejte přidávání a odstraňování zemích. K dispozici vzorku ke stažení obsahuje také `MultiCountryVM` metody a zobrazení, která implementuje funkce MultiSelectCountry pomocí zobrazení modelu místo **objekt ViewBag**.
+Spusťte aplikaci a přejděte do zobrazení `MultiSelectCountry`. Zkuste přidat a odstranit země. Ukázkové stažení obsahuje také metodu `MultiCountryVM` a zobrazení, které implementuje funkci MultiSelectCountry pomocí modelu zobrazení místo **ViewBag**.
 
-V další části uvidíte, jak funguje mechanismu generování uživatelského rozhraní ASP.NET MVC s **DropDownList** pomocné rutiny.
+V další části se dozvíte, jak mechanismus generování uživatelského rozhraní ASP.NET MVC funguje s pomocníkem **DropDownList** .
 
 > [!div class="step-by-step"]
 > [Next](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)
