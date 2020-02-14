@@ -5,16 +5,16 @@ description: Naučte se používat k SameSite souborů cookie v ASP.NET.
 ms.author: riande
 ms.date: 1/22/2019
 uid: samesite/system-web-samesite
-ms.openlocfilehash: c81ca38648609aa5347d2a8cc11889fc85d81711
-ms.sourcegitcommit: 4d439e01c82c7c95b19216fedaf5b1a11a1deb06
+ms.openlocfilehash: c262e300361f33621e8bd126a34b251c23f56e1a
+ms.sourcegitcommit: 6bd0d7581ec36dc32cb85d0d5fc0e51068dd4423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76826611"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77234759"
 ---
 # <a name="work-with-samesite-cookies-in-aspnet"></a>Práce s SameSite soubory cookie v ASP.NET
 
-Podle [Rick Anderson](https://twitter.com/RickAndMSFT)
+Autor: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 SameSite je Konceptový standard [IETF](https://ietf.org/about/) navržený tak, aby poskytoval určitou ochranu proti útokům prostřednictvím CSRF (pro falšování požadavků mezi lokalitami). Původně koncept v [2016](https://tools.ietf.org/html/draft-west-first-party-cookies-07)se aktualizoval koncept standardu v [2019](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00). Aktualizovaný Standard není zpětně kompatibilní s předchozím standardem, přičemž následující je největší znatelné rozdíly:
 
@@ -55,7 +55,7 @@ ASP.Net také pro tyto funkce vydává čtyři konkrétní soubory cookie vlastn
    <forms cookieSameSite="Lax" requireSSL="false" />
   </authentication>
   <sessionState cookieSameSite="Lax" /> <!-- No config attribute for Secure -->
-  <roleManager cookieRequiresSSL="false" /> <!-- No config attribute for SameSite -->
+  <roleManager cookieRequireSSL="false" /> <!-- No config attribute for SameSite -->
  <system.web>
 <configuration>
 ```  
@@ -66,7 +66,7 @@ ASP.Net také pro tyto funkce vydává čtyři konkrétní soubory cookie vlastn
 
 Podpora SameSite byla poprvé implementována v .NET 4.7.2 s využitím [konceptu standard 2016](https://tools.ietf.org/html/draft-west-first-party-cookies-07#section-4.1).
 
-19. listopadu 2019 aktualizace pro Windows aktualizované .NET 4.7.2 + od standardu 2016 až do standardu 2019. Další aktualizace jsou k disdobu pro jiné verze systému Windows. Další informace najdete v tématu <xref:samesite/kbs-samesite>.
+19. listopadu 2019 aktualizace pro Windows aktualizované .NET 4.7.2 + od standardu 2016 až do standardu 2019. Další aktualizace jsou k disdobu pro jiné verze systému Windows. Další informace naleznete v tématu <xref:samesite/kbs-samesite>.
 
  Koncept 2019 specifikace SameSite:
 
@@ -147,7 +147,7 @@ Příznaky SameSite jsou nastaveny na stránce `edge://flags/#same-site-by-defau
 
 K verzím elektronů patří starší verze Chromu. Například verze elektronicky používané týmy je chrom 66, který vykazuje starší chování. Je nutné provést vlastní testování kompatibility s verzí elektronů, kterou váš produkt používá. Viz [Podpora starších prohlížečů](#sob) v následující části.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Nadcházející změny souborů cookie SameSite v ASP.NET a ASP.NET Core](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 * [Chromový blog: vývojáři: Připravte se na nové SameSite = None; Nastavení zabezpečeného souboru cookie](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)
