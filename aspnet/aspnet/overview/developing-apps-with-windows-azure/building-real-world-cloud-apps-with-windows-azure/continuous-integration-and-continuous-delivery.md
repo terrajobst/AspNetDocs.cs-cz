@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: eaece9f5-f80c-428b-b771-5db66d275b7d
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
 msc.type: authoredcontent
-ms.openlocfilehash: 52c710053feca7872aa6fcc93c99bce90359f8fc
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: cf3c65ef95528173eed3fb08984035b2512861c4
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74585882"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457034"
 ---
 # <a name="continuous-integration-and-continuous-delivery-building-real-world-cloud-apps-with-azure"></a>Průběžná integrace a průběžné doručování (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -54,7 +54,7 @@ Další informace o funkcích průběžné integrace a doručování Azure DevOp
 
 Pokud hledáte správu projektů, týmovou spolupráci a řešení správy zdrojového kódu, podívejte se Azure DevOps Services. Zaregistrujte se na [Azure DevOps Services](https://dev.azure.com/).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 První tři vzory vývoje v cloudu byly o tom, jak implementovat recyklovatelné, spolehlivé a předvídatelné vývojové procesy s malým časem. V [další kapitole](web-development-best-practices.md) začneme pohlížet na struktury architektury a kódování.
 

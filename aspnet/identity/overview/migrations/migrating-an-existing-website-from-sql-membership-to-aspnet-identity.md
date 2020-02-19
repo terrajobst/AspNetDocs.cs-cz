@@ -9,16 +9,16 @@ ms.custom: seoapril2019
 ms.assetid: 220d3d75-16b2-4240-beae-a5b534f06419
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: eacfbb8a5b2d1aa3678892bc2077a56185fdebbc
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.openlocfilehash: 633229cc4311d151121bf6a91b9fa8aeecca1197
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519151"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77456150"
 ---
 # <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Migrace stávajícího webu z členství SQL na ASP.NET Identity
 
-[Rick Anderson]((https://twitter.com/RickAndMSFT)), [Suhas Joshi](https://github.com/suhasj)
+[Rick Anderson](https://twitter.com/RickAndMSFT), [Suhas Joshi](https://github.com/suhasj)
 
 > Tento kurz znázorňuje postup migrace stávající webové aplikace s daty uživatelů a rolí vytvořenými pomocí členství SQL do nového systému ASP.NET Identity. Tento přístup zahrnuje změnu existujícího schématu databáze na ten, který vyžaduje ASP.NET Identity a jeho zapojení do starých a nových tříd. Po přijetí tohoto přístupu se po migraci databáze budou moci budoucí aktualizace identity považovat za snadnou.
 
@@ -85,13 +85,13 @@ Aby ASP.NET Identity třídy fungovaly s daty stávajících uživatelů, musím
 
 | **IdentityUser** | **Typ** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
 | --- | --- | --- | --- | --- | --- |
-| Id | odkazy řetězců | Id | roleId | ProviderKey | Id |
-| Uživatelské jméno | odkazy řetězců | Name | UserId | UserId | ClaimType |
-| PasswordHash (Hodnota hash hesla) | odkazy řetězců |  |  | LoginProvider | ClaimValue |
-| SecurityStamp | odkazy řetězců |  |  |  | ID\_uživatele |
-| E-mail | odkazy řetězců |  |  |  |  |
+| ID | string | ID | roleId | ProviderKey | ID |
+| Uživatelské jméno | string | Název | UserId | UserId | ClaimType |
+| PasswordHash (Hodnota hash hesla) | string |  |  | LoginProvider | ClaimValue |
+| SecurityStamp | string |  |  |  | ID\_uživatele |
+| E-mail | string |  |  |  |  |
 | EmailConfirmed | bool |  |  |  |  |
-| PhoneNumber | odkazy řetězců |  |  |  |  |
+| PhoneNumber | string |  |  |  |  |
 | PhoneNumberConfirmed | bool |  |  |  |  |
 | LockoutEnabled | bool |  |  |  |  |
 | LockoutEndDate | Datum a čas |  |  |  |  |
@@ -99,13 +99,13 @@ Aby ASP.NET Identity třídy fungovaly s daty stávajících uživatelů, musím
 
 Pro každý z těchto modelů musíme mít tabulky, které odpovídají vlastnostem. Mapování mezi třídami a tabulkami je definováno v metodě `OnModelCreating` `IdentityDBContext`. To se označuje jako metoda konfigurace rozhraní Fluent API a další informace najdete [tady](https://msdn.microsoft.com/data/jj591617.aspx). Konfigurace pro třídy je uvedená níže.
 
-| **Třída** | **Tabulka** | **Primární klíč** | **Cizí klíč** |
+| **Deník** | **Tabulka** | **Primární klíč** | **Cizí klíč** |
 | --- | --- | --- | --- |
-| IdentityUser | AspnetUsers | Id |  |
-| IdentityRole | AspnetRoles | Id |  |
+| IdentityUser | AspnetUsers | ID |  |
+| IdentityRole | AspnetRoles | ID |  |
 | IdentityUserRole | AspnetUserRole | UserId + RoleId | User\_ID-&gt;AspnetUsers RoleId-&gt;AspnetRoles |
 | IdentityUserLogin | AspnetUserLogins | ProviderKey + UserId + LoginProvider | UserId-&gt;AspnetUsers |
-| IdentityUserClaim | AspnetUserClaims | Id | User\_Id-&gt;AspnetUsers |
+| IdentityUserClaim | AspnetUserClaims | ID | ID uživatele\_–&gt;AspnetUsers |
 
 S těmito informacemi můžeme vytvořit příkazy SQL pro vytváření nových tabulek. Každý příkaz můžeme buď zapsat jednotlivě, nebo můžete celý skript vygenerovat pomocí příkazů PowerShellu EntityFramework, které můžeme následně upravit podle potřeby. Provedete to tak, že v sadě VS otevřete **konzolu Správce balíčků** z nabídky zobrazení nebo **nástroje** **.**
 
@@ -148,7 +148,7 @@ Tento soubor skriptu je specifický pro tuto ukázku. Pro aplikace, které mají
 
     ASP\_netUsers a ASP\_netMembership--&gt; AspNetUsers
 
-    aspnet\_UserInRoles --&gt; AspNetUserRoles
+    ASPNET\_UserInRoles--&gt; AspNetUserRoles
 
     Jak je vysvětleno výše v části, tabulky AspNetUserClaims a AspNetUserLogins jsou prázdné. Pole diskriminátor v tabulce AspNetUser by se mělo shodovat s názvem třídy modelu, který je definován jako další krok. Sloupec PasswordHash je také ve formátu "šifrované heslo | heslo Salt | formát hesla". To vám umožňuje používat speciální logiku šifrování členství SQL, abyste mohli znovu použít stará hesla. To je vysvětleno v části dále v tomto článku.
 

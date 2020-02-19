@@ -1,88 +1,88 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-model
-title: Přidání modelu (VB) | Dokumentace Microsoftu
+title: Přidání modelu (VB) | Microsoft Docs
 author: Rick-Anderson
-description: V tomto kurzu se seznámíte se základy vytváření ASP.NET MVC webovou aplikaci pomocí Microsoft Visual Web Developer 2010 Express Service Pack 1, což je...
+description: V tomto kurzu se seznámíte se základy vytváření webových aplikací ASP.NET MVC pomocí nástroje Microsoft Visual Web Developer 2010 Express Service Pack 1, který je...
 ms.author: riande
 ms.date: 01/12/2011
 ms.assetid: b3aa7720-5c78-4ca2-baef-9a52234fb7ce
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: c2ec1f4cf8f68a426fa4cabfc36c5e7bf928fe32
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: e69d59aed4d74f08f1c653c4965b128c4dbe20ff
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130070"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457242"
 ---
 # <a name="adding-a-model-vb"></a>Přidání modelu (VB)
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-> V tomto kurzu se seznámíte se základy vytváření ASP.NET MVC webovou aplikaci pomocí Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze sady Microsoft Visual Studio. Než začnete, ujistěte se, že jste nainstalovali požadavky uvedené níže. Kliknutím na následující odkaz můžete nainstalovat všechny z nich: [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Alternativně můžete nainstalovat jednotlivě požadavky pomocí následujících odkazů:
+> V tomto kurzu se seznámíte se základy vytváření webových aplikací ASP.NET MVC pomocí nástroje Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze Microsoft Visual Studio. Než začnete, ujistěte se, že jste nainstalovali požadavky uvedené níže. Všechny z nich můžete nainstalovat kliknutím na následující odkaz: instalace [webové platformy](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Případně můžete požadavky jednotlivě nainstalovat pomocí následujících odkazů:
 > 
-> - [Visual Studio Web Developer Express SP1 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)
-> - [ASP.NET MVC 3 Tools Update](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
-> - [SQL Server Compact 4.0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(podpora modulu runtime a nástroje)
+> - [Požadavky sady Visual Studio Web Developer Express SP1](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)
+> - [Aktualizace nástrojů MVC 3 pro ASP.NET](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
+> - [SQL Server Compact 4,0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(podpora modulu runtime + nástroje)
 > 
-> Pokud používáte Visual Studio 2010 namísto Visual Web Developer 2010, nainstalujte příslušné požadované součásti po kliknutí na následující odkaz: [Visual Studio 2010 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack).
+> Pokud používáte sadu Visual Studio 2010 místo sady Visual Web Developer 2010, nainstalujte požadavky kliknutím na následující odkaz: sady [Visual studio 2010 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack).
 > 
-> Projekt aplikace Visual Web Developer se zdrojovým kódem VB.NET je k dispozici v tomto tématu. [Stáhněte si verzi VB.NET](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098). Pokud dáváte přednost C#, přejděte [verze jazyka C#](../cs/adding-a-model.md) tohoto kurzu.
+> Projekt Visual Web Developer s VB.NET zdrojovým kódem je k dispozici pro toto téma. [Stáhněte si verzi VB.NET](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098). Pokud dáváte přednost C#, přepněte se na [ C# verzi](../cs/adding-a-model.md) tohoto kurzu.
 
 ## <a name="adding-a-model"></a>Přidání modelu
 
-V této části přidáte některé třídy pro správu filmy v databázi. Tyto třídy bude "model" část aplikace ASP.NET MVC.
+V této části přidáte některé třídy pro správu filmů v databázi. Tyto třídy budou součástí modelu aplikace ASP.NET MVC.
 
-Přístup k datům technologie rozhraní .NET Framework označované jako Entity Framework budete používat k definování a pracovat s tyto třídy modelu. Entity Framework (často označované jako EF) podporuje vývoj paradigma volá *Code First*. Kód nejprve umožňuje vytvořit objekty modelu napsáním jednoduché třídy. (Tyto jsou také známé jako POCO tříd, z "prostý staré objekty CLR.") Potom můžete mít databázi vytvořené v reálném čase ze třídy, která umožňuje pracovní postupy s velmi čistá a rychlý vývoj.
+K definování a práci s těmito třídami modelů použijete .NET Framework technologie pro přístup k datům, která je známá jako Entity Framework. Entity Framework (často označované jako EF) podporují vývojové paradigma nazvané *Code First*. Code First umožňuje vytvářet objekty modelu zápisem jednoduchých tříd. (Tyto třídy se označují také jako třídy POCO, od "objektů CLR v prostém Old". Databázi pak můžete z vašich tříd vytvořit průběžně, což umožňuje velmi čistý a rychlý vývojový pracovní postup.
 
-## <a name="adding-model-classes"></a>Přidání třídy modelu
+## <a name="adding-model-classes"></a>Přidávání tříd modelu
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem myši *modely* složky, vyberte **přidat**a pak vyberte **třídy**.
+V **Průzkumník řešení**klikněte pravým tlačítkem na složku *modely* , vyberte **Přidat**a pak vyberte **Třída**.
 
 ![](adding-a-model/_static/image1.png)
 
-Název třídy "Video".
+Pojmenujte třídu "film".
 
-Následujících pět vlastnosti, které chcete přidat `Movie` třídy:
+Do `Movie` třídy přidejte následující pět vlastností:
 
 [!code-vb[Main](adding-a-model/samples/sample1.vb)]
 
-Použijeme `Movie` pro reprezentaci filmy v databázi. Každá instance `Movie` objektu bude odpovídat řádek do tabulky databáze a každou vlastnost `Movie` třídy bude mapovat na sloupec v tabulce.
+K reprezentaci filmů v databázi použijeme třídu `Movie`. Každá instance `Movie` objektu bude odpovídat řádku v tabulce databáze a každá vlastnost `Movie` třídy bude namapována na sloupec v tabulce.
 
-Ve stejném souboru přidejte následující `MovieDBContext` třídy:
+Do stejného souboru přidejte následující třídu `MovieDBContext`:
 
 [!code-vb[Main](adding-a-model/samples/sample2.vb)]
 
-`MovieDBContext` Třída reprezentuje kontext databáze filmů Entity Framework, která zpracovává načítání, ukládání a aktualizaci `Movie` třídy instancí v databázi. `MovieDBContext` Je odvozen od `DbContext` základní třída poskytované rozhraním Entity Framework. Další informace o `DbContext` a `DbSet`, naleznete v tématu [vylepšení produktivity pro Entity Framework](https://blogs.msdn.com/b/efdesign/archive/2010/06/21/productivity-improvements-for-the-entity-framework.aspx?wa=wsignin1.0).
+Třída `MovieDBContext` představuje kontext Entity Framework filmového databáze, který zpracovává načítání, ukládání a aktualizaci instancí tříd `Movie` v databázi. `MovieDBContext` je odvozen ze `DbContext` základní třídy poskytované Entity Framework. Další informace o `DbContext` a `DbSet`najdete v tématu [vylepšení produktivity pro Entity Framework](https://blogs.msdn.com/b/efdesign/archive/2010/06/21/productivity-improvements-for-the-entity-framework.aspx?wa=wsignin1.0).
 
-Pokud chcete mít možnost odkazovat `DbContext` a `DbSet`, budete muset přidat následující `imports` příkazu v horní části souboru:
+Aby bylo možné odkazovat `DbContext` a `DbSet`, je nutné do horní části souboru přidat následující příkaz `imports`:
 
 [!code-vb[Main](adding-a-model/samples/sample3.vb)]
 
-Kompletní *Movie.vb* souboru je uveden níže.
+Úplný soubor *Movie. vb* je zobrazený níže.
 
 [!code-vb[Main](adding-a-model/samples/sample4.vb)]
 
-## <a name="creating-a-connection-string-and-working-with-sql-server-compact"></a>Vytvoření připojovacího řetězce a práce s SQL serverem Compact
+## <a name="creating-a-connection-string-and-working-with-sql-server-compact"></a>Vytvoření připojovacího řetězce a práce s SQL Server Compact
 
-`MovieDBContext` Třídy, které jste vytvořili zpracovává úlohu s připojením k databázi a mapování `Movie` objekty se záznamy v databázi. Jednu otázku, kterou můžete pokládat, je, jak určit databázi, kterou se připojí k. Můžete to udělat tak, že přidáte informace o připojení v *Web.config* souboru aplikace.
+Třída `MovieDBContext`, kterou jste vytvořili, zpracovává úlohu připojení k databázi a mapování objektů `Movie` na záznamy databáze. Jedna otázka, na kterou se můžete zeptat, ale je, jak určit databázi, ke které se bude připojovat. Provedete to tak, že přidáte informace o připojení do souboru *Web. config* aplikace.
 
-Otevřete kořenový adresář aplikace *Web.config* souboru. (Ne *Web.config* ve *zobrazení* složky.) Na následujícím obrázku zobrazit obojí *Web.config* soubory; otevřít *Web.config* soubor v kruhu červeně.
+Otevřete kořenový soubor *Web. config* aplikace. (Ne soubor *Web. config* ve složce *views* .) Následující obrázek zobrazuje soubory *Web. config* ; Otevřete soubor *Web. config* v podobě červeného kruhu.
 
 ![](adding-a-model/_static/image2.png)
 
-Přidejte následující připojovací řetězec do `<connectionStrings>` prvek *Web.config* souboru.
+Přidejte následující připojovací řetězec do prvku `<connectionStrings>` v souboru *Web. config* .
 
 [!code-xml[Main](adding-a-model/samples/sample5.xml)]
 
-Následující příklad ukazuje část *Web.config* soubor se přidat nový připojovací řetězec:
+Následující příklad ukazuje část souboru *Web. config* s přidaným novým připojovacím řetězcem:
 
 [!code-xml[Main](adding-a-model/samples/sample6.xml)]
 
-Malé množství kódu a XML je všechno, co potřebujete k zápisu představují a ukládat data o filmech v databázi.
+Tento malý objem kódu a XML je vše, co potřebujete k tomu, abyste mohli zastupovat a ukládat data videa v databázi.
 
-V dalším kroku vytvoříte novou `MoviesController` třídu, která vám pomůže se zobrazí data o filmech a umožní uživatelům vytvářet nové video výpisy.
+V dalším kroku vytvoříte novou třídu `MoviesController`, kterou můžete použít k zobrazení dat filmu a umožníte uživatelům vytvářet nové seznamy filmů.
 
 > [!div class="step-by-step"]
 > [Předchozí](adding-a-view.md)
-> [další](accessing-your-models-data-from-a-controller.md)
+> [Další](accessing-your-models-data-from-a-controller.md)

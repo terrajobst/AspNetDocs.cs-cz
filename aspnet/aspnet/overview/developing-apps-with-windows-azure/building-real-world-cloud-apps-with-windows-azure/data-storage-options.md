@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: e51fcecb-cb33-4f9e-8428-6d2b3d0fe1bf
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
 msc.type: authoredcontent
-ms.openlocfilehash: f97d973d87db895441f813376d757a8a2e94b255
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 9357ed5aef39bed501cdac9ac26d46c884d4fae0
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74585933"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457177"
 ---
 # <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a>Možnosti úložiště dat (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -125,7 +125,7 @@ Azure poskytuje IaaS možnosti úložiště dat co nejjednodušší, ale nabídk
 - Nemusíte vytvářet virtuální počítače. k nastavení úložiště dat stačí použít portál nebo skript. Pokud chcete úložiště dat 200 terabajtů, stačí kliknout na tlačítko nebo spustit příkaz a v sekundách je připraveno k použití.
 - Nemusíte spravovat ani opravovat virtuální počítače používané službou. Microsoft to dělá automaticky. – nemusíte si dělat starosti s nastavením infrastruktury pro škálování nebo vysokou dostupnost; Microsoft to všechno zpracuje za vás.
 - Nemusíte kupovat licence. licenční poplatky jsou zahrnuté do poplatků za službu.
-- Platíte jenom za to, co využijete.
+- Platíte jenom za to, co používáte.
 
 PaaS možnosti úložiště dat v Azure zahrnují nabídky poskytovatelů třetích stran. Můžete například vybrat [doplněk MongoLabu](https://azure.microsoft.com/documentation/articles/store-mongolab-web-sites-dotnet-store-data-mongodb/) z Azure Store a zřídit databázi MongoDB jako službu.
 
@@ -146,7 +146,7 @@ Tady jsou některé otázky, které je potřeba vzít v úvahu při výběru př
 | Operace | – Jak snadné je platforma pro nasazení a spouštění v Azure? PaaS? IaaS? Linux? Table Storage a SQL Database se snadno nastavují v Azure. Platformy, které nejsou integrovanými řešeními Azure PaaS, vyžadují více úsilí. |
 | Podpora rozhraní API | – Je dostupné rozhraní API, které usnadňuje práci s platformou? Pro službu Azure Table je k dispozici sada SDK s rozhraním .NET API, které podporuje asynchronní programovací model .NET 4,5. Pokud píšete aplikaci .NET, bude mnohem snazší psát a testovat kód pro službu Azure Table ve srovnání s jinou platformou úložiště dat ve sloupci klíč/hodnota, která nemá žádné rozhraní API nebo méně komplexní. |
 | Integrita transakcí a konzistence dat | – Je důležité, aby platforma podporovala transakce, aby se zajistila konzistence dat? Pro udržení přehledu o odeslaných hromadných e-mailech může být výkon a náklady na úložiště dat důležitější než Automatická podpora pro transakce nebo referenční integrita v datové platformě, což znamená, že služba Azure Table je vhodnou volbou. Pro sledování zůstatků bankovních účtů nebo nákupních objednávek může být lepší volbou platforma relačních databází, která poskytuje silné transakční záruky. |
-| Provozní kontinuita | – Jak snadné je zálohování, obnovování a zotavení po havárii? Dřív nebo novější produkční data budou poškozená a budete potřebovat funkci vrátit zpátky. Relační databáze často obsahují přesnější možnosti obnovení, jako je například možnost obnovení k určitému bodu v čase. Porozumění funkcím obnovení, které jsou k dispozici na každé platformě, kterou zvažujete, je důležitým faktorem, který je třeba zvážit. |
+| Kontinuita podnikových procesů | – Jak snadné je zálohování, obnovování a zotavení po havárii? Dřív nebo novější produkční data budou poškozená a budete potřebovat funkci vrátit zpátky. Relační databáze často obsahují přesnější možnosti obnovení, jako je například možnost obnovení k určitému bodu v čase. Porozumění funkcím obnovení, které jsou k dispozici na každé platformě, kterou zvažujete, je důležitým faktorem, který je třeba zvážit. |
 | Náklady | – Pokud více než jedna platforma může podporovat datovou úlohu, jak se porovnávají s náklady? Pokud například použijete ASP.NET Identity, můžete ukládat data profilu uživatele ve službě Azure Table Service nebo v Azure SQL Database. Pokud nepotřebujete zařízení s bohatou dotazováním SQL Database, můžete zvolit tabulky Azure v části, protože za dané množství úložiště stojí mnohem méně. |
 
 Obecně doporučujeme znát odpověď na otázky v každé z těchto kategorií ještě předtím, než zvolíte řešení úložiště dat.
@@ -168,7 +168,7 @@ Je také snadné vytvořit databáze pomocí portálu.
 
 Klikněte na **Nový--Data Services** -- **SQL Database** -- **rychle vytvořit**, zadejte název databáze, vyberte server, který už máte ve svém účtu, nebo vytvořte nový a klikněte na **vytvořit SQL Database**.
 
-![Nový SQL Database](data-storage-options/_static/image9.png)
+![Nová databáze SQL](data-storage-options/_static/image9.png)
 
 Počkejte několik sekund a máte k dispozici databázi v Azure, kterou můžete použít.
 
@@ -256,7 +256,7 @@ Pokud chcete použít SQL Server na virtuálním počítači, můžete použít 
 
 Když vytvoříte virtuální počítač s bitovou kopií SQL Server, průběžně vám náklady na SQL Server licence budou za hodinu na základě vašeho využití virtuálního počítače. Pokud máte projekt, který se bude spouštět jenom po několik měsíců, je levnější uhradit hodinu. Pokud si myslíte, že váš projekt bude trvat až let, je levnější koupit si licenci obvyklým způsobem.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Cloud Computing usnadňuje kombinaci a porovnávání přístupů do úložiště dat, aby nejlépe vyhovoval potřebám vaší aplikace. Pokud vytváříte novou aplikaci, pečlivě si promyslete otázky, které jsou tady uvedené, aby bylo možné vybrat přístupy, které budou fungovat i v případě, že vaše aplikace roste. V [Další části](data-partitioning-strategies.md) se vysvětlují některé strategie dělení, které můžete použít ke kombinování více přístupů k úložišti dat.
 

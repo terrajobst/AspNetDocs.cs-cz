@@ -8,16 +8,16 @@ ms.date: 06/23/2015
 ms.assetid: 2a0370d3-c2fb-4bf3-88b8-aad5a736c793
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control
 msc.type: authoredcontent
-ms.openlocfilehash: a6f445e46d41b646cf6c25af2e65bc73e831d5ed
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 5a1e0d7cd3c396d4be79c8958422602055eb3db1
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74583701"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457099"
 ---
 # <a name="source-control-building-real-world-cloud-apps-with-azure"></a>Správa zdrojového kódu (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -187,7 +187,7 @@ Tady vidíte, jak pracujete s místním úložištěm Git v aplikaci Visual Stud
 
 Nejedná se o jediný způsob, jak můžete implementovat strategii agilního větvení, samozřejmě. Můžete povolit stejný agilní pracovní postup pomocí centralizovaného úložiště správy zdrojového kódu.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Změřte úspěšnost svého systému správy zdrojů na základě toho, jak rychle můžete provést změnu a začít bezpečně a předvídatelným způsobem. Pokud zjistíte, že jste se děsilii změnou, protože je třeba provést jeden den nebo dva ruční testování, můžete se zeptat, co je potřeba udělat, nebo vyzkoušet, abyste tuto změnu mohli udělat v řádu minut nebo v nejhorším rozsahu po dobu delší než hodinu. Jedna strategie, která umožňuje implementovat průběžnou integraci a průběžné doručování, které pokryjeme v [Další části](continuous-integration-and-continuous-delivery.md).
 

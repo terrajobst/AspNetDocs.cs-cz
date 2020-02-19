@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: ba6e6baa-9b9f-471f-b39d-b007a3addadc
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
-ms.openlocfilehash: d5c8190d0b0c91bf9e42f6ef03adc5b07a65359a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: e741a753a36ebdaefbff8eee0b38911785c716ac
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74582888"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457164"
 ---
 # <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>Automatizace všeho (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -50,7 +50,7 @@ Pro aplikaci opravit IT jsme vytvořili několik skriptů prostředí Windows Po
 První skript, který podíváme na, má název *New-AzureWebsiteEnv. ps1*. Vytvoří prostředí Azure, ve kterém můžete nasadit aplikaci Fix it na pro účely testování. Hlavní úlohy, které tento skript provede, jsou následující:
 
 - Vytvořte webovou aplikaci.
-- Vytvořte účet úložiště. (Vyžaduje se pro objekty BLOB a fronty, jak uvidíte v pozdějších kapitolách.)
+- Vytvoření účtu úložiště (Vyžaduje se pro objekty BLOB a fronty, jak uvidíte v pozdějších kapitolách.)
 - Vytvoření serveru SQL Database a dvou databází: aplikační databáze a databáze členství.
 - Nastavení úložiště v Azure, které bude aplikace používat pro přístup k účtu úložiště a databázím.
 - Vytvořte soubory nastavení, které budou použity k automatizaci nasazení.
@@ -239,7 +239,7 @@ A až se to dokončí, otevře se prohlížeč s webem spuštěným v cloudu na 
 
 ![Opravit aplikaci IT nasazenou v Microsoft Azure](automate-everything/_static/image7.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Pomocí těchto skriptů si můžete být jistí, že stejný postup bude vždycky proveden ve stejném pořadí pomocí stejných možností. To pomáhá zajistit, že každý vývojář týmu nebude přijít o něco nebo si může něco vyzkoušet nebo nasazovat něco vlastního na svém vlastním počítači, který ve skutečnosti nebude fungovat v prostředí jiného člena týmu nebo v produkčním prostředí.
 

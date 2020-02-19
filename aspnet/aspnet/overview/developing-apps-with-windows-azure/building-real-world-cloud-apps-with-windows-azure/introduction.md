@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: accfa16a-ab15-4c26-9ad4-babdc2a77d2e
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: 8a4ef3aa37a9296e92fbeb513968e3abeee072d0
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: b88573b3702b755b155e8da35f5f8a67931bafc6
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74585523"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457112"
 ---
 # <a name="building-real-world-cloud-apps-with-azure"></a>Sestavování skutečných cloudových aplikací s využitím Azure
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -154,7 +154,7 @@ To vše se provádí automaticky. Vše, co potřebujete udělat, je vytvoření 
 Rychlý a jednoduchý podrobný kurz, který ukazuje, jak vytvořit webovou aplikaci v aplikaci Visual Studio a jak ji nasadit na web Azure, najdete v tématu [Začínáme s Azure a ASP.NET](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/).
 
 <a id="summary"></a>
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Tento Úvod obsahuje seznam témat, na které se kniha zabývá, snímky obrazovky ukázkové aplikace a stručný přehled Web Apps v cloudovém prostředí Azure App Service. Jednou z výhod vývoje aplikací v a pro Cloud je, že je snadné automatizovat opakované vývojářské úlohy, jako je vytvoření testovacího prostředí a nasazení kódu do něj. Jak to udělat, je předmět [Další kapitoly](automate-everything.md).
 

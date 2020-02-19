@@ -8,16 +8,16 @@ ms.date: 10/17/2013
 ms.assetid: caa1ba4a-f9f0-4181-ba21-042e3997861d
 msc.legacyurl: /mvc/overview/getting-started/introduction/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: e01953dcfb2abf2db53a8aa869aa75b40485daca
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.openlocfilehash: 5d882d765133d32d3acdba9ffb5d43b69119a273
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519086"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457229"
 ---
 # <a name="accessing-your-models-data-from-a-controller"></a>Přístup k datům modelu z kontroleru
 
-od [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [!INCLUDE [Tutorial Note](index.md)]
 
@@ -41,7 +41,7 @@ V dialogovém okně **Přidat vygenerované uživatelské rozhraní** klikněte 
   
 ![](accessing-your-models-data-from-a-controller/_static/image3.png)   
 
-Klikněte na tlačítko **Add** (Přidat). (Pokud se zobrazí chyba, pravděpodobně jste před zahájením přidávání kontroleru aplikaci nesestavili.) Visual Studio vytvoří následující soubory a složky:
+Klikněte na **Přidat**. (Pokud se zobrazí chyba, pravděpodobně jste před zahájením přidávání kontroleru aplikaci nesestavili.) Visual Studio vytvoří následující soubory a složky:
 
 - Soubor *MoviesController.cs* ve složce *Controllers* .
 - Složka *Views\Movies*
@@ -60,7 +60,7 @@ Vyberte odkaz **vytvořit nový** . Zadejte podrobnosti o videu a potom kliknět
 ![](accessing-your-models-data-from-a-controller/_static/image5.png)
 
 > [!NOTE]
-> V poli Price možná nebudete moct zadat desetinné nebo čárkové tečky. Aby bylo možné podporovat ověřování jQuery pro jiné než anglické národní prostředí, které používá čárku (&quot;,&quot;) pro desetinnou čárku a formáty kalendářních dat, které nejsou v češtině, je nutné zahrnout *globalizaci. js* a konkrétní soubory *kultury/globalizace. js* (z [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) a JavaScript pro použití `Globalize.parseFloat`. Ukážeme si, jak to udělat v dalším kurzu. Prozatím stačí zadat celá čísla, třeba 10.
+> V poli Price možná nebudete moct zadat desetinné nebo čárkové tečky. aby bylo možné podporovat ověřování jQuery pro jiné než anglické národní prostředí, které používá čárku (&quot;,&quot;) pro desetinnou čárku a formáty kalendářních dat, které nejsou v češtině, je nutné zahrnout *globalizaci. js* a konkrétní soubory *kultury/globalizace. js* (z [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) a JavaScript pro použití `Globalize.parseFloat`. Ukážeme si, jak to udělat v dalším kurzu. Prozatím stačí zadat celá čísla, třeba 10.
 
 Kliknutím na tlačítko **vytvořit** dojde k odeslání formuláře na server, kde jsou informace o filmu uloženy v databázi. Pak budete přesměrováni na adresu URL */Movies* , kde uvidíte nově vytvořený film v seznamu.
 

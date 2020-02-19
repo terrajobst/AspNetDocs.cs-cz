@@ -9,16 +9,16 @@ ms.assetid: 053e23c4-13c9-40fa-87cb-3e9b0823b31e
 ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 5f5218ca6c65ed3a2cd39d4e100349efa35d14cd
-ms.sourcegitcommit: 6f0e10e4ca61a1e5534b09c655fd35cdc6886c8a
+ms.openlocfilehash: 527b4392846e60dae0b216fdeabf21fd6618e4d7
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74115100"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77456735"
 ---
 # <a name="two-factorauthentication-using-sms-and-email-with-aspnet-identity"></a>Dvojúrovňové ověřování pomocí SMS a e-mailu s ASP.NET Identity
 
-[Hao Kung](https://github.com/HaoK), [Pranav Rastogi předvádí](https://github.com/rustd), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Suhas Joshi](https://github.com/suhasj)
+[Hao Kung](https://github.com/HaoK), [Pranav Rastogi předvádí](https://github.com/rustd), [Rick Anderson](https://twitter.com/RickAndMSFT), [Suhas Joshi](https://github.com/suhasj)
 
 > V tomto kurzu se dozvíte, jak nastavit dvojúrovňové ověřování (2FA) pomocí SMS a e-mailu.
 > 
@@ -119,7 +119,7 @@ V tomto kurzu najdete pokyny k použití Twilio nebo ASPSMS, ale můžete použ�
 8. Klikněte na své ID uživatele, které aktivuje metodu `Index` akce v kontroleru `Manage`.  
   
     ![](two-factor-authentication-using-sms-and-email-with-aspnet-identity/_static/image2.png)
-9. Klikněte na tlačítko Přidat.  
+9. Klikněte na Přidat.  
   
     ![](two-factor-authentication-using-sms-and-email-with-aspnet-identity/_static/image3.png)
 10. Během několika sekund obdržíte textovou zprávu s ověřovacím kódem. Zadejte ji a stiskněte **Odeslat**.  
@@ -177,7 +177,7 @@ U výše uvedených změn kódu můžete změnit svůj profil zabezpečení (nap
 
 <a id="enable2"></a>
 
-## <a name="enable-two-factor-authentication"></a>Povolit dvojúrovňové ověřování
+## <a name="enable-two-factor-authentication"></a>Povolení dvoufaktorového ověřování
 
 V ukázkové aplikaci je nutné použít uživatelské rozhraní pro povolení dvojúrovňové ověřování (2FA). Pokud chcete povolit 2FA, na navigačním panelu klikněte na své ID uživatele (e-mailový alias).![](two-factor-authentication-using-sms-and-email-with-aspnet-identity/_static/image9.png)  
 Klikněte na Povolit 2FA.![](two-factor-authentication-using-sms-and-email-with-aspnet-identity/_static/image10.png) Odhlaste se a pak se znovu přihlaste. Pokud jste povolili e-mail (viz můj [předchozí kurz](account-confirmation-and-password-recovery-with-aspnet-identity.md)), můžete vybrat zprávu SMS nebo E-mail pro 2FA.![](two-factor-authentication-using-sms-and-email-with-aspnet-identity/_static/image11.png) Zobrazí se stránka ověření kódu, kde můžete zadat kód (ze serveru SMS nebo e-mailu).![](two-factor-authentication-using-sms-and-email-with-aspnet-identity/_static/image12.png) Kliknutím na **Zapamatovat si tento prohlížeč** zabráníte tomu, abyste pomocí 2FA přihlásili s tímto počítačem a prohlížečem. Povolením 2FA a kliknutím na **Zapamatovat si tento prohlížeč** vám poskytne silnou 2FA ochranu od uživatelů se zlými úmysly, kteří se pokoušejí získat přístup k vašemu účtu, pokud k vašemu počítači nemají přístup. To můžete provést na jakémkoli privátním počítači, který pravidelně používáte. Nastavením možnosti **pamatovat si tento prohlížeč**získáte zvýšení zabezpečení 2FA z počítačů, které pravidelně nepoužíváte, a získáte pohodlí v tom, že nebudete moct procházet 2FA na svých počítačích. 
@@ -272,7 +272,7 @@ I když můžete nastavit uzamčení účtu při neúspěchu při pokusu o přih
 
 <a id="addRes"></a>
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [ASP.NET identity doporučené prostředky](../getting-started/aspnet-identity-recommended-resources.md) Úplný seznam blogů identity, videí, výukových kurzů a skvělých odkazů
 - [Aplikace MVC 5 s přihlašováním na Facebooku, Twitter, LinkedIn a Google OAuth2](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) také ukazuje, jak přidat informace o profilu do tabulky uživatelů.

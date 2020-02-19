@@ -8,16 +8,16 @@ ms.date: 04/10/2014
 ms.assetid: 7958d725-e958-4566-a85b-535eeb985f94
 msc.legacyurl: /mvc/overview/getting-started/recommended-resources-for-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: daccaedae0b0e60f5086f270f214f87da564a85d
-ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
+ms.openlocfilehash: 11f4a7cae8d425873b1828a9e5f51471def954fb
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77074927"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457151"
 ---
 # <a name="mvc-recommended-resources"></a>MVC – doporučené prostředky
 
-od [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 > Toto téma obsahuje odkazy na materiály k dokumentaci týkající se ASP.NET MVC 5. Pokud znáte skvělý Blogový příspěvek, [StackOverflow](http://stackoverflow.com/) vlákno nebo jakýkoli jiný odkaz, který by byl užitečný, pošlete [mi](mailto:aspnetue@microsoft.com?subject=Great ASP.NET MVC link) e-mail s odkazem. Zde uvedené odkazy jsou pravidelně aktualizovány. Můžete najít starší (ale v mnoha případech stále relevantní) odkazy na ASP.NET MVC na [mapě obsahu MSDN](https://msdn.microsoft.com/library/gg416514(v=vs.108).aspx).
 >
@@ -327,7 +327,7 @@ od [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 <a id="best"></a>
 
-## <a name="best-practices"></a>Osvědčené postupy
+## <a name="best-practices"></a>Doporučené postupy
 
 - [Co nedělat v ASP.NET a jak to udělat správně](../../../aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead.md)
 - [Kontrolní seznam pro webový vývojář](http://webdevchecklist.com/aspnet)

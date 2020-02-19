@@ -8,16 +8,16 @@ ms.date: 03/14/2013
 ms.assetid: aadc5fa4-8215-4fc7-afd5-bcd2ef879728
 msc.legacyurl: /mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
 msc.type: authoredcontent
-ms.openlocfilehash: fb7e76101cbe6a874ddf5b3429ca2dc6d474334b
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 1965063a9b613d0e2857cddcc2165f5fda64ec0c
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74595761"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77455526"
 ---
 # <a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>Prevence XSRF/CSRF v ASP.NET MVC a na webových stránkách
 
-Od [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 > Padělání žádostí mezi weby (označované také jako XSRF nebo CSRF) představuje útok proti aplikacím hostovaným na webu, kdy škodlivý web může ovlivnit interakci mezi klientským prohlížečem a webem, který tento prohlížeč důvěřuje. Tyto útoky byly umožněny, protože webové prohlížeče budou automaticky odesílat ověřovací tokeny s každým požadavkem na web. Kanonický příklad je ověřovací soubor cookie, jako je například ASP. Lístek pro ověřování formulářů netto. Tyto útoky ale můžou cílit na weby, které používají jakýkoliv mechanismus trvalého ověřování (například ověřování systému Windows, Basic a tak dále).
 > 
@@ -159,13 +159,13 @@ Metoda *Gettokens* přijímá jako vstup existující token relace ověření ž
 
 Vývojář může nakonfigurovat systém Anti-XSRF z aplikace\_Start. Konfigurace je programová. Vlastnosti statického typu *AntiForgeryConfig* jsou popsány níže. Většina uživatelů, kteří používají deklarace identity, bude chtít nastavit vlastnost UniqueClaimTypeIdentifier.
 
-| **Majetek** | **Popis** |
+| **Vlastnost** | **Popis** |
 | --- | --- |
 | **AdditionalDataProvider** | [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx) , který poskytuje další data během generování tokenu a spotřebovává další data během ověřování tokenu. Výchozí hodnota je *null*. Další informace najdete v části [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx) . |
 | **Vlastnost CookieName** | Řetězec, který poskytuje název souboru cookie protokolu HTTP, který se používá k uložení tokenu relace anti-XSRF. Pokud tato hodnota není nastavená, automaticky se vygeneruje název založený na nasazené virtuální cestě aplikace. Výchozí hodnota je *null*. |
 | **Vlastnost requireSSL** | Logická hodnota, která určuje, zda jsou tokeny anti-XSRF požadovány k odeslání přes kanál zabezpečený protokolem SSL. Pokud je tato hodnota *true*, všechny automaticky generované soubory cookie budou mít nastaven příznak "Secure" a rozhraní API pro anti-XSRF, pokud se volá z požadavku, který není odeslán přes protokol SSL. Výchozí hodnota je *false (NEPRAVDA*). |
-| **SuppressIdentityHeuristicChecks** | Logická hodnota, která určuje, zda má systém Anti-XSRF deaktivovat podporu identit založených na deklaracích identity. Pokud je tato hodnota *true*, systém předpokládá, že *IIdentity.Name* je vhodný pro použití jako jedinečný identifikátor podle uživatele a nepokusí se o zvláštní případ *IClaimsIdentity* nebo *ClClaimsIdentity* , jak je popsáno v [WIF/ACS/ oddíl ověřování na základě deklarací](#_WIF_ACS) . Výchozí hodnota je `false`. |
-| **UniqueClaimTypeIdentifier** | Řetězec, který označuje typ deklarace identity, který je vhodný pro použití jako jedinečný identifikátor podle uživatele. Pokud je tato hodnota nastavena a aktuální *IIdentity* je založená na deklaracích identity, systém se pokusí extrahovat deklaraci identity typu určenou parametrem *UniqueClaimTypeIdentifier*a odpovídající hodnota bude použita místo uživatelského jména uživatele, když generuje se token pole. Pokud se typ deklarace identity nenalezne, požadavek na systém se nezdaří. Výchozí hodnota je *null*, což znamená, že systém by měl použít řazenou kolekci členů (poskytovatel identity, identifikátor názvu), jak je popsáno výše v části místo uživatelského jména uživatele. |
+| **SuppressIdentityHeuristicChecks** | Logická hodnota, která určuje, zda má systém Anti-XSRF deaktivovat podporu identit založených na deklaracích identity. Pokud je tato hodnota *true*, systém bude předpokládat, že *IIdentity.Name* je vhodný pro použití jako jedinečný identifikátor podle uživatele a nepokusí se použít speciální *IClaimsIdentity* nebo *ClClaimsIdentity* , jak je popsáno v části [ověřování založené na WIF/ACS/deklaracích](#_WIF_ACS) . Výchozí hodnota je `false`. |
+| **UniqueClaimTypeIdentifier** | Řetězec, který označuje typ deklarace identity, který je vhodný pro použití jako jedinečný identifikátor podle uživatele. Pokud je tato hodnota nastavena a aktuální *IIdentity* je založen na deklaracích, systém se pokusí extrahovat deklaraci identity typu určenou parametrem *UniqueClaimTypeIdentifier*a odpovídající hodnota bude použita místo uživatelského jména uživatele při generování tokenu pole. Pokud se typ deklarace identity nenalezne, požadavek na systém se nezdaří. Výchozí hodnota je *null*, což znamená, že systém by měl použít řazenou kolekci členů (poskytovatel identity, identifikátor názvu), jak je popsáno výše v části místo uživatelského jména uživatele. |
 
 <a id="_IAntiForgeryAdditionalDataProvider"></a>
 

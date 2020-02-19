@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: 1bc333c5-f096-4ea7-b170-779accc21c1a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: e6fda47babd3c2505315f42667c45f09482218c2
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 896196bdb6a6b0d12a6c798ead510e37dd38a9fc
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74583749"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77456878"
 ---
 # <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>Příloha: Ukázková aplikace pro opravu IT (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stáhnout opravit projekt IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)
 
@@ -39,14 +39,14 @@ Oprava IT aplikace byla původně vyvinuta, aby se co nejvíce zobrazovalo jako 
 
 Následující seznam obsahuje problémy, které by se měly řešit v produkční aplikaci, ale z jednoho důvodu nebo jiného rozhodla neřešit v počáteční verzi ukázkové aplikace této opravy.
 
-### <a name="security"></a>Zabezpečení –
+### <a name="security"></a>Zabezpečení
 
 - Ujistěte se, že nemůžete přiřadit úkol neexistujícímu vlastníkovi.
 - Ujistěte se, že můžete zobrazovat a upravovat jenom úkoly, které jste vytvořili nebo vám byly přiřazeni.
 - Pro přihlašovací stránky a soubory cookie pro ověřování použijte protokol HTTPS.
 - Zadejte časový limit pro soubory cookie ověřování.
 
-### <a name="input-validation"></a>Ověřování vstupu
+### <a name="input-validation"></a>Ověření vstupu
 
 Obecně platí, že produkční aplikace by prověřila více ověřování vstupu než aplikace opravit IT. Například velikost souboru obrázku nebo obrázku, která je povolena pro nahrávání, by měla být omezená.
 
@@ -250,7 +250,7 @@ Existují dva způsoby, jak spustit aplikaci pro opravu IT:
    4. Vyberte **více projektů po spuštění**.
    5. V rozevíracím seznamu **Akce** pod položkou MyFixIt a MyFixItCloudService vyberte **Spustit**.
    6. Klikněte na tlačítko **OK**.
-   7. Stiskněte klávesu **F5** pro spuštění obou projektů.
+   7. Stiskněte klávesu **F5** a oba projekty se spustí.
 
       Když spustíte projekt MyFixItCloudService, Visual Studio spustí emulátor služby COMPUTE pro Azure. V závislosti na konfiguraci brány firewall možná budete muset zapnout emulátor přes bránu firewall.
 

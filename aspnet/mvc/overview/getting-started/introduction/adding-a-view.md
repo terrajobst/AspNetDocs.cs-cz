@@ -5,16 +5,16 @@ description: Přidání zobrazení do aplikace MVC
 ms.author: riande
 ms.date: 01/23/2019
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: 4b369028aca1e8a6cace60466b8049ccc02a2ec2
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.openlocfilehash: 0bc6ac06d12aaee4b2a11c1bf246f9f20f0be017
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519060"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77456644"
 ---
 # <a name="adding-a-view"></a>Přidání zobrazení
 
-od [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [!INCLUDE [Tutorial Note](index.md)]
 
@@ -90,7 +90,7 @@ Pomocí vlastnosti `Layout` můžete nastavit jiné zobrazení rozložení, nebo
 
 Teď změníme název zobrazení indexu.
 
-Open *MvcMovie\Views\HelloWorld\Index.cshtml*. Existují dvě místa pro provedení změny: nejprve text, který se zobrazí v názvu prohlížeče, a poté v sekundární hlavičce (`<h2>` element). Mírně se mírně liší, abyste viděli, který bit kódu se změní v rámci aplikace.
+Otevřete *MvcMovie\Views\HelloWorld\Index.cshtml*. Existují dvě místa pro provedení změny: nejprve text, který se zobrazí v názvu prohlížeče, a poté v sekundární hlavičce (`<h2>` element). Mírně se mírně liší, abyste viděli, který bit kódu se změní v rámci aplikace.
 
 [!code-cshtml[Main](adding-a-view/samples/sample6.cshtml?highlight=2,5)]
 

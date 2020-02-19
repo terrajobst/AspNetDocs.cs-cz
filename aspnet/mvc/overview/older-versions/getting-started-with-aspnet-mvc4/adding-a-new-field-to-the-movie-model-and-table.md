@@ -1,171 +1,171 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-new-field-to-the-movie-model-and-table
-title: Přidání nového pole do modelu a tabulky Movie | Dokumentace Microsoftu
+title: Přidání nového pole do modelu a tabulky filmů | Microsoft Docs
 author: Rick-Anderson
-description: 'Poznámka: Najít aktualizovanou verzi tohoto kurzu je k dispozici tady, která používá ASP.NET MVC 5 a Visual Studio 2013. Je bezpečnější, sledovat a ukázka mnohem jednodušší...'
+description: 'Poznámka: v této části je k dispozici aktualizovaná verze tohoto kurzu, která používá ASP.NET MVC 5 a Visual Studio 2013. Je to bezpečnější, takže je mnohem jednodušší postupovat a demo...'
 ms.author: riande
 ms.date: 08/28/2012
 ms.assetid: 9ef2c4f1-a305-4e0a-9fb8-bfbd9ef331d9
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-new-field-to-the-movie-model-and-table
 msc.type: authoredcontent
-ms.openlocfilehash: b0a66cf62c34a59ca5c89c2f380093165e765100
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: d966b95163f64b20a17d2327a12c5d6c44a4a66b
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65129892"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457697"
 ---
 # <a name="adding-a-new-field-to-the-movie-model-and-table"></a>Přidání nového pole do modelu a tabulky Movie
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 > > [!NOTE]
-> > Je k dispozici aktualizovaná verze tohoto kurzu [tady](../../getting-started/introduction/getting-started.md) , která používá ASP.NET MVC 5 a Visual Studio 2013. Je bezpečnější, postupujte podle mnohem jednodušší a ukazuje další funkce.
+> > K [dispozici je](../../getting-started/introduction/getting-started.md) aktualizovaná verze tohoto kurzu, která používá ASP.NET MVC 5 a Visual Studio 2013. Je to bezpečnější, mnohem jednodušší a ukazuje více funkcí.
 
-V této části použijete migrace Entity Framework Code First k migraci některých změn do tříd modelu, tak použití této změny do databáze.
+V této části použijete Migrace Entity Framework Code First k migraci některých změn do tříd modelu, takže se změna aplikuje na databázi.
 
-Ve výchozím nastavení při použití platformy Entity Framework Code First automaticky vytvořit databázi, jako jste to udělali dříve v tomto kurzu Code First přidá tabulku do databáze pro sledování, zda je synchronizovaný s tříd modelu, které byly vygenerovány z schéma databáze. Pokud nejsou synchronizované, Entity Framework vyvolá chybu. Díky tomu je snadněji sledovat problémy při vývoji, který může jinak pouze pro vás (pomocí skrytého chyby) v době běhu.
+Ve výchozím nastavení platí, že při použití Entity Framework Code First k automatickému vytvoření databáze, stejně jako v tomto kurzu, Code First přidá do databáze tabulku, která bude sledovat, zda je schéma databáze synchronizované s třídami modelů, ze kterých byla vygenerována. Pokud nejsou synchronizované, Entity Framework vyvolá chybu. Díky tomu je snazší sledovat problémy v době vývoje, které byste jinak mohli najít (překrytím chyb) v době běhu.
 
-## <a name="setting-up-code-first-migrations-for-model-changes"></a>Nastavení migrace Code First pro změny modelu
+## <a name="setting-up-code-first-migrations-for-model-changes"></a>Nastavení Migrace Code First pro změny modelu
 
-Pokud používáte sadu Visual Studio 2012, dvakrát klikněte *Movies.mdf* souboru z Průzkumníku řešení otevřete nástroj pro databáze. Visual Studio Express for Web se zobrazí Průzkumník databáze, že Visual Studio 2012 se zobrazí Průzkumník serveru. Pokud používáte Visual Studio 2010, použijte Průzkumník objektů systému SQL Server.
+Pokud používáte Visual Studio 2012, poklikejte na soubor *filmů. mdf* z Průzkumník řešení a otevřete nástroj Database Tool. Visual Studio Express pro web se zobrazí Průzkumník databáze, v aplikaci Visual Studio 2012 se zobrazí Průzkumník serveru. Pokud používáte Visual Studio 2010, použijte Průzkumník objektů systému SQL Server.
 
-V databázi nástroje (Průzkumník databáze, Průzkumníku serveru nebo Průzkumník objektů systému SQL Server), klikněte pravým tlačítkem na `MovieDBContext` a vyberte **odstranit** pro odpojení databáze filmů.
+V databázovém nástroji (Průzkumník databáze Průzkumník serveru nebo Průzkumník objektů systému SQL Server) klikněte pravým tlačítkem na `MovieDBContext` a výběrem **Odstranit** vyřaďte databázi filmů.
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image1.png)
 
-Přejděte zpět do Průzkumníku řešení. Klikněte pravým tlačítkem na *Movies.mdf* a vyberte možnost **odstranit** odebrání databáze filmů.
+Přejděte zpět na Průzkumník řešení. Klikněte pravým tlačítkem na soubor *filmů. mdf* a výběrem **Odstranit** odeberte databázi filmů.
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image2.png)
 
-Vytvoření aplikace, abyste měli jistotu, že nejsou žádné chyby.
+Sestavte aplikaci, abyste se ujistili, že nejsou k dispozici žádné chyby.
 
-Z **nástroje** nabídky, klikněte na tlačítko **Správce balíčků NuGet** a potom **Konzola správce balíčků**.
+V nabídce **Nástroje** klikněte na **Správce balíčků NuGet** a pak na **Konzola Správce balíčků**.
 
-![Přidat balíček Man](adding-a-new-field-to-the-movie-model-and-table/_static/image3.png)
+![Přidat Man Pack](adding-a-new-field-to-the-movie-model-and-table/_static/image3.png)
 
-V **Konzola správce balíčků** v okna `PM>` řádku zadejte "Enable-migrace - ContextTypeName MvcMovie.Models.MovieDBContext".
+V okně **konzoly Správce balíčků** na `PM>`ovém řádku zadejte Enable-migrations-ContextTypeName MvcMovie. Models. MovieDBContext.
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image4.png)
 
-**Povolení migrace** vytvoří příkaz (popsaný výš) *Configuration.cs* souboru v novém *migrace* složky.
+Příkaz **Povolit – migrace** (zobrazený výše) vytvoří soubor *Configuration.cs* v nové složce *migrace* .
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image5.png)
 
-Visual Studio otevře *Configuration.cs* souboru. Nahradit `Seed` metodu *Configuration.cs* souboru následujícím kódem:
+Visual Studio otevře soubor *Configuration.cs* . Metodu `Seed` v souboru *Configuration.cs* nahraďte následujícím kódem:
 
 [!code-csharp[Main](adding-a-new-field-to-the-movie-model-and-table/samples/sample1.cs)]
 
-Klikněte pravým tlačítkem na řádku červená vlnovka pod `Movie` a vyberte **vyřešit** pak **pomocí** **MvcMovie.Models;**
+Klikněte pravým tlačítkem myši na červenou vlnovku pod `Movie` a vyberte **vyřešit** a pak **použijte** **MvcMovie. Models;**
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image6.png)
 
-Tím se přidají následující příkaz using:
+Tím přidáte následující příkaz using:
 
 [!code-csharp[Main](adding-a-new-field-to-the-movie-model-and-table/samples/sample2.cs)]
 
 > [!NOTE] 
 > 
-> Kód volá první migrace `Seed` za každou migraci (tedy volání **aktualizace databáze** v konzole Správce balíčků), a tato metoda aktualizuje řádky, které již byl vložen a vloží je, pokud jsou dosud neexistují.
+> Migrace Code First volá metodu `Seed` po každé migraci (to znamená volání metody **Update-Database** v konzole správce balíčků) a tato metoda aktualizuje řádky, které již byly vloženy, nebo je vloží, pokud ještě neexistují.
 
-**Stisknutím klávesy CTRL-SHIFT-B a sestavte projekt.** (Následující kroky se nezdaří, pokud vaše není v tomto okamžiku sestavení.)
+**Stisknutím kombinace kláves CTRL + SHIFT + B Sestavte projekt.** (Pokud v tomto okamžiku nebudete sestavovat, následující kroky selžou.)
 
-Dalším krokem je vytvoření `DbMigration` třídu pro počáteční migraci. Tato migrace na vytvoří novou databázi, proto můžete odstranit *movie.mdf* souboru v předchozím kroku.
+Dalším krokem je vytvoření třídy `DbMigration` pro prvotní migraci. Tato migrace vytvoří novou databázi. to je důvod, proč jste odstranili soubor *Movie. mdf* v předchozím kroku.
 
-V **Konzola správce balíčků** okno, zadejte příkaz "Přidat migrace počáteční" k vytvoření počáteční migraci. Název "Počáteční" libovolný a slouží k pojmenování souboru migrace vytvořili.
+V okně **konzoly Správce balíčků** zadejte příkaz "Přidání-migrace počátečního" a vytvořte prvotní migraci. Název "Initial" je libovolný a slouží k pojmenování vytvořeného souboru migrace.
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image7.png)
 
-Migrace Code First vytvoří další soubor třídy v *migrace* složky (s názvem *{DateStamp}\_Initial.cs* ), a tato třída obsahuje kód, který vytvoří schéma databáze. Název souboru migraci je pevně předem s časovým razítkem Nápověda k řazení. Zkontrolujte *{DateStamp}\_Initial.cs* souboru, obsahuje pokyny k vytvoření tabulky filmy pro databáze filmů. Při aktualizaci databáze v pokynech níže to *{DateStamp}\_Initial.cs* souboru spustí a vytvořit schéma databáze. Pak bude **počáteční hodnoty** metoda spustí k naplnění databáze se testovací data.
+Migrace Code First vytvoří další soubor třídy ve složce *migrations* (s názvem *{DateStamp}\_Initial.cs* ) a tato třída obsahuje kód, který vytvoří schéma databáze. Název souboru migrace je předem vyřešen s časovým razítkem, které vám pomůžou s řazením. Projděte si soubor *{dateStamp}\_Initial.cs* , který obsahuje pokyny k vytvoření tabulky filmů pro filmovou databázi. Při aktualizaci databáze v níže uvedených pokynech se tento soubor *{dateStamp}\_Initial.cs* spustí a vytvoří se schéma databáze. Pak se metoda **počáteční** hodnoty spustí k naplnění databáze testovacími daty.
 
-V **Konzola správce balíčků**, zadejte příkaz "update databáze" k vytvoření databáze a spusťte **počáteční hodnoty** metody.
+V **konzole správce balíčků**zadejte příkaz "Update-Database" a vytvořte databázi a spusťte metodu **počáteční** hodnoty.
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image8.png)
 
-Pokud dojde k chybě, která určuje již existuje a nedá se vytvořit tabulku, je možné, že jste spustili aplikaci po odstranění databáze a předtím, než jste spustili `update-database`. V takovém případě odstranit *Movies.mdf* soubor znovu a zkuste to znovu `update-database` příkazu. Pokud stále dojde k chybě, odstraňte složku migrace a obsah, pak spusťte v pokynech v horní části této stránky (to je odstranit *Movies.mdf* souborů pak přejděte k povolení migrace).
+Pokud se zobrazí chyba, která indikuje, že tabulka již existuje a nelze ji vytvořit, je pravděpodobné, že jste aplikaci spustili po odstranění databáze a před provedením `update-database`. V takovém případě odstraňte soubor *Movies. mdf* znovu a opakujte příkaz `update-database`. Pokud se vám stále stala chyba, odstraňte složku a obsah migrace a pak začněte s pokyny v horní části této stránky (to znamená odstranění souboru *filmů. mdf* a následného povolení migrace).
 
-Spusťte aplikaci a přejděte */Movies* adresy URL. Počáteční data se zobrazí.
+Spusťte aplikaci a přejděte na adresu URL */Movies* . Zobrazí se data počáteční hodnoty.
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image9.png)
 
-## <a name="adding-a-rating-property-to-the-movie-model"></a>Přidání vlastnosti do hodnocení filmů modelu
+## <a name="adding-a-rating-property-to-the-movie-model"></a>Přidání vlastnosti hodnocení do modelu videa
 
-Začněte přidáním nového `Rating` vlastnost ke stávající `Movie` třídy. Otevřít *Models\Movie.cs* a přidejte `Rating` vlastnost podobný následujícímu:
+Začněte přidáním nové vlastnosti `Rating` do existující třídy `Movie`. Otevřete soubor *Models\Movie.cs* a přidejte vlastnost `Rating`, jako je tato:
 
 [!code-csharp[Main](adding-a-new-field-to-the-movie-model-and-table/samples/sample3.cs)]
 
-Kompletní `Movie` třídy teď vypadá jako v následujícím kódu:
+Úplná `Movie` třída teď vypadá jako v následujícím kódu:
 
 [!code-csharp[Main](adding-a-new-field-to-the-movie-model-and-table/samples/sample4.cs?highlight=8)]
 
-Sestavení aplikace pomocí **sestavení** &gt; **sestavení film** nabídky příkazu, nebo stisknutím klávesy CTRL-SHIFT-B.
+Sestavte aplikaci pomocí příkazu nabídky **build** &gt;**Build Movie** nebo stisknutím kombinace kláves CTRL + SHIFT + B.
 
-Teď, když jste aktualizovali `Model` třídy, je také potřeba aktualizovat *\Views\Movies\Index.cshtml* a *\Views\Movies\Create.cshtml* zobrazení šablon zobrazíte nové `Rating`vlastností v okně prohlížeče.
+Teď, když jste aktualizovali `Model` třídu, budete také muset aktualizovat šablony zobrazení *\Views\Movies\Index.cshtml* a *\Views\Movies\Create.cshtml* , aby se zobrazila nová vlastnost `Rating` v zobrazení prohlížeče.
 
-Otevřít<em>\Views\Movies\Index.cshtml</em> a přidejte `<th>Rating</th>` hned za záhlaví sloupce <strong>cena</strong> sloupec. Pak přidejte `<td>` sloupec blíží ke konci šablonu k vykreslení `@item.Rating` hodnotu. Níže je co aktualizované <em>Index.cshtml</em> zobrazit šablonu vypadá jako:
+Otevřete soubor<em>\Views\Movies\Index.cshtml</em> a přidejte `<th>Rating</th>` záhlaví sloupce hned za sloupec <strong>Price</strong> . Pak přidejte `<td>` sloupec poblíž konce šablony, aby se vygenerovala `@item.Rating` hodnota. Níže vidíte, že aktualizovaná šablona zobrazení <em>index. cshtml</em> vypadá takto:
 
 [!code-cshtml[Main](adding-a-new-field-to-the-movie-model-and-table/samples/sample5.cshtml?highlight=26-28,46-48)]
 
-Dále otevřete *\Views\Movies\Create.cshtml* a přidejte následující kód na konci formuláře. Tím zkopírujete textové pole tak, aby hodnocení můžete zadat, když se vytvoří nová videa.
+Potom otevřete soubor *\Views\Movies\Create.cshtml* a přidejte následující kód poblíž konce formuláře. Tím vykreslíte textové pole, abyste mohli při vytváření nového filmu zadat hodnocení.
 
 [!code-cshtml[Main](adding-a-new-field-to-the-movie-model-and-table/samples/sample6.cshtml)]
 
-Teď když jste aktualizovali kód aplikace pro podporu nového `Rating` vlastnost.
+Nyní jste aktualizovali kód aplikace, aby podporoval novou vlastnost `Rating`.
 
-Nyní spusťte aplikaci a přejděte */Movies* adresy URL. Když toto provedete, ale zobrazí se vám některé z následujících chyb:
+Nyní spusťte aplikaci a přejděte na adresu URL */Movies* . Když to uděláte, zobrazí se jedna z následujících chyb:
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image10.png)
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image11.png)
 
-Tato chyba se zobrazuje, protože aktualizovaný `Movie` třídy modelu v aplikaci je nyní liší od schématu `Movie` tabulky existující databáze. (Neexistuje žádný `Rating` sloupec v tabulce databáze.)
+Tato chyba se zobrazuje, protože aktualizovaná třída modelu `Movie` v aplikaci je nyní odlišná od schématu `Movie` tabulky existující databáze. (V tabulce databáze nejsou žádné `Rating` sloupce.)
 
-Řešení chyby několika způsoby:
+K řešení této chyby je potřeba několik přístupů:
 
-1. Máte rozhraní Entity Framework automaticky vyřadit a znovu vytvořit databázi založené na nové schéma třídy modelu. Tento přístup je příliš pohodlné při aktivním vývoji pro testovací databázi. umožňuje rychlý rozvoj schématu modelu a databáze společně. Nevýhodou, je však dojít ke ztrátě existujících dat v databázi, tak můžete *není* chcete použít tento postup u provozní databáze! Použití inicializátoru automaticky naplnit databázi daty testu je často produktivní způsob, jak vyvíjet aplikace. Další informace o databázi inicializátory Entity Framework naleznete v tématu Petr Dykstra [kurz ASP.NET MVC a Entity Framework](../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-2. Explicitně upravte schéma stávající databázi tak, aby odpovídalo tříd modelu. Výhodou tohoto přístupu je, že zachováte vaše data. Můžete tuto změnu provést buď ručně, nebo tak, že vytvoříte databázi změnit skript.
-3. Pomocí migrace Code First aktualizovat schéma databáze.
+1. Entity Framework automaticky vyřadit a znovu vytvořit databázi na základě nového schématu třídy modelu. Tento přístup je velmi výhodný při aktivním vývoji na testovací databázi. umožňuje rychlou vývoj modelu a schématu databáze dohromady. Nevýhodou, ale je to, že ztratíte stávající data v databázi, takže *nechcete tento* přístup použít v provozní databázi. Použití inicializátoru k automatickému osazení databáze s testovacími daty je často produktivním způsobem pro vývoj aplikace. Další informace o Entity Frameworkch inicializátorech databáze najdete v [kurzu ASP.NET MVC/Entity Framework](../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)Dykstra.
+2. Explicitně upravte schéma existující databáze tak, aby odpovídalo třídám modelu. Výhodou tohoto přístupu je, že zachováte data. Tuto změnu můžete provést buď ručně, nebo vytvořením skriptu změny databáze.
+3. K aktualizaci schématu databáze použijte Migrace Code First.
 
-Pro účely tohoto kurzu používáme migrace Code First.
+V tomto kurzu použijeme Migrace Code First.
 
-Aktualizujte metodu počáteční hodnoty tak, aby poskytuje hodnoty pro nový sloupec. Otevřete soubor Migrations\Configuration.cs a přidat hodnocení pole do každé video.
+Aktualizujte metodu počáteční hodnoty tak, aby poskytovala hodnotu pro nový sloupec. Otevřete soubor Migrations\Configuration.cs a přidejte pole hodnocení do každého objektu filmu.
 
 [!code-csharp[Main](adding-a-new-field-to-the-movie-model-and-table/samples/sample7.cs?highlight=6)]
 
-Sestavte řešení a pak otevřete **Konzola správce balíčků** okna a zadejte následující příkaz:
+Sestavte řešení a otevřete okno **konzoly Správce balíčků** a zadejte následující příkaz:
 
 `add-migration AddRatingMig`
 
-`add-migration` Příkaz říká rozhraní framework migrace sloužící ke zkoumání aktuální model filmů s aktuální schéma databáze filmů a vytvářet kód potřebné k migraci databáze na nový model. AddRatingMig je volitelný a slouží k pojmenování souboru migrace. Je vhodné použít smysluplný název kroku migrace.
+Příkaz `add-migration` oznamuje migračnímu rozhraní, aby kontroloval aktuální model videa s aktuálním schématem video DB a vytvořil potřebný kód pro migraci databáze do nového modelu. AddRatingMig je libovolný a slouží k pojmenování souboru migrace. Je užitečné použít pro krok migrace smysluplný název.
 
-Po dokončení tohoto příkazu, Visual Studio otevře soubor třídy, která definuje nový `DbMigration` odvozené třídy a `Up` metoda se zobrazí kód, který vytvoří nový sloupec.
+Po dokončení tohoto příkazu aplikace Visual Studio otevře soubor třídy definující novou `DbMigration` odvozenou třídu a v metodě `Up` můžete zobrazit kód, který vytvoří nový sloupec.
 
 [!code-csharp[Main](adding-a-new-field-to-the-movie-model-and-table/samples/sample8.cs)]
 
-Sestavte řešení a potom zadejte příkaz "aktualizace databáze" v **Konzola správce balíčků** okna.
+Sestavte řešení a potom v okně **konzoly Správce balíčků** zadejte příkaz Update-Database.
 
-Následující obrázek znázorňuje výstup v **Konzola správce balíčků** okno (časové razítko předřazení AddRatingMig bude lišit.)
+Následující obrázek ukazuje výstup v okně **konzoly Správce balíčků** (AddRatingMig data razítko se liší.)
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image12.png)
 
-Znovu spusťte aplikaci a přejděte na adresu URL /Movies. Uvidíte nové pole hodnocení.
+Spusťte aplikaci znovu a přejděte na adresu URL/Movies. Můžete zobrazit nové pole hodnocení.
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image13.png)
 
-Klikněte na tlačítko **vytvořit nový** odkaz na přidání nového videa. Všimněte si, že můžete přidat hodnocení.
+Kliknutím na odkaz **vytvořit nový** přidejte nový film. Všimněte si, že můžete přidat hodnocení.
 
 ![7_CreateRioII](adding-a-new-field-to-the-movie-model-and-table/_static/image14.png)
 
-Klikněte na možnost **Vytvořit**. Tento nový film, včetně hodnocení, zobrazí se nově ve výpisu:
+Klikněte na možnost **Vytvořit**. Nový film, včetně hodnocení, se teď zobrazí v seznamu filmů:
 
 ![7_ourNewMovie_SM](adding-a-new-field-to-the-movie-model-and-table/_static/image15.png)
 
-Měli byste také přidat `Rating` pole pro úpravy, podrobnosti a SearchIndex zobrazit šablony.
+Do šablon zobrazení Edit, Details a SearchIndex byste měli také přidat pole `Rating`.
 
-Můžete například zadat příkaz "aktualizace databáze" v **Konzola správce balíčků** znovu okno a žádné změny byste nastavit, protože schéma odpovídá schématu modelu.
+Znovu můžete zadat příkaz "aktualizovat databázi" v okně **konzoly Správce balíčků** a provést žádné změny, protože schéma odpovídá modelu.
 
-V této části jste viděli, jak můžete upravit objekty modelu a udržovat synchronizované s změny databáze. Také jste se naučili způsob, jak naplnit nově vytvořenou databázi s ukázkovými daty, takže si můžete vyzkoušet scénáře. V dalším kroku Podívejme se na jak můžete přidat bohatší logiku ověřování na třídy modelu a povolit některé obchodní pravidla, která budou vynucena.
+V této části jste viděli, jak můžete upravovat objekty modelu a udržovat databázi synchronizované se změnami. Zjistili jste taky způsob, jak naplnit nově vytvořenou databázi pomocí ukázkových dat, abyste si mohli vyzkoušet scénáře. Teď se podíváme na to, jak můžete přidat bohatou logiku ověřování do tříd modelu a povolit uplatnění některých obchodních pravidel.
 
 > [!div class="step-by-step"]
 > [Předchozí](examining-the-edit-methods-and-edit-view.md)
-> [další](adding-validation-to-the-model.md)
+> [Další](adding-validation-to-the-model.md)

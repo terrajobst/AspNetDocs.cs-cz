@@ -8,16 +8,16 @@ ms.date: 01/12/2012
 ms.assetid: 44aa1ac4-6ea2-48a2-972d-52710c48eae5
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/adding-a-new-category-to-the-dropdownlist-using-jquery-ui
 msc.type: authoredcontent
-ms.openlocfilehash: cb9053593e2ea788638aec063c845cb91121861b
-ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
+ms.openlocfilehash: 3207079ee468232e5f75b081421241c232936baf
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77075109"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77455721"
 ---
 # <a name="adding-a-new-category-to-the-dropdownlist-using-jquery-ui"></a>Přidání nové kategorie do ovládacího prvku DropDownList v uživatelském rozhraní jQuery
 
-od [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Značka HTML `Select` je ideální pro prezentaci seznamu dat pevné kategorie, ale často je potřeba přidat novou kategorii. Předpokládejme, že chceme přidat Žánr "Operait" do kategorií v naší databázi? V této části použijeme uživatelské rozhraní jQuery k přidání dialogového okna, které můžeme použít k přidání nové kategorie. Následující obrázek ukazuje, jak bude uživatelské rozhraní v prohlížeči k dispozici.
 
@@ -125,7 +125,7 @@ Rick. Anderson [at] Microsoft. com
 - [ASP.NET MVC – tento kurz – kaskádové rozevírací seznamy –](https://weblogs.asp.net/raduenuca/archive/2011/03/06/asp-net-mvc-cascading-dropdown-lists-tutorial-part-1-defining-the-problem-and-the-context.aspx) [radu Enuca](https://weblogs.asp.net/raduenuca/default.aspx)
 - [Zvolené](https://harvesthq.github.com/chosen/) Modul plug-in JavaScriptu, který podporuje vícenásobné výběry a filtrování.
 
-### <a name="contributors"></a>Přispěvatelé
+### <a name="contributors"></a>Spoluautoři
 
 - [Radu Enuca](https://weblogs.asp.net/raduenuca/default.aspx)
 - Jean-Sébastien Goupil

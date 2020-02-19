@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: 52d6c941-2cd9-442f-9872-2c798d6d90cd
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
 msc.type: authoredcontent
-ms.openlocfilehash: 0956aaaf1f6a1a0d2f5d93f98cb6959cec98dbaf
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: dfd8a3ac2328d3f17dfbe36e68b37d181177b0f4
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74582703"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457086"
 ---
 # <a name="web-development-best-practices-building-real-world-cloud-apps-with-azure"></a>Osvědčené postupy vývoje pro web (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -126,7 +126,7 @@ A tato asynchronní podpora funguje nejen pro příkazy INSERT, DELETE, Updates 
 
 K dispozici je `Async` verze metody `ToList`, protože v tomto kódu je metoda, která způsobí odeslání dotazu do databáze. Metody `Where` a `OrderByDescending` pouze konfigurují dotaz, zatímco metoda `ToListAsync` spouští dotaz a ukládá odpověď do `result` proměnné.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Osvědčené postupy vývoje pro web, které jsou zde popsané, můžete implementovat v jakémkoli webovém programovacím rozhraní a jakémkoli cloudovém prostředí, ale máme nástroje v ASP.NET a Windows Azure, abychom to usnadnili. Pokud budete postupovat podle těchto vzorů, můžete snadno škálovat svou webovou vrstvu a minimalizovat své náklady, protože každý server bude moci zvládnout více provozu.
 
@@ -141,7 +141,7 @@ Bezstavové webové servery:
 - [Vzory a postupy Microsoft – pokyny](https://msdn.microsoft.com/library/dn589774.aspx)k automatickému škálování
 - [Zakazuje se spřažení instancí ARR na webech Windows Azure](https://azure.microsoft.com/blog/2013/11/18/disabling-arrs-instance-affinity-in-windows-azure-web-sites/). Příspěvek na blogu od Ereze Benari vysvětluje spřažení relací na webech Windows Azure.
 
-ZDROJ
+CDN:
 
 - [Failsafe: vytváření škálovatelných, odolných Cloud Services](https://channel9.msdn.com/Series/FailSafe). Devět datových řad podle Ulrich Homann, matolin Mercuri a Simms. Podívejte se na diskuzi CDN ve epizody 3 od 1.1:34:00.
 - [Vzor pro hostování statických obsahu Microsoft Patterns and Practices](https://msdn.microsoft.com/library/dn589776.aspx)

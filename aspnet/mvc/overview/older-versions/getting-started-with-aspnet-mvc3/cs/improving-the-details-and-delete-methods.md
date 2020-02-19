@@ -1,87 +1,87 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/improving-the-details-and-delete-methods
-title: Vylepšení podrobností a metod Delete (C#) | Dokumentace Microsoftu
+title: Zlepšení podrobností a metod Delete (C#) | Microsoft Docs
 author: Rick-Anderson
-description: V tomto kurzu se seznámíte se základy vytváření ASP.NET MVC webovou aplikaci pomocí Microsoft Visual Web Developer 2010 Express Service Pack 1, což je...
+description: V tomto kurzu se seznámíte se základy vytváření webových aplikací ASP.NET MVC pomocí nástroje Microsoft Visual Web Developer 2010 Express Service Pack 1, který je...
 ms.author: riande
 ms.date: 01/12/2011
 ms.assetid: 3f42edd9-c5b8-4712-9055-970f7d38e350
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/improving-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: d98699649d33a9fe17c2b39652d410afe2e883be
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 54d7be8fe1bff604ae9c9e9914d7c6426ab85c1c
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130154"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457502"
 ---
 # <a name="improving-the-details-and-delete-methods-c"></a>Vylepšení podrobností a metod Delete (C#)
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 > > [!NOTE]
-> > Je k dispozici aktualizovaná verze tohoto kurzu [tady](../../../getting-started/introduction/getting-started.md) , která používá ASP.NET MVC 5 a Visual Studio 2013. Je bezpečnější, postupujte podle mnohem jednodušší a ukazuje další funkce.
+> > K [dispozici je](../../../getting-started/introduction/getting-started.md) aktualizovaná verze tohoto kurzu, která používá ASP.NET MVC 5 a Visual Studio 2013. Je to bezpečnější, mnohem jednodušší a ukazuje více funkcí.
 > 
 > 
-> V tomto kurzu se seznámíte se základy vytváření ASP.NET MVC webovou aplikaci pomocí Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze sady Microsoft Visual Studio. Než začnete, ujistěte se, že jste nainstalovali požadavky uvedené níže. Kliknutím na následující odkaz můžete nainstalovat všechny z nich: [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Alternativně můžete nainstalovat jednotlivě požadavky pomocí následujících odkazů:
+> V tomto kurzu se seznámíte se základy vytváření webových aplikací ASP.NET MVC pomocí nástroje Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze Microsoft Visual Studio. Než začnete, ujistěte se, že jste nainstalovali požadavky uvedené níže. Všechny z nich můžete nainstalovat kliknutím na následující odkaz: instalace [webové platformy](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Případně můžete požadavky jednotlivě nainstalovat pomocí následujících odkazů:
 > 
-> - [Visual Studio Web Developer Express SP1 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)
-> - [ASP.NET MVC 3 Tools Update](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
-> - [SQL Server Compact 4.0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(podpora modulu runtime a nástroje)
+> - [Požadavky sady Visual Studio Web Developer Express SP1](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)
+> - [Aktualizace nástrojů MVC 3 pro ASP.NET](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
+> - [SQL Server Compact 4,0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(podpora modulu runtime + nástroje)
 > 
-> Pokud používáte Visual Studio 2010 namísto Visual Web Developer 2010, nainstalujte příslušné požadované součásti po kliknutí na následující odkaz: [Visual Studio 2010 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack).
+> Pokud používáte sadu Visual Studio 2010 místo sady Visual Web Developer 2010, nainstalujte požadavky kliknutím na následující odkaz: sady [Visual studio 2010 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack).
 > 
-> Projekt aplikace Visual Web Developer se zdrojovým kódem jazyka C# je k dispozici v tomto tématu. [Stáhněte si verzi C#](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098). Pokud dáváte přednost jazyka Visual Basic, přejděte [verze jazyka Visual Basic](../vb/intro-to-aspnet-mvc-3.md) tohoto kurzu.
+> Projekt Visual Web Developer se C# zdrojovým kódem je k dispozici pro toto téma. [Stáhněte si C# verzi](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098). Pokud dáváte přednost Visual Basic, přepněte se na [Visual Basic verzi](../vb/intro-to-aspnet-mvc-3.md) tohoto kurzu.
 
-V této části kurzu se provede několik vylepšení pro automaticky generované `Details` a `Delete` metody. Tyto změny se nevyžadují, ale s několika malých bity kódu můžete snadno zvýšit aplikace.
+V této části kurzu provedete některá vylepšení automaticky generovaných `Details` a `Delete`ch metod. Tyto změny nejsou vyžadovány, ale pouze s několika malými verzemi kódu, můžete aplikaci snadno vylepšit.
 
-## <a name="improving-the-details-and-delete-methods"></a>Vylepšení podrobností a metod Delete
+## <a name="improving-the-details-and-delete-methods"></a>Vylepšení metod Details a DELETE
 
-Když vygenerovanou `Movie` kontroleru, ASP.NET MVC vygeneruje kód, který dobře fungovalo, ale, který lze robustnější s několika malých změn.
+Když jste vygenerovali `Movie` kontroler, ASP.NET MVC vygenerovala kód, který fungoval skvěle, ale který je možné lépe nastavit pomocí několika malých změn.
 
-Otevřít `Movie` kontroleru a upravit `Details` metodu tak, že vrací `HttpNotFound` při videa se nenašel. Také byste měli upravit `Details` metodu pro nastavení výchozí hodnoty pro Identifikátor, který je předán. (Podobné změny `Edit` metoda ve [6. část](examining-the-edit-methods-and-edit-view.md) této příručky.) Však musíte změnit návratový typ `Details` metodu z `ViewResult` k `ActionResult`, protože `HttpNotFound` metoda nevrací `ViewResult` objektu. Následující příklad ukazuje upravenou `Details` metody.
+Otevřete kontroler `Movie` a upravte metodu `Details` vrácením `HttpNotFound`, když se video nenajde. Měli byste také upravit metodu `Details` k nastavení výchozí hodnoty pro ID, které je předáno. (V [části 6](examining-the-edit-methods-and-edit-view.md) tohoto kurzu jste provedli podobné změny metody `Edit`.) Je však třeba změnit návratový typ metody `Details` z `ViewResult` na `ActionResult`, protože metoda `HttpNotFound` nevrací objekt `ViewResult`. Následující příklad ukazuje upravenou metodu `Details`.
 
 [!code-csharp[Main](improving-the-details-and-delete-methods/samples/sample1.cs)]
 
-Kód nejprve umožňuje snadno vyhledat data s využitím `Find` metody. Důležitou funkci zabezpečení, který jsme vytvořili do metody je, že kód ověří, zda `Find` metoda našla filmu předtím, než kód se pokusí provádět s ním. Například se hacker by mohla zanést chyby do lokality tak, že změníte adresu URL vytvořené odkazy z `http://localhost:xxxx/Movies/Details/1` na něco jako `http://localhost:xxxx/Movies/Details/12345` (nebo jinou hodnotu, která nepředstavuje skutečný film). Pokud nemáte kontrolu null film, může vést k chybě databáze.
+Code First usnadňuje hledání dat pomocí metody `Find`. Důležitou funkcí zabezpečení, kterou jsme do metody zavedli, je to, že kód ověřuje, že metoda `Find` našla film předtím, než se kód pokusí s ním něco udělat. Hacker by například mohl do lokality způsobit chyby tím, že změní adresu URL vytvořenou odkazy z `http://localhost:xxxx/Movies/Details/1` na něco jako `http://localhost:xxxx/Movies/Details/12345` (nebo některá jiná hodnota, která nepředstavuje skutečný film). Pokud nekontrolujete film s hodnotou null, může to vést k chybě databáze.
 
-Podobně, změnit `Delete` a `DeleteConfirmed` metody, které můžete zadat výchozí hodnotu pro parametr ID a vrátit `HttpNotFound` při videa se nenašel. Aktualizovaný `Delete` metody v `Movie` řadiče jsou uvedeny níže.
+Podobně změňte metody `Delete` a `DeleteConfirmed` a určete výchozí hodnotu parametru ID a vraťte `HttpNotFound`, když se video nenajde. Níže jsou uvedené aktualizované metody `Delete` v řadiči `Movie`.
 
 [!code-csharp[Main](improving-the-details-and-delete-methods/samples/sample2.cs)]
 
-Všimněte si, že `Delete` metoda neodstraní data. Operace delete v reakci na příkaz GET požádat o (nebo k tomuto účelu, provádění operace úpravy, vytváření operace nebo jiné operace, která se mění data) otevře bezpečnostní riziko. Další informace o tom, najdete v blogu Stephen Walther [46 Tip # aplikace ASP.NET MVC – nepoužívejte odstranit odkazy, protože uživatel vytvořit bezpečnostní díry](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx).
+Všimněte si, že metoda `Delete` neodstraní data. Provádění operace odstranění v reakci na požadavek GET (nebo pro tuto skutečnost, provádění operace Edit, operace vytvoření nebo jakékoli jiné operace, která mění data) otevře bezpečnostní riziko. Další informace najdete v tématu Stephen položky blogu Walther pro [ASP.NET #46 MVC – nepoužívejte odstranění odkazů, protože vytvářejí bezpečnostní otvory](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx).
 
-`HttpPost` Pojmenovanou metodu, která odstraní data `DeleteConfirmed` poskytnout metodu HTTP POST jedinečný podpis nebo název. Níže jsou zobrazena podpisy dvou metod:
+Metoda `HttpPost`, která odstraňuje data, má název `DeleteConfirmed`, který metodě HTTP POST udělí jedinečný podpis nebo název. Níže jsou uvedené signatury dvou metod:
 
 [!code-csharp[Main](improving-the-details-and-delete-methods/samples/sample3.cs)]
 
-Modul CLR (CLR) vyžaduje přetížené metody má jedinečnou signaturu (stejný název, jiný seznam parametrů). Tady však dvou metod Delete – jeden u metody GET - a jeden pro metodu POST, že oba vyžadují stejnou signaturu. (I potřebují tak, aby přijímal celá čísla jako parametr.)
+Modul CLR (Common Language Runtime) vyžaduje, aby přetížené metody měly jedinečný podpis (stejný název, jiný seznam parametrů). Tady ale budete potřebovat dvě metody odstranění – jednu pro GET a jednu pro POST--to vyžaduje stejnou signaturu. (Obě musí přijmout jedno celé číslo jako parametr.)
 
-Řazení, to zjistit, můžete provést několik věcí. Jeden je poskytnout metody různými názvy. Je to, co jsme udělali mu předchozí příklad. Ale zavádí malé problému: ASP.NET mapuje segmentů adresy URL na metody akce podle názvu, a Pokud přejmenujete metodu, obvykle směrování nebude moci najít tuto metodu. Řešení se zobrazí v příkladu, který je přidat `ActionName("Delete")` atribut `DeleteConfirmed` metoda. Efektivně provede mapování pro směrování systém tak, aby adresa URL, která zahrnuje <em>/Delete/</em>příspěvek požadavku najdete `DeleteConfirmed` metody.
+Pokud je chcete seřadit, můžete provést několik věcí. Jedním z nich je poskytnout metody různé názvy. To je v předchozím příkladu. To však přináší malý problém: ASP.NET mapuje segmenty adresy URL na metody akcí podle názvu a Pokud přejmenujete metodu, směrování normálně nedokáže tuto metodu najít. Řešení je to, co vidíte v příkladu, což je přidání atributu `ActionName("Delete")` do metody `DeleteConfirmed`. To efektivně provádí mapování pro systém směrování tak, aby adresa URL, která obsahuje <em>/Delete/</em>pro požadavek post, mohla najít metodu `DeleteConfirmed`.
 
-Dalším způsobem, jak se vyhnout potížím s metodami, které mají stejné názvy a podpisy se uměle změna podpisu metody POST, která zahrnují Nepoužitý parametr. Někteří vývojáři přidat například typ parametru `FormCollection` , který je předán metodě příspěvku a poté jednoduše nepoužívejte parametr:
+Dalším způsobem, jak se vyhnout problému s metodami, které mají stejný název a signatury, je umělá změna signatury metody POST tak, aby zahrnovala nepoužitý parametr. Například někteří vývojáři přidávají typ parametru `FormCollection`, který je předán metodě POST, a pak jednoduše nepoužívejte parametr:
 
 [!code-csharp[Main](improving-the-details-and-delete-methods/samples/sample4.cs)]
 
 ## <a name="wrapping-up"></a>Zabalení
 
-Teď máte dokončené aplikace ASP.NET MVC, která ukládá data v databázi systému SQL Server Compact. Můžete vytvořit, číst, aktualizovat, odstranit a hledat videa.
+Nyní máte úplnou aplikaci ASP.NET MVC, která ukládá data do databáze SQL Server Compact. Můžete vytvářet, číst, aktualizovat, odstraňovat a hledat filmy.
 
 ![](improving-the-details-and-delete-methods/_static/image1.png)
 
-V tomto kurzu základní teď vám pomůže začít vytváření kontrolerů, jejich přidružení k zobrazení a předáním kolem údajů o pevně zakódované. Když pak vytvoří a navržené datový model. Entity Framework Code First vytvořili databázi z datového modelu v reálném čase a systém generování uživatelského rozhraní ASP.NET MVC automaticky generované metody akce a zobrazení pro základní operace CRUD. Pak jste přidali hledání formulář, který umožní uživatelům vyhledávání databáze. Změnit databáze, kterou chcete zahrnout nové sloupce dat a potom aktualizuje dvě stránky, které umožňuje vytvořit a zobrazit tato nová data. Přidání ověření označením datového modelu s atributy z `DataAnnotations` oboru názvů. Výsledný ověřování je spuštěno na straně klienta a na serveru.
+Tento základní kurz vám umožní začít vytvářet řadiče, přidružit je k zobrazením a předávat je s využitím pevně zakódovaných dat. Pak jste vytvořili a navrhli datový model. Entity Framework Code First vytvořila databáze z datového modelu za běhu a systém generování uživatelského rozhraní ASP.NET MVC automaticky vygeneroval metody a zobrazení akcí pro základní operace CRUD. Pak jste přidali vyhledávací formulář, který umožní uživatelům hledat v databázi. Změnili jste databázi tak, aby obsahovala nový sloupec dat, a poté aktualizovala dvě stránky, aby bylo možné vytvořit a zobrazit tato nová data. Přidaní jste ověřování pomocí označení datového modelu pomocí atributů z oboru názvů `DataAnnotations`. Výsledné ověřování běží na klientovi a na serveru.
 
-Pokud chcete nasadit aplikaci, je užitečné pro první testování aplikace na místním serveru služby IIS 7. To může být použito [instalačního programu webové platformy](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=ASPNET;) odkaz povolit nastavení služby IIS pro aplikace ASP.NET. V následujících tématech nasazení:
+Pokud chcete aplikaci nasadit, je vhodné nejdřív otestovat aplikaci na místním serveru služby IIS 7. Pomocí tohoto odkazu [Instalace webové platformy](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=ASPNET;) můžete povolit nastavení služby IIS pro aplikace ASP.NET. Podívejte se na následující odkazy na nasazení:
 
-- [Mapa obsahu nasazení technologie ASP.NET](https://msdn.microsoft.com/library/dd394698.aspx)
-- [Povolení služby IIS 7.x](https://blogs.msdn.com/b/rickandy/archive/2011/03/14/enabling-iis-7-x-on-windows-7-vista-sp1-windows-2008-windows-2008-r2.aspx)
-- [Projekty nasazení webových aplikací](https://msdn.microsoft.com/library/dd394698.aspx)
+- [Mapa obsahu nasazení ASP.NET](https://msdn.microsoft.com/library/dd394698.aspx)
+- [Povolení služby IIS 7. x](https://blogs.msdn.com/b/rickandy/archive/2011/03/14/enabling-iis-7-x-on-windows-7-vista-sp1-windows-2008-windows-2008-r2.aspx)
+- [Nasazení projektů webové aplikace](https://msdn.microsoft.com/library/dd394698.aspx)
 
-Nyní neváhejte se podívat na naše středně [vytváření datového modelu Entity Framework pro aplikaci ASP.NET MVC](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) a [MVC Music Store](../../mvc-music-store/mvc-music-store-part-1.md) kurzy, prozkoumávat [technologie ASP.NET články na webu MSDN](https://msdn.microsoft.com/library/gg416514(VS.98).aspx)a podívejte se na mnoho videa a materiály v [ https://asp.net/mvc ](https://asp.net/mvc) získat i další informace o ASP.NET MVC. [Fóra ASP.NET MVC](https://forums.asp.net/1146.aspx) jsou skvělé místo, kde můžete klást otázky.
+Teď vám pomůžeme přejít na naši mezilehlou škálu [Entity Framework datový model pro aplikace ASP.NET MVC](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) a kurzy pro [hudební úložiště MVC](../../mvc-music-store/mvc-music-store-part-1.md) , abyste si prozkoumali [články ASP.NET na webu MSDN](https://msdn.microsoft.com/library/gg416514(VS.98).aspx)a provedli si více videí a prostředků na [https://asp.net/mvc](https://asp.net/mvc) , abyste se dozvěděli ještě víc o ASP.NET MVC! [Fóra ASP.NET MVC](https://forums.asp.net/1146.aspx) jsou skvělým místem pro pokladení otázek.
 
-Užijte si!
+Užijte si ji!
 
-Scott Hanselman ([ http://hanselman.com ](http://hanselman.com) a [ @shanselman ](http://twitter.com/shanselman) na Twitteru) a Rick Anderson [blogs.msdn.com/rickAndy](https://blogs.msdn.com/rickAndy)
+– Scott Hanselman ([http://hanselman.com](http://hanselman.com) a [@shanselman](http://twitter.com/shanselman) na Twitteru) a Rick Anderson [blogs.MSDN.com/rickAndy](https://blogs.msdn.com/rickAndy)
 
 > [!div class="step-by-step"]
 > [Předchozí](adding-validation-to-the-model.md)

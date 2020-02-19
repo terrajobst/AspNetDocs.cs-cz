@@ -8,16 +8,16 @@ ms.date: 08/15/2012
 ms.assetid: 27dc4fc8-1b51-43b0-933f-fc1b52476523
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: 907a16946c93761cd543135b0b226c8696b041f0
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 9716def069ca9f7115af32e16381f41bd4d13342
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74594297"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457645"
 ---
 # <a name="aspnet-mvc-4-mobile-features"></a>Funkce mobilní architektury ASP.NET MVC 4
 
-Od [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 > V tomto kurzu je teď verze MVC 5 tohoto kurzu s ukázkami kódu v [Nasazení mobilní webové aplikace ASP.NET MVC 5 na webech Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/).
 
@@ -195,7 +195,7 @@ Následující obrázek ukazuje soubory přidané a změněné do projektu MvcMo
 Balíček NuGet jQuery. Mobile. MVC nainstaluje následující:
 
 - *Aplikace\_souboru Start\BundleMobileConfig.cs* , který je potřeba pro odkazování na přidané soubory JAVASCRIPTU a šablony pro jQuery. Musíte postupovat podle následujících pokynů a odkazovat na mobilní sadu definovanou v tomto souboru.
-- soubory v mobilní ŠABLONĚ.
+- jQuery Mobile CSS files.
 - Widget kontroleru `ViewSwitcher` (*Controllers\ViewSwitcherController.cs*).
 - soubory JavaScriptu pro mobilní zařízení
 - Soubor rozložení s mobilním stylem jQuery (*Views\Shared\\_Layout. Mobile. cshtml*).

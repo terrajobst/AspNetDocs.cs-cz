@@ -8,16 +8,16 @@ ms.date: 07/20/2015
 ms.assetid: 406518e9-3817-49ce-8b90-e82bc461e2c0
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching
 msc.type: authoredcontent
-ms.openlocfilehash: c66187b990a828c53bd2f8115e3c9660fc6022ed
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 87a7516415895e761d1589fd459b93e5c15c0f85
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74582814"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77456995"
 ---
 # <a name="distributed-caching-building-real-world-cloud-apps-with-azure"></a>Distribuované ukládání do mezipaměti (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -53,7 +53,7 @@ Aby bylo možné načíst data z mezipaměti, je nutné je nejprve uložit. K di
 - Nabízení dat na pozadí
 
     Služby na pozadí zadávají data do mezipaměti podle pravidelného plánu a aplikace se vždycky stáhnou z mezipaměti. Tento přístup funguje skvěle se zdroji dat s vysokou latencí, které nevyžadují vždycky vracet nejnovější data.
-- Přerušení okruhů
+- Circuit Breaker
 
     Aplikace obvykle komunikuje přímo s trvalým úložištěm dat, ale pokud má trvalé úložiště dat problémy s dostupností, aplikace načte data z mezipaměti. Data mohla být vložena do mezipaměti s využitím strategie pro nabízení dat z mezipaměti nebo na pozadí. Jedná se o strategii zpracování chyb, nikoli strategii zvýšení výkonu.
 
@@ -82,7 +82,7 @@ Azure nabízí následující služby ukládání do mezipaměti: [Azure Redis C
 
 Jak je uvedeno v [kapitole Doporučené postupy pro vývoj webu](web-development-best-practices.md), doporučujeme vyhnout se použití stavu relace. Pokud vaše aplikace vyžaduje stav relace, je dalším osvědčeným postupem vyhnout se výchozímu zprostředkovateli v paměti, protože nepovoluje horizontální navýšení kapacity (více instancí webového serveru). Zprostředkovatel stavu relace ASP.NET SQL Server umožňuje, aby lokalita, která běží na více webových serverech, používala stav relace, ale dojde k tomu při vysoké latenci v porovnání se zprostředkovatelem v paměti. Nejlepším řešením, pokud potřebujete použít stav relace, je použití poskytovatele mezipaměti, jako je [zprostředkovatel stavu relace pro Azure cache](https://msdn.microsoft.com/library/windowsazure/gg185668.aspx).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Viděli jste, jak může aplikace opravit IT implementovat ukládání do mezipaměti, aby se zlepšila doba odezvy a škálovatelnost, a aby mohla aplikace nadále reagovat na operace čtení, pokud databáze není k dispozici. V [Další části](queue-centric-work-pattern.md) se dozvíte, jak dál vylepšit škálovatelnost a zajistit, aby aplikace pokračovala v reakci na operace zápisu.
 

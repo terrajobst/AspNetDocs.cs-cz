@@ -8,16 +8,16 @@ ms.date: 11/03/2015
 ms.assetid: 7ead83bc-c08c-4b26-8617-00e07292e35c
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling
 msc.type: authoredcontent
-ms.openlocfilehash: fc281e3d8f7c9edd4d98b029a67e58113132a8b3
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: e798cb83cfb97db63fef6dc38c8f62804461d01b
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74583660"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77456852"
 ---
 # <a name="transient-fault-handling-building-real-world-cloud-apps-with-azure"></a>Zpracování přechodných chyb (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -72,7 +72,7 @@ Neexistují žádné zásady opakování pro všechny velikosti. Můžete to zku
 
 Pokyny k zásadám pro opakování SQL Database najdete v tématu [řešení přechodných chyb a chyb připojení SQL Database](https://azure.microsoft.com/documentation/articles/sql-database-connectivity-issues/).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Strategie opakovaného nebo Back-off může přispět k dočasným chybám, které jsou pro zákazníka většinou neviditelné, a poskytuje rozhraní, které můžete použít k minimalizaci práce s implementací strategie bez ohledu na to, jestli používáte ADO.NET, Entity Framework nebo službu Azure Storage.
 
@@ -98,7 +98,7 @@ Videa
 
 Ukázka kódu
 
-- [Základy cloudových služeb v Azure](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Ukázková aplikace vytvořená poradenským týmem pro zákazníky Microsoft Azure, která ukazuje, jak použít [blok přechodného zpracování chyb v podnikové knihovně](http://nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/) (TFH). Další informace najdete v tématu [vrstva přístupu k datům v cloudových službách – zpracování přechodných chyb](https://social.technet.microsoft.com/wiki/contents/articles/18665.cloud-service-fundamentals-data-access-layer-transient-fault-handling.aspx). TFH se doporučuje pro přístup k databázím přímo pomocí ADO.NET (bez použití Entity Framework).
+- [Základy cloudových služeb v Azure](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Ukázková aplikace vytvořená poradenským týmem pro zákazníky Microsoft Azure, která ukazuje, jak použít [blok přechodného zpracování chyb v podnikové knihovně](http://nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/) (TFH). Další informace najdete v článku [Vrstva přístupu k datům u aplikace Cloud Service Fundamentals – zpracování přechodných chyb](https://social.technet.microsoft.com/wiki/contents/articles/18665.cloud-service-fundamentals-data-access-layer-transient-fault-handling.aspx). TFH se doporučuje pro přístup k databázím přímo pomocí ADO.NET (bez použití Entity Framework).
 
 > [!div class="step-by-step"]
 > [Předchozí](monitoring-and-telemetry.md)

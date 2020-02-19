@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: cc1ad51b-40c3-4c68-8620-9aaa0fd1f6cf
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern
 msc.type: authoredcontent
-ms.openlocfilehash: c73b070f11366e781bcea70ffc84fd49a47d469a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 1177336b25479c06706227e5c8ff4d027cdaebb8
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74582751"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77456982"
 ---
 # <a name="queue-centric-work-pattern-building-real-world-cloud-apps-with-azure"></a>Pracovní vzor orientovaný na fronty (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -166,7 +166,7 @@ Cyklické dotazování na zprávy ve frontě vznikají za malý poplatek za tran
 
 Ve webovém projektu může přidání asynchronního kódu automaticky zvýšit výkon, protože služba IIS spravuje omezený fond vláken. Nejedná se o případ v projektu role pracovního procesu. Pro zlepšení škálovatelnosti role pracovního procesu můžete napsat vícevláknový kód nebo použít asynchronní kód k implementaci [paralelního programování](https://msdn.microsoft.com/library/ff963553.aspx). Ukázka neimplementuje paralelní programování, ale ukazuje, jak vytvořit asynchronní kód, abyste mohli implementovat paralelní programování.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V této kapitole jste viděli, jak zlepšit odezvu aplikací, spolehlivost a škálovatelnost implementací modelu práce orientovaného na fronty.
 
@@ -186,7 +186,7 @@ Nápovědě
 - [Vzory a postupy Microsoftu – doprovodné materiály pro Azure](https://msdn.microsoft.com/library/dn568099.aspx) Přečtěte si téma Úvod do asynchronního zasílání zpráv, model kanálů a filtrů, vzorec kompenzační transakce, model konkurenčních spotřebitelů, CQRS vzor.
 - [CQRS cesta](https://msdn.microsoft.com/library/jj554200). Elektronická kniha o CQRS podle vzorů a postupů Microsoftu.
 
-Obrazový
+Video:
 
 - [Failsafe: vytváření škálovatelných, odolných Cloud Services](https://channel9.msdn.com/Series/FailSafe). Devět datových řad podle Ulrich Homann, matolin Mercuri a Simms. Prezentuje základní koncepty a principy architektury v rámci velmi přístupného a zajímavého způsobu, který vychází ze zkušeností zákazníků Microsoftu pro poradenské zákazníky (CAT) se skutečnými zákazníky. Úvod ke službě Azure Storage a frontách najdete v části epizody 5 od 35:13.
 

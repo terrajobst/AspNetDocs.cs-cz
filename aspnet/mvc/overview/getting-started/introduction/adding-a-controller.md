@@ -8,16 +8,16 @@ ms.date: 10/17/2013
 ms.assetid: cc764f3b-6921-486a-8f44-c6ccd1249acd
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 80000b366203eff4b9524b7a5995832753b9eed3
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.openlocfilehash: 194a8a7398e163f0c37164a8724f98b16444984b
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519047"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457216"
 ---
 # <a name="adding-a-controller"></a>Přidání kontroleru
 
-od [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [!INCLUDE [Tutorial Note](index.md)]
 
@@ -65,7 +65,7 @@ Když aplikaci spustíte a nezadáte žádné segmenty adresy URL, použije se v
 
 První část adresy URL určuje třídu kontroleru, která se má spustit. Proto */HelloWorld* mapuje na třídu `HelloWorldController`. Druhá část adresy URL určuje metodu Action pro třídu, která má být provedena. */HelloWorld/index* by proto způsobila spuštění metody `Index` `HelloWorldController` třídy. Všimněte si, že jsme museli procházet na */HelloWorld* a ve výchozím nastavení se použila metoda `Index`. Důvodem je, že metoda s názvem `Index` je výchozí metoda, která bude volána na řadiči, pokud není explicitně určena. Třetí část segmentu adresy URL (`Parameters`) je určena pro data směrování. Později se v tomto kurzu zobrazí data o trasách.
 
-Přejděte do `http://localhost:xxxx/HelloWorld/Welcome`. Metoda `Welcome` se spustí a vrátí řetězec, &quot;se jedná o metodu akce Welcome...&quot;. Výchozí mapování MVC je `/[Controller]/[ActionName]/[Parameters]`. Pro tuto adresu URL se kontroler `HelloWorld` a `Welcome` je metoda Action. Zatím jste nepoužili `[Parameters]` část této adresy URL.
+Přejděte na `http://localhost:xxxx/HelloWorld/Welcome`. Metoda `Welcome` se spustí a vrátí řetězec, &quot;se jedná o metodu akce Welcome...&quot;. Výchozí mapování MVC je `/[Controller]/[ActionName]/[Parameters]`. Pro tuto adresu URL se kontroler `HelloWorld` a `Welcome` je metoda Action. Zatím jste nepoužili `[Parameters]` část této adresy URL.
 
 ![](adding-a-controller/_static/image6.png)
 

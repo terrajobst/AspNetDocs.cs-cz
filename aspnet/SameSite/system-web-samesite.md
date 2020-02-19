@@ -3,14 +3,14 @@ title: Práce s SameSite soubory cookie v ASP.NET
 author: rick-anderson
 description: Naučte se používat k SameSite souborů cookie v ASP.NET.
 ms.author: riande
-ms.date: 1/22/2019
+ms.date: 2/15/2019
 uid: samesite/system-web-samesite
-ms.openlocfilehash: c262e300361f33621e8bd126a34b251c23f56e1a
-ms.sourcegitcommit: 6bd0d7581ec36dc32cb85d0d5fc0e51068dd4423
+ms.openlocfilehash: edb368910b24be2d042afe3c19ffa1fb23245443
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77234759"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77455699"
 ---
 # <a name="work-with-samesite-cookies-in-aspnet"></a>Práce s SameSite soubory cookie v ASP.NET
 
@@ -21,11 +21,10 @@ SameSite je Konceptový standard [IETF](https://ietf.org/about/) navržený tak,
 * Soubory cookie bez hlavičky SameSite se ve výchozím nastavení považují za `SameSite=Lax`.
 * aby bylo možné používat soubory cookie pro více webů, je třeba použít `SameSite=None`.
 * Soubory cookie, které vyhodnotí `SameSite=None`, musí být také označeny jako `Secure`.
-* Hodnota SameSite = None není povolena [standardem 2016](https://tools.ietf.org/html/draft-west-first-party-cookies-07) a způsobí, že některé implementace považují takové soubory cookie za SameSite = Strict. Viz [Podpora starších prohlížečů](#sob) v tomto dokumentu.
+* U aplikací, které používají [`<iframe>`](https://developer.mozilla.org/docs/Web/HTML/Element/iframe) , může docházet k problémům s `sameSite=Lax` nebo `sameSite=Strict` soubory cookie, protože `<iframe>` se považují za scénáře mezi lokalitami.
+* Hodnota `SameSite=None` není povolena [standardem 2016](https://tools.ietf.org/html/draft-west-first-party-cookies-07) a způsobí, že některé implementace považují takové soubory cookie za `SameSite=Strict`. Viz [Podpora starších prohlížečů](#sob) v tomto dokumentu.
 
 Nastavení `SameSite=Lax` funguje pro většinu souborů cookie aplikace. Některé formy ověřování, jako je [OpenID Connect](https://openid.net/connect/) (OIDC) a [WS-Federation](https://auth0.com/docs/protocols/ws-fed) , jako výchozí vystavení přesměrování na základě. Přesměrování na základě příspěvku spustí ochranu prohlížeče SameSite, takže pro tyto součásti je SameSite zakázaný. Většina přihlášení [OAuth](https://oauth.net/) není ovlivněná kvůli rozdílům ve způsobu, jakým jsou požadavky v toku.
-
-U aplikací, které používají `iframe`, může docházet k potížím s `SameSite=Lax` nebo `SameSite=Strict` soubory cookie, protože prvky IFrame jsou považovány za scénáře mezi weby.
 
 Každá komponenta ASP.NET, která generuje soubory cookie, musí rozhodnout, zda je SameSite vhodná.
 
@@ -62,11 +61,79 @@ ASP.Net také pro tyto funkce vydává čtyři konkrétní soubory cookie vlastn
 
 **Poznámka**: možnost Neurčeno je k dispozici pouze pro `system.web/httpCookies@sameSite` v daném okamžiku. Doufáme, že přidáte podobnou syntaxi k dříve zobrazeným atributům cookieSameSite v budoucích aktualizacích. Nastavení `(SameSiteMode)(-1)` v kódu pořád funguje na instancích těchto souborů cookie. *
 
+[!INCLUDE[](~/includes/MTcomments.md)]
+
+<a name="retargeting"></a>
+
+### <a name="retarget-net-apps"></a>Změna cílení aplikací .NET
+
+Pro cílení na .NET 4.7.2 nebo novější:
+
+* Zajistěte, aby soubor *Web. config* obsahoval následující:  <!-- review, I removed `debug="true"` -->
+
+  ```xml
+  <system.web>
+    <compilation targetFramework="4.7.2"/>
+    <httpRuntime targetFramework="4.7.2"/>
+  </system.web>
+
+* Verify the project file contains the correct [TargetFrameworkVersion](/visualstudio/msbuild/msbuild-target-framework-and-target-platform?view=vs-2019):
+
+  ```xml
+  <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+  ```
+
+  Další podrobnosti najdete v [příručce k migraci rozhraní .NET](/dotnet/framework/migration-guide/) .
+
+* Ověřte, jestli jsou balíčky NuGet v projektu cílené na správnou verzi rozhraní .NET Framework. Správnou verzi rozhraní můžete ověřit kontrolou souboru *Packages. config* , například:
+
+  ```xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <packages>
+    <package id="Microsoft.AspNet.Mvc" version="5.2.7" targetFramework="net472" />
+    <package id="Microsoft.ApplicationInsights" version="2.4.0" targetFramework="net451" />
+  </packages>
+  ```
+
+  V předchozím souboru *Packages. config* se `Microsoft.ApplicationInsights` balíčku:
+    * Je zaměřený na rozhraní .NET 4.5.1.
+    * Měla by mít atribut `targetFramework` aktualizován tak, aby `net472`, pokud existuje aktualizovaný balíček cílený na váš cílový rámec.
+
+<a name="nope"></a>
+
+### <a name="net-versions-earlier-than-472"></a>Verze rozhraní .NET starší než 4.7.2
+
+Společnost Microsoft nepodporuje verze .NET nižší, než 4.7.2 pro zápis atributu souboru cookie stejné lokality. Nejsme nenašli spolehlivý způsob, jak:
+
+* Ujistěte se, že je správně napsaný atribut na základě verze prohlížeče.
+* Zachycujte a upravujete soubory cookie ověřování a relací ve starších verzích rozhraní.
+
+### <a name="december-patch-behavior-changes"></a>Prosince změny chování opravy
+
+Konkrétní změnou chování pro .NET Framework je způsob, jakým vlastnost `SameSite` interpretuje hodnotu `None`:
+
+* Před opravou hodnoty `None` určena:
+  * Negenerovat atribut vůbec.
+* Po opravě:
+  * Hodnota `None`znamená "vygenerovat atribut s hodnotou `None`".
+  * Hodnota `SameSite` `(SameSiteMode)(-1)` způsobí, že se atribut neemituje.
+
+Výchozí hodnota SameSite pro ověřování pomocí formulářů a soubory cookie stavu relace se změnila z `None` na `Lax`.
+
+### <a name="summary-of-change-impact-on-browsers"></a>Shrnutí dopadu na změnu v prohlížečích
+
+Pokud nainstalujete opravu a vydáte soubor cookie s `SameSite.None`, dojde k jedné ze dvou akcí:
+* V80 Chrome tento soubor cookie zachová podle nové implementace a neuplatní pro tento soubor cookie stejná omezení webu.
+* Všechny prohlížeče, které nebyly aktualizovány pro podporu nové implementace, budou následovat po původní implementaci. Stará implementace říká:
+  * Pokud se vám zobrazí hodnota, kterou nerozumíte, ignorujte ji a přepněte na přísná omezení lokalit.
+
+Takže se aplikace buď poruší, nebo dojde k přerušení na mnoha dalších místech.
+
 ## <a name="history-and-changes"></a>Historie a změny
 
 Podpora SameSite byla poprvé implementována v .NET 4.7.2 s využitím [konceptu standard 2016](https://tools.ietf.org/html/draft-west-first-party-cookies-07#section-4.1).
 
-19. listopadu 2019 aktualizace pro Windows aktualizované .NET 4.7.2 + od standardu 2016 až do standardu 2019. Další aktualizace jsou k disdobu pro jiné verze systému Windows. Další informace naleznete v tématu <xref:samesite/kbs-samesite>.
+19. listopadu 2019 aktualizace pro Windows aktualizované .NET 4.7.2 + od standardu 2016 až do standardu 2019. Další aktualizace jsou k disdobu pro jiné verze systému Windows. Další informace najdete v tématu <xref:samesite/kbs-samesite>.
 
  Koncept 2019 specifikace SameSite:
 
@@ -96,20 +163,73 @@ Informace o tom, jak Azure App Service konfiguruje chování SameSite v aplikac�
 
 ## <a name="supporting-older-browsers"></a>Podpora starších prohlížečů
 
-SameSite standardně vyhodnocuje, že neznámé hodnoty musí být považovány za `SameSite=Strict` hodnoty. 2016 Aplikace, ke kterým se přistupoval ze starších prohlížečů, které podporují SameSite úrovně Standard 2016, se můžou přerušit, když získají vlastnost SameSite s hodnotou `None`. Webové aplikace musí implementovat detekci prohlížeče, pokud chtějí podporovat starší prohlížeče. ASP.NET neimplementuje zjišťování prohlížeče, protože hodnoty uživatelských agentů jsou vysoce těkavé a často se mění. Následující kód lze volat na webu <xref:HTTP.HttpCookie> volání:
+SameSite standardně vyhodnocuje, že neznámé hodnoty musí být považovány za `SameSite=Strict` hodnoty. 2016 Aplikace, ke kterým se přistupoval ze starších prohlížečů, které podporují SameSite úrovně Standard 2016, se můžou přerušit, když získají vlastnost SameSite s hodnotou `None`. Webové aplikace musí implementovat detekci prohlížeče, pokud chtějí podporovat starší prohlížeče. ASP.NET neimplementuje zjišťování prohlížeče, protože hodnoty uživatelských agentů jsou vysoce těkavé a často se mění.
+
+Přístup společnosti Microsoft k řešení problému vám usnadní implementaci komponent detekce prohlížeče, aby bylo možné z souborů cookie nakládat atribut `sameSite=None`, pokud je známo, že ho prohlížeč nepodporují. Při poradenství od společnosti Google bylo nutné vystavit dvojité soubory cookie, jeden s novým atributem a druhý bez atributu. Doporučujeme však, abyste považovat jenom na Rady Google. Některé prohlížeče, zejména mobilní prohlížeče, mají velmi malá omezení počtu souborů cookie, které web nebo název domény může odeslat. Odesílání více souborů cookie, zejména velkých souborů cookie, jako jsou soubory cookie pro ověřování, může dosáhnout vysokého limitu, což způsobí selhání aplikací, které je obtížné diagnostikovat a opravovat. Kromě architektury existuje velký ekosystém kódu a komponent třetích stran, které nemusejí být aktualizovány, aby používaly přístup pomocí dvojitých souborů cookie.
+
+Kód pro detekci prohlížeče použitý v ukázkových projektech v [tomto úložišti GitHubu]() je obsažen ve dvou souborech.
+
+* [C#SameSiteSupport.cs](https://github.com/blowdart/AspNetSameSiteSamples/blob/master/SameSiteSupport.cs)
+* [VB SameSiteSupport. vb](https://github.com/blowdart/AspNetSameSiteSamples/blob/master/SameSiteSupport.vb)
+
+Tyto detekce jsou nejběžnějšími agenty prohlížeče, kteří viděli, že podporují Standard 2016 a pro které je potřeba atribut úplně odebrat. Není určena jako kompletní implementace:
+
+* Vaše aplikace může zobrazit prohlížeče, které naše testovací weby nepodporují.
+* Měli byste být připraveni přidat detekce podle potřeby vašeho prostředí.
+
+Způsob, jakým se detekuje detekce, se liší podle verze rozhraní .NET a webového rozhraní, které používáte. Následující kód lze volat na webu <xref:HTTP.HttpCookie> volání:
 
 [!code-csharp[](sample/SameSiteCheck.cs?name=snippet)]
 
-V předchozí ukázce `MyUserAgentDetectionLib.DisallowsSameSiteNone` je uživatelem zadaná knihovna, která detekuje, jestli Agent pro uživatele nepodporuje SameSite `None`. Následující kód ukazuje ukázkovou `DisallowsSameSiteNone` metodu:
+Podívejte se na následující témata ASP.NET souborů cookie 4.7.2 SameSite:
 
-> [!WARNING]
-> Následující kód je určen pouze pro ukázku:
-> * Neměla by být považována za dokončenou.
-> * Není udržována ani podporována.
+* [C#NÁVRHOVÝ](xref:samesite/csMVC)
+* [C#Webových formulářů](xref:samesite/CSharpWebForms)
+* [Webforma VB](xref:samesite/vbWF)
+* [VB MVC](xref:samesite/vbMVC)
+<!--
+* <xref:samesite/csMVC>
+* <xref:samesite/CSharpWebForms>
+* <xref:samesite/vbWF>
+* <xref:samesite/vbMVC>
+-->
 
-[!code-csharp[](sample/SameSiteCheck.cs?name=snippet2)]
+### <a name="ensuring-your-site-redirects-to-https"></a>Zajištění přesměrování lokality na HTTPS
+
+Pro přesměrování všech požadavků na protokol HTTPS se dá použít funkce pro [přepsání adresy URL služby](/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module) ASP.NET 4. x, WebForms a MVC. Následující kód XML ukazuje vzorové pravidlo:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <system.webServer>
+    <rewrite>
+      <rules>
+        <rule name="Redirect to https" stopProcessing="true">
+          <match url="(.*)"/>
+          <conditions>
+            <add input="{HTTPS}" pattern="Off"/>
+            <add input="{REQUEST_METHOD}" pattern="^get$|^head$" />
+          </conditions>
+          <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" redirectType="Permanent"/>
+        </rule>
+      </rules>
+    </rewrite>
+  </system.webServer>
+</configuration>
+```
+
+V místních instalacích opětovného [zápisu adres URL IIS](https://www.iis.net/downloads/microsoft/url-rewrite) je volitelná funkce, která může být potřeba nainstalovat.
 
 ## <a name="test-apps-for-samesite-problems"></a>Testování aplikací pro problémy s SameSite
+
+Aplikaci musíte otestovat pomocí prohlížečů, které podporujete, a Projděte si scénáře, které zahrnují soubory cookie. Scénáře souborů cookie obvykle zahrnují
+
+* Formuláře pro přihlášení
+* Externí mechanismy přihlášení, jako je Facebook, Azure AD, OAuth a OIDC
+* Stránky, které přijímají žádosti z jiných lokalit
+* Stránky v aplikaci navržené tak, aby byly vložené v iFrames
+
+Měli byste kontrolovat, jestli jsou soubory cookie vytvořené, trvalé a odstraněné ve vaší aplikaci správně.
 
 Aplikace, které komunikují se vzdálenými lokalitami, jako je třeba přihlášení třetí strany, potřebují:
 
@@ -126,6 +246,15 @@ Google nezpřístupňuje starší verze Chrome. Postupujte podle pokynů v čás
 
 * [Chróm 76 Win64](https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64/664998/)
 * [Chróm 74 Win64](https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64/638880/)
+* Pokud nepoužíváte 64bitovou verzi systému Windows, můžete pomocí [prohlížeče OmahaProxy](https://omahaproxy.appspot.com/) vyhledat, která větev Chromu odpovídá stylu Chrome 74 (v 74.0.3729.108), a to podle [pokynů uvedených v Chromu](https://www.chromium.org/getting-involved/download-chromium).
+
+#### <a name="test-with-chrome-80"></a>Testování s použitím Chromu 80 +
+
+[Stáhněte si](https://www.google.com/chrome/) verzi Chrome, která podporuje jejich nový atribut. V době psaní je aktuální verze Chrome 80. Chrome 80 vyžaduje, aby byl příznak `chrome://flags/#same-site-by-default-cookies` povolen pro použití nového chování. Měli byste taky povolit (`chrome://flags/#cookies-without-same-site-must-be-secure`) pro otestování nadcházejícího chování souborů cookie, u kterých není povolený žádný atribut sameSite. Chrome 80 je v cíli, aby tento přepínač považoval soubory cookie bez atributu `SameSite=Lax`, i když s časovým obdobím pro určité žádosti. Chcete-li zakázat časový limit doby odkladu, je možné spustit Chrome 80 s následujícím argumentem příkazového řádku:
+
+`--enable-features=SameSiteDefaultChecksMethodRigorously`
+
+Chrome 80 obsahuje varovné zprávy v konzole prohlížeče o chybějících atributech sameSite. Pomocí F12 otevřete konzolu prohlížeče.
 
 ### <a name="test-with-safari"></a>Testování pomocí Safari
 
@@ -135,9 +264,9 @@ Prohlížeč Safari 12 striktně implementuje předchozí koncept a v případě
 
 Podporu aplikace Firefox pro nový standard lze testovat na verzi 68 + tím, že na stránce `about:config` `network.cookie.sameSite.laxByDefault`příznak funkce. Nebyly zjištěny žádné zprávy o problémech s kompatibilitou se staršími verzemi aplikace Firefox.
 
-### <a name="test-with-edge-browser"></a>Testování pomocí prohlížeče Edge
+### <a name="test-with-edge-legacy-browser"></a>Test pomocí prohlížeče Edge (starší verze)
 
-Edge podporuje starý SameSite Standard. Edge verze 44 nemá žádné známé problémy s kompatibilitou s novým standardem.
+Edge podporuje starý SameSite Standard. Edge verze 44 + nemá žádné známé problémy s kompatibilitou s novým standardem.
 
 ### <a name="test-with-edge-chromium"></a>Test s hranou (chrom)
 
@@ -145,10 +274,37 @@ Příznaky SameSite jsou nastaveny na stránce `edge://flags/#same-site-by-defau
 
 ### <a name="test-with-electron"></a>Testování s elektronem
 
-K verzím elektronů patří starší verze Chromu. Například verze elektronicky používané týmy je chrom 66, který vykazuje starší chování. Je nutné provést vlastní testování kompatibility s verzí elektronů, kterou váš produkt používá. Viz [Podpora starších prohlížečů](#sob) v následující části.
+K verzím elektronů patří starší verze Chromu. Například verze elektronicky používané týmy je chrom 66, který vykazuje starší chování. Je nutné provést vlastní testování kompatibility s verzí elektronů, kterou váš produkt používá. Viz [Podpora starších prohlížečů](#sob).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="reverting-samesite-patches"></a>Vracení SameSite oprav
+
+Můžete obnovit aktualizované chování sameSite v aplikaci .NET Framework aplikace na předchozí chování, kde atribut sameSite není generován pro hodnotu `None`a vrátit soubory cookie ověřování a relace, aby negenerovaly hodnotu. Tato akce by se měla zobrazit jako *extrémně dočasná oprava*, protože změny v Chromu přeruší všechny požadavky externích příspěvků nebo ověřování pro uživatele pomocí prohlížečů, které podporují změny standardu.
+
+### <a name="reverting-net-472-behavior"></a>Vrácení chování .NET 4.7.2
+
+Aktualizujte soubor *Web. config* tak, aby zahrnoval následující nastavení konfigurace:
+
+```xml
+<configuration> 
+  <appSettings>
+    <add key="aspnet:SuppressSameSiteNone" value="true" />
+  </appSettings>
+ 
+  <system.web> 
+    <authentication> 
+      <forms cookieSameSite="None" /> 
+    </authentication> 
+    <sessionState cookieSameSite="None" /> 
+  </system.web> 
+</configuration>
+```
+
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Nadcházející změny souborů cookie SameSite v ASP.NET a ASP.NET Core](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 * [Chromový blog: vývojáři: Připravte se na nové SameSite = None; Nastavení zabezpečeného souboru cookie](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)
 * [Vysvětlení souborů cookie SameSite](https://web.dev/samesite-cookies-explained/)
+* [Aktualizace pro Chrome](https://www.chromium.org/updates/same-site)
+* [Opravy .NET SameSite](/aspnet/samesite/kbs-samesite)
+* [Informace o stejných lokalitách webových aplikací Azure](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)
+* [Informace o stejných lokalitách Azure Active Directory](/azure/active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser)

@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: 364ce84e-5af8-4e08-afc9-75a512b01f84
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
 msc.type: authoredcontent
-ms.openlocfilehash: 9bf9acb8b4f8521d03c053c124c5fc4a07d6cb9a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 348232af531b5d53dc3cb46d6d2c7931d95a572d
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74585655"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457125"
 ---
 # <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a>Návrh pro dosažení selhání (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -58,7 +58,7 @@ Může dojít k selhání celé oblasti. Přírodní katastrofa může zničit d
 
 Cílem Azure je zajistit, aby zpracování všech těchto druhů chyb bylo mnohem snazší, a v následujících kapitolách vidíte některé příklady, jak to máme.
 
-## <a name="slas"></a>SLA
+## <a name="slas"></a>Smlouvy SLA
 
 Lidé často uslyší smlouvy o úrovni služeb (SLA) v cloudovém prostředí. V podstatě se příslibů, že společnosti pracují na tom, jak je jejich služba spolehlivá. 99,9% smlouva SLA znamená, že byste měli očekávat, že služba bude správně fungovat 99,9% času. To je poměrně obvyklá hodnota pro smlouvu SLA, která má jako velmi vysoké číslo, ale nemůžete zjistit, kolik času se ve skutečnosti nejvíce nezobrazuje. Tady je tabulka, která ukazuje, jak velké množství výpadků v procentech v rámci smlouvy SLA v roce, v měsíci a v týdnu.
 
@@ -70,7 +70,7 @@ Jedna z věcí, které byste měli znát o smlouvě SLA, je to, na který časov
 
 Samozřejmě vždycky snažímei lepší, než je smlouva SLA; obvykle je to mnohem méně. Slibem je to, že pokud budeme v provozu déle, než je maximální doba mimo provoz, můžete požádat o peníze zpátky. Množství peněz, které vrátíte, by pravděpodobně zcela neplatilo, ale tento aspekt smlouvy SLA funguje jako zásada vynucení a umožňuje vám, abyste měli jistotu, že to máme hodně vážně.
 
-### <a name="composite-slas"></a>Složené SLA
+### <a name="composite-slas"></a>Složené smlouvy SLA
 
 Důležitou věcí, kterou je třeba vzít v úvahu, když se díváte na SLA, je dopad použití několika služeb v aplikaci, přičemž každá služba má samostatnou smlouvu SLA. Například aplikace pro opravu IT používá Azure App Service Web Apps, Azure Storage a SQL Database. Tady jsou čísla smluv SLA pro datum, kdy je tato elektronická příručka zapisována v prosinci, 2013:
 
@@ -78,7 +78,7 @@ Důležitou věcí, kterou je třeba vzít v úvahu, když se díváte na SLA, j
 
 Jaká je maximální doba mimo provoz, kterou byste měli očekávat pro aplikaci na základě těchto služeb SLA? Můžete si všimnout, že čas v čase v tomto případě bude stejný jako nejhorší procento smlouvy SLA, nebo v tomto případě 99,9%. To by mělo být pravdivé, pokud se všechny tři služby vždy nezdařily ve stejnou dobu, ale nemusí nutně to, co se skutečně stane. Každá služba může selhat nezávisle v různých časech, takže je nutné vypočítat složenou smlouvu SLA vynásobením jednotlivých čísel SLA.
 
-![Složená smlouva SLA](design-to-survive-failures/_static/image4.png)
+![Složené smlouvy SLA](design-to-survive-failures/_static/image4.png)
 
 Takže vaše aplikace by nemohla být nejenom 43,2 minut v měsíci, ale 3 časy, 108 minut v měsíci a pořád i v rámci omezení smlouvy SLA pro Azure.
 
@@ -98,7 +98,7 @@ Nezapomeňte také, že ne každá cloudová služba má ještě smlouvu SLA. Po
 
 Některé cloudové služby můžou službu odepřít, pokud je vaše aplikace používá. To se označuje jako *omezování*. Pokud má služba smlouvu SLA, měla by stanovit podmínky, za kterých se může omezit, a váš návrh aplikace by se měl vyhnout těmto podmínkám a reagovat odpovídajícím způsobem na omezení, pokud k nim dojde. Například pokud se požadavky na službu nedaří spustit, když překročíte určitý počet za sekundu, chcete zajistit, aby automatické opakování neprobíhalo tak rychle, aby toto omezení mohlo pokračovat. Další informace o omezování najdete v [kapitole zpracování přechodných chyb](transient-fault-handling.md).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Tato kapitola se pokusila získat informace o tom, proč je reálné cloudové aplikace navržená tak, aby se neúspěšně zadržely chyby. Od [Další kapitoly](monitoring-and-telemetry.md)se zbývající vzory v této sérii přejdou podrobněji o některých strategiích, které můžete použít k těmto akcím:
 

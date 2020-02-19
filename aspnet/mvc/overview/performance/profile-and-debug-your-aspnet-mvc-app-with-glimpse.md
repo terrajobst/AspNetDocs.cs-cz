@@ -1,125 +1,125 @@
 ---
 uid: mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
-title: Profilování a ladění aplikace ASP.NET MVC pomocí balíčku Glimpse | Dokumentace Microsoftu
+title: Profilování a ladění aplikace ASP.NET MVC pomocí nakoukněte | Microsoft Docs
 author: Rick-Anderson
-description: Balíčku glimpse je neúspěchu a rostoucí řadu opensourcových balíčků NuGet, která poskytuje podrobné výkonu, ladění a diagnostických informací pro ASP.NET...
+description: Nakoukněte je prosperující a rostoucí rodina Open Source balíčků NuGet, které poskytují podrobné informace o výkonu, ladění a diagnostických informacích pro ASP.NET a...
 ms.author: riande
 ms.date: 03/26/2015
 ms.assetid: c205805f-efdd-4fa7-9616-f26eab180611
 msc.legacyurl: /mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
 msc.type: authoredcontent
-ms.openlocfilehash: 051253d1e7a09f6285ebe0a83f87155de8467536
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: d3689147a3bc3aa1f4180c377d2483a94bdd95a9
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65129416"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457658"
 ---
 # <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>Profil aplikace ASP.NET MVC a její ladění pomocí balíčku Glimpse
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-> Balíčku glimpse je neúspěchu a rostoucí řadu opensourcových balíčků NuGet, která poskytuje podrobné výkonu, ladění a diagnostických informací pro aplikace ASP.NET. Je triviální k instalaci, zjednodušené, ultrarychlých a klíčové metriky výkonu se zobrazí v dolní části každé stránky. Umožňuje vám a přejít k podrobnostem do vaší aplikace, když budete chtít zjistit, co se děje na serveru. Balíčku glimpse poskytuje mnohem cenné informace, které doporučujeme že použít v celém cyklu vývoje, včetně Azure testovacího prostředí. Zatímco [Fiddler](http://www.telerik.com/fiddler) a [F-12 vývojových nástrojů](https://msdn.microsoft.com/library/ie/gg589512(v=vs.85).aspx) poskytují na straně klienta zobrazení, balíčku Glimpse poskytuje podrobné zobrazení ze serveru. Tento kurz se zaměřuje na pomocí balíčku Glimpse ASP.NET MVC a balíčky EF, ale jsou k dispozici řada dalších balíčků. Kde je to možné nemohu propojit na příslušné [Nakoukněte dokumentace](http://getglimpse.com/Docs/) které můžu pomáhají udržovat. Balíčku glimpse je opensourcový projekt, příliš se může přispívat do zdrojového kódu a dokumenty.
+> Nakoukněte je prosperující a rostoucí rodina Open Source balíčků NuGet, které poskytují podrobné informace o výkonu, ladění a diagnostikě pro aplikace ASP.NET. Je triviální pro instalaci, odlehčenou, extrémně rychlou a zobrazení klíčových metrik výkonu v dolní části každé stránky. Umožňuje přejít k podrobnostem aplikace v případě, že potřebujete zjistit, co se na serveru chystá. Nakoukněte poskytuje spoustu užitečných informací, které doporučujeme využít v rámci vašeho vývojového cyklu, včetně vašeho testovacího prostředí Azure. Zatímco [Fiddler](http://www.telerik.com/fiddler) a [vývojové nástroje F-12](https://msdn.microsoft.com/library/ie/gg589512(v=vs.85).aspx) poskytují zobrazení na straně klienta, nakoukněte poskytuje podrobné zobrazení ze serveru. Tento kurz se zaměřuje na použití balíčků nakoukněte ASP.NET MVC a EF, ale k dispozici je spousta dalších balíčků. Kde je to možné, připojte se k odpovídajícím [nakouknětem dokumentům](http://getglimpse.com/Docs/) , které můžu udržovat. Nakoukněte je open source projekt, takže můžete přispívat ke zdrojovému kódu a dokumentům.
 
-- [Instalace balíčku Glimpse](#ig)
-- [Povolit balíčku Glimpse pro místního hostitele](#eg)
-- [Na kartě časové osy](#Time)
+- [Instalace nakoukněte](#ig)
+- [Povolit nakoukněte pro localhost](#eg)
+- [Karta Časová osa](#Time)
 - [Vazby modelu](#mb)
-- [Trasy](#route)
-- [Pomocí balíčku Glimpse v Azure](#da)
-- [Další prostředky](#addRes)
+- [Tras](#route)
+- [Používání nakoukněte v Azure](#da)
+- [Další zdroje](#addRes)
 
 <a id="ig"></a>
-## <a name="installing-glimpse"></a>Instalace balíčku Glimpse
+## <a name="installing-glimpse"></a>Instalace nakoukněte
 
-Balíčku Glimpse můžete nainstalovat z konzoly Správce balíčků NuGet nebo **spravovat balíčky NuGet** konzoly. Pro tuto ukázku nainstaluji Mvc5 a EF6 balíčky:
+Nakoukněte můžete nainstalovat z konzoly Správce balíčků NuGet nebo z konzoly **Správa balíčků NuGet** . V této ukázce nainstalujete balíčky Mvc5 a EF6:
 
-![instalace balíčku Glimpse z NuGet Dlg](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image1.png)
+![instalace nakoukněte z NuGet DLG](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image1.png)
 
-Vyhledejte *Glimpse.EF*
+Hledání *nakoukněte. EF*
 
-![Glimpse.EF z dlg instalace NuGet](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image2.png)
+![Nakoukněte. EF z instalačního dialogu NuGet](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image2.png)
 
-Výběrem **nainstalované balíčky**, uvidíte balíčku Glimpse závislé moduly, které jsou nainstalovány:
+Když vyberete **nainstalované balíčky**, uvidíte, že jsou nainstalované závislé moduly nakoukněte:
 
-![Nainstalované balíčky balíčku Glimpse z DLg](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image3.png)
+![Instalované balíčky nakoukněte z DLg](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image3.png)
 
-Následující příkazy instalace balíčku Glimpse MVC5 a EF6 modulů z konzoly Správce balíčků:
+Následující příkazy instalují moduly nakoukněte MVC5 a EF6 z konzoly Správce balíčků:
 
 [!code-console[Main](profile-and-debug-your-aspnet-mvc-app-with-glimpse/samples/sample1.cmd)]
 
 <a id="eg"></a>
-## <a name="enable-glimpse-for-localhost"></a>Povolit balíčku Glimpse pro místního hostitele
+## <a name="enable-glimpse-for-localhost"></a>Povolit nakoukněte pro localhost
 
-Přejděte do http://localhost:&lt; port #&gt;/glimpse.axd a kliknutím <strong>balíčku Glimpse zapnout</strong> tlačítko.
+Přejděte na http://localhost:&lt;p. #&gt;/Glimpse.axd a klikněte na tlačítko <strong>zapnout nakoukněte</strong> .
 
-![Stránka axd balíčku glimpse](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image4.png)
+![Stránka AXD nakoukněte](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image4.png)
 
-Pokud máte panel Oblíbené zobrazí, lze přetáhnout a rozevírací tlačítka balíčku Glimpse a přidejte je jako bookmarklets:
+Pokud máte zobrazený panel Oblíbené položky, můžete přetáhnout nakoukněte tlačítka a přidat je jako Bookmarklets:
 
-![Aplikace Internet Explorer s bookmarklets balíčku Glimpse](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image5.png)
+![IE s nakoukněte Bookmarklets](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image5.png)
 
-Nyní se můžete dostat vaše aplikace a **vedoucí nahoru zobrazení** (HUD) se zobrazí v dolní části stránky.
+Teď můžete aplikaci Procházet a v dolní části stránky se zobrazí **zobrazení hlavice** (HUD).
 
-![Správce kontaktů stránka s HUD](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image6.png)
+![Stránka správce kontaktů s HUD](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image6.png)
 
-[Stránky balíčku Glimpse HUD](http://getglimpse.com/Docs/Heads-up-Display) podrobnosti výše uvedené informace o časování. Zobrazí data HUD nerušivý výkonu může upozornit na problém okamžitě – než se ponoříte do testovacího cyklu. Kliknutím na &quot;g&quot; zobrazí v pravém dolním rohu panelu balíčku Glimpse:
+[Stránka NAKOUKNĚTE HUD](http://getglimpse.com/Docs/Heads-up-Display) detailuje informace o časování zobrazené výše. Nenáročné údaje o výkonu, které HUD zobrazí, vám může upozorňovat na problém okamžitě – předtím, než se dostanete ke zkušebnímu cyklu. Kliknutím na &quot;g&quot; v pravém dolním rohu se zobrazí panel nakoukněte:
 
-![Panel balíčku glimpse](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image7.png)
+![Panel nakoukněte](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image7.png)
 
-Na obrázku výše [karta spuštění](http://getglimpse.com/Docs/Execution-Tab) zaškrtnuto, zobrazí podrobnosti časování akce a filtry v kanálu. Můžete zobrazit Moje [zastavit sledování filtru časovače](http://www.nuget.org/packages/StopWatch/) začínají na fázi 6 kanálu. Moje lehký časovače můžete nabízejí užitečné profilu a data časování, ho výpadky celou dobu trvání autorizace a vykreslení zobrazení. Informace o mé časovač v [profilu a času vaše aplikace ASP.NET MVC úplně přenést do Azure](https://blogs.msdn.com/b/webdev/archive/2014/07/29/profile-and-time-your-asp-net-mvc-app-all-the-way-to-azure.aspx). [Karty](http://getglimpse.com/Docs/Tabs) stránka obsahuje odkazy na podrobné informace na každé kartě.
+Na obrázku výše je vybrána [karta spuštění](http://getglimpse.com/Docs/Execution-Tab) , která zobrazuje časové údaje o akcích a filtrech v kanálu. V průběhu fáze 6 kanálu se můžete podívat na svůj [časovač filtru stop watch](http://www.nuget.org/packages/StopWatch/) . I když je časově náročný časovač schopen poskytnout užitečná data o profilech a časováních, nezjistí veškerý čas strávený při autorizaci a vygenerování zobrazení. Můžete si přečíst informace o mém časovači v [profilu a čas, kdy vaše aplikace ASP.NET MVC vše navede do Azure](https://blogs.msdn.com/b/webdev/archive/2014/07/29/profile-and-time-your-asp-net-mvc-app-all-the-way-to-azure.aspx). Stránka [karty](http://getglimpse.com/Docs/Tabs) obsahuje odkazy na podrobné informace o jednotlivých kartách.
 
 <a id="Time"></a>
-## <a name="the-timeline-tab"></a>Na kartě časové osy
+## <a name="the-timeline-tab"></a>Karta Časová osa
 
-Upravili Petr Dykstra nezpracovaných [kurz EF 6 a MVC 5](../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) následujícím kódem změnit Instruktoři kontroleru:
+Změnil (a) jsem si nezpracovaný [kurz Dykstra EF 6/MVC 5](../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) s následující změnou kódu na řadič instruktorů:
 
 [!code-csharp[Main](profile-and-debug-your-aspnet-mvc-app-with-glimpse/samples/sample2.cs?highlight=1,20-31)]
 
-Výše uvedený kód umožňuje předat řetězec dotazu (`eager`) do správy dočkat nebo explicitní načtení dat. Na následujícím obrázku se používá explicitní načtení a časování stránka zobrazuje každou registrace načten v `Index` metody akce:
+Výše uvedený kód umožňuje mně předat řetězec dotazu (`eager`) k řízení Eager nebo explicitního načítání dat. Na následujícím obrázku je použit explicitní načítání a na stránce časování se zobrazí všechny zápisy, které jsou načteny v metodě `Index` Action:
 
-![explicitní načtení](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image8.png)
+![explicitní načítání](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image8.png)
 
-V následujícím kódu je zadán eager a načte se po každé registraci `Index` se nazývá zobrazení:
+V následujícím kódu je zadán Eager a každý zápis je načten po volání zobrazení `Index`:
 
-![je zadán eager](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image9.png)
+![Eager je zadaný.](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image9.png)
 
-Při najetí myší nad segment času na získání podrobných informací o časování:
+Když najedete myší na časový segment, získáte podrobné informace o časování:
 
-![najetím myši zobrazíte podrobné časování](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image10.png)
+![Pokud chcete zobrazit podrobné časování, najeďte myší.](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image10.png)
 
 <a id="mb"></a>
-## <a name="model-binding"></a>Vazby modelu
+## <a name="model-binding"></a>Vazba modelu
 
-[Kartu vazby modelu](http://getglimpse.com/Docs/Model-Binding-Tab) nabízí celou řadu informace, které vám pomohou pochopit, jak jsou svázány proměnných formuláře a proč některé nejsou vázány podle očekávání. Obrázek níže ukazuje **?** ikonu, která můžete kliknout na zobrazíte na stránce nápovědy balíčku glimpse této funkce.
+[Karta vazba modelu](http://getglimpse.com/Docs/Model-Binding-Tab) poskytuje spoustu informací, které vám pomohou pochopit, jak jsou proměnné formuláře svázané a proč některé nejsou vázané na to, co by očekávalo. Následující obrázek ukazuje **?** ikona, na kterou můžete kliknout a získat tak stránku s nápovědu nakoukněte pro tuto funkci.
 
-![Nakoukněte zobrazení vazby modelu](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image11.png)
+![zobrazení vazby modelu nakoukněte](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image11.png)
 
 <a id="route"></a>
 ## <a name="routes"></a>Trasy
 
- Na kartě balíčku Glimpse trasy můžete vám pomůže ladit a lepší pochopení směrování. Na následujícím obrázku produktu trasa se vybere (a zobrazí zeleně, vytváření balíčku Glimpse). ![Vybraný název produktu](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image12.png) trasy tokeny omezení, oblastí a data se zobrazují. Zobrazit [trasy balíčku Glimpse](http://getglimpse.com/Docs/Routes-Tab) a [směrováním atributů v ASP.NET MVC 5](https://blogs.msdn.com/b/webdev/archive/2013/10/17/attribute-routing-in-asp-net-mvc-5.aspx) Další informace. 
+ Karta trasy nakoukněte vám může přispět k ladění a pochopení směrování. Na následujícím obrázku je vybraná trasa k produktu (a zobrazuje se v nakoukněte konvenci zeleně). Zobrazuje se taky ![vybraný název produktu](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image12.png) omezení tras, oblasti a datové tokeny. Další informace najdete v tématu [nakoukněte trasy](http://getglimpse.com/Docs/Routes-Tab) a [směrování atributů v ASP.NET MVC 5](https://blogs.msdn.com/b/webdev/archive/2013/10/17/attribute-routing-in-asp-net-mvc-5.aspx) . 
 
 <a id="da"></a>
-## <a name="using-glimpse-on-azure"></a>Pomocí balíčku Glimpse v Azure
+## <a name="using-glimpse-on-azure"></a>Používání nakoukněte v Azure
 
-Výchozí zásady zabezpečení balíčku Glimpse povoluje jenom data balíčku Glimpse zobrazený z místního hostitele. Tyto zásady zabezpečení můžete změnit, abyste mohli zobrazit tato data na vzdáleném serveru (například webové aplikace v Azure). Pro testovací prostředí v Azure, přidejte značku zvýrazněné až do dolní části *web.config* soubor balíčku Glimpse:
+Výchozí zásady zabezpečení nakoukněte povolují, aby se data nakoukněte zobrazovala jenom z místního hostitele. Tuto zásadu zabezpečení můžete změnit, abyste mohli tato data zobrazit na vzdáleném serveru (například v Azure Web App). V případě testovacích prostředí v Azure přidejte zvýrazněné označení do dolní části souboru *Web. config* a povolte nakoukněte:
 
 [!code-xml[Main](profile-and-debug-your-aspnet-mvc-app-with-glimpse/samples/sample3.xml?highlight=2-6)]
 
-Díky této změně samostatně, každý uživatel svá data můžete zobrazit balíčku Glimpse na vzdálený web. Zvažte přidání značky nad profil publikování, obsahuje pouze nasazené použité při použití tohoto profilu publikování (například test na platformě Azure profilu.) Pokud chcete omezit data balíčku Glimpse, přidáme `canViewGlimpseData` role a povolit pouze uživatelé v této roli k zobrazení dat balíčku Glimpse.
+Tato změna samostatně umožňuje všem uživatelům zobrazit data nakoukněte ve vzdálené lokalitě. Zvažte přidání značky výše k publikačnímu profilu, takže se nasadí jenom použité, když použijete tento profil publikování (například Azure test Profile). K omezení dat nakoukněte přidáme roli `canViewGlimpseData` a povolíte uživatelům v této roli jenom zobrazení dat nakoukněte.
 
-Odebrat komentáře z *GlimpseSecurityPolicy.cs* soubor a změňte [IsInRole](https://msdn.microsoft.com/library/system.security.principal.iprincipal.isinrole(v=vs.110).aspx) volání z `Administrator` k `canViewGlimpseData` role:
+Odstraňte komentáře ze souboru *GlimpseSecurityPolicy.cs* a změňte volání [IsInRole](https://msdn.microsoft.com/library/system.security.principal.iprincipal.isinrole(v=vs.110).aspx) z `Administrator` na roli `canViewGlimpseData`:
 
 [!code-csharp[Main](profile-and-debug-your-aspnet-mvc-app-with-glimpse/samples/sample4.cs?highlight=6)]
 
 > [!WARNING]
-> Zabezpečení – bohaté údaje poskytnuté balíčku Glimpse může zpřístupnit zabezpečení vaší aplikace. Microsoft neprovedl auditu zabezpečení balíčku glimpse pro použití v produkční aplikace.
+> Zabezpečení: rozsáhlá data, která poskytuje nakoukněte, by mohla vystavit zabezpečení vaší aplikace. Společnost Microsoft neprovedla audit zabezpečení nakoukněte pro použití v aplikacích v produkci.
 
-Informace o přidání rolí, najdete v části Moje [nasazení webové aplikace zabezpečené aplikace ASP.NET MVC 5 s Membership, OAuth a SQL Database do Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/) kurzu.
+Informace o přidávání rolí najdete v kurzu [nasazení webové aplikace ASP.NET MVC 5 pomocí členství, protokolu OAuth a SQL Database do kurzu Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/) .
 
 <a id="addRes"></a>
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-- [Nasaďte zabezpečené aplikace ASP.NET MVC 5 s Membership, OAuth a SQL Database do Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)
-- [Nakoukněte konfigurace](http://getglimpse.com/Docs/Configuration) -Doc stránky na karty, zásady modulu runtime, protokolování a další konfigurace.
+- [Nasazení zabezpečené aplikace ASP.NET MVC 5 s členstvím, protokolem OAuth a SQL Database do Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)
+- [Konfigurace nakoukněte](http://getglimpse.com/Docs/Configuration) – Stránka s dokumentem týkající se konfigurace karet, zásad modulu runtime, protokolování a dalších.

@@ -1,123 +1,123 @@
 ---
 uid: identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
-title: Nasazení hesel a dalších citlivých dat do ASP.NET a Azure App Service – ASP.NET 4.x
+title: Nasazení hesel a dalších citlivých dat do ASP.NET a Azure App Service-ASP.NET 4. x
 author: Rick-Anderson
-description: Tento kurz ukazuje, jak může váš kód bezpečně ukládat a přistupovat k zabezpečeným informacím. Nejdůležitější bod je, že nikdy byste měli uložit hesla nebo dalších eslat...
+description: V tomto kurzu se dozvíte, jak může váš kód bezpečně ukládat a přistupovat k zabezpečeným informacím. Nejdůležitějším bodem je, že nikdy nebudete ukládat hesla ani jiné...
 ms.author: riande
 ms.date: 05/21/2015
 ms.assetid: 97902c66-cb61-4d11-be52-73f962f2db0a
 ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
 msc.type: authoredcontent
-ms.openlocfilehash: 0e02df967df8acf346b9fcd1c75dbe304cc5407b
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 8356a90611f791779cc4ff4730038d82cd76242f
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65121541"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457047"
 ---
 # <a name="best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure-app-service"></a>Doporučené postupy nasazení hesel a dalších citlivých dat do ASP.NET a služby Azure App Service
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-> Tento kurz ukazuje, jak může váš kód bezpečně ukládat a přistupovat k zabezpečeným informacím. Nejdůležitější bod je ve zdrojovém kódu by nikdy ukládání hesel nebo jiných citlivých dat. a tajných kódů v produkčním prostředí byste neměli používat v režimu pro vývoj a testování.
+> V tomto kurzu se dozvíte, jak může váš kód bezpečně ukládat a přistupovat k zabezpečeným informacím. Nejdůležitějším bodem je, že byste nikdy neměli ukládat hesla ani další citlivá data ve zdrojovém kódu a neměli byste používat provozní tajemství v režimu vývoje a testování.
 > 
-> Ukázkový kód je jednoduchý WebJob konzolové aplikace a aplikace ASP.NET MVC, která potřebuje přístup k databáze připojovací řetězec heslo, Twilio, Google a SendGrid zabezpečovací klíče.
+> Vzorový kód je jednoduchá Konzolová aplikace WebJob a aplikace ASP.NET MVC, které potřebují přístup k heslům připojovacího řetězce databáze, Twilio, Google a SendGrid Secure Keys.
 > 
-> Místní nastavení a PHP zmíní se taky.
+> Na místních nastaveních se také zmiňuje i PHP.
 
 - [Práce s hesly ve vývojovém prostředí](#pwd)
-- [Práce s připojovací řetězce ve vývojovém prostředí](#con)
-- [WebJobs konzolové aplikace](#wj)
-- [Tajné kódy nasazení do Azure](#da)
+- [Práce s připojovacími řetězci ve vývojovém prostředí](#con)
+- [Konzolové aplikace WebJobs](#wj)
+- [Nasazení tajných klíčů do Azure](#da)
 - [Poznámky pro místní a PHP](#not)
-- [Další prostředky](#addRes)
+- [Další zdroje](#addRes)
 
 <a id="pwd"></a>
 ## <a name="working-with-passwords-in-the-development-environment"></a>Práce s hesly ve vývojovém prostředí
 
-Kurzy vám ukážou často citlivá data ve zdrojovém kódu, snad s výstrahou, že byste nikdy ukládat citlivá data ve zdrojovém kódu. Například Moje [aplikace ASP.NET MVC 5 s SMS a e-mailu 2FA](../../../mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md) kurzu se dozvíte v následující *web.config* souboru:
+Kurzy často znázorňují citlivá data ve zdrojovém kódu a snad s upozorněním, že byste nikdy neměli ukládat citlivá data ve zdrojovém kódu. Například moje [aplikace ASP.NET MVC 5 s kurzem SMS a e-mailem 2FA](../../../mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md) zobrazuje v souboru *Web. config* následující:
 
 [!code-xml[Main](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure/samples/sample1.xml)]
 
-*Web.config* souboru je zdrojový kód, takže by nikdy neměly být uloženy těchto tajných kódů v tomto souboru. Naštěstí `<appSettings>` element má `file` atribut, který vám umožní zadat externí soubor, který obsahuje nastavení konfigurace citlivé aplikace. Všechny tajné klíče můžete přesunout na externí soubor, tak dlouho, dokud externí soubor se změnami do stromu zdrojového kódu. Například v následující kód souboru *AppSettingsSecrets.config* obsahuje všechny tajné kódy aplikace:
+Soubor *Web. config* je zdrojový kód, takže tyto tajné klíče by nikdy neměly být uloženy v tomto souboru. Naštěstí `<appSettings>` element má atribut `file`, který umožňuje určit externí soubor, který obsahuje nastavení konfigurace citlivých aplikací. Všechna vaše tajná klíčová okna můžete přesunout do externího souboru, pokud se externí soubor nevrátí do zdrojového stromu. Například v následujícím kódu soubor *AppSettingsSecrets. config* obsahuje všechny tajné klíče aplikace:
 
 [!code-xml[Main](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure/samples/sample2.xml)]
 
-Kód v externí soubor (*AppSettingsSecrets.config* v této ukázce), stejné značky najdete v *web.config* souboru:
+Označení v externím souboru (*AppSettingsSecrets. config* v této ukázce) je stejný kód, který se nachází v souboru *Web. config* :
 
 [!code-xml[Main](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure/samples/sample3.xml)]
 
-Modul runtime ASP.NET sloučí obsah externího souboru se značkami v &lt;appSettings&gt; elementu. Modul runtime atribut souboru ignoruje, pokud zadaný soubor nebyl nalezen.
+Modul runtime ASP.NET sloučí obsah externího souboru s označením ve &lt;appSettings&gt; elementu. Pokud zadaný soubor nelze nalézt, modul runtime atribut souboru ignoruje.
 
 > [!WARNING]
-> Zabezpečení – nepřidávejte vaše *tajných kódů .config* soubor do projektu nebo vrátit se změnami do správy zdrojového kódu. Ve výchozím nastavení, aplikace Visual Studio nastaví `Build Action` k `Content`, což znamená, že soubor je nasazená. Další informace najdete v části [Proč nejsou všechny soubory ve složce projektu nasazení?](https://msdn.microsoft.com/library/ee942158(v=vs.110).aspx#can_i_exclude_specific_files_or_folders_from_deployment) Přestože lze použít pro jakoukoli příponu *tajných kódů .config* souboru, je nejvhodnější zajistit jeho *.config*, protože konfigurační soubory nejsou obsluhovány službou IIS. Všimněte si také, že *AppSettingsSecrets.config* soubor je dvě úrovně directory nahoru z *web.config* souboru, tak, aby byl zcela mimo adresář řešení. Přesunutím souborů mimo adresář řešení &quot;git přidat \* &quot; nepřidá do vašeho úložiště.
+> Zabezpečení – nepřidejte svůj soubor *tajných klíčů. config* do projektu nebo jej vraťte do správy zdrojového kódu. Ve výchozím nastavení sada Visual Studio nastaví `Build Action` na `Content`, což znamená, že soubor je nasazený. Další informace najdete v tématu [Proč se nepovedlo nasadit všechny soubory ve složce projektu?](https://msdn.microsoft.com/library/ee942158(v=vs.110).aspx#can_i_exclude_specific_files_or_folders_from_deployment) I když můžete použít jakékoli rozšíření souboru *tajných kódů. config* , je vhodné uchovávat soubor *. config*, protože konfigurační soubory nejsou obsluhovány službou IIS. Všimněte si také, že soubor *AppSettingsSecrets. config* je ze souboru *Web. config* ze dvou adresářových úrovní, takže je zcela z adresáře řešení. Přesunutím souboru z adresáře řešení &quot;git add \*&quot; ho do úložiště přidat.
 
 <a id="con"></a>
-## <a name="working-with-connection-strings-in-the-development-environment"></a>Práce s připojovací řetězce ve vývojovém prostředí
+## <a name="working-with-connection-strings-in-the-development-environment"></a>Práce s připojovacími řetězci ve vývojovém prostředí
 
-Visual Studio vytvoří nové projekty ASP.NET, které používají [LocalDB](https://blogs.msdn.com/b/sqlexpress/archive/2011/07/12/introducing-localdb-a-better-sql-express.aspx). LocalDB byla vytvořena speciálně pro vývojové prostředí. To nebude vyžadovat heslo, proto není nutné dělat nic, aby se zabránilo tajné kódy z kontroly na do zdrojového kódu. Některé vývojové týmy používat plné verze SQL serveru (nebo jiné DBMS), které vyžadují heslo.
+Visual Studio vytvoří nové projekty ASP.NET, které používají [LocalDB](https://blogs.msdn.com/b/sqlexpress/archive/2011/07/12/introducing-localdb-a-better-sql-express.aspx). LocalDB byl vytvořen speciálně pro vývojové prostředí. Nevyžaduje heslo, takže nemusíte nic dělat, abyste zabránili tomu, aby se tajné kódy kontrolovaly do zdrojového kódu. Některé vývojové týmy používají plné verze SQL Server (nebo jiného systému DBMS), které vyžadují heslo.
 
-Můžete použít `configSource` atribut pro nahrazení celým `<connectionStrings>` značek. Na rozdíl od `<appSettings>` `file` atribut, který se sloučí kód, `configSource` atribut nahradí značky. Následující kód ukazuje `configSource` atribut *web.config* souboru:
+Atribut `configSource` lze použít k nahrazení celého kódu `<connectionStrings>`. Na rozdíl od atributu `<appSettings>` `file`, který sloučí značku, atribut `configSource` nahradí značku. Následující kód ukazuje atribut `configSource` v souboru *Web. config* :
 
 [!code-xml[Main](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure/samples/sample4.xml?highlight=1)]
 
 > [!NOTE]
-> Pokud používáte `configSource` atributu, jak je znázorněno výše na externí soubor, přesunout připojovací řetězce a sada Visual Studio vytvořit nový web, nebudete moci zjistit, použijete databázi, a nebude mít možnost konfigurace databáze při vám pu blikovat do Azure ze sady Visual Studio. Pokud používáte `configSource` atribut, můžete použít PowerShell k vytvoření a nasazení webu a databáze, nebo můžete vytvořit na webu a databáze na portálu před publikováním. [New-AzureWebsitewithDB.ps1](https://gallery.technet.microsoft.com/scriptcenter/Ultimate-Create-Web-SQL-DB-9e0fdfd3) skriptu se vytvoří nový web a databáze.
+> Použijete-li atribut `configSource`, jak je uvedeno výše, přesunete připojovací řetězce do externího souboru a ponecháte si aplikaci Visual Studio vytvořit nový web, nebudete schopni zjistit, že používáte databázi, a při publikování do Azure ze sady Visual Studio nezískáme možnost konfigurace databáze. Pokud používáte atribut `configSource`, můžete použít PowerShell k vytvoření a nasazení vašeho webu a databáze, nebo můžete vytvořit web a databázi na portálu před publikováním. Skript [New-AzureWebsitewithDB. ps1](https://gallery.technet.microsoft.com/scriptcenter/Ultimate-Create-Web-SQL-DB-9e0fdfd3) vytvoří nový web a databázi.
 
 > [!WARNING]
-> Zabezpečení – na rozdíl od *AppSettingsSecrets.config* souboru, soubor řetězce externí připojení musí být ve stejném adresáři jako kořen *web.config* souboru, tak budete mít k opatření, aby vám nemusíte vrátit se změnami do zdrojového úložiště.
+> Zabezpečení – na rozdíl od souboru *AppSettingsSecrets. config* musí být soubor externích připojovacích řetězců ve stejném adresáři jako kořenový soubor *Web. config* , takže budete muset vzít v úvahu bezpečnostní opatření, abyste se ujistili, že je nebudete kontrolovat do zdrojového úložiště.
 
 > [!NOTE]
-> **Upozornění zabezpečení na soubor tajných kódů:** Osvědčeným postupem je nepoužívat produkční tajných kódů v vývoj a testování. Použití hesel produkčního prostředí v testovacím nebo vývojovém nevracení těchto tajných kódů.
+> **Upozornění zabezpečení v souboru tajných kódů:** Osvědčeným postupem je nepoužívat provozní tajemství v rámci testování a vývoje. Používáním produkčních hesel v testu nebo v jejich vývoji nevrací tyto tajné kódy.
 
 <a id="wj"></a>
-## <a name="webjobs-console-apps"></a>WebJobs konzolové aplikace
+## <a name="webjobs-console-apps"></a>Konzolové aplikace WebJobs
 
-*App.config* soubor používaný konzolové aplikace nepodporuje relativní cesty, ale podporuje absolutní cesty. Můžete použít absolutní cestu k přesunutí tajné kódy z adresáře vašeho projektu. Následující kód ukazuje tajných kódů v *C:\secrets\AppSettingsSecrets.config* souborů a jiných citlivých dat v *app.config* souboru.
+Soubor *App. config* používaný konzolovou aplikací nepodporuje relativní cesty, ale podporuje absolutní cesty. K přesunutí tajných kódů z adresáře projektu můžete použít absolutní cestu. Následující kód ukazuje tajné klíče v souboru *C:\secrets\AppSettingsSecrets.config* a data v souboru *App. config* , která nejsou citlivá.
 
 [!code-xml[Main](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure/samples/sample5.xml?highlight=2)]
 
 <a id="da"></a>
-## <a name="deploying-secrets-to-azure"></a>Tajné kódy nasazení do Azure
+## <a name="deploying-secrets-to-azure"></a>Nasazení tajných klíčů do Azure
 
-Při nasazení vaší webové aplikace do Azure, *AppSettingsSecrets.config* souboru se nenasadí (to znamená, co chcete). Může přejít na [portálu pro správu Azure](https://azure.microsoft.com/services/management-portal/) a nastavit ručně, to udělat:
+Když nasadíte webovou aplikaci do Azure, soubor *AppSettingsSecrets. config* se nesadí (to je to, co chcete). Můžete přejít na [portál pro správu Azure](https://azure.microsoft.com/services/management-portal/) a nastavit je ručně, abyste to provedli:
 
-1. Přejděte na [ https://portal.azure.com ](https://portal.azure.com)a přihlaste se pomocí přihlašovacích údajů Azure.
-2. Klikněte na tlačítko **Procházet &gt; Web Apps**, pak klikněte na název vaší webové aplikace.
-3. Klikněte na tlačítko **všechna nastavení &gt; nastavení aplikace**.
+1. Přejít na [https://portal.azure.com](https://portal.azure.com)a přihlaste se pomocí přihlašovacích údajů Azure.
+2. Klikněte na **procházet &gt; Web Apps**a pak klikněte na název vaší webové aplikace.
+3. Klikněte na **všechna nastavení &gt; nastavení aplikace**.
 
-**Nastavení aplikace** a **připojovací řetězec** hodnoty přepsání stejného nastavení *web.config* souboru. V našem příkladu jsme nebyly nasazeny tato nastavení do Azure, ale pokud byly tyto klíče v *web.config* souboru nastavení zobrazí na portálu má přednost.
+**Nastavení aplikace** a hodnoty **připojovacích řetězců** přepíšou stejné nastavení v souboru *Web. config* . V našem příkladu jsme tato nastavení do Azure nasadili, ale pokud byly tyto klíče v souboru *Web. config* , bude mít přednost nastavení zobrazená na portálu.
 
-Osvědčeným postupem je použít [pracovních postupů DevOps](../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything.md) a používat [prostředí Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/) (nebo jiné rozhraní framework, jako [Chef](http://www.opscode.com/chef/) nebo [Puppet](http://puppetlabs.com/puppet/what-is-puppet)) do automatizace nastavení tyto hodnoty v Azure. Následující skript Powershellu používá [Export CliXml](http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk) export šifrované tajné klíče na disk:
+Osvědčeným postupem je postupovat podle [pracovního postupu DevOps](../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything.md) a pomocí [Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/) (nebo jiné [architektury, jako je například](http://www.opscode.com/chef/) tovární nebo [Puppet](http://puppetlabs.com/puppet/what-is-puppet)), automatizovat nastavení těchto hodnot v Azure. Následující skript PowerShellu používá [Export-CLIXML](http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk) k exportu šifrovaných tajných klíčů na disk:
 
 [!code-powershell[Main](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure/samples/sample6.ps1)]
 
-Ve výše uvedené skriptu "Name" je název tajný klíč, jako například '&quot;FB\_AppSecret&quot; nebo "TwitterSecret". Můžete zobrazit soubor ".credential" vytvořen skriptem v prohlížeči. Následující fragment zkoušky každého souboru přihlašovacích údajů a nastaví tajných kódů pro pojmenovanou webovou aplikaci:
+Ve skriptu výše je ' název ' název tajného klíče, například '&quot;Arial\_AppSecret&quot; nebo "TwitterSecret". Soubor. Credential vytvořený skriptem můžete zobrazit v prohlížeči. Fragment kódu níže testuje všechny soubory přihlašovacích údajů a nastavuje tajné klíče pro pojmenovanou webovou aplikaci:
 
 [!code-powershell[Main](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure/samples/sample7.ps1)]
 
 > [!WARNING]
-> Zabezpečení – nezahrnují hesla a dalších tajných kódů v skriptu prostředí PowerShell to tedy popírá účel nasazení citlivá data pomocí skriptu prostředí PowerShell. [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) rutina poskytuje mechanismus zabezpečeného k získání hesla. Pomocí uživatelského rozhraní řádku může zabránit úniku heslo.
+> Zabezpečení – Nezahrnovat hesla ani jiné tajné klíče do skriptu PowerShellu, takže by se tak přesadil účel použití skriptu PowerShellu k nasazení citlivých dat. Rutina [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) poskytuje zabezpečený mechanismus pro získání hesla. Použití výzvy uživatelského rozhraní může zabránit úniku hesla.
 
-### <a name="deploying-db-connection-strings"></a>Nasazení databáze připojovacích řetězců
+### <a name="deploying-db-connection-strings"></a>Nasazení připojovacích řetězců databáze
 
-Připojovací řetězce databáze jsou zpracovány podobně jako nastavení aplikace. Pokud provádíte nasazení vaší webové aplikace ze sady Visual Studio, připojovací řetězec se nakonfigurují za vás. Můžete to ověřit na portálu. Doporučeným způsobem, jak nastavit připojovací řetězec je pomocí Powershellu. Příklad skriptu prostředí PowerShell vytvoří web a databáze a nastaví připojovací řetězec na webu stažení [New-AzureWebsitewithDB.ps1](https://gallery.technet.microsoft.com/scriptcenter/Ultimate-Create-Web-SQL-DB-9e0fdfd3) z [knihovnu skriptů Azure](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&amp;f%5B0%5D.Value=WindowsAzure).
+Připojovací řetězce databáze jsou zpracovávány podobně jako nastavení aplikace. Pokud nasadíte webovou aplikaci ze sady Visual Studio, připojovací řetězec bude nakonfigurován za vás. To můžete ověřit na portálu. Doporučený způsob, jak nastavit připojovací řetězec, je PowerShell. Příklad skriptu PowerShellu: vytvoří web a databázi a nastaví připojovací řetězec na webu, Stáhněte si [New-AzureWebsitewithDB. ps1](https://gallery.technet.microsoft.com/scriptcenter/Ultimate-Create-Web-SQL-DB-9e0fdfd3) z [knihovny skriptů Azure](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&amp;f%5B0%5D.Value=WindowsAzure).
 
 <a id="not"></a>
-## <a name="notes-for-php"></a>Poznámky pro jazyk PHP
+## <a name="notes-for-php"></a>Poznámky pro PHP
 
-Od páry klíč hodnota pro obě **nastavení aplikace** a **připojovací řetězce** jsou uložené v proměnné prostředí ve službě Azure App Service, vývojáře, které používají jakékoli webové aplikaci rozhraní (například PHP) můžete snadno Tyto hodnoty načtete. Zobrazit Stefan Schackow [webů Windows Azure: Jak aplikace řetězce a připojovacích řetězců](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/) blogový příspěvek, který ukazuje fragment kódu PHP ke čtení nastavení aplikace a připojovacích řetězců.
+Vzhledem k tomu, že páry klíč-hodnota pro obě **nastavení aplikace** i **připojovací řetězce** jsou uloženy v proměnných prostředí v Azure App Service, můžou tyto hodnoty snadno načíst vývojáři, kteří používají libovolné architektury webových aplikací (například php). Viz [webové stránky Windows Azure v Stefan Schackow: jak řetězce aplikace a připojovací řetězce fungují](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/) na blogovém příspěvku, který ukazuje fragment php pro čtení nastavení aplikace a připojovacích řetězců.
 
-## <a name="notes-for-on-premises-servers"></a>Poznámky k na místních serverech
+## <a name="notes-for-on-premises-servers"></a>Poznámky pro místní servery
 
-Pokud provádíte nasazení na místní webové servery, může pomoct zabezpečené tajné kódy ve [šifrování konfigurační oddíly konfiguračních souborů](https://msdn.microsoft.com/library/ff647398.aspx). Jako alternativu můžete použít stejný přístup doporučuje pro Azure Websites: zachovat vývojové nastavení v konfiguračních souborech a použití hodnot proměnných prostředí pro výrobní nastavení. V takovém případě však musíte napsat kód aplikace pro funkce, které jsou v Azure Websites: načtení nastavení z proměnných prostředí a použijte tyto hodnoty místo nastavení konfiguračního souboru nebo můžete použít nastavení konfiguračního souboru při proměnné prostředí nebyly nalezeny.
+Pokud nasazujete na místní webové servery, můžete zajistit zabezpečení tajných klíčů [šifrováním konfiguračních oddílů konfiguračních souborů](https://msdn.microsoft.com/library/ff647398.aspx). Jako alternativu můžete použít stejný přístup doporučený pro Azure websites: zachovat nastavení vývoje v konfiguračních souborech a použít hodnoty proměnných prostředí pro nastavení produkčního prostředí. V takovém případě je však nutné napsat kód aplikace pro funkce, které jsou automaticky na webu Azure websites: načíst nastavení z proměnných prostředí a použít tyto hodnoty místo nastavení konfiguračního souboru nebo použít nastavení konfiguračního souboru, když proměnné prostředí se nenašly.
 
 <a id="addRes"></a>
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-Příklad Powershellu skript, který se vytvoří webová aplikace a databáze, nastaví připojovací řetězec a nastavení aplikací, stahovat [New-AzureWebsitewithDB.ps1](https://gallery.technet.microsoft.com/scriptcenter/Ultimate-Create-Web-SQL-DB-9e0fdfd3) z [knihovnu skriptů Azure](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&amp;f%5B0%5D.Value=WindowsAzure). 
+Příklad skriptu PowerShellu, který vytvoří webovou aplikaci a databázi, nastaví připojovací řetězec + nastavení aplikace. Stáhněte si [New-AzureWebsitewithDB. ps1](https://gallery.technet.microsoft.com/scriptcenter/Ultimate-Create-Web-SQL-DB-9e0fdfd3) z [knihovny skriptů Azure](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&amp;f%5B0%5D.Value=WindowsAzure). 
 
-Zobrazit Stefan Schackow [webů Windows Azure: Fungování řetězců aplikace a připojovacích řetězců](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)
+Viz [webové stránky Windows Azure v Stefan Schackow: jak fungují řetězce aplikace a připojovací řetězce.](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)
 
-Speciální díky Jiří Dorrans ( [ @blowdart ](https://twitter.com/blowdart) ) a Carlos Farre kontroly.
+Zvláštní díky Barryho Dorrans ( [@blowdart](https://twitter.com/blowdart) ) a Carlos Farre pro kontrolu.

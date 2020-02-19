@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: 513837a7-cfea-4568-a4e9-1f5901245d24
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
 msc.type: authoredcontent
-ms.openlocfilehash: b8c901ec30b6d37237f80100a2978350ac389b7a
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.openlocfilehash: efc3fa0255aa765e515412c5fa4098303a9d9234
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519164"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457021"
 ---
 # <a name="data-partitioning-strategies-building-real-world-cloud-apps-with-azure"></a>Strategie dělení dat (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -85,7 +85,7 @@ V konceptuální části je snadné zjistit, jak funguje schéma dělení, ale j
 
 Komplikace je možné spravovat tak dlouho, dokud je naplánujete před přechodem do produkčního prostředí. Spousta lidí, kteří si ji neudělali později. V průměru náš tým pro poradenské zákazníky (CAT) panicked telefonní hovory o jednou měsíčně od zákazníků, jejichž aplikace se ve skutečnosti vybírají a nevedly k tomuto plánování. A říkají něco jako: "Help! Všechno je v jednom úložišti dat a během 45 dnů se na něj nespouští místo. " A pokud máte spoustu obchodní logiky, kterou máte k dispozici v tom, jak přistupujete k úložišti dat a máte zákazníky, kteří používají vaši aplikaci, nemusíte v průběhu migrace přejít na denní dobu. Provedeme vás herculean úsilím, abychom zákazníkům usnadnili rozdělení jejich dat bez výpadku. Je velmi zajímavá a velmi scaryá a nejedná se o něco, co byste chtěli mít v situaci, kdy se můžete vyhnout! Zamyslete se nad tím a integrací IT do vaší aplikace, takže když se aplikace později rozroste, pomůže vám to být mnohem jednodušší.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Efektivní schéma dělení umožňuje, aby se vaše cloudová aplikace mohla škálovat tak, aby petabajty data v cloudu bez kritických míst. A nemusíte platit předem pro obrovské počítače nebo rozsáhlou infrastrukturu, protože byste aplikaci spustili v místním datovém centru. V cloudu můžete postupně přidávat kapacitu, jak ji budete potřebovat, a platíte jenom za to, jak budete používat.
 
@@ -95,7 +95,7 @@ V [Další části](unstructured-blob-storage.md) se dozvíte, jak aplikace pro 
 
 Další informace o strategiích dělení naleznete v následujících zdrojích informací.
 
-Dokumentace:
+Nápovědě
 
 - [Osvědčené postupy pro návrh rozsáhlých služeb na platformě Windows Azure Cloud Services](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx). Dokument White Paper, který označuje Simms a Michael Thomassy.
 - [Vzory a postupy Microsoft – vzory návrhu pro Cloud](https://msdn.microsoft.com/library/dn568099.aspx) Viz pokyny k dělení dat, horizontálního dělení vzor.

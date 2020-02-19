@@ -8,16 +8,16 @@ ms.date: 03/30/2015
 ms.assetid: 9f05ccb1-2004-4661-ad8b-c370e6c09c8e
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage
 msc.type: authoredcontent
-ms.openlocfilehash: 2afd4b5cf640eb97080de7e5280409f5e5347731
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: f48b2be755b84dff9b2672bd348c73107602c6dd
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74583624"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77456788"
 ---
 # <a name="unstructured-blob-storage-building-real-world-cloud-apps-with-azure"></a>Nestrukturované Blob Storage (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -127,7 +127,7 @@ Pokud se podíváte na HTML stránku, která se zobrazí, zobrazí se adresa URL
 
 [!code-cshtml[Main](unstructured-blob-storage/samples/sample13.cshtml?highlight=11)]
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Viděli jste, jak aplikace Fix it ukládá obrázky do Blob service a jenom image URL v databázi SQL. Použití Blob service udržuje databázi SQL mnohem menší, než v opačném případě, umožňuje horizontální navýšení kapacity až na téměř neomezený počet úkolů a dá se provést bez napsání velkého množství kódu.
 

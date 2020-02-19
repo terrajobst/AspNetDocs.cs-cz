@@ -8,16 +8,16 @@ ms.date: 01/06/2019
 ms.assetid: 52a4d5fe-aa31-4471-b3cb-a064f82cb791
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 946c88d2b337e3bf634f815c7f1ce045f29d9d84
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.openlocfilehash: 6cef963910b957e8b4ad7c7909385f6dbdff95c1
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76518738"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77456060"
 ---
 # <a name="examining-the-edit-methods-and-edit-view"></a>Zkoumání metod Edit a zobrazení pro úpravy
 
-od [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [!INCLUDE [Tutorial Note](index.md)]
 
@@ -100,7 +100,7 @@ Všechny metody `HttpGet` sledují podobný vzor. Získají filmový objekt (neb
 Pokud používáte počítač v češtině, můžete tuto část přeskočit a přejít k dalšímu kurzu. Verzi globalizace tohoto kurzu si můžete stáhnout [tady](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=16475). Kurz o tom, jak se na mezinárodní základě vychází, najdete v tématu [Nadeem 's ASP.NET MVC 5 – mezinárodní](http://afana.me/post/aspnet-mvc-internationalization.aspx).
 
 > [!NOTE]
-> Aby bylo možné podporovat ověřování jQuery pro jiné než anglické národní prostředí, které používá čárku (&quot;,&quot;) pro desetinnou čárku a formáty kalendářních dat, které nejsou v češtině, je nutné zahrnout *globalizaci. js* a konkrétní soubory *kultury/globalizace. js* (z [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) a JavaScript pro použití `Globalize.parseFloat`. Z NuGet můžete získat ověřování jQuery bez angličtiny. (Neinstalujte globalizaci, pokud používáte anglické národní prostředí.)
+> aby bylo možné podporovat ověřování jQuery pro jiné než anglické národní prostředí, které používá čárku (&quot;,&quot;) pro desetinnou čárku a formáty kalendářních dat, které nejsou v češtině, je nutné zahrnout *globalizaci. js* a konkrétní soubory *kultury/globalizace. js* (z [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) a JavaScript pro použití `Globalize.parseFloat`. Z NuGet můžete získat ověřování jQuery bez angličtiny. (Neinstalujte globalizaci, pokud používáte anglické národní prostředí.)
 
 1. V nabídce **nástroje** klikněte na **Správce balíčků NuGet**a pak klikněte na **Spravovat balíčky NuGet pro řešení**.
 

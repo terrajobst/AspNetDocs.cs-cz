@@ -1,143 +1,143 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/accessing-your-models-data-from-a-controller
-title: Přístup k datům modelu z Kontroleru (C#) | Dokumentace Microsoftu
+title: Přístup k datům modelu z kontroleru (C#) | Microsoft Docs
 author: Rick-Anderson
-description: V tomto kurzu se seznámíte se základy vytváření ASP.NET MVC webovou aplikaci pomocí Microsoft Visual Web Developer 2010 Express Service Pack 1, což je...
+description: V tomto kurzu se seznámíte se základy vytváření webových aplikací ASP.NET MVC pomocí nástroje Microsoft Visual Web Developer 2010 Express Service Pack 1, který je...
 ms.author: riande
 ms.date: 01/12/2011
 ms.assetid: 002ada5c-f114-47ab-a441-57dbdb728ea0
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 48fe7af73a5e5d8a3cd4c4ec152c57726fb021ba
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 2e9c7f24d426635760b613f570b85455ce71b3dc
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130213"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458075"
 ---
 # <a name="accessing-your-models-data-from-a-controller-c"></a>Přístup k datům modelu z kontroleru (C#)
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 > > [!NOTE]
-> > Je k dispozici aktualizovaná verze tohoto kurzu [tady](../../../getting-started/introduction/getting-started.md) , která používá ASP.NET MVC 5 a Visual Studio 2013. Je bezpečnější, postupujte podle mnohem jednodušší a ukazuje další funkce.
+> > K [dispozici je](../../../getting-started/introduction/getting-started.md) aktualizovaná verze tohoto kurzu, která používá ASP.NET MVC 5 a Visual Studio 2013. Je to bezpečnější, mnohem jednodušší a ukazuje více funkcí.
 > 
 > 
-> V tomto kurzu se seznámíte se základy vytváření ASP.NET MVC webovou aplikaci pomocí Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze sady Microsoft Visual Studio. Než začnete, ujistěte se, že jste nainstalovali požadavky uvedené níže. Kliknutím na následující odkaz můžete nainstalovat všechny z nich: [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Alternativně můžete nainstalovat jednotlivě požadavky pomocí následujících odkazů:
+> V tomto kurzu se seznámíte se základy vytváření webových aplikací ASP.NET MVC pomocí nástroje Microsoft Visual Web Developer 2010 Express Service Pack 1, což je bezplatná verze Microsoft Visual Studio. Než začnete, ujistěte se, že jste nainstalovali požadavky uvedené níže. Všechny z nich můžete nainstalovat kliknutím na následující odkaz: instalace [webové platformy](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Případně můžete požadavky jednotlivě nainstalovat pomocí následujících odkazů:
 > 
-> - [Visual Studio Web Developer Express SP1 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)
-> - [ASP.NET MVC 3 Tools Update](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
-> - [SQL Server Compact 4.0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(podpora modulu runtime a nástroje)
+> - [Požadavky sady Visual Studio Web Developer Express SP1](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)
+> - [Aktualizace nástrojů MVC 3 pro ASP.NET](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
+> - [SQL Server Compact 4,0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(podpora modulu runtime + nástroje)
 > 
-> Pokud používáte Visual Studio 2010 namísto Visual Web Developer 2010, nainstalujte příslušné požadované součásti po kliknutí na následující odkaz: [Visual Studio 2010 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack).
+> Pokud používáte sadu Visual Studio 2010 místo sady Visual Web Developer 2010, nainstalujte požadavky kliknutím na následující odkaz: sady [Visual studio 2010 požadavky](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack).
 > 
-> Projekt aplikace Visual Web Developer se zdrojovým kódem jazyka C# je k dispozici v tomto tématu. [Stáhněte si verzi C#](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098). Pokud dáváte přednost jazyka Visual Basic, přejděte [verze jazyka Visual Basic](../vb/intro-to-aspnet-mvc-3.md) tohoto kurzu.
+> Projekt Visual Web Developer se C# zdrojovým kódem je k dispozici pro toto téma. [Stáhněte si C# verzi](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098). Pokud dáváte přednost Visual Basic, přepněte se na [Visual Basic verzi](../vb/intro-to-aspnet-mvc-3.md) tohoto kurzu.
 
-V této části vytvoříte novou `MoviesController` třídy a napsat kód, který načte data o filmech a zobrazí v prohlížeči pomocí zobrazení šablony. Ujistěte se, že jste svou aplikaci, než budete pokračovat.
+V této části vytvoříte novou třídu `MoviesController` a napíšete kód, který načte data videa a zobrazí se v prohlížeči pomocí šablony zobrazení. Než budete pokračovat, nezapomeňte sestavit aplikaci.
 
-Klikněte pravým tlačítkem myši *řadiče* složky a vytvořte nový `MoviesController` kontroleru. Vyberte následující možnosti:
+Klikněte pravým tlačítkem na složku *Controllers* a vytvořte nový kontroler `MoviesController`. Vyberte následující možnosti:
 
-- Název kontroleru: **MoviesController**. (Toto je výchozí. )
-- Šablony: **Kontroler s akcemi čtení/zápisu a zobrazeními pomocí Entity Frameworku**.
-- Třída modelu: **Video (MvcMovie.Models)**.
-- Třída kontextu dat: **MovieDBContext (MvcMovie.Models)**.
-- Zobrazení: **Razor (CSHTML)**. (Výchozí nastavení.)
+- Název kontroleru: **MoviesController**. (Toto je výchozí nastavení. )
+- Šablona: **kontroler s akcemi čtení/zápisu a zobrazeními pomocí Entity Framework**.
+- Třída modelu: **video (MvcMovie. Models)** .
+- Třída kontextu dat: **MovieDBContext (MvcMovie. Models)** .
+- Zobrazení: **Razor (cshtml)** . (Výchozí nastavení.)
 
 [![AddScaffoldedMovieController](accessing-your-models-data-from-a-controller/_static/image2.png "AddScaffoldedMovieController")](accessing-your-models-data-from-a-controller/_static/image1.png)
 
 Klikněte na **Přidat**. Visual Web Developer vytvoří následující soubory a složky:
 
-- *MoviesController.cs* souboru v projektu *řadiče* složky.
-- A *filmy* složky v projektu *zobrazení* složky.
-- *Create.cshtml Delete.cshtml, Details.cshtml, Edit.cshtml*, a *Index.cshtml* na novém *Views\Movies* složky.
+- Soubor *MoviesController.cs* ve složce *řadičů* projektu.
+- Složka *filmy* ve složce *zobrazení* projektu.
+- *Vytvořte. cshtml, odstraňte. cshtml, details. cshtml, upravte. cshtml*a *index. cshtml* ve složce New *Views\Movies* .
 
 [![NewMovieControllerScreenShot](accessing-your-models-data-from-a-controller/_static/image4.png "NewMovieControllerScreenShot")](accessing-your-models-data-from-a-controller/_static/image3.png)
 
-Mechanismus generování uživatelského rozhraní ASP.NET MVC 3 automaticky vytvoří CRUD (vytváření, čtení, aktualizace a odstranění) metody akce a zobrazení za vás. Teď máte plně funkční webovou aplikaci, která umožňuje vytvořit, seznam, upravovat a odstraňovat položky video.
+Mechanizmus pro generování uživatelského rozhraní ASP.NET MVC 3 automaticky vytvořila metody a zobrazení operací CRUD (vytváření, čtení, aktualizace a odstraňování). Nyní máte plně funkční webovou aplikaci, která umožňuje vytvářet, zobrazovat, upravovat a odstraňovat položky filmů.
 
-Spusťte aplikaci a přejděte `Movies` řadič přidáním */Movies* na adresu URL do adresního řádku prohlížeče. Protože aplikace se spoléhá na výchozí směrování (definované v *Global.asax* souboru), žádost prohlížeče `http://localhost:xxxxx/Movies` se směruje na výchozí hodnotu `Index` metody akce `Movies` kontroleru. Jinými slovy, požadavek prohlížeče `http://localhost:xxxxx/Movies` je v podstatě totéž jako požadavek prohlížeče `http://localhost:xxxxx/Movies/Index`. Výsledkem je prázdný seznam filmy, protože ještě jste nepřidali žádné.
+Spusťte aplikaci a přejděte k řadiči `Movies` připojením */Movies* k adrese URL v adresním řádku prohlížeče. Vzhledem k tomu, že se aplikace spoléhá na výchozí směrování (definované v souboru *Global. asax* ), je požadavek prohlížeče `http://localhost:xxxxx/Movies` směrován do výchozí metody `Index` action kontroleru `Movies`. Jinými slovy, `http://localhost:xxxxx/Movies` požadavek prohlížeče je ve skutečnosti stejný jako `http://localhost:xxxxx/Movies/Index`žádosti prohlížeče. Výsledkem je prázdný seznam filmů, protože jste to ještě nepřidali.
 
 ![](accessing-your-models-data-from-a-controller/_static/image5.png)
 
-### <a name="creating-a-movie"></a>Vytváření video
+### <a name="creating-a-movie"></a>Vytvoření filmu
 
-Vyberte **vytvořit nový** odkaz. Zadejte podrobnosti o videa a poté klikněte **vytvořit** tlačítko.
+Vyberte odkaz **vytvořit nový** . Zadejte podrobnosti o videu a potom klikněte na tlačítko **vytvořit** .
 
 ![](accessing-your-models-data-from-a-controller/_static/image6.png)
 
-Kliknutím **vytvořit** tlačítko způsobí, že formulář, který se má publikovat na server, kde je video informace uloženy v databázi. Pak budete přesměrováni na */Movies* adresu URL, kde se můžete podívat na nově vytvořený video v seznamu.
+Kliknutím na tlačítko **vytvořit** dojde k odeslání formuláře na server, kde jsou informace o filmu uloženy v databázi. Pak budete přesměrováni na adresu URL */Movies* , kde uvidíte nově vytvořený film v seznamu.
 
 [![IndexWhenHarryMet](accessing-your-models-data-from-a-controller/_static/image8.png "IndexWhenHarryMet")](accessing-your-models-data-from-a-controller/_static/image7.png)
 
-Vytvořte několik další položky video. Zkuste **upravit**, **podrobnosti**, a **odstranit** odkazy, které jsou všechny funkční.
+Vytvořte ještě několik dalších záznamů filmů. Zkuste odkazy **Upravit**, **Podrobnosti**a **Odstranit** , které jsou všechny funkční.
 
-## <a name="examining-the-generated-code"></a>Zkoumání generovaného kódu
+## <a name="examining-the-generated-code"></a>Prověřování generovaného kódu
 
-Otevřít *Controllers\MoviesController.cs* souboru a prozkoumání generované `Index` metody. Část kontroler filmů s `Index` metoda je uveden níže.
+Otevřete soubor *Controllers\MoviesController.cs* a prověřte vygenerovanou metodu `Index`. Část kontroleru videí s metodou `Index` je uvedena níže.
 
 [!code-csharp[Main](accessing-your-models-data-from-a-controller/samples/sample1.cs)]
 
-Následující řádek ze `MoviesController` třídy vytvoří kontext databáze filmů, jak je popsáno výše. Kontext databáze filmů slouží k dotazování, upravovat a odstraňovat videa.
+Následující řádek z třídy `MoviesController` vytváří instanci kontextu databáze videa, jak je popsáno výše. Můžete použít kontext databáze videa k dotazování, úpravám a odstraňování filmů.
 
 [!code-csharp[Main](accessing-your-models-data-from-a-controller/samples/sample2.cs)]
 
-Požadavek na `Movies` kontroler vrací všechny položky v `Movies` tabulky movie databáze a potom předává výsledky `Index` zobrazení.
+Požadavek na kontroler `Movies` vrátí všechny položky v tabulce `Movies` v databázi videa a poté předá výsledky do zobrazení `Index`.
 
-## <a name="strongly-typed-models-and-the-model-keyword"></a>Modely se silnými typy a @model – klíčové slovo
+## <a name="strongly-typed-models-and-the-model-keyword"></a>Modely silného typu a klíčové slovo @model
 
-Dříve v tomto kurzu jste viděli, jak kontroleru můžete předat data nebo objekty zobrazení šablony pomocí `ViewBag` objektu. `ViewBag` Je dynamický objekt, který představuje pohodlný způsob s pozdní vazbou k předávání informací do zobrazení.
+Dříve v tomto kurzu jste viděli, jak může řadič předat data nebo objekty do šablony zobrazení pomocí objektu `ViewBag`. `ViewBag` je dynamický objekt, který poskytuje pohodlný způsob, jak předat informace do zobrazení.
 
-ASP.NET MVC rovněž poskytuje možnost předávání silně typované dat nebo objekty, které chcete zobrazit šablonu. Tento přístup umožňuje lepší kompilace Kontrola kódu a propracovanější IntelliSense v editoru Visual Web Developer silného typu. Používáme s tímto přístupem `MoviesController` třídy a *Index.cshtml* zobrazit šablonu.
+ASP.NET MVC také poskytuje možnost předat data silného typu nebo objekty do šablony zobrazení. Tento přístup silného typu umožňuje lepší kontrolu kódu a bohatší IntelliSense v editoru Visual Web Developer. Tento přístup používáme pro třídu `MoviesController` a *index. cshtml* pro zobrazení.
 
-Všimněte si, jak kód vytvoří [ `List` ](https://msdn.microsoft.com/library/6sh2ey19.aspx) objektu při volání `View` pomocnou metodu v `Index` metody akce. Tento kód pak předá `Movies` seznamu z kontroleru zobrazení:
+Všimněte si, jak kód vytvoří objekt [`List`](https://msdn.microsoft.com/library/6sh2ey19.aspx) při volání pomocné metody `View` v metodě akce `Index`. Kód pak předá tento seznam `Movies` z kontroleru k zobrazení:
 
 [!code-csharp[Main](accessing-your-models-data-from-a-controller/samples/sample3.cs)]
 
-Zahrnutím `@model` příkazu v horní části souboru šablony zobrazení, můžete určit typ objektu, který očekává, že zobrazení. Při vytvoření kontroleru video Visual Web Developer automaticky zahrnuty následující `@model` příkazu v horní části *Index.cshtml* souboru:
+Zahrnutím příkazu `@model` v horní části souboru šablony zobrazení můžete určit typ objektu, který zobrazení očekává. Když jste vytvořili kontroler filmů, Visual Web Developer automaticky zahrne do horní části souboru *index. cshtml* následující příkaz `@model`:
 
 [!code-cshtml[Main](accessing-your-models-data-from-a-controller/samples/sample4.cshtml)]
 
-To `@model` – direktiva umožňuje přístup k seznamu filmy, které kontroleru předána do zobrazení podle používání `Model` objekt, který je silně typováno. Například v *Index.cshtml* šablony, kód prochází videa prováděním `foreach` příkaz přes silného typu `Model` objektu:
+Tato direktiva `@model` umožňuje přístup k seznamu filmů, které kontroler předává do zobrazení, pomocí silně typovaného objektu `Model`. Například v šabloně *index. cshtml* kód projde pomocí příkazu `foreach` přes `Model` objekt silného typu:
 
 [!code-cshtml[Main](accessing-your-models-data-from-a-controller/samples/sample5.cshtml)]
 
-Protože `Model` objektu je silně typováno (jako `IEnumerable<Movie>` objektu), každý `item` objektu ve smyčce je zadán jako `Movie`. Kromě dalších výhod to znamená získání kompilace Kontrola kódu a plnou podporu technologie IntelliSense v editoru kódu:
+Vzhledem k tomu, že objekt `Model` je silného typu (jako objekt `IEnumerable<Movie>`), je každý objekt `item` ve smyčce zadán jako `Movie`. Kromě dalších výhod to znamená, že získáte kontrolu v době kompilace kódu a úplnou podporu technologie IntelliSense v editoru kódu:
 
 [![ModelIntelliSense](accessing-your-models-data-from-a-controller/_static/image10.png "ModelIntelliSense")](accessing-your-models-data-from-a-controller/_static/image9.png)
 
-## <a name="working-with-sql-server-compact"></a>Práce s SQL serverem Compact
+## <a name="working-with-sql-server-compact"></a>Práce s SQL Server Compact
 
-Entity Framework Code First zjistil, že připojovací řetězec databáze, která byla k dispozici na který je odkazováno `Movies` databázi, která tenkrát neexistovaly, takže Code First vytvořit databáze automaticky. Můžete ověřit, že se vytvořil zobrazením *aplikace\_Data* složky. Pokud se nezobrazí *Movies.sdf* souboru, klikněte na tlačítko **zobrazit všechny soubory** tlačítko **Průzkumníku řešení** nástrojů, klikněte na tlačítko **aktualizovat** tlačítko a pak rozbalte *aplikace\_Data* složky.
+Entity Framework Code First zjistil, že zadaný připojovací řetězec databáze odkazoval na `Movies` databázi, která ještě neexistuje, takže Code First databázi automaticky vytvořil. Můžete ověřit, že se vytvořila, a to tak, že se podíváte na složku *Data\_App* . Pokud nevidíte soubor *Movies. sdf* , klikněte na tlačítko **Zobrazit všechny soubory** na panelu nástrojů **Průzkumník řešení** , klikněte na tlačítko **aktualizovat** a potom rozbalte složku *\_data App* .
 
 [![SDF_in_SolnExp](accessing-your-models-data-from-a-controller/_static/image12.png "SDF_in_SolnExp")](accessing-your-models-data-from-a-controller/_static/image11.png)
 
-Dvakrát klikněte na panel *Movies.sdf* otevřete **Průzkumníka serveru**. Pak rozbalte **tabulky** složky tabulky, které byly vytvořeny v databázi.
+Dvojitým kliknutím na *video. sdf* otevřete **Průzkumník serveru**. Pak rozbalte složku **Tables (tabulky** ) a zobrazte tabulky, které byly vytvořeny v databázi.
 
 > [!NOTE]
-> Pokud dojde k chybě při poklepání *Movies.sdf*, ujistěte se, že jste nainstalovali [SQL Server Compact 4.0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(podpora modulu runtime a nástroje). (Odkazy na software najdete v seznamu požadavků uvedených v části 1 této série kurzů.) Pokud je nyní nainstalovat verzi, budete muset zavřít a znovu otevřete Visual Web Developer.
+> Pokud při poklepání na *filmy. sdf*dojde k chybě, ujistěte se, že jste nainstalovali [SQL Server Compact 4,0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(podpora modulů runtime a nástrojů). (Informace o odkazech na software najdete v seznamu požadavků v části 1 této série kurzů.) Pokud nainstalujete tuto verzi hned, budete muset aplikaci Visual Web Developer zavřít a znovu otevřít.
 
 [![DB_explorer](accessing-your-models-data-from-a-controller/_static/image14.png "DB_explorer")](accessing-your-models-data-from-a-controller/_static/image13.png)
 
-Existují dvě tabulky, jeden pro `Movie` sady entit a pak `EdmMetadata` tabulky. `EdmMetadata` Tabulka Entity Framework používá k určení, kdy nejsou synchronizované modelu a databáze.
+K dispozici jsou dvě tabulky, jednu pro sadu entit `Movie` a potom tabulku `EdmMetadata`. `EdmMetadata` tabulce používá Entity Framework k určení, kdy model a databáze nejsou synchronizované.
 
-Klikněte pravým tlačítkem myši `Movies` tabulce a vybrat **zobrazit Data tabulky** k zobrazení dat, které jste vytvořili.
+Kliknutím pravým tlačítkem na tabulku `Movies` a výběrem **Zobrazit data tabulky** zobrazíte data, která jste vytvořili.
 
-[![MoviesTable](accessing-your-models-data-from-a-controller/_static/image16.png "MoviesTable")](accessing-your-models-data-from-a-controller/_static/image15.png)
+[![Filmy](accessing-your-models-data-from-a-controller/_static/image16.png "Filmy")](accessing-your-models-data-from-a-controller/_static/image15.png)
 
-Klikněte pravým tlačítkem myši `Movies` tabulce a vybrat **upravit schéma tabulky**.
+Klikněte pravým tlačítkem na tabulku `Movies` a vyberte **Upravit schéma tabulky**.
 
 [![EditTableSchema](accessing-your-models-data-from-a-controller/_static/image18.png "EditTableSchema")](accessing-your-models-data-from-a-controller/_static/image17.png)
 
 [![TableSchemaSM](accessing-your-models-data-from-a-controller/_static/image20.png "TableSchemaSM")](accessing-your-models-data-from-a-controller/_static/image19.png)
 
-Všimněte si, že jak schéma `Movies` tabulka mapuje `Movie` třídy, které jste vytvořili dříve. Entity Framework Code First automaticky vytvoří toto schéma na základě vašich `Movie` třídy.
+Všimněte si, jak se schéma `Movies` tabulky mapuje na třídu `Movie`, kterou jste vytvořili dříve. Entity Framework Code First automaticky vytvořil toto schéma na základě vaší třídy `Movie`.
 
-Jakmile budete hotovi, ukončete připojení. (Pokud není ukončení připojení, pravděpodobně dojde k chybě při příštím spuštění projektu).
+Až skončíte, připojení ukončete. (Pokud připojení neukončíte, při příštím spuštění projektu se může zobrazit chyba.
 
 [![CloseConnection](accessing-your-models-data-from-a-controller/_static/image22.png "CloseConnection")](accessing-your-models-data-from-a-controller/_static/image21.png)
 
-Teď máte databázi a jednoduchý seznam stránku k zobrazení obsahu z něj. V dalším kurzu vytvoříme zkontrolujte zbytek automaticky generovaný kód a přidat `SearchIndex` metoda a `SearchIndex` zobrazení, které umožňuje hledat videa v této databázi.
+Teď máte databázi a jednoduchou stránku se seznamem, ze které můžete zobrazit obsah. V dalším kurzu prověříme zbytek vygenerovaného kódu a přidáte `SearchIndex` metodu a `SearchIndex` zobrazení, které vám umožní vyhledat filmy v této databázi.
 
 > [!div class="step-by-step"]
 > [Předchozí](adding-a-model.md)
-> [další](examining-the-edit-methods-and-edit-view.md)
+> [Další](examining-the-edit-methods-and-edit-view.md)

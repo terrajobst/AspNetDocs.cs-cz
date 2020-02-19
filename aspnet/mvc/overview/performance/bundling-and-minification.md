@@ -8,16 +8,16 @@ ms.date: 08/23/2012
 ms.assetid: 5894dc13-5d45-4dad-8096-136499120f1d
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: 239980d747c6e0d6be1e9b4fe0371e276e37cf21
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.openlocfilehash: 61bfe5dbac04b57e1461183b66ead2f01fe0734c
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519281"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457762"
 ---
 # <a name="bundling-and-minification"></a>Sdružování a minifikace
 
-od [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 > Sdružování a minifikace jsou dva postupy, které můžete použít v ASP.NET 4,5 ke zlepšení doby načítání požadavků. Sdružování a minifikace vylepšuje dobu načítání tím, že snižuje počet požadavků na server a snižuje velikost požadovaných prostředků (například CSS a JavaScript).
 
@@ -154,9 +154,9 @@ Virtuální cesta zadaná v metodě `Include` a ve vzorci hledání v metodě `I
 
 Vezměte v úvahu projekt s následujícími soubory JavaScriptu:
 
-- *Scripts\\Common\\AddAltToImg.js*
-- *Scripts\\Common\\ToggleDiv.js*
-- *Scripts\\Common\\ToggleImg.js*
+- *Skripty\\Common\\AddAltToImg. js*
+- *Skripty\\Common\\ToggleDiv. js*
+- *Skripty\\Common\\ToggleImg. js*
 - *Skripty\\Common\\sub1\\ToggleLinks. js*
 
 ![DIR imag](bundling-and-minification/_static/image7.png)
@@ -165,13 +165,13 @@ Následující tabulka ukazuje soubory přidané do sady prostředků pomocí z�
 
 | **Volání** | **Přidané soubory nebo vyvolání výjimky** |
 | --- | --- |
-| Include ("~/Scripts/Common/\*. js") | *AddAltToImg.js*, *ToggleDiv.js*, *ToggleImg.js* |
+| Include ("~/Scripts/Common/\*. js") | *AddAltToImg. js*, *ToggleDiv. js*, *ToggleImg. js* |
 | Include ("~/Scripts/Common/T\*. js") | Neplatná výjimka vzoru. Zástupný znak je povolen pouze pro předponu nebo příponu. |
 | Include ("~/Scripts/Common/\*og.\*") | Neplatná výjimka vzoru. Je povolen pouze jeden zástupný znak. |
-| Include ("~/Scripts/Common/T\*") | *ToggleDiv.js*, *ToggleImg.js* |
+| Include ("~/Scripts/Common/T\*") | *ToggleDiv. js*, *ToggleImg. js* |
 | Include ("~/Scripts/Common/\*") | Neplatná výjimka vzoru. Čistý zástupný segment není platný. |
-| IncludeDirectory ("~/Scripts/Common"; "T\*") | *ToggleDiv.js*, *ToggleImg.js* |
-| IncludeDirectory ("~/Scripts/Common"; "T\*"; true) | *ToggleDiv.js*, *ToggleImg.js*, *ToggleLinks.js* |
+| IncludeDirectory ("~/Scripts/Common"; "T\*") | *ToggleDiv. js*, *ToggleImg. js* |
+| IncludeDirectory ("~/Scripts/Common"; "T\*"; true) | *ToggleDiv. js*, *ToggleImg. js*, *ToggleLinks. js* |
 
 Explicitní přidání každého souboru do sady se obvykle upřednostňuje pro načítání souborů se zástupnými znaky z následujících důvodů:
 

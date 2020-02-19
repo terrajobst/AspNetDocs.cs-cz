@@ -8,16 +8,16 @@ ms.date: 07/09/2015
 ms.assetid: 7e986ab5-6615-4638-add7-4614ce7b51db
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
 msc.type: authoredcontent
-ms.openlocfilehash: 44941c9fd0dcd3223604fc4a4f2836f587578acb
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: f61810ea7b486b2fa0bbb234edea7541eedde835
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74585616"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457060"
 ---
 # <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>Monitorování a telemetrie (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -32,7 +32,7 @@ Spousta lidí spoléhá na zákazníky, aby věděli, že jejich aplikace je mim
 
 Jedním z věcí, které jsou skvělé z hlediska cloudového prostředí, je, že je to opravdu snadné koupit nebo pronajímat své Victory. Telemetrii je příkladem. Aniž byste hodně napravili, můžete si předběžně využít a efektivně spustit systém telemetrie. Existuje spousta skvělých partnerů, kteří se integrují s Azure, a některé z nich mají bezplatné úrovně, takže můžete získat základní telemetrii pro nic. Tady je jen několik těch, které jsou aktuálně dostupné v Azure:
 
-- [Nový Relic](http://newrelic.com/)
+- [New Relic](http://newrelic.com/)
 - [AppDynamics](http://www.appdynamics.com/)
 - [DynaTrace](https://datamarket.azure.com/application/b4011de2-1212-4375-9211-e882766121ff)
 
@@ -58,7 +58,7 @@ Klikněte na **informace o připojení**a zkopírujte licenční klíč.
 
 ![Informace o připojení](monitoring-and-telemetry/_static/image5.png)
 
-Přejděte na kartu **Konfigurovat** pro vaši webovou aplikaci na portálu, nastavte **sledování výkonu** na **doplněk**a nastavte rozevírací seznam **zvolit doplněk** na **New Relic**. Pak klikněte na **Uložit**.
+Přejděte na kartu **Konfigurovat** pro vaši webovou aplikaci na portálu, nastavte **sledování výkonu** na **doplněk**a nastavte rozevírací seznam **zvolit doplněk** na **New Relic**. Potom klikněte na **Uložit**.
 
 ![Nový Relic na kartě Konfigurace](monitoring-and-telemetry/_static/image6.png)
 
@@ -247,7 +247,7 @@ Do svého účtu úložiště můžete také zapisovat protokoly a zobrazit je s
 
 ![Přihlášení Průzkumník serveru](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-storagelogs.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Je velmi jednoduché implementovat předem připravený systém telemetrie, instrumentovat vlastní kód a konfigurovat protokolování v Azure. A když máte problémy s produkčním prostředím, kombinace systému telemetrie a vlastních protokolů vám pomůže rychle vyřešit problémy předtím, než se stanou významnými problémy pro vaše zákazníky.
 

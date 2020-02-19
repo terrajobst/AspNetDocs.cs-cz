@@ -1,154 +1,154 @@
 ---
 uid: mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
-title: MVC 5 vytvořte aplikaci pomocí služby Facebook, Twitter, LinkedIn a Google OAuth2 přihlašování (C#) | Dokumentace Microsoftu
+title: Vytvoření aplikace MVC 5 pomocí služby Facebook, Twitter, LinkedIn a Google OAuth2 Signing (C#) | Microsoft Docs
 author: Rick-Anderson
-description: V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 5, která umožňuje uživatelům přihlášení pomocí OAuth 2.0 s přihlašovacími údaji z externí authenti...
+description: V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 5, která uživatelům umožňuje přihlásit se pomocí OAuth 2,0 s přihlašovacími údaji z externího předběžné...
 ms.author: riande
 ms.date: 04/03/2015
 ms.assetid: 81ee500f-fc37-40d6-8722-f1b64720fbb6
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: 8432a7610ac7be79ad03651a5fac21a62b0ca1f0
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: dd2e55d68ceb5a90134e394c00f3a3a231cb27d6
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65112959"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457684"
 ---
 # <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Vytvoření aplikace ASP.NET MVC 5 s přihlášením přes Facebook, Twitter, LinkedIn a Google OAuth2 (C#)
 
-Podle [Rick Anderson]((https://twitter.com/RickAndMSFT))
+od [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-> V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 5, která umožňuje uživatelům přihlášení pomocí [OAuth 2.0](http://oauth.net/2/) s přihlašovacími údaji z externí zprostředkovatel ověřování, jako je Facebook, Twitter, LinkedIn, Microsoft nebo Google. Pro zjednodušení tento kurz se zaměřuje na práci s přihlašovacích údajů z Facebooku nebo Googlu.
+> V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 5, která uživatelům umožňuje přihlásit se pomocí [OAuth 2,0](http://oauth.net/2/) s přihlašovacími údaji od externího poskytovatele ověřování, jako je Facebook, Twitter, LinkedIn, Microsoft nebo Google. V zájmu zjednodušení se tento kurz zaměřuje na práci s přihlašovacími údaji z Facebooku a Google.
 > 
-> Povolení tyto přihlašovací údaje ve webových stránek poskytuje výraznou výhodu, protože milionům uživatelů již mají účty u těchto externích poskytovatelů. Tito uživatelé mohou být více ochotni zaregistrujte svůj web, pokud nemají k vytvoření a zapamatovat si novou sadu přihlašovacích údajů.
+> Povolení těchto přihlašovacích údajů na webech přináší významnou výhodu, protože miliony uživatelů již mají účty s těmito externími poskytovateli. Tito uživatelé můžou být přihlášeni k vašemu webu, pokud je nepotřebují vytvořit a zapamatovat si novou sadu přihlašovacích údajů.
 > 
-> Viz také [aplikace ASP.NET MVC 5 s SMS a e-mailu Dvojúrovňového ověřování](aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md).
+> Viz také [aplikace ASP.NET MVC 5 se serverem SMS a e-mailovým ověřováním pomocí e-mailu](aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md).
 > 
-> Kurz také ukazuje, jak přidat data profilu pro uživatele a jak používat rozhraní API členství k přidání rolí. V tomto kurzu zapsal [Rick Anderson](https://blogs.msdn.com/rickAndy) (podle mě prosím na Twitteru: [ @RickAndMSFT ](https://twitter.com/RickAndMSFT) ).
+> Tento kurz také ukazuje, jak přidat data profilu pro uživatele a jak používat rozhraní API pro členství k přidávání rolí. Tento kurz napsal [Rick Anderson](https://blogs.msdn.com/rickAndy) (pořiďte prosím na Twitteru: [@RickAndMSFT](https://twitter.com/RickAndMSFT) ).
 
 <a id="start"></a>
 ## <a name="getting-started"></a>Začínáme
 
-Začněte tím, že instalaci a používání [Visual Studio Express 2013 for Web](https://go.microsoft.com/fwlink/?LinkId=299058) nebo [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Instalace sady Visual Studio [2013 s aktualizací 3](https://go.microsoft.com/fwlink/?LinkId=390521) nebo vyšší. Nápovědu k Dropboxu, Githubu, Linkedin, Instagramu, vyrovnávací paměti, Salesforce, datový proud, Stack Exchange, Tripit, Twitch, Twitter, Yahoo! a další, najdete v tomto [ukázkový projekt](https://github.com/matthewdunsdon/oauthforaspnet).
+Začněte instalací a spuštěním [Visual Studio Express 2013 pro web](https://go.microsoft.com/fwlink/?LinkId=299058) nebo [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Nainstalujte Visual Studio [2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390521) nebo vyšší. Nápovědu k Dropboxu, GitHubu, LinkedInu, Instagramu, vyrovnávací paměti, Salesforce, pára, výměně zásobníku, TripIt, Twitch, Twitteru, Yahoo! a dalším službám najdete v tomto [ukázkovém projektu](https://github.com/matthewdunsdon/oauthforaspnet).
 
 > [!NOTE]
-> Musíte nainstalovat Visual Studio [2013 s aktualizací 3](https://go.microsoft.com/fwlink/?LinkId=390521) nebo vyšší, k používání služby Google OAuth 2 a ladit lokálně bez upozornění protokolu SSL.
+> Pokud chcete používat Google OAuth 2 a ladit místně bez upozornění SSL, musíte nainstalovat Visual Studio [2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390521) nebo vyšší.
 
-Klikněte na tlačítko **nový projekt** z **Start** stránky, nebo můžete použít v nabídce a vyberte **souboru**a potom **nový projekt**.
+Na **úvodní** stránce klikněte na **Nový projekt** , nebo můžete použít nabídku a vybrat **soubor**a pak **Nový projekt**.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image1.png)  
 
 <a id="1st"></a>
-## <a name="creating-your-first-application"></a>Vytvoření vaší první aplikace
+## <a name="creating-your-first-application"></a>Vytvoření první aplikace
 
-Klikněte na tlačítko **nový projekt**a pak vyberte **Visual C#** na levé straně, pak **webové** a pak vyberte **webová aplikace ASP.NET**. Pojmenujte svůj projekt "MvcAuth" a potom klikněte na tlačítko **OK**.
+Klikněte **na nový projekt** **, pak na** levé straně vyberte **vizuál C#**  a potom vyberte **Webová aplikace ASP.NET**. Pojmenujte projekt "MvcAuth" a klikněte na tlačítko **OK**.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image2.png)
 
-V **nový projekt ASP.NET** dialogového okna, klikněte na tlačítko **MVC**. Pokud není ověřování **jednotlivé uživatelské účty**, klikněte na tlačítko **změna ověřování** tlačítko a vyberte **jednotlivé uživatelské účty**. Zaškrtnutím **hostovat v cloudu**, aplikace bude velmi snadno hostovat v Azure.
+V dialogovém okně **Nový projekt ASP.NET** klikněte na **MVC**. Pokud ověřování neplatí pro **jednotlivé uživatelské účty**, klikněte na tlačítko **změnit ověřování** a vyberte **jednotlivé uživatelské účty**. Když zkontrolujete **hostitele v cloudu**, aplikace bude velmi snadná pro hostování v Azure.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image3.png)
 
-Pokud jste vybrali **hostovat v cloudu**, dokončete dialogové okno Konfigurovat.
+Pokud jste vybrali možnost **hostitel v cloudu**, dokončete dialog konfigurace.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image4.png)
 
-### <a name="use-nuget-to-update-to-the-latest-owin-middleware"></a>Pomocí balíčku NuGet aktualizujte na nejnovější middleware OWIN
+### <a name="use-nuget-to-update-to-the-latest-owin-middleware"></a>Použití NuGet k aktualizaci na nejnovější middleware OWIN
 
-Aktualizovat pomocí Správce balíčků NuGet [OWIN middleware](../../../aspnet/overview/owin-and-katana/getting-started-with-owin-and-katana.md). Vyberte **aktualizace** v levé nabídce. Můžete kliknout na **Aktualizovat vše** tlačítko nebo je můžete vyhledat pouze balíčky OWIN (viz následující obrázek):
+Pomocí Správce balíčků NuGet aktualizujte [middleware Owin](../../../aspnet/overview/owin-and-katana/getting-started-with-owin-and-katana.md). V nabídce vlevo vyberte **aktualizace** . Můžete kliknout na tlačítko **Aktualizovat vše** nebo můžete vyhledat jenom Owin balíčky (zobrazené na následujícím obrázku):
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image5.png)
 
-Na následujícím obrázku jsou zobrazeny pouze OWIN balíčky:
+Na následujícím obrázku jsou zobrazeny pouze balíčky OWIN:
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image6.png)
 
-Z balíčku správce konzoly (konzolu PMC), můžete zadat `Update-Package` příkaz, který bude aktualizovat všechny balíčky.
+V konzole správce balíčků (PMC) můžete zadat příkaz `Update-Package`, který bude aktualizovat všechny balíčky.
 
-Stisknutím klávesy **F5** nebo **Ctrl + F5** ke spuštění aplikace. Na následujícím obrázku je číslo portu 1234. Při spuštění aplikace se zobrazí jiné číslo portu.
+Spusťte aplikaci stisknutím klávesy **F5** nebo **kombinací kláves CTRL + F5** . Na následujícím obrázku je číslo portu 1234. Při spuštění aplikace se zobrazí jiné číslo portu.
 
-V závislosti na velikosti okna prohlížeče, možná budete muset klikněte na ikonu navigační zobrazíte **Domů**, **o**, **kontakt**, **zaregistrovat**a **přihlášení** odkazy.
+V závislosti na velikosti okna prohlížeče možná budete muset kliknout na navigační ikonu, aby se zobrazily odkazy **Domů**, **informace**, **kontakt**, **registrace** a **přihlášení** .
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image7.png)  
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image8.png) 
 
 <a id="ssl"></a>
-## <a name="setting-up-ssl-in-the-project"></a>Nastavení protokolu SSL v projektu
+## <a name="setting-up-ssl-in-the-project"></a>Nastavení SSL v projektu
 
-Pro připojení k zprostředkovatele ověřování, jako je Google nebo Facebook, musíte nastavit službu IIS Express pro použití protokolu SSL. Je důležité zachovat po přihlášení pomocí protokolu SSL a ne zase k protokolu HTTP, vaše přihlašovací soubor cookie je stejně jako tajný kód jako uživatelské jméno a heslo a bez použití protokolu SSL, které e-mail posíláte, ve formátu prostého textu sítí. Kromě toho jsme už používá čas k provedení signalizace a zabezpečený kanál (která je větší část kvůli tomu HTTPS pomalejší než HTTP) předtím, než kanál MVC se spustí, proto přesměrování zpět k protokolu HTTP, poté, co jste se přihlásili neprovede aktuální požadavek nebo budoucnost požadavky na mnohem rychlejší.
+Pokud se chcete připojit k poskytovatelům ověřování, jako je Google a Facebook, budete muset nastavit službu IIS Express, aby používala protokol SSL. Je důležité, abyste po přihlášení používali protokol SSL a nevrátili se zpátky na HTTP. váš přihlašovací soubor cookie je stejně tajný jako uživatelské jméno a heslo a bez použití protokolu SSL, který odesíláte do prostého textu po celém drátě. Kromě toho už jste popsali čas k provedení metody handshake a zabezpečení kanálu (což je hromadný protokol HTTPS, než HTTP) předtím, než se spustí kanál MVC, takže se po přihlášení znovu přesměruje na protokol HTTP, a to tak, že se aktuální žádost nebo budoucnost neuplatní. požadavky jsou mnohem rychlejší.
 
-1. V **Průzkumníka řešení**, klikněte na tlačítko **MvcAuth** projektu.
-2. Stisknutím klávesy F4 zobrazíte vlastnosti projektu. Alternativně z **zobrazení** nabídce vyberete **okno vlastností**.
-3. Změna **protokol SSL povolený** na hodnotu True.  
+1. V **Průzkumník řešení**klikněte na projekt **MvcAuth** .
+2. Stiskněte klávesu F4 pro zobrazení vlastností projektu. Případně můžete v nabídce **zobrazení** vybrat **okno Vlastnosti**.
+3. Změňte možnost **SSL povoleno** na hodnotu true.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image9.png)
-4. Zkopírujte adresu URL protokolu SSL (který bude `https://localhost:44300/` Pokud jste vytvořili ostatní projekty SSL).
-5. V **Průzkumníka řešení**, klikněte pravým tlačítkem myši **MvcAuth** projektu a vyberte **vlastnosti**.
-6. Vyberte **webové** kartu a pak vložte adresu URL protokolu SSL do **adresa Url projektu** pole. Uložte soubor (seznam Ctl + S). Budete potřebovat tato adresa URL ke konfiguraci ověřování aplikace Facebook nebo Google.  
+4. Zkopírujte adresu URL SSL (která bude `https://localhost:44300/`, pokud jste nevytvořili jiné projekty SSL).
+5. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **MvcAuth** a vyberte **vlastnosti**.
+6. Vyberte kartu **Web** a pak vložte adresu URL SSL do pole **Adresa URL projektu** . Uložte soubor (CTL + S). Tuto adresu URL budete potřebovat ke konfiguraci aplikací pro Facebook a Google Authentication.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image10.png)
-7. Přidat [atribut RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) atribut `Home` řadič tak, aby vyžadovala všechny požadavky musí používat protokol HTTPS. Více zabezpečený přístup, je přidat [atribut RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) filtr, aby se aplikace. V části &quot;chránit aplikace pomocí protokolu SSL a atribut Autorizovat&quot; v mé kurzu [vytvoření aplikace ASP.NET MVC pomocí ověření a SQL DB a nasazení do služby Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Část kontroler Home je uveden níže.
+7. Přidejte atribut [RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) do kontroleru `Home`, aby se vyžadovalo, aby všechny požadavky měly používat protokol HTTPS. Bezpečnějším přístupem je přidání filtru [RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) do aplikace. Přečtěte si část &quot;Ochrana aplikace pomocí protokolu SSL a&quot; autorizace atributu v tomto kurzu [vytvořte aplikaci ASP.NET MVC s ověřováním a SQL DB a nasaďte ji do Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Část domovského kontroleru je uvedená níže.
 
     [!code-csharp[Main](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/samples/sample1.cs?highlight=1)]
-8. Stisknutím kláves CTRL + F5 spusťte aplikaci. Pokud jste nainstalovali certifikát v minulosti, můžete přeskočit zbývající část a přejděte do [vytvoření aplikace služby Google OAuth 2 a připojení aplikace k projektu](#goog), v opačném případě postupujte podle pokynů důvěřovat certifikát podepsaný svým držitelem certifikát, který vygenerovala služba IIS Express.  
+8. Stiskněte klávesy CTRL+F5 a spusťte aplikaci. Pokud jste certifikát nainstalovali v minulosti, můžete přeskočit zbytek této části a přejít na [Vytvoření aplikace Google pro OAuth 2 a připojení aplikace k projektu](#goog), jinak postupujte podle pokynů pro důvěřování certifikátu podepsanému svým držitelem, který IIS Express vygeneroval.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image11.png)
-9. Čtení **upozornění zabezpečení** dialogového okna a pak klikněte na tlačítko **Ano** Pokud chcete nainstalovat certifikát představující localhost.  
+9. Přečtěte si dialogové okno **Upozornění zabezpečení** a pak klikněte na tlačítko **Ano** , pokud chcete nainstalovat certifikát reprezentující localhost.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image12.png)
-10. IE ukazuje, *Domů* stránce a nebudou již existovat žádná upozornění protokolu SSL.  
+10. Aplikace IE zobrazuje *domovskou* stránku a neexistují žádná upozornění SSL.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image13.png)
-11. Google Chrome také certifikát přijme a zobrazí obsah HTTPS bez upozornění. Firefox používá své vlastní úložiště certifikátů, takže se zobrazí upozornění. Pro naši aplikaci můžete bez obav kliknout na **beru na vědomí rizika**.   
+11. Google Chrome také akceptuje certifikát a zobrazí obsah HTTPS bez upozornění. Firefox používá vlastní úložiště certifikátů, takže zobrazí upozornění. V případě naší aplikace můžete bezpečně kliknout na možnost **rozumím rizikům**.   
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image14.png)
 
 <a id="goog"></a>
-## <a name="creating-a-google-app-for-oauth-2-and-connecting-the-app-to-the-project"></a>Vytvoření aplikace služby Google OAuth 2 a připojení aplikace k projektu
+## <a name="creating-a-google-app-for-oauth-2-and-connecting-the-app-to-the-project"></a>Vytvoření aplikace Google pro OAuth 2 a připojení aplikace k projektu
 
 > [!WARNING]
-> Aktuální Google OAuth pokyny najdete v tématu [ověřování Google konfigurace v ASP.NET Core](/aspnet/core/security/authentication/social/google-logins).
+> Informace o aktuálních pokynech k Google OAuth najdete [v tématu Konfigurace ověřování Google v ASP.NET Core](/aspnet/core/security/authentication/social/google-logins).
 
-1. Přejděte [konzole pro vývojáře Google](https://console.developers.google.com/).
-2. Pokud jste ještě nevytvořili projektu před, vyberte **pověření** karta vlevo a pak vyberte **vytvořit**.
-3. Na levé kartě klikněte **pověření**.
-4. Klikněte na tlačítko **Vytvořte přihlašovací údaje** pak **ID klienta OAuth**. 
+1. Přejděte do [konzoly pro vývojáře Google](https://console.developers.google.com/).
+2. Pokud jste projekt ještě nevytvořili, vyberte na levé kartě možnost **přihlašovací údaje** a pak vyberte **vytvořit**.
+3. Na levé kartě klikněte na **přihlašovací údaje**.
+4. Klikněte na **vytvořit přihlašovací údaje** a pak na **ID klienta OAuth**. 
 
-    1. V **vytvořit ID klienta** dialogového okna, ponechte výchozí **webovou aplikaci** pro typ aplikace.
-    2. Nastavte **oprávnění JavaScript** počátky k adresa URL protokolu SSL, které jste použili výše (`https://localhost:44300/` Pokud jste vytvořili ostatní projekty SSL)
-    3. Nastavte **identifikátor URI pro přesměrování autorizovaní** na:  
+    1. V dialogovém okně **vytvořit ID klienta** ponechte výchozí **webovou aplikaci** pro typ aplikace.
+    2. Nastavte **ověřené zdroje JavaScriptu** na adresu URL SSL, kterou jste použili výše (`https://localhost:44300/`, pokud jste nevytvořili jiné projekty SSL).
+    3. Nastavte **autorizovaný identifikátor URI pro přesměrování** na:  
          `https://localhost:44300/signin-google`
-5. Kliknutím na položku nabídky souhlas OAuth obrazovky a pak nastavte vaše e-mailovou adresu a název produktu. Po dokončení klikněte na formulář **Uložit**.
-6. Kliknutím na položku nabídky knihovny, Hledat **rozhraní API Google +**, klikněte na něj a stiskněte povolit.
+5. Klikněte na položku nabídky obrazovka pro vyjádření souhlasu OAuth a pak nastavte svou e-mailovou adresu a název produktu. Po vyplnění formuláře klikněte na **Uložit**.
+6. Klikněte na položku nabídky knihovna, vyhledejte **Google + API**, klikněte na ni a potom stiskněte povolit.
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image15.png)  
   
-   Následující obrázek ukazuje povolených rozhraní API.  
+   Následující obrázek ukazuje povolená rozhraní API.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image16.png)
-7. Ze služby Google API rozhraní API Správce, přejděte **pověření** kartu získat **ID klienta**. Stažení a uložení souboru JSON s tajných klíčů aplikací. Zkopírujte a vložte **ClientId** a **ClientSecret** do `UseGoogleAuthentication` metoda nalezena v *Startup.Auth.cs* ve *App_Start* složky. **ClientId** a **ClientSecret** hodnoty zobrazené níže jsou uvedeny ukázky a nefungují.
+7. Ve Správci rozhraní API Google API navštivte kartu **přihlašovací údaje** a získejte **ID klienta**. Stáhněte si a uložte soubor JSON s použitím tajných klíčů. Zkopírujte a vložte **ClientID** a **ClientSecret** do metody `UseGoogleAuthentication` nalezené v souboru *Startup.auth.cs* ve složce *app_start* . Níže uvedené hodnoty **ClientID** a **ClientSecret** jsou ukázky a nefungují.
 
     [!code-csharp[Main](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/samples/sample2.cs?highlight=37-39)]
 
     > [!WARNING]
-    > Zabezpečení – nikdy ukládání citlivých dat ve zdrojovém kódu. Účet a přihlašovací údaje se přidají do výše uvedený pro zjednodušení ukázkový kód. Zobrazit [osvědčené postupy pro nasazení hesel a dalších citlivých dat do ASP.NET a službě Azure App Service](../../../identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
-8. Stisknutím klávesy **CTRL + F5** sestavíte a spustíte aplikaci. Klikněte na tlačítko **přihlášení** odkaz.  
+    > Zabezpečení – nikdy neukládejte citlivá data ve zdrojovém kódu. Účet a přihlašovací údaje se přidají do výše uvedeného kódu, aby se ukázka snadno zachovala. Další informace najdete v tématu [osvědčené postupy pro nasazení hesel a dalších citlivých dat do ASP.NET a Azure App Service](../../../identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
+8. Stisknutím **kombinace kláves CTRL + F5** Sestavte a spusťte aplikaci. Klikněte na odkaz **Přihlásit** se.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image17.png)
-9. V části **přihlášení pomocí jiné služby**, klikněte na tlačítko **Google**.  
+9. V části **použít jinou službu pro přihlášení**klikněte na **Google**.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image18.png)
 
     > [!NOTE]
-    > Pokud přeskočíte, některé z výše uvedených kroků se zobrazí chyba HTTP 401. Znovu zkontrolujte vaše výše uvedených kroků. Pokud přeskočíte požadované nastavení (například **název produktu**), přidejte chybějící položky a uložte; může trvat několik minut, aby ověřování fungovalo.
-10. Budete přesměrováni na web Google, kam zadáte svoje přihlašovací údaje.   
+    > Pokud jste si nedostali některý z výše uvedených kroků, dojde k chybě HTTP 401. Překontrolujte výše uvedené kroky. Pokud nejste požádáni o nastavení (například **název produktu**), přidejte chybějící položku a uložte ji. aby ověřování fungovalo, může trvat několik minut.
+10. Budete přesměrováni na web Google, kam budete zadávat své přihlašovací údaje.   
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image19.png)
-11. Po zadání svých přihlašovacích údajů se výzva k udělení oprávnění k webové aplikaci, kterou jste právě vytvořili:
+11. Po zadání přihlašovacích údajů se zobrazí výzva k udělení oprávnění k této webové aplikaci, kterou jste právě vytvořili:
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image20.png)
-12. Klikněte na tlačítko **přijmout**. Budete teď přesměrováni zpět **zaregistrovat** stránky MvcAuth aplikace, ve kterém můžete zaregistrovat účet služby Google. Máte možnost změnit název registrace místní e-mailu použitý pro váš účet Gmailu, ale obecně je žádoucí uchovat výchozí e-mailový alias (to znamená, ten, který jste použili pro ověřování). Klikněte na tlačítko **zaregistrovat**.  
+12. Klikněte na **přijmout**. Nyní budete přesměrováni zpět na stránku **registrace** aplikace MvcAuth, kde můžete zaregistrovat svůj účet Google. Máte možnost změnit název místní registrace e-mailu, který se používá pro váš účet Gmail, ale obecně chcete zachovat výchozí alias e-mailu (tj. ten, který jste použili pro ověřování). Klikněte na **zaregistrovat**.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image21.png)
 
@@ -156,88 +156,88 @@ Pro připojení k zprostředkovatele ověřování, jako je Google nebo Facebook
 ## <a name="creating-the-app-in-facebook-and-connecting-the-app-to-the-project"></a>Vytvoření aplikace na Facebooku a připojení aplikace k projektu
 
 > [!WARNING]
-> Aktuální Facebook OAuth2 ověřování najdete v tématu [ověřování konfigurace služby Facebook](/aspnet/core/security/authentication/social/facebook-logins)
+> Pokyny k aktuálním OAuth2 ověřování na Facebooku najdete v tématu [Konfigurace ověřování na Facebooku](/aspnet/core/security/authentication/social/facebook-logins) .
 
 <a id="mdb"></a>
-## <a name="examine-the-membership-data"></a>Prozkoumejte Data členství
+## <a name="examine-the-membership-data"></a>Prověřte data členství
 
-V **zobrazení** nabídky, klikněte na tlačítko **Průzkumníka serveru**.
+V nabídce **zobrazení** klikněte na příkaz **Průzkumník serveru**.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image32.png)
 
-Rozbalte **objekt DefaultConnection (MvcAuth)**, rozbalte **tabulky**, klikněte pravým tlačítkem myši **AspNetUsers** a klikněte na tlačítko **zobrazit Data tabulky**.
+Rozbalte položku **DefaultConnection (MvcAuth)** , rozbalte položku **tabulky**, klikněte pravým tlačítkem myši na položku **AspNetUsers** a klikněte na možnost **Zobrazit data tabulky**.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image33.png)
 
-![aspnetusers tabulkových dat](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image34.png)
+![data tabulky aspnetusers](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image34.png)
 
 <a id="ap"></a>
-## <a name="adding-profile-data-to-the-user-class"></a>Přidání dat profilu do třídy uživatelů
+## <a name="adding-profile-data-to-the-user-class"></a>Přidání dat profilu do třídy uživatele
 
-V této části přidáte datum narození a domácí městě k uživatelským datům během registrace, jak je znázorněno na následujícím obrázku.
+V této části přidáte k uživatelským datům během registrace datum narození a domovské město, jak je znázorněno na následujícím obrázku.
 
-![REG s domácí města a Bday](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image35.png)
+![REG s domovským městem a bday](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image35.png)
 
-Otevřít *Models\IdentityModels.cs* a přidejte narození data a Domovská stránka městě vlastnosti:
+Otevřete soubor *Models\IdentityModels.cs* a přidejte vlastnosti rodného data a domovské města:
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/samples/sample4.cs?highlight=3-4)]
 
-Otevřít *Models\AccountViewModels.cs* souboru a sada narození vlastnosti data a Domovská stránka městě v `ExternalLoginConfirmationViewModel`.
+Otevřete soubor *Models\AccountViewModels.cs* a nastavte vlastnosti rodného data a domovské města v `ExternalLoginConfirmationViewModel`.
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/samples/sample5.cs?highlight=8-9)]
 
-Otevřít *Controllers\AccountController.cs* a přidejte kód pro město Domovská stránka a datum narození v `ExternalLoginConfirmation` metody akce, jak je znázorněno:
+Otevřete soubor *Controllers\AccountController.cs* a přidejte kód pro datum narození a domovské město v metodě `ExternalLoginConfirmation` akce, jak je znázorněno níže:
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/samples/sample6.cs?highlight=21-23)]
 
-Přidejte datum narození a domácí městě, jež *Views\Account\ExternalLoginConfirmation.cshtml* souboru:
+Přidejte datum narození a domovské město do souboru *Views\Account\ExternalLoginConfirmation.cshtml* :
 
 [!code-cshtml[Main](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/samples/sample7.cshtml?highlight=27-40)]
 
-Odstraňte databázi členství, aby znovu zaregistrovat Facebookový účet s vaší aplikací a ověřte, že můžete přidat nové datum narození a informace o profilu domácí města.
+Odstraňte databázi členství, abyste mohli znovu zaregistrovat svůj účet Facebook s vaší aplikací a ověřit, že můžete přidat nové informace o profilu narození a domovské města.
 
-Z **Průzkumníka řešení**, klikněte na tlačítko **zobrazit všechny soubory** ikonu a pak klikněte pravým tlačítkem *přidat\_Data\aspnet-MvcAuth -&lt;dateStamp&gt;.mdf* a klikněte na tlačítko **odstranit**.
+Z **Průzkumník řešení**klikněte na ikonu **Zobrazit všechny soubory** , klikněte pravým tlačítkem na *přidat\_Data\aspnet-MvcAuth-&lt;dateStamp&gt;. mdf* a klikněte na **Odstranit**.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image36.png)
 
-Z **nástroje** nabídky, klikněte na tlačítko **Správce balíčků NuGet**, pak klikněte na tlačítko **Konzola správce balíčků** (PMC). Zadejte následující příkazy v konzole PMC.
+V nabídce **nástroje** klikněte na **Správce balíčků NuGet**a pak klikněte na **Konzola správce balíčků** (PMC). Do PMC zadejte následující příkazy.
 
-1. Povolení migrace
-2. Přidejte migraci Init
-3. Update-Database
+1. Povolit – migrace
+2. Inicializace přidání – migrace
+3. Aktualizace – databáze
 
-Spusťte aplikaci a používat k přihlášení a registraci někteří uživatelé Facebooku nebo Googlu.
+Spusťte aplikaci a pomocí Facebooku a Google se přihlaste a zaregistrujte některé uživatele.
 
-## <a name="examine-the-membership-data"></a>Prozkoumejte Data členství
+## <a name="examine-the-membership-data"></a>Prověřte data členství
 
-V **zobrazení** nabídky, klikněte na tlačítko **Průzkumníka serveru**.
+V nabídce **zobrazení** klikněte na příkaz **Průzkumník serveru**.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image37.png)
 
-Klikněte pravým tlačítkem myši **AspNetUsers** a klikněte na tlačítko **zobrazit Data tabulky**.
+Klikněte pravým tlačítkem na **AspNetUsers** a pak klikněte na **Zobrazit data tabulky**.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image38.png)
 
-`HomeTown` a `BirthDate` níže jsou zobrazena pole.
+Pole `HomeTown` a `BirthDate` jsou uvedena níže.
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image39.png)
 
 <a id="off"></a>
-## <a name="logging-off-your-app-and-logging-in-with-another-account"></a>Odhlášení od vaší aplikace a přihlásíte se pomocí jiného účtu
+## <a name="logging-off-your-app-and-logging-in-with-another-account"></a>Odhlášení aplikace a přihlášení pomocí jiného účtu
 
-Pokud přihlášení do vaší aplikace pomocí Facebooku a potom odhlaste se a zkuste se přihlásit znovu s jiným účtem Facebooku (pomocí stejného prohlížeče), můžete se ihned přihlášeni ke předchozí Facebookový účet, který jste použili. Chcete-li použít jiný účet, budete muset přejít na Facebook a odhlášení na Facebooku. Stejné pravidlo platí pro všechny ostatní 3. stran zprostředkovatele ověřování. Alternativně můžete protokolovat se pomocí jiného účtu s použitím jiného prohlížeče.
+Pokud se přihlásíte k aplikaci přes Facebook, a pak se odhlásíte a zkusíte se přihlásit pomocí jiného účtu Facebook (pomocí stejného prohlížeče), budete k němu přihlášeni hned přes předchozí účet Facebook, který jste použili. Aby bylo možné použít jiný účet, musíte přejít na Facebook a odhlásit se v Facebooku. Stejné pravidlo platí pro všechny ostatní poskytovatele ověřování třetí strany. Případně se můžete přihlásit pomocí jiného účtu pomocí jiného prohlížeče.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tématu [představení zprostředkovatele zabezpečení Yahoo a OAuth pro LinkedIn pro OWIN](http://www.jerriepelser.com/blog/introducing-the-yahoo-linkedin-oauth-security-providers-for-owin/) podle Jerrie Pelser pokyny Yahoo a LinkedIn. Naleznete v tématu Jerrie to je dobré přihlášení prostřednictvím sociální sítě tlačítka pro ASP.NET MVC 5 se získat tlačítka povolit přihlášení prostřednictvím sociální sítě.
+Pokyny pro Yahoo a LinkedIn najdete v tématu [představení zprostředkovatelů zabezpečení Yahoo a LinkedIn OAuth pro Owin](http://www.jerriepelser.com/blog/introducing-the-yahoo-linkedin-oauth-security-providers-for-owin/) pomocí Jerrie Pelser. Pokud chcete získat tlačítka pro přihlášení přes sociální sítě, přečtěte si část Jerrie – tlačítka pro přihlášení k ASP.NET MVC 5.
 
-Využijte tento kurz [vytvoření aplikace ASP.NET MVC pomocí ověření a SQL DB a nasazení do služby Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data), který pokračuje v tomto kurzu a zobrazuje následující:
+Postupujte podle kurzu [Vytvoření aplikace ASP.NET MVC s ověřováním a SQL DB a nasaďte ji do Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data), která pokračuje v tomto kurzu a zobrazí se následující:
 
-1. Postup nasazení aplikace do Azure.
+1. Jak nasadit aplikaci do Azure
 2. Jak zabezpečit aplikaci pomocí rolí.
-3. Jak zabezpečit svou aplikaci pomocí [atribut RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx) a [Authorize](https://msdn.microsoft.com/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) filtry.
-4. Jak používat členské rozhraní API pro přidání uživatelů a rolí.
+3. Jak zabezpečit aplikaci pomocí [atribut RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx) a [autorizovat](https://msdn.microsoft.com/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) filtry.
+4. Jak používat rozhraní API pro členství k přidávání uživatelů a rolí.
 
-Jak vám v tomto kurzu líbilo a co můžeme zlepšit nám prosím zpětnou vazbu. Můžete také požádat o nový témat na [Show Me jak s kód](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code). Dokonce je možné požádat o a hlasovat o nové funkce, které se přidají do technologie ASP.NET. Například můžete hlasovat pro nástroj pro [vytvoření a správě uživatelů a rolí.](http://aspnet.uservoice.com/forums/41199-general-asp-net/suggestions/5646857-asp-net-identity-membership-db-tool-to-mangage-use)
+Přečtěte si prosím svůj názor na to, jak se vám tento kurz líbí a co bychom mohli vylepšit. Můžete také požádat o nová témata při [zobrazení kódu](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code). Můžete dokonce požádat o nové funkce, které se mají přidat do ASP.NET, a hlasovat o nich. Můžete například hlasovat pro nástroj k [vytváření a správě uživatelů a rolí.](http://aspnet.uservoice.com/forums/41199-general-asp-net/suggestions/5646857-asp-net-identity-membership-db-tool-to-mangage-use)
 
-Dobré vysvětlení fungování technologie ASP.NET externí ověřovací služby najdete v tématu Robert McMurray [externí ověřovací služby](https://asp.net/web-api/overview/security/external-authentication-services). Robert na článek taky obsahuje podrobnosti při povolení ověřování společnosti Microsoft a Twitter. Petr Dykstra je vynikající [kurz EF/MVC](../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) ukazuje, jak pracovat s rozhraním Entity Framework.
+Dobré vysvětlení, jak služba ASP.NET External Authentication Services funguje, najdete v tématu věnovaném [externím ověřovacím službám](https://asp.net/web-api/overview/security/external-authentication-services)Robert blog. Článek Robert také podrobně popisuje, jak povolit ověřování Microsoft a Twitter. Skvělého kurzu pro Dykstra [EF/MVC](../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) ukazuje, jak pracovat s Entity Framework.

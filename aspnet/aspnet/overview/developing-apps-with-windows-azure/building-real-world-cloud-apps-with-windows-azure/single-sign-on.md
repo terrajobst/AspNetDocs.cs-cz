@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: 7d82d5e9-0619-4f22-9e03-32a6d52940a5
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/single-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: 7e32f444dc38132296cffd45ac658f5abf51f314
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.openlocfilehash: 1ca93cce22487295a24aae95437b3e69dfc5b504
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74585283"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77457138"
 ---
 # <a name="single-sign-on-building-real-world-cloud-apps-with-azure"></a>Jednotné přihlašování (vytváření skutečných cloudových aplikací s Azure)
 
-[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Dykstra](https://github.com/tdykstra)
+[Jan Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Dykstra](https://github.com/tdykstra)
 
 [Stažení opravy projektu IT](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) nebo [stažení elektronické knihy](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -168,7 +168,7 @@ Když nasadíte aplikaci do Azure, stačí, když zaškrtnete políčko **Povoli
 
 Tyto snímky obrazovky pocházejí z kompletního podrobného kurzu, který ukazuje, jak vytvořit aplikaci, která používá ověřování Azure AD: [vývoj aplikací ASP.NET pomocí Azure Active Directory](../../../../identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory.md).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V této kapitole jste viděli, že Azure Active Directory, Visual Studio a ASP.NET usnadňují nastavení jednotného přihlašování v internetových aplikacích pro uživatele vaší organizace. Uživatelé se můžou k internetovým aplikacím přihlašovat pomocí stejných přihlašovacích údajů, které používají k přihlášení pomocí služby Active Directory ve vaší interní síti.
 

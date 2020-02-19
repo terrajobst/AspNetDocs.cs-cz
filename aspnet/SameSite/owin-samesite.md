@@ -5,16 +5,16 @@ description: Práce s SameSite soubory cookie a otevřeným webovým rozhraním 
 ms.author: riande
 ms.date: 12/6/2019
 uid: owin-samesite
-ms.openlocfilehash: ac5ae24eeb9e8e1cc6296667a4bebef72c3eb62c
-ms.sourcegitcommit: 7b1e1784213dd4c301635f9e181764f3e2f94162
+ms.openlocfilehash: a3353fd0f0332899aaba26b83aea0ff7c3a6d19b
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74993073"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77455734"
 ---
 # <a name="samesite-cookies-and-the-open-web-interface-for-net-owin"></a>SameSite soubory cookie a otevřené webové rozhraní pro .NET (OWIN)
 
-Podle [Rick Anderson](https://twitter.com/RickAndMSFT)
+Autor: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 `SameSite` je koncept [organizace IETF](https://ietf.org/about/) navržený tak, aby poskytoval určitou ochranu proti útokům přes CSRF (mezi lokalitami). [Koncept SameSite 2019](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00):
 
@@ -81,7 +81,7 @@ Koncept 2019 specifikace `SameSite`:
 ## <a name="supporting-older-browsers"></a>Podpora starších prohlížečů
 
 2016 `SameSite` standardně posuzuje, že neznámé hodnoty musí být považovány za `SameSite=Strict` hodnoty. Aplikace, ke kterým se přistupoval ze starších prohlížečů, které podporují 2016 `SameSite` Standard, se můžou přerušit, když získají vlastnost `SameSite` s hodnotou `None`. Webové aplikace musí implementovat detekci prohlížeče, pokud chtějí podporovat starší prohlížeče. ASP.NET neimplementuje zjišťování prohlížeče, protože hodnoty uživatelských agentů jsou vysoce těkavé a často se mění. Bod rozšíření v [ICookieManager](/previous-versions/aspnet/dn800238(v%3Dvs.113)) umožňuje zapojení do logiky specifické pro uživatele.
-<!-- https://docs.microsoft.com/en-us/previous-versions/aspnet/dn800238(v%3Dvs.113) -->
+<!-- https://docs.microsoft.com/previous-versions/aspnet/dn800238(v%3Dvs.113) -->
 
 V `Startup.Configuration`přidejte kód podobný následujícímu:
 
