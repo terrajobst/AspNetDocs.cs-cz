@@ -3770,7 +3770,19 @@
     - name: Dokumenty white paper
       href: whitepapers/overview.md
     - name: ASP.NET SameSite
-      href: SameSite/system-web-samesite.md
+      items:
+        - name: Soubory cookie SameSite v ASP.NET
+          href: SameSite/system-web-samesite.md
+        - name: Články znalostní báze SameSite
+          uid: samesite/kbs-samesite
+        - name: 'C# MVC'
+          uid: samesite/csMVC
+        - name: 'C# WebForms'
+          uid: samesite/CSharpWebForms
+        - name: VB WebForms
+          uid: samesite/vbWF
+        - name: VB MVC
+          uid: samesite/vbMVC
     - name: ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu
       href: whitepapers/aspnet4/index.md
       items:
