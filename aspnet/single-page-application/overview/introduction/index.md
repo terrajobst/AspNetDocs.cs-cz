@@ -1,23 +1,23 @@
 ---
 uid: single-page-application/overview/introduction/index
-title: Úvod do ASP.NET jedním jednostránková aplikace | Dokumentace Microsoftu
+title: Úvod do aplikace ASP.NET Single Page | Microsoft Docs
 author: rick-anderson
-description: Další informace o ASP.NET jeden stránky aplikace ASP.NET jedné stránky aplikace (SPA) pomáhá vytvářet aplikace, které zahrnují významné Interakti na straně klienta...
+description: Přečtěte si o ASP.NET aplikaci ASP.NET Single Page Page (SPA), která umožňuje sestavovat aplikace, které zahrnují významnou interakci na straně klienta...
 ms.author: riande
 ms.date: 11/14/2012
 ms.assetid: f0643c61-c310-4906-a238-dfc86f09b940
 msc.legacyurl: /single-page-application/overview/introduction
 msc.type: chapter
 ms.openlocfilehash: 73dbc3bee99f22b83cbf2c4eb8f35c3dca3eb94b
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113444"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78558231"
 ---
-# <a name="introduction-to-aspnet-single-page-application"></a>Úvod do ASP.NET jedním jednostránková aplikace
+# <a name="introduction-to-aspnet-single-page-application"></a>Úvod do aplikace ASP.NET Single Page
 
-> Obsah nové šablony SPA a Knockoutjs.
+> Obsah pro použití nové šablony zabezpečeného hesla a knockoutjs
 
-- [Jednostránková aplikace: Šablona KnockoutJS](knockoutjs-template.md)
+- [Jednostránková aplikace: šablona KnockoutJS](knockoutjs-template.md)
 - [Znáte jiné knihovny než Knockout?](other-libraries.md)

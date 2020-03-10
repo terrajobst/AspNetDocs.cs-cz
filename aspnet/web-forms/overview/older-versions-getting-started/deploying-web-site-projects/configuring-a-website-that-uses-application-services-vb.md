@@ -9,11 +9,11 @@ ms.assetid: 9c31a42f-d8bb-4c0f-9ccc-597d4f70ac42
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 19e7258b558372259c7554a36c6ad73ce572dfa8
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74588690"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78642098"
 ---
 # <a name="configuring-a-website-that-uses-application-services-vb"></a>Konfigurace webu, který používá aplikační služby (VB)
 
@@ -161,7 +161,7 @@ Odvoláte si předchozí kurz aktualizace webové aplikace Book recenze, aby zah
 
 Pokud potřebujete plnou funkčnost nástroje WSAT, podívejte se na [*vlastní nástroj pro správu*](http://aspnet.4guysfromrolla.com/articles/052307-1.aspx)webu, ve kterém se autor Dan clem provede procesem vytvoření vlastního nástroje, který je podobný WSAT. Dan sdílí zdrojový kód aplikace s aplikací (v C#) a obsahuje podrobné pokyny pro jeho přidání na hostovaný Web.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Při nasazení webové aplikace, která používá implementaci databáze služby Application Services, je třeba nejprve zajistit, aby provozní databáze měla požadované objekty databáze. Tyto objekty lze přidat pomocí technik popsaných v kurzu *nasazení databáze* . Alternativně můžete použít nástroj `aspnet_regsql.exe`, jak jsme viděli v tomto kurzu. Další problémy jsme se dotkli při synchronizaci názvu aplikace používaného ve vývojovém a produkčním prostředí (což je důležité, pokud chcete, aby uživatelé a role vytvořené ve vývojovém prostředí byly platné při výrobě) a techniky pro Správa uživatelů a rolí v produkčním prostředí.
 

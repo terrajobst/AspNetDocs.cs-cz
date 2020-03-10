@@ -1,194 +1,194 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/use-ajax-to-implement-mapping-scenarios
-title: Použití jazyka AJAX k implementaci scénářů mapování | Dokumentace Microsoftu
+title: Použití jazyka AJAX k implementaci scénářů mapování | Microsoft Docs
 author: microsoft
-description: Krok 11 ukazuje, jak integrovat podporu mapování AJAX do naší aplikace NerdDinner povolení uživatelé, kteří jsou vytvoření, úpravách nebo prohlížení večeří zobrazíte l...
+description: Krok 11 ukazuje, jak integrovat podporu mapování AJAX do naší aplikace NerdDinner, která umožňuje uživatelům vytvářet, upravovat nebo zobrazovat večeři, aby viděli l...
 ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: f731990a-0a81-4d62-81df-87d676cdedd6
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-implement-mapping-scenarios
 msc.type: authoredcontent
 ms.openlocfilehash: 7fc90f978b9f9eca511feca70a3c0d02ec69b940
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65125513"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78580113"
 ---
 # <a name="use-ajax-to-implement-mapping-scenarios"></a>Použití jazyka AJAX k implementaci scénářů mapování
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
-> Toto je krok 11 bezplatného [kurz vývoje aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který procházení procházení po tom, jak sestavit malý, ale bylo možné provést, webové aplikace pomocí ASP.NET MVC 1.
+> Toto je krok 11 bezplatného [kurzu aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který vás provede procesem vytvoření malé, ale dokončené webové aplikace pomocí ASP.NET MVC 1.
 > 
-> Krok 11 ukazuje, jak integrovat podporu mapování AJAX do naší aplikace NerdDinner povolení uživatelé, kteří jsou vytvoření, úpravách nebo prohlížení večeří zobrazíte umístění společnosti dinner graficky.
+> Krok 11 ukazuje, jak integrovat podporu mapování AJAX do naší aplikace v NerdDinner, která umožňuje uživatelům vytvářet, upravovat nebo zobrazovat večeře, aby viděli umístění večeře.
 > 
-> Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
+> Pokud používáte ASP.NET MVC 3, doporučujeme vám postupovat podle [Začínáme s kurzy pro](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) [hudební úložiště](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) MVC 3 nebo MVC.
 
-## <a name="nerddinner-step-11-integrating-an-ajax-map"></a>NerdDinner krok 11: Integrace mapu AJAX
+## <a name="nerddinner-step-11-integrating-an-ajax-map"></a>NerdDinner krok 11: integrace mapy AJAX
 
-Teď uděláme naši aplikaci trochu vizuálně vzrušující integrací podporu mapování AJAX. Tato možnost umožní uživatelům, kteří jsou vytvoření, úpravách nebo prohlížení večeří zobrazíte umístění společnosti dinner graficky.
+Nyní budeme naši aplikaci trochu vizuálně zajímavější integrací podpory mapování AJAX. Tím umožníte uživatelům, kteří vytvářejí, upravují nebo zobrazují večeři, zobrazit umístění večeře.
 
-### <a name="creating-a-map-partial-view"></a>Vytváření částečné zobrazení mapy
+### <a name="creating-a-map-partial-view"></a>Vytvoření částečného zobrazení mapy
 
-Budeme používat funkce mapování na několika místech v rámci naší aplikace. Náš kód suchého zapouzdříme běžné funkce mapy v rámci jednoho, který můžeme znovu použít pro různé akce kontroleru a zobrazení částečné šablony. Vytvoříme pojmenujte toto částečné zobrazení "map.ascx" a vytvořit v rámci \Views\Dinners adresáře.
+V rámci naší aplikace budeme používat funkce mapování na několika místech. Abychom zachovali náš kód v SUŠINě, zapouzdřuje se společná funkce mapy v rámci jedné částečné šablony, kterou můžeme znovu použít napříč různými akcemi a zobrazeními řadiče. Pojmenujte Toto částečné zobrazení "map. ascx" a vytvořte ho v adresáři \Views\Dinners.
 
-Můžeme vytvořit map.ascx částečné pravým tlačítkem myši na adresáři \Views\Dinners a zvolením přidat -&gt;zobrazit příkaz nabídky. Použijeme název zobrazení "Map.ascx", zkontrolujte jako částečné zobrazení a označuje, že budeme předáváme třídy silný "Dinner" modelu:
+Mapu. ascx můžeme vytvořit částečně tak, že kliknete pravým tlačítkem na adresář \Views\Dinners a vyberete příkaz nabídky pro zobrazení pro přidání&gt;. Pojmenuje zobrazení "map. ascx", zkontrolujeme ho jako částečné zobrazení a oznámíme, že předáváme silně typované třídy modelu "večeře".
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image1.png)
 
-Když kliknete na tlačítko "Přidat" náš částečné šablony vytvoří. Potom aktualizujeme Map.ascx soubor s následujícím obsahem:
+Po kliknutí na tlačítko Přidat se vytvoří částečná šablona. Pak aktualizujeme soubor map. ascx tak, aby měl následující obsah:
 
 [!code-aspx[Main](use-ajax-to-implement-mapping-scenarios/samples/sample1.aspx)]
 
-První &lt;skript&gt; referenční body ke knihovně Microsoft Virtual Earth 6.2 mapování. Druhá &lt;skript&gt; referenční body do map.js souboru, který bude brzy vytvoříme, který bude zapouzdření náš společný mapování logiky Javascript. &lt;Div id = "theMap"&gt; element je kontejner ve formátu HTML, která k hostování na mapě používá aplikace Virtual Earth.
+První skript &lt;&gt; odkazuje na knihovnu mapování Microsoft Virtual Earth 6,2. Druhý skript &lt;&gt; odkazuje na soubor map. js, který bude brzy vytvořen, který bude zapouzdřit naši společnou logiku mapování JavaScriptu. &lt;div ID = "theMap"&gt; prvek je kontejner HTML, který bude virtuální země používat k hostování mapy.
 
-Potom máme jako vložený &lt;skript&gt; blok, který obsahuje dvě funkce jazyka JavaScript specifické pro toto zobrazení. První funkce jQuery používá k navázání funkci, která se provede, když je na stránce Připraveno ke spuštění skriptu na straně klienta. Volá funkci LoadMap() pomocné rutiny, které budeme definovat v rámci naší Map.js soubor skriptu načíst mapový ovládací prvek aplikace virtual earth. Druhá funkce je obslužnou rutinu události zpětného volání, která přidá PIN kódu do mapy, která identifikuje umístění.
+Pak budeme mít vložený &lt;skript&gt; skriptu, který obsahuje dvě funkce JavaScriptu specifické pro toto zobrazení. První funkce používá jQuery k vedení funkce, která se spustí, když je stránka připravena ke spuštění skriptu na straně klienta. Volá pomocnou funkci LoadMap (), kterou definujeme v rámci souboru skriptu map. js pro načtení mapového ovládacího prvku Virtual Earth. Druhá funkce je obslužná rutina události zpětného volání, která přidá kód PIN k mapě, která identifikuje umístění.
 
-Všimněte si, jak se používá na straně serveru &lt;% = %&gt; blok v rámci bloku skriptu na straně klienta pro zeměpisnou šířku a délku Dinner chceme mapování do jazyka JavaScript pro vložení. Toto je užitečný způsob, jak výstup dynamických hodnot, které se dají ve skriptu na straně klienta (bez nutnosti samostatné AJAX zpětné volání na serveru k načtení hodnoty – díky tomu je rychlejší). &lt;% = %&gt; Bloky se spustí, když je zobrazení vykreslování na serveru – a tedy výstupu HTML se právě skončit s vložený JavaScript hodnoty (například: zeměpisná šířka var = 47.64312;).
+Všimněte si, jak používám &lt;na straně serveru% =%&gt; bloku v bloku skriptu na straně klienta, aby se vložila Zeměpisná šířka a zeměpisná délka večeře, kterou chceme namapovat do JavaScriptu. To je užitečnou technikou pro výstup dynamických hodnot, které mohou být používány skriptem na straně klienta (bez nutnosti samostatného volání AJAX zpět na server pro načtení hodnot, což zrychluje). &lt;% =%&gt;ch bloků bude provedeno při vykreslování zobrazení na serveru, takže výstup HTML bude pouze končit vloženými hodnotami JavaScriptu (například: var Latitude = 47,64312;).
 
-### <a name="creating-a-mapjs-utility-library"></a>Vytvoření knihovny Map.js nástroje
+### <a name="creating-a-mapjs-utility-library"></a>Vytvoření knihovny nástrojů map. js
 
-Pojďme teď vytvořit Map.js soubor, který můžeme použít k zapouzdření funkce jazyka JavaScript pro mapa (a implementovat LoadMap a LoadPin metod uvedených výše). Můžeme to udělat kliknutím pravým tlačítkem na adresář \Scripts v našem projektu a klikněte na tlačítko "Add -&gt;novou položku" příkazu nabídky vyberte položku JScript a pojmenujte ho "Map.js".
+Teď vytvoříme soubor map. js, který můžeme použít k zapouzdření funkcí JavaScriptu pro naši mapu (a implementaci výše uvedených metod LoadMap a LoadPin). To můžeme provést tak, že kliknete pravým tlačítkem na adresář \Scripts v našem projektu a pak vyberete příkaz nabídky přidat&gt;novou položku, vyberete položku JScript a pojmenujte ji "map. js".
 
-Níže je kód jazyka JavaScript, přidáme Map.js soubor, který bude komunikovat s Virtual Earth a zobrazte Mapa k němu přidat umístění špendlíky pro naše večeří:
+Níže je kód JavaScriptu, který přidáme do souboru map. js, který bude komunikovat s virtuálním Earth, aby se zobrazila naše mapa a přidala se k nim pro naši večeři jejich kódy PIN:
 
 [!code-javascript[Main](use-ajax-to-implement-mapping-scenarios/samples/sample2.js)]
 
-### <a name="integrating-the-map-with-create-and-edit-forms"></a>Integrace mapy pomocí vytváření a úpravy formulářů
+### <a name="integrating-the-map-with-create-and-edit-forms"></a>Integrace mapy s formuláři pro vytváření a úpravy
 
-Podpora mapování jsme teď bude integrovat s naší stávající scénáře vytvořit a upravit. Dobrou zprávou je, že to je poměrně snadné úkolů a nevyžaduje, aby nám chcete-li změnit některý z našich kódu Kontroleru. Naše vytvořit a upravit zobrazení sdílejí společné "DinnerForm" částečné zobrazení k implementaci dinner formulář, uživatelského rozhraní, jsme přidat mapování na jednom místě a mít oba vytvořit a upravit scénáři použití.
+Nyní budeme integrovat podporu map s našimi stávajícími scénáři vytvoření a úpravy. Dobrá zpráva je, že to je poměrně snadné – to znamená, že nám nepotřebujeme změnit žádný kód našeho kontroleru. Vzhledem k tomu, že naše zobrazení pro vytváření a úpravy sdílejí společné zobrazení "DinnerForm" a implementují uživatelské rozhraní formuláře večeře, můžeme mapu přidat na jednom místě a použít k tomu naše scénáře vytvoření a úprav.
 
-Všechny potřebujeme úkolů je otevřete \Views\Dinners\DinnerForm.ascx částečné zobrazení a aktualizujte tak, aby obsahovala naše nové částečné mapování. Níže je aktualizovaný DinnerForm bude vypadat po přidání mapy (Poznámka: jsou vynechány prvků formuláře HTML z fragmentu kódu níže pro zkrácení):
+Vše, co musíme udělat, je otevřít částečné zobrazení \Views\Dinners\DinnerForm.ascx a aktualizovat ho tak, aby obsahovalo naši novou část mapy. Níže vidíte, že aktualizovaný DinnerForm bude vypadat po přidání mapy (Poznámka: prvky formuláře HTML jsou vynechány ve fragmentu kódu níže pro zkrácení):
 
 [!code-aspx[Main](use-ajax-to-implement-mapping-scenarios/samples/sample3.aspx)]
 
-Částečné nad DinnerForm přijímá objekt typu "DinnerFormViewModel" jako typ modelu (protože je nutné, jak objekt Dinner, tak i SelectList k naplnění dropdownlist země). Mapa částečné právě musí objekt typu "Dinner" jako typ modelu a tak když jsme vykreslovat na mapě částečné jsme prochází pouze Dinner dílčí vlastnost DinnerFormViewModel do ní:
+Výše uvedená DinnerForm přebírá objekt typu "DinnerFormViewModel" jako typ modelu (protože potřebuje buď objekt večeře, tak i SelectList pro naplnění ovládacího prvku DropDownList v zemích). Částečná mapa pouze potřebuje objekt typu "večeře" jako typ modelu, a takže když vykreslíme částečnou mapu, předáváme jí pouze dílčí vlastnost DinnerFormViewModel:
 
 [!code-aspx[Main](use-ajax-to-implement-mapping-scenarios/samples/sample4.aspx)]
 
-Funkce JavaScript, která jsme přidali do částečné použití jQuery připojit "rozostření" události do textového pole "Address" HTML. Pravděpodobně jste slyšeli událostí "fokusu", které se aktivují, když uživatel klikne nebo karty do textové pole. Naopak je "rozostření" událost, která je vyvoláno, když uživatel ukončí textové pole. Výše uvedené obslužná rutina události vymaže textového pole hodnoty zeměpisné šířky a délky při to se stane a pak zobrazí na nové místo adres na mapa. Aktualizujte obslužnou rutinu události zpětného volání, které jsme definovali v souboru map.js budou textová pole zeměpisné šířky a délky na našem formuláři pomocí hodnot vrácených na základě adresy, které jsme zadali aplikace virtual earth.
+Funkce jazyka JavaScript, kterou jsme přidali do částečného použití jQuery, k připojení události "rozostření" do textového pole "adresa" jazyka HTML. Pravděpodobně jste si vyzkoušeli události "fokus", které se aktivují, když uživatel klikne na textové pole nebo na jeho kartu. Opak je událost "rozostření", která se aktivuje, když uživatel ukončí textové pole. Výše uvedená obslužná rutina události vymaže hodnoty textového pole Zeměpisná šířka a zeměpisná délka, pokud k tomu dojde, a pak vykreslí nové umístění adresy na naší mapě. Obslužná rutina události zpětného volání, kterou jsme definovali v souboru map. js, pak aktualizuje textová pole Zeměpisná délka a zeměpisná šířka na našem formuláři pomocí hodnot vrácených funkcí Virtual Earth na základě adresy, kterou jsme přiřadili.
 
-A teď když jsme naši aplikaci znovu spustit a klikněte na kartu "Hostitele Dinner" uvidíme výchozí mapování, zobrazí spolu s naší standardní prvky formuláře Dinner:
+A když teď znovu spustíte naši aplikaci a kliknete na kartu "hostitel večeře", zobrazí se výchozí mapa zobrazená společně s našemi standardními prvky formuláře večeře:
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image2.png)
 
-Když jsme zadejte adresu a pak na kartě okamžitě, mapa způsobí dynamickou aktualizaci pro zobrazení umístění a naše obslužná rutina události vyplní zeměpisné šířky a délky textová pole s hodnotami umístění:
+Když zadáte adresu a potom tabulátor, mapa se dynamicky aktualizuje pro zobrazení umístění a naše obslužná rutina události naplní textová pole Zeměpisná šířka/zeměpisná místa s hodnotami umístění:
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image3.png)
 
-Pokud se nám uložit nový web dinner a potom ho znovu otevřete pro úpravy, můžeme najdete, když se stránka načte, zobrazí se Mapa umístění:
+Pokud ukládáme novou večeři a pak ji znovu otevřete pro úpravy, zjistíme, že při načtení stránky se zobrazí umístění mapy:
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image4.png)
 
-Pokaždé, když se do pole adresy změnilo, aktualizujeme, mapy a souřadnice zeměpisné šířky a délky.
+Pokaždé, když se změní pole adresa, aktualizuje se souřadnice mapy a zeměpisná šířka a délka.
 
-Teď, když mapa zobrazuje umístění Dinner, jsme také změnit pole formuláře zeměpisné šířky a délky tomu nebudou viditelné textových polí místo toho bude skrytý elementy (protože na mapě se automaticky aktualizuje pokaždé, když se zadá adresu). Úkol to nám budete přepnou od používání pomocné rutiny Html.TextBox() HTML pomocí Html.Hidden() pomocnou metodu:
+Teď, když Mapa zobrazuje umístění na večeři, můžeme také změnit pole formuláře Zeměpisná šířka a zeměpisná délka, ze kterých jsou viditelná textová pole, aby byly skryté prvky (protože mapa je automaticky aktualizuje při každé zadání adresy). Provedete to tak, že pro použití pomocné metody HTML. Hidden () přepneme na použití pomocníka HTML HTML. TextBox ():
 
 [!code-aspx[Main](use-ajax-to-implement-mapping-scenarios/samples/sample5.aspx)]
 
-A teď naše formuláře jsou mírně přívětivější a zabránit zobrazování nezpracovaná zeměpisnou šířkou/délkou (při stále ukládání s každou večeře v databázi):
+A teď jsou naše formuláře trochu uživatelsky přívětivější a nepoužívejte neupravenou zeměpisnou šířku a délku (ale pořád je uložíte s každou večeři v databázi):
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image5.png)
 
-### <a name="integrating-the-map-with-the-details-view"></a>Integrace mapy s zobrazení podrobností
+### <a name="integrating-the-map-with-the-details-view"></a>Integrace mapy se zobrazením podrobností
 
-Když teď máme na mapě integrovat s našimi scénáři vytvořit a upravit můžeme také provést integraci s scénáři podrobnosti. Všechny potřebujeme úkolů je volání &lt;% Html.RenderPartial("map"); %&gt; v zobrazení Details.
+Teď, když máme mapu integrovanou s našimi scénáři vytvoření a úprav, můžeme ji také integrovat s našimi scénáři. Stačí, abyste volali &lt;% HTML. RenderPartial ("map"); %&gt; v zobrazení podrobností.
 
-Níže je, jak vypadá byl zdrojový kód úplné podrobnosti o zobrazení (díky integraci s mapou):
+Níže je uveden zdrojový kód pro zobrazení kompletních podrobností (s integrací mapy) vypadá takto:
 
 [!code-aspx[Main](use-ajax-to-implement-mapping-scenarios/samples/sample6.aspx)]
 
-A teď když uživatel přejde na /Dinners/podrobnosti / [id] adresa URL zobrazí podrobnosti o dinner umístění dinner na mapě (s nabízenou – kód pin, že myš zobrazí název společnosti dinner a adresu ji), a mají propojení jazyka AJAX k RSVP fo r je:
+A když uživatel přejde na adresu URL/Dinners/Details/[ID], uvidí podrobnosti o večeři, umístění večeře na mapě (dokončete s PIN kódem, který při najetí myší nad zobrazí název večeře a jeho adresa) a odkaz AJAX na pro něj:
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image6.png)
 
-### <a name="implementing-location-search-in-our-database-and-repository"></a>Implementace hledání umístění v databázi a úložiště
+### <a name="implementing-location-search-in-our-database-and-repository"></a>Implementace vyhledávání umístění v naší databázi a úložišti
 
-Na dokončení vypnutí naše implementace jazyka AJAX, přidáme na domovskou stránku aplikace, která umožňuje uživatelům graficky vyhledejte večeří téměř je mapy.
+Abychom dokončili naši implementaci AJAX, přidáváme mapu na domovskou stránku aplikace, která umožňuje uživatelům graficky vyhledávat večeře.
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image7.png)
 
-Začneme budete implementací podpory v rámci naší vrstvy úložiště databáze a dat můžete efektivně vyhledávat založená na poloze pomocí protokolu radius pro večeří. Mohli bychom použít nové [geoprostorové funkce SQL 2008](https://www.microsoft.com/sqlserver/2008/en/us/spatial-data.aspx) k implementaci, nebo také můžeme použít přístup funkce SQL, který Gary Dryden popsané v článku: [ http://www.codeproject.com/KB/cs/distancebetweenlocations.aspx ](http://www.codeproject.com/KB/cs/distancebetweenlocations.aspx) a Rob Conery blozích máte o tady pomocí LINQ to SQL: [http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/](http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/)
+Zahájíme implementaci podpory v rámci naší databáze a vrstvy úložiště dat, abychom mohli efektivně provádět hledání na základě protokolu RADIUS založeného na poloze pro večeři. K implementaci tohoto postupu můžeme použít nové [geoprostorové funkce sql 2008](https://www.microsoft.com/sqlserver/2008/en/us/spatial-data.aspx) nebo můžete použít přístup k funkcím SQL, které Gary Dryden popisuje v článku: [http://www.codeproject.com/KB/cs/distancebetweenlocations.aspx](http://www.codeproject.com/KB/cs/distancebetweenlocations.aspx) a Rob Conery blogged o použití s LINQ to SQL tady: [http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/](http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/)
 
-K implementaci tuto techniku, jsme se otevřít "Průzkumníka serveru" v sadě Visual Studio, vyberte databázi NerdDinner a klikněte pravým tlačítkem na uzel dílčí "funkce" je pod ním a můžete vytvořit novou "vracející skalární funkci":
+Chcete-li implementovat tuto techniku, otevřete v sadě Visual Studio "Průzkumník serveru", vyberte databázi NerdDinner a potom klikněte pravým tlačítkem myši na poduzel functions a zvolte možnost vytvořit novou "skalární funkci":
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image8.png)
 
-Vložte jsme budete ve funkci DistanceBetween následující:
+Pak vložíte do následující funkce DistanceBetween:
 
 [!code-sql[Main](use-ajax-to-implement-mapping-scenarios/samples/sample7.sql)]
 
-Poté vytvoříme novou funkci vracející tabulku v systému SQL Server, zavoláme vám "NearestDinners":
+Pak vytvoříme novou funkci vracející tabulku v SQL Server, kterou zavoláme "NearestDinners":
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image9.png)
 
-Tuto funkci tabulky "NearestDinners" používá funkci pomocné rutiny DistanceBetween vrátit všechny večeří v rámci 100 mil zeměpisná šířka a zeměpisná délka, můžeme ji zadat:
+Tato funkce tabulky "NearestDinners" používá pomocnou funkci DistanceBetween k vrácení všech večeři v rámci 100 mil od zeměpisné šířky a délky, kterou poskytujeme:
 
 [!code-sql[Main](use-ajax-to-implement-mapping-scenarios/samples/sample8.sql)]
 
-Volání této funkce, nejprve otevřeme nahoru LINQ to SQL Návrhář poklikáním na soubor NerdDinner.dbml v rámci naší \Models adresáře:
+Pro volání této funkce nejprve otevřete návrháře LINQ to SQL dvojitým kliknutím na soubor NerdDinner. dbml v adresáři \Models:
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image10.png)
 
-Potom přetáhneme funkce NearestDinners a DistanceBetween na LINQ do SQL návrháře, což způsobí přidají jako metody na naše LINQ na třídy SQL NerdDinnerDataContext:
+Pak přetáhneme funkce NearestDinners a DistanceBetween do návrháře LINQ to SQL, který způsobí, že budou přidány jako metody na naší LINQ to SQL třídy NerdDinnerDataContext:
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image11.png)
 
-Metody dotazu "FindByLocation" jsme pak můžete zveřejnit na naše DinnerRepository třídu, která používá funkci NearestDinner vrátit nadcházející večeří, které jsou v rámci 100 mil zadané umístění:
+Pak můžeme vystavit metodu dotazu "FindByLocation" na naší třídě DinnerRepository, která používá funkci NearestDinner k vrácení nadcházejících večeři, které jsou v 100 mílích zadaného umístění:
 
 [!code-csharp[Main](use-ajax-to-implement-mapping-scenarios/samples/sample9.cs)]
 
-### <a name="implementing-a-json-based-ajax-search-action-method"></a>Implementace metody akce hledání na základě JSON AJAX
+### <a name="implementing-a-json-based-ajax-search-action-method"></a>Implementace metody akce vyhledávání AJAX založené na JSON
 
-Nyní jsme budete implementovat metodu akce kontroleru, který využívá novou metodu úložiště FindByLocation() vrátit zpět seznam Dinner data, která slouží k naplnění mapy. Budeme mít této metodě akce vrátit zpět web Dinner data ve formátu JSON (JavaScript Object Notation) tak, aby jej lze snadno ovládat pomocí jazyka JavaScript na straně klienta.
+Nyní implementujeme metodu akce kontroleru, která využívá novou metodu úložiště FindByLocation (), která vrátí zpět seznam dat o večeři, který lze použít k naplnění mapy. Tuto metodu akce budeme mít zpátky zpátky data ve formátu JSON (JavaScript Object Notation), aby bylo možné snadno manipulovat pomocí JavaScriptu na klientovi.
 
-K provedení vytvoříme novou třídu "SearchController" pravým tlačítkem myši na adresáři \Controllers a zvolením přidat -&gt;příkazu nabídky Kontroleru. Potom jsme budete implementovat metodu akce "SearchByLocation" v rámci nové třídy SearchController jako níže:
+Pokud to chcete provést, vytvoříme novou třídu "SearchController" tak, že kliknete pravým tlačítkem na adresář \Controllers a kliknete na příkaz nabídky přidat&gt;Controller. Následně implementujeme metodu akce "SearchByLocation" v rámci nové třídy SearchController, například níže:
 
 [!code-csharp[Main](use-ajax-to-implement-mapping-scenarios/samples/sample10.cs)]
 
-Metody akce SearchController SearchByLocation interně volá metodu FindByLocation na DinnerRepository zobrazíte seznam blízké večeří. Místo vrátí objekty Dinner přímo do klienta, ale místo toho vrátí JsonDinner objekty. Třída JsonDinner zveřejňuje podmnožinu vlastností Dinner (například: z bezpečnostních důvodů ho nebude tyto názvy uživatelů, kteří mají RSVP'd večeře). Zahrnuje také vlastnost RSVPCount, který neexistuje v Dinner – a které je počítáno dynamicky určovat počet RSVP objekty přidružené k určité dinner.
+Metoda akce SearchByLocation SearchController interně volá metodu FindByLocation na DinnerRepository, aby získala seznam přilehlých večeři. Místo toho, aby se objekty večeře vracely přímo klientovi, ale místo toho vrátí JsonDinner objekty. Třída JsonDinner zpřístupňuje podmnožinu vlastností večeře (například: z bezpečnostních důvodů nezveřejňuje jména osob, které mají na večeři odpověď). Obsahuje taky vlastnost RSVPCount, která neexistuje na večeři – a která se dynamicky počítá pomocí počítání počtu objektů RSVP přidružených k určité večeři.
 
-Potom používáme Json() pomocnou metodu v základní třídě Controller k vrácení sekvence večeří pomocí založenými na JSON přenosový formát. JSON je standardní textový formát pro uvádění jednoduché datové struktury. Níže je příklad vypadá seznam dvou JsonDinner objektů ve formátu JSON, pokud vrácená metodě akce:
+Pak použijeme pomocnou metodu JSON () na základní třídě kontroleru a vrátí sekvenci večeře pomocí formátu drátového formátu založeného na formátu JSON. JSON je standardní textový formát pro reprezentace jednoduchých datových struktur. Níže je uveden příklad, jak seznam ve formátu JSON se dvěma JsonDinner objekty vypadá, když se vrátí z naší metody akce:
 
 [!code-json[Main](use-ajax-to-implement-mapping-scenarios/samples/sample11.json)]
 
-### <a name="calling-the-json-based-ajax-method-using-jquery"></a>Volání metody založené na JSON AJAX pomocí jQuery
+### <a name="calling-the-json-based-ajax-method-using-jquery"></a>Volání metody AJAX založené na formátu JSON pomocí jQuery
 
-Nyní jsme připraveni aktualizujte domovskou stránku aplikace NerdDinner SearchController SearchByLocation akce metody. Úkol, vytvoříme otevřete /Views/Home/Index.aspx zobrazit šablonu a aktualizujte ji, aby mají textové pole, tlačítko hledání, mapa a &lt;div&gt; element s názvem dinnerList:
+Nyní jsme připraveni aktualizovat domovskou stránku aplikace NerdDinner, aby používala metodu SearchByLocation akce SearchController. Provedete to tak, že otevřete šablonu zobrazení/Views/Home/Index.aspx a aktualizujeme ji tak, aby měla textové pole, tlačítko hledání, naši mapu a &lt;&gt; elementu div s názvem dinnerList:
 
 [!code-aspx[Main](use-ajax-to-implement-mapping-scenarios/samples/sample12.aspx)]
 
-Pak můžeme přidat dvě funkce jazyka JavaScript na stránku:
+Na stránku pak můžeme přidat dvě funkce JavaScriptu:
 
 [!code-html[Main](use-ajax-to-implement-mapping-scenarios/samples/sample13.html)]
 
-První funkce JavaScript, která načte mapy, při prvním načtení stránky. Druhý kabely funkce JavaScript nahoru v JavaScriptu klikněte na obslužnou rutinu události na tlačítko Hledat. Při stisknutí tlačítka volá funkci FindDinnersGivenLocation() JavaScript, které přidáme k naší Map.js souboru:
+První funkce JavaScriptu načte mapu při prvním načtení stránky. Druhá funkce JavaScriptu nahlasuje obslužnou rutinu události v JavaScriptu kliknutím na tlačítko Hledat. Když je stisknuto tlačítko, volá funkci JavaScriptu FindDinnersGivenLocation (), kterou přidáme do našeho souboru map. js:
 
 [!code-javascript[Main](use-ajax-to-implement-mapping-scenarios/samples/sample14.js)]
 
-Tato funkce FindDinnersGivenLocation() volá mapy. Find() na ovládacím prvku Virtual Earth na střed na zadané umístění. Když service pro mapy aplikace virtual earth návratu na mapě. Find() metoda volá metodu zpětného volání callbackUpdateMapDinners, kterou jsme předán jako poslední argument.
+Tato funkce FindDinnersGivenLocation () volá mapu. Find () na ovládacím prvku Virtual Earth ho zaprostřední na zadané místo. Když se služba Virtual Earth map vrátí, mapa. Metoda Find () vyvolá metodu zpětného volání callbackUpdateMapDinners, kterou jsme předali jako konečný argument.
 
-Metoda callbackUpdateMapDinners() je, kde se provádí skutečnou práci. Používá pro jQuery $.post() Pomocná metoda provádět volání AJAX na metodu akce SearchByLocation() naše SearchController – předáním zeměpisnou šířku a délku nově zaměřena na mapě. Definuje vložené funkce, která bude volána po dokončení $.post() Pomocná metoda, a vrátí výsledky ve formátu JSON dinner z SearchByLocation() metody akce bude předán pomocí proměnnou s názvem "večeří". Potom zajišťuje přes každý vrácený dinner foreach a používá večeři šířky a délky a dalších vlastností, chcete-li přidat nový PIN kód na mapě. Také přidá dinner položku do seznamu HTML večeří napravo od mapy. To pak vodičům stanice up události při najetí myší připínáčky a seznamu HTML tak, aby se zobrazí podrobnosti o společnosti dinner, když uživatel najede myší je:
+Metoda callbackUpdateMapDinners () je místo, kde je skutečná práce dokončena. Pomocí pomocné metody jQuery $. post () zavolá AJAX do metody akce SearchByLocation () naší SearchController () a předá jí zeměpisnou šířku a délku nově zarovnaného vycentrovat mapy. Definuje vloženou funkci, která bude volána po dokončení pomocné metody $. post () a výsledky večeře ve formátu JSON vrácené z metody akce SearchByLocation () budou předány pomocí proměnné s názvem "večeře". Pak provede foreach nad každou vrácenou večeři a pomocí zeměpisné šířky a délky a dalších vlastností přidá nový PIN kód na mapě. Přidá taky položku večeře do seznamu v kódu HTML večeře napravo od mapy. Potom vytvoří pro připínáček i seznam HTML událost najetí myší, aby se zobrazily podrobnosti o večeři, když na ně uživatel najede myší:
 
 [!code-html[Main](use-ajax-to-implement-mapping-scenarios/samples/sample15.html)]
 
-A teď když jsme spusťte aplikaci a na domovské stránce –, který jsme zobrazí se vám s mapou. Když jsme zadejte název města se zobrazí na mapě nadcházející večeří máte telefon po ruce:
+A teď když aplikaci spustíme a navštívíme domovskou stránku, zobrazí se mapa. Když zadáte název města, na které bude mapa zobrazovat nadcházející večeři v blízkosti této:
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image12.png)
 
-Najede myší večeři zobrazí podrobnosti o něm.
+Po najetí myší na večeři se zobrazí podrobnosti.
 
-Kliknutím na název společnosti Dinner v bublinovém nebo na pravé straně v seznamu HTML bude Navigovat nám na večeři – které můžeme můžete poté volitelně potvrďte svou účast na:
+Kliknutím na název večeře buď v bublině, nebo na pravé straně v seznamu HTML přejdete na večeři – což můžeme volitelně použít pro zasílání zpráv protokol RSVP:
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image13.png)
 
-### <a name="next-step"></a>Dalším krokem
+### <a name="next-step"></a>Další krok
 
-Implementovali jsme teď všechny funkce aplikace naší aplikace NerdDinner. Pojďme teď podívat, jak jsme povolili automatizované jednotky testování ji.
+Nyní jsme implementovali všechny funkce aplikace naší aplikace NerdDinner. Teď se podíváme na to, jak můžeme povolit automatizované testování částí.
 
 > [!div class="step-by-step"]
 > [Předchozí](use-ajax-to-deliver-dynamic-updates.md)
-> [další](enable-automated-unit-testing.md)
+> [Další](enable-automated-unit-testing.md)

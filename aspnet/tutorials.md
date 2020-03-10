@@ -1,28 +1,28 @@
 ---
 uid: tutorials
-title: Kurzy k ASP.NET | Dokumentace Microsoftu
+title: Kurzy ASP.NET | Microsoft Docs
 author: tdykstra
-description: Seznam podrobné pokyny pro vývoj aplikací ASP.NET.
+description: Seznam podrobných průvodců pro vývoj aplikací ASP.NET.
 ms.assetid: fddf8e5e-c055-4f81-b691-78deef871112
 ms.author: riande
 ms.date: 09/20/2017
 ms.openlocfilehash: 106b4b88d2e7de90900b7a73570ecd6140e2db66
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113195"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78558168"
 ---
-# <a name="aspnet-tutorials"></a>Kurzy k ASP.NET
+# <a name="aspnet-tutorials"></a>Kurzy ASP.NET
 
 [!INCLUDE[](~/includes/rp.md)]
 
-Tyto podrobné návody pro vývoj aplikací ASP.NET jsou k dispozici.
+K dispozici jsou následující podrobné návody pro vývoj aplikací ASP.NET.
 
 > [!NOTE]
-> Hledáte kurzy k ASP.NET Core?  Vyhledat [tady](https://docs.microsoft.com/aspnet/core/tutorials/).
+> Hledáte ASP.NET Core výukové kurzy?  [Tady](https://docs.microsoft.com/aspnet/core/tutorials/)je vyhledejte.
 
-## <a name="web-forms"></a>webové formuláře
+## <a name="web-forms"></a>Webové formuláře
 
 * [Úprava kódu webových formulářů ASP.NET v sadě Visual Studio 2013](web-forms/overview/getting-started/code-editing-in-web-forms-pages.md)
 * [Použití Page Inspectoru v sadě Visual Studio 2012](web-forms/overview/getting-started/hands-on-labs/using-page-inspector-in-visual-studio-2012.md)
@@ -55,12 +55,12 @@ Tyto podrobné návody pro vývoj aplikací ASP.NET jsou k dispozici.
 * [Použití asynchronních metod v ASP.NET MVC 4](mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4.md)
 * [Jak upgradovat aplikaci ASP.NET MVC 4 a projekt webového rozhraní API na ASP.NET MVC 5 a webové rozhraní API 2](mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2.md)
 
-## <a name="web-api"></a>Webové rozhraní API
+## <a name="web-api"></a>Web API
 
 * [Začínáme s webovým rozhraním API 2 (C#)](web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md)
 * [Použití webového rozhraní API s webovými formuláři ASP.NET](web-api/overview/getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms.md)
 * [Vytvoření stránek nápovědy k webovému rozhraní API](web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages.md)
-* [Praktické cvičení: Sestavení jednostránkové aplikaci (SPA) pomocí webového rozhraní API ASP.NET a Angular.js](web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md)
+* [Praktické cvičení: Sestavení jednostránkové aplikace (SPA) pomocí webového rozhraní API ASP.NET a Angular.js](web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md)
 * [Vytvoření REST API se směrováním atributů ve webovém rozhraní API 2](web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing.md)
 * [Použití webového rozhraní API 2 se sadou Entity Framework 6](web-api/overview/data/using-web-api-with-entity-framework/index.md)
 * [Volání webového rozhraní API z aplikace pro Windows Phone 8 (C#)](web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application.md)
@@ -78,8 +78,8 @@ Tyto podrobné návody pro vývoj aplikací ASP.NET jsou k dispozici.
 * [Hostování webového rozhraní API 2 v rolích pracovního procesu v Azure](web-api/overview/hosting-aspnet-web-api/host-aspnet-web-api-in-an-azure-worker-role.md)
 * [Injektáž závislostí ve webovém rozhraní API 2](web-api/overview/advanced/dependency-injection.md)
 * [Volání webového rozhraní API z klienta .NET (C#)](web-api/overview/advanced/calling-a-web-api-from-a-net-client.md)
-* [Posílání dat formulářů HTML ve webovém rozhraní API: Data formuláře kódovaná](web-api/overview/advanced/sending-html-form-data-part-1.md)
-* [Posílání dat formulářů HTML ve webovém rozhraní API: Nahrání souboru a vícedílné zprávy standardu MIME](web-api/overview/advanced/sending-html-form-data-part-2.md)
+* [Posílání dat formulářů HTML ve webovém rozhraní API: Data formuláře kódovaná pomocí adresy URL](web-api/overview/advanced/sending-html-form-data-part-1.md)
+* [Posílání dat formulářů HTML ve webovém rozhraní API: Nahrání souboru a vícedílné zprávy MIME](web-api/overview/advanced/sending-html-form-data-part-2.md)
 
 ## <a name="web-pages"></a>Webové stránky
 
@@ -110,13 +110,13 @@ Tyto podrobné návody pro vývoj aplikací ASP.NET jsou k dispozici.
 * [Analýza provozu](web-pages/overview/performance-and-traffic/14-analyzing-traffic.md)
 * [Sdružování a minifikace prostředků na webu s webovými stránkami ASP.NET (Razor)](web-pages/overview/performance-and-traffic/bundling-and-minifying-assets-in-an-aspnet-web-pages-razor-site.md)
 
-## <a name="aspnet-signalr"></a>ASP.NET SignalR
+## <a name="aspnet-signalr"></a>Funkce SignalR technologie ASP.NET
 
 * [Kurz: Začínáme s knihovnou SignalR 2](signalr/overview/getting-started/tutorial-getting-started-with-signalr.md)
 * [Kurz: Začínáme s knihovnou SignalR 2 a MVC 5](signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
-* [Kurz: Vysokofrekvenční Reálný čas s knihovnou SignalR 2](signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr.md)
+* [Kurz: Vysokofrekvenční reálný čas s knihovnou SignalR 2](signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr.md)
 * [Kurz: Serverové vysílání s knihovnou SignalR 2](signalr/overview/getting-started/tutorial-server-broadcast-with-signalr.md)
-* [Praktické cvičení: Aplikace webu v reálném čase s knihovnou SignalR](signalr/overview/getting-started/real-time-web-applications-with-signalr.md)
+* [Praktické cvičené: Webové aplikace v reálném čase s knihovnou SignalR](signalr/overview/getting-started/real-time-web-applications-with-signalr.md)
 * [Testování částí aplikace knihovnou SignalR](signalr/overview/testing-and-debugging/unit-testing-signalr-applications.md)
 * [Povolení trasování knihovnou SignalR](signalr/overview/testing-and-debugging/enabling-signalr-tracing.md)
 * [Škálování aplikace SignalR službou Azure Service Bus](signalr/overview/performance/scaleout-with-windows-azure-service-bus.md)
@@ -124,7 +124,7 @@ Tyto podrobné návody pro vývoj aplikací ASP.NET jsou k dispozici.
 * [Šklálování aplikace SignalR SQL Serverem](signalr/overview/performance/scaleout-with-sql-server.md)
 * [Testování hustoty připojení nástrojem Crank](signalr/overview/performance/signalr-connection-density-testing-with-crank.md)
 * [Použití čítačů výkonu SignalR webové role Azure](signalr/overview/performance/using-signalr-performance-counters-in-an-azure-web-role.md)
-* [Kurz: Hostování na vlastním serveru funkce SignalR](signalr/overview/deployment/tutorial-signalr-self-host.md)
+* [Kurz: SignalR v místním prostředí](signalr/overview/deployment/tutorial-signalr-self-host.md)
 * [Použití aplikace SignalR s webovými aplikacemi ve službě Azure App Service](signalr/overview/deployment/using-signalr-with-azure-web-sites.md)
 
 ## <a name="aspnet-identity"></a>ASP.NET Identity

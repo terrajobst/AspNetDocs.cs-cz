@@ -1,29 +1,29 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-2
-title: Začínáme s Entity Framework 4.0 Database First a technologie ASP.NET 4 webových formulářů – část 2 | Dokumentace Microsoftu
+title: Začínáme s Entity Framework 4,0 Database First a webovými formuláři ASP.NET 4 – část 2 | Microsoft Docs
 author: tdykstra
-description: Contoso University ukázkovou webovou aplikaci ukazuje, jak vytvořit aplikace webových formulářů ASP.NET pomocí Entity Frameworku. Ukázková aplikace je...
+description: Ukázková webová aplikace společnosti Contoso University ukazuje, jak pomocí Entity Framework vytvořit aplikace webových formulářů ASP.NET. Ukázková aplikace je...
 ms.author: riande
 ms.date: 12/03/2010
 ms.assetid: fb63a326-a4ae-4b0c-a4f5-412327197216
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-2
 msc.type: authoredcontent
 ms.openlocfilehash: bd6a2e29e6f0df04e39be29160e2e08cc99c4706
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65126851"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78566008"
 ---
-# <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-2"></a>Začínáme s Entity Framework 4.0 Database First a 4 webových formulářů ASP.NET – část 2
+# <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-2"></a>Začínáme s Entity Framework 4,0 Database First a webovými formuláři ASP.NET 4 – část 2
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-> Contoso University ukázkovou webovou aplikaci ukazuje, jak vytvořit aplikace webových formulářů ASP.NET pomocí Entity Framework 4.0 a Visual Studio 2010. Informace o této sérii kurzů, naleznete v tématu [z prvního kurzu této série](the-entity-framework-and-aspnet-getting-started-part-1.md)
+> Ukázková webová aplikace společnosti Contoso University ukazuje, jak pomocí Entity Framework 4,0 a sady Visual Studio 2010 vytvářet aplikace webových formulářů ASP.NET. Informace o řadě kurzů najdete v [prvním kurzu v řadě](the-entity-framework-and-aspnet-getting-started-part-1.md) .
 
 ## <a name="the-entitydatasource-control"></a>Ovládací prvek EntityDataSource
 
-V předchozím kurzu jste vytvořili webovou stránku, databáze a datového modelu. V tomto kurzu jste pracovat `EntityDataSource` ovládací prvek, který technologie ASP.NET poskytuje, aby bylo možné usnadňují práci s datový model Entity Framework. Vytvoříte `GridView` ovládací prvek pro zobrazování a upravování dat studentů `DetailsView` ovládacího prvku pro přidání nové studenty a `DropDownList` ovládací prvek pro výběr oddělení (které budete používat později pro zobrazení související kurzy).
+V předchozím kurzu jste vytvořili web, databázi a datový model. V tomto kurzu pracujete s ovládacím prvkem `EntityDataSource`, který ASP.NET poskytuje, aby bylo snazší pracovat s datovým modelem Entity Framework. Vytvoříte `GridView` ovládací prvek pro zobrazování a úpravu dat studentů, `DetailsView` řízení pro přidávání nových studentů a ovládací prvek `DropDownList` pro výběr oddělení (který budete používat později pro zobrazení přidružených kurzů).
 
 [![Image20](the-entity-framework-and-aspnet-getting-started-part-2/_static/image2.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image1.png)
 
@@ -31,220 +31,220 @@ V předchozím kurzu jste vytvořili webovou stránku, databáze a datového mod
 
 [![Image18](the-entity-framework-and-aspnet-getting-started-part-2/_static/image6.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image5.png)
 
-Všimněte si, že v této aplikaci vás nebude přidávat ověření vstupu na stránky, které aktualizace databáze a některé zpracování chyb nebude tak robustní jako by to bylo požadováno v produkční aplikace. Který udržuje kurz, zaměřuje na rozhraní Entity Framework a udržuje v přístupu příliš dlouhý. Podrobnosti o tom, jak přidat tyto funkce do svojí aplikace najdete v tématu [ověřování uživatelského vstupu v ASP.NET Web Pages](https://msdn.microsoft.com/library/7kh55542.aspx) a [zpracování chyb v ASP.NET stránek a aplikací](https://msdn.microsoft.com/library/w16865z6.aspx).
+Všimněte si, že v této aplikaci nebudete přidáváni ověřování na stránky, které databázi aktualizují, a některé z zpracování chyb nebudou tak robustní, jak by bylo potřeba v produkční aplikaci. Tím se kurz neustále zaměřuje na Entity Framework a trvá příliš dlouho. Podrobnosti o tom, jak tyto funkce přidat do aplikace, najdete v tématu [ověřování vstupu uživatele na webových stránkách ASP.NET](https://msdn.microsoft.com/library/7kh55542.aspx) a [zpracování chyb na stránkách ASP.NET a aplikacích](https://msdn.microsoft.com/library/w16865z6.aspx).
 
 ## <a name="adding-and-configuring-the-entitydatasource-control"></a>Přidání a konfigurace ovládacího prvku EntityDataSource
 
-Zahájíte tím, že nakonfigurujete `EntityDataSource` řízení ke čtení `Person` entit na základě `People` sady entit.
+Začnete konfigurací ovládacího prvku `EntityDataSource` ke čtení `Person` entit ze sady entit `People`.
 
-Ujistěte se, že máte Visual Studio otevřete a, že pracujete s projektem, kterou jste vytvořili v části 1. Pokud od vytvoření datového modelu nebo od poslední změny provedené na ni dosud sestavili projekt, sestavte projekt nyní. Změny do datového modelu nejsou k dispozici Návrhář dokud sestavení projektu.
+Ujistěte se, že máte otevřenou aplikaci Visual Studio a že pracujete s projektem, který jste vytvořili v části 1. Pokud jste projekt nevytvořili, protože jste vytvořili datový model nebo když jste jeho poslední změnu provedli, sestavte projekt nyní. Změny datového modelu nejsou zpřístupněny návrháři, dokud není projekt sestaven.
 
-Vytvořit novou webovou stránku pomocí **webový formulář používající stránku předlohy** šablony a pojmenujte ho *Students.aspx*.
+Vytvořte novou webovou stránku pomocí **webového formuláře pomocí šablony stránky předlohy** a pojmenujte ji *students. aspx*.
 
 [![Image23](the-entity-framework-and-aspnet-getting-started-part-2/_static/image8.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image7.png)
 
-Zadejte *Site.Master* jako stránky předlohy. Všechny stránky, které vytvoříte pro tyto kurzy se pomocí této hlavní stránky.
+Zadejte *Web. Master* jako stránku předlohy. Všechny stránky, které vytvoříte pro tyto kurzy, budou používat tuto stránku předlohy.
 
 [![Image24](the-entity-framework-and-aspnet-getting-started-part-2/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image9.png)
 
-V **zdroj** zobrazovat, přidávat `h2` na nadpis `Content` ovládací prvek s názvem `Content2`, jak je znázorněno v následujícím příkladu:
+V zobrazení **zdroj** přidejte `h2` záhlaví k ovládacímu prvku `Content` s názvem `Content2`, jak je znázorněno v následujícím příkladu:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-2/samples/sample1.aspx)]
 
-Z **Data** karty **nástrojů**, přetáhněte `EntityDataSource` ovládací prvek na stránce, klesne pod nadpisem a změnit ID `StudentsEntityDataSource`:
+Na kartě **data** na **panelu nástrojů**přetáhněte ovládací prvek `EntityDataSource` na stránku, přetáhněte ho pod záhlavím a změňte ID na `StudentsEntityDataSource`:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-2/samples/sample2.aspx)]
 
-Přepnout na **návrhu** zobrazení, klikněte na inteligentní značku ovládací prvek zdroje dat a pak klikněte na tlačítko **konfigurace zdroje dat** ke spuštění **konfigurace zdroje dat** průvodce.
+Přepněte do zobrazení **Návrh** , klikněte na inteligentní značku ovládacího prvku zdroje dat a potom kliknutím na **Konfigurovat zdroj dat** spusťte průvodce **konfigurací zdroje dat** .
 
 [![Image01](the-entity-framework-and-aspnet-getting-started-part-2/_static/image12.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image11.png)
 
-V **Konfigurovat ObjectContext** kroku průvodce, vyberte **SchoolEntities** hodnotu **připojení s názvem**a vyberte **SchoolEntities**jako **DefaultContainerName** hodnotu. Pak klikněte na tlačítko **Další**.
+V kroku průvodce **konfigurací objektu ObjectContext** vyberte **SchoolEntities** jako hodnotu pro **pojmenované připojení**a jako hodnotu **DefaultContainerName** vyberte **SchoolEntities** . Pak klikněte na tlačítko **Další**.
 
 [![Image02](the-entity-framework-and-aspnet-getting-started-part-2/_static/image14.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image13.png)
 
-Poznámka: Pokud se zobrazí následující dialogové okno v tomto okamžiku budete muset sestavit projekt před pokračováním.
+Poznámka: Pokud se v tomto okamžiku zobrazí následující dialogové okno, je třeba projekt sestavit, aby bylo možné pokračovat.
 
 [![Image25](the-entity-framework-and-aspnet-getting-started-part-2/_static/image16.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image15.png)
 
-V **Konfigurovat výběr dat** kroku, vyberte **lidé** hodnotu **EntitySetName**. V části **vyberte**, ujistěte se, že **vyberte A** ll zaškrtávací políčko je zaškrtnuto. Vyberte požadované možnosti pro povolit aktualizaci a odstraňování. Jakmile budete hotovi, klikněte na tlačítko **Dokončit**.
+V kroku **Konfigurace výběru dat** vyberte možnost **lidé** jako hodnotu pro **EntitySetName**. V části **Vybrat**se ujistěte, že je zaškrtnuté políčko **Vyberte** vše. Pak vyberte možnosti pro povolení aktualizace a odstranění. Až skončíte, klikněte na **Dokončit**.
 
 [![Image03](the-entity-framework-and-aspnet-getting-started-part-2/_static/image18.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image17.png)
 
-## <a name="configuring-database-rules-to-allow-deletion"></a>Konfigurace pravidel databáze, povolíte odstranění
+## <a name="configuring-database-rules-to-allow-deletion"></a>Konfigurace databázových pravidel pro povolení odstranění
 
-Vytvoříte stránky, který umožňuje uživateli odstranit studenti z `Person` tabulku, která obsahuje tři relace s jinými tabulkami (`Course`, `StudentGrade`, a `OfficeAssignment`). Ve výchozím nastavení, databáze, nebudete odstranění řádku v `Person` Pokud existují související řádky v jedné z jiné tabulky. Můžete ručně odstranit řádky v relaci nejprve, nebo můžete nakonfigurovat databázi k jejich odstranění automaticky při odstranění `Person` řádek. Pro studenty záznamů v tomto kurzu nakonfigurujete databáze, kterou chcete automaticky odstranit související data. Protože mají studenti související řádky jenom ve `StudentGrade` tabulky, je nutné nakonfigurovat pouze jeden z tři relace.
+Vytvoříte stránku, která umožní uživatelům odstraňovat studenty z `Person` tabulky, která má tři relace s jinými tabulkami (`Course`, `StudentGrade`a `OfficeAssignment`). Ve výchozím nastavení vám databáze zabrání v odstranění řádku v `Person`, pokud v jedné z ostatních tabulek existují související řádky. Nejprve můžete související řádky odstranit, nebo můžete databázi nakonfigurovat tak, aby se automaticky odstranila při odstranění `Person`ho řádku. V případě záznamů studenta v tomto kurzu nakonfigurujete databázi, aby automaticky odstranila související data. Vzhledem k tomu, že studenti mohou mít v tabulce `StudentGrade` pouze související řádky, je nutné nakonfigurovat pouze jednu ze tří vztahů.
 
-Pokud používáte *School.mdf* souboru, že jste si stáhli z projektu, který se odkazuje v tomto kurzu, tuto část přeskočit, protože tyto změny konfigurace už jsme udělali. Pokud jste vytvořili databázi spuštěním skriptu, nakonfigurujte databázi pomocí následujících postupů.
+Pokud používáte soubor *School. mdf* , který jste stáhli z projektu, který je součástí tohoto kurzu, můžete tuto část přeskočit, protože tyto změny konfigurace již byly provedeny. Pokud jste databázi vytvořili spuštěním skriptu, nakonfigurujte databázi pomocí následujících postupů.
 
-V **Průzkumníka serveru**, otevřete diagram databáze, kterou jste vytvořili v části 1. Klikněte pravým tlačítkem na vztah mezi `Person` a `StudentGrade` (čáry mezi tabulkami) a pak vyberte **vlastnosti**.
+V **Průzkumník serveru**otevřete databázový diagram, který jste vytvořili v části 1. Klikněte pravým tlačítkem na vztah mezi `Person` a `StudentGrade` (čára mezi tabulkami) a pak vyberte **vlastnosti**.
 
 [![Image04](the-entity-framework-and-aspnet-getting-started-part-2/_static/image20.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image19.png)
 
-V **vlastnosti** okna rozbalte **INSERT a UPDATE specifikace** a nastavit **DeletRule** vlastnost **Cascade**.
+V okně **vlastnosti** rozbalte položku **Vložit a aktualizovat specifikaci** a nastavte vlastnost **DeleteRule** na hodnotu **Cascade**.
 
 [![Image05](the-entity-framework-and-aspnet-getting-started-part-2/_static/image22.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image21.png)
 
-Uložte a zavřete diagramu. Pokud budete vyzváni, zda chcete aktualizovat databázi, klikněte na tlačítko **Ano**.
+Uložte a zavřete diagram. Pokud se zobrazí dotaz, zda chcete databázi aktualizovat, klikněte na tlačítko **Ano**.
 
-Pokud chcete mít jistotu, že zajišťuje model entity, které jsou v paměti, které jsou synchronizované s činnosti databáze, musíte nastavit odpovídající pravidla v datovém modelu. Otevřít *SchoolModel.edmx*, pravým tlačítkem myši na Asociační čára mezi `Person` a `StudentGrade`a pak vyberte **vlastnosti**.
+Abyste se ujistili, že model udržuje entity, které jsou v paměti synchronizované s tím, co databáze dělá, musíte v datovém modelu nastavit odpovídající pravidla. Otevřete *SchoolModel. edmx*, klikněte pravým tlačítkem myši na čáru přidružení mezi `Person` a `StudentGrade`a pak vyberte **vlastnosti**.
 
 [![Image21](the-entity-framework-and-aspnet-getting-started-part-2/_static/image24.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image23.png)
 
-V **vlastnosti** okno, nastavte **elementy OnDelete End1** k **Cascade**.
+V okně **vlastnosti** nastavte End1- **Delete** na **Cascade**.
 
 [![Image22](the-entity-framework-and-aspnet-getting-started-part-2/_static/image26.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image25.png)
 
-Uložte a zavřete *SchoolModel.edmx* souboru a znovu sestavte projekt.
+Uložte a zavřete soubor *SchoolModel. edmx* a pak znovu sestavte projekt.
 
-Obecně platí při změně databáze, máte několik možností, jak synchronizovat model:
+Obecně platí, že když se databáze změní, máte několik možností, jak synchronizovat model:
 
-- Pro některé typy změn (například přidávání nebo aktualizaci tabulky, zobrazení nebo uložené procedury), klikněte pravým tlačítkem na návrháře a vyberte **aktualizace modelů z databáze** mít návrháře zkontrolujte změny automaticky.
-- Znovu vygenerovat datového modelu.
-- Proveďte ruční aktualizace podobný následujícímu.
+- U určitých druhů změn (například přidávání nebo obnovování tabulek, zobrazení nebo uložených procedur), klikněte pravým tlačítkem myši v návrháři a vyberte **aktualizovat model z databáze** , aby se tento Návrhář automaticky provedl.
+- Znovu vygenerujte datový model.
+- Proveďte ruční aktualizace, jako je tato.
 
-V takovém případě může být znovu vygenerován modelu nebo aktualizaci tabulky ovlivněné změnou vztah, ale pak budete muset znovu provést změnu názvu pole (z `FirstName` k `FirstMidName`).
+V tomto případě jste mohli model znovu vygenerovat nebo aktualizovat tabulky ovlivněné změnou vztahu, ale pak byste museli změnit název pole-název (od `FirstName` do `FirstMidName`).
 
-## <a name="using-a-gridview-control-to-read-and-update-entities"></a>Použití ovládacího prvku GridView číst a aktualizovat entity
+## <a name="using-a-gridview-control-to-read-and-update-entities"></a>Použití ovládacího prvku GridView ke čtení a aktualizaci entit
 
-V této části budete používat `GridView` ovládací prvek zobrazovat, aktualizovat nebo odstranit studentů.
+V této části použijete `GridView` ovládací prvek pro zobrazení, aktualizaci nebo odstranění studentů.
 
-Otevřete nebo přepněte do *Students.aspx* a přepněte se na **návrhu** zobrazení. Z **Data** karty **nástrojů**, přetáhněte `GridView` ovládací prvek vpravo od `EntityDataSource` řídit, pojmenujte ho `StudentsGridView`, klikněte na inteligentní značku a potom vyberte  **StudentsEntityDataSource** jako zdroj dat.
+Otevřete nebo přejděte na *studenty. aspx* a přepněte se do zobrazení **Návrh** . Na kartě **data** na **panelu nástrojů**přetáhněte ovládací prvek `GridView` napravo od ovládacího prvku `EntityDataSource`, pojmenujte jej `StudentsGridView`, klikněte na inteligentní značku a pak jako zdroj dat vyberte **StudentsEntityDataSource** .
 
 [![Image06](the-entity-framework-and-aspnet-getting-started-part-2/_static/image28.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image27.png)
 
-Klikněte na tlačítko **aktualizovat schéma** (klikněte na tlačítko **Ano** Pokud budete vyzváni k potvrzení), potom klikněte na tlačítko **povolit stránkování**, **Povolit řazení**, **Povolit úpravy**, a **Povolit odstranění**.
+Klikněte na **Aktualizovat schéma** (Pokud se zobrazí výzva k potvrzení), klikněte na tlačítko **Ano** , pak na **Povolit stránkování**, povolit **řazení**, **Povolit úpravy**a **Povolit odstranění**.
 
-Klikněte na tlačítko **upravit sloupce**.
+Klikněte na tlačítko **Upravit sloupce**.
 
 [![Image10](the-entity-framework-and-aspnet-getting-started-part-2/_static/image30.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image29.png)
 
-V **vybraná pole** okně Odstranit **PersonID**, **LastName**, a **HireDate**. Je obvykle nezobrazí klíč záznamu pro uživatele, datum přijetí se nevztahuje na studenty a můžete jako umístění vyberu obě části názvu v jednom poli, takže vám stačí jedno z polí název.)
+V poli **Vybraná pole** odstraňte **PersonID**, **LastName**a **HireDate**. Obvykle nezobrazujete klíč záznamu uživatelům, datum přijetí není relevantní pro studenty a do jednoho pole umístíte obě části názvu, takže budete potřebovat jenom jedno z polí s názvem.)
 
 [![Image11](the-entity-framework-and-aspnet-getting-started-part-2/_static/image32.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image31.png)
 
-Vyberte **FirstMidName** pole a potom klikněte na tlačítko **převést toto pole TemplateField**.
+Vyberte pole **FirstMidName** a pak klikněte na **převést toto pole na TemplateField**.
 
-Totéž proveďte pro **EnrollmentDate**.
+Totéž udělejte pro **EnrollmentDate**.
 
 [![Image13](the-entity-framework-and-aspnet-getting-started-part-2/_static/image34.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image33.png)
 
-Klikněte na tlačítko **OK** a přepněte se do **zdroj** zobrazení. Zbývající změny bude snazší přímo v kódu. `GridView` Řídit kód teď vypadá jako v následujícím příkladu.
+Klikněte na **OK** a pak přepněte do zobrazení **zdroje** . Zbývající změny budou snazší přímo v kódu. Značka ovládacího prvku `GridView` nyní vypadá jako v následujícím příkladu.
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-2/samples/sample3.aspx)]
 
-První sloupec po příkazu pole je pole šablony, které aktuálně zobrazuje křestní jméno. Změňte kód pro toto pole šablony, aby vypadala jako v následujícím příkladu:
+První sloupec za polem příkazu je pole šablony, ve kterém se aktuálně zobrazuje křestní jméno. Změňte označení pro toto pole šablony tak, aby vypadalo jako v následujícím příkladu:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-2/samples/sample4.aspx)]
 
-V režimu zobrazení dvou `Label` ovládací prvky zobrazované jméno a příjmení. V režimu úprav jsou k dispozici dvě textová pole, můžete změnit název první a poslední. Stejně jako u `Label` ovládacích prvků v režimu zobrazení, použijete `Bind` a `Eval` výrazy přesně tak, jak jste je sdíleli s ASP.NET ovládací prvky zdroje dat, která se připojují přímo k databázím. Jediným rozdílem je, že zadáváte vlastností entity místo sloupce databáze.
+V režimu zobrazení se dva ovládací prvky `Label` zobrazují jako jméno a příjmení. V režimu úprav jsou k dispozici dvě textová pole, abyste mohli změnit jméno a příjmení. Stejně jako u ovládacích prvků `Label` v režimu zobrazení používáte `Bind` a `Eval` výrazy přesně tak, jak byste měli ASP.NET ovládací prvky zdroje dat, které se připojují přímo k databázím. Jediným rozdílem je, že zadáváte vlastnosti entity místo databázových sloupců.
 
-Poslední sloupec je pole šablony, který zobrazí datum registrace. Změňte kód pro toto pole, aby vypadala jako v následujícím příkladu:
+Poslední sloupec je pole šablony, které zobrazuje datum zápisu. Změňte označení tohoto pole tak, aby vypadalo jako v následujícím příkladu:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-2/samples/sample5.aspx)]
 
-V obou zobrazení a režim, úpravě formátovací řetězec "{0, d}" způsobí, že se data mají být zobrazeny ve formátu "krátké datum". (Váš počítač může být nakonfigurovaný k zobrazení tohoto formátu odlišně od obrázky obrazovky je znázorněno v tomto kurzu.)
+V režimu zobrazení i úprav formátový řetězec {0, d} způsobí, že se datum zobrazí ve formátu "short data". (Váš počítač může být nakonfigurovaný tak, aby se tento formát zobrazoval jinak než obrázky obrazovky zobrazené v tomto kurzu.)
 
-Všimněte si, že v každém z těchto polí šablona návrháře používat `Bind` výraz ve výchozím nastavení, ale jste změnili, aby `Eval` výrazu v `ItemTemplate` elementy. `Bind` Výraz zpřístupňuje je v `GridView` vlastnosti ovládacího prvku v případě, že budete potřebovat pro přístup k datům v kódu. Na této stránce není potřeba přístup k těmto datům v kódu, abyste mohli používat `Eval`, což je efektivnější. Další informace najdete v tématu [získávají se vaše data mimo ovládací prvky dat](https://weblogs.asp.net/davidfowler/archive/2008/12/12/getting-your-data-out-of-the-data-controls.aspx).
+Všimněte si, že v každé z těchto polí šablony Návrhář ve výchozím nastavení použil výraz `Bind`, ale změnili jste jej na výraz `Eval` v elementech `ItemTemplate`. Výraz `Bind` zpřístupňuje dostupná data v `GridView` vlastnosti ovládacího prvku pro případ, že budete potřebovat přístup k datům v kódu. Na této stránce nepotřebujete přístup k těmto datům v kódu, takže můžete použít `Eval`, což je efektivnější. Další informace najdete v tématu věnovaném [získání dat z ovládacích prvků pro](https://weblogs.asp.net/davidfowler/archive/2008/12/12/getting-your-data-out-of-the-data-controls.aspx)data.
 
-## <a name="revising-entitydatasource-control-markup-to-improve-performance"></a>Úprava značky ovládacího prvku třídu EntityDataSource platí pro zvýšení výkonu
+## <a name="revising-entitydatasource-control-markup-to-improve-performance"></a>Revize značek ovládacího prvku EntityDataSource pro zlepšení výkonu
 
-Do značky `EntityDataSource` řídit, odeberte `ConnectionString` a `DefaultContainerName` atributy a nahradíte je s `ContextTypeName="ContosoUniversity.DAL.SchoolEntities"` atribut. Jedná se o změnu, měli byste si pokaždé, když vytvoříte `EntityDataSource` ovládací prvek, pokud je třeba použít připojení, které se liší od ten, který je pevně zakódovaný ve třídě objektu kontextu. Použití `ContextTypeName` atribut poskytuje následující výhody:
+V označení ovládacího prvku `EntityDataSource` odeberte atributy `ConnectionString` a `DefaultContainerName` a nahraďte je atributem `ContextTypeName="ContosoUniversity.DAL.SchoolEntities"`. Toto je změna, kterou byste měli udělat při každém vytvoření ovládacího prvku `EntityDataSource`, pokud nepotřebujete použít připojení, které se liší od toho, který je pevně kódovaný ve třídě kontextu objektu. Použití atributu `ContextTypeName` přináší následující výhody:
 
-- Lepší výkon. Když `EntityDataSource` inicializuje ovládací prvek modelu data s využitím `ConnectionString` a `DefaultContainerName` atributy, provede další práci pro načtení metadat u každého požadavku. To není nutné v případě, že zadáte `ContextTypeName` atribut.
-- Opožděné načtení je zapnutá ve výchozím nastavení ve třídách kontextu generovaný objekt (například `SchoolEntities` v tomto kurzu) v Entity Framework 4.0. To znamená, že navigační vlastnosti jsou načteny se souvisejícími daty automaticky přímo, když je potřebujete. Opožděné načtení je podrobněji vysvětleny dále v tomto kurzu.
-- Všechna vlastní nastavení, které jste použili u objektu třídy kontextu (v tomto případě `SchoolEntities` třídy) bude k dispozici pro ovládací prvky, které používají `EntityDataSource` ovládacího prvku. Přizpůsobení třídy objektu kontextu je rozšířená, pro které neplatí v této sérii kurzů. Další informace najdete v tématu [rozšíření Entity Framework vygenerovaných typů](https://msdn.microsoft.com/library/dd456844.aspx).
+- Lepší výkon. Když ovládací prvek `EntityDataSource` inicializuje datový model pomocí atributů `ConnectionString` a `DefaultContainerName`, provede další práci pro načtení metadat pro každý požadavek. To není nutné, pokud zadáte atribut `ContextTypeName`.
+- Opožděné načítání je ve výchozím nastavení zapnuté v třídách kontextu generovaných objektů (například `SchoolEntities` v tomto kurzu) v Entity Framework 4,0. To znamená, že navigační vlastnosti jsou v případě potřeby načítány se souvisejícími daty automaticky. Opožděné načítání je podrobněji vysvětleno dále v tomto kurzu.
+- Všechna vlastní nastavení, která jste použili u třídy kontextu objektu (v tomto případě `SchoolEntities` třídy), budou k dispozici pro ovládací prvky, které používají ovládací prvek `EntityDataSource`. Přizpůsobení třídy kontextu objektu je pokročilé téma, které není zahrnuto v této sérii kurzů. Další informace naleznete v tématu [rozšíření Entity Framework generovaných typů](https://msdn.microsoft.com/library/dd456844.aspx).
 
-Značky teď bude vypadat následovně (pořadí vlastností lišit):
+Značka se teď bude podobat následujícímu příkladu (pořadí vlastností se může lišit):
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-2/samples/sample6.aspx)]
 
-`EnableFlattening` Atribut odkazuje na funkci, která je potřeba v dřívějších verzích rozhraní Entity Framework, protože sloupce cizích klíčů nebyla vystavena jako vlastnosti entity. Aktuální verze je možné použít *přidružení cizího klíče*, což znamená, že vlastnosti cizího klíče jsou přístupné pro všechny kromě many-to-many přidružení. Pokud vaše entity nemají vlastnosti cizího klíče a ne [komplexní typy](https://msdn.microsoft.com/library/bb738472.aspx), můžete nechat tento atribut nastavený na `False`. Neodebírejte atribut z kódu, protože výchozí hodnota je `True`. Další informace najdete v tématu [sloučení objektů (EntityDataSource)](https://msdn.microsoft.com/library/ee404746.aspx).
+Atribut `EnableFlattening` odkazuje na funkci, která byla vyžadována v dřívějších verzích Entity Framework, protože sloupce cizího klíče nebyly zveřejněny jako vlastnosti entity. Aktuální verze umožňuje použít *přidružení cizího klíče*, což znamená, že vlastnosti cizího klíče jsou zpřístupněny pro všechna přiřazení, ale u přidružení typu m:n. Pokud vaše Entity obsahují vlastnosti cizího klíče a žádné [komplexní typy](https://msdn.microsoft.com/library/bb738472.aspx), můžete ponechat tento atribut nastavený na `False`. Neodstraňujte atribut ze značky, protože výchozí hodnota je `True`. Další informace najdete v tématu věnovaném [sloučení objektů (EntityDataSource)](https://msdn.microsoft.com/library/ee404746.aspx).
 
-Spuštění stránky a zobrazit seznam studenty a zaměstnance (bude filtrovat pouze studentů v dalším kurzu). Křestní jméno a příjmení se zobrazí společně.
+Spusťte stránku a zobrazí se seznam studentů a zaměstnanců (v dalším kurzu budete filtrovat jenom studenty). Křestní jméno a příjmení se zobrazí společně.
 
 [![Image07](the-entity-framework-and-aspnet-getting-started-part-2/_static/image36.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image35.png)
 
-Zobrazení seřadit, klikněte na název sloupce.
+Pokud chcete zobrazení seřadit, klikněte na název sloupce.
 
-Klikněte na tlačítko **upravit** do libovolného řádku. Textová pole se zobrazí, kde můžete změnit název první a poslední.
+V libovolném řádku klikněte na **Upravit** . Textová pole se zobrazí, kde můžete změnit jméno a příjmení.
 
 [![Image08](the-entity-framework-and-aspnet-getting-started-part-2/_static/image38.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image37.png)
 
-**Odstranit** tlačítko také funguje. Klikněte na tlačítko Odstranit pro řádek, který má datum zápisu a řádek zmizí. (Řádky bez registrace data představují Instruktoři a můžete obdržet chybu referenční integritu. V dalším kurzu můžete filtrovat tento seznam, aby zahrnovala studenty jenom.)
+Tlačítko **Odstranit** také funguje. Klikněte na tlačítko Odstranit pro řádek, který má datum registrace, a řádek zmizí. (Řádky bez data registrace reprezentují instruktory a může se zobrazit chyba referenční integrity. V dalším kurzu tento seznam vyfiltrujete tak, aby zahrnoval jenom studenty.)
 
-## <a name="displaying-data-from-a-navigation-property"></a>Zobrazení dat z navigační vlastnost
+## <a name="displaying-data-from-a-navigation-property"></a>Zobrazení dat z navigační vlastnosti
 
-Nyní předpokládejme, že budete chtít vědět, kolik kurzech, které každý student je zaregistrované v. Poskytuje tyto informace v Entity Framework `StudentGrades` navigační vlastnost `Person` entity. Protože návrh databáze nepovoluje student byla zaregistrovaná v kurzu bez nutnosti na podnikové úrovni, přiřazeno, pro účely tohoto kurzu můžete předpokládat této s řádek `StudentGrade` řádkem tabulky, který je přiřazen ke kurzu je stejný jako registrované v kurzu. ( `Courses` Navigační vlastnost je určena pouze pro vyučující.)
+Nyní předpokládejme, že chcete zjistit, kolik kurzů má každý student zaregistrovaný. Entity Framework poskytuje tyto informace v `StudentGrades` navigační vlastnosti entity `Person`. Vzhledem k tomu, že návrh databáze neumožňuje, aby se student zaregistroval v rámci kurzu, aniž by se mu přiřadila vaše třídy, můžete předpokládat, že řádek v řádku `StudentGrade` tabulky, který je spojený s kurzem, je stejný jako zápis do kurzu. (Navigační vlastnost `Courses` je určena pouze pro instruktory.)
 
-Při použití `ContextTypeName` atribut `EntityDataSource` ovládacího prvku, Entity Framework automaticky načte informace pro navigační vlastnost při přístupu k vlastnosti. Tento postup se nazývá *opožděné načtení*. Nicméně to může být neefektivní, protože výsledkem samostatné volání databáze, kterou je potřeba další informace o jednotlivých čase. Pokud potřebujete data z navigační vlastnosti pro každou entitu vrácené `EntityDataSource` ovládacího prvku, je efektivnější načíst související data spolu s samotná entita v jednom volání do databáze. Tento postup se nazývá *předběžné načítání*, a určete předběžné načítání pro navigační vlastnost nastavením `Include` vlastnost `EntityDataSource` ovládacího prvku.
+Použijete-li atribut `ContextTypeName` ovládacího prvku `EntityDataSource`, Entity Framework při přístupu k této vlastnosti automaticky načte informace pro navigační vlastnost. Tato metoda se nazývá *opožděné načítání*. To však může být neefektivní, protože má za následek samostatné volání databáze pokaždé, když jsou potřeba další informace. Pokud potřebujete data z vlastnosti navigace pro každou entitu vrácenou ovládacím prvkem `EntityDataSource`, je efektivnější načíst související data společně s entitou v jednom volání do databáze. To se říká *Eager načítání*a zadáte Eager načítání pro navigační vlastnost nastavením vlastnosti `Include` ovládacího prvku `EntityDataSource`.
 
-V *Students.aspx*, kterou chcete zobrazit počet kurzů pro všechny studenty, takže předběžné načítání je nejlepší volbou. Pokud byla zobrazení Všichni studenti, ale zobrazuje počet kurzy pouze pro několik z nich (které by vyžadovaly psaním kódu spolu se značkou), opožděné načtení může být lepší volbou.
+Ve službě *students. aspx*chcete zobrazit počet kurzů pro každého studenta, takže Eager načítání je nejlepší volbou. Pokud jste zobrazili všechny studenty, ale zobrazuje se počet kurzů jenom pro několik z nich (což by vyžadovalo psaní kódu navíc k označení), může být opožděné načítání lepší volbou.
 
-Otevřete nebo přepněte do *Students.aspx*, přepnout na **návrhu** zobrazit, vyberte možnost `StudentsEntityDataSource`a **vlastnosti** okno sady **zahrnout**vlastnost **StudentGrades**. (Pokud chcete získat více navigačních vlastností, můžete zadat jejich názvů oddělených čárkami, například **StudentGrades, kurzy**.)
+Otevřete nebo přejděte na *studenty. aspx*, přepněte do zobrazení **návrh** , vyberte `StudentsEntityDataSource`a v okně **vlastnosti** nastavte vlastnost **include** na **StudentGrades**. (Pokud jste chtěli získat více vlastností navigace, mohli byste zadat jejich názvy oddělené čárkami, například **StudentGrades, kurzy**).
 
 [![Image19](the-entity-framework-and-aspnet-getting-started-part-2/_static/image40.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image39.png)
 
-Přepnout na **zdroj** zobrazení. V `StudentsGridView` ovládacího prvku za poslední `asp:TemplateField` prvku, přidejte následující pole nové šablony:
+Přepněte do zobrazení **zdroje** . V ovládacím prvku `StudentsGridView` za poslední prvek `asp:TemplateField` přidejte následující nové pole šablony:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-2/samples/sample7.aspx)]
 
-V `Eval` výrazu, můžete odkazovat na vlastnost navigace `StudentGrades`. Vzhledem k tomu, že tato vlastnost obsahuje kolekce, má `Count` vlastnost, která slouží k zobrazení počtu kurzů, ve kterých se zaregistruje studenta. V pozdějších kurzech uvidíte, jak zobrazit data z navigační vlastnosti, které obsahují jednotlivých entit místo kolekcí. (Všimněte si, že nemůžete použít `BoundField` prvků, které se zobrazují data z navigační vlastnosti.)
+Ve výrazu `Eval` můžete odkazovat na vlastnost navigace `StudentGrades`. Vzhledem k tomu, že tato vlastnost obsahuje kolekci, má vlastnost `Count`, kterou můžete použít k zobrazení počtu kurzů, ve kterých je student zaregistrovaný. V pozdějším kurzu uvidíte, jak zobrazit data z navigačních vlastností, které obsahují jednotlivé entity místo kolekcí. (Všimněte si, že nemůžete použít prvky `BoundField` k zobrazení dat z vlastností navigace.)
 
-Spuštění stránky a nyní uvidíte, kolik kurzy studenta je zaregistrované ve službě.
+Spusťte stránku a teď uvidíte, kolik kurzů jednotlivého studenta jsou zaregistrované v.
 
 [![Image20](the-entity-framework-and-aspnet-getting-started-part-2/_static/image42.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image41.png)
 
-## <a name="using-a-detailsview-control-to-insert-entities"></a>Použití ovládacího prvku DetailsView pro vložení entity
+## <a name="using-a-detailsview-control-to-insert-entities"></a>Použití ovládacího prvku DetailsView pro vložení entit
 
-Dalším krokem je vytvoření stránky, který má `DetailsView` ovládací prvek, který vám umožní přidat nové studenty. Zavřete prohlížeč a pak vytvořit novou webovou stránku pomocí *Site.Master* stránky předlohy. Pojmenujte stránku *StudentsAdd.aspx*a pak přepnout do **zdroj** zobrazení.
+Dalším krokem je vytvoření stránky s `DetailsView` ovládacím prvkem, který vám umožní přidat nové studenty. Zavřete prohlížeč a pak vytvořte novou webovou stránku pomocí stránky předlohy *Web. Master* . Pojmenujte stránku *StudentsAdd. aspx*a pak přepněte do zobrazení **zdroje** .
 
-Přidejte následující kód, který chcete nahradit existující značky pro `Content` ovládací prvek s názvem `Content2`:
+Přidejte následující kód, který nahradí existující značku ovládacího prvku `Content` s názvem `Content2`:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-2/samples/sample8.aspx)]
 
-Tento kód vytvoří `EntityDataSource` ovládací prvek, který je podobná té, kterou jste vytvořili v *Students.aspx*, s výjimkou umožňuje vložení. Stejně jako u `GridView` ovládací prvek vázaných polí `DetailsView` ovládací prvek se kódují přesně tak, jak by se u ovládacího prvku, který se připojuje přímo k databázi, s tím rozdílem, že odkazují vlastností entity. V takovém případě `DetailsView` ovládací prvek se používá pouze pro vkládání řádků, takže jste nastavili výchozí režim na `Insert`.
+Tento kód vytvoří ovládací prvek `EntityDataSource`, který se podobá tomu, který jste vytvořili ve službě *students. aspx*, s výjimkou toho, že umožňuje vkládání. Stejně jako u ovládacího prvku `GridView` jsou vázaná pole ovládacího prvku `DetailsView` kódována přesně stejně, jako by byla pro ovládací prvek dat, který se připojuje přímo k databázi, s výjimkou toho, že odkazují na vlastnosti entit. V tomto případě se `DetailsView` ovládací prvek používá pouze pro vložení řádků, takže jste nastavili výchozí režim na `Insert`.
 
-Spuštění stránky a přidání nového studenta.
+Spusťte stránku a přidejte nového studenta.
 
 [![Image09](the-entity-framework-and-aspnet-getting-started-part-2/_static/image44.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image43.png)
 
-Co se stane po vložení nového objektu student, ale pokud nyní spustíte *Students.aspx*, zobrazí se nové informace studentů.
+Po vložení nového studenta se nic nestane, ale pokud teď spustíte *studenty. aspx*, zobrazí se informace o novém studentovi.
 
 ## <a name="displaying-data-in-a-drop-down-list"></a>Zobrazení dat v rozevíracím seznamu
 
-V následujícím postupu budete databind `DropDownList` ovládací prvek do sady s použitím entity `EntityDataSource` ovládacího prvku. V této části kurzu se nebude provádět většinu pomocí tohoto seznamu. V další části ale použijete seznamu umožňuje uživatelům vybrat oddělení Zobrazit kurzy, které jsou přidružené k oddělení.
+V následujících krocích provedete vázání ovládacího prvku `DropDownList` do sady entit pomocí ovládacího prvku `EntityDataSource`. V této části kurzu nebudete s tímto seznamem mnohem dělat. V následujících částech ale pomocí seznamu umožníte uživatelům vybrat oddělení k zobrazení kurzů přidružených k danému oddělení.
 
-Vytvoření nové webové stránky s názvem *Courses.aspx*. V **zdroj** zobrazit, přidat nadpis `Content` ovládací prvek, který má název `Content2`:
+Vytvořte novou webovou stránku s názvem *kurzy. aspx*. V zobrazení **zdroj** přidejte záhlaví do ovládacího prvku `Content` s názvem `Content2`:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-2/samples/sample9.aspx)]
 
-V **návrhu** zobrazovat, přidávat `EntityDataSource` ovládací prvek na stránce stejně jako dříve, tentokrát s názvem `DepartmentsEntityDataSource`. Vyberte **oddělení** jako **EntitySetName** hodnotu a vyberte jenom **DepartmentID** a **název** vlastnosti.
+V zobrazení **Návrh** přidejte ovládací prvek `EntityDataSource` do stránky stejně jako předtím, s výjimkou tohoto názvu `DepartmentsEntityDataSource`. Jako hodnotu **EntitySetName** vyberte **oddělení** a vyberte jenom vlastnosti **DepartmentID** a **Name** .
 
 [![Image15](the-entity-framework-and-aspnet-getting-started-part-2/_static/image46.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image45.png)
 
-Z **standardní** karty **nástrojů**, přetáhněte `DropDownList` ovládací prvek na stránce, pojmenujte ho `DepartmentsDropDownList`, klikněte na inteligentní značku a vyberte **zvolit zdroj dat** do Spustit **Průvodce konfigurací zdroje dat**.
+Z karty **standardní** na **panelu nástrojů**přetáhněte ovládací prvek `DropDownList` na stránku, pojmenujte ho `DepartmentsDropDownList`, klikněte na inteligentní značku a výběrem **Možnosti zvolit zdroj dat** spusťte **Průvodce konfigurací zdroje**dat.
 
 [![Image16](the-entity-framework-and-aspnet-getting-started-part-2/_static/image48.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image47.png)
 
-V **vyberte zdroj dat** kroku, vyberte **DepartmentsEntityDataSource** jako zdroj dat, klikněte na tlačítko **aktualizovat schéma**a pak vyberte **název** jako datové pole k zobrazení a **DepartmentID** jako datové pole hodnota. Klikněte na **OK**.
+V kroku **Zvolte zdroj dat** vyberte **DepartmentsEntityDataSource** jako zdroj dat, klikněte na **Aktualizovat schéma**a pak vyberte **název** jako datové pole, které chcete zobrazit a **DepartmentID** jako pole data hodnoty. Klikněte na tlačítko **OK**.
 
 [![Image17](the-entity-framework-and-aspnet-getting-started-part-2/_static/image50.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image49.png)
 
-Metoda vytvoření datové vazby ovládacího prvku pomocí Entity Framework je stejný jako s ostatními daty ASP.NET ovládací prvky zdroje s výjimkou případů, které jste zadání entit a vlastnosti entity.
+Metoda, kterou použijete k vázání ovládacího prvku pomocí Entity Framework, je stejná jako u jiných ovládacích prvků zdroje dat ASP.NET s výjimkou, že zadáváte vlastnosti entit a entit.
 
-Přepnout na **zdroj** zobrazit a přidat "Vyberte oddělení:" bezprostředně před `DropDownList` ovládacího prvku.
+Přepněte do zobrazení **zdroje** a přidejte "vybrat oddělení:" těsně před ovládací prvek `DropDownList`.
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-2/samples/sample10.aspx)]
 
-Připomínáme, změňte kód pro `EntityDataSource` ovládacího prvku v tuto chvíli nahrazením `ConnectionString` a `DefaultContainerName` atributy s `ContextTypeName="ContosoUniversity.DAL.SchoolEntities"` atribut. Často je nejlepší počkat, až vytvoříte ovládací prvek vázaný na data, který je propojený s ovládací prvek zdroje dat, před změnou `EntityDataSource` ovládací prvek kódu, protože po provedení změny Návrhář nebude poskytovat vám **aktualizovat Schéma** možnost v ovládacím prvku vázané na data.
+Jako připomenutí změňte značku ovládacího prvku `EntityDataSource` v tomto okamžiku nahrazením atributů `ConnectionString` a `DefaultContainerName` atributem `ContextTypeName="ContosoUniversity.DAL.SchoolEntities"`. Je často vhodné počkat až po vytvoření ovládacího prvku vázaného na data, který je propojen s ovládacím prvkem zdroje dat před změnou značky ovládacího prvku `EntityDataSource`, protože po provedení změny Návrhář neposkytne možnost **Aktualizovat schéma** v ovládacím prvku vázaného na data.
 
-Spuštění stránky a z rozevíracího seznamu můžete vybrat oddělení.
+Spusťte stránku a v rozevíracím seznamu můžete vybrat oddělení.
 
 [![Image18](the-entity-framework-and-aspnet-getting-started-part-2/_static/image52.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image51.png)
 
-Dokončení tohoto postupu Úvod k používání `EntityDataSource` ovládacího prvku. Práce s tímto ovládacím prvkem je obecně nijak neliší od práce s ostatními daty ASP.NET ovládací prvky zdroje, s tím rozdílem, že odkazujete entit a vlastnosti namísto tabulky a sloupce. Jedinou výjimkou je, když chcete získat přístup k vlastnosti navigace. V dalším kurzu uvidíte, že syntaxe pomocí `EntityDataSource` ovládacího prvku může také lišit od jiné ovládací prvky zdroje dat, filtrování, seskupení a řazení dat.
+Tím se dokončí Úvod k použití ovládacího prvku `EntityDataSource`. Práce s tímto ovládacím prvkem se obecně neliší od práce s jinými ovládacími prvky zdroje dat ASP.NET s tím rozdílem, že místo tabulek a sloupců odkazujete na entity a vlastnosti. Jedinou výjimkou je, když chcete získat přístup k vlastnostem navigace. V dalším kurzu uvidíte, že syntaxe, kterou používáte s ovládacím prvkem `EntityDataSource`, se může lišit od jiných ovládacích prvků zdroje dat při filtrování, seskupování a řazení dat.
 
 > [!div class="step-by-step"]
 > [Předchozí](the-entity-framework-and-aspnet-getting-started-part-1.md)
-> [další](the-entity-framework-and-aspnet-getting-started-part-3.md)
+> [Další](the-entity-framework-and-aspnet-getting-started-part-3.md)

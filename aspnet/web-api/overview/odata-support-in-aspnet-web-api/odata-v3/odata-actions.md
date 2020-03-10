@@ -9,11 +9,11 @@ ms.assetid: 2d7b3aa2-aa47-4e6e-b0ce-3d65a1c6fe02
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/odata-actions
 msc.type: authoredcontent
 ms.openlocfilehash: ae8b23f0868f992cb2bbbf14ee3f7ac848501515
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600353"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78556355"
 ---
 # <a name="supporting-odata-actions-in-aspnet-web-api-2"></a>Podpora akcí OData ve webovém rozhraní API 2 ASP.NET
 
@@ -161,6 +161,6 @@ Také je nutné zadat funkci, která vrátí odkaz akce pro danou entitu. Tuto f
 
 Pokud je akce k dispozici, výraz lambda vrátí odkaz na akci. Serializátor OData obsahuje tento odkaz při serializaci entity. Pokud akce není k dispozici, funkce vrátí `null`.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 [Ukázka akcí OData](http://aspnet.codeplex.com/sourcecontrol/latest#Samples/WebApi/OData/v3/ODataActionsSample/)

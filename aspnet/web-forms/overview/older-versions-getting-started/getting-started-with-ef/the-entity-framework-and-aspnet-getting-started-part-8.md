@@ -1,132 +1,132 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8
-title: Začínáme s Entity Framework 4.0 Database First a technologie ASP.NET 4 webových formulářů – 8. část | Dokumentace Microsoftu
+title: Začínáme s Entity Framework 4,0 Database First a webovými formuláři ASP.NET 4 – část 8 | Microsoft Docs
 author: tdykstra
-description: Contoso University ukázkovou webovou aplikaci ukazuje, jak vytvořit aplikace webových formulářů ASP.NET pomocí Entity Frameworku. Ukázková aplikace je...
+description: Ukázková webová aplikace společnosti Contoso University ukazuje, jak pomocí Entity Framework vytvořit aplikace webových formulářů ASP.NET. Ukázková aplikace je...
 ms.author: riande
 ms.date: 12/03/2010
 ms.assetid: aaadd9bb-5508-448c-ad57-5497dff90e13
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8
 msc.type: authoredcontent
 ms.openlocfilehash: ff6a808dd501df8056c0fb0784a8e42e094d5db7
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132073"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78585909"
 ---
-# <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-8"></a>Začínáme s Entity Framework 4.0 Database First a 4 webových formulářů ASP.NET – 8. část
+# <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-8"></a>Začínáme s Entity Framework 4,0 Database First a webovými formuláři ASP.NET 4 – část 8
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-> Contoso University ukázkovou webovou aplikaci ukazuje, jak vytvořit aplikace webových formulářů ASP.NET pomocí Entity Framework 4.0 a Visual Studio 2010. Informace o této sérii kurzů, naleznete v tématu [z prvního kurzu této série](the-entity-framework-and-aspnet-getting-started-part-1.md)
+> Ukázková webová aplikace společnosti Contoso University ukazuje, jak pomocí Entity Framework 4,0 a sady Visual Studio 2010 vytvářet aplikace webových formulářů ASP.NET. Informace o řadě kurzů najdete v [prvním kurzu v řadě](the-entity-framework-and-aspnet-getting-started-part-1.md) .
 
-## <a name="using-dynamic-data-functionality-to-format-and-validate-data"></a>Funkce dynamických dat pro formátování a ověřování dat
+## <a name="using-dynamic-data-functionality-to-format-and-validate-data"></a>Formátování a ověření dat pomocí funkce dynamických dat
 
-V předchozím kurzu jste implementovali uložené procedury. Tomto kurzu se dozvíte, jak mohou funkci Dynamická Data poskytuje následující výhody:
+V předchozím kurzu jste implementovali uložené procedury. V tomto kurzu se dozvíte, jak může funkce dynamických dat poskytovat následující výhody:
 
-- Pole jsou automaticky formátovat k zobrazení na základě jeho datového typu.
-- Pole se automaticky ověří na základě jeho datového typu.
-- Přidat metadata do datového modelu můžete přizpůsobit chování formátování i ověřování. Když to uděláte, můžete přidat pravidla formátování a validace na jenom jednom místě a jste automaticky použít všude, kde máte přístup k poli pomocí dynamické databázové ovládací prvky.
+- Pole jsou automaticky formátována pro zobrazení na základě jejich datového typu.
+- Pole se automaticky ověřují na základě jejich datového typu.
+- Do datového modelu můžete přidat metadata pro přizpůsobení formátování a chování ověřování. Když to uděláte, můžete přidat pravidla formátování a ověřování na jednom místě a automaticky se použije všude, kde máte přístup k polím pomocí dynamických ovládacích prvků dat.
 
-Pokud chcete zobrazit, jak to funguje, změníte ovládací prvky, které použijete k zobrazení a úprava polí v existujícím *Students.aspx* stránky a přidejte formátování i ověřování metadat na pole name a date `Student` typu entity.
+Chcete-li zjistit, jak to funguje, změňte ovládací prvky, které slouží k zobrazení a úpravě polí na stávající stránce *students. aspx* , a přidejte metadata formátování a ověření do polí název a datum pro `Student` typ entity.
 
 [![Image01](the-entity-framework-and-aspnet-getting-started-part-8/_static/image2.png)](the-entity-framework-and-aspnet-getting-started-part-8/_static/image1.png)
 
-## <a name="using-dynamicfield-and-dynamiccontrol-controls"></a>Použití objektu DynamicControl ovládací prvky a DynamicField
+## <a name="using-dynamicfield-and-dynamiccontrol-controls"></a>Používání ovládacích prvků DynamicField a objektu DynamicControl
 
-Otevřít *Students.aspx* stránku a `StudentsGridView` nahraďte ovládací prvek **název** a **datum registrace** `TemplateField` prvky s následující kód:
+Otevřete stránku *students. aspx* a v ovládacím prvku `StudentsGridView` nahraďte **název** a **Datum registrace** `TemplateField` prvky následujícím kódem:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-8/samples/sample1.aspx)]
 
-Tento kód používá `DynamicControl` řídí místo `TextBox` a `Label` ovládacích prvků v studenta šablony pole pro název serveru a používá `DynamicField` ovládací prvek pro datum registrace. Nejsou zadány žádné řetězce formátu.
+Tento kód používá ovládací prvky `DynamicControl` místo `TextBox` a ovládací prvky `Label` v poli Šablona názvu studenta a pro datum zápisu používá ovládací prvek `DynamicField`. Nejsou zadány žádné formátovací řetězce.
 
-Přidat `ValidationSummary` řídit po `StudentsGridView` ovládacího prvku.
+Přidejte ovládací prvek `ValidationSummary` za ovládací prvek `StudentsGridView`.
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-8/samples/sample2.aspx)]
 
-V `SearchGridView` nahradit kód pro ovládací prvek **název** a **datum registrace** sloupců, jako jste to udělali v `StudentsGridView` řídit, s výjimkou vynechat, nechte `EditItemTemplate` elementu. `Columns` Elementu `SearchGridView` ovládací prvek nyní obsahuje následující kód:
+V ovládacím prvku `SearchGridView` nahraďte značky pro sloupce **název** a **Datum zápisu** stejně jako v ovládacím prvku `StudentsGridView`, s výjimkou vynechat prvek `EditItemTemplate`. Prvek `Columns` ovládacího prvku `SearchGridView` nyní obsahuje následující kód:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-8/samples/sample3.aspx)]
 
-Otevřít *Students.aspx.cs* a přidejte následující `using` – příkaz:
+Otevřete *students.aspx.cs* a přidejte následující příkaz `using`:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-8/samples/sample4.cs)]
 
-Přidání obslužné rutiny pro stránky `Init` události:
+Přidejte obslužnou rutinu pro událost `Init` stránky:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-8/samples/sample5.cs)]
 
-Tento kód určuje, jestli Dynamická Data poskytne formátování i ověřování v těchto ovládacích prvků vázaných na data pro pole `Student` entity. Pokud se zobrazí chybová zpráva jako v následujícím příkladu, při spuštění stránky, obvykle to znamená, jste zapomněli volat `EnableDynamicData` metoda ve `Page_Init`:
+Tento kód určuje, že dynamická data budou poskytovat formátování a ověřování v těchto ovládacích prvcích vázaných na data pro pole `Student` entitu. Pokud se zobrazí chybová zpráva podobná následujícímu příkladu při spuštění stránky, obvykle znamená, že jste zapomněli volat metodu `EnableDynamicData` v `Page_Init`:
 
 `Could not determine a MetaTable. A MetaTable could not be determined for the data source 'StudentsEntityDataSource' and one could not be inferred from the request URL.`
 
-Spuštění stránky.
+Spusťte stránku.
 
 [![Image03](the-entity-framework-and-aspnet-getting-started-part-8/_static/image4.png)](the-entity-framework-and-aspnet-getting-started-part-8/_static/image3.png)
 
-V **datum registrace** sloupce, čas se zobrazí spolu s datem, protože je vlastnost typu `DateTime`. Opravíte to později.
+Ve sloupci **Datum zápisu** se zobrazí čas společně s datem, protože typ vlastnosti je `DateTime`. Později to opravíte.
 
-Nyní Všimněte si, dynamická Data automaticky poskytuje základní data ověření. Klikněte například na **upravit**, zrušte zaškrtnutí pole data, klikněte na tlačítko **aktualizace**, a uvidíte, že dynamických dat automaticky provede to povinné pole. protože hodnota není s možnou hodnotou Null v datovém modelu. Na stránce se zobrazí hvězdička po pole a chybovou zprávu ve `ValidationSummary` ovládacího prvku:
+Prozatím si všimněte, že dynamická data automaticky poskytují základní ověření dat. Klikněte například na **Upravit**, zrušte zaškrtnutí políčka datum, klikněte na **aktualizovat**a uvidíte, že dynamická data automaticky vytvoří toto povinné pole, protože v datovém modelu se nepovoluje hodnota null. Stránka zobrazuje hvězdičku za polem a chybovou zprávu v ovládacím prvku `ValidationSummary`:
 
 [![Image05](the-entity-framework-and-aspnet-getting-started-part-8/_static/image6.png)](the-entity-framework-and-aspnet-getting-started-part-8/_static/image5.png)
 
-Může vynechat `ValidationSummary` ovládací prvek, protože můžete také podržíte ukazatel myši nad na hvězdičku chybová zpráva:
+Můžete vynechat ovládací prvek `ValidationSummary`, protože můžete také umístit ukazatel myši na hvězdičku, aby se zobrazila chybová zpráva:
 
 [![Image06](the-entity-framework-and-aspnet-getting-started-part-8/_static/image8.png)](the-entity-framework-and-aspnet-getting-started-part-8/_static/image7.png)
 
-Dynamická Data také ověří data zadaná v **datum registrace** pole je platné datum:
+Dynamická data také ověří, že data zadaná v poli **Datum registrace** jsou platné datum:
 
 [![Image04](the-entity-framework-and-aspnet-getting-started-part-8/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-8/_static/image9.png)
 
-Jak vidíte, toto je obecné chybové zprávy. V další části uvidíte, jak přizpůsobit zprávy stejně jako ověřování a formátování pravidla.
+Jak vidíte, jedná se o obecnou chybovou zprávu. V další části se dozvíte, jak přizpůsobit zprávy a také pravidla pro ověřování a formátování.
 
 ## <a name="adding-metadata-to-the-data-model"></a>Přidání metadat do datového modelu
 
-Obvykle budete chtít přizpůsobit funkce poskytované službou Dynamická Data. Například můžete změnit způsob zobrazení dat a obsahu chybové zprávy. Obvykle také přizpůsobíte data ověřovacích pravidel poskytnout více funkcí, než jaké poskytuje dynamických dat automaticky na základě typu dat. K tomuto účelu vytvoříte částečné třídy, které odpovídají typy entit.
+Obvykle chcete přizpůsobit funkce poskytované dynamickými daty. Můžete například změnit způsob zobrazení dat a obsah chybových zpráv. Pravidla pro ověřování dat se obvykle přizpůsobují tak, aby poskytovala více funkcí, než jaká dynamická data poskytuje automaticky na základě datových typů. K tomu je třeba vytvořit dílčí třídy, které odpovídají typům entit.
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem myši **ContosoUniversity** projekt, vyberte **přidat odkaz**a přidejte odkaz na `System.ComponentModel.DataAnnotations`.
+V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **ContosoUniversity** , vyberte možnost **Přidat odkaz**a přidejte odkaz na `System.ComponentModel.DataAnnotations`.
 
 [![Image11](the-entity-framework-and-aspnet-getting-started-part-8/_static/image12.png)](the-entity-framework-and-aspnet-getting-started-part-8/_static/image11.png)
 
-V *DAL* složku, vytvořte nový soubor třídy, pojmenujte ho *Student.cs*a nahraďte kód šablony do něj následující kód.
+Ve složce *dal* vytvořte nový soubor třídy, pojmenujte ho *student.cs*a v něm nahraďte kód šablony následujícím kódem.
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-8/samples/sample6.cs)]
 
-Tento kód vytvoří částečnou třídu pro `Student` entity. `MetadataType` Použije pro tuto částečnou třídu Určuje třídu, která používáte k určení metadat. Metadata třída může mít libovolný název, ale pomocí "Metadat" a název entity je běžnou praxí.
+Tento kód vytvoří pro entitu `Student` částečnou třídu. Atribut `MetadataType` aplikovaný na tuto částečnou třídu identifikuje třídu, kterou používáte k určení metadat. Třída metadat může mít libovolný název, ale použití názvu entity plus "metadata" je běžný postup.
 
-Atributy použité na vlastnosti ve třídě metadat určit formátování, ověření, pravidla a chybové zprávy. Atributy uvedené v tomto poli mít následující výsledky:
+Atributy použité pro vlastnosti třídy metadata určují formátování, ověřování, pravidla a chybové zprávy. Zde uvedené atributy budou mít následující výsledky:
 
-- `EnrollmentDate` Zobrazí se jako datum (bez času).
-- Musí být obě pole Název 25 znaků nebo méně, a vlastní chybové zprávy je k dispozici.
-- Jsou požadovány obě pole název a vlastní chybové zprávy je k dispozici.
+- `EnrollmentDate` se zobrazí jako datum (bez času).
+- Obě pole název musí mít délku 25 nebo méně znaků a je k dispozici vlastní chybová zpráva.
+- Obě pole jména jsou povinná a vlastní chybová zpráva je k dispozici.
 
-Spustit *Students.aspx* stránku znovu nezobrazovat a uvidíte, že data se teď zobrazují bez časy:
+Spusťte znovu stránku *students. aspx* a uvidíte, že se data nyní zobrazují bez časů:
 
 [![Image08](the-entity-framework-and-aspnet-getting-started-part-8/_static/image14.png)](the-entity-framework-and-aspnet-getting-started-part-8/_static/image13.png)
 
-Upravit řádek a zkuste vymažte hodnoty v poli název. Hvězdičky označující chyby pole se zobrazí, co nejdříve nechte pole, před kliknutím na **aktualizace**. Po kliknutí na **aktualizace**, na stránce se zobrazí zadaný text chybové zprávy.
+Upravte řádek a pokuste se vymazat hodnoty v polích název. Hvězdičky indikující chyby pole se zobrazí hned po opuštění pole, než kliknete na tlačítko **aktualizovat**. Po kliknutí na možnost **aktualizovat**se na stránce zobrazí text chybové zprávy, kterou jste zadali.
 
 [![Image10](the-entity-framework-and-aspnet-getting-started-part-8/_static/image16.png)](the-entity-framework-and-aspnet-getting-started-part-8/_static/image15.png)
 
-Zkuste zadat názvy, které jsou maximálně 25 znaků, klikněte na tlačítko **aktualizace**, a na stránce se zobrazí zadaný text chybové zprávy.
+Zkuste zadat názvy, které jsou delší než 25 znaků, klikněte na **aktualizovat**a na stránce se zobrazí text chybové zprávy, kterou jste zadali.
 
 [![Image09](the-entity-framework-and-aspnet-getting-started-part-8/_static/image18.png)](the-entity-framework-and-aspnet-getting-started-part-8/_static/image17.png)
 
-Teď, když jste nastavili tato pravidla formátování i ověřování v metadatech datového modelu, pravidla se automaticky použijí na každou stránku, která zobrazí nebo umožňuje, aby změny těchto polí, tak dlouho, dokud používáte `DynamicControl` nebo `DynamicField` ovládacích prvků. To snižuje množství redundantní kód, který musíte napsat, takže programování a testování jednodušší a zajišťuje, že data formátování i ověřování jsou konzistentní vzhledem k aplikacím v celé aplikaci.
+Teď, když jste nastavili tato pravidla formátování a ověřování v metadatech datového modelu, pravidla se automaticky použijí na všech stránkách, které zobrazují nebo povolují změny těchto polí, pokud použijete ovládací prvky `DynamicControl` nebo `DynamicField`. Tím se sníží množství redundantního kódu, který musíte napsat, což usnadňuje programování a testování, a zajišťuje, aby formátování a ověřování dat bylo konzistentní v celé aplikaci.
 
 ## <a name="more-information"></a>Další informace
 
-Tím končí této sérii kurzů na Začínáme s Entity Framework. Další zdroje vám pomůžou získat informace tom, jak používat rozhraní Entity Framework, pokračujte [z prvního kurzu další Entity Framework sérii](../continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md) nebo naleznete na následujících stránkách:
+Tím se tato série kurzů dokončí Začínáme Entity Framework. Další materiály, které vám pomůžou naučit se používat Entity Framework, najdete [v prvním kurzu v další Entity Framework řadě kurzů](../continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md) nebo na následujících webech:
 
-- [Entity Framework – nejčastější dotazy](http://www.ef-faq.org/introduction.html)
+- [Nejčastější dotazy k Entity Framework](http://www.ef-faq.org/introduction.html)
 - [Blog týmu Entity Framework](https://blogs.msdn.com/b/adonet/)
 - [Entity Framework v knihovně MSDN](https://msdn.microsoft.com/library/bb399572.aspx)
-- [Entity Framework v datovém centru pro vývojáře MSDN](https://msdn.microsoft.com/data/ef.aspx)
-- [Přehled ovládacího prvku EntityDataSource webového serveru v knihovně MSDN](https://msdn.microsoft.com/library/cc488502.aspx)
-- [Ovládací prvek EntityDataSource reference k rozhraní API v knihovně MSDN](https://msdn.microsoft.com/library/system.web.ui.webcontrols.entitydatasource.aspx)
+- [Entity Framework v centru pro vývojáře dat MSDN](https://msdn.microsoft.com/data/ef.aspx)
+- [Přehled ovládacího prvku webového serveru EntityDataSource v knihovně MSDN](https://msdn.microsoft.com/library/cc488502.aspx)
+- [Odkaz na rozhraní API ovládacího prvku EntityDataSource v knihovně MSDN](https://msdn.microsoft.com/library/system.web.ui.webcontrols.entitydatasource.aspx)
 - [Entity Framework fóra na webu MSDN](https://social.msdn.microsoft.com/forums/adodotnetentityframework/)
-- [Julie Lerman blogu](http://thedatafarm.com/blog/)
+- [Blog Julie Lerman](http://thedatafarm.com/blog/)
 
 > [!div class="step-by-step"]
 > [Předchozí](the-entity-framework-and-aspnet-getting-started-part-7.md)

@@ -9,11 +9,11 @@ ms.assetid: 14d9aa1b-4dca-43a0-aa9d-a6e891fee019
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 9bb39712855c37f5cbcbb447f7691e9451b8dc92
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74641998"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78571846"
 ---
 # <a name="nested-master-pages-vb"></a>Vložené hlavní stránky (VB)
 
@@ -232,7 +232,7 @@ Teď je potřeba mít existující stránky obsahu v oddílu pro správu, ale mu
 
 [!code-vb[Main](nested-master-pages-vb/samples/sample12.vb)]
 
-Na:
+Komu:
 
 [!code-vb[Main](nested-master-pages-vb/samples/sample13.vb)]
 
@@ -252,7 +252,7 @@ Aby bylo možné tuto chybu opravit, potřebujeme, aby třída `AdminNested.mast
 
 [!code-vb[Main](nested-master-pages-vb/samples/sample14.vb)]
 
-Na:
+Komu:
 
 [!code-vb[Main](nested-master-pages-vb/samples/sample15.vb)]
 
@@ -292,7 +292,7 @@ Při této změně se výběr hlavní stránky uživatele přenese do oddílu Sp
 
 **Obrázek 13**: stránka vnořené správy používá hlavní stránku nejvyšší úrovně vybranou uživatelem ([kliknutím zobrazíte obrázek v plné velikosti).](nested-master-pages-vb/_static/image39.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Vzhledem k tomu, jak můžou stránky obsahu navazovat vazby na stránku předlohy, je možné vytvořit vnořené stránky předlohy s vazbou podřízené stránky předlohy na nadřazenou stránku předlohy. Podřízená stránka předlohy může definovat ovládací prvky obsahu pro každé z jejích nadřazených elementů ContentPlaceHolder; pak může do těchto ovládacích prvků obsahu přidat vlastní ovládací prvky ContentPlaceHolder (stejně jako jiné značky). Vnořené stránky předlohy jsou poměrně užitečné ve velkých webových aplikacích, kde všechny stránky sdílí vzhled a atmosféru, ale některé oddíly lokality vyžadují jedinečné vlastní nastavení.
 

@@ -1,128 +1,128 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-5
-title: Začínáme s Entity Framework 4.0 Database First a technologie ASP.NET 4 webových formulářů – část 5 | Dokumentace Microsoftu
+title: Začínáme s Entity Framework 4,0 Database First a webovými formuláři ASP.NET 4 – část 5 | Microsoft Docs
 author: tdykstra
-description: Contoso University ukázkovou webovou aplikaci ukazuje, jak vytvořit aplikace webových formulářů ASP.NET pomocí Entity Frameworku. Ukázková aplikace je...
+description: Ukázková webová aplikace společnosti Contoso University ukazuje, jak pomocí Entity Framework vytvořit aplikace webových formulářů ASP.NET. Ukázková aplikace je...
 ms.author: riande
 ms.date: 12/03/2010
 ms.assetid: 24ad4379-3fb2-44dc-ba59-85fe0ffcb2ae
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-5
 msc.type: authoredcontent
 ms.openlocfilehash: 75328e67abb4295b619cac5423a9eb970942fff7
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133116"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78527998"
 ---
-# <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-5"></a>Začínáme s Entity Framework 4.0 Database First a 4 webových formulářů ASP.NET – 5. část
+# <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-5"></a>Začínáme s Entity Framework 4,0 Database First a webovými formuláři ASP.NET 4 – část 5
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-> Contoso University ukázkovou webovou aplikaci ukazuje, jak vytvořit aplikace webových formulářů ASP.NET pomocí Entity Framework 4.0 a Visual Studio 2010. Informace o této sérii kurzů, naleznete v tématu [z prvního kurzu této série](the-entity-framework-and-aspnet-getting-started-part-1.md)
+> Ukázková webová aplikace společnosti Contoso University ukazuje, jak pomocí Entity Framework 4,0 a sady Visual Studio 2010 vytvářet aplikace webových formulářů ASP.NET. Informace o řadě kurzů najdete v [prvním kurzu v řadě](the-entity-framework-and-aspnet-getting-started-part-1.md) .
 
-## <a name="working-with-related-data-continued"></a>Práce se souvisejícími daty, pokračuje se
+## <a name="working-with-related-data-continued"></a>Práce se souvisejícími daty – pokračování
 
-V předchozím kurzu jste začali používat `EntityDataSource` ovládací prvek pro práci s související data. Zobrazit více úrovní hierarchie a upravovat data v navigační vlastnosti. V tomto kurzu budete dál pracovat se souvisejícími daty přidáním a odstraněním relace a tak, že přidáte novou entitu, která má vztah k existující entity.
+V předchozím kurzu jste začali používat ovládací prvek `EntityDataSource` pro práci se souvisejícími daty. Zobrazili jste více úrovní hierarchie a upravili data ve vlastnostech navigace. V tomto kurzu budete dál pracovat se souvisejícími daty přidáním a odstraněním relací a přidáním nové entity, která má relaci k existující entitě.
 
-Vytvoříte stránky, která přidá kurzů, které jsou přiřazeny k oddělení. Jako vodítko použijte oddělení ještě neexistuje, a když vytvoříte nový kurz, ve stejnou dobu budete vytvoříte vztah mezi ním a existující oddělení.
+Vytvoříte stránku, která přidá kurzy přiřazené k oddělením. Tato oddělení už existují a při vytváření nového kurzu zároveň navážete vztah mezi ním a stávajícím oddělením.
 
 [![Image02](the-entity-framework-and-aspnet-getting-started-part-5/_static/image2.png)](the-entity-framework-and-aspnet-getting-started-part-5/_static/image1.png)
 
-Také vytvoříte stránky, která funguje s relací many-to-many přiřazením instruktorem kurzu (přidání relace mezi dvěma entitami, které vyberete) nebo jejich odebrání instruktorem kurz (odstranit vztah mezi dvěma entitami, které jste Výběr). V databázi, přidání relace mezi instruktorem a kurzu výsledky na novém řádku, které se přidávají do `CourseInstructor` přidružení tabulky; odebrání relace zahrnuje odstranění řádku ze `CourseInstructor` přidružení tabulky. Však lze provést v Entity Framework nastavením vlastnosti navigace, bez ohledu `CourseInstructor` explicitně tabulky.
+Vytvoříte také stránku, která pracuje s relací m:n, a to přiřazením instruktora k kurzu (přidáním vztahu mezi dvěma entitami, které vyberete) nebo odebráním instruktora z kurzu (odebráním relace mezi dvěma entitami, které jste Vyberte). V databázi se při přidání vztahu mezi instruktorem a kurzem přidá nový řádek, který se přidá do tabulky přidružení `CourseInstructor`. odebrání relace zahrnuje odstranění řádku z tabulky přidružení `CourseInstructor`. Nicméně to provedete v Entity Framework nastavením vlastností navigace, aniž by bylo třeba explicitně odkazovat na tabulku `CourseInstructor`.
 
 [![Image01](the-entity-framework-and-aspnet-getting-started-part-5/_static/image4.png)](the-entity-framework-and-aspnet-getting-started-part-5/_static/image3.png)
 
-## <a name="adding-an-entity-with-a-relationship-to-an-existing-entity"></a>Přidání Entity se vztahem k existující Entity
+## <a name="adding-an-entity-with-a-relationship-to-an-existing-entity"></a>Přidání entity s relací s existující entitou
 
-Vytvoření nové webové stránky s názvem *CoursesAdd.aspx* , která používá *Site.Master* stránku předlohy a přidejte následující kód k `Content` ovládací prvek s názvem `Content2`:
+Vytvořte novou webovou stránku s názvem *CoursesAdd. aspx* , která používá hlavní stránku *Web. Master* , a přidejte následující kód do ovládacího prvku `Content` s názvem `Content2`:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-5/samples/sample1.aspx)]
 
-Tento kód vytvoří `EntityDataSource` ovládací prvek, který vybere kurzů, které, který umožňuje vložení a který určuje obslužnou rutinu pro `Inserting` událostí. Obslužná rutina budete používat k aktualizaci `Department` vlastnost navigace, když je nový `Course` vytvořené entity.
+Tento kód vytvoří ovládací prvek `EntityDataSource`, který vybere kurzy, který umožňuje vkládání a určuje obslužnou rutinu pro událost `Inserting`. Obslužnou rutinu použijete k aktualizaci `Department` navigační vlastnosti při vytvoření nové entity `Course`.
 
-Kód vytvoří také `DetailsView` ovládací prvek a použít pro přidání nových `Course` entity. Kód používá vázaného pole pro `Course` vlastností entity. Je nutné zadat `CourseID` hodnotu, protože to není pole ID generované systémem. Místo toho je kurz číslo, které musí být zadán ručně, když se na kurz.
+Značka také vytvoří ovládací prvek `DetailsView`, který se má použít pro přidání nových entit `Course`. Označení používá vázaná pole pro `Course` vlastnosti entity. Je nutné zadat hodnotu `CourseID`, protože se nejedná o pole vygenerované systémem. Místo toho je číslo kurzu, které se musí zadat ručně při vytvoření kurzu.
 
-Použijete pole šablony pro `Department` navigační vlastnost protože navigační vlastnosti nelze použít s `BoundField` ovládacích prvků. Pole šablony obsahuje rozevírací seznam a vyberte oddělení. Rozevíracím seznamu je vázán na `Departments` nastavení s použitím entity `Eval` spíše než `Bind`, znovu vzhledem k tomu, že nelze přímo vázat vlastnosti navigace za účelem aktualizace je. Zadejte obslužnou rutinu pro `DropDownList` ovládacího prvku `Init` události tak, aby odkaz na ovládací prvek pro použití můžete ukládat tak, že kód, který aktualizuje `DepartmentID` cizího klíče.
+Použijete pole šablony pro `Department` navigační vlastnost, protože vlastnosti navigace nelze použít s ovládacími prvky `BoundField`. Pole Šablona poskytuje rozevírací seznam pro výběr oddělení. Rozevírací seznam je vázán na `Departments` sadu entit pomocí `Eval` místo `Bind`, protože nelze přímo svázat navigační vlastnosti, aby je bylo možné aktualizovat. Zadáte obslužnou rutinu pro událost `Init` ovládacího prvku `DropDownList`, abyste mohli uložit odkaz na ovládací prvek pro použití kódem, který aktualizuje `DepartmentID` cizí klíč.
 
-V *CoursesAdd.aspx.cs* hned za deklaraci částečné třídy přidat odkaz na pole třídy `DepartmentsDropDownList` ovládacího prvku:
+V *CoursesAdd.aspx.cs* hned po deklaraci částečné třídy přidejte pole třídy, které bude obsahovat odkaz na ovládací prvek `DepartmentsDropDownList`:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-5/samples/sample2.cs)]
 
-Přidání obslužné rutiny `DepartmentsDropDownList` ovládacího prvku `Init` události tak, aby uchováváte odkaz na ovládací prvek. To vám umožní získat hodnotu uživatel zadal a pomocí něj aktualizovat `DepartmentID` hodnotu `Course` entity.
+Přidejte obslužnou rutinu pro událost `Init` ovládacího prvku `DepartmentsDropDownList`, abyste mohli uložit odkaz na ovládací prvek. To vám umožní získat hodnotu, kterou uživatel zadal, a použít ho k aktualizaci `DepartmentID` hodnoty `Course` entity.
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-5/samples/sample3.cs)]
 
-Přidání obslužné rutiny `DetailsView` ovládacího prvku `Inserting` události:
+Přidejte obslužnou rutinu pro událost `Inserting` ovládacího prvku `DetailsView`:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-5/samples/sample4.cs)]
 
-Když uživatel klepne `Insert`, `Inserting` událost je aktivována před vložení nového záznamu. Získá kód v obslužné rutině `DepartmentID` z `DropDownList` řídit a použije ho k nastavení hodnoty, který se použije pro `DepartmentID` vlastnost `Course` entity.
+Když uživatel klikne na `Insert`, vyvolá se událost `Inserting` před vložením nového záznamu. Kód v obslužné rutině získá `DepartmentID` z ovládacího prvku `DropDownList` a použije ho k nastavení hodnoty, která bude použita pro vlastnost `DepartmentID` entity `Course`.
 
-Entity Framework se postará o přidání tohoto kurzu a `Courses` navigační vlastnost přidruženou `Department` entity. Přidá také oddělení `Department` vlastnost navigace `Course` entity.
+Entity Framework se postará o přidání tohoto kurzu do navigační vlastnosti `Courses` přidružené entity `Department`. Přidá také oddělení do navigační vlastnosti `Department` entity `Course`.
 
-Spuštění stránky.
+Spusťte stránku.
 
 [![Image02](the-entity-framework-and-aspnet-getting-started-part-5/_static/image6.png)](the-entity-framework-and-aspnet-getting-started-part-5/_static/image5.png)
 
-Zadejte ID, název, číslo kredity a vyberte oddělení a potom klikněte na tlačítko **vložit**.
+Zadejte ID, název, počet kreditů a vyberte oddělení a pak klikněte na **Vložit**.
 
-Spustit *Courses.aspx* stránky a vyberte stejného oddělení zobrazíte nové kurzu.
+Spusťte stránku *courses. aspx* a vyberte stejné oddělení, abyste viděli nový kurz.
 
 [![Image03](the-entity-framework-and-aspnet-getting-started-part-5/_static/image8.png)](the-entity-framework-and-aspnet-getting-started-part-5/_static/image7.png)
 
-## <a name="working-with-many-to-many-relationships"></a>Práce se vztahy m: N
+## <a name="working-with-many-to-many-relationships"></a>Práce s relacemi M:n
 
-Vztah mezi `Courses` sady entit a `People` sady entit je relace m: m. A `Course` entita má vlastnost navigace s názvem `People` , který může obsahovat nula, jeden nebo více souvisejících `Person` entity (představující Instruktoři přiřazené představuje kurzu). A `Person` entita má vlastnost navigace s názvem `Courses` , který může obsahovat nula, jeden nebo více souvisejících `Course` entity (představující kurzů představuje je přiřazen tento kurzů vedených). Jeden instruktorem mohou naučit více kurzů a jeden kurz může vedené instruktory více. V této části tohoto návodu budete přidávat a odebírat vztahy mezi `Person` a `Course` entity pomocí aktualizace vlastností navigace souvisejících entit.
+Vztah mezi `Courses` sadou entit a sadou entit `People` je relace m:n. `Course` entita obsahuje navigační vlastnost s názvem `People`, která může obsahovat nula, jednu nebo více souvisejících entit `Person` entit (představujících instruktory přiřazené k učení tohoto kurzu). A `Person` entita má vlastnost navigace nazvanou `Courses`, která může obsahovat nula, jednu nebo více souvisejících entit `Course` entit (představujících kurzy, které instruktor má přiřazený k výuce). Jeden instruktor může naučit několik kurzů a jeden kurz může být výukou více instruktorů. V této části návodu přidáte a odeberete relace mezi `Person` a `Course` entitou aktualizací vlastností navigace souvisejících entit.
 
-Vytvoření nové webové stránky s názvem *InstructorsCourses.aspx* , která používá *Site.Master* stránku předlohy a přidejte následující kód k `Content` ovládací prvek s názvem `Content2`:
+Vytvořte novou webovou stránku s názvem *InstructorsCourses. aspx* , která používá hlavní stránku *Web. Master* , a přidejte následující kód do ovládacího prvku `Content` s názvem `Content2`:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-5/samples/sample5.aspx)]
 
-Tento kód vytvoří `EntityDataSource` ovládací prvek, který načte název a `PersonID` z `Person` entity pro vyučující. A `DropDrownList` ovládací prvek vázán `EntityDataSource` ovládacího prvku. `DropDownList` Určuje obslužné rutiny pro ovládací prvek `DataBound` událostí. Pomocí této obslužné rutiny na databind dva rozevírací seznamy, které zobrazují kurzů.
+Tento kód vytvoří ovládací prvek `EntityDataSource`, který načte název a `PersonID` `Person` entit pro instruktory. Ovládací prvek `DropDrownList` je svázán s ovládacím prvkem `EntityDataSource`. Ovládací prvek `DropDownList` určuje obslužnou rutinu pro událost `DataBound`. Pomocí této obslužné rutiny provedete vázání dvou rozevíracích seznamů, které zobrazují kurzy.
 
-Kód vytvoří také následující skupiny ovládacích prvků pro použití pro přiřazení k vybraných kurzů vedených kurzu:
+Značka také vytvoří následující skupinu ovládacích prvků, které se použijí pro přiřazení kurzu k vybranému instruktorovi:
 
-- A `DropDownList` ovládací prvek pro výběr kurzu přiřazení. Tento ovládací prvek se vyplní kurzů, které nejsou přiřazeny k vybrané instruktorem.
-- A `Button` ovládacího prvku k zahájení přiřazení.
-- A `Label` ovládacího prvku se zobrazí chybová zpráva, pokud přiřazení selže.
+- `DropDownList` ovládací prvek pro výběr kurzu, který se má přiřadit Tento ovládací prvek se naplní kurzy, které aktuálně nejsou přiřazené k vybranému instruktorovi.
+- `Button` ovládací prvek pro zahájení přiřazení.
+- `Label` ovládací prvek pro zobrazení chybové zprávy v případě, že přiřazení se nezdařilo.
 
-Nakonec kód také vytvoří skupinu ovládacích prvků pro použití pro odebrání vybraných kurzů vedených kurzu.
+Nakonec značka vytvoří také skupinu ovládacích prvků, které se použijí pro odebrání kurzu od vybraného instruktora.
 
-V *InstructorsCourses.aspx.cs*, přidejte using – příkaz:
+V *InstructorsCourses.aspx.cs*přidejte příkaz using:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-5/samples/sample6.cs)]
 
-Přidejte metodu pro naplnění dva rozevírací seznamy, které zobrazují kurzy:
+Přidejte metodu pro vyplňování dvou rozevíracích seznamů, které zobrazují kurzy:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-5/samples/sample7.cs)]
 
-Tento kód získá všechny kurzy od `Courses` entity nastavení a získá kurzy od `Courses` vlastnost navigace `Person` entity pro vybrané instruktorem. Poté určí, které kurzy jsou přiřazeny k této instruktorem a odpovídajícím způsobem naplní rozevírací seznamy.
+Tento kód získá všechny kurzy ze sady entit `Courses` a získá kurzy z navigační vlastnosti `Courses` entity `Person` pro vybraného instruktora. Pak určuje, které kurzy jsou přiřazeny k tomuto instruktorovi a odpovídajícím způsobem naplní rozevírací seznamy.
 
-Přidání obslužné rutiny `Assign` tlačítka `Click` události:
+Přidejte obslužnou rutinu pro událost `Click` `Assign`ho tlačítka:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-5/samples/sample8.cs)]
 
-Tento kód získá `Person` entity pro vybrané instruktorem, získá `Course` entity pro vybraný kurz a přidá vybrané kurz `Courses` navigační vlastnost kurzů vedených `Person` entity. Pak uloží změny do databáze a znovu naplní rozevírací seznamy, takže výsledky uvidíte okamžitě.
+Tento kód získá `Person` entitu pro vybraného instruktora, získá `Course` entitu pro vybraný kurz a přidá vybraný kurz do navigační vlastnosti `Courses` entity `Person` instruktoru. Poté uloží změny do databáze a znovu naplní rozevírací seznamy, takže výsledky lze zobrazit okamžitě.
 
-Přidání obslužné rutiny `Remove` tlačítka `Click` události:
+Přidejte obslužnou rutinu pro událost `Click` `Remove`ho tlačítka:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-5/samples/sample9.cs)]
 
-Tento kód získá `Person` entity pro vybrané instruktorem, získá `Course` entity pro vybraný kurz a také odebere vybraného kurzu z `Person` entity `Courses` navigační vlastnost. Pak uloží změny do databáze a znovu naplní rozevírací seznamy, takže výsledky uvidíte okamžitě.
+Tento kód získá `Person` entitu pro vybraného instruktora, získá `Course` entitu pro vybraný kurz a odebere vybraný kurz z `Courses` navigační vlastnosti entity `Person`. Poté uloží změny do databáze a znovu naplní rozevírací seznamy, takže výsledky lze zobrazit okamžitě.
 
-Přidejte kód, který `Page_Load` metodu, která zajišťuje chybové zprávy se nezobrazí, pokud se nezobrazí žádná chyba pro sestavu a přidejte obslužné rutiny pro `DataBound` a `SelectedIndexChanged` událostem Instruktoři rozevíracího seznamu k naplnění kurzy rozevírací seznamy:
+Přidejte kód do metody `Page_Load`, která zajistí, že chybové zprávy nejsou viditelné, pokud není k dispozici žádná chyba, a přidejte obslužné rutiny pro události `DataBound` a `SelectedIndexChanged` v rozevíracím seznamu instruktory k naplnění rozevíracích seznamů kurzů:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-5/samples/sample10.cs)]
 
-Spuštění stránky.
+Spusťte stránku.
 
 [![Image01](the-entity-framework-and-aspnet-getting-started-part-5/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-5/_static/image9.png)
 
-Vyberte instruktorem. <strong>Přiřadit kurz</strong> rozevíracím seznamu zobrazí kurzů, které kurzů vedených není naučit, a <strong>odebrat kurz</strong> rozevíracím seznamu zobrazí kurzů, které kurzů vedených je už přiřazený k. V <strong>přiřadit kurz</strong> Vyberte kurz a potom klikněte na tlačítko <strong>přiřadit</strong>. Kurz přesune <strong>odebrat kurz</strong> rozevíracího seznamu. Vyberte kurz v <strong>odebrat kurz</strong> části a klikněte na tlačítko <strong>odebrat</strong><em>.</em> Kurz přesune <strong>přiřadit kurz</strong> rozevíracího seznamu.
+Vyberte instruktora. V rozevíracím seznamu <strong>přiřadit kurz</strong> se zobrazí kurzy, které instruktor neučí, a v rozevíracím seznamu <strong>Odebrat kurz</strong> se zobrazí kurzy, ke kterým je instruktor již přiřazen. V části <strong>přiřadit kurz</strong> vyberte kurz a pak klikněte na <strong>přiřadit</strong>. Kurz se přesune do rozevíracího seznamu <strong>Odebrat kurz</strong> . V části <strong>Odebrat kurz</strong> vyberte kurz a klikněte na <strong>Odebrat</strong><em>.</em> Kurz se přesune do rozevíracího seznamu <strong>přiřadit kurz</strong> .
 
-Nyní jste viděli některé další způsoby, jak pracovat se souvisejícími daty. V následujícím kurzu se dozvíte, jak zlepšit udržovatelnosti vaší aplikace pomocí dědičnosti v datovém modelu.
+Už jste viděli několik dalších způsobů, jak pracovat se souvisejícími daty. V následujícím kurzu se dozvíte, jak pomocí dědičnosti v datovém modelu zlepšit udržovatelnost aplikace.
 
 > [!div class="step-by-step"]
 > [Předchozí](the-entity-framework-and-aspnet-getting-started-part-4.md)
-> [další](the-entity-framework-and-aspnet-getting-started-part-6.md)
+> [Další](the-entity-framework-and-aspnet-getting-started-part-6.md)

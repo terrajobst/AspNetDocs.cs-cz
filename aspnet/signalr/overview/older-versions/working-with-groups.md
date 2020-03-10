@@ -1,83 +1,83 @@
 ---
 uid: signalr/overview/older-versions/working-with-groups
-title: Práce se skupinami v knihovně SignalR 1.x | Dokumentace Microsoftu
+title: Práce se skupinami v nástroji Signal 1. x | Microsoft Docs
 author: bradygaster
-description: Toto téma popisuje, jak zachovat informace o členství ve skupině pomocí rozhraní API pro rozbočovač.
+description: Toto téma popisuje, jak zachovat informace o členství ve skupinách pomocí rozhraní API centra.
 ms.author: bradyg
 ms.date: 10/21/2013
 ms.assetid: 22929efd-68c9-4609-b76d-f8ba42fda01e
 msc.legacyurl: /signalr/overview/older-versions/working-with-groups
 msc.type: authoredcontent
 ms.openlocfilehash: 5f50dc162d6cdcfbf2261e6a751f5f99078d5c54
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113699"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78579364"
 ---
 # <a name="working-with-groups-in-signalr-1x"></a>Práce se skupinami v knihovně SignalR 1.x
 
-podle [Patrick Fletcher](https://github.com/pfletcher), [Tom FitzMacken](https://github.com/tfitzmac)
+autorem [Fletcher](https://github.com/pfletcher), který [FitzMacken](https://github.com/tfitzmac)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> Toto téma popisuje, jak přidat uživatele do skupin a zachovat informace o členství ve skupině.
+> Toto téma popisuje, jak přidat uživatele do skupin a zachovat informace o členství ve skupinách.
 
 ## <a name="overview"></a>Přehled
 
-Skupinami v knihovně SignalR poskytuje metodu pro vysílání zpráv do zadaného podmnožiny připojených klientů. Skupina může mít libovolný počet klientů a klienta můžete mít libovolný počet skupin. Není nutné explicitně vytvářet skupiny. V důsledku toho skupina se automaticky vytvoří při prvním volání Groups.Add zadáte její název a se odstraní, když odeberete poslední připojení z členství v ní. Úvod do používání skupin najdete v tématu [Správa členství ve skupině ze třídy rozbočovače](index.md) v rozhraní API rozbočovače – Příručka pro Server.
+Skupiny v nástroji Signal poskytují metodu pro vysílání zpráv pro zadané podmnožiny připojených klientů. Skupina může mít libovolný počet klientů a klient může být členem libovolného počtu skupin. Nemusíte explicitně vytvářet skupiny. V důsledku toho se skupina automaticky vytvoří při prvním zadání názvu ve volání skupin. Add a odstraní se, když odeberete Poslední připojení z členství v něm. Úvod k používání skupin najdete v tématu [Správa členství ve skupinách z třídy hub](index.md) v průvodci servery rozhraní API centra.
 
-Neexistuje žádné rozhraní API pro získání seznamu členství ve skupinách nebo seznam skupin. Funkce SignalR odesílá zprávy do klientů a skupin založené na modelu pub/sub a serveru neumožňuje spravovat seznam skupin nebo členství ve skupinách. To pomáhá maximalizovat škálovatelnost, protože pokaždé, když přidáte uzel do webové farmy, jakýkoli stav, který udržuje SignalR musí být rozšířena na nový uzel.
+Neexistuje žádné rozhraní API pro získání seznamu členství ve skupině nebo seznamu skupin. Signal odesílá zprávy klientům a skupinám na základě modelu Pub/sub a server neudržuje seznamy skupin nebo členství ve skupinách. To pomáhá maximalizovat škálovatelnost, protože kdykoli přidáte uzel do webové farmy, všechny stavy, které tento signál udržuje, musí být šířeny do nového uzlu.
 
-Při přidávání uživatele do skupiny použití `Groups.Add` metoda, uživatel dostane zprávy přesměruje do této skupiny pro dobu trvání aktuálního připojení, ale nad rámec aktuální připojení není trvalý členství uživatele ve skupině. Pokud chcete trvale uchovávat informace o skupinách a členství ve skupině, musí tato data ukládat v úložišti, jako jsou databáze nebo Azure table storage. Potom pokaždé, když uživatel připojí k vaší aplikaci načíst z úložiště skupiny, které uživatel patří a ručně přidejte tohoto uživatele do těchto skupin.
+Když přidáte uživatele do skupiny pomocí metody `Groups.Add`, uživatel obdrží zprávy směrované do této skupiny po dobu trvání aktuálního připojení, ale členství uživatele v této skupině není trvale po aktuálním připojení. Pokud chcete trvale uchovávat informace o skupinách a členství ve skupinách, musíte tato data uložit v úložišti, jako je databáze nebo Azure Table Storage. Pak se pokaždé, když se uživatel připojí k vaší aplikaci, načte z úložiště, do kterého uživatel patří, a ručně do těchto skupin přidá tohoto uživatele.
 
-Když znovu připojovat po dočasné přerušení, uživatel automaticky znovu připojí dříve přiřazené skupiny. Automatické opětovné připojování ke rozbočovačů skupinu platí pouze při opětovné připojení, ne už při vytvoření nového připojení. Digitálně podepsaný token je předán z klienta, který obsahuje seznam dříve přiřazené skupiny. Pokud chcete ověřit, zda uživatel patří do požadované skupiny, výchozí chování můžete přepsat.
+Po opětovném připojení po dočasném přerušení se uživatel automaticky znovu připojí k dříve přiřazeným skupinám. Automatické opětovné připojení skupiny platí pouze při opětovném připojení, nikoli při vytváření nového připojení. Z klienta, který obsahuje seznam dříve přiřazených skupin, se předává digitálně podepsaný token. Pokud chcete ověřit, jestli uživatel patří do požadovaných skupin, můžete přepsat výchozí chování.
 
 Toto téma obsahuje následující oddíly:
 
 - [Přidávání a odebírání uživatelů](#add)
 - [Volání členů skupiny](#call)
 - [Ukládání členství ve skupinách v databázi](#storedatabase)
-- [Ukládání členství ve skupině ve službě Azure table storage](#storeazuretable)
-- [Ověřování členství ve skupině při obnovování spojení](#verify)
+- [Ukládání členství ve skupinách ve službě Azure Table Storage](#storeazuretable)
+- [Ověřování členství ve skupině při opětovném připojení](#verify)
 
 <a id="add"></a>
 
 ## <a name="adding-and-removing-users"></a>Přidávání a odebírání uživatelů
 
-Chcete-li přidat nebo odebrat uživatele ze skupiny, zavolejte [přidat](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.add(v=vs.111).aspx) nebo [odebrat](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.remove(v=vs.111).aspx) metody a předejte jí id uživatele, připojení a názvu skupiny jako parametry. Není nutné ručně odebrat uživatele ze skupiny po ukončení připojení.
+Chcete-li přidat nebo odebrat uživatele ze skupiny, zavolejte metody [Add](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.add(v=vs.111).aspx) nebo [Remove](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.remove(v=vs.111).aspx) a jako parametry předejte ID připojení uživatele a název skupiny. Po ukončení připojení není nutné ručně odebrat uživatele ze skupiny.
 
-Následující příklad ukazuje `Groups.Add` a `Groups.Remove` metod používaných v metodách rozbočovače.
+Následující příklad ukazuje metody `Groups.Add` a `Groups.Remove` použité v metodách hub.
 
 [!code-csharp[Main](working-with-groups/samples/sample1.cs?highlight=5,10)]
 
-`Groups.Add` a `Groups.Remove` metody spustit asynchronně.
+Metody `Groups.Add` a `Groups.Remove` provádějí asynchronně.
 
-Pokud chcete přidat klienta do skupiny a okamžitě odešle zprávu do klienta pomocí skupiny, budete muset Ujistěte se, že metoda Groups.Add skončí jako první. Následující příklady kódu ukazují, jak to udělat, ji pomocí kódu, který funguje v rozhraní .NET 4.5 a pomocí kódu, který funguje v rozhraní .NET 4.
+Chcete-li přidat klienta do skupiny a okamžitě odeslat zprávu klientovi pomocí skupiny, je nutné zajistit, aby byla metoda groups. Add nejprve dokončena. Následující příklady kódu ukazují, jak to provést, pomocí kódu, který funguje v rozhraní .NET 4,5 a jeden pomocí kódu, který funguje v rozhraní .NET 4.
 
-#### <a name="asynchronous-net-45-example"></a>Asynchronní rozhraní .NET 4.5 Příklad
+#### <a name="asynchronous-net-45-example"></a>Příklad asynchronního rozhraní .NET 4,5
 
 [!code-csharp[Main](working-with-groups/samples/sample2.cs?highlight=1,3)]
 
-#### <a name="asynchronous-net-4-example"></a>Asynchronní rozhraní .NET 4 příklad
+#### <a name="asynchronous-net-4-example"></a>Příklad asynchronního rozhraní .NET 4
 
 [!code-csharp[Main](working-with-groups/samples/sample3.cs?highlight=3-4)]
 
-Obecně by neměla zahrnovat `await` při volání `Groups.Remove` metoda vzhledem k tomu, že id připojení, který se pokoušíte odebrat může nadále již nebudou dostupné. V takovém případě `TaskCanceledException` je vyvolána výjimka, jakmile vyprší časový limit žádosti. Pokud vaše aplikace musíte zajistit, že uživatel odebral ze skupiny před odesláním zprávy do skupiny, můžete přidat `await` před Groups.Remove a pak catch `TaskCanceledException` výjimku, která by mohla být vyvolána.
+Obecně platí, že byste neměli při volání metody `Groups.Remove` zahrnovat `await`, protože ID připojení, které se pokoušíte odebrat, možná nebude k dispozici. V takovém případě je `TaskCanceledException` vyvolána po vypršení časového limitu žádosti. Pokud vaše aplikace musí zajistit, aby byl uživatel ze skupiny odebraný před odesláním zprávy do skupiny, můžete přidat `await` před skupiny. odeberte a pak Zachyťte výjimku `TaskCanceledException`, která může být vyvolána.
 
 <a id="call"></a>
 
 ## <a name="calling-members-of-a-group"></a>Volání členů skupiny
 
-Odesílat zprávy do všech členů skupiny nebo pouze členové zadané skupiny, jak je znázorněno v následujícím příkladu.
+Můžete posílat zprávy všem členům skupiny nebo pouze určeným členům skupiny, jak je znázorněno v následujících příkladech.
 
-- **Všechny** připojených klientů v zadané skupině. 
+- **Všichni** připojení klienti v zadané skupině. 
 
     [!code-css[Main](working-with-groups/samples/sample4.css)]
-- Všechny připojené klienty v zadané skupině **s výjimkou určitých klientech**, identifikovaný podle ID připojení. 
+- Všechny připojené klienty v zadané skupině **s výjimkou určených klientů**identifikovaných podle ID připojení 
 
     [!code-csharp[Main](working-with-groups/samples/sample5.cs)]
-- Všechny připojené klienty v zadané skupině **s výjimkou volajícího klienta**. 
+- Všichni připojení klienti v zadané skupině **s výjimkou volajícího klienta**. 
 
     [!code-css[Main](working-with-groups/samples/sample6.css)]
 
@@ -85,38 +85,38 @@ Odesílat zprávy do všech členů skupiny nebo pouze členové zadané skupiny
 
 ## <a name="storing-group-membership-in-a-database"></a>Ukládání členství ve skupinách v databázi
 
-Následující příklady ukazují, jak uchovávat informace pro skupiny a uživatele v databázi. Můžete použít libovolný technologií přístupu dat; Následující příklad ukazuje, jak definovat modely s využitím rozhraní Entity Framework. Tyto modely entity odpovídají databázové tabulky a pole. Datová struktura se může značně lišit v závislosti na požadavcích vaší aplikace. Tento příklad obsahuje třídu s názvem `ConversationRoom` který bude jedinečný pro aplikaci, která umožňuje uživatelům připojit se k konverzací o různých tématům, jako jsou sportovní nebo zahrady. Tento příklad také zahrnuje třídu pro připojení. Třída připojení není nezbytně nutná pro sledování členství ve skupině, ale je často součástí robustní řešení pro sledování uživatelů.
+Následující příklady ukazují, jak uchovávat informace o skupinách a uživatelích v databázi. Můžete použít libovolnou technologii pro přístup k datům; Následující příklad však ukazuje, jak definovat modely pomocí Entity Framework. Tyto modely entit odpovídají tabulkám a polím databáze. Vaše datová struktura se může značně lišit v závislosti na požadavcích vaší aplikace. Tento příklad obsahuje třídu s názvem `ConversationRoom`, která by byla jedinečná pro aplikaci, která umožňuje uživatelům připojit se ke konverzaci o různých předmětech, jako je například sportovní nebo zahradnické. Tento příklad také obsahuje třídu pro připojení. Třída Connection není bezpodmínečně nutná pro sledování členství ve skupině, ale je často součástí robustního řešení pro sledování uživatelů.
 
 [!code-csharp[Main](working-with-groups/samples/sample7.cs)]
 
-Potom můžete v rozbočovači, načtěte informace o skupině a uživatele z databáze a ručně přidat uživatele do příslušných skupin. V příkladu neobsahuje kód pro sledování připojení uživatelů. V tomto příkladu `await` – klíčové slovo není použita před `Groups.Add` vzhledem k tomu, že zpráva se odešle okamžitě členy skupiny. Pokud chcete odeslat zprávu na všechny členy skupiny bezprostředně po přidání nového člena, chcete použít `await` – klíčové slovo, aby se zajistilo dokončení asynchronní operace.
+Pak můžete v centru získat informace o skupině a uživateli z databáze a ručně přidat uživatele do příslušných skupin. Příklad nezahrnuje kód pro sledování připojení uživatelů. V tomto příkladu není klíčové slovo `await` použito před `Groups.Add`, protože zpráva není odeslána přímo do členů skupiny. Pokud chcete všem členům skupiny poslat zprávu hned po přidání nového člena, budete chtít použít klíčové slovo `await`, abyste se ujistili, že se asynchronní operace dokončila.
 
 [!code-csharp[Main](working-with-groups/samples/sample8.cs)]
 
 <a id="storeazuretable"></a>
 
-## <a name="storing-group-membership-in-azure-table-storage"></a>Ukládání členství ve skupině ve službě Azure table storage
+## <a name="storing-group-membership-in-azure-table-storage"></a>Ukládání členství ve skupinách ve službě Azure Table Storage
 
-Použití Azure table storage k ukládání informací o skupině a uživatel je podobný používání databáze. Následující příklad ukazuje entitu tabulky, která uloží uživatelské jméno a název skupiny.
+Použití úložiště tabulek v Azure k ukládání informací o skupině a uživateli se podobá použití databáze. Následující příklad ukazuje entitu tabulky, která ukládá uživatelské jméno a název skupiny.
 
 [!code-csharp[Main](working-with-groups/samples/sample9.cs)]
 
-V centru načtete přiřazených skupin, když se uživatel připojí.
+V centru načtěte přiřazené skupiny při připojení uživatele.
 
 [!code-csharp[Main](working-with-groups/samples/sample10.cs)]
 
 <a id="verify"></a>
 
-## <a name="verifying-group-membership-when-reconnecting"></a>Ověřování členství ve skupině při obnovování spojení
+## <a name="verifying-group-membership-when-reconnecting"></a>Ověřování členství ve skupině při opětovném připojení
 
-Ve výchozím nastavení SignalR automaticky znovu přiřadí uživatele do příslušných skupin při obnovování spojení z dočasné přerušení, jako je například pokud je připojení vyřadit a znovu vytvořit předtím, než vyprší časový limit připojení. Informace o skupině pro daného uživatele je předán do tokenu při opětovné připojení, a tento token ověření na serveru. Informace o procesu ověření u některých uživatelů do skupin najdete v tématu [některých skupin při obnovování spojení](index.md).
+Ve výchozím nastavení Signal automaticky znovu přiřadí uživatele do příslušných skupin při opětovném připojení k dočasnému přerušení, například při přerušení připojení a opětovném navázání před vypršením časového limitu připojení. Informace o skupině uživatele se při opětovném připojení předávají do tokenu a tento token se ověří na serveru. Informace o procesu ověřování pro opětovné připojení uživatelů ke skupinám najdete v tématu opětovné připojení [skupin při opětovném připojení](index.md).
 
-Obecně platí abyste používali výchozí chování automaticky opětovné připojování ke rozbočovačů, že skupiny na znovu připojit. Funkce SignalR skupiny nejsou určeny jako vhodný mechanismus zabezpečení pro omezení přístupu k citlivým datům. Pokud aplikace musí zkontrolovat členství ve skupině uživatele při obnovování spojení, však můžete přepsat výchozí chování. Změna výchozího chování lze přidat zatížení do databáze protože členství ve skupině uživatele musí být načten pro každý opětovné připojení, a nikoli jen když se uživatel připojí.
+Obecně platí, že při opětovném připojení byste měli použít výchozí chování automaticky znovu připojit skupiny. Skupiny signalizace nejsou určeny jako mechanismus zabezpečení pro omezení přístupu k citlivým datům. Pokud ale vaše aplikace musí při opětovném připojení dvakrát ověřit členství uživatele ve skupině, můžete výchozí chování přepsat. Změna výchozího chování může do databáze přidat zatížení, protože členství uživatele ve skupině musí být načteno pro každé opětovné připojení, nikoli pouze při připojení uživatele.
 
-Pokud je nutné ověřit členství ve skupině na znovu připojit, vytvořte nový modul kanálu rozbočovače, který vrátí seznam přiřazených skupin, jak je znázorněno níže.
+Pokud je nutné ověřit členství ve skupině při opětovném připojení, vytvořte nový modul kanálu rozbočovače, který vrátí seznam přiřazených skupin, jak je uvedeno níže.
 
 [!code-csharp[Main](working-with-groups/samples/sample11.cs)]
 
-Poté přidejte modul do kanálu rozbočovače, jak je zdůrazněno níže.
+Pak tento modul přidejte do kanálu rozbočovače, jak je zvýrazněno níže.
 
 [!code-csharp[Main](working-with-groups/samples/sample12.cs?highlight=10)]

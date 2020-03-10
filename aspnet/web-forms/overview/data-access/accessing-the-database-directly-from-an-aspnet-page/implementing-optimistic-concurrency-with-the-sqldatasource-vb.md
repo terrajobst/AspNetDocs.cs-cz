@@ -9,11 +9,11 @@ ms.assetid: a8fa72ee-8328-4854-a419-c1b271772303
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 431734b5245c20ac840147cf0827fa7f8d1e4d17
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74597746"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78553016"
 ---
 # <a name="implementing-optimistic-concurrency-with-the-sqldatasource-vb"></a>Implementace optimistického řízení souběžnosti ovládacím prvkem SqlDataSource (VB)
 
@@ -183,7 +183,7 @@ Jak ukazuje obrázek 9, u těchto dvou obslužných rutin událostí se zobrazí
 
 **Obrázek 9**: zpráva se zobrazí na ploše narušení souběžnosti ([kliknutím zobrazíte obrázek v plné velikosti).](implementing-optimistic-concurrency-with-the-sqldatasource-vb/_static/image16.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Při vytváření webové aplikace, kde více souběžných uživatelů může upravovat stejná data, je důležité zvážit možnosti řízení souběžnosti. Ve výchozím nastavení webové ovládací prvky dat ASP.NET a ovládací prvky zdroje dat nevyužívají žádné řízení souběžnosti. Jak jsme viděli v tomto kurzu, implementace optimistického řízení souběžnosti se sadou SqlDataSource je relativně rychlá a jednoduchá. Třída SqlDataSource zpracovává většinu samotnému pro přidání rozšířených `WHERE` klauzulí do automaticky generovaných příkazů `UPDATE` a `DELETE`, ale existuje několik odlišností ve zpracování `NULL` hodnotových sloupců, jak je popsáno v části správné zpracování `NULL`ch hodnot.
 

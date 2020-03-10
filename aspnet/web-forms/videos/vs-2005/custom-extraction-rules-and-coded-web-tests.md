@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/vs-2005/custom-extraction-rules-and-coded-web-tests
-title: Vlastní pravidla pro extrakci a programové testy webu | Dokumentace Microsoftu
+title: Vlastní pravidla pro extrakci a kódované webové testy | Microsoft Docs
 author: rick-anderson
-description: Visual Studio Team System usnadňuje testování webové aplikace tak, že záznam interakce uživatele s aplikací a opakované přehrání znovu...
+description: Visual Studio Team System usnadňuje testování webové aplikace záznamem interakce uživatele s aplikací a následným opakovaným přehráním znovu...
 ms.author: riande
 ms.date: 02/26/2007
 ms.assetid: 7e2efe4c-8632-4d61-a82f-8e0bbd47c175
 msc.legacyurl: /web-forms/videos/vs-2005/custom-extraction-rules-and-coded-web-tests
 msc.type: video
 ms.openlocfilehash: 0cb3dafa7d0cd08de24633cf4caa7b6cc7bc4881
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59397016"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78574828"
 ---
 # <a name="custom-extraction-rules-and-coded-web-tests"></a>Vlastní pravidla pro extrakci a programové testy webu
 
-podle Eric Lee
+od Eric Novák
 
-Visual Studio Team System usnadňuje testování webové aplikace tak, že záznam interakce uživatele s aplikací a opakované přehrání zaznamenané interakce. Ale uživatelé neprovádějte obvykle stejné akce znovu a znovu. V tomto videu jsme zjistit, jak rozšířit a přizpůsobit testech automatizované více přesně odrážel způsob, jakým by uživatel zasahovat aplikace. Jsme zjistěte, jak vytvořit vlastní pravidla pro extrakci k načítání dat z webového ovládacího prvku, který nemusí podporovat výchozí pravidla pro extrakci a jak přidat C# nebo Visual Basic pevně zakódované webových testů a přidat tak funkce, jako je například opakování ve smyčce, logika a přístup k externím datům.
+Visual Studio Team System usnadňuje testování webové aplikace záznamem interakce uživatele s aplikací a opakovaným přehráním zaznamenané interakce. Ale uživatelé obvykle neprovádějí stejné akce znovu a znovu. V tomto videu se naučíme, jak pomocí automatizovaných webových testů přesněji odrážet způsob, jakým uživatel bude pracovat s aplikací. Naučíte se, jak vytvořit vlastní pravidla pro extrakci, která vyžádají data z webového ovládacího prvku, který výchozí pravidla extrakce nemusí podporovat C# , a jak přidat nebo Visual Basic kódované webové testy, které přidávají funkce, jako jsou cykling, logika a přístup k externím datům.
 
-[&#9654;Podívejte se na video (12 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/custom-extraction-rules-and-coded-web-tests)
+[&#9654;Přehrát video (12 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/custom-extraction-rules-and-coded-web-tests)
 
 > [!div class="step-by-step"]
 > [Předchozí](code-coverage-of-automated-tests.md)
-> [další](the-effects-of-caching.md)
+> [Další](the-effects-of-caching.md)

@@ -1,232 +1,232 @@
 ---
 uid: signalr/overview/older-versions/handling-connection-lifetime-events
-title: Principy a zpracování událostí doby platnosti v knihovně SignalR 1.x | Dokumentace Microsoftu
+title: Porozumění a zpracování událostí životního cyklu připojení v nástroji Signal 1. x | Microsoft Docs
 author: bradygaster
-description: Tento článek popisuje, jak pomocí událostí vystavené API rozbočovače.
+description: Tento článek popisuje, jak používat události vystavené rozhraním API centra.
 ms.author: bradyg
 ms.date: 06/05/2013
 ms.assetid: e608e263-264d-448b-b0eb-6eeb77713b22
 msc.legacyurl: /signalr/overview/older-versions/handling-connection-lifetime-events
 msc.type: authoredcontent
 ms.openlocfilehash: 2fb671e730a1d41c07b350bf1d64ac1d0b1be55c
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65128786"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78536902"
 ---
-# <a name="understanding-and-handling-connection-lifetime-events-in-signalr-1x"></a>Principy a zpracování událostí doby platnosti v knihovně SignalR 1.x
+# <a name="understanding-and-handling-connection-lifetime-events-in-signalr-1x"></a>Porozumění a zpracování událostí životního cyklu připojení v nástroji Signal 1. x
 
-podle [Patrick Fletcher](https://github.com/pfletcher), [Petr Dykstra](https://github.com/tdykstra)
+autorem [Fletcher](https://github.com/pfletcher), který [Dykstra](https://github.com/tdykstra)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> Tento článek obsahuje přehled funkce SignalR připojení, opětovné připojení a odpojení události, které dokáže zpracovat a nastavení časového limitu a keepalive, které můžete nakonfigurovat.
+> Tento článek poskytuje přehled o připojení signálů, opětovném připojení a událostech odpojení, které můžete zpracovávat, a nastavení časových limitů a udržení, které můžete konfigurovat.
 > 
-> Tento článek předpokládá, že máte již určitá znalost události doby života SignalR a připojení. Úvod k funkci SignalR naleznete v tématu [SignalR – přehled – Začínáme](index.md). Seznam událostí doby platnosti naleznete v následujících zdrojích:
+> V článku se předpokládá, že už máte nějaké znalosti událostí pro signalizaci a životnost připojení. Úvod do signalizace najdete v části [signaler – přehled-Začínáme](index.md). Seznam událostí životního cyklu připojení najdete v následujících zdrojích informací:
 > 
-> - [Zpracování událostí doby platnosti ve třídě centra](index.md)
-> - [Zpracování událostí doby platnosti v klientech jazyka JavaScript](index.md)
-> - [Zpracování událostí doby platnosti v klientů .NET](index.md)
+> - [Postup zpracování událostí životního cyklu připojení ve třídě centra](index.md)
+> - [Postup zpracování událostí životního cyklu připojení v klientech JavaScript](index.md)
+> - [Postup zpracování událostí životního cyklu připojení v klientech rozhraní .NET](index.md)
 
 ## <a name="overview"></a>Přehled
 
-Tento článek obsahuje následující části:
+Tento článek obsahuje následující oddíly:
 
-- [Připojení životnost terminologie a scénáře](#terminology)
+- [Terminologie a scénáře platnosti připojení](#terminology)
 
-    - [Připojení SignalR, připojeními a fyzické připojení](#signalrvstransport)
+    - [Připojení k signalizaci, přenosová připojení a fyzická připojení](#signalrvstransport)
     - [Scénáře odpojení přenosu](#transportdisconnect)
     - [Scénáře odpojení klienta](#clientdisconnect)
     - [Scénáře odpojení serveru](#serverdisconnect)
-- [Nastavení časového limitu a keepalive](#timeoutkeepalive)
+- [Nastavení časového limitu a kontroly naživu](#timeoutkeepalive)
 
-    - [Hodnota ConnectionTimeout](#connectiontimeout)
-    - [DisconnectTimeout](#disconnecttimeout)
-    - [KeepAlive](#keepalive)
-    - [Jak změnit nastavení časového limitu a keepalive](#changetimeout)
-- [Jak informovat uživatele o odpojení](#notifydisconnect)
-- [Průběžně opětovné připojení](#continuousreconnect)
-- [Jak odpojení klienta v kódu serveru](#disconnectclientfromserver)
+    - [ConnectionTimeout](#connectiontimeout)
+    - [Hodnota DisconnectTimeout](#disconnecttimeout)
+    - [Udržení](#keepalive)
+    - [Postup změny nastavení časových limitů a kontroly udržení](#changetimeout)
+- [Upozornění uživatele na odpojení](#notifydisconnect)
+- [Postup nepřetržitého opětovného připojení](#continuousreconnect)
+- [Odpojení klienta v serverovém kódu](#disconnectclientfromserver)
 
-Odkazy na témata, Reference k rozhraní API se API verze rozhraní .NET 4.5. Pokud používáte .NET 4, přečtěte si téma [verze .NET 4 témat API](https://msdn.microsoft.com/library/jj891075(v=vs.100).aspx).
+Odkazy na referenční témata rozhraní API odkazují na verzi rozhraní API .NET 4,5. Pokud používáte .NET 4, přečtěte si téma věnované [verzi rozhraní API rozhraní .NET 4](https://msdn.microsoft.com/library/jj891075(v=vs.100).aspx).
 
 <a id="terminology"></a>
 
-## <a name="connection-lifetime-terminology-and-scenarios"></a>Připojení životnost terminologie a scénáře
+## <a name="connection-lifetime-terminology-and-scenarios"></a>Terminologie a scénáře platnosti připojení
 
-`OnReconnected` Obslužné rutiny události v rozbočovači SignalR můžete spustit přímo po `OnConnected` , ale ne po `OnDisconnected` pro daného klienta. Z důvodu, že máte opětovné připojení bez odpojení je, že existuje několik způsobů, ve kterých se používá slovo "připojení" v knihovně SignalR.
+Obslužná rutina události `OnReconnected` v centru signalizace se dá provést přímo po `OnConnected`, ale ne po `OnDisconnected` pro daného klienta. Důvodem, proč můžete mít opětovné připojení bez odpojení je, že existuje několik způsobů, jak se v nástroji Signal používá slovo "připojení".
 
 <a id="signalrvstransport"></a>
 
-### <a name="signalr-connections-transport-connections-and-physical-connections"></a>Připojení SignalR, připojeními a fyzické připojení
+### <a name="signalr-connections-transport-connections-and-physical-connections"></a>Připojení k signalizaci, přenosová připojení a fyzická připojení
 
-Tento článek bude rozlišovat mezi *připojení SignalR*, *přenosu připojení*, a *fyzické připojení*:
+Tento článek se rozlišuje mezi *připojeními k signalizaci*, *přenosovým připojením*a *fyzickými připojeními*:
 
-- **Připojení SignalR** odkazuje na logický vztah mezi klientem a adresu URL serveru, spravuje pomocí rozhraní API SignalR a jednoznačně identifikují pomocí ID připojení. Data o tento vztah se spravuje pomocí SignalR a se používá k navázání připojení přenosu. Elementy end relace a technologie SignalR uvolní dat, když klient volá `Stop` metody nebo časový limit je dosaženo během SignalR je snahy o obnovení připojení přenosu ztraceny.
-- **Připojení přenosu** odkazuje na logický vztah mezi klientem a serverem, udržován jednu čtyři přenosu rozhraní API: Protokoly Websocket, události odeslané serverem, navždy rámce nebo dlouhým dotazováním. SignalR k vytvoření připojení přenosu používá přenos rozhraní API a rozhraní API pro přenos závisí na existenci fyzické síťové připojení k vytvoření připojení přenosu. Připojení pro přenos končí při SignalR ukončí ho nebo při přenosu rozhraní API zjistí, že fyzické připojení bylo přerušeno.
-- **Fyzické připojení** odkazuje na fyzické síťové odkazy – vodičům stanice, bezdrátové signály, směrovače, atd. –, které usnadňují komunikace mezi klientským počítačem a serveru. Fyzické připojení musí být k dispozici, aby bylo možné navázat připojení přenosu a aby bylo možné navázat připojení SignalR musí navázat připojení přenosu. Ale zásadní fyzické připojení není vždy okamžitě ukončí přenosového připojení nebo připojení SignalR, jak budou vysvětlena dále v tomto tématu.
+- **Připojení k signalizaci** odkazuje na logický vztah mezi klientem a adresou URL serveru, který je udržován rozhraním API pro signalizaci a jednoznačně identifikovaný identifikátorem připojení. Data o tomto vztahu jsou spravována pomocí nástroje Signal a slouží k navázání transportního připojení. Ukončení relace a signalizace vyřadí data, když klient volá metodu `Stop` nebo se dosáhne časového limitu, když se signál pokusí znovu vytvořit ztracené připojení přenosu.
+- **Přenosové připojení** odkazuje na logický vztah mezi klientem a serverem, který se uchovává v jednom ze čtyř přenosových rozhraní API: WebSockets, server-odesílají události, snímek navždy nebo dlouhé cyklické dotazování. Signál používá transportní rozhraní API k vytvoření transportního připojení a transportní rozhraní API závisí na existenci fyzického síťového připojení pro vytvoření přenosového připojení. Přenosové připojení končí, když ho signál ukončí nebo když transportní rozhraní API zjistí, že fyzické připojení je přerušené.
+- **Fyzické připojení** odkazuje na fyzické síťové odkazy – dráty, bezdrátové signály, směrovače atd., které usnadňují komunikaci mezi klientským počítačem a serverovým počítačem. Aby bylo možné navázat spojení s připojením, musí být fyzické připojení přítomné a musí se navázat přenosové připojení, aby bylo možné navázat připojení k signalizaci. Přerušení fyzického připojení ale vždy okamžitě ukončí přenosové připojení nebo připojení k signalizaci, jak bude vysvětleno dále v tomto tématu.
 
-V následujícím diagramu připojení SignalR je reprezentována rozhraní API rozbočovače a SignalR pro rozhraní API PersistentConnection vrstvy, připojení přenosu je reprezentována přenosy vrstvy a fyzické připojení je reprezentována řádky mezi serverem a klienty.
+V následujícím diagramu je připojení k signalizaci reprezentované rozhraním API centra a vrstvou PersistentConnection API Signal, přenosové připojení je reprezentované vrstvou přenosů a fyzické připojení je reprezentované řádky mezi serverem. a klienti.
 
-![Diagram architektury SignalR](handling-connection-lifetime-events/_static/image1.png)
+![Diagram architektury Signal](handling-connection-lifetime-events/_static/image1.png)
 
-Při volání `Start` metody v klientovi SignalR, tím kód klienta SignalR s všechny informace potřebné pro vytvoření fyzické připojení k serveru. SignalR klientský kód používá tyto informace odeslání požadavku HTTP a naváže fyzické připojení, který používá některou z metod čtyři přenosu. Pokud připojení pro přenos se nezdaří a dojde k selhání serveru, připojení SignalR nebude přejděte okamžitě okamžitě vzhledem k tomu, že klient má stále informace potřebné k automaticky znovu vytvořit nové připojení přenosu pro stejnou adresu URL funkce SignalR. V tomto scénáři nepodílí bez nutnosti zásahu od uživatele aplikace a když SignalR klientský kód vytvoří nové připojení přenosu, se nespustí nové připojení SignalR. Ve skutečnosti se projeví kontinuitu připojení SignalR, která ID připojení, který je vytvořen při volání `Start` metoda, nezmění.
+Při volání metody `Start` v klientovi signalizace poskytujete klientský kód pro signalizaci s veškerými informacemi, které potřebuje, aby bylo možné navázat fyzické připojení k serveru. Kód klienta signalizace používá tyto informace k vytvoření požadavku HTTP a navázání fyzického připojení, které používá jednu ze čtyř metod přenosu. Pokud není přenosové připojení úspěšné nebo dojde k chybě serveru, připojení k signalizaci se okamžitě neprojeví, protože klient má stále informace, které potřebuje k automatickému opětovnému vytvoření nového transportního připojení ke stejné adrese URL signálu. V tomto scénáři není k dispozici žádný zásah z uživatelské aplikace, a pokud klientský kód Signale vytvoří nové přenosové připojení, nespustí nové připojení k signalizaci. Kontinuita připojení k signalizaci se odrazí ve skutečnosti, že ID připojení, které je vytvořeno při volání metody `Start`, se nezmění.
 
-`OnReconnected` Obslužné rutiny události v centru provede, když se poté, co bylo ztraceno automaticky znovu naváže připojení přenosu. `OnDisconnected` Obslužná rutina události provádí na konci připojení SignalR. Připojení SignalR můžete ukončit v některém z následujících způsobů:
+Obslužná rutina události `OnReconnected` v centru se spustí, když se po ztrátě automaticky znovu naváže připojení přenosu. Obslužná rutina události `OnDisconnected` se spouští na konci připojení k signalizaci. Připojení k signalizaci může končit některým z následujících způsobů:
 
-- Pokud klient volá `Stop` metody zpráva stop se pošle na server a klientských i serverových připojení SignalR okamžitě ukončí.
-- Jakmile dojde ke ztrátě připojení mezi klientem a serverem, klient se pokusí znovu připojit a server čeká na klientovi znovu připojit. Pokud neúspěšné pokusy o připojení a odpojení časový limit ukončení, klient a server ukončit připojení SignalR. Klient zastaví pokus o opětovné připojení, a server odstraňuje její znázornění připojení SignalR.
-- Pokud klient přestane fungovat bez nutnosti příležitost k volání `Stop` metody server čeká na klientovi znovu připojit a končí po uplynutí časového limitu odpojení připojení SignalR.
-- Pokud server přestane běží, se klient pokusí znovu připojit (znovu vytvořit připojení pro přenos) a končí po uplynutí časového limitu odpojení připojení SignalR.
+- Pokud klient volá metodu `Stop`, pošle se na server zpráva o zastavení a klient i server ukončí připojení k signalizaci okamžitě.
+- Po ztrátě připojení mezi klientem a serverem se klient pokusí znovu připojit a Server počká, až se klient znovu připojí. Pokud se pokusy o opětovné připojení nezdařily a časové období odpojení skončí, klient i server ukončí připojení k signalizaci. Klient se ukončí pokus o opětovné připojení a server uvolní jeho reprezentaci připojení k signalizaci.
+- Pokud klient přestane běžet, aniž by bylo pravděpodobné, že by volal metodu `Stop`, Server počká, až se znovu připojí, a pak ukončí připojení k signalizaci po uplynutí časového limitu odpojení.
+- Pokud je server zastavený, klient se pokusí znovu připojit (znovu vytvořit připojení přenosu) a po uplynutí časového limitu odpojení ukončí připojení k signalizaci.
 
-Když neexistují žádné problémy s připojením a uživatelská aplikace ukončí připojení SignalR voláním `Stop` metodu, připojení SignalR a připojení pro přenos začínají i končí na přibližně ve stejnou dobu. Následující části popisují podrobnější jiné scénáře.
+Pokud nedochází k žádným problémům s připojením a uživatelská aplikace ukončí připojení k signalizaci voláním metody `Stop`, připojení k signalizaci a přenosové připojení začíná a končí ve stejnou dobu. V následujících částech jsou podrobněji popsány další informace o dalších scénářích.
 
 <a id="transportdisconnect"></a>
 
 ### <a name="transport-disconnection-scenarios"></a>Scénáře odpojení přenosu
 
-Fyzické připojení může být pomalá nebo může být přerušení připojení. Závisí to na faktorech, jako je délka přerušení může dojít ke ztrátě připojení přenosu. SignalR se pak pokusí znovu navázat připojení přenosu. Někdy přenosového připojení rozhraní API zjistí přerušení a zahodí připojení pro přenos a SignalR dozví okamžitě, že připojení bylo ztraceno. V jiných scénářích přenosového připojení rozhraní API ani SignalR zjistí okamžitě, že připojení bylo ztraceno. Pro všechny přenosy s výjimkou dlouhým dotazováním klientovi SignalR používá funkci s názvem *keepalive* ke kontrole ke ztrátě připojení, který se nedokáže rozpoznat přenosu rozhraní API. Informace o dlouho dotazování připojeních najdete v tématu [nastavení časového limitu a keepalive](#timeoutkeepalive) dále v tomto tématu.
+Fyzické připojení může být pomalé nebo mohlo dojít k přerušení připojení. V závislosti na faktorech, jako je délka přerušení, může být přenosové připojení vyřazeno. Signalizace se pak pokusí znovu vytvořit připojení přenosu. V některých případech rozhraní API pro přenos připojení zjistí přerušení a uvolní přenos připojení a signál se okamžitě vyhledá, že připojení bylo ztraceno. V jiných scénářích není rozhraní API pro přenos spojení ani signál, že by bylo připojení ztraceno. U všech přenosů s výjimkou dlouhého cyklického dotazování používá klient signalizace funkci s názvem *naživu* , aby zkontrolovala ztrátu připojení, kterou transportní rozhraní API nemůže detekovat. Informace o dlouhých připojeních pro cyklické dotazování najdete v části [nastavení časového limitu a možnosti](#timeoutkeepalive) kontroly pro připojení dále v tomto tématu.
 
-Při připojení je neaktivní, pravidelně server odešle paket keepalive do klienta. K datu, které tento článek se týká je výchozí frekvence každých 10 sekund. Prostřednictvím naslouchání pro tyto pakety, můžete zjistit klienty, pokud dojde k problému připojení. Pokud paketu keepalive neobdrží při očekávání, po krátkou dobu klient předpokládá, že jsou problémy s připojením, jako je například pomalost nebo přerušením. Pokud keepalive není stále přijata po delší dobu, klient předpokládá, že připojení bylo vyřazeno a začne pokusu o opětovné připojení.
+Když je připojení neaktivní, server pravidelně odešle klientovi paket kontroly stavu. Od data, kdy je tento článek napsán, je výchozí frekvence každých 10 sekund. Díky naslouchání těmto paketům můžou klienti zjistit, jestli došlo k potížím s připojením. Pokud v případě, že se po krátké době neobdrží paket kontroly a času, klient předpokládá, že dochází k problémům s připojením, jako je například zpomalení nebo přerušení. Pokud se udržení naživu ještě nepřijme po delší době, klient předpokládá, že připojení bylo vyřazené, a začne se pokoušet o opětovné připojení.
 
-Následující diagram znázorňuje klientských a serverových události, které jsou vyvolány v rámci typického scénáře, když dochází k problémům s fyzické připojení, které nejsou rozpoznány okamžitě Transport rozhraní API. Diagram se týká následujících okolností:
+Následující diagram znázorňuje události klienta a serveru, které jsou vyvolány v typickém scénáři, pokud dochází k problémům s fyzickým připojením, které nejsou okamžitě rozpoznány transportním rozhraním API. Diagram se vztahuje na následující okolnosti:
 
-- Přenos se protokoly Websocket, navždy rámce nebo události odeslané serverem.
-- Existují různé doby přerušení připojení k fyzické síti.
-- Přenos rozhraní API se dozvěděli o přerušení, není proto SignalR spoléhá na funkce keepalive vyhledáním.
+- Přenos je WebSockets, navždy Frame nebo události odesílané serverem.
+- Ve fyzickém síťovém připojení dochází k různým dobám přerušení.
+- Rozhraní API pro přenos se nedozvědělo o přerušení, takže signalizace spoléhá na funkce naživu.
 
 ![Odpojení přenosu](handling-connection-lifetime-events/_static/image2.png)
 
-Pokud klient přejde do režimu opětovné připojení, ale nemůže navázat připojení přenosu v časovém limitu odpojení, server ukončí připojení SignalR. Pokud k tomu dojde, spustí na serveru centra `OnDisconnected` metoda a fronty si zprávu o odpojení k odeslání do klienta v případě, že klient spravuje připojení později. Pokud klient znovu připojit, přijme příkaz pro odpojení a volání `Stop` metody. V tomto scénáři `OnReconnected` není spuštěn, když se klient znovu připojí, a `OnDisconnected` není spuštěn, když klient volá `Stop`. Následující diagram znázorňuje tento scénář.
+Pokud klient přejde do režimu opětovného připojení, ale nemůže vytvořit přenosové připojení v rámci časového limitu odpojení, server ukončí připojení k signalizaci. Pokud k tomu dojde, Server provede `OnDisconnected` metodu centra a zařadí do fronty zprávu o odpojení, která se odešle klientovi v případě, že se klient připojí k pozdějšímu připojení. Pokud se klient pak znovu připojí, obdrží příkaz pro odpojení a zavolá metodu `Stop`. V tomto scénáři se `OnReconnected` nespustí, když se klient znovu připojí a `OnDisconnected` se nespustí, když klient volá `Stop`. Tento scénář je znázorněn na následujícím obrázku.
 
-![Narušení přenosu – časový limit serveru](handling-connection-lifetime-events/_static/image3.png)
+![Přerušení přenosu – časový limit serveru](handling-connection-lifetime-events/_static/image3.png)
 
-Události doby života připojení SignalR, které mohou být vyvolány na straně klienta jsou následující:
+Události doby života připojení signálů, které mohou být vyvolány na straně klienta, jsou následující:
 
 - `ConnectionSlow` událost klienta.
 
-    Vyvolá se při přednastavených podíl keepalive časový limit uplynul od poslední zprávu nebo keepalive ping byla přijata. Keepalive výchozího časového limitu upozornění je 2/3 keepalive vypršení časového limitu. Časový limit keepalive je 20 sekund, takže dojde k upozornění na přibližně 13 sekund.
+    Vyvolá se v případě, že před přijetím poslední zprávy nebo potvrzením platnosti byl přijat přednastavený podíl časového limitu kontroly udržení. Výchozí časový limit pro dobu kontroly stavu (udržení) je 2/3 časového limitu udržení naživu. Časový limit kontroly udržení je 20 sekund, takže se zobrazí upozornění přibližně o 13 sekundách.
 
-    Ve výchozím nastavení odešle server keepalive příkazy ping pro zjištění každých 10 sekund a klient vyhledává příkazy ping keepalive o každé 2 sekundy (jednu třetinu rozdíl mezi keepalive hodnotu časového limitu a hodnotu keepalive časový limit upozornění).
+    Ve výchozím nastavení server odesílá příkazy pro ověření stavu kontrolního seznamu každých 10 sekund a klient zkontroluje, jestli se na každých 2 sekundách (jedna třetina rozdílu mezi hodnotou časového limitu kontroly stavu kontroly a hodnotou časového limitu kontroly stavu) kontroluje.
 
-    Pokud obdrží informace o odpojení přenosu rozhraní API, SignalR může být informováni o odpojení předtím, než časový limit upozornění keepalive předá. V takovém případě `ConnectionSlow` nebude vyvolána událost a SignalR přejde přímo na `Reconnecting` událostí.
+    Pokud se transportní rozhraní API dozvědělo o odpojení, může být signál upozorněn na odpojení před úspěšným časovým limitem časového limitu kontroly udržení platnosti. V takovém případě by se událost `ConnectionSlow` nevyvolala a signál by přešel přímo k události `Reconnecting`.
 - `Reconnecting` událost klienta.
 
-    Vyvoláno, když (a) přenos rozhraní API zjistí, že dojde ke ztrátě nebo připojení nebo (b) keepalive časový limit uplynul od poslední zprávu nebo keepalive ping byla přijata. Kód klienta SignalR se pokusí znovu připojit. Tato událost může zpracovat, pokud má vaše aplikace provést některé akce, když dojde ke ztrátě připojení přenosu. Keepalive výchozího časového limitu je momentálně 20 sekund.
+    Vyvolá se, když (a) Transportní rozhraní API zjistí ztrátu připojení, nebo (b) vypršel časový limit kontroly udržení dat, který uplynul od poslední zprávy, nebo byl přijat příkaz pro ověření naživu. Kód klienta signalizace se začne pokoušet znovu připojit. Tuto událost můžete zpracovat, pokud chcete, aby aplikace probrala určitou akci, když dojde ke ztrátě připojení přenosu. Výchozí časový limit pro udržení naživu je v současné době 20 sekund.
 
-    Pokud váš klientský kód se pokusí o volání metody rozbočovače SignalR je v režimu připojení, se pokusí odeslat příkaz SignalR. Ve většině případů, těchto pokusů selže, ale v některých případech může být úspěšné. Funkce SignalR pro události odeslané serverem, navždy rámce a dlouho dotazování přenosy, používá dva komunikační kanály, které klient používá k odesílání zpráv a ten, který se používá pro příjem zpráv. Kanál, který slouží k příjmu je trvale otevřete jednu, a to je ten, který je uzavřen, když dojde k přerušení připojení k fyzické. Kanál používá k odeslání zůstane k dispozici, takže pokud fyzické připojení se obnoví, volání metody z klienta na server může být úspěšné, než kanál receive je obnoveno. Návratová hodnota nemusí přijmout, dokud SignalR znovu otevře kanál pro příjem.
+    Pokud se Váš klientský kód pokusí zavolat metodu rozbočovače, zatímco je signál v režimu opětovného připojení, signál se pokusí odeslat příkaz. Ve většině případů tyto pokusy selžou, ale v některých případech se může stát, že budou úspěšné. Pro události odeslané serverem, navždy a dlouhé cyklické dotazování používá Signal dva komunikační kanály, které klient používá k posílání zpráv a k tomu, které používá k přijímání zpráv. Kanál použitý k přijetí je trvale otevřený a je ten, který je uzavřený při přerušení fyzického připojení. Kanál použitý k odeslání zůstává dostupný, takže pokud se obnoví fyzické připojení, může být volání metody z klienta na server úspěšné, než se znovu naváže kanál pro příjem. Návratová hodnota nebude přijata, dokud signál znovu neotevře kanál použitý k přijetí.
 - `Reconnected` událost klienta.
 
-    Vyvoláno, když se obnoví připojení přenosu. `OnReconnected` Spustí obslužnou rutinu události v centru.
-- `Closed` událost klienta (`disconnected` událostí v jazyce JavaScript).
+    Vyvolá se v případě, že je přenosové připojení znovu navázáno. V centru se spustí obslužná rutina události `OnReconnected`.
+- `Closed` událost klienta (událost`disconnected` v JavaScriptu).
 
-    Vyvolá se při vypršení časového limitu odpojit, zatímco při pokusu o opětovné připojení po ztrátě připojení přenosu je v kódu klienta SignalR. Odpojit výchozí časový limit je 30 sekund. (Tato událost je aktivována také při připojení skončí kvůli tomu, `Stop` metoda je volána.)
+    Je aktivována, když časový limit pro odpojení vyprší, když se kód klienta nástroje Signal pokusí znovu připojit po ztrátě připojení přenosu. Výchozí časový limit pro odpojení je 30 sekund. (Tato událost je vyvolána také v případě, že je připojení ukončeno, protože je volána metoda `Stop`.)
 
-Události doby života zapříčinil nemusí jakékoli připojení, způsobit přerušení připojení přenosu, které nejsou zjištěny Transport rozhraní API a příjmu keepalive odesílání příkazu ping ze serveru po dobu delší než časový limit upozornění keepalive není zpoždění.
+Přerušení připojení přenosu, která nejsou zjištěna transportním rozhraním API, a nedělejte prodlevu přijímání příkazů pro ověření platnosti paketů kontroly a času na serveru déle, než je časový limit pro dobu nečinnosti, nemusí způsobit vyvolání všech událostí životního cyklu připojení.
 
-Některá síťová prostředí záměrně nečinných připojení po zavření a jiné funkce keepalive paketů je Zabraňte to tak, že se tyto sítě vědět, že připojení SignalR je používán. V extrémních případech nemusí být výchozí frekvence odesílání příkazu ping keepalive dostatečná ochrana proti uzavřené připojení. V takovém případě můžete nakonfigurovat odesílání příkazu ping keepalive do odešlou častěji. Další informace najdete v tématu [nastavení časového limitu a keepalive](#timeoutkeepalive) dále v tomto tématu.
+Některá síťová prostředí úmyslně zavřou nečinná připojení a další funkce paketů kontroly stavu, které jim umožňují zabránit tomu, aby tyto sítě věděly, že se připojení k signalizaci používá. V extrémních případech nemusí být výchozí frekvence příkazů pro ověření stavu připojení k síti k dispozici, aby se zabránilo uzavřeným připojením. V takovém případě můžete nakonfigurovat, aby bylo možné odesílat příkazy pro ověřování paketů kontroly a častější odesílání. Další informace najdete v části [nastavení časového limitu a možnosti](#timeoutkeepalive) kontroly pro otevření v tomto tématu.
 
 > [!NOTE] 
 > 
 > [!IMPORTANT]
-> Posloupnost událostí, je zde popsáno, není zaručeno. SignalR je každý pokus o vyvolání událostí doby platnosti v předvídatelné podle tohoto schématu, ale existuje mnoho variant událostí sítě a mnoha způsoby, ve kterých je zpracovávat základní architektury komunikace, jako jsou přenosu rozhraní API. Například `Reconnected` událost nemusí být vyvolána, když klient znovu připojí, nebo `OnConnected` obslužnou rutinu na serveru může spustit, když neúspěšný pokus o navázání připojení. Toto téma popisuje pouze efekty, které by bylo vytvořeno obvykle některé obvyklé okolnosti.
+> Posloupnost událostí popsaných zde není zaručena. Signalní je pokaždé, když se každý pokus o vyzvednutí událostí životního cyklu připojení předvídatelným způsobem podle tohoto schématu, ale existuje mnoho variant síťových událostí a mnoha způsobů, kterými se podřídí komunikační architektury, jako jsou třeba transportní rozhraní API. Například událost `Reconnected` nemusí být vyvolána, když se klient znovu připojí, nebo se může spustit obslužná rutina `OnConnected` na serveru, když se pokus o navázání spojení nezdařil. V tomto tématu jsou popsány pouze efekty, které by obvykle byly vyprodukovány pomocí určitých typických okolností.
 
 <a id="clientdisconnect"></a>
 
 ### <a name="client-disconnection-scenarios"></a>Scénáře odpojení klienta
 
-V prohlížeči klientovi kód klienta SignalR, která udržuje připojení SignalR běží v kontextu JavaScript webové stránky. Který má proto musíme ukončit, pokud přejdete z jednoho připojení SignalR stránce do jiného a že je proč máte víc připojení s ID více připojení Pokud se připojujete z více okna prohlížeče nebo karty. Když uživatel zavře okně nebo záložce prohlížeče, nebo přejde na novou stránku nebo aktualizuje stránku, připojení SignalR okamžitě ukončí, protože kód klienta SignalR zpracovává tento prohlížeč událostí a volání `Stop` metody. V těchto scénářích platí, nebo všechny klientské platformy, když vaše aplikace volá `Stop` metody, `OnDisconnected` obslužná rutina události okamžitě spustí na serveru a klienta vyvolá `Closed` události (událost jmenuje `disconnected` v Jazyk JavaScript).
+V klientském prohlížeči je kód klienta signalizace, který udržuje připojení k signalizaci, spuštěn v kontextu JavaScriptu webové stránky. To je důvod, proč musí připojení k signalizaci končit při přechodu z jedné stránky na jiný a to je důvod, proč máte k dispozici více připojení s více identifikátory připojení, pokud se připojujete z více oken prohlížeče nebo karet. Když uživatel zavře okno nebo kartu prohlížeče nebo přejde na novou stránku nebo aktualizuje stránku, okamžitě se ukončí připojení k signalizaci, protože klientský kód signalizace zpracovává událost prohlížeče a zavolá metodu `Stop`. V těchto scénářích nebo na jakékoli klientské platformě, když vaše aplikace volá metodu `Stop`, obslužná rutina události `OnDisconnected` se okamžitě spustí na serveru a klient vyvolá událost `Closed` (událost je pojmenována `disconnected` v JavaScriptu).
 
-Pokud klientská aplikace nebo počítač, který je spuštěn na dojde k chybě nebo přejde do režimu spánku (například když uživatel zavírá přenosný počítač), server není informována o co se stalo. Nejdál, co ví, server, ke ztrátě klienta může být z důvodu přerušení připojení a klient může být pokus o opětovné připojení. Proto v těchto scénářích server čeká, chcete dát klientům příležitost dobře se znovu připojit a `OnDisconnected` nespustí až do vypršení časového limitu odpojení (přibližně 30 sekund ve výchozím nastavení). Následující diagram znázorňuje tento scénář.
+Pokud klientská aplikace nebo počítač, který je spuštěný v případě havárie nebo přejde do režimu spánku (například když uživatel zavírá notebook), neoznamuje server informace o tom, co se stalo. Pokud je server ví, může dojít ke ztrátě klienta z důvodu přerušení připojení a klient se může pokusit o opětovné připojení. Proto se v těchto scénářích Server počká, aby klient mohl znovu připojit, a `OnDisconnected` se nespustí, dokud nevyprší časový limit odpojení (přibližně 30 sekund ve výchozím nastavení). Tento scénář je znázorněn na následujícím obrázku.
 
-![Chyba klientského počítače](handling-connection-lifetime-events/_static/image4.png)
+![Selhání klientského počítače](handling-connection-lifetime-events/_static/image4.png)
 
 <a id="serverdisconnect"></a>
 
 ### <a name="server-disconnection-scenarios"></a>Scénáře odpojení serveru
 
-Když server přejde do režimu offline--restartování, selže, doména aplikace recykluje, atd. – může být výsledek podobný došlo ke ztrátě připojení nebo přenosu rozhraní API a technologie SignalR možné, že okamžitě, že server je pryč a SignalR můžou začít vyskytovat, pokus o opětovné připojení bez Vyčkat `ConnectionSlow` událostí. Pokud klient přejde do režimu opětovné připojení a obnoví server nebo restartování nebo nový server je převeden do stavu online předtím, než vyprší časový limit odpojit, klient se znovu připojit k obnovené nebo nový server. V takovém případě bude pokračovat připojení SignalR na straně klienta a `Reconnected` událost se vyvolá. Na prvním serveru `OnDisconnected` není nikdy proveden a na novém serveru `OnReconnected` provádí, i když `OnConnected` byla pro tohoto klienta na tomto serveru před nikdy proveden. (Efekt je, že stejné, pokud klient znovu připojí ke stejnému serveru po recyklaci domény restartování nebo aplikace, protože při jeho restartování serveru nemá žádné paměti aktivita předchozí připojení). Následující diagram se předpokládá, že přenos rozhraní API zjistí došlo ke ztrátě připojení okamžitě, takže `ConnectionSlow` není vyvolána událost.
+Když server přejde do režimu offline, dojde k chybě, recyklace domény aplikace atd.--výsledek může být podobný ztrátě připojení, nebo transportní rozhraní API a odesilatele může okamžitě zjistit, že se server nachází, a signál se může pokusit znovu připojit bez vyvolání události `ConnectionSlow`. Pokud se klient přepne do režimu opětovného připojení a pokud se server obnoví nebo restartuje nebo se nový server přepne do online režimu před vypršením časového limitu odpojení, klient se znovu připojí k obnovenému nebo novému serveru. V takovém případě připojení k signalizaci pokračuje na klientovi a vyvolá se `Reconnected` událost. Na prvním serveru se `OnDisconnected` nikdy neprovede a na novém serveru se `OnReconnected` spustí, i když `OnConnected` pro tohoto klienta na tomto serveru spuštěný. (Účinek je stejný, pokud se klient znovu připojí ke stejnému serveru po restartování nebo recyklaci domény aplikace, protože když se server restartuje, nemá žádná paměť předchozí aktivity připojení.) Následující diagram předpokládá, že transportní rozhraní API se okamžitě dozvědělo o ztraceném připojení, takže se událost `ConnectionSlow` neaktivuje.
 
-![Selhání serveru a opětovném připojení](handling-connection-lifetime-events/_static/image5.png)
+![Selhání serveru a opětovné připojení](handling-connection-lifetime-events/_static/image5.png)
 
-Pokud server není k dispozici v rámci časového limitu odpojení, ukončí připojení SignalR. V tomto scénáři `Closed` událostí (`disconnected` klientům JavaScript) je vyvolána na straně klienta, ale `OnDisconnected` nebude nikdy volána na serveru. Následující diagram se předpokládá, že přenos rozhraní API nebudou vědět, došlo ke ztrátě připojení, tak zjistí funkce keepalive SignalR a `ConnectionSlow` událost se vyvolá.
+Pokud se server v rámci časového limitu odpojení nestane dostupný, ukončí se připojení k signalizaci. V tomto scénáři je v klientovi vyvolána událost `Closed` (`disconnected` v klientech JavaScript), ale `OnDisconnected` na serveru nikdy není volána. Následující diagram předpokládá, že transportní rozhraní API neví o ztracených připojeních, takže se detekuje funkcí kontroly naživu a `ConnectionSlow` událostmi.
 
-![Selhání serveru a vypršení časového limitu](handling-connection-lifetime-events/_static/image6.png)
+![Selhání serveru a časový limit](handling-connection-lifetime-events/_static/image6.png)
 
 <a id="timeoutkeepalive"></a>
 
-## <a name="timeout-and-keepalive-settings"></a>Nastavení časového limitu a keepalive
+## <a name="timeout-and-keepalive-settings"></a>Nastavení časového limitu a kontroly naživu
 
-Výchozí hodnota `ConnectionTimeout`, `DisconnectTimeout`, a `KeepAlive` hodnoty jsou vhodné pro většinu scénářů, ale může změnit, pokud vaše prostředí se zvláštními potřebami. Pokud vaše síťové prostředí zavře připojení, které jsou nečinné po dobu 5 sekund, budete muset snížit hodnotu keepalive.
+Výchozí hodnoty `ConnectionTimeout`, `DisconnectTimeout`a `KeepAlive` jsou vhodné pro většinu scénářů, ale můžou se změnit, pokud vaše prostředí má speciální požadavky. Pokud například vaše síťové prostředí ukončí připojení, která jsou nečinná po dobu 5 sekund, možná budete muset snížit hodnotu kontroly stavu.
 
 <a id="connectiontimeout"></a>
 
-### <a name="connectiontimeout"></a>Hodnota ConnectionTimeout
+### <a name="connectiontimeout"></a>connectionTimeout
 
-Toto nastavení představuje dobu má připojení přenosu zůstat otevřené a čeká na odpověď před zavřením a otevřením nové připojení. Výchozí hodnota je 110 sekund.
+Toto nastavení představuje dobu, po kterou může být připojení přenosu otevřeno a čeká na odpověď před zavřením a otevřením nového připojení. Výchozí hodnota je 110 sekund.
 
-Toto nastavení platí, pouze když funkce keepalive je zakázáno, což obvykle platí jenom pro long dotazování přenosu. Následující diagram ukazuje účinek tohoto nastavení na dlouho dotazování připojení přenosu.
+Toto nastavení platí pouze v případě, že funkce kontroly naživu je zakázána, což obvykle platí pouze pro přenos dlouhého cyklického dotazování. Následující diagram znázorňuje účinek tohoto nastavení při dlouhodobém připojení přenosu s dotazem.
 
-![Dlouhé dotazování připojení pro přenos](handling-connection-lifetime-events/_static/image7.png)
+![Přenosové připojení dlouhého cyklického dotazování](handling-connection-lifetime-events/_static/image7.png)
 
 <a id="disconnecttimeout"></a>
 
-### <a name="disconnecttimeout"></a>DisconnectTimeout
+### <a name="disconnecttimeout"></a>Hodnota DisconnectTimeout
 
-Toto nastavení představuje dobu čekání po připojení přenosu dojde ke ztrátě vyčkat, než se `Disconnected` událostí. Výchozí hodnota je 30 sekund. Pokud nastavíte `DisconnectTimeout`, `KeepAlive` se automaticky nastaví na 1/3 `DisconnectTimeout` hodnotu.
+Toto nastavení představuje dobu, po kterou se má čekat po ztrátě připojení přenosu, než se vyvolala událost `Disconnected`. Výchozí hodnota je 30 sekund. Když nastavíte `DisconnectTimeout`, `KeepAlive` se automaticky nastaví na 1/3 hodnoty `DisconnectTimeout`.
 
 <a id="keepalive"></a>
 
-### <a name="keepalive"></a>KeepAlive
+### <a name="keepalive"></a>Udržení
 
-Toto nastavení představuje dobu čekání před odesláním paketu keepalive přes nečinné připojení. Výchozí hodnota je 10 sekund. Tato hodnota nesmí být více než 1/3 `DisconnectTimeout` hodnotu.
+Toto nastavení představuje dobu, po kterou se má čekat před odesláním paketu kontroly a času přes nečinné připojení. Výchozí hodnota je 10 sekund. Tato hodnota nesmí být větší než 1/3 hodnoty `DisconnectTimeout`.
 
-Pokud chcete nastavit i `DisconnectTimeout` a `KeepAlive`, nastavte `KeepAlive` po `DisconnectTimeout`. Jinak vaše `KeepAlive` nastavení se přepíšou, když `DisconnectTimeout` automaticky nastaví `KeepAlive` 1/3 hodnota časového limitu.
+Chcete-li nastavit `DisconnectTimeout` i `KeepAlive`, nastavte `KeepAlive` po `DisconnectTimeout`. V opačném případě bude nastavení `KeepAlive` přepsáno, pokud `DisconnectTimeout` automaticky nastaví `KeepAlive` na 1/3 z hodnoty časového limitu.
 
-Pokud chcete zakázat funkce keepalive, nastavte `KeepAlive` na hodnotu null. Automaticky se vypne funkce Keepalive dlouhou dobu přenosu cyklického dotazování.
+Pokud chcete zakázat funkci udržení naživu, nastavte `KeepAlive` na null. Funkce kontroly naživu je pro přenos dlouhého cyklického dotazování automaticky zakázaná.
 
 <a id="changetimeout"></a>
 
-### <a name="how-to-change-timeout-and-keepalive-settings"></a>Jak změnit nastavení časového limitu a keepalive
+### <a name="how-to-change-timeout-and-keepalive-settings"></a>Postup změny nastavení časových limitů a kontroly udržení
 
-Chcete-li změnit výchozí hodnoty pro tato nastavení, je nastavit `Application_Start` ve vašich *Global.asax* souboru, jak je znázorněno v následujícím příkladu. Hodnoty uvedené ve vzorovém kódu jsou stejné jako výchozí hodnoty.
+Chcete-li změnit výchozí hodnoty pro tato nastavení, nastavte je v `Application_Start` v souboru *Global. asax* , jak je znázorněno v následujícím příkladu. Hodnoty uvedené v ukázkovém kódu jsou stejné jako výchozí hodnoty.
 
 [!code-csharp[Main](handling-connection-lifetime-events/samples/sample1.cs)]
 
 <a id="notifydisconnect"></a>
 
-## <a name="how-to-notify-the-user-about-disconnections"></a>Jak informovat uživatele o odpojení
+## <a name="how-to-notify-the-user-about-disconnections"></a>Upozornění uživatele na odpojení
 
-V některých aplikacích můžete chtít zobrazit zprávu pro uživatele, když nejsou potíže s připojením k. Máte několik možností, jak a kdy se má provést. Následující ukázky kódu jsou pro JavaScript klienta pomocí vygenerovaný proxy server.
+V některých aplikacích může být vhodné zobrazit uživateli při potížích s připojením zprávu. Máte několik možností, jak a kdy to udělat. Následující ukázky kódu jsou pro klienta jazyka JavaScript pomocí vygenerovaného proxy serveru.
 
-- Zpracování `connectionSlow` události pro zobrazení zprávy, jakmile SignalR je seznámen problémy s připojením, než přejde do režimu opětovného připojení.
+- Zpracujte událost `connectionSlow`, aby se zobrazila zpráva, jakmile signál ví o problémech s připojením, než se přejde do režimu opětovného připojení.
 
     [!code-javascript[Main](handling-connection-lifetime-events/samples/sample2.js)]
-- Zpracování `reconnecting` události a zobrazení zprávy při SignalR ví o odpojení a přechází do režimu opětovného připojení.
+- Zpracujte událost `reconnecting`, aby zobrazila zprávu, když signál zná informace o odpojení a přechází do režimu opětovného připojení.
 
     [!code-javascript[Main](handling-connection-lifetime-events/samples/sample3.js)]
-- Zpracování `disconnected` události pro zobrazení zprávy při pokus o opakované připojení k vypršení časového limitu. V tomto scénáři je jediný způsob, jak znovu navázat spojení se serverem znovu restartování připojení SignalR voláním `Start` metodu, která se vytvoří nové ID připojení. Následující vzorový kód používá příznak, abyste měli jistotu, že se vydáte oznámení až po opětovně se připojujícího vypršení časového limitu, nikoli za normální ukončení připojení SignalR způsobilo voláním `Stop` metody.
+- Zpracuje událost `disconnected`, aby zobrazila zprávu, když vypršel časový limit pokusu o opětovné připojení. V tomto scénáři jediným způsobem, jak znovu navázat spojení se serverem, je restartování připojení k signalizaci voláním metody `Start`, která vytvoří nové ID připojení. Následující ukázka kódu používá příznak k tomu, abyste se ujistili, že budete vydávat oznámení až po vypršení časového limitu opětovného připojení, ne po normálním ukončení připojení k signalizaci, které bylo způsobené voláním metody `Stop`.
 
     [!code-javascript[Main](handling-connection-lifetime-events/samples/sample4.js)]
 
 <a id="continuousreconnect"></a>
 
-## <a name="how-to-continuously-reconnect"></a>Průběžně opětovné připojení
+## <a name="how-to-continuously-reconnect"></a>Postup nepřetržitého opětovného připojení
 
-V některých aplikacích můžete automaticky znovu navázat připojení poté, co byl ztracen a pokus o připojení vypršel. K tomuto účelu můžete volat `Start` metodu z vašeho `Closed` obslužné rutiny události (`disconnected` obslužné rutiny události na klientech JavaScript). Chcete počkat určitou dobu před voláním `Start` předejdete tím příliš často při serveru nebo fyzické připojení nejsou k dispozici. Následující ukázka kódu je pro JavaScript klienta pomocí vygenerovaný proxy server.
+V některých aplikacích můžete chtít automaticky znovu vytvořit připojení po jeho ztrátě a časový limit pokusu o opětovné připojení vypršel. To lze provést voláním metody `Start` z obslužné rutiny události `Closed` (`disconnected` obslužné rutiny události v klientech jazyka JavaScript). Možná budete chtít počkat časový interval před voláním `Start`, abyste se vyhnuli příliš často, když je server nebo fyzické připojení nedostupné. Následující ukázka kódu je pro JavaScriptový klient využívající vygenerovaný proxy server.
 
 [!code-javascript[Main](handling-connection-lifetime-events/samples/sample5.js)]
 
-Možný problém je potřeba vědět v mobilních klientů je, že průběžné nastavitelnou pokusy, kdy server nebo fyzické připojení není k dispozici může způsobit zbytečné baterie vyprazdňování.
+Možným problémem v mobilních klientech je to, že při pokusech o nepřetržité opětovné připojení, když je server nebo fyzické připojení dostupné, by mohlo dojít k zbytečnému vyprázdnění baterie.
 
 <a id="disconnectclientfromserver"></a>
 
-## <a name="how-to-disconnect-a-client-in-server-code"></a>Jak odpojení klienta v kódu serveru
+## <a name="how-to-disconnect-a-client-in-server-code"></a>Odpojení klienta v serverovém kódu
 
-Funkce SignalR verze 1.1.1 nemá integrovaného serveru rozhraní API pro odpojení klienti. Existují [plány pro přidání této funkce v budoucnu](https://github.com/SignalR/SignalR/issues/2101). V aktuální verzi SignalR je nejjednodušší způsob, jak odpojení klienta od serveru implementovat metodu odpojit na straně klienta a volání metody ze serveru. Následující příklad kódu ukazuje metodu odpojit pro JavaScript klienta pomocí vygenerovaný proxy server.
+Signal verze 1.1.1 nemá integrované serverové rozhraní API pro odpojení klientů. V budoucnu jsou k dispozici [plány pro přidání této funkce](https://github.com/SignalR/SignalR/issues/2101). Nejjednodušší způsob, jak odpojit klienta ze serveru, je v aktuálním vydání signalizace implementace metody odpojení na straně klienta a volání této metody ze serveru. Následující ukázka kódu ukazuje metodu odpojení pro klienta jazyka JavaScript pomocí vygenerovaného proxy serveru.
 
 [!code-javascript[Main](handling-connection-lifetime-events/samples/sample6.js)]
 
 > [!WARNING]
-> Zabezpečení – tuto metodu pro odpojení klienti ani rozhraní API navržených integrované bude zabývat scénář napadené klienty se systémem škodlivý kód, protože klienti mohli znovu připojit nebo může dojít k odebrání napadené kód `stopClient` metodu nebo změňte Co to dělá. Na příslušné místo k implementaci stavové ochrany s cílem odepření služby (DOS) je v rámci nebo vrstvy serveru, ale v front-endové infrastruktury.
+> Zabezpečení – ani tato metoda odpojení klientů ani navržený integrovaný rozhraní API bude řešit scénář napadených klientů, na kterých běží škodlivý kód, protože se klienti mohou znovu připojit nebo by napadený kód mohl odebrat metodu `stopClient` nebo změnit jejich chování. Příslušné místo pro implementaci stavové ochrany DOS (Denial of Service) není v architektuře ani ve vrstvě serveru, ale spíše v infrastruktuře front-endu.

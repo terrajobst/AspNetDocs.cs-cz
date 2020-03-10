@@ -9,11 +9,11 @@ ms.assetid: 35798f21-1606-434b-83f8-30166906ef49
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/updating-and-deleting-existing-binary-data-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 3e37381ee48fcda8e0e10374aa7a6ae53c3cc77c
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74587056"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78587820"
 ---
 # <a name="updating-and-deleting-existing-binary-data-c"></a>Aktualizace a odstranění stávajících binárních dat (C#)
 
@@ -53,7 +53,7 @@ Poslední obrazovka průvodce vás požádá o pojmenování nové metody TableA
 
 Kromě aktualizace DAL potřebujeme aktualizovat knihoven BLL a zahrnout do nich metody aktualizace a odstranění kategorie. Jedná se o metody, které budou vyvolány z prezentační vrstvy.
 
-Pro odstranění kategorie můžeme použít automaticky generovanou metodu `Delete` `CategoriesTableAdapter` s. Do `CategoriesBLL` třídy přidejte následující metodu:
+Pro odstranění kategorie můžeme použít automaticky generovanou metodu `Delete` `CategoriesTableAdapter` s. Do třídy `CategoriesBLL` přidejte následující metodu:
 
 [!code-csharp[Main](updating-and-deleting-existing-binary-data-cs/samples/sample2.cs)]
 
@@ -298,7 +298,7 @@ Když upravíte kategorii a nahrajete image JPG, obrázek se v prohlížeči nev
 > [!NOTE]
 > Rozhraní pro vložení a úpravu stránky `UpdatingAndDeleting.aspx` můžou používat trochu více práce. `CategoryName` a `Description` BoundFields v ovládacím prvku DetailsView a GridView by měly být převedeny na TemplateFields. Vzhledem k tomu, že `CategoryName` nepovoluje `NULL` hodnoty, je třeba přidat RequiredFieldValidator. A `Description` textové pole by pravděpodobně bylo převedeno do víceřádkového textového pole. Tato dokončíme jako cvičení.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu se dokončí náš pohled na práci s binárními daty. V tomto kurzu a předchozích třech jsme viděli, jak můžou být binární data uložená v systému souborů nebo přímo v rámci databáze. Uživatel poskytne systému binární data, a to tak, že vybere soubor z jeho pevného disku a nahraje ho na webový server, kde může být uložený v systému souborů nebo vložený do databáze. ASP.NET 2,0 obsahuje ovládací prvek pro nahrání souborů, který poskytuje takové rozhraní jako snadné a přetahování. Jak je uvedeno v kurzu [nahrávání souborů](uploading-files-cs.md) , je ovládací prvek nahrání souborů vhodný pouze pro relativně malá nahrávání souborů, v ideálním případě nepřekračuje megabajt. Prozkoumali jsme také, jak přidružit nahraná data k základnímu datovému modelu, a jak upravit a odstranit binární data z existujících záznamů.
 

@@ -1,137 +1,137 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-10
-title: 'Část 10: Závěrečné aktualizace návrhu navigace a webu, závěr | Dokumentace Microsoftu'
+title: 'Část 10: konečné aktualizace navigace a navrhování webů, závěr | Microsoft Docs'
 author: jongalloway
-description: V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. Část 10 popisuje závěrečné aktualizace navigace a S...
+description: V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace úložiště ASP.NET MVC pro hudební úložiště. Část 10 pokrývá konečné aktualizace navigace a S...
 ms.author: riande
 ms.date: 04/21/2011
 ms.assetid: 0c6e4c2f-fcdb-4978-9656-1990c6f15727
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-10
 msc.type: authoredcontent
 ms.openlocfilehash: f701d1fbabc3e1a97c3750d00e96bf8dba1105cd
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65129721"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78539366"
 ---
-# <a name="part-10-final-updates-to-navigation-and-site-design-conclusion"></a>Část 10: Závěrečné aktualizace návrhu navigace a webu, závěr
+# <a name="part-10-final-updates-to-navigation-and-site-design-conclusion"></a>10. část: Závěrečné aktualizace návrhu navigace a webu, závěr
 
-podle [Jon Galloway](https://github.com/jongalloway)
+o [Jan Galloway](https://github.com/jongalloway)
 
-> MVC Music Store jde o kurz, který se seznámíte, podrobné postupy pro vývoj pro web pomocí ASP.NET MVC a sady Visual Studio.  
+> Hudební úložiště MVC je výuková aplikace, která zavádí a vysvětluje krok za krokem, jak používat ASP.NET MVC a Visual Studio pro vývoj webů.  
 >   
-> Music Store MVC je jednoduché ukázku implementace úložiště prodává hudebních alb online, který implementuje správu základního webu, přihlášení uživatele a nákupního košíku funkce.  
+> Úložiště hudby MVC je zjednodušená ukázka implementace úložiště, která prodává hudební alba online a implementuje základní funkce pro správu webů, přihlašování uživatelů a nákupních košíků.  
 >   
-> V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. 10. část se věnuje závěrečné aktualizace návrhu navigace a webu, závěr.
+> V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace úložiště ASP.NET MVC pro hudební úložiště. Část 10 pokrývá konečné aktualizace navigace a návrhu lokality, závěr.
 
-Jsme pro náš web dokončili všechny hlavní funkce, ale máme některé funkce, které chcete přidat k navigaci na webu, na domovské stránce a stránce procházet Store.
+Dokončili jsme všechny hlavní funkce pro náš web, ale pořád máme k dispozici některé funkce, které by bylo možné přidat do navigace na webu, na domovské stránce a na stránce pro procházení ve Storu.
 
-## <a name="creating-the-shopping-cart-summary-partial-view"></a>Vytvoření nákupního košíku částečné zobrazení se souhrnnými
+## <a name="creating-the-shopping-cart-summary-partial-view"></a>Vytvoření částečného zobrazení souhrnu nákupního košíku
 
-Chcete vystavit počet položek v nákupním košíku uživatele napříč celou lokalitu.
+Chceme vystavit počet položek v nákupním košíku v rámci celé lokality.
 
 ![](mvc-music-store-part-10/_static/image1.png)
 
-Můžeme to snadno implementovat tak, že vytvoříte částečné zobrazení, která se přidá do našich Site.master.
+To lze snadno implementovat vytvořením částečného zobrazení, které je přidáno do našeho webu. Master.
 
-Jak bylo uvedeno výše, zahrnuje kontroleru ShoppingCart CartSummary metody akce, které vrací částečné zobrazení:
+Jak je uvedeno výše, kontroler ShoppingCart zahrnuje metodu CartSummary akce, která vrací částečné zobrazení:
 
 [!code-csharp[Main](mvc-music-store-part-10/samples/sample1.cs)]
 
-Chcete-li vytvořit CartSummary částečné zobrazení, klikněte pravým tlačítkem na složku zobrazení/ShoppingCart a vyberte Přidat zobrazení. Název zobrazení CartSummary a zaškrtněte políčko "Vytvořit částečné zobrazení", jak je znázorněno níže.
+Chcete-li vytvořit částečné zobrazení CartSummary, klikněte pravým tlačítkem myši na složku views/ShoppingCart a vyberte možnost přidat zobrazení. Pojmenujte zobrazení CartSummary a zaškrtněte políčko "vytvořit částečné zobrazení", jak je znázorněno níže.
 
 ![](mvc-music-store-part-10/_static/image2.png)
 
-Částečné zobrazení CartSummary je opravdu jednoduché – je pouze odkaz na zobrazení ShoppingCart Index, který zobrazuje počet položek v košíku. Kompletní kód CartSummary.cshtml vypadá takto:
+Částečné zobrazení CartSummary je ve skutečnosti jednoduché – jedná se pouze o odkaz na zobrazení indexu ShoppingCart, které zobrazuje počet položek na vozíku. Úplný kód pro CartSummary. cshtml je následující:
 
 [!code-cshtml[Main](mvc-music-store-part-10/samples/sample2.cshtml)]
 
-Na libovolné stránce na webu, včetně hlavnímu serveru pomocí metody Html.RenderAction jsme může zahrnovat částečné zobrazení. RenderAction vyžaduje, abychom mohli zadat název akce ("CartSummary") a názvu Kontroleru ("ShoppingCart") jako níže.
+Částečné zobrazení na jakékoli stránce v lokalitě, včetně hlavního serveru, můžeme přidat pomocí metody HTML. RenderAction. RenderAction vyžaduje, abychom určili název akce ("CartSummary") a název kontroleru ("ShoppingCart"), jak je uvedeno níže.
 
 [!code-cshtml[Main](mvc-music-store-part-10/samples/sample3.cshtml)]
 
-Před přidáním to k webu rozložení, vytvoříme i nabídce žánr proto všechny naše Site.master aktualizace najednou.
+Před přidáním tohoto webu do rozložení lokality vytvoříme také nabídku Žánr, abychom mohli najednou vytvořit všechny aktualizace webu. Master.
 
-## <a name="creating-the-genre-menu-partial-view"></a>Vytváření žánr částečného zobrazení nabídky
+## <a name="creating-the-genre-menu-partial-view"></a>Vytvoření částečného zobrazení nabídky žánru
 
-Můžeme provádět je mnohem snazší pro naši uživatelé procházet úložiště tak, že přidáte žánr nabídky, který vypíše všechny žánry k dispozici v našem úložišti.
+Díky přidání nabídky žánru, která obsahuje všechny žánry, které jsou k dispozici v našem obchodě, můžeme pro naše uživatele mnohem usnadnit navigaci v obchodě.
 
 ![](mvc-music-store-part-10/_static/image3.png)
 
-Budeme postupovat stejný postup také vytvořit GenreMenu částečné zobrazení, a potom můžeme přidat je do hlavní větve serveru. Nejprve přidejte následující akce kontroleru GenreMenu k StoreController:
+Budeme postupovat podle stejných kroků také při vytváření GenreMenu částečného zobrazení a pak je můžeme přidat do hlavního serveru. Nejprve přidejte následující akci GenreMenu Controller do StoreController:
 
 [!code-csharp[Main](mvc-music-store-part-10/samples/sample4.cs)]
 
-Tato akce vrátí seznam hodnot žánry, které se zobrazí podle částečné zobrazení, které budou dalších krocích vytvoříme.
+Tato akce vrátí seznam žánrů, které se zobrazí v částečném zobrazení, které vytvoříme v dalším kroku.
 
-*Poznámka: Atribut [ChildActionOnly] jsme přidali do této akce kontroleru, který označuje, že chceme jenom tato akce pro použití v částečné zobrazení. Tento atribut nebudou moct být prováděn tak, že přejdete do /Store/GenreMenu akce kontroleru. Není to povinné pro částečné zobrazení, ale je dobrým zvykem, protože chceme mít jistotu, že naše akce kontroleru se používají jako plánujeme. Můžeme také vrací PartialView spíše než zobrazení, které vám umožní zobrazovací modul ví, že neměli používat rozložení pro toto zobrazení, jak je zahrnuto v ostatních zobrazeních.*
+*Poznámka: Přidali jsme do této akce kontroleru atribut [ChildActionOnly], který indikuje, že tuto akci chcete použít jenom z částečného zobrazení. Tento atribut zabrání spuštění akce kontroleru procházením na/Store/GenreMenu. To se nevyžaduje u částečných zobrazení, ale je to dobrý postup, protože chceme zajistit, aby se naše akce kontroleru používaly jako v úmyslu. Vracíme také PartialView namísto zobrazení, což umožňuje, aby modul zobrazení věděl, že by neměl používat rozložení pro toto zobrazení, protože je zahrnutý v jiných zobrazeních.*
 
-Klikněte pravým tlačítkem na akce kontroleru GenreMenu a vytvořit částečné zobrazení s názvem GenreMenu, což je silně typováno pomocí třídy rozšířením podle tematických zobrazení dat, jak je znázorněno níže.
+Klikněte pravým tlačítkem na akci GenreMenu Controller a vytvořte částečné zobrazení s názvem GenreMenu se silným typem pomocí třídy zobrazení žánru, jak je znázorněno níže.
 
 ![](mvc-music-store-part-10/_static/image4.png)
 
-Aktualizace kódu zobrazení pro částečné zobrazení GenreMenu pro zobrazení položek neuspořádaný seznam následujícím způsobem.
+Aktualizujte kód zobrazení pro částečné zobrazení GenreMenu pro zobrazení položek pomocí neuspořádaného seznamu následujícím způsobem.
 
 [!code-cshtml[Main](mvc-music-store-part-10/samples/sample5.cshtml)]
 
-## <a name="updating-site-layout-to-display-our-partial-views"></a>Aktualizace rozložení webu do našich částečné zobrazení
+## <a name="updating-site-layout-to-display-our-partial-views"></a>Aktualizace rozložení lokality pro zobrazení našich částečných zobrazení
 
-Přidáme náš částečné zobrazení k rozložení webu (/Zobrazit/Shared/\_Layout.cshtml) voláním Html.RenderAction(). Přidáme je do, jakož i některé další značky se zobrazí, jak je znázorněno níže:
+Naše částečná zobrazení můžeme přidat do rozložení webu (/Views/Shared/\_layout. cshtml) voláním HTML. RenderAction (). Přidáme je do obou i do některých dalších značek k jejich zobrazení, jak je znázorněno níže:
 
 [!code-cshtml[Main](mvc-music-store-part-10/samples/sample6.cshtml)]
 
-Nyní když jsme aplikaci spustit, uvidíme žánr v levé navigační oblasti a košíku v horní části.
+Teď, když aplikaci spustíme, uvidíme v levé navigační oblasti a v horní části košíku.
 
-## <a name="update-to-the-store-browse-page"></a>Aktualizovat stránku procházet Store
+## <a name="update-to-the-store-browse-page"></a>Aktualizace stránky pro procházení úložiště
 
-Stránka procházet Store je funkční, ale nevypadá velmi dobré. Abychom mohli aktualizovat stránku zobrazíte alba lepšího rozložení aktualizováním zobrazení kódu (nachází se /Views/Store/Browse.cshtml) následujícím způsobem:
+Stránka pro procházení úložiště je funkční, ale nevypadá velmi dobrá. Stránku můžete aktualizovat tak, aby zobrazovala alba ve lepším rozložení, a to tak, že aktualizujete kód zobrazení (najdete v/Views/Store/Browse.cshtml) následujícím způsobem:
 
 [!code-cshtml[Main](mvc-music-store-part-10/samples/sample7.cshtml)]
 
-Tady jsou nyní používají Url.Action spíše než Html.ActionLink, můžete použít speciální formátování na propojení zahrnout alba obrázky.
+V tomto případě používáme adresu URL. Action namísto HTML. ActionLink, aby bylo možné pro odkaz použít speciální formátování, aby se zahrnula kresba alba.
 
-*Poznámka: Zobrazení jsme obecná alb tyto alb. Tyto informace jsou uloženy v databázi a je možné upravovat prostřednictvím Správce Store. Určitě chcete-li přidat vlastní obrázky.*
+*Poznámka: pro tato alba zobrazujeme obecné pokrytí alba. Tyto informace jsou uloženy v databázi a lze je upravovat prostřednictvím Správce úložiště. Vítá vás přidání vlastní kresby.*
 
-Nyní když jsme procházet rozšířením podle tematických, uvidíme alb je znázorněno v mřížka s obrázky alba.
+Když teď procházíme na Žánr, uvidíme alba zobrazená v mřížce s kresbou alba.
 
 ![](mvc-music-store-part-10/_static/image5.png)
 
-## <a name="updating-the-home-page-to-show-top-selling-albums"></a>Aktualizuje se na domovskou stránku a zobrazit prodej alb nahoru
+## <a name="updating-the-home-page-to-show-top-selling-albums"></a>Aktualizace domovské stránky, aby se zobrazila nejlepší prodejní alba
 
-Chceme, aby funkce naší nejvyšší prodeje alb na domovskou stránku a zvýšit prodej. Provedeme některé aktualizace s naší HomeController ke zpracování a přidat některé další grafiky.
+Chceme vymezit naše nejlepší prodejní alba na domovské stránce a zvýšit tak prodej. Provedeme některé aktualizace našich HomeControllerů, abychom to zpracovávala a mohli přidat i další grafiku.
 
-Nejprve přidáme navigační vlastnost pro naše třída alba tak, aby EntityFramework ví, že jsou přidružené. Několik posledních řádků z našich **alba** třídy by teď měl vypadat takto:
+Nejprve přidáme vlastnost navigace do naší třídy alba, aby EntityFramework ví, že jsou přidružená. Poslední pár řádků naší třídy **alba** by teď měl vypadat takto:
 
 [!code-csharp[Main](mvc-music-store-part-10/samples/sample8.cs)]
 
-*Poznámka: To vyžaduje přidání pomocí příkazu pro System.Collections.Generic – obor názvů.*
+*Poznámka: Tato akce vyžaduje přidání příkazu Using, který se má přenést do oboru názvů System. Collections. Generic.*
 
-Nejprve přidáme storeDB pole a MvcMusicStore.Models pomocí příkazů, stejně jako v našich řadiče. V dalším kroku přidáme následující metodu HomeController, který se dotazuje databázi najít hlavní alb prodej podle OrderDetails.
+Nejprve přidáme pole storeDB a MvcMusicStore. Models pomocí příkazů, jako u našich dalších řadičů. Dále do HomeController přidáme následující metodu, která bude dotazovat se na naši databázi, aby se vyhledaly nejlepší prodejní alba podle OrderDetails.
 
 [!code-csharp[Main](mvc-music-store-part-10/samples/sample9.cs)]
 
-Toto je privátní metodu, protože nechceme, aby byl k dispozici jako akce kontroleru. Jsme včetně v HomeController pro zjednodušení, ale doporučujeme přesunout vaši obchodní logiku do třídy samostatné služby podle potřeby.
+Jedná se o soukromou metodu, protože ji nechceme zpřístupnit jako akci kontroleru. Do HomeControlleru nabízíme pro jednoduchost, ale doporučujeme, abyste obchodní logiku přesunuli na samostatné třídy služby podle potřeby.
 
-To na místě abychom mohli aktualizovat Index akce kontroleru pro dotazování hlavních 5 prodej alba a vrátit do zobrazení.
+V takovém případě můžeme aktualizovat akci kontroleru indexů a dotazovat se na prvních 5 prodejních alb a vrátit je do zobrazení.
 
 [!code-csharp[Main](mvc-music-store-part-10/samples/sample10.cs)]
 
-Kompletní kód pro aktualizovaný HomeController je uvedeno dále.
+Úplný kód pro aktualizovaný HomeController je znázorněný níže.
 
 [!code-csharp[Main](mvc-music-store-part-10/samples/sample11.cs)]
 
-Nakonec potřebujeme aktualizace našich zobrazení Home Index tak, aby ho můžete zobrazit seznam alb aktualizace typu modelu a přidáním do dolní části seznamu alb. My podnikneme této příležitosti a také přidat nadpis a povýšení části na stránku.
+Nakonec budeme muset aktualizovat naše zobrazení domovského indexu tak, aby bylo možné zobrazit seznam alb aktualizací typu modelu a přidáním seznamu alb do dolní části. Pomůžeme vám také přidat záhlaví a oddíl propagace na stránku.
 
 [!code-cshtml[Main](mvc-music-store-part-10/samples/sample12.cshtml)]
 
-Nyní když jsme aplikaci spustit, uvidíme aktualizované domovské stránky s nejvyšší prodejní alba a naše propagační zprávy.
+Teď, když aplikaci spustíme, uvidíme naši aktualizovanou domovskou stránku s nejlepšími prodejními alba a naší propagační zprávou.
 
 ![](mvc-music-store-part-10/_static/image1.jpg)
 
 ## <a name="conclusion"></a>Závěr
 
-Viděli jsme, že technologie ASP.NET MVC lze snadno vytvořit sofistikované web se přístup k databázi, členství, AJAX, atd. poměrně rychle. Snad v tomto kurzu, má udělené vám nástroje, které potřebujete, abyste mohli začít vytvářet své vlastní technologie ASP.NET MVC aplikace!
+Zjistili jsme, že ASP.NET MVC usnadňuje vytváření sofistikovaných webů s přístupem k databázi, členstvím, AJAX atd. poměrně rychle. Snad v tomto kurzu jste získali nástroje, které potřebujete, abyste mohli začít vytvářet vlastní aplikace ASP.NET MVC.
 
 > [!div class="step-by-step"]
 > [Předchozí](mvc-music-store-part-9.md)

@@ -9,11 +9,11 @@ ms.assetid: 664ec95e-b0c9-4f43-a39f-798d0f2a7e08
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal
 msc.type: authoredcontent
 ms.openlocfilehash: 62d00a86c6c5845fb894896df65002c7086d039f
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74615138"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78565406"
 ---
 # <a name="checkout-and-payment-with-paypal"></a>Pokladna a platba přes PayPal
 
@@ -31,7 +31,7 @@ Existuje několik zkušených platebních procesorů třetích stran, které se 
 > 
 > Ukázková aplikace Wingtip Toys byla navržena tak, aby zobrazovala konkrétní koncepty a funkce ASP.NET, které jsou k dispozici pro webové vývojáře ASP.NET. Tato ukázková aplikace nebyla optimalizována pro všechny možné situace v souvislosti s škálovatelností a zabezpečením.
 
-## <a name="what-youll-learn"></a>Co se naučíte:
+## <a name="what-youll-learn"></a>Naučíte se:
 
 - Omezení přístupu ke konkrétním stránkám ve složce.
 - Jak vytvořit známý nákupní košík z anonymního nákupního košíku
@@ -92,10 +92,10 @@ Nyní vytvoříte složku pro *rezervaci* a stránky, které bude zákazník uvi
 6. Stejně jako dřív vyberte soubor *Web. Master* jako stránku předlohy.
 7. Přidejte následující další stránky do složky *rezervací* pomocí výše uvedených kroků:   
 
-    - CheckoutReview. aspx
-    - CheckoutComplete. aspx
-    - CheckoutCancel. aspx
-    - CheckoutError. aspx
+    - CheckoutReview.aspx
+    - CheckoutComplete.aspx
+    - CheckoutCancel.aspx
+    - CheckoutError.aspx
 
 ### <a name="add-a-webconfig-file"></a>Přidat soubor Web. config
 
@@ -128,7 +128,7 @@ Je důležité si uvědomit, že konfigurace ASP.NET se řídí hierarchií, kde
 6. Změňte **adresu URL projektu** tak, aby používala **adresu URL SSL** , kterou jste předtím uložili.   
     ](checkout-and-payment-with-paypal/_static/image5.png) ![Project Web Properties
 7. Uložte stránku stisknutím **kombinace kláves CTRL + S**.
-8. Stisknutím **kombinace kláves CTRL + F5** spusťte aplikaci. Visual Studio zobrazí možnost, která vám umožní vyhnout se upozornění SSL.
+8. Aplikaci spustíte stisknutím kombinace kláves **Ctrl+F5**. Visual Studio zobrazí možnost, která vám umožní vyhnout se upozornění SSL.
 9. Kliknutím na **Ano** důvěřujete IIS Express certifikátu SSL a pokračujte.   
     podrobnosti certifikátu ![IIS Express SSL](checkout-and-payment-with-paypal/_static/image6.png)  
  Zobrazí se upozornění zabezpečení.
@@ -187,7 +187,7 @@ Následující postup vám umožní přidat poskytovatele ověřování Google.
     [!code-csharp[Main](checkout-and-payment-with-paypal/samples/sample7.cs?highlight=64-65)]
 15. Stisknutím **kombinace kláves CTRL + F5** Sestavte a spusťte aplikaci. Klikněte na odkaz **Přihlásit** se.
 16. V části **použít jinou službu pro přihlášení**klikněte na **Google**.  
-    ![přihlášení](checkout-and-payment-with-paypal/_static/image11.png)
+    ![Přihlásit se](checkout-and-payment-with-paypal/_static/image11.png)
 17. Pokud potřebujete zadat svoje přihlašovací údaje, budete přesměrováni na web Google, kam budete zadávat svoje přihlašovací údaje.  
     ![Google – přihlášení](checkout-and-payment-with-paypal/_static/image12.png)
 18. Po zadání přihlašovacích údajů se zobrazí výzva k udělení oprávnění k této webové aplikaci, kterou jste právě vytvořili.  
@@ -290,7 +290,7 @@ Většinu kódu PayPal umístíte do jediné třídy. Tato třída obsahuje meto
    Zobrazí se dialogové okno **Přidat novou položku** .
 2. V **části C# vizuál** z **nainstalovaného** podokna na levé straně vyberte **kód**.
 3. V prostředním podokně vyberte **Třída**. Pojmenujte tuto novou třídu **PayPalFunctions.cs**.
-4. Klikněte na tlačítko **Přidat**.  
+4. Klikněte na **Přidat**.  
    V editoru se zobrazí nový soubor třídy.
 5. Nahraďte výchozí kód následujícím kódem:  
 
@@ -381,7 +381,7 @@ Ovládací prvek **DetailsView** slouží k zobrazení podrobností objednávky,
 
 > [!NOTE] 
 > 
-> **Popisek**
+> **Tip**
 > 
 > V kódu stránky *CheckoutReview. aspx* si všimněte, že značka `<ItemStyle>` slouží ke změně stylu položek v ovládacím prvku **DetailsView** v dolní části stránky. Zobrazením stránky v **návrhovém zobrazení** (výběrem možnosti **Návrh** v levém dolním rohu sady Visual Studio) a následným výběrem ovládacího prvku **DetailsView** a vybráním **inteligentní značky** (ikona šipky v pravé horní části ovládacího prvku) uvidíte **úkoly DetailsView**.
 > 
@@ -495,11 +495,11 @@ Data obsažená v souboru databáze *wingtiptoys. mdf* můžete zkontrolovat pom
 12. Pravým tlačítkem myši klikněte na soubor databáze Wingtip Toys (*wingtiptoys. mdf*) a vyberte **Zavřít připojení**.
 13. Pokud se okno **Průzkumník řešení** nezobrazí, klikněte v dolní části okna **Průzkumník serveru** na **Průzkumník řešení** a znovu zobrazte **Průzkumník řešení** .
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste přidali schémata podrobností o objednávkách a objednávkách pro sledování nákupu produktů. Do ukázkové aplikace Wingtip Toys jste také integrovaných funkcí služby PayPal.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 [Přehled konfigurace ASP.NET](https://msdn.microsoft.com/library/ms178683(v=vs.100).aspx)  
 [Nasazení zabezpečené aplikace webových formulářů ASP.NET pomocí členství, protokolu OAuth a SQL Database pro Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)  

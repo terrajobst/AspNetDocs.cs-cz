@@ -1,23 +1,23 @@
 ---
 uid: mvc/overview/older-versions/index
-title: Starší verze – MVC 3 a 4 | Dokumentace Microsoftu
+title: Starší verze – MVC 3 a 4 | Microsoft Docs
 author: rick-anderson
-description: Odkazy na zdroje informací pro výuku použijte dřívější verze technologie ASP.NET MVC.
+description: Odkazy na zdroje informací o tom, jak používat starší verze ASP.NET MVC.
 ms.author: riande
 ms.date: 10/09/2014
 ms.assetid: 151cd274-3daa-4f88-ad3b-bffb99a9d545
 msc.legacyurl: /mvc/overview/older-versions
 msc.type: chapter
 ms.openlocfilehash: aa38ea8984f958939261d494f65bfa2108f87068
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65112457"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78560051"
 ---
 # <a name="older-versions---mvc-3-and-4"></a>Starší verze – MVC 3 a 4
 
-> Odkazy na zdroje informací pro výuku použijte dřívější verze technologie ASP.NET MVC.
+> Odkazy na zdroje informací o tom, jak používat starší verze ASP.NET MVC.
 
 - [Začínáme s ASP.NET MVC 4](getting-started-with-aspnet-mvc4/index.md)
 
@@ -81,24 +81,24 @@ ms.locfileid: "65112457"
 - [Vytvoření aplikace MVC 3 se syntaxí Razor a nerušivým JavaScriptem](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript.md)
 - [Aplikace MVC 3 Music Store](mvc-music-store/index.md)
 
-    - [Část 1: Přehled a soubor -> Nový projekt](mvc-music-store/mvc-music-store-part-1.md)
-    - [Část 2: Kontrolery](mvc-music-store/mvc-music-store-part-2.md)
-    - [3. část: Zobrazení a modely ViewModels](mvc-music-store/mvc-music-store-part-3.md)
+    - [1. část: Přehled a Soubor->Nový projekt](mvc-music-store/mvc-music-store-part-1.md)
+    - [2. část: Kontrolery](mvc-music-store/mvc-music-store-part-2.md)
+    - [3. část: Zobrazení a modely ViewModel](mvc-music-store/mvc-music-store-part-3.md)
     - [4. část: Modely a přístup k datům](mvc-music-store/mvc-music-store-part-4.md)
-    - [5. část: Upravit formuláře a šablonování textu](mvc-music-store/mvc-music-store-part-5.md)
+    - [5. část: Editační formuláře a šablonování textu](mvc-music-store/mvc-music-store-part-5.md)
     - [6. část: Používání datových poznámek k ověření modelu](mvc-music-store/mvc-music-store-part-6.md)
-    - [Část 7: Členství a ověřování](mvc-music-store/mvc-music-store-part-7.md)
-    - [Část 8: Nákupní košík s aktualizacemi Ajax](mvc-music-store/mvc-music-store-part-8.md)
+    - [7. část: Členství a ověřování](mvc-music-store/mvc-music-store-part-7.md)
+    - [8. část: Nákupní košík s aktualizacemi Ajax](mvc-music-store/mvc-music-store-part-8.md)
     - [9. část: Registrace a pokladna](mvc-music-store/mvc-music-store-part-9.md)
-    - [Část 10: Závěrečné aktualizace návrhu navigace a webu, závěr](mvc-music-store/mvc-music-store-part-10.md)
+    - [10. část: Závěrečné aktualizace návrhu navigace a webu, závěr](mvc-music-store/mvc-music-store-part-10.md)
 - [MVC 3 – překryvný kalendář s prvkem DatePicker v uživatelském rozhraní HTML5 a jQuery](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/index.md)
 
     - [Překryvný kalendář s prvkem DatePicker v uživatelském rozhraní HTML5 a jQuery v ASP.NET MVC – 1. část](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1.md)
     - [Překryvný kalendář s prvkem DatePicker v uživatelském rozhraní HTML5 a jQuery v ASP.NET MVC – 2. část](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2.md)
-    - [HTML5 a kalendáře jQuery UI Datepicker s architekturou ASP.NET MVC – část 3](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3.md)
+    - [Místní nabídka HTML5 a DatePicker uživatelského rozhraní jQuery s ASP.NET MVC – část 3](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3.md)
     - [Překryvný kalendář s prvkem DatePicker v uživatelském rozhraní HTML5 a jQuery v ASP.NET MVC – 4. část](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-4.md)
 - [MVC 3 – práce s polem DropDownList a rozhraním jQuery](working-with-the-dropdownlist-box-and-jquery/index.md)
 
     - [Použití pomocné rutiny DropDownList s ASP.NET MVC](working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc.md)
-    - [Zkoumání, jak ASP.NET MVC vygeneruje uživatelské rozhraní pomocné rutiny DropDownList](working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)
+    - [Prozkoumání způsobu, jakým se v ASP.NETu MVC vygeneruje Pomocník pro DropDownList](working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)
     - [Přidání nové kategorie do ovládacího prvku DropDownList v uživatelském rozhraní jQuery](working-with-the-dropdownlist-box-and-jquery/adding-a-new-category-to-the-dropdownlist-using-jquery-ui.md)

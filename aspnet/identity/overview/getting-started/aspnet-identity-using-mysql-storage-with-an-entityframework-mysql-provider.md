@@ -1,8 +1,8 @@
 ---
 uid: identity/overview/getting-started/aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider
-title: 'ASP.NET Identity: Použití úložiště MySQL zprostředkovatele EntityFramework MySQL (C#) – ASP.NET 4.x'
+title: 'ASP.NET Identity: použití úložiště MySQL s poskytovatelem EntityFramework MySQL (C#)-ASP.NET 4. x'
 author: maumar
-description: V tomto kurzu se dozvíte, jak nahradit výchozí mechanismus úložiště dat pro ASP.NET Identity objektu EntityFramework (zprostředkovatel SQL klient) s MySQL zajištění...
+description: V tomto kurzu se dozvíte, jak nahradit výchozí mechanismus úložiště dat pro ASP.NET Identity pomocí EntityFramework (poskytovatele klienta SQL) s provid MySQL...
 ms.author: riande
 ms.date: 12/10/2013
 ms.assetid: 15253312-a92c-43ba-908e-b5dacd3d08b8
@@ -10,158 +10,158 @@ ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider
 msc.type: authoredcontent
 ms.openlocfilehash: e89ed139657c5ce9ddcc56879946c62038919483
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65121448"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78584005"
 ---
 # <a name="aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider-c"></a>ASP.NET Identity: Použití úložiště MySQL zprostředkovatele EntityFramework MySQL (C#)
 
-podle [Maurycy Markowski](https://github.com/maumar), [Raquel Soares De Almeida](https://github.com/raquelsa), [Robert McMurray](https://github.com/rmcmurray)
+od [Maurycy Markowski](https://github.com/maumar), [Raquel Soares de Almeida](https://github.com/raquelsa), [Robert blog](https://github.com/rmcmurray)
 
-> V tomto kurzu se dozvíte, jak nahradit výchozí mechanismem úložiště dat pro [ **ASP.NET Identity** ](introduction-to-aspnet-identity.md) s s MySQL zprostředkovatele EntityFramework (zprostředkovatel SQL klient).
+> V tomto kurzu se dozvíte, jak nahradit výchozí mechanismus úložiště dat pro [**ASP.NET identity**](introduction-to-aspnet-identity.md) pomocí EntityFramework (poskytovatele klienta SQL) s poskytovatelem MySQL.
 
-V následujících tématech se budeme v tomto kurzu:
+V tomto kurzu se pokryje následující témata:
 
-- Vytváří se databáze MySQL v Azure
+- Vytvoření databáze MySQL v Azure
 - Vytvoření aplikace MVC pomocí šablony Visual Studio 2013 MVC
-- Konfigurace objektu EntityFramework pro práci s poskytovatele databáze MySQL
-- Spuštění aplikace ověřit výsledky
+- Konfigurace EntityFramework pro práci s poskytovatelem databáze MySQL
+- Spuštění aplikace za účelem ověření výsledků
 
-Na konci tohoto kurzu budete mít aplikace MVC s ASP.NET Identity ukládat, která používá databázi MySQL, který je hostován v Azure.
+Na konci tohoto kurzu budete mít aplikaci MVC s úložištěm ASP.NET Identity, které používá databázi MySQL hostovanou v Azure.
 
 ## <a name="creating-a-mysql-database-instance-on-azure"></a>Vytvoření instance databáze MySQL v Azure
 
 1. Přihlaste se k [webu Azure Portal](https://go.microsoft.com/fwlink/?linkid=529715&amp;clcid=0x409).
-2. Klikněte na tlačítko **nový** v dolní části stránky a pak vyberte **úložiště**:
+2. V dolní části stránky klikněte na **Nový** a vyberte **Uložit**:
 
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image2.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image1.png)
-3. V **zvolit a doplněk** průvodce, vyberte **databázi ClearDB MySQL**a potom klikněte na tlačítko **Další** šipky v dolní části rámce:
+3. V průvodci pro **Výběr a přidání** vyberte **ClearDB databáze MySQL**a potom klikněte na šipku **Další** v dolní části snímku:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image4.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image3.png)
-4. Ponechte výchozí **Free** plánovat, změnit **název** k **IdentityMySQLDatabase**, vyberte oblast, která je vám nejblíže. a poté klikněte na tlačítko **Další** šipky v dolní části rámce:
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image4.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image3.png)
+4. Nechejte výchozí **bezplatný** plán, změňte **název** na **IdentityMySQLDatabase**, vyberte oblast, která je nejblíže, a potom klikněte na šipku **Další** v dolní části rámečku:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image6.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image5.png)
-5. Klikněte na tlačítko **nákupní** značku zaškrtnutí dokončete vytváření databáze.
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image6.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image5.png)
+5. Kliknutím na značku **nákupu** dokončete vytvoření databáze.
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image8.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image7.png)
-6. Po vytvoření vaší databáze ji můžete spravovat z **doplňky** karta na portálu management portal. Pokud chcete načíst informace o připojení pro vaši databázi, klikněte na tlačítko **informace o připojení** v dolní části stránky:
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image8.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image7.png)
+6. Po vytvoření databáze ji můžete spravovat na kartě **Doplňky** na portálu pro správu. Chcete-li načíst informace o připojení pro vaši databázi, klikněte v dolní části stránky na možnost **informace o připojení** :
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image10.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image9.png)
-7. Zkopírujte připojovací řetězec po kliknutí na tlačítko kopírování podle **CONNECTIONSTRING** pole a uložte ho; tyto informace dále v tomto kurzu budete používat pro aplikaci MVC:
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image10.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image9.png)
+7. Zkopírujte připojovací řetězec kliknutím na tlačítko Kopírovat v poli **CONNECTIONSTRING** a uložte ho. Tyto informace použijete později v tomto kurzu pro aplikaci MVC:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image12.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image11.png)
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image12.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image11.png)
 
 ## <a name="creating-an-mvc-application-project"></a>Vytvoření projektu aplikace MVC
 
-K dokončení kroků v této části kurzu, budete nejprve muset nainstalovat [Visual Studio Express 2013 for Web](https://go.microsoft.com/fwlink/?LinkId=299058) nebo [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Po instalaci sady Visual Studio, použijte následující postup k vytvoření nového projektu aplikace MVC:
+K dokončení kroků v této části kurzu budete muset nejdřív nainstalovat [Visual Studio Express 2013 pro web](https://go.microsoft.com/fwlink/?LinkId=299058) nebo [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Po instalaci sady Visual Studio použijte následující postup k vytvoření nového projektu aplikace MVC:
 
-1. Open Visual Studio 2103.
-2. Klikněte na tlačítko **nový projekt** z **Start** stránky, nebo můžete kliknout na **souboru** nabídky a pak **nový projekt**:
+1. Otevřete Visual Studio 2103.
+2. Na **úvodní** stránce klikněte na **Nový projekt** , nebo můžete kliknout na nabídku **soubor** a potom na **Nový projekt**:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image2.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image1.jpg)
-3. Při **nový projekt** se zobrazí dialogové okno, rozbalte **Visual C#** v seznamu šablon klikněte **webové**a vyberte **WebováaplikaceASP.NET**. Pojmenujte svůj projekt **IdentityMySQLDemo** a potom klikněte na tlačítko **OK**:
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image2.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image1.jpg)
+3. Po zobrazení dialogového okna **Nový projekt** rozbalte v seznamu šablon **položku C# vizuál** , potom klikněte na možnost **Web**a vyberte možnost **Webová aplikace ASP.NET**. Pojmenujte projekt **IdentityMySQLDemo** a pak klikněte na **OK**:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image14.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image13.png)
-4. V **nový projekt ASP.NET** dialogového okna, vyberte **MVC** šablonyPomocí výchozí možnosti; tím se konfigurace **jednotlivé uživatelské účty** jako metodu ověřování. Klikněte na tlačítko **OK**:
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image14.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image13.png)
+4. V dialogovém okně **Nový projekt ASP.NET** vyberte **MVC** templatewith výchozí možnosti; Tím se jako metoda ověřování nakonfigurují **jednotlivé uživatelské účty** . Klikněte na **OK**:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image16.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image15.png)
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image16.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image15.png)
 
-## <a name="configure-entityframework-to-work-with-a-mysql-database"></a>Konfigurace objektu EntityFramework pro práci s databází MySQL
+## <a name="configure-entityframework-to-work-with-a-mysql-database"></a>Konfigurace EntityFramework pro práci s databází MySQL
 
-### <a name="update-the-entity-framework-assembly-for-your-project"></a>Aktualizovat Entity Framework sestavení pro projekt
+### <a name="update-the-entity-framework-assembly-for-your-project"></a>Aktualizace Entity Frameworkho sestavení pro váš projekt
 
-Aplikace MVC, který byl vytvořen z šablony sady Visual Studio 2013 obsahuje odkaz na [EntityFramework 6.0.0](http://www.nuget.org/packages/EntityFramework) balíček, ale musí se na toto sestavení od jeho vydání aktualizace, které obsahují důležité vylepšení výkonu. Chcete-li použít tyto nejnovější aktualizace ve vaší aplikaci, použijte následující postup.
+Aplikace MVC, která byla vytvořena pomocí šablony Visual Studio 2013 obsahuje odkaz na balíček [6.0.0 EntityFramework](http://www.nuget.org/packages/EntityFramework) , ale v tomto sestavení byly k dispozici aktualizace, od verze, která obsahuje významná vylepšení výkonu. Chcete-li ve své aplikaci použít nejnovější aktualizace, použijte následující postup.
 
-1. Otevřete svůj projekt MVC v sadě Visual Studio.
-2. Klikněte na tlačítko **nástroje**, pak klikněte na tlačítko **Správce balíčků NuGet**a potom klikněte na tlačítko **Konzola správce balíčků**:
+1. Otevřete projekt MVC v aplikaci Visual Studio.
+2. Klikněte na **nástroje**, potom klikněte na **Správce balíčků NuGet**a pak klikněte na **Konzola správce balíčků**:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image18.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image17.png)
-3. **Konzola správce balíčků** se zobrazí v dolní části sady Visual Studio. Typ &quot; **Update-Package EntityFramework** &quot; a stiskněte klávesu Enter:
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image18.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image17.png)
+3. **Konzola správce balíčků** se zobrazí v dolní části sady Visual Studio. Zadejte &quot;**Update-Package EntityFramework**&quot; a stiskněte klávesu ENTER:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image20.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image19.png)
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image20.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image19.png)
 
-### <a name="install-the-mysql-provider-for-entityframework"></a>Nainstalovat MySQL zprostředkovatele EntityFramework
+### <a name="install-the-mysql-provider-for-entityframework"></a>Instalace poskytovatele MySQL pro EntityFramework
 
-Aby EntityFramework pro připojení k databázi MySQL budete muset nainstalovat MySQL zprostředkovatele. Chcete-li to provést, otevřete **Konzola správce balíčků** a typ &quot; **MySql.Data.Entity Install-Package - Pre**&quot;, a potom stiskněte klávesu Enter.
+Aby se EntityFramework připojení k databázi MySQL, je nutné nainstalovat poskytovatele MySQL. Provedete to tak, že otevřete **konzolu Správce balíčků** a napíšete &quot;**Install-Package MySQL. data. Entity-pre**&quot;a potom stisknete klávesu ENTER.
 
 > [!NOTE]
-> Toto je předběžná verze sestavení, a proto může obsahovat chyby. Předběžná verze zprostředkovatele byste neměli používat v produkčním prostředí.
+> Toto je předběžná verze sestavení, která by mohla obsahovat chyby. V produkčním prostředí byste neměli používat předběžnou verzi zprostředkovatele.
 
-[Klikněte na tlačítko se rozbalí na následujícím obrázku.]
+[Kliknutím na následující obrázek ho rozbalte.]
 
 [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image22.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image21.png)
 
-### <a name="making-project-configuration-changes-to-the-webconfig-file-for-your-application"></a>Provádění změn konfigurace projektu v souboru Web.config pro aplikaci
+### <a name="making-project-configuration-changes-to-the-webconfig-file-for-your-application"></a>Provádění změn konfigurace projektu v souboru Web. config pro vaši aplikaci
 
-V této části budete konfigurovat Entity Framework pro použití MySQL poskytovatele, který jste právě nainstalovali, se zaregistrovat objekt pro vytváření zprostředkovatele MySQL a přidejte váš připojovací řetězec z Azure.
+V této části nakonfigurujete Entity Framework pro použití poskytovatele MySQL, který jste právě nainstalovali, zaregistrujete továrnu poskytovatele MySQL a přidáte do Azure připojovací řetězec.
 
 > [!NOTE]
-> Následující příklady obsahují konkrétní sestavení verze pro MySql.Data.dll. Pokud se změní verze sestavení, musíte změnit nastavení odpovídající konfigurace se správnou verzí.
+> Následující příklady obsahují specifickou verzi sestavení pro MySql. data. dll. Pokud se verze sestavení změní, budete muset upravit příslušné konfigurační nastavení se správnou verzí.
 
-1. Otevřete soubor Web.config pro váš projekt v sadě Visual Studio 2013.
-2. Vyhledejte následující nastavení konfigurace, které definují výchozí databáze zprostředkovatelů a objektů factory pro Entity Framework:
+1. Otevřete soubor Web. config pro váš projekt v Visual Studio 2013.
+2. Vyhledejte následující nastavení konfigurace, které definuje výchozího zprostředkovatele databáze a továrnu pro Entity Framework:
 
     [!code-xml[Main](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/samples/sample1.xml)]
-3. Nahraďte následující příkaz, který nakonfiguruje Entity Framework MySQL poskytovatel se použije tato nastavení konfigurace:
+3. Tato nastavení konfigurace nahraďte následujícím nastavením, které nakonfiguruje Entity Framework pro použití poskytovatele MySQL:
 
     [!code-xml[Main](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/samples/sample2.xml)]
-4. Vyhledejte &lt;connectionStrings&gt; části a nahraďte ho následujícím kódem, který bude definování připojovacího řetězce pro databázi MySQL, který je hostovaný v Azure (Všimněte si, že hodnota providerName také se změnil z původní):
+4. Vyhledejte část &lt;connectionStrings&gt; a nahraďte ji následujícím kódem, který bude definovat připojovací řetězec pro databázi MySQL hostovanou v Azure (Všimněte si, že hodnota providerName se také změnila z původní):
 
     [!code-xml[Main](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/samples/sample3.xml?highlight=3-4)]
 
-### <a name="adding-custom-migrationhistory-context"></a>Přidání vlastní místní MigrationHistory
+### <a name="adding-custom-migrationhistory-context"></a>Přidání vlastního kontextu MigrationHistory
 
-Používá Entity Framework Code First **MigrationHistory** tabulce ke sledování změny modelu a zajistit konzistenci mezi schéma databáze a konceptuální schéma. Ale tato tabulka nefunguje pro MySQL ve výchozím nastavení protože primární klíč je moc velká. Chcete tuto situaci napravit, musíte zmenšit velikost klíče pro tuto tabulku. Chcete-li to provést, postupujte následovně:
+Entity Framework Code First používá tabulku **MigrationHistory** k udržení přehledu o změnách modelu a k zajištění konzistence mezi schématem databáze a koncepčním schématem. Tato tabulka ale ve výchozím nastavení pro MySQL nefunguje, protože primární klíč je moc velký. Chcete-li tuto situaci napravit, bude nutné zmenšit velikost klíče pro tuto tabulku. Chcete-li tak učinit, proveďte následující kroky:
 
-1. Jsou zachyceny informace o schématu pro tuto tabulku **HistoryContext**, což může být změněna jako jakýkoli jiný **DbContext**. Uděláte to tak, přidejte nový soubor třídy s názvem **MySqlHistoryContext.cs** do projektu a nahraďte jeho obsah následujícím kódem:
+1. Informace o schématu pro tuto tabulku jsou zachyceny v **HistoryContext**, který lze upravit jako jakékoli jiné **DbContext**. Chcete-li to provést, přidejte do projektu nový soubor třídy s názvem **MySqlHistoryContext.cs** a nahraďte jeho obsah následujícím kódem:
 
     [!code-csharp[Main](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/samples/sample4.cs)]
-2. Dále budete muset nakonfigurovat rozhraní Entity Framework pomocí upravené **HistoryContext**, namísto výchozí hodnotu. To můžete udělat pomocí možnosti konfigurace založená na kódu. To uděláte tak, přidáte nový soubor třídy s názvem **MySqlConfiguration.cs** do vašeho projektu a nahraďte jeho obsah se:
+2. Dále bude nutné nakonfigurovat Entity Framework pro použití upraveného **HistoryContext**namísto výchozího. To lze provést pomocí funkcí konfigurace na základě kódu. Provedete to tak, že do svého projektu přidáte nový soubor třídy s názvem **MySqlConfiguration.cs** a nahradíte jeho obsah:
 
     [!code-csharp[Main](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/samples/sample5.cs)]
 
-### <a name="creating-a-custom-entityframework-initializer-for-applicationdbcontext"></a>Vytváření vlastních inicializátor objektu EntityFramework pro ApplicationDbContext
+### <a name="creating-a-custom-entityframework-initializer-for-applicationdbcontext"></a>Vytvoření vlastního inicializátoru EntityFramework pro ApplicationDbContext
 
-MySQL zprostředkovatele, který je vybrané v tomto kurzu aktuálně nepodporuje migrace Entity Framework, tak budete muset použít model inicializátory abyste se mohli připojit k databázi. Protože v tomto kurzu používá instanci MySQL v Azure, musíte vytvořit vlastní Entity Framework inicializátor.
+Poskytovatel MySQL, který je vybraný v tomto kurzu, v současné době nepodporuje Entity Framework migrace, takže budete muset použít inicializátory modelu, aby se mohli připojit k databázi. Vzhledem k tomu, že tento kurz používá instanci MySQL v Azure, budete muset vytvořit vlastní inicializátor Entity Framework.
 
 > [!NOTE]
-> Tento krok není povinný, pokud se chcete připojit k instanci systému SQL Server v Azure nebo pokud používáte databázi, která je hostovaná v místním prostředí.
+> Tento krok není nutný, pokud se připojujete k instanci SQL Server v Azure nebo používáte databázi, která je hostovaná místně.
 
-Pokud chcete vytvořit vlastní Entity Framework inicializátor pro MySQL, postupujte následovně:
+Chcete-li vytvořit vlastní inicializátor Entity Framework pro MySQL, použijte následující postup:
 
-1. Přidejte nový soubor třídy s názvem **MySqlInitializer.cs** je do projektu a nahraďte obsah následujícím kódem:
+1. Přidejte do projektu nový soubor třídy s názvem **MySqlInitializer.cs** a nahraďte jeho obsah následujícím kódem:
 
     [!code-csharp[Main](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/samples/sample6.cs?highlight=23)]
-2. Otevřít **IdentityModels.cs** souboru projektu, který je umístěn v **modely** adresáře a nahraďte jeho obsah následujícím kódem:
+2. Otevřete soubor **IdentityModels.cs** pro váš projekt, který je umístěn v adresáři **modelů** , a nahraďte jeho obsah následujícím způsobem:
 
     [!code-csharp[Main](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/samples/sample7.cs)]
 
-## <a name="running-the-application-and-verifying-the-database"></a>Spuštění aplikace a ověřování databáze
+## <a name="running-the-application-and-verifying-the-database"></a>Spuštění aplikace a ověření databáze
 
-Po dokončení kroků v předchozí části, měli byste otestovat vaši databázi. Chcete-li to provést, postupujte následovně:
+Po dokončení kroků v předchozích částech byste měli otestovat databázi. Chcete-li tak učinit, proveďte následující kroky:
 
-1. Stisknutím klávesy **Ctrl + F5** sestavíte a spustíte webovou aplikaci.
-2. Klikněte na tlačítko **zaregistrovat** kartě v horní části stránky:
+1. Stisknutím **kombinace kláves CTRL + F5** Sestavte a spusťte webovou aplikaci.
+2. Klikněte na kartu **registr** v horní části stránky:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image4.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image3.jpg)
-3. Zadejte nové uživatelské jméno a heslo a potom klikněte na tlačítko **zaregistrovat**:
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image4.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image3.jpg)
+3. Zadejte nové uživatelské jméno a heslo a potom klikněte na **zaregistrovat**:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image24.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image23.png)
-4. V tomto okamžiku se vytvoří ASP.NET Identity tabulky v databázi MySQL a je uživatel zaregistrován a přihlášení do aplikace:
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image24.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image23.png)
+4. V tomto okamžiku se ASP.NET Identity tabulky vytvoří v databázi MySQL a uživatel je zaregistrován a přihlášen do aplikace:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image6.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image5.jpg)
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image6.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image5.jpg)
 
-### <a name="installing-mysql-workbench-tool-to-verify-the-data"></a>Instalace nástroje MySQL Workbench pro ověření dat
+### <a name="installing-mysql-workbench-tool-to-verify-the-data"></a>Probíhá instalace nástroje MySQL Workbench pro ověření dat
 
-1. Nainstalujte **aplikace MySQL Workbench** nástroj z [stránky pro MySQL stažení](http://dev.mysql.com/downloads/windows/installer/)
-2. V Průvodci instalací: **Výběr funkcí** kartu, vyberte možnost **aplikace MySQL Workbench** pod **aplikací** oddílu.
-3. Spusťte aplikaci a přidejte nové připojení pomocí připojení řetězcovými daty z databáze Azure MySQL, kterou jste vytvořili v účelem úspěchu při žebrání tohoto kurzu.
-4. Po navázání připojení, zkontrolujte **ASP.NET Identity** tabulky vytvořené na **IdentityMySQLDatabase.**
-5. Zobrazí se, že všechny ASP.NET Identity požadované tabulky vytvářejí, jak je znázorněno na následujícím obrázku:
+1. Instalace nástroje **MySQL Workbench** ze stránky pro [Stažení souborů MySQL](http://dev.mysql.com/downloads/windows/installer/)
+2. V Průvodci instalací: karta **Výběr funkce** vyberte **MySQL Workbench** v části **aplikace** .
+3. Spusťte aplikaci a přidejte nové připojení pomocí dat připojovacího řetězce z databáze Azure MySQL, kterou jste vytvořili v BEGGING tohoto kurzu.
+4. Po navázání připojení zkontrolujte **ASP.NET identity** tabulky vytvořené v **IdentityMySQLDatabase.**
+5. Uvidíte, že jsou vytvořeny všechny ASP.NET Identity požadované tabulky, jak je znázorněno na následujícím obrázku:
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image8.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image7.jpg)
-6. Zkontrolujte **aspnetusers** tabulky pro instanci Hledat položky při registraci nového uživatele.
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image8.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image7.jpg)
+6. Zkontrolujte, jestli je v tabulce **aspnetusers** třeba vyhledat položky při registraci nových uživatelů.
 
-   [Klikněte na tlačítko se rozbalí na následujícím obrázku. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image26.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image25.png)
+   [Kliknutím na následující obrázek ho rozbalte. ] [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image26.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image25.png)

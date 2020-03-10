@@ -1,228 +1,228 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/build-a-model-with-business-rule-validations
-title: Sestavení modelu s ověřením obchodních pravidel | Dokumentace Microsoftu
+title: Vytvoření modelu s platnými obchodními pravidly | Microsoft Docs
 author: microsoft
-description: Krok 3 ukazuje, jak vytvořit model, že jsme pomocí obou dotazů a aktualizace databáze pro naši aplikaci NerdDinner.
+description: V kroku 3 se dozvíte, jak vytvořit model, který můžeme použít k dotazování a aktualizaci databáze pro naši aplikaci NerdDinner.
 ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 0bc191b2-4311-479a-a83a-7f1b1c32e6fe
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/build-a-model-with-business-rule-validations
 msc.type: authoredcontent
 ms.openlocfilehash: 6ebf1b71c089229ba9139ff7dc788b8978724046
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65117608"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78541662"
 ---
 # <a name="build-a-model-with-business-rule-validations"></a>Vytvoření modelu s ověřením obchodních pravidel
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
-> Toto je kroku 3 tohoto bezplatného [kurz vývoje aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který procházení procházení po tom, jak sestavit malý, ale bylo možné provést, webové aplikace pomocí ASP.NET MVC 1.
+> Toto je krok 3 bezplatného [kurzu aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který vás provede procesem vytvoření malé, ale dokončené webové aplikace pomocí ASP.NET MVC 1.
 > 
-> Krok 3 ukazuje, jak vytvořit model, že jsme pomocí obou dotazů a aktualizace databáze pro naši aplikaci NerdDinner.
+> V kroku 3 se dozvíte, jak vytvořit model, který můžeme použít k dotazování a aktualizaci databáze pro naši aplikaci NerdDinner.
 > 
-> Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
+> Pokud používáte ASP.NET MVC 3, doporučujeme vám postupovat podle [Začínáme s kurzy pro](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) [hudební úložiště](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) MVC 3 nebo MVC.
 
-## <a name="nerddinner-step-3-building-the-model"></a>NerdDinner krok 3: Sestavení modelu
+## <a name="nerddinner-step-3-building-the-model"></a>NerdDinner krok 3: sestavování modelu
 
-V rozhraní framework model-view-controller termín "model" odkazuje na objekty, jež reprezentují data z aplikace, stejně jako odpovídající logiku domény, která se integruje obchodních pravidel ověřování a s ním. Model se ve spoustě ohledů "Srdce" aplikace využívající architekturu MVC a jak uvidíme dále zásadním způsobem řídí chování ho.
+V rámci architektury zobrazení modelu pojem "model" odkazuje na objekty, které představují data aplikace, a na odpovídající logiku domény, která s ním integruje ověřování a obchodní pravidla. Model je v mnoha ohledech na "srdce" aplikace založené na MVC a jak uvidíme později v podstatě jejich chování.
 
-Architektura ASP.NET MVC podporuje používání technologií pro přístup k libovolné data a vývojáři můžete vybrat z celé řady možností bohaté .NET dat k implementaci jejich modelů, včetně: Technologie LINQ to Entities, LINQ to SQL, NHibernate, LLBLGen Pro, SubSonic, WilsonORM, nebo jenom nezpracovaná čtečky dat ADO.NET nebo datové sady.
+Rozhraní ASP.NET MVC podporuje používání jakékoli technologie pro přístup k datům a vývojáři si můžou vybrat z nejrůznějších různých možností dat .NET k implementaci svých modelů, včetně: LINQ to Entities, LINQ to SQL, NHibernate, LLBLGen pro, antisonic, WilsonORM nebo jenom nezpracovaných objektů ADO. NET datačtecís nebo DataSets.
 
-Pro naši aplikaci NerdDinner budeme používat technologie LINQ to SQL vytvořit jednoduchý model, který odpovídá poměrně blízko našich návrhu databáze a přidá některé vlastní ověřovací logiky a obchodní pravidla. Jsme pak implementuje třídu úložiště, která pomáhá okamžitě abstraktní implementace trvalosti dat od zbývající části aplikace a umožňuje nám to snadno jednotky testování.
+Pro naši aplikaci NerdDinner budeme používat LINQ to SQL k vytvoření jednoduchého modelu, který přesně odpovídá návrhu naší databáze, a přidá několik vlastních ověřovacích logik a obchodních pravidel. Pak budeme implementovat třídu úložiště, která pomůže abstrakci při implementaci trvalosti dat ze zbytku aplikace, a umožňuje nám ji snadno otestovat.
 
 ### <a name="linq-to-sql"></a>Technologie LINQ to SQL
 
-Technologie LINQ to SQL je ORM (relační mapování objektů), která je dodávána jako součást rozhraní .NET 3.5.
+LINQ to SQL je ORM (objekt relačního mapovače), který je dodáván jako součást .NET 3,5.
 
-Technologie LINQ to SQL poskytuje snadný způsob, jak mapovat na třídy rozhraní .NET, kterou jsme můžete psát kód s využitím databázových tabulek. Naše aplikace NerdDinner použijeme ji k mapování tabulek večeří a reakce v rámci naší databázi do třídy Dinner a reakce. Sloupce tabulky večeří a reakce bude odpovídat vlastnosti třídy Dinner a reakce. Každý objekt Dinner a RSVP bude reprezentovat samostatných řádků v rámci večeří nebo RSVP tabulek v databázi.
+LINQ to SQL poskytuje snadný způsob, jak mapovat tabulky databáze na třídy .NET, ke kterým můžeme zakódovat. Pro naši aplikaci NerdDinner ji použijeme k namapování tabulek večeře a RSVP v naší databázi na třídy večeře a RSVP. Sloupce večeře a tabulek protokolu RSVP budou odpovídat vlastnostem na třídách večeře a RSVP. Každý z nich a objekt protokolu RSVP bude představovat samostatný řádek v rámci v tabulkách večeře nebo RSVP v databázi.
 
-Technologie LINQ to SQL umožňuje vyhnout se tak nutnosti ručně vytvořit příkazy SQL se načítají a aktualizují Dinner a RSVP objekty pomocí dat z databáze. Místo toho budeme definovat třídy Dinner a reakce, jak jsou mapovány do/z databáze a vztahy mezi nimi. Technologie LINQ to SQL se potom vezme péče o generování odpovídající logiky provádění SQL pro použití za běhu při budeme pracovat a jejich použití.
+LINQ to SQL nám umožňuje vyhnout se nutnosti ruční konstrukce příkazů SQL pro načtení a aktualizaci dat o večeři a protokolu RSVP s daty databáze. Místo toho definujeme třídy večeře a RSVP, jejich mapování na databázi a jejich vztahy mezi nimi. LINQ to SQL se pak postará o vygenerování vhodné logiky spuštění SQL, která se použije za běhu při interakci a používání.
 
-Podpora jazyka LINQ v jazyce Visual Basic a C# jsme můžete použít k zápisu výrazové dotazů, které načítají Dinner a RSVP objekty z databáze. Tím se minimalizují množství dat kódu musíme napsat, a umožňuje vytvářet hezky čistý aplikace.
+Podporu jazyka LINQ v jazyce VB můžeme použít v rámci C# jazyka VB a k zápisu dotazů, které načítají z databáze večeři a objekty RSVP. Tím se minimalizuje množství datových kódů, které potřebujeme napsat, a umožníme nám sestavovat skutečně čisté aplikace.
 
-### <a name="adding-linq-to-sql-classes-to-our-project"></a>Přidání třídy LINQ to SQL na našem projektu
+### <a name="adding-linq-to-sql-classes-to-our-project"></a>Přidání tříd LINQ to SQL do našeho projektu
 
-Použijeme začněte tím, že pravým tlačítkem na složku "Modely" v našem projektu a vyberte **Add -&gt;nová položka** příkazu nabídky:
+Začneme tak, že kliknete pravým tlačítkem na složku modely v našem projektu a vyberete příkaz nabídky **přidat&gt;novou položku** :
 
 ![](build-a-model-with-business-rule-validations/_static/image1.png)
 
-Tím se otevře dialogové okno "Přidat novou položku". Vytvoříme filtrovat podle kategorie "Data" a vyberte šablonu "LINQ na třídy SQL" v rámci něj:
+Tím se zobrazí dialogové okno Přidat novou položku. Vyfiltrujeme podle kategorie "data" a v ní vyberete šablonu "LINQ to SQL třídy":
 
 ![](build-a-model-with-business-rule-validations/_static/image2.png)
 
-Jsme bude název položky "NerdDinner" a klikněte na tlačítko "Přidat". Visual Studio přidejte NerdDinner.dbml soubor v adresáři naše \Models a potom otevřete LINQ to SQL Návrhář relací objektů:
+Pojmenujte položku "NerdDinner" a klikněte na tlačítko Přidat. Visual Studio přidá do našeho adresáře \Models soubor NerdDinner. dbml a pak otevře návrháře relačních objektů LINQ to SQL:
 
 ![](build-a-model-with-business-rule-validations/_static/image3.png)
 
-### <a name="creating-data-model-classes-with-linq-to-sql"></a>Vytváření datových tříd modelu pomocí LINQ to SQL
+### <a name="creating-data-model-classes-with-linq-to-sql"></a>Vytváření tříd datového modelu pomocí LINQ to SQL
 
-Technologie LINQ to SQL umožňuje nám to rychle vytvoření tříd datových modelů z existující schéma databáze. Úkol to nám budete NerdDinner databázi otevřít v Průzkumníku serveru a vyberte tabulky, chceme pro modelování v ní:
+LINQ to SQL nám umožňuje rychle vytvořit třídy datového modelu z existujícího schématu databáze. Provedete to tak, že otevřete databázi NerdDinner v Průzkumník serveru a vyberete tabulky, pro které chcete modelovat:
 
 ![](build-a-model-with-business-rule-validations/_static/image4.png)
 
-Jsme pak můžete přetáhnout tabulky do LINQ na plochu návrháře SQL. Při provádění této LINQ to SQL se automaticky vytvoří Dinner a RSVP třídy pomocí schématu tabulky (pomocí vlastnosti třídy, které jsou mapovány na sloupce tabulky databáze):
+Pak můžeme tabulky přetáhnout na plochu návrháře LINQ to SQL. Když to provedeme, LINQ to SQL automaticky vytvoří třídy večeře a RSVP pomocí schématu tabulek (s vlastnostmi třídy, které se mapují na sloupce databázové tabulky):
 
 ![](build-a-model-with-business-rule-validations/_static/image5.png)
 
-Ve výchozím nastavení LINQ to SQL Návrháře automaticky "do množného" názvy tabulek a sloupců při vytváření třídy na základě schématu databáze. Příklad: ve třídě "Dinner" výsledkem je tabulka "Večeří" v našem příkladu výše. Tato třída pojmenování jednodušeji naše modely konzistentní s zásady vytváření názvů .NET a obvykle najít tento s návrháře oprava to tak pohodlné (zejména při přidávání velké tabulky). Pokud se vám název třída nebo vlastnost, která generuje návrháře, i když můžete kdykoli přepsat nebo ho změnit na libovolný název, který chcete. Můžete provést buď tak, že upravíte entity nebo vlastnosti název v řádku v Návrháři nebo úpravou prostřednictvím mřížku vlastností.
+Ve výchozím nastavení LINQ to SQL Návrhář při vytváření tříd založených na schématu databáze automaticky názvy tabulek a sloupců "pluralizes". Příklad: tabulka "večeře" v našem příkladu výše má za následek třídu "večeře". Tato třída pojmenovává, že naše modely jsou konzistentní s konvencemi názvů .NET a obvykle zjistíte, že je to vhodné pro návrháře, což je pohodlné (obzvláště při přidávání spousty tabulek). Pokud se vám nelíbí název třídy nebo vlastnosti, kterou Návrhář generuje, ale můžete ho vždycky přepsat a změnit na libovolný název, který chcete. To můžete provést úpravou názvu entity/vlastnosti v rámci návrháře nebo úpravou prostřednictvím mřížky vlastností.
 
-Ve výchozím nastavení LINQ to SQL designer také kontroluje primární klíč/cizího klíče tabulky a na jejich základě automaticky vytvoří výchozí "vztah přidružení" mezi třídami jiný model, který vytvoří. Například, když jsme přetáhli večeří a RSVP tabulky do technologie LINQ to SQL Návrhář vztah jeden mnoho přidružení mezi těmito dvěma byl vyvozen založeno na skutečnosti, že v tabulce RSVP měl cizího klíče tabulky večeří (to je indikován na šipku v Návrhář):
+Ve výchozím nastavení Návrhář LINQ to SQL také kontroluje vztahy primárních klíčů a cizích klíčů v tabulkách a na základě nich automaticky vytvoří výchozí přidružení vztahů mezi různými třídami modelů, které vytvoří. Když jsme například přetáhli tabulky večeře a RSVP do návrháře LINQ to SQL a přidružení vztahů 1:1 mezi tyto dvě byla odvozená od faktu, že tabulka s protokolem RSVP obsahovala cizí klíč v tabulce večeře (Toto je označeno šipkou v Návrhář):
 
 ![](build-a-model-with-business-rule-validations/_static/image6.png)
 
-Výše uvedené přidružení způsobí LINQ pro SQL za účelem přidání silného typu vlastnosti "Dinner" RSVP třídu, která mohou vývojáři pro přístup k večeři spojené s danou reakce. Způsobí také mají "RSVPs" kolekce vlastnost, která vývojářům umožňuje načtení a aktualizaci RSVP objekty přidružené k určité Dinner třídy večeři.
+Výše uvedené přidružení způsobí, LINQ to SQL přidat do třídy RSVP vlastnost "večeře", kterou můžou vývojáři použít pro přístup k večeři přidruženému k dané službě RSVP. Také způsobí, že třída večeře bude mít vlastnost kolekce "RSVPs", která umožňuje vývojářům načíst a aktualizovat objekty protokolu RSVP spojené s určitou večeři.
 
-Po vytvoření nového objektu RSVP a přidat do kolekce večeři RSVPs níže můžete vidět příklad technologie intellisense v sadě Visual Studio. Všimněte si, jak technologie LINQ to SQL automaticky přidá "RSVPs" kolekce na objekt Dinner:
+Níže můžete vidět příklad technologie IntelliSense v sadě Visual Studio, když vytvoříme nový objekt protokolu RSVP a přidáte ho do kolekce RSVPs pro večeři. Všimněte si, jak LINQ to SQL do objektu večeře automaticky přidat kolekci "RSVPs":
 
 ![](build-a-model-with-business-rule-validations/_static/image7.png)
 
-Přidáním objektu reakce večeři RSVPs kolekce jsme informace o tom, LINQ to SQL pro přidružení cizího klíče relace mezi RSVP řádků v databázi a společnosti Dinner:
+Přidáním objektu RSVP do kolekce RSVP pro večeři oznamujeme LINQ to SQL k přidružení vztahu cizího klíče mezi večeři a řádkem RSVP v naší databázi:
 
 ![](build-a-model-with-business-rule-validations/_static/image8.png)
 
-Pokud vám nevyhovují, jak má Návrhář modelovat nebo s názvem tabulky přidružení, lze jej přepsat. Stačí klikněte na šipku přidružení v návrháři a získat přístup k vlastnostem pomocí mřížky vlastností, které chcete přejmenovat, odstranit nebo upravit ho. Pro naši aplikaci NerdDinner však výchozí pravidla pro přidružení fungují dobře u tříd datových modelů, které vytváříme a můžeme jednoduše použít výchozí chování.
+Pokud si nejste spokojeni s tím, jak má Návrhář modelovat nebo pojmenovat přidružení tabulky, můžete ho přepsat. Stačí kliknout na šipku přidružení v návrháři a přistupovat k jejím vlastnostem přes mřížku vlastností a přejmenovat, odstranit nebo upravit. U naší aplikace NerdDinner se ale u tříd datového modelu, které vytváříme, dobře hodí výchozí pravidla přidružení, ale můžeme použít jenom výchozí chování.
 
 ### <a name="nerddinnerdatacontext-class"></a>NerdDinnerDataContext Class
 
-Visual Studio automaticky vytvoří třídy rozhraní .NET, které představují modely a databáze vztahy definované pomocí LINQ to SQL návrháře. LINQ na třídy SQL DataContext se také vygeneruje pro každou LINQ na soubor návrháře SQL přidat k řešení. Protože jsme pojmenovali naše technologie LINQ to SQL tříd – položka "NerdDinner", třídy DataContext vytvořili nazývá "NerdDinnerDataContext". Tato třída NerdDinnerDataContext je primární způsob, jakým jsme bude komunikovat s databází.
+Visual Studio automaticky vytvoří třídy .NET, které reprezentují modely a databázové vztahy definované pomocí návrháře LINQ to SQL. Třída LINQ to SQL DataContext je vygenerována také pro každý soubor návrháře LINQ to SQL přidaný do řešení. Vzhledem k tomu, že jsme jmenovali naši LINQ to SQL položku třídy "NerdDinner", vytvoří se třída DataContext s názvem "NerdDinnerDataContext". Tato třída NerdDinnerDataContext je primárním způsobem, jak budeme pracovat s databází.
 
-Naše třída NerdDinnerDataContext zveřejňuje dvě vlastnosti - "Večeří" a "RSVPs" – které představují dvě tabulky, které jsme modelován v rámci databáze. Můžeme použít C# pro zápis dotazů LINQ s těmito vlastnostmi na dotazování a načtení Dinner a RSVP objekty z databáze.
+Naše třída NerdDinnerDataContext zpřístupňuje dvě vlastnosti – "večeře" a "RSVP", které reprezentují dvě tabulky, které v databázi modelují. Můžeme použít C# k zápisu dotazů LINQ na tyto vlastnosti pro dotazování a načtení objektů večeře a RSVP z databáze.
 
-Následující kód ukazuje, jak vytvořit instanci objektu NerdDinnerDataContext a provádění dotazu LINQ na jeho získání posloupnost večeří, ke kterým dochází v budoucnu. Visual Studio obsahuje plnou podporou technologie intellisense při psaní dotazu LINQ a objektů vrácených z něj jsou silného typu a také podporu technologie intellisense:
+Následující kód ukazuje, jak vytvořit instanci objektu NerdDinnerDataContext a provést dotaz LINQ na něj a získat tak sekvenci večeře, ke kterým dochází v budoucnosti. Visual Studio poskytuje úplnou technologii IntelliSense při psaní dotazu LINQ a objekty, které jsou z něj vráceny, jsou silné a také podporují technologii IntelliSense:
 
 ![](build-a-model-with-business-rule-validations/_static/image9.png)
 
-Mimo možnosti nám se dotázat na večeři a RSVP objekty, NerdDinnerDataContext také automaticky sleduje všechny změny, které následně provedeme Dinner a RSVP objekty, které se nám načíst přes něj. Můžeme použít tuto funkci a snadno uložte změny zpět do databáze - bez nutnosti psát jakýkoli kód explicitní aktualizace SQL.
+Kromě toho, že nám umožníme dotazovat se na objekty večeře a RSVP, NerdDinnerDataContext také automaticky sleduje veškeré změny, které následně provedeme na večeři a v objektech RSVP, které prostřednictvím něj získáváme. Pomocí této funkce můžeme snadno uložit změny zpět do databáze, aniž byste museli psát explicitní kód aktualizace SQL.
 
-Například následující kód ukazuje, jak pomocí dotazu LINQ získal jeden objekt Dinner z databáze, aktualizace dvou vlastností Dinner a potom uložte změny zpět do databáze:
+Například kód níže ukazuje, jak použít dotaz LINQ k načtení jednoho objektu večeře z databáze, aktualizaci dvou vlastností večeře a následné změny uložit zpět do databáze:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample1.cs)]
 
-Objekt NerdDinnerDataContext v kódu nad automaticky sleduje vlastnosti změny provedené v Dinner objekt, který jsme získali z něj. Když budeme volat metodu "SubmitChanges()", provede odpovídající "" aktualizace příkazu SQL na databázi k uchování aktualizovanými hodnotami.
+Objekt NerdDinnerDataContext v kódu výše automaticky sleduje změny vlastností provedené u objektu večeře, který z něho načetli. Když se říká metoda "SubmitChanges ()", spustí se odpovídající příkaz SQL "UPDATE" do databáze, aby se aktualizované hodnoty zachovaly zpátky.
 
 ### <a name="creating-a-dinnerrepository-class"></a>Vytvoření třídy DinnerRepository
 
-U malých aplikací, je někdy můžete mít řadiče pracovat přímo s LINQ na třídy SQL DataContext a dotazů LINQ v rámci Kontrolery pro vložení. Při získávání aplikací větší, ale tento přístup se stane náročné na údržbu a testování. Může také vést k nám duplikace stejného dotazů LINQ na více místech.
+Pro malé aplikace je někdy dobré pracovat s řadiči přímo proti třídě LINQ to SQL DataContext a vkládat dotazy LINQ v rámci řadičů. Jelikož se aplikace dostanou větší, ale tento přístup je nenáročný na údržbu a testování. Může také vést k tomu, že máme duplikovat stejné dotazy LINQ na více místech.
 
-Jedním z přístupů, které můžete zpřístupnit aplikace usnadňuje údržbu a testování, je použití vzoru "úložiště". Třídy úložiště umožňuje zapouzdřit podrobnosti implementace trvalost dat z aplikace dotazování dat a logiku trvalosti a přehledů okamžitě. Kromě toho kód aplikace, čištění, pomocí vzoru úložiště můžete bylo snazší v budoucnu změnit implementace úložiště dat a může být snazší usnadnění testování aplikace bez nutnosti skutečná databáze.
+Jedním z přístupů, které umožňují snazší údržbu a testování aplikací, je použití vzoru "úložiště". Třída úložiště pomáhá zapouzdření logiky dotazování a trvalosti dat a abstrakce informace o implementaci trvalosti dat z aplikace. Kromě toho, že použití čističe kódu aplikace, může pomocí vzoru úložiště snadněji měnit implementace úložiště dat v budoucnu a může pomoci při testování částí aplikace bez nutnosti skutečné databáze.
 
-Pro naši aplikaci NerdDinner budeme definovat třídu DinnerRepository s pod podpis:
+Pro naši aplikaci NerdDinner definujeme třídu DinnerRepository s níže uvedeným podpisem:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample2.cs)]
 
-*Poznámka: Dále v této kapitole vytvoříme extrahovat rozhraní IDinnerRepository z této třídy a povolit injektáž závislostí s ním na naše řadiče. Než začneme ale budeme začít jednoduchými věcmi a právě pracovat přímo s třídou DinnerRepository.*
+*Poznámka: později v této kapitole budeme z této třídy extrahovat rozhraní IDinnerRepository a na našem řadiči povolit vkládání závislostí. Začněte tím, že začnete pracovat jednoduchým způsobem a přímo pracujete přímo s třídou DinnerRepository.*
 
-K implementaci této třídy vytvoříme klikněte pravým tlačítkem na složku naše "Modely" a zvolte **Add -&gt;nová položka** příkazu nabídky. V dialogovém okně "Přidat novou položku" budete výběru šablony "Třída" a "DinnerRepository.cs" Zadejte název souboru:
+Pokud chcete tuto třídu implementovat, klikněte pravým tlačítkem na naši složku modely a vyberte příkaz nabídky **Přidat novou položku&gt;** . V dialogovém okně Přidat novou položku vyberete šablonu Class (třída) a pojmenujte soubor "DinnerRepository.cs":
 
 ![](build-a-model-with-business-rule-validations/_static/image10.png)
 
-Pak můžeme implementovat naše DinnerRepository třídy pomocí níže uvedeného kódu:
+Pak můžeme implementovat naši třídu DinnerRepository pomocí následujícího kódu:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample3.cs)]
 
-### <a name="retrieving-updating-inserting-and-deleting-using-the-dinnerrepository-class"></a>Načítání, aktualizaci, vkládání a odstranění horizontálních oddílů pomocí třídy DinnerRepository
+### <a name="retrieving-updating-inserting-and-deleting-using-the-dinnerrepository-class"></a>Načítání, aktualizace, vkládání a odstraňování pomocí třídy DinnerRepository
 
-Teď, když jsme vytvořili naši DinnerRepository třídy, Podívejme se na několik příkladů kódu, které ukazují běžné úkoly, které jsme s ním může dělat:
+Teď, když jsme vytvořili naši třídu DinnerRepository, Podívejme se na několik příkladů kódu, které předvádějí běžné úlohy, které s ní můžeme dělat:
 
-#### <a name="querying-examples"></a>Dotazování příklady
+#### <a name="querying-examples"></a>Příklady dotazování
 
-Následující kód načte jeden Dinner pomocí DinnerID hodnoty:
+Následující kód načte jednu večeři pomocí hodnoty DinnerID:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample4.cs)]
 
-Následující kód načte všechny nadcházející večeří a smyček nad nich:
+Následující kód načte všechny nadcházející večeře a cykly přes ně:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample5.cs)]
 
-#### <a name="insert-and-update-examples"></a>INSERT a Update příklady
+#### <a name="insert-and-update-examples"></a>Příklady vložení a aktualizace
 
-Následující kód ukazuje přidání dvou nových večeří. Přidání/změny do úložiště nejsou potvrdily v databázi, dokud v něm je volána metoda "Save()". Technologie LINQ to SQL zalomen všechny změny v databázové transakci – tak, aby všechny změny stát nebo žádná z nich dělat, když se uloží naše úložiště:
+Následující kód ukazuje přidání dvou nových večeři. Přidání/úpravy do úložiště nejsou potvrzeny do databáze, dokud není pro ni volána metoda Save (). LINQ to SQL automaticky zalomí všechny změny v transakční transakci – takže buď dojde k žádným změnám, nebo žádná z nich, když naše úložiště uloží:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample6.cs)]
 
-Následující kód načte existující objekt Dinner a dvě vlastnosti v něm upraví. Při volání metody "Save()" v našem úložišti se změny potvrdí zpět do databáze:
+Následující kód načte existující objekt večeře a upraví na něm dvě vlastnosti. Změny jsou potvrzeny zpět do databáze při volání metody Save () v našem úložišti:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample7.cs)]
 
-Následující kód načte dinner a pak do ní přidá odpověď. Dělá to pomocí kolekce RSVPs Dinner objektu, který technologie LINQ to SQL vytváří (protože vztahu primární key/cizího klíče mezi těmito dvěma v databázi). Tato změna je trvalá zpět do databáze jako nový řádek tabulky RSVP při volání metody "Save()" úložiště:
+Následující kód načte večeři a pak k němu přidá odpověď. K tomu slouží pomocí kolekce RSVPs na objektu večeře, kterou LINQ to SQL vytvořili pro nás (protože mezi nimi existuje vztah primárního klíče/cizího klíče mezi dvěma v databázi). Tato změna se uloží zpátky do databáze jako nový řádek tabulky protokolu RSVP, když se v úložišti zavolá metoda Save ():
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample8.cs)]
 
 #### <a name="delete-example"></a>Odstranit příklad
 
-Následující kód načte existující objekt Dinner a pak označí ho odstraníme. Při volání metody "Save()" v daném úložišti potvrdí odstranění zpět do databáze:
+Následující kód načte existující objekt večeře a pak ho označí jako odstraněný. Když se v úložišti zavolá metoda Save (), potvrdí se odstranění zpátky do databáze:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample9.cs)]
 
-### <a name="integrating-validation-and-business-rule-logic-with-model-classes"></a>Integrace ověřování a obchodní logiku pravidla s tříd modelu
+### <a name="integrating-validation-and-business-rule-logic-with-model-classes"></a>Integrace logiky ověřování a obchodních pravidel s třídami modelu
 
-Integrace ověřování a obchodní pravidlo, že logika je klíčovou součástí každou aplikaci, která pracuje s daty.
+Integrací logiky ověřování a obchodních pravidel je klíčová součást jakékoli aplikace, která pracuje s daty.
 
 #### <a name="schema-validation"></a>Ověřování schématu
 
-Když tříd modelu jsou definovány pomocí LINQ to SQL návrháře, datových typů vlastností v tříd datových modelů odpovídají datové typy databázové tabulky. Příklad: Pokud je ve sloupci "EventDate" v tabulce večeří "datetime", třída modelu dat vytvořené pomocí LINQ to SQL budou typu "Datum a čas" (což je integrované datový typ .NET). To znamená, že se zobrazí chyby při kompilaci, když se pokusíte přiřadit celé číslo nebo logickou hodnotu k ní z kódu, a to vyvolá chybu automaticky při pokusu o pro implicitní převod typu není platný řetězec k němu za běhu.
+Pokud jsou třídy modelu definovány pomocí návrháře LINQ to SQL, datové typy vlastností v třídách datového modelu odpovídají datovým typům tabulky databáze. Příklad: Pokud sloupec "EventDate" v tabulce večeře je "DateTime", třída datového modelu vytvořená LINQ to SQL bude typu "DateTime" (což je vestavěný datový typ rozhraní .NET). To znamená, že při pokusu o přiřazení celého čísla nebo logické hodnoty z kódu dojde k chybám kompilace a při pokusu o implicitní převod neplatného typu řetězce za běhu se automaticky vyvolá chyba.
 
-Technologie LINQ to SQL budou také automaticky zpracovává útěku hodnoty SQL za vás při používání řetězců – které pomáhá chránit před útoky prostřednictvím injektáže SQL při používání.
+LINQ to SQL také automaticky zpracuje uvozovací hodnoty SQL za vás při použití řetězců – což pomáhá chránit před útoky prostřednictvím injektáže SQL při jejich použití.
 
-#### <a name="validation-and-business-rule-logic"></a>Ověřování a obchodní logiku pravidla
+#### <a name="validation-and-business-rule-logic"></a>Ověřování a logika obchodních pravidel
 
-Ověřování schématu je užitečné jako první krok, ale stačí jen zřídka. Většina scénářů reálného světa vyžaduje schopnost určit bohatší logiku ověřování, který span více vlastností, provádění kódu a sledování stavu modelu mají často (například: je to vytváří/aktualizovat/odstraněný, nebo v rámci stavu specifického pro doménu například "archivované"). Existuje široká škála různých vzorů a architektur, které slouží k definování a použití pravidel ověřování do tříd modelu a několik .NET na základě rozhraní produktům, které můžete použít pro usnadnění. Můžete použít prakticky libovolný z nich v rámci aplikace ASP.NET MVC.
+Ověřování schématu je užitečné v prvním kroku, ale je málo dostatečné. Většina scénářů reálného světa vyžaduje možnost zadat bohatou logiku ověřování, která může zahrnovat více vlastností, spouštět kód a často má na vědomí stav modelu (například: je vytvořen/Updated/Deleted nebo v rámci stavu specifického pro doménu, jako je "archivovaný"). Existuje celá řada různých vzorů a platforem, které lze použít k definování a použití ověřovacích pravidel pro třídy modelů a k dispozici je několik platforem rozhraní .NET, které je možné použít k tomu, aby s ní mohli pomáhat. V aplikacích ASP.NET MVC můžete použít poměrně mnoho z nich.
 
-Pro účely naší aplikace NerdDinner použijeme vzor relativně jednoduché a přímočaré kde zveřejňujeme IsValid vlastnost a metodu GetRuleViolations() na náš objekt modelu večeři. Vlastnost IsValid vrátí hodnotu PRAVDA nebo NEPRAVDA v závislosti na tom, jestli jsou všechny platné ověření a obchodních pravidel. Metoda GetRuleViolations() zobrazí seznam všech chyb pro pravidlo.
+Pro účely naší aplikace NerdDinner použijeme model poměrně jednoduchého a přímého přesměrování, kde vystavíme vlastnost IsValid a metodu GetRuleViolations () pro náš objekt modelu večeře. Vlastnost IsValid vrátí hodnotu true nebo false v závislosti na tom, zda jsou všechna platná ověřování a obchodní pravidla. Metoda GetRuleViolations () vrátí seznam chyb pravidel.
 
-IsValid a GetRuleViolations() budete implementaci pro náš model Dinner přidáním "částečné třídy" do projektu. Částečné třídy lze použít k přidání metody/vlastnosti/události na třídy udržuje Návrhář VS (např. třídy Dinner generované LINQ to SQL Návrháře) a vyhnout se nástroj z messing pomocí našeho kódu. Můžeme přidat nové částečné třídy do našich projektu kliknutím pravým tlačítkem na složku \Models a zvolte příkaz "Přidat novou položku". Potom jsme můžete zvolit šablonu "Třída" v dialogovém okně "Přidat novou položku" a pojmenujte ho Dinner.cs.
+Pro náš model večeře implementujeme IsValid a GetRuleViolations () přidáním "částečné třídy" do našeho projektu. Částečné třídy lze použít k přidání metod/vlastností/událostí do tříd udržovaných návrhářem VS (jako je například třída večeře vygenerovaná návrhářem LINQ to SQL) a zabránění tomu, aby se nástroj mohl vyhnout v používání našeho kódu. Do našeho projektu můžeme přidat novou částečnou třídu tak, že kliknete pravým tlačítkem na složku \Models a pak vyberete příkaz nabídky Přidat novou položku. Pak můžeme zvolit šablonu Class v dialogovém okně Přidat novou položku a pojmenovat ji Dinner.cs.
 
 ![](build-a-model-with-business-rule-validations/_static/image11.png)
 
-Kliknutím na tlačítko "Přidat" Přidat Dinner.cs soubor do projektu a otevřete ho v rámci rozhraní IDE. Potom jsme můžete implementovat s použitím rozhraní framework základní pravidla a ověření vynucení níže uvedeného kódu:
+Kliknutím na tlačítko Přidat se do projektu přidá soubor Dinner.cs a otevře se v rámci integrovaného vývojového prostředí (IDE). Pak můžeme implementovat základní rozhraní pro vynucování pravidel a ověření pomocí následujícího kódu:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample10.cs)]
 
-Několik poznámek o kódu uvedeného výše:
+Pár poznámek o výše uvedeném kódu:
 
-- Třídy Dinner začíná "částečné" klíčové slovo – což znamená, že kód obsažený v něm budou kombinovat s třídou generována zachovány technologií LINQ to SQL návrháře a zkompilovány do jednu třídu.
-- Třída RuleViolation je pomocná třída, kterou přidáme do projektu, který nám umožňuje poskytovat podrobnosti o porušení pravidla.
-- Metoda Dinner.GetRuleViolations() způsobí, že naše ověření a obchodních pravidel, který se má vyhodnotit (jsme budete implementovat je za chvíli). Poté vrátí zpět posloupnost RuleViolation objekty, které poskytují další podrobnosti o případných chybách pravidlo.
-- Vlastnost Dinner.IsValid poskytuje pohodlné pomocné vlastnost, která označuje, zda má objekt Dinner žádné aktivní RuleViolations. To lze proaktivně zkontrolovat vývojáři, kteří pomocí objektu Dinner kdykoli (a nevyvolá výjimku).
-- Částečná metoda Dinner.OnValidate() je hák, která poskytuje technologii LINQ to SQL, která umožňuje být upozornění vždy, když objekt Dinner je nastavit jako trvalý, v databázi. Naše implementace OnValidate() výše zajistí, že večeře nemá žádné RuleViolations před uložením. Pokud je v neplatném stavu, vyvolá výjimku, která způsobí, že LINQ to SQL přerušení transakce.
+- Třída večeře je uvozená klíčovým slovem "Partial" – to znamená, že kód obsažený v něm bude kombinován s třídou generovanou/udržovanou návrhářem LINQ to SQL a zkompilován do jedné třídy.
+- Třída RuleViolation je pomocná třída, kterou přidáme do projektu, který nám umožní poskytnout další podrobnosti o porušení pravidla.
+- Metoda večeře. GetRuleViolations () způsobí vyhodnocení našich ověřovacích a obchodních pravidel (budeme je za chvíli implementovat). Pak vrátí sekvenci RuleViolation objektů, které poskytují další podrobnosti o chybách pravidel.
+- Vlastnost večeře. IsValid poskytuje pohodlnou pomocnou vlastnost, která označuje, zda objekt večeře obsahuje všechny aktivní RuleViolations. Může být aktivně kontrolován vývojářem s využitím objektu večeře v čase (a nevyvolá výjimku).
+- Částečnou metodou večeře. OnValidate () je připojení, které LINQ to SQL poskytuje, aby bylo možné upozornit na trvalou upozorňování objektu večeře v rámci databáze. Naše implementace OnValidate () výše zajišťuje, že večeře nemá žádné RuleViolations předtím, než se uloží. Pokud je v neplatném stavu, vyvolá výjimku, která způsobí, že LINQ to SQL přeruší transakci.
 
-Tento přístup poskytuje jednoduché rozhraní, které budeme integrovat ověření a obchodních pravidel do. Teď přidáme následující pravidla, která metodě GetRuleViolations():
+Tento přístup poskytuje jednoduchou architekturu, kterou můžeme do portálu integrovat ověřování a obchodní pravidla. Nyní přidáme níže uvedená pravidla do naší metody GetRuleViolations ():
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample11.cs)]
 
-Funkce "yield return" jazyka C# se používá k vrácení sekvence všechny RuleViolations. První šest pravidla kontroly nad jednoduše vynutit, že vlastnosti řetězce na náš web Dinner nemůže být null ani prázdný. Poslední pravidlo je o něco zajímavější a volání PhoneValidator.IsValidNumber() Pomocná metoda, že můžeme přidat na náš projekt a ověřte, zda ContactPhone číslo formátu shody společnosti Dinner vaší země.
+C# K vrácení posloupnosti všech RuleViolations používáme funkci yield return. Prvních šest kontrol pravidel výše vynutilo, že vlastnosti řetězce na naší večeři nemůžou být null ani prázdné. Poslední pravidlo je trochu zajímavější a volá pomocnou metodu PhoneValidator. IsValidNumber (), kterou můžeme do projektu přidat a ověřit tak, že formát čísla ContactPhone odpovídá zemi večeře.
 
-Můžeme použít. Podpora NET pro regulární výraz k implementaci této telefonické ověření. Níže je jednoduchý PhoneValidator implementace, která můžeme přidat do projektu, která umožňuje přidat specifické pro zemi kontroly vzor regulárního výrazu:
+Můžeme použít. Podpora regulárních výrazů netto pro implementaci této podpory ověřování pro telefon. Níže je uvedená Jednoduchá implementace PhoneValidator, kterou můžeme přidat do našeho projektu, který nám umožňuje přidat kontroly vzorů regulárního výrazu specifické pro danou zemi:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample12.cs)]
 
-#### <a name="handling-validation-and-business-logic-violations"></a>Ověření zpracování a obchodní logiky porušení
+#### <a name="handling-validation-and-business-logic-violations"></a>Zpracování ověřování a porušení obchodní logiky
 
-Teď, přidali jsme ve výše uvedeném ověřování a obchodní pravidlo kódu, pokaždé, když se pokusíme vytvořit nebo aktualizovat večeři, bude náš ověřovací logiky pravidla vyhodnotí a vynucovat.
+Teď, když jsme přidali výše uvedený kód pro ověření a obchodní pravidlo, pokaždé, když se pokusíme vytvořit nebo aktualizovat večeři, naše pravidla logiky ověřování se vyhodnotí a vynutila.
 
-Vývojářům psát kód jako níže proaktivně určit, jestli je platný objekt Dinner a načíst seznam všechna narušení v něm bez vyvolání výjimky:
+Vývojáři mohou napsat kód podobný níže, aby proaktivně určil, zda je objekt večeře platný, a načíst seznam všech porušení v něm, aniž by vyvolali výjimky:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample13.cs)]
 
-Pokud jsme pokus o uložení večeře v neplatném stavu, bude vyvolána výjimka, když jsme volání metody Save() na DinnerRepository. K tomu dojde, vzhledem k tomu před uložením změn webu Dinner a jsme přidali kód do Dinner.OnValidate() vyvolat výjimku, pokud je porušení pravidel v společnosti Dinner technologie LINQ to SQL automaticky volá naše Dinner.OnValidate() částečnou metodu. Můžeme tuto výjimku zachytit a reaktivně načítat seznam porušení opravit:
+Pokud se pokusíme Uložit večeři v neplatném stavu, vyvolá se výjimka při volání metody Save () na DinnerRepository. Důvodem je, že LINQ to SQL automaticky volá částečnou metodu večeře. OnValidate () předtím, než uloží změny v večeři, a přidáme kód do večeři. OnValidate (), který vyvolá výjimku, pokud v večeři existují porušení pravidel. Tuto výjimku můžeme zachytit a znovu aktivně načíst seznam porušení, která se mají opravit:
 
 [!code-csharp[Main](build-a-model-with-business-rule-validations/samples/sample14.cs)]
 
-Vzhledem k tomu, že naše ověření a obchodních pravidel jsou implementovány v rámci naší modelu vrstvy a není ve vrstvě uživatelského rozhraní, budou se použít a použít v rámci všech scénářů v rámci naší aplikace. Můžete později změnit nebo přidat obchodní pravidla a mít veškerý kód, že funguje s objekty naše společnost Dinner případném dalším sdílení dodržovat je.
+Vzhledem k tomu, že naše ověřování a obchodní pravidla jsou implementována v rámci naší vrstvy modelu a ne v rámci vrstvy uživatelského rozhraní, budou použita a použita ve všech scénářích v rámci naší aplikace. Později můžeme změnit nebo přidat obchodní pravidla a všechny kódy, které se budou pracovat s našimi objekty večeře, je respektují.
 
-S flexibilitu při změně obchodních pravidel na jednom místě, bez nutnosti tyto změny ripple v celé aplikaci a logika uživatelského rozhraní, je znak kvalitní aplikace a výhody, které rozhraní MVC pomáhá podporovat.
+Flexibilita při změně obchodních pravidel na jednom místě, bez toho, aby byly tyto změny probíhají v celé aplikaci a v logice uživatelského rozhraní, je znaménkem dobře zapsané aplikace a výhodou, kterou architektura MVC pomáhá povzbudit.
 
-### <a name="next-step"></a>Dalším krokem
+### <a name="next-step"></a>Další krok
 
-Teď máme modelu, který můžeme použít jak dotazování a aktualizace databáze.
+Nyní jsme získali model, který můžeme použít k dotazování i k aktualizaci naší databáze.
 
-Teď přidáme několik kontrolerů a zobrazení pro projekt, který můžeme použít k vytvoření uživatelského rozhraní HTML prostředí kolem něj.
+Teď přidáme do projektu některé řadiče a zobrazení, které můžeme použít k sestavení prostředí uživatelského rozhraní HTML.
 
 > [!div class="step-by-step"]
 > [Předchozí](create-a-database.md)
-> [další](use-controllers-and-views-to-implement-a-listingdetails-ui.md)
+> [Další](use-controllers-and-views-to-implement-a-listingdetails-ui.md)

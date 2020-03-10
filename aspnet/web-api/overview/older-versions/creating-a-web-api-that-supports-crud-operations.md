@@ -10,11 +10,11 @@ ms.assetid: c125ca47-606a-4d6f-a1fc-1fc62928af93
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
 ms.openlocfilehash: a096fd1c54df33b40115907a5c2517b2e3fec5b8
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600341"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78556201"
 ---
 # <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>Povolení operací CRUD ve webovém rozhraní API ASP.NET 1
 
@@ -42,12 +42,12 @@ Rozhraní API pro produkty zpřístupňuje následující metody.
 | Získat produkt podle ID | GET | *ID* /API/Products/ |
 | Získat produkt podle kategorie | GET | /API/Products? kategorie =*kategorie* |
 | Vytvořit nový produkt | POST | /api/products |
-| Aktualizace produktu | PŘEVÉST | *ID* /API/Products/ |
+| Aktualizace produktu | PUT | *ID* /API/Products/ |
 | Odstranění produktu | DELETE | *ID* /API/Products/ |
 
 Všimněte si, že některé identifikátory URI zahrnují ID produktu v cestě. Pokud například chcete získat produkt, jehož ID je 28, klient odešle požadavek GET na `http://hostname/api/products/28`.
 
-### <a name="resources"></a>Prostředky
+### <a name="resources"></a>Zdroje
 
 Rozhraní API pro produkty definuje identifikátory URI pro dva typy prostředků:
 

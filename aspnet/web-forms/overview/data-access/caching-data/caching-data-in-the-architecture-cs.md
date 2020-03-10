@@ -9,11 +9,11 @@ ms.assetid: d29a7c41-0628-4a23-9dfc-bfea9c6c1054
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-in-the-architecture-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 192cadb8e2f862ac2a97a36b375e247b281ece93
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600819"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78551168"
 ---
 # <a name="caching-data-in-the-architecture-c"></a>Ukládání dat do mezipaměti v architektuře (C#)
 
@@ -159,7 +159,7 @@ V tuto chvíli máme stránku, která používá vrstvu ukládání do mezipamě
 > [!NOTE]
 > Vrstva ukládání do mezipaměti uvedená v tomto článku ke stažení, která je přiložena k tomuto článku, není dokončena. Obsahuje pouze jednu třídu, `ProductsCL`, která pouze sport několik metody. Kromě toho pouze jedna stránka ASP.NET používá CL (`~/Caching/FromTheArchitecture.aspx`) všichni ostatní, stále na knihoven BLL odkazují přímo. Pokud plánujete použití CL ve vaší aplikaci, všechna volání z prezentační vrstvy by měla přejít na CL, což by vyžadovalo, aby se třídy CL a metody pokryly s těmito třídami a metodami v knihoven BLL aktuálně používané prezentační vrstvou.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 I když lze ukládání do mezipaměti použít v prezentační vrstvě pomocí ovládacích prvků ASP.NET 2,0 s SqlDataSource a ObjectDataSource, v ideálním případě by se odpovědnosti do mezipaměti přenesly na samostatnou vrstvu v architektuře. V tomto kurzu jsme vytvořili vrstvu ukládání do mezipaměti, která se nachází mezi prezentační vrstvou a vrstvou obchodní logiky. Vrstva ukládání do mezipaměti musí poskytovat stejnou sadu tříd a metod, které existují v knihoven BLL a jsou volány z prezentační vrstvy.
 

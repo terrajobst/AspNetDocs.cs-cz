@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/aspnet-ajax/how-do-i-implement-the-ajax-incremental-page-display-pattern
-title: '[Postup:] Implementace vzorce přírůstkového zobrazení stránek AJAX? | Dokumenty Microsoft'
+title: '[Postupy:] Implementovat model přírůstkových zobrazení stránky AJAX? | Dokumenty Microsoft'
 author: JoeStagner
-description: Tradičně při požadavku na webovou stránku, musí uživatel čekat, zatímco celé stránky je načíst ze serveru, po jejímž uplynutí se zobrazí stránka dokončení sudde...
+description: V případě, že je požadována webová stránka, musí uživatel počkat na načtení celé stránky ze serveru, po kterém se zobrazí kompletní stránka sudde...
 ms.author: riande
 ms.date: 03/05/2007
 ms.assetid: 17dfc331-1186-4240-8abf-f0220c90e081
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-implement-the-ajax-incremental-page-display-pattern
 msc.type: video
 ms.openlocfilehash: f4678ca375c55c7bd3b02fb9707059418adb1bb7
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59395183"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78545295"
 ---
-# <a name="how-do-i-implement-the-ajax-incremental-page-display-pattern"></a>[Postup:] Implementace vzorce přírůstkového zobrazení stránek AJAX?
+# <a name="how-do-i-implement-the-ajax-incremental-page-display-pattern"></a>[Postupy:] Implementovat model přírůstkových zobrazení stránky AJAX?
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-Tradičně při požadavku na webovou stránku, musí uživatel čekat, zatímco celé stránky je načíst ze serveru, po jejímž uplynutí dokončení se zobrazí náhle v prohlížeči. Toto video ukazuje, jak AJAX vzorce přírůstkového zobrazení stránek zlepšuje uživatelské prostředí rychle a plynule načítání a zobrazením části webové stránky.
+Tradičně, když se požaduje webová stránka, musí uživatel počkat na načtení celé stránky ze serveru, po kterém se v prohlížeči náhle zobrazuje celá stránka. Toto video ukazuje, jak model přírůstkového zobrazení stránky AJAX zlepšuje činnost koncového uživatele díky rychlému a hladkému načítání a zobrazování částí webové stránky.
 
-[&#9654;Podívejte se na video (11 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-the-ajax-incremental-page-display-pattern)
+[&#9654;Přehrát video (11 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-the-ajax-incremental-page-display-pattern)
 
 > [!div class="step-by-step"]
 > [Předchozí](how-do-i-implement-the-ajax-paging-pattern.md)
-> [další](how-do-i-implement-the-incremental-page-display-pattern-using-http-get-and-post.md)
+> [Další](how-do-i-implement-the-incremental-page-display-pattern-using-http-get-and-post.md)

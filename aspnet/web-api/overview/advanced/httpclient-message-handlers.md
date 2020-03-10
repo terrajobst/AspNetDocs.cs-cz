@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/httpclient-message-handlers
-title: Obslužné rutiny zpráv HttpClient v rozhraní ASP.NET Web API – ASP.NET 4.x
+title: Obslužné rutiny zpráv HttpClient ve ASP.NET Web API – ASP.NET 4. x
 author: MikeWasson
-description: Vytvoření obslužné rutiny vlastních zpráv pro ASP.NET Web API v ASP.NET 4.x
+description: Vytváření vlastních obslužných rutin zpráv pro webové rozhraní API ASP.NET v ASP.NET 4. x
 ms.author: riande
 ms.date: 10/01/2012
 ms.custom: seoapril2019
@@ -10,54 +10,54 @@ ms.assetid: 5a4b6c80-b2e9-4710-8969-d5076f7f82b8
 msc.legacyurl: /web-api/overview/advanced/httpclient-message-handlers
 msc.type: authoredcontent
 ms.openlocfilehash: 265bd9b2f48ed7d1e955f3c4947d10fd589b3e17
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65115445"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78557643"
 ---
-# <a name="httpclient-message-handlers-in-aspnet-web-api"></a>Obslužné rutiny zpráv HttpClient ve webovém rozhraní API technologie ASP.NET
+# <a name="httpclient-message-handlers-in-aspnet-web-api"></a>Obslužné rutiny zpráv HttpClient ve webovém rozhraní API ASP.NET
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-A *obslužná rutina zprávy* je třída, která přijme požadavek HTTP a vrátí odpověď HTTP.
+*Obslužná rutina zprávy* je třída, která přijme požadavek HTTP a vrátí odpověď HTTP.
 
-Řada obslužné rutiny zpráv jsou obvykle zřetězen dohromady. První obslužná rutina požadavku HTTP, provádí nějaké zpracování a poskytuje k další obslužná rutina požadavku. V určitém okamžiku odpovědi se vytvoří a vrátí řetězem. Tento model se nazývá *delegování* obslužné rutiny.
+Obvykle je řada obslužných rutin zpráv zřetězena dohromady. První obslužná rutina přijme požadavek HTTP, provede nějaké zpracování a udělí požadavek Další obslužné rutině. V určitém okamžiku se odpověď vytvoří a zálohuje řetězec. Tento model se nazývá *delegování* obslužné rutiny.
 
 ![](httpclient-message-handlers/_static/image1.png)
 
-Na straně klienta **HttpClient** třída používá obslužné rutiny zpráv pro zpracování žádostí. Je výchozí obslužnou rutinu **HttpClientHandler**, který odešle požadavek v síti a získá odpověď ze serveru. Obslužné rutiny vlastních zpráv můžete vložit do kanálu klienta:
+Na straně klienta třída **HttpClient** používá ke zpracování požadavků obslužnou rutinu zprávy. Výchozí obslužná rutina je **HttpClientHandler**, která odesílá požadavek přes síť a získá odpověď ze serveru. Do kanálu klienta můžete vložit vlastní obslužné rutiny zpráv:
 
 ![](httpclient-message-handlers/_static/image2.png)
 
 > [!NOTE]
-> Rozhraní ASP.NET Web API také používá obslužné rutiny zpráv na straně serveru. Další informace najdete v tématu [obslužné rutiny zpráv HTTP](http-message-handlers.md).
+> Webové rozhraní API ASP.NET také používá obslužné rutiny zpráv na straně serveru. Další informace najdete v tématu [obslužné rutiny zpráv HTTP](http-message-handlers.md).
 
-## <a name="custom-message-handlers"></a>Obslužné rutiny vlastních zpráv
+## <a name="custom-message-handlers"></a>Vlastní obslužné rutiny zpráv
 
-Zápis obslužné rutiny vlastních zpráv, jsou odvozeny z **System.Net.Http.DelegatingHandler** a přepsat **SendAsync** metody. Následuje podpis metody:
+Chcete-li napsat vlastní obslužnou rutinu zpráv, odvodit ze **System .NET. http. DelegatingHandler** a přepsat metodu **SendAsync** . Tady je podpis této metody:
 
 [!code-csharp[Main](httpclient-message-handlers/samples/sample1.cs)]
 
-Tato metoda přebírá **HttpRequestMessage** jako vstup a asynchronně vrátí **objekt HttpResponseMessage**. Obvyklá implementace provede následující akce:
+Metoda přebírá **zprávy HttpRequestMessage** jako vstup a asynchronně vrátí **HttpResponseMessage**. Typická implementace provede následující:
 
 1. Zpracování zprávy s požadavkem.
-2. Volání `base.SendAsync` odešlete žádost na vnitřní obslužnou rutinu.
+2. Zavolejte `base.SendAsync` k odeslání požadavku vnitřní obslužné rutině.
 3. Vnitřní obslužná rutina vrátí zprávu odpovědi. (Tento krok je asynchronní.)
-4. Zpracování odpovědi a vrátí řízení volajícímu.
+4. Zpracujte odpověď a vraťte ji volajícímu.
 
-Následující příklad ukazuje popisovač zpráv, který přidá vlastní hlavičku na odchozí žádost:
+Následující příklad ukazuje popisovač zprávy, který přidá vlastní hlavičku do odchozího požadavku:
 
 [!code-csharp[Main](httpclient-message-handlers/samples/sample2.cs)]
 
-Volání `base.SendAsync` je asynchronní. Pokud obslužná rutina nemá žádnou práci po tomto volání, použijte **await** – klíčové slovo pokračování provádění po dokončení metody. Následující příklad ukazuje obslužnou rutinu, která protokoluje kódy chyb. Protokolování samotný není moc zajímavý, ale tento příklad ukazuje, jak získat odpovědi uvnitř obslužné rutiny.
+Volání `base.SendAsync` je asynchronní. Pokud obslužná rutina po tomto volání funguje, použijte klíčové slovo **await** pro pokračování v provádění po dokončení metody. Následující příklad ukazuje obslužnou rutinu, která protokoluje kódy chyb. Samotné protokolování není velice zajímavé, ale tento příklad ukazuje, jak získat odpověď v rámci obslužné rutiny.
 
 [!code-csharp[Main](httpclient-message-handlers/samples/sample3.cs?highlight=10,13)]
 
 ## <a name="adding-message-handlers-to-the-client-pipeline"></a>Přidání obslužných rutin zpráv do kanálu klienta
 
-Chcete-li přidat vlastní obslužné rutiny pro **HttpClient**, použijte **HttpClientFactory.Create** metody:
+Chcete-li přidat vlastní obslužné rutiny do **HttpClient**, použijte metodu **HttpClientFactory. Create** :
 
 [!code-csharp[Main](httpclient-message-handlers/samples/sample4.cs)]
 
-Obslužné rutiny zpráv jsou volány v pořadí, ve kterém můžete předat je do **vytvořit** metody. Vzhledem k tomu, že jsou vnořené obslužných rutin, v opačném směru přenáší zprávy s odpovědí. To znamená že poslední obslužnou rutinou je první získá zprávu odpovědi.
+Obslužné rutiny zpráv jsou volány v pořadí, které je předáváte do metody **Create** . Vzhledem k tomu, že obslužné rutiny jsou vnořené, zpráva odpovědi se přenáší do druhého směru. To znamená, že poslední obslužná rutina je první, aby zobrazila zprávu odpovědi.

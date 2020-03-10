@@ -9,11 +9,11 @@ ms.assetid: ac6916d0-a5ab-4218-9760-7ba9e72d258c
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-deleting-cs
 msc.type: authoredcontent
 ms.openlocfilehash: ed832c38b4972f440ab64c141e29c85f0a9df920
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74588963"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78589528"
 ---
 # <a name="batch-deleting-c"></a>Dávkové odstraňování (C#)
 
@@ -82,7 +82,7 @@ Obrázek 4 znázorňuje prvek GridView po výběru počtu řádků k odstraněn�
 > [!NOTE]
 > Chcete-li otestovat nedělitelnost `DeleteProductsWithTransaction` metody s, ručně přidejte položku pro produkt v tabulce `Order Details` a pak se pokuste tento produkt odstranit (společně s ostatními). Při pokusu o odstranění produktu s přidruženým pořadím obdržíte porušení omezení cizího klíče, ale Všimněte si, jak se ostatní vybrané produkty odstraní zpátky.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Vytvoření dávkového odstranění rozhraní zahrnuje přidání prvku GridView se sloupcem zaškrtávacích políček a webového ovládacího prvku tlačítko, který po kliknutí odstraní všechny vybrané řádky jako jedinou atomickou operaci. V tomto kurzu jsme toto rozhraní sestavili tak, aby piecing dohromady pracovali ve dvou předchozích kurzech: [Přidání sloupce GridView checkboxs](../enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-cs.md) a [balení úprav databáze v rámci transakce](wrapping-database-modifications-within-a-transaction-cs.md). V prvním kurzu jsme vytvořili prvek GridView se sloupcem CheckBoxes a v druhém jsme implementovali metodu v knihoven BLL, která při předání `List<T>` hodnot `ProductID` odstranila všechny v rámci rozsahu transakce.
 

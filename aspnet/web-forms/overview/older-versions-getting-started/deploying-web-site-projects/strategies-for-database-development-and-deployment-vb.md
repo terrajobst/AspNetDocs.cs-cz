@@ -9,11 +9,11 @@ ms.assetid: 07b8905d-78ac-4252-97fb-8675b3fb0bbf
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 1ea4ade32fb05b9e69647ece7d1a4c400fe9fb21
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74616147"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78546548"
 ---
 # <a name="strategies-for-database-development-and-deployment-vb"></a>Strategie vývoje a nasazení databází (VB)
 
@@ -91,7 +91,7 @@ Existuje řada nástrojů pro porovnání databází jiných výrobců, které n
 > [!NOTE]
 > V době psaní tohoto zápisu aktuální verze SQL Compare byla verze 7,1 s cenou Standard Edition $395. Postup můžete sledovat stažením bezplatné 14 dní zkušební verze.
 
-Po spuštění porovnávání SQL se otevře dialogové okno projekty porovnání, ve kterém se zobrazí uložené projekty porovnání SQL. Vytvořte nový projekt. Tím se spustí Průvodce konfigurací projektu, který zobrazí výzvu k zadání informací o databázích, které se mají porovnat (viz obrázek 1). Zadejte informace pro databáze pro vývoj a produkční prostředí.
+Po spuštění porovnávání SQL se otevře dialogové okno projekty porovnání, ve kterém se zobrazí uložené projekty porovnání SQL. Vytvoření nového projektu Tím se spustí Průvodce konfigurací projektu, který zobrazí výzvu k zadání informací o databázích, které se mají porovnat (viz obrázek 1). Zadejte informace pro databáze pro vývoj a produkční prostředí.
 
 [![porovnání databází vývoje a výroby](strategies-for-database-development-and-deployment-vb/_static/image2.jpg)](strategies-for-database-development-and-deployment-vb/_static/image1.jpg)
 
@@ -134,7 +134,7 @@ Při nasazení webu je nejlepší převést webovou aplikaci do stavu offline, d
 
 Převedení aplikace do režimu offline během nasazování je tak jednoduché jako nahrání souboru `app_offline.htm` do kořenového adresáře produkčního prostředí před zahájením procesu nasazení a jeho odstraněním (nebo přejmenováním na něco jiného) po dokončení nasazení. Další informace o tomto postupu najdete v článku Jan Peterson s, který přebírá [*aplikaci ASP.NET v režimu offline*](http://www.15seconds.com/issue/061207.htm).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Hlavním problémem při nasazení aplikace řízené daty v průběhu nasazení databáze. Vzhledem k tomu, že existují dvě verze databáze – jeden ve vývojovém prostředí a jeden v produkčním prostředí – tato dvě databázová schémata můžou být nesynchronizovaná, protože nové funkce se přidávají při vývoji. Co víc, protože provozní databáze, která se naplní skutečnými daty od reálných uživatelů, nemůžete přepsat provozní databázi upravenou vývojovou databází, třeba když nasadíte soubory, které tvoří aplikaci (stránky ASP.NET, soubory obrázků a tak dále). Místo toho nasazení databáze zahrnuje implementaci přesné sady změn provedených ve vývojových databázích v provozní databázi od posledního nasazení.
 

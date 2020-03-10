@@ -9,11 +9,11 @@ ms.assetid: 716264ae-ab72-45de-bfc5-53a6237089cf
 msc.legacyurl: /web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication
 msc.type: authoredcontent
 ms.openlocfilehash: c9558aca8a655071c0c94ed66433cf721f26c011
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466420"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78565462"
 ---
 # <a name="create-an-aspnet-web-forms-app-with-sms-two-factor-authentication-c"></a>Vytvoření aplikace webových formulářů ASP.NET s dvoufaktorovým ověřováním prostřednictvím SMS (C#)
 
@@ -104,7 +104,7 @@ V tuto chvíli jste povolili dvojúrovňové ověřování pro vaši aplikaci. A
  Kliknutím na **Zapamatovat si tento prohlížeč** zabráníte tomu, abyste se přihlásili Pomocí dvojúrovňového ověřování, když použijete prohlížeč a zařízení, kde jste zaškrtli políčko. Pokud uživatelé se zlými úmysly nemůžou získat přístup k vašemu zařízení, povolit dvojúrovňové ověřování a kliknout na **Zapamatovat si tento prohlížeč** , nabídne vám pohodlný přístup k heslu a zároveň si zachová ochranu silným dvojúrovňovém ověřováním pro veškerý přístup z nedůvěryhodných zařízení. Můžete to provést na libovolném privátní zařízení, kterou používáte pravidelně.
 
 <a id="addRes"></a>
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 - [Dvoufaktorové ověřování pomocí SMS a e-mailu s ASP.NET Identity](../../../identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md)
 - [Odkazy na ASP.NET Identity doporučené prostředky](../../../identity/overview/getting-started/aspnet-identity-recommended-resources.md)

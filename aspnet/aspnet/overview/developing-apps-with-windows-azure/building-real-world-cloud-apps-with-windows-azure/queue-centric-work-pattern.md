@@ -9,11 +9,11 @@ ms.assetid: cc1ad51b-40c3-4c68-8620-9aaa0fd1f6cf
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern
 msc.type: authoredcontent
 ms.openlocfilehash: 1177336b25479c06706227e5c8ff4d027cdaebb8
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77456982"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78584817"
 ---
 # <a name="queue-centric-work-pattern-building-real-world-cloud-apps-with-azure"></a>Pracovní vzor orientovaný na fronty (vytváření skutečných cloudových aplikací s Azure)
 
@@ -173,7 +173,7 @@ V této kapitole jste viděli, jak zlepšit odezvu aplikací, spolehlivost a šk
 Toto je poslední z 13 vzorů popsaných v této elektronické knize, ale samozřejmě existuje mnoho dalších vzorů a postupů, které vám pomůžou při sestavování úspěšných cloudových aplikací. [Poslední kapitola](more-patterns-and-guidance.md) obsahuje odkazy na zdroje informací o tématech, která se nezabývá těmito 13 vzorci.
 
 <a id="resources"></a>
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje
 
 Další informace o frontách najdete v následujících zdrojích informací.
 

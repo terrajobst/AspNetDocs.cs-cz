@@ -9,11 +9,11 @@ ms.assetid: 0ecb03b6-52a0-4731-8c7a-436391d36838
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb
 msc.type: authoredcontent
 ms.openlocfilehash: f1dd50f46528e8dd51f85e503604d3f0dbc21ad2
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74601906"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78577054"
 ---
 # <a name="programmatically-setting-the-objectdatasources-parameter-values-vb"></a>Programové nastavení hodnot parametru ObjectDataSource (VB)
 
@@ -111,7 +111,7 @@ Když navštívíte tuto stránku prostřednictvím prohlížeče, uvidíme, že
 
 **Obrázek 10**: zaměstnanci, jejichž výročí jsou uvedené v tomto měsíci ([kliknutím zobrazíte obrázek v plné velikosti](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image28.png))
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Přestože hodnoty parametrů ObjectDataSource lze obvykle nastavit deklarativně, bez nutnosti kódu řádku, je snadné nastavit hodnoty parametrů programově. Vše, co musíme udělat, je vytvořit obslužnou rutinu události pro událost `Selecting` ObjectDataSource, která se aktivuje před vyvoláním metody podkladového objektu, a ručně nastavit hodnoty pro jeden nebo více parametrů prostřednictvím kolekce `InputParameters`.
 

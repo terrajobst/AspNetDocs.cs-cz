@@ -9,11 +9,11 @@ ms.assetid: f50a5cdb-c06a-46ed-aa14-fc5b049dc8dc
 msc.legacyurl: /mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication
 msc.type: authoredcontent
 ms.openlocfilehash: c14149d802bfc0a227a839a2981dc3e8a3849c25
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457593"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78538442"
 ---
 # <a name="aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication"></a>Aplikace ASP.NET MVC 5 s dvoufaktorovým ověřováním pomocí SMS a e-mailu
 
@@ -142,7 +142,7 @@ Kliknutím na toto zaškrtávací políčko **prohlížeč zapamatujte** , že n
 V tomto kurzu se seznámíte s tím, jak povolit 2FA v nové aplikaci ASP.NET MVC. Můj kurz [– dvojúrovňové ověřování pomocí SMS a e-mailu s ASP.NET identity se](../../../identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md) podrobněji odkazuje na kód za ukázkou.
 
 <a id="addRes"></a>
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 - [Dvojúrovňové ověřování pomocí SMS a e-mailu s ASP.NET identity](../../../identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md) Přejde na podrobnosti o dvojúrovňové ověřování.
 - [Odkazy na ASP.NET Identity doporučené prostředky](../../../identity/overview/getting-started/aspnet-identity-recommended-resources.md)

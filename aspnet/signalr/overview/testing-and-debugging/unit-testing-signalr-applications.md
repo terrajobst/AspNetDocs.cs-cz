@@ -1,111 +1,111 @@
 ---
 uid: signalr/overview/testing-and-debugging/unit-testing-signalr-applications
-title: Testování aplikace SignalR | Dokumentace Microsoftu
+title: Aplikace Signal test jednotek | Microsoft Docs
 author: bradygaster
-description: Tento článek popisuje, jak používat funkce testování částí 2.0 SignalR.
+description: Tento článek popisuje, jak používat funkce testování částí nástroje Signaler 2,0.
 ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: d1983524-e0d5-4ee6-9d87-1f552f7cb964
 msc.legacyurl: /signalr/overview/testing-and-debugging/unit-testing-signalr-applications
 msc.type: authoredcontent
 ms.openlocfilehash: 2cf2e88f141d89971439dc1fc4979849f8dded47
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113453"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78578671"
 ---
 # <a name="unit-testing-signalr-applications"></a>Testování jednotek aplikace knihovnou SignalR
 
-podle [Patrick Fletcher](https://github.com/pfletcher)
+Po [Fletcheru](https://github.com/pfletcher)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> Tento článek popisuje použití funkce SignalR 2 testování částí.
+> Tento článek popisuje použití funkcí testování částí v Signaler 2.
 >
-> ## <a name="software-versions-used-in-this-topic"></a>Verze softwaru použitým v tomto tématu
+> ## <a name="software-versions-used-in-this-topic"></a>Verze softwaru používané v tomto tématu
 >
 >
 > - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
-> - Funkce SignalR verze 2
+> - Signal – verze 2
 >
 >
 >
-> ## <a name="questions-and-comments"></a>Otázky a komentáře
+> ## <a name="questions-and-comments"></a>Dotazy a komentáře
 >
-> Napište prosím zpětnou vazbu o tom, jak vám líbilo v tomto kurzu a co můžeme zlepšit v komentářích v dolní části stránky. Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
+> Přečtěte si prosím svůj názor na to, jak se vám tento kurz líbí a co bychom mohli vylepšit v komentářích v dolní části stránky. Pokud máte dotazy, které přímo nesouvisejí s kurzem, můžete je publikovat do [fóra signálu ASP.NET](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
 
 <a id="unit"></a>
-## <a name="unit-testing-signalr-applications"></a>Testování aplikace knihovnou SignalR
+## <a name="unit-testing-signalr-applications"></a>Aplikace signalizace testování částí
 
-Funkce testování částí v SignalR 2 slouží k vytvoření testů jednotek pro aplikace SignalR. Funkce SignalR 2 zahrnuje [IHubCallerConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) rozhraní, které lze použít k vytvoření mock objektu k simulaci vaší metod rozbočovače pro testování.
+Pomocí funkcí testování částí ve službě Signaler 2 můžete vytvořit testy jednotek pro vaši aplikaci signalizace. Signal 2 obsahuje rozhraní [IHubCallerConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) , které se dá použít k vytvoření objektu pro simulaci vašich metod rozbočovače pro účely testování.
 
-V této části přidáte testů jednotek pro aplikace vytvořené v [kurzu Začínáme](../getting-started/tutorial-getting-started-with-signalr.md) pomocí [XUnit.net](https://github.com/xunit/xunit) a [Moq](https://github.com/Moq/moq4).
+V této části přidáte testy jednotek pro aplikaci vytvořenou v [Začínáme kurzu](../getting-started/tutorial-getting-started-with-signalr.md) pomocí [XUnit.NET](https://github.com/xunit/xunit) a [MOQ](https://github.com/Moq/moq4).
 
-XUnit.net se dá používat k ovládání testu; Moq se použije k vytvoření [napodobení](http://en.wikipedia.org/wiki/Mock_object) objektu pro testování. Další napodobování architektury je možné v případě potřeby; [NSubstitute](http://nsubstitute.github.io/) je také vhodná. Tento kurz ukazuje, jak nastavit mock objektu dvěma způsoby: Nejprve pomocí `dynamic` objektu (představíme v rozhraní .NET Framework 4) a druhý, pomocí rozhraní.
+XUnit.net se bude používat k řízení testu. MOQ se použije k vytvoření objektu [makety](http://en.wikipedia.org/wiki/Mock_object) pro testování. V případě potřeby lze použít jiné rozhraní pro návrhy. [NSubstitute](http://nsubstitute.github.io/) je také dobrou volbou. V tomto kurzu se dozvíte, jak nastavit objekt kresby dvěma způsoby: nejprve pomocí objektu `dynamic` (představený v .NET Framework 4) a s použitím rozhraní.
 
 ### <a name="contents"></a>Obsah
 
-Tento kurz obsahuje následující části.
+Tento kurz obsahuje následující oddíly.
 
-- [Testování částí pomocí dynamické](#dynamic)
-- [Podle typu testování částí](#type)
+- [Testování částí s dynamickým](#dynamic)
+- [Testování částí podle typu](#type)
 
 <a id="dynamic"></a>
-### <a name="unit-testing-with-dynamic"></a>Testování částí pomocí dynamické
+### <a name="unit-testing-with-dynamic"></a>Testování částí s dynamickým
 
-V této části přidáte testování částí pro aplikace vytvořené v [kurzu Začínáme](../getting-started/tutorial-getting-started-with-signalr.md) používání dynamických objektů.
+V této části přidáte test jednotek pro aplikaci vytvořenou v [Začínáme kurzu](../getting-started/tutorial-getting-started-with-signalr.md) pomocí dynamického objektu.
 
-1. Nainstalujte [XUnit Runner rozšíření](https://visualstudiogallery.msdn.microsoft.com/463c5987-f82b-46c8-a97e-b1cde42b9099) pro Visual Studio 2013.
-2. Dokončit [kurzu Začínáme](../getting-started/tutorial-getting-started-with-signalr.md), nebo stáhnout hotovou aplikaci [galerie kódů MSDN](https://code.msdn.microsoft.com/SignalR-Getting-Started-b9d18aa9).
-3. Pokud používáte verzi aplikace, jak začít, otevřete **Konzola správce balíčků** a klikněte na tlačítko **obnovení** přidat do projektu balíček SignalR.
+1. Nainstalujte [rozšíření XUnit Runner](https://visualstudiogallery.msdn.microsoft.com/463c5987-f82b-46c8-a97e-b1cde42b9099) pro Visual Studio 2013.
+2. Buď dokončete [kurz Začínáme](../getting-started/tutorial-getting-started-with-signalr.md), nebo si stáhněte dokončenou aplikaci z [Galerie kódu na webu MSDN](https://code.msdn.microsoft.com/SignalR-Getting-Started-b9d18aa9).
+3. Pokud používáte aplikaci Začínáme ke stažení, otevřete **konzolu Správce balíčků** a kliknutím na **obnovit** přidejte do projektu balíček signalizace.
 
-    ![Obnovení balíčků](unit-testing-signalr-applications/_static/image1.png)
-4. Přidáte projekt do řešení pro testování částí. Klikněte pravým tlačítkem na řešení v **Průzkumníka řešení** a vyberte **přidat**, **nový projekt...** . V části **jazyka C#** uzlu, vyberte **Windows** uzlu. Vyberte **knihovna tříd**. Název nového projektu **TestLibrary** a klikněte na tlačítko **OK**.
+    ![Obnovit balíčky](unit-testing-signalr-applications/_static/image1.png)
+4. Přidejte projekt do řešení pro testování částí. Klikněte pravým tlačítkem na své řešení v **Průzkumník řešení** a vyberte **Přidat**, **Nový projekt...** . V **C#** uzlu vyberte uzel **Windows** . Vyberte možnost **Knihovna tříd**. Pojmenujte nový projekt **TestLibrary** a klikněte na **OK**.
 
-    ![Vytvořte knihovnu testu](unit-testing-signalr-applications/_static/image2.png)
-5. Přidáte odkaz v testovém projektu knihovny do projektu SignalRChat. Klikněte pravým tlačítkem myši **TestLibrary** projektu a vyberte **přidat**, **odkaz...** . Vyberte **projekty** pod uzlem **řešení** uzlu a kontrola **SignalRChat**. Klikněte na **OK**.
+    ![Vytvořit knihovnu testů](unit-testing-signalr-applications/_static/image2.png)
+5. Přidejte odkaz do projektu knihovny testů do projektu SignalRChat. Klikněte pravým tlačítkem na projekt **TestLibrary** a vyberte **Přidat**, **odkaz.** ... V uzlu **řešení** vyberte uzel **projekty** a zaškrtněte **SignalRChat**. Klikněte na tlačítko **OK**.
 
     ![Přidat odkaz na projekt](unit-testing-signalr-applications/_static/image3.png)
-6. Přidat balíčky SignalR, Moq a XUnit **TestLibrary** projektu. V **Konzola správce balíčků**, nastavte **výchozí projekt** rozevírací nabídku, která **TestLibrary**. V okně konzoly spusťte následující příkazy:
+6. Přidejte do projektu **TestLibrary** balíčky signálu, MOQ a XUnit. V **konzole správce balíčků**nastavte výchozí rozevírací seznam **projektu** na **TestLibrary**. V okně konzoly spusťte následující příkazy:
 
    - `Install-Package Microsoft.AspNet.SignalR`
    - `Install-Package Moq`
    - `Install-Package XUnit`
 
-     ![Instalace balíčků](unit-testing-signalr-applications/_static/image4.png)
-7. Vytvoření testovacího souboru. Klikněte pravým tlačítkem myši **TestLibrary** projektu a klikněte na tlačítko **přidat...** , **Třídy**. Pojmenujte novou třídu **Tests.cs**.
-8. Nahraďte obsah Tests.cs následujícím kódem.
+     ![Nainstalovat balíčky](unit-testing-signalr-applications/_static/image4.png)
+7. Vytvořte testovací soubor. Klikněte pravým tlačítkem na projekt **TestLibrary** a klikněte na **Přidat...** , **Třída**. Pojmenujte novou třídu **Tests.cs**.
+8. Obsah Tests.cs nahraďte následujícím kódem.
 
     [!code-csharp[Main](unit-testing-signalr-applications/samples/sample1.cs)]
 
-    Ve výše uvedeném kódu, je vytvořen pomocí testovacího klienta `Mock` objektu z [Moq](https://github.com/Moq/moq4) knihovny typu [IHubCallerConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) (v SignalR 2.1 přiřadit `dynamic` pro typ parametr.) `IHubCallerConnectionContext` Rozhraní je objekt proxy serveru, pomocí kterého můžete volat metody na straně klienta. `broadcastMessage` Funkce potom definovaná pro mock klienta tak, že je možné vyvolat v `ChatHub` třídy. Modul testu pak zavolá `Send` metodu `ChatHub` třídu, která volá imitaci `broadcastMessage` funkce.
-9. Sestavte řešení stisknutím kombinace kláves **F6**.
-10. Spusťte Jednotkový test. V sadě Visual Studio, vyberte **testovací**, **Windows**, **Průzkumník testů**. V okně Průzkumník testů, klikněte pravým tlačítkem na **HubsAreMockableViaDynamic** a vyberte **spustit vybrané testy**.
+    Ve výše uvedeném kódu je testovací klient vytvořen pomocí objektu `Mock` z knihovny [MOQ](https://github.com/Moq/moq4) , typu [IHubCallerConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) (in signal 2,1, přiřazení `dynamic` pro parametr typu.) Rozhraní `IHubCallerConnectionContext` je objekt proxy, pomocí kterého jste na klientovi vyvolali metody. Funkce `broadcastMessage` je pak definována pro maketa klienta, aby ji bylo možné volat pomocí `ChatHub` třídy. Testovací modul pak zavolá metodu `Send` třídy `ChatHub`, která zase volá napodobnou `broadcastMessage` funkci.
+9. Sestavte řešení stisknutím klávesy **F6**.
+10. Spusťte Jednotkový test. V aplikaci Visual Studio vyberte **test**, **Windows**, **Průzkumník testů**. V okně Průzkumník testů klikněte pravým tlačítkem na **HubsAreMockableViaDynamic** a vyberte **Spustit vybrané testy**.
 
     ![Průzkumník testů](unit-testing-signalr-applications/_static/image5.png)
-11. Ověřte, že test proběhl úspěšně kontrolou dolním podokně, v okně Průzkumníka testů. V okně se zobrazí, že test proběhl úspěšně.
+11. Ověřte, zda byl test úspěšný, kontrolou dolního podokna v okně Průzkumníka testů. V okně se zobrazí, že test proběhl úspěšně.
 
-    ![Test proběhl úspěšně](unit-testing-signalr-applications/_static/image6.png)
+    ![Test byl úspěšný](unit-testing-signalr-applications/_static/image6.png)
 
 <a id="type"></a>
-### <a name="unit-testing-by-type"></a>Podle typu testování částí
+### <a name="unit-testing-by-type"></a>Testování částí podle typu
 
-V této části přidáte testu pro aplikaci vytvořenou v [kurzu Začínáme](../getting-started/tutorial-getting-started-with-signalr.md) pomocí rozhraní, který obsahuje metodu, která má být testována.
+V této části přidáte test pro aplikaci vytvořenou v [Začínáme kurzu](../getting-started/tutorial-getting-started-with-signalr.md) pomocí rozhraní, které obsahuje metodu, která má být testována.
 
-1. Proveďte kroky 1 až 7 [testování částí pomocí dynamické](#dynamic) kurzu výše.
-2. Nahraďte obsah Tests.cs následujícím kódem.
+1. Proveďte kroky 1-7 v části [testování částí pomocí dynamického](#dynamic) kurzu výše.
+2. Obsah Tests.cs nahraďte následujícím kódem.
 
     [!code-csharp[Main](unit-testing-signalr-applications/samples/sample2.cs)]
 
-    Ve výše uvedeném kódu, se vytvoří rozhraní definuje podpis metody `broadcastMessage` metodu, pro kterou se vytvoří testovací stroj mock klienta. Mock klienta se pak vytvoří pomocí `Mock` objekt typu [IHubCallerConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) (v SignalR 2.1 přiřadit `dynamic` pro parametr typu.) `IHubCallerConnectionContext` Rozhraní je objekt proxy serveru, pomocí kterého můžete volat metody na straně klienta.
+    Ve výše uvedeném kódu se vytvoří rozhraní definující signaturu `broadcastMessage` metody, pro kterou testovací modul vytvoří strojového klienta. Napodobný klient je pak vytvořen pomocí objektu `Mock` typu [IHubCallerConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) (in Signal 2,1, přiřazení `dynamic` parametru typu.) Rozhraní `IHubCallerConnectionContext` je objekt proxy, pomocí kterého jste na klientovi vyvolali metody.
 
-    Test pak vytvoří instanci `ChatHub`a potom vytvoří na cvičnou verzi `broadcastMessage` metodu, která pak je vyvolána voláním `Send` metodu v rozbočovači.
-3. Sestavte řešení stisknutím kombinace kláves **F6**.
-4. Spusťte Jednotkový test. V sadě Visual Studio, vyberte **testovací**, **Windows**, **Průzkumník testů**. V okně Průzkumník testů, klikněte pravým tlačítkem na **HubsAreMockableViaDynamic** a vyberte **spustit vybrané testy**.
+    Test poté vytvoří instanci `ChatHub`a poté vytvoří maketnou verzi metody `broadcastMessage`, která je zase vyvolána voláním metody `Send` na rozbočovači.
+3. Sestavte řešení stisknutím klávesy **F6**.
+4. Spusťte Jednotkový test. V aplikaci Visual Studio vyberte **test**, **Windows**, **Průzkumník testů**. V okně Průzkumník testů klikněte pravým tlačítkem na **HubsAreMockableViaDynamic** a vyberte **Spustit vybrané testy**.
 
     ![Průzkumník testů](unit-testing-signalr-applications/_static/image7.png)
-5. Ověřte, že test proběhl úspěšně kontrolou dolním podokně, v okně Průzkumníka testů. V okně se zobrazí, že test proběhl úspěšně.
+5. Ověřte, zda byl test úspěšný, kontrolou dolního podokna v okně Průzkumníka testů. V okně se zobrazí, že test proběhl úspěšně.
 
-    ![Test proběhl úspěšně](unit-testing-signalr-applications/_static/image8.png)
+    ![Test byl úspěšný](unit-testing-signalr-applications/_static/image8.png)

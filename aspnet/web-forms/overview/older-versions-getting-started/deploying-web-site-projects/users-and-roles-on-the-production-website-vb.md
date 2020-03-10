@@ -9,11 +9,11 @@ ms.assetid: 491ed5ae-9be1-4191-87be-65e4e1c57690
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-vb
 msc.type: authoredcontent
 ms.openlocfilehash: d4ce8b278322684be2d44faefd6e69fc524bbe18
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74617958"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78528264"
 ---
 # <a name="users-and-roles-on-the-production-website-vb"></a>Uživatelé a role na provozním webu (VB)
 
@@ -97,7 +97,7 @@ Podrobnější informace o vytváření stránek pro správu uživatelů a rolí
 
 K implementaci WSAT podobných funkcím na produkčním webu můžete vždy vytvořit vlastní řadu webových stránek, které implementují funkce WSAT. Pokud chcete začít, podívejte se na zdrojový kód WSAT, který je umístěný ve složce `%WINDIR%\Microsoft.NET\Framework\v2.0.50727\ASP.NETWebAdminFiles`. Další možností je použít alternativu clem Dan WSAT, kterou sdílí v jejím článku, a to s využitím [vlastního nástroje pro správu](http://aspnet.4guysfromrolla.com/articles/052307-1.aspx)webu. Dan provede čtenáře procesem vytvoření vlastního nástroje podobného WSAT, zahrnuje zdrojový kód aplikace ke stažení (v C#) a poskytuje podrobné pokyny pro přidání vlastního WSATu na hostovaný Web.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Nástroj pro správu webu ASP.NET (WSAT) je možné použít společně s aplikacemi pro členství a role, které slouží ke správě informací o uživatelích a rolích pro váš web. WSAT je ale přístupný jenom místně a nedá se navštívit z produkčního webu. Změnou připojovacího řetězce ve vývojovém prostředí tak, aby odkazoval na produkční databázi, můžete použít WSAT ke správě uživatelů a rolí na produkčním webu.
 

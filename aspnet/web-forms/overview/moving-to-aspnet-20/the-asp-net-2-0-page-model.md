@@ -1,67 +1,67 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/the-asp-net-2-0-page-model
-title: Model 2.0 stránky ASP.NET | Dokumentace Microsoftu
+title: Model stránky ASP.NET 2,0 | Microsoft Docs
 author: microsoft
-description: V technologii ASP.NET 1.x, vývojáři měli možnost volby mezi model pomocí vloženého kódu a model kódu použití modelu code-behind. Použití modelu Code-behind může implementovat s využitím buď Src attr...
+description: V ASP.NET 1. x si vývojáři zvolili mezi vloženým kódovým modelem a modelem kódu na pozadí. Kód na pozadí lze implementovat buď pomocí src ATTR...
 ms.author: riande
 ms.date: 02/20/2005
 ms.assetid: af4575a3-0ae3-4638-ba4d-218fad7a1642
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/the-asp-net-2-0-page-model
 msc.type: authoredcontent
 ms.openlocfilehash: bcb71b2b5a484e8756406867e08e8aa699a9024d
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65127919"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78547647"
 ---
-# <a name="the-aspnet-20-page-model"></a>Model 2.0 stránky ASP.NET
+# <a name="the-aspnet-20-page-model"></a>Model stránky ASP.NET 2,0
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-> V technologii ASP.NET 1.x, vývojáři měli možnost volby mezi model pomocí vloženého kódu a model kódu použití modelu code-behind. Použití modelu Code-behind může být implementovaná pomocí atributu Src nebo atribut CodeBehind @Page směrnice. V technologii ASP.NET 2.0 vývojáři stále mít možnost volby mezi vloženého kódu a použití modelu code-behind, ale došlo k použití modelu code-behind modelu významná vylepšení.
+> V ASP.NET 1. x si vývojáři zvolili mezi vloženým kódovým modelem a modelem kódu na pozadí. Kód na pozadí lze implementovat buď pomocí atributu src, nebo atributu CodeBehind direktivy @Page. V ASP.NET 2,0 mají vývojáři stále možnost volby mezi vloženým kódem a kódem na pozadí, ale existovala významná vylepšení modelu kódu na pozadí.
 
-V technologii ASP.NET 1.x, vývojáři měli možnost volby mezi model pomocí vloženého kódu a model kódu použití modelu code-behind. Použití modelu Code-behind může být implementovaná pomocí atributu Src nebo atribut CodeBehind @Page směrnice. V technologii ASP.NET 2.0 vývojáři stále mít možnost volby mezi vloženého kódu a použití modelu code-behind, ale došlo k použití modelu code-behind modelu významná vylepšení.
+V ASP.NET 1. x si vývojáři zvolili mezi vloženým kódovým modelem a modelem kódu na pozadí. Kód na pozadí lze implementovat buď pomocí atributu src, nebo atributu CodeBehind direktivy @Page. V ASP.NET 2,0 mají vývojáři stále možnost volby mezi vloženým kódem a kódem na pozadí, ale existovala významná vylepšení modelu kódu na pozadí.
 
-## <a name="improvements-in-the-code-behind-model"></a>Vylepšení v modelu kódu
+## <a name="improvements-in-the-code-behind-model"></a>Vylepšení modelu kódu na pozadí
 
-Chcete-li plně pochopit změny v modelu kódu v technologii ASP.NET 2.0, je nejlepší rychle prohlédnout modelu jako jeho existoval v technologii ASP.NET 1.x.
+Aby bylo možné plně pochopit změny v modelu kódu na pozadí v ASP.NET 2,0, je nejvhodnější rychle zkontrolovat model, protože existoval v ASP.NET 1. x.
 
-## <a name="the-code-behind-model-in-aspnet-1x"></a>Model použití modelu Code-Behind v technologii ASP.NET 1.x
+## <a name="the-code-behind-model-in-aspnet-1x"></a>Model kódu na pozadí v ASP.NET 1. x
 
-V technologii ASP.NET 1.x, model použití modelu code-behind se skládal z souboru ASPX (webového formuláře) a použití modelu code-behind soubor obsahující programového kódu. Příslušné dva soubory byly připojené pomocí @Page direktivy v souboru ASPX. Každý ovládací prvek na stránce ASPX měl odpovídající deklarace v souboru kódu na pozadí jako proměnná instance. Soubor kódu na pozadí také obsahovala kód pro navázání událostí a generovaného kódu, které jsou nezbytné pro návrháře aplikace Visual Studio. Tento model poměrně dobře fungovalo, ale protože každý prvek technologie ASP.NET na stránce ASPX vyžaduje odpovídající kód v souboru kódu na pozadí, neexistuje žádná true oddělení kódu a obsahu. Například pokud návrháře do souboru ASPX mimo rozhraní IDE sady Visual Studio přidá nový serverový ovládací prvek, aplikace by narušil vzhledem k absenci deklarace pro tento ovládací prvek v souboru kódu na pozadí.
+V ASP.NET 1. x se model kódu na pozadí skládá ze souboru ASPX (WebForm) a souboru kódu na pozadí, který obsahuje kód programování. Tyto dva soubory byly připojeny pomocí direktivy @Page v souboru ASPX. Každý ovládací prvek na stránce ASPX měl v souboru kódu na pozadí odpovídající deklaraci jako proměnnou instance. Soubor kódu na pozadí také obsahoval kód pro vazby události a generovaný kód potřebný pro návrháře sady Visual Studio. Tento model pracoval poměrně dobře, ale vzhledem k tomu, že každý element ASP.NET na ASPX stránce požaduje odpovídající kód v souboru kódu na pozadí, neexistovala žádná nepravdivá separace kódu a obsahu. Například pokud návrhář přidal nový serverový ovládací prvek do souboru ASPX mimo prostředí Visual Studio IDE, aplikace by byla přerušena z důvodu nepřítomnosti deklarace pro daný ovládací prvek v souboru kódu na pozadí.
 
-## <a name="the-code-behind-model-in-aspnet-20"></a>Model použití modelu Code-Behind v technologii ASP.NET 2.0
+## <a name="the-code-behind-model-in-aspnet-20"></a>Model kódu na pozadí v ASP.NET 2,0
 
-ASP.NET 2.0 výrazně vylepšuje tento model. V technologii ASP.NET 2.0, je implementováno pomocí nového modelu code-behind *částečné třídy* v technologii ASP.NET 2.0 k dispozici. Použití modelu code-behind třída v technologii ASP.NET 2.0 je definována jako částečné třídy, což znamená, že obsahuje pouze část definice třídy. Zbývající část definice třídy generuje dynamicky pomocí technologie ASP.NET 2.0 pomocí stránky ASPX za běhu nebo na webu je předkompilována. Propojení mezi souborem kódu na pozadí a stránku ASPX stále se naváže s využitím – Direktiva @ Page. Místo atribut CodeBehind nebo Src, je však ASP.NET 2.0 nyní používá atribut CodeFile. Atribut Inherits je také použít k určení názvu třídy stránky.
+ASP.NET 2,0 se na tomto modelu významně vylepšuje. V ASP.NET 2,0 je kód na pozadí implementován pomocí nových *dílčích tříd* poskytovaných v ASP.NET 2,0. Třída kódu na pozadí v ASP.NET 2,0 je definována jako částečná třída, což znamená, že obsahuje pouze část definice třídy. Zbývající část definice třídy je dynamicky generována serverem ASP.NET 2,0 pomocí stránky ASPX za běhu nebo při Předkompilování webu. Propojení mezi souborem kódu na pozadí a stránkou ASPX je stále vytvořeno pomocí direktivy @ Page. Namísto atributu CodeBehind nebo src však nyní ASP.NET 2,0 používá atribut CodeFile. Atribut Inherits se používá také k zadání názvu třídy pro stránku.
 
-Typické – Direktiva @ Page může vypadat takto:
+Typická direktiva @ Page může vypadat takto:
 
 [!code-aspx[Main](the-asp-net-2-0-page-model/samples/sample1.aspx)]
 
-Definice typické třídy v souboru kódu ASP.NET 2.0 může vypadat takto:
+Typická definice třídy v souboru s kódem na pozadí ASP.NET 2,0 může vypadat takto:
 
 [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample2.cs)]
 
 > [!NOTE]
-> C# a Visual Basic jsou pouze spravované jazyky, které aktuálně podporují částečné třídy. Proto vývojáři, kteří používají J# nebude možné použít model použití modelu code-behind v technologii ASP.NET 2.0.
+> C#a Visual Basic jsou jedinými spravovanými jazyky, které aktuálně podporují částečné třídy. Vývojáři používající jazyk J# proto nebudou moci používat model kódu na pozadí v ASP.NET 2,0.
 
-Nový model zvyšuje model použití modelu code-behind, protože vývojáři budou mít soubory kódu, které obsahují pouze kód, který jste vytvořili. Také nabízí true oddělení kódu a obsahu vzhledem k tomu, že neexistují žádné instance deklarace proměnných v souboru kódu na pozadí.
+Nový model vylepšuje model kódu na pozadí, protože vývojáři teď budou mít soubory kódu, které obsahují pouze kód, který vytvořil. Poskytuje také skutečné oddělení kódu a obsahu, protože v souboru kódu na pozadí nejsou žádné deklarace proměnných instance.
 
 > [!NOTE]
-> Částečné třídy pro stránku ASPX je, kde vazby události dojde, vývojáře jazyka Visual Basic můžete realizovat zvýšení snížený výkon pomocí klíčového slova popisovače v modelu code-behind svázat události. C# nemá žádný ekvivalent klíčového slova.
+> Vzhledem k tomu, že částečná třída pro stránku ASPX je provedena vazba události, Visual Basic vývojáři mohou využít mírné zvýšení výkonu pomocí klíčového slova Handles v kódu na pozadí ke svázání událostí. C#nemá žádné ekvivalentní klíčové slovo.
 
-## <a name="new--page-directive-attributes"></a>Nové atributy @ Page – direktiva
+## <a name="new--page-directive-attributes"></a>Nové atributy direktivy @ Page
 
-ASP.NET 2.0 přidá mnoho nových atributů – Direktiva @ Page. Následující atributy jsou v technologii ASP.NET verze 2.0 nový.
+ASP.NET 2,0 přidává do direktivy @ Page mnoho nových atributů. Následující atributy jsou v ASP.NET 2,0 novinkou.
 
 ## <a name="async"></a>Async
 
-Atribut Async umožňuje nakonfigurovat stránky, který se spustí asynchronně. Dobře titulní asynchronní stránky později v tomto modulu.
+Atribut Async umožňuje konfigurovat spouštění stránky asynchronně. V tomto modulu je dobré pokrýt asynchronní stránky později.
 
 ## <a name="asynctimeout"></a>AsyncTimeout
 
-Zadaný časový limit pro asynchronní stránky. Výchozí hodnota je 45 sekund.
+Určil časový limit pro asynchronní stránky. Výchozí hodnota je 45 sekund.
 
 ## <a name="codefile"></a>CodeFile
 
@@ -69,518 +69,518 @@ Atribut CodeFile je náhradou pro atribut CodeBehind v aplikaci Visual Studio 20
 
 ### <a name="codefilebaseclass"></a>CodeFileBaseClass
 
-Atribut CodeFileBaseClass se používá v případech, kde má více stránky, které jsou odvozeny z jediné základní třídy. Z důvodu implementace částečné třídy v technologii ASP.NET, bez tohoto atributu základní třídu, která používá sdílené společných polí tak, aby odkazovaly ovládací prvky deklarován na stránce ASPX nebude fungovat správně, protože ASP. Modul kompilace sítě automaticky vytvoří nové členy v závislosti na ovládací prvky na stránce. Proto pokud chcete obecná základní třída pro dva nebo více stránek v ASP.NET, budete muset definovat v Atribut CodeFileBaseClass zadat základní třídy a pak jsou odvozeny jednotlivé třídy stránky z této základní třídy. Atribut CodeFile je také nutný, pokud tento atribut se používá.
+Atribut CodeFileBaseClass se používá v případech, kdy chcete více stránek odvodit z jedné základní třídy. Z důvodu implementace dílčích tříd v ASP.NET bez tohoto atributu základní třída, která používá sdílené společné pole na referenční ovládací prvky deklarované na ASPX stránce, nebude fungovat správně, protože prostředí kompilace ASP vytvoří nové členy automaticky na základě ovládacích prvků na stránce. Proto pokud chcete společnou základní třídu pro dvě nebo více stránek v ASP.NET, budete muset definovat zadat základní třídu v atributu CodeFileBaseClass a poté odvodit každou třídu Pages z této základní třídy. Atribut CodeFile je také vyžadován při použití tohoto atributu.
 
-## <a name="compilationmode"></a>CompilationMode
+## <a name="compilationmode"></a>CompilationMode nastavena
 
-Tento atribut umožňuje nastavit vlastnost CompilationMode stránky ASPX. Vlastnost CompilationMode je výčet, který obsahuje hodnoty **vždy**, **automaticky**, a **nikdy**. Výchozí hodnota je **vždy**. **Automaticky** nastavení zabrání ASP.NET Dynamická kompilace na stránce, pokud je to možné. Kromě stránek v dynamických kompilačních zvyšuje výkon. Ale stránka, která je vyloučená obsahuje tento kód, který musí být zkompilovány, chybu bude vyvolána výjimka při prohlížení stránky.
+Tento atribut umožňuje nastavit vlastnost CompilationMode nastavena stránky ASPX. Vlastnost CompilationMode nastavena je výčet, který obsahuje hodnoty **Always**, **auto**a **Never**. Výchozí hodnota je **vždy**. **Automatické** nastavení zabrání ASP.NET dynamické kompilaci stránky, pokud je to možné. Vyloučení stránek z dynamické kompilace zvyšuje výkon. Pokud však vyloučená stránka obsahuje tento kód, který musí být zkompilován, při procházení stránky dojde k chybě.
 
 ## <a name="enableeventvalidation"></a>EnableEventValidation
 
-Tento atribut určuje, zda jsou ověřeny události zpětného odeslání a zpětného volání. Pokud je tato možnost povolena, argumenty odeslání nebo zpětného volání události jsou kontrola, že pocházejí z ovládacího prvku serveru, který je původně vykreslil.
+Tento atribut určuje, zda jsou události zpětného odeslání a zpětného volání ověřovány. Pokud je tato možnost povolena, jsou vráceny argumenty události zpětného odeslání nebo zpětného volání, aby bylo zajištěno, že pocházejí z ovládacího prvku serveru, který je původně vykreslil.
 
 ## <a name="enabletheming"></a>EnableTheming
 
-Tento atribut určuje, zda jsou na stránce použít motivů ASP.NET. Výchozí hodnota je **false**. Motivů ASP.NET jsou popsané v [modulu 10](profiles-themes-and-web-parts.md).
+Tento atribut určuje, zda se na stránce používají motivy ASP.NET. Výchozí hodnota je **false**. Motivy ASP.NET jsou pokryté v [modulu 10](profiles-themes-and-web-parts.md).
 
 ## <a name="linepragmas"></a>LinePragmas
 
-Tento atribut určuje, zda řádkové direktivy pragma by měl být přidány během kompilace. Řádkové direktivy pragma jsou možnosti, které používají ladicí programy k označení určité části kódu.
+Tento atribut určuje, zda by měly být během kompilace přidány direktivy řádku. Direktivy pragma řádku jsou možnosti používané ladicími programy k označení konkrétních sekcí kódu.
 
 ## <a name="maintainscrollpositiononpostback"></a>MaintainScrollPositionOnPostback
 
-Tento atribut určuje, zda jazyka JavaScript se vloží do stránky pro zachování pozice posuvníku mezi jednotlivými zpětnými odesláními. Tento atribut je **false** ve výchozím nastavení.
+Tento atribut určuje, zda je JavaScript vložen do stránky, aby bylo možné zachovat pozici posouvání mezi zpětnými odesláními. Tento atribut ve výchozím nastavení má **hodnotu false** .
 
-Pokud tento atribut je **true**, přidá technologie ASP.NET &lt;skript&gt; blok na zpětné volání, který vypadá takto:
+Pokud je tento atribut **true**, ASP.NET přidá skript &lt;&gt; blok při postbacku, který vypadá takto:
 
 [!code-html[Main](the-asp-net-2-0-page-model/samples/sample3.html)]
 
-Všimněte si, že je src pro tento blok skriptu WebResource.axd. Tento prostředek není fyzická cesta. Pokud tento skript se požaduje, ASP.NET dynamicky vytvoří skript.
+Všimněte si, že src pro tento blok skriptu je WebResource. axd. Tento prostředek není fyzickou cestou. Když se tento skript vyžádá, ASP.NET dynamicky vytvoří skript.
 
 ### <a name="masterpagefile"></a>MasterPageFile
 
-Tento atribut určuje soubor předlohové stránky pro aktuální stránku. Cesta může být relativní nebo absolutní. Stránky předlohy se věnují [modulu 4](master-pages.md).
+Tento atribut určuje soubor hlavní stránky pro aktuální stránku. Cesta může být relativní nebo absolutní. Stránky předlohy jsou pokryté v [modulu 4](master-pages.md).
 
 ## <a name="stylesheettheme"></a>StyleSheetTheme
 
-Tento atribut umožňuje přepsat vlastnosti vzhled uživatelského rozhraní definované motiv ASP.NET 2.0. Motivy jsou popsané v [modulu 10](profiles-themes-and-web-parts.md).
+Tento atribut umožňuje přepsat vlastnosti vzhledu uživatelského rozhraní definované motivem ASP.NET 2,0. Motivy jsou pokryté v [modulu 10](profiles-themes-and-web-parts.md).
 
-## <a name="theme"></a>Motiv
+## <a name="theme"></a>Použit
 
-Určuje motivu stránky. Pokud není zadána hodnota pro atribut StyleSheetTheme, přepíše atribut motivu všechny styly použít na ovládací prvky na stránce.
+Určuje motiv stránky. Pokud není zadána hodnota pro atribut StyleSheetTheme, přepíše atribut Theme všechny styly použité u ovládacích prvků na stránce.
 
 ## <a name="title"></a>Název
 
-Nastaví název stránky. Hodnota zadaná v tomto poli se zobrazí v &lt;název&gt; prvek vykreslené stránky.
+Nastaví název stránky. Hodnota zadaná zde se zobrazí v prvku &lt;název&gt; vykreslené stránky.
 
 ### <a name="viewstateencryptionmode"></a>ViewStateEncryptionMode
 
-Nastaví hodnotu pro výčet ViewStateEncryptionMode. Dostupné hodnoty jsou **vždy**, **automaticky**, a **nikdy**. Výchozí hodnota je **automaticky**. Když tento atribut je nastaven na hodnotu **automaticky**, stav zobrazení je zašifrovaný je ovládací prvek požaduje voláním **RegisterRequiresViewStateEncryption** metoda.
+Nastaví hodnotu výčtu ViewStateEncryptionMode. Dostupné hodnoty jsou **vždycky**, **auto**a **nikdy**. Výchozí hodnota je **auto**. Pokud je tento atribut nastaven na hodnotu **auto**, je vlastnost ViewState zašifrovaná, je ovládací prvek požádá o volání metody **Metoda RegisterRequiresViewStateEncryption** .
 
-## <a name="setting-public-property-values-via-the--page-directive"></a>Nastavení hodnot veřejnou vlastnost prostřednictvím @ direktiva stránky
+## <a name="setting-public-property-values-via-the--page-directive"></a>Nastavení hodnot veřejných vlastností prostřednictvím direktivy @ Page
 
-Další nová funkce – Direktiva @ Page v technologii ASP.NET 2.0 je možnost nastavit počáteční hodnotu veřejných vlastností základní třídy. Předpokládejme například, že máte veřejnou vlastnost názvem **SomeText** v základní třídy a d líbí se vám mají být inicializovány na **Hello** při načtení stránky. Toho lze dosáhnout jednoduše nastavením hodnoty v Direktiva @ Page takto:
+Další novou funkcí direktivy @ Page v ASP.NET 2,0 je schopnost nastavit počáteční hodnotu veřejných vlastností základní třídy. Předpokládejme například, že máte veřejnou vlastnost s názvem **SomeText** v základní třídě a Vy d chcete, aby byla inicializována jako **Hello** při načtení stránky. To lze provést pouhým nastavením hodnoty v direktivě @ Page, např.:
 
 [!code-aspx[Main](the-asp-net-2-0-page-model/samples/sample4.aspx)]
 
-**SomeText** atribut – Direktiva @ Page nastaví počáteční hodnotu vlastnosti SomeText v základní třídě pro *Hello!*. Následující video je návod, nastaví počáteční hodnotu veřejnou vlastnost v základní třídě – Direktiva @ Page.
+Atribut **SomeText** direktivy @ Page nastaví počáteční hodnotu vlastnosti SomeText v základní třídě na hodnotu *Hello!* . Následující video je návodem k nastavení počáteční hodnoty veřejné vlastnosti v základní třídě pomocí direktivy @ Page.
 
 ![](the-asp-net-2-0-page-model/_static/image1.png)
 
-[Otevřít Video na celou obrazovku](the-asp-net-2-0-page-model/_static/setprop1.wmv)
+[Otevření videa na celé obrazovce](the-asp-net-2-0-page-model/_static/setprop1.wmv)
 
-## <a name="new-public-properties-of-the-page-class"></a>Nové veřejné vlastnosti třídy stránky
+## <a name="new-public-properties-of-the-page-class"></a>Nové veřejné vlastnosti třídy Page
 
-Následující veřejné vlastnosti jsou v technologii ASP.NET verze 2.0 nový.
+Následující veřejné vlastnosti jsou v ASP.NET 2,0 novinkou.
 
 ## <a name="apprelativetemplatesourcedirectory"></a>AppRelativeTemplateSourceDirectory
 
-Stránka nebo ovládací prvek vrátí aplikace relativní cestu. Například pro stránku se nachází na http://app/folder/page.aspx, vrátí vlastnost ~ / slozka /.
+Vrátí relativní cestu k aplikaci pro stránku nebo ovládací prvek. Například pro stránku nacházející se v http://app/folder/page.aspxvrátí vlastnost ~/Folder/.
 
 ## <a name="apprelativevirtualpath"></a>AppRelativeVirtualPath
 
-Stránka nebo ovládací prvek vrátí relativní virtuální adresář. Například pro stránku se nachází na http://app/folder/page.aspx, vrátí vlastnost ~ / folder/page.aspx.
+Vrátí relativní cestu virtuálního adresáře k stránce nebo ovládacímu prvku. Například pro stránku nacházející se v http://app/folder/page.aspxvrátí vlastnost ~/Folder/Page.aspx.
 
 ## <a name="asynctimeout"></a>AsyncTimeout
 
-Získá nebo nastaví časový limit používá pro zpracování asynchronní stránky. (Asynchronní stránky se budeme dále v tomto modulu.)
+Získá nebo nastaví časový limit, který se používá pro asynchronní zpracování stránky. (Na asynchronní stránky se pojednává později v tomto modulu.)
 
 ## <a name="clientquerystring"></a>ClientQueryString
 
-Vlastnosti jen pro čtení, která vrací část řetězce dotazu požadovanou adresu URL. Tato hodnota je kódování URL. Metoda UrlDecode třídy HttpServerUtility můžete dekódovat.
+Vlastnost jen pro čtení, která vrací část řetězce dotazu požadované adresy URL. Tato hodnota je zakódovaná v adrese URL. K dekódování můžete použít metodu UrlDecode třídy HttpServerUtility.
 
 ## <a name="clientscript"></a>ClientScript
 
-Tato vlastnost vrátí objekt ClientScriptManager, který slouží ke správě ASP.NETs emise skriptu na straně klienta. (Třída ClientScriptManager je popsané dále v tomto modulu.)
+Tato vlastnost vrátí objekt ClientScriptManager, který se dá použít ke správě technologie ASP. sítě vynásobení emisí skriptu na straně klienta. (Třída ClientScriptManager se zabývá dále v tomto modulu.)
 
 ## <a name="enableeventvalidation"></a>EnableEventValidation
 
-Tato vlastnost určuje, jestli ověření události je povoleno pro události zpětného odeslání a zpětným voláním. Pokud povolená, argumenty odeslání nebo zpětného volání události se ověřit, ujistěte se, že pocházejí z ovládacího prvku serveru, který je původně vykreslil.
+Tato vlastnost určuje, zda je povoleno ověřování událostí pro události zpětného volání a zpětného volání. Pokud je povoleno, jsou argumenty pro zpětné odeslání nebo události zpětného volání ověřovány, aby bylo zajištěno, že pocházejí z ovládacího prvku serveru, který je původně vykreslil.
 
 ## <a name="enabletheming"></a>EnableTheming
 
-Tato vlastnost získá nebo nastaví logickou hodnotu, která určuje, zda motiv ASP.NET 2.0 se vztahuje na stránce.
+Tato vlastnost získá nebo nastaví logickou hodnotu, která určuje, zda se na stránku vztahuje motiv ASP.NET 2,0.
 
 ## <a name="form"></a>Formulář
 
-Tato vlastnost vrátí formuláře HTML na stránce ASPX jako objekt HtmlForm.
+Tato vlastnost vrátí formulář HTML na stránce ASPX jako objekt HtmlForm.
 
-## <a name="header"></a>Záhlaví
+## <a name="header"></a>Hlavička
 
-Tato vlastnost vrátí odkaz na objekt HtmlHead, který obsahuje záhlaví stránky. Vrácený objekt HtmlHead slouží k get/set šablony stylů, metaznaček atd.
+Tato vlastnost vrací odkaz na objekt HtmlHead, který obsahuje záhlaví stránky. Vrácený objekt HtmlHead lze použít k získání nebo nastavení šablon stylů, meta značek atd.
 
 ## <a name="idseparator"></a>IdSeparator
 
-Tato vlastnost jen pro čtení získá znak, který se používá k oddělení identifikátory ovládacího prvku při sestavuje jedinečné ID pro ovládací prvky na stránce ASP.NET. Není určena pro použití přímo v kódu.
+Tato vlastnost jen pro čtení získá znak, který se používá k oddělení identifikátorů ovládacího prvku, když ASP.NET vytváří jedinečné ID pro ovládací prvky na stránce. Tato metoda není zamýšlena pro použití přímo z vašeho kódu.
 
 ## <a name="isasync"></a>IsAsync
 
 Tato vlastnost umožňuje asynchronní stránky. Asynchronní stránky jsou popsány dále v tomto modulu.
 
-## <a name="iscallback"></a>IsCallback
+## <a name="iscallback"></a>Zpětné volání
 
-Vrátí tato vlastnost jen pro čtení **true** Pokud na stránce je výsledkem zpětného volání. Zpětnými voláními jsou popsány dále v tomto modulu.
+Tato vlastnost jen pro čtení vrátí **hodnotu true** , pokud je stránka výsledkem zpětného volání. Zpětná volání jsou popsána dále v tomto modulu.
 
 ## <a name="iscrosspagepostback"></a>IsCrossPagePostBack
 
-Vrátí tato vlastnost jen pro čtení **true** Pokud na stránce je součástí zpětné volání mezi stránkami. Mezi stránkami postbacky jsou popsané dále v tomto modulu.
+Tato vlastnost jen pro čtení vrátí **hodnotu true** , pokud je stránka součástí postbacku mezi stránkami. Zpětná volání na více stránek se týkají později v tomto modulu.
 
-## <a name="items"></a>Položky
+## <a name="items"></a>Items
 
-Vrátí odkaz na rozhraní IDictionary instance, která obsahuje všechny objekty uložené v rámci stránky. Můžete přidat položky na tento objekt IDictionary a budou k dispozici v celém životním kontextu.
+Vrátí odkaz na instanci IDictionary, která obsahuje všechny objekty uložené v kontextu stránky. Do tohoto objektu IDictionary můžete přidat položky, které budou k dispozici během celé životnosti kontextu.
 
 ## <a name="maintainscrollpositiononpostback"></a>MaintainScrollPositionOnPostBack
 
-Tato vlastnost určuje, zda technologie ASP.NET generuje jazyka JavaScript, který udržuje, že na stránkách Posune pozici v prohlížeči po zpětném odeslání. (Podrobnosti o této vlastnosti bylo popsáno dříve v tomto modulu.)
+Tato vlastnost určuje, zda ASP.NET emituje jazyk JavaScript, který udržuje pozici posunutí stránek v prohlížeči po vykonání zpětného volání. (Podrobnosti této vlastnosti byly popsány dříve v tomto modulu.)
 
-## <a name="master"></a>Hlavní
+## <a name="master"></a>Master
 
-Tato vlastnost jen pro čtení vrátí odkaz na instanci MasterPage pro stránku, do které byl použit na stránku předlohy.
+Tato vlastnost jen pro čtení vrací odkaz na instanci MasterPage pro stránku, na kterou se používá hlavní stránka.
 
 ## <a name="masterpagefile"></a>MasterPageFile
 
-Získá nebo nastaví název souboru hlavní stránky pro stránku. Tuto vlastnost lze nastavit pouze v metodě PreInit.
+Získá nebo nastaví název souboru hlavní stránky pro stránku. Tato vlastnost může být nastavena pouze v metodě předinit.
 
 ## <a name="maxpagestatefieldlength"></a>MaxPageStateFieldLength
 
-Tato vlastnost získá nebo nastaví maximální délku stavu stránky v bajtech. Pokud je nastavena na kladné číslo, stav zobrazení stránky bude možné rozdělit do více skrytá pole tak, aby nepřekračuje počet bajtů. Pokud je vlastnost nastavena na záporné číslo, nebude stav zobrazení rozdělen do bloků.
+Tato vlastnost získá nebo nastaví maximální délku stavu stránek v bajtech. Pokud je vlastnost nastavena na kladné číslo, stav zobrazení stránky bude rozdělen do několika skrytých polí tak, aby nepřevyšuje počet zadaných bajtů. Pokud je vlastnost záporné číslo, stav zobrazení nebude rozdělen do bloků.
 
 ## <a name="pageadapter"></a>PageAdapter
 
-Vrátí odkaz na objekt PageAdapter změní na stránce pro požadujícího prohlížeče.
+Vrátí odkaz na objekt PageAdapter, který upravuje stránku pro požadujícího prohlížeče.
 
 ## <a name="previouspage"></a>PreviousPage
 
-Vrátí odkaz na předchozí stránku v případech Server.Transfer nebo zpětné volání mezi stránkami.
+Vrátí odkaz na předchozí stránku v případech serveru. přenos nebo zpětné odeslání mezi stránkami.
 
 ## <a name="skinid"></a>SkinID
 
-Určuje skinu ASP.NET 2.0 použít na stránce.
+Určuje vzhled ASP.NET 2,0, který se má použít pro stránku.
 
 ## <a name="stylesheettheme"></a>StyleSheetTheme
 
-Tato vlastnost získá nebo nastaví šablony stylů, která se uplatňuje na stránku.
+Tato vlastnost získá nebo nastaví šablonu stylů, která je použita na stránku.
 
-## <a name="templatecontrol"></a>TemplateControl
+## <a name="templatecontrol"></a>Třída TemplateControl
 
-Vrátí odkaz na nadřazený ovládací prvek pro stránku.
+Vrátí odkaz na obsahující ovládací prvek stránky.
 
-## <a name="theme"></a>Motiv
+## <a name="theme"></a>Použit
 
-Získá nebo nastaví název motivu ASP.NET 2.0 použité pro stránku. Tato hodnota musí být nastavena před PreInit – metoda.
+Získá nebo nastaví název motivu ASP.NET 2,0, který se na stránku aplikuje. Tato hodnota musí být nastavena před metodou předinicializace.
 
 ## <a name="title"></a>Název
 
-Tato vlastnost získá nebo nastaví název stránky získaný ze záhlaví stránky.
+Tato vlastnost získá nebo nastaví název stránky získaný z hlavičky stránky.
 
 ## <a name="viewstateencryptionmode"></a>ViewStateEncryptionMode
 
-Získá nebo nastaví ViewStateEncryptionMode stránky. Podívejte se na podrobnou diskuzi o tuto vlastnost dříve v tomto modulu.
+Získá nebo nastaví ViewStateEncryptionMode stránky. Přečtěte si podrobnou diskuzi o této vlastnosti dříve v tomto modulu.
 
-## <a name="new-protected-properties-of-the-page-class"></a>Nové chráněné vlastnosti třídy stránky
+## <a name="new-protected-properties-of-the-page-class"></a>Nové chráněné vlastnosti třídy Page
 
-Toto jsou nové chráněné vlastnosti třídy stránky v technologii ASP.NET 2.0.
+Níže jsou uvedené nové chráněné vlastnosti třídy Page v ASP.NET 2,0.
 
 ## <a name="adapter"></a>Adaptér
 
-Vrátí odkaz na ControlAdapter vykreslující danou stránku na zařízení, která je požadovaná.
+Vrátí odkaz na ControlAdapter, který vykresluje stránku na zařízení, které si ho vyžádalo.
 
 ## <a name="asyncmode"></a>AsyncMode
 
-Tato vlastnost určuje, zda je na stránce zpracovány asynchronně. Je určena pro použití modulem runtime a ne přímo v kódu.
+Tato vlastnost označuje, zda je stránka zpracovávána asynchronně. Je určena pro použití modulem runtime a nikoli přímo v kódu.
 
 ## <a name="clientidseparator"></a>ClientIDSeparator
 
-Tato vlastnost vrátí znak, který slouží jako oddělovač při vytváření klienta Jedinečný ID pro ovládací prvky. Je určena pro použití modulem runtime a ne přímo v kódu.
+Tato vlastnost vrátí znak používaný jako oddělovač při vytváření jedinečných ID klientů pro ovládací prvky. Je určena pro použití modulem runtime a nikoli přímo v kódu.
 
 ## <a name="pagestatepersister"></a>PageStatePersister
 
-Tato vlastnost vrátí objekt PageStatePersister stránky. Tato vlastnost se používá především vývojáři ovládací prvek technologie ASP.NET.
+Tato vlastnost vrátí objekt Třída PageStatePersister pro stránku. Tato vlastnost je primárně používána vývojáři ovládacího prvku ASP.NET.
 
 ## <a name="uniquefilepathsuffix"></a>UniqueFilePathSuffix
 
-Tato vlastnost vrátí jedinečnou příponu, která se připojuje k souboru na cestě pro ukládání do mezipaměti prohlížeče. Výchozí hodnota je \_ \_ufps = a 6 číslic.
+Tato vlastnost vrací jedinečnou příponu, která je připojena k cestě k souboru pro ukládání prohlížečů do mezipaměti. Výchozí hodnota je \_\_ufps = a číslo na 6 číslic.
 
-## <a name="new-public-methods-for-the-page-class"></a>Nové veřejné metody pro třídu stránky
+## <a name="new-public-methods-for-the-page-class"></a>Nové veřejné metody pro třídu Page
 
-Nová třída stránky v technologii ASP.NET 2.0 jsou tyto veřejné metody.
+Následující veřejné metody jsou pro třídu stránky v ASP.NET 2,0 nové.
 
 ## <a name="addonprerendercompleteasync"></a>AddOnPreRenderCompleteAsync
 
-Metoda registruje delegátů obslužných rutin událostí pro provádění asynchronní stránky. Asynchronní stránky jsou popsány dále v tomto modulu.
+Tato metoda registruje delegáty obslužné rutiny události pro provádění asynchronní stránky. Asynchronní stránky jsou popsány dále v tomto modulu.
 
 ## <a name="applystylesheetskin"></a>ApplyStyleSheetSkin
 
-Vlastnosti v šabloně stylů stránky se vztahuje na stránce.
+Aplikuje vlastnosti v šabloně stylů Pages na stránku.
 
 ## <a name="executeregisteredasynctasks"></a>ExecuteRegisteredAsyncTasks
 
-Tato metoda bytostí asynchronní úlohu.
+Tato metoda je asynchronní úlohou.
 
-### <a name="getvalidators"></a>GetValidators
+### <a name="getvalidators"></a>Getvalidátory
 
-Vrátí kolekci validátory pro skupiny ověření zadaný nebo výchozí skupiny ověření, pokud není zadaný žádný.
+Vrátí kolekci validátorů pro zadanou skupinu ověřování nebo výchozí skupinu ověření, pokud není zadána žádná.
 
 ## <a name="registerasynctask"></a>RegisterAsyncTask
 
-Metoda registruje nový asynchronní úkol. Asynchronní stránky jsou popsané dále v tomto modulu.
+Tato metoda registruje novou asynchronní úlohu. Na asynchronní stránky se pojednává později v tomto modulu.
 
 ## <a name="registerrequirescontrolstate"></a>RegisterRequiresControlState
 
-Tato metoda říká technologie ASP.NET, musí jako trvalý stav ovládacího prvku stránky.
+Tato metoda oznamuje ASP.NET, že je nutné zachovat stav ovládacího prvku stránky.
 
-## <a name="registerrequiresviewstateencryption"></a>RegisterRequiresViewStateEncryption
+## <a name="registerrequiresviewstateencryption"></a>Metoda RegisterRequiresViewStateEncryption
 
-Tato metoda říká technologie ASP.NET, že stav zobrazení stránky vyžaduje šifrování.
+Tato metoda oznamuje ASP.NET, že vlastnost ViewState pro stránky vyžaduje šifrování.
 
 ## <a name="resolveclienturl"></a>ResolveClientUrl
 
-Vrátí relativní adresu URL, které lze použít pro požadavky klientů pro obrázky, atd.
+Vrátí relativní adresu URL, která se dá použít pro požadavky klientů na Image atd.
 
 ## <a name="setfocus"></a>SetFocus
 
-Tato metoda nastaví fokus na ovládací prvek, který je zadán při počátečním načtení stránky.
+Tato metoda nastaví fokus na ovládací prvek, který je určen při počátečním načtení stránky.
 
 ## <a name="unregisterrequirescontrolstate"></a>UnregisterRequiresControlState
 
-Tato metoda zruší registraci ovládacího prvku, který je předán jako už vyžadující trvalost stavu ovládacího prvku.
+Tato metoda zruší registraci ovládacího prvku, který je předán, protože již nevyžaduje trvalé zachování stavu ovládacího prvku.
 
 ## <a name="changes-to-the-page-lifecycle"></a>Změny životního cyklu stránky
 
-Životní cyklus stránky v technologii ASP.NET 2.0 nedošlo ke změně výrazně, ale existují některé nové metody, které byste měli vědět. Životní cyklus stránky technologie ASP.NET 2.0 je popsaný níže.
+Životní cyklus stránky v ASP.NET 2,0 se významně nezměnil, ale existují některé nové metody, o kterých byste měli vědět. Životní cyklus stránky ASP.NET 2,0 je popsaný níže.
 
-## <a name="preinit-new-in-aspnet-20"></a>PreInit (v technologii ASP.NET 2.0)
+## <a name="preinit-new-in-aspnet-20"></a>Předinicializace (novinka v ASP.NET 2,0)
 
-Událost PreInit je nejstarší fázi životního cyklu, které může vývojář přístup. Díky přidání této události je možné programově změnit ASP.NET 2.0 motivy, hlavní stránky, přístup k vlastnostem pro ASP.NET 2.0 profilu atd. Pokud jste v postback stavu, navíc je důležité si uvědomit, že vlastnost Viewstate nebyla dosud nebyly použity k ovládacím prvkům v tuto chvíli v životní cyklus. Proto pokud vývojář změní vlastnost ovládacího prvku v této fázi, bude pravděpodobně přepsána dále v cyklu stránky.
+Událost před inicializací je nejstarší fáze životního cyklu, ke které má vývojář přístup. Přidání této události umožňuje programově změnit motivy ASP.NET 2,0, stránky předlohy, vlastnosti přístupu pro profil ASP.NET 2,0 atd. Pokud jste ve stavu zpětného odeslání, je důležité si uvědomit, že se na ovládací prvky v tomto okamžiku v životním cyklu ještě nepoužila vlastnost ViewState. Proto pokud vývojář změní vlastnost ovládacího prvku v této fázi, bude pravděpodobně přepsán později v životním cyklu stránky.
 
 ## <a name="init"></a>Init
 
-Z ASP.NET nedošlo ke změně události Init 1.x. To je, kde chcete číst nebo inicializace vlastností ovládacích prvků na stránce. V této fázi, hlavní stránky, motivy se použijí na stránce již atd.
+Událost init se nezměnila z ASP.NET 1. x. Tady byste chtěli číst nebo inicializovat vlastnosti ovládacích prvků na stránce. V této fázi jsou na stránce již aplikovány stránky předlohy, motivy atd.
 
-## <a name="initcomplete-new-in-20"></a>InitComplete (nově ve verzi 2.0)
+## <a name="initcomplete-new-in-20"></a>InitComplete (novinka v 2,0)
 
-Událost InitComplete je volána na konci fáze inicializace stránky. V tomto okamžiku v životního cyklu, dostanete ovládacích prvků na stránce, ale jejich stavu ještě není naplněná.
+Událost InitComplete je volána na konci inicializační fáze stránky. V tomto okamžiku životního cyklu můžete přistupovat k ovládacím prvkům na stránce, ale jejich stav ještě není naplněný.
 
-## <a name="preload-new-in-20"></a>Předběžné načtení (nově ve verzi 2.0)
+## <a name="preload-new-in-20"></a>Předběžné načtení (novinka v 2,0)
 
-Tato událost je volána po odeslání všech dat a před stránku\_zatížení.
+Tato událost se volá po použití všech dat postbacku a těsně před\_načtení stránky.
 
-## <a name="load"></a>Načítání
+## <a name="load"></a>Načtení
 
-Událost načtení nedošlo ke změně z ASP.NET 1.x.
+Událost Load se nezměnila z ASP.NET 1. x.
 
-## <a name="loadcomplete-new-in-20"></a>LoadComplete (nově ve verzi 2.0)
+## <a name="loadcomplete-new-in-20"></a>LoadComplete (novinka v 2,0)
 
-Událost LoadComplete je poslední události ve fázi načtení stránky. V této fázi byl připsán všechna data zpětné volání a stav zobrazení na stránce.
+Událost LoadComplete je poslední událost ve fázi načítání stránek. V této fázi se na stránku nastavila všechna data zpětného odeslání a ViewState.
 
-## <a name="prerender"></a>Provedení operace preRender
+## <a name="prerender"></a>Vykreslení
 
-Pokud chcete pro stav zobrazení správně udržovat pro ovládací prvky, které jsou dynamicky přidat na stránku, událost PreRender je poslední příležitostí je přidat.
+Chcete-li, aby byl vlastnost ViewState správně udržována pro ovládací prvky, které jsou přidány na stránku dynamicky, je událost PreRender poslední příležitostí k jejich přidání.
 
-## <a name="prerendercomplete-new-in-20"></a>PreRenderComplete (nově ve verzi 2.0)
+## <a name="prerendercomplete-new-in-20"></a>PreRenderComplete (novinka v 2,0)
 
-Ve fázi PreRenderComplete všechny ovládací prvky byly přidány na stránku a je připravený k vykreslení stránky. Událostí PreRenderComplete je poslední událost vyvolanou před uložením stav zobrazení stránky.
+Ve fázi PreRenderComplete byly na stránku přidány všechny ovládací prvky a stránka je připravena k vykreslení. Událost PreRenderComplete je poslední událost aktivovaná před tím, než se uloží vlastnosti stránky.
 
-## <a name="savestatecomplete-new-in-20"></a>SaveStateComplete (nově ve verzi 2.0)
+## <a name="savestatecomplete-new-in-20"></a>SaveStateComplete (novinka v 2,0)
 
-Událost SaveStateComplete je volána hned po uložení všech stav viewstate a ovládací prvek stránky. Toto je poslední událostí před skutečně vykreslení stránky v prohlížeči.
+Událost SaveStateComplete se volá hned po uložení veškerého zobrazení stránky a stavu ovládacího prvku. Toto je poslední událost před tím, než se stránka ve skutečnosti vykreslí do prohlížeče.
 
-## <a name="render"></a>Vykreslení
+## <a name="render"></a>Vykreslování
 
-Metody vykreslení nebyl změněn od ASP.NET 1.x. Toto je ve kterém je inicializován HtmlTextWriter a na stránce se zobrazí v prohlížeči.
+Metoda Render se od ASP.NET 1. x nezměnila. Zde je místo, kde se inicializuje HtmlTextWriter a stránka se vykreslí do prohlížeče.
 
-## <a name="cross-page-postback-in-aspnet-20"></a>Zpětné volání mezi stránkami v ASP.NET 2.0
+## <a name="cross-page-postback-in-aspnet-20"></a>Zpětná vazba mezi stránkami v ASP.NET 2,0
 
-V technologii ASP.NET 1.x, postbacků byly zapotřebí k odeslání na stejné stránce. Zpětná volání mezi stránkami nebyly povoleny. ASP.NET 2.0 přidává možnost publikovat zpět na jinou stránku prostřednictvím rozhraní IButtonControl. Libovolný ovládací prvek, který implementuje rozhraní IButtonControl (tlačítko, odkazem (LinkButton) a ImageButton kromě vlastní ovládací prvky třetích stran) můžete využít tyto nové funkce prostřednictvím použití atributu PostBackUrl. Následující kód ukazuje ovládací prvek tlačítka, který odešle zpět na druhé stránce.
+V ASP.NET 1. x byly pro odeslání na stejnou stránku požadovány zpětné odeslání. Postbacky mezi stránkami se nepovolily. ASP.NET 2,0 přidává možnost zpětného odeslání na jinou stránku prostřednictvím rozhraní IButtonControl. Jakýkoli ovládací prvek, který implementuje nové rozhraní IButtonControl (Button, LinkButton a obrázkové), může využít tuto novou funkci prostřednictvím atributu PostBackUrl. Následující kód ukazuje ovládací prvek tlačítko, který odesílá zpět na druhou stránku.
 
 [!code-aspx[Main](the-asp-net-2-0-page-model/samples/sample5.aspx)]
 
-Na stránce, když se pošle zpět na stránku, která zahájí zpětné volání, jsou přístupná přes vlastnost PreviousPage na druhé stránce. Tato funkce se implementuje prostřednictvím nového webového formuláře\_DoPostBackWithOptions funkce na straně klienta, která ASP.NET 2.0 vykresluje na stránku, když ovládací prvek odeslat zpět na jiné stránce. Tato funkce jazyka JavaScript poskytuje nové obslužná rutina WebResource.axd, který generuje skript do klienta.
+Po odeslání stránky zpět je stránka, která iniciuje postback, přístupná prostřednictvím vlastnosti PreviousPage na druhé stránce. Tato funkce je implementována prostřednictvím nového WebForm\_DoPostBackWithOptions funkce na straně klienta, kterou ASP.NET 2,0 vykresluje na stránku, když ovládací prvek odešle zpět na jinou stránku. Tuto funkci JavaScriptu poskytuje Nová obslužná rutina WebResource. axd, která pro klienta generuje skript.
 
-Následující video je návod, zpětné volání mezi stránkami.
+Níže uvedené video je návodem k postbacku mezi stránkami.
 
 ![](the-asp-net-2-0-page-model/_static/image2.png)
 
-[Otevřít Video na celou obrazovku](the-asp-net-2-0-page-model/_static/xpage1.wmv)
+[Otevření videa na celé obrazovce](the-asp-net-2-0-page-model/_static/xpage1.wmv)
 
-## <a name="more-details-on-cross-page-postbacks"></a>Další podrobnosti o postbacků mezi stránkami
+## <a name="more-details-on-cross-page-postbacks"></a>Další podrobnosti o Postbackech mezi stránkami
 
-### <a name="viewstate"></a>Stav zobrazení
+### <a name="viewstate"></a>Vlastnosti
 
-Můžete mít vyzváni sami už o co se stane vlastnost viewstate od první stránky ve scénáři postback mezi stránkami. Po všech libovolný ovládací prvek, který neimplementuje rozhraní IPostBackDataHandler zachová svůj stav prostřednictvím vlastnosti viewstate, tak přístup k vlastnostem ovládacího prvku na druhé stránce zpětné volání mezi stránkami, musí mít přístup k vlastnost viewstate pro stránku. Tento scénář s využitím nového skrytého pole na druhé stránce volá postará technologie ASP.NET 2.0 \_ \_PREVIOUSPAGE. \_ \_PREVIOUSPAGE pole formuláře obsahuje vlastnost viewstate na první stránce tak, že máte přístup k vlastnostem všechny ovládací prvky na druhé stránce.
+Mohli jste se už dotazovat na to, co se děje, od první stránky ve scénáři zpětného odeslání mezi stránkami. Po všech případech jakýkoli ovládací prvek, který neimplementuje IPostBackDataHandler, uchová svůj stav prostřednictvím vlastnosti ViewState, takže pokud chcete mít přístup k vlastnostem tohoto ovládacího prvku na druhé stránce zpětného vysílání mezi stránkami, musíte mít přístup k vlastnosti ViewState stránky. ASP.NET 2,0 se postará o tento scénář pomocí nového skrytého pole na druhé stránce s názvem \_\_PREVIOUSPAGE. Pole \_\_PREVIOUSPAGE formuláře obsahuje vlastnost ViewState pro první stránku, takže můžete mít přístup k vlastnostem všech ovládacích prvků na druhé stránce.
 
-### <a name="circumventing-findcontrol"></a>Obcházení FindControl
+### <a name="circumventing-findcontrol"></a>Obejití FindControl
 
-V video s názorným postupem postbacku mezi stránkami můžu FindControl metoda používá k získání odkazu na ovládací prvek TextBox na první stránce. Tato metoda funguje dobře pro tento účel, ale FindControl je nákladné a psaním dalšího kódu, vyžaduje. Naštěstí ASP.NET 2.0 poskytuje alternativu k FindControl pro tento účel, který bude fungovat v mnoha scénářích. Direktiva PreviousPageType umožňuje mít silný odkaz na předchozí stránku pomocí TypeName nebo VirtualPath atribut. Atribut TypeName umožňuje určit typ na předchozí stránku, zatímco Atribut VirtualPath umožňuje odkazovat na předchozí stránku pomocí virtuální cesty. Po direktivě PreviousPageType, musí pak vystavit ovládací prvky, ke kterému chcete povolit přístup pomocí veřejné vlastnosti atd.
+V podrobném návodu k postbacku mezi stránkami jsem použil (a) metodu FindControl, která na první stránce získá odkaz na ovládací prvek TextBox. Tato metoda funguje dobře pro tento účel, ale FindControl je nákladná a vyžaduje zápis dalšího kódu. Naštěstí ASP.NET 2,0 poskytuje alternativu k FindControl pro tento účel, která bude fungovat v mnoha scénářích. Direktiva PreviousPageType vám umožňuje mít na předchozí stránce odkaz silného typu pomocí atributu TypeName nebo VirtualPath. Atribut TypeName umožňuje zadat typ předchozí stránky, zatímco atribut VirtualPath umožňuje odkazování na předchozí stránku pomocí virtuální cesty. Po nastavení direktivy PreviousPageType je nutné vystavit ovládací prvky atd., ke kterým chcete přístup udělit pomocí veřejných vlastností.
 
-## <a name="lab-1-cross-page-postback"></a>Praktické cvičení 1 mezi stránkami postbacku
+## <a name="lab-1-cross-page-postback"></a>Testovací zpětné volání mezi stránkami laboratoře 1
 
-V tomto testovacím prostředí vytvoříte aplikaci, která využívá nové funkce zpětného volání mezi stránkami ASP.NET 2.0.
+V tomto testovacím prostředí vytvoříte aplikaci, která bude používat novou funkci zpětného volání na více stránkách ASP.NET 2,0.
 
-1. Otevřít Visual Studio 2005 a vytvořit nový web ASP.NET.
-2. Přidání nového webového formuláře volá page2.aspx.
-3. V návrhovém zobrazení otevřete Default.aspx a přidejte ovládací prvek Button a ovládací prvek textového pole. 
+1. Otevřete Visual Studio 2005 a vytvořte nový web ASP.NET.
+2. Přidejte nový webformu s názvem Page2. aspx.
+3. Otevřete default. aspx v zobrazení Návrh a přidejte ovládací prvek tlačítko a ovládací prvek TextBox. 
 
-    1. Zadejte ID ovládacího prvku tlačítko **tlacitkoOdeslat** a textovém poli ID **uživatelské jméno**.
-    2. Nastavte vlastnost PostBackUrl tlačítka na page2.aspx.
-4. Otevřete page2.aspx v zobrazení zdroje.
-5. Direktiva @ PreviousPageType přidáte, jak je znázorněno níže:
-6. Přidejte následující kód na stránku\_zatížení vaší page2.aspx kódu: 
+    1. Poskytněte ovládacímu prvku tlačítko ID **submitButton** a textové pole určuje ID **uživatelského jména**.
+    2. Nastavte vlastnost PostBackUrl tlačítka na Page2. aspx.
+4. Otevřete Page2. aspx ve zdrojovém zobrazení.
+5. Přidejte direktivu @ PreviousPageType, jak je znázorněno níže:
+6. Přidejte následující kód na stránku\_načtení kódu Page2. aspx s kódem na pozadí: 
 
     [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample6.cs)]
-7. Sestavte projekt kliknutím na sestavení v nabídce sestavení.
-8. Přidejte následující kód do kódu pro Default.aspx: 
+7. Sestavte projekt kliknutím na sestavit v nabídce sestavení.
+8. Do kódu na pozadí pro default. aspx přidejte následující kód: 
 
     [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample7.cs)]
-9. Změnit na stránce\_zatížení v page2.aspx takto: 
+9. Změňte stránku\_načíst v Page2. aspx následujícím způsobem: 
 
     [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample8.cs)]
 10. Sestavte projekt.
 11. Spusťte projekt.
-12. Zadejte název do textového pole a klikněte na tlačítko.
-13. Co je výsledkem?
+12. Do textového pole zadejte své jméno a klikněte na tlačítko.
+13. Jaký je výsledek?
 
-## <a name="asynchronous-pages-in-aspnet-20"></a>Asynchronní stránek v ASP.NET 2.0
+## <a name="asynchronous-pages-in-aspnet-20"></a>Asynchronní stránky v ASP.NET 2,0
 
-Mnohé problémy kolizí v technologii ASP.NET jsou způsobeny latence externí volání (například volání webové služby nebo databáze), souboru vstupně-výstupní latence, atd. Po odeslání žádosti se pro aplikaci ASP.NET, ASP.NET používá jednu z jeho pracovní vlákna ke zpracování této žádosti. Tento požadavek na vlastní bylo vlákno až do dokončení požadavku a byl odeslán odpovědi. ASP.NET 2.0 vyhledá vyřešit problémy s latencí s těmito typy chyb tak, že přidáte funkci stránky spustit asynchronně. To znamená, že můžete začít požadavek a pak předá další provádění do jiného vlákna, a tím vrátí do fondu vláken k dispozici rychle pracovní podproces. Po dokončení vstupně-výstupní operace souboru, volání databáze a další, nové vlákno se získávají z fondu vláken k dokončení požadavku.
+Mnohé problémy s kolize v ASP.NET způsobuje latence vnějších volání (například webové služby nebo volání databáze), latence v/v souboru atd. Když se v rámci aplikace ASP.NET vytvoří požadavek, ASP.NET použije jedno z jeho pracovních vláken ke zpracování tohoto požadavku. Tento požadavek je vlastníkem tohoto vlákna, dokud není požadavek dokončen a odpověď byla odeslána. ASP.NET 2,0 se snaží vyřešit problémy latence s těmito typy problémů přidáním možnosti pro asynchronní spouštění stránek. To znamená, že může pracovní vlákno zahájit požadavek a pak předat další spuštění jinému vláknu, čímž se rychle vrátí do dostupného fondu vláken. Po dokončení souboru v/v se z fondu vláken získá nové vlákno, aby se žádost dokončila.
 
-Prvním krokem při vytváření stránky spustit asynchronně, je nastavena **asynchronní** atribut direktivy stránky takto:
+Prvním krokem při provádění asynchronního zpracování stránky je nastavení atributu **Async** direktivy stránky, například:
 
 [!code-aspx[Main](the-asp-net-2-0-page-model/samples/sample9.aspx)]
 
-Tento atribut oznamuje implementovat IHttpAsyncHandler stránky technologie ASP.NET.
+Tento atribut dává ASP.NET pokyn k implementaci IHttpAsyncHandler pro stránku.
 
-Dalším krokem je volání metody AddOnPreRenderCompleteAsync v určitém bodě životní cyklus stránky před provedením operace PreRender. (Tato metoda je obvykle volána na stránce\_zatížení.) Metoda AddOnPreRenderCompleteAsync přebírá dva parametry. BeginEventHandler a EndEventHandler. BeginEventHandler vrátí objekt IAsyncResult, který je pak předán jako parametr EndEventHandler.
+Dalším krokem je zavolat metodu AddOnPreRenderCompleteAsync v místě v životním cyklu stránky před provedením operace PreRender. (Tato metoda se obvykle volá při načtení stránky\_.) Metoda AddOnPreRenderCompleteAsync přijímá dva parametry; BeginEventHandler a EndEventHandler. BeginEventHandler vrací IAsyncResult, který je poté předán jako parametr do EndEventHandler.
 
-Video níže je návod požadavku asynchronní stránky.
+Následující video je názorný na asynchronní požadavek stránky.
 
 ![](the-asp-net-2-0-page-model/_static/image3.png)
 
-[Otevřít Video na celou obrazovku](the-asp-net-2-0-page-model/_static/async1.wmv)
+[Otevření videa na celé obrazovce](the-asp-net-2-0-page-model/_static/async1.wmv)
 
 > [!NOTE]
-> Stránku asynchronní nevykresluje do prohlížeče, dokud se nedokončí EndEventHandler. Žádné nejisté, ale někteří vývojáři budou představit asynchronních jako podobný zpětná volání asynchronní. Je důležité si uvědomit, že nejsou. Výhoda pro asynchronní požadavků je, že první pracovní vlákno mohou být vráceny do fondu vláken zpracování nových požadavků, a tím snižuje kolize kvůli se vstupně-výstupních operací, které jsou vázány, atd.
+> Asynchronní stránka se nevykresluje do prohlížeče, dokud se EndEventHandler nedokončí. Žádné pochybnosti, ale vývojáři si budou považovat asynchronní požadavky za podobné asynchronním zpětnému volání. Je důležité si uvědomit, že nejsou. Výhodou pro asynchronní požadavky je, aby první pracovní vlákno bylo vráceno do fondu vláken, aby bylo možné obsluhovat nové požadavky, čímž se snížila kolize z důvodu vstupně-výstupních operací atd.
 
-## <a name="script-callbacks-in-aspnet-20"></a>Zpětná volání skriptu v ASP.NET 2.0
+## <a name="script-callbacks-in-aspnet-20"></a>Zpětná volání skriptů v ASP.NET 2,0
 
-Weboví vývojáři se vždy podívat způsoby, jak zabránit blikání přidružené zpětné volání. V technologii ASP.NET 1.x SmartNavigation bylo nejběžnější metodou pro předcházení blikání, ale SmartNavigation způsobil problémy pro vývojáře v některé z důvodu složitosti implementace na straně klienta. ASP.NET 2.0 řeší tento problém s zpětná volání skriptu. Zpětná volání skriptu využívat XMLHttp k podání žádostí o u webového serveru pomocí jazyka JavaScript. Žádost o XMLHttp vrátí data XML, který lze potom manipulovat prostřednictvím prohlížeče modelu DOM. XMLHttp kód je pro uživatele skryté nová obslužná rutina WebResource.axd.
+Vývojáři webu vždy hledali způsob, jak zabránit blikání spojené s zpětným voláním. V ASP.NET 1. x byla SmartNavigation Nejběžnější metodou pro zamezení blikání, ale SmartNavigation způsobila problémy pro některé vývojáře z důvodu složitosti implementace na straně klienta. ASP.NET 2,0 řeší tento problém pomocí zpětných volání skriptů. Zpětná volání skriptu využívají XMLHttp k vytváření požadavků na webový server prostřednictvím JavaScriptu. Požadavek XMLHttp vrátí data XML, která lze následně manipulovat prostřednictvím modelu DOM prohlížeče. Kód XMLHttp je od uživatele skrytý pomocí nové obslužné rutiny WebResource. axd.
 
-Existuje několik kroků, které jsou nezbytné, aby se konfigurace zpětného volání skriptu v technologii ASP.NET 2.0.
+Pro konfiguraci zpětného volání skriptu v ASP.NET 2,0 je nutné provést několik kroků.
 
-## <a name="step-1--implement-the-icallbackeventhandler-interface"></a>Krok 1: Implementovat rozhraní ICallbackEventHandler
+## <a name="step-1--implement-the-icallbackeventhandler-interface"></a>Krok 1: implementace rozhraní rozhraní ICallbackEventHandler
 
-Aby ASP.NET rozpoznat stránce jako účasti ve zpětném volání skriptu musí implementovat rozhraní ICallbackEventHandler. Můžete to provést v souboru modelu code-behind takto:
+Aby ASP.NET rozpoznal vaši stránku jako účastnící se zpětného volání skriptu, je nutné implementovat rozhraní rozhraní ICallbackEventHandler. To můžete provést v souboru s kódem na pozadí, například takto:
 
 [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample10.cs)]
 
-Můžete také Uděláte to pomocí direktiv jako @ implementuje:
+Můžete to také provést pomocí direktivy @ implementers, například:
 
 [!code-aspx[Main](the-asp-net-2-0-page-model/samples/sample11.aspx)]
 
-Obvykle použijete – direktiva @ implementuje při použití vloženého kódu ASP.NET.
+Direktiva @ Implements se obvykle používá při použití vloženého kódu ASP.NET.
 
-## <a name="step-2--call-getcallbackeventreference"></a>Krok 2: Volání GetCallbackEventReference
+## <a name="step-2--call-getcallbackeventreference"></a>Krok 2: volání GetCallbackEventReference
 
-Jak už bylo zmíněno dříve, je zapouzdřena volání XMLHttp v obslužná rutina WebResource.axd. Při vykreslování stránky ASP.NET se přidejte volání do webového formuláře\_DoCallback klientský skript, který je poskytován WebResource.axd. Webového formuláře\_nahrazuje funkce DoCallback \_ \_doPostBack funkce pro zpětné volání. Nezapomeňte, že \_ \_doPostBack programově odeslání formuláře na stránce. Ve scénáři zpětné volání, ale chcete zabránit zpětné volání, takže \_ \_doPostBack nestačí.
+Jak bylo zmíněno dříve, volání XMLHttp je zapouzdřeno v obslužné rutině WebResource. axd. Po vykreslení stránky ASP.NET přidá volání do WebForm\_DoCallback, skript klienta, který je poskytován pomocí WebResource. axd. Funkce WebForm\_DoCallback nahrazuje funkci \_\_doPostBack pro zpětné volání. Nezapomeňte, že \_\_doPostBack programově odešle formulář na stránce. Ve scénáři zpětného volání chcete zabránit zpětnému volání, takže \_\_doPostBack nebude stačit.
 
 > [!NOTE]
-> \_\_doPostBack se zobrazí stránku ve scénáři skript zpětného volání klienta. Ale není použit pro zpětné volání.
+> \_\_doPostBack se pořád vykresluje na stránku ve scénáři zpětného volání klientského skriptu. Nepoužívá se však pro zpětné volání.
 
-Argumenty pro webovém formuláři\_DoCallback funkce na straně klienta jsou k dispozici prostřednictvím funkce na straně serveru GetCallbackEventReference, která by obvykle nazývat stránce\_zatížení. Typické volání GetCallbackEventReference může vypadat takto:
+Argumenty pro WebForm\_DoCallback funkce na straně klienta jsou k dispozici prostřednictvím GetCallbackEventReference funkce na straně serveru, která by se normálně volala v zatížení stránky\_. Typické volání GetCallbackEventReference může vypadat takto:
 
 [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample12.cs)]
 
 > [!NOTE]
-> V takovém případě je cm instancí ClientScriptManager. Třída ClientScriptManager se budeme dále v tomto modulu.
+> V tomto případě je cm instancí ClientScriptManager. Na třídu ClientScriptManager se bude vztahovat později v tomto modulu.
 
-Existuje několik přetížené verze GetCallbackEventReference. V takovém případě argumenty jsou následující:
+Existuje několik přetížených verzí GetCallbackEventReference. V tomto případě jsou argumenty následující:
 
 `this`
 
-Odkaz na ovládací prvek, ve kterém je volána GetCallbackEventReference. V takovém případě je samotné stránky.
+Odkaz na ovládací prvek, ve kterém je volána metoda GetCallbackEventReference. V tomto případě se jedná o stránku samotnou.
 
 [!code-javascript[Main](the-asp-net-2-0-page-model/samples/sample13.js)]
 
-Argument řetězce, které budou předány z kódu na straně klienta pro událost na straně serveru. V tomto případě zasílání rychlých zpráv, předejte hodnotu z rozevíracího seznamu název ddlCompany.
+Řetězcový argument, který bude předán z kódu na straně klienta k události na straně serveru. V tomto případě im pošle hodnotu rozevíracího seznamu s názvem ddlCompany.
 
 `ShowCompanyName`
 
-Název funkce na straně klienta, který bude přijímat návratovou hodnotu (jako řetězce) z události zpětného volání na straně serveru. Tato funkce bude volat pouze po úspěšné zpětného volání na straně serveru. Proto z důvodu odolnosti, obecně doporučujeme používat přetížené verze GetCallbackEventReference, která přebírá argument další řetězec určující název funkce na straně klienta pro spuštění v případě chyby.
+Název funkce na straně klienta, která přijme vrácenou hodnotu (jako řetězec) z události zpětného volání na straně serveru. Tato funkce bude volána pouze v případě, že zpětné volání na straně serveru je úspěšné. Z důvodu odolnosti se obecně doporučuje použít přetíženou verzi GetCallbackEventReference, která přijímá další řetězcový argument, který určuje název funkce na straně klienta, která se má provést v případě chyby.
 
 `null`
 
-Řetězec představující funkce na straně klienta, která bylo zahájeno před zpětného volání k serveru. V takovém případě není žádný skript, takže má argument hodnotu null.
+Řetězec představující funkci na straně klienta, kterou inicioval před zpětným voláním na server. V takovém případě žádný takový skript neexistuje, takže argument má hodnotu null.
 
 `true`
 
-Logická hodnota určující, jestli se mají asynchronně provádění zpětného volání.
+Logická hodnota určující, zda se má asynchronní volání provádět asynchronně.
 
-Volání webového formuláře\_DoCallback na straně klienta předá tyto argumenty. Proto se při vykreslení této stránky na straně klienta, tento kód bude vypadat takto:
+Volání WebForm\_DoCallback na klientovi budou tyto argumenty předat. Proto při vykreslování této stránky na klientovi bude tento kód vypadat takto:
 
 [!code-javascript[Main](the-asp-net-2-0-page-model/samples/sample14.js)]
 
-Všimněte si, že podpis funkce na straně klienta je trochu jiná. Funkce na straně klienta předá 5 řetězce a logickou hodnotu. Další řetězec (který má hodnotu null v příkladu výše) obsahuje funkce na straně klienta, který bude zpracovávat chyby ze zpětného volání na straně serveru.
+Všimněte si, že signatura funkce na klientovi je trochu odlišná. Funkce na straně klienta předává 5 řetězců a logickou hodnotu. Další řetězec (který je ve výše uvedeném příkladu null) obsahuje funkci na straně klienta, která bude zpracovávat chyby z zpětného volání na straně serveru.
 
-## <a name="step-3--hook-the-client-side-control-event"></a>Krok 3: Zkompilujte ovládacího prvku na straně klienta
+## <a name="step-3--hook-the-client-side-control-event"></a>Krok 3: zavěšení události ovládacího prvku na straně klienta
 
-Všimněte si, že návratová hodnota GetCallbackEventReference výše byl přiřazen k proměnné řetězce. Tento řetězec se používá k připojení události na straně klienta pro ovládací prvek, který iniciuje zpětného volání. V tomto příkladu rozevíracího seznamu na stránce inicioval zpětné volání, chci se zapojit *OnChange* událostí.
+Všimněte si, že návratová hodnota GetCallbackEventReference výše byla přiřazena proměnné řetězce. Tento řetězec slouží k zavěšení události na straně klienta pro ovládací prvek, který iniciuje zpětné volání. V tomto příkladu je zpětné volání iniciováno rozevíracím seznamem na stránce, takže chci připojit událost při *změně* .
 
-K připojení události na straně klienta, jednoduše přidejte obslužnou rutinu kód na straně klienta následujícím způsobem:
+Chcete-li připojit událost na straně klienta, jednoduše přidejte obslužnou rutinu do značky na straně klienta následujícím způsobem:
 
 [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample15.cs)]
 
-Vzpomeňte si, že *cbRef* je návratová hodnota z volání GetCallbackEventReference. Obsahuje volání do webového formuláře\_DoCallback zobrazená výše.
+Odvolání tohoto *cbRef* je návratovou hodnotou z volání GetCallbackEventReference. Obsahuje volání do WebForm\_DoCallback, které bylo zobrazeno výše.
 
-## <a name="step-4--register-the-client-side-script"></a>Krok 4: Registrace skriptu na straně klienta
+## <a name="step-4--register-the-client-side-script"></a>Krok 4: registrace skriptu na straně klienta
 
-Vzpomínáte, který volání GetCallbackEventReference zadán, skript na straně klienta volána **ShowCompanyName** by byl proveden po úspěšném zpětného volání na straně serveru. Tento skript je potřeba přidat na stránku pro použití ClientScriptManager instance. (Třída ClientScriptManager probereme později v tomto modulu.) To provedete jako v tomto:
+Odvolání volání GetCallbackEventReference určilo, že skript na straně klienta s názvem **ShowCompanyName** by se spustil při úspěšném zpětném volání na straně serveru. Tento skript musí být přidán na stránku pomocí instance ClientScriptManager. (Třída ClientScriptManager bude popsána dále v tomto modulu.) To uděláte takto:
 
 [!code-javascript[Main](the-asp-net-2-0-page-model/samples/sample16.js)]
 
-## <a name="step-5--call-the-methods-of-the-icallbackeventhandler-interface"></a>Krok 5: Volání metody rozhraní ICallbackEventHandler
+## <a name="step-5--call-the-methods-of-the-icallbackeventhandler-interface"></a>Krok 5: volání metod rozhraní rozhraní ICallbackEventHandler
 
-Rozhraní ICallbackEventHandler obsahuje dvě metody, které je nutné implementovat v kódu. Jsou **RaiseCallbackEvent** a **GetCallbackEvent**.
+Rozhraní ICallbackEventHandler obsahuje dvě metody, které je třeba implementovat ve svém kódu. Jsou **RaiseCallbackEvent** a **GetCallbackEvent**.
 
-**RaiseCallbackEvent** přijímá řetězec jako argument a vrátí hodnotu nothing. Řetězcový argument je předán z volání na straně klienta webového formuláře\_DoCallback. V takovém případě je tato hodnota *hodnotu* atribut volá ddlCompany rozevíracího seznamu. Váš kód na straně serveru musí být umístěné ve RaiseCallbackEvent metody. Například pokud je vaše zpětné volání žádosti WebRequest proti externímu prostředku, tento kód musí být umístěné ve RaiseCallbackEvent.
+**RaiseCallbackEvent** přebírá řetězec jako argument a nevrací žádnou hodnotu. Řetězcový argument se předává z volání WebForm na straně klienta\_DoCallback. V tomto případě je tato hodnota atributem *Value* rozevíracího seznamu s názvem ddlCompany. Váš kód na straně serveru by měl být umístěn do metody RaiseCallbackEvent. Například pokud zpětné volání vytváří WebRequest proti externímu zdroji, měl by být tento kód umístěn v RaiseCallbackEvent.
 
-**GetCallbackEvent** je zodpovědná za zpracování vrácení zpětné volání do klienta. Nepřijímá žádné argumenty a vrátí hodnotu typu string. Řetězec, který vrátí se předá jako argument pro funkci na straně klienta v tomto případě *ShowCompanyName*.
+**GetCallbackEvent** zodpovídá za zpracování vrácení zpětného volání klientovi. Nepřijímá žádné argumenty a vrací řetězec. Řetězec, který vrátí, bude předán jako argument funkce na straně klienta, v tomto případě *ShowCompanyName*.
 
-Po dokončení výše uvedené kroky, jste připraveni k provádění zpětného volání skriptu v ASP.NET 2.0.
+Po dokončení výše uvedených kroků jste připraveni provést zpětné volání skriptu v ASP.NET 2,0.
 
 ![](the-asp-net-2-0-page-model/_static/image4.png)
 
-[Otevřít Video na celou obrazovku](the-asp-net-2-0-page-model/_static/callback1.wmv)
+[Otevření videa na celé obrazovce](the-asp-net-2-0-page-model/_static/callback1.wmv)
 
-Zpětná volání skriptu v ASP.NET jsou podporovány v jakémkoli prohlížeči, který podporuje provedete XMLHttp volání. To zahrnuje všechny moderní prohlížeče používá ještě dnes. Aplikace Internet Explorer používá objektu XMLHttp ActiveX při použití vnitřního objektu XMLHttp dalších moderních prohlížečů (včetně nadcházející aplikace Internet Explorer 7). K určení prostřednictvím kódu programu, pokud je prohlížeč podporuje zpětná volání, můžete použít **Request.Browser.SupportCallback** vlastnost. Tato vlastnost vrátí **true** Pokud klienta, který podporuje zpětná volání skriptu.
+Zpětná volání skriptů v ASP.NET jsou podporována v jakémkoli prohlížeči, který podporuje vytváření volání XMLHttp. To zahrnuje všechny moderní prohlížeče používané dnes. Internet Explorer používá objekt ADO ActiveX, zatímco další moderní prohlížeče (včetně nadcházejících IE 7) používají vnitřní objekt XMLHttp. Chcete-li programově zjistit, zda prohlížeč podporuje zpětná volání, můžete použít vlastnost **Request. browser. SupportCallback** . Tato vlastnost vrátí **hodnotu true** , pokud žádající klient podporuje zpětná volání skriptů.
 
-## <a name="working-with-client-script-in-aspnet-20"></a>Práce s klientským skriptem v technologii ASP.NET 2.0
+## <a name="working-with-client-script-in-aspnet-20"></a>Práce s klientským skriptem v ASP.NET 2,0
 
-Skripty klienta v technologii ASP.NET 2.0 jsou spravované prostřednictvím použití třídy ClientScriptManager. Třída ClientScriptManager uchovává informace o klientských skriptů pomocí typu a název. Díky tomu stejný skript programově vloženého na stránce více než jednou.
+Klientské skripty v ASP.NET 2,0 jsou spravovány prostřednictvím použití třídy ClientScriptManager. Třída ClientScriptManager sleduje klientské skripty pomocí typu a názvu. Tím se zabrání programovému vložení stejného skriptu na stránku více než jednou.
 
 > [!NOTE]
-> Skript po úspěšné registraci na stránce, jakékoli následné pokusy o registraci stejný skript jednoduše výsledkem skriptu není zaregistrovaný podruhé. Budou přidány žádné duplicitní skripty a dojde k žádné výjimce. Aby se zabránilo zbytečným výpočtu, jsou metody, které můžete použít k určení, jestli skript je už zaregistrovaný, takže není pokusí zaregistrovat víc než jednou.
+> Po úspěšné registraci skriptu na stránce se při dalším pokusu o registraci stejného skriptu jednoduše zaznamená, že se skript nebude registrovat podruhé. Nepřidaly se žádné duplicitní skripty a nedochází k žádné výjimce. Aby nedocházelo k zbytečnému výpočtu, existují metody, které lze použít k určení, zda je skript již zaregistrován, takže se nepokusíte o jeho registraci více než jednou.
 
-Metody ClientScriptManager by měl být všechny aktuální vývojáře využívající technologii ASP.NET:
+Metody ClientScriptManager by měly být obeznámené se všemi současnými vývojáři ASP.NET:
 
 ## <a name="registerclientscriptblock"></a>RegisterClientScriptBlock
 
-Tato metoda přidá do horní části na vykreslené stránce skriptu. To je užitečné pro přidávání funkcí, které se explicitně volat na straně klienta.
+Tato metoda přidá skript do horní části vykreslené stránky. To je užitečné, pokud chcete přidat funkce, které budou explicitně volány na straně klienta.
 
-Existují dvě přetížené verze této metody. Tři ze čtyř argumentů jsou běžné mezi nimi. Možnosti jsou následující:
+Existují dvě přetížené verze této metody. Existují tři ze čtyř argumentů, které jsou mezi nimi společné. Jsou to tyto:
 
 `type (string)`
 
-***Typ*** argument určuje typ skriptu. Obecně je vhodné použít typ stránky (this. GetType()) typu.
+Argument ***typu*** identifikuje typ skriptu. Obecně je vhodné použít typ stránky (to. GetType ()) pro typ.
 
 `key (string)`
 
-***Klíč*** argument je uživatelský klíč pro skript. To by měl být jedinečný pro každý skript. Pokud se pokusíte přidat skript se stejným klíčem a typ již přidané skriptu, nebude přidán.
+Argument ***Key*** je uživatelsky definovaný klíč pro skript. To by mělo být pro každý skript jedinečné. Pokud se pokusíte přidat skript se stejným klíčem a typem již přidaného skriptu, nebude přidán.
 
 `script (string)`
 
-***Skript*** argument je řetězec obsahující skutečné skript pro přidání. Je doporučeno použít StringBuilder vytvořit skript a pak použijte metodu ToString() ve třídě StringBuilder nebyla přiřadit ***skript*** argument.
+Argument ***Script*** je řetězec obsahující vlastní skript, který se má přidat. Doporučuje se použít StringBuilder k vytvoření skriptu a potom použít metodu ToString () na StringBuilder k přiřazení argumentu ***skriptu*** .
 
-Pokud používáte přetížené RegisterClientScriptBlock, který zabere jenom tři argumenty, musí obsahovat prvky skriptu (&lt;skript&gt; a &lt;/script&gt;) ve vašem skriptu.
+Použijete-li přetížené RegisterClientScriptBlock, které přebírají pouze tři argumenty, musíte do skriptu zahrnout prvky skriptu (&lt;skriptu&gt; a &lt;/Script&gt;).
 
-Můžete použít přetížení RegisterClientScriptBlock, která přijímá čtvrtý argument. Čtvrtý argument je logická hodnota, která určuje, zda technologie ASP.NET přidala prvky skriptu za vás. Pokud je tento argument **true**, váš skript by neměla obsahovat prvky skriptu explicitně.
+Můžete se rozhodnout použít přetížení RegisterClientScriptBlock, které přijímá čtvrtý argument. Čtvrtý argument je logická hodnota, která určuje, zda má ASP.NET přidat prvky skriptu. Pokud má tento argument **hodnotu true**, skript by neměl explicitně zahrnovat prvky skriptu.
 
-Pomocí této metody IsClientScriptBlockRegistered určit, jestli je skript už zaregistrovaný. To umožňuje vyhnout se znovu zaregistrovat skript, který už je zaregistrovaný.
+Pomocí metody IsClientScriptBlockRegistered můžete zjistit, jestli už je skript zaregistrovaný. To vám umožní vyhnout se pokusu o opětovné registraci skriptu, který už je zaregistrovaný.
 
-### <a name="registerclientscriptinclude-new-in-20"></a>RegisterClientScriptInclude (nově ve verzi 2.0)
+### <a name="registerclientscriptinclude-new-in-20"></a>RegisterClientScriptInclude (novinka v 2,0)
 
-Značka RegisterClientScriptInclude vytvoří blok skriptu odkazující na externí soubor skriptu. Má dvě přetížení. Přijímá jeden klíč a adresu URL. Druhá přidá třetí argument určující typ.
+Značka RegisterClientScriptInclude vytvoří blok skriptu, který odkazuje na externí soubor skriptu. Má dvě přetížení. Jedna vezme klíč a adresu URL. Druhý přidá třetí argument určující typ.
 
-Následující kód například vygeneruje blok skriptu, který odkazuje na jsfunctions.js v kořenové složce skriptů aplikace:
+Například následující kód vygeneruje blok skriptu, který odkazuje na jsfunctions. js v kořenu složky Scripts v aplikaci:
 
 [!code-csharp[Main](the-asp-net-2-0-page-model/samples/sample17.cs)]
 
-Tento kód vytvoří následující kód na vykreslené stránce:
+Tento kód na vykreslené stránce vytvoří následující kód:
 
 [!code-html[Main](the-asp-net-2-0-page-model/samples/sample18.html)]
 
 > [!NOTE]
 > Blok skriptu se vykreslí v dolní části stránky.
 
-Pomocí této metody IsClientScriptIncludeRegistered určit, jestli je skript už zaregistrovaný. To umožňuje vyhnout se znovu zaregistrovat skript.
+Pomocí metody IsClientScriptIncludeRegistered můžete zjistit, jestli už je skript zaregistrovaný. To vám umožní vyhnout se pokusu o opětovné registraci skriptu.
 
 ## <a name="registerstartupscript"></a>RegisterStartupScript
 
-Metoda RegisterStartupScript používá stejné argumenty jako metodu RegisterClientScriptBlock. Skript zaregistrovaného RegisterStartupScript provádí po načtení stránky, ale před událostí načtení na straně klienta. V 1.X, skripty, které jsou zaregistrované RegisterStartupScript zadal těsně před uzavírací &lt;/form&gt; označit při skripty zaregistrovaného RegisterClientScriptBlock byly umístěny ihned po otevření &lt;formuláře&gt; značky. V technologii ASP.NET 2.0, obě jsou umístěné bezprostředně před uzavírací &lt;/form&gt; značky.
+Metoda RegisterStartupScript přebírá stejné argumenty jako metoda RegisterClientScriptBlock. Skript zaregistrovaný v RegisterStartupScript se spustí po načtení stránky, ale před událostí načtení na straně klienta. V 1. X se skripty zaregistrované v RegisterStartupScript umístily těsně před uzavírací &lt;&gt; značka, zatímco se skripty zaregistrované v RegisterClientScriptBlock umístily hned po počáteční značce &lt;formuláře&gt;. V ASP.NET 2,0 se obě umístí hned před uzavírací &lt;&gt;er značka.
 
 > [!NOTE]
-> Když si zaregistrujete funkce s RegisterStartupScript, tato funkce nebude spuštěno, dokud ho explicitně volat v kódu na straně klienta.
+> Pokud zaregistrujete funkci s RegisterStartupScript, tato funkce se nespustí, dokud ji explicitně nebudete volat v kódu na straně klienta.
 
-Pomocí metody IsStartupScriptRegistered můžete určit, jestli je skript už zaregistrovaný a vyhnout se znovu zaregistrovat skript.
+Použijte metodu IsStartupScriptRegistered k určení, zda již byl skript zaregistrován, a vyhněte se pokusu o opětovné registraci skriptu.
 
 ## <a name="other-clientscriptmanager-methods"></a>Jiné metody ClientScriptManager
 
-Tady jsou některé z dalších užitečných metod ClientScriptManager třídy.
+Zde jsou některé z dalších užitečných metod třídy ClientScriptManager.
 
-|  <strong>GetCallbackEventReference</strong>   |                                                 Viz zpětná volání skriptu dříve v tomto modulu.                                                 |
+|  <strong>GetCallbackEventReference</strong>   |                                                 Viz zpětná volání skriptů dříve v tomto modulu.                                                 |
 |-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-|  <strong>GetPostBackClientHyperlink</strong>  |                Získá odkaz JavaScript (jazyk javascript:&lt;volání&gt;), který je možné publikovat zpět z události na straně klienta.                 |
-|  <strong>GetPostBackEventReference</strong>   |                                   Získá řetězec, který slouží k zahájení příspěvek zpět od klienta.                                    |
-|      <strong>GetWebResourceUrl</strong>       | Vrátí adresu URL k prostředku, který je vložen do sestavení. Je potřeba použít ve spojení s <strong>RegisterClientScriptResource</strong>. |
-| <strong>RegisterClientScriptResource</strong> |     Zaregistruje prostředek webové stránky. Toto jsou prostředky součástí sestavení a zpracovat nová obslužná rutina WebResource.axd.      |
+|  <strong>GetPostBackClientHyperlink</strong>  |                Získá referenci jazyka JavaScript (JavaScript:&lt;volání&gt;), které lze použít k odeslání zpět z události na straně klienta.                 |
+|  <strong>GetPostBackEventReference</strong>   |                                   Načte řetězec, který lze použít k zahájení příspěvku zpět od klienta.                                    |
+|      <strong>GetWebResourceUrl</strong>       | Vrátí adresu URL prostředku, který je vložen do sestavení. Musí se používat ve spojení s <strong>RegisterClientScriptResource</strong>. |
+| <strong>RegisterClientScriptResource</strong> |     Zaregistruje webový prostředek se stránkou. Jedná se o prostředky vložené v sestavení a zpracovávané pomocí nové obslužné rutiny WebResource. axd.      |
 |     <strong>RegisterHiddenField</strong>      |                                                 Zaregistruje skryté pole formuláře se stránkou.                                                 |
-|  <strong>RegisterOnSubmitStatement</strong>   |                                  Zaregistruje kód na straně klienta, který se spustí, když se odešle formulář HTML.                                   |
+|  <strong>RegisterOnSubmitStatement</strong>   |                                  Registruje kód na straně klienta, který se spustí při odeslání formuláře HTML.                                   |

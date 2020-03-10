@@ -1,123 +1,123 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-3-add-form-validation-vb
-title: 'Iterace #3 – Přidání ověřovacího formuláře (VB) | Dokumentace Microsoftu'
+title: 'Iterace #3 – Přidání ověření formuláře (VB) | Microsoft Docs'
 author: microsoft
-description: Ve třetí iterace přidáme ověření základní formulář. Můžeme zabránit neoprávněným osobám v odeslání formuláře bez dokončení vyžadovaná pole formuláře. Můžeme také ověřit emai...
+description: Třetí iterace přidá základní ověřování formuláře. Uživatelům bráníme v odesílání formuláře bez nutnosti vyplnit požadovaná pole formuláře. Ověřujeme také emai...
 ms.author: riande
 ms.date: 02/20/2009
 ms.assetid: 4805e75a-7911-46e3-b11b-229a6eed245e
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-3-add-form-validation-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 73b307f53875abe84b592c75b1ff614ffd9d8b82
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65123986"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78544448"
 ---
-# <a name="iteration-3--add-form-validation-vb"></a>Iterace #3 – Přidání ověřovacího formuláře (VB)
+# <a name="iteration-3--add-form-validation-vb"></a>Iterace #3 – Přidání ověření formuláře (VB)
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
 [Stáhnout kód](iteration-3-add-form-validation-vb/_static/contactmanager_3_vb1.zip)
 
-> Ve třetí iterace přidáme ověření základní formulář. Můžeme zabránit neoprávněným osobám v odeslání formuláře bez dokončení vyžadovaná pole formuláře. Také ověření e-mailových adres a telefonních čísel.
+> Třetí iterace přidá základní ověřování formuláře. Uživatelům bráníme v odesílání formuláře bez nutnosti vyplnit požadovaná pole formuláře. Ověřujeme taky e-mailové adresy a telefonní čísla.
 
-## <a name="building-a-contact-management-aspnet-mvc-application-vb"></a>Vytvoření aplikace pro správu kontaktů ASP.NET MVC (VB)
+## <a name="building-a-contact-management-aspnet-mvc-application-vb"></a>Sestavování aplikace MVC pro správu kontaktů ASP.NET (VB)
 
-V této sérii kurzů jsme integrovali celou aplikaci kontakt správy od začátku na dokončení. Obraťte se na správce aplikace umožňuje ukládat kontaktní údaje - jména, telefonní čísla a e-mailové adresy – seznam lidí.
+V této sérii kurzů sestavíme celou aplikaci pro správu kontaktů od začátku do konce. Aplikace Správce kontaktů umožňuje ukládat kontaktní údaje – jména, telefonní čísla a e-mailové adresy – seznam lidí.
 
-Vytváříme aplikaci přes více iterací. S každou iterací zvyšujeme postupně aplikace. Cílem tohoto přístupu s více iterace je vám pomohl pochopit důvod pro každou změnu.
+Aplikaci sestavíme přes několik iterací. U každé iterace doporučujeme aplikaci postupně vylepšit. Cílem tohoto vícenásobného přístupu k iteraci je umožnit pochopení příčiny každé změny.
 
-- Iterace #1 – Vytvoření aplikace. V první iteraci vytvoříme Správce kontaktů v Nejjednodušším způsobem, jak je to možné. Přidáváme podporu pro základní databázových operací: Vytvoření, čtení, aktualizace a odstranění (CRUD).
+- Iterace #1 – Vytvoření aplikace V první iteraci vytvoříme nejjednodušším způsobem správce kontaktů. Přidáváme podporu základních databázových operací: vytváření, čtení, aktualizace a odstraňování (CRUD).
 
-- Ujistěte se, iterace #2 – vylepšení vzhledu aplikace. V této iterace můžeme zlepšit vzhled aplikace tak, že změna výchozích hlavní stránka zobrazení ASP.NET MVC a stylů CSS.
+- Iterace #2 – nastaví vzhled aplikace jako příjemné. V této iteraci Vylepšete vzhled aplikace úpravou výchozí stránky předlohy zobrazení ASP.NET MVC a šablony kaskádových stylů.
 
-- Iterace #3 – Přidání ověřovacího formuláře. Ve třetí iterace přidáme ověření základní formulář. Můžeme zabránit neoprávněným osobám v odeslání formuláře bez dokončení vyžadovaná pole formuláře. Také ověření e-mailových adres a telefonních čísel.
+- Iterace #3 – Přidání ověření formuláře. Třetí iterace přidá základní ověřování formuláře. Uživatelům bráníme v odesílání formuláře bez nutnosti vyplnit požadovaná pole formuláře. Ověřujeme taky e-mailové adresy a telefonní čísla.
 
-- Iterace #4 – vytvoření volně spárované aplikace. V této iterace čtvrtý můžeme využít několik způsobů návrhu v softwaru k bylo snazší spravovat a upravovat aplikace Správce kontaktů. Například Refaktorovat jsme naši aplikaci pomocí vzoru úložiště a vzor vkládání závislostí.
+- Iterace #4 – zajistěte, aby byla aplikace volně spojená. V této čtvrté iteraci využijeme několik vzorů návrhu softwaru, které usnadňují údržbu a úpravy aplikace Správce kontaktů. Například refaktorujte naši aplikaci, aby používala vzor úložiště a vzor vkládání závislostí.
 
-- Iterace #5 – vytvoření testů jednotek. V páté iteraci jsme snadněji naší aplikace spravovat a upravovat tak, že přidáte testy jednotek. Jsme napodobení našich tříd datových modelů a vytváření testů jednotek pro naše řadiče a logiku ověřování.
+- Iterace #5 – vytvoření testů jednotek. V páté iteraci aplikace usnadňuje údržbu a úpravy přidáním jednotkových testů. Pro naše řadiče a logiku ověřování jsme nastavili třídy datového modelu a testy jednotek.
 
-- Iterace #6 – použití vývoje řízeného testováním. V této iterace šestého přidáme nové funkce do naší aplikace tak, že nejprve zápis testů jednotek a psaní kódu pro testování částí. V této iterace můžeme přidat skupiny kontaktů.
+- Iterace #6 – použití vývoje řízeného testem. V této šesté iteraci přidáme do naší aplikace nové funkce, a to tak, že nejprve zapíšeme testy jednotek a napíšeme kód na testy jednotek. V této iteraci přidáváme skupiny kontaktů.
 
-- Iterace #7 – přidání funkcí Ajax. V sedmé iteraci můžeme zlepšit rychlost reakce a výkon naší aplikace tak, že přidáte podporu pro Ajax.
+- Iterace #7 – přidání funkce AJAX V sedmé iteraci vylepšit rychlost reakce a výkon naší aplikace přidáním podpory pro AJAX.
 
-## <a name="this-iteration"></a>Tuto iteraci
+## <a name="this-iteration"></a>Tato iterace
 
-V této druhé iterace kontaktujte správce aplikace přidáme ověření základní formulář. Můžeme zabránit neoprávněným osobám v odesílání kontaktu bez zadání hodnoty povinných polí formuláře. Také ověření telefonní čísla a e-mailové adresy (viz obrázek 1).
+V této druhé iteraci aplikace Správce kontaktů přidáme základní ověřování formuláře. Uživatelům bráníme v odesílání kontaktu bez nutnosti zadávat hodnoty pro požadovaná pole formuláře. Také Ověřujeme telefonní čísla a e-mailové adresy (viz obrázek 1).
 
-[![Dialogové okno Nový projekt](iteration-3-add-form-validation-vb/_static/image1.jpg)](iteration-3-add-form-validation-vb/_static/image1.png)
+[![dialogového okna Nový projekt](iteration-3-add-form-validation-vb/_static/image1.jpg)](iteration-3-add-form-validation-vb/_static/image1.png)
 
-**Obrázek 01**: Formulář s ověřováním ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-3-add-form-validation-vb/_static/image2.png))
+**Obrázek 01**: formulář s ověřením ([kliknutím zobrazíte obrázek v plné velikosti](iteration-3-add-form-validation-vb/_static/image2.png))
 
-V této iterace přidáme ověřovací logiku přímo na akce kontroleru. Obecně toto není doporučený postup pro přidání ověřování do aplikace ASP.NET MVC. Lepším řešením je umístit logiku ověřování s aplikací v samostatném [vrstva služby](http://martinfowler.com/eaaCatalog/serviceLayer.html). V další iteraci jsme Refaktorovat kontaktujte správce aplikace provádět jednodušší údržbu aplikace.
+V této iteraci přidáme logiku ověřování přímo k akcím kontroleru. Obecně to není doporučený způsob, jak přidat ověřování do aplikace ASP.NET MVC. Lepším přístupem je umístit logiku ověřování aplikace v samostatné [vrstvě služby](http://martinfowler.com/eaaCatalog/serviceLayer.html). V další iteraci refaktorujte aplikaci Správce kontaktů, aby se aplikace udržovala lépe.
 
-V této iterace abychom si to nekomplikovali, jsme psát veškerý kód pro ověření ručně. Místo psaní kódu ověření sami, může využíváme rozhraní ověřování. Například můžete použít Microsoft Enterprise Library ověření aplikace blok (VAB) pro implementace logiky ověření pro vaši aplikaci ASP.NET MVC. Další informace o ověření Application Block, naleznete v tématu:
+V této iteraci, aby bylo možné něco jednoduchého, zapíšeme ručně kód pro ověření. Namísto psaní ověřovacího kódu dodržovali můžeme využít rozhraní ověřování. Například můžete použít blok aplikace Microsoft Enterprise Library Validation (VAB) k implementaci logiky ověření pro aplikaci ASP.NET MVC. Další informace o bloku aplikace ověřování najdete v těchto tématech:
 
 [*http://msdn.microsoft.com/library/dd203099.aspx*](https://msdn.microsoft.com/library/dd203099.aspx)
 
-## <a name="adding-validation-to-the-create-view"></a>Přidání ověření do zobrazení pro vytváření
+## <a name="adding-validation-to-the-create-view"></a>Přidání ověření do zobrazení pro vytvoření
 
-Umožní s Začněte přidáním logiku ověřování k zobrazení pro vytváření. Naštěstí protože jsme vygenerován pomocí sady Visual Studio zobrazení pro vytváření, zobrazení pro vytváření již obsahuje veškerou logiku potřebné uživatelské rozhraní pro zobrazení ověřovacích zpráv. Zobrazení pro vytváření je součástí výpis 1.
+Nechte začít tím, že do zobrazení pro vytváření přidáte logiku ověřování. Naštěstí, protože jsme vygenerovali zobrazení pro vytvoření pomocí sady Visual Studio, zobrazení vytvořit již obsahuje veškerou nezbytnou logiku uživatelského rozhraní pro zobrazení ověřovacích zpráv. Zobrazení vytvořit je obsaženo v seznamu 1.
 
-**Listing 1 - \Views\Contact\Create.aspx**
+**Výpis 1 – \Views\Contact\Create.aspx**
 
 [!code-aspx[Main](iteration-3-add-form-validation-vb/samples/sample1.aspx)]
 
-Chyba ověření pole Třída se používá k úpravě stylu výstupu vykreslen metodou Html.ValidationMessage() helper. Chyba ověření vstupu třída se používá k formátování textového pole (vstup) vykreslen metodou Html.TextBox() helper. Chyby ověření souhrn třída se používá k úpravě stylu neuspořádaný seznam vykreslen metodou Html.ValidationSummary() helper.
+Třída pole-ověření – chyba se používá k vytvoření stylu výstupu vygenerovaného pomocníkem HTML. ValidationMessage (). Třída Input-Validation-Error se používá k vytvoření stylu textového pole (vstupu) vykresleného pomocníkem HTML. TextBox (). Třída ověření-Summary-Errors slouží k vytvoření stylu neuspořádaného seznamu vykresleného pomocníkem HTML. ovládací souhrnu ověření ().
 
 > [!NOTE] 
 > 
-> Můžete upravit třídy List stylu popsané v této části pro přizpůsobení vzhledu chybových zpráv ověření.
+> Můžete upravit třídy šablon stylů popsané v této části, chcete-li přizpůsobit vzhled chybových zpráv ověřování.
 
-## <a name="adding-validation-logic-to-the-create-action"></a>Přidat logiku ověřování k vytvoření akce
+## <a name="adding-validation-logic-to-the-create-action"></a>Přidání logiky ověřování do akce vytvořit
 
-V tuto chvíli, zobrazení pro vytváření nikdy nezobrazí chybových zpráv ověření, protože jsme nenapsali logiku pro generování všechny zprávy. Aby bylo možné zobrazit chybových zpráv ověření, budete muset přidat chybové zprávy ModelState.
+V současné době se zobrazení vytvořit nezobrazí chybové zprávy ověřování, protože jsme nenapsali logiku pro vygenerování všech zpráv. Aby bylo možné zobrazit chybové zprávy ověřování, je nutné přidat chybové zprávy do ModelState.
 
 > [!NOTE] 
 > 
-> Metoda UpdateModel() přidá chybové zprávy do ModelState automaticky při dojde k chybám přiřazení hodnoty pole formuláře na vlastnost. Například pokud se pokusíte přiřadit řetězec "apple" datum narození vlastnost, která přijímá hodnoty data a času, pak metoda UpdateModel() přidá chybu do ModelState.
+> Metoda UpdateModel () přidává do ModelState automaticky chybové zprávy, když při přiřazování hodnoty pole formuláře k vlastnosti dojde k chybě. Například pokud se pokusíte přiřadit řetězec "Apple" k vlastnosti DatumNarození, která přijímá hodnoty DateTime, metoda UpdateModel () přidá chybu ModelState.
 
-Upravená Metoda Create() výpis 2 obsahuje nový oddíl, který ověřuje vlastnosti třídy kontakt před nový kontakt se vloží do databáze.
+Upravená metoda Create () v seznamu 2 obsahuje novou část, která ověřuje vlastnosti třídy kontaktů před tím, než se nový kontakt vloží do databáze.
 
-**Výpis 2 - Controllers\ContactController.vb (vytvoření s ověřováním)**
+**Výpis 2-Controllers\ContactController.vb (vytvoření s ověřením)**
 
 [!code-vb[Main](iteration-3-add-form-validation-vb/samples/sample2.vb)]
 
-V části ověření vynucuje čtyř různých ověřovacích pravidel:
+Oddíl Validate vynutil čtyři odlišná ověřovací pravidla:
 
-- Vlastnost FirstName musí mít délku větší než nula (a nemůže skládat pouze z mezer)
-- Větší než nula. délka musí být vlastnost LastName (a nemůže skládat pouze z mezer)
-- Pokud má hodnotu vlastnosti telefonu (má délku větší než 0) a vlastnost telefon musí odpovídat regulárnímu výrazu.
-- Pokud vlastnost e-mailu obsahuje hodnotu (má délku větší než 0) a vlastnost e-mailu musí odpovídat regulárnímu výrazu.
+- Vlastnost FirstName musí mít délku větší než nula (a nemůže se skládat pouze z mezer).
+- Vlastnost LastName musí mít délku větší než nula (a nesmí se skládat pouze z mezer).
+- Pokud má vlastnost Phone hodnotu (má délku větší než 0), musí vlastnost Phone odpovídat regulárnímu výrazu.
+- Pokud má vlastnost email hodnotu (má délku větší než 0), musí vlastnost email odpovídat regulárnímu výrazu.
 
-Po porušení pravidla ověřování je přidána chybová zpráva na ModelState pomocí metody AddModelError(). Při přidání zprávy do ModelState zadáte název vlastnosti a text chybovou zprávu ověření. Tato chybová zpráva se zobrazí v zobrazení Html.ValidationSummary() a Html.ValidationMessage() pomocné metody.
+Pokud dojde k porušení ověřovacího pravidla, do ModelState se přidá chybová zpráva s metodou AddModelError (). Když do ModelState přidáte zprávu, zadáte název vlastnosti a text chybové zprávy ověřování. Tato chybová zpráva se zobrazí v zobrazení pomocí pomocných metod HTML. ovládací souhrnu ověření () a HTML. ValidationMessage ().
 
-Po provedení ověřovacích pravidel, je vlastnost IsValid ModelState zaškrtnuto. Vlastnost IsValid vrátí hodnotu false, pokud byly přidány do ModelState všech chybových zpráv ověření. Pokud se ověření nezdaří, se zobrazí formulář vytvořit znovu s chybovými zprávami.
+Po spuštění ověřovacích pravidel je zaškrtnuta vlastnost IsValid třídy ModelState. Vlastnost IsValid vrátí hodnotu false, pokud byly do ModelState přidány jakékoli chybové zprávy ověřování. Pokud se ověření nepovede, formulář pro vytvoření se znovu zobrazí s chybovými zprávami.
 
 > [!NOTE] 
 > 
-> Zobrazilo se mi regulárních výrazů pro ověření telefonní číslo a e-mailová adresa z úložiště regulárních výrazů v [*http://regexlib.com*](http://regexlib.com)
+> Mám regulární výrazy pro ověření telefonního čísla a e-mailové adresy z úložiště regulárních výrazů na [ *http://regexlib.com* ](http://regexlib.com)
 
-## <a name="adding-validation-logic-to-the-edit-action"></a>Přidat logiku ověřování k akci Upravit
+## <a name="adding-validation-logic-to-the-edit-action"></a>Přidání logiky ověřování do akce upravit
 
-Akce Edit() aktualizuje kontakt. Akce Edit() musí provádět stejné ověřování jako Create() akce. Namísto duplikování stejný kód pro ověření, jsme měli Refaktorovat kontaktujte řadič tak, aby akce Create() i Edit() volání stejné metody ověřování.
+Akce upravit () aktualizuje kontakt. Akce Edit () musí provést přesně stejné ověření jako akce Create (). Místo duplikace stejného ověřovacího kódu by měl být kontroler kontaktů Refaktorovat, aby akce Create () a Edit () volaly stejnou metodu ověřování.
 
-Upravené třídy kontroleru kontakt je obsažen v informacích 3. Tato třída obsahuje novou ValidateContact() metodu, která je volána v rámci Create() i Edit() akcí.
+Upravená třída správce kontaktů je obsažena v seznamu 3. Tato třída má novou metodu ValidateContact (), která je volána v rámci akcí Create () a Edit ().
 
-**Výpis 3 - Controllers\ContactController.vb**
+**Výpis 3 – Controllers\ContactController.vb**
 
 [!code-vb[Main](iteration-3-add-form-validation-vb/samples/sample3.vb)]
 
 ## <a name="summary"></a>Souhrn
 
-V této iterace jsme přidali základní formulář ověření naší aplikace Správce kontaktů. Naše logiku ověřování zabraňuje uživatelům odeslání nového kontaktu nebo úpravy stávajících kontaktu bez zadání hodnoty pro vlastnosti FirstName a LastName. Dále uživatelé musí zadat platné telefonní čísla a e-mailové adresy.
+V této iteraci jsme přidali základní ověřování formuláře do naší aplikace Správce kontaktů. Naše logika ověřování brání uživatelům v odesílání nového kontaktu nebo úpravě existujícího kontaktu bez zadání hodnot pro vlastnosti FirstName a LastName. Kromě toho musí uživatelé zadávat platná telefonní čísla a e-mailové adresy.
 
-V této iterace jsme přidali logiku ověřování k naší aplikace Správce kontaktů v nejjednodušší způsob, jak je to možné. Ale kombinování naše logiku ověřování do našich logice kontroleru vytvoří problémy nám v dlouhodobém horizontu. Naše aplikace bude obtížnější spravovat a upravovat v čase.
+V této iteraci jsme do naší aplikace Správce kontaktů přidali logiku ověřování nejjednodušším způsobem. Kombinování logiky ověřování do naší logiky kontroleru ale v dlouhodobém období vytvoří problémy. Naše aplikace bude obtížnější se udržovat a upravit v průběhu času.
 
-V další iteraci jsme se naše řadiče pro Refaktorovat náš logiku ověřování a logiky přístupu k databázi. Provedeme výhod několika Principy návrhu softwaru umožňují vytvořit více volně a snadněji spravovatelné aplikace.
+V další iteraci budeme Refaktorovat naši logiku ověřování a logiku přístupu k databázi z našich řadičů. Pomůžeme vám využít několik principů návrhu softwaru, které nám umožní vytvořit více volně vázaných a udržovatelných aplikací.
 
 > [!div class="step-by-step"]
 > [Předchozí](iteration-2-make-the-application-look-nice-vb.md)
-> [další](iteration-4-make-the-application-loosely-coupled-vb.md)
+> [Další](iteration-4-make-the-application-loosely-coupled-vb.md)

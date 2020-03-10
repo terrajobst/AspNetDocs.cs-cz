@@ -1,61 +1,61 @@
 ---
 uid: aspnet/overview/owin-and-katana/host-owin-in-an-azure-worker-role
-title: Hostování OWIN v roli pracovního procesu Azure | Dokumentace Microsoftu
+title: Hostování OWIN v roli pracovního procesu Azure | Microsoft Docs
 author: MikeWasson
-description: Tento kurz ukazuje, jak k samoobslužnému hostování OWIN v roli pracovního procesu Microsoft Azure. Open Web Interface pro .NET (OWIN) definuje abstrakce mezi .NET webový server...
+description: V tomto kurzu se dozvíte, jak můžete OWIN sebe samostatně hostovat do role pracovního procesu Microsoft Azure. Open Web Interface for .NET (OWIN) definuje abstrakci mezi webovým serverem .NET...
 ms.author: riande
 ms.date: 04/11/2014
 ms.assetid: 07aa855a-92ee-4d43-ba66-5bfd7de20ee6
 msc.legacyurl: /aspnet/overview/owin-and-katana/host-owin-in-an-azure-worker-role
 msc.type: authoredcontent
 ms.openlocfilehash: 59d2e0d549427093f8a2424b17af81169b78ef30
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65118263"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78584614"
 ---
 # <a name="host-owin-in-an-azure-worker-role"></a>Hostování specifikace OWIN v rolích pracovního procesu v Azure
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-> Tento kurz ukazuje, jak k samoobslužnému hostování OWIN v roli pracovního procesu Microsoft Azure.
+> V tomto kurzu se dozvíte, jak můžete OWIN sebe samostatně hostovat do role pracovního procesu Microsoft Azure.
 >
-> [Otevřete Web Interface pro .NET](http://owin.org/) (OWIN) definuje abstrakce mezi .NET webové servery a webové aplikace. Webové aplikace ze serveru, který je ideální pro webové aplikace ve vašem vlastním procesu mimo službu IIS s vlastním hostováním OWIN OWIN odděluje obě části – například v roli pracovního procesu systému Azure.
+> [Open Web Interface for .NET](http://owin.org/) (Owin) definuje abstrakci mezi webovými servery .NET a webovými aplikacemi. OWIN odpojí webovou aplikaci od serveru, což OWIN je ideální pro samoobslužné hostování webové aplikace ve vlastním procesu mimo službu IIS – například v rámci role pracovního procesu Azure.
 >
-> V tomto kurzu se dozvíte, jak hostování na vlastním serveru aplikací OWIN v roli pracovního procesu Microsoft Azure. Další informace o rolích pracovního procesu najdete v tématu [spouštění modelů Azure](https://azure.microsoft.com/documentation/articles/fundamentals-application-models/#CloudServices).
+> V tomto kurzu se naučíte, jak sami hostovat aplikace OWIN v rámci role pracovního procesu Microsoft Azure. Další informace o rolích pracovního procesu najdete v tématu [modely spouštění Azure](https://azure.microsoft.com/documentation/articles/fundamentals-application-models/#CloudServices).
 >
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 >
 >
 > - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
-> - [Sada Azure SDK for .NET 2.3](https://azure.microsoft.com/downloads/)
-> - [Microsoft.Owin.Selfhost 2.1.0](http://www.nuget.org/packages/Microsoft.Owin.SelfHost/2.1.0)
+> - [Sada Azure SDK pro .NET 2,3](https://azure.microsoft.com/downloads/)
+> - [Microsoft. Owin. SelfHost 2.1.0](http://www.nuget.org/packages/Microsoft.Owin.SelfHost/2.1.0)
 
-## <a name="create-a-microsoft-azure-project"></a>Vytvořte projekt Microsoft Azure
+## <a name="create-a-microsoft-azure-project"></a>Vytvoření projektu Microsoft Azure
 
-Spusťte Visual Studio s oprávněními správce. Oprávnění správce jsou potřebné k ladění aplikace v místním prostředí, pomocí emulátoru služby výpočty v Azure.
+Spusťte aplikaci Visual Studio s oprávněními správce. K místnímu ladění aplikace pomocí emulátoru služby COMPUTE Azure jsou nutná oprávnění správce.
 
-Na **souboru** nabídky, klikněte na tlačítko **nový**, pak klikněte na tlačítko **projektu**. Z **nainstalované šablony**, v části Visual C#, klikněte na tlačítko **cloudu** a potom klikněte na tlačítko **Windows Azure Cloud Service**. Pojmenujte projekt "AzureApp" a klikněte na tlačítko **OK**.
+V nabídce **soubor** klikněte na příkaz **Nový**a potom na **projekt**. Z **nainstalovaných šablon**v části C#vizuál klikněte na **Cloud** a pak klikněte na **cloudová služba Windows Azure**. Pojmenujte projekt "soubor azureapp" a klikněte na tlačítko **OK**.
 
 [![](host-owin-in-an-azure-worker-role/_static/image2.png)](host-owin-in-an-azure-worker-role/_static/image1.png)
 
-V **nová Cloudová služba Windows Azure** dialogového okna, dvakrát klikněte na panel **Role pracovního procesu**. Ponechte výchozí název ("WorkerRole1"). Tento krok přidává role pracovního procesu k řešení. Klikněte na **OK**.
+V dialogovém okně **Nová cloudová služba Microsoft Azure** poklikejte na **role pracovního procesu**. Ponechte výchozí název ("WorkerRole1"). Tento krok přidá do řešení pracovní roli. Klikněte na tlačítko **OK**.
 
 [![](host-owin-in-an-azure-worker-role/_static/image4.png)](host-owin-in-an-azure-worker-role/_static/image3.png)
 
-Řešení sady Visual Studio, který je vytvořen obsahuje dva projekty:
+Vytvořené řešení sady Visual Studio obsahuje dva projekty:
 
-- &quot;AzureApp&quot; definuje role a konfigurace pro aplikace Azure.
-- &quot;WorkerRole1&quot; obsahuje kód pro roli pracovního procesu.
+- &quot;soubor azureapp&quot; definuje role a konfiguraci pro aplikaci Azure.
+- &quot;WorkerRole1&quot; obsahuje kód role pracovního procesu.
 
-Obecně platí aplikace Azure může obsahovat více rolí, i když tento kurz používá jednu roli.
+Obecně platí, že aplikace Azure může obsahovat více rolí, i když tento kurz používá jedinou roli.
 
 ![](host-owin-in-an-azure-worker-role/_static/image5.png)
 
-## <a name="add-the-owin-self-host-packages"></a>Přidání balíčků samoobslužné hostování OWIN
+## <a name="add-the-owin-self-host-packages"></a>Přidání balíčků pro samoobslužné hostování OWIN
 
-Z **nástroje** nabídky, klepněte na **Správce balíčků NuGet**, klepněte na **konzoly Správce balíčků**.
+V nabídce **nástroje** klikněte na **Správce balíčků NuGet**a pak klikněte na **Konzola správce balíčků**.
 
 V okně konzoly Správce balíčků zadejte následující příkaz:
 
@@ -63,27 +63,27 @@ V okně konzoly Správce balíčků zadejte následující příkaz:
 
 ## <a name="add-an-http-endpoint"></a>Přidat koncový bod HTTP
 
-V Průzkumníku řešení rozbalte projekt AzureApp. Rozbalte uzel role, klikněte pravým tlačítkem na WorkerRole1 a vyberte **vlastnosti**.
+V Průzkumník řešení rozbalte projekt soubor azureapp. Rozbalte uzel role, klikněte pravým tlačítkem na WorkerRole1 a vyberte **vlastnosti**.
 
 ![](host-owin-in-an-azure-worker-role/_static/image6.png)
 
-Klikněte na tlačítko **koncové body**a potom klikněte na tlačítko **přidat koncový bod**.
+Klikněte na **koncové body**a pak klikněte na **přidat koncový bod**.
 
-V **protokol** rozevíracího seznamu vyberte možnost "http". V **veřejný Port** a **privátní Port**, zadejte 80. Tato čísla portů se mohou lišit. Veřejný port je, co klienti používat při odesílání požadavku do role.
+V rozevíracím seznamu **protokol** vyberte http. Do **veřejného portu** a **privátního portu**zadejte 80. Tato čísla portů se mohou lišit. Veřejný port je používán klienty při odesílání žádosti do role.
 
 [![](host-owin-in-an-azure-worker-role/_static/image8.png)](host-owin-in-an-azure-worker-role/_static/image7.png)
 
 ## <a name="create-the-owin-startup-class"></a>Vytvoření třídy pro spuštění OWIN
 
-V Průzkumníku řešení klikněte pravým tlačítkem myši klikněte na WorkerRole1 projekt a vyberte **přidat** / **třídy** přidání nové třídy. Název třídy `Startup`.
+V Průzkumník řešení klikněte pravým tlačítkem na projekt WorkerRole1 a výběrem **přidat** / **třídu** přidejte novou třídu. Pojmenujte `Startup`třídy.
 
-Nahraďte všechny často používaný kód následujícím kódem:
+Celý často používaný kód nahraďte následujícím kódem:
 
 [!code-csharp[Main](host-owin-in-an-azure-worker-role/samples/sample2.cs)]
 
-`UseWelcomePage` – Metoda rozšíření přidá jednoduché stránky HTML pro vaši aplikaci, ověřte funkčnost lokality.
+Metoda rozšíření `UseWelcomePage` přidá do aplikace jednoduchou stránku HTML, aby bylo možné ověřit, zda lokalita funguje.
 
-## <a name="start-the-owin-host"></a>Spuštění hostitele OWIN
+## <a name="start-the-owin-host"></a>Spustit hostitele OWIN
 
 Otevřete soubor WorkerRole.cs. Tato třída definuje kód, který se spustí při spuštění a zastavení role pracovního procesu.
 
@@ -91,61 +91,61 @@ Přidejte následující příkaz using:
 
 [!code-csharp[Main](host-owin-in-an-azure-worker-role/samples/sample3.cs)]
 
-Přidat **IDisposable** člena `WorkerRole` třídy:
+Přidejte člena **IDisposable** do třídy `WorkerRole`:
 
 [!code-csharp[Main](host-owin-in-an-azure-worker-role/samples/sample4.cs)]
 
-V `OnStart` metodu, přidejte následující kód pro spuštění hostitele:
+Do `OnStart` metody přidejte následující kód pro spuštění hostitele:
 
 [!code-csharp[Main](host-owin-in-an-azure-worker-role/samples/sample5.cs?highlight=5)]
 
-**WebApp.Start** metoda spustí hostitele OWIN. Název `Startup` třídy je parametr typu metody. Podle konvence, bude volat hostitele `Configure` metody této třídy.
+Metoda **WebApp. Start** SPUSTÍ hostitele Owin. Název třídy `Startup` je parametr typu metody. Podle konvence hostitel zavolá metodu `Configure` této třídy.
 
-Přepsat `OnStop` a neprovede  *\_aplikace* instance:
+Přepište `OnStop` k Dispose instance *\_aplikace* :
 
 [!code-csharp[Main](host-owin-in-an-azure-worker-role/samples/sample6.cs)]
 
-Tady je kompletní kód WorkerRole.cs:
+Zde je kompletní kód pro WorkerRole.cs:
 
 [!code-csharp[Main](host-owin-in-an-azure-worker-role/samples/sample7.cs)]
 
-Sestavte řešení a stisknutím klávesy F5 spusťte aplikaci místně v emulátoru Azure Compute. V závislosti na nastavení brány firewall potřebujete povolit emulátor přes bránu firewall.
+Sestavte řešení a stisknutím klávesy F5 spusťte aplikaci místně v emulátoru služby COMPUTE Azure. V závislosti na nastavení brány firewall možná budete muset emulátor zapnout přes bránu firewall.
 
-Emulátor služby výpočty místní IP adresa přiřadí ke koncovému bodu. IP adresu můžete najít zobrazením Uživatelském prostředí emulátoru výpočtů. Klikněte pravým tlačítkem na hlavním panelu oznamovací oblasti ikonu emulátoru a vyberte **zobrazit Uživatelském prostředí emulátoru výpočtů**.
+Emulátor služby COMPUTE přiřadí koncovému bodu místní IP adresu. IP adresu najdete v uživatelském rozhraní emulátoru Compute. Klikněte pravým tlačítkem myši na ikonu emulátoru v oznamovací oblasti na hlavním panelu a vyberte **Zobrazit uživatelské rozhraní emulátoru COMPUTE**.
 
 [![](host-owin-in-an-azure-worker-role/_static/image10.png)](host-owin-in-an-azure-worker-role/_static/image9.png)
 
-Zjistit IP adresu v rámci nasazení služeb, nasazení [id], podrobnosti o službě. Otevřete webový prohlížeč a přejděte do protokolu http:\/\/*adresu*, kde *adresu* je IP adresa přidělí emulátor služby výpočty; například `http://127.0.0.1:80`. Zobrazí se úvodní stránka OWIN:
+Vyhledejte IP adresu v části nasazení služeb, nasazení [ID], Podrobnosti služby. Otevřete webový prohlížeč a přejděte na adresu http:\/\/*adresa*, kde *adresa* je IP adresa přiřazená emulátorem COMPUTE; například `http://127.0.0.1:80`. Měla by se zobrazit úvodní stránka OWIN:
 
 ![](host-owin-in-an-azure-worker-role/_static/image11.png)
 
 ## <a name="deploy-to-azure"></a>Nasazení do Azure
 
-Pro tento krok musí mít účet Azure. Pokud již nemáte, můžete během několika minut vytvořit Bezplatný zkušební účet. Podrobnosti najdete v tématu [bezplatná zkušební verze Microsoft Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+Pro tento krok musíte mít účet Azure. Pokud ho ještě nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Microsoft Azure bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
 
-V Průzkumníku řešení klikněte pravým tlačítkem na projekt AzureApp. Vyberte **Publikovat**.
+V Průzkumník řešení klikněte pravým tlačítkem myši na projekt soubor azureapp. Vyberte **Publikovat**.
 
 ![](host-owin-in-an-azure-worker-role/_static/image12.png)
 
-Pokud nejste přihlášení k účtu Azure, klikněte na tlačítko **Sign In**.
+Pokud nejste přihlášení ke svému účtu Azure, klikněte na **Přihlásit**se.
 
 [![](host-owin-in-an-azure-worker-role/_static/image14.png)](host-owin-in-an-azure-worker-role/_static/image13.png)
 
-Když jste přihlášeni, zvolte předplatné a klikněte na **Další**.
+Po přihlášení vyberte předplatné a klikněte na **Další**.
 
 [![](host-owin-in-an-azure-worker-role/_static/image16.png)](host-owin-in-an-azure-worker-role/_static/image15.png)
 
-Zadejte název pro cloudovou službu a zvolte oblast. Klikněte na možnost **Vytvořit**.
+Zadejte název cloudové služby a vyberte oblast. Klikněte na možnost **Vytvořit**.
 
 ![](host-owin-in-an-azure-worker-role/_static/image17.png)
 
-Klikněte na tlačítko **publikovat**.
+Klikněte na **Publikovat**.
 
 [![](host-owin-in-an-azure-worker-role/_static/image19.png)](host-owin-in-an-azure-worker-role/_static/image18.png)
 
-Okno Protokol aktivit Azure zobrazuje průběh nasazení. Když je aplikace nasazena, přejdete k `http://appname.cloudapp.net/`, kde *appname* je název vaší cloudové služby.
+V okně Protokol aktivit Azure se zobrazuje průběh nasazení. Po nasazení aplikace přejděte na adresu `http://appname.cloudapp.net/`, kde *AppName* je název vaší cloudové služby.
 
 ## <a name="additional-resources"></a>Další prostředky
 
 - [Přehled projektu Katana](an-overview-of-project-katana.md)
-- [Katana projektu na Githubu](https://github.com/aspnet/AspNetKatana/)
+- [Projekt Katana na GitHubu](https://github.com/aspnet/AspNetKatana/)

@@ -9,11 +9,11 @@ ms.assetid: c3c76516-4c48-4153-bd03-d70e3a3edbb0
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12
 msc.type: authoredcontent
 ms.openlocfilehash: 56ceabc79947967846d342354fd033510be5f05a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74625556"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78568115"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>Nasazení webové aplikace v ASP.NET pomocí SQL Server Compact sady Visual Studio nebo Visual Web Developer: nasazení SQL Server Compact databází – 2 z 12
 
@@ -73,11 +73,11 @@ Sestavte projekt a potom v **Průzkumník řešení** klikněte na **Zobrazit v�
 
 Rozbalte složku **bin** a zobrazte složky **amd64** a **x86** a potom vyberte tyto složky, klikněte pravým tlačítkem myši a vyberte možnost **zahrnout do projektu**.
 
-![amd64_and_x86_in_Solution_Explorer. png](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image2.png)
+![amd64_and_x86_in_Solution_Explorer.png](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image2.png)
 
 Ikony složky se změní, aby se zobrazilo, že složka byla obsažena v projektu.
 
-![Solution_Explorer_amd64_included. png](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image3.png)
+![Solution_Explorer_amd64_included.png](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image3.png)
 
 ## <a name="configuring-code-first-migrations-for-application-database-deployment"></a>Konfigurace Migrace Code First pro nasazení aplikační databáze
 
@@ -108,7 +108,7 @@ Dále povolte Migrace Code First.
 
 Prvním krokem je ujistit se, že projekt ContosoUniversity je nastaven jako spouštěný projekt. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt ContosoUniversity a vyberte **nastavit jako spouštěný projekt**. Migrace Code First se podívá na spouštěný projekt, aby se našel připojovací řetězec databáze.
 
-V nabídce **nástroje** klikněte na **Správce balíčků NuGet** a pak na **Konzola správce balíčků**.
+V nabídce **Nástroje** klikněte na **Správce balíčků NuGet** a pak na **Konzola Správce balíčků**.
 
 ![Selecting_Package_Manager_Console](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image6.png)
 
@@ -159,7 +159,7 @@ Migrace Code First vytvoří další soubor třídy ve složce *migrations* a ta
 
 V **konzole správce balíčků**zadejte příkaz "Update-Database" a vytvořte databázi a spusťte metodu **počáteční** hodnoty.
 
-![aktualizace – database_command](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image12.png)
+![update-database_command](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image12.png)
 
 (Pokud se zobrazí chyba, která indikuje, že tabulka již existuje a nelze ji vytvořit, je pravděpodobné, že jste aplikaci spustili po odstranění databáze a před provedením `update-database`. V takovém případě znovu odstraňte soubor *School. sdf* a opakujte příkaz `update-database`.)
 
@@ -192,7 +192,7 @@ V **Průzkumník řešení**přejmenujte soubor *ASPNET. sdf* ve složce *App\_d
 
 V **Průzkumník řešení**se ujistěte, že je vybraný webový projekt (ContosoUniversity, ne CONTOSOUNIVERSITY. dal). Pak v nabídce **projekt** vyberte **Konfigurace ASP.NET** a spusťte **Nástroj pro správu**webu (Wat).
 
-Vyberte kartu **zabezpečení** .
+Vyberte kartu **Zabezpečení**.
 
 [![WAT_Security_tab](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image20.png)](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image19.png)
 
@@ -206,7 +206,7 @@ Přejděte zpět na kartu **zabezpečení** , klikněte na tlačítko **vytvoři
 
 Zavřete prohlížeč. V **Průzkumník řešení**kliknutím na tlačítko Aktualizovat zobrazte nový soubor *ASPNET. sdf* .
 
-![New_aspnet. sdf_in_Solution_Explorer](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image25.png)
+![New_aspnet.sdf_in_Solution_Explorer](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image25.png)
 
 Klikněte pravým tlačítkem na **ASPNET. sdf** a vyberte **zahrnout do projektu**.
 
@@ -216,7 +216,7 @@ V této části přejmenujete databáze tak, aby byly vývojové verze School-De
 
 V **Průzkumník řešení**klikněte na **aktualizovat** a rozbalte složku data\_App, abyste viděli školní databázi, kterou jste vytvořili dříve. klikněte na něj pravým tlačítkem myši a vyberte možnost **zahrnout do projektu**.
 
-![Including_School. sdf_in_project](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image26.png)
+![Including_School.sdf_in_project](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image26.png)
 
 Přejmenujte *ASPNET. sdf* na *ASPNET-prod. sdf*.
 

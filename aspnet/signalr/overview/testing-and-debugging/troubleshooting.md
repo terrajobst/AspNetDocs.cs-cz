@@ -1,363 +1,363 @@
 ---
 uid: signalr/overview/testing-and-debugging/troubleshooting
-title: Řešení potíží s knihovnou SignalR | Dokumentace Microsoftu
+title: Řešení potíží s nástrojem Signal | Microsoft Docs
 author: bradygaster
-description: Tento článek popisuje běžné problémy s vývojem aplikací SignalR.
+description: Tento článek popisuje běžné problémy s vývojem aplikací pro signalizaci.
 ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: 4b559e6c-4fb0-4a04-9812-45cf08ae5779
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
 ms.openlocfilehash: bcd273d839aed64ad2712eb503dd1942a2d4e355
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113479"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78578825"
 ---
 # <a name="signalr-troubleshooting"></a>Řešení potíží s knihovnou SignalR
 
-podle [Patrick Fletcher](https://github.com/pfletcher)
+Po [Fletcheru](https://github.com/pfletcher)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> Tento dokument popisuje řešení běžných problémů s knihovnou SignalR.
+> Tento dokument popisuje běžné problémy s odstraňováním potíží s nástrojem Signal.
 >
-> ## <a name="software-versions-used-in-this-topic"></a>Verze softwaru použitým v tomto tématu
+> ## <a name="software-versions-used-in-this-topic"></a>Verze softwaru používané v tomto tématu
 >
 >
 > - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
-> - Funkce SignalR verze 2
+> - Signal – verze 2
 >
 >
 >
-> ## <a name="previous-versions-of-this-topic"></a>Předchozích verzích tohoto tématu
+> ## <a name="previous-versions-of-this-topic"></a>Předchozí verze tohoto tématu
 >
-> Informace o předchozích verzích systému SignalR naleznete v tématu [starší verze funkce SignalR](../older-versions/index.md).
+> Informace o dřívějších verzích nástroje Signal najdete v části [Signal – starší verze](../older-versions/index.md).
 >
-> ## <a name="questions-and-comments"></a>Otázky a komentáře
+> ## <a name="questions-and-comments"></a>Dotazy a komentáře
 >
-> Napište prosím zpětnou vazbu o tom, jak vám líbilo v tomto kurzu a co můžeme zlepšit v komentářích v dolní části stránky. Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
+> Přečtěte si prosím svůj názor na to, jak se vám tento kurz líbí a co bychom mohli vylepšit v komentářích v dolní části stránky. Pokud máte dotazy, které přímo nesouvisejí s kurzem, můžete je publikovat do [fóra signálu ASP.NET](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
 
-Tento dokument obsahuje následující části.
+Tento dokument obsahuje následující oddíly.
 
-- [Volání metod mezi klientem a serverem bez upozornění selže](#connection)
-- [Konfigurace služby IIS websockets na příkaz ping/pong ke zjištění dead klienta](#pong)
+- [Volající metody mezi klientem a serverem selžou](#connection)
+- [Konfigurace websocketů služby IIS pro detekci nedoručeného klienta pomocí příkazů pong](#pong)
 - [Další problémy s připojením](#other)
-- [Chyby kompilace a na straně serveru](#server)
-- [Problémy v sadě Visual Studio](#vs)
-- [Internetová informační služba problémy](#iis)
+- [Kompilace a chyby na straně serveru](#server)
+- [Problémy se sady Visual Studio](#vs)
+- [Problémy s Internetová informační služba](#iis)
 - [Problémy s Microsoft Azure](#azure)
 
 <a id="connection"></a>
 
-## <a name="calling-methods-between-the-client-and-server-silently-fails"></a>Volání metod mezi klientem a serverem bez upozornění selže
+## <a name="calling-methods-between-the-client-and-server-silently-fails"></a>Volající metody mezi klientem a serverem selžou
 
-Tato část popisuje možné příčiny pro volání metody mezi klientem a serverem smysluplné chybovou zprávu v případě selhání. V případě aplikace SignalR server nemá žádné informace o metody, které klient implementuje; Když server volá metodu klienta, metoda název a parametru data se odesílají do klienta a metoda provádí pouze v případě, že existuje ve formátu, který je zadaný server. Pokud je nenašla žádná odpovídající metoda na straně klienta, nic se nestane, a je vyvolána žádná chybová zpráva na serveru.
+Tato část popisuje možné příčiny selhání volání metody mezi klientem a serverem bez smysluplné chybové zprávy. V aplikaci signalizace nemá server žádné informace o metodách, které klient implementuje; Když server vyvolá metodu klienta, je do klienta zaslána data názvu metody a parametru a metoda je provedena pouze v případě, že existuje ve formátu, který je zadán serverem. Pokud se v klientovi nenajde žádná vyhovující metoda, nic se nestane a na serveru se nevyvolá žádná chybová zpráva.
 
-Aby to prověřili aplikace volá metody klienta, můžete zapnout protokolování před voláním metody start na IOT hub a zobrazit jaké volání pocházejí ze serveru. Povolit protokolování aplikace v jazyce JavaScript, najdete v článku [jak povolit protokolování na straně klienta (verze jazyka JavaScript klienta)](../guide-to-the-api/hubs-api-guide-javascript-client.md#logging). Povolení protokolování v klientské aplikaci .NET, naleznete v tématu [jak povolit protokolování na straně klienta (verze .NET klienta)](../guide-to-the-api/hubs-api-guide-net-client.md#logging).
+Chcete-li dále prozkoumat klientské metody, které nejsou volány, můžete zapnout protokolování před voláním metody Start na rozbočovači, aby bylo možné zjistit, jaká volání pocházejí ze serveru. Chcete-li povolit protokolování v aplikaci JavaScriptu, přečtěte si téma [Jak povolit protokolování na straně klienta (verze klienta JavaScript)](../guide-to-the-api/hubs-api-guide-javascript-client.md#logging). Chcete-li povolit protokolování v klientské aplikaci .NET, přečtěte si téma [Jak povolit protokolování na straně klienta (verze klienta rozhraní .NET)](../guide-to-the-api/hubs-api-guide-net-client.md#logging).
 
-### <a name="misspelled-method-incorrect-method-signature-or-incorrect-hub-name"></a>Chybně napsaná metody, podpis metody nesprávné nebo název nesprávné centra
+### <a name="misspelled-method-incorrect-method-signature-or-incorrect-hub-name"></a>Nesprávně napsaná metoda, nesprávný podpis metody nebo nesprávný název centra
 
-Pokud název nebo podpis metody volané metody přesně neshoduje s odpovídající metody na straně klienta, volání se nezdaří. Ověřte, jestli název metody, který volá server odpovídá názvu metody na straně klienta. Navíc SignalR vytvoří proxy server rozbočovače-ve formátu camelCase metody, jako je vhodné v jazyce JavaScript, tedy volána metoda `SendMessage` na serveru by byla volána `sendMessage` v klientovi proxy. Pokud používáte `HubName` atribut v kódu na straně serveru, zkontrolujte, zda název, pomocí kterého odpovídá název používaný k vytvoření rozbočovače na straně klienta. Pokud použijete `HubName` atribut, ověřte, zda je název rozbočovače v klientovi JavaScript – ve formátu camelCase, jako je například chatHub místo ChatHub.
+Pokud se název nebo signatura volané metody přesně neshoduje s odpovídající metodou na klientovi, volání se nezdaří. Ověřte, že název metody, který je volán serverem, odpovídá názvu metody v klientovi. Také signál vytvoří rozbočovač proxy pomocí metod ve stylu CamelCase-použita, jak je to vhodné v JavaScriptu, takže metoda nazvaná `SendMessage` na serveru by se volala `sendMessage` na klientském proxy serveru. Použijete-li v kódu na straně serveru atribut `HubName`, ověřte, zda se používá název, který se shoduje s názvem použitým k vytvoření centra na klientovi. Pokud nepoužijete atribut `HubName`, ověřte, zda je název centra v jazyce JavaScript ve stylu CamelCase-použita, jako je například chatHub namísto ChatHub.
 
-### <a name="duplicate-method-name-on-client"></a>Duplicitní název metody v klientovi
+### <a name="duplicate-method-name-on-client"></a>Duplicitní název metody na klientovi
 
-Ověřte, že nemáte duplicitní metoda na straně klienta, který se liší pouze velikostí písma. Pokud vaše klientská aplikace má metodu nazvanou `sendMessage`, ověřte, že není k dispozici také metodu nazvanou `SendMessage` také.
+Ověřte, že v klientovi nemáte duplicitní metodu, která se liší pouze velikostí písmen. Pokud má vaše klientská aplikace metodu nazvanou `sendMessage`, ověřte také, že není k dispozici také metoda s názvem `SendMessage`.
 
-### <a name="missing-json-parser-on-the-client"></a>Chybějící analyzátor JSON na straně klienta
+### <a name="missing-json-parser-on-the-client"></a>Na klientovi chybí analyzátor JSON.
 
-Funkce SignalR vyžaduje JSON analyzátor, aby byly k serializaci volání mezi serverem a klientem. Pokud váš klient nemá vestavěné analyzátor JSON (jako je například Internet Explorer 7), budete muset jeden ve vaší aplikaci. Můžete si stáhnout analyzátor JSON [tady](http://nuget.org/packages/json2).
+Návěstí vyžaduje, aby byl k dispozici analyzátor JSON pro serializaci volání mezi serverem a klientem. Pokud váš klient nemá integrovaný analyzátor JSON (například Internet Explorer 7), budete ho muset zahrnout do aplikace. Analyzátor JSON si můžete stáhnout [tady](http://nuget.org/packages/json2).
 
-### <a name="mixing-hub-and-persistentconnection-syntax"></a>Kombinování centra a PersistentConnection syntaxe
+### <a name="mixing-hub-and-persistentconnection-syntax"></a>Kombinace centra a PersistentConnection syntaxe
 
-Funkce SignalR používá dva modely komunikace: Rozbočovače a PersistentConnections. Syntaxe pro volání těchto dvou komunikačních modelů se liší v kódu klienta. Pokud jste přidali rozbočovač v serverovém kódu, ověřte, že veškerý kód klienta používá syntaxi správné centra.
+Nástroj Signal používá dva komunikační modely: centra a PersistentConnections. Syntaxe pro volání těchto dvou modelů komunikace je odlišná v kódu klienta. Pokud jste do svého serverového kódu přidali centrum, ověřte, že veškerý kód klienta používá správnou syntaxi centra.
 
-**JavaScript klientský kód, který vytvoří PersistentConnection v javascriptový klient**
+**JavaScriptový kód klienta, který vytvoří PersistentConnection v klientovi JavaScriptu**
 
 [!code-javascript[Main](troubleshooting/samples/sample1.js)]
 
-**Klientský kód jazyka JavaScript, který vytvoří proxy server rozbočovače v klientovi Javascript**
+**JavaScriptový kód klienta, který vytvoří rozbočovač proxy v klientovi JavaScriptu**
 
 [!code-javascript[Main](troubleshooting/samples/sample2.js)]
 
-**Kód jazyka C# serveru, který se mapuje PersistentConnection trasy**
+**C#kód serveru, který mapuje trasu na PersistentConnection**
 
 [!code-csharp[Main](troubleshooting/samples/sample3.cs)]
 
-**C#kód serveru, která mapuje trasu k rozbočovači nebo několika centrech, pokud máte více aplikací**
+**C#serverový kód, který mapuje trasu na rozbočovač nebo na více Center v případě, že máte více aplikací**
 
 [!code-css[Main](troubleshooting/samples/sample4.css)]
 
-### <a name="connection-started-before-subscriptions-are-added"></a>Připojení, které jsou spuštěny před předplatná se přidají
+### <a name="connection-started-before-subscriptions-are-added"></a>Připojení začalo před přidáním předplatných.
 
-Pokud připojení rozbočovače pro spuštění před metody, které lze volat ze serveru se přidají k proxy serveru, nebude přijímat zprávy. Následující kód jazyka JavaScript se nespustí centra správně:
+Pokud se připojení k rozbočovači spustí před tím, než se do proxy serveru přidají metody, které je možné volat ze serveru, nebudou se přijímat zprávy. Následující kód jazyka JavaScript nebude správně spustit centrum:
 
-**Nesprávné klientský kód jazyka JavaScript, který neumožní mohlo přijímat zprávy rozbočovače**
+**Nesprávný kód klienta JavaScriptu, který nepovoluje příjem zpráv centra**
 
 [!code-javascript[Main](troubleshooting/samples/sample5.js)]
 
-Místo toho přidáte předplatná metoda před voláním spuštění:
+Místo toho přidejte předplatná metody před voláním Start:
 
-**Klientský kód jazyka JavaScript, který správně přidá předplatných pro Centrum**
+**Kód klienta JavaScriptu, který správně přidá odběry do centra**
 
 [!code-javascript[Main](troubleshooting/samples/sample6.js)]
 
-### <a name="missing-method-name-on-the-hub-proxy"></a>Chybí název metody na proxy server rozbočovače
+### <a name="missing-method-name-on-the-hub-proxy"></a>Chybí název metody na proxy hub.
 
-Ověřte, že je metoda, definována na serveru na straně klienta přihlášen k odběru. I když server definuje metodu, musí pořád přidané k proxy serveru klienta. Metody mohou být přidány do proxy serveru klienta takto (Všimněte si, že metoda je přidána do `client` člen centra centra není přímo):
+Ověřte, zda je metoda definovaná na serveru přihlášena k odběru klienta. I když Server definuje metodu, musí být stále přidaný do klientského proxy serveru. Metody lze do proxy serveru klienta přidat následujícími způsoby (Všimněte si, že metoda je přidána do `client`ho člena centra, nikoli přímo do centra):
 
-**Klientský kód jazyka JavaScript, který přidá metody proxy server rozbočovače**
+**JavaScriptový kód klienta, který přidává metody do proxy serveru hub**
 
 [!code-javascript[Main](troubleshooting/samples/sample7.js)]
 
-### <a name="hub-or-hub-methods-not-declared-as-public"></a>Rozbočovač nebo není deklarovaný jako Public metod rozbočovače
+### <a name="hub-or-hub-methods-not-declared-as-public"></a>Metody centra nebo centra nejsou deklarované jako veřejné.
 
-Uvidí na straně klienta, musí být deklarována implementace rozbočovače a metody jako `public`.
+Aby bylo možné v klientovi zobrazit, musí být implementace a metody centra deklarovány jako `public`.
 
 ### <a name="accessing-hub-from-a-different-application"></a>Přístup k centru z jiné aplikace
 
-Rozbočovače SignalR je přístupný pouze prostřednictvím aplikací, které implementují klienti SignalR. SignalR nemůže spolupracovat s ostatními knihovnami komunikace (jako je protokol SOAP nebo webových služeb WCF.) Pokud není k dispozici pro cílovou platformu žádné klienta SignalR, nelze přímý přístup koncového bodu serveru.
+K centrům signálu se dá dostat jenom prostřednictvím aplikací, které implementují klienty signalizace. Signál nemůže spolupracovat s jinými komunikačními knihovnami (jako jsou webové služby SOAP nebo WCF). Pokud není pro vaši cílovou platformu k dispozici žádný klient signalizace, nebudete moct přímo získat přístup ke koncovému bodu serveru.
 
-### <a name="manually-serializing-data"></a>Ruční serializaci dat
+### <a name="manually-serializing-data"></a>Ruční serializace dat
 
-Funkce SignalR automaticky použije JSON k serializaci metodu parametry neexistuje není potřeba provést sami.
+Signál k serializaci parametrů metody automaticky použije kód JSON – nemusíte to dělat sami.
 
-### <a name="remote-hub-method-not-executed-on-client-in-ondisconnected-function"></a>Vzdálené metody rozbočovače na klientovi ve funkci ondisconnected rozbočovače nebyly provedeny
+### <a name="remote-hub-method-not-executed-on-client-in-ondisconnected-function"></a>Metoda vzdáleného rozbočovače se neprovádí u klienta v operaci odpojení.
 
-Toto chování je záměrné. Když `OnDisconnected` je volání rozbočovače již přešla `Disconnected` stavu, což nepovoluje další metod rozbočovače, která se má volat.
+Toto chování je záměrné. Když je volána `OnDisconnected`, centrum již zadalo `Disconnected` stav, který neumožňuje volání dalších metod centra.
 
-**Kód jazyka C# serveru, který správně spustí kód v případě ondisconnected rozbočovače**
+**C#kód serveru, který správně spustí kód v události odpojení**
 
 [!code-csharp[Main](troubleshooting/samples/sample8.cs)]
 
-### <a name="ondisconnect-not-firing-at-consistent-times"></a>OnDisconnect nespustí v čase konzistentní vzhledem k aplikacím
+### <a name="ondisconnect-not-firing-at-consistent-times"></a>Odpojení se nevyvolává v konzistentních časech.
 
-Toto chování je záměrné. Když se uživatel pokusí na stránku s aktivní připojení SignalR opustit, klientovi SignalR provede pokus best effort oznámit serveru, připojení klienta bude zastavena. Pokud je klientovi SignalR best effort nezdaří pokus o přístup k serveru, server bude vyřadit připojení po konfigurovat `DisconnectTimeout` později, po kterém `OnDisconnected` událost se aktivuje. Pokud je klientovi SignalR best effort je pokus úspěšný, `OnDisconnected` událost se aktivuje okamžitě.
+Toto chování je záměrné. Když se uživatel pokusí přejít pryč ze stránky s aktivním připojením ke službě Signaler, pak klient nástroje Signal provede pokus o přihlášení k serveru, že se připojení klienta zastaví. Pokud se pokusy klienta signalizace nedostanou k serveru, vyřadí se připojení po konfigurovatelné `DisconnectTimeout` později, kdy se událost `OnDisconnected` aktivuje. Pokud je pokus o dosažení osvědčené síly klienta signalizace úspěšný, událost `OnDisconnected` okamžitě spustí.
 
-Informace o nastavení `DisconnectTimeout` nastavení, najdete v článku [zpracování událostí doby platnosti: DisconnectTimeout](../guide-to-the-api/handling-connection-lifetime-events.md#disconnecttimeout).
+Informace o nastavení `DisconnectTimeout` nastavení najdete v tématu [zpracování událostí životního cyklu připojení: hodnota DisconnectTimeout](../guide-to-the-api/handling-connection-lifetime-events.md#disconnecttimeout).
 
-### <a name="connection-limit-reached"></a>Dosáhlo se limitu připojení
+### <a name="connection-limit-reached"></a>Byl dosažen limit připojení
 
-Při použití plnou verzi služby IIS na operačním systému klienta, jako je Windows 7, je nastaveno z důvodu omezení 10 připojení. Pokud používáte klientský operační systém, použijte službu IIS Express, aby tento limit.
+Při použití plné verze služby IIS na klientském operačním systému, jako je Windows 7, se zavede limit 10 připojení. Pokud používáte klientský operační systém, použijte místo toho IIS Express k tomu, abyste se vyhnuli tomuto omezení.
 
-### <a name="cross-domain-connection-not-set-up-properly"></a>Připojení mezi doménami nejsou nastaveny správně
+### <a name="cross-domain-connection-not-set-up-properly"></a>Připojení mezi doménami není správně nastavené.
 
-Pokud připojení mezi doménami není správně nastaven (připojení, pro kterou SignalR adresa URL není ve stejné doméně jako stránka hostingu), může připojení selhat a chybová zpráva. Informace o tom, jak povolit komunikaci mezi doménami, najdete v části [jak k navázání připojení mezi doménami](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain).
+Pokud připojení mezi doménami (připojení, pro které není adresa URL signalizace ve stejné doméně jako hostující stránka), není nastavené správně, připojení může selhat bez chybové zprávy. Informace o tom, jak povolit mezidoménovou komunikaci, najdete v tématu [jak vytvořit připojení mezi doménami](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain).
 
-### <a name="connection-using-ntlm-active-directory-not-working-in-net-client"></a>Připojení pomocí protokolu NTLM (Active Directory) nebudou fungovat v rozhraní .NET klienta
+### <a name="connection-using-ntlm-active-directory-not-working-in-net-client"></a>Připojení pomocí protokolu NTLM (Active Directory) nefunguje v klientu .NET.
 
-Připojení v klientské aplikaci .NET, který používá zabezpečení domény může selhat, pokud připojení není správně nakonfigurována. V prostředí domény používat SignalR, nastavte vlastnost požadavku připojení následujícím způsobem:
+Připojení v klientské aplikaci .NET, které používá zabezpečení domény, může selhat, pokud připojení není správně nakonfigurováno. Chcete-li použít signalizaci v prostředí domény, nastavte požadovanou vlastnost připojení následujícím způsobem:
 
-**Kód jazyka C# klienta, který implementuje přihlašovací údaje pro připojení**
+**C#kód klienta, který implementuje přihlašovací údaje pro připojení**
 
 [!code-csharp[Main](troubleshooting/samples/sample9.cs)]
 
 <a id="pong"></a>
 
-## <a name="configuring-iis-websockets-to-pingpong-to-detect-a-dead-client"></a>Konfigurace služby IIS websockets na příkaz ping/pong ke zjištění dead klienta
+## <a name="configuring-iis-websockets-to-pingpong-to-detect-a-dead-client"></a>Konfigurace websocketů služby IIS pro detekci nedoručeného klienta pomocí příkazů pong
 
-Servery SignalR neví, pokud je klient dead nebo není a spoléhají na oznámení z podkladové protokolu websocket pro chyby připojení, to znamená, `OnClose` zpětného volání. Jedním řešením tohoto problému je ke konfiguraci služby IIS websockets provést příkaz ping/pong za vás. Tím se zajistí, že vaše připojení se zavře, pokud to naruší neočekávaně. Další informace najdete v části [tento příspěvek na stackoverflow](http://stackoverflow.com/questions/19502755/websocket-clients-state-not-changing-on-network-loss).
+Servery signalizace nevědí, jestli je klient neaktivní, nebo ne a spoléhají na oznámení z podkladového WebSocket pro chyby připojení, to znamená `OnClose` zpětné volání. Jedním z řešení tohoto problému je konfigurace websocketů služby IIS, které vám umožní testovat pomocí testu pong. Tím se zajistí, že se připojení zavře, pokud se neočekávaně ukončí. Další informace najdete v [tomto příspěvku StackOverflow](http://stackoverflow.com/questions/19502755/websocket-clients-state-not-changing-on-network-loss).
 
 <a id="other"></a>
 
 ## <a name="other-connection-issues"></a>Další problémy s připojením
 
-Tato část popisuje příčiny a řešení určitými příznaky nebo chybové zprávy, ke kterým dochází při připojení.
+Tato část popisuje příčiny a řešení konkrétních symptomů a chybových zpráv, ke kterým dojde během připojení.
 
-### <a name="start-must-be-called-before-data-can-be-sent-error"></a>Chyba "Start musí být volána před odesláním dat"
+### <a name="start-must-be-called-before-data-can-be-sent-error"></a>Chyba "spuštění musí být voláno před odesláním dat".
 
-Tato chyba obvykle nastává Pokud kód odkazuje na objekty SignalR předtím, než je zahájeno připojení. Wireup pro obslužné rutiny a podobně, že volání metody definované na serveru musí být přidá po dokončení připojení. Všimněte si, že volání `Start` je asynchronní, takže kód následující po volání může být spuštěna dříve, než se dokončí. Nejlepší způsob, jak přidat obslužné rutiny po spuštění připojení zcela je umístíte do zpětného volání funkce, která se předá jako parametr metodě start:
+K této chybě obvykle dochází, pokud kód odkazuje na objekty signálu před spuštěním připojení. Wireup pro obslužné rutiny a podobně jako volání metod definovaných na serveru se musí přidat po dokončení připojení. Všimněte si, že volání `Start` je asynchronní, takže kód po volání může být proveden před jeho dokončením. Nejlepším způsobem, jak přidat obslužné rutiny po úplném spuštění připojení, je umístit je do funkce zpětného volání, která je předána jako parametr metodě start:
 
-**Klientský kód jazyka JavaScript, který správně přidá obslužné rutiny událostí, které odkazují na objekty SignalR**
+**JavaScriptový kód klienta, který správně přidává obslužné rutiny událostí, které odkazují na objekty signálu**
 
 [!code-javascript[Main](troubleshooting/samples/sample10.js?highlight=1)]
 
-Tato chyba se zobrazí také v případě připojení přestane při SignalR objekty stále odkazuje.
+Tato chyba se zobrazí také v případě, že se připojení zastaví, zatímco jsou pořád odkazovány na objekty signálů.
 
-### <a name="301-moved-permanently-or-302-moved-temporarily-error"></a>"Trvale přesunuto 301" nebo "302 přesunout dočasně" Chyba
+### <a name="301-moved-permanently-or-302-moved-temporarily-error"></a>Chyba "301 přesunutí trvalá" nebo "302 přesunuta"
 
-Tato chyba může zobrazit, pokud projekt obsahuje složku s názvem SignalR, která bude v konfliktu s proxy automaticky vytvoří. K této chybě předejít, nepoužívejte složku s názvem `SignalR` v aplikaci, nebo vypnout automatické proxy generování vypnout. Zobrazit [The generované Proxy a co to dělá za vás](../guide-to-the-api/hubs-api-guide-javascript-client.md#genproxy) další podrobnosti.
+Tato chyba se může zobrazit, pokud projekt obsahuje složku s názvem Signal, která bude v konfliktu s automaticky vytvořeným proxy serverem. Chcete-li se této chybě vyhnout, nepoužívejte ve své aplikaci složku s názvem `SignalR` nebo vypněte automatické generování proxy. Další podrobnosti najdete u [vygenerovaného proxy serveru a o tom, co vám dělá](../guide-to-the-api/hubs-api-guide-javascript-client.md#genproxy) .
 
-### <a name="403-forbidden-error-in-net-or-silverlight-client"></a>Chyba "403 Zakázáno" v .NET nebo Silverlight klientu
+### <a name="403-forbidden-error-in-net-or-silverlight-client"></a>Chyba "403 zakázáno" v klientovi .NET nebo Silverlight
 
-K této chybě může dojít v prostředí napříč doménami, kde komunikace mezi doménami není povolené vhodným způsobem. Informace o tom, jak povolit komunikaci mezi doménami, najdete v části [jak k navázání připojení mezi doménami](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain). K navázání připojení mezi doménami v klienta programu Silverlight, naleznete v tématu [připojení mezi doménami z klienty prostředí Silverlight](../guide-to-the-api/hubs-api-guide-net-client.md#slcrossdomain).
+K této chybě může dojít v prostředích mezi doménami, kde není správně povolená komunikace mezi doménami. Informace o tom, jak povolit mezidoménovou komunikaci, najdete v tématu [jak vytvořit připojení mezi doménami](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain). Chcete-li vytvořit připojení mezi doménami v klientovi Silverlight, Projděte si téma [připojení mezi doménami od klientů programu Silverlight](../guide-to-the-api/hubs-api-guide-net-client.md#slcrossdomain).
 
-### <a name="404-not-found-error"></a>Chyba "404 nebyl nalezen."
+### <a name="404-not-found-error"></a>Chyba "404 nenalezen"
 
-Existuje několik důvodů, proč tento problém. Ověřte všechny z následujících akcí:
+Tento problém má několik příčin. Ověřte všechny tyto skutečnosti:
 
-- **Odkaz adresy proxy server rozbočovače není správně naformátované:** Tato chyba obvykle nastává Pokud odkaz na generovaný centra adresa proxy serveru není správně naformátovaná. Ověřte, že odkaz na adresu centra správně vytvořen. Zobrazit [způsob vytvoření odkazu dynamicky generované proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy) podrobnosti.
-- **Přidání tras pro aplikaci před přidáním trasu rozbočovače:** Pokud vaše aplikace používá jiné trasy, ověřte, zda je první trasa přidaná volání `MapSignalR`.
-- **Pomocí služby IIS 7 a 7.5 bez aktualizace pro adresy URL bez přípony:** Pomocí služby IIS 7 a 7.5 vyžaduje aktualizace pro adresy URL bez přípony, tak, aby server může poskytnout přístup k definici rozbočovače na `/signalr/hubs`. Aktualizaci můžete najít [tady](https://support.microsoft.com/kb/980368).
-- **Mezipaměť služby IIS je zastaralé nebo poškozený:** Pokud chcete ověřit, že obsah mezipaměti nejsou aktuální, zadejte následující příkaz v okně Powershellu a vymažte mezipaměť:
+- **Odkaz na adresu proxy serveru centra není správně naformátován:** K této chybě obvykle dochází v případě, že odkaz na vygenerovanou adresu proxy serveru není správně naformátován. Ověřte, zda je odkaz na adresu centra správně vytvořen. Podrobnosti najdete v tématu [postup odkazování dynamicky vygenerovaného proxy serveru](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy) .
+- **Přidávání tras do aplikace před přidáním trasy centra:** Pokud vaše aplikace používá jiné trasy, ověřte, zda je první přidaná trasa voláním `MapSignalR`.
+- **Použití IIS 7 nebo 7,5 bez aktualizace pro rozšiřující adresy URL:** Použití IIS 7 nebo 7,5 vyžaduje aktualizaci pro adresy URL bez přípony, aby server mohl poskytovat přístup k definicím centra na `/signalr/hubs`. Aktualizaci najdete [tady](https://support.microsoft.com/kb/980368).
+- **Mezipaměť služby IIS je neaktuální nebo je poškozená:** Pokud chcete ověřit, že obsah mezipaměti není aktuální, zadejte následující příkaz v okně PowerShellu a vymažte mezipaměť:
 
     [!code-powershell[Main](troubleshooting/samples/sample11.ps1)]
 
-### <a name="500-internal-server-error"></a>"Chyba 500 interní Server"
+### <a name="500-internal-server-error"></a>"500 interní chyba serveru"
 
-To je velmi obecná chyba, která by mohla mít nejrůznější příčiny. Podrobnosti o chybě by se měla zobrazit v protokolu událostí serveru, nebo můžete najít pomocí ladění serveru. Když zapnete podrobné chyby na serveru může získat podrobnější informace o chybě. Další informace najdete v tématu [zpracování chyb ve třídě centra](../guide-to-the-api/hubs-api-guide-server.md#handleErrors).
+Toto je velmi obecná chyba, která může mít nejrůznější příčiny. Podrobnosti o chybě by se měly zobrazit v protokolu událostí serveru, nebo se dají najít prostřednictvím ladění serveru. Podrobnější informace o chybách lze získat zapnutím podrobných chyb na serveru. Další informace najdete v tématu [jak zpracovávat chyby ve třídě centra](../guide-to-the-api/hubs-api-guide-server.md#handleErrors).
 
-K této chybě také běžně dochází, pokud brána firewall nebo proxy serveru není správně nakonfigurována, způsobí hlavičky požadavku, aby se povolilo. Řešení se ujistěte se, že port 80 je zapnuta brána firewall nebo proxy serveru.
+Tato chyba se taky často zobrazuje, pokud není správně nakonfigurovaná brána firewall nebo proxy server, což způsobuje přepis hlaviček požadavku. Řešením je ověřit, jestli je na bráně firewall nebo proxy serveru povolený port 80.
 
-### <a name="unexpected-response-code-500"></a>"Neočekávaný kód: 500"
+### <a name="unexpected-response-code-500"></a>"Neočekávaný kód odpovědi: 500"
 
-K této chybě může dojít, pokud verze rozhraní .NET framework používaných v aplikaci se neshoduje verze zadaná v souboru Web.Config. Toto řešení je k ověření, že v nastavení aplikace a souboru Web.Config se používá rozhraní .NET 4.5.
+K této chybě může dojít, pokud verze rozhraní .NET Framework použitá v aplikaci neodpovídá verzi zadané v souboru Web. config. Řešením je ověřit, že se .NET 4,5 používá jak v nastavení aplikace, tak v souboru Web. config.
 
-### <a name="typeerror-lthubtypegt-is-undefined-error"></a>"TypeError: &lt;hubType&gt; není definován" Chyba
+### <a name="typeerror-lthubtypegt-is-undefined-error"></a>"TypeError: &lt;hubType&gt; není definováno" Chyba
 
-K této chybě dojde, pokud volání `MapSignalR` není správně vytvořena. Zobrazit [postupem registrace SignalR Middleware a konfiguraci možností SignalR](../guide-to-the-api/hubs-api-guide-server.md#route) Další informace.
+Tato chyba bude mít za následek nesprávné provedení volání `MapSignalR`. Další informace najdete v tématu [jak registrovat middleware signálu a nakonfigurovat možnosti signalizace](../guide-to-the-api/hubs-api-guide-server.md#route) .
 
-### <a name="jsonserializationexception-was-unhandled-by-user-code"></a>JsonSerializationException nebyla ošetřena uživatelským kódem
+### <a name="jsonserializationexception-was-unhandled-by-user-code"></a>JsonSerializationException byl neošetřený uživatelským kódem.
 
-Ověřte, že parametry, které odesíláte do vaší metody neobsahují neserializovatelná typy (jako jsou popisovače souborů nebo připojení k databázi). Pokud je potřeba použít členy na objekt na straně serveru, který nechcete být zaslána klientovi (buď pro zabezpečení nebo z důvodu serializace), použijte `JSONIgnore` atribut.
+Ověřte, zda parametry, které odesíláte do vašich metod, neobsahují neserializovatelné typy (například popisovače souborů nebo připojení k databázi). Pokud potřebujete použít členy na objektu na straně serveru, který nechcete odesílat klientovi (buď z důvodu zabezpečení, nebo z důvodů serializace), použijte atribut `JSONIgnore`.
 
-### <a name="protocol-error-unknown-transport-error"></a>"Chyba protokolu: Došlo k chybě neznámého přenosu"
+### <a name="protocol-error-unknown-transport-error"></a>Chyba protokolu: Neznámá přenosová chyba
 
-K této chybě může dojít, pokud klient nepodporuje přenosy, které používá SignalR. Zobrazit [přenosy a náhrad](../getting-started/introduction-to-signalr.md#transports) informace, na kterém je možné prohlížeče s knihovnou SignalR.
+K této chybě může dojít, pokud klient nepodporuje přenos, který signál používá. Informace o tom, které prohlížeče se dají používat se signálem, najdete v tématu [přenosové a záložní](../getting-started/introduction-to-signalr.md#transports) verze.
 
-### <a name="javascript-hub-proxy-generation-has-been-disabled"></a>"Byl zakázán jazyk JavaScript rozbočovače proxy generation."
+### <a name="javascript-hub-proxy-generation-has-been-disabled"></a>"Generování proxy serveru centra JavaScript bylo zakázáno."
 
-Pokud dojde k této chybě `DisableJavaScriptProxies` nastavit zároveň zahrnuje také odkaz na dynamicky generované proxy serveru na `signalr/hubs`. Další informace o vytvoření proxy serveru ručně, najdete v části [vygenerovaný proxy server a co to dělá za vás](../guide-to-the-api/hubs-api-guide-javascript-client.md#genproxy).
+K této chybě dojde, pokud je nastavena `DisableJavaScriptProxies` a zároveň zahrnuje odkaz na dynamicky generovaný proxy server v `signalr/hubs`. Další informace o ručním vytvoření proxy serveru najdete v tématu [vygenerované proxy a k čemu](../guide-to-the-api/hubs-api-guide-javascript-client.md#genproxy).
 
-### <a name="the-connection-id-is-in-the-incorrect-format-or-the-user-identity-cannot-change-during-an-active-signalr-connection-error"></a>"ID připojení je v nesprávném formátu" nebo "identitu uživatele nelze změnit během aktivního připojení SignalR" Chyba
+### <a name="the-connection-id-is-in-the-incorrect-format-or-the-user-identity-cannot-change-during-an-active-signalr-connection-error"></a>"ID připojení má nesprávný formát" nebo "při aktivním připojení k signalizaci se nemůže změnit identita uživatele"
 
-Tato chyba může zobrazit, pokud se používá ověřování a klient je odhlášen před zastavením připojení. Řešení je zastavit před odhlášení klientovi připojení SignalR.
+Tato chyba se může zobrazit, pokud se používá ověřování a klient se odhlásí před zastavením připojení. Řešením je zastavit připojení k signalizaci před protokolováním klienta.
 
-### <a name="uncaught-error-signalr-jquery-not-found-please-ensure-jquery-is-referenced-before-the-signalrjs-file-error"></a>"Nezachycená Chyba: SignalR: jQuery nebyl nalezen. Ujistěte se prosím, že jQuery odkazuje souboru SignalR.js"Chyba
+### <a name="uncaught-error-signalr-jquery-not-found-please-ensure-jquery-is-referenced-before-the-signalrjs-file-error"></a>"Nezachycená Chyba: signál: jQuery nebyl nalezen. Ujistěte se prosím, že se na jQuery odkazuje před souborem Signal. js.
 
-Klient SignalR JavaScript vyžaduje jQuery ke spuštění. Ověřte, že vaši informaci, abyste jQuery je správný, cesta používá je platný a je odkaz na jQuery před referenční dokumentace ke knihovně SignalR.
+Klient pro signalizaci JavaScriptu vyžaduje, aby se spustilo jQuery. Ověřte, zda je odkaz na jQuery správný, zda použitá cesta je platná a zda odkaz na jQuery je před odkazem na signál.
 
-### <a name="uncaught-typeerror-cannot-read-property-ltpropertygt-of-undefined-error"></a>"Nezachycená TypeError: Nelze přečíst vlastnost '&lt;vlastnost&gt;"undefined" Chyba
+### <a name="uncaught-typeerror-cannot-read-property-ltpropertygt-of-undefined-error"></a>"Nezachycené TypeError: nejde načíst vlastnost&lt;vlastnost&gt;nedefinovaného".
 
-Tato chyba je výsledkem nemají jQuery nebo proxy server rozbočovače správně odkazuje. Ověřte, že vaši informaci, jQuery a proxy server rozbočovače je správný, platnost cesty použité a že je odkaz na jQuery před odkaz na proxy server rozbočovače. Výchozí odkaz na proxy server rozbočovače by měl vypadat nějak takto:
+Tato chyba je způsobena tím, že není správně odkazována na jQuery nebo na proxy centra. Ověřte, zda je váš odkaz na jQuery a proxy rozbočovačů správný, zda použitá cesta je platná a zda odkaz na jQuery je před odkazem na proxy centra. Výchozí odkaz na proxy centra by měl vypadat takto:
 
-**Kód na straně klienta HTML, která správně odkazuje na proxy server rozbočovače**
+**Kód HTML na straně klienta, který správně odkazuje na proxy centra**
 
 [!code-html[Main](troubleshooting/samples/sample12.html)]
 
-### <a name="runtimebinderexception-was-unhandled-by-user-code-error"></a>Chyba "RuntimeBinderException nebyla ošetřena uživatelským kódem"
+### <a name="runtimebinderexception-was-unhandled-by-user-code-error"></a>Chyba "RuntimeBinderException byl neošetřený uživatelským kódem"
 
-K této chybě může dojít při přetížení nesprávné `Hub.On` se používá. Pokud metoda nemá návratovou hodnotu, návratový typ musí být specifikovaný jako parametr obecného typu:
+K této chybě může dojít, pokud je použito nesprávné přetížení `Hub.On`. Pokud má metoda návratovou hodnotu, musí být návratový typ zadán jako parametr obecného typu:
 
-**Metody definované na straně klienta (bez vygenerovaný proxy server)**
+**Metoda definovaná na klientovi (bez vygenerovaného proxy serveru)**
 
 [!code-html[Main](troubleshooting/samples/sample13.html?highlight=1)]
 
-### <a name="connection-id-is-inconsistent-or-connection-breaks-between-page-loads"></a>ID připojení je nekonzistentní nebo přestane fungovat připojení mezi načtení stránky
+### <a name="connection-id-is-inconsistent-or-connection-breaks-between-page-loads"></a>ID připojení je nekonzistentní nebo se mezi načtenými stránkami narušuje přerušení připojení.
 
-Toto chování je záměrné. Vzhledem k tomu, že v objektu page je hostovaný objekt rozbočovače, centra je zničen při aktualizaci stránky. Více stránek aplikace potřebuje udržovat spojení mezi uživateli a ID připojení tak, aby byly konzistentní mezi načtení stránky. ID připojení mohou být uloženy na serveru buď `ConcurrentDictionary` objektu nebo databáze.
+Toto chování je záměrné. Vzhledem k tomu, že je objekt centra hostovaný v objektu stránky, je při aktualizaci stránky tento rozbočovač zničen. Vícestránkové aplikace musí udržovat přidružení mezi uživateli a identifikátory připojení, aby byly konzistentní mezi načítáním stránek. ID připojení mohou být uložena na serveru buď v objektu `ConcurrentDictionary`, nebo v databázi.
 
-### <a name="value-cannot-be-null-error"></a>"Hodnota nemůže být null" Chyba
+### <a name="value-cannot-be-null-error"></a>Chyba "hodnota nemůže mít hodnotu null"
 
-Metody na straně serveru s volitelnými parametry se aktuálně nepodporují; Pokud tento nepovinný parametr se vynechá, metoda se nezdaří. Další informace najdete v tématu [volitelné parametry](https://github.com/SignalR/SignalR/issues/324).
+Metody na straně serveru s nepovinnými parametry se v současné době nepodporují. Pokud je nepovinný parametr vynechán, metoda se nezdaří. Další informace najdete v tématu [volitelné parametry](https://github.com/SignalR/SignalR/issues/324).
 
-### <a name="firefox-cant-establish-a-connection-to-the-server-at-ltaddressgt-error-in-firebug"></a>"Firefox nemůže navázat připojení k serveru na &lt;adresu&gt;" chyby v Firebug
+### <a name="firefox-cant-establish-a-connection-to-the-server-at-ltaddressgt-error-in-firebug"></a>"Firefox nemůže navázat připojení k serveru na adrese &lt;adresa&gt;" Chyba v Firebug
 
-Tato chybová zpráva lze zobrazit v Firebug, pokud selže vyjednávání protokolu WebSocket přenosu a místo ní se použije jiný přenos. Toto chování je záměrné.
+Tato chybová zpráva se může zobrazit v Firebug v případě, že se vyjednávání protokolu WebSocket nezdaří a místo toho se použije další přenos. Toto chování je záměrné.
 
-### <a name="the-remote-certificate-is-invalid-according-to-the-validation-procedure-error-in-net-client-application"></a>Chyba "Vzdálený certifikát není platný podle ověřovací procedury" v klientské aplikaci rozhraní .NET
+### <a name="the-remote-certificate-is-invalid-according-to-the-validation-procedure-error-in-net-client-application"></a>"Vzdálený certifikát je neplatný podle ověřovací procedury" Chyba v klientské aplikaci .NET
 
-Pokud váš server vyžaduje vlastní klientské certifikáty, pak můžete přidat certifikátu x 509 připojení předtím, než se požadavek. Přidání certifikátu do připojení pomocí `Connection.AddClientCertificate`.
+Pokud váš server vyžaduje vlastní klientské certifikáty, můžete k připojení přidat certifikátu x509 před tím, než se žádost dovede. Přidejte certifikát k připojení pomocí `Connection.AddClientCertificate`.
 
-### <a name="connection-drops-after-authentication-times-out"></a>Zrušení připojení vyčkat, až se ověřování vyprší časový limit
+### <a name="connection-drops-after-authentication-times-out"></a>Po vypršení časového limitu připojení se uvolní.
 
-Toto chování je záměrné. Přihlašovací údaje pro ověření nelze změnit, když je připojení aktivní; Pokud chcete aktualizovat přihlašovací údaje, musí zastavit, restartovat připojení.
+Toto chování je záměrné. Přihlašovací údaje pro ověřování nelze upravovat, pokud je připojení aktivní; Chcete-li aktualizovat přihlašovací údaje, je nutné připojení zastavit a restartovat.
 
-### <a name="onconnected-gets-called-twice-when-using-jquery-mobile"></a>Onconnected rozbočovače volána dvakrát při použití jQuery Mobile
+### <a name="onconnected-gets-called-twice-when-using-jquery-mobile"></a>V případě, že se používá jQuery Mobile, se v připojení volá dvakrát.
 
-jQuery Mobile pro `initializePage` funkce vynutí skripty na každé stránce, který se znovu spustí, tedy vytvořit druhé připojení. Řešení tohoto problému patří:
+funkce `initializePage` jQuery Mobile vynutí opětovné spuštění skriptů na každé stránce, čímž se vytvoří druhé připojení. Mezi řešení tohoto problému patří:
 
-- Zahrňte odkaz na architekturu jQuery Mobile před souboru s kódem JavaScript.
-- Zakažte `initializePage` funkce tak, že nastavíte `$.mobile.autoInitializePage = false`.
-- Počkejte na dokončení inicializace před spuštěním připojení na stránce.
+- Přidejte odkaz na jQuery Mobile před souborem JavaScriptu.
+- Zakažte funkci `initializePage` nastavením `$.mobile.autoInitializePage = false`.
+- Než začnete s připojením, počkejte, než se dokončí inicializace stránky.
 
-### <a name="messages-are-delayed-in-silverlight-applications-using-server-sent-events"></a>Zprávy jsou zpožděné aplikace Silverlight pomocí události odeslané serverem
+### <a name="messages-are-delayed-in-silverlight-applications-using-server-sent-events"></a>Zprávy jsou v aplikacích Silverlight zpožděny pomocí událostí odeslaných serverem.
 
-Zprávy jsou zpožděné při používání serveru odesílání událostí na programu Silverlight. Pokud chcete vynutit dlouhý interval dotazování, který se má použít místo toho, použijte následující postupy při zahájení připojení:
+Zprávy jsou zpožděny při použití událostí odeslaných serverem v programu Silverlight. Pokud chcete vynutit použití dlouhého cyklického dotazování, použijte při spuštění připojení následující:
 
 [!code-css[Main](troubleshooting/samples/sample14.css)]
 
-### <a name="permission-denied-using-forever-frame-protocol"></a>Použití "Oprávnění odepřeno" navždy rámce protokolu
+### <a name="permission-denied-using-forever-frame-protocol"></a>"Oprávnění bylo odepřeno pomocí protokolu rámců navždy
 
-Jedná se o známý problém, popsané [tady](https://github.com/SignalR/SignalR/issues/1963). Tento příznak může zobrazit pomocí nejnovější verze knihovny JQuery; Alternativním řešením je na nižší verzi vaší aplikace do JQuery 1.8.2.
+Jedná se o známý problém, který je [zde](https://github.com/SignalR/SignalR/issues/1963)popsán. Tento příznak se může zobrazit pomocí nejnovější knihovny JQuery. alternativním řešením je downgrade aplikace na JQuery 1.8.2.
 
-### <a name="invalidoperationexception-not-a-valid-web-socket-request"></a>"InvalidOperationException: Není platný požadavek pro objekt websocket.
+### <a name="invalidoperationexception-not-a-valid-web-socket-request"></a>InvalidOperationException: nejedná se o platný požadavek webového soketu.
 
-K této chybě může dojít, pokud se používá protokol WebSocket, ale síťový proxy server provádí změny v hlavičce požadavku. Řešením je konfigurace proxy serveru na povolení protokolu WebSocket na portu 80.
+K této chybě může dojít, pokud je použit protokol WebSocket, ale síťový proxy mění hlavičky žádosti. Řešením je nakonfigurovat proxy server tak, aby povoloval WebSocket na portu 80.
 
-### <a name="exception-ltmethod-namegt-method-could-not-be-resolved-when-client-calls-method-on-server"></a>"Výjimek: &lt;název metody&gt; metoda nebylo možné přeložit" Když klient volá metodu na serveru
+### <a name="exception-ltmethod-namegt-method-could-not-be-resolved-when-client-calls-method-on-server"></a>"Výjimka: název metody &lt;&gt; metodu nebylo možné přeložit" při volání metody klienta na serveru
 
-Tato chyba může být následek použití datových typů, které nepůjdou vyhledat v datové části JSON, jako je například pole. Alternativním řešením je použít datový typ, který je ve formátu JSON, jako je například IList zjistitelné. Další informace najdete v tématu [.NET klienta nelze provést volání metod rozbočovače na pole parametrů](https://github.com/SignalR/SignalR/issues/2672).
+Tato chyba může být způsobena použitím datových typů, které nelze zjistit v datové části JSON, jako je například Array. Alternativním řešením je použití datového typu, který je zjistitelný pomocí JSON, jako je IList. Další informace naleznete v tématu [klient rozhraní .NET nemůže volat metody centra s parametry pole](https://github.com/SignalR/SignalR/issues/2672).
 
 <a id="server"></a>
 
-## <a name="compilation-and-server-side-errors"></a>Chyby kompilace a na straně serveru
+## <a name="compilation-and-server-side-errors"></a>Kompilace a chyby na straně serveru
 
- Následující část obsahuje možná řešení kompilátoru a chyb za běhu na straně serveru.
+ Následující část obsahuje možná řešení pro kompilátor a chyby běhového prostředí na straně serveru.
 
-### <a name="reference-to-hub-instance-is-null"></a>Odkaz na instanci rozbočovače má hodnotu null
+### <a name="reference-to-hub-instance-is-null"></a>Odkaz na instanci centra je null.
 
-Vzhledem k tomu, že pro každé připojení se vytvoří instanci rozbočovače, je nelze vytvořit instanci rozbočovače ve vašem kódu sami. Volání metody v rozbočovači z mimo samotný centra, najdete v článku [klienta volat metody a Správa skupiny mimo třídy rozbočovače](../guide-to-the-api/hubs-api-guide-server.md#callfromoutsidehub) pokyny k získání odkazu na kontext rozbočovače.
+Vzhledem k tomu, že je instance centra pro každé připojení vytvořená, nemůžete ve svém kódu vytvořit instanci rozbočovače sami. Chcete-li volat metody na rozbočovači vně samotného centra, přečtěte si téma [jak volat klientské metody a spravovat skupiny z vně třídy centra](../guide-to-the-api/hubs-api-guide-server.md#callfromoutsidehub) pro získání odkazu na kontext centra.
 
-### <a name="httpcontextcurrentsession-is-null"></a>HTTPContext.Current.Session má hodnotu null.
+### <a name="httpcontextcurrentsession-is-null"></a>HTTPContext. Current. Session má hodnotu null.
 
-Toto chování je záměrné. Funkce SignalR stavu relace ASP.NET nepodporuje, protože stav relace povolení by narušil duplexní zasílání zpráv.
+Toto chování je záměrné. Signál nepodporuje stav relace ASP.NET, protože povolení stavu relace by přerušilo duplexní zasílání zpráv.
 
-### <a name="no-suitable-method-to-override"></a>Žádná vhodná metoda k přepsání
+### <a name="no-suitable-method-to-override"></a>Žádná vhodná metoda pro přepsání
 
-Tato chyba může zobrazit, pokud používáte kód ze starší dokumentaci nebo v blozích. Ověřte, že nejsou odkazující na názvy metod, které se změnily nebo zastaralý (jako je `OnConnectedAsync`).
+Tato chyba se může zobrazit, pokud používáte kód ze starší dokumentace nebo blogů. Ověřte, že neodkazují na názvy metod, které byly změněny nebo zastaralé (například `OnConnectedAsync`).
 
-### <a name="hostcontextextensionswebsocketserverurl-is-null"></a>HostContextExtensions.WebSocketServerUrl má hodnotu null.
+### <a name="hostcontextextensionswebsocketserverurl-is-null"></a>HostContextExtensions. WebSocketServerUrl má hodnotu null.
 
 Toto chování je záměrné. Tento člen je zastaralý a neměl by se používat.
 
-### <a name="a-route-named-signalrhubs-is-already-in-the-route-collection-error"></a>Trasa s názvem "signalr.hubs" Chyba "není již v kolekci tras"
+### <a name="a-route-named-signalrhubs-is-already-in-the-route-collection-error"></a>"Trasa s názvem" Signal. Hubs "je již v kolekci tras"
 
-Tato chyba se zobrazí, pokud `MapSignalR` je volán dvakrát vaší aplikace. Některé aplikace volání příklad `MapSignalR` přímo ve třídě spuštění; ostatní uskutečnění volání v obálkovou třídu. Ujistěte se, že vaše aplikace není proveďte obojí.
+Tato chyba se zobrazí, pokud vaše aplikace `MapSignalR` volá dvakrát. Některé příklady aplikací volají `MapSignalR` přímo ve třídě Startup; jiné provádí volání v obálkové třídě. Ujistěte se, že aplikace neprovádí obojí.
 
-### <a name="websocket-is-not-used"></a>Není použit protokol WebSocket
+### <a name="websocket-is-not-used"></a>WebSocket se nepoužívá.
 
-Pokud jste ověřili, že serverem a klienty splňovat požadavky protokolu websocket (uvedené v [podporované platformy](../getting-started/supported-platforms.md) dokumentu), budete muset povolit objektu websocket na straně serveru. Pokyny, jak to udělat najdete [tady](https://www.iis.net/learn/get-started/whats-new-in-iis-8/iis-80-websocket-protocol-support).
+Pokud jste ověřili, že server a klienti splňují požadavky na WebSocket (uvedené v dokumentu [podporované platformy](../getting-started/supported-platforms.md) ), budete muset na svém serveru povolit WebSocket. Pokyny, jak to provést, najdete [tady](https://www.iis.net/learn/get-started/whats-new-in-iis-8/iis-80-websocket-protocol-support).
 
-### <a name="connection-is-undefined"></a>není definován $.connection
+### <a name="connection-is-undefined"></a>$. připojení není definované.
 
-Tato chyba označuje, že skripty na stránce nebyly správně načteny, nebo proxy server rozbočovače není dostupný nebo je přistupováno nesprávně. Ověřte, že odkazy na skript na stránce odpovídají skripty načtené do vašeho projektu a že /signalr/hubs je přístupná v prohlížeči při spuštění serveru.
+Tato chyba znamená, že buď skripty na stránce nejsou správně načítány, nebo není k dispozici proxy serveru rozbočovače nebo se nezobrazuje správně. Ověřte, zda odkazy skriptu na vaší stránce odpovídají skriptům načteným ve vašem projektu a že k/SignalR/Hubs lze v prohlížeči přistup v případě, že server běží.
 
-### <a name="one-or-more-types-required-to-compile-a-dynamic-expression-cannot-be-found"></a>Nebyl nalezen jeden nebo více typů požadovaných pro kompilaci dynamického výrazu
+### <a name="one-or-more-types-required-to-compile-a-dynamic-expression-cannot-be-found"></a>Jeden nebo více typů vyžadovaných pro zkompilování dynamického výrazu nelze nalézt.
 
-Tato chyba znamená, `Microsoft.CSharp` chybí knihovna. Přidejte ho **sestavení -&gt;Framework** kartu.
+Tato chyba označuje, že chybí knihovna `Microsoft.CSharp`. Přidejte jej na kartě **sestavení-&gt;rozhraní** .
 
-### <a name="caller-state-cannot-be-accessed-from-clientscaller-in-visual-basic-or-in-a-strongly-typed-hub-conversion-from-type-taskof-object-to-type-string-is-not-valid-error"></a>Stav volajícího nelze přistupovat z Clients.Caller v jazyce Visual Basic nebo rozbočovač silného typu; Chyba "Převod z typu 'Task (Object o)' na typ"Řetězec"není platný"
+### <a name="caller-state-cannot-be-accessed-from-clientscaller-in-visual-basic-or-in-a-strongly-typed-hub-conversion-from-type-taskof-object-to-type-string-is-not-valid-error"></a>Ke stavu volajícímu nelze přicházet z klientů. volající v Visual Basic nebo v rozbočovači silného typu; "Typ" úloha konverze z typu "(z objektu)" na "String" není platný "
 
-Chcete-li získat přístup k stav volajícího v jazyce Visual Basic nebo rozbočovač silného typu, použijte `Clients.CallerState` vlastnosti (představíme v SignalR 2.1) namísto `Clients.Caller`.
+Chcete-li získat přístup ke stavu volajícímu v Visual Basic nebo v rozbočovači se silným typem, použijte namísto `Clients.Caller`vlastnost `Clients.CallerState` (představená v Signaler 2,1).
 
 <a id="vs"></a>
 
-## <a name="visual-studio-issues"></a>Problémy v sadě Visual Studio
+## <a name="visual-studio-issues"></a>Problémy se sady Visual Studio
 
-Tato část popisuje problémy v sadě Visual Studio.
+Tato část popisuje problémy zjištěné v aplikaci Visual Studio.
 
-### <a name="script-documents-node-does-not-appear-in-solution-explorer"></a>Uzlu dokumenty skriptu se nezobrazují v Průzkumníku řešení
+### <a name="script-documents-node-does-not-appear-in-solution-explorer"></a>Uzel dokumenty skriptu se nezobrazuje v Průzkumník řešení
 
-Některé z našich kurzů nasměrujeme na uzlu "Dokumenty skriptu" v Průzkumníku řešení během ladění. Tento uzel je vytvořen pomocí ladicího programu jazyka JavaScript a zobrazí se pouze při ladění klienty prohlížeče v Internet Exploreru; uzel se nezobrazí, pokud se používají Chrome nebo Firefox. Ladicí program jazyka JavaScript také nespustí, pokud je spuštěn jiný ladicí program klienta, jako je například ladicí program Silverlight.
+Některé z našich kurzů vás přesměrují na uzel dokumenty skriptů v Průzkumník řešení při ladění. Tento uzel je vytvořen ladicím programem jazyka JavaScript a zobrazí se pouze při ladění klientů prohlížeče v aplikaci Internet Explorer. Pokud se použije Chrome nebo Firefox, uzel se nezobrazí. Ladicí program JavaScriptu se také nespustí, pokud je spuštěn jiný klientský ladicí program, jako je například ladicí program Silverlight.
 
-### <a name="signalr-does-not-work-on-visual-studio-2008-or-earlier"></a>Funkce SignalR nefunguje v sadě Visual Studio 2008 nebo dřívější
+### <a name="signalr-does-not-work-on-visual-studio-2008-or-earlier"></a>Návěstí nefunguje v systému Visual Studio 2008 nebo starším.
 
-Toto chování je záměrné. Funkce SignalR vyžaduje rozhraní .NET Framework 4 nebo novější; Tento postup vyžaduje, aby aplikace knihovnou SignalR vyvíjet v sadě Visual Studio 2010 nebo novější. Součásti serveru pro funkci SignalR vyžaduje rozhraní .NET Framework 4.5.
+Toto chování je záměrné. Signál vyžaduje .NET Framework 4 nebo novější; To vyžaduje, aby byly aplikace signálů vyvinuty v aplikaci Visual Studio 2010 nebo novější. Serverová součást nástroje Signal vyžaduje .NET Framework 4,5.
 
 <a id="iis"></a>
 
-## <a name="iis-issues"></a>Problémy s IIS
+## <a name="iis-issues"></a>Problémy služby IIS
 
-Tato část obsahuje problémy se službou IIS.
+Tato část obsahuje problémy s Internetová informační služba.
 
-### <a name="signalr-works-on-visual-studio-development-server-but-not-in-iis"></a>Funkce SignalR funguje na vývojový server sady Visual Studio, ale ne ve službě IIS
+### <a name="signalr-works-on-visual-studio-development-server-but-not-in-iis"></a>Signalizace funguje na vývojovém serveru sady Visual Studio, ale ne ve službě IIS.
 
-SignalR je podporované ve službě IIS 7.0 a 7.5, ale podpora pro adresy URL bez přípony musí být přidán. Přidání podpory pro adresy URL bez přípony, naleznete v tématu [https://support.microsoft.com/kb/980368](https://support.microsoft.com/kb/980368)
+Signalizace je podporována ve službě IIS 7,0 a 7,5, ale je nutné přidat podporu pro adresy URL bez přípony. Pokud chcete přidat podporu pro rozšiřující adresy URL, přečtěte si téma [https://support.microsoft.com/kb/980368](https://support.microsoft.com/kb/980368)
 
-Vyžaduje SignalR technologie ASP.NET být nainstalovaný na serveru (není nainstalována technologie ASP.NET ve službě IIS ve výchozím nastavení). Instalace technologie ASP.NET, naleznete v tématu [ASP.NET stáhne](https://www.asp.net/downloads).
+Návěstí vyžaduje, aby na serveru byla nainstalována služba ASP.NET (ve výchozím nastavení ASP.NET není ve službě IIS nainstalována). Informace o instalaci ASP.NET najdete v článku [soubory ke stažení ASP.NET](https://www.asp.net/downloads).
 
 <a id="azure"></a>
 
@@ -365,12 +365,12 @@ Vyžaduje SignalR technologie ASP.NET být nainstalovaný na serveru (není nain
 
 Tato část obsahuje problémy s Microsoft Azure.
 
-### <a name="fileloadexception-when-hosting-signalr-in-an-azure-worker-role"></a>FileLoadException – při hostování za nástrojem SignalR v roli pracovního procesu Azure
+### <a name="fileloadexception-when-hosting-signalr-in-an-azure-worker-role"></a>FileLoadException při hostování signálu v roli pracovního procesu Azure
 
-Hostování SignalR v roli pracovního procesu Azure může mít za následek výjimku "nepovedlo se načíst soubor nebo sestavení" Microsoft.Owin, verze = 2.0.0.0 ". Jedná se o známý problém s NuGet; Přesměrování vazeb nejsou automaticky přidáni do Role pracovního procesu Azure projekty. Chcete-li to vyřešit, můžete přidat přesměrování vazby ručně. Přidejte následující řádky do `app.config` soubor pro váš projekt Role pracovního procesu.
+Hostující signál v roli pracovního procesu Azure může mít za následek výjimku "nelze načíst soubor nebo sestavení" Microsoft. Owin, Version = 2.0.0.0 ". Jedná se o známý problém s NuGet; Přesměrování vazeb se v projektech rolí pracovních procesů Azure nepřidaly automaticky. Chcete-li tento problém vyřešit, můžete ručně přidat přesměrování vazby. Přidejte následující řádky do souboru `app.config` pro projekt role pracovního procesu.
 
 [!code-xml[Main](troubleshooting/samples/sample15.xml)]
 
-### <a name="messages-are-not-received-through-the-azure-backplane-after-altering-topic-names"></a>Nejsou přijaty zprávy přes Azure propojovací rozhraní systému po změně názvy témat
+### <a name="messages-are-not-received-through-the-azure-backplane-after-altering-topic-names"></a>Po změně názvů témat se zprávy nepřijaly prostřednictvím Azure replánování.
 
-Témata používá Azure propojovací rozhraní systému se zachovají interně; Chcete-li být uživatelem konfigurovatelné nejsou určeny.
+Témata používaná back-planě Azure se udržují interně; neslouží jako uživatelsky konfigurovatelné.

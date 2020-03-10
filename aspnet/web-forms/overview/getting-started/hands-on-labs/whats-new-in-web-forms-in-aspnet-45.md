@@ -1,845 +1,845 @@
 ---
 uid: web-forms/overview/getting-started/hands-on-labs/whats-new-in-web-forms-in-aspnet-45
-title: Co je nového ve webových formulářů v ASP.NET 4.5 | Dokumentace Microsoftu
+title: Co je nového ve webových formulářích v ASP.NET 4,5 | Microsoft Docs
 author: rick-anderson
-description: Novou verzi technologie ASP.NET webové formuláře přináší řadu vylepšení, zaměřuje na vylepšení činnost koncového uživatele při práci s daty. V předchozích verzích nástroje...
+description: Nová verze webových formulářů ASP.NET zavádí řadu vylepšení, která se zaměřují na vylepšení uživatelského prostředí při práci s daty. V předchozích verzích...
 ms.author: riande
 ms.date: 02/18/2013
 ms.assetid: 0a1f88bd-97da-4ed1-86f1-605199dc75a4
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/whats-new-in-web-forms-in-aspnet-45
 msc.type: authoredcontent
 ms.openlocfilehash: 301af8ed877b58624e419c04f605c41f27dbdd0c
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132076"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78525730"
 ---
 # <a name="whats-new-in-web-forms-in-aspnet-45"></a>Novinky webových formulářů v ASP.NET 4.5
 
-podle [Campy Web týmu](https://twitter.com/webcamps)
+podle [týmu webového Campy](https://twitter.com/webcamps)
 
-> Novou verzi technologie ASP.NET webové formuláře přináší řadu vylepšení, zaměřuje na vylepšení činnost koncového uživatele při práci s daty.
+> Nová verze webových formulářů ASP.NET zavádí řadu vylepšení, která se zaměřují na vylepšení uživatelského prostředí při práci s daty.
 > 
-> V předchozích verzích webových formulářů, při použití datových vazeb a vygenerovat hodnotu členem objektu můžete použít výrazy vázání dat Bind() nebo Eval(). V nové verzi technologie ASP.NET je možné deklarovat, jaký typ dat ovládacího prvku se to být vázány na pomocí nové vlastnosti ItemType. Nastavení této vlastnosti vám umožní použít proměnnou silného typu pro příjem všech výhod vývojové prostředí sady Visual Studio, například IntelliSense, navigace členů a kontrolu za kompilace.
+> V předchozích verzích webových formulářů při použití datové vazby k vygenerování hodnoty člena objektu jste použili výrazy vázání dat Bind () nebo Eval (). V nové verzi ASP.NET můžete deklarovat, na jaký typ dat se ovládací prvek bude vázat, pomocí nové vlastnosti ItemType. Nastavení této vlastnosti vám umožní použít proměnnou silného typu k získání všech výhod prostředí pro vývoj sady Visual Studio, jako je IntelliSense, navigace členů a kontrola doby kompilace.
 > 
-> Pomocí ovládacích prvků vázaných na data můžete teď také zadat vlastní vlastních metod pro výběr, aktualizace, odstraňování a vkládání dat, zjednodušení interakce mezi ovládacími prvky stránky a logice aplikace. Kromě toho byly přidány možnosti vázání modelu ASP.NET, což znamená, že data ze stránky můžete namapovat přímo do parametrů typu metody.
+> Pomocí ovládacích prvků vázaných na data můžete nyní také zadat vlastní metody pro výběr, aktualizaci, odstranění a vložení dat, což zjednodušuje interakci mezi ovládacími prvky stránky a logikou aplikace. Kromě toho byly přidány funkce vazby modelu do ASP.NET, což znamená, že data lze namapovat přímo do parametrů typu metody.
 > 
-> Ověřování uživatelského vstupu by mělo být také jednodušší s nejnovější verzí webových formulářů. Teď můžete opatřit poznámkami třídách modelu s atributy ověření ze **System.ComponentModel.DataAnnotations** obor názvů a požadavek, který řídí váš web ověření vstupu uživatele s použitím těchto informací. Ověřování na straně klienta ve webových formulářích je teď integrovaná s jQuery čisticí kód na straně klienta a funkce nerušivý JavaScript.
+> Ověřování vstupu uživatele by mělo být také snazší s nejnovější verzí webových formulářů. Nyní můžete opatřit třídy modelu pomocí atributů ověřování z oboru názvů **System. ComponentModel. DataAnnotations** a požádat, aby všechny ovládací prvky vaší lokality ověřovaly vstup uživatele pomocí těchto informací. Ověřování na straně klienta ve webových formulářích je teď integrované s jQuery, které poskytuje čisticí kód na straně klienta a nepřináší funkce JavaScriptu.
 > 
-> V oblasti žádosti o ověření byla vylepšena usnadňují selektivně vypnout ověření žádosti pro konkrétní části vašich aplikací nebo číst data zneplatněné žádosti.
+> V oblasti ověření žádosti jsme udělali vylepšení, která usnadňují selektivní vypnutí žádostí o ověření pro konkrétní části vašich aplikací nebo čtení dat neověřených žádostí.
 > 
-> Několik vylepšení byly provedeny do webových formulářů serverové ovládací prvky, abyste mohli využívat nové funkce HTML5:
+> Některá vylepšení byla provedena v ovládacích prvcích webového formuláře Server, aby bylo možné využívat nové funkce HTML5:
 > 
-> - Aktualizovali jsme v textovém režimu vlastnost ovládacího prvku textového pole pro podporu nových typů vstupu HTML5 jako e-mailová data a času a tak dále.
-> - Ovládací prvek FileUpload teď podporuje více nahrávání souborů z prohlížečů, které podporují tuto funkci HTML5.
-> - Program pro ověření řídí teď podporu ověřování HTML5 vstupních prvků.
-> - Nové prvky HTML5, které mají atributy, které představují adresy URL teď podporují runat =&quot;server&quot;. V důsledku toho může používat technologie ASP.NET v cestě adresy URL, jako je třeba ~ – operátor pro reprezentaci kořenový adresář aplikace (například &lt;videa runat =&quot;server&quot; src =&quot;~/myVideo.wmv&quot; &gt; &lt;/video&gt;).
-> - Opravili jsme ovládací prvek UpdatePanel pro podporu vstupních polí účtování HTML5.
+> - Vlastnost TextMode ovládacího prvku TextBox byla aktualizována tak, aby podporovala nové typy vstupu HTML5, jako je e-mail, DateTime a tak dále.
+> - Ovládací prvek nahrání souboru teď podporuje více nahrávání souborů z prohlížečů, které podporují tuto funkci HTML5.
+> - Ovládací prvky validátoru nyní podporují ověřování prvků jazyka HTML5.
+> - Nové prvky HTML5 obsahující atributy, které reprezentují adresu URL, teď podporují runat =&quot;Server&quot;. V důsledku toho můžete použít konvence ASP.NET v cestách URL, jako je například operátor ~ představující kořen aplikace (například &lt;video runat =&quot;Server&quot; src =&quot;~/myVideo.wmv&quot;&gt;&lt;/video&gt;).
+> - Ovládací prvek UpdatePanel byl vyřešen pro podporu při odesílání vstupních polí HTML5.
 > 
-> Na portálu oficiální technologie ASP.NET můžete najít další příklady nových funkcí v technologii ASP.NET 4.5 webových formulářů: [Novinky v ASP.NET 4.5 a v sadě Visual Studio 2012](../../../../whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012.md#_Toc318097385)
+> Na oficiálním portálu ASP.NET najdete další příklady nových funkcí v ASP.NET webformách 4,5: [co je nového v ASP.NET 4,5 a Visual Studio 2012](../../../../whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012.md#_Toc318097385) .
 > 
-> Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409 ](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409).
+> Veškerý ukázkový kód a fragmenty kódu jsou součástí sady web Campy Traination Kit, která je k dispozici na adrese [https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409).
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>Cíle
 
-V této praktická cvičení se dozvíte, jak:
+V této praktické laboratorní laboratoři se dozvíte, jak:
 
-- Použití silně typovaných výrazů vázání dat
-- Používat nové funkce vazby modelu ve webových formulářů
-- Použití zprostředkovatele hodnot pro použití modelu code-behind metody mapování data stránky
-- Použití anotací dat pro ověřování uživatelského vstupu
-- Využijte výhod nerušivý ověřování na straně klienta s jQuery ve webových formulářů
-- Implementace detailní žádost o ověření
-- Implementace asynchronního zpracování ve webových formulářích stránky
+- Použití výrazů pro datovou vazbu silně typovaného typu
+- Použití nových funkcí vazby modelu ve webových formulářích
+- Použití zprostředkovatelů hodnot pro mapování dat stránky na metody kódu na pozadí
+- Použití datových poznámek pro ověřování vstupu uživatele
+- Využijte nenáročné ověřování na straně klienta pomocí jQuery ve webových formulářích
+- Implementace podrobného ověřování žádostí
+- Implementace asynchronního zpracování stránky ve webových formulářích
 
 <a id="Prerequisites"></a>
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-Musíte mít následující položky k dokončení tohoto testovacího prostředí:
+K dokončení tohoto testovacího prostředí musíte mít následující položky:
 
-- [Microsoft Visual Studio Express 2012 pro Web](https://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) nebo i vyšší (čtení [příloha A](#AppendixA) pokyny k jeho instalaci).
+- [Microsoft Visual Studio Express 2012 pro web](https://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) nebo nadřazený seznam (pokyny k instalaci najdete v [příloze a](#AppendixA) ).
 
 <a id="Setup"></a>
-### <a name="setup"></a>Instalace
+### <a name="setup"></a>Nastavení
 
-**Instalace fragmenty kódu**
+**Instalace fragmentů kódu**
 
-Pro usnadnění práce velkou část kódu, které budete spravovat podél tohoto testovacího prostředí je k dispozici jako fragmenty kódu sady Visual Studio. K instalaci spustit fragmenty kódu **.\Source\Setup\CodeSnippets.vsi** souboru.
+Pro usnadnění práce je většina kódu, který budete spravovat v tomto testovacím prostředí, k dispozici jako fragmenty kódu sady Visual Studio. Chcete-li nainstalovat fragmenty kódu, spusťte soubor **.\Source\Setup\CodeSnippets.vsi** .
 
-Pokud nejste obeznámeni s fragmenty kódu Visual Studio a chcete další informace o jejich použití, najdete dodatku z tohoto dokumentu &quot; [příloha C: Používání fragmentů kódu](#AppendixC)&quot;.
+Pokud nejste obeznámeni s fragmentem Visual Studio Code a chcete se dozvědět, jak je používat, můžete odkazovat na přílohu z tohoto dokumentu &quot;[příloze C: použití fragmentů kódu](#AppendixC)&quot;.
 
 <a id="Exercises"></a>
 ## <a name="exercises"></a>Cvičení
 
-Toto praktické testovací prostředí obsahuje následující praktická cvičení:
+Tato praktická cvičení zahrnují následující cvičení:
 
-1. [Cvičení 1: Vazby modelu ve webových formulářích ASP.NET](#Exercise1)
-2. [Cvičení 2: Ověřování dat](#Exercise2)
-3. [Cvičení 3: Asynchronní zpracování stránky v ASP.NET Web Forms](#Exercise3)
+1. [Cvičení 1: vazba modelu ve webových formulářích ASP.NET](#Exercise1)
+2. [Cvičení 2: ověření dat](#Exercise2)
+3. [Cvičení 3: asynchronní zpracování stránky ve webových formulářích ASP.NET](#Exercise3)
 
 > [!NOTE]
-> Se sadou každý cvičení **koncové** složku, která obsahuje výsledný řešení byste měli získat po dokončení cvičení. Toto řešení můžete použít jako vodítko, pokud potřebujete další pomoc prostřednictvím praktická cvičení.
+> Každé cvičení doprovází **koncovou** složku obsahující výsledné řešení, které byste měli získat po dokončení cvičení. Pokud potřebujete další nápovědu k práci prostřednictvím cvičení, můžete toto řešení použít jako vodítko.
 
 Odhadovaný čas dokončení tohoto testovacího prostředí: **60 minut**.
 
 <a id="Exercise1"></a>
 
 <a id="Exercise_1_Model_Binding_in_ASPNET_Web_Forms"></a>
-### <a name="exercise-1-model-binding-in-aspnet-web-forms"></a>Cvičení 1: Vazby modelu ve webových formulářích ASP.NET
+### <a name="exercise-1-model-binding-in-aspnet-web-forms"></a>Cvičení 1: vazba modelu ve webových formulářích ASP.NET
 
-Novou verzi technologie ASP.NET webové formuláře přináší řadu vylepšení, zaměřuje na zlepšení zkušeností při práci s daty. Během tohoto cvičení se další informace o ovládacích prvcích silného typu dat a vazby modelu.
+Nová verze webových formulářů ASP.NET zavádí řadu vylepšení, která se zaměřují na zlepšení prostředí při práci s daty. V průběhu tohoto cvičení se dozvíte o ovládacích prvcích dat a vázání modelů se silnými typy.
 
 <a id="Task_1_-_Using_Strongly-Typed_Data-Bindings"></a>
-#### <a name="task-1---using-strongly-typed-data-bindings"></a>Úloha 1 – použití silně typované datové vazby
+#### <a name="task-1---using-strongly-typed-data-bindings"></a>Úloha 1 – použití datových vazeb silného typu
 
-V této úloze bude zjišťovat nové silného typu vazby k dispozici v technologii ASP.NET 4.5.
+V této úloze zjistíte nové vazby silného typu, které jsou k dispozici v ASP.NET 4,5.
 
-1. Otevřít **začít** řešení nachází v **zdroj/Ex1-objektuModelBinding/počáteční/** složky.
+1. Otevřete řešení **zahájit** , které se nachází ve složce **source/EX1-ModelBinding/Begin/** Folder.
 
-   1. Budete muset stáhnout některé chybějící balíčky NuGet než budete pokračovat. Chcete-li to provést, klikněte na tlačítko **projektu** nabídky a vybereme **spravovat balíčky NuGet**.
-   2. V **spravovat balíčky NuGet** dialogového okna, klikněte na tlačítko **obnovení** aby bylo možné stáhnout chybějící balíčky.
-   3. Nakonec sestavte řešení kliknutím **sestavení** | **sestavit řešení**.
+   1. Než budete pokračovat, budete muset stáhnout některé chybějící balíčky NuGet. Provedete to tak, že kliknete na nabídku **projekt** a vyberete **Spravovat balíčky NuGet**.
+   2. V dialogovém okně **Spravovat balíčky NuGet** klikněte na **obnovit** , aby se stáhly chybějící balíčky.
+   3. Nakonec sestavte řešení kliknutím na **sestavit** | **Sestavit řešení**.
 
       > [!NOTE]
-      > Jednou z výhod pomocí nástroje NuGet je, že není nutné dodávat všechny knihovny ve vašem projektu, zmenšení velikosti projektu. Pomocí nástroje NuGet zadáním verze balíčku v souboru Packages.config, budete moct stáhnout požadované knihovny při prvním spuštění projektu. To je důvod, proč budete muset projít tyto kroky po otevření existujícího řešení z tohoto testovacího prostředí.
-2. Otevřít **Customers.aspx** stránky. Umístěte nečíslovaná seznamu v hlavním ovládacím prvkem a zahrnují ovládacím prvkem repeater uvnitř pro výpis každého zákazníka. Nastavte název opakovače **customersRepeater** jak je znázorněno v následujícím kódu.
+      > Jednou z výhod používání NuGet je, že nemusíte dodávat všechny knihovny v projektu, což snižuje velikost projektu. Pomocí nástrojů NuGet Power Tools zadáte verze balíčku v souboru Packages. config a při prvním spuštění projektu budete moct stáhnout všechny požadované knihovny. To je důvod, proč po otevření existujícího řešení z tohoto testovacího prostředí budete muset spustit tyto kroky.
+2. Otevřete stránku **Customers. aspx** . Umístěte nečíselný seznam do hlavního ovládacího prvku a zahrňte do výpisu každého zákazníka ovládací prvek Repeater. Nastavte název Repeater na **customersRepeater** , jak je znázorněno v následujícím kódu.
 
-    V předchozích verzích technologie webové formuláře při použití datových vazeb a vygenerovat hodnota člena v objektu jste vázání dat, můžete využít vazbový výraz, spolu s volání (v angličtině) metody předáním hodnoty názvu členu jako řetězec.
+    V předchozích verzích webových formulářů při použití datové vazby k vygenerování hodnoty člena na objektu, na který datovou vazbu vytváříte, byste použili výraz vazby dat spolu s voláním metody Eval a předáním názvu člena jako řetězce.
 
-    Za běhu bude tato volání hodnotě Eval čtení hodnotu člena se zadaným názvem pomocí reflexe pro aktuálně vázaný objekt a zobrazení výsledku v kódu HTML. Tento přístup umožňuje velmi snadno svázat data s daty libovolného, unshaped.
+    V době běhu tato volání Eval použijí reflexi proti aktuálně vázanému objektu pro čtení hodnoty člena se zadaným názvem a zobrazení výsledku v HTML. Díky tomuto přístupu je vazba dat velmi jednoduchá proti libovolným neobrazovým datům.
 
-    Bohužel ztratíte mnoha funkcí skvělé možnosti vývoje v sadě Visual Studio, včetně technologie IntelliSense pro názvy členů, podporu pro navigaci (jako přejít k definici) a kontrola za kompilace.
+    Bohužel ztratíte spoustu skvělých funkcí prostředí pro vývoj v prostředí Visual Studio, včetně IntelliSense pro názvy členů, podporu navigace (například přejít k definici) a kontrolu doby kompilace.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample1.aspx)]
-3. Otevřít **Customers.aspx.cs** souboru.
+3. Otevřete soubor **Customers.aspx.cs** .
 4. Přidejte následující příkaz using.
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample2.cs)]
-5. V **stránky\_zatížení** metodu, přidejte kód pro naplnění opakovače s seznam zákazníků.
+5. Na **stránce\_metoda Load** přidejte kód pro naplnění tohoto opakovače seznamem zákazníků.
 
-    (Fragment - kódu *webové formuláře Lab – Ex01 - Bind zákazníkům zdroj dat*)
+    (Fragment kódu- *webové formuláře Lab – Ex01 – zdroj dat pro zákazníky BIND*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample3.cs)]
 
-    Toto řešení využívá EntityFramework spolu s CodeFirst k vytváření a přístup k databázi. V následujícím kódu je vázán customersRepeater na materializovaného dotazu, který vrátí všechny zákazníky z databáze.
-6. Stisknutím klávesy **F5** spuštění řešení a přejděte na **zákazníkům** stránku, abyste zobrazili repeater v akci. Jak toto řešení používá CodeFirst, databáze bude vytvořena a naplněna v místní instanci systému SQL Express, při spuštění aplikace.
+    Řešení používá EntityFramework společně s CodeFirst k vytvoření a přístup k databázi. V následujícím kódu je customersRepeater vázán na materializující dotaz, který vrátí všechny zákazníky z databáze.
+6. Stisknutím klávesy **F5** spusťte řešení a přejděte na stránku **Customers (zákazníci** ), aby se zobrazila akce Repeater v akci. Jak řešení používá CodeFirst, databáze se vytvoří a naplní v místní instanci SQL Express při spuštění aplikace.
 
-    ![Výpis zákazníkům s repeateru](whats-new-in-web-forms-in-aspnet-45/_static/image1.png "výpis zákazníkům s repeateru")
+    ![Výpis zákazníků s použitím Repeater](whats-new-in-web-forms-in-aspnet-45/_static/image1.png "Výpis zákazníků s použitím Repeater")
 
-    *Zákazníci s repeateru výpis*
+    *Výpis zákazníků s použitím Repeater*
 
     > [!NOTE]
-    > V sadě Visual Studio 2012 služba IIS Express je výchozí webový server vývoje.
-7. Zavřete prohlížeč a přejděte zpět do sady Visual Studio.
-8. Nyní nahraďte implementace použití silného typu vazby. Otevřít **Customers.aspx** stránky a použijte nové **ItemType** atribut v opakovači nastavit **zákazníka** typ jako typ vazby.
+    > V aplikaci Visual Studio 2012 je IIS Express výchozím webovým serverem pro vývoj.
+7. Zavřete prohlížeč a vraťte se do sady Visual Studio.
+8. Teď nahraďte implementaci, aby používala vazby silného typu. Otevřete stránku **Customers. aspx** a pomocí nového atributu **ItemType** v Repeater nastavte typ **zákazníka** jako typ vazby.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample4.aspx)]
 
-    Vlastnost ItemType umožňuje deklarovat, jaký typ dat ovládacího prvku je, že to být vázaný na a umožňuje používat silného typu vazby uvnitř ovládací prvek vázaný na data.
-9. Nahraďte obsah následujícím kódem ItemTemplate.
+    Vlastnost ItemType umožňuje deklarovat, na který typ dat bude ovládací prvek vázán, a umožňuje použít vazbu silného typu uvnitř ovládacího prvku vázaného na data.
+9. Obsah ItemTemplate nahraďte následujícím kódem.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample5.aspx)]
 
-    Jeden nevýhodou pomocí výše uvedených přístupů je, že volání Eval() a Bind() s pozdní vazbou – to znamená, že předáte řetězce představují názvy vlastností. To znamená, že vám technologie Intellisense pro názvy členů, podporu pro navigaci v kódu (jako přejít k definici) ani kontrolu podporu za kompilace.
+    Jedním z Nevýhodou s výše uvedenými přístupy je to, že volání Eval () a BIND () jsou v pozdní vazbě, což znamená, že předáte řetězce, které představují názvy vlastností. To znamená, že nezískáte IntelliSense pro názvy členů, podporu navigace v kódu (například přejít k definici) ani podporu kontroly při kompilaci.
 
-    Nastavení vlastnosti ItemType způsobí, že dvě nové proměnné typu rozsah výrazy vázání dat vygeneruje: **Položka** a **položku BindItem**. Můžete použít tyto silného typu proměnné ve výrazech datové vazby a získáte všechny výhody vývojové prostředí sady Visual Studio.
+    Nastavením vlastnosti ItemType dojde k vygenerování dvou nových typových proměnných v rozsahu výrazů datové vazby: **Item** a **položku BindItem**. Tyto silně typované proměnné můžete použít ve výrazech datové vazby a získat kompletní výhody prostředí pro vývoj v aplikaci Visual Studio.
 
-    &quot; **:** &quot; Použít ve výrazu se automaticky použije kódování HTML výstup, aby se zabránilo problémům zabezpečení (například mezi útoky prostřednictvím skriptování). Tento typ notation byla k dispozici od verze .NET 4 pro psaní odpovědi, ale teď je také k dispozici ve výrazech datové vazby.
+    &quot; **:** &quot; použitá ve výrazu automaticky zakóduje výstup do HTML, aby nedocházelo k problémům se zabezpečením (například k útokům prostřednictvím skriptování mezi weby). Tento zápis byl k dispozici od rozhraní .NET 4 pro zápis odpovědí, ale nyní je také k dispozici ve výrazech datové vazby.
 
     > [!NOTE]
-    > Člen položek pracuje pro jednosměrné vazby. Pokud chcete provést pomocí obousměrné vazby **položku BindItem** člena.
+    > Člen položky funguje jako jednosměrná vazba. Pokud chcete provést obousměrnou vazbu, použijte člen **položku BindItem** .
 
-    ![Podporu technologie IntelliSense ve vazbě silného typu](whats-new-in-web-forms-in-aspnet-45/_static/image2.png "podporu technologie IntelliSense ve vazbě silného typu")
+    ![Podpora technologie IntelliSense ve vazbách silného typu](whats-new-in-web-forms-in-aspnet-45/_static/image2.png "Podpora technologie IntelliSense ve vazbách silného typu")
 
-    *Podporu technologie IntelliSense ve vazbě silného typu*
-10. Stisknutím klávesy **F5** spuštění řešení a přejděte na stránku zákazníků a ujistěte se, že změny fungovat podle očekávání.
+    *Podpora technologie IntelliSense ve vazbách silného typu*
+10. Stisknutím klávesy **F5** spusťte řešení a přejděte na stránku Customers (zákazníci) a ujistěte se, že změny fungují podle očekávání.
 
-    ![Zobrazení Podrobnosti o zákazníkovi](whats-new-in-web-forms-in-aspnet-45/_static/image3.png "výpis podrobnosti o zákazníkovi")
+    ![Výpis podrobností o zákaznících](whats-new-in-web-forms-in-aspnet-45/_static/image3.png "Výpis podrobností o zákaznících")
 
-    *Zobrazení Podrobnosti o zákazníkovi*
-11. Zavřete prohlížeč a přejděte zpět do sady Visual Studio.
+    *Výpis podrobností o zákaznících*
+11. Zavřete prohlížeč a vraťte se do sady Visual Studio.
 
 <a id="Task_2_-_Introducing_Model_Binding_in_Web_Forms"></a>
-#### <a name="task-2---introducing-model-binding-in-web-forms"></a>Úloha 2 – představení Model vazby ve webových formulářů
+#### <a name="task-2---introducing-model-binding-in-web-forms"></a>Úloha 2 – zavedení vazby modelu ve webových formulářích
 
-V předchozích verzích webových formulářů ASP.NET Pokud byste chtěli provést obousměrnou vazbu dat, jak načítání a aktualizaci dat, museli jste použití zdroj dat objektu. Může to být objektový zdroj dat, zdroji dat SQL, zdroje dat LINQ a tak dále. Pokud váš scénář vyžaduje vlastní kód pro zpracování dat, ale je potřeba použít zdroj dat objektu a to do určité nevýhody. Například byste potřebovali vyhnuli používání komplexních typů a potřebné pro zpracování výjimek při provádění logiku ověřování.
+V předchozích verzích webových formulářů ASP.NET, pokud jste chtěli provést obousměrnou datovou vazbu, načítají a aktualizují data, je třeba použít objekt zdroje dat. Může to být zdroj dat objektu, zdroj dat SQL, zdroj dat LINQ atd. Pokud ale váš scénář požaduje vlastní kód pro zpracování dat, je potřeba použít zdroj dat objektu a tím se napravily nějaké nevýhody. Například je třeba se vyhnout složitým typům a při provádění logiky ověřování potřebujete zpracovat výjimky.
 
-V nové verzi webových formulářů ASP.NET, ovládací prvky vázané na data podporují vazby modelu. To znamená, že můžete zadat vyberte, aktualizovat, vložení a odstranění metody přímo v ovládací prvek vázaný na data pro volání logiky ze souboru kódu na pozadí nebo z jiné třídy.
+V nové verzi webových formulářů ASP.NET podporují ovládací prvky vázané na data vazbu modelu. To znamená, že můžete zadat metody Select, Update, INSERT a DELETE přímo v ovládacím prvku vázaného na data pro volání logiky ze souboru kódu na pozadí nebo z jiné třídy.
 
-Další informace o tom, použijete GridView seznam kategorií produktů pomocí nového **metoda SelectMethod** atribut. Tento atribut umožňuje zadat metodu pro načtení dat prvku GridView.
+Pokud se o to chcete dozvědět, použijte prvek GridView k vypsání kategorií produktů pomocí nového atributu **SelectMethod** . Tento atribut umožňuje zadat metodu pro načtení dat GridView.
 
-1. Otevřít **Products.aspx** stránce a zahrnout **GridView**. Nakonfigurujte prvku GridView, jak je znázorněno níže silného typu vazby a Povolit řazení a stránkování.
+1. Otevřete stránku **Products. aspx** a přidejte **prvek GridView**. Nakonfigurujte prvek GridView tak, jak je znázorněno níže, aby bylo možné použít vazby silného typu a Povolit řazení a stránkování.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample6.aspx)]
-2. Pomocí nové **metoda SelectMethod** atributů konfigurace GridView pro volání **GetCategories** pro výběr data.
+2. Použijte nový atribut **SelectMethod** ke konfiguraci prvku GridView pro volání metody **GetCategories** pro výběr dat.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample7.aspx)]
-3. Otevřít **Products.aspx.cs** použití modelu code-behind soubor a přidejte následující příkazy using.
+3. Otevřete soubor kódu na pozadí **Products.aspx.cs** a přidejte následující příkazy using.
 
-    (Fragment - kódu *webových formulářů Lab – Ex01 - obory názvů*)
+    (Fragment kódu – *webové formuláře Lab-Ex01-Namespaces*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample8.cs)]
-4. Přidat člena soukromý v **produkty** třídy a přiřadit novou instanci třídy **ProductsContext**. Tato vlastnost se ukládání kontextu dat Entity Framework, která umožňuje připojení k databázi.
+4. Přidejte do třídy **Products** privátního člena a přiřaďte novou instanci **ProductsContext**. Tato vlastnost uloží datový kontext Entity Framework, který vám umožní připojit se k databázi.
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample9.cs)]
-5. Vytvoření **GetCategories** metodu pro načtení seznamu kategorií pomocí jazyka LINQ. Bude zahrnovat dotaz **produkty** vlastnost tak prvku GridView. můžete zobrazit objem produktů pro každou kategorii. Všimněte si, že metoda vrátí nezpracované objekt IQueryable, které představují dotaz bude proveden později na životní cyklus stránky.
+5. Vytvořte metodu **GetCategories** pro načtení seznamu kategorií pomocí LINQ. Dotaz bude obsahovat vlastnost **Products** , aby prvek GridView mohl zobrazit množství produktů pro každou kategorii. Všimněte si, že metoda vrátí nezpracovaný objekt IQueryable, který představuje dotaz, který má být proveden později v životním cyklu stránky.
 
-    (Fragment - kódu *webových formulářů Lab – Ex01 - GetCategories*)
+    (Fragment kódu- *webové formuláře Lab-Ex01-GetCategories*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample10.cs)]
 
     > [!NOTE]
-    > V předchozích verzích webových formulářů ASP.NET umožňuje řazení a stránkování pomocí vlastní logiky úložiště v rámci kontextu zdroj dat objektu potřeba napsat vlastní kód a zobrazí všechny potřebné parametry. Nyní, a metody datových vazeb může vrátit IQueryable to představuje dotaz stále má být spuštěna, ASP.NET zařídit upravit dotaz pro přidání správné řazení a stránkování parametry.
-6. Stisknutím klávesy **F5** spuštění ladění lokalitu a přejděte na stránku produktů. Měli byste vidět, že kategorie vrácený metodou GetCategories se načtou prvku GridView.
+    > V předchozích verzích webových formulářů ASP.NET umožňuje řazení a stránkování pomocí vlastní logiky úložiště v rámci kontextu zdroje dat objektu, který je vyžadován pro zápis vlastního kódu a příjem všech potřebných parametrů. Nyní, protože metody vázání dat mohou vracet IQueryable a to představuje dotaz, který má být spuštěn, ASP.NET se může postarat o změnu dotazu pro přidání správných parametrů řazení a stránkování.
+6. Stisknutím klávesy **F5** spusťte ladění webu a přejděte na stránku produkty. Měli byste vidět, že je prvek GridView naplněn kategoriemi vrácenými metodou GetCategories.
 
-    ![Naplnění ovládacího prvku GridView, pomocí vazby modelu](whats-new-in-web-forms-in-aspnet-45/_static/image4.png "naplnění ovládacího prvku GridView, pomocí vazby modelu")
+    ![Naplnění prvku GridView pomocí vazby modelu](whats-new-in-web-forms-in-aspnet-45/_static/image4.png "Naplnění prvku GridView pomocí vazby modelu")
 
-    *Naplnění ovládacího prvku GridView, pomocí vazby modelu*
-7. Stisknutím klávesy **SHIFT**+**F5** Zastavit ladění.
+    *Naplnění prvku GridView pomocí vazby modelu*
+7. Stiskněte **SHIFT**+**F5** zastavit ladění.
 
 <a id="Task_3_-_Value_Providers_in_Model_Binding"></a>
-#### <a name="task-3---value-providers-in-model-binding"></a>Úloha 3 – zprostředkovatele hodnot v vazby modelu
+#### <a name="task-3---value-providers-in-model-binding"></a>Zprostředkovatelé úlohy 3-hodnota ve vazbě modelu
 
-Vazby modelu nejen umožňuje zadat vlastní metody pro práci s daty přímo v ovládacím prvku vázané na data, ale také umožňuje mapování dat ze stránky do parametrů z těchto metod. U parametru metody slouží k určení zdroje dat hodnotu atributy zprostředkovatele hodnot. Příklad:
+Vazba modelu umožňuje zadat vlastní metody pro práci s daty přímo v ovládacím prvku vázaného na data, ale také umožňuje mapovat data ze stránky na parametry z těchto metod. V parametru metody můžete použít atributy zprostředkovatele hodnoty k určení zdroje dat hodnoty. Příklad:
 
 - Ovládací prvky na stránce
 - Hodnoty řetězce dotazu
 - Zobrazení dat
 - Stav relace
 - Soubory cookie
-- Data odeslaného formuláře
+- Odeslaná data formuláře
 - Stav zobrazení
-- Vlastní hodnota poskytovatelé jsou podporovány také
+- Podporují se i vlastní zprostředkovatelé hodnot.
 
-Pokud jste použili technologie ASP.NET MVC 4, můžete si všimnout, že podpora vazby modelu je podobné. Ve skutečnosti byly tyto funkce na základě technologie ASP.NET MVC a přesunout do **System.Web** sestavení lze také použít v aplikaci Web Forms.
+Pokud jste použili ASP.NET MVC 4, budete si všimnout, že je podpora vazeb modelů podobná. Tyto funkce byly skutečně pořízeny z ASP.NET MVC a přesunuty do sestavení **System. Web** , aby je bylo možné použít i ve webových formulářích.
 
-V této úloze budete aktualizovat GridView můžete filtrovat výsledky podle množství produktů pro každou kategorii, přijímají parametr filtru s vazbou modelu.
+V této úloze aktualizujete prvek GridView tak, aby vyfiltroval výsledky podle množství produktů pro každou kategorii, a přijímá parametr filtru s vazbou modelu.
 
-1. Přejděte zpět **Products.aspx** stránky.
-2. V horní části stránky prvku GridView, přidejte **popisek** a **– pole se seznamem** vyberte počet produktů pro každou kategorii, jak je znázorněno níže.
+1. Vraťte se na stránku **Products. aspx** .
+2. V horní části prvku GridView přidejte **popisek** a **pole se seznamem** pro výběr počtu produktů pro každou kategorii, jak je znázorněno níže.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample11.aspx)]
-3. Přidat **EmptyDataTemplate** do prvku GridView. Chcete-li zobrazit zprávu, když neexistují žádné kategorie s vybraný počet produktů.
+3. Do prvku GridView přidejte **šablonu EmptyDataTemplate** , aby se zobrazila zpráva, když neexistují žádné kategorie s vybraným počtem produktů.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample12.aspx)]
-4. Otevřít **Products.aspx.cs** použití modelu code-behind a přidejte následující příkaz using.
+4. Otevřete **Products.aspx.cs** kód na pozadí a přidejte následující příkaz using.
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample13.cs)]
-5. Upravit **GetCategories** metodu celé **minProductsCount** argument a filtrování vrácených výsledků. Provedete to tak, nahraďte metodu s následujícím kódem.
+5. Upravte metodu **GetCategories** pro příjem celočíselného argumentu **minProductsCount** a filtrování vrácených výsledků. Chcete-li to provést, nahraďte metodu následujícím kódem.
 
-    (Fragment - kódu *webových formulářů Lab – Ex01 - GetCategories 2*)
+    (Fragment kódu- *webové formuláře Lab-Ex01-getkategorie 2*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample14.cs)]
 
-    Nové **[ovládacího prvku]** atribut na **minProductsCount** argument vám umožní zjistit její hodnota musí být vyplněno pomocí ovládacího prvku na stránce ASP.NET. Technologie ASP.NET se najít žádný ovládací prvek odpovídající název argumentu (minProductsCount) a provést nezbytné mapování a převod na parametr vyplnit hodnoty ovládacího prvku.
+    Nový atribut **[Control]** v argumentu **minProductsCount** umožní ASP.NET, že jeho hodnota musí být naplněna pomocí ovládacího prvku na stránce. ASP.NET bude hledat všechny ovládací prvky, které odpovídají názvu argumentu (minProductsCount), a provést potřebné mapování a převod pro vyplnění parametru hodnotou ovládacího prvku.
 
-    Můžete také atribut poskytuje přetížený konstruktor, který umožňuje určit ovládací prvek, ze kterého má být získána hodnota.
+    Alternativně atribut poskytuje přetížený konstruktor, který umožňuje určit ovládací prvek, ze kterého se má získat hodnota.
 
     > [!NOTE]
-    > Jedním z cílů datové vazby funkcí je snížit objem kódu, který musí být napsaný pro interakce stránky. Kromě zprostředkovatele hodnot [ovládacího prvku] můžete použít dalších poskytovatelů vazby modelu v parametry metody. Některé z nich jsou uvedeny v úvodu úloh.
-6. Stisknutím klávesy **F5** spuštění ladění lokalitu a přejděte na stránku produktů. V rozevíracím seznamu vyberte počet produktů a Všimněte si, jak je teď aktualizovaný prvku GridView.
+    > Jedním z cílů funkcí datové vazby je snížení množství kódu, který je nutné zapsat pro interakci stránky. Kromě poskytovatele hodnot [Control] můžete použít jiné poskytovatele vazeb modelů v parametrech metody. Některé z nich jsou uvedené v úvodu k úloze.
+6. Stisknutím klávesy **F5** spusťte ladění webu a přejděte na stránku produkty. V rozevíracím seznamu vyberte počet produktů a Všimněte si, jak je prvek GridView nyní aktualizován.
 
-    ![Filtrování ovládacího prvku GridView s hodnotou rozevíracího seznamu](whats-new-in-web-forms-in-aspnet-45/_static/image5.png "filtrování ovládacího prvku GridView s hodnotou rozevíracího seznamu")
+    ![Filtrování prvku GridView s hodnotou rozevíracího seznamu](whats-new-in-web-forms-in-aspnet-45/_static/image5.png "Filtrování prvku GridView s hodnotou rozevíracího seznamu")
 
-    *Filtrování ovládacího prvku GridView s hodnotou rozevíracího seznamu*
-7. Zastavte ladění.
+    *Filtrování prvku GridView s hodnotou rozevíracího seznamu*
+7. Zastavit ladění.
 
 <a id="Task_4_-_Using_Model_Binding_for_Filtering"></a>
-#### <a name="task-4---using-model-binding-for-filtering"></a>Úloha 4 – Model pomocí vazby pro filtrování
+#### <a name="task-4---using-model-binding-for-filtering"></a>Úloha 4 – použití vazby modelu pro filtrování
 
-V této úloze přidejte druhý podřízený prvek GridView zobrazit produkty v rámci vybrané kategorie.
+V této úloze přidáte druhý podřízený prvek GridView k zobrazení produktů v rámci vybrané kategorie.
 
-1. Otevřít **Products.aspx** stránce a aktualizovat GridView automaticky vygenerovat tlačítko pro výběr kategorie.
+1. Otevřete stránku **Products. aspx** a aktualizujte pole GridView kategorií tak, aby automaticky vygenerovalo tlačítko pro výběr.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample15.aspx)]
-2. Přidejte druhý **GridView** s názvem **productsGrid** v dolní části. Nastavte **ItemType** k **WebFormsLab.Model.Product**, **DataKeyNames** k **ProductId** a **metoda SelectMethod**  k **GetProducts**. Nastavte **AutoGenerateColumns** k **false** a přidejte sloupce pro ID produktu, ProductName, popis a UnitPrice.
+2. V dolní části přidejte druhý **prvek GridView** s názvem **productsGrid** . Nastavte typ **ItemType** na **WebFormsLab. model. Product**, **DataKeyNames** na **ProductID** a vlastnost **SelectMethod** na **GetProducts**. Nastavte **AutoGenerateColumns** na **false** a přidejte sloupce pro ProductID, ProductName, Description a UnitPrice.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample16.aspx)]
-3. Otevřít **Products.aspx.cs** soubor kódu na pozadí. Implementace **GetProducts** metody přijímají ID kategorie z kategorie GridView a filtrovat produkty. Nastaví hodnotu parametru pomocí vybraný řádek v vazby modelu **categoriesGrid**. Protože název argumentu a název ovládacího prvku se neshodují, by měl zadat název ovládacího prvku v e zprostředkovateli hodnoty ovládacího prvku.
+3. Otevřete soubor kódu na pozadí **Products.aspx.cs** . Implementací metody **GetProducts** můžete získat ID kategorie z prvku GridView kategorie a filtrovat produkty. Vazba modelu nastaví hodnotu parametru pomocí vybraného řádku v **categoriesGrid**. Vzhledem k tomu, že název argumentu a název ovládacího prvku se neshodují, měli byste zadat název ovládacího prvku ve zprostředkovateli hodnoty ovládacího prvku.
 
-    (Fragment - kódu *webových formulářů Lab – Ex01 - GetProducts*)
+    (Fragment kódu – *webové formuláře Lab-Ex01-GetProducts*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample17.cs)]
 
     > [!NOTE]
-    > Tento přístup usnadňuje jednotky testování těchto metod. V kontextu testu jednotky, kde není spuštění webových formulářů, atribut [ovládacího prvku] nebude provádět žádné zvláštní akce.
-4. Otevřít **Products.aspx** stránky a vyhledejte produkty ovládacího prvku GridView. Aktualizace produktů GridView obsahovat odkaz pro úpravy vybraných produktů.
+    > Tento přístup usnadňuje testování částí těchto metod. V kontextu testování částí, kdy webové formuláře nejsou spuštěny, atribut [Control] neprovede žádnou konkrétní akci.
+4. Otevřete stránku **Products. aspx** a vyhledejte prvek GridView Products. Aktualizujte prvek GridView pro produkty, aby se zobrazil odkaz pro úpravu vybraného produktu.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample18.aspx)]
-5. Otevřít **ProductDetails.aspx** stránce použití modelu code-behind a nahraďte **SelectProduct** metodu s následujícím kódem.
+5. Otevřete stránku **ProductDetails. aspx** s kódem na pozadí a nahraďte metodu **SelectProduct** následujícím kódem.
 
-    (Fragment - kódu *webovou metodu SelectProduct Lab – Ex01 – formuláře*)
+    (Fragment kódu- *webové formuláře Lab-Ex01-SelectProduct*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample19.cs)]
 
     > [!NOTE]
-    > Všimněte si, že **[QueryString]** atribut slouží k naplnění parametru metody z parametru productId v řetězci dotazu.
-6. Stisknutím klávesy **F5** spuštění ladění lokalitu a přejděte na stránku produktů. Vyberte libovolnou kategorii z kategorií GridView a Všimněte si, že se aktualizuje produkty ovládacího prvku GridView.
+    > Všimněte si, že atribut **[QueryString]** je použit k vyplnění parametru metody z parametru ProductID v řetězci dotazu.
+6. Stisknutím klávesy **F5** spusťte ladění webu a přejděte na stránku produkty. V prvku GridView kategorie vyberte libovolnou kategorii a Všimněte si, že jsou aktualizovány informace v prvku GridView.
 
-    ![Zobrazuje produkty z vybrané kategorie](whats-new-in-web-forms-in-aspnet-45/_static/image6.png "zobrazující produkty z vybrané kategorie")
+    ![Zobrazení produktů z vybrané kategorie](whats-new-in-web-forms-in-aspnet-45/_static/image6.png "Zobrazení produktů z vybrané kategorie")
 
-    *Zobrazuje produkty z vybrané kategorie*
-7. Klikněte na tlačítko **zobrazení** odkaz na produktu a otevřete stránku ProductDetails.aspx.
+    *Zobrazení produktů z vybrané kategorie*
+7. Kliknutím na odkaz **zobrazení** na produkt otevřete stránku ProductDetails. aspx.
 
-    Všimněte si, že na stránce načítá produktu s použitím parametru productId z řetězce dotazu metoda SelectMethod.
+    Všimněte si, že stránka načítá produkt s metodou SelectMethod pomocí parametru productId z řetězce dotazu.
 
-    ![Zobrazení podrobností o produktu](whats-new-in-web-forms-in-aspnet-45/_static/image7.png "zobrazení podrobností o produktu")
+    ![Zobrazení podrobností o produktu](whats-new-in-web-forms-in-aspnet-45/_static/image7.png "Zobrazení podrobností o produktu")
 
     *Zobrazení podrobností o produktu*
 
     > [!NOTE]
-    > Možnost zadat popis HTML budou implementovány v dalším cvičení.
+    > Možnost napsat popis HTML bude implementována při dalším cvičení.
 
 <a id="Task_5_-_Using_Model_Binding_for_Update_Operations"></a>
-#### <a name="task-5---using-model-binding-for-update-operations"></a>Úloha 5: použití modelu vazby pro operace Update
+#### <a name="task-5---using-model-binding-for-update-operations"></a>Úloha 5 – použití vazby modelu pro operace aktualizace
 
-V předchozí úloze jsme použili jste vazby modelu hlavně pro výběr data, při plnění tohoto úkolu se dozvíte, jak pomocí vazby modelu v operacích aktualizace.
+V předchozím úkolu jste použili vazbu modelu hlavně pro výběr dat. v tomto úkolu se naučíte používat vazbu modelu v operacích aktualizace.
 
-Budete aktualizovat kategorie ovládacího prvku GridView, umožníte uživateli aktualizovat kategorie.
+Aktualizujete prvek GridView kategorie, aby uživatel mohl aktualizovat kategorie.
 
-1. Otevřít **Products.aspx** stránce a aktualizovat kategorie GridView automaticky generovat tlačítko Upravit a použít novou **UpdateMethod** atributy **UpdateCategory**způsob aktualizace vybranou položku.
+1. Otevřete stránku **Products. aspx** a aktualizujte pole GridView kategorií tak, aby automaticky vygenerovalo tlačítko Upravit, a pomocí nového atributu **UpdateMethod** určete metodu **UpdateCategory** pro aktualizaci vybrané položky.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample20.aspx)]
 
-    Atributu DataKeyNames v prvku GridView definovat, které jsou členy, které jedinečně identifikují objekt svázaný se model a proto, které jsou parametry, jakou metodu aktualizace by měla minimálně.
-2. Otevřít **Products.aspx.cs** soubor kódu na pozadí a implementovat **UpdateCategory** metody. Metoda by měla přijímat ID kategorie načíst aktuální kategorii, naplní hodnoty z prvku GridView a pak aktualizujte kategorii.
+    Atribut DataKeyNames v prvku GridView definuje, které jsou členy, kteří jedinečně identifikují objekt vázaný na model, a proto jsou parametry, které by metoda Update měla aspoň přijmout.
+2. Otevřete soubor kódu na pozadí **Products.aspx.cs** a Implementujte metodu **UpdateCategory** . Metoda by měla získat ID kategorie, aby se načetla aktuální kategorie, naplňte hodnoty z prvku GridView a pak kategorii aktualizovat.
 
-    (Fragment - kódu *webových formulářů Lab – Ex01 - UpdateCategory*)
+    (Fragment kódu – *webové formuláře Lab-Ex01-UpdateCategory*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample21.cs)]
 
-    Nové **TryUpdateModel** metody ve třídě stránky zodpovídá naplnění objektu modelu pomocí hodnot z ovládacích prvků na stránce. V tomto případě ho nahradit aktualizovanými hodnotami z aktuálního řádku prvku GridView upravovaný do **kategorie** objektu.
+    Nová metoda **TryUpdateModel** v třídě Page zodpovídá za naplnění objektu modelu pomocí hodnot z ovládacích prvků na stránce. V tomto případě nahradí aktualizované hodnoty z aktuálního řádku GridView upravovaného do objektu **Category** .
 
     > [!NOTE]
-    > Dalším cvičení se vysvětlují použití ModelState.IsValid pro ověřování dat zadaných uživatelem, při úpravě objektu.
-3. Spuštění tohoto webu a přejděte na stránku produktů. Upravte kategorii. Zadejte nový název a potom klikněte na tlačítko **aktualizace** a zachová tak změny.
+    > Další cvičení Vysvětlete použití ModelState. IsValid pro ověřování dat zadaných uživatelem při úpravách objektu.
+3. Spusťte web a přejdete na stránku produkty. Upravte kategorii. Zadejte nový název a kliknutím na **aktualizovat** zachovejte změny.
 
-    ![Úprava kategorií](whats-new-in-web-forms-in-aspnet-45/_static/image8.png "úpravy kategorie")
+    ![Úpravy kategorií](whats-new-in-web-forms-in-aspnet-45/_static/image8.png "Úpravy kategorií")
 
-    *Úprava kategorií*
+    *Úpravy kategorií*
 
 <a id="Exercise2"></a>
 
 <a id="Exercise_2_Data_Validation"></a>
-### <a name="exercise-2-data-validation"></a>Cvičení 2: Ověřování dat
+### <a name="exercise-2-data-validation"></a>Cvičení 2: ověření dat
 
-V tomto cvičení se dozvíte o nových funkcích ověřování dat v technologii ASP.NET 4.5. Nové funkce nerušivý ověření ve webových formulářů, bude rezervovat. Anotací dat ve třídách modelu aplikace bude používat pro ověřování uživatelského vstupu a nakonec se dozvíte, jak zapnout nebo vypnout žádost o ověření jednotlivých ovládacích prvků na stránce.
+V tomto cvičení se dozvíte o nových funkcích ověřování dat v ASP.NET 4,5. Ve webových formulářích se dozvíte o nových nenápadných funkcích ověřování. Pro ověření vstupu uživatele použijete datové poznámky v třídách aplikačního modelu a nakonec se dozvíte, jak na stránce zapnout nebo vypnout ověřování žádosti na jednotlivé ovládací prvky.
 
 <a id="Task_1_-_Unobtrusive_Validation"></a>
-#### <a name="task-1---unobtrusive-validation"></a>Úloha 1 – Nerušivý ověření
+#### <a name="task-1---unobtrusive-validation"></a>Úloha 1 – nenáročná ověření
 
-Tvary s komplexní data včetně validátory často generují příliš mnoho kódu jazyka JavaScript na stránce, což může představovat přibližně 60 % kódu. Pomocí nerušivého ověřování povoleno bude vypadat kód HTML přehlednější a tidier.
+Formuláře obsahující složitá data, včetně validátorů, obvykle generují příliš mnoho kódů JavaScriptu na stránce, což může představovat přibližně 60% kódu. Když je povolené nenáročné ověřování, váš kód HTML bude vypadat jako čistič a tidier.
 
-V této části vám umožní nerušivý ověření v technologii ASP.NET pro porovnání HTML kód vygenerovaný obě konfigurace.
+V této části povolíte nenáročné ověřování v ASP.NET k porovnání kódu HTML generovaného oběma konfiguracemi.
 
-1. Otevřete **Visual Studio 2012** a otevřete **začít** řešení nachází v **Source\Ex2 Validation\Begin** složka tohoto testovacího prostředí. Alternativně můžete pokračovat v práci na vaše stávající řešení v předchozím cvičení.
+1. Otevřete **Visual Studio 2012** a otevřete řešení **Spustit** ve složce **Source\Ex2-Validation\Begin** tohoto testovacího prostředí. Případně můžete pokračovat v práci na stávajícím řešení z předchozího cvičení.
 
-   1. Pokud jste otevřeli zadaných **začít** řešení, budete muset stáhnout některé chybějící balíčky NuGet než budete pokračovat. Chcete-li to provést v Průzkumníku řešení, klikněte na tlačítko **WebFormsLab** projektu **spravovat balíčky NuGet**.
-   2. V **spravovat balíčky NuGet** dialogového okna, klikněte na tlačítko **obnovení** aby bylo možné stáhnout chybějící balíčky.
-   3. Nakonec sestavte řešení kliknutím **sestavení** | **sestavit řešení**.
+   1. Pokud jste otevřeli poskytnuté řešení **zahájení** , budete muset před pokračováním stáhnout některé chybějící balíčky NuGet. To provedete tak, že v Průzkumník řešení kliknete na projekt **WebFormsLab** **Spravovat balíčky NuGet**.
+   2. V dialogovém okně **Spravovat balíčky NuGet** klikněte na **obnovit** , aby se stáhly chybějící balíčky.
+   3. Nakonec sestavte řešení kliknutím na **sestavit** | **Sestavit řešení**.
 
       > [!NOTE]
-      > Jednou z výhod pomocí nástroje NuGet je, že není nutné dodávat všechny knihovny ve vašem projektu, zmenšení velikosti projektu. Pomocí nástroje NuGet zadáním verze balíčku v souboru Packages.config, budete moct stáhnout požadované knihovny při prvním spuštění projektu. To je důvod, proč budete muset projít tyto kroky po otevření existujícího řešení z tohoto testovacího prostředí.
-2. Stisknutím klávesy **F5** spusťte webovou aplikaci. Přejděte k zákazníkům stránky a klikněte na tlačítko **přidání nového zákazníka** odkaz.
-3. Klikněte pravým tlačítkem na stránku v prohlížeči a vyberte **zobrazit zdroj** možnost otevření kód HTML generovanými aplikací.
+      > Jednou z výhod používání NuGet je, že nemusíte dodávat všechny knihovny v projektu, což snižuje velikost projektu. Pomocí nástrojů NuGet Power Tools zadáte verze balíčku v souboru Packages. config a při prvním spuštění projektu budete moct stáhnout všechny požadované knihovny. To je důvod, proč po otevření existujícího řešení z tohoto testovacího prostředí budete muset spustit tyto kroky.
+2. Stisknutím klávesy **F5** spusťte webovou aplikaci. Přejděte na stránku Customers (zákazníci) a klikněte na odkaz **Přidat nového zákazníka** .
+3. Klikněte pravým tlačítkem na stránku prohlížeče a výběrem možnosti **Zobrazit zdroj** otevřete kód HTML generovaný aplikací.
 
-    ![Zobrazení kódu HTML na stránce](whats-new-in-web-forms-in-aspnet-45/_static/image9.png "stránkou kódu HTML")
+    ![Zobrazení kódu HTML stránky](whats-new-in-web-forms-in-aspnet-45/_static/image9.png "Zobrazení kódu HTML stránky")
 
-    *Stránkou kódu HTML*
-4. Projděte si stránku zdrojový kód a Všimněte si, že technologie ASP.NET obsahuje vložený JavaScript kód a data validátory na stránce k provedení ověření a zobrazení seznamu chyb.
+    *Zobrazení kódu HTML stránky*
+4. Posuňte se na zdrojový kód stránky a Všimněte si, že ASP.NET vložil kód JavaScriptu a validátory dat na stránce, aby provedla ověření a zobrazila seznam chyb.
 
-    ![Ověření kódu jazyka JavaScript na stránce CustomerDetails](whats-new-in-web-forms-in-aspnet-45/_static/image10.png "kódu jazyka JavaScript ověření CustomerDetails stránce")
+    ![Kód JavaScript ověřování na stránce CustomerDetails](whats-new-in-web-forms-in-aspnet-45/_static/image10.png "Kód JavaScript ověřování na stránce CustomerDetails")
 
-    *Ověření kódu jazyka JavaScript na stránce CustomerDetails*
-5. Zavřete prohlížeč a přejděte zpět do sady Visual Studio.
-6. Nyní vám umožní nerušivý ověření. Otevřít **Web.Config** a vyhledejte **ValidationSettings:UnobtrusiveValidationMode** klíče v **AppSettings** části **.** Nastavte hodnotu klíče na **webových formulářů**.
+    *Kód JavaScript ověřování na stránce CustomerDetails*
+5. Zavřete prohlížeč a vraťte se do sady Visual Studio.
+6. Nyní povolíte nenáročné ověřování. Otevřete soubor **Web. config** a vyhledejte v části **appSettings** klíč **ValidationSettings: UnobtrusiveValidationMode** **.** Nastavte hodnotu klíče na **WebForms**.
 
     [!code-xml[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample22.xml)]
 
     > [!NOTE]
-    > Tuto vlastnost lze nastavit &quot; **stránky\_zatížení** &quot; událost v případě budete chtít povolit pouze pro některé stránky Nerušivý ověření.
-7. Otevřít **CustomerDetails.aspx** a stiskněte klávesu **F5** spusťte webovou aplikaci.
-8. Stisknutím klávesy F12 otevřete Nástroje pro vývojáře aplikace Internet Explorer. Jakmile nástroje pro vývojáře se otevře, vyberte kartu skriptu. Vyberte **CustomerDetails.aspx** v nabídce a využijte byly načteny, že skripty požadované pro spuštění na stránce jQuery poznámku do prohlížeče z místní lokality.
+    > Tuto vlastnost můžete také nastavit na **stránce &quot;\_událost Load**&quot; pro případ, že chcete povolit nenáročná ověřování pouze pro některé stránky.
+7. Otevřete **CustomerDetails. aspx** a stisknutím klávesy **F5** spusťte webovou aplikaci.
+8. Stisknutím klávesy F12 otevřete nástroje pro vývojáře IE. Po otevření nástrojů pro vývojáře vyberte kartu skript. z nabídky vyberte **CustomerDetails. aspx** a Všimněte si, že skripty potřebné ke spuštění jQuery na stránce byly načteny do prohlížeče z místní lokality.
 
-    ![Načítání jQuery JavaScript soubory přímo z místního serveru služby IIS](whats-new-in-web-forms-in-aspnet-45/_static/image11.png "načítání jQuery JavaScript soubory přímo z místního serveru služby IIS")
+    ![Načítání souborů JavaScriptu jQuery přímo z místního serveru služby IIS](whats-new-in-web-forms-in-aspnet-45/_static/image11.png "Načítání souborů JavaScriptu jQuery přímo z místního serveru služby IIS")
 
-    *Načtení souborů JavaScriptu jQuery přímo z místního serveru služby IIS*
-9. Zavřete prohlížeč se vraťte do sady Visual Studio. Otevřít **Site.Master** soubor znovu a najít **ScriptManager**. Přidejte atribut **EnableCdn** vlastnost s hodnotou **True**. Tato akce vynutí jQuery, který se má načíst z online adresy URL, nikoli z adresy URL místního webu.
-10. Otevřít **CustomerDetails.aspx** v sadě Visual Studio. Stiskněte klávesu F5 ke spuštění tohoto webu. Jakmile se otevře aplikace Internet Explorer, stisknutím klávesy F12 otevřete Nástroje pro vývojáře. Vyberte **skript** kartu a potom se podívejte na rozevírací seznam. Všimněte si, že se z místní lokality, ale spíš z online jQuery CDN už načítání souborů jQuery jazyka JavaScript.
+    *Načítání souborů JavaScriptu jQuery přímo z místního serveru služby IIS*
+9. Zavřete prohlížeč a vraťte se do sady Visual Studio. Znovu otevřete soubor **Web. Master** a vyhledejte **ScriptManager**. Přidejte vlastnost **EnableCdn** atributu s hodnotou **true**. Vynutí se tak, aby jQuery bylo načteno z adresy URL online, nikoli z adresy URL místního webu.
+10. Otevřete **CustomerDetails. aspx** v aplikaci Visual Studio. Stisknutím klávesy F5 spusťte Web. Po otevření Internet Exploreru stiskněte klávesu F12 a otevřete nástroje pro vývojáře. Vyberte kartu **skript** a potom se podívejte na rozevírací seznam. Všimněte si, že se už nenačítá soubory JavaScriptu pro JavaScript z místní lokality, ale místo z online jQuery CDN.
 
-    ![Načítání jQuery JavaScript soubory z CDN](whats-new-in-web-forms-in-aspnet-45/_static/image12.png "načítání jQuery JavaScript soubory z CDN")
+    ![Načítání souborů JavaScriptu jQuery z CDN](whats-new-in-web-forms-in-aspnet-45/_static/image12.png "Načítání souborů JavaScriptu jQuery z CDN")
 
-    *Načtení souborů JavaScriptu jQuery z CDN*
-11. Otevřete zdrojový kód HTML stránky znovu pomocí možnosti zobrazení zdroje v prohlížeči. Všimněte si, že tím, že umožňuje nerušivý ověřování ASP.NET nahradil vložený kód jazyka JavaScript data - \*atributy.
+    *Načítání souborů JavaScriptu jQuery z CDN*
+11. Znovu otevřete zdrojový kód stránky HTML pomocí možnosti zobrazit zdroj v prohlížeči. Všimněte si, že povolením nenáročného ověřování ASP.NET nahradili vložený kód jazyka JavaScript pomocí atributů \*dat.
 
-    ![Kód pro ověření nerušivého](whats-new-in-web-forms-in-aspnet-45/_static/image13.png "Nerušivý ověřovací kód")
+    ![Nenápadný ověřovací kód](whats-new-in-web-forms-in-aspnet-45/_static/image13.png "Nenápadný ověřovací kód")
 
-    *Kód pro ověření nerušivého*
+    *Nenápadný ověřovací kód*
 
     > [!NOTE]
-    > V tomto příkladu jste viděli, jak se zjednodušenou souhrnu s anotací dat při ověřování jenom pár HTML a JavaScript řádků. Dříve bez nerušivý ověřování, další validačních ovládacích prvků, které přidáte, tím větší kód pro ověření jazyka JavaScript se zvýší.
+    > V tomto příkladu jste viděli, jak se souhrn ověření s poznámkami k datům zjednodušil jenom na několik řádků HTML a JavaScript. Dříve, bez neúspěšného ověření, bude lepší ovládací prvky ověřování, které přidáte, tím větší bude růst kód pro ověření JavaScriptu.
 
 <a id="Task_2_-_Validating_the_Model_with_Data_Annotations"></a>
-#### <a name="task-2---validating-the-model-with-data-annotations"></a>Úloha 2 – ověření modelu s anotacemi dat
+#### <a name="task-2---validating-the-model-with-data-annotations"></a>Úloha 2 – ověření modelu pomocí datových poznámek
 
-ASP.NET 4.5 zavádí poznámky ověření dat pro webové formuláře. Namísto toho, aby ovládací prvek ověření na každý vstup, teď můžete definovat omezení ve třídách modelu a jejich použití ve vaší webové aplikace. V této části se dozvíte, jak používat anotacemi dat pro ověření nový/upravit formulář zákazníka.
+ASP.NET 4,5 zavádí pro webové formuláře ověřování datových poznámek. Místo toho, abyste měli ovládací prvek ověřování u každého vstupu, teď můžete definovat omezení v třídách modelu a používat je napříč všemi vašimi webovými aplikacemi. V této části se dozvíte, jak používat datové poznámky k ověření formuláře pro nový/upravit zákazníka.
 
-1. Otevřít **CustomerDetail.aspx** stránky. Všimněte si, že zákazník nejprve pojmenujte a druhý v **EditItemTemplate** a **InsertItemTemplate** oddíly se ověřují pomocí ovládacích prvků RequiredFieldValidator. Každý program pro ověření je přidružená k určitou podmínku, takže je potřeba zahrnout tolik validátory jako podmínek pro kontrolu.
-2. Přidání anotací dat při ověření třídy modelu zákazníka. Otevřít **Customer.cs** třídy v **modelu** složky a *uspořádání* každou vlastnost pomocí atributů dat poznámky.
+1. Otevřete stránku **CustomerDetail. aspx** . Všimněte si, že křestní jméno zákazníka a druhý název v sekcích **EditItemTemplate** a **Šablona InsertItemTemplate** se ověřují pomocí ovládacích prvků RequiredFieldValidator. Každý validátor je přidružen ke konkrétní podmínce, takže musíte zahrnout tolik validátorů jako podmínky kontroly.
+2. Přidejte datové poznámky pro ověření třídy modelu zákazníka. Otevřete třídu **Customer.cs** ve složce **modelu** a *naupravte* jednotlivé vlastnosti pomocí atributů datových poznámek.
 
-    (Fragment - kódu *webových formulářů Lab – Ex02 - datových poznámek*)
+    (Fragment kódu – *webové formuláře Lab – Ex02 – datové poznámky*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample23.cs)]
 
     > [!NOTE]
-    > Rozhraní .NET framework 4.5 rozšířeno existující kolekci poznámek data. Zde je několik příkladů poznámek dat můžete použít: [CreditCard], [Phone], [EmailAddress], [Oblast], [porovnat], [Url], [FileExtensions], [povinné], [Key], [regulární výraz].
+    > .NET Framework 4,5 rozšířil existující kolekci poznámek k datům. Tady jsou některé poznámky k datům, které můžete použít: [CreditCard], [telefon], [EmailAddress], [rozsah], [Compare], [URL], [přípony a rozšíření], [povinné], [klíč], [RegularExpression].
     > 
     > Některé příklady použití:
     > 
-    > [Key]: Specifies that an attribute is the unique identifier
+    > [Klíč]: Specifies that an attribute is the unique identifier
     > 
     > [Range(0.4, 0.5, ErrorMessage=&quot;{Write an error message}&quot;]: Double range
     > 
     > [EmailAddress(ErrorMessage=&quot;Invalid Email&quot;), MaxLength(56)]: Two annotations in the same line.
     > 
-    > Můžete také definovat vlastní chybové zprávy v rámci každého atributu.
-3. Otevřít **CustomerDetails.aspx** a odeberte všechny RequiredFieldValidators pro pole jméno a příjmení v oddílech v EditItemTemplate a InsertItemTemplate ovládacího prvku FormView.
+    > V rámci každého atributu můžete také definovat vlastní chybové zprávy.
+3. Otevřete **CustomerDetails. aspx** a odeberte všechny RequiredFieldValidators pro pole jméno a příjmení v částech EditItemTemplate a šablona InsertItemTemplate ovládacího prvku FormView.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample24.aspx)]
 
     > [!NOTE]
-    > Jednou z výhod používání datových poznámek je, že logiku ověřování není duplikovaná na stránkách aplikace. Po definování v modelu a použít na všech stránkách aplikace, které zpracovávají data.
-4. Otevřít **CustomerDetails.aspx** použití modelu code-behind a vyhledejte metodu SaveCustomer. Tato metoda je volána při vložení nového zákazníka a přijímá parametr zákazníků od hodnoty ovládacího prvku FormView. Při mapování mezi stránce ovládací prvky a parametrem objektu dojde k ASP.NET spustí ověření modelu pro všechny atributy anotace dat a vyplnit ModelState slovníku k chybám došlo, pokud existuje.
+    > Jednou z výhod použití datových poznámek je, že logika ověřování není na stránkách aplikace duplikována. V modelu je nadefinujete a použijete ji na všech stránkách aplikace, které pracují s daty.
+4. Otevřete **CustomerDetails. aspx** Code a vyhledejte metodu SaveCustomer. Tato metoda je volána při vkládání nového zákazníka a přijímá parametr zákazníka z hodnot ovládacího prvku FormView. Když dojde k mapování mezi ovládacími prvky stránky a objektem parametru, ASP.NET spustí ověřování modelu proti všem atributům datových poznámek a vyplní slovník ModelState o zjištěné chyby, pokud existují.
 
-    ModelState.IsValid pouze vrátí hodnotu true, pokud všechna pole v modelu jsou platné po provedení ověření.
+    ModelState. IsValid vrátí hodnotu true pouze v případě, že všechna pole v modelu jsou po provedení ověření platná.
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample25.cs)]
-5. Přidat **ValidationSummary** ovládacího prvku na konci stránky CustomerDetails zobrazíte seznam chyb modelu.
+5. Na konec stránky CustomerDetails přidejte ovládací prvek **ovládací souhrnu ověření** , který zobrazí seznam chyb modelu.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample26.aspx)]
 
-    **ShowModelStateErrors** je nová vlastnost souhrnu ověření ovládacího prvku, pokud je nastavena na **true**, ovládací prvek se zobrazí chyby ze slovníku ModelState. Tyto chyby pocházejí z ověřování dat poznámky.
-6. Stisknutím klávesy **F5** ke spuštění webové aplikace. Vyplňte formulář s chybné hodnoty a klikněte na tlačítko **Uložit** k provedení ověření. Všimněte si, že chyba souhrnu v dolní části.
+    **ShowModelStateErrors** je nová vlastnost v ovládacím prvku ovládací souhrnu ověření, která Pokud je nastavena na **hodnotu true**, ovládací prvek zobrazí chyby ze slovníku ModelState. Tyto chyby pocházejí z ověřování datových poznámek.
+6. Stisknutím klávesy **F5** spusťte webovou aplikaci. Vyplňte formulář s některými chybnými hodnotami a kliknutím na **Uložit** spusťte ověřování. Všimněte si souhrnu chyb v dolní části.
 
-    ![Ověřování s anotacemi dat](whats-new-in-web-forms-in-aspnet-45/_static/image14.png "ověřování s anotacemi dat")
+    ![Ověřování pomocí datových poznámek](whats-new-in-web-forms-in-aspnet-45/_static/image14.png "Ověřování pomocí datových poznámek")
 
-    *Ověřování s anotacemi dat*
+    *Ověřování pomocí datových poznámek*
 
 <a id="Task_3_-_Handling_Custom_Database_Errors_with_ModelState"></a>
-#### <a name="task-3---handling-custom-database-errors-with-modelstate"></a>Úloha 3 – zpracování chyb vlastní databázi s ModelState
+#### <a name="task-3---handling-custom-database-errors-with-modelstate"></a>Úloha 3 – zpracování chyb vlastních databází pomocí ModelState
 
-V předchozí verzi aplikace webových formulářů může zpracování chyb databáze, jako je řetězec příliš dlouhý nebo porušení jedinečného klíče zahrnovat generování výjimek ve vašem úložišti kódu a pak na zpracování výjimek ve vašich kódu zobrazuje chybu. Velké množství kódu, je potřeba udělat něco poměrně jednoduché.
+V předchozí verzi webových formulářů zpracování chyb databáze, jako je příliš dlouhý řetězec nebo porušení jedinečného klíče, může zahrnovat vyvolání výjimek v kódu úložiště a následné zpracování výjimek v kódu na pozadí, aby se zobrazila chyba. K tomu je potřeba Skvělé množství kódu, abyste mohli něco poměrně snadno udělat.
 
-V aplikaci Web Forms 4.5 objekt ModelState slouží k zobrazení chyb na stránce z vašeho modelu nebo z databáze, konzistentním způsobem.
+Ve webových formulářích 4,5 lze objekt ModelState použít k zobrazení chyb na stránce, a to buď z modelu, nebo z databáze, konzistentním způsobem.
 
-V této úloze přidáte kód ke správné zpracování výjimek databáze a zobrazit odpovídající zprávu pro uživatele pomocí objektu ModelState.
+V této úloze přidáte kód pro správné zpracování výjimek databáze a zobrazíte příslušnou zprávu uživateli pomocí objektu ModelState.
 
-1. Zatímco aplikace stále běží, pokuste se aktualizovat název kategorie pomocí duplicitní hodnoty.
+1. I když je aplikace stále spuštěná, zkuste aktualizovat název kategorie pomocí duplicitní hodnoty.
 
-    ![Aktualizuje se kategorie s duplicitním názvem](whats-new-in-web-forms-in-aspnet-45/_static/image15.png "aktualizuje kategorii s duplicitním názvem")
+    ![Aktualizace kategorie s duplicitním názvem](whats-new-in-web-forms-in-aspnet-45/_static/image15.png "Aktualizace kategorie s duplicitním názvem")
 
-    *Aktualizuje se kategorie s duplicitním názvem*
+    *Aktualizace kategorie s duplicitním názvem*
 
-    Všimněte si, že dojde k výjimce z důvodu &quot;jedinečný&quot; omezení **CategoryName** sloupce.
+    Všimněte si, že výjimka je vyvolána z důvodu &quot;jedinečné omezení&quot; sloupce **NázevKategorie** .
 
-    ![Výjimky pro názvy duplicitních kategorií](whats-new-in-web-forms-in-aspnet-45/_static/image16.png "výjimky pro názvy duplicitních kategorií")
+    ![Výjimka pro duplicitní názvy kategorií](whats-new-in-web-forms-in-aspnet-45/_static/image16.png "Výjimka pro duplicitní názvy kategorií")
 
-    *Výjimky pro názvy duplicitních kategorií*
-2. Zastavte ladění. V **Products.aspx.cs** soubor kódu na pozadí, aktualizace **UpdateCategory** metoda zpracovat výjimky vyvolané z databáze. Metoda SaveChanges() volání a přidejte chybu **ModelState** objektu.
+    *Výjimka pro duplicitní názvy kategorií*
+2. Zastavit ladění. V souboru kódu na pozadí **Products.aspx.cs** aktualizujte metodu **UpdateCategory** pro zpracování výjimek vyvolaných databází. Metoda SaveChanges () volá a přidá chybu do objektu **ModelState** .
 
-    Nové **TryUpdateModel** metoda aktualizuje objekt kategorie načtených z databáze pomocí data formuláře zadaná uživatelem.
+    Nová metoda **TryUpdateModel** aktualizuje objekt kategorie načtený z databáze pomocí dat formuláře zadaného uživatelem.
 
-    (Fragment - kódu *webových formulářů Lab – Ex02 - UpdateCategory zpracování chyb*)
+    (Fragment kódu – *webové formuláře Lab-Ex02-UpdateCategory chyby zpracování*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample27.cs)]
 
     > [!NOTE]
-    > V ideálním případě je třeba určit příčinu DbUpdateException a zkontrolujte, jestli je hlavní příčinou porušení omezení unique key.
-3. Otevřít **Products.aspx** a přidejte **ValidationSummary** ovládacího prvku pod kategorií GridView zobrazíte seznam chyb modelu.
+    > V ideálním případě by bylo nutné určit příčinu DbUpdateException a ověřit, zda je hlavní příčinou porušení omezení jedinečného klíče.
+3. Otevřete **Products. aspx** a přidejte ovládací prvek **ovládací souhrnu ověření** pod položku kategorie GridView, aby se zobrazil seznam chyb modelu.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample28.aspx)]
-4. Spuštění tohoto webu a přejděte na stránku produktů. Zkuste aktualizovat název kategorie pomocí duplicitní hodnoty.
+4. Spusťte web a přejdete na stránku produkty. Zkuste aktualizovat název kategorie pomocí duplicitní hodnoty.
 
-    Všimněte si, že výjimka byla zpracována a zobrazí se chybová zpráva v **ValidationSummary** ovládacího prvku.
+    Všimněte si, že výjimka byla zpracována a chybová zpráva se zobrazí v ovládacím prvku **ovládací souhrnu ověření** .
 
-    ![Duplicitní kategorie chyby](whats-new-in-web-forms-in-aspnet-45/_static/image17.png "duplicitní kategorie chyby")
+    ![Chyba duplicitní kategorie](whats-new-in-web-forms-in-aspnet-45/_static/image17.png "Chyba duplicitní kategorie")
 
     *Chyba duplicitní kategorie*
 
 <a id="Task_4_-_Request_Validation_in_ASPNET_Web_Forms_45"></a>
-#### <a name="task-4---request-validation-in-aspnet-web-forms-45"></a>Úloha 4 – žádost o ověření ve webových formulářích ASP.NET 4.5
+#### <a name="task-4---request-validation-in-aspnet-web-forms-45"></a>Úloha 4 – požadavek na ověření ve webových formulářích ASP.NET 4,5
 
-Žádosti o ověření funkce v technologii ASP.NET poskytuje určitou úroveň výchozí ochranu před útoky skriptování napříč weby (XSS). V předchozích verzích technologie ASP.NET žádost o ověření se ve výchozím nastavení povolené a může být pouze zakázáno pro celou stránku. V nové verzi webových formulářů ASP.NET teď můžete zakázat ověření žádosti pro jeden ovládací prvek, provádět ověřování požadavků opožděné nebo přístup k datům bez ověřeného požadavku (buďte opatrní, pokud tak učiníte!).
+Funkce ověření žádosti v ASP.NET poskytuje určitou úroveň výchozí ochrany proti útokům prostřednictvím skriptování mezi weby (XSS). V předchozích verzích ASP.NET bylo ověření žádosti ve výchozím nastavení povolené a bylo možné ho zakázat jenom pro celou stránku. S novou verzí webových formulářů ASP.NET teď můžete zakázat ověření žádosti pro jeden ovládací prvek, provést ověřování opožděným požadavkem nebo získat přístup k neověřeným datům žádostí (Buďte opatrní, pokud to uděláte!).
 
-1. Stisknutím klávesy **Ctrl + F5** spustit bez ladění lokalitu a přejděte na stránku produktů. Vyberte kategorii a potom klikněte na tlačítko **upravit** odkaz na všech produktů.
-2. Zadejte popis obsahující potenciálně nebezpečný obsah, například včetně značky HTML. Přijmout oznámení o výjimce z důvodu ověření žádosti.
+1. Stisknutím **kombinace kláves CTRL + F5** web spusťte bez ladění a přejděte na stránku produkty. Vyberte kategorii a pak klikněte na odkaz **Upravit** na libovolném z produktů.
+2. Zadejte popis, který obsahuje potenciálně nebezpečný obsah, například značky HTML. Vezměte v úvahu výjimku vyvolanou v důsledku ověření žádosti.
 
-    ![Úpravy produkt s potenciálně nebezpečný obsah](whats-new-in-web-forms-in-aspnet-45/_static/image18.png "úpravy produkt s potenciálně nebezpečný obsah")
+    ![Úprava produktu s potenciálně nebezpečným obsahem](whats-new-in-web-forms-in-aspnet-45/_static/image18.png "Úprava produktu s potenciálně nebezpečným obsahem")
 
-    *Úpravy produkt s potenciálně nebezpečný obsah*
+    *Úprava produktu s potenciálně nebezpečným obsahem*
 
-    ![Z důvodu ověření žádosti došlo k výjimce](whats-new-in-web-forms-in-aspnet-45/_static/image19.png "výjimce z důvodu ověření žádosti")
+    ![Vyvolaná výjimka kvůli ověření žádosti](whats-new-in-web-forms-in-aspnet-45/_static/image19.png "Vyvolaná výjimka kvůli ověření žádosti")
 
-    *Výjimka vyvolaná z důvodu ověření žádosti*
-3. Zavřete stránku a v sadě Visual Studio, stiskněte klávesu **SHIFT + F5** chcete zastavit ladění.
-4. Otevřít **ProductDetails.aspx** stránky a vyhledejte **popis** textového pole.
-5. Přidejte nové **ValidateRequestMode** vlastnost do textového pole a nastavte jej na hodnotu **zakázané**.
+    *Vyvolaná výjimka kvůli ověření žádosti*
+3. Zavřete stránku a v aplikaci Visual Studio stisknutím kláves **SHIFT + F5** Zastavte ladění.
+4. Otevřete stránku **ProductDetails. aspx** a vyhledejte textové pole **Popis** .
+5. Do textového pole přidejte novou vlastnost **ValidateRequestMode** a nastavte její hodnotu na **disabled (zakázáno**).
 
-    Nové **ValidateRequestMode** atribut umožňuje zakázat ověření žádosti o zásady na každý ovládací prvek. To je užitečné, pokud chcete používat vstup, který může přijímat kód HTML, ale chceme zajistit ověřování práce pro zbývající části stránky.
+    Nový atribut **ValidateRequestMode** vám umožňuje v každém ovládacím prvku zablokovat podrobné ověřování požadavků. To je užitečné, pokud chcete použít vstup, který může obdržet kód HTML, ale chcete, aby ověřování fungovalo pro zbytek stránky.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample29.aspx)]
-6. Stisknutím klávesy **F5** ke spuštění webové aplikace. Na stránce produktu úpravy znovu otevřete a dokončete popis produktu, včetně značky HTML. Všimněte si, že teď přidáte obsah ve formátu HTML k popisu.
+6. Stisknutím klávesy **F5** spusťte webovou aplikaci. Otevřete znovu stránku Upravit produkt a dokončete Popis produktu včetně značek HTML. Všimněte si, že teď můžete do popisu přidat obsah HTML.
 
-    ![Žádost o ověření pro popis produktu zakázané](whats-new-in-web-forms-in-aspnet-45/_static/image20.png "žádost o ověření zakázáno pro popis produktu")
+    ![Požadavek na ověření pro popis produktu zakázán](whats-new-in-web-forms-in-aspnet-45/_static/image20.png "Požadavek na ověření pro popis produktu zakázán")
 
-    *Žádost o ověření zakázáno pro popis produktu*
-
-    > [!NOTE]
-    > V produkční aplikace by měla úpravu kódu HTML zadaného uživatelem, aby se zajistilo se zadávají pouze bezpečné značky HTML (například neexistují žádné &lt;skript&gt; značky). K tomuto účelu můžete použít [knihovny ochrany Web Microsoft](https://www.nuget.org/packages/AntiXSS).
-7. Upravte produkt znovu. Do pole Název zadejte kód HTML a klikněte na tlačítko **Uložit**. Všimněte si, že žádost o ověření je zakázané pouze pro pole Popis a zbývající pole re stále ověřen potenciálně nebezpečný obsah.
-
-    ![Žádost o ověření povolené ve zbývající části pole](whats-new-in-web-forms-in-aspnet-45/_static/image21.png "žádost o ověření povolené ve zbývající části pole")
-
-    *Ověření žádosti povoleno ve zbývající části pole*
-
-    Webové formuláře ASP.NET 4.5 obsahuje nový režim ověření požadavku laxně provádět ověřování požadavků. S režimem ověření požadavku nastavte na **4.5**, pokud se část kódu přístupy *Request.Form [&quot;klíč&quot;]*, technologii ASP.NET 4.5 žádost o ověření budou pro aktivaci jenom ověření požadavku. pro tento konkrétní element v kolekci formuláře.
-
-    Kromě toho ASP.NET 4.5 nyní obsahuje základní rutiny kódování z knihovny Microsoft Antimalware XSS v4.0. Rutiny kódování jsou implementovány pomocí nového Anti-XSS *AntiXssEncoder* typ nalezen v novém **System.Web.Security.AntiXss** oboru názvů. S **encoderType** parametr nakonfigurován na použití *AntiXssEncoder*, veškerý výstup kódování automaticky v rámci technologie ASP.NET používá nové rutiny pro kódování.
-8. ASP.NET 4.5 žádost o ověření také podporuje zrušení ověřený přístup k datům požadavku. ASP.NET 4.5 přidá nová vlastnost kolekce **HttpRequest** objektu s názvem **Unvalidated**. Když přejdete do **HttpRequest.Unvalidated** mají přístup ke všem běžné údaje žádosti o data, včetně formulářů, řetězci dotazu, soubory cookie, adresy URL a tak dále.
-
-    ![Objekt Request.Unvalidated](whats-new-in-web-forms-in-aspnet-45/_static/image22.png "Request.Unvalidated objektu")
-
-    *Objekt Request.Unvalidated*
+    *Požadavek na ověření pro popis produktu zakázán*
 
     > [!NOTE]
-    > **Použijte prosím vlastnost HttpRequest.Unvalidated opatrně!** Ujistěte se, že provádíte pečlivě vlastní ověřovací požadavek nezpracovaných dat zajistíte, že není nebezpečné text odbavovaná a vykreslen si zákazníci!
+    > V produkční aplikaci byste měli upravit kód HTML zadaný uživatelem, aby se zajistilo, že se zadají jenom bezpečné značky HTML (například nejsou k dispozici žádné &lt;značky&gt; skriptu). K tomu můžete použít [knihovnu Microsoft Web Protection Library](https://www.nuget.org/packages/AntiXSS).
+7. Upravte produkt znovu. Do pole název zadejte kód HTML a klikněte na **Uložit**. Všimněte si, že žádosti o ověření jsou zakázané jenom pro pole Popis a zbývající pole se znovu ověřují proti potenciálně nebezpečnému obsahu.
+
+    ![Žádost o ověření povolena ve zbývajících polích](whats-new-in-web-forms-in-aspnet-45/_static/image21.png "Žádost o ověření povolena ve zbývajících polích")
+
+    *Žádost o ověření povolena ve zbývajících polích*
+
+    Webové formuláře ASP.NET 4,5 obsahují nový režim ověřování žádostí, který provede ověření žádosti laxně vytvářená. V případě, že je v režimu ověření žádosti nastavena na **4,5**, je-li část kódu přistupuje k *žádosti. formulář [&quot;Key&quot;]* , ověření žádosti ASP.NET 4.5 spustí pouze ověření žádosti pro tento konkrétní prvek v kolekci formulářů.
+
+    Kromě toho ASP.NET 4,5 teď obsahuje základní rutiny kódování z knihovny Microsoft Anti-XSS Library v 4.0. Rutiny kódování anti-XSS jsou implementované novým typem *AntiXssEncoder* , který najdete v oboru názvů New **System. Web. Security. AntiXSS** . S parametrem **encoderType** nakonfigurovaným pro použití *AntiXssEncoder*, všechna výstupní kódování v rámci ASP.NET automaticky používá nové rutiny kódování.
+8. Ověření žádosti ASP.NET 4,5 také podporuje neověřený přístup k žádostem o data. ASP.NET 4,5 přidá novou vlastnost kolekce do objektu **HttpRequest** s názvem **unvalidateed**. Když přejdete do **HttpRequest. Neověřeno** máte přístup ke všem běžným datům požadavků, včetně formulářů, querystrings, souborů cookie, adres URL a tak dále.
+
+    ![Request. unvalidateed – objekt](whats-new-in-web-forms-in-aspnet-45/_static/image22.png "Request. unvalidateed – objekt")
+
+    *Request. unvalidateed – objekt*
+
+    > [!NOTE]
+    > **Použijte prosím vlastnost HttpRequest. unvalidateed s opatrností!** Ujistěte se, že jste pečlivě provedli vlastní ověření u nezpracovaných dat požadavků, abyste zajistili, že netripý text nebudete zaokrouhlit na nepodezřelé zákazníky.
 
 <a id="Exercise3"></a>
 
 <a id="Exercise_3_Asynchronous_Page_Processing_in_ASPNET_Web_Forms"></a>
-### <a name="exercise-3-asynchronous-page-processing-in-aspnet-web-forms"></a>Cvičení 3: Asynchronní zpracování stránky v ASP.NET Web Forms
+### <a name="exercise-3-asynchronous-page-processing-in-aspnet-web-forms"></a>Cvičení 3: asynchronní zpracování stránky ve webových formulářích ASP.NET
 
-V tomto cvičení vám představíme novou stránku asynchronní zpracování funkce ve webových formulářů ASP.NET.
+V tomto cvičení se zavedete na nové funkce asynchronního zpracování stránky ve webových formulářích ASP.NET.
 
 <a id="Task_1_-_Updating_the_Product_Details_Page_to_Upload_and_Show_Images"></a>
-#### <a name="task-1---updating-the-product-details-page-to-upload-and-show-images"></a>Úloha 1 – aktualizaci produktu stránka k nahrání a zobrazit obrázky podrobností
+#### <a name="task-1---updating-the-product-details-page-to-upload-and-show-images"></a>Úloha 1 – aktualizace stránky s podrobnostmi o produktu pro nahrávání a zobrazování imagí
 
-V této úloze budete aktualizovat na stránce podrobností produktu umožňující uživateli zadat adresu URL obrázku pro produkt a zobrazit v zobrazení jen pro čtení. Stáhněte si ji synchronně vytvoříte místní kopii zadané bitové kopie. V dalším úkolem aktualizujte tuto implementaci, aby to fungovalo asynchronně.
+V této úloze aktualizujete stránku s podrobnostmi o produktu, aby uživatel mohl zadat adresu URL obrázku pro daný produkt a zobrazit ho v zobrazení jen pro čtení. Místní kopii zadané image vytvoříte tak, že ji stáhnete synchronně. V další úloze aktualizujete tuto implementaci, aby fungovala asynchronně.
 
-1. Otevřít **Visual Studio 2012** a zatížení **začít** řešení nachází v **Source\Ex3 Async\Begin** ze složky v tomto testovacím prostředí. Alternativně můžete pokračovat v práci na vaše stávající řešení v předchozím cvičení.
+1. Otevřete **Visual Studio 2012** a z této složky testovacího prostředí načtěte řešení **Begin** , které najdete v **Source\Ex3-Async\Begin** . Případně můžete pokračovat v práci na stávajícím řešení z předchozích cvičení.
 
-   1. Pokud jste otevřeli zadaných **začít** řešení, budete muset stáhnout některé chybějící balíčky NuGet než budete pokračovat. Chcete-li to provést v Průzkumníku řešení, klikněte na tlačítko **WebFormsLab** projektu a vyberte **spravovat balíčky NuGet**.
-   2. V **spravovat balíčky NuGet** dialogového okna, klikněte na tlačítko **obnovení** aby bylo možné stáhnout chybějící balíčky.
-   3. Nakonec sestavte řešení kliknutím **sestavení** | **sestavit řešení**.
+   1. Pokud jste otevřeli poskytnuté řešení **zahájení** , budete muset před pokračováním stáhnout některé chybějící balíčky NuGet. Provedete to tak, že v Průzkumník řešení kliknete na projekt **WebFormsLab** a vyberete **Spravovat balíčky NuGet**.
+   2. V dialogovém okně **Spravovat balíčky NuGet** klikněte na **obnovit** , aby se stáhly chybějící balíčky.
+   3. Nakonec sestavte řešení kliknutím na **sestavit** | **Sestavit řešení**.
 
       > [!NOTE]
-      > Jednou z výhod pomocí nástroje NuGet je, že není nutné dodávat všechny knihovny ve vašem projektu, zmenšení velikosti projektu. Pomocí nástroje NuGet zadáním verze balíčku v souboru Packages.config, budete moct stáhnout požadované knihovny při prvním spuštění projektu. To je důvod, proč budete muset projít tyto kroky po otevření existujícího řešení z tohoto testovacího prostředí.
-2. Otevřít **ProductDetails.aspx** stránce zdroje a přidat pole do ovládacího prvku FormView ItemTemplate zobrazíte bitovou kopii produktu.
+      > Jednou z výhod používání NuGet je, že nemusíte dodávat všechny knihovny v projektu, což snižuje velikost projektu. Pomocí nástrojů NuGet Power Tools zadáte verze balíčku v souboru Packages. config a při prvním spuštění projektu budete moct stáhnout všechny požadované knihovny. To je důvod, proč po otevření existujícího řešení z tohoto testovacího prostředí budete muset spustit tyto kroky.
+2. Otevřete zdroj stránky **ProductDetails. aspx** a přidejte pole do šablony ItemTemplate třídy FormView, kde zobrazíte obrázek produktu.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample30.aspx)]
-3. Přidáte pole, které chcete zadat adresu URL obrázku ve třídě FormView EditTemplate.
+3. Přidejte pole k určení adresy URL obrázku v EditTemplate třídy FormView.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample31.aspx)]
-4. Otevřít **ProductDetails.aspx.cs** použití modelu code-behind a přidejte následující direktivy oboru názvů.
+4. Otevřete soubor kódu na pozadí **ProductDetails.aspx.cs** a přidejte následující direktivy oboru názvů.
 
-    (Fragment - kódu *webových formulářů Lab – Ex03 - obory názvů*)
+    (Fragment kódu – *webové formuláře Lab-Ex03-Namespaces*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample32.cs)]
-5. Vytvoření **UpdateProductImage** metoda k ukládání imagí vzdálený místní **Imagí** složky a aktualizace entitou produkt s novou hodnotu bitové kopie umístění.
+5. Vytvořte metodu **UpdateProductImage** pro ukládání vzdálených imagí do složky místních **imagí** a aktualizujte entitu produkt o novou hodnotu umístění bitové kopie.
 
-    (Fragment - kódu *webových formulářů Lab – Ex03 - UpdateProductImage*)
+    (Fragment kódu – *webové formuláře Lab-Ex03-UpdateProductImage*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample33.cs)]
-6. Aktualizace **UpdateProduct** metoda se má volat **UpdateProductImage** metody.
+6. Aktualizujte metodu **UpdateProduct** pro volání metody **UpdateProductImage** .
 
-    (Fragment - kódu *webových formulářů Lab – Ex03 - UpdateProductImage volání*)
+    (Fragment kódu – *webové formuláře Lab – Ex03 – volání UpdateProductImage*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample34.cs)]
-7. Spusťte aplikaci a zkuste nahrát obrázek pro produkt. Například můžete použít následující adresu URL image z Galerie umění Office: [[http://officeimg.vo.msecnd.net/images/MB900437099.jpg](http://officeimg.vo.msecnd.net/images/MB900437099.jpg)](http://officeimg.vo.msecnd.net/images/MB900437099.jpg)
+7. Spusťte aplikaci a pokuste se odeslat obrázek pro produkt. Například můžete použít následující adresu URL obrázku z Office Clip umění: [ [http://officeimg.vo.msecnd.net/images/MB900437099.jpg](http://officeimg.vo.msecnd.net/images/MB900437099.jpg)](http://officeimg.vo.msecnd.net/images/MB900437099.jpg)
 
-    ![Nastavení obrázku pro produkt](whats-new-in-web-forms-in-aspnet-45/_static/image23.png "nastavení image pro produkt")
+    ![Nastavení obrázku pro produkt](whats-new-in-web-forms-in-aspnet-45/_static/image23.png "Nastavení obrázku pro produkt")
 
     *Nastavení obrázku pro produkt*
 
 <a id="Task_2_-_Adding_Asynchronous_Processing_to_the_Product_Details_Page"></a>
-#### <a name="task-2---adding-asynchronous-processing-to-the-product-details-page"></a>Úloha 2 – přidání asynchronní zpracování na stránce podrobností produktu
+#### <a name="task-2---adding-asynchronous-processing-to-the-product-details-page"></a>Úloha 2 – Přidání asynchronního zpracování na stránku s podrobnostmi o produktu
 
-V této úloze budete aktualizovat na stránce podrobností produktu aby to fungovalo asynchronně. Se zlepšila dlouho běžící úloha - procesu stahování image – s použitím zpracování asynchronního stránky technologie ASP.NET 4.5.
+V této úloze aktualizujete stránku s podrobnostmi o produktu, abyste ji mohli asynchronně pracovat. Pomocí asynchronního zpracování stránky ASP.NET 4,5 vylepšíte dlouho běžící úlohu – proces stahování obrazu.
 
-Asynchronní metody ve webových aplikacích lze použít k optimalizaci způsob, jakým se používají fondy vláken ASP.NET. V technologii ASP.NET došlo jsou omezenému počtu vláken ve fondu vláken pro vaši účast požadavků, proto při zaneprázdněni všechna vlákna ASP.NET spustí odmítnout nové žádosti o, odešle aplikace chybové zprávy, znepřístupní webu.
+Asynchronní metody ve webových aplikacích lze použít k optimalizaci způsobu použití fondů vláken ASP.NET. V ASP.NET existuje omezený počet vláken ve fondu vláken pro účast požadavků, takže pokud jsou všechna vlákna zaneprázdněná, ASP.NET začne zamítnout nové žádosti, odesílá chybové zprávy aplikace a zpřístupňuje váš web jako nedostupný.
 
-Časově náročná operace na vašem webu jsou skvělými kandidáty pro asynchronní programování, protože se po dlouhou dobu zabírají přiřazené vlákno. To zahrnuje dlouho spuštěných požadavků, stránek s mnoha různým elementům a stránek, které vyžadují offline operace, odpovídající dotaz na databázi nebo přístup k externí webový server. Výhodou je, že pokud použití asynchronních metod pro tyto operace, zatímco zpracování na stránce vlákna je uvolněn a vrátí do vlákna fondu a slouží k účasti na žádost o nové stránky. To znamená, stránka se spustí v jednom vlákně z fondu vláken zpracování a může dokončit zpracování v jiný, po dokončení asynchronní zpracování.
+Časově náročné operace na webu jsou skvělé kandidáty na asynchronní programování, protože zabírají přiřazené vlákno po dlouhou dobu. To zahrnuje dlouho běžící požadavky, stránky s velkým množstvím různých prvků a stránek, které vyžadují offline operace, jako je dotazování databáze nebo přístup k externímu webovému serveru. Výhoda spočívá v tom, že pokud použijete asynchronní metody pro tyto operace, zatímco stránka je zpracovávána, vlákno je uvolněno a vráceno do fondu vláken a lze je použít k účasti na nové žádosti stránky. To znamená, že se stránka začne zpracovávat v jednom vlákně z fondu vláken a po dokončení asynchronního zpracování může dokončit zpracování v jiném z nich.
 
-1. Otevřít **ProductDetails.aspx** stránky. Přidat **asynchronní** atribut **stránky** elementu a nastavte ho na **true**. Tento atribut oznamuje ASP.NET, aby implementace rozhraní IHttpAsyncHandler.
+1. Otevřete stránku **ProductDetails. aspx** . Přidejte atribut **Async** do elementu **Page** a nastavte jej na **hodnotu true**. Tento atribut určuje, že ASP.NET implementuje rozhraní IHttpAsyncHandler.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample35.aspx)]
-2. Přidejte popisek v dolní části stránky a zobrazit podrobnosti vlákna spuštěná na stránce.
+2. Přidáním popisku v dolní části stránky zobrazíte podrobnosti o vláknech, na kterých je stránka spuštěna.
 
     [!code-aspx[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample36.aspx)]
 3. Otevřete **ProductDetails.aspx.cs** a přidejte následující direktivy oboru názvů.
 
-    (Fragment - kódu *webových formulářů Lab – Ex03 - obory názvů 2*)
+    (Fragment kódu- *webové formuláře Lab-Ex03-Namespaces 2*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample37.cs)]
-4. Upravit **UpdateProductImage** metoda stáhnout bitovou kopii s asynchronní úlohou. Nahradíte **WebClient** **DownloadFile** metodu s **DownloadFileTaskAsync** metoda a zahrnují **await** – klíčové slovo.
+4. Upravte metodu **UpdateProductImage** a stáhněte bitovou kopii pomocí asynchronní úlohy. Metodu **WebClient** **DownloadFile** nahradíte metodou **DownloadFileTaskAsync** a zahrnete klíčové slovo **await** .
 
-    (Fragment - kódu *webových formulářů Lab – Ex03 - UpdateProductImage asynchronní*)
+    (Fragment kódu- *webové formuláře Lab-Ex03-UpdateProductImage Async*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample38.cs)]
 
-    RegisterAsyncTask zaregistruje nový asynchronní úkol stránku k provedení v jiném vlákně. Přijme výraz lambda s úlohou (t) má být proveden. **Await** – klíčové slovo v **DownloadFileTaskAsync** metoda převede zbývající metody zpětného volání, které je voláno asynchronně po **DownloadFileTaskAsync** dokončení metody. ASP.NET bude pokračovat provádění metody automaticky udržováním HTTP požadavku původní hodnoty. Nový model asynchronního programování v rozhraní .NET 4.5 umožňuje psát asynchronní kód, který vypadá velmi podobně jako synchronní kód a nechat kompilátor, aby zpracování komplikace funkce zpětného volání nebo pokračování kódu.
+    RegisterAsyncTask registruje novou stránku asynchronní úlohu, která se má spustit v jiném vlákně. Přijímá výraz lambda s úkolem (t), který má být proveden. Klíčové slovo **await** v metodě **DownloadFileTaskAsync** převede zbytek metody do zpětného volání, které je vyvoláno asynchronně po dokončení metody **DownloadFileTaskAsync** . ASP.NET bude pokračovat v provádění metody tím, že automaticky zachovává všechny původní hodnoty požadavku HTTP. Nový asynchronní programovací model v rozhraní .NET 4,5 umožňuje psát asynchronní kód, který vypadá velmi podobně jako synchronní kód, a nechat kompilátorem zpracovat komplikace funkcí zpětného volání nebo kódu pokračování.
     > [!NOTE]
-    > RegisterAsyncTask a Executeinparallel již byly k dispozici od verze rozhraní .NET 2.0. Await – klíčové slovo je nového v rozhraní .NET 4.5 asynchronní programovací model a lze použít společně se nových metod TaskAsync z objektu .NET WebClient.
-5. Přidejte kód k zobrazení vláken, ve kterých kód spuštění a dokončení provádění. Chcete-li to provést, aktualizujte **UpdateProductImage** metodu s následujícím kódem.
+    > RegisterAsyncTask a ExecuteInParallel byly již k dispozici od .NET 2,0. Klíčové slovo await je nového z asynchronního programovacího modelu .NET 4,5 a lze jej použít spolu s novými metodami TaskAsync z objektu rozhraní .NET WebClient.
+5. Přidejte kód pro zobrazení vláken, na kterých byl kód spuštěn a dokončen. Chcete-li to provést, aktualizujte metodu **UpdateProductImage** pomocí následujícího kódu.
 
-    (Fragment - kódu *Web Forms Lab – Ex03 - Show vlákna*)
+    (Fragment kódu – *webové formuláře Lab-Ex03-Zobrazit vlákna*)
 
     [!code-csharp[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample39.cs)]
-6. Otevřít webovou stránku **Web.config** souboru. Přidejte následující proměnnou nastavení aplikace.
+6. Otevřete soubor **Web. config** webu. Přidejte následující proměnnou appSetting.
 
     [!code-xml[Main](whats-new-in-web-forms-in-aspnet-45/samples/sample40.xml)]
-7. Stisknutím klávesy **F5** ke spuštění aplikace a nahrát obrázek pro produkt. Všimněte si, že ID vlákna, kde může být jiný kód spuštění a dokončení. Je to proto, že asynchronní úlohy spustit na samostatném vlákně z fondu vláken ASP.NET. Po dokončení úlohy ASP.NET vloží úlohu zpět do fronty a přiřadí některý z dostupných vláken.
+7. Stisknutím klávesy **F5** spusťte aplikaci a Nahrajte obrázek pro daný produkt. Všimněte si ID vláken, kde byl kód spuštěn a dokončen, se může lišit. Důvodem je to, že asynchronní úlohy jsou spouštěny v samostatném vlákně z fondu vláken ASP.NET. Po dokončení úlohy ASP.NET vloží úlohu zpátky do fronty a přiřadí libovolné dostupné vlákna.
 
-    ![Stahuje se obrázek asynchronně](whats-new-in-web-forms-in-aspnet-45/_static/image24.png "asynchronně stahování obrázku")
+    ![Asynchronní stahování obrazu](whats-new-in-web-forms-in-aspnet-45/_static/image24.png "Asynchronní stahování obrazu")
 
-    *Asynchronní stahování obrázku*
+    *Asynchronní stahování obrazu*
 
 > [!NOTE]
-> Kromě toho můžete tuto aplikaci nasadíte do Azure následujícím [příloha B: Publikování aplikace ASP.NET MVC 4 pomocí nasazení webu](#AppendixB).
+> Kromě toho můžete tuto aplikaci nasadit do Azure podle [dodatku B: publikování aplikace ASP.NET MVC 4 pomocí nasazení webu](#AppendixB).
 
 ---
 
 <a id="Summary"></a>
 ## <a name="summary"></a>Souhrn
 
-V této praktické laboratoři jste zákazníky a vyřešené následující pojmy a jsme vám ukázali:
+V této praktické laboratorní laboratoři jsme vyřešili a ukázali následující koncepty:
 
-- Použití silně typovaných výrazů vázání dat
-- Používat nové funkce vazby modelu ve webových formulářů
-- Použití zprostředkovatele hodnot pro použití modelu code-behind metody mapování data stránky
-- Použití anotací dat pro ověřování uživatelského vstupu
-- Využijte výhod nerušivý ověřování na straně klienta s jQuery ve webových formulářů
-- Implementace detailní žádost o ověření
-- Implementace asynchronního zpracování ve webových formulářích stránky
+- Použití výrazů pro datovou vazbu silně typovaného typu
+- Použití nových funkcí vazby modelu ve webových formulářích
+- Použití zprostředkovatelů hodnot pro mapování dat stránky na metody kódu na pozadí
+- Použití datových poznámek pro ověřování vstupu uživatele
+- Využijte nenáročné ověřování na straně klienta pomocí jQuery ve webových formulářích
+- Implementace podrobného ověřování žádostí
+- Implementace asynchronního zpracování stránky ve webových formulářích
 
 <a id="AppendixA"></a>
 
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
-## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>Příloha A: Instalace sady Visual Studio Express 2012 pro Web
+## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>Příloha A: instalace Visual Studio Express 2012 pro web
 
-Můžete nainstalovat **Microsoft Visual Studio Express 2012 pro Web** nebo jiném &quot;Express&quot; verzí pomocí **[instalačního programu webové platformy Microsoft](https://www.microsoft.com/web/downloads/platform.aspx)**. Postupujte podle následujících pokynů vás provede kroky potřebné k instalaci *Visual studio Express 2012 pro Web* pomocí *instalačního programu webové platformy Microsoft*.
+**Microsoft Visual Studio Express 2012 pro web** nebo jinou verzi &quot;Express&quot; můžete nainstalovat pomocí **[Instalace webové platformy Microsoft](https://www.microsoft.com/web/downloads/platform.aspx)** . Následující pokyny vás provedou kroky potřebnými k instalaci sady *Visual Studio Express 2012 for Web* pomocí *Instalace webové platformy Microsoft*.
 
-1. Přejděte na [ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169). Případně, pokud jste již nainstalovali instalačního programu webové platformy, můžete otevřít a vyhledejte produkt &quot; <em>Visual Studio Express 2012 pro Web se sadou Azure SDK</em>&quot;.
-2. Klikněte na **nainstalovat**. Pokud nemáte **instalačního programu webové platformy** budete přesměrováni na stáhněte a nainstalujte ji jako první.
-3. Jednou **instalačního programu webové platformy** je otevřený, klikněte na tlačítko **nainstalovat** spustit instalační program.
+1. Přejít na [[https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169). Případně, pokud jste již nainstalovali instalační program webové platformy, můžete jej otevřít a vyhledat produkt &quot;<em>Visual Studio Express 2012 pro web pomocí sady Azure SDK</em>&quot;.
+2. Klikněte na **nainstalovat hned**. Pokud nemáte **instalační program webové platformy** , budete přesměrováni, abyste ho stáhli a nainstalovali jako první.
+3. Po otevření **instalačního programu webové platformy** klikněte na **nainstalovat** a spusťte instalaci.
 
-    ![Instalace sady Visual Studio Express](whats-new-in-web-forms-in-aspnet-45/_static/image25.png "instalace sady Visual Studio Express")
+    ![Nainstalovat Visual Studio Express](whats-new-in-web-forms-in-aspnet-45/_static/image25.png "Nainstalovat Visual Studio Express")
 
-    *Instalace sady Visual Studio Express*
-4. Čtení všech produktů licence a podmínky a klikněte na tlačítko **souhlasím** pokračujte.
+    *Nainstalovat Visual Studio Express*
+4. Přečtěte si všechny licence a podmínky produktů a pokračujte **kliknutím na Souhlasím.**
 
-    ![Přijetí podmínek licence](whats-new-in-web-forms-in-aspnet-45/_static/image26.png)
+    ![Přijetí licenčních podmínek](whats-new-in-web-forms-in-aspnet-45/_static/image26.png)
 
-    *Přijetí podmínek licence*
-5. Počkejte na dokončení procesu stahování a instalaci.
+    *Přijetí licenčních podmínek*
+5. Počkejte na dokončení procesu stahování a instalace.
 
     ![Průběh instalace](whats-new-in-web-forms-in-aspnet-45/_static/image27.png)
 
     *Průběh instalace*
-6. Až instalace skončí, klikněte na tlačítko **Dokončit**.
+6. Po dokončení instalace klikněte na **Dokončit**.
 
-    ![Instalace byla dokončena.](whats-new-in-web-forms-in-aspnet-45/_static/image28.png)
+    ![Instalace dokončena](whats-new-in-web-forms-in-aspnet-45/_static/image28.png)
 
-    *Instalace byla dokončena.*
-7. Klikněte na tlačítko **ukončovací** zavřete instalačního programu webové platformy.
-8. Chcete-li spustit nástroj Visual Studio Express for Web, přejděte **Start** obrazovky a začít psát &quot; **VS Express**&quot;, klikněte na **VS Express for Web** dlaždice.
+    *Instalace dokončena*
+7. Kliknutím na tlačítko **ukončit** zavřete instalační program webové platformy.
+8. Pokud chcete otevřít Visual Studio Express pro web, přejděte na **úvodní** obrazovku a začněte psát &quot;**vs Express**&quot;a pak klikněte na dlaždici **vs Express for Web** .
 
-    ![VS Express for Web dlaždice](whats-new-in-web-forms-in-aspnet-45/_static/image29.png)
+    ![Dlaždice VS Express for Web](whats-new-in-web-forms-in-aspnet-45/_static/image29.png)
 
-    *VS Express for Web dlaždice*
+    *Dlaždice VS Express for Web*
 
 <a id="AppendixB"></a>
 
 <a id="Appendix_B_Publishing_an_ASPNET_MVC_4_Application_using_Web_Deploy"></a>
-## <a name="appendix-b-publishing-an-aspnet-mvc-4-application-using-web-deploy"></a>Příloha B: Publikování aplikace ASP.NET MVC 4 pomocí nasazení webu
+## <a name="appendix-b-publishing-an-aspnet-mvc-4-application-using-web-deploy"></a>Příloha B: publikování aplikace ASP.NET MVC 4 pomocí Nasazení webu
 
-Tento dodatek se ukazují, jak vytvořit nový web z portálu Azure Portal a publikovat aplikace, kterou jste získali podle testovacího prostředí, využít Webdeploy publikační funkci poskytovaný platformou Azure.
+V tomto dodatku se dozvíte, jak vytvořit nový web z webu Azure Portal a publikovat aplikaci, kterou jste získali, pomocí testovacího prostředí s využitím funkce publikování Nasazení webu, kterou poskytuje Azure.
 
 <a id="ApxBTask1"></a>
 
 <a id="Task_1_-_Creating_a_New_Web_Site_from_the_Windows_Azure_Portal"></a>
-#### <a name="task-1---creating-a-new-web-site-from-the-azure-portal"></a>Úloha 1 – Vytvoření nového webu na webu Azure Portal
+#### <a name="task-1---creating-a-new-web-site-from-the-azure-portal"></a>Úloha 1 – Vytvoření nového webu z webu Azure Portal
 
-1. Přejděte [portálu pro správu Azure](https://manage.windowsazure.com/) a přihlaste se pomocí přihlašovacích údajů Microsoft spojených s vaším předplatným.
+1. Přejít na [portál pro správu Azure](https://manage.windowsazure.com/) a přihlaste se pomocí přihlašovacích údajů Microsoftu přidružených k vašemu předplatnému.
 
     > [!NOTE]
-    > S Azure můžete zadarmo hostovat 10 webů ASP.NET a pak škálujte podle rozšiřujícího se provozu. Můžete se zaregistrovat [tady](https://aka.ms/aspnet-hol-azure).
+    > S Azure můžete hostovat 10 ASP.NET webů zdarma a pak škálovat podle nárůstu provozu. [Tady](https://aka.ms/aspnet-hol-azure)se můžete zaregistrovat.
 
-    ![Přihlaste se k portálu Windows Azure](whats-new-in-web-forms-in-aspnet-45/_static/image30.png "Přihlaste se k portálu Windows Azure")
+    ![Přihlaste se k Windows Azure Portal](whats-new-in-web-forms-in-aspnet-45/_static/image30.png "Přihlaste se k Windows Azure Portal")
 
-    *Přihlaste se k portálu*
-2. Klikněte na tlačítko **nový** na panelu příkazů.
+    *Přihlášení k portálu*
+2. Na panelu příkazů klikněte na **Nový** .
 
-    ![Vytvoření nového webu](whats-new-in-web-forms-in-aspnet-45/_static/image31.png "vytváření nového webu")
+    ![Vytvoření nového webu](whats-new-in-web-forms-in-aspnet-45/_static/image31.png "Vytvoření nového webu")
 
     *Vytvoření nového webu*
-3. Klikněte na tlačítko **Compute** | **webu**. Potom vyberte **rychlé vytvoření** možnost. Zadejte adresu URL k dispozici pro nový web a klikněte na tlačítko **vytvořit web**.
+3. Klikněte na **compute** | **Web**. Pak vyberte možnost **rychlé vytvoření** . Zadejte dostupnou adresu URL pro nový web a klikněte na **vytvořit web**.
 
     > [!NOTE]
-    > Azure je hostitel pro webovou aplikaci spuštěnou v cloudu, který může řídit a spravovat. Možnost rychle vytvořit můžete nasadit hotové webové aplikace do Azure z mimo portál. Nezahrnuje kroky pro vytvoření databáze.
+    > Azure je hostitelem webové aplikace běžící v cloudu, kterou můžete řídit a spravovat. Možnost rychle vytvořit umožňuje nasadit dokončenou webovou aplikaci do Azure z webu mimo portál. Nezahrnuje kroky pro nastavení databáze.
 
-    ![Vytvoření nového webu pomocí metody rychlého vytvoření](whats-new-in-web-forms-in-aspnet-45/_static/image32.png "vytváření nového webu pomocí metody rychlého vytvoření")
+    ![Vytvoření nového webu pomocí rychlého vytvoření](whats-new-in-web-forms-in-aspnet-45/_static/image32.png "Vytvoření nového webu pomocí rychlého vytvoření")
 
-    *Vytvoření nového webu pomocí metody rychlého vytvoření*
-4. Počkejte, dokud nové **webu** se vytvoří.
-5. Po vytvoření webové stránky, klikněte na odkaz v části **URL** sloupce. Zkontrolujte, jestli funguje nový web.
+    *Vytvoření nového webu pomocí rychlého vytvoření*
+4. Počkejte, než se nový **Web** vytvoří.
+5. Po vytvoření webu klikněte na odkaz ve sloupci **Adresa URL** . Ověřte, zda nový web funguje.
 
-    ![Na nový web](whats-new-in-web-forms-in-aspnet-45/_static/image33.png "přechodu na nový web")
+    ![Procházení na nový web](whats-new-in-web-forms-in-aspnet-45/_static/image33.png "Procházení na nový web")
 
     *Procházení na nový web*
 
-    ![Spuštění webu](whats-new-in-web-forms-in-aspnet-45/_static/image34.png "spuštění webové stránky")
+    ![Běžící Web](whats-new-in-web-forms-in-aspnet-45/_static/image34.png "Běžící Web")
 
-    *Spuštění webové stránky*
-6. Přejděte zpět na portál a klikněte na název webové stránky v části **název** sloupec, který se zobrazí na stránkách správy.
+    *Běžící Web*
+6. Vraťte se na portál a kliknutím na název webu pod sloupcem **název** zobrazíte stránky pro správu.
 
-    ![Otevřete správu webových stránek](whats-new-in-web-forms-in-aspnet-45/_static/image35.png "otevřete správu webových stránek")
+    ![Otevření stránek správy webu](whats-new-in-web-forms-in-aspnet-45/_static/image35.png "Otevření stránek správy webu")
 
-    *Otevřete správu webových stránek*
-7. V **řídicí panel** stránce v části **rychlý přehled** klikněte na tlačítko **stáhnout profil publikování** odkaz.
+    *Otevření stránek správy webu*
+7. Na stránce **řídicí panel** klikněte v části **rychlý přehled** na odkaz **Stáhnout profil publikování** .
 
     > [!NOTE]
-    > *Profil publikování* obsahuje všechny informace požadované pro publikování webových aplikací do Azure pro každou metodu povoleno publikování. Profil publikování obsahuje adresy URL, přihlašovací údaje uživatele a databázové řetězce požadované k připojení a ověřování na základě jednotlivých koncových bodů, u kterých je povolena metoda publikace. **Microsoft WebMatrix 2**, **Microsoft Visual Studio Express for Web** a **Microsoft Visual Studio 2012** podporují čtení publikační profily k automatizaci konfigurace z těchto programů pro publikování webových aplikací do Azure.
+    > *Profil publikování* obsahuje všechny informace potřebné k publikování webové aplikace do Azure pro každou povolenou metodu publikace. Profil publikování obsahuje adresy URL, přihlašovací údaje uživatele a databázové řetězce potřebné k připojení a ověření proti jednotlivým koncovým bodům, pro které je povolena metoda publikace. **Microsoft WebMatrix 2**, **Microsoft Visual Studio Express for Web** a **Microsoft Visual Studio 2012** podporují čtení profilů publikování pro automatizaci konfigurace těchto programů pro publikování webových aplikací do Azure.
 
-    ![Stahování webové stránky publikovat profil](whats-new-in-web-forms-in-aspnet-45/_static/image36.png "stahování webové stránky profil publikování")
+    ![Stahuje se publikační profil webu.](whats-new-in-web-forms-in-aspnet-45/_static/image36.png "Stahuje se publikační profil webu.")
 
-    *Na webu stažení profilu publikování*
-8. Stáhněte si soubor profilu publikování do vhodného umístění. Dále v tomto cvičení uvidíte jak publikovat webovou aplikaci do Azure ze sady Visual Studio pomocí tohoto souboru.
+    *Stahuje se publikační profil webu.*
+8. Stáhněte si soubor profilu publikování do známého umístění. V tomto cvičení se dozvíte, jak tento soubor použít k publikování webové aplikace do Azure ze sady Visual Studio.
 
-    ![Ukládání souboru profilu publikování](whats-new-in-web-forms-in-aspnet-45/_static/image37.png "ukládá se profil publikování")
+    ![Ukládání souboru profilu publikování](whats-new-in-web-forms-in-aspnet-45/_static/image37.png "Ukládá se publikační profil.")
 
-    *Ukládá se profil publikování*
+    *Ukládání souboru profilu publikování*
 
 <a id="ApxBTask2"></a>
 
 <a id="Task_2_-_Configuring_the_Database_Server"></a>
-#### <a name="task-2---configuring-the-database-server"></a>Úloha 2 – konfigurování serveru databáze
+#### <a name="task-2---configuring-the-database-server"></a>Úloha 2 – Konfigurace databázového serveru
 
-Pokud vaše aplikace využívá SQL Server databáze, budete muset vytvořit server služby SQL Database. Pokud chcete nasadit jednoduchou aplikaci, která nepoužívá SQL Server může tuto úlohu přeskočit.
+Pokud vaše aplikace využívá SQL Server databází, budete muset vytvořit SQL Database Server. Pokud chcete nasadit jednoduchou aplikaci, která nepoužívá SQL Server, můžete tuto úlohu přeskočit.
 
-1. Pro uložení databáze aplikace budete potřebovat databázi SQL serveru. Servery SQL Database můžete zobrazit ze svého předplatného na portálu Azure Management portal na **databází Sql** | **servery** | **řídicího panelu serveru**. Pokud nemáte server vytvořili, můžete vytvořit jednu **přidat** tlačítko na panelu příkazů. Poznamenejte si **název serveru a adresu URL, správce přihlašovací jméno a heslo**, jak je použijete v další úkoly. Nevytvářet databáze, protože vytvoří se v pozdější fázi.
+1. Pro uložení aplikační databáze budete potřebovat server SQL Database. SQL Database servery můžete zobrazit z předplatného na portálu pro správu Azure na stránce **databáze SQL** | **serverech** | **řídicím panelu serveru**. Pokud nemáte vytvořený server, můžete ho vytvořit pomocí tlačítka **Přidat** na panelu příkazů. Poznamenejte si **název serveru a adresu URL, přihlašovací jméno a heslo správce**, jak je budete používat v dalších úlohách. Databázi ještě nevytvářejte, protože bude vytvořená v pozdější fázi.
 
-    ![Řídicí panel serveru SQL Database](whats-new-in-web-forms-in-aspnet-45/_static/image38.png "řídicího panelu serveru SQL Database")
+    ![Řídicí panel serveru SQL Database](whats-new-in-web-forms-in-aspnet-45/_static/image38.png "Řídicí panel serveru SQL Database")
 
     *Řídicí panel serveru SQL Database*
-2. V dalším úkolem budete testovat připojení k databázi ze sady Visual Studio z tohoto důvodu je nutné zahrnout místní IP adresa serveru seznamu **povolené IP adresy**. Chcete-li to mohli udělat, klikněte na tlačítko **konfigurovat**, vyberte IP adresu z **aktuální IP adresa klienta** a vložte ho na **počáteční IP adresa** a **Koncová IP adresa** textová pole a klikněte na tlačítko ![add-client-ip-address-ok-button](whats-new-in-web-forms-in-aspnet-45/_static/image39.png) tlačítko.
+2. V další úloze budete testovat připojení k databázi ze sady Visual Studio, z tohoto důvodu je třeba zahrnout místní IP adresu do seznamu **povolených IP adres**serveru. Chcete-li to provést, klikněte na tlačítko **Konfigurovat**, vyberte IP adresu z **aktuální IP adresy klienta** a vložte ji do textového pole **Počáteční IP adresa** a **koncová IP adresa** a klikněte na tlačítko ![přidat-Client-IP-Address-OK-tlačítko](whats-new-in-web-forms-in-aspnet-45/_static/image39.png).
 
-    ![Přidat IP adresu klienta](whats-new-in-web-forms-in-aspnet-45/_static/image40.png)
+    ![Přidává se IP adresa klienta.](whats-new-in-web-forms-in-aspnet-45/_static/image40.png)
 
-    *Přidat IP adresu klienta*
-3. Jednou **IP adresa klienta** je přidat do povolených IP adres klikněte na tlačítko na **Uložit** potvrďte provedené změny.
+    *Přidává se IP adresa klienta.*
+3. Jakmile se **IP adresa klienta** přidá do seznamu povolených IP adres, potvrďte změny kliknutím na **Uložit** .
 
-    ![Potvrzení změn](whats-new-in-web-forms-in-aspnet-45/_static/image41.png)
+    ![Potvrdit změny](whats-new-in-web-forms-in-aspnet-45/_static/image41.png)
 
-    *Potvrzení změn*
+    *Potvrdit změny*
 
 <a id="ApxBTask3"></a>
 
 <a id="Task_3_-_Publishing_an_ASPNET_MVC_4_Application_using_Web_Deploy"></a>
-#### <a name="task-3---publishing-an-aspnet-mvc-4-application-using-web-deploy"></a>Úloha 3 – publikování aplikace ASP.NET MVC 4 pomocí nasazení webu
+#### <a name="task-3---publishing-an-aspnet-mvc-4-application-using-web-deploy"></a>Úloha 3 – publikování aplikace ASP.NET MVC 4 pomocí Nasazení webu
 
-1. Vraťte se do řešení ASP.NET MVC 4. V **Průzkumníka řešení**, klikněte pravým tlačítkem na webový projekt a vyberte **publikovat**.
+1. Vraťte se do řešení ASP.NET MVC 4. V **Průzkumník řešení**klikněte pravým tlačítkem myši na webový projekt a vyberte **publikovat**.
 
-    ![Publikování aplikace](whats-new-in-web-forms-in-aspnet-45/_static/image42.png "publikování aplikace")
+    ![Publikování aplikace](whats-new-in-web-forms-in-aspnet-45/_static/image42.png "Publikování aplikace")
 
-    *Publikování na webu*
-2. Importujte profil publikování, který jste uložili v první úloze.
+    *Publikování webu*
+2. Importujte profil publikování, který jste uložili v prvním úkolu.
 
-    ![Import profilu publikování](whats-new-in-web-forms-in-aspnet-45/_static/image43.png "import profilu publikování")
+    ![Import profilu publikování](whats-new-in-web-forms-in-aspnet-45/_static/image43.png "Import profilu publikování")
 
-    *Import publikačního profilu*
-3. Klikněte na tlačítko **ověřit připojení**. Po dokončení ověření klikněte na tlačítko **Další**.
+    *Importuje se publikační profil.*
+3. Klikněte na **ověřit připojení**. Po dokončení ověřování klikněte na **Další**.
 
     > [!NOTE]
-    > Ověření bylo dokončeno, jakmile se zobrazí zelené zaškrtnutí vedle tlačítka ověřit připojení.
+    > Ověření je dokončeno, jakmile se zobrazí zelená značka zaškrtnutí vedle tlačítka ověřit připojení.
 
-    ![Ověřuje se připojení](whats-new-in-web-forms-in-aspnet-45/_static/image44.png "ověřuje se připojení")
+    ![Ověřování připojení](whats-new-in-web-forms-in-aspnet-45/_static/image44.png "Ověřování připojení")
 
-    *Ověřuje se připojení*
-4. V **nastavení** stránce v části **databází** klikněte na tlačítko vedle textového pole připojení k databázi (to znamená **objekt DefaultConnection**).
+    *Ověřování připojení*
+4. Na stránce **Nastavení** v části **databáze** klikněte na tlačítko vedle textového pole připojení k databázi (tj. **DefaultConnection**).
 
-    ![Konfigurace nasazení webu](whats-new-in-web-forms-in-aspnet-45/_static/image45.png "konfigurace nasazení webu")
+    ![Konfigurace nasazení webu](whats-new-in-web-forms-in-aspnet-45/_static/image45.png "Konfigurace nasazení webu")
 
     *Konfigurace nasazení webu*
-5. Konfigurace připojení k databázi následujícím způsobem:
+5. Připojení k databázi nakonfigurujte následujícím způsobem:
 
-   - V **název serveru** zadejte vaše pomocí adresy URL databáze SQL serveru *tcp:* předponu.
-   - V **uživatelské jméno** zadejte vaše přihlašovací jméno správce serveru.
-   - V **heslo** zadejte heslo pro přihlašovací jméno správce serveru.
+   - Do pole **název serveru** zadejte adresu URL serveru SQL Database pomocí předpony *TCP:* .
+   - V **uživatelské jméno** zadejte přihlašovací jméno správce serveru.
+   - V **heslo** zadejte přihlašovací heslo správce serveru.
    - Zadejte nový název databáze.
 
-     ![Konfigurace cílový připojovací řetězec](whats-new-in-web-forms-in-aspnet-45/_static/image46.png "konfigurace cílový připojovací řetězec")
+     ![Konfigurace cílového připojovacího řetězce](whats-new-in-web-forms-in-aspnet-45/_static/image46.png "Konfigurace cílového připojovacího řetězce")
 
-     *Konfigurace cílový připojovací řetězec*
-6. Pak klikněte na tlačítko **OK**. Po zobrazení výzvy k vytvoření databáze klikněte na **Ano**.
+     *Konfigurace cílového připojovacího řetězce*
+6. Pak klikněte na **OK**. Po zobrazení výzvy k vytvoření databáze klikněte na **Ano**.
 
-    ![Vytvoření databáze](whats-new-in-web-forms-in-aspnet-45/_static/image47.png "vytvoření řetězce databáze")
+    ![Vytvoření databáze](whats-new-in-web-forms-in-aspnet-45/_static/image47.png "Vytváří se řetězec databáze.")
 
     *Vytvoření databáze*
-7. Připojovací řetězec, který budete používat pro připojení k databázi SQL v Azure se zobrazí v textovém poli výchozí připojení. Pak klikněte na tlačítko **Další**.
+7. Připojovací řetězec, který budete používat pro připojení k SQL Database v Azure, se zobrazí ve výchozím textovém poli připojení. Pak klikněte na tlačítko **Další**.
 
-    ![Připojovací řetězec odkazující na SQL Database](whats-new-in-web-forms-in-aspnet-45/_static/image48.png "připojovací řetězec odkazující na SQL Database")
+    ![Připojovací řetězec ukazující na SQL Database](whats-new-in-web-forms-in-aspnet-45/_static/image48.png "Připojovací řetězec ukazující na SQL Database")
 
-    *Připojovací řetězec odkazující na SQL Database*
-8. V **ve verzi Preview** klikněte na **publikovat**.
+    *Připojovací řetězec ukazující na SQL Database*
+8. Na stránce **Náhled** klikněte na **publikovat**.
 
-    ![Publikování webové aplikace](whats-new-in-web-forms-in-aspnet-45/_static/image49.png "publikování webové aplikace")
+    ![Publikování webové aplikace](whats-new-in-web-forms-in-aspnet-45/_static/image49.png "Publikování webové aplikace")
 
     *Publikování webové aplikace*
-9. Až se proces publikování dokončí, otevře se váš výchozí prohlížeč publikovaného webu.
+9. Jakmile se proces publikování dokončí, otevře se ve výchozím prohlížeči publikovaný web.
 
 <a id="AppendixC"></a>
 
 <a id="Appendix_C_Using_Code_Snippets"></a>
-## <a name="appendix-c-using-code-snippets"></a>Příloha C: Používání fragmentů kódu
+## <a name="appendix-c-using-code-snippets"></a>Příloha C: používání fragmentů kódu
 
-Pomocí fragmentů kódu máte všechny kód, který je třeba na dosah ruky. Testovací prostředí dokumentu zjistíte přesně kdy je můžete využít, jak je znázorněno na následujícím obrázku.
+S fragmenty kódu máte veškerý kód, který potřebujete, na dosah ruky. Dokument testovacího prostředí vás přesně upozorní, když ho můžete používat, jak je znázorněno na následujícím obrázku.
 
-![Používání fragmentů kódu sady Visual Studio pro vložení kódu do projektu](whats-new-in-web-forms-in-aspnet-45/_static/image50.png "pomocí sady Visual Studio fragmenty kódu pro vložení kódu do projektu")
+![Vložení kódu do projektu pomocí fragmentů kódu sady Visual Studio](whats-new-in-web-forms-in-aspnet-45/_static/image50.png "Vložení kódu do projektu pomocí fragmentů kódu sady Visual Studio")
 
-*Používání fragmentů kódu sady Visual Studio pro vložení kódu do projektu*
+*Vložení kódu do projektu pomocí fragmentů kódu sady Visual Studio*
 
-***Chcete-li přidat fragment kódu pomocí klávesnice (C# jenom)***
+***Přidání fragmentu kódu pomocí klávesnice (C# pouze)***
 
-1. Umístěte kurzor, kam chcete vložit kód.
-2. Začněte psát název fragmentu kódu (bez mezer nebo pomlčky).
-3. Podívejte se na jako IntelliSense zobrazí odpovídající názvy fragmenty kódu.
-4. Vyberte správný fragment kódu (nebo pokračujte v psaní dokud nebude vybraný celý fragment název).
-5. Stiskněte klávesu Tabulátor dvakrát pro vložení fragmentu do umístění kurzoru.
+1. Umístěte kurzor na místo, kam chcete vložit kód.
+2. Začněte psát název fragmentu (bez mezer a spojovníků).
+3. Sledujte, jak IntelliSense zobrazuje stejné názvy fragmentů kódu.
+4. Vyberte správný fragment kódu (nebo pokračujte v psaní, dokud není vybrán celý název tohoto fragmentu kódu).
+5. Dvojím stisknutím klávesy TAB vložte fragment kódu do umístění kurzoru.
 
-![Začněte psát název fragmentu kódu](whats-new-in-web-forms-in-aspnet-45/_static/image51.png "začněte psát název fragmentu kódu")
+![Začněte psát název fragmentu.](whats-new-in-web-forms-in-aspnet-45/_static/image51.png "Začněte psát název fragmentu.")
 
-*Začněte psát název fragmentu kódu*
+*Začněte psát název fragmentu.*
 
-![Stiskněte klávesu Tab k vybrání fragmentu zvýrazněné](whats-new-in-web-forms-in-aspnet-45/_static/image52.png "stisknutím klávesy Tab k výběru zvýrazněné fragment kódu")
+![Stisknutím klávesy TAB vyberte zvýrazněný fragment.](whats-new-in-web-forms-in-aspnet-45/_static/image52.png "Stisknutím klávesy TAB vyberte zvýrazněný fragment.")
 
-*Stiskněte klávesu Tab k výběru zvýrazněné fragment kódu*
+*Stisknutím klávesy TAB vyberte zvýrazněný fragment.*
 
-![Stisknutím klávesy Tab znovu a fragment kódu se rozbalí](whats-new-in-web-forms-in-aspnet-45/_static/image53.png "znovu stisknutím klávesy Tab a fragment kódu se rozbalí.")
+![Stiskněte znovu TAB a fragment kódu se rozšíří.](whats-new-in-web-forms-in-aspnet-45/_static/image53.png "Stiskněte znovu TAB a fragment kódu se rozšíří.")
 
-*Stisknutím klávesy Tab znovu a fragment kódu se rozbalí.*
+*Stiskněte znovu TAB a fragment kódu se rozšíří.*
 
-***Chcete-li přidat fragment kódu pomocí myši (C#, Visual Basic a XML)*** 1. Klikněte pravým tlačítkem na místo, kam chcete vložit fragment kódu.
+***Přidání fragmentu kódu pomocí myši (C#, Visual Basic a XML)*** první. Klikněte pravým tlačítkem na místo, kam chcete vložit fragment kódu.
 
-1. Vyberte **Vložit fragment** následovaný **Moje fragmenty kódu**.
-2. Kliknutím na vyberte relevantní fragment kódu ze seznamu.
+1. Vyberte **Vložit fragment** a potom **Moje fragmenty kódu**.
+2. Kliknutím na něj ze seznamu vyberte příslušný fragment kódu.
 
-![Klikněte pravým tlačítkem, ve které chcete vložit fragment kódu a vyberte Vložit fragment](whats-new-in-web-forms-in-aspnet-45/_static/image54.png "klikněte pravým tlačítkem, ve které chcete vložit fragment kódu a vyberte Vložit fragment")
+![Klikněte pravým tlačítkem na místo, kam chcete vložit fragment kódu a vyberte Vložit fragment.](whats-new-in-web-forms-in-aspnet-45/_static/image54.png "Klikněte pravým tlačítkem na místo, kam chcete vložit fragment kódu a vyberte Vložit fragment.")
 
-*Klikněte pravým tlačítkem na, ve které chcete vložit fragment kódu a vyberte Vložit fragment*
+*Klikněte pravým tlačítkem na místo, kam chcete vložit fragment kódu a vyberte Vložit fragment.*
 
-![Vyberte si relevantní fragment kódu ze seznamu, kliknutím na](whats-new-in-web-forms-in-aspnet-45/_static/image55.png "relevantní fragment kódu ze seznamu vyberte kliknutím na")
+![Vyberte příslušný fragment kódu ze seznamu kliknutím na něj.](whats-new-in-web-forms-in-aspnet-45/_static/image55.png "Vyberte příslušný fragment kódu ze seznamu kliknutím na něj.")
 
-*Vyberte si relevantní fragment kódu ze seznamu, kliknutím na*
+*Vyberte příslušný fragment kódu ze seznamu kliknutím na něj.*

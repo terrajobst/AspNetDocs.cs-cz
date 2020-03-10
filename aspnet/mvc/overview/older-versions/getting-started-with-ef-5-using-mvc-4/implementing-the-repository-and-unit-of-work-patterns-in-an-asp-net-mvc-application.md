@@ -9,11 +9,11 @@ ms.assetid: 44761193-04ba-4990-9f90-145d3c10a716
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
 msc.type: authoredcontent
 ms.openlocfilehash: 18de9b125ee5d10795b9ce1a366918dadf4fc4e3
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74595244"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78540262"
 ---
 # <a name="implementing-the-repository-and-unit-of-work-patterns-in-an-aspnet-mvc-application-9-of-10"></a>Implementace úložiště a pracovní jednotky vzorů v aplikaci ASP.NET MVC (9 z 10)
 
@@ -73,7 +73,7 @@ Mohli byste vytvořit instanci nového kontextu v úložišti, ale pokud jste v 
 
 ## <a name="change-the-student-controller-to-use-the-repository"></a>Změna kontroleru studenta pro použití úložiště
 
-V *StudentController.cs*nahraďte kód, který je aktuálně ve třídě, pomocí následujícího kódu. Změny jsou zvýrazněny.
+V *StudentController.cs*nahraďte kód, který je aktuálně ve třídě, pomocí následujícího kódu. Změny jsou zvýrazněné.
 
 [!code-csharp[Main](implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application/samples/sample4.cs?highlight=13-18,44,75,77,102-103,120,137-138,159,172-174,186)]
 
@@ -237,7 +237,7 @@ Spusťte web a klikněte na kartu **kurzy** .
 
 Stránka vypadá a funguje stejně jako před vašimi změnami a ostatní stránky kurzu fungují i stejně.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Právě jste implementovali jak úložiště, tak pracovní jednotky pracovních schémat. Výrazy lambda jste používali jako parametry metody v obecném úložišti. Další informace o tom, jak tyto výrazy použít s objektem `IQueryable`, naleznete v tématu [rozhraní IQueryable (t) (System. Linq](https://msdn.microsoft.com/library/bb351562.aspx) ) v knihovně MSDN. V dalším kurzu se dozvíte, jak zpracovat některé pokročilé scénáře.
 

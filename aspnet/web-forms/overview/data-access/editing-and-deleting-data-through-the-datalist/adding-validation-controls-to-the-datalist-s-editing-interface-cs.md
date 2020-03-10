@@ -9,11 +9,11 @@ ms.assetid: 3ecc21c5-da0e-40ab-abb4-fac1e47398ad
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/adding-validation-controls-to-the-datalist-s-editing-interface-cs
 msc.type: authoredcontent
 ms.openlocfilehash: e3c14b7098da832bd28f57026e81dcb7f7ba7130
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74640522"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78594484"
 ---
 # <a name="adding-validation-controls-to-the-datalists-editing-interface-c"></a>Přidání validačních ovládacích prvků do rozhraní pro úpravy prvku DataList (C#)
 
@@ -29,7 +29,7 @@ V prozatímných kurzech upravujících úpravy ovládacího prvku DataList neza
 
 V tomto kurzu se dozvíte, jak snadné je přidat ovládací prvky ověřování do `EditItemTemplate` DataList s, aby bylo možné zajistit další foolproof úpravy uživatelského rozhraní. Konkrétně tento kurz používá příklad vytvořený v předchozím kurzu a rozšiřuje rozhraní pro úpravy tak, aby zahrnovalo příslušné ověření.
 
-## <a name="step-1-replicating-the-example-fromhandling-bll--and-dal-level-exceptionshandling-bll-and-dal-level-exceptions-csmd"></a>Krok 1: replikace příkladu z manipulace s[výjimkami na úrovni knihoven BLL a dal](handling-bll-and-dal-level-exceptions-cs.md)
+## <a name="step-1-replicating-the-example-fromhandling-bll--and-dal-level-exceptions"></a>Krok 1: replikace příkladu z manipulace s[výjimkami na úrovni knihoven BLL a dal](handling-bll-and-dal-level-exceptions-cs.md)
 
 V kurzu [zpracování výjimek knihoven BLL a dal](handling-bll-and-dal-level-exceptions-cs.md) jsme vytvořili stránku, která uvádí názvy a ceny produktů ve dvou sloupcích upravitelných DataList. Naším cílem tohoto kurzu je rozšířit rozhraní pro úpravy DataList s, aby zahrnovalo ověřovací ovládací prvky. Konkrétně naše logika ověřování bude:
 
@@ -156,7 +156,7 @@ Chcete-li to provést, přetáhněte ovládací prvek ovládací souhrnu ověře
 
 **Obrázek 6**: Chyby ověřování jsou shrnuty v prvku MessageBox na straně klienta ([kliknutím zobrazíte obrázek v plné velikosti).](adding-validation-controls-to-the-datalist-s-editing-interface-cs/_static/image18.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme zjistili, jak snížit pravděpodobnost výjimek pomocí ověřovacích ovládacích prvků, abyste proaktivně zajistili, že vstupy uživatelů jsou platné před pokusem o jejich použití v pracovním postupu aktualizace. ASP.NET poskytuje pět ověřovacích webových ovládacích prvků, které jsou navrženy pro kontrolu konkrétního vstupu webového ovládacího prvku a hlášení o platnosti vstupu s. V tomto kurzu jsme použili dvě z těchto pěti ovládacích prvků RequiredFieldValidator a CompareValidator, abyste zajistili, že byl dodán název produktu a že cena měla formát měny s hodnotou větší než nebo rovna nule.
 

@@ -10,11 +10,11 @@ ms.assetid: 08834147-77ec-454a-bb7a-d931d2a40dab
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
 ms.openlocfilehash: 73a01ed47b0935a1a9734c197377470defb1fe36
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519385"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78583060"
 ---
 # <a name="tutorial-implement-inheritance-with-ef-in-an-aspnet-mvc-5-app"></a>Kurz: Implementace dědičnosti s EF v aplikaci ASP.NET MVC 5
 
@@ -31,9 +31,9 @@ V tomto kurzu se naučíte:
 > * Přidat osobu do modelu
 > * Vytváření a aktualizace migrací
 > * Testování implementace
-> * Nasadit do Azure
+> * Nasazení do Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Ošetření souběžnosti](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
@@ -120,7 +120,7 @@ Tento kód má na starosti následující úlohy aktualizace databáze:
 
 (Pokud jste použili GUID místo celého čísla jako typ primárního klíče, hodnoty primárního klíče studenta se nemusejí změnit a některé z těchto kroků by mohly být vynechány.)
 
-Spusťte příkaz `update-database` znovu.
+Znovu spusťte příkaz `update-database`.
 
 (V produkčním systému provedete odpovídající změny v metodě Down pro případ, že byste to museli použít pro návrat k předchozí verzi databáze. V tomto kurzu nebudete používat metodu Down.)
 
@@ -143,13 +143,13 @@ Následující diagram znázorňuje strukturu nové školní databáze:
 
 ![School_database_diagram](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
 
-## <a name="deploy-to-azure"></a>Nasadit do Azure
+## <a name="deploy-to-azure"></a>Nasazení do Azure
 
 Tato část vyžaduje, abyste dokončili volitelné **nasazení aplikace do Azure** v [části 3, řazení, filtrování a stránkování](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md) této série kurzů. Pokud jste převedli chyby, které jste vyřešili odstraněním databáze v místním projektu, přeskočte tento krok; nebo vytvořte novou lokalitu a databázi a nasaďte ji do nového prostředí.
 
 1. V aplikaci Visual Studio klikněte pravým tlačítkem na projekt v **Průzkumník řešení** a v místní nabídce vyberte **publikovat** .
 
-2. Klikněte na tlačítko **publikovat**.
+2. Klikněte na **Publikovat**.
 
     Webová aplikace se otevře ve výchozím prohlížeči.
 
@@ -157,11 +157,11 @@ Tato část vyžaduje, abyste dokončili volitelné **nasazení aplikace do Azur
 
     Při prvním spuštění stránky, která přistupuje k databázi, Entity Framework spustí všechny migrace `Up` metody potřebné k zajištění aktuálnosti databáze s aktuálním datovým modelem.
 
-## <a name="get-the-code"></a>Získat kód
+## <a name="get-the-code"></a>Získání kódu
 
 [Stáhnout dokončený projekt](https://webpifeed.blob.core.windows.net/webpifeed/Partners/ASP.NET%20MVC%20Application%20Using%20Entity%20Framework%20Code%20First.zip)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 Odkazy na další prostředky Entity Framework najdete v [prostředcích, které jsou doporučeny pro přístup k datům ASP.NET](../../../../whitepapers/aspnet-data-access-content-map.md).
 

@@ -9,11 +9,11 @@ ms.assetid: faab8503-2984-48a9-8a40-7728461abc50
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-updatepanel-triggers
 msc.type: authoredcontent
 ms.openlocfilehash: b1cc869f373d4f8283b4d92af74707c3f11fef61
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74588830"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78547451"
 ---
 # <a name="understanding-aspnet-ajax-updatepanel-triggers"></a>Principy aktivačních událostí UpdatePanel technologie ASP.NET AJAX
 
@@ -53,7 +53,7 @@ Podobně element `<asp:PostBackTrigger>` lze použít k aktivaci částečného 
 
 *Následníky kódu:*
 
-| **Inteligentní** | **Popis** |
+| **Tag** | **Popis** |
 | --- | --- |
 | &lt;ASP: AsyncPostBackTrigger&gt; | Určuje ovládací prvek a událost, které způsobí částečnou aktualizaci stránky ovládacího prvku UpdatePanel, který obsahuje tento odkaz triggeru. |
 | &lt;ASP: PostBackTrigger&gt; | Určuje ovládací prvek a událost, které způsobí, že dojde k úplné aktualizaci stránky (úplná aktualizace stránky). Tato značka se dá použít k vynucení plné aktualizace, když ovládací prvek jinak aktivuje částečné vykreslování. |
@@ -129,7 +129,7 @@ Jak je znázorněno na obrázku výše, bylo kliknutí na tlačítko poslední n
 
 Mělo by být navázáno, ale čas, který byl inicializován během události\_načítání stránky, byl čas správně zvýšen. V důsledku toho by vývojáři měli být přistupují opatrněi, že se během příslušných obslužných rutin událostí spouští příslušný kód, a vyhněte se použití stránky\_načíst, když bude obslužná rutina události ovládacího prvku vhodná.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Ovládací prvek UpdatePanel rozšíření ASP.NET AJAX je univerzální a může využít řadu metod pro identifikaci řídicích událostí, které by měly způsobit aktualizaci. Podporuje automatické aktualizace svými podřízenými ovládacími prvky, ale může také reagovat na události řízení jinde na stránce.
 
@@ -137,7 +137,7 @@ Chcete-li snížit potenciál pro zatížení serveru, je doporučeno, aby vlast
 
 Prozkoumáním vnitřních pracovních segmentů modelu zachycení formuláře ASP.NET AJAX jsme dokázali určit, že používá rozhraní, které už poskytuje ASP.NET. V takovém případě zachovává maximální kompatibilitu s ovládacími prvky navrženými pomocí stejné architektury a intrudes na všech dalších JavaScriptu napsaných pro stránku.
 
-## <a name="bio"></a>Dostupnost
+## <a name="bio"></a>Bio
 
 Rob Paveza je zkušeným vývojářem aplikací .NET na Terralever ([www.Terralever.com](http://www.terralever.com)), což je přední interaktivní podnik pro prodej v Tempe, AZ. Dá se získat na [robpaveza@gmail.com](mailto:robpaveza@gmail.com)a jeho blog se nachází na [http://geekswithblogs.net/robp/](http://geekswithblogs.net/robp/).
 

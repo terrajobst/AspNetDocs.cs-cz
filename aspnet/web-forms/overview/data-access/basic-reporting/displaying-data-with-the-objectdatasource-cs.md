@@ -9,11 +9,11 @@ ms.assetid: af882aef-56f5-4e9a-8f95-3977fde20e74
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 9419504ace15b39c35a034dda22f2700ee720157
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74608918"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78577474"
 ---
 # <a name="displaying-data-with-the-objectdatasource-c"></a>Zobrazení dat ovládacím prvkem ObjectDataSource (C#)
 
@@ -198,7 +198,7 @@ FormView lze navazovat přímo na ovládací prvek zdroje dat prostřednictvím 
 
 Podobně jako prvek DetailsView, třída FormView zobrazuje pouze první záznam vrácený z prvku ObjectDataSource. Můžete povolit stránkování ve třídě FormView a umožnit tak návštěvníkům postupně procházet produkty.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Přístup a zobrazování dat z vrstvy obchodní logiky lze provést bez nutnosti psát řádek kódu, a to díky ovládacímu prvku ObjectDataSource ASP.NET 2.0. Prvek ObjectDataSource vyvolá specifikovanou metodu třídy a vrátí výsledky. Tyto výsledky lze zobrazit ve webovém ovládacím prvku dat, který je svázán s prvkem ObjectDataSource. V tomto kurzu jsme se vyhledali vazbou ovládacích prvků GridView, DetailsView a FormView na ObjectDataSource.
 

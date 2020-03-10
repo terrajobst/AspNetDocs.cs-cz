@@ -1,139 +1,139 @@
 ---
 uid: signalr/overview/performance/scaleout-with-sql-server
-title: Škálování aplikace SignalR SQL serverem | Dokumentace Microsoftu
+title: Škálování signálu pomocí SQL Server | Microsoft Docs
 author: bradygaster
-description: Verze softwaru použitým v tomto tématu Visual Studio 2013 .NET 4.5 SignalR 2 předchozí verze tohoto tématu informace o předchozích verzích...
+description: Verze softwaru používané v tomto tématu Visual Studio 2013 k předchozím verzím tohoto tématu v předchozích verzích rozhraní .NET 4,5 Signaler verze 2, kde najdete informace o dřívějších verzích...
 ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: 98358b6e-9139-4239-ba3a-2d7dd74dd664
 msc.legacyurl: /signalr/overview/performance/scaleout-with-sql-server
 msc.type: authoredcontent
 ms.openlocfilehash: 709a9ebf8f3396842bee0d87e621c00ae1418ec1
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113616"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78579182"
 ---
 # <a name="signalr-scaleout-with-sql-server"></a>Šklálování aplikace SignalR SQL Serverem
 
-podle [Mike Wasson](https://github.com/MikeWasson), [Patrick Fletcher](https://github.com/pfletcher)
+[Jan Wasson](https://github.com/MikeWasson), [Fletcher](https://github.com/pfletcher)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> ## <a name="software-versions-used-in-this-topic"></a>Verze softwaru použitým v tomto tématu
+> ## <a name="software-versions-used-in-this-topic"></a>Verze softwaru používané v tomto tématu
 >
 >
 > - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
-> - Funkce SignalR verze 2
+> - Signal – verze 2
 >
 >
 >
-> ## <a name="previous-versions-of-this-topic"></a>Předchozích verzích tohoto tématu
+> ## <a name="previous-versions-of-this-topic"></a>Předchozí verze tohoto tématu
 >
-> Informace o předchozích verzích systému SignalR naleznete v tématu [starší verze funkce SignalR](../older-versions/index.md).
+> Informace o dřívějších verzích nástroje Signal najdete v části [Signal – starší verze](../older-versions/index.md).
 >
-> ## <a name="questions-and-comments"></a>Otázky a komentáře
+> ## <a name="questions-and-comments"></a>Dotazy a komentáře
 >
-> Napište prosím zpětnou vazbu o tom, jak vám líbilo v tomto kurzu a co můžeme zlepšit v komentářích v dolní části stránky. Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
+> Přečtěte si prosím svůj názor na to, jak se vám tento kurz líbí a co bychom mohli vylepšit v komentářích v dolní části stránky. Pokud máte dotazy, které přímo nesouvisejí s kurzem, můžete je publikovat do [fóra signálu ASP.NET](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
 
-V tomto kurzu použijete SQL Server k distribuci zpráv do aplikace SignalR, která je nasazená ve dvou samostatných instancí služby IIS. V tomto kurzu můžete spustit také na jeden testovací počítač, ale chcete-li získat plný vliv, je třeba nasadit aplikace SignalR pro dva nebo víc serverů. SQL Server musíte nainstalovat také na některý server nebo na samostatný vyhrazený server. Další možností je spustit kurz pomocí virtuálních počítačů v Azure.
+V tomto kurzu použijete SQL Server k distribuci zpráv v aplikaci signalizace, která je nasazená ve dvou samostatných instancích služby IIS. Můžete také spustit tento kurz na jednom testovacím počítači, ale chcete-li získat úplný efekt, je nutné nasadit aplikaci signalizace na dva nebo více serverů. Je také nutné nainstalovat SQL Server na jednom ze serverů nebo na samostatném vyhrazeném serveru. Další možností je spustit kurz s použitím virtuálních počítačů v Azure.
 
 ![](scaleout-with-sql-server/_static/image1.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Microsoft SQL Server 2005 nebo novější. Propojovacího rozhraní podporuje počítače a serverové edice systému SQL Server. Nepodporuje se SQL Server Compact Edition nebo Azure SQL Database. (Pokud je vaše aplikace hostovaná v Azure, zvažte propojovací Service Bus rozhraní místo.)
+Microsoft SQL Server 2005 nebo novější. Replánování podporuje desktopové i serverové edice SQL Server. Nepodporuje SQL Server Compact edici ani Azure SQL Database. (Pokud je vaše aplikace hostovaná v Azure, zvažte místo toho Service Bus.)
 
 ## <a name="overview"></a>Přehled
 
-Předtím, než získáme podrobný kurz, zde je rychlý přehled toho, co budete dělat.
+Než se dostanete k podrobnému kurzu, tady je rychlý přehled toho, co budete dělat.
 
-1. Vytvoření nové prázdné databáze. Propojovacího rozhraní se vytvoří nezbytné tabulky v této databázi.
-2. Přidejte tyto balíčky NuGet pro vaši aplikaci:
+1. Vytvořte novou prázdnou databázi. Při replánování se vytvoří potřebné tabulky v této databázi.
+2. Přidejte tyto balíčky NuGet do vaší aplikace:
 
-    - [Microsoft.AspNet.SignalR](http://nuget.org/packages/Microsoft.AspNet.SignalR)
-    - [Microsoft.AspNet.SignalR.SqlServer](http://nuget.org/packages/Microsoft.AspNet.SignalR.SqlServer)
-3. Vytvoření aplikace SignalR.
-4. Přidejte následující kód do souboru Startup.cs konfigurace propojovacího rozhraní:
+    - [Microsoft. AspNet. Signaler](http://nuget.org/packages/Microsoft.AspNet.SignalR)
+    - [Microsoft. AspNet. Signaler. SqlServer](http://nuget.org/packages/Microsoft.AspNet.SignalR.SqlServer)
+3. Vytvořte aplikaci signalizace.
+4. Přidáním následujícího kódu do Startup.cs nakonfigurujte schéma pro replánování:
 
     [!code-csharp[Main](scaleout-with-sql-server/samples/sample1.cs)]
 
-   Tento kód nastaví propojovacího rozhraní s výchozími hodnotami u [TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx) a [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Informace o změně těchto hodnot najdete v tématu [výkon aplikace SignalR: Škálování metriky](signalr-performance.md#scaleout_metrics).
+   Tento kód nakonfiguruje pro replánování výchozí hodnoty pro [TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx) a [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Informace o změně těchto hodnot najdete v tématu [výkon signalizace: metriky škálování](signalr-performance.md#scaleout_metrics).
 
 ## <a name="configure-the-database"></a>Konfigurace databáze
 
-Rozhodněte, zda bude aplikace používat ověřování Windows nebo ověřování systému SQL Server pro přístup k databázi. Bez ohledu na to Ujistěte se, že uživatel databáze má oprávnění k přihlášení, vytvoření schémat a vytvoření tabulky.
+Rozhodněte, zda aplikace bude pro přístup k databázi používat ověřování systému Windows nebo ověřování SQL Server. Bez ohledu na to, že uživatel databáze má oprávnění k přihlášení, vytváření schémat a vytváření tabulek.
 
-Vytvořte novou databázi pro propojovací rozhraní systému k použití. Databázi můžete přiřadit libovolný název. Není nutné vytvářet všechny tabulky v databázi. propojovacího rozhraní se vytvoří nezbytné tabulky.
+Vytvořte novou databázi pro plán, který chcete použít. Databázi můžete dát libovolný název. V databázi nemusíte vytvářet žádné tabulky. pro replánování se vytvoří potřebné tabulky.
 
 ![](scaleout-with-sql-server/_static/image2.png)
 
-## <a name="enable-service-broker"></a>Povolí službu Service Broker
+## <a name="enable-service-broker"></a>Povolit Service Broker
 
-Doporučuje se povolí službu Service Broker pro databázi propojovacího rozhraní. Služba Service Broker poskytuje nativní podporu pro zasílání zpráv nebo řazení do fronty v systému SQL Server, které vám umožní efektivněji přijímat aktualizace propojovacího rozhraní. (Ale propojovacího rozhraní také funguje bez služby Service Broker.)
+Doporučuje se povolit Service Broker pro databázi pro naplánování. Service Broker poskytuje nativní podporu pro zasílání zpráv a frontu v SQL Server, která umožňuje, aby se aktualizace dostávala efektivněji. (Bez Service Broker ale funguje i bez.)
 
-Pokud chcete zkontrolovat, zda je povolena služba Service Broker, dotazování **je\_zprostředkovatele\_povolené** sloupec v **zobrazení sys.databases** zobrazení katalogu.
+Chcete-li ověřit, zda je povolena Service Broker, je nutné zadat dotaz na sloupec **is\_Broker\_Enabled** v zobrazení katalogu **Sys. databases** .
 
 [!code-sql[Main](scaleout-with-sql-server/samples/sample2.sql)]
 
 ![](scaleout-with-sql-server/_static/image3.png)
 
-Povolí službu Service Broker, pomocí následujícího dotazu SQL:
+Pokud chcete povolit Service Broker, použijte následující dotaz SQL:
 
 [!code-sql[Main](scaleout-with-sql-server/samples/sample3.sql)]
 
 > [!NOTE]
-> Pokud tento dotaz se zdá, zablokování, ujistěte se, že nejsou žádné aplikace, připojení k databázi.
+> Pokud se zobrazí dotaz zablokování, ujistěte se, že neexistují žádné aplikace připojené k databázi.
 
-Pokud jste povolili trasování, trasování zobrazí také, zda je povolena služba Service Broker.
+Pokud jste povolili trasování, trasování zobrazí také, zda je povoleno Service Broker.
 
-## <a name="create-a-signalr-application"></a>Vytvoření aplikace SignalR
+## <a name="create-a-signalr-application"></a>Vytvoření aplikace Signal
 
-Vytvoření aplikace SignalR pomocí některé z těchto kurzů:
+Pomocí některého z těchto kurzů vytvořte aplikaci signalizace:
 
-- [Začínáme s knihovnou SignalR 2.0](../getting-started/tutorial-getting-started-with-signalr.md)
-- [Začínáme s knihovnou SignalR 2.0 a MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
+- [Začínáme se signálem 2,0](../getting-started/tutorial-getting-started-with-signalr.md)
+- [Začínáme s nástrojem Signal 2,0 a MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
 
-V dalším kroku upravíme, aby byl chatovací aplikaci, aby podporovala škálování s využitím SQL serveru. Nejprve přidejte balíček SignalR.SqlServer NuGet do projektu. V aplikaci Visual Studio z **nástroje** příkaz **Správce balíčků NuGet**, vyberte **konzoly Správce balíčků**. V okně konzoly Správce balíčků zadejte následující příkaz:
+Dále upravíte aplikaci Chat, aby podporovala horizontální navýšení kapacity SQL Server. Nejprve do svého projektu přidejte balíček NuGet. SqlServer. V aplikaci Visual Studio v nabídce **nástroje** vyberte **Správce balíčků NuGet**a pak vyberte **Konzola správce balíčků**. V okně konzoly Správce balíčků zadejte následující příkaz:
 
 [!code-powershell[Main](scaleout-with-sql-server/samples/sample4.ps1)]
 
-Dále otevřete Startup.cs souboru. Přidejte následující kód, který **konfigurovat** metody:
+Pak otevřete soubor Startup.cs. Do metody **Configure** přidejte následující kód:
 
 [!code-csharp[Main](scaleout-with-sql-server/samples/sample5.cs)]
 
 ## <a name="deploy-and-run-the-application"></a>Nasazení a spuštění aplikace
 
-Příprava vašich instancí Windows serveru k nasazení aplikace SignalR.
+Připraví instance Windows serveru pro nasazení aplikace Signal.
 
-Přidejte roli služby IIS. Zahrnují funkce "Vývoj aplikací", včetně protokolu WebSocket.
+Přidejte roli IIS. Zahrňte funkce pro vývoj aplikací, včetně protokolu WebSocket.
 
 ![](scaleout-with-sql-server/_static/image4.png)
 
-Zahrnují taky službu správy (uvedené v části "Nástroje pro správu").
+Zahrňte také službu správy (v seznamu "nástroje pro správu").
 
 ![](scaleout-with-sql-server/_static/image5.png)
 
-**Nainstalovat Web Deploy 3.0.** Když spustíte Správce služby IIS, vás vyzve k instalaci webové platformy společnosti Microsoft, nebo se dají [stáhněte instalační program](https://go.microsoft.com/fwlink/?LinkId=255386). Do platformy hledání pro nasazení webu a nainstalovat nasazení webu 3.0
+**Nainstalujte Nasazení webu 3,0.** Spustíte-li správce služby IIS, zobrazí se výzva k instalaci webové platformy společnosti Microsoft nebo můžete [instalační program stáhnout](https://go.microsoft.com/fwlink/?LinkId=255386). V instalačním programu platformy vyhledejte Nasazení webu a nainstalujte Nasazení webu 3,0
 
 ![](scaleout-with-sql-server/_static/image6.png)
 
-Zkontrolujte, že je spuštěná služby webové správy. Pokud ne, spusťte službu. (Pokud nevidíte v seznamu služeb Windows služby webové správy, ujistěte se, že jste nainstalovali službu pro správu při přidání IIS role.)
+Ověřte, zda je spuštěna služba webové správy. V takovém případě službu spusťte. (Pokud se služba webové správy nezobrazuje v seznamu služeb systému Windows, ujistěte se, že jste nainstalovali službu správy při přidání role služby IIS.)
 
-A konečně otevřete port 8172 pro protokol TCP. Toto je port, který používá nástroj nasazení webu.
+Nakonec otevřete port 8172 pro protokol TCP. Toto je port, který používá nástroj Nasazení webu Tool.
 
-Nyní jste připraveni k nasazení projektu sady Visual Studio z vývojového počítače k serveru. V Průzkumníku řešení klikněte pravým tlačítkem myši na řešení a klikněte na tlačítko **publikovat**.
+Nyní jste připraveni nasadit projekt sady Visual Studio z vývojového počítače na server. V Průzkumník řešení klikněte pravým tlačítkem na řešení a pak klikněte na **publikovat**.
 
-Podrobnější dokumentaci k nasazení webu, najdete v článku [mapa obsahu webové nasazení pro Visual Studio a ASP.NET](../../../whitepapers/aspnet-web-deployment-content-map.md).
+Podrobnější dokumentaci k nasazení webu najdete v tématu [Mapa obsahu nasazení webu pro Visual Studio a ASP.NET](../../../whitepapers/aspnet-web-deployment-content-map.md).
 
-Pokud nasadíte aplikaci do dvou serverů, můžete otevřít každou instanci v samostatném okně prohlížeče a zobrazit, že každá z jiných příjem zpráv SignalR. (Samozřejmě v produkčním prostředí, dva servery strávil za nástrojem pro vyrovnávání zatížení.)
+Pokud nasadíte aplikaci na dva servery, můžete každou instanci otevřít v samostatném okně prohlížeče a podívat se, že každý z nich obdrží zprávy signálu. (Samozřejmě v produkčním prostředí budou dva servery za nástroj pro vyrovnávání zatížení.)
 
 ![](scaleout-with-sql-server/_static/image7.png)
 
-Po spuštění aplikace, uvidíte, že SignalR vytvořila automaticky tabulky v databázi:
+Po spuštění aplikace vidíte, že tento signál automaticky vytvořil tabulky v databázi nástroje:
 
 ![](scaleout-with-sql-server/_static/image8.png)
 
-Funkce SignalR spravuje tabulky. Tak dlouho, dokud je vaše aplikace nasazena, nemusíte odstraňovat řádky, úprava v tabulce a tak dále.
+Signalizace spravuje tabulky. Pokud je vaše aplikace nasazena, neodstraňujte řádky, upravujte tabulku a tak dále.

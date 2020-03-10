@@ -10,11 +10,11 @@ ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
 ms.openlocfilehash: 28425ea8d1312dfc6e14df9677396f2cbcf6f16d
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77456722"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78583851"
 ---
 # <a name="developing-aspnet-apps-with-azure-active-directory"></a>Vývoj aplikací ASP.NET s použitím Azure Active Directory
 
@@ -24,7 +24,7 @@ Microsoft ASP.NET nástroje pro Azure Active Directory zjednodušují povolení 
 
 V tomto kurzu se dozvíte, jak vytvořit aplikaci ASP.NET, která je nakonfigurovaná pro přihlašování pomocí [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (Azure AD). Naučíte se také, jak volat Graph API a získat informace o aktuálně přihlášeném uživateli a o tom, jak aplikaci nasadit do Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Visual Studio Express 2013 pro web](https://my.visualstudio.com/Downloads?q=visual%20studio%202013#d-2013-express) nebo [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013).
 2. Je třeba zadat [Visual Studio 2013 Update 4](https://www.microsoft.com/download/details.aspx?id=44921) – Update 3 nebo vyšší.

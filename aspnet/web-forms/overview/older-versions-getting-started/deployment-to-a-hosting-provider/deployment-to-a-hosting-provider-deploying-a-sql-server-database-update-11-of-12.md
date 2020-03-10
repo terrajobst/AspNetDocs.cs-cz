@@ -9,11 +9,11 @@ ms.assetid: 5e2bb092-cb22-4511-ad0a-22ae12dd99b3
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12
 msc.type: authoredcontent
 ms.openlocfilehash: 0894c0ac24737e66b6960ef3d48aa17f78c6aa1d
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74621053"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78528124"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-a-sql-server-database-update---11-of-12"></a>Nasazení webové aplikace SQL Server Compact v ASP.NET s využitím sady Visual Studio nebo Visual Web Developer: nasazení SQL Server aktualizace databáze-11 z 12
 
@@ -89,7 +89,7 @@ Do pole Připojovací řetězec pro **DefaultConnection**zadejte stejnou hodnotu
 
 Ponechte vymazané **aktualizaci databáze** .
 
-Klikněte na **publikovat**.
+Klikněte na **Publikovat**.
 
 Visual Studio nasadí změny kódu do testovacího prostředí a otevře prohlížeč na domovské stránce společnosti Contoso University.
 
@@ -119,7 +119,7 @@ Spusťte průvodce **publikováním webu** znovu a pak klikněte na **importovat
 
 Na kartě **připojení** změňte **cílovou adresu URL** na odpovídající hodnotu, pokud používáte dočasnou adresu URL.
 
-Klikněte na tlačítko **Další**.
+Klikněte na **Další**.
 
 Na kartě **Nastavení** klikněte na **Povolit nová vylepšení publikování databáze**.
 
@@ -135,7 +135,7 @@ Vyberte kartu **profil** , klikněte na **Spravovat profily**a přejmenujte prof
 
 Zavřete profil publikování a uložte změnu a pak znovu otevřete.
 
-Klikněte na **publikovat**. (Pro skutečný produkční web byste aplikaci zkopírovali *\_offline. htm* do produkčního prostředí a před publikováním ji uložte do složky projektu a pak ji po dokončení nasazení odebrat.)
+Klikněte na **Publikovat**. (Pro skutečný produkční web byste aplikaci zkopírovali *\_offline. htm* do produkčního prostředí a před publikováním ji uložte do složky projektu a pak ji po dokončení nasazení odebrat.)
 
 Visual Studio nasadí změny kódu do testovacího prostředí a otevře prohlížeč na domovské stránce společnosti Contoso University.
 

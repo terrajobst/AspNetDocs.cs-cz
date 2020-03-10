@@ -10,11 +10,11 @@ msc.legacyurl: /signalr/overview/getting-started/tutorial-high-frequency-realtim
 msc.type: authoredcontent
 ms.topic: tutorial
 ms.openlocfilehash: 2503e90735d6cfa445ee08c9e43f8443aa106096
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600458"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78558623"
 ---
 # <a name="tutorial-create-high-frequency-real-time-app-with-signalr-2"></a>Kurz: Vytvoření aplikace s vysokou frekvencí v reálném čase pomocí signálů 2
 
@@ -24,7 +24,7 @@ Vytvořená aplikace zobrazí obrazec, který mohou uživatelé přetáhnout. Se
 
 Koncepty představené v tomto kurzu obsahují aplikace v reálném čase a jiné aplikace simulace.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavení projektu
@@ -38,9 +38,9 @@ V tomto kurzu:
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
+* Sada [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) se sadou funkcí **Vývoj pro ASP.NET a web**.
 
 ## <a name="set-up-the-project"></a>Nastavení projektu
 
@@ -224,11 +224,11 @@ Pohyb tvaru v druhém okně se zobrazuje méně Jerky. Aplikace interpoluje svů
 
 Tento kód přesune obrazec ze starého umístění do nového. Server dává pozici tvaru v průběhu intervalu animace. V tomto případě je to 100 milisekund. Aplikace vymaže všechny předchozí animace běžící na tvaru před zahájením nové animace.
 
-## <a name="get-the-code"></a>Získat kód
+## <a name="get-the-code"></a>Získání kódu
 
 [Stáhnout dokončený projekt](https://code.msdn.microsoft.com/SignalR-20-MoveShape-Demo-6285b83a)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 Paradigmata komunikace, o které jste se dozvěděli, je užitečná při vývoji online her a dalších simulací, jako [je hra programu pro seznámení vytvořená pomocí nástroje Signal](https://shootr.azurewebsites.net/).
 
@@ -242,7 +242,7 @@ Další informace o signalizaci naleznete v následujících zdrojích informac�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavení projektu

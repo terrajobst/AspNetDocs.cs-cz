@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/building-35-applications/masterpages
-title: Hlavní stránky | Dokumentace Microsoftu
+title: MasterPages | Microsoft Docs
 author: JoeStagner
-description: Hlavní stránky technologie ASP.NET jsou klíčovou součástí vytváření agilních webových aplikací. Toto video vám ukáže základy používání hlavní stránky a vložené hlavní stránky v...
+description: ASP.NET MasterPages jsou klíčovou součástí vytváření agilních webových aplikací. Toto video demonstruje základy použití stránek předloh a vnořených MasterPage v...
 ms.author: riande
 ms.date: 05/08/2009
 ms.assetid: cd6890dd-02a5-48a7-bb05-f277c74a9cc3
 msc.legacyurl: /web-forms/videos/building-35-applications/masterpages
 msc.type: video
 ms.openlocfilehash: 3886d8b71f0bfef512e46cfb6c1accc711774d7b
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59419168"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78563691"
 ---
 # <a name="masterpages"></a>Stránky předlohy
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-Hlavní stránky technologie ASP.NET jsou klíčovou součástí vytváření agilních webových aplikací. Toto video vám ukáže základy používání hlavní stránky a vložené hlavní stránky v aplikacích technologie ASP.NET.
+ASP.NET MasterPages jsou klíčovou součástí vytváření agilních webových aplikací. V tomto videu se naučíte základy používání stránek předloh a vnořených MasterPage v aplikacích ASP.NET.
 
-[&#9654;Podívejte se na video (16 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/masterpages)
+[&#9654;Sledovat video (16 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/masterpages)

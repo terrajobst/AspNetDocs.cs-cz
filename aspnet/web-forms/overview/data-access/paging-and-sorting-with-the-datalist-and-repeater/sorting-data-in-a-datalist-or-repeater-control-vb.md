@@ -9,11 +9,11 @@ ms.assetid: 97c13898-0741-45f9-b3fa-7540ab1679e6
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 81e07bec8569b9ee987dfaa84dec9eec95a2692f
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74638535"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78576284"
 ---
 # <a name="sorting-data-in-a-datalist-or-repeater-control-vb"></a>Řazení dat sestavy ovládacími prvky DataList nebo Repeater (VB)
 
@@ -317,7 +317,7 @@ To všechno je! I když bylo k dispozici několik kroků pro získání vlastní
 > [!NOTE]
 > V předchozích příkladech se při třídění podle dodavatele dodavatele použil jako výraz řazení. Pro implementaci vlastního stránkování ale musíme použít CompanyName. Důvodem je skutečnost, že úložná procedura zodpovědná za implementaci vlastního stránkování `GetProductsPagedAndSorted` předá výraz řazení do klíčového slova `ROW_NUMBER()`, klíčové slovo `ROW_NUMBER()` vyžaduje skutečný název sloupce, nikoli alias. Proto je nutné použít `CompanyName` (název sloupce v tabulce `Suppliers`) místo aliasu používaného v dotazu `SELECT` (`SupplierName`) pro výraz řazení.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Prvky DataList ani Repeat nenabízejí integrovanou podporu pro řazení, ale s bitem kódu a vlastním rozhraním řazení. Tyto funkce lze přidat. Při implementaci řazení, ale ne stránkování, lze výraz řazení určit prostřednictvím objektu `DataSourceSelectArguments` předaného do metody ObjectDataSource s `Select`. Tuto vlastnost `DataSourceSelectArguments` objektů `SortExpression` lze přiřadit v obslužné rutině události ObjectDataSource s `Selecting`.
 

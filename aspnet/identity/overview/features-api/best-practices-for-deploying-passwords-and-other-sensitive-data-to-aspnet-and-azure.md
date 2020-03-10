@@ -10,11 +10,11 @@ ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
 msc.type: authoredcontent
 ms.openlocfilehash: 8356a90611f791779cc4ff4730038d82cd76242f
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457047"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78584320"
 ---
 # <a name="best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure-app-service"></a>Doporučené postupy nasazení hesel a dalších citlivých dat do ASP.NET a služby Azure App Service
 
@@ -114,7 +114,7 @@ Vzhledem k tomu, že páry klíč-hodnota pro obě **nastavení aplikace** i **p
 Pokud nasazujete na místní webové servery, můžete zajistit zabezpečení tajných klíčů [šifrováním konfiguračních oddílů konfiguračních souborů](https://msdn.microsoft.com/library/ff647398.aspx). Jako alternativu můžete použít stejný přístup doporučený pro Azure websites: zachovat nastavení vývoje v konfiguračních souborech a použít hodnoty proměnných prostředí pro nastavení produkčního prostředí. V takovém případě je však nutné napsat kód aplikace pro funkce, které jsou automaticky na webu Azure websites: načíst nastavení z proměnných prostředí a použít tyto hodnoty místo nastavení konfiguračního souboru nebo použít nastavení konfiguračního souboru, když proměnné prostředí se nenašly.
 
 <a id="addRes"></a>
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 Příklad skriptu PowerShellu, který vytvoří webovou aplikaci a databázi, nastaví připojovací řetězec + nastavení aplikace. Stáhněte si [New-AzureWebsitewithDB. ps1](https://gallery.technet.microsoft.com/scriptcenter/Ultimate-Create-Web-SQL-DB-9e0fdfd3) z [knihovny skriptů Azure](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&amp;f%5B0%5D.Value=WindowsAzure). 
 

@@ -9,11 +9,11 @@ ms.assetid: 83b4f5a4-4f5a-4380-ba33-f0b5c5ac6a75
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/role-based-authorization-vb
 msc.type: authoredcontent
 ms.openlocfilehash: feb3e5eb992284033853e67bfab3872243cefe39
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74570695"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78573155"
 ---
 # <a name="role-based-authorization-vb"></a>Ověřování založené na rolích (VB)
 
@@ -64,7 +64,7 @@ Ve výchozím nastavení je mechanismus souborů cookie mezipaměti rolí zakáz
 > [!NOTE]
 > Nastavení konfigurace uvedená v tabulce 1 určují vlastnosti výsledného souboru cookie mezipaměti rolí. Pokud chcete získat další informace o souborech cookie, jak fungují a jejich různé vlastnosti, přečtěte si [Tento kurz](http://www.quirksmode.org/js/cookies.html).
 
-| <strong>Majetek</strong> |                                                                                                                                                                                                                                                                                                                                                         <strong>Popis</strong>                                                                                                                                                                                                                                                                                                                                                          |
+| <strong>Vlastnost</strong> |                                                                                                                                                                                                                                                                                                                                                         <strong>Popis</strong>                                                                                                                                                                                                                                                                                                                                                          |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |   `cacheRolesInCookie`    |                                                                                                                                                                                                                                                                                                                              Logická hodnota, která označuje, zda je použito ukládání souborů cookie do mezipaměti. Výchozí hodnota je `false`.                                                                                                                                                                                                                                                                                                                              |
 |       `cookieName`        |                                                                                                                                                                                                                                                                                                                                     Název souboru cookie mezipaměti role. Výchozí hodnota je ". ASPXROLES".                                                                                                                                                                                                                                                                                                                                     |
@@ -324,7 +324,7 @@ Kromě stránek ASP.NET má řada aplikací také architekturu, která zahrnuje 
 
 Další informace o použití atributu `PrincipalPermission` k definování autorizačních pravidel pro třídy a metody najdete v záznamu blogu [Scott Guthrie](https://weblogs.asp.net/scottgu/) [Přidání autorizačních pravidel do obchodních a datových vrstev pomocí `PrincipalPermissionAttributes`](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme se podívali na to, jak na základě rolí uživatele zadat hrubou a přesnou autorizační pravidla zrn. Formátu. Funkce NET URL Authorization umožňuje vývojářům stránky určit, které identity mají povolený nebo odepřený přístup k jakým stránkám. Jak jsme viděli v <a id="_msoanchor_10"> </a>kurzu [*ověřování na základě uživatele*](../membership/user-based-authorization-vb.md) , autorizační pravidla URL se dají použít na základě uživatele. Můžou se taky použít na základě rolí rolí, jak jsme viděli v kroku 1 tohoto kurzu.
 

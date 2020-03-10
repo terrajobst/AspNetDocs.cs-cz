@@ -1,7 +1,7 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
-title: 'Kurz: Použití async a uložené procedury s EF v aplikaci ASP.NET MVC'
-description: V tomto kurzu můžete zjistit, jak implementovat asynchronní programovací model a zjistěte, jak pomocí uložených procedur.
+title: 'Kurz: použití asynchronních a uložených procedur s EF v aplikaci ASP.NET MVC'
+description: V tomto kurzu vidíte, jak implementovat asynchronní programovací model a Naučte se používat uložené procedury.
 author: tdykstra
 ms.author: riande
 ms.date: 01/18/2019
@@ -10,158 +10,158 @@ ms.assetid: 27d110fc-d1b7-4628-a763-26f1e6087549
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
 ms.openlocfilehash: 5612f2f25d06feb904a205505ed8f048d2263266
-ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67410931"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78583438"
 ---
-# <a name="tutorial-use-async-and-stored-procedures-with-ef-in-an-aspnet-mvc-app"></a>Kurz: Použití async a uložené procedury s EF v aplikaci ASP.NET MVC
+# <a name="tutorial-use-async-and-stored-procedures-with-ef-in-an-aspnet-mvc-app"></a>Kurz: použití asynchronních a uložených procedur s EF v aplikaci ASP.NET MVC
 
-V předchozích kurzech jste zjistili, jak číst a aktualizovat data pomocí synchronní programovací model. V tomto kurzu můžete zjistit, jak implementovat asynchronní programovací model. Asynchronní kód může pomoct lépe provést, protože umožňuje lepší využití serverových prostředků aplikace.
+V předchozích kurzech jste zjistili, jak číst a aktualizovat data pomocí synchronního programovacího modelu. V tomto kurzu vidíte, jak implementovat asynchronní programovací model. Asynchronní kód může zajistit lepší výkon aplikace, protože zajišťuje lepší využití prostředků serveru.
 
-V tomto kurzu můžete také zjistit, jak pomocí uložené procedury pro vložení, aktualizace nebo odstranění operace s entitou.
+V tomto kurzu zjistíte také, jak používat uložené procedury pro operace vložení, aktualizace a odstranění u entity.
 
-Nakonec znovu nasadit aplikaci do Azure, spolu s všechny změny databáze, které jsme implementovali od první chvíle, kdy jste nasadili.
+Nakonec aplikaci znovu nasadíte do Azure spolu se všemi změnami databáze, které jste implementovali od prvního nasazení.
 
-Následující ilustrace znázorňují některé stránky, které budete pracovat.
+Následující ilustrace znázorňují některé stránky, se kterými budete pracovat.
 
-![Oddělení stránky](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
+![Stránka oddělení](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
 
-![Vytvoření oddělení](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
+![Vytvořit oddělení](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Další informace o asynchronní kód
-> * Vytvoření kontroleru oddělení
+> * Informace o asynchronním kódu
+> * Vytvoření řadiče oddělení
 > * Použití uložených procedur
 > * Nasazení do Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Aktualizace souvisejících dat](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
-## <a name="why-use-asynchronous-code"></a>Proč používat asynchronní kód
+## <a name="why-use-asynchronous-code"></a>Proč použít asynchronní kód
 
-Webový server má omezený počet vláken, které jsou k dispozici, a v situacích, vysokého zatížení všech dostupných vláken může být používán. Pokud k tomu dojde, server nemůže zpracovat nové žádosti, dokud se uvolnit vlákna. Přestože se nejedná skutečně každé dílo vzhledem k tomu, že čekání na vstupně-výstupních operací na dokončení, může kódem synchronní svázané několika vlákny. Asynchronní kód když proces čeká na vstupně-výstupních operací na dokončení, je jeho vlákno uvolněn pro server určený pro zpracováním jiných požadavků. V důsledku toho asynchronního kódu umožňuje serveru prostředků efektivněji používat, a abyste zvládli větší provoz bez zpoždění je povoleno na serveru.
+Webový server má omezený počet vláken, které jsou k dispozici, a v situacích, vysokého zatížení všech dostupných vláken může být používán. Pokud k tomu dojde, server nemůže zpracovat nové žádosti, dokud se uvolnit vlákna. Přestože se nejedná skutečně každé dílo vzhledem k tomu, že čekání na vstupně-výstupních operací na dokončení, může kódem synchronní svázané několika vlákny. Asynchronní kód když proces čeká na vstupně-výstupních operací na dokončení, je jeho vlákno uvolněn pro server určený pro zpracováním jiných požadavků. Výsledkem je, že asynchronní kód umožňuje efektivnější využití prostředků serveru a server je povolen pro zpracování většího objemu dat bez prodlev.
 
-V dřívějších verzích rozhraní .NET byl složitý, psaní a testování asynchronní kód chyby náchylné k chybám a těžko ladění. V rozhraní .NET 4.5 je mnohem jednodušší, pokud nemáte důvod, proč nebylo by měly obecně psaní asynchronního kódu psaní, testování a ladění asynchronního kódu. Asynchronní kód zavést malé množství režie, ale v situacích s nízkým provozem výkonu přístupů je zanedbatelný, při vysoké návštěvnosti situacích, je možné zlepšení výkonu podstatné.
+V dřívějších verzích rozhraní .NET byla psaní a testování asynchronního kódu složitá, náchylná k chybám a obtížné ladění. V rozhraní .NET 4,5, psaní, testování a ladění asynchronního kódu je mnohem jednodušší, že byste měli obecně zapisovat asynchronní kód, pokud nemáte důvod na. Asynchronní kód zavádí malé množství režijních nákladů, ale u situací s nízkým objemem provozu je dosaženo zanedbatelného výkonu, zatímco v případě vysoké situace v provozu je potenciální zlepšení výkonu značné.
 
-Další informace o asynchronním programování naleznete v tématu [podpory asynchronních operací pomocí rozhraní .NET 4.5 k zabránění blokování volání](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices.md#async).
+Další informace o asynchronním programování naleznete v tématu [použití asynchronní podpory rozhraní .NET 4.5 k zamezení blokování volání](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices.md#async).
 
-## <a name="create-department-controller"></a>Vytvoření kontroleru oddělení
+## <a name="create-department-controller"></a>Vytvořit kontroler oddělení
 
-Vytvoření kontroleru oddělení, stejně jako jste to udělali starších řadičů, tentokrát vyberte **použít asynchronní akce kontroleru** zaškrtávací políčko.
+Vytvoření řadiče oddělení stejným způsobem jako u předchozích řadičů, s výjimkou tohoto času zaškrtněte políčko **použít asynchronní akce kontroleru** .
 
-Následujícím hlavním funkcím zobrazit, co byl přidán do synchronní kód `Index` provést asynchronní metody:
+Následující zajímavá místa ukazují, co bylo přidáno do synchronního kódu pro metodu `Index` pro zajištění asynchronního:
 
 [!code-csharp[Main](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs?highlight=1,4)]
 
-Čtyři změny byly použity k povolení databázového dotazu Entity Framework spustit asynchronně:
+Byly provedeny čtyři změny, aby bylo možné Entity Framework dotaz databáze spustit asynchronně:
 
-- Metoda je označena třídou `async` – klíčové slovo, které instruuje kompilátor generovat zpětná volání pro části tělo metody a automaticky vytvářet `Task<ActionResult>` vráceného objektu.
-- Návratový typ se změnil z `ActionResult` k `Task<ActionResult>`. `Task<T>` Typ představuje probíhající práci s výsledkem typu `T`.
-- `await` – Klíčové slovo byla použita k volání webové služby. Když kompilátor narazí toto klíčové slovo, na pozadí rozdělí metodu na dva oddíly. První část končí operace, která se spustí asynchronně. Druhá část je nepoužili metodu zpětného volání, která je volána po dokončení operace.
-- Asynchronní verze `ToList` byla volána metoda rozšíření.
+- Metoda je označena pomocí klíčového slova `async`, která dává kompilátoru pokyn ke generování zpětných volání pro části těla metody a k automatickému vytvoření vráceného objektu `Task<ActionResult>`.
+- Návratový typ se změnil z `ActionResult` na `Task<ActionResult>`. Typ `Task<T>` představuje průběžnou práci s výsledkem typu `T`.
+- Klíčové slovo `await` bylo použito pro volání webové služby. Když kompilátor uvidí toto klíčové slovo, pak na pozadí rozdělí metodu do dvou částí. První část končí operací, která se spouští asynchronně. Druhá část je vložena do metody zpětného volání, která je volána po dokončení operace.
+- Byla volána asynchronní verze metody rozšíření `ToList`.
 
-Proč je `departments.ToList` příkaz upravit, ale ne `departments = db.Departments` příkaz? Důvodem je, že pouze příkazy, které způsobují dotazy nebo příkazy, které se odesílají do databáze se provedl asynchronně. `departments = db.Departments` Příkaz nastaví dotazu, ale není dotaz provést, dokud `ToList` metoda je volána. Proto pouze `ToList` metoda provádí asynchronně.
+Proč se příkaz `departments.ToList` změnil, ale ne příkaz `departments = db.Departments`? Důvodem je, že se spustí asynchronně pouze příkazy, které způsobují odeslání dotazů nebo příkazů do databáze. Příkaz `departments = db.Departments` nastaví dotaz, ale dotaz není proveden, dokud není volána metoda `ToList`. Proto je provedena asynchronně pouze metoda `ToList`.
 
-V `Details` metoda a `HttpGet` `Edit` a `Delete` metody, `Find` metoda je ten, který způsobí, že dotaz k odeslání do databáze, tak, aby se metoda, která se provede asynchronně:
+V metodě `Details` a metodách `Edit` `HttpGet` a `Delete` je metoda `Find` ta, která způsobí odeslání dotazu do databáze, takže se jedná o metodu, která se provede asynchronně:
 
 [!code-csharp[Main](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.cs?highlight=7)]
 
-V `Create`, `HttpPost Edit`, a `DeleteConfirmed` metody, je `SaveChanges` volání metody, která způsobí, že příkaz má být proveden, nikoli příkazy, jako `db.Departments.Add(department)` entity což vedlo jenom v paměti, která má být upraven.
+V metodách `Create`, `HttpPost Edit`a `DeleteConfirmed` je to volání metody `SaveChanges`, které způsobuje provedení příkazu, nikoli příkazy, jako je například `db.Departments.Add(department)`, které způsobují úpravu pouze entit v paměti.
 
 [!code-csharp[Main](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample3.cs?highlight=6)]
 
-Otevřít *Views\Department\Index.cshtml*a nahraďte kód šablony následujícím kódem:
+Otevřete *Views\Department\Index.cshtml*a nahraďte kód šablony následujícím kódem:
 
 [!code-cshtml[Main](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample4.cshtml?highlight=3,5,20-22,36-38)]
 
-Tento kód změní název z indexu na oddělení, přesune jméno správce napravo a poskytuje úplné jméno správce.
+Tento kód změní název z indexu na oddělení, přesune jméno správce napravo a poskytne celé jméno správce.
 
-V části Vytvoření, odstranění, podrobností a upravte zobrazení, změnit titulek `InstructorID` pole "Administrator" stejným způsobem jako v zobrazeních kurzu změníte pole název oddělení "Oddělení".
+V zobrazeních vytvořit, odstranit, podrobnosti a upravit změňte Titulek pole `InstructorID` na "správce" stejným způsobem, jako jste změnili pole název oddělení na "oddělení" v zobrazení kurzu.
 
-Zobrazení v vytvořit a upravit pomocí následujícího kódu:
+V zobrazeních vytvořit a upravit použijte následující kód:
 
 [!code-cshtml[Main](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample5.cshtml)]
 
-V zobrazení Delete a podrobnosti pomocí následujícího kódu:
+V zobrazeních odstranění a podrobnosti použijte následující kód:
 
 [!code-cshtml[Main](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample6.cshtml)]
 
-Spusťte aplikaci a klikněte na tlačítko **oddělení** kartu.
+Spusťte aplikaci a klikněte na kartu **oddělení** .
 
-Všechno, co funguje stejně jako v ostatních řadičů, ale v tomto kontroleru všechny dotazy SQL jsou asynchronně.
+Vše funguje stejně jako v ostatních řadičích, ale v tomto kontroleru jsou všechny dotazy SQL spouštěny asynchronně.
 
-Je potřeba vědět při použití asynchronní programování s rozhraním Entity Framework pár věcí:
+Některé věci, které je potřeba znát při použití asynchronního programování s Entity Framework:
 
-- Asynchronní kód není bezpečné pro vlákna. Jinými slovy jinými slovy, nedoporučujeme provádět více operací paralelně pomocí stejné instance kontextu.
-- Pokud chcete využít výhod výkony těží z asynchronní kód, ujistěte se, že všechny knihovny balíčky, které používáte (například stránkování), asynchronní použijte i v případě volají všechny Entity Framework metody, které způsobují dotazů k odeslání do databáze.
+- Asynchronní kód není bezpečný pro přístup z více vláken. Jinými slovy, jinými slovy, nepokoušejte se souběžně provádět více operací pomocí stejné instance kontextu.
+- Chcete-li využít výhod výkonu asynchronního kódu, zajistěte, aby všechny balíčky knihovny, které používáte (například pro stránkování), používaly také Async, pokud volají jakékoli Entity Framework metody, které způsobují odesílání dotazů do databáze.
 
 ## <a name="use-stored-procedures"></a>Použití uložených procedur
 
-Některé vývojáře a specializující raději pomocí uložených procedur pro přístup k databázi. V dřívějších verzích sady Entity Framework můžete načíst data pomocí uložené procedury pomocí [spuštění neupraveného dotazu SQL](advanced-entity-framework-scenarios-for-an-mvc-web-application.md), ale nemůže dát pokyn EF pouze pomocí uložených procedur pro operace update. V EF 6 je snadno konfigurovatelné Code First pomocí uložených procedur.
+Někteří vývojáři a specializující upřednostňují použití uložených procedur pro přístup k databázi. V dřívějších verzích Entity Framework můžete načíst data pomocí uložené procedury spuštěním [nezpracovaného dotazu SQL](advanced-entity-framework-scenarios-for-an-mvc-web-application.md), ale nemůžete dát pokyn EF k použití uložených procedur pro operace aktualizace. V EF 6 je snadné nakonfigurovat Code First pro použití uložených procedur.
 
-1. V *DAL\SchoolContext.cs*, přidejte zvýrazněný kód, který `OnModelCreating` metody.
+1. Do *DAL\SchoolContext.cs*přidejte zvýrazněný kód do metody `OnModelCreating`.
 
     [!code-csharp[Main](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample7.cs?highlight=9)]
 
-    Tento kód nastaví Entity Frameworku na použití uložené procedury pro vložení, aktualizovat a odstraňovat operace `Department` entity.
+    Tento kód instruuje Entity Framework pro použití uložených procedur pro operace vložení, aktualizace a odstranění v entitě `Department`.
 2. V konzole pro správu balíčků zadejte následující příkaz:
 
     `add-migration DepartmentSP`
 
-    Otevřít *migrace\\&lt;časové razítko&gt;\_DepartmentSP.cs* zobrazíte kód `Up` metodu, která vytvoří Insert, Update a Delete uložené procedury:
+    Otevřete *migrace\\&lt;časové razítko&gt;\_DepartmentSP.cs* a zobrazte kód v metodě `Up`, která vytvoří uložené procedury INSERT, Update a Delete:
 
     [!code-csharp[Main](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample8.cs?highlight=3-4,26-27,42-43)]
 3. V konzole pro správu balíčků zadejte následující příkaz:
 
      `update-database`
-4. Spusťte aplikaci v režimu ladění, klikněte na tlačítko **oddělení** kartu a potom klikněte na tlačítko **vytvořit nový**.
-5. Zadejte data pro jiného oddělení a klikněte na **vytvořit**.
+4. Spusťte aplikaci v režimu ladění, klikněte na kartu **oddělení** a pak klikněte na **vytvořit novou**.
+5. Zadejte data nového oddělení a pak klikněte na **vytvořit**.
 
-6. V sadě Visual Studio, podívejte se na protokoly v **výstup** okno a zobrazit, uložené procedury byla použita k vložit nový řádek oddělení.
+6. V aplikaci Visual Studio se podívejte na protokoly v okně **výstup** , abyste viděli, že se k vložení nového řádku oddělení použila uložená procedura.
 
-     ![Oddělení vložit SP](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
+     ![Vložení oddělení SP](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
-Kód nejprve vytvoří výchozí uložené procedury názvy. Pokud používáte existující databázi, můžete potřebovat k přizpůsobení názvy uložených postupů Chcete-li použít uložené procedury v databázi již definována. Informace o tom, jak to udělat, najdete v části [Entity Framework Code první Insert/Update/Delete uložené procedury](https://msdn.microsoft.com/data/dn468673).
+Code First vytvoří výchozí názvy uložených procedur. Pokud používáte existující databázi, může být nutné přizpůsobit názvy uložených procedur, aby bylo možné použít uložené procedury, které jsou již v databázi definovány. Další informace o tom, jak to provést, najdete v tématu [Entity Framework Code First vkládání, aktualizace a odstraňování uložených procedur](https://msdn.microsoft.com/data/dn468673).
 
-Pokud chcete přizpůsobit, co vygeneruje uložených procedur, můžete upravit automaticky generovaný kód pro přenesení `Up` metodu, která vytvoří uloženou proceduru. Díky tomu vaše změny se projeví vždy, když, migrace je spuštěný a uplatní se na vaši produkční databázi když migrace spustí automaticky v produkčním prostředí po nasazení.
+Chcete-li upravit, které generované uložené procedury mají, můžete upravit generovaný kód pro migraci `Up` metodu, která vytvoří uloženou proceduru. To znamená, že se vaše změny projeví při spuštění migrace a budou se používat v provozní databázi, když se migrace po nasazení spustí automaticky v produkčním prostředí.
 
-Pokud chcete změnit stávající úložnou proceduru, který byl vytvořen v předchozí migrace, můžete pomocí příkazu Add-migrace generovat prázdné migrace a ručně napsat kód, který volá [AlterStoredProcedure](https://msdn.microsoft.com/library/system.data.entity.migrations.dbmigration.alterstoredprocedure.aspx) – metoda .
+Pokud chcete změnit existující uloženou proceduru, která byla vytvořena v předchozí migraci, můžete k vygenerování prázdné migrace použít příkaz Add-Migration a pak ručně napsat kód, který volá metodu [AlterStoredProcedure](https://msdn.microsoft.com/library/system.data.entity.migrations.dbmigration.alterstoredprocedure.aspx) .
 
 ## <a name="deploy-to-azure"></a>Nasazení do Azure
 
-Tato část vyžaduje, abyste dokončili nepovinný **nasazení aplikace do Azure** tématu [Migration a nasazení](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md) této série kurzů. Pokud jste měli migrace chyby, které jste vyřešili tak, že odstraníte databáze v projektu pro místní, tuto část přeskočte.
+Tato část vyžaduje, abyste v kurzu [migrace a nasazení](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md) této série dokončili oddíl volitelné **nasazení aplikace do Azure** . Pokud jste převedli chyby, které jste vyřešili odstraněním databáze v místním projektu, přeskočte tuto část.
 
-1. Ve Visual Studiu klikněte pravým tlačítkem na projekt v **Průzkumníka řešení** a vyberte **publikovat** v místní nabídce.
-2. Klikněte na tlačítko **publikovat**.
+1. V aplikaci Visual Studio klikněte pravým tlačítkem na projekt v **Průzkumník řešení** a v místní nabídce vyberte **publikovat** .
+2. Klikněte na **Publikovat**.
 
-    Visual Studio nasadí aplikaci do Azure a aplikace se otevře ve výchozím prohlížeči, běží v Azure.
-3. Otestování aplikace ověří, že funguje.
+    Visual Studio nasadí aplikaci do Azure a aplikace se otevře ve výchozím prohlížeči spuštěném v Azure.
+3. Otestujte aplikaci, abyste ověřili, že funguje.
 
-    Při prvním spuštění stránky, který přistupuje k databázi, Entity Framework provozovat všechny migrace `Up` metod požadovaných k aktuální s aktuálním datovým modelem databáze. Teď můžete použít všechny webové stránky, které jste přidali od posledního, které jste nasadili, včetně oddělení stránek, které jste přidali v tomto kurzu.
+    Při prvním spuštění stránky, která přistupuje k databázi, Entity Framework spustí všechny migrace `Up` metody potřebné k zajištění aktuálnosti databáze s aktuálním datovým modelem. Nyní můžete použít všechny webové stránky, které jste přidali od posledního nasazení, včetně stránek oddělení, které jste přidali v tomto kurzu.
 
-## <a name="get-the-code"></a>Získat kód
+## <a name="get-the-code"></a>Získání kódu
 
 [Stáhnout dokončený projekt](https://webpifeed.blob.core.windows.net/webpifeed/Partners/ASP.NET%20MVC%20Application%20Using%20Entity%20Framework%20Code%20First.zip)
 
 ## <a name="additional-resources"></a>Další zdroje
 
-Odkazy na další zdroje Entity Framework najdete v [přístup k datům ASP.NET – doporučené zdroje informací](../../../../whitepapers/aspnet-data-access-content-map.md).
+Odkazy na další prostředky Entity Framework najdete v [prostředcích, které jsou doporučeny pro přístup k datům ASP.NET](../../../../whitepapers/aspnet-data-access-content-map.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Dozvěděli jste se o asynchronní kód
-> * Vytvoří kontroler oddělení
-> * Používat uložené procedury
-> * Nasazení do Azure
+> * Seznámili jste se o asynchronním kódu
+> * Vytvořil se kontroler oddělení.
+> * Použité uložené procedury
+> * Nasazené do Azure
 
-Přejděte k dalším článku se naučíte, jak řešit konflikty při více uživatelů aktualizovat stejná entita ve stejnou dobu.
+V dalším článku se dozvíte, jak řešit konflikty, když více uživatelů aktualizuje stejnou entitu současně.
 > [!div class="nextstepaction"]
-> [Ošetření souběžnosti](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [Zpracování souběžnosti](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)

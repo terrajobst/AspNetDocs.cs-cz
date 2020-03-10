@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-datatables/cdnjquerydatatables105
-title: jQuery DataTables 1.10.5 | Dokumentace Microsoftu
+title: 1\.10.5Y jQuery DataTables | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -9,15 +9,15 @@ ms.assetid: 7a06c2a5-fd96-436c-baa1-2d148b8f7116
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables105
 msc.type: content
 ms.openlocfilehash: 07f30ddcdc5c1943eb2afda02b2174aee898b537
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59415931"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78563306"
 ---
 # <a name="jquery-datatables-1105"></a>jQuery DataTables 1.10.5
 
-Následující soubory pro architekturu jQuery DataTables moduly plug-in jsou hostované v síti CDN:
+Následující soubory pro moduly plug-in jQuery DataTables jsou hostovány v CDN:
 
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.10.5/jquery.dataTables.js
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.10.5/jquery.dataTables.min.js

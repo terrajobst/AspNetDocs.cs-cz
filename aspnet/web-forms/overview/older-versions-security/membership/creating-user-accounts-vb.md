@@ -9,11 +9,11 @@ ms.assetid: 9ef3e893-bebe-4b13-9fe5-8b71720dd85e
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-user-accounts-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 01be198c329f372ddcd529ad8a369f2d3426a9fc
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74628456"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78586819"
 ---
 # <a name="creating-user-accounts-vb"></a>Vytváření uživatelských účtů (VB)
 
@@ -315,7 +315,7 @@ Obrázek 15 znázorňuje snímek obrazovky `CreatingUserAccounts.aspx`, když u�
 > [!NOTE]
 > V kurzu  *<a id="_msoanchor_11">[ ](storing-additional-user-information-vb.md)</a>ukládání dalších informací o uživatelích* se zobrazí příklad použití události `CreatedUser` ovládacího prvku ovládacím CreateUserWizard.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Metoda `CreateUser` třídy `Membership` vytvoří nový uživatelský účet v rámci rozhraní členství. Provede tak delegováním volání nakonfigurovanému zprostředkovateli členství. V případě `SqlMembershipProvider`přidá metoda `CreateUser` záznam do tabulek databáze `aspnet_Users` a `aspnet_Membership`.
 

@@ -1,302 +1,302 @@
 ---
 uid: web-api/overview/security/external-authentication-services
-title: Externí ověřovací služby pomocí rozhraní ASP.NET Web API (C#) | Dokumentace Microsoftu
+title: Externí ověřovací služby s webovým rozhranímC#API ASP.NET () | Microsoft Docs
 author: rmcmurray
-description: Popisuje použití externí služby ověřování v rozhraní ASP.NET Web API.
+description: Popisuje použití externích ověřovacích služeb ve webovém rozhraní API ASP.NET.
 ms.author: riande
 ms.date: 01/28/2019
 ms.assetid: 3bb8eb15-b518-44f5-a67d-a27e051aedc6
 msc.legacyurl: /web-api/overview/security/external-authentication-services
 msc.type: authoredcontent
 ms.openlocfilehash: b2571552a3f8040ff42bfa0a9fa48981f71a1e4b
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133566"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78555473"
 ---
-# <a name="external-authentication-services-with-aspnet-web-api-c"></a>Externí ověřovací služby pomocí rozhraní ASP.NET Web API (C#)
+# <a name="external-authentication-services-with-aspnet-web-api-c"></a>Služby externích ověřování s webovým rozhranímC#API ASP.NET ()
 
-Visual Studio 2017 a ASP.NET 4.7.2 rozšířit možnosti zabezpečení pro [jednostránkové aplikace](../../../single-page-application/index.md) (SPA) a [webového rozhraní API](../../index.md) služby pro integraci s externí ověřovací služby, které zahrnují několik Účtu OAuth/OpenID a ověřovacích služeb sociálních médií: Účty Microsoft, Twitter, Facebook nebo Google.  
+Visual Studio 2017 a ASP.NET 4.7.2 rozšiřují možnosti zabezpečení pro [jednostránkové aplikace](../../../single-page-application/index.md) (Spa) a [webové rozhraní API](../../index.md) pro integraci s externími ověřovacími službami, mezi které patří několik OAuth/OpenID a služby sociální média ověřování: účty Microsoft, Twitter, Facebook a Google.  
 
-### <a name="in-this-walkthrough"></a>V tomto názorném postupu
+### <a name="in-this-walkthrough"></a>V tomto návodu
 
-- [Pomocí externí ověřovací služby](#USING)
+- [Používání služeb externích ověřování](#USING)
 - [Vytvoření ukázkové webové aplikace](#SAMPLE)
-- [Povolení ověřování přes síť Facebook](#FACEBOOK)
-- [Povolení ověřování Google](#GOOGLE)
-- [Povolení ověřování Microsoft](#MICROSOFT)
-- [Povolení ověřování Twitteru](#TWITTER)
+- [Povoluje se ověřování na Facebooku.](#FACEBOOK)
+- [Povoluje se ověřování Google.](#GOOGLE)
+- [Povolení ověřování společnosti Microsoft](#MICROSOFT)
+- [Povolení ověřování na Twitteru](#TWITTER)
 - [Další informace](#MOREINFO)
 
-    - [Kombinování externí ověřovací služby](#COMBINE)
-    - [Konfigurace služby IIS Express použít plně kvalifikovaný název domény](#FQDN)
-    - [Jak získat nastavení aplikace pro ověřování Microsoft](#OBTAIN)
-    - [Volitelné: Zakázat místní registrace](#DISABLE)
+    - [Kombinování externích ověřovacích služeb](#COMBINE)
+    - [Konfigurace IIS Express pro použití plně kvalifikovaného názvu domény](#FQDN)
+    - [Jak získat nastavení aplikace pro ověřování Microsoftu](#OBTAIN)
+    - [Volitelné: zakázat místní registraci](#DISABLE)
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-Chcete-li postupovat podle příkladů v tomto podrobném návodu, budete muset mít následující:
+Chcete-li postupovat podle příkladů v tomto návodu, musíte mít následující:
 
 - Visual Studio 2017
-- Vývojářský účet s identifikátorem aplikace a tajný klíč pro jednu z následujících ověřovací služby sociálních médií:
+- Vývojářský účet s identifikátorem aplikace a tajným klíčem pro jednu z následujících služeb ověřování na sociálních médiích:
 
-  - Microsoft Accounts ([https://go.microsoft.com/fwlink/?LinkID=144070](https://go.microsoft.com/fwlink/?LinkID=144070))
-  - Na twitteru ([https://dev.twitter.com/](https://dev.twitter.com/))
+  - Účty Microsoft ([https://go.microsoft.com/fwlink/?LinkID=144070](https://go.microsoft.com/fwlink/?LinkID=144070))
+  - Twitter ([https://dev.twitter.com/](https://dev.twitter.com/))
   - Facebook ([https://developers.facebook.com/](https://developers.facebook.com/))
   - Google ([https://developers.google.com/](https://developers.google.com))
 
 <a id="USING"></a>
-## <a name="using-external-authentication-services"></a>Pomocí externí ověřovací služby
+## <a name="using-external-authentication-services"></a>Používání služeb externích ověřování
 
-Celou řadu externí ověřovací služby, které jsou aktuálně k dispozici Nápověda na webu vývojáře ke snížení vývoj čas při vytváření nové webové aplikace. Webových uživatelů obvykle mají některé existující účty pro oblíbených webových služeb a webů sociálních médií, proto když implementuje aplikace webové služby ověřování z externí webové služby nebo webu sociálních médií, uloží dobu vývoje, který by se strávilo vytváření implementace ověřování. Použití služeb externího ověřování uloží koncoví uživatelé nebudou muset vytvořit jiný účet pro vaši webovou aplikaci a také nebudou muset pamatovat jiné uživatelské jméno a heslo.
+Díky četnosti externích ověřovacích služeb, které jsou aktuálně dostupné vývojářům webu, můžete zkrátit dobu vývoje při vytváření nových webových aplikací. Webové uživatele obvykle mají několik stávajících účtů pro oblíbené webové služby a weby sociálních médií, proto když webová aplikace implementuje ověřovací služby z externí webové služby nebo webu sociálních médií, uloží dobu vývoje, která bylo stráveno vytvořením implementace ověřování. Použití externí služby ověřování ukládá koncovým uživatelům, aby si pro vaši webovou aplikaci vytvářel jiný účet, a také si musí zapamatovat jiné uživatelské jméno a heslo.
 
-V minulosti, vývojáři měli dvě možnosti: vytvoření vlastní implementaci ověřování, nebo zjistěte, jak do svých aplikací integrovat externí ověřovací služba. Na nejzákladnější úrovni následující diagram znázorňuje tok jednoduchého požadavku pro uživatelského agenta (webový prohlížeč), který vyžaduje informace z webové aplikace, který je nakonfigurován pro použití služby externí ověřování:
+V minulosti měli vývojáři dvě možnosti: vytvořit vlastní implementaci ověřování nebo se naučíte integrovat externí službu ověřování do svých aplikací. Na nejvyšší úrovni představuje následující diagram jednoduchý tok požadavků pro uživatelského agenta (webový prohlížeč), který požaduje informace z webové aplikace, která je nakonfigurovaná na používání externí služby ověřování:
 
-[![](external-authentication-services/_static/image2.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image1.png)
+[![](external-authentication-services/_static/image2.png "Click to Expand the Image")](external-authentication-services/_static/image1.png)
 
-Na předchozím obrázku agent u uživatele (nebo webový prohlížeč v tomto příkladu) odešle požadavek na webovou aplikaci, který prohlížeč přesměruje na web služby externího ověřování. Uživatelský agent odešle svoje přihlašovací údaje ke službě externího ověřování, a pokud uživatelský agent se úspěšně ověřil, externí ověřovací služby přesměruje uživatelského agenta původní webové aplikace s určitou formu token, který uživatelský agent odešle do webové aplikace. Webová aplikace použije token k ověření, že uživatelský agent byl úspěšně ověřen službou externího ověřování a webové aplikace mohou použít token získáte další informace o uživatelského agenta. Po dokončení aplikace zpracování informací uživatelského agenta, webové aplikace vrátí odpovídající odpověď pro uživatelského agenta na základě nastavení autorizace.
+V předchozím diagramu agent uživatele (nebo webový prohlížeč v tomto příkladu) vytvoří požadavek na webovou aplikaci, která přesměruje webový prohlížeč na externí službu ověřování. Uživatelský agent pošle své přihlašovací údaje do služby externího ověřování a pokud byl agent uživatele úspěšně ověřen, služba externí ověřování přesměruje uživatelského agenta do původní webové aplikace s určitou formou tokenu, kterou uživatelský agent se pošle webové aplikaci. Webová aplikace použije token k ověření, zda byl uživatelský agent úspěšně ověřen pomocí externí služby ověřování, a webová aplikace může token použít k získání dalších informací o uživatelském agentovi. Jakmile se aplikace dokončí zpracováním informací o uživatelském agentovi, Webová aplikace vrátí příslušnou odpověď agentovi uživatele na základě jeho autorizačního nastavení.
 
-V druhém příkladu uživatelský agent vyjedná s webovou aplikaci a externí autorizačního serveru a webová aplikace provede další komunikaci se serverem externí autorizace pro načtení Další informace o uživateli Agent:
+V tomto druhém příkladu Agent pro uživatele vychází z webové aplikace a externího autorizačního serveru a webová aplikace provádí další komunikaci s externím autorizačním serverem, aby načetla Další informace o uživateli. agenta
 
-[![](external-authentication-services/_static/image4.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image3.png)
+[![](external-authentication-services/_static/image4.png "Click to Expand the Image")](external-authentication-services/_static/image3.png)
 
-Visual Studio 2017 a ASP.NET 4.7.2 zjednodušit integraci s externí ověřovací služby pro vývojáře tím, že poskytuje integraci u následujících služeb ověřování:
+Sady Visual Studio 2017 a ASP.NET 4.7.2 umožňují vývojářům zajistit integraci s externími službami ověřování pro vývojáře díky integrované integraci pro následující služby ověřování:
 
 - Facebook
 - Google
-- Accounts Microsoft (účty Windows Live ID)
+- Účty Microsoft (účty Windows Live ID)
 - Twitter
 
-V příkladech v tomto návodu ukazuje, jak nakonfigurovat každou z podporovaných externí ověřovací služby pomocí nové šablony webové aplikace ASP.NET, která je dodávána se sadou Visual Studio 2017.
+Příklady v tomto návodu ukazují, jak nakonfigurovat každou z podporovaných externích ověřovacích služeb pomocí nové šablony webové aplikace ASP.NET, která se dodává se sadou Visual Studio 2017.
 
 > [!NOTE]
-> V případě potřeby budete muset přidat váš plně kvalifikovaný název domény pro nastavení pro externí ověřovací služby. Tento požadavek je založená na omezení zabezpečení u některých služeb externího ověřování, které vyžadují plně kvalifikovaný název v nastavení aplikace tak, aby odpovídala plně kvalifikovaný název, který používá vaši klienti. (Postup se liší u každé externí ověřovací služby, budete muset dokumentaci pro každou službu externí ověřování chcete zobrazit, pokud to je potřeba a jak nakonfigurovat tato nastavení.) Pokud je potřeba nakonfigurovat službu IIS Express použijte plně kvalifikovaný název domény pro testování tohoto prostředí najdete v tématu [konfigurace služby IIS Express použijte plně kvalifikovaný název domény](#FQDN) dále v tomto názorném postupu.
+> V případě potřeby možná budete muset přidat svůj plně kvalifikovaný název domény do nastavení pro službu externího ověřování. Tento požadavek vychází z omezení zabezpečení pro některé externí služby ověřování, které vyžadují, aby plně kvalifikovaný název domény v nastavení vaší aplikace odpovídal plně kvalifikovanému názvu domény, který používají vaši klienti. (Kroky pro tento postup se u každé externí služby ověřování značně liší. budete se muset obrátit na dokumentaci pro každou službu externího ověřování a zjistit, jestli je to potřeba, a jak tato nastavení nakonfigurovat.) Pokud potřebujete nakonfigurovat IIS Express pro použití plně kvalifikovaného názvu domény pro testování tohoto prostředí, přečtěte si část [konfigurace IIS Express použití plně kvalifikovaného názvu domény](#FQDN) v tomto návodu.
 
 <a id="SAMPLE"></a>
-## <a name="create-a-sample-web-application"></a>Vytvořte ukázkovou webovou aplikaci
+## <a name="create-a-sample-web-application"></a>Vytvoření ukázkové webové aplikace
 
-Následující postup vás provede vytvoření ukázkové aplikace pomocí šablony webové aplikace ASP.NET a pro každou ze služeb externího ověřování později v tomto názorném postupu použijete této ukázkové aplikaci.
+Následující kroky vás provedou vytvořením ukázkové aplikace pomocí šablony webové aplikace ASP.NET a tuto ukázkovou aplikaci použijete pro každou službu externího ověřování dále v tomto návodu.
 
-Spusťte Visual Studio 2017 a vyberte **nový projekt** z úvodní stránky. Nebo z **souboru** nabídce vyberte možnost **nový** a potom **projektu**.
+Spusťte Visual Studio 2017 a na úvodní stránce vyberte **Nový projekt** . Nebo v nabídce **soubor** vyberte **Nový** a pak **projekt**.
 
 <!-- [![](external-authentication-services/_static/image6.png "Click to Expand the Image")](external-authentication-services/_static/image5.png) -->
 
-Když **nový projekt** dialogové okno se zobrazí, vyberte **nainstalováno** a rozbalte **Visual C#** . V části **Visual C#** vyberte **webové**. V seznamu šablon projektu vyberte **webová aplikace ASP.NET (.Net Framework)**. Zadejte název pro váš projekt a klikněte na tlačítko **OK**.
+Po zobrazení dialogového okna **Nový projekt** vyberte možnost **nainstalováno** a rozbalte položku **vizuál C#** . V **části C#vizuál** vyberte **Web**. V seznamu šablon projektu vyberte **ASP.NET webová aplikace (.NET Framework)** . Zadejte název projektu a klikněte na tlačítko **OK**.
 
-[![](external-authentication-services/_static/image71.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image71.png)
+[![](external-authentication-services/_static/image71.png "Click to Expand the Image")](external-authentication-services/_static/image71.png)
 
-Když **nový projekt ASP.NET** jsou zobrazeny, vyberte **jednostránkové aplikace** šablonu a klikněte na tlačítko **vytvořit projekt**.
+Po zobrazení **nového projektu ASP.NET** vyberte šablonu **aplikace s jednou stránkou** a klikněte na **vytvořit projekt**.
 
-[![](external-authentication-services/_static/image72.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image72.png)
+[![](external-authentication-services/_static/image72.png "Click to Expand the Image")](external-authentication-services/_static/image72.png)
 
-Počkejte jako Visual Studio 2017 vytvoří váš projekt.
+Počkejte, až Visual Studio 2017 vytvoří projekt.
 
 <!-- [![](external-authentication-services/_static/image12.png "Click to Expand the Image")](external-authentication-services/_static/image11.png) -->
 
-Po dokončení vytváření projektu sady Visual Studio 2017 otevřete *Startup.Auth.cs* soubor, který se nachází v **aplikace\_Start** složky.
+Po dokončení vytváření projektu v aplikaci Visual Studio 2017 otevřete soubor *Startup.auth.cs* , který je umístěn ve složce **App\_Start** .
 
-Při prvním vytvoření projektu, žádné externí ověřovací služby jsou povoleny v *Startup.Auth.cs* soubor; následující obrázek znázorňuje, co váš kód může vypadat, s oddíly zvýrazněn, kam byste měli povolit externí ověřovací službu a všechny příslušné nastavení, aby bylo možné používat ověřování Accounts Microsoft, Twitter, Facebook nebo Google s vaší aplikací ASP.NET:
+Při prvním vytvoření projektu nejsou v souboru *Startup.auth.cs* povoleny žádné externí ověřovací služby. Následující příklad ilustruje, jak se váš kód může podobat, kde jsou zvýrazněné oddíly, kde byste povolili externí službu ověřování a veškerá relevantní nastavení, aby bylo možné používat účty Microsoft, Twitter, Facebook nebo Google ověřování s vaší aplikací ASP.NET:
 
 [!code-csharp[Main](external-authentication-services/samples/sample1.cs)]
 
-Když stisknete klávesu F5 k sestavení a ladění webové aplikace, zobrazí se přihlašovací obrazovka, kde uvidíte, že nebyly definovány žádné externí ověřovací služby.
+Když stisknete klávesu F5 k sestavení a ladění webové aplikace, zobrazí se přihlašovací obrazovka, na které se zobrazí, že nebyly definovány žádné externí ověřovací služby.
 
-[![](external-authentication-services/_static/image73.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image73.png)
+[![](external-authentication-services/_static/image73.png "Click to Expand the Image")](external-authentication-services/_static/image73.png)
 
-V následujících částech se dozvíte, jak můžete povolit každou z externí ověřovací služby, které jsou součástí technologie ASP.NET v sadě Visual Studio 2017.
+V následujících částech se dozvíte, jak povolit každou z externích ověřovacích služeb, které jsou k dispozici v ASP.NET ve Visual Studiu 2017.
 
 <a id="FACEBOOK"></a>
-## <a name="enabling-facebook-authentication"></a>Povolení ověřování přes síť Facebook
+## <a name="enabling-facebook-authentication"></a>Povoluje se ověřování na Facebooku.
 
-Pomocí služby Facebook ověřování musíte vytvořit účet pro vývojáře Facebooku a váš projekt bude vyžadovat ID aplikace a tajný klíč ze sítě Facebook, aby funkce. Informace o vytváření účtu sítě Facebook pro vývojáře a získání ID aplikace a tajný klíč, najdete v části [ https://go.microsoft.com/fwlink/?LinkID=252166 ](https://go.microsoft.com/fwlink/?LinkID=252166).
+Použití ověřování na Facebooku vyžaduje, abyste vytvořili vývojářský účet pro Facebook a váš projekt bude vyžadovat ID aplikace a tajný klíč z Facebooku, aby fungoval. Informace o tom, jak vytvořit vývojářský účet pro Facebook a získat ID aplikace a tajný klíč, najdete v tématu [https://go.microsoft.com/fwlink/?LinkID=252166](https://go.microsoft.com/fwlink/?LinkID=252166).
 
-Po získání ID aplikace a tajný klíč, pokud chcete povolit ověřování sítě Facebook pro vaši webovou aplikaci pomocí následujících kroků:
+Jakmile získáte ID aplikace a tajný klíč, použijte následující postup k povolení ověřování na Facebooku pro vaši webovou aplikaci:
 
-1. Pokud váš projekt je otevřený v sadě Visual Studio 2017, otevřou *Startup.Auth.cs* souboru.
+1. Když je projekt otevřen v aplikaci Visual Studio 2017, otevřete soubor *Startup.auth.cs* .
 
-2. Vyhledejte část ověřování Facebook kódu:
+2. Vyhledejte část s ověřovacím kódem Facebooku:
 
     [!code-csharp[Main](external-authentication-services/samples/sample2.cs)]
-3. Odeberte &quot; // &quot; znaků, které mají Odkomentujte zvýrazněné řádky kódu a pak přidejte ID aplikace a tajný klíč. Po přidání těchto parametrů můžete znovu zkompilovat váš projekt:
+3. Odebráním &quot;//&quot; znaků Odkomentujte zvýrazněné řádky kódu a pak přidejte ID aplikace a tajný klíč. Po přidání těchto parametrů můžete projekt znovu zkompilovat:
 
     [!code-csharp[Main](external-authentication-services/samples/sample3.cs)]
-4. Po stisknutí klávesy F5 spusťte webovou aplikaci ve webovém prohlížeči, uvidíte, že byl definovaný jako externí ověřovací služba Facebooku:
+4. Po stisknutí klávesy F5 k otevření webové aplikace ve webovém prohlížeči se zobrazí, že Facebook byl definován jako externí Služba ověřování:
 
-    [![](external-authentication-services/_static/image74.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image74.png)
-5. Po kliknutí **Facebook** tlačítko, prohlížeč, budete přesměrováni na přihlašovací stránku Facebooku:
+    [![](external-authentication-services/_static/image74.png "Click to Expand the Image")](external-authentication-services/_static/image74.png)
+5. Když kliknete na tlačítko **Facebook** , váš prohlížeč se přesměruje na přihlašovací stránku Facebooku:
 
-    [![](external-authentication-services/_static/image22.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image21.png)
-6. Po zadání vašich přihlašovacích údajů k Facebooku a klikněte na tlačítko **přihlášení**, ve webovém prohlížeči, budete přesměrováni zpět do vaší webové aplikace, které vás vyzve k **uživatelské jméno** , kterou chcete přidružit k vaší Účtu na Facebooku:
+    [![](external-authentication-services/_static/image22.png "Click to Expand the Image")](external-authentication-services/_static/image21.png)
+6. Po zadání přihlašovacích údajů k Facebooku a kliknutí na **Přihlásit**se webový prohlížeč přesměruje zpátky do vaší webové aplikace. zobrazí se výzva k zadání **uživatelského jména** , které chcete přidružit k účtu Facebook:
 
-    [![](external-authentication-services/_static/image24.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image23.png)
-7. Po zadání uživatelského jména a kliknutí na **zaregistrovat** tlačítko, webové aplikace se zobrazí výchozí **domovskou stránku** pro svůj účet na Facebooku:
+    [![](external-authentication-services/_static/image24.png "Click to Expand the Image")](external-authentication-services/_static/image23.png)
+7. Po zadání uživatelského jména a kliknutí na tlačítko **zaregistrovat** vaše webová aplikace zobrazí výchozí **domovskou stránku** pro váš účet Facebook:
 
-    [![](external-authentication-services/_static/image26.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image25.png)
+    [![](external-authentication-services/_static/image26.png "Click to Expand the Image")](external-authentication-services/_static/image25.png)
 
 <a id="GOOGLE"></a>
-## <a name="enabling-google-authentication"></a>Povolení ověřování Google
+## <a name="enabling-google-authentication"></a>Povoluje se ověřování Google.
 
-Pomocí služby Google ověřování musíte vytvořit účet pro vývojáře Google a váš projekt bude vyžadovat ID aplikace a tajný klíč z Googlu mohl fungovat. Informace o vytváření vývojářský účet Google a získání ID aplikace a tajný klíč, najdete v části [ https://developers.google.com ](https://developers.google.com).
+Použití ověřování Google vyžaduje, abyste vytvořili účet pro vývojáře Google a váš projekt bude vyžadovat ID aplikace a tajný klíč od společnosti Google, aby mohl fungovat. Informace o vytvoření účtu vývojáře Google a získání ID aplikace a tajného klíče najdete v tématu [https://developers.google.com](https://developers.google.com).
 
-Pokud chcete povolit ověřování Google pro vaši webovou aplikaci, postupujte následovně:
+Pokud chcete povolit ověřování Google pro vaši webovou aplikaci, použijte následující postup:
 
-1. Pokud váš projekt je otevřený v sadě Visual Studio 2017, otevřou *Startup.Auth.cs* souboru.
+1. Když je projekt otevřen v aplikaci Visual Studio 2017, otevřete soubor *Startup.auth.cs* .
 
-2. Vyhledejte část kódu pro ověřování Google:
+2. Vyhledejte oddíl ověřování Google Code:
 
     [!code-csharp[Main](external-authentication-services/samples/sample4.cs)]
-3. Odeberte &quot; // &quot; znaků, které mají Odkomentujte zvýrazněné řádky kódu a pak přidejte ID aplikace a tajný klíč. Po přidání těchto parametrů můžete znovu zkompilovat váš projekt:
+3. Odebráním &quot;//&quot; znaků Odkomentujte zvýrazněné řádky kódu a pak přidejte ID aplikace a tajný klíč. Po přidání těchto parametrů můžete projekt znovu zkompilovat:
 
     [!code-csharp[Main](external-authentication-services/samples/sample5.cs)]
-4. Po stisknutí klávesy F5 spusťte webovou aplikaci ve webovém prohlížeči, uvidíte, že Google je definována jako externí ověřovací služby:
+4. Když stisknete klávesu F5 k otevření webové aplikace ve webovém prohlížeči, uvidíte, že Google byl definován jako externí Služba ověřování:
 
-    [![](external-authentication-services/_static/image75.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image75.png)
-5. Když kliknete **Google** tlačítko, prohlížeče, budete přesměrováni na přihlašovací stránku Google:
+    [![](external-authentication-services/_static/image75.png "Click to Expand the Image")](external-authentication-services/_static/image75.png)
+5. Když kliknete na tlačítko **Google** , váš prohlížeč se přesměruje na přihlašovací stránku Google:
 
-    [![](external-authentication-services/_static/image32.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image31.png)
-6. Po zadání přihlašovacích údajů služby Google a klikněte na tlačítko **přihlášení**, Google vás vyzve k ověření, že vaše webová aplikace má oprávnění pro přístup k účtu Google:
+    [![](external-authentication-services/_static/image32.png "Click to Expand the Image")](external-authentication-services/_static/image31.png)
+6. Až zadáte svoje přihlašovací údaje Google a kliknete na **Přihlásit**, Google vás vyzve, abyste ověřili, že vaše webová aplikace má oprávnění k přístupu k vašemu účtu Google:
 
-    [![](external-authentication-services/_static/image34.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image33.png)
-7. Po kliknutí na **přijmout**, ve webovém prohlížeči, budete přesměrováni zpět do vaší webové aplikace, které vás vyzve k **uživatelské jméno** , kterou chcete přidružit k účtu Google:
+    [![](external-authentication-services/_static/image34.png "Click to Expand the Image")](external-authentication-services/_static/image33.png)
+7. Když kliknete na **přijmout**, váš webový prohlížeč se přesměruje zpátky do vaší webové aplikace, kde se zobrazí výzva k zadání **uživatelského jména** , které chcete přidružit k vašemu účtu Google:
 
-    [![](external-authentication-services/_static/image36.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image35.png)
-8. Po zadání uživatelského jména a kliknutí na **zaregistrovat** tlačítko, webové aplikace se zobrazí výchozí **domovskou stránku** pro váš účet Google:
+    [![](external-authentication-services/_static/image36.png "Click to Expand the Image")](external-authentication-services/_static/image35.png)
+8. Po zadání uživatelského jména a kliknutí na tlačítko **zaregistrovat** vaše webová aplikace zobrazí výchozí **domovskou stránku** účtu Google:
 
-    [![](external-authentication-services/_static/image38.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image37.png)
+    [![](external-authentication-services/_static/image38.png "Click to Expand the Image")](external-authentication-services/_static/image37.png)
 
 <a id="MICROSOFT"></a>
-## <a name="enabling-microsoft-authentication"></a>Povolení ověřování Microsoft
+## <a name="enabling-microsoft-authentication"></a>Povolení ověřování společnosti Microsoft
 
-Ověřování Microsoft musíte vytvořit účet pro vývojáře a vyžaduje ID klienta a tajný kód klienta mohl fungovat. Informace o vytvoření účtu Microsoft pro vývojáře a získání ID klienta a tajný kód klienta najdete v tématu [ https://go.microsoft.com/fwlink/?LinkID=144070 ](https://go.microsoft.com/fwlink/?LinkID=144070).
+Ověřování společnosti Microsoft vyžaduje, abyste vytvořili vývojářský účet a aby fungovalo, vyžaduje ID klienta a tajný klíč klienta. Informace o vytvoření účtu Microsoft Developer a získání ID klienta a tajného kódu klienta najdete v tématu [https://go.microsoft.com/fwlink/?LinkID=144070](https://go.microsoft.com/fwlink/?LinkID=144070).
 
-Jednou jste získali váš uživatelský klíč a uživatelský tajný klíč, pokud chcete povolit ověřování Microsoft pro vaši webovou aplikaci pomocí následujících kroků:
+Jakmile získáte klíč příjemce a tajný klíč příjemce, pomocí následujícího postupu povolte ověřování společnosti Microsoft pro vaši webovou aplikaci:
 
-1. Pokud váš projekt je otevřený v sadě Visual Studio 2017, otevřou *Startup.Auth.cs* souboru.
+1. Když je projekt otevřen v aplikaci Visual Studio 2017, otevřete soubor *Startup.auth.cs* .
 
-2. Vyhledejte část kódu pro ověřování Microsoft:
+2. Vyhledejte část kódu ověřování společnosti Microsoft:
 
     [!code-csharp[Main](external-authentication-services/samples/sample6.cs)]
-3. Odeberte &quot; // &quot; znaků, které mají Odkomentujte zvýrazněné řádky kódu a pak přidejte ID klienta a tajný kód klienta. Po přidání těchto parametrů můžete znovu zkompilovat váš projekt:
+3. Odebráním &quot;//&quot; znaků Odkomentujte zvýrazněné řádky kódu a pak přidejte ID klienta a tajný klíč klienta. Po přidání těchto parametrů můžete projekt znovu zkompilovat:
 
     [!code-csharp[Main](external-authentication-services/samples/sample7.cs)]
-4. Po stisknutí klávesy F5 spusťte webovou aplikaci ve webovém prohlížeči, uvidíte, že Microsoft je definována jako externí ověřovací služby:
+4. Po stisknutí klávesy F5 k otevření webové aplikace ve webovém prohlížeči se zobrazí informace o tom, že společnost Microsoft byla definována jako externí Služba ověřování:
 
-    [![](external-authentication-services/_static/image42.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image41.png)
-5. Po kliknutí **Microsoft** tlačítko, prohlížeč, budete přesměrováni na přihlašovací stránku Microsoft:
+    [![](external-authentication-services/_static/image42.png "Click to Expand the Image")](external-authentication-services/_static/image41.png)
+5. Když kliknete na tlačítko **Microsoft** , váš prohlížeč se přesměruje na přihlašovací stránku Microsoftu:
 
-    [![](external-authentication-services/_static/image44.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image43.png)
-6. Po zadání přihlašovacích údajů společnosti Microsoft a klikněte na tlačítko **přihlášení**, budete vyzváni k ověření, že vaše webová aplikace má oprávnění pro přístup k účtu Microsoft:
+    [![](external-authentication-services/_static/image44.png "Click to Expand the Image")](external-authentication-services/_static/image43.png)
+6. Po zadání přihlašovacích údajů Microsoftu a kliknutí na **Přihlásit**se zobrazí výzva, abyste ověřili, že vaše webová aplikace má oprávnění pro přístup k vašemu účet Microsoft:
 
-    [![](external-authentication-services/_static/image46.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image45.png)
-7. Po kliknutí na **Ano**, ve webovém prohlížeči, budete přesměrováni zpět do vaší webové aplikace, které vás vyzve k **uživatelské jméno** , kterou chcete přidružit k účtu Microsoft:
+    [![](external-authentication-services/_static/image46.png "Click to Expand the Image")](external-authentication-services/_static/image45.png)
+7. Kliknete-li na tlačítko **Ano**, bude webový prohlížeč přesměrován zpět do vaší webové aplikace. zobrazí se výzva k zadání **uživatelského jména** , které chcete přidružit k vašemu účet Microsoft:
 
-    [![](external-authentication-services/_static/image48.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image47.png)
-8. Po zadání uživatelského jména a kliknutí na **zaregistrovat** tlačítko, webové aplikace se zobrazí výchozí **domovskou stránku** pro svůj účet Microsoft:
+    [![](external-authentication-services/_static/image48.png "Click to Expand the Image")](external-authentication-services/_static/image47.png)
+8. Po zadání uživatelského jména a kliknutí na tlačítko **zaregistrovat** se ve vaší webové aplikaci zobrazí výchozí **Domovská stránka** pro váš účet Microsoft:
 
-    [![](external-authentication-services/_static/image50.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image49.png)
+    [![](external-authentication-services/_static/image50.png "Click to Expand the Image")](external-authentication-services/_static/image49.png)
 
 <a id="TWITTER"></a>
-## <a name="enabling-twitter-authentication"></a>Povolení ověřování Twitteru
+## <a name="enabling-twitter-authentication"></a>Povolení ověřování na Twitteru
 
-Twitter ověřování musíte vytvořit účet pro vývojáře a vyžaduje uživatelský klíč a tajný klíč příjemce mohl fungovat. Informace o vytváření vývojářského účtu Twitteru a získávání vaše uživatelským klíčem a uživatelským utajením najdete v tématu [ https://go.microsoft.com/fwlink/?LinkID=252166 ](https://go.microsoft.com/fwlink/?LinkID=252166).
+Ověřování pomocí Twitteru vyžaduje, abyste vytvořili vývojářský účet a aby mohli fungovat, vyžaduje klíč příjemce a klíč příjemce. Informace o vytvoření účtu vývojáře pro Twitter a získání klíče příjemce a tajného kódu příjemce najdete v tématu [https://go.microsoft.com/fwlink/?LinkID=252166](https://go.microsoft.com/fwlink/?LinkID=252166).
 
-Jednou jste získali váš uživatelský klíč a uživatelský tajný klíč, pokud chcete povolit ověřování Twitteru pro vaši webovou aplikaci pomocí následujících kroků:
+Jakmile získáte klíč příjemce a tajný klíč příjemce, pomocí následujícího postupu povolte pro webovou aplikaci ověřování pomocí Twitteru:
 
-1. Pokud váš projekt je otevřený v sadě Visual Studio 2017, otevřou *Startup.Auth.cs* souboru.
+1. Když je projekt otevřen v aplikaci Visual Studio 2017, otevřete soubor *Startup.auth.cs* .
 
-2. Vyhledejte část ověřování Twitteru kódu:
+2. Vyhledejte část s ověřováním na Twitteru v kódu:
 
     [!code-csharp[Main](external-authentication-services/samples/sample8.cs)]
-3. Odeberte &quot; // &quot; znaků, které mají Odkomentujte zvýrazněné řádky kódu a pak přidejte uživatelský klíč a uživatelský tajný klíč. Po přidání těchto parametrů můžete znovu zkompilovat váš projekt:
+3. Odebráním &quot;//&quot; znaků Odkomentujte zvýrazněné řádky kódu a pak přidejte svůj klíč příjemce a tajný klíč příjemce. Po přidání těchto parametrů můžete projekt znovu zkompilovat:
 
     [!code-csharp[Main](external-authentication-services/samples/sample9.cs)]
-4. Po stisknutí klávesy F5 spusťte webovou aplikaci ve webovém prohlížeči, uvidíte, že byl definovaný jako externí ověřovací služba Twitter:
+4. Po stisknutí klávesy F5 k otevření webové aplikace ve webovém prohlížeči se zobrazí, že Twitter byl definován jako externí Služba ověřování:
 
-    [![](external-authentication-services/_static/image54.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image53.png)
-5. Po kliknutí **Twitteru** tlačítko, prohlížeč, budete přesměrováni na přihlašovací stránku Twitteru:
+    [![](external-authentication-services/_static/image54.png "Click to Expand the Image")](external-authentication-services/_static/image53.png)
+5. Když kliknete na tlačítko **Twitter** , váš prohlížeč se přesměruje na přihlašovací stránku Twitteru:
 
-    [![](external-authentication-services/_static/image56.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image55.png)
-6. Po zadání vaše přihlašovací údaje k Twitteru a klikněte na tlačítko **autorizovat aplikaci**, ve webovém prohlížeči, budete přesměrováni zpět do vaší webové aplikace, které vás vyzve k **uživatelské jméno** , kterou chcete přidružit k váš účet Twitteru:
+    [![](external-authentication-services/_static/image56.png "Click to Expand the Image")](external-authentication-services/_static/image55.png)
+6. Po zadání přihlašovacích údajů pro Twitter a kliknutí na **autorizovat**se webový prohlížeč přesměruje zpátky do vaší webové aplikace. zobrazí se výzva k zadání **uživatelského jména** , které chcete přidružit k vašemu účtu Twitteru:
 
-    [![](external-authentication-services/_static/image58.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image57.png)
-7. Po zadání uživatelského jména a kliknutí na **zaregistrovat** tlačítko, webové aplikace se zobrazí výchozí **domovskou stránku** pro váš účet Twitteru:
+    [![](external-authentication-services/_static/image58.png "Click to Expand the Image")](external-authentication-services/_static/image57.png)
+7. Po zadání uživatelského jména a kliknutí na tlačítko **zaregistrovat** se ve vaší webové aplikaci zobrazí výchozí **Domovská stránka** pro váš účet na Twitteru:
 
-    [![](external-authentication-services/_static/image60.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image59.png)
+    [![](external-authentication-services/_static/image60.png "Click to Expand the Image")](external-authentication-services/_static/image59.png)
 
 <a id="MOREINFO"></a>
 ## <a name="additional-information"></a>Další informace
 
-Další informace o vytváření aplikací, které používají OAuth a OpenID najdete v následující adresy URL:
+Další informace o vytváření aplikací, které používají OAuth a OpenID, najdete v následujících adresách URL:
 
 - [https://go.microsoft.com/fwlink/?LinkID=252166](https://go.microsoft.com/fwlink/?LinkID=252166)
 - [https://go.microsoft.com/fwlink/?LinkID=243995](https://go.microsoft.com/fwlink/?LinkID=243995)
 
 <a id="COMBINE"></a>
-### <a name="combining-external-authentication-services"></a>Kombinování externí ověřovací služby
+### <a name="combining-external-authentication-services"></a>Kombinování externích ověřovacích služeb
 
-Pro větší flexibilitu můžete definovat několik služeb externího ověřování ve stejnou dobu – to umožňuje vaší webové aplikace uživatelům k použití účtu ze všech služeb povolených externího ověřování:
+Pro větší flexibilitu můžete současně definovat více externích služeb ověřování – to umožní uživatelům vaší webové aplikace používat účet z kterékoli z povolených externích ověřovacích služeb:
 
-[![](external-authentication-services/_static/image62.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image61.png)
+[![](external-authentication-services/_static/image62.png "Click to Expand the Image")](external-authentication-services/_static/image61.png)
 
 <a id="FQDN"></a>
-### <a name="configure-iis-express-to-use-a-fully-qualified-domain-name"></a>Konfigurace služby IIS Express pro použití plně kvalifikovaný název domény
+### <a name="configure-iis-express-to-use-a-fully-qualified-domain-name"></a>Konfigurace IIS Express pro použití plně kvalifikovaného názvu domény
 
-Někteří poskytovatelé externího ověřování nepodporují testování aplikace pomocí adresy HTTP jako `http://localhost:port/`. Chcete-li tento problém obejít, můžete přidat statické mapování plně kvalifikovaný název domény (FQDN) do souboru HOSTITELŮ a nakonfigurovat možnosti projektu v sadě Visual Studio 2017 pro účely testování nebo ladění plně kvalifikovaný název domény. Chcete-li to provést, postupujte následovně:
+Někteří zprostředkovatelé externího ověřování nepodporují testování aplikace pomocí adresy HTTP, jako je `http://localhost:port/`. Chcete-li tento problém obejít, můžete přidat statické mapování plně kvalifikovaného názvu domény (FQDN) do souboru hostitelů a nakonfigurovat možnosti projektu v aplikaci Visual Studio 2017 pro použití plně kvalifikovaného názvu domény pro testování/ladění. Chcete-li tak učinit, proveďte následující kroky:
 
-- Přidejte statické plně kvalifikovaný název domény mapování souboru HOSTITELŮ:
+- Přidejte statický plně kvalifikovaný název domény pro mapování souboru hostitelů:
 
-  1. Otevřete příkazový řádek se zvýšenými oprávněními ve Windows.
+  1. Otevřete příkazový řádek se zvýšenými oprávněními v systému Windows.
   2. Zadejte následující příkaz:
 
-      <kbd>notepad %WinDir%\system32\drivers\etc\hosts</kbd>
-  3. Přidejte do souboru HOSTITELŮ záznam takto:
+      <kbd>Poznámkový blok%WinDir%\system32\drivers\etc\hosts</kbd>
+  3. Do souboru hostitelů přidejte položku podobný následujícímu:
 
       <kbd>127.0.0.1 www.wingtiptoys.com</kbd>
-  4. Uložte a zavřete soubor HOSTITELŮ.
+  4. Uložte a zavřete soubor hostitelů.
 
-- Konfigurace projektu Visual Studio pro použití plně kvalifikovaný název domény:
+- Nakonfigurujte projekt sady Visual Studio tak, aby používal plně kvalifikovaný název domény:
 
-  1. Pokud váš projekt je otevřený v sadě Visual Studio 2017, klikněte na tlačítko **projektu** nabídky a pak vyberte vlastnosti projektu. Například můžete vybrat **WebApplication1 vlastnosti**.
-  2. Vyberte **webové** kartu.
-  3. Zadejte plně kvalifikovaný název vaší domény pro <strong>projektu adresa Url</strong>. Například, zadali byste <kbd> <http://www.wingtiptoys.com> </kbd> Pokud to bylo mapování plně kvalifikovaný název domény, který jste přidali do souboru HOSTS.
+  1. Když je projekt otevřen v aplikaci Visual Studio 2017, klikněte na nabídku **projekt** a potom vyberte vlastnosti projektu. Například můžete vybrat **vlastnosti WebApplication1**.
+  2. Vyberte kartu **Web** .
+  3. Zadejte plně kvalifikovaný název domény pro <strong>adresu URL projektu</strong>. Zadejte například <kbd><http://www.wingtiptoys.com></kbd> , pokud se jednalo o mapování plně kvalifikovaného názvu domény, které jste přidali do souboru hostitelů.
 
-- Konfigurace služby IIS Express pro účely vaší aplikace plně kvalifikovaný název domény:
+- Nakonfigurujte IIS Express pro použití plně kvalifikovaného názvu domény pro vaši aplikaci:
 
-    1. Otevřete příkazový řádek se zvýšenými oprávněními ve Windows.
-    2. Zadejte následující příkaz, chcete-li změnit do složky služby IIS Express:
+    1. Otevřete příkazový řádek se zvýšenými oprávněními v systému Windows.
+    2. Zadáním následujícího příkazu přejděte do složky IIS Express:
 
-        <kbd>CD /d &quot;%ProgramFiles%\IIS Express&quot;</kbd>
-    3. Zadejte následující příkaz pro přidání plně kvalifikovaný název domény pro vaši aplikaci:
+        <kbd>CD/d &quot;%ProgramFiles%\IIS Express&quot;</kbd>
+    3. Zadáním následujícího příkazu přidejte do aplikace plně kvalifikovaný název domény:
 
-        <kbd>Appcmd.exe nastavení konfigurace-section:system.applicationHost/sites / +&quot;[name = 'WebApplication1'] .bindings. [protokol http, bindingInformation = ='*:80:www.wingtiptoys.com']&quot; /commit:apphost</kbd>
+        <kbd>Appcmd. exe nastavení konfigurace-oddíl: System. applicationHost/sites/+&quot;[name = ' WebApplication1 ']. Bindings. [Protocol = ' http ', bindingInformation = ' *: 80: www. wingtiptoys. com ']&quot;/Commit: apphost</kbd>
 
   Kde **WebApplication1** je název vašeho projektu a **bindingInformation** obsahuje číslo portu a plně kvalifikovaný název domény, které chcete použít pro testování.
 
 <a id="OBTAIN"></a>
-### <a name="how-to-obtain-your-application-settings-for-microsoft-authentication"></a>Jak získat nastavení aplikace pro ověřování Microsoft
+### <a name="how-to-obtain-your-application-settings-for-microsoft-authentication"></a>Jak získat nastavení aplikace pro ověřování Microsoftu
 
-Propojení aplikace pro Windows Live pro Microsoft Authentication je jednoduchý proces. Pokud už nejsou propojené aplikace pro Windows Live, můžete použít následující kroky:
+Propojení aplikace s Windows Live pro ověřování Microsoft je jednoduchý proces. Pokud jste ještě nepřipojili aplikaci k Windows Live, můžete použít následující postup:
 
-1. Přejděte do [ https://go.microsoft.com/fwlink/?LinkID=144070 ](https://go.microsoft.com/fwlink/?LinkID=144070) a zadejte název účtu Microsoft a heslo, když se zobrazí výzva, klepněte na tlačítko **přihlášení**:
+1. Po zobrazení výzvy vyhledejte [https://go.microsoft.com/fwlink/?LinkID=144070](https://go.microsoft.com/fwlink/?LinkID=144070) a zadejte své účet Microsoft jméno a heslo a pak klikněte na **Přihlásit**se:
 
    <!--  [![](external-authentication-services/_static/image64.png "Click to Expand the Image")](external-authentication-services/_static/image63.png) -->
-2. Vyberte **přidat aplikaci** a zadejte název vaší aplikace, po zobrazení výzvy a pak klikněte na tlačítko **vytvořit**:
+2. Vyberte **Přidat aplikaci** a po zobrazení výzvy zadejte název aplikace a potom klikněte na **vytvořit**:
 
-    [![](external-authentication-services/_static/image79.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image79.png)
-3. Vyberte aplikaci v rámci **název** a zobrazí se stránka Vlastnosti své aplikace.
+    [![](external-authentication-services/_static/image79.png "Click to Expand the Image")](external-authentication-services/_static/image79.png)
+3. V části **název** a jeho vlastnosti aplikace vyberte svou aplikaci.
 
-4. Zadejte doménu přesměrování aplikace. Kopírovat **ID aplikace** a v části **tajných klíčů aplikací**vyberte **generovat heslo**. Zkopírujte heslo, které se zobrazí. ID aplikace a heslo jsou vaše ID klienta a tajný kód klienta. Vyberte **Ok** a potom **Uložit**.
+4. Zadejte doménu přesměrování vaší aplikace. Zkopírujte **ID aplikace** a v části **tajné klíče aplikace**vyberte **generovat heslo**. Zkopírujte heslo, které se zobrazí. ID a heslo aplikace jsou ID klienta a tajný klíč klienta. Vyberte **OK** a pak ho **uložte**.
 
-    [![](external-authentication-services/_static/image77.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image77.png)
+    [![](external-authentication-services/_static/image77.png "Click to Expand the Image")](external-authentication-services/_static/image77.png)
 
 <a id="DISABLE"></a>
-### <a name="optional-disable-local-registration"></a>Volitelné: Zakázat místní registrace
+### <a name="optional-disable-local-registration"></a>Volitelné: zakázat místní registraci
 
-Aktuální funkce místní registrace technologie ASP.NET nebrání automatizovaným programům (robotům) vytváření účtů; člen například s použitím bot-ochrany před únikem informací a ověření technologií, jako například [test CAPTCHA](../../../web-pages/overview/security/16-adding-security-and-membership.md). Z tohoto důvodu byste měli odebrat místní přihlašovací formulář a registrace odkaz na přihlašovací stránce. Chcete-li to provést, otevřete  *\_Login.cshtml* stránky ve vašem projektu a pak okomentujte řádky pro panelu Místní přihlášení a odkaz na registraci. Výsledný stránka by měla vypadat jako v následující ukázce kódu:
+Aktuální funkce místní registrace ASP.NET nezabrání v vytváření členských účtů automatizovaným programům (roboty). například pomocí technologie prevence a ověřování robota, jako je [CAPTCHA](../../../web-pages/overview/security/16-adding-security-and-membership.md). Z tohoto důvodu byste měli na přihlašovací stránce odebrat místní přihlašovací formulář a odkaz na registraci. Provedete to tak, že otevřete stránku *\_Login. cshtml* v projektu a pak na řádek zadáte komentář k místnímu přihlašovacímu panelu a odkazu na registraci. Výsledná stránka by měla vypadat jako následující ukázka kódu:
 
 [!code-html[Main](external-authentication-services/samples/sample10.html)]
 
-Po nastavení panelu Místní přihlášení a odkaz na registraci byly zakázány, přihlašovací stránka zobrazí zprostředkovatele externího ověřování, které jste povolili:
+Po zakázání místního přihlašovacího panelu a registračního odkazu se na přihlašovací stránce zobrazí jenom externí poskytovatelé ověřování, které jste povolili:
 
-[![](external-authentication-services/_static/image70.png "Kliknutím rozbalte Image")](external-authentication-services/_static/image69.png)
+[![](external-authentication-services/_static/image70.png "Click to Expand the Image")](external-authentication-services/_static/image69.png)

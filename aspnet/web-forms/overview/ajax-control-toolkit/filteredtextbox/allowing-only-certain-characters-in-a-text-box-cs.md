@@ -9,11 +9,11 @@ ms.assetid: fd2a1c52-d717-44af-8a61-67c8279bb26e
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-cs
 msc.type: authoredcontent
 ms.openlocfilehash: d1e367becd574e31d24fca8545f76b1ed3c4d85e
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74611770"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78554234"
 ---
 # <a name="allowing-only-certain-characters-in-a-text-box-c"></a>Povolení určitých znaků v textovém poli (C#)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvky ověřování ASP.NET můžou zajistit, že ve vstupu uživatele budou povolené jenom určité znaky. Přesto však nebrání uživatelům v zadávání neplatných znaků a pokusu o odeslání formuláře.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 ASP.NET AJAX Control Toolkit obsahuje ovládací prvek `FilteredTextBox`, který rozšiřuje textové pole. Po aktivaci lze do pole zadat pouze určitou sadu znaků.
 

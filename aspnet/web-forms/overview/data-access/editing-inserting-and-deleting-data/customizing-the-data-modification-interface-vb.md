@@ -9,11 +9,11 @@ ms.assetid: 4830d984-bd2c-4a08-bfe5-2385599f1f7d
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 85ec7bdde6b2bffbbda066b0441bbd36b7072197
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74585203"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78592615"
 ---
 # <a name="customizing-the-data-modification-interface-vb"></a>Přizpůsobení rozhraní pro úpravu dat (VB)
 
@@ -220,7 +220,7 @@ S těmito změnami byl sloupec `Discontinued` transformované ze seznamu zaškrt
 > [!NOTE]
 > Vzhledem k tomu, že sloupec `Discontinued` v databázi `Products` nemůže mít `NULL` hodnoty, nemusíte si dělat starosti se zachytáváním `NULL` informací v rozhraní. Pokud ale `Discontinued` sloupec může obsahovat `NULL` hodnoty, chtěli bychom do seznamu přidat třetí přepínač s jeho `Value` nastavenou na prázdný řetězec (`Value=""`), stejně jako u ovládacích prvků DropDownList kategorie a dodavatele.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 I když vlastnost BoundField a třídě CheckBoxField podporována automaticky vykreslují rozhraní jen pro čtení, úpravy a vkládání, nemají možnost přizpůsobení. Často ale budeme muset přizpůsobit rozhraní pro úpravy nebo vložení, možná přidáte ovládací prvky pro ověřování (jak jsme viděli v předchozím kurzu) nebo přizpůsobení uživatelského rozhraní shromažďování dat (jak jsme viděli v tomto kurzu). Přizpůsobení rozhraní pomocí TemplateField lze sčítat v následujících krocích:
 

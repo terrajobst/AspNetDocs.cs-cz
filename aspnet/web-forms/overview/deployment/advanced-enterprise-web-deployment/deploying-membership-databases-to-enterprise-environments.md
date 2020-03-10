@@ -1,69 +1,69 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-membership-databases-to-enterprise-environments
-title: Nasazení databází členství do podnikových prostředí | Dokumentace Microsoftu
+title: Nasazení databází členství v podnikových prostředích | Microsoft Docs
 author: jrjlee
-description: Toto téma vysvětluje klíčové aspekty a výzvy, které je potřeba vyřešit při zřízení databáze služby aplikace technologie ASP.NET (Další běžné...
+description: Toto téma vysvětluje klíčové doporučení a problémy, které je potřeba překonat při zřizování databází ASP.NET Application Services (častěji...
 ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 3cf765df-d311-4f68-a295-c9685ceea830
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-membership-databases-to-enterprise-environments
 msc.type: authoredcontent
 ms.openlocfilehash: 50f49af502b75aa5ad52756a76a5e7340aca53f7
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131951"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78526003"
 ---
 # <a name="deploying-membership-databases-to-enterprise-environments"></a>Nasazení databází členství do podnikových prostředí
 
-podle [Jason Lee](https://github.com/jrjlee)
+od [Jason Novák](https://github.com/jrjlee)
 
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
-> Toto téma vysvětluje klíčové aspekty a problémy, které že je potřeba vyřešit při zřízení aplikace ASP.NET služby databáze (více obvykle označuje jako databáze členství) v testovacím, přípravném nebo produkčním prostředí. Popisuje také přístupů, které vám umožní splnit tyto výzvy.
+> Toto téma vysvětluje klíčové doporučení a problémy, které budete muset překonat při zřizování databází ASP.NET Application Services (častěji označované jako databáze členství) v testovacích, pracovních nebo produkčních prostředích. Popisuje také přístupy, které můžete použít ke splnění těchto výzev.
 
-Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
+Toto téma je součástí série kurzů založených na požadavcích podnikového nasazení fiktivní společnosti s názvem Fabrikam, Inc. Tato série kurzů používá ukázkové řešení&#x2014;, pomocí kterého [řešení](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;správce kontaktů představuje webovou aplikaci s realistickou úrovní složitosti, včetně aplikace ASP.NET MVC 3, služby Windows Communication Foundation (WCF) a databázového projektu.
 
-Metody nasazení v srdci těchto kurzů je založen na rozdělení přístupu soubor projektu je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve které je řízena procesem sestavení dva soubory projektu&#x2014;jeden obsahující pokyny, které platí pro všechny cílové prostředí a jeden obsahuje nastavení pro konkrétní prostředí sestavení a nasazení pro sestavení. V okamžiku sestavení souboru projektu specifických pro prostředí se sloučí do souboru projektu bez ohledu na prostředí a vytvoří kompletní sadu pokynů sestavení.
+Metoda nasazení na srdce těchto kurzů je založena na způsobu rozdělení souborů projektu popsaných v tématu [Principy souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve kterém je proces sestavení řízen dvěma soubory&#x2014;projektu jeden, který obsahuje pokyny pro sestavení, které platí pro každé cílové prostředí, a jedno obsahující nastavení sestavení a nasazení specifické pro konkrétní prostředí. V době sestavení je soubor projektu specifický pro prostředí sloučen do souboru projektu prostředí – nezávislá a vytvoří kompletní sadu instrukcí pro sestavení.
 
-## <a name="what-are-the-issues-when-you-deploy-a-membership-database"></a>Co jsou problémy při nasazení databáze členství?
+## <a name="what-are-the-issues-when-you-deploy-a-membership-database"></a>Jaké jsou problémy při nasazení databáze členství?
 
-Ve většině případů navrhnout strategie nasazení pro databázi, první věc, kterou je potřeba zvážit při jaká data chcete nasadit. V prostředí vývoj nebo testování můžete chtít nasadit dat účtu uživatele k usnadnění rychlé a jednoduché testování. V testovací nebo produkční prostředí je velmi pravděpodobné, že chcete nasadit dat účtu uživatele.
+Ve většině případů, když navrhujete strategii nasazení pro databázi, je první věc, kterou je potřeba zvážit, ta data, která chcete nasadit. Ve vývojovém nebo testovacím prostředí můžete chtít nasadit data uživatelského účtu, abyste usnadnili rychlé a snadné testování. V pracovním nebo produkčním prostředí je velmi pravděpodobné, že byste chtěli nasadit data uživatelského účtu.
 
-Bohužel databází členství technologie ASP.NET představují některé konkrétní běžné problémy, které lépe rozhodnout mnohem složitější:
+Databáze členství ASP.NET bohužel zavádí některé konkrétní výzvy, které by toto rozhodnutí bylo mnohem složitější:
 
-- Nasazení pouze se schématy ponechá databázi členství v nefunkčním stavu. Důvodem je, že databáze členství zahrnuje některé konfigurační data (v **aspnet\_SchemaVersions** tabulky), která vyžaduje databázi mohl fungovat. V důsledku toho pokud provádíte nasazení jen schéma databáze členství aby bylo možné vyloučit dat účtu uživatele, bude potřeba spustit skript po nasazení můžete přidat data základní konfigurace.
-- V závislosti na konfiguraci databáze členství může zprostředkovatel členství použít klíč počítače můžete šifrovat hesla a uložit je v databázi. V takovém případě dat účtu uživatele, které nasazujete s databází už nepůjdou použít na cílovém serveru. Z tohoto důvodu nasazení dat účtu uživatele není podporováno.
+- Nasazení pouze schématu ponechá databázi členství v nefunkčním stavu. Důvodem je to, že databáze členství zahrnuje některá konfigurační data (v tabulce **aspnet\_SchemaVersions** ), kterou databáze vyžaduje, aby fungovala. Pokud například provádíte nasazení databáze členství pouze ve schématu, aby bylo možné vyloučit data uživatelského účtu, budete muset spustit skript po nasazení, který přidá základní konfigurační data.
+- V závislosti na tom, jak je vaše databáze členství nakonfigurovaná, může zprostředkovatel členství použít klíč počítače k šifrování hesel a jejich uložení v databázi. V takovém případě se všechna data uživatelského účtu, která nasazujete s databází, stanou na cílovém serveru nepoužitelná. Z tohoto důvodu není nasazení dat uživatelských účtů podporovaným scénářem.
 
 ## <a name="choosing-a-membership-database-strategy"></a>Výběr strategie databáze členství
 
-Když zvolíte, jak zřídit databáze členství v podnikovém prostředí serveru, použijte tyto pokyny:
+Tyto pokyny použijte, když zvolíte, jak zřídit databázi členství v prostředí podnikového serveru:
 
-- Kdykoli je to možné, nenasazujte databáze členství. Místo toho vytvořte databázi členství ručně na cílovém serveru databáze. Pokud jste nepřizpůsobili schéma databáze členství, můžete jednoduše vytvořit nový na místě v cílovém pomocí [nástroj pro registraci serveru SQL technologie ASP.NET (aspnet\_regsql.exe)](https://msdn.microsoft.com/library/ms229862(v=vs.100).aspx).
-- Pokud nemáte žádnou možnost, ale chcete-li nasadit databázi členství&#x2014;například, pokud jste provedli rozsáhlé změny schématu databáze&#x2014;byste měli provést nasazení jen schéma databáze členství pro vyloučení dat účtu uživatele a pak Spusťte skript po nasazení můžete přidat všechny požadované konfigurace. Široký pokyny najdete v těchto přístupů v [jak: Nasazení databáze členství technologie ASP.NET bez zahrnutí uživatelské účty](https://msdn.microsoft.com/library/ff361972(v=vs.100).aspx).
+- Bez ohledu na to, co je to možné, nesaďte databáze členství. Místo toho vytvořte databázi členství ručně na cílovém databázovém serveru. Pokud jste nepřizpůsobili schéma databáze členství, můžete jednoduše vytvořit nový v umístění v umístění pomocí [nástroje ASP.NET SQL Server Registration Tool (aspnet\_regsql. exe)](https://msdn.microsoft.com/library/ms229862(v=vs.100).aspx).
+- Pokud nemáte žádnou možnost, ale chcete nasadit databázi&#x2014;členství, například pokud jste provedli rozsáhlé úpravy schématu&#x2014;databáze, měli byste provést nasazení databáze členství pouze schématu, vyloučit data uživatelského účtu a pak spustit skript po nasazení, který přidá požadovaná konfigurační data. Obecné pokyny k těmto postupům najdete v tématu [Postupy: nasazení databáze členství ASP.NET bez zahrnutí uživatelských účtů](https://msdn.microsoft.com/library/ff361972(v=vs.100).aspx).
 
-Je důležité nezapomenout, že *schéma databáze členství by mohla být poměrně statické*. I když jste přizpůsobili databáze členství, je pravděpodobné, že je potřeba aktualizovat schéma v pravidelných intervalech&#x2014;nepůjde změnit s stejně často jako kód v webovou aplikaci nebo projekt databáze. Jako takové neměli byste potřebovat zahrnout všechny procesy nasazování automatických nebo krokování databáze členství.
+Je důležité si uvědomit, že *schéma vaší databáze členství je pravděpodobně poměrně statické*. I v případě, že jste přizpůsobili databázi členství, je pravděpodobné, že bude nutné pravidelně&#x2014;aktualizovat schéma, které se nemění se stejnou frekvencí jako kód ve webové aplikaci nebo databázovém projektu. V takovém případě není nutné zahrnout databázi členství do procesů automatizovaného nebo jednoduchého nasazení.
 
-## <a name="using-vsdbcmd-to-update-a-membership-database-schema"></a>Pomocí VSDBCMD, a aktualizovat schéma databáze členství
+## <a name="using-vsdbcmd-to-update-a-membership-database-schema"></a>Použití VSDBCMD k aktualizaci schématu databáze členství
 
-Pokud změníte strukturu databáze členství po prvním nasazení, nemusí chtít použít nástroj pro nasazení Internetové informační služby (IIS) webu (nasazení webu) k opětovnému nasazení databáze. Funkce nasazení databází v nasazení webu nezahrnuje schopnost zajistit rozdílové aktualizace do cílové databáze&#x2014;místo toho musíte Webdeploy vyřadit a znovu vytvořit databázi. To znamená, že ztratíte žádná existující účet data uživatelů, což je obvykle nežádoucí v přípravném nebo produkčním prostředí.
+Pokud upravíte strukturu databáze členství po prvním nasazení, nebudete chtít k opětovnému nasazení databáze používat nástroj pro nasazení webu Internetová informační služba (IIS) (Nasazení webu). Funkce nasazení databáze v Nasazení webu nezahrnuje možnost vytvářet rozdílové aktualizace cílové databáze&#x2014;, nasazení webu musí databázi vyřadit a znovu vytvořit. To znamená, že ztratíte všechna existující data uživatelského účtu, což je obvykle nežádoucí v pracovních nebo produkčních prostředích.
 
-Alternativou je použití nástroje VSDBCMD aktualizovat schéma cílové databáze. VSDBCMD obsahuje dvě důležité funkce. Nejprve ho můžete importovat schéma z existující databáze do souboru .dbschema. Za druhé je možné nasadit .dbschema souboru k existující databázi jako rozdílové aktualizace, což znamená, že umožňuje pouze změny požaduje, aby aktuální cílovou databázi a neztratila žádná data.
+Alternativou je použití nástroje VSDBCMD k aktualizaci schématu cílové databáze. VSDBCMD obsahuje dvě důležité možnosti. Nejprve může importovat schéma existující databáze do souboru. dbschema. Za druhé může nasadit soubor. dbschema do existující databáze jako rozdílovou aktualizaci, což znamená, že provede pouze změny, které vyžadují, aby byla cílová databáze aktuální, a neztratíte žádná data.
 
-Postup vysoké úrovně můžete aktualizovat schéma databáze členství:
+K aktualizaci schématu databáze členství můžete použít tyto kroky vysoké úrovně:
 
-1. Použít VSDBCMD **Import** akce pro generování .dbschema soubor pro zdrojové databáze členství. Tento postup je popsaný v [jak: Importovat schéma z příkazového řádku](https://msdn.microsoft.com/library/dd172135.aspx).
-2. Použít VSDBCMD **nasadit** akce k nasazení souboru .dbschema na vaše cílové databáze členství. Tento postup je popsaný v [Reference k příkazovému řádku pro VSDBCMD. Soubor EXE (nasazení a Import schématu)](https://msdn.microsoft.com/library/dd193283.aspx).
+1. Pomocí akce **importu** VSDBCMD vygenerujte soubor. dbschema pro vaši zdrojovou databázi členství. Tento postup je popsaný v tématu [Postupy: Import schématu z příkazového řádku](https://msdn.microsoft.com/library/dd172135.aspx).
+2. K nasazení souboru. dbschema do cílové databáze členství použijte akci **nasazení** VSDBCMD. Tento postup je popsaný v tématu [Reference k příkazovému řádku pro VSDBCMD. EXE (nasazení a import schématu)](https://msdn.microsoft.com/library/dd193283.aspx).
 
 ## <a name="conclusion"></a>Závěr
 
-Toto téma popisuje některé výzvy, které mohou nastat, když je potřeba zřídit databáze členství technologie ASP.NET v různých cílových prostředích. Zejména vysvětlit, proč nasazení pouze se schématy ponechá databázi členství v nefunkčním stavu a proč nasazení dat účtu uživatele se nepodporuje. Téma také uvedené pokyny o tom, jak zřizovat, nasazovat a aktualizovat členství databáze v různých scénářích.
+Toto téma popisuje některé problémy, se kterými se můžete setkat, když potřebujete zřídit ASP.NET databáze členství v různých cílových prostředích. Konkrétně vysvětluje, proč nasazení pouze schématu ponechá databázi členství v nefunkčním stavu a proč není podporována implementace dat uživatelského účtu. V tématu najdete také pokyny k zřizování, nasazování a aktualizaci databází členství v různých scénářích.
 
 ## <a name="further-reading"></a>Další čtení
 
-Další pokyny a příklady, jak používat VSDBCMD najdete v tématu [Reference k příkazovému řádku pro VSDBCMD. Soubor EXE (nasazení a Import schématu)](https://msdn.microsoft.com/library/dd193283.aspx) a [jak: Importovat schéma z příkazového řádku](https://msdn.microsoft.com/library/dd172135.aspx). Další informace o používání aspnet\_regsql.exe k vytváření databází členství, naleznete v tématu [nástroj pro registraci serveru SQL technologie ASP.NET (aspnet\_regsql.exe)](https://msdn.microsoft.com/library/ms229862(v=vs.100).aspx). Obecnější informace o nasazení databází členství najdete v tématu [jak: Nasazení databáze členství technologie ASP.NET bez zahrnutí uživatelské účty](https://msdn.microsoft.com/library/ff361972(v=vs.100).aspx).
+Další pokyny a příklady použití VSDBCMD najdete v tématu [Reference k příkazovému řádku pro VSDBCMD. EXE (nasazení a import schématu)](https://msdn.microsoft.com/library/dd193283.aspx) a [Postupy: Import schématu z příkazového řádku](https://msdn.microsoft.com/library/dd172135.aspx). Další informace o použití ASPNET\_regsql. exe k vytvoření databází členství najdete v tématu [nástroj ASP.NET pro registraci SQL Server (aspnet\_regsql. exe)](https://msdn.microsoft.com/library/ms229862(v=vs.100).aspx). Obecnější pokyny k nasazení databází členství najdete v tématu [How to: Deploy a ASP.NET Membership Database bez zahrnutí uživatelských účtů](https://msdn.microsoft.com/library/ff361972(v=vs.100).aspx).
 
 > [!div class="step-by-step"]
 > [Předchozí](deploying-database-role-memberships-to-test-environments.md)
-> [další](excluding-files-and-folders-from-deployment.md)
+> [Další](excluding-files-and-folders-from-deployment.md)

@@ -9,11 +9,11 @@ ms.assetid: cd17dbe1-c5e1-4be8-ad3d-57233d52cef1
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 070e1dccb80ef9af21ea621357c5b23e2ada6f9f
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74607736"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78524652"
 ---
 # <a name="protecting-connection-strings-and-other-configuration-information-vb"></a>Ochrana připojovacích řetězců a dalších konfiguračních údajů (VB)
 
@@ -179,7 +179,7 @@ Představte si, že útočník může zobrazit soubor s `Web.config` vaší apli
 > [!NOTE]
 > Další informace o různých typech ověřování dostupných v SQL Server najdete v tématu [sestavování zabezpečených aplikací ASP.NET: ověřování, autorizace a zabezpečená komunikace](https://msdn.microsoft.com/library/aa302392.aspx). Další příklady připojovacích řetězců, které ilustrují rozdíly mezi syntaxí ověřování Windows a SQL, najdete v tématu [connectionStrings.com](http://www.connectionstrings.com/).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Ve výchozím nastavení se k souborům s rozšířením `.config` v aplikaci ASP.NET nelze dostat prostřednictvím prohlížeče. Tyto typy souborů nejsou vraceny, protože mohou obsahovat citlivé informace, například připojovací řetězce databáze, uživatelská jména a hesla atd. Chráněný konfigurační systém v rozhraní .NET 2,0 pomáhá chránit citlivé informace tím, že umožňuje šifrovat zadané konfigurační oddíly. Existují dva předdefinované poskytovatele chráněných konfigurací: jeden, který používá algoritmus RSA a druhý používá rozhraní Windows Data Protection API (DPAPI).
 

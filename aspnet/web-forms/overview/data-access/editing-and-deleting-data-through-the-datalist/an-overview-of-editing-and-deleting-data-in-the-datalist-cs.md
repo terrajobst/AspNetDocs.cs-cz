@@ -9,11 +9,11 @@ ms.assetid: c3b0c86e-fe98-41ee-b26f-ca38cddaa75e
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 481c9a14b1ebfe36ffcddd0237701bc04266e393
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74629541"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78594554"
 ---
 # <a name="an-overview-of-editing-and-deleting-data-in-the-datalist-c"></a>Přehled úprav a odstranění dat v prvku DataList (C#)
 
@@ -282,7 +282,7 @@ Kliknutím na tlačítko Odstranit dojde k postbacku a aktivuje se událost `Del
 
 Po odstranění produktu je důležité, abyste data znovu navázali do prvku DataList (`DataList1.DataBind()`), jinak bude prvek DataList nadále zobrazovat produkt, který byl právě odstraněn.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 I když v prvku DataList chybí bod a klikne na možnost upravit a odstranit podporu, která je k dispozici v prvku GridView, s krátkým bitem kódu, může být vylepšena, aby obsahovala tyto funkce. V tomto kurzu jsme viděli, jak vytvořit seznam produktů se dvěma sloupci, které by se daly odstranit, a jejíž název a cenu by se daly upravit. Přidání podpory úprav a odstranění je záležitostí, která zahrnuje vhodné webové ovládací prvky v `ItemTemplate` a `EditItemTemplate`, vytváření odpovídajících obslužných rutin událostí, čtení hodnot zadaných uživatelem a primární klíč a propojení s vrstvou obchodní logiky.
 

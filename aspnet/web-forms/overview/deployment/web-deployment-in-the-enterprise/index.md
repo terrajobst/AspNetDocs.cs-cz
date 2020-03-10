@@ -1,23 +1,23 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/index
-title: ASP.NET 4 – nasazení v podniku 1 | Dokumentace Microsoftu
+title: ASP.NET 4 – Enterprise Deployment Series 1 | Microsoft Docs
 author: rick-anderson
-description: Tento kurz popisuje, jak splnit řadu výzvy, které se můžete setkat, když spravujete nasazení podnikových webových aplikací na developmen...
+description: V tomto kurzu se dozvíte, jak vyhovět hodně problémům, se kterými se setkáte při správě nasazení webových aplikací na podnikové úrovni pro vývoj...
 ms.author: riande
 ms.date: 05/16/2012
 ms.assetid: 83e0a572-428f-4bea-9638-1a031c6901c0
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise
 msc.type: chapter
 ms.openlocfilehash: 7701f7d73aa8f0bae28f16dc2381317e6e02a4a5
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131751"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78564601"
 ---
 # <a name="aspnet-4---enterprise-deployment-series-1"></a>ASP.NET 4 – nasazení v podniku (1. část)
 
-> Tento kurz popisuje, jak splnit řadu výzvy, které se můžete setkat, když spravujete nasazení podnikových webových aplikací na vývojové, testovací, přípravného a produkčního prostředí. Tento kurz zahrnuje odkaz na řešení spolu s směs koncepčním a orientované na úlohy obsah do vás provedou různými běžné úlohy a postupy.
+> V tomto kurzu se dozvíte, jak vyhovět hodně problémům, se kterými se setkáte při správě nasazení webových aplikací na úrovni podniku ve vývojovém, testovacím, přípravném a produkčním prostředí. Tento kurz obsahuje referenční řešení společně s kombinací koncepčního a podrobného obsahu, který vás provede různými běžnými úkoly a postupy.
 
 - [Nasazení webu v podniku](web-deployment-in-the-enterprise.md)
 - [Řešení správce kontaktů](the-contact-manager-solution.md)

@@ -9,11 +9,11 @@ ms.assetid: 27dc4fc8-1b51-43b0-933f-fc1b52476523
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
 ms.openlocfilehash: 9716def069ca9f7115af32e16381f41bd4d13342
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457645"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78579987"
 ---
 # <a name="aspnet-mvc-4-mobile-features"></a>Funkce mobilní architektury ASP.NET MVC 4
 
@@ -57,7 +57,7 @@ Tady je seznam toho, co se naučíte:
 - Vytváření zobrazení specifických pro mobilní zařízení.
 - Jak vytvořit přepínač zobrazení, který uživatelům umožňuje přepínat mezi mobilním zobrazením a zobrazením plochy aplikace.
 
-### <a name="getting-started"></a>Začínáme
+### <a name="getting-started"></a>začínáme
 
 Stáhněte si aplikaci pro výpis konference pro počáteční projekt pomocí následujícího odkazu: [Stáhnout](https://go.microsoft.com/fwlink/?LinkId=228307). Pak v Průzkumníkovi Windows klikněte pravým tlačítkem na soubor *MvcMobile. zip* a zvolte **vlastnosti**. V dialogovém okně **vlastnosti MvcMobile. zip** vyberte tlačítko **odblokování** . (Odblokování zabraňuje upozornění zabezpečení, které se vyskytne při pokusu o použití souboru *. zip* , který jste stáhli z webu.)
 

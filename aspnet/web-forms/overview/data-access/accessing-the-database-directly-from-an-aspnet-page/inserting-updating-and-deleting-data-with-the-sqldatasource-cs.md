@@ -9,11 +9,11 @@ ms.assetid: a526f0ec-779e-4a2b-a476-6604090d25ce
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 495e0e81a67e6926e1c4fa92e29ebbda747cd418
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74610397"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78552673"
 ---
 # <a name="inserting-updating-and-deleting-data-with-the-sqldatasource-c"></a>Vkládání, aktualizace a odstraňování dat ovládacím prvkem SqlDataSource (C#)
 
@@ -175,7 +175,7 @@ Pokud jsou takové úpravy požadovány, je nutné je ručně provést buď pomo
 > [!NOTE]
 > Při přidávání parametrů, které nemají odpovídající pole v ovládacím prvku data web, pamatujte na to, že tyto hodnoty parametrů bude nutné přiřadit hodnoty nějakým způsobem. Tyto hodnoty mohou být: pevně zakódovány přímo v `InsertCommand` nebo `UpdateCommand`; může pocházet z nějakého předem definovaného zdroje (QueryString, stav relace, webové ovládací prvky na stránce atd.); nebo se dá přiřadit programově, jak jsme viděli v předchozím kurzu.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Aby webové ovládací prvky dat využily integrované funkce pro vkládání, úpravy a odstraňování, je nutné, aby ovládací prvek zdroje dat, ke kterému jsou vazby, poskytoval tyto funkce. Pro SqlDataSource to znamená, že `INSERT`, `UPDATE`a `DELETE` příkazy SQL musí být přiřazeny vlastnostem `InsertCommand`, `UpdateCommand`a `DeleteCommand`. Tyto vlastnosti a odpovídající kolekce parametrů lze přidat ručně nebo generovat automaticky prostřednictvím Průvodce konfigurací zdroje dat. V tomto kurzu jsme prozkoumali oba postupy.
 

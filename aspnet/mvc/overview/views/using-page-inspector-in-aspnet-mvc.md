@@ -1,271 +1,271 @@
 ---
 uid: mvc/overview/views/using-page-inspector-in-aspnet-mvc
-title: Použití Page Inspectoru v ASP.NET MVC | Dokumentace Microsoftu
+title: Používání funkce Page Inspector v ASP.NET MVC | Microsoft Docs
 author: rick-anderson
-description: Nástroj Page Inspector v sadě Visual Studio 2012 je nástroj pro vývoj webů pomocí integrovaného prohlížeče. Vybrat jakýkoli element ve integrovaného prohlížeče a nástroj Page Inspector i...
+description: Nástroj Page Inspector v aplikaci Visual Studio 2012 je webovým nástrojem pro vývoj na webu s integrovaným prohlížečem. Vyberte libovolný prvek v integrovaném prohlížeči a klikněte na tlačítko inspektor stránky i...
 ms.author: riande
 ms.date: 08/15/2012
 ms.assetid: c7e4e1ab-4932-4614-9f53-aaf7c706d498
 msc.legacyurl: /mvc/overview/views/using-page-inspector-in-aspnet-mvc
 msc.type: authoredcontent
 ms.openlocfilehash: 5da3e142c52a770f59222c21d9f9a53cbbdbf498
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65126343"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78538015"
 ---
 # <a name="using-page-inspector-in-aspnet-mvc"></a>Použití Page Inspectoru v ASP.NET MVC
 
-podle Tim Ammann
+pomocí Tim Ammann
 
-> Nástroj Page Inspector v sadě Visual Studio 2012 je nástroj pro vývoj webů pomocí integrovaného prohlížeče. Vybrat jakýkoli element ve integrovaného prohlížeče a nástroj Page Inspector okamžitě zvýrazní zdroje a šablon stylů CSS prvku. Můžete procházet všechna zobrazení MVC, rychle najít zdroje vykreslované značky a použít nástroje prohlížeče přímo v prostředí sady Visual Studio.
+> Nástroj Page Inspector v aplikaci Visual Studio 2012 je webovým nástrojem pro vývoj na webu s integrovaným prohlížečem. Vyberte libovolný prvek v integrovaném prohlížeči a kontrolor stránky okamžitě zvýrazní zdroj a šablonu stylů CSS elementu. Můžete procházet libovolné zobrazení MVC, rychle najít zdroje vykreslených značek a použít nástroje prohlížeče přímo v prostředí sady Visual Studio.
 > 
-> [Podívejte se na Video](../../videos/mvc-4/using-page-inspector-in-aspnet-mvc.md)
+> [Přehrát video](../../videos/mvc-4/using-page-inspector-in-aspnet-mvc.md)
 > 
-> Tento kurz ukazuje, jak povolit režim kontroly a rychle najít a upravit značky a šablony stylů CSS v rámci webového projektu. V tomto kurzu použijete projektu aplikace MVC, ale můžete použít také nástroje Page Inspector pro [webových formulářů](https://go.microsoft.com/?linkid=9802001) a dalších aplikací ASP.NET.
+> V tomto kurzu se dozvíte, jak povolit režim kontroly a pak rychle vyhledat a upravit značky a šablony stylů CSS v rámci webového projektu. V tomto kurzu se používá projekt MVC, ale můžete také použít nástroj Page Inspector pro [webové formuláře](https://go.microsoft.com/?linkid=9802001) a jiné aplikace ASP.NET.
 > 
-> Tento kurz obsahuje následující oddíly:
+> V tomto kurzu najdete následující oddíly:
 > 
 > - [Požadavky](#_1_prerequisites)
 > - [Vytvoření webové aplikace](#_2_creating_a)
-> - [Použití Page Inspectoru pro přejděte do zobrazení](#_3_using_page)
+> - [Použití inspektoru stránky k procházení zobrazení](#_3_using_page)
 > - [Povolit režim kontroly](#_4_inspection_mode)
-> - [Použití Page Inspectoru provádět změny kódu](#_5_using_page)
-> - [Režim kontroly a v okně HTML](#_6_inspection_mode)
-> - [Náhled změn šablon stylů CSS v okně Styly](#_7_previewing_css)
+> - [Použití inspektoru stránky k provádění změn značek](#_5_using_page)
+> - [Režim kontroly a okno HTML](#_6_inspection_mode)
+> - [Náhled změn CSS v okně styly](#_7_previewing_css)
 > - [Automatická synchronizace šablon stylů CSS](#css_auto_sync)
-> - [Výběr barvy šablon stylů CSS](#css_color_picker)
-> - [Mapování elementů dynamických stránek pro jazyk JavaScript](#map_dynamic_elements)
+> - [Použití ovládacího prvku pro výběr barvy CSS](#css_color_picker)
+> - [Mapování dynamických prvků stránky na JavaScript](#map_dynamic_elements)
 
 <a id="_prerequisites"></a><a id="_1_prerequisites"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Visual Studio 2012](https://www.microsoft.com/visualstudio/11) nebo [sady Visual Studio Express 2012 pro Web](https://www.microsoft.com/visualstudio/11/downloads#express-web).
+- [Visual Studio 2012](https://www.microsoft.com/visualstudio/11) nebo [Visual Studio Express 2012 pro web](https://www.microsoft.com/visualstudio/11/downloads#express-web).
 
 > [!NOTE]
-> Chcete-li získat nejnovější verzi nástroje Page Inspector, použijte [instalačního programu webové platformy](https://go.microsoft.com/fwlink/?LinkId=255386) k instalaci sady Windows Azure SDK pro .NET 2.0.
+> Pokud chcete získat nejnovější verzi nástroje Page Inspector, nainstalujte sadu Windows Azure SDK pro .NET 2,0 pomocí [instalačního programu webové platformy](https://go.microsoft.com/fwlink/?LinkId=255386) .
 
-Nástroj Page Inspector je součástí nástroje Microsoft Web Developer Tools. Nejnovější verze je verze 1.3. Zjištění verze máte, spusťte Visual Studio a vyberte **o Microsoft Visual Studio** z **pomáhají** nabídky.
+Funkce Page Inspector je zabalené pomocí Microsoft Web Developer Tools. Nejnovější verze je 1,3. Chcete-li zjistit, kterou verzi máte, spusťte aplikaci Visual Studio a v nabídce **help** vyberte **o Microsoft Visual Studio** .
 
 <a id="_creating_a_web"></a><a id="_2_creating_a"></a>
 
 ## <a name="create-a-web-application"></a>Vytvoření webové aplikace
 
-Nejprve vytvořte webovou aplikaci, kterou budete používat nástroj Page Inspector se. V sadě Visual Studio, zvolte **souboru** &gt; **nový projekt**. Na levé straně rozbalte **Visual C#** vyberte **webové**a pak vyberte **webová aplikace ASP.NET MVC4**.
+Nejprve vytvořte webovou aplikaci, ve které budete používat inspektor stránky. V aplikaci Visual Studio vyberte **soubor** &gt; **Nový projekt**. Na levé straně rozbalte **C#vizuál**, vyberte **Web**a pak vyberte **Webová aplikace ASP.NET MVC4**.
 
-![Nové aplikace ASP.NET MVC](using-page-inspector-in-aspnet-mvc/_static/image2.png)
+![Nová aplikace ASP.NET MVC](using-page-inspector-in-aspnet-mvc/_static/image2.png)
 
-Klikněte na **OK**.
+Klikněte na tlačítko **OK**.
 
-V **nového projektu ASP.NET MVC 4** dialogu **internetovou aplikaci**. Ponechte **Razor** jako výchozí modul zobrazení.
+V dialogovém okně **Nový projekt ASP.NET MVC 4** vyberte **internetovou aplikaci**. Ponechá **Razor** jako výchozí zobrazovací modul.
 
-![Nový projekt ASP.NET MVC – Internetové aplikace.](using-page-inspector-in-aspnet-mvc/_static/image4.png)
+![Nový projekt ASP.NET MVC – Internetová aplikace](using-page-inspector-in-aspnet-mvc/_static/image4.png)
 
-Aplikace se otevře v **zdroj** zobrazení.
+Aplikace se otevře v zobrazení **zdroje** .
 
-![Nové aplikace ASP.NET MVC v zobrazení zdroje](using-page-inspector-in-aspnet-mvc/_static/image6.png)
+![Nová aplikace ASP.NET MVC v zobrazení zdroje](using-page-inspector-in-aspnet-mvc/_static/image6.png)
 
-Teď, když máte aplikaci pro práci s, můžete použít nástroj Page Inspector sloužící ke zkoumání a upravte ho.
+Teď, když máte aplikaci, se kterou pracujete, můžete ji zkontrolovat a upravit pomocí nástroje Page Inspector.
 
 <a id="_starting_page_inspector"></a><a id="_3_using_page"></a>
 
-## <a name="use-page-inspector-to-browse-to-a-view"></a>Použití Page Inspectoru pro přejděte do zobrazení
+## <a name="use-page-inspector-to-browse-to-a-view"></a>Použití inspektoru stránky k procházení zobrazení
 
-V sadě Visual Studio 2012, je můžete klikněte pravým tlačítkem na libovolné zobrazení ve vašem projektu, vyberte **zobrazení v nástroje Page Inspector**, a nástroj Page Inspector se zjistit trasy a zobrazení stránky.
+V aplikaci Visual Studio 2012 můžete kliknout pravým tlačítkem myši na libovolné zobrazení v projektu, vybrat **Zobrazit v okně Kontrola stránky**a obrazovka inspektor stránky poukáže cestu a zobrazí stránku.
 
-V **Průzkumníka řešení**, rozbalte **zobrazení** složku a potom **Domů** složky. Souboru Index.cshtml klikněte pravým tlačítkem myši a zvolte **zobrazení v nástroje Page Inspector**.
+V **Průzkumník řešení**rozbalte složku **zobrazení** a pak do **domovské** složky. Klikněte pravým tlačítkem na soubor index. cshtml a **v okně Kontrola stránky vyberte Zobrazit**.
 
-![Zobrazení index.cshtm ve nástroj Page Inspector](using-page-inspector-in-aspnet-mvc/_static/image8.png)
+![Zobrazit index. cshtml v inspektoru stránky](using-page-inspector-in-aspnet-mvc/_static/image8.png)
 
-Ve výchozím nastavení nástroj Page Inspector je ukotven jako okno na levé straně prostředí sady Visual Studio. Pokud dáváte přednost, můžete ukotvit jinde, nebo zrušit ukotvení v okně. Zobrazit [jak: Rozvržení a dokování Windows](https://msdn.microsoft.com/library/z4y0hsax.aspx).
+Ve výchozím nastavení je inspektor stránky ukotven jako okno na levé straně prostředí sady Visual Studio. Pokud budete chtít, můžete ho ukotvit jinde nebo zrušit ukotvení okna. Informace naleznete v tématu [How to: uspořádávat and Dock Windows](https://msdn.microsoft.com/library/z4y0hsax.aspx).
 
-Horní podokno okna nástroje Page Inspector aktuální stránky zobrazí v okně prohlížeče. V dolním podokně zobrazí na stránce v kódu HTML, spolu s některé karty, která umožňují kontrolovat různé aspekty stránky. Dolní podokno je podobný [vývojářské nástroje F12 pomáhají](https://msdn.microsoft.com/ie/aa740478) v aplikaci Internet Explorer.
+V horním podokně okna inspektor stránky se zobrazuje aktuální stránka v okně prohlížeče. Dolní podokno zobrazuje stránku v kódu HTML spolu s některými kartami, které umožňují kontrolovat různé aspekty stránky. Dolní podokno se podobá [vývojářské nástroje F12](https://msdn.microsoft.com/ie/aa740478) v Internet Exploreru.
 
-![Aplikace ASP.NET MVC do nástroje Page Inspector](using-page-inspector-in-aspnet-mvc/_static/image10.png)
+![Aplikace ASP.NET MVC v inspektoru stránky](using-page-inspector-in-aspnet-mvc/_static/image10.png)
 
-V tomto kurzu budete používat **HTML** a **styly** karet umožňuje rychle přejít a provádět změny aplikace.
+V tomto kurzu použijete kartu **HTML** a **styly** k rychlému procházení a provádění změn v aplikaci.
 
 <a id="_examining_(&quot;decomposing&quot;)_the"></a><a id="_inspection_mode_and"></a><a id="_4_inspection_mode"></a>
 
-## <a name="enableinspection-mode"></a>Režim EnableInspection
+## <a name="enableinspection-mode"></a>EnableInspection režim
 
-Nástroj Page Inspector převést do režimu kontroly, klikněte na tlačítko **zkontrolujte, jestli se** tlačítko. V režimu kontroly když podržíte ukazatel myši nad libovolné části na vykreslené stránce odpovídající zdrojový kód nebo kód je zvýrazněn.
+Chcete-li umístit inspektor stránky do režimu kontroly, klikněte na tlačítko **prozkoumat** . V režimu kontroly, když držíte ukazatel myši v jakékoli části vykreslené stránky, je zvýrazněn odpovídající zdrojový kód nebo kód.
 
 ![Přepnout režim kontroly](using-page-inspector-in-aspnet-mvc/_static/image12.png)
 
-Nyní najeďte myší různé části stránky v rámci nástroje Page Inspector. Stejně jako, ukazatel myši se změní na velké znaménko plus a zvýrazní prvek pod:
+Nyní přesuňte ukazatel myši na různé části stránky v rámci nástroje Page Inspector. V takovém případě se ukazatel myši změní na velké znaménko plus a element pod je zvýrazněný:
 
-![Ukazatel myši div.content obálky](using-page-inspector-in-aspnet-mvc/_static/image14.png)
+![Najetí myší na div. Content-wrapper](using-page-inspector-in-aspnet-mvc/_static/image14.png)
 
-Při přesunu ukazatele myši, Visual Studio zvýrazní odpovídající syntaxe Razor ve zdrojovém souboru. Pokud prvek HTML pochází z jiného zdrojového souboru, Visual Studio automaticky otevře soubor.
+Při přesunutí ukazatele myši zvýrazní aplikace Visual Studio odpovídající syntaxe Razor ve zdrojovém souboru. Pokud prvek HTML pochází z jiného zdrojového souboru, Visual Studio automaticky otevře soubor.
 
-V nástroje Page Inspector **HTML** kartě se zobrazí kód HTML, který byl vygenerován v syntaxi Razor. Při přesunu ukazatele myši, jsou zvýrazněny elementů HTML. **Styly** karta zobrazuje pravidla šablon stylů CSS prvku.
+V nástroji Page Inspector zobrazuje karta **HTML** kód HTML, který byl vygenerován z syntaxe Razor. Při přesunutí ukazatele myši jsou zvýrazněny prvky HTML. Karta **styly** zobrazuje pravidla šablony stylů CSS pro element.
 
 <a id="_5_using_page"></a>
 
-## <a name="use-page-inspector-to-make-changes-to-markup"></a>Použití Page Inspectoru provádět změny kódu
+## <a name="use-page-inspector-to-make-changes-to-markup"></a>Použití inspektoru stránky k provádění změn značek
 
-Nástroj Page Inspector vám umožní najít značek, jehož umístění nemusí být zřejmé. Potom můžete upravit značky a zobrazit výsledné změny.
+Page Inspector vám umožní najít značky, jejichž umístění nemusí být zřejmé. Pak můžete značky upravit a zobrazit výsledné změny.
 
-Tento údaj zobrazíte, klikněte na tlačítko **zkontrolujte, jestli se** a sjeďte k dolnímu okraji stránky v okně nástroje Page Inspector.
+Pokud to chcete vidět, klikněte na **zkontrolovat** a potom se posuňte do dolní části stránky v okně Inspektor stránky.
 
-Při přesunutí ukazatele myši do oblasti zápatí, otevře se nástroj Page Inspector \_Layout.cshtml soubor a zvýrazní část rozložení stránky, kterou jste vybrali. Jak je vidět v zápatí je uvedené jsou definované v souboru rozložení a ne zobrazení.
+Při přesunutí ukazatele myši do oblasti zápatí otevře okno Inspektor stránky soubor \_layout. cshtml a zvýrazní část stránky rozložení, kterou jste vybrali. Jak vidíte, zápatí je definováno v souboru rozložení, a ne v samotném zobrazení.
 
-![Zápatí](using-page-inspector-in-aspnet-mvc/_static/image16.png)
+![Dolní](using-page-inspector-in-aspnet-mvc/_static/image16.png)
 
-Nyní přesunout ukazatel myši nad řádek s copyrightu <a id="a"> </a>Všimněte si, že. V \_stránku Layout.cshtml, odpovídajícím řádku se zvýrazní.
+Nyní přesuňte ukazatel myši na řádek s oznámením o autorských právech <a id="a"> </a>. Na stránce \_layout. cshtml se zvýrazní odpovídající řádek.
 
-![Zápatí o autorských právech řádek zvýrazněný](using-page-inspector-in-aspnet-mvc/_static/image18.png)
+![Zvýrazněný řádek copyrightu pro zápatí](using-page-inspector-in-aspnet-mvc/_static/image18.png)
 
-Přidejte nějaký text do konce řádku v \_souboru Layout.cshtml.
+Přidejte nějaký text na konec řádku v souboru \_layout. cshtml.
 
-&lt;p&gt;&amp;kopírovat; @DateTime.Now.Year – Moje aplikace ASP.NET MVC Rocks! &lt;/p&gt;
+&lt;p&gt;&amp;kopie; @DateTime.Now.Year – moje aplikace ASP.NET MVC Rocks&lt;/p&gt;
 
-Nyní stiskněte kombinaci kláves Ctrl + Alt + Enter nebo klikněte na panel aktualizace pro zobrazení výsledků v okně prohlížeče nástroj Page Inspector.
+Nyní stiskněte kombinaci kláves CTRL + ALT + ENTER nebo kliknutím na panel aktualizace zobrazte výsledky v okně prohlížeče inspektoru stránky.
 
-![My ASP.NET Application Rocks!](using-page-inspector-in-aspnet-mvc/_static/image20.png)
+![Moje aplikace ASP.NET Rocks!](using-page-inspector-in-aspnet-mvc/_static/image20.png)
 
-Může mít představit, že definované v zápatí je uvedené v Index.cshtml, ale ukázalo v \_Layout.cshtml a nástroj Page Inspector zjistila, že pro vás.
+Možná jste si mysleli, že se zápatí definované v indexu. cshtml, ale je zavedené v \_layout. cshtml a inspektor stránky ho pro vás našel.
 
 <a id="_inspection_mode_and_1"></a><a id="_6_inspection_mode"></a>
 
-## <a name="inspection-mode-and-the-html-window"></a>Režim kontroly a v okně HTML
+## <a name="inspection-mode-and-the-html-window"></a>Režim kontroly a okno HTML
 
-V dalším kroku bude mít rychlý pohled na okno HTML a jak mapuje prvky za vás.
+V dalším kroku budete mít rychlý přehled o okně HTML a o tom, jak mapuje prvky pro vás.
 
-Klikněte na tlačítko **zkontrolujte, jestli se** uvést do režimu kontroly nástroje Page Inspector.
+Kliknutím na tlačítko **zkontrolovat** umístěte inspektor stránky do režimu kontroly.
 
-Klepněte na horní část stránky, která říká "Zde bude vaše logo". Prohlížené konkrétní element podrobněji, tak zobrazení v okně prohlížeče už mění při přesunutí ukazatele myši.
+Klikněte na horní část stránky s textem "vaše logo". Podrobněji prozkoumáte konkrétní prvek, takže zobrazení v okně prohlížeče se již nemění při přesunutí ukazatele myši.
 
-Nyní přesunutí ukazatele myši **HTML** okna. Při přesunu ukazatele myši, nástroj Page Inspector popisuje element v rámci **HTML** okno a zvýrazní odpovídající element v okně prohlížeče.
+Nyní přesuňte ukazatel myši do okna **HTML** . Když přesunete ukazatel myši, inspektor stránky popisuje prvek v okně **HTML** a zvýrazní odpovídající prvek v okně prohlížeče.
 
 ![Okno HTML](using-page-inspector-in-aspnet-mvc/_static/image22.png)
 
-Jako předtím, otevře se nástroj Page Inspector \_Layout.cshtml souboru, který v dočasné kartu. Klikněte na tlačítko \_Layout.cshtml dočasné kartu a odpovídající značky budou zvýrazněny ve &lt;záhlaví&gt; část za vás:
+Stejně jako předtím otevře okno \_layout. cshtml pro vás na dočasné kartě. klikněte na položku \_layout. cshtml dočasná karta a odpovídající kód se zvýrazní v&gt; části hlavičky &lt;pro vás:
 
-![Zvýrazněná značka](using-page-inspector-in-aspnet-mvc/_static/image24.png)
+![Zvýrazněný kód](using-page-inspector-in-aspnet-mvc/_static/image24.png)
 
 <a id="_using_page_inspector"></a><a id="_7_previewing_css"></a>
 
-## <a name="preview-css-changes-in-the-styles-window"></a>Náhled změn šablon stylů CSS v okně Styly
+## <a name="preview-css-changes-in-the-styles-window"></a>Náhled změn CSS v okně styly
 
-V dalším kroku použijete nástroj Page Inspector **styly** okna Náhled změn do šablony stylů CSS.
+V dalším kroku použijete okno **styly** kontroly stránky k zobrazení náhledu změn v šablonách stylů CSS.
 
-Klikněte na tlačítko **zkontrolujte, jestli se** uvést do režimu kontroly nástroje Page Inspector.
+Kliknutím na tlačítko **zkontrolovat** umístěte inspektor stránky do režimu kontroly.
 
-V okně prohlížeče nástroj Page Inspector, přesuňte ukazatel myši nad oddíl "Home Page" až do **div.content obálky** popisek se zobrazí.
+V okně prohlížeče inspektora stránky přesuňte ukazatel myši na domovskou stránku, dokud se nezobrazí popisek **div. Content-wrapper** .
 
-![Ukazatel myši div.content obálky](using-page-inspector-in-aspnet-mvc/_static/image26.png)
+![Najetí myší na div. Content-wrapper](using-page-inspector-in-aspnet-mvc/_static/image26.png)
 
-Klikněte v části div.content obálky jednou a poté přesuňte ukazatel myši na **styly** okna. **Styly** okno zobrazuje všechna pravidla šablon stylů CSS u tohoto elementu. Posuňte se dolů najít .featured .content – obálky třídy selektor. Nyní zrušte zaškrtnutí políčka pro vlastnost barvu pozadí.
+Jednou klikněte v části div. Content-wrapper a pak přesuňte ukazatel myši do okna **styly** . Okno **styly** zobrazuje všechna pravidla šablony stylů CSS pro tento element. Přejděte dolů a najděte selektor třídy. Doporučené. Content-wrapper. Nyní zrušte zaškrtnutí políčka u vlastnosti background-color.
 
-![Barva pozadí vymazat](using-page-inspector-in-aspnet-mvc/_static/image28.png)
+![Vymazat barvu pozadí](using-page-inspector-in-aspnet-mvc/_static/image28.png)
 
-Všimněte si, jak tato změna přináší náhled okamžitě v okně prohlížeče nástroj Page Inspector.
+Všimněte si, jak se zobrazí náhled změny v okně prohlížeče inspektoru stránky.
 
-Zaškrtněte toto políčko znovu, klikněte dvakrát na hodnotu vlastnosti a změní na červený. Změna ukazuje hned:
+Zaškrtněte políčko znovu, potom dvakrát klikněte na hodnotu vlastnosti a změňte ji na červenou. Tato změna se zobrazí okamžitě:
 
-![Barva pozadí Red](using-page-inspector-in-aspnet-mvc/_static/image30.png)
+![Barva červeného pozadí](using-page-inspector-in-aspnet-mvc/_static/image30.png)
 
-**Styly** okno umožňuje snadno test a náhled šablon stylů CSS změní před potvrzením změn na styl listu samotný.
+Okno **styly** usnadňuje testování a náhled změn CSS před potvrzením změn v samotné šabloně stylů.
 
 <a id="css_auto_sync"></a>
 ## <a name="css-auto-sync"></a>Automatická synchronizace šablon stylů CSS
 
 > [!NOTE]
-> Tato funkce vyžaduje verzi 1.3 nástroj Page Inspector.
+> Tato funkce vyžaduje verzi 1,3 ovládacího prvku Page Inspector.
 
-Funkce Automatická synchronizace šablon stylů CSS lze upravit přímo soubor šablony stylů CSS a podívejte se změny okamžitě v prohlížeči nástroj Page Inspector.
+Funkce automatické synchronizace šablon stylů CSS umožňuje přímo upravit soubor CSS a okamžitě zobrazit změny v prohlížeči kontroly stránky.
 
-Klikněte na tlačítko **zkontrolujte, jestli se** uvést do režimu kontroly nástroje Page Inspector.
+Kliknutím na tlačítko **zkontrolovat** umístěte inspektor stránky do režimu kontroly.
 
-V prohlížeči nástroj Page Inspector, přesuňte ukazatel myši nad oddíl "Home Page" až do **div.content obálky** popisek se zobrazí. Kliknutím vyberte tento element.
+V prohlížeči Inspector stránky přesuňte ukazatel myši nad oddíl "Domovská stránka", dokud se nezobrazí popisek **div. Content-wrapper** . Klikněte jednou pro výběr tohoto prvku.
 
-**Styly** okno zobrazuje všechna pravidla šablon stylů CSS u tohoto elementu. Posuňte se dolů najít .featured .content – obálky třídy selektor. Klikněte na ".featured .content obálku". Nástroj Page Inspector otevře soubor šablony stylů CSS, která definuje tento styl (Site.css) a zvýrazní odpovídající stylu CSS.
+Okno **styly** zobrazuje všechna pravidla šablony stylů CSS pro tento element. Přejděte dolů a najděte selektor třídy. Doporučené. Content-wrapper. Klikněte na ". Doporučené. obsah-obálka". Page Inspector otevře soubor CSS, který definuje tento styl (Web. CSS) a zvýrazní odpovídající styl CSS.
 
 ![](using-page-inspector-in-aspnet-mvc/_static/image32.png)
 
-Teď změňte hodnotu `background-color` na hodnotu "red". Změny se okamžitě zobrazí v prohlížeči nástroj Page Inspector.
+Nyní změňte hodnotu `background-color` na "Red". Tato změna se zobrazí okamžitě v prohlížeči Inspector stránky.
 
 ![](using-page-inspector-in-aspnet-mvc/_static/image34.png)
 
 <a id="css_color_picker"></a>
-## <a name="using-the-css-color-picker"></a>Výběr barvy šablon stylů CSS
+## <a name="using-the-css-color-picker"></a>Použití ovládacího prvku pro výběr barvy CSS
 
-Editor šablon stylů CSS v sadě Visual Studio 2012 obsahuje barvu ovládacího prvku pro výběr, která umožňuje jednoduše vybrat a vložit barvy. Výběr barvy obsahuje standardní paletu barev, podporuje názvy standardních barev, hash kódy, barvy RGB, RGBA, HSL a HSLA a udržuje seznam barvy, které jste naposledy použili v dokumentu.
+Editor CSS v aplikaci Visual Studio 2012 má výběr barvy, který usnadňuje výběr a vložení barev. Výběr barvy obsahuje standardní paletu barev, podporuje standardní názvy barev, kódy hash, RGB, RGBA, HSL a HSLA barvy a udržuje seznam barev, které jste naposledy použili v dokumentu.
 
-V předchozí části, změnil hodnotu ovládacího prvku `background-color` vlastnost. K vyvolání barev, umístěte kurzor po názvu vlastnosti a typ **#** nebo **rgb (**.
+V předchozí části jste změnili hodnotu vlastnosti `background-color`. Chcete-li vyvolat výběr barvy, umístěte kurzor za název vlastnosti a typ **#** nebo **RGB (** .
 
-![Výběr pruhu barev šablon stylů CSS](using-page-inspector-in-aspnet-mvc/_static/image36.png)
+![Panel pro výběr barvy CSS](using-page-inspector-in-aspnet-mvc/_static/image36.png)
 
-Klikněte na barvu, kterou chcete vyberte ho, nebo stisknutím klávesy se šipkou dolů a pak pomocí kláves šipka doleva a doprava procházení barvy. Při návštěvě barvu odpovídající šestnáctková hodnota je zobrazen náhled:
+Klikněte na barvu, kterou chcete vybrat, nebo stiskněte klávesu šipka dolů a pak použijte šipky vlevo a vpravo k procházení barev. Při návštěvě barvy se zobrazí náhled odpovídající hexadecimální hodnoty:
 
-![Hodnota vlastnosti barvu pozadí náhledu](using-page-inspector-in-aspnet-mvc/_static/image38.png)
+![Náhled hodnoty vlastnosti background-color](using-page-inspector-in-aspnet-mvc/_static/image38.png)
 
-Pokud pruhu barev nemá Přesná barva, kterou chcete, můžete použít v pop – seznamu pro výběr barvy. Pokud chcete soubor otevřít, klikněte na dvojitou šipku na pravém konci pruhu barev nebo jednou nebo dvakrát klávesu šipka dolů na klávesnici.
+Pokud pruh barev nemá přesnou barvu, kterou chcete použít, můžete použít rozevírací nabídka pro výběr barvy. Chcete-li jej otevřít, klikněte na dvojitou dvojitou šipku na pravém konci pruhu barev nebo na klávesnici stiskněte šipku dolů nebo dvakrát.
 
-![Výběr barvy šablon stylů CSS Pop dolů](using-page-inspector-in-aspnet-mvc/_static/image40.png)
+![Místní nabídka pro výběr barvy CSS](using-page-inspector-in-aspnet-mvc/_static/image40.png)
 
-Klikněte na barvu z svislá čára na pravé straně. V hlavním okně zobrazí přechod pro tuto barvu. Zvolte barvu přímo z svislá čára stisknutím klávesy Enter nebo klikněte na tlačítko kdekoli v hlavním okně Vybrat s větší přesností.
+Klikněte na barvu ze svislého pruhu na pravé straně. Tím se v hlavním okně zobrazí barevný přechod pro tuto barvu. Vyberte barvu přímo ze svislého pruhu stisknutím klávesy ENTER nebo kliknutím na libovolný bod v hlavním okně vyberte s větší přesností.
 
-Pokud je na obrazovce počítače, který chcete použít barvu (nemusí být uvnitř uživatelské rozhraní Visual Studia), můžete zachytit její hodnotu s použitím nástroje kapátko vpravo dole.
+Pokud je na obrazovce počítače barva, kterou chcete použít (nemusí být uvnitř uživatelského rozhraní sady Visual Studio), můžete zachytit její hodnotu pomocí nástroje kapátka v pravém dolním rohu.
 
-Neprůhlednost barvu také můžete změnit přesunutím posuvníku v dolní části nástroje pro výběr barvy. Provádění, změní se barva hodnot na hodnoty RGBA, protože formát RGBA může představovat neprůhlednosti.
+Můžete také změnit neprůhlednost barvy přesunutím posuvníku v dolní části výběru barvy. Tím se změní hodnoty barev na hodnoty RGBA, protože formát RGBA může představovat neprůhlednost.
 
-Po výběru barvy, stiskněte klávesu Enter a pak zadejte středníkem k dokončení barvu pozadí položky v *Site.css* souboru.
+Po zvolení barvy stiskněte klávesu ENTER a zadáním středníku dokončete položku pozadí-Color v souboru *site. CSS* .
 
 <a id="_the_update_bar"></a>
 
-### <a name="the-page-inspector-update-bar"></a>Kontrola aktualizace posuvník
+### <a name="the-page-inspector-update-bar"></a>Panel aktualizace inspektoru stránky
 
-Nástroj Page Inspector okamžitě zjistí změnu *Site.css* soubor a zobrazí výstrahu na panelu aktualizace.
+Inspektor stránky hned detekuje změnu v souboru *Web. CSS* a zobrazí výstrahu na panelu aktualizace.
 
-![Panel aktualizace](using-page-inspector-in-aspnet-mvc/_static/image42.png)
+![Aktualizovat panel](using-page-inspector-in-aspnet-mvc/_static/image42.png)
 
-Uložte všechny soubory a aktualizujte prohlížeč, nástroj Page Inspector stisknutím klávesy Ctrl + Alt + Enter nebo klikněte na panel aktualizace. Změna barvy zvýraznění se zobrazí v prohlížeči.
+Chcete-li uložit všechny soubory a aktualizovat prohlížeč kontroly stránky, stiskněte klávesy CTRL + ALT + ENTER nebo klikněte na panel aktualizace. Změna barvy zvýraznění se zobrazí v prohlížeči.
 
 <a id="map_dynamic_elements"></a>
-## <a name="mapping-dynamic-page-elements-to-javascript"></a>Mapování elementů dynamických stránek pro jazyk JavaScript
+## <a name="mapping-dynamic-page-elements-to-javascript"></a>Mapování dynamických prvků stránky na JavaScript
 
-V moderních webových aplikací elementy na stránce často dynamicky generované s použitím jazyka JavaScript. To znamená, že není žádné statické značky (HTML nebo Razor), které odpovídá tyto prvky stránky.
+V moderních webových aplikacích se prvky na stránce často generují dynamicky pomocí JavaScriptu. To znamená, že není k dispozici žádný statický kód (HTML nebo Razor), který by odpovídal těmto prvkům stránky.
 
-Verze 1.3 nástroj Page Inspector můžete nyní mapa položky, které byly dynamicky přidány na stránku zpět na odpovídající kód jazyka JavaScript. Abychom si předvedli tuto funkci, použijeme [jedné stránky aplikace (SPA) šablony](../../../single-page-application/overview/introduction/knockoutjs-template.md).
+S verzí 1,3 teď může inspektor stránky namapovat položky, které se dynamicky přidaly na stránku, zpátky do odpovídajícího kódu JavaScriptu. K předvedení této funkce použijeme [šablonu jednostránkové aplikace (Spa)](../../../single-page-application/overview/introduction/knockoutjs-template.md).
 
 > [!NOTE]
-> Šablona jednostránková aplikace vyžaduje [ASP.NET and Web Tools 2012.2](https://go.microsoft.com/fwlink/?LinkId=282650) aktualizovat.
+> Šablona zabezpečeného hesla vyžaduje aktualizaci [ASP.NET and Web Tools 2012,2](https://go.microsoft.com/fwlink/?LinkId=282650) .
 
-V sadě Visual Studio, zvolte **souboru** &gt; **nový projekt**. Na levé straně rozbalte **Visual C#** vyberte **webové**a pak vyberte **webová aplikace ASP.NET MVC4**. Klikněte na **OK**.
+V aplikaci Visual Studio vyberte **soubor** &gt; **Nový projekt**. Na levé straně rozbalte **C#vizuál**, vyberte **Web**a pak vyberte **Webová aplikace ASP.NET MVC4**. Klikněte na tlačítko **OK**.
 
-V **nového projektu ASP.NET MVC 4** dialogového okna, vyberte **jednostránkové aplikace**.
+V dialogovém okně **Nový projekt ASP.NET MVC 4** vyberte **aplikace s jednou stránkou**.
 
-V Průzkumníku řešení rozbalte **zobrazení** složku a potom **Domů** složky. Souboru Index.cshtml klikněte pravým tlačítkem myši a zvolte **zobrazení v nástroje Page Inspector**.
+V Průzkumník řešení rozbalte složku **zobrazení** a pak do **domovské** složky. Klikněte pravým tlačítkem na soubor index. cshtml a **v okně Kontrola stránky vyberte Zobrazit**.
 
-Nejprve thing, který je zobrazený v prohlížeči nástroj Page Inspector je přihlašovací stránku. Klikněte na "Zaregistrovat" a vytvořte uživatelské jméno a heslo. Po registraci, aplikace vás přihlásí a vytvoří se některé ukázkové položky seznamu úkolů.
+První věc zobrazená v prohlížeči Inspector stránky je přihlašovací stránka. Klikněte na zaregistrovat se a vytvořte uživatelské jméno a heslo. Po registraci se aplikace přihlásí a vytvoří seznam úkolů s některými ukázkovými položkami.
 
-Klikněte na tlačítko **zkontrolujte, jestli se** uvést do režimu kontroly nástroje Page Inspector. V prohlížeči nástroj Page Inspector klikněte na jednu z položek úkolů. Všimněte si, že místo zvýrazněným modrou barvu elementu je zvýrazněn oranžově "JS" vedle názvu elementu. To znamená, že element vytvořil dynamicky prostřednictvím skriptu.
+Kliknutím na tlačítko **zkontrolovat** umístěte inspektor stránky do režimu kontroly. V prohlížeči Inspector stránky klikněte na jednu z položek úkolů. Všimněte si, že místo aby bylo zvýrazněno modře, je prvek zvýrazněný žlutě a "JS" vedle názvu elementu. To znamená, že prvek byl vytvořen dynamicky prostřednictvím skriptu.
 
 ![](using-page-inspector-in-aspnet-mvc/_static/image44.png)
 
-Kromě toho se zobrazí oranžové podtržení na **zásobník volání** kartu. Znamená to, že **zásobník volání** podokno má další informace o elementu.
+Navíc se na kartě **zásobník volání** zobrazí oranžové podtržení. To značí, že podokno **zásobník volání** obsahuje další informace o elementu.
 
-Klikněte na **zásobník volání** kartu. **Zásobník volání** podokně se zobrazí zásobník volání pro volání jazyka JavaScript vytvořeného elementu. Volání externí knihovny, jako je jQuery, jsou sbaleny, takže můžete snadno zobrazit volání skriptu vaší aplikace.
+Klikněte na kartu **zásobník volání** . V podokně **zásobník volání** se zobrazuje zásobník volání pro volání JavaScriptu, které vytvořilo element. Volání externích knihoven, jako je jQuery, jsou sbalena, takže můžete snadno zobrazit volání skriptu aplikace.
 
 ![](using-page-inspector-in-aspnet-mvc/_static/image46.png)
 
-Pokud chcete zobrazit úplný zásobník volání externích knihovnách, včetně lze rozbalit uzly s popiskem "Externí knihovny":
+Chcete-li zobrazit úplný zásobník, včetně volání externích knihoven, můžete rozbalit uzly s označením "externí knihovny":
 
 ![](using-page-inspector-in-aspnet-mvc/_static/image48.png)
 
-Pokud kliknete na položku v zásobníku volání, Visual Studio otevře soubor kódu a zvýrazní odpovídající skript.
+Pokud kliknete na položku v zásobníku volání, aplikace Visual Studio otevře soubor kódu a zvýrazní odpovídající skript.
 
 ![](using-page-inspector-in-aspnet-mvc/_static/image50.png)
 
 ## <a name="see-also"></a>Viz také
 
-[Úvod do ASP.NET MVC 4 pomocí sady Visual Studio](../older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4.md) (webové stránky ASP.net)
+[Úvod do ASP.NET MVC 4 s Visual Studiem](../older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4.md) (ASP.NET Web)
 
-[Představení nástroje Page Inspector](https://channel9.msdn.com/posts/visual-studio-vnext-introducing-page-inspector/) (video Channel 9)
+[Úvod do inspektoru stránky](https://channel9.msdn.com/posts/visual-studio-vnext-introducing-page-inspector/) (video pro kanál 9)
 
-[Chybové zprávy nástroje Page Inspector](https://go.microsoft.com/?linkid=9813062) (MSDN)
+[Chybové zprávy v inspektoru stránky](https://go.microsoft.com/?linkid=9813062) (MSDN)

@@ -9,11 +9,11 @@ ms.assetid: 2ce36f78-8ecb-4ab1-b748-6d0ab633ea3f
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
 msc.type: authoredcontent
 ms.openlocfilehash: 62918b17f42e54dfe4e45a08927b1039dcbb7012
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74576056"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78571986"
 ---
 # <a name="create-the-project"></a>Vytvoření projektu
 
@@ -25,7 +25,7 @@ od [Erik Reitan](https://github.com/Erikre)
 
 V tomto kurzu vytvoříte, zkontrolujete a spustíte výchozí projekt v aplikaci Visual Studio, který vám umožní seznámit se s funkcemi ASP.NET. Prohlédněte si také prostředí sady Visual Studio.
 
-## <a name="what-youll-learn"></a>Co se naučíte:
+## <a name="what-youll-learn"></a>Naučíte se:
 
 - Vytvoření nového projektu webových formulářů.
 - Struktura souborů projektu webových formulářů.
@@ -35,7 +35,7 @@ V tomto kurzu vytvoříte, zkontrolujete a spustíte výchozí projekt v aplikac
 
 ## <a name="creating-the-project"></a>Vytvoření projektu
 
-1. Otevřete Visual Studio.
+1. Otevřete sadu Visual Studio.
 2. V nabídce **soubor** v aplikaci Visual Studio vyberte **Nový projekt** . 
 
     ![Vytvořit projekt – položka nabídky nový projekt](create-the-project/_static/image1.png)
@@ -49,7 +49,7 @@ V tomto kurzu vytvoříte, zkontrolujete a spustíte výchozí projekt v aplikac
     > [!NOTE]
     > Název projektu v této sérii kurzů je **WingtipToys**. Doporučuje se použít tento *přesný* název projektu, aby kód poskytnutý v rámci řady kurzů fungoval podle očekávání.
 
-6. Klikněte na tlačítko **změnit ověřování** . Vyberte **jednotlivé uživatelské účty** a klikněte na tlačítko **OK** .
+6. Klikněte na tlačítko **Změna ověřování**. Vyberte **jednotlivé uživatelské účty** a klikněte na tlačítko **OK** .
 
 7. Vyberte šablonu **webové formuláře** a klikněte na tlačítko **OK** .
 
@@ -91,7 +91,7 @@ V aplikaci Visual Studio umožňuje okno **Průzkumník řešení** spravovat so
 
 Visual Studio vytvoří některé počáteční složky a soubory pro váš projekt. První soubory, s kterými budete pracovat později v tomto kurzu, jsou následující:
 
-| **Souborů** | **Cílem** |
+| **File** | **Účel** |
 | --- | --- |
 | *Default. aspx* | Obvykle se první stránka zobrazuje při spuštění aplikace v prohlížeči. |
 | *Lokalita. Master* | Stránka, která umožňuje vytvořit konzistentní rozložení a používat standardní chování pro stránky v aplikaci. |
@@ -182,11 +182,11 @@ Primární okna v sadě Visual Studio zahrnují **Průzkumník řešení**, **Pr
 
 Další informace o aplikaci Visual Studio naleznete v tématu [vizuální průvodce pro Visual Web Developer](https://msdn.microsoft.com/library/ee410104.aspx).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste vytvořili, zkontrolovali a spustili výchozí aplikaci webových formulářů. Zkontrolovali jste různé funkce výchozí webové formuláře a zjistili jsme základy použití prostředí sady Visual Studio. V následujících kurzech vytvoříte vrstvu přístupu k datům.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 [Výběr správného programovacího modelu](../../../videos/how-do-i/choosing-the-right-programming-model.md)   
 [Projekty webové aplikace versus webové projekty](https://msdn.microsoft.com/library/dd547590.aspx)   

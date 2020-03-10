@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/cdnajax4
-title: Webové formuláře ASP.NET a Ajax 4 | Dokumentace Microsoftu
+title: Webové formuláře ASP.NET a AJAX 4 | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -9,15 +9,15 @@ ms.assetid: cced3924-251c-4c77-bef0-7992acbac106
 msc.legacyurl: /ajax/cdn/cdnajax4
 msc.type: content
 ms.openlocfilehash: dc47b025803dad8e404ef8fa3558902ff0dcbec6
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59419948"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78563348"
 ---
 # <a name="aspnet-web-forms-and-ajax-4"></a>Webové formuláře ASP.NET a Ajax 4
 
-Následující soubory jsou hostované v síti CDN:
+Následující soubory jsou hostovány v CDN:
 
 - https://ajax.aspnetcdn.com/ajax/4.0/1/Date.HijriCalendar.debug.js
 - https://ajax.aspnetcdn.com/ajax/4.0/1/Date.HijriCalendar.js
@@ -56,6 +56,6 @@ Následující soubory jsou hostované v síti CDN:
 - https://ajax.aspnetcdn.com/ajax/4.0/1/WebParts.js
 - https://ajax.aspnetcdn.com/ajax/4.0/1/WebUIValidation.js
 
-Poznámka: Globalizace skriptů, jako třeba fr-FR.js, najdete v následující složce:
+Poznámka: skripty globalizace, jako je fr-FR. js, najdete v následující složce:
 
 - https://ajax.aspnetcdn.com/ajax/4.0/1/globalization/

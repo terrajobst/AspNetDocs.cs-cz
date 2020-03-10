@@ -9,11 +9,11 @@ ms.assetid: d50edc31-9286-4c6a-8635-be09e72752a4
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-cs
 msc.type: authoredcontent
 ms.openlocfilehash: b258a2bdeaea8da4e9c5c5d8043b167d94e1e817
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74616681"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78548893"
 ---
 # <a name="displaying-summary-information-in-the-gridviews-footer-c"></a>Zobrazení souhrnných informací v zápatí prvku GridView (C#)
 
@@ -175,7 +175,7 @@ Obrázek 13 znázorňuje zprávu po přidání tohoto kódu. Všimněte si, jak 
 
 **Obrázek 13**: řádek zápatí prvku GridView má nyní načervenou barvu pozadí ([kliknutím zobrazíte obrázek v plné velikosti).](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image39.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Zobrazení souhrnných dat je běžnou požadavkem sestavy a ovládací prvek GridView usnadňuje zahrnutí takových informací do svého řádku zápatí. Řádek zápatí se zobrazí, pokud je vlastnost `ShowFooter` prvku GridView nastavena na hodnotu `true` a může být text ve svých buňkách nastaven programově prostřednictvím obslužné rutiny události `RowDataBound`. Výpočet souhrnných dat lze provést tak, že znovu provedete dotazování databáze nebo pomocí kódu ve třídě kódu na pozadí stránky ASP.NET programově vypočítáte souhrnná data.
 

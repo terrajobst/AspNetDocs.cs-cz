@@ -1,75 +1,75 @@
 ---
 uid: web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
-title: Prevence útoků proti padělání (CSRF) podvržení žádosti v architektuře ASP.NET MVC
+title: Prevence útoků na ASP.NET (CSRF) žádostí mezi weby v MVC
 author: MikeWasson
-description: Popisuje útok proti padělání (CSRF) podvržení žádosti a implementovat opatření proti CSRF v ASP.NET Web MVC.
+description: Popisuje útok proti padělání požadavků (CSRF) mezi weby a postup implementace antiCSRF měr v ASP.NET Web MVC.
 ms.author: riande
 ms.date: 12/12/2012
 ms.assetid: 81d46f14-8f48-4d8c-830d-cc8d594dc11b
 msc.legacyurl: /web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
 msc.type: authoredcontent
 ms.openlocfilehash: 5fb0f8bcc9e587ba4fbbf2b857d3bf7adcaafb94
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59392024"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78555116"
 ---
-# <a name="preventing-cross-site-request-forgery-csrf-attacks-in-aspnet-mvc-application"></a>Prevence útoků proti padělání (CSRF) žádosti více webů v aplikaci ASP.NET MVC
+# <a name="preventing-cross-site-request-forgery-csrf-attacks-in-aspnet-mvc-application"></a>Prevence útoků prostřednictvím CSRF (site-to Request) v aplikaci ASP.NET MVC
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-Padělání žádosti mezi weby (CSRF) je útok, kde škodlivý web odešle požadavek na zranitelné lokality, kde uživatel je momentálně přihlášený
+Padělání žádostí mezi weby (CSRF) je útok, kdy škodlivý web pošle požadavek na ohrožený web, ve kterém je aktuálně přihlášený uživatel.
 
-Tady je příklad útok CSRF:
+Tady je příklad útoku CSRF:
 
-1. Přihlášení uživatele do `www.example.com` ověřování pomocí formulářů.
+1. Uživatel se do `www.example.com` přihlašuje pomocí ověřování pomocí formulářů.
 2. Server ověřuje uživatele. Odpověď ze serveru obsahuje soubor cookie ověřování.
-3. Bez odhlášení, uživatel navštíví škodlivý web. Tento škodlivý web obsahuje následující formulář HTML: 
+3. Uživatel navštíví škodlivý web, aniž by se odhlásil. Tento škodlivý web obsahuje následující formulář HTML: 
 
     [!code-html[Main](preventing-cross-site-request-forgery-csrf-attacks/samples/sample1.html)]
 
-    Všimněte si, že akce formuláře zveřejní ohrožených site nechcete škodlivé weby. Toto je část "webů" CSRF.
-4. Uživatel klikne na tlačítko Odeslat. Prohlížeč zahrnuje ověřovacího souboru cookie s požadavkem.
-5. Požadavek běží na serveru s kontext ověřování uživatele a dělat cokoli, ověřený uživatel smí provádět.
+    Všimněte si, že akce formuláře provede příspěvky na ohrožený web, nikoli na škodlivý web. Toto je součást CSRF (pro různé lokality).
+4. Uživatel klikne na tlačítko Odeslat. Prohlížeč zahrnuje ověřovací soubor cookie s požadavkem.
+5. Požadavek běží na serveru s kontextem ověřování uživatele a může provádět cokoli, co může ověřený uživatel dělat.
 
-Přestože tento příklad vyžaduje, aby uživatel kliknout na tlačítko formuláře, stejně jako můžete snadno spouštět skript, který se odešle formulář automaticky může škodlivé stránky. Kromě toho pomocí protokolu SSL nebrání útok CSRF, protože škodlivý web můžete poslat žádost o "https://".
+I když tento příklad vyžaduje, aby uživatel mohl kliknout na tlačítko formulář, škodlivá stránka může stejně snadno spustit skript, který odešle formulář automaticky. Použití protokolu SSL navíc nebrání útoku CSRF, protože škodlivý web může odeslat žádost "https://".
 
-Útokům CSRF jsou obvykle možné proti webové stránky, které používají soubory cookie pro ověřování, protože prohlížeče odesílají všechny relevantní soubory cookie na cílový webový server. Útokům CSRF však nejsou omezené na využívání soubory cookie. Například jsou Basic a Digest ověřování také zranitelné. Po přihlášení uživatele pomocí ověřování základní nebo Digest. prohlížeč automaticky odesílá přihlašovací údaje, dokud se relace neukončí.
+Obvykle jsou útoky CSRF na weby, které používají soubory cookie pro ověřování, protože prohlížeče odesílají všechny relevantní soubory cookie do cílového webu. Nicméně útoky CSRF nejsou omezené na zneužití souborů cookie. Například základní ověřování a ověřování algoritmem Digest je také zranitelné. Když se uživatel přihlásí pomocí základního ověřování nebo ověřování hodnotou hash. prohlížeč automaticky pošle přihlašovací údaje až do ukončení relace.
 
-## <a name="anti-forgery-tokens"></a>Tokeny proti zfalšování
+## <a name="anti-forgery-tokens"></a>Tokeny proti padělání
 
-Aby se zabránilo útokům CSRF, ASP.NET MVC používá tokeny proti zfalšování, také nazývané *požádat o tokeny ověření*.
+Aby se zabránilo útokům CSRF, používá ASP.NET MVC tokeny proti padělání, označované také jako *ověřovací tokeny žádostí*.
 
-1. Si klient vyžádá stránku HTML, který obsahuje formulář.
-2. Server obsahuje dva tokeny v odpovědi. Jeden token se odešle jako soubor cookie. Druhá je umístěn v skryté pole formuláře. Tokeny jsou generovány náhodně tak, že nežádoucí osoba nelze uhodnout hodnoty.
-3. Když klient odešle formulář, kterou musí odesílat oba tokeny zpět na server. Klient odešle token souboru cookie jako soubor cookie a odešle token formuláře uvnitř data formuláře. (Klientský prohlížeč to provede automaticky při odeslání formuláře.)
-4. Pokud žádost neobsahuje oba tokeny, server nepovoluje požadavku.
+1. Klient požaduje stránku HTML, která obsahuje formulář.
+2. Server obsahuje dvě tokeny v odpovědi. Jeden token se pošle jako soubor cookie. Druhý je umístěn ve skrytém poli formuláře. Tokeny jsou vygenerované náhodně, aby nežádoucí osoba nemohly odhadnout hodnoty.
+3. Když klient formulář odešle, musí odeslat oba tokeny zpátky na server. Klient odešle token souborů cookie jako soubor cookie a odešle token formuláře do dat formuláře. (Klient prohlížeče to automaticky provede, když uživatel formulář odešle.)
+4. Pokud požadavek nezahrnuje obě tokeny, server žádost nepovoluje.
 
-Tady je příklad z formuláře HTML s tokenem skryté formuláře:
+Tady je příklad formuláře HTML s tokenem skrytého formuláře:
 
 [!code-html[Main](preventing-cross-site-request-forgery-csrf-attacks/samples/sample2.html)]
 
-Tokenů proti padělání pracovat, protože škodlivý stránku nelze číst tokeny uživatele z důvodu zásadami stejného původu. ([Zásadami stejného původu](http://www.w3.org/Security/wiki/Same_Origin_Policy) zabránit dokumenty hostovaný na dvou různých lokalit v přístupu k obsahu druhé strany. V předchozím příkladu se zlými úmysly stránky mohou odesílat žádosti example.com, takže ho nejde přečíst odpověď.)
+Tokeny ochrany proti padělání fungují, protože škodlivá stránka nemůže číst tokeny uživatele z důvodu zásad stejného původu. ([Zásady se stejným zdrojem](http://www.w3.org/Security/wiki/Same_Origin_Policy) brání tomu, aby se dokumenty hostované na dvou různých webech lišily k obsahu. Takže v předchozím příkladu může škodlivá stránka odesílat požadavky do example.com, ale nemůže přečíst odpověď.)
 
-Chcete-li zabránit útokům CSRF, pomocí tokenů proti padělání pomocí libovolného protokolu pro ověřování, kde tiše prohlížeč odesílá pověření po přihlášení uživatele. To zahrnuje protokoly pro ověřování na základě souboru cookie, jako je například ověřování pomocí formulářů, jakož i protokoly, jako jsou ověřování Basic a Digest.
+Aby nedocházelo k útokům CSRF, používejte k jakýmkoli ověřovacím protokolům tokeny proti padělání, kde prohlížeč po přihlášení uživatele tiše odesílá přihlašovací údaje. To zahrnuje protokoly ověřování založené na souborech cookie, jako je ověřování pomocí formulářů, a také protokoly, jako je základní ověřování a ověřování algoritmem Digest.
 
-Je potřeba tokenů proti padělání pro jakékoli nonsafe metody (POST, PUT, DELETE). Také se ujistěte, že bezpečné metody (GET, HEAD) nemají žádné vedlejší účinky. Kromě toho pokud povolíte podporu napříč doménami, jako je například CORS a JSONP, pak i bezpečné metody, například GET jsou potenciálně zranitelná vůči útokům CSRF, mu umožní načíst potenciálně citlivá data.
+Pro jakékoli nebezpečné metody (POST, PUT, DELETE) byste měli vyžadovat tokeny pro ochranu proti padělání. Také se ujistěte, že bezpečné metody (GET, HEAD) nemají žádné vedlejší účinky. Kromě toho platí, že pokud povolíte podporu mezi doménami, jako je CORS nebo JSONP, pak i bezpečné metody, jako je GET, jsou potenciálně zranitelné vůči útokům CSRF, což útočníkovi umožňuje číst potenciálně citlivá data.
 
-## <a name="anti-forgery-tokens-in-aspnet-mvc"></a>Tokeny proti zfalšování v architektuře ASP.NET MVC
+## <a name="anti-forgery-tokens-in-aspnet-mvc"></a>Tokeny pro ochranu proti padělání ve ASP.NET MVC
 
-Chcete-li přidat tokeny proti zfalšování na stránku Razor, použijte **HtmlHelper.AntiForgeryToken** pomocnou metodu:
+Chcete-li přidat tokeny pro ochranu proti padělání na stránku Razor, použijte pomocnou metodu **HtmlHelper. AntiForgeryToken** :
 
 [!code-cshtml[Main](preventing-cross-site-request-forgery-csrf-attacks/samples/sample3.cshtml)]
 
 Tato metoda přidá skryté pole formuláře a také nastaví token souboru cookie.
 
-## <a name="anti-csrf-and-ajax"></a>Anti-útokům CSRF a AJAX
+## <a name="anti-csrf-and-ajax"></a>Anti-CSRF a AJAX
 
-Token formuláře může být problém pro odesílání požadavků AJAX, protože požadavek AJAX může odesílat data JSON, ne data formuláře HTML. Jedním z řešení je odesílat tokeny ve vlastní hlavičku HTTP. Následující kód používá syntaxi Razor ke generování tokenů a pak přidá tokenů pro požadavek AJAX. Tokeny jsou generovány na serveru voláním **AntiForgery.GetTokens**.
+Token formuláře může být problémem pro požadavky AJAX, protože požadavek AJAX může odesílat data JSON, nikoli data formuláře HTML. Jedním z řešení je odeslat tokeny ve vlastní hlavičce protokolu HTTP. Následující kód používá syntaxe Razor k vygenerování tokenů a následně přidá tokeny do požadavku AJAX. Tokeny se generují na serveru voláním metody **Antipadělání. Gettokens**.
 
 [!code-html[Main](preventing-cross-site-request-forgery-csrf-attacks/samples/sample4.html)]
 
-Při zpracování požadavku extrahujte tokeny v hlavičce požadavku. Zavolejte **AntiForgery.Validate** metodu za účelem ověření tokenů. **Ověřit** metoda vyvolá výjimku, pokud tokeny nejsou platné.
+Při zpracování žádosti extrahujte tokeny z hlavičky žádosti. Pak zavoláním metody **. Validate** ověřte tokeny. Metoda **Validate** vyvolá výjimku, pokud tokeny nejsou platné.
 
 [!code-csharp[Main](preventing-cross-site-request-forgery-csrf-attacks/samples/sample5.cs)]

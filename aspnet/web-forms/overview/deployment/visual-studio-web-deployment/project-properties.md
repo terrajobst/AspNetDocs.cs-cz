@@ -9,11 +9,11 @@ ms.assetid: ec1cec4c-a75f-47af-a2ba-b1e2f971d24b
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/project-properties
 msc.type: authoredcontent
 ms.openlocfilehash: b2811791a897c9166f6222c23dddc6921e5267ab
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74614943"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78643596"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-project-properties"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: vlastnosti projektu
 
@@ -60,7 +60,7 @@ Jak jste viděli dříve v tomto kurzu, možnost **položky k nasazení** na kar
 
 V **Průzkumník řešení**klikněte pravým tlačítkem myši na složku *knihovny elmah* , vyberte možnost **Přidat novou položku**a vytvořte textový soubor s názvem *zástupný text. txt*. Vložte do něj následující text: "Jedná se o zástupný soubor, aby bylo zajištěno, že se složka bude nasazovat". a uložte soubor. To je všechno, co musíte udělat, aby se zajistilo, že Visual Studio nasadí tento soubor a složku, ve které je, protože vlastnost **Akce sestavení** souborů *. txt* je ve výchozím nastavení nastavená na **obsah** .
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Nyní jste dokončili všechny úlohy nastavování nasazení. V dalším kurzu nasadíte web společnosti Contoso University do testovacího prostředí a otestujete ho.
 

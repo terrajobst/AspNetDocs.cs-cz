@@ -9,11 +9,11 @@ ms.assetid: 90ebf911-1c46-4470-b876-1335bd0f590f
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler
 msc.type: authoredcontent
 ms.openlocfilehash: baaebd32f08d3c6b861572c5c5a16ec0fb70aaf0
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74589042"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78568563"
 ---
 # <a name="configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler"></a>Konfigurace webového serveru pro publikování nasazeného webu (obslužná rutina nasazení webu)
 
@@ -21,7 +21,7 @@ ms.locfileid: "74589042"
 
 > Toto téma popisuje, jak nakonfigurovat webový server Internetová informační služba (IIS) tak, aby podporoval publikování a nasazení webu pomocí Nasazení webu obslužné rutiny služby IIS.
 > 
-> Když pracujete s Nasazení webu 2,0 nebo novějším, existují tři hlavní přístupy, pomocí kterých můžete své aplikace nebo weby získat na webový server. Můžeš:
+> Když pracujete s Nasazení webu 2,0 nebo novějším, existují tři hlavní přístupy, pomocí kterých můžete své aplikace nebo weby získat na webový server. Můžete:
 > 
 > - Použijte *službu nasazení webu Remote Agent*. Tento přístup vyžaduje méně konfigurace webového serveru, ale musíte zadat přihlašovací údaje správce místního serveru, aby bylo možné na server nasadit cokoli.
 > - Použijte *obslužnou rutinu nasazení webu*. Tento přístup je mnohem složitější a vyžaduje při nastavování webového serveru více počátečních úsilí. Pokud však použijete tento přístup, můžete nakonfigurovat službu IIS tak, aby umožňovala uživatelům bez oprávnění správce provádět nasazení. Obslužná rutina Nasazení webu je k dispozici pouze ve službě IIS verze 7 nebo novější.
@@ -86,7 +86,7 @@ V takovém případě je potřeba nainstalovat tyto věci:
 
     > [!NOTE]
     > V nabídce **Start** teď můžete kdykoli spustit instalační program webové platformy. Provedete to tak, že v nabídce **Start** kliknete na **všechny programy**a pak na **Instalace webové platformy Microsoft**.
-3. V horní části okna **Instalace webové platformy** klikněte na **produkty**.
+3. V horní části okna **Instalace webové platformy** klikněte na **Produkty**.
 4. Na levé straně okna klikněte v navigačním podokně na možnost **architektury**.
 5. Pokud .NET Framework ještě není nainstalovaná, na řádku **Microsoft .NET Framework 4** klikněte na **Přidat**.
 
@@ -100,7 +100,7 @@ V takovém případě je potřeba nainstalovat tyto věci:
 9. V řádku **Nástroje pro nasazení webu 2,1** klikněte na **Přidat**.
 10. V řádku **Služba IIS: základní ověřování** klikněte na **Přidat**.
 11. V řádku **IIS: Management Service** klikněte na **Přidat**.
-12. Klikněte na **nainstalovat**. Instalační program webové platformy zobrazí seznam produktů&#x2014;spolu s případnými přidruženými závislostmi&#x2014;, které se mají nainstalovat, a zobrazí výzvu k přijetí těchto licenčních podmínek.
+12. Klikněte na **Nainstalovat**. Instalační program webové platformy zobrazí seznam produktů&#x2014;spolu s případnými přidruženými závislostmi&#x2014;, které se mají nainstalovat, a zobrazí výzvu k přijetí těchto licenčních podmínek.
 
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image2.png)
 13. Přečtěte si licenční podmínky a pokud souhlasíte s podmínkami **, klikněte na Souhlasím.**
@@ -204,7 +204,7 @@ I když se vám nic nezastaví od nasazení obsahu na výchozí web ve službě 
     > [!NOTE]
     > V produkčním prostředí pravděpodobně budete chtít web hostovat na portu 80 a nakonfigurovat hlavičku hostitele spolu se shodnými záznamy DNS. Další informace o konfiguraci hlaviček hostitele ve službě IIS 7 najdete v tématu [Konfigurace hlavičky hostitele webu (IIS 7)](https://technet.microsoft.com/library/cc753195(WS.10).aspx). Další informace o roli serveru DNS v systému Windows Server najdete v tématu [Přehled serveru DNS](https://technet.microsoft.com/library/cc770392.aspx) a [Server DNS](https://technet.microsoft.com/windowsserver/dd448607).
 9. V podokně **Akce** klikněte v části **Upravit web**na možnost **vazby**.
-10. V dialogovém okně **vazby webu** klikněte na **Přidat**.
+10. V dialogu **Vazby webu** klikněte na **Přidat**.
 
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image12.png)
 11. V dialogovém okně **Přidat vazbu webu** nastavte **IP adresu** a **port** tak, aby odpovídaly vaší stávající konfiguraci lokality.
@@ -214,7 +214,7 @@ I když se vám nic nezastaví od nasazení obsahu na výchozí web ve službě 
 
     > [!NOTE]
     > První vazba webu umožňuje přístup k webu místně pomocí IP adresy a portu nebo `http://localhost:85`. Druhá vazba webu umožňuje přístup k webu z jiných počítačů v doméně pomocí názvu počítače (například http://stageweb1:85).
-13. V dialogovém okně **vazby webu** klikněte na **Zavřít**.
+13. V dialogu **Vazby webu** klikněte na **Zavřít**.
 14. V podokně **připojení** klikněte na **fondy aplikací**.
 15. V podokně **fondy aplikací** klikněte pravým tlačítkem myši na název vašeho fondu aplikací a potom klikněte na **základní nastavení**. Ve výchozím nastavení bude název vašeho fondu aplikací odpovídat názvu vašeho webu (například **DemoSite**).
 16. V seznamu **verze CLR .NET** vyberte **.NET CLR v 4.0.30319**a pak klikněte na **OK**.
@@ -275,8 +275,8 @@ Ve výchozím nastavení služba správy webu služby IIS naslouchá na portu TC
 
 | Směr | Z portu | Na port | Typ portu |
 | --- | --- | --- | --- |
-| Příchozí | Libovolné | 8172 | TCP |
-| Odchozí | 8172 | Libovolné | TCP |
+| Příchozí | Všechny | 8172 | TCP |
+| Odchozí | 8172 | Všechny | TCP |
 
 Další informace o konfiguraci pravidel v bráně Windows Firewall najdete v tématu [Konfigurace pravidel brány firewall](https://technet.microsoft.com/library/dd448559(WS.10).aspx). Pro brány firewall třetích stran si prosím přečtěte dokumentaci k produktu.
 

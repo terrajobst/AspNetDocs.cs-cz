@@ -9,11 +9,11 @@ ms.assetid: 3c815a9e-2296-4b9b-b945-776d54989daa
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/user-based-authorization-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 059dbf42956268884dcfdade696491ac39e32da9
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74614667"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78574338"
 ---
 # <a name="user-based-authorization-c"></a>Ověřování založené na uživatelích (C#)
 
@@ -279,7 +279,7 @@ Jedním ze způsobů, jak skrýt tlačítko zobrazení pro anonymní uživatele,
 
 [!code-aspx[Main](user-based-authorization-cs/samples/sample18.aspx)]
 
- Na: 
+ Komu: 
 
 [!code-aspx[Main](user-based-authorization-cs/samples/sample19.aspx)]
 
@@ -345,7 +345,7 @@ Kromě stránek ASP.NET má řada aplikací také architekturu, která zahrnuje 
 
 Další informace o použití atributu `PrincipalPermission` k definování autorizačních pravidel pro třídy a metody najdete v záznamu blogu [Scott Guthrie](https://weblogs.asp.net/scottgu/) [Přidání autorizačních pravidel do obchodních a datových vrstev pomocí `PrincipalPermissionAttributes`](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme se podívali na to, jak použít uživatelská pravidla autorizace. Začali jsme s pohledem na ASP. Rozhraní URL pro autorizaci sítě. U každé žádosti `UrlAuthorizationModule` modul ASP.NET zkontroluje autorizační pravidla URL definovaná v konfiguraci aplikace a určí, jestli má identita oprávnění k přístupu k požadovanému prostředku. V krátkém případě autorizace adres URL usnadňuje zadání autorizačních pravidel pro konkrétní stránku nebo pro všechny stránky v konkrétním adresáři.
 

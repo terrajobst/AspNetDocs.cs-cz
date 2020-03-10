@@ -9,11 +9,11 @@ ms.assetid: 0bbf7a6e-d7eb-4091-91e4-fff892777f32
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create_the_data_access_layer
 msc.type: authoredcontent
 ms.openlocfilehash: 0fcf050474a57be9ed53ec0783a6d6b7dde2bf4c
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74575754"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78544924"
 ---
 # <a name="create-the-data-access-layer"></a>Vytvoření vrstvy přístupu k datům
 
@@ -25,7 +25,7 @@ od [Erik Reitan](https://github.com/Erikre)
 
 V tomto kurzu se dozvíte, jak vytvořit, získat přístup a zkontrolovat data z databáze pomocí webových formulářů ASP.NET a Code First Entity Framework. Tento kurz sestaví v předchozím kurzu "vytvořit projekt" a je součástí série kurzů pro společnost Wingtip Toys. Po dokončení tohoto kurzu budete mít vytvořenou skupinu tříd pro přístup k datům, které jsou ve složce *modely* projektu.
 
-## <a name="what-youll-learn"></a>Co se naučíte:
+## <a name="what-youll-learn"></a>Naučíte se:
 
 - Jak vytvořit datové modely.
 - Jak inicializovat a ohlašovat databázi.
@@ -69,7 +69,7 @@ V tomto kurzu začnete přidáním jednoduchých tříd entit, které představu
 
     ![Vytvoření nabídky Data Access Layer-New Item](create_the_data_access_layer/_static/image2.png)
 3. V prostředním podokně vyberte **Třída** a pojmenujte tuto novou třídu *Product.cs*.
-4. Klikněte na tlačítko **Přidat**.  
+4. Klikněte na **Přidat**.  
    V editoru se zobrazí nový soubor třídy.
 5. Nahraďte výchozí kód následujícím kódem:   
 
@@ -166,13 +166,13 @@ Chcete-li zajistit, aby všechny třídy a změny fungovaly v rámci vaší webo
 
 Pokud narazíte na chybu, znovu proveďte kontrolu výše uvedených kroků. Informace v okně **výstup** označují, který soubor má problém a kde je požadováno změny v souboru. Tyto informace vám umožní určit, jakou část výše uvedených kroků je potřeba zkontrolovat a opravit v projektu.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu řady, kterou jste vytvořili datový model, a také přidejte kód, který bude použit k inicializaci a osazení databáze. Aplikaci jste také nakonfigurovali tak, aby používala datové modely při spuštění aplikace.
 
 V dalším kurzu aktualizujete uživatelské rozhraní, přidáte navigaci a načtete data z databáze. Výsledkem bude, že se databáze automaticky vytvoří na základě tříd entit, které jste vytvořili v tomto kurzu.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 [Přehled Entity Framework](https://msdn.microsoft.com/library/bb399567.aspx)   
 [Příručka pro začátečníky k ADO.NET Entity Framework](https://msdn.microsoft.com/data/ee712907)   

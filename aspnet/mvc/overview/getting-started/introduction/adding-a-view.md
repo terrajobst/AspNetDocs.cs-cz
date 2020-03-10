@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 01/23/2019
 uid: mvc/overview/getting-started/introduction/adding-a-view
 ms.openlocfilehash: 0bc6ac06d12aaee4b2a11c1bf246f9f20f0be017
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77456644"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78582717"
 ---
 # <a name="adding-a-view"></a>Přidání zobrazení
 
@@ -52,7 +52,7 @@ Přidejte následující zvýrazněný kód.
 
 Klikněte pravým tlačítkem na soubor *index. cshtml* a vyberte **Zobrazit v prohlížeči**.
 
-![π](adding-a-view/_static/image5.png)
+![PI](adding-a-view/_static/image5.png)
 
 Můžete také kliknout pravým tlačítkem na soubor *index. cshtml* a vybrat **Zobrazit v okně Kontrola stránky.** Další informace najdete v [kurzu inspektora stránky](../../views/using-page-inspector-in-aspnet-mvc.md) .
 

@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/jquery/how-do-i-make-ajax-calls-using-jquery
-title: 'Postup: Zkontrolujte volání Ajax pomocí jQuery? | Dokumenty Microsoft'
+title: 'Jak mám: provést volání AJAX pomocí jQuery? | Dokumenty Microsoft'
 author: rick-anderson
-description: V toto video pixelů na Chris ukazuje, jak provádět volání Ajax pomocí knihovny jQuery. Ukázka webového serveru se vytvoří, který obsahuje jednoduché webové služby, které vrací...
+description: V tomto videu Chris pixelů na ukazuje, jak provádět volání AJAX pomocí knihovny jQuery. Vytvoří se ukázkový web, který obsahuje jednoduchou webovou službu, která vrací...
 ms.author: riande
 ms.date: 04/12/2010
 ms.assetid: 112b6255-ec37-4311-b967-c1aacce78bc8
 msc.legacyurl: /web-forms/videos/jquery/how-do-i-make-ajax-calls-using-jquery
 msc.type: video
 ms.openlocfilehash: 588a85b3af658b71b14018c32507c59d776c7010
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59393844"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78547997"
 ---
-# <a name="how-do-i-make-ajax-calls-using-jquery"></a>Postup: Zkontrolujte volání Ajax pomocí jQuery?
+# <a name="how-do-i-make-ajax-calls-using-jquery"></a>Jak mám: provést volání AJAX pomocí jQuery?
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-V toto video pixelů na Chris ukazuje, jak provádět volání Ajax pomocí knihovny jQuery. Ukázka webového serveru se vytvoří, který obsahuje jednoduché webové služby, která vrátí hodnotu. V dalším kroku metoda ajax() jQuery slouží k volání webové služby. Řadu možností metoda ajax() nastavené, včetně adresy url, datový typ, data atd. Kromě toho jsou definovány obslužné rutiny událostí pro úspěch a chybové stavy. Jiné webové služby je pak definován, který přijímá argument a také vrátí hodnotu. Druhé volání ajax() je definován, která předá hodnotu volání webové služby a zpracovává návratová data. Nakonec jsou popsány nastavení pro globální možnosti a obslužné rutiny událostí pro volání metody ajax().
+V tomto videu Chris pixelů na ukazuje, jak provádět volání AJAX pomocí knihovny jQuery. Vytvoří se ukázkový web, který obsahuje jednoduchou webovou službu, která vrací hodnotu. Dále metoda jQuery Ajax () slouží k volání webové služby. Několik možností metody AJAX () je nastaveno včetně adresy URL, datového typu, dat atd. Kromě toho jsou definovány obslužné rutiny událostí pro stavy úspěch i chyba. Pak je definována jiná webová služba, která přijímá argument a také vrací hodnotu. Druhé volání jazyka AJAX () je definováno, které předá hodnotu volání webové služby a zpracovává návratová data. Nakonec jsou popsány možnosti instalace globálních možností a obslužných rutin událostí pro volání metod AJAX ().
 
-[&#9654;Podívejte se na video (21 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-ajax-calls-using-jquery)
+[&#9654;Sledovat video (21 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-ajax-calls-using-jquery)

@@ -1,109 +1,109 @@
 ---
 uid: single-page-application/overview/templates/breezeknockout-template
-title: Šablona breeze/Knockout | Dokumentace Microsoftu
+title: Šablona Breeze/vykrojení | Microsoft Docs
 author: madskristensen
-description: Šablona breeze/Knockout jednostránkové aplikace
+description: Šablona jedné stránky aplikace Breeze/vykrojení
 ms.author: riande
 ms.date: 01/30/2013
 ms.assetid: 3bd94827-3c59-448f-abc3-36e6df4858db
 msc.legacyurl: /single-page-application/overview/templates/breezeknockout-template
 msc.type: authoredcontent
 ms.openlocfilehash: 5bb9ee8f758a25afa6baf3ccbaf7d5864754c7df
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113361"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78558189"
 ---
 # <a name="breezeknockout-template"></a>Šablona Breeze/Knockout
 
-podle [Autor: Mads Kristensen](https://github.com/madskristensen)
+od [Madse Kristensena](https://github.com/madskristensen)
 
-> Šablona Breeze/Knockout MVC zapsal pře zvonku
+> Šablona MVC Breeze/vyseknutí byla zapsána od společnosti "3. Bell"
 > 
-> [Stažení šablony MVC Breeze/Knockout](https://go.microsoft.com/fwlink/?LinkId=282649)
+> [Stáhnout šablonu MVC Breeze/vyseknutí](https://go.microsoft.com/fwlink/?LinkId=282649)
 
-Vyslyšeli jsme "jednostránkové aplikace" (SPA) a přemýšleli, co to je. Když si může přečíst o tom, neprovádějí místo pro sebe. Ale který má čas Stáhnout ukázku? Pokud máte Visual Studio, budete mít příklad SPA a spuštěn v menší než 60 sekund s ASP.NET MVC 4 šablony "Breeze/Knockout jednostránkové aplikace".
+Seznámili jste se s "jednoduchou stránkovou aplikací" (SPA) a přemýšleli, co je. I když se o něm můžete přečtením, měli byste k tomu mít přednost. Ale kdo má čas ke stažení ukázky? Pokud máte aplikaci Visual Studio, budete mít k dispozici příklad ZABEZPEČENÉho a spuštěného prostředí za méně než 60 sekund s šablonou aplikace ASP.NET MVC 4 "Breeze/vykrojení jedné stránky".
 
 ![](http://www.breezejs.com/sites/all/images/spa-template/ZephyrRunning.png)
 
-## <a name="what-is-the-breezeknockout-spa-template"></a>Co je jednostránková aplikace šablona Breeze/Knockout?
+## <a name="what-is-the-breezeknockout-spa-template"></a>Jaká je šablona hesla Breeze/vykrojení?
 
-Většina šablon projektů generovat kostře aplikaci. Vložit věnovat v těchto kosti přidáním kódu a konečnou funkční aplikaci poskytovat. Šablona Breeze/Knockout SPA se liší. Generuje ukázkové aplikace můžete zkoumat. Ukazuje návrh aplikace SPA a řadu techniky pro vytváření SPA.
+Většina šablon projektů generuje kostru aplikace. Do těchto kostí se vloží svalovina přidáním kódu a nakonec doručovat funkční aplikaci. Šablona hesla Breeze/vykrojení se liší. Vygeneruje ukázkovou aplikaci, kterou si můžete prostudovat. Ukazuje návrh aplikace SPA a mnoho technik pro sestavování SPA.
 
-Šablona Breeze/Knockout varianta nachází [šablona KnockoutJS SPA](../introduction/knockoutjs-template.md) součástí technologie ASP.NET a Web Tools 2012.2 Update. Šablona Breeze SPA generuje aplikace pomocí stejné prostředí pro uživatele, ale má jinou implementaci, pomocí Breeze pro správu dat na.
+Šablona Breeze/vykrojení je variací [šablony KNOCKOUTJS Spa](../introduction/knockoutjs-template.md) , která je součástí aktualizace ASP.NET and Web Tools 2012,2. Šablona Breeze SPA vygeneruje aplikaci se stejným uživatelským prostředím, ale má odlišnou implementaci pomocí Breeze pro správu dat.
 
-Šablona KnockoutJS SPA díky žádostí o službu pomocí nezpracované jQuery jazyka AJAX, který je vhodný pro jednoduchou aplikaci. Ale mít náročnějších požadavků správy dat sofistikovanějších aplikací. Například většina aplikací:
+Šablona KnockoutJS SPA vytváří žádosti o služby s nezpracovaným jQuery AJAX, který je vhodný pro jednoduchou aplikaci. Ale propracovanější aplikace mají přísnější požadavky na správu dat. Například většina aplikací:
 
-- Dotaz a znovu zadat dotaz na server během relace rozšířených uživatele.
-- Přidáte dotaz filtry, řazení a stránkování.
-- Stejná data sdílejte mezi více obrazovek.
-- Accumulate změny mnoho objektů a pak je ukládejte jako jedna transakce.
-- Ověření změn na straně klienta, takže uživatel může opravit chyby před potvrzením změn do databáze.
+- Dotazování a opětovné dotazování serveru během uživatelské relace rozšířené.
+- Přidejte filtry dotazu, řazení a stránkování.
+- Sdílejte stejná data napříč více obrazovkami.
+- Nashromáždí změny v mnoha objektech a pak je uložte jako jednu transakci.
+- Ověří změny u klienta, aby mohl uživatel opravit chyby před potvrzením změn v databázi.
 
-Knihovna BreezeJS zpracovává tyto vás ujmeme rutinních úkolů za vás, můžete k vývoji aplikace logiky a uživatelského prostředí, který nejvíce zajímají.
+Knihovna BreezeJS tyto rutinní zpracuje za vás a uvolní vám tak vývoj logiky aplikace a uživatelského prostředí, které záleží nejvíc.
 
-[**Rychlé** ](http://www.breezejs.com/?utm_source=ms-spa) je open source knihovna pro vytváření aplikací velké množství dat v jazyce JavaScript a HTML, typy aplikací, které v minulosti se dodávají jako samostatné aplikace klasické pracovní plochy.
+[**Breeze**](http://www.breezejs.com/?utm_source=ms-spa) je open source knihovna pro vytváření bohatých datových aplikací v jazycích JavaScript a HTML, což jsou typy aplikací, které byly historicky doručovány jako samostatné desktopové aplikace.
 
-Šablona Breeze/Knockout pomáhá tento první zásadní krok k více robustní infrastruktury pro správu dat trvat. Vytvoří ukázkovou aplikaci seznamu úkolů, která je vně stejný jako šablona KnockoutJS SPA. Uvnitř nahradí Datová vrstva AJAX Breeze, abyste mohli porovnat dva přístupy vedle sebe. Samozřejmě i neziskovky dotýká potenciál Breeze aplikace. Ale uvidíte, jak Breeze funguje a jak trochu potřeba ke zpřístupnění tohoto přechodu.
+Šablona Breeze/vykrojení vám pomůže s tím, že se jedná o první zásadní krok k robustnější infrastruktuře správy dat. Vytvoří ukázkovou aplikaci todo, která je umístěná v rámci stejné šablony KnockoutJS SPA. V rámci uvnitř nahrazuje datovou vrstvu AJAX pomocí Breeze, takže můžete porovnat dva přístupy vedle sebe. Samozřejmě se zlomeko, že se dotkne potenciálu aplikace Breeze. Uvidíte ale, jak Breeze funguje a jak malý je nutný k provedení tohoto přechodu.
 
-Pusťme se do práce.
+Pusťme se do toho.
 
-## <a name="create-a-breezeknockout-template-project"></a>Vytvoření projektu šablona Breeze/Knockout
+## <a name="create-a-breezeknockout-template-project"></a>Vytvořit projekt šablony Breeze/vykrojení
 
-Stáhněte a nainstalujte šablony kliknutím na tlačítko Stáhnout výše. Šablona je zabalena jako soubor rozšíření aplikace Visual Studio (VSIX). Můžete potřebovat restartovat Visual Studio.
+Stáhněte a nainstalujte šablonu kliknutím na tlačítko Stáhnout výše. Šablona je zabalená jako soubor rozšíření sady Visual Studio (VSIX). Možná budete muset restartovat Visual Studio.
 
-V **šablony** vyberte **nainstalované šablony** a rozbalte **Visual C#** uzlu. V části **Visual C#** vyberte **webové**. V seznamu šablon projektu vyberte **webové aplikace ASP.NET MVC 4**. Pojmenujte projekt a klikněte na tlačítko **OK**.
+V podokně **šablony** vyberte **Nainstalované šablony** a rozbalte uzel  **C# vizuál** . V **části C#vizuál** vyberte **Web**. V seznamu šablon projektu vyberte **ASP.NET webová aplikace MVC 4**. Pojmenujte projekt a klikněte na tlačítko **OK**.
 
-V **nový projekt** průvodce, vyberte **Breeze Knockout SPA**.
+V průvodci **vytvořením nového projektu** vyberte **Breeze vykrojení Spa**.
 
 ![](http://www.breezejs.com/sites/all/images/spa-template/SelectBreezeKOSpaTemplate.png)
 
-Stisknutím kláves Ctrl-F5 sestavte a spusťte aplikaci bez ladění nebo stisknutím klávesy F5 spusťte ladění.
+Stisknutím kombinace kláves CTRL + F5 sestavíte a spustíte aplikaci bez ladění, nebo stiskněte klávesu F5 ke spuštění s laděním.
 
 ![](http://www.breezejs.com/sites/all/images/spa-template/ZephyrRunning.png)
 
-Při prvním spuštění aplikace, zobrazí přihlašovací obrazovka. Klikněte na odkaz "Registrace" a novou stránku glides do zobrazení, ve kterém můžete zadat uživatelské jméno a heslo. (Přihlášení a registraci stránky jsou vytvořené pomocí ASP.NET MVC.) Když odešlete registrační formulář, server vygeneruje seznamu úkolů se dvěma položkami pro váš účet. Potom ho prezentuje je pro vás na žlutou poznámku.
+Při prvním spuštění aplikace se zobrazí přihlašovací obrazovka. Klikněte na odkaz Zaregistrovat se a nová stránka se zobrazí v zobrazení, kde můžete zadat uživatelské jméno a heslo. (Stránky pro přihlášení a registraci jsou sestavené pomocí ASP.NET MVC.) Po odeslání registračního formuláře vygeneruje Server TodoList se dvěma položkami pro váš účet. Pak je prezentuje na žluté poznámce.
 
 ![](http://www.breezejs.com/sites/all/images/spa-template/TodoList.png)
 
-Nyní jste v pozemního jednostránková aplikace. Všechno, co můžete prohlédnout a vyzkoušet při zpracování úloh, ať už je vykreslen a spravované v klientském počítači díky Knockout a rychlé. Prozkoumání aplikace jako uživatele... ale s okem vývojáře. Zachycení síťového provozu pomocí vývojářských nástrojů v prohlížeči. (V Internet Exploreru: Stisknutím klávesy F12, vyberte **sítě** kartu a klikněte na tlačítko **spustit zachytávání**.) Teď zkuste následující:
+Teď jste v rámci zabezpečeného hesla. Vše, co vidíte a budete pracovat, když pracujete s todo, se vykresluje a spravuje na klientovi pomocí vyseknutí a Breeze. Prozkoumat aplikaci jako uživatel... ale s očima vývojáře. Pomocí vývojářských nástrojů v prohlížeči Zachyťte síťový provoz. (V Internet Exploreru: stiskněte klávesu F12, vyberte kartu **síť** a klikněte na **Spustit zachytávání**.) Nyní vyzkoušejte následující:
 
-- Přidáte novou položku seznamu úkolů.
-- Po kliknutí na popisek a upravit nadpis položek Todo
-- Zaškrtnutím políčka označíte položky Hotovo. Všimněte si, že textového pole, protože je zakázán název již nelze upravovat.
-- Klikněte na tlačítko "x" napravo od popisku. Položka zmizí a je odstraněna z databáze.
-- Vyberte jinou položku a vymažte její název. Zobrazí se chyba ověření, že název je povinný. Po krátké pozastavení se obnoví předchozí název.
-- Zadejte absurdně dlouhý název. Zobrazí se chyba různých ověření, že název je příliš dlouhý.
-- Klikněte na tlačítko "Přidat seznam úkolů". Nový seznam se zobrazí nalevo od předchozího seznamu.
-- Pohrajte si s název seznamu úkolů, aktivuje se vyžaduje a délka ověření.
-- Klikněte do textového pole Název vymazat chybovou zprávu.
-- Klikněte na tlačítko "x" v kruhu v pravém horním rohu na Odstranit seznamu úkolů a úloh, ať už jeho.
+- Přidejte novou položku todo.
+- Klikněte na popisek a upravte název položky ToDo.
+- Zaškrtnutím políčka označíte, že položka se dokončila. Všimněte si, že je textové pole zakázáno, takže nadpis již není možné upravovat.
+- Klikněte na x vpravo od popisku. Položka zmizí a z databáze se odstraní.
+- Vyberte jinou položku a vymažte její název. Zobrazí se chyba ověření, že název je povinný. Po krátké pauze se předchozí nadpis obnoví.
+- Zadejte absurdně dlouhý nadpis. Obdržíte jinou chybu ověřování, že název je příliš dlouhý.
+- Klikněte na tlačítko Přidat seznam todo. Nalevo od předchozího seznamu se zobrazí nový seznam.
+- Začněte s názvem TodoList, který aktivuje jeho požadovaná a délková ověření.
+- Kliknutím do textového pole název vymažete chybovou zprávu.
+- Kliknutím na x v kruhu v pravém horním rohu odstraňte TodoList a jeho todo.
 
-Logiku ověřování se provádí straně klienta podle Breeze. Ověřování atributů na serverové třídy modelu jsou šířeny do klienta a spouštěny automaticky, než se klient připojí k serveru.
+Logika ověřování se provádí pomocí Breeze na straně klienta. Atributy ověřování v třídách model serveru jsou šířeny do klienta a provedeny automaticky před tím, než klient kontaktuje server.
 
-Zkontrolujte síťový provoz. Všimněte si, že nebyly žádné volání serveru při Breeze došlo k chybě. Každý platný změnu výsledkem požadavku POST na "/ api/Todo/SaveChanges". Rychlé obsahuje ureitou změny a odesílá je společně jako jeden požadavek do kontroleru webového rozhraní API `SaveChanges` metody. Který se liší od KnockoutJS SPA šablonu, která umožňuje PUT, POST a odstranit zastaralé požadavky pro každou položku jednotlivě.
+Zkontrolujte síťový provoz. Všimněte si, že na server nebyla žádná volání, když Breeze zjistil chybu. Každá platná změna způsobila požadavek POST na "/api/Todo/SaveChanges". Breeze zařadí změny a pošle je společně jako jeden požadavek do `SaveChanges` metody řadiče webového rozhraní API. To se liší od šablony KnockoutJS SPA, která vytváří požadavky na vložení, odeslání a odstranění každé položky jednotlivě.
 
-## <a name="peek-inside"></a>Operace Peek uvnitř
+## <a name="peek-inside"></a>Náhled dovnitř
 
-Tato aplikace má na straně klienta a na straně serveru. Klientské zásobník se skládá z trochu HTML a kombinaci modulech JavaScript aplikace (ve složce "aplikace") a navíc JavaScript knihovny třetích stran (ve složce "Skripty").
+Tato aplikace má stranu klienta a na straně serveru. Zásobník na straně klienta se skládá z malého formátu HTML a kombinace modulů JavaScript aplikace (ve složce App) a JavaScriptových knihoven třetích stran (ve složce Scripts).
 
 ![](http://www.breezejs.com/sites/all/images/spa-template/ClientArchitecture.png)
 
-Pokud jste prozkoumat šablona KnockoutJS SPA, to velmi povědomé. Zaměřte se na modrých polích. Architektura uživatelského rozhraní je Model-View-ViewModel (MVVM), ve kterém jsou pomůcky HTML zobrazení čistě oddělená od podpůrné prezentaci kódu v modelu zobrazení. Systém vazby dat (v tomto případě Knockout) koordinuje zobrazení a modelu zobrazení tak, aby každý může fungovala bez vědomí každou z nich.
+Pokud jste prozkoumali šablonu KnockoutJS SPA, měla by to vypadat velmi dobře. Zaměřte se na modré čtverečky. Architektura uživatelského rozhraní je model-View-ViewModel (MVVM), ve kterém jsou widgety HTML v zobrazení čistě oddělené od kódu doprovodné prezentace v modelu zobrazení. Systém vázání dat (v tomto případě vykrojení v tomto případě) koordinuje zobrazení a model zobrazení, aby každý z nich mohl dělat svou úlohu, aniž by Intimate znalosti druhého.
 
-Model zapouzdřuje Todo data. Entity v modelu jsou vytvořeny pomocí Breeze pozorovatelných vlastnostmi Knockout, proto mohou být vázány přímo na pomůckách v zobrazení. Model zobrazení požádá kontext dat, které chcete získat a uložit model entity. Kontext dat deleguje většinu práce, kterou Breeze.
+Model zapouzdřuje data todo. Entity v modelu jsou konstruovány pomocí Breeze s nečinnými vlastnostmi, takže mohou být vázány přímo na widgety v zobrazení. Model zobrazení požádá kontext dat o získání a uložení entit modelu. Kontext dat deleguje většinu práce na Breeze.
 
-Stack na straně serveru se skládá z kódu pro vývojáře a tři principu knihovny .NET: Webové rozhraní API, rozhraní Entity Framework a Breeze.NET:
+Zásobník na straně serveru se skládá z určitého kódu pro vývojáře a tří principů knihoven .NET: webové rozhraní API, Entity Framework a Breeze.NET:
 
 ![](http://www.breezejs.com/sites/all/images/spa-template/ServerArchitecture.png)
 
-Základní architektura je stejný jako šablona KnockoutJS jednostránková aplikace. Implementace je však mnohem jednodušší: Byly odstraněny DTO a většina podrobnosti Entity Framework byla delegována do Breeze.NET.
+Základní architektura je stejná jako šablona KnockoutJS SPA. Implementace je však mnohem jednodušší: DTO byly odstraněny a většina z Entity Framework podrobností byla delegována na Breeze.NET.
 
 ## <a name="next-steps"></a>Další kroky
 
-Doporučujeme zkoumání kódu, podle [rozsáhlé diskuse](http://www.breezejs.com/spa-template?utm_source=ms-spa) klientských a serverových sad na webu Breeze.
+Doporučujeme, abyste prozkoumali kód a provedli [rozsáhlou diskuzi](http://www.breezejs.com/spa-template?utm_source=ms-spa) o zásobníku klienta i serveru na webu Breeze.
 
-Můžete se pokusit přehrávání s podrobným dotaz na straně klienta; Přidejte několik filtrů a řazení. Můžete například přidat další vlastnosti modelu a další entity, které pro vývoj SPA začátku do konce získat lepší představu. Pokud jste si jisti návrhu, můžete odstraňovat funkce Todo a nahraďte je vlastními.
+Můžete se pokusit přehrát dotaz Breeze na straně klienta; Přidejte některé filtry a seřadí je. Můžete přidat další vlastnosti modelu a další entity, které vám pomůžou dosáhnout lepšího vývoje pro komplexní vývoj SPA. Když jste si jisti návrhem, můžete funkce TODO odtrhnout a nahradit je vlastními.
 
-Jakmile budete připraveni na další velký krok: Přidání obrazovky na straně klienta a navigace mezi nimi. Budete moct nechat tuto šablonu jednostránková aplikace za bránou a zapnout na další celý zásobník jednostránková aplikace, jako například [Hot Towel John Papa](https://github.com/johnpapa/HotTowel#readme "Hot Towel"), k podrobným a Knockout kombinaci přidává Durandal.
+Brzy budete připraveni na další velký krok: přidání obrazovek na straně klienta a navigace mezi nimi. Tuto šablonu SPA ponecháte za tím, že zapnete podrobnější sadu protokolů SPA, jako je třeba [Jan Papa Hot navrhování ručníků](https://github.com/johnpapa/HotTowel#readme "Horká navrhování ručníků"), který přidá Durandal do kombinace Breeze a vykrojení.

@@ -9,11 +9,11 @@ ms.assetid: c1a35f18-bab9-41f7-8497-15530c37a09d
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-localization
 msc.type: authoredcontent
 ms.openlocfilehash: 003e7939accd7a68dab97441b3d999bca835b85a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600879"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78566218"
 ---
 # <a name="understanding-aspnet-ajax-localization"></a>Principy lokalizace pomocí technologie ASP.NET AJAX
 
@@ -59,10 +59,10 @@ Následující tabulka shrnuje konvence pojmenovávání souborů s příklady:
 
 | Název souboru | Význam |
 | --- | --- |
-| Script. js | Skript pro vydanou verzi, který je neutrální pro jazykovou verzi. |
-| Script. Debug. js | Skript pro ladění verze, který je neutrální pro jazykovou verzi. |
-| Script. en-US. js | Verze pro verzi English, USA skript. |
-| Script.debug.es-CO. js | Skript debug-Version španělsky, Kolumbie. |
+| Script.js | Skript pro vydanou verzi, který je neutrální pro jazykovou verzi. |
+| Script.debug.js | Skript pro ladění verze, který je neutrální pro jazykovou verzi. |
+| Script.en-US.js | Verze pro verzi English, USA skript. |
+| Script.debug.es-CO.js | Skript debug-Version španělsky, Kolumbie. |
 
 ## <a name="walkthrough-create-an-localized-embedded-script"></a>Návod: vytvoření lokalizovaného vloženého skriptu
 
@@ -136,7 +136,7 @@ ScriptManager umožňuje několik automatických chování lokalizovaných aplik
 
 Odkazy na skripty mohou být přidány do ovládacího prvku ScriptManager buď prostřednictvím kódu programu, nebo deklarativním označením. Deklarativní označení je zvláště užitečné, pokud pracujete se skripty vloženými v jiných sestaveních než na samotném projektu webu, protože název skriptu se nejspíš nemění, protože revize se provedou.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Protože webové aplikace se dosahují větší cílové skupiny, je potřeba mít přístup k širším kulturám a komunitám, které se stávají jádrem obchodního modelu. webové aplikace elektronického obchodování musí být schopné řešit cizí měny, systémy správy obsahu musí být schopné nejen prezentovat svůj obsah, ale také jejich doporučení k navigaci a pole formuláře v jiných jazycích a společnosti musí znát, že tato nutnost je snadno.
 

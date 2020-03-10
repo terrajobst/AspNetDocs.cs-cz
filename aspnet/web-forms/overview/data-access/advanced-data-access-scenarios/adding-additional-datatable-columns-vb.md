@@ -9,11 +9,11 @@ ms.assetid: 1e8e65f9-fe3e-4250-810b-c90227786bed
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 3a55f8bc4d3508387927ca81674073a001867de7
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74608273"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78534102"
 ---
 # <a name="adding-additional-datatable-columns-vb"></a>Přidání dalších sloupců do tabulky DataTable (VB)
 
@@ -51,7 +51,7 @@ Otevřete `NorthwindWithSprocs` datovou sadu a klikněte pravým tlačítkem na 
 
 **Obrázek 1**: Přidání nového sloupce do `ProductsDataTable` ([kliknutím zobrazíte obrázek v plné velikosti](adding-additional-datatable-columns-vb/_static/image3.png))
 
-Tím se přidá nový sloupec do objektu DataTable s názvem Sloupec1 typu `System.String`. Musíme tento název sloupce aktualizovat tak, aby PriceQuartile a jeho typ `System.Int32`, protože se použije k uložení čísla mezi 1 a 4. Vyberte nově přidaný sloupec v `ProductsDataTable` a z okno Vlastnosti nastavte vlastnost `Name` na hodnotu PriceQuartile a vlastnost `DataType` na `System.Int32`.
+Tím se přidá nový sloupec do objektu DataTable s názvem Sloupe typu `System.String`. Musíme tento název sloupce aktualizovat tak, aby PriceQuartile a jeho typ `System.Int32`, protože se použije k uložení čísla mezi 1 a 4. Vyberte nově přidaný sloupec v `ProductsDataTable` a z okno Vlastnosti nastavte vlastnost `Name` na hodnotu PriceQuartile a vlastnost `DataType` na `System.Int32`.
 
 [![nastavit nové vlastnosti název sloupce a datového typu.](adding-additional-datatable-columns-vb/_static/image5.png)](adding-additional-datatable-columns-vb/_static/image4.png)
 
@@ -168,7 +168,7 @@ Přidáním nového TableAdapter datové tabulky zůstanou untarnished a jejich 
 
 Stažení pro tento kurz obsahuje třídu `ProductsWithPriceQuartileTableAdapter` v datové sadě `NorthwindWithSprocs`, která ukazuje tento alternativní přístup.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Ve většině scénářů vrátí všechny metody v TableAdapter stejnou sadu datových polí, ale v některých případech nastane čas, kdy konkrétní metoda nebo dvě nemusí vracet další pole. Například v [seznamu hlavní/podrobnosti pomocí seznamu hlavních záznamů s odrážkami s kurzem podrobností DataList](../filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md) jsme přidali metodu do `CategoriesTableAdapter`, který kromě datových polí Main Query s vrátí `NumberOfProducts` pole, které oznámilo počet produktů přidružených ke každé kategorii. V tomto kurzu jsme se vyhledali přidáním metody do `ProductsTableAdapter`, která kromě datových polí Main Query s vrátila pole `PriceQuartile`. K zachycení dalších datových polí vrácených metodami TableAdapter s musíme do objektu DataTable přidat odpovídající sloupce.
 

@@ -1,23 +1,23 @@
 ---
 uid: web-forms/index
-title: Webové formuláře ASP.NET | Dokumentace Microsoftu
+title: Webové formuláře v ASP.NET | Microsoft Docs
 author: rick-anderson
-description: Stáhněte si Visual Web Developer Express a zjistěte, jak rychle vytvářet webové aplikace pomocí snadno pochopitelné ovládacích prvků ve webových formulářů ASP.NET, ve vizuálním návrhem environ...
+description: Stáhněte si Visual Web Developer Express & Naučte se rychle sestavovat webové aplikace pomocí snadno pochopitelnéch ovládacích prvků webových formulářů ASP.NET ve vizuálním Environ – návrhu...
 ms.author: riande
 ms.date: 08/08/2011
 ms.assetid: 7e4ce5d2-ab22-44f0-9825-c12eed7b8fcb
 msc.legacyurl: /web-forms
 msc.type: categoryindex
 ms.openlocfilehash: 623df5d3ffe357f42d72ee0a33bc50aa60a8c4d0
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59397003"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78554857"
 ---
 # <a name="aspnet-web-forms"></a>ASP.NET – webové formuláře
 
-- [Pokyny](overview/index.md)
+- [Doprovodné materiály](overview/index.md)
 
     - [Začínáme](overview/getting-started/index.md)
 
@@ -73,12 +73,12 @@ ms.locfileid: "59397003"
             - [Nasazení aktualizace databáze](overview/deployment/visual-studio-web-deployment/deploying-a-database-update.md)
             - [Nasazení příkazového řádku](overview/deployment/visual-studio-web-deployment/command-line-deployment.md)
             - [Nasazení dalších souborů](overview/deployment/visual-studio-web-deployment/deploying-extra-files.md)
-            - [Odstraňování potíží](overview/deployment/visual-studio-web-deployment/troubleshooting.md)
+            - [Řešení potíží](overview/deployment/visual-studio-web-deployment/troubleshooting.md)
         - [ASP.NET 4 – úvod do nasazení v podniku](overview/deployment/deploying-web-applications-in-enterprise-scenarios/index.md)
 
             - [Scénáře nasazení webových aplikací v podniku pomocí sady Visual Studio 2010](overview/deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md)
-            - [Nasazení podnikového webu: Přehled scénářů](overview/deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)
-            - [Správa životního cyklu aplikací: Od vývoje k ostrému provozu](overview/deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production.md)
+            - [Nasazení podnikového webu: Přehledný scénář](overview/deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)
+            - [Správa životního cyklu aplikace: Od vývoje k ostrému provozu](overview/deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production.md)
         - [ASP.NET 4 – nasazení v podniku (1. část)](overview/deployment/web-deployment-in-the-enterprise/index.md)
 
             - [Nasazení webu v podniku](overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise.md)
@@ -132,14 +132,14 @@ ms.locfileid: "59397003"
 
         - [ASP.NET 4 – Tailspin Spyworks](overview/older-versions-getting-started/tailspin-spyworks/index.md)
 
-            - [Část 1: Soubor -> Nový projekt](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1.md)
-            - [Část 2: Vrstva přístupu k datům](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2.md)
-            - [3. část: Nabídka rozložení a kategorie](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3.md)
+            - [1. část: Soubor > Nový projekt](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1.md)
+            - [2. část: Vrstva přístupu k datům](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2.md)
+            - [3. část: Nabídka Rozložení a Kategorie](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3.md)
             - [4. část: Seznam produktů](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4.md)
             - [5. část: Obchodní logika](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5.md)
-            - [6. část: Členství technologie ASP.NET](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6.md)
-            - [Část 7: Přidání funkce](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7.md)
-            - [Část 8: Závěrečné stránky, zpracování výjimek a závěr](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8.md)
+            - [6. část: Členství v ASP.NET](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6.md)
+            - [7. část: Přidání funkcí](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7.md)
+            - [8. část: Závěrečné stránky, zpracování výjimek a závěr](overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8.md)
         - [ASP.NET 4 – Začínáme se sadou Entity Framework 4 a webovými formuláři](overview/older-versions-getting-started/getting-started-with-ef/index.md)
 
             - [Začínáme s Entity Framework 4.0 Database First](overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1.md)
@@ -152,7 +152,7 @@ ms.locfileid: "59397003"
             - [Začínáme s Entity Framework 4.0 Database First – 8. část](overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8.md)
         - [ASP.NET 4 – Pokračujeme se sadou Entity Framework 4 a webovými formuláři](overview/older-versions-getting-started/continuing-with-ef/index.md)
 
-            - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 1. část: Začínáme se službou](overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
+            - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 1. část: Začínáme](overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
             - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 2. část: Přidání vrstvy obchodní logiky a testy jednotek](overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
             - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 3. část: Řazení a filtrování](overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
             - [Ošetření souběžnosti se sadou Entity Framework 4.0 v ASP.NET 4](overview/older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)
@@ -414,7 +414,7 @@ ms.locfileid: "59397003"
             - [Zobrazení hlavního záznamu/podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (C#)](overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)
             - [Filtrování záznamů hlavních záznamů/podrobností ovládacím prvkem DropDownList (VB)](overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md)
             - [Filtrování záznamů hlavních záznamů/podrobností dvou ovládacích prvků DropDownList (VB)](overview/data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-vb.md)
-            - [Filtrování záznamů hlavních záznamů/podrobností na dvou stránkách (VB)](overview/data-access/masterdetail/master-detail-filtering-across-two-pages-vb.md)
+            - [Filtrování záznamů master/detail na dvou stránkách (VB)](overview/data-access/masterdetail/master-detail-filtering-across-two-pages-vb.md)
             - [Zobrazení hlavního záznamu/podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (VB)](overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md)
         - [Vlastní formátování](overview/data-access/custom-formatting/index.md)
 
@@ -475,7 +475,7 @@ ms.locfileid: "59397003"
             - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (C#)](overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
             - [Filtrování záznamů master/detail na dvou stránkách (C#)](overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs.md)
             - [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (C#)](overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
-            - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (VB)](overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
+            - [Filtrování záznamů hlavních záznamů/podrobností ovládacím prvkem DropDownList (VB)](overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
             - [Filtrování záznamů master/detail na dvou stránkách (VB)](overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-vb.md)
             - [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)](overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)
         - [Úpravy a odstranění dat prostřednictvím datového prvku DataList](overview/data-access/editing-and-deleting-data-through-the-datalist/index.md)
@@ -680,7 +680,7 @@ ms.locfileid: "59397003"
         - [Zjištění možností prohlížeče webovými stránkami ASP.NET](videos/how-do-i/how-do-i-detect-browser-capabilities-in-aspnet-web-pages.md)
         - [Mapování serverového ovládacího prvku ASP.NET na adaptér použitý k jeho vykreslení](videos/how-do-i/how-do-i-map-an-aspnet-server-control-to-the-adaptor-used-to-render-it.md)
         - [Předání informací z jedné stránky na jinou pomocí řetězce dotazu](videos/how-do-i/how-do-i-pass-information-from-one-page-to-another-using-a-query-string.md)
-        - [Použít aspnet\_merge.exe nástroj ke sloučení sestavení](videos/how-do-i/how-do-i-use-the-aspnet_mergeexe-utility-to-merge-assemblies.md)
+        - [Použití nástroje ASPNET\_Merge. exe ke sloučení sestavení](videos/how-do-i/how-do-i-use-the-aspnet_mergeexe-utility-to-merge-assemblies.md)
         - [Implementace události zpětného vystavení (PostBack) mezi stránkami v ASP.NET](videos/how-do-i/how-do-i-implement-a-cross-page-postback-in-aspnet.md)
         - [Programové přidání ovládacích prvků na stránku ASP.NET](videos/how-do-i/how-do-i-add-controls-to-an-aspnet-web-page-programmatically.md)
         - [Použití skrytého pole k ukládání a manipulaci informací na straně klienta](videos/how-do-i/how-do-i-use-a-hidden-field-to-store-and-manipulate-client-side-information.md)
@@ -829,15 +829,15 @@ ms.locfileid: "59397003"
         - [[Úvod do ASP.NET 2.0:] Prvky uživatelského rozhraní](videos/migrating/intro-to-aspnet-20-user-interface-elements.md)
         - [[Migrace z] klasického ASP na ASP.NET](videos/migrating/migrating-from-classic-asp-to-aspnet.md)
         - [Úvod do ASP.NET pro vývojáře v JSP: Vítejte v ASP.NET 2.0](videos/migrating/intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20.md)
-        - [Úvod do ASP.NET pro vývojáře v JSP: Vytváření aplikací](videos/migrating/intro-to-aspnet-for-jsp-developers-building-applications.md)
+        - [Úvod do ASP.NET pro vývojáře v JSP: Tvorba aplikací](videos/migrating/intro-to-aspnet-for-jsp-developers-building-applications.md)
         - [Úvod do ASP.NET pro vývojáře v ColdFusion: Přidání ASP.NET do vašeho repertoáru](videos/migrating/intro-to-aspnet-for-coldfusion-developers-adding-aspnet-to-your-repertoire.md)
-        - [Úvod do ASP.NET pro vývojáře v ColdFusion: Vytvoření aplikace ASP.NET](videos/migrating/introduction-to-aspnet-for-coldfusion-developers-building-an-aspnet-application.md)
+        - [Úvod do ASP.NET pro vývojáře v ColdFusion: Tvorba aplikace ASP.NET](videos/migrating/introduction-to-aspnet-for-coldfusion-developers-building-an-aspnet-application.md)
         - [Interoperabilita PHP s platformou Windows](videos/migrating/interop-between-php-and-the-windows-platform.md)
     - [Tvorba aplikací verze 2.0](videos/building-20-applications/index.md)
 
         - [[1. lekce:] Začínáme s aplikací Visual Web Developer Express](videos/building-20-applications/lesson-1-getting-started-with-visual-web-developer-express.md)
         - [[2. lekce:] Vytváření uživatelského rozhraní webových formulářů](videos/building-20-applications/lesson-2-creating-a-web-forms-user-interface.md)
-        - [[Lekce 3:] Orientujte ve více událostí a postbacku](videos/building-20-applications/lesson-3-understanding-more-about-events-and-postback.md)
+        - [[Lekce 3:] Informace o událostech a postbacku](videos/building-20-applications/lesson-3-understanding-more-about-events-and-postback.md)
         - [[4. lekce:] Principy stavu webové aplikace](videos/building-20-applications/lesson-4-understanding-web-application-state.md)
         - [[5. lekce:] Ladění a trasování webu](videos/building-20-applications/lesson-5-debugging-and-tracing-your-website.md)
         - [[6. lekce:] Práce se šablonami stylů a stránkami předloh](videos/building-20-applications/lesson-6-working-with-stylesheets-and-master-pages.md)
@@ -951,7 +951,7 @@ ms.locfileid: "59397003"
         - [Nastavení vývojového prostředí pro ASP.NET 2.0](videos/aspnet-ajax/set-up-your-development-environment-for-aspnet-20.md)
         - [Přizpůsobené zpracování chyb ovládacího prvku UpdatePanel technologie ASP.NET AJAX](videos/aspnet-ajax/how-do-i-customize-error-handling-for-the-aspnet-ajax-updatepanel.md)
         - [Použití klientských šablon ASP.NET AJAX](videos/aspnet-ajax/how-do-i-use-aspnet-ajax-client-templates.md)
-    - [Přístup k datům](videos/data-access/index.md)
+    - [Přístup k datům](videos/data-access/index.md)
 
         - [Datové služby ADO.NET](videos/data-access/adonet-data-services/index.md)
 
@@ -960,15 +960,15 @@ ms.locfileid: "59397003"
             - [Práce s datovými sadami a filtry z aplikace ASP](videos/data-access/adonet-data-services/how-to-work-with-datasets-and-filters-from-an-asp-application.md)
         - [Jak na to s LINQ](videos/data-access/how-do-i-with-linq/index.md)
 
-            - [Technologie LINQ to SQL: Přehled](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-overview.md)
-            - [Technologie LINQ to SQL: Datový Model](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-data-model.md)
-            - [Technologie LINQ to SQL: Dotazování na databázi](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-querying-the-database.md)
-            - [Technologie LINQ to SQL: Aktualizace databáze](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-the-database.md)
-            - [Technologie LINQ to SQL: LinqDataSource](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-linqdatasource.md)
-            - [Technologie LINQ to SQL: Custom LinqDataSource](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-custom-linqdatasource.md)
-            - [Technologie LINQ to SQL: Použití uložených procedur](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-using-stored-procedures.md)
-            - [Technologie LINQ to SQL: Aktualizace pomocí uložených procedur](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-with-stored-procedures.md)
-            - [Technologie LINQ to SQL: Spuštění libovolné SQL](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-executing-arbitrary-sql.md)
+            - [LINQ to SQL: Přehled](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-overview.md)
+            - [LINQ to SQL: Datový model](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-data-model.md)
+            - [LINQ to SQL: Dotazy do databáze](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-querying-the-database.md)
+            - [LINQ to SQL: Aktualizace databáze](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-the-database.md)
+            - [LINQ to SQL: LinqDataSource](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-linqdatasource.md)
+            - [LINQ to SQL: Vlastní zdroj LinqDataSource](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-custom-linqdatasource.md)
+            - [LINQ to SQL: Použití uložených procedur](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-using-stored-procedures.md)
+            - [LINQ to SQL: Aktualizace uloženými procedurami](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-with-stored-procedures.md)
+            - [LINQ to SQL: Provedení libovolného příkazu SQL](videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-executing-arbitrary-sql.md)
         - [Videa o jazyce LINQ od týmu VB](videos/data-access/linq-videos-from-the-vb-team/index.md)
 
             - [Začínáme s jazykem LINQ](videos/data-access/linq-videos-from-the-vb-team/how-do-i-get-started-with-linq.md)

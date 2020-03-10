@@ -10,15 +10,15 @@ ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity
 msc.type: authoredcontent
 ms.openlocfilehash: 21baedf6285b411f89627df9ca25d47a2a42e387
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519099"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78584411"
 ---
 # <a name="overview-of-custom-storage-providers-for-aspnet-identity"></a>Přehled poskytovatelů vlastního úložiště pro ASP.NET Identity
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
 > ASP.NET Identity je rozšiřitelný systém, který umožňuje vytvořit vlastního poskytovatele úložiště a připojit ho k aplikaci bez nutnosti opětovného zpracování aplikace. Toto téma popisuje, jak vytvořit přizpůsobeného poskytovatele úložiště pro ASP.NET Identity. Popisuje důležité koncepty pro vytvoření vlastního poskytovatele úložiště, ale nejedná se o podrobný návod k implementaci vlastního poskytovatele úložiště.
 > 
@@ -68,7 +68,7 @@ Nemusíte přizpůsobovat třídy manažera, protože při vytváření nové in
 
 Chcete-li implementovat vlastního poskytovatele úložiště, je třeba pochopit typy dat používaných v ASP.NET Identity a rozhodnout, jaké funkce jsou relevantní pro vaši aplikaci.
 
-| Datové | Popis |
+| Data | Popis |
 | --- | --- |
 | Uživatelé | Registrovaní uživatelé vašeho webu. Zahrnuje ID uživatele a uživatelské jméno. Může zahrnovat heslo s algoritmem hash, pokud se uživatelé přihlašují pomocí přihlašovacích údajů, které jsou specifické pro vaši lokalitu (místo použití přihlašovacích údajů z externího webu, jako je Facebook), a bezpečnostní razítko, které určuje, jestli se v přihlašovacích údajích uživatele změnila. Může obsahovat taky e-mailovou adresu, telefonní číslo, to, jestli je povolené dvojúrovňové ověřování, aktuální počet neúspěšných přihlášení a údaj o tom, jestli je účet zamčený. |
 | Deklarace identity uživatelů | Sada příkazů (nebo deklarací identity) o uživateli, který představuje identitu uživatele. Může povolit větší výraz identity uživatele, než je možné dosáhnout prostřednictvím rolí. |
@@ -89,8 +89,8 @@ Ve vrstvě přístupu k datům poskytnete logiku pro uložení dat z ASP.NET Ide
 | Třída | Popis | Příklad |
 | --- | --- | --- |
 | Kontext | Zapouzdřuje informace pro připojení k vašemu mechanismu trvalosti a provádění dotazů. Tato třída je střední až do vaší vrstvy přístupu k datům. Ostatní třídy dat budou vyžadovat, aby instance této třídy prováděla své operace. Vaše třídy úložiště se inicializují také instancí této třídy. | [MySQLDatabase](https://github.com/aspnet/samples/blob/master/samples/aspnet/Identity/AspNet.Identity.MySQL/MySQLDatabase.cs) |
-| Uživatelské úložiště | Ukládá a načítá informace o uživateli (například uživatelské jméno a hodnota hash hesla). | [UserTable (MySQL)](https://github.com/aspnet/samples/blob/master/samples/aspnet/Identity/AspNet.Identity.MySQL/UserTable.cs) |
-| Úložiště rolí | Ukládá a načítá informace o rolích (například název role). | [RoleTable (MySQL)](https://github.com/aspnet/samples/blob/master/samples/aspnet/Identity/AspNet.Identity.MySQL/RoleTable.cs) |
+| Uživatelské úložiště | Ukládá a načítá informace o uživateli (například uživatelské jméno a hodnota hash hesla). | [Uživatel (MySQL)](https://github.com/aspnet/samples/blob/master/samples/aspnet/Identity/AspNet.Identity.MySQL/UserTable.cs) |
+| Úložiště rolí | Ukládá a načítá informace o rolích (například název role). | [Role (MySQL)](https://github.com/aspnet/samples/blob/master/samples/aspnet/Identity/AspNet.Identity.MySQL/RoleTable.cs) |
 | Úložiště UserClaims | Ukládá a načítá informace o deklaraci identity uživatele (například typ a hodnotu deklarace identity). | [UserClaimsTable (MySQL)](https://github.com/aspnet/samples/blob/master/samples/aspnet/Identity/AspNet.Identity.MySQL/UserClaimsTable.cs) |
 | Úložiště UserLogins | Ukládá a načítá přihlašovací informace uživatele (například externího poskytovatele ověřování). | [UserLoginsTable (MySQL)](https://github.com/aspnet/samples/blob/master/samples/aspnet/Identity/AspNet.Identity.MySQL/UserLoginsTable.cs) |
 | Úložiště položky UserRole | Ukládá a načítá, ke kterým rolím je uživatel přiřazen. | [UserRoleTable (MySQL)](https://github.com/aspnet/samples/blob/master/samples/aspnet/Identity/AspNet.Identity.MySQL/UserRoleTable.cs) |
@@ -248,7 +248,7 @@ Implementovali jste nového poskytovatele úložiště. Teď musíte aplikaci na
 11. V případě potřeby přidejte připojovací řetězec do souboru Web. config.
 
 <a id="other"></a>
-## <a name="other-resources"></a>Další zdroje
+## <a name="other-resources"></a>Další prostředky
 
 - Blog: [implementace ASP.NET identity](http://odetocode.com/blogs/scott/archive/2014/01/20/implementing-asp-net-identity.aspx)
 - Kurz a kód GIT: [Simple. Data ASP.NET identity provider](http://designcoderelease.blogspot.co.uk/2015/03/simpledata-aspnet-identity-provider.html)

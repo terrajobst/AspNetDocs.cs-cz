@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-error-handling-when-sending-email-with-aspnet
-title: '[Postup:] Implementace zpracování chyb při odesílání e-mailů s technologií ASP.NET | Dokumentace Microsoftu'
+title: '[Postupy:] Implementace zpracování chyb při odesílání e-mailů pomocí ASP.NET | Microsoft Docs'
 author: rick-anderson
-description: Pixelů na Chris ukazuje, jak implementovat zpracování chyb při odesílání e-mailu s technologií ASP.NET. Mu vytvoří webovou stránku ASP.NET k odeslání e-mailu, se dozvíte, jak nakonfigurovat & lt....
+description: Chris pixelů na ukazuje, jak implementovat zpracování chyb při odesílání e-mailů pomocí ASP.NET. Vytvoří webovou stránku ASP.NET k odeslání e-mailu, který ukazuje, jak nakonfigurovat & lt...
 ms.author: riande
 ms.date: 11/06/2008
 ms.assetid: c02ffd50-aa19-4cdc-b1bf-760989979a61
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-error-handling-when-sending-email-with-aspnet
 msc.type: video
 ms.openlocfilehash: faa0daa2ffe71e58cd18bb8bed4e476ffcb1852e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59379050"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78567744"
 ---
-# <a name="how-do-i-implement-error-handling-when-sending-email-with-aspnet"></a>[Postup:] Implementace zpracování chyb při odesílání e-mailu v ASP.NET
+# <a name="how-do-i-implement-error-handling-when-sending-email-with-aspnet"></a>[Postupy:] Implementace zpracování chyb při odesílání e-mailů pomocí ASP.NET
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-Pixelů na Chris ukazuje, jak implementovat zpracování chyb při odesílání e-mailu s technologií ASP.NET. Má vytvoří webovou stránku ASP.NET k odeslání e-mailu, ukazuje postup při konfiguraci &lt;mailSettings&gt; v souboru web.config, popisuje třídy System.Net.Mail a jak ji použít k vytvoření a odeslání e-mailové zprávy. Potom přidá System.Net.Mail třídy výjimek, které poskytují informace o chybách, které se mohou vyskytnout při odesílání e-mailu a kontroly SmtpStatusCode výčet, který obsahuje seznam možných výsledků při odesílání e-mailu s použitím zpracování chyb SmtpClient. Nakonec se mu odešle zkušební e-mail, který vyvolává výjimku a kontroluje chyby zpracování informací v ladicím programu sady Visual Studio.
+Chris pixelů na ukazuje, jak implementovat zpracování chyb při odesílání e-mailů pomocí ASP.NET. Vytvoří webovou stránku ASP.NET k odeslání e-mailu, ukazuje, jak nakonfigurovat &lt;mailSettings&gt; v souboru Web. config, popisuje třídu System .NET. mail a způsob, jakým se používá k vytváření a odesílání e-mailových zpráv. Následně přidá zpracování chyb pomocí tříd System .NET. mail Exception, které poskytují informace o chybách, které mohou nastat při posílání e-mailů, a kontroluje výčet SmtpStatusCode, který poskytuje seznam možných výsledků při odesílání e-mailů s SmtpClient. Nakonec pošle zkušební e-mail, který vyvolá výjimku, a zkontroluje informace o zpracování chyb v ladicím programu sady Visual Studio.
 
-[&#9654;Podívejte se na video (24 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-error-handling-when-sending-email-with-aspnet)
+[&#9654;Sledovat video (24 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-error-handling-when-sending-email-with-aspnet)

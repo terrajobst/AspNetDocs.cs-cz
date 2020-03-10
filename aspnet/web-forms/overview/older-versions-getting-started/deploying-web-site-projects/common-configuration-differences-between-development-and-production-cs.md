@@ -9,11 +9,11 @@ ms.assetid: 721a5c37-7e21-48e0-832e-535c6351dcae
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 60379c87a8cf58b89066a6070ac659e65930b4fa
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74620422"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78545666"
 ---
 # <a name="common-configuration-differences-between-development-and-production-c"></a>Nejčastější rozdíly mezi vývojovou a provozní konfigurací (C#)
 
@@ -107,7 +107,7 @@ Další informace o používání projektu nasazení webu najdete v [tomto člá
 > [!NOTE]
 > Projekt nasazení webu se sadou Visual Web Developer nelze použít, protože projekt nasazení webu je implementován jako doplněk sady Visual Studio a edice Visual Studio Express (včetně aplikace Visual Web Developer) nepodporují doplňky.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Externí prostředky a chování webové aplikace ve vývoji se obvykle liší od situace, kdy je stejná aplikace v produkčním prostředí. Například databázové připojovací řetězce, možnosti kompilace a chování, když dojde k neošetřené výjimce, se obvykle liší mezi prostředími. Proces nasazení musí vyhovovat těmto rozdílům. Jak je popsáno v tomto kurzu, nejjednodušší způsob je ruční zkopírování alternativního konfiguračního souboru do produkčního prostředí. Při použití doplňku projektu nasazení webu nebo s více formálními procesy sestavení nebo nasazení, které mohou přizpůsobit taková přizpůsobení, jsou k dispozici další elegantní řešení.
 

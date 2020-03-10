@@ -1,26 +1,26 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/index
-title: Starší verze – sada nástrojů Ajax Control Toolkit | Dokumentace Microsoftu
+title: Starší verze – AJAX Control Toolkit | Microsoft Docs
 author: rick-anderson
-description: Jak začít pracovat se sadou nástrojů Ajax Control Toolkit a jak používat některé z nejoblíbenějších ovládacích prvků. DevExpress udržuje, že zdarma a open source Ajax sml...
+description: Jak začít s AJAX Control Toolkit a jak používat některé z nejoblíbenějších ovládacích prvků. DevExpress udržuje bezplatný a open source technologii AJAX...
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: 76242ce9-e611-41d2-95e8-dc5f406d4bfc
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit
 msc.type: chapter
 ms.openlocfilehash: d7d0426ed427f3b8fc8c7f9c2fe1518b1887d695
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65115377"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78554143"
 ---
 # <a name="older-versions---ajax-control-toolkit"></a>Starší verze – sada nástrojů Ajax Control Toolkit
 
-> Jak začít pracovat se sadou nástrojů Ajax Control Toolkit a jak používat některé z nejoblíbenějších ovládacích prvků. DevExpress udržuje, že zdarma a open source sada nástrojů Ajax Control Toolkit.
+> Jak začít s AJAX Control Toolkit a jak používat některé z nejoblíbenějších ovládacích prvků. DevExpress udržuje bezplatnou a open source AJAX Control Toolkit.
 > 
 > 
-> ![](index/_static/image1.png) DevExpress, vývojáři ukrývá vysoce hodnocený webových formulářů ASP.NET, MVC a ovládacích prvků uživatelského rozhraní HTML5 a architekturu, údržba ASP.NET AJAX Control Toolkit převzal pamětí pro tuto knihovnu open source vysoce požadováno zpět do spolehlivé stavu. [Další informace](https://go.devexpress.com/AjaxControlToolkit_ASP_Resources_Tutorials.aspx).
+> ![](index/_static/image1.png) DevExpress, vývojářům oceněných ASP.NET WebForms, MVC a ovládacích prvků uživatelského rozhraní HTML5 a prostředí, trvalou údržbu sady ASP.NET AJAX Control Toolkit, aby bylo možné tuto vysoce potřebnou knihovnu Open Source přenést zpět do závislého stavu. [Další informace](https://go.devexpress.com/AjaxControlToolkit_ASP_Resources_Tutorials.aspx).
 
 - [Začínáme](getting-started/index.md)
 

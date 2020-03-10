@@ -1,81 +1,81 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8
-title: 'Část 8: Závěrečné stránky, zpracování výjimek a závěr | Dokumentace Microsoftu'
+title: '8\. část: finální stránky, zpracování výjimek a závěr | Microsoft Docs'
 author: JoeStagner
-description: V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace Tailspin Spyworks. Část 8 přidá stránku kontaktní informace o stránce a výjimek...
+description: V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace Tailspin Spyworks. Část 8 přidá stránku kontaktů, o stránku a výjimku...
 ms.author: riande
 ms.date: 07/21/2010
 ms.assetid: 5aeadf8f-39f3-4f07-a78f-1c310c64fb23
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8
 msc.type: authoredcontent
 ms.openlocfilehash: 707dc9d87ae324a7897c971a451e40bc54c96cb3
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130594"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78586882"
 ---
-# <a name="part-8-final-pages-exception-handling-and-conclusion"></a>Část 8: Závěrečné stránky, zpracování výjimek a závěr
+# <a name="part-8-final-pages-exception-handling-and-conclusion"></a>8\. část: Závěrečné stránky, zpracování výjimek a závěr
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-> Tailspin Spyworks ukazuje, jak mimořádně jednoduché je vytvářet výkonné a škálovatelné aplikace pro platformu .NET. Zobrazuje vypnout použití skvělých nových funkcí v technologii ASP.NET 4 k sestavení nebo online úložiště, včetně nákupu, Pokladna a správu.
+> Tailspin Spyworks ukazuje, jak neobyčejně jednoduché je vytvářet výkonné a škálovatelné aplikace pro platformu .NET. Ukazuje, jak používat Skvělé nové funkce v ASP.NET 4 k vytvoření online obchodu, včetně nákupu, rezervace a správy.
 > 
-> V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace Tailspin Spyworks. Část 8 přidá stránku kontaktní informace o stránce a zpracování výjimek. Toto je uzavření řady.
+> V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace Tailspin Spyworks. Část 8 přidá stránku kontaktů, informace o stránce a zpracování výjimek. Toto je závěr řady.
 
-## <a id="_Toc260221680"></a>  Obraťte se na stránku (odesílání e-mailu z technologie ASP.NET)
+## <a id="_Toc260221680"></a>Stránka kontaktu (posílání e-mailů z ASP.NET)
 
-Vytvoří novou stránku s názvem ContactUs.aspx
+Vytvořit novou stránku s názvem ContactUs. aspx
 
-Pomocí návrháře, vytvořte následující formulář s ohledem ToolkitScriptManager a ovládací prvek editoru z AjaxControlToolkit zvláštní poznámka. .
+Pomocí návrháře vytvořte následující formulář, který bere zvláštní poznámku, aby zahrnoval ToolkitScriptManager a ovládací prvek editoru z AjaxControlToolkit. .
 
 ![](tailspin-spyworks-part-8/_static/image1.jpg)
 
-Dvakrát klikněte na tlačítko "Odeslat" a vygenerovat obslužnou rutinu události click v souboru kódu na pozadí a implementovat metodu pro odeslání kontaktní informace jako e-mailu.
+Dvojím kliknutím na tlačítko Odeslat vygenerujete obslužnou rutinu události Click v souboru kódu na pozadí a implementujete metodu, která odešle kontaktní údaje jako e-mail.
 
 [!code-csharp[Main](tailspin-spyworks-part-8/samples/sample1.cs)]
 
-Tento kód vyžaduje, že soubor web.config obsahovat záznam v konfiguračním oddílu, který určuje název serveru SMTP pro odeslání e-mailu.
+Tento kód vyžaduje, aby soubor Web. config obsahoval položku v konfiguračním oddílu, která určuje server SMTP, který má být použit pro odesílání e-mailů.
 
 [!code-xml[Main](tailspin-spyworks-part-8/samples/sample2.xml)]
 
-## <a id="_Toc260221681"></a>  O stránku
+## <a id="_Toc260221681"></a>O stránce
 
-Vytvoření stránky s názvem AboutUs.aspx a přidejte libovolný obsah, který vám vyhovuje.
+Vytvořte stránku s názvem AboutUs. aspx a přidejte libovolný obsah, který chcete.
 
-## <a id="_Toc260221682"></a>  Globální obslužné rutiny výjimek
+## <a id="_Toc260221682"></a>Globální obslužná rutina výjimky
 
-Nakonec v celé aplikaci budeme mít vyvolané výjimky a existují nepředvídatelnými to studenou také příčina neošetřené výjimky v naší webové aplikaci.
+Nakonec v rámci aplikace jsme vyvolali výjimky a existují nepředvídatelné okolnosti, které studené i neošetřené výjimky způsobují v naší webové aplikaci.
 
-Chceme, aby nikdy nezpracovanou výjimku, který se má zobrazit na webu návštěvníka.
+Nikdy nechcete, aby se Neošetřená výjimka zobrazovala návštěvníkovi webu.
 
 ![](tailspin-spyworks-part-8/_static/image2.jpg)
 
-Kromě ještěrů uživatelské prostředí se neošetřené výjimky lze také potíže se zabezpečením.
+Kromě toho, že se neošetřené výjimky ještěrů uživateli může také jednat o problém se zabezpečením.
 
-Pro vyřešení tohoto problému jsme implementuje globální obslužné rutiny výjimek.
+Chcete-li tento problém vyřešit, implementujeme globální obslužnou rutinu výjimky.
 
-Chcete-li to provést, otevřete soubor Global.asax a mějte na paměti následující obslužnou rutinu události předběžně vygenerované.
+Provedete to tak, že otevřete soubor Global. asax a poznamenejte si následující předem generovanou obslužnou rutinu události.
 
 [!code-csharp[Main](tailspin-spyworks-part-8/samples/sample3.cs)]
 
-Přidejte kód k implementaci aplikace\_obslužná rutina chyb následujícím způsobem.
+Přidejte kód pro implementaci\_obslužná rutina chyby aplikace následujícím způsobem.
 
 [!code-csharp[Main](tailspin-spyworks-part-8/samples/sample4.cs)]
 
-Pak přidejte stránku s názvem Error.aspx k řešení a přidejte tento fragment kódu.
+Pak přidejte do řešení stránku s názvem Error. aspx a přidejte tento fragment kódu.
 
 [!code-aspx[Main](tailspin-spyworks-part-8/samples/sample5.aspx)]
 
-Teď na stránce\_načíst extrakce obslužné rutiny události chybové zprávy z objektu žádosti.
+Nyní na stránce obslužná rutina události\_načtení extrahuje chybové zprávy z objektu Request.
 
 [!code-csharp[Main](tailspin-spyworks-part-8/samples/sample6.cs)]
 
-## <a id="_Toc260221683"></a>  Uzavření
+## <a id="_Toc260221683"></a>Závěr
 
-Viděli jsme, že využitím součástí ASP.NET WebForms lze snadno vytvořit sofistikované web se přístup k databázi, členství, AJAX, atd. poměrně rychle.
+Zjistili jsme, že ASP.NET WebForms usnadňuje vytváření sofistikovaných webů s přístupem k databázi, členstvím, AJAX atd. poměrně rychle.
 
-Snad v tomto kurzu, má udělené vám nástroje, které potřebujete, abyste mohli začít vytvářet své vlastní webových formulářů ASP.NET aplikace!
+Snad v tomto kurzu jste získali nástroje, které potřebujete k zahájení vytváření vlastních aplikací ASP.NET WebForms.
 
 > [!div class="step-by-step"]
 > [Předchozí](tailspin-spyworks-part-7.md)

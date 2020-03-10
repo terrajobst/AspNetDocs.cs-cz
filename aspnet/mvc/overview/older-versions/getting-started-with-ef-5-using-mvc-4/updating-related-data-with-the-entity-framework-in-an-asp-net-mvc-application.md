@@ -9,11 +9,11 @@ ms.assetid: 7871dc05-2750-470f-8b4c-3a52511949bc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
 ms.openlocfilehash: d29cb172d642b67947b461d1a7e55d01872bb8c2
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74592444"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78579819"
 ---
 # <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-6-of-10"></a>Aktualizace souvisejících dat s Entity Framework v aplikaci ASP.NET MVC (6 z 10)
 
@@ -71,7 +71,7 @@ Spusťte stránku **vytvořit** (Zobrazit index kurzu, klikněte na **vytvořit 
 
 ![Course_create_page](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
 
-Klikněte na **vytvořit**. Na stránce index kurzu se zobrazí nový kurz přidaný do seznamu. Název oddělení v seznamu stránek indexu pochází z navigační vlastnosti, která ukazuje, že relace byla správně vytvořena.
+Klikněte na možnost **Vytvořit**. Na stránce index kurzu se zobrazí nový kurz přidaný do seznamu. Název oddělení v seznamu stránek indexu pochází z navigační vlastnosti, která ukazuje, že relace byla správně vytvořena.
 
 ![Course_Index_page_showing_new_course](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
 
@@ -136,7 +136,7 @@ Chcete-li poskytnout data do zobrazení pro seznam zaškrtávacích políček, p
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample13.cs)]
 
-V *InstructorController.cs*nahraďte metodu `HttpGet` `Edit` následujícím kódem. Změny jsou zvýrazněny.
+V *InstructorController.cs*nahraďte metodu `HttpGet` `Edit` následujícím kódem. Změny jsou zvýrazněné.
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample14.cs?highlight=5,8,12-27)]
 
@@ -144,7 +144,7 @@ Kód přidá načtení Eager pro vlastnost navigace `Courses` a zavolá novou me
 
 Kód v metodě `PopulateAssignedCourseData` čte všechny `Course` entit, aby bylo možné načíst seznam kurzů pomocí třídy zobrazení modelu. Pro každý kurz kód kontroluje, zda se v `Courses` navigační vlastnost instruktory vyskytuje kurz. K vytvoření efektivního vyhledávání při kontrole, jestli je kurz přiřazen instruktorovi, jsou kurzy přiřazené k instruktorovi vloženy do kolekce [HashSet –](https://msdn.microsoft.com/library/bb359438.aspx) . Vlastnost `Assigned` je nastavena na `true` pro kurzy, ke kterým je instruktor přiřazen. Zobrazení použije tuto vlastnost k určení, která zaškrtávací políčka se musí zobrazit jako vybraná. Nakonec se seznam předává do zobrazení ve vlastnosti `ViewBag`.
 
-Dále přidejte kód, který se spustí, když uživatel klikne na **Uložit**. Nahraďte metodu `HttpPost` `Edit` následujícím kódem, který volá novou metodu, která aktualizuje `Courses` navigační vlastnost entity `Instructor`. Změny jsou zvýrazněny.
+Dále přidejte kód, který se spustí, když uživatel klikne na **Uložit**. Nahraďte metodu `HttpPost` `Edit` následujícím kódem, který volá novou metodu, která aktualizuje `Courses` navigační vlastnost entity `Instructor`. Změny jsou zvýrazněné.
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample15.cs?highlight=3,7,20,33,37-65)]
 
@@ -202,7 +202,7 @@ Změňte kód v metodě HttpPost Delete tak, aby se při odstranění instruktor
 
 Pokud se pokusíte odstranit instruktora, který je přiřazený oddělení jako správce, zobrazí se chyba referenční integrity. Viz [aktuální verze tohoto kurzu](../../getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) pro další kód, který automaticky odebere instruktora z libovolného oddělení, kde je instruktor přiřazen jako správce.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Právě jste dokončili tento Úvod k práci se souvisejícími daty. Zatím v těchto kurzech jste provedli celou škálu operací CRUD, ale zatím jste se nezabýváte problémy s souběžnosti. V dalším kurzu budeme zavádět téma souběžnosti, vysvětlit možnosti pro jeho zpracování a přidat zpracování souběžnosti do kódu CRUD, který jste už napsali pro jeden typ entity.
 

@@ -9,11 +9,11 @@ ms.assetid: 298789b4-2964-49f5-a0a8-d4dbeb9ff2c2
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-vb
 msc.type: authoredcontent
 ms.openlocfilehash: aa9779c65fb587193dbabde55cc6900283ce239d
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74599369"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78535845"
 ---
 # <a name="collapsing-and-expanding-a-panel-from-javascript-vb"></a>Sbalení a rozbalení panelu JavaScriptem (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek CollapsiblePanel v ASP.NET AJAX Control Toolkit rozšiřuje panel a poskytuje mu schopnost sbalit svůj obsah a znovu ho rozbalit. Tyto dvě akce lze také aktivovat z vlastního kódu JavaScriptu.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejprve vytvořte novou stránku ASP.NET a zahrňte `ScriptManager` do jednoho `<form>` elementu. Načte knihovnu ASP.NET AJAX, která je požadována pro sadu nástrojů Control Toolkit:
 

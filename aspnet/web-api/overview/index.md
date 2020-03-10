@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/index
-title: Webové rozhraní API – pokyny k ASP.NET 4.x
+title: Doprovodné materiály k webovému rozhraní API – ASP.NET 4. x
 author: rick-anderson
-description: Seznam pokyny k rozhraní ASP.NET Web API pro ASP.NET 4.x
+description: Seznam pokynů webového rozhraní API pro ASP.NET pro ASP.NET 4. x
 ms.author: riande
 ms.date: 01/17/2012
 ms.custom: seoapril2019
@@ -10,13 +10,13 @@ ms.assetid: daca6735-b5d3-4ef5-af33-ee682926238b
 msc.legacyurl: /web-api/overview
 msc.type: book
 ms.openlocfilehash: 304c0d71e5e18f9d3f0768464fe39d6e6946600d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59422899"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78556502"
 ---
-# <a name="web-api-guidance"></a>Pokyny k webovému rozhraní API
+# <a name="web-api-guidance"></a>Doprovodné materiály k webovému rozhraní API
 
 - [Začínáme](getting-started-with-aspnet-web-api/index.md)
 
@@ -24,7 +24,7 @@ ms.locfileid: "59422899"
     - [Výsledky akcí ve webovém rozhraní API 2](getting-started-with-aspnet-web-api/action-results.md)
     - [Použití webového rozhraní API s webovými formuláři ASP.NET](getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms.md)
     - [Vytvoření stránek nápovědy k webovému rozhraní API](getting-started-with-aspnet-web-api/creating-api-help-pages.md)
-    - [Praktické cvičení: Sestavení jednostránkové aplikaci (SPA) pomocí webového rozhraní API ASP.NET a Angular.js](getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md)
+    - [Praktické cvičení: Sestavení jednostránkové aplikace (SPA) pomocí webového rozhraní API ASP.NET a Angular.js](getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md)
 - [Směrování](web-api-routing-and-actions/index.md)
 
     - [Směrování ve webovém rozhraní API](web-api-routing-and-actions/routing-in-aspnet-web-api.md)
@@ -112,10 +112,10 @@ ms.locfileid: "59422899"
     - [Volání webového rozhraní API z klienta .NET (C#)](advanced/calling-a-web-api-from-a-net-client.md)
     - [Obslužné rutiny zpráv HTTP ve webovém rozhraní API](advanced/http-message-handlers.md)
     - [Obslužné rutiny zpráv HttpClient ve webovém rozhraní API](advanced/httpclient-message-handlers.md)
-    - [Posílání dat formulářů HTML ve webovém rozhraní API: Data formuláře kódovaná](advanced/sending-html-form-data-part-1.md)
-    - [Posílání dat formulářů HTML ve webovém rozhraní API: Nahrání souboru a vícedílné zprávy standardu MIME](advanced/sending-html-form-data-part-2.md)
+    - [Posílání dat formulářů HTML ve webovém rozhraní API: Data formuláře kódovaná pomocí adresy URL](advanced/sending-html-form-data-part-1.md)
+    - [Posílání dat formulářů HTML ve webovém rozhraní API: Nahrání souboru a vícedílné zprávy MIME](advanced/sending-html-form-data-part-2.md)
     - [Soubory cookie HTTP ve webovém rozhraní API technologie ASP.NET](advanced/http-cookies.md)
-- [Verze](releases/index.md)
+- [Vydané verze](releases/index.md)
 
     - [Novinky webového rozhraní API OData 5.3](releases/whats-new-in-aspnet-web-api-odata-53.md)
     - [Novinky webového rozhraní API 2.2 technologie ASP.NET](releases/whats-new-in-aspnet-web-api-22.md)

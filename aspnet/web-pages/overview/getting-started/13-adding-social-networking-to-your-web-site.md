@@ -1,109 +1,109 @@
 ---
 uid: web-pages/overview/getting-started/13-adding-social-networking-to-your-web-site
-title: Přidání sociálních sítí na rozhraní ASP.NET Web Pages servery (Razor) | Dokumentace Microsoftu
+title: Přidávání sociálních sítí do webů ASP.NET Web Pages (Razor) | Microsoft Docs
 author: Rick-Anderson
-description: Tato kapitola vysvětluje, jak integrovat svůj web pomocí služby pro sociální sítě. V této kapitole se dozvíte, jak umožnit lidem/odkazu na záložku webu...
+description: Tato kapitola vysvětluje, jak integrovat svůj web se službami sociální sítě. V této kapitole se dozvíte, jak uživatelům umožnit záložku nebo propojit váš web...
 ms.author: riande
 ms.date: 02/21/2014
 ms.assetid: 03c342f9-b35c-4d7c-b9ed-cd9aaaffedb6
 msc.legacyurl: /web-pages/overview/getting-started/13-adding-social-networking-to-your-web-site
 msc.type: authoredcontent
 ms.openlocfilehash: 1637464b0473bba8133acbbf8918d92b4f552701
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65114476"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78526934"
 ---
-# <a name="adding-social-networking-to-aspnet-web-pages-razor-sites"></a>Přidání sociálních sítí pro ASP.NET Web Pages servery (Razor)
+# <a name="adding-social-networking-to-aspnet-web-pages-razor-sites"></a>Přidávání sociálních sítí do webů ASP.NET Web Pages (Razor)
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> Tento článek vysvětluje postup přidání sociálních sítí odkazy pro Facebook, Twitter, Reddit a Digg na stránky na webu rozhraní ASP.NET Web Pages (Razor) a jak zahrnout Twitterové kanály, karty hráče Xbox a Gravatar obrázků.
+> Tento článek vysvětluje, jak přidat odkazy na sociální sítě pro Facebook, Twitter, Reddit a Digg na stránky na webu ASP.NET Web Pages (Razor) a jak zahrnout kanály Twitteru, karty Xbox hráčských a image Gravatar.
 > 
-> Co se dozvíte:
+> Naučíte se:
 > 
-> - Jak umožnit lidem záložku nebo propojení vaší lokality.
-> - Jak přidat informační kanál sítě Twitter.
-> - Postup přidání Facebook **jako** tlačítko na stránky.
-> - Jak lze vykreslit Gravatar.com imagí.
-> - Jak zobrazit pomocí karty hráče Xbox ve vaší lokalitě.
+> - Jak umožnit lidem záložku/propojit Web
+> - Postup přidání kanálu Twitteru
+> - Postup přidání tlačítka Facebooku **jako** na stránky
+> - Postup vykreslování imagí Gravatar.com
+> - Jak na webu zobrazit kartu Xbox hráčských
 >   
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 > 
 > 
-> - Rozhraní ASP.NET Web Pages (Razor) 2
-> - Technologie ASP.NET webové pomocné knihovny (balíček NuGet)
+> - Webové stránky ASP.NET (Razor) 2
+> - ASP.NET webová pomocná knihovna (balíček NuGet)
 >   
 > 
-> V tomto kurzu funguje taky s 3 webových stránek ASP.NET, s výjimkou částí, které používají knihovnu ASP.NET Web pomocné rutiny.
+> Tento kurz funguje také s ASP.NET webovými stránkami 3, s výjimkou částí, které používají knihovnu webu ASP.NET Web Helper.
 
 <a id="Linking_Your_Website"></a>
-## <a name="linking-your-website-on-social-networking-sites"></a>Propojení svůj web na weby sociálních sítí
+## <a name="linking-your-website-on-social-networking-sites"></a>Propojení webu na sítích sociální sítě
 
-Pokud se lidé, jako je něco na webu, často chtějí sdílet s přáteli. Můžete provést to snadno zobrazením piktogramů (ikon), které lze kliknout na sdílet stránku na Digg, Reddit, Facebook, Twitter nebo podobné servery.
+Pokud lidé jako na webu něco potřebují, často chtějí ho sdílet s přáteli. Díky tomu můžete snadno zobrazit glyfy (ikony), na které můžou lidé kliknout a sdílet stránku na Digg, Reddit, Facebooku, Twitteru nebo podobných lokalitách.
 
-Chcete-li zobrazit tyto piktogramy, přidejte `LinkSharecode` pomocné rutiny na stránku. Uživatelé, kteří navštíví stránku můžete kliknout na jednotlivé glyfů. Pokud mají účet s sociální síťové lokality, se pak odeslat odkaz na stránku dané lokality.
+Chcete-li zobrazit tyto glyfy, přidejte na stránku pomocníka `LinkSharecode`. Lidé, kteří navštíví vaši stránku, můžou kliknout na jednotlivé glyfy. Pokud mají účet s tímto webem sociální sítě, může potom na tomto webu zveřejnit odkaz na vaši stránku.
 
 ![Obrázek 1](13-adding-social-networking-to-your-web-site/_static/image1.jpg)
 
-1. Přidejte knihovnu ASP.NET Web Helpers na váš web, jak je popsáno v [instalace pomocné rutiny na webu technologie ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=252372), pokud už jste nepřidali ní – vytvoření stránky s názvem *ListLinkShare.cshtml* a přidat Následující kód:
+1. Přidejte do webu knihovnu webových pomocníků ASP.NET, jak je popsáno v [tématu Instalace pomocníků na webu webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=252372), pokud jste ho ještě nepřidali.-Vytvořte stránku s názvem *ListLinkShare. cshtml* a přidejte následující kód:
 
     [!code-cshtml[Main](13-adding-social-networking-to-your-web-site/samples/sample1.cshtml)]
 
-    V tomto příkladu když `LinkShare` spuštění pomocné rutiny, název stránky je předán jako parametr, který pak předá název stránky na sociálních sítí Web. Ale mohli předat v libovolný řetězec, který chcete. Tento příklad také určuje, jaké weby sociálních sítí mají být zahrnuty do seznamu. Můžete zadat sociálních sítí, které se vztahují na váš web.
-2. Spustit *ListLinkShare.cshtml* stránku v prohlížeči. (Ujistěte se, že je vybrána na stránce v **soubory** pracovního prostoru před jeho spuštěním.)
-3. Klikněte na tlačítko glyfů pro jednu z nich, které jste zaregistrovaní na. Odkaz přejdete na stránku na webu vybrané sociálních sítí, kde můžete sdílet odkaz. Například pokud kliknete na odkaz Reddit, potom se přesunete na `submit to reddit` stránky na webu Reddit.
+    Pokud se v tomto příkladu spustí pomoc `LinkShare`, název stránky se předává jako parametr, který zase předává nadpis stránky sociální síti. Můžete však předat libovolný řetězec, který chcete. Tento příklad také určuje, které lokality sociálních sítí se mají zahrnout do seznamu. Můžete určit lokality sociální sítě, které jsou relevantní pro vaši lokalitu.
+2. Spusťte stránku *ListLinkShare. cshtml* v prohlížeči. (Před spuštěním se ujistěte, že je stránka vybraná v pracovním prostoru **soubory** .)
+3. Klikněte na glyf pro jeden z webů, ke kterým jste se zaregistrovali. Odkaz vás přesměruje na stránku na vybrané sociální síti, kde můžete sdílet odkaz. Pokud například kliknete na odkaz Reddit, přejdete na stránku `submit to reddit` na webu Reddit.
 
      ![Obrázek 2](13-adding-social-networking-to-your-web-site/_static/image2.jpg)
 
 <a id="Adding_a_Twitter_Feed"></a>
-## <a name="adding-a-twitter-feed"></a>Přidání na twitteru přes kanál
+## <a name="adding-a-twitter-feed"></a>Přidání kanálu Twitteru
 
-Informace o použití pomocné rutiny na Twitteru, který je kompatibilní s aktuální verzí rozhraní Twitter API najdete v tématu [Pomocník Twitter](../ui-layouts-and-themes/twitter-helper.md). Tento příklad ukazuje, jak psát vlastní pomocné rutiny, můžete snadno opakovaně použít kód z mnoho stránek.
+Informace o použití Pomocníka pro Twitter, který je kompatibilní s aktuální verzí rozhraní Twitter API, najdete v tématu [Pomocník pro Twitter](../ui-layouts-and-themes/twitter-helper.md). Tento příklad ukazuje, jak napsat vlastní pomocný objekt, abyste mohli snadno znovu použít kód z mnoha stránek.
 
 <a id="Displaying_a_Facebook_Button"></a>
-## <a name="displaying-a-facebook-quotlikequot-button"></a>Zobrazení Facebook &quot;jako&quot; tlačítko
+## <a name="displaying-a-facebook-quotlikequot-button"></a>Zobrazení &quot;na Facebooku, jako je&quot; tlačítko
 
-V některých případech je nejlepší možnost získat kód přímo ze sociálních sítí poskytovatele spíše než spoléhání se na pomocné rutiny. To platí zejména pokud poskytovateli sociální sítě aktualizuje jeho možnosti rychleji, než se aktualizuje pomocné rutiny.
+V některých případech je nejlepší možností získat kód přímo od poskytovatele sociálních sítí, ale nespoléhat se na pomocnou pomoc. To platí hlavně v případě, že poskytovatel sociálních sítí aktualizuje své možnosti rychleji, než je pomocná pomocná rutina.
 
-Přidávání funkcí Facebooku (jako je tlačítko) do vaší lokality, můžete načíst fragmentů kódu z [developers.facebook.com](https://developers.facebook.com/) lokality. Na stránce Facebooku pomocí svých nástrojů se ke generování fragmentu kódu, které se týkají vašeho webu.
+Chcete-li přidat funkce Facebooku (například tlačítko jako) do webu, můžete načíst fragmenty kódu z webu [Developers.Facebook.com](https://developers.facebook.com/) . Na webu Facebook můžete použít jejich nástroje k vygenerování fragmentu kódu, který je relevantní pro vaši lokalitu.
 
-Následující zvýrazněný kód je kód, který byl načten z nástroje jako tlačítko na webu developers.facebook.com. Je nutné zadat vlastní ID aplikace.
+Následující zvýrazněný kód je kód, který byl načten z nástroje tlačítko like na webu developers.facebook.com. Musíte zadat vlastní ID aplikace.
 
 [!code-html[Main](13-adding-social-networking-to-your-web-site/samples/sample2.html?highlight=7-14,16-17)]
 
 <a id="Rendering_a_Gravatar_Image"></a>
-## <a name="rendering-a-gravatar-image"></a>Vykreslování obrázků Gravatar
+## <a name="rendering-a-gravatar-image"></a>Vykreslování obrázku Gravatar
 
-A *Gravatar* ( &quot;globálně uznávané avatar&quot;) je obrázek, který může sloužit jako svou miniaturu na více webech &#8212; tedy image, která představuje vám. Například můžete Gravatar identifikaci osoby v příspěvku fóra, do komentáře na blogu a tak dále. (Můžete zaregistrovat na webu Gravatar na vlastní Gravatar [ http://www.gravatar.com/ ](http://www.gravatar.com/).) Pokud chcete zobrazit obrázky vedle jména nebo e-mailové adresy lidí na vašem webu, můžete použít Gravatar pomocné rutiny.
+*Gravatar* (&quot;globálně rozpoznaný avatar&quot;) je obrázek, který se dá použít na více webech jako miniatura &#8212; , což je obrázek, který představuje. Gravatar může například identifikovat osobu v příspěvku fóra, v komentáři blogu atd. (Vlastní Gravatar můžete zaregistrovat na webu Gravatar na adrese [http://www.gravatar.com/](http://www.gravatar.com/).) Pokud chcete zobrazit obrázky vedle jména nebo e-mailových adres uživatelů na vašem webu, můžete použít pomocníka Gravatar.
 
-V tomto příkladu používáte jeden Gravatar, který představuje sami. Dalším způsobem, jak používat Gravatar je umožnit lidem, zadejte jeho adresu Gravatar po jejich registraci ve vaší lokalitě. (Můžete zjistěte, jak umožnit lidem zaregistrovat v [přidání zabezpečení a s členstvím na server webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202904).) Pokaždé, když zobrazíte informace pro tohoto uživatele, můžete přidat jenom Gravatar kde zobrazit uživatelské jméno.
+V tomto příkladu používáte jeden Gravatar, který představuje sebe sama. Jiným způsobem, jak Gravatar použít, je umožnit lidem určit svou Gravatar adresu při registraci na vašem webu. (Můžete se dozvědět, jak umožnit lidem registraci v [přidávání zabezpečení a členství na web webových stránek ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202904).) Až se pak zobrazí informace pro daného uživatele, stačí přidat Gravatar do místa, kde se zobrazí jméno uživatele.
 
-1. Přidejte knihovnu ASP.NET Web Helpers na váš web, jak je popsáno v [instalace pomocné rutiny na webu technologie ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=252372), pokud jste tak již neučinili.
-2. Vytvoření nové webové stránky s názvem *Gravatar.cshtml*.
-3. Přidejte následující kód do souboru: 
+1. Přidejte knihovnu webových pomocníků ASP.NET na web, jak je popsáno v [tématu Instalace pomocníků na webu ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=252372), pokud jste to ještě neudělali.
+2. Vytvořte novou webovou stránku s názvem *Gravatar. cshtml*.
+3. Do souboru přidejte následující kód: 
 
     [!code-cshtml[Main](13-adding-social-networking-to-your-web-site/samples/sample3.cshtml)]
 
-    `Gravatar.GetHtml` Metoda zobrazí obrázek Gravatar na stránce. Chcete-li změnit velikost bitové kopie, může obsahovat číslo jako druhý parametr. Výchozí velikost je 80. Čísla menší než 80 vytvořit bitovou kopii menší. Čísla větší než 80 zvětšit na obrázku.
-4. V `Gravatar.GetHtml` metody, nahradí `<Your Gravatar account here>` e-mailovou adresou, který používáte pro svůj účet Gravatar. (Pokud nemáte účet Gravatar, můžete použít e-mailovou adresu osoby, která nepodporuje.)
-5. Na stránce spusťte v prohlížeči. Na stránce se zobrazí dvě bitové kopie Gravatar e-mailových adres, který jste zadali. Druhý obrázek je menší než první. 
+    Metoda `Gravatar.GetHtml` zobrazí na stránce obrázek Gravatar. Chcete-li změnit velikost obrázku, můžete zahrnout číslo jako druhý parametr. Výchozí velikost je 80. Čísla menší než 80 zmenší obrázek. Čísla větší než 80 nastaví obrázek větší.
+4. V metodách `Gravatar.GetHtml` nahraďte `<Your Gravatar account here>` e-mailovou adresou, kterou používáte pro svůj účet Gravatar. (Pokud nemáte účet Gravatar, můžete použít e-mailovou adresu osoby, která má.)
+5. Spusťte stránku v prohlížeči. Na stránce se zobrazí dvě Gravatar image pro zadanou e-mailovou adresu. Druhý obrázek je menší než první. 
 
     ![Obrázek 4](13-adding-social-networking-to-your-web-site/_static/image3.jpg)
 
 <a id="Displaying_an_Xbox_Gamer_Card"></a>
-## <a name="displaying-an-xbox-gamer-card"></a>Zobrazení karty, která hráče Xbox
+## <a name="displaying-an-xbox-gamer-card"></a>Zobrazení karty Xbox hráčských
 
-Když uživatelé hry pro Microsoft Xbox online, každý uživatel má jedinečné ID. Statistiky jsou udržovány pro oba hráči v podobě hráče karty, která zobrazuje jejich reputace, skóre hráče a nedávno hrají hry. Pokud jste hráče Xbox, můžete zobrazit hráče karty na stránkách na webu pomocí `GamerCard` pomocné rutiny.
+Když lidé hrají online hry Microsoft Xbox, má každý uživatel jedinečné ID. Statistiky se uchovávají pro každý přehrávač ve formě karty hráčských, která zobrazuje jejich reputaci, skóre hráčských a nedávno přehrávané hry. Pokud jste hráčských Xbox, můžete na stránkách na webu zobrazit kartu hráčských pomocí pomocné rutiny `GamerCard`.
 
-1. Přidejte knihovnu ASP.NET Web Helpers na váš web, jak je popsáno v [instalace pomocné rutiny na webu technologie ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=252372), pokud jste tak již neučinili.
-2. Vytvoří novou stránku s názvem *XboxGamer.cshtml* a přidejte následující kód.
+1. Přidejte knihovnu webových pomocníků ASP.NET na web, jak je popsáno v [tématu Instalace pomocníků na webu ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=252372), pokud jste to ještě neudělali.
+2. Vytvořte novou stránku s názvem *XboxGamer. cshtml* a přidejte následující kód.
 
     [!code-cshtml[Main](13-adding-social-networking-to-your-web-site/samples/sample4.cshtml)]
 
-    Můžete použít `GamerCard.GetHtml` vlastnosti a určit tak alias pro hráče karty, který se má zobrazit.
-3. Na stránce spusťte v prohlížeči. Na stránce se zobrazí karta hráče Xbox, který jste zadali.
+    Vlastnost `GamerCard.GetHtml` slouží k určení aliasu pro zobrazení karty hráčských.
+3. Spusťte stránku v prohlížeči. Stránka zobrazuje kartu Xbox hráčských, kterou jste zadali.
 
     ![Obrázek 5](13-adding-social-networking-to-your-web-site/_static/image4.jpg)

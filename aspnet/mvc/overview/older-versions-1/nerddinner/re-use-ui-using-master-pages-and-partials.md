@@ -1,73 +1,73 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/re-use-ui-using-master-pages-and-partials
-title: Opakované použití uživatelského rozhraní pomocí stránek předloh a částečných zobrazení | Dokumentace Microsoftu
+title: Opětovné použití uživatelského rozhraní pomocí stránek předlohy a částečně | Microsoft Docs
 author: microsoft
-description: Krok 7 zjistí způsoby, jak můžete použít suchého zásady v rámci naší zobrazení šablon pro odstranění duplicit kódu, pomocí šablony částečné zobrazení a stránky předlohy.
+description: 'Krok 7: Prohlédněte si způsoby, jak můžeme použít "suchý princip" v našich šablonách zobrazení, aby se odstranila duplicita kódu, a to pomocí šablon částečného zobrazení a stránek předlohy.'
 ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: d4243a4a-e91c-4116-9ae0-5c08e5285677
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/re-use-ui-using-master-pages-and-partials
 msc.type: authoredcontent
 ms.openlocfilehash: 0b17cb6ac14b7f187bf1f175097a37907689d46e
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65128355"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78580330"
 ---
 # <a name="re-use-ui-using-master-pages-and-partials"></a>Opakované použití uživatelského rozhraní pomocí stránek předloh a částečných zobrazení
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
-> Toto je krok 7 bezplatného [kurz vývoje aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který procházení procházení po tom, jak sestavit malý, ale bylo možné provést, webové aplikace pomocí ASP.NET MVC 1.
+> Toto je krok 7 bezplatného [kurzu aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který vás provede procesem vytvoření malé, ale dokončené webové aplikace pomocí ASP.NET MVC 1.
 > 
-> Krok 7 zjistí způsoby, jak můžete použít "Zásada SUCHÝCH" v rámci naší zobrazení šablon pro odstranění duplicit kódu, pomocí šablony částečné zobrazení a stránky předlohy.
+> Krok 7: Prohlédněte si způsoby, jak můžeme použít "suchý princip" v našich šablonách zobrazení k odstranění duplicity kódu pomocí šablon částečného zobrazení a stránek předlohy.
 > 
-> Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
+> Pokud používáte ASP.NET MVC 3, doporučujeme vám postupovat podle [Začínáme s kurzy pro](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) [hudební úložiště](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) MVC 3 nebo MVC.
 
-## <a name="nerddinner-step-7-partials-and-master-pages"></a>NerdDinner krok 7: Částečných zobrazení a stránky předlohy
+## <a name="nerddinner-step-7-partials-and-master-pages"></a>NerdDinner krok 7: částečné a hlavní stránky
 
-Jednou z filozofiemi návrh, který ASP.NET MVC poskytuje výkonný je "Proveďte není opakujte sami" principu (obvykle označuje jako "Zkušební"). Návrh suchého pomáhá eliminovat konflikty duplikace kódu a logiky, takže v konečném důsledku díky aplikací rychlejší sestavení a jednodušší správu.
+Jedna z návrhů filozofiemi ASP.NET MVC se vztahuje na princip "neopakuje se sami" (obvykle se označuje jako "SUCHá"). SUCHÝ návrh pomáhá eliminovat duplicity kódu a logiky, což výrazně usnadňuje sestavování a snazší správu aplikací.
 
-Už jsme viděli suchého zásady použitý v některé z našich NerdDinner scénářů. Několik příkladů: Naše logiku ověřování je implementován v rámci našich modelu vrstvy, který umožňuje vynucovat pro obě upravit a vytvořit scénáře v kontroleru; znovu používáme "Serveru" Zobrazit šablonu pro všechny metody akce upravit, podrobnosti a Delete; pomocí našich šablon zobrazení, které není potřeba explicitně zadat název, pokud jsme volat metodu helper View(); se používá konvence - vzoru pro pojmenovávání a My se znovu pomocí třídy DinnerFormViewModel pro obě upravit a vytvořit akce scénáře.
+V některých našich scénářích NerdDinner jsme už viděli vydaný suchý princip. Několik příkladů: naše logika ověřování je implementovaná v rámci naší modelové vrstvy, která umožňuje vyhovět v rámci scénářů úprav a vytváření v našem řadiči. znovu použijeme šablonu zobrazení "NotFound" v rámci metod Edit, Details a DELETE Action. používáme vzor pojmenovávání konvence se šablonami zobrazení, což eliminuje nutnost explicitního zadání názvu při volání pomocné metody View (); a znovu používáme třídu DinnerFormViewModel pro scénáře úprav a vytváření akcí.
 
-Nyní Podívejme se na způsoby, jak můžete použít "Zásada SUCHÝCH" v rámci naší zobrazit šablony také eliminovat dojde k duplikaci kódu existuje.
+Teď se podíváme na způsoby, jak můžeme použít "suchý princip" v našich šablonách zobrazení, aby bylo možné duplikaci kódu také eliminovat.
 
-### <a name="re-visiting-our-edit-and-create-view-templates"></a>Znovu navštívit naše upravit a vytvořit zobrazení šablony
+### <a name="re-visiting-our-edit-and-create-view-templates"></a>Opětovné návštěvy šablon zobrazení pro úpravy a vytváření
 
-Aktuálně používáme dvě šablony jiné zobrazení – "Edit.aspx" a "Create.aspx" – k zobrazení formuláře naše společnost Dinner uživatelského rozhraní. Rychlé vizuální porovnání je zvýrazní, jak podobné jsou. Níže je, jak vytvořit formulář vypadat:
+V současné době používáme dvě různé šablony zobrazení – Edit. aspx a Create. aspx – k zobrazení našeho uživatelského rozhraní formuláře večeře. Rychlé vizuální porovnání se vysvětlují, jak jsou podobné. V následujícím seznamu vypadá formulář pro vytváření vypadat takto:
 
 ![](re-use-ui-using-master-pages-and-partials/_static/image1.png)
 
-A tady je náš "Edit" formulář vypadá jako:
+A vypadá to, že náš formulář "Upravit" vypadá takto:
 
 ![](re-use-ui-using-master-pages-and-partials/_static/image2.png)
 
-Není moc rozdíl je k dispozici? Kromě textu nadpisu a záhlaví jsou stejné ovládací prvky pro vstup a rozložení formuláře.
+Nejedná se o rozdíl v tom, že existuje? Kromě textu nadpisu a záhlaví jsou ovládací prvky rozložení a vstup formuláře identické.
 
-Otevíráme "Edit.aspx" a "Create.aspx" Zobrazit šablony, na které narazíme budete, které obsahují kód identické formuláře rozložení a vstupní ovládací prvek. Tato duplikace znamená, že jsme skončit nutnosti provádět změny dvakrát kdykoli jsme zavést nebo změnit novou vlastnost Dinner – který ovšem není vhodné.
+Pokud otevřete šablony zobrazení "Edit. aspx" a "vytvořit. aspx", zjistíme, že obsahují identické rozložení formuláře a vstupní kód pro řízení vstupu. Tato duplicita znamená, že je potřeba udělat změny dvakrát, kdykoli zavedeme nebo změníte novou vlastnost večeře – což není dobré.
 
-### <a name="using-partial-view-templates"></a>Pomocí šablony částečné zobrazení
+### <a name="using-partial-view-templates"></a>Použití šablon částečného zobrazení
 
-ASP.NET MVC podporuje možnost definovat šablony "částečné zobrazení", které můžete použít k zapouzdření logiku pro vykreslení zobrazení pro dílčí části stránky. "Částečné." užitečný způsob, jak definovat logiku pro vykreslení zobrazení jednou a pak znovu použít na více místech v aplikaci.
+ASP.NET MVC podporuje možnost definovat "částečné zobrazení" šablony, které lze použít k zapouzdření logiky vykreslování zobrazení pro dílčí část stránky. "Částečné" představují užitečný způsob, jak definovat logiku vykreslování zobrazení jednou a pak ji znovu použít na více místech v rámci aplikace.
 
-Abychom "Zkušební up" náš Edit.aspx a Create.aspx zobrazení šablony duplikování, můžeme vytvořit šablonu částečné zobrazení s názvem "DinnerForm.ascx", který zapouzdřuje rozložení formuláře a vstupní prvky, které jsou společné pro. Provedeme to tak, že kliknete pravým tlačítkem na náš večeří adresář/zobrazení/a zvolíte "Add -&gt;zobrazení" příkazu nabídky:
+Abychom vám pomohli "vyschnout" náš upravit. aspx a vytvořit šablonu zobrazení. aspx, můžeme vytvořit částečnou šablonu zobrazení s názvem "DinnerForm. ascx", která zapouzdřuje rozložení formuláře a vstupní prvky společné do obou. To provedete tak, že kliknete pravým tlačítkem na náš adresář/Views/Dinners a vyberete příkaz nabídky přidat&gt;zobrazení:
 
 ![](re-use-ui-using-master-pages-and-partials/_static/image3.png)
 
-Zobrazí se dialogové okno "Přidat zobrazení". Jsme budete pojmenujte nové zobrazení jsme chcete vytvořit "DinnerForm", zaškrtněte políčko "Vytvořit částečné zobrazení" v rámci dialogového okna a označuje, že jsme se předáváme DinnerFormViewModel třídy:
+Tím se zobrazí dialogové okno Přidat zobrazení. Podíváme se na nové zobrazení, které chceme vytvořit "DinnerForm", v dialogovém okně vyberte zaškrtávací políčko vytvořit částečné zobrazení a uveďte, že mu předáte DinnerFormViewModel třídu:
 
 ![](re-use-ui-using-master-pages-and-partials/_static/image4.png)
 
-Když kliknete na tlačítko "Přidat", Visual Studio vytvořte novou šablonu zobrazení "DinnerForm.ascx" nám v adresáři "\Views\Dinners".
+Po kliknutí na tlačítko Přidat vytvoří Visual Studio novou šablonu zobrazení "DinnerForm. ascx" pro nás v adresáři "\Views\Dinners".
 
-My pak zkopírovat a Vložit rozložení formuláře duplicitní / vstup ovládacího prvku kódu z našich šablon zobrazení Edit.aspx/ Create.aspx na naše nové šablony částečné zobrazení "DinnerForm.ascx":
+Do naší nové šablony částečného zobrazení "DinnerForm. ascx" si pak můžeme zkopírovat nebo vložit duplicitní kód pro rozložení a zadání duplicitního formuláře z naší šablony zobrazení Edit. aspx/Create. aspx:
 
 [!code-aspx[Main](re-use-ui-using-master-pages-and-partials/samples/sample1.aspx)]
 
-Aktualizujeme můžete poté zobrazit šablony pro volání šablony částečné DinnerForm a vyloučení duplicity formuláře naše Edit and Create. Můžeme to udělat pomocí volání Html.RenderPartial("DinnerForm") v rámci naší zobrazit šablony:
+Pak můžeme aktualizovat šablony zobrazení pro úpravy a vytváření, aby se volala částečná šablona DinnerForm a vyloučila se duplikace formuláře. To lze provést voláním HTML. RenderPartial ("DinnerForm") v našich šablonách zobrazení:
 
 ##### <a name="createaspx"></a>Create.aspx
 
@@ -77,62 +77,62 @@ Aktualizujeme můžete poté zobrazit šablony pro volání šablony částečn�
 
 [!code-aspx[Main](re-use-ui-using-master-pages-and-partials/samples/sample3.aspx)]
 
-Můžete explicitně kvalifikovat cesta částečné šablony, které chcete, aby při volání metody Html.RenderPartial (například: ~ Views/Dinners/DinnerForm.ascx "). V našem kódu výše ale jsou výhod založené na konvenci pojmenování v rámci technologie ASP.NET MVC jsme stačí zadat "DinnerForm" jako název části pro vykreslení. Když to uděláme ASP.NET MVC bude hledat v adresáři zobrazení podle úmluvy první (DinnersController jde/zobrazení/večeří). Pokud se nenajde částečné šablony existuje ho bude vyhledejte ho v adresáři /Views/Shared.
+Můžete explicitně kvalifikovat cestu částečné šablony, kterou chcete při volání HTML. RenderPartial (například: ~ zobrazení/večeře/DinnerForm. ascx). V našem kódu výše ale využíváme výhod vzoru pojmenování založeného na konvenci v rámci ASP.NET MVC a jako název částečného vykreslování pouze zadáte "DinnerForm". Když to uděláte, ASP.NET MVC bude nejdřív vypadat v adresáři zobrazení založeném na konvencích (pro DinnersController by to bylo/Views/Dinners). Pokud nenalezne částečnou šablonu, bude ji v adresáři/Views/Shared Hledat.
 
-Při volání Html.RenderPartial() s pouze název částečného zobrazení ASP.NET MVC předá částečného zobrazení stejné objekty slovníku modelu a ViewData používá volání zobrazit šablonu. Alternativně jsou přetížené verze Html.RenderPartial(), které vám umožní předat alternativní objekt modelu a/nebo slovníku ViewData pro částečné zobrazení k použití. To je užitečné pro scénáře, kde chcete předat podmnožinu úplný Model/ViewModel.
+Pokud je volána metoda HTML. RenderPartial () s pouze názvem částečného zobrazení, ASP.NET MVC bude předána do částečného zobrazení stejného modelu a objekty ViewData slovníku používané šablonou volajícího zobrazení. Alternativně existují přetížené verze jazyka HTML. RenderPartial (), které umožňují předat alternativní objekt modelu nebo slovník ViewData pro použití částečného zobrazení. To je užitečné ve scénářích, kdy chcete pouze předat podmnožinu celého modelu/ViewModel.
 
-| **Téma na straně: Proč &lt;%%&gt; místo &lt;% = %&gt;?** |
+| **Vedlejší téma: Proč &lt;%%&gt; místo &lt;% =%&gt;?** |
 | --- |
-| Jedním z malý věci, možná jste si všimli s výše uvedený kód je, že používáme &lt;%%&gt; blokovat místo &lt;% = %&gt; blokování při volání metody Html.RenderPartial(). &lt;% = %&gt; bloky v technologii ASP.NET znamenat, že vývojář chce, aby se pro vykreslení zadané hodnoty (například: &lt;% = "Vítáme uživatele" %&gt; vykreslení "Hello"). &lt;%%&gt; bloky oznamují ale, že vývojář chce spouštět kód a že žádné vykreslen výstup v nich je nutné provést explicitně (například: &lt;Response.Write("Hello") %&gt;. Z důvodu používáme &lt;%%&gt; blok s naší výše uvedený kód Html.RenderPartial totiž Html.RenderPartial() metoda nevrací řetězec a místo toho vypíše obsah přímo do volání šablony zobrazení výstupního datového proudu. Dělá to z důvodů výkonu efektivitu a tímto způsobem, takže se eliminuje nutnost vytvoření objektu (potenciálně velmi velké) dočasný řetězec. Tím se sníží využití paměti a zvyšuje propustnost celkové aplikace. Při použití Html.RenderPartial() je zapomenout přidat středníky na konci volání, pokud je v rámci jednoho běžnou chybou &lt;%%&gt; bloku. Například tento kód způsobí chybu kompilátoru: &lt;Html.RenderPartial("DinnerForm") %&gt; místo toho budete muset napsat: &lt;% Html.RenderPartial("DinnerForm"); %&gt; důvodem je, že &lt;%%&gt; bloky jsou příkazy samostatná kódu a při použití C# příkazy kódu musí být ukončen direktivou středníkem. |
+| Jednou z drobných věcí, které jste si poznamenali u výše uvedeného kódu, je, že používáme &lt;%%&gt; bloku namísto &lt;% =%&gt; bloku při volání HTML. RenderPartial (). &lt;% =%&gt; bloky v ASP.NET označují, že vývojář chce vykreslit zadanou hodnotu (například: &lt;% = "Hello"%&gt; by vygeneroval "Hello"). &lt;%%&gt; Blocks místo toho naznačují, že vývojář chce spustit kód a že všechny vykreslené výstupy v nich musí být provedeny explicitně (například: &lt;% Response. Write ("Hello")%&gt;. Důvodem, že používáme &lt;%%&gt; bloku s nášm kódem HTML. RenderPartial, je, že metoda HTML. RenderPartial () nevrátí řetězec a místo toho použije výstup tohoto obsahu přímo do výstupního datového proudu šablony zobrazení volání. Provede to z důvodů efektivity výkonu a tím se vyhne nutnosti vytvořit objekt (potenciálně velmi rozsáhlý) dočasného objektu řetězce. Tím se snižuje využití paměti a zlepšuje se celková propustnost aplikací. Jednou z běžných chyb při použití HTML. RenderPartial () je zapomenout na konec volání přidat středník, pokud se nachází v rámci bloku&gt; &lt;%%. Například tento kód způsobí chybu kompilátoru: &lt;% HTML. RenderPartial ("DinnerForm")%&gt; místo toho musíte napsat: &lt;% HTML. RenderPartial ("DinnerForm"); %&gt; k tomu, protože bloky &lt;%%&gt; jsou samostatně obsahující příkazy kódu a při použití C# příkazů Code je nutné ukončit středníkem. |
 
-### <a name="using-partial-view-templates-to-clarify-code"></a>Upřesněte svůj kód pomocí šablony částečné zobrazení
+### <a name="using-partial-view-templates-to-clarify-code"></a>Použití částečných šablon zobrazení k objasnění kódu
 
-Jsme vytvořili šablony částečné zobrazení "DinnerForm", která má systém předchází vzniku duplicitní logiky vykreslování zobrazení na více místech. Toto je nejběžnějším důvodem k vytvoření šablony částečné zobrazení.
+Vytvořili jsme šablonu částečného zobrazení "DinnerForm", aby se zabránilo duplikování logiky vykreslování zobrazení na více místech. Toto je nejběžnější důvod k vytvoření šablon částečného zobrazení.
 
-Někdy je stále vhodné vytvořit částečné zobrazení, i když jsou se jen volá na jednom místě. Velmi složité zobrazit šablony se může stát často mnohem snazší přečíst, pokud je extrahována a rozdělená na jeden nebo více dobře s názvem šablony částečné jejich logiku pro vykreslení zobrazení.
+Někdy je stále vhodné vytvářet částečná zobrazení i v případě, že jsou volána pouze na jednom místě. Velmi složité šablony zobrazení mohou být často mnohem snazší, pokud jsou extrahovány logiky pro vykreslení zobrazení a rozděleny do jedné nebo více dobře pojmenovaných částečných šablon.
 
-Představme si třeba, následující fragment kódu ze souboru Site.master v našem projektu (což bude mít se díváme na za chvíli). Kód je poměrně jednoduché číst – částečně proto, že v horní části propojit logiku k zobrazení přihlášení/odhlášení pravé části obrazovky je zapouzdřené v části "LogOnUserControl":
+Podívejte se například na následující fragment kódu ze souboru Web. Master v našem projektu (který brzy prohlížíme). Kód je relativně přímo předáván, protože logiku pro zobrazení odkazu na přihlášení nebo odhlášení v pravém horním rohu obrazovky je zapouzdřena v části "LogOnUserControl" (částečně):
 
 [!code-aspx[Main](re-use-ui-using-master-pages-and-partials/samples/sample4.aspx)]
 
-Pokaždé, když si uvědomíte, získávání zaměňovat pokusu pochopit kód html nebo kód v rámci zobrazení šablony, zvažte, jestli by nebylo bude jasnější, když některé z jeho byla extrahována a implementovány do dobře pojmenované částečné zobrazení.
+Kdykoli zjistíte, že se snažíte pochopit kód HTML/kódu v rámci šablony zobrazení a, zvažte, zda by nebyl jasný, pokud byl některý z nich extrahován a refaktoroval do dobře pojmenovaných částečných zobrazení.
 
 ### <a name="master-pages"></a>Stránky předlohy
 
-Kromě podpory částečná zobrazení, ASP.NET MVC podporuje také možnost vytvářet šablony "stránka předlohy", které lze použít k definování obecné rozložení a lokality nejvyšší úrovně html. Zástupný symbol, který je potom možné přidat ovládací prvky na stránce předlohy k identifikaci nahraditelné oblastí, které můžete přepsat nebo "vyplnění" podle zobrazení obsahu. To umožňuje velmi efektivní (a suchého) běžné rozložení můžete použít v aplikaci.
+Kromě podpory částečných zobrazení podporuje ASP.NET MVC také možnost vytvářet šablony "Master Page", které lze použít k definování společného rozložení a HTML nejvyšší úrovně webu. Ovládací prvky zástupných symbolů obsahu je pak možné přidat na stránku předlohy k identifikaci nahraditelných oblastí, které mohou být přepsány nebo "vyplněny" zobrazeními. To poskytuje velmi účinný (a suchý) způsob, jak použít společné rozložení v rámci aplikace.
 
-Nové projekty ASP.NET MVC mají ve výchozím nastavení šablona stránky předlohy k nim přidány automaticky. Tato stránka předlohy se s názvem "Site.master" a žije ve složce \Views\Shared\:
+Ve výchozím nastavení mají nové projekty ASP.NET MVC automaticky přidaných předloh stránky. Tato stránka předlohy má název Web. Master a je umístěná ve složce \Views\Shared\:
 
 ![](re-use-ui-using-master-pages-and-partials/_static/image5.png)
 
-Výchozí soubor Site.master vypadá níže. Definuje vnější html webu a nabídky pro navigaci v horní části. Obsahuje dva prvky replaceable zástupný symbol obsahu – jeden pro název a druhou pro kde by měla být nahrazená primární obsahu stránky:
+Výchozí soubor Web. Master vypadá následovně. Definuje vnější HTML webu spolu s nabídkou pro navigaci v horní části. Obsahuje dva prvky nahraditelných zástupných symbolů obsahu – jeden pro název a druhý, kde by měl být primární obsah stránky nahrazen:
 
 [!code-aspx[Main](re-use-ui-using-master-pages-and-partials/samples/sample5.aspx)]
 
-Všechny zobrazit šablony, kterou jsme vytvořili pro naši aplikaci NerdDinner ("List", "Podrobnosti", "Edit", "Vytvořit", "Serveru" atd.) mají byly založeny na šabloně Site.master. Je toto označeno pomocí atributu "MasterPageFile", který byl přidán ve výchozím nastavení do horní části &lt;% @ Page %&gt; směrnice, i když jsme vytvořili naši zobrazení pomocí dialogového okna "Přidat zobrazení":
+Všechny šablony zobrazení, které jsme vytvořili pro naši aplikaci NerdDinner ("list", "Details", "Edit", "Create", "NotFound" atd.), byly založené na této šabloně site. Master. To je indikováno pomocí atributu "MasterPageFile", který byl přidán ve výchozím nastavení, do horní &lt;direktivy% @ Page%&gt;, když jsme vytvořili naše zobrazení pomocí dialogového okna Přidat zobrazení:
 
 [!code-aspx[Main](re-use-ui-using-master-pages-and-partials/samples/sample6.aspx)]
 
-To znamená, že můžeme změnit obsah Site.master a mají změny automaticky se použije a používán, když jsme některé z našich šablon zobrazení vykreslení.
+To znamená, že můžeme změnit obsah webu. Master a tyto změny se použijí automaticky a použijí se, když vygenerujeme kteroukoli z našich šablon zobrazení.
 
-Umožňuje aktualizovat naše Site.master záhlaví tak, aby záhlaví naši aplikaci je "NerdDinner" místo "Moje aplikace MVC". Teď také aktualizovat naše navigační nabídce tak, aby první karta je "Najít webu Dinner" (zpracované metody akce HomeController Index()) a přidejme na nové kartě se nazývá "Hostitele večeři" (zpracované metody akce DinnersController Create()):
+Pojďme aktualizovat oddíl záhlaví Web. Master tak, aby bylo záhlaví naší aplikace "NerdDinner" místo "Moje aplikace MVC". Pojďme také aktualizovat naši navigační nabídku tak, aby první karta byla "najít večeři" (zpracována metodou HomeController indexu () akce) a přidat novou kartu s názvem "host a večeře" (zpracováno metodou akce Create () DinnersController):
 
 [!code-aspx[Main](re-use-ui-using-master-pages-and-partials/samples/sample7.aspx)]
 
-Když jsme uložit soubor Site.master a aktualizaci prohlížeče uvidíme náš záhlaví změn ve všech zobrazeních v rámci naší aplikace. Příklad:
+Když ukládáme soubor Web. Master a aktualizujeme náš prohlížeč, uvidíme, že se změny v hlavičce zobrazí ve všech zobrazeních v rámci naší aplikace. Příklad:
 
 ![](re-use-ui-using-master-pages-and-partials/_static/image6.png)
 
-A */Dinners/Edit / [id]* adresy URL:
+A s adresou URL */Dinners/Edit/[ID]* :
 
 ![](re-use-ui-using-master-pages-and-partials/_static/image7.png)
 
-### <a name="next-step"></a>Dalším krokem
+### <a name="next-step"></a>Další krok
 
-Částečných zobrazení a stránky předlohy poskytují velmi flexibilní možnosti, které vám umožní čistě uspořádání zobrazení. Zjistíte, aby umožňují předcházet duplikování zobrazení obsahu / kódu a usnadňují a zjednodušíte si zobrazit šablony.
+Částečné a hlavní stránky poskytují velmi flexibilní možnosti, které umožňují vyčistit zobrazení. Zjistíte, že vám pomohou vyhnout se duplicitám zobrazení obsahu a kódu a usnadnit čtení a údržbu šablon zobrazení.
 
-Pojďme teď návštěvě výpis scénáře, který jsme vytvořili dříve a povolit škálovatelné podporu stránkování.
+Teď se podíváme na scénář výpisu, který jsme vytvořili dříve, a povolili jsme podporu škálovatelného stránkování.
 
 > [!div class="step-by-step"]
 > [Předchozí](use-viewdata-and-implement-viewmodel-classes.md)
-> [další](implement-efficient-data-paging.md)
+> [Další](implement-efficient-data-paging.md)

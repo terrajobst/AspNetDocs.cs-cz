@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/http-cookies
-title: Soubory cookie protokolu HTTP v rozhraní ASP.NET Web API – ASP.NET 4.x
+title: Soubory cookie HTTP ve webovém rozhraní API ASP.NET – ASP.NET 4. x
 author: MikeWasson
-description: Popisuje, jak odesílat a přijímat soubory cookie protokolu HTTP v rozhraní Web API pro ASP.NET 4.x.
+description: Popisuje, jak odesílat a přijímat soubory cookie HTTP ve webovém rozhraní API pro ASP.NET 4. x.
 ms.author: riande
 ms.date: 09/17/2012
 ms.custom: seoapril2019
@@ -10,23 +10,23 @@ ms.assetid: 243db2ec-8f67-4a5e-a382-4ddcec4b4164
 msc.legacyurl: /web-api/overview/advanced/http-cookies
 msc.type: authoredcontent
 ms.openlocfilehash: 8ca26ff6776daa13bc4f8b06c2eba61afcfefba2
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65126243"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78557685"
 ---
 # <a name="http-cookies-in-aspnet-web-api"></a>Soubory cookie HTTP ve webovém rozhraní API technologie ASP.NET
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-Toto téma popisuje, jak odesílat a přijímat soubory cookie protokolu HTTP v rozhraní Web API.
+Toto téma popisuje, jak odesílat a přijímat soubory cookie HTTP ve webovém rozhraní API.
 
-## <a name="background-on-http-cookies"></a>Na pozadí na soubory cookie protokolu HTTP
+## <a name="background-on-http-cookies"></a>Pozadí na souborech cookie HTTP
 
-Tato část poskytuje stručný přehled o tom, jak jsou implementované soubory cookie na úrovni protokolu HTTP. Podrobné informace, [RFC 6265](http://tools.ietf.org/html/rfc6265).
+V této části najdete stručný přehled toho, jak se soubory cookie implementují na úrovni HTTP. Další podrobnosti najdete v [dokumentu RFC 6265](http://tools.ietf.org/html/rfc6265).
 
-Soubor cookie je část dat, která odesílá na server v odpovědi HTTP. Klient (volitelně) uloží soubor cookie a vrátí na následné žádosti. Díky tomu klienta a serveru, sdílení stavu. Nastavení souboru cookie, server obsahuje hlavičku Set-Cookie v odpovědi. Formát souboru cookie je pár název hodnota pomocí volitelných atributů. Příklad:
+Soubor cookie je část dat, kterou server odesílá v odpovědi HTTP. Klient (volitelně) uloží soubor cookie a vrátí ho v dalších požadavcích. Tím umožníte, aby klient a server sdíleli stav. Aby bylo možné nastavit soubor cookie, bude server v odpovědi obsahovat hlavičku souborového souboru cookie. Formátem souboru cookie je pár název-hodnota s nepovinnými atributy. Příklad:
 
 [!code-powershell[Main](http-cookies/samples/sample1.ps1)]
 
@@ -34,78 +34,78 @@ Tady je příklad s atributy:
 
 [!code-powershell[Main](http-cookies/samples/sample2.ps1)]
 
-Pokud chcete vrátit do souboru cookie na serveru, klienta obsahuje hlavičku souboru Cookie novějším žádostem.
+Pokud chcete vrátit soubor cookie na server, klient zahrne v pozdějších požadavcích hlavičku souboru cookie.
 
 [!code-console[Main](http-cookies/samples/sample3.cmd)]
 
 ![](http-cookies/_static/image1.png)
 
-Odpověď HTTP může obsahovat více záhlaví Set-Cookie.
+Odpověď protokolu HTTP může zahrnovat více hlaviček souborů cookie sady.
 
 [!code-powershell[Main](http-cookies/samples/sample4.ps1)]
 
-Klient odešle několik souborů cookie pomocí jednoho hlavičky souboru Cookie.
+Klient vrátí více souborů cookie pomocí jednoho záhlaví souboru cookie.
 
 [!code-console[Main](http-cookies/samples/sample5.cmd)]
 
-Rozsahu a doby trvání soubor cookie se řídí následujícími atributy v hlavičce Set-Cookie:
+Rozsah a doba trvání souboru cookie jsou ovládány pomocí atributů v hlavičce Set-cookie:
 
-- **Domény**: Instruuje klienta, které domény souboru cookie přijímat. Pokud tato doména "example.com", klient vrátí soubor cookie pro každou poddoménu example.com. Pokud není zadán, doména je zdrojový server.
-- **Cesta**: Omezuje na zadané cestě v rámci domény souboru cookie. Pokud není zadán, je použít cesty identifikátoru URI požadavku.
-- **Vypršení platnosti**: Nastaví datum vypršení platnosti souboru cookie. Klient odstraní soubor cookie, když jeho platnost vyprší.
-- **Max-Age**: Nastaví maximální stáří souboru cookie. Klient odstraní soubor cookie, když dosáhl maximální stáří.
+- **Doména**: oznamuje klientovi, která doména má přijmout soubor cookie. Pokud je doména například "example.com", vrátí klient soubor cookie do každé subdomény example.com. Pokud není zadaný, doména je původním serverem.
+- **Cesta**: omezí soubor cookie na zadanou cestu v doméně. Pokud není zadaný, použije se cesta k identifikátoru URI požadavku.
+- **Expires**: nastaví datum vypršení platnosti souboru cookie. Klient odstraní soubor cookie, pokud vyprší jeho platnost.
+- **Max-Age**: nastaví maximální stáří pro soubor cookie. Klient odstraní soubor cookie, pokud dosáhne maximálního stáří.
 
-Pokud mají oba `Expires` a `Max-Age` jsou nastaveny, `Max-Age` přednost. Pokud je nastavena ani jedno, klient odstraní soubor cookie po skončení aktuální relaci. (Přesné význam "relace" se určuje podle uživatelského agenta).
+Pokud jsou nastaveny `Expires` i `Max-Age`, má `Max-Age` přednost. Pokud není nastavená ani jedna, klient při ukončení aktuální relace odstraní soubor cookie. (Přesný význam "session" určuje uživatel-agent.)
 
-Nezapomínejte, že klienti mohou ignorovat soubory cookie. Uživatel může například zakažte soubory cookie z důvodů ochrany osobních údajů. Klienti soubory cookie odstranit předtím, než vyprší jejich platnost, nebo omezit počet uložených souborů cookie. Z důvodu ochrany osobních údajů klientů často odmítnout "třetích stran" soubory cookie, kde doména se neshoduje s původním serveru. Stručně řečeno server neměli spoléhat na návrat, které nastaví soubory cookie.
+Upozorňujeme však, že klienti mohou ignorovat soubory cookie. Uživatel může například zakázat soubory cookie z důvodů ochrany osobních údajů. Klienti mohou odstranit soubory cookie před vypršením platnosti nebo omezit počet uložených souborů cookie. Z důvodu ochrany osobních údajů klienti často odmítnou soubory cookie třetích stran, kde doména neodpovídají zdrojovému serveru. V krátkém případě by se server neměl spoléhat na vrácení souborů cookie, které nastaví.
 
 ## <a name="cookies-in-web-api"></a>Soubory cookie ve webovém rozhraní API
 
-Pokud chcete přidat do souboru cookie do odpovědi HTTP, vytvořte **CookieHeaderValue** instanci, která představuje soubor cookie. Zavolejte **AddCookies** rozšiřující metoda, která je definována v **System.Net.Http. HttpResponseHeadersExtensions** třídy, chcete-li přidat soubor cookie.
+Chcete-li přidat soubor cookie do odpovědi HTTP, vytvořte instanci **CookieHeaderValue** , která představuje soubor cookie. Pak zavolejte metodu rozšíření **AddCookies** , která je definována v **System .NET. http. HttpResponseHeadersExtensions** třída pro přidání souboru cookie.
 
 Například následující kód přidá soubor cookie v rámci akce kontroleru:
 
 [!code-csharp[Main](http-cookies/samples/sample6.cs)]
 
-Všimněte si, že **AddCookies** přijímá pole **CookieHeaderValue** instancí.
+Všimněte si, že **AddCookies** přebírá pole instancí **CookieHeaderValue** .
 
-Chcete-li extrahovat soubory cookie z požadavku klienta, zavolejte **GetCookies** metody:
+Chcete-li extrahovat soubory cookie z požadavku klienta, zavolejte metodu **GetCookies** :
 
 [!code-csharp[Main](http-cookies/samples/sample7.cs)]
 
-A **CookieHeaderValue** obsahuje kolekci **CookieState** instancí. Každý **CookieState** představuje jeden soubor cookie. Získat pomocí metody indexeru **CookieState** podle názvu, jak je znázorněno.
+**CookieHeaderValue** obsahuje kolekci instancí **CookieState** . Každý **CookieState** představuje jeden soubor cookie. Použijte metodu indexeru k získání **CookieState** podle názvu, jak je znázorněno na obrázku.
 
-## <a name="structured-cookie-data"></a>Soubor Cookie strukturovaná Data
+## <a name="structured-cookie-data"></a>Strukturovaná data souborů cookie
 
-Většina prohlížečů omezení počtu souborů cookie, které se budou ukládat&#8212;celkový počet i číslo na doménu. Proto může být užitečné zavést strukturovaná data do jednoho souboru cookie, namísto nastavení více souborů cookie.
+Mnoho prohlížečů omezuje počet souborů cookie, které budou&#8212;ukládat celkové číslo, a počet v každé doméně. Proto může být užitečné ukládat strukturovaná data do jediného souboru cookie namísto nastavení více souborů cookie.
 
 > [!NOTE]
-> RFC 6265 nedefinuje strukturu dat souboru cookie.
+> Specifikace RFC 6265 nedefinuje strukturu dat souborů cookie.
 
-Použití **CookieHeaderValue** třídy, můžete předat seznam dvojic název hodnota pro data souborů cookie. Tyto páry název hodnota jsou zakódovány jako data kódovaná adresou URL formuláře v hlavičce Set-Cookie:
+Pomocí třídy **CookieHeaderValue** můžete předat seznam párů název-hodnota pro data souborů cookie. Tyto páry název-hodnota se kódují jako data formuláře kódovaná v adresách URL v hlavičce Set-cookie:
 
 [!code-csharp[Main](http-cookies/samples/sample8.cs)]
 
-Předchozí kód vytvoří následující hlavičkou Set-Cookie:
+Předchozí kód vytvoří následující hlavičku souboru cookie sady:
 
 [!code-powershell[Main](http-cookies/samples/sample9.ps1)]
 
-**CookieState** třída poskytuje metodu indexer načíst dílčí hodnoty ze souboru cookie ve zprávě požadavku:
+Třída **CookieState** poskytuje indexerovou metodu pro čtení dílčích hodnot ze souboru cookie ve zprávě požadavku:
 
 [!code-csharp[Main](http-cookies/samples/sample10.cs)]
 
-## <a name="example-set-and-retrieve-cookies-in-a-message-handler"></a>Příklad: Nastavení a načtení souborů cookie v obslužné rutiny zpráv
+## <a name="example-set-and-retrieve-cookies-in-a-message-handler"></a>Příklad: nastavení a načtení souborů cookie v obslužné rutině zprávy
 
-Předchozí příklady nám ukázaly, jak používat soubory cookie z v rámci kontroleru webového rozhraní API. Další možností je použít [obslužné rutiny zpráv](http-message-handlers.md). Obslužné rutiny zpráv jsou vyvolány dříve v kanálu než řadiče. Obslužné rutiny zpráv můžete číst soubory cookie z požadavku, než požadavek dosáhne kontroleru nebo po kontroleru generuje odpovědi přidat soubory cookie v odpovědi.
+Předchozí příklady ukázaly, jak používat soubory cookie v rámci kontroleru webového rozhraní API. Další možností je použít [obslužné rutiny zpráv](http-message-handlers.md). Obslužné rutiny zpráv jsou vyvolány dříve v kanálu než řadiče. Obslužná rutina zprávy může číst soubory cookie z požadavku předtím, než požadavek dosáhne kontroleru, nebo přidat soubory cookie do odpovědi poté, co kontroler odpověď vygeneruje.
 
 ![](http-cookies/_static/image2.png)
 
-Následující kód ukazuje obslužné rutiny zpráv pro vytvoření ID relace. ID relace se ukládají do souboru cookie. Obslužná rutina ověří požadavek pro soubor cookie relace. Pokud žádost neobsahuje soubor cookie, obslužná rutina generuje ID nové relace. V obou případech se obslužná rutina uloží ID relace v **HttpRequestMessage.Properties** kontejner objektů a dat. Také přidá soubor cookie relace do odpovědi HTTP.
+Následující kód ukazuje popisovač zprávy pro vytváření ID relací. ID relace je uloženo v souboru cookie. Obslužná rutina zkontroluje požadavek na soubor cookie relace. Pokud žádost nezahrnuje soubor cookie, obslužná rutina generuje nové ID relace. V obou případech obslužná rutina ukládá ID relace do kontejneru vlastností **zprávy HttpRequestMessage. Properties** . Také přidá soubor cookie relace do odpovědi HTTP.
 
-Tato implementace nelze ověřit, že ID relace, od klienta byl ve skutečnosti vydán serverem. Nepoužívejte ho jako formu ověřování! Bod v příkladu je zobrazení správy souboru cookie HTTP.
+Tato implementace neověřuje, zda je ID relace z klienta skutečně vydaným serverem. Nepoužívejte ji jako způsob ověřování. Bodem příkladu je zobrazení správy souborů cookie protokolu HTTP.
 
 [!code-csharp[Main](http-cookies/samples/sample11.cs)]
 
-Kontroler můžete získat ID relace, od **HttpRequestMessage.Properties** kontejner objektů a dat.
+Kontroler může získat ID relace z kontejneru vlastností **zprávy HttpRequestMessage. Properties** .
 
 [!code-csharp[Main](http-cookies/samples/sample12.cs)]

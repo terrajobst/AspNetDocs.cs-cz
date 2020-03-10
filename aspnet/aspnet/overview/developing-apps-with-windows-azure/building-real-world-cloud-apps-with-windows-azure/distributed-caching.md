@@ -9,11 +9,11 @@ ms.assetid: 406518e9-3817-49ce-8b90-e82bc461e2c0
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching
 msc.type: authoredcontent
 ms.openlocfilehash: 87a7516415895e761d1589fd459b93e5c15c0f85
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77456995"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78583543"
 ---
 # <a name="distributed-caching-building-real-world-cloud-apps-with-azure"></a>Distribuované ukládání do mezipaměti (vytváření skutečných cloudových aplikací s Azure)
 
@@ -86,7 +86,7 @@ Jak je uvedeno v [kapitole Doporučené postupy pro vývoj webu](web-development
 
 Viděli jste, jak může aplikace opravit IT implementovat ukládání do mezipaměti, aby se zlepšila doba odezvy a škálovatelnost, a aby mohla aplikace nadále reagovat na operace čtení, pokud databáze není k dispozici. V [Další části](queue-centric-work-pattern.md) se dozvíte, jak dál vylepšit škálovatelnost a zajistit, aby aplikace pokračovala v reakci na operace zápisu.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje
 
 Další informace o ukládání do mezipaměti najdete v následujících zdrojích informací.
 

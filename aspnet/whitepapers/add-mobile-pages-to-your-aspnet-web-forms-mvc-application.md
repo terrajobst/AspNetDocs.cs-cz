@@ -1,362 +1,362 @@
 ---
 uid: whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
-title: 'Postupy: Přidání mobilních stránek do webových formulářů nebo aplikace MVC | Dokumentace Microsoftu'
+title: 'Postupy: Přidání mobilních stránek do webových formulářů ASP.NET/aplikace MVC | Microsoft Docs'
 author: rick-anderson
-description: Tento postup popisuje různé způsoby, jak poskytovat stránky optimalizované pro mobilní zařízení z webových formulářů ASP.NET / aplikace MVC a navrhne architektury a...
+description: Tento postup popisuje různé způsoby, jak vydávat stránky optimalizované pro mobilní zařízení z webových formulářů ASP.NET/aplikace MVC a navrhuje architekturu a...
 ms.author: riande
 ms.date: 01/20/2011
 ms.assetid: 3124f28e-cc32-418a-afe3-519fa56f4c36
 msc.legacyurl: /whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
 msc.type: content
 ms.openlocfilehash: 63c555358d06a9506bb5c8c993800c3307108192
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65114435"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78572735"
 ---
-# <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>Postupy: Přidání mobilních stránek do webových formulářů ASP.NET/aplikace MVC
+# <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>Postup: Přidání mobilních stránek do webových formulářů ASP.NET/aplikace MVC
 
 > **Platí pro**
 > 
-> - Verze webových formulářů technologie ASP.NET 4.0
-> - ASP.NET MVC verze 3.0
+> - Webové formuláře ASP.NET verze 4,0
+> - ASP.NET MVC verze 3,0
 > 
-> **Shrnutí**
+> **Souhrn**
 > 
-> Tento postup popisuje různé způsoby, jak poskytovat stránky optimalizované pro mobilní zařízení z webových formulářů ASP.NET / aplikace MVC a navrhne architektury a návrhu problémy, které je třeba zvážit při cílení na široké škále zařízení. Tento dokument popisuje taky, proč jsou nyní zastaralé technologie ASP.NET Mobile ovládací prvky technologie ASP.NET 2.0 3.5 a tento článek popisuje některé moderní alternativy.
+> Tento postup popisuje různé způsoby, jak vydávat stránky optimalizované pro mobilní zařízení z webových formulářů ASP.NET/aplikace MVC, a navrhuje problémy architektury a návrhu, které je potřeba vzít v úvahu při zaměření na širokou škálu zařízení. Tento dokument také vysvětluje, proč jsou ASP.NET mobilní ovládací prvky z ASP.NET 2,0 až 3,5 a popisuje některé moderní alternativy.
 
 ## <a name="contents"></a>Obsah
 
 - Přehled
 - Možnosti architektury
-- Zjišťování prohlížeče a zařízení
-- Jak aplikace webových formulářů ASP.NET sebou může nést stránek specifických pro mobilní zařízení
-- Jak aplikace ASP.NET MVC sebou může nést stránek specifických pro mobilní zařízení
+- Detekce prohlížečů a zařízení
+- Jak mohou aplikace webových formulářů ASP.NET prezentovat stránky pro mobilní zařízení
+- Jak aplikace ASP.NET MVC můžou prezentovat stránky pro mobilní zařízení
 - Další zdroje
 
-Ukázky ke stažení kódu demonstrace techniky dokument white paper pro webové formuláře ASP.NET a MVC najdete v tématu [Mobile Apps & servery s technologií ASP.NET](https://docs.microsoft.com/aspnet/mobile/overview).
+Ukázky kódu ke stažení, které demonstrují tyto techniky White paper pro ASP.NET webové formuláře i MVC, najdete v tématu [Mobile Apps & weby pomocí ASP.NET](https://docs.microsoft.com/aspnet/mobile/overview).
 
 ## <a name="overview"></a>Přehled
 
-Mobilní zařízení – smartphony, funkce telefonů a tabletů – i nadále poroste popularita jako způsob pro přístup k webu. Pro mnoho webovým vývojářům a objektově orientovaný firmám to znamená, že je stále potřeba zajistit skvělé možnosti procházení pro návštěvníky pomocí těchto zařízení.
+Mobilní zařízení – smartphony, telefony s funkcemi a tablety – pro přístup k webu můžete dál rozrůstat v oblíbenosti. Pro mnoho webových vývojářů a web orientovaných společností to znamená, že je stále důležitější zajistit pro návštěvníky používání těchto zařízení skvělý zážitek z procházení.
 
-### <a name="how-earlier-versions-of-aspnet-supported-mobile-browsers"></a>Jak starší verze technologie ASP.NET podporovány mobilních prohlížečů
+### <a name="how-earlier-versions-of-aspnet-supported-mobile-browsers"></a>Jak dřívější verze ASP.NET podporují mobilní prohlížeče
 
-Technologie ASP.NET verze 2.0 na 3.5 zahrnuté *mobilní ovládací prvky ASP.NET*: sady serverových ovládacích prvků pro mobilní zařízení v *System.Web.Mobile.dll* sestavení a  *System.Web.UI.MobileControls* oboru názvů. Sestavení je zahrnutá v technologii ASP.NET 4, ale je zastaralé. Vývojářům doporučujeme migrovat na Modernější přístupy, například těch popsaných v tomto dokumentu.
+ASP.NET verze 2,0 až 3,5 zahrnovaly *ASP.NET mobilní ovládací prvky*: sadu serverových ovládacích prvků pro mobilní zařízení v sestavení *System. Web. Mobile. dll* a v oboru názvů *System. Web. UI. MobileControls* . Sestavení je stále součástí ASP.NET 4, ale je zastaralé. Vývojářům se doporučuje migrovat na více moderních přístupů, jako jsou ty popsané v tomto dokumentu.
 
-Důvod, proč mobilní ovládací prvky technologie ASP.NET jsou označené jako zastaralé je, že jejich návrhu je orientovaný kolem mobilních telefonů, které bylo běžné kolem 2005 a starší. Ovládací prvky slouží především k vykreslení WML nebo cHTML kódu (místo regulární HTML) pro prohlížeče WAP tohoto období. Ale WAP, WML a cHTML již nejsou relevantní u většiny projektů, protože HTML se teď stal všudypřítomná značkovací jazyk pro mobilních a desktopových prohlížeče nabídne.
+Důvodem, proč jsou ASP.NET mobilní ovládací prvky označeny jako zastaralé, je, že jejich návrh se orientuje na mobilní telefony, které byly běžné přibližně 2005 a starší. Ovládací prvky jsou hlavně navržené pro vykreslení WML nebo cHTML značek (místo obyčejného HTML) pro prohlížeče WAP tohoto období. Ale WAP, WML a cHTML už nejsou relevantní pro většinu projektů, protože HTML se teď stal jazykem všudypřítomný Markup Language pro mobilní a desktopové prohlížeče.
 
-### <a name="the-challenges-of-supporting-mobile-devices-today"></a>Obtíže spojené s podporu mobilních zařízení ještě dnes
+### <a name="the-challenges-of-supporting-mobile-devices-today"></a>Výzvy k podpoře mobilních zařízení ještě dnes
 
-Přestože mobilní prohlížeče teď podporují téměř univerzálně HTML, budete stále mít řadu výzev při cílem vytvářet skvělé mobilní prostředí procházení:
+I když v mobilních prohlížečích teď skoro podporuje HTML, pořád se při vytváření skvělého prostředí pro procházení mobilních zařízení projeví i mnoho výzev:
 
-- ***Velikost obrazovky*** – mobilní zařízení se výrazně liší ve formuláři a jejich obrazovky jsou často mnohem menší, než monitorování klientů. Ano budete muset navrhnout zcela jinou stránku rozložení pro ně.
-- ***Vstupní metody*** – některá zařízení mít klávesnice, některé mají styluses, ostatní používat dotykové ovládání. Musíte vzít v úvahu několik navigace mechanismy a data vstupní metody.
-- ***Dodržování standardů*** – mnoho mobilních prohlížečů nepodporují nejnovějších standardů HTML, šablon stylů CSS a JavaScript.
-- ***Šířka pásma*** – mobilní datové síti se mění výkon zvýšením nečekaně a některé koncovým uživatelům se na sazby, které se účtují podle megabajtech.
+- ***Velikost obrazovky*** – mobilní zařízení se výrazně liší ve formě a jejich obrazovky jsou často mnohem menší než stolní monitory. Proto možná budete muset pro ně navrhovat zcela různá rozložení stránek.
+- ***Metody zadávání*** – některá zařízení mají klávesnice, některé mají tablety, jiné používají dotykové ovládání. Možná budete muset zvážit několik navigačních mechanismů a metod zadávání dat.
+- ***Dodržování standardů*** – mnoho mobilních prohlížečů nepodporuje nejnovější standardy HTML, CSS a JavaScript.
+- ***Šířka pásma*** – mobilní data v síti se liší v neobvyklém provozu a někteří koncoví uživatelé jsou tarify, které účtují až megabajtů.
 
-Neexistuje žádné poskytovat řešení univerzální velikosti; vaše aplikace bude mít vypadat a chovat jinak v závislosti na zařízení přístup. V závislosti na tom, jaké úroveň podpory mobilních chcete může to být větší výzvu pro webové vývojáře než desktop "prohlížeče wars" bylo dříve.
+Není k dispozici žádné řešení s jedním velikostí. vaše aplikace bude muset vypadat a chovat se odlišně v závislosti na zařízení, které k němu přistupuje. V závislosti na tom, jakou úroveň mobilní podpory požadujete, může to být větší výzva pro webové vývojáře, než je plocha "konflikty prohlížeče".
 
-Vývojáři často zpočátku blíží Podpora mobilních prohlížečů pro první myslíte, že je pouze potřeba podporovat nejnovější a nejvyspělejším smartphony (například Windows Phone 7, iPhone nebo Android), možná, protože vývojáři často sami vlastní zařízení. Ale levnější telefony jsou stále velmi oblíbenou a jejich vlastníky použít k procházení webu – zejména v zemích, kde jsou mobilní telefony jednodušší než širokopásmové připojení. Vaše podnikání muset rozhodnout, jaké škálu zařízení, které podporují zvýšením jeho pravděpodobně zákazníků. Pokud vytváříte online – Příručka pro spa stavu luxusní, můžete provést obchodní rozhodnutí jenom na cílové pokročilé smartphony, že pokud vytváříte rezervace systém lístků filmové, budete pravděpodobně muset počítat návštěvníky s méně výkonných funkcí telefony.
+Vývojáři, kteří se přistupují k podpoře mobilních prohlížečů poprvé, často považují za důležité, aby podporovali nejnovější a nejpropracovanější smartphony (např. Windows Phone 7, iPhone nebo Android), třeba kvůli tomu, že vývojáři často vlastní takové signalizac. Avšak levnější telefony jsou stále extrémně populární a jejich vlastníci je používají k procházení webu – zejména v zemích, ve kterých je snazší mobilní telefony získat, než širokopásmové připojení. Vaše firma bude muset rozhodnout, jaké množství zařízení bude podporovat, a to zvážením jeho pravděpodobných zákazníků. Pokud vytváříte online brožuru pro luxus Health Spa, můžete učinit obchodní rozhodnutí jenom pro účely cílení na pokročilé smartphony, zatímco Pokud vytváříte systém rezervace lístků pro kino, pravděpodobně budete potřebovat účet pro návštěvníky s méně výkonnými funkcemi. telefonu.
 
 ## <a name="architectural-options"></a>Možnosti architektury
 
-Předtím, než se dostaneme k určité technické podrobnosti technologie ASP.NET webové formuláře nebo MVC, Všimněte si, že vývojáři webů obecně tři hlavní možnosti Podpora mobilních prohlížečů:
+Než se dostanete ke konkrétním technickým podrobnostem o webových formulářích ASP.NET nebo MVC, pamatujte, že vývojáři webu mají všeobecně tři hlavní možné možnosti pro podporu mobilních prohlížečů:
 
-1. ***Neprovádět žádnou akci –*** můžete jednoduše vytvořit standardní, orientovaných na ploše webovou aplikaci a Spolehněte se na mobilní prohlížeče k vykreslení přijatelně. 
+1. ***Nedělat nic –*** Můžete jednoduše vytvořit standardní webovou aplikaci orientovanou na plochu, která se spoléhá na mobilní prohlížeče a vykreslit je přijatelné. 
 
-    - **Výhody**: Je nejlevnější možnost implementovat a udržovat – bez dalších fungovat.
-    - **Nevýhodou**: Poskytuje nejhorší činnost koncového uživatele: 
+    - **Advantage**: Jedná se o možnost nejlevnější k implementaci a údržbě – žádná další práce
+    - **Nevýhody**: poskytuje nejhorší prostředí pro koncové uživatele: 
 
-        - Nejnovější smartphony může mít za následek kódu HTML stejně, jako prohlížeč pro stolní počítač, ale uživatelé se vynutí stále přiblížení a posuňte se vodorovně a svisle využívání obsahu na malé obrazovce. Toto je daleko od optimální.
-        - Vykreslit váš kód k spokojenosti starší zařízení a funkce telefony nemusí podařit.
-        - Dokonce i na nejnovějších tablet zařízení (jehož obrazovky může být velikosti obrazovky přenosných počítačů) platí pravidla různé interakce. Vstup s dotykovým ovládáním funguje nejlépe s větší tlačítka a propojí šíření další od sebe a neexistuje žádný způsob, jak kurzorem myši nad rozevírací nabídku.
-2. ***Vyřešit problém na straně klienta* –** opatrní použití šablon stylů CSS a [postupném rozšiřování](http://en.wikipedia.org/wiki/Progressive_enhancement) můžete vytvářet značky, stylů a skripty, které přizpůsobit jakýkoli prohlížeč běží. Třeba index Mei [dotazy na média šablon stylů CSS 3](http://www.w3.org/TR/2010/CR-css3-mediaqueries-20100727/), můžete vytvořit více sloupci rozložení, které se změní rozložení jeden sloupec na zařízení, jehož obrazovky jsou užší než zvolená prahová hodnota. 
+        - Nejnovější smartphony můžou váš kód HTML vykreslovat stejně jako desktopový prohlížeč, ale uživatelé budou pořád nuceně přiblížit a posouvat vodorovně a svisle a využívat obsah na malé obrazovce. To je mnohem z optimálního.
+        - Starší zařízení a telefony funkcí se nemusí podařit vykreslit vaše značky uspokojivým způsobem.
+        - I na nejnovějších zařízeních tabletu (jejichž obrazovky můžou být stejně velká jako obrazovky přenosné počítače), platí různá pravidla interakce. Dotykové ovládání funguje nejlépe s většími tlačítky a vazbami, které jsou dále roztaženy, a neexistuje žádný způsob, jak ukazatel myši nakládat na rozevírací nabídku.
+2. ***Řešení problému na klientovi* –** pečlivé používání šablon stylů CSS a [progresivního vylepšení](http://en.wikipedia.org/wiki/Progressive_enhancement) vám umožní vytvořit značky, styly a skripty, které se přizpůsobí libovolnému prohlížeči. Například pomocí [multimediálních dotazů šablon stylů CSS 3](http://www.w3.org/TR/2010/CR-css3-mediaqueries-20100727/)můžete vytvořit rozložení s více sloupci, které změní na jedno rozložení sloupce na zařízeních, jejichž obrazovky jsou užší než zvolená prahová hodnota. 
 
-    - **Výhody**: Optimalizuje pro určité zařízení používá, a to i pro neznámý budoucí zařízení podle libovolné obrazovce a vstupní vlastnosti mají vykreslování
-    - **Výhody**: Umožňuje snadno sdílet logiku na straně serveru ve všech typech zařízení – minimální duplicity kódu nebo úsilí
-    - **Nevýhodou**: Mobilní zařízení se tak liší od desktopové zařízení, může Opravdu chcete vašich mobilních stránek být zcela liší od plochy stránky, zobrazuje různé informace. Takové změny může být neefektivní nebo nemožné robustně dosáhnout prostřednictvím šablon stylů CSS samostatně, zejména vzhledem k tomu, jak nekonzistentně starší zařízení interpretace pravidel šablon stylů CSS. To platí zejména atributů šablony stylů CSS 3.
-    - **Nevýhodou**: Poskytuje bez podpory pro různé logiku na straně serveru a pracovní postupy pro různá zařízení. Zjednodušené nákupního košíku checkout pracovního postupu pro mobilní uživatele nelze, například implementovat pomocí šablon stylů CSS samostatně.
-    - **Nevýhodou**: Využití šířky pásma neefektivní. Server je pravděpodobně nutné přenášet značky a stylů, které platí pro všechna možná zařízení, i v případě, že cílové zařízení se použije pouze podmnožinu těchto informací.
-3. ***Vyřešit problém na serveru* –** Pokud váš server ví, co zařízení přistupuje – nebo nejméně charakteristiky těchto zařízení, například jeho velikosti obrazovky a vstupní metodu, a zda je na mobilním zařízení – lze spustit různé logiky a výstup různý kód HTML. 
+    - **Advantage**: optimalizuje vykreslování pro konkrétní zařízení, které se používá, a to i pro neznámá budoucí zařízení podle toho, jaké charakteristiky obrazovky a vstupu mají.
+    - **Výhoda**: snadno můžete sdílet logiku na straně serveru napříč všemi typy zařízení – minimální duplicita kódu nebo úsilí.
+    - **Nevýhody**: mobilní zařízení se liší od stolních zařízení, ve kterých můžete chtít, aby se vaše mobilní stránky zcela lišily od stránek na ploše, které zobrazují různé informace. Tyto variace můžou být neefektivní nebo neumožňují dosáhnout robustních pouze prostřednictvím šablon stylů CSS, zejména s ohledem na to, jak nekonzistentně starší zařízení interpretují pravidla stylů CSS. To platí zejména pro atributy CSS 3.
+    - **Nevýhody**: poskytuje žádnou podporu pro různé logiky na straně serveru a pracovní postupy pro různá zařízení. Nemůžete například implementovat zjednodušený pracovní postup rezervace nákupního košíku pro mobilní uživatele prostřednictvím šablon stylů CSS samostatně.
+    - **Nevýhody**: neefektivní využití šířky pásma. Je možné, že budete muset přenést značky a styly, které se vztahují na všechna možná zařízení, a to i v případě, že cílové zařízení použije jenom podmnožinu těchto informací.
+3. ***Řešení problému na serveru* –** Pokud váš server ví, k čemu má zařízení přístup, nebo alespoň jeho vlastnosti, jako je například velikost obrazovky a vstupní metoda a zda se jedná o mobilní zařízení – může spustit jinou logiku a výstup jiné kódování HTML. 
 
-    - **Výhody:** Maximální flexibilitu. Neexistuje žádné omezení, kolik můžete měnit svoji logiku na straně serveru pro mobilní telefony nebo optimalizovat vaše značky pro konkrétní zařízení, požadované rozložení.
-    - **Výhody:** Využití šířky pásma efektivní. Stačí přenášet značky a informací o stylu, na který budete používat cílové zařízení.
-    - **Nevýhody:** Někdy Vynutí opakování úsilí nebo kód (například provedení je podobný, ale mírně odlišné kopie stránky webových formulářů nebo zobrazení MVC). Pokud to možné, budou faktor si běžné logiky do nadřízené vrstvy nebo služby, ale stále, některé části uživatelského rozhraní kód nebo značky pravděpodobně nutné být duplicitní a pak udržuje paralelně.
-    - **Nevýhody:** Zjišťování zařízení není nic snadného. Vyžaduje seznamu nebo v databázi známé zařízení typů a jejich vlastnosti (které nemusí být vždy zcela aktuální) a není zaručeno, že tak, aby přesně odpovídaly všechny příchozí požadavky. Tento dokument popisuje některé možnosti a jejich nástrahy později.
+    - **Výhody:** Maximální flexibilita. Neexistuje žádné omezení na to, kolik je možné měnit logiku na straně serveru pro mobilní zařízení, nebo optimalizovat vaše značky pro požadované rozložení pro konkrétní zařízení.
+    - **Výhody:** Efektivní využití šířky pásma. Je nutné přenést pouze informace o značkách a stylech, které budou cílové zařízení používat.
+    - **Nevýhody:** Někdy vynutí opakování úsilí nebo kódu (např. vytváření podobných a mírně odlišných kopií webových formulářů nebo zobrazení MVC). Pokud je to možné, provedete si běžnou logiku na podkladovou vrstvu nebo službu, ale stále i některé části kódu uživatelského rozhraní nebo značky mohou být duplikovány a poté udržovány paralelně.
+    - **Nevýhody:** Detekce zařízení není triviální. Vyžaduje seznam nebo databázi známých typů zařízení a jejich charakteristiky (které nemusí vždy být zcela v aktuálním stavu) a nemají zaručené přesné párování všech příchozích požadavků. Tento dokument popisuje některé možnosti a jejich nástrah později.
 
-Pokud chcete získat nejlepší výsledky, Většina vývojářů najít že potřebují kombinovat možnosti (2) a (3). Drobné rozdíly stylistické nejlépe sloučeny na straně klienta pomocí šablon stylů CSS nebo dokonce JavaScript, že hlavní rozdíly v datech, pracovní postup nebo značky jsou nejvíce efektivně implementovat v kódu na straně serveru.
+Pro dosažení nejlepších výsledků většina vývojářů potřebuje kombinovat možnosti (2) a (3). Drobné stylistické rozdíly jsou na straně klienta nejlépe přizpůsobené pomocí šablon stylů CSS nebo dokonce i JavaScriptu, zatímco hlavní rozdíly v datech, pracovních postupech nebo značkách jsou v kódu na straně serveru nejefektivnější.
 
-### <a name="this-paper-focuses-on-server-side-techniques"></a>Tento dokument se zaměřuje na metody na straně serveru
+### <a name="this-paper-focuses-on-server-side-techniques"></a>Tento dokument se zaměřuje na techniky na straně serveru.
 
-Protože webových formulářů ASP.NET a MVC jsou obě technologie primárně na serveru, tento dokument white paper se soustředí na straně serveru techniky, které umožňují vytvářet různých značek a logiku pro mobilní prohlížeče. Samozřejmě to můžete také kombinovat s libovolnou techniku na straně klienta (například šablon stylů CSS 3 dotazy na média, postupné vylepšení JavaScript), ale, což je více webových stránek než vývoj v technologii ASP.NET.
+Vzhledem k tomu, že webové formuláře ASP.NET a MVC jsou hlavně technologiemi na straně serveru, tento dokument White Paper se soustředí na techniky na straně serveru, které vám umožní vydávat různé značky a logiku pro mobilní prohlížeče. Samozřejmě to můžete také kombinovat s jakoukoli technikou na straně klienta (například dotazy na média CSS 3, progresivní navýšení JavaScript), ale to je více věcí pro návrh webu než ASP.NET vývoj.
 
-## <a name="browser-and-device-detection"></a>Zjišťování prohlížeče a zařízení
+## <a name="browser-and-device-detection"></a>Detekce prohlížečů a zařízení
 
-Klíče předpokladem pro všechny metody na straně serveru pro podporu mobilních zařízení je vědět, jaké zařízení používá návštěvník. Ve skutečnosti ještě lepší než znalost toho, výrobce a model číslo tohoto zařízení je vědět, *charakteristiky* zařízení. Vlastnosti mohou zahrnovat:
+Klíčové předpoklady pro všechny techniky na straně serveru pro podporu mobilních zařízení spočívá v tom, jaké zařízení vaše návštěvník používá. Ve skutečnosti je ještě lepší, než když znáte výrobce a model číslo tohoto zařízení, aby znal *charakteristiky* zařízení. Mezi vlastnosti může patřit:
 
 - Je mobilní zařízení?
-- Vstupní metody (myši a klávesnice, dotykové ovládání, klávesnici, joystick,...)
+- Input – metoda (myš/klávesnice, dotykové ovládání, klávesnice, pákový ovladač,...)
 - Velikost obrazovky (fyzicky a v pixelech)
-- Podporované formáty média a data
+- Podporovaná média a formáty dat
 - Atd.
 
-Je lepší rozhodování na základě charakteristik než číslo modelu, protože pak bude lépe vybavena pro budoucí zařízení.
+Je lepší učinit rozhodnutí na základě charakteristik, než je číslo modelu, protože pak budete lépe vybaveni pro zpracování budoucích zařízení.
 
-### <a name="using-aspnets-built-in-browser-detection-support"></a>Použití prostředí ASP. NET pro prohlížeče integrované detekce podpory
+### <a name="using-aspnets-built-in-browser-detection-support"></a>Pomocí ASP. Podpora detekce integrovaného prohlížeče sítě
 
-Webové formuláře ASP.NET a MVC vývojáře můžete ihned zjišťovat důležité charakteristiky hostujícími prohlížeče zkontrolováním vlastnosti *Request.Browser* objektu. Příklad naleznete v tématu
+Webové formuláře ASP.NET a vývojáři MVC můžou okamžitě zjistit důležité charakteristiky v navštíveném prohlížeči, a to zkontrolováním vlastností objektu *Request. browser* . Podívejte se například na
 
 - Request.Browser.IsMobileDevice
 - Request.Browser.MobileDeviceManufacturer, Request.Browser.MobileDeviceModel
-- Request.Browser.ScreenPixelsWidth
+- Request. browser. ScreenPixelsWidth
 - Request.Browser.SupportsXmlHttp
 - ...a mnoho dalších
 
-Na pozadí, platformu ASP.NET odpovídá příchozí *User-Agent* hlavičky protokolu HTTP (UA) proti regulárních výrazů v sadě souborů definice XML prohlížeče. Ve výchozím nastavení platforma obsahuje definice pro mnoho běžných mobilních zařízení a pro ostatní uživatele, který chcete rozpoznat můžete přidat vlastní soubory definice prohlížeče. Další podrobnosti najdete na stránce MSDN [serverových ovládacích prvků technologie ASP.NET a schopností prohlížeče](https://msdn.microsoft.com/library/x3k2ssx2.aspx).
+Platforma ASP.NET se na pozadí shoduje s hlavičkou příchozích *uživatelských agentů* (UA) http proti regulárním výrazům v sadě souborů XML s definicí prohlížeče. Ve výchozím nastavení platforma obsahuje definice pro řadu běžných mobilních zařízení a můžete přidat vlastní soubory definice prohlížeče pro jiné, které chcete rozpoznat. Další podrobnosti najdete v tématu [ovládací prvky webového serveru MSDN page ASP.NET a možnosti prohlížeče](https://msdn.microsoft.com/library/x3k2ssx2.aspx).
 
-### <a name="using-the-wurfl-device-database-via-51degreesmobi-foundation"></a>Pomocí databáze WURFL zařízení prostřednictvím 51Degrees.mobi Foundation
+### <a name="using-the-wurfl-device-database-via-51degreesmobi-foundation"></a>Používání databáze zařízení WURFL prostřednictvím 51Degrees.mobi Foundation
 
-Zatímco ASP. NET pro prohlížeče integrované detekce podpora bude dostačující pro mnoho aplikací, existují dva hlavní případy ale nemusí být dostatečně:
+ASP. Podpora vyhledávání v integrovaném prohlížeči sítě pro spoustu aplikací bude stačit, existují dva hlavní případy, kdy nemusí být k dispozici:
 
-- ***Rozpoznáte nejnovější zařízení***(bez ruční vytvoření prohlížeče definiční soubory pro ně). Všimněte si, že rozhraní .NET 4 prohlížeče definiční soubory nejsou dostatečně nová, aby rozpoznat Windows Phone 7, telefony s Androidem, prohlížeči Opera Mobile nebo zařízení Apple iPad.
-- ***Potřebujete podrobnější informace o možnostech zařízení***. Budete muset vědět o zařízení s IME (například touch vs klávesnici), nebo jaké zvukové formáty prohlížeč podporuje. Tyto informace není k dispozici ve standardní soubory definice prohlížeče.
+- ***Chcete rozpoznat nejnovější zařízení***(bez ručního vytváření definičních souborů prohlížeče). Upozorňujeme, že soubory definic prohlížeče .NET 4 nejsou dostatečně nedávné pro rozpoznávání Windows Phone 7, telefonů s Androidem, Operau mobilní prohlížeče nebo Apple iPady.
+- ***Potřebujete podrobnější informace o možnostech zařízení***. Možná budete potřebovat vědět o metodě vstupu zařízení (např. dotykové ovládání) nebo o tom, jaké formáty zvuku prohlížeč podporuje. Tyto informace nejsou k dispozici v standardních definičních souborech prohlížeče.
 
-[ *Univerzální soubor prostředků bezdrátové* (WURFL) projektu](http://wurfl.sourceforge.net/) uchovává mnohem více aktuální a podrobné informace o mobilních zařízení používaných ještě dnes.
+[Projekt WURFL ( *Wireless Universal Resource File* )](http://wurfl.sourceforge.net/) udržuje mnohem aktuálnější a podrobné informace o mobilních zařízeních, která se v současnosti používají.
 
-Dobré zprávy pro vývojáře na platformě .NET je prostředí ASP. NET pro funkce rozpoznávání prohlížeče je rozšiřitelný, takže je možné zvýšit na tyto problémy překonat. Například můžete přidat open source [ *51Degrees.mobi Foundation* ](https://github.com/51Degrees/dotNET-Device-Detection) knihovny do projektu. To je IHttpModule technologie ASP.NET nebo poskytovateli schopností prohlížeče (použít u aplikací, webových formulářů a MVC), přímo čte WURFL data a připojí ji do ASP. Mechanismus detekce NET pro prohlížeče integrované. Po instalaci modulu *Request.Browser* náhle bude obsahovat mnohem více přesné a podrobné informace: ho správně rozpozná množství zařízení už jsme zmínili a jejich možnosti (včetně seznamu Další funkce jako metoda vstupu). Další podrobnosti naleznete v dokumentaci v projektu.
+Skvělé novinky pro vývojáře na platformě .NET jsou v prostředí ASP. Funkce detekce prohlížeče sítě je rozšiřitelná, takže je možné ji rozšířit, aby se tyto problémy vyřešily. Do projektu můžete například přidat Open Source knihovnu [*51Degrees.mobi Foundation*](https://github.com/51Degrees/dotNET-Device-Detection) . Je to ASP.NET IHttpModule nebo poskytovatel schopností prohlížeče (použitelné pro webové formuláře i aplikace MVC), které přímo čtou WURFL data a zavěsí je do ASP. Mechanizmus detekce vestavěného prohlížeče sítě. Po instalaci modulu *Request. browser* bude náhle obsahovat přesnější a podrobné informace: správně rozpozná mnoho dříve zmíněných zařízení a zobrazí seznam jejich schopností (včetně dalších funkcí, jako je například metoda Input). Další podrobnosti najdete v dokumentaci k projektu.
 
-## <a name="how-web-forms-applications-can-present-mobile-specific-pages"></a>Jak aplikace webových formulářů sebou může nést stránek specifických pro mobilní zařízení
+## <a name="how-web-forms-applications-can-present-mobile-specific-pages"></a>Jak můžou aplikace webových formulářů prezentovat stránky pro mobilní zařízení
 
-Ve výchozím nastavení zde je, jak zcela nové aplikace webových formulářů zobrazí v běžné mobilních zařízení:
+Ve výchozím nastavení tady vidíte, jak se na běžných mobilních zařízeních zobrazují nové aplikace webových formulářů:
 
 ![](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/_static/image1.png)
 
-Je zřejmé ani rozložení vypadá velmi mobilní zařízení – tato stránka je navržená pro velké a objektově orientovaný na šířku monitorování není pro malé obrazovce orientovaný na výšku. Tak co můžete udělat?
+Zřejmé, že rozložení vypadá velmi jako mobilní – Tato stránka byla navržena pro velké a orientované monitorování, nikoli pro obrazovku orientovaný na výšku. Co k tomu můžete?
 
-Jak je popsáno dříve v tomto dokumentu, existuje mnoho způsobů, jak přizpůsobit stránky pro mobilní zařízení. Některé postupy jsou založené na server, další spuštění na straně klienta.
+Jak je popsáno výše v tomto dokumentu, existuje mnoho způsobů, jak přizpůsobit stránky pro mobilní zařízení. Některé techniky jsou založené na serveru, jiné spouštějí v klientovi.
 
-### <a name="creating-a-mobile-specific-master-page"></a>Vytvoření stránky předlohy specifické pro mobilní zařízení
+### <a name="creating-a-mobile-specific-master-page"></a>Vytvoření hlavní stránky specifické pro mobilní zařízení
 
-V závislosti na požadavcích, je možné používat stejné webové formuláře pro všechny návštěvníky, ale mají dvě samostatné stránky předlohy: jeden pro klasické pracovní plochy návštěvníci, druhý pro mobilní návštěvníků. Získáte flexibilitu změna šablony stylů CSS nebo tak, aby odpovídala mobilní zařízení, bez toho, že duplicitní jakékoli logiky stránku nejvyšší úrovně kódu HTML.
+V závislosti na vašich požadavcích může být možné použít stejné webové formuláře pro všechny návštěvníky, ale mají dvě samostatné stránky předlohy: jeden pro návštěvníky stolních počítačů, druhý pro mobilní návštěvníky. Tím získáte flexibilitu při změně šablony stylů CSS nebo značek HTML nejvyšší úrovně na možnost mobilní zařízení, aniž byste museli duplikovat libovolnou logiku stránky.
 
-To je jednoduché. Například můžete přidat obslužnou rutinu PreInit například následující webové formuláře:
+To je snadné. Například můžete přidat obslužnou rutinu před inicializací, jako je například následující, do webového formuláře:
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample1.cs)]
 
-Teď vytvořte hlavní stránku s názvem Mobile.Master ve složce nejvyšší úrovně vaší aplikace a použije se při zjištění mobilních zařízení. Mobilní stránky předlohy odkazovat šablony stylů CSS specifické pro mobilní zařízení v případě potřeby. Klasické pracovní plochy návštěvníků i nadále uvidí výchozí stránku předlohy, není mobilní ten.
+Nyní vytvořte hlavní stránku s názvem Mobile. Master ve složce nejvyšší úrovně aplikace a použije se při zjištění mobilního zařízení. Vaše mobilní Předloha může v případě potřeby odkazovat na šablonu stylů CSS specifickou pro mobilní zařízení. Pro návštěvníky plochy se pořád zobrazuje vaše výchozí stránka předlohy, ne mobilní zařízení.
 
-### <a name="creating-independent-mobile-specific-web-forms"></a>Vytváření nezávislé webové formuláře specifické pro mobilní zařízení
+### <a name="creating-independent-mobile-specific-web-forms"></a>Vytváření nezávislých webových formulářů specifických pro mobilní zařízení
 
-Pro maximální flexibilitu můžete přejít mnohem víc než jen samostatné stránky předlohy pro různé typy zařízení. Můžete implementovat dvě *zcela oddělit sad stránek webových formulářů* – jeden nastavení u počítačových prohlížečů, jiné sady pro mobilní telefony. Tato metoda funguje nejlépe, pokud chcete předložit mobilní návštěvníků velmi rozdílné informace nebo pracovních postupů. Zbytek tohoto oddílu popisuje tento postup podrobněji.
+Pro zajištění maximální flexibility můžete jít mnohem víc, než jenom samostatné stránky předloh pro různé typy zařízení. Můžete implementovat dvě *zcela oddělené sady webových formulářů* – jednu sadu pro desktopové prohlížeče, jinou sadu pro mobilní zařízení. To funguje nejlépe, pokud chcete pro mobilní návštěvníky prezentovat velmi jiné informace nebo pracovní postupy. Zbývající část této části popisuje tento přístup podrobněji.
 
-Za předpokladu, že již máte aplikaci webových formulářů navržené pro stolních počítačů, vytvořte podsložku nazvanou "Mobilní" v rámci vašeho projektu a sestavení vašich mobilních stránek je nejjednodušší způsob, jak pokračovat. Dílčí celý web, s vlastní stránky předlohy, šablony stylů a stránky, můžete vytvořit pomocí stejné techniky, které byste použili pro jakékoli jiné aplikace webových formulářů. K vytvoření mobilních ekvivalent pro nepotřebujete nutně *každý* stránce na webu klasické pracovní plochy, můžete zvolit, jaké podmnožinu funkcí dává smysl pro mobilní návštěvníků.
+Za předpokladu, že už máte aplikaci webových formulářů navrženou pro stolní počítače, nejjednodušší způsob, jak pokračovat, je vytvořit podsložku s názvem "mobilní" v rámci projektu a vytvořit mobilní stránky tam. Můžete sestavit celou podřízenou lokalitu s vlastními stránkami předlohy, šablonami stylů a stránkami, a to pomocí všech stejných technik, které byste použili pro jakoukoli jinou aplikaci webového formuláře. Nemusíte nutně vytvořit mobilní ekvivalent pro *každou* stránku na desktopové stránce. Můžete si vybrat, jakou podmnožinu funkcí dává mobilní Návštěvníci smysl.
 
-Mobilních stránek můžete sdílet společné statické prostředky (jako jsou obrázky, JavaScript nebo šablon stylů CSS soubory) s vaší regulární stránky, pokud chcete. Protože se do složky "Mobilní" *není* označit jako samostatnou aplikační když jsou hostované v IIS (je stejně jednoduché podsložky stránky webových formulářů), se budou také sdílet stejné konfiguraci, data relace a další infrastrukturu jako vaše klasické pracovní plochy stránky.
+Vaše mobilní stránky mohou sdílet běžné statické prostředky (například obrázky, JavaScript nebo soubory CSS) s běžnými stránkami, pokud chcete. Vzhledem k tomu, že vaše "mobilní" složka nebude označena jako samostatná aplikace, *Pokud je* hostována ve službě IIS (pouze jednoduché Podsložky webových formulářů), bude také sdílet stejnou konfiguraci, data relace a další infrastrukturu jako stránky plochy.
 
 > [!NOTE]
-> Protože tento přístup obvykle zahrnuje některé duplicity kódu (mobilních stránek můžou sdílet určité podobnosti s klasické pracovní plochy stránky), je důležité, abyste Multi-Factor si všechny běžné obchodní logiku a data přístupový kód do sdílené nadřízené vrstvy nebo služby. V opačném případě budete double snaha o vytvoření a údržba vaší aplikace.
+> Vzhledem k tomu, že tento přístup obvykle zahrnuje některé duplicity kódu (mobilní stránky budou nejspíš sdílet některé podobnosti se stránkami na ploše), je důležité vyhodnotit všechny běžné obchodní logiky nebo datové kódy pro přístup do sdílené základní vrstvy nebo služby. Jinak budete muset při vytváření a údržbě aplikace zdvojnásobit úsilí.
 
-#### <a name="redirecting-mobile-visitors-to-your-mobile-pages"></a>Přesměrování mobilní návštěvníkům mobilních stránek
+#### <a name="redirecting-mobile-visitors-to-your-mobile-pages"></a>Přesměrování mobilních návštěvníků na mobilní stránky
 
-Často je vhodné přesměrování pouze na mobilní návštěvníkům mobilních stránek *první* žádosti v jejich relace procházení (a ne u každého požadavku v jejich relace), protože:
+Je často vhodné přesměrovat mobilní návštěvníky na mobilní stránky jenom na *první* žádost ve své relaci procházení (a ne na každý požadavek ve své relaci), protože:
 
-- Pak můžete snadno povolit mobilní uživatelé pro přístup k ploše stránky, pokud si přejí – stačí vložit odkaz na hlavní stránce, která přejde na "Desktopová verze". Návštěvník nebude přesměrovat zpět na stránku mobilní, protože už nejsou první požadavek v jejich relace.
-- Tím eliminujete riziko zasahovala do žádosti o žádné dynamické prostředky sdílené mezi částmi desktopových a mobilních vašeho webu (např. Pokud jste si běžné webový formulář desktopová i mobilní částí webu zobrazení v prvku IFRAME nebo určité obslužné rutiny jazyka Ajax)
+- Mobilním návštěvníkům pak můžete snadno umožnit přístup k vašim stránkám plochy, pokud si chtějí – Stačí umístit odkaz na stránku předlohy, která se odkazuje na desktopovou verzi. Návštěvník nebude přesměrován zpět na mobilní stránku, protože již není prvním požadavkem ve své relaci.
+- Zabraňuje riziku v narušování požadavků na všechny dynamické prostředky sdílené mezi desktopovou a mobilní částí vaší lokality (například pokud máte společný webový formulář, který se zobrazuje na ploše a mobilní části vaší lokality v prvku IFRAME nebo v určitých obslužných rutinách AJAX).
 
-K tomuto účelu můžete umístit logiky přesměrování v **relace\_Start** metody. Například přidejte následující metodu do souboru Global.asax.cs:
+K tomu můžete svou logiku přesměrování umístit v **relaci\_spustit** metodu. Do souboru Global.asax.cs přidejte například následující metodu:
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample2.cs)]
 
-#### <a name="configuring-forms-authentication-to-respect-your-mobile-pages"></a>Konfigurace ověřování pomocí formulářů se respektoval mobilních stránek
+#### <a name="configuring-forms-authentication-to-respect-your-mobile-pages"></a>Konfigurace ověřování formulářů pro respektování mobilních stránek
 
-Všimněte si, že ověřování pomocí formulářů určitých předpokladů o kde ho můžete během a po dokončení procesu ověřování přesměrovat návštěvníků:
+Všimněte si, že ověřování prostřednictvím formulářů provádí určité předpoklady, kde může přesměrovat návštěvníky během a po procesu ověřování:
 
-- Když uživatel potřebuje k ověření, ověřování pomocí formulářů je bude přesměrovávat na stránku desktopovém přihlášení, bez ohledu na to, zda jsou desktopové nebo mobilní uživatele (protože má jenom koncept *jeden* přihlašovací adresa URL). Za předpokladu, že chcete jinak stylu mobilní přihlašovací stránku, musíte k vylepšení plochy přihlašovací stránku tak, aby ji mobilní uživatele přesměruje na samostatné mobilní přihlašovací stránku. Například přidejte následující kód, který vaše **desktop** přihlašovací stránky kódu: 
+- Pokud uživatel potřebuje být ověřený, ověřování pomocí formulářů je přesměruje na stránku pro přihlášení k ploše bez ohledu na to, jestli se jedná o stolní nebo mobilní uživatele (protože má jenom koncept *jedné* přihlašovací adresy URL). Za předpokladu, že chcete nastavit styl mobilní přihlašovací stránky odlišně, je potřeba vylepšit přihlašovací stránku plochy, aby přesměrovala mobilní uživatele na samostatnou mobilní přihlašovací stránku. Do kódu přihlašovací stránky na **ploše** můžete například přidat následující kód na pozadí: 
 
     [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample3.cs)]
-- Jakmile uživatel úspěšně přihlásí, ověřování pomocí formulářů se ve výchozím nastavení přesměruje je to klasické pracovní plochy domovské stránky (protože má jenom koncept *jeden* výchozí stránky). Je potřeba zvýšit mobilní přihlašovací stránku tak, aby ho přesměruje do mobile domovskou stránku po úspěšném přihlášení. Například přidejte následující kód, který vaše **mobilní** přihlašovací stránky kódu: 
+- Až se uživatel úspěšně přihlásí, ověřování pomocí formulářů je ve výchozím nastavení přesměruje na domovskou stránku plochy (protože má jenom koncept *jedné* výchozí stránky). Musíte vylepšit mobilní přihlašovací stránku tak, aby se přesměrovala na mobilní domovskou stránku po úspěšném přihlášení. Přidejte například následující kód na **mobilní** přihlašovací stránku kód na pozadí: 
 
     [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample4.cs)]
   
-  Tento kód předpokládá, že vaše stránka má ovládací prvek Login server volá LoginUser, jako výchozí šablony projektu.
+  Tento kód předpokládá, že vaše stránka obsahuje ovládací prvek přihlašovacího serveru s názvem LoginUser, jako v výchozí šabloně projektu.
 
-### <a name="working-with-output-caching"></a>Práce s ukládání výstupu do mezipaměti
+### <a name="working-with-output-caching"></a>Práce s ukládáním výstupu do mezipaměti
 
-Pokud při použití ukládání výstupu do mezipaměti, mějte na paměti, že ve výchozím nastavení je možné pro klasické pracovní plochy uživatele k navštívení určité adresy URL (což způsobí jeho výstupu do mezipaměti), následované mobilní uživatele, který pak obdrží výstup z mezipaměti klasické pracovní plochy. Toto upozornění platí, ať už právě různé stránky předlohy podle typu zařízení, nebo implementace zcela samostatné webové formuláře podle typu zařízení.
+Pokud používáte ukládání výstupu do mezipaměti, mějte na paměti, že ve výchozím nastavení je možné, aby uživatel klasické pracovní plochy navštívil určitou adresu URL (což způsobilo uložení výstupu do mezipaměti) a potom mobilní uživatel, který obdrží výstup na ploše uložený v mezipaměti. Toto upozornění se týká toho, zda právě měníte hlavní stránku podle typu zařízení nebo když implementujete úplně samostatné webové formuláře na typ zařízení.
 
-Abyste zabránili problémům, můžete dát pokyn, ASP.NET, aby položka mezipaměti podle Určuje, zda je návštěvníka použitím mobilního zařízení se liší. Přidáte parametr VaryByCustom na vaší stránce OutputCache deklaraci takto:
+Chcete-li se tomuto problému vyhnout, můžete ASP.NET změnit položku mezipaměti podle toho, zda návštěvník používá mobilní zařízení. Přidejte parametr hodnota VaryByCustom do deklarace OutputCache vaší stránky následujícím způsobem:
 
 [!code-aspx[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample5.aspx)]
 
-Dále definujte *isMobileDevice* jako vlastní mezipaměti přepsat parametru tak, že přidáte následující metodu do souboru Global.asax.cs:
+Dále definujte *isMobileDevice* jako parametr vlastní mezipaměti přidáním následujícího přepsání metody do souboru Global.asax.cs:
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample6.cs)]
 
-Tím se zajistí, že mobilní návštěvníků na stránce nepřijímají výstup dříve vložit do mezipaměti klientů návštěvníka.
+Tím zajistíte, aby mobilní Návštěvníci na stránce nedostali výstup, který jste předtím umístili do mezipaměti návštěvníkem plochy.
 
-### <a name="a-working-example"></a>Funkční příklad
+### <a name="a-working-example"></a>Pracovní příklad
 
-Pokud chcete zobrazit tyto techniky v akci, stáhněte si [dokument white paper, ukázky kódu](https://docs.microsoft.com/aspnet/mobile/overview). Ukázková aplikace webových formulářů mobilní uživatele automaticky přesměruje na sadu stránek specifických pro mobilní zařízení v podsložce s názvem mobilní zařízení. Značky a stylu tyto stránky je lépe optimalizovaná pro mobilní prohlížeče, jak je vidět na následujících snímcích obrazovky:
+Chcete-li zobrazit tyto techniky v akci, Stáhněte si [Tento dokument White Paper Samples Code](https://docs.microsoft.com/aspnet/mobile/overview). Ukázková aplikace webových formulářů automaticky přesměruje mobilní uživatele na skupinu stránek specifických pro mobilní zařízení v podsložce s názvem mobilní. Značky a styly těchto stránek jsou lépe optimalizované pro mobilní prohlížeče, jak vidíte na následujících snímcích obrazovky:
 
 ![](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/_static/image2.png)
 
-Další informace o optimalizaci značky a šablony stylů CSS pro mobilní prohlížeče najdete v části "Určení stylu mobilních stránek pro mobilní prohlížeče" dále v tomto dokumentu.
+Další tipy k optimalizaci značek a šablon stylů CSS pro mobilní prohlížeče najdete v části "styly mobilních stránek pro mobilní prohlížeče" dále v tomto dokumentu.
 
-## <a name="how-aspnet-mvc-applications-can-present-mobile-specific-pages"></a>Jak aplikace ASP.NET MVC sebou může nést stránek specifických pro mobilní zařízení
+## <a name="how-aspnet-mvc-applications-can-present-mobile-specific-pages"></a>Jak aplikace ASP.NET MVC můžou prezentovat stránky pro mobilní zařízení
 
-Protože vzor Model-View-Controller odděluje logiku aplikace (kontrolery) od logiky prezentace (v zobrazení), můžete z kteréhokoli z následujících dvou přístupů zpracování mobilní podporu v kódu na straně serveru:
+Vzhledem k tomu, že vzorek Model-View-Controller odděluje aplikační logiku (v řadičích) z prezentační logiky (v zobrazeních), můžete vybrat některý z následujících přístupů ke zpracování mobilní podpory v kódu na straně serveru:
 
-1. ***Použití stejného kontrolerů a zobrazení pro stolní počítače a mobilní prohlížeče, ale vykreslit zobrazení s různá rozložení Razor v závislosti na typu zařízení*** . Tato volba funguje nejlépe, je-li zobrazit stejná data na všech zařízeních, ale jednoduše chcete zadat jiné šablony stylů CSS nebo změnit několik elementů HTML nejvyšší úrovně pro mobilní telefony.
-2. ***Použít stejnou řadiče pro stolní počítače a mobilní prohlížeče, ale vykreslení různá zobrazení v závislosti na typu zařízení***. Tato volba funguje nejlépe, pokud jste zobrazení přibližně stejná data a poskytují stejné pracovních postupů pro koncové uživatele, ale chcete vykreslit velice různý kód HTML tak, aby odpovídala zařízení používá.
-3. ***Vytvoření samostatné oblasti pro stolní počítače a mobilní prohlížeče, implementace nezávislé kontrolerů a zobrazení pro každou*** . Tato volba funguje nejlépe, pokud jste zobrazení velmi různých obrazovek, obsahující různé informace a úvodní uživatele provede různé pracovní postupy, které jsou optimalizované pro jejich typ zařízení. Může to znamenat některé opakování kódu, ale můžete minimalizovat, ve které budou zohledňovat si běžné logiky do podkladové vrstvy nebo služby.
+1. ***používat stejné řadiče a zobrazení pro stolní i mobilní prohlížeče, ale v závislosti na typu zařízení vykreslí zobrazení v různých rozloženích Razor.** Tato možnost funguje nejlépe, pokud zobrazujete stejná data na všech zařízeních, ale jednoduše chcete dodat jiné šablony stylů CSS nebo změnit několik prvků HTML na nejvyšší úrovni pro mobilní zařízení.
+2. ***Používejte stejné řadiče pro stolní i mobilní prohlížeče, ale vykreslete různá zobrazení v závislosti na typu zařízení***. Tato možnost funguje nejlépe, pokud zobrazujete zhruba stejná data a zadáváte stejné pracovní postupy pro koncové uživatele, ale chcete vykreslit velmi různé značky HTML tak, aby vyhovovaly používanému zařízení.
+3. ***vytvářet samostatné oblasti pro stolní a mobilní prohlížeče, které implementují nezávislé řadiče a zobrazení pro každou *.** Tato možnost funguje nejlépe, pokud zobrazujete velmi různé obrazovky, které obsahují různé informace a vedoucí uživatele k různým pracovním postupům optimalizovaným pro jejich typ zařízení. Může to znamenat, že došlo k nějakému opakování kódu, ale můžete ho minimalizovat tak, že se běžně vyřadí do příslušné vrstvy nebo služby.
 
-Pokud budete chtít využít **první** možnost a pouze rozložení Razor se liší podle typu zařízení, je velmi snadné. Upravit vaše \_ViewStart.cshtml souboru následujícím způsobem:
+Pokud chcete vzít **první** možnost a měnit pouze rozložení Razor na typ zařízení, je velmi snadné. Pouze upravte soubor \_ViewStart. cshtml následujícím způsobem:
 
 [!code-cshtml[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample7.cshtml)]
 
-Nyní můžete vytvořit konkrétní mobilní rozložení volá \_LayoutMobile.cshtml se strukturou stránky a šablony stylů CSS pravidla optimalizovány pro mobilní zařízení.
+Nyní můžete vytvořit rozložení specifické pro mobilní zařízení s názvem \_LayoutMobile. cshtml s strukturou stránky a pravidly CSS optimalizovanými pro mobilní zařízení.
 
-Pokud chcete převést **druhý** možnosti vykreslování něco úplně jiného zobrazení v závislosti na typu zařízení návštěvníka, přečtěte si téma [blogový příspěvek Scotta Hanselmana](http://www.hanselman.com/blog/ABetterASPNETMVCMobileDeviceCapabilitiesViewEngine.aspx).
+Pokud chcete využít **druhou** možnost, vykreslit v závislosti na typu zařízení návštěvníka úplně různá zobrazení, přečtěte si [Blogový příspěvek Scott Hanselman](http://www.hanselman.com/blog/ABetterASPNETMVCMobileDeviceCapabilitiesViewEngine.aspx).
 
-Zbytek tohoto dokumentu se zaměřuje na **třetí** možnost – vytvoření samostatných řadičů *a* zobrazení pro mobilní zařízení – proto můžete řídit přesně se nabízí jaké podmnožinu funkcí pro mobilní návštěvníků.
+Zbytek tohoto dokumentu se zaměřuje na **třetí** možnost – vytváří samostatné řadiče *a* zobrazení pro mobilní zařízení – takže můžete přesně řídit, jakou sadu funkcí jsou pro mobilní návštěvníky nabízené.
 
-### <a name="setting-up-a-mobile-area-within-your-aspnet-mvc-application"></a>Nastavení na mobilní oblast v rámci vaší aplikace ASP.NET MVC
+### <a name="setting-up-a-mobile-area-within-your-aspnet-mvc-application"></a>Nastavení mobilní oblasti v rámci aplikace ASP.NET MVC
 
-Můžete přidat oblast s názvem "Mobilní" do stávající aplikace ASP.NET MVC obvyklým způsobem: klikněte pravým tlačítkem na název vašeho projektu v Průzkumníku řešení a zvolte Přidat a oblasti. Poté můžete přidat kontrolerů a zobrazení stejně jako ostatní oblasti v rámci aplikace ASP.NET MVC. Například přidáte mobilní oblast nový kontroler volá HomeController tak, aby fungoval jako domovskou stránku pro mobilní návštěvníků.
+Do existující aplikace ASP.NET MVC můžete v normálním způsobu přidat oblast s názvem "mobilní", a to normálním způsobem: klikněte pravým tlačítkem myši na název projektu v Průzkumník řešení a pak zvolte Přidat oblast. Pak můžete přidat řadiče a zobrazení jako v libovolné jiné oblasti aplikace ASP.NET MVC. Například přidejte do mobilní oblasti nový kontroler s názvem HomeController, který bude fungovat jako Domovská stránka pro mobilní návštěvníky.
 
-### <a name="ensuring-the-url-mobile-reaches-the-mobile-homepage"></a>Zajištění URL /Mobile dosáhne mobilní domovské stránky
+### <a name="ensuring-the-url-mobile-reaches-the-mobile-homepage"></a>Zajištění, aby adresa URL/Mobilea dosáhla domovské stránky mobilní
 
-Pokud chcete adresy URL /Mobile kontaktovat, akce indexu na HomeController uvnitř mobilních areálu, je potřeba dělat dva malé změny konfigurace směrování. Nejprve aktualizujte vaše třída MobileAreaRegistration tak, aby byla HomeController výchozí řadiče ve vaší oblasti mobilních jak je znázorněno v následujícím kódu:
+Pokud chcete, aby se adresa URL/Mobilea k akci indexu v HomeController uvnitř mobilní oblasti, budete muset v konfiguraci směrování udělat dvě malé změny. Nejprve aktualizujte třídu MobileAreaRegistration tak, aby HomeController je výchozím řadičem v mobilní oblasti, jak je znázorněno v následujícím kódu:
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample8.cs)]
 
-To znamená, že mobilní Domovská stránka nyní bude umístěn na /Mobile, nikoli/Mobile Domů, protože "Home" je teď výchozí název kontroleru implicitně mobilních stránek.
+To znamená, že mobilní Domovská stránka se teď bude nacházet na/Mobile místo/Mobile/Home, protože "Home" je teď implicitně výchozím názvem kontroleru pro mobilní stránky.
 
-Dále si všimněte, že tak, že přidáte druhý HomeController do vaší aplikace (například mobilní tu, nejen u desktopového existující jeden), jste budete zrušili domovské stránce regulární klasické pracovní plochy. Dojde k selhání s chybou "*bylo nalezeno několik typů, které se shodují s řadičem s názvem"Home"* ". Chcete-li tento problém vyřešit, aktualizujte nejvyšší úrovně konfigurace směrování (v Global.asax.cs) k určení, že by klasické pracovní plochy HomeController po nejednoznačnosti mají přednost:
+Dále si všimněte, že přidání druhého HomeController do aplikace (tj. mobilní zařízení, kromě stávající plochy), budete mít na hlavní domovské stránce přerušenou svou normální plochu. Dojde k selhání s chybou "bylo*nalezeno více typů, které odpovídají řadiči s názvem" Home "* ". Pokud chcete tento problém vyřešit, aktualizujte konfiguraci směrování na nejvyšší úrovni (v Global.asax.cs), abyste určili, že by měl mít vaše desktopová HomeController přednost při nejednoznačnosti:
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample9.cs)]
 
-Nyní chyba půjdou vypustila při optimalizaci a adresa URL protokolu http:\/\/*yoursite*/ dosáhne klasické pracovní plochy domovskou stránku a http:\/\/*yoursite*/mobile/ bude přístup mobilních domovské stránky.
+Teď dojde k chybě a adresa URL http:\/\/*yoursite*/se dostane na domovskou stránku na ploše a http:\/\/*yoursite*/Mobile/se dostanete k mobilní domovské stránce.
 
-### <a name="redirecting-mobile-visitors-to-your-mobile-area"></a>Přesměrování mobilní návštěvníkům mobilní oblast
+### <a name="redirecting-mobile-visitors-to-your-mobile-area"></a>Přesměrování mobilních návštěvníků do mobilní oblasti
 
-Existuje mnoho různých rozšíření bodů v architektuře ASP.NET MVC, tak, že existuje mnoho způsobů je to možné vkládat logiky přesměrování. Jednou z úhledné možností je vytvořit atribut filtru, [RedirectMobileDevicesToMobileArea], který provádí přesměrování, pokud jsou splněny následující podmínky:
+ASP.NET MVC obsahuje mnoho různých bodů rozšiřitelnosti, takže je možné vložit logiku přesměrování mnoha různými způsoby. Jednou z možností je vytvořit atribut filtru [RedirectMobileDevicesToMobileArea], který provede přesměrování v případě splnění následujících podmínek:
 
-1. Je první požadavek v relaci uživatele (například Session.IsNewSession rovná se true)
-2. Požadavek pochází z mobilního prohlížeče (například Request.Browser.IsMobileDevice rovná se true)
-3. Uživatel není již požadování prostředku v oblasti mobilních (například *cesta* část adresy URL nezačíná /Mobile)
+1. Je to první požadavek v relaci uživatele (tj. Session. IsNewSession Equals true).
+2. Požadavek přichází z mobilního prohlížeče (tj. Request. browser. IsMobileDevice se rovná true).
+3. Uživatel již nepožaduje prostředek v mobilní oblasti (tj. část *cesty* adresy URL nezačíná na/Mobile).
 
-Ukázky ke stažení, které jsou zahrnuté v tomto dokumentu white paper obsahuje implementaci tuto logiku. Je implementován jako filtr autorizace, odvozené od třídy AuthorizeAttribute, což znamená, že je správně fungovaly i v případě použití ukládání výstupu do mezipaměti (jinak, pokud první přístupy klasické pracovní plochy návštěvníka určité adresy URL, klasické pracovní plochy výstupu mohou být uložené v mezipaměti a pak dodávat do následné mobilní návštěvníci).
+Ukázka ke stažení, která je součástí tohoto dokumentu White Paper, zahrnuje implementaci této logiky. Implementuje se jako autorizační filtr, který je odvozený od AuthorizeAttribute, což znamená, že může správně fungovat i v případě, že používáte ukládání výstupu do mezipaměti (jinak, pokud návštěvník pro stolní počítače poprvé přistupuje k určité adrese URL, výstup na ploše může být uložený v mezipaměti a pak bude obsluhován Další mobilní Návštěvníci).
 
-Protože je filtr, můžete zvolit uplatňovat na konkrétní řadiče a akce, například
+Vzhledem k tomu, že se jedná o filtr, můžete zvolit, že se má použít pro konkrétní řadiče a akce, např.
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample10.cs)]
 
-… nebo můžete ho použít pro všechny kontrolery a akce jako MVC 3 *globálních filtrů* v souboru Global.asax.cs:
+… nebo ho můžete použít pro všechny řadiče a akce jako *globální filtr* MVC 3 v souboru Global.asax.cs:
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample11.cs)]
 
-Ukázky ke stažení také ukazuje, jak můžete vytvořit podtříd tento atribut přesměrovat na konkrétní umístění v rámci mobilní oblast. To znamená, že například že můžete:
+Ukázka ke stažení také ukazuje, jak lze vytvořit podtřídy tohoto atributu, který přesměruje na konkrétní umístění v mobilní oblasti. To znamená, že můžete například:
 
-- Registraci globálního filtru jak je znázorněno výše, která odesílá mobilní návštěvníků mobilní domovskou stránku ve výchozím nastavení.
-- Speciální filtr [RedirectMobileDevicesToMobileProductPage] platí také pro "zobrazení product" akci, která přebírá mobilní návštěvníků na mobilní verzi měl požadovaná stránka produktu.
-- Další zvláštní podtřídy filtr platí také pro konkrétní akce, přesměrování mobilní návštěvníků na stejnou stránku mobilní
+- Zaregistrujte globální filtr, jak vidíte výše, který ve výchozím nastavení odesílá mobilním návštěvníkům mobilním stránkám mobilní aplikace.
+- Použijte také speciální filtr [RedirectMobileDevicesToMobileProductPage] pro akci "Zobrazit produkt", která přijímají mobilní návštěvníky k mobilní verzi jakékoli stránky produktu, kterou požadoval.
+- Použít také další speciální podtřídy filtru na konkrétní akce, přesměrování mobilních návštěvníků na ekvivalentní mobilní stránku
 
-### <a name="configuring-forms-authentication-to-respect-your-mobile-pages"></a>Konfigurace ověřování pomocí formulářů se respektoval mobilních stránek
+### <a name="configuring-forms-authentication-to-respect-your-mobile-pages"></a>Konfigurace ověřování formulářů pro respektování mobilních stránek
 
-Pokud používáte ověřování pomocí formulářů, nezapomeňte přitom, že když uživatel potřebuje přihlásit, se automaticky přesměruje uživatele na jednu konkrétní "přihlásit" adresu URL, která ve výchozím nastavení je **/účet/přihlášení**. To znamená, že mobilní uživatelé mohou přesměrováni na akci klasické pracovní plochy "přihlášení".
+Pokud používáte ověřování pomocí formulářů, měli byste si uvědomit, že když se uživatel musí přihlásit, automaticky přesměruje uživatele na jednu konkrétní adresu URL pro přihlášení, která je ve výchozím nastavení **/account/LogOn**. To znamená, že mobilní uživatelé mohou být přesměrováni na akci přihlášení na plochu.
 
-K tomuto problému vyhnout, přidáte logiku klasické pracovní plochy akci "přihlásit" tak, aby znovu přesměrování mobilními uživateli na mobilní "přihlásit" akce. Pokud používáte výchozí šablonu aplikace ASP.NET MVC, aktualizujte akce AccountController společnosti přihlášení následujícím způsobem:
+Pokud se chcete tomuto problému vyhnout, přidejte do své pracovní plochy logiku pro "přihlášení", aby se mobilní uživatelé znovu přesměroval na mobilní akci "přihlášení". Pokud používáte výchozí šablonu aplikace ASP.NET MVC, aktualizujte akci přihlášení AccountController následujícím způsobem:
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample12.cs)]
 
-… a na řadiči volá AccountController nejbližší mobilní implementací vhodný "přihlásit" akce specifické pro mobilní zařízení.
+… a potom implementujte vhodný mobilní akci "přihlášení" na řadiči s názvem AccountController v mobilní oblasti.
 
-### <a name="working-with-output-caching"></a>Práce s ukládání výstupu do mezipaměti
+### <a name="working-with-output-caching"></a>Práce s ukládáním výstupu do mezipaměti
 
-Pokud používáte filtr [OutputCache], je nutné vynutit položky mezipaměti se liší podle typu zařízení. Například napište:
+Pokud používáte filtr [OutputCache], musíte vynutit, aby se položka mezipaměti lišila podle typu zařízení. Napište například:
 
 [!code-javascript[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample13.js)]
 
-Potom přidejte následující metodu do souboru Global.asax.cs:
+Pak do souboru Global.asax.cs přidejte následující metodu:
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample14.cs)]
 
-Tím se zajistí, že mobilní návštěvníků na stránce nepřijímají výstup dříve vložit do mezipaměti klientů návštěvníka.
+Tím zajistíte, aby mobilní Návštěvníci na stránce nedostali výstup, který jste předtím umístili do mezipaměti návštěvníkem plochy.
 
-### <a name="a-working-example"></a>Funkční příklad
+### <a name="a-working-example"></a>Pracovní příklad
 
-Pokud chcete zobrazit tyto techniky v akci, stáhněte si [dokument white paper kód související ukázky](https://docs.microsoft.com/aspnet/mobile/overview). Ukázka zahrnuje aplikaci ASP.NET MVC 3 (verze Release Candidate) Vylepšený pro podporu mobilních zařízení pomocí metod popsaných výše.
+Chcete-li zobrazit tyto techniky v akci, Stáhněte si [Tento dokument s ukázkami, které jsou k disknize](https://docs.microsoft.com/aspnet/mobile/overview). Ukázka zahrnuje aplikaci ASP.NET MVC 3 (Release Candidate) rozšířenou na podporu mobilních zařízení pomocí výše popsaných metod.
 
 ## <a name="further-guidance-and-suggestions"></a>Další doprovodné materiály a návrhy
 
-Následující informace platí i pro webové formuláře a MVC vývojáři, kteří jsou pomocí techniky popsané v tomto dokumentu.
+Následující diskuze platí pro webové formuláře i vývojáře MVC, kteří používají techniky popsané v tomto dokumentu.
 
-### <a name="enhancing-your-redirection-logic-using-51degreesmobi-foundation"></a>Rozšíření přesměrování logiku pomocí 51Degrees.mobi Foundation
+### <a name="enhancing-your-redirection-logic-using-51degreesmobi-foundation"></a>Vylepšení logiky přesměrování pomocí 51Degrees.mobi Foundation
 
-Může být dokonale dostatečná pro vaši aplikaci logiky přesměrování je znázorněno v tomto dokumentu, ale nebude fungovat, pokud je nutné zakázat relace, nebo mobilní prohlížeče, které zamítnout soubory cookie (tyto nemůže mít relace), protože nebude vědět, jestli daný požadavek je první z nich z tohoto návštěvníka.
+Logika přesměrování zobrazená v tomto dokumentu může být pro vaši aplikaci dokonale dostačující, ale nebude fungovat, pokud potřebujete zakázat relace nebo mobilní prohlížeče, které soubory cookie odmítnou (nemůžou mít relace), protože nedokáže zjistit, jestli je daný požadavek první z nich od tohoto návštěvníka.
 
-Už jste zjistili, jak opensourcový 51Degrees.mobi Foundation zlepšit přesnost ASP. Zjišťování sítě pro prohlížeče. Také obsahuje integrovanou schopnost přesměrování mobilní návštěvníkům konkrétní umístění nakonfigurovaná v souboru Web.config. Je možné pracovat bez v závislosti na relace ASP.NET (a tím i soubory cookie) uložením dočasné log hash návštěvníků hlavičky protokolu HTTP a IP adres, tedy ví, zda každý požadavek je první z nich z daného vistor.
+Už jste zjistili, jak může Open Source 51Degrees.mobi Foundation zlepšit přesnost ASP. Detekce prohlížeče sítě. Má také integrovanou možnost přesměrovat mobilní návštěvníky na konkrétní umístění konfigurovaná v souboru Web. config. Je možné pracovat bez závislosti na ASP.NETch relacích (a tedy souborů cookie) tím, že ukládá dočasný protokol hashů hlaviček protokolu HTTP návštěvníků a IP adres, takže ví, zda je nebo není každý požadavek prvním z daného Vistor.
 
-Přidat do části fiftyOne souboru web.config následující element bude přesměrovávat první požadavek z mobilního zařízení zjištěná na stránku ~ / Mobile/Default.aspx. Budou všechny žádosti na stránky ve složce mobilní *není* přesměrovat, bez ohledu na typ zařízení. Pokud mobilní zařízení bylo nečinné po dobu 20 minut nebo více zařízení se budou vymazány a následné žádosti, bude zacházeno jako nové značky pro účely přesměrování.
+Následující prvek přidaný do oddílu fiftyOne v souboru Web. config přesměruje první požadavek ze zjištěného mobilního zařízení na stránku ~/Mobile/Default.aspx. Všechny požadavky na stránky v mobilní *složce nebudou* přesměrovány bez ohledu na typ zařízení. Pokud je mobilní zařízení neaktivní po dobu 20 minut nebo více zařízení, bude zapomenuté a následné požadavky budou pro účely přesměrování považovány za nové.
 
 [!code-xml[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample15.xml)]
 
-Další podrobnosti najdete v tématu [51degrees.mobi Foundation dokumentaci](https://github.com/51Degrees/dotNET-Device-Detection).
+Další podrobnosti najdete v [dokumentaci k 51Degrees.mobi Foundation](https://github.com/51Degrees/dotNET-Device-Detection).
 
 > [!NOTE]
-> Můžete *můžete* Foundation 51Degrees.mobi použití funkce přesměrování na aplikace ASP.NET MVC, ale bude nutné definovat konfiguraci přesměrování z hlediska jednoduché adresy URL není z hlediska směrování parametry nebo vložením MVC filtry na akce. Důvodem je, že (v době psaní) nemůže rozpoznat 51Degrees.mobi Foundation filtry nebo směrování.
+> Funkci přesměrování 51Degrees.mobi Foundation *můžete* použít pro aplikace ASP.NET MVC, ale budete muset definovat konfiguraci přesměrování z adres URL s běžnými adresami URL, nikoli z podmínek směrování nebo vložením filtrů MVC na akce. Důvodem je to, že (v době psaní) 51Degrees.mobi Foundation nerozpoznává filtry nebo směrování.
 
-### <a name="disabling-transcoders-and-proxy-servers"></a>Zakázání Tricaster a Proxy servery
+### <a name="disabling-transcoders-and-proxy-servers"></a>Zakázání TriCaster a proxy serverů
 
-Mobilní síť operátory mají dva různé cíle v jejich přístupu k mobilní síti internet.
+Operátoři mobilní sítě mají v přístupu k mobilnímu Internetu dva široké cíle:
 
-1. Zadejte jako mnohem souvisejícího obsahu nejvíce
-2. Zajištění maximálního počtu zákazníků, kteří můžou sdílet šířku pásma sítě omezené přepínač
+1. Poskytněte co nejvíce relevantní obsah
+2. Maximalizujte počet zákazníků, kteří můžou sdílet omezené síťové šířky sítě.
 
-Protože většina webových stránek byly navrženy pro velké obrazovky velikost plochy a Rychlá oprava řádku širokopásmové připojení, použít mnoho operátorů *tricaster* nebo *proxy servery* , která dynamicky měnit webového obsahu. Se může změnit kód HTML a CSS tak, aby odpovídala menších obrazovkách (hlavně u "funkce telefony", které nemají výpočetní výkon pro zpracování složitých rozložení), a jejich znovu komprimovat imagí (výrazně snižuje jejich kvalitu) ke zlepšení rychlosti doručení stránky.
+Vzhledem k tomu, že většina webových stránek byla navržena pro velké obrazovky velikosti stolních počítačů a rychlé širokopásmové připojení s pevnou čárou, mnoho operátorů používá *TriCaster* nebo *proxy servery* , které dynamicky mění webový obsah. Mohou upravit kód HTML nebo šablonu stylů CSS tak, aby odpovídaly menším obrazovkám (zejména u "telefonů s funkcemi", které neobsahovaly výpočetní výkon pro zpracování složitých rozložení), a mohou znovu komprimovat vaše image (významně snížit jejich kvalitu), aby se zvýšila rychlost doručování stránek.
 
-Ale pokud jste pořídili úsilí k vytvoření optimalizované pro mobilní verzi vaší lokality, pravděpodobně nebudete chtít, operátora mobilní sítě narušoval se žádné další. Přidáte následující řádek na stránce\_zatížení událost v jakékoli webový formulář ASP.NET:
+Ale pokud jste se naučili vytvořit mobilní optimalizovanou verzi vašeho webu, nebudete pravděpodobně chtít, aby operátor sítě s ním jakkoli narušil. Následující řádek můžete přidat na stránku\_načíst událost do libovolného webového formuláře ASP.NET:
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample16.cs)]
 
-Nebo pro kontroler ASP.NET MVC, můžete přidat následující přepsání metody tak, aby se vztahuje na všechny akce v kontroleru:
+Nebo pro řadič MVC ASP.NET můžete přidat následující přepsání metody tak, aby platilo pro všechny akce na tomto kontroleru:
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample17.cs)]
 
-Výslednou zprávu HTTP informuje tricaster standardu W3C a proxy servery obsahu nemění. Samozřejmě není zaručeno, že operátory mobilní sítě bude respektovat tato zpráva.
+Výsledná zpráva HTTP informuje TriCaster a proxy s podporou standardu W3C, aby neměnily obsah. Samozřejmě není nijak zaručeno, že budou operátoři mobilní sítě respektovat tuto zprávu.
 
-### <a name="styling-mobile-pages-for-mobile-browsers"></a>Používání stylů pro mobilních stránek pro mobilní prohlížeče
+### <a name="styling-mobile-pages-for-mobile-browsers"></a>Stylování mobilních stránek pro mobilní prohlížeče
 
-Je nad rámec tohoto dokumentu k podrobnému popisu, skvělé jaké druhy práce značky HTML správně nebo které techniky návrh webové zajištění maximálního použitelnosti na konkrétní zařízení. To má nahoru vám najít dostatečně jednoduché rozložení, optimalizované pro mobile velikost obrazovky, bez použití nespolehlivé HTML nebo umístění triky šablony stylů CSS. Jedna z technik důležité zmínit, ale *zobrazení metaznačku*.
+Je nad rámec tohoto dokumentu, který popisuje skvělé informace o tom, jaké druhy kódu HTML fungují správně nebo které techniky návrhu webu maximalizují použitelnost na konkrétních zařízeních. K nalezení dostatečně jednoduchého rozložení optimalizovaného pro obrazovku na mobilní úrovni nepoužívejte nespolehlivé triky umístění HTML nebo CSS. Jedinou důležitou technikou je, že je však *zobrazení značky meta*.
 
-Některé moderní mobilní prohlížeče, na úsilí zobrazení webové stránky určené pro monitorování klientů, vykreslení stránky na virtuální plátno, také nazývané "zobrazení" (například virtuální zobrazení je 980 pixelů na šířku na Iphonu a 850 pixelů na šířku v prohlížeči Opera Mobile ve výchozím nastavení) a pak výsledek škálujte tak, aby na fyzických pixelech na obrazovce. Uživatel pak můžete přiblížit a posouvání zobrazení tohoto zobrazení. To má výhodu v tom, že umožňuje, aby prohlížeč zobrazení stránky v jeho zamýšlenou rozložení, ale je také obsahuje nevýhodou je, že vynutí přibližování a posouvání, která je vhodná pro uživatele. Pokud vytváříte pro mobilní zařízení, je lepší návrh pro úzké obrazovku tak, aby žádné zvětšování nebo posouvání ve vodorovném směru, je nezbytné.
+Některé moderní mobilní prohlížeče, ve snaze zobrazit webové stránky, které jsou určené pro stolní monitory, vykreslí stránku na virtuálním plátně, která se také označuje jako "zobrazení" (například virtuální zobrazení je 980 pixelů na iPhonu a 850 pixelů v systému Opera Mobile ve výchozím nastavení) a potom umožňuje škálovat výsledek dolů tak, aby se vešel na fyzické pixely obrazovky. Uživatel si pak může toto zobrazení zvětšit a posunout. Tato výhoda má tu výhodu, že umožňuje prohlížeči zobrazit stránku v jejím zamýšleném rozložení, ale má také nevýhodu, že vynucuje přiblížení a posouvání, což pro uživatele nevyhovuje. Pokud navrhujete mobilní zařízení, je lepší navrhovat pro užší obrazovku, takže není potřeba žádné přiblížení ani horizontální posouvání.
 
-Způsob, jak zjistit mobilní prohlížeče, jak široké by měl být zobrazení je nestandardní *zobrazení* značka meta. Například, pokud přidáte následující hlavní části na stránce
+Způsob, jak sdělit mobilnímu prohlížeči, jak velký má být zobrazení prostřednictvím nestandardního *zobrazení* značky meta. Pokud například do sekce HEAD stránky přidáte následující:,
 
 [!code-html[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample18.html)]
 
-… potom podpora prohlížeče chytrém telefonu se rozložení stránky na plátně celý virtuální 480 pixelů. To znamená, že pokud vaše elementů HTML definovat jejich šířku v procentech, procenta interpretován s ohledem na tento šířka v pixelech 480, ne výchozí šířka zobrazení. Díky tomu je méně pravděpodobné, že máte přiblížení a posouvání vodorovně – výrazně zlepšuje mobilní rozhraní prohlížeče uživatele.
+… pak se podpora prohlížečů smartphone rozloží na stránku na virtuálním plátně na šířku 480 pixelů. To znamená, že pokud vaše prvky HTML definují své šířky v procentech, budou se tyto procentní hodnoty interpretovat s ohledem na tuto šířku 480 pixelů, nikoli na výchozí šířku zobrazení. V důsledku toho je pravděpodobnost, že se uživatel bude muset přiblížit do horizontálního měřítka a výrazně zlepšit možnosti procházení mobilních zařízení.
 
-Pokud chcete, aby šířka zobrazení tak, aby odpovídaly fyzických pixelech zařízení, můžete zadat následující:
+Pokud chcete, aby se šířka zobrazení shodovala s fyzickými obrazovými body zařízení, můžete zadat následující:
 
 [!code-html[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample19.html)]
 
-Pro tento postup správně fungoval, nesmí vynutíte explicitně prvků, které mají být delší než tento šířku (například pomocí *šířka* atribut nebo vlastnost CSS), jinak v prohlížeči bude muset použít větší zobrazení bez ohledu na to. Viz také: [další podrobnosti o značce nestandardní zobrazení](https://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html).
+Aby to fungovalo správně, je nutné explicitně vynutit, aby prvky převyšuje tuto šířku (např. pomocí atributu *Width* nebo vlastnosti CSS), jinak bude mít prohlížeč nuceně používat větší zobrazení bez ohledu na to, co je potřeba. Viz také: [Další podrobnosti o nestandardním tagu zobrazení](https://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html).
 
-Většina moderních smartphony podporují *duální orientace*: můžou uchovávat v režimu na výšku nebo na šířku. Proto je důležité, abyste vytvářet předpoklady o obrazovky šířka v pixelech. Dokonce i Nepředpokládejte, že je pevná šířka obrazovky, protože uživatel může znovu zorientovat svoje zařízení, pokud nejsou na stránce.
+Většina moderních telefonů Smartphone podporuje *duální orientaci*: můžou se uchovávat v režimu na výšku nebo na šířku. Proto je důležité nevytvářet předpoklady o šířce obrazovky v pixelech. Ani Nepředpokládáme, že je šířka obrazovky pevná, protože uživatel může změnit orientaci zařízení, když jsou na vaší stránce.
 
-Starší zařízení Windows Mobile a Blackberry může také přijímat těchto značek meta v záhlaví stránky informovat obsahu byla optimalizována pro mobilní zařízení a proto by neměl být převedeny.
+Starší zařízení se systémem Windows Mobile a BlackBerry mohou také v záhlaví stránky přijmout následující značky meta, aby byly informace o tom, že jsou optimalizovány pro mobilní zařízení, a proto by neměly být transformovány.
 
 [!code-html[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample20.html)]
 
 ## <a name="additional-resources"></a>Další prostředky
 
-Seznam mobilních zařízení emulátorů a simulátorů, můžete použít k testování mobilní webové aplikace v ASP.NET, naleznete na stránce [simulace oblíbených mobilních zařízení pro testování](../mobile/device-simulators.md).
+Seznam emulátorů a simulátorů mobilních zařízení, které můžete použít k otestování webové aplikace Mobile ASP.NET, najdete na stránce [simulace oblíbených mobilních zařízení pro účely testování](../mobile/device-simulators.md).
 
-## <a name="credits"></a>Závěrečné titulky
+## <a name="credits"></a>Kredity
 
-- Primárního autora: Steven Sanderson
-- Revidující / další obsah zapisovačů: James Rosewell, Mikael Söderström, Scott Hanselman, Scott Hunter
+- Primární autor: Steven Sanderson
+- Revidující/další zapisovače obsahu: James Rosewell, Mikael Söderström, Scott Hanselman, Scott Hunterem

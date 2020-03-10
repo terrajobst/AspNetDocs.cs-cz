@@ -1,153 +1,153 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
-title: Představení rozhraní ASP.NET Web Pages – základy formulářů HTML | Dokumentace Microsoftu
+title: Představení webových stránek ASP.NET – základy formulářů HTML | Microsoft Docs
 author: Rick-Anderson
-description: V tomto kurzu se dozvíte základní informace o tom, jak vytvořit vstupní formulář a způsob zpracování vstupu uživatele při použití webových stránek ASP.NET (Razor). A teď...
+description: V tomto kurzu se dozvíte základní informace o tom, jak vytvořit vstupní formulář a jak zpracovat vstup uživatele, když používáte webové stránky ASP.NET (Razor). A teď...
 ms.author: riande
 ms.date: 05/28/2015
 ms.assetid: 81ed82bf-b940-44f1-b94a-555d0cb7cc98
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 msc.type: authoredcontent
 ms.openlocfilehash: f57661077ec3bb13f3d4ec41b130bda4d2fb9070
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132950"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78574282"
 ---
-# <a name="introducing-aspnet-web-pages---html-form-basics"></a>Úvod do ASP.NET Web Pages – základy formulářů HTML
+# <a name="introducing-aspnet-web-pages---html-form-basics"></a>Představení webových stránek ASP.NET – základy formulářů HTML
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> V tomto kurzu se dozvíte základní informace o tom, jak vytvořit vstupní formulář a způsob zpracování vstupu uživatele při použití webových stránek ASP.NET (Razor). A teď, když máte databázi, budete používat svoje dovednosti formuláře, umožníte uživatelům najít konkrétní videa v databázi. Předpokládá, že jste dokončili řady prostřednictvím [Úvod k zobrazení dat pomocí rozhraní ASP.NET Web Pages](/aspnet/web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data).
+> V tomto kurzu se dozvíte základní informace o tom, jak vytvořit vstupní formulář a jak zpracovat vstup uživatele, když používáte webové stránky ASP.NET (Razor). A teď, když máte databázi, budete používat své dovednosti v podobě, aby uživatelé mohli v databázi najít konkrétní filmy. Předpokládá se, že jste dokončili řadu prostřednictvím [úvodního zobrazení dat pomocí webových stránek ASP.NET](/aspnet/web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data).
 > 
-> Co se dozvíte:
+> Naučíte se:
 > 
-> - Jak vytvořit formulář s využitím standardních prvků HTML.
-> - Čtení uživatele o vstup ve formuláři.
-> - Jak vytvořit dotaz SQL, selektivně získá data pomocí hledání termín, který uživatel zadává.
-> - Jak vám má pole na stránce "nezapomeňte" co uživatel zadal.
+> - Vytvoření formuláře pomocí standardních prvků jazyka HTML.
+> - Způsob čtení vstupu uživatele ve formuláři.
+> - Postup vytvoření dotazu SQL, který selektivně načte data pomocí hledaného termínu, který uživatel dodá.
+> - Jak mít pole na stránce "pamatovat", co uživatel zadal.
 >   
 > 
 > Popsané funkce a technologie:
 > 
-> - `Request` Objektu.
-> - SQL `Where` klauzuli.
+> - Objekt `Request`
+> - Klauzule `Where` SQL.
 
-## <a name="what-youll-build"></a>Co budete vytvářet
+## <a name="what-youll-build"></a>Co sestavíte
 
-V předchozím kurzu vytvořili databázi, do ní přidat data a pak použít `WebGrid` pomocné rutiny pro zobrazení údajů. V tomto kurzu přidáte vyhledávacího pole, která vám umožní najít filmy konkrétní žánr nebo jejichž název obsahuje libovolné slovo, které zadáte. (Například budete moci vyhledat všechny filmy žánru je "Action" nebo jejichž název obsahuje "Harry" nebo "Adventure.")
+V předchozím kurzu jste vytvořili databázi, přidali do ní data a pak jste pomocí pomocníka `WebGrid` zobrazili data. V tomto kurzu přidáte vyhledávací pole, které vám umožní najít filmy konkrétního žánru nebo jeho titul, který bude obsahovat jakékoli slovo, které zadáte. (Například budete moci najít všechny filmy, jejichž Žánr je "Action" nebo jehož název obsahuje "Harry" nebo "Adventure.")
 
-Jakmile budete hotovi s tímto kurzem, budete mít na stránce podobný následujícímu:
+Po dokončení tohoto kurzu budete mít stránku, jako je tato:
 
-![Stránka filmů s rozšířením podle tematických a název hledání](form-basics/_static/image1.png)
+![Stránka filmy s hledáním žánru a nadpisu](form-basics/_static/image1.png)
 
-Výpis části stránky je stejná jako v posledním kurzu &mdash; mřížky. Bude záležet, mřížky se zobrazí pouze filmy, kterého jste hledali.
+Část stránky výpisu je stejná jako v posledním kurzu &mdash; mřížce. Rozdílem bude, že v mřížce se zobrazí pouze filmy, které jste hledali.
 
 ## <a name="about-html-forms"></a>O formulářích HTML
 
-(Pokud máte zkušenosti s vytvářením formuláře HTML a rozdíl mezi `GET` a `POST`, můžete tuto část přeskočit.)
+(Pokud máte zkušenosti s vytvářením formulářů HTML a rozdílem mezi `GET` a `POST`, můžete tuto část přeskočit.)
 
-Formulář obsahuje elementy vstupu uživatele &mdash; textová pole, tlačítka, přepínací tlačítka, zaškrtávací políčka, rozevírací seznamy a tak dále. Uživatelé vyplňte tyto ovládací prvky nebo dle popisu a pak klepnutím na tlačítko odeslání formuláře.
+Formulář obsahuje prvky uživatelského vstupu &mdash; textových polí, tlačítek, přepínačů, zaškrtávacích políček, rozevíracích seznamech atd. Uživatelé tyto ovládací prvky vyplní nebo provedou výběry a pak formulář odešlou kliknutím na tlačítko.
 
-Základní syntaxe kódu HTML formuláře je znázorněna v tomto příkladu:
+Základní syntaxe HTML formuláře je znázorněna v tomto příkladu:
 
 [!code-html[Main](form-basics/samples/sample1.html)]
 
-Spuštění na stránce tento kód vytvoří jednoduchý formulář, který vypadá jako na tomto obrázku:
+Když se tento kód spustí na stránce, vytvoří jednoduchý tvar, který bude vypadat jako na následujícím obrázku:
 
-![Základní formulář HTML jako vykreslený v prohlížeči](form-basics/_static/image2.png)
+![Základní HTML formulář jako vykreslený v prohlížeči](form-basics/_static/image2.png)
 
-`<form>` Element vloží elementy HTML k odeslání. (Jednoduché chybou aby je přidání prvků na stránce, ale pak nezapomeňte znovu vytvořte z nich uvnitř `<form>` elementu. V takovém případě nic se odesílá.) `method` Atribut sděluje prohlížeči, jak odeslat vstup uživatele. Tuto možnost nastavíte `post` Pokud provádíte aktualizaci na server nebo do `get` Pokud jste právě načítání dat ze serveru.
+Element `<form>` obklopuje elementy HTML, které se mají odeslat. (Snadná chyba je, aby bylo možné přidat prvky na stránku, ale pak je zapomenout, aby byly vloženy do prvku `<form>`. V takovém případě není nic odesláno.) Atribut `method` oznamuje prohlížeči, jak odeslat vstup uživatele. Tuto hodnotu nastavíte na `post`, pokud provádíte aktualizaci na serveru nebo `get`, pokud načítáte data ze serveru.
 
 <a id="GET,_POST,_and_HTTP_Verb_Safety"></a>
 
 > [!TIP] 
 > 
-> **GET, POST a bezpečný přístup z více příkaz HTTP**
+> **Zabezpečení operací GET, POST a HTTP**
 > 
-> HTTP, protokolu, které prohlížeče a servery používají k výměně informací, je výjimečně jednoduché v její základní operace. Prohlížeče pomocí jenom pár operace provést žádosti o připojení k serverům. Při psaní kódu pro web, je dobré znát tyto příkazy a jak je používat prohlížečem a serverem. Nejčastěji používané příkazy nebo daleko jsou tyto:
+> HTTP, protokol, který prohlížeče a servery používají k výměně informací, je výjimečně jednoduché v základních operacích. Prohlížeče při vytváření požadavků na servery používají jenom několik příkazů. Při psaní kódu pro web je užitečné pochopit tyto příkazy a způsob jejich použití v prohlížeči a na serveru. A daleko nejčastěji používané operace jsou tyto:
 > 
-> - `GET`. Prohlížeč používá tento příkaz pro načtení něco ze serveru. Například když zadáte adresu URL do prohlížeče, prohlížeč provede `GET` operaci žádosti o stránku, kterou chcete. Pokud stránka obsahuje grafiky, prohlížeč provede další `GET` operace získání bitové kopie. Pokud `GET` operace má k předávání informací na server, informace je předána jako část adresy URL v řetězci dotazu.
-> - `POST`. Prohlížeč odesílá `POST` požadavek, aby bylo možné odeslat data do přidáno nebo změněno na serveru. Například `POST` příkaz slouží k vytváření záznamů v databázi nebo měnit stávající. Prohlížeč provede většinu času, po vyplnění formuláře a kliknutí na tlačítko Odeslat, `POST` operace. V `POST` operace, data se předá serveru jsou v těle stránky.
+> - `GET`. Prohlížeč používá tuto operaci k načtení něčeho ze serveru. Když například zadáte adresu URL do prohlížeče, prohlížeč provede operaci `GET` a vyžádá si požadovanou stránku. Pokud stránka obsahuje grafiku, prohlížeč pro získání imagí provede další operace `GET`. Pokud `GET` operace musí předat informace na server, informace se předávají jako součást adresy URL v řetězci dotazu.
+> - `POST`. Prohlížeč pošle žádost o `POST`, aby mohla odesílat data, která se mají přidat nebo změnit na serveru. Například příkaz `POST` slouží k vytváření záznamů v databázi nebo změně existujících. Ve většině případů, když vyplníte formulář a kliknete na tlačítko Odeslat, prohlížeč provede operaci `POST`. V operaci `POST` se data předávaná na server nachází v těle stránky.
 > 
-> K rozlišení mezi těchto příkazů je, že `GET` operace by neměl něco na serveru změnit – nebo vložit něco abstraktnějšího způsobem, `GET` operace nemá za následek změnu stavu na serveru. Můžete provádět `GET` operace na stejné prostředky jako tolikrát, kolikrát se vám líbí a neměnit tyto prostředky. (A `GET` operace se často říká, že jako "bezpečné", nebo použít technický termín je *idempotentní*.) Naproti tomu samozřejmě `POST` žádost o něco na serveru změní pokaždé, když provedete tuto operaci.
+> Důležitým rozdílem mezi těmito operacemi je, že operace `GET` není třeba měnit cokoli na serveru, nebo ji vložit do trochu abstraktního způsobu, `GET` operace nevede ke změně stavu na serveru. Operaci `GET` můžete provádět u stejných prostředků tolikrát, kolikrát chcete, a tyto prostředky se nezmění. (Operace `GET` je často označována jako "bezpečná" nebo "použití technického období", je *idempotentní*.) Naproti tomu `POST` požadavek na server mění při každém provedení operace něco na serveru.
 > 
-> Pomůže dva příklady ilustrují tento rozdíl. Při hledání pomocí webu jako Bing nebo Google, vyplňte formulář, který se skládá z jedné textové pole a potom klikněte na tlačítko vyhledat. Prohlížeč provede `GET` operace s hodnotou zadanou do pole předána jako část adresy URL. Použití `GET` operace pro tento typ formuláře je v pořádku, protože operace hledání se nezmění žádné prostředky na server, stačí načte informace.
+> Toto rozlišení vám může ukázat dva příklady. Když provedete vyhledávání pomocí modulu, jako je například Bing nebo Google, vyplníte formulář, který se skládá z jednoho textového pole, a kliknete na tlačítko Hledat. Prohlížeč provede operaci `GET` s hodnotou, kterou jste zadali do pole předaného jako součást adresy URL. Použití operace `GET` pro tento typ formuláře je přesné, protože operace vyhledávání nemění žádné prostředky na serveru, pouze načítá informace.
 > 
-> Teď se podíváme řazení něco online proces. Vyplňte podrobnosti objednávky a potom klikněte na tlačítko Odeslat. Tato operace bude `POST` žádosti, protože operace způsobí změn na serveru, jako je například nový záznam pořadí, ke změně informací o vašem účtu a možná mnoho dalších změn. Na rozdíl od `GET` operace, které se nemůže opakovat. vaše `POST` žádosti – Pokud jste provedli, pokaždé, když znovu odeslat požadavek, by se vytvořit novou objednávku na serveru. (V takových případech websites často upozornění, ne do více než jednou klikněte na tlačítko pro odeslání, nebo tak, aby vám není formulář znovu odešlete omylem zakáže tlačítko pro odeslání.)
+> Nyní zvažte proces řazení do online režimu. Vyplníte podrobnosti objednávky a potom kliknete na tlačítko Odeslat. Tato operace bude `POST` požadavek, protože výsledkem operace budou změny na serveru, jako je například nový záznam objednávky, změna informací o účtu a pravděpodobně mnoho dalších změn. Na rozdíl od operace `GET` nemůžete žádost o `POST` opakovat – Pokud jste to provedli, vygenerujete novou objednávku na serveru. (V takových případech se na webech často varuje, že nekliknete na tlačítko Odeslat více než jednou, nebo zakážete tlačítko Odeslat, aby nedošlo k nechtěnému opakovanému odeslání formuláře.)
 > 
-> V tomto kurzu budete používat i `GET` operace a `POST` operace pro práci s formuláře HTML. Vysvětlíme v každé případu důvod, proč je příkaz, který používáte příslušné předplatné.
+> V průběhu tohoto kurzu budete pracovat s formuláři HTML pomocí operace `GET` a operace `POST`. V každém z těchto případů vybereme vysvětlení, proč je to ten, co používáte.
 > 
-> (Další informace o příkazů HTTP, najdete v článku [definice metod](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) článku na webu W3C.)
+> (Další informace o příkazech HTTP naleznete v článku [definice metod](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) na webu W3C.)
 
-Většina elementy vstupu uživatele jsou ve formátu HTML `<input>` elementy. Vypadají `<input type="type" name="name">,` kde *typ* označuje druh uživatele vstupní ovládací prvek. Ty běžné jsou tyto prvky:
+Většina prvků uživatelského vstupu je `<input>` prvky HTML. Vypadají jako `<input type="type" name="name">,`, kde *typ* určuje druh ovládacího prvku pro zadávání uživatelského vstupu, který chcete. Tyto prvky jsou společné:
 
 - Textové pole: `<input type="text">`
-- Zaškrtněte políčko: `<input type="check">`
+- Zaškrtávací políčko: `<input type="check">`
 - Přepínač: `<input type="radio">`
 - Tlačítko: `<input type="button">`
-- Tlačítko odešlete: `<input type="submit">`
+- Tlačítko Odeslat: `<input type="submit">`
 
-Můžete také použít `<textarea>` prvku k vytvoření víceřádkového textového pole a `<select>` – element pro vytvoření rozevíracího seznamu nebo posuvný seznam. (Další informace o HTML formulář prvky, naleznete v tématu [formuláře HTML a vstup](http://www.w3schools.com/html/html_forms.asp) na webu W3Schools.)
+Pomocí elementu `<textarea>` lze také vytvořit víceřádkové textové pole a prvek `<select>` k vytvoření rozevíracího seznamu nebo rolovacího seznamu. (Další informace o prvcích formuláře HTML najdete v tématu [formuláře HTML a vstup](http://www.w3schools.com/html/html_forms.asp) na webu w3schools.)
 
-`name` Atribut je velmi důležité, protože název je, jak získáte hodnota elementu později, jak brzy zjistíte.
+Atribut `name` je velmi důležitý, protože název představuje způsob, jakým se získá hodnota elementu později, jak uvidíte za chvíli.
 
-Části zajímavé je, vývojář, k čemu se vstupem uživatele. Neexistuje žádné předdefinované chování spojené s těmito elementy. Místo toho budete muset získat hodnoty, které má uživatel zadat nebo vybrat a udělat něco s nimi. Je to, co se dozvíte v tomto kurzu.
+Zajímavá část je to, co jste vy, vývojář stránky dělat se vstupem uživatele. K těmto prvkům není přidruženo žádné integrované chování. Místo toho musíte získat hodnoty, které uživatel zadal nebo vybral, a s nimi pracovat. To je to, co se v tomto kurzu naučíte.
 
 > [!TIP] 
 > 
-> **HTML5 a vstupních formulářů**
+> **HTML5 a vstupní formuláře**
 > 
-> Jak je možné, že, HTML je v přechodném stavu a nejnovější verzi (HTML5) zahrnuje podporu pro intuitivnější způsoby, jak uživatelé můžou zadat informace. Například HTML5 (Vývojář) můžete zjistit, na stránce, že chcete, aby uživatel zadal datum. Prohlížeči můžete pak automaticky zobrazí kalendáře spíše než by uživatel musel ručně zadejte datum. HTML5 je však nová a se zatím nepodporuje ve všech prohlížečích.
+> Jak je to možné, HTML je v přechodu a nejnovější verze (HTML5) obsahuje podporu pro více intuitivních způsobů, jak mohou uživatelé zadávat informace. Například v HTML5 můžete (vývojář stránky) sdělit stránku, na kterou má uživatel zadat datum. Prohlížeč pak může automaticky zobrazit kalendář, aniž by uživatel musel zadat datum ručně. HTML5 je však novinkou a ve všech prohlížečích ještě není podporováno.
 > 
-> ASP.NET Web Pages podporuje HTML5 vstup v rozsahu, který nemá webového prohlížeče. Pro představu o nové atributy pro `<input>` naleznete HTML5 elementu [HTML &lt;vstupní&gt; zadejte atribut](http://www.w3schools.com/html/html_form_input_types.asp) W3Schools lokality.
+> Webové stránky ASP.NET podporují vstup HTML5 do rozsahu, který je v prohlížeči uživatele. Představu o nových atributech `<input>` elementu v HTML5 najdete v tématu [atribut typu input&gt; &lt;HTML](http://www.w3schools.com/html/html_form_input_types.asp) na webu w3schools.
 
 ## <a name="creating-the-form"></a>Vytvoření formuláře
 
-V nástroji WebMatrix v **soubory** pracovního prostoru, otevřete *Movies.cshtml* stránky.
+Ve WebMatrixu v pracovním prostoru **soubory** otevřete stránku *filmy. cshtml* .
 
-Za uzavírací `</h1>` značky a před otevírací `<div>` značku `grid.GetHtml` volání, přidejte následující kód:
+Za uzavírací značku `</h1>` a před otevírací `<div>`ovou značku `grid.GetHtml` volání přidejte následující kód:
 
 [!code-html[Main](form-basics/samples/sample2.html)]
 
-Tento kód vytvoří formulář obsahující textové pole s názvem `searchGenre` tlačítka a tlačítka Odeslat. Text pole a odeslání tlačítka jsou uzavřeny v `<form>` elementu jehož `method` atribut je nastaven na `get`. (Nezapomeňte, že pokud nemáte vložit do textového pole a tlačítko uvnitř odeslat `<form>` elementu, nic se po kliknutí na tlačítko Odeslat.) Můžete použít `GET` příkaz tady protože vytváříte formuláře, který provedeny žádné změny na serveru – právě výsledkem vyhledávání. (V předchozím kurzu jste použili `post` metodu, která je, jak odeslat změny na server. Uvidíte, že v dalším kurzu znovu.)
+Tento kód vytvoří formulář, který obsahuje textové pole s názvem `searchGenre` a tlačítko Odeslat. Textové pole a tlačítko Odeslat jsou uzavřeny v elementu `<form>`, jehož atribut `method` je nastaven na `get`. (Nezapomeňte, že pokud textové pole nevložíte a kliknete na tlačítko Odeslat uvnitř prvku `<form>`, nebude se po kliknutí na tlačítko odesílat žádná data.) Tady můžete použít `GET` sloveso, protože vytváříte formulář, který na serveru neprovede žádné změny – výsledkem je hledání. (V předchozím kurzu jste použili metodu `post`, což je způsob, jakým odešlete změny na server. Uvidíte, že v dalším kurzu znovu.)
 
-Spuštění stránky. I když nebyly definovány žádné chování pro daný formulář, najdete v článku bude vypadat takto:
+Spusťte stránku. I když jste nedefinovali žádné chování formuláře, vidíte, co vypadá takto:
 
-![Stránka filmů s vyhledávací pole pro žánr](form-basics/_static/image3.png)
+![Stránka filmy s vyhledávacím polem pro Žánr](form-basics/_static/image3.png)
 
-Zadejte hodnotu do textového pole, jako je "Komedie." Pak klikněte na tlačítko **hledání žánr**.
+Do textového pole zadejte hodnotu, například "komedie". Pak klikněte na **Hledat Žánr**.
 
-Poznamenejte si adresu URL stránky. Vzhledem k tomu, že nastavíte `<form>` elementu `method` atribut `get`, je zadaná hodnota je teď součástí řetězce dotazu v adrese URL, například takto:
+Poznamenejte si adresu URL stránky. Vzhledem k tomu, že jste nastavili atribut `method` elementu `<form>` na hodnotu `get`, hodnota, kterou jste zadali, je teď součástí řetězce dotazu v adrese URL, třeba takto:
 
 `http://localhost:45661/Movies.cshtml?searchGenre=Comedy`
 
 ## <a name="reading-form-values"></a>Čtení hodnot formuláře
 
-Stránka již obsahuje kód, který získá dat z databáze a zobrazí výsledky v mřížce. Teď budete muset přidat nějaký kód, který čte hodnoty do textového pole, abyste mohli spustit dotaz SQL, který obsahuje hledaný termín.
+Stránka již obsahuje nějaký kód, který získá data databáze a zobrazí výsledky v mřížce. Nyní je nutné přidat kód, který přečte hodnotu textového pole, abyste mohli spustit dotaz SQL, který obsahuje hledaný termín.
 
-Vzhledem k tomu, že nastavíte formuláře metoda `get`, si můžete přečíst hodnotu, která byla zadán do textového pole pomocí kódu, jako je následující:
+Vzhledem k tomu, že jste nastavili metodu formuláře na `get`, můžete si přečíst hodnotu, která byla zadána do textového pole, pomocí kódu podobného následujícímu:
 
 `var searchTerm = Request.QueryString["searchGenre"];`
 
-`Request.QueryString` Objekt ( `QueryString` vlastnost `Request` objekt) obsahuje hodnoty prvků, které byly odeslány jako součást `GET` operace. `Request.QueryString` Obsahuje vlastnost *kolekce* (seznam) hodnot, které jsou odeslány ve formě. Pokud chcete získat všechny jednotlivé hodnoty, zadejte název elementu, který chcete. To je důvod, proč je třeba mít `name` atribut na `<input>` – element (`searchTerm`), který vytváří do textového pole. (Další informace o tom `Request` objektu, najdete v článku [postranního panelu](#BKMK_TheRequestObject) později.)
+Objekt `Request.QueryString` (vlastnost `QueryString` objektu `Request`) obsahuje hodnoty prvků, které byly odeslány jako součást operace `GET`. Vlastnost `Request.QueryString` obsahuje *kolekci* (seznam) hodnot, které jsou odeslány ve formuláři. Chcete-li získat konkrétní hodnotu, zadejte název prvku, který chcete. To je důvod, proč musíte mít atribut `name` u elementu `<input>` (`searchTerm`), který vytvoří textové pole. (Další informace o objektu `Request` naleznete v [postranním panelu](#BKMK_TheRequestObject) později.)
 
-Je dostatečně jednoduchá načíst hodnotu v textovém poli. Ale pokud uživatel neměli zadávat nic vůbec v textovém poli, ale ke kliknutí na **hledání** i přesto, můžete ignorovat klikněte na položku, protože není nutné nic k vyhledání.
+Je dostatečně snadné číst hodnotu textového pole. Pokud ale uživatel v textovém poli vůbec nezadal cokoli, ale na tlačítko **Hledat** , můžete ho ignorovat, protože není k dispozici žádné hledání.
 
-Následující kód představuje příklad, který ukazuje, jak implementovat tyto podmínky. (Není nutné přidat tento kód ještě, můžete to udělat za chvíli)
+Následující kód je příklad, který ukazuje, jak implementovat tyto podmínky. (Tento kód ještě nemusíte přidávat. za chvilku to provedete.)
 
 [!code-csharp[Main](form-basics/samples/sample3.cs)]
 
-Test je rozdělí tímto způsobem:
+Test rozdělí tímto způsobem:
 
-- Získání hodnoty `Request.QueryString["searchGenre"]`, konkrétně hodnotu, která byla zadán do `<input>` element s názvem `searchGenre`.
-- Zjistěte, jestli je prázdný pomocí `IsEmpty` metody. Tato metoda je standardní způsob, jak zjistit, zda něco (například element formuláře) obsahuje hodnotu. Ale ve skutečnosti, které jsou pro vás pouze v případě, že má *není* prázdné, proto...
-- Přidat `!` operátor před `IsEmpty` testování. ( `!` Operátor znamená, že logický operátor NOT).
+- Získat hodnotu `Request.QueryString["searchGenre"]`, konkrétně hodnotu, která byla zadána do prvku `<input>` s názvem `searchGenre`.
+- Zjistěte, jestli je prázdný pomocí metody `IsEmpty`. Tato metoda je standardní způsob, jak určit, zda něco (například element Form) obsahuje hodnotu. Ale opravdu se zajímáte jenom v případě, že *není* prázdné, proto...
+- Před testem `IsEmpty` přidejte operátor `!`. (Operátor `!` znamená logický NOT).
 
-V běžném jazyce, celý `if` podmínka přeloží na následující: *Pokud element formuláře searchGenre není prázdná, pak...*
+V prostém jazyce English je celý `if` podmínka přeložena do následujícího: *Pokud není element searchGenre formuláře prázdný, pak...*
 
-Tento blok nastaví fáze pro vytvoření dotazu, který používá hledaný termín. Můžete to udělat v další části.
+Tento blok nastaví fázi pro vytvoření dotazu, který používá hledaný termín. Provedete to v další části.
 
 <a id="BKMK_TheRequestObject"></a>
 
@@ -155,205 +155,205 @@ Tento blok nastaví fáze pro vytvoření dotazu, který používá hledaný ter
 > 
 > **Objekt žádosti**
 > 
-> `Request` Objekt obsahuje všechny informace, které prohlížeč odesílá do vaší aplikace po požadované nebo odeslání stránky. Tento objekt obsahuje všechny informace, které uživatel zadá, jako je textové pole hodnoty nebo soubor k odeslání. Zahrnuje také všechny možné druhy Další informace, jako jsou soubory cookie, hodnoty v řetězci dotazu adresy URL (pokud existuje), cesta k souboru stránky, na kterém běží, typu prohlížeče, které uživatel používá, seznam jazyků, které jsou nastavené v prohlížeči a mnohem víc.
+> Objekt `Request` obsahuje všechny informace, které prohlížeč posílá do vaší aplikace, když je vyžádána nebo odeslána stránka. Tento objekt obsahuje všechny informace, které uživatel poskytuje, jako jsou například hodnoty textového pole nebo soubor k nahrání. Zahrnuje také všechny druhy dalších informací, jako jsou soubory cookie, hodnoty v řetězci dotazu adresy URL (pokud existují), cestu k souboru na spuštěné stránce, typ prohlížeče, který uživatel používá, seznam jazyků, které jsou nastaveny v prohlížeči. a mnoho dalšího.
 > 
-> `Request` Je objekt *kolekce* (list) hodnot. Získat jednotlivé hodnoty z kolekce zadáním jeho názvu:
+> Objekt `Request` je *kolekce* (seznam) hodnot. Z kolekce získáte jednotlivou hodnotu zadáním jejího názvu:
 > 
 > `var someValue = Request["name"];`
 > 
-> `Request` Skutečně zpřístupňuje několik podmnožin. Příklad:
+> Objekt `Request` ve skutečnosti zveřejňuje několik dílčích sad. Příklad:
 > 
-> - `Request.Form` obsahuje hodnoty z elementů v rámci odeslané `<form>` elementu, jestliže je žádost `POST` požadavku.
-> - `Request.QueryString` umožňuje pouze hodnoty v řetězci dotazu adresy URL. (V adrese URL jako `http://mysite/myapp/page?searchGenre=action&page=2`, `?searchGenre=action&page=2` část adresy URL je řetězec dotazu.)
-> - `Request.Cookies` kolekce poskytuje přístup k souborů cookie, které se odešle do prohlížeče.
+> - `Request.Form` poskytuje hodnoty z prvků v odeslaném `<form>` elementu, pokud je požadavek `POST` požadavek.
+> - `Request.QueryString` poskytuje pouze hodnoty v řetězci dotazu adresy URL. (V adrese URL, jako je například `http://mysite/myapp/page?searchGenre=action&page=2`, je oddíl `?searchGenre=action&page=2` v adrese URL řetězec dotazu.)
+> - kolekce `Request.Cookies` umožňuje přístup k souborům cookie, které prohlížeč odeslal.
 > 
-> Pro získání hodnoty, o kterém víte je v odeslané podobě, můžete použít `Request["name"]`. Alternativně můžete použít více konkrétních verzí `Request.Form["name"]` (pro `POST` požadavků) nebo `Request.QueryString["name"]` (pro `GET` požadavky). Samozřejmě *název* je název položky, která má získat.
+> Pokud chcete získat hodnotu, o kterou víte, že je v odeslaném formuláři, můžete použít `Request["name"]`. Alternativně můžete použít konkrétnější verze `Request.Form["name"]` (pro `POST` požadavků) nebo `Request.QueryString["name"]` (pro `GET` požadavky). Samozřejmě je *název* položky, kterou chcete získat.
 > 
-> Název položky, které chcete získat, musí být jedinečné v rámci kolekce, které používáte. To je důvod, proč `Request` objekt, který poskytuje podmnožiny, jako jsou `Request.Form` a `Request.QueryString`. Předpokládejme, že vaše stránka obsahuje element formuláře s názvem `userName` a *také* obsahuje soubor cookie s názvem `userName`. Pokud se zobrazí `Request["userName"]`, je nejednoznačný, zda se má hodnota formuláře nebo soubor cookie. Nicméně pokud se zobrazí `Request.Form["userName"]` nebo `Request.Cookie["userName"]`, už je explicitní v tom, jaká hodnota se má získat.
+> Název položky, kterou chcete získat, musí být jedinečný v rámci kolekce, kterou používáte. To je důvod, proč objekt `Request` poskytuje podmnožiny jako `Request.Form` a `Request.QueryString`. Předpokládejme, že stránka obsahuje element formuláře s názvem `userName` a obsahuje *také* soubor cookie s názvem `userName`. Pokud získáte `Request["userName"]`, je nejednoznačné, zda chcete mít hodnotu formuláře nebo soubor cookie. Pokud však získáte `Request.Form["userName"]` nebo `Request.Cookie["userName"]`, budete přesně o tom, která hodnota má být získána.
 > 
-> Je dobrým zvykem a buďte konkrétní podmnožinu `Request` , že máte zájem, jako je `Request.Form` nebo `Request.QueryString`. Pro jednoduché stránky, které vytváříte v tomto kurzu je pravděpodobně doesn't make skutečně žádný rozdíl. Ale při vytváření složitějších stránek, používá explicitní verzi `Request.Form` nebo `Request.QueryString` vám může pomoct vyhnout problémům, které mohou vzniknout, když se tato stránka obsahuje formulář (nebo více formulářů), soubory cookie, hodnoty řetězce dotazu a tak dále.
+> Je dobrým zvykem určit a využít podmnožinu `Request`, na kterou vás zajímáte, jako je `Request.Form` nebo `Request.QueryString`. Pro jednoduché stránky, které v tomto kurzu vytváříte, to pravděpodobně nevede k žádným rozdílům. Při vytváření složitějších stránek ale pomocí explicitní verze `Request.Form` nebo `Request.QueryString` může pomoci vyhnout se problémům, které mohou nastat, když stránka obsahuje formulář (nebo více formulářů), soubory cookie, hodnoty řetězce dotazu a tak dále.
 
-## <a name="creating-a-query-by-using-a-search-term"></a>Vytvoření dotazu pomocí hledaný termín.
+## <a name="creating-a-query-by-using-a-search-term"></a>Vytvoření dotazu pomocí hledaného termínu
 
-Teď, když víte, jak získat hledaný termín, který uživatel zadal, můžete vytvořit dotaz, který ji používá. Mějte na paměti, že pokud chcete získat všechny položky video z databáze, používáte dotaz SQL, který bude vypadat jako tento příkaz:
+Když teď víte, jak získat hledaný termín, který zadal uživatel, můžete vytvořit dotaz, který ho používá. Nezapomeňte, že pokud chcete všechny položky videa získat z databáze, budete používat dotaz SQL, který vypadá jako tento příkaz:
 
 `SELECT * FROM Movies`
 
-Pokud chcete získat jenom určité filmy, budete muset použít dotaz, který zahrnuje `Where` klauzuli. Tato klauzule umožňuje nastavit podmínky, na kterém jsou řádky vrácené dotazem. Tady je příklad:
+Chcete-li získat pouze některé filmy, je nutné použít dotaz, který obsahuje klauzuli `Where`. Tato klauzule vám umožní nastavit podmínku, na které se v dotazu vrátí řádky. Tady je příklad:
 
 `SELECT * FROM Movies WHERE Genre = 'Action'`
 
-Je základní formát `WHERE column = value`. Můžete použít různé operátory kromě právě `=`, třeba `>` (větší než) `<` (menší než), `<>` (nerovná se), `<=` (menší než nebo rovna hodnotě), dále, v závislosti na tom, co hledáte.
+Základní formát je `WHERE column = value`. V závislosti na tom, co hledáte, můžete použít různé operátory kromě `=`, jako je `>` (větší než), `<` (menší než), `<>` (nerovná se), `<=` (menší než nebo rovno) atd.
 
-V případě, že přemýšlíte, příkazy SQL nejsou malá a velká písmena &mdash; `SELECT` je stejný jako `Select` (nebo dokonce `select`). Ale lidé často velké první písmeno klíčová slova v příkazu SQL, jako je třeba `SELECT` a `WHERE`, aby bylo snazší přečíst.
+V případě, že se zajímáte, příkazy SQL nerozlišují velká a malá písmena &mdash; `SELECT` jsou stejné jako `Select` (nebo dokonce `select`). Lidé ale často nemají klíčová slova v příkazu SQL, jako je `SELECT` a `WHERE`, aby se usnadnilo jejich čtení.
 
-### <a name="passing-the-search-term-as-a-parameter"></a>Předání jako parametru hledaný termín
+### <a name="passing-the-search-term-as-a-parameter"></a>Předání hledaného termínu jako parametru
 
-Vyhledávání pro konkrétní žánr je docela jednoduché (`WHERE Genre = 'Action'`), ale chcete se pokusit vyhledat rozšířením podle tematických, který uživatel zadá. K tomuto účelu vytvoříte jako dotaz SQL, který obsahuje zástupný symbol pro hodnotu k vyhledání. Bude vypadat jako tento příkaz:
+Hledání konkrétního žánru je dostatečně snadné (`WHERE Genre = 'Action'`), ale chcete být schopni vyhledat jakýkoliv Žánr, který uživatel zadal. Provedete to tak, že vytvoříte dotaz SQL, který obsahuje zástupný symbol pro hledanou hodnotu. Bude vypadat podobně jako tento příkaz:
 
 `SELECT * FROM Movies WHERE Genre = @0`
 
-Zástupný text je `@` znak následovaný žádným. Jak může odhad, dotaz může obsahovat několik zástupných symbolů a by se pojmenoval `@0`, `@1`, `@2`atd.
+Zástupný symbol je `@` znak následovaný nulou. Jak můžete odhadnout, dotaz může obsahovat několik zástupných symbolů a má název `@0`, `@1`, `@2`atd.
 
-Nastavit dotaz a ve skutečnosti předat ji hodnotu, použijte kód podobný tomuto:
+Chcete-li nastavit dotaz a skutečně ho předat jako hodnotu, použijte následující kód:
 
 [!code-sql[Main](form-basics/samples/sample4.sql)]
 
-Tento kód je podobný co jste už udělali pro zobrazení dat v mřížce. Pouze rozdíly jsou:
+Tento kód je podobný tomu, co jste už provedli k zobrazení dat v mřížce. Jedinými rozdíly jsou:
 
 - Dotaz obsahuje zástupný symbol (`WHERE Genre = @0"`).
-- Dotaz je umístěn do proměnné (`selectCommand`), než je předána dotaz přímo `db.Query` metoda.
-- Při volání `db.Query` metodě předáte dotazu a hodnota, která má použít pro zástupný text. (Pokud dotaz obsahuje více zástupných symbolů, by se předat je jako samostatné hodnoty metody.)
+- Dotaz je vložen do proměnné (`selectCommand`); předtím jste předali dotaz přímo metodě `db.Query`.
+- Při volání metody `db.Query` předáte dotaz i hodnotu, která se má použít pro zástupný text. (Pokud má dotaz více zástupných symbolů, měli byste je předat jako samostatné hodnoty do metody.)
 
-Pokud jste v kostce řečeno všechny tyto prvky, získáte následující kód:
+Pokud všechny tyto prvky vložíte dohromady, získáte následující kód:
 
 [!code-csharp[Main](form-basics/samples/sample5.cs)]
 
 > [!NOTE] 
 > 
-> **Důležité!** Použití zástupných symbolů (jako je `@0`) k předání hodnot pro příkaz SQL je *velmi důležité* pro zabezpečení. Způsob, jak ho tady vidíte, se zástupnými symboly pro různá data, je jediný způsob, jak je potřeba vytvořit příkazy jazyka SQL.
+> **Významná!** Použití zástupných symbolů (například `@0`) k předávání hodnot příkazu SQL je *mimořádně důležité* pro zabezpečení. Způsob, jakým se tady vidíte, představuje zástupné symboly pro data proměnných, je jediným způsobem, jak byste měli vytvořit příkazy SQL.
 > 
-> Nikdy vytvořit příkaz SQL vložením společně (spojováním) textového literálu a hodnoty, který jste získali od uživatele. Zřetězení uživatelský vstup do příkazu SQL se otevře web *útok prostřednictvím injektáže SQL* kde uživatel se zlými úmysly odešle hodnoty na stránku, která hack vaší databáze. (Další informace v článku [útok prostřednictvím injektáže SQL](https://msdn.microsoft.com/library/ms161953.aspx) webu MSDN.)
+> Příkaz SQL nikdy neseskupte vložením (zřetězení) literálového textu a hodnot, které obdržíte od uživatele. Zřetězení vstupu uživatele do příkazu SQL otevře váš web s *útokem na injektáže SQL* , kde uživatel se zlými úmysly odešle hodnoty na stránku, která by proznala vaši databázi. (Další informace si můžete přečíst v článku [SQL vložení](https://msdn.microsoft.com/library/ms161953.aspx) webu MSDN.)
 
-## <a name="updating-the-movies-page-with-search-code"></a>Aktualizace na stránce videa pomocí vyhledávání kódu
+## <a name="updating-the-movies-page-with-search-code"></a>Aktualizace stránky filmů pomocí vyhledávacího kódu
 
-Nyní můžete aktualizovat kód v *Movies.cshtml* souboru. Pokud chcete začít, nahraďte kód v bloku kódu v horní části stránky s tímto kódem:
+Nyní můžete aktualizovat kód v souboru *Movies. cshtml* . Chcete-li začít, nahraďte kód v bloku kódu v horní části stránky tímto kódem:
 
 [!code-csharp[Main](form-basics/samples/sample6.cs)]
 
-Rozdíl spočívá v tom, že jsme připravili dotaz do `selectCommand` proměnnou, ve které budete předat `db.Query` později. Vložení příkaz jazyka SQL do proměnné můžete změnit příkaz, který je budete používat k vyhledání.
+Rozdíl je v tom, že jste dotaz umístili do proměnné `selectCommand`, kterou předáte `db.Query` později. Vložení příkazu SQL do proměnné umožňuje změnit příkaz, který provedete k provedení hledání.
 
-Rovněž jsme odstranili tyto dva řádky, které vám jako umístění vyberu zpět později:
+Odebrali jste také tyto dva řádky, které později vrátíte:
 
 [!code-csharp[Main](form-basics/samples/sample7.cs)]
 
-Spusťte dotaz ještě nechcete (tedy volání `db.Query`) a nechcete, aby se inicializovat `WebGrid` pomocné rutiny, ale buď. Můžete udělat tyto věci po stanovíte příkazu SQL, který má spustit.
+Dotaz ještě nechcete spustit (to znamená volání `db.Query`) a nechcete inicializovat pomocnou nápovědu `WebGrid`. Tyto věci provedete po zjištění, který příkaz SQL musí být spuštěn.
 
-Po tomto přepsaný bloku můžete přidat nové logiku pro zpracování vyhledávání. Dokončený kód bude vypadat nějak takto. Aktualizace kódu na stránce tak, aby odpovídala takto:
+Po provedení tohoto přepsaného bloku můžete přidat novou logiku pro zpracování vyhledávání. Dokončený kód bude vypadat jako následující. Aktualizujte kód na stránce tak, aby odpovídal následujícímu příkladu:
 
 [!code-cshtml[Main](form-basics/samples/sample8.cshtml)]
 
-Na stránce teď funguje tímto způsobem. Pokaždé, když běží na stránce kódu se otevře databáze a `selectCommand` proměnná je nastavená na příkazu SQL, který získá všechny záznamy z `Movies` tabulky. Kód také inicializuje `searchTerm` proměnné.
+Stránka teď funguje podobně. Při každém spuštění stránky kód otevře databázi a proměnná `selectCommand` je nastavena na příkaz jazyka SQL, který získá všechny záznamy z tabulky `Movies`. Kód také inicializuje proměnnou `searchTerm`.
 
-Ale pokud obsahuje hodnotu pro aktuální požadavek `searchGenre` elementu, nastaví kód `selectCommand` na jiný dotaz – konkrétně na takový, který obsahuje `Where` klauzule hledání rozšířením podle tematických. Nastaví také `searchTerm` na cokoli, co byl předán pro vyhledávací pole (který může být nothing).
+Nicméně pokud aktuální požadavek obsahuje hodnotu pro `searchGenre` element, kód nastaví `selectCommand` na jiný dotaz – konkrétně na jeden, který obsahuje klauzuli `Where` pro hledání žánru. Také nastavuje `searchTerm` pro pole hledání, které bylo předáno (což může být nic).
 
-Bez ohledu na to, které SQL příkaz je v `selectCommand`, kód zavolá `db.Query` spusťte dotaz, předají se jí libovolné je v `searchTerm`. Pokud neobsahují nic `searchTerm`, nezáleží, protože v takovém případě zde není žádný parametr předat hodnotu `selectCommand` přesto.
+Bez ohledu na to, který příkaz SQL je v `selectCommand`, kód pak zavolá `db.Query` a spustí dotaz, který předává, ať už je v `searchTerm`. Pokud neexistuje žádný `searchTerm`, nezáleží na tom, protože v takovém případě neexistuje parametr pro předání hodnoty do `selectCommand` přesto.
 
-Nakonec kód inicializuje `WebGrid` pomocné rutiny s využitím výsledky dotazu, stejně jako předtím.
+Nakonec kód inicializuje pomoc `WebGrid` pomocí výsledků dotazu, stejně jako předtím.
 
-Vidíte, že vložením příkazu jazyka SQL a hledaný termín do proměnné, jste přidali flexibilitu kódu. Jak uvidíte později v tomto kurzu, můžete použít tento základním rozhraním a pokračujte v přidávání logiku pro různé typy vyhledávání.
+Můžete vidět, že vložením příkazu jazyka SQL a hledaného termínu do proměnných jste přidali flexibilitu kódu. Jak vidíte později v tomto kurzu, můžete použít tuto základní architekturu a nechat přidat logiku pro různé typy hledání.
 
-## <a name="testing-the-search-by-genre-feature"></a>Testování funkcí hledání podle žánru
+## <a name="testing-the-search-by-genre-feature"></a>Testování funkce hledání podle žánru
 
-V nástroji WebMatrix, spusťte *Movies.cshtml* stránky. Zobrazí se stránka s textovým polem pro žánr.
+Ve WebMatrixu spusťte stránku *filmy. cshtml* . Zobrazí se stránka s textovým polem pro Žánr.
 
-Zadejte genre, který jste zadali pro jeden záznamů testu a pak klikněte na **hledání**. Tentokrát se zobrazí seznam právě videa, které odpovídají této žánr:
+Zadejte Žánr, který jste zadali pro jeden ze záznamů testu, a pak klikněte na **Hledat**. Tentokrát se zobrazí seznam pouze filmů, které odpovídají danému žánru:
 
-![Filmy stránku se seznamem po hledání žánr Comedies](form-basics/_static/image4.png)
+![Seznam filmů po hledání žánru](form-basics/_static/image4.png)
 
-Zadejte jiný žánr a hledat znovu. Zkuste zadat žánr prostřednictvím všechna písmena malá písmena nebo všechna velká písmena, takže se zobrazí, hledání nerozlišuje velká a malá písmena.
+Zadejte jiný Žánr a znovu proveďte hledání. Zkuste zadat Žánr pomocí všech malých a velkých písmen, abyste viděli, že hledání nerozlišuje malá a velká písmena.
 
-## <a name="remembering-what-the-user-entered"></a>"Zapamatování" co uživatel zadal
+## <a name="remembering-what-the-user-entered"></a>"Pamatuje", co uživatel zadal
 
-Jste si možná všimli, který poté, co zadali rozšířením podle tematických a kliknutí na **hledání žánr**, jste viděli, výpis, pro nějž. Však byla prázdná pole Hledat text &mdash; jinými slovy, neměli pamatovat, co jste nezadali.
+Možná jste si všimli, že po zadání žánru a kliknutí na **Search žánru**jste viděli seznam pro tento žánr. Textové pole hledání je ale prázdné &mdash; jinými slovy, nepamatuje si, co jste zadali.
 
-Je důležité pochopit, proč k tomuto chování dochází. Při odesílání stránky prohlížeč odešle požadavek na webový server. Při žádosti ASP.NET, vytvoří instanci zcela nové stránky, spustí kód, který v něm a pak znovu vykreslí stránku v prohlížeči. V důsledku toho však stránce neví, že jste právě pracovali s předchozí verzí sebe sama. Všechny že ví je, že byla přijata žádost, proběhly nějaké data formuláře v ní.
+Je důležité pochopit, proč k tomuto chování dochází. Když odešlete stránku, prohlížeč odešle požadavek webovému serveru. Když ASP.NET Získá požadavek, vytvoří značku – novou instanci stránky, spustí kód v něm a pak znovu vykreslí stránku do prohlížeče. V důsledku toho stránka sice neví, že jste právě pracovali s předchozí verzí sebe sama. To znamená, že se v něm objevila žádost, která obsahuje nějaká data formuláře.
 
-Pokaždé, když požádáte o stránku &mdash; , jestli se poprvé nebo jeho odesláním &mdash; získáváte novou stránku. Webový server nemá žádnou paměť vaší poslední žádosti. Ani nemá technologie ASP.NET a ani se do prohlížeče. Pouze připojení mezi tyto samostatné instance stránky se všechna data, která se přenášejí mezi nimi. Pokud odešlete stránku, například novou instanci stránku získat data formuláře, který odeslal předchozí instanci. (Další způsob, jak předávat data mezi stránkami je používat soubory cookie.)
+Pokaždé, když si vyžádáte stránku &mdash;, jestli poprvé nebo když ji odešlete &mdash; získáte novou stránku. Webový server nemá žádnou paměť vaší poslední žádosti. Nedělá ASP.NET ani prohlížeč. Jediným připojením mezi těmito samostatnými instancemi stránky jsou všechna data, která mezi nimi přenášíte. Pokud odešlete stránku, například nová instance stránky může získat data formuláře, která byla odeslána předchozí instancí. (Další způsob, jak předat data mezi stránkami, je použití souborů cookie.)
 
-Formální způsob, jak popisují tato situace je říct, že webové stránky jsou *bezstavové*. Webové servery a samotné stránky a prvky na stránce nemají žádné informace o stavu předchozí stránky. Web byl navržen tímto způsobem, protože zachování stavu pro jednotlivé požadavky by rychle vyčerpat prostředky webové servery, které často zpracovávají tisíce, možná i stovky tisíc požadavků za sekundu.
+Formální způsob, jak tuto situaci popsat, je říci, že webové stránky jsou *bezstavové*. Webové servery a stránky a prvky na stránce neudržují žádné informace o předchozím stavu stránky. Web byl navržen tímto způsobem, protože udržováním stavu pro jednotlivé požadavky by bylo možné rychle vyčerpat prostředky webových serverů, které často zpracovávají tisíce, možná i stovky tisíců požadavků za sekundu.
 
-To je důvod, proč byla prázdná do textového pole. Po odeslání stránky technologie ASP.NET vytvoří novou instanci třídy stránky a spustili pomocí kódu a kódu. V tomto kódu, který má technologie ASP.NET k vložení hodnoty do textového pole nic došlo. ASP.NET tak neprovedli nic, a do textového pole byl vykreslen bez hodnoty v ní.
+Takže to je důvod, proč je textové pole prázdné. Po odeslání stránky ASP.NET vytvořila novou instanci stránky a běžela prostřednictvím kódu a kódu. V tomto kódu se neobjevila žádná hodnota, která by ASP.NETa vložení hodnoty do textového pole. Takže ASP.NET neudělal cokoli a textové pole bylo vykresleno bez hodnoty.
 
-Není ve skutečnosti snadný způsob, jak tento problém jsme obešli. Genre, kterou jste zadali do textového pole *je* k dispozici v kódu &mdash; se `Request.QueryString["searchGenre"]`.
+Tento problém se dá nejlépe snadno vyřešit. Žánr, který jste zadali do textového pole, *je* k dispozici v kódu &mdash; je `Request.QueryString["searchGenre"]`.
 
-Aktualizujte kód pro textové pole tak, aby `value` atribut získá svou hodnotu z `searchTerm`, jako v tomto příkladu:
+Aktualizujte značky pro textové pole tak, aby atribut `value` pře`searchTerm`hodnotu z, jako v tomto příkladu:
 
 [!code-html[Main](form-basics/samples/sample9.html?highlight=1)]
 
-Na této stránce můžete mít také nastavit `value` atribut `searchTerm` proměnné, protože tato proměnná obsahuje také žánr jste zadali. Ale pomocí `Request` nastavíte `value` atributu, jak je znázorněno zde je standardní způsob, jak tento úkol provést. (Za předpokladu, že jste ještě chcete provést &mdash; v některých případech může být vhodné k vykreslení stránky *bez* hodnoty v polích. Všechno závisí na co se děje s vaší aplikací.)
+Na této stránce můžete také nastavit atribut `value` na `searchTerm` proměnnou, protože tato proměnná obsahuje také Žánr, který jste zadali. Ale použití objektu `Request` k nastavení atributu `value`, jak je znázorněno zde, je standardní způsob, jak tuto úlohu provést. (Za předpokladu, že to budete chtít udělat &mdash; v některých situacích, možná budete chtít vykreslit stránku *bez* hodnot v polích. Vše závisí na tom, co se ve vaší aplikaci prochází.)
 
 > [!NOTE]
-> "Nepamatujete" hodnotu textového pole, který se používá pro hesla. Bylo by bezpečnostní riziko lidí nabídnout vyplnit pole pro heslo pomocí kódu.
+> Nemůžete si pamatovat na hodnotu textového pole, které se používá pro hesla. Může se jednat o bezpečnostní otvor, který umožňuje lidem vyplnit pole hesla pomocí kódu.
 
-Znovu spusťte stránky, zadejte rozšířením podle tematických a klikněte na **hledání žánr**. Tentokrát nejen zobrazí výsledky hledání, ale do textového pole si pamatuje zadáte čas poslední:
+Spusťte znovu stránku, zadejte Žánr a klikněte na **Hledat Žánr**. Tato doba nestačí jenom zobrazit výsledky hledání, ale textové pole pamatuje, co jste zadali za poslední čas:
 
-![Stránka zobrazující, že do textového pole má "uloží" předchozí záznam](form-basics/_static/image5.png)
+![Stránka ukazující, že textové pole má "rememberd" předchozí položku](form-basics/_static/image5.png)
 
-## <a name="searching-for-any-word-in-the-title"></a>Vyhledat libovolné slovo v názvu
+## <a name="searching-for-any-word-in-the-title"></a>Hledání libovolného slova v nadpisu
 
-Můžete teď vyhledat všechny žánr, ale můžete také vyhledat název. Je těžké získat přesně správný název, při hledání, takže místo toho že můžete hledat slova, která se zobrazí kdekoliv v názvu. K tomu v SQL, můžete použít `LIKE` operátor a syntaxe, jako je následující:
+Teď můžete vyhledat jakýkoliv Žánr, ale možná budete chtít také vyhledat nadpis. Při hledání je obtížné získat nadpis přesně. místo toho můžete vyhledat slovo, které se zobrazí kdekoli v názvu. Chcete-li to provést v SQL, použijte operátor `LIKE` a syntax podobný následujícímu:
 
 `SELECT * FROM Movies WHERE Title LIKE '%adventure%'`
 
-Tento příkaz načte všechny filmy, jejichž názvy obsahují "adventure". Při použití `LIKE` operátoru, zahrnují zástupný znak `%` jako součást hledaný termín. Hledání `LIKE 'adventure%'` znamená "od"adventure"". (Technicky vzato znamená "Řetězec následovaný nic adventure.") Obdobně hledaný termín `LIKE '%adventure'` znamená "cokoliv, za nímž následuje řetězec"adventure"", což je další způsob, jak Řekněme, že "končí"adventure"".
+Tento příkaz načte všechny filmy, jejichž názvy obsahují slovo "Adventure". Při použití operátoru `LIKE` zahrnete zástupný znak `%` jako součást hledaného termínu. Hledání `LIKE 'adventure%'` znamená "začíná slovem" Adventure ". (Technicky to znamená "řetězec" Adventure "následovaný cokoli.") Podobně hledaný termín `LIKE '%adventure'` znamená "cokoli následované řetězcem" Adventure ", což je další způsob, jak vyslovit" "s" Adventure "".
 
-Hledaný termín `LIKE '%adventure%'` proto znamená "s"adventure"kdekoliv v názvu." (Technicky vzato "vše v názvu, za nímž následuje"adventure", za nímž následuje nic.")
+Hledaný termín `LIKE '%adventure%'` proto znamená "" Adventure "kdekoli v názvu." (Technicky, "cokoli v názvu, následované" Adventure "následovaný cokoli.")
 
-Uvnitř `<form>` elementu, přidejte následující značky vpravo pod uzavírací `</div>` značky pro hledání žánru (těsně před uzavírací `</form>` element):
+Uvnitř elementu `<form>` přidejte následující kód vpravo pod uzavírací značku `</div>` pro hledání žánru (těsně před uzavíracím `</form>` elementem):
 
 [!code-html[Main](form-basics/samples/sample10.html)]
 
-Kód pro zpracování tohoto hledání je podobný kód pro hledání genre, s tím rozdílem, že budete muset sestavit `LIKE` vyhledávání. Uvnitř bloku kódu v horní části stránky, přidejte tuto `if` hned za block `if` bloku žánr hledání:
+Kód pro zpracování tohoto hledání je podobný kódu pro hledání žánru, s výjimkou, že je nutné sestavit `LIKE` vyhledávání. Uvnitř bloku kódu v horní části stránky přidejte tento blok `if` hned za `if` bloku pro hledání žánru:
 
 [!code-csharp[Main](form-basics/samples/sample11.cs)]
 
-Tento kód používá stejnou logiku, která jste viděli dříve, s tím rozdílem, že používá hledání `LIKE` operátor a vloží kód "`%`" před a za hledaný termín.
+Tento kód používá stejnou logiku, kterou jste viděli dříve, s tím rozdílem, že vyhledávání používá operátor `LIKE` a kód vloží "`%`" před a za hledaný termín.
 
-Všimněte si, jak snadno tak člověk mohl přidat jiné hledání na stránku. Všechno, co jste museli dělat byl:
+Všimněte si, jak bylo snadné přidat další vyhledávání na stránku. Měli byste to udělat:
 
-- Vytvoření `if` blok, který Pokud chcete zobrazit, zda pole Hledat relevantní měl hodnotu.
-- Nastavte `selectCommand` proměnné pro nový příkaz SQL.
-- Nastavte `searchTerm` proměnnou pro hodnotu pro předání do dotazu.
+- Vytvořte `if` blok, který byl testován, aby bylo možné zjistit, zda příslušné vyhledávací pole mělo hodnotu.
+- Nastavte proměnnou `selectCommand` na nový příkaz SQL.
+- Nastavte proměnnou `searchTerm` na hodnotu, která má být předána dotazu.
 
-Tady je kompletní kód blok, který obsahuje nový logiku pro hledání názvu:
+Zde je kompletní blok kódu, který obsahuje novou logiku pro hledání v nadpisu:
 
 [!code-cshtml[Main](form-basics/samples/sample12.cshtml)]
 
-Toto je souhrn toho, co dělá takto:
+Tady je přehled toho, co tento kód dělá:
 
-- Proměnné `searchTerm` a `selectCommand` jsou inicializovány v horní části. Budete k nastavení těchto proměnných na odpovídající hledaným termínem (pokud existuje) a odpovídající příkaz SQL podle uživatel nemá na stránce. Výchozí hledání je jednoduchý případ získat všechny filmy z databáze.
-- V testech pro `searchGenre` a `searchTitle`, nastaví kód `searchTerm` na hodnotu, kterou chcete vyhledat. Tyto bloky kódu také nastavit `selectCommand` příslušný příkaz SQL pro toto hledání.
-- `db.Query` Metoda vyvolána pouze jednou, pomocí každý příkaz SQL je v `selectedCommand` a libovolné hodnota `searchTerm`. Pokud není žádný hledaný termín (žádné žánr a žádný název word), hodnota `searchTerm` je prázdný řetězec. Nicméně, nezáleží, protože v takovém případě dotazu nevyžaduje parametr.
+- Proměnné `searchTerm` a `selectCommand` jsou inicializovány v horní části. Chystáte se nastavit tyto proměnné na příslušný hledaný výraz (pokud existuje) a odpovídající příkaz SQL na základě toho, co uživatel na stránce provádí. Výchozím hledáním je jednoduchý případ získávání všech filmů z databáze.
+- V testech pro `searchGenre` a `searchTitle`kód nastaví `searchTerm` na hodnotu, kterou chcete vyhledat. Tyto bloky kódu také nastavují `selectCommand` pro příslušné příkazy SQL pro toto hledání.
+- Metoda `db.Query` je vyvolána pouze jednou, přičemž použití jakéhokoliv příkazu SQL je v `selectedCommand` a libovolná hodnota je v `searchTerm`. Pokud neexistuje hledaný termín (žádný Žánr a žádné slovo title), hodnota `searchTerm` je prázdný řetězec. Nicméně to nezáleží, protože v takovém případě dotaz nepožaduje parametr.
 
-## <a name="testing-the-title-search-feature"></a>Testování funkcí hledání názvu
+## <a name="testing-the-title-search-feature"></a>Testování funkce hledání názvu
 
-Nyní můžete otestovat stránky dokončené vyhledávání. Spustit *Movies.cshtml*.
+Nyní můžete otestovat dokončenou stránku vyhledávání. Spusťte *video. cshtml*.
 
-Zadejte rozšířením podle tematických a klikněte na tlačítko **hledání žánr**. V mřížce zobrazené filmy genre, stejně jako před.
+Zadejte Žánr a klikněte na **Hledat Žánr**. Mřížka zobrazuje filmy tohoto žánru, například před.
 
-Zadejte slovo, název a klikněte na tlačítko **hledání názvu**. V mřížce zobrazené filmy, které mají v názvu toto slovo.
+Zadejte název slovo a klikněte na **Hledat nadpis**. Mřížka zobrazuje filmy, které mají toto slovo v názvu.
 
-![Filmy stránku se seznamem po vyhledání "Na" v názvu](form-basics/_static/image6.png)
+![Seznam filmů po vyhledání ' The ' v nadpisu](form-basics/_static/image6.png)
 
-I textová pole ponechte prázdné a klikněte na tlačítko buď tlačítko. V mřížce zobrazené všechny filmy.
+Obě textová pole ponechte prázdné a klikněte na jedno tlačítko. V mřížce se zobrazí všechny filmy.
 
-## <a name="combining-the-queries"></a>Kombinování dotazy
+## <a name="combining-the-queries"></a>Kombinování dotazů
 
-Můžete si všimnout, že se hledání, které můžete provádět vylučují. Hledání názvu a žánr ve stejnou dobu, i v případě, že oba vyhledávacích polí mají hodnoty v nich. Nelze například vyhledat všechny filmy akce, jejichž název obsahuje "Adventure". (Na stránce je nyní kódem, pokud zadáte hodnoty pro žánr a název, hledání názvu získá prioritu.) Pokud chcete vytvořit vyhledávání, které kombinuje podmínky, je nutné vytvořit dotaz SQL, který má následující syntaxi:
+Můžete si všimnout, že hledání, která můžete provádět, jsou exkluzivní. Nemůžete současně prohledávat název a žánr, a to i v případě, že obě vyhledávací pole obsahují v nich hodnoty. Například nemůžete vyhledat všechny filmy akcí, jejichž název obsahuje text "Adventure". (Jak je stránka kódována, pokud zadáte hodnoty pro Žánr a název, bude hledání názvu přednost.) Chcete-li vytvořit vyhledávání, které kombinuje podmínky, je nutné vytvořit dotaz SQL, který má následující syntaxi:
 
 `SELECT * FROM Movies WHERE Genre = @0 AND Title LIKE @1`
 
-A je třeba spustit dotaz s použitím příkaz podobný tomuto (zhruba řečeno):
+A musíte spustit dotaz pomocí příkazu podobného následujícímu (přibližně řečeno):
 
 `var selectedData = db.Query(selectCommand, searchGenre, searchTitle);`
 
-Vytváření logiku, která umožní počet permutací kritéria vyhledávání můžete Zapojte se trochu, jak je vidět. Proto jsme vás přestaneme tady.
+Vytvoření logiky, která povoluje mnoho permutací kritérií vyhledávání, může mít za to, jak můžete vidět. Proto tady zastavíme.
 
-## <a name="coming-up-next"></a>Chystá se další
+## <a name="coming-up-next"></a>Připravujeme další
 
-V dalším kurzu vytvoříte stránky, která používá formulář umožňuje uživatelům přidávat videa do databáze.
+V dalším kurzu vytvoříte stránku, která používá formulář, aby uživatelé mohli přidávat do databáze filmy.
 
-## <a name="complete-listing-for-movie-page-updated-with-search"></a>Úplný seznam pro stránku Movie (aktualizovat pomocí služby Search)
+## <a name="complete-listing-for-movie-page-updated-with-search"></a>Úplný výpis pro stránku videa (aktualizovaný pomocí hledání)
 
 [!code-cshtml[Main](form-basics/samples/sample13.cshtml)]
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [Úvod k programování v prostředí ASP.NET pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkID=202890)
-- [Klauzule WHERE SQL](http://www.w3schools.com/sql/sql_where.asp) na webu W3Schools
-- [Definice metod](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) článku na webu W3C
+- [Seznámení s ASP.NET webovým programováním pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkID=202890)
+- [Klauzule WHERE jazyka SQL](http://www.w3schools.com/sql/sql_where.asp) na webu w3schools
+- Článek [definice metod](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) na webu W3C
 
 > [!div class="step-by-step"]
 > [Předchozí](displaying-data.md)
-> [další](entering-data.md)
+> [Další](entering-data.md)

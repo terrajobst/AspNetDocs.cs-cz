@@ -9,11 +9,11 @@ ms.assetid: 06a776fe-7c73-4ca7-8e02-5260a86edc03
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/picking-one-animation-out-of-a-list-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 2bc203d694792716bbf4f7d7b8d152c589bf99b1
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74575119"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78597970"
 ---
 # <a name="picking-one-animation-out-of-a-list-c"></a>Výběr jedné animace ze seznamu (C#)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Rozhraní také umožňuje programátorovi vybrat jednu animaci ze seznamu animací v závislosti na vyhodnocení kódu JavaScriptu.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 

@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/6/2019
 uid: owin-samesite
 ms.openlocfilehash: a3353fd0f0332899aaba26b83aea0ff7c3a6d19b
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77455734"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78546212"
 ---
 # <a name="samesite-cookies-and-the-open-web-interface-for-net-owin"></a>SameSite soubory cookie a otevřené webové rozhraní pro .NET (OWIN)
 
@@ -74,7 +74,7 @@ Koncept 2019 specifikace `SameSite`:
 * Určuje, že soubory cookie se ve výchozím nastavení považují za `SameSite=Lax`.
 * Určuje soubory cookie, které explicitně vyhodnotí `SameSite=None`, aby bylo možné povolit doručování mezi weby, musí být označeno jako `Secure`. `None` je nová položka k odhlášení.
 * Ve výchozím nastavení je naplánovaná podpora [Chrome](https://chromestatus.com/feature/5088147346030592) v [únoru 2020](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html). Prohlížeče začaly při přesunu do tohoto standardu v 2019.
-* Je podporován opravami vydanými podle pokynů v článcích znalostní báze. Další informace najdete v tématu <xref:samesite/kbs-samesite>.
+* Je podporován opravami vydanými podle pokynů v článcích znalostní báze. Další informace naleznete v tématu <xref:samesite/kbs-samesite>.
 
 <a name="sob"></a>
 
@@ -144,7 +144,7 @@ příznaky `SameSite` jsou nastaveny na stránce `edge://flags/#same-site-by-def
 
 K verzím elektronů patří starší verze Chromu. Například verze elektronicky používané týmy je chrom 66, který vykazuje starší chování. Je nutné provést vlastní testování kompatibility s verzí elektronů, kterou váš produkt používá. Viz [Podpora starších prohlížečů](#sob) v následující části.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Chromový blog: vývojáři: Připravte se na nové SameSite = None; Nastavení zabezpečeného souboru cookie](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)
 * [Vysvětlení souborů cookie SameSite](https://web.dev/samesite-cookies-explained/)

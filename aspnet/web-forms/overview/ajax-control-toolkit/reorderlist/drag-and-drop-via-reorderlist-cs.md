@@ -9,11 +9,11 @@ ms.assetid: 6350ee8e-11d6-4aff-b51c-942878014835
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 2fc6d55a290cbb58bea36d8145d814e337bbd931
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74611468"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78553828"
 ---
 # <a name="drag-and-drop-via-reorderlist-c"></a>Přetažení ovládacím prvkem ReorderList (C#)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek `ReorderList` v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení. Aktuální pořadí seznamu musí být na serveru trvalé.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Ovládací prvek `ReorderList` podporuje vazby dat z databáze na seznam. Nejlepší z nich také podporuje zápis změn v pořadí elementu seznamu zpátky do úložiště dat.
 

@@ -1,6 +1,6 @@
 ---
 uid: visual-studio/index
-title: Visual Studio 2012 a 2013 s technologií ASP.NET | Dokumentace Microsoftu
+title: Visual Studio 2012 a 2013 s ASP.NET | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -9,17 +9,17 @@ ms.assetid: 7356f644-2b54-4d9f-8863-9d59b9f75532
 msc.legacyurl: /visual-studio
 msc.type: categoryindex
 ms.openlocfilehash: 929900911e96890ee635b9831e3759411fe93acb
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57796174"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78578412"
 ---
-# <a name="visual-studio-2012-and-2013-with-aspnet"></a>Visual Studio 2012 a 2013 pomocí technologie ASP.NET
+# <a name="visual-studio-2012-and-2013-with-aspnet"></a>Visual Studio 2012 a 2013 s ASP.NET
 
-Aktuální informace o sadě Visual Studio, přejděte na [visualstudio.microsoft.com](https://visualstudio.microsoft.com).
+Aktuální informace o aplikaci Visual Studio najdete na [VisualStudio.Microsoft.com](https://visualstudio.microsoft.com).
 
-Na následujících stránkách odkaz na informace o tom, jak používat starší verze sady Visual Studio pomocí technologie ASP.NET.
+Následující stránky odkazují na informace o tom, jak používat starší verze sady Visual Studio s ASP.NET.
 
 - [Visual Studio 2017](overview/2017/index.md)
 - [Visual Studio 2013](overview/2013/index.md)

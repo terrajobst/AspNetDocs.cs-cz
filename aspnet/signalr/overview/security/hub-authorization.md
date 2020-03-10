@@ -1,130 +1,130 @@
 ---
 uid: signalr/overview/security/hub-authorization
-title: Ověřování a autorizace Center SignalR | Dokumentace Microsoftu
+title: Ověřování a autorizace pro centra signalizace | Microsoft Docs
 author: bradygaster
-description: Toto téma popisuje, jak omezit, kteří uživatelé nebo rolí se dostanete metod rozbočovače. Verze softwaru použitým v tomto tématu ve Visual Studio 2013 .NET 4.5 SignalR...
+description: Toto téma popisuje, jak omezit, kteří uživatelé nebo role mají přístup k metodám rozbočovače. Verze softwaru používané v tomto tématu Visual Studio 2013 signalizace rozhraní .NET 4,5...
 ms.author: bradyg
 ms.date: 01/05/2015
 ms.assetid: a610c796-c131-473c-baef-2e6c568cb2a2
 msc.legacyurl: /signalr/overview/security/hub-authorization
 msc.type: authoredcontent
 ms.openlocfilehash: 5006af5e623da6958a6d59949c6f2cf776c77fc3
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113617"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78578916"
 ---
 # <a name="authentication-and-authorization-for-signalr-hubs"></a>Ověřování a autorizace center SignalR
 
-podle [Patrick Fletcher](https://github.com/pfletcher), [Tom FitzMacken](https://github.com/tfitzmac)
+autorem [Fletcher](https://github.com/pfletcher), který [FitzMacken](https://github.com/tfitzmac)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> Toto téma popisuje, jak omezit, kteří uživatelé nebo rolí se dostanete metod rozbočovače.
+> Toto téma popisuje, jak omezit, kteří uživatelé nebo role mají přístup k metodám rozbočovače.
 >
-> ## <a name="software-versions-used-in-this-topic"></a>Verze softwaru použitým v tomto tématu
+> ## <a name="software-versions-used-in-this-topic"></a>Verze softwaru používané v tomto tématu
 >
 >
 > - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
-> - Funkce SignalR verze 2
+> - Signal – verze 2
 >
 >
 >
-> ## <a name="previous-versions-of-this-topic"></a>Předchozích verzích tohoto tématu
+> ## <a name="previous-versions-of-this-topic"></a>Předchozí verze tohoto tématu
 >
-> Informace o předchozích verzích systému SignalR naleznete v tématu [starší verze funkce SignalR](../older-versions/index.md).
+> Informace o dřívějších verzích nástroje Signal najdete v části [Signal – starší verze](../older-versions/index.md).
 >
-> ## <a name="questions-and-comments"></a>Otázky a komentáře
+> ## <a name="questions-and-comments"></a>Dotazy a komentáře
 >
-> Napište prosím zpětnou vazbu o tom, jak vám líbilo v tomto kurzu a co můžeme zlepšit v komentářích v dolní části stránky. Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
+> Přečtěte si prosím svůj názor na to, jak se vám tento kurz líbí a co bychom mohli vylepšit v komentářích v dolní části stránky. Pokud máte dotazy, které přímo nesouvisejí s kurzem, můžete je publikovat do [fóra signálu ASP.NET](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
 
 ## <a name="overview"></a>Přehled
 
 Toto téma obsahuje následující oddíly:
 
-- [Povolit atribut](#authorizeattribute)
-- [Vyžadovat ověřování pro všechna centra](#requireauth)
-- [Vlastní autorizace](#custom)
-- [Předat ověřovací informace pro klienty](#passauth)
-- [Možnosti ověřování pro klienty .NET](#authoptions)
+- [Autorizovat atribut](#authorizeattribute)
+- [Vyžadovat ověření pro všechna centra](#requireauth)
+- [Přizpůsobená autorizace](#custom)
+- [Předání ověřovacích informací klientům](#passauth)
+- [Možnosti ověřování pro klienty rozhraní .NET](#authoptions)
 
-    - [Soubor cookie ověřování pomocí formulářů](#cookie)
-    - [Ověřování Windows](#windows)
-    - [Připojení záhlaví](#header)
+    - [Soubor cookie s ověřováním pomocí formulářů](#cookie)
+    - [Ověřování systému Windows](#windows)
+    - [Záhlaví připojení](#header)
     - [Certifikát](#certificate)
 
 <a id="authorizeattribute"></a>
 
-## <a name="authorize-attribute"></a>Povolit atribut
+## <a name="authorize-attribute"></a>Autorizovat atribut
 
-Funkce SignalR poskytuje [Authorize](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.authorizeattribute(v=vs.111).aspx) atribut určit, které uživatele nebo role mají přístup do centra nebo metody. Tento atribut je umístěn v `Microsoft.AspNet.SignalR` oboru názvů. Můžete použít `Authorize` atribut rozbočovač nebo konkrétní metody v rozbočovači. Pokud použijete `Authorize` atribut třídy rozbočovače, požadavek na autorizaci zadané platí pro všechny metody v rozbočovači. Toto téma obsahuje příklady různých typů ověření požadavků, které můžete použít. Bez `Authorize` atribut připojeného klient může získat všechny veřejné metody v rozbočovači.
+Signál poskytuje [autorizačnímu atributu oprávnění](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.authorizeattribute(v=vs.111).aspx) určit, kteří uživatelé nebo role mají přístup k rozbočovači nebo metodě. Tento atribut je umístěn v oboru názvů `Microsoft.AspNet.SignalR`. Atribut `Authorize` aplikujete buď na centrum, nebo na konkrétní metody v centru. Při použití atributu `Authorize` pro třídu centra se zadaný požadavek na autorizaci použije na všechny metody v centru. V tomto tématu najdete příklady různých typů autorizačních požadavků, které můžete použít. Bez atributu `Authorize` má připojený klient přístup k libovolné veřejné metodě v centru.
 
-Pokud jste definovali role ve vaší webové aplikaci s názvem "Admin", můžete zadat, že jenom uživatelé v této roli můžete přístup k centru s následujícím kódem.
+Pokud jste ve webové aplikaci definovali roli admin (správce), můžete určit, že k centru budou mít přístup jenom uživatelé v této roli s následujícím kódem.
 
 [!code-csharp[Main](hub-authorization/samples/sample1.cs)]
 
-Nebo můžete určit, že Centrum obsahuje jednu metodu, která je k dispozici všem uživatelům a druhá metoda, která je pouze ověřeným uživatelům k dispozici, jak je znázorněno níže.
+Nebo můžete určit, že rozbočovač obsahuje jednu metodu, která je k dispozici všem uživatelům, a druhou metodu, která je k dispozici pouze pro ověřené uživatele, jak je znázorněno níže.
 
 [!code-csharp[Main](hub-authorization/samples/sample2.cs)]
 
-Následující příklady různých autorizace situacích:
+Následující příklady řeší různé scénáře autorizace:
 
-- `[Authorize]` – jen ověření uživatelé
-- `[Authorize(Roles = "Admin,Manager")]` – jen ověření uživatelé v zadaných rolí
-- `[Authorize(Users = "user1,user2")]` – pouze pro ověřené uživatele s ze zadaných uživatelských jmen
-- `[Authorize(RequireOutgoing=false)]` – pouze pro ověřené uživatele můžete vyvolat centra, ale volání ze serveru zpátky do klientů nejsou omezeny autorizace, jako je třeba když jenom určitým uživatelům můžete odeslat zprávu, ale všechny ostatní zprávy. Vlastnost RequireOutgoing dá používat jedině pro celé centrum není pro jednotlivce metody v rozbočovači. Když RequireOutgoing není nastavená na hodnotu false, jenom uživatelé, kteří splní požadavek na autorizaci se nazývají ze serveru.
+- `[Authorize]` – pouze ověření uživatelé
+- `[Authorize(Roles = "Admin,Manager")]` – pouze ověření uživatelé v zadaných rolích
+- `[Authorize(Users = "user1,user2")]` – pouze ověření uživatelé s určenými uživatelskými jmény
+- `[Authorize(RequireOutgoing=false)]` – k vyvolání centra můžou použít jenom ověření uživatelé, ale volání ze serveru zpátky na klienty nejsou omezená autorizací, jako je třeba, když můžou poslat zprávu jenom někteří uživatelé, ale zpráva se může dostat do všech ostatních. Vlastnost RequireOutgoing lze použít pouze pro celé centrum, nikoli pro jednotlivce v rámci centra. Pokud RequireOutgoing není nastavené na hodnotu false, budou se ze serveru volat jenom uživatelé, kteří splňují požadavek na autorizaci.
 
 <a id="requireauth"></a>
 
-## <a name="require-authentication-for-all-hubs"></a>Vyžadovat ověřování pro všechna centra
+## <a name="require-authentication-for-all-hubs"></a>Vyžadovat ověření pro všechna centra
 
-Můžete vyžadovat ověřování pro všechny rozbočovače a metody ve vaší aplikaci pomocí volání [RequireAuthentication](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubpipelineextensions.requireauthentication(v=vs.111).aspx) metoda při spuštění aplikace. Tuto metodu můžete použít, když máte více rozbočovače a chcete vynutit požadavek na ověření pro všechny z nich. S touto metodou nelze zadat požadavky pro role, uživatele nebo odchozí autorizace. Můžete zadat pouze omezen přístup k metodám centra ověřeným uživatelům. Atribut Authorize však můžete použít na rozbočovače a metody zadat další požadavky. Všechny požadavky, které zadáte v atributu je přidán do základní požadavek ověřování.
+Ověřování pro všechny metody centra a centra v aplikaci můžete vyžadovat voláním metody [RequireAuthentication](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubpipelineextensions.requireauthentication(v=vs.111).aspx) při spuštění aplikace. Tuto metodu můžete použít, pokud máte více rozbočovačů a chcete vymáhat požadavek na ověření pro všechny z nich. V této metodě nemůžete zadat požadavky na role, uživatele nebo odchozí autorizaci. Můžete zadat jenom přístup k metodám rozbočovače, který je omezený na ověřené uživatele. Přesto však můžete použít atribut autorizovat na centra nebo metody k určení dalších požadavků. Všechny požadavky, které zadáte v atributu, se přidají do základního požadavku ověřování.
 
-Následující příklad ukazuje spouštěcí soubor, který omezuje všech metod rozbočovače na ověřeným uživatelům.
+Následující příklad ukazuje spouštěcí soubor, který omezuje všechny metody centra na ověřené uživatele.
 
 [!code-csharp[Main](hub-authorization/samples/sample3.cs)]
 
-Při volání `RequireAuthentication()` metoda po zpracování žádost SignalR, vyvolá výjimku SignalR `InvalidOperationException` výjimky. Funkce SignalR vyvolá tuto výjimku, protože modul nelze přidat do kanálu rozbočovače přidán po zavolání kanálu. Předchozí příklad ukazuje volání `RequireAuthentication` metodu `Configuration` metodu, která provádí jednou před prvního požadavku na zpracování.
+Pokud zavoláte metodu `RequireAuthentication()` po zpracování žádosti o signál, Signaler vyvolá výjimku `InvalidOperationException`. Signál vyvolá tuto výjimku, protože po vyvolání kanálu nelze přidat modul do HubPipeline. Předchozí příklad ukazuje volání metody `RequireAuthentication` v metodě `Configuration`, která je spuštěna jednou před zpracováním prvního požadavku.
 
 <a id="custom"></a>
 
-## <a name="customized-authorization"></a>Vlastní autorizace
+## <a name="customized-authorization"></a>Přizpůsobená autorizace
 
-Pokud je potřeba upravit, jak se určují autorizaci, můžete vytvořit třídu, která je odvozena z `AuthorizeAttribute` a přepsat [UserAuthorized](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.authorizeattribute.userauthorized(v=vs.111).aspx) metody. Pro každý požadavek SignalR volá tuto metodu za účelem určení, zda je uživatel oprávnění k dokončení požadavku. Přepsané metody poskytují logiku potřebnou pro váš scénář autorizace. Následující příklad ukazuje, jak vynutit autorizaci prostřednictvím založené na deklaracích identity.
+Pokud potřebujete přizpůsobit způsob určování autorizace, můžete vytvořit třídu, která je odvozena z `AuthorizeAttribute` a přepsat metodu [UserAuthorized](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.authorizeattribute.userauthorized(v=vs.111).aspx) . Pro každý požadavek vyvolá signál tuto metodu k určení, zda je uživatel autorizován k dokončení žádosti. V přepsané metodě zadáte potřebnou logiku pro váš autorizační scénář. Následující příklad ukazuje, jak vymáhat autorizaci pomocí identity založené na deklaracích identity.
 
 [!code-csharp[Main](hub-authorization/samples/sample4.cs)]
 
 <a id="passauth"></a>
 
-## <a name="pass-authentication-information-to-clients"></a>Předat ověřovací informace pro klienty
+## <a name="pass-authentication-information-to-clients"></a>Předání ověřovacích informací klientům
 
-Budete muset použít informace o ověřování v kódu, který běží na straně klienta. Předáním požadovaných informací při volání metody na straně klienta. Například metoda aplikace chat mohli předat jako parametr uživatelské jméno osoby, odesílání zpráv, jak je znázorněno níže.
+V kódu, který běží na klientovi, možná budete muset použít ověřovací údaje. Požadované informace předáte při volání metod na klientovi. Například metoda aplikace Chat může předat jako parametr uživatelské jméno osoby, která odesílá zprávu, jak je znázorněno níže.
 
 [!code-csharp[Main](hub-authorization/samples/sample5.cs)]
 
-Nebo můžete vytvořit objekt reprezentující informace o ověřování a tento objekt předat jako parametr, jak je znázorněno níže.
+Nebo můžete vytvořit objekt, který představuje ověřovací informace a předat tento objekt jako parametr, jak je znázorněno níže.
 
 [!code-csharp[Main](hub-authorization/samples/sample6.cs)]
 
-Nikdy byste neměli předávat id připojení pro jednoho klienta jiným klientům, protože ji uživatel se zlými úmysly třeba použít tak, aby napodoboval žádosti od tohoto klienta.
+Nikdy byste neměli předat ID připojení jednoho klienta jiným klientům, protože ho uživatel se zlými úmysly mohl použít k napodobení žádosti od tohoto klienta.
 
 <a id="authoptions"></a>
 
-## <a name="authentication-options-for-net-clients"></a>Možnosti ověřování pro klienty .NET
+## <a name="authentication-options-for-net-clients"></a>Možnosti ověřování pro klienty rozhraní .NET
 
-Pokud máte klienta .NET, jako je například konzolové aplikace, která komunikuje s rozbočovači, který je omezen na ověřené uživatele, můžete předat přihlašovacími údaji v souboru cookie, záhlaví připojení nebo certifikát. Příklady v této části ukazují, jak použít tyto různé metody pro ověřování uživatele. Nejsou plně funkční aplikace SignalR. Další informace o klientech .NET s knihovnou SignalR naleznete v tématu [pokyny k rozhraní API Center – klient .NET](../guide-to-the-api/hubs-api-guide-net-client.md).
+Pokud máte klienta .NET, například konzolovou aplikaci, která komunikuje s centrem, které je omezené na ověřené uživatele, můžete přihlašovací údaje pro ověřování předat v souboru cookie, v záhlaví připojení nebo v certifikátu. Příklady v této části ukazují, jak používat tyto různé metody ověřování uživatele. Nejedná se o plně funkční signalizaci aplikací. Další informace o klientech rozhraní .NET s nástrojem Signal najdete v tématu [Průvodce rozhraním API pro centra – klient .NET](../guide-to-the-api/hubs-api-guide-net-client.md).
 
 <a id="cookie"></a>
 
 ### <a name="cookie"></a>Soubor cookie
 
-Při vašeho klienta .NET interakci s rozbočovači, který používá ověřování pomocí formulářů ASP.NET, musíte ručně nastavit ověřovacího souboru cookie pro připojení. Přidání souboru cookie `CookieContainer` vlastnost [HubConnection](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.hubs.hubconnection(v=vs.111).aspx) objektu. Následující příklad ukazuje konzolovou aplikaci, která načte soubor cookie ověřování z webové stránky a přidá tento soubor cookie pro připojení.
+Když klient .NET komunikuje s centrem, které používá ověřování pomocí formulářů ASP.NET, budete muset ručně nastavit ověřovací soubor cookie pro připojení. Soubor cookie přidáte do vlastnosti `CookieContainer` v objektu [HubConnection](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.hubs.hubconnection(v=vs.111).aspx) . Následující příklad ukazuje konzolovou aplikaci, která načte ověřovací soubor cookie z webové stránky a přidá tento soubor cookie k připojení.
 
 [!code-csharp[Main](hub-authorization/samples/sample7.cs)]
 
-Konzolová aplikace odesílá pověření, která mají <strong>www.contoso.com/RemoteLogin</strong> který může odkazovat na prázdnou stránku, která obsahuje následující soubor kódu na pozadí.
+Aplikace konzoly odesílá pověření do <strong>www.contoso.com/RemoteLogin</strong> , která by mohla odkazovat na prázdnou stránku, která obsahuje následující soubor kódu na pozadí.
 
 [!code-csharp[Main](hub-authorization/samples/sample8.cs)]
 
@@ -132,24 +132,24 @@ Konzolová aplikace odesílá pověření, která mají <strong>www.contoso.com/
 
 ### <a name="windows-authentication"></a>Ověřování systému Windows
 
-Pokud používáte ověřování Windows, můžete předat přihlašovacích údajů aktuálního uživatele pomocí [DefaultCredentials](https://msdn.microsoft.com/library/system.net.credentialcache.defaultcredentials.aspx) vlastnost. Nastavit přihlašovací údaje pro připojení k hodnotě DefaultCredentials.
+Při použití ověřování systému Windows můžete přihlašovací údaje aktuálního uživatele předat pomocí vlastnosti [DefaultCredentials](https://msdn.microsoft.com/library/system.net.credentialcache.defaultcredentials.aspx) . Přihlašovací údaje pro připojení nastavíte na hodnotu DefaultCredentials.
 
 [!code-csharp[Main](hub-authorization/samples/sample9.cs?highlight=6)]
 
 <a id="header"></a>
 
-### <a name="connection-header"></a>Připojení záhlaví
+### <a name="connection-header"></a>Záhlaví připojení
 
-Pokud vaše aplikace nepoužívá soubory cookie, můžete předat informace o uživateli v hlavičce připojení. Můžete například předat token v hlavičce připojení.
+Pokud vaše aplikace nepoužívá soubory cookie, můžete informace o uživateli předat v hlavičce připojení. Například můžete předat token v hlavičce připojení.
 
 [!code-csharp[Main](hub-authorization/samples/sample10.cs?highlight=6)]
 
-Poté v rozbočovači, bude ověřit token uživatele.
+Potom můžete v centru ověřit token uživatele.
 
 <a id="certificate"></a>
 
 ### <a name="certificate"></a>Certifikát
 
-Můžete předat klientský certifikát k ověření uživatele. Přidání certifikátu při vytváření připojení. Následující příklad ukazuje jenom postup přidání klientský certifikát pro připojení. nezobrazuje se úplná konzolovou aplikaci. Používá [certifikátu x 509](https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509certificate.aspx) třída, která poskytuje několik způsobů vytvoření certifikátu.
+Můžete předat klientský certifikát a ověřit uživatele. Certifikát se přidává při vytváření připojení. Následující příklad ukazuje pouze postup přidání klientského certifikátu k připojení; nezobrazuje úplnou konzolovou aplikaci. Používá třídu [certifikátu x509](https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509certificate.aspx) , která poskytuje několik různých způsobů, jak vytvořit certifikát.
 
 [!code-csharp[Main](hub-authorization/samples/sample11.cs?highlight=6)]

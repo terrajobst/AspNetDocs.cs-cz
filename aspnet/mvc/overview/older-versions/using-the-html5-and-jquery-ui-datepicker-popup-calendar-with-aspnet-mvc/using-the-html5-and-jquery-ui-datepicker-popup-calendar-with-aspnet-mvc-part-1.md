@@ -9,11 +9,11 @@ ms.assetid: c23d27f7-b0cf-44f2-8445-fb69e045c674
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1
 msc.type: authoredcontent
 ms.openlocfilehash: c1c2380f24c72f6aabaaacaf975e95288a384ff1
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457619"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78538988"
 ---
 # <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-1"></a>Použití místního kalendáře DatePicker HTML5 a jQuery UI s ASP.NET MVC – část 1
 
@@ -51,7 +51,7 @@ Tady je seznam toho, co se naučíte:
 - Vytváření šablon (úpravy a zobrazení šablon) k řízení formátování dat.
 - Postup přidání [uživatelského rozhraní jQuery DatePicker](http://jqueryui.com/demos/datepicker/) jako způsobu, jak zadat pole data
 
-### <a name="getting-started"></a>Začínáme
+### <a name="getting-started"></a>začínáme
 
 Pokud ještě nemáte aplikaci se seznamem videí z počátečního projektu, Stáhněte si ji: 
 

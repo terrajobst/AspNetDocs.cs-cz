@@ -9,11 +9,11 @@ ms.assetid: 49545652-98af-46ba-9dbc-9ab529805d9b
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 6b337fe395a0ed54b03767111e73ea6d6c0ba23a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74591939"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78590599"
 ---
 # <a name="inserting-a-new-record-from-the-gridviews-footer-c"></a>Vložení nového záznamu ze zápatí prvku GridView (C#)
 
@@ -210,7 +210,7 @@ Pro úpravu shromažďovaných dat můžeme použít jeden ze dvou přístupů:
 
 Obě možnosti budou fungovat i stejně. V minulých kurzech jsme použili druhou možnost a vytvořením několika přetížení pro metodu `ProductsBLL` třídy s `UpdateProduct`.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V prvku GridView chybí vestavěné možnosti vkládání nalezené v ovládacím prvku DetailsView a FormView, ale s mikroúsilím je možné přidat rozhraní vložení do řádku zápatí. Chcete-li zobrazit řádek zápatí v prvku GridView, stačí nastavit jeho vlastnost `ShowFooter` na hodnotu `true`. Obsah řádku zápatí lze přizpůsobit pro každé pole tak, že převede pole na TemplateField a přidáte rozhraní pro vložení do `FooterTemplate`. Jak jsme viděli v tomto kurzu, `FooterTemplate` mohou obsahovat tlačítka, textová pole, DropDownList, zaškrtávací políčka a ovládací prvky zdroje dat pro vyplnění datových ovládacích prvků řízených daty (například DropDownList) a ověřovací ovládací prvky. Společně s ovládacími prvky pro shromažďování vstupu uživatele, je třeba přidat tlačítko Přidat, LinkButton nebo obrázkové.
 

@@ -9,11 +9,11 @@ ms.assetid: a89d6f32-b71b-4036-8ff7-5f8ac2a6eca8
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12
 msc.type: authoredcontent
 ms.openlocfilehash: c5281a42596d95e725b32e652c75785abe0fd64e
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74640587"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78573463"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-migrating-to-sql-server---10-of-12"></a>Nasazení webové aplikace v ASP.NET pomocí SQL Server Compact sady Visual Studio nebo Visual Web Developer: migrace na SQL Server-10 z 12
 
@@ -112,7 +112,7 @@ Karta **Balení/publikování kódu SQL** je obvykle zakázaná, protože specif
 
 Klikněte na **Importovat ze souboru Web. config**.
 
-![Selecting_Import_from_Web. config](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image5.png)
+![Selecting_Import_from_Web.config](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image5.png)
 
 Visual Studio hledá připojovací řetězce v souboru *Web. config* , najde jednu pro databázi členství a jednu pro databázi školy a přidá do tabulky **databázových záznamů** řádek odpovídající každému připojovacímu řetězci. Připojovací řetězce, které najde, jsou pro existující databáze SQL Server Compact a vaším dalším krokem bude nakonfigurovat, jak a kde tyto databáze nasadit.
 
@@ -244,7 +244,7 @@ Do pole **Web/aplikace** zadejte *Default Web site/ContosoUniversity*.
 
 Do pole **cílová adresa URL** zadejte `http://localhost/ContosoUniversity/`.
 
-Klikněte na tlačítko **Další**.
+Klikněte na **Další**.
 
 Karta **Nastavení** vás upozorní na to, že byla nakonfigurovaná karta **balíček/publikování SQL** , a získáte možnost je přepsat kliknutím na Povolit nová vylepšení publikování databáze. Pro toto nasazení nechcete přepsat nastavení karty pro **Balení/publikování SQL** , takže stačí kliknout na **Další**.
 
@@ -252,7 +252,7 @@ Karta **Nastavení** vás upozorní na to, že byla nakonfigurovaná karta **bal
 
 Zpráva na kartě **Preview** označuje, že **nejsou vybrány žádné databáze pro publikování**, ale to znamená, že publikování databáze není konfigurováno v profilu publikování.
 
-Klikněte na **publikovat**.
+Klikněte na **Publikovat**.
 
 ![Publish_Web_wizard_Preview_tab_Migrate](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image20.png)
 

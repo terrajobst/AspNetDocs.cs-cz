@@ -1,41 +1,41 @@
 ---
 uid: signalr/overview/getting-started/supported-platforms
-title: Podporované platformy | Dokumentace Microsoftu
+title: Podporované platformy | Microsoft Docs
 author: bradygaster
-description: Tento článek popisuje, jaké klienty a servery jsou podporovány systémem SignalR.
+description: Tento článek popisuje, které klienty a servery podporuje Signal.
 ms.author: bradyg
 ms.date: 04/18/2018
 ms.assetid: eac31beb-0f46-4afa-9def-e80904dea4f0
 msc.legacyurl: /signalr/overview/getting-started/supported-platforms
 msc.type: authoredcontent
 ms.openlocfilehash: 89730e591bb94022d16fe1a78a4350b38e0bf7a4
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59420884"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78558630"
 ---
 # <a name="supported-platforms"></a>Podporované platformy
 
-podle [Patrick Fletcher](https://github.com/pfletcher)
+Po [Fletcheru](https://github.com/pfletcher)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> Tento článek popisuje, jaké klienty a servery jsou podporovány systémem SignalR. 
+> Tento článek popisuje, které klienty a servery podporuje Signal. 
 > 
-> ## <a name="questions-and-comments"></a>Otázky a komentáře
+> ## <a name="questions-and-comments"></a>Dotazy a komentáře
 > 
-> Napište prosím zpětnou vazbu o tom, jak vám líbilo v tomto kurzu a co můžeme zlepšit v komentářích v dolní části stránky. Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
+> Přečtěte si prosím svůj názor na to, jak se vám tento kurz líbí a co bychom mohli vylepšit v komentářích v dolní části stránky. Pokud máte dotazy, které přímo nesouvisejí s kurzem, můžete je publikovat do [fóra signálu ASP.NET](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
 
-SignalR je podporována v různých konfigurací klienta a serveru. Kromě toho každá možnost přenosu má sadu požadavků na své vlastní. Pokud požadavky na systém pro přenos nejsou k dispozici, bude převzetí služeb při selhání do jiné přenosy řádně SignalR. Další informace o přenosy, které podporuje funkci SignalR naleznete v tématu [přenosy a náhrad](introduction-to-signalr.md#transports).
+Signalizace se podporuje v rámci nejrůznějších konfigurací serverů a klientů. Kromě toho každá možnost přenosu má sadu vlastních požadavků. Pokud požadavky na systém pro přenos nejsou k dispozici, je signál k řádnému převzetí služeb při selhání na jiné přenosy. Další informace o přenosech, které signalizace podporuje, najdete v tématu [přenosy a záložní](introduction-to-signalr.md#transports)služby.
 
-## <a name="server-system-requirements"></a>Požadavky na systém Server
+## <a name="server-system-requirements"></a>Požadavky na systém serveru
 
-Součást serveru SignalR je možné hostovat na různých konfigurací serveru. Tato část popisuje podporované verze operačních systémů, rozhraní .NET framework, Internet Information Server a další komponenty.
+Komponentu serveru signalizace lze hostovat na nejrůznějších konfiguracích serveru. Tato část popisuje podporované verze operačních systémů, rozhraní .NET Framework, serveru Internet Information Server a další součásti.
 
 ### <a name="supported-server-operating-systems"></a>Podporované serverové operační systémy
 
-V následující serverové nebo klientské operační systémy je možné hostovat součást serveru funkce SignalR. Mějte na paměti, že pro funkci SignalR k používají protokoly Websocket, Windows Server 2012, Windows Server 2016 nebo Windows 8 vyžádáním (pomocí protokolu WebSocket je možné na Windows Azure Web Sites nastavena v lokalitě verze rozhraní .NET framework 4.5, a pokud je povolené webové sokety na webu Stránka Konfigurace).
+Součást serveru signalizace může být hostována v následujících serverech nebo klientských operačních systémech. Všimněte si, že pro signalizaci, že se vyžaduje použití WebSockets, Windows Server 2012, Windows Server 2016 nebo Windows 8 (WebSocket se dá použít na webech Windows Azure, pokud je verze rozhraní .NET Framework lokality nastavená na 4,5 a v lokalitě je povolená možnost webové sokety Konfigurační stránka).
 
 - Windows Server 2016
 - Windows Server 2012
@@ -43,99 +43,99 @@ V následující serverové nebo klientské operační systémy je možné hosto
 - Windows 10
 - Windows 8
 - Windows 7
-- Microsoft Azure
+- Windows Azure
 
-### <a name="supported-server-net-framework-version"></a>Podporované serverové verze rozhraní .NET Framework
+### <a name="supported-server-net-framework-version"></a>Podporovaná verze serveru .NET Framework
 
-Funkce SignalR 2 je podporován pouze v rozhraní .NET Framework 4.5. Zobrazit [doporučené aktualizace](#updates) oddílu pro aktualizace, které zvyšuje spolehlivost, kompatibility, stabilitu a výkon.
+Signál 2 je podporován pouze v .NET Framework 4,5. V části [Doporučené aktualizace](#updates) najdete informace o aktualizacích, které zlepšují spolehlivost, kompatibilitu, stabilitu a výkon.
 
-### <a name="supported-server-iis-versions"></a>Podporované serverové verze služby IIS
+### <a name="supported-server-iis-versions"></a>Podporované verze serveru IIS
 
-Když jsou SignalR je hostované v IIS, se podporují následující verze. Všimněte si, že pokud slouží klientský operační systém, například pro vývoj (Windows 8 nebo Windows 7), plné verze služby IIS nebo Cassini by neměl být, protože nebude limit 10 souběžných připojení, která jsou uložena, a které bude dosažen velmi rychle od připojení není přechodná, často se obnovil a jsou odstraněny ihned po již nejsou déle používány. Služba IIS Express je třeba použít v klientských operačních systémech.
+V případě, že je signál hostovaný ve službě IIS, jsou podporovány následující verze. Počítejte s tím, že pokud se používá klientský operační systém, například pro vývoj (Windows 8 nebo Windows 7), neměli byste používat úplné verze služby IIS nebo Cassini, protože by to znamenalo omezení 10 současných připojení, které se dosáhne velmi rychle od připojení. jsou přechodný a často znovu navázány a nejsou okamžitě uvolněny, pokud už nebudete používat. V klientských operačních systémech by se měla použít IIS Express.
 
-Všimněte si také, že pro funkci SignalR k použití protokolu WebSocket, IIS 8 nebo služby IIS Express 8 musí být použit, server musí používat systém Windows 8, Windows Server 2012 nebo novější, a protokolu WebSocket musí být povolené ve službě IIS. Informace o tom, jak povolit objektu websocket na straně ve službě IIS najdete v tématu [podpora protokolu WebSocket služby IIS 8.0](https://www.iis.net/learn/get-started/whats-new-in-iis-8/iis-80-websocket-protocol-support).
+Všimněte si také, že pro signál k použití WebSocket, IIS 8 nebo IIS 8 Express se musí použít server se systémem Windows 8, Windows Server 2012 nebo novějším a v IIS musí být povolený protokol WebSocket. Informace o tom, jak povolit WebSocket ve službě IIS, najdete v tématu [Podpora protokolu WebSocket v iis 8,0](https://www.iis.net/learn/get-started/whats-new-in-iis-8/iis-80-websocket-protocol-support).
 
-- Služba IIS 8 nebo 8 služby IIS Express.
-- Služba IIS 7 a 7.5. Podpora pro [adresy URL bez přípony](https://support.microsoft.com/kb/980368) je povinný.
-- Služba IIS musí být spuštěn v integrovaném režimu; klasický režim není podporován. Zpožděním zpráv až 30 sekund může dojít, pokud služba IIS je spuštěn v režimu classic pomocí přenosu Server-Sent události.
-- Hostitelské aplikace musí být spuštěn v režimu úplné důvěryhodnosti.
+- Služba IIS 8 nebo IIS 8 Express.
+- IIS 7 a 7,5. Vyžaduje se podpora [rozšiřujících adres URL](https://support.microsoft.com/kb/980368) .
+- Služba IIS musí běžet v integrovaném režimu. Klasický režim není podporován. V případě, že je služba IIS spuštěna v klasickém režimu pomocí přenosu událostí odeslaných serverem, může dojít ke zpoždění zpráv po dobu až 30 sekund.
+- Hostující aplikace musí běžet v režimu úplného vztahu důvěryhodnosti.
 
 ## <a name="client-system-requirements"></a>Požadavky na systém klienta
 
-SignalR je možné v různých klientských platformách. Tato část popisuje požadavky na systém pro použití aplikace SignalR ve webových prohlížečů, aplikací klasické pracovní plochy Windows, aplikací Silverlight a mobilní zařízení.
+Signalizaci lze použít na nejrůznějších klientských platformách. Tato část popisuje systémové požadavky na používání nástroje Signal ve webových prohlížečích, desktopových aplikacích pro Windows, aplikacích Silverlight a mobilních zařízeních.
 
-### <a name="web-browsers"></a>webové prohlížeče
+### <a name="web-browsers"></a>Webové prohlížeče
 
-SignalR je použít v různých webových prohlížečů, ale obvykle jsou podporovány pouze nejnovější dvě verze.
+Signalizace se dá použít v nejrůznějších webových prohlížečích, ale obvykle se podporují jenom nejnovější dvě verze.
 
-Aplikace, které používají funkci SignalR v prohlížečích musí používat verzi jQuery 1.6.4 nebo hlavní novější verze (například 1.7.2, 1.8.2 nebo 1.9.1).
+Aplikace, které používají signál v prohlížečích, musí používat jQuery verze 1.6.4 nebo hlavní pozdější verze (například 1.7.2, 1.8.2 nebo 1.9.1).
 
-SignalR je použít v následujících prohlížečů:
+Signalizaci lze použít v následujících prohlížečích:
 
-- Verze aplikace Microsoft Internet Explorer 8, 9, 10 a 11. Moderní, Desktop a mobilní verze podporují.
-- Mozilla Firefox: aktuální verze - 1, Windows i Mac verze.
-- Google Chrome: aktuální verze - 1, Windows i Mac verze.
-- Safari: aktuální verze - 1, verze Mac OS a iOS.
-- Opera: aktuální verze - 1, pouze Windows.
-- Prohlížeč systému Android
+- Microsoft Internet Explorer verze 8, 9, 10 a 11. Podporují se moderní, desktopové a mobilní verze.
+- Mozilla Firefox: aktuální verze-1, verze Windows i Mac.
+- Google Chrome: aktuální verze-1, verze Windows i Mac.
+- Safari: aktuální verze-1, verze Mac a iOS.
+- Opera: aktuální verze-1, jenom Windows.
+- Prohlížeč Android
 
-Kromě nutnosti některé prohlížeče, mají různé přenosy, které používá SignalR své vlastní požadavky. Následující přenosy jsou podporovány v rámci následující konfigurace:
+Kromě vyžadování určitých prohlížečů mají různé přenosy, které signalizace používá, své vlastní požadavky. Následující přenosy jsou podporovány v následujících konfiguracích:
 
 <a id="browser"></a>
 
-**Požadavky na webový prohlížeč přenosu**
+**Požadavky na přenos ve webovém prohlížeči**
 
 | Přenos | Internet Explorer | Chrome (Windows nebo iOS) | Firefox | Safari (OSX nebo iOS) | Android |
 | --- | --- | --- | --- | --- | --- |
-| WebSocket | 10+ | aktuální - 1 | aktuální - 1 | aktuální - 1 | Není k dispozici |
-| Události odeslané serverem | Není k dispozici | aktuální - 1 | aktuální - 1 | aktuální - 1 | Není k dispozici |
-| ForeverFrame | 8+ | Není k dispozici | Není k dispozici | Není k dispozici | 4.1 |
-| Dlouhým dotazováním | 8+ | aktuální - 1 | aktuální - 1 | aktuální - 1 | 4.1 |
+| WebSockets | 10+ | aktuální – 1 | aktuální – 1 | aktuální – 1 | neuvedeno |
+| Události odeslané serverem | neuvedeno | aktuální – 1 | aktuální – 1 | aktuální – 1 | neuvedeno |
+| ForeverFrame | 8+ | neuvedeno | neuvedeno | neuvedeno | 4.1 |
+| Dlouhé cyklické dotazování | 8+ | aktuální – 1 | aktuální – 1 | aktuální – 1 | 4.1 |
 
-\*: 6 + je nutná pro všemi funkcemi.
+\*: 6 + vyžaduje se pro plnou funkčnost.
 
 #### <a name="unsupported-browsers"></a>Nepodporované prohlížeče
 
-Zatímco SignalR *může* spustit bez hlavní problémy ve starších verzích prohlížečů, jsme SignalR aktivně netestujte v nich a obecně nelze vyřešit chyby, které se mohou objevit v nich.
+I když *může* být signál vyzkoušený bez závažných problémů ve starších verzích prohlížeče, nemusíme aktivně testovat signál v nich a obecně neopravují chyby, které se v nich můžou objevit.
 
-### <a name="windows-desktop-and-silverlight-applications"></a>Plochy Windows a aplikace Silverlight
+### <a name="windows-desktop-and-silverlight-applications"></a>Aplikace Windows Desktop a Silverlight
 
-Kromě spuštění ve webovém prohlížeči, je možné hostovat SignalR samostatný klient Windows a v aplikacích Silverlight. Plochy Windows a funkce SignalR technologie Silverlight aplikace mají následující požadavky na systém.
+Kromě spuštění ve webovém prohlížeči je možné přidat signál jako hostitele samostatného klienta systému Windows nebo aplikací Silverlight. Aplikace signalizace desktopu a Silverlightu pro Windows mají následující požadavky na systém.
 
-- Windows XP SP3 nebo novější, jsou podporovány aplikací s použitím rozhraní .NET 4.
-- V systému Windows Vista nebo novější, jsou podporovány aplikací s použitím rozhraní .NET Framework 4.5.
+- Aplikace používající rozhraní .NET 4 jsou podporovány v systému Windows XP SP3 nebo novějším.
+- Aplikace používající .NET Framework 4,5 jsou podporovány v systému Windows Vista nebo novějším.
 
-Kromě operačního systému a požadavky na rozhraní .NET framework mají k dispozici pro funkci SignalR přenosy své vlastní požadavky. Následující přenosy jsou podporovány v rámci následující konfigurace:
+Kromě požadavků na operační systém a rozhraní .NET Framework mají přenosy dostupné i pro signál. Následující přenosy jsou podporovány v následujících konfiguracích:
 
-**Požadavky na přenos Silverlight a Windows Desktop**
+**Požadavky na systém Windows Desktop a Silverlight pro přenos**
 
-| Přenos | Aplikace .NET | Silverlight |
+| Přenos | Aplikace v .NET | Silverlight |
 | --- | --- | --- |
-| Webové sokety | Windows 8 + a .NET 4.5 + | Není k dispozici |
-| Navždy rámce | Není k dispozici | Není k dispozici |
+| Webové sokety | Windows 8 + a .NET 4.5 + | neuvedeno |
+| Snímek navždy | neuvedeno | neuvedeno |
 | Události odeslané serverem | .NET 4+ | 5+ |
-| Dlouhým dotazováním | .NET 4+ | 5+ |
+| Dlouhé cyklické dotazování | .NET 4+ | 5+ |
 
 <a id="android"></a>
 
-### <a name="windows-store-and-windows-phone-applications"></a>Windows Store a aplikací Windows Phone
+### <a name="windows-store-and-windows-phone-applications"></a>Aplikace pro Windows Store a Windows Phone
 
-SignalR je použít v aplikacích Windows Store a aplikace Windows Phone 8. Následující přenosy jsou podporovány v rámci následující konfigurace:
+Signalizaci lze použít v aplikacích pro Windows Store a Windows Phone 8. Následující přenosy jsou podporovány v následujících konfiguracích:
 
-**Windows Store a Windows Phone přenosu požadavky**
+**Požadavky na přenos pro Windows Store a Windows Phone**
 
-| Přenos | Windows Store / .NET | Windows Store / JavaScript | Windows Phone / IE | Windows Phone a .NET |
+| Přenos | Windows Store/.NET | Windows Store/JavaScript | Windows Phone/IE | Windows Phone/.NET |
 | --- | --- | --- | --- | --- |
-| WebSocket | Není k dispozici | Win8 + | 8+ | Není k dispozici |
-| Navždy rámce | Není k dispozici | Win8 + | 7.5+ | Není k dispozici |
-| Události odeslané serverem | Win8 + | Není k dispozici | Není k dispozici | 8+ |
-| Dlouhým dotazováním | Win8 + | Win8 + | 7.5+ | 8+ |
+| WebSockets | neuvedeno | Win8 + | 8+ | neuvedeno |
+| Snímek navždy | neuvedeno | Win8 + | 7.5+ | neuvedeno |
+| Události odeslané serverem | Win8 + | neuvedeno | neuvedeno | 8+ |
+| Dlouhé cyklické dotazování | Win8 + | Win8 + | 7.5+ | 8+ |
 
 <a id="updates"></a>
 
 ## <a name="recommended-updates"></a>Doporučené aktualizace
 
-Tyto aktualizace se doporučují pro funkci SignalR serverů:
+Pro servery signalizace se doporučují tyto aktualizace:
 
-- Aktualizace pro rozhraní .NET Framework 4.5 je k dispozici [tady](https://support.microsoft.com/kb/2750149).
-- Microsoft pravidelně vydá opravy QFE pro technologii ASP.NET. Toto bude použito jako dostupné.
+- Aktualizace pro .NET Framework 4,5 je k dispozici [zde](https://support.microsoft.com/kb/2750149).
+- Microsoft bude pravidelně vydávat opravy QFE pro ASP.NET. Ty by se měly použít jako dostupné.

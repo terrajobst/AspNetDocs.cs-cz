@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/building-35-applications/login-controls
-title: Ovládacími prvky pro přihlášení | Dokumentace Microsoftu
+title: Ovládací prvky přihlášení | Microsoft Docs
 author: JoeStagner
-description: V tomto videu Joe vás seznámí s členství technologie ASP.NET ukazuje, jak pomocí některých prvků pro přihlášení v technologii ASP.NET.
+description: V tomto videu Jana zavedete ASP.NET členství tím, že ukážete, jak používat některé ovládací prvky přihlášení v ASP.NET.
 ms.author: riande
 ms.date: 06/04/2009
 ms.assetid: 20dcff15-d8e3-4fee-942e-50fd8bc02e14
 msc.legacyurl: /web-forms/videos/building-35-applications/login-controls
 msc.type: video
 ms.openlocfilehash: 61ae8f7cbf976dde326ebd51e4f7c97f600b6afd
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59419415"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78563698"
 ---
 # <a name="login-controls"></a>Přihlašovací ovládací prvky
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-V tomto videu Joe vás seznámí s členství technologie ASP.NET ukazuje, jak pomocí některých prvků pro přihlášení v technologii ASP.NET.
+V tomto videu Jana zavedete ASP.NET členství tím, že ukážete, jak používat některé ovládací prvky přihlášení v ASP.NET.
 
-[&#9654;Podívejte se na video (10 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/login-controls)
+[&#9654;Sledovat video (10 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/login-controls)

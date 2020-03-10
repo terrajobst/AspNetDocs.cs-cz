@@ -1,41 +1,41 @@
 ---
 uid: webhooks/receiving/receivers
-title: ASP.NET – Webhooky příjemci | Dokumentace Microsoftu
+title: Přijímače webhooků ASP.NET | Microsoft Docs
 author: rick-anderson
-description: ASP.NET – Webhooky příjemců
+description: Přijímače webhooků ASP.NET
 ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: 6cdea089-15b2-4732-8c68-921ca561a8f1
 ms.openlocfilehash: d771a588b23abcd7b1b33e694af17b219683fc48
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57070324"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78574191"
 ---
-# <a name="aspnet-webhooks-receivers"></a>ASP.NET – Webhooky příjemců
+# <a name="aspnet-webhooks-receivers"></a>Přijímače webhooků ASP.NET
 
-Přijímá Webhooky závisí na to, kdo je odesílatele. Někdy je potřeba další kroky registrace Webhooku ověření, že je ve skutečnosti naslouchání odběratele. Některé Webhooky poskytují model push pull kde požadavku HTTP POST obsahuje pouze odkaz na informace o události, které je pak načíst nezávisle. Model zabezpečení často mění poměrně trochu.
+Přijímání webhooků závisí na odesílateli. Někdy jsou k dispozici další kroky pro registraci Webhooku, který ověřuje, že předplatitel skutečně naslouchá. Některé Webhooky poskytují model nabízených oznámení, kde požadavek HTTP POST obsahuje jenom odkaz na informace o události, které se pak mají načíst nezávisle. Model zabezpečení se často mění poměrně jako bit.
 
-Účelem WebHooks Microsoft ASP.NET je jednodušší a konzistentnější propojí vaše rozhraní API bez mnoho času vymýšlení na zpracování jakékoli varianta Webhooky.
+Účelem Microsoft ASP.NET webhooků je zjednodušit a lépe odpovídat rozhraní API, aniž byste strávili spoustu času a zjistili si, jak zpracovat konkrétní variantu webhooků.
 
-Příjemce Webhooku je zodpovědná za přijímání a ověření Webhooky od konkrétního odesílatele. WebHook příjemce může podporovat libovolný počet Webhooků, každý s vlastní konfigurací. WebHook Githubu příjemce může například přijmout Webhooků z různých úložišť GitHub.
+Přijímač Webhooku zodpovídá za příjem a ověření webhooků od konkrétního odesílatele. Přijímač Webhooku může podporovat libovolný počet webhooků, z nichž každá má svou vlastní konfiguraci. Přijímač Webhooku GitHubu může například přijímat Webhooky z libovolného počtu úložišť GitHub.
 
-## <a name="webhook-receiver-uris"></a>Identifikátory URI příjemce Webhooku
+## <a name="webhook-receiver-uris"></a>Identifikátory URI přijímače Webhooku
 
-Instalace Microsoft ASP.NET WebHooks získáte řadiči obecný WebHook, který přijímá požadavky Webhooku od konkrétní počet služeb. Když přijde požadavek, vybere vhodné příjemce, kterou jste nainstalovali pro zpracování konkrétního odesílatele Webhooku.
+Instalací Microsoft ASP.NET webhooků získáte obecný řadič Webhooku, který přijímá žádosti Webhooku z otevřeného počtu nedokončených služeb. Při přijetí žádosti se vybere příslušný přijímač, který jste nainstalovali pro zpracování konkrétního odesílatele Webhooku.
 
-Identifikátor URI tohoto kontroleru je identifikátor URI Webhooku, která můžete zaregistrovat do služby a má formát:
+Identifikátor URI tohoto kontroleru je identifikátor URI Webhooku, který zaregistrujete ve službě a má formát:
 
 ```
 https://<host>/api/webhooks/incoming/<receiver>/{id}
 ```
 
-Z bezpečnostních důvodů vyžadují mnoho příjemci Webhooku, že je identifikátor URI *https* identifikátor URI a v některých případech musí obsahovat také další dotaz parametr, který se používá k vynucení, který pouze zamýšlené strany můžete poslat Webhooky výše identifikátoru URI .
+Z bezpečnostních důvodů vyžaduje mnoho přijímačů webhooků, že identifikátor URI je identifikátor URI *https* a v některých případech musí obsahovat taky další parametr dotazu, který se používá k vynucení, aby Webhooky mohli poslat jenom zamýšlenou stranu k identifikátoru URI výše.
 
-`<receiver>` Komponenta je jméno příjemce, například `github` nebo `slack`.
+Komponenta `<receiver>` je název přijímače, například `github` nebo `slack`.
 
-*{Id}* je volitelný identifikátor, který slouží k identifikaci konkrétní konfigurace příjemce Webhooku. To je možné zaregistrovat N Webhooky u konkrétního příjemce. Například následující tři identifikátory URI slouží k registraci pro tři nezávislá Webhooků:
+*{ID}* je volitelný identifikátor, který se dá použít k identifikaci konkrétní konfigurace přijímače Webhooku. To se dá použít k registraci N webhooků s konkrétním přijímačem. Například následující tři identifikátory URI lze použít k registraci pro tři nezávislé Webhooky:
 
 ```
 https://<host>/api/webhooks/incoming/github
@@ -43,35 +43,35 @@ https://<host>/api/webhooks/incoming/github/12345
 https://<host>/api/webhooks/incoming/github/54321
 ```
 
-## <a name="installing-a-webhook-receiver"></a>Instalace příjemce Webhooku
+## <a name="installing-a-webhook-receiver"></a>Instalace přijímače Webhooku
 
-Pro příjem Webhooků pomocí Microsoft ASP.NET WebHooks, je nejprve nainstalovat balíček Nuget pro poskytovatele WebHook nebo chcete dostávat Webhooků z poskytovatelů. Balíčky Nuget jsou pojmenovány [Microsoft.AspNet.WebHooks.Receivers.*](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers) označuje, kde poslední část služby nepodporuje. Příklad
+Pokud chcete přijímat Webhooky pomocí Microsoft ASP.NET webhooků, nejdřív nainstalujte balíček NuGet pro poskytovatele Webhooku nebo poskytovatele, ze kterých chcete přijímat Webhooky. Balíčky NuGet se nazývají [Microsoft. ASPNET. webhooks. přijímačs. *](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers) , kde poslední část označuje, že je služba podporovaná. Například
 
-[Microsoft.AspNet.WebHooks.Receivers.GitHub](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.GitHub) poskytuje podporu pro příjem Webhooků z Githubu a [Microsoft.AspNet.WebHooks.Receivers.Custom](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.Custom) poskytuje podporu pro příjem Webhooky generovaných ASP. NET Webhooky.
+[Microsoft. ASPNET. webhooks. pøijímaèe. GitHub](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.GitHub) poskytuje podporu pro příjem webhooků z GitHubu a [Microsoft. ASPNET. webhooks. pøijímaèe. Custom](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.Custom) poskytuje podporu pro příjem webhooků generovaných Webhooky ASP.NET.
 
-Okamžité najdete podporu pro Dropbox, GitHub, MailChimp, PayPal, Pusheru, Salesforce, Slack, Stripe, Trello a WordPress, ale je možné pro podporu libovolný počet dalších poskytovatelů.
+V poli můžete najít podporu pro Dropbox, GitHub, MailChimp, PayPal, Pusher, Salesforce, časovou rezervu, proužek, Trello a WordPress, ale je možné podporovat libovolný počet jiných poskytovatelů.
 
-## <a name="configuring-a-webhook-receiver"></a>Konfigurace Webhooku příjemce
+## <a name="configuring-a-webhook-receiver"></a>Konfigurace přijímače Webhooku
 
-Příjemci Webhooku se konfigurují [IWebHookReceiverConfig](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/IWebHookReceiverConfig.cs) konkrétní implementace rozhraní a rozhraní lze registrovat pomocí jakéhokoli modelu vkládání závislostí. Výchozí implementace používá nastavení aplikace, které je možné nastavit buď v souboru Web.config, nebo pokud používáte Azure Web Apps, můžete nastavit prostřednictvím [webu Azure Portal](https://portal.azure.com/).
+Přijímače Webhooku se konfigurují prostřednictvím [IWebHookReceiverConfig](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/IWebHookReceiverConfig.cs) rozhraní a konkrétní implementace tohoto rozhraní se dají zaregistrovat pomocí modelu injektáže pro vkládání závislostí. Výchozí implementace používá nastavení aplikace, které může být buď nastaveno v souboru Web. config, nebo pokud používáte Azure Web Apps, lze nastavit prostřednictvím webu [Azure Portal](https://portal.azure.com/).
 
 ![Nastavení aplikace Azure](_static/AzureAppSettings.png)
 
-Formát pro nastavení aplikace klíče je následující:
+Formát pro klíče nastavení aplikace je následující:
 
 ```
 MS_WebHookReceiverSecret_<receiver>
 ```
 
-Hodnota je čárkou oddělený seznam hodnot, které odpovídají *{id}* hodnoty, u kterých Webhooky jsou zaregistrovány, například:
+Hodnota je seznam hodnot oddělených čárkami, které odpovídají hodnotám *{ID}* , pro které Webhooky byly registrovány, například:
 
 ```
 MS_WebHookReceiverSecret_GitHub = <secret1>, 12345=<secret2>, 54321=<secret3>
 ```
 
-## <a name="initializing-a-webhook-receiver"></a>Inicializace příjemce Webhooku
+## <a name="initializing-a-webhook-receiver"></a>Inicializuje se přijímač Webhooku.
 
-WebHook příjemci jsou inicializovány tak, že zaregistrujete, obvykle v *WebApiConfig* statické třídy, například:
+Přijímače Webhooku jsou inicializovány jejich registrací, obvykle ve statické třídě *WebApiConfig* , například:
 
 ```csharp
 namespace WebHookReceivers

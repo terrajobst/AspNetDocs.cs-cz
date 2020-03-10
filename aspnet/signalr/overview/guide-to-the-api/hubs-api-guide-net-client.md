@@ -9,11 +9,11 @@ ms.assetid: 6d02d9f7-94e5-4140-9f51-5a6040f274f6
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-net-client
 msc.type: authoredcontent
 ms.openlocfilehash: d3536f1c15cd7dad7cd660becf0577e5c131f707
-ms.sourcegitcommit: 295cf898a4c87e264b0c35c7254b0fa4169f2278
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74057012"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78578790"
 ---
 # <a name="aspnet-signalr-hubs-api-guide---net-client-c"></a>Průvodce rozhraním API pro centra ASP.NET Signaler –C#klient .NET ()
 
@@ -189,7 +189,7 @@ Chcete-li přidat klientské certifikáty, použijte metodu `AddClientCertificat
 
 ## <a name="how-to-create-the-hub-proxy"></a>Postup vytvoření centrálního proxy serveru
 
-Chcete-li definovat metody v klientovi, které může centrum volat ze serveru, a vyvolat metody v centru na serveru, vytvořte proxy serveru pro centrum voláním `CreateHubProxy` na objektu Connection. Řetězec, který předáte do `CreateHubProxy`, je název vaší třídy centra nebo název určený atributem `HubName`, pokud se na serveru použila jedna. Při porovnávání názvů se nerozlišují malá a velká písmena.
+Chcete-li definovat metody v klientovi, které může centrum volat ze serveru, a vyvolat metody v centru na serveru, vytvořte proxy serveru pro centrum voláním `CreateHubProxy` na objektu Connection. Řetězec, který předáte do `CreateHubProxy`, je název vaší třídy centra nebo název určený atributem `HubName`, pokud se na serveru použila jedna. Shoda názvů nerozlišuje malá a velká písmena.
 
 **Třída centra na serveru**
 

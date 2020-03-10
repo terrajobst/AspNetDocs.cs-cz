@@ -9,11 +9,11 @@ ms.assetid: ecd5a4de-beb7-4d1d-bbbb-e31003633267
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-cs
 msc.type: authoredcontent
 ms.openlocfilehash: cb42398f44f3cd16ab83a9976e7b34f132384456
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74635730"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78573505"
 ---
 # <a name="precompiling-your-website-c"></a>Předkompilace webu (C#)
 
@@ -164,7 +164,7 @@ Pro weby, které mají rozdíly v konfiguraci mezi vývojovým a produkčním pr
 
 Pro aktualizační program, který kopíruje soubory z vývojového prostředí do produkčního prostředí, odkazuje na [*nasazení webu pomocí klienta FTP*](deploying-your-site-using-an-ftp-client-cs.md) a [*nasazení webu pomocí kurzů sady Visual Studio*](determining-what-files-need-to-be-deployed-cs.md) .
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 ASP.NET podporuje dva režimy kompilace: Automatic a Explicit. Jak je popsáno v předchozích kurzech, projekty webové aplikace (WAPs) používají explicitní kompilaci, zatímco webové projekty (WSPs) používají ve výchozím nastavení automatickou kompilaci. Je však možné explicitně kompilovat WSP před nasazením pomocí kompilačního nástroje ASP.NET.
 

@@ -1,310 +1,310 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/caching
-title: Ukládání do mezipaměti | Dokumentace Microsoftu
+title: Ukládání do mezipaměti | Microsoft Docs
 author: microsoft
-description: Znalost ukládání do mezipaměti je důležité pro správné aplikace ASP.NET. ASP.NET 1.x nabízí tři různé možnosti pro ukládání do mezipaměti; ukládání výstupu do mezipaměti...
+description: Porozumění ukládání do mezipaměti je důležité pro dobře prováděnou aplikaci ASP.NET. ASP.NET 1. x nabízí tři různé možnosti ukládání do mezipaměti; ukládání výstupu do mezipaměti,...
 ms.author: riande
 ms.date: 02/20/2005
 ms.assetid: 2bb109d2-e299-46ea-9054-fa0263b59165
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/caching
 msc.type: authoredcontent
 ms.openlocfilehash: 4f0b021ca6ca151544dd9fb0587ed9e0cf14ff65
-ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67411241"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78575934"
 ---
 # <a name="caching"></a>Ukládání do mezipaměti
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-> Znalost ukládání do mezipaměti je důležité pro správné aplikace ASP.NET. ASP.NET 1.x nabízí tři různé možnosti pro ukládání do mezipaměti; ukládání výstupu do mezipaměti, ukládání do mezipaměti fragment a rozhraní API mezipaměti.
+> Porozumění ukládání do mezipaměti je důležité pro dobře prováděnou aplikaci ASP.NET. ASP.NET 1. x nabízí tři různé možnosti ukládání do mezipaměti; ukládání výstupu do mezipaměti, ukládání fragmentů do mezipaměti a rozhraní API mezipaměti.
 
-Znalost ukládání do mezipaměti je důležité pro správné aplikace ASP.NET. ASP.NET 1.x nabízí tři různé možnosti pro ukládání do mezipaměti; ukládání výstupu do mezipaměti, ukládání do mezipaměti fragment a rozhraní API mezipaměti. Technologie ASP.NET 2.0 nabízí všechny tři z těchto metod, ale přidá některé další důležité funkce. Existuje několik nové závislosti mezipaměti a vývojáři teď mají možnost vytvořit i vlastní mezipaměti závislosti. Konfigurace ukládání do mezipaměti taky vylepšili jsme výrazně v technologii ASP.NET 2.0.
+Porozumění ukládání do mezipaměti je důležité pro dobře prováděnou aplikaci ASP.NET. ASP.NET 1. x nabízí tři různé možnosti ukládání do mezipaměti; ukládání výstupu do mezipaměti, ukládání fragmentů do mezipaměti a rozhraní API mezipaměti. ASP.NET 2,0 nabízí všechny tři tyto metody, ale přidává několik významných dalších funkcí. Existuje několik nových závislostí mezipaměti a vývojáři teď mají možnost vytvářet i vlastní závislosti v mezipaměti. Konfigurace ukládání do mezipaměti byla v ASP.NET 2,0 značně vylepšena.
 
 ## <a name="new-features"></a>Nové funkce
 
 ## <a name="cache-profiles"></a>Profily mezipaměti
 
-Mezipaměť profily umožňují vývojářům definovat nastavení určité mezipaměti, které lze poté použít u jednotlivých stránkách. Například pokud máte některé stránky, které má vypršet z mezipaměti po 12 hodinách, můžete snadno vytvořit profil mezipaměti, který lze použít na tyto stránky. Chcete-li přidat nový profil mezipaměti, použijte &lt;outputCacheSettings&gt; oddílu v konfiguračním souboru. Například níže je konfigurační profil mezipaměti volá *twoday* , který konfiguruje doba mezipaměti 12 hodin.
+Profily mezipaměti umožňují vývojářům definovat konkrétní nastavení mezipaměti, která pak můžete použít na jednotlivé stránky. Pokud máte například některé stránky, jejichž platnost má vypršet z mezipaměti po 12 hodinách, můžete snadno vytvořit profil mezipaměti, který lze na tyto stránky použít. Chcete-li přidat nový profil mezipaměti, použijte část &lt;outputCacheSettings&gt; v konfiguračním souboru. Níže je například konfigurace profilu mezipaměti s názvem *Twoday* , která konfiguruje dobu trvání mezipaměti 12 hodin.
 
 [!code-xml[Main](caching/samples/sample1.xml)]
 
-Chcete-li použít tento profil mezipaměti na konkrétní stránce, použijte atribut CacheProfile – Direktiva @ OutputCache, jak je znázorněno níže:
+Chcete-li tento profil mezipaměti použít na konkrétní stránku, použijte atribut CacheProfile direktivy @ OutputCache, jak je znázorněno níže:
 
 [!code-aspx[Main](caching/samples/sample2.aspx)]
 
-## <a name="custom-cache-dependencies"></a>Vlastní mezipaměti závislosti
+## <a name="custom-cache-dependencies"></a>Vlastní závislosti mezipaměti
 
-Vývoj v ASP.NET 1.x báječné navýšení kapacity pro vlastní mezipaměti závislosti. V technologii ASP.NET 1.x, třída CacheDependency byla zapečetěná mu vývojáři ze své vlastní třídy odvozené z něj. V technologii ASP.NET 2.0 se odebere těmto omezením a vývojáři jsou zdarma vyvíjet své vlastní závislosti vlastní mezipaměti. Třída CacheDependency umožňuje vytvoření vlastní mezipaměti závislost na základě soubory, adresáře nebo klíče k mezipaměti.
+ASP.NET 1. x Developers provedli pro vlastní závislosti mezipaměti. V ASP.NET 1. x byla třída CacheDependency zapečetěná, což vývojářům zabránilo odvozovat z nich své vlastní třídy. V ASP.NET 2,0 se toto omezení odebere a vývojáři můžou zdarma vyvíjet vlastní závislosti v mezipaměti. Třída CacheDependency umožňuje vytvoření vlastní závislosti mezipaměti na základě souborů, adresářů nebo klíčů mezipaměti.
 
-Například následující kód vytvoří novou závislost vlastní mezipaměti založené na souboru s názvem stuff.xml umístěné v kořenovém adresáři webové aplikace:
+Například následující kód vytvoří novou závislost vlastní mezipaměti založenou na souboru s názvem věci. XML v kořenovém adresáři webové aplikace:
 
 [!code-csharp[Main](caching/samples/sample3.cs)]
 
-V tomto scénáři při změně souboru stuff.xml, položku z mezipaměti zneplatněna.
+V tomto scénáři platí, že při změně souboru. XML se položka v mezipaměti zruší.
 
-Je také možné vytvořit vlastní mezipaměti závislosti pomocí klíče k mezipaměti. Pomocí této metody, odstranění klíče mezipaměti zruší platnost dat uložených v mezipaměti. Následující příklad ukazuje toto:
+Je také možné vytvořit vlastní závislost mezipaměti pomocí klíčů mezipaměti. Při použití této metody odebrání klíče mezipaměti zruší platnost dat uložených v mezipaměti. Ilustruje to následující příklad:
 
 [!code-csharp[Main](caching/samples/sample4.cs)]
 
-Zrušte platnost položky, který byl vložen nad, jednoduše odeberte položky, který byl vložen do mezipaměti tak, aby fungoval jako klíče mezipaměti.
+Chcete-li neověřit položku, která byla vložena výše, jednoduše odeberte položku, která byla vložena do mezipaměti, aby fungovala jako klíč mezipaměti.
 
 [!code-csharp[Main](caching/samples/sample5.cs)]
 
-Všimněte si, že klíč položky, která funguje jako klíč mezipaměti musí být stejná jako hodnota přidat do pole klíče k mezipaměti.
+Všimněte si, že klíč položky, která funguje jako klíč mezipaměti, musí být stejný jako hodnota přidaná do pole klíčů mezipaměti.
 
-## <a name="polling-based-sql-cache-dependenciesalso-called-table-based-dependencies"></a>Dotazování na základě Dependencies(Also called Table-Based Dependencies) mezipaměti SQL
+## <a name="polling-based-sql-cache-dependenciesalso-called-table-based-dependencies"></a>Dotazy na závislosti mezipaměti SQL založené na dotazech (označované taky jako závislosti založené na tabulkách)
 
-SQL Server 7 a 2000 použít model založený na dotazování pro závislosti mezipaměti SQL. Model založený na dotazování používá aktivační události v tabulce databáze, která se aktivuje při změně dat v tabulce. Aktivovat, aktualizace **changeId** v tabulce oznámení, která pravidelně kontroluje technologie ASP.NET. Pokud **changeId** pole se aktualizovala, ASP.NET ví, že jste změnili data a ji zruší platnost dat uložených v mezipaměti.
+SQL Server 7 a 2000 použijte model založený na cyklickém dotazování pro závislosti mezipaměti SQL. Model založený na dotazech používá aktivační událost na databázové tabulce, která se aktivuje při změně dat v tabulce. Tato aktivační událost aktualizuje pole **changeId** v tabulce oznámení, které ASP.NET pravidelně kontroluje. Pokud bylo pole **changeId** aktualizováno, ASP.NET ví, že se data změnila, a zruší platnost dat uložených v mezipaměti.
 
 > [!NOTE]
-> SQL Server 2005 můžete také použít model založený na dotazování, ale protože model založený na dotazování není nejúčinnější model, je vhodné použít model založených na dotazech (prodiskutována později) s SQL Server 2005.
+> SQL Server 2005 může také používat model založený na cyklickém dotazování, ale vzhledem k tomu, že model založený na dotazech není nejúčinnějším modelem, doporučuje se použít model založený na dotazech (popsaný později) s SQL Server 2005.
 
-V pořadí závislosti mezipaměti SQL pomocí modelu založeného na dotazování fungovala správně musí mít v tabulkách oznámení jsou povolená. To lze provést prostřednictvím kódu programu pomocí třídy SqlCacheDependencyAdmin nebo s použitím aspnet\_regsql.exe nástroj.
+Aby závislost mezipaměti SQL používala model založený na dotazech, aby fungovala správně, musí mít tabulky povolená oznámení. To lze provést programově pomocí třídy SqlCacheDependencyAdmin nebo pomocí nástroje ASPNET\_regsql. exe.
 
-Následující příkaz zaregistruje tabulky produktů v databázi Northwind umístěné na instanci systému SQL Server s názvem *dbase* závislosti mezipaměti SQL.
+Následující příkazový řádek registruje tabulku Products v databázi Northwind nacházející se v instanci služby SQL Server s názvem *dBASE* pro funkci závislosti mezipaměti SQL.
 
 [!code-console[Main](caching/samples/sample6.cmd)]
 
-Následuje vysvětlení přepínače příkazového řádku používá ve výše uvedeném příkazu:
+Následuje vysvětlení přepínačů příkazového řádku použitých ve výše uvedeném příkazu:
 
 | **Přepínač příkazového řádku** | **Účel** |
 | --- | --- |
-| -S *server* | Určuje název serveru. |
-| -ed | Určuje, že by měl databáze povolena pro funkci závislosti mezipaměti SQL. |
-| -d *databáze\_název* | Určuje název databáze, která by měla být zapnutá závislosti mezipaměti SQL. |
-| -E | Určuje, že aspnet\_regsql by měl používat ověřování Windows, při připojení k databázi. |
-| -et | Určuje, že jsme uvolnili databázové tabulky pro závislost mezipaměti SQL. |
-| -t *tabulky\_název* | Určuje název tabulky databáze, pokud chcete povolit pro závislost mezipaměti SQL. |
+| -S *Server* | Určuje název serveru. |
+| – Ed | Určuje, že by měla být databáze povolena pro funkci závislosti mezipaměti SQL. |
+| -d *\_název databáze* | Určuje název databáze, který má být povolen pro závislost mezipaměti SQL. |
+| -E | Určuje, že ASPNET\_regsql by měl při připojování k databázi používat ověřování systému Windows. |
+| – et | Určuje, že povolujeme databázovou tabulku pro funkci závislosti mezipaměti SQL. |
+| -t *\_název tabulky* | Určuje název tabulky databáze, která má být povolena pro funkci závislosti mezipaměti SQL. |
 
 > [!NOTE]
-> Nejsou k dispozici pro aspnet jinými přepínači\_regsql.exe. Úplný seznam, spusťte aspnet\_regsql.exe-? z příkazového řádku.
+> Pro ASPNET\_regsql. exe jsou k dispozici další přepínače. Úplný seznam zobrazíte spuštěním ASPNET\_regsql. exe-? z příkazového řádku.
 
-Při spuštění tohoto příkazu jsou provedeny následující změny k databázi SQL serveru:
+Když se spustí tento příkaz, provedou se následující změny databáze SQL Server:
 
-- **AspNet\_SqlCacheTablesForChangeNotification** tabulka se přidá. Tato tabulka obsahuje jeden řádek pro každou tabulku v databázi, pro které bylo povoleno závislosti mezipaměti SQL.
-- Následující uložené procedury jsou vytvořeny v databázi:
+- Přidala se tabulka **AspNet\_SqlCacheTablesForChangeNotification** . Tato tabulka obsahuje jeden řádek pro každou tabulku v databázi, pro kterou byla povolena závislost mezipaměti SQL.
+- V databázi se vytvoří následující uložené procedury:
 
-| AspNet\_SqlCachePollingStoredProcedure | Dotazy AspNet\_SqlCacheTablesForChangeNotification tabulky a vrátí všechny tabulky, které jsou povoleny pro závislost mezipaměti SQL a hodnota changeId pro každou tabulku. Tato uložená procedura se používá pro dotazování k určení, zda se data nezměnila. |
+| AspNet\_SqlCachePollingStoredProcedure | Zadá dotaz na tabulku AspNet\_SqlCacheTablesForChangeNotification a vrátí všechny tabulky, které mají povolenou funkci závislosti mezipaměti SQL, a hodnotu changeId pro každou tabulku. Tato uložená procedura slouží k tomu, aby zjistila, jestli se data změnila. |
 | --- | --- |
-| AspNet\_SqlCacheQueryRegisteredTablesStoredProcedure | Vrátí všechny tabulky povolena funkce závislosti mezipaměti SQL pomocí dotazu AspNet\_závislost mezipaměti SqlCacheTablesForChangeNotification tabulky a vrátí všechny tabulky povolené pro SQL. |
-| AspNet\_SqlCacheRegisterTableStoredProcedure | Registruje tabulku závislosti mezipaměti SQL tak, že přidáte nezbytné položky v tabulce oznámení a přidá aktivační událost. |
-| AspNet\_SqlCacheUnRegisterTableStoredProcedure | Zruší registraci tabulku závislosti mezipaměti SQL tak, že odeberete položce v tabulce oznámení a odebírá aktivační událost. |
-| AspNet\_SqlCacheUpdateChangeIdStoredProcedure | Aktualizuje tabulku oznámení zvýšením changeId změněné tabulce. ASP.NET používá tuto hodnotu k určení, zda se data nezměnila. Jak je uvedeno níže, provádí se tato uložená procedura má aktivační procedura vytvoří, když je povolená v tabulce. |
+| AspNet\_SqlCacheQueryRegisteredTablesStoredProcedure | Vrátí všechny tabulky povolené pro závislost mezipaměti SQL pomocí dotazu na tabulku AspNet\_SqlCacheTablesForChangeNotification a vrátí všechny tabulky povolené pro závislost mezipaměti SQL. |
+| AspNet\_SqlCacheRegisterTableStoredProcedure | Zaregistruje tabulku pro funkci závislosti mezipaměti SQL přidáním potřebné položky do tabulky oznámení a přidá aktivační událost. |
+| AspNet\_SqlCacheUnRegisterTableStoredProcedure | Zruší registraci tabulky pro závislost mezipaměti SQL odebráním položky v tabulce oznámení a odebere Trigger. |
+| AspNet\_SqlCacheUpdateChangeIdStoredProcedure | Aktualizuje tabulku oznámení zvýšením changeId u změněné tabulky. ASP.NET používá tuto hodnotu k určení, jestli se data změnila. Jak je uvedeno níže, tato uložená procedura se spustí triggerem vytvořeným při povolení tabulky. |
 
-- Volá se, aktivační události SQL Server  **_tabulky\_název_\_AspNet\_SqlCacheNotification\_aktivační událost** je vytvořený pro tabulku. Tato aktivační událost spouští AspNet\_SqlCacheUpdateChangeIdStoredProcedure při vložení, aktualizace nebo odstranění v tabulce.
-- Role systému SQL Server volá **aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess** je přidána do databáze.
+- Pro tabulku se vytvoří aktivační událost SQL Server s názvem  **_Table\_Name_\_AspNet\_SqlCacheNotification\_** . Tato aktivační událost spustí SqlCacheUpdateChangeIdStoredProcedure AspNet\_, když se v tabulce provede vložení, aktualizace nebo odstranění.
+- Do databáze se přidala role SQL Server s názvem **aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess** .
 
-**Aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess** role systému SQL Server má oprávnění EXEC AspNet\_SqlCachePollingStoredProcedure. Aby model dotazování fungovala správně, musíte přidat váš účet procesu aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess role. Aspnet\_regsql.exe nástroj to nebude udělal za vás.
+Role **aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess** SQL Server má pro ASPNET\_SQLCACHEPOLLINGSTOREDPROCEDURE oprávnění Exec. Aby model cyklického dotazování fungoval správně, je nutné přidat účet procesu do role ASPNET\_ChangeNotification\_ReceiveNotificationsOnlyAccess. Nástroj ASPNET\_regsql. exe to pro vás neudělá.
 
-### <a name="configuring-polling-based-sql-cache-dependencies"></a>Konfigurace závislosti mezipaměti SQL na základě cyklického dotazování
+### <a name="configuring-polling-based-sql-cache-dependencies"></a>Konfigurace závislostí mezipaměti SQL na základě cyklického dotazování
 
-Existuje několik kroků, které jsou požadovány pro konfiguraci založené na dotazování závislosti mezipaměti SQL. Prvním krokem je povolit databáze a tabulky, jak je popsáno výše. Po dokončení tohoto kroku zbývající část konfigurace vypadá takto:
+Pro konfiguraci závislostí mezipaměti SQL založeného na dotazech je potřeba několik kroků. Prvním krokem je povolení databáze a tabulky, jak je popsáno výše. Po dokončení tohoto kroku je zbývající konfigurace následující:
 
-- Konfiguruje se konfigurační soubor technologie ASP.NET.
-- Konfigurace SqlCacheDependency
+- Konfigurace konfiguračního souboru ASP.NET.
+- Konfigurace podtřídy SqlCacheDependency
 
-### <a name="configuring-the-aspnet-configuration-file"></a>Konfigurace souboru konfigurace ASP.NET
+### <a name="configuring-the-aspnet-configuration-file"></a>Konfigurace konfiguračního souboru ASP.NET
 
-Kromě přidání připojovací řetězec, jak je popsáno v předchozí modul, musíte také nakonfigurovat &lt;mezipaměti&gt; element s &lt;sqlCacheDependency&gt; elementu, jak je znázorněno níže:
+Kromě přidání připojovacího řetězce, jak je popsáno v předchozím modulu, je nutné také nakonfigurovat&gt; elementu &lt;cache pomocí elementu &lt;sqlCacheDependency&gt; element, jak je znázorněno níže:
 
 [!code-xml[Main](caching/samples/sample7.xml)]
 
-Tato konfigurace umožňuje na závislost mezipaměti SQL *pubs* databáze. Všimněte si, že atribut pollTime nastaven &lt;sqlCacheDependency&gt; prvek výchozí 60000 milisekund nebo 1 minuta. (Tato hodnota nemůže být menší než 500 milisekund). V tomto příkladu &lt;přidat&gt; element přidá novou databázi a přepíše pollTime nastaven, nastavení na 9000000 milisekund.
+Tato konfigurace povoluje závislost mezipaměti SQL v databázi *pubs* . Všimněte si, že atribut pollTime v &lt;sqlCacheDependency&gt; elementu je standardně 60000 milisekund nebo 1 minuta. (Tato hodnota nemůže být menší než 500 milisekund.) V tomto příkladu &lt;přidání&gt; elementu přidá novou databázi a přepíše pollTime a nastaví ji na 9000000 milisekund.
 
-#### <a name="configuring-the-sqlcachedependency"></a>Konfigurace SqlCacheDependency
+#### <a name="configuring-the-sqlcachedependency"></a>Konfigurace podtřídy SqlCacheDependency
 
-Dalším krokem je konfigurace SqlCacheDependency. Nejjednodušší způsob, jak provést tuto akci je zadat hodnotu pro atribut SqlDependency v direktivě @ Outcache následujícím způsobem:
+Dalším krokem je konfigurace SqlCacheDependency. Nejjednodušší způsob, jak toho dosáhnout, je zadat hodnotu pro atribut SqlDependency v direktivě @ cache, jak je znázorněno níže:
 
 [!code-aspx[Main](caching/samples/sample8.aspx)]
 
-V direktivě @ OutputCache výše uvedené závislosti mezipaměti SQL je nakonfigurován pro *autoři* v tabulku *pubs* databáze. Více závislostí lze nastavit jejich oddělením středníkem takto:
+V direktivě @ OutputCache je závislost mezipaměti SQL nakonfigurovaná pro tabulku *autoři* v databázi *pubs* . Více závislostí lze nakonfigurovat oddělením středníkem, např.:
 
 [!code-aspx[Main](caching/samples/sample9.aspx)]
 
-Jinou metodou SqlCacheDependency konfigurace je k tomu prostřednictvím kódu programu. Následující kód vytvoří novou závislost mezipaměti SQL na *autoři* v tabulku *pubs* databáze.
+Další metodou konfigurace SqlCacheDependency je tak, že to uděláte programově. Následující kód vytvoří novou závislost mezipaměti SQL v tabulce *autoři* v databázi *pubs* .
 
 [!code-csharp[Main](caching/samples/sample10.cs)]
 
-Jednou z výhod programově definování závislosti mezipaměti SQL je, že můžete zpracovávat všechny výjimky, které mohou nastat. Pokud při pokusu o definovat závislosti mezipaměti SQL pro databázi, která nebyla povolena pro oznámení, například **databasenotenabledfornotificationexception –** , bude vyvolána výjimka. V takovém případě můžete zkusit povolit databáze pro oznámení voláním **SqlCacheDependencyAdmin.EnableNotifications** metoda a předají se jí název databáze.
+Jednou z výhod programu pro definování závislosti mezipaměti SQL je, že můžete zpracovat jakékoli výjimky, ke kterým může dojít. Pokud se například pokusíte definovat závislost mezipaměti SQL pro databázi, u které není povoleno oznámení, bude vyvolána výjimka **DatabaseNotEnabledForNotificationException –** . V takovém případě se můžete pokusit o povolení databáze pro oznámení voláním metody **SqlCacheDependencyAdmin. EnableNotifications** a předáním názvu databáze.
 
-Podobně, pokud se pokusíte k definování závislosti mezipaměti SQL pro tabulku, která nebyla povolena pro oznámení, **tablenotenabledfornotificationexception –** bude vyvolána výjimka. Potom můžete zavolat **SqlCacheDependencyAdmin.EnableTableForNotifications** metodu předáním název databáze a název tabulky.
+Podobně platí, že pokud se pokusíte definovat závislost mezipaměti SQL pro tabulku, u které není povoleno oznámení, bude vyvolána výjimka **TableNotEnabledForNotificationException –** . Pak můžete zavolat metodu **SqlCacheDependencyAdmin. EnableTableForNotifications** a předat jí název databáze a název tabulky.
 
-Následující příklad kódu ukazuje, jak správně nakonfigurovat zpracování výjimek při konfiguraci závislosti mezipaměti SQL.
+Následující ukázka kódu ukazuje, jak správně nakonfigurovat zpracování výjimek při konfiguraci závislosti mezipaměti SQL.
 
 [!code-csharp[Main](caching/samples/sample11.cs)]
 
 Další informace: [https://msdn.microsoft.com/library/t9x04ed2.aspx](https://msdn.microsoft.com/library/t9x04ed2.aspx)
 
-## <a name="query-based-sql-cache-dependencies-sql-server-2005-only"></a>Závislosti mezipaměti SQL na základě dotazu (jenom SQL Server 2005)
+## <a name="query-based-sql-cache-dependencies-sql-server-2005-only"></a>Závislosti mezipaměti SQL založené na dotazech (jenom SQL Server 2005)
 
-Pokud používáte SQL Server 2005 závislosti mezipaměti SQL, není nutné na model založený na dotazování. Při použití s SQL Server 2005, závislosti mezipaměti SQL komunikovat přímo prostřednictvím SQL připojení k instanci systému SQL Server (není potřeba žádná další konfigurace) pomocí oznámení dotazů SQL Server 2005.
+Pokud používáte SQL Server 2005 pro závislost mezipaměti SQL, model založený na dotazech není nutný. Při použití s SQL Server 2005 funguje závislost mezipaměti SQL přímo prostřednictvím připojení SQL k instanci SQL Server (není nutná žádná další konfigurace) pomocí oznámení dotazů SQL Server 2005.
 
-Nejjednodušší způsob, jak povolit oznámení založené na dotazu je provést to deklarativně nastavením **SqlCacheDependency** atribut objektu zdroje dat k **CommandNotification** a nastavení **EnableCaching** atribut **true**. Pomocí této metody není vyžadován žádný kód. Pokud výsledek příkazu Spustit s daty změny zdroje, skončí platnost všech data v mezipaměti.
+Nejjednodušší způsob, jak povolit oznámení na základě dotazů, je provést deklarativní postup nastavením atributu **SqlCacheDependency** objektu zdroje dat na hodnotu **CommandNotification** a nastavením atributu **EnableCaching** na **hodnotu true**. Při použití této metody není vyžadován žádný kód. Pokud se změní výsledek příkazu provedeného proti zdroji dat, zruší platnost dat v mezipaměti.
 
-Následující příklad nastaví ovládací prvek zdroje dat pro závislost mezipaměti SQL:
+Následující příklad konfiguruje ovládací prvek zdroje dat pro závislost mezipaměti SQL:
 
 [!code-aspx[Main](caching/samples/sample12.aspx)]
 
-V takovém případě případného v dotazu **SelectCommand** vrátí jiné výsledky než to udělali původně, výsledky, které jsou uložené v mezipaměti jsou neplatné.
+V tomto případě, pokud dotaz zadaný v vlastnosti **SelectCommand** vrací jiný výsledek než původně, výsledky, které jsou uloženy v mezipaměti, jsou neověřeny.
 
-Můžete také určit, že všechny vaše zdroje dat pro závislosti mezipaměti SQL povolit tak, že nastavíte **SqlDependency** atribut **@ OutputCache** direktivu **CommandNotification** . Následující příklad ukazuje to.
+Můžete také určit, že všechny zdroje dat budou povolené pro závislosti mezipaměti SQL, a to nastavením atributu **SqlDependency** direktivy **@ OutputCache** na hodnotu **CommandNotification**. Následující příklad znázorňuje tuto.
 
 [!code-aspx[Main](caching/samples/sample13.aspx)]
 
 > [!NOTE]
-> Další informace o oznámení dotazů v SQL Server 2005 najdete v článku webu knihy Online pro SQL Server.
+> Další informace o oznámeních dotazů v SQL Server 2005 naleznete na webu SQL Server Books Online.
 
-Jinou metodou konfigurace založená na dotazech závislosti mezipaměti SQL je k tomu prostřednictvím kódu programu pomocí třídy SqlCacheDependency. Následující příklad kódu ukazuje, jak to lze provést.
+Další metodou konfigurace závislosti mezipaměti SQL založeného na dotazech je to provést programově pomocí třídy SqlCacheDependency. Následující ukázka kódu ukazuje, jak to lze provést.
 
 [!code-csharp[Main](caching/samples/sample14.cs)]
 
 Další informace: [https://msdn.microsoft.com/library/default.asp?url=/library/enus/dnvs05/html/querynotification.asp](https://msdn.microsoft.com/library/default.asp?url=/library/enus/dnvs05/html/querynotification.asp)
 
-## <a name="post-cache-substitution"></a>Substituce mezipaměti
+## <a name="post-cache-substitution"></a>Náhrada po mezipaměti
 
-Ukládání do mezipaměti na stránce může výrazně zvýšit výkon webové aplikace. V některých případech však většina stránky ukládat do mezipaměti a některé fragmenty v rámci stránky a být dynamické. Například pokud vytvoříte stránku příběhy, která je zcela statická pro určitou dobu, můžete nastavit celou stránku ukládat do mezipaměti. Pokud chcete zahrnout otáčení banner ad, která se změnila na každý požadavek na stránku, část stránky, která obsahuje oznámení o inzerovaném programu musí být dynamická. Aby bylo možné ukládat do mezipaměti na stránce, ale nahraďte část obsahu dynamicky, můžete použít náhradní po mezipaměti technologie ASP.NET. Substituce mezipaměti po celé stránky je do výstupní mezipaměti s konkrétní části označené jako vyloučené z ukládání do mezipaměti. V příkladu Bannery ad AdRotator ovládací prvek umožňuje využít výhod mezipaměti po nahrazení tak, aby reklamy dynamicky vytvoří pro každého uživatele a pro každou aktualizaci stránky.
+Ukládání stránky do mezipaměti může významně zvýšit výkon webové aplikace. V některých případech ale potřebujete, aby se většina stránky ukládala do mezipaměti a některé fragmenty stránky byly dynamické. Například pokud vytvoříte stránku novinových scénářů, které jsou kompletně statické pro nastavené časové období, můžete nastavit ukládání celé stránky do mezipaměti. Pokud jste chtěli zahrnout rotační hlavičku reklamy, která se změnila na všech žádostech stránky, je nutné, aby část stránky obsahující reklamu byla dynamická. Aby bylo možné stránku ukládat do mezipaměti, ale dynamicky dosadit obsah, můžete použít substituci ASP.NET po mezipaměti. Při nahrazení po mezipaměti je celá stránka výstupní v mezipaměti s konkrétními částmi označenými jako vyloučené z ukládání do mezipaměti. V příkladu proužkové reklamy vám ovládací prvek AdRotator umožňuje využít výhod substituce po mezipaměti, aby se pro každého uživatele a při každé aktualizaci stránky vytvořila dynamická inzerce.
 
-Existují tři způsoby, jak implementovat substituce mezipaměti po:
+Existují tři způsoby implementace náhrady po mezipaměti:
 
-- Deklarativní pomocí ovládacího prvku nahrazení.
-- Programově pomocí rozhraní API ovládacího prvku nahrazení.
+- Deklarativně pomocí ovládacího prvku pro nahrazování.
+- Programově pomocí rozhraní API pro nahrazování ovládacích prvků.
 - Implicitně pomocí ovládacího prvku AdRotator.
 
-### <a name="substitution-control"></a>Náhradní ovládací prvek
+### <a name="substitution-control"></a>Ovládací prvek Substitution
 
-Ovládací prvek substituční ASP.NET určuje oddíl stránky v mezipaměti, která je dynamicky vytvořené spíše než v mezipaměti. Na stránce do umístění, kam chcete dynamický obsah se zobrazí umístíte náhradního ovládacího prvku. Náhradní ovládací prvek v době běhu, volá metodu, která zadáte vlastnost MethodName. Metoda musí vracet řetězce, který pak nahradí obsah nahrazení ovládacího prvku. Metoda musí být statickou metodou nadřazeného ovládacího prvku Page nebo UserControl. Použití ovládacího prvku nahrazení způsobí, že ukládání do mezipaměti na straně klienta mezipaměti na serveru, změnit tak, aby na stránce nebudou zapisována do mezipaměti na straně klienta. Tím se zajistí, že budoucí požadavky na stránku pro volání metody znovu se vygenerovat dynamický obsah.
+Ovládací prvek ASP.NET Substitution určuje oddíl stránky v mezipaměti, která je vytvořena dynamicky, nikoli v mezipaměti. Náhradní ovládací prvek umístíte na místo na stránce, kde se má zobrazit dynamický obsah. V době běhu volá ovládací prvek Substitution metodu, kterou určíte pomocí vlastnosti MethodName. Metoda musí vracet řetězec, který pak nahradí obsah ovládacího prvku pro nahrazování. Metoda musí být statická metoda na ovládacím prvku obsahujícím stránku nebo UserControl. Použití ovládacího prvku Substitution způsobí změnu mezipaměti na straně klienta na možnost ukládání do mezipaměti serveru, takže se stránka nebude ukládat do mezipaměti v klientovi. Tím se zajistí, že budoucí požadavky na stránku volají metodu znovu, aby se vygeneroval dynamický obsah.
 
 ### <a name="substitution-api"></a>Náhradní rozhraní API
 
-K vytvoření dynamického obsahu pro stránky v mezipaměti prostřednictvím kódu programu, můžete volat [WriteSubstitution](https://msdn.microsoft.com/library/system.web.httpresponse.writesubstitution.aspx) metodě v kódu stránky, předá jako parametr název metody. Metoda, která zpracovává vytvořit dynamický obsah přebírá jediný [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.aspx) parametr a vrátí hodnotu typu string. Vrácený řetězec je obsah, který bude nahrazena v daném umístění. Výhodou volání metody WriteSubstitution namísto použití náhradní ovládací pomocí deklarace je, že můžete volat metodu libovolného objektu, namísto volání statické metody na stránku nebo uživatelský ovládací prvek objektu.
+Chcete-li vytvořit dynamický obsah stránky v mezipaměti programově, můžete zavolat metodu [WriteSubstitution](https://msdn.microsoft.com/library/system.web.httpresponse.writesubstitution.aspx) v kódu stránky a předat jí název metody jako parametr. Metoda, která zpracovává vytváření dynamického obsahu, přijímá jeden parametr [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.aspx) a vrací řetězec. Vrácený řetězec je obsah, který bude nahrazen v daném umístění. Výhodou volání metody WriteSubstitution namísto použití ovládacího prvku pro nahrazování je deklarativní, že můžete zavolat metodu libovolného objektu místo volání statické metody stránky nebo objektu UserControl.
 
-Volání metody WriteSubstitution způsobí, že ukládání do mezipaměti na straně klienta mezipaměti na serveru, změnit tak, aby na stránce nebudou zapisována do mezipaměti na straně klienta. Tím se zajistí, že budoucí požadavky na stránku pro volání metody znovu se vygenerovat dynamický obsah.
+Volání metody WriteSubstitution způsobí, že se mezipaměť na straně klienta změní na možnost ukládání do mezipaměti serveru, takže se stránka nebude ukládat do mezipaměti klienta. Tím se zajistí, že budoucí požadavky na stránku volají metodu znovu, aby se vygeneroval dynamický obsah.
 
-### <a name="adrotator-control"></a>AdRotator Control
+### <a name="adrotator-control"></a>Ovládací prvek AdRotator
 
-Funkce AdRotator, který implementuje serverový ovládací prvek mezipaměti po nahrazení podporu interně. Pokud ovládací prvek AdRotator na stránce, zobrazí se pak jedinečný oznámení o inzerovaných programech s každým požadavkem, bez ohledu na to, zda je nadřazená stránka uložené v mezipaměti. V důsledku toho je stránka, která obsahuje ovládací prvek AdRotator pouze v mezipaměti na serveru.
+Serverový ovládací prvek AdRotator implementuje podporu pro nahrazení po mezipaměti interně. Pokud umístíte ovládací prvek AdRotator na svou stránku, vykreslí se jedinečné reklamy na každém požadavku bez ohledu na to, zda je nadřazená stránka uložena do mezipaměti. V důsledku toho je stránka, která obsahuje ovládací prvek AdRotator, pouze uložená v mezipaměti na straně serveru.
 
-## <a name="controlcachepolicy-class"></a>ControlCachePolicy Class
+## <a name="controlcachepolicy-class"></a>ControlCachePolicy – třída
 
-Třída ControlCachePolicy umožňují programové řízení fragment ukládání do mezipaměti pomocí uživatelské ovládací prvky. Vloží uživatelské ovládací prvky v rámci technologie ASP.NET [BasePartialCachingControl](https://msdn.microsoft.com/library/system.web.ui.basepartialcachingcontrol.aspx) instance. Třída BasePartialCachingControl představuje uživatelský ovládací prvek, který má výstup, povoleno ukládání do mezipaměti.
+Třída ControlCachePolicy umožňuje programové řízení pro ukládání fragmentů do mezipaměti pomocí uživatelských ovládacích prvků. ASP.NET vloží uživatelské ovládací prvky do instance [BasePartialCachingControl](https://msdn.microsoft.com/library/system.web.ui.basepartialcachingcontrol.aspx) . Třída BasePartialCachingControl představuje uživatelský ovládací prvek, který má povoleno ukládání výstupu do mezipaměti.
 
-Když zobrazujete [BasePartialCachingControl.CachePolicy](https://msdn.microsoft.com/library/system.web.ui.basepartialcachingcontrol.cachepolicy.aspx) vlastnost [PartialCachingControl](https://msdn.microsoft.com/library/system.web.ui.partialcachingcontrol.aspx) ovládací prvek, bude vždycky přijímat platný objekt ControlCachePolicy. Ale pokud přistupujete [UserControl.CachePolicy](https://msdn.microsoft.com/library/system.web.ui.usercontrol.cachepolicy.aspx) vlastnost [uživatelský ovládací prvek](https://msdn.microsoft.com/library/system.web.ui.usercontrol.aspx) ovládacího prvku, obdržíte platný objekt ControlCachePolicy pouze v případě, že uživatelský ovládací prvek je již uzavřenou BasePartialCachingControl ovládacího prvku. Pokud není zabalena, ControlCachePolicy objekt vrácený vlastností se při pokusu o manipulaci s, protože nemá žádné přidružené BasePartialCachingControl vyvolat výjimky. Pokud chcete zjistit, zda instanci uživatelský ovládací prvek podporuje ukládání do mezipaměti bez generování událostí výjimky, zkontrolujte [SupportsCaching](https://msdn.microsoft.com/library/system.web.ui.controlcachepolicy.supportscaching.aspx) vlastnost.
+Při přístupu k vlastnosti [BasePartialCachingControl. Vlastnost CachePolicy](https://msdn.microsoft.com/library/system.web.ui.basepartialcachingcontrol.cachepolicy.aspx) ovládacího prvku [PartialCachingControl](https://msdn.microsoft.com/library/system.web.ui.partialcachingcontrol.aspx) budete vždy obdržet platný objekt ControlCachePolicy. Pokud však přistupujete k vlastnosti [UserControl. Vlastnost CachePolicy](https://msdn.microsoft.com/library/system.web.ui.usercontrol.cachepolicy.aspx) ovládacího prvku [UserControl](https://msdn.microsoft.com/library/system.web.ui.usercontrol.aspx) , obdržíte platný objekt ControlCachePolicy pouze v případě, že uživatelský ovládací prvek je již zabalen ovládacím prvkem BasePartialCachingControl. Pokud není zabalen, objekt ControlCachePolicy vrácený vlastností vyvolá výjimku při pokusu o manipulaci, protože nemá přidružené BasePartialCachingControl. Pokud chcete zjistit, jestli instance UserControl podporuje ukládání do mezipaměti bez generování výjimek, prozkoumejte vlastnost [SupportsCaching](https://msdn.microsoft.com/library/system.web.ui.controlcachepolicy.supportscaching.aspx) .
 
-Používání třídy ControlCachePolicy je jedním z několika způsoby, jak můžete povolit ukládání výstupu do mezipaměti. Následující seznam popisuje metody, které vám umožní povolit ukládání výstupu do mezipaměti:
+Použití třídy ControlCachePolicy je jedním z několika způsobů, jak lze povolit ukládání výstupu do mezipaměti. Následující seznam popisuje metody, které můžete použít k povolení ukládání výstupu do mezipaměti:
 
-- Použití [@ OutputCache](https://msdn.microsoft.com/library/hdxfb6cy.aspx) směrnice umožňující ukládání výstupu do mezipaměti v deklarativní scénáře.
-- Použití [PartialCachingAttribute](https://msdn.microsoft.com/library/system.web.ui.partialcachingattribute.aspx) atribut pro povolení ukládání do mezipaměti pro uživatelský ovládací prvek v souboru kódu na pozadí.
-- Třída ControlCachePolicy slouží k nastavení mezipaměti prostřednictvím kódu programu scénáře, ve kterých pracujete BasePartialCachingControl instancí, které byly mezipaměti povolena pomocí jedné z výše uvedených metod a dynamicky načtené pomocí možnosti [System.Web.UI.TemplateControl.LoadControl](https://msdn.microsoft.com/library/system.web.ui.templatecontrol.loadcontrol.aspx) metody.
+- Použijte direktivu [@ OutputCache](https://msdn.microsoft.com/library/hdxfb6cy.aspx) k povolení ukládání výstupu do mezipaměti v deklarativních scénářích.
+- Použijte atribut [PartialCachingAttribute](https://msdn.microsoft.com/library/system.web.ui.partialcachingattribute.aspx) , chcete-li povolit ukládání do mezipaměti pro uživatelský ovládací prvek v souboru kódu na pozadí.
+- Použijte třídu ControlCachePolicy k určení nastavení mezipaměti v programových scénářích, ve kterých pracujete s instancemi BasePartialCachingControl, které byly povoleny do mezipaměti pomocí jedné z předchozích metod a dynamicky načteny pomocí metody [System. Web. UI. třída TemplateControl. LoadControl](https://msdn.microsoft.com/library/system.web.ui.templatecontrol.loadcontrol.aspx) .
 
-ControlCachePolicy instance lze úspěšně ovládat pouze mezi Init a provedení operace PreRender fází životního cyklu ovládacího prvku. Pokud upravíte objekt ControlCachePolicy po fázi PreRender, ASP.NET vyvolá výjimku, protože všechny změny provedené po vykreslení ovládacího prvku nemůže mít vliv na skutečně nastavení mezipaměti (ovládací prvek je v mezipaměti během fáze vykreslení). Nakonec instanci ovládacího prvku uživatel (a proto jeho objekt ControlCachePolicy) je k dispozici pouze pro programovou manipulaci se ve skutečnosti je vykreslen.
+Instance ControlCachePolicy může být úspěšně manipulována pouze mezi fázemi init a PreRender životního cyklu ovládacího prvku. Pokud upravíte objekt ControlCachePolicy po fázi PreRender, ASP.NET vyvolá výjimku, protože jakékoli změny provedené po vygenerování ovládacího prvku nemohou skutečně ovlivnit nastavení mezipaměti (ovládací prvek je uložen v mezipaměti během fáze vykreslování). Nakonec instance uživatelského ovládacího prvku (a proto jeho objekt ControlCachePolicy) je k dispozici pouze pro programovou manipulaci, když je ve skutečnosti vykreslena.
 
-## <a name="changes-to-caching-configuration---the-ltcachinggt-element"></a>Změny v konfiguraci ukládání do mezipaměti – &lt;ukládání do mezipaměti&gt; – Element
+## <a name="changes-to-caching-configuration---the-ltcachinggt-element"></a>Změny v konfiguraci ukládání do mezipaměti – &lt;&gt; elementu pro ukládání do mezipaměti
 
-Existuje několik změn pro konfiguraci ukládání do mezipaměti v technologii ASP.NET 2.0. &lt;Ukládání do mezipaměti&gt; element je nového v technologii ASP.NET 2.0 a umožní vám provádět změny v konfiguraci ukládání do mezipaměti v konfiguračním souboru. Následující atributy jsou k dispozici.
+Konfigurace ukládání do mezipaměti v ASP.NET 2,0 je několik změn. Element &lt;Caching&gt; je v ASP.NET 2,0 novinkou a umožňuje ukládat do mezipaměti změny konfigurace v konfiguračním souboru. K dispozici jsou následující atributy.
 
 | **Element** | **Popis** |
 | --- | --- |
-| **cache** | Volitelný element. Definuje globální nastavení mezipaměti aplikace. |
-| **outputCache** | Volitelný element. Určuje nastavení výstupní mezipaměti pro celou aplikaci. |
-| **outputCacheSettings** | Volitelný element. Určuje nastavení výstupní mezipaměti, které mohou být použity na stránky v aplikaci. |
-| **sqlCacheDependency** | Volitelný element. Nakonfiguruje závislosti mezipaměti SQL pro aplikaci ASP.NET. |
+| **uchovávat** | Volitelný element. Definuje globální nastavení mezipaměti aplikace. |
+| **outputCache** | Volitelný element. Určuje nastavení výstupní mezipaměti pro aplikaci na úrovni aplikace. |
+| **outputCacheSettings** | Volitelný element. Určuje nastavení výstupní mezipaměti, která lze použít na stránky v aplikaci. |
+| **Třídy** | Volitelný element. Konfiguruje závislosti mezipaměti SQL pro aplikaci ASP.NET. |
 
-### <a name="the-ltcachegt-element"></a>&lt;Mezipaměti&gt; – Element
+### <a name="the-ltcachegt-element"></a>&gt; elementu &lt;cache
 
-Následující atributy jsou k dispozici v &lt;mezipaměti&gt; element:
+V&gt; elementu &lt;cache jsou k dispozici následující atributy:
 
 | **Atribut** | **Popis** |
 | --- | --- |
-| **disableMemoryCollection** | Volitelné **logická** atribut. Získá nebo nastaví hodnotu určující, jestli je zakázaná mezipaměť kolekce, která nastane, pokud se tento počítač je přetížena paměť. |
-| **disableExpiration** | Volitelné **logická** atribut. Získá nebo nastaví hodnotu určující, zda je doba vypršení platnosti mezipaměti zakázán. Pokud je zakázán, nevyprší platnost položek v mezipaměti a pozadí úklidu vypršela platnost mezipaměti položek se neděje. |
-| **privateBytesLimit** | Volitelné **Int64** atribut. Získá nebo nastaví hodnotu indikující, že maximální velikost nesdílených bajtů aplikace předtím, než se mezipaměť začne vyprazdňování neplatné položky a pokus o uvolnění paměti. Toto omezení zahrnuje jak paměť používanou mezipaměti stejně jako normální paměti režie z běžící aplikaci. Nastavení 0 označuje, že technologie ASP.NET bude používat vlastní heuristické metody pro určení, kdy se má spustit opětovné získání paměti. |
-| **percentagePhysicalMemoryUsedLimit** | Volitelné **Int32** atribut. Získá nebo nastaví hodnotu indikující, že maximální procento počítače, do fyzické paměti, které mohou být spotřebovány aplikace předtím, než se mezipaměť začne vyprazdňování neplatné položky a pokus o uvolnění paměti, že toto využití paměti zahrnuje obě paměť používanou mezipaměti i jako využití paměti na normální spuštěné aplikaci. Nastavení 0 označuje, že technologie ASP.NET bude používat vlastní heuristické metody pro určení, kdy se má spustit opětovné získání paměti. |
-| **privateBytesPollTime** | Volitelné **TimeSpan** atribut. Získá nebo nastaví hodnotu, která časový interval mezi dotazování pro využití paměti aplikace Nesdílené bajty. |
+| **disableMemoryCollection** | Volitelný atribut **typu Boolean** . Získává nebo nastavuje hodnotu, která indikuje, jestli je zakázaná kolekce paměti mezipaměti, která nastane, když je počítač v paměti tlakem. |
+| **disableExpiration** | Volitelný atribut **typu Boolean** . Získává nebo nastavuje hodnotu, která indikuje, jestli je zakázané vypršení platnosti mezipaměti. Pokud je tato možnost zakázaná, položky uložené v mezipaměti nekončí vypršení platnosti a nedochází k čištění dat na pozadí s neplatnými položkami mezipaměti. |
+| **privateBytesLimit** | Nepovinný atribut **Int64** Získá nebo nastaví hodnotu, která indikuje maximální velikost privátních bajtů aplikace před tím, než začne vyprázdnit položky s vypršenou platností a pokus o uvolnění paměti. Tento limit zahrnuje jak paměť využívaná v mezipaměti, tak i normální režii paměti spuštěné aplikace. Nastavení nula znamená, že ASP.NET bude používat vlastní heuristické metody pro určení, kdy se má spustit uvolnění paměti. |
+| **percentagePhysicalMemoryUsedLimit** | Volitelný atribut **Int32** Získává nebo nastavuje hodnotu, která indikuje maximální procento fyzické paměti počítače, kterou může aplikace spotřebovat před tím, než začne docházet k vyprázdnění položek s vypršenou platností a pokus o uvolnění paměti zahrnuje i paměť využívané mezipamětí. jako normální využití paměti běžící aplikace. Nastavení nula znamená, že ASP.NET bude používat vlastní heuristické metody pro určení, kdy se má spustit uvolnění paměti. |
+| **privateBytesPollTime** | Volitelný atribut **TimeSpan** . Získá nebo nastaví hodnotu označující časový interval mezi dotazem na využití paměti privátních bajtů aplikace. |
 
-### <a name="the-ltoutputcachegt-element"></a>&lt;OutputCache&gt; – Element
+### <a name="the-ltoutputcachegt-element"></a>Element &lt;outputCache&gt;
 
-Jsou k dispozici pro následující atributy &lt;outputCache&gt; elementu.
+Pro &lt;outputCache&gt; element jsou k dispozici následující atributy.
 
 |       <strong>Atribut</strong>        |                                                                                                                                                                                                                                                       <strong>Popis</strong>                                                                                                                                                                                                                                                       |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   <strong>enableOutputCache</strong>    |                                                                                                                                                          Volitelné <strong>logická</strong> atribut. Povolí nebo zakáže stránku výstupní mezipaměti. Pokud je zakázané, žádné stránky jsou ukládány do mezipaměti bez ohledu na nastavení deklarativní nebo prostřednictvím kódu programu. Výchozí hodnota je <strong>true</strong>.                                                                                                                                                           |
-|  <strong>enableFragmentCache</strong>   |                                                Volitelné <strong>logická</strong> atribut. Povolí nebo zakáže fragment mezipaměti aplikace. Pokud je zakázané, žádné stránky, jsou uložené v mezipaměti bez ohledu na to [@ OutputCache](https://msdn.microsoft.com/library/hdxfb6cy.aspx) direktiva nebo ukládání do mezipaměti profil použít. Zahrnuje typu cache-control záhlaví označující, že nadřazený proxy serverů, jakož i klienty prohlížeče by se neměly pokoušet výstup stránky do mezipaměti. Výchozí hodnota je <strong>false</strong>.                                                 |
-| <strong>sendCacheControlHeader</strong> |                                                                                                                                                      Volitelné <strong>logická</strong> atribut. Získá nebo nastaví hodnotu označující, zda <strong>mezipaměti – ovládací prvek: privátní</strong> hlavičku posílá modul výstupní mezipaměti ve výchozím nastavení. Výchozí hodnota je <strong>false</strong>.                                                                                                                                                      |
-|      <strong>omitVaryStar</strong>      | Volitelné <strong>logická</strong> atribut. Povolí nebo zakáže posílání Http "<strong>Vary: \</ strong ><em>" záhlaví v odpovědi. Výchozím nastavením false, "</em>* Vary: \* <strong>" hlavičku posílá pro stránky výstupu do mezipaměti. Při odeslání hlavičce Vary umožňuje různé verze do mezipaměti na základě zadaných v hlavičce Vary. Například <em>Vary: uživatel-agentů</em> uloží různé verze stránky na základě uživatelského agenta odesíláním žádosti. Výchozí hodnota je ** false</strong>. |
+|   <strong>enableOutputCache</strong>    |                                                                                                                                                          Volitelný atribut <strong>typu Boolean</strong> . Povolí nebo zakáže výstupní mezipaměť stránky. Pokud je tato možnost zakázána, žádné stránky nejsou ukládány do mezipaměti bez ohledu na programové nebo deklarativní nastavení. Výchozí hodnota je <strong>true</strong>.                                                                                                                                                           |
+|  <strong>enableFragmentCache</strong>   |                                                Volitelný atribut <strong>typu Boolean</strong> . Povolí nebo zakáže mezipaměť fragmentů aplikace. Pokud je tato část zakázaná, neukládají se do mezipaměti žádné stránky bez ohledu na direktivu [@ OutputCache](https://msdn.microsoft.com/library/hdxfb6cy.aspx) nebo použitém profilu mezipaměti. Zahrnuje hlavičku Cache-Control, která označuje, že nadřazené proxy servery i klienti prohlížeče by se neměli pokoušet ukládat výstup stránky do mezipaměti. Výchozí hodnota je <strong>false</strong>.                                                 |
+| <strong>sendCacheControlHeader</strong> |                                                                                                                                                      Volitelný atribut <strong>typu Boolean</strong> . Získává nebo nastavuje hodnotu, která označuje, jestli se ve výchozím nastavení odesílá do modulu výstupní mezipaměti <strong>privátní hlavička Cache-Control: Private</strong> . Výchozí hodnota je <strong>false</strong>.                                                                                                                                                      |
+|      <strong>omitVaryStar</strong>      | Volitelný atribut <strong>typu Boolean</strong> . Povolí nebo zakáže odeslání<strong>http v odpovědi \</strong ><em>hlavičce. S výchozím nastavením false</em>se <strong>pro stránky v mezipaměti pošle hlavička "* Vary: \*". Při odeslání hlavičky Vary umožňuje ukládání různých verzí do mezipaměti na základě toho, co je uvedeno v hlavičce Vary. Například <em>: User-Agents</em> uloží různé verze stránky na základě uživatelského agenta, který požadavek vystavil. Výchozí hodnota je * * false</strong>. |
 
-### <a name="the-ltoutputcachesettingsgt-element"></a>&lt;OutputCacheSettings&gt; – Element
+### <a name="the-ltoutputcachesettingsgt-element"></a>Element &lt;outputCacheSettings&gt;
 
-&lt;OutputCacheSettings&gt; element umožňuje pro vytváření mezipaměti profilů, jak je uvedeno výše. Pouze podřízený element pro &lt;outputCacheSettings&gt; prvek je &lt;outputCacheProfiles&gt; – element pro konfiguraci mezipaměti profilů.
+&lt;element&gt; outputCacheSettings umožňuje vytváření profilů mezipaměti, jak je popsáno výše. Jediným podřízeným elementem prvku &lt;outputCacheSettings&gt; je prvek&gt; &lt;outputCacheProfiles pro konfiguraci profilů mezipaměti.
 
-### <a name="the-ltsqlcachedependencygt-element"></a>The &lt;sqlCacheDependency&gt; Element
+### <a name="the-ltsqlcachedependencygt-element"></a>Element &lt;sqlCacheDependency&gt;
 
-Jsou k dispozici pro následující atributy &lt;sqlCacheDependency&gt; elementu.
+Následující atributy jsou k dispozici pro &lt;&gt; elementu sqlCacheDependency.
 
 | **Atribut** | **Popis** |
 | --- | --- |
-| **Povoleno** | Vyžaduje **logická** atribut. Označuje, zda jsou změny pro dotazování. |
-| **pollTime** | Volitelné **Int32** atribut. Nastaví frekvenci, s kterým SqlCacheDependency dotazuje na změny v tabulce databáze. Tato hodnota odpovídá počet milisekund mezi po sobě následujících dotazech. Nejde ji nastavit na míň než 500 milisekund. Výchozí hodnota je 1 minuta. |
+| **umožněn** | Požadovaný atribut **typu Boolean** . Indikuje, jestli se pro ně nedotazují změny. |
+| **pollTime** | Volitelný atribut **Int32** Nastaví frekvenci, se kterou se podtřídy SqlCacheDependency dotazují na změny v tabulce databáze. Tato hodnota odpovídá počtu milisekund mezi po sobě jdoucí cyklické dotazování. Nedá se nastavit na míň než 500 milisekund. Výchozí hodnota je 1 minuta. |
 
 ### <a name="more-information"></a>Další informace
 
-Není k dispozici další informace, měli byste vědět, o konfiguraci mezipaměti.
+K dispozici jsou některé další informace, o kterých byste měli vědět o konfiguraci mezipaměti.
 
-- Pokud není nastavený limit nesdílených bajtů procesu pracovního procesu, mezipaměti bude používat jednu z těchto omezení: 
+- Pokud není nastaven limit Nesdílených bajtů pracovních procesů, mezipaměť bude používat jedno z následujících omezení: 
 
-    - x86 2 GB: 800MB nebo 60 % fyzické paměti RAM, podle toho, co je menší
-    - x86 3 GB: 1 800 MB nebo 60 % fyzické paměti RAM, podle toho, co je menší
-    - x64: 1 terabajt nebo 60 % fyzické paměti RAM, podle toho, co je menší
-- Pokud obě pracovní proces soukromých bajtů omezení a &lt;mezipaměti privateBytesLimit /&gt; je nastaveno, mezipaměť používat minimálně dva.
-- Stejně jako v 1.x, vytvoříme rozevírací položky mezipaměti a volání uvolňování paměti. Shromážděte dvou důvodů: 
+    - x86 GB: 800MB nebo 60% fyzické paměti RAM, podle toho, co je méně
+    - x86 povolenou: 1800MB nebo 60% fyzické paměti RAM, podle toho, co je míň
+    - x64:1 terabajt nebo 60% fyzické paměti RAM, podle toho, co je míň
+- Pokud jsou nastavené limity velikosti privátních bajtů pracovních procesů a &lt;mezipaměti privateBytesLimit/&gt;, mezipaměť bude používat minimálně tyto dvě.
+- Stejně jako v 1. x jsme vynechal položky mezipaměti a zavolali GC. Shromažďovat ze dvou důvodů: 
 
-    - Nepovedlo se velmi blízko limitu Nesdílené bajty
-    - Dostupná paměť je téměř nebo menší než 10 %
-- Efektivně můžete zakázat uvolnění dočasné paměti a mezipaměti pro nedostatek dostupné paměti tak, že nastavíte &lt;mezipaměti percentagePhysicalMemoryUseLimit /&gt; do 100.
-- Na rozdíl od 1.x, pozastaví 2.0 uvolnění dočasné paměti a shromažďování volání, pokud poslední uvolnění GC. Shromáždit snížení Nesdílené bajty nebo velikosti spravované haldy ve více než 1 % omezení paměti (v mezipaměti).
+    - Blíží se limit Nesdílených bajtů.
+    - Dostupná paměť je blízko nebo méně než 10%.
+- Nastavením &lt;mezipaměti percentagePhysicalMemoryUseLimit/&gt; na 100 můžete efektivně zakázat funkci trim a mezipaměť pro stav s nedostatkem volné paměti.
+- Na rozdíl od 1. x 2,0 pozastaví ořezávání a shromáždí volání, pokud poslední GC. Collect nesnižoval soukromé bajty nebo velikost spravovaných hald o více než 1% limitu paměti (mezipaměti).
 
-## <a name="lab1-custom-cache-dependencies"></a>Lab1: Vlastní mezipaměti závislosti
+## <a name="lab1-custom-cache-dependencies"></a>Lab1: vlastní závislosti mezipaměti
 
-1. Vytvořte nový web.
-2. Přidat nový soubor XML s názvem cache.xml a uložte ho do kořenového adresáře webové aplikace.
-3. Přidejte následující kód na stránku\_metoda v kódu default.aspx zátěže: 
+1. Vytvoří nový web.
+2. Přidejte nový soubor XML s názvem cache. XML a uložte jej do kořenového adresáře webové aplikace.
+3. Přidejte následující kód na stránku\_metoda Load v kódu na pozadí default. aspx: 
 
     [!code-csharp[Main](caching/samples/sample15.cs)]
-4. Přidejte následující text k horní části default.aspx v zobrazení zdroje: 
+4. Do horní části default. aspx v zobrazení zdroj přidejte následující: 
 
     [!code-aspx[Main](caching/samples/sample16.aspx)]
-5. Procházejte Default.aspx. Co říká čas?
-6. Aktualizujte prohlížeč. Co říká čas?
-7. Otevřete cache.xml a přidejte následující kód: 
+5. Přejděte na Default. aspx. Co tento čas říká?
+6. Aktualizujte prohlížeč. Co tento čas říká?
+7. Otevřete cache. XML a přidejte následující kód: 
 
     [!code-xml[Main](caching/samples/sample17.xml)]
-8. Uložte cache.xml.
-9. Aktualizujte svůj prohlížeč. Co říká čas?
-10. Vysvětluje, proč aktualizaci místo hodnoty uložené v mezipaměti:
+8. Uložte cache. XML.
+9. Aktualizujte si prohlížeč. Co tento čas říká?
+10. Vysvětlete, proč se čas aktualizoval místo zobrazení hodnot dříve uložených v mezipaměti:
 
-## <a name="lab-2-using-polling-based-cache-dependencies"></a>Lab 2: Použití závislostí mezipaměti na základě cyklického dotazování
+## <a name="lab-2-using-polling-based-cache-dependencies"></a>Testovací prostředí 2: použití závislostí mezipaměti založeného na dotazech
 
-Toto testovací prostředí používá projekt, který jste vytvořili v předchozí modul, který umožňuje úpravy dat v databázi Northwind pomocí ovládacího prvku GridView a prvku DetailsView.
+Toto testovací prostředí používá projekt, který jste vytvořili v předchozím modulu, který umožňuje upravovat data v databázi Northwind prostřednictvím ovládacího prvku GridView a DetailsView.
 
-1. Otevřete projekt v sadě Visual Studio 2005.
-2. Spustit aspnet\_regsql nástroj umožňující databáze a tabulky produktů v databázi Northwind. Použijte následující příkaz z příkazového řádku aplikace Visual Studio: 
+1. Otevřete projekt v aplikaci Visual Studio 2005.
+2. Pro povolení databáze a tabulky Products spusťte nástroj ASPNET\_regsql s databází Northwind. Použijte následující příkaz z příkazového řádku sady Visual Studio: 
 
     [!code-console[Main](caching/samples/sample18.cmd)]
-3. Do souboru web.config přidejte následující: 
+3. Do souboru Web. config přidejte následující: 
 
     [!code-xml[Main](caching/samples/sample19.xml)]
-4. Přidání nového webového formuláře volá showdata.aspx.
-5. Přidejte následující @ direktivy outputcache showdata.aspx stránky: 
+4. Přidejte nový webformu s názvem showData. aspx.
+5. Přidejte následující direktivu @ OutputCache na stránku showData. aspx: 
 
     [!code-aspx[Main](caching/samples/sample20.aspx)]
-6. Přidejte následující kód na stránku\_zatížení showdata.aspx: 
+6. Na stránku\_načtení showData. aspx přidejte následující kód: 
 
     [!code-html[Main](caching/samples/sample21.html)]
-7. Přidat nový ovládací prvek SqlDataSource showdata.aspx a nakonfigurujte ho na použití připojení k databázi Northwind. Klikněte na tlačítko Další.
-8. Vyberte zaškrtávací políčka ProductName a ProductID a klikněte na tlačítko Další.
+7. Přidejte nový ovládací prvek SqlDataSource do showData. aspx a nakonfigurujte ho tak, aby používal připojení k databázi Northwind. Klikněte na Další.
+8. Zaškrtněte políčka NázevVýrobku a ProductID a klikněte na další.
 9. Klikněte na tlačítko Dokončit.
-10. Přidání nového ovládacího prvku GridView showdata.aspx stránku.
-11. Zvolte SqlDataSource1 z rozevíracího seznamu.
-12. Uložit a procházet showdata.aspx. Poznamenejte si dobu zobrazí.
+10. Přidejte nový prvek GridView na stránku showData. aspx.
+11. Z rozevíracího seznamu vyberte možnost SqlDataSource1.
+12. Uložte a přejděte na showData. aspx. Poznamenejte si čas zobrazený v čase.

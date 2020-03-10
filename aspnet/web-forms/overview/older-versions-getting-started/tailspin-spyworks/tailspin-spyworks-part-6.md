@@ -1,112 +1,112 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6
-title: 'Část 6: Členství technologie ASP.NET | Dokumentace Microsoftu'
+title: '6\. část: ASP.NET členství | Microsoft Docs'
 author: JoeStagner
-description: V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace Tailspin Spyworks. Část 6 přidá členství technologie ASP.NET.
+description: V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace Tailspin Spyworks. Část 6 přidává ASP.NET členství.
 ms.author: riande
 ms.date: 07/21/2010
 ms.assetid: f70a310c-9557-4743-82cb-655265676d39
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6
 msc.type: authoredcontent
 ms.openlocfilehash: b0caa89dc9ffb5bb7451fa2d9d346c7db2bf1466
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130875"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78564181"
 ---
-# <a name="part-6-aspnet-membership"></a>Část 6: Členství v ASP.NET
+# <a name="part-6-aspnet-membership"></a>6\. část: Členství v ASP.NET
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-> Tailspin Spyworks ukazuje, jak mimořádně jednoduché je vytvářet výkonné a škálovatelné aplikace pro platformu .NET. Zobrazuje vypnout použití skvělých nových funkcí v technologii ASP.NET 4 k sestavení nebo online úložiště, včetně nákupu, Pokladna a správu.
+> Tailspin Spyworks ukazuje, jak neobyčejně jednoduché je vytvářet výkonné a škálovatelné aplikace pro platformu .NET. Ukazuje, jak používat Skvělé nové funkce v ASP.NET 4 k vytvoření online obchodu, včetně nákupu, rezervace a správy.
 > 
-> V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace Tailspin Spyworks. Část 6 přidá členství technologie ASP.NET.
+> V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace Tailspin Spyworks. Část 6 přidává ASP.NET členství.
 
-## <a id="_Toc260221672"></a>  Práce s členství technologie ASP.NET
+## <a id="_Toc260221672"></a>Práce s ASP.NET členstvím
 
 ![](tailspin-spyworks-part-6/_static/image1.png)
 
-Klikněte na tlačítko zabezpečení
+Klikněte na zabezpečení.
 
 ![](tailspin-spyworks-part-6/_static/image1.jpg)
 
-Ujistěte se, že se používá ověřování pomocí formulářů.
+Ujistěte se, že používáme ověřování pomocí formulářů.
 
 ![](tailspin-spyworks-part-6/_static/image2.jpg)
 
-Použijte odkaz "Create User" k vytvoření několika uživatelů.
+Pomocí odkazu vytvořit uživatele můžete vytvořit několik uživatelů.
 
 ![](tailspin-spyworks-part-6/_static/image3.jpg)
 
-Až budete hotovi, najdete v okně Průzkumník řešení a aktualizujte zobrazení.
+Až budete hotovi, přečtěte si okno Průzkumník řešení a aktualizujte zobrazení.
 
 ![](tailspin-spyworks-part-6/_static/image2.png)
 
-Všimněte si, ASPNETDB. Byl vytvořen MDF bez problémů. Tento soubor obsahuje tabulky, které podporují služby ASP.NET core jako je členství.
+Všimněte si, že je k dispaměti ASPNETDB. Byla vytvořena pokuta MDF. Tento soubor obsahuje tabulky pro podporu základních služeb ASP.NET, jako je třeba členství.
 
-Teď můžeme začít implementace proces platby u pokladny.
+Nyní můžeme začít s implementací procesu registrace.
 
-Začněte tím, že vytvoření CheckOut.aspx stránky.
+Začněte vytvořením stránky rezervovat. aspx.
 
-Na stránce CheckOut.aspx by měl být k dispozici pouze uživatelům, kteří přihlášeni, takže jsme se omezení přístupu k přihlášení uživatelů a přesměrovává uživatele, kteří nejsou přihlášeni na přihlašovací stránku.
+Stránka rezervovat. aspx by měla být k dispozici pouze uživatelům, kteří jsou přihlášeni, a proto omezíme přístup k přihlášeným uživatelům a uživatelům, kteří nejsou přihlášení k přihlašovací stránce, budou přesměrováni.
 
-Provedete to tak přidáme následující konfigurační oddíl souboru web.config.
+K tomu přidáme následující do konfiguračního oddílu souboru Web. config.
 
 [!code-xml[Main](tailspin-spyworks-part-6/samples/sample1.xml)]
 
-Šablona pro aplikace webových formulářů ASP.NET automaticky přidat oddíl ověřování do souboru web.config a navázat na výchozí přihlašovací stránku.
+Šablona pro aplikace webových formulářů ASP.NET automaticky přidala oddíl ověřování do našeho souboru Web. config a navázala výchozí přihlašovací stránku.
 
 [!code-xml[Main](tailspin-spyworks-part-6/samples/sample2.xml)]
 
-Upravíme Login.aspx souboru kódu na pozadí k migraci anonymní nákupního košíku, když se uživatel přihlásí. Změnit na stránce\_událostí načtení následujícím způsobem.
+Pro migraci anonymního nákupního košíku, když se uživatel přihlásí, je nutné upravit soubor přihlašovacího jména. aspx. Následujícím způsobem změňte událost\_načíst stránku.
 
 [!code-csharp[Main](tailspin-spyworks-part-6/samples/sample3.cs)]
 
-Pak přidejte obslužnou rutinu události "LoggedIn" následujícím způsobem nastavte název relace na nově přihlášeného uživatele a změnit id dočasné relace v nákupním košíku jménu uživatele voláním metody MigrateCart v našich MyShoppingCart třídy. (Implementováno v souboru .cs)
+Pak přidejte obslužnou rutinu události "LoggedIn", například tuto hodnotu, chcete-li nastavit název relace na nově přihlášeného uživatele a změnit ID dočasné relace v nákupním košíku na uživatele voláním metody MigrateCart v naší třídě MyShoppingCart. (Implementováno v souboru. cs)
 
 [!code-csharp[Main](tailspin-spyworks-part-6/samples/sample4.cs)]
 
-Implementujte metodu MigrateCart() tímto způsobem.
+Implementujte metodu MigrateCart (), jako to.
 
 [!code-csharp[Main](tailspin-spyworks-part-6/samples/sample5.cs)]
 
-V checkout.aspx jsme budete používat EntityDataSource a GridView v našich podívejte se na stránku podobně, jako jsme to udělali v našich nákupního košíku.
+V rezervaci. aspx budeme na naší stránce rezervace používat EntityDataSource a GridView, což je mnohem stejně jako na naší stránce nákupního košíku.
 
 [!code-aspx[Main](tailspin-spyworks-part-6/samples/sample6.aspx)]
 
-Všimněte si, že naše ovládacího prvku GridView určuje obslužnou rutinu události "ondatabound" s názvem MyList\_RowDataBound můžeme implementovat tuto obslužnou rutinu události následujícím způsobem.
+Všimněte si, že náš ovládací prvek GridView Určuje obslužnou rutinu události "OnDataBound" s názvem MyList\_RowDataBound, takže implementuje tuto obslužnou rutinu události jako.
 
 [!code-csharp[Main](tailspin-spyworks-part-6/samples/sample7.cs)]
 
-Tato metoda udržuje průběžný součet z nákupního košíku a každý řádek je vázán aktualizuje dolní řádek prvku GridView.
+Tato metoda udržuje průběžný součet nákupního košíku, protože je každý řádek svázán a aktualizuje spodní řádek prvku GridView.
 
-V této fázi jsme implementovali prezentaci "recenzi" aby bylo možné umístit.
+V této fázi jsme implementovali "kontrolu" pro objednávku, která se má umístit.
 
-Umožňuje zpracovat scénáři prázdný košíku přidáním několika řádků kódu na naši stránku\_zatížení události:
+Pořídíme scénář prázdného vozíku přidáním několika řádků kódu na naši stránku\_události načtení:
 
 [!code-csharp[Main](tailspin-spyworks-part-6/samples/sample8.cs)]
 
-Když uživatel klikne na tlačítko "Odeslat" jsme spustí následující kód v obslužné rutině události klikněte na tlačítko Odeslat.
+Když uživatel klikne na tlačítko Odeslat, spustí se v obslužné rutině události Click tlačítka pro odeslání následující kód.
 
 [!code-csharp[Main](tailspin-spyworks-part-6/samples/sample9.cs)]
 
-"Maso" proces odeslání objednávky je implementovaná v metodě SubmitOrder() naše MyShoppingCart třídy.
+"Maso" procesu odeslání objednávky je implementováno v metodě SubmitOrder () naší třídy MyShoppingCart.
 
 SubmitOrder bude:
 
-- Provést všechny položky v nákupním košíku a jejich používání při vytváření nového záznamu pořadí a propojené OrderDetails záznamy.
-- Výpočet expediční datum.
-- Vymažte nákupního košíku.
+- Vezměte všechny řádkové položky v nákupním košíku a použijte je k vytvoření nového záznamu objednávky a přidružených záznamů OrderDetails.
+- Vypočítat datum expedice.
+- Vymažte nákupní košík.
 
 [!code-csharp[Main](tailspin-spyworks-part-6/samples/sample10.cs)]
 
-Pro účely této ukázkové aplikaci výpočtu datum expedice jednoduše přidejte dva dny na aktuální datum.
+Pro účely této ukázkové aplikace vypočítáme datum odeslání pouhým přidáním dvou dnů k aktuálnímu datu.
 
 [!code-csharp[Main](tailspin-spyworks-part-6/samples/sample11.cs)]
 
-Spuštění aplikace teď umožní nám to otestovat nákupní proces od začátku do konce.
+Spuštění aplikace teď umožní otestovat nákupní proces od začátku do konce.
 
 > [!div class="step-by-step"]
 > [Předchozí](tailspin-spyworks-part-5.md)
-> [další](tailspin-spyworks-part-7.md)
+> [Další](tailspin-spyworks-part-7.md)

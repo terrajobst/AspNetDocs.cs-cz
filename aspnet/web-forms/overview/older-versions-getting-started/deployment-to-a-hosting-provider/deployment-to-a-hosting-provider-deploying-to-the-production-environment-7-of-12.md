@@ -9,11 +9,11 @@ ms.assetid: b83ab819-2b05-4776-b7b4-79ef78d457a5
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12
 msc.type: authoredcontent
 ms.openlocfilehash: db838633accdedd7c0693b126a007e254ca681e4
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74627294"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78568017"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-the-production-environment---7-of-12"></a>Nasazení webové aplikace v ASP.NET pomocí SQL Server Compact sady Visual Studio nebo Visual Web Developer: nasazení do provozního prostředí – 7.12.
 
@@ -129,7 +129,7 @@ Když kliknete na ověřit připojení, může se zobrazit dialogové okno s **c
 
 ![Chyba certifikátu](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image27.png)
 
-Klikněte na tlačítko **Další**.
+Klikněte na **Další**.
 
 V části **databáze** na kartě **Nastavení** zadejte stejné hodnoty, které jste zadali pro testovací profil publikování. Připojovací řetězce, které potřebujete, najdete v rozevíracích seznamech.
 
@@ -140,7 +140,7 @@ V části **databáze** na kartě **Nastavení** zadejte stejné hodnoty, které
 
 ![Karta nastavení Průvodce publikováním webu](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image28.png)
 
-Klikněte na tlačítko **Další**.
+Klikněte na **Další**.
 
 Na kartě **Náhled** klikněte na možnost **Spustit náhled** . zobrazí se seznam souborů, které budou zkopírovány. Uvidíte stejný seznam, který jste viděli dříve při nasazení do služby IIS v místním počítači.
 
@@ -152,7 +152,7 @@ V dialogovém okně **Upravit profily publikování na webu** vyberte profil vý
 
 ![Dialogové okno Upravit profily publikování webu](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image30.png)
 
-Klikněte na **publikovat**.
+Klikněte na **Publikovat**.
 
 Aplikace je publikovaná pro poskytovatele hostingu. Výsledek se zobrazí v okně **výstup** .
 

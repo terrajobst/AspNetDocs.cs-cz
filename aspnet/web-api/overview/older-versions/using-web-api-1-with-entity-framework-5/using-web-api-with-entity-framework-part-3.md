@@ -9,11 +9,11 @@ ms.assetid: 6b9ae3c4-0274-4170-a1bb-9df9c546b2a9
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-3
 msc.type: authoredcontent
 ms.openlocfilehash: f39be7a84e85db93487d246e9f8cb59c401fe5ce
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600033"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78556047"
 ---
 # <a name="part-3-creating-an-admin-controller"></a>3\. část: vytvoření kontroleru správce
 
@@ -68,7 +68,7 @@ Třída `AdminController` definuje pět metod, které implementují základní f
 | --- | --- | --- | --- |
 | GetProducts | Načte všechny produkty. | rozhraní API/produkty | GET |
 | Getproduct | Vyhledá produkt podle ID. | API/Products/*ID* | GET |
-| PutProduct | Aktualizuje produkt. | API/Products/*ID* | PŘEVÉST |
+| PutProduct | Aktualizuje produkt. | API/Products/*ID* | PUT |
 | PostProduct | Vytvoří nový produkt. | rozhraní API/produkty | POST |
 | DeleteProduct | Odstraní produkt. | API/Products/*ID* | DELETE |
 

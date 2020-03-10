@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-validate/cdnjqueryvalidate1120
-title: jQuery 1.12.0 ověření | Dokumentace Microsoftu
+title: 1\.12.0 ověřování jQuery | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -9,18 +9,18 @@ ms.assetid: 440fcc77-2a3b-48e5-b492-29191823747f
 msc.legacyurl: /ajax/cdn/jquery-validate/cdnjqueryvalidate1120
 msc.type: content
 ms.openlocfilehash: d6a58c1f6e268e795f63bb57495f9c1179ae2f49
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59393155"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78544567"
 ---
 # <a name="jquery-validation-1120"></a>jQuery Validation 1.12.0
 
-Následující soubory jsou hostované v síti CDN:
+Následující soubory jsou hostovány v CDN:
 
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js
-- Lokalizace souborů na https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/localization/messages\_##.js kde ## je lokalizace kódu.
+- Soubory lokalizace na https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/localization/messages\_##.js, kde # # je kód Loc.

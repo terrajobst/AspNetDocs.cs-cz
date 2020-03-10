@@ -9,11 +9,11 @@ ms.assetid: cf5acaf5-d4f6-4957-badc-b89956b285f3
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/showing-multiple-records-per-row-with-the-datalist-control-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 3280a7b5f28207d3e640a6480f47869ce19692bc
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74638594"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78594778"
 ---
 # <a name="showing-multiple-records-per-row-with-the-datalist-control-c"></a>Zobrazení více záznamů na řádku ovládacím prvkem DataList (C#)
 
@@ -89,7 +89,7 @@ Vlastnost `RepeatDirection` ovlivňuje způsob, jakým jsou položky v prvku Dat
 
 Počet řádků zobrazených ve výsledné tabulce závisí na počtu celkových záznamů svázaných s ovládacím prvkům DataList. Přesně to má strop celkového počtu položek zdroje dat dělený hodnotou vlastnosti `RepeatColumns`. Vzhledem k tomu, že `Products` tabulka v současnosti obsahuje 84 produktů, které jsou v tuto chvíli dělitelné 3, je to 28 řádků. Pokud počet položek ve zdroji dat a hodnotě vlastnosti `RepeatColumns` není rozdělitelný, bude mít poslední řádek nebo sloupec prázdné buňky. Pokud je `RepeatDirection` nastaveno na `Vertical`, bude mít poslední sloupec prázdné buňky. Pokud je `RepeatDirection` `Horizontal`, bude mít poslední řádek prázdné buňky.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Prvek DataList ve výchozím nastavení zobrazuje seznam položek v tabulce s více řádky, což napodobuje rozložení prvku GridView s jednou vlastností TemplateField. I když je toto výchozí rozložení přijatelné, můžeme maximalizovat vzhled obrazovky zobrazením několika položek zdrojů dat na jeden řádek. K tomu je potřeba jednoduše nastavit vlastnost `RepeatColumns` DataList na počet sloupců, které se mají zobrazit na řádek. Kromě toho se dá vlastnost `RepeatDirection` DataList použít k určení, jestli se má obsah tabulky s více sloupci a více řádky nacházet vodorovně od zleva doprava, shora dolů nebo vertikálně od shora dolů, zleva doprava.
 

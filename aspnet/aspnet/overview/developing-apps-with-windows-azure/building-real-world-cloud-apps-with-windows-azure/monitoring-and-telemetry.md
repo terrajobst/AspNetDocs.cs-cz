@@ -9,11 +9,11 @@ ms.assetid: 7e986ab5-6615-4638-add7-4614ce7b51db
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
 msc.type: authoredcontent
 ms.openlocfilehash: f61810ea7b486b2fa0bbb234edea7541eedde835
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457060"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78583144"
 ---
 # <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>Monitorování a telemetrie (vytváření skutečných cloudových aplikací s Azure)
 
@@ -102,7 +102,7 @@ Tady je jen pár statistik, které vidíte:
 
 Můžete také nastavit sestavy a události. Můžete například vyslovit čas, kdy začnete zobrazovat chyby, poslat e-mail s upozorněním na pracovníky podpory.
 
-![Sestavy](monitoring-and-telemetry/_static/image19.png)
+![Reports](monitoring-and-telemetry/_static/image19.png)
 
 New Relic je pouze jedním z příkladů systému telemetrie; to všechno můžete získat i z jiných služeb. Krásy cloudu je, že nemusíte psát žádný kód, a to kvůli minimálnímu nebo žádnému počtu výdajů, náhle získáte další informace o tom, jak se vaše aplikace používá, a o tom, co vaši zákazníci skutečně čelí.
 
@@ -253,9 +253,9 @@ Je velmi jednoduché implementovat předem připravený systém telemetrie, inst
 
 V [Další části](transient-fault-handling.md) se podíváme na to, jak zpracovávat přechodné chyby, aby se nestaly provozními problémy, které je třeba prozkoumat.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje
 
-Další informace najdete v následujících materiálech.
+Další informace najdete v následujících materiálech.
 
 Dokumentace převážně o telemetrie:
 

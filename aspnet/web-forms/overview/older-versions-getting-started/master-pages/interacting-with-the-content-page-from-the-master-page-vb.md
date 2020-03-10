@@ -9,11 +9,11 @@ ms.assetid: a6e2e1a0-c925-43e9-b711-1f178fdd72d7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 5367ad1b7f2fa11c635ad95754c9bcc1edcb6c1d
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74615630"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78575444"
 ---
 # <a name="interacting-with-the-content-page-from-the-master-page-vb"></a>Interakce stránky předlohy se stránkou obsahu (VB)
 
@@ -201,7 +201,7 @@ Obrázky 8 a 9 ilustrují toto chování. Obrázek 8 ukazuje stránku při prvn�
 
 **Obrázek 09**: právě dvojnásobné ceny jsou zobrazeny v prvku GridView ([kliknutím zobrazíte obrázek v plné velikosti](interacting-with-the-content-page-from-the-master-page-vb/_static/image27.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V ideálním případě jsou hlavní stránka a její stránky obsahu zcela oddělené od sebe a nevyžadují žádnou úroveň interakce. Pokud však máte stránku předlohy nebo stránku obsahu, která zobrazuje data, která lze upravovat ze stránky předlohy nebo obsahu stránky, může být nutné, aby stránka předlohy při změně dat zobrazila výstrahu stránky obsahu (nebo naopak), aby bylo možné zobrazení aktualizovat. V předchozím kurzu jsme viděli, jak stránku obsahu programově interagovat s hlavní stránkou. v tomto kurzu jsme se podívali na to, jak má hlavní stránka zahájit interakci.
 

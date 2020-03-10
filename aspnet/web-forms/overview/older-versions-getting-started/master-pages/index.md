@@ -1,23 +1,23 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/index
-title: ASP.NET 3.5 – stránky předlohy webových formulářů | Dokumentace Microsoftu
+title: ASP.NET 3,5 – stránky předlohy webových formulářů | Microsoft Docs
 author: rick-anderson
-description: Jak vytvořit a použít k vytvoření konzistentního rozložení v aplikace webových formulářů ASP.NET stránky předlohy a stránky obsahu.
+description: Vytvoření a použití stránek předlohy ASP.NET a stránek obsahu k vytvoření konzistentního rozložení v aplikacích webových formulářů.
 ms.author: riande
 ms.date: 11/04/2011
 ms.assetid: bc30f0ec-cf8f-4a33-9eee-513be872ac9c
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages
 msc.type: chapter
 ms.openlocfilehash: 3847269a495d54b0986bab245023daff4a43386a
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134155"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78585881"
 ---
 # <a name="aspnet-35---web-forms-master-pages"></a>ASP.NET 3.5 – stránky předlohy webových formulářů
 
-> Jak vytvořit a použít k vytvoření konzistentního rozložení v aplikace webových formulářů ASP.NET stránky předlohy a stránky obsahu.
+> Vytvoření a použití stránek předlohy ASP.NET a stránek obsahu k vytvoření konzistentního rozložení v aplikacích webových formulářů.
 
 - [Vytvoření rozložení platného pro celý web pomocí stránek předlohy (C#)](creating-a-site-wide-layout-using-master-pages-cs.md)
 - [Několik prvků ContentPlaceHolder a výchozí obsah (C#)](multiple-contentplaceholders-and-default-content-cs.md)

@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/aspnet-35/visual-studio-designer/visual-studio-2008-and-nested-masterpages
-title: Visual Studio 2008 a vložené hlavní stránky | Dokumentace Microsoftu
+title: Visual Studio 2008 a vnořené MasterPage | Microsoft Docs
 author: JoeStagner
-description: Webové šablony z oswd.org použiji pro demonstraci použití stránky předlohy a jak jsou podporovány v sadě Visual Studio 2008. Konkrétně ukážu, th...
+description: Použijem webovou šablonu z oswd.org k demonstraci použití stránek předlohy a způsobu jejich podpor v aplikaci Visual Studio 2008. Konkrétně se zobrazí th...
 ms.author: riande
 ms.date: 11/15/2007
 ms.assetid: 18637656-3733-4549-b365-94652c596a7b
 msc.legacyurl: /web-forms/videos/aspnet-35/visual-studio-designer/visual-studio-2008-and-nested-masterpages
 msc.type: video
 ms.openlocfilehash: 8f841fb02677c12930a0298a5a99a3556bcf50ef
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59412239"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78572987"
 ---
 # <a name="visual-studio-2008-and-nested-masterpages"></a>Visual Studio 2008 a vložené hlavní stránky
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-Webové šablony z oswd.org použiji pro demonstraci použití stránky předlohy a jak jsou podporovány v sadě Visual Studio 2008. Konkrétně můžu se zobrazí funkce dědičnosti pomocí dvě stránky předlohy.
+Použijem webovou šablonu z oswd.org k demonstraci použití stránek předlohy a způsobu jejich podpor v aplikaci Visual Studio 2008. Konkrétně se zobrazí funkce dědičnosti pomocí dvou stránek předlohy.
 
-[&#9654;Podívejte se na video (13 min)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-2008-and-nested-masterpages)
+[&#9654;Přehrát video (13 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-2008-and-nested-masterpages)

@@ -9,11 +9,11 @@ ms.assetid: 0b34f7f6-a0cc-4b9f-9761-643fb0bb3ece
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 5dea23a20aba00af5109f05f18365b89e409a131
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74574473"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78535922"
 ---
 # <a name="using-auto-postback-with-cascadingdropdown-vb"></a>Použití funkce Auto-Postback v ovládacím prvku CascadingDropDown (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek CascadingDropDown v sadě nástrojů AJAX Control Toolkit rozšiřuje ovládací prvek DropDownList tak, aby změny v jednom DropDownList načítají přidružené hodnoty v jiné DropDownList. (Například jeden seznam obsahuje seznam stavů USA a další seznam se pak vyplní hlavními městy v tomto stavu.) Nicméně při použití ovládacího prvku CascadingDropDown, ASP. Funkce automatického odeslání ovládacího prvku pro ovládací prvek DropDownList nefunguje, protože asynchronní načítání dat do seznamu generuje (nepotřebný) postback sám. S nějakým kódem JavaScriptu, je možné se tomuto efektu vyhnout.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Aby bylo možné aktivovat funkce ASP.NET AJAX a Control Toolkit, musí být ovládací prvek `ScriptManager` umístěn kdekoli na stránce (ale v &lt;`form`elementu &gt;):
 

@@ -9,11 +9,11 @@ ms.assetid: 2e56a733-5512-48a6-9276-70a65bbe4d5d
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 16f20d9a0f4f677073174d680418b278dba40b07
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74612291"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78550489"
 ---
 # <a name="caching-data-with-the-objectdatasource-vb"></a>Ukládání dat do mezipaměti ovládacím prvkem ObjectDataSource (VB)
 
@@ -149,9 +149,9 @@ Může se zdát, že wasteful načíst data databáze pokaždé, když jsou data
 
 Pouhým nastavením několika vlastností lze prvek ObjectDataSource nakonfigurovat tak, aby automaticky do mezipaměti načetl data v mezipaměti ASP.NET data. Následující seznam shrnuje vlastnosti prvku ObjectDataSource související s mezipamětí:
 
-- Aby bylo možné povolit ukládání do mezipaměti, musí být [EnableCaching](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.enablecaching.aspx) nastavené na `True`. Výchozí hodnota je `False`.
+- Aby bylo možné povolit ukládání do mezipaměti, musí být [EnableCaching](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.enablecaching.aspx) nastavené na `True`. Výchozí formát je `False`.
 - [CacheDuration](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheduration.aspx) velikost času v sekundách, po kterou jsou data uložena do mezipaměti. Výchozí hodnota je 0. Prvek ObjectDataSource bude ukládat data do mezipaměti pouze v případě, že je `EnableCaching` `True` a `CacheDuration` je nastavena na hodnotu větší než nula.
-- [CacheExpirationPolicy](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheexpirationpolicy.aspx) může být nastavená na `Absolute` nebo `Sliding`. Pokud `Absolute`, prvek ObjectDataSource uloží získaná data do mezipaměti pro `CacheDuration` sekund. Pokud `Sliding`, vyprší platnost dat až po `CacheDuration` sekund. Výchozí hodnota je `Absolute`.
+- [CacheExpirationPolicy](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheexpirationpolicy.aspx) může být nastavená na `Absolute` nebo `Sliding`. Pokud `Absolute`, prvek ObjectDataSource uloží získaná data do mezipaměti pro `CacheDuration` sekund. Pokud `Sliding`, vyprší platnost dat až po `CacheDuration` sekund. Výchozí formát je `Absolute`.
 - [CacheKeyDependency](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cachekeydependency.aspx) tuto vlastnost použijte k přidružení položek mezipaměti ObjectDataSource s ke stávající závislosti mezipaměti. Datové položky ObjectDataSource s lze předčasně vyřadit z mezipaměti tím, že vyprší její přidružená `CacheKeyDependency`. Tato vlastnost se nejčastěji používá k přidružení závislosti mezipaměti SQL s mezipamětí ObjectDataSource s, což je téma v budoucnu v kurzu [použití závislostí mezipaměti SQL](using-sql-cache-dependencies-vb.md) .
 
 Umožňuje konfigurovat `ProductsDataSource` ObjectDataSource, aby data mohla ukládat do mezipaměti na 30 sekund na absolutním měřítku. Vlastnost ObjectDataSource `EnableCaching` nastavte na hodnotu `True` a vlastnost `CacheDuration` na hodnotu 30. Ponechte vlastnost `CacheExpirationPolicy` nastavenou na výchozí hodnotu `Absolute`.
@@ -187,7 +187,7 @@ Tento scénář může také odložení jemným způsobem. I když prvek ObjectD
 
 V krátké době vyprší jenom vypršení platnosti, pokud jste si ochotni mít možnost mít zastaralá data a využijete kratší vypršení platnosti pro scénáře, ve kterých je aktuálnost dat důležité. Pokud nejsou zastaralá data přijatelná, buď nepovolí ukládání do mezipaměti, nebo použití závislostí mezipaměti SQL (za předpokladu, že se jedná o databázová data, která jste Závislosti mezipaměti SQL prozkoumáme v budoucím kurzu.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme prozkoumali integrované možnosti ukládání do mezipaměti v prvku ObjectDataSource s. Pouhým nastavením několika vlastností můžeme ovládacím prvkem ObjectDataSource dát do mezipaměti výsledky vrácené ze zadaného `SelectMethod` do mezipaměti dat ASP.NET. Vlastnosti `CacheDuration` a `CacheExpirationPolicy` označují dobu, po kterou je položka ukládána do mezipaměti, a zda se jedná o absolutní nebo klouzavé vypršení platnosti. Vlastnost `CacheKeyDependency` přidružuje všechny položky mezipaměti ObjectDataSource s existující závislostí mezipaměti. To lze použít k vyřazení položek ObjectDataSource s z mezipaměti před dosažením vypršení časového limitu, který se obvykle používá u závislostí mezipaměti SQL.
 

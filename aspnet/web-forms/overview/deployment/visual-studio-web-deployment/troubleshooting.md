@@ -9,11 +9,11 @@ ms.assetid: c0090595-ab3b-4b9b-9e16-7a1891e8cb2f
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting
 msc.type: authoredcontent
 ms.openlocfilehash: b42476fca18b04f4557a216ee205cfd9220023e8
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74623576"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78576095"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-troubleshooting"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: řešení potíží
 
@@ -138,7 +138,7 @@ Pokud připojovací řetězce vypadají jako v tomto příkladu, upravte soubor 
 
 Pak aplikaci znovu nasaďte.
 
-## <a name="http-500-internal-server-error"></a>Chyba interního serveru HTTP 500
+## <a name="http-500-internal-server-error"></a>HTTP 500 Internal Server Error
 
 ### <a name="scenario"></a>Scénář
 

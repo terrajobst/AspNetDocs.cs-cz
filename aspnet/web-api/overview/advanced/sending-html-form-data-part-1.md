@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/sending-html-form-data-part-1
-title: 'Posílání dat formulářů HTML ve webovém rozhraní API technologie ASP.NET: Data formuláře kódovaná – ASP.NET 4.x'
+title: 'Posílání dat formuláře HTML ve webovém rozhraní API ASP.NET: form-urlencoded data – ASP.NET 4. x'
 author: MikeWasson
-description: Tento článek ukazuje, jak publikovat data formuláře kódovaná do kontroleru webového rozhraní API v ASP.NET 4.x
+description: Tento článek popisuje, jak publikovat data urlencoded formuláře do kontroleru webového rozhraní API s ASP.NET 4. x.
 ms.author: riande
 ms.date: 06/15/2012
 ms.custom: seoapril2019
@@ -10,124 +10,124 @@ ms.assetid: 585351c4-809a-4bf5-bcbe-35d624f565fe
 msc.legacyurl: /web-api/overview/advanced/sending-html-form-data-part-1
 msc.type: authoredcontent
 ms.openlocfilehash: 7243069dbd8051b1374ed6e0112c273b8fe26f61
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65115469"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78557601"
 ---
-# <a name="sending-html-form-data-in-aspnet-web-api-form-urlencoded-data"></a>Posílání dat formulářů HTML ve webovém rozhraní API technologie ASP.NET: Data formuláře kódovaná pomocí adresy URL
+# <a name="sending-html-form-data-in-aspnet-web-api-form-urlencoded-data"></a>Posílání dat formuláře HTML ve webovém rozhraní API ASP.NET: form-urlencoded data
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-## <a name="part-1-form-urlencoded-data"></a>Část 1: Data formuláře kódovaná pomocí adresy URL
+## <a name="part-1-form-urlencoded-data"></a>1\. část: forma-urlencoded data
 
-Tento článek ukazuje, jak publikovat data formuláře kódovaná do kontroleru webového rozhraní API.
+Tento článek ukazuje, jak odesílat data urlencoded formuláře do kontroleru webového rozhraní API.
 
 - [Přehled formulářů HTML](#overview_of_html_forms)
-- [Odesílání komplexních typů](#sending_complex_types)
-- [Posílání dat formulářů prostřednictvím AJAX](#sending_form_data_via_ajax)
-- [Odesílání jednoduché typy](#sending_simple_types)
+- [Posílání složitých typů](#sending_complex_types)
+- [Posílání dat formuláře prostřednictvím AJAX](#sending_form_data_via_ajax)
+- [Posílání jednoduchých typů](#sending_simple_types)
 
 > [!NOTE]
-> [Stáhnout dokončený projekt](https://code.msdn.microsoft.com/ASPNET-Web-API-Sending-a6f9d007).
+> [Stáhněte dokončený projekt](https://code.msdn.microsoft.com/ASPNET-Web-API-Sending-a6f9d007).
 
 <a id="overview_of_html_forms"></a>
 ## <a name="overview-of-html-forms"></a>Přehled formulářů HTML
 
-Používání formulářů HTML GET nebo POST k odesílání dat na server. **Metoda** atribut **formuláře** element poskytuje metoda HTTP:
+Formuláře HTML používají k odesílání dat na server buď GET, nebo POST. Atribut **Method** prvku **Form** poskytuje metodu http:
 
 [!code-html[Main](sending-html-form-data-part-1/samples/sample1.html)]
 
-Výchozí metodou je GET. Pokud formulář používá získáte, formuláře, který dat je zakódovaný v identifikátoru URI jako řetězec dotazu. Pokud formulář používá metodu POST, data formuláře je umístěn v textu požadavku. Pro zaúčtované data **enctype** atribut určuje formát těla požadavku:
+Výchozí metoda je GET. Pokud formulář používá GET, data formuláře jsou v identifikátoru URI kódována jako řetězec dotazu. Pokud formulář používá POST, data formuláře se umístí do textu žádosti. V případě publikovaných dat určuje atribut **Enctype** formát textu žádosti:
 
 | enctype | Popis |
 | --- | --- |
-| Application/x--www-form-urlencoded | Data formuláře kódovaná jako dvojice název/hodnota, podobně jako řetězce dotazu URI. Toto je výchozí formát pro metodu POST. |
-| multipart/formuláře data | Data formuláře kódovaná jako vícedílné zprávě standardu MIME. Pokud nahráváte soubor na server, použijte tento formát. |
+| Application/x-www-form-urlencoded | Data formuláře jsou kódována jako páry název-hodnota, podobně jako řetězec dotazu identifikátoru URI. Toto je výchozí formát pro POST. |
+| multipart/form-data | Data formuláře se kódují jako zpráva MIME s více částmi. Tento formát použijte při nahrávání souboru na server. |
 
-Část 1 tohoto článku bude vypadat ve formátu x--www-form-urlencoded. [Část 2](sending-html-form-data-part-2.md) popisuje vícedílné zprávy standardu MIME.
+Část 1 tohoto článku se zabývá formátem x-www-form-urlencoded. [Část 2](sending-html-form-data-part-2.md) popisuje MIME s více částmi.
 
 <a id="sending_complex_types"></a>
-## <a name="sending-complex-types"></a>Odesílání komplexních typů
+## <a name="sending-complex-types"></a>Posílání složitých typů
 
-Obvykle se odesílají komplexní typ, skládající se z hodnot z několika ovládacích prvků formuláře. Vezměte v úvahu následující model, který představuje stav aktualizace:
+Obvykle odešlete složitý typ složený z hodnot pořízených z několika ovládacích prvků Form. Vezměte v úvahu následující model, který představuje aktualizaci stavu:
 
 [!code-csharp[Main](sending-html-form-data-part-1/samples/sample2.cs)]
 
-Tady je kontroler Web API, která přijímá `Update` objekt přes POST.
+Tady je kontroler webového rozhraní API, který přijímá objekt `Update` prostřednictvím POST.
 
 [!code-csharp[Main](sending-html-form-data-part-1/samples/sample3.cs)]
 
 > [!NOTE]
-> Tento kontroler používá [směrování na základě akce](../web-api-routing-and-actions/routing-in-aspnet-web-api.md#routing_by_action_name), takže je šablona trasy &quot;rozhraní api / {controller} / {action} / {id}&quot;. Klient bude publikovat data, která mají &quot;/api/updates/complex&quot;.
+> Tento kontroler používá [směrování na základě akcí](../web-api-routing-and-actions/routing-in-aspnet-web-api.md#routing_by_action_name), takže šablona trasy je &quot;API/{Controller}/{Action}/{id}&quot;. Klient odešle data do &quot;/API/Updates/Complex&quot;.
 
-Nyní napíšeme formuláře HTML pro uživatele k odeslání aktualizace stavu.
+Nyní napíšeme formulář HTML pro uživatele, kteří odešlou aktualizaci stavu.
 
 [!code-html[Main](sending-html-form-data-part-1/samples/sample4.html)]
 
-Všimněte si, **akce** atributu ve formuláři je identifikátor URI naší akce kontroleru. Tady je formulář s některé hodnoty zadané v:
+Všimněte si, že atribut **Action** formuláře je identifikátor URI naší akce kontroleru. Zde je formulář s některými hodnotami zadanými v:
 
 ![](sending-html-form-data-part-1/_static/image1.png)
 
-Když uživatel klepne na tlačítko Odeslat, prohlížeč odešle požadavek HTTP podobný následujícímu:
+Když uživatel klikne na Odeslat, prohlížeč odešle požadavek HTTP podobný následujícímu:
 
 [!code-console[Main](sending-html-form-data-part-1/samples/sample5.cmd)]
 
-Všimněte si, že text požadavku obsahuje data formuláře, formátovaný jako dvojice název/hodnota. Webové rozhraní API automaticky převede dvojice název/hodnota do instance `Update` třídy.
+Všimněte si, že tělo žádosti obsahuje data formuláře formátovaná jako páry název-hodnota. Webové rozhraní API automaticky převede páry název/hodnota na instanci třídy `Update`.
 
 <a id="sending_form_data_via_ajax"></a>
-## <a name="sending-form-data-via-ajax"></a>Posílání dat formulářů prostřednictvím AJAX
+## <a name="sending-form-data-via-ajax"></a>Posílání dat formuláře prostřednictvím AJAX
 
-Když uživatel odešle formulář, prohlížeči přejde mimo aktuální stránku a vykreslí tělo zprávy s odpovědí. Který je v pořádku. Pokud je odpověď na stránku HTML. S webovým rozhraním API, ale text odpovědi je obvykle buď prázdná, nebo obsahuje strukturovaná data, jako je například JSON. V takovém případě je vhodnější k odesílání dat formuláře pomocí AJAX vyžádání, tak, aby stránky mohou zpracovat odpověď.
+Když uživatel formulář odešle, prohlížeč přejde pryč z aktuální stránky a vykreslí text zprávy s odpovědí. To je v pořádku, když je odpověď stránka HTML. V případě webového rozhraní API je však tělo odpovědi obvykle prázdné nebo obsahuje strukturovaná data, jako je například JSON. V takovém případě je vhodnější odesílat data formuláře pomocí požadavku AJAX, aby stránka mohla zpracovat odpověď.
 
 Následující kód ukazuje, jak publikovat data formuláře pomocí jQuery.
 
 [!code-html[Main](sending-html-form-data-part-1/samples/sample6.html)]
 
-JQuery **odeslat** funkce nahradí akce formuláře s novou funkci. Tím se přepíše výchozí chování tlačítka pro odeslání. **Serializovat** funkce serializuje data formuláře na páry název/hodnota. Chcete-li data formuláře odeslat k serveru, zavolejte `$.post()`.
+Funkce jQuery pro **odeslání** nahrazuje akci formuláře novou funkcí. Tím se přepíše výchozí chování tlačítka Odeslat. Funkce **serializace** serializace data formuláře na páry název-hodnota. Chcete-li odeslat data formuláře na server, zavolejte `$.post()`.
 
-Po dokončení žádosti `.success()` nebo `.error()` obslužné rutiny zobrazí odpovídající zprávu pro uživatele.
+Po dokončení žádosti zobrazí obslužná rutina `.success()` nebo `.error()` příslušnou zprávu uživateli.
 
 ![](sending-html-form-data-part-1/_static/image2.png)
 
 <a id="sending_simple_types"></a>
-## <a name="sending-simple-types"></a>Odesílání jednoduché typy
+## <a name="sending-simple-types"></a>Posílání jednoduchých typů
 
-V předchozích částech jsme vám poslali komplexní typ, který webového rozhraní API se deserializovala na instanci třídy modelu. Můžete také odeslat jednoduché typy, jako je například řetězec.
+V předchozích částech jsme poslali komplexní typ, který webové rozhraní API deserializovat na instanci třídy modelu. Můžete také odesílat jednoduché typy, jako je například řetězec.
 
 > [!NOTE]
-> Před odesláním jednoduchého typu, zvažte možnost uzavřít hodnotu v komplexního typu. místo toho. To poskytuje výhody model ověření na straně serveru a usnadňuje rozšíření modelu, v případě potřeby.
+> Před odesláním jednoduchého typu zvažte místo toho zabalení hodnoty do komplexního typu. To vám dává výhody ověřování modelu na straně serveru a usnadňuje tak rozšiřování modelu v případě potřeby.
 
-Toto jsou základní kroky k odeslání jednoduchý typ stejný, ale existují dva drobné rozdíly. V kontroleru, musíte nejprve uspořádání název parametru se **FromBody** atribut.
+Základní kroky pro odeslání jednoduchého typu jsou stejné, ale existují dva malé rozdíly. Nejprve je třeba v kontroleru vyplnit název parametru atributem **FromBody** .
 
 [!code-csharp[Main](sending-html-form-data-part-1/samples/sample7.cs?highlight=3)]
 
-Ve výchozím nastavení se webové rozhraní API pokusí získat jednoduché typy z identifikátoru URI požadavku. **FromBody** atribut oznamuje webového rozhraní API načíst hodnotu z textu požadavku.
+Ve výchozím nastavení se webové rozhraní API pokusí získat jednoduché typy z identifikátoru URI požadavku. Atribut **FromBody** oznamuje webovému rozhraní API načtení hodnoty z textu žádosti.
 
 > [!NOTE]
-> Webové rozhraní API přečte text odpovědi nejvýše jednou, takže pouze jeden parametr akce můžou pocházet z textu požadavku. Pokud je potřeba získat několik hodnot z textu požadavku, definice komplexního typu.
+> Webové rozhraní API čte text odpovědi nejvíce jednou, takže z textu žádosti může pocházet pouze jeden parametr akce. Pokud potřebujete získat více hodnot z textu žádosti, definujte komplexní typ.
 
-Za druhé klient musí k odeslání hodnoty v následujícím formátu:
+Druhý klient potřebuje odeslat hodnotu v následujícím formátu:
 
 [!code-xml[Main](sending-html-form-data-part-1/samples/sample8.xml)]
 
-Konkrétně část název z dvojice název/hodnota musí být prázdná pro jednoduchý typ. Některé prohlížeče nepodporují to pro formuláře HTML, ale následujícím způsobem vytvořte tento formát ve skriptu:
+Konkrétně část názvu dvojice název/hodnota musí být pro jednoduchý typ prázdná. Ne všechny prohlížeče tuto podporu podporují pro formuláře HTML, ale tento formát vytvoříte ve skriptu následujícím způsobem:
 
 [!code-javascript[Main](sending-html-form-data-part-1/samples/sample9.js)]
 
-Tady je ukázkový formulář:
+Tady je příklad formuláře:
 
 [!code-html[Main](sending-html-form-data-part-1/samples/sample10.html)]
 
-A tady je skript, který chcete odeslat hodnota formuláře. Jediný rozdíl oproti předchozí skript je argument předaný do **příspěvku** funkce.
+A zde je skript pro odeslání hodnoty formuláře. Jediným rozdílem z předchozího skriptu je argument předaný do funkce **post** .
 
 [!code-javascript[Main](sending-html-form-data-part-1/samples/sample11.js?highlight=2)]
 
-Stejný přístup můžete použít k odesílání pole jednoduchých typů:
+Stejný přístup můžete použít k odeslání pole jednoduchých typů:
 
 [!code-javascript[Main](sending-html-form-data-part-1/samples/sample12.js)]
 
 ## <a name="additional-resources"></a>Další prostředky
 
-[Část 2: Nahrání souboru a vícedílné zprávy standardu MIME](sending-html-form-data-part-2.md)
+[Část 2: nahrání souboru a MIME s více částmi](sending-html-form-data-part-2.md)

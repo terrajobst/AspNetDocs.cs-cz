@@ -1,132 +1,132 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/create-a-database
-title: Vytvoření databáze | Dokumentace Microsoftu
+title: Vytvoření databáze | Microsoft Docs
 author: microsoft
-description: Krok 2 ukazuje postup vytvoření databáze, která uchovává všechny společnosti dinner a potvrďte svou účast ještě data pro naši aplikaci NerdDinner.
+description: Krok 2 ukazuje postup vytvoření databáze obsahující všechna data o večeři a protokolu RSVP pro naši aplikaci NerdDinner.
 ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 983f3ffa-08b8-4868-b8c9-aa34593fc683
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-database
 msc.type: authoredcontent
 ms.openlocfilehash: b0aa7c8cdf741f44e09ed18e2b2f73fe6bf786ae
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65117464"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78581002"
 ---
 # <a name="create-a-database"></a>Vytvoření databáze
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
-> Toto je krok 2 bezplatné [kurz vývoje aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který procházení procházení po tom, jak sestavit malý, ale bylo možné provést, webové aplikace pomocí ASP.NET MVC 1.
+> Toto je krok 2 bezplatného [kurzu aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který vás provede procesem vytvoření malé, ale dokončené webové aplikace pomocí ASP.NET MVC 1.
 > 
-> Krok 2 ukazuje postup vytvoření databáze, která uchovává všechny společnosti dinner a potvrďte svou účast ještě data pro naši aplikaci NerdDinner.
+> Krok 2 ukazuje postup vytvoření databáze obsahující všechna data o večeři a protokolu RSVP pro naši aplikaci NerdDinner.
 > 
-> Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
+> Pokud používáte ASP.NET MVC 3, doporučujeme vám postupovat podle [Začínáme s kurzy pro](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) [hudební úložiště](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) MVC 3 nebo MVC.
 
-## <a name="nerddinner-step-2-creating-the-database"></a>NerdDinner krok 2: Vytvoření databáze
+## <a name="nerddinner-step-2-creating-the-database"></a>NerdDinner krok 2: vytvoření databáze
 
-Popíšeme databázi k ukládání všech dat Dinner a RSVP pro naši aplikaci NerdDinner.
+K uložení všech dat o večeři a protokolu RSVP pro naši aplikaci NerdDinner budeme používat databázi.
 
-Následující postup popisuje vytvoření databáze pomocí bezplatné edice systému SQL Server Express (které si můžete snadno nainstalovat pomocí verzí V2 [instalačního programu webové platformy Microsoft](https://www.microsoft.com/web/downloads/platform.aspx)). Budeme psát kód spolupracuje s SQL Server Express a plnou instalaci SQL serveru.
+Následující postup ukazuje vytvoření databáze pomocí bezplatné SQL Server Express edice (kterou můžete snadno nainstalovat pomocí verze V2 [Instalace webové platformy Microsoft](https://www.microsoft.com/web/downloads/platform.aspx)). Veškerý kód, který zapíšeme, bude pracovat s SQL Server Express i s úplným SQL Server.
 
-### <a name="creating-a-new-sql-server-express-database"></a>Vytvoření nové databáze systému SQL Server Express
+### <a name="creating-a-new-sql-server-express-database"></a>Vytvoření nové databáze SQL Server Express
 
-Použijeme začněte tím, že pravým tlačítkem myši na náš webový projekt a pak vyberte **Add -&gt;nová položka** příkazu nabídky:
+Začneme tak, že kliknete pravým tlačítkem na náš webový projekt a pak vyberete příkaz nabídky **přidat&gt;nové položky** :
 
 ![](create-a-database/_static/image1.png)
 
-Tím se otevře dialogové okno sady Visual Studio "Přidat novou položku". Vytvoříme filtrovat podle kategorie "Data" a vyberte šablonu položky "SQL Server Database":
+Tím se zobrazí dialogové okno Přidat novou položku v aplikaci Visual Studio. Vyfiltrujeme podle kategorie "data" a vyberete šablonu položky "SQL Server Database":
 
 ![](create-a-database/_static/image2.png)
 
-Používáme bude název databáze systému SQL Server Express, které chceme vytvořit "NerdDinner.mdf" a stiskněte ok. Visual Studio se pak požádejte nás pokud chceme přidat tento soubor do našich \App\_adresář dat (což je adresář již instalace pomocí oprávnění ke čtení a zápis přístupu (ACL)):
+Pojmenujte SQL Server Express databázi, kterou chceme vytvořit "NerdDinner. mdf" a stiskněte OK. Visual Studio se pak zeptá, jestli chceme přidat tento soubor do našeho adresáře \app\_dat (což je adresář, který se už nastavil pomocí seznamů ACL pro čtení i zápis):
 
 ![](create-a-database/_static/image3.png)
 
-Můžeme vám tlačítko "Ano" a naši novou databázi, bude vytvořen a přidán do našich Průzkumníku řešení:
+Klikneme na Ano a vytvoří se nová databáze, která se přidá do našich Průzkumník řešení:
 
 ![](create-a-database/_static/image4.png)
 
-### <a name="creating-tables-within-our-database"></a>Vytváření tabulek v rámci naší databázi
+### <a name="creating-tables-within-our-database"></a>Vytváření tabulek v rámci naší databáze
 
-Nyní je k dispozici nové prázdné databáze. Přidejme do ní několik tabulek.
+Nyní máme novou prázdnou databázi. Pojďme do ní přidat některé tabulky.
 
-K tomu budete přejdeme na kartě okna "Průzkumník serveru" v sadě Visual Studio, které umožňuje spravovat databáze a servery. SQL Server Express databáze uložené ve \App\_složky dat naší aplikace se automaticky zobrazí v Průzkumníku serveru. Jsme můžete volitelně použít ikonu "Připojení k databázi" v horní části okna "Průzkumník serveru" přidat další databáze systému SQL Server (místní a vzdálené) i do seznamu:
+Provedeme to tak, že přejdete na okno karty Průzkumník serveru v rámci sady Visual Studio, které nám umožní spravovat databáze a servery. SQL Server Express databáze uložené ve složce dat\_\app v naší aplikaci se automaticky zobrazí v Průzkumník serveru. Volitelně můžete použít ikonu "připojit k databázi" v horní části okna Průzkumník serveru k přidání dalších databází SQL Server (místní i vzdálené) do seznamu současně:
 
 ![](create-a-database/_static/image5.png)
 
-Přidáme dvě tabulky na naše databáze NerdDinner – jeden pro uložení naše večeří a druhou pro sledování přijetí reakce na ně. Vytvoříme nové tabulky tak, že pravým tlačítkem na složku "Tabulky" v rámci naší databázi a zvolte příkaz "Přidat novou tabulku" nabídky:
+Do naší databáze NerdDinner přidáme dvě tabulky – jednu pro uložení našich večeře a druhou pro sledování přijetí protokolu RSVP do nich. Nové tabulky můžeme vytvořit tak, že kliknete pravým tlačítkem na složku Tables v naší databázi a zvolíte příkaz nabídky Přidat novou tabulku:
 
 ![](create-a-database/_static/image6.png)
 
-Tím se otevře návrháře tabulky, která umožňuje konfigurovat schématu naší tabulky. Pro náš "Večeří" přidáme 10 sloupce dat:
+Otevře se Návrhář tabulky, který nám umožní nakonfigurovat schéma naší tabulky. V tabulce "večeře" přidáme 10 sloupců dat:
 
 ![](create-a-database/_static/image7.png)
 
-Chceme, aby sloupec "DinnerID" na jedinečné primární klíč pro tabulku. Můžeme to nakonfigurovat tak, že kliknete pravým tlačítkem na sloupec "DinnerID" a zvolíte položku nabídky "Nastavit primární klíč":
+Chceme, aby sloupec "DinnerID" byl pro tabulku jedinečným primárním klíčem. To můžeme nakonfigurovat tak, že kliknete pravým tlačítkem na sloupec "DinnerID" a vyberete položku nabídky "nastavit primární klíč":
 
 ![](create-a-database/_static/image8.png)
 
-Kromě toho DinnerID primární klíč, můžeme také vhodné ho nakonfigurovat jako sloupec "identity", jehož hodnota je automatický navýšeno při přidání nové řádky dat do tabulky (to znamená, první řádek vloženého Dinner bude mít DinnerID 1, druhý vložit řádek bude mít DinnerID 2 atd).
+Kromě toho, že DinnerID primární klíč, chceme také nakonfigurovat jako sloupec identity, jehož hodnota se automaticky zvyšuje, protože se do tabulky přidají nové řádky dat (to znamená, že první vložená řada večeře bude mít DinnerID 1, druhý vložený řádek. bude mít DinnerIDu 2 atd.
 
-Můžeme to udělat tak, že vyberete sloupec "DinnerID" a potom použít editor "Vlastnosti sloupce" nastavit vlastnost "(je identita)" sloupce na "Ano". Budeme používat standardní identity výchozí hodnoty (začínají znakem 1 a zvýší 1 na každý řádek novou Dinner):
+To můžeme udělat tak, že vyberete sloupec "DinnerID" a potom pomocí editoru "vlastnosti sloupce" nastavíte vlastnost "(je identity)" na sloupci na hodnotu "Ano". Použijeme standardní výchozí hodnoty identity (počínaje 1 a přírůstkem 1 na každém novém řádku večeře):
 
 ![](create-a-database/_static/image9.png)
 
-Potom uložíme také našeho zadáním Ctrl + S nebo s použitím **souboru -&gt;Uložit** příkazu nabídky. Zobrazí se výzva nám název tabulky. Používáme bude název "Večeří":
+Tuto tabulku pak uložíte zadáním kombinace kláves CTRL + S nebo pomocí příkazu **File-&gt;Save** . Tím se zobrazí výzva k pojmenování tabulky. Budeme pojmenovat "večeře":
 
 ![](create-a-database/_static/image10.png)
 
-Naše nová tabulka večeří se pak zobrazí v rámci naší databázi v Průzkumníku serveru.
+Naše nová tabulka večeře se pak zobrazí v naší databázi v Průzkumníku serveru.
 
-Pak vytvoříme opakujte předchozí postup a vytvořte tabulku "RSVP". Tato tabulka s obsahovat 3 sloupce. Budeme nastavit sloupec RsvpID jako primární klíč a také pomáhají zajistit sloupec identity:
+Pak zopakujeme výše uvedené kroky a vytvoříme tabulku "RSVP". Tato tabulka má 3 sloupce. Nastavíme sloupec RsvpID jako primární klíč a zároveň nastavíme sloupec identity:
 
 ![](create-a-database/_static/image11.png)
 
-Můžeme vám ho uložte a přiřaďte jí název "RSVP".
+Budeme ho ukládat a dát mu název "RSVP".
 
-### <a name="setting-up-a-foreign-key-relationship-between-tables"></a>Vytvoření cizího klíče relace mezi tabulkami
+### <a name="setting-up-a-foreign-key-relationship-between-tables"></a>Nastavení vztahu cizího klíče mezi tabulkami
 
-Nyní je k dispozici dvě tabulky v databázi. Naše posledním krokem návrhu schématu bude nastavení "jedna k mnoha" relaci mezi těmito dvěma tabulkami – tak, aby nám každý řádek Dinner přidružit nula nebo více řádků reakce, vztahující se k němu. Uděláme to tím, že nakonfigurujete tabulce RSVP "DinnerID" sloupci vztah cizího klíče na sloupci "DinnerID" v tabulce "Večeří".
+Teď máme v naší databázi dvě tabulky. Náš poslední krok pro návrh schématu bude nastavit relaci 1:1 mezi těmito dvěma tabulkami – aby bylo možné přidružit každý řádek večeře k nule nebo více řádkům protokolu RSVP, které se na něj vztahují. To provedeme tak, že nakonfigurujete sloupec "DinnerID" tabulky protokolu RSVP tak, aby měl relaci cizího klíče se sloupcem "DinnerID" v tabulce "večeřes".
 
-Provedete to tak otevřeme RSVP tabulku v Návrháři tabulky na něj poklikejte v Průzkumníku serveru. Pak vybereme sloupec "DinnerID" v ní, klikněte pravým tlačítkem a zvolte možnost "Relací..." příkaz místní nabídky:
+Pokud to chcete udělat, otevřete tabulku protokolu RSVP v Návrháři tabulky tak, že na ni dvakrát kliknete v Průzkumníku serveru. Pak vyberete sloupec "DinnerID", klikněte pravým tlačítkem myši a vyberte relaci... příkaz místní nabídky:
 
 ![](create-a-database/_static/image12.png)
 
-Tím se otevře dialogové okno, které můžete použít k nastavení relace mezi tabulkami:
+Zobrazí se dialogové okno, které můžeme použít k nastavení vztahů mezi tabulkami:
 
 ![](create-a-database/_static/image13.png)
 
-Budete kliknete na tlačítko "Přidat" do dialogového okna Přidat novou relaci. Po přidání relace jsme budete napravo od dialogového okna rozbalte uzel stromové zobrazení "Tabulky a sloupce specifikace" v mřížce vlastností a pak klikněte na tlačítko "..." napravo od jeho:
+Kliknutím na tlačítko Přidat přidáte novou relaci do dialogového okna. Po přidání relace rozbalíme uzel "tabulky a specifikace sloupce" stromové zobrazení v mřížce vlastností na pravé straně dialogového okna a potom kliknete na "...". tlačítko napravo od něj:
 
 ![](create-a-database/_static/image14.png)
 
-Kliknutím na tlačítko "..." se zobrazí další dialog, který umožňuje určit, které tabulky a sloupce jsou součástí relace, jakož i umožňují nám název relace.
+Kliknutí na... tlačítko zobrazí další dialog, který nám umožní určit, které tabulky a sloupce jsou součástí relace, a také nám umožnit pojmenovat relaci.
 
-Změníme na "Večeří" primární klíč tabulky a vyberte "DinnerID" sloupce v tabulce večeří jako primární klíč. Naše reakce tabulka bude tabulka cizího klíče a RSVP. Sloupec DinnerID bude přiřazen jako cizí klíč:
+V tabulce s primárními klíči se změní na "večeře" a jako primární klíč vyberete sloupec "DinnerID" v tabulce večeře. Naše tabulka protokolu RSVP bude tabulka cizího klíče a protokol RSVP. Sloupec DinnerID bude přidružen jako cizí klíč:
 
 ![](create-a-database/_static/image15.png)
 
-Každý řádek v tabulce RSVP teď bude spojená s řádek v tabulce večeři. SQL Server se udržují referenční integritu pro nás – a zabránit nám přidáváte nový řádek RSVP neukazuje na platném řádku Dinner. To zároveň zabrání nám odstraňování Dinner řádku, pokud jsou stále potvrďte svou účast na něj odkazující řádky.
+Každý řádek v tabulce protokolu RSVP se teď přidruží k řádku v tabulce večeře. SQL Server zachovává referenční integritu pro nás – a zabráníme přidání nového řádku protokolu RSVP, pokud neodkazuje na platný řádek večeře. Tím se také zabrání v odstranění řádku večeře, pokud se na něj stále vztahují řádky protokolu RSVP.
 
-### <a name="adding-data-to-our-tables"></a>Přidání dat do naší tabulky
+### <a name="adding-data-to-our-tables"></a>Přidávání dat do tabulek
 
-Pojďme dokončit tak, že přidáte nějaká ukázková data do našich večeří tabulky. Můžeme přidat data do tabulky kliknutím pravým tlačítkem na něj v Průzkumníkovi serveru a zvolte příkaz "Zobrazit Data tabulky":
+Pojďme to dokončit přidáním ukázkových dat do tabulky večeři. Do tabulky můžeme přidat data tak, že na ni kliknete pravým tlačítkem myši v rámci Průzkumník serveru a vyberete příkaz Zobrazit data tabulky:
 
 ![](create-a-database/_static/image16.png)
 
-Přidáme několik řádků Dinner data, která můžeme použít později, jako jsme počáteční implementaci aplikace:
+Přidáme pár řádků dat o večeři, které můžeme později použít při zahájení implementace aplikace:
 
 ![](create-a-database/_static/image17.png)
 
-### <a name="next-step"></a>Dalším krokem
+### <a name="next-step"></a>Další krok
 
-Jsme dokončili vytváření databáze. Pojďme teď vytvořit tříd modelu, pomocí kterých můžeme pro dotazování a aktualizaci.
+Dokončili jsme vytváření naší databáze. Nyní vytvoříme třídy modelů, které můžeme použít k dotazování a aktualizaci.
 
 > [!div class="step-by-step"]
 > [Předchozí](create-a-new-aspnet-mvc-project.md)
-> [další](build-a-model-with-business-rule-validations.md)
+> [Další](build-a-model-with-business-rule-validations.md)

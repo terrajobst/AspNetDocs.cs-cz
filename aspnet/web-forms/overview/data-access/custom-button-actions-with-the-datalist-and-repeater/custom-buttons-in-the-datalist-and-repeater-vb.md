@@ -9,11 +9,11 @@ ms.assetid: 1afdb14d-6e49-4e1f-aead-2934730d472e
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-vb
 msc.type: authoredcontent
 ms.openlocfilehash: bc7e94e59226b739c2948434c1bfecb46b3d7856
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74607574"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78576396"
 ---
 # <a name="custom-buttons-in-the-datalist-and-repeater-vb"></a>Vlastní tlačítka v ovládacích prvcích DataList a Repeater (VB)
 
@@ -130,7 +130,7 @@ Po dokončení obslužné rutiny události `ItemCommand` chvíli počkejte, než
 
 **Obrázek 7**: pomocí ovládacího panelu se zobrazí produkty vybrané kategorie ([kliknutím zobrazíte obrázek v plné velikosti](custom-buttons-in-the-datalist-and-repeater-vb/_static/image17.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Ovládací prvky DataList a Repeater mohou v rámci svých šablon obsahovat libovolný počet tlačítek, LinkButtons nebo ImageButtons. Taková tlačítka, když kliknete, způsobí postback a vyvolávají událost `ItemCommand`. Chcete-li přidružit vlastní akci na straně serveru k tlačítku, které je kliknuto, vytvořte obslužnou rutinu události pro událost `ItemCommand`. V této obslužné rutině události nejprve zkontrolujte hodnotu příchozí `CommandName` a určete, na které tlačítko bylo kliknuto. Další informace lze volitelně zadat prostřednictvím vlastnosti `CommandArgument` s tlačítkem.
 

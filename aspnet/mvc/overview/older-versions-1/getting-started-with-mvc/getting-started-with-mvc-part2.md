@@ -1,78 +1,78 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part2
-title: Přidání Kontroleru | Dokumentace Microsoftu
+title: Přidání kontroleru | Microsoft Docs
 author: shanselman
-description: Najít aktualizovanou verzi, pokud v tomto kurzu je k dispozici zde prostřednictvím sady Visual Studio 2013. Nové kurz používá ASP.NET MVC 5, která nabízí mnoho vylepšení v porovnání s t...
+description: Aktualizovaná verze, pokud je tento kurz k dispozici zde, pomocí Visual Studio 2013. Nový kurz používá ASP.NET MVC 5, který poskytuje mnoho vylepšení oproti t...
 ms.author: riande
 ms.date: 08/14/2010
 ms.assetid: ff03dcc0-da97-458d-838f-0823e7482642
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part2
 msc.type: authoredcontent
 ms.openlocfilehash: e2a298584473f57c2b14edf507f0f6886d906ea3
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65123053"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78543979"
 ---
 # <a name="adding-a-controller"></a>Přidání kontroleru
 
-podle [Scott Hanselman](https://github.com/shanselman)
+[Scott Hanselman](https://github.com/shanselman)
 
 > > [!NOTE]
-> > Pokud v tomto kurzu je k dispozici aktualizovaná verze [tady](../../getting-started/introduction/getting-started.md) pomocí [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013). Nové kurz používá ASP.NET MVC 5, která nabízí mnoho vylepšení v porovnání s v tomto kurzu.
+> > Aktualizovaná verze, pokud je tento kurz k dispozici [zde](../../getting-started/introduction/getting-started.md) , pomocí [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013). Nový kurz používá ASP.NET MVC 5, který poskytuje mnoho vylepšení v rámci tohoto kurzu.
 >
 >
-> Toto je kurz pro začátečníky, který vysvětluje základy ASP.NET MVC. Vytvoříte jednoduchou webovou aplikaci, která čte a zapisuje z databáze. Přejděte [výukové centrum pro ASP.NET MVC](../../../index.md) najít další technologie ASP.NET MVC, kurzů a ukázek.
+> Toto je úvodní kurz pro začátečníky, který představuje základy ASP.NET MVC. Vytvoříte jednoduchou webovou aplikaci, která čte a zapisuje z databáze. Navštivte [centrum učení služby ASP.NET MVC](../../../index.md) , kde najdete další kurzy a ukázky pro ASP.NET MVC.
 
-MVC jsou zahrnovaného Model, zobrazení a kontroler. MVC je vzor pro vývoj aplikací tak, aby měla každá část odpovědnosti, který se liší od jiného.
+MVC představuje model, zobrazení, kontroler. MVC je vzor pro vývoj aplikací tak, aby každá část měla zodpovědnost, která se liší od jiné.
 
-- Model: Data vaší aplikace
-- Zobrazení: Soubory šablony, které vaše aplikace bude používat k dynamickému generování odpovědi HTML.
-- Řadiče zařízení: Třídy, které zpracovávají příchozí žádosti adresy URL pro aplikaci, načíst datový model a pak zadejte zobrazit šablony, které vykreslují odpověď zpět do klienta
+- Model: data vaší aplikace
+- Zobrazení: soubory šablon, které aplikace použije k dynamickému generování odpovědí HTML.
+- Řadiče: třídy, které zpracovávají příchozí žádosti adresy URL do aplikace, načítají data modelu a pak určují šablony zobrazení, které vykreslí odpověď zpátky klientovi.
 
-Společnost Microsoft a budete moct pokrývající všechny tyto koncepty v tomto kurzu ukazují, jak se dají použít k sestavení aplikace.
+V tomto kurzu pokryjeme všechny tyto koncepty a ukážeme vám, jak je používat k sestavení aplikace.
 
-Ve složce řadiče v Průzkumníku řešení pravým tlačítkem myši a vyberete přidat kontroler vytvoříme nový kontroler.
+Pojďme vytvořit nový kontroler tak, že kliknete pravým tlačítkem na složku řadiče v Průzkumníku řešení a vyberete Přidat kontroler.
 
 [![AddControllerRightClick](getting-started-with-mvc-part2/_static/image2.png)](getting-started-with-mvc-part2/_static/image1.png)
 
-Pojmenujte nový kontroler "HelloWorldController" a klikněte na tlačítko Přidat.
+Pojmenujte nový kontroler "HelloWorldController" a klikněte na Přidat.
 
-[![Přidat Dialog Kontroleru](getting-started-with-mvc-part2/_static/image4.png)](getting-started-with-mvc-part2/_static/image3.png)
+[Dialog ![přidat kontrolér](getting-started-with-mvc-part2/_static/image4.png)](getting-started-with-mvc-part2/_static/image3.png)
 
-Všimněte si, že v Průzkumníku řešení na pravé straně, který byl vytvořen nový soubor pro jste volali HelloWorldController.cs a tento soubor je teď otevřený v **IDE**.
+Všimněte si Průzkumník řešení na pravé straně, že pro vás byl vytvořen nový soubor s názvem HelloWorldController.cs a tento soubor je nyní otevřen v **integrovaném vývojovém prostředí (IDE**).
 
 [![HelloWorldControllerCode](getting-started-with-mvc-part2/_static/image6.png)](getting-started-with-mvc-part2/_static/image5.png)
 
-Vytvořte dvě nové metody, které v rámci vaší novou veřejnou třídu HelloWorldController vypadat nějak takto. Vrátí řetězec HTML přímo z kontroleru jako příklad.
+Vytvořte dvě nové metody, které vypadají jako v rámci vaší nové veřejné třídy HelloWorldController. Jako příklad vrátíme řetězec HTML přímo z našeho kontroleru.
 
 [!code-csharp[Main](getting-started-with-mvc-part2/samples/sample1.cs)]
 
-Kontrolér jmenuje HelloWorldController a nová metoda se nazývá Index. Spusťte aplikaci znovu, stejně jako v minulosti (klikněte na tlačítko Přehrát akci nebo stiskněte klávesu F5, můžete to udělat). Po zahájení prohlížeči změnit cestu v panelu Adresa `http://localhost:xx/HelloWorld` kde xx je cokoli, co číslo počítače zvolil. Váš prohlížeč teď by měl vypadat jako na následujícím snímku obrazovky. V našem výše uvedené metody jsme vrátí řetězec předán metodu nazvanou "Obsah". Řekli jsme systém právě vrátí kód HTML a udělal!
+Váš kontroler má název HelloWorldController a vaše nová metoda se nazývá index. Spusťte aplikaci znovu, stejně jako předtím (klikněte na tlačítko Přehrát nebo stiskněte klávesu F5 k tomuto účelu). Jakmile se Váš prohlížeč spustí, změňte cestu na adresním řádku a `http://localhost:xx/HelloWorld`, kde XX je libovolný počet zvolený počítač. Prohlížeč by teď měl vypadat jako snímek obrazovky níže. V naší metodě jsme vrátili řetězec předaný metodě s názvem "content". Zjistili jsme, že systém pouze vrátí kód HTML a byl to!
 
-ASP.NET MVC volá různé třídy Kontroleru (a různé metody akce v nich) v závislosti na příchozí adrese URL. Logika výchozí mapování používá ASP.NET MVC používá formát takto řídit, jaký kód běží:
+ASP.NET MVC vyvolá různé třídy kontroleru (a v rámci nich různé metody akcí) v závislosti na příchozí adrese URL. Výchozí logika mapování, kterou používá ASP.NET MVC, používá formát podobný tomuto: k určení toho, jaký kód se spustí:
 
-/ [Kontroler] / [název akce] / [parametry]
+/[Kontrolér]/[Action]/[parametry]
 
-První část adresy URL určuje třída Kontroleru k provedení. Proto /HelloWorld mapuje HelloWorldController třídy. Druhá část adresy URL určí metodu akce v třídě ke spuštění. Proto /HelloWorld/Index by způsobila metoda Index() třídy HelloWorldController ke spuštění. Všimněte si, že jsme měli jen k navštívení /HelloWorld výše a metodu, kterou Index byl odvozen. Je to proto, že metodu s názvem "Index", je výchozí metodou, která bude volána na řadiči, pokud není explicitně zadaná.
+První část adresy URL určuje třídu kontroleru, která se má spustit. Proto/HelloWorld mapuje na třídu HelloWorldController. Druhá část adresy URL určuje metodu Action pro třídu, která má být provedena. /HelloWorld/Index by proto způsobila, že se spustí metoda index () třídy HelloWorldController. Všimněte si, že jsme rádi navštívili/HelloWorld výše a index metody byl odvozen. Důvodem je, že metoda s názvem index je výchozí metoda, která bude volána na řadiči, pokud není explicitně určena.
 
-[![Toto je Moje výchozí akce](getting-started-with-mvc-part2/_static/image8.png)](getting-started-with-mvc-part2/_static/image7.png)
+[![Toto je moje výchozí akce](getting-started-with-mvc-part2/_static/image8.png)](getting-started-with-mvc-part2/_static/image7.png)
 
-Teď se podívejme se na `http://localhost:xx/HelloWorld/Welcome.` teď naše úvodní metoda má spuštěn a vrátí jeho řetězec ve formátu HTML.
+Nyní se teď podívejme, `http://localhost:xx/HelloWorld/Welcome.` nyní naše uvítací metoda provedla a vrátila svůj řetězec HTML.
 
-Znovu nebo [kontroler] / [název akce] / [parametry] tak Kontroleru je HelloWorld a Vítejte v tomto případě je metoda. Zatím jsme dosud neučinili parametry.
+Znovu,/[kontrolér]/[Action]/[Parameters], takže kontroler je HelloWorld a Welcome je metoda v tomto případě. Zatím jsme neudělali parametry.
 
-[![Toto je metoda úvodní akce](getting-started-with-mvc-part2/_static/image10.png)](getting-started-with-mvc-part2/_static/image9.png)
+[![je to metoda akce Welcome.](getting-started-with-mvc-part2/_static/image10.png)](getting-started-with-mvc-part2/_static/image9.png)
 
-Pojďme upravit naše ukázka mírně tak, aby se dají předat některé informace v z adresy URL do kontroleru, třeba takto: / HelloWorld/uvítací? název = Scott&amp;numtimes = 4. Změníte úvodní metodu dva parametry a aktualizace je podobná níže uvedenému příkladu. Všimněte si, že jsme použili nepovinný parametr funkce jazyka C# k označení, že numTimes parametr by ve výchozím nastavení 1 Pokud není předán v.
+Pojďme to trochu upravit, abychom mohli předat nějaké informace z adresy URL naší řadiči, například takto:/HelloWorld/Welcome? název = Scott&amp;numtimes = 4. Změňte metodu Vítejte tak, aby zahrnovala dva parametry a aktualizovala ji, jak je znázorněno níže. Všimněte si, že jsme použili C# funkci volitelného parametru k označení toho, že parametr numTimes by měl být nastaven na hodnotu 1, pokud není předaný.
 
 [!code-csharp[Main](getting-started-with-mvc-part2/samples/sample2.cs)]
 
-Spusťte aplikaci a navštivte `http://localhost:xx/HelloWorld/Welcome?name=Scott&numtimes=4` změna hodnoty názvu a numtimes, jak potřebujete. Systém automaticky mapují pojmenované parametry v řetězci dotazu do adresního řádku parametrům ve své metodě.
+Spusťte aplikaci a podívejte se na `http://localhost:xx/HelloWorld/Welcome?name=Scott&numtimes=4` změně hodnoty název a numtimes, jak budete chtít. Systém automaticky namapuje pojmenované parametry z řetězce dotazu na adresní řádek do parametrů ve vaší metodě.
 
-V obou těchto příkladech kontroleru bylo to všechnu práci a má se vrácení HTML přímo. Obvykle bychom naše řadiče vrácení HTML přímo – protože je velmi náročná kód, který končí. Místo toho jsme budete obvykle použijte samostatný soubor šablony zobrazení účelem vygenerování odpovědi HTML. Podívejme se na tom, jak to můžeme udělat. Zavřete okno prohlížeče a vraťte se do integrovaného vývojového prostředí.
+V obou těchto příkladech kontroler provedl veškerou práci a vrátil přímo HTML. Obvykle nepotřebujeme, aby naše řadiče vracely HTML přímo – protože to pro kód končí hodně nenáročných. Místo toho obvykle použijete samostatný soubor šablony zobrazení, který vám pomůžeme vygenerovat odpověď HTML. Pojďme se podívat, jak to můžeme udělat. Zavřete prohlížeč a vraťte se do integrovaného vývojového prostředí (IDE).
 
 > [!div class="step-by-step"]
 > [Předchozí](getting-started-with-mvc-part1.md)
-> [další](getting-started-with-mvc-part3.md)
+> [Další](getting-started-with-mvc-part3.md)

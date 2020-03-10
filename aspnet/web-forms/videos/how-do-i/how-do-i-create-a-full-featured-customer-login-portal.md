@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-full-featured-customer-login-portal
-title: '[Postup:] Vytvoření plně funkční zákaznického portálu služeb přihlášení? | Dokumenty Microsoft'
+title: '[Postupy:] Vytvořit plně funkční portál pro přihlášení zákazníka? | Dokumenty Microsoft'
 author: microsoft
-description: Sledovat prostřednictvím vytváření sad fiktivní zákaznického portálu Další informace o hlavní stránky, motivy, členství, role, navigace na webu, profily uživatelů, a...
+description: Postup vytváření fiktivního zákaznického portálu vám umožní získat informace o stránkách předlohy, motivech, členství, rolích, navigaci na webu, uživatelských profilech a...
 ms.author: riande
 ms.date: 01/05/2006
 ms.assetid: dfaffea8-c71c-4fa0-9f97-585c9ac95529
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-a-full-featured-customer-login-portal
 msc.type: video
 ms.openlocfilehash: 05922d973e6390088ff0ef270513a7b4f60e36c0
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59414813"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78523602"
 ---
-# <a name="how-do-i-create-a-full-featured-customer-login-portal"></a>[Postup:] Vytvoření plně funkční zákaznického portálu služeb přihlášení?
+# <a name="how-do-i-create-a-full-featured-customer-login-portal"></a>[Postupy:] Vytvořit plně funkční portál pro přihlášení zákazníka?
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-Postup sledovat prostřednictvím vytváření sad fiktivní zákaznického portálu Další informace o hlavní stránky, motivy, členství, role, navigace na webu, profily uživatelů a nástroje pro správu webu.
+Postup vytváření fiktivního zákaznického portálu vám umožní získat informace o stránkách předlohy, motivech, členství, rolích, navigaci na webu, uživatelských profilech a nástroji pro správu webu.
 
-[&#9654;Podívejte se na video (27 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-a-full-featured-customer-login-portal)
+[&#9654;Přehrát video (27 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-a-full-featured-customer-login-portal)

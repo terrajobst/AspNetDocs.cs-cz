@@ -1,23 +1,23 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/index
-title: Kontrolery a směrování | Dokumentace Microsoftu
+title: Řadiče a směrování | Microsoft Docs
 author: rick-anderson
-description: V této sérii kurzů se dozvíte, o směrování ASP.NET, která mapuje požadavky prohlížeče na akce kontroleru ASP.NET MVC.
+description: V této sadě kurzů se dozvíte o směrování ASP.NET, které mapuje požadavky prohlížeče na akce kontroleru ASP.NET MVC.
 ms.author: riande
 ms.date: 09/28/2011
 ms.assetid: 124df537-428c-4861-b6c2-4830c094fe0c
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing
 msc.type: chapter
 ms.openlocfilehash: 62e8c3c7451373829e2e8fbf65e37a14cfea54df
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65123311"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78544070"
 ---
 # <a name="controllers-and-routing"></a>Kontrolery a směrování
 
-> V této sérii kurzů se dozvíte, o směrování ASP.NET, která mapuje požadavky prohlížeče na akce kontroleru ASP.NET MVC.
+> V této sadě kurzů se dozvíte o směrování ASP.NET, které mapuje požadavky prohlížeče na akce kontroleru ASP.NET MVC.
 
 - [ASP.NET MVC – přehled směrování (C#)](asp-net-mvc-routing-overview-cs.md)
 - [Principy filtrů akcí (C#)](understanding-action-filters-cs.md)

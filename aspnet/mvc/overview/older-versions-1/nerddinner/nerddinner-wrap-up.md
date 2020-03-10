@@ -1,49 +1,49 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/nerddinner-wrap-up
-title: Aplikace Nerddinner | Dokumentace Microsoftu
+title: NerdDinner zabalení | Microsoft Docs
 author: microsoft
-description: To je do svého závěru kurzu NerdDinner a poskytuje informace o tom, jak získat další informace.
+description: Toto je závěr kurzu NerdDinner a poskytuje informace o tom, jak se dozvědět víc.
 ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 5c6371c0-a944-4adf-a28e-5afbdd011ca8
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/nerddinner-wrap-up
 msc.type: authoredcontent
 ms.openlocfilehash: 4e25a4a3a953e97c9a292506a9511f28874925ab
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65128357"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78580540"
 ---
 # <a name="nerddinner-wrap-up"></a>Zabalení aplikace NerdDinner
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
-> To je do svého závěru kurzu NerdDinner a poskytuje informace o tom, jak získat další informace.
+> Toto je závěr kurzu NerdDinner a poskytuje informace o tom, jak se dozvědět víc.
 > 
-> Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
+> Pokud používáte ASP.NET MVC 3, doporučujeme vám postupovat podle [Začínáme s kurzy pro](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) [hudební úložiště](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) MVC 3 nebo MVC.
 
-Naše aplikace NerdDinner je nyní dokončena a připravena k nasazení na webu.
+Naše aplikace NerdDinner je teď dokončená a připravená k nasazení na webu.
 
 ![](nerddinner-wrap-up/_static/image1.png)
 
-Můžeme použít k sestavení NerdDinner širokou škálu funkcí technologie ASP.NET MVC. Snad proces vývoje se zbavit některé jasno jak základní pracovní funkce ASP.NET MVC a zadaného kontextového na tom, jak tyto funkce integrovat společně v rámci aplikace.
+Pro sestavování NerdDinner jsme použili širokou škálu funkcí ASP.NET MVC. Snad proces vývoje IT trochu rozvíjejí nějaké světlo, jak základní funkce ASP.NET MVC fungují, a poskytuje kontext o tom, jak se tyto funkce v rámci aplikace integrují společně.
 
 ### <a name="learning-more"></a>Další informace
 
-V tomto kurzu NerdDinner je první kapitoly nového [Professional ASP.NET MVC 1,0](https://www.amazon.com/gp/product/0470384611?ie=UTF8&amp;tag=scoblo04-20&amp;linkCode=xm2&amp;camp=1789&amp;creativeASIN=0470384611) kniha od Wrox Press.
+Tento NerdDinner kurz představuje první kapitolu nové sady [ASP.NET MVC 1,0](https://www.amazon.com/gp/product/0470384611?ie=UTF8&amp;tag=scoblo04-20&amp;linkCode=xm2&amp;camp=1789&amp;creativeASIN=0470384611) na stránce Wrox Press.
 
 [![](https://mscblogs.blob.core.windows.net/media/scottgu/Media/bookcover1_6CAECF94.png)](https://www.amazon.com/gp/product/0470384611?ie=UTF8&amp;tag=scoblo04-20&amp;linkCode=xm2&amp;camp=1789&amp;creativeASIN=0470384611)
 
-Může číst zbývající části knihy získat i další informace o ASP.NET MVC.
+Zbývající část knihy si můžete přečíst, abyste se dozvěděli ještě víc o ASP.NET MVC.
 
-Můžete také vyhledat skvělé technologie ASP.NET MVC, kurzy a videa na: [https://www.asp.net/mvc](../../../index.md) Další skvělou knihy ASP.NET MVC za chvíli bude publikován. Můžu se aktualizovat tuto stránku a zahrnovat odkazy na další knihy, jakmile budou k dispozici.
+Skvělé kurzy a videa pro ASP.NET MVC můžete najít také v těchto umístěních: [https://www.asp.net/mvc](../../../index.md) další skvělé ASP.NET knihy pro MVC budou brzy publikovány. Aktualizujem tuto stránku tak, aby zahrnovala odkazy na další knihy, jakmile budou k dispozici.
 
-Doufáme, že to pomáhá
+Doufám, že to pomůže,
 
-Scott
+Spojení
 
 > [!div class="step-by-step"]
 > [Předchozí](enable-automated-unit-testing.md)

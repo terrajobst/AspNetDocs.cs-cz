@@ -9,11 +9,11 @@ ms.assetid: 09279194-bcf9-4b59-a09d-c68e5926a758
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 7875304c672625d8c0eaaf0fea8ef509bb801a3a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74611852"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78545505"
 ---
 # <a name="deploying-your-site-using-an-ftp-client-vb"></a>Nasazení webu pomocí klienta FTP (VB)
 
@@ -134,7 +134,7 @@ Také je třeba pochopit, že jakékoli změny `Web.config` nebo soubory v adres
 
 Nakonec mějte na paměti, že opětovné nasazení aplikace může trvat pár sekund až několik minut, a to v závislosti na počtu a velikosti souborů, které je potřeba zkopírovat do provozního prostředí. Během této doby mohou uživatelé, kteří navštíví váš web, zaznamenat chyby nebo liché chování. Můžete "vypnout celou aplikaci" přidáním stránky s názvem `App_Offline.htm` do kořenového adresáře vaší aplikace, který vysvětluje uživatele, že lokalita je mimo provoz pro údržbu (nebo cokoli) a bude brzy zálohována. Když je přítomen soubor `App_Offline.htm`, modul runtime ASP.NET přesměruje všechny příchozí požadavky na tuto stránku.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Nasazení webové aplikace zahrnuje kopírování potřebných souborů z vývojového prostředí do provozního prostředí. Nejběžnějším způsobem, kterým se soubory přenáší přes síť, je protokol FTP (File Transfer Protocol) (FTP) a většina poskytovatelů webového hostitele podporuje přístup FTP na své webové servery. V tomto kurzu jsme zjistili, jak použít klienta FTP k nasazení potřebných souborů na webový server. Po nasazení může web navštívit kdokoli, kdo má připojení k Internetu.
 

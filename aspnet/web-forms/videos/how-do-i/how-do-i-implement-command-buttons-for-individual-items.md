@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-command-buttons-for-individual-items
-title: '[Postup:] Implementace příkazových tlačítek u jednotlivých položek | Dokumentace Microsoftu'
+title: '[Postupy:] Implementace příkazových tlačítek pro jednotlivé položky | Microsoft Docs'
 author: rick-anderson
-description: V tomto videu se zobrazí Chris pixelů na způsob zpracování událostí spojených s ovládacím prvkem tlačítko v každé položce ovládací prvek vázaný na data jako ovládací prvek ListView. První...
+description: V tomto videu Chris pixelů na se zobrazí postup zpracování událostí přidružených k ovládacímu prvku tlačítko v každé položce ovládacího prvku vázaného na data, jako je například ovládací prvek ListView. První,...
 ms.author: riande
 ms.date: 07/24/2008
 ms.assetid: b883989d-4735-478e-ab56-411a2ed98f73
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-command-buttons-for-individual-items
 msc.type: video
 ms.openlocfilehash: efbc7477832664b6efa5798c9a8cc63bfd148d04
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59403113"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78567786"
 ---
-# <a name="how-do-i-implement-command-buttons-for-individual-items"></a>[Postup:] Implementace příkazových tlačítek u jednotlivých položek
+# <a name="how-do-i-implement-command-buttons-for-individual-items"></a>[Postupy:] Implementace příkazových tlačítek pro jednotlivé položky
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-V tomto videu se zobrazí Chris pixelů na způsob zpracování událostí spojených s ovládacím prvkem tlačítko v každé položce ovládací prvek vázaný na data jako ovládací prvek ListView. Nejdříve si projděte, jak tyto ovládací prvky vázané na data mají standardní tlačítko obslužné rutiny pro standardní operace, jako je upravit nebo odstranit. Dále se naučíte, jak přidat tlačítko, které provede vlastní akci a způsob zpracování události pro tuto akci tlačítko Vlastní. A konečně naleznete v části k předávání dat vlastní obslužnou rutinu události pro identifikaci položky, kde klikněte na tlačítko původu.
+V tomto videu Chris pixelů na se zobrazí postup zpracování událostí přidružených k ovládacímu prvku tlačítko v každé položce ovládacího prvku vázaného na data, jako je například ovládací prvek ListView. Nejprve si přečtěte, jak tyto ovládací prvky vázané na data mají obslužné rutiny událostí standardního tlačítka pro standardní operace, jako je úprava nebo odstranění. V dalším kroku se dozvíte, jak přidat tlačítko, které provádí vlastní akci a jak zpracovávat události pro tuto akci vlastního tlačítka. Nakonec viz jak předat data obslužné rutině vlastní události pro identifikaci položky, kde kliknete na tlačítko.
 
-[&#9654;Podívejte se na video (34 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-command-buttons-for-individual-items)
+[&#9654;Přehrát video (34 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-command-buttons-for-individual-items)

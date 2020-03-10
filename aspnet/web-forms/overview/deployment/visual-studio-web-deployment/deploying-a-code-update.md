@@ -9,11 +9,11 @@ ms.assetid: c76dbc35-a914-4ee3-919c-4f4d1fa05104
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update
 msc.type: authoredcontent
 ms.openlocfilehash: 3881833bfe2a50a38a357614f92f434a04a8ab08
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74626783"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78567401"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-deploying-a-code-update"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: nasazení aktualizace kódu
 
@@ -53,7 +53,7 @@ Než budete moct použít svoje profily publikování k nasazení na testování
 
 1. Otevřete Průvodce **publikováním webu** kliknutím pravým tlačítkem myši na projekt ContosoUniversity a kliknutím na **publikovat**.
 2. V rozevíracím seznamu **profil** klikněte na profil **testu** .
-3. Klikněte na kartu **Nastavení** .
+3. Klikněte na kartu **Nastavení**.
 4. V části **DefaultConnection** v části **databáze** zrušte zaškrtnutí políčka **aktualizovat databázi** .
 5. Klikněte na kartu **profil** a potom v rozevíracím seznamu **profil** klikněte na **pracovní** profil.
 6. Když se zobrazí dotaz, zda chcete uložit změny provedené v profilu **testu** , klikněte na tlačítko **Ano**.
@@ -96,7 +96,7 @@ Použití *aplikace\_offline. htm* v pracovní lokalitě není vyžadováno, pro
 3. Nahraďte kód šablony následujícím kódem:
 
     [!code-html[Main](deploying-a-code-update/samples/sample3.html)]
-4. Soubor uložte a zavřete.
+4. Uložte soubor a zavřete ho.
 
 ### <a name="copy-app_offlinehtm-to-the-root-folder-of-the-web-site"></a>Zkopírujte aplikaci\_offline. htm do kořenové složky webu.
 
@@ -164,7 +164,7 @@ Když použijete průvodce **Publikovat web** k publikování projektu, můžete
 
     Pokud dvakrát kliknete na soubor *Web. config* , zobrazí dialogové okno **Náhled změn** efekt transformací konfigurace sestavení a publikování profilů. V tomto okamžiku jste neudělali nic, co by mohlo způsobit změnu souboru *Web. config* na serveru, takže očekáváte, že se nezobrazí žádné změny. Okno **Náhled změn** ale nesprávně zobrazuje dvě změny. Vypadá to, že se odeberou dva prvky XML. Tyto prvky jsou přidány procesem publikování, když vyberete možnost **spustit migrace Code First při spuštění aplikace** pro třídu kontextu Code First. Porovnání je provedeno před tím, než proces publikování přidá tyto prvky, takže vypadá, že jsou odebírány, i když nebudou odebrány. Tato chyba bude opravena v budoucí verzi.
 5. Klikněte na **Zavřít**.
-6. Klikněte na **publikovat**.
+6. Klikněte na **Publikovat**.
 7. Po otevření prohlížeče na domovské stránce testovacího webu stiskněte klávesy CTRL + F5, čímž se zobrazí efekt změny šablony stylů CSS.
 
     ![Účinek změny šablony stylů CSS](deploying-a-code-update/_static/image11.png)
@@ -184,7 +184,7 @@ Předpokládejme, že se vám nelíbí modré pozadí a chcete se vrátit k pův
 
     Otevře se okno, ve kterém se zobrazí rozdíly mezi místním souborem a jeho verzí v cílovém prostředí.
 
-    ![Diff-Content/Web. CSS](deploying-a-code-update/_static/image13.png)
+    ![Diff-Content/Site.css](deploying-a-code-update/_static/image13.png)
 4. V **Průzkumník řešení**klikněte znovu pravým tlačítkem na **site. CSS** a pak klikněte na **Publikovat web. CSS**.
 
     V okně **aktivity publikování na webu** se zobrazí, že soubor byl publikován.
@@ -195,7 +195,7 @@ Předpokládejme, že se vám nelíbí modré pozadí a chcete se vrátit k pův
     ![Domovská stránka s normální šablonou stylů CSS](deploying-a-code-update/_static/image15.png)
 6. Zavřete prohlížeč.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Nyní jste viděli několik způsobů, jak nasadit aktualizaci aplikace, která nezahrnuje změnu databáze a jste viděli, jak zobrazit náhled změn, abyste ověřili, jestli se má aktualizovat, a to, co očekáváte. Stránka instruktoři má teď oddíl **výukových kurzů** .
 

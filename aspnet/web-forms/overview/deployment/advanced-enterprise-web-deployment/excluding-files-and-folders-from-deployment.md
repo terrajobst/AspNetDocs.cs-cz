@@ -1,129 +1,129 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
-title: Vyloučení souborů a složek z nasazení | Dokumentace Microsoftu
+title: Vyloučení souborů a složek z nasazení | Microsoft Docs
 author: jrjlee
-description: Toto téma popisuje, jak můžete vyloučit soubory a složky z balíčku pro nasazení webu při sestavení a zabalení webové aplikace.
+description: Toto téma popisuje, jak můžete vyloučit soubory a složky z balíčku pro nasazení webu při vytváření a zabalení projektu webové aplikace.
 ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: f4cc2d40-6a78-429b-b06f-07d000d4caad
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: a262ce43d7199fb1015d54d0b7c213857c360946
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133894"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78544973"
 ---
 # <a name="excluding-files-and-folders-from-deployment"></a>Vyloučení souborů a složek z nasazení
 
-podle [Jason Lee](https://github.com/jrjlee)
+od [Jason Novák](https://github.com/jrjlee)
 
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
-> Toto téma popisuje, jak můžete vyloučit soubory a složky z balíčku pro nasazení webu při sestavení a zabalení webové aplikace.
+> Toto téma popisuje, jak můžete vyloučit soubory a složky z balíčku pro nasazení webu při vytváření a zabalení projektu webové aplikace.
 
-Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
+Toto téma je součástí série kurzů založených na požadavcích podnikového nasazení fiktivní společnosti s názvem Fabrikam, Inc. Tato série kurzů používá ukázkové řešení&#x2014;, pomocí kterého [řešení](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;správce kontaktů představuje webovou aplikaci s realistickou úrovní složitosti, včetně aplikace ASP.NET MVC 3, služby Windows Communication Foundation (WCF) a databázového projektu.
 
-Metody nasazení v srdci těchto kurzů je založen na rozdělení přístupu soubor projektu je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve které je řízena procesem sestavení dva soubory projektu&#x2014;jeden obsahující pokyny, které platí pro všechny cílové prostředí a jeden obsahuje nastavení pro konkrétní prostředí sestavení a nasazení pro sestavení. V okamžiku sestavení souboru projektu specifických pro prostředí se sloučí do souboru projektu bez ohledu na prostředí a vytvoří kompletní sadu pokynů sestavení.
+Metoda nasazení na srdce těchto kurzů je založena na způsobu rozdělení souborů projektu popsaných v tématu [Principy souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve kterém je proces sestavení řízen dvěma soubory&#x2014;projektu jeden, který obsahuje pokyny pro sestavení, které platí pro každé cílové prostředí, a jedno obsahující nastavení sestavení a nasazení specifické pro konkrétní prostředí. V době sestavení je soubor projektu specifický pro prostředí sloučen do souboru projektu prostředí – nezávislá a vytvoří kompletní sadu instrukcí pro sestavení.
 
 ## <a name="overview"></a>Přehled
 
-Při sestavování projektu webové aplikace v sadě Visual Studio 2010 webových publikování kanálu (WPP) umožňuje rozšířit tento proces sestavení balení kompilované webové aplikace do nasazení webového balíčku. Můžete použít nástroj pro nasazení Internetové informační služby (IIS) webu (nasazení webu) nasadit tento webový balíček do vzdáleného webového serveru služby IIS nebo importovat balíček web ručně pomocí Správce služby IIS. Tento proces vytváření balíčku je podrobně [sestavení a balení projektů webových aplikací](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md).
+Při sestavování projektu webové aplikace v aplikaci Visual Studio 2010 vám kanál publikování na webu (WPP) umožňuje tento proces sestavení roztáhnout do balíčku zkompilované webové aplikace do nasazeného webového balíčku. Pak můžete použít Nasazení webu Nástroj pro nasazení webu Internetová informační služba (IIS) k nasazení tohoto webového balíčku na vzdálený webový server služby IIS nebo ručně importovat webový balíček pomocí Správce služby IIS. Tento proces vytváření balíčků je vysvětlen v tématu [sestavování a balení projektů webových aplikací](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md).
 
-Jak tedy můžete řídit, co získá součástí webového balíčku? Nastavení projektu v sadě Visual Studio prostřednictvím základního souboru projektu, poskytuje dostatečnou kontrolu pro mnoho scénářů. Nicméně v některých případech můžete chtít přizpůsobit obsah váš webový balíček do určité cílové prostředí. Například můžete chtít zahrnout složku pro soubory protokolů, při nasazení aplikace do testovacího prostředí, ale vyloučit složku, když nasadíte aplikaci do testovací nebo produkční prostředí. Toto téma se ukazují, jak to udělat.
+Jak tedy můžete řídit, co bude součástí vašeho webového balíčku? Nastavení projektu v aplikaci Visual Studio, prostřednictvím podkladového souboru projektu, poskytují dostatečné řízení pro mnoho scénářů. V některých případech však můžete chtít přizpůsobit obsah webového balíčku konkrétním cílovým prostředím. Například můžete chtít zahrnout složku pro soubory protokolu, když nasadíte aplikaci do testovacího prostředí, ale vyloučíte složku při nasazení aplikace do pracovního nebo produkčního prostředí. V tomto tématu se dozvíte, jak to udělat.
 
-## <a name="what-gets-included-by-default"></a>Co získá zahrnuté ve výchozím nastavení?
+## <a name="what-gets-included-by-default"></a>Co je ve výchozím nastavení zahrnuté?
 
-Když nakonfigurujete vlastnosti projektu webové aplikace v sadě Visual Studio **položky, které chcete nasadit** seznamu **balení/publikování webu** stránky umožňuje určit, co chcete zahrnout do nasazení webových balíček. Ve výchozím nastavení, je nastavené na **pouze soubory potřebné ke spuštění této aplikace**.
+Při konfiguraci vlastností projektu webové aplikace v aplikaci Visual Studio se v seznamu **položky k nasazení** na webové stránce **Balení/publikování** dá určit, co chcete zahrnout do balíčku pro nasazení webu. Ve výchozím nastavení je tato hodnota nastavena na **pouze soubory potřebné ke spuštění této aplikace**.
 
 ![](excluding-files-and-folders-from-deployment/_static/image1.png)
 
-Pokud zvolíte **pouze soubory potřebné ke spuštění této aplikace**, WPP se pokusí zjistit, které soubory přidaly do webového balíčku. Sem patří:
+Když zvolíte **pouze soubory potřebné ke spuštění této aplikace**, WPP se pokusí určit, které soubory mají být přidány do webového balíčku. To zahrnuje:
 
-- Vypíše všechna sestavení pro projekt.
+- Všechny výstupy sestavení pro projekt.
 - Všechny soubory označené pomocí akce sestavení **obsahu**.
 
 > [!NOTE]
-> Logika, která určuje soubory, které chcete zahrnout je obsažen v tomto souboru:   
-> *%ProgramFiles%\MSBuild\Microsoft\VisualStudio\v10.0\Web\ Microsoft.Web.Publishing.OnlyFilesToRunTheApp.targets*
+> Logika, která určuje, které soubory se mají zahrnout, je obsažená v tomto souboru:   
+> *%PROGRAMFILES%\MSBuild\Microsoft\VisualStudio\v10.0\Web\ Microsoft. Web. Publishing. OnlyFilesToRunTheApp. targets*
 
-## <a name="excluding-specific-files-and-folders"></a>Vyloučení určitých souborů a složek
+## <a name="excluding-specific-files-and-folders"></a>Vyloučení konkrétních souborů a složek
 
-V některých případech je vhodné jemněji odstupňovanou kontrolu nad tím, které jsou nasazené soubory a složky. Pokud víte, že čas soubory, které chcete vyloučit předem a vyloučení platí pro všechny cílové prostředí, stačí nastavit **akce sestavení** každého souboru **žádný**.
+V některých případech budete chtít podrobnější kontrolu nad tím, které soubory a složky budou nasazeny. Pokud víte, které soubory chcete vyloučit před časem, a vyloučení platí pro všechna cílová prostředí, můžete jednoduše nastavit **akci sestavení** každého souboru na **none**.
 
-**Vyloučit konkrétní soubory z nasazení**
+**Vyloučení určitých souborů z nasazení**
 
-1. V **Průzkumníka řešení** okna, klikněte pravým tlačítkem na soubor a potom klikněte na tlačítko **vlastnosti**.
-2. V **vlastnosti** okno v **akce sestavení** řádek, vyberte **žádný**.
+1. V okně **Průzkumník řešení** klikněte pravým tlačítkem na soubor a pak klikněte na **vlastnosti**.
+2. V okně **vlastnosti** vyberte na řádku **Akce sestavení** možnost **žádný**.
 
-Ale tento přístup není vždy vhodné. Například můžete chtít soubory, které se liší a složky, které jsou součástí podle cílového prostředí a mimo aplikaci Visual Studio. Například v ukázkovém řešení Správce kontaktů, podívejte se na obsah ContactManager.Mvc projektu:
+Tento přístup ale není vždycky pohodlný. Například můžete chtít změnit, které soubory a složky jsou zahrnuty v závislosti na cílovém prostředí a mimo aplikaci Visual Studio. Například v ukázkovém řešení Správce kontaktů si prohlédněte obsah projektu ContactManager. Mvc:
 
 ![](excluding-files-and-folders-from-deployment/_static/image2.png)
 
-- Interní složka obsahuje některé skripty SQL, které vývojář používá k vytvoření, vyřaďte a naplnit místních databází pro účely vývoje. Nic v této složce musí být nasazené pro testovací nebo produkční prostředí.
-- Složka skripty obsahuje několik souborů JavaScriptu. Velké množství tyto soubory jsou zahrnuty výhradně na podporu ladění nebo na poskytovat technologii IntelliSense v sadě Visual Studio. Některé z těchto souborů by se neměly nasazovat do pracovní nebo produkční prostředí. Ale můžete je nasadit do testovacího prostředí pro vývojáře pro usnadnění odstraňování potíží.
+- Interní složka obsahuje některé skripty SQL, které vývojář používá k vytváření, vyřazení a naplnění místních databází pro účely vývoje. Žádná z těchto složek by se neměla nasadit do pracovního nebo produkčního prostředí.
+- Složka skripty obsahuje několik souborů JavaScriptu. Mnoho těchto souborů je součástí čistě pro podporu ladění nebo poskytování IntelliSense v aplikaci Visual Studio. Některé z těchto souborů by se neměly nasazovat do pracovních nebo produkčních prostředí. Můžete je ale chtít nasadit do testovacího prostředí pro vývojáře, abyste usnadnili řešení potíží.
 
-I když může pracovat s souborů vyloučit konkrétní soubory a složky projektu, je snadnější. Obsahuje mechanismus pro vyloučení souborů a složek pomocí seznamů položek s názvem WPP **ExcludeFromPackageFolders** a **ExcludeFromPackageFiles**. Tento mechanismus můžete rozšířit přidáním vlastní položky do seznamů. K tomu, které potřebujete k dokončení těchto kroků:
+I když byste mohli manipulovat se soubory projektu pro vyloučení konkrétních souborů a složek, existuje jednodušší způsob. Služba WPP zahrnuje mechanismus pro vyloučení souborů a složek sestavením seznamů položek s názvem **ExcludeFromPackageFolders** a **ExcludeFromPackageFiles**. Tento mechanismus můžete roztáhnout přidáním vlastních položek do těchto seznamů. K tomu je potřeba provést tyto kroky vysoké úrovně:
 
-1. Vytvoření vlastního projektu soubor s názvem *[název projektu].wpp.targets* ve stejné složce jako soubor projektu.
+1. Vytvořte vlastní soubor projektu nazvaný *[název projektu]. WPP. targets* ve stejné složce jako soubor projektu.
 
     > [!NOTE]
-    > *. Wpp.targets* souboru musí být ve stejné složce jako soubor projektu webové aplikace&#x2014;například *ContactManager.Mvc.csproj*&#x2014;, nikoli ve stejné složce jako vlastní soubory projektu, které můžete použít k řízení procesu sestavení a nasazení.
-2. V *. wpp.targets* přidejte **ItemGroup** elementu.
-3. V **ItemGroup** prvku, přidejte **ExcludeFromPackageFolders** a **ExcludeFromPackageFiles** položky, které chcete vyloučit určité soubory a složky podle potřeby.
+    > Soubor *. WPP. targets* musí být ve stejné složce jako soubor&#x2014;projektu webové aplikace, například *ContactManager. Mvc. csproj*&#x2014;, nikoli ve stejné složce jako jakékoli vlastní soubory projektu, které slouží k řízení procesu sestavení a nasazení.
+2. V souboru *. WPP. targets* přidejte prvek **Item** .
+3. V elementu **Item** přidejte položky **ExcludeFromPackageFolders** a **ExcludeFromPackageFiles** , které vyloučí konkrétní soubory a složky podle potřeby.
 
-Toto je základní struktura *. wpp.targets* souboru:
+Toto je základní struktura tohoto souboru *. WPP. targets* :
 
 [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample1.xml)]
 
-Všimněte si, že každá položka obsahuje prvek položky metadat s názvem **FromTarget**. Toto je volitelná hodnota, která nemá vliv na procesu sestavení. jednoduše slouží k označení, proč byly vynechány konkrétní soubory nebo složky, pokud někdo kontroluje protokoly sestavení.
+Všimněte si, že každá položka obsahuje element metadat položky s názvem **FromTarget**. Toto je volitelná hodnota, která nemá vliv na proces sestavení; slouží pouze k označení, proč byly vynechány konkrétní soubory nebo složky, pokud někdo kontroluje protokoly sestavení.
 
 ## <a name="excluding-files-and-folders-from-a-web-package"></a>Vyloučení souborů a složek z webového balíčku
 
-Následující postup ukazuje, jak přidat *. wpp.targets* soubor do projektu webové aplikace a jak vyloučit konkrétní soubory a složky z webového balíčku při vytváření projektu pomocí souboru.
+Následující postup ukazuje, jak přidat soubor *. WPP. targets* do projektu webové aplikace a jak použít soubor k vyloučení určitých souborů a složek z webového balíčku při sestavování projektu.
 
-**Vyloučit soubory a složky z balíčku pro nasazení webu**
+**Vyloučení souborů a složek z balíčku pro nasazení webu**
 
-1. Otevřete řešení v sadě Visual Studio 2010.
-2. V **Průzkumníka řešení** okna, klikněte pravým tlačítkem na uzel projektu webové aplikace (například **ContactManager.Mvc**), přejděte na **přidat**a potom klikněte na tlačítko **Nová položka**.
-3. V **přidat novou položku** dialogové okno, vyberte **soubor XML** šablony.
-4. V **název** zadejte *[název projektu]* **.wpp.targets** (například **ContactManager.Mvc.wpp.targets**) a potom klikněte na tlačítko **přidat**.
+1. Otevřete řešení v aplikaci Visual Studio 2010.
+2. V okně **Průzkumník řešení** klikněte pravým tlačítkem myši na uzel projektu webové aplikace (například **ContactManager. Mvc**), přejděte na **Přidat**a klikněte na **Nová položka**.
+3. V dialogovém okně **Přidat novou položku** vyberte šablonu **souboru XML** .
+4. Do pole **název** zadejte *[název projektu] * * *. WPP. targets** (například **ContactManager. Mvc. WPP. targets**) a pak klikněte na **Přidat**.
 
     ![](excluding-files-and-folders-from-deployment/_static/image3.png)
 
     > [!NOTE]
-    > Pokud chcete přidat novou položku do kořenového uzlu projektu, soubor se vytvoří ve stejné složce jako soubor projektu. Můžete to ověřit tak, že otevřete složku v Průzkumníku Windows.
-5. V souboru, přidejte **projektu** elementu a **ItemGroup** element:
+    > Pokud přidáte novou položku do kořenového uzlu projektu, je soubor vytvořen ve stejné složce jako soubor projektu. To můžete ověřit tak, že otevřete složku v Průzkumníku Windows.
+5. Do souboru přidejte prvek **projektu** a prvek skupiny **položek** :
 
     [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample2.xml)]
-6. Pokud chcete vyloučit složky z webového balíčku, přidejte **ExcludeFromPackageFolders** elementu **ItemGroup** element:
+6. Chcete-li vyloučit složky z webového balíčku, přidejte element **ExcludeFromPackageFolders** do elementu **Item** :
 
-   1. V **zahrnout** atribut, zadejte středníkem oddělený seznam složek, které chcete vyloučit.
-   2. V **FromTarget** prvek metadat znamenat smysluplnou hodnotu označující, proč jsou vyloučeny složek, jako je název *. wpp.targets* souboru.
+   1. V atributu **include** zadejte středníkem oddělený seznam složek, které chcete vyloučit.
+   2. V elementu metadat **FromTarget** zadejte smysluplnou hodnotu, která určuje, proč se složky vylučují, jako název souboru *. WPP. targets* .
 
       [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample3.xml)]
-7. Pokud chcete vyloučit soubory z webového balíčku, přidejte **ExcludeFromPackageFiles** elementu **ItemGroup** element:
+7. Chcete-li vyloučit soubory z webového balíčku, přidejte element **ExcludeFromPackageFiles** do elementu **Item** :
 
-   1. V **zahrnout** atribut, zadejte středníkem oddělený seznam souborů, které chcete vyloučit.
-   2. V **FromTarget** prvek metadat znamenat smysluplnou hodnotu označující, proč jsou vyloučeny soubory, jako je název *. wpp.targets* souboru.
+   1. V atributu **include** zadejte středníkem oddělený seznam souborů, které chcete vyloučit.
+   2. V elementu metadat **FromTarget** zadejte smysluplnou hodnotu, která určuje, proč jsou soubory vyloučeny, jako název souboru *. WPP. targets* .
 
       [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample4.xml)]
-8. *[Název projektu].wpp.targets* soubor by měl nyní vypadat takto:
+8. Soubor *[název projektu]. WPP. targets* by teď měl vypadat takto:
 
     [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample5.xml)]
-9. Uložte a zavřete *[název projektu].wpp.targets* souboru.
+9. Uložte a zavřete soubor *[název projektu]. WPP. targets* .
 
-Při příštím build a balíček projektu webové aplikace, WPP automaticky zjistí, *. wpp.targets* souboru. Všechny soubory a složky, které jste zadali nesmí být součástí webového balíčku.
+Při příštím sestavení a zabalení projektu webové aplikace bude modul WPP automaticky detekovat soubor *. WPP. targets* . Všechny zadané soubory a složky nebudou součástí webového balíčku.
 
 ## <a name="conclusion"></a>Závěr
 
-Toto téma popisuje, jak vyloučit určité soubory a složky, když vytvoříte tak, že vytvoříte vlastní webový balíček, *. wpp.targets* souboru ve stejné složce jako soubor projektu webové aplikace.
+Toto téma popisuje, jak vyloučit konkrétní soubory a složky při vytváření webového balíčku vytvořením vlastního souboru *. WPP. targets* ve stejné složce jako soubor projektu webové aplikace.
 
 ## <a name="further-reading"></a>Další čtení
 
-Další informace o používání vlastních souborů projektu Microsoft Build Engine (MSBuild) k řízení procesu nasazení najdete v tématu [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md) a [Principy procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md). Další informace o vytváření balíčků a proces nasazení, najdete v části [sestavení a balení projektů webových aplikací](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md), [konfigurace parametrů nasazení webového balíčku](../web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment.md), a [ Nasazení webových balíčků](../web-deployment-in-the-enterprise/deploying-web-packages.md).
+Další informace o použití vlastních souborů projektu Microsoft Build Engine (MSBuild) k řízení procesu nasazení naleznete v tématu [porozumění souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md) a [porozumění procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md). Další informace o procesu balení a nasazení najdete v tématu [sestavování a balení projektů webových aplikací](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md), [Konfigurace parametrů pro nasazení webového balíčku](../web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment.md)a [nasazení webových balíčků](../web-deployment-in-the-enterprise/deploying-web-packages.md).
 
 > [!div class="step-by-step"]
 > [Předchozí](deploying-membership-databases-to-enterprise-environments.md)
-> [další](taking-web-applications-offline-with-web-deploy.md)
+> [Další](taking-web-applications-offline-with-web-deploy.md)

@@ -9,11 +9,11 @@ ms.assetid: 5c76891d-e515-4885-b576-76bd2c494efe
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
 msc.type: authoredcontent
 ms.openlocfilehash: ac1dcaf1ba911fdcaeb3845c6836ec771733d93e
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74636817"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78643554"
 ---
 # <a name="ui-and-navigation"></a>Uživatelské rozhraní a navigace
 
@@ -25,7 +25,7 @@ od [Erik Reitan](https://github.com/Erikre)
 
 V tomto kurzu upravíte uživatelské rozhraní výchozí webové aplikace tak, aby podporovalo funkce aplikace Wingtip Toys Store typu přední. Přidáte také jednoduchou navigaci a datovou vazbu. Tento kurz sestaví na předchozím kurzu Vytvoření vrstvy přístupu k datům a je součástí série kurzů Wingtip Toys.
 
-## <a name="what-youll-learn"></a>Co se naučíte:
+## <a name="what-youll-learn"></a>Naučíte se:
 
 - Postup změny uživatelského rozhraní pro podporu funkcí aplikace Wingtip Toys Store front.
 - Jak nakonfigurovat element HTML5 pro zahrnutí navigace na stránce
@@ -208,7 +208,7 @@ V tomto kódu se zobrazí všechny kategorie z databáze. Ovládací prvek **Lis
 
 > [!NOTE] 
 > 
-> **Popisek**
+> **Tip**
 > 
 > Když přidáte kód zadáním během vývoje, můžete si být jisti, že je nalezen platný člen objektu, protože datové ovládací prvky silného typu zobrazují dostupné členy založené na technologii IntelliSense. Technologie IntelliSense nabízí při psaní kódu vhodné možnosti kódu, jako jsou vlastnosti, metody a objekty.
 
@@ -273,11 +273,11 @@ Nyní můžete zkontrolovat data obsažená v souboru databáze *wingtiptoys. md
  Odpojením databáze od sady Visual Studio bude schéma databáze možné upravit později v této sérii kurzů.
 11. Vraťte se na **Průzkumník řešení**tak, že v dolní části okna **Průzkumník serveru** vyberete kartu **Průzkumník řešení** .
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu série jste přidali některé základní uživatelské rozhraní, grafiky, stránky a navigaci. Kromě toho jste spustili webovou aplikaci, která vytvořila databázi z datových tříd, které jste přidali v předchozím kurzu. Obsah tabulky *Products* si také můžete zobrazit přímo v databázi. V dalším kurzu zobrazíte datové položky a podrobnosti z databáze.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 [Úvod do programování webových stránek ASP.NET](https://msdn.microsoft.com/library/ms178125.aspx)   
   [Přehled ovládacích prvků webového serveru ASP.NET](https://msdn.microsoft.com/library/zsyt68f1.aspx)  

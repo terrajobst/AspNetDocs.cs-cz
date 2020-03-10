@@ -9,11 +9,11 @@ ms.assetid: f7c00fbd-652c-433d-8ed3-0e5168a4d4df
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/uploading-files-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 6e0d57ef2f1e8132f19777a7d14e94611c68adcd
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74615303"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78548564"
 ---
 # <a name="uploading-files-vb"></a>Nahrávání souborů (VB)
 
@@ -170,7 +170,7 @@ Po přidání dvou `DataColumn` s do `CategoriesDataTable` a metody `GetCategory
 
 ## <a name="updating-the-business-logic-layer-bll"></a>Aktualizace vrstvy obchodní logiky (knihoven BLL)
 
-Po aktualizaci DAL je vše potřeba rozšířit vrstvu obchodní logiky (knihoven BLL) tak, aby zahrnovala metodu pro novou metodu `CategoriesTableAdapter`. Do `CategoriesBLL` třídy přidejte následující metodu:
+Po aktualizaci DAL je vše potřeba rozšířit vrstvu obchodní logiky (knihoven BLL) tak, aby zahrnovala metodu pro novou metodu `CategoriesTableAdapter`. Do třídy `CategoriesBLL` přidejte následující metodu:
 
 [!code-vb[Main](uploading-files-vb/samples/sample4.vb)]
 
@@ -229,7 +229,7 @@ Ovládací prvek nahrání souboru je nepraktický pro nahrávání velkých sou
 
 Pokud vaše aplikace potřebuje zpracovat velké soubory, budete muset pečlivě prozkoumat výzvy a najít vhodná řešení pro vaše konkrétní potřeby.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Sestavování aplikace, která potřebuje zachytit binární data, zavádí řadu problémů. V tomto kurzu jsme prozkoumali první dvě: rozhodnutí, kam uložit binární data a umožníte uživateli nahrávat binární obsah prostřednictvím webové stránky. V dalších třech kurzech se dozvíte, jak přidružit nahraná data k záznamu v databázi a jak zobrazit binární data společně s textovými datovými poli.
 

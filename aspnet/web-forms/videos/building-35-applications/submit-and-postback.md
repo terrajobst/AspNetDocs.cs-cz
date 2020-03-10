@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/building-35-applications/submit-and-postback
-title: Odeslání a Postback | Dokumentace Microsoftu
+title: Odeslání a odeslání zpět | Microsoft Docs
 author: JoeStagner
-description: Toto video vás seznámí co přejde na &quot;pod pokličkou&quot; při interakci vaší aplikace ASP.NET prohlížečem a serverem.
+description: V tomto videu se seznámíte s tím, co se týká &quot;v&quot;, když ASP.NET a server vaší aplikace v prohlížeči pracují.
 ms.author: riande
 ms.date: 04/20/2009
 ms.assetid: 8ccbfcee-a2e4-496d-aded-5a7119c54244
 msc.legacyurl: /web-forms/videos/building-35-applications/submit-and-postback
 msc.type: video
 ms.openlocfilehash: f2d27c6d624ceafbdc3f880ffc2a91cae0fddddf
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59392895"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78563614"
 ---
 # <a name="submit-and-postback"></a>Odeslání a postback
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-Toto video vysvětluje co přejde &quot;pod pokličkou&quot; při interakci vaší aplikace ASP.NET prohlížečem a serverem.
+V tomto videu se dozvíte, co &quot;v&quot;, když aplikace ASP.NET a prohlížeč a server spolupracují.
 
-[&#9654;Podívejte se na video (19 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/submit-and-postback)
+[&#9654;Sledovat video (19 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/submit-and-postback)

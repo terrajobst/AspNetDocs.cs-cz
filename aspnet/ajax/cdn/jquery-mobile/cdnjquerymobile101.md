@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-mobile/cdnjquerymobile101
-title: jQuery Mobile 1.0.1 ve službě Microsoft Ajax CDN | Dokumentace Microsoftu
+title: jQuery Mobile 1.0.1 ve službě Microsoft Ajax CDN | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -9,15 +9,15 @@ ms.assetid: bdffb1f1-19e7-4b95-b73a-de94cd19ae8b
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile101
 msc.type: content
 ms.openlocfilehash: 98ecf82afa3ff24b156ce48016b3ab92e132d5f2
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59402077"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78563117"
 ---
 # <a name="jquery-mobile-101-on-the-microsoft-ajax-cdn"></a>jQuery Mobile 1.0.1 ve službě Microsoft Ajax CDN
 
-Knihovna jQuery Mobile 1.0.1 zahrnuje následující soubory:
+Knihovna jQuery Mobile 1.0.1 obsahuje následující soubory:
 
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0.1/jquery.mobile-1.0.1.js
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0.1/jquery.mobile-1.0.1.min.js
