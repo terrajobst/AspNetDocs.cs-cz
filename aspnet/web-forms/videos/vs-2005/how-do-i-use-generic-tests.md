@@ -1,29 +1,29 @@
 ---
 uid: web-forms/videos/vs-2005/how-do-i-use-generic-tests
-title: '[Postup:] Použití obecných testů? | Dokumenty Microsoft'
+title: '[Postupy:] Použít obecné testy? | Dokumenty Microsoft'
 author: rick-anderson
-description: Obecný test je existující program, který je zabalená a k dispozici jako testu ve Visual Studio Team System. V tomto videu jsme vidět ukázku toho, jak...
+description: Obecný test je existující program, který je zabalen a zpřístupněn jako test v aplikaci Visual Studio Team System. V tomto videu se zobrazí ukázka toho, jak...
 ms.author: riande
 ms.date: 07/16/2007
 ms.assetid: e129b2c2-8587-4ff1-b455-7f14cb28bcf9
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-use-generic-tests
 msc.type: video
 ms.openlocfilehash: 32d970a5eba2eb7a5344c43e65e40c0ff6670632
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59411680"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78636624"
 ---
-# <a name="how-do-i-use-generic-tests"></a><span data-ttu-id="65c02-105">[Postup:] Použití obecných testů?</span><span class="sxs-lookup"><span data-stu-id="65c02-105">[How Do I:] Use Generic Tests?</span></span>
+# <a name="how-do-i-use-generic-tests"></a><span data-ttu-id="0aba6-105">[Postupy:] Použít obecné testy?</span><span class="sxs-lookup"><span data-stu-id="0aba6-105">[How Do I:] Use Generic Tests?</span></span>
 
-<span data-ttu-id="65c02-106">podle [Chris Menegay](https://twitter.com/CMenegay)</span><span class="sxs-lookup"><span data-stu-id="65c02-106">by [Chris Menegay](https://twitter.com/CMenegay)</span></span>
+<span data-ttu-id="0aba6-106">autor – [Chris Menegay](https://twitter.com/CMenegay)</span><span class="sxs-lookup"><span data-stu-id="0aba6-106">by [Chris Menegay](https://twitter.com/CMenegay)</span></span>
 
-<span data-ttu-id="65c02-107">Obecný test je existující program, který je zabalená a k dispozici jako testu ve Visual Studio Team System.</span><span class="sxs-lookup"><span data-stu-id="65c02-107">A generic test is an existing program that is wrapped and made available as a test in Visual Studio Team System.</span></span> <span data-ttu-id="65c02-108">V tomto videu vidíme na ukázku toho, jak program zabalené prostředí přijímá vstupní hodnotu v našem testovacím prostředí a jak programu výstupní hodnota se používá k určení, zda test úspěšný nebo neúspěšný.</span><span class="sxs-lookup"><span data-stu-id="65c02-108">In this video we see a demonstration of how a wrapped shell program accepts an input value from our test environment and how the program's output value is used to determine whether the test passed or failed.</span></span>
+<span data-ttu-id="0aba6-107">Obecný test je existující program, který je zabalen a zpřístupněn jako test v aplikaci Visual Studio Team System.</span><span class="sxs-lookup"><span data-stu-id="0aba6-107">A generic test is an existing program that is wrapped and made available as a test in Visual Studio Team System.</span></span> <span data-ttu-id="0aba6-108">V tomto videu se zobrazí ukázka způsobu, jakým program zabaleného prostředí přijímá vstupní hodnotu z našeho testovacího prostředí a jak se používá výstupní hodnota programu k určení, zda byl test úspěšný nebo neúspěšný.</span><span class="sxs-lookup"><span data-stu-id="0aba6-108">In this video we see a demonstration of how a wrapped shell program accepts an input value from our test environment and how the program's output value is used to determine whether the test passed or failed.</span></span>
 
-[<span data-ttu-id="65c02-109">&#9654;Podívejte se na video (5 minut).</span><span class="sxs-lookup"><span data-stu-id="65c02-109">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-generic-tests)
+[<span data-ttu-id="0aba6-109">&#9654;Přehrát video (5 minut)</span><span class="sxs-lookup"><span data-stu-id="0aba6-109">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-generic-tests)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="65c02-110">[Předchozí](how-do-i-enforce-coding-standards-with-code-analysis.md)
-> [další](how-do-i-publish-and-analyze-test-results.md)</span><span class="sxs-lookup"><span data-stu-id="65c02-110">[Previous](how-do-i-enforce-coding-standards-with-code-analysis.md)
+> <span data-ttu-id="0aba6-110">[Předchozí](how-do-i-enforce-coding-standards-with-code-analysis.md)
+> [Další](how-do-i-publish-and-analyze-test-results.md)</span><span class="sxs-lookup"><span data-stu-id="0aba6-110">[Previous](how-do-i-enforce-coding-standards-with-code-analysis.md)
 [Next](how-do-i-publish-and-analyze-test-results.md)</span></span>

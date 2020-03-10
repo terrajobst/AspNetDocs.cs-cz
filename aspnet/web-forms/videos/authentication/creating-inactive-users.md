@@ -1,29 +1,29 @@
 ---
 uid: web-forms/videos/authentication/creating-inactive-users
-title: Vytváření neaktivních uživatelů | Dokumentace Microsoftu
+title: Vytváření neaktivních uživatelů | Microsoft Docs
 author: JoeStagner
-description: V tomto videu Joe Stagner provede procesem vytváření neaktivních uživatelů v systém členství technologie ASP.NET a pak pomocí rozhraní správce k aktivaci uživatele jeden...
+description: V tomto videu Jana Stagner vás provede vytvořením neaktivních uživatelů v systému členství v ASP.NET a pak pomocí rozhraní správce aktivujete uživatele...
 ms.author: riande
 ms.date: 09/16/2010
 ms.assetid: dc572644-1f4f-40a2-8173-e17caa3c8582
 msc.legacyurl: /web-forms/videos/authentication/creating-inactive-users
 msc.type: video
 ms.openlocfilehash: d0d9bb0f6471acd996530eab76a97cda2667dabd
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59413383"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78566785"
 ---
-# <a name="creating-inactive-users"></a><span data-ttu-id="785f6-103">Vytváření neaktivních uživatelů</span><span class="sxs-lookup"><span data-stu-id="785f6-103">Creating Inactive Users</span></span>
+# <a name="creating-inactive-users"></a><span data-ttu-id="e440c-103">Vytváření neaktivních uživatelů</span><span class="sxs-lookup"><span data-stu-id="e440c-103">Creating Inactive Users</span></span>
 
-<span data-ttu-id="785f6-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="785f6-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="e440c-104">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="e440c-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="785f6-105">V tomto videu Joe Stagner provede procesem vytváření neaktivních uživatelů v systém členství technologie ASP.NET a pak pomocí rozhraní pro správu k aktivaci uživatele jeden po druhém.</span><span class="sxs-lookup"><span data-stu-id="785f6-105">In this video Joe Stagner walks through creating inactive users in the ASP.NET membership system, and then using an administrative interface to activate the users one at a time.</span></span>
+<span data-ttu-id="e440c-105">V tomto videu Jana Stagner vás provede vytvořením neaktivních uživatelů v systému členství v ASP.NET a pak pomocí rozhraní pro správu aktivovat uživatele v jednom okamžiku.</span><span class="sxs-lookup"><span data-stu-id="e440c-105">In this video Joe Stagner walks through creating inactive users in the ASP.NET membership system, and then using an administrative interface to activate the users one at a time.</span></span>
 
-[<span data-ttu-id="785f6-106">&#9654;Podívejte se na video (23 minut)</span><span class="sxs-lookup"><span data-stu-id="785f6-106">&#9654; Watch video (23 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-inactive-users)
+[<span data-ttu-id="e440c-106">&#9654;Přehrát video (23 minut)</span><span class="sxs-lookup"><span data-stu-id="e440c-106">&#9654; Watch video (23 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-inactive-users)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="785f6-107">[Předchozí](simple-web-service-authentication.md)
-> [další](sql-injection-defense.md)</span><span class="sxs-lookup"><span data-stu-id="785f6-107">[Previous](simple-web-service-authentication.md)
+> <span data-ttu-id="e440c-107">[Předchozí](simple-web-service-authentication.md)
+> [Další](sql-injection-defense.md)</span><span class="sxs-lookup"><span data-stu-id="e440c-107">[Previous](simple-web-service-authentication.md)
 [Next](sql-injection-defense.md)</span></span>

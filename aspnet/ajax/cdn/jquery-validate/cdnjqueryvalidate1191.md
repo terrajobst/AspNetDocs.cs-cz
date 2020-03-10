@@ -1,24 +1,24 @@
 ---
 uid: ajax/cdn/jquery-validate/cdnjqueryvalidate1191
-title: jQuery ověření 1.19.0 | Dokumentace Microsoftu
+title: 1\.19.0 ověřování jQuery | Microsoft Docs
 author: guardrex
 description: ''
 ms.author: csfanos
 ms.date: 06/28/2019
 msc.type: content
 ms.openlocfilehash: 8701e29ae18e2a4ad2ac0c44e5e37ebacfdaf317
-ms.sourcegitcommit: 6a564984ad448db34cdfab5458af755d6b65e69c
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538794"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78544525"
 ---
-# <a name="jquery-validation-1191"></a><span data-ttu-id="a2d22-102">Ověření 1.19.1 jQuery</span><span class="sxs-lookup"><span data-stu-id="a2d22-102">jQuery Validation 1.19.1</span></span>
+# <a name="jquery-validation-1191"></a><span data-ttu-id="f22c5-102">1\.19.1 ověření jQuery</span><span class="sxs-lookup"><span data-stu-id="f22c5-102">jQuery Validation 1.19.1</span></span>
 
-<span data-ttu-id="a2d22-103">Následující soubory jsou hostované v síti CDN:</span><span class="sxs-lookup"><span data-stu-id="a2d22-103">The following files are hosted on the CDN:</span></span>
+<span data-ttu-id="f22c5-103">Následující soubory jsou hostovány v CDN:</span><span class="sxs-lookup"><span data-stu-id="f22c5-103">The following files are hosted on the CDN:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/additional-methods.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/additional-methods.min.js
-- <span data-ttu-id="a2d22-104">Lokalizace souborů na https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/localization/messages\_##.js kde ## je lokalizace kódu.</span><span class="sxs-lookup"><span data-stu-id="a2d22-104">Localization Files at https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/localization/messages\_##.js where ## is the loc code.</span></span>
+- <span data-ttu-id="f22c5-104">Soubory lokalizace na https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/localization/messages\_##.js, kde # # je kód Loc.</span><span class="sxs-lookup"><span data-stu-id="f22c5-104">Localization Files at https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/localization/messages\_##.js where ## is the loc code.</span></span>

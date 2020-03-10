@@ -1,29 +1,29 @@
 ---
 uid: web-forms/videos/authentication/use-custom-principal-objects
-title: Použití vlastních hlavních objektů | Dokumentace Microsoftu
+title: Použití vlastních objektů zabezpečení | Microsoft Docs
 author: JoeStagner
-description: Joe Stagner ukazuje, jak implementovat vlastní identity v instančních objektů jen tak půjde ukládat data pro ověřování uživatele. Další informace o této ukázce...
+description: Jana Stagner ukazuje, jak implementovat vlastní identitu v objektech zabezpečení, aby bylo možné ukládat data ověřování uživatele. Další informace o této ukázce,...
 ms.author: riande
 ms.date: 07/16/2008
 ms.assetid: 368733eb-0822-4b97-8e5a-127be6c88a61
 msc.legacyurl: /web-forms/videos/authentication/use-custom-principal-objects
 msc.type: video
 ms.openlocfilehash: 3995ff1dd5a670b39c90c86cf68c85b19b6db0ce
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59397173"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78565133"
 ---
-# <a name="use-custom-principal-objects"></a><span data-ttu-id="a4886-104">Použití vlastních objektů zabezpečení</span><span class="sxs-lookup"><span data-stu-id="a4886-104">Use Custom Principal Objects</span></span>
+# <a name="use-custom-principal-objects"></a><span data-ttu-id="c2752-104">Použití vlastních objektů zabezpečení</span><span class="sxs-lookup"><span data-stu-id="c2752-104">Use Custom Principal Objects</span></span>
 
-<span data-ttu-id="a4886-105">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="a4886-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="c2752-105">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="c2752-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="a4886-106">Joe Stagner ukazuje, jak implementovat vlastní identity v instančních objektů jen tak půjde ukládat data pro ověřování uživatele.</span><span class="sxs-lookup"><span data-stu-id="a4886-106">Joe Stagner demonstrates how to implement custom identity in principal objects in order to store user authentication data.</span></span> <span data-ttu-id="a4886-107">Další informace o této ukázce se nachází kurz [tady.](../../overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb.md)</span><span class="sxs-lookup"><span data-stu-id="a4886-107">For more information on this demo, a tutorial is located [here.](../../overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb.md)</span></span>
+<span data-ttu-id="c2752-106">Jana Stagner ukazuje, jak implementovat vlastní identitu v objektech zabezpečení, aby bylo možné ukládat data ověřování uživatele.</span><span class="sxs-lookup"><span data-stu-id="c2752-106">Joe Stagner demonstrates how to implement custom identity in principal objects in order to store user authentication data.</span></span> <span data-ttu-id="c2752-107">Další informace o této ukázce najdete v tomto kurzu [.](../../overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb.md)</span><span class="sxs-lookup"><span data-stu-id="c2752-107">For more information on this demo, a tutorial is located [here.](../../overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb.md)</span></span>
 
-[<span data-ttu-id="a4886-108">&#9654;Podívejte se na video (22 minut)</span><span class="sxs-lookup"><span data-stu-id="a4886-108">&#9654; Watch video (22 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/use-custom-principal-objects)
+[<span data-ttu-id="c2752-108">&#9654;Přehrát video (22 minut)</span><span class="sxs-lookup"><span data-stu-id="c2752-108">&#9654; Watch video (22 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/use-custom-principal-objects)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="a4886-109">[Předchozí](add-custom-data-to-the-authentication-method.md)
-> [další](understanding-aspnet-memberships.md)</span><span class="sxs-lookup"><span data-stu-id="a4886-109">[Previous](add-custom-data-to-the-authentication-method.md)
+> <span data-ttu-id="c2752-109">[Předchozí](add-custom-data-to-the-authentication-method.md)
+> [Další](understanding-aspnet-memberships.md)</span><span class="sxs-lookup"><span data-stu-id="c2752-109">[Previous](add-custom-data-to-the-authentication-method.md)
 [Next](understanding-aspnet-memberships.md)</span></span>
