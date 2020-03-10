@@ -9,11 +9,11 @@ ms.assetid: dc1234a3-114f-4c9a-8d25-50ca03cc8e8e
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/declarative-parameters-vb
 msc.type: authoredcontent
 ms.openlocfilehash: cdc42752fc78d18366af037a81fe4ebe5a1646ef
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74612899"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78597137"
 ---
 # <a name="declarative-parameters-vb"></a>Deklarované parametry (VB)
 
@@ -122,7 +122,7 @@ Pomocí této změny se na stránce `DeclarativeParams.aspx` zobrazí při prvn�
 
 **Obrázek 10**: ve výchozím nastavení se teď zobrazují všichni dodavatelé ([kliknutím zobrazíte obrázek v plné velikosti).](declarative-parameters-vb/_static/image30.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Aby bylo možné používat metody se vstupními parametry, musíme zadat hodnoty parametrů v kolekci `SelectParameters` ObjectDataSource. Různé typy parametrů umožňují získat hodnotu parametru z různých zdrojů. Výchozí typ parametru používá pevně zakódované hodnoty, ale stejně jako snadno (a bez řádku kódu) lze získat hodnoty parametrů z řetězce dotazu, proměnných relace, souborů cookie a dokonce uživatelem zadaných hodnot z webových ovládacích prvků na stránce.
 

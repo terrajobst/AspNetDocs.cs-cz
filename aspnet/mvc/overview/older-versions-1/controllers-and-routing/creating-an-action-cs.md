@@ -1,64 +1,64 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-cs
-title: Vytvoření akce (C#) | Dokumentace Microsoftu
+title: Vytvoření akce (C#) | Microsoft Docs
 author: microsoft
-description: Zjistěte, jak přidat novou akci kontroler ASP.NET MVC. Další informace o požadavcích pro metodu na akci.
+description: Přečtěte si, jak přidat novou akci k řadiči ASP.NET MVC. Seznamte se s požadavky na metodu, která může být akcí.
 ms.author: riande
 ms.date: 03/02/2009
 ms.assetid: cb33b28c-3025-4bd1-a1fa-eaa3af7bb56f
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-cs
 msc.type: authoredcontent
 ms.openlocfilehash: ebba935383819935ad85c95245666f4eaf6a0dca
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65123456"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78582052"
 ---
 # <a name="creating-an-action-c"></a>Vytvoření akce (C#)
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-> Zjistěte, jak přidat novou akci kontroler ASP.NET MVC. Další informace o požadavcích pro metodu na akci.
+> Přečtěte si, jak přidat novou akci k řadiči ASP.NET MVC. Seznamte se s požadavky na metodu, která může být akcí.
 
-Cílem tohoto kurzu je vysvětlují, jak můžete vytvořit nové akce kontroleru. Informace o požadavky na metodu akce. Také se dozvíte, jak zabránit metodu vystaven jako akci.
+Cílem tohoto kurzu je vysvětlit, jak můžete vytvořit novou akci kontroleru. Získáte informace o požadavcích metody akce. Naučíte se také, jak zabránit tomu, aby byla metoda vystavena jako akce.
 
-## <a name="adding-an-action-to-a-controller"></a>Přidání akce Kontroleru
+## <a name="adding-an-action-to-a-controller"></a>Přidání akce do kontroleru
 
-Přidejte novou akci k řadiči tak, že přidáte nové metody pro kontroler. Například řadič v informacích 1 obsahuje akce s názvem Index() a akce s názvem SayHello(). Obě metody jsou vystaveny jako akce.
+Přidáte novou akci do kontroleru přidáním nové metody do kontroleru. Například kontroler v výpisu 1 obsahuje akci s názvem index () a akci s názvem SayHello (). Obě metody jsou zpřístupněny jako akce.
 
-**Výpis 1 - Controllers\HomeController.cs**
+**Výpis 1 – souboru controllers\homecontroller.cs**
 
 [!code-csharp[Main](creating-an-action-cs/samples/sample1.cs)]
 
-Aby bylo možné vystavit rozhraní universe jako akci, metoda musí splňovat určité požadavky:
+Aby bylo možné zveřejnit celému základnímu objektu jako akci, metoda musí splňovat určité požadavky:
 
-- Metoda musí být veřejné.
-- Metoda nemůže být statickou metodu.
+- Metoda musí být veřejná.
+- Metoda nemůže být statickou metodou.
 - Metoda nemůže být metodou rozšíření.
-- Metoda nemůže být konstruktor, metoda getter nebo setter.
-- Metoda nemůže mít otevřených obecných typů.
-- Metoda není metodu základní třídy kontroleru.
-- Metoda nemůže obsahovat **ref** nebo **si** parametry.
+- Metoda nemůže být konstruktor, getter nebo setter.
+- Metoda nemůže mít otevřené obecné typy.
+- Metoda není metodou základní třídy kontroleru.
+- Metoda nemůže obsahovat parametry **ref** nebo **out** .
 
-Všimněte si, že neexistují žádná omezení u návratového typu akce kontroleru. Akce kontroleru vrátit řetězec, DateTime, instance třídy Random nebo void. Architektura ASP.NET MVC se převést návratový typ, který není výsledek akce do řetězce a vykreslit řetězec, který se v prohlížeči.
+Všimněte si, že pro návratový typ akce kontroleru neexistují žádná omezení. Akce kontroleru může vracet řetězec, datum a čas, instanci náhodné třídy nebo void. Rozhraní ASP.NET MVC převede libovolný návratový typ, který není výsledkem akce, do řetězce a vykreslí řetězec do prohlížeče.
 
-Když přidáte jakoukoli metodu, která nebudou porušovat tyto požadavky na řadič, metoda je vystavena jako akce kontroleru. Buďte opatrní tady. Akce kontroleru můžete vyvolat každý připojený k Internetu. Ne, například vytvořit DeleteMyWebsite() akce kontroleru.
+Když přidáte libovolnou metodu, která porušuje tyto požadavky na kontroler, je metoda vystavena jako akce kontroleru. Buďte opatrní. Akci kontroleru může vyvolat kdokoli připojený k Internetu. Nevytvářejte například akci kontroleru DeleteMyWebsite ().
 
-## <a name="preventing-a-public-method-from-being-invoked"></a>Brání veřejnou metodu volanou
+## <a name="preventing-a-public-method-from-being-invoked"></a>Zabránění vyvolání veřejné metody
 
-Pokud je potřeba vytvořit veřejnou metodu do třídy kontroleru a nechcete vystavit metodu akce kontroleru můžete zabránit metody vyvolání pomocí atributu [NonAction]. Například kontroler v informacích 2 obsahuje veřejnou metodu s názvem CompanySecrets(), který je upraven pomocí atributu [NonAction].
+Pokud potřebujete vytvořit veřejnou metodu ve třídě kontroleru a nechcete ji zveřejnit jako akci kontroleru, můžete zabránit vyvolání metody pomocí atributu [neaction]. Například kontroler v seznamu 2 obsahuje veřejnou metodu s názvem CompanySecrets (), která je upravena atributem [neaction].
 
-**Výpis 2 - Controllers\WorkController.cs**
+**Výpis 2 – Controllers\WorkController.cs**
 
 [!code-csharp[Main](creating-an-action-cs/samples/sample2.cs)]
 
-Pokud při pokusu o vyvolání akce kontroleru CompanySecrets() zadáním /Work/CompanySecrets do adresního řádku prohlížeče zobrazí se zpráva chyby na obrázku 1.
+Pokud se pokusíte vyvolat akci kontroleru CompanySecrets () tak, že do panelu Adresa v prohlížeči zadáte/Work/CompanySecrets, zobrazí se chybová zpráva na obrázku 1.
 
-[![Volání metody NonAction](creating-an-action-cs/_static/image1.jpg)](creating-an-action-cs/_static/image1.png)
+[![vyvolání metody nečinnosti](creating-an-action-cs/_static/image1.jpg)](creating-an-action-cs/_static/image1.png)
 
-**Obrázek 01**: Volání metody NonAction ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-an-action-cs/_static/image2.png))
+**Obrázek 01**: vyvolání metody nečinnosti ([kliknutím zobrazíte obrázek v plné velikosti](creating-an-action-cs/_static/image2.png))
 
 > [!div class="step-by-step"]
 > [Předchozí](creating-a-controller-cs.md)
-> [další](asp-net-mvc-routing-overview-vb.md)
+> [Další](asp-net-mvc-routing-overview-vb.md)

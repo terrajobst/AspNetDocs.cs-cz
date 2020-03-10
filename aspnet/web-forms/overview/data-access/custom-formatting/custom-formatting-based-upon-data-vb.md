@@ -9,11 +9,11 @@ ms.assetid: df5a1525-386f-4632-972c-57b199870bc3
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 268dc763ef6954903f721a3015daaf10bf9bccb1
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74613094"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78596710"
 ---
 # <a name="custom-formatting-based-upon-data-vb"></a>Vlastní formátování založené na datech (VB)
 
@@ -266,7 +266,7 @@ Místo toho, abyste nastavili vlastnost `BackColor` `GridViewRow`přímo, pojďm
 
 **Obrázek 11**: nejvíce dostupné produkty jsou zvýrazněny žlutě ([kliknutím zobrazíte obrázek v plné velikosti).](custom-formatting-based-upon-data-vb/_static/image27.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme viděli, jak naformátovat prvky GridView, DetailsView a FormView na základě dat svázaných s ovládacím prvkem. Pro dosažení této služby jsme vytvořili obslužnou rutinu události pro události `DataBound` nebo `RowDataBound`, kde jsou podkladová data zkontrolována spolu se změnou formátování v případě potřeby. Pro přístup k datům vázaným na DetailsView nebo FormView používáme vlastnost `DataItem` v obslužné rutině události `DataBound`; u prvku GridView obsahuje každá `GridViewRow`ová vlastnost `DataItem` instance data vázaná na daný řádek, který je k dispozici v obslužné rutině události `RowDataBound`.
 

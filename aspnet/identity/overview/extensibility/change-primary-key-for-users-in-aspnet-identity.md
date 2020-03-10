@@ -10,15 +10,15 @@ ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/extensibility/change-primary-key-for-users-in-aspnet-identity
 msc.type: authoredcontent
 ms.openlocfilehash: 0afea8eacfc646f1489b87629fdb2d437815d88c
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519138"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78584460"
 ---
 # <a name="change-primary-key-for-users-in-aspnet-identity"></a>Změna primárního klíče uživatelů v ASP.NET Identity
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
 > V Visual Studio 2013 výchozí webová aplikace používá pro klíč pro uživatelské účty řetězcovou hodnotu. ASP.NET Identity umožňuje změnit typ klíče tak, aby splňoval požadavky na data. Například můžete změnit typ klíče z řetězce na celé číslo.
 > 
@@ -43,7 +43,7 @@ Toto téma obsahuje následující oddíly:
 - [U webových formulářů s aktualizací Update 2 změňte stránky účtu, aby předávaly typ klíče.](#webformsupdate2)
 - [U webových formulářů s aktualizací Update 3 změňte stránky účtu, aby předávaly typ klíče.](#webformsupdate3)
 - [Spustit aplikaci](#run)
-- [Další materiály](#other)
+- [Další zdroje informací](#other)
 
 <a id="userclass"></a>
 ## <a name="change-the-type-of-the-key-in-the-identity-user-class"></a>Změna typu klíče ve třídě uživatele identity
@@ -270,7 +270,7 @@ Dokončili jste všechny požadované změny v šabloně výchozí webové aplik
 Pokud jste již dříve vytvořili ASP.NET Identity tabulky s jiným primárním klíčem, je nutné provést další změny. Pokud je to možné, stačí odstranit stávající databázi. Databáze bude znovu vytvořena se správným návrhem při spuštění webové aplikace a přidání nového uživatele. Pokud není možné odstranit, spusťte migraci Code First pro změnu tabulek. Nový celočíselný primární klíč ale nebude nastaven jako vlastnost IDENTITY SQL v databázi. Sloupec ID je nutné ručně nastavit jako IDENTITU.
 
 <a id="other"></a>
-## <a name="other-resources"></a>Další zdroje
+## <a name="other-resources"></a>Další prostředky
 
 - [Přehled poskytovatelů vlastního úložiště pro ASP.NET Identity](overview-of-custom-storage-providers-for-aspnet-identity.md)
 - [Migrace stávajícího webu z členství SQL na ASP.NET Identity](../migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)

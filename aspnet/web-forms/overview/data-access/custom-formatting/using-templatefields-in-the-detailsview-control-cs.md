@@ -9,11 +9,11 @@ ms.assetid: 83efb21f-b231-446e-9356-f4c6cbcc6713
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-detailsview-control-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 55c667800a9fb19d200bcf4b68e2c59ca4ef5d0e
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74621990"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78595660"
 ---
 # <a name="using-templatefields-in-the-detailsview-control-c"></a>Použití vlastností TemplateField v ovládacím prvku DetailsView (C#)
 
@@ -153,7 +153,7 @@ Tím dojde k vyvolání metody `DisplayDiscontinuedAsYESorNO` při vykreslován�
 
 **Obrázek 10**: Ano nebo žádné hodnoty se nyní zobrazují v neukončeném řádku ([kliknutím zobrazíte obrázek v plné velikosti).](using-templatefields-in-the-detailsview-control-cs/_static/image30.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Pole TemplateField v ovládacím prvku DetailsView umožňuje vyšší míru flexibility při zobrazování dat, než je k dispozici v jiných ovládacích prvcích pole a jsou ideální pro situace, kde:
 

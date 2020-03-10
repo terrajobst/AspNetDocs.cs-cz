@@ -9,11 +9,11 @@ ms.assetid: 57743ca7-5695-4e07-aed1-44b297f245a9
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs
 msc.type: authoredcontent
 ms.openlocfilehash: cde12a4d24555216adc49dd02818901278932eaa
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74631631"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78593539"
 ---
 # <a name="performing-batch-updates-c"></a>Provádění dávkových aktualizací (C#)
 
@@ -131,7 +131,7 @@ Alternativně můžeme sledovat, zda existují nějaké rozdíly mezi předaným
 > [!NOTE]
 > Pokaždé, když je vyvolána metoda `UpdateSupplierAddress`, se do databáze přivede volání, aby se načetly informace o aktualizovaném záznamu. Pokud jsou v datech nějaké změny, provedou se další volání databáze, aby se aktualizoval řádek tabulky. Tento pracovní postup může být optimalizován vytvořením přetížení metody `UpdateSupplierAddress`, které přijímá instanci `EmployeesDataTable`, která obsahuje *všechny* změny ze stránky `BatchUpdate.aspx`. Potom může provést jedno volání databáze a získat všechny záznamy z `Suppliers` tabulky. Tyto dvě sady výsledků by se pak mohly zobrazit a jenom záznamy, ve kterých došlo ke změnám, se daly aktualizovat.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme viděli, jak vytvořit plně upravitelný prvek DataList, který uživateli umožňuje rychle upravit informace o adrese pro více dodavatelů. Začali jsme definováním rozhraní pro úpravy webovým ovládacím prvkem TextBox pro hodnoty adresa dodavatele, města a země v `ItemTemplate`DataList. Dále jsme přidali všechna tlačítka nad a pod rámec DataList. Poté, co uživatel provedl změny a klikli na jedno z tlačítek Aktualizovat vše, jsou `DataListItem`y výčty a je provedeno volání metody `SuppliersBLL` třídy s `UpdateSupplierAddress`.
 

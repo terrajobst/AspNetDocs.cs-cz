@@ -9,11 +9,11 @@ ms.assetid: 4f4bf092-c400-471f-a876-78fda0417890
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing
 msc.type: authoredcontent
 ms.openlocfilehash: 66b727b69ca4f9a3d35b67f492f9a554146e09ef
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74590712"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78587435"
 ---
 # <a name="url-routing"></a>Směrování adresy URL
 
@@ -25,7 +25,7 @@ od [Erik Reitan](https://github.com/Erikre)
 
 V tomto kurzu upravíte ukázkovou aplikaci Wingtip Toys, která bude podporovat směrování adres URL. Směrování umožňuje, aby webová aplikace používala adresy URL, které jsou uživatelsky přívětivější a lépe zapamatovatelné a lépe podporované vyhledávacími moduly. Tento kurz sestaví z předchozího kurzu "členství a správy" a je součástí série kurzů Wingtip Toys.
 
-## <a name="what-youll-learn"></a>Co se naučíte:
+## <a name="what-youll-learn"></a>Naučíte se:
 
 - Jak registrovat trasy pro aplikaci webových formulářů ASP.NET
 - Postup přidání tras na webovou stránku.
@@ -45,7 +45,7 @@ Pomocí přizpůsobení směrování adres URL se ukázková aplikace Wingtip To
 
 `https://localhost:44300/Product/Convertible%20Car`
 
-### <a name="routes"></a>Tras
+### <a name="routes"></a>Trasy
 
 Trasa je vzor URL, který je namapován na obslužnou rutinu. Obslužná rutina může být fyzický soubor, jako je například soubor. aspx v aplikaci webových formulářů. Obslužná rutina může být také třída, která zpracovává požadavek. Chcete-li definovat trasu, vytvořte instanci třídy směrování zadáním vzoru adresy URL, obslužné rutiny a volitelně názvu trasy.
 
@@ -138,11 +138,11 @@ Nyní můžete spustit aplikaci a zobrazit aktualizované trasy.
     `https://localhost:44300/ProductDetails.aspx?productID=2`  
  Kód stále rozpoznává adresu URL, která obsahuje řetězec dotazu, pro případ, kdy má uživatel odkaz na záložku.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste přidali trasy pro kategorie a produkty. Zjistili jste, jak lze směrovat trasy k datovým ovládacím prvkům, které používají vazbu modelu. V dalším kurzu budete implementovat globální zpracování chyb.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 [Popisné adresy URL ASP.NET](http://www.nuget.org/packages/Microsoft.AspNet.FriendlyUrls/)  
 [Nasazení zabezpečené aplikace webových formulářů ASP.NET pomocí členství, protokolu OAuth a SQL Database pro Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)  

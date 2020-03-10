@@ -9,11 +9,11 @@ ms.assetid: b651dc58-93c7-4f83-a74e-3b99f6d60848
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs
 msc.type: authoredcontent
 ms.openlocfilehash: e26b8e841f86272a158b0c09b62ab2790d01d191
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74571834"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78592741"
 ---
 # <a name="an-overview-of-inserting-updating-and-deleting-data-c"></a>Přehled vložení, aktualizace a odstranění dat (C#)
 
@@ -365,7 +365,7 @@ Oddělením karet pro čtení, úpravy a vkládání rozhraní do tří samostat
 > [!NOTE]
 > Podobně jako prvek DetailsView, vlastnost `CurrentMode` třídy FormView indikuje zobrazené rozhraní a jeho vlastnost `DefaultMode` označuje režim, po kterém se třída FormView vrátí na po dokončení úpravy nebo vložení.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme prozkoumali základy vkládání, úprav a odstraňování dat pomocí prvku GridView, DetailsView a FormView. Všechny tři z těchto ovládacích prvků poskytují určitou úroveň předdefinovaných možností změny dat, které lze využít bez nutnosti psát jediný řádek kódu na ASP.NET stránce díky webovým ovládacím prvkům data a prvku ObjectDataSource. Nicméně jednoduché a kliknutí na techniky vykreslují poměrně Frail a Naive uživatelské rozhraní pro úpravu dat. Abychom zajistili ověřování, vkládání programových hodnot, řádné zpracování výjimek, přizpůsobení uživatelského rozhraní a tak dále, budeme muset spoléhat na řadou reálných techniky, které se budou probrat v dalších několika kurzech.
 

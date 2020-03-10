@@ -1,7 +1,7 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/customizing-a-view
-title: 'Kurz: Přizpůsobení zobrazení pro EF Database First s ASP.NET MVC aplikace'
-description: Tento kurz se zaměřuje na změny automaticky generované zobrazení k vylepšení v prezentaci.
+title: 'Kurz: přizpůsobení zobrazení pro EF Database First pomocí aplikace ASP.NET MVC'
+description: Tento kurz se zaměřuje na změnu automaticky generovaných zobrazení pro vylepšení prezentace.
 author: Rick-Anderson
 ms.author: riande
 ms.date: 01/24/2019
@@ -10,51 +10,51 @@ ms.assetid: 269380ff-d7e1-4035-8ad1-fe1316a25f76
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/customizing-a-view
 msc.type: authoredcontent
 ms.openlocfilehash: 89b8a0eb84b6e287c45bc141c68a2c76e63b0e41
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57067270"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78583592"
 ---
-# <a name="tutorial-customize-view-for-ef-database-first-with-aspnet-mvc-app"></a>Kurz: Přizpůsobení zobrazení pro EF Database First s ASP.NET MVC aplikace
+# <a name="tutorial-customize-view-for-ef-database-first-with-aspnet-mvc-app"></a>Kurz: přizpůsobení zobrazení pro EF Database First pomocí aplikace ASP.NET MVC
 
-Pomocí generování uživatelského rozhraní ASP.NET, MVC a Entity Framework, můžete vytvořit webovou aplikaci, která poskytuje rozhraní pro existující databázi. V této sérii kurzů se dozvíte, jak automaticky vygenerovat kód, který umožňuje uživatelům zobrazit, upravit, vytvořit a odstranit data, která se nachází v databázové tabulce. Generovaný kód odpovídá sloupců v tabulce databáze.
+Pomocí MVC, Entity Framework a ASP.NET generování uživatelského rozhraní můžete vytvořit webovou aplikaci, která poskytuje rozhraní pro existující databázi. V této sérii kurzů se dozvíte, jak automaticky vygenerovat kód, který uživatelům umožňuje zobrazit, upravit, vytvořit a odstranit data, která se nacházejí v tabulce databáze. Generovaný kód odpovídá sloupcům v tabulce databáze.
 
-Tento kurz se zaměřuje na změny automaticky generované zobrazení k vylepšení v prezentaci.
+Tento kurz se zaměřuje na změnu automaticky generovaných zobrazení pro vylepšení prezentace.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Přidat kurzů na stránku podrobností studenta
-> * Ověřit, že se na kurzy přidán na stránku
+> * Přidání kurzů na stránku podrobností studenta
+> * Potvrďte, že jsou kurzy přidané na stránku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Změna databáze](changing-the-database.md)
 
-## <a name="add-courses-to-student-detail"></a>Přidat podrobnosti o studentovi kurzy
+## <a name="add-courses-to-student-detail"></a>Přidání kurzů k podrobnostem studenta
 
-Generovaný kód poskytuje dobrým výchozím bodem pro vaši aplikaci, ale neposkytuje nutně všechny funkce, které potřebujete ve vaší aplikaci. Můžete upravit kód pro konkrétní požadavkům vaší aplikace. V současné době aplikace zaregistrovaná kurzy pro vybrané student nezobrazuje. V této části přidáte zaregistrované kurzy pro každého studenta do **podrobnosti** zobrazení pro studenta.
+Generovaný kód poskytuje dobrý výchozí bod pro vaši aplikaci, ale nutně neposkytuje všechny funkce, které v aplikaci potřebujete. Kód můžete přizpůsobit tak, aby splňoval konkrétní požadavky vaší aplikace. V současné době vaše aplikace nezobrazuje zaregistrované kurzy pro vybraného studenta. V této části přidáte zaregistrované kurzy pro každého studenta do zobrazení **podrobností** pro studenta.
 
-Otevřít **zobrazení** > **studenty** > *Details.cshtml*. Pod poslední &lt;/dl&gt; značky, ale před uzavírající &lt;/div&gt; značky, přidejte následující kód.
+Otevřete **zobrazení** > **Students** > *Details. cshtml*. Pod poslední &lt;značka&gt;/DL, ale před uzavírací &lt;/div&gt; značky přidejte následující kód.
 
 [!code-cshtml[Main](customizing-a-view/samples/sample1.cshtml)]
 
-Tento kód vytvoří tabulku, která se zobrazí řádek pro každý záznam v tabulce registrace pro vybrané studentů. **Zobrazení** metoda vykreslí HTML pro objekt (modelItem), který představuje výraz. Použití zobrazení metody (místo v kódu jednoduše vložení hodnoty vlastnosti) do Ujistěte se, že hodnota formátována správně na základě jeho typu a šablonu pro daný typ. V tomto příkladu každý výraz vrátí jedinou vlastnost z aktuální záznam ve smyčce a hodnoty jsou primitivní typy, které jsou generovány jako text.
+Tento kód vytvoří tabulku, která zobrazí řádek pro každý záznam v tabulce zápisu pro vybraného studenta. Metoda **Display** vykresluje HTML pro objekt (ModelItem), který představuje výraz. Použijte metodu Display (místo pouhého vložení hodnoty vlastnosti v kódu), abyste se ujistili, že je hodnota formátována správně na základě jejího typu a šablony pro daný typ. V tomto příkladu každý výraz vrátí jednu vlastnost z aktuálního záznamu ve smyčce a hodnoty jsou primitivní typy, které se vykreslují jako text.
 
-## <a name="confirm-courses-are-added"></a>Potvrďte, že jsou přidány kurzy
+## <a name="confirm-courses-are-added"></a>Přidávají se potvrzení kurzů.
 
-Spuštění řešení. Klikněte na tlačítko **seznamu studentů** a vyberte **podrobnosti** pro jeden z studenty. Uvidíte, že registrovaná kurzy byla zahrnuta v zobrazení.
+Spusťte řešení. Klikněte na **seznam studentů** a vyberte **Podrobnosti** pro jednoho z studentů. V zobrazení se zobrazí zaregistrované kurzy.
 
-![studenta s registrací](customizing-a-view/_static/image1.png)
+![student s registrací](customizing-a-view/_static/image1.png)
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Přidání kurzů na stránku podrobností studenta
-> * Potvrdit, že jsou na stránku přidá kurzy
+> * Potvrzení, že se kurzy přidávají na stránku
 
-Přejděte k dalšímu kurzu, přečtěte si, jak přidat datových poznámek k určení požadavků na ověření a zobrazení formátování.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak přidat datové poznámky, abyste určili požadavky na ověření a formátování zobrazení.
 > [!div class="nextstepaction"]
 > [Vylepšení ověřování dat](enhancing-data-validation.md)

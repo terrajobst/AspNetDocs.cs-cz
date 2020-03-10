@@ -9,11 +9,11 @@ ms.assetid: 11de31e8-a78a-4f96-bd75-66e994175902
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-gridview-control-cs
 msc.type: authoredcontent
 ms.openlocfilehash: ec17a16d7bb487d1c5cacf2d5971bbeffc1ba031
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74628058"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78595499"
 ---
 # <a name="using-templatefields-in-the-gridview-control-c"></a>Použití vlastností TemplateField v ovládacím prvku GridView (C#)
 
@@ -213,7 +213,7 @@ Obrázek 16 znázorňuje dokončený kurz při prohlížení v prohlížeči.
 
 **Obrázek 16**: počet dní, po který se zaměstnanec v úloze zobrazuje ([kliknutím zobrazíte obrázek v plné velikosti](using-templatefields-in-the-gridview-control-cs/_static/image48.png))
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Pole TemplateField v ovládacím prvku GridView umožňuje dosáhnout vyšší úrovně flexibility při zobrazování dat, než je k dispozici pro ostatní ovládací prvky pole. TemplateFields jsou ideální pro situace, kde:
 

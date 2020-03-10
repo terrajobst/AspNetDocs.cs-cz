@@ -9,11 +9,11 @@ ms.assetid: 7d821db5-6cbb-4b38-af14-198f9155fc82
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-vb
 msc.type: authoredcontent
 ms.openlocfilehash: dee95ee2789a69aac5aa79b8358e58e3ee99e1b2
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74636616"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78588688"
 ---
 # <a name="wrapping-database-modifications-within-a-transaction-vb"></a>Zabalení úprav databáze do transakce (VB)
 
@@ -199,7 +199,7 @@ Nyní zkuste kliknout na tlačítko upravit kategorie (bez transakce). Výsledke
 
 **Obrázek 10**: některé produkty `CategoryID` hodnoty byly aktualizovány, i když jiné nebyly ([kliknutím zobrazíte obrázek v plné velikosti).](wrapping-database-modifications-within-a-transaction-vb/_static/image14.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Ve výchozím nastavení metody TableAdapter s nebalí provedené příkazy databáze v rámci oboru transakce, ale s malým množstvím práce můžeme přidat metody, které vytvoří, potvrdí a vrátí zpět transakci. V tomto kurzu jsme vytvořili tři takové metody ve třídě `ProductsTableAdapter`: `BeginTransaction`, `CommitTransaction`a `RollbackTransaction`. Zjistili jsme, jak tyto metody použít spolu s blokem `Try...Catch` a vytvořit tak řadu příkazů pro úpravu dat. Konkrétně jsme vytvořili metodu `UpdateWithTransaction` v `ProductsTableAdapter`, která používá vzor aktualizace Batch k provedení nezbytných úprav řádků zadaného `ProductsDataTable`. Přidali jsme také metodu `DeleteProductsWithTransaction` do `ProductsBLL` třídy v knihoven BLL, která přijímá `List` `ProductID` hodnot jako svůj vstup a volá metodu vzoru DB-Direct `Delete` pro každý `ProductID`. Obě metody se spustí vytvořením transakce a následným spuštěním příkazů pro úpravu dat v rámci `Try...Catch`ho bloku. Pokud dojde k výjimce, transakce je vrácena zpět, jinak je potvrzena.
 

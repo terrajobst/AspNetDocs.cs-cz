@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-the-ftpwebrequest-class-to-create-an-ftp-connection-to-a-ftp-server
-title: '[Postup:] Použití třídy FtpWebRequest k vytvoření připojení FTP k serveru FTP | Dokumentace Microsoftu'
+title: '[Postupy:] K vytvoření připojení FTP k serveru FTP použijte třídu FtpWebRequest | Microsoft Docs'
 author: rick-anderson
-description: V toto video pixelů na Chris ukazuje způsob použití třídy FtpWebRequest k vytvoření připojení FTP a přenášet soubor. Nejprve vytvoříte jednoduchý .aspx formulář, který ybrat...
+description: V tomto videu Chris pixelů na ukazuje, jak pomocí třídy FtpWebRequest vytvořit připojení FTP a přenést soubor. Nejdřív vytvořte jednoduchý formulář. aspx pro ybrat...
 ms.author: riande
 ms.date: 12/18/2008
 ms.assetid: 99a0394d-96aa-445c-a338-43961cc717e8
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-the-ftpwebrequest-class-to-create-an-ftp-connection-to-a-ftp-server
 msc.type: video
 ms.openlocfilehash: d6e638a9a0028961045b3230927e6e3e95378317
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59385862"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78585783"
 ---
-# <a name="how-do-i-use-the-ftpwebrequest-class-to-create-an-ftp-connection-to-a-ftp-server"></a>[Postup:] Použití třídy FtpWebRequest k vytvoření připojení FTP k serveru FTP
+# <a name="how-do-i-use-the-ftpwebrequest-class-to-create-an-ftp-connection-to-a-ftp-server"></a>[Postupy:] Použití třídy FtpWebRequest k vytvoření připojení FTP k serveru FTP
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-V toto video pixelů na Chris ukazuje způsob použití třídy FtpWebRequest k vytvoření připojení FTP a přenášet soubor. Nejprve vytvořte jednoduchou .aspx formulář a vyberte soubor, který chcete převést na FTP server. Dál si představíme základní metody a vlastnosti třídy FtpWebRequest, která je potřeba nakonfigurovat, aby bylo možné navázat připojení k serveru FTP. Poté zjistěte, jak získat obsah místního souboru, takže ho lze převést pomocí třídy StreamReader a StreamWriter k zápisu do FtpWebRequest. Nakonec se získávají FtpWebResponse k určení výsledku převodu. Tento přístup je možné programově přenosu souborů pro webovou aplikaci.
+V tomto videu Chris pixelů na ukazuje, jak pomocí třídy FtpWebRequest vytvořit připojení FTP a přenést soubor. Nejdřív vytvořte jednoduchý formulář. aspx a vyberte soubor, který se má přenést na server FTP. Dále si přečtěte základní metody a vlastnosti třídy FtpWebRequest, které je třeba nakonfigurovat, aby bylo možné navázat připojení FTP. Pak si přečtěte téma Jak získat obsah místního souboru, aby se soubor mohl přenést pomocí StreamReader a StreamWriter pro jeho zápis do FtpWebRequest. Nakonec se získá FtpWebResponse k určení výsledku přenosu. Tento přístup se dá použít k programovému přenosu souborů pro webovou aplikaci.
 
-[&#9654;Podívejte se na video (21 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-ftpwebrequest-class-to-create-an-ftp-connection-to-a-ftp-server)
+[&#9654;Sledovat video (21 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-ftpwebrequest-class-to-create-an-ftp-connection-to-a-ftp-server)

@@ -9,11 +9,11 @@ ms.assetid: 48b58a18-5ea4-468c-b326-f35331b3e1e9
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 2551a5361256234883bb37e46e794037284445a4
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74640972"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78585846"
 ---
 # <a name="urls-in-master-pages-c"></a>Adresy URL stránek předloh (C#)
 
@@ -127,7 +127,7 @@ Odeberte kód prvku `<a>` a přidejte ovládací prvek hypertextový odkaz na m�
 
 [!code-aspx[Main](urls-in-master-pages-cs/samples/sample8.aspx)]
 
-A je to! V tomto okamžiku jsou všechny adresy URL na naší hlavní stránce správně založené na tom, kde jsou vykresleny pomocí stránky obsahu bez ohledu na to, ve kterých složkách se stránka předlohy a stránka obsahu nacházejí.
+A to je vše! V tomto okamžiku jsou všechny adresy URL na naší hlavní stránce správně založené na tom, kde jsou vykresleny pomocí stránky obsahu bez ohledu na to, ve kterých složkách se stránka předlohy a stránka obsahu nacházejí.
 
 ### <a name="automatic-url-resolution-in-theheadsection"></a>Automatické rozlišení adresy URL v části`<head>`
 
@@ -141,7 +141,7 @@ Pokud to chcete ověřit, přejděte na stránku `~/Admin/Default.aspx` a zobraz
 
 [!code-html[Main](urls-in-master-pages-cs/samples/sample10.html)]
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Stránky předlohy velmi často obsahují odkazy, obrázky a další externí prostředky, které je třeba zadat pomocí adresy URL. Vzhledem k tomu, že stránka předloh a stránky obsahu nemusí existovat ve stejné složce, je důležité se zdržet používání relativních adres URL. I když je možné použít pevně kódované absolutní adresy URL, tak, aby se tak těsně Couples absolutní adresa URL webové aplikace. Pokud se absolutní adresa URL mění – stejně jako při přesunu nebo nasazení webové aplikace, nezapomeňte se vrátit zpět a aktualizovat absolutní adresy URL.
 

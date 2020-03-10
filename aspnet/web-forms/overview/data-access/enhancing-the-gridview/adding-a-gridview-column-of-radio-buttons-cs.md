@@ -9,11 +9,11 @@ ms.assetid: 32377145-ec25-4715-8370-a1c590a331d5
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-radio-buttons-cs
 msc.type: authoredcontent
 ms.openlocfilehash: b59cc64b14c6414e6558fdb8a281644db8386701
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74593673"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78591096"
 ---
 # <a name="adding-a-gridview-column-of-radio-buttons-c"></a>Přidání sloupce přepínačů do ovládacího prvku GridView (C#)
 
@@ -268,7 +268,7 @@ Obrázek 20 zobrazuje výsledky po výběru dodavatele Bigfoot Pivovars a kliknu
 
 **Obrázek 20**: produkty dodávané společností Bigfoot pivovars jsou uvedeny na stejné stránce ([kliknutím zobrazíte obrázek v plné velikosti).](adding-a-gridview-column-of-radio-buttons-cs/_static/image36.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Jak je popsáno v části [hlavní a podrobnosti pomocí selektivního hlavního prvku GridView s podrobným](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md) kurzem prvku detailview, lze záznamy vybrat z prvku GridView pomocí CommandField, jehož vlastnost `ShowSelectButton` je nastavena na hodnotu `true`. Ale CommandField zobrazí jeho tlačítka buď jako standardní tlačítka pro vložení, odkazy nebo obrázky. Alternativním uživatelským rozhraním pro výběr řádků je poskytnout přepínač nebo zaškrtávací políčko v každém řádku GridView. V tomto kurzu jsme prozkoumali, jak přidat sloupec přepínacích tlačítek.
 

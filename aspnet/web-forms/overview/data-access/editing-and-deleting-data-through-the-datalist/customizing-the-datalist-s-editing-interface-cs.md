@@ -9,11 +9,11 @@ ms.assetid: a5d13067-ddfb-4c36-8209-0f69fd40e45c
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/customizing-the-datalist-s-editing-interface-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 81f5a7f6737f544f577447f263dbd37dbc8279d9
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74623854"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78594120"
 ---
 # <a name="customizing-the-datalists-editing-interface-c"></a>Přizpůsobení rozhraní pro úpravy prvku DataList (C#)
 
@@ -151,7 +151,7 @@ Abychom mohli uložit možnost (žádné) jako hodnotu `NULL` databáze, musíme
 
 Tato změna způsobí, že hodnota `Nothing` bude předána metodě `UpdateProduct` knihoven BLL, pokud uživatel v některém z rozevíracích seznamů vybral možnost (žádné), která odpovídá hodnotě `NULL` databáze.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme viděli, jak vytvořit komplexnější rozhraní pro úpravy DataList, které zahrnulo tři různé vstupní webové ovládací prvky, jako je textové pole, dva DropDownList a zaškrtávací políčko společně s ovládacími prvky ověřování. Při sestavování rozhraní pro úpravy jsou tyto kroky stejné bez ohledu na používané webové ovládací prvky: Začněte přidáním webových ovládacích prvků do `EditItemTemplate`DataList s. pomocí syntaxe DataBinding přiřaďte odpovídající hodnoty datových polí odpovídajícím vlastnostem webového ovládacího prvku. a v obslužné rutině události `UpdateCommand` programově přistupují k webovým ovládacím prvkům a jejich příslušným vlastnostem, které předají jejich hodnoty do knihoven BLL.
 

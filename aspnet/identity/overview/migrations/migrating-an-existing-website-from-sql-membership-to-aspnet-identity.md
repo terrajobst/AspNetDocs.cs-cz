@@ -10,11 +10,11 @@ ms.assetid: 220d3d75-16b2-4240-beae-a5b534f06419
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
 ms.openlocfilehash: 633229cc4311d151121bf6a91b9fa8aeecca1197
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77456150"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78583725"
 ---
 # <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Migrace stávajícího webu z členství SQL na ASP.NET Identity
 
@@ -85,16 +85,16 @@ Aby ASP.NET Identity třídy fungovaly s daty stávajících uživatelů, musím
 
 | **IdentityUser** | **Typ** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
 | --- | --- | --- | --- | --- | --- |
-| ID | string | ID | roleId | ProviderKey | ID |
-| Uživatelské jméno | string | Název | UserId | UserId | ClaimType |
-| PasswordHash (Hodnota hash hesla) | string |  |  | LoginProvider | ClaimValue |
-| SecurityStamp | string |  |  |  | ID\_uživatele |
-| E-mail | string |  |  |  |  |
+| ID | řetězec | ID | roleId | ProviderKey | ID |
+| Uživatelské jméno | řetězec | Název | UserId | UserId | ClaimType |
+| PasswordHash (Hodnota hash hesla) | řetězec |  |  | LoginProvider | ClaimValue |
+| SecurityStamp | řetězec |  |  |  | ID\_uživatele |
+| Email | řetězec |  |  |  |  |
 | EmailConfirmed | bool |  |  |  |  |
-| PhoneNumber | string |  |  |  |  |
+| PhoneNumber | řetězec |  |  |  |  |
 | PhoneNumberConfirmed | bool |  |  |  |  |
 | LockoutEnabled | bool |  |  |  |  |
-| LockoutEndDate | Datum a čas |  |  |  |  |
+| LockoutEndDate | DateTime |  |  |  |  |
 | AccessFailedCount | int |  |  |  |  |
 
 Pro každý z těchto modelů musíme mít tabulky, které odpovídají vlastnostem. Mapování mezi třídami a tabulkami je definováno v metodě `OnModelCreating` `IdentityDBContext`. To se označuje jako metoda konfigurace rozhraní Fluent API a další informace najdete [tady](https://msdn.microsoft.com/data/jj591617.aspx). Konfigurace pro třídy je uvedená níže.
